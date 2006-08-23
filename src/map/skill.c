@@ -1,5 +1,4 @@
 // $Id: skill.c 577 2005-12-03 18:06:48Z Yor $
-/* スキル関係 */
 
 #include <config.h>
 
@@ -6061,11 +6060,15 @@ struct skill_unit_group *skill_unitsetting(struct block_list *src, int skillid, 
 		val2 = ((status_get_dex(src) / 10) & 0xffff) << 16;
 		val2 |= (status_get_int(src) / 5) & 0xffff;
 		break;
-	case BA_APPLEIDUN:			/* イドゥンの林檎 */
-		if (src->type == BL_PC)
-			val1 = pc_checkskill((struct map_session_data *)src, BA_MUSICALLESSON) & 0xffff;
-		val2 |= (status_get_vit(src)) & 0xffff;
-		val3 = 0;//回復用タイムカウンタ(6秒?に1?加)
+	case BA_APPLEIDUN:
+		val1 = (5 + (2 * skilllv)) + ((status_get_vit(src)) / 10);		// maximum hp bonus
+		val2 = (30 + (5 * skilllv)) + ((status_get_vit(src)) / 10);		// hp regen bonus
+		val3 = 0;
+		if(src->type == BL_PC)											// musical lesson bonuses
+		{
+			val1 += (pc_checkskill((struct map_session_data *)src, BA_MUSICALLESSON));
+			val2 += (pc_checkskill((struct map_session_data *)src, BA_MUSICALLESSON) * 5);
+		}
 		break;
 	case DC_HUMMING:			/* ハミング */
 		if (src->type == BL_PC)

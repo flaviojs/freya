@@ -1,6 +1,11 @@
 
 Date	Added
 
+08/23/2006
+	* Fixed: hp regen and max hp bonus calculation of apple of idun skill [Harbin]
+	* Added: adoption skills to skill_cast_db [Harbin]
+	* Fixed: gryphon card was giving level 50 bowling bash autocast. should be level 5 [Harbin]
+
 08/12/2006
 	* Fixed: Lighthalzen warp in Warpra NPC
 	* Fixed: Case-sensitive variables in Lighthalzen quest
