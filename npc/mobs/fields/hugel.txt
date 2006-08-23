@@ -1,0 +1,103 @@
+//===== eAthena Script =======================================
+//= Hugel Field Monster Spawn Script
+//===== By: ==================================================
+//= Athena (1.0)
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= Any Athena Version
+//===== Additional Comments: =================================
+//= Spawns for hu_fild05 and hu_fild04, numbers may not be correct [MasterOfMuppets]
+//= 0.2 Fixed Petit ID
+//= 0.3 Updated the spawns using kRO's website as info,  [MasterOfMuppets]
+//= 	thanks to battousai90
+//= 0.4 Updated after Episode 10.4 - Hugel [Poki#3]
+//=	Mob quantity is custom.
+//= 1.0 Updated by using Tharis' Homun AI, by Tharis [Vicious]
+//============================================================
+
+//==================================================
+// hu_fild01 - Hugel Field
+//==================================================
+hu_fild01.gat,0,0,0,0	monster	Demon Fungus	1378,30,0,0,0
+hu_fild01.gat,0,0,0,0	monster	Geographer	1368,25,0,0,0
+hu_fild01.gat,0,0,0,0	monster	Breeze	1692,5,0,0,0
+hu_fild01.gat,0,0,0,0	monster	Plasma	1693,5,0,0,0
+hu_fild01.gat,0,0,0,0	monster	Plasma	1694,5,0,0,0
+hu_fild01.gat,0,0,0,0	monster	Plasma	1695,5,0,0,0
+hu_fild01.gat,0,0,0,0	monster	Plasma	1696,5,0,0,0
+hu_fild01.gat,0,0,0,0	monster	Plasma	1697,5,0,0,0
+
+//==================================================
+// hu_fild02 - Hugel Field
+//==================================================
+hu_fild02.gat,0,0,0,0	monster	Rafflesia	1162,35,0,0,0
+hu_fild02.gat,0,0,0,0	monster	Anopheles	1627,30,0,0,0
+hu_fild02.gat,0,0,0,0	monster	Metaling	1613,21,0,0,0
+hu_fild02.gat,0,0,0,0	monster	Savage Babe	1167,21,0,0,0
+hu_fild02.gat,0,0,0,0	monster	Green Iguana	1687,10,0,0,0
+hu_fild02.gat,0,0,0,0	monster	Breeze	1692,10,0,0,0
+hu_fild02.gat,0,0,0,0	monster	Geographer	1368,10,0,0,0
+hu_fild02.gat,0,0,0,0	monster	Demon Fungus	1378,5,0,0,0
+hu_fild02.gat,0,0,0,0	monster	Novus	1715,2,0,0,0
+hu_fild02.gat,0,0,0,0	monster	Novus	1718,2,0,0,0
+
+//==================================================
+// hu_fild03 - Hugel Field
+//==================================================
+hu_fild03.gat,0,0,0,0	monster	Metaling	1613,80,0,0,0
+hu_fild03.gat,0,0,0,0	monster	Poporing	1031,20,0,0,0
+hu_fild03.gat,0,0,0,0	monster	Green Iguana	1687,10,0,0,0
+hu_fild03.gat,0,0,0,0	monster	Thief Bug	1051,10,0,0,0
+hu_fild03.gat,0,0,0,0	monster	Black Mushroom	1084,10,180000,90000,1
+hu_fild03.gat,0,0,0,0	monster	Red Mushroom	1085,10,180000,90000,1
+
+//==================================================
+// hu_fild04 - Hugel Field
+//==================================================
+hu_fild04.gat,0,0,0,0	monster	Anopheles	1627,45,0,0,0
+hu_fild04.gat,0,0,0,0	monster	Deleter	1384,35,0,0,0
+hu_fild04.gat,0,0,0,0	monster	Deleter	1385,30,0,0,0
+hu_fild04.gat,0,0,0,0	monster	Green Iguana	1687,20,0,0,0
+hu_fild04.gat,0,0,0,0	monster	Breeze	1692,20,0,0,0
+hu_fild04.gat,0,0,0,0	monster	Novus	1715,15,0,0,0
+hu_fild04.gat,0,0,0,0	monster	Novus	1718,10,0,0,0
+hu_fild04.gat,0,0,0,0	monster	Sleeper	1386,5,0,0,0
+hu_fild04.gat,0,0,0,0	monster	Green Plant	1080,10,180000,90000,1
+hu_fild04.gat,0,0,0,0	monster	Yellow Plant	1081,5,180000,90000,1
+hu_fild04.gat,0,0,0,0	monster	Blue Plant	1079,5,900000,450000,1
+
+//==================================================
+// hu_fild05 - Hugel Field
+//==================================================
+hu_fild05.gat,0,0,0,0	monster	Green Iguana	1687,55,0,0,0
+hu_fild05.gat,0,0,0,0	monster	Anopheles	1627,50,0,0,0
+hu_fild05.gat,0,0,0,0	monster	Novus	1715,10,0,0,0
+hu_fild05.gat,0,0,0,0	monster	Novus	1718,10,0,0,0
+hu_fild05.gat,0,0,0,0	monster	Mutant Dragonoid	1262,4,3600000,1800000,1
+
+//==================================================
+// hu_fild06 - Hugel Field
+//==================================================
+hu_fild06.gat,0,0,0,0	monster	Holden	1628,50,0,0,0
+hu_fild06.gat,0,0,0,0	monster	Caramel	1103,20,0,0,0
+hu_fild06.gat,0,0,0,0	monster	Poring	1002,10,0,0,0
+hu_fild06.gat,0,0,0,0	monster	Poporing	1031,10,0,0,0
+hu_fild06.gat,0,0,0,0	monster	Metaling	1613,10,0,0,0
+hu_fild06.gat,0,0,0,0	monster	Female Thief Bug	1053,3,0,0,0
+hu_fild06.gat,0,0,0,0	monster	Green Plant	1080,10,180000,90000,1
+hu_fild06.gat,0,0,0,0	monster	Yellow Plant	1081,10,180000,90000,1
+
+//==================================================
+// hu_fild07 - Hugel Field
+//==================================================
+hu_fild07.gat,0,0,0,0	monster	Petite	1155,40,0,0,0
+hu_fild07.gat,0,0,0,0	monster	Petite	1156,40,0,0,0
+hu_fild07.gat,0,0,0,0	monster	Anopheles	1627,30,0,0,0
+hu_fild07.gat,0,0,0,0	monster	Geographer	1368,20,0,0,0
+hu_fild07.gat,0,0,0,0	monster	Demon Fungus	1378,10,0,0,0
+hu_fild07.gat,0,0,0,0	monster	Green Iguana	1687,10,0,0,0
+hu_fild07.gat,0,0,0,0	monster	Breeze	1692,10,0,0,0
+hu_fild07.gat,0,0,0,0	monster	Novus	1715,10,0,0,0
+hu_fild07.gat,0,0,0,0	monster	Novus	1718,10,0,0,0
+hu_fild07.gat,0,0,0,0	monster	Yellow Plant	1081,20,360000,180000,1

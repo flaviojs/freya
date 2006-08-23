@@ -1,0 +1,393 @@
+//===== Script Athena =================================================//
+//= Script 3-Epreuve_du_Corps.txt                                      //
+//===== Par: ==========================================================//
+//= Kylvan                                                             //
+//= Kylvan@laposte.net                                                 //
+//= Although all this quest is in French, you can mail me in English,  //
+//= would be able to answer you.                                       //
+//===== Version Actuelle: =============================================//
+//= 1.0                                                                //
+//===== Compatible Avec: ==============================================//
+//= Freya 2.0.2 and newer.                                             //
+//===== Description: ==================================================//
+//  Il s'agit de la deuxième des 3 epreuves de la quete permettant de  //
+//  renaitre.                                                          //
+//===== Description : =================================================//
+// Aller parler au Sage du Corps situer en haut de la clock tower,     //
+// Puis à Un vieil homme, qui se able/disable toutes les 4 heures      //
+// dans un des 8 étages de la tour. Remplumer son oreiller avec        //
+// 50 soft feather, puis ralimenter sa cheminer avec 100 worn-out page //
+// retourner parler à Sage du Corps, il téléportera le joueur dans     //
+// une map emplie de monstres (differant selont sa classe) qu'il doit  //
+// traverser en un temps limité (differant selont sa classe)           //
+//=====================================================================//
+
+//Sage du Corps
+c_tower4.gat,101,112,2	script	Sage du Corps	816,{
+
+	if ((readparam(19)>4000)&&(readparam(19)<4022)) goto L_Valky;
+	if (sage == 1) goto L_Sage1;
+	if (sage == 2) goto L_Corps;
+	if (sage == 3) goto L_Sage3;
+	if ((sage == 4)||(sage==5)) goto L_Sage4;
+	mes "[Sage du Corps]";
+	mes "En la ville de Yuno, le sceau de votre ignorance pourra être brisé";
+	close;
+
+L_Valky:
+	mes "[Un Sage]";
+	mes "Désirez-vous vous rendre au Sanctuaire ?";
+	menu "Oui",-,"Non",L_non;
+	// mettre tous les flag qu'il faut ;p
+	setmapflagnosave "valkyrie.gat","yggdrasil01.gat",0,0;
+	setmapflag "valkyrie.gat",0; // no memo
+	//setmapflag "valkyrie.gat",2; // no save
+	setmapflag "valkyrie.gat",13; // no warp
+	warp "valkyrie.gat",48,9;
+	close;
+
+L_non:
+	next;
+	mes "[Un Sage]";
+	mes "Au revoir.";
+	close;
+
+L_Sage1:
+	mes "[Sage du Corps]";
+	mes "Le sceau de votre Ignorance a été brisé Il vous faut purifier votre Esprit.";
+	close;
+
+L_Sage3:
+	mes "[Sage du Corps]";
+	mes "Votre Esprit et votre Corps sont lavés de toute souillure, il vous faut maintenant renforcer votre Volonté!";
+	close;
+
+L_Sage4:
+	mes "[Sage du Corps]";
+	mes "La Vérité peut maintenant éclater !";
+	mes "Accomplissez l'ultime rituel et rejoignez-nous dans la Lumière de la Connaissance.";
+	close;
+
+L_Corps:
+	if (quete == 5) goto L_Rituel;
+	mes "[Sage du Corps]";
+	mes "Ah, je vois que votre Esprit est assaini. Malheureusement, pour purifier votre Corps, il vous faut l'Embleme.";
+	mes "Or, le dernier a s'etre preté a ce rituel n'a pas tenu le choc. Il ère dans les couloirs de cette tour...";
+	mes "L'Embleme est toujours en sa possession.";
+	if ((quete != 2) && (quete != 3) && (quete !=4)) set quete,1; //pour eviter la remise a zéro
+	close;
+
+	L_Rituel:
+		mes "[Sage du Corps]";
+		mes "Ah, je vois que vous avez recuperé l'Embleme. Je peux désormais purifier votre Corps.";
+		menu "Accomplir le rituel de purification du Corps.",L_Debut,"Partir",-;
+		close;
+
+	L_Debut:
+		// verifier que y a personne dans la map
+		if (getmapusers("force_1-3.gat")>0) goto L_attendre;
+
+		// mettre tous les flag qu'il faut ;p
+		setmapflagnosave "force_1-3.gat","prontera.gat",155,155;
+		setmapflag "force_1-3.gat",0; // no memo
+		setmapflag "force_1-3.gat",1; // no teleport
+		//setmapflag "force_1-3.gat",2; // no save
+		setmapflag "force_1-3.gat",13; // no warp
+		setmapflag "force_1-3.gat",17; // fog... ouais je sais : useless. Mais ca fait classe :p
+
+		// tuer tous les mobs de la map avant de spawner
+		killmonsterall "force_1-3.gat";
+
+		//different spawn en fonction des classes
+		if (readparam(19)==8) goto L_priest;
+		if (readparam(19)==9) goto L_wizard;
+		if (readparam(19)==16) goto L_sage;
+		if ((readparam(19)==10)||(readparam(19)==18)) goto L_merchant;
+		if ((readparam(19)==11)||(readparam(19)==19)||(readparam(19)==20)) goto L_archer;
+		if ((readparam(19)==7)||(readparam(19)==12)||(readparam(19)==13)||(readparam(19)==14)||(readparam(19)==17)||(readparam(19)==21)) goto L_chimera;
+			//knight            //assassin            //peco-knight        //cruz                 // rogue          //peco-cruz
+		if (readparam(19)==15) goto L_Monk;
+		if (readparam(19)==23) goto L_Supernono;
+
+		L_Supernono:
+			areamonster "force_1-3.gat",0,0,188,193,"Elder Willow",1033,65,"";
+			//En 8 minutes
+			addtimer 480000,"compteur::OnTimer";
+			warp "force_1-3.gat",131,179;
+			close;
+
+
+		L_Monk:
+			areamonster "force_1-3.gat",0,0,188,193,"Raydric Archer",1276,40,"";
+			areamonster "force_1-3.gat",0,0,188,193,"Chevalier Sanglant",1268,5,"";
+			areamonster "force_1-3.gat",0,0,188,193,"Incubus",1374,10,"";
+			areamonster "force_1-3.gat",0,0,188,193,"Succubus",1370,10,"";
+			areamonster "force_1-3.gat",0,0,188,193,"Violy",1390,15,"";
+			areamonster "force_1-3.gat",0,0,188,193,"Joker",1131,15,"";
+			areamonster "force_1-3.gat",0,0,188,193,"Wraith Dead",1291,10,"";
+			//En 7 minutes
+			addtimer 420000,"compteur::OnTimer";
+			warp "force_1-3.gat",131,179;
+			close;
+
+
+		L_priest:
+			areamonster "force_1-3.gat",0,0,188,193,"Seigneur Zombie",1298,30,"";
+			areamonster "force_1-3.gat",0,0,188,193,"Wraith Dead",1291,30,"";
+			areamonster "force_1-3.gat",0,0,188,193,"Khalitzburg",1132,20,"";
+			areamonster "force_1-3.gat",0,0,188,193,"Ancient Mummy",1297,30,"";
+			areamonster "force_1-3.gat",0,0,188,193,"Male Thief Bug",1054,30,"";
+			//En 6minutes
+			addtimer 360000,"compteur::OnTimer";
+			warp "force_1-3.gat",131,179;
+			close;
+
+		L_chimera:
+			areamonster "force_1-3.gat",0,0,188,193,"Chimera",1283,60,"";
+			//En 5 minutes
+			addtimer 300000,"compteur::OnTimer";
+			warp "force_1-3.gat",131,179;
+			close;
+
+		L_archer:
+			areamonster "force_1-3.gat",0,0,188,193,"Nigthmare Terror",1379,20,"";
+			areamonster "force_1-3.gat",0,0,188,193,"Am Mut",1301,20,"";
+			areamonster "force_1-3.gat",0,0,188,193,"Ancient Mummy",1297,20,"";
+			//En 7 minutes
+			addtimer 420000,"compteur::OnTimer";
+			warp "force_1-3.gat",131,179;
+			close;
+
+		L_sage:
+			areamonster "force_1-3.gat",0,0,188,193,"Gargoyle",1253,15,"";
+			areamonster "force_1-3.gat",0,0,188,193,"Gajomart",1309,15,"";
+			//en 8 minutes
+			addtimer 480000,"compteur::OnTimer";
+			warp "force_1-3.gat",131,179;
+			close;
+
+		L_wizard:
+			areamonster "force_1-3.gat",0,0,188,193,"Gargoyle",1253,30,"";
+			areamonster "force_1-3.gat",0,0,188,193,"Gajomart",1309,30,"";
+			//en 8 minutes
+			addtimer 480000,"compteur::OnTimer";
+			warp "force_1-3.gat",131,179;
+			close;
+
+		L_merchant:
+			areamonster "force_1-3.gat",0,0,188,193,"Rideword",1195,15,"";
+			areamonster "force_1-3.gat",0,0,188,193,"Violy",1390,30,"";
+			//En 7 minutes
+			addtimer 420000,"compteur::OnTimer";
+			warp "force_1-3.gat",131,179;
+			close;
+
+		L_attendre:
+				mes "[Sage du Corps]";
+				mes "Quelqu'un est déjà en train d'accomplir le test. Veuillez patienter.";
+				close;
+}
+
+force_1-3.gat,1,1,0	script	compteur	-1,{
+
+OnTimer:
+	initnpctimer;
+	mapannounce "force_1-3.gat","Sage du Corps : Vous avez trop tardé a accomplir l'Epreuve.",0;
+	end;
+
+OnTimer5000:
+	stopnpctimer;
+	mapwarp "force_1-3.gat","prontera.gat",155,155;
+	end;
+}
+
+//Vieil homme
+alde_dun04.gat,123,265,4	script	Un vieil homme	52,{
+
+	if (quete==1) goto L_Quete1;
+	if (quete==3) goto L_Quete3;
+	if (quete==4) goto L_Quete4;
+	mes "[Un vieil homme]";
+	mes "Héhéhé! Hum... Héhé";
+	close;
+
+L_Quete1:
+	mes "[Un vieil homme]";
+	mes "Oh oh oh... Vous êtes envoyé par la vielle folle là haut c'est ca ? Mm ... ?";
+	next;
+	mes "[Un vieil homme]";
+	mes "Héhé.. Hinhinhin...";
+	next;
+	mes "[Un vieil homme]";
+	mes "Ho ouiiii je vois ! Vous êtes venu recuperer son 'Embleme'...";
+	next;
+	mes "[Un vieil homme]";
+	mes "Héhéhé ! Je ne vous le donnerais pas, je ne suis pas fou !";
+	mes "Ou peut-etre que si...";
+	next;
+	mes "[Un vieil homme]";
+	mes "Mais non, bougre d'imbécile ! Je parlais de l'Embleme !";
+	next;
+	mes "[Un vieil homme]";
+	mes "Mm.. C'est un objet d'une grande valeur, il vous faudra donc me rendre un grand service... Héhéhé";
+	mes "Mon couchage est au sommet de cette tour et il se trouve que mon oreiller est fort degarni.";
+	mes "Hin hin hin.. Ouii.. C'est cela...";
+	next;
+	mes "[Un vieil homme]";
+	mes "Remplumez-le, mais uniquement avec les plumes les plus douces qui soient.";
+	mes "Voilà un service equivalent à la valeur de cet objet... Héhéhé... Hinhinhin... Hu ?";
+	set quete,2;
+	next;
+	mes "[Un vieil homme]";
+	mes "Ha oui, j'oubliais, j'aime me promener dans cette vieille tour. Il est possible que je sois parti faire un tour.";
+	mes "Vous n'aurez qu'à me retrouver.";
+	close;
+
+L_Quete3:
+	mes "[Un vieil homme]";
+	mes "Ha ? Mon oreiller est remplumé ? Tant mieux ! Je vais enfin pouvoir dormir.";
+	next;
+	mes "[Un vieil homme]";
+	mes "Hein ?";
+	next;
+	mes "[Un vieil homme]";
+	mes "Ha oui, l'Embleme...";
+	mes "Je vous ai trouvé plutôt rapide, ce ne devait pas etre un service d'une importance suffisante.";
+	next;
+	mes "[Un vieil homme]";
+	mes "Vous n'avez qu'à réalimenter le feu dans ma cheminée";
+	mes "J'ai horreur d'avoir froid la nuit.";
+	close;
+
+No_Zeny:
+	mes "[Un vieil homme]";
+	mes "Huh ? On apprend pas au vieux singe a faire la grimace !";
+	mes "Héhé.. Haha.. Hu ?";
+	close;
+
+refus:
+	next;
+	mes "[Un vieil homme]";
+	mes "Héhé... Hum... Dommage.";
+	close;
+
+L_Quete4:
+	set @prix,(100-readparam(11))*1000000; //5M pour les 95 et 7M pour les 96,3M pour les 97, 2m pour 98, 1m pour les 99.
+	mes "[Un vieil homme]";
+	mes "Héhéhu... Hum... Hé bien, Mm... Pour "+@prix+"zenys, je vous donnerais l'embleme";
+	menu "Accepter",-,"Refuser",refus;
+	next;
+	if ( Zeny < @prix ) goto No_Zeny;
+	set Zeny,Zeny-@prix;
+	mes "[Un vieil homme]";
+	mes "Ha... Héhé...";
+	mes "Hé bien, il est temps de tenir mes engagements héhé...";
+	next;
+	mes "[Un vieil homme]";
+	mes "Tenez voilà l'objet de vos convoitises.";
+	set quete,5;
+	next;
+	mes "[Un vieil homme]";
+	mes "Héhé je vous ai bien eu, cette babiole ne vaut rien ! Haha héhé! Sans racune !";
+	mes "Héhéhé.. Hinhinhin... Hu ?";
+	next;
+	mes "^0000FF ~ Vous avez recu l'Embleme ~";
+	close;
+}
+
+
+c_tower4.gat,122,178,0	duplicate(Un vieil homme)	Un vieil homme#2	52
+c_tower3.gat,123,7,6	duplicate(Un vieil homme)	Un vieil homme#3	52
+c_tower2.gat,110,65,4	duplicate(Un vieil homme)	Un vieil homme#4	52
+c_tower1.gat,67,287,5	duplicate(Un vieil homme)	Un vieil homme#5	52
+alde_dun01.gat,42,301,4	duplicate(Un vieil homme)	Un vieil homme#6	52
+alde_dun02.gat,247,112,4	duplicate(Un vieil homme)	Un vieil homme#7	52
+alde_dun03.gat,103,80,0	duplicate(Un vieil homme)	Un vieil homme#8	52
+
+c_tower4.gat,1,1,0	script	deplac2	-1,{
+OnInit:
+	initnpctimer;
+	end;
+
+OnTimer1:
+	disablenpc "Un vieil homme";
+	disablenpc "Un vieil homme#2";
+	disablenpc "Un vieil homme#3";
+	disablenpc "Un vieil homme#4";
+	disablenpc "Un vieil homme#5";
+	disablenpc "Un vieil homme#6";
+	disablenpc "Un vieil homme#7";
+	disablenpc "Un vieil homme#8";
+	set $@hazard2,rand(1,8);
+	if ($@hazard2==1) enablenpc "Un vieil homme";
+	if ($@hazard2==2) enablenpc "Un vieil homme#2";
+	if ($@hazard2==3) enablenpc "Un vieil homme#3";
+	if ($@hazard2==4) enablenpc "Un vieil homme#4";
+	if ($@hazard2==5) enablenpc "Un vieil homme#5";
+	if ($@hazard2==6) enablenpc "Un vieil homme#6";
+	if ($@hazard2==7) enablenpc "Un vieil homme#7";
+	if ($@hazard2==8) enablenpc "Un vieil homme#8";
+	end;
+
+//Toutes les 4 heures
+OnTimer14400000:
+	setnpctimer 0;
+	end;
+}
+
+//Oreiller du fou
+c_tower4.gat,78,198,5	script	Oreiller	111,{
+	if (quete>2) goto L_ok;
+	if (quete==2) goto L_Remplumage;
+	mes "[Oreiller]";
+	mes "~ Cet oreiller est completement dégarni... ~";
+	close;
+
+L_Remplumage:
+	if (countitem(7063)>49) goto L_ok;  //soft_feather droppées par les owl duke à 15 %
+	mes "[Oreiller]";
+	mes "Vous n'avez pas suffisament de plumes pour remplumer cette oreiller";
+	close;
+
+L_ok:
+	delitem 7063,50;
+	mes "[Oreiller]";
+	mes "Cet oreiller est mouelleux à souhait !";
+	set quete,3;
+	close;
+}
+
+//Cheminée du fou
+c_tower4.gat,97,194,5	script	Cheminée	111,{
+	if (quete>3) goto L_ok;
+	if (quete==3) goto L_Ralimenter;
+	mes "[Cheminée]";
+	mes "~ Le feu se meurt dans cette cheminée ~";
+	close;
+
+L_Ralimenter:
+	if (countitem(1097)>99) goto L_ok;  //worn_out_page droppées par les rideword à 55 %
+	mes "[Cheminée]";
+	mes "Vous n'avez pas suffisament de papier pour rallumer le feu.";
+	close;
+
+L_ok:
+	delitem 1097,100;
+	mes "[Cheminée]";
+	mes "Quelle magnifique flambée !";
+	set quete,4;
+	close;
+}
+
+
+force_1-3.gat,100,10,0	script	Sortie	45,1,1,{
+	set sage,3;
+	set jour3,gettime(5);
+	set mois3,gettime(6);
+	set an3,gettime(7);
+	set heure3,gettime(3);
+	set min3,gettime(2);
+	set sec3,gettime(1);
+	percentheal 100,100;
+	warp "yuno_in02",93,205;
+}

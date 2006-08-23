@@ -1,0 +1,17 @@
+//===== eAthena Script =======================================
+//= Map flags that disable use of Butterfly wings (not for Fly wings)
+//===== By: ==================================================
+//= eAthena Dev Team
+//= 1.1 [Lupus]
+//===== Notes: ===============================================
+//= For disabling Fly wings use noteleport
+//= example: ayo_in01.gat	mapflag	noreturn
+//===== Current Version: =====================================
+
+// Cities ======================
+// Job Quests ==================
+// Special Quests Places =======
+// Guild Castles ===============
+// GvG Arenas ==================
+// Arenas ======================
+// PvP Arenas===================

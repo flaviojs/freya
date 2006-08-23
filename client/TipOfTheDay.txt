@@ -1,0 +1,161 @@
+/savechat : saves chat as text file.
+#
+You can select a type of mini-map using ctrl+[*],between transparency and opacity.
+#
+You can change the view of character with dragging a mouse while holding right button and pressing shift key.
+   Double clicking right button on a mouse enables to return the view to default one.
+#
+You can enlarge/reduce a screen with dragging a mouse while holding right button and pressing ctrl key.
+    Double-click of right button on a mouse while holding ctrl key turns it back to the default one.
+    You can also use mouse wheel for enlarging or reducing a screen.
+#
+When bringing a cursor on a monster, its shape changes into a sword.
+    Click while bringing a cursor on a monster initiates attacks.
+#
+Experience points that you can receive from a monster equals to the amount of damage that you deal with the monster.
+In case 2 players do damage on the same monster,the one who initiates attack before another will receive more EXP points by the EXP system.
+#
+Pressing Ctrl key with a right click on a monster does [Auto-Attack] til you defeat the monster.
+#
+To obtain items dropped on the ground,Do left click of a mouse on an item you want to pick up.
+   Obtained items will be saved in the item imventory.
+#
+Bring a cursor on an item and right click.You can view the enlarged  picture and description.
+#
+2 gauge bars shown under the character are schematized amount of HP and SP.
+   Green colored one indicates HP(Health Point) and blue one does SP(Skill Point).When HP becomes 0,the character will be dead.So When HP becomes lower than 25% of maximum amount,gauge bar changes into 'Red Color' to warn.
+#
+Everytime when EXP gauge bar is full (100%) , the base level of character goes up to the next level. Base levelup provides you random amount of status point, so that you can upgrade the character ability.
+#
+Everytime when Job EXP gauge is full (100%), the job level of character goes up to the next level. 1 job levelup provides you 1 skill point that you can distribute on the skill tree.
+#
+Standing without moving recovers small amount of HP and SP.
+ HP and SP can be restored 2 times faster while sitting than standing.However HP/SP cannot be restored when the weight of character get over 50% of maximum weight.
+#
+Weight : shows the current weight of character on the right and the maximum weight on the left.
+   Character can possess items as much as its maximum weight.
+   When the weight is over 50% of maximum amount,weight is shown in red colour.From that moment HP and SP cannot be restored automatically.Besides when the weight is over 90% of maximum one,the character cannot attack or use skills either.
+#
+Zeny : is the currency used inside Ragnarok World.
+#
+When the character's level goes up, random amount of status points are given.
+    Using these points,you can increase character status as you want.
+    At 1 ~ 10 level, total 3 points are given, after level 10, total amount of status points will be increased 1 by 1 after each 5 levelup.
+#
+STR(Strength) : affects on character's physical attack strength.
+   Also it enlarges character's weight limit so the character can carry more items.
+#
+DEX(Dexterity) : affects on character's accuracy rate when attack or the use of weapon.
+   It increases average attack strength of weapons, especially the attack strength of bows get more affected by DEX.Besides it reduces miss when attack,also does the magical skill casting time.
+#
+AGI(Agility) : is deeply involved with the nibleness of character.
+   AGI increases flee rate of character and attack speed of weapons.
+#
+VIT(Vital) : affects on the defence/health of character.
+   VIT increases the defence of character so it enables the character to deal with less damage taken from enemies.And it increases the maximum amount of HP and the speed of HP recovery.
+#
+INT(Intelligence) : is deeply involved with the magical ability of character. 
+    INT increases Magical attack strength/defence and regist against magics.
+#
+LUK(Luck) : It means the fortune of character, affects on various situations. 
+    Besides, the rate of critical attack and perfect dodge are both affected by LUK.
+#
+[Print Screen] or [Scroll Lock] : Saves screenshots in  [ScreenShot] folder.
+#
+[F10] :  arranges the size of chat window.
+#
+[F11] : Closes all windows at a screen except basic info window and chat window.
+#
+[F12] : Opens or closes the shorcut key window.
+ Register practical-use items or skills on the shorcut key window,each of them corresponds at keys from F1 to F9Ű.
+#
+[INSERT] : Shorcut for /sit, /stand.
+ You can type [/sit] or [/stand] instead of using [INSERT] key, while sitting,HP/SP get restored 2 times faster.
+#
+[Alt] + [END] : On/Off [HP/SP] gauge bars.
+#
+[Alt] + [HOME] : On/Off movable area indication(Green cell indication on the ground).
+#
+[Alt] + [=] : Restore typing mode from the 1*1 size letter mode into the default one.Most of command cannot be activated while the typing mode is 1*1 letter size mode.
+#
+[Alt] + [F10] : On/Off chat window.
+#
+[Alt] + [1~9], [Ctrl] + [-,=,\]  : Shorcut keys for various emotions such as /! /? /ho /lv /lv2 /swt /ic /an /ag /$ /.../gawi(means "scissors") /bawi(means "rock")/bo(means "paper")/thx /wah /sry /heh /swt2 /hmm /no1 /??/omg /oh /X /hp /go /sob /gg /kis /kis2 /pif
+#
+/who : Shows the current users who connect the server.
+#
+/where : Shows the current area info and coordintes of character.
+#
+/H : Lists basic commands for your information.
+#
+/music : On/Off BGM.
+ Also you can arrange the volume of sound at the Option window(shorcut: [Alt] + [o]).
+#
+/sound : On/Off Sound effect.
+ Also you can arrange the volume of sound effect at the Option window(shorcut: [Alt] + [o]).
+#
+/effect : enables to turn on or off various game effect graphics for your convenience considering game speed.
+ Turning off the effect will quicken the game speed.
+#
+/skip : On/Off Frame skip.
+Frame skip off cause you game lag spike followed by your system specification.
+   Unless there happens extreme lag in game, we recommand you not to use this fuction.
+#
+/ex [Character name] : Blocks whispering from the character.
+/in [Character name] :  Release the character from being blocked to whisper.
+#
+/exall : Blocks all conversation including from other people.
+/inall : Allow all conversation including whispering from other people.
+#
+/ex : Shows the list of blocked characters from whispering to you.
+#
+/organize [Party Name] : Organises a party.
+ In case of the leader, it is possible to invite characters who you want.
+#
+Bring a cursor on the character you want to invite your party then do a right click of mouse. Command menu window including 'Invite (character name) to your party' command will pop up, you can organise your own party with your friends in this way.
+#
+/leave : Leaves a party you are joined.
+ This command doesn't ask you to confirm your decision, please think twice before the decision.
+#
+/expel [Character Name] : Kicks off unwanted party member from the party.
+ This command doesn't ask you to confirm your decision, please think twice before the decision.
+#
+Click the button at the right side under the bottom of chat window and select a menu "Send to party".Then you can enjoy private chatting with party members.
+#
+%[dialogue you want to send] : Sends private message to party members.
+    Or hitting enter while holding Ctrl key does the same function.
+#
+The location of party members in the same map are indicated on the mini-map at the upper right side.So members can come find each other without difficulty.
+#
+How to whisper : Type a character name at the left sided box of chat window, enter a message you want to send at the right sided box of the same window. TAB key moves cursor from one to another.
+#
+Click [+/-] icon at the mini-map, you can [Enlarge/Reduce] the map.
+#
+[MVP System] : has been established to protect the benefit of the most contributed player to the battle with boss monsters, that is auto-looting system which rare items dropped by bosses automatically coming into the inventory belong the most contributed player before other competitors#
+    If the boss monster doesn't drop any rare items,50% of EXP points already obtained from the boss will be given to the MVP.
+#
+When the game is running as window mode, you can move the location of window.
+    Press [Alt] + [Space Bar] while holding [M] kay,adjust the location with ^ff0000Arrow Keys^000000 or ^ff0000a Mouse^000000.
+#
+/fog : On/Off fog effect. Fog effect is implemented to embody the weather of fields. 
+    This effect might be a burden for low system specification users. If the game gets to keep crashing without specific reasons or to keep being disconnected, please turn off the fog for your convenience.You can arrange fog effect on the setup window too.
+#
+Items dropped from monsters need to be idetified with magnifiers.Magnifiers can be purchased at Kit shops.
+#
+Hunter's trap skills need traps which can be purchased at Kit shops.
+#
+You can organise guilds using Emperiums.Guild command is /guild [Guild Name],the shorcut for guild window is ALT+G.
+#
+The shorcut key for guild chatting is /gc message or $ message or message after ALT+ENTER.
+#
+Put the item you want to insert a card in your inventory, then double click the card.It's how you insert a card into an item.
+#
+Followings are descriptions for abnormal status.
+- Stun : means you or monsters pass out by being attacked.You cannot move while the duration.
+- Blind : means you or monsters go blind,the screen of the game turns into black.In case of monsters their sight range gets narrow. 
+- Sleep : hinders all activities.You cannot do anything til getting hit.
+#
+In case of being dead,both EXP points are decreased,in dungeon you might drop equipments by chance.And it is impossible for 5 seconds after using skills or fighting.
+#
+Cart, Extra Storage, Game save are possible by Kafra ladies in towns.
+#

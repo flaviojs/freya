@@ -1,0 +1,381 @@
+//===== eAthena Script =======================================
+//= Louyang City NPCs
+//===== By: ==================================================
+//= Harp
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= Any Athena(or Freya) Version
+//===== Description: =========================================
+//= Gonryun city NPCs.
+//===== Additional Comments: =================================
+//= 4/18: Translated louyang NPCs from jA (which were based on AthenaWiki).
+//= Half way done
+//============================================================
+
+// alberta Dragon Castle Transfer NPC [harp]
+lou_fild01.gat,190,100,1	script	Ku Nyan	815,{
+	mes "[Ku Nyan]";
+	mes "Purr, Do you want to return?";
+	next;
+	menu "I want to return to Alberta",L_Menu1,"Nah, I want to stay here longer",-;
+		mes "[Ku Nyan]";
+		mes "Mew~ Understood!";
+		mes "If you like Gonryun, it may not be too bad to live here, mew~";
+		next;
+		mes "[Ku Nyan]";
+		mes "The food are great, and there's lost of pretty ladies around. What many nice things there are. Nya~";
+		close;
+	L_Menu1:
+		mes "[Ku Nyan]";
+		mes "Purr Ok!";
+		mes "Mew~ See you again!";
+		mes "......Poof!";
+		mes "Fly foward to Alberta Nya~!!";
+		close2;
+		warp "alberta.gat",235,45;
+		end;
+}
+
+alberta.gat,245,45,5	script	Ku Nyan	815,{
+	mes "[Ku Nyan]";
+	mes "Purr purr";
+	mes "I feel so great today becuase the weather is beautiful~. Perfect day to adventure the Dragon Castle, right?";
+	next;
+	menu "What's the Dragon Castle?",L1,"I want to go to the Dragon Castle.",L2,"I don't feel that way...",L3;
+	L1:	//What is the dragon castle?
+		mes "[Ku Nyan]";
+		mes "Purr, Are you interested in the Dragon Castle? The Dragon Castle is a wonderful place, nya~."; 
+		next;
+		mes "[Ku Nyan]";
+		mes "Within it lies a thousand years worth of mystical secrets!";
+		mes "It's a fabulous city, nya~";
+		next;
+		mes "[Ku Nyan]";
+		mes "Purr, I also saw lots of strange monsters, and heard of a medicine that can cure anything only available in Louyang.";
+		next;
+		mes "[Ku Nyan]";
+		mes "Oh, and there's many skilled Martian Artists too, Nya~. ";
+		next;
+		mes "[Ku Nyan]";
+		mes "You may find it hard to believe, but I - Ku Nyan - train with martial arts every morning.";
+		next;
+		mes "[Ku Nyan]";
+		mes "That's why Ku Nyan has become so strong, nya~";
+		close;
+
+	L2:	//I want to go to the Dragon Castle
+		mes "[Ku Nyan]";
+		mes "Purr, do you want to leave now?";
+		mes "If you give me 10,000 Zeny, I'll send you to the Dragon Castle.";
+		mes "I hope you do come along and enjoy..";
+		next;
+		mes "[Ku Nyan]";
+		mes "Well, are you read to leave nya?";
+		next;
+		menu "Lets go!",L_Menu1,"I better not leave now...",-;
+			mes "[Ky Nyan]";
+			mes "Hwaanyaa?!";
+			mes "Are you really not going to go?!";
+			mes "... Are you actually satisfied with eating your homemade Manjuu when you could eat real Manjuu made by a real gonryun chef?";
+			close;
+		L_Menu1:
+			if(Zeny<10000) goto Linsufficient;
+			set Zeny,Zeny-10000;
+			mes "[Ku Nyan]";
+			mes "Purr, Ok!";
+			mes "......Poof!";
+			mes "Fly towards the Dragon Castle!!";
+			close2;
+			warp "lou_fild01.gat",190,101;
+			end;
+		Lfusoku:
+			mes "[Ku nyan]";
+			mes "Nwaanyaa?";
+			mes "You don't have enough Zeny";
+			mes "Didn't I say you need to have 10,000Zeny?";
+			mes "I most certainly won't send you over unless you can pay the travelling expenses.";
+			close;
+
+	L3:	// I don't feel that way..
+		mes "[Ku Nyan]";
+		mes "Hwaanyaa?!";
+		mes "The Dragon Castle really is an awesome place!!";
+		mes "... I guess you're satisfied with eating your homemade Manjuu instead of eating a real Manjuu made by a real gonryun chef.";
+		close;
+}
+
+// Dragon Castle Street NPC
+// Strong looking guy's script might sound strange. 
+// The japanese was a bit hard to understand. I'm assuming there is some budhist ideas in this part.
+louyang.gat,274,136,4	script	Strong Looking Guy		819,{
+	mes "[Kira]";
+	mes "Each of the Eight Poles have three different meanings";
+	mes "One is 'Divineness'.";
+	mes "Another is 'Change'.";
+	mes "Another is 'Constancy'.";
+	next;
+	mes "[Kira]";
+	mes "There is a divineness in everything. Everything is bound to change with time, but change only happens in a pattern, thus Constancy.";
+	next;
+	mes "[Kira]";
+	mes "The pattern is already set, so no matter how many people try to change it, it remains consistant.";
+	next;
+	mes "[Kira]";
+	mes "From Change to change and constancy, only the universe can change anything.";
+	next;
+	mes "[Kira]";
+	mes "But even with those changes, there are constants that never change.";
+	close;
+}
+
+louyang.gat,272,133,0	script	Trainee	819,{
+	mes "[Trainee]";
+	mes "Haaaiya!!";
+	mes "Yaaaaa~~~!!";
+	mes "Om......Om......";
+	close;
+}
+
+louyang.gat,272,131,0	script	Trainee	819,{
+	mes "[Trainee]";
+	mes "Take That....!";
+	mes "Huaaaaa!!";
+	mes "Hayaaaaa!!";
+	close;
+}
+
+louyang.gat,272,129,0	script	Trainee	819,{
+	mes "[Trainee]";
+	mes "Yaaaaa!!";
+	mes "Huuyaaaa!!!";
+	mes "Tou....";
+	close;
+}
+
+louyang.gat,274,133,0	script	Trainee	819,{
+	mes "[Trainee]";
+	mes "Huff......";
+	mes "Huaaaaa!!";
+	mes "Huff......";
+	close;
+}
+
+louyang.gat,274,131,0	script	Trainee	819,{
+	mes "[Trainee]";
+	mes "Smack!!";
+	mes "Ha yo~!!";
+	mes "Smackkkk!!!!";
+	close;
+}
+
+louyang.gat,274,129,0	script	Trainee	819,{
+	mes "[Trainee]";
+	mes "Ko......";
+	mes "......!";
+	mes "............!!";
+	close;
+}
+
+louyang.gat,276,133,0	script	Trainee	819,{
+	mes "[Trainee]";
+	mes "Kaaah!!";
+	mes "Taaah!!!!";
+	mes "Yaaah!!!!";
+	close;
+}
+
+louyang.gat,276,131,0	script	Trainee	819,{
+	mes "[Trainee]";
+	mes "Pua.....";
+	mes "Taaaa~~!!";
+	mes "Ha! Ha!!!!";
+	close;
+}
+
+louyang.gat,276,129,0	script	Trainee	819,{
+	mes "[Trainee]";
+	mes "Ah chou!!";
+	mes "Taaaa!!";
+	mes "......";
+	close;
+}
+
+louyang.gat,278,133,0	script	Trainee	819,{
+	mes "[Trainee]";
+	mes "Taaa, Yaap!!";
+	mes "Kaaa~~!!";
+	mes "Whew......";
+	close;
+}
+
+louyang.gat,278,131,0	script	Trainee	819,{
+	mes "[Trainee]";
+	mes "Shaaa!";
+	mes "............";
+	mes "Hou";
+	close;
+}
+
+louyang.gat,278,129,0	script	Trainee	819,{
+	mes "[Trainee]";
+	mes "Waaatatatatata!!";
+	mes "Taaaaa!!";
+	mes "Yaaa~!!!!";
+	close;
+}
+
+louyang.gat,261,123,4	script	Zho Hyon		824,{
+	mes "[Zho Hyon]";
+	mes "Ugh, I'm already exausted from the heat at this age...";
+	mes "My body feels heavy.....";
+	mes "It's times like this I definitely should eat there......";
+	next;
+	emotion 0;
+	mes "[Zho Hyon]";
+	mes "Oh.. you...";
+	mes "You don't seem like someone around here. There's a huge restaurant ahead of here where the meals served are the healthiest meals that could be made.";
+	next;
+	mes "[Zho Hyon]";
+	mes "Their cooking is probably perfect for your feeble body.";
+	close;
+}
+
+// Dragon Castle Indoor NPC
+lou_in01.gat,82,139,6	script	Soldier	825,{
+	mes "[Soldier]";
+	mes "There's nothing special inside.";
+	mes "I won't stop you if you still want to look inside...";
+	close;
+}
+
+lou_in01.gat,45,138,2	script	Soldier	825,{
+	mes "[Soldier]";
+	mes "What business does an outsider have in here?";
+	mes "C'mon, hurry up and scat.";
+	close;
+}
+
+lou_in01.gat,43,147,2	script	Fireworks Maker	750,{
+	mes "[Chien Liu]";
+	mes "Who are you!!";
+	mes "You don't have the blood markings...";
+	mes "I don't want to talk to a person who isn't in the guild.";
+	mes "Leave now, please!";
+	close;
+}
+
+//Pub NPC
+lou_in02.gat,43,169,0	script	Zan Yun	827,{
+	mes "[Zan Yun]";
+	mes "Snake Dragon Soup is popular, of course. There's a deep rich taste behind the strong spices.";
+	mes "It's even got some great chinese herbs in it - Great for your health!";
+	next;
+	mes "[Zan Yun]";
+	mes "The chinese herbs remove unneccesary heat from the body and help blood flow efficiently.";
+	mes "Naturally your metabolism becomes better and the body becomes healthier!";
+	mes "Kwahaha!!";
+	next;
+	mes "[Zan Yun]";
+	mes "I've been eating this soup since I was little, so even at this age I'm full of health!";
+	close;
+}
+
+lou_in02.gat,58,183,4	script	Chef	823,{
+	mes "[Kim Eiei]";
+	mes "I used to enjoy practicing martial arts.";
+	mes "I'm working as a chef here right now, but my martial arts spirit lives on forever.";
+	next;
+	mes "[Kim Eiei]";
+	mes "Right now, I'm trying to figure out a way to add in Martial Arts into cooking.";
+	next;
+	mes "[Kim Eiei]";
+	mes "Because the shop is as big as headquarters, when it gets hectic and busy I need the mental strength to deal with it.";
+	next;
+	mes "[Kim Eiei]";
+	mes "And at times like that...!";
+	mes "If I use martial arts to cook, I can cook quickly and skillfully!";
+	next;
+	mes "[Kim Eiei]";
+	mes "Cooking is a martial art";
+	mes "Huahahahaha!!";
+	next;
+	misceffect 55;
+	mes "[Kim Eiei]";
+	mes "Tou...!";
+	next;
+	misceffect 11;
+	mes "[Kim Eiei]";
+	mes "Taaaaa !!";
+	next;
+	misceffect 121;
+	mes "[Kim Eiei]";
+	mes " TAAAAAAHH!!!!!!";
+	next;
+	misceffect 122;
+	mes "tatatatatatatatatata!!";
+	next;
+	emotion 21;
+	mes "[Kim Eiei]";
+	mes "Hehehe, what do you think?!";
+	mes "What do you think of this perfectly cut vegetable on the cutting board?";
+	mes "Wahahahaha!!";
+	next;
+	mes "[Kim Eiei]";
+	mes "The day that all Chefs cook with martial arts draws near!!";
+	close;
+}
+
+// Viewing Station NPC has been left out because Emergency Exit NPC coordinates aren't real!
+
+lou_in02.gat,80,173,2	script	Foreigner	746,{
+	if(Lou_que1 >= 3) goto L_END;
+	mes "[Foreigner]";
+	mes "Although I wasn't born in this city, I now live here because I can't live without the delicious dishes unique to this city.";
+	next;
+	mes "[Foreigner]";
+	mes "Once you get a taste, you won't forget the taste....";
+	mes "The sweetness gently melts in your mouth.";
+	mes "huhuhu... Do you know what food I'm talking about?";
+	next;
+	mes "[Foreigner]";
+	mes "Yes!! Yes!!!!";
+	mes "That's what I'm talking about, that!!!!";
+	mes "ohohohohoh...";
+	mes "The more I think of it, the more I want to eat more ... (drool)";
+	close;
+L_END:
+	mes "[Foreigner]";
+	mes "Ah...";
+	mes "I came from so far and they're sold out ...";
+	mes "I can't believe they're sold out..";
+	mes "Ahh, I don't know if I can live on without that taste... weep weep.";
+	close;
+}
+
+lou_in02.gat,42,186,4	script	Yui Lee	816,{
+	mes "[Yui Lee]";
+	mes "Do you know what dish sells the best in this restaurant?";
+	mes "Yes, it's the snake dragon soup!";
+	mes "This restaurant has a long standing history and we pay attention to every little detail...";
+	next;
+	if(Lou_que1 >= 3) goto L_END;
+	mes "[Yui Lee]";
+	mes "The Delicate Flavour is great, but the meat especially is tender.";
+	mes "It's also popular amoung women because it's the best for beauty.";
+	next;
+	mes "[Yui Lee]";
+	mes "Not to mention we use lots of healthy ingredients.";
+	mes "It's the ultimate healthy meal!";
+	close;
+L_END:
+	emotion 3;
+	mes "[Yui Lee]";
+	mes "The Delicate Flavour is great, but the meat especially is tender.";
+	mes "It's also popular amoung women because it's the best for beauty.";
+	next;
+	mes "[Yui Lee]";
+	mes "But Snake Dragon Soup isn't served anymore.";
+	mes "Maybe it's too expensive to get snake dragons.. although.. I'm not sure.";
+	close;
+}

@@ -1,0 +1,2983 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+   <title>Freya RO Emulator</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=charset=UTF-8" />
+   <meta http-equiv="content-style-type" content="text/css">
+   <meta name="Author" content="Freya Team">
+   <meta name="Publisher" content="Freya Team">
+   <meta name="Copyright" content="COPYRIGHT Freya under GPL licence">
+   <meta name="OWNER" content="Freya">
+   <link rel="stylesheet" type="text/css" href="include/style.css" />
+</head>
+<body>
+<table border="0" cellpadding="0" cellspacing="3">
+<tr>
+<td width="100" class="content" valign="top"><br />
+<a class="left" href="http://www.ro-freya.net" target="_top">
+<b>HOME</b></a>
+<br /><br />
+<a class="left" target="_top" href="index.html" >Introduction</a><br />
+<a class="left" target="_top" href="chngs.html" style='font-weight:bold;color:#000000;background-color:transparent;'>Changes</a><br />
+<a class="left" target="_top" href="feats.html" >Features</a><br />
+<a class="left" target="_top" href="npcfeats.html" >NPC Features</a><br />
+<a class="left" target="_top" href="setup.html" >Setup</a><br />
+<a class="left" target="_top" href="gmcmds.html" >GM Commands</a><br />
+<a class="left" target="_top" href="faq.html" >FAQ</a><br />
+<a class="left" target="_top" href="support.html">Support</a><br />
+<a class="left" target="_top" href="router.html" >Router guide</a><br />
+<a class="left" target="_top" href="creategrf.html" >Create GRFs</a><br />
+<a class="left" target="_top" href="patchsrv.html" >Patch server guide</a><br />
+<img src="include/pixel.gif" width="137" height="1" alt="" />
+</td>
+<td width="700" height="100%" valign="top">
+<table width="100%" height="100%" bgcolor="#FFFFFF" border="1" cellpadding="5" cellspacing="0">
+<tr>
+<td>
+
+<h1>Changelog</h1>
+<a href="index.html">Previous</a>
+<a href="feats.html">Next</a>
+<hr />
+<h2 class="header">These are the changes made to eAthena 1.0.0 RC4 for it to become Freya 2.0.2.</h2>
+<textarea width="100%" height="400px" style="width:100%;height:300px" name="code" wrap="logical" rows="21" cols="42">
+   (c)2004-2005 Free Yor team presents:
+       ___   ___    ___   _  _   __
+      (  _) (  ,)  (  _) ( \/ ) (  )
+      (  _)  )  \   ) _)  \  /  /__\
+      (_)   (_)\_) (___) (__/  (_)(_)
+   Free Ragnarok Emulator, Yor Adopted.
+         http://www.ro-freya.net
+  
+05/15/2005  ***** RELEASE 2.0.2 *****
+
+05/15/2005
+	* Fixed: some little things [Yor]
+
+05/14/2005
+	* Added: a battle flag to authorize or not clothes color changings for assassins/rogues [Yor]
+	* Fixed: some experience overflows in guild [Yor] (based on work of BeoWulf for Freya's forum)
+	* Fixed: @mapinfo GM command now displays all map flags [Yor]
+	* Improved: in @setmapflag GM command, use specific GM command if it exists [Yor]
+	* Added: @setmapflag GM command [Yor]
+	* Added: some console messages about conf files reading [Yor]
+	* Fixed: @marry GM command (an other error) [Yor]
+	* Improved: messages file (msg_athena.conf) reading [Yor]
+	* Moved: code of "count target" from pc.c to battle.c [Yor]
+
+05/13/2005
+	* Fixed: Wind Walk Max Lvl to 10. [Yor] (thanks to [Tabriz] from freya's bug report)
+	* Improved: item drops like mvp drops [Yor]
+	* Improved: drop with steal skill [Yor]
+	* Fixed: @marry GM command [Yor]
+	* Fixed: some skills can not more be casted where players/mobs can not move [Yor] (thanks to [Neoeagle] from freya's bug report)
+	* Fixed: don't load import files by default [Yor]
+	* Added: pet birth effect [Yor] (thanks to [Tabriz] from freya's addons forum)
+	* Fixed: some possible overflows [Yor]
+	* Added: More informative error on a mysql query in char.c (debugging purposes) [MagicalTux]
+	* Added: addons_unload_all() set as termfunc [MagicalTux]
+	* Added: MOD_UNLOAD now called in modules [MagicalTux]
+	* Implemented: set_termfunc() can now register more than one fun [MagicalTux]
+	* Fixed: error in battle.c [MagicalTux]
+	* Added: display "Import file: &lt;file name&gt;" when a conf file is imported [Yor]
+	* Fixed: Bonus stats of supernovice [Yor] (thanks to [Tabriz] from freya's bug report)
+	* Added: warnings on invalid percent for mvp item drops [Yor]
+	* Fixed: possible overflows with map names [Yor]
+
+05/12/2005
+	* Fixed: MVP drops: [Yor]
+	  - now, you can change mvp_item_rate in game (@setbattleflag))
+	  - no more overflow
+	  - Added an error message if an item is unknown in database
+	* Changed: percent of item drop from int to short [Yor]
+	* Added: display option/flag for hallucination skill (SC_HALLUCINATION) [Yor] (thanks to Tabriz for addons freya's forum)
+	* Fixed: use correct max value for mob_db [Yor]
+	* Fixed: use correct max value for mob_db [Yor]
+	* Changed: disabled unofficial npc by default [Yor]
+	* Changed: job/2-2/noquest/crusader npc to job/2-2/crusader npc in map_athena.conf [Yor]
+	* Fixed: improved big/small monsters [Yor]
+	* Fixed: a bug with duplicated map at reading of them [Yor]
+	* Removed: a duplicated line in skill_tree.txt [Yor] (thanks to Tabriz from freya's bug report)
+
+05/11/2005
+	* Fixed: damage of RUWACH [Yor] (thanks to Tabriz for freya's bug report)
+	* Fixed: possible exploit with /mm [Yor]
+	* Changed: Default value of delay_dependon_dex: yes -&gt; no (On Official servers Dex does NOT affect delay time) [Yor] (thanks to galmod from Freya's bug report)
+	* Improved: npc_parse_mob (file parsing for mob): [Yor]
+	  - now support small and big mobs
+	  - better parsing about monster name
+	* Fixed: in timers: init variables, clean up correctly pointers [Yor]
+	* Improved: msg_config_read function (at_command.c) [Yor]
+	* Improved: some error message do now line return (npc.c) [Yor]
+	* Improved: add_msg function in at_command.c [Yor]
+	* Removed: useless part of item definition (item_db.txt) [Yor]
+	* Improved: skilltree calculation [Yor]
+	* Improved: removed passiv skills from @grind GM command [Yor]
+	* Added: some comments in skill_db.txt to begin explanations of values [Yor]
+	* Added: High Novice Rebirth: give platinum skills [Yor]
+	* Fixed: High Novice Rebirth stats points (88-&gt;100) [Yor] (thanks to Tabriz from freya's bug report)
+	* Fixed: npc chat display (was removed by error when code about moving NPCs was corrected (SVN 643) - sorry) [Yor]
+	* Fixed: a possible overflow in npc_read_indoors function [Yor]
+
+05/10/2005
+	* Fixed: drop rate (to give maximum possible drop rate) [Yor] (thanks to Mike for freya's bug report)
+	* Added: some color (cyan) at connection to other server [Yor]
+	* Added: auto reading leveluseskillspamount.txt and indoorrswtable.txt [Yor] (from eA code)
+	* Fixed: grfio_resnametable not more crash server [Yor]
+643	* Removed: strlib.c/h unused code [Yor]
+	* Improved: escape code for MYSQL (use mysql function now) [Yor]
+	* Fixed: escape char (for SQL requests) in mail.c [Yor]
+	* Fixed: clif_getareachar_npc function [Yor]
+642	* Fixed: Cygwin problem on replaced makefiles [MagicalTux]
+	* Fixed: map/chrif.c: map_init_done added, char_init_done removed - should fix InterIfInitOnce [MagicalTux]
+	* Removed: mmo_conv.h no longer used [MagicalTux]
+	* Moved: mmo.h now in src/include [MagicalTux]
+	* Added: SQL structure : index key on account_id, `char` table [MagicalTux]
+
+05/09/2005
+	* Added: red color to display warning about FD_SETSIZE [Yor]
+	* Improved: map_athena.conf reading [Yor]
+	* Added: check GM level: must be done for eAthena compatibility about an incorrect usage of GM level [Yor]
+	* Fixed: overflow in exp calculation (when we add experience) [Yor]
+	* Changed: maximum exp for a monster: 1000000000 -&gt; 0x7fffffff(2147483647) [Yor]
+	* Fixed: some nullpo position in skill.c and battle.c [Yor]
+	* Added: check if item can be dropped [Yor]
+	* Fixed: some delete_timer errors [Yor]
+	* Added: itemdb_read_norefine from eA code [Yor]
+	* Added: script configuration based on some eAthena code [Yor]
+	* Updated: acid terror will never miss [Yor]
+	* Fixed: npc message display [Yor]
+	* Fixed: core.c : handling of unlimited NOFILE limit [MagicalTux]
+
+05/08/2005
+	* Updated: create_arrow_db.txt with actual kro patches [Yor]
+	* Fixed: NULL pointer in skill_check_cloaking [Yor]
+	* Corrected: Double strafe requirements [Yor]
+	* Fixed: don't send server account to be disconnect (on char & map) if we want only number of users [Yor]
+	* Corrected: skill tree requirements for 3 Peco Lord knight skills (like Lord knight without peco :) ) [Yor]
+	* Added: example of strings' compare code from jA in map_athena.conf (commented) [Yor]
+	* Removed: a code about aspd and delay - seems invalid [Yor]
+	* Removed: console messages about sockets [Yor]
+	* Fixed: a NULLpo in pc_walk [Yor]
+	* Improved: Remove usage of LOWER() in SQL requests [Yor]
+	  - note: if you have modified your table to use BINARY for account name or char name,
+	          now 'unique_case_account_name_creation' and 'name_ignoring_case options' will not more work.
+	* Fixed: 'import' option in all .conf files [Yor]
+	* Improved: char/inter.c/h (SQL and TXT) and consequences of this code [Yor]
+	  - now, TXT and SQL use same code
+	  - Speed up some parts of this code
+	  - Rewritten management of accounts's registers:
+	    - Use less SQL requests
+	    - Speed up TXT saving file
+	    - use less memory (mainly TXT)
+	  - some other little things
+
+05/07/2005
+	* Improved: usage of new sql system in char-converter [Yor]
+	* Improved: authorize account_id with offline player: (un)block/(un)ban/changesex GM commands [Yor]
+	* Improved: Clean up and fix 0x68 packet in char.c (possible crash) and fix 0x2b12 packet bug (SQL) [Yor]
+	* Fixed: 0x2b12 packet bug (SQL) [Yor]
+	* Fixed: configuration of local_broadcast [Yor]
+
+05/06/2005
+	* Improved: Now, it's possible to use account_id instead of char name in all GM commands [Yor]
+	* Improved: security protection against doubble connection of same account [Yor]
+	* Fixed: compile error under GCC 2.95 (login.c) [Yor]
+	* Fixed: compile error under GCC 2.95 (core.c) [Yor]
+	* Fixed: src/common/core.c : warning on WIN32 compile [MagicalTux]
+	* Added: src/common/core.c : now checking for system limits on start [MagicalTux]
+	* Added: configure: Parameter --with-fds to set FD_SETSIZE [MagicalTux]
+	* Corrected: some names in skill_tree.txt [Yor]
+	* Improved: configure: Changed --with-debug behaviour (see ./configure --help) [MagicalTux]
+	* Restored: japanese comments in skill_require_db.txt [Yor]
+	* Removed: a test done for nothing in guild.c [Yor]
+	* Some styling in code [Yor]
+
+05/05/2005
+	* Fixed: some possible overflow (TXT/SQL) and incorrect system (SQL) of wisps [Yor]
+	* Removed: printf on char.c (TXT) used for debug of SVN 592 [Yor]
+597	* Fixed: Bug on saving players SVN 592 (chrif.c) - very sorry [Yor]
+	         IMPORTANT: restore previous database of players from SVN 591 of below (before 5/4/2005 23:16:22).
+	* Improved: some little improvements - nothing new (except a message) [Yor]
+	* Improved: message about disconnection in map-server [Yor]
+	* Fixed: an invalid size in packet 0x2b0d (can crash server when you change sex of a player) [Yor]
+	* Removed: search_character_name function from char.c (TXT) [Yor]
+
+05/04/2005
+	* Changed: GM level in 0x2b0b/0x2721 from L(int) to W(short) [Yor]
+	* Fixed: an invalid size in packet 0x2b05 [Yor]
+	* Fixed: invalid size for answer in packet 0x2b06 [Yor]
+592	* Improved: removed flag in 0x2b03 packet never used (char-&gt;map) [Yor]
+591	* Fixed: invalid value in pc_authfail call [Yor]
+	* Fixed: some invalid connections [Yor]
+	* Improved: removed flag in 0x2afb packet never used (char-&gt;map) [Yor]
+	* Removed: reloadgmdb GM command: it's automatic now [Yor]
+
+05/03/2005
+	* Restored: previous code at loading of castles in map-server when char-server reconnect [Yor]
+	* Fixed: @grind GM command (but it's test GM command, for fun only) [Yor]
+	* Fixed: merging items in all storage's systems (storages, inventory, cart) [Yor]
+	* Updated: Ice Cream & Poison Bottle, sphere mine & Wind Walk [Yor]
+	* Removed: storage_storageopen2 not used [Yor]
+	* Fixed: drop rate of Apple o' Archer (Antique Firelock) [Yor] (thanks to [luminair] from freya's bugs report)
+	* Fixed: compilation error in mmo_conv.h (sorry) [Yor]
+	* Updated: mmo_conv.h with actual mmo.h [Yor]
+	* Fixed: Char-converter for storage.db: MAX_STORAGE 100 -&gt; 300 [Yor] (thanks to [BeoWulf] from freya's bugs report)
+	* Added: @grind GM command [Yor] (based on work of [MouseJstr])
+	* Fixed: level calculation in @(char)jlvlup GM commands [Yor]
+	* Updated: exp.txt [Yor]
+
+05/02/2005
+	* Fixed: magnum break damages calculation [Yor] (thanks to [Sir_Loony] from bug report of Freya)
+	* Updated: some skills codes [Yor]
+	* Changed: default mob_ghostring_fix flag no -&gt; yes
+	* Updated: Steel Body, Thunderstorm, Investigate and Magic Crasher [Yor] (thanks to [Celest])
+	* Changed: guild skills [Yor]
+	* Updated: produce_db.txt [Yor]
+	* Fixed: a compilation error under WIN32 [Yor]
+	* Fixed: No more ANSI codes for Windows versions in ladmin (perl) [Yor]
+	* Added: an option to display or not percents when gaigned experience is displayed [Yor]
+	* Fixed: an incompatible pointer type [Yor]
+	* Fixed/Updated: some skills (including hp regeneration for berserk skill) [Yor]
+	* Fixed: parasite no longer moves [Yor]
+	* Added: Jawaii, Ayothaya and Einbroch to @go list [Yor]
+
+05/01/2005
+	* Fixed: duplicate castle datas in map-server when char-server reconnect [Yor]
+	* Improved: a code in socket [Yor]
+	* Fixed: some nullpo [Yor]
+
+04/30/2005
+	* Added: nullpo_retb from eathena [Yor]
+	* Updated: some skills [Yor]
+	* Fixed: some typos [Yor]
+	* Fixed: MAX_SKILL_DB 515-&gt;750 [Yor]
+	* Removed: 'type' paramater from pc_unequipitem [Yor]
+	* Added: 'Throw Tomahawk' [Yor]
+
+04/29/2005
+	* Fixed: No more ANSI codes for Windows versions [Yor]
+	* Improved: some messages. [Yor]
+	* Improved: loading of NPCs is done after other inits. [Yor]
+	* Improved: show_mob_hp option [Yor]
+	* Added: printf when debug is compiled in castle reading system [Yor]
+	* Improved: the option in login-server to authorize or not multiple accounts with different cases [Yor]
+
+04/28/2005
+	* Added: color in some console's displays [Yor]
+	* Fixed a possible bug in trade system (trade_tradeok) [Yor]
+	* Fixed: Not having an arrow in your inventory but having a bow could cause it to set
+	         sd-&gt;status.inventory[-1].equip = 32768 resulting in a memory corruption [Yor] (correction from [MouseJstr])
+	* Changed: MAX_SKILL 450-&gt;650 [Yor] (note: skill_db have more than 500 skills!)
+	* Fixed: a possible overflow in guild_npc_request_info and mob_once_spawn [Yor]
+	* Fixed: a bug at reading of castles in SQL version [Yor] sorry...
+	* Fixed: double straff with normal arrows [Yor] (thanks to [euph] for correction on bug report)
+	* Added: an option in login-server to authorize or not multiple accounts with different cases [Yor]
+	* Fixed: a bug in SQL search account (login-server) [Yor]
+	* Fixed: an incorrect message in ladmin.c [Yor]
+
+04/27/2005
+	* Improved castles support (TXT and SQL): [Yor]
+	  - less packets sended
+	  - less SQL requests
+	  - Same code for TXT and SQL
+	  - Correction of some bugs
+	* Updated some skills [Yor]
+	* Added job name support to @job/@charjob GM commands [Yor]
+	* Corrected misplaced translations of latest messages [Yor]
+	* Added @marry, @divorce, and @rings [Yor] (thanks to eAthena team code)
+	* Update some skill in skill_tree.txt [Yor]
+
+04/26/2005
+	* Modified packet 0x2aff to speed up it in char-servers [Yor]
+	* Added mode (option) to manage connections of players in map-server when char-server is disconneted [Yor]
+	* Added option to activate or not 'Main' channel at each connection [Yor]
+
+04/25/2005
+	* Added option to do log in login-servers or not [Yor]
+	* Update nomemo.txt [Yor]
+	* Set default area_size to 14 like official servers [Yor]
+	* Harmonized a little int_guild.c SQL and TXT [Yor]
+
+04/24/2005
+	* Added npc_extend_shop in npc list [Yor]
+	* Update a little readme files [Yor]
+	* use new sql requests in int_guild.c [Yor]
+	* update some skills [Yor]
+	* Added 'Guardian Angel' code for supernovices [Yor] (thanks to [celest])
+	* Added bLongAtkRate item effect [Yor]
+	* Shooting skills will now need arrows [Yor] (thanks to eAthena team for code)
+	* Updated SP requirements for Full Strip, Full Chemical Protection, Cannibalize [Yor]
+	* Fixed some little bugs [Yor]
+	* Added a flag to accept or not @request GM command [Yor]
+	* Stopping @follow if you're dead, and add an option to stop or not when target is dead [Yor]
+	* Improved check in exp party sharing [Yor]
+	* Updated maximum level for Guild Skills [Yor]
+	* Update requirement of Chain Crush [Yor]
+	* Added 'checkoption1' and 'checkoption2' script functions [Yor]
+	* Added allow_atcommand_when_mute battle option like eAthena: Allow (or not) GM commands to be used when muted. [Yor]
+	* Clean up session (send all packets) at end of servers [Yor]
+
+04/23/2005
+	* Improved updating of number of users. [Yor]
+
+04/22/2005
+533	* Added options to disable anti-freeze or modify counter/timer of it. [Yor]
+	* Improved anti-freeze system to reduce number of disconnections when not necessary. [Yor]
+	* Improved connections between servers. [Yor]
+	* Improved timers management [Yor]
+	* Fixed list accounts in ladmin (C/perl) [Yor]
+
+04/21/2005
+	* Fixed parse display in parse_fromchar [Yor]
+	* Updated skill_nocast_db.txt [Yor]
+	* Readded 'nogo' flag in @go GM command [Yor]
+	* Fixed skill_cast_db for Soul Burn [Yor]
+
+04/20/2005
+	* Added 'version' console command in all servers [Yor]
+	* Fixed a pc_walktimer error [Yor]
+	* Fixed some little bugs [Yor]
+
+04/19/2005
+	* Added miscnotes.txt doc from eAthena. [Yor]
+	* Added effect_list.txt doc from eAthena. [Yor]
+	* Added map_versionscreen(), displayed when --version flag is passed on command-line. [Yor] (thanks to [MC Cameri])
+	* Added map_helpscreen(), displayed when --help flag passed on command-line. [Yor] (thanks to [MC Cameri])
+	* Updated a value in mod_db.txt [Yor]
+	* Protected login-server against connection when account is already online [Yor]
+	* configure: added define SVN_REVISION which give the SVN number at the make time
+	  if you plan on releasing SVN compiled version without .svn directories,
+	  please read the configure script, near line 42.
+
+04/18/2005
+	* Fixed revision calculation [Yor]
+
+04/18/2005  ***** RELEASE 2.0.1 *****
+
+04/18/2005
+	* configure: update zlib release to 1.2.2 [MagicalTux]
+
+04/17/2005
+	* Updated a message [Yor]
+	* Updated some items in item_db.txt [Yor]
+
+04/16/2005
+	* Fixed and Added some items in item_db.txt [Yor]
+	* Fixed a c++ code in script.c [Yor]
+	* Update item_bluebox.txt and item_violetbox.txt [Yor]
+	* Fixed some name in item_cardalbum.txt [Yor]
+	* Added @request GM command to do a request to all GMs [Yor]
+	  - an option has been added in the battle_athena.conf to set the minimum level of GM that receive requests
+	* Fixed a possible storage bug [Yor]
+	* Fixed clothes color bug when cart or falcon was given [Yor]
+	* Add @(char)cart0 GM command to remove cart [Yor]
+
+04/15/2005
+	* Corrected a bug when a hidden GM clear some options. [Yor]
+	* Improved anti-freeze system (give more time before to disconnect). [Yor]
+
+04/14/2005
+	* Created default message's texts (if people doesn't update msg_athena.conf file). [Yor]
+
+04/13/2005
+	* Fixed: Save guild storage with player [Yor]
+	* Fixed: in WoE the battle configuration [Yor] (found on Freya's forum, thanks to Seraphin)
+	  gvg_short_attack_damage_rate: 100
+	  gvg_long_attack_damage_rate: 60
+	  gvg_magic_attack_damage_rate: 50
+	  gvg_misc_attack_damage_rate: 60
+	* corrected: Don't wait some additional seconds between spawns if the previous spawn failed [Yor]
+
+04/12/2005
+	* Modify Win32 sockets (removed loop when datas are sended) [Yor]
+
+04/11/2005
+	* New feature: Main channel [Yor]
+	  How to use it:
+	  '@main on' to enable (to receive messages and send messages)
+	  '@main off' to disable
+	  '@main &lt;message&gt;' to send a message to the Main channel.
+	  you can replace '@main ' by a char defined in atcommand_athena.conf (like command_symbol or char_command_symbol).
+	  default symbol is '.', so '.test' is like '@main test', or '.on' is like '@main on'
+	  note: there is no block command for this GM command actually (you can propose one ;) ).
+
+04/10/2005
+	* Improved messages of GM commands: use right GM_command_symbol in log, and when command failed. [Yor]
+	* Fixed some crashs when msg_athena.conf is not the last one [Yor]
+	* Added the @motd GM command [Yor]
+	* Set motd_type flag to 1 by default [Yor]
+	* Fixed crash on 0x157 packet [Yor]
+	* Fixed clif_parse_RemoveOption function [Yor]
+	* Fixed click on button 'off' when you have a peco (all option was come back to 0) [Yor]
+	* Fixed button 'off' & 'item' when cart or peco is taked (in some case) [Yor]
+	* Fixed message of @adjgmvl GM command [Yor]
+	* Fixed pc_set_gm_level function [Yor]
+
+04/09/2005
+	* fixed guild skill id in skill_check_condition [Yor] (thanks to Asa for the correction)
+	* Improved @follow GM command (and really stop follow when necessary instead of follow yourself) [Yor]
+	* Added @unfollow GM command [Yor]
+	* Added message on success of @adjgmvl GM command [Yor]
+	* Fixed @warpto GM command to refuse warp on hidden GM with a higher level [Yor]
+	* Fixed double 'line return' in trade logs [Yor]
+
+04/08/2005
+	* Added @displayexp GM command [Yor] (found on freya's forum, thanks to BeoWulf)
+	* Protected client parse again GM command /at (0x1c0) [Yor]
+	* Added nospell flag in mapinfo GM command [Yor]
+
+04/07/2005
+	* Fixed char_athena.conf option name: online_sorting_option [Yor]
+	* Fixed drop of 0.01% chance items [Yor]
+
+04/06/2005 - next svn 4
+	* Added nospell GM command [Yor] (based on code found on freya's forum, thanks to BeoWulf)
+	* Added nospell flag to maps [Yor] (based on code found on freya's forum, thanks to BeoWulf)
+	  note: by default, no map has this flag.
+	* Added Charlimit per account on char server (adapted from a post found on freya's forum) [Yor] (thanks to Sirius_Black)
+	  note: doesn't add a new SQL request (forum post added a new request).
+	* Added no_caption_cloaking flag to remove or not the caption "Cloaking !!" when the skill is casted [Yor]
+	* Fixed exp share - sorry for the error [Yor]
+	* Added no_guilds_glory flag from freya's forum [Yor] (thanks to Beowulf)
+
+04/05/2005 - next svn 3
+	* Added a router guide in the readme (router.html) [Yor]
+
+04/04/2005 - next svn 2
+	* Added packets parsing of clients: 2005-01-10bSakexe [Yor]
+
+04/03/2005 - next svn 1
+	* Fixed exp_rate based on work of BeoWulf on freya's forum [Yor] (thanks to Beowulf)
+	* Changed configure to bypass 1024 connections on some system [Yor]
+	* Added in faq.html solution to bypass 1024 players on same map-server [Yor] (found on freya's forum, thanks to frostycpu)
+	* Fixed nullpo error in clif_tradestart function [Yor]
+	* Improved help of @job and @charjob [Yor] (thanks to Celest for freya's forum)
+	* Fixed a possible lag on saving system [Yor]
+	* Fixed some errors on parsing system in all servers: [Yor]
+	  - don't continue to parse if -&gt;eof is set.
+	  - remove 2 infinite loops
+	* Added TXT log for trades (read map_athena.conf for the options) [Yor]
+	* Fixed size of some file name (overflow bug) [Yor]
+	* Little reduction of lag on some big servers (depends of a lot of things...) [Yor]
+	* Fixed big exp when a player damages, heals, damages, heals, etc... a monster [Yor]
+	* Fixed no exp calculation if monster must give no exp (like plants or novice section fabres). [Yor]
+	* Fixed Cavalier Master on Knight class [Yor] (thanks to ruben fix found on freya's forum)
+	* Fixed exploit using hiding + Grimtooth in order to kill Mvp [Yor] (found on freya's forum (thanks to celest and Aalye))
+	* Fixed a bug when map-server try to connect to char-server [Yor]
+	* Fixed a nullpo bug about pc_walk [Yor]
+
+03/30/2005
+	* Fixed mapif_parse_WisToGM function when sended to all players [Yor]
+	* Fixed @kamigm/@bgm GM commands: message to yourself is now correct [Yor]
+	* Fixed pc_setcart function [Yor]
+	* Added a crash fix from freya's forum on volcano, deluge and violentgale. [Yor] thanks to Kinko
+	* Added @kamigm/@bgm GM commands: [Yor]
+	  Sends a message to GM with a level upper or egal to minimum level (given as option with the command).
+	* Fixed quantity's displaying of non-equip items when you add them in cart: sorry, I forgot a part of the code when I commited 03/26/2005 [Yor]
+
+03/28/2005
+	* Improvement of GM level management in map-server: why do a loop every time we need to know the GM level? [Yor]
+	* Fixed @whozeny/@whozenymap GM commands and hidden GM [Yor]
+	* Fixed @gm GM command [Yor]
+
+03/27/2005
+	* Fixed a compilation error on some systems [Yor]
+	* Added log file for GM commands [Yor]
+
+03/26/2005
+	* Added @undisguiseall/@charundisguiseall GM command [Yor]
+	* Added @refineall GM command [Yor]
+	* GM commands work: [Yor]
+	  - Added @clsweather (based on work of Lazarus from freya's forum) [Yor] (thanks to Lazarus)
+	  - added @ rainbow (it works only if it's rain) [Yor]
+	  - now, with @clsweather, reduced gm level of all special weathers from 99 to 80. [Yor]
+	  - Added @clock Gm command (to display server time and uptime only) [Yor]
+	* Fixed displaying of equip items when you add them in cart [Yor]
+
+03/25
+	* Added pecopeco knights/crusaders crash fix from freya's forum (thanks to [celest]) [Yor]
+	* Fixed @day/@night to send message as normal timer of the server [Yor]
+	* Fixed joker's drops [Yor] (thanks to Seraphin from freya's forum)
+	* Corrected a display error in @mobinfo [Yor]
+	* Added @mobinfo inspired from freya's forum [Yor] (thanks to Luppy, and Lupus from eAthena, and... Yare dev (it's a old command of Yare ;) )
+	* fixed list of accounts in ladmin (perl/C): [Yor]
+	  - when last found account is the last of the request, don't more continue to ask for other accounts.
+
+03/24
+	* To improve AI of mob, reduce the time to restart of mob that lost target or loot an item [Yor]
+	* Fixed a little error on sockets about errno code and when no error is deteted [Yor]
+	* Fixed trades with full inventories [Yor]
+	* Fixed a login-server crash [Yor]
+
+03/23
+	* Fixed timer sorting: [Yor]
+	  - now, it's speeder.
+	  - no more freeze of monsters or skills, because timers were not correctly sorted.
+
+03/22
+	* Fixed possible crashe of char-server and storage saving. [Yor]
+	* Fixed skill's crashes. [Yor]
+	* Clean up some codes. [Yor]
+	* Improved (again) mob searching. [Yor]
+
+03/21
+	* Restored makefile commited by error. [Yor]
+	* Improved character reading (char-server TXT and convertor). [Yor]
+	* Improved mob searching. [Yor]
+	* Fixed a memory leak in block system (old memory leak ;) ). [Yor]
+
+03/20
+	* Improved @(char)disguise GM command to support any monster [Yor]
+	* Improved (again) mob code [Yor]
+	* Fixed a NULL src in mob_damage [Yor]
+	* Fixed possible no saving of storage when char-server crashes [Yor]
+	* improved searching code of monsters: [Yor]
+	  - speeder
+	  - use less cpu (with improvement of 03/19, searching code gains 30%, so global cpu on map-server will be around 5-10%)
+
+03/19
+	* improved item searching of loot monsters: [Yor]
+	  - speeder
+	  - search nearest item (so, now, all monsters will not aloways go on same item if there are 2 or more items)
+	* improved target searching of monsters (speeder) [Yor]
+	* Fixed unknown scr in pc_damage [Yor]
+	* Changed message about flood with emotion icons [Yor]
+	* Saved bandwidth (and CPU usage for nothing) by sending only modified (guild) storage from map-server to char-server [Yor]
+	* Fixed @storage and @guildstorage GM commands (can not open one storage if one of them is already opened) [Yor]
+	* Fixed counter in SQL storage display [Yor]
+	* Suppress packets that are sended for nothing in storage process [Yor]
+	* Speed up new storage code (char SQL and TXT) [Yor]
+	* Fixed memory leak in new storage code (char SQL) [Yor]
+	* Resized need structure of skills tree from 5 to 6 [Yor]
+	* Added improvement of Celest from freya's forum about memory reduction usage on skills tree [Yor] (thanks to Celest)
+	  - memory saving: more than 35 Mb (around 38 Mb).
+
+03/18
+	* Improved storage code in char-server (TXT AND SQL): [Yor]
+	  - Use same code for the 2 versions of server.
+	  - Reduced number of request in SQL version.
+	  - Fixed pet deletion when a storage is deleted.
+	  - Speedup some codes.
+	  - Used new SQL code to secure SQL version.
+	* Improved storage saving (char-server TXT): not realloc and use DB if storage is same [Yor]
+
+03/17
+	* Fixed vending duplicate exploits: [Yor]
+	  - check duplicated packets (example: get twice or more 2 apples if marchand has only 3 apples).
+	  - save merchand and buyer after vending to avoid difference if server crashes.
+	* Fixed typo error in memoadd command (ladmin - perl) [Yor]
+
+03/16
+	* Fixed (normal) storage and guild storage of char-server (TXT) deletion [Yor]
+	* Removed a wrong code of char-server (SQL) [Yor]
+
+03/15
+	* Rewriting (normal) storage and guild storage of char-server (TXT): [Yor]
+	  - use around 20 times less memory !
+	  - speed up savings and loadings of files.
+
+03/14
+	* Recoded online files writing: [Yor]
+	  - not more necessary to write the 3 files (TXT, HTML, PHP), only required files are written.
+	  - PHP fields are same of other files (added: baselvl, joblvl, mapx, mapy).
+	  - displayed fields in each file can be different of other files (PHP always set all fields).
+	* Implemented Win32+MySQL compiles [MagicalTux]
+	* Commited show_mob_hp [MagicalTux]
+		-&gt; http://www.ro-freya.com/forums/index.php?showtopic=469
+	* Fixed a compilation error in clif.c [Yor]
+	* Modified socket recv behaviour on Win32 [MagicalTux]
+
+03/14	***** RELEASE 2.0.0 *****
+
+03/14
+	* Dont display emociton with @joyjoy GM command on hidden GM [Yor]
+	* Improved socket with console [Yor]
+	* Fixed character name in @useskill and @chareffect GM command [Yor]
+
+03/13
+	* Added @killmonsterarea/@killmonster2area to kill monsters only around of you [Yor]
+	* Do a better 'agro' spawn [Yor]
+	* Added parameter 'agro' to create agressiv monsters in all spawn GM commands (example: @monsterbigagro) [Yor]
+	* Added @spawnmapsmall/@monstermapsmall/@spawnsmallmap/@monstersmallmap and @spawnmapbig/@monstermapbig/@spawnbigmap/@monsterbigmap GM commands [Yor]
+	* Removed @monster2/@monster2map GM commands [Yor]
+	* Added @chardye/@charccolor/@charclothescolor/@charhairstyle/@charhstyle/@charhaircolor/@charhcolor GM commands [Yor]
+	* Added memoadd ladmin command [Yor]
+	* Fixed Added memo function [Yor]
+	* Fixed some little bugs [Yor]
+
+03/12
+	* Fixed @adjgmlvl GM command [Yor]
+	* Fixed Ghostring Card problem (from freya's forum) [Yor] (thansk to Celest)
+	* Added email changing from player (@email GM command) in memo [Yor]
+	* Added @cart/@cart1/@cart2/@cart3/@cart4/@cart5/@removecart and @char(same) GM commands [Yor]
+	* Added @falcon and @charfalcon [Yor]
+	* Added @peco and @charpeco (shorter than @mountpeco and @charmountpeco) [Yor]
+
+03/11
+	* Modify help.txt with nex possibilities about level definition: [Yor]
+	  not more need to modify level in help.txt file every time a GM command changes of level.
+	* Modify @help to accept GM command name instead of level in help.txt file (to display or not to the GM) [Yor]
+	* Added @optionadd/@optionremove/@charoptionadd/@charoptionremove GM commands [Yor]
+	* Little english correction [Yor]
+
+03/10
+	* Added @charguildlevelup GM command [Yor]
+
+03/09
+	* Corrected default file name of atcommand_athena.conf if mentionned file can not be opened [Yor]
+	* Adjust GM level of mapinfo: 80-&gt;40. (added in atcommand_atheno.conf too) [Yor]
+	* Added options about spaces and character names (space at first char or last char, double spaces) [Yor]
+	* Added packets parsing of clients: 2004-11-08aSakexe.rgz and 2004-12-06aSakexe [Yor]
+
+03/08
+	* Do some translations in help_fr.txt [Yor]
+
+03/07
+	* Added @charspiritball GM command [Yor]
+	* Adjust GM level of mapinfo: 80-&gt;40. It's useful to have information about a map [Yor]
+
+03/06
+----- Now, new sockets are working ------
+	* Check all packet sending with session [Yor]
+	* Styling on clif.c [Yor]
+	* Update socket.h [Yor]
+	* Improved map-server code (2/2) - need to be verify to be sure [Yor]
+	* Improved map-server code (1/2) [Yor]
+
+03/05
+	* Little clean up in socket.c [Yor]
+	* Improved login-server code [Yor]
+	* Improved char-server (SQL) code [Yor]
+	* Fixed size of 0x6c packet [Yor]
+	* Improved char-server (TXT) code [Yor]
+	* Improved ladmin.c code [Yor]
+
+03/04
+	* Fixed insecable spaces, that can give exploit in vending and trade [Yor]
+	* Fixed bug about NPC chat [Yor]
+	* Fixed a possible ban when equiped arrows was equiped [Yor]
+	* Set a default value in battle_athena.conf [Yor]
+
+03/03
+	* Added Glast Heim in @go GM command [Yor]
+	* Fixed wisps to GM messages on SQL version (solved a bug of freezing on SQL, bug from eAthena SQL coders (old code)) [Yor]
+	* Fixed ban_spoof_namer value: no limit now [Yor]
+	* Corrected drop_rate0item option (was reversed) [Yor]
+	* Little adjustment on help.txt [yor]
+	* Little modifications on GM [yor]
+	  - given localbroadcast to mediator by default.
+	  - adjusted default 'monsters_ignore_gm' option from 100 to 60: a gm that can have any stats must not have ability to tank monster for players.
+
+03/02
+	* Little improvements of clif.c [Yor]
+	* Little corrections on help.txt [Yor]
+
+03/01
+	* Limited spiritballs GM command to 500 spiritball (no more visual difference with more, and reduce client crashes) [Yor]
+	* Fixed flood of emotion icon (by hacker player) [Yor]
+	* Fixed bug connection of ladmin(.c) [Yor]
+	* Styling on skill.c [Yor]
+
+02/28
+	* Fixed adjlvlcmd GM command [Yor]
+
+02/27
+	* Fixed dead branch bug [Yor]
+
+02/26
+	* Fixed unused variables in socket.c [Yor]
+	* Improved skill.c and map.c [Yor]
+	* Restored previous skill.c (of svn 355 instead of 356) [Yor]
+
+02/25
+356	* Fixed some map_freeblock_xxx [Yor]
+
+02/24
+355	* speed up map_addblock, map_count_oncell, map_foreachinmovearea functions (often used) [Yor]
+
+02/23
+	* Improved map.c and socket.c [Yor]
+	* removed block_count & block_mob_count pointer array not really used: [Yor]
+	  each map will use less memory
+	  main functions: map_foreach** will be speeder.
+	* Changed default level of @charstats/@charxxxlist from 40 to 20 to help mediateur in searhing of hacker. [Yor]
+	* Added more information in charstats GM command (GM level, location, party name, guilde name) [Yor]
+	* Improved jobchange GM commands (to avoid invalid job and display job number if necessary) [Yor]
+	* Modified some parameters in sockets. [Yor]
+	* Improved jobchange GM commands (to avoid sprite error with invalid weapons) [Yor]
+	* Replaced some REALLOC by MALLOC to speed up some parts when init is not necessary [Yor]
+	* To reduce lag with a lot of players, don't send immediatly packet (that use too many cpu) [Yor]
+	* Send only one effect on refine, even is the number of refined items [Yor]
+	* Correction of items value in @produce GM command [Yor]
+	* If not found message file, freya try to open default message file [Yor]
+
+02/22
+	* Fixed a bug with soul burn used on monster (thanks to Van Priest) [Yor]
+	* Readded loop in send fifo to send maximum of information every times [Yor]
+	* Moved previous option from atcommand.conf to battle.conf [Yor]
+	* To reduce lag with a lot of spawns, limited local spawns at 1 every x seconds (option in atcommand.athena.conf) [Yor]
+	* Little adjustement in socket.c [Yor]
+	* Changed level of @refresh to 40. It seems authorize to xp without die (exploit) [Yor]
+	* Added a option in atcommand_athena.conf to choose the msg_athena.conf file [Yor]
+	* Added a msg_athena_fr.conf for example of translation and for french people [Yor]
+	  - to use it replace the msg_athena.conf by it in the conf directory or
+	    use argument --msg_config msg_athena_fr.conf at run of map-server
+	* Added possibility on version check in login-server. [Yor]
+	* Fixed a memory leak in map_quit and with pet.[Yor]
+	* Added orc dungeon and payon village at @go GM command [Yor]
+	* Added @charitemcheck GM command [Yor]
+	* Little adjustement in sockets [Yor]
+	* Added @charitemreset GM command [Yor]
+
+02/20
+	* Added @charitem GM command [Yor]
+	* Corrected a little error on @charrevive [Yor]
+	* Improved some GM commands: [Yor]
+	  - when gm is not dead and use @alive GM command, simply do @heal GM command.
+	  - @revive gm command restore SP too.
+	  - Create @charheal GM command, and fix @heal, @revive and @alive GM commands.
+	  - now @alive/@revive/@resurect are for GM. Use @charalive/@charrevive/@charresurect for others (or #alive/#revive/#resurect)
+	  - now @heal/@restore are for GM. Use @charheal/@charrestore for others (or #heal/#restore)
+	* Added dynamic ban in memo. [Yor]
+	* memo size is increased to 60000 chars. [Yor]
+	* Speed up write in socket fifo and protected again invalid socket. [Yor]
+---------- Entering in final tests for sockets. now it's for adjustement of parameters ---------------
+
+02/19
+	* Fixed ladmin kami command error. [Yor]
+	* Use a better system to send data when write buffer is full. [Yor]
+	* Limited to 2000 monsters/summons around the GM (visible for the GM)  with @spawn/@summon GM commands. [Yor]
+
+02/18
+	* Improvement to reduce read buffer when necessary. [Yor]
+	* Little adjustement on new socket to send buffer when necessary. [Yor]
+	* Fixed (base/job)_exp_rate calculation. [Yor]
+	* Fixed item_drop rate. now you can use any value from 1 to 10000, and that works. [Yor]
+	* Added a battle option (item_auto_get_distance) to define the max distance between the character and an item for autoloot works. [Yor]
+	* Better adjustement of server socket to avoid too many REALLOC for nothing [Yor]
+	* Little adjustement in socket.c, to be more efficient [Yor]
+
+02/17
+	* Removed a part that can cause lags in socket.c [Yor]
+	* Correction of sockets: [Yor]
+	  - Solved calculation bug in sockets
+	  - no more ALLOC memory error
+	  - dynamic write buffer for all (clients and servers)
+	  - big reduction of memory usage of socket from original eAthena system
+	  - Reduction of reference in code (no more session[fd]-&gt; !), so smaller and speeder code
+	* Improvement (again) of sockets (correction of a bug). [Yor]
+
+02/16
+	* Fixed invalid respawn point in @charsave GM command. [Yor]
+	* Added 0 to @speed GM commands to restore normal speed. [Yor]
+	* Fixed an error on safety wall skill. [Yor]
+	* Better calculation in socket (not possible to have a CALLOC to 0). [Yor]
+	* Added GM level changing in memo field. [Yor]
+324	* Modifying of configure. [MagicalTux]
+	* Correction of previous commit (incorrect file was commited). Don't use svn 322. [Yor]
+322	* Little improvement of sockets. [Yor]
+
+02/15
+	* For test (already again tested, more tested): readded new socket system (less memory, etc...) [Yor]
+	  - difference with previous test: all packets are now ok, and 2 errors was corrected. Now, seems correct.
+	  - Note: A warning about 'an unused fd' when compiling TXT version is normal (I don't modify code until test will be completed)
+	* Preparation to improvement of sockets (map-server: other files) [Yor]
+	* Increased loop in spawn GM commands to found a right position. [Yor]
+
+02/14
+	* Preparation to improvement of sockets (map-server: chrif.c and part of clif.c) [Yor]
+	* Preparation to improvement of sockets (TXT char-server) [Yor]
+	* Correction of a packet sending in char-server [Yor]
+	* Preparation to improvement of sockets (login-server and SQL char-server) [Yor]
+	* Preparation to improvement of sockets (on ladmin) [Yor]
+
+02/13
+	* restore previously socket code of svn 299 [Yor]
+*----- restore previsously socket code svn 299 at this point-------*
+	* Improvement of socket memory management [Yor]
+	* Corrected infinite loop and timer call on all spawn GM commands [Yor]
+	* Added all @spawn parameter to @summon GM command [Yor]
+	* Added a new method to spawn: [Yor]
+	  @spawn/@monster/@monster2 "desired monster name" &lt;monster_name|monster_ID&gt; [&lt;number to spawn&gt; [&lt;x coord&gt; [&lt;y coord&gt;]]]
+	* Correct a "warning: unused variable", sorry [Yor]
+
+*----- incorrect from 300 to 310: a lot of bad codes of eAthena can not authorize better socket system -&gt; need to modify code before to add it again -------*
+310	* Remove previously changing of sockets because a lot of logical codes of eathena (base of freya) are bad and cause invalid packets. [Yor]
+	  Added new system of socket to add it by progressiv changing.
+	* Fixed some pakets on ladmin mode [Yor]
+	* Changed Freya ruwach code by Eathena ruwach code [Yor]
+	* Just for fun: added '@joyjoymap' GM command [Yor]
+	* Fixed infinite spawn about a monster that can not be spawned (infinite call of mob_delayspawn must not more exist) [Yor]
+
+02/12
+	* Corrected first check in mapif_parse_GuildChangeMemberInfoShort function (SQL) [Yor]
+	* Improved guild member update (short information) in SQL [Yor]
+	* When a client use a lot of memory, disconnect it [Yor]
+	* Speed up some calculations in socket.c [Yor]
+	* Added number of mobs in @mapinfo GM command [Yor]
+	* Corrected bug on counter of blocks [Yor]
+
+02/11
+	* Commited correct socket.c (sorry, previously was a worked socket.c, not the final) [Yor]
+	* Commented an unused variable [Yor]
+300	* On test (but already tested):
+300	  - Reduce Write fifo of a player to 4096 by default (instead of 65536!) [Yor]
+300	  - Rewrite macro to use write fifo. now, it's impossible to have overflow (any packet can be written)
+300	  - Use dynamic Write fifo when necessary
+300	  - Macro need less calculations and are speeder.
+*----- incorrect from 300 to 310: a lot of bad codes of eAthena can not authorize better socket system -&gt; need to modify code before to add it again -------*
+
+	* Try to send some data when write socket is increased. [Yor]
+	* Removed unuseful loop in write sockets. [Yor]
+	* Fixed some infinite loops with errors on sockets [Yor]
+	* Corrected in select of sessions the possible reading of a closed session [Yor]
+	* Set console FD to non blocked [Yor]
+	* Reduced MAX_WALKPATH from 48 to 32. More seems not necessary (and reduce memory usage) [Yor]
+	* Some litte improvements in code [Yor]
+
+02/10
+	* Added a method to reduce increased Write FIFO buffer not more used by a server [Yor]
+	* Fixed a bug in SC_PNEUMA (a check about unit2-&gt;group) - thanks fo freya's forum [Yor]
+
+02/09
+	* Added a method to reduce increased Write FIFO buffer not more used by a player [Yor]
+	* Protected data write socket buffer against biggest (very important) packet [Yor]
+	* Improved again parse function for client (map-server): less tests [Yor]
+
+02/08
+	* Reduced autoloot system (general option and GM command) to only when player is near the item [Yor]
+	* Do a better parse function for client (map-server) [Yor]
+	* Reduced read FIFO size of a player from 16384 bytes to 2048 bytes - important memory usage reduction [Yor]
+	* Added a comment  about biggest packet send by a client [Yor]
+	* Corrected ladmin FIFO size (memo size can be bigger than ls command) [Yor]
+
+02/07
+	* Fixed ladmin FIFO size (for ls ladmin command) [Yor]
+	* Fixed ladmin answer with no null byte after name (doesn't work proprely with ladmin perl) [Yor]
+	* Added old and new GM level in ladmin packet 0x793f to give information about the change (gm ladmin command) [Yor]
+
+02/06
+	* Fixed a little error on GM messages [Yor]
+	* Improved GM messages management [Yor]
+	* Improved some GM commands [Yor]
+	* Corrected @charitemlist based on GM refine value instead of player refine value [Yor]
+	* reduced memory usage of 'online_chars' [Yor]
+	* Solved bug about guild search (SQL) [Yor]
+	* reduced some memory usage [Yor]
+	* speed up inventory/storage/... saving in SQL version (and use less memory) [Yor]
+	* clean up somme comments [Yor]
+
+02/05
+	* Removed night with effect (we don't know how to do: night-&gt;day) [Yor]
+	* Fixed Win32 compilation [Yor]
+	* login-server: save GM accounts file only when necessary [Yor]
+	* Speedup some functions [Yor]
+	* Check if GM have an egg in @hatch GM command [Yor]
+
+02/04
+	* Corrected job numbers in help files [Yor]
+	* Added @nlb GM commands [Yor]
+	* All (100%) GM commands use same GM function to be analysed [Yor]
+	* Added @resetskill and @resetstate GM commands [Yor]
+	* All (99%) GM commands use same GM function to be analysed [Yor]
+	* Update item_db.txt [Yor]
+
+02/03
+	* Update status points when GM use charbaselvlup &lt;negativ value&gt; [Yor]
+	* Corrected overflow in (char)joblevelup GM commands [Yor]
+
+02/02
+	* Update status points when GM use baselvlup &lt;negativ value&gt; [Yor]
+	* commented GM accounts by default [Yor]
+
+02/01
+	* Added some GM commands / Improved some GM commands [Yor]
+
+01/31
+	* Added @charspeed GM command [Yor]
+	* Corrected a bug in map_nick2sd function: you can found player with name longer than the name you ask [Yor]
+	* Added @charreturn, @returnmap and @returnall GM commands [Yor]
+	* Added informations about players with abnormal amount of zenys (@whozeny/@whozenymap GM commands) [Yor]
+
+01/30
+	* Added @whozenymap GM command [Yor]
+	* Improved @whozeny GM command [Yor]
+	* Added a crash check to Safety Wall from bug report of freya' forum [Yor]
+
+01/29
+	* Improved some GM commands [Yor]
+	* Improved/speedup parse of GM commands [Yor]
+	* Added a special symbol character to reduce remote GM command call (begining by @char): #: [Yor]
+	  - rewrite parse of GM command (less tests and speeder)
+	  - new symbolic character to replace @char in command if necessary
+
+01/28
+	* Improved recv_to_fifo in socket.c [Yor]
+	* Reduced memory usage of msg_table by usage of dynamic memory allocation [Yor]
+	* Solved new error on mysql ip [Yor]
+	* Removed a check about DATA in db.c until a better solution will be found [Yor]
+	* Fixed a crash on Reject Sword skill (from freya' forum. thanks to Celest)
+	* Corrected a memory leak in map_quit (from freya' forum. thanks to LebrEf[TaVu])
+
+01/27
+	* Added options to choose to create or not each sstatus files [Yor]
+	* Added forgotten #include &lt;windows.h&gt; in console.c for compilation [Yor]
+	* Login-server: styling [Yor]
+
+01/26
+	* Created sstatus (TXT/HTML/PHP) to know number of online (char-)servers [Yor]
+	* Disabled console when console is seleted OFF. Password console is only available when console is loaded [Yor]
+	* Corrected a bug in mob_once_spawn [Yor]
+	* Added #include "console.h" in all server and call disable console parameter at end of the server [Yor]
+
+01/25
+	* Corrected a bug in spawn monster [Yor]
+	* Added management of 'sstatus' table in login server. [Yor]
+	* Added #include "console.h" in socket.c [Yor]
+	* Added "console.c/h" (console management : load one key each time) [MagicalTux]
+
+01/24
+	* improvement of some GM commands: [Yor]
+	 - @go 17 / @go valkyrie
+	 - better calculation of coordonates for some commands (@warp, @charwarp, etc...)
+	 - better spawn coordonates
+	 - better number of spawned monsters
+	 - Corrected @monstersmall/@monsterbig
+
+01/23
+	* Fixed new bug with people who trade without zenys ;) [Yor]
+	* Added @spawnmap/@monstermap/@monster2map to spawn monsters anywhere on the map [Yor]
+	* Fixed 'castrate_dex_scale' option overflow [Yor]
+	* Followers (slaves) of monster conserv same display name with leader if the name of leader is already in their name [Yor]
+	* Modified default vending_max_value: 100,000,000 instead of 10,000,000 and max: 200M instead of 10M [Yor]
+	* implemented dns adress for mysql IP [Yor]
+	* Speed up a little socket reading [Yor]
+	* Protected Trade against invalid number of zeny - exploit [Yor]
+	* Correction of [Celest]: Reject Sword: properly show the reflected damage (battle.c).
+	* Correction of [frostycpu]: Calculation of Sac. Ritual (battle.c).
+
+01/22
+	* ruwach: correction of [Celest]: check whether the target is already hiding/cloaking (skill.c).
+	* Fixed sd_data in skill_stop_dancing when NULL [Celest] (skill.c).
+	* Autoloot GM command by [Aalye] from freya' forum (atcommand.h, atcommand.c, map.h, mob.c, help.txt, atcommand_athena.conf, gmcmds.html).
+	 - Soul Burn: When the skill is successful, its not updating target SP (skill.c).
+	* Corrections of [Aalye] from freya' forum:
+	 - Soul Burn: When the skill is successful, its not updating target SP (skill.c).
+	 - Soul Change: also dont update the SP after switching (skill.c).
+	* Corrections of [Aalye] from freya' forum about kRO patch 12/14/04: - thanks :)
+	 - Snap: Increased SP taken to 14. If under Fury state, you can use this skill without the need for Spirit Spheres (skill.c, skill_require_db.txt, skill_cast_db.txt).
+	         After using this skill, you cannot use Ashura Strike (Guillotine Fist) for next 2 seconds for balancing reasons.
+	* Corrections of [Aalye] from freya' forum about kRO patch 12/14/04: - thanks :)
+	 - Venom Splasher: Now, the enemies do not need to be poisoned in order for this skill to work. (skill.c, skill_require_db.txt).
+	                   As long as their HP has 3/4th left, then it will always work. SP usage reduced to 12 ~ 30.
+	                   Even when under the effect of this skill, if the enemy takes the damage,
+	                   they will take the damage + and be poisoned if they weren't already. It now takes 1 Red Gemstone every cast.
+	 - Defender: At LV 5, there is no MoveSpeed penalty (pc.c).
+	 - Book Mastery: Advanced Book: If you have a Book-type weapon equipped, every skill level here will give you 0.5% ASPD upgrade (pc.c).
+	 - Dragonology: At LV 1 ~ 2, receive INT + 1 bonus. At LV 3 ~ 4, receive INT + 2 bonus. At LV 5, receive INT + 3 bonus total (pc.c).
+	                So to clarify once again, at LV 5, you only receive total of INT + 3 bonus, not all combined.
+	 - Summon Flora: Bio Cannibalize: Summons a plant-type monster that attacks enemies you are attacking (skill.c).
+	                 This summoned monster will disappear eventually, and maximum HP will be different based on the skill level.
+	                 You cannot summon another one while having one already spawned.
+	                 Lasting time has also been significantly reduced to 1 minute at LV 5.
+	                 Monsters that are spawned are different based on the skill level, and they are as follows:
+	                 * LV 1: 5 Mandragoras
+	                 * LV 2: 4 Hydras
+	                 * LV 3: 3 Floras
+	                 * LV 4: 2 Parasites
+	                 * LV 5: 1 Geographer
+
+CODE
+	* Corrections of [Aalye] from freya' forum about kRO patch 12/14/04: - thanks :)
+	 - Tiger Knuckle Fist: Damage has been increased to 140% ~ 540%. (battle.c)
+	 - Chain Crush Combo: Damage has been increased to 500% ~ 1400%. This skill now uses up 2 Spirit Spheres, and after using this would
+	                      leave only 1 Spirit Sphere with you; however, you can still use Ashura Strike (Guilllotine Fist) with it. (battle.c)
+	 - Arrow Vulcan: The total damage will also include the bonus from the card as well as element of the arrow. (battle.c)
+	 - Increase Weight Space (sp? LOL): Every level now increases capacity of maximum weight by 200 instead of 100. (pc.c)
+	 - Weapon Perfection and Overthrust: There is no more time penalty for party member (skill.c).
+
+01/21
+	* Corrections sql script. Memo table was removed by error (previously for tests). That forbid connections to map-server in sql version [Yor]
+	* Corrections of [Aalye] from freya' forum about kRO patch 12/14/04: - thanks :)
+	 - Palm Push Strike: SP taken at maximum has been reduced to 10, and damage has been increased to 300% ~ 700%. (battle.c, skill_require_db.txt)
+	                     It's also supposed to take NO spiritball.
+	* Corrections of [Aalye] from freya' forum - thanks ;)
+	 - Stone Curse: avoid Stone Curse stacking (skill.c).
+	 - Potion Pitcher: On kRO/iRO, you can use on oneself. now same in freya (skill.c).
+	 -  Marionette Control: removed abuse on shit skill: (map.c).
+	      You can basicaly control someone, log out, control someone else, log out... rince and repeat.
+	      The effect wasnt wearing off the target upon logging out.
+	 - General Hiding: People using auto-attack should not be able to follow/attack a hidden/cloaked target (battle.c)
+	 - Reject Sword: correction of the skill. (skill.c, battle.c)
+	* Corrections of [Aalye] from freya' forum - thanks ;)
+	 - Plagiarism: make passiv skills to be copied. (skill.h, skill.c, battle.c)
+	 - Storm Gust: better formula to calculate the freezing time (skill.c).
+	* Freezed -&gt; Frozen [Yor]
+	* Correction of port reading in packet 0x2af8 - sorry, commit was done with incorrect file [Yor]
+
+01/20
+	* Correction of [LebrEf[TaVu]] from freya' forum - thanks ;)
+	  - init before a possible return the guild structure in inter_guild_fromsql.
+
+01/19
+	* Corrections of [Aalye] from freya' forum - thanks ;)
+	  - Ruwach: the damage is bugged. When its time to calculate, it check for TARGET Ruwach level, now the source level (skill.c).
+	  - Hindsight: uncommented line 279 in skill_cast_db.txt (other code is fine)
+	  - Wall of Fog: better formula to calculate the blinding effect (skill.c).
+	  - Chase Walk: You arent supposed to use any skills while in Chase Walk (except Chase Walk itself) (skill.c).
+	  - Alchemy: The item description is said to create bottles, but it's not on kRO yet. We made it so Alchemy dont require any bottle nor medecine bowl.
+	             (db/skill_require_db.txt, skill_db.txt, skill.c)
+	  - Alchemy: added a small chance to the potion success rate. (skill.c)
+	* Styling on login-server. [Yor]
+
+01/18
+	* Set lan options of char-server in char_athena.conf: all options in a single file, it's more simple [Yor]
+	* Added a console password to activate the console if it is disabled [Yor]
+	* Removed unused data in packet 0x2af8 [Yor]
+	* Fixed an invalid allocation in pc_set_gm_level [Yor]
+	* little improvements in console parser [Yor]
+
+01/17
+	* Security: added a consoleoff console command in all servers [Yor]
+	* Corrected: cart revolution damages (from freya forum, thanks to Raversth) [Yor]
+
+01/16
+	* Correct invalid commit (a '}' stay commented... sorry)  [Yor]
+	* Fixed error in intif_wis_message_to_gm [Yor]
+
+01/09
+	* correction of an error: send gm level of players to char servers and map servers [Yor]
+
+	Added NEW login server [Yor]
+	- only 1 source for TXT and SQL version
+	- Use independant database and other server don't use it
+	   -&gt; can be installed on any computer and not necessary connected to same database of the other servers
+	- Login-server (TXT AND SQL) can be connected to TXT AND SQL char server (char server must be connected to same type of map server)
+	- Only 1 database/file is used to save ALL informations avout the accounts.
+	- SQL version: reduction of requests (noq only 1 by connection!)
+	- TXT version: speeder saving.
+	- Ladmin commands can be used on SQL and TXT version.
+	- Only 1 configuration file (TXT and SQL). This configuration contains explains too.
+	- All old features from TXT or SQL are now in the 2 versions (TXT and SQL): example: ban on invalid password (old SQL) or login with no sensitiv case (old TXT).
+	- Password encryption can be used. If you change, mixed type of passwards are managed by login-server.
+	- Specialy TXT version use less memory (SQL too, but SQL have now Ladmin, and it's not visible).
+	- memo size is increased to 32700 chars.
+	- for compatibility between TXT and SQL version: 
+	  - deletion of 'ipbanlist' table (used login_athena.conf): reduction of request too for SQL version
+	  - log are created in a log file (less network working and requests in SQL version)
+	  - deletion of memo table (use a simple field TEXT in account database)
+	- better definition of SQL database.
+	- ...
+
+	* continue preparation to the new login-server: [Yor]
+	  - char server
+	  - some global values
+	* continue preparation to the new login-server: [Yor]
+	  - doc directory
+	  - configuration files
+	  - tools (ladmin and txt converter)
+	  - save files
+	  - sql files
+	* Begin preparation to the new login-server (common directory) [Yor]
+
+01/03
+	* common directory: some improvements [Yor]
+
+12/23
+	* db.c : Fixed compile-time warning on db.c fix [MagicalTux]
+
+12/16
+	* db.c : Disabled calls of db_foreach when data is null. It fixes a random crash in char-server [MagicalTux]
+
+12/13
+	* db : Requested feature : icewall etc.. works on GvG outside of GvG maps [MagicalTux]
+	* char(txt) : added setting "online_php_filename" [MagicalTux]
+	* char/char.c : Added generation of online.php : php-compatible file for players list [MagicalTux]
+
+12/12
+	* char/int_guild.c : if a guild is missing some skill points they will be given back while loading [MagicalTux]
+
+12/11
+	* Correction of an error about infinite 'wait 15 sec' after creation of a character [Yor]
+
+12/06
+	* db_mysql : Added sql_last_insert_id() [MagicalTux]
+	* Improved check of WFIFOSET between servers [Yor]
+
+12/05
+	* Removed instability code (and unnecessary code) of battle_check_range that cause unstability [Yor]
+	* Corrected a bug in clif_additem function [Yor]
+	* Readded customed options of login.c SQL: it's used by some people to have same database of their forum [Yor]
+	* Corrected bug in battle_check_range [Yor]
+	* Readded 'use_MD5_passwords' option to stay compatible with old version [Yor]
+	* Corrected some items for some classes [Yor]
+	* Fixed some bugs [Yor]
+
+12/04
+	* Fixed an error in intif.c whand char-server is disconnected and guild information are sended [Yor]
+	* Improved check about fd in clif_parse [Yor]
+	* Removed 'anti_freeze_interval' option. It's internal system. No option for that [Yor]
+	* Fixed auto-creation of account to disable creation with client using encrypted password [Yor]
+	* Removed use_MD5_passwords option: [Yor]
+	  - it's incompatible with all clients that use encryption system
+	  - password is never send outside the server
+	* Improvement of clif_parse: better check on WantToConnect parse [Yor]
+	* Improvement of clif_parse [Yor]
+	  - check if packet number is less than 0.
+	  - remove a useless test
+	  - use fiforest to replace RFIFOREST(fd) called a lot of time
+	  - Added check to quit people that send invalid packet of authentification
+
+12/03
+	* Updated Stunner's job requirements in item_db [Yor] - thanks to celest
+	* Fixed monster move and MVP exp [Yor]
+	* Updated db [yor]
+	* Removed option 'PASSWORDENC' from compilation (always activated; packets are different) [Yor]
+	* Removed customed options of login.c SQL: [Yor]
+	  - no interest (if someone gain access to DB, SELECT * give him all name)
+	  - lost of time (use a lot of %s in each call to create request take time)
+	  - lost of memory and source of errors (to manage that)
+	  - simplify the code
+	  - etc.
+	* configure: --with-pro disabled by default [MagicalTux]
+
+12/02
+	* Corrected some bugs and skills [Yor]
+	* Updated db directory [Yor]
+
+12/01
+	* Updated db directory [Yor]
+	* Added some NPC [Yor]
+	* configure: added --with-pro function [MagicalTux]
+
+11/30
+	* configure: Now using gcc to get depencies (faster) [MagicalTux]
+
+11/27
+	* Corrected parse error in int_guild.c (wrong file commited) [Yor]
+	* Removed char backup file [Yor]
+	  The backup_txt file was created because char deletion bug existed.
+	  Now it's finish and that take a lot of time to create a second file when there are a lot of characters.
+	  And, file creation save previous file.
+	* Forgotten a change in guild.c [Yor]
+	* Used CONST instead of value for guild skill values. Do better check too - thanks to jathena [Yor]
+
+11/24
+	* Re-added missing char_sql/int_party.c [MagicalTux]
+
+11/23
+	* Removed #include &lt;nullpo.h&gt; from mail.c [MagicalTux]
+	* Moved nullpo.* and grfio.* from common to map [MagicalTux]
+	* Fixed get_from_kafra storage bug in clif.c [Marcus]
+
+11/22
+	* Added latest castle in castle.txt [Yor]
+	* Removed login_db connection in char-server (not necessary) [Yor]
+	* Added type of server in title [Yor]
+	* Correction of a clif_send error [Yor]
+
+11/21
+	* Correction of cart lost - char-server TXT [Yor]
+	* Added bClassChange,%; Has random chance to turn monster into another monster [from Valaris] [Yor]
+	* Improved: correctly free memory of character on map-server when char-server disconnects [Yor]
+	* Improved clif_waitclose function [Yor]
+	* Added a check on function in clif_parse [Yor]
+	* Improved doexit() Map-server [Yor]
+	* Correction of some eA errors [Yor]
+	* Added @refresh, @petid, @identify, @gmotd from eA [Yor]
+	* Fix trade bug when zeny == 0 [Yor]
+	* Added aEthena improvement in map-server [Yor]
+	* Fixed exploit about negativ amount (selling/buying NPC) [Yor]
+
+11/20
+	* Fixed exploit about zeny on trade [Yor]
+	* Updated some DB files [Yor]
+	* Updated mapflags (from eAthena emulator) [Yor]
+	* Cloacking dececrease speed correctly now [MiKa+Asa]
+
+11/19
+	* Improved deletion of party (SQL) [Yor]
+	* Various fixes to allow compiling with gcc 2.95 [MagicalTux]
+
+11/18
+	* Speed up (5%) characters saving in TXT version [Yor]
+	* Use new int_party.c for SQL version [Yor]
+	* Fixed a close done even if the file was not opened in map.c [Yor]
+
+11/17
+	* Added in char.h online information [Yor]
+	* Added: [Yor]
+	  - MonsterSmall & MonsterBig GM command (thanks to valaris)
+	  - Mob level up system (Thanks to valaris)
+	* Added new maps [Yor]
+	* Corrected some errors in clif.C [Yor]
+	* Added check about authentification in char.c [Yor]
+	* Added check about session data in char.c [Yor]
+	* Added little comments about delflag in char.c [Yor]
+	* When we set eof to a socket, in next loop, we send information (you're been disconnected, etc...) [Yor]
+
+11/16
+	* lot of things: [Yor]
+	  - updated DB
+	  - correction/improvement of some skills
+	  - Added mob zeny stuff of Valaris
+	  - a lot of little other things
+	* Updated mapflag files from eAthena [Yor]
+	* Fixed resnametable.txt not found (based on eA work) [Yor]
+	* login/char (TXT/SQL): speed up authentification between login and char [Yor]
+	* char-server: improve some SQL request [Yor]
+	* login/char : styling [Yor]
+	* Char-server (TXT/SQL): change message on double connection on char-server itself [Yor]
+	* Char-server (SQL): better management of characters in memory, specialy about lag of char-server or map-server [Yor]
+	* configure: added gprof support in debug mode [MagicalTux]
+	* configure: disabled debug by default [MagicalTux]
+
+11/15
+	* Char-server (SQL): better check on character selection [Yor]
+	* Fixed last operation about double connection in char-server (give time to map-server to give information about connection) [Yor]
+	  - Now, double connection work on multi-maps servers
+	* Hidden (online) characters are now 'protected' against dual connection [Yor]
+	* Fixed possible crash in clif_send_sub [Yor]
+	* Modified packet 0x2aff to send hidden players too [Yor]
+	* Improved skill check at reading of a character [Yor]
+	* Move META tag of online.html in right position [Yor]
+	* Improved parsing of packet 0x2717 [Yor]
+	* Speed up (between x2-x3) friends.txt creation (char-server TXT) [Yor]
+	* Improved checks/tests about online [Yor]
+
+11/14
+	* Fixed overflow with /lb GM command [Yor]
+	* Continue to prepare multi-servers authentification: [Yor]
+	  - online definition: 0: offline, 1+: server number+1, -1+: +(server number+1) for hide GM
+	                       so: 0 offline, 1+ display online, x&lt;0: not display but online
+	* Improved check about battle_config.save_clothcolor (only 0 disables, other value enable) [Yor]
+	* Set default of save_clothcolor to yes (internal default - battle.c) [Yor]
+	* Corrected: When npc is monster, use correct id - Thanks to leinsirk10 [commited by Yor]
+	* Re-authorize @recall/@warpto on yourself [Yor]
+	* Fixed battle.c with skills (based on work of [Celest - eAthena dev] [Yor]
+	* Set a minimum time to send a character from map-server to char-server [Yor]
+	* set DEFAULT_AUTOSAVE_INTERVAL to 150 sec instead of 60 in map-server: [Yor]
+	  - save all characters every 2,5 minutes is enough, specialy for servers with a lot of players
+	* Corrected some errors in item_db.txt and mob.txt [Yor]
+	* Get eAthena produce_db.txt - better presentation [Yor]
+	* Fixed some skills (based on work of [Celest - eAthena dev] [Yor]
+	* Fixed some invalid checks in clif.c [Yor]
+	* Removed from clif_sitting fd definition (idea of eAthena - thanks) [Yor]
+	* Fixed a potential infinite loop on invalid sockets [MagicalTux+Yor]
+	* char-server (SQL): correction of duplicate item (in saving) [Yor]
+	* char-server (SQL): Added online files (not created by default) - no SQL requests [Yor]
+	* Harmonized a little char-server (TXT and SQL) [Yor]
+	* Improved locales generation message [MagicalTux]
+
+11/13
+	* Improved Double connection check (SQL) [Yor]
+	* Disabled devnpc.txt by default [MagicalTux]
+	* Fixed gettext support on empty sentences [MagicalTux]
+	* Updated correctly online_chars at deletion of a character [Yor]
+
+11/12
+	* char.c (SQL): remove the (internal) SQL request to know if a player is online [Yor]
+	* mmo.h/mmo_conv.h: remove 'broken' information from item structure (it's same value as attribute) [Yor]
+	* Char-converter: remove 'broken' information from item structure (it's same value as attribute) [Yor]
+	* Char-server (SQL): remove 'broken' information from item structure (it's same value as attribute) [Yor]
+	* Char-server (TXT): remove 'broken' information from item structure (it's same value as attribute) [Yor]
+	* char.c (SQL): in 'memitemdata_to_sql' Fixed a continue in wrong place - Sorry [Yor]
+	* char.c (SQL): in 'memitemdata_to_sql' use same loop to replace or insert items to SQL DB [Yor]
+	* inter.c (SQL): replace mysql_store_result by mysql_compat_store_result [Yor]
+	* char.c (SQL): in 'memitemdata_to_sql' use same loop to replace or delete items from SQL DB [Yor]
+	* int_party.c: added spaces in a SQL request to do difference between 2 same requests (for analyse) [Yor]
+
+11/11
+	* clif.c: corrected some checks [Yor]
+	* Atcommand.c: [Yor]
+	  - added message to explain how to cancel @follow.
+	  - Added message to cancel @warpto or @recall on yourself
+	* added missing mysql_compat_free_result in mail.c [Yor]
+	* Suppressed references to MYSQL mail_handle not more used [Yor]
+	* Better checks for log in mob.c [Yor]
+	* Changed broken by attribute in pc.c [Yor]
+	* Added checks about skill level in all functions (skill.c) [Yor]
+	* configure: Added gettext to phony rules [MagicalTux]
+	* Added use of mysql_compat_* on char_sql (int_storage & int_guild) [MagicalTux]
+	* conserv values modified for save 'chrif_save' and restore them after the save of the character [Yor]
+	* removed all 'pc_makesavestatus' before 'chrif_save' calls, before it already inside the function [Yor]
+	* Save storage inside 'chrif_save' function to be sure to save it with player [Yor]
+	* Double Chat fix by Alex14, thx CHaNGeTe [MagicalTux]
+	* Added MYSQL_DEBUG mode [MagicalTux]
+	* char: Updated entry name for login db [MagicalTux]
+	* char: Now connects only once to mysql [MagicalTux]
+	* map: now uses db_mysql.c [MagicalTux]
+	* map: no longer reading login sql config (useless) [MagicalTux]
+	* map: now reading new conf parameters [MagicalTux]
+	* configure: put -lmysqlclient at the end of libs list to allow access from -lcommon [MagicalTux]
+	* char_sql: Switched to mysql_compat_* functions [MagicalTux]
+	* login_sql: now calls sql_close() [MagicalTux]
+	* login_sql: modified reading of sql config [MagicalTux]
+	* conf/inter_athena.conf: Modified mysql config [MagicalTux]
+	* db_mysql.c: set mysql_compat_* to inline [MagicalTux]
+	* login_sql: Now makes use of mysql_compat_* functions (db_mysql.c) [MagicalTux]
+	* db_mysql.c: added mysql_compat_* functions to allow easier migration [MagicalTux]
+
+11/10
+	* Trade: after a trade, save both player to avoid decreasing/increasing number of item after a crash [Yor]
+	* Every where we save player, we save storage also now [Yor]
+	* Trade: If both player give zeny, don't send twice zeny update to both player, but only once [Yor]
+	* Improved: When player choose a character, it is get from database, not more in memory (SQL) [Yor]
+	  - now: character is in memory while the player is online (to speedup and reduce SQL requests)
+	  - now: if you change the database, you can like before (only if player is offline)
+	* Char.c (TXT) corrected a incorrect commit - sorry [Yor]
+	* Char-server: management of duplicated connection: [Yor]
+	  - inside char-server
+	  - between char-server and map-server
+	* Map-server: create a packet (from char-server) to disconnect a player if already connected [Yor]
+	* Changed auth paramters in char server: [Yor]
+	  - Increase AUTH_FIFO_SIZE to 1024
+	  - don't create a new authentification if account was already authentified (replace it): only 1 player can be authentified with same account, that will help (a little) to avoid multiple connections
+	* db_mysql.c [Yor]
+	  - initialized 'last_request' with correct size
+	  - suppressed doubble (same) check about "select"
+	  - initialized 'inbuf' before use
+	* Changed auth paramters in login server: [Yor]
+	  - Increase AUTH_FIFO_SIZE to 1024
+	  - don't create a new authentification if account was already authentified (replace it): only 1 player can be authentified with same account, that will help (a little) to avoid multiple connections
+	* better reading of 'autosave_time' option (char) [Yor]
+	* Check only every 5 minutes if we must free characters from char-server that was not saving for 15 minutes [Yor]
+	* Save Gardian hp only if they are modified (experimental code) [Yor]
+	* Updated item_db.txt and item_cardalbum.txt [Yor]
+	* configure: gettext enabled by default again [MagicalTux]
+	* configure: renamed save to save-dist and conf to conf-dist. The
+	configure script will make conf and save directories if missing, then
+	copy missing files in it. [MagicalTux]
+	* script.c : Various fixes to GetText [MagicalTux] :
+		- Removed two useless buffers
+		- Used REALLOC to make a dynamic buffer
+
+11/09
+	* Updated a little item_db.txt [Yor]
+	* Updated pet_db.txt: added some missing pet skill, corrected of some value [Yor]
+	* Updated mob_branch.txt with mob_db.txt [Yor]
+	* Added Deviling, Tao Gunka, Tamruan, Mime Monkey, Leaf Cat and Kraben in mob_db.txt [Yor]
+	* Synchronise storage with character connection at map-server [Yor]
+	* Create method to send packet (0x3812) in char-server, but not actually used [Yor]
+	* Added a packet in map to receive a storage without open it (0x3812) [Yor]
+	* Removed momorized characters from memory after 15 minutes of no saving (SQL) [Yor]
+	* Harmonize a little char-servers (SQL/TXT) [Yor]
+	* Character saving: save only in the modified tables (SQL) [Yor]
+	* Don't search if party/guild exists if character is not in a party/guild (SQL character saving) [Yor]
+
+11/08
+	* Remove from memory the character when it is deleted [Yor]
+	* Corrected some errors in mob_db.txt [Yor]
+	* Removed multiple readings of same character (SQL) [Yor]
+	* Added a check about GLOBAL_REG_NUM at reading of the character global_reg (SQL) [Yor]
+	* Added new eAthena script command
+	  getMapXY(MapName$,MaxX,MapY,type,[CharName$]) Get position for char/npc/pet/mob objects. [Marcus]
+	* Improved items saving (SQL): replace multiple UPDATE by single REPLACE [Yor]
+	* Improved a little save items (SQL) [Yor]
+	* Fixed GRF path for standard installation of Ragnarok client (it's under windows) [Yor]
+	* Fixed division by zero in char_sql when calculating avg. level of an empty guild [MagicalTux]
+
+11/07
+	* Renamed: LOGIN_LAN_CONF_NAME in char-server by LAN_CONF_NAME [Yor]
+	* Harmonized a little char (TXT) and char (SQL) [Yor]
+
+***** Freya v1.2.0 - Released !!
+***** --------------------------
+
+11/07
+	* Correction of MAX_GUILDSKILL 15 in mmo_conv.h (previously 8) [Yor]
+	* Correction of guild skills reading in TXT version: missing i++ - sorry [Yor]
+	* Added import in sql_config_read function [Yor] - thanks to Ajarn
+	* Disabled GetText by default [MagicalTux]
+	* Changed version "1.1.1" -&gt; "1.2.0" [MagicalTux]
+	* Imported eAthena's NPCs (old npcs in npc_old) [MagicalTux]
+	* Added db_mysql.c/h [MagicalTux]
+	* Renamed mysql.c/h to db_mysql.c/h [MagicalTux]
+	* Fixed char_converter to work even when mysql.c is compiled [MagicalTux]
+	* Added eAthena's mail system from Valaris [Yor & MagicalTux]
+	* login_athena.conf: added url to yellow pages [MagicalTux]
+	* login_athena.conf: freya_list disabled by default [MagicalTux]
+	* Corrected: don't read // lines in inter configuration file (SQL) [Yor]
+	* Updated with jathena 1058 - completed [Yor]
+	* Updated part of pc.c with jathena 1058 [Yor]
+	* map.h: fixed compile warning (Win32+MySQL) [xxcv via MagicalTux]
+	* socket.c (Win32): modified recv loop [xxcv via MagicalTux]
+	* Updated clif.c with jathena 1058 [Yor]
+	* Added a check about name of a friend to avoid adding of a disconnected friend [Yor]
+
+11/06
+	* Added deletion of friends in database when we delete the character (SQL) [Yor]
+	* Added directiv SQL_SMALL_RESULT on select of friends request (SQL) [Yor]
+	* Added a pause of 2s to display invalid account/password if char-server can not connect login-server under win32 compilation [Yor]
+	* Improved saving/loading of character global_reg (TXT/SQL) [Yor]
+	* Corrected: Peko typo to peco [Yor]
+	* Check value of skills at reading of the character [Yor]
+	* Improved memo_point reading in database (if max value is changed, we can always read them) [Yor]
+	* Updated freya with jAthena 1057. [Yor]
+	* Removed mysql.c from compiled objects since it breaks compile [MagicalTux]
+	* Added some "cleanup" in Mod_Unload of FreyaList [MagicalTux]
+	* Addon "FreyaList" now complete [MagicalTux]
+	* Improved compiling output [MagicalTux]
+	* Fixed missing include of "strings.h" in addons [MagicalTux]
+	* Added "WITH_SQLITE" define when ... well not available yet [MagicalTux]
+	* Added "WITH_MYSQL" define when MySQL should be used [MagicalTux]
+	* Added "WITH_SQL" define when SQL queries should be generated [MagicalTux]
+	* Modified config.h file [MagicalTux]
+	* Added sql.c/h in common [MagicalTux]
+	* Speedup items saving in structure (inventory, cart, etc...) SQL: [Yor]
+	  - by usage of a pointer
+	  - byt updating of only amount if necessary
+	* Speedup some requests (char.c SQL) [Yor]
+	* Speedup a request (login.c SQL) [Yor]
+	* Upgraded mod_db.txt from eAthena actual revision. mod are updated [Yor]
+	* Begin to add jAthena 1057 [Yor]
+
+11/05
+	* Removed tmpsql[65536] form login.c (SQL). tmp_sql[65536] already exist [Yor]
+	* Fixed GM level = -1 in SQL version (to be compatible with some 'illogical' softwares about ban) [Yor]
+	* Fixed reading of skillguild in database [Yor]
+	* Suppressed unused guild skills in guild structure [Yor]
+	* Suppressed duplicated guild skill [Yor]
+	* Added a printf in inter_guild_parse_frommap function to help about debug [Yor]
+	* If friend id doesn't exist, don't send it to player (SQL) [Yor]
+	* Correction of a packet length [Yor]
+	* Makefiles: instead of copying file when building to another
+	directory, we now use touch to keep the timestamp of the build [MagicalTux]
+	* configure: Implemented kernel26-like building messages [MagicalTux]
+	* Improved some sprintf for requests [Yor]
+	* addons: Added myself as main contact [MagicalTux]
+	* addons: lots of things added [MagicalTux]
+	* core.c : added function get_version() [MagicalTux]
+	* adduser.c: added a check to know if user name already exist. [Yor]
+	* adduser.c: added the information about the number of accounts in the actual database [Yor]
+	* if char server is disconnected, no more save of character at disconnection [Yor]
+	* addons: continued "freya_list" addon [MagicalTux]
+	* core.c : added get_version [MagicalTux]
+	* freya_list : new addon (more infos soon) [MagicalTux]
+	* addons: added local table [MagicalTux]
+	* addons: exported timer functions [MagicalTux]
+	* src/addon/test.c : Fixed addon. Now works even under native Win32 mode [MagicalTux]
+	* configure: fixed win32 cross-compiling [MagicalTux]
+	* configure: Now the configure script is able to compile zlib himself
+	if not installed. The cross-compiling system is also able to
+	cross-compile zlib if required. [MagicalTux]
+	* configure: fixed --with-zlib [MagicalTux]
+	* configure: fixed detection of libdl under cygwin [MagicalTux]
+	* configure: Changed dynamic library extention detector to work on Cygwin [MagicalTux]
+	* conf/char_athena.conf : Added test addon [MagicalTux]
+	* src/char_sql/char.c : Added addons support [MagicalTux]
+	* src/char/char.c : Added addons support [MagicalTux]
+	* conf/login_athena.conf : added test addon [MagicalTux]
+	* src/login_sql/login.c : Added addons support [MagicalTux]
+	* src/login/login.c : Added addons support [MagicalTux]
+	* src/common/addons.c : added addons_enable_all() to enable all
+	disabled addons. Called by the servers after loading. [MagicalTux]
+	* src/map/map.c : completed addon loading support [MagicalTux]
+	* Added addon_target to specify in addon header if this addon was
+	written for login, char or map server. This comes with another option
+	named ADDONS_ALL which specifies that the addon will work on any of
+	the three servers. [MagicalTux]
+	* Moved all configure defines to config.h [MagicalTux]
+	* Renamed define "DEBUG" to "__DEBUG" [MagicalTux]
+	* Moved include &lt;config.h&gt; to head of files [MagicalTux]
+	* Changed "CYGWIN" define to "__CYGWIN" [MagicalTux]
+
+11/04
+	* Updated freya with jAthena 1055. [Yor]
+	* Updated freya with jAthena 1054. [Yor]
+	* Improved friends TXT database: [Yor]
+	  -check at loading of friends if friends always exist
+	  - name are saved, but not more necessary
+	* Improved friends SQL database: [Yor]
+	  - check at loading of friends if friends always exist
+	  - removed name field not more necessary
+	* adduser.c: [Yor]
+	  - display a title
+	  - Give possibility to enter the location of the accounts file.
+	* ladmin.c: correction of a typo [Yor]
+	* Do a better massage when a server freeze [Yor]
+	* Improved some request by usage of pointer (instead of strlen()) [Yor]
+	* In mmo_char_tosql function remove diplicated reference to char_id [Yor]
+	* src/map/map.c : added loading of addons [MagicalTux]
+	* src/map/guilds.c : exp. calc of empty guilds no longer crashes (div. by zero) [MagicalTux]
+	* Fixed src/tool/adduser.c : now compiles under windows [MagicalTux]
+	* Modified addon "test" to make use of the new calltable [MagicalTux]
+	* Addons support continued. Now using a portable method for calling
+	main program functions from addons : I added a "call table" which
+	contains memory offsets to required functions. Right now only the
+	display_title function is exported, as an example. More to come. [MagicalTux]
+	* Improved adduser tool: [Yor]
+	  - readed correctly id of actual database
+	  - remove escape char (up key, down ky, home key, etc...)
+	  - authorize lower or upper case to give the sex
+
+11/03
+	* Updated monster_db.txt [Yor]
+	* Updated skill requirement with the most good and advanced - kRO Sakray server [Yor]
+	* Improved log file management in login and char servers [Yor]
+	* login.c : Improved log file management [Yor]
+	* src/tool/adduser.c : fixed many warnings [MagicalTux+Yor]
+	* tool/adduser.c : moved to src/tool/adduser.c [MagicalTux]
+	* Improved some SQL requests [Yor]
+	* Autorized version asking on char-server even if the char-server is not connected to the login server. [Yor]
+	* configure : added -export-dynamic by default [MagicalTux]
+	* configure : fixed -fPIC warning on win32 [MagicalTux]
+	* Fixed addons.h under Win32 [MagicalTux]
+	* various things added : [MagicalTux]
+	 - src/addons : sourcecode of addons
+	 - addons : will contain compiled .so files
+	 - src/common/addons.c/h : addons management (not ready)
+	* Added a check about the name of the friend before to save it (SQL) [Yor]
+	* atcommand.c : I'm thinking on a way to make atcommand.c being a
+	  linked file instead of a regular part of the source. It will allow
+	  people to make new "atcommands" in new files without having to modify
+	  the existing ones. However the work is going to be quite complex. Do
+	  *not* update the "atcommand.c" file while I'm doing that sicne I
+	  already copied it to work on a safe copy. The new "atcommand.c" file
+	  will become a separate library with calls to the "Freya API".
+
+11/02
+	* Improved friends.txt reading and saving (TXT) [Yor]
+	* Fixed: now weather GM commands create weather for all people on the map (player disconnection don't remove the weather) [Yor]
+	* Added some missing 'memset(tmp_sql, 0, sizeof(tmp_sql));' [Yor]
+	* Added saving of friends in SQL version (need to add database, see upgrade_xxxx.database.sql) [Yor]
+	* Modified 'friends' database to use char_id instead of account_id [Yor]
+	* Corrected an error in 'item_db' database [Yor]
+	* Modified 'friends' creations database for next features/release - better database [Yor]
+	* Added 'friends' creations database for next features/release [Yor]
+	* Add a upgrade_db.sql for next release [Yor]
+	* start-freya.sh : new script to run & maintain Freya [MagicalTux]
+	* common/core.c : added SIGBREAK support [MagicalTux]
+	* common/core.c : ignoring SIGUSR1 for the freya start script [MagicalTux]
+	* configure : fixed "read : unknown option -n" error [MagicalTux]
+	* char_sql & login_sql : fixed call to winsock.h [MagicalTux]
+	* configure : Fixed Winsocks2 detection in configure [MagicalTux]
+
+11/01
+	* Updated GM levels in map-server at connection of map-server with char-server [Yor]
+	* Added check about new packet versions (3 to 3) [Yor]
+	* Added parse system of new packet versions (2 to 3) [Yor]
+	* Begin to add new packet versions (1 to 3) [Yor]
+	* Added jathena packet_db.txt file in db directory [Yor]
+	* Updated 2 names of monsters in mob_db.txt [Yor]
+	* Corrected size of scape variables to have no overflow (SQL) [Yor]
+	* Automatic update of GM accounts in map-server (SQL). removed permanent conection to SQL login database [Yor]
+	* Automatic update of GM accounts in char-server (SQL) without new sql request [Yor]
+	* Improved more GM level check in login server (SQL) and harmonized name of options with TXT [Yor]
+	* Improved GM level check in login server (SQL) [Yor]
+	* Added a check in intif_party_changemap to avoid crashes [Yor]
+	* Correction of guild research function [Yor]
+
+10/31
+	* Added a check: minimum value for skills points at loading of character [Yor]
+	* Added first structure to ask inter server about player on GM commands [Yor]
+	* Fixed better check in script about multiplication [Yor]
+	* Added new skill of guilds [Yor]
+	* Fixed kick of GM [Yor]
+	* Fixed dup with vending [Yor]
+	* Fixed reading of guild skill [Yor]
+	* init some variables in char.c (TXT) [Yor]
+	* Corrected some errors in mob_db.txt [Yor]
+	* Corrected some errors on skills [Yor]
+
+10/30
+	* Fixed some errors in db/*.txt [Yor]
+	* Fixed 2 maximum value in script.c (exploit) [Yor]
+	* Some little improvements: [Yor]
+	  - better requests (char.c SQL)
+	  - init data before strcpy (file reading in inter.c)
+	  - some little corrections (char.c)
+	* Improved character creation (char.c SQL) [Yor]
+	* Improved: corrected some errors and improved function about friends: [Yor]
+	  - clif_friends_list_send
+	  - clif_parse_friends_list_add
+	  - clif_parse_friends_list_remove
+	* Corrected: move a mysql_free_result that can create the deletion of inventory, skills, memo point [Yor]
+	* Update sources with new configure system [Yor]
+
+10/29
+	* Added ls* ladmin commands in login-server (SQL) [Yor]
+	* Fixed some errors on pc_calc_skilltree [Yor]
+	* On principe: add basic skill at level 0 at creation of a character [Yor]
+	* Improved: GM level management (login.c TXT) [Yor]
+	* Improved: disconnection time of the second player for a double connection (clif.c) [Yor]
+	* Fixed: missing variables definition to compile WIN32 (socket.c) [Yor]
+	* Improved accounts reading in login.c (TXT) [Yor]
+	* Correction of a loop in pc.c about skills [Yor]
+
+10/28
+	* harmonize char.c (TXT/SQL) - continue [Yor]
+	* Correction of some error at creation of a character (char.c SQL) [Yor]
+	* correction of some jstrescapecpy (char.c SQL) [Yor]
+	* Set in good place all mysql_free_result (char.c SQL) [Yor]
+	* Set in good place all mysql_free_result (inter.c/int_storage.c SQL) [Yor]
+	* Set in good place all mysql_free_result (mob.c/itemdb.c SQL) [Yor]
+	* Set in good place all mysql_free_result (login.c SQL) [Yor]
+
+10/27
+	* Major : implemented ./configure script !! [MagicalTux]
+
+10/26
+	* Fixed: exploit of endless hp with BERSEK skill [Yor]
+	* Updated mod_db.txt a little [Yor]
+	* Updated item_db.txt a little [Yor]
+	* Fixed usage of skillnotok function [Yor]
+	* Added: on stat reset, high classes getting the extra 40 stat points [Yor]
+	* Added @uptime Gm command to display how long the map-server has been running. [Yor]
+	* Login.c: Init option strings when reading configuration file before to change it [Yor]
+
+10/25
+	* Corrected new pet id (int_pet.c) [Yor] thanks to [Devil]
+	* Update party.c (SQL) with online field according to new online value [Yor]
+	* Removed code of futur @refreshonline GM command, not more necessary [Yor]
+	* Improved online filed on SQL version: [Yor]
+	  - now, online field is updated when map server send information about all players, not more with each player (connection, disconnection, and more).
+	    so, 1 request every 5 seconds, instead of 1 request every (more)
+	  - Online field value: -1 (offline), other value (number of the server)
+	  - it's similar to TXT version.
+	* Corrected a little error on online update (TXT version) [Yor]
+	* Fixed crash at end of map-server [Yor]
+	* Fixed: When reading configuration files, init w2 before sscanf to be able to use strcpy or memcpy [Yor]
+	* Correction of password test in char server at connection of map-server [Yor]
+
+10/24
+	* Corrected: removed a break; in 0x272a packet (login.c - SQL) [Yor]
+	* Monsters database: Kobold5 id 1145-&gt;1137 [Yor]
+	* Corrected new_hats.txt script (all items quantity check wes reversed!) [Yor]
+	* Monsters database: Flora can not move (133-&gt;132) [Yor]
+	* Char (SQL): correction of an error at map-server connection [Yor]
+	* Char (TXT/SQL): continue harmonization [Yor]
+	* Char-server (SQL version): [Yor]
+	  - added char log option for futur usage
+	  - added console commands
+	* Char-server (TXT version): [Yor]
+	  - added char log option
+	  - added friends saving!
+	  - added console commands
+	* Added information at start about Console commands (enabled or disabled) [Yor]
+	* Added an option to log or not Inter Connections [Yor]
+
+10/23
+	* Added console commands on login-server [Yor]
+	* Added 'alive' console command on map-server [Yor]
+	* Added an option to choose anti-freeze interval in login.c [Yor]
+	* Corrected a strncpy in mmo_auth_new (login.c) [Yor]
+	* Added a Gm Command. @send (to know usage of some packets = for debug) [Yor]
+	* Commented a unuseful test in battle_calc_weapon_attack function [Yor]
+	* Improved: in buildin_input, if amount is negativ, set it to 0 instead of close npc trade. [Yor]
+	* Fixed length of message in chrif_ragsrvinfo function [Yor]
+	* Corrected parsing of console commands for map-server [Yor]
+	* Displayed message of GM commands on console for Console GM commands [Yor]
+	* Added console commands on map-server: [Yor]
+	 - Type help to have some informations
+	 - Activated it in map_athena.conf
+	* Removed delayed option from insert skills: [Yor]
+	  manual: Note that INSERT DELAYED is slower than a normal INSERT if the table is not in use.
+	          There is also the additional overhead for the server to handle a separate thread
+	          for each table for which there are delayed rows. This means that you should use
+	          INSERT DELAYED only when you are really sure that you need it! 
+	* Added definition of mob_exclusion_add and mob_exclusion_check functions [Yor]
+	* Fixed a not free memory in npc_enable_sub and in npc_touch_areanpc [Yor]
+	* Fixed: error on multi-levels up [Yor]
+	* Fixed crash: possible crash when a monster cast a spell [Yor]
+	* Fixed: don't call console fonction if there is nothing in the buffer [Yor]
+	* configure : now autodetects mingw32 on debian (and possibly other distributions) [MagicalTux]
+	* freya_ais.sh : fixed a bug ("}" =&gt; "fi" - sh is not php x.x) [MagicalTux]
+
+10/22
+	* Added: npcspeed, npcwalkto, npcstop script commands [Valaris]
+	* Added: skill_type_cloaking in skill.c [Yor]
+	* little modifications on login.c to harmonize TXT and SQL [Yor]
+	* Improved TXT mmo_char_send006b - use SQL method [Yor]
+	* Authorize start weapon/armor in SQL version [Yor]
+	* Improved SQL mmo_char_send006b: [Yor]
+	  - do 1 request on 1 database (char_db) for all characters to display them instead of
+	    1 request + for each character: 1 request for each database (char_db, memo_db, inventory_db, cart_db, skill_db, reg_db) [Yor]
+	* Added min_level_to_bypass in TXT version (and harmonise bypass system in TXT and SQL) [Yor]
+	* Updated database.sql [Yor]
+	* Added a pause of 2s to display "Can not connect to login-server." before to exit char-server [Yor]
+
+10/21
+	* Some little improvements in common directory [Yor]
+	* Added missing type (3) on reg_db at char saving [Yor]
+	* Improved: saving of cotton shirt and knife (character creation) in 1 request, instead of 2 requests [Yor]
+	* Improved character savings: [Yor]
+	  - instead of do 1 request for each skill, memo or global_reg: do 1 request for all skills, 1 for all memos, 1 for all global_reg
+	* Authorized wisp_server_name until 24 char (instead of 23) [Yor]
+	* Changed: size of packet 0x2b16 at position 2, to be similar of all packets [Yor]
+	* Fixed (error of commit): test on password was reversed [Yor]
+	* Fixed length of password between server to maximum of 24 characters [Yor]
+	* Removed lowest_gm_level always fixed to 1 from freya and an other value is not possible to work correctly [Yor]
+
+10/20
+	* Corrected small error in db_search2() in db.c [PoW]
+	* Some improvements: [Yor]
+	  - read a char from char database in 1 request (instead of 2 requests) (SQL)
+	  - read inventory and cart with a maximum of MAX_INVENTORY/MAX_CART (SQL - already fixed in TXT)
+	  - Authorized server name until 20 characters
+	* Added some part of npc moving [Yor]
+	* Changed a strncasecmp to strnicmp in db.c [Yor]
+	* Added functions for console commands (cummon directory)[Yor]
+	* Added storage_storageopen2 (storage.c/h) [Yor]
+
+10/19
+	* Harmonized login/char TXT with login/char SQL (continue) [Yor]
+	* Harmonized login TXT with login SQL (continue) [Yor]
+	* Harmonized login TXT with login SQL (continue): [Yor]
+	  - better end function for SQL login
+	  - Warnings display in SQL login
+	* Harmonized login TXT with login SQL (continue) [Yor]
+	* Added (commented) printf in map inside parse functions to debug help [Yor]
+	* Corrected a double sql free (char.c) SQL [Yor]
+	* Begining harmonization of Char TXT en SQL [Yor]
+
+10/18
+	* Corrected RFIFOREST in packet 0x2b16 (char.c SQL) [Yor]
+	* Corrected an error in 0x2b05 (char.c SQL) [Yor]
+	* Moved an incorrect mysql_free_result(sql_res) in delete char (char.c sql) [Yor]
+	* Added anti-freeze interval (TXT) [Yor]
+	* Added anti-freeze interval (SQL) [Yor]
+	* Fixed: in inter_guild_fromsql, initialize guild structure only if if necessary [Yor]
+	* Improved: Now, password of a client is accepted until 24 char, and admin pass too (TXT/SQL version) [Yor]
+	* Fixed maximum number of items to read in storage/guild_storage files (TXT version) [Yor]
+	* Fixed: when reading txt storage/guild_storage, read only possible items and not read more than possible [Yor]
+	  That fixs also the changement of the max value too at reading.
+	* Added 1 missing free sql in packet 0x2722 [Yor]
+	* Added 1 missing free sql in packet 0x2724 [Yor]
+	* Added 1 missing free sql in packet 0x2725 [Yor]
+	* Added 2 missing free sql in packet 0x2727 [Yor]
+	* Added 1 missing free sql in packet 0x272a [Yor]
+
+10/17
+	* Added mail.c/h files from eathena RC5 for futur compatibility [Yor]
+	* Added 2 missing freesql change sex GM command [Yor]
+	* Added 1 missing free sql in packet 0x2b0e [Yor]
+	* Added 1 missing free sql in char select! [Yor]
+	* Added 1 missing free sql in char sdeletion, and move an inccorect free sql [Yor]
+	* Added a missing freesql in wisp system [Yor]
+	* Fixed: when reading sql storage/guild_storage, read only possible items and not read more than possible [Yor]
+	  That fix also the changement of the max value too at reading.
+	* removed: db_use_sqldbs option from char-sql server, not more used [Yor]
+	* Fixed final NULL of emblem at saving [Yor]
+	* Improved battle config read function [Yor]
+	* Added GM commands like eathena: [Yor]
+	  @summon
+	  @adjgmlvl
+	  @adjcmdlvl
+	  @trade
+	  @setbattleflag
+	  @unmute
+	* Used dynamic allocation for buffer in clif_GMmessage/clif_guild_message/clif_disp_onlyself/clif_parse_GlobalMessage/clif_parse_Wis functions [Yor]
+	* Improvement of auto-ip: set default ip to 127.0.0.1 [Yor]
+
+10/16
+	* Fixed strescape for MOTD (packet 0x2b16) [Yor] - thanks to Devil
+	* Improved: use dynamic allocation for message in mapif_parse_WisToGM [Yor]
+	* Changed memory allocation to 25 bytes instead of 29 (item_db.c). [Yor]
+	* Set default auto-ip for char servers [Yor]
+	* Corrected: check inter_guild_fromsql only if guild exist (int_guild.c, sql version) [Yor]
+	* Set default auto-ip for map server [Yor]
+	* Updated sockets [Yor]
+	* Improved map_delblock function (less calculations) [Yor]
+	* Added area_size config option to stay compatible with eAthena config file [Yor]
+	* Added a better test for guildcastle guardian about allies [Yor]
+	* Added missing fclose(fd) when reading db/attr_fix.txt and db/size_fix.txt files [Yor]
+	* Correction of some LOOTITEM_SIZE by PETLOOT_SIZE in pet.c (thanks to Valaris) [Yor]
+	* Added castrate_dex_scale config option to stay compatible with eAthena config file [Yor]
+	* Renamed 'petals' to 'sakura' [Yor]
+	* Added script commands of eAthena to stay compatible with their scripts [Yor]
+	* Correct pass length of auth_dat for use_md5_passwds option [Yor]
+	* Deleted storage.txt commited by error [Yor]
+	* Define MAX/MIN COLOR/STYLE in battle.conf [Yor]
+	* Now @mapexit do a better shutdown (stop main loop) [Yor]
+	* Added a missing '#ifndef LCCWIN32' in core.c [Yor]
+	* correction of db_insert (db.c) [Yor]
+	* Added 2 missings #ifdef MALLOC_DBN (db.c) [Yor]
+	* clean up correctly timers at end of map-server [Yor]
+	* Added missing { } in socket.c [Yor]
+	* Added 'Freya' in tools files [Yor]
+	* Added 'Freya' in webserver files [Yor]
+	* Correction of skills database for 2 skills [Yor]
+	* Updated pets/monstares databases according with official english RO [Yor]
+	* Updated items databases according with official english RO [Yor]
+	* Corrected const.txt errors (from 1068 to 1077) [Yor]
+
+***** Freya v1.1.1 - Released !!
+***** --------------------------
+
+10/15
+	* Readded in input script function the check of negativ value (to avoid exploit) (script.c) [Yor]
+	* Improved guardians recognize and added some NULL check in mob.c [Yor]
+	* Close db/refine_db.txt file after reading [Yor]
+	* Update player status when pet is equiped or unequiped (pet.c) [Yor]
+	* Corrected a compilation error under LCCWIN32 (script.c) [Yor]
+	* Corrected Elder monster id 1376-&gt;1377 in database [Yor]
+	* Corrected missing declard variable (login SQL) - Sorry, incorrect file commited [Yor]
+	* Win32 for TXT version complete, no warning [MagicalTux]
+	* ladmin : now compiles under win32 [MagicalTux]
+	* map-server : removed last warning on win32 [MagicalTux]
+	* map-server is now win32 compatible [MagicalTux]
+	* char-server is now win32 compatible [MagicalTux]
+	* login.c : Fixed Win32 support [MagicalTux]
+	* grfio.c : types back to CHAR/WORD/DWORD since it's ok [MagicalTux]
+	* grfio.c, utils.c, utils.h, etc... : fixed all warnings when compiling
+	  Win32 version [MagicalTux]
+	* grfio.c : Changed type CHAR/WORD/DWORD to GRFCHAR/GRFWORD/GRFDWORD
+	  because the initial types were already existing in the Win32 API.
+	  They are probably the same but I need to make it sure before doing
+	  such changes. [MagicalTux]
+	* Makefile.win32 : new makefile for win32 cross-compiling from Linux [MagicalTux]
+	* src/common : added Win32 support [MagicalTux]
+	* configure : --with-win32 works ! [MagicalTux]
+	* configure : Fixed bug on gcc enforcer via env. var CC [MagicalTux]
+	* configure : Added option --with-win32 to build Win32 native Freya [MagicalTux]
+	* Correction of packet 0x06 length [Yor]
+	* Little improvement of dynamic ip ban: [Yor]
+	  - remove eof=1 to display message with any client
+	  - check previous ban_until_time to not change it if not necessary
+	  - check dynamic banned ip correctly (inside check_ip)
+	  - improved logs of banned ip for any type of baned ip
+	* Added check_ip like TXT version (based on login_athena.conf)
+
+10/14
+	* Improved mmo_auth function in SQL version: [Yor]
+	  - less requests (and reduciton of asked fields)
+	  - simplified dynamic ip ban
+	* Fixed size of some fgets [Yor]
+	* Styling in ladmin.c [Yor]
+
+10/13
+	* Fixed size of some fgets [Yor]
+	* Changed name of ladmin (eAthena -&gt; Freya tool) [Yor]
+	* Harmonized login TXT with login SQL (continue): [Yor]
+	  - Sended a different key for encrypted password (SQL login version)
+	  - Harmonized mmo_auth more
+	* Added missing mysql_free_result in mmo_auth (login sql) [Yor]
+	* Harmonized login TXT with login SQL (continue): [Yor]
+	  - Authorized connection of ladmin in login (SQL) - only 1 function: version
+	  - some minor corrections
+	* Correction of battle.conf read (write error: sizeof(line-1) instead of sizeof(line)-1) [Yor]
+
+10/12
+	* Added read of item_drop_use_min and item_drop_use_max configuration option [Yor]
+	* Move mysql_free_result(sql_res); in correct place (memitemdata_to_sql function) [Yor]
+	* Use struct script_data for npc_stackbuf variable [Yor]
+	* Improvement of items savings (step 2 - terminated): [Yor]
+	  - removed struct itemtemp not more used [Yor]
+	  - used 2 limited arrays, remove 4 memory allocations
+	  - send in 1 request new items
+	  - send in 1 request all deletionss
+	  - use maximum of item id before to removed excess id
+	  - reduction of tests (don't load items that are already in database in memory)
+	  - removed item_db from char -server. not more used.
+	  - ... so, rewriten all the function.
+	* Improvement of items savings (step 1): [Yor]
+	  - all work is done 1 only 1 function (removed duplicated code)
+	  - function if called by pointer and with less variables
+	* configure : Makefile generation improved [MagicalTux]
+	* configure : added more informations in config.h [MagicalTux]
+	* configure : added PACKETVER and NEW_006b in config.h [MagicalTux]
+	* configure : added check for GNU install [MagicalTux]
+	* configure : Detects duplicated libs correctly and remove them [MagicalTux]
+	* configure : More infos in config.h (and escapes them correctly) [MagicalTux]
+	* configure : adds MySQL libs & includes [MagicalTux]
+	* configure : Detects CYGWIN and set define if required [MagicalTux]
+	* Makefile : fixed a typo (MKDEV-&gt;MKDEF in sql-common) [MagicalTux]
+	* configure : now displays mysql version when detected [MagicalTux]
+	* configure : added checks for libm (maths) [MagicalTux]
+	* configure : now the sane environement detection cleans created files [MagicalTux]
+	* configure : added zlib checks - also detects version [MagicalTux]
+	* configure : added --with-zlib to change path to zlib [MagicalTux]
+	* configure : changed --set-packetver to --with-packetver [MagicalTux]
+	* configure : new option --with-optimize=no|low|std|high|size [MagicalTux]
+	* configure : new option --without-debugger for light binaries [MagicalTux]
+	* configure : now detect if -lintl is required for GetText [MagicalTux]
+	* configure : removed parsing of --set-* options [MagicalTux]
+
+10/11
+	* Corrected count_users function (char server, SQL version) [Yor]
+	* Corrected some memory problem in saving of items (SQL version): [Yor]
+	  - use pointer in struct itemtemp. no more limit now (no more overflow)
+	  - begin counter at 0 (instead of 1)
+	  - add a test on quantity when reading SQL database
+	  - change some tests
+	  - improve check of same items
+	* Changed struct itemtemp definition to use biggest storage size [Yor]
+	* Updated some html files [Yor]
+	* Set svn:eol-style=native flag on some files (all in src/ conf/ sql/ etc..) [MagicalTux]
+
+10/10
+	* Harmonized login TXT with login SQL (continue): a lot of things - more [Yor]
+	* Harmonized login TXT with login SQL (continue): a lot of things. [Yor]
+	* Create a function to to save log in db (Login SQL) - now only 1 line is needed to write a log [Yor]
+	* Harmonized login TXT with login SQL (continue) [Yor]
+	  - used display_parse in SQL
+	  - Correction of unfree memory when GM level was 0 in the database.
+	  - Added of admin parse (commented) for futur usage.
+	* Beginned to harmonize login TXT with login SQL [Yor]
+	  - used check_ip_flag instead of compilation directiv
+	  - used same ip check for LAN
+	* Restored FIFOSKIP in MACRO (removed from function type): [Yor]
+	  - more speed (not need to use stack to call function)
+	  - less variable and no return value
+	  - usage of __FILE__ and __LINE__ to have file and line of error.
+	* Removed malloc.c replaced by macro included in malloc.h (more simple, with improvement and more speed) [Yor]
+	* Updated usage of t_name in parse_char() - char.c [PoW]
+	* Used now pointer for npc_src_list (name) [Yor]
+	* Used now pointer for npc_item_list (shop_item) [Yor]
+
+10/09
+	* Fixed void name error in @follow Gm command [Yor]
+	* Add some forgotten CALLOC [Yor]
+	* Improved some alloc more [Yor]
+	* Improved memory management in script.c [Yor]
+	* Corrected memory allocation in npc_enable_sub: alloc was done even if not used (and after never free) [Yor]
+	* Improved memory management in mob.c [Yor]
+	* Correction of pc_statpointdb (pc.c): free buffer after usage, don't read file if file doesn't exist [Yor]
+	* Corrected guild_isallied() function in guild.c - Did not check for opposition flag [PoW]
+	* Added a free on lootitem before to realloc new lootitem (memory was never free) in pet_lootitem_drop (pet.c) [Yor]
+	* Corrected length of string in guild_gvg_eliminate_timer (guild.c) [Yor]
+	* map-server: begin to improve memory allocation [Yor]
+	* Corrected memory allocation in battle_delay_damage: alloc was done even if not used (and after never free) [Yor]
+	* Improved memory free in all map-server [Yor]
+	* Corrected unused variable with cygwin [Yor]
+
+***** Freya v1.1.0 - Released !!
+***** --------------------------
+
+10/08
+	* Added workaround for bogus cygwin behaviour in some cases [MagicalTux]
+	* Improved memory management in skill.c [Yor]
+	* Fixed warnings in script.c [MagicalTux]
+	* Improved memory free in script.c [Yor]
+	* Added charset support in GetText [MagicalTux]
+	* Improved memory management in map.c and storage.c [Yor]
+	* Char-sql. terminated to improve memory management [Yor]
+	* Char-sql. continue to improve memory management [Yor]
+	* Fixed map crash bug in clif_send() - Check to see if session exists. [PoW]
+	* Char-sql. begin to improve memory management [Yor]
+	* Do some styling in char.sql, begin to use better memory management [Yor]
+	* Added experimental configure script [MagicalTux]
+	* Added SQL null check for char sex query in parse_fromchar() login.c [PoW] 
+
+10/07
+	* Changed way gettext is called (faster now) [MagicalTux]
+	* Fixed few GetText issues in npc menus [MagicalTux]
+	* Fixed GetText's memory being freed by Freya [MagicalTux]
+	* Some modification in login-server (SQL): [Yor]
+	  Added some commented (TXT) packets for futur usage
+	  Improved some checks of the server.
+	  Styling in login-server (SQL).
+	* Fixed bug related to Cygwin + GetText + SQL on map Makefile [MagicalTux]
+	* Improved memory management in char-converter and clean up it a little [Yor]
+	* Improved memory management in login-server (TXT) [Yor]
+	* Improved memory management in common files [Yor]
+	* AIS: Fixed symlinks and added "DEBUG" parameter for lighter binaries [MagicalTux]
+	* Improved Makefile to make it more easy to edit [MagicalTux]
+	* Fixed GetText under windows (works now) [MagicalTux]
+	* Clean up socket.c/h. [Yor]
+	* Some little corrections in help.txt, gmcommands.html, atcommand_athena.conf. [Yor]
+
+10/06
+	* Modified npc_event_do_clock() to include days of the week. [PoW]
+	* AIS: Now ignoring if make clean fails [MagicalTux]
+	* Used macros CALLOC/REALLOC/FREE on TXT-converters [Yor]
+	* Cleaned up login-converter a little [Yor]
+	* Added macros CALLOC/REALLOC/FREE, and begin to use them (char TXT) [Yor]
+	* Harmonized atcommand.c with help.txt [Yor]
+	* Fixed segmentation fault in chrif_char_offline [Yor]
+
+10/05
+	* Hamonized gmcommands.html with help.txt. Removed help.txt in doc directory: use gmcommands.html now [Yor]
+	* Added a few general fixes to map-server [PoW]
+	   - Fixed buildin_setmapnosave
+	   - Fixed buildin_mobcount
+	   - Updated loop in disp_error_message function
+	   - Corrected spelling errors
+	* Added t_member[24] into int_party.c to prevent SQL errors with single quotes [PoW]
+	* Added min_level_to_bypass in char_athena.conf [Yor]
+	* Added old forTXTdev.txt for dev [Yor]
+
+10/04
+	* Improved gettext support. Now detects when locale is missing [MagicalTux]
+	* Fixed bug with gettext support not compiling with cygwin [MagicalTux]
+	* Set version 1.0.2 in version.h [Yor]
+	* Removed display of set eof at screen (commented) [Yor]
+	* Corrected Elder Willow drops [Yor]
+	* Suppressed help.txt in main directory (it's in README.html) [Yor]
+	* remove TODO completed from TODO file [Yor]
+	* GetText support for NPCs complete [MagicalTux]
+	* GetText init. function done and working [MagicalTux]
+	* Fixed @charkillable display [Yor]
+	* Fixed HT_DETECTING Sniper skill_tree [Yor]
+	* Implementing GetText support in map_server for NPCs [MagicalTux]
+	* Added GetText things and fixed npcs.po file in fr_FR [MagicalTux]
+	* Fixed overflows and removed duplicated keywords at display in @help [Yor]
+	* Corrected a test in clif_parse_UseSkillToId about skills [Yor]
+	* Corrected guild max_member in int_guild.c [PoW]
+	* Added PHONY rules in the Makefile for building locales (requires GetText) [MagicalTux]
+	* Added French locales files (no support yet) [MagicalTux]
+	* Added SQL IP ban options in login_athena.conf [PoW]
+
+10/03
+	* Corrected parse system of kami(b) ladmin command [Yor]
+	* Added all required SQL options/settings in inter_athena.conf [PoW]
+	* Fixed socket size in ladmin.c [Yor]
+	* Improved @help to accept any keywords in help.txt: [Yor]
+	  - use key word: to create a keyword
+	* Fixed reduction of MAX_GUILD & MAX_GUILDPOSITION (SQL) [PoW]
+	* Improved @help GM command to accept page number (each page have 50 lines) [Yor]
+
+10/02
+	* Corrected sending of kami message in ladmin (perl) by addition of NULL terminated [Yor]
+	* Removed informations in file of log directory [Yor]
+
+***** Freya v1.0.1 - Released !!
+***** --------------------------
+
+10/02
+	* Added use_MD5_passwords option to login_athena.conf [PoW]
+	* Fixed some levels in GM commands: [Yor]
+	  - @help is necessary for people at least level 1 (instead of 20). Level 0 is for normal player, and special command must be indicated by the administrator.
+	  - @mapinfo is to know what's happens on a map in game. So, for GM chief (80), not for administrator (99)
+	  - @charkillable: that concerns other player, level: 40-&gt;60
+	  - Removed duplicate GM command from atcommand_athena.conf.
+	  - Fixed some explanation in help.txt
+	  - Added @killer and @npcmove in help.txt.
+	* Fixed SQL max storage & guild storage bug. [PoW]
+	* Set version to 1.0.1 [Yor]
+	* Created upgrade_1.0.1_database.sql - Upgrade query for 1.0 -&gt; 1.0.1 [PoW]
+	* Scripts: warpa/warpa2: correction of warpa position at Morocc [Yor]
+	* IMPORTANT BUG: Modify check at reading and writing sockets [Yor]
+	* Corrected invalid variable (@item-&gt;@itemid) in refine.txt [Yor]
+	* Corrected calculation of Meditation in heal skill [Yor]
+	* Corrected exp.txt about high novice experience [Yor]
+	* Little work on atcommand.c: [Yor]
+	  - added some initialization of char structures
+	  - correct job tests in atcommand_character_joblevel and atcommand_joblevelup
+	  - correct some test
+	  - simplify some GM commands
+	  - remove a duplicate GM command
+	  - Changed some messages
+	  - some styling
+	* Updated item_db in database.sql [PoW]
+	* Added website on some files [Yor]
+	* Rewriten Changelog.txt to have only Freya changing [Yor]
+	* Fixed filenames in freya_ais.sh to work with SQL version [MagicalTux]
+	* Fixed freya_ais.sh to work with cygwin [MagicalTux]
+
+***** Freya v1.0.0 - Released !!
+***** --------------------------
+
+10/01
+	* Changed readme direactory files for name: eathena -&gt; freya [Yor]
+	* Added the 'freya_ais.sh' script in scripts [MagicalTux]
+	* Added a 'scripts' directory [MagicalTux]
+	* Changed changelog.html for name eathena -&gt; freya [Yor]
+	* Fixed error returning in Makefile. Now when an error happens it
+	  stops compiling [MagicalTux]
+	* Updated docs. [PoW]
+	* Added displaying in makefile. Clean GNUMakefile on 'make clean' [Yor]
+	* Improved ingnore list management: [Yor]
+	  - creation of a compil constant: MAX_IGNORE_LIST
+	  - rewrited clif_parse_PMIgnore function (for /ex and /in)
+	* Corrected errors in clif.c after changing of is_atcommand function [Yor]
+	* Update rules.txt with new configuration of the sources [Yor]
+	* Update some files of conf directory with new name: Freya [Yor]
+	* Update files of head directory with new name: Freya [Yor]
+	* update deletion batch for new structure (object_del.bat) [Yor]
+
+09/30
+	* Added option to enable/disable mute system in battle_athena.conf [PoW]
+	* Completed 'make sql' makefile system. [PoW]
+	* Corrected of sockets: [Yor]
+	  - reuse only TCP_NODELAY. it's a game online, all packets must be send immediatly
+	  - set back lisen(fd, 5) instead of listen(fd, 5): use a little less memory and reduce attack by DoS (deny of service) possibilities
+	* Corrected clean (make) to clean correctly objet file in map-server [Yor]
+	* Corrected makefile for any compilations [Yor]
+
+09/29
+	* Added a forgotten fclose in grfio.c [Yor]
+	* Corrected initialisation and tests about char_fd and chrif_state (chrif.c) [Yor]
+	* Fixed reading of guilds: [Yor]
+	  If MAX_GUILD or MAX_GUILDPOSITION was changed, guild.txt file can be readed (increased or reduced)
+	  Increased size of buffer to read line and part of line.
+	  Improved sscanf search to gain speed.
+	  Idded somem check to avoid some errors.
+	* Removed test inside ladmin.c about characters used to create an account. it's tested inside login-server [Yor]
+	* Changed eathena by freya inside motd.txt [Yor]
+	* Added 'alive' packet (0x2718) from login to char to check connection [Yor]
+	* Fixed writing of socket: [Yor]
+	  do a loop until than all informations are sended.
+	* Improved login.c: [Yor]
+	  - displaying dual connection of char-server when login-server had not already disconnected it
+	  - reduced freeze system from every 6 seconds to every 5 seconds
+	* Improved char.c: [Yor]
+	  speed up sorting by name (without case sensitive) in online file
+	  fixed login_fd tests: login_fd &gt; 0 or login_fd &lt;= 0
+	  initialised login_fd at -1
+	  styling
+	* Fixed reading of socket: [Yor]
+	  Limited non-server fifo data size to 32767 (instead of 65536), and disconnect it if it used more than 32767-12800 bytes (probably a hacker)
+	  set lisen(fd, 10) instead of listen(fd, 5)
+
+09/28
+	* Fixed reading of socket: [Yor]
+	  on a lot of bytes to read, try to read a maximum of the packets to work on in the next pass/step instead of to wait next pass/step
+	  That reduce a lot of lag with important information between servers (example: don't wait so read all saved characters before to work on other packets)
+
+09/27
+	* Removed macros CREATE/RECREATE and use in all software aCalloc/aRealloc [Yor]
+	  no more confusion with CREATE of SQL and better function.
+	* Use malloc.c function instead of macros of utils.h [Yor]
+	* Added malloc.h/o in makefile of ladmin [Yor]
+
+09/26
+	* suppressed some difference between TXT and SQL on mmo.h [Yor]
+	* Used same malloc.c/h in TXT and SQL [Yor]
+	* Used same nullpo.c/h in TXT and SQL [Yor]
+	* Used same lock.c/h in TXT and SQL [Yor]
+	* Used same grfio.c/h in TXT and SQL [Yor]
+	* Used same db.c/h in TXT and SQL [Yor]
+	* Used same socket.c/h in TXT and SQL [Yor]
+
+09/25
+	* Used same time.c/h in TXT and SQL [Yor]
+	* Added utils in common directory [Yor]
+	* Added mmo.h in makefile of common directory [Yor]
+	* Added new name at start of server [Yor]
+
+09/24
+	* char.c (and char-server), some changes: [Yor]
+	 - counter on remove_control_chars instead of flag
+	 - rename subneti/subnetmaski to subnet/subnetmask
+	 - Include in all char-server usage of malloc.h.
+	 - in mmo_char_sync, use a local variable (account_id) to speed up the sorting
+	 - Styling
+	* login.c, some changes: [Yor]
+	 - Create a 'char * access_ip' to not use same name of another variable (check_ip and check_ladminip)
+	 - Reduce size (32-&gt;16) of buf in check_ladminip
+	 - Suppress duplicate code in mmo_auth_init
+	 - Set global 'int acc' in parse_fromchar function
+	 - Change test/check on admin_state (compare with 0 or not 0, speeder)
+	 - Add some close and reset of variable in 'do_final'
+	 - Suppress usage of set_termfunc (duplicated called with atexit)
+	 - Styling
+
+09/23
+	* login.c, some little changes: [Yor]
+	 - counter on remove_control_chars instead of flag
+	 - line counter in read_gm_account, to give correct information
+	 - rename subneti/subnetmaski to subnet/subnetmask
+	 - Added new malloc.h for login-sever (replaced calloc/realloc by new functions, remove check about memory allocation failing)
+	 - in mmo_auth_sync, use a local variable (account_id) to speed up the sorting
+	 - styling
+	* Created a previous file to secure all files [Yor]
+	* Added rules of the team [Yor]
+
+FREYA BEGIN HERE, based on eAthena 1.0 RC4
+</textarea>
+
+<h2 class="header">This Is The Current Changelog</h2>
+<textarea width="100%" height="400px" style="width:100%;height:500px" name="code" wrap="logical" rows="21" cols="42">
+Date	Added
+
+08/18/2005
+	* Fixed: title of the html help to create GRFs [Yor]
+	* Added: How to: Create GRFs for your Server in readme.html [Yor] (thanks to [Jodaho] for his authorization)
+	* Added: Patch server guide in readme.html [Yor] (thanks to [Jodaho] for his authorization)
+	* Updated: site adress [Yor]
+	* Fixed: crash on Deluge/Volcano/ViolentGale [Yor] (from eA dev team, posted by [Akrus] on freya's bug report)
+	* Improved: simplify code of @users gm command [Yor] (jA code is too complex)
+	* Fixed: Character creation denied! error [Yor]
+	* Fixed: first auto increment value of char_id in `char` SQL table [Yor]
+	* Improved: @request messages: remove loop done twice [Yor]
+
+08/17/2005
+	* Improved: @request messages [Yor] (thanks to [akrus] for the code and the idea)
+	* Added: @contactgm (like @request) [Yor]
+	* Added: @users from jA [Yor]
+	* Updated: db.c/h from jA [Yor]
+	* Fixed: don't give status points if player already have maximum in each stat [Yor]
+	* Updated: don't call more than once signal function [Yor]
+	* Updated: indoors mapflag [Yor] (thanks to [GARTZ] for his work)
+	* Fixed: an invalid SQL syntax in changesex function [Yor] (thanks to [Mikey] from freya's bug report)
+
+08/16/2005
+	* Added: check of refine value when reading a item from player's database [Yor]
+	* Fixed: refine bug on script (buildin_successrefitem function): [Yor]
+	         how to have more than +10 in refine (thanks to NO-IP for information):
+	         1. wear low refine eq lower then 10 (maximum)
+	         2. click npc to refine untill "yes/no" menu promp
+	         3. just enter any vending shop/other ppl trade with target
+	         4. accept it and then cancle/for vending just click cancle then, after that all open menu will be close (refine menu and trade/shop menu)
+	         5. wear +10 eq
+	         6. click refine npc then click next
+	         7. tarda your eq will be +11 and so on.
+	* Fixed: don't ack a storage if saving was not done [Yor]
+	* Fixed: if a character is not in char-server memory, reload it (after a char-server crash for example) [Yor]
+	* Fixed: warning compilation on some systems [Yor]
+
+08/15/2005
+	* Added: new options to costumize zeny penalities: [Yor]
+	         zeny_penalty: number of zeny lost (can be negativ too).
+	         zeny_penalty_percent: each 100 is 1% of their zeny.
+	         zeny_penalty_by_lvl: number of zenys lost for each base level (can be negativ too).
+	         note: Addition of all zeny penalties can not give zenys to the player.
+	               zeny_penalty is not more a percent.
+	* Added: new options to costumize death penalities by levels (by block of levels) [Yor]
+	* Fixed: death penalty and pk mode [Yor]
+	* Improved: death penality type can be different for base exp and job exp [Yor]
+	* Fixed: Apple of Idun [Yor]
+	* Improved: signal management [Yor]
+	* Added: FAQ about "Program received signal SIGPIPE, Broken pipe." error. [Yor]
+
+08/14/2005
+	* Changed: authorize 1 emotion icon every second (instead of 1 every 2 seconds). [Yor]
+	* Updated: Endure, Tiger Fist, Chain Crush, Palm Push Strike, and Chemical Protection skills [Yor]
+	* Fixed: guild passiv skills [Yor] (from [celest] works in eA)
+	* Added: @adjgmlvl/@adjgmlvl GM command in help and atcommand_athena.conf [Yor]
+	* Added: --without-debug option in configure script [Yor]
+	* Changed: debug option is enabled by default. [Yor]
+	* Added: don't calculate a new move if destination is the same of the previous [Yor]
+	* Fixed: an invalid check in pc_walktoxy function [Yor]
+	* Added: a message to player when he is (un)disguised by a GM command [Yor]
+	* Fixed: a typo in socket.c [Yor]
+	* Fixed: in npc_event_dequeue a typo bug [Yor]
+
+08/13/2005
+	* Added: some jA script commands: [Yor]
+	         dispbottom
+	         getusersname
+	         recovery
+	         getpetinfo
+	         checkequipedcard
+	         jump_zero
+	         select
+	         globalmes
+	         getmapmobs
+	* Fixed: npc_event_dequeue (you can have more than 1 event name ;) ) [Yor]
+	* some styling [Yor]
+	* Updated: Rewrite basilica code [Yor] (based on eA code)
+	* Added: bAddItemHealRate [Yor]
+	* Updated: items healing calculation [Yor]
+	* Updated: skill_unit_db.txt [Yor]
+	           that will fix some skill's bugs/errors -&gt; thanks to report correction in bug report to close the report
+	* Fixed: typo in @(char)heal GM commands HTML help [Yor] (thanks to [JB] from freya's bug report)
+	* Fixed: a message in @adjgmlvl when the GM already has the right level [Yor]
+
+08/12/2005
+	* Improved: storage saving (not save again if saving is confirmed) [Yor]
+	* Updated: steal formula chance : missed the random value [Yor]
+	* Fixed: international charsets [Yor]
+	         note: need to do 'make clean', then 'make'
+
+08/10/2005
+	* Fixed: warp display when a hidden GM changes map [Yor]
+
+08/09/2005
+	* Fixed: warning in battle_check_range [Yor]
+	* Updated: reuse new version of battle_check_range (now, I hope that works correctly with walls and skills) [Yor]
+	* Updated: from jAthena: 1087-&gt;1115 [Yor]
+	           It's big update. Please, report possible bug. Thanks.
+
+08/08/2005
+	* Fixed: incorrect check in search_path_long [Yor]
+	* Fixed: looter and cloaking/chasewalk skill: [Yor]
+	       - now, player can get his own item (if put on the ground) and items of which he is main killer of the mob
+
+08/07/2005
+	* Updated: db.c/h to help for debug if necessary [Yor]
+	* Added: @npctalk and @pettalk GM commands [Yor]
+	* Added: internal name of NPC in @mapinfo GM command [Yor]
+	* Fixed: @unban GM command will works, but account was not saved -&gt; no unban [Yor]
+	* Fixed: sell price of Tom Yum Goong (quest item) [Yor]
+	* Fixed: Boss monsters will no longer be pushed away by knockback skills. [Yor] (based on [Mikey] from freya's bug report)
+	* Fixed: cloaking and take item: bug that can cause people not in cloaking can not take an item [Yor]
+	* Fixed: synchronize players's saving of marriage and divorce [Yor]
+	* Updated: some cards [Yor]
+	* Updated: Bleeding effect [Yor]
+	* Fixed: an incorrect check for cloaking skill [Yor]
+	* Fixed: items price with 0/NULL zeny [Yor]
+
+08/06/2005
+	* Added: display number of users of each map-server on char-server [Yor]
+	* Improved: some pet code [Yor]
+	* Updated: berserk skill: require job level 50 [Yor]
+	* Updated: item_db and mob_db [Yor]
+	* Added: card effect 'bonus2 bAddRace2', bHPGainValue, bSubSize, bDamageWhenUnequip [Yor]
+	* Removed: athena_backup.txt file (old saving system) [Yor]
+	* Added: 2 new rows for items' drops of monster (to be compatible with eAthena DB) [Yor]
+	         NOTE: If you use SQL mob_db, you must recreate the table
+
+08/05/2005
+	* Updated: item_db.sql / mob_db.sql [Yor]
+	* Added: code to generate SQL script to create item_db.sql [Yor]
+	* Improved: code to generate SQL script of mod_db.sql (add comments too) [Yor]
+	* Updated: price of Ghost Doll [Yor]
+	* Fixed: main.sql errors [Yor]
+	* Fixed: Concentration SKILL of Lord Knights [Yor] (thanks to [Gawaine] from freya's bug report)
+	* Fixed: skill through wall: restored previous code of battle_check_range [Yor]
+	* Fixed: not more possible to ban/block server account (id 0) from the game, but it's possible from ladmin [Yor]
+
+08/04/2005
+	* Fixed: reload of GM levels after crash of char-server (GM level become all to 0) [Yor]
+	* Splitted: database.sql -&gt; item_db.sql + mob_db.sql [Yor]
+	* Improved: saving system: [Yor]
+	            - not save recent saved people (with auto-save)
+	            - try to save all players at end of map-server (not recently saved)
+	* Fixed: cloaking and Chase Walk mode [Yor] (thanks to [mikey] from freya's bug report)
+	* Fixed: cloaking looting [Yor]
+	* Fixed: a check in skillattack function [Yor]
+	* Fixed: sharpshooting skill [Yor]
+	* Fixed: frost nova skill (that will an extra hit) [Yor] (code from eAthena)
+	* Corrected: Corrected Vulcan Arrow's hits in skill_db [Yor]
+	* Fixed: repetitiv dissonnance on died target [Yor]
+	* Fixed: bug on guild invitation [Yor]
+
+08/03/2005
+	* Added: script command: isequippedcnt [Yor]
+	* Added: some cards effects [Yor]
+	* Added: script config for events [Yor] (like eAthena)
+	* Added: effects bBreakWeaponRate/bBreakWeaponRate/bAddStealRate [Yor]
+	* Updated: Parrying casting time [Yor]
+	* Added: option to generate SQL script to create SQL mob_db from TXT mob_db (only for SQL version) [Yor]
+	* Changed: default area_size: 14-&gt;16 [Yor]
+
+08/02/2005
+	* Improved: blockskills [Yor]
+	* Improved: pc_authok (not necessary to init '0' values twice) [Yor]
+	* Updated: Investigate's damage calculation [Yor]
+	* Improved: try to spawn on prontera.gat if save point map doesn't exist [Yor]
+	* Fixed: Two memory leaks [Yor]
+
+08/01/2005
+	* Updated: unbreakable weapons [Yor]
+	* Fixed: custom statpoints DB reading [Yor]
+	* Updated: sharp shooting from eA code [Yor]
+	* Added: isequiped script command [Yor]
+	* Improved: no_equip checks [Yor]
+	* Updated: mob_db.txt/item_db.txt (with new cards) [Yor]
+	* Updated: @spawnall(small|big)(agro) gm command: Level from 50 to 60 [Yor]
+
+07/31/2005
+	* Updated: traps to affect allies in GvG [Yor]
+	* Added: @spawnall(small|big)(agro) gm command to spawn on each(all) online player(s) [Yor]
+	* Fixed: number of memo points [Yor]
+
+07/30/2005
+	* Updated: some skills: Soul Breaker, Sharp Shooting, Ankle Snare, Magnum Break, Tiger Fist, Devotion and Soul Burn [Yor]
+	* Fixed: lost of sp in pressure skill [Yor]
+	* Fixed: a crash in a script command [Yor]
+	* Added: isnight/isday script commands [Yor]
+	* Improved: memo saving [Yor]
+	* Added: start value of `char_id` 's autoincrement at creation of database [Yor]
+
+07/29/2005
+	* Added: a FAQ [Yor]
+
+07/27/2005
+	* Fixed: emblem.php script (thx to evos) [LebrEf]
+
+07/23/2005
+	* Added: @mi gm command = @mobinfo [Yor]
+	* Fixed: some keys in help.txt [Yor]
+	* Fixed: remove phenomena card from deviling drops [Yor]
+
+07/22/2005
+	* some styling [Yor]
+	* Improved: Sharp Shooting skill [Yor] (based on eA)
+	* Fixed: Non-MVP / miniboss summoned monsters should give exp [Yor]
+	* Improved: After some bots adaptation, use better anti-bot system [Yor]
+	* Improved: compatibility of char-server (SQL/TXT) with all map servers type [Yor]
+	* Fixed: don't init sql connection in map-server if we don't use it [Yor]
+	* Improved: management of some dynamic arrays [Yor]
+
+07/21/2005
+	* Improved: some codes in status.c [Yor]
+
+07/20/2005
+	* Fixed: exploit with OC/DC prices at reading of database -&gt; buying price automatically changed [Yor]
+	* Updated: Joint Beat [Yor]
+	* Fixed: a crash with Ice wall skill [Yor]
+	* Improved: Updated skill_range_leniency code when casting a ground targetting spell [Yor] (code for [Celest])
+
+07/19/2005
+	* Fixed: a bug in Pressure skill [Yor]
+	* Improved: to check skills for GM, check 'gm_skill_unconditional' battle conf instead of &gt;= 20 [Yor]
+	* Added: manner and karma definitions in const.txt [Yor]
+	* Fixed: creation of guild with a " (@guild GM command): you can not use /breakguild command [Yor]
+	* Added: possibility to use "name" in @guild/@party GM commands [Yor]
+	* Fixed: a bug in '/in' [Yor]
+	* Added: /ex command (to have list of blocked people) [Yor]
+
+07/18/2005
+	* Some styling [Yor]
+	* Restored: start Makefile [Yor]
+	* Added: 'id' flag in SVN system for some files [Yor]
+
+07/17/2005
+	* Fixed: a crash in Safety Wall skill [Yor]
+	* Added: macros to check skills values errors (2 types of macro, with/without level) [Yor]
+	* Improved: reset of lootitem structure in pet_lootitem_drop function [Yor]
+	* Fixed: the '15 sec' bug when no map-servers is online [Yor]
+	* Added: @changelook(inspired from Celest's idea)/@charchangelook (just for fun) [Yor]
+	* Improved: save character when it changes job (important operation for a character) [Yor]
+	* Fixed: a bug in Safety Wall skill [Yor]
+	* Fixed: Allow only either Storm Gust or Lord of Vermillion to cause damage if stacked together [Yor] (found in eAthena code)
+	* Added: listened ip support for char and map servers [Yor]
+
+07/15/2005
+	* Fixed: online.html when only it is displayed [Yor]
+
+07/14/2005
+	* Fixed: Deletion of items in pc_useitem [Yor]
+	* Updated: set executable flag on some .sh [Yor]
+
+07/13/2005
+---------- NEW SVN -----------------
+
+07/12/2005
+	* Changed: CELL_CHKTYPE -&gt; CELL_GETTYPE (more logical) [Yor]
+
+07/11/2005
+	* Fixed: HP of guardian and emperium when spawned [Yor]
+	* Fixed: HP of guardian and emperium [Yor] (thanks for euph for a part of this code)
+	* Added: status_get_sc_def for calculating resistance against status abnormalities [Yor] (thanks for eAthena code)
+	* Fixed: new bug (crash) when amd 64 compatibilitie was added [Yor]
+	* Some styling more [Yor]
+	* Some styling [Yor]
+	* Fixed: harmonization of int.c (char-server) TXT/SQL [Yor]
+	* Fixed: harmonization of storage.c (char-server) TXT/SQL [Yor]
+
+07/10/2005
+	* Updated: a comment in battle_athena.conf [Yor]
+	* Fixed: common, login and char are compiling without any warning on AMD64 [MagicalTux]
+	* Added: Init timers system to give maximum of time at start of software (48 days without restart/freeze, instead of a variable value before to freeze) [Yor]
+	* Added: Create status.c/h files (jAthena 1091) [Yor]
+	* Fixed: Increase value of FILELIST_LIMIT 32768 -&gt; 65536 [Yor] (thanks for [Loki]'s report)
+	* Added: how to compile under FreeBSD (FAQ.HTML), Text from [folx] found in Freya's bug report [Yor]
+
+07/09/2005
+	* Improved: char SQL table: add a key on online to speed up some requests [Yor] (thank to [Mike] suggestion)
+	* Improved: memo SQL table: add a key on char_id [Yor] (thank to [Mike] suggestion)
+	* Improved: some codes on login-server [Yor]
+
+07/08/2005
+	* Improved: some codes on login-server [Yor]
+	* Fixed: Warnings in timer.c on AMD64 [MagicalTux]
+	* Fixed: Fatal error in mob.c when compiling on AMD64 [MagicalTux]
+
+07/07/2005
+	* Fixed: SQL request inside another SQL request (login-server) [Yor]
+	* Fixed: a check on SEX [Yor]
+	* Fixed: item get times and partys validation [Yor] (thanks to [Neoeagle] for code in freya's bug report)
+	* Fixed: FIX lose of Pets [Yor] (thanks to [BeoWulf] for code in freya's bug report)
+	* Fixed: init a variable to avoid an incorrect warning of some compilators [Yor]
+	* Fixed: 'show_mob_hp' option: not more display hp when set to 0 - sorry [Yor]
+
+07/06/2005
+	* Improved: little parts of code [Yor]
+	* Improved: strcasecmp and strncasecmp code [Yor]
+	* Fixed: a check about LAN IP in login-server [Yor]
+	* Improved: init errno before to be checked [Yor]
+	* Added: lsonline ladmin commands: display online accounts [Yor]
+	* Fixed: ls ladmin commands (with first/last id) [Yor]
+
+07/05/2005
+	* Fixed: in skill_devotion3 function: incorrect condition for condition (Sacrifice/Devotion) [Yor] (thanks to [Tabriz] on Freya's bug report)
+	* Fixed: 'show_mob_hp' option [Yor]
+	* Improved: add 'online' information in ladmin packet 'ls'(0x7921) and 'who'/'info'(0x7953) [Yor]
+	* Updated: skill_cast_db.txt [Yor] (thanks to [aradu] from freya's forum)
+
+07/04/2005
+	* Fixed: all peco GM commands for baby classes [Yor]
+	* Fixed: exploit on exp on mvp [Yor]
+	* Fixed: order of users in drops [Yor]
+
+07/03/2005
+	* Added: a check to test maximum skill points (with possible additional/bonus skill points) (check_maximum_skill_points) [Yor]
+	* Added: check_minimum_skill_points option in battle_athena.conf [Yor]
+	* Added: ban_bot option in battle_athena.conf [Yor] (based on idea/code of BeoWulf)
+	* Added: transmission to map-server of the reserved char_id (for wisp server name) [Yor]
+
+07/02/2005
+	* Added: reservation of a char_id for wisp server name [Yor]
+	* Added: a check about wisp server name: now, char-server stop if a character name have exactly same name [Yor]
+	* Improved: reset skills function to not reset basic novice skill when player have it [Yor]
+	* Added: a first system to detect bots [Yor] (thanks to BeoWulf for the idea and proposition of code)
+	* Added: 2 new options for vit_penalty_type: [Yor]
+	  - 3 and 4: like 1 and 2, but only penalize VIT, not DEF. (thanks to euph for idea and proposition of code from freya's forum)
+
+07/01/2005
+	* Fixed: upper limit of global_reg (96) (was account_reg: 16) [Yor]
+	* Fixed: use correct type parameter in all memset functions (not: '\0', but 0) [Yor]
+	* Fixed: c++ affectation method on all reg variables [Yor]
+	* Fixed: when follower uses act dead skill, follow system is suspended until end of act dead (dual sprite error) [Yor]
+	* Fixed: core dump error on char-server (from SVN 941) [Yor]
+	* Improved: add an option to consider restore HP/SP (when waiting to restore) like an action of a player - no more disconnection for idle [Yor]
+
+06/30/2005
+	* Fixed: size of reg strings [Yor]
+	* Improved: initialize some strings before to be used [Yor]
+	* Fixed: random deletion bug of accounts file [Yor]
+	* Added: message to player when email is changed [Yor]
+
+06/29/2005
+	* Fixed: a possible bug with @gm GM command [Yor]
+	* Fixed: strip skills [Yor] (based on work of BeoWulf for freya's forum)
+	* Some styling [Yor]
+
+06/28/2005
+	* Added: a code in @help to save help file with command level and without comments (need to change code to be used) [Yor]
+	* Fixed: multiple connections with multiple char-servers. Now, it's only possible to connect on 1 char-server [Yor]
+	* Changed: packet size of 0x2714. [Yor]
+	* Fixed: authentification by login with SQL [Yor]
+	* Changed: removed AUTHFIFO_LOGIN2 compilation option. Creation of check_authfifo_login2 configuration option. [Yor]
+	* Fixed: a bug on connection packet (login-server) [Yor]
+	* Changed: move md5calc files in common sub directory (used by login and ladmin) [Yor]
+	* Improved: display hp: send only necessary packet [Yor]
+
+06/27/2005
+	* Fixed: hp display when player doesn't move [Yor]
+	* Added: @displayplayerhp GM command [Yor]
+	* Fixed: @autoloot/@displayexp GM commands is now working with any options of battle_athena.conf [Yor]
+
+06/26/2005
+	* Updated: waterheight file [Yor]
+	* Fixed: Slim Pitcher's and full strip's codes [Yor]
+	* Fixed: skill tree of lord knight and peco lord knight [Yor]
+	* Improved: set unsigned char 'level' in struct gm_account [Yor]
+	* Fixed: some incompatible types [Yor]
+	* Fixed: a bug with provoke (crash) [Yor]
+	* Improved: strcasecmp/strncasesmp code to support locale definition (example: È and è, etc...) [Yor]
+	* Fixed: some incorrect usage of char [Yor]
+	* Changed: changed calls of setenv() to putenv() [MagicalTux]
+
+06/25/2005
+	* Improved: new code for strcasecmp/strncasesmp (universal code) [Yor]
+	           code is now compatible with C99 standard (add -std=c99 in the CFLAGS line of make file) except for:
+	           setenv (only BSD). MT, can you change this code please.
+	* Fixed: compilation error with debug option (utils.c:In function 'display_time':...) [Yor]
+	* Fixed: reading of job_db2-2.txt for high classes [Yor]
+
+06/24/2005
+	* Removed: strdup function, a non C standard function [Yor]
+
+06/23/2005
+	* Improved: moved functions to common: config_switch, e_mail_check, remove_control_chars, int2string, lint2string [Yor]
+	* Fixed: str(n)casecmp with all OS [Yor]
+
+06/22/2005
+	* Improved: structure definition of map cache [Yor]
+	* Corrected: a bug in provoke skill [Yor]
+	* Improved: Some functions in battle.c [Yor]
+	* Updated: Gospel [Yor]
+	* Fixed: high novice FREE skills for GM (skill all) [Yor]
+	* Removed: rindex definition (only available on BSD 4.3). Replaced by strrchr (C90/C99 standard, available under win32, BSD, etc...) [Yor]
+	           note: preparation to C99 standard
+	* Fixed: infinite loop (freeze) in skill tree (about super novice) [Yor]
+
+06/21/2005
+	* Added: @npcon and @npcoff as synonym of @enablenpc and @disablenpc [Yor]
+	* Some styling [Yor]
+
+06/20/2005
+	* Added: min_skill_delay_limit battle option to help against speedhacks [Yor] (thanks to [Celest] from eA)
+	* Fixed: gm_allskill will not have npc skills any more [Yor]
+	* Fixed: infinite loop in skill tree (and some crashes) [Yor]
+	* Improved: pc_calc_skilltree_normalize_job function [Yor]
+	* Fixed: restore right makefile [Yor]
+	* Fixed: skilltree check when skills points are incorrect in previous classes [Yor]
+
+06/19/2005
+	* Some styling [Yor]
+	* Fixed: Corrected a bug preventing Plagiarism to work [Yor]
+	* Fixed: email size [Yor]
+
+	**************************************************************************************************
+	* Changed: 'gm_all_skill' and 'gm_all_skill_job' battle options [Yor]
+	           WARNING: Now use only GM level. To disabled, it's 100, not 0 or 'no'.
+	           It's to have possibility on funny servers to give all skills at every people (level 0).
+	**************************************************************************************************
+
+	* Fixed: platinum skill learnings [Yor]
+	* Fixed: setting of skill with/without card skills [Yor]
+	* Improved: log of vending [Yor]
+	* Added: comma for @warp GM command (example: @warp prontera,150,150) [Yor]
+
+06/18/2005
+	* Added: Vending logs [Yor]
+	* Added: @(char)(un)disguise(map|all) GM commands [Yor]
+	* Improved: Management of disguise [Yor]
+	* Fixed: mob searching (by id) in some GM commands [Yor]
+
+06/17/2005
+	* Changed: 'wedding' script command to work with "OnTimer" scripts [Yor] (based on eAthena code)
+	* Added: 'attachnpctimer' and 'detachnpctimer' script command [Yor] (based on eAthena code)
+	* Added: effect directory files list for @sound GM command [Yor]
+	* Fixed: skillup_limit not need (not) skillfree [Yor]
+
+06/16/2005
+	* Fixed: invalid file names for @sound GM command - no more crashes of clients [Yor]
+	* Fixed: level option and help for @sound [Yor]
+	* Added: the @sound command and the NPC command of soundeffectall [Yor] (based on eAthena)
+	* Improved: Require 15% of HP or more for WE_MALE skill [Yor] (code from eAthena)
+	            Require 15% of SP or more for WE_FEMALE skill [Yor] (code from eAthena)
+	* Fixed: pc.c: a warning in function 'pc_skillup'. [Yor]
+
+06/15/2005
+	* Updated: Set map cache with compression by default [Yor]
+	* Updated: Meteor Storm skill tree: added Thunderstorm level 1 [Yor] (thanks to [Bison] from freya's bug report)
+	* Some styling [Yor]
+	* Fixed: platinum skills calculation with high novice [Yor]
+	* Fixed: 1st classes skills must be set before 2nd classes skills [Yor]
+	* Added: gm_all_skill_job option to give all skills, but only for actual job [Yor]
+	* Fixed: send some messages to the right players in GM commands [Yor]
+	* Fixed: Summon script command [Yor]
+
+06/14/2005
+	* Fixed: calculation of skill points with platinum skills given for free [Yor]
+	* Fixed: novice skills must be set to 9 to give access to other skills [Yor]
+	* Fixed: stats points and high classes (resetstate) 88-&gt;100 [Yor]
+	* Fixed: you can not more hit monster while you trick dead [Yor]
+	* Added: summon script command (with management of small/normal/big monsters [Yor]
+	* Improved: strmobinfo script function [Yor]
+	* Some styling (again) [Yor]
+	* Some styling [Yor]
+
+06/13/2005
+	* Improved: battle_get_def and battle_get_def2 functions (remove multiple same checks) [Yor]
+	* Improved: delay fix and cast fix functions [Yor]
+	* Added: delayrate [Yor]
+	* Fixed: @skillall now updates skills' displaying [Yor]
+	* Added: option to authorize or not spaces in a character name [Yor]
+	* Added: option for GM to be not disconnected [Yor]
+	* Fixed: auto-disconnection after last item solded (idle disconnection and vender) [Yor]
+	* Fixed: quest skills in skill tree [Yor]
+
+06/12/2005
+	* Improved: simplify skill tree check and fix multi-loops [Yor]
+	* Fixed: suprress a warning compilation [Yor]
+	* Improved: delay fix [Yor]
+	* Fixed: bowling bash doesn't do damages [Yor]
+	* Fixed: in skill tree check, don't check skill if it's a cloneskill [Yor]
+	* Improved: give number of slaves/summon mobs when we count mobs [Yor]
+	* Fixed: check of skill tree bug (check was not correct if needed id was checked after) [Yor]
+	* Updated: damage of Dancer's 'Singing Arrow' (THROWARROW) and Bard's 'Melody Strike' (MUSICALSTRIKE) [Yor] (thanks to [Mr_KrzYch00] from freya's bug report)
+	* Added: options to kick inative players in game (that will save brandwidth) - look options in battle_athena.conf [Yor]
+	* Fixed: in setregstr function, use correct calculation length [Yor]
+	* Fixed: plagia skill: not more copy known skill [Yor]
+	* Improved: minimum skill points calculation in skill tree check [Yor]
+	* Fixed: reset of some skills for minimum skill points calculation [Yor]
+	* Fixed: gm_allskill setting [Yor]
+	* Fixed: skill points and job change (not in same style of job; example: wizard to not job in wizard branch, etc...) [Yor]
+	         note: because some GM changed job of player not in same branch (swordman -&gt; thief, priest-&gt;dancer, etc...),
+	               skill points was not correctlt calculated and old skills were not erased. 2 consequences:
+	               - minimum skills point was not correct
+	               - player can use old skills
+	* Fixed: minimum skill points calculation (when reset, skill points not used was not in the total) [Yor]
+	  ****** NOTE: bug existing since 06/10/2005.
+	  ******       restore previous data base if you have use a SVN version from 06/10/2005 to today
+	  ******       because reseted players have a lot of skill points
+
+06/11/2005
+	* Fixed: when a GM change job of a player not in the same tree, old skills are reseted. skills points are not lost. [Yor]
+	* Improved: clean up 'nick_db' and 'charid_db' at end of software [Yor]
+	* Added: event scripts code: PCDieEvent, PCKillEvent and PCLogoutEvent [Yor]
+	* Some styling [Yor]
+	* Updated: skill Mental Sensing (RICHMANKIM) [Yor] (thanks to [Mr_KrzYch00] form freya's bug report)
+	* Fixed: some scripts functions with cards [Yor]
+	* Fixed: empty functions in script [Yor]
+	* Fixed: some skills abusing when fails [Yor]
+
+06/10/2005
+	* Added: noreturn.txt for 'noreturn' flag [Yor]
+	* Fixed: a crash in mob_damage [Yor]
+	* Fixed: pc_checkminskill function to calculate minimum points with correct 1st job level (when 2nd job level) [Yor]
+	* Fixed: pc_calc_skilltree_normalize_job function [Yor]
+
+06/09/2005
+	* Improved: some part of login-server [Yor]
+	* Added: an option in login to save or not information about banned ip in the memo of the last concerned account [Yor]
+	* Fixed: some skill/exp functions [Yor]
+	* Restored: previous pc_resetskill function [Yor]
+	* Improved: meltdown's chances is calculated separately from self breaking chances [Yor]
+	* Fixed: some GM commands [Yor]
+	* Fixed: an uninitialized variable warning in script.c [Yor]
+
+06/08/2005
+	* Updated: Emperium Race/element: Angel/Holy 1 (since 4/27/04 Kro patch) [Yor] (thanks to [Seraphin] from freya's bug report)
+	* Fixed: crashes in some codes (I use memcpy instead of memset) - sorry [Yor] - It was cause of a lot of crashes
+	* Fixed: reading of item_db in SQL version (atoi(sql_row[6]); replaced by sql_get_integer(6);) - sorry [Yor]
+	* Fixed: gmcommand script command: [Yor]
+	  you can use now various syntax: [strcharinfo(0)+]"[ : ]@command"
+	  examples:
+	     strcharinfo(0)+" : @go 0"
+	     strcharinfo(0)+": @go 0"
+	     strcharinfo(0)+":@go 0"
+	     strcharinfo(0)+"@go 0"
+	     or without strcharinfo(0), like: " : @go 0" or ": @go 0" or ":@go 0" or "@go 0"
+	  note: use always '@' and complete GM command
+	* Fixed: @nuke GM command [Yor]
+	* Fixed: a warning compilation error that doesn't exist. lol [Yor]
+	* Fixed: skill_castfix calculation (will use correct calculation when others parameters will be corrected too) [Yor]
+	* Fixed: exploit on mob exp calculation [Yor]
+
+06/07/2005
+	* Added: skilldb.delaynodex [Yor]
+	* Fixed: skill_delayfix and skill_castfix calculation [Yor]
+	* Updated: crusader quest [Yor] (from eAthena)
+	* Updated: weapon breaking rates [Yor]
+	* Optimized: enchanting skills success rates calculation. [Yor]
+	* Improved: some other packets management in ladmin. [Yor]
+	* Updated: deviling mob [Yor]
+
+06/06/2005
+	* Added: getpartnerid, warppartner and ispartneron script commands. [Yor] (from eAthena)
+	* Fixed: synchronize accound reg with character (at connection on map-server). [Yor]
+	* Fixed: possible overflow error with memo. [Yor]
+	* Fixed: size of SQL buffer. [Yor]
+	* Improved: some other packets management. [Yor]
+	* Fixed: supernovice angel and lower/upper cases. [Yor]
+	* Improved: some packets management. [Yor]
+
+06/05/2005
+	* Fixed: some possible overflows with names. [Yor]
+	* Fixed: skill_castnodex_db.txt reading. (sorry, I forgot a commit) [Yor]
+	* Updated: Soul Breaker's damage calculation. [Yor] (based on Celest work)
+	* Updated: Meteor Assault's cast delay: not affected by dex. [Yor]
+	* Fixed: 'Hyegun' that can drop too many OCA, OBB et OPB. [Yor]
+	* Removed: final ',' in mob_db.txt [Yor]
+	* Moved: costum mobs from mob_db.txt to mob_db2.txt [Yor]
+	* Fixed: remove nopelty flag from niflheim.gat. This citie have monsters, and this flag can be use to level up speeder [Yor]
+	* Fixed: some strings lengths in script.c. [Yor]
+	* Updated: gvg.txt for guild dungeons. [Yor]
+	* Updated: item_avail.txt (from eAthena). [Yor]
+	* Fixed: Init 'connect_member' field at starting of char-server [Yor]
+	* Fixed: Chase Walk Str Bonus duration [Yor] (thanks to AppleGirl for fix on bug report)
+	* Fixed: an overflow in itemdb.c. [Yor]
+
+06/04/2005
+	* Added: @changesex, to change your sex. [Yor]
+	* Updated: Reduced weapon breaking chance for Overthrust. [Yor]
+	* Fixed: size of maps' names in all code (16 + NULL, instead of 16 or often 32). [Yor]
+	         Please, if you see an invalid size somewhere in the code about map, post on bug report.
+	* Fixed: 2 memory leaks in scripts. [Yor]
+	* Updated: new guild skills cannot be reused within 5 minutes of activating it. [Yor]
+	* Added: more informations in @mobsearch. [Yor]
+	* Added: @mobsearch to found monsters on the map. [Yor]
+	* Added: @cleanmap to remove items from a map (within the desired distance). [Yor]
+	* Added: @itemall/charitemall/@giveitemall to give an item to everyone. [Yor]
+	* Removed: battle_config variable from mmo.h. [Yor]
+	* Fixed: Add explanation/solution of crash/block with windows compilation under cygwin (readme.html). [Yor]
+
+06/03/2005
+	* Fixed: a warning at compilation. [Yor]
+	* Updated: Increased skill range limitations in pc_no_footset [Yor] (thanks to eAthena team)
+	* Updated: player_cloak_check_type flag [Yor]
+	* Added: compression system for maps caching (from jAthena 1087): size of mapinfo file: 35Mb-&gt;1Mb [Yor]
+
+06/02/2005
+	* Fixed: use right number of items in guild storage (300-&gt;1000). [Yor]
+	* Fixed: if char-srv doesn't give answer about authentification, disconnect player after 30 sec. [Yor]
+	* Added: 2004-12-28 maps loading [Yor]
+	* Removed: check of skill points from char-server (inside map-server at connection of a player). [Yor]
+	* Fixed: don't analyse received fifo packets when player is not authentified [Yor]
+	* Fixed: some checks about skills' levels/flags [Yor]
+	* Added: check novice skill with check of minimum skill's points [Yor]
+
+06/01/2005
+	* Fixed: possible hack on vending [Yor]
+	* Fixed: when vender sets an item to 0 zeny, auto set it to max value [Yor]
+	* Fixed: possible overflow in pc_set [Yor]
+	* Fixed: position of pc_checkminskill call in pc_authok function [Yor]
+	* Improved: @(char)questskill GM commands. [Yor]
+	* Reduced: size of struct skill. [Yor]
+	* Improved: minimum skill's points are now checked in map-server. [Yor]
+	* Improved: cell searching in GM commands. [Yor]
+
+05/31/2005
+	* Improved: Reduced number of SQL requests in guild management. [Yor]
+	* Added: missing item_db2.txt for custom items [Yor]
+	* Updated: to jAthena 1086: [Yor]
+	  - new check system for map cell
+	  - map cache system at load
+	* Added: missing include in inter.c [Yor]
+	* Improved: 'global_reg_value' table definition. [Yor]
+	* Updated: a little comment in atcommand_athena.conf. [Yor]
+
+05/30/2005
+	* Added: missing packets for 2004-12-06aSakexe and 2005-01-10bSakexe [Yor]
+	* Removed: skill.log and mob.log from log directory (never used). [Yor]
+	* Improved: log system: [Yor]
+	  - Moved map-servers's logs from char-server to inter-server.
+	  - Inter-server set time of the log, not map-server.
+	* Removed: gm.txt and inter.txt from log directory (never used). [Yor]
+
+05/29/2005
+	* Updated: some code for Moonlit Petals and Basilica. [Yor] (based on work of eAthena team)
+
+05/28/2005
+	* Fixed: 2 scripting crashes [Yor]
+	* Updated: bug report: All bugs concerned by timers are closed. [Yor]
+	                       A lot of them are now corrected. If you have new error with timer, add a new bug report.
+	* Fixed: a timer error with SC_BLIND [Yor]
+	* Fixed: a possible error with /ex command [Yor]
+
+05/27/2005
+	* some styling [Yor]
+	* Fixed: pc skilltimer [Yor]
+	* Fixed: Pressure skill (Paladin) [Yor] (thanks to [Seraphin] from freya's bug report)
+	* Fixed: mob skilltimer [Yor]
+	* Fixed: npc eventtimer init [Yor]
+	* Fixed some skills in skill_tree.txt: [Yor] (thanks to [Tabriz] from freya's bug report)
+	  - Removed: SM_SWORD skill from Alchemist and creator in skill_tree.txt
+	  - Updated: CH_CHAINCRUSH (champion's skill)
+	  - Updated: CG_ARROWVULCAN (clow/gypsy's skill)
+	* Improved: a check in timer loop [Yor]
+	* Improved: pc_delspiritball function [Yor]
+
+05/26/2005
+	* Improved: timer loop doesn't stop on a deleted timer [Yor]
+	* Fixed: mob_timer_delete function: can be called to destroy itself when software is inside [Yor]
+	* some styling [Yor]
+	* Improved: set invincible timer deletion as MACRO [Yor]
+	* Fixed: pc_calc_pvprank_timer function and pvp_timer deletion [Yor]
+	* Fixed: pc_delspiritball function [Yor]
+	* Fixed: deletion of follow timer (pc_follow_timer) [Yor]
+	* Fixed: deletion error of pet's timers [Yor]
+	* Fixed: Now generated Makefiles are checking the libcommon date [MagicalTux]
+	* Fixed: @(char)job GM command with upper parameter and job_name [Yor]
+
+05/25/2005
+	* Fixed: a little skill tree calculation error [Yor]
+	* Improved: skilltree GM command [Yor]
+	* Fixed: some typos [Yor]
+	* Added: GM level in logg off message. [Yor]
+	* Fixed: invalid commit - sorry [Yor]
+	* Fixed: skills saving [Yor]
+	* Fixed: definition of log_trade_level in map-server (compilation error) [Yor]
+	* Added: script log 'logmes' - to be compatible with eAthena scripts [Yor]
+	* Improved: move logs (GM command and trades) to interserver (preparation of multi-maps) [Yor]
+
+05/24/2005
+	* Harmonized: little hamonization in char-server (between SQL and TXT versions) [Yor]
+	* Improved: init some variables in login-server [Yor]
+	* Improved: use SQL functions from db_mysql.c in some part of servers [Yor]
+	* Added: usage of email_creation option in char-server (SQL) [Yor]
+	* Fixed: incuvate value of pet at saving [Yor]
+	* Fixed: packet 0x07e for 0110Bsakexe [Yor]
+	* Fixed: search_character_index for SQL (char.c) [Yor]
+
+05/23/2005
+	* Harmonized: little hamonization of int_pet (SQL and TXT) [Yor]
+	* Updated: Grand Peco doesn't more drop the Greatest General card [Yor]
+	* Harmonized: packet 0x2b0e between SQL and TXT [Yor]
+	* Fixed: timers not added in timer functions list (add_timer_func_list) [Yor]
+	* Improved: clif_parse function. [Yor]
+
+05/22/2005
+	* Updated: exp calculation (jAthena 1084) [Yor]
+	* Added: some functions in clif.c for future usage [Yor]
+	* Updated: Backstab skill [Yor]
+	* Improved: speed up (very little speedup) a part of grfio.c. [Yor]
+	* Improved: don't add twice a script file. [Yor]
+	* Changed: clean up socket.c. [Yor]
+	* Added: comments in socket.c. [Yor]
+	* Added: atcommand_storage_on_pvp_map/atcommand_gstorage_on_pvp_map option to disable/enable storage GM commands on pvp mode. [Yor]
+	* Fixed: C++ code on socket.c -&gt; C [Yor]
+
+05/21/2005
+	* Added: log_request_connection option to disable/enable logs of 'Request for connection' message (packet 0x64/0x1dd). [Yor]
+	* Updated: Sacrifice skill [Yor]
+	* Added: atcommand_add_local_message_info option to disable/enable (map message) display with /lb/@lb... [Yor]
+	* Added: for each possible no_share options: [Yor]
+	  - idle_no_share: only for idle people. (default: no)
+	  - chat_no_share: only for people are in a chat room. (default: no)
+	  - npc_chat_no_share: only for people speaking with a NPC (chat/script/shop). (default: yes)
+	  - shop_no_share: only for people having opened a shop. (default: yes)
+	  - trade_no_share: only for people in trading. (default: yes)
+	* Fixed: some timers errors in the code [Yor]
+	* Fixed: some timers checks [Yor]
+	* Added: now, idle_no_share option work for players that are speaking with NPC or have a shop too [Yor]
+	* Fixed: corrected invalid commit of timeradd function - sorry [Yor]
+	* Fixed: Timeradd function (add warning about Timer id) [Yor]
+
+05/20/2005
+	* Added: default mapflags on some maps [Yor]
+	* Added: finding_ore_rate option based on eAthena work [Yor]
+	* Added: default values (in comments) of battle's options [Yor]
+	* Added: idle_no_share option inspired from eAthena code [Yor]
+	* Harmonized: some parts of int_pet.c between SQL and TXT [Yor]
+	* Fixed: @grindmob code [Yor]
+	* Added: the version of login-server in logs [Yor]
+	* Improved: @grindmob code: don't spawn monster with no hp [Yor]
+
+05/19/2005
+	* Harmonized: some parts of int_party.c between SQL and TXT [Yor]
+	* Improved: @request code [Yor]
+	* Added: @grindmob GM command: Spawns different monsters at random around of the target (quantity = base level of the targer x 2; max 100). [Yor]
+	* Improved: @main code [Yor]
+	* Added: scripts/emblem.php : fetch emblem image from SQL database and display as PNG [Lebref & MagicalTux]
+	* Fixed: default values were different between battle code and battle conf [Yor]
+	* Harmonized: some parts of char.c between SQL and TXT [Yor]
+
+05/18/2005
+	* Improved: @kamigm code [Yor]
+	* Corrected: readd makefile file (sorry) [Yor]
+	* Updated: harmonized some parts of party code between SQL and TXT [Yor]
+	* Improved: Party/guild messages [Yor]
+	* Changed: @rehash/@reloadscript are now same command (why 2 differents commands for SQL and TXT?) [Yor]
+	  Note: These GM commands are always bugged.
+	* Fixed: deletion of reg values [Yor]
+	* Fixed: incorrect message on wisp when player is not found [Yor]
+	* Improved: names' searching on the map-server [Yor]
+	* Improved (again): calculation of agi/vit penalty to speed up a little [Yor]
+
+05/17/2005
+	* Improved: Speed up some tests [Yor]
+	* Fixed: Hammerfall usage with axes [Yor] (thanks to [ Dythe] from freya's bug report)
+	* Fixed: delay of Double Strafe and arrow shower [Yor] (thanks to [Ex] from freya's bug report)
+	* Improved: calculation of agi/vit penalty to speed up a little [Yor]
+	* Fixed: penalty of agi and vit [Yor]
+	* Improved: GM messages and wisp system: [Yor]
+	  - less network usage if only 1 map-server
+	* Updated: little harmonization of char.c (TXT) and char.c (SQL) [Yor]
+	* Added: option 'map_is_alone' for future usage [Yor]
+	* Fixed: connection error in char-server (TXT) [Yor]
+
+05/16/2005
+	* Improved: GM messages: [Yor]
+	  - send immediatly to local players (speeder)
+	  - don't resend to the origin server (less packets)
+	* Updated: price of Horse Creast (item_db.txt) [Yor]
+	* Added: message to know when server is running in debug mode [Yor]
+	* Fixed: unusable cards [Yor]
+	* Fixed: Frost driver [Yor]
+	* Fixed: Init/delete of pets' skilltimer [Yor]
+	* Added: sc_count check in skill_stop_dancing [Yor] (from [celest] code of eAthena)
+	* Fixed: event timers (PC/NPC): [Yor]
+	  - free timer when necessary
+	  - free data of the timer at end (memory leak)
+	* Fixed: addtick_timer function [Yor]
+	* Added: ignore the new skill delays when chaining monk combos [Yor] (from [celest] code of eAthena)
+	* Corrected: readd makefile file (sorry) [Yor]
+	* Added: better information about npc errors [Yor]
+	* Fixed: a skill tree calculation error [Yor]
+	* Updated: freya with jAthena 1082 [Yor]
+	* Added: 3 new script commands and SC_SpeedUp0 [Yor]
+	* Added: options to load or not some grf file [Yor] (based on jA code)
+	* Added: a battle flag to authorize gm to look hp of players [Yor] (based on jA code)
+
+05/15/2005
+	* Fixed: compilation error under win32 [Yor]
+</textarea>
+
+</td>
+</tr>
+</table>
+</td>
+</body>
+</html>

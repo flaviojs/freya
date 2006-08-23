@@ -1,0 +1,22 @@
+// mob_avail.txt, Monster ID Disguise Database
+// 
+// mob_id,sprite_id,equip #
+// Use another monster's sprite for a monster
+// 1001-2000 must be used for now as any other ID is invalid
+// Mob must have an equipment it's pet counterpart can use or it will cause problems. If no equip use 0
+// The following if a player sprite is used
+// MobID,SpriteID,Sex,Hair,HairColor,Weapon,Shield,HeadUpper,HeadMiddle,HeadBottom,Option,DyeColor
+//
+// Example:
+//1002,1039,0	//Poring,Baphomet (Make Porings(1002) look like Baphomet(1039))
+
+// Crusader quest monsters with poring stats
+1910,1036,0
+1911,1132,0
+1912,1257,0
+1913,1164,0
+1914,1276,0
+
+// Easter Event
+1920,1047,0
+1921,1093,0

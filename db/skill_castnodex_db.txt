@@ -1,0 +1,21 @@
+// skill_castnodex_db.txt, No Dex Instant Cast Skill Database
+//
+// Structure of Database:
+//
+// SkillID, Cast: 1 or 0, Delay - Optional: 1 or 0
+//
+// Cast: With 1, Dex Does Not Affect The Skill's Cast Rate
+// Cast: With 0, Dex Does Affect The Skill's Cast Rate
+// Delay: With 1, Dex Does Not Affect The Skill's Delay Rate
+// Delay: With 0, Dex Does Affect The Skill's Delay Rate
+//
+
+255,1	//CR_DEVOTION
+336,1	//WE_CALLPARTNER
+366,1	//HW_MAGICPOWER
+370,1	//CH_PALMSTRIKE
+403,1	//PF_MEMORIZE
+482,1	//PF_DOUBLECASTING
+489,1	//CG_TAROTCARD#Tarot Card of Fate#
+1014,1	//PR_REDEMPTIO
+10013,1	//GD_EMERGENCYCALL

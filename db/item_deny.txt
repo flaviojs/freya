@@ -1,0 +1,17 @@
+// item_deny.txt, Item GM Creation Deny Database
+//
+// Structure of Database:
+//
+// ItemID,MinimumGMLevel
+//
+// or just ItemID For Completely Denied GM Creation
+//
+// Denys items to be created with the following GM commands:
+// @item/@charitem/@giveitem/@itemall/@charitemall/@giveitemall/@item2/@produce
+//
+// @rings is not denied
+//
+// Note: If Item Already Exists In-game, It Is Not Checked
+//
+
+5013 // Lord Kaho's Horn

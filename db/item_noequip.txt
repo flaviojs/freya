@@ -1,0 +1,9 @@
+// item_noequip.txt, PvP/GvG Euip Deny Database
+//
+// Structure of Database:
+//
+// ItemID,Mode
+//
+// Pertains to equiping items on PvP and GvG maps
+
+// Mode: 1 - PvP Restriction, 2 - GvG Restriction, 3 - PvP and GvG Restriction

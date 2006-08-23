@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+   <title>Freya RO Emulator</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=charset=UTF-8" />
+   <meta http-equiv="content-style-type" content="text/css">
+   <meta name="Author" content="Freya Team">
+   <meta name="Publisher" content="Freya Team">
+   <meta name="Copyright" content="COPYRIGHT Freya under GPL licence">
+   <meta name="OWNER" content="Freya">
+   <link rel="stylesheet" type="text/css" href="include/style.css" />
+</head>
+
+<body>
+<table border="0" cellpadding="0" cellspacing="3">
+<tr>
+<td width="100" class="content" valign="top"><br />
+<a class="left" href="http://www.ro-freya.net" target="_top">
+<b>HOME</b></a>
+<br /><br />
+<a class="left" target="_top" href="index.html" >Introduction</a><br />
+<a class="left" target="_top" href="chngs.html" >Changes</a><br />
+<a class="left" target="_top" href="feats.html" >Features</a><br />
+<a class="left" target="_top" href="npcfeats.html" >NPC Features</a><br />
+<a class="left" target="_top" href="setup.html" >Setup</a><br />
+<a class="left" target="_top" href="gmcmds.html" >GM Commands</a><br />
+<a class="left" target="_top" href="faq.html" >FAQ</a><br />
+<a class="left" target="_top" href="support.html" >Support</a><br />
+<a class="left" target="_top" href="router.html" style='font-weight:bold;color:#000000;background-color:transparent;' >Router guide</a><br />
+<a class="left" target="_top" href="creategrf.html" >Create GRFs</a><br />
+<a class="left" target="_top" href="patchsrv.html" >Patch server guide</a><br />
+<img src="include/pixel.gif" width="137" height="1" alt="" />
+</td>
+<td width="700" valign="top">
+<table width="100%" bgcolor="#FFFFFF" border="1" cellpadding="5" cellspacing="0">
+<tr>
+<td>
+
+<h1>Router guide</h1>
+<a href="support.html">Previous</a>
+<a href="creategrf.html">Next</a>
+<hr />
+
+<p><b>Note:</b>
+This guide is inspired from a post found on the Freya's forum and created by Limonada.</p>
+
+<p><h2 class="header">Your ip's (for the example):</h2></p>
+<p>Lan ip/mask: 10.0.0.0/255.255.255.0<br />
+The gateway: 10.0.0.138<br />
+Lan ip of your server: 10.0.0.1<br />
+Wan IP of your server: 201.0.7.23<br /></p>
+
+<p><b>Note:</b>
+This guide is based on the fact that all servers (login, char and map) are installed on the same computer.</p>
+
+<p><h2 class="header">Let's start</h2></p>
+<p>Forward the ports (here default ports): 6900, 5121 and 6121 to your Lan IP: 10.0.0.1.<br />
+Do it using your router config (usually NAT).</p>
+
+<h2 class="header">Configure your login server</h2>
+<p>Open your <b>conf/login_athena.conf</b>.</p>
+<p>Set configuration like this:</p>
+
+<p>// put here the LAN IP of your char-server<br />
+lan_char_ip: <b>10.0.0.1</b><br />
+<br />
+// put here the Subnet mask of your LAN<br />
+subnet: <b>10.0.0.0</b><br />
+subnetmask: <b>255.255.255.0</b></p>
+
+<p>Save the file.</p>
+
+<h2 class="header">Configure your char server</h2>
+<p>Open your <b>conf/char_athena.conf</b>.</p>
+<p>Set configuration like this:</p>
+
+<p>// Login Server IP<br />
+// You should only need to set this if you are running behind a<br />
+// firewall or on a machine with multiple interfaces. In that case,<br />
+// you need to specify the IP address you wish to export to the entire world.<br />
+// You must specify the IP adress if your login-server is not on the same computer of your char-server.<br />
+//login_ip:<b>127.0.0.1</b> <span class="cmd"><-- here, leave the comment or (better) set to</span><br />
+login_ip:<b>10.0.0.1</b></p>
+
+<p>// Character Server IP<br />
+// You should only need to set this if you are running behind a<br />
+// firewall or on a machine with multiple interfaces. In that case,<br />
+// you need to specify the IP address you wish to export to the entire world.<br />
+char_ip:<b>201.0.7.23</b></p>
+
+<p>// put here the LAN IP of your map-server<br />
+lan_map_ip: <b>10.0.0.1</b><br />
+<br />
+// put here the Subnet mask of your LAN<br />
+subnet: <b>10.0.0.0</b><br />
+subnetmask: <b>255.255.255.0</b></p>
+
+<p>Save the file.</p>
+
+<h2 class="header">Configure your map server</h2>
+<p>Open your <b>conf/map_athena.conf</b>.</p>
+<p>Set configuration like this:</p>
+
+<p>// Character Server IP<br />
+// You should only need to set this if you are running behind a<br />
+// firewall or on a machine with multiple interfaces. In that case,<br />
+// you need to specify the IP address you wish to export to the entire world.<br />
+// You must specify the IP adress if your char-server is not on the same computer of your map-server.<br />
+//char_ip:<b>127.0.0.1</b> <span class="cmd"><-- here, leave the comment or (better) set to</span><br />
+char_ip:<b>10.0.0.1</b></p>
+
+<p>// Map Server IP<br />
+// You should only need to set this if you are running behind a<br />
+// firewall or on a machine with multiple interfaces. In that case,<br />
+// you need to specify the IP address you wish to export to the entire world.<br />
+map_ip:<b>201.0.7.23</b></p>
+
+<p>Save the file.</p>
+
+<h2 class="header">To finish</h2>
+
+<p>Configure your <b>sclientinfo.xml</b> like this:<br />
+If you connect from your lan, use: <b>10.0.0.1</b>.<br />
+If you connect from the wan, use: <b>201.0.7.23</b>.</p>
+
+<p>Thanks to Limonada for the first work of this help.</p>
+
+<p>Yor</p>
+
+</td>
+</tr>
+</table>
+</td>
+</body>
+</html>

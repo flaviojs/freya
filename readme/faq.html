@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+   <title>Freya RO Emulator</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=charset=UTF-8" />
+   <meta http-equiv="content-style-type" content="text/css">
+   <meta name="Author" content="Freya Team">
+   <meta name="Publisher" content="Freya Team">
+   <meta name="Copyright" content="COPYRIGHT Freya under GPL licence">
+   <meta name="OWNER" content="Freya">
+   <link rel="stylesheet" type="text/css" href="include/style.css" />
+</head>
+<body>
+<table border="0" cellpadding="0" cellspacing="3">
+<tr>
+<td width="100" class="content" valign="top"><br />
+<a class="left" href="http://www.ro-freya.net" target="_top">
+<b>HOME</b></a>
+<br /><br />
+<a class="left" target="_top" href="index.html" >Introduction</a><br />
+<a class="left" target="_top" href="chngs.html" >Changes</a><br />
+<a class="left" target="_top" href="feats.html" >Features</a><br />
+<a class="left" target="_top" href="npcfeats.html" >NPC Features</a><br />
+<a class="left" target="_top" href="setup.html" >Setup</a><br />
+<a class="left" target="_top" href="gmcmds.html" >GM Commands</a><br />
+<a class="left" target="_top" href="faq.html" style='font-weight:bold;color:#000000;background-color:transparent;'>FAQ</a><br />
+<a class="left" target="_top" href="support.html" >Support</a><br />
+<a class="left" target="_top" href="router.html" >Router guide</a><br />
+<a class="left" target="_top" href="creategrf.html" >Create GRFs</a><br />
+<a class="left" target="_top" href="patchsrv.html" >Patch server guide</a><br />
+<img src="include/pixel.gif" width="137" height="1" alt="" />
+</td>
+<td width="700" valign="top">
+<table width="100%" bgcolor="#FFFFFF" border="1" cellpadding="5" cellspacing="0">
+<tr>
+<td>
+
+<h1>FAQ</h1>
+<a href="gmcmds.html">Previous</a>
+<a href="support.html">Next</a>
+<hr />
+<h2 class="header">The Q&A</h2>
+<p>
+
+<span style="font-weight: bold;">Q</span>: I get the error message "This application has failed to start because cygwin1.dll was not found. Re-installing the application may fix this problem."<br />
+<span style="font-weight: bold;">A</span>: You're missing the cygwin dlls. Please get the latest dll at: http://www.cygwin.com/snapshot. If you're unsure, asking around in our IRC chatroom will get you around too, but always remember - use common sense and search before asking.<br />
+<br />
+
+<span style="font-weight: bold;">Q</span>: My map-server won't load! It appears to be loading things before it dissapeared suddenly! HELP!<br />
+<span style="font-weight: bold;">A</span>: Use command line to load map-server. It should tell you the error. If you're missing a map, update your kRO Sakray or comment the map from map_athena.conf. If you have an errornous NPC, fix it or comment it off. Anything other than that, feel free to ask around.<br />
+<br />
+
+<span style="font-weight: bold;">Q</span>: My map-server failed to load 'adata.grf'! Where do I find this adata.grf? My map-server won't load without it!<br />
+<span style="font-weight: bold;">A</span>: The error that caused the map-server to not load is not the adata.grf. adata.grf is NOT a requirement for the map-server to load. The error is probably related to something else.<br />
+<br />
+
+<span style="font-weight: bold;">Q</span>: All 3 of the servers are loaded, but I am still having problems accessing it! What do I do?<br />
+<span style="font-weight: bold;">A</span>: First, check the IPs in map_athena.conf and char_athena.conf. If those are correct, check the ports to make sure they match. If that's correct too, you probably cannot handle the server load. Lower the monster spawning rate using mob_count in battle_athena.conf and it should be fine.<br />
+<br />
+
+<span style="font-weight: bold;">Q</span>: How do I start Guild Wars/War of Emperium??? HELP!!!<br />
+<span style="font-weight: bold;">A</span>: Read the GM Command page for full list of commands that GMs can use, including the command for this.<br />
+<br />
+<span style="font-weight: bold;">Q</span>: My Ragnarok Online crashed while playing with Freya! What do I do now?<br />
+<span style="font-weight: bold;">A</span>: Well, if your Ragnarok crashes, it's most probably not anything to do with Freya. Something is wrong with your Ragnarok installation. Try reinstalling or updating.<br />
+
+<br />
+<span style="font-weight: bold;">Q</span>: Is Freya compatible with mySQL? Can I use mySQL as the DB instead of using text files?<br />
+<span style="font-weight: bold;">A</span>: Yes, Freya is compatible with mySQL. A tutorial on how to setup this is coming soon.<br />
+
+<br />
+<span style="font-weight: bold;">Q</span>: Is Freya compatible with msSQL? Can I use msSQL as the DB instead of using text files?<br />
+<span style="font-weight: bold;">A</span>: No, Freya is not compatible with msSQL. You cannot use msSQL with Freya.<br />
+<br />
+
+<span style="font-weight: bold;">Q</span>: I found a bug! Where do I report it?<br />
+<span style="font-weight: bold;">A</span>: Drop the developers a line at the IRC chatroom. Or just post it in the bug report forum. We check them out too. :)<br />
+<br />
+
+<span style="font-weight: bold;">Q</span>: I know alot of C and I'm able to help improve Freya and add new features. How can I join your development team?<br />
+<span style="font-weight: bold;">A</span>: Try talking to one of the current developers in the Freya channel.<br />
+<br />
+
+<span style="font-weight: bold;">Q</span>: We've encountered a wierd bug. Each time the server reaches 1016 players, the map-server doesn't let anyone on.<br />
+<span style="font-weight: bold;">A</span>: You must resize FD_SIZE on your system. If you're running on Debian (probably similar for other distribs),
+ this is what you need to do to raise the maximum of connections allowed on your server.
+Edit /etc/security/limits.conf, read it and add a HARD limit on the user you want, set that limit to 2048+ (by increments of 1024 only).
+Edit /usr/include/bits/typesizes.h, look for the line "#define __FD_SETSIZE 1024", replace the 1024 by 2048+ (again, only by increments of 1024).
+Go in your RO folder, make clean && make (sql), and this problem should resolved.<br />
+<br />
+
+<span style="font-weight: bold;">Q</span>: Under Cygwin, when I compile for Native Windows (./configure --with-win32), my map-server stops/crashes before to load maps.<br />
+<span style="font-weight: bold;">A</span>: You must remove/uninstall zlib in Cygwin:<br />
+Run setup (of Cygwin), select zlib package in libs category and click on 'remove'. Then, valid.<br />
+After, run configure of freya (./configure + options), and say 'y' when it proposes to crosscompile zlib library.<br />
+Re-run configure of freya after terminated. Then type 'make'.<br />
+<br />
+
+<span style="font-weight: bold;">Q</span>: I can not compile under FreeBSD.<br />
+<span style="font-weight: bold;">A</span>: Text from [folx] found in Freya's bug report:<br />
+(on FreeBSD 5.3-RELEASE, using freya-txt: all version)<br />
+<u>use</u> <span style="font-weight: bold;">./configure --without-gettext</span> to create the Makefile<br />
+<u>edit Makefile:</u><br />
+ * change MAKE = <span style='color:red'>gmake</span> into <span style='color:green'>MAKE = make</span><br />
+ * remove <span style='color:red'>tool</span> and <span style='color:red'>addons</span> from line:
+ all: title  common login char ladmin <span style='color:red'>tool</span> map <span style='color:red'>addons</span><br />
+so it must be: <span style='color:green'>all: title  common login char ladmin map</span><br />
+ * remove the <span style='color:red'>--no-print-directory</span> in eatch category (<span style='color:blue'>common, login, char, ladmin, map</span>), i.e.: <br />
+common: <br />
+	 @echo -e " - DIR\tsrc/common"<br />
+	 @$(MAKE) <span style='color:red'>--no-print-directory</span> -C src/common/ libcommon.a<br />
+should look like :<br />
+<span style='color:green'>common: <br />
+	@echo -e " - DIR\tsrc/common"<br />
+	@$(MAKE) -C src/common/ libcommon.a</span><br />
+<u>save modified Makefile</u>  :D <br />
+<u>now compile your own freya version:</u> <span style="font-weight: bold;">make</span><br />
+I don't know why FreeBSD doesn't compile Tool & Add-ons, but what i know is we don't need it to run freya ;-)<br />
+<br />
+
+<span style="font-weight: bold;">Q</span>: What is the 'import' file for?<br />
+<span style="font-weight: bold;">A</span>: Most people don't know the real use of the 'import' files. After you do, you will wonder what you ever did without it.<br />
+The main thing it does, is provide a way for you to change your config settings without having to modify the actual files. You can test some settings by this way.<br />
+<br />
+
+<span style="font-weight: bold;">Q</span>: How does the 'import' file work?<br />
+<span style="font-weight: bold;">A</span>: You place only the settings you have changed in the 'import' files.<br />
+Say you want to change your job experience rate from the default (100)to 2x (200). Well then you would place this in your import/battle_conf.txt (folder and name of the 'import' file are mentionned in your 'import' line):<br />
+<span style='color:green'>job_exp_rate: 200</span><br />
+You don't need the comment (it's only a comment). You can add it for clarity sake.<br />
+Now this new setting takes place over the setting in battle_athena.conf.<br />
+How? Simple. When the server reads the 'import' line, it reads the mentioned file and all values inside this file replace previously readed values. The last readed setting of each option is the used setting.<br />
+But, if you add another 'import' file with this option or change this option after the 'import' line, your 'import' setting will not be used. The last value is always the value used by the server.<br />
+<br />
+
+<span style="font-weight: bold;">Q</span>: When I'm running under gdb, I have the error: "Program received signal SIGPIPE, Broken pipe."?<br />
+<span style="font-weight: bold;">A</span>: In gdb typing: <span style="font-weight: bold;">handle SIGPIPE nostop</span> and then run the software.<br />
+<br />
+
+</p>
+
+</td>
+</tr>
+</table>
+</td>
+</body>
+</html>

@@ -1,0 +1,10 @@
+// size_fix.txt, Size Fix Weapon Damage Database
+//
+// Structure of Database:
+//
+// Base,Dagger,Sword,2-HandedSword,Spear,2HandedSpear,Axe,2HandedAxe,Stick??,?????,Cane??,Bow,Fist,Instrument,Whip,Book,Katar
+//
+
+100,100, 75, 75, 75, 75, 50, 50, 75,100,100,100,100, 75, 75,100, 75,	// Size: Small
+100, 75,100, 75, 75, 75, 75, 75,100,100,100,100, 75,100,100,100,100,	// Size: Medium
+100, 50, 75,100,100,100,100,100,100,100,100, 75, 50, 75, 50, 50, 75,	// Size: Large

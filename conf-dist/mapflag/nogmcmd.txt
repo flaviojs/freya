@@ -1,0 +1,130 @@
+//===== Freya Script =========================================
+//= Map flags that disable some GM commands
+//===== By: ==================================================
+//= GARTZ
+//===== Current Version: =====================================
+//= 1.0
+//===== Description: =========================================
+//= nogmcmd: disable a GM commands on map
+//= <mapname> mapflag nogmcmd <minimum_level_of_forbidden_GM_commands>
+//= Disabled all GM commands for lowers then lv 40
+//= PvP areas
+//= GvG Areas
+//= Guild Castles
+//= Guild Dungeons (default: enabled)
+//= Job Quests
+//= Special Quests Places
+//= Arenas
+//===== Additional Comments: =================================
+//=
+//============================================================
+
+// PvP ====================
+pvp_y_1-1.gat	mapflag	nogmcmd	40
+pvp_y_1-2.gat	mapflag	nogmcmd	40
+pvp_y_1-3.gat	mapflag	nogmcmd	40
+pvp_y_1-4.gat	mapflag	nogmcmd	40
+pvp_y_1-5.gat	mapflag	nogmcmd	40
+pvp_y_2-1.gat	mapflag	nogmcmd	40
+pvp_y_2-2.gat	mapflag	nogmcmd	40
+pvp_y_2-3.gat	mapflag	nogmcmd	40
+pvp_y_2-4.gat	mapflag	nogmcmd	40
+pvp_y_2-5.gat	mapflag	nogmcmd	40
+pvp_y_3-1.gat	mapflag	nogmcmd	40
+pvp_y_3-2.gat	mapflag	nogmcmd	40
+pvp_y_3-3.gat	mapflag	nogmcmd	40
+pvp_y_3-4.gat	mapflag	nogmcmd	40
+pvp_y_3-5.gat	mapflag	nogmcmd	40
+pvp_y_4-1.gat	mapflag	nogmcmd	40
+pvp_y_4-2.gat	mapflag	nogmcmd	40
+pvp_y_4-3.gat	mapflag	nogmcmd	40
+pvp_y_4-4.gat	mapflag	nogmcmd	40
+pvp_y_4-5.gat	mapflag	nogmcmd	40
+pvp_y_5-1.gat	mapflag	nogmcmd	40
+pvp_y_5-2.gat	mapflag	nogmcmd	40
+pvp_y_5-3.gat	mapflag	nogmcmd	40
+pvp_y_5-4.gat	mapflag	nogmcmd	40
+pvp_y_5-5.gat	mapflag	nogmcmd	40
+pvp_y_6-1.gat	mapflag	nogmcmd	40
+pvp_y_6-2.gat	mapflag	nogmcmd	40
+pvp_y_6-3.gat	mapflag	nogmcmd	40
+pvp_y_6-4.gat	mapflag	nogmcmd	40
+pvp_y_6-5.gat	mapflag	nogmcmd	40
+pvp_y_7-1.gat	mapflag	nogmcmd	40
+pvp_y_7-2.gat	mapflag	nogmcmd	40
+pvp_y_7-3.gat	mapflag	nogmcmd	40
+pvp_y_7-4.gat	mapflag	nogmcmd	40
+pvp_y_7-5.gat	mapflag	nogmcmd	40
+pvp_y_8-1.gat	mapflag	nogmcmd	40
+pvp_y_8-2.gat	mapflag	nogmcmd	40
+pvp_y_8-3.gat	mapflag	nogmcmd	40
+pvp_y_8-4.gat	mapflag	nogmcmd	40
+pvp_y_8-5.gat	mapflag	nogmcmd	40
+pvp_2vs2.gat	mapflag	nogmcmd	40
+
+// GvG Arenas =============
+guild_vs1.gat	mapflag	nogmcmd	40
+guild_vs2.gat	mapflag	nogmcmd	40
+guild_vs3.gat	mapflag	nogmcmd	40
+guild_vs4.gat	mapflag	nogmcmd	40
+guild_vs5.gat	mapflag	nogmcmd	40
+
+// Guild Castles ==========
+aldeg_cas01.gat	mapflag	nogmcmd	40
+aldeg_cas02.gat	mapflag	nogmcmd	40
+aldeg_cas03.gat	mapflag	nogmcmd	40
+aldeg_cas04.gat	mapflag	nogmcmd	40
+aldeg_cas05.gat	mapflag	nogmcmd	40
+gefg_cas01.gat	mapflag	nogmcmd	40
+gefg_cas02.gat	mapflag	nogmcmd	40
+gefg_cas03.gat	mapflag	nogmcmd	40
+gefg_cas04.gat	mapflag	nogmcmd	40
+gefg_cas05.gat	mapflag	nogmcmd	40
+payg_cas01.gat	mapflag	nogmcmd	40
+payg_cas02.gat	mapflag	nogmcmd	40
+payg_cas03.gat	mapflag	nogmcmd	40
+payg_cas04.gat	mapflag	nogmcmd	40
+payg_cas05.gat	mapflag	nogmcmd	40
+prtg_cas01.gat	mapflag	nogmcmd	40
+prtg_cas02.gat	mapflag	nogmcmd	40
+prtg_cas03.gat	mapflag	nogmcmd	40
+prtg_cas04.gat	mapflag	nogmcmd	40
+prtg_cas05.gat	mapflag	nogmcmd	40
+
+// Guild Dungeons ==========
+//gld_dun01.gat	mapflag	nogmcmd	40
+//gld_dun02.gat	mapflag	nogmcmd	40
+//gld_dun03.gat	mapflag	nogmcmd	40
+//gld_dun04.gat	mapflag	nogmcmd	40
+
+// Job Quests ===========================
+sword_1-1.gat	mapflag	nogmcmd	40
+sword_2-1.gat	mapflag	nogmcmd	40
+sword_3-1.gat	mapflag	nogmcmd	40
+job_thief1.gat	mapflag	nogmcmd	40
+// 2-1
+job_hunte.gat	mapflag	nogmcmd	40
+job_knt.gat	mapflag	nogmcmd	40
+job_prist.gat	mapflag	nogmcmd	40
+job_wiz.gat	mapflag	nogmcmd	40
+in_moc_16.gat	mapflag	nogmcmd	40
+in_hunter.gat	mapflag	nogmcmd	40
+// 2-2
+alde_alche.gat	mapflag	nogmcmd	40
+job_cru.gat	mapflag	nogmcmd	40
+job_duncer.gat	mapflag	nogmcmd	40
+job_monk.gat	mapflag	nogmcmd	40
+monk_test.gat	mapflag	nogmcmd	40
+monk_in.gat	mapflag	nogmcmd	40
+in_rogue.gat	mapflag	nogmcmd	40
+job_sage.gat	mapflag	nogmcmd	40
+
+// Special Quests Places ================
+que_god01.gat	mapflag	nogmcmd	40
+que_god02.gat	mapflag	nogmcmd	40
+que_sign01.gat	mapflag	nogmcmd	40
+
+// Arenas ========================
+arena_room.gat	mapflag	nogmcmd	40
+sec_in01.gat	mapflag	nogmcmd	40
+sec_in02.gat	mapflag	nogmcmd	40
