@@ -4417,7 +4417,7 @@ int status_change_end(struct block_list* bl, int type, int tid)
 				break;
 			
 			case SC_GOSPEL:
-				if (sc_data[type].val4 == BCT_SELF) {
+				if(sc_data[type].val4 == BCT_SELF) {
 					struct skill_unit_group *group = (struct skill_unit_group *)sc_data[type].val3;
 					sc_data[type].val4 = 0;
 					skill_delunitgroup(group);
@@ -4458,7 +4458,7 @@ int status_change_end(struct block_list* bl, int type, int tid)
 		case SC_SILENCE:
 		case SC_CONFUSION:
 		case SC_BLIND:
-			*opt2 &= ~(1<<(type-SC_POISON));
+			*opt2 &= ~(1<<(type - SC_POISON));
 			opt_flag = 1;
 			break;
 		case SC_DPOISON:

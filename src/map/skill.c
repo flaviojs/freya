@@ -4156,15 +4156,15 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		case PA_GOSPEL:				/* ゴスペル */
 		{
 			struct status_change *sc_data = status_get_sc_data(src);
-			if (!sc_data) 
+			if(!sc_data) 
 				break;
-			if (sc_data[SC_GOSPEL].timer != -1 && sc_data[SC_GOSPEL].val4 == BCT_SELF) {
+			if(sc_data[SC_GOSPEL].timer != -1 && sc_data[SC_GOSPEL].val4 == BCT_SELF)
 				status_change_end(src, SC_GOSPEL, -1); // Clears the active GOSPEL effect  
-			} else {
+			else {
 				struct skill_unit_group *sg = skill_unitsetting(src, skillid, skilllv, src->x, src->y, 0);
-				if (sc_data[SC_GOSPEL].timer != -1)
+				if(sc_data[SC_GOSPEL].timer != -1)
 					status_change_end(src, SC_GOSPEL, -1);
-				status_change_start(src, SkillStatusChangeTable[skillid], skilllv, 0,(int)sg, BCT_SELF, skill_get_time(skillid, skilllv), 0);
+				status_change_start(src, SkillStatusChangeTable[skillid], skilllv, 0, (int)sg, BCT_SELF, skill_get_time(skillid, skilllv), 0);
 			}
 			clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 		}
@@ -4173,9 +4173,9 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 	case BD_ADAPTATION:			/* アドリブ */
 	  {
 		struct status_change *sc_data = status_get_sc_data(src);
-		if(sc_data && sc_data[SC_DANCING].timer != -1){
-			clif_skill_nodamage(src,bl,skillid,skilllv,1);
-			skill_stop_dancing(src,0);
+		if(sc_data && sc_data[SC_DANCING].timer != -1) {
+			clif_skill_nodamage(src, bl, skillid, skilllv, 1);
+			skill_stop_dancing(src, 0);
 		}
 	  }
 		break;
