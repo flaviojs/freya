@@ -2415,14 +2415,14 @@ struct Damage battle_calc_magic_attack(
 	if(skill_num != HW_GRAVITATION)
 		damage = battle_calc_damage(bl, target, damage, div_, skill_num, skill_lv, aflag);	// ÅIC³
 
-	/* magic_damage_return by [AppleGirl] and [Valaris]		*/
-	if(tsd && tsd->magic_damage_return > 0 ){
-		rdamage += damage * tsd->magic_damage_return / 100;
-		if (rdamage < 1) rdamage = 1;
+	if(tsd && tsd->magic_damage_return > 0 && tsd->magic_damage_return > rand()%100)
+	{
+		rdamage += damage;
+		if(rdamage < 1)
+			rdamage = 1;
 		clif_damage(target, bl, gettick(), 0, 0, rdamage, 0, 0, 0);
 		battle_damage(target, bl, rdamage, 0);
 	}
-	/*			end magic_damage_return			*/
 
 	md.damage = damage;
 	md.div_ = div_;

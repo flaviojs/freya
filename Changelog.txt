@@ -41,6 +41,8 @@ Date	Added
 	* Added: Hellion's Revenant MvP (Eye of Hellion Quest) [Tsuyuki]
 	* Fixed: Anopheles mode from Passive to Aggressive [Tsuyuki]
 	* Fixed: Kobold Archer dropping Puppy Headband from 1% to 0.01% [Tsuyuki]
+	* Fixed: bmagicdamagereturn should reflect all damage, not just x% damage (x% is for reflection chance) [Harbin]
+	* Fixed: rokis veil skill doesn't work in gvg maps anymore [Harbin]
 
 08/23/2006
 	* Fixed: hp regen and max hp bonus calculation of apple of idun skill [Harbin]
