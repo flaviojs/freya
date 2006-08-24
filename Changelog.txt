@@ -1,7 +1,7 @@
 
 Date	Added
 
-08/23/2006
+08/24/2006
 	* Updated: Geffen Dungeon L4 Spawns as per Eye of Hellion quest [Tsuyuki]
 	* Removed: Access to Geffen Dungeon L4 (warps) due to Eye of Hellion Quest [Tsuyuki]
 	* Updated: Ice Dungeon spawns with jA info [Tsuyuki]
@@ -41,6 +41,8 @@ Date	Added
 	* Added: Hellion's Revenant MvP (Eye of Hellion Quest) [Tsuyuki]
 	* Fixed: Anopheles mode from Passive to Aggressive [Tsuyuki]
 	* Fixed: Kobold Archer dropping Puppy Headband from 1% to 0.01% [Tsuyuki]
+
+08/23/2006
 	* Fixed: hp regen and max hp bonus calculation of apple of idun skill [Harbin]
 	* Added: adoption skills to skill_cast_db [Harbin]
 	* Fixed: gryphon card was giving level 50 bowling bash autocast. should be level 5 [Harbin]
