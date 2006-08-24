@@ -1196,7 +1196,7 @@ void map_quit(struct map_session_data *sd) {
 		if(sd->sc_data[SC_GUILDAURA].timer != -1)
 			status_change_end(&sd->bl, SC_GUILDAURA, -1);
 		if(sd->sc_data[SC_GOSPEL].timer != -1)
-			status_change_end(bl, SC_GOSPEL, -1);
+			status_change_end(&sd->bl, SC_GOSPEL, -1);
 		// Marionette Control: Remove the effect off your target when logging out - [Aalye]
 		if(sd->sc_data[SC_MARIONETTE].timer != -1) {
 			struct block_list *bl = map_id2bl(sd->sc_data[SC_MARIONETTE].val3);
