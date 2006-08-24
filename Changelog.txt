@@ -1,6 +1,14 @@
 
 Date	Added
 
+08/224/2006
+	* Added: an option to choose minimum level of a GM with listGM/lsgm ladmin command [Yorre]
+	* Added: default GM level for a new account [Yorre]
+	* Changed: default levels of some GM commands for players [Yorre]
+	         - @main 0 -> 1 (most of biggest servers disable this command)
+	         - creation of a 'good player' (level 2) with : @help/@h, @die/@killme/@suicide, @petrename and @party
+	         - creation of a 'Super player' (level 3) with : @storage and @where
+
 08/23/2006
 	* Fixed: Possible dangling pointer with SC_GOSPEL at status_change_end function [Proximus]
 	* Fixed: hp regen and max hp bonus calculation of apple of idun skill [Harbin]

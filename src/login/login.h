@@ -69,7 +69,8 @@ int login_port;
 
 int account_id_count;
 int auth_num;
-int add_to_unlimited_account; /* Give possibility or not to adjust (ladmin command: timeadd) the time of an unlimited account. */
+extern int add_to_unlimited_account; /* Give possibility or not to adjust (ladmin command: timeadd) the time of an unlimited account. */
+extern unsigned char ladmin_min_GM_level; /* minimum GM level of a account for listGM/lsGM ladmin command */
 unsigned char use_md5_passwds;
 unsigned char unique_case_account_name_creation;
 

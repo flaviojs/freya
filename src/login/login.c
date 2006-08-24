@@ -113,6 +113,8 @@ struct auth_dat *auth_dat = NULL;
 static short auth_fifo_pos = 0;
 int auth_num = 0, auth_max = 0;
 
+static unsigned char level_new_account = 0; // GM level of a new account
+
 /* Logs options */
 static unsigned char log_request_connection; // Enable/disable logs of 'Request for connection' message (packet 0x64/0x1dd)
 
@@ -3015,7 +3017,7 @@ void init_new_account(struct auth_dat * account) {
 	}
 	strcpy(account->last_ip, "-");
 /*	account->memo = NULL; */
-/*	account->level = 0; */
+	account->level = level_new_account;
 #ifdef TXT_ONLY
 /*	account->account_reg2_num = 0; */
 /*	account->account_reg2 = NULL; */
@@ -3695,6 +3697,8 @@ static void login_config_read(const char *cfgName) { // not inline, called too o
 				new_account_flag = config_switch(w2);
 			} else if (strcasecmp(w1, "unique_case_account_name_creation") == 0) {
 				unique_case_account_name_creation = config_switch(w2);
+			} else if (strcasecmp(w1, "level_new_account") == 0) {
+				level_new_account = atoi(w2);
 			} else if (strcasecmp(w1, "min_level_to_connect") == 0) {
 				min_level_to_connect = atoi(w2);
 			} else if (strcasecmp(w1, "client_version_to_connect") == 0) {
@@ -3907,6 +3911,8 @@ static void login_config_read(const char *cfgName) { // not inline, called too o
 				add_to_unlimited_account = config_switch(w2);
 			} else if (strcasecmp(w1, "start_limited_time") == 0) {
 				start_limited_time = atoi(w2);
+			} else if (strcasecmp(w1, "ladmin_min_GM_level") == 0) {
+				ladmin_min_GM_level = atoi(w2);
 
 			/* Debug options */
 			} else if (strcasecmp(w1, "save_unknown_packets") == 0) {
@@ -4015,6 +4021,16 @@ static inline void display_conf_warnings(void) {
 			printf("***WARNING: You are using the default console commands password (console_pass).\n");
 			printf("            We highly recommend that you change it.\n");
 		}
+	}
+
+/*	if (level_new_account < 0) {
+		printf("***WARNING: value of level_new_account (%d) is invalid.\n", level_new_account);
+		printf("            -> Using default value (0).\n");
+		level_new_account = 0;
+	} else*/ if (level_new_account > 99) {
+		printf("***WARNING: value of level_new_account (%d) is invalid.\n", level_new_account);
+		printf("            -> Using default value (0).\n");
+		level_new_account = 0;
 	}
 
 /*	if (min_level_to_connect < 0) { // 0: all players, 1-99 at least gm level x
@@ -4138,6 +4154,16 @@ static inline void display_conf_warnings(void) {
 		start_limited_time = -1;
 	}
 
+	if (ladmin_min_GM_level < 1) { /* if 0, it's like ls ladmin command */
+		printf("***WARNING: Invalid value for ladmin_min_GM_level (%d) parameter\n", ladmin_min_GM_level);
+		printf("            -> set to 20 (mediators and upper accounts).\n");
+		ladmin_min_GM_level = 20;
+	} else if (ladmin_min_GM_level > 99) { /* minimum GM level of a account for listGM/lsGM ladmin command */
+		printf("***WARNING: Invalid value for ladmin_min_GM_level (%d) parameter\n", ladmin_min_GM_level);
+		printf("            -> set to 20 (mediators and upper accounts).\n");
+		ladmin_min_GM_level = 20;
+	}
+
 /* Debug options */
 if (display_parse_fromchar > 2) { /* 0: no, 1: yes (without packet 0x2714), 2: all packets */
 		printf("***WARNING: Invalid value (%d) for display_parse_fromchar parameter\n", display_parse_fromchar);
@@ -4228,6 +4254,7 @@ static inline void save_config_in_log(void) {
 		write_log("- to REFUSE creation of accounts with different case name." RETCODE);
 	else
 		write_log("- to ALLOW creation of accounts with different case name." RETCODE);
+	write_log("- New accounts are created with level: %d." RETCODE, level_new_account);
 	if (min_level_to_connect == 0) /* 0: all players, 1-99 at least gm level x */
 		write_log("- with no minimum level for connection." RETCODE);
 	else if (min_level_to_connect == 99)
@@ -4388,6 +4415,10 @@ static inline void save_config_in_log(void) {
 		write_log("- to create new accounts with a limited time: time of creation." RETCODE);
 	else
 		write_log("- to create new accounts with a limited time: time of creation + %d second(s)." RETCODE, start_limited_time);
+	if (ladmin_min_GM_level == 99)
+		write_log("- listGM/lsGM ladmin command will display GM accounts of level 99 (only)." RETCODE);
+	else
+		write_log("- listGM/lsGM ladmin command will display GM accounts from level %d to 99." RETCODE, ladmin_min_GM_level);
 
 	/* Debug options */
 	write_log("* Debug options *" RETCODE);
@@ -4575,6 +4606,7 @@ static inline void init_conf_variables(void) {
 	use_md5_passwds = 0; /* no */
 	new_account_flag = 1; /* yes */
 	unique_case_account_name_creation = 1; /* yes */
+	level_new_account = 0; /* level 0 */
 	min_level_to_connect = 0;
 	client_version_to_connect = 0; /* Client version needed to connect: 0: any client, otherwise client version */
 	memset(date_format, 0, sizeof(date_format));
@@ -4638,6 +4670,7 @@ static inline void init_conf_variables(void) {
 	access_ladmin_allownum = 0;
 	add_to_unlimited_account = 0; /* no */
 	start_limited_time = -1;
+	ladmin_min_GM_level = 20; /* minimum GM level of a account for listGM/lsGM ladmin command */
 
 	/* Debug options */
 	save_unknown_packets = 0; /* no */

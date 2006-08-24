@@ -179,7 +179,7 @@ static void ladmin_list_of_accounts(const int fd, const char* ip) {
 		account_id = auth_dat[j].account_id;
 		if (account_id >= start && account_id <= end &&
 		    (type == 0 || // 0: any accounts, 1: gm only, 3: accounts with state or bannished, 4: accounts without state and not bannished, 5: online accounts
-		     (type == 1 && auth_dat[j].level > 0) ||
+		     (type == 1 && auth_dat[j].level >= ladmin_min_GM_level) ||
 		     (type == 3 && (auth_dat[j].state > 0 || auth_dat[j].ban_until_time != 0)) ||
 		     (type == 4 && (auth_dat[j].state == 0 && auth_dat[j].ban_until_time == 0)) ||
 		     (type == 5 && (online = check_online_player(account_id)) != 0))) {
@@ -208,8 +208,8 @@ static void ladmin_list_of_accounts(const int fd, const char* ip) {
 #ifdef USE_SQL
 	switch(type) { // 0: any accounts, 1: gm only, 3: accounts with state or bannished, 4: accounts without state and not bannished, 5: online accounts
 	case 1:
-		sql_request("SELECT COUNT(1), MIN(`%s`) FROM `%s` WHERE `%s` BETWEEN '%d' AND '%d' AND `%s` > '0'",
-		    login_db_account_id, login_db, login_db_account_id, start, end, login_db_level);
+		sql_request("SELECT COUNT(1), MIN(`%s`) FROM `%s` WHERE `%s` BETWEEN '%d' AND '%d' AND `%s` >= '%d'",
+		    login_db_account_id, login_db, login_db_account_id, start, end, login_db_level, ladmin_min_GM_level);
 		break;
 	case 3:
 		sql_request("SELECT COUNT(1), MIN(`%s`) FROM `%s` WHERE `%s` BETWEEN '%d' AND '%d' AND (`state` > '0' OR `ban_until` <> '0')",
@@ -239,9 +239,9 @@ static void ladmin_list_of_accounts(const int fd, const char* ip) {
 		switch(type) { /* 0: any accounts, 1: gm only, 3: accounts with state or bannished, 4: accounts without state and not bannished */
 		case 1:
 			sql_request("SELECT `%s`, `%s`, `%s`, `sex`, `logincount`, `ban_until`, `state` "
-			            "FROM `%s` WHERE `%s` BETWEEN '%d' AND '%d' AND `%s` > '0'",
+			            "FROM `%s` WHERE `%s` BETWEEN '%d' AND '%d' AND `%s` >= '%d'",
 			             login_db_account_id, login_db_level, login_db_userid,
-			             login_db, login_db_account_id, start, end2, login_db_level);
+			             login_db, login_db_account_id, start, end2, login_db_level, ladmin_min_GM_level);
 			break;
 		case 3:
 			sql_request("SELECT `%s`, `%s`, `%s`, `sex`, `logincount`, `ban_until`, `state` "
