@@ -2,6 +2,45 @@
 Date	Added
 
 08/23/2006
+	* Updated: Geffen Dungeon L4 Spawns as per Eye of Hellion quest [Tsuyuki]
+	* Removed: Access to Geffen Dungeon L4 (warps) due to Eye of Hellion Quest [Tsuyuki]
+	* Updated: Ice Dungeon spawns with jA info [Tsuyuki]
+	* Updated: New monster names as per iRO Episode 10.3 [Tsuyuki]
+	* Updated: The monster spawn files with their correct names [Tsuyuki]
+	* Fixed: Horn Card, now defends against Magic too [Thanks to Lemon Cat]
+	* Moved: Lighthalzen Hotel NPC to the Inn.txt script [Tsuyuki]
+	* Updated: No Memo Mapflag [Tsuyuki]
+	* Fixed: Hatii & Stormy Knight not using Storm Gust [Tsuyuki]
+	* Updated: Rachel monsters, skills, and item drops [Tsuyuki]
+	* Added: Updated Client Traslations [Tsuyuki]
+	  - Converted kRO item names to the correct names:
+	  - Zherlthsh Card > Zealotus Card, etc..
+	  - Swapped Alice Egg w/ Zealotus Egg for Freya compatibility
+	* Fixed: Item names as per 10.3 iRO client data [Tsuyuki]
+	* Added: Missing MvPs to Biolabs 3F [Tsuyuki]
+	* Fixed: Nine-Tails x25 on the wrong Payon Field [Tsuyuki]
+	* Added: Valkyrie Slave Skills [Tsuyuki]
+	* Added: Grand Cross to Valkyrie Randgris [Tsuyuki]
+	  - Source: http://ragnainfo.net/
+	* Fixed: Valkyrie Randgris' Callslave Skill [Tsuyuki]
+	* Added: Redone Inn Script w/ New Towns [Tsuyuki]
+	* Fixed: Mob Drops/Stats for Louyang~Lighthalzen [Tsuyuki]
+	  - Source: http://rocards.de/
+	* Fixed: Amon Ra is now immobile (As per Aegis) [Tsuyuki]
+	* Fixed: Normal Advanced Class Mobs no longer have MvP Exp [Tsuyuki]
+	* Fixed: The following cards which were not working properly: [Tsuyuki]
+	  - Carat Card	- Was using iRO version, switched to kRO version
+	  - Raggler Card 	- Merchant Set SP Addition per Hit
+	  - Spring Rabbit Card 	- Was missing a bonus
+	  - Hermit Plant Card	- Entire card effect and equip location was missing
+	* Fixed: Cleaned up some commented text for Cards [Tsuyuki]
+	* Removed: Commented the following cards since they're not in Aegis: [Tsuyuki]
+	  - Raydric Archer, Wraith, Stem Worm, Sleeper, Orc Archer, Taoist Hermit, Jing Guai
+	* Removed: The above cards from monster drops [Tsuyuki]
+	* Fixed: Quite a few monster names [Tsuyuki]
+	* Added: Hellion's Revenant MvP (Eye of Hellion Quest) [Tsuyuki]
+	* Fixed: Anopheles mode from Passive to Aggressive [Tsuyuki]
+	* Fixed: Kobold Archer dropping Puppy Headband from 1% to 0.01% [Tsuyuki]
 	* Fixed: hp regen and max hp bonus calculation of apple of idun skill [Harbin]
 	* Added: adoption skills to skill_cast_db [Harbin]
 	* Fixed: gryphon card was giving level 50 bowling bash autocast. should be level 5 [Harbin]

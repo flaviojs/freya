@@ -1064,7 +1064,7 @@
 // ----- Christmas Items -----
 7034#Red_Stocking#
 7035#Matchstick#
-7036#Fang_of_Garm#
+7036#Fang_of_Hatii#
 7037#Coupon#
 644#Gift_Box#
 538#Well-baked_Cookie#
@@ -1687,7 +1687,7 @@
 4199#Merman_Card#
 4200#Megalith_Card#
 4201#Majoruros_Card#
-4202#Civil_Servant_Card#
+4202#Mao_Gaui_Card#
 4203#Mutant_Dragonoid_Card#
 4204#Mini_Demon_Card#
 4205#Mimic_Card#
@@ -1716,7 +1716,7 @@
 4228#Sleeper_Card#
 4229#Clock_Tower_Manager_Card#
 4230#Shinobi_Card#
-4231#Increase_Soil_Card#
+4231#Mi_Gao_Card#
 4232#Hermit_Plant_Card#
 4233#Baby_Leopard_Card#
 4234#Anolian_Card#
@@ -1739,7 +1739,7 @@
 4251#Elder_Card#
 4252#Alligator_Card#
 4253#Alice_Card#
-4254#Tirfing_Card#
+4254#Ogretooth_Card#
 4255#Orc_Lady_Card#
 4256#Orc_Archer_Card#
 4257#Wild_Rose_Card#
@@ -1750,7 +1750,7 @@
 4262#Cloud_Hermit_Card#
 4263#Incantation_Samurai_Card#
 4264#Wind_Ghost_Card#
-4265#Li_Me_Mang_Ryang_Card#
+4265#Jing_Guai_Card#
 4266#Eclipse_Card#
 4267#Explosion_Card#
 4268#Injustice_Card#
@@ -1762,7 +1762,7 @@
 4274#Zombie_Master_Card#
 4275#Zombie_Prisoner_Card#
 4276#Lord_of_Death_Card#
-4277#Zherlthsh_Card#
+4277#Zealotus_Card#
 4278#Gibbet_Card#
 4279#Earth_Deleter_Card#
 4280#Geographer_Card#
@@ -1808,12 +1808,12 @@
 4320#Bloody_Knight_Card#
 4321#Hylozoist_Card#
 4322#High_Orc_Card#
-4323#Garm_Baby_Card#
-4324#Garm_Card#
+4323#Hatii_Bebe_Card#
+4324#Hatii_Card#
 4325#Harpy_Card#
 4326#Sea-Otter_Card#
 4327#Bloody_Butterfly_Card#
-4328#Hyegun_Card#
+4328#Yao_Jun_Card#
 4329#Phendark_Card#
 4330#Evil_Snake_Lord_Card#
 4331#Heater_Card#
@@ -2664,13 +2664,13 @@
 4339#Mineral_Card#
 4340#Teddy_Bear_Card#
 4341#Metaling_Card#
-4342#RSX_0806_Card#
+4342#RSX-0806_Card#
 4343#Holden_Card#
 4344#Anopheles_Card#
 4345#Hill_Wind_Card#
 4346#Egnigem_Cenia_Card#
 4347#Armeyer_Dinze_Card#
-4348#Wikebine_Tres_Card#
+4348#Wickebine_Tres_Card#
 4349#Errende_Ebecee_Card#
 4350#Laurell_Weinder_Card#
 4351#Kavach_Icarus_Card#
@@ -2686,7 +2686,7 @@
 4361#Whitesmith_Card#
 4362#Howard_Alt-Eisen_Card#
 4363#High_Priest_Card#
-4364#Margaretha_Solin_Card#
+4364#Margaretha_Sorin_Card#
 4365#High_Wizard_Card#
 4366#Kathryne_Keyron_Card#
 4367#Sniper_Card#
@@ -2694,11 +2694,11 @@
 4369#Venatu_Card#
 4370#Dimik_Card#
 4371#Archdam_Card#
-4372#Bacsojin_Card#
-4373#Chung_E_Card#
+4372#White_Lady_Card#
+4373#Green_Maiden_Card#
 4374#Vesper_Card#
 4375#Orc_Baby_Card#
-4376#Lady_Tany_Card#
+4376#Lady_Tanee_Card#
 4377#Green_Iguana_Card#
 4378#Gold_Acidus_Card#
 4379#Blue_Acidus_Card#
@@ -2706,9 +2706,9 @@
 4381#Green_Ferus_Card#
 4382#Yellow_Novus_Card#
 4383#Red_Novus_Card#
-4384#Hydro_Card#
+4384#Hydrolancer_Card#
 4385#Dragon_Egg_Card#
-4386#Detale_Card#
+4386#Detale_Deurus_Card#
 4387#Ancient_Mimic_Card#
 4388#Deathword_Card#
 4389#Plasma_Card#
@@ -2846,9 +2846,32 @@
 1533#Sword#
 13020#Sword#
 
-// ----- ... -----
-12186#...#
-12187#...#
+// ----- Chinese Boxes -----
+12186#Old_Red_Box#
+12187#Old_Green_Box#
 
-// ----- ... -----
-7588#...#
+// ----- Vietnam Event -----
+7588#IPOD_Coupon#
+
+2361##Clothing##
+2362##Clothing##
+2363##Clothing##
+
+// ----- Taiwan Harvest Moon Day Event -----
+12188#Fantastic_Moon_Snack#
+7589#Lettered_Moon_Snack_01#
+7590#Lettered_Moon_Snack_02#
+7591#Lettered_Moon_Snack_03#
+7592#Lettered_Moon_Snack_04#
+7593#Lettered_Moon_Snack_05#
+
+// ----- Japanese Ribbons 2006 -----
+5191#Accessory#
+5192#Accessory#
+5193#Accessory#
+5194#Accessory#
+5195#Accessory#
+5196#Accessory#
+5197#Accessory#
+
+12189#Old_Red_Box#

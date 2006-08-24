@@ -11,6 +11,8 @@
 //= Warp Points for Geffen Tower
 //===== Additional Comments: =================================
 //= 1.1 - Fixed some warps position [Yor]
+//= 1.2 - Removed access to Geffen Dungeon L3 due to 
+//= Eye of Hellion Quest [Tsuyuki]
 //============================================================
 
 //= Geffen Tower =============================================
@@ -42,5 +44,4 @@ gef_dun00.gat,107,168,0	warp	gefd01	2,1,gef_dun01.gat,115,236
 gef_dun01.gat,115,240,0	warp	gefd01-1	2,2,gef_dun00.gat,107,165
 gef_dun01.gat,197,38,0	warp	gefd02	2,1,gef_dun02.gat,106,132
 gef_dun02.gat,106,134,0	warp	gefd02-1	2,1,gef_dun01.gat,197,40
-gef_dun02.gat,215,67,0	warp	gefd03	2,1,gef_dun03.gat,203,200
-gef_dun03.gat,203,204,0	warp	gefd03-1	2,1,gef_dun02.gat,215,63
+gef_dun03.gat,203,204,0	warp	gefd03	2,1,gef_dun02.gat,215,63

@@ -29,4 +29,4 @@ ein_dun02.gat,0,0,0,0	monster	Obsidian	1615,40,0,0,0
 ein_dun02.gat,0,0,0,0	monster	Mineral	1614,50,0,0,0
 ein_dun02.gat,0,0,0,0	monster	Waste Stove	1617,30,0,0,0
 ein_dun02.gat,0,0,0,0	monster	Venomous	1621,20,0,0,0
-ein_dun02.gat,163,137,50,50	monster	RSX 0806	1623,1,14400000,14400000,0
+ein_dun02.gat,163,137,50,50	monster	RSX-0806	1623,1,14400000,14400000,0

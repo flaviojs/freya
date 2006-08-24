@@ -29,5 +29,5 @@ xmas_dun02.gat,0,0,0,0	monster	Christmas Cookie	1246,20,0,0,0
 xmas_dun02.gat,0,0,0,0	monster	Cookie	1265,20,0,0,0
 xmas_dun02.gat,0,0,0,0	monster	Cruiser	1248,35,0,0,0
 xmas_dun02.gat,0,0,0,0	monster	Myst Case	1249,50,0,0,0
-xmas_dun02.gat,0,0,0,0	monster	Hatii Baby	1515,1,1800000,0,0
+xmas_dun02.gat,0,0,0,0	monster	Hatii Bebe	1515,1,1800000,0,0
 xmas_dun02.gat,0,0,0,0	monster	Stormy Knight	1251,1,3600000,7200000,0

@@ -36,8 +36,8 @@ gl_cas02.gat,105,180,0,0	monster	Whisper	1185,1,1800000,900000,1
 gl_cas02.gat,182,12,3,3	monster	Chimera	1283,1,3600000,1800000,1
 gl_cas02.gat,185,11,8,8	monster	Rideword	1195,4,120000,60000,1
 gl_cas02.gat,174,11,8,8	monster	Evil Druid	1117,4,120000,60000,1
-gl_cas02.gat,104,38,4,4	monster	Knight of Abyss	1219,1,1800000,900000,1
-gl_cas02.gat,24,35,4,4	monster	Knight of Abyss	1219,1,1800000,900000,1
+gl_cas02.gat,104,38,4,4	monster	Abyssmal Knight	1219,1,1800000,900000,1
+gl_cas02.gat,24,35,4,4	monster	Abyssmal Knight	1219,1,1800000,900000,1
 gl_cas02.gat,46,124,15,15	monster	Rideword	1195,15,360000,180000,1
 gl_cas02.gat,16,186,10,10	monster	Evil Druid	1117,5,360000,180000,1
 gl_cas02.gat,133,83,3,3	monster	Khalitzburg	1132,1,360000,180000,1
@@ -45,8 +45,8 @@ gl_cas02.gat,45,177,3,3	monster	Khalitzburg	1132,1,360000,180000,1
 gl_cas02.gat,182,65,3,3	monster	Khalitzburg	1132,1,360000,180000,1
 gl_cas02.gat,173,127,3,3	monster	Khalitzburg	1132,1,360000,180000,1
 gl_cas02.gat,173,167,3,3	monster	Khalitzburg	1132,1,360000,180000,1
-gl_cas02.gat,93,177,3,3	monster	Knight of Abyss	1219,1,1800000,900000,1
-gl_cas02.gat,115,177,3,3	monster	Knight of Abyss	1219,1,1800000,900000,1
+gl_cas02.gat,93,177,3,3	monster	Abyssmal Knight	1219,1,1800000,900000,1
+gl_cas02.gat,115,177,3,3	monster	Abyssmal Knight	1219,1,1800000,900000,1
 gl_cas02.gat,83,84,2,2	monster	Mimic	1191,1,360000,180000,1
 gl_cas02.gat,83,80,2,2	monster	Mimic	1191,1,360000,180000,1
 gl_cas02.gat,0,0,0,0	monster	Tyrfing	1204,1,7200000,3600000,1
@@ -95,7 +95,7 @@ gl_prison1.gat,0,0,0,0	monster	Phendark	1202,10,0,0,0
 
 // Glastheim
 
-glast_01.gat,0,0,0,0	monster	Knight of Abyss	1219,2,600000,300000,1
+glast_01.gat,0,0,0,0	monster	Abyssmal Knight	1219,2,600000,300000,1
 glast_01.gat,0,0,0,0	monster	Gargoyle	1253,10,0,0,1
 
 // Glast Heim  ( gl_church.gat )
@@ -156,7 +156,7 @@ gl_step.gat,0,0,0,0	monster	Wind Ghost	1263,50,0,0,0
 gl_knt01.gat,0,0,0,0	monster	Raydric	1163,60,0,0,0
 gl_knt01.gat,0,0,0,0	monster	Raydric Archer	1276,20,0,0,0
 gl_knt01.gat,0,0,0,0	monster	Khalitzburg	1132,10,0,0,0
-gl_knt01.gat,0,0,0,0	monster	Knight of Abyss	1219,10,0,0,0
+gl_knt01.gat,0,0,0,0	monster	Abyssmal Knight	1219,10,0,0,0
 gl_knt01.gat,0,0,0,0	monster	Alice	1275,1,0,0,0
 gl_knt01.gat,21,278,0,0	monster	Giant Whisper	1186,1,3600000,1800000,1
 gl_knt01.gat,122,266,0,0	monster	Rideword	1195,1,120000,60000,1
@@ -183,8 +183,8 @@ gl_knt02.gat,0,0,0,0	monster	Khalitzburg	1132,30,0,0,0
 gl_knt02.gat,0,0,0,0	monster	Bloody Knight	1268,1,3600000,1800000,1
 gl_knt02.gat,0,0,0,0	monster	Alice	1275,1,0,0,0
 gl_knt02.gat,0,0,0,0	monster	Mysteltainn	1203,1,1800000,1200000,0
-gl_knt02.gat,0,0,0,0	monster	Knight of Abyss	1219,5,0,0,0
-gl_knt02.gat,149,26,5,5	monster	Knight of Abyss	1219,1,3600000,1800000,1
+gl_knt02.gat,0,0,0,0	monster	Abyssmal Knight	1219,5,0,0,0
+gl_knt02.gat,149,26,5,5	monster	Abyssmal Knight	1219,1,3600000,1800000,1
 gl_knt02.gat,99,49,5,5	monster	Khalitzburg	1132,1,1800000,900000,1
 gl_knt02.gat,62,80,5,5	monster	Khalitzburg	1132,1,1800000,900000,1
 gl_knt02.gat,82,134,5,5	monster	Khalitzburg	1132,1,1800000,900000,1
