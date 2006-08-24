@@ -2,6 +2,8 @@
 Date	Added
 
 08/224/2006
+	* Removed: acronym "Free Ragnarok Emulator, Yor Adopted." [Yor]
+	* Changed: 'Free Yor team' to 'Freya team' [Yor]
 	* Added: an option to choose minimum level of a GM with listGM/lsgm ladmin command [Yorre]
 	* Added: default GM level for a new account [Yorre]
 	* Changed: default levels of some GM commands for players [Yorre]

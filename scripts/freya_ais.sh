@@ -27,12 +27,11 @@ DEBUG=yes
 LANG=C
 
 echo "--------------------------------------------------------------"
-echo "             (c)2004-2005 Free Yor team presents:             "
+echo "              (c)2004-2006 Freya team presents :              "
 echo "                 ___   ___    ___   _  _   __                 "
 echo "                (  _) (  ,)  (  _) ( \/ ) (  )                "
 echo "                (  _)  )  \   ) _)  \  /  /__\                "
 echo "                (_)   (_)\_) (___) (__/  (_)(_)               "
-echo "             Free Ragnarok Emulator, Yor Adopted.             "
 echo "                    http://www.ro-freya.net                   "
 echo "--------------------------------------------------------------"
 

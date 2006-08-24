@@ -19,7 +19,7 @@ M_SRV_C6=./conf/grf-files.txt
 print_start() {
 #	more << EOF
 echo "Freya Starting..."
-echo "			(c) 2004-2005 Freya Project."
+echo "			(c) 2004-2006 Freya Project."
 echo "			URL:http://www.ro-freya.net/"
 echo ""
 echo "Debug informations will appear,"

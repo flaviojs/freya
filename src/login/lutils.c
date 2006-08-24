@@ -2,8 +2,8 @@
 
 /*------------------------------------------------------------------------
  Module:        Version 1.0.0 - Yor
- Author:        Freya Team Copyrights (c) 2004-2005
- Project:       Project Freya Account Server
+ Author:        Freya Team Copyrights (c) 2004-2006
+ Project:       Freya Account Server
  Creation Date: December 6, 2004
  Modified Date: January 8, 2005
  Description:   Ragnarok Online Server Emulator - General functions of login-server
