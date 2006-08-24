@@ -2,6 +2,11 @@
 Date	Added
 
 08/224/2006
+	* Added: some functions in freya.php script: [Yor]
+	       - checkaccount($login, $pass)
+	       - accountinfo($id)
+	       - changepass($accname, $newpass)
+	       - sendbroadcast($msg, $blue=false)
 	* Removed: acronym "Free Ragnarok Emulator, Yor Adopted." [Yor]
 	* Changed: 'Free Yor team' to 'Freya team' [Yor]
 	* Added: an option to choose minimum level of a GM with listGM/lsgm ladmin command [Yorre]
