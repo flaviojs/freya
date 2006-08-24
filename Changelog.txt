@@ -2,6 +2,9 @@
 Date	Added
 
 08/224/2006
+	* Added: 2 php scripts (which need only nezumi.php) [Yor]
+	       - chgpasswd.php: to change password (in different languages)
+	         createaccount.php : to create accounts
 	* Added: some functions in freya.php script: [Yor]
 	       - checkaccount($login, $pass)
 	       - accountinfo($id)
