@@ -1,4 +1,5 @@
 // $Id: status.c 571 2005-12-01 23:19:59Z Yor $
+
 #include <config.h>
 
 #include <string.h>
@@ -1209,10 +1210,10 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 			sd->subrace[6] += sd->sc_data[SC_PROVIDENCE].val2;	// ‘Î ˆ«–‚
 		}
 
-		// ‚»‚Ì‘¼
-		if(sd->sc_data[SC_APPLEIDUN].timer!=-1) {	// ƒCƒhƒDƒ“‚Ì—ÑŒç
-			sd->status.max_hp += ((5 + sd->sc_data[SC_APPLEIDUN].val1 * 2 + ((sd->sc_data[SC_APPLEIDUN].val2 + 1) >> 1)
-						+sd->sc_data[SC_APPLEIDUN].val3/10) * sd->status.max_hp)/100;
+		// Maximum HP bonus calculations
+		if(sd->sc_data[SC_APPLEIDUN].timer != -1)
+		{
+			sd->status.max_hp += sd->status.max_hp * (sd->sc_data[SC_APPLEIDUN].val1 / 100);
 			if(sd->status.max_hp < 0 || sd->status.max_hp > battle_config.max_hp)
 				sd->status.max_hp = battle_config.max_hp;
 		}
