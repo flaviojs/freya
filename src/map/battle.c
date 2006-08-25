@@ -1040,7 +1040,7 @@ struct Damage battle_calc_weapon_attack(
 				break;
 			case MC_MAMMONITE:
 				skillratio += 50 * skill_lv;	// FORMULA: damage * (100+ 50 * skill_lv) / 100
-				cardfix = 0;
+				flag.cardfix = 0;
 				break;
 			// swordsman
 			case SM_BASH:
@@ -1130,7 +1130,10 @@ struct Damage battle_calc_weapon_attack(
 				wd.flag = (wd.flag & ~BF_SKILLMASK) | BF_NORMAL;
 				break;
 			case KN_BOWLINGBASH:
-				skillratio += 40 * skill_lv; // FORMULA: damage * (100 + 40 * skill_lv) / 100
+				// DAMAGE: (basedamage * (100 + 40 * skill_lv) / 100) / 2
+				skillratio += 100 + (40 * skill_lv);
+				skillratio /= 2;
+				wd.div_ = 2;
 				wd.blewcount = 0;
 				break;
 			case KN_BRANDISHSPEAR:

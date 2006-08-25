@@ -3195,7 +3195,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 			return 1;
 		// TODO: very ugly way to initialize sc_data, move it (and the other sc_data inits too) to the top of this function [Harbin]
 		struct status_change *sc_data = status_get_sc_data(bl);
-		if(sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPEL)
+		if(sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL)
 			return 1;
 	} else if (bl->type == BL_MOB) {
 		nullpo_retr(1, dstmd = (struct mob_data *)bl);

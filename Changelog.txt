@@ -25,6 +25,10 @@ Date	Added
 	* Fixed: Problem in nomemo.txt [Tsuyuki]
 	* Fixed: only dispel skill is castable on trickdead novice. other status changes won't work [Harbin]
 	* Fixed: mammonite damage should ignore card modifiers, overthrust and max overthrust [Harbin]
+	* Fixed: bowling bash skill should hit twice [Harbin]
+	 - Source: http://www.ragnainfo.net/forums/viewtopic.php?t=34782
+	* Fixed: compilation error. invalid skill name (skill.c l3198) [Harbin]
+	* Fixed: compilation error. invalid variable name (battle.c l1043) [Harbin]
 
 08/24/2006
 	* Updated: Geffen Dungeon L4 Spawns as per Eye of Hellion quest [Tsuyuki]
