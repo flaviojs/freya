@@ -2,6 +2,8 @@
 Date	Added
 
 08/25/2006
+	* Updated: Item No Refine Database with new items [Tsuyuki]
+	* Updated: Item database with new items [Tsuyuki]
 	* Updated: Some 10.3 Item Prices [Thanks to muad_dib] [Tsuyuki]
 	* Updated: Some more mob names: [Tsuyuki]
 	  - G_Tirfing > G_Ogretooth
