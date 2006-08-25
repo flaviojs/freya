@@ -2,6 +2,26 @@
 Date	Added
 
 08/25/2006
+	* Updated: Some more mob names: [Tsuyuki]
+	  - G_Tirfing > G_Ogretooth
+	  - Fake Angel > False Angel
+	  - Archangeling > Arc Angeling
+	  - Wanderman > Wanderer
+	  - Incantation Samurai > Incarnation Samurai
+	  - Blazzer > Blazer
+	  - Cat o Nine Tails > Cat o' Nine Tails
+	  - Neraid > Nereid
+	  - Nine-Tail > Nine Tail
+	  - Worm Tail > Wormtail
+	* Updated: Above monster card names as well [Tsuyuki]
+	* Updated: Geffenia Dungeon Spawns [Tsuyuki]
+	* Fixed: Geffen Dungeon 4 spawn info [Tsuyuki]
+	* Fixed: Incarnation Samurai drops & MvP drops/exp [Tsuyuki]
+	* Fixed: Event Baphomet MvP drops & MvP Exp [Tsuyuki]
+	* Fixed: Some other minor drops/rates here and there [Tsuyuki]
+	* Updated: Redid all Magma Dungeon monsters [Tsuyuki]
+	* Added: Missing Spell Scrolls to monsters drops [Tsuyuki]
+	* Fixed: Problem in nomemo.txt [Tsuyuki]
 	* Fixed: only dispel skill is castable on trickdead novice. other status changes won't work [Harbin]
 	* Fixed: mammonite damage should ignore card modifiers, overthrust and max overthrust [Harbin]
 

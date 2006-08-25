@@ -10,7 +10,7 @@
 //=
 //============================================================
 
-// Gef_dun00 
+// gef_dun00 
      
 gef_dun00.gat,0,0,0,0	monster	Hunter Fly	1035,30,60000,30000,0
 gef_dun00.gat,0,0,0,0	monster	Poporing	1031,15,0,0,0
@@ -24,7 +24,7 @@ gef_dun00.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
 gef_dun00.gat,89,111,3,3	monster	Black Mushroom	1084,3,180000,90000,1
 gef_dun00.gat,121,109,3,3	monster	Black Mushroom	1084,3,180000,90000,1
 
-// Gef_dun01
+// gef_dun01
 
 gef_dun01.gat,0,0,0,0	monster	Drainliar	1111,30,0,0,0
 gef_dun01.gat,0,0,0,0	monster	Nightmare	1061,30,0,0,0
@@ -40,7 +40,7 @@ gef_dun01.gat,263,115,10,10	monster	White Plant	1082,3,180000,90000,1
 gef_dun01.gat,48,67,10,10	monster	White Plant	1082,2,180000,90000,1
 gef_dun01.gat,150,237,10,10	monster	White Plant	1082,2,180000,90000,1
 
-// Gef_dun02   
+// gef_dun02   
    
 gef_dun02.gat,0,0,0,0	monster	Ghoul	1036,20,0,0,0
 gef_dun02.gat,0,0,0,0	monster	Whisper	1179,20,0,0,0
@@ -56,8 +56,10 @@ gef_dun02.gat,106,151,20,7	monster	White Plant	1082,3,180000,90000,1
 gef_dun02.gat,58,167,10,10	monster	Shining Plant	1083,1,1800000,900000,1
 gef_dun02.gat,185,83,3,3	monster	Shining Plant	1083,1,1800000,900000,1
 
-// Gef_dun03 - Eye of Hellion Quest Map
+// gef_dun03 - Eye of Hellion Quest Map
 gef_dun03.gat,0,0,0,0	monster	Hellion Revenant	1626,1,600000,300000,0
-gef_dun03.gat,0,0,0,0	monster	Wraith	1192,5,180000,90000,0
-gef_dun03.gat,0,0,0,0	monster	Wind Ghost	1263,5,180000,90000,0
-gef_dun03.gat,0,0,0,0	monster	Wraith Dead	1291,1,1800000,900000,0
+gef_dun03.gat,0,0,0,0	monster	Wraith	1192,8,0,0,0
+gef_dun03.gat,0,0,0,0	monster	Wind Ghost	1263,3,0,0,0
+gef_dun03.gat,0,0,0,0	monster	Wraith Dead	1291,2,0,0,0
+gef_dun02.gat,0,0,0,0	monster	White Plant	1082,10,180000,90000,1
+gef_dun02.gat,0,0,0,0	monster	Shining Plant	1083,3,1800000,900000,1

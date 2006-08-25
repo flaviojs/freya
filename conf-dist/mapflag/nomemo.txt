@@ -32,7 +32,7 @@ izlude.gat	mapflag	nomemo
 izlude_in.gat	mapflag	nomemo
 jawaii_in.gat	mapflag	nomemo
 lighthalzen.gat	mapflag	nomemo
-lhz_cube	mapflag	nomemo
+lhz_cube.gat	mapflag	nomemo
 lhz_in01.gat	mapflag	nomemo
 lhz_in02.gat	mapflag	nomemo
 lhz_in03.gat	mapflag	nomemo
