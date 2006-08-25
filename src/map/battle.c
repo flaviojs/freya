@@ -1040,6 +1040,7 @@ struct Damage battle_calc_weapon_attack(
 				break;
 			case MC_MAMMONITE:
 				skillratio += 50 * skill_lv;	// FORMULA: damage * (100+ 50 * skill_lv) / 100
+				cardfix = 0;
 				break;
 			// swordsman
 			case SM_BASH:
@@ -1648,12 +1649,21 @@ struct Damage battle_calc_weapon_attack(
 			}
 		}
 
-		// compounded skill damage modifiers
-		if(sc_data && skill_num != PA_SACRIFICE) {
+		// skill damage bonuses
+		if(sc_data && skill_num != PA_SACRIFICE)
+		{
 			if(sc_data[SC_OVERTHRUST].timer != -1)
-				skillratio += 5 * sc_data[SC_OVERTHRUST].val1;
+			{
+				if(skill_num != MC_MAMMONITE)
+					skillratio += 5 * sc_data[SC_OVERTHRUST].val1;
+			}
+			
 			if(sc_data[SC_MAXOVERTHRUST].timer != -1)
-				skillratio += 20 * sc_data[SC_MAXOVERTHRUST].val1;
+			{
+				if(skill_num != MC_MAMMONITE)
+					skillratio += 20 * sc_data[SC_MAXOVERTHRUST].val1;
+			}
+			
 			if(sc_data[SC_BERSERK].timer != -1)
 				skillratio += 100;
 		}

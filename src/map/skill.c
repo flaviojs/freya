@@ -3188,9 +3188,14 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 	} else if (src->type == BL_MOB)
 		md = (struct mob_data *)src;
 
-	if (bl->type == BL_PC) {
+	if(bl->type == BL_PC)
+	{
 		nullpo_retr(1, dstsd = (struct map_session_data *)bl);
 		if(pc_isdead(dstsd) && skillid != ALL_RESURRECTION && skillid != PR_REDEMPTIO)
+			return 1;
+		// TODO: very ugly way to initialize sc_data, move it (and the other sc_data inits too) to the top of this function [Harbin]
+		struct status_change *sc_data = status_get_sc_data(bl);
+		if(sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPEL)
 			return 1;
 	} else if (bl->type == BL_MOB) {
 		nullpo_retr(1, dstmd = (struct mob_data *)bl);

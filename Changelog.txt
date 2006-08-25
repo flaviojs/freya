@@ -1,6 +1,10 @@
 
 Date	Added
 
+08/25/2006
+	* Fixed: only dispel skill is castable on trickdead novice. other status changes won't work [Harbin]
+	* Fixed: mammonite damage should ignore card modifiers, overthrust and max overthrust [Harbin]
+
 08/24/2006
 	* Updated: Geffen Dungeon L4 Spawns as per Eye of Hellion quest [Tsuyuki]
 	* Removed: Access to Geffen Dungeon L4 (warps) due to Eye of Hellion Quest [Tsuyuki]
