@@ -72,9 +72,9 @@
 563,Doublecrust_Swiss_Fondue,Doublecrust Swiss Fondue,0,20,0,150,,,,,27254783,3,,,,,{ itemheal rand(100,200),0; },{}
 564,Rice_Ball,Rice Ball,0,20,0,30,,,,,0,2,,,,,{ itemheal rand(175,234),0; },{}
 565,Vita_500,Vita 500,0,2000,0,30,,,,,27254783,2,,,,,{ itemheal 500,0; },{}
-566,Tom_Yum_Goong,Tom Yum Goong,0,10000,0,150,,,,,27254783,2,,,,,{ itemheal rand(100,200),0; },{}
+566,Tom_Yum_Goong,Tom Yum Goong,0,10000,5000,150,,,,,27254783,2,,,,,{ itemheal rand(100,200),0; },{}
 567,Shrimp,Shrimp,0,20,0,20,,,,,27254783,3,,,,,{ itemheal rand(50,100),0; },{}
-568,Lemon,Lemon,0,20,0,20,,,,,0,3,,,,,{},{}
+568,Lemon,Lemon,0,20,0,20,,,,,0,3,,,,,{ itemheal 0,rand(10,14); },{}
 569,Novice_Potion,Novice Potion,0,50,0,70,,,,,27254783,2,,,,,{ itemheal rand(45,64),0; },{}
 
 // St.Valentine's Day Items
@@ -86,10 +86,10 @@
 575,2nd_Anniversary_Cake,2nd Anniversary Cake,0,0,,100,,,,,27254783,2,,,,,{ itemheal rand(270,329),0; },{}
 576,Prickly_Fruit,Prickly Fruit,0,20,0,40,0,0,0,0,27254783,2,0,0,0,0,{ itemheal rand(10,15),rand(10,15); },{}
 577,Bag_of_Grain,Bag of Grain,0,,10,20,,,,,16777215,2,,,,,{ itemheal rand(10,14),0; },{}
-578,Strawberry,Strawberry,0,,10,20,,,,,16777215,2,,,,,{ itemheal 0,rand(10,14); },{}
-579,Fresh_Fish,Fresh_Fish,0,,10,20,,,,,16777215,2,,,,,{ itemheal rand(40,54),0; },{}
-580,Bread,Bread,0,,10,20,,,,,16777215,2,,,,,{ itemheal rand(20,34),0; },{}
-581,Edible_Mushroom,Edible Mushroom,0,,10,20,,,,,16777215,2,,,,,{ itemheal rand(10,14),0; },{}
+578,Strawberry,Strawberry,0,200,100,20,,,,,16777215,2,,,,,{ itemheal 0,rand(10,14); },{}
+579,Fresh_Fish,Fresh_Fish,0,20,10,20,,,,,16777215,2,,,,,{ itemheal rand(40,54),0; },{}
+580,Bread,Bread,0,150,75,20,,,,,16777215,2,,,,,{ itemheal rand(20,34),0; },{}
+581,Edible_Mushroom,Edible Mushroom,0,40,20,20,,,,,16777215,2,,,,,{ itemheal rand(10,14),0; },{}
 582,Orange,Orange,0,,10,20,,,,,16777215,2,,,,,{ itemheal rand(10,15),rand(10,15); },{}
 583,KETUPAT_SAYUR,KETUPAT SAYUR,0,,10,150,,,,,16777215,2,,,,,{},{}
 
@@ -2213,7 +2213,9 @@
 7416,Letter_of_Recommentation,Letter of Recommentation,3,,10,0,,,,,,,,,,,{},{}
 7417,Written_Request(A),Written Request(A),3,,10,0,,,,,,,,,,,{},{}
 7418,Written_Request(B),Written Request(B),3,,10,0,,,,,,,,,,,{},{}
-7419,Embryo_Creation_Guide,Embryo Creation Guide,3,,10,0,,,,,,,,,,,{},{}
+
+7419,Embryo_Creation_Guide,Embryo Creation Guide,3,4800,2400,0,,,,,,,,,,,{},{}
+
 7420,Cranium,Cranium,3,,0,0,,,,,,,,,,,{},{}
 7421,Red_Key,Red Key,3,,10,0,,,,,,,,,,,{},{}
 7422,Yellow_Key,Yellow Key,3,,10,0,,,,,,,,,,,{},{}
@@ -2229,23 +2231,25 @@
 7432,Leather_Pouch,Leather Pouch,3,,10,0,,,,,,,,,,,{},{}
 7433,Blank_Scroll,Blank Scroll,3,,10,0,,,,,,,,,,,{},{}
 7434,Elemental_Potion_Guide,Elemental Potion Creation Guide,3,,10,0,,,,,,,,,,,{},{}
-7435,Golden_Ornament,Golden Ornament,3,,10,0,,,,,,,,,,,{},{}
-7436,Fragment_of_Agony,Fragment of Agony,3,,10,0,,,,,,,,,,,{},{}
-7437,Fragment_of_Misery,Fragment of Sorrow,3,,10,0,,,,,,,,,,,{},{}
-7438,Fragment_of_Hatred,Fragment of Hatred,3,,10,0,,,,,,,,,,,{},{}
-7439,Fragment_of_Despair,Fragment of Despair,3,,10,0,,,,,,,,,,,{},{}
-7440,Red_Feather,Red Feather,3,,10,0,,,,,,,,,,,{},{}
-7441,Blue_Feather,Blue Feather,3,,10,0,,,,,,,,,,,{},{}
-7442,Cursed_Seal,Cursed Seal,3,,10,0,,,,,,,,,,,{},{}
-7443,3-Headed_Dragon's_Head,Three Headed Dragon's Head,3,,10,0,,,,,,,,,,,{},{}
-7444,Treasure_Box,Treasure Box,3,,10,0,,,,,,,,,,,{},{}
-7445,Green_Bijou,Green Bijou,3,,10,0,,,,,,,,,,,{},{}
-7446,Blue_Bijou,Blue Bijou,3,,10,0,,,,,,,,,,,{},{}
-7447,Red_Bijou,Red Bijou,3,,10,0,,,,,,,,,,,{},{}
-7448,Yellow_Bijou,Yellow Bijou,3,,10,0,,,,,,,,,,,{},{}
-7449,Bloody_Page,Bloody Page,3,,10,0,,,,,,,,,,,{},{}
-7450,Skeletal_Armor_Piece,Skeletal Armor Piece,3,,10,0,,,,,,,,,,,{},{}
-7451,Fire_Dragon_Scale,Fire Dragon Scale,3,,10,0,,,,,,,,,,,{},{}
+
+7435,Golden_Ornament,Golden Ornament,3,1906,953,0,,,,,,,,,,,{},{}
+7436,Fragment_of_Agony,Fragment of Agony,3,1506,753,0,,,,,,,,,,,{},{}
+7437,Fragment_of_Misery,Fragment of Sorrow,3,1506,753,0,,,,,,,,,,,{},{}
+7438,Fragment_of_Hatred,Fragment of Hatred,3,1506,753,0,,,,,,,,,,,{},{}
+7439,Fragment_of_Despair,Fragment of Despair,3,1506,753,0,,,,,,,,,,,{},{}
+7440,Red_Feather,Red Feather,3,1408,704,0,,,,,,,,,,,{},{}
+7441,Blue_Feather,Blue Feather,3,1408,704,0,,,,,,,,,,,{},{}
+7442,Cursed_Seal,Cursed Seal,3,1332,666,0,,,,,,,,,,,{},{}
+7443,3-Headed_Dragon's_Head,Three Headed Dragon's Head,3,956,478,0,,,,,,,,,,,{},{}
+7444,Treasure_Box,Treasure Box,3,300000,150000,0,,,,,,,,,,,{},{}
+7445,Green_Bijou,Green Bijou,3,886,443,0,,,,,,,,,,,{},{}
+7446,Blue_Bijou,Blue Bijou,3,886,443,0,,,,,,,,,,,{},{}
+7447,Red_Bijou,Red Bijou,3,886,443,0,,,,,,,,,,,{},{}
+7448,Yellow_Bijou,Yellow Bijou,3,886,443,0,,,,,,,,,,,{},{}
+7449,Bloody_Page,Bloody Page,3,680,340,0,,,,,,,,,,,{},{}
+7450,Skeletal_Armor_Piece,Skeletal Armor Piece,3,2050,1025,0,,,,,,,,,,,{},{}
+7451,Fire_Dragon_Scale,Fire Dragon Scale,3,1852,926,0,,,,,,,,,,,{},{}
+
 7452,Yellow_Spice,Yellow Spice,3,,10,0,,,,,,,,,,,{},{}
 7453,Sweet_Sauce,Sweet Sauce,3,,10,0,,,,,,,,,,,{},{}
 7454,Savory_Sauce,Savory Sauce,3,,10,0,,,,,,,,,,,{},{}
@@ -2266,16 +2270,18 @@
 7469,Blue_U_Card,Blue U Card,3,,10,10,,,,,,,,,,,{},{}
 7470,Blue_W_Card,Blue W Card,3,,10,10,,,,,,,,,,,{},{}
 7471,Blue_Y_Card,Blue Y Card,3,,10,10,,,,,,,,,,,{},{}
-7472,Level_1_Cookbook,Level 1 Cookbook,3,,10,10,,,,,,,,,,,{},{}
-7473,Level_2_Cookbook,Level 2 Cookbook,3,,10,10,,,,,,,,,,,{},{}
-7474,Level_3_Cookbook,Level 3 Cookbook,3,,10,10,,,,,,,,,,,{},{}
-7475,Level_4_Cookbook,Level 4 Cookbook,3,,10,10,,,,,,,,,,,{},{}
-7476,Level_5_Cookbook,Level 5 Cookbook,3,,10,10,,,,,,,,,,,{},{}
-7477,Level_6_Cookbook,Level 6 Cookbook,3,,10,10,,,,,,,,,,,{},{}
-7478,Level_7_Cookbook,Level 7 Cookbook,3,,10,10,,,,,,,,,,,{},{}
-7479,Level_8_Cookbook,Level 8 Cookbook,3,,10,10,,,,,,,,,,,{},{}
-7480,Level_9_Cookbook,Level 9 Cookbook,3,,10,10,,,,,,,,,,,{},{}
-7481,Level_10_Cookbook,Level 10 Cookbook,3,,10,10,,,,,,,,,,,{},{}
+
+7472,Level_1_Cookbook,Level 1 Cookbook,3,1000,500,10,,,,,,,,,,,{},{}
+7473,Level_2_Cookbook,Level 2 Cookbook,3,1000,500,10,,,,,,,,,,,{},{}
+7474,Level_3_Cookbook,Level 3 Cookbook,3,1000,500,10,,,,,,,,,,,{},{}
+7475,Level_4_Cookbook,Level 4 Cookbook,3,1000,500,10,,,,,,,,,,,{},{}
+7476,Level_5_Cookbook,Level 5 Cookbook,3,1000,500,10,,,,,,,,,,,{},{}
+7477,Level_6_Cookbook,Level 6 Cookbook,3,1000,500,10,,,,,,,,,,,{},{}
+7478,Level_7_Cookbook,Level 7 Cookbook,3,1000,500,10,,,,,,,,,,,{},{}
+7479,Level_8_Cookbook,Level 8 Cookbook,3,1000,500,10,,,,,,,,,,,{},{}
+7480,Level_9_Cookbook,Level 9 Cookbook,3,1000,500,10,,,,,,,,,,,{},{}
+7481,Level_10_Cookbook,Level 10 Cookbook,3,1000,500,10,,,,,,,,,,,{},{}
+
 7482,Pot,Pot,3,,10,10,,,,,,,,,,,{},{}
 7483,Key_of_the_Seal,Key of the Seal,3,,,10,,,,,,,,,,,{},{}
 
@@ -2305,12 +2311,12 @@
 7507,Hard_Piece_of_Steel,Hard Piece of Steel,3,,10,0,,,,,0,2,,,,,{},{}
 7508,Elisia's_Ring,Elisia's Ring,3,,10,0,,,,,0,2,,,,,{},{}
 7509,Gorgeous_Keycard,Gorgeous Keycard,3,,10,0,,,,,0,2,,,,,{},{}
-7510,Valhalla's_Flower,Valhalla's Flower,3,,50000,10,,,,,0,2,,,,,{},{}
-7511,Darkness_Rune,Darkness Rune,3,1263,,10,,,,,0,2,,,,,{},{}
-7512,Burnt_Pieces,Burnt Pieces,3,,10,10,,,,,0,2,,,,,{},{}
-7513,Pocket_Watch,Pocket Watch,3,,855,10,,,,,0,2,,,,,{},{}
+7510,Valhalla's_Flower,Valhalla's Flower,3,100000,50000,10,,,,,0,2,,,,,{},{}
+7511,Darkness_Rune,Darkness Rune,3,1263,631,10,,,,,0,2,,,,,{},{}
+7512,Burnt_Pieces,Burnt Pieces,3,800,400,10,,,,,0,2,,,,,{},{}
+7513,Pocket_Watch,Pocket Watch,3,1710,855,10,,,,,0,2,,,,,{},{}
 7514,Monster_Ticket,Monster Ticket,3,,10,0,,,,,0,2,,,,,{},{}
-7515,Interesting_Medal,Interesting Medal,3,,10,0,,,,,0,2,,,,,{},{}
+7515,Interesting_Medal,Interesting Medal,3,1,1,0,,,,,0,2,,,,,{},{}
 7516,Green_Keycard,Green Keycard,3,,10,0,,,,,0,2,,,,,{},{}
 7517,Gold_Coin,Golden Coin,3,,10,100,,,,,0,2,,,,,{},{}
 7518,Women's_Medal,Women's Medal,3,,10,10,,,,,0,2,,,,,{},{}
@@ -2436,7 +2442,7 @@
 10017,Bark_Shorts,Bark Shorts,8,20,0,0,,,,,,,,,,,{},{}
 10018,Monkey_Circlet,Monkey Circlet,8,20,0,0,,,,,,,,,,,{},{}
 10019,Red_Muffler,Red Muffler,8,20,0,0,,,,,,,,,,,{},{}
-10020,Grave_Keep_Sword,Sword Chinese Exorcist,8,20,0,0,,,,,,,,,,,{},{}
+10020,Grave_Keeper's_Sword,Grave Keeper's Sword,8,20,0,0,,,,,,,,,,,{},{}
 
 // History books
 11000,History_Book_of_Prontera,History Book of Prontera,3,20,0,0,,,,,,,,,,,{},{}
@@ -2499,14 +2505,14 @@
 12026,Dano_Festival_Egg_,Dano Festival Egg,2,20,0,10,0,0,0,0,0,0,0,0,0,0,{},{} // Missing Effect
 
 // Effect Boxes
-12027,Giggling_Box,Giggling Box,2,20,0,200,,,,,27254783,2,,,,,{ sc_start SC_Curse,30000,0; percentheal 9,0; },{} //the probablity is 100%
+12027,Giggling_Box,Giggling Box,2,20,0,200,,,,,27254783,2,,,,,{ sc_start SC_Curse,30000,0; percentheal 9,0; },{}
 12028,Box_of_Thunder,Box_of_Thunder,2,20,0,200,,,,,27254783,2,,,,,{ sc_start SC_SpeedUp1,20000,0; },{}
 12029,Box_of_Gloom,Box_of_Gloom,11,20,0,200,,,,,27254783,2,,,,,{ itemskill 45,3,"Improve Concentration"; },{}
 12030,Box_of_Resentment,Box of Resentment,2,20,0,200,,,,,27254783,2,,,,,{ sc_start SC_ATKPot,60000,20; },{}
 12031,Box_of_Drowsiness,Box of Drowsiness,2,20,0,200,,,,,27254783,2,,,,,{ sc_start SC_MATKPot,60000,20; },{}
 12032,Box_of_Storms,Box of Storms,2,20,0,200,,,,,27254783,2,,,,,{ sc_start SC_Frost,180000,0; },{}
 12033,Box_of_Sunlight,Box of Sunlight,2,20,0,200,,,,,27254783,2,,,,,{},{} //can see cloaked or hidden enemy,,,
-12034,Box_of_Panting,Box of Panting,2,20,0,200,,,,,27254783,2,,,,,{ sc_start SC_Silence,30000,0; percentheal 0,9; },{} //the probablity is 100%
+12034,Box_of_Panting,Box of Panting,2,20,0,200,,,,,27254783,2,,,,,{ sc_start SC_Silence,30000,0; percentheal 0,9; },{}
 12035,Lotto_Box,Lotto Box,2,20,0,20,,,,,27254783,2,,,,,{ getitem rand(7361,7368),1; },{}
 12036,Lotto_Box_,Lotto Box,2,20,0,20,,,,,27254783,2,,,,,{ getitem rand(7369,7376),1; },{}
 12037,Lotto_Box__,Lotto Box,2,20,0,20,,,,,27254783,2,,,,,{ getitem rand(7377,7384),1; },{}
@@ -2606,11 +2612,11 @@
 12124,Rainbow_Cake,Rainbow Cake,0,,10,70,,,,,127918079,2,,,,,{},{ sc_start SC_BATKFood,1200000,10; sc_start SC_MATKFood,120000,10; }
 
 // Cooking Sets
-12125,Outdoor_Cooking_Kit,Outdoor Cooking Kit,2,,10,20,,,,,127918079,2,,,,,{},{ produce 11; }
-12126,Home_Cooking_Kit,Home Cooking Kit,2,,10,30,,,,,127918079,2,,,,,{},{ produce 11; }
-12127,Professional_Cooking_Kit,Professional Cooking Set,2,,10,30,,,,,127918079,2,,,,,{},{ produce 11; }
-12128,Royal_Cooking_Kit,Royal Cooking Kit,2,,10,70,,,,,127918079,2,,,,,{},{ produce 11; }
-12129,Fantastic_Cooking_Set,Fantastic Cooking Set,2,,10,70,,,,,127918079,2,,,,,{},{ produce 11; }
+12125,Outdoor_Cooking_Kit,Outdoor Cooking Kit,2,500,250,20,,,,,127918079,2,,,,,{},{ produce 11; }
+12126,Home_Cooking_Kit,Home Cooking Kit,2,1000,500,30,,,,,127918079,2,,,,,{},{ produce 11; }
+12127,Professional_Cooking_Kit,Professional Cooking Set,2,2000,1000,30,,,,,127918079,2,,,,,{},{ produce 11; }
+12128,Royal_Cooking_Kit,Royal Cooking Kit,2,5000,2500,70,,,,,127918079,2,,,,,{},{ produce 11; }
+12129,Fantastic_Cooking_Set,Fantastic Cooking Set,2,10000,5000,70,,,,,127918079,2,,,,,{},{ produce 11; }
 12130,Cookie_Bag,Cookie Bag,3,,10,70,,,,,127918079,2,,,,,{},{}
 12131,Lucky_Potion,Lucky Potion,0,,10,100,,,,,127918079,2,,,,,{},{}
 12132,Santa's_Bag,Red Package,2,,10,200,,,,,127918079,2,,,,,{},{ sc_start SC_Xmas,600000,0;}

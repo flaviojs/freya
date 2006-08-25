@@ -2,6 +2,7 @@
 Date	Added
 
 08/25/2006
+	* Updated: Some 10.3 Item Prices [Thanks to muad_dib] [Tsuyuki]
 	* Updated: Some more mob names: [Tsuyuki]
 	  - G_Tirfing > G_Ogretooth
 	  - Fake Angel > False Angel
