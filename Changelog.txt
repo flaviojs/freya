@@ -2,7 +2,8 @@
 Date	Added
 
 08/26/2006
-	* Added: an option to add date on main log files of each server (login.log, char.log, map.log, inter.log) [Yor]
+	* Fixed: a little error on last commit: 1 string variable needs to be defined 'static' [Yor]
+	* Added: an option to add date on main log files of each server (ladmin.log, login.log, char.log, inter.log) [Yor]
 	* Fixed: definition of gettimeofday under win32 (compilation error) [Yor]
 	* Fixed: mkdir under win32 (compilation error) [Yor]
 	* Added: mob_deny.txt to limit spawn and summon with GM commands [Yor]

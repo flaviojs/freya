@@ -218,8 +218,8 @@ void char_log(char *fmt, ...) {
 	struct timeval tv;
 	time_t now;
 	char tmpstr[2048];
-	char log_filename_used[sizeof(char_log_filename) + 64] = "1"; // +64 for date size
-	char log_filename_to_use[sizeof(char_log_filename) + 64] = "2"; // must be different to log_filename_used
+	static char log_filename_used[sizeof(char_log_filename) + 64] = "1"; // +64 for date size
+	char log_filename_to_use[sizeof(char_log_filename) + 64]; // must be different to log_filename_used
 
 	// get time for file name and logs
 	gettimeofday(&tv, NULL);

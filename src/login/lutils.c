@@ -38,8 +38,6 @@
   local variables
 -----------------*/
 static int log_fp = -1;
-static char log_filename_used[sizeof(login_log_filename) + 64] = "1"; // +64 for date size
-static char log_filename_to_use[sizeof(login_log_filename) + 64] = "2"; // must be different to log_filename_used
 
 /*-----------------
   Close logs file
@@ -63,6 +61,8 @@ void write_log(char *fmt, ...) {
 	time_t now;
 	char tmpstr[2048];
 	int tmpstr_len;
+	static char log_filename_used[sizeof(login_log_filename) + 64] = "1"; // +64 for date size
+	char log_filename_to_use[sizeof(login_log_filename) + 64]; // must be different to log_filename_used
 
 	/* if we doesn't want to log */
 	if (!log_login)
