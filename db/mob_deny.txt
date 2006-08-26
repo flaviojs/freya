@@ -1,0 +1,14 @@
+// Spawn/Summon/grind2/deadbranch limitation file (mob_deny.txt) - A Freya file created by Yor.
+//
+// This file is used to limit spawn and summon with GM commands.
+//
+// Format 1 (nobody can spawn the mob):
+// [mob_id]
+// Format 2 (GM with a minimum level can spawn the mobs):
+// [mob_id],[minimum_level_to_spawn]
+// Examples:
+// 1002,80   would result in limiting spawning of porings to GM level 80 or higher (lol)
+// 1007      would result nobody can spawn a fabre
+//
+// Set here a minimal gm level for spawning specific mobs.
+

@@ -5928,6 +5928,43 @@ int atcommand_go(
 }
 
 /*==========================================
+ * function to check if a mob is not forbidden for spawn
+ * return 0: not authorized
+ * return not 0: authorized
+ *------------------------------------------
+ */
+int check_mob_authorization(const int mob_id, const unsigned char gm_level) {
+	FILE *fp;
+	char line[512];
+	int id, level;
+	const char *filename = "db/mob_deny.txt";
+
+	if ((fp = fopen(filename, "r")) == NULL) {
+		//printf("Mob deny file not found: %s.\n", filename); // not display every time
+		return 1; // by default: not deny -> authorized
+	}
+
+	while(fgets(line, sizeof(line), fp)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
+		if ((line[0] == '/' && line[1] == '/') || line[0] == '\0' || line[0] == '\n' || line[0] == '\r')
+			continue;
+		// it's not necessary to remove 'carriage return ('\n' or '\r')
+		level = 100; // default: if no mentioned GM level, no spawn -> 100
+		if (sscanf(line, "%d,%d", &id, &level) < 1)
+			continue;
+		if (id == mob_id) {
+			fclose(fp);
+			if (gm_level < level)
+				return 0; // not authorized
+			else
+				return 1; // authorized
+		}
+	}
+	fclose(fp);
+
+	return 1; // autorised
+}
+
+/*==========================================
  * Calculation of number of monsters that the player can look aroung of him
  *------------------------------------------
  */
@@ -6001,6 +6038,11 @@ int atcommand_spawn(
 
 	if (mob_id == 1288) {
 		clif_displaymessage(fd, msg_txt(83)); // Cannot spawn emperium.
+		return -1;
+	}
+
+	if (!check_mob_authorization(mob_id, sd->GM_level)) {
+		clif_displaymessage(fd, "You are not authorized to spawn this monster.");
 		return -1;
 	}
 
@@ -6166,6 +6208,11 @@ int atcommand_spawnmap(
 		return -1;
 	}
 
+	if (!check_mob_authorization(mob_id, sd->GM_level)) {
+		clif_displaymessage(fd, "You are not authorized to spawn this monster.");
+		return -1;
+	}
+
 	if (number <= 0)
 		number = 1;
 
@@ -6298,6 +6345,11 @@ int atcommand_spawnall(
 
 	if (mob_id == 1288) {
 		clif_displaymessage(fd, msg_txt(83)); // Cannot spawn emperium.
+		return -1;
+	}
+
+	if (!check_mob_authorization(mob_id, sd->GM_level)) {
+		clif_displaymessage(fd, "You are not authorized to spawn this monster.");
 		return -1;
 	}
 
@@ -6587,7 +6639,8 @@ int atcommand_chardeadbranch(
 					mob_id = rand() % 1000 + 1001;
 				} while((mob_db[mob_id].max_hp <= 0 || mob_db[mob_id].summonper[0] <= (rand() % 1000000) || // summonper[0] = db/mob_branch.txt
 				         pl_sd->status.base_level < mob_db[mob_id].lv ||
-				         mob_id == 1288) && // Cannot spawn emperium.
+				         mob_id == 1288 || // Cannot spawn emperium.
+				         !check_mob_authorization(mob_id, sd->GM_level)) &&
 				        (j++) < 2000);
 				if (j >= 2000)
 					mob_id = 1002; // poring
@@ -6742,7 +6795,8 @@ int atcommand_deadbranchmap(
 							mob_id = rand() % 1000 + 1001;
 						} while((mob_db[mob_id].max_hp <= 0 || mob_db[mob_id].summonper[0] <= (rand() % 1000000) || // summonper[0] = db/mob_branch.txt
 						         pl_sd->status.base_level < mob_db[mob_id].lv ||
-						         mob_id == 1288) && // Cannot spawn emperium.
+						         mob_id == 1288 || // Cannot spawn emperium.
+						         !check_mob_authorization(mob_id, sd->GM_level)) &&
 						        (j++) < 2000);
 						if (j >= 2000)
 							mob_id = 1002; // poring
@@ -6883,7 +6937,8 @@ int atcommand_deadbranchall(
 						mob_id = rand() % 1000 + 1001;
 					} while((mob_db[mob_id].max_hp <= 0 || mob_db[mob_id].summonper[0] <= (rand() % 1000000) || // summonper[0] = db/mob_branch.txt
 					         pl_sd->status.base_level < mob_db[mob_id].lv ||
-					         mob_id == 1288) && // Cannot spawn emperium.
+					         mob_id == 1288 || // Cannot spawn emperium.
+					         !check_mob_authorization(mob_id, sd->GM_level)) &&
 					        (j++) < 2000);
 					if (j >= 2000)
 						mob_id = 1002; // poring
@@ -6972,6 +7027,11 @@ int atcommand_summon(
 
 	if (mob_id == 1288) {
 		clif_displaymessage(fd, msg_txt(83)); // Cannot spawn emperium.
+		return -1;
+	}
+
+	if (!check_mob_authorization(mob_id, sd->GM_level)) {
+		clif_displaymessage(fd, "You are not authorized to summon this monster.");
 		return -1;
 	}
 
@@ -14361,6 +14421,8 @@ int atcommand_grind2(
 			    i == 1284 || // Hugeling - sprite error
 			    i == 1288 || // Emperium - never spawn an emperium
 			    (i >= 1324 && i <= 1363)) // Treasure Chest - never spawn a Treasure Chest
+				continue;
+			if (!check_mob_authorization(i, sd->GM_level))
 				continue;
 			// don't spawn same monster twice
 			for (j = 0; j < count; j++)
