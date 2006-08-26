@@ -182,7 +182,7 @@
 679,Pilule,Pilule,2,5000,2500,300,,,,,27254783,3,,,,,{ itemheal 50,50; },{}
 680,Magic_Carnation,Magic Carnation,2,20,0,1000,,,,,27254783,3,,,,,{ itemheal 25,0; },{}
 681,Sweet_Memory_of_Marriage,Sweet Memory of Marriage,2,20,0,10,,,,,0,3,,,,,{},{} //should call wedding effect
-682,Distilled_Fighting_Spirit,Distilled Fighting Spirit,2,20,0,100,,,,,27254783,2,,,,,{ sc_start SC_ATKPOT,60000,30; },{}
+682,Distilled_Fight_Spirit,Distilled Fight Spirit,2,20,0,100,,,,,27254783,2,,,,,{ sc_start SC_ATKPOT,60000,30; },{}
 683,Herb_of_Incantation,Herb of Incantation,2,20,0,50,,,,,27254783,2,,,,,{ sc_start SC_MATKPOT,60000,30; },{}
 684,Durian,Durian,2,20,0,30,,,,,0,3,,,,,{ sc_start SC_ATKPOT,60000,10; sc_start SC_MATKPOT,60000,10; },{}
 685,Ramadan,Ramadan,2,20,10,300,,,,,0,3,,,,,{},{}
@@ -1140,7 +1140,7 @@
 2649,Morpheus's_Bracelet,Morpheus's Bracelet,5,20,0,100,0,0,0,0,18866174,2,136,0,33,0,{},{ bonus bInt,1; bonus bMaxSPrate,5; }
 2650,Morrigane's_Belt,Morrigane's Belt,5,20,0,200,0,0,0,0,18866174,2,136,0,61,0,{},{ bonus bAtk,5; bonus bCritical,3; }
 2651,Morrigane's Pendant,Morrigane's Pendant,5,20,0,200,0,0,0,0,18866174,2,136,0,61,0,{},{ bonus bStr,2; bonus bCritical,3; }
-2652,Goddess'_Cursed_Brooch,Goddess of Fortune's Cursed Brooch,5,20,0,100,0,0,0,0,18866174,2,136,0,40,0,{},{ bonus bCritical,6; bonus2 bAddEff2,Eff_Curse,50; } //Correct rate is unknown,,
+2652,Goddess_Cursed_Brooch,Goddess Cursed Brooch,5,20,0,100,0,0,0,0,18866174,2,136,0,40,0,{},{ bonus bCritical,6; bonus2 bAddEff2,Eff_Curse,50; } //Correct rate is unknown,,
 2653,Sacrifice_Ring,Sacrifice Ring,5,20,0,100,0,0,0,0,18866174,2,136,0,90,0,{},{} //seems eAthena doesn't have bonus option yet...,,,,,
 2654,Shinobi_Sash,Shinobi Sash,5,20,0,300,0,0,0,0,135232,2,136,0,30,0,{},{ bonus bStr,1; bonus bAgi,1; bonus bMdef,1; if(isequipped(2337)==0) end; bonus bUseSPrate,-20; bonus bMaxHP,300;}
 2655,Bloodied_Shackle_Ball,Bloodied Shackle Ball,5,20,0,4000,0,0,0,0,414946,2,136,0,0,0,{},{ if (isequipped(2408)==0) end; bonus bAtk,50; bonus2 bAddDefClass,1196,20; bonus2 bAddDefClass,1197,20; }
@@ -1148,11 +1148,6 @@
 2657,Laboratory_Passport,Laboratory Passport,5,20,0,100,,0,,,27254783,2,136,,,,{},{}
 2658,Nile_Rose_,Nile Rose,5,20,0,100,0,0,0,1,27254783,2,136,0,0,0,{},{ bonus bMaxHP,10; }
 
-// These are for Advanced 2nd Jobs Only
-2659,Vesper_Core_01,Vesper Core 01,5,20,0,500,0,1,0,,2088832,2,136,0,0,0,{},{ bonus bMdef,3; bonus bInt,2; bonus bMaxSPrate,5; }
-2660,Vesper_Core_02,Vesper Core 02,5,20,0,500,0,1,0,,2088832,2,136,0,0,0,{},{ bonus bMdef,3; bonus bStr,3; bonus bAtk,10; }
-2661,Vesper_Core_03,Vesper Core 03,5,20,0,500,0,1,0,,2088832,2,136,0,0,0,{},{ bonus bMdef,3; bonus bAgi,3; bonus bFlee,5; }
-2662,Vesper_Core_04,Vesper Core 04,5,20,0,500,0,1,0,,2088832,2,136,0,0,0,{},{ bonus bMdef,3; bonus bDex,3; bonus bHit,10; }
 2663,Gauntlet_of_Hit,Gauntlet of Hit,5,,,900,,0,,,27254783,2,136,,75,,{},{ bonus bHit,15; bonus bStr,1; }
 2664,Belcarf,Belcarf,5,,,200,,0,,,18866174,2,136,,75,,{},{ bonus bDex,2; bonus bInt,1; }
 2665,Excorsicing_Ring,Excorsicing Ring,5,,10,500,,0,,0,33040,2,136,,60,0,{},{ bonus2 bExpAddRace,1,5; bonus2 bExpAddRace,6,5; }
@@ -1763,7 +1758,6 @@
 5168,Bongun_Hat_,Bongun Hat,5,20,,300,,5,,1,1000333311,2,769,,0,139,,{},{}
 5169,Bride_Mask,Bride Mask,5,,,500,,4,,1,1000333311,2,768,,40,223,1,{},{if (Class!=4046 && Class!=4047 && Class!=4048 && Class!=4049) end; bonus bLuk,2; bonus bCritical,5; }
 5170,Feather_Beret,Feather Beret,5,,,600,,1,,0,991944702,2,256,,,224,1,{},{ bonus bMdef,1; bonus2 bSubRace,7,10; bonus2 bMagicSubRace,7,10; }
-5171,Valkyrie_Helm,Valkyrie Helm,5,,,1000,,5,,1,991944702,2,256,,,225,1,{},{ bonus bMdef,15; }
 5172,Beret,Beret,5,,,700,,0,,0,1000333311,2,256,,,226,,{},{ bonus2 bSubRace,7,10; bonus2 bMagicSubRace,7,10; }
 5173,Hat_of_the_Judge,Judge's Hat,5,,,400,,3,,1,1000333311,2,256,,60,227,1,{},{if (Class!=4046 && Class!=4047 && Class!=4048 && Class!=4049) end; bonus bAgi,1; bonus bHPrecovRate,3; }
 5174,A-yam,A-yam,5,,,400,,3,,1,1000333311,2,256,,60,228,1,{},{if (Class!=4046 && Class!=4047 && Class!=4048 && Class!=4049) end; bonus bInt,1; bonus bSPrecovRate,3; }
@@ -2634,7 +2628,7 @@
 // Cooking Sets
 12125,Outdoor_Cooking_Kit,Outdoor Cooking Kit,2,500,250,20,,,,,27254783,2,,,,,{},{ produce 11; }
 12126,Home_Cooking_Kit,Home Cooking Kit,2,1000,500,30,,,,,27254783,2,,,,,{},{ produce 11; }
-12127,Professional_Cooking_Kit,Professional Cooking Set,2,2000,1000,30,,,,,27254783,2,,,,,{},{ produce 11; }
+12127,Professional_Cooking_Kit,Professional Cooking Kit,2,2000,1000,30,,,,,27254783,2,,,,,{},{ produce 11; }
 12128,Royal_Cooking_Kit,Royal Cooking Kit,2,5000,2500,70,,,,,27254783,2,,,,,{},{ produce 11; }
 12129,Fantastic_Cooking_Set,Fantastic Cooking Set,2,10000,5000,70,,,,,27254783,2,,,,,{},{ produce 11; }
 
@@ -2664,36 +2658,36 @@
 12152,Special_Gift,Special Gift,2,,10,100,,,,,27254783,2,,,,,{},{}
 
 // Mercenary Summon Scrolls - Unfinished
-12153,Archer_Scroll_Level_1,Archer Mercenary Summon Scroll Level 1,2,,10,100,,,,,27254783,2,,,,,{},{}
-12154,Archer_Scroll_Level_2,Archer Mercenary Summon Scroll Level 2,2,,10,100,,,,,27254783,2,,,,,{},{}
-12155,Archer_Scroll_Level_3,Archer Mercenary Summon Scroll Level 3,2,,10,100,,,,,27254783,2,,,,,{},{}
-12156,Archer_Scroll_Level_4,Archer Mercenary Summon Scroll Level 4,2,,10,100,,,,,27254783,2,,,,,{},{}
-12157,Archer_Scroll_Level_5,Archer Mercenary Summon Scroll Level 5,2,,10,100,,,,,27254783,2,,,,,{},{}
-12158,Archer_Scroll_Level_6,Archer Mercenary Summon Scroll Level 6,2,,10,100,,,,,27254783,2,,,,,{},{}
-12159,Archer_Scroll_Level_7,Archer Mercenary Summon Scroll Level 7,2,,10,100,,,,,27254783,2,,,,,{},{}
-12160,Archer_Scroll_Level_8,Archer Mercenary Summon Scroll Level 8,2,,10,100,,,,,27254783,2,,,,,{},{}
-12161,Archer_Scroll_Level_9,Archer Mercenary Summon Scroll Level 9,2,,10,100,,,,,27254783,2,,,,,{},{}
-12162,Archer_Scroll_Level_10,Archer Mercenary Summon Scroll Level 10,2,,10,100,,,,,27254783,2,,,,,{},{}
-12163,Swordsman_Scroll_Level_1,Swordsman Mercenary Summon Scroll Level 1,2,,10,100,,,,,27254783,2,,,,,{},{}
-12164,Swordsman_Scroll_Level_2,Swordsman Mercenary Summon Scroll Level 2,2,,10,100,,,,,27254783,2,,,,,{},{}
-12165,Swordsman_Scroll_Level_3,Swordsman Mercenary Summon Scroll Level 3,2,,10,100,,,,,27254783,2,,,,,{},{}
-12166,Swordsman_Scroll_Level_4,Swordsman Mercenary Summon Scroll Level 4,2,,10,100,,,,,27254783,2,,,,,{},{}
-12167,Swordsman_Scroll_Level_5,Swordsman Mercenary Summon Scroll Level 5,2,,10,100,,,,,27254783,2,,,,,{},{}
-12168,Swordsman_Scroll_Level_6,Swordsman Mercenary Summon Scroll Level 6,2,,10,100,,,,,27254783,2,,,,,{},{}
-12169,Swordsman_Scroll_Level_7,Swordsman Mercenary Summon Scroll Level 7,2,,10,100,,,,,27254783,2,,,,,{},{}
-12170,Swordsman_Scroll_Level_8,Swordsman Mercenary Summon Scroll Level 8,2,,10,100,,,,,27254783,2,,,,,{},{}
-12171,Swordsman_Scroll_Level_9,Swordsman Mercenary Summon Scroll Level 9,2,,10,100,,,,,27254783,2,,,,,{},{}
-12172,Swordsman_Scroll_Level_10,Swordsman Mercenary Summon Scroll Level 10,2,,10,100,,,,,27254783,2,,,,,{},{}
-12173,Spearman_Scroll_Level_1,Spearman Mercenary Summon Scroll Level 1,2,,10,100,,,,,27254783,2,,,,,{},{}
-12174,Spearman_Scroll_Level_2,Spearman Mercenary Summon Scroll Level 2,2,,10,100,,,,,27254783,2,,,,,{},{}
-12175,Spearman_Scroll_Level_3,Spearman Mercenary Summon Scroll Level 3,2,,10,100,,,,,27254783,2,,,,,{},{}
-12176,Spearman_Scroll_Level_4,Spearman Mercenary Summon Scroll Level 4,2,,10,100,,,,,27254783,2,,,,,{},{}
-12177,Spearman_Scroll_Level_5,Spearman Mercenary Summon Scroll Level 5,2,,10,100,,,,,27254783,2,,,,,{},{}
-12178,Spearman_Scroll_Level_6,Spearman Mercenary Summon Scroll Level 6,2,,10,100,,,,,27254783,2,,,,,{},{}
-12179,Spearman_Scroll_Level_7,Spearman Mercenary Summon Scroll Level 7,2,,10,100,,,,,27254783,2,,,,,{},{}
-12180,Spearman_Scroll_Level_8,Spearman Mercenary Summon Scroll Level 8,2,,10,100,,,,,27254783,2,,,,,{},{}
-12181,Spearman_Scroll_Level_9,Spearman Mercenary Summon Scroll Level 9,2,,10,100,,,,,27254783,2,,,,,{},{}
-12182,Spearman_Scroll_Level_10,Spearman Mercenary Summon Scroll Level 10,2,,10,100,,,,,27254783,2,,,,,{},{}
+12153,Archer_Scroll_Level_1,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12154,Archer_Scroll_Level_2,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12155,Archer_Scroll_Level_3,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12156,Archer_Scroll_Level_4,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12157,Archer_Scroll_Level_5,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12158,Archer_Scroll_Level_6,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12159,Archer_Scroll_Level_7,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12160,Archer_Scroll_Level_8,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12161,Archer_Scroll_Level_9,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12162,Archer_Scroll_Level_10,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12163,Swordsman_Scroll_Level_1,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12164,Swordsman_Scroll_Level_2,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12165,Swordsman_Scroll_Level_3,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12166,Swordsman_Scroll_Level_4,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12167,Swordsman_Scroll_Level_5,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12168,Swordsman_Scroll_Level_6,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12169,Swordsman_Scroll_Level_7,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12170,Swordsman_Scroll_Level_8,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12171,Swordsman_Scroll_Level_9,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12172,Swordsman_Scroll_Level_10,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12173,Spearman_Scroll_Level_1,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12174,Spearman_Scroll_Level_2,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12175,Spearman_Scroll_Level_3,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12176,Spearman_Scroll_Level_4,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12177,Spearman_Scroll_Level_5,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12178,Spearman_Scroll_Level_6,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12179,Spearman_Scroll_Level_7,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12180,Spearman_Scroll_Level_8,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12181,Spearman_Scroll_Level_9,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
+12182,Spearman_Scroll_Level_10,Mercenary Summon Scroll,2,,10,100,,,,,27254783,2,,,,,{},{}
 
 // Mercenary Potions & New Openables - Unfinished
 12183,Holy_Arrow_Quiver,Holy Arrow Quiver,2,,10,100,,,,,27254783,2,,,,,{},{ getitem 1772,500; }
@@ -2724,24 +2718,34 @@
 2119,Superior_Gauntlet,Superior Gauntlet,5,40000,,150,,4,,0,27254783,2,32,,50,,{ bonus bMdef,5; },{}
 2120,Superior_Gauntlet_,Superior Gauntlet,5,40000,,150,,4,,1,27254783,2,32,,50,,{ bonus bMdef,5; },{}
 
-2357,Valkyrie's_Armor,Valkyrie's Armor,5,20,10,2800,,6,,1,119529470,2,16,,0,1,{},{ bonus bAllStats,1; bonus bUnbreakableArmor,0; bonus2 bResEff,Eff_Stan,5000; }
 2358,Angel's_Dress,Angel's Dress,5,,10,1000,,5,,0,27254783,2,16,,0,0,{ bonus bLuk,4; },{}
 
 2361,Blue_Robe,Blue Robe,5,,10,500,,0,,0,27254783,2,16,,0,0,{ bonus bAllStats,5; bonus bMdef,5; },{}
 2362,Red_Robe,Red Robe,5,,10,500,,0,,0,27254783,2,16,,0,0,{ bonus bAllStats,5; bonus bMdef,5; },{}
 2363,White_Robe,White Robe,5,,10,500,,0,,0,27254783,2,16,,0,0,{ bonus bAllStats,3; bonus bMdef,5; },{}
 
-2421,Valkyrie's_Shoes,Valkyrie's Shoes,5,20,10,500,,4,,1,119529470,2,64,,0,1,{},{ bonus bUnbreakableArmor,0; bonus bMaxSP,(JobLevel*2); }
 2422,High_Quality_Sandals,High Quality Sandals,5,,10,200,,2,,1,27254783,2,64,,0,1,{ bonus bMdef,10; },{}
-
-2524,Valkyrie's_Manteau,Valkyrie's Manteau,5,20,10,500,,3,,1,119529470,2,4,,0,1,{},{ bonus bUnbreakableArmor,0; bonus bShortWeaponDamageReturn,5+(getequiprefinerycnt(5)*2);}
 
 2667,Renown_Archer's_Gloves,Renown Archer's Gloves,5,,10,300,,0,,0,27254783,2,136,,60,0,{ bonus bHit,5; bonus bCritical,5; bonus bDex,1; },{}
 2668,Women's_Glory,Women's Glory,5,,10,1500,,1,,0,27254783,2,136,,94,0,{},{}
 2669,RJC_Necklace,RJC Necklace,5,,10,100,,0,,0,27254783,2,136,,0,0,{ bonus bMaxSP,10; },{}
 2670,Ring_of_Longing,Ring of Longing,5,,,100,,1,,1,27254783,2,136,,30,,{ bonus bFlee,5; },{}
 
-2672,3rd_Anniversary_Ring,3rd Anniversary Celebration Ring,5,,10,100,,0,,0,27254783,2,136,,20,0,{ bonus bAllStats,5; },{}
+2672,3rd_Anniversary_Ring,3rd Anniversary Ring,5,,10,100,,0,,0,27254783,2,136,,20,0,{ bonus bAllStats,5; },{}
 2673,Warrior's_Shining_Ring,Warrior's Shining Ring,5,,10,100,,0,,0,27254783,2,136,,48,0,{ bonus bAtk,10; bonus bSPrecovRate,3; },{}
 
 13005,Angelic_Wing_Dagger,Angelic Wing Dagger,4,,10,600,120,,1,1,27254783,2,2,4,50,0,{},{}
+
+// Advanced Class Only Equipment - Temp Job Requirements
+2357,Valkyrie's_Armor,Valkyrie's Armor,5,20,10,2800,,6,,1,27254783,2,16,,0,1,{},{ bonus bAllStats,1; bonus bUnbreakableArmor,0; bonus2 bResEff,Eff_Stan,5000; }
+
+2421,Valkyrie's_Shoes,Valkyrie's Shoes,5,20,10,500,,4,,1,27254783,2,64,,0,1,{},{ bonus bUnbreakableArmor,0; bonus bMaxSP,(JobLevel*2); }
+
+2524,Valkyrie's_Manteau,Valkyrie's Manteau,5,20,10,500,,3,,1,27254783,2,4,,0,1,{},{ bonus bUnbreakableArmor,0; bonus bShortWeaponDamageReturn,5+(getequiprefinerycnt(5)*2);}
+
+2659,Vesper_Core_01,Vesper Core 01,5,20,0,500,0,1,0,,27254783,2,136,0,0,0,{},{ bonus bMdef,3; bonus bInt,2; bonus bMaxSPrate,5; }
+2660,Vesper_Core_02,Vesper Core 02,5,20,0,500,0,1,0,,27254783,2,136,0,0,0,{},{ bonus bMdef,3; bonus bStr,3; bonus bAtk,10; }
+2661,Vesper_Core_03,Vesper Core 03,5,20,0,500,0,1,0,,27254783,2,136,0,0,0,{},{ bonus bMdef,3; bonus bAgi,3; bonus bFlee,5; }
+2662,Vesper_Core_04,Vesper Core 04,5,20,0,500,0,1,0,,27254783,2,136,0,0,0,{},{ bonus bMdef,3; bonus bDex,3; bonus bHit,10; }
+
+5171,Valkyrie_Helm,Valkyrie Helm,5,,,1000,,5,,1,27254783,2,256,,,225,1,{},{ bonus bMdef,5; }

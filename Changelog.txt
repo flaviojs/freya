@@ -2,6 +2,8 @@
 Date	Added
 
 08/26/2006
+	* Fixed: Valkyrie Helm Mdef from 15 > 5 [Tsuyuki]
+	* Fixed: Some item names that passed the 24 max char limit [Tsuyuki]
 	* Fixed: All card drop rates to 0.01% as per Aegis [Tsuyuki]
 	* Fixed: Messed up Evil Snake Lord MvP drops [Tsuyuki]
 	* Fixed: Monster name "Seal" > "Fur Seal" [Tsuyuki]
