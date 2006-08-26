@@ -78,25 +78,12 @@ int pc_isGM(struct map_session_data *sd) {
 	return 0;
 }
 
-int pc_iskiller(struct map_session_data *src, struct map_session_data *target) {
-	nullpo_retr(0, src);
-
-	if (src->bl.type != BL_PC)
-		return 0;
-	if (src->special_state.killer)
-		return 1;
-
-	if (target->bl.type != BL_PC)
-		return 0;
-	if (target->special_state.killable)
-		return 1;
-
-	return 0;
-}
-
-void pc_set_gm_level(int account_id, int level) {
+void pc_set_gm_level(int account_id, unsigned char level) {
 	int i;
 	struct map_session_data *sd;
+
+	if (level > 99)
+		return;
 
 	// set GM level in the structure of the GM
 	for (i = 0; i < fd_max; i++)
@@ -114,17 +101,36 @@ void pc_set_gm_level(int account_id, int level) {
 		}
 	}
 
-	if (GM_num == 0) {
-		FREE(gm_account); /* free memory before to alloc (perahps it's not free) */
-		MALLOC(gm_account, struct gm_account, 1);
-	} else {
-		REALLOC(gm_account, struct gm_account, GM_num + 1);
+	// update database only if level != 0
+	if (level > 0) {
+		if (GM_num == 0) {
+			FREE(gm_account); /* free memory before to alloc (perahps it's not free) */
+			MALLOC(gm_account, struct gm_account, 1);
+		} else {
+			REALLOC(gm_account, struct gm_account, GM_num + 1);
+		}
+		gm_account[GM_num].account_id = account_id;
+		gm_account[GM_num].level = level;
+		GM_num++;
 	}
-	gm_account[GM_num].account_id = account_id;
-	gm_account[GM_num].level = level;
-	GM_num++;
 
 	return;
+}
+
+int pc_iskiller(struct map_session_data *src, struct map_session_data *target) {
+	nullpo_retr(0, src);
+
+	if (src->bl.type != BL_PC)
+		return 0;
+	if (src->special_state.killer)
+		return 1;
+
+	if (target->bl.type != BL_PC)
+		return 0;
+	if (target->special_state.killable)
+		return 1;
+
+	return 0;
 }
 
 static int distance(int x0, int y_0, int x1, int y_1) {

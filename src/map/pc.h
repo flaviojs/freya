@@ -174,7 +174,7 @@ int pc_ismarried(struct map_session_data *sd);
 int pc_marriage(struct map_session_data *sd, struct map_session_data *dstsd);
 int pc_divorce(struct map_session_data *sd);
 struct map_session_data *pc_get_partner(struct map_session_data *sd);
-void pc_set_gm_level(int account_id, int level);
+void pc_set_gm_level(int account_id, unsigned char level);
 void pc_setstand(struct map_session_data *sd);
 //int pc_break_equip(struct map_session_data *sd, unsigned short where);
 int pc_candrop(struct map_session_data *sd, int item_id);

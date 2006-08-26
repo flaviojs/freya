@@ -2638,7 +2638,9 @@ void create_online_files(void) {
 					j = id[i];
 					fprintf(fp, "\t\t%d=>array(" RETCODE, char_dat[j].account_id);
 					fprintf(fp, "\t\t\t'charname'=>'%s'," RETCODE, php_addslashes(char_dat[j].name));
-					fprintf(fp, "\t\t\t'isgm'=>%s," RETCODE, isGM(char_dat[j].account_id) ? "true" : "false");
+					k = isGM(char_dat[j].account_id);
+					fprintf(fp, "\t\t\t'isgm'=>%s," RETCODE, (k >= online_gm_display_min_level) ? "true" : "false");
+					fprintf(fp, "\t\t\t'gmlevel'=>%d," RETCODE, k);
 					fprintf(fp, "\t\t\t'class'=>%d," RETCODE, char_dat[j].class);
 					fprintf(fp, "\t\t\t'baselvl'=>%d," RETCODE, char_dat[j].base_level);
 					fprintf(fp, "\t\t\t'joblvl'=>%d," RETCODE, char_dat[j].job_level);
@@ -3592,9 +3594,7 @@ int parse_tologin(int fd) {
 				}
 			// if not found, add it
 			if (i == GM_num) {
-				// limited to 4000, because we send information to char-servers (more than 4000 GM accounts???)
-				// int (id) + int (level) = 8 bytes * 4000 = 32k (limit of packets in windows)
-				if (((int)RFIFOB(fd,6)) > 0 && GM_num < 4000) {
+				if (((int)RFIFOB(fd,6)) > 0) {
 					if (GM_num == 0) {
 						MALLOC(gm_account, struct gm_account, 1);
 					} else {
@@ -3604,28 +3604,18 @@ int parse_tologin(int fd) {
 					gm_account[GM_num].level = RFIFOB(fd,6);
 					new_level = 1;
 					GM_num++;
-					if (GM_num >= 4000) {
-						printf("***WARNING: 4000 GM accounts found. Next GM accounts are not readed.\n");
-						char_log("***WARNING: 4000 GM accounts found. Next GM accounts are not readed." RETCODE);
-					}
 				}
 			}
 			if (new_level == 1) {
-				int len;
 				printf("From login-server: receiving a GM account information (%d: level %d).\n", RFIFOL(fd,2), (int)RFIFOB(fd,6));
 				char_log("From login-server: receiving a GM account information (%d: level %d)." RETCODE, RFIFOL(fd,2), (int)RFIFOB(fd,6));
-				//create_online_files(); // not change online file for only 1 player (in next timer, that will be done
-				// send gm acccounts level to map-servers
-				len = 4;
-				WPACKETW(0) = 0x2b15;
-				for(i = 0; i < GM_num; i++) {
-					WPACKETL(len    ) = gm_account[i].account_id;
-					WPACKETB(len + 4) = gm_account[i].level;
-					len += 5;
-				}
-				WPACKETW(2) = len;
-				mapif_sendall(len);
 			}
+			//create_online_files(); // not change online file for only 1 player (in next timer, that will be done
+			// send gm acccounts level to map-servers to update value if necessary (send anyway to avoid error when char-server was crashed)
+			WPACKETW(0) = 0x2b1f; // 0x2b1f <account_id>.L <GM_Level>.B
+			WPACKETL(2) = RFIFOL(fd,2);
+			WPACKETB(6) = RFIFOB(fd,6);
+			mapif_sendall(7);
 		  }
 			RFIFOSKIP(fd,7);
 			break;
@@ -5524,13 +5514,21 @@ int parse_char(int fd) {
 				// send gm acccounts level to map-servers
 				len = 4;
 				WPACKETW(0) = 0x2b15;
-				for(i = 0; i < GM_num; i++) {
+				for(i = 0; i < GM_num && len < 32760; i++) { // max size of packet = 32767
 					WPACKETL(len    ) = gm_account[i].account_id;
 					WPACKETB(len + 4) = gm_account[i].level;
 					len += 5;
 				}
 				WPACKETW(2) = len;
 				SENDPACKET(fd, len);
+				// continue with one to one packet if quantity is too important
+				while(i < GM_num) {
+					WPACKETW(0) = 0x2b1f; // 0x2b1f <account_id>.L <GM_Level>.B
+					WPACKETL(2) = gm_account[i].account_id;
+					WPACKETB(6) = gm_account[i].level;
+					SENDPACKET(fd, 7);
+					i++;
+				}
 				return 0;
 			}
 			break;

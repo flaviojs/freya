@@ -14784,8 +14784,8 @@ int atcommand_adjgmlvl(
 	int newlev;
 	struct map_session_data *pl_sd;
 
-	if (!message || !*message || sscanf(message, "%d %[^\r\n]", &newlev, atcmd_name) != 2) {
-		clif_displaymessage(fd, "usage: @adjgmlvl/@setgmlvl <lvl> <player>.");
+	if (!message || !*message || sscanf(message, "%d %[^\r\n]", &newlev, atcmd_name) != 2 || newlev < 0) {
+		clif_displaymessage(fd, "usage: @adjgmlvl/@setgmlvl <lvl:0+> <player>.");
 		return -1;
 	}
 
@@ -14795,9 +14795,9 @@ int atcommand_adjgmlvl(
 	if ((pl_sd = map_nick2sd(atcmd_name)) != NULL || ((pl_sd = map_id2sd(atoi(atcmd_name))) != NULL && pl_sd->state.auth)) {
 		if (sd->GM_level >= pl_sd->GM_level) { // only lower or same GM level
 			if (pl_sd->GM_level != newlev) {
-				sprintf(atcmd_output, "GM level of the player changed from %d to %d.", pl_sd->GM_level, newlev);
+				sprintf(atcmd_output, "GM level of the player temporarily changed from %d to %d.", pl_sd->GM_level, newlev);
 				clif_displaymessage(fd, atcmd_output);
-				pc_set_gm_level(pl_sd->status.account_id, newlev);
+				pc_set_gm_level(pl_sd->status.account_id, (unsigned char)newlev);
 			} else {
 				clif_displaymessage(fd, "This player already has this GM level.");
 				return -1;

@@ -1,7 +1,11 @@
 
 Date	Added
 
-08/224/2006
+08/26/2006
+	* Fixed: no more limit to transmit GM levels from char-server to map-servers [Yor]
+	* Added: gmlevel field in online.php [Yor]
+
+08/24/2006
 	* Added: 2 php scripts (which need only nezumi.php) [Yor]
 	       - chgpasswd.php: to change password (in different languages)
 	         createaccount.php : to create accounts

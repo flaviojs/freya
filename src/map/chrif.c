@@ -44,7 +44,7 @@ static const int packet_len_table[0x30] = {
 	 6,30,-1, 8,86,11,44,34,	// 2b08-2b0f
 	-1,-1,10, 6,11,-1,-1, 7,	// 2b10-2b17
 
-	46, 6,-1,-1, 6, 70, 38, 0,	// 2b18-2b1f
+	46, 6,-1,-1, 6,70,38, 7,	// 2b18-2b1f
 	-1, 0,10,10,-1,-1,10,-1,	// 2b20-2b27
 };
 
@@ -1420,6 +1420,7 @@ int chrif_parse(int fd) {
 		case 0x2b1a: chrif_globalreg(fd); break; // 0x2b1a <packet_len>.w <account_id>.L account_reg.structure.*B
 		case 0x2b1c: chrif_globalregAck(fd); break; // 0x2b1c <char_id>.L
 		case 0x2b1e: chrif_recv_password_change_answer(fd); break; // 0x272e/0x2b1e <account_id>.L <new_password>.32B
+		case 0x2b1f: pc_set_gm_level(RFIFOL(fd,2), RFIFOB(fd,6)); break; // 0x2b1f <account_id>.L <GM_Level>.B
 
 		case 0x2b20: chrif_recv_top10rank(fd); break;
 
