@@ -117,6 +117,9 @@ static unsigned char level_new_account = 0; // GM level of a new account
 
 /* Logs options */
 static unsigned char log_request_connection; // Enable/disable logs of 'Request for connection' message (packet 0x64/0x1dd)
+static unsigned char log_request_version; // Enable/disable logs of 'Request of the server version' (athena version) message (packet 0x7530 with 'normal' connection)
+static unsigned char log_request_freya_version; // Enable/disable logs of 'Request of the server version' (freya version) message (packet 0x7535 with 'normal' connection)
+static unsigned char log_request_uptime; // Enable/disable logs of 'Request of the server uptime' message (packet 0x7533 with 'normal' connection)
 
 /* sstatus files name */
 static char temp_char_buffer[1024]; /* temporary buffer of type char (see php_addslashes) */
@@ -2041,7 +2044,8 @@ int parse_login(int fd) {
 
 		/* Request of the server version */
 		case 0x7530:
-			write_log("Request of the server version: ok (ip: %s)" RETCODE, ip);
+			if (log_request_version)
+				write_log("Request of the server version: ok (ip: %s)" RETCODE, ip);
 			WPACKETW(0) = 0x7531;
 			WPACKETB(2) = ATHENA_MAJOR_VERSION;
 			WPACKETB(3) = ATHENA_MINOR_VERSION;
@@ -2069,7 +2073,8 @@ int parse_login(int fd) {
 			for(i = 0; i < MAX_SERVERS; i++)
 				if (server_fd[i] >= 0)
 					j = j + server[i].users;
-			write_log("Request of the server uptime: ok (ip: %s)" RETCODE, ip);
+			if (log_request_uptime)
+				write_log("Request of the server uptime: ok (ip: %s)" RETCODE, ip);
 			WPACKETW(0) = 0x7534;
 			WPACKETL(2) = time(NULL) - start_time;
 			WPACKETW(6) = j;
@@ -2078,9 +2083,10 @@ int parse_login(int fd) {
 			RFIFOSKIP(fd, 2);
 			return 0;
 
-		/* Request of the server version */
+		/* Request of the server version (freya version) */
 		case 0x7535:
-			write_log("Request of the server version: ok (ip: %s)" RETCODE, ip);
+			if (log_request_freya_version)
+				write_log("Request of the server version: ok (ip: %s)" RETCODE, ip);
 			WPACKETW(0) = 0x7536;
 			WPACKETB(2) = ATHENA_MAJOR_VERSION;
 			WPACKETB(3) = ATHENA_MINOR_VERSION;
@@ -3736,6 +3742,12 @@ static void login_config_read(const char *cfgName) { // not inline, called too o
 				log_login = config_switch(w2);
 			} else if (strcasecmp(w1, "log_request_connection") == 0) {
 				log_request_connection = config_switch(w2);
+			} else if (strcasecmp(w1, "log_request_version") == 0) {
+				log_request_version = config_switch(w2);
+			} else if (strcasecmp(w1, "log_request_freya_version") == 0) {
+				log_request_freya_version = config_switch(w2);
+			} else if (strcasecmp(w1, "log_request_uptime") == 0) {
+				log_request_uptime = config_switch(w2);
 
 			/* Anti-freeze options */
 			} else if (strcasecmp(w1, "anti_freeze_counter") == 0) {
@@ -4287,6 +4299,18 @@ static inline void save_config_in_log(void) {
 			write_log("- to log 'Request for connection' message (packet 0x64/0x1dd)." RETCODE);
 		else
 			write_log("- to NOT log 'Request for connection' message (packet 0x64/0x1dd)." RETCODE);
+		if (log_request_version)
+			write_log("- to log 'Request of the server version' (athena version) message (packet 0x7530)." RETCODE);
+		else
+			write_log("- to NOT log 'Request of the server version' (athena version) message (packet 0x7530)." RETCODE);
+		if (log_request_freya_version)
+			write_log("- to log 'Request of the server version' (freya version) message (packet 0x7535)." RETCODE);
+		else
+			write_log("- to NOT log 'Request of the server version' (freya version) message (packet 0x7535)." RETCODE);
+		if (log_request_uptime)
+			write_log("- to log 'Request of the server uptime' message (packet 0x7533)." RETCODE);
+		else
+			write_log("- to NOT log 'Request of the server uptime' message (packet 0x7533)." RETCODE);
 	}
 
 	/* Anti-freeze options */
@@ -4620,6 +4644,9 @@ static inline void init_conf_variables(void) {
 	strcpy(login_log_filename, "log/login.log");
 	log_login = 1; /* yes */
 	log_request_connection = 1; /* yes */
+	log_request_version = 0; /* no */
+	log_request_freya_version = 0; /* no */
+	log_request_uptime = 0; /* no */
 
 	/* Anti-freeze options */
 	anti_freeze_counter = 12;
