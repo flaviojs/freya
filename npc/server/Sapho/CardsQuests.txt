@@ -1660,7 +1660,7 @@ xmas_dun01.gat,247,135,0	script	Cartologue	85,{
         set @jump,0;
         callfunc "F_CardQuest","Cartologue";
 
-        setarray @cards[0],4196,4216,4235,4143,4297,4206,4284,4293,4323,4005;
+        setarray @cards[0],4196,4216,4235,4243,4297,4206,4284,4293,4323,4005;
 
         menu getitemname(@cards[0]),L_0,getitemname(@cards[1]),L_1,getitemname(@cards[2]),L_2,getitemname(@cards[3]),L_3,getitemname(@cards[4]),L_4,getitemname(@cards[5]),L_5,getitemname(@cards[6]),L_6,getitemname(@cards[7]),L_7,getitemname(@cards[8]),L_8,getitemname(@cards[9]),L_9;
 L_0:
@@ -1950,10 +1950,10 @@ L_3:
 }
 
 //================================================================//
-//= 51- prt_fild_09.gat                                          =// Ok
+//= 51- prt_fild09.gat                                           =// Ok
 //================================================================//
 
-prt_fild_09.gat,72,321,0	script	Cartologue	85,{
+prt_fild09.gat,72,321,0	script	Cartologue	85,{
         set @jump,0;
         callfunc "F_CardQuest","Cartologue";
 

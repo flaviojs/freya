@@ -105,7 +105,7 @@ L_Corps:
 		if ((readparam(19)==10)||(readparam(19)==18)) goto L_merchant;
 		if ((readparam(19)==11)||(readparam(19)==19)||(readparam(19)==20)) goto L_archer;
 		if ((readparam(19)==7)||(readparam(19)==12)||(readparam(19)==13)||(readparam(19)==14)||(readparam(19)==17)||(readparam(19)==21)) goto L_chimera;
-			//knight            //assassin            //peco-knight        //cruz                 // rogue          //peco-cruz
+			//knight            //assassin            //peco-knight        //cruz                  // rogue          //peco-cruz
 		if (readparam(19)==15) goto L_Monk;
 		if (readparam(19)==23) goto L_Supernono;
 
@@ -143,7 +143,7 @@ L_Corps:
 			close;
 
 		L_chimera:
-			areamonster "force_1-3.gat",0,0,188,193,"Chimera",1283,60,"";
+			areamonster "force_1-3.gat",0,0,188,193,"Chimera",1456,60,"";
 			//En 5 minutes
 			addtimer 300000,"compteur::OnTimer";
 			warp "force_1-3.gat",131,179;

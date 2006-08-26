@@ -1,0 +1,940 @@
+//===== eAthena Script ======================================= 
+//= Merchant Job Quest
+//===== By: ================================================== 
+//= kobra_k88
+//===== Current Version: ===================================== 
+//= 1.5
+//===== Compatible With: ===================================== 
+//= eAthena 1.0 +
+//===== Description: ========================================= 
+//= traduit par GAlion
+//===== Additional Comments: ================================= 
+//= Fully working
+//= v1.1 Added instant job change for High Novice [Lupus]
+//= v1.3 Added Baby Class support [Lupus]
+//= v1.4 Optimised and moved first checker to Jfunc1-1 [massdriller]
+//= 1.5 Changed Prontera->Izlude teleport price to 600 [Lupus]
+//============================================================ 
+
+
+// == Guild NPCs == 
+// -- Mahnsoo --
+alberta_in.gat,53,43,6	script	Mahnsoo	86,{
+	callfunc "F_ToHigh",Job_Merchant_High,"Merchant High",Job_Whitesmith,"White Smith",153,154,155,0,"Le chef Mahnsoo";
+	mes "[Le chef Mahnsoo]";
+	if(BaseJob==Job_Novice && job_merchant_q3 == 4) goto L_MakeMerc;
+	if(BaseJob==Job_Novice && job_merchant_q3 == 3) goto L_GiveRecpt;
+	if(BaseJob==Job_Novice && job_merchant_q3 == 5) goto L_Failed;
+	if(BaseJob==Job_Novice && job_merchant_q2 > 0) goto L_Back;
+
+	mes "Qu'est-ce qui vous amène ici? Vous avez l'air préoccupé(e)?";
+M_Menu:
+	next;
+	menu "Je veux devenir Merchant.",M_0,"C'est quoi exactement un Merchant?",M_1,"Quelles sont les conditions?",M_2,"Fin de la conversation.",M_End;
+
+	M_0:
+		callfunc "Mer_check";
+		next;
+		menu "Pourquoi pas. Qui a besoin d'un collègue.",sM_0a,"Plus tard, peut-être...",sM_0b;
+
+		sM_0a:
+			mes "[Le chef Mahnsoo]";
+			mes "Je suis content d'entendre ça. Donc, comment pensez-vous régler la cotisation?";
+		sM_Menu:
+			next;
+			menu "Verser 1000 Zeny maintenant.",m_0a,"2 versements de 500 Zeny.",m_0b,"Oubliez ça.",m_0End;
+
+			m_0a:
+				mes "[Le chef Mahnsoo]";
+				if(Zeny < 1000) goto sl_Short1k;
+				set Zeny,Zeny-1000;
+				set job_merchant_q,1;
+				mes "Voyons cela... 1000 Zeny... Bien.";
+				goto L_Cont0;
+
+				sl_Short1k:	
+					mes "Vous avez l'air un peu court en monnaie. Pourquoi ne pas faire un premier versement de 500z?";
+					mes "Vosu vous occuperez du reste plus tard.";
+					emotion e_swt;
+					goto sM_Menu;
+					close;
+
+			m_0b:
+				mes "[Le chef Mahnsoo]";
+				if(Zeny < 500) goto sl_Short500z;
+				set Zeny,Zeny-500;
+				set job_merchant_q,2;
+				mes "Voyons voir... 500 Zeny... C'est suffisant pour commencer... Je pense que ce n'est pas une bonne habitude pour un Merchant de faire des paiements séparés.";
+				goto L_Cont0;
+				
+				sl_Short500z:
+					mes "Vous avez l'air vraiment à sec. Revenez quand vous aurez assez.";
+					emotion e_swt;
+					close;
+
+			m_0End:
+				mes "[Le chef Mahnsoo]";
+				mes "Vous n'avez pas d'argent sur vous? Ok, pas de problème. Prennez votre temps, Ok?";
+				close;
+
+		sM_0b:
+			mes "[Le chef Mahnsoo]";
+			mes "Sentez-vous libre de revenir quand vous serez pret(e), OK?";
+			close;
+
+
+		L_Cont0:
+		next;
+		mes "[Le chef Mahnsoo]";
+		mes "Maintenant que nous sommes d'accord, je vais vous parler du test pour la licence de commerce.";
+		mes "Vous aurez une mission à remplir.";
+		mes "Votre capacité à réussir le test déterminera si vous pouvez ou non devenir marchand.";
+		next;
+		mes "[Le chef Mahnsoo]";
+		mes "Oh, mais avant de poursuivre, je dois vous dire une chose...";
+		next;
+		mes "[Le chef Mahnsoo]";
+		mes "Il y a quelques personnes bornées et avides qui ne savent pas ce que cela signifie d'être un Marchand.";
+		mes "J'espère sincèrement que vous n'allez pas devenir comme eux. N'est-ce pas?... Si??... (Vous regarde attentivement)";
+		next;
+		mes "[Le chef Mahnsoo]";
+		mes "Quoiqu'il en advienne, voici votre travail. Vous allez devoir...";
+		next;
+		mes "[Le chef Mahnsoo]";
+
+		set @TEMP,rand(4);
+		if(@TEMP ==1) goto R_1;
+		if(@TEMP ==2) goto R_2;
+		if(@TEMP ==3) goto R_3;
+
+		R_0:	
+			mes "Récupérer ^ff0000un objet^000000 de ^0000ffl'entrepôt^000000 et le livrer à la ^00aa00Kafra^000000 qui travaille à ^00aa00l'Ancienne Association Swordman de Prontera^000000.";
+			if(job_merchant_q2 == 1) goto sR_0a;
+			if(job_merchant_q2 == 2) goto sR_0b;
+			set @TEMP,rand(2);
+			if(@TEMP !=0) goto sR_0b;
+
+			sR_0a:
+				mes "Le ^0000ff'numéro de série'^000000 du colis est ^ff00002485741^000000.";
+				set job_merchant_q2, 1;
+				next;
+				goto L_Cont1;
+			sR_0b:
+				mes "Le ^0000ff'numéro de série'^000000 du colis est ^ff00002328137^000000.";
+				set job_merchant_q2, 2;
+				next;
+				goto L_Cont1;
+
+		R_1:
+			mes "Récupérer ^ff0000un objet^000000 de ^0000ffl'entrepôt^000000 et le livrer à un  membre de ^00aa00la Guilde des Mages à Geffen^000000.";
+			next;
+			mes "[Le chef Mahnsoo]";
+			if(job_merchant_q2 == 3) goto sR_1a;
+			if(job_merchant_q2 == 4) goto sR_1b;
+			set @TEMP,rand(2);
+			if(@TEMP !=0) goto sR_1b;
+
+			sR_1a:
+				mes "Le ^0000ff'numéro de série'^000000 du colis est ^ff00002989396^000000.";
+				set job_merchant_q2, 3;
+				next;
+				goto L_Cont1;
+			sR_1b:
+				mes "Le ^0000ff'numéro de série'^000000 du colis est ^ff00002191737^000000.";
+				set job_merchant_q2, 4;
+				next;
+				goto L_Cont1;
+
+		R_2:
+			mes "Récupérer ^ff0000un objet^000000 de ^0000ffl'entrepôt^000000 et le livrer à ^00aa00Java Dullihan, le teinturier de Morroc^000000.";
+			next;
+			mes "[Le chef Mahnsoo]";
+			if(job_merchant_q2 == 5) goto sR_2a;
+			if(job_merchant_q2 == 6) goto sR_2b;
+			set @TEMP,rand(2);
+			if(@TEMP !=0) goto sR_2b;
+
+			sR_2a:
+				mes "Le ^0000ff'numéro de série'^000000 du colis est ^ff00003012685^000000.";
+				set job_merchant_q2,5;
+				next;
+				goto L_Cont1;
+			sR_2b:
+				mes "Le ^0000ff'numéro de série'^000000 du colis est ^ff00003487372^000000.";
+				set job_merchant_q2,6;
+				next;
+				goto L_Cont1;
+
+		R_3:
+			mes "Récupérer ^ff0000un objet^000000 de ^0000ffl'entrepôt^000000 et le livrer à ^00aa00la Kafra de Byalan island^000000.";
+			next;
+			mes "[Le chef Mahnsoo]";
+			if(job_merchant_q2 == 7) goto sR_3a;
+			if(job_merchant_q2 == 8) goto sR_3b;
+			set @TEMP,rand(2);
+			if(@TEMP !=0) goto sR_3b;
+
+			sR_3a:
+
+				mes "Le ^0000ff'numéro de série'^000000 du colis est ^ff00003318702^000000.";
+				set job_merchant_q2,7;
+				goto M00R3;
+			sR_3b:
+				mes "Le ^0000ff'numéro de série'^000000 du colis est ^ff00003543625^000000.";
+				set job_merchant_q2,8;
+				goto M00R3;
+
+			M00R3:
+				next;
+				mes "[Le chef Mahnsoo]";
+				mes "Et euhh... Ceci est une demande personnelle. Veillez à délivrer ce message, merci.";
+				if(countitem(1072)==0) getitem 1072,1;//Items: Delivery_Message,
+				next;
+				goto L_Cont1;
+
+
+		L_Cont1:
+		mes "[Le chef Mahnsoo]";
+		mes "Mémorisez bien le ^ff0000'numéro de série'^000000 ainsi que la ^ff0000'Destination'^000000 du colis.";
+		mes "Le gestionnaire d'entrepôt en aura besoin pour vous donner le bon paquet.";
+		next;
+		mes "[Le chef Mahnsoo]";
+		mes "L'entrepôt est juste là, à ma droite.";
+		next;
+		mes "[Le chef Mahnsoo]";
+		mes "Quand vous aurez fini la livraison, rapportez-moi le reçu de l'entrepôt signé par le destinataire. Ai-je été clair?";
+		next;
+		mes "[Le chef Mahnsoo]";
+		mes "OK, bonne chance!";
+		close;
+
+	M_1:
+		mes "[Le chef Mahnsoo]";
+		mes "Les marchands sont des gens qui travaillent dans le business de l'achat & la vente. Nous recherchons des objets rares et les vendons à ceux qui les désirent ou qui en ont besoin.";
+		mes "Nous ne sommes pas particulièrement bon au combat et n'avons pas de compétences (skills) de soutien. Tout ce que nous savons faire se résume à acheter au plus bas prix puis à revendre plus cher.";
+		next;
+		mes "[Le chef Mahnsoo]";
+		mes "Nous pouvons toutefois utiliser la plupart des armes. Arcs, bâtons et épées à deux mains sont les types d'armes que nous ne pouvons utiliser.";
+		mes "La compétence (skill) 'Mannomite' nous permet d'utiliser des zeny comme arme.";
+		next;
+		mes "[Le chef Mahnsoo]";
+		mes "Quoi que les gens disent de nous, faire de l'argent est nécessaire à une vie dessante pour les marchands.";
+		goto M_Menu;
+		close;
+
+	M_2:
+		mes "[Le chef Mahnsoo]";
+		mes "Il y a 3 conditions à remplir pour pouvoir devenir Merchant.";
+		next;
+		mes "[Le chef Mahnsoo]";
+		mes "La première, vous devez avoir un job level 9 et les compétences (skills) correspondants (basic skills).";
+		next;
+		mes "[Le chef Mahnsoo]";
+		mes "Deuxièmement, vous devez payer la taxe de commerce de 1000 Zeny. Je suis sûr qu'un futur Merchant arrive facilement à gagner 1000z.";
+		next;
+		mes "[Le chef Mahnsoo]";
+		mes "Troisièmement, il y a un test pour la licence qui évalue votre force physique et votre sens de l'orientation. Vosu devez apporter un colis à une personne précise à un endroit précis.";
+		goto M_Menu;
+		close;
+
+	M_End:
+		close;
+
+L_GiveRecpt:
+	mes "Ah, " + strcharinfo(0) + ". Vous revenez! J'espère que ça a été? Apportez le reçu au gestionnaire de l'entrepôt et revenez vite ici, ok.";
+	close;
+
+L_Back:
+	mes "Que faites-vous encore ici?";
+	emotion e_what;
+	next;
+	mes "[Le chef Mahnsoo]";
+	mes "Vous n'êtes pas encore parti(e)?";
+	next;
+	mes "[Le chef Mahnsoo]";
+	mes "Vous êtes supposé(e) être en chemin. Ne me dis pas que vous avez déjà oublié le numéro et la destination?";
+	next;
+	mes "[Le chef Mahnsoo]";
+	mes "Très bien imbécile, voulez-vous que je vous les répète encore une fois?";
+	next;
+	menu "Oh oui, s'il vous plait", M_Yes,"Laissez tomber.",M_No;
+
+	M_Yes:
+		mes "[Le chef Mahnsoo]";
+		if((job_merchant_q2==1) || (job_merchant_q2==2)) goto R_0;
+		if((job_merchant_q2==3) || (job_merchant_q2==4)) goto R_1;
+		if((job_merchant_q2==5) || (job_merchant_q2==6)) goto R_2;
+		if((job_merchant_q2==7) || (job_merchant_q2==8)) goto R_3;
+		close;
+
+	M_No:
+		close;
+
+L_MakeMerc:
+	if(Sex == 1) mes "Monsieur ^0000cc" + strcharinfo(0) + "^000000.....";
+	if(Sex == 0) mes "Mademoiselle ^0000cc" + strcharinfo(0) + "^000000.......";
+	next;
+	mes "[Le chef Mahnsoo]";
+	if(SkillPoint > 0) mes "Vous devez utiliser tous vos points de compétence (skill) avant que je puisse vous transformer en Merchant.";
+	if(SkillPoint > 0) close;
+
+	mes "Bien joué! Effectivement bon travail!! Je viens juste de lire le rapport d'évaluation de l'entrepôt, et j'ai été très impressionné. J'ai une super nouvelle pour vous!";
+	next;
+	if(job_merchant_q == 2) goto L_MemFee;
+
+	mes "[Le chef Mahnsoo]";
+	mes "Grace à votre dur labeur, la Guilde des Marchands a décidé de vous ACCEPTER comme l'un des leurs!";
+	next;
+	callfunc "Job_Change",Job_Merchant;
+	callfunc "F_ClearJobVar";		// clears all job variables for the current player
+
+	mes "[Le chef Mahnsoo]";
+	mes "Félicitations! Vous êtes un des nôtres, un FIER MERCHANT!!";
+	emotion e_no1;
+	next;
+	mes "[Le chef Mahnsoo]";
+	mes "Je suis ravi que vous ayez décidé de vous joindre à la Guilde des Marchands et j'espère que vous jouerez un rôle actif dans l'économie de Rune Midgard ! Bonne chance à vous!!";
+	if((job_merchant_q2==7) || (job_merchant_q2==8)) goto L_Favor;
+	close;
+
+	L_Favor:
+		next;
+		mes "[Le chef Mahnsoo]";
+		mes "Oh, voici un petit quelque chose pour le message que vous as gentillement transporté. Merci beaucoup!";
+		set Zeny,Zeny+100;
+		close;
+
+	L_MemFee:
+		mes "[Le chef Mahnsoo]";
+		mes "Um... Avant de continuer... Il restait une petite cotisation si vous vous souviens bien. J'ai besoin du solde avant de poursuivre avec votre initiation.";
+		emotion e_hmm;
+		next;
+		menu "Verser les 500 Zeny restant",sM_1a,"...(je m'enfuis!)...",sM_1b;
+
+		sM_1a:
+			if(Zeny < 500) goto sL_NotEnough;
+			set Zeny,Zeny-500;
+			set job_merchant_q,1;
+
+			mes "[Le chef Mahnsoo]";
+			mes "Très bien ! Je continue alors. Ou en étais-je?... Ah oui, je me souviens...";
+			goto L_MakeMerc;
+
+			sL_NotEnough:
+				mes "[Le chef Mahnsoo]";
+				mes "Eh... Vous êtes sans le sou. Puisque vous venez de loin, ne laissez pas une petite dette interrompre votre progression. Allez de l'avant et faites quelque chose!";
+				emotion e_swt;
+				close;
+
+		sM_1b:
+			mes "[Le chef Mahnsoo]";
+			mes "Quel est??? HEY reviens ici! Vous n'avez pas payé!!!";
+			emotion e_swt2;
+			close;
+
+L_Failed:
+	set job_merchant_q2,0;
+	set job_merchant_q3,0;
+
+	mes "J'ai fini de lire le rapport du gestionnaire de l'entrepôt...";
+	next;
+	mes "[Le chef Mahnsoo]";
+	mes "Quelle honte! Mais quelle honte!! Comment peut-on être si peu attentif??!! Je suis sûr que le gestionnaire de l'entrepôt a du vous faire son sermont, alors je ne vous ferai pas le mien.";
+	emotion e_pif;
+	next;
+	mes "[Le chef Mahnsoo]";
+	mes "^ff0000"+strcharinfo(0) + "^000000, vous avez raté le test pour la licence de Merchant! Toutefois... Si vous voulez réellement devenir Merchant, et si vous êtez pret(e) à travailler EXTREMEMENT DUR...";
+	next;
+	mes "[Le chef Mahnsoo]";
+	mes "... je vous autorsie à repasser le test. Qu'en dites-vous?";
+	next;
+	menu "Merci beaucoup de me laisser cette opportunité!",M_Thanks,"Peut-être une autre fois.",M_NoThanks;
+	
+	M_Thanks:
+		set job_merchant_q2,0;
+		set job_merchant_q3,0;
+		goto L_Cont0;
+
+	M_NoThanks:
+		mes "[Le chef Mahnsoo]";
+		mes "Retiens ces mots: dans la vie, l'échec N'EST PAS une option!!!";
+		emotion e_gasp;
+		set job_merchant_q,0;
+		set job_merchant_q2,0;
+		set job_merchant_q3,0;
+		close;
+
+}
+
+
+// -- Wharehouse Manager Kay --
+alberta_in.gat,28,29,2	script	chef d'entrepôt	83,{
+	if(BaseJob==Job_Novice && job_merchant_q3 > 0) goto L_Check;
+
+	mes "[Wharehouse Manager Kay]";
+	mes "Hey que faites-vous ici?";
+	next;
+	menu "Je viens pour le test de Merchant.",M_0,"Je viens pour un petit boulot.",M_1,"Rien.",M_End;
+
+	M_0:
+		mes "[Wharehouse Manager Kay]";
+		if(BaseJob!=0) goto L_NotNov;
+		if(job_merchant_q==0) goto L_NotRdy;
+		mes "Vous êtes ^0000cc"+ strcharinfo(0) +"^000000, non? Ok, je vous donne un colis. Tout d'abord, quelle est la destination?";
+		next;
+		menu "Prontera.",sM_0,"Geffen.",sM_1,"Morroc.",sM_2,"Byalan Island (Izlude).",sM_3;
+
+		sM_0:
+			set @s_flag,1;
+			goto L_Cont0;
+		sM_1:
+			set @s_flag,2;
+			goto L_Cont0;
+		sM_2:
+			set @s_flag,3;
+			goto L_Cont0;
+		sM_3:
+			set @s_flag,4;
+
+		L_Cont0:
+		mes "[Wharehouse Manager Kay]";
+		mes "Maintenant, il me faut le numéro du colis. Ecrivez dans cette boîte. Pour annuler, tapez '0'.";
+		next;
+		input @input;
+		if(@input ==0 ) goto sL_Cancel; 
+		if((@input < 1000000) || (@input > 5000000)) goto sL_Error;
+
+		mes "[Wharehouse Manager Kay]";
+		if(@s_flag==1) mes "La destination est Prontera. Le numéro est "+@input+".  ^ff0000Est-ce correct^000000?";
+		if(@s_flag==2) mes "La destination est Geffen.  Pfiou~ c'est vraiment loin~ Pas de chance, hein? Le numéro est "+@input+".  ^ff0000Est-ce correct^000000?";
+		if(@s_flag==3) mes "La destination est Morroc.  Pfiou~ c'est vraiment loin~ Pas de chance, hein? Le numéro est "+@input+".  ^ff0000Est-ce correct^000000?"; 
+		if(@s_flag==4) mes "La destination est Byalan.  Le numéro est "+@input+".  ^ff0000Est-ce correct^000000?";
+		next;
+		menu "Parfaitement.",sM_Pos,"Non.",sM_Neg;
+
+		sM_Pos:
+			if(@s_flag==1 && @input==2485741 && job_merchant_q2 == 1) goto ssL_Prod1;
+			if(@s_flag==2 && @input==2989396 && job_merchant_q2 == 3) goto ssL_Prod1;
+			if(@s_flag==3 && @input==3012685 && job_merchant_q2 == 5) goto ssL_Prod1;
+			if(@s_flag==4 && @input==3318702 && job_merchant_q2 == 7) goto ssL_Prod1;
+			if(@s_flag==1 && @input==2328137 && job_merchant_q2 == 2) goto ssL_Prod2;
+			if(@s_flag==2 && @input==2191737 && job_merchant_q2 == 4) goto ssL_Prod2;
+			if(@s_flag==3 && @input==3487372 && job_merchant_q2 == 6) goto ssL_Prod2;
+			if(@s_flag==4 && @input==3543625 && job_merchant_q2 == 8) goto ssL_Prod2;
+			getitem 1083,1;//Items: Delivery_Box__,
+			goto L_Cont1;
+
+			ssL_Prod1:
+				getitem 1081,1;//Items: Delivery_Box,
+				goto L_Cont1;
+
+			ssL_Prod2:
+				getitem 1082,1;//Items: Delivery_Box_,
+				goto L_Cont1;
+
+		sM_Neg:
+			close;
+
+		sL_Cancel:
+			mes "[Wharehouse Manager Kay]";
+			mes "Vous êtes sûr(e) de vouloir annuler?";
+			next;
+			menu "Oh oui.",m_yes,"Euh non.",m_no;
+
+			m_yes:
+				mes "[Wharehouse Manager Kay]";
+				mes "Comme vous voulez ~J'annule~";
+				close;
+			m_no:
+				next;
+				goto L_Cont0;
+
+		sL_Error:
+			mes "[Wharehouse Manager Kay]";
+			mes "Hey Hey, Ce n'est pas un numéro valide que vous me donnez là. Un numéro valide est compris entre 1000000 et 5000000.";
+			next;
+			goto L_Cont0;
+
+
+		L_Cont1:
+		mes "[Wharehouse Manager Kay]";
+		mes "Soignez bien ce colis et ne le perdez pas. Il ne peut être remplacé. Si vous le perdez, vous ne pourrez pas devenir Merchant.";
+		next;
+		mes "[Wharehouse Manager Kay]";
+		mes "A la livraison, récupérez le reçu. Bonne chance!";
+		set job_merchant_q3, 1;
+		close;
+
+		L_NotRdy:
+			mes "Faut voir cela avec le chef";
+			close;
+
+		L_NotNov:
+			mes "Désolé, mais seuls les novices peuvent passer le test de Merchant.";
+			close;
+
+	M_1:
+		mes "[Wharehouse Manager Kay]";
+		mes "Un petit boulot? Nous n'avons rien actuellement. Nous traversons une crise budgetaire et nous ne pouvons nous permettre d'embaucher quelqu'un.";
+		close;
+	M_End:
+		mes "[Wharehouse Manager Kay]";
+		mes "...? Hein..? Heuh..? Quoi..?";
+		close;
+
+L_Check:
+	if( job_merchant_q3 == 4) goto L_Done;
+	mes "[Wharehouse Manager Kay]";
+	if(job_merchant_q3 == 1) goto L_Back;
+	if(job_merchant_q3 == 5) goto L_Failed;
+	if((job_merchant_q3 == 2) && (countitem(1083) ==1)) goto L_WrongProd;//Items: Delivery_Box__,
+
+	mes "Vous devenez ^0000cc"+ strcharinfo(0) +"^000000. J'espère que les choses se sont bien passées. Laissez-moi voir... Vous devez apporter le colis...";
+	next;
+	mes "[Wharehouse Manager Kay]";
+	if((countitem(1073) == 1) || (countitem(1074) == 1)) goto L_0;//Items: Voucher, Voucher_,
+	if((countitem(1075) == 1) || (countitem(1076) == 1)) goto L_1;//Items: Voucher__, Voucher___,
+	if((countitem(1077) == 1) || (countitem(1078) == 1)) goto L_2;//Items: Voucher____, Voucher_____,
+	if((countitem(1079) == 1) || (countitem(1080) == 1)) goto L_3;//Items: Voucher______, Voucher_______,
+	goto L_LostRecpt;
+
+	L_0:
+		mes "...à la Kafra de Prontera. Et effectivement, le reçu le confirme.";
+		if(countitem(1073) == 1) delitem 1073,1;//Items: Voucher,
+		if(countitem(1074) == 1) delitem 1074,1;//Items: Voucher_,
+		next;
+		goto L_Done;
+
+	L_1:
+		mes "...à un membre de l'Academy de magie de Geffen. Et effectivement, le reçu le confirme.";
+		if(countitem(1075) == 1) delitem 1075,1;//Items: Voucher__,
+		if(countitem(1076) == 1) delitem 1076,1;//Items: Voucher___,
+		next;
+		goto L_Done;
+
+	L_2:
+		mes "...au teinturier de Morroc. Et effectivement, le reçu le confirme.";
+		if(countitem(1077) == 1) delitem 1077,1;//Items: Voucher____,
+		if(countitem(1078) == 1) delitem 1078,1;//Items: Voucher_____,
+		next;
+		goto L_Done;
+
+	L_3:
+		mes "...à la Kafra de Byalan. Et effectivement, le reçu le confirme.";
+		if(countitem(1079) == 1) delitem 1079,1;//Items: Voucher______,
+		if(countitem(1080) == 1) delitem 1080,1;//Items: Voucher_______,
+		next;
+
+	L_Done:
+		mes "[Wharehouse Manager Kay]";
+		mes "Génial! Comme sur des roulettes! J'envoie vos résultats de test au chef Mahnsoo immédiatement.";
+		mes "Retournez vers le chef Mahnsoo, ainsi il pourra terminer la procédure et faire de vous un Merchant.";
+		emotion e_no1;
+		set job_merchant_q3,4;
+		close;
+	L_LostRecpt:
+		mes "Voyons cela... Vous dites avoir remis le colis à la bonne personne... Mais où est le reçu...";
+		next;
+		mes  "[Wharehouse Manager Kay]";
+		mes "VOUS N'AVEZ PAS DE RECU?????";
+		emotion e_omg;
+		next;
+		mes "[Wharehouse Manager Kay]";
+		mes "Et comment diable pourrais-je savoir si vous l'avez livré? C'est un ECHEC TOTAL!!";
+		mes "Votre évaluation est mal partie. Je vous conseille de trouver de bonnes excuses au moment où vous reverrez le chef Mahnsoo.";
+		emotion e_pif;
+		set job_merchant_q3,5;
+		close;
+	L_WrongProd:
+		mes "Vous avez livré le MAUVAIS COLIS??? Avez-vous une idée du temps que vous venez de nous faire perdre?? C'est un ECHEC TOTAL!!";
+		emotion e_an;
+		next;
+		mes "[Wharehouse Manager Kay]";
+		mes "Votre évaluation est mal partie. Je vous conseille de trouver de bonnes excuses au moment où vous reverrez le chef Mahnsoo.";
+		delitem 1083, 1;//Items: Delivery_Box__,
+		set job_merchant_q3,5;
+		close;
+	L_Failed:
+		mes "Allez parler au chef de votre échec...";
+		close;
+
+L_Back:
+	if((countitem(1081) != 1) && (countitem(1082) != 1) && (countitem(1083) != 1)) goto L_LostProd;//Items: Delivery_Box, Delivery_Box_, Delivery_Box__,
+	mes "Mmmhh?? Déjà de retour, ne me dites pas que vus avez eu des complications...";
+	emotion e_hmm;
+	next;
+	menu "Vous pourriez m'échanger le colis?",M_Exch,"Bien sûr que non.",M_Nvmnd;
+
+	M_Exch:
+		mes "[Wharehouse Manager Kay]";
+		mes "(soupir)... C'est pas une bonne manière de commencer un test vous savez. Assurez-vous d'obtenir le BON paquet cette fois-ci!";
+		emotion e_pif;
+		if(countitem(1081) ==1) delitem 1081,1;//Items: Delivery_Box,
+		if(countitem(1082) ==1) delitem 1082,1;//Items: Delivery_Box_,
+		if(countitem(1083) ==1) delitem 1083,1;//Items: Delivery_Box__,
+		set job_merchant_q3,0;
+		next;
+		goto M_0;
+
+	M_Nvmnd:
+		close;
+
+	L_LostProd:
+		mes "MMhh? Et comment s'est passé le voyage?";
+		next;
+		mes "[Wharehouse Manager Kay]";
+		mes "QUOI???";
+		emotion e_what;
+		next;
+		mes "[Wharehouse Manager Kay]";
+		mes "Bordel!! Vous avez perdu le paquet??!! Qu'avez-vous fait pauvre idiot(e)!!!";
+		emotion e_omg;
+		next;
+		mes "[Wharehouse Manager Kay]";
+		mes "Votre évaluation est mal partie. Je vous conseille de trouver de bonnes excuses au moment où vous reverrez le chef Mahnsoo.";
+		emotion e_ag;
+		set job_merchant_q3,5;
+		close;
+
+}
+
+
+
+// == Customers ==
+// -- Kafra(Byalan) --
+function	script	F_MercKafra	{
+
+	if (job_merchant_q3 == 3) goto L_3;
+
+	mes "[Kafra]";
+	if(job_merchant_q3 ==2) goto L_WrongProd;
+	mes "Un paquet de la guilde des marchands?? Oh, oui, c'est vrai, j'avais oublié.";
+	next;
+	mes "[Kafra]";
+	mes "Voyons, voyons, le numéro devrait être.......";
+	next;
+	mes "[Kafra]";
+	if((countitem(1081) ==0) && (countitem(1082) ==0) && (countitem(1083) ==0)) goto L_NoProd;//Items: Delivery_Box, Delivery_Box_, Delivery_Box__,
+	if((job_merchant_q2 !=7) && (job_merchant_q2 !=8)) goto L_WrongDest;
+	if(countitem(1083) == 1) goto L_WrongProd;//Items: Delivery_Box__,
+
+	mes "Parfait, c'est cela. Oui! C'est ce que nous avions commandé. Merci beaucoup. Voici votre reçu.";
+	next;
+
+	set job_merchant_q3, 3;
+	if(countitem(1081) == 1) goto L_0;//Items: Delivery_Box,
+	if(countitem(1082) == 1) goto L_1;//Items: Delivery_Box_,
+
+	L_0:
+		getitem 1079,1;//Items: Voucher______,
+		delitem 1081,1;//Items: Delivery_Box,
+		goto L_3;
+
+	L_1:
+		getitem 1080,1;//Items: Voucher_______,
+		delitem 1082,1;//Items: Delivery_Box_,
+		goto L_3;
+	
+	L_3:
+		if(countitem(1072) == 1) goto L_Msg;//Items: Delivery_Message,
+		mes "[Kafra]";
+		mes "Merci pour être venu jusqu'ici pour livrer ce colis. Faites attention. Bye bye.";
+		emotion e_thx;
+		cutin "kafra_03",255;
+		close;
+
+		L_Msg:
+			mes "[Kafra]";
+			mes "Ohooo! Monsieur Mansoo m'a écrit une lettre? Merci!!";
+			mes "Je me doutais qu'il écrirait un de ces jours. Mais je n'avais pas prévu que ce serait maintenant...";
+			emotion e_what;
+			next;
+			mes "[Kafra]";
+			mes "J'apprécie vraiement ce que vous avez fait pour moi. Voici un petit cadeau en gage de remerciement.";
+			emotion e_thx;
+			delitem 1072,1;//Items: Delivery_Message,
+			set @TEMP,rand(2);
+			if(@TEMP !=0) goto R1;
+
+			R0:
+
+				getitem 513,3;//Items: Banana,
+				cutin "kafra_03",255;
+				close;
+			R1:
+				getitem 512,3;//Items: Apple,
+				cutin "kafra_03",255;
+				close;
+
+L_NoProd:
+	mes "... Je croyais que le colis était gigantesque et lourd... mais... Vous le portez sans aucune difficulté...";
+	emotion e_what;
+	cutin "kafra_03",255;
+	close;
+
+L_WrongProd:
+	mes "...? Excusez-moi! Vous m'avez apporté un mauvais paquet. Notre commande porte le numéro 3318702 ou 3543625...";
+	emotion e_swt;
+	set job_merchant_q3,2;
+	cutin "kafra_03",255;
+	close;
+
+L_WrongDest:
+	mes "...? Excusez-moi... Je crois que vous avez la mauvaise personne devant vous... Notre commande porte le numéro 3318702 ou 3543625...";
+	emotion e_swt;
+	cutin "kafra_03",255;
+	close;
+}
+
+// -- Kafra(Prontera) --
+prontera.gat,248,42,8	script	Kafra	115,{
+	cutin "kafra_03",2;
+	if(BaseJob==Job_Novice && job_merchant_q3>0) goto L_Start;
+L_Other:
+	mes "[Kafra]";
+	mes "Hello! Je suis une employée Kafra. Comme vous pouvez le voir, la ^3355FFSwordsman Association^000000 a été transférée à Izlude.";
+	mes "Toutefois, je peux vous y téléporter pour un coût modeste: 600 zeny.";
+	next;
+	menu "OK.",M_Warp, "Refuser.",M_End;
+
+	M_Warp:
+		if(Zeny < 600) goto sL_NdZeny;
+		set Zeny, Zeny - 600;
+		set RESRVPTS, RESRVPTS + 37;
+		warp "izlude.gat",91,105;
+		cutin "kafra_03",255;
+		end;
+
+		sL_NdZeny:
+			mes "[Kafra]";
+			mes "Je suis désolée, mais vous manquez d'argent.";
+			cutin "kafra_03",255;
+			close;
+
+	M_Pass:
+		if(countitem(1084)<1) goto sL_NdPass;//Items: Kafra_Pass,
+		mes "[Kafra]";
+		mes "Vous utilisez un kafra pass.";
+		delitem 1084,1;//Items: Kafra_Pass,
+		cutin "kafra_03",255;
+		close;
+
+		sL_NdPass:
+			mes "[Kafra]";
+			mes "Je suis désolée, mais vous n'avez pas de kafra pass...";
+			cutin "kafra_03",255;
+			close;
+	M_End:
+		mes "[Kafra]";
+		mes "Merci d'utiliser les services de la Kafra Corp. Nous serons avec vous où que vous alliez.";
+		emotion e_thx;
+		cutin "kafra_03",255;
+		close;
+
+
+L_Start:
+	if(job_merchant_q3 ==3) goto L_3;
+	mes "[Kafra]";
+	if(job_merchant_q3 ==2) goto L_WrongProd;
+
+	mes "Oh, vous êtes de la Guilde des marchands et vous avez un paquet pour moi?";
+	mes "J'apprécie vraiment que vous ayez fait tout ce chemin...";
+	next;
+	mes "[Kafra]";
+
+	if((countitem(1081) ==0) && (countitem(1082) ==0) && (countitem(1083) ==0)) goto L_NoProd;//Items: Delivery_Box, Delivery_Box_, Delivery_Box__,
+	if((job_merchant_q2 !=1) && (job_merchant_q2 !=2)) goto L_WrongDest;
+	if(countitem(1083) == 1) goto L_WrongProd;//Items: Delivery_Box__,
+
+	mes "Ouuuiii! C'est le produit que nous avons commandé. Merci bien. Et voici votre reçu!!!";
+	next;
+
+	set job_merchant_q3,3;
+	if(countitem(1081) == 1) goto L_0;//Items: Delivery_Box,
+	if(countitem(1082) == 1) goto L_1;//Items: Delivery_Box_,
+
+	L_0:
+		getitem 1073,1;//Items: Voucher,
+		delitem 1081,1;//Items: Delivery_Box,
+		goto L_3;
+
+	L_1:
+		getitem 1074,1;//Items: Voucher_,
+		delitem 1082,1;//Items: Delivery_Box_,
+		goto L_3;
+
+	L_3:
+		mes "[Kafra]";
+		mes "Merci envcore pour la livraison.";
+		emotion e_thx;
+		cutin "kafra_03",255;
+		close;
+
+L_NoProd:
+	mes "Euhhhh... Excusez-moi... Mais où est l'objet que vous êtes supposé me donner...?";
+	emotion e_hmm;
+	cutin "kafra_03",255;
+	close;
+
+L_WrongProd:
+	mes "Oh, cher livreur... Ce n'est pas ce que je voulais. Ce doit être le numéro de série ^ff00002485741 ou encore 2328137^000000.";
+	mes "Il semble avoir eu un sorte de mélange dans l'entrepôt et vous avez reçu le mauvais colis. Et j'apprécierais que vous ressortiez avec votre.. paquet.";
+	emotion e_swt;
+	set job_merchant_q3,2;
+	cutin "kafra_03",255;
+	close;
+
+L_WrongDest:
+	mes "Oh, cher livreur... Ceci n'est pas ce que j'ai commandé. Vous voyez ici, c'est adressé à quelqu'un d'autre. Ce paquet est pour quelqu'un d'autre.";
+	emotion e_swt;
+	cutin "kafra_03",255;
+	close;
+}
+
+
+// == Other Npcs ==
+// -- Guild Staff --
+geffen_in.gat,155,122,4	script	employé de la guilde	47,{
+
+	if(BaseJob==Job_Novice && job_merchant_q3>0) goto L_Start;
+L_Other:
+	mes "[Guild Staff]";
+	mes "Ca ne devrait pas tarder à présent... Il est même en retard...(soupir)...";
+	close;
+
+L_Start:
+	if(job_merchant_q3 ==3) goto L_3;
+	mes "[Guild Staff]";
+	if(job_merchant_q3 ==2) goto L_WrongProd;
+
+	mes "Hey par ici. Vous dites que vous êtes de la guilde des Marchands? Cela signifie...";
+	next;
+	mes "[Guild Staff]";
+	mes "YEAAAAH! C'est ça!! Ils ont enfin envoyué le colis!...";
+	next;
+	mes "[Guild Staff]";
+	mes "Oh veuillez m'excuser, je suis désolé. Vous devez être épuisé(e) pour avoir tant voyagé. Mes remerciements pour votre effort.";next;
+	mes "[Guild Staff]";
+	mes "Bien, laissez-moi juste un instant pour vérifier le numéro de série...";
+	next;
+	mes "[Guild Staff]";
+	if((countitem(1081) !=1) && (countitem(1082) !=1) && (countitem(1083) !=1)) goto L_NoProd;//Items: Delivery_Box, Delivery_Box_, Delivery_Box__,
+	if((job_merchant_q2 !=3) && (job_merchant_q2 !=4)) goto L_WrongDest;
+	if(countitem(1083) == 1) goto L_WrongProd;//Items: Delivery_Box__,
+
+	mes "Oui! C'est juste! Voici votre reçu.";
+	next;
+	set job_merchant_q3,3;
+	if(countitem(1081) == 1) goto L_0;//Items: Delivery_Box,
+	if(countitem(1082) == 1) goto L_1;//Items: Delivery_Box_,
+	
+	L_0:
+		getitem 1075,1;//Items: Voucher__,
+		delitem 1081,1;//Items: Delivery_Box,
+		goto L_3;
+
+	L_1:
+		getitem 1076,1;//Items: Voucher___,
+		delitem 1082,1;//Items: Delivery_Box_,
+		goto L_3;
+	
+	L_3:
+		mes "[Guild Staff]";
+		mes "Heheh! Merci. Au revoir.";
+		emotion e_thx;
+		close;
+L_NoProd:
+	mes "Euh? où est-ce? Où est la boîte?";
+	emotion e_what;
+	close;
+
+L_WrongDest:
+	mes "Hé, attendez une minute! Ce n'est pas ce que nous avons commandé! Le numéro de colis doit être 2989396 ou 2191737.";
+	mes "Je crains que ce colis soit pour quelqu'un d'autre. Vous vous êtes trompé de destinataire.";
+	emotion e_swt2;
+	close;
+
+L_WrongProd:
+	mes "Hé, attendez une minute! Ce n'est pas ce que nous avons commandé! Le numéro de colis doit être 2989396 ou 2191737.";
+	mes "Je ne sais pas qui a fait l'erreur, corrigez-la s'il vous plait. J'ai vraiment besoin de ma boîte.";
+	emotion e_swt2;
+	set job_merchant_q3,2;
+	close;
+}
+
+
+// -- Dyer's Student --
+morocc_in.gat,140,102,4	script	apprenti teinturier	86,{
+	if(BaseJob==Job_Novice && job_merchant_q3>0) goto L_Start;
+
+L_Other:
+	mes "[apprenti teinturier]";
+	mes "M. JavaDullihan est le meilleur des meilleurs de tout Midgard.";
+	mes "Je suis son apprenti!! et j'en suis fier!!!!";
+	next;
+	mes "[apprenti teinturier]";
+	mes "... c'est ce que je dis...";
+	close;
+
+L_Start:
+	if(job_merchant_q3 ==3) goto L_3;
+	mes "[apprenti teinturier]";
+	if(job_merchant_q3 ==2) goto L_WrongProd;
+
+	mes "z'êtes de la guilde des Marchands...? Ah, oui, j'vous attendais.";
+	next;
+	mes "[apprenti teinturier]";
+	mes "Montrez-moi le numéro du colis...";
+	next;
+	mes "[apprenti teinturier]";
+	if((countitem(1081) !=1) && (countitem(1082) !=1) && (countitem(1083) !=1)) goto L_NoProd;//Items: Delivery_Box, Delivery_Box_, Delivery_Box__,
+	if((job_merchant_q2 !=5) && (job_merchant_q2 !=6)) goto L_WrongDest;
+	if(countitem(1083) == 1) goto L_WrongProd;//Items: Delivery_Box__,
+
+	mes "Génial! c'est ce que je voulais. Et le reçu pour vous.";	
+	set job_merchant_q3,3;
+	if(countitem(1081) == 1) goto L_0;//Items: Delivery_Box,
+	if(countitem(1082) == 1) goto L_1;//Items: Delivery_Box_,
+	
+	L_0:
+		getitem 1077,1;//Items: Voucher____,
+		delitem 1081,1;//Items: Delivery_Box,
+		goto L_3;
+
+	L_1:
+		getitem 1078,1;//Items: Voucher_____,
+		delitem 1082,1;//Items: Delivery_Box_,
+		goto L_3;
+	
+	L_3:
+		mes "[apprenti teinturier]";
+		mes "Thank you, See you next time~";
+		emotion e_thx;
+		close;
+
+L_NoProd:
+	mes "Mais où est mon colis?";
+	emotion e_hmm;
+	close;
+
+L_WrongProd:
+	mes "Euh... 'scusez-moi? Je crois que c'est pas ça? Le numéro de mon colis est soit 3012685 soit 3487372.";
+	emotion e_hmm;
+	next;
+	mes "[apprenti teinturier]";
+	mes "Je vois. Y en a un qui s'est planté dans les colis à l'entrepôt.";
+	next;
+	mes "[apprenti teinturier]";
+	mes "Ca crains. Vous pouvez revenir avec le bon colis, siouplait.";
+	emotion e_pif;
+	set job_merchant_q3,2;
+	close;	
+
+L_WrongDest:
+	mes "Euh... 'scusez-moi? Je crois que c'est pas ça? Le numéro de mon colis est soit 3012685 soit 3487372.";
+	mes "ca craint, vous vous êtes planté de destinataire. Faudrait renfiler votre colis à quelqu'un d'autre.";
+	emotion e_hmm;
+	close;
+
+
+}

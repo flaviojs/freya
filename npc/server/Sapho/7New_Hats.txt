@@ -6,6 +6,7 @@
 //= Syntaxe du code par Kylvan (Kylvan@laposte.net)                    =//
 //===== Version Actuelle: ==============================================//
 //= v.1.0                                                              =//
+//= v.1.1 correction des coordonnées                                   =//
 //===== Compatible Avec: ===============================================//
 //= Freya SVN                                                          =//
 //===== Description: ===================================================//
@@ -18,7 +19,7 @@
 
 // New hats
 
-lou_in02.gat,210,47,4	script	Le Chapelier Fou	806,{
+lou_in02.gat,217,82,4	script	Le Chapelier Fou	806,{
 
 	mes "[Le Chapelier Fou]";
 	mes "Quelle belle journée =)";
@@ -46,7 +47,7 @@ lou_in02.gat,210,47,4	script	Le Chapelier Fou	806,{
 
 	menu getitemname(@Hats[0]),H_0,getitemname(@Hats[1]),H_1,getitemname(@Hats[2]),H_2,getitemname(@Hats[3]),H_3,getitemname(@Hats[4]),H_4,getitemname(@Hats[5]),H_5,getitemname(@Hats[6]),H_6;
 
-H_0: 
+H_0:
 // Baby Suckle
 	set @Hat,@Hats[0];
 	setarray @item[0],526,7270,10004,941;
@@ -56,7 +57,7 @@ H_0:
 	// 50.000 Zenys
 	goto Desc_item;
 
-H_1: 
+H_1:
 // Hat of the Investigator (Detective Hat)
 	set @Hat,@Hats[1];
 	setarray @item[0],611,7301,5115;
@@ -66,7 +67,7 @@ H_1:
 	// 50.000 Zenys
 	goto Desc_item;
 
-H_2: 
+H_2:
 // Mystic Rose
 	set @Hat,@Hats[2];
 	setarray @item[0],731,748,982;
@@ -76,7 +77,7 @@ H_2:
 	// 50.000 Zenys
 	goto Desc_item;
 
-H_3: 
+H_3:
 // Red Bonnet
 	set @Hat,@Hats[3];
 	setarray @item[0],10015,975,10007,5032;
@@ -86,8 +87,8 @@ H_3:
 	// 50.000 Zenys
 	goto Desc_item;
 
-H_4: 
-// Well-Baked Toast (Well Done Toast) 
+H_4:
+// Well-Baked Toast (Well Done Toast)
 	set @Hat,@Hats[4];
 	setarray @item[0],519,548,539,7031;
 	//Milk, Cheese, Piece of Cake, Old Frying Pan
@@ -96,8 +97,8 @@ H_4:
 	// 15.000 Zenys
 	goto Desc_item;
 
-H_5: 
-// Mask of Zherlthsh 
+H_5:
+// Mask of Zherlthsh
 	set @Hat,@Hats[5];
 	setarray @item[0],7205,660,7263,7099;
 	//Black Pieces of Cloth, Forbidden Red Candle, Cat's Eye, Worn-out Magic Scrolls
@@ -106,7 +107,7 @@ H_5:
 	// 50.000 Zenys
 	goto Desc_item;
 
-H_6: 
+H_6:
 // Wide Bunker Hat (Fashionable Fur Hat)
 	set @Hat,@Hats[6];
 	setarray @item[0],7267,983,749;
@@ -154,7 +155,7 @@ yep:
 
 L_Check_Failure:
 	mes "[Le Chapelier Fou]";
-	mes "Désolé mais vous ne disposez pas de tous les objets ou Zenys necessaires.";
+	mes "Désolé mais vous ne disposez pas de tous les objets ou Zenys nécessaires.";
 	close;
 
 L_Check_Success:
