@@ -1,13 +1,15 @@
-//===== eAthena Script =======================================
+//===== Freya Script =======================================
 //= Geffen Tower Dungeon Monster Spawn Script
 //===== By: ==================================================
-//= Athena (1.0)
+//= eAthena
 //===== Current Version: =====================================
-//= 1.1
+//= 1.2
 //===== Compatible With: =====================================
 //= Any Athena Version
 //===== Additional Comments: =================================
-//=
+//= 1.0 Added first Version [eAthena]
+//= 1.1 No Details
+//= 1.2 Redid Geffen Dun 4 for Eye of Hellion quest [Tsuyuki]
 //============================================================
 
 // gef_dun00 
