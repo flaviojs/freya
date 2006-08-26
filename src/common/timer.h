@@ -26,7 +26,7 @@ struct TimerData {
 // Function prototype declaration
 
 #ifdef __WIN32
-void gettimeofday(struct timeval *t, void *dummy);
+int gettimeofday(struct timeval *t, void *dummy);
 #endif
 
 void init_gettick(void);

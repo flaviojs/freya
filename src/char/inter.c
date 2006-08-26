@@ -48,6 +48,7 @@ struct logs {
 
 #ifdef TXT_ONLY
 char inter_log_filename[1024] = "log/inter.log";
+static unsigned char log_file_date = 3; /* year + month (example: log/login-2006-12.log) */
 
 char accreg_txt[1024] = "save/accreg.txt";
 static struct accreg_db {
@@ -259,7 +260,11 @@ void inter_log_init(void) {
 	printf("Checking and creating logging folder(s)...\n");
 	for(i = LOG_BASE; i < LOG_MAX; i++) {
 		logging[i].length = strlen(logging[i].path) + strlen(logging[i].prefix) + strlen(logging[i].extension);
+#ifdef __WIN32
+		mkdir(logging[i].path);
+#else
 		mkdir(logging[i].path, 0700);
+#endif
 	}
 }
 
@@ -379,6 +384,10 @@ static void inter_config_read(const char *cfgName) { // not inline, called too o
 		} else if (strcasecmp(w1, "inter_log_filename") == 0) {
 			memset(inter_log_filename, 0, sizeof(inter_log_filename));
 			strncpy(inter_log_filename, w2, sizeof(inter_log_filename) - 1);
+		} else if (strcasecmp(w1, "log_file_date") == 0) {
+			log_file_date = atoi(w2);
+			if (log_file_date > 4)
+				log_file_date = 3; // default
 		} else if (strcasecmp(w1, "log_inter") == 0) {
 			log_inter = config_switch(w2);
 // import
@@ -398,9 +407,13 @@ static void inter_config_read(const char *cfgName) { // not inline, called too o
 void inter_log(char *fmt, ...) {
 #ifdef TXT_ONLY
 	FILE *logfp;
+	struct timeval tv;
+	time_t now;
+	char log_filename_to_use[sizeof(inter_log_filename) + 64];
 #else /* TXT_ONLY -> USE_SQL*/
 	char str[255], temp_str[511];
 #endif /* USE_SQL */
+
 	va_list ap;
 
 	if (!log_inter)
@@ -409,7 +422,47 @@ void inter_log(char *fmt, ...) {
 	va_start(ap, fmt);
 
 #ifdef TXT_ONLY
-	logfp = fopen(inter_log_filename, "a");
+	// get time for file name and logs
+	gettimeofday(&tv, NULL);
+	now = time(NULL);
+
+	// create file name
+	memset(log_filename_to_use, 0, sizeof(log_filename_to_use));
+	if (log_file_date == 0) {
+		strcpy(log_filename_to_use, inter_log_filename);
+	} else {
+		char* last_point;
+		char* last_slash; // to avoid name like ../log_file_name_without_point
+		// search position of '.'
+		last_point = strrchr(inter_log_filename, '.');
+		last_slash = strrchr(inter_log_filename, '/');
+		if (last_point == NULL || (last_slash != NULL && last_slash > last_point))
+			last_point = inter_log_filename + strlen(inter_log_filename);
+		strncpy(log_filename_to_use, inter_log_filename, last_point - inter_log_filename);
+		switch (log_file_date) {
+		case 1:
+			strftime(log_filename_to_use + strlen(log_filename_to_use), 63, "-%Y", localtime(&now));
+			strcat(log_filename_to_use, last_point);
+			break;
+		case 2:
+			strftime(log_filename_to_use + strlen(log_filename_to_use), 63, "-%m", localtime(&now));
+			strcat(log_filename_to_use, last_point);
+			break;
+		case 3:
+			strftime(log_filename_to_use + strlen(log_filename_to_use), 63, "-%Y-%m", localtime(&now));
+			strcat(log_filename_to_use, last_point);
+			break;
+		case 4:
+			strftime(log_filename_to_use + strlen(log_filename_to_use), 63, "-%Y-%m-%d", localtime(&now));
+			strcat(log_filename_to_use, last_point);
+			break;
+		default: // case 0: 
+			strcpy(log_filename_to_use, inter_log_filename);
+			break;
+		}
+	}
+
+	logfp = fopen(log_filename_to_use, "a");
 	if (logfp) {
 		vfprintf(logfp, fmt, ap);
 		fclose(logfp);

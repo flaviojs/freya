@@ -65,6 +65,7 @@ int passenc = 0;                             // Encoding type of the password
 char defaultlanguage = 'E';                  // Default language (F: Français/E: English)
                                              // (if it's not 'F', default is English)
 char ladmin_log_filename[1024] = "log/ladmin.log";
+static unsigned char log_file_date = 3; /* year + month (example: log/login-2006-12.log) */
 char date_format[32] = "%Y-%m-%d %H:%M:%S";
 //-------------------------------------------------------------------------
 //  LIST of COMMANDs that you can type at the prompt:
@@ -274,16 +275,55 @@ static void ladmin_log(char *fmt, ...) { // not inline, called too often
 	struct timeval tv;
 	time_t now;
 	char tmpstr[2048];
+	char log_filename_to_use[sizeof(ladmin_log_filename) + 64];
 
 	va_start(ap, fmt);
 
-	logfp = fopen(ladmin_log_filename, "a");
+	// get time for file name and logs
+	gettimeofday(&tv, NULL);
+	now = time(NULL);
+
+	// create file name
+	memset(log_filename_to_use, 0, sizeof(log_filename_to_use));
+	if (log_file_date == 0) {
+		strcpy(log_filename_to_use, ladmin_log_filename);
+	} else {
+		char* last_point;
+		char* last_slash; // to avoid name like ../log_file_name_without_point
+		// search position of '.'
+		last_point = strrchr(ladmin_log_filename, '.');
+		last_slash = strrchr(ladmin_log_filename, '/');
+		if (last_point == NULL || (last_slash != NULL && last_slash > last_point))
+			last_point = ladmin_log_filename + strlen(ladmin_log_filename);
+		strncpy(log_filename_to_use, ladmin_log_filename, last_point - ladmin_log_filename);
+		switch (log_file_date) {
+		case 1:
+			strftime(log_filename_to_use + strlen(log_filename_to_use), 63, "-%Y", localtime(&now));
+			strcat(log_filename_to_use, last_point);
+			break;
+		case 2:
+			strftime(log_filename_to_use + strlen(log_filename_to_use), 63, "-%m", localtime(&now));
+			strcat(log_filename_to_use, last_point);
+			break;
+		case 3:
+			strftime(log_filename_to_use + strlen(log_filename_to_use), 63, "-%Y-%m", localtime(&now));
+			strcat(log_filename_to_use, last_point);
+			break;
+		case 4:
+			strftime(log_filename_to_use + strlen(log_filename_to_use), 63, "-%Y-%m-%d", localtime(&now));
+			strcat(log_filename_to_use, last_point);
+			break;
+		default: // case 0: 
+			strcpy(log_filename_to_use, ladmin_log_filename);
+			break;
+		}
+	}
+
+	logfp = fopen(log_filename_to_use, "a");
 	if (logfp) {
 		if (fmt[0] == '\0') // jump a line if no message
 			fprintf(logfp, RETCODE);
 		else {
-			gettimeofday(&tv, NULL);
-			now = time(NULL);
 			memset(tmpstr, 0, sizeof(tmpstr));
 			strftime(tmpstr, 20, date_format, localtime(&now));
 			sprintf(tmpstr + strlen(tmpstr), ".%03d: %s", (int)tv.tv_usec / 1000, fmt);
@@ -4510,6 +4550,10 @@ static void ladmin_config_read(const char *cfgName) { // not inline, called too 
 			} else if (strcasecmp(w1, "ladmin_log_filename") == 0) {
 				memset(ladmin_log_filename, 0, sizeof(ladmin_log_filename));
 				strncpy(ladmin_log_filename, w2, sizeof(ladmin_log_filename) - 1);
+			} else if (strcasecmp(w1, "log_file_date") == 0) {
+				log_file_date = atoi(w2);
+				if (log_file_date > 4)
+					log_file_date = 3; // default
 			} else if (strcasecmp(w1, "date_format") == 0) { // note: never have more than 19 char for the date!
 				switch (atoi(w2)) {
 				case 0:

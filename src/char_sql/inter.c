@@ -152,7 +152,11 @@ void inter_log_init(void) {
 	printf("Checking and creating logging folder(s)...\n");
 	for(i = LOG_BASE; i < LOG_MAX; i++) {
 		logging[i].length = strlen(logging[i].path) + strlen(logging[i].prefix) + strlen(logging[i].extension);
+#ifdef __WIN32
+		mkdir(logging[i].path);
+#else
 		mkdir(logging[i].path, 0700);
+#endif
 	}
 }
 

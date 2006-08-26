@@ -1631,7 +1631,7 @@ int parse_fromchar(int fd) {
 			char tmpstr[24];
 			struct timeval tv;
 			time_t now;
-			logfp = fopen(login_log_unknown_packets_filename, "a");
+			logfp = fopen(login_log_unknown_packets_filename, "a"); // it is not necessary to create a specifical file with the date (like done for log/login-2006.log)
 			if (logfp) {
 				gettimeofday(&tv, NULL);
 				now = time(NULL);
@@ -2201,7 +2201,7 @@ int parse_login(int fd) {
 				char tmpstr[24];
 				struct timeval tv;
 				time_t now;
-				logfp = fopen(login_log_unknown_packets_filename, "a");
+				logfp = fopen(login_log_unknown_packets_filename, "a"); // it is not necessary to create a specifical file with the date (like done for log/login-2006.log)
 				if (logfp) {
 					gettimeofday(&tv, NULL);
 					now = time(NULL);
@@ -3740,6 +3740,8 @@ static void login_config_read(const char *cfgName) { // not inline, called too o
 				strncpy(login_log_filename, w2, sizeof(login_log_filename) - 1);
 			} else if (strcasecmp(w1, "log_login") == 0) {
 				log_login = config_switch(w2);
+			} else if (strcasecmp(w1, "log_file_date") == 0) {
+				log_file_date = atoi(w2);
 			} else if (strcasecmp(w1, "log_request_connection") == 0) {
 				log_request_connection = config_switch(w2);
 			} else if (strcasecmp(w1, "log_request_version") == 0) {
@@ -4075,6 +4077,10 @@ static inline void display_conf_warnings(void) {
 	}
 
 /* Logs options */
+	if (log_file_date > 4) {
+		printf("***WARNING: Invalid value for log_file_date parameter -> set to 3 (default).\n");
+		log_file_date = 3;
+	}
 
 /* Anti-freeze options */
 	if (anti_freeze_counter < 2) {
@@ -4295,6 +4301,23 @@ static inline void save_config_in_log(void) {
 		write_log("* Logs options *" RETCODE);
 		/* not necessary to log the 'login_log_filename', we are inside */
 		/* not necessary to log the 'log_login', we are inside */
+		switch (log_file_date) {
+		case 1:
+			write_log("- to add the year to the log file name (example: log/login-2006.log)." RETCODE);
+			break;
+		case 2:
+			write_log("- to add the month to the log file name (example: log/login-12.log)." RETCODE);
+			break;
+		case 3:
+			write_log("- to add the year and the month to the log file name (example: log/login-2006-12.log)." RETCODE);
+			break;
+		case 4:
+			write_log("- to add the date to the log file name (example: log/login-2006-12-25.log)." RETCODE);
+			break;
+		default: // case 0: 
+			write_log("- to not change the log file name with a date." RETCODE);
+			break;
+		}
 		if (log_request_connection)
 			write_log("- to log 'Request for connection' message (packet 0x64/0x1dd)." RETCODE);
 		else
@@ -4643,6 +4666,7 @@ static inline void init_conf_variables(void) {
 	memset(login_log_filename, 0, sizeof(login_log_filename));
 	strcpy(login_log_filename, "log/login.log");
 	log_login = 1; /* yes */
+	log_file_date = 3; /* year + month (example: log/login-2006-12.log) */
 	log_request_connection = 1; /* yes */
 	log_request_version = 0; /* no */
 	log_request_freya_version = 0; /* no */

@@ -46,11 +46,13 @@ static struct timer_func_list* tfl_root;
 
 #ifdef __WIN32
 /* Modified struct timezone to void - we pass NULL anyway */
-void gettimeofday(struct timeval *t, void *dummy) {
+int gettimeofday(struct timeval *t, void *dummy) {
 	DWORD millisec = GetTickCount();
 
 	t->tv_sec = (int) (millisec / 1000);
 	t->tv_usec = (millisec % 1000) * 1000;
+
+	return 0;
 }
 #endif
 

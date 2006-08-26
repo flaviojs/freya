@@ -105,6 +105,7 @@ unsigned char friends_txt_flag = 0; // must we save friends file or not? (0: not
 #endif /* TXT_ONLY */
 char unknown_char_name[1024] = "Unknown";
 char char_log_filename[1024] = "log/char.log";
+static unsigned char log_file_date = 3; /* year + month (example: log/login-2006-12.log) */
 char temp_char_buffer[1024]; // temporary buffer of type char (see php_addslashes)
 FILE *log_fp = NULL;
 
@@ -217,18 +218,65 @@ void char_log(char *fmt, ...) {
 	struct timeval tv;
 	time_t now;
 	char tmpstr[2048];
+	char log_filename_used[sizeof(char_log_filename) + 64] = "1"; // +64 for date size
+	char log_filename_to_use[sizeof(char_log_filename) + 64] = "2"; // must be different to log_filename_used
 
-	// if not already open, try to opeen log
+	// get time for file name and logs
+	gettimeofday(&tv, NULL);
+	now = time(NULL);
+
+	// create file name
+	memset(log_filename_to_use, 0, sizeof(log_filename_to_use));
+	if (log_file_date == 0) {
+		strcpy(log_filename_to_use, char_log_filename);
+	} else {
+		char* last_point;
+		char* last_slash; // to avoid name like ../log_file_name_without_point
+		// search position of '.'
+		last_point = strrchr(char_log_filename, '.');
+		last_slash = strrchr(char_log_filename, '/');
+		if (last_point == NULL || (last_slash != NULL && last_slash > last_point))
+			last_point = char_log_filename + strlen(char_log_filename);
+		strncpy(log_filename_to_use, char_log_filename, last_point - char_log_filename);
+		switch (log_file_date) {
+		case 1:
+			strftime(log_filename_to_use + strlen(log_filename_to_use), 63, "-%Y", localtime(&now));
+			strcat(log_filename_to_use, last_point);
+			break;
+		case 2:
+			strftime(log_filename_to_use + strlen(log_filename_to_use), 63, "-%m", localtime(&now));
+			strcat(log_filename_to_use, last_point);
+			break;
+		case 3:
+			strftime(log_filename_to_use + strlen(log_filename_to_use), 63, "-%Y-%m", localtime(&now));
+			strcat(log_filename_to_use, last_point);
+			break;
+		case 4:
+			strftime(log_filename_to_use + strlen(log_filename_to_use), 63, "-%Y-%m-%d", localtime(&now));
+			strcat(log_filename_to_use, last_point);
+			break;
+		default: // case 0: 
+			strcpy(log_filename_to_use, char_log_filename);
+			break;
+		}
+	}
+
+	// if previously used file has different name from the file to use
+	if (strcmp(log_filename_used, log_filename_to_use) != 0) {
+		fclose(log_fp);
+//		counter = 0;
+		memcpy(log_filename_used, log_filename_to_use, sizeof(log_filename_used));
+	}
+
+	// if not already open, try to open log
 	if (log_fp == NULL)
-		log_fp = fopen(char_log_filename, "a");
+		log_fp = fopen(log_filename_used, "a");
 
 	if (log_fp) {
 		if (fmt[0] == '\0') // jump a line if no message
 			fprintf(log_fp, RETCODE);
 		else {
 			va_start(ap, fmt);
-			gettimeofday(&tv, NULL);
-			now = time(NULL);
 			memset(tmpstr, 0, sizeof(tmpstr));
 			strftime(tmpstr, 24, "%d-%m-%Y %H:%M:%S", localtime(&now));
 			sprintf(tmpstr + strlen(tmpstr), ".%03d: %s", (int)tv.tv_usec / 1000, fmt);
@@ -5982,6 +6030,10 @@ static void char_config_read(const char *cfgName) { // not inline, called too of
 		} else if (strcasecmp(w1, "char_log_filename") == 0) {
 			memset(char_log_filename, 0, sizeof(char_log_filename));
 			strcpy(char_log_filename, w2);
+		} else if (strcasecmp(w1, "log_file_date") == 0) {
+			log_file_date = atoi(w2);
+			if (log_file_date > 4)
+				log_file_date = 3; // default
 		} else if (strcasecmp(w1, "chars_per_account") == 0) {
 			if (atoi(w2) >= 0 && atoi(w2) <= 9)
 				chars_per_account = atoi(w2);
