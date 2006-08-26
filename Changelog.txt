@@ -2,6 +2,7 @@
 Date	Added
 
 08/25/2006
+	* Imported: New Hat Quests from eAthena [Tsuyuki]
 	* Updated: Item No Refine Database with new items [Tsuyuki]
 	* Updated: Item database with new items [Tsuyuki]
 	* Updated: Some 10.3 Item Prices [Thanks to muad_dib] [Tsuyuki]
