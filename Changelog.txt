@@ -1,6 +1,13 @@
 
 Date	Added
 
+08/27/2006
+	* Added: special option (atcommand_max_player_gm_level) to know when a player is a 'normal' player or GM for some actions with GM commands: [Yor]
+	         for @whogm, @gm and answer with a wrong GM command.
+	         note: created because 'normal' players with level upper than 0 will have 'unknown command' instead of '(their sentence)' when they type a wrong GM command.
+	         read 'atcommand_max_player_gm_level' in battle_athena.conf for more informations.
+	* Fixed: end lines in some created files [Yor]
+
 08/26/2006
 	* Fixed: a little error on last commit: 1 string variable needs to be defined 'static' [Yor]
 	* Added: an option to add date on main log files of each server (ladmin.log, login.log, char.log, inter.log) [Yor]

@@ -145,7 +145,7 @@ void inter_party_save() {
 	}
 
 	numdb_foreach(party_db, inter_party_save_sub, fp);
-//	fprintf(fp, "%d\t%%newid%%\n", party_newid);
+//	fprintf(fp, "%d\t%%newid%%" RETCODE, party_newid);
 	lock_fclose(fp,party_txt, &lock);
 //	printf("int_party: %s saved.\n", party_txt);
 

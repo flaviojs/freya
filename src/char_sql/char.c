@@ -2165,7 +2165,7 @@ void create_online_files(void) {
 			// write heading
 			fprintf(fp, "<?php" RETCODE
 			            "// File generated on %s" RETCODE, temp);
-			fprintf(fp, "$freya = array(\n" RETCODE
+			fprintf(fp, "$freya = array(" RETCODE
 			            "\t'server_name'=>'%s'," RETCODE, php_addslashes(server_name));
 			fprintf(fp, "\t'time'=>%d," RETCODE, (int)time_server);
 			fprintf(fp, "\t'agit_flag'=>%d," RETCODE, agit_flag);

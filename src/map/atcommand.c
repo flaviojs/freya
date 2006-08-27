@@ -1161,7 +1161,7 @@ AtCommandType is_atcommand(const int fd, struct map_session_data* sd, const char
 	/* if not found */
 	if (atcommand_info[i].type == AtCommand_Unknown || atcommand_info[i].proc == NULL) {
 		/* doesn't return Unknown if player is normal player (display the text, not display: unknown command) */
-		if (gmlvl == 0)
+		if (gmlvl <= battle_config.atcommand_max_player_gm_level)
 			return AtCommand_None;
 		else {
 			sprintf(atcmd_output, msg_txt(153), command); // %s is Unknown Command.
@@ -2576,7 +2576,7 @@ int atcommand_whogm(
 	count = 0;
 	for (i = 0; i < fd_max; i++) {
 		if (session[i] && (pl_sd = session[i]->session_data) && pl_sd->state.auth) {
-			if (pl_sd->GM_level > 0) {
+			if (pl_sd->GM_level > battle_config.atcommand_max_player_gm_level) {
 				if (!((pl_sd->GM_level >= battle_config.hide_GM_session || (pl_sd->status.option & OPTION_HIDE)) && (pl_sd->GM_level > sd->GM_level))) { // only lower or same level
 					memset(atcmd_name, 0, sizeof(atcmd_name));
 					for (j = 0; pl_sd->status.name[j]; j++)
@@ -5323,7 +5323,7 @@ int atcommand_gm(
 		return -1;
 	}
 
-	if (sd->GM_level) { // a GM can not use this function. only a normal player (become gm is not for gm!)
+	if (sd->GM_level <= battle_config.atcommand_max_player_gm_level) { // a GM can not use this function. only a normal player (become gm is not for gm!)
 		clif_displaymessage(fd, msg_txt(50)); // You already have some GM powers.
 		return -1;
 	} else

@@ -3450,6 +3450,7 @@ static const struct battle_config_short{
 	{ "making_arrow_name_input",                    &battle_config.making_arrow_name_input },
 	{ "holywater_name_input",                       &battle_config.holywater_name_input },
 	{ "atcommand_item_creation_name_input",         &battle_config.atcommand_item_creation_name_input },
+	{ "atcommand_max_player_gm_level",              &battle_config.atcommand_max_player_gm_level },
 	{ "display_delay_skill_fail",                   &battle_config.display_delay_skill_fail },
 	{ "display_snatcher_skill_fail",                &battle_config.display_snatcher_skill_fail	},
 	{ "chat_warpportal",                            &battle_config.chat_warpportal },
@@ -3809,6 +3810,7 @@ void battle_set_defaults() {
 	battle_config.making_arrow_name_input = 1;
 	battle_config.holywater_name_input = 1;
 	battle_config.atcommand_item_creation_name_input = 1; // Add name to all items, except item with slot (to give possibility to add cards)
+	battle_config.atcommand_max_player_gm_level = 10; // GM level 10 is maximum GM level of a 'normal' player
 	battle_config.display_delay_skill_fail = 1;
 	battle_config.display_snatcher_skill_fail = 1;
 	battle_config.chat_warpportal = 0;
@@ -4196,6 +4198,11 @@ void battle_validate_conf() {
 
 	if (battle_config.atcommand_item_creation_name_input < 1)
 		battle_config.atcommand_item_creation_name_input = 0;
+
+	if (battle_config.atcommand_max_player_gm_level < 1)
+		battle_config.atcommand_max_player_gm_level = 0;
+	else if (battle_config.atcommand_max_player_gm_level > 100)
+		battle_config.atcommand_max_player_gm_level = 100;
 
 	if (battle_config.vending_max_value > 2000000000 || battle_config.vending_max_value <= 0)
 		battle_config.vending_max_value = 2000000000;

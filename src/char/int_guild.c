@@ -637,7 +637,7 @@ void inter_guild_save() {
 	}
 
 	numdb_foreach(guild_db, inter_guild_save_sub, fp);
-//	fprintf(fp, "%d\t%%newid%%\n", guild_newid);
+//	fprintf(fp, "%d\t%%newid%%" RETCODE, guild_newid);
 	lock_fclose(fp, guild_txt, &lock);
 //	printf("int_guild: %s saved.\n", guild_txt);
 

@@ -18,6 +18,13 @@
 
 #include "../common/utils.h" // for 'colors' in printf
 
+#if defined __CYGWIN || defined __WIN32
+// txtやlogなどの書き出すファイルの改行コード
+#define RETCODE "\r\n" // (CR/LF：Windows系)
+#else
+#define RETCODE "\n" // (LF：Unix系）
+#endif
+
 char account_txt[1024] = "../save/account.txt";
 
 struct auth_dat {
@@ -251,7 +258,7 @@ int main(int argc, char *argv[]) {
 	FPaccout = fopen(account_txt, "r+");
 
 	fseek(FPaccout, 0, SEEK_END);
-	fprintf(FPaccout, "%i	%s	%s	-	%s	-\r\n", next_id, username, password, accountsex);
+	fprintf(FPaccout, "%i	%s	%s	-	%s	-" RETCODE, next_id, username, password, accountsex);
 	fclose(FPaccout);
 
 	printf("Account added.\n");

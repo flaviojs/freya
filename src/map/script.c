@@ -8270,9 +8270,9 @@ static int script_save_mapreg_intsub(void *key, void *data, va_list ap) {
 
 	if (name[1] != '@') {
 		if (i == 0)
-			fprintf(fp, "%s\t%d\n", name, (int)data);
+			fprintf(fp, "%s\t%d" RETCODE, name, (int)data);
 		else
-			fprintf(fp, "%s,%d\t%d\n", name, i, (int)data);
+			fprintf(fp, "%s,%d\t%d" RETCODE, name, i, (int)data);
 	}
 
 	return 0;
@@ -8284,9 +8284,9 @@ static int script_save_mapreg_strsub(void *key, void *data, va_list ap) {
 	char *name = str_buf + str_data[num].str;
 	if (name[1] != '@') {
 		if (i == 0)
-			fprintf(fp, "%s\t%s\n", name, (char *)data);
+			fprintf(fp, "%s\t%s" RETCODE, name, (char *)data);
 		else
-			fprintf(fp, "%s,%d\t%s\n", name, i, (char *)data);
+			fprintf(fp, "%s,%d\t%s" RETCODE, name, i, (char *)data);
 	}
 
 	return 0;
