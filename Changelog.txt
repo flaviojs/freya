@@ -2,6 +2,9 @@
 Date	Added
 
 08/27/2006
+	* Added: 'neutral' option in all @spawn GM commands to force non-agressiv monster [Yor]
+	          note: followers stay agressiv if they exist.
+	* Improved: GM level transmission: cancel temporarily GM level when player comes back from map-server to char-server [Yor]
 	* Added: special option (atcommand_max_player_gm_level) to know when a player is a 'normal' player or GM for some actions with GM commands: [Yor]
 	         for @whogm, @gm and answer with a wrong GM command.
 	         note: created because 'normal' players with level upper than 0 will have 'unknown command' instead of '(their sentence)' when they type a wrong GM command.

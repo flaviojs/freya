@@ -1178,6 +1178,8 @@ int parse_fromchar(int fd) {
 				strncpy(WPACKETP(6), auth_dat[i].email, 40);
 				WPACKETL(46) = (unsigned long)auth_dat[i].connect_until_time;
 				SENDPACKET(fd, 50);
+				// send gm level to update it in char-server and map-server if necessary
+				send_GM_account(acc, auth_dat[i].level);
 			/* if account not found */
 			} else
 				write_log("Char-server '%s': Request of an e-mail/limited time: unknown account (account: %d, ip: %s)." RETCODE, server[id].name, acc, ip);

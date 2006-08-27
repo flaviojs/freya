@@ -195,6 +195,7 @@ key:monster,monstre,spawn,summon,deadbranch,dead_branch
 @spawnbig          :	Vous pouvez utiliser @spawnbig pour générer des monstres avec de gros sprites (peut occasionner du lag).
 @spawnsmall        :	Vous pouvez utiliser @spawnsmall pour générer des monstres avec de petits sprites (peut occasionner du lag).
 @spawnagro         :	Si vous ajoutez 'agro' à la commande, les monstres sont agressifs (comme avec une dead branch).
+@spawnneutral      :	Si vous ajoutez 'neutral' à la commande, les monstres NE sont PAS agressifs (les suivants restent agressifs s'ils existent).
 @spawnmap          :@spawnmap/@monstermap <ID|nom_du_monstre> [<nombre_de_monstres> [<nom_désiré>]]
 @spawnmap          :@spawnmap/@monstermap "nom désiré" <ID|nom_du_monstre> [<nombre_de_monstres>]
 @spawnmap          :@spawnmap/@monstermap <ID|nom_du_monstre> "nom désiré" [<nombre_de_monstres>]
@@ -203,6 +204,7 @@ key:monster,monstre,spawn,summon,deadbranch,dead_branch
 @spawnbigmap       :	Si vous ajoutez 'big' à la commande, vous générer des monstres sur la carte entière avec de gros sprites (peut occasionner du lag).
 @spawnsmallmap     :	Si vous ajoutez 'small' à la commande, vous générer des monstres sur la carte entière avec de petits sprites (peut occasionner du lag).
 @spawnagromap      :	Si vous ajoutez 'agro' à la commande, les monstres sont agressifs (comme avec une dead branch).
+@spawnneutralmap   :	Si vous ajoutez 'neutral' à la commande, les monstres NE sont PAS agressifs (les suivants restent agressifs s'ils existent).
 @spawnall          :@spawnall/@monsterall <ID|nom_du_monstre> [<nombre_de_monstres> [<nom_désiré>]]
 @spawnall          :@spawnall/@monsterall "nom désiré" <ID|nom_du_monstre> [<nombre_de_monstres>]
 @spawnall          :@spawnall/@monsterall <ID|nom_du_monstre> "nom désiré" [<nombre_de_monstres>]
@@ -211,6 +213,7 @@ key:monster,monstre,spawn,summon,deadbranch,dead_branch
 @spawnbigall       :	Si vous ajoutez 'big' à la commande, vous générer des monstres avec de gros sprites (peut occasionner du lag).
 @spawnsmallall     :	Si vous ajoutez 'small' à la commande, vous générer des monstres avec de petits sprites (peut occasionner du lag).
 @spawnagroall      :	Si vous ajoutez 'agro' à la commande, les monstres sont agressifs (comme avec une dead branch).
+@spawnneutralall   :	Si vous ajoutez 'neutral' à la commande, les monstres NE sont PAS agressifs (les suivants restent agressifs s'ils existent).
 @summon            :@summon <ID|nom_du_monstre> [<nombre_de_monstres> [<nom_désiré> [<coord_x> [<coord_y>]]]]
 @summon            :@summon "nom désiré" <ID|nom_du_monstre> [<nombre_de_monstres> [<coord_x> [<coord_y>]]]
 @summon            :@summon <ID|nom_du_monstre> "nom désiré" [<nombre_de_monstres> [<coord_x> [<coord_y>]]]

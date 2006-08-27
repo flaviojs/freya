@@ -459,14 +459,27 @@ static struct AtCommandInfo {
 	{ AtCommand_Spawn,                 "@monsterbig",           50, atcommand_spawn},
 	{ AtCommand_Spawn,                 "@spawnagro",            60, atcommand_spawn },
 	{ AtCommand_Spawn,                 "@monsteragro",          60, atcommand_spawn },
+	{ AtCommand_Spawn,                 "@spawnneutral",         60, atcommand_spawn },
+	{ AtCommand_Spawn,                 "@monsterneutral",       60, atcommand_spawn },
+
 	{ AtCommand_Spawn,                 "@spawnagrosmall",       60, atcommand_spawn },
 	{ AtCommand_Spawn,                 "@monsteragrosmall",     60, atcommand_spawn },
 	{ AtCommand_Spawn,                 "@spawnsmallagro",       60, atcommand_spawn },
 	{ AtCommand_Spawn,                 "@monstersmallagro",     60, atcommand_spawn },
+	{ AtCommand_Spawn,                 "@spawnneutralsmall",    60, atcommand_spawn },
+	{ AtCommand_Spawn,                 "@monsterneutralsmall",  60, atcommand_spawn },
+	{ AtCommand_Spawn,                 "@spawnsmallneutral",    60, atcommand_spawn },
+	{ AtCommand_Spawn,                 "@monstersmallneutral",  60, atcommand_spawn },
+
 	{ AtCommand_Spawn,                 "@spawnagrobig",         60, atcommand_spawn },
 	{ AtCommand_Spawn,                 "@monsteragrobig",       60, atcommand_spawn},
 	{ AtCommand_Spawn,                 "@spawnbigagro",         60, atcommand_spawn },
 	{ AtCommand_Spawn,                 "@monsterbigagro",       60, atcommand_spawn},
+	{ AtCommand_Spawn,                 "@spawnneutralbig",      60, atcommand_spawn },
+	{ AtCommand_Spawn,                 "@monsterneutralbig",    60, atcommand_spawn},
+	{ AtCommand_Spawn,                 "@spawnbigneutral",      60, atcommand_spawn },
+	{ AtCommand_Spawn,                 "@monsterbigneutral",    60, atcommand_spawn},
+
 	{ AtCommand_SpawnMap,              "@spawnmap",             50, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@monstermap",           50, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@spawnmapsmall",        50, atcommand_spawnmap },
@@ -477,10 +490,16 @@ static struct AtCommandInfo {
 	{ AtCommand_SpawnMap,              "@monstermapbig",        50, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@spawnbigmap",          50, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@monsterbigmap",        50, atcommand_spawnmap },
+
 	{ AtCommand_SpawnMap,              "@spawnagromap",         60, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@monsteragromap",       60, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@spawnmapagro",         60, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@monstermapagro",       60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@spawnneutralmap",      60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@monsterneutralmap",    60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@spawnmapneutral",      60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@monstermapneutral",    60, atcommand_spawnmap },
+
 	{ AtCommand_SpawnMap,              "@spawnmapsmallagro",    60, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@monstermapsmallagro",  60, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@spawnsmallmapagro",    60, atcommand_spawnmap },
@@ -493,6 +512,20 @@ static struct AtCommandInfo {
 	{ AtCommand_SpawnMap,              "@monsteragromapsmall",  60, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@spawnagrosmallmap",    60, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@monsteragrosmallmap",  60, atcommand_spawnmap },
+
+	{ AtCommand_SpawnMap,              "@spawnmapsmallneutral",   60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@monstermapsmallneutral", 60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@spawnsmallmapneutral",   60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@monstersmallmapneutral", 60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@spawnmapneutralsmall",   60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@monstermapneutralsmall", 60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@spawnsmallneutralmap",   60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@monstersmallneutralmap", 60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@spawnneutralmapsmall",   60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@monsterneutralmapsmall", 60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@spawnneutralsmallmap",   60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@monsterneutralsmallmap", 60, atcommand_spawnmap },
+
 	{ AtCommand_SpawnMap,              "@spawnmapbigagro",      60, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@monstermapbigagro",    60, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@spawnbigmapagro",      60, atcommand_spawnmap },
@@ -505,6 +538,20 @@ static struct AtCommandInfo {
 	{ AtCommand_SpawnMap,              "@monsteragromapbig",    60, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@spawnagrobigmap",      60, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@monsteragrobigmap",    60, atcommand_spawnmap },
+
+	{ AtCommand_SpawnMap,              "@spawnmapbigneutral",   60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@monstermapbigneutral", 60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@spawnbigmapneutral",   60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@monsterbigmapneutral", 60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@spawnmapneutralbig",   60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@monstermapneutralbig", 60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@spawnbigneutralmap",   60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@monsterbigneutralmap", 60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@spawnneutralmapbig",   60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@monsterneutralmapbig", 60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@spawnneutralbigmap",   60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@monsterneutralbigmap", 60, atcommand_spawnmap },
+
 	{ AtCommand_SpawnAll,              "@spawnall",             60, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@monsterall",           60, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@spawnallsmall",        60, atcommand_spawnall },
@@ -515,10 +562,16 @@ static struct AtCommandInfo {
 	{ AtCommand_SpawnAll,              "@monsterallbig",        60, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@spawnbigall",          60, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@monsterbigall",        60, atcommand_spawnall },
+
 	{ AtCommand_SpawnAll,              "@spawnagroall",         70, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@monsteragroall",       70, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@spawnallagro",         70, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@monsterallagro",       70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@spawnneutralall",      70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@monsterneutralall",    70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@spawnallneutral",      70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@monsterallneutral",    70, atcommand_spawnall },
+
 	{ AtCommand_SpawnAll,              "@spawnallsmallagro",    70, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@monsterallsmallagro",  70, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@spawnsmallallagro",    70, atcommand_spawnall },
@@ -531,6 +584,20 @@ static struct AtCommandInfo {
 	{ AtCommand_SpawnAll,              "@monsteragroallsmall",  70, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@spawnagrosmallall",    70, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@monsteragrosmallall",  70, atcommand_spawnall },
+
+	{ AtCommand_SpawnAll,              "@spawnallsmallneutral",   70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@monsterallsmallneutral", 70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@spawnsmallallneutral",   70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@monstersmallallneutral", 70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@spawnallneutralsmall",   70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@monsterallneutralsmall", 70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@spawnsmallneutralall",   70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@monstersmallneutralall", 70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@spawnneutralallsmall",   70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@monsterneutralallsmall", 70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@spawnneutralsmallall",   70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@monsterneutralsmallall", 70, atcommand_spawnall },
+
 	{ AtCommand_SpawnAll,              "@spawnallbigagro",      70, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@monsterallbigagro",    70, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@spawnbigallagro",      70, atcommand_spawnall },
@@ -543,6 +610,20 @@ static struct AtCommandInfo {
 	{ AtCommand_SpawnAll,              "@monsteragroallbig",    70, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@spawnagrobigall",      70, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@monsteragrobigall",    70, atcommand_spawnall },
+
+	{ AtCommand_SpawnAll,              "@spawnallbigneutral",   70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@monsterallbigneutral", 70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@spawnbigallneutral",   70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@monsterbigallneutral", 70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@spawnallneutralbig",   70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@monsterallneutralbig", 70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@spawnbigneutralall",   70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@monsterbigneutralall", 70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@spawnneutralallbig",   70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@monsterneutralallbig", 70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@spawnneutralbigall",   70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@monsterneutralbigall", 70, atcommand_spawnall },
+
 	{ AtCommand_Summon,                "@summon",               60, atcommand_summon },
 	{ AtCommand_Summon,                "@summonsmall",          60, atcommand_summon },
 	{ AtCommand_Summon,                "@summonbig",            60, atcommand_summon },
@@ -6105,6 +6186,8 @@ int atcommand_spawn(
 	// check for agressiv monster
 	if (strstr(command, "agro") != NULL)
 		agro = 1; // agressiv
+	else if (strstr(command, "neutral") != NULL)
+		agro = -1; // no agressiv
 	else
 		agro = 0; // normal
 
@@ -6126,8 +6209,10 @@ int atcommand_spawn(
 			} while ((c = map_getcell(sd->bl.m, mx, my, CELL_CHKNOPASS)) && j++ < 64);
 			if (!c) {
 				id = mob_once_spawn(sd, "this", mx, my, name, mob_id + size, 1, "");
-				if (agro != 0 && (md = (struct mob_data *)map_id2bl(id)))
+				if (agro == 1 && (md = (struct mob_data *)map_id2bl(id)))
 					md->mode = mob_db[mob_id].mode | (0x1 + 0x4 + 0x80); // like dead branch
+				else if (agro == -1 && (md = (struct mob_data *)map_id2bl(id)))
+					md->mode = mob_db[mob_id].mode & ~0x4; // remove agressiv flag
 			}
 		}
 		count += (id != 0) ? 1 : 0;
@@ -6253,6 +6338,8 @@ int atcommand_spawnmap(
 	// check for agressiv monster
 	if (strstr(command, "agro") != NULL)
 		agro = 1; // agressiv
+	else if (strstr(command, "neutral") != NULL)
+		agro = -1; // no agressiv
 	else
 		agro = 0; // normal
 
@@ -6267,8 +6354,10 @@ int atcommand_spawnmap(
 			} while ((c = map_getcell(sd->bl.m, x, y, CELL_CHKNOPASS)) && j++ < 64);
 			if (!c) {
 				id = mob_once_spawn(sd, "this", x, y, name, mob_id + size, 1, "");
-				if (agro != 0 && (md = (struct mob_data *)map_id2bl(id)))
+				if (agro == 1 && (md = (struct mob_data *)map_id2bl(id)))
 					md->mode = mob_db[mob_id].mode | (0x1 + 0x4 + 0x80); // like dead branch
+				else if (agro == -1 && (md = (struct mob_data *)map_id2bl(id)))
+					md->mode = mob_db[mob_id].mode & ~0x4; // remove agressiv flag
 			}
 		}
 		count += (id != 0) ? 1 : 0;
@@ -6378,6 +6467,8 @@ int atcommand_spawnall(
 	// check for agressiv monster
 	if (strstr(command, "agro") != NULL)
 		agro = 1; // agressiv
+	else if (strstr(command, "neutral") != NULL)
+		agro = -1; // no agressiv
 	else
 		agro = 0; // normal
 
@@ -6396,8 +6487,10 @@ int atcommand_spawnall(
 						} while ((c = map_getcell(pl_sd->bl.m, x, y, CELL_CHKNOPASS)) && j++ < 64);
 						if (!c) {
 							id = mob_once_spawn(pl_sd, "this", x, y, name, mob_id + size, 1, "");
-							if (agro != 0 && (md = (struct mob_data *)map_id2bl(id)))
+							if (agro == 1 && (md = (struct mob_data *)map_id2bl(id)))
 								md->mode = mob_db[mob_id].mode | (0x1 + 0x4 + 0x80); // like dead branch
+							else if (agro == -1 && (md = (struct mob_data *)map_id2bl(id)))
+								md->mode = mob_db[mob_id].mode & ~0x4; // remove agressiv flag
 						}
 					}
 				}

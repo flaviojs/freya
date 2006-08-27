@@ -195,6 +195,7 @@ key:monster,monstre,spawn,summon,deadbranch,dead_branch
 @spawnbig          :	You can use @spawnbig to spawn monsters with big sprites (can cause lags).
 @spawnsmall        :	You can use @spawnsmall to spawn monsters with small sprites (can cause lags).
 @spawnagro         :	If you add 'agro' to the command, monsters are agressiv (like dead branch).
+@spawnneutral      :	If you add 'neutral' to the command, monsters are NOT agressiv (note: followers stay agressiv if they exist).
 @spawnmap          :@spawnmap/@monstermap <monster_name|monster_ID> [<number_to_spawn> [<desired_monster_name>]]
 @spawnmap          :@spawnmap/@monstermap "desired monster name" <monster_name|monster_ID> [<number_to_spawn>]
 @spawnmap          :@spawnmap/@monstermap <monster_name|monster_ID> "desired monster name" [<number_to_spawn>]
@@ -203,6 +204,7 @@ key:monster,monstre,spawn,summon,deadbranch,dead_branch
 @spawnbigmap       :	If you add 'big' to the command, you spawn monsters on entire map with big sprites (can cause lags).
 @spawnsmallmap     :	If you add 'small' to the command, you spawn monsters on entire map with small sprites (can cause lags).
 @spawnagromap      :	If you add 'agro' to the command, monsters are agressiv (like dead branch).
+@spawnneutralmap   :	If you add 'neutral' to the command, monsters are NOT agressiv (note: followers stay agressiv if they exist).
 @spawnall          :@spawnall/@monsterall <monster_name|monster_ID> [<number_to_spawn> [<desired_monster_name>]]
 @spawnall          :@spawnall/@monsterall "desired monster name" <monster_name|monster_ID> [<number_to_spawn>]
 @spawnall          :@spawnall/@monsterall <monster_name|monster_ID> "desired monster name" [<number_to_spawn>]
@@ -211,6 +213,7 @@ key:monster,monstre,spawn,summon,deadbranch,dead_branch
 @spawnbigall       :	If you add 'big' to the command, you spawn monsters with big sprites (can cause lags).
 @spawnsmallall     :	If you add 'small' to the command, you spawn monsters with small sprites (can cause lags).
 @spawnagroall      :	If you add 'agro' to the command, monsters are agressiv (like dead branch).
+@spawnneutralall   :	If you add 'neutral' to the command, monsters are NOT agressiv (note: followers stay agressiv if they exist).
 @summon            :@summon <monster_name|monster_ID> [<number_to_spawn> [<desired_monster_name> [<x_coord> [<y_coord>]]]]
 @summon            :@summon "desired monster name" <monster_name|monster_ID> [<number_to_spawn> [<x_coord> [<y_coord>]]]
 @summon            :@summon <monster_name|monster_ID> "desired monster name" [<number_to_spawn> [<x_coord> [<y_coord>]]]
@@ -415,7 +418,7 @@ key:admin,administration,administrator
 @reloadskilldb     :@reloadskilldb - Reloads skills definition database (admin command).
 @reloadscript      :@reloadscript|@rehash - Reloads all scripts (admin command). It's better to restart map-server.
 //@reloadgmdb        :@reloadgmdb - Reloads GM levels (admin command). // removed, it's automatic now
-@adjgmlvl          :@adjgmlvl/@setgmlvl <lvl> <char name|account_id> - Temporatly modify GM level of an online player.
+@adjgmlvl          :@adjgmlvl/@setgmlvl <lvl> <char name|account_id> - Temporarily modify GM level of an online player.
 @adjcmdlvl         :@adjcmdlvl/@setcmdlvl <lvl> <command> - Modify level of a command for the actual session of the software.
                  99: 
 @gat               :@gat - For debugging (you inspect around gat).
