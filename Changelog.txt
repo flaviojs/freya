@@ -2,6 +2,7 @@
 Date	Added
 
 8/27/2006
+	* Updated: Prepped mob database for implementation of the Juperos Quest [Tsuyuki]
 	* Imported: Missing skill quests from eAthena [Tsuyuki]
 		-Bard [Pang Voice], Alchemist [Create Elemental Potion]
 	* Fixed: Cleaned up @job command class names a bit [Tsuyuki]
