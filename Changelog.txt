@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 08/28/06
+	* Fixed: fclose() in src/char/char.c:266 trying to close NULL pointer. [Yor] - sorry for the bug
 	* Fixed: fclose() in src/char_sql/char.c:244 trying to close NULL
 		pointer.
 	* Fixed: Packet_db.txt: [Yor]

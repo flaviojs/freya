@@ -263,7 +263,10 @@ void char_log(char *fmt, ...) {
 
 	// if previously used file has different name from the file to use
 	if (strcmp(log_filename_used, log_filename_to_use) != 0) {
-		fclose(log_fp);
+		if (log_fp != NULL) {
+			fclose(log_fp);
+			log_fp = NULL; // it'll be checked down there...
+		}
 //		counter = 0;
 		memcpy(log_filename_used, log_filename_to_use, sizeof(log_filename_used));
 	}
