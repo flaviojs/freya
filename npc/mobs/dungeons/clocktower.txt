@@ -58,7 +58,7 @@ alde_dun04.gat,0,0,0,0	monster	Bathory	1102,50,0,0,0
 alde_dun04.gat,0,0,0,0	monster	Joker	1131,10,0,0,0
 alde_dun04.gat,0,0,0,0	monster	Executioner	1205,1,3600000,1800000,1
 alde_dun04.gat,0,0,0,0	monster	Mysteltainn	1203,1,3600000,1800000,1
-alde_dun04.gat,0,0,0,0	monster	Tyrfing	1204,1,3600000,1800000,1
+alde_dun04.gat,0,0,0,0	monster	Ogretooth	1204,1,3600000,1800000,1
 alde_dun04.gat,0,0,0,0	monster	Whisper	1179,10,0,0,0
 
 // c_tower1

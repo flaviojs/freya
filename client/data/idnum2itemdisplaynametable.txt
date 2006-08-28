@@ -1063,7 +1063,7 @@
 // ----- Christmas Items -----
 7034#Red_Stocking#
 7035#Matchstick#
-7036#Fang_of_Garm#
+7036#Fang_of_Hatii#
 7037#Coupon#
 644#Gift_Box#
 538#Well-baked_Cookie#
@@ -1541,7 +1541,7 @@
 565#Vita500#
 7279#Vita500_Lid#
 5096#Assassin_Mask#
-5097#2_Years_Anniversary_Hat#
+5097#4_Years_Anniversary_Hat#
 7280#1st_Quiz_Entry#
 7281#2nd_Quiz_Entry#
 7282#3rd_Quiz_Entry#
@@ -1686,7 +1686,7 @@
 4199#Merman_Card#
 4200#Megalith_Card#
 4201#Majoruros_Card#
-4202#Civil_Servant_Card#
+4202#Mao_Guai_Card#
 4203#Mutant_Dragonoid_Card#
 4204#Mini_Demon_Card#
 4205#Mimic_Card#
@@ -1704,7 +1704,7 @@
 4217#Enchanted_Peach_Tree_Card#
 4218#Succubus_Card#
 4219#Sage_Worm_Card#
-4220#Solider_Card#
+4220#Soldier_Card#
 4221#Skeleton_General_Card#
 4222#Skeleton_Prisoner_Card#
 4223#Stalactic_Golem_Card#
@@ -1715,7 +1715,7 @@
 4228#Sleeper_Card#
 4229#Clock_Tower_Manager_Card#
 4230#Shinobi_Card#
-4231#Increase_Soil_Card#
+4231#Mi_Gao_Card#
 4232#Hermit_Plant_Card#
 4233#Baby_Leopard_Card#
 4234#Anolian_Card#
@@ -1725,7 +1725,7 @@
 4238#Owl_Baron_Card#
 4239#Iron_Fist_Card#
 4240#Arclouse_Card#
-4241#Arc_Angeling_Card#
+4241#Archangeling_Card#
 4242#Apocalipse_Card#
 4243#Antonio_Card#
 4244#Alarm_Card#
@@ -1738,7 +1738,7 @@
 4251#Elder_Card#
 4252#Alligator_Card#
 4253#Alice_Card#
-4254#Tirfing_Card#
+4254#Ogretooth_Card#
 4255#Orc_Lady_Card#
 4256#Orc_Archer_Card#
 4257#Wild_Rose_Card#
@@ -1749,7 +1749,7 @@
 4262#Cloud_Hermit_Card#
 4263#Incantation_Samurai_Card#
 4264#Wind_Ghost_Card#
-4265#Li_Me_Mang_Ryang_Card#
+4265#Jing_Gaui_Card#
 4266#Eclipse_Card#
 4267#Explosion_Card#
 4268#Injustice_Card#
@@ -1761,7 +1761,7 @@
 4274#Zombie_Master_Card#
 4275#Zombie_Prisoner_Card#
 4276#Lord_of_Death_Card#
-4277#Zherlthsh_Card#
+4277#Zealotus_Card#
 4278#Gibbet_Card#
 4279#Earth_Deleter_Card#
 4280#Geographer_Card#
@@ -1807,12 +1807,12 @@
 4320#Bloody_Knight_Card#
 4321#Hylozoist_Card#
 4322#High_Orc_Card#
-4323#Garm_Baby_Card#
-4324#Garm_Card#
+4323#Hatii_Bebe_Card#
+4324#Hatii_Card#
 4325#Harpy_Card#
 4326#Sea-Otter_Card#
 4327#Bloody_Butterfly_Card#
-4328#Hyegun_Card#
+4328#Yao_Jun_Card#
 4329#Phendark_Card#
 4330#Evil_Snake_Lord_Card#
 4331#Heater_Card#
@@ -1835,7 +1835,6 @@
 // ----- 2nd Anniversary Event -----
 2647#Nile_Rose#
 7332#Complete_Tablet#
-
 7333#Prontera_Tablet#
 7334#Payon_Tablet#
 7335#Morocc_Tablet#
@@ -1989,7 +1988,7 @@
 2354#Goibne's_Armor#
 2355#Angelic_Protection#
 2416#Novice_Shoes#
-2417#Freyr's_Shoes#
+2417#Freya's_Shoes#
 2418#Vidar's_Boots#
 2419#Goibne's_Greaves#
 2420#Angel's_Reincarnation#
@@ -2034,7 +2033,7 @@
 5118#Puppy_Headband#
 5119#Super_Novice_Hat#
 5120#Bucket_Hat#
-5121#Zherlthsh_Mask#
+5121#Zealotus_Mask#
 
 // ----- Taiwan Event 2005 -----
 7338#One-way_Ticket#
@@ -2165,66 +2164,66 @@
 5132#Angeling_Hat#
 
 // ----- Cooking 60 Branch -----
-12041#Boiled_Down_Locust#
-12042#Seasoned_Webs#
+12041#Fried_Grasshopper_Legs#
+12042#Seasoned_Sticky_Webfoot#
 12043#Bomber_Steak#
-12044#Rib_with_Herbs_and_Spices#
-12045#Lutie_Flat_Cake#
-12046#Herb_Tea_with_Grape_Juice#
-12047#Black_Tea#
-12048#Herb_and_Honey_Tea#
+12044#Herb_Marinade_Beef#
+12045#Lutie_Lady's_Pancake#
+12046#Grape_Juice_Herbal_Tea#
+12047#Autumn_Red_Tea#
+12048#Honey_Herbal_Tea#
 12049#Morocc_Fruit_Wine#
-12050#Mastela_Wine#
-12051#Steamed_Crab_Pincer#
-12052#Sea_Food#
+12050#Mastela_Fruit_Wine#
+12051#Steamed_Crab_Nippers#
+12052#Assorted_Seafood#
 12053#Clam_Soup#
 12054#Seasoned_Jellyfish#
-12055#Peppery_Roasted_Dumpling#
-12056#Frog_Spawn_Soup#
+12055#Spicy_Fried_Bao#
+12056#Frog_Egg_Squid_Ink_Soup#
 12057#Smooth_Noodle#
-12058#Tentacle_and_Cheese_Gratin#
-12059#Lutie_Mixed_Cold_Noodles#
-12060#Steamed_Bat_Wing_and_Pumpkin#
-12061#Grape_Juice_with_Honey#
+12058#Tentacle_Cheese_Gratin#
+12059#Lutie_Cold_Noodle#
+12060#Steamed_Bat_Wing_in_Pumpkin#
+12061#Honey_Grape_Juice#
 12062#Chocolate_Mousse_Cake#
-12063#Fruit_Punch#
+12063#Fruit_Mix#
 12064#Cream_Sandwich#
 12065#Green_Salad#
-12066#Fried_Monkey_Tail#
+12066#Fried_Monkey_Tails#
 12067#Mixed_Juice#
-12068#Fried_Sweet_Potato_with_Syrup#
-12069#Ancient_Fish_Dish#
-12070#Broiled_Down_Scorpion#
-12071#Flavored_Grilled_Beef#
-12072#Barbecue#
-12073#Bear_Foot_Dish#
-12074#Sauted_Meat_Strips#
-12075#Tongue_Dish#
+12068#Fried_Sweet_Potato#
+12069#Steamed_Ancient_Lips#
+12070#Fried_Scorpion_Tails#
+12071#Shiny_Marinade_Beef#
+12072#Whole_Roast#
+12073#Bearfoot_Special#
+12074#Tendon_Sautay#
+12075#Steamed_Tongue#
 12076#Red_Mushroom_Wine#
-12077#Royal_Jelly_and_Herb_Tea#
-12078#Royal_Tea#
-12079#Tristan_XII#
+12077#Special_Royal_Jelly_Herbal_Tea#
+12078#Royal_Family_Tea#
+12079#Tristan_12#
 12080#Dragon_Breath_Cocktail#
-12081#Very_Bitter_Invigorant#
+12081#Awfully_Bitter_Bracer#
 12082#Sumptuous_Feast#
-12083#Huge_Stuffed_Leaves#
-12084#Ascending_Dragon_Broth#
-12085#Stew_of_Immortality#
-12086#Chili_and_Prawn_Gratin#
-12087#Boiled_Vegetable_stuffed_with_Roasted_Crocodile#
-12088#Very_Hot_Curry#
-12089#Delicious_Boiled_Meats#
-12090#Hot_Sand_Steamed_Scorpion#
+12083#Giant_Burito#
+12084#Ascending_Dragon_Soup#
+12085#Immortal_Stew#
+12086#Chile_Shrimp_Gratin#
+12087#Steamed_Alligator_with_Vegetable#
+12088#Incredibly_Spicy_Curry#
+12089#Special_Meat_Stew#
+12090#Steamed_Desert_Scorpions#
 12091#Peach_Cake#
-12092#Soul_Hunt_Bread#
+12092#Soul_Haunted_Bread#
 12093#Special_Toast#
-12094#Ethereal_Fruit_Juice#
-12095#Wine_of_Bergelmir#
-12096#Soup_of_Great_Luck#
-12097#Grilled_Meat_Skewer#
-12098#Strawberry_Rice_Ball#
-12099#Blood_Flavored_Sodapop#
-12100#Nine_Tail_Dish#
+12094#Heavenly_Fruit_Juice#
+12095#Hwergelmir's_Tonic#
+12096#Lucky_Soup#
+12097#Assorted_Shish_Kebob#
+12098#Strawberry_Flavored_Rice_Ball#
+12099#Blood_Flavored_Soda#
+12100#Cooked_Nine_Tail#
 
 // ----- PPL lip ton -----
 7405#Crushed_Can#
@@ -2245,35 +2244,35 @@
 // ----- 2005 Indonesia -----
 7415#Summoning_Stone#
 
-// ----- Good Items -----
+// ----- Prize Items -----
 12103#Bloody_Branch#
 12104#Random_Quiver#
-12105#Taming_Item_Giftset#
-12106#Jeweled_Box#
+12105#Taming_Gift_Set#
+12106#Jewelry_Box#
 12107#Wrapped_Mask#
-12108#Bundle_of_Spells#
+12108#Scroll_Package#
 12109#Poring_Box#
-12110#First_Aid_Box#
-12111#Wrapped_Food#
+12110#First_Aid_Kit#
+12111#Bundle_of_Food#
 
 // ----- Main Quest -----
 7416#Letter_of_Recommentation#
-7417#Written_Request_01#
-7418#Written_Request_02#
+7417#Written_Request_(A)#
+7418#Written_Request_(B)#
 12112#Tropical_Sograt#
-12113#Vermilion_the_Beach#
+12113#Vermilion_on_the_Beach#
 
-// ----- 2nd Class Quest Skill Items -----
+// ----- Additional Skill Item -----
 1771#Venom_Knife#
 7419#Embryo_Creation_Guide#
 12114#Flame_Elemental_Converter#
 12115#Frost_Elemental_Converter#
 12116#Seismic_Elemental_Converter#
 12117#Lightning_Elemental_Converter#
-12118#Resist_Fire_Potion#
-12119#Resist_Cold_Potion#
-12120#Resist_Earth_Potion#
-12121#Resist_Thunder_Potion#
+12118#Fire_Resist_Potion#
+12119#Cold_Resist_Potion#
+12120#Earth_Resist_Potion#
+12121#Thunder_Resist_Potion#
 
 // ----- PVP Item -----
 7420#Skull#
@@ -2284,18 +2283,19 @@
 7423#Blue_Key#
 7424#Green_Key#
 7425#Black_Key#
-7426#Red_Magic_Stone#
-7427#Yellow_Magic_Stone#
-7428#Blue_Magic_Stone#
-7429#Green_Magic_Stone#
-7430#Black_Magic_Stone#
-7431#Books#
+7426#Red_Charm_Stone#
+7427#Yellow_Charm_Stone#
+7428#Blue_Charm_Stone#
+7429#Green_Charm_Stone#
+7430#Black_Charm_Stone#
+7431#Pile_of_Books#
 7432#Leather_Pouch#
-7433#Empty_Scroll#
+7433#Blank_Scroll#
 7434#Elemental_Potion_Creation_Guide#
 
 // ----- 3rd Quarter Items -----
-7435#Golden_Accessory#
+
+7435#Golden_Ornament#
 7436#Fragment_of_Agony#
 7437#Fragment_of_Sorrow#
 7438#Fragment_of_Hatred#
@@ -2303,68 +2303,68 @@
 7440#Red_Feather#
 7441#Blue_Feather#
 7442#Cursed_Seal#
-7443#Head_of_Three_Headed_Dragon#
+7443#Three-Headed_Dragon's_Head#
 7444#Treasure_Box#
-7445#Green_Orb#
-7446#Blue_Orb#
-7447#Red_Orb#
-7448#Yellow_Orb#
-7449#Bloodstained_Page#
-7450#Bone_Armor_Piece#
-7451#Scale_of_Fire_Dragon#
+7445#Green_Bijou#
+7446#Blue_Bijou#
+7447#Red_Bijou#
+7448#Yellow_Bijou#
+7449#Bloody_Page#
+7450#Skeletal_Armor_Piece#
+7451#Fire_Dragon_Scale#
 
 7452#Yellow_Spice#
 7453#Sweet_Sauce#
-7454#Plain_Sauce#
-7455#Hot_Sauce#
+7454#Savory_Sauce#
+7455#Spicy_Sauce#
 7456#Red_Spice#
 7457#Cooking_Oil#
-577#Grain#
+577#Bag_of_Grain#
 578#Strawberry#
-579#Yummy_Fish#
+579#Fresh_Fish#
 580#Bread#
-581#Mushroom#
+581#Edible_Mushroom#
 582#Orange#
 
-12125#Outdoor_Cooker#
-12126#Home_Cooking_Set#
-12127#Deluxe_Cooking_Set#
-12128#Court_Cooking_Set#
-12129#Legendary_Cooking_Set#
+12125#Outdoor_Cooking_Kit#
+12126#Home_Cooking_Kit#
+12127#Professional_Cooking_Kit#
+12128#Royal_Cooking_Kit#
+12129#Fantastic_Cooking_Kit#
 
 // ----- The Foreign Event Items -----
 7458#Fortune_Horn# //Custom name
 7459#Ramadan#
 583#Ketupat#
 
-// ----- 2005 Mobile Aco Story -----
-2356#Holy_Cloth_of_Benefit#
-2665#Ring_of_Exorcism#
+// ----- 2005 Mobile Acolyte Story -----
+2356#Blessed_Holy_Robe#
+2665#Exorcising_Ring#
 5133#Sheep_Hat#
 
 // ----- Foreign Halloween Item -----
-2666#Lamp_of_Hope#
+2666#Lantern_of_Hope#
 
 // ----- Cooking Manufacture -----
-7472#Lv1_Cookbook#
-7473#Lv2_Cookbook#
-7474#Lv3_Cookbook#
-7475#Lv4_Cookbook#
-7476#Lv5_Cookbook#
-7477#Lv6_Cookbook#
-7478#Lv7_Cookbook#
-7479#Lv8_Cookbook#
-7480#Lv9_Cookbook#
-7481#Lv10_Cookbook#
+7472#Level_1_Cookbook#
+7473#Level_2_Cookbook#
+7474#Level_3_Cookbook#
+7475#Level_4_Cookbook#
+7476#Level_5_Cookbook#
+7477#Level_6_Cookbook#
+7478#Level_7_Cookbook#
+7479#Level_8_Cookbook#
+7480#Level_9_Cookbook#
+7481#Level_10_Cookbook#
 7482#Pot#
 
 // ----- The Foreign Countries Item -----
 7483#Key_of_the_Seal#
 
 // ----- Mobile Archer Story Items -----
-5135#Cyclops_Eye#
-2667#Glove_of_Archer#
-1725#Wandering_Bard's_Bow#
+5135#Cyclop's_Eye#
+2667#Renown_Archer's_Gloves#
+1725#Minstrel_Bow#
 
 // ----- College Entrance Exam Event -----
 12131#Lucky_Potion#
@@ -2663,13 +2663,13 @@
 4339#Mineral_Card#
 4340#Teddy_Bear_Card#
 4341#Metaling_Card#
-4342#RSX_0806_Card#
+4342#RSX-0806_Card#
 4343#Holden_Card#
 4344#Anopheles_Card#
 4345#Hill_Wind_Card#
 4346#Egnigem_Cenia_Card#
 4347#Armeyer_Dinze_Card#
-4348#Wikebine_Tres_Card#
+4348#Wickebine_Tres_Card#
 4349#Errende_Ebecee_Card#
 4350#Laurell_Weinder_Card#
 4351#Kavach_Icarus_Card#
@@ -2685,7 +2685,7 @@
 4361#Whitesmith_Card#
 4362#Howard_Alt-Eisen_Card#
 4363#High_Priest_Card#
-4364#Margaretha_Solin_Card#
+4364#Margaretha_Sorin_Card#
 4365#High_Wizard_Card#
 4366#Kathryne_Keyron_Card#
 4367#Sniper_Card#
@@ -2693,11 +2693,11 @@
 4369#Venatu_Card#
 4370#Dimik_Card#
 4371#Archdam_Card#
-4372#Bacsojin_Card#
-4373#Chung_E_Card#
+4372#White_Lady_Card#
+4373#Green_Maiden_Card#
 4374#Vesper_Card#
 4375#Orc_Baby_Card#
-4376#Lady_Tany_Card#
+4376#Lady_Tanee_Card#
 4377#Green_Iguana_Card#
 4378#Gold_Acidus_Card#
 4379#Blue_Acidus_Card#
@@ -2705,9 +2705,9 @@
 4381#Green_Ferus_Card#
 4382#Yellow_Novus_Card#
 4383#Red_Novus_Card#
-4384#Hydro_Card#
+4384#Hydrolancer_Card#
 4385#Dragon_Egg_Card#
-4386#Detale_Card#
+4386#Detale_Deurus_Card#
 4387#Ancient_Mimic_Card#
 4388#Deathword_Card#
 4389#Plasma_Card#
@@ -2845,9 +2845,32 @@
 1533#Warrior's_Balmung#
 13020#Warrior's_Balmung#
 
-// ----- ... -----
-12186#...#
-12187#...#
+// ----- Chinese Boxes -----
+12186#Old_Red_Box#
+12187#Old_Green_Box#
 
-// ----- ... -----
-7588#...#
+// ----- Vietnam Event -----
+7588#IPOD_Coupon#
+
+2361#Blue_Robe#
+2362#Red_Robe#
+2363#White_Robe#
+
+// ----- Taiwan Harvest Moon Day Event -----
+12188#Fantastic_Moon_Snack#
+7589#Lettered_Moon_Snack_01#
+7590#Lettered_Moon_Snack_02#
+7591#Lettered_Moon_Snack_03#
+7592#Lettered_Moon_Snack_04#
+7593#Lettered_Moon_Snack_05#
+
+// ----- Japanese Ribbons 2006 -----
+5191#Black_Ribbon#
+5192#Yellow_Ribbon#
+5193#Green_Ribbon#
+5194#Pink_Ribbon#
+5195#Red_Ribbon#
+5196#Orange_Ribbon#
+5197#White_Ribbon#
+
+12189#Old_Red_Box#

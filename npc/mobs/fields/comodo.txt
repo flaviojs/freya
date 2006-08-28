@@ -30,8 +30,8 @@ cmd_fild02.gat,279,78,100,20	monster	Cornutus	1067,10,60000,0,0
 cmd_fild02.gat,0,0,0,0	monster	Shellfish	1074,35,0,0,0
 cmd_fild02.gat,93,82,40,80	monster	Shellfish	1074,5,180000,0,0
 cmd_fild02.gat,0,0,0,0	monster	Mobster	1313,1,0,0,0
-cmd_fild02.gat,200,130,150,40	monster	Seal	1317,18,0,0,0
-cmd_fild02.gat,93,82,40,80	monster	Seal	1317,2,180000,0,0
+cmd_fild02.gat,200,130,150,40	monster	Fur Seal	1317,18,0,0,0
+cmd_fild02.gat,93,82,40,80	monster	Fur Seal	1317,2,180000,0,0
 cmd_fild02.gat,0,0,0,0	monster	Galapago	1391,20,0,0,0
 
 // cmd_fild03 (lv4)

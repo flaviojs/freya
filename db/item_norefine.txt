@@ -58,6 +58,7 @@
 2410 // Sleipnir
 2413 // Safety Shoes
 2414 // Novice Sandals
+2422 // High Quality Sandals
 2509 // Manteau of Life
 2510 // Novice Hood
 2601 // Ring
@@ -97,6 +98,38 @@
 2638 // Sacred Incense
 2639 // Occult Incense
 2640 // Kafra Ring
+2641 // Fashion Hip Sack
+2642 // Serin's Gold Ring
+2643 // Serin's Gold Ring
+2644 // The Sign
+2645 // Moonlight Ring
+2646 // Bunch of Carnation
+2647 // Nile Rose
+2648 // Morpheus's Ring
+2649 // Morpheus's Bracelet
+2650 // Morrigane's Belt
+2651 // Morrigane's Pendant
+2652 // Goddess of Fortune's Cursed Brooch
+2653 // Sacrifice Ring
+2654 // Shinobi Sash
+2655 // Bloodied Shackle Ball
+2656 // Armor Charm
+2657 // Laboratory Passport
+2658 // Nile Rose
+2659 // Vesper Core 01
+2660 // Vesper Core 02
+2661 // Vesper Core 03
+2662 // Vesper Core 04
+2663 // Guantlet of Hit
+2664 // Belcarf
+2665 // Excorsicing Ring
+2666 // Lantern of Hope
+2667 // Renoun Archer's Gloves
+2668 // Women's Glory
+2669 // RJC Necklace
+2670 // Ring of Longing
+2672 // 3rd Anniversary Celebration Ring
+2673 // Warrior's Shining Ring
 5004 // Oxygen Mask
 5005 // Gas Mask
 5006 // Machoman's Glasses

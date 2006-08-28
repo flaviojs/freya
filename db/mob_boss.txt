@@ -26,7 +26,6 @@
 1312,Turtle General,1000000
 1373,Lord of Death,1000000
 1389,Dracula,1000000
-//1399,Event Baphomet,1000000
 1418,Evil Snake Lord,1000000
 1492,Incantation Samurai,1000000
 1511,Amon Ra,1000000
@@ -45,6 +44,6 @@
 1719,Detale,1000000
 1734,Kiel_D-01,1000000
 1751,Valkyrie Randgris,1000000
-//1768,Gloom Under Night,1000000
+1768,Gloom Under Night,1000000
 1779,Ktullanux,1000000
 1785,Atros,1000000

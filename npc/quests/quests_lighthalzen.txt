@@ -546,15 +546,6 @@ L9_1:
  	warp "lhz_cube.gat",67,193;
 	end;
 
-//L9_1:
-//	mes "[Fishburn]";
-//	mes "This is going to be hard~";
-//	mes "Let's go!!!";
-//	close2;
-//	warp "lhz_cube.gat",245,184;
-//	set Fishburn,Fishburn+1;
-//	end;
-
 L_10:
 	mes "[Fishburn]";
 	mes "Hah!";
@@ -587,16 +578,6 @@ L_warp2:
 	warp "lhz_cube.gat",66,74;
 	end;
 
-//L10_1:
-//	mes "[Fishburn]";
-//	mes "Okay..";
-//	mes "I will send you there again..";
-//	mes "Good luck!";
-//	close2;
-////	warp "lhz_cube.gat",66,136;
-//	warp "lhz_cube.gat",245,184;
-//	end;
-
 L_11:
 	mes "[Fishburn]";
 	mes "Oh~ I guess you found the entrance.";
@@ -616,6 +597,22 @@ L_11:
 	next;
 	mes "[Fishburn]";
 	mes "Now, take care of yourself~.";
+	close;
+}
+
+//--------------------------Door---------------------------
+
+lhz_cube.gat,249,184,0	script	Door?	111,{
+
+	mes "Leave room?";
+	next;
+	menu "Yes",LhzLeave,"No",LhzNoLeave;
+
+LhzLeave:
+	warp "lighthalzen.gat",335,227;
+	end;
+
+LhzNoLeave:
 	close;
 }
 
@@ -766,28 +763,28 @@ L_1:
 	if (srod1 == 1) goto L_2;
 	mes "You look below the bed and see a 'Short Stick'.";
 	mes "It is within your grasp, but there is";
-	mes "Also another item hidden under the bed, which";
-	mes "You'll need some kind of long item to pull it out.";
+	mes "also another item hidden under the bed, which";
+	mes "you'll need some kind of long item to pull it out.";
 	next;
 	mes "You acquired the '^FF0000Short Stick^000000'.";
 	mes "It looks like this stick could be combined";
-	mes "With another stick to make it larger.";
+	mes "with another stick to make it longer.";
 	if (srod2 == 1) goto L1_1;
-	if (srod1 == 0) set srod1,1;
-	if (srod1 == 0) close;
+	set srod1,1;
+	close;
 
 L1_1:
 	set srod1,1;
-	if (@bad == 0) next;
-	mes "It looks similar to the 'Short Stick' that you";
-	mes "found under the bed.";
 	next;
-	mes "You acquired another '^FF0000Short Stick^000000'.";
+	mes "It seems like the small-sized stick can be";
+	mes "combined with the 'Short Stick' from under the desk.";
+	mes "You put the two end to end, and they click into place.";
+	next;
+	mes "You acquired the '^FF0000Long Stick^000000'";
 	set rod,1;
 	close;
 
 L_2:
-	set @bed,1;
 	if (rod == 0 && srod1 == 1 && srod2 == 1) goto L1_1;
 	mes "As you look under the bed, you see that there";
 	mes "is a small object covered in dust.";
@@ -916,18 +913,20 @@ lhz_cube.gat,234,200,0	script	Desk	111,{
 	close;
 
 L_1:
-	if (rod == 1 || srod2 == 1) goto L1_2;
+	if (srod2 == 1) goto L1_2;
 	mes "When you look below the desk,";
 	mes "You see a decent sized stick.";
 	next;
 	mes "You acquired '^FF0000Short Stick^000000'.";
 	mes "It looks like this stick could be combined";
 	mes "With another stick to make it larger.";
-	if (srod2 == 0) set srod2,1;
-	if (srod2 == 0) close;
+	if (srod1 == 1) goto L1_1;
+	set srod2,1;
+	close;
 
 L1_1:
-	if (@desk == 0) next;
+	set srod2,1;
+	next;
 	mes "It seems like the decently sized stick can be";
 	mes "combined with the 'Short Stick' from under the bed.";
 	mes "You put the two end to end, and they click into place.";
@@ -937,14 +936,13 @@ L1_1:
 	close;
 
 L1_2:
-	set @desk,1;
-	if (srod1 == 1 && srod2 == 1) goto L1_1;
+	if (srod1 == 1 && srod2 == 1 && rod == 0) goto L1_1;
 	mes "This is where you acquired the '^FF0000Short Stick^000000'.";
 	mes "There is nothing but dust now.";
 	close;
 
 L_2:
-	mes "It is locked and can't be opened.";
+	mes "It's locked and can't be opened.";
 	close;
 }
 
@@ -1355,8 +1353,8 @@ lhz_in02.gat,201,210,3	script	Digotz	869,{
 	if(friendship > 9)goto s_Dead;
 	if(friendship == 9)goto s_Wounded;
 	if(friendship == 8)goto s_Cont8;
-	if(friendship == 7 || friendship2 == 1)goto s_Cont7;
-	if(friendship2 == 1)goto s_Cont6;
+	if(friendship == 7 || friendshipextra == 1)goto s_Cont7;
+	if(friendshipextra == 1 || friendship == 6)goto s_Cont6;
 	if(friendship == 6)goto s_Cont5;
 	if(friendship == 4 || friendship == 5)goto s_Cont4;
 	if(friendship == 3)goto s_Cont3;
@@ -1569,7 +1567,7 @@ s_Cont5:
 	mes "but I'm so angry!";
 	mes "Why am I stressing";
 	mes "out so much over this?!";
-	set friendship2,1;
+	set friendshipextra,1;
 	close;
 
 s_Cont6:
@@ -2373,6 +2371,7 @@ s_Cont:
 	close;
 
 s_Cont2:
+	if(friendship > 6)goto s_Dialog;
 	mes "[Benkastein]";
 	mes "Aw nuts, this is";
 	mes "taking much longer";

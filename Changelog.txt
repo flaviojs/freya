@@ -1,6 +1,97 @@
 
 Date	Added
 
+08/28/06
+	* Added: Hellion Revenant quest MvP's correct skills [Tsuyuki]
+	* Fixed: Small issue with Rachel MvP skills [Tsuyuki]
+	* Imported: New Packets from eAthena (packet_db.txt) [Tsuyuki]
+	* Fixed: Valkyrie Helm Mdef from 15 > 5 [Tsuyuki]
+	* Fixed: Some item names that passed the 24 max char limit [Tsuyuki]
+	* Fixed: All card drop rates to 0.01% as per Aegis [Tsuyuki]
+	* Fixed: Messed up Evil Snake Lord MvP drops [Tsuyuki]
+	* Fixed: Monster name "Seal" > "Fur Seal" [Tsuyuki]
+	* Added: Some skill descs in the Mob Skill Database [Tsuyuki]
+	* Fixed: Orcish Sword from Orc Hero MvP drop rate 0.1% > 10% [Tsuyuki]
+	* Updated: Pharaoh MvP drops [Tsuyuki]
+	* Updated: Lady Tanee MvP monster skills [Tsuyuki]
+	* Redid: Callslave monster skills [Tsuyuki]
+	* Redid: Moonlight Flower MvP monster skills [Tsuyuki]
+	* Updated: Bloody Branch list [Tsuyuki]
+	* Fixed: Some messy code in the Biolabs entrance quest script [Tsuyuki]
+	* Fixed: A variable exploit in the Friendship quest script [Tsuyuki]
+	* Fixed: Added "Door" exit NPC to the lhz_cube.gat room [Tsuyuki]
+	* Imported: New Hat Quests from eAthena [Tsuyuki]
+	* Updated: Item No Refine Database with new items [Tsuyuki]
+	* Updated: Item database with new items [Tsuyuki]
+	* Updated: Some 10.3 Item Prices [Thanks to muad_dib] [Tsuyuki]
+	* Updated: Some more mob names: [Tsuyuki]
+	  - G_Tirfing > G_Ogretooth
+	  - Fake Angel > False Angel
+	  - Archangeling > Arc Angeling
+	  - Wanderman > Wanderer
+	  - Incantation Samurai > Incarnation Samurai
+	  - Blazzer > Blazer
+	  - Cat o Nine Tails > Cat o' Nine Tails
+	  - Neraid > Nereid
+	  - Nine-Tail > Nine Tail
+	  - Worm Tail > Wormtail
+	* Updated: Above monster card names as well [Tsuyuki]
+	* Updated: Geffenia Dungeon Spawns [Tsuyuki]
+	* Fixed: Geffen Dungeon 4 spawn info [Tsuyuki]
+	* Fixed: Incarnation Samurai drops & MvP drops/exp [Tsuyuki]
+	* Fixed: Event Baphomet MvP drops & MvP Exp [Tsuyuki]
+	* Fixed: Some other minor drops/rates here and there [Tsuyuki]
+	* Updated: Redid all Magma Dungeon monsters [Tsuyuki]
+	* Added: Missing Spell Scrolls to monsters drops [Tsuyuki]
+	* Fixed: Problem in nomemo.txt [Tsuyuki]
+	* Fixed: only dispel skill is castable on trickdead novice. other status changes won't work [Harbin]
+	* Fixed: mammonite damage should ignore card modifiers, overthrust and max overthrust [Harbin]
+	* Fixed: bowling bash skill should hit twice [Harbin]
+	 - Source: http://www.ragnainfo.net/forums/viewtopic.php?t=34782
+	* Fixed: compilation error. invalid skill name (skill.c l3198) [Harbin]
+	* Fixed: compilation error. invalid variable name (battle.c l1043) [Harbin]
+	* Updated: Geffen Dungeon L4 Spawns as per Eye of Hellion quest [Tsuyuki]
+	* Removed: Access to Geffen Dungeon L4 (warps) due to Eye of Hellion Quest [Tsuyuki]
+	* Updated: Ice Dungeon spawns with jA info [Tsuyuki]
+	* Updated: New monster names as per iRO Episode 10.3 [Tsuyuki]
+	* Updated: The monster spawn files with their correct names [Tsuyuki]
+	* Fixed: Horn Card, now defends against Magic too [Thanks to Lemon Cat]
+	* Moved: Lighthalzen Hotel NPC to the Inn.txt script [Tsuyuki]
+	* Updated: No Memo Mapflag [Tsuyuki]
+	* Fixed: Hatii & Stormy Knight not using Storm Gust [Tsuyuki]
+	* Updated: Rachel monsters, skills, and item drops [Tsuyuki]
+	* Added: Updated Client Traslations [Tsuyuki]
+	  - Converted kRO item names to the correct names:
+	  - Zherlthsh Card > Zealotus Card, etc..
+	  - Swapped Alice Egg w/ Zealotus Egg for Freya compatibility
+	* Fixed: Item names as per 10.3 iRO client data [Tsuyuki]
+	* Added: Missing MvPs to Biolabs 3F [Tsuyuki]
+	* Fixed: Nine-Tails x25 on the wrong Payon Field [Tsuyuki]
+	* Added: Valkyrie Slave Skills [Tsuyuki]
+	* Added: Grand Cross to Valkyrie Randgris [Tsuyuki]
+	  - Source: http://ragnainfo.net/
+	* Fixed: Valkyrie Randgris' Callslave Skill [Tsuyuki]
+	* Added: Redone Inn Script w/ New Towns [Tsuyuki]
+	* Fixed: Mob Drops/Stats for Louyang~Lighthalzen [Tsuyuki]
+	  - Source: http://rocards.de/
+	* Fixed: Amon Ra is now immobile (As per Aegis) [Tsuyuki]
+	* Fixed: Normal Advanced Class Mobs no longer have MvP Exp [Tsuyuki]
+	* Fixed: The following cards which were not working properly: [Tsuyuki]
+	  - Carat Card	- Was using iRO version, switched to kRO version
+	  - Raggler Card 	- Merchant Set SP Addition per Hit
+	  - Spring Rabbit Card 	- Was missing a bonus
+	  - Hermit Plant Card	- Entire card effect and equip location was missing
+	* Fixed: Cleaned up some commented text for Cards [Tsuyuki]
+	* Removed: Commented the following cards since they're not in Aegis: [Tsuyuki]
+	  - Raydric Archer, Wraith, Stem Worm, Sleeper, Orc Archer, Taoist Hermit, Jing Guai
+	* Removed: The above cards from monster drops [Tsuyuki]
+	* Fixed: Quite a few monster names [Tsuyuki]
+	* Added: Hellion's Revenant MvP (Eye of Hellion Quest) [Tsuyuki]
+	* Fixed: Anopheles mode from Passive to Aggressive [Tsuyuki]
+	* Fixed: Kobold Archer dropping Puppy Headband from 1% to 0.01% [Tsuyuki]
+	* Fixed: bmagicdamagereturn should reflect all damage, not just x% damage (x% is for reflection chance) [Harbin]
+	* Fixed: rokis veil skill doesn't work in gvg maps anymore [Harbin]
+
 08/27/2006
 	* Added: 'neutral' option in all @spawn GM commands to force non-agressiv monster [Yor]
 	          note: followers stay agressiv if they exist.

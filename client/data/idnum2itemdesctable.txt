@@ -201,7 +201,6 @@ An enchanted fly's wing that instantly sends its user to a random spot when wave
 ^ffffff_^000000
 Weight :^777777 5^000000
 #
-
 602#
 An enchanted butterfly's wing that instantly sends its user to his Save Point when waved in the air.
 ^000088Instant teleport to character's Save Point.^000000
@@ -448,6 +447,7 @@ Weight :^777777 10^000000
 730#
 A small, twinkling and transparent gem that can be sold at a good price.
 ^ffffff_^000000
+
 Weight :^777777 10^000000
 #
 731#
@@ -607,7 +607,7 @@ A viscous plant substance used in the production of certain types of goods.
 Weight :^777777 1^000000
 #
 908#
-Frog eggs. 
+Frog eggs.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
@@ -982,7 +982,7 @@ An anvil, made of pure Oridecon, that's used to make quality goods.
 Weight :^777777 70^000000
 #
 988#
-An anvil, made of pure Gold, that's used in the manufacture of high quality products. 
+An anvil, made of pure Gold, that's used in the manufacture of high quality products.
 ^ffffff_^000000
 Weight :^777777 90^000000
 #
@@ -2033,7 +2033,7 @@ Required Level :^777777 48^000000
 Applicable Job :^777777 Every Job^000000
 #
 1163#
-Large, double-edged broad sword that was used by the Scottish highlanders. 
+Large, double-edged broad sword that was used by the Scottish highlanders.
 Class :^777777 Two-handed Sword^000000
 Attack :^777777 180^000000
 Weight :^777777 250^000000
@@ -2362,7 +2362,7 @@ Applicable Job :^777777 Swordman Class, Mage Class, Archer Class, Merchant Class
 #
 1228#
 Military combat knife made for battles against DemiHuman enemies.
-Increases damage inflicted on DemiHuman enemies by 10%, but increases damage received from Demon enemies by 10%.
+Additional resistance against DemiHuman enemies by 10%, but increases damage received from Demon enemies by 10%.
 Pierces Defense of DemiHuman enemies.
 Class :^777777 Dagger^000000
 Attack :^777777 80^000000
@@ -2395,7 +2395,7 @@ Applicable Job :^777777 Swordman Class, Mage Class, Archer Class, Merchant Class
 #
 1231#
 A formal dress dagger, engraved with luxurious emblems, that's usually worn on special occasions.
-INT + 5 
+INT + 5
 MATK + 10%
 Class :^777777 Dagger^000000
 Attack :^777777 70^000000
@@ -2542,6 +2542,7 @@ Applicable Job :^777777 Novice, Swordman Class, Merchant Class, Thief Class^0000
 #
 1302#
 A common axe.
+
 Class :^777777 Axe^000000
 Attack :^777777 38^000000
 Weight :^777777 80^000000
@@ -2902,7 +2903,6 @@ Required Level :^777777 18^000000
 Applicable Job :^777777 Swordman Class^000000
 #
 1452#
-
 Topped with a curved blade and puncturing spike, this spear can topple a mounted warrior in the hands of a highly skilled expert.
 Class :^777777 Spear^000000
 Attack :^777777 84^000000
@@ -3260,7 +3260,7 @@ Required Level :^777777 27^000000
 Applicable Job :^777777 Swordman Class, Acolyte Class, Merchant Class^000000
 #
 1516#
-A deadly mace topped with 3 extremely sharp blades on its end. 
+A deadly mace topped with 3 extremely sharp blades on its end.
 Class :^777777 Mace^000000
 Attack :^777777 130^000000
 Weight :^777777 120^000000
@@ -3269,7 +3269,7 @@ Required Level :^777777 27^000000
 Applicable Job :^777777 Swordman Class, Acolyte Class, Merchant Class^000000
 #
 1517#
-A deadly mace topped with 3 extremely sharp blades on its end. 
+A deadly mace topped with 3 extremely sharp blades on its end.
 Class :^777777 Mace^000000
 Attack :^777777 130^000000
 Weight :^777777 120^000000
@@ -3278,7 +3278,7 @@ Required Level :^777777 27^000000
 Applicable Job :^777777 Swordman Class, Acolyte Class, Merchant Class^000000
 #
 1518#
-A deadly mace topped with 3 extremely sharp blades on its end. 
+A deadly mace topped with 3 extremely sharp blades on its end.
 Class :^777777 Mace^000000
 Attack :^777777 130^000000
 Weight :^777777 120^000000
@@ -5595,7 +5595,6 @@ A fur coat that is actually made using hides from Lunatics.
 Class :^777777 Armor^000000
 Defense :^777777 6^000000
 Weight :^777777 230^000000
-
 Required Level :^777777 30^000000
 Applicable Job :^777777 Every Job Except Novice^000000
 #
@@ -6456,7 +6455,7 @@ Compound on :^777777 Weapon^000000
 Weight :^777777 1^000000
 #
 4097#
-Maximum HP + 10% 
+Maximum HP + 10%
 AGI + 1
 Class :^777777 Card^000000
 Compound on :^777777 Footgear^000000
@@ -6627,7 +6626,7 @@ Compound on :^777777 Headgear^000000
 Weight :^777777 1^000000
 #
 4123#
-Enable effect of the Endure skill so long as the Footgear to which this card is compounded is equipped. 
+Enable effect of the Endure skill so long as the Footgear to which this card is compounded is equipped.
 Maximum HP - 25%
 Class :^777777 Card^000000
 Compound on :^777777 Footgear^000000
@@ -6662,7 +6661,7 @@ Compound on :^777777 Headgear^000000
 Weight :^777777 1^000000
 #
 4128#
-Nullify all magic spells, including supportive skills, that target the owner at the cost of doubling SP Consumption cost when using skills. 
+Nullify all magic spells, including supportive skills, that target the owner at the cost of doubling SP Consumption cost when using skills.
 Class :^777777 Card^000000
 Compound on :^777777 Shield^000000
 Weight :^777777 1^000000
@@ -7242,6 +7241,7 @@ An herb that is too bitter for the human palate. Poporing finds it to be very ta
 Class :^777777 Taming Item^000000
 Weight :^777777 5^000000
 #
+
 622#
 A fragrant carrot colored with all the hues of the rainbow. Lunatic finds it to be very tasty.
 Class :^777777 Taming Item^000000
@@ -7425,7 +7425,7 @@ An egg in which a Munak Cute Pet rests. Can be hatched by using a ^33CC33Pet Inc
 Class :^777777 Monster Egg^000000
 #
 9019#
-An egg in which a Dokebi Cute Pet rests. Can be hatched by using a ^33CC33Pet Incubator^000000. 
+An egg in which a Dokebi Cute Pet rests. Can be hatched by using a ^33CC33Pet Incubator^000000.
 Class :^777777 Monster Egg^000000
 #
 9020#
@@ -8651,7 +8651,7 @@ A heavenly halo from a phony angel.
 Weight :^777777 1^000000
 #
 7106#
-An impressive horn from an antelope. 
+An impressive horn from an antelope.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
@@ -8701,7 +8701,7 @@ A feather from a Harpy. The Harpy's wings are effective in paralyzing its enemie
 Weight :^777777 1^000000
 #
 7116#
-A Talon from a Harpy. 
+A Talon from a Harpy.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
@@ -8829,7 +8829,7 @@ A book with instructions for creating Condensed Potions.
 Weight :^777777 1^000000
 #
 7134#
-A porcelain bowl used for grinding herbs or other substances to make medicine. 
+A porcelain bowl used for grinding herbs or other substances to make medicine.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
@@ -9163,7 +9163,7 @@ A piece of a broken liquor jar on which the tempting scent of alcohol still ling
 Weight :^777777 1^000000
 #
 7159#
-A nose part of the mask that the Tengu monster wears. 
+A nose part of the mask that the Tengu monster wears.
 The nose attached on this reddish mask is quite long and ugly.
 ^ffffff_^000000
 Weight :^777777 1^000000
@@ -9265,7 +9265,7 @@ A talisman with a Yin-Yang symbol carved in the middle of it.
 Weight :^777777 1^000000
 #
 7170#
-A formal suit which is usually worn by the Groom during a wedding ceremony. 
+A formal suit which is usually worn by the Groom during a wedding ceremony.
 Although it enhances its wearer's looks, some people refer to it as a penguin suit.
 ^ffffff_^000000
 Weight :^777777 1^000000
@@ -9571,7 +9571,7 @@ A packet, made with fabric, that is used to hold needles in place.
 Weight :^777777 1^000000
 #
 7214#
-A cage which is used to hold a bat. 
+A cage which is used to hold a bat.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
@@ -9931,6 +9931,7 @@ Applicable Job :^777777 Every Job Except Novice^000000
 5059#
 A hat made to look like a teddy bear's face. It makes a nice present.
 Class :^777777 Headgear^000000
+
 Defense :^777777 3^000000
 Equipped On :^777777 Upper^000000
 Weight :^777777 80^000000
@@ -10061,7 +10062,7 @@ Applicable Job :^777777 Every Job Except Novice^000000
 #
 5073#
 A headgear made of a book topped with an apple. Wear it to learn glamorous posture.
-DEX + 2 
+DEX + 2
 Class :^777777 Headgear^000000
 Defense :^777777 2^000000
 Equipped On :^777777 Upper^000000
@@ -10315,7 +10316,7 @@ A golden necklace made for celebrating RWC.
 Weight :^777777 1^000000
 #
 7274#
-"The door leading to the great power can be found under the twilight sky from the tower of the heaven. 
+"The door leading to the great power can be found under the twilight sky from the tower of the heaven.
 The key to the door will be the grass living under the Sun."
 ^ffffff_^000000
 Weight :^777777 1^000000
@@ -10360,14 +10361,13 @@ Required Level :^777777 70^000000
 Applicable Job :^777777 Priest, Assassin^000000
 #
 5097#
-A party hat created to celebrate the 2 year anniversary of kRO.
-MDEF + 3
+A party hat created to celebrate the 4 year anniversary of kRO.
 [^000088Event Bonus, will NOT work outside of Event^000000]
-All Stats + 3
+All Stats + 4, MDEF + 4
 Class :^777777 Headgear^000000
-Defense :^777777 3^000000
+Defense :^777777 4^000000
 Equipped On :^777777 Upper^000000
-Weight :^777777 30^000000
+Weight :^777777 40^000000
 Applicable Job :^777777 Every Job^000000
 #
 7280#
@@ -10699,19 +10699,19 @@ Cast ^000088Level 5 Frost Diver^000000.
 Weight :^777777 1^000000
 #
 12001#
-A holy paper which was baptized by a noble priest. 
+A holy paper which was baptized by a noble priest.
 Cast ^000088Level 3 Heal^000000.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 12002#
-A holy paper which was baptized by a noble priest. 
+A holy paper which was baptized by a noble priest.
 Cast ^000088Level 5 Heal^000000.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 12003#
-A holy paper which was baptized by a noble priest. 
+A holy paper which was baptized by a noble priest.
 Cast ^000088Level 1 Teleportation^000000.
 ^ffffff_^000000
 Weight :^777777 1^000000
@@ -10998,7 +10998,7 @@ Compound on :^777777 Armor^000000
 Weight :^777777 1^000000
 #
 4171#
-Add the 5% chance of decreasing enemy's SP amount by 10% when attacking. 
+Add the 5% chance of decreasing enemy's SP amount by 10% when attacking.
 [^008800Sage, Professor^000000]
 Gain 1 SP every time when doing Physical Attack on enemies.
 Class :^777777 Card^000000
@@ -11194,7 +11194,7 @@ Compound on :^777777 Headgear^000000
 Weight :^777777 1^000000
 #
 4196#
-Add the chance of gaining 'Jellopy or Large Jellopy' item each time a monster is killed. 
+Add the chance of gaining 'Jellopy or Large Jellopy' item each time a monster is killed.
 Class :^777777 Card^000000
 Compound on :^777777 Accessory^000000
 Weight :^777777 1^000000
@@ -11473,7 +11473,7 @@ Weight :^777777 1^000000
 LUK + 3
 [^008800Merchant Class^000000]
 Make an armor indestructible (except in upgrade attempts).
-[^000088Raggler, Zipper Bear, Hylozoist & Myst Case Card Combo^000000] 
+[^000088Raggler, Zipper Bear, Hylozoist & Myst Case Card Combo^000000]
 Class :^777777 Card^000000
 Compound on :^777777 Armor^000000
 Weight :^777777 1^000000
@@ -11699,7 +11699,7 @@ Weight :^777777 1^000000
 4263#
 Ignore normal enemy's Defense when attacking.
 Disable its user's natural HP recovery and drain 666 HP every 10 seconds.
-Drain 999 HP as the weapon is unequipped. 
+Drain 999 HP as the weapon is unequipped.
 Class :^777777 Card^000000
 Compound on :^777777 Weapon^000000
 Weight :^777777 1^000000
@@ -11734,7 +11734,7 @@ Weight :^777777 1^000000
 #
 4268#
 Add a 1% chance of auto casting ^008800Level 1 Sonic Blow^000000 on an enemy when attacking.
-[^000088+ Zherlthsh^000000]
+[^000088+ Zealotus^000000]
 ATK + 20
 LUK + 3
 Class :^777777 Card^000000
@@ -11966,6 +11966,7 @@ Weight :^777777 1^000000
 Add a 20% chance of auto casting 'Confusion' on an enemy when the user receives Physical Damage.
 Class :^777777 Card^000000
 Compound on :^777777 Armor^000000
+
 Weight :^777777 1^000000
 #
 4299#
@@ -12120,7 +12121,7 @@ Weight :^777777 1^000000
 4319#
 Maximum HP + 300
 [^333399Refine Rate 9~10^000000]
-Inflict 10% more damage with Bash 
+Inflict 10% more damage with Bash.
 [^000088Solider, Assaulter, Permeter & Heater Card Combo^000000]
 Class :^777777 Card^000000
 Compound on :^777777 Footgear^000000
@@ -12667,49 +12668,49 @@ Weight :^777777 1^000000
 
 // -------------------- China 1st and 2nd Anniversary Event Items --------------------
 7255#
-A red orb with the word 'Hsien' engraved on, which is told to be from the East Sea God's territory. 
+A red orb with the word 'Hsien' engraved on, which is told to be from the East Sea God's territory.
 It is rumored that this orb has very special abilities besides of curing every desease.
 ^ffffff_^000000
 Weight :^777777 10^000000
 #
 7256#
-A red orb with the word 'State' engraved on, which is told to be from the East Sea God's territory. 
+A red orb with the word 'State' engraved on, which is told to be from the East Sea God's territory.
 It is rumored that this orb has very special abilities besides of curing every desease.
 ^ffffff_^000000
 Weight :^777777 10^000000
 #
 7257#
-A red orb with the word 'Life' engraved on, which is told to be from the East Sea God's territory. 
+A red orb with the word 'Life' engraved on, which is told to be from the East Sea God's territory.
 It is rumored that this orb has very special abilities besides of curing every desease.
 ^ffffff_^000000
 Weight :^777777 10^000000
 #
 7258#
-A red orb with the word 'Doctrine' engraved on, which is told to be from the East Sea God's territory. 
+A red orb with the word 'Doctrine' engraved on, which is told to be from the East Sea God's territory.
 It is rumored that this orb has very special abilities besides of curing every desease.
 ^ffffff_^000000
 Weight :^777777 10^000000
 #
 7259#
-A red orb with the words 'All Around' engraved on, which is told to be from the East Sea God's territory. 
+A red orb with the words 'All Around' engraved on, which is told to be from the East Sea God's territory.
 It is rumored that this orb has very special abilities besides of curing every desease.
 ^ffffff_^000000
 Weight :^777777 10^000000
 #
 7260#
-A red orb with the word 'Year' engraved on, which is told to be from the East Sea God's territory. 
+A red orb with the word 'Year' engraved on, which is told to be from the East Sea God's territory.
 It is rumored that this orb has very special abilities besides of curing every desease.
 ^ffffff_^000000
 Weight :^777777 10^000000
 #
 7261#
-A red orb with the words 'Good Luck' engraved on, which is told to be from the East Sea God's territory. 
+A red orb with the words 'Good Luck' engraved on, which is told to be from the East Sea God's territory.
 It is rumored that this orb has very special abilities besides of curing every desease.
 ^ffffff_^000000
 Weight :^777777 10^000000
 #
 7330#
-A red orb with the word 'Two' engraved on, which is told to be from the East Sea God's territory. 
+A red orb with the word 'Two' engraved on, which is told to be from the East Sea God's territory.
 It is rumored that this orb has very special abilities besides of curing every desease.
 ^ffffff_^000000
 Weight :^777777 10^000000
@@ -13001,6 +13002,7 @@ Weight :^777777 150^000000
 Weapon Level :^777777 4^000000
 Required Level :^777777 55^000000
 Applicable Job :^777777 Priest, Sage, Star Gladiator^000000
+
 #
 1616#
 A staff containing a wind fairy that grants its user the essence of speed.
@@ -13237,7 +13239,7 @@ Applicable Job :^777777 Novice^000000
 The main component of the Hermod Armor set.
 [^000088Odin's Blessing, Stone Buckler & Magni's Cap Equip Set^000000]
 [^000088Odin's Blessing, Valkyrie's Shield & Frigg's Circlet Equip Set^000000]
-[^000088Odin's Blessing, Falcon Muffler & Freyr's Shoes Equip Set^000000]
+[^000088Odin's Blessing, Falcon Muffler & Freya's Shoes Equip Set^000000]
 [^000088Odin's Blessing, Vidar's Boots & Vali's Manteau Equip Set^000000]
 [^000088Odin's Blessing & Ulle's Cap Equip Set^000000]
 Class :^777777 Armor^000000
@@ -13361,7 +13363,7 @@ Applicable Job :^777777 Mage Class, Soul Linker^000000
 A muffler owned by Freya, daughter of Njord, that was often borrowed by Loki.
 Wearing it makes its wearer as nimble as a falcon in flight.
 Flee Rate + 15, Perfect Dodge + 5
-[^000088Odin's Blessing, Falcon Muffler & Freyr's Shoes Equip Set^000000]
+[^000088Odin's Blessing, Falcon Muffler & Freya's Shoes Equip Set^000000]
 Class :^777777 Garment^000000
 Defense :^777777 3^000000
 Weight :^777777 40^000000
@@ -13706,7 +13708,7 @@ Weight :^777777 30^000000
 Applicable Job :^777777 Every Job^000000
 #
 5121#
-This mask, which is symbolic of Zherlthsh, mistress of the Glast Heim Underground Prison, makes its wearer feel like looking down on normal human peons.
+This mask, which is symbolic of Zealotus, mistress of the Glast Heim Underground Prison, makes its wearer feel like looking down on normal human peons.
 Inflicts 5% more damage on DemiHuman enemies.
 Reduce 5% of the damage taken from DemiHuman enemies.
 Class :^777777 Headgear^000000
@@ -13953,17 +13955,17 @@ Weight :^777777 1^000000
 
 // -------------------- Box --------------------
 12027#
-For 30 seconds, 30% chance to get Cursed. You recover 9% of your HP.
+Restores 9% of Maximum HP, but has a 30% chance to get you Cursed for 30 seconds.
 ^ffffff_^000000
 Weight :^777777 20^000000
 #
 12028#
-For 20 seconds, increase your Move Speed by 2x.
+Increases your Movement Speed by 100% for 20 seconds.
 ^ffffff_^000000
 Weight :^777777 20^000000
 #
 12029#
-Uses Attention Concentrate Level 1.
+Casts Level 1 Attention Concentrate.
 ^ffffff_^000000
 Weight :^777777 20^000000
 #
@@ -13978,24 +13980,24 @@ Increase your MATK by 20 for 60 seconds.
 Weight :^777777 20^000000
 #
 12032#
-Weapon is enchanted with Water elemental for next 3 minutes.
+Imbues the user's weapon with the Water property for 3 minutes.
 ^ffffff_^000000
 Weight :^777777 20^000000
 #
 12033#
-For next 30 seconds, you can detect all hidden enemies at 100% chance.
+Enables the user to detect any hidden enemies for 30 seconds.
 ^ffffff_^000000
 Weight :^777777 20^000000
 #
 12034#
-For next 30 seconds, 30% chance to get Silenced. Restores 9% of your SP.
+Restores 9% of Maximum SP, but has a 30% chance to get you Silenced for 30 seconds.
 ^ffffff_^000000
 Weight :^777777 20^000000
 #
 
 // -------------------- Ragnarok Festival --------------------
 7360#
-An invitation which has the words [Come to the RO Festival and have a wonderful action figure!] written in a foreign language.
+An invitation which has the words "Come to the RO Festival and have a wonderful action figure!" written in a foreign language.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
@@ -14373,361 +14375,361 @@ Applicable Job :^777777 Every Job^000000
 
 // -------------------- Cooking 60 Branch --------------------
 12041#
-Quick to cook. Has the flavor and aroma of the open green fields.
+A dish that is easy and convenient for beginner chefs; it has a fresh, grassy taste, strangely enough.
 STR + 1.
 ^ffffff_^000000
 Weight :^777777 6^000000
 #
 12042#
-Repulsing feeling for some people to eat. But when one does consume, it sends new meaning to exquisite cooking.
+A dish that looks slightly unappetizing, but its taste and scent are quite pleasant.
 STR + 2.
 ^ffffff_^000000
 Weight :^777777 50^000000
 #
 12043#
-A meaty steak that's said to sometimes explode while being cooked.
+It looks like an ordinary steak, but it is explosively flavorful and juicy.
 STR + 3.
 ^ffffff_^000000
 Weight :^777777 50^000000
 #
 12044#
-Cooked Ribs that get its special flavor from secret Herbs and Spices.
+Tender beef that has been marinated with herbs and sauces, using a secret Payon recipe.
 STR + 4.
 ^ffffff_^000000
 Weight :^777777 50^000000
 #
 12045#
-A sweet cake that's pan-fried into a flat presentation.
+A sweet pancake made by Thachentze, the kind lady chef living in Lutie.
 STR + 5.
 ^ffffff_^000000
 Weight :^777777 50^000000
 #
 12046#
-Herbal Tea mixed with some Grape Juice.
+A sweetly scented tea made by mixing herbs and grape juice.
 INT + 1.
 ^ffffff_^000000
 Weight :^777777 10^000000
 #
 12047#
-An aromatic, slightly bitter beverage made by steeping black tea leaves in boiling water.
+A tea made with 3 different herbs that give it a refreshingly strong scent, but also give it a bland flavor.
 INT + 2.
 ^ffffff_^000000
 Weight :^777777 50^000000
 #
 12048#
-A Tea drink mixed with Herbs and Honey. Promotes fatigue recovery. Be careful drinking it when it's hot.
+An invigoratingly hot herbal whose flavor is enhanced with the sweetness of honey.
 INT + 3.
 ^ffffff_^000000
 Weight :^777777 50^000000
 #
 12049#
-Merchants in Morocc, particularly, the women love this special Fruit Wine.
+A sweet and sour fruit wine that was invented by a merchant from Morocc. Ladies love it.
 INT + 4.
 ^ffffff_^000000
 Weight :^777777 30^000000
 #
 12050#
-Excessive drinking of this strong wine made from the Mastela Fruit light headedness. Drink moderately.
+Wine distilled from Mastela fruit that helps the drinker to maintain clarity of thought.
 INT + 5.
 ^ffffff_^000000
 Weight :^777777 40^000000
 #
 12051#
-Steamed Crab Pincers easily cooked while the shell is fresh. 
+A simple dish made from steamed crab nippers and herbs.
 VIT + 1.
 ^ffffff_^000000
 Weight :^777777 10^000000
 #
 12052#
-Residents in and around ocean shores surely love the taste of fresh sea food.
+Assorted seafood that makes people that live near the sea feel very homesick. Unless, of course, they're eating this food at home.
 VIT + 2.
 ^ffffff_^000000
 Weight :^777777 20^000000
 #
 12053#
-Fresh ocean clams boiled in water make for an excellent tender clam meat soup. 
+Fresh ocean clams boiled in water make for an excellent tender clam meat soup.
 VIT + 3.
 ^ffffff_^000000
 Weight :^777777 30^000000
 #
 12054#
-Delicious Jellyfish seasoned to taste makes gourmet eaters watch out for those pointy stingers.
+Steamed tenacles flavored with herbs and squid ink dressing that, weirdly enough, is a delicious health food.
 VIT + 4.
 ^ffffff_^000000
 Weight :^777777 50^000000
 #
 12055#
-Roasted Dumpling prepared with very hot seasoning is enough to swell one's mouth the next day if one eats too much of it.
+A bao that is fried and seasoned with spicy sauce. If you're not used to spicy food, it's not a good idea to eat too many.
 VIT + 5.
 ^ffffff_^000000
 Weight :^777777 80^000000
 #
 12056#
-Frog Eggs boiled in dark broth makes for a good quality tasting soup.
+A soup made with squid ink broth and frog eggs that most people can't eat until they close their eyes.
 AGI + 1.
 ^ffffff_^000000
 Weight :^777777 10^000000
 #
 12057#
-Smooth Noodles that are good to eat but only if properly cut down to size. 
+Incredibly smooth, slick, and slippery noodles that are very difficult to eat.
 AGI + 2.
 ^ffffff_^000000
 Weight :^777777 10^000000
 #
 12058#
-Tentacles with tasty cheese and sweet potato roasted to a smooth texture. Usually eaten in small quantities between meals.
+Cheese gratin with steamed tentacles mixed into it for a unique flavor.
 AGI + 3.
 ^ffffff_^000000
 Weight :^777777 50^000000
 #
 12059#
-Mixed Noodles exquisitely tasting if served ice cold.
+Spicy, cold noodles garnished with sliced pumpkin.
 AGI + 4.
 ^ffffff_^000000
 Weight :^777777 40^000000
 #
 12060#
-Steamed Pumpkin with Green leeks wrapped in red bat wings. A delicate taste for first timers. 
+Steamed pumpkin and Red Bat Wings wrapped in a Hinale leaflet that have a combined flavor that is... indescribable.
 AGI + 5.
 ^ffffff_^000000
 Weight :^777777 50^000000
 #
 12061#
-A delicious blend of Grape Juice and Honey.
+A special mixed drink of grape juice and honey that has a sweet and sour taste.
 DEX + 1.
 ^ffffff_^000000
 Weight :^777777 10^000000
 #
 12062#
-A slightly bitter, soft chocolate mousse cake. A perfect dessert for the Royal Family. 
+A special chocolate mousse cake with a smooth luxurious flavor that even Charles Orleans would be proud of.
 DEX + 2.
 ^ffffff_^000000
 Weight :^777777 20^000000
 #
 12063#
-A mixed alcoholic drink beverage prepared from a variety of fruit juices.
+A mix of various, crisp fruit flavored with light, sweet syrup.
 DEX + 3.
 ^ffffff_^000000
 Weight :^777777 20^000000
 #
 12064#
-Sandwich made with Cream Cheese. A top list favorite in Lunch Menus. 
+A hearty sandwich made with slices of freshly baked bread, ground meat and cream cheese that is a favorite dish to eat for lunch.
 DEX + 4.
 ^ffffff_^000000
 Weight :^777777 50^000000
 #
 12065#
-A healthy serving of mixed green vegetable salad completes the menu.
+A trendy green salad that is topped with sweet Umbala dressing.
 DEX + 5.
 ^ffffff_^000000
 Weight :^777777 20^000000
 #
 12066#
-Roasted Monkey Tail with garnishings. Said to be a perfect combination when taken with drinks. 
+Lightly spiced monkey tails deep fried in oil that are popular as a side dish for drinking.
 LUK + 1.
 ^ffffff_^000000
 Weight :^777777 6^000000
 #
 12067#
-Mixed juices from a variety of fruits. If improperly prepared will lack a certain amount of taste.
+A cocktail mixed from various fruit juices. If improperly prepared, it will lack that certain taste.
 LUK + 2.
 ^ffffff_^000000
 Weight :^777777 20^000000
 #
 12068#
-Fried Potato with boiled syrup. Sweet tasting and perfect if eaten between meals.
+Crunchy, fried sweet potatoes topped with light syrup. Taste very sweet and are perfect if eaten between meals.
 LUK + 3.
 ^ffffff_^000000
 Weight :^777777 50^000000
 #
 12069#
-A Korean fish dish that's prepared since ancient times said to be eaten with wine. Women tend to favor this dish more than the men. 
+A Korean steamed fish with ancient lips wrapped in a fresh leaf that is supposedly good for a man's vigor.
 LUK + 4.
 ^ffffff_^000000
 Weight :^777777 50^000000
 #
 12070#
-Broiled Scorpion Meat eaten by breaking open the shell and enjoying it. Too much consumption of the meat may cause poisoning.
+A fried scorpion tail, which is said to be the most nutritious and tasty part of a scorpion. There are trace bits of poison, so don't eat too much.
 LUK + 5.
 ^ffffff_^000000
 Weight :^777777 40^000000
 #
 12071#
-Flavored Grilled Beef of fine taste. So popular that people even had a name for it.
+A marinated beef dish whose spendorous flavor can only be described as...shiny.
 STR + 6.
 ^ffffff_^000000
 Weight :^777777 80^000000
 #
 12072#
-Hot Delicious Barbecue with big chunks of meat. A clear meal favorite. 
+A great meal for meat lovers, this roast is spiced up with a special sauce.
 STR + 7.
 ^ffffff_^000000
 Weight :^777777 100^000000
 #
 12073#
-Bear Foot Dish. A delicacy and a popular favorite everywhere both in Land and Sea.
+One of the finest dishes from Louyang, a delicacy made from a bear's meaty foot.
 STR + 8.
 ^ffffff_^000000
 Weight :^777777 50^000000
 #
 12074#
-Freshness is only good for the first hour after it's cooked. Tastefulness degrades after that. Should only be cooked once.
+A fresh and juicy satay made from thick tendons. Only good for the first hour after it's cooked.
 STR + 9.
 ^ffffff_^000000
 Weight :^777777 100^000000
 #
 12075#
-Tongue Dish that's best cooked while chilled. Attains the highest level of cooking after gradual defrosting.
+The epitome of Louyang cuisine. It's ingredients may be hard to find, but culinarily speaking, it's a masterpiece.
 STR + 10.
 ^ffffff_^000000
 Weight :^777777 100^000000
 #
 12076#
-An exotic wine whose secret to its exquisite flavor lies in the mushroom ingredient it contains.
+An exotic wine whose secret to its exquisite flavor lies in the red mushrooms it contains.
 INT + 6.
 ^ffffff_^000000
 Weight :^777777 30^000000
 #
 12077#
-An Herbal Tea mixed with Royal Honey Jelly. Helps promote mental power recovery. 
+An herbal tea mixed with royal jelly that has a pungent scent, but a refreshing flavor.
 INT + 7.
 ^ffffff_^000000
 Weight :^777777 80^000000
 #
 12078#
-A Fragrant Tea specially prepared by the Royal Family dessert maker. 
+A sweetly scented tea, one of Charles Orleans's specialties, that is regularly enjoyed by the royal family.
 INT + 8.
 ^ffffff_^000000
 Weight :^777777 100^000000
 #
 12079#
-A 12 year old wine drank to commemorate 3 royal coronations.
+One of the most exquisite drinks ever created that was presented in celebration of the coronation of King Tristan III.
 INT + 9.
 ^ffffff_^000000
 Weight :^777777 100^000000
 #
 12080#
-Dragon's Breath Cocktail. One won't forget the strong taste of it even if intoxicated into deep slumber.
+A cocktail with an unforgettable flavor as impressive as a dragon's breath.
 INT + 10.
 ^ffffff_^000000
 Weight :^777777 100^000000
 #
 12081#
-A bitter tasting medicine. Whether the effect is good or not is still unknown.
+A strange medicine said to have as much healing power as its bitterness.
 VIT + 6.
 ^ffffff_^000000
 Weight :^777777 50^000000
 #
 12082#
-A Sumptuous Feast. 
+A magnificent feast fit for gods that would make mortals cry tears of joy.
 VIT + 7.
 ^ffffff_^000000
 Weight :^777777 40^000000
 #
 12083#
-Huge Stuffed leaves. Rather difficult to eat at those sizes.
+A jumbo sized burrito for jumbo sized appetites, though it is a bit difficult to eat.
 VIT + 8.
 ^ffffff_^000000
 Weight :^777777 100^000000
 #
 12084#
-Broth made from Dragons as main ingredient. Its taste is not easily forgotten once relished.
+A spicy soup with dragon meat whose flavor gives one the sensation of flight.
 VIT + 9.
 ^ffffff_^000000
 Weight :^777777 100^000000
 #
 12085#
-Delicious stew said to promote mental alertness and gives vitality.
+A stew with a funky smell that looks quite suspicious, but it really does give the feeling of immortality.
 VIT + 10.
 ^ffffff_^000000
 Weight :^777777 100^000000
 #
 12086#
-Prawn Gratin with hot chili. Perfect for the man on the go.
+Shrimp and chile gratin that is so spicy, it burns.
 AGI + 6.
 ^ffffff_^000000
 Weight :^777777 80^000000
 #
 12087#
-Roasted crocodile stuffed with boiled vegetables. Said to be a rare find for a dish of its kind.
+A special Umbala dish made with steamed alligator meat wrapped in vegetables.
 AGI + 7.
 ^ffffff_^000000
 Weight :^777777 80^000000
 #
 12088#
-Very hot curry that's enough to sear even the most demanding taste buds.
+A spicy curry with a spice known to have the flavor of patience. Fortunately, the taste is balanced with pumpkin.
 AGI + 8.
 ^ffffff_^000000
 Weight :^777777 100^000000
 #
 12089#
-An assortment of meat mixed together and boiled to a delicious feast.
+Louyang's specialty stew laced with all sorts of meat that has a tempting scent.
 AGI + 9.
 ^ffffff_^000000
 Weight :^777777 100^000000
 #
 12090#
-Steamed desert scorpion prepared in 4 delicious varieties.
+One of the four best dishes in the Sograt Desert, this scorpion dish is cooked using the heat of the desert sands.
 AGI + 10.
 ^ffffff_^000000
 Weight :^777777 100^000000
 #
 12091#
-Cake made from fresh mountain grown peaches.
+A sweet and lightly scrumptious cake made with peaches grown in Gonryun.
 DEX + 6.
 ^ffffff_^000000
 Weight :^777777 80^000000
 #
 12092#
-Bread with its rather sweet taste makes one's soul seem to soar high as it melts in the mouth.
+A deliciously sweet bread, haunted by flavor. Makes one's soul seem to soar high as it melts in the mouth.
 DEX + 7.
 ^ffffff_^000000
 Weight :^777777 80^000000
 #
 12093#
-Pastry toast specially prepared with meats and fruits with some cheese. 
+Large toasted bread garnished with huge amounts of meat, cheese, and vegetables. It's so big, that it's hard to eat it as one meal.
 DEX + 8.
 ^ffffff_^000000
 Weight :^777777 100^000000
 #
 12094#
-Fruit juice that sends the drinker feeling like floating in the heavens.
+Heavenly tasting juice that makes the drinker feel refreshed and relaxed.
 DEX + 9.
 ^ffffff_^000000
 Weight :^777777 50^000000
 #
 12095#
-Wine of Bergelmir where the legend of the waters brings forth golden appreciation for this beverage.
+Named after the legendary spring believed to be the source of the world's rivers, this beverage is famous for its amazing taste.
 DEX + 10.
 ^ffffff_^000000
 Weight :^777777 100^000000
 #
 12096#
-It is said that he who partakes of this hot soup shall be brought fortune and luck.
+A soup that is rumored to bring good luck when it is eaten hot.
 LUK + 6.
 ^ffffff_^000000
 Weight :^777777 30^000000
 #
 12097#
-Grilled meat strewn to a perfect roast on a skewer stick.
+Marinated meat and vegetables roasted on a skewer.
 LUK + 7.
 ^ffffff_^000000
 Weight :^777777 80^000000
 #
 12098#
-Rice Ball eaten together with strawberries makes for a fine tasteful experience.
+A riceball garnished with strawberries that give it an unexpectedly delicious taste.
 LUK + 8.
 ^ffffff_^000000
 Weight :^777777 40^000000
 #
 12099#
-Delicious sodapop with the tangy flavor of blood.
+A strangely sweet drink that children seem to like, although the aftertaste is pretty gross.
 LUK + 9.
 ^ffffff_^000000
 Weight :^777777 100^000000
 #
 12100#
-Nine Tail Dish cooked to perfection. Gives good fortune and luck to he who eats it.
+A rare specialty dish from Payon that bestows luck on those fortunate enough to eat it.
 LUK + 10.
 ^ffffff_^000000
 Weight :^777777 50^000000
@@ -14800,91 +14802,95 @@ Weight :^777777 30^000000
 
 // -------------------- 2005 Indonesia --------------------
 7415#
-A mystical stone with magical summoning properties. Used in ancient tribal ceremonies. 
+A mystical stone with magical summoning properties. Used in ancient tribal ceremonies.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 
-// -------------------- Good Items --------------------
+// -------------------- Prize Items --------------------
 12103#
-A bloody tree branch with a mark of evil. Something terrible might happen if you shake it.
-Using it summons 1 Boss monster. 
+An ancient, gnarled branch with a contract written in blood upon the bark that can summon stronger creatures than regular Dead Branches.
+^00688BUsing it summons 1 Boss monster.^000000
 ^ffffff_^000000
 Weight :^777777 20^000000
 #
 12104#
-A quiver with no particular design. Maybe you will figure out what it is when you open it.
-Using it gives you 1 Quiver.
+An unlabeled arrow quiver. Maybe you will figure out what it is when you open it.
+^00688BUsing it gives you 500 Arrows of a random element.^000000
 ^ffffff_^000000
 Weight :^777777 20^000000
 #
 12105#
-A gift consisting of taming items and equipments.
-Using it gives you 3 taming-related items.
+A beautifully decorated gift set that contains a taming item and Pet Armor.
+^00688BUsing it gives you a random Pet Armor and taming item.^000000
 ^ffffff_^000000
 Weight :^777777 20^000000
 #
 12106#
-A pretty jeweled box that contains accessories.
-Using it gives you 1 random Accessory item.
+A beautiful jewelry box that contains an accessory.
+^00688BUsing it gives you a random Accessory.^000000
 ^ffffff_^000000
 Weight :^777777 20^000000
 #
 12107#
-It's a mask, but what mask is it? You will have to open the box to find out.
-Using it gives you 1 random Mask item.
+It's a mask, but what mask is it? You will have to unwrap it to find out.
+^00688BUsing it gives you a random Mask.^000000
 ^ffffff_^000000
 Weight :^777777 20^000000
 #
 12108#
-It is as it looks - bundle of magical scrolls.
-Using it gives you 5 random magical scroll items.
+A scroll that has been packed and carefully wrapped.
+^00688BUsing it gives you a random Magical Scroll.^000000
 ^ffffff_^000000
 Weight :^777777 20^000000
 #
 12109#
-It is a box with untamed Poring inside. 
-Summons 1 random Poring-family monster such as Poring, Poporing, Santa Poring, etc.
+A wrapped box stamped with the Poring seal. You can faintly hear rustling coming from inside of it.
+^00688BUsing it summons 1 random Poring type monster.^000000
 ^ffffff_^000000
 Weight :^777777 20^000000
 #
 12110#
-This box has a potion picture on the top. Sometimes it has items that has nothing to do with emergency aid.
-Using it gives you 5 random potion-based items.
+A first aid kit that should contain potions, although they're known to hold other things...
+^00688BUsing it gives you a random Potion.^000000
 ^ffffff_^000000
 Weight :^777777 20^000000
 #
 12111#
-A package with lots of different food inside.
-Using it gives you 3 random food items.
+A bundle of food that contains various dishes.
+^00688BUsing it gives you a random Food item.^000000
 ^ffffff_^000000
 Weight :^777777 20^000000
 #
 
 // -------------------- Main Quest --------------------
 7416#
-A written or printed communication containing a favorable statement concerning character or qualifications.
+A well written letter of recommendation that is recognized by the Assassin Guild.
 #
 7417#
-A written or printed communication containing some form of request.
+A written request from the Dandelion Organization, asking you to capture Raiyan Moore, who is suspected of kidnapping children from the Dandelion daycare center.
+^ffffff_^000000
+Request reward: 1 Wrapped Mask
 #
 7418#
-A written or printed communication containing some form of request.
+A written request from Mr. R, asking you to protect him and help complete his research, which should help in finding the children missing from Morocc.
+^ffffff_^000000
+Request reward: 1 Jewelry Box
 #
 12112#
-A native fruit found in the Sograt Desert which can be made into a deliciously sweet alcoholic beverage. 
+A delicious alcoholic beverage made with exotic fruits found only in the Sograt Desert. It's very sweet, so people can get drunk off it without realizing it.
 ^ffffff_^000000
 Weight :^777777 10^000000
 #
 12113#
-A light red wine beverage mostly favored by women. Also known as a lady's drink.
+A scarlet colored cocktail, favored by the ladies, that gives the drinker the feeling of lounging on the beach.
 ^ffffff_^000000
 Weight :^777777 10^000000
 #
 
 // -------------------- 2nd Class Quest Skill Items --------------------
 1771#
-A knife weapon rumored to have Venomous properties.
+A throwing knife that has venomous properties.
 When thrown at enemies, there is a possibility it will poison them.
 Class :^777777 Throwing Dagger^000000
 Attack :^777777 30^000000
@@ -14892,253 +14898,255 @@ Weight :^777777 0.5^000000
 Property :^777777 Neutral^000000
 #
 7419#
-A manual that teaches how to create an Embryo for Alchemists.
+A manual that teaches how to create a Homunculus Embryo.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 12114#
-When used causes the user's weapon to change to Fire property attribute for a short period of time.
+Temporarily enchants the user's weapon with the ^FF0000Fire^000000 property.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 12115#
-When used causes the user's weapon to change to Water property attribute for a short period of time.
+Temporarily enchants the user's weapon with the ^6996ADWater^000000 property.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 12116#
-When used causes the user's weapon to change to Earth property attribute for a short period of time.
+Temporarily enchants the user's weapon with the ^A68064Earth^000000 property.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 12117#
-When used causes the user's weapon to change to Wind property attribute for a short period of time.
+Temporarily enchants the user's weapon with the ^7BCC70Wind^000000 property.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 12118#
-A Potion used to grant some resistance to Fire. Be careful since you receive more damage from the opposite property.
+A potion that will temporarily increase the user's resistance to the ^FF0000Fire^000000 property at the cost of increasing damage from the ^6996ADWater^000000 property for the potion's active duration.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 12119#
-A Potion used to grant some resistance to Water. Be careful since you receive more damage from the opposite property.
+A potion that will temporarily increase the user's resistance to the ^6996ADWater^000000 property at the cost of increasing damage from the ^7BCC70Wind^000000 property for the potion's active duration.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 12120#
-A Potion used to grant some resistance to Earth. Be careful since you receive more damage from the opposite property.
+A potion that will temporarily increase the user's resistance to the ^A68064Earth^000000 property at the cost of increasing damage from the ^FF0000Fire^000000 property for the potion's active duration.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 12121#
-A Potion used to grant some resistance to Wind. Be careful since you receive more damage from the opposite property.
+A potion that will temporarily increase the user's resistance to the ^7BCC70Wind^000000 property at the cost of increasing damage from the ^A68064Earth^000000 property for the potion's active duration.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 
 // -------------------- PVP Item --------------------
 7420#
-A skull with someone's name engraved.
+A skull in whith someone's name has been carved.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 
 // -------------------- 3rd Quarter Quest Items --------------------
 7421#
-A key which shines with a deep-red glow.
+A thin, transparent, and shining red key.
 #
 7422#
-A key which shines with a deep-yellow glow.
+A thin, transparent, and shining yellow key.
 #
 7423#
-A key which shines with a deep-blue glow.
+A thin, transparent, and shining blue key.
 #
 7424#
-A key which shines with a deep-green glow.
+A thin, transparent, and shining green key.
 #
 7425#
-A key which shines with a deep-glow of subdued light. Almost dark.
+A thin, transparent, and shining black key.
 #
 7426#
-The jewel of deep-red color which holds the secret to a mysterious power.
+A mysterious red colored charm stone in which fantastic powers are stored.
 #
 7427#
-The jewel of deep-yellow color which holds the secret to a mysterious power.
+A mysterious yellow colored charm stone in which fantastic powers are stored.
 #
 7428#
-The jewel of deep-blue color which holds the secret to a mysterious power.
+A mysterious blue colored charm stone in which fantastic powers are stored.
 #
 7429#
-The jewel of deep-green color which holds the secret to a mysterious power.
+A mysterious green colored charm stone in which fantastic powers are stored.
 #
 7430#
-The jewel of deep-black color which holds the secret to a mysterious power.
+A mysterious black colored charm stone in which fantastic powers are stored.
 #
 7431#
-Books of Heavy, Multi-volumes. 
+A heavy pile of books.
 #
 7432#
-A leather encasement for holding something of secret value.
+A sturdy, leather pouch used for holding something valuable.
 #
 7433#
-An empty roll of parchment, used especially for containing magical inscriptions.
+A blank scroll on which magic spells can be written. These blanks were developed by the Schweicherbil Magic Academy.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 7434#
-A book with instructions for creating Elemental-resist Potions.
-^ffffff_^000000
-^0000ffResist Cold Potion:^000000
+A book with the tagline, "Even Porings can make Elemental Potions with this book!" on the cover.
+The methods for creating Elemental Potions are detailed inside this book.
+
+Author: Pisrik Quve.
+
+^0000ffCold Resist Potion:^000000
 3 Heart of Mermaid
 1 Blue Gemstone
-^ffffff_^000000
-^ffff00Resist Thunder Potion:^000000
+
+^ffff00Thunder Resist Potion:^000000
 3 Moth Dust
 1 Blue Gemstone
-^ffffff_^000000
-^996600Resist Earth Potion:^000000
+
+^996600Earth Resist Potion:^000000
 2 Large Jellopy
 1 Yellow Gemstone
-^ffffff_^000000
-^ff0000Resist Fire Potion:^000000
+
+^ff0000Fire Resist Potion:^000000
 2 Frill
 1 Red Gemstone
-^ffffff_^000000
+
 Weight :^777777 1^000000
 #
 
 // -------------------- 3rd Quarter Items --------------------
 7435#
-An Ornamental Accessory of exquisite golden color. It is of high value and not crafted by any human hands.
+An ornamental accessory of exquisite golden color. It's very valuable and was created by an otherworldly power.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 7436#
-A fragment that holds within its mystery the true meaning of Agony.
+A fragment that holds within its mystery the true meaning of sheer agony.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 7437#
-A fragment that holds within its mystery the true meaning of Sorrow.
+A fragment that holds within its mystery the true meaning of pure sorrow.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 7438#
-A fragment that holds within its mystery the true meaning of Hatred.
+A fragment that holds within its mystery the true meaning of intense hatred.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 7439#
-A fragment that holds within its mystery the true meaning of Despair.
+A fragment that holds within its mystery the true meaning of unfathomable despair.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 7440#
-A light, soft feather of Red Color.
+A large, yet light, white feather that has a red gleam.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 7441#
-A light, soft feather of Blue Color.
+A large, yet light, white feather that has a blue gleam.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 7442#
-A Seal that has a certain curse placed on it.
+A dark heart stamped with a bloody seal that has a certain curse placed on it.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 7443#
-A Head which was part of a fierce 3-headed Fire-breathing Dragon.
+The head from a fearsome three-headed dragon that still looks very threatening.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 7444#
-An Ancient Treasure Chest which may contain Money, Jewels, or Ornaments. 
+An ancient treasure box filled with old coins, ornaments,  and jewelry.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 7445#
-A Mysterious Orb from the East which emits a beautiful Green glow of Light.
+A beautiful green bijou that symbolizes the earth. In the East, people believe  that this bijou can help wishes come true.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 7446#
-A Mysterious Orb from the East which emits a beautiful Blue glow of Light.
+A beautiful blue bijou that symbolizes the ocean. In the East, people believe  that this bijou can help wishes come true.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 7447#
-A Mysterious Orb from the East which emits a beautiful Red glow of Light.
+A beautiful red bijou that symbolizes the firey blaze. In the East, people believe  that this bijou can help wishes come true.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 7448#
-A Mysterious Orb from the East which emits a beautiful Golden Yellow glow of Light.
+A beautiful green bijou that totally captivates the eye and mind. In the East, people believe  that this bijou can help wishes come true.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 7449#
-A Blood-Stained page from a book.
+Its surface is marked with old, dried blood stains...
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 7450#
-A Piece from a Bone Armor.
+A broken piece of armor that was worn by a ghostly swordsman.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 7451#
-A Scale piece from a Fire Dragon.
+A red dragon's scale that seems to possess some kind of magical power.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 7452#
-A yellow aromatic powder that adds zest and flavor to food.
+A yellow spice that adds a unique scent and flavor to almost any food.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 7453#
-A Sweet, flavorful seasoning or relish served as an accompaniment to food.
+A very sweet sauce that accentuates the flavor of foods, but is quite disgusting when drunk by itself.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 7454#
-A regular, less flavorful seasoning or relish that's added to food.
+A speical sauce that enhances the savory quality of most foods.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 7455#
-A Hot or Spicy flavorful seasoning or relish served as an accompaniment to food.
+An extremely spicy Spicy Sauce that can make people cry  just by smelling it.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 7456#
-A Red aromatic powder that adds zest and flavor to food.
+A spicy flavoring that complements few foods, but is a necessary ingredient for some dishes.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 7457#
-Any of numerous vegetable oils used in cooking.
+Healthy cooking oil that is used for stir frying or deep frying.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 577#
-The fruits of cereal grasses especially after having been harvested.
+Dried grains that are commonly used in the cuisines of many countries.
 ^000088Recover a small amount of HP^000000.
 ^ffffff_^000000
 Weight :^777777 2^000000
 #
 578#
-An aggregate fruit that consists of a red fleshy edible receptacle and numerous seed like fruitlets.
+A red berry that is renown for its slightly sweet and sour taste, and is best eaten fresh.
 ^000088Recover a little SP^000000.
 ^ffffff_^000000
 Weight :^777777 2^000000
-
 #
 579#
-A delicious cooked fish of delectable taste.
+A fresh fish that can be cooked in a variety of ways.
 ^000088Recover a small amount of HP^000000.
 ^ffffff_^000000
 Weight :^777777 2^000000
@@ -15162,27 +15170,27 @@ A Citrus, round fruit with a yellowish or reddish rind having a sweetish, acidic
 Weight :^777777 2^000000
 #
 12125#
-An outdoor cooking device usually used in camping and other outdoor activities. 
+A cooking kit that is designed for outdoor use. It's a little crude, but it's also portable.
 ^ffffff_^000000
 Weight :^777777 2^000000
 #
 12126#
-Set of Cooking Utensils
+A cooking kit designed for use in the home. It's sophisticated enough for you to craft meals with that homemade quality.
 ^ffffff_^000000
 Weight :^777777 3^000000
 #
 12127#
-High-Classed Set of Cooking Utensils.
+A professional cooking kit that only great chefs generally use to make food of professional quality. These are wasted on mere tyros.
 ^ffffff_^000000
-Weight :^777777 3^000000
+Weight :^777777 5^000000
 #
 12128#
-Set of Cooking Utensils meant for the Royal Palace kitchen.
+A cooking kit said to be used by chefs working in the royal palace to craft nobly exquisite dishes.
 ^ffffff_^000000
 Weight :^777777 7^000000
 #
 12129#
-Special Cooking Utensils designed for Traditional Cooking activities.
+The legendary cooking kit that is said to make any recipe wondrously, sublimely delicious.
 ^ffffff_^000000
 Weight :^777777 7^000000
 #
@@ -15205,9 +15213,9 @@ A type of food that is usually eaten by people in a country after their abstinen
 Weight :^777777 15^000000
 #
 
-// -------------------- 2005 Mobile Aco Story --------------------
+// -------------------- 2005 Mobile Acolyte Story --------------------
 2356#
-A blessed holy cloth that emanates strong resistances against evil and darkness.
+A blessed holy robe that protects its wearer from being tainted by evil.
 + 80% resistance against ^000088Blind^000000. MDEF + 5.
 Class :^777777 Armor^000000
 Defense :^777777 5^000000
@@ -15216,7 +15224,7 @@ Required Level :^777777 70^000000
 Applicable Job :^777777 Priest, Monk^000000
 #
 2665#
-An enchanted ring said to have exorcising properties against evil.
+A symbol of faith to servants of God, this ring possesses a holy power that can repel evil.
 Receive 5% more Experience Points from Undead and Demon monsters.
 Class :^777777 Accessory^000000
 Defense :^777777 0^000000
@@ -15225,7 +15233,7 @@ Required Level :^777777 60^000000
 Applicable Job :^777777 Acolyte Class^000000
 #
 5133#
-A lovely Hat made to look like a Sheep's head. So cute that it makes the attackers feel bad.
+A lovely Hat made to look like a sheep's head. So cute that it makes the attackers feel bad.
 Reflect 5% of all Physical Melee damage back to the enemy which inflicted it.
 Class :^777777 Headgear^000000
 Defense :^777777 1^000000
@@ -15237,8 +15245,7 @@ Applicable Job :^777777 Acolyte Class^000000
 
 // -------------------- Foreign Halloween Item --------------------
 2666#
-An Oil Lamp that uses coconut oil.
-It symbolizes the Light of Hope against the darkness.
+A coconut oil lamp in which a dim light that repels evil is burning.
 STR + 2, adds 10% resistance against ^880000Blind^000000.
 Class :^777777 Accessory^000000
 Defense :^777777 0^000000
@@ -15250,141 +15257,160 @@ Applicable Job :^777777 Every Job^000000
 7472#
 "Don't panic even if you are left alone. You will survive with this book, no matter where you are."
 A very interesting book that includes all the recipes for Level 1 Foods.
-^ffffff_^000000
-^ff0000Boiled Down Locust:^000000
+
+
+^ff0000Fried Grasshopper Legs:^000000
 5 Grasshopper's Leg
 1 Old Frying Pan
 1 Cooking Oil
-^ffffff_^000000
-^0000ffHerb Tea With Grape Juice:^000000
-3 Grape
-2 Red Potion
-^ffffff_^000000
-^800000Grape Juice with Honey:^000000
-1 Honey
-2 Grape
-1 Red Potion
-^ffffff_^000000
-^008040Frog Spawn Soup:^000000
-1 Grain
+
+^008040Frog Egg Squid Ink Soup:^000000
+1 Bag of Grain
 10 Spawn
 1 Squid Ink
-^ffffff_^000000
-^ff8040Steamed Crab Pincer:^000000
+
+^ff8040Steamed Crab Nippers:^000000
 10 Nipper
 10 Green Herb
 1 Yellow Potion
-^ffffff_^000000
-^400080Fried Monkey Tail:^000000
+
+^0000ffGrape Juice Herbal Tea:^000000
+3 Grape
+2 Red Potion
+
+^800000Honey Grape Juice:^000000
+1 Honey
+2 Grape
+1 Red Potion
+
+^400080Fried Monkey Tails:^000000
 5 Yoyo Tail
 1 Old Frying Pan
 1 Cooking Oil
-^ffffff_^000000
+
 Weight :^777777 1^000000
 #
 7473#
 "The mothers taste that can even cure the mind. For those who miss the warmth of family."
 A very interesting book that includes all the recipes for Level 2 Foods.
-^ffffff_^000000
-^ff0000Seasoned Webs:^000000
+
+
+^ff0000Seasoned Sticky Webfoot:^000000
 20 Sticky Webfoot
 10 Green Herb
 10 Yellow Herb
-1 Plain Sauce
-^ffffff_^000000
-^0000ffBlack Tea:^000000
+1 Savory Sauce
+
+^008040Smooth Noodle:^000000
+1 Bag of Grain
+1 Savory Sauce
+5 Pumpkin
+3 Carrot
+
+^ff8040Assorted Seafood:^000000
+10 Clam Flesh
+5 Gill
+5 Fin
+1 Fresh Fish
+
+^0000ffAutumn Red Tea:^000000
 5 Blue Herb
 10 Red Herb
 10 Yellow Herb
-^ffffff_^000000
+
 ^800000Chocolate Mousse Cake:^000000
 10 Cacao
 1 Piece of Cake
 1 Milk
 1 China
-^ffffff_^000000
-^008040Smooth Noodle:^000000
-1 Grain
-1 Plain Sauce
-5 Pumpkin
-3 Carrot
-^ffffff_^000000
-^ff8040Sea Food:^000000
-10 Clam Flesh
-5 Gill
-5 Fin
-1 Yummy Fish
-^ffffff_^000000
+
 ^400080Mixed Juice:^000000
 3 Apple Juice
 2 Carrot Juice
 1 Grape Juice
 2 Orange Juice
-^ffffff_^000000
+
 Weight :^777777 1^000000
 #
 7474#
 "Bestseller by Rune Midgard's newly wed wives!! Don't miss this chance!! - Also popular to domestic husbands."
 A very interesting book that includes all the recipes for Level 3 Foods.
-^ffffff_^000000
+
+
+
 ^ff0000Bomber Steak:^000000
 4 Meat
 1 Old Frying Pan
 10 Green Herb
-5 Red Chili
-1 Hot Sauce
-^ffffff_^000000
-^0000ffHerb and Honey Tea:^000000
-2 Honey
-10 White Herb
-1 Yellow Spice
-^ffffff_^000000
-^800000Fruit Punch:^000000
-5 Apple
-5 Banana
-5 Orange
-5 Strawberry
-1 Yellow Spice
-^ffffff_^000000
-^008040Tentacle and Cheese Gratin:^000000
+5 Red Chile
+1 Spicy Sauce
+
+^008040Tentacle Cheese Gratin:^000000
 10 Tentacle
 10 Cheese
 5 Yam
 1 Sweet Sauce
-^ffffff_^000000
+
 ^ff8040Clam Soup:^000000
 20 Clam Flesh
 10 Conch
 1 Honey
 1 Sweet Sauce
-^ffffff_^000000
-^400080Fried Sweet Potato with Syrup:^000000
+
+^0000ffHerb and Honey Tea:^000000
+2 Honey
+10 White Herb
+1 Yellow Spice
+
+^800000Fruit Mix:^000000
+5 Apple
+5 Banana
+5 Orange
+5 Strawberry
+1 Yellow Spice
+
+^400080Fried Sweet Potato:^000000
 10 Potato
 10 Yam
 1 Sweet Potato
 1 Sweet Sauce
-^ffffff_^000000
+
 Weight :^777777 1^000000
 #
 7475#
 "Sad story about foods that everyone had to eat. - You are already eating it."
 A very interesting book that includes all the recipes for Level 4 Foods.
-^ffffff_^000000
-^ff0000Rib with Herbs and Spices:^000000
+
+
+^ff0000Herb Marinade Beef:^000000
 5 Meat
 3 Red Herb
 2 Yellow Herb
 3 Green Herb
 1 Sweet Sauce
 1 Lemon
-^ffffff_^000000
+
+^008040Lutie Cold Noodles:^000000
+3 Bag of Grain
+1 Spicy Sauce
+10 Ice Cubic
+10 Carrot
+10 Jack o' Pumpkin
+
+^ff8040Seasoned Jellyfish:^000000
+30 Tentacle
+10 White Herb
+10 Soft Blade of Grass
+1 Old Frying Pan
+20 Squid Ink
+
 ^0000ffMorocc Fruit Wine:^000000
 10 Strawberry
 4 Lemon
 10 Orange
 2 Alcohol
 5 Grape
-^ffffff_^000000
+
 ^800000Cream Sandwich:^000000
 5 Bread
 15 Milk
@@ -15392,47 +15418,49 @@ A very interesting book that includes all the recipes for Level 4 Foods.
 10 Yellow Herb
 1 Meat
 1 Sweet Sauce
-^ffffff_^000000
-^008040Lutie Mixed Cold Noodles:^000000
-3 Grain
-1 Hot Sauce
-10 Ice Cubic
-10 Carrot
-10 Jack o' Pumpkin
-^ffffff_^000000
-^ff8040Seasoned Jellyfish:^000000
-30 Tentacle
-10 White Herb
-10 Soft Blade of Grass
-1 Old Frying Pan
-20 Squid Ink
-^ffffff_^000000
-^400080Ancient Fish Dish:^000000
+
+^400080Steamed Ancient Lips:^000000
 10 Ancient Lips
 10 Raccoon Leaf
 10 White Herb
-5 Yummy Fish
+5 Fresh Fish
 2 Sweet Sauce
+
 Weight :^777777 1^000000
 #
 7476#
 "Reborn as the true chef. Challenge for one spoon from the god!"
 A very interesting book that includes all the recipes for Level 5 Foods.
-^ffffff_^000000
-^ff0000Lutie Flat Cake:^000000
+
+
+^ff0000Luti Lady's Pancake:^000000
 10 Potato
 2 Honey
 1 Cooking Oil
 3 Carrot
-1 Grain
-^ffffff_^000000
-^0000ffMastela Wine:^000000
+1 Bag of Grain
+
+^008040Steamed Bat Wing in Pumpkin:^000000
+20 Wing of Red Bat
+20 Jack o' Pumpkin
+1 Pot
+10 Hinalle Leaflet
+10 Red Herb
+
+^ff8040Spicy Fried Bao:^000000
+20 Bao
+10 Yellow Herb
+1 Spicy Sauce
+1 Red Spice
+20 Green Herb
+
+^0000ffMastela Fruit Wine:^000000
 4 Mastela Fruit
 1 Blue Potion
 2 Alcohol
 2 Lemon
 1 Yellow Spice
-^ffffff_^000000
+
 ^800000Green Salad:^000000
 2 Hinalle Leaflet
 3 Aloe Leaflet
@@ -15440,48 +15468,48 @@ A very interesting book that includes all the recipes for Level 5 Foods.
 6 Huge Leaf
 1 Sweet Sauce
 1 Yellow Spice
-^ffffff_^000000
-^008040Steamed Bat Wing and Pumpkin:^000000
-20 Wing of Red Bat
-20 Jack o' Pumpkin
-1 Pot
-10 Hinalle Leaflet
-10 Red Herb
-^ffffff_^000000
-^ff8040Peppery Roasted Dumpling:^000000
-20 Bao
-10 Yellow Herb
-1 Hot Sauce
-1 Red Spice
-20 Green Herb
-^ffffff_^000000
-^400080Broiled Down Scorpion:^000000
+
+^400080Fried Scorpion Tails:^000000
 20 Scorpion Tail
 10 Bug Leg
 10 Huge Leaf
 2 Old Frying Pan
 1 Cooking Oil
-^ffffff_^000000
+
 Weight :^777777 1^000000
 #
 7477#
-"The man who can make food even in a confined room - There is only one result! Food inside this pot!!"
+"The man who can make food even in a confined room - There is only one result! Food inside the pot!!"
 A very interesting book that includes all the recipes for Level 6 Foods.
-^ffffff_^000000
-^ff0000Flavored Grilled Beef:^000000
+
+
+^ff0000Shiny Marinade Beef:^000000
 10 Meat
 2 Honey
 1 Yellow Herb
 1 Mastela Fruit
 20 Shining Scale
-^ffffff_^000000
+
+^008040Chile Shrimp Gratin:^000000
+20 Red Chile
+20 Shrimp
+1 Sweet Sauce
+20 Lemon
+
+^ff8040Awfully Bitter Bracer:^000000
+20 Brown Root
+10 Maneater Root
+20 Mushroom Spore
+1 Edible Mushroom
+2 Honey
+
 ^0000ffRed Mushroom Wine:^000000
-3 Mushroom
+3 Edible Mushroom
 3 Grape Juice
 20 Mushroom Spore
 1 Alcohol
 1 Red Spice
-^ffffff_^000000
+
 ^800000Peach Cake:^000000
 20 Solid Peach
 10 Piece of Cake
@@ -15489,150 +15517,158 @@ A very interesting book that includes all the recipes for Level 6 Foods.
 10 Milk
 5 Orange Juice
 1 Sweet Sauce
-^ffffff_^000000
-^008040Chili and Prawn Gratin:^000000
-20 Red Chile
-20 Shrimp
-1 Sweet Sauce
-20 Lemon
-^ffffff_^000000
-^ff8040Very Bitter Invigorant:^000000
-20 Brown Root
-10 Maneater Root
-20 Mushroom Spore
-1 Mushroom
-2 Honey
-^ffffff_^000000
-^400080Soup of Great Luck:^000000
+
+^400080Lucky Soup:^000000
 5 Reptile Tongue
 5 Tongue
 10 Clover
 10 Witch Starsand
 1 Aloe
-^ffffff_^000000
+
 Weight :^777777 1^000000
 #
 7478#
 "If you are hungry, I will treat you with food even if you are a Poring or Poporing!"
 A very interesting book that includes all the recipes for Level 7 Foods.
-^ffffff_^000000
-^ff0000Barbecue:^000000
+
+
+^ff0000Whole Roast:^000000
 10 Meat
 1 Live Coal
 2 Coal
-1 Hot Sauce
+1 Spicy Sauce
 15 Trunk
 10 White Herb
-^ffffff_^000000
-^0000ffRoyal Jelly and Herb Tea:^000000
-4 Royal Jelly
-2 Honey
-5 White Herb
-10 Hinalle Leaflet
-1 Yellow Spice
-^ffffff_^000000
-^800000Soul Hunt Bread:^000000
-10 Bread
-5 Mastela Fruit
-1 Sweet Sauce
-5 Ment
-5 Amulet
-2 Unripe Apple
-^ffffff_^000000
-^008040Boiled Vegetable stuffed with Roasted Crocodile:^000000
+
+^008040Steamed Alligator with Vegetable:^000000
 10 Anolian Skin
 10 Jack o' Pumpkin
 10 Carrot
 10 Aloe Leaflet
 10 Yellow Herb
 1 Yellow Spice
-^ffffff_^000000
+
 ^ff8040Sumptuous Feast:^000000
 10 Fish Tail
 5 Aloe Leaflet
 10 Mane
-2 Yummy Fish
+2 Fresh Fish
 10 Pet Food
 1 Sweet Sauce
-^ffffff_^000000
-^400080Grilled Meat Skewer:^000000
+
+^0000ffSpecial Royal Jelly Herbal Tea:^000000
+4 Royal Jelly
+2 Honey
+5 White Herb
+10 Hinalle Leaflet
+1 Yellow Spice
+
+^800000Soul Haunted Bread:^000000
+10 Bread
+5 Mastela Fruit
+1 Sweet Sauce
+5 Ment
+5 Amulet
+2 Unripe Apple
+
+^400080Assorted Shish Kebob:^000000
 10 Scale Shell
 5 Gill
 10 Soft Blade of Grass
 5 Meat
-10 Mushroom
+10 Edible Mushroom
 10 Clam Flesh
-^ffffff_^000000
+
 Weight :^777777 1^000000
 #
 7479#
-"Right now, there is a wandering chef in Rune Midgard..!! - Emotional epic of extreme cooking -"
+"Right now, there is a wandering chef in Rune Midgard..!! - Emotional epic of extreme cooking."
 A very interesting book that includes all the recipes for Level 8 Foods.
-^ffffff_^000000
-^ff0000Bear Foot Dish:^000000
+
+
+^ff0000Bearfoot Special:^000000
 20 Bear's Footskin
 10 Carrot
 10 Jack o' Pumpkin
 2 Aloe Leaflet
 1 Hinalle Leaflet
-1 Plain Sauce
-^ffffff_^000000
-^0000ffRoyal Tea:^000000
+1 Savory Sauce
+
+^008040Incredibly Spicy Curry:^000000
+1 Aloevera
+1 Spicy Sauce
+10 Meat
+10 Hinalle Leaflet
+10 Jack o' Pumpkin
+10 Carrot
+
+^ff8040Giant Burito:^000000
+20 Fig Leaf
+20 Meat
+5 Rainbow Carrot
+10 Jack o' Pumpkin
+1 Savory Sauce
+2 Bag of Grain
+
+^0000ffRoyal Family Tea:^000000
 4 Prickly Fruit
 10 Hinalle Leaflet
 3 Yggdrasil Leaf
 10 Aloe Leaflet
 6 Royal Jelly
 1 Yellow Spice
-^ffffff_^000000
+
 ^800000Special Toast:^000000
 10 Bread
 2 Royal Jelly
 5 Meat
 10 Strawberry
-1 Hot Sauce
+1 Spicy Sauce
 10 Cheese
 1 Sweet Sauce
-^ffffff_^000000
-^008040Very Hot Curry:^000000
-1 Aloevera
-1 Hot Sauce
-10 Meat
-10 Hinalle Leaflet
-10 Jack o' Pumpkin
-10 Carrot
-^ffffff_^000000
-^ff8040Huge Stuffed Leaves:^000000
-20 Fig Leaf
-20 Meat
-5 Rainbow Carrot
-10 Jack o' Pumpkin
-1 Plain Sauce
-2 Grain
-^ffffff_^000000
-^400080Strawberry Rice Ball:^000000
+
+^400080Strawberry Flavored Rice Ball:^000000
 10 Strawberry
-5 Grain
+5 Bag of Grain
 10 Fig Leaf
 1 Yellow Spice
 2 Red Spice
-1 Plain Sauce
-^ffffff_^000000
+1 Savory Sauce
+
 Weight :^777777 1^000000
 #
 7480#
 "Sorrowful journey of a chef who lost his brother and his sense of taste while trying to make forbidden legendary food."
 A very interesting book that includes all the recipes for Level 9 Foods.
-^ffffff_^000000
-^ff0000Sauted Meat Strips:^000000
+
+
+^ff0000Tendon Satay:^000000
 40 Tendon
 1 Pot
 10 Cheese
-1 Hot Sauce
+1 Spicy Sauce
 2 Coal
 30 Green Herb
 10 Squid Ink
-^ffffff_^000000
+
+^008040Special Meat Stew:^000000
+10 Meat
+5 Royal Jelly
+20 Shoot
+4 Savory Sauce
+5 Yellow Herb
+10 White Herb
+5 Red Herb
+
+^ff8040Ascending Dragon Soup:^000000
+10 Dragon Skin
+20 Dragon Tail
+3 Yggdrasil Leaf
+6 Royal Jelly
+1 Spicy Sauce
+1 Red Spice
+1 Fatty Chubby Earthworm
+
 ^0000ffTristan XII:^000000
 10 Yggdrasil Leaf
 10 Orange
@@ -15641,8 +15677,8 @@ A very interesting book that includes all the recipes for Level 9 Foods.
 2 Blue Potion
 1 Yellow Spice
 10 Aloe Leaflet
-^ffffff_^000000
-^800000Ethereal Fruit Juice:^000000
+
+^800000Heavenly Fruit Juice:^000000
 5 Unripe Apple
 10 Orange
 10 Strawberry
@@ -15650,26 +15686,8 @@ A very interesting book that includes all the recipes for Level 9 Foods.
 1 Tropical Banana
 5 Grape Juice
 2 Alcohol
-^ffffff_^000000
-^008040Delicious Boiled Meats:^000000
-10 Meat
-5 Royal Jelly
-20 Shoot
-4 Plain Sauce
-5 Yellow Herb
-10 White Herb
-5 Red Herb
-^ffffff_^000000
-^ff8040Ascending Dragon Broth:^000000
-10 Dragon Skin
-20 Dragon Tail
-3 Yggdrasil Leaf
-6 Royal Jelly
-1 Hot Sauce
-1 Red Spice
-1 Fatty Chubby Earthworm
-^ffffff_^000000
-^400080Blood Flavored Sodapop:^000000
+
+^400080Blood Flavored Soda:^000000
 1 Animal Gore
 2 Anodyne
 2 Aloevera
@@ -15677,23 +15695,44 @@ A very interesting book that includes all the recipes for Level 9 Foods.
 6 Royal Jelly
 1 Red Spice
 10 Apple Juice
-^ffffff_^000000
+
 Weight :^777777 1^000000
 #
 7481#
 "First woman to become the royal chef in the Prontera kingdom history! - Signed personally by the author."
 A very interesting book that includes all the recipes for Level 10 Foods.
-^ffffff_^000000
-^ff0000Tongue Dish:^000000
+
+
+^ff0000Steamed Tongue:^000000
 20 Tongue
 1 Pot
 1 Alcohol
 2 Aloevera
-1 Hot Sauce
+1 Spicy Sauce
 5 Royal Jelly
 10 Yggdrasil Leaf
 2 Blue Potion
-^ffffff_^000000
+
+^008040Steamed Desert Scorpions:^000000
+20 Scorpion Tail
+20 Scorpion Claw
+2 Aloevera
+3 Yggdrasil Leaf
+3 Bitter Herb
+10 Royal Jelly
+1 Spicy Sauce
+1 Pot
+
+^ff8040Immortal Stew:^000000
+20 Immortal Heart
+10 Memento
+1 Yggdrasil Seed
+2 Anodyne
+10 Heart of Mermaid
+2 Spicy Sauce
+10 Amulet
+2 Bitter Herb
+
 ^0000ffDragon Breath Cocktail:^000000
 10 Maneater Root
 1 Singing Plant
@@ -15703,8 +15742,8 @@ A very interesting book that includes all the recipes for Level 10 Foods.
 5 Prickly Fruit
 1 Yggdrasil Berry
 10 Blue Herb
-^ffffff_^000000
-^800000Wine of Bergelmir:^000000
+
+^800000Hwergelmir's Tonic:^000000
 1 Yggdrasil Berry
 10 Ice Cubic
 10 Bacillus
@@ -15713,55 +15752,35 @@ A very interesting book that includes all the recipes for Level 10 Foods.
 5 Alcohol
 2 Prickly Fruit
 1 Illusion Flower
-^ffffff_^000000
-^008040Hot Sand Steamed Scorpion:^000000
-20 Scorpion Tail
-20 Scorpion Claw
-2 Aloevera
-3 Yggdrasil Leaf
-3 Bitter Herb
-10 Royal Jelly 
-1 Hot Sauce
-1 Pot
-^ffffff_^000000
-^ff8040Stew of Immortality:^000000
-20 Immortal Heart
-10 Memento
-1 Yggdrasil Seed
-2 Anodyne
-10 Heart of Mermaid
-2 Hot Sauce
-10 Amulet
-2 Bitter Herb
-^ffffff_^000000
-^400080Nine Tail Dish:^000000
+
+^400080Cooked Nine Tail:^000000
 10 Nine Tails
 2 Four Leaf Clover
 10 Maneater Root
 10 Sharp Leaf
 4 Yggdrasil Leaf
-1 Plain Sauce
+1 Savory Sauce
 1 Yellow Spice
 2 Izidor
-^ffffff_^000000
+
 Weight :^777777 1^000000
 #
 7482#
-A pot, where you can cook various types of food if the right tools are used.
+A round, fairly deep cooking vessel covered by a lid with a handle in which you can cook various types of food if the right tools are used.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 
 // -------------------- The Foreign Countries Item --------------------
 7483#
-A key that can open the 8th seal of the ancient city, Geffenia.
+The key that can be used to release the 8th seal of the ancient city, Geffenia.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
 
 // -------------------- Mobile Archer Story Items --------------------
 5135#
-Uniquely shaped vision protector. Possibly improves the user's spiritual strength.
+A unique eye protector that seems to increase the wearer's spritual energy.
 Maximum SP + 50.
 Class :^777777 Headgear^000000
 Defense :^777777 0^000000
@@ -15771,10 +15790,8 @@ Required Level :^777777 75^000000
 Applicable Job :^777777 Every Job Except Novice^000000
 #
 2667#
-A glove that improves concentration. It is said that the wearer can hit a ring from 100 feet away.
-HIT + 5,
-Critical Rate + 5,
-DEX + 1.
+A pair of gloves that enhance the wearer's concentration, enabling him to perform amazing feats of hitting accuracy.
+HIT + 5, Critical Rate + 5, DEX + 1.
 Class :^777777 Accessory^000000
 Defense :^777777 0^000000
 Weight :^777777 30^000000
@@ -15795,7 +15812,7 @@ Applicable Job :^777777 Hunter, Bard, Dancer^000000
 
 // -------------------- College Entrance Exam Event --------------------
 12131#
-Old drink. Expire date has passed, so there is no effect even when you drink.
+A drink that is already past its expiration date, and no longer has any potency. Or does it?
 ^ffffff_^000000
 Weight :^777777 10^000000
 #
@@ -16006,7 +16023,7 @@ Applicable Job :^777777 Every Job Except Novice^000000
 A hat which symbolizes the eyes of the dark wizard. There is a rumor that they blink.
 Reduce Casting Time by 10%. Increases SP consumption of skills by 20%.
 Class :^777777 Headgear^000000
-Defense :^777777 0^000000
+Defense :^777777 1^000000
 Equipped on :^777777 Upper^000000
 Weight :^777777 30^000000
 Required Level :^777777 30^000000
@@ -16027,7 +16044,7 @@ Applicable Job :^777777 Every Job^000000
 5140#
 A pretty ribbon made from a red string with a pink heart in the middle.
 Class :^777777 Headgear^000000
-Defense :^777777 0^000000
+Defense :^777777 1^000000
 Equipped on :^777777 Upper^000000
 Weight :^777777 40^000000
 Required Level :^777777 10^000000
@@ -16278,6 +16295,7 @@ Applicable Job :^777777 Gunslinger^000000
 #
 13152#
 Appropriately named after the power of a storm, this rifle delivers a strong explosive round at a target from far away.
+
 HIT + 10, Critical Rate + 10%.
 Class :^777777 Rifle^000000
 Attack :^777777 120^000000
@@ -16403,6 +16421,7 @@ A blood red bullet which radiates a red light.
 ^880000External Bleeding^000000 an enemy when you attack (Success Chance 5%).
 Class :^777777 Bullet^000000
 Attack :^777777 30^000000
+
 Weight :^777777 0.2^000000
 Property :^777777 Neutral^000000
 #
@@ -16450,7 +16469,6 @@ A bladed weapon which can be easily concealed. Because of its cross shape, its s
 Class :^777777 Throwing Weapon^000000
 Attack :^777777 10^000000
 Weight :^777777 0.5^000000
-
 Property :^777777 Neutral^000000
 #
 13251#
@@ -17000,7 +17018,7 @@ Applicable Job :^777777 Every Job^000000
 
 // -------------------- RO OST Launch Celebration Item --------------------
 5151#
-Cool looking headphones, shaped to look like slick musical notes.
+A cool looking set of headphones that have earmuffs designed to resemble music notes.
 You can listen to your favorite Ragnarok Online music everywhere!
 Increase resistance to ^880000Stun^000000 and ^880000Frozen^000000 by 10%.
 MDEF + 3.
@@ -17144,6 +17162,7 @@ A dreadful dagger whose blade has been soaked in toxin.
 Enable a high chance of inflicting the Poison status with each attack.
 Class :^777777 Dagger^000000
 Attack :^777777 64^000000
+
 Weight :^777777 80^000000
 Weapon Level :^777777 3^000000
 Required Level :^777777 65^000000
@@ -17176,7 +17195,6 @@ A dagger with an unnaturally dark colored blade. Those who hold it instinctively
 ^880000Blind^000000 an enemy when you attack (Success Chance 5%).
 ^880000Blind^000000 yourself when attacking (Success Chance 0.5%).
 Class :^777777 Dagger^000000
-
 Attack :^777777 120^000000
 Weight :^777777 70^000000
 Property :^777777 Shadow^000000
@@ -17998,6 +18016,7 @@ Weight :^777777 1^000000
 #
 7562#
 ...
+
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
@@ -18455,7 +18474,7 @@ Required Level :^777777 30^000000
 Applicable Job :^777777 Every Job Except Novice^000000
 #
 12183#
-A quiver which contains 500 arrows blessed with holy water.
+A quiver which contains 500 Holy Arrows.
 ^ffffff_^000000
 Weight :^777777 25^000000
 #
@@ -18588,21 +18607,152 @@ Required Level :^777777 48^000000
 Applicable Job :^777777 Every Job^000000
 #
 
-// -------------------- ... --------------------
+// -------------------- Chinese Boxes --------------------
 12186#
-...
+A box that glows with a mysterious, red color. If you open it, something good may be inside.
 ^ffffff_^000000
 Weight :^777777 20^000000
 #
 12187#
-...
+A box that glows with a mysterious, green color. If you open it, something good may be inside.
 ^ffffff_^000000
 Weight :^777777 20^000000
 #
 
-// -------------------- ... --------------------
+// -------------------- Vietnam Event --------------------
 7588#
-...
+Spend a cool summer with an IPOD.
 ^ffffff_^000000
 Weight :^777777 1^000000
+#
+
+2361#
+A type of traditional outfit. It brings out the hidden powers of the wearer through its spiritual power.
+All Stats + 5.
+MDEF + 5.
+Class :^777777 Armor^000000
+Defense :^777777 0^000000
+Weight :^777777 50^000000
+Applicable Job :^777777 Every Job Except Novice^000000
+#
+2362#
+A type of traditional outfit. It brings out the hidden powers of the wearer through its spiritual power.
+All Stats + 5.
+MDEF + 5.
+Class :^777777 Armor^000000
+Defense :^777777 0^000000
+Weight :^777777 50^000000
+Applicable Job :^777777 Every Job Except Novice^000000
+#
+2363#
+A type of traditional outfit. It brings out the hidden powers of the wearer through its spiritual power.
+All Stats + 3.
+MDEF + 5.
+Class :^777777 Armor^000000
+Defense :^777777 0^000000
+Weight :^777777 50^000000
+Applicable Job :^777777 Novice^000000
+#
+
+// -------------------- Taiwan Harvest Moon Day Event --------------------
+12188#
+An edible Moon Snack which heals 50% of HP and SP.
+^ffffff_^000000
+Weight :^777777 30^000000
+#
+7589#
+A Moon Snack which has 'Sweet' written in the center in Chinese.
+^ffffff_^000000
+Weight :^777777 1^000000
+#
+7590#
+A Moon Snack which has 'Honey' written in the center in Chinese.
+^ffffff_^000000
+Weight :^777777 1^000000
+#
+7591#
+A Moon Snack which has 'Border' written in the center in Chinese.
+^ffffff_^000000
+Weight :^777777 1^000000
+#
+7592#
+A Moon Snack which has 'Together' written in the center in Chinese.
+^ffffff_^000000
+Weight :^777777 1^000000
+#
+7593#
+A Moon Snack which has 'Receive' written in the center in Chinese.
+^ffffff_^000000
+Weight :^777777 1^000000
+#
+
+// -------------------- Japanese Ribbons 2006 --------------------
+5191#
+A long piece of cloth rolled into a butterfly shape. It's usually worn by girls, so if a guy wears it, he might be mistaken for a girl.
+MDEF + 3.
+Class :^777777 Headgear^000000
+Defense :^777777 1^000000
+Equipped On :^777777 Upper^000000
+Weight :^777777 10^000000
+Applicable Job :^777777 Every Job^000000
+#
+5192#
+A long piece of cloth rolled into a butterfly shape. It's usually worn by girls, so if a guy wears it, he might be mistaken for a girl.
+MDEF + 3.
+Class :^777777 Headgear^000000
+Defense :^777777 1^000000
+Equipped On :^777777 Upper^000000
+Weight :^777777 10^000000
+Applicable Job :^777777 Every Job^000000
+#
+5193#
+A long piece of cloth rolled into a butterfly shape. It's usually worn by girls, so if a guy wears it, he might be mistaken for a girl.
+MDEF + 3.
+Class :^777777 Headgear^000000
+Defense :^777777 1^000000
+Equipped On :^777777 Upper^000000
+Weight :^777777 10^000000
+Applicable Job :^777777 Every Job^000000
+#
+5194#
+A long piece of cloth rolled into a butterfly shape. It's usually worn by girls, so if a guy wears it, he might be mistaken for a girl.
+MDEF + 3.
+Class :^777777 Headgear^000000
+Defense :^777777 1^000000
+Equipped On :^777777 Upper^000000
+Weight :^777777 10^000000
+Applicable Job :^777777 Every Job^000000
+#
+5195#
+A long piece of cloth rolled into a butterfly shape. It's usually worn by girls, so if a guy wears it, he might be mistaken for a girl.
+MDEF + 3.
+Class :^777777 Headgear^000000
+Defense :^777777 1^000000
+Equipped On :^777777 Upper^000000
+Weight :^777777 10^000000
+Applicable Job :^777777 Every Job^000000
+#
+5196#
+A long piece of cloth rolled into a butterfly shape. It's usually worn by girls, so if a guy wears it, he might be mistaken for a girl.
+MDEF + 3.
+Class :^777777 Headgear^000000
+Defense :^777777 1^000000
+Equipped On :^777777 Upper^000000
+Weight :^777777 10^000000
+Applicable Job :^777777 Every Job^000000
+#
+5197#
+A long piece of cloth rolled into a butterfly shape. It's usually worn by girls, so if a guy wears it, he might be mistaken for a girl.
+MDEF + 3.
+Class :^777777 Headgear^000000
+Defense :^777777 1^000000
+Equipped On :^777777 Upper^000000
+Weight :^777777 10^000000
+Applicable Job :^777777 Every Job^000000
+#
+
+12189#
+A box that glows with a mysterious, red color. If you open it, something good may be inside.
+^ffffff_^000000
+Weight :^777777 20^000000
 #

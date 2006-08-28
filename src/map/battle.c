@@ -1040,6 +1040,7 @@ struct Damage battle_calc_weapon_attack(
 				break;
 			case MC_MAMMONITE:
 				skillratio += 50 * skill_lv;	// FORMULA: damage * (100+ 50 * skill_lv) / 100
+				flag.cardfix = 0;
 				break;
 			// swordsman
 			case SM_BASH:
@@ -1129,7 +1130,10 @@ struct Damage battle_calc_weapon_attack(
 				wd.flag = (wd.flag & ~BF_SKILLMASK) | BF_NORMAL;
 				break;
 			case KN_BOWLINGBASH:
-				skillratio += 40 * skill_lv; // FORMULA: damage * (100 + 40 * skill_lv) / 100
+				// DAMAGE: (basedamage * (100 + 40 * skill_lv) / 100) / 2
+				skillratio += 100 + (40 * skill_lv);
+				skillratio /= 2;
+				wd.div_ = 2;
 				wd.blewcount = 0;
 				break;
 			case KN_BRANDISHSPEAR:
@@ -1648,12 +1652,21 @@ struct Damage battle_calc_weapon_attack(
 			}
 		}
 
-		// compounded skill damage modifiers
-		if(sc_data && skill_num != PA_SACRIFICE) {
+		// skill damage bonuses
+		if(sc_data && skill_num != PA_SACRIFICE)
+		{
 			if(sc_data[SC_OVERTHRUST].timer != -1)
-				skillratio += 5 * sc_data[SC_OVERTHRUST].val1;
+			{
+				if(skill_num != MC_MAMMONITE)
+					skillratio += 5 * sc_data[SC_OVERTHRUST].val1;
+			}
+			
 			if(sc_data[SC_MAXOVERTHRUST].timer != -1)
-				skillratio += 20 * sc_data[SC_MAXOVERTHRUST].val1;
+			{
+				if(skill_num != MC_MAMMONITE)
+					skillratio += 20 * sc_data[SC_MAXOVERTHRUST].val1;
+			}
+			
 			if(sc_data[SC_BERSERK].timer != -1)
 				skillratio += 100;
 		}
@@ -2415,14 +2428,14 @@ struct Damage battle_calc_magic_attack(
 	if(skill_num != HW_GRAVITATION)
 		damage = battle_calc_damage(bl, target, damage, div_, skill_num, skill_lv, aflag);	// ÅIC³
 
-	/* magic_damage_return by [AppleGirl] and [Valaris]		*/
-	if(tsd && tsd->magic_damage_return > 0 ){
-		rdamage += damage * tsd->magic_damage_return / 100;
-		if (rdamage < 1) rdamage = 1;
+	if(tsd && tsd->magic_damage_return > 0 && tsd->magic_damage_return > rand()%100)
+	{
+		rdamage += damage;
+		if(rdamage < 1)
+			rdamage = 1;
 		clif_damage(target, bl, gettick(), 0, 0, rdamage, 0, 0, 0);
 		battle_damage(target, bl, rdamage, 0);
 	}
-	/*			end magic_damage_return			*/
 
 	md.damage = damage;
 	md.div_ = div_;
