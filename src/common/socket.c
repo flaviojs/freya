@@ -1018,24 +1018,38 @@ int do_sendrecv(int next) {
 
 // ----------------------------------
 int do_parsepacket(void) {
-	int i;
+	int i, j;
+	struct socket_data *s;
 
 	for(i = 0; i < fd_max; i++) {
-		if (!session[i])
+		s = session[i];
+		if (!s)
 			continue;
-		if (session[i]->rdata_size == 0 && session[i]->eof == 0)
+		if (s->rdata_size == 0 && s->eof == 0)
 			continue;
-		if (session[i]->func_parse) {
-			session[i]->func_parse(i);
-			if (!session[i])
+		if (s->func_parse) {
+			s->func_parse(i);
+			if (!s)
 				continue;
 			/* after parse, check client's RFIFO size to know if there is an invalid packet (too big and not parsed) */
-			if (session[i]->rdata_size == RFIFO_SIZE && session[i]->max_rdata == RFIFO_SIZE) {
-				session[i]->eof = 1;
-				continue;
+			if (s->rdata_pos == 0 && s->rdata_size == s->max_rdata) {
+				if (s->max_rdata == RFIFO_SIZE) { // if player
+					s->eof = 1;
+					continue;
+				}
 			}
 		}
-		RFIFOFLUSH(i);
+		if (s->rdata_size == s->rdata_pos) { // all buffer has been parsed, don't execute memmove (use too much CPU)
+			s->rdata_size = 0;
+			s->rdata_pos = 0;
+		} else if (s->rdata_size * 2 > s->max_rdata) { // if not enough place to read next packets (at least 50% of RFIFO must be free)
+			// the previous check is done to reduce number of memmove -> reduction of CPU usage
+			//RFIFOFLUSH(i); // don't use session[i]->, but simply s-> ==> don't use MACRO
+			j = s->rdata_size - s->rdata_pos;
+			memmove(s->rdata, s->rdata + s->rdata_pos, j);
+			s->rdata_size = j;
+			s->rdata_pos = 0;
+		}
 	}
 
 	return 0;

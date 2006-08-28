@@ -2,6 +2,8 @@
 Date	Added
 
 08/28/06
+	* Fixed: Map-server can now read customed GRF [Yor]
+	* Improved: Reduce number of memmove (a very slow function) when socket is parsed -> less CPU usage (-5%)! [Yor]
 	* Added: Hellion Revenant quest MvP's correct skills [Tsuyuki]
 	* Fixed: Small issue with Rachel MvP skills [Tsuyuki]
 	* Imported: New Packets from eAthena (packet_db.txt) [Tsuyuki]

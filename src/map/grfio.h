@@ -17,15 +17,15 @@ char *grfio_setadatafile(const char *str);
 char *grfio_setsdatafile(const char *str);
 
 typedef struct {
-	int   srclen;			// compressed size
-	int   srclen_aligned;	//
-	int   declen;			// original size
+	int   srclen; // compressed size
+	int   srclen_aligned;
+	int   declen; // original size
 	int   srcpos;
-	short next;
+	int   next; // -1: no next, 0+: pointer to index of next value
 	char  cycle;
 	char  type;
-	char  fn[128-4*5];		// file name
-	char  gentry;			// read grf file select
+	char  fn[128-4*5]; // file name
+	char  gentry; // read grf file select
 } FILELIST;
 // to search if a file exists
 FILELIST *filelist_find(char *fname);
