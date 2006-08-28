@@ -144,29 +144,29 @@ void versionscreen() {
 #ifdef SVN_REVISION
 	if (SVN_REVISION >= 1) { // in case of .svn directories have been deleted
 #ifdef TXT_ONLY
-		printf(CL_BOLD CL_BG_BLUE "Freya version %d.%d.%d, Athena Mod version %d (SVN rev.: %d) (TXT version)" CL_RESET "\n", ATHENA_MAJOR_VERSION, ATHENA_MINOR_VERSION, ATHENA_REVISION, ATHENA_MOD_VERSION, (int)SVN_REVISION);
+		printf(CL_BOLD CL_BG_BLUE "Freya version %d.%d.%d (SVN rev.: %d) (TXT version)" CL_RESET "\n", FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION, (int)SVN_REVISION);
 #else
-		printf(CL_BOLD CL_BG_BLUE "Freya version %d.%d.%d, Athena Mod version %d (SVN rev.: %d) (SQL version)" CL_RESET "\n", ATHENA_MAJOR_VERSION, ATHENA_MINOR_VERSION, ATHENA_REVISION, ATHENA_MOD_VERSION, (int)SVN_REVISION);
+		printf(CL_BOLD CL_BG_BLUE "Freya version %d.%d.%d (SVN rev.: %d) (SQL version)" CL_RESET "\n", FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION, (int)SVN_REVISION);
 #endif /* TXT_ONLY */
 	} else {
 #ifdef TXT_ONLY
-		printf(CL_BOLD CL_BG_BLUE "Freya version %d.%d.%d, Athena Mod version %d (TXT version)" CL_RESET "\n", ATHENA_MAJOR_VERSION, ATHENA_MINOR_VERSION, ATHENA_REVISION, ATHENA_MOD_VERSION);
+		printf(CL_BOLD CL_BG_BLUE "Freya version %d.%d.%d (TXT version)" CL_RESET "\n", FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION);
 #else
-		printf(CL_BOLD CL_BG_BLUE "Freya version %d.%d.%d, Athena Mod version %d (SQL version)" CL_RESET "\n", ATHENA_MAJOR_VERSION, ATHENA_MINOR_VERSION, ATHENA_REVISION, ATHENA_MOD_VERSION);
+		printf(CL_BOLD CL_BG_BLUE "Freya version %d.%d.%d (SQL version)" CL_RESET "\n", FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION);
 #endif /* TXT_ONLY */
 	}
 #else
 #ifdef TXT_ONLY
-	printf(CL_BOLD CL_BG_BLUE "Freya version %d.%d.%d, Athena Mod version %d (TXT version)" CL_RESET "\n", ATHENA_MAJOR_VERSION, ATHENA_MINOR_VERSION, ATHENA_REVISION, ATHENA_MOD_VERSION);
+	printf(CL_BOLD CL_BG_BLUE "Freya version %d.%d.%d (TXT version)" CL_RESET "\n", FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION);
 #else
-	printf(CL_BOLD CL_BG_BLUE "Freya version %d.%d.%d, Athena Mod version %d (SQL version)" CL_RESET "\n", ATHENA_MAJOR_VERSION, ATHENA_MINOR_VERSION, ATHENA_REVISION, ATHENA_MOD_VERSION);
+	printf(CL_BOLD CL_BG_BLUE "Freya version %d.%d.%d (SQL version)" CL_RESET "\n", FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION);
 #endif /* TXT_ONLY */
 #endif /* SVN_REVISION */
 	puts(CL_GREEN "Website/Forum" CL_RESET ": \thttp://www.project-freya.net/");
 	puts(CL_GREEN "Download URL" CL_RESET ": \thttp://wiki.ro-freya.net/DownloadFreya");
 	puts(CL_GREEN "IRC Channel" CL_RESET ": \tirc://irc.deltaanime.net/freya");
 	puts("Open '" CL_DARK_CYAN "readme.html" CL_RESET "' for more information.");
-	if (ATHENA_RELEASE_FLAG)
+	if(FREYA_STATE)
 		puts("This version is not for release.\n");
 
 	return;
@@ -181,11 +181,11 @@ void display_title(void) {
 	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "          (c)2004-2006 Free Yor team presents :          " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n");
 	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "         ___   ___    ___   _  _   __                    " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n"); // 1: bold char, 0: normal char
 	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "        (  _) (  ,)  (  _) ( \\/ ) (  )                   " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n"); // 1: bold char, 0: normal char
-	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "        (  _)  )  \\   ) _)  \\  /  /__\\  v%1d.%1d.%1d %3s %5s " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n", ATHENA_MAJOR_VERSION, ATHENA_MINOR_VERSION, ATHENA_REVISION, // 1: bold char, 0: normal char
+	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "        (  _)  )  \\   ) _)  \\  /  /__\\  v%1d.%1d.%1d %3s %5s " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n", FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION, // 1: bold char, 0: normal char
 #ifdef USE_SQL
-	"SQL", ATHENA_RELEASE_FLAG ? "beta " : "final");
+	"SQL", FREYA_STATE ? "beta " : "final");
 #else
-	"TXT", ATHENA_RELEASE_FLAG ? "beta " : "final");
+	"TXT", FREYA_STATE ? "beta " : "final");
 #endif /* USE_SQL */
 #ifdef SVN_REVISION
 	if (SVN_REVISION >= 1) // in case of .svn directories have been deleted
@@ -226,17 +226,17 @@ sigfunc *compat_signal(int signo, sigfunc *func) {
 int get_version(char flag) {
 	switch(flag) {
 	case VERSION_FLAG_MAJOR:
-		return ATHENA_MAJOR_VERSION;
+		return FREYA_MAJORVERSION;
 	case VERSION_FLAG_MINOR:
-		return ATHENA_MINOR_VERSION;
+		return FREYA_MINORVERSION;
 	case VERSION_FLAG_REVISION:
-		return ATHENA_REVISION;
+		return FREYA_REVISION;
 	case VERSION_FLAG_RELEASE:
-		return ATHENA_RELEASE_FLAG;
+		return FREYA_STATE;
 	case VERSION_FLAG_OFFICIAL:
-		return ATHENA_OFFICIAL_FLAG;
+		return 0;
 	case VERSION_FLAG_MOD:
-		return ATHENA_MOD_VERSION;
+		return 0;
 	}
 
 	return 0;

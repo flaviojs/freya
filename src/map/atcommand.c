@@ -15583,7 +15583,7 @@ int atcommand_version(
 	const int fd, struct map_session_data* sd,
 	const char* command, const char* message)
 {
-	sprintf(atcmd_output, "Freya version %d.%d.%d %s", ATHENA_MAJOR_VERSION, ATHENA_MINOR_VERSION, ATHENA_REVISION,
+	sprintf(atcmd_output, "Freya version %d.%d.%d %s", FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION,
 #ifdef USE_SQL
 	"SQL");
 #else
@@ -15607,17 +15607,16 @@ int atcommand_version2(
 	const int fd, struct map_session_data* sd,
 	const char* command, const char* message)
 {
-	sprintf(atcmd_output, "Freya version %d.%d.%d %s %s", ATHENA_MAJOR_VERSION, ATHENA_MINOR_VERSION, ATHENA_REVISION,
+	sprintf(atcmd_output, "Freya version %d.%d.%d %s %s", FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION,
 #ifdef USE_SQL
-	"SQL", ATHENA_RELEASE_FLAG ? "beta" : "final");
+	"SQL", FREYA_STATE ? "beta" : "final");
 #else
-	"TXT", ATHENA_RELEASE_FLAG ? "beta" : "final");
+	"TXT", FREYA_STATE ? "beta" : "final");
 #endif /* USE_SQL */
 #ifdef SVN_REVISION
 	if (SVN_REVISION >= 1) // in case of .svn directories have been deleted
 		sprintf(atcmd_output + strlen(atcmd_output), " (SVN rev.: %d)", (int)SVN_REVISION);
 #endif /* SVN_REVISION */
-	sprintf(atcmd_output + strlen(atcmd_output), ", Athena Mod version %d.", ATHENA_MOD_VERSION);
 	clif_displaymessage(fd, atcmd_output);
 
 	return 0;

@@ -9,6 +9,9 @@ Date	Added
 	 - aoe damage is not reflectable
 	* Added: support for the new food SC:s [Harbin]
 	* Removed: some custom scrips that do not belong here [Harbin]
+	* Improved: version management file [Harbin]
+	 - removed useless definations
+	 - updated version numbers
 
 8/27/2006
 	* Updated: Prepped mob database for implementation of the Juperos Quest [Tsuyuki]

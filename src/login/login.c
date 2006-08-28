@@ -2041,13 +2041,13 @@ int parse_login(int fd) {
 		case 0x7530:
 			write_log("Request of the server version: ok (ip: %s)" RETCODE, ip);
 			WPACKETW(0) = 0x7531;
-			WPACKETB(2) = ATHENA_MAJOR_VERSION;
-			WPACKETB(3) = ATHENA_MINOR_VERSION;
-			WPACKETB(4) = ATHENA_REVISION;
-			WPACKETB(5) = ATHENA_RELEASE_FLAG;
-			WPACKETB(6) = ATHENA_OFFICIAL_FLAG;
-			WPACKETB(7) = ATHENA_SERVER_LOGIN;
-			WPACKETW(8) = ATHENA_MOD_VERSION;
+			WPACKETB(2) = FREYA_MAJORVERSION;
+			WPACKETB(3) = FREYA_MINORVERSION;
+			WPACKETB(4) = FREYA_REVISION;
+			WPACKETB(5) = FREYA_STATE;
+			WPACKETB(6) = 0;
+			WPACKETB(7) = FREYA_LOGINVERSION;
+			WPACKETW(8) = 0;
 			SENDPACKET(fd, 10);
 			session[fd]->eof = 1;
 			RFIFOSKIP(fd,2);
@@ -2080,13 +2080,13 @@ int parse_login(int fd) {
 		case 0x7535:
 			write_log("Request of the server version: ok (ip: %s)" RETCODE, ip);
 			WPACKETW(0) = 0x7536;
-			WPACKETB(2) = ATHENA_MAJOR_VERSION;
-			WPACKETB(3) = ATHENA_MINOR_VERSION;
-			WPACKETB(4) = ATHENA_REVISION;
-			WPACKETB(5) = ATHENA_RELEASE_FLAG;
-			WPACKETB(6) = ATHENA_OFFICIAL_FLAG;
-			WPACKETB(7) = ATHENA_SERVER_LOGIN;
-			WPACKETW(8) = ATHENA_MOD_VERSION;
+			WPACKETB(2) = FREYA_MAJORVERSION;
+			WPACKETB(3) = FREYA_MINORVERSION;
+			WPACKETB(4) = FREYA_REVISION;
+			WPACKETB(5) = FREYA_STATE;
+			WPACKETB(6) = 0;
+			WPACKETB(7) = FREYA_LOGINVERSION;
+			WPACKETW(8) = 0;
 #ifdef SVN_REVISION
 			if (SVN_REVISION >= 1) // in case of .svn directories have been deleted
 				WPACKETW(10) = SVN_REVISION;
@@ -4176,20 +4176,20 @@ static inline void save_config_in_log(void) {
 #ifdef TXT_ONLY
 	#ifdef SVN_REVISION
 		if (SVN_REVISION >= 1) // in case of .svn directories have been deleted
-			write_log("The login-server (v%1d.%1d.%1d %s %s, SVN rev. %d) is starting..." RETCODE, ATHENA_MAJOR_VERSION, ATHENA_MINOR_VERSION, ATHENA_REVISION, "TXT", ATHENA_RELEASE_FLAG ? "beta" : "final", (int)SVN_REVISION);
+			write_log("The login-server (v%1d.%1d.%1d %s %s, SVN rev. %d) is starting..." RETCODE, FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION, "TXT", FREYA_STATE ? "beta" : "final", (int)SVN_REVISION);
 		else
-			write_log("The login-server (v%1d.%1d.%1d %s %s) is starting..." RETCODE, ATHENA_MAJOR_VERSION, ATHENA_MINOR_VERSION, ATHENA_REVISION, "TXT", ATHENA_RELEASE_FLAG ? "beta" : "final");
+			write_log("The login-server (v%1d.%1d.%1d %s %s) is starting..." RETCODE, FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION, "TXT", FREYA_STATE ? "beta" : "final");
 	#else
-		write_log("The login-server (v%1d.%1d.%1d %s %s) is starting..." RETCODE, ATHENA_MAJOR_VERSION, ATHENA_MINOR_VERSION, ATHENA_REVISION, "TXT", ATHENA_RELEASE_FLAG ? "beta" : "final");
+		write_log("The login-server (v%1d.%1d.%1d %s %s) is starting..." RETCODE, FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION, "TXT", FREYA_STATE ? "beta" : "final");
 	#endif /* SVN_REVISION */
 #else
 	#ifdef SVN_REVISION
 		if (SVN_REVISION >= 1) // in case of .svn directories have been deleted
-			write_log("The login-server (v%1d.%1d.%1d %s %s, SVN rev. %d) is starting..." RETCODE, ATHENA_MAJOR_VERSION, ATHENA_MINOR_VERSION, ATHENA_REVISION, "SQL", ATHENA_RELEASE_FLAG ? "beta" : "final", (int)SVN_REVISION);
+			write_log("The login-server (v%1d.%1d.%1d %s %s, SVN rev. %d) is starting..." RETCODE, FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION, "SQL", FREYA_STATE ? "beta" : "final", (int)SVN_REVISION);
 		else
-			write_log("The login-server (v%1d.%1d.%1d %s %s) is starting..." RETCODE, ATHENA_MAJOR_VERSION, ATHENA_MINOR_VERSION, ATHENA_REVISION, "SQL", ATHENA_RELEASE_FLAG ? "beta" : "final");
+			write_log("The login-server (v%1d.%1d.%1d %s %s) is starting..." RETCODE, FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION, "SQL", FREYA_STATE ? "beta" : "final");
 	#else
-		write_log("The login-server (v%1d.%1d.%1d %s %s) is starting..." RETCODE, ATHENA_MAJOR_VERSION, ATHENA_MINOR_VERSION, ATHENA_REVISION, "SQL", ATHENA_RELEASE_FLAG ? "beta" : "final");
+		write_log("The login-server (v%1d.%1d.%1d %s %s) is starting..." RETCODE, FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION, "SQL", FREYA_STATE ? "beta" : "final");
 	#endif /* SVN_REVISION */
 #endif /* USE_SQL */
 	write_log("The configuration of the server is set:" RETCODE);
