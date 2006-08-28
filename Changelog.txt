@@ -1,6 +1,9 @@
 
 Date	Added
 
+8/28/2006
+	* Fixed: mammonite damage should ignore weapon element damage modifiers [Harbin]
+
 8/27/2006
 	* Updated: Prepped mob database for implementation of the Juperos Quest [Tsuyuki]
 	* Imported: Missing skill quests from eAthena [Tsuyuki]

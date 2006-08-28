@@ -1,6 +1,6 @@
 // $Id: battle.c 539 2005-11-21 09:58:59Z Yor $
-#include <config.h>
 
+#include <config.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -1039,7 +1039,9 @@ struct Damage battle_calc_weapon_attack(
 					skillratio += 100 * sd->cart_weight / sd->cart_max_weight;
 				break;
 			case MC_MAMMONITE:
-				skillratio += 50 * skill_lv;	// FORMULA: damage * (100+ 50 * skill_lv) / 100
+				skillratio += 50 * skill_lv;
+				s_ele = 0;
+				s_ele_ = 0;
 				flag.cardfix = 0;
 				break;
 			// swordsman
