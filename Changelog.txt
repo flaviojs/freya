@@ -1,7 +1,13 @@
+Note: Don't remove comments of old coders except if code is removed (respect of old coders work).
+      It is not because you can not understand the reason or the language that other coders can not.
+
 
 Date	Added
 
 08/28/06
+	* Fixed: Packet_db.txt: [Yor]
+	         - re-add function definition previously removed (2006-04-04aSakexe: 0x0116, 0x0113) -- thanks to not do a simple copy of other emulator.
+	         - sort new packet by packet number
 	* Fixed: Map-server can now read customed GRF [Yor]
 	* Improved: Reduce number of memmove (a very slow function) when socket is parsed -> less CPU usage (-5%)! [Yor]
 	* Added: Hellion Revenant quest MvP's correct skills [Tsuyuki]
