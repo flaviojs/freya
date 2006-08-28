@@ -666,8 +666,8 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 	if ((skill = pc_checkskill(sd, SA_DRAGONOLOGY)) > 0)
 		sd->paramb[3] += (skill % 2 == 0) ? skill / 2 : (skill + 1) / 2;
 
-	// ステータス変化による基本パラメータ補正
-	if (sd->sc_count) {
+	if(sd->sc_count)
+	{
 		if (sd->sc_data[SC_INCSTR].timer != -1)
 			sd->paramb[0] += sd->sc_data[SC_INCSTR].val1;
 		if (sd->sc_data[SC_CONCENTRATE].timer != -1 && sd->sc_data[SC_QUAGMIRE].timer == -1) { // 集中力向上
@@ -747,23 +747,50 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 			}
 		}
 
-		// New guild skills - Celest
-		if (sd->sc_data[SC_BATTLEORDERS].timer != -1) {
+		if(sd->sc_data[SC_BATTLEORDERS].timer != -1)
+		{
 			sd->paramb[0] += 5;
 			sd->paramb[3] += 5;
 			sd->paramb[4] += 5;
 		}
-		if (sd->sc_data[SC_GUILDAURA].timer != -1) {
-			if (sd->sc_data[SC_GUILDAURA].val4 & 1 << 0)
+
+		if(sd->sc_data[SC_GUILDAURA].timer != -1)
+		{
+			if(sd->sc_data[SC_GUILDAURA].val4 & 1 << 0)
 				sd->paramb[0] += 2;
-			if (sd->sc_data[SC_GUILDAURA].val4 & 1 << 1)
+			if(sd->sc_data[SC_GUILDAURA].val4 & 1 << 1)
 				sd->paramb[2] += 2;
-			if (sd->sc_data[SC_GUILDAURA].val4 & 1 << 2)
+			if(sd->sc_data[SC_GUILDAURA].val4 & 1 << 2)
 				sd->paramb[1] += 2;
-			if (sd->sc_data[SC_GUILDAURA].val4 & 1 << 3)
+			if(sd->sc_data[SC_GUILDAURA].val4 & 1 << 3)
 				sd->paramb[4] += 2;
 		}
-		if (sd->sc_data[SC_INCALLSTATUS].timer != -1) { //Increase all stats by an absolute number
+
+		if(sd->sc_data[SC_STRFOOD].timer != -1)
+			sd->paramb[0] += sd->sc_data[SC_STRFOOD].val1;
+		if(sd->sc_data[SC_AGIFOOD].timer != -1)
+			sd->paramb[1] += sd->sc_data[SC_AGIFOOD].val1;
+		if(sd->sc_data[SC_VITFOOD].timer != -1)
+			sd->paramb[2] += sd->sc_data[SC_VITFOOD].val1;
+		if(sd->sc_data[SC_INTFOOD].timer != -1)
+			sd->paramb[3] += sd->sc_data[SC_INTFOOD].val1;
+		if(sd->sc_data[SC_DEXFOOD].timer != -1)
+			sd->paramb[4] += sd->sc_data[SC_DEXFOOD].val1;
+		if(sd->sc_data[SC_LUKFOOD].timer != -1)
+			sd->paramb[5] += sd->sc_data[SC_LUKFOOD].val1;
+		if(sd->sc_data[SC_HITFOOD].timer != -1)
+			sd->hit += sd->sc_data[SC_HITFOOD].val1;
+		if(sd->sc_data[SC_FLEEFOOD].timer != -1)
+			sd->flee += sd->sc_data[SC_FLEEFOOD].val1;
+		if(sd->sc_data[SC_BATKFOOD].timer != -1)
+			sd->base_atk += sd->sc_data[SC_BATKFOOD].val1;
+//		if(sd->sc_data[SC_WATKFOOD].timer != -1)
+//			sd->weapon_atk += sd->sc_data[SC_WATKFOOD].val1;
+		if(sd->sc_data[SC_MATKFOOD].timer != -1)
+			sd->matk1 += sd->sc_data[SC_MATKFOOD].val1;
+
+		if(sd->sc_data[SC_INCALLSTATUS].timer != -1)
+		{
 			sd->paramb[0] += sd->sc_data[SC_INCALLSTATUS].val1;
 			sd->paramb[1] += sd->sc_data[SC_INCALLSTATUS].val1;
 			sd->paramb[2] += sd->sc_data[SC_INCALLSTATUS].val1;
@@ -3054,11 +3081,8 @@ int status_get_sc_def(struct block_list *bl, int type) {
 	return (sc_def < 0) ? 0 : sc_def;
 }
 
-/*==========================================
- * ステータス異常開始
- *------------------------------------------
- */
-int status_change_start(struct block_list *bl, int type, int val1, int val2, int val3, int val4, int tick, int flag) {
+int status_change_start(struct block_list *bl, int type, int val1, int val2, int val3, int val4, int tick, int flag)
+{
 	struct map_session_data *sd = NULL;
 	struct status_change* sc_data;
 	short *sc_count, *option, *opt1, *opt2, *opt3;
@@ -4113,11 +4137,8 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 	return 0;
 }
 
-/*==========================================
- * ステータス異常全解除
- *------------------------------------------
- */
-void status_change_clear(struct block_list *bl, int type) {
+void status_change_clear(struct block_list *bl, int type)
+{
 	struct status_change* sc_data;
 	short *sc_count, *option, *opt1, *opt2, *opt3;
 	int i;
@@ -4130,18 +4151,42 @@ void status_change_clear(struct block_list *bl, int type) {
 	nullpo_retv(opt2 = status_get_opt2(bl));
 	nullpo_retv(opt3 = status_get_opt3(bl));
 
-	if (*sc_count == 0)
-		return; //No statuses to end
+	if(*sc_count == 0)
+		return;
 
-	for(i = 0; i < SC_MAX; i++) {
-		//Type 0: PC killed -> Place here stats that do not dispel on death.
-		if(sc_data[i].timer == -1 || (type == 0 &&
-			(i == SC_EDP || i == SC_MELTDOWN || i == SC_NOCHAT ||
-			i == SC_TKREST || i == SC_READYSTORM ||
-			i == SC_READYDOWN || i == SC_READYCOUNTER || i == SC_READYTURN ||
-			i == SC_READYDODGE || i == SC_GDSKILLDELAY)))
+	for(i = 0; i < SC_MAX; i++)
+	{
+		if(sc_data[i].timer == -1)
 			continue;
-			status_change_end(bl, i, -1);
+		if(type == 0)
+		{
+			switch(i)
+			{
+				case SC_EDP:
+				case SC_MELTDOWN:
+				case SC_NOCHAT:
+				case SC_TKREST:
+				case SC_READYSTORM:
+				case SC_READYDOWN:
+				case SC_READYCOUNTER:
+				case SC_READYTURN:
+				case SC_READYDODGE:
+				case SC_GDSKILLDELAY:
+				case SC_STRFOOD:
+				case SC_AGIFOOD:
+				case SC_VITFOOD:
+				case SC_INTFOOD:
+				case SC_DEXFOOD:
+				case SC_LUKFOOD:
+				case SC_HITFOOD:
+				case SC_FLEEFOOD:
+				case SC_BATKFOOD:
+				case SC_WATKFOOD:
+				case SC_MATKFOOD:
+					continue;
+			}
+		}
+		status_change_end(bl, i, -1);
 	}
 
 	*opt1 = 0;

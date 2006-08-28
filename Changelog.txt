@@ -3,6 +3,12 @@ Date	Added
 
 8/28/2006
 	* Fixed: mammonite damage should ignore weapon element damage modifiers [Harbin]
+	* Fixed: some issues regarding magic damage reflection [Harbin]
+	 - reflected damage should include attribute damage bonus
+	 - original target should not receive any kind of damage
+	 - aoe damage is not reflectable
+	* Added: support for the new food SC:s [Harbin]
+	* Removed: some custom scrips that do not belong here [Harbin]
 
 8/27/2006
 	* Updated: Prepped mob database for implementation of the Juperos Quest [Tsuyuki]
