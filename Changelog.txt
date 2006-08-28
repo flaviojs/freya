@@ -4,7 +4,6 @@ Date	Added
 8/28/2006
 	* Fixed: mammonite damage should ignore weapon element damage modifiers [Harbin]
 	* Fixed: some issues regarding magic damage reflection [Harbin]
-	 - reflected damage should include attribute damage bonus
 	 - original target should not receive any kind of damage
 	 - aoe damage is not reflectable
 	* Added: support for the new food SC:s [Harbin]
@@ -12,6 +11,9 @@ Date	Added
 	* Improved: version management file [Harbin]
 	 - removed useless definations
 	 - updated version numbers
+	* Fixed: heal and sanctuary skills damage reflection [Harbin]
+	 - checks for dark element
+	 - sanctuary has 50% change to reflect
 
 8/27/2006
 	* Updated: Prepped mob database for implementation of the Juperos Quest [Tsuyuki]

@@ -2176,8 +2176,10 @@ struct Damage battle_calc_magic_attack(
 	else
 		aflag = BF_MAGIC|BF_LONG|BF_SKILL;
 
-	if(skill_num > 0) {
-		switch(skill_num) {	// 基本ダメージ計算(スキルごとに処理)
+	if(skill_num > 0)
+	{
+		switch(skill_num)
+		{
 		case AL_HEAL:
 		case PR_BENEDICTIO:
 			damage = skill_calc_heal(bl, skill_lv) / 2;
@@ -2185,13 +2187,12 @@ struct Damage battle_calc_magic_attack(
 				damage += damage * pc_checkskill(sd, HP_MEDITATIO) * 2 / 100;
 			normalmagic_flag = 0;
 			break;
-		case PR_ASPERSIO:		/* アスペルシオ */
-			damage = 40; //固定ダメージ
+		case PR_ASPERSIO:
+			damage = 40;
 			normalmagic_flag = 0;
 			break;
-		case PR_SANCTUARY:	// サンクチュアリ
+		case PR_SANCTUARY:
 			damage = (skill_lv > 6)? 388 : skill_lv * 50;
-			flag_aoe = 1;
 			normalmagic_flag = 0;
 			blewcount |= 0x10000;
 			break;
@@ -2434,12 +2435,38 @@ struct Damage battle_calc_magic_attack(
 
 	if(tsd && tsd->magic_damage_return > 0 && flag_aoe == 0 && tsd->magic_damage_return > rand()%100)
 	{
-		rdamage += damage + battle_attr_fix(damage, ele, status_get_element(target));
-		if(rdamage < 1)
-			rdamage = 1;
-		clif_damage(target, bl, gettick(), 0, 0, rdamage, 0, 0, 0);
-		battle_damage(target, bl, rdamage, 0);
-		damage = 0;
+		if(status_get_element(target) == 7 && (skill_num == AL_HEAL || skill_num == PR_SANCTUARY))
+		{
+			if(skill_num == PR_SANCTUARY)
+			{
+				if(rand()%100 > 50)
+				{
+					rdamage += -damage;
+					damage = 0;
+					if(rdamage < 1)
+						rdamage = 1;
+					clif_damage(target, bl, gettick(), 0, 0, rdamage, 0, 0, 0);
+					battle_damage(target, bl, rdamage, 0);
+				} else {
+					damage = 0;
+					battle_heal(NULL, target, 0, 0, 0);
+				}
+			} else {
+				rdamage += -damage;
+				damage = 0;
+				if(rdamage < 1)
+					rdamage = 1;
+				clif_damage(target, bl, gettick(), 0, 0, rdamage, 0, 0, 0);
+				battle_damage(target, bl, rdamage, 0);
+			}
+		} else {
+			rdamage += damage;
+			damage = 0;
+			if(rdamage < 1)
+				rdamage = 1;
+			clif_damage(target, bl, gettick(), 0, 0, rdamage, 0, 0, 0);
+			battle_damage(target, bl, rdamage, 0);
+		}
 	}
 
 	md.damage = damage;
