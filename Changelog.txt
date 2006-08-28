@@ -2,6 +2,10 @@
 Date	Added
 
 8/28/2006
+	* Enabled: The other/wedding.txt, and other/books.txt scripts automatically [Tsuyuki]
+	* Moved: IceCream.txt to the npc/merchants folder [Tsuyuki]
+	* Removed: Some more customs NPCs, and removed them from map_athena.conf as well[Tsuyuki]
+	* Removed: Custom NPCs from map_athena.conf that Harbin removed [Tsuyuki]
 	* Fixed: mammonite damage should ignore weapon element damage modifiers [Harbin]
 	* Fixed: some issues regarding magic damage reflection [Harbin]
 	 - original target should not receive any kind of damage
