@@ -20,7 +20,7 @@ int chrif_changegm(int id, const char *pass, int len);
 int chrif_changeemail(int id, const char *actual_email, const char *new_email);
 int chrif_changepassword(int id, const char *old_password, const char *new_password);
 void chrif_updatefame(int char_id, unsigned char rank_id, int points);
-int chrif_char_ask_name(int id, char * character_name, short operation_type, int year, int month, int day, int hour, int minute, int second);
+int chrif_char_ask_name(int id, char * character_name, short operation_type, int year_gmlvl, int month, int day, int hour, int minute, int second);
 void chrif_saveaccountreg2(struct map_session_data *sd);
 void chrif_saveglobalreg(struct map_session_data *sd);
 int chrif_reloadGMdb(void);

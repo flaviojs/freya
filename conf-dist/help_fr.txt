@@ -275,16 +275,16 @@ key:pvp,groups,guild,party,woe,gvg,groupes,guilde,groupe
 @killable          :@killable - Rend votre personnage tuable.
 @charkillable      :@charkillable <nom personnage|numéro_compte> - Rend un personnage tuable.
 key:groups,guild,party,groupes,guilde,groupe
-                  1: 
-                  1:--- COMMANDES DE GROUPES ---
+                  2: 
+                  2:--- COMMANDES DE GROUPES ---
 @party             :@party "nom_du_groupe"|<nom_du_groupe> - Crée un groupe.
 @guild             :@guild "Nom_désiré_de_la_guide"|<Nom_désiré_de_la_guide> - Crée une guilde avec le nom désiré (les espaces sont autorisés)
 @guildlevelup      :@guildlvup/@guildlvlup/@guildlevelup <nb_de_niveaux> - Augmense le nombre de niveaux de la Guilde.
 @guildrecall       :@guildrecall <nom|id_de_la_guilde> - Teleporte tous les personnages présents d'une guilde sur votre position.
 @partyrecall       :@partyrecall <nom|id_du_groupe> - Teleporte tous les personnages présents d'un groupe sur votre position.
 key:pet,pets,egg,oeuf
-                  1: 
-                  1:--- COMMANDES CONCERNANT LES PETS ---
+                  2: 
+                  2:--- COMMANDES CONCERNANT LES PETS ---
 @makeegg           :@makeegg/@createegg <pet_id> - Vous donne un oeuf du monstre specifié.
 @hatch             :@hatch/@incubate/@incubator/@pet_incubator/@petincubator/@petbirth/@pet_birth - Fait éclore un oeuf que vous avez dans votre inventaire.
 @petfriendly       :@petfriendly <#> - Fixe la valeur d'amitié de votre pet (0-1000) 1000 = Max
@@ -349,12 +349,12 @@ key:remote,char,character,personnage
 @undisguiseall     :@charundisguiseall/@undisguiseall - Annule le déguisement de tous les joueurs.
 @charchangelook    :@charchangelook <nom|ID_de_l'equipement> <nom personnage|numéro_compte> - Change le look (uniquement le visuel) d'un personnage avec un équipement.
 @charchangesex     :@charchangesex <nom personnage|numéro_compte> - Changes sex of a player (all characters of the account).
-@charblock         :@charblock/@block <nom personnage|numéro_compte> - Blocks definitively an account.
-@charunblock       :@charunblock/@unblock <nom personnage|numéro_compte> - Unblocks an account.
-@charban           :@charban/@ban/@banish/@charbanish <time> <nom personnage|numéro_compte> - Bans temporarily an account.
-@charban           :	time usage: adjustement (+/- value) and element (y/a, m, d/j, h, mn, s)
-@charban           :	Example: @ban +1m-2mn1s-6y testplayer
-@charunban         :@charunban/@unban/@unbanish/@charunbanish <nom personnage|numéro_compte> - Unbans an account.
+@charblock         :@charblock/@block <nom personnage|numéro_compte> - Bloque un compte définitivement.
+@charunblock       :@charunblock/@unblock <nom personnage|numéro_compte> - Débloque un compte.
+@charban           :@charban/@ban/@banish/@charbanish <durée> <nom personnage|numéro_compte> - Bannis un compte temporairement.
+@charban           :	durée: ajustement (+/- valeur) et élément (y/a, m, d/j, h, mn, s)
+@charban           :	Exemple: @ban +1m-2mn1s-6y testplayer
+@charunban         :@charunban/@unban/@unbanish/@charunbanish <nom personnage|numéro_compte> - Débannis un compte.
 @jail              :@jail/@prison <time> <nom personnage|numéro_compte> - Sends specified character in jails for a limited time
 @jail              :	(or adjust jail time of the specified character).
 @jail              :	time usage: adjustement (+/- value) and element (y/a, m, d/j, h, mn, s)
@@ -418,8 +418,9 @@ key:admin,administration,administrateur
 @reloadskilldb     :@reloadskilldb - Reloads skills definition database (commande d'administration).
 @reloadscript      :@reloadscript|@rehash - Recharge tous les scripts (commande d'administration). Il faut mieux redémarrer le map-server.
 //@reloadgmdb        :@reloadgmdb - Reloads GM levels (commande d'administration). // removed, it's automatic now
-@adjgmlvl          :@adjgmlvl/@setgmlvl <niveau> <nom personnage|numéro_compte> - Modifie temporairement le niveau d'un joueur en ligne.
-@adjcmdlvl         :@adjcmdlvl/@setcmdlvl <niveau> <commande> - Modifie le niveau d'une commande pour la session en cours du programme.
+@adjgmlvl          :@adjgmlvl/@setgmlvl/@adjgmlevel/@setgmlevel <niveau> <nom personnage|numéro_compte> - Modifie temporairement le niveau d'un joueur en ligne.
+@adjgmlvl2         :@adjgmlvl2/@setgmlvl2/@adjgmlevel2/@setgmlevel2 <niveau> <nom personnage|numéro_compte> - Modifie (définitivement) le niveau d'un joueur!
+@adjcmdlvl         :@adjcmdlvl/@setcmdlvl/@adjcmdlevel/@setcmdlevel <niveau> <commande> - Modifie le niveau d'une commande pour la session en cours du programme.
                  99: 
 @gat               :@gat - Pour le débugage (Vous visualisez les 'gat' autour de vous).
 @packet            :@packet - Pour le débugage (différents packets, dépendant du code source).

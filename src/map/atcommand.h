@@ -249,6 +249,7 @@ enum AtCommandType {
 	AtCommand_MobSearch,
 	AtCommand_CleanMap,
 	AtCommand_AdjGmLvl,
+	AtCommand_AdjGmLvl2,
 	AtCommand_AdjCmdLvl,
 	AtCommand_Trade,
 	AtCommand_Send,

@@ -4,6 +4,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+08/29/06
+	* Added: @adjgmlvl2/@setgmlvl2/@adjgmlevel2/@setgmlevel2 - Permanently modify GM level of a player! [Yor]
+	         note: need to be checked, concern a lot of files!
+
 08/28/06
 	* Reverted: 'Loki's Wail/Classical Pluck' skill_nocast_db fix. Mainly designed for WoE/GvG maps [Proximus]
 		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=51467&highlight=classical+pluck

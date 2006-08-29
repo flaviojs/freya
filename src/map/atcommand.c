@@ -282,6 +282,7 @@ ATCOMMAND_FUNC(clsweather);
 ATCOMMAND_FUNC(mobsearch);
 ATCOMMAND_FUNC(cleanmap);
 ATCOMMAND_FUNC(adjgmlvl);
+ATCOMMAND_FUNC(adjgmlvl2);
 ATCOMMAND_FUNC(adjcmdlvl);
 ATCOMMAND_FUNC(trade);
 ATCOMMAND_FUNC(send);
@@ -937,10 +938,18 @@ static struct AtCommandInfo {
 //	{ AtCommand_Shuffle,               "@shuffle",              99, atcommand_shuffle },
 //	{ AtCommand_Maintenance,           "@maintenance",          99, atcommand_maintenance },
 	{ AtCommand_MiscEffect,            "@misceffect",           60, atcommand_misceffect },
-	{ AtCommand_AdjGmLvl,              "@adjgmlvl",             99, atcommand_adjgmlvl },
-	{ AtCommand_AdjGmLvl,              "@setgmlvl",             99, atcommand_adjgmlvl },
+	{ AtCommand_AdjGmLvl,              "@adjgmlvl",             80, atcommand_adjgmlvl },
+	{ AtCommand_AdjGmLvl,              "@setgmlvl",             80, atcommand_adjgmlvl },
+	{ AtCommand_AdjGmLvl,              "@adjgmlevel",           80, atcommand_adjgmlvl },
+	{ AtCommand_AdjGmLvl,              "@setgmlevel",           80, atcommand_adjgmlvl },
+	{ AtCommand_AdjGmLvl2,             "@adjgmlvl2",            99, atcommand_adjgmlvl2 },
+	{ AtCommand_AdjGmLvl2,             "@setgmlvl2",            99, atcommand_adjgmlvl2 },
+	{ AtCommand_AdjGmLvl2,             "@adjgmlevel2",          99, atcommand_adjgmlvl2 },
+	{ AtCommand_AdjGmLvl2,             "@setgmlevel2",          99, atcommand_adjgmlvl2 },
 	{ AtCommand_AdjCmdLvl,             "@adjcmdlvl",            99, atcommand_adjcmdlvl },
 	{ AtCommand_AdjCmdLvl,             "@setcmdlvl",            99, atcommand_adjcmdlvl },
+	{ AtCommand_AdjCmdLvl,             "@adjcmdlevel",          99, atcommand_adjcmdlvl },
+	{ AtCommand_AdjCmdLvl,             "@setcmdlevel",          99, atcommand_adjcmdlvl },
 	{ AtCommand_Trade,                 "@trade",                60, atcommand_trade },
 	{ AtCommand_Send,                  "@send",                 60, atcommand_send },
 	{ AtCommand_SetBattleFlag,         "@setbattleflag",        99, atcommand_setbattleflag },
@@ -1946,6 +1955,14 @@ void set_default_msg() {
 	add_msg(672, "New password must be different from the old password.");
 	add_msg(673, "Your password has NOT been changed (impossible to change it).");
 	add_msg(674, "Your password has been changed to '%s'.");
+
+	add_msg(675, "Login-server has been asked to change the GM level of the player '%s'.");
+	add_msg(676, "Your GM level don't authorize you to change the GM level of the player '%s'.");
+	add_msg(677, "Login-server is offline. Impossible to change the GM level of the player '%s'.");
+	add_msg(678, "Player (account: %d) that you want to change the GM level doesn't exist.");
+	add_msg(679, "You are not authorised to change the GM level of this player (account: %d).");
+	add_msg(680, "The player (account: %d) already has the specified GM level.");
+	add_msg(681, "GM level of the player (account: %d) changed to %d.");
 
 	return;
 }
@@ -14939,8 +14956,8 @@ int atcommand_adjgmlvl(
 	int newlev;
 	struct map_session_data *pl_sd;
 
-	if (!message || !*message || sscanf(message, "%d %[^\r\n]", &newlev, atcmd_name) != 2 || newlev < 0) {
-		clif_displaymessage(fd, "usage: @adjgmlvl/@setgmlvl <lvl:0+> <player>.");
+	if (!message || !*message || sscanf(message, "%d %[^\r\n]", &newlev, atcmd_name) != 2 || newlev < 0 || newlev > 99) {
+		clif_displaymessage(fd, "usage: @adjgmlvl/@setgmlvl/@adjgmlevel/@setgmlevel <lvl:0-99> <player>.");
 		return -1;
 	}
 
@@ -14948,7 +14965,7 @@ int atcommand_adjgmlvl(
 		newlev = sd->GM_level;
 
 	if ((pl_sd = map_nick2sd(atcmd_name)) != NULL || ((pl_sd = map_id2sd(atoi(atcmd_name))) != NULL && pl_sd->state.auth)) {
-		if (sd->GM_level >= pl_sd->GM_level) { // only lower or same GM level
+		if (sd->GM_level > pl_sd->GM_level || sd == pl_sd) { // only lower or same GM level (you can change TEMPORARILY you own GM level for some tests)
 			if (pl_sd->GM_level != newlev) {
 				sprintf(atcmd_output, "GM level of the player temporarily changed from %d to %d.", pl_sd->GM_level, newlev);
 				clif_displaymessage(fd, atcmd_output);
@@ -14965,6 +14982,53 @@ int atcommand_adjgmlvl(
 		clif_displaymessage(fd, msg_txt(3)); // Character not found.
 		return -1;
 	}
+
+	return 0;
+}
+
+/*==========================================
+ * @adjgmlvl2/@setgmlvl2
+ *
+ * Permanently modify a GM level of a player!
+ *------------------------------------------
+ */
+int atcommand_adjgmlvl2(
+	const int fd, struct map_session_data* sd,
+	const char* command, const char* message)
+{
+	int newlev;
+	struct map_session_data *pl_sd;
+
+	if (!message || !*message || sscanf(message, "%d %[^\r\n]", &newlev, atcmd_name) != 2 || newlev < 0 || newlev > 99) {
+		clif_displaymessage(fd, "usage: @adjgmlvl2/@setgmlvl2/@adjgmlevel2/@setgmlevel2 <lvl:0-99> <player>.");
+		return -1;
+	}
+
+	if (newlev > sd->GM_level) // can not give upper GM level than its level
+		newlev = sd->GM_level;
+
+	// try to foun dplayer online to check immediatly
+	if ((pl_sd = map_nick2sd(atcmd_name)) != NULL || ((pl_sd = map_id2sd(atoi(atcmd_name))) != NULL && pl_sd->state.auth)) {
+		if (sd != pl_sd) { // you are not authorised to change your own GM level PERMANENTLY
+			if (sd->GM_level > pl_sd->GM_level) { // only lower GM level
+				if (pl_sd->GM_level == newlev) {
+					clif_displaymessage(fd, "This player already has this GM level.");
+					return -1;
+				}
+				// we can try to modify
+			} else {
+				clif_displaymessage(fd, msg_txt(81)); // Your GM level don't authorize you to do this action on this player.
+				return -1;
+			}
+		} else {
+			clif_displaymessage(fd, "You can not change your own GM level permanently.");
+			return -1;
+		}
+	} // else if not found, we can try to modify
+
+	// if not stopped before, try to modify
+	chrif_char_ask_name(sd->status.account_id, atcmd_name, 6, newlev, 0, 0, 0, 0, 0); // type: 6 - Change GM level
+	clif_displaymessage(fd, msg_txt(88)); // Character name sends to char-server to ask it.
 
 	return 0;
 }

@@ -1627,6 +1627,102 @@ int parse_fromchar(int fd) {
 			RFIFOSKIP(fd, 70);
 			break;
 
+		/* Receiving of map-server via char-server a GM level change resquest */
+		case 0x272f: // 0x272f <account_id>.L <accound_id_of_GM>.L <GM_level>.B (account_id_of_GM = -1 -> script)
+			if (RFIFOREST(fd) < 11)
+				return 0;
+			server_freezeflag[id] = anti_freeze_counter; /* Char anti-freeze system. Counter. 6 ok, 5...0 frozen - only on valid packet*/
+		  {
+			char gm_level, gm_level_of_who_ask = -1;
+			acc = RFIFOL(fd,2);
+			gm_level = (char)RFIFOB(fd,10);
+			// get GM level of who ask
+			if (RFIFOL(fd,6) == -1) { // if script
+				gm_level_of_who_ask = 100;
+			} else {
+				i = search_account_index2(RFIFOL(fd,6));
+				if (i != -1)
+					gm_level_of_who_ask = auth_dat[i].level;
+			}
+			if (gm_level_of_who_ask == -1) { // if nobody ask????
+				write_log("Char-server '%s': Request of GM level change: GM who asks doesn't exist (account of the GM: %d, ip: %s)." RETCODE,
+				          server[id].name, (int)RFIFOL(fd,6), ip);
+				// note: no answer because no GM
+			} else {
+				// work on player to modify
+				i = search_account_index2(acc);
+				/* if account found */
+				if (i != -1) {
+					// check if it's a server account
+					if (auth_dat[i].sex == 2) {
+						write_log("Char-server '%s': Request of GM level change: account is Server account (Account: %d, suggested Level %d, ip: %s)." RETCODE,
+						          server[id].name, acc, (int)RFIFOB(fd,10), ip);
+						// do answer only if not a script
+						if (RFIFOL(fd,6) != -1) {
+							WPACKETW(0) = 0x272f; // 0x272f/0x2b21 <account_id>.L <GM_level>.B <accound_id_of_GM>.L (GM_level = -1 -> player not found, -2: gm level doesn't authorise you, -3: already right value; account_id_of_GM = -1 -> script)
+							WPACKETL(2) = acc;
+							WPACKETB(6) = -1; // GM level == -1 -> not found
+							WPACKETL(7) = RFIFOL(fd,6); // who want do operation: -1, script. other: account_id of GM
+							charif_sendall(11);
+						}
+					// check difference of levels
+					} else if (auth_dat[i].level >= gm_level_of_who_ask) {
+						write_log("Char-server '%s': Request of GM level change: GM doesn't have authorisation to modify this player (Player's account: %d (lvl: %d), suggested level %d, GM's account: %d (lvl: %d), ip: %s)." RETCODE,
+						          server[id].name, acc, (int)auth_dat[i].level, (int)RFIFOB(fd,10), RFIFOL(fd,6), (int)gm_level_of_who_ask, ip);
+						// do answer only if not a script
+						if (RFIFOL(fd,6) != -1) {
+							WPACKETW(0) = 0x272f; // 0x272f/0x2b21 <account_id>.L <GM_level>.B <accound_id_of_GM>.L (GM_level = -1 -> player not found, -2: gm level doesn't authorise you, -3: already right value; account_id_of_GM = -1 -> script)
+							WPACKETL(2) = acc;
+							WPACKETB(6) = -2; // GM level == -2: gm level doesn't authorise you
+							WPACKETL(7) = RFIFOL(fd,6); // who want do operation: -1, script. other: account_id of GM
+							charif_sendall(11);
+						}
+					} else if (auth_dat[i].level == gm_level || gm_level < 0 || gm_level > 99) {
+						write_log("Char-server '%s': Request of GM level change: Player already have the right value (Player's account: %d, level %d, ip: %s)." RETCODE,
+						          server[id].name, acc, (int)gm_level, ip);
+						// do answer only if not a script
+						if (RFIFOL(fd,6) != -1) {
+							WPACKETW(0) = 0x272f; // 0x272f/0x2b21 <account_id>.L <GM_level>.B <accound_id_of_GM>.L (GM_level = -1 -> player not found, -2: gm level doesn't authorise you, -3: already right value; account_id_of_GM = -1 -> script)
+							WPACKETL(2) = acc;
+							WPACKETB(6) = -3; // GM level == -3: already right value
+							WPACKETL(7) = RFIFOL(fd,6); // who want do operation: -1, script. other: account_id of GM
+							charif_sendall(11);
+						}
+					} else {
+						write_log("Char-server '%s': Request of GM level change: ok (Player's account: %d, level %d->%d, ip: %s)." RETCODE,
+						          server[id].name, acc, (int)auth_dat[i].level, (int)gm_level, ip);
+						// do answer only if not a script
+						if (RFIFOL(fd,6) != -1) {
+							WPACKETW(0) = 0x272f; // 0x272f/0x2b21 <account_id>.L <GM_level>.B <accound_id_of_GM>.L (GM_level = -1 -> player not found, -2: gm level doesn't authorise you, -3: already right value; account_id_of_GM = -1 -> script)
+							WPACKETL(2) = acc;
+							WPACKETB(6) = gm_level; // GM level
+							WPACKETL(7) = RFIFOL(fd,6); // who want do operation: -1, script. other: account_id of GM
+							charif_sendall(11);
+						}
+						/* send GM level to char-server and map server */
+						send_GM_account(acc, gm_level);
+						// Change GM level
+						auth_dat[i].level = gm_level;
+						// Save
+						save_account(i, 1);
+					}
+				/* if account not found */
+				} else {
+					write_log("Char-server '%s': Request of GM level change: unknown account (account: %d, ip: %s)." RETCODE, server[id].name, acc, ip);
+					// do answer only if not a script
+					if (RFIFOL(fd,6) != -1) {
+						WPACKETW(0) = 0x272f; // 0x272f/0x2b21 <account_id>.L <GM_level>.B <accound_id_of_GM>.L (GM_level = -1 -> player not found, -2: gm level doesn't authorise you, -3: already right value; account_id_of_GM = -1 -> script)
+						WPACKETL(2) = acc;
+						WPACKETB(6) = -1; // GM level == -1 -> not found
+						WPACKETL(7) = RFIFOL(fd,6); // who want do operation: -1, script. other: account_id of GM
+						charif_sendall(11);
+					}
+				}
+			}
+		  }
+			RFIFOSKIP(fd,11);
+			return 0;
+
 		default:
 		  {
 			FILE *logfp;

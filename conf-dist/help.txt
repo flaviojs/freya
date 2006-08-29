@@ -275,16 +275,16 @@ key:pvp,groups,guild,party,woe,gvg
 @killable          :@killable - Makes your character killable.
 @charkillable      :@charkillable <char name|account_id> - Makes another character killable.
 key:groups,guild,party
-                  1: 
-                  1:--- GROUPS CMD ---
+                  2: 
+                  2:--- GROUPS CMD ---
 @party             :@party "party_name"|<party_name> - Create a party.
 @guild             :@guild "Desired guild name"|<Desired guild name> - Creates a guild with the desired name (Spaces are allowed)
 @guildlevelup      :@guildlvup/@guildlvlup/@guildlevelup <#_of_levels> - Raises Guild by desired number of levels.
 @guildrecall       :@guildrecall <guild_name|guild_id> - Warps all online characters of a guild to you.
 @partyrecall       :@partyrecall <party_name|party_id> - Warps all online characters of a party to you.
 key:pet,pets,egg
-                  1: 
-                  1:--- PETS CMD ---
+                  2: 
+                  2:--- PETS CMD ---
 @makeegg           :@makeegg/@createegg <pet_id> - Gives pet egg for monster ID in pet DB.
 @hatch             :@hatch/@incubate/@incubator/@pet_incubator/@petincubator/@petbirth/@pet_birth - Creates a pet from your inventory eggs list.
 @petfriendly       :@petfriendly <#> - Sets pet friendly amount (0-1000) 1000 = Max
@@ -418,8 +418,9 @@ key:admin,administration,administrator
 @reloadskilldb     :@reloadskilldb - Reloads skills definition database (admin command).
 @reloadscript      :@reloadscript|@rehash - Reloads all scripts (admin command). It's better to restart map-server.
 //@reloadgmdb        :@reloadgmdb - Reloads GM levels (admin command). // removed, it's automatic now
-@adjgmlvl          :@adjgmlvl/@setgmlvl <lvl> <char name|account_id> - Temporarily modify GM level of an online player.
-@adjcmdlvl         :@adjcmdlvl/@setcmdlvl <lvl> <command> - Modify level of a command for the actual session of the software.
+@adjgmlvl          :@adjgmlvl/@setgmlvl/@adjgmlevel/@setgmlevel <lvl> <char name|account_id> - Temporarily modify GM level of an online player.
+@adjgmlvl2         :@adjgmlvl2/@setgmlvl2/@adjgmlevel2/@setgmlevel2 <lvl> <char name|account_id> - Permanently modify GM level of a player!
+@adjcmdlvl         :@adjcmdlvl/@setcmdlvl/@adjcmdlevel/@setcmdlevel <lvl> <command> - Modify level of a command for the actual session of the software.
                  99: 
 @gat               :@gat - For debugging (you inspect around gat).
 @packet            :@packet - For debugging (packet variety, depends of the source code).

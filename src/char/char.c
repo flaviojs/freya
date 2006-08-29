@@ -3535,6 +3535,17 @@ int parse_tologin(int fd) {
 			RFIFOSKIP(fd, 38);
 			break;
 
+		// Answer of login-server after a request to change a gm level from a map-server
+		case 0x272f: // 0x272f/0x2b21 <account_id>.L <GM_level>.B <accound_id_of_GM>.L (GM_level = -1 -> player not found, -2: gm level doesn't authorise you, -3: already right value; account_id_of_GM = -1 -> script)
+			if (RFIFOREST(fd) < 11)
+				return 0;
+			// transmit answer to all map-servers
+			WPACKETW(0) = 0x2b21; // 0x272f/0x2b21 <account_id>.L <GM_level>.B <accound_id_of_GM>.L (GM_level = -1 -> player not found, -2: gm level doesn't authorise you, -3: already right value; account_id_of_GM = -1 -> script)
+			memcpy(WPACKETP(2), RFIFOP(fd,2), 11 - 2);
+			mapif_sendall(11);
+			RFIFOSKIP(fd, 11);
+			break;
+
 		// Account deletion notification (from login-server)
 		case 0x2730:
 			if (RFIFOREST(fd) < 6)
@@ -4281,17 +4292,20 @@ int parse_frommap(int fd) {
 			if (i < 0) { // -1: no char with this name, -2: exact sensitive name not found
 				i = 0;
 				for(j = 0; j < char_num; j++)
-					if (char_dat[j].account_id == account_id) {
+					if (char_dat[j].account_id == account_id && char_dat[j].sex != 2) { // if not a server account
 						strncpy(character_name_found, char_dat[j].name, 24);
 						character_name_found[24] = '\0';
 						i = 1;
 						break;
 					}
 			} else {
-				account_id = char_dat[i].account_id;
-				strncpy(character_name_found, char_dat[i].name, 24);
-				character_name_found[24] = '\0';
-				i = 1;
+				if (char_dat[i].sex != 2) { // if not a server account
+					account_id = char_dat[i].account_id;
+					strncpy(character_name_found, char_dat[i].name, 24);
+					character_name_found[24] = '\0';
+					i = 1;
+				} else
+					i = 0;
 			}
 #ifdef USE_SQL
 			// if not found in memory
@@ -4338,7 +4352,7 @@ int parse_frommap(int fd) {
 								WPACKETW( 0) = 0x2b0f; // answer
 								WPACKETL( 2) = acc; // who want do operation
 								memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 								WPACKETW(32) = 0; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 								SENDPACKET(fd, 34);
 							}
@@ -4348,7 +4362,7 @@ int parse_frommap(int fd) {
 								WPACKETW( 0) = 0x2b0f; // answer
 								WPACKETL( 2) = acc; // who want do operation
 								memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 								WPACKETW(32) = 3; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 								SENDPACKET(fd, 34);
 							}
@@ -4358,7 +4372,7 @@ int parse_frommap(int fd) {
 							WPACKETW( 0) = 0x2b0f; // answer
 							WPACKETL( 2) = acc; // who want do operation
 							memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-							WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+							WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 							WPACKETW(32) = 2; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 							SENDPACKET(fd, 34);
 						}
@@ -4382,7 +4396,7 @@ int parse_frommap(int fd) {
 								WPACKETW( 0) = 0x2b0f; // answer
 								WPACKETL( 2) = acc; // who want do operation
 								memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 								WPACKETW(32) = 0; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 								SENDPACKET(fd, 34);
 							}
@@ -4392,7 +4406,7 @@ int parse_frommap(int fd) {
 								WPACKETW( 0) = 0x2b0f; // answer
 								WPACKETL( 2) = acc; // who want do operation
 								memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 								WPACKETW(32) = 3; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 								SENDPACKET(fd, 34);
 							}
@@ -4402,7 +4416,7 @@ int parse_frommap(int fd) {
 							WPACKETW( 0) = 0x2b0f; // answer
 							WPACKETL( 2) = acc; // who want do operation
 							memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-							WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+							WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 							WPACKETW(32) = 2; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 							SENDPACKET(fd, 34);
 						}
@@ -4420,7 +4434,7 @@ int parse_frommap(int fd) {
 								WPACKETW( 0) = 0x2b0f; // answer
 								WPACKETL( 2) = acc; // who want do operation
 								memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 								WPACKETW(32) = 0; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 								SENDPACKET(fd, 34);
 							}
@@ -4430,7 +4444,7 @@ int parse_frommap(int fd) {
 								WPACKETW( 0) = 0x2b0f; // answer
 								WPACKETL( 2) = acc; // who want do operation
 								memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 								WPACKETW(32) = 3; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 								SENDPACKET(fd, 34);
 							}
@@ -4440,7 +4454,7 @@ int parse_frommap(int fd) {
 							WPACKETW( 0) = 0x2b0f; // answer
 							WPACKETL( 2) = acc; // who want do operation
 							memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-							WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+							WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 							WPACKETW(32) = 2; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 							SENDPACKET(fd, 34);
 						}
@@ -4457,7 +4471,7 @@ int parse_frommap(int fd) {
 								WPACKETW( 0) = 0x2b0f; // answer
 								WPACKETL( 2) = acc; // who want do operation
 								memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 								WPACKETW(32) = 0; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 								SENDPACKET(fd, 34);
 							}
@@ -4467,7 +4481,7 @@ int parse_frommap(int fd) {
 								WPACKETW( 0) = 0x2b0f; // answer
 								WPACKETL( 2) = acc; // who want do operation
 								memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 								WPACKETW(32) = 3; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 								SENDPACKET(fd, 34);
 							}
@@ -4477,7 +4491,7 @@ int parse_frommap(int fd) {
 							WPACKETW( 0) = 0x2b0f; // answer
 							WPACKETL( 2) = acc; // who want do operation
 							memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-							WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+							WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 							WPACKETW(32) = 2; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 							SENDPACKET(fd, 34);
 						}
@@ -4495,7 +4509,7 @@ int parse_frommap(int fd) {
 								WPACKETW( 0) = 0x2b0f; // answer
 								WPACKETL( 2) = acc; // who want do operation
 								memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 								WPACKETW(32) = 0; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 								SENDPACKET(fd, 34);
 							}
@@ -4505,7 +4519,7 @@ int parse_frommap(int fd) {
 								WPACKETW( 0) = 0x2b0f; // answer
 								WPACKETL( 2) = acc; // who want do operation
 								memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 								WPACKETW(32) = 3; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 								SENDPACKET(fd, 34);
 							}
@@ -4515,7 +4529,46 @@ int parse_frommap(int fd) {
 							WPACKETW( 0) = 0x2b0f; // answer
 							WPACKETL( 2) = acc; // who want do operation
 							memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-							WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+							WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
+							WPACKETW(32) = 2; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
+							SENDPACKET(fd, 34);
+						}
+					break;
+				case 6: // changeGMlevel
+					if (acc == -1 || isGM(acc) >= isGM(account_id)) {
+						if (login_fd > 0) { // don't send request if no login-server
+							WPACKETW(0) = 0x272f; // 0x272f <account_id>.L <accound_id_of_GM>.L <GM_level>.B (account_id_of_GM = -1 -> script)
+							WPACKETL(2) = account_id; // account value
+							WPACKETL(6) = acc; // who want do operation
+							WPACKETB(10) = RFIFOB(fd, 32); // New GM level
+							SENDPACKET(login_fd, 11);
+//							printf("char : GM level change -> login: account %d, new level: %d \n", account_id, (int)RFIFOB(fd, 32));
+							// send answer if a player ask, not if the server ask
+							if (acc != -1) {
+								WPACKETW( 0) = 0x2b0f; // answer
+								WPACKETL( 2) = acc; // who want do operation
+								memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
+								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
+								WPACKETW(32) = 0; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
+								SENDPACKET(fd, 34);
+							}
+						} else
+							// send answer if a player ask, not if the server ask
+							if (acc != -1) {
+								WPACKETW( 0) = 0x2b0f; // answer
+								WPACKETL( 2) = acc; // who want do operation
+								memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
+								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
+								WPACKETW(32) = 3; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
+								SENDPACKET(fd, 34);
+							}
+					} else
+						// send answer if a player ask, not if the server ask
+						if (acc != -1) {
+							WPACKETW( 0) = 0x2b0f; // answer
+							WPACKETL( 2) = acc; // who want do operation
+							memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
+							WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 							WPACKETW(32) = 2; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 							SENDPACKET(fd, 34);
 						}
@@ -4528,7 +4581,7 @@ int parse_frommap(int fd) {
 					WPACKETW( 0) = 0x2b0f; // answer
 					WPACKETL( 2) = acc; // who want do operation
 					memcpy(WPACKETP(6), character_name, 24);
-					WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+					WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 					WPACKETW(32) = 1; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 					SENDPACKET(fd, 34);
 				}

@@ -117,6 +117,35 @@ void pc_set_gm_level(int account_id, unsigned char level) {
 	return;
 }
 
+void pc_set_gm_level_by_gm(int account_id, signed char level, int account_id_of_gm) { // just to display message to gm if online here
+	char output[MAX_MSG_LEN];
+	struct map_session_data *sd;
+
+	// display message
+	if (account_id_of_gm != -1) {
+		// search if gm on this server
+		if ((sd = map_id2sd(account_id_of_gm)) != NULL && sd->state.auth) {
+			switch (level) {
+			case -1: // player not found
+				sprintf(output, msg_txt(678), account_id); // Player (account: %d) that you want to change the GM level doesn't exist.
+				break;
+			case -2: // gm level doesn't authorise you
+				sprintf(output, msg_txt(679), account_id); // You are not authorised to change the GM level of this player (account: %d).
+				break;
+			case -3: // already right value
+				sprintf(output, msg_txt(680), account_id); // The player (account: %d) already has the specified GM level.
+				break;
+			default:
+				sprintf(output, msg_txt(681), account_id, level); // GM level of the player (account: %d) changed to %d.
+				break;
+			}
+			clif_displaymessage(sd->fd, output);
+		}
+	}
+
+	return;
+}
+
 int pc_iskiller(struct map_session_data *src, struct map_session_data *target) {
 	nullpo_retr(0, src);
 
