@@ -14,6 +14,12 @@ Date	Added
 	* Fixed: magnum break should give +20% fire damage bonus for 10 seconds [Harbin]
 	 - source: http://ragnainfo.net/forums/viewtopic.php?t=104874
 	* Fixed: shockwave trap's sp damage should work in gvg maps too [Harbin]
+	* Fixed: vultures eye should effect the attack range of blitz beat [Harbin]
+	 - source: http://www.rocards.de/Hunter.rc#blitz & http://opensvn.csie.org/EnglishTranslation/data/skilldesctable.txt
+	* Fixed: some marionette control issues [Harbin]
+	 - base level difference between caster and target should be equal or less than 5
+	 - target can't be gypsy or clown
+	 - source: http://ragnainfo.net/forums/viewtopic.php?t=28669
 
 8/28/2006
 	* Enabled: The other/wedding.txt, and other/books.txt scripts automatically [Tsuyuki]

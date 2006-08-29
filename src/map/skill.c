@@ -582,7 +582,17 @@ int skill_get_inf(int id) { skill_chk2(id); return (id < MAX_SKILL) ? skill_db[i
 int skill_get_pl(int id) { skill_get2(skill_db[id].pl, id); }
 int skill_get_nk(int id) { skill_get2(skill_db[id].nk, id); }
 int skill_get_max(int id) { skill_chk2(id); return (id < MAX_SKILL) ? skill_db[id].max : guild_skill_get_max(id); }
-int skill_get_range(int id, int lv) { skill_chk(id, lv); return (id < MAX_SKILL) ? skill_db[id].range[lv-1] : guild_skill_get_range(id); }
+
+int skill_get_range(int id, int lv, int vulture_level)
+{
+	skill_chk(id, lv);
+
+	if(id == HT_BLITZBEAT && vulture_level > 0)
+		return skill_db[HT_BLITZBEAT].range[lv - 1] + vulture_level;
+
+	return (id < MAX_SKILL) ? skill_db[id].range[lv - 1] : guild_skill_get_range(id);
+}
+
 int skill_get_hp(int id, int lv) { skill_get(skill_db[id].hp[lv-1], id, lv); }
 int skill_get_sp(int id, int lv) { skill_get(skill_db[id].sp[lv-1], id, lv); }
 int skill_get_zeny(int id, int lv) { skill_get(skill_db[id].zeny[lv-1], id, lv); }
@@ -1348,8 +1358,8 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
  					tbl = src; //On self
  				else {
  					tbl = bl; //On target
- 					if (!battle_check_range(src, tbl, skill_get_range(auto_skillid, auto_skilllv)))
- 						continue; //check for target-src range
+ 					if(!battle_check_range(src, tbl, skill_get_range(auto_skillid, auto_skilllv, pc_checkskill(sd, AC_VULTURE))))
+ 						continue;
  				}
 
  				if (skill_get_inf(auto_skillid) & (2|32))
@@ -2609,7 +2619,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case MO_BALKYOUNG: // Active part of the attack. Skill-attack [Skotlex]
 		skill_area_temp[1] = bl->id; //NOTE: This is used in skill_castend_nodamage_id to avoid affecting the target.
 		if (skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,0)) {
-			int range = skill_get_range(skillid, skilllv);
+			int range = skill_get_range(skillid, skilllv, 0);
 			map_foreachinarea(skill_area_sub,
 				bl->m, bl->x-range, bl->y-range, bl->x+range, bl->y+range,0,
 				src,skillid,skilllv,tick, flag|BCT_ENEMY|1,
@@ -3262,7 +3272,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 				break;
 			}
 			skill_area_temp[0] = 0;
-			party_foreachsamemap(skill_area_sub, sd, skill_get_range(skillid, skilllv), src, skillid, skilllv,
+			party_foreachsamemap(skill_area_sub, sd, skill_get_range(skillid, skilllv, 0), src, skillid, skilllv,
 				tick, flag|BCT_PARTY|1,	skill_castend_nodamage_id);
 
 			if (skill_area_temp[0] == 0) {
@@ -3518,33 +3528,33 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 		break;
 
-	case CG_MARIONETTE: /* マリオネットコントロ?ル */
-		if (sd && dstsd) {
+	case CG_MARIONETTE:
+		if(sd && dstsd)
+		{
 			struct status_change *sc_data = sd->sc_data;
 			struct status_change *tsc_data = dstsd->sc_data;
+			short lvcheck = sd->status.base_level - dstsd->status.base_level;
+			short jobid = pc_calc_base_job2(dstsd->status.class);
 			int sc = SC_MARIONETTE;
 			int sc2 = SC_MARIONETTE2;
 
-			if((dstsd->bl.type != BL_PC) ||
-			   (sd->bl.id == dstsd->bl.id) ||
-			   (!sd->status.party_id) ||
-			   (sd->status.party_id != dstsd->status.party_id)) {
+			if(dstsd->bl.type != BL_PC || sd->bl.id == dstsd->bl.id || !sd->status.party_id || sd->status.party_id != dstsd->status.party_id || lvcheck < -5 || lvcheck > 5 || jobid == 43 || jobid == 44)
+			{
 				clif_skill_fail(sd, skillid, 0, 0);
 				map_freeblock_unlock();
 				return 1;
 			}
-			if(sc_data[sc].timer == -1 && tsc_data[sc2].timer == -1) {
+
+			if(sc_data[sc].timer == -1 && tsc_data[sc2].timer == -1)
+			{
 				status_change_start (src, sc, skilllv, 0, bl->id, 0, skill_get_time(skillid, skilllv), 0);
 				status_change_start (bl, sc2, skilllv, 0, src->id, 0, skill_get_time(skillid, skilllv), 0);
 				clif_skill_nodamage(src, bl, skillid, skilllv, 1);
-			}
-			else if (sc_data[sc].timer != -1 && tsc_data[sc2].timer != -1 &&
-				sc_data[sc].val3 == bl->id && tsc_data[sc2].val3 == src->id) {
+			} else if(sc_data[sc].timer != -1 && tsc_data[sc2].timer != -1 && sc_data[sc].val3 == bl->id && tsc_data[sc2].val3 == src->id) {
 				status_change_end(src, sc, -1);
 				status_change_end(bl, sc2, -1);
 				clif_skill_nodamage(src, bl, skillid, skilllv, 0);
-			}
-			else {
+			} else {
 				clif_skill_fail(sd, skillid, 0, 0);
 				map_freeblock_unlock();
 				return 1;
@@ -3770,7 +3780,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 			}
 
 			if (dstmd) {
-				int range = skill_get_range(skillid, skilllv);
+				int range = skill_get_range(skillid, skilllv, 0);
 				if (range < 0)
 					range = status_get_range(src) - (range + 1);
 				dstmd->state.provoke_flag = src->id;
@@ -4241,7 +4251,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 	case RG_STEALCOIN:		// スティールコイン
 		if (sd) {
 			if (pc_steal_coin(sd,bl)) {
-				int range = skill_get_range(skillid,skilllv);
+				int range = skill_get_range(skillid, skilllv, 0);
 				if (range < 0)
 					range = status_get_range(src) - (range + 1);
 				clif_skill_nodamage(src,bl,skillid,skilllv,1);
@@ -4281,7 +4291,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 				}
 		  }
 			if (dstmd)
-				mob_target(dstmd, src, skill_get_range(skillid, skilllv));
+				mob_target(dstmd, src, skill_get_range(skillid, skilllv, 0));
 			if (sd && gem_flag) {
 				if ((i = pc_search_inventory(sd, skill_db[skillid].itemid[0])) < 0) {
 					clif_skill_fail(sd, sd->skillid, 0, 0); //Skill has failed
@@ -4780,7 +4790,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 
 	case BS_GREED:
 		if (sd) {
-			int range = skill_get_range(skillid, skilllv);
+			int range = skill_get_range(skillid, skilllv, 0);
 			if (map[sd->bl.m].flag.gvg || map[sd->bl.m].flag.pvp) {	// Not available in WoE/PvP mode
 				clif_skill_fail(sd, MC_VENDING, 0, 0);
 				map_freeblock_unlock();
@@ -5088,7 +5098,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		}
 
 		if(dstmd) {
-			int range = skill_get_range(skillid,skilllv);
+			int range = skill_get_range(skillid, skilllv, 0);
 			if(range < 0)
 				range = status_get_range(src) - (range + 1);
 			mob_target(dstmd, src, range);
@@ -5517,7 +5527,7 @@ int skill_castend_id(int tid, unsigned int tick, int id, int data)
 		}
 	}
 
-	range = skill_get_range(sd->skillid,sd->skilllv);
+	range = skill_get_range(sd->skillid, sd->skilllv, pc_checkskill(sd, AC_VULTURE));
 	if (range < 0)
 		range = status_get_range(&sd->bl) - (range + 1);
 	range += battle_config.pc_skill_add_range;
@@ -7066,7 +7076,7 @@ int skill_castend_pos(int tid, unsigned int tick, int id, int data)
 	}
 
 	if (sd->skilllv <= 0) return 0;
-	range = skill_get_range(sd->skillid,sd->skilllv);
+	range = skill_get_range(sd->skillid, sd->skilllv, pc_checkskill(sd, AC_VULTURE));
 	if (range < 0)
 		range = status_get_range(&sd->bl) - (range + 1);
 	range += battle_config.pc_skill_add_range;
@@ -8090,7 +8100,7 @@ int skill_use_id(struct map_session_data *sd, int target_id, int skill_num, int 
 	}
 	if (!skill_check_condition(sd, 0)) return 0;
 	/* 射程と障害物チェック */
-	range = skill_get_range(skill_num, skill_lv);
+	range = skill_get_range(skill_num, skill_lv, pc_checkskill(sd, AC_VULTURE));
 	if (range < 0)
 		range = status_get_range(&sd->bl) - (range + 1);
 	// be lenient if the skill was cast before we have moved to the correct position [Celest]
@@ -8186,7 +8196,7 @@ int skill_use_id(struct map_session_data *sd, int target_id, int skill_num, int 
 				return 0;
 			target_id = p_sd->bl.id;
 			//rangeをもう1回検査
-			range = skill_get_range(skill_num,skill_lv);
+			range = skill_get_range(skill_num, skill_lv, 0);
 			if (range < 0)
 				range = status_get_range(&sd->bl) - (range + 1);
 			if (!battle_check_range(&sd->bl, &p_sd->bl, range))
@@ -8326,7 +8336,7 @@ int skill_use_pos(struct map_session_data *sd,
   {
 	int check_range_flag = 0;
 	/* 射程と障害物チェック */
-	range = skill_get_range(skill_num, skill_lv);
+	range = skill_get_range(skill_num, skill_lv, pc_checkskill(sd, AC_VULTURE));
 	if (range < 0)
 		range = status_get_range(&sd->bl) - (range + 1);
 	// be lenient if the skill was cast before we have moved to the correct position [Celest]
@@ -8883,9 +8893,9 @@ int skill_rest(struct map_session_data *sd ,int type)
 	nullpo_retr(0, sd);
 
 	if((skill_lv = pc_checkskill(sd,TK_HPTIME)) > 0)
-		range = skill_get_range(TK_HPTIME, skill_lv);
+		range = skill_get_range(TK_HPTIME, skill_lv, 0);
 	else if ((skill_lv = pc_checkskill(sd,TK_SPTIME)) > 0)
-		range = skill_get_range(TK_SPTIME, skill_lv);
+		range = skill_get_range(TK_SPTIME, skill_lv, 0);
 	else
 		return 0;
 
