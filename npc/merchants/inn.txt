@@ -369,9 +369,8 @@ Lhz_Inn2:
 	mes "Royal Dragon.";
 	close2;
 	warp "lhz_in02.gat",219,150;
+	sc_start SC_BLESSING,240000,10;
 	percentheal 100,100;
-	sc_start 36,240000,10;
-	skilleffect AL_BLESSING,0;
 	end;
 
 Lhz_Inn3:

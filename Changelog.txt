@@ -1,6 +1,15 @@
 
 Date	Added
 
+8/29/2006
+	* Added: Implemented the Cooking System & Cooking Quest [Tsuyuki]
+	* Added: Cooking-related drops to monsters [Tsuyuki]
+	* Fixed: Alchemist Create Elemental Potion not working [Tsuyuki]
+		- Note: The potions this skill produces will not work until the new status effects for them are implemented
+	* Updated: The const.txt Database with new status effects [Tsuyuki]
+	* Updated: Item Database with new Episode 10.3 info [Tsuyuki]
+	* Fixed: SC_BLESSING in the Lighthalzen Inn script [Tsuyuki]
+
 8/28/2006
 	* Enabled: The other/wedding.txt, and other/books.txt scripts automatically [Tsuyuki]
 	* Moved: IceCream.txt to the npc/merchants folder [Tsuyuki]
