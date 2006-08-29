@@ -954,7 +954,7 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 		break;
 		
 	case HT_SHOCKWAVE:
-		if(map[bl->m].flag.pvp && dstsd)
+		if(dstsd && (map[bl->m].flag.pvp && map[bl->m].flag.gvg))
 		{
 			dstsd->status.sp -= dstsd->status.sp * (5 + 15 * skilllv) / 100;
 			clif_updatestatus(dstsd, SP_SP);
@@ -2774,9 +2774,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 			skill_area_temp[2] = src->x;
 			skill_area_temp[3] = src->y;
 			map_foreachinarea(skill_area_sub, src->m, src->x - 2, src->y - 2, src->x + 2, src->y + 2, 0, src, skillid, skilllv, tick, flag | BCT_ENEMY | 1, skill_castend_damage_id);
-			// magnum break does not change attack element, it just increases damage a bit
-			// TODO: add proper status for this, using SC_ATKPOT level 1 temporarily
-			status_change_start(src, SC_ATKPOT, 1, 0, 0, 0, 10000, 0);
+			status_change_start(src, SC_MAGNUM, 1, 0, 0, 0, 10000, 0);
 			clif_skill_nodamage(src, src, skillid, skilllv, 1);
 			if(sd) 
 				pc_blockskill_start(sd, skillid, skill_get_time(skillid, skilllv)); //block the skill for skill_get_time(skillid, skilllv) seconds

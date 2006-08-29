@@ -9,6 +9,11 @@ Date	Added
 	* Updated: The const.txt Database with new status effects [Tsuyuki]
 	* Updated: Item Database with new Episode 10.3 info [Tsuyuki]
 	* Fixed: SC_BLESSING in the Lighthalzen Inn script [Tsuyuki]
+	* Improved: way to calculate magic damage reflection [Harbin]
+	* Added: SC for magnum break [Harbin]
+	* Fixed: magnum break should give +20% fire damage bonus for 10 seconds [Harbin]
+	 - source: http://ragnainfo.net/forums/viewtopic.php?t=104874
+	* Fixed: shockwave trap's sp damage should work in gvg maps too [Harbin]
 
 8/28/2006
 	* Enabled: The other/wedding.txt, and other/books.txt scripts automatically [Tsuyuki]

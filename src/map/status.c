@@ -46,6 +46,7 @@ void initStatusIconTable(void) {
 	//ENUM SKILLID skill.h       ENUM SC_ status.h     ENUM ICO_ status.h
 	init_sc(SM_PROVOKE,             SC_PROVOKE,          ICO_PROVOKE);
 	init_sc(SM_ENDURE,              SC_ENDURE,           ICO_ENDURE);
+	init_sc(SM_MAGNUM,				SC_MAGNUM,			 ICO_BLANK);
 	init_sc(MG_SIGHT,               SC_SIGHT,            ICO_BLANK);
 	init_sc(MG_SAFETYWALL,          SC_SAFETYWALL,       ICO_BLANK);
 	init_sc(MG_FROSTDIVER,          SC_FREEZE,           ICO_BLANK);

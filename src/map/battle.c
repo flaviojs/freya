@@ -1832,12 +1832,18 @@ struct Damage battle_calc_weapon_attack(
 	    (md && (skill_num || !battle_config.mob_attack_attr_none)) ||
 	    (pd && (skill_num || !battle_config.pet_attack_attr_none))) {
 		short t_element = status_get_element(target);
-		if (!(!sd && tsd && battle_config.mob_ghostring_fix && t_ele == 8)) {
-			if (wd.damage > 0) {
-				wd.damage = battle_attr_fix(wd.damage, s_ele, t_element);
-			if(skill_num == MC_CARTREVOLUTION) //Cart Revolution applies the element fix once more with neutral element
-				wd.damage = battle_attr_fix(wd.damage, 0, t_element);
-		}
+		if(!(!sd && tsd && battle_config.mob_ghostring_fix && t_ele == 8))
+		{
+			if(wd.damage > 0)
+			{
+				if(skill_num == MC_CARTREVOLUTION)
+					s_ele = 0;
+
+				if(sc_data[SC_MAGNUM].timer != -1)
+					wd.damage = battle_attr_fix(wd.damage, s_ele, t_element) + (battle_attr_fix(wd.damage, 3, t_element) * 20 / 100);
+				else
+					wd.damage = battle_attr_fix(wd.damage, s_ele, t_element);
+			}
 		if (flag.lefthand && wd.damage2 > 0)
 			wd.damage2 = battle_attr_fix(wd.damage2, s_ele_, t_element);
 		}
@@ -2433,35 +2439,39 @@ struct Damage battle_calc_magic_attack(
 	if(skill_num != HW_GRAVITATION)
 		damage = battle_calc_damage(bl, target, damage, div_, skill_num, skill_lv, aflag);
 
-	if(tsd && tsd->magic_damage_return > 0 && flag_aoe == 0 && tsd->magic_damage_return > rand()%100)
+	if(tsd && tsd->magic_damage_return > 0 && tsd->magic_damage_return > rand()%100)
 	{
-		if(status_get_element(target) == 7 && (skill_num == AL_HEAL || skill_num == PR_SANCTUARY))
+		short calc_rdamage = 1;
+
+		if(skill_num == AL_HEAL || skill_num == PR_SANCTUARY)
 		{
-			if(skill_num == PR_SANCTUARY)
+			if(status_get_element(target) == 7)
 			{
-				if(rand()%100 > 50)
+				if(skill_num == PR_SANCTUARY)
 				{
+					if(rand()%100 > 50)
+					{
+						rdamage += -damage;
+						damage = 0;
+					} else {
+						battle_heal(NULL, target, 0, 0, 0);
+						damage = 0;
+						calc_rdamage = 0;
+					}
+				} else {
 					rdamage += -damage;
 					damage = 0;
-					if(rdamage < 1)
-						rdamage = 1;
-					clif_damage(target, bl, gettick(), 0, 0, rdamage, 0, 0, 0);
-					battle_damage(target, bl, rdamage, 0);
-				} else {
-					damage = 0;
-					battle_heal(NULL, target, 0, 0, 0);
 				}
 			} else {
-				rdamage += -damage;
-				damage = 0;
-				if(rdamage < 1)
-					rdamage = 1;
-				clif_damage(target, bl, gettick(), 0, 0, rdamage, 0, 0, 0);
-				battle_damage(target, bl, rdamage, 0);
+				calc_rdamage = 0;
 			}
 		} else {
 			rdamage += damage;
 			damage = 0;
+		}
+
+		if(calc_rdamage == 1)
+		{
 			if(rdamage < 1)
 				rdamage = 1;
 			clif_damage(target, bl, gettick(), 0, 0, rdamage, 0, 0, 0);

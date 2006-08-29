@@ -215,6 +215,7 @@ enum {	// struct map_session_data ‚Ì status_change‚Ì”Ô†ƒe[ƒuƒ‹
 	SC_BATKFOOD,		// 210
 	SC_WATKFOOD,
 	SC_MATKFOOD,
+	SC_MAGNUM,
 	
 	SC_MAX
 };
