@@ -1,6 +1,9 @@
 // $Id: Changelog.txt 582 2006-01-04 22:38:08Z Yor $
 Date	Added
 
+2006.08.29
+	* Added: npc\quests\newgears\new_hats_2006.txt quest script. New Hat Quests from eAthena [Tsuyuki]
+
 2006.08.26
 	* Added: update sapho server costumed NPC [Sapho Team]
 
