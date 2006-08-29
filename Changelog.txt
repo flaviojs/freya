@@ -5,6 +5,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 08/28/06
+	* Reverted: 'Loki's Wail/Classical Pluck' skill_nocast_db fix. Mainly designed for WoE/GvG maps [Proximus]
+		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=51467&highlight=classical+pluck
+		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=80029&highlight=classical+pluck
+	* Improved: 'Trick Dead' fix commited in Rev. 42 [Proximus]
 	* Fixed: fclose() in src/char/char.c:266 trying to close NULL pointer. [Yor] - sorry for the bug
 	* Fixed: fclose() in src/char_sql/char.c:244 trying to close NULL
 		pointer.
