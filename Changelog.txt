@@ -2,7 +2,7 @@
 Date	Added
 
 8/30/2006
-	* Fixed: Starting zeny from 500z to 0z as per kRO [Tsuyuki]
+	* Fixed: Starting zeny from 500z to 0z as per Aegis (Confirmed on iRO) [Tsuyuki]
 	* Enabled: Teleport in Geffenia Dungeon Maps (New kRO Patch) [Tsuyuki]
 	* Enabled: Teleport in Thanatos Tower L12 (New kRO Patch) [Tsuyuki]
 	* Added: Item "Marionette Doll" to Marionette (Temp drop rate: 0.01%) [Tsuyuki]
@@ -164,7 +164,7 @@ Date	Added
 08/05/2006
 	* Removed: Drops from Biolabs MVP slaves (Source: ROCards.de) [Thanks to Kastjodo] [Tsuyuki]
 	* Added: Effect for "Holy Egg" (Source: ROCards.de) [Tsuyuki]
-	* Fixed: Bow Thimble drop rate changed from 10% to 3% [Thanks to Kastjodo] [Tsuyuki]
+	* Fixed: Bow Thimble dex increase rate changed from 10% to 3% [Thanks to Kastjodo] [Tsuyuki]
 		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=61110&highlight=bow+thimble
 	* Added: Rachel/Ice Dungeon/Sanctuary warps from eAthena [Tsuyuki]
 	* Fixed: Cowardice blade price [Tsuyuki]
