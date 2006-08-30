@@ -2,6 +2,11 @@
 Date	Added
 
 8/30/2006
+	* Added: New items/equips up to kRO Patch 8/29/06 (Last Patch) [Tsuyuki]
+	* Fixed: Added stats for Golden Axe [1308] & Equestrian's Spear [1475] [Tsuyuki]
+	* Fixed: Job Equip IDs for a bunch of new items [Tsuyuki]
+	* Updated: Fully implemented/fixed new set items [Tsuyuki]
+	* Added: Socket Enchant System items (Fully functional) [Tsuyuki]
 	* Fixed: Some Biolabs MvP Slaves Elements from Water 1 to their proper Element [Tsuyuki]
 	* Fixed: Kathryne Keyron mob missing ID 1639 (Got deleted somehow??) [Tsuyuki]
 	* Fixed: Some new mob Move-Speed rates [Tsuyuki]
