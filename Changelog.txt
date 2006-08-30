@@ -2,6 +2,9 @@
 Date	Added
 
 8/30/2006
+	* Fixed: Some Biolabs MvP Slaves Elements from Water 1 to their proper Element [Tsuyuki]
+	* Fixed: Kathryne Keyron mob missing ID 1639 (Got deleted somehow??) [Tsuyuki]
+	* Fixed: Some new mob Move-Speed rates [Tsuyuki]
 	* Fixed: Starting zeny from 500z to 0z as per Aegis (Confirmed on iRO) [Tsuyuki]
 	* Enabled: Teleport in Geffenia Dungeon Maps (New kRO Patch) [Tsuyuki]
 	* Enabled: Teleport in Thanatos Tower L12 (New kRO Patch) [Tsuyuki]
