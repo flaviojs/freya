@@ -8448,12 +8448,13 @@ int skill_castcancel(struct block_list *bl, int type)
 
 	if (bl->type == BL_PC) {
 		struct map_session_data *sd = (struct map_session_data *)bl;
-		unsigned int tick = gettick();
 		nullpo_retr(0, sd);
-		sd->canact_tick = tick;
-		sd->canmove_tick = tick;
 		
 		if (sd->skilltimer != -1) {
+			unsigned int tick = gettick();
+			sd->canact_tick = tick;
+			sd->canmove_tick = tick;
+
 			if (pc_checkskill(sd, SA_FREECAST) > 0) {
 				sd->speed = sd->prev_speed;
 				clif_updatestatus(sd, SP_SPEED);
