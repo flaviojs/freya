@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 08/30/06
+	* Fixed: 'Immaterial Sword' item bonus. Added unbreakable bonus. As per Aegis special.sc file [Proximus]
+		- Updated item_db_map.sql
 	* Added: Default gm level 20 for @password to atcommand_athena.conf [Proximus]
 		- Documented it in readme/gmcmds.html
 	* Fixed: teleporting to another map will no longer cancel an on-going delay [Proximus]
