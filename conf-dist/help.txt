@@ -420,6 +420,7 @@ key:admin,administration,administrator
 //@reloadgmdb        :@reloadgmdb - Reloads GM levels (admin command). // removed, it's automatic now
 @adjgmlvl          :@adjgmlvl/@setgmlvl/@adjgmlevel/@setgmlevel <lvl> <char name|account_id> - Temporarily modify GM level of an online player.
 @adjgmlvl2         :@adjgmlvl2/@setgmlvl2/@adjgmlevel2/@setgmlevel2 <lvl> <char name|account_id> - Permanently modify GM level of a player!
+@adjgm0            :@adjgm[0-10] <char name|account_id> - Permanently modify GM level of a player from 0 to 10 (level depends of your gm command).
 @adjcmdlvl         :@adjcmdlvl/@setcmdlvl/@adjcmdlevel/@setcmdlevel <lvl> <command> - Modify level of a command for the actual session of the software.
                  99: 
 @gat               :@gat - For debugging (you inspect around gat).

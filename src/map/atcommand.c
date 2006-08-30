@@ -946,6 +946,28 @@ static struct AtCommandInfo {
 	{ AtCommand_AdjGmLvl2,             "@setgmlvl2",            99, atcommand_adjgmlvl2 },
 	{ AtCommand_AdjGmLvl2,             "@adjgmlevel2",          99, atcommand_adjgmlvl2 },
 	{ AtCommand_AdjGmLvl2,             "@setgmlevel2",          99, atcommand_adjgmlvl2 },
+	{ AtCommand_AdjGmLvl2,             "@adjgm0",               20, atcommand_adjgmlvl2 },
+	{ AtCommand_AdjGmLvl2,             "@setgm0",               20, atcommand_adjgmlvl2 },
+	{ AtCommand_AdjGmLvl2,             "@adjgm1",               20, atcommand_adjgmlvl2 },
+	{ AtCommand_AdjGmLvl2,             "@setgm1",               20, atcommand_adjgmlvl2 },
+	{ AtCommand_AdjGmLvl2,             "@adjgm2",               60, atcommand_adjgmlvl2 },
+	{ AtCommand_AdjGmLvl2,             "@setgm2",               60, atcommand_adjgmlvl2 },
+	{ AtCommand_AdjGmLvl2,             "@adjgm3",               60, atcommand_adjgmlvl2 },
+	{ AtCommand_AdjGmLvl2,             "@setgm3",               60, atcommand_adjgmlvl2 },
+	{ AtCommand_AdjGmLvl2,             "@adjgm4",               60, atcommand_adjgmlvl2 },
+	{ AtCommand_AdjGmLvl2,             "@setgm4",               60, atcommand_adjgmlvl2 },
+	{ AtCommand_AdjGmLvl2,             "@adjgm5",               60, atcommand_adjgmlvl2 },
+	{ AtCommand_AdjGmLvl2,             "@setgm5",               60, atcommand_adjgmlvl2 },
+	{ AtCommand_AdjGmLvl2,             "@adjgm6",               60, atcommand_adjgmlvl2 },
+	{ AtCommand_AdjGmLvl2,             "@setgm6",               60, atcommand_adjgmlvl2 },
+	{ AtCommand_AdjGmLvl2,             "@adjgm7",               60, atcommand_adjgmlvl2 },
+	{ AtCommand_AdjGmLvl2,             "@setgm7",               60, atcommand_adjgmlvl2 },
+	{ AtCommand_AdjGmLvl2,             "@adjgm8",               60, atcommand_adjgmlvl2 },
+	{ AtCommand_AdjGmLvl2,             "@setgm8",               60, atcommand_adjgmlvl2 },
+	{ AtCommand_AdjGmLvl2,             "@adjgm9",               60, atcommand_adjgmlvl2 },
+	{ AtCommand_AdjGmLvl2,             "@setgm9",               60, atcommand_adjgmlvl2 },
+	{ AtCommand_AdjGmLvl2,             "@adjgm10",              60, atcommand_adjgmlvl2 },
+	{ AtCommand_AdjGmLvl2,             "@setgm10",              60, atcommand_adjgmlvl2 },
 	{ AtCommand_AdjCmdLvl,             "@adjcmdlvl",            99, atcommand_adjcmdlvl },
 	{ AtCommand_AdjCmdLvl,             "@setcmdlvl",            99, atcommand_adjcmdlvl },
 	{ AtCommand_AdjCmdLvl,             "@adjcmdlevel",          99, atcommand_adjcmdlvl },
@@ -14999,9 +15021,17 @@ int atcommand_adjgmlvl2(
 	int newlev;
 	struct map_session_data *pl_sd;
 
-	if (!message || !*message || sscanf(message, "%d %[^\r\n]", &newlev, atcmd_name) != 2 || newlev < 0 || newlev > 99) {
-		clif_displaymessage(fd, "usage: @adjgmlvl2/@setgmlvl2/@adjgmlevel2/@setgmlevel2 <lvl:0-99> <player>.");
-		return -1;
+	if (command[6] >= '0' && command[6] <= '9') {
+		newlev = atoi(command + 6);
+		if (!message || !*message || sscanf(message, "%[^\r\n]", atcmd_name) != 1) {
+			clif_displaymessage(fd, "usage: @adjgm[0-10] <player>.");
+			return -1;
+		}
+	} else {
+		if (!message || !*message || sscanf(message, "%d %[^\r\n]", &newlev, atcmd_name) != 2 || newlev < 0 || newlev > 99) {
+			clif_displaymessage(fd, "usage: @adjgmlvl2/@setgmlvl2/@adjgmlevel2/@setgmlevel2 <lvl:0-99> <player>.");
+			return -1;
+		}
 	}
 
 	if (newlev > sd->GM_level) // can not give upper GM level than its level

@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 08/30/06
+	* Added: @setgm[0-10] to manage easily player gm levels. [Yor]
+	         example: any gm team member can have an access to a command to change player level (0: without main channel, 1: with main channel with default configuration, etc.)
 	* Fixed: 'Immaterial Sword' item bonus. Added unbreakable bonus. As per Aegis special.sc file [Proximus]
 		- Updated item_db_map.sql
 	* Added: Default gm level 20 for @password to atcommand_athena.conf [Proximus]
