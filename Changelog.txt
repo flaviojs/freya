@@ -2,6 +2,8 @@
 Date	Added
 
 8/30/2006
+	* Updated: A couple items as per kRO patches [Tsuyuki]
+	* Fixed: Changed some more pot drops to herbs as per kRO [Tsuyuki]
 	* Added: New items/equips up to kRO Patch 8/29/06 (Last Patch) [Tsuyuki]
 	* Fixed: Added stats for Golden Axe [1308] & Equestrian's Spear [1475] [Tsuyuki]
 	* Fixed: Job Equip IDs for a bunch of new items [Tsuyuki]

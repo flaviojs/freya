@@ -1051,7 +1051,7 @@
 2350,Armor_of_Land,Kreitos's Earth Armor,5,20,0,2200,,4,,0,279714,2,16,,45,0,{},{ bonus bDefEle,2; }
 2351,Armor_of_Land_,Kreitos's Earth Armor,5,20,0,2200,,4,,1,279714,2,16,,45,0,{},{ bonus bDefEle,2; }
 2352,Armor_For_Novice,Novice Ninja Suit,5,20,0,1,,4,,0,8388609,2,16,,0,0,{},{}
-2353,Blessing_of_Odin,Blessing of Odin,5,20,0,2500,0,6,0,1,18866174,2,16,0,65,0,{},{}
+2353,Odin's_Blessings,Odin's Blessings,5,20,0,2500,0,6,0,1,18866174,2,16,0,65,0,{},{}
 2354,Goibne's_Armor,Goibne's Armor,5,20,0,3500,0,7,0,0,18866174,2,16,0,54,0,{},{ bonus bVit,2; bonus bMaxHPrate,10; }
 2355,Angelic_Protection,Angelic Protection,5,20,0,600,0,4,0,1,8388609,2,16,0,40,0,{},{ bonus bMdef,20; if(isequipped(2116,2420,2521,5125)==0) end; bonus bMaxHP,900; bonus bMaxSP,100; bonus4 bAutoSpellWhenHit,361,1,200,0; }
 2356,Blessed_Holy_Robe,Blessed_Holy_Robe,5,,10,2500,,5,,0,33024,2,16,,70,1,{},{ bonus2 bSubEle,7,80; bonus bMdef,5; }
@@ -1153,7 +1153,7 @@
 2642,Serin's_Gold_Ring,Serin's Gold Ring,5,20,0,100,,0,,0,27254783,2,136,,,,{},{}
 2643,Serin's_Gold_Ring_,Serin's Gold Ring,5,20,0,100,,0,,0,27254783,2,136,,,,{},{}
 2644,The_Sign_,The Sign,5,20,0,0,,0,,0,27254783,2,136,,,,{},{ bonus bMatkRate,5; }
-2645,Moonlight_Ring,Moonlight Ring,5,20,0,200,,0,,0,135232,2,136,,60,,{},{}
+2645,Moonlight_Ring,Moonlight Ring,5,20,0,200,,0,,0,135232,2,136,,60,,{ bonus bCritical,3; bonus bAspdAddRate,3; },{}
 2646,Bunch_of_Carnation,Bunch of Carnation,5,20,0,100,,0,,0,27254783,2,136,,,,{},{ bonus bAllStats,3; }
 2647,Nile_Rose,Nile Rose,5,20,0,100,0,0,0,0,27254783,2,136,0,0,0,{},{ bonus bAllStats,5; }
 2648,Morpheus's_Ring,Morpheus's Ring,5,20,0,100,0,0,0,0,18866174,2,136,0,33,0,{},{ bonus bInt,1; bonus bMaxSPrate,5; }
@@ -1737,7 +1737,7 @@
 5121,Zealotus_Mask,Zealotus Mask,5,20,0,100,0,3,0,0,27254783,2,768,0,0,200,{},{ bonus2 bAddRace,7,5; bonus2 bSubRace,7,5; }
 5122,Magni's_Cap,Magni's Cap,5,20,0,1000,0,5,0,0,18866174,2,256,0,65,201,{},{ bonus bStr,2; if(GetPureJob == Job_Swordman) bonus bDef,5; if(isequipped(2114,2353)==0) end; bonus bStr,2; bonus bDef,5; bonus bMdef,5; }
 5123,Ulle's_Cap,Ulle's Cap,5,20,0,500,0,3,0,0,18866174,2,256,0,65,202,{},{ bonus bDex,2; bonus bAgi,1;  if(isequipped(2353)==0) end; if(bDex>=70) bonus bUseSPrate,-10; }
-5124,Fricca's_Circlet,Fricca's Circlet,5,20,0,300,0,3,0,0,18866174,2,256,0,65,203,{},{ bonus bMdef,10; bonus bInt,2; bonus bMaxSP,50; if(isequipped(2115,2353)==0) end; bonus bDef,2; bonus bMdef,25; }
+5124,Fricca's_Circlet,Fricca's Circlet,5,20,0,300,0,3,0,0,18866174,2,256,0,65,203,{},{ bonus bMdef,10; bonus bInt,2; bonus bMaxSP,50; if(isequipped(2115,2353)==0) end; bonus bDef,2; bonus bMdef,5; }
 5125,Angel's_Kiss,Angel's Kiss,5,20,0,300,0,2,0,0,8388609,2,256,0,50,204,{},{ bonus bSPrecovRate,3; }
 5126,Morpheus's_Hood,Morpheus's Hood,5,20,0,200,0,3,0,0,18866174,2,256,0,33,205,{},{ bonus bInt,2; if(isequipped(2518,2648,2649)==0) end; bonus bInt,5; bonus bMdef,11; bonus bMaxSPrate,20; bonus bDelayrate,25;}
 5127,Morrigane's Helm,Morrigane's Helm,5,20,0,500,0,4,0,0,18866174,2,256,0,61,206,{},{ bonus bLuk,2; bonus bAtk,3; if(isequipped(2519,2650,2651)==0) end; bonus bStr,2; bonus bLuk,9; bonus bCritical,13; bonus bAtk,18; bonus bFlee2,13; }
