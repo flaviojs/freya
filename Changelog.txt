@@ -1,6 +1,13 @@
 
 Date	Added
 
+8/30/2006
+	* Fixed: Starting zeny from 500z to 0z as per kRO [Tsuyuki]
+	* Enabled: Teleport in Geffenia Dungeon Maps (New kRO Patch) [Tsuyuki]
+	* Enabled: Teleport in Thanatos Tower L12 (New kRO Patch) [Tsuyuki]
+	* Added: Item "Marionette Doll" to Marionette (Temp drop rate: 0.01%) [Tsuyuki]
+	* Fixed: Increased Dimik Move-Speed (New kRO Patch) [Tsuyuki]
+
 8/29/2006
 	* Added: Implemented the Cooking System & Cooking Quest [Tsuyuki]
 	* Added: Cooking-related drops to monsters [Tsuyuki]
