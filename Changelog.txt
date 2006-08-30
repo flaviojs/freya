@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 08/30/06
+	* Added: Default gm level 20 for @password to atcommand_athena.conf [Proximus]
+		- Documented it in readme/gmcmds.html
 	* Fixed: teleporting to another map will no longer cancel an on-going delay [Proximus]
 	* Fixed: party_invite function, its no longer possible to invite 2 characters from the same account into the same party. As per Aegis [Proximus]
 		- "Character from the same account already joined" error message (packet) will be sent instead.
