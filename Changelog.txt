@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 08/29/06
+	* Fixed: map name deletion [Yor]
 	* Improved: SQL account searching in some GM commands (@(un)block, @(un)ban, @changesex, @adjgmlvl2) [Yor]
 	* Added: @adjgmlvl2/@setgmlvl2/@adjgmlevel2/@setgmlevel2 - Permanently modify GM level of a player! [Yor]
 

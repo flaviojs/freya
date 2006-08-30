@@ -2277,6 +2277,7 @@ void map_delmap(char *mapname) {
 	int i;
 
 	if (strcasecmp(mapname, "all") == 0) {
+		// unnecessary to reset alias name (not yet created)
 		FREE(map);
 		map_num = 0;
 		return;
@@ -2284,15 +2285,18 @@ void map_delmap(char *mapname) {
 
 	for(i = 0; i < map_num; i++) {
 		if (strcmp(map[i].name, mapname) == 0) {
-			//printf("Removing map [ %s ] from maplist.\n", map[i].name);
+			//printf("Removing map#%d/%d [ %s ] from maplist.\n", i, map_num, map[i].name);
 			FREE(map[i].alias); // [Yor]
-			memmove(map + i, map + i + 1, sizeof(struct map_data) * (map_num - i - 1));
+			if (i < map_num - 1)
+				memmove(map + i, map + (i + 1), sizeof(struct map_data) * (map_num - i - 1));
 			map_num--;
 			if (map_num == 0) {
 				FREE(map);
+				return;
 			} else {
 				REALLOC(map, struct map_data, map_num);
 			}
+			i--; // recheck same map after (it is now a new mapname)
 		}
 	}
 
@@ -2325,7 +2329,12 @@ int map_readallmap(void) {
 		char afm_name[256] = "";
 		if (!strstr(map[i].name, ".afm")) {
 			// check if it's necessary to replace the extension - speeds up loading abit
-			strncpy(afm_name, map[i].name, strlen(map[i].name) - 4);
+			int len_mapname;
+			len_mapname = strlen(map[i].name) - 4;
+			if (len_mapname < 0)
+				len_mapname = 0;
+			strncpy(afm_name, map[i].name, len_mapname);
+			afm_name[len_mapname] = '\0';
 			strcat(afm_name, ".afm");
 		}
 		map[i].alias = NULL;
@@ -2389,6 +2398,7 @@ int map_readallmap(void) {
  */
 void map_addmap(char *mapname) {
 	if (strcasecmp(mapname, "clear") == 0) {
+		// unnecessary to reset alias name (not yet created)
 		FREE(map);
 		map_num = 0;
 		return;
@@ -2401,7 +2411,7 @@ void map_addmap(char *mapname) {
 		memset(map + map_num, 0, sizeof(struct map_data));
 	}
 
-	memset(map[map_num].name, 0, sizeof(map[map_num].name));
+	//memset(map[map_num].name, 0, sizeof(map[map_num].name));
 	strncpy(map[map_num].name, mapname, 16); // 17 - NULL
 	map_num++;
 
