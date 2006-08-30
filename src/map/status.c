@@ -3589,10 +3589,13 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			break;
 		case SC_MOONLIT:
 			val2 = bl->id;
+			*opt3 |= 512;
 			break;
 		case SC_DANCING:			/* ダンス/演奏中 */
 			scflag.calc = 1;
 			if(!(flag&4)) {
+				if (val1 == CG_MOONLIT) //To set moonlit sprite effect on both chars [Proximus]
+					status_change_start(bl, SkillStatusChangeTable[CG_MOONLIT], 0, 0, 0, 0, tick, 0);
 				val3= tick / 1000;
 				tick = 1000;
 			}
@@ -4329,6 +4332,8 @@ int status_change_end(struct block_list* bl, int type, int tid)
 							d_sc_data[type].val4 = 0;
 					}
 				}
+				if (sc_data[type].val1 == CG_MOONLIT)
+						status_change_end(bl, SC_MOONLIT, -1); //Remove the sprite effect from both players [Proximus]
 				if (sc_data[SC_LONGING].timer!=-1)
 					status_change_end(bl,SC_LONGING,-1);
 				calc_flag = 1;
@@ -4532,6 +4537,10 @@ int status_change_end(struct block_list* bl, int type, int tid)
 			break;
 		case SC_BERSERK:		/* バーサーク */
 			*opt3 &= ~128;
+			break;
+		//256 missing? need to find out what sprite effect is it [Proximus]
+		case SC_MOONLIT:
+			*opt3 &= ~512;
 			break;
 		case SC_MARIONETTE:		/* マリオネットコントロール */
 		case SC_MARIONETTE2:

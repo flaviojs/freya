@@ -593,10 +593,11 @@ static void mob_walk(struct mob_data *md, unsigned int tick, int data) {
 			mob_walktoxy_sub(md);
 			return;
 		}
-		if (skill_check_moonlit(&md->bl, x + dx, y + dy)) {
-			mob_walktoxy_sub(md);
-			return;
-		}
+// Deprecated as per the new Moonlit Petals implementation [Proximus]
+//		if (skill_check_moonlit(&md->bl, x + dx, y + dy)) {
+//			mob_walktoxy_sub(md);
+//			return;
+//		}
 
 		moveblock = (x / BLOCK_SIZE != (x + dx) / BLOCK_SIZE || y / BLOCK_SIZE != (y + dy) / BLOCK_SIZE);
 

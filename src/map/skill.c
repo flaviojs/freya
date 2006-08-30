@@ -697,6 +697,13 @@ int skillnotok(int skillid, struct map_session_data *sd) {
 			clif_skill_fail(sd, sd->skillid, 0, 0);
 			return 1;
 		}
+		break;
+	case CG_MOONLIT:
+		if(guild_mapname2gc(sd->mapname) != NULL) {
+			clif_skill_fail(sd, sd->skillid, 0, 0);
+			return 1;
+		}
+		break;
 	}
 	
 	return(map[sd->bl.m].flag.noskill);
@@ -3664,7 +3671,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 	case PF_MEMORIZE:		/* メモライズ */
 	case PA_SACRIFICE:
 	case ASC_EDP:			// [Celest]
-	case CG_MOONLIT:		/* 月明りの泉に落ちる花びら */
+//case CG_MOONLIT:		/* 月明りの泉に落ちる花びら */
 	case WZ_SIGHTBLASTER:
 		status_change_start(bl, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
 		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
@@ -4135,7 +4142,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 	case DC_DONTFORGETME:		/* 私を忘れないで… */
 	case DC_FORTUNEKISS:		/* 幸運のキス */
 	case DC_SERVICEFORYOU:		/* サービスフォーユー */
-//	case CG_MOONLIT:			/* 月明りの泉に落ちる花びら */
+	case CG_MOONLIT:			/* 月明りの泉に落ちる花びら */
 		clif_skill_nodamage(src,bl,skillid,skilllv,1);
 		skill_unitsetting(src,skillid,skilllv,src->x,src->y,0);
 		break;
@@ -6315,8 +6322,16 @@ int skill_unit_onplace(struct skill_unit *src, struct block_list *bl, unsigned i
 			if (sc_data && sc_data[type].timer != -1 && (sc_data[type].val4 == sg->group_id || sc_data[type].val3 == BCT_SELF))
 					break;	
 			status_change_start(bl, type, sg->skill_lv, 0, 0, sg->group_id, skill_get_time2(sg->skill_id, sg->skill_lv), 0);
-		} else if (!status_get_mode(bl) & 0x20)
+		} else if (!status_get_mode(bl)&0x20)
 			skill_blown(&src->bl, bl, 1);
+		break;
+
+	case 0xb5:	/* CG_MOONLIT */
+		if (sg->src_id == bl->id)
+			break;
+		sc_data = status_get_sc_data(bl);
+		if(sc_data == NULL || sc_data[SC_DANCING].timer == -1 || sc_data[SC_DANCING].val2 != (int)sg)
+			skill_blown(&src->bl, bl, 2|0x30000);
 		break;
 
 	case 0xb6:	/* PF_FOGWALL */
@@ -7243,6 +7258,8 @@ static int skill_check_condition_use_sub(struct block_list *bl,va_list ap)
 		   tsd->sc_data[SC_DANCING].timer == -1 //ダンス中じゃない
 		  ){
 			sd->sc_data[SC_DANCING].val4 = bl->id;
+			if(skillid != CG_MOONLIT)
+				clif_skill_nodamage(bl, src, skillid, skilllv, 1);
 			clif_skill_nodamage(bl, src, skillid, skilllv, 1);
 			status_change_start(bl, SC_DANCING, skillid, sd->sc_data[SC_DANCING].val2, 0, src->id, skill_get_time(skillid,skilllv)+1000, 0);
 			tsd->skillid_dance = tsd->skillid = skillid;
@@ -7497,22 +7514,36 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 		}
 	  }
 		break;
+	case CG_MOONLIT: //Check there's no wall in the 9*9 area around the caster
+		{
+			int i, x, y; //4 = range
+			int size = 9;
+			for (i = 0; i < 81; i++) {
+				x = sd->bl.x + (i%size - 4);
+				y = sd->bl.y + (i/size - 4);
+				if (map_getcell(sd->bl.m, x, y, CELL_CHKWALL)) {
+					clif_skill_fail(sd, skill, 0, 0);
+					return 0;
+				}
+			}
+		}
+		break;
 	case PR_BENEDICTIO: /* 聖体降福 */
 		{
-			int range=1;
-			int c=0;
+			int range = 1;
+			int c = 0;
 			if(!(type&1)){
 			map_foreachinarea(skill_check_condition_char_sub,sd->bl.m,
-				sd->bl.x-range,sd->bl.y-range,
-				sd->bl.x+range,sd->bl.y+range,BL_PC,&sd->bl,&c);
+				sd->bl.x-range, sd->bl.y-range,
+				sd->bl.x+range, sd->bl.y+range, BL_PC, &sd->bl, &c);
 			if (c < 2) {
 				clif_skill_fail(sd, skill, 0, 0);
 				return 0;
 			}
-			}else{
-				map_foreachinarea(skill_check_condition_use_sub,sd->bl.m,
-					sd->bl.x-range,sd->bl.y-range,
-					sd->bl.x+range,sd->bl.y+range,BL_PC,&sd->bl,&c);
+			} else {
+				map_foreachinarea(skill_check_condition_use_sub, sd->bl.m,
+					sd->bl.x-range, sd->bl.y-range,
+					sd->bl.x+range, sd->bl.y+range, BL_PC, &sd->bl, &c);
 			}
 		}
 		break;
@@ -8951,6 +8982,7 @@ int skill_frostjoke_scream(struct block_list *bl, va_list ap)
  * Moonlit creates a 'safe zone' [celest]
  *------------------------------------------
  */
+/* Deprecated as per the new Moonlit Petals implementation [Proximus]
 static int skill_moonlit_count(struct block_list *bl, va_list ap)
 {
 	int *c, id;
@@ -8969,6 +9001,7 @@ static int skill_moonlit_count(struct block_list *bl, va_list ap)
 	return 0;
 }
 
+
 int skill_check_moonlit (struct block_list *bl, int dx, int dy)
 {
 	int c = 0;
@@ -8978,7 +9011,7 @@ int skill_check_moonlit (struct block_list *bl, int dx, int dy)
 	map_foreachinarea(skill_moonlit_count, bl->m, dx-1, dy-1, dx+1, dy+1, BL_PC, bl->id, &c);
 
 	return (c > 0);
-}
+}*/
 
 /*==========================================
  *アブラカダブラの使用スキル決定(決定スキルがダメなら0を返す)

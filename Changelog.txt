@@ -4,6 +4,13 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+08/30/06
+	* Fixed: Rewritten CG_MOONLIT code implementation to fit Aegis mechanic [Proximus]
+		- Switched it's implementation to behave as a ground skill.
+		- Will no longer works on castle maps, as per Aegis (hardcoded for now, skillnotok function).
+		- Fixed the "pink orb" sprite effect being visible only when casted in front of the player.
+		- It can not longer be casted near a wall. A check is performed in a 9*9 area around the caster.
+
 08/29/06
 	* Fixed: map name deletion [Yor]
 	* Improved: SQL account searching in some GM commands (@(un)block, @(un)ban, @changesex, @adjgmlvl2) [Yor]
