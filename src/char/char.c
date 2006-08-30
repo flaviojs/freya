@@ -4290,14 +4290,23 @@ int parse_frommap(int fd) {
 			i = search_character_index(character_name);
 			// if not found, we search if the name is an account id and if a character exists
 			if (i < 0) { // -1: no char with this name, -2: exact sensitive name not found
+				char *p_character_name;
 				i = 0;
-				for(j = 0; j < char_num; j++)
-					if (char_dat[j].account_id == account_id && char_dat[j].sex != 2) { // if not a server account
-						strncpy(character_name_found, char_dat[j].name, 24);
-						character_name_found[24] = '\0';
-						i = 1;
-						break;
-					}
+				p_character_name = character_name;
+				while(isspace(*p_character_name))
+					p_character_name++;
+				if (*p_character_name == '+' || *p_character_name == '-')
+					p_character_name++;
+				// if character_name is a number
+				if (*p_character_name >= '0' && *p_character_name <= '9') {
+					for(j = 0; j < char_num; j++)
+						if (char_dat[j].account_id == account_id && char_dat[j].sex != 2) { // if not a server account
+							strncpy(character_name_found, char_dat[j].name, 24);
+							character_name_found[24] = '\0';
+							i = 1;
+							break;
+						}
+				}
 			} else {
 				if (char_dat[i].sex != 2) { // if not a server account
 					account_id = char_dat[i].account_id;
@@ -4327,12 +4336,22 @@ int parse_frommap(int fd) {
 				}
 				// if not found (unique or not), we search if the name is an account id and if a character exists
 				if (i == 0) {
-					sql_request("SELECT `account_id` FROM `%s` WHERE `account_id` = '%d'", char_db, atoi(character_name));
-					if (sql_get_row()) {
-						account_id = atoi(character_name); // sql_get_integer(0);
-						strncpy(character_name_found, character_name, 24);
-						character_name_found[24] = '\0';
-						i = 1;
+					char *p_character_name;
+					p_character_name = character_name;
+					while(isspace(*p_character_name))
+						p_character_name++;
+					if (*p_character_name == '+' || *p_character_name == '-')
+						p_character_name++;
+					// if character_name is a number
+					if (*p_character_name >= '0' && *p_character_name <= '9') {
+						// try to found player with account id
+						sql_request("SELECT `account_id` FROM `%s` WHERE `account_id` = '%d'", char_db, atoi(character_name));
+						if (sql_get_row()) {
+							account_id = atoi(character_name); // sql_get_integer(0);
+							strncpy(character_name_found, character_name, 24);
+							character_name_found[24] = '\0';
+							i = 1;
+						}
 					}
 				}
 			}
