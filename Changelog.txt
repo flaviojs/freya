@@ -4,6 +4,11 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+08/31/06
+	* Added: party_invite_same_account battle_config switch (conf/battle_athena.conf) [Proximus]
+		- Whether it is possible to invite 2 characters from the same account into a party or not
+		- Default value: NO (Aegis Software)
+
 08/30/06
 	* Added: @setgm[0-10] to manage easily player gm levels. [Yor]
 	         example: any gm team member can have an access to a command to change player level (0: without main channel, 1: with main channel with default configuration, etc.)

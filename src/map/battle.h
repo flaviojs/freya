@@ -391,7 +391,8 @@ extern struct Battle_Config {
 	unsigned short ruwach_range; // Set the range (number of squares/tiles around you) of 'ruwach' skill to detect invisible.
 	unsigned short sight_range; // Set the range (number of squares/tiles around you) of 'sight' skill to detect invisible.
 	unsigned short max_icewall; // Set maximum number of ice walls active at the same time.
-	unsigned short ignore_items_gender; // Wether item_db gender restrictions will be ignored or not
+	unsigned short ignore_items_gender; //Whether item_db gender restrictions will be ignored or not [Proximus]
+	unsigned short party_invite_same_account; //Whether its possible to invite 2 characters from the same account into a party [Proximus]
 
 	unsigned short atcommand_main_channel_at_start;
 	unsigned short atcommand_min_GM_level_for_request;

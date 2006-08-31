@@ -245,19 +245,20 @@ void party_invite(struct map_session_data *sd, int account_id) {
 
 	if (!battle_config.invite_request_check) { // Are other requests accepted during a request or not?
 		if (tsd->guild_invite > 0 || tsd->trade_partner) { // 相手が取引中かどうか
-			clif_party_inviteack(sd, tsd->status.name, 0); // 0: the player is already in other party, 1: invitation was denied, 2: success to invite
+			clif_party_inviteack(sd, tsd->status.name, 0); // 0: the player is already in other party, 1: invitation was denied, 2: success to invite, 4: character in the same account already joined
 			return;
 		}
 	}
 	if (tsd->status.party_id > 0 || tsd->party_invite > 0) { // 相手の所属確認
-		clif_party_inviteack(sd, tsd->status.name, 0); // 0: the player is already in other party, 1: invitation was denied, 2: success to invite
+		clif_party_inviteack(sd, tsd->status.name, 0); // 0: the player is already in other party, 1: invitation was denied, 2: success to invite, 4: character in the same account already joined
 		return;
 	}
 	for(i = 0; i < MAX_PARTY; i++) { // 同アカウント確認
-		//its no longer possible to invite 2 characters from the same account into the same party. As per Aegis [Proximus]
-		if (p->member[i].account_id == account_id /*&& strncmp(p->member[i].name, tsd->status.name, 24) == 0*/) {
-			clif_party_inviteack(sd, tsd->status.name, 4); // 0: the player is already in other party, 1: invitation was denied, 2: success to invite
-			return;
+		if (p->member[i].account_id == account_id) {
+			if (battle_config.party_invite_same_account == 0 || strncmp(p->member[i].name, tsd->status.name, 24) == 0) {
+				clif_party_inviteack(sd, tsd->status.name, 4); // 0: the player is already in other party, 1: invitation was denied, 2: success to invite, 4: character in the same account already joined
+				return;
+			}
 		}
 	}
 
@@ -284,7 +285,7 @@ void party_reply_invite(struct map_session_data *sd, int account_id, int flag) {
 		tsd = map_id2sd(account_id);
 		if (tsd == NULL)
 			return;
-		clif_party_inviteack(tsd, sd->status.name, 1); // 0: the player is already in other party, 1: invitation was denied, 2: success to invite
+		clif_party_inviteack(tsd, sd->status.name, 1); // 0: the player is already in other party, 1: invitation was denied, 2: success to invite, 4: character in the same account already joined
 	}
 
 	return;
@@ -310,7 +311,7 @@ int party_member_added(int party_id, int account_id, int flag)
 
 	if (flag == 1) { // 失敗
 		if (sd2 != NULL)
-			clif_party_inviteack(sd2, sd->status.name, 0); // 0: the player is already in other party, 1: invitation was denied, 2: success to invite
+			clif_party_inviteack(sd2, sd->status.name, 0); // 0: the player is already in other party, 1: invitation was denied, 2: success to invite, 4: character in the same account already joined
 		return 0;
 	}
 
@@ -319,7 +320,7 @@ int party_member_added(int party_id, int account_id, int flag)
 	sd->status.party_id = party_id;
 
 	if (sd2 != NULL)
-		clif_party_inviteack(sd2, sd->status.name, 2); // 0: the player is already in other party, 1: invitation was denied, 2: success to invite
+		clif_party_inviteack(sd2, sd->status.name, 2); // 0: the player is already in other party, 1: invitation was denied, 2: success to invite, 4: character in the same account already joined
 
 	// いちおう競合確認
 	party_check_conflict(sd);

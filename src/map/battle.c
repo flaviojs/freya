@@ -3578,7 +3578,8 @@ static const struct battle_config_short{
 	{ "ruwach_range",                               &battle_config.ruwach_range }, // [Yor] Set the range (number of squares/tiles around you) of 'ruwach' skill to detect invisible.
 	{ "sight_range",                                &battle_config.sight_range }, // [Yor] Set the range (number of squares/tiles around you) of 'sight' skill to detect invisible.
 	{ "max_icewall",                                &battle_config.max_icewall }, // [Yor] Set maximum number of ice walls active at the same time.
-	{ "ignore_items_gender",                        &battle_config.ignore_items_gender }, // [Proximus] Wether item_db gender restrictions will be ignored or not
+	{ "ignore_items_gender",                        &battle_config.ignore_items_gender }, //[Proximus] Whether item_db gender restrictions will be ignored or not
+	{ "party_invite_same_account",                  &battle_config.party_invite_same_account }, //[Proximus] Whether its possible to invite 2 characters from the same account into a party
 
 	{ "atcommand_main_channel_at_start",            &battle_config.atcommand_main_channel_at_start },
 	{ "atcommand_min_GM_level_for_request",         &battle_config.atcommand_min_GM_level_for_request },
@@ -3946,7 +3947,8 @@ void battle_set_defaults() {
 	battle_config.ruwach_range = 2; // (2 squares in all directions -> a square of 5x5) [Yor] Set the range (number of squares/tiles around you) of 'ruwach' skill to detect invisible.
 	battle_config.sight_range = 3; // (3 squares in all directions -> a square of 7x7) [Yor] Set the range (number of squares/tiles around you) of 'sight' skill to detect invisible.
 	battle_config.max_icewall = 5 ; // [Yor] Set maximum number of ice walls active at the same time.
-	battle_config.ignore_items_gender = 1; //Wether item_db gender restrictions will be ignored or not
+	battle_config.ignore_items_gender = 1; //Wether item_db gender restrictions will be ignored or not [Proximus]
+	battle_config.party_invite_same_account = 0; //Whether its possible to invite 2 characters of the same account into a party [Proximus]
 	
 	battle_config.castrate_dex_scale = 150;
 	battle_config.area_size = 16;
