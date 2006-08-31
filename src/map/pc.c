@@ -1014,6 +1014,14 @@ void pc_authok_final_step(int id, time_t connect_until_time) { // 0x2b26 <accoun
 			if (battle_config.atcommand_main_channel_at_start == 3) // activated (with message)
 				clif_wis_message(sd->fd, wisp_server_name, msg_txt(609), strlen(msg_txt(609)) + 1); // Your Main channel is ON.
 		}
+		// option about members of guild
+		if (agit_flag == 1 && // 0: WoE not starting, Woe is running
+		    sd->status.guild_id > 0) {
+			if (battle_config.atcommand_main_channel_when_woe > sd->GM_level) // is not possible to use @main when WoE and in guild
+				clif_wis_message(sd->fd, wisp_server_name, msg_txt(682), strlen(msg_txt(682)) + 1); // For the record: War of Emperium is actually running. Because you are member of a guild, you can not use 'Main channel'.
+			else if (battle_config.atcommand_main_channel_on_gvg_map_woe > sd->GM_level) // is not possible to use @main when WoE and in guild ON GvG maps
+				clif_wis_message(sd->fd, wisp_server_name, msg_txt(684), strlen(msg_txt(684)) + 1); // For the record: War of Emperium is actually running. Because you are member of a guild, you can not use 'Main channel' on GvG maps.
+		}
 	}
 
 	// message about War Of Emperium

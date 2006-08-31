@@ -3582,6 +3582,8 @@ static const struct battle_config_short{
 	{ "party_invite_same_account",                  &battle_config.party_invite_same_account }, //[Proximus] Whether its possible to invite 2 characters from the same account into a party
 
 	{ "atcommand_main_channel_at_start",            &battle_config.atcommand_main_channel_at_start },
+	{ "atcommand_main_channel_on_gvg_map_woe",      &battle_config.atcommand_main_channel_on_gvg_map_woe},
+	{ "atcommand_main_channel_when_woe",            &battle_config.atcommand_main_channel_when_woe},
 	{ "atcommand_min_GM_level_for_request",         &battle_config.atcommand_min_GM_level_for_request },
 	{ "atcommand_follow_stop_dead_target",          &battle_config.atcommand_follow_stop_dead_target },
 	{ "atcommand_add_local_message_info",           &battle_config.atcommand_add_local_message_info },
@@ -3953,6 +3955,8 @@ void battle_set_defaults() {
 	battle_config.castrate_dex_scale = 150;
 	battle_config.area_size = 16;
 	battle_config.atcommand_main_channel_at_start = 3;
+	battle_config.atcommand_main_channel_on_gvg_map_woe = 2; // only good players and above can use 'Main channel' on GvG maps during WoE -> against abuse
+	battle_config.atcommand_main_channel_when_woe = 0; // all players can use the @main command
 	battle_config.atcommand_min_GM_level_for_request = 20;
 	battle_config.atcommand_follow_stop_dead_target = 0; // no
 	battle_config.atcommand_add_local_message_info = 1; // yes
@@ -4289,6 +4293,14 @@ void battle_validate_conf() {
 		battle_config.atcommand_main_channel_at_start = 0;
 	else if (battle_config.atcommand_main_channel_at_start > 3)
 		battle_config.atcommand_main_channel_at_start = 3;
+	if (battle_config.atcommand_main_channel_on_gvg_map_woe < 1)
+		battle_config.atcommand_main_channel_on_gvg_map_woe = 0;
+	else if (battle_config.atcommand_main_channel_on_gvg_map_woe > 100)
+		battle_config.atcommand_main_channel_on_gvg_map_woe = 100;
+	if (battle_config.atcommand_main_channel_when_woe < 1)
+		battle_config.atcommand_main_channel_when_woe = 0;
+	else if (battle_config.atcommand_main_channel_when_woe > 100)
+		battle_config.atcommand_main_channel_when_woe = 100;
 	if (battle_config.atcommand_min_GM_level_for_request < 1)
 		battle_config.atcommand_min_GM_level_for_request = 0;
 	else if (battle_config.atcommand_min_GM_level_for_request > 100)

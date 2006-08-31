@@ -1986,6 +1986,11 @@ void set_default_msg() {
 	add_msg(680, "The player (account: %d) already has the specified GM level.");
 	add_msg(681, "GM level of the player (account: %d) changed to %d.");
 
+	add_msg(682, "For the record: War of Emperium is actually running. Because you are member of a guild, you can not use 'Main channel'.");
+	add_msg(683, "War of Emperium is actually running. Because you are member of a guild, you can not use 'Main channel'.");
+	add_msg(684, "For the record: War of Emperium is actually running. Because you are member of a guild, you can not use 'Main channel' on GvG maps.");
+	add_msg(685, "War of Emperium is actually running. Because you are member of a guild, you can not use 'Main channel' on GvG maps.");
+
 	return;
 }
 
@@ -15741,6 +15746,18 @@ int atcommand_main(
 	else {
 		if (check_bad_word(message_to_all, strlen(message_to_all), sd))
 			return -1; // check_bad_word function display message if necessary
+		// check flag for WoE
+		if (agit_flag == 1 && // 0: WoE not starting, Woe is running
+		    sd->status.guild_id > 0) {
+			if (battle_config.atcommand_main_channel_when_woe > sd->GM_level) { // is not possible to use @main when WoE and in guild
+				clif_displaymessage(fd, msg_txt(683)); // War of Emperium is actually running. Because you are member of a guild, you can not use 'Main channel'.
+				return -1;
+			} else if (map[sd->bl.m].flag.gvg &&
+			    battle_config.atcommand_main_channel_on_gvg_map_woe > sd->GM_level) { // is not possible to use @main when WoE and in guild ON GvG maps
+				clif_displaymessage(fd, msg_txt(685)); // War of Emperium is actually running. Because you are member of a guild, you can not use 'Main channel' on GvG maps.
+				return -1;
+			}
+		}
 
 		intif_main_message(sd->status.name, message_to_all);
 	}

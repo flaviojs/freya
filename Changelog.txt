@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 08/31/06
+	* Added: an option to disable @main GM command when it's WoE and player is member of a guild [Yor]
+	* Added: an option to disable @main GM command when it's WoE and player is member of a guild ON Gvg Maps [Yor]
 	* Added: party_invite_same_account battle_config switch (conf/battle_athena.conf) [Proximus]
 		- Whether it is possible to invite 2 characters from the same account into a party or not
 		- Default value: NO (Aegis Software)
