@@ -63,7 +63,7 @@
 //	hiding		condition of being in hidden state
 //	sight		condition of being in unhidden stat
 
-// Ragnarok Online Alpha
+// Ragnarok Online Alpha Episode 0.0
 1001,Scorpion,attack,52,3,100,1500,10000,no,target,always,0,,,,,,
 1001,Scorpion,attack,186,1,100,0,15000,yes,target,always,0,,,,,,
 1002,Poring,idle,194,1,2,0,0,yes,self,always,0,1,,,,,
@@ -235,7 +235,7 @@
 1046,Doppelganger@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1046,Doppelganger@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
 
-// Ragnarok Online Beta
+// Ragnarok Online Beta Episode 1.0 +
 1047,PecpPeco Egg,idle,197,1,500,0,10000,yes,self,always,0,19,,,,,
 1047,PecoPeco Egg,idle,193,1,1,1000,0,yes,self,always,0,1049,1050,,,,
 1048,Thief Bug Egg,idle,193,1,1,1000,0,yes,self,always,0,1051,,,,,
@@ -385,8 +385,6 @@
 1087,Orc Hero@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1087,Orc Hero@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1087,Orc Hero@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
-
-// Ragnarok Online Episode 1.0+
 1088,Vocal,attack,185,1,100,0,15000,yes,target,always,0,,,,,,
 1088,Vocal,attack,196,10,1000,3000,10000,no,self,slavele,2,1052,,,,,
 1088,Vocal,attack,76,5,100,0,10000,yes,target,always,0,,,,,,
@@ -870,6 +868,8 @@
 1190,Orc Lord@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1190,Orc Lord@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1190,Orc Lord@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
+
+// Ragnarok Online Beta 2 Episode 2.5
 1191,Mimic,idle,197,1,5,0,10000,yes,self,always,0,,,,,,
 1191,Mimic,attack,199,1,100,0,0,yes,target,myhpltmaxrate,70,,,,,,
 1192,Wraith,attack,200,1,1000,2000,10000,yes,target,myhpltmaxrate,70,,,,,,
@@ -1087,7 +1087,7 @@
 1252,Hatii@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1252,Hatii@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
 
-// Ragnarok Online Episode 1.5+
+// Ragnarok Online Beta Episode 2.5 ~ 3.0 
 1253,Gargoyle,idle,148,1,1000,0,10000,no,target,closedattacked,,,,,,,
 1253,Gargoyle,attack,187,2,200,0,7500,yes,target,always,0,,,,,,
 1253,Gargoyle,attack,148,1,300,0,10000,no,target,myhpltmaxrate,30,,,,,,
@@ -1289,7 +1289,7 @@
 1283,Chimera,chase,91,5,100,2500,10000,no,target,longrangeattacked,,,,,,,
 1283,Chimera,chase,91,5,100,2500,10000,no,target,always,0,,,,,,
 
-// The War of Emperium/Turtle Dungeon
+// Ragnarok Online Episode 4.0 The War of Emperium/Turtle Dungeon
 1285,Guardian Archer,attack,46,10,200,0,0,yes,target,always,0,,,,,,
 1285,Guardian Archer,attack,148,1,200,0,0,yes,target,always,0,,,,,,
 1287,Guardian Soldier,attack,179,5,200,0,0,yes,target,always,0,,,,,,
@@ -1515,7 +1515,7 @@
 1323,Sea Otter,chase,86,3,300,2000,10000,yes,target,myhpltmaxrate,30,,,,,,
 1323,Sea Otter,chase,86,3,100,2000,10000,yes,target,always,0,,,,,,
 
-// MvP Slave Mobs
+// MvP Slaves/Duplicates
 1364,G_Assaulter,attack,197,1,15,0,10000,yes,self,myhpltmaxrate,5,23,,,,,
 1364,G_Assaulter,attack,187,3,200,0,7500,yes,target,always,0,,,,,,
 1364,G_Assaulter,attack,136,5,300,1500,10000,no,target,myhpltmaxrate,30,,,,,,
@@ -1523,7 +1523,7 @@
 1364,G_Assaulter,attack,196,2,1000,3000,3600000,no,self,myhpltmaxrate,20,1364,,,,,
 1364,G_Assaulter,attack,150,1,1000,1000,0,no,self,myhpltmaxrate,20,,,,,,
 
-// Yuno/Magma Dungeon/Geffen Dungeon Level 4
+// Ragnarok Online Episode 5.0 Yuno/Magma Dungeon/Geffen Dungeon Level 4
 1365,Apocalypse,attack,57,5,1000,0,3000,yes,target,attackpcge,2,,,,,,
 1365,Apocalypse,attack,173,1,50,3000,0,no,self,myhpltmaxrate,30,,,,,,
 1365,Apocalypse,attack,171,4,250,1500,0,no,target,always,0,,,,,,
@@ -1671,7 +1671,7 @@
 1392,Rotar Zairo,attack,171,3,100,0,10000,no,target,always,0,,,,,,
 1392,Rotar Zairo,attack,173,1,50,3000,0,no,self,myhpltmaxrate,30,,,,,,
 
-// MvP Slave Mobs
+// MvP Slaves/Duplicates
 1393,G_Mummy,attack,171,1,300,0,10000,no,target,myhpltmaxrate,30,,,,,,
 1393,G_Mummy,attack,171,1,100,0,10000,no,target,always,0,,,,,,
 
@@ -1757,8 +1757,7 @@
 1418,Evil Snake Lord@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1418,Evil Snake Lord@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
 
-// MvP Slave Mobs
-
+// MvP Slaves/Duplicates
 1419,G_Farmiliar,attack,170,1,100,0,10000,no,target,always,0,,,,,,
 1419,G_Farmiliar,attack,190,1,100,0,15000,yes,target,always,0,,,,,,
 1419,G_Farmiliar,attack,177,3,100,0,10000,no,target,always,0,,,,,,
@@ -2133,6 +2132,19 @@
 1500,Parasite,attack,181,3,500,800,5000,no,target,always,0,,,,,,09
 1500,Parasite,chase,181,3,200,800,5000,no,target,always,0,,,,,,09
 
+// Bring it on! (Pori Pori) Event MvP
+1502,Bring it on!@AL_HEAL,idle,28,10,10000,0,2000,yes,self,always,0,,,,,,4
+1502,Bring it on!@AL_HEAL,walk,28,10,100000,0,2000,yes,self,always,0,,,,,,4
+1502,Bring it on!@AL_TELEPORT,attack,26,1,1000,5000,60000,no,self,myhpltmaxrate,30,,,,,,
+1502,Bring it on!@NPC_DARKBLESSING,attack,203,1,1000,2000,5000,no,target,always,0,,,,,,18
+1502,Bring it on!@NPC_SUMMONSLAVE,attack,196,5,10000,2000,10000,no,self,slavele,3,1491,1431,1433,,,18
+1502,Bring it on!@NPC_SUMMONSLAVE,idle,196,5,10000,2000,10000,no,self,slavele,3,1491,1431,1433,,,18
+1502,Bring it on!@RG_INTIMIDATE,attack,219,5,1000,0,3000,yes,target,always,0,,,,,,
+1502,Bring it on!@RG_STRIPARMOR,attack,217,5,2000,0,3000,yes,target,always,0,,,,,,
+1502,Bring it on!@RG_STRIPHELM,attack,218,5,2000,0,3000,yes,target,always,0,,,,,,
+1502,Bring it on!@RG_STRIPSHIELD,attack,216,5,2000,0,3000,yes,target,always,0,,,,,,
+1502,Bring it on!@RG_STRIPWEAPON,attack,215,5,2000,0,3000,yes,target,always,0,,,,,,
+
 // Nifleheim
 1503,Gibbet,chase,137,5,1000,0,5000,no,target,always,0,,,,,,
 1503,Gibbet,attack,181,3,500,800,5000,no,target,always,0,,,,,,06
@@ -2211,6 +2223,9 @@
 1519,Green Maiden,attack,250,5,2000,0,5000,no,target,always,0,,,,,,06
 1519,Green Maiden,attack,219,1,500,0,5000,no,target,always,0,,,,,,06
 
+// MvP Slaves/Duplicates
+// IDs 1520 ~ 1581 - Unfinished (Same skills as originals except no teleport)
+
 // Deviling
 1582,Deviling,chase,30,1,1000,1000,20000,no,target,always,0,,,,,,29
 1582,Deviling,attack,190,2,500,500,5000,no,target,always,0,,,,,,06
@@ -2248,6 +2263,9 @@
 1587,Kraben,attack,170,1,500,500,5000,no,target,always,0,,,,,,19
 1587,Kraben,attack,171,1,500,700,5000,no,target,always,0,,,,,,19
 1587,Kraben,attack,179,3,500,1500,5000,no,target,always,0,,,,,,06
+
+// MvP Slaves/Duplicates
+// IDs 1588 ~ 1612 - Unfinished (Same skills as originals except no teleport)
 
 // Einbroch
 1613,Metaling@Emotion,loot,197,1,15,0,10000,yes,self,always,0,2,,,,,
@@ -2975,7 +2993,7 @@
 1737,Aliza,any,28,10,1000,,3000,no,self,always,0,,,,,,
 1738,Constant,attack,173,1,1000,0,0,no,self,myhpltmaxrate,30,,,,,,
 
-// MvP Slaves
+// MvP Slaves/Duplicates
 1739,G_Alicel,attack,172,1,1000,0,1000,no,target,always,0,,,,,,
 1739,G_Alicel,attack,172,1,1000,0,1000,no,target,always,0,,,,,,
 1739,G_Alicel,any,264,1,1000,0,5000,no,self,longrangeattacked,0,,,,,,
@@ -3036,7 +3054,7 @@
 1755,Skeggiold_,attack,196,2,10000,700,60000,no,self,slavele,0,1764,,,,,
 1755,Skeggiold_,attack,28,11,1000,0,10000,no,self,myhpltmaxrate,30,,,,,,
 
-// MvP Slaves
+// MvP Slaves/Duplicates
 1756,G_Hydrolancer@AL_HEAL,attack,28,11,10000,0,5000,yes,self,myhpltmaxrate,99,,,,,,2
 1756,G_Hydrolancer@NPC_SUMMONSLAVE,idle,196,1,10000,2000,240000,no,self,slavele,1,1713,1714,1716,1717,,
 1756,G_Hydrolancer@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,

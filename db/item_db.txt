@@ -1080,7 +1080,7 @@
 2415,Bunny_Slippers,Bunny Slippers,5,20,0,300,,,,,18866174,0,64,,,0,{},{ bonus bLuk,3; }
 2416,Novice_Shoes,Novice Shoes,5,20,0,500,0,2,0,1,8388609,2,64,0,40,0,{},{ bonus bMaxHPrate,5; }
 2417,Fricco's_Shoes,Fricco's Shoes,5,20,0,500,0,3,0,0,18866174,2,64,0,65,0,{},{ bonus bAgi,2; if(isequipped(2353,2516)==0) end; bonus bAgi,3; bonus bMaxHPrate,5; bonus bMaxSPrate,5; } // Missing +20% Heal-Rate bonus for potions
-2418,Vidar's_Boots,Vidar's Boots,5,20,0,650,0,4,0,0,18866174,2,64,0,65,0,{},{ bonus bMaxHPrate,9; bonus bMaxSPrate,9; if(isequipped(2353,2516))==0) end; bonus bAgi,3; bonus bMaxHPrate,5; bonus bMaxSPrate,5; } 
+2418,Vidar's_Boots,Vidar's Boots,5,20,0,650,0,4,0,0,18866174,2,64,0,65,0,{},{ bonus bMaxHPrate,9; bonus bMaxSPrate,9; if(isequipped(2353,2516)==0) end; bonus bAgi,3; bonus bMaxHPrate,5; bonus bMaxSPrate,5; } 
 2419,Gobine's_Greaves,Goibne's Greaves,5,20,0,700,0,4,0,0,18866174,2,64,0,54,0,{},{ bonus bMdef,3; bonus bMaxHPrate,5; bonus bMaxSPrate,5; }
 2420,Angel's_Reincarnation,Angel's Reincarnation,5,20,0,10,0,0,0,1,8388609,2,64,0,0,0,{},{ bonus bMaxHP,100; }
 2422,High_Quality_Sandals,High Quality Sandals,5,,10,200,,2,,1,8487701,2,64,,0,1,{ bonus bMdef,10; },{}

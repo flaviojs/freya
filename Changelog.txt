@@ -2,6 +2,8 @@
 Date	Added
 
 8/30/2006
+	* Added: A bunch of missing Duplicate mobs. Not completely finished with them [Tsuyuki]
+	* Added: Missing Event MvP "Bring it on!" [ID: 1502] & skills [Tsuyuki]
 	* Updated: A couple items as per kRO patches [Tsuyuki]
 	* Fixed: Changed some more pot drops to herbs as per kRO [Tsuyuki]
 	* Added: New items/equips up to kRO Patch 8/29/06 (Last Patch) [Tsuyuki]
