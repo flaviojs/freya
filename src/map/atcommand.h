@@ -50,6 +50,7 @@ enum AtCommandType {
 	AtCommand_Heal,
 	AtCommand_Kami,
 	AtCommand_KamiB,
+	AtCommand_KamiC, // [LuzZza]
 	AtCommand_KamiGM,
 	AtCommand_Item,
 	AtCommand_CharItem,

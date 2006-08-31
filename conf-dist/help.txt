@@ -30,6 +30,7 @@ key:message,messages,broadcast
 @kami              :/nb/@nb/@kami <message> - Broadcasts a GM message without name of the GM (in yellow).
 @kami              :/bb <message> - Broadcasts a GM message without name of the GM (in blue).
 @kamib             :@kamib <message> - Broadcasts a GM message without name of the GM (in blue).
+@kamic             :@kamic <hex_color> <message> - Broadcasts a GM message without name of the GM with specified color (16 millions of colors (RRGGBB): 00-FF for red, green, blue. Example: blue: 0000FF, Red: FF0000, light blue: 8080FF).
 @localbroadcast    :@lb/@localbroadcast/@local_broadcast <message> - Broadcasts a GM message with name of the GM (in yellow) ONLY on your map.
 // the level of /lb is the same of @nlb, and not the same of @lb or @localbroadcast, so 2 different lines:
 @nlb               :/lb <message> - Like @lb.

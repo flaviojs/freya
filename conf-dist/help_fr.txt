@@ -30,6 +30,7 @@ key:message,messages,broadcast
 @kami              :/nb/@nb/@kami <message> - Emet un message GM sans le nom du GM (en jaune).
 @kami              :/bb <message> - Emet un message GM sans le nom du GM (en bleu).
 @kamib             :@kamib <message> - Emet un message GM sans le nom du GM (en bleu).
+@kamic             :@kamic <couleur_hexa> <message> - Emet un message GM sans le nom du GM avec une couleur choisie (16 millionss de couleurs (RRVVBB): 00-FF pour rouge, vert, bleu. Example: Bleu: 0000FF, Rouge: FF0000, bleu clair: 8080FF).
 @localbroadcast    :@lb/@localbroadcast/@local_broadcast <message> - Emet un message GM avec le nom du GM (en jaune) SEULEMENT sur votre carte.
 // the level of /lb is the same of @nlb, and not the same of @lb or @localbroadcast, so 2 different lines:
 @nlb               :/lb <message> - Comme @lb.

@@ -409,6 +409,7 @@ static struct AtCommandInfo {
 	{ AtCommand_Kami,                  "@kami",                 40, atcommand_kami },
 	{ AtCommand_Kami,                  "@nb",                   40, atcommand_kami }, // /b, /nb and /bb command
 	{ AtCommand_KamiB,                 "@kamib",                40, atcommand_kamib },
+	{ AtCommand_KamiC,                 "@kamic",                40, atcommand_kami }, // code by [LuzZza]
 	{ AtCommand_KamiGM,                "@bgm",                  20, atcommand_kamiGM },
 	{ AtCommand_KamiGM,                "@kamigm",               20, atcommand_kamiGM },
 	{ AtCommand_Item,                  "@item",                 60, atcommand_item }, // + /item
@@ -1634,7 +1635,7 @@ void set_default_msg() {
 	add_msg(145, "Invalid new email. Please enter a real e-mail.");
 	add_msg(146, "New email must be a real e-mail.");
 	add_msg(147, "New email must be different of the actual e-mail.");
-	add_msg(148, "Information sended to login-server via char-server.");
+	add_msg(148, "Information sent to login-server via char-server.");
 	add_msg(149, "Impossible to increase the number/value.");
 	add_msg(150, "No GM found.");
 	add_msg(151, "1 GM found.");
@@ -1737,8 +1738,8 @@ void set_default_msg() {
 	add_msg(248, "Your display option (HP of players) is now set to ON.");
 	add_msg(249, "Your display experience option is now set to OFF.");
 	add_msg(250, "Your display experience option is now set to ON.");
-	add_msg(251, "No request has been sended. Request system is disabled.");
-	add_msg(252, "Your request has been sended. If no GM is online, your resquest is lost.");
+	add_msg(251, "Your request has not been sent. Request system is disabled.");
+	add_msg(252, "Your request has been sent. If there are no GMs is online, your request is lost.");
 	add_msg(253, "(map message)");
 
 	add_msg(254, "List of monsters (with current drop rate) that drop '%s (%s)' (id: %d):");
@@ -1774,6 +1775,8 @@ void set_default_msg() {
 	add_msg(279, "Invalid coordinates (can't move on).");
 	add_msg(280, "Invalid coordinates (a NPC is already at this position).");
 	add_msg(281, "NPC moved.");
+
+	add_msg(282, "Invalid color.");
 
 	// Messages of others (not for GM commands)
 	add_msg(500, "Actually, it's the night...");
@@ -4436,23 +4439,43 @@ int atcommand_kami(
 	const int fd, struct map_session_data* sd,
 	const char* command, const char* message)
 {
-	if (!message || !*message) {
-		clif_displaymessage(fd, "Please, enter a message (usage: /b//nb//bb/@kami/@nb <message>).");
-		return -1;
-	}
+	int color;
 
-	// because /b give gm name, we check which sentence we propose for bad words
-	if (strncmp(message, sd->status.name, strlen(sd->status.name)) == 0 && message[strlen(sd->status.name)] == ':') {
-		//printf("/b: Check with GM name: %s\n", message);
-		if (check_bad_word(message + strlen(sd->status.name) + 1, strlen(message), sd))
-			return -1; // check_bad_word function display message if necessary
-	} else {
-		//printf("/b: Check without GM name: %s\n", message);
+	switch (*(command + 5)) {
+	case 'c': // command is convert to lower before to be called
+		if (!message || !*message || sscanf(message, "%x %[^\n]", &color, atcmd_output) < 2) {
+			clif_displaymessage(fd, "Please, enter color and message (usage: /@kamic <hex_color> <message>).");
+			return -1;
+		}
+		if (color < 0 || color > 0xFFFFFF) {
+			clif_displaymessage(fd, msg_txt(282)); // Invalid color.
+			return -1;
+		}
 		if (check_bad_word(message, strlen(message), sd))
 			return -1; // check_bad_word function display message if necessary
-	}
+		intif_announce(atcmd_output, color, 0);
+		break;
 
-	intif_GMmessage((char*)message, 0);
+	default:
+		if (!message || !*message) {
+			clif_displaymessage(fd, "Please, enter a message (usage: /b//nb//bb/@kami/@nb <message>).");
+			return -1;
+		}
+
+		// because /b give gm name, we check which sentence we propose for bad words
+		if (strncmp(message, sd->status.name, strlen(sd->status.name)) == 0 && message[strlen(sd->status.name)] == ':') {
+			//printf("/b: Check with GM name: %s\n", message);
+			if (check_bad_word(message + strlen(sd->status.name) + 1, strlen(message), sd))
+				return -1; // check_bad_word function display message if necessary
+		} else {
+			//printf("/b: Check without GM name: %s\n", message);
+			if (check_bad_word(message, strlen(message), sd))
+				return -1; // check_bad_word function display message if necessary
+		}
+
+		intif_GMmessage((char*)message, 0);
+		break;
+	}
 
 	return 0;
 }
@@ -9030,7 +9053,7 @@ int atcommand_change_sex(
 	const char* command, const char* message)
 {
 	chrif_char_ask_name(sd->status.account_id, sd->status.name, 5, 0, 0, 0, 0, 0, 0); // type: 5 - changesex
-	clif_displaymessage(fd, "Your character name has been sended to char-server to ask it.");
+	clif_displaymessage(fd, "Your character name has been sent to char-server to ask it.");
 
 	return 0;
 }
@@ -10322,7 +10345,7 @@ int atcommand_mapexit(
 
 	runflag = 0; // terminate the main loop
 
-	/* send all packets not sended */
+	/* send all packets not sent */
 	flush_fifos();
 
 	return 0;
@@ -13357,7 +13380,7 @@ int atcommand_email(
 		return -1;
 	} else {
 		chrif_changeemail(sd->status.account_id, actual_email, new_email);
-		clif_displaymessage(fd, msg_txt(148)); // Information sended to login-server via char-server.
+		clif_displaymessage(fd, msg_txt(148)); // Information sent to login-server via char-server.
 	}
 
 	return 0;
@@ -13387,7 +13410,7 @@ int atcommand_password(
 		return -1;
 	} else {
 		chrif_changepassword(sd->status.account_id, old_password, new_password);
-		clif_displaymessage(fd, msg_txt(148)); // Information sended to login-server via char-server.
+		clif_displaymessage(fd, msg_txt(148)); // Information sent to login-server via char-server.
 	}
 
 	return 0;
@@ -15782,7 +15805,7 @@ int atcommand_request(
 	}
 
 	if (battle_config.atcommand_min_GM_level_for_request > 99)
-		clif_displaymessage(fd, msg_txt(251)); // No request has been sended. Request system is disabled.
+		clif_displaymessage(fd, msg_txt(251)); // Your request has not been sent. Request system is disabled.
 	else if (strcasecmp(message_to_GM, "on") == 0) {
 		if (sd->GM_level < battle_config.atcommand_min_GM_level_for_request) {
 			clif_displaymessage(fd, "Your option is refused. You are not a GM that can receive requests from players.");
@@ -15812,7 +15835,7 @@ int atcommand_request(
 		else if (map_is_alone) // not in multi-servers
 			clif_displaymessage(fd, "Sorry, but there're no GMs online. Try to send your request later.");
 		else // no online GM on this server, but perahps on some other map-servers
-			clif_displaymessage(fd, msg_txt(252)); // Your request has been sended. If no GM is online, your resquest is lost.
+			clif_displaymessage(fd, msg_txt(252)); // Your request has been sent. If there are no GMs is online, your request is lost.
 	}
 
 	return 0;

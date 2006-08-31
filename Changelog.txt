@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 08/31/06
+	* Added: @kamic atcommand: kami with specified color (based on [LuzZza]'s and [akrus]'s code, based on jAthena) [Yor]
 	* Added: an option to disable @main GM command when it's WoE and player is member of a guild [Yor]
 	* Added: an option to disable @main GM command when it's WoE and player is member of a guild ON Gvg Maps [Yor]
 	* Added: party_invite_same_account battle_config switch (conf/battle_athena.conf) [Proximus]

@@ -144,6 +144,21 @@ int intif_GMmessage(char* mes, int flag) { // 0x3000/0x3800 <packet_len>.w <mess
 	return 0;
 }
 
+void intif_announce(char* mes, unsigned int color, int flag) {
+	clif_announce(mes, color, flag);
+
+		// send message (if multi-servers)
+	if (!map_is_alone) {
+		WPACKETW(0) = 0x3000; // to do: transmission to other map-servers WITH color
+		WPACKETW(2) = 8 + strlen(mes) + 1;
+		WPACKETL(4) = color;
+		strcpy(WPACKETP(8), mes);
+		SENDPACKET(inter_fd, WPACKETW(2));
+		}
+
+	return;
+}
+
 // The transmission of Wisp/Page to inter-server (player not found on this server)
 int intif_wis_message(struct map_session_data *sd, char *nick, char *mes, int mes_len) {
 	nullpo_retr(0, sd);

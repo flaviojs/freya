@@ -4867,6 +4867,29 @@ void clif_GlobalMessage(struct block_list *bl, char *message) {
 }
 
 /*==========================================
+ * Does an announce message in the given color. 
+ *------------------------------------------
+ */
+void clif_announce(char* mes, unsigned int color, int flag) {
+	WPACKETW( 0) = 0x1c3;
+	WPACKETW( 2) = 16 + strlen(mes) + 1;
+	WPACKETL( 4) = color;
+	WPACKETW( 8) = 0x190; // Font style? Type?
+	WPACKETW(10) = 0x0c; // 12? Font size?
+	WPACKETL(12) = 0; // Unknown!
+	strcpy(WPACKETP(16), mes);
+
+	flag &= 0x07;
+	clif_send(WPACKETW(2), NULL,
+	          (flag == 1) ? ALL_SAMEMAP :
+	          (flag == 2) ? AREA :
+	          (flag == 3) ? SELF :
+	          ALL_CLIENT);
+
+	return;
+}
+
+/*==========================================
  * HPSP回復エフェクトを送信する
  *------------------------------------------
  */
