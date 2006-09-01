@@ -82,7 +82,7 @@ static int wisid = 0; // identify each wisp message
 
 // recv. packet list // 受信パケット長リスト
 int inter_recv_packet_length[] = {
-	-1,-1, 7,-1, -1, 6, -1, -1, -1, 0, 0, 0,  0, 0,  0, 0, // 0x3000-0x300f
+	-1,-1, 7,-1, -1, 6, -1, -1, -1,-1, 0, 0,  0, 0,  0, 0, // 0x3000-0x300f
 	 6,-1, 0, 0,  0, 0,  0,  0, 10,-1, 0, 0,  0, 0,  0, 0, // 0x3010-0x301f
 	74, 6,52,14, 10,29,  6, -1, 34, 0, 0, 0,  0, 0,  0, 0, // 0x3020-0x302f
 	-1, 6,-1, 0, 55,19,  6, -1, 14,-1,-1,-1, 18,19,186,-1, // 0x3030-0x303f
@@ -626,6 +626,16 @@ static inline void mapif_parse_GMmessage(int fd) { // 0x3000/0x3800 <packet_len>
 	return;
 }
 
+// Colored GM message sending
+static inline void mapif_parse_announce(int fd) { // 0x3009/0x3809 <packet_len>.w <color>.L <flag>.L <message>.?B
+	WPACKETW(0) = 0x3809;
+	memcpy(WPACKETP(2), RFIFOP(fd,2), RFIFOW(fd,2) - 2);
+	mapif_sendallwos(fd, WPACKETW(2)); // sender server have send message to these local players
+	//printf(CL_BLUE " inter server: colored GM[len:%d] - '%s'" CL_RESET "\n", RFIFOW(fd, 2), RFIFOP(fd, 12));
+
+	return;
+}
+
 // Wisp/page request to send
 static inline void mapif_parse_WisRequest(int fd) { // 0x3001/0x3801 <packet_len>.w (<w_id_0x3801>.L) <sender_GM_level>.B <sender_name>.24B <nick_name>.24B <message>.?B
 	char player[25]; // 24 + NULL
@@ -994,6 +1004,7 @@ int inter_parse_frommap(int fd) {
 	case 0x3006: mapif_parse_MainMessage(fd); break; // 0x3006/0x3806 <packet_len>.w <wispname>.24B <message>.?B
 	case 0x3007: mapif_parse_MessageToGM(fd); break; // 0x3007/0x3807 <packet_len>.w <wispname>.24B <message>.?B
 	case 0x3008: mapif_parse_LogSaveReq(RFIFOB(fd,4), RFIFOP(fd,5)); break; // 0x3008 <packet_len>.w <log_type>.B <message>.?B (types: 1 GM commands, 2: Trades, 3: Scripts, 4: Vending)
+	case 0x3009: mapif_parse_announce(fd); break; // 0x3009/0x3809 <packet_len>.w <color>.L <flag>.L <message>.?B
 	default:
 		if (inter_party_parse_frommap(fd))
 			break;

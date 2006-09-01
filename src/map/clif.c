@@ -4870,7 +4870,7 @@ void clif_GlobalMessage(struct block_list *bl, char *message) {
  * Does an announce message in the given color. 
  *------------------------------------------
  */
-void clif_announce(char* mes, unsigned int color, int flag) {
+void clif_announce(char* mes, unsigned int color, unsigned int flag) {
 	WPACKETW( 0) = 0x1c3;
 	WPACKETW( 2) = 16 + strlen(mes) + 1;
 	WPACKETL( 4) = color;

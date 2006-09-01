@@ -46,7 +46,7 @@ void mapif_parse_MainMessage(char *Wisp_name, char* mes, short len); // 0x3006/0
 int mapif_parse_MessageToGM(char *Wisp_name, char* mes, short len); // 0x3007/0x3807 <packet_len>.w <wispname>.24B <message>.?B
 
 static const int packet_len_table[] = {
-	-1,-1,27,-1, -1, 6, -1, -1,  0, 0, 0, 0,  0, 0,  0, 0, // 0x3800-0x380f
+	-1,-1,27,-1, -1, 6, -1, -1,  0,-1, 0, 0,  0, 0,  0, 0, // 0x3800-0x380f
 	-1, 6,-1, 0,  0, 0,  0,  0, -1, 0, 0, 0,  0, 0,  0, 0, // 0x3810-0x381f
 	35,-1,11,15, 34,29,  6, -1,  0, 0, 0, 0,  0, 0,  0, 0, // 0x3820-0x382f
 	10,-1,15, 0, 79,19,  7, -1,  0,-1,-1,-1, 14,67,186,-1, // 0x3830-0x383f
@@ -144,15 +144,16 @@ int intif_GMmessage(char* mes, int flag) { // 0x3000/0x3800 <packet_len>.w <mess
 	return 0;
 }
 
-void intif_announce(char* mes, unsigned int color, int flag) {
+void intif_announce(char* mes, unsigned int color, unsigned int flag) {
 	clif_announce(mes, color, flag);
 
 		// send message (if multi-servers)
 	if (!map_is_alone) {
-		WPACKETW(0) = 0x3000; // to do: transmission to other map-servers WITH color
-		WPACKETW(2) = 8 + strlen(mes) + 1;
+		WPACKETW(0) = 0x3009; // 0x3009/0x3809 <packet_len>.w <color>.L <flag>.L <message>.?B
+		WPACKETW(2) = 12 + strlen(mes) + 1;
 		WPACKETL(4) = color;
-		strcpy(WPACKETP(8), mes);
+		WPACKETL(8) = flag;
+		strcpy(WPACKETP(12), mes);
 		SENDPACKET(inter_fd, WPACKETW(2));
 		}
 
@@ -1430,6 +1431,8 @@ int intif_parse(int fd) {
 	case 0x3805:	intif_parse_AccountRegAck(fd); break; // 0x3805 <account_id>.L
 	case 0x3806:	mapif_parse_MainMessage(RFIFOP(fd,4), RFIFOP(fd,28), RFIFOW(fd,2) - 28); break; // 0x3006/0x3806 <packet_len>.w <wispname>.24B <message>.?B
 	case 0x3807:	mapif_parse_MessageToGM(RFIFOP(fd,4), RFIFOP(fd,28), RFIFOW(fd,2) - 28); break; // 0x3007/0x3807 <packet_len>.w <wispname>.24B <message>.?B
+
+	case 0x3809:	clif_announce(RFIFOP(fd,12), RFIFOL(fd,4), RFIFOL(fd,8)); break; // 0x3009/0x3809 <packet_len>.w <color>.L <flag>.L <message>.?B
 
 	case 0x3810:	intif_parse_LoadStorage(fd); break;
 	case 0x3811:	intif_parse_SaveStorage(fd); break; // need to remove storage's flag of saving

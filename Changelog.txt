@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+09/01/06
+	* Fixed: @kamic atcommand on multi map-servers [Yor]
+
 08/31/06
 	* Fixed: WS_CARTTERMINATION will no longer work with SC_MELTDOWN status, neither carry status aliments except from the skill itself [Proximus]
 	* Added: @kamic atcommand: kami with specified color (based on [LuzZza]'s and [akrus]'s code, based on jAthena) [Yor]
