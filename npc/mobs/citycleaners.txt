@@ -1,16 +1,17 @@
-//===== eAthena Script =======================================
+//===== Freya Script =========================================
 //= Mob Spawn in cities
 //===== By: ==================================================
 //= massdriller
 //===== Current Version: =====================================
-//= 0.1b
+//= 0.2a
 //===== Compatible With: =====================================
-//= Any Athena Version
+//= Freya
 //===== Description: =========================================
 //= Spawns monsters to clean up city. Apparently spawning
 //= occured in iRO and kRO. Enable this if you want. 
 //= 0.1a Added a few more towns to spawn Wild rose [MasterOfMuppets]
 //= 0.1b And even more from Poki#3 [Komurka]
+//= 0.2a Added a Wild Rose to Rachel [Tsuyuki]
 //============================================================
 
 prontera.gat,0,0,0,0	monster	Wild Rose	1261,1,1,3600000,0
@@ -31,4 +32,5 @@ einbroch.gat,0,0,0,0	monster	Wild Rose	1261,1,1,3600000,0
 einbech.gat,0,0,0,0	monster	Wild Rose	1261,1,1,3600000,0
 lighthalzen.gat,0,0,0,0	monster	Wild Rose	1261,1,1,3600000,0
 xmas.gat,0,0,0,0	monster	Wild Rose	1261,1,1,3600000,0 
-hugel.gat,0,0,0,0	monster	Wild Rose	1261,1,1,3600000,0 
+hugel.gat,0,0,0,0	monster	Wild Rose	1261,1,1,3600000,0
+rachel.gat,0,0,0,0	monster	Wild Rose	1261,1,1,3600000,0

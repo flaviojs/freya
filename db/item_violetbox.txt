@@ -1,18 +1,17 @@
 // item_violetbox.txt, Old Purple Box Database
 //
 // <Item_ID>,<Description (Dummy)>,<Rate>
+//
 // Rate Examples
 // 10000   = 1%
 // 500000  = 50%
 // 1000000 = 100%
-//
 
+0,Guard,2102
 2102,Guard,10000
 2104,Buckler,10000
 2106,Shield,10000
 2108,Mirror Shield,10000
-2202,Sunglasses,10000
-2204,Glasses,10000
 2207,Fancy Flower,10000
 2209,Ribbon,10000
 2213,Kitty Band,10000
@@ -33,9 +32,9 @@
 2262,Pierrot Nose,10000
 2263,Zorro Masque,10000
 2265,Gangster Mask,10000
-2269,Centimental Flower,10000
-2270,Centimental Leaf,10000
-2271,Jack a Dandy,10000
+2269,Romantic Flower,10000
+2270,Romantic Leaf,10000
+2271,Jack be Dandy,10000
 2272,Stop Post,10000
 2273,Doctor Band,10000
 2275,Red Bandana,10000
@@ -51,9 +50,9 @@
 2295,Blinker,10000
 2296,Binoculars,10000
 2298,Green Feeler,10000
-2299,Viking Helm,10000
+2299,Orc Helm,10000
 2302,Cotton Shirt,10000
-2304,Leather Jacket,10000
+2304,Jacket,10000
 2306,Adventurer's Suit,10000
 2308,Mantle,10000
 2310,Coat,10000
@@ -74,12 +73,12 @@
 2402,Sandals,10000
 2404,Shoes,10000
 2407,Crystal Pumps,10000
-2408,Ball'n'Chain,10000
+2408,Balln' Chain,10000
 2409,Highheals,10000
 2502,Hood,10000
 2504,Muffler,10000
 2506,Manteau,10000
-2507,Cape of Old Marquess,10000
+2507,Ancient Cape,10000
 2508,Ragamuffin Manteau,10000
 2601,Ring,10000
 2602,Earring,10000

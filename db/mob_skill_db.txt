@@ -63,7 +63,7 @@
 //	hiding		condition of being in hidden state
 //	sight		condition of being in unhidden stat
 
-// Ragnarok Online Alpha Episode 0.0
+// Ragnarok Online - Alpha 1 Episode 0.1
 1001,Scorpion,attack,52,3,100,1500,10000,no,target,always,0,,,,,,
 1001,Scorpion,attack,186,1,100,0,15000,yes,target,always,0,,,,,,
 1002,Poring,idle,194,1,2,0,0,yes,self,always,0,1,,,,,
@@ -235,7 +235,7 @@
 1046,Doppelganger@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1046,Doppelganger@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
 
-// Ragnarok Online Beta Episode 1.0 +
+// Ragnarok Online - Beta 1 Episode 1.0
 1047,PecpPeco Egg,idle,197,1,500,0,10000,yes,self,always,0,19,,,,,
 1047,PecoPeco Egg,idle,193,1,1,1000,0,yes,self,always,0,1049,1050,,,,
 1048,Thief Bug Egg,idle,193,1,1,1000,0,yes,self,always,0,1051,,,,,
@@ -385,6 +385,8 @@
 1087,Orc Hero@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1087,Orc Hero@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1087,Orc Hero@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
+
+// Ragnarok Online - Beta 2 Episode 2.0
 1088,Vocal,attack,185,1,100,0,15000,yes,target,always,0,,,,,,
 1088,Vocal,attack,196,10,1000,3000,10000,no,self,slavele,2,1052,,,,,
 1088,Vocal,attack,76,5,100,0,10000,yes,target,always,0,,,,,,
@@ -830,6 +832,7 @@
 1180,Nine Tail,attack,161,1,1000,1000,30000,no,self,myhpltmaxrate,80,,,,,,
 1180,Nine Tail,attack,25,1,1000,0,20000,yes,self,longrangeattacked,,,,,,,
 1180,Nine Tail,chase,161,1,1000,1000,30000,no,self,myhpltmaxrate,80,,,,,,
+// Missing Skills for 1181 ~ 1187
 1188,Bon Gun,attack,58,1,1000,1500,30000,no,target,myhpltmaxrate,30,,,,,,
 1188,Bon Gun,attack,58,1,100,1500,10000,no,target,always,0,,,,,,
 1188,Bon Gun,attack,150,1,1000,0,60000,yes,self,myhpltmaxrate,30,,,,,,
@@ -868,14 +871,14 @@
 1190,Orc Lord@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1190,Orc Lord@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1190,Orc Lord@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
-
-// Ragnarok Online Beta 2 Episode 2.5
 1191,Mimic,idle,197,1,5,0,10000,yes,self,always,0,,,,,,
 1191,Mimic,attack,199,1,100,0,0,yes,target,myhpltmaxrate,70,,,,,,
 1192,Wraith,attack,200,1,1000,2000,10000,yes,target,myhpltmaxrate,70,,,,,,
 1192,Wraith,attack,181,5,300,0,10000,no,target,myhpltmaxrate,30,,,,,,
 1192,Wraith,attack,181,5,100,0,10000,no,target,always,0,,,,,,
 1192,Wraith,chase,200,1,1000,2000,10000,yes,target,myhpltmaxrate,70,,,,,,
+
+// Clock Tower/Glast Heim/Lutie/Comodo - Beta 2 Episode 2.5 ~ 4.0
 1193,Alarm,attack,174,1,1000,1500,0,no,target,attackpcge,2,,,,,,
 1193,Alarm,attack,177,5,1000,0,10000,no,target,always,0,,,,,,
 1194,Arclouse,attack,185,3,200,0,7500,yes,target,always,0,,,,,,
@@ -978,8 +981,6 @@
 1219,Abysmal Knight,chase,148,1,100,0,10000,no,target,always,0,,,,,,
 1219,Abysmal Knight,chase,114,1,100,1000,40000,yes,self,always,0,,,,,,
 1219,Abysmal Knight,idle,196,2,100,1500,40000,no,self,slavele,0,1132,,,,,
-
-// Lutie Xmas
 1242,Marin,attack,184,1,200,0,7500,yes,target,always,0,,,,,,
 1242,Marin,attack,15,1,300,1000,10000,yes,target,myhpltmaxrate,70,,,,,,
 1242,Marin,attack,15,1,100,1000,10000,yes,target,always,0,,,,,,
@@ -1086,8 +1087,6 @@
 1252,Hatii@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1252,Hatii@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1252,Hatii@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
-
-// Ragnarok Online Beta Episode 2.5 ~ 3.0 
 1253,Gargoyle,idle,148,1,1000,0,10000,no,target,closedattacked,,,,,,,
 1253,Gargoyle,attack,187,2,200,0,7500,yes,target,always,0,,,,,,
 1253,Gargoyle,attack,148,1,300,0,10000,no,target,myhpltmaxrate,30,,,,,,
@@ -1288,8 +1287,11 @@
 1283,Chimera,attack,91,5,100,2500,10000,no,target,always,0,,,,,,
 1283,Chimera,chase,91,5,100,2500,10000,no,target,longrangeattacked,,,,,,,
 1283,Chimera,chase,91,5,100,2500,10000,no,target,always,0,,,,,,
+1283,Chimera,attack,196,4,1000,0,3600000,no,self,slavele,2,1597,,,,,
+1283,Chimera,chase,196,4,1000,0,3600000,no,self,slavele,2,1597,,,,,
+1283,Chimera,idle,196,4,1000,0,3600000,no,self,slavele,2,1597,,,,,
 
-// Ragnarok Online Episode 4.0 The War of Emperium/Turtle Dungeon
+// War of Emperium/Turtle Dungeon - Episode 4.1 ~ 5.0
 1285,Guardian Archer,attack,46,10,200,0,0,yes,target,always,0,,,,,,
 1285,Guardian Archer,attack,148,1,200,0,0,yes,target,always,0,,,,,,
 1287,Guardian Soldier,attack,179,5,200,0,0,yes,target,always,0,,,,,,
@@ -1523,7 +1525,7 @@
 1364,G_Assaulter,attack,196,2,1000,3000,3600000,no,self,myhpltmaxrate,20,1364,,,,,
 1364,G_Assaulter,attack,150,1,1000,1000,0,no,self,myhpltmaxrate,20,,,,,,
 
-// Ragnarok Online Episode 5.0 Yuno/Magma Dungeon/Geffen Dungeon Level 4
+// Juno/Magma Dungeon/Geffen Dungeon Level 4 - Episode 5.0
 1365,Apocalypse,attack,57,5,1000,0,3000,yes,target,attackpcge,2,,,,,,
 1365,Apocalypse,attack,173,1,50,3000,0,no,self,myhpltmaxrate,30,,,,,,
 1365,Apocalypse,attack,171,4,250,1500,0,no,target,always,0,,,,,,
@@ -1675,7 +1677,7 @@
 1393,G_Mummy,attack,171,1,300,0,10000,no,target,myhpltmaxrate,30,,,,,,
 1393,G_Mummy,attack,171,1,100,0,10000,no,target,always,0,,,,,,
 
-// Ragnarok 2nd Anniversary
+// Ragnarok Online 2nd Anniversary Event Mobs
 1395,Wind Crystal,idle,26,1,100,0,100000,yes,self,always,0,,,,,,
 1396,Earth Crystal,idle,26,1,100,0,100000,yes,self,always,0,,,,,,
 1397,Fire Crystal,idle,26,1,100,0,100000,yes,self,always,0,,,,,,
@@ -1699,7 +1701,7 @@
 1399,Event Baphomet,chase,85,10,500,1500,4000,no,target,longrangeattacked,,,,,,,
 1399,Event Baphomet,chase,85,10,800,1500,4000,no,target,skillused,18,,,,,,
 
-// Amatsu
+// Amatsu - Episode 6.0
 1400,Karakasa,attack,86,2,100,3000,10000,yes,target,always,0,,,,,,
 1400,Karakasa,attack,86,2,300,3000,10000,yes,target,myhpltmaxrate,30,,,,,,
 1400,Karakasa,attack,207,1,100,0,10000,yes,target,always,0,,,,,,
@@ -1725,7 +1727,7 @@
 1406,Kapha,attack,86,3,100,2000,10000,yes,target,always,0,,,,,,
 1406,Kapha,chase,86,3,100,2000,10000,yes,target,always,0,,,,,,
 
-// Gonryun/Kunlun
+// Gonryun/Kunlun - Episode 7.0
 1408,Bloody Butterfly,attack,182,5,100,0,10000,no,target,always,0,,,,,,
 1408,Bloody Butterfly,attack,56,8,100,0,3000,yes,target,always,0,,,,,,
 1408,Bloody Butterfly,attack,199,1,100,0,0,yes,target,myhpltmaxrate,70,,,,,,
@@ -2106,7 +2108,7 @@
 1492,Incarnation Samurai@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1492,Incarnation Samurai@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
 
-// Umbala
+// Umbala - Episode 8.0
 1493,Dryad,attack,28,9,10000,500,5000,yes,friend,friendhpltmaxrate,60,,,,,,02
 1493,Dryad,chase,28,9,10000,500,5000,yes,friend,friendhpltmaxrate,60,,,,,,02
 1493,Dryad,attack,185,3,500,500,5000,no,target,always,0,,,,,,
@@ -2145,7 +2147,7 @@
 1502,Bring it on!@RG_STRIPSHIELD,attack,216,5,2000,0,3000,yes,target,always,0,,,,,,
 1502,Bring it on!@RG_STRIPWEAPON,attack,215,5,2000,0,3000,yes,target,always,0,,,,,,
 
-// Nifleheim
+// Niflheim - Episode 8.0
 1503,Gibbet,chase,137,5,1000,0,5000,no,target,always,0,,,,,,
 1503,Gibbet,attack,181,3,500,800,5000,no,target,always,0,,,,,,06
 1503,Gibbet,attack,347,2,500,500,5000,no,target,always,0,,,,,,06
@@ -2189,7 +2191,7 @@
 1511,Amon Ra@WZ_FIREPILLAR,idle,80,11,5000,0,5000,yes,around2,always,0,,,,,,
 1511,Amon Ra@NPC_DARKBLESSING,attack,203,1,2000,0,15000,no,target,always,0,,,,,,
 
-// Louyang
+// Louyang - Episode 8.5
 1512,Yao Jun,attack,136,10,500,800,5000,no,target,always,0,,,,,,
 1512,Yao Jun,attack,170,1,500,500,5000,no,target,always,0,,,,,,
 1513,Mao Guai,attack,231,4,10000,500,5000,yes,self,myhpltmaxrate,30,,,,,,02
@@ -2234,7 +2236,7 @@
 1582,Deviling,attack,340,5,2000,700,1000,no,target,always,0,,,,,,32
 1582,Deviling,chase,340,5,1000,700,1000,no,target,always,0,,,,,,32
 
-// Ayothaya
+// Ayothaya - Episode 9.0
 1583,Tao Gunka,attack,159,10,2000,0,5000,no,target,always,0,,,,,,07
 1583,Tao Gunka,chase,159,10,1000,0,5000,no,target,always,0,,,,,,07
 1583,Tao Gunka,attack,170,1,2000,0,5000,no,target,always,0,,,,,,07
@@ -2267,7 +2269,7 @@
 // MvP Slaves/Duplicates
 // IDs 1588 ~ 1612 - Unfinished (Same skills as originals except no teleport)
 
-// Einbroch
+// Einbroch - Episode 10.1
 1613,Metaling@Emotion,loot,197,1,15,0,10000,yes,self,always,0,2,,,,,
 1613,Metaling@CR_AutoGuard,attack,249,5,100,1000,40000,yes,target,always,0,,,,,,
 1613,Metaling@MC_Mammonite,attack,42,5,300,100,5000,no,target,always,0,,,,,,
@@ -2341,7 +2343,7 @@
 1625,G_Porcellio@AL_Pneuma,attack,25,1,10000,0,10000,yes,self,longrangeattacked,,,,,,,
 1625,G_Porcellio@NPC_GroundAttack,attack,185,2,500,500,5000,no,target,always,0,,,,,,
 
-// Lighthalzen/Juperos
+// Lighthalzen/Juperos - Episode 10.2
 1626,Hellion Revenant@AL_HEAL,attack,28,11,10000,0,5000,yes,self,myhpltmaxrate,30,,,,,,
 1626,Hellion Revenant@AL_HEAL,chase,28,11,10000,0,5000,yes,self,myhpltmaxrate,30,,,,,,
 1626,Hellion Revenant@AL_HEAL,idle,28,11,10000,0,5000,yes,self,myhpltmaxrate,30,,,,,,
@@ -2370,7 +2372,7 @@
 1633,Beholder@SA_DISPELL,attack,289,5,500,0,30000,yes,target,always,0,,,,,,
 1633,Beholder@NPC_MENTALBREAKER,attack,159,3,500,800,5000,no,target,always,0,,,,,,
 
-// Biolabs Advanced Class Normal Mobs
+// Normal Advanced Class Mobs
 1634,Seyren Windsor@KN_SPEARBOOMERANG,chase,59,5,500,0,5000,yes,target,always,0,,,,,,
 1634,Seyren Windsor@KN_BOWLINGBASH,angry,62,7,500,800,5000,no,target,always,0,,,,,,
 1634,Seyren Windsor@NPC_CRITICALSLASH,attack,170,1,1000,0,30000,no,target,always,0,,,,,,
@@ -2440,7 +2442,7 @@
 1639,Kathryne Keyron@WZ_QUAGMIRE,chase,92,5,2000,0,30000,no,target,always,0,,,,,,
 1639,Kathryne Keyron@WZ_SIGHTRASHER,attack,81,7,700,1000,5000,no,target,always,0,,,,,,
 
-// Biolabs Advanced Class MvP Slaves
+// Advanced Class MvP Slaves
 1640,G_Lord Knight Seyren@NPC_FIREATTACK,attack,186,3,500,500,5000,no,target,always,0,,,,,,
 1640,G_Lord Knight Seyren@KN_SPEARBOOMERANG,chase,59,5,500,0,5000,yes,target,always,0,,,,,,
 1640,G_Lord Knight Seyren@KN_TWOHANDQUICKEN,attack,60,10,10000,0,120000,yes,self,myhpltmaxrate,30,,,,,,6
@@ -2506,7 +2508,7 @@
 1645,G_High Wizard Kathryne@WZ_WATERBALL,chase,86,3,2000,1000,5000,yes,target,always,0,,,,,,
 1645,G_High Wizard Kathryne@WZ_WATERBALL,attack,86,5,1000,0,5000,yes,target,always,0,,,,,,
 
-// Advanced Class Biolabs MvPs
+// MvP Advanced Class Mobs
 1646,Lord Knight Seyren@NPC_SUMMONSLAVE,idle,196,1,10000,2000,240000,no,self,slavele,0,1641,1642,1643,1644,1645,0
 1646,Lord Knight Seyren@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1646,Lord Knight Seyren@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -2611,7 +2613,7 @@
 1651,High Wizard Kathryne@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1651,High Wizard Kathryne@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
 
-// Biolabs First Class Normal Mobs
+// Normal First Class Mobs
 1652,Egnigem Cenia@SM_MAGNUM,attack,7,10,500,500,5000,no,target,always,0,,,,,,
 1652,Egnigem Cenia@NPC_CRITICALSLASH,attack,170,1,1000,0,30000,no,target,always,0,,,,,,
 1652,Egnigem Cenia@SM_BASH,attack,5,10,3000,0,15000,yes,target,always,0,,,,,,
@@ -2641,7 +2643,7 @@
 1657,Laurell Weinder@MG_FIREWALL,chase,18,5,500,500,5000,yes,target,always,,,,,,,
 1657,Laurell Weinder@MG_SAFETYWALL,attack,12,5,1000,1000,5000,no,self,myhpltmaxrate,30,,,,,,
 
-// Biolabs First Class MvP: Egnigem Cenia
+// First Class MvP & Slaves
 1658,G_Egnigem Cenia@NPC_FIREATTACK,attack,186,3,500,500,5000,no,target,always,0,,,,,,
 1658,G_Egnigem Cenia@NPC_STUNATTACK,attack,179,5,50,1500,5000,no,target,always,0,,,,,,6
 1658,G_Egnigem Cenia@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -2652,8 +2654,6 @@
 1658,G_Egnigem Cenia@NPC_CHANGEWATER,attack,162,1,10000,2000,600000,no,self,myhpltmaxrate,20,,,,,,
 1658,G_Egnigem Cenia@KN_TWOHANDQUICKEN,attack,60,10,10000,0,120000,yes,self,myhpltmaxrate,30,,,,,,
 1658,G_Egnigem Cenia@NPC_SHIELDBRAKE,attack,346,5,500,0,5000,yes,target,always,0,,,,,,
-
-// Biolabs First Class MvP Slaves
 1659,G_Wickebine Tres@TF_DOUBLE,attack,48,10,500,0,10000,no,target,always,0,,,,,,
 1659,G_Wickebine Tres@TF_POISON,attack,52,10,500,0,10000,no,target,always,0,,,,,,
 1660,G_Armeyer Dinze@MC_MAMMONITE,angry,42,7,500,800,5000,no,target,always,0,,,,,,
@@ -2668,7 +2668,7 @@
 1663,G_Laurell Weinder@MG_SOULSTRIKE,chase,13,9,500,500,5000,yes,target,always,0,,,,,,
 1663,G_Laurell Weinder@MG_FROSTDIVER,chase,15,10,500,1000,5000,yes,target,always,0,,,,,,
 
-// Lighthalzen/Juperos (Continued)
+// Juperos - Episode 10.2
 1664,Photon Canon (Red)@NPC_WINDATTACK,attack,187,5,1000,500,5000,no,target,always,0,,,,,,
 1665,Photon Canon (Yellow)@NPC_FIREATTACK,attack,186,5,1000,500,5000,no,target,always,0,,,,,,
 1666,Photon Canon (Green)@NPC_WATERATTACK,attack,184,5,1000,500,5000,no,target,always,0,,,,,,
@@ -2738,7 +2738,7 @@
 1685,Vesper@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1685,Vesper@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
 
-// MvP Lady Tanee, Slave Mobs & Misc Mobs
+// MvP Lady Tanee, Slave Mobs & Misc Mobs - Episode 10.3
 1686,Orc Baby@SW_BASH,attack,5,5,500,800,5000,no,target,always,0,,,,,,
 1686,Orc Baby@NPC_EMOTION,idle,197,1,200,0,5000,no,self,always,0,2,,,,,
 1686,Orc Baby@NPC_SUMMONSLAVE,idle,196,1,2000,2000,600000,no,self,always,0,1222,1452,,,,
@@ -2787,7 +2787,7 @@
 1691,G_Kraben,attack@NPC_COMBOATTACK,171,1,500,700,5000,no,target,always,0,,,,,,19
 1691,G_Kraben,attack@NPC_STUNATTACK,179,3,500,1500,5000,no,target,always,0,,,,,,06
 
-// Hugel
+// Hugel Fields - Episode 10.3
 1692,Breeze,attack,161,1,500,2000,60000,no,self,myhpltmaxrate,30,,,,,,09
 1692,Breeze,attack,170,1,500,500,5000,no,target,always,0,,,,,,06
 1692,Breeze,attack,171,2,500,700,5000,no,target,always,0,,,,,,06
@@ -2814,7 +2814,7 @@
 1697,Plasma (Blue),attack,86,3,500,1500,5000,yes,target,always,0,,,,,,
 1697,Plasma (Blue),attack,184,3,500,500,5000,no,target,always,0,,,,,,
 
-// Thanatos Tower
+// Thanatos Tower - Episode 10.3
 1698,Death Word@NPC_SPLASHATTACK,angry,174,1,2000,0,5000,yes,target,attackpcgt,2,,,,,,
 1698,Death Word@NPC_SPLASHATTACK,attack,174,1,2000,0,5000,yes,target,attackpcgt,2,,,,,,
 1698,Death Word@NPC_CURSEATTACK,attack,181,3,500,800,5000,no,target,always,0,,,,,,
@@ -2923,7 +2923,7 @@
 1712,G_Dolor of Thanatos@AL_HEAL,attack,28,3,10000,500,5000,yes,self,myhpltmaxrate,30,,,,,,
 1712,G_Dolor of Thanatos@AL_HEAL,chase,28,3,10000,500,5000,yes,self,myhpltmaxrate,30,,,,,,
 
-// Abyss Lake Dungeon
+// Abyss Lake Dungeon - Episode 10.3
 1713,Acidus@WZ_FIREPILLAR,idle,80,10,10000,0,2000,yes,self,always,0,,,,,,
 1713,Acidus@WZ_FIREPILLAR,idle,80,10,10000,0,2000,yes,self,always,0,,,,,,
 1713,Acidus@MG_THUNDERSTORM,chase,21,10,2000,0,5000,yes,target,always,0,,,,,,29
@@ -2961,7 +2961,7 @@
 1721,Dragon Egg,idle,193,1,5,2000,0,no,self,always,0,1715,1718,,,,
 1721,Dragon Egg,idle,197,1,200,0,5000,no,self,always,0,9,,,,,
 
-// Kiel Hyre
+// Kiel Hyre - Episode 10.4
 1733,Kiel,attack,5,10,1000,0,1000,no,target,always,0,,,,,,
 1733,Kiel,attack,7,10,1000,0,3000,no,target,always,0,,,,,,
 1733,Kiel,attack,12,10,1000,0,3000,no,self,always,0,,,,,,
@@ -3007,7 +3007,7 @@
 1745,G_Aliza,any,28,10,1000,,3000,no,self,always,0,,,,,,
 1746,G_Constant,attack,173,1,1000,0,0,no,self,myhpltmaxrate,30,,,,,,
 
-// Odin Temple
+// Odin Temple - Episode 10.4
 1751,Valkyrie Randgris@CR_GRANDCROSS,attack,254,1,1000,0,0,no,self,always,0,,,,,,
 1751,Valkyrie Randgris@NPC_Dispel,attack,289,5,500,0,10000,no,target,always,0,,,,,,06
 1751,Valkyrie Randgris@NPC_Dispel,chase,289,5,200,0,10000,no,target,always,0,,,,,,06
@@ -3104,7 +3104,6 @@
 1764,G_Skeggiold_,attack,253,10,1000,0,0,no,target,always,0,,,,,,
 1764,G_Skeggiold_,attack,196,2,10000,700,60000,no,self,slavele,0,1764,,,,,
 1764,G_Skeggiold_,attack,28,11,1000,0,10000,no,self,myhpltmaxrate,30,,,,,,
-
 1765,Valkyrie@CR_GRANDCROSS,attack,254,1,1000,0,0,yes,self,always,0,,,,,,
 1765,Valkyrie@SA_DISPELL,attack,289,5,500,0,10000,yes,target,always,0,,,,,,
 1765,Valkyrie@WZ_VERMILION,attack,85,10,1000,0,5000,yes,target,always,0,,,,,,
@@ -3116,7 +3115,6 @@
 1765,Valkyrie@AS_SONICBLOW,attack,136,10,1000,0,5000,no,target,always,0,,,,,,
 1765,Valkyrie@NPC_AgiUp,chase,350,3,10000,0,120000,no,self,myhpltmaxrate,30,,,,,,06
 1765,Valkyrie@NPC_POWERUP,attack,349,5,10000,0,120000,yes,self,myhpltmaxrate,30,,,,,,
-
 1766,EM_Angeling,idle,28,10,1000,2500,3000,yes,friend,friendhpltmaxrate,60,,,,,,
 1766,EM_Angeling,walk,197,1,100,0,10000,yes,self,always,0,22,,,,,
 1766,EM_Angeling,attack,12,10,1000,3000,5000,no,self,myhpltmaxrate,30,,,,,,
@@ -3136,7 +3134,7 @@
 1767,EM_Deviling,attack,340,5,2000,700,1000,no,target,always,0,,,,,,32
 1767,EM_Deviling,chase,340,5,1000,700,1000,no,target,always,0,,,,,,32
 
-// Arunafeltz - By Tsuyuki
+// Arunafeltz/Ice Dungeon/Sanctuary - Episode 11.1 - By Tsuyuki
 1768,Gloom Under Night@MG_FIREBALL,attack,10,10,1000,500,5000,no,target,always,0,,,,,,
 1768,Gloom Under Night@MG_FIREBALL,chase,10,10,1000,500,5000,no,target,always,0,,,,,,
 1768,Gloom Under Night@KN_BRANDISHSPEAR,attack,57,5,1000,0,5000,no,target,always,0,,,,,,
@@ -3192,6 +3190,8 @@
 1785,Atros@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1785,Atros@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1785,Atros@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
+
+// MvP Slaves/Dupilcates/Misc Mobs
 1788,G_Ice Titan@MG_COLDBOLT,attack,5,3,500,1500,10000,yes,target,always,0,,,,,,
 1788,G_Ice Titan@MG_COLDBOLT,chase,5,3,500,1500,10000,yes,target,always,0,,,,,,
 1788,G_Ice Titan@MG_FROSTDIVER,chase,15,10,500,1000,5000,yes,target,always,0,,,,,,

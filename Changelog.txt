@@ -1,6 +1,28 @@
 
 Date	Added
 
+8/31/06
+	* Fixed: Redid all monster drops from Episode 2.5 ~ Episode 10.2 COMPLETE! [Tsuyuki]
+	* To-Do: Pre-Episode 2.5 Mob drops (RO Alpha~Beta), and Episdoe 10.3+ drops/rates [Tsuyuki]
+	* Removed: Slotted Sunnies & Slotted Glasses from Old Purple Box [Tsuyuki
+	  - http://www.ragnainfo.net/forums/viewtopic.php?t=105161&postdays=0&postorder=asc&highlight=glasses&start=15
+	* Added: 4x Gargoyle Slaves to Chimera Mini-boss [Tsuyuki]
+	* Enabled: The effect box dropping cards (Fixed in Aegis FINALLY) [Tsuyuki]
+	 - Orc Archer card, Raydric Archer card, Jing Guai card, Sleeper card, Stem Worm card, etc..
+	 - http://www.ragnainfo.net/forums/viewtopic.php?t=102696
+	 - http://www.ragnainfo.net/forums/viewtopic.php?t=105828
+	* Fixed: Replaced all Awakening Potion drops with Grapes (new kRO Patch) [Tsuyuki]
+	* Updated: Imported updated Xmas Event script from eAthena [Tsuyuki]
+	* To-DO: Replace that Xmas script with my own, auto-start version (Under Development) [Tsuyuki]
+	* Updated: The city cleaners script (Wild Rose in cities) [Tsuyuki]
+	* Fixed: Valkyrie Randgris spawn time from 1 hour > 8 hours [Tsuyuki]
+	* Fixed: Some monster & card names [Tsuyuki]
+	* Fixed: Changed Valkyrie Randgris drops from 30% to 20% (more accurate temp estimate) [Tsuyuki]
+	* Fixed: Updated all monster drops from Episode 2.5 ~ Episode 6.0 [Tsuyuki]
+	* Added: Some episode-related comments to the mob/mob skill database [Tsuyuki]
+	* Fixed: A couple misc things in the mob database (mob names, stats, etc) [Tsuyuki]
+	* Added: New set items to mobs, they're fully functional now [Tsuyuki]
+
 8/30/2006
 	* Added: A bunch of missing Duplicate mobs. Not completely finished with them [Tsuyuki]
 	* Added: Missing Event MvP "Bring it on!" [ID: 1502] & skills [Tsuyuki]

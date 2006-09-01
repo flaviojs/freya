@@ -61,14 +61,46 @@ lhz_dun03.gat,0,0,0,0	monster	Kathryne Keyron	1639,61,0,0,0
 
 lhz_dun03.gat,0,0,0,0	monster	Lord Knight Seyren	1640,1,0,0,1
 lhz_dun03.gat,0,0,0,0	monster	Assassin Cross Eremes	1641,1,0,0,1
-lhz_dun03.gat,0,0,0,0	monster	Whitesmith Howard	1642,1,0,0,1
+lhz_dun03.gat,0,0,0,0	monster	Mastersmith Howard	1642,1,0,0,1
 lhz_dun03.gat,0,0,0,0	monster	High Priest Margaretha	1643,1,0,0,1
 lhz_dun03.gat,0,0,0,0	monster	Sniper Cecil	1644,1,0,0,1
 lhz_dun03.gat,0,0,0,0	monster	High Wizard Kathryne	1645,1,0,0,1
 
-lhz_dun03.gat,0,0,0,0	monster	Lord Knight Seyren	1646,1,7200000,3600000,1
-lhz_dun03.gat,0,0,0,0	monster	Assassin Cross Eremes	1647,1,7200000,3600000,1
-lhz_dun03.gat,0,0,0,0	monster	Whitesmith Howard	1648,1,7200000,3600000,1
-lhz_dun03.gat,0,0,0,0	monster	High Priest Margaretha	1649,1,7200000,3600000,1
-lhz_dun03.gat,0,0,0,0	monster	Sniper Cecil	1650,1,7200000,3600000,1
-lhz_dun03.gat,0,0,0,0	monster	High Wizard Kathryne	1651,1,7200000,3600000,1
+lhz_dun03.gat,1,1,3	script	BioMvPChooser	139,{
+
+OnInit:
+	set $@BioMvP,rand(6);
+	if($@BioMvP == 0)goto BioLordKnight;
+	if($@BioMvP == 1)goto BioAssassinCross;
+	if($@BioMvP == 2)goto BioMasterSmith;
+	if($@BioMvP == 3)goto BioHighPriest;
+	if($@BioMvP == 4)goto BioSniper;
+	if($@BioMvP == 5)goto BioHighWizard;
+
+BioLordKnight:
+	monster "lhz_dun03.gat",0,0,"Lord Knight Seyren",1646,1,"BioPickMvP::BioDeadMvP";
+	end;
+
+BioAssassinCross:
+	monster "lhz_dun03.gat",0,0,"Assassin Cross Eremes",1647,1,"BioPickMvP::BioDeadMvP";
+	end;
+
+BioMasterSmith:
+	monster "lhz_dun03.gat",0,0,"Mastersmith Howard",1648,1,"BioPickMvP::BioDeadMvP";
+	end;
+
+BioHighPriest:
+	monster "lhz_dun03.gat",0,0,"High Priest Margaretha",1649,1,"BioPickMvP::BioDeadMvP";
+	end;
+
+BioSniper:
+	monster "lhz_dun03.gat",0,0,"Sniper Cecil",1650,1,"BioPickMvP::BioDeadMvP";
+	end;
+
+BioHighWizard:
+	monster "lhz_dun03.gat",0,0,"High Wizard Kathryne",1651,1,"BioPickMvP::BioDeadMvP";
+	end;
+
+BioDeadMvP:
+	goto OnInit;
+}
