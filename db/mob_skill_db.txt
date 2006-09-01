@@ -2304,7 +2304,6 @@
 1618,Ungoliant@Assumptio,attack,361,5,100,1000,40000,yes,self,always,0,,,,,,
 1618,Ungoliant@HeadCrush,attack,398,5,1000,500,10000,yes,target,always,0,,,,,,
 1618,Ungoliant@HeadCrush,chase,398,5,1000,500,10000,yes,target,always,0,,,,,,
-1618,Ungoliant@AL_Teleport,idle,26,1,500,500,10000,no,self,always,0,,,,,,
 1619,Porcellio@NPC_Keeping,attack,201,1,2000,0,5000,yes,self,attackpcgt,2,,,,,,
 1619,Porcellio@AL_Pneuma,attack,25,1,10000,0,10000,yes,self,longrangeattacked,,,,,,,
 1619,Porcellio@NPC_GroundAttack,attack,185,2,500,500,5000,no,target,always,0,,,,,,

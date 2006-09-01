@@ -2,6 +2,7 @@
 Date	Added
 
 09/01/06
+	* Removed: Teleport from Ungoliant (I didn't realize it was supposed to be rudeattacked, not regular tele) [Tsuyuki]
 	* Fixed: Redid all monster drops from Episode 2.5 ~ Episode 10.2 COMPLETE! [Tsuyuki]
 	* To-Do: Pre-Episode 2.5 Mob drops (RO Alpha~Beta), and Episode 10.3+ drops/rates [Tsuyuki]
 	* Removed: Slotted Sunnies & Slotted Glasses from Old Purple Box [Tsuyuki
