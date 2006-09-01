@@ -1653,20 +1653,11 @@ struct Damage battle_calc_weapon_attack(
 		}
 
 		// skill damage bonuses
-		if(sc_data && skill_num != PA_SACRIFICE)
-		{
+		if(sc_data && skill_num != PA_SACRIFICE && skill_num != MC_MAMMONITE) {
 			if(sc_data[SC_OVERTHRUST].timer != -1)
-			{
-				if(skill_num != MC_MAMMONITE)
-					skillratio += 5 * sc_data[SC_OVERTHRUST].val1;
-			}
-			
+				skillratio += 5 * sc_data[SC_OVERTHRUST].val1;
 			if(sc_data[SC_MAXOVERTHRUST].timer != -1)
-			{
-				if(skill_num != MC_MAMMONITE)
-					skillratio += 20 * sc_data[SC_MAXOVERTHRUST].val1;
-			}
-			
+				skillratio += 20 * sc_data[SC_MAXOVERTHRUST].val1;
 			if(sc_data[SC_BERSERK].timer != -1)
 				skillratio += 100;
 		}
@@ -2065,7 +2056,7 @@ struct Damage battle_calc_weapon_attack(
 		breakrate_[1] += sd->break_armor_rate;
 
 		if (sd->sc_count) {
-			if (sd->sc_data[SC_MELTDOWN].timer!=-1) {
+			if (sd->sc_data[SC_MELTDOWN].timer != -1 && skill_num != WS_CARTTERMINATION) {
 				breakrate_[0] += 100 * sd->sc_data[SC_MELTDOWN].val1; //weapon
 				breakrate_[1] = 70 * sd->sc_data[SC_MELTDOWN].val1; //armor
 			}
@@ -2110,7 +2101,7 @@ struct Damage battle_calc_weapon_attack(
 			1390,1391,1392,1400,1401,1402,1403,1404,1405,1406,1408,1409,1410,1412,1413,1415,1416,
 			1417,1493,1494,1495,1497,1498,1499,1500,1502,1503,1504,1505,1506,1507,1508,1509,1510,
 			1511,1512,1513,1514,1515,1516,1517,1519,1520,1582,1584,1585,1586,1587 };
-			mob_class_change(tmd, changeclass, sizeof(changeclass) / sizeof(int));
+			mob_class_change(tmd, changeclass, sizeof(changeclass) / sizeof(changeclass[1]));
 		}
 	}
 

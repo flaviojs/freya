@@ -1246,8 +1246,7 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 		break;
 	}
 
-	if (skillid != MC_CARTREVOLUTION && /*skillid != WS_CARTTERMINATION &&*/ attack_type&BF_WEAPON) {	
-		//No clue why those skills doesnt works with status cards [Proximus]
+	if (skillid != MC_CARTREVOLUTION && attack_type&BF_WEAPON) {
 		int i;
 		int sc_def_card = 100;
 
@@ -1272,7 +1271,8 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 				sc_def_card = sc_def_luk;
 				break;
 			}
-			if (sd) {
+			//Status applied on the enemy [Proximus]
+			if (sd && skillid != WS_CARTTERMINATION) { //WS_CARTTERMINATION does not carry status aliments except from the skill itself (stun)
 				if (!sd->state.arrow_atk) {
 					if (rand() % 10000 < (sd->addeff[i - SC_STONE]) * sc_def_card / 100) {
 						if (battle_config.battle_log)
@@ -1308,6 +1308,7 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 				sc_def_card = sc_def_luk2;
 				break;
 			}
+			//Status applied on itself [Proximus]
 			if (sd) {
 				if (!sd->state.arrow_atk) {
 					if (rand() % 10000 < (sd->addeff2[i - SC_STONE]) * sc_def_card / 100) {
@@ -1323,6 +1324,7 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 					}
 				}
 			}
+			//Status applied on itself by the enemy [Proximus]
 			if (dstsd && rand() % 10000 < dstsd->addeff3[i - SC_STONE] * sc_def_card / 100) {
 				if (battle_config.battle_log)
 					printf("PC %d skill_addeff: card?É?æ?é?Ùí??® %d %d\n", src->id, i, dstsd->addeff3[i - SC_STONE]);
