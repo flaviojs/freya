@@ -5,6 +5,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 09/01/06
+	* Improved: replaced function call (gettick()) by the variable (gettick_cache) -> speeder [Yor]
+	            call a function is slower to simply access to a variable.
+	* Improved: do_timer() function. [Yor]
+	* Fixed: player who uses skills can gain xp in a party and is not more considered like idle member [Yor]
 	* Fixed: @kamic atcommand on multi map-servers [Yor]
 
 08/31/06

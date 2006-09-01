@@ -970,7 +970,6 @@ int map_searchrandfreecell(int m, int x, int y, int range) {
 int map_addflooritem(struct item *item_data, int amount, int m, int x, int y, struct map_session_data *first_sd,
     struct map_session_data *second_sd, struct map_session_data *third_sd, int owner_id, int type) {
 	int xy, r;
-	unsigned int tick;
 	struct flooritem_data *fitem;
 
 	nullpo_retr(0, item_data);
@@ -997,28 +996,27 @@ int map_addflooritem(struct item *item_data, int amount, int m, int x, int y, st
 		FREE(fitem);
 		return 0;
 	}
-	
-	tick = gettick();
+
 	if (first_sd) {
 		fitem->first_get_id = first_sd->bl.id;
 		if (type)
-			fitem->first_get_tick = tick + battle_config.mvp_item_first_get_time;
+			fitem->first_get_tick = gettick_cache + battle_config.mvp_item_first_get_time;
 		else
-			fitem->first_get_tick = tick + battle_config.item_first_get_time;
+			fitem->first_get_tick = gettick_cache + battle_config.item_first_get_time;
 	}
 	if (second_sd) {
 		fitem->second_get_id = second_sd->bl.id;
 		if (type)
-			fitem->second_get_tick = tick + battle_config.mvp_item_first_get_time + battle_config.mvp_item_second_get_time;
+			fitem->second_get_tick = gettick_cache + battle_config.mvp_item_first_get_time + battle_config.mvp_item_second_get_time;
 		else
-			fitem->second_get_tick = tick + battle_config.item_first_get_time + battle_config.item_second_get_time;
+			fitem->second_get_tick = gettick_cache + battle_config.item_first_get_time + battle_config.item_second_get_time;
 	}
 	if (third_sd) {
 		fitem->third_get_id = third_sd->bl.id;
 		if(type)
-			fitem->third_get_tick = tick + battle_config.mvp_item_first_get_time + battle_config.mvp_item_second_get_time + battle_config.mvp_item_third_get_time;
+			fitem->third_get_tick = gettick_cache + battle_config.mvp_item_first_get_time + battle_config.mvp_item_second_get_time + battle_config.mvp_item_third_get_time;
 		else
-			fitem->third_get_tick = tick + battle_config.item_first_get_time + battle_config.item_second_get_time + battle_config.item_third_get_time;
+			fitem->third_get_tick = gettick_cache + battle_config.item_first_get_time + battle_config.item_second_get_time + battle_config.item_third_get_time;
 	}
 	fitem->owner = owner_id; // who drop the item (to authorize to get item at any moment)
 
@@ -1026,8 +1024,7 @@ int map_addflooritem(struct item *item_data, int amount, int m, int x, int y, st
 	fitem->item_data.amount = amount;
 	fitem->subx = (r & 3) * 3 + 3;
 	fitem->suby = ((r >> 2) & 3) * 3 + 3;
-	//fitem->cleartimer = add_timer(gettick() + battle_config.flooritem_lifetime, map_clearflooritem_timer, fitem->bl.id, 0);
-	fitem->cleartimer = add_timer(tick + battle_config.flooritem_lifetime, map_clearflooritem_timer, fitem->bl.id, 0);
+	fitem->cleartimer = add_timer(gettick_cache + battle_config.flooritem_lifetime, map_clearflooritem_timer, fitem->bl.id, 0);
 
 	map_addblock(&fitem->bl);
 	clif_dropflooritem(fitem);
@@ -1225,7 +1222,7 @@ void map_quit(struct map_session_data *sd) {
 	pc_delinvincibletimer(sd);
 	pc_delspiritball(sd, sd->spiritball, 1);
 	skill_gangsterparadise(sd, 0);
-	skill_unit_move(&sd->bl, gettick() ,0);
+	skill_unit_move(&sd->bl, gettick_cache, 0);
 
 	status_calc_pc(sd, 4);
 //	skill_clear_unitgroup(&sd->bl);
@@ -2877,8 +2874,7 @@ static int cleanup_sub(struct block_list *bl, va_list ap) {
 void do_final(void) {
 	int map_id, i, j;
 	struct map_session_data *sd;
-	unsigned int tick_cache;
-	
+
 	printf("Terminating...\n");
 
 	map_cache_close();
@@ -2887,10 +2883,9 @@ void do_final(void) {
 
 	// save all online players
 	j = 0;
-	tick_cache = gettick();
 	for (i = 0; i < fd_max; i++) {
 		if (session[i] && (sd = session[i]->session_data) && sd->state.auth) {
-			if (sd->last_saving + 30000 < tick_cache) { // not save if previous saving was done recently // to limit successive savings with auto-save
+			if (sd->last_saving + 30000 < gettick_cache) { // not save if previous saving was done recently // to limit successive savings with auto-save
 				chrif_save(sd); // do pc_makesavestatus and save storage + account_reg/account_reg2 too
 				j++;
 				if (j % 3 == 0) // send to char-server only every 3 characters
@@ -3065,7 +3060,7 @@ void do_init(const int argc, char *argv[]) {
 	memset(messages_filename, 0, sizeof(messages_filename));
 	strncpy(messages_filename, "conf/msg_athena.conf", sizeof(messages_filename) - 1);
 
-	srand(gettick());
+	srand(gettick_cache);
 
 	for (i = 1; i < argc; i++) {
 

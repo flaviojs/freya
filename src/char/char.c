@@ -255,7 +255,7 @@ void char_log(char *fmt, ...) {
 			strftime(log_filename_to_use + strlen(log_filename_to_use), 63, "-%Y-%m-%d", localtime(&now));
 			strcat(log_filename_to_use, last_point);
 			break;
-		default: // case 0: 
+		default: // case 0:
 			strcpy(log_filename_to_use, char_log_filename);
 			break;
 		}
@@ -6484,19 +6484,19 @@ void do_init(const int argc, char **argv) {
 	add_timer_func_list(check_manner_file, "check_manner_file");
 	add_timer_func_list(check_account_reg2, "check_account_reg2");
 
-	i = add_timer_interval(gettick() + 1000, check_connect_login_server, 0, 0, 5 * 1000);
-	i = add_timer_interval(gettick() + 1000, send_users_tologin, 0, 0, 5 * 1000);
+	i = add_timer_interval(gettick_cache + 1000, check_connect_login_server, 0, 0, 5 * 1000);
+	i = add_timer_interval(gettick_cache + 1000, send_users_tologin, 0, 0, 5 * 1000);
 #ifdef TXT_ONLY
-	i = add_timer_interval(gettick() + autosave_interval, mmo_char_sync_timer, 0, 0, autosave_interval);
+	i = add_timer_interval(gettick_cache + autosave_interval, mmo_char_sync_timer, 0, 0, autosave_interval);
 #else
-	i = add_timer_interval(gettick() + 30 * 1000, mmo_char_sync_timer, 0, 0, 30 * 1000); // to check characters in memory and free if not used for 15 seconds
+	i = add_timer_interval(gettick_cache + 30 * 1000, mmo_char_sync_timer, 0, 0, 30 * 1000); // to check characters in memory and free if not used for 15 seconds
 #endif
 	if (anti_freeze_interval == 0)
-		i = add_timer_interval(gettick() + 6000, map_anti_freeze_system, 0, 0, 6 * 1000); // every 6 sec (users are sended every 5 sec)
+		i = add_timer_interval(gettick_cache + 6000, map_anti_freeze_system, 0, 0, 6 * 1000); // every 6 sec (users are sended every 5 sec)
 	else
-		i = add_timer_interval(gettick() + anti_freeze_interval * 1000, map_anti_freeze_system, 0, 0, anti_freeze_interval * 1000); // every 6 sec (users are sended every 5 sec)
-	i = add_timer_interval(gettick() + 60000, check_manner_file, 0, 0, 60000); // every 60 sec we check if manner file has been changed
-	i = add_timer_interval(gettick() + 300000, check_account_reg2, 0, 0, 300000); // every 300 sec (5 minutes) we check account reg2 to clean up it
+		i = add_timer_interval(gettick_cache + anti_freeze_interval * 1000, map_anti_freeze_system, 0, 0, anti_freeze_interval * 1000); // every 6 sec (users are sended every 5 sec)
+	i = add_timer_interval(gettick_cache + 60000, check_manner_file, 0, 0, 60000); // every 60 sec we check if manner file has been changed
+	i = add_timer_interval(gettick_cache + 300000, check_account_reg2, 0, 0, 300000); // every 300 sec (5 minutes) we check account reg2 to clean up it
 
 #ifdef DYNAMIC_LINKING
 	addons_enable_all();

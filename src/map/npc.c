@@ -158,7 +158,7 @@ int npc_event_dequeue(struct map_session_data *sd) {
 			// clear the last event
 			memset(&sd->eventqueue[MAX_EVENTQUEUE-1], 0, sizeof(sd->eventqueue[MAX_EVENTQUEUE-1]));
 			// add the timer
-			sd->eventtimer[ev] = add_timer(gettick() + 100, pc_eventtimer, sd->bl.id, (int)name);
+			sd->eventtimer[ev] = add_timer(gettick_cache + 100, pc_eventtimer, sd->bl.id, (int)name);
 		} else
 			printf("npc_event_dequeue: event timer is full !\n");
 	}
@@ -251,9 +251,9 @@ int npc_timer_sub_sub(void *key, void *data, va_list ap) { // Added by RoVeRT
 		strcpy(event, ev->nd->name);
 		strcat(event, p);
 
-		if (gettick() >= ev->nd->lastaction && gettick() - ev->nd->timer >= tick) {
+		if (gettick_cache >= ev->nd->lastaction && gettick_cache - ev->nd->timer >= tick) {
 			npc_timer_event(event);
-			ev->nd->lastaction = gettick();
+			ev->nd->lastaction = gettick_cache;
 		}
 	}
 
@@ -439,7 +439,7 @@ int npc_event_do_oninit(void)
 {
 	printf("npc: Event '" CL_WHITE "OnInit" CL_RESET "' executed with '" CL_WHITE "%d" CL_RESET "' NPCs.\n", npc_event_doall("OnInit"));
 
-	add_timer_interval(gettick() + 100, npc_event_do_clock, 0, 0, 15000); // "ontimer" are coded for every min. so, check only every 15 sec (not every sec)
+	add_timer_interval(gettick_cache + 100, npc_event_do_clock, 0, 0, 15000); // "ontimer" are coded for every min. so, check only every 15 sec (not every sec)
 
 	return 0;
 }
@@ -458,7 +458,7 @@ int npc_addeventtimer(struct npc_data *nd, int tick, const char *name) {
 	if (i < MAX_EVENTTIMER) {
 		CALLOC(evname, char, 25); // 24 + NULL
 		strncpy(evname, name, 24);
-		nd->eventtimer[i] = add_timer(gettick() + tick, npc_event_timer, nd->bl.id, (int)evname);
+		nd->eventtimer[i] = add_timer(gettick_cache + tick, npc_event_timer, nd->bl.id, (int)evname);
 	} else
 		printf("npc_addtimer: event timer is full !\n");
 
@@ -618,12 +618,12 @@ int npc_timerevent_start(struct npc_data *nd, int rid)
 		return 0;
 
 	nd->u.scr.nexttimer = j;
-	nd->u.scr.timertick = gettick();
+	nd->u.scr.timertick = gettick_cache;
 	if (rid >= 0) // if rid is less than 0 leave it unchanged [celest]
 		nd->u.scr.rid = rid; // changed to: attaching to given rid by default [Shinomori]
 
 	next = nd->u.scr.timer_event[j].timer - nd->u.scr.timer;
-	nd->u.scr.timerid = add_timer(gettick() + next, npc_timerevent, nd->bl.id, next);
+	nd->u.scr.timerid = add_timer(gettick_cache + next, npc_timerevent, nd->bl.id, next);
 
 	return 0;
 }
@@ -638,7 +638,7 @@ int npc_timerevent_stop(struct npc_data *nd)
 
 	if (nd->u.scr.nexttimer >= 0) {
 		nd->u.scr.nexttimer = -1;
-		nd->u.scr.timer += (int)(gettick() - nd->u.scr.timertick);
+		nd->u.scr.timer += (int)(gettick_cache - nd->u.scr.timertick);
 		if (nd->u.scr.timerid != -1) {
 			delete_timer(nd->u.scr.timerid, npc_timerevent);
 			nd->u.scr.timerid = -1;
@@ -662,7 +662,7 @@ int npc_gettimerevent_tick(struct npc_data *nd)
 	tick = nd->u.scr.timer;
 
 	if (nd->u.scr.nexttimer >= 0)
-		tick += (int)(gettick() - nd->u.scr.timertick);
+		tick += (int)(gettick_cache - nd->u.scr.timertick);
 
 	return tick;
 }
@@ -917,14 +917,14 @@ void npc_click(struct map_session_data *sd, int id) {
 	if (sd->trade_partner != 0) // if player in trade, he can not click on a NPC
 		return;
 
-    // If player is frozen, stunned, stone cursed, or sleeping they cannot click on a NPC
-		if(sd->sc_count) {
-			if((sd->sc_data[SC_STONE].timer != -1 && sd->sc_data[SC_STONE].val2 == 0) ||
-				 sd->sc_data[SC_FREEZE].timer != -1 || 
-				 sd->sc_data[SC_STUN].timer   != -1 || 
-				 sd->sc_data[SC_SLEEP].timer  != -1)
-				return;
-		}
+	// If player is frozen, stunned, stone cursed, or sleeping they cannot click on a NPC
+	if(sd->sc_count) {
+		if((sd->sc_data[SC_STONE].timer != -1 && sd->sc_data[SC_STONE].val2 == 0) ||
+		   sd->sc_data[SC_FREEZE].timer != -1 ||
+		   sd->sc_data[SC_STUN].timer   != -1 ||
+		   sd->sc_data[SC_SLEEP].timer  != -1)
+			return;
+	}
 
 	nd = (struct npc_data *)map_id2bl(id);
 	if (npc_checknear(sd, nd)) // check if npc exists too and is a NPC
@@ -1035,12 +1035,12 @@ int npc_buylist(struct map_session_data *sd, int n, unsigned short *item_list) {
 		}
 		if (nd->u.shop_item[j].nameid == 0)
 			return 3; // 0: The deal has successfully completed., 1: You dont have enough zeny., 2: you are overcharged!, 3: You are over your weight limit.
-		
+
 		// You can't buy more than 1 stackable item (of the same item) at the same time [Proximus]
 		if (itemdb_isequip3(nd->u.shop_item[j].nameid) && item_list[i*2] > 1)
-		{	
+		{
 			char message_to_gm[strlen(msg_txt(671)) + strlen(msg_txt(507)) + strlen(msg_txt(540)) + strlen(msg_txt(508))];
-			sprintf(message_to_gm, msg_txt(671), sd->status.name, sd->status.account_id, sd->status.char_id, item_list[i*2], nd->u.shop_item[j].nameid); 
+			sprintf(message_to_gm, msg_txt(671), sd->status.name, sd->status.account_id, sd->status.char_id, item_list[i*2], nd->u.shop_item[j].nameid);
 			intif_wis_message_to_gm(wisp_server_name, battle_config.hack_info_GM_level, message_to_gm);
 			// if we block people
 				if (battle_config.ban_hack_trade < 0) {
@@ -1297,13 +1297,13 @@ int npc_changestate(struct npc_data *nd, int state, int type)
 	case MS_WALK:
 		if ((i = calc_next_walk_step(nd)) > 0) {
 			i = i >> 2;
-			nd->walktimer = add_timer(gettick() + i, npc_walktimer, nd->bl.id, 0);
+			nd->walktimer = add_timer(gettick_cache + i, npc_walktimer, nd->bl.id, 0);
 		}
 		else
 			nd->state.state = MS_IDLE;
 		break;
 	case MS_DELAY:
-		nd->walktimer = add_timer(gettick() + type, npc_walktimer, nd->bl.id, 0);
+		nd->walktimer = add_timer(gettick_cache + type, npc_walktimer, nd->bl.id, 0);
 		break;
 
 	}
@@ -1412,10 +1412,8 @@ int npc_stop_walking(struct npc_data *nd, int type)
 	if (type & 0x01)
 		clif_fixnpcpos(nd);
 	if (type & 0x02) {
-		int delay = status_get_dmotion(&nd->bl);
-		unsigned int tick = gettick();
-		if (nd->canmove_tick < tick)
-			nd->canmove_tick = tick + delay;
+		if (nd->canmove_tick < gettick_cache)
+			nd->canmove_tick = gettick_cache + status_get_dmotion(&nd->bl); // gettick() + delay
 	}
 
 	return 0;

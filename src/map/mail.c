@@ -212,7 +212,7 @@ int mail_check_timer(int tid, unsigned int tick, int id, int data) {
 
 void do_init_mail(void) {
 	add_timer_func_list(mail_check_timer, "mail_check_timer");
-	add_timer_interval(gettick() + MAIL_CHECK_TIME, mail_check_timer, 0, 0, MAIL_CHECK_TIME);
+	add_timer_interval(gettick_cache + MAIL_CHECK_TIME, mail_check_timer, 0, 0, MAIL_CHECK_TIME);
 
 	return;
 }

@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <limits.h>
+#include <stdint.h>
 
 #ifdef __WIN32
 #include <windows.h>
@@ -42,14 +43,17 @@ struct _Module *loaded_modules;
 void init_localcalltable(void);
 #endif
 
+/** \brief Prepare call-table for addons.
+ * This function prepares the calltable, in order to make functions
+ * available to addons.
+ */
 void init_calltable() {
 #ifdef DYNAMIC_LINKING
 	init_localcalltable();
-	call_table = malloc(MFNC_COUNT * 4);
+	call_table = malloc(MFNC_COUNT * sizeof(void *));
 	// put here list of exported functions...
 	MFNC_LOCAL_TABLE(void);
 	MFNC_DISPLAY_TITLE(void);
-	MFNC_GETTICK(void);
 	MFNC_ADD_TIMER(void);
 	MFNC_ADD_TIMER_INTERVAL(void);
 	MFNC_DELETE_TIMER(void);
@@ -59,6 +63,11 @@ void init_calltable() {
 	set_termfunc(addons_unload_all);
 }
 
+/** \brief Enable all loaded addons.
+ * This function will enable (call Mod_Load) each addon loaded in the
+ * configuration file.
+ * \return Number of successfully enabled modules.
+ */
 int addons_enable_all(void) {
 	// enable all addons
 	struct _Module *mod;

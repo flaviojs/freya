@@ -3744,7 +3744,7 @@ int buildin_gettimetick(struct script_state *st) /* Asgard Version */
 	case 0:
 	default:
 		// type 0:(System Ticks)
-		push_val(st->stack, C_INT, gettick());
+		push_val(st->stack, C_INT, gettick_cache);
 		break;
 	}
 
@@ -5441,7 +5441,7 @@ int buildin_pvpon(struct script_state *st)
 		for(i=0;i<fd_max;i++) { //l”•ªƒ‹[ƒv
 			if(session[i] && (pl_sd=session[i]->session_data) && pl_sd->state.auth){
 				if(m == pl_sd->bl.m && pl_sd->pvp_timer == -1) {
-					pl_sd->pvp_timer = add_timer(gettick() + 200, pc_calc_pvprank_timer, pl_sd->bl.id, 0);
+					pl_sd->pvp_timer = add_timer(gettick_cache + 200, pc_calc_pvprank_timer, pl_sd->bl.id, 0);
 					pl_sd->pvp_rank = 0;
 					pl_sd->pvp_lastusers = 0;
 					pl_sd->pvp_point = 5;
@@ -5964,7 +5964,8 @@ int buildin_inittimer(struct script_state *st)	// Added by RoVeRT
 {
 //	struct npc_data *nd = (struct npc_data*)map_id2bl(st->oid);
 
-//	nd->lastaction = nd->timer = gettick();
+//	nd->lastaction = gettick_cache;
+//	nd->timer = gettick_cache;
 	npc_do_ontimer(st->oid, map_id2sd(st->rid), 1);
 
 	return 0;
@@ -6254,7 +6255,7 @@ int buildin_petskillbonus(struct script_state *st)
 		pd->state.skillbonus = 0; // waiting state
 
 	// wait for timer to start
-	pd->skillbonustimer = add_timer(gettick() + pd->skilltimer * 1000, pet_skill_bonus_timer, sd->bl.id, 0);
+	pd->skillbonustimer = add_timer(gettick_cache + pd->skilltimer * 1000, pet_skill_bonus_timer, sd->bl.id, 0);
 
 	return 0;
 }
@@ -6449,7 +6450,7 @@ int buildin_petrecovery(struct script_state *st)
 	pd->skilltype = conv_num(st, &(st->stack->stack_data[st->start+2]));
 	pd->skilltimer = conv_num(st, &(st->stack->stack_data[st->start+3]));
 
-	pd->recoverytimer = add_timer(gettick() + pd->skilltimer * 1000, pet_recovery_timer, sd->bl.id, 0);
+	pd->recoverytimer = add_timer(gettick_cache + pd->skilltimer * 1000, pet_recovery_timer, sd->bl.id, 0);
 
 	return 0;
 }
@@ -6472,7 +6473,7 @@ int buildin_petheal(struct script_state *st)
 	pd->skillval = conv_num(st, &(st->stack->stack_data[st->start+3]));
 	pd->skilltimer = conv_num(st, &(st->stack->stack_data[st->start+4]));
 
-	pd->healtimer = add_timer(gettick() + pd->skilltimer * 1000, pet_heal_timer, sd->bl.id, 0);
+	pd->healtimer = add_timer(gettick_cache + pd->skilltimer * 1000, pet_heal_timer, sd->bl.id, 0);
 
 	return 0;
 }
@@ -6496,7 +6497,7 @@ int buildin_petmag(struct script_state *st)
 	pd->skillval = conv_num(st, &(st->stack->stack_data[st->start+4]));
 	pd->skilltimer = conv_num(st, &(st->stack->stack_data[st->start+5]));
 
-	pd->magtimer = add_timer(gettick() + pd->skilltimer * 1000, pet_mag_timer, sd->bl.id, 0);
+	pd->magtimer = add_timer(gettick_cache + pd->skilltimer * 1000, pet_mag_timer, sd->bl.id, 0);
 
 	return 0;
 }
@@ -6523,7 +6524,7 @@ int buildin_petskillattack(struct script_state *st)
 	pd->skillduration = conv_num(st, &(st->stack->stack_data[st->start+4]));
 	pd->skilltimer = conv_num(st, &(st->stack->stack_data[st->start+5]));
 
-	pd->skillattacktimer = add_timer(gettick() + 100, pet_skillattack_timer, sd->bl.id, 0);
+	pd->skillattacktimer = add_timer(gettick_cache + 100, pet_skillattack_timer, sd->bl.id, 0);
 
 	return 0;
 }
@@ -6557,7 +6558,7 @@ int buildin_npcskilleffect(struct script_state *st)
 	int x=conv_num(st,& (st->stack->stack_data[st->start+4]));
 	int y=conv_num(st,& (st->stack->stack_data[st->start+5]));
 
-	clif_skill_poseffect(&nd->bl, skillid, skilllv, x, y, gettick());
+	clif_skill_poseffect(&nd->bl, skillid, skilllv, x, y, gettick_cache);
 
 	return 0;
 }
@@ -7477,10 +7478,10 @@ int buildin_summon(struct script_state *st)
 			md->master_id = sd->bl.id;
 			md->state.special_mob_ai = 1; // 0: nothing, 1: cannibalize, 2-3: spheremine
 			md->mode = mob_db[md->class].mode | 0x04;
-			md->deletetimer = add_timer(gettick() + 60000, mob_timer_delete, id, 0);
+			md->deletetimer = add_timer(gettick_cache + 60000, mob_timer_delete, id, 0);
 			clif_misceffect2(&md->bl, 344); /* display teleport of monster */
 		}
-		/*clif_skill_poseffect(&sd->bl, AM_CALLHOMUN, 1, sd->bl.x, sd->bl.y, gettick()); - don't display the skill to other */
+		/*clif_skill_poseffect(&sd->bl, AM_CALLHOMUN, 1, sd->bl.x, sd->bl.y, gettick_cache); - don't display the skill to other */
 	}
 
 	return 0;
@@ -7488,14 +7489,18 @@ int buildin_summon(struct script_state *st)
 
 int buildin_night(struct script_state *st)
 {
-    if (night_flag != 1) map_night_timer(night_timer_tid, 0, 0, 1);
-     return 0;
+	if (night_flag != 1)
+		map_night_timer(night_timer_tid, 0, 0, 1);
+
+	return 0;
 }
 int buildin_day(struct script_state *st)
 {
-     if (night_flag != 0) map_day_timer(day_timer_tid, 0, 0, 1);
-     return 0;
-} 
+	if (night_flag != 0)
+		map_day_timer(day_timer_tid, 0, 0, 1);
+
+	return 0;
+}
 
 /*==========================================
  * Checks whether it is daytime/nighttime
@@ -8494,7 +8499,7 @@ int do_init_script()
 	script_load_mapreg();
 
 	add_timer_func_list(script_autosave_mapreg,"script_autosave_mapreg");
-	add_timer_interval(gettick() + (10 * 1000), script_autosave_mapreg, 0, 0, 10 * 1000); // every 10 sec
+	add_timer_interval(gettick_cache + (10 * 1000), script_autosave_mapreg, 0, 0, 10 * 1000); // every 10 sec
 
 	if (scriptlabel_db == NULL)
 		scriptlabel_db = strdb_init(50);

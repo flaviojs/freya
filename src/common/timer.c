@@ -86,8 +86,7 @@ char* search_timer_func_list(int (*func)(int,unsigned int,int,int)) {
  * Get tick time
  *----------------------------*/
 static unsigned int tick_start;
-static unsigned int gettick_cache;
-static int gettick_count;
+unsigned int gettick_cache;
 
 void init_gettick(void) {
 	struct timeval tval;
@@ -95,7 +94,7 @@ void init_gettick(void) {
 	gettimeofday(&tval, NULL);
 	tick_start = tval.tv_sec; // get fisrt value to have difference and reduce overflow value
 
-	gettick_nocache(); // init gettick_cache and gettick_count
+	gettick_nocache(); // init gettick_cache
 
 	return;
 }
@@ -104,17 +103,8 @@ unsigned int gettick_nocache(void) {
 	struct timeval tval;
 
 	gettimeofday(&tval, NULL);
-	gettick_count = 1024;
-	
+
 	return gettick_cache = ((unsigned int)tval.tv_sec - tick_start) * ((unsigned int)1000) + (unsigned int)(tval.tv_usec / 1000);
-}
-
-unsigned int gettick(void) {
-	gettick_count--;
-	if (gettick_count < 0)
-		return gettick_nocache();
-
-	return gettick_cache;
 }
 
 /*======================================
@@ -311,12 +301,12 @@ struct TimerData* get_timer(int tid) {
 	return &timer_data[tid];
 }
 
-int do_timer(unsigned int tick) {
+int do_timer(void) {
 	int i, nextmin;
 
 	while(timer_heap_num) {
 		i = timer_heap[timer_heap_num - 1]; // next shorter element
-		if ((nextmin = DIFF_TICK(timer_data[i].tick, tick)) > 0 && timer_data[i].func != NULL) { // if we must wait, and timer have a function (not deleted)
+		if ((nextmin = DIFF_TICK(timer_data[i].tick, gettick_cache)) > 0 && timer_data[i].func != NULL) { // if we must wait, and timer have a function (not deleted)
 			if (nextmin < 50)
 				return 50;
 			else if (nextmin > 1000) {/* perhaps some parses of clients can create timers before 1 sec */
@@ -346,7 +336,7 @@ int do_timer(unsigned int tick) {
 				// timer処理タイミングを現在値とする事で
 				// 呼び出し時タイミング(引数のtick)相対で処理してる
 				// timer関数の次回処理タイミングを遅らせる
-				timer_data[i].func(i, tick, timer_data[i].id, timer_data[i].data);
+				timer_data[i].func(i, gettick_cache, timer_data[i].id, timer_data[i].data);
 			} else {
 				timer_data[i].func(i, timer_data[i].tick, timer_data[i].id, timer_data[i].data);
 			}
@@ -372,8 +362,8 @@ int do_timer(unsigned int tick) {
 				free_timer_list[free_timer_list_pos++] = i;
 				break;
 			case TIMER_INTERVAL:
-				if (DIFF_TICK(timer_data[i].tick, tick) < -1000) {
-					timer_data[i].tick = tick + timer_data[i].interval;
+				if (DIFF_TICK(timer_data[i].tick, gettick_cache) < -1000) {
+					timer_data[i].tick = gettick_cache + timer_data[i].interval;
 				} else {
 					timer_data[i].tick += timer_data[i].interval;
 				}

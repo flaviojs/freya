@@ -152,7 +152,7 @@ void chrif_save(struct map_session_data *sd) {
 	sd->status.manner = manner;
 	memcpy(&sd->status.skill, &skill_cpy, sizeof(skill_cpy));
 
-	sd->last_saving = gettick(); // to limit successive savings with auto-save
+	sd->last_saving = gettick_cache; // to limit successive savings with auto-save
 
 	return;
 }
@@ -987,7 +987,7 @@ int chrif_accountban(int fd) {
 					char tmpstr[2048];
 					memset(tmpstr, 0, sizeof(tmpstr));
 					timestamp = (time_t)RFIFOL(fd,7); // status or final date of a banishment
-					strcpy(tmpstr, msg_txt(572)); // Your account has been banished until 
+					strcpy(tmpstr, msg_txt(572)); // Your account has been banished until
 					strftime(tmpstr + strlen(tmpstr), 24, msg_txt(573), localtime(&timestamp)); // %m-%d-%Y %H:%M:%S
 					clif_displaymessage(sd->fd, tmpstr);
 				}
@@ -1252,6 +1252,7 @@ int chrif_load_scdata(int fd) {
 		status_change_start(&sd->bl, data.type, data.val1, data.val2, data.val3, data.val4, data.tick, 7);
 		//Flag 3 is 1&2, 1: Force status start, 2: Do not modify the tick value sent.
 	}
+
 	return 0;
 }
 
@@ -1261,24 +1262,21 @@ int chrif_load_scdata(int fd) {
  */
 int chrif_save_scdata(struct map_session_data *sd) {
 	int i, count = 0;
-	unsigned int tick;
 	struct status_change_data data;
 	struct TimerData *timer;
 
-	if(!chrif_isconnect()) 
+	if(!chrif_isconnect())
 		return -1;
-	
-	tick = gettick();
-	
+
 	WPACKETW( 0) = 0x2b2b;
 	WPACKETL( 4) = sd->status.char_id;
 	for (i = 0; i < SC_MAX; i++) {
 		if (sd->sc_data[i].timer == -1)
 			continue;
 		timer = get_timer(sd->sc_data[i].timer);
-		if (timer == NULL || timer->func != status_change_timer || DIFF_TICK(timer->tick, tick) < 0)
+		if (timer == NULL || timer->func != status_change_timer || DIFF_TICK(timer->tick, gettick_cache) < 0)
 			continue;
-		data.tick = DIFF_TICK(timer->tick, tick); //Duration that is left before ending.
+		data.tick = DIFF_TICK(timer->tick, gettick_cache); //Duration that is left before ending.
 		data.type = i;
 		data.val1 = sd->sc_data[i].val1;
 		data.val2 = sd->sc_data[i].val2;
@@ -1566,8 +1564,8 @@ int do_init_chrif(void) {
 
 	add_timer_func_list(check_connect_char_server, "check_connect_char_server");
 	add_timer_func_list(send_users_tochar, "send_users_tochar");
-	add_timer_interval(gettick() + 1000, check_connect_char_server, 0, 0, 5 * 1000);
-	add_timer_interval(gettick() + 1000, send_users_tochar, 0, 0, 5 * 1000);
+	add_timer_interval(gettick_cache + 1000, check_connect_char_server, 0, 0, 5 * 1000);
+	add_timer_interval(gettick_cache + 1000, send_users_tochar, 0, 0, 5 * 1000);
 
 	return 0;
 }

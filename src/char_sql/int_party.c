@@ -286,7 +286,7 @@ void inter_party_init() {
 	CALLOC(partys, struct party, 256);
 
 	add_timer_func_list(party_sync_timer, "party_sync_timer");
-	i = add_timer_interval(gettick() + 60 * 1000, party_sync_timer, 0, 0, 60 * 1000); // to check parties in memory and free if not used
+	i = add_timer_interval(gettick_cache + 60 * 1000, party_sync_timer, 0, 0, 60 * 1000); // to check parties in memory and free if not used
 
 	return;
 }
@@ -684,7 +684,7 @@ int mapif_parse_PartyLeave(int fd, int party_id, int account_id) {
 							break;
 						}
 					}
- 				}
+				}
 				// leader is always the last member, but with deletion of char, that can be different
 				if (party_check_empty(&party_tmp) == 0)
 					mapif_party_info(-1, &party_tmp); // Sending party information to map-server // まだ人がいるのでデータ送信

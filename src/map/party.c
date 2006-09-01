@@ -49,7 +49,7 @@ void do_init_party(void)
 {
 	party_db = numdb_init();
 	add_timer_func_list(party_send_xyhp_timer, "party_send_xyhp_timer");
-	add_timer_interval(gettick() + PARTY_SEND_XYHP_INVERVAL, party_send_xyhp_timer, 0, 0, PARTY_SEND_XYHP_INVERVAL);
+	add_timer_interval(gettick_cache + PARTY_SEND_XYHP_INVERVAL, party_send_xyhp_timer, 0, 0, PARTY_SEND_XYHP_INVERVAL);
 }
 
 // åüçı
@@ -295,7 +295,7 @@ void party_reply_invite(struct map_session_data *sd, int account_id, int flag) {
 int party_member_added(int party_id, int account_id, int flag)
 {
 	struct map_session_data *sd = map_id2sd(account_id), *sd2;
-	struct party *p; 
+	struct party *p;
 
 	if (sd == NULL) {
 		if (flag == 0) {
@@ -708,17 +708,14 @@ void party_exp_share(struct party *p, short map_id, int base_exp, int job_exp, i
 	struct map_session_data *sd;
 	struct map_session_data *sdlist[MAX_PARTY];
 	int i, c;
-	unsigned int tick;
-	
 
 //	nullpo_retv(p); // checked before to call function
 
 	c = 0;
-	tick = gettick();
 	for(i = 0; i < MAX_PARTY; i++) {
 		// note: Characters that die during battle will not receive any experience distributed.
 		if ((sd = p->member[i].sd) != NULL && sd->fd > 0 && session[sd->fd] != NULL && !pc_isdead(sd) && sd->bl.m == map_id) {
-			if (battle_config.idle_no_share == 2 && (sd->idletime < (tick - 2 * 60 * 1000))) // 2 minutes idle
+			if (battle_config.idle_no_share == 2 && (sd->idletime < (gettick_cache - 2 * 60 * 1000))) // 2 minutes idle
 				continue;
 			if (battle_config.chat_no_share == 2 && sd->chatID)
 				continue;
@@ -755,7 +752,7 @@ void party_exp_share(struct party *p, short map_id, int base_exp, int job_exp, i
 
 	for(i = 0; i < c; i++) {
 		sd = sdlist[i];
-		if (battle_config.idle_no_share == 1 && (sd->idletime < (tick - 2 * 60 * 1000))) // 2 minutes idle
+		if (battle_config.idle_no_share == 1 && (sd->idletime < (gettick_cache - 2 * 60 * 1000))) // 2 minutes idle
 			continue;
 		if (battle_config.chat_no_share == 1 && sd->chatID)
 			continue;

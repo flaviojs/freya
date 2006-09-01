@@ -468,8 +468,8 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 	memset(sd->addrace2_, 0, sizeof(sd->addrace2_));
 	sd->hp_gain_value = sd->sp_drain_type = 0;
 	memset(sd->subsize, 0, sizeof(sd->subsize));
- 	sd->unequip_hpdamage = 0;
- 	sd->unequip_spdamage = 0;
+	sd->unequip_hpdamage = 0;
+	sd->unequip_spdamage = 0;
 	memset(sd->itemhealrate, 0, sizeof(sd->itemhealrate));
 	
 	if (!sd->disguiseflag && sd->disguise) {
@@ -802,16 +802,16 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 			}
 		}
 	}
-  
+
 	sd->paramc[0]=sd->status.str+sd->paramb[0]+sd->parame[0];
 	sd->paramc[1]=sd->status.agi+sd->paramb[1]+sd->parame[1];
 	sd->paramc[2]=sd->status.vit+sd->paramb[2]+sd->parame[2];
 	sd->paramc[3]=sd->status.int_+sd->paramb[3]+sd->parame[3];
 	sd->paramc[4]=sd->status.dex+sd->paramb[4]+sd->parame[4];
 	sd->paramc[5]=sd->status.luk+sd->paramb[5]+sd->parame[5];
-	
+
 	for(i = 0; i < 6; i++) {
-		if(sd->paramc[i] 
+		if(sd->paramc[i]
 			< 0) sd->paramc[i] = 0;
 	}
 
@@ -913,7 +913,7 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 
 	bl = sd->status.base_level;
 	idx = (3500 + bl * hp_coefficient2[s_class.job] + hp_sigma_val[s_class.job][(bl > 0)? bl-1:0])/100 * (100 + sd->paramc[2])/100 + (sd->parame[2] - sd->paramcard[2]);
-	if (s_class.upper == 1) // [MouseJstr] 
+	if (s_class.upper == 1) // [MouseJstr]
 		idx = idx * 130 / 100;
 	else if (s_class.upper == 2)
 		idx = idx * 70 / 100;
@@ -957,7 +957,7 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 	// here we update sd->status.max_sp with the final calculation of hp according job class
 	// because when there was a maxsp item modifier (eg willow +80 maxsp) the total sp after equip willow was 80*130% = 104 SP
 	// which is incorrect, sp item modifiers should be applied after doing all the calculation [Proximus]
-	sd->status.max_sp += idx; 
+	sd->status.max_sp += idx;
 
 	if((skill=pc_checkskill(sd,HP_MEDITATIO)) > 0) // Passive skill, maxSP modifier
 		sd->status.max_sp += sd->status.max_sp * skill / 100;
@@ -1489,7 +1489,7 @@ void status_calc_speed(struct map_session_data *sd) {
 		if(sd->sc_data[SC_WEDDING].timer != -1)
 			sd->speed = 2 * DEFAULT_WALK_SPEED;
 		if(sd->sc_data[SC_DONTFORGETME].timer != -1)
-			sd->speed = sd->speed * (100 + sd->sc_data[SC_DONTFORGETME].val1 * 2 + 
+			sd->speed = sd->speed * (100 + sd->sc_data[SC_DONTFORGETME].val1 * 2 +
 									sd->sc_data[SC_DONTFORGETME].val2 + (sd->sc_data[SC_DONTFORGETME].val3&0xffff)) / 100;
 		if(sd->sc_data[SC_STEELBODY].timer != -1)
 			sd->speed = (sd->speed * 125) / 100;
@@ -2835,30 +2835,30 @@ int status_get_race(struct block_list *bl) {
 	return 0;
 }
 
-int status_get_size(struct block_list *bl) 
+int status_get_size(struct block_list *bl)
 {
-    int retval;
-    struct map_session_data *sd = (struct map_session_data *)bl;
-    
-    nullpo_retr(1, bl);
-    
-    switch (bl->type)
-    {
-        case BL_MOB:
+	int retval;
+	struct map_session_data *sd = (struct map_session_data *)bl;
+
+	nullpo_retr(1, bl);
+
+	switch (bl->type)
+	{
+		case BL_MOB:
 			retval = mob_db[((struct mob_data *)bl)->class].size;
 			break;
-        case BL_PET:
+		case BL_PET:
 			retval = mob_db[((struct pet_data *)bl)->class].size;
 			break;
-        case BL_PC:	// Medium size for normal players, Small size for baby classes
+		case BL_PC:	// Medium size for normal players, Small size for baby classes
 			retval = (pc_calc_upper(sd->status.class) == 2) ? 0 : 1;
 			break;
-        default:
+		default:
 			retval = 1;
 			break;
-    }
-        
-    return retval;
+	}
+
+	return retval;
 }
 
 int status_get_mode(struct block_list *bl) {
@@ -3074,27 +3074,27 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 	nullpo_retr(0, bl);
 
 	switch (bl->type) {
-  	case BL_PC:
-  		sd = (struct map_session_data *)bl;
-  		if(pc_isdead(sd))
-  			return 0;
-  		break;
-  	case BL_MOB:
-  		if (status_isdead(bl))
-  			return 0;
-  		break;
-  	default:
-  		return 0;
+	case BL_PC:
+		sd = (struct map_session_data *)bl;
+		if(pc_isdead(sd))
+			return 0;
+		break;
+	case BL_MOB:
+		if (status_isdead(bl))
+			return 0;
+		break;
+	default:
+		return 0;
 	}
-	
+
 	memset(&scflag, 0, sizeof(scflag)); //Init scflag structure with 0's
-	
+
 	if(type < 0 || type >= SC_MAX) {
 		if(battle_config.error_log)
 			printf("status_change_start: invalid status change, sc type: (%d)!\n", type);
 		return 0;
 	}
-	
+
 	nullpo_retr(0, sc_data = status_get_sc_data(bl));
 	nullpo_retr(0, sc_count = status_get_sc_count(bl));
 	nullpo_retr(0, option = status_get_option(bl));
@@ -3487,19 +3487,19 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			switch (val1) { // skill id
 				case TK_STORMKICK:
 					clif_skill_nodamage(bl, bl, TK_READYSTORM, 1, 1);
-					if (sd) sd->attackabletime = gettick() + tick;
+					if (sd) sd->attackabletime = gettick_cache + tick;
 					break;
 				case TK_DOWNKICK:
 					clif_skill_nodamage(bl, bl, TK_READYDOWN, 1, 1);
-					if (sd) sd->attackabletime = gettick() + tick;
+					if (sd) sd->attackabletime = gettick_cache + tick;
 					break;
 				case TK_TURNKICK:
 					clif_skill_nodamage(bl, bl, TK_READYTURN, 1, 1);
-					if (sd) sd->attackabletime = gettick() + tick;
+					if (sd) sd->attackabletime = gettick_cache + tick;
 					break;
 				case TK_COUNTER:
 					clif_skill_nodamage(bl, bl, TK_READYCOUNTER, 1, 1);
-					if (sd) sd->attackabletime = gettick() + tick;
+					if (sd) sd->attackabletime = gettick_cache + tick;
 					break;
 			}
 			break;
@@ -4104,7 +4104,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 	sc_data[type].val3 = val3;
 	sc_data[type].val4 = val4;
 	/* タイマー設定 */
-	sc_data[type].timer = add_timer(gettick() + tick, status_change_timer, bl->id, type);
+	sc_data[type].timer = add_timer(gettick_cache + tick, status_change_timer, bl->id, type);
 
 	if(sd) {
 		if(scflag.calc)
@@ -4283,7 +4283,7 @@ int status_change_end(struct block_list* bl, int type, int tid)
 				{
 					struct map_session_data *sd;
 					if (bl->type == BL_PC && (sd = (struct map_session_data *)bl)) {
-  						if (sd->walktimer != -1)
+						if (sd->walktimer != -1)
 							pc_stop_walking(sd,1);
 						calc_flag = 1;
 					}
@@ -4317,7 +4317,7 @@ int status_change_end(struct block_list* bl, int type, int tid)
 				}
 				break;
 			case SC_GRAVITATION:
-				if(sc_data[type].val3 != BCT_SELF) 
+				if(sc_data[type].val3 != BCT_SELF)
 					calc_flag = 1;
 				break;
 
@@ -4359,7 +4359,7 @@ int status_change_end(struct block_list* bl, int type, int tid)
 					struct block_list *src=map_id2bl(sc_data[type].val3);
 					if(src && tid!=-1){
 						//自分にダメージ＆周囲3*3にダメージ
-						skill_castend_damage_id(src, bl, sc_data[type].val2, sc_data[type].val1, gettick(), 0);
+						skill_castend_damage_id(src, bl, sc_data[type].val2, sc_data[type].val1, gettick_cache, 0);
 					}
 				}
 				break;
@@ -4384,7 +4384,7 @@ int status_change_end(struct block_list* bl, int type, int tid)
 					//自分のダメージは0にして
 					struct mob_data *md = NULL;
 					if (bl->type == BL_MOB && (md = (struct mob_data*)bl))
-						skill_castend_damage_id(bl, bl, sc_data[type].val2, sc_data[type].val1, gettick(), 0);
+						skill_castend_damage_id(bl, bl, sc_data[type].val2, sc_data[type].val1, gettick_cache, 0);
 				}
 				break;
 

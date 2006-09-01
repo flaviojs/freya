@@ -4413,7 +4413,7 @@ int atcommand_heal(
 	if (hp > 0) // display like heal
 		clif_heal(fd, SP_HP, hp);
 	else if (hp < 0) // display like damage
-		clif_damage(&sd->bl,&sd->bl, gettick(), 0, 0, -hp, 0 , 4, 0);
+		clif_damage(&sd->bl,&sd->bl, gettick_cache, 0, 0, -hp, 0 , 4, 0);
 	if (sp > 0) // no display when we lost SP
 		clif_heal(fd, SP_SP, sp);
 
@@ -5541,7 +5541,7 @@ int atcommand_pvpon(
 		for (i = 0; i < fd_max; i++) {
 			if (session[i] && (pl_sd = session[i]->session_data) && pl_sd->state.auth) {
 				if (sd->bl.m == pl_sd->bl.m && pl_sd->pvp_timer == -1) {
-					pl_sd->pvp_timer = add_timer(gettick() + 200, pc_calc_pvprank_timer, pl_sd->bl.id, 0);
+					pl_sd->pvp_timer = add_timer(gettick_cache + 200, pc_calc_pvprank_timer, pl_sd->bl.id, 0);
 					pl_sd->pvp_rank = 0;
 					pl_sd->pvp_lastusers = 0;
 					pl_sd->pvp_point = 5;
@@ -7273,10 +7273,10 @@ int atcommand_summon(
 					md->master_id = sd->bl.id;
 					md->state.special_mob_ai = 1; // 0: nothing, 1: cannibalize, 2-3: spheremine
 					md->mode = mob_db[mob_id].mode | 0x04;
-					md->deletetimer = add_timer(gettick() + 60000, mob_timer_delete, id, 0);
+					md->deletetimer = add_timer(gettick_cache + 60000, mob_timer_delete, id, 0);
 					clif_misceffect2(&md->bl, 344); /* display teleport of monster */
 				}
-				/*clif_skill_poseffect(&sd->bl, AM_CALLHOMUN, 1, x, y, gettick()); - don't display the skill to other */
+				/*clif_skill_poseffect(&sd->bl, AM_CALLHOMUN, 1, x, y, gettick_cache); - don't display the skill to other */
 			}
 		}
 		count += (id != 0) ? 1 : 0;
@@ -8651,7 +8651,7 @@ int atcommand_charheal(
 		if (hp > 0) // display like heal
 			clif_heal(pl_sd->fd, SP_HP, hp);
 		else if (hp < 0) // display like damage
-			clif_damage(&pl_sd->bl, &pl_sd->bl, gettick(), 0, 0, -hp, 0 , 4, 0);
+			clif_damage(&pl_sd->bl, &pl_sd->bl, gettick_cache, 0, 0, -hp, 0 , 4, 0);
 		if (sp > 0) // no display when we lost SP
 			clif_heal(pl_sd->fd, SP_SP, sp);
 
@@ -12014,7 +12014,7 @@ int atcommand_nuke(
 
 	if ((pl_sd = map_nick2sd(atcmd_name)) != NULL || ((pl_sd = map_id2sd(atoi(atcmd_name))) != NULL && pl_sd->state.auth)) {
 		if (sd->GM_level >= pl_sd->GM_level) { // only lower or same GM level
-			skill_castend_damage_id(&pl_sd->bl, &pl_sd->bl, NPC_SELFDESTRUCTION, 99, gettick(), 0);
+			skill_castend_damage_id(&pl_sd->bl, &pl_sd->bl, NPC_SELFDESTRUCTION, 99, gettick_cache, 0);
 			clif_displaymessage(fd, msg_txt(109)); // Player has been nuked!
 		} else {
 			clif_displaymessage(fd, msg_txt(81)); // Your GM level don't authorize you to do this action on this player.
@@ -12166,7 +12166,7 @@ int atcommand_servertime(
 	} else if (battle_config.night_duration == 0)
 		if (night_flag == 1) { // we start with night
 			timer_data = get_timer(day_timer_tid);
-			sprintf(atcmd_output, msg_txt(233), txt_time((timer_data->tick - gettick()) / 1000)); // Game time: The game is actualy in night for %s.
+			sprintf(atcmd_output, msg_txt(233), txt_time((timer_data->tick - gettick_cache) / 1000)); // Game time: The game is actualy in night for %s.
 			clif_displaymessage(fd, atcmd_output);
 			clif_displaymessage(fd, msg_txt(234)); // Game time: After, the game will be in permanent daylight.
 		} else
@@ -12174,7 +12174,7 @@ int atcommand_servertime(
 	else if (battle_config.day_duration == 0)
 		if (night_flag == 0) { // we start with day
 			timer_data = get_timer(night_timer_tid);
-			sprintf(atcmd_output, msg_txt(235), txt_time((timer_data->tick - gettick()) / 1000)); // Game time: The game is actualy in daylight for %s.
+			sprintf(atcmd_output, msg_txt(235), txt_time((timer_data->tick - gettick_cache) / 1000)); // Game time: The game is actualy in daylight for %s.
 			clif_displaymessage(fd, atcmd_output);
 			clif_displaymessage(fd, msg_txt(236)); // Game time: After, the game will be in permanent night.
 		} else
@@ -12183,7 +12183,7 @@ int atcommand_servertime(
 		if (night_flag == 0) {
 			timer_data = get_timer(night_timer_tid);
 			timer_data2 = get_timer(day_timer_tid);
-			sprintf(atcmd_output, msg_txt(235), txt_time((timer_data->tick - gettick()) / 1000)); // Game time: The game is actualy in daylight for %s.
+			sprintf(atcmd_output, msg_txt(235), txt_time((timer_data->tick - gettick_cache) / 1000)); // Game time: The game is actualy in daylight for %s.
 			clif_displaymessage(fd, atcmd_output);
 			if (timer_data->tick > timer_data2->tick)
 				sprintf(atcmd_output, msg_txt(237), txt_time((timer_data->interval - abs(timer_data->tick - timer_data2->tick)) / 1000)); // Game time: After, the game will be in night for %s.
@@ -12195,7 +12195,7 @@ int atcommand_servertime(
 		} else {
 			timer_data = get_timer(day_timer_tid);
 			timer_data2 = get_timer(night_timer_tid);
-			sprintf(atcmd_output, msg_txt(233), txt_time((timer_data->tick - gettick()) / 1000)); // Game time: The game is actualy in night for %s.
+			sprintf(atcmd_output, msg_txt(233), txt_time((timer_data->tick - gettick_cache) / 1000)); // Game time: The game is actualy in night for %s.
 			clif_displaymessage(fd, atcmd_output);
 			if (timer_data->tick > timer_data2->tick)
 				sprintf(atcmd_output, msg_txt(239), txt_time((timer_data->interval - abs(timer_data->tick - timer_data2->tick)) / 1000)); // Game time: After, the game will be in daylight for %s.
@@ -12414,7 +12414,7 @@ int atcommand_jail(
 								}
 								if (pl_sd->jailtimer != -1) // normally impossible, but we know...
 									delete_timer(pl_sd->jailtimer, pc_jail_timer);
-								pl_sd->jailtimer = add_timer(gettick() + ((timestamp - time(NULL)) * 1000), pc_jail_timer, pl_sd->bl.id, 0);
+								pl_sd->jailtimer = add_timer(gettick_cache + ((timestamp - time(NULL)) * 1000), pc_jail_timer, pl_sd->bl.id, 0);
 								if (pc_setpos(pl_sd, "sec_pri.gat", x, y, 3, 0) == 0) {
 									sprintf(atcmd_output, msg_txt(118), txt_time(timestamp - time(NULL))); // Player warped in jails for %s.
 									clif_displaymessage(fd, atcmd_output);

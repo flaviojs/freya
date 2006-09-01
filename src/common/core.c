@@ -303,8 +303,10 @@ int main(int argc, char **argv) {
 	do_init(argc, argv);
 	runflag = 1;
 	while(runflag) {
-		next = do_timer(gettick_nocache());
+		gettick_nocache();
+		next = do_timer();
 		do_sendrecv(next);
+		gettick_nocache();
 		do_parsepacket();
 	}
 

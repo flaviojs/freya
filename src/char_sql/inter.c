@@ -31,7 +31,7 @@ struct logs {
 	char extension[24];
 	unsigned short level;
 	unsigned short length; //to store total length of path+prefix+extension
-} logging[LOG_MAX] = 
+} logging[LOG_MAX] =
 {
 	{ "log/atcommand/", "", "log", 40, 256 },
 	{ "log/trade/", "", "log", 0, 256 },
@@ -79,7 +79,7 @@ int inter_recv_packet_length[] = {
  * 3 -> Vending    | LOG_VENDING
  *-----------------------------------------------
  */
-static inline void mapif_parse_LogSaveReq(unsigned char type, const char *log_mes) { // 0x3008 <packet_len>.w <log_type>.B <message>.?B 
+static inline void mapif_parse_LogSaveReq(unsigned char type, const char *log_mes) { // 0x3008 <packet_len>.w <log_type>.B <message>.?B
 	int log_fp, tmpstr_len;
 	struct timeval tv;
 	time_t now;
@@ -320,7 +320,7 @@ void inter_init(const char *file) {
 	// Update DB if necessary
 	sql_request("SHOW TABLES");
 	while (sql_get_row()) {
-   	if (strcmp(sql_get_string(0), "account_reg_db") == 0)
+		if (strcmp(sql_get_string(0), "account_reg_db") == 0)
 			flag.acc_reg_db = 1;
 		else if (strcmp(sql_get_string(0), statuschange_db) == 0)
 			flag.scdata_db = 1;
@@ -425,7 +425,7 @@ void inter_init(const char *file) {
 
 	// Whether the failure of previous wisp/page transmission (timeout)
 	add_timer_func_list(check_ttl_wisdata, "check_ttl_wisdata");
-	add_timer_interval(gettick() + 30000, check_ttl_wisdata, 0, 0, 30000);
+	add_timer_interval(gettick_cache + 30000, check_ttl_wisdata, 0, 0, 30000);
 
 	return;
 }
@@ -569,7 +569,7 @@ static inline void mapif_parse_WisRequest(int fd) { // 0x3001/0x3801 <packet_len
 			}
 			wis_db[wis_db_num].id = ++wisid;
 			strncpy(wis_db[wis_db_num].src, RFIFOP(fd,5), 24);
-			wis_db[wis_db_num].tick = gettick();
+			wis_db[wis_db_num].tick = gettick_cache;
 			// ask all map-servers
 			WPACKETW(0) = 0x3801; // 0x3001/0x3801 <packet_len>.w (<w_id_0x3801>.L) <sender_GM_level>.B <sender_name>.24B <nick_name>.24B <message>.?B
 			WPACKETW(2) = 57 + RFIFOW(fd,2) - 53; // including NULL

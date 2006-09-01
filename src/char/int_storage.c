@@ -392,7 +392,7 @@ void inter_storage_init() {
 
 #ifdef USE_SQL
 	add_timer_func_list(storage_sync_timer, "storage_sync_timer");
-	i = add_timer_interval(gettick() + 60 * 1000, storage_sync_timer, 0, 0, 60 * 1000); // to check storage in memory and free if not used
+	i = add_timer_interval(gettick_cache + 60 * 1000, storage_sync_timer, 0, 0, 60 * 1000); // to check storage in memory and free if not used
 #endif /* USE_SQL */
 
 	return;

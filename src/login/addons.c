@@ -5,8 +5,10 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <stdint.h>
 
 #include "../common/addons.h"
+#include "../common/timer.h"
 #include "login.h"
 #include "addons.h"
 

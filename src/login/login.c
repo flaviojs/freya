@@ -4412,7 +4412,7 @@ static inline void save_config_in_log(void) {
 		case 4:
 			write_log("- to add the date to the log file name (example: log/login-2006-12-25.log)." RETCODE);
 			break;
-		default: // case 0: 
+		default: // case 0:
 			write_log("- to not change the log file name with a date." RETCODE);
 			break;
 		}
@@ -4995,12 +4995,12 @@ void do_init(const int argc, char **argv) {
 
 	add_timer_func_list(char_anti_freeze_system, "char_anti_freeze_system");
 	if (anti_freeze_interval == 0)
-		i = add_timer_interval(gettick() + 6000, char_anti_freeze_system, 0, 0, 6000); /* every 6 sec (users are sended every 5 sec) */
+		i = add_timer_interval(gettick_cache + 6000, char_anti_freeze_system, 0, 0, 6000); /* every 6 sec (users are sended every 5 sec) */
 	else
-		i = add_timer_interval(gettick() + anti_freeze_interval * 1000, char_anti_freeze_system, 0, 0, anti_freeze_interval * 1000); /* every 10 sec (users are sended every 5 sec) */
+		i = add_timer_interval(gettick_cache + anti_freeze_interval * 1000, char_anti_freeze_system, 0, 0, anti_freeze_interval * 1000); /* every 10 sec (users are sended every 5 sec) */
 #ifdef TXT_ONLY
 	add_timer_func_list(check_account_sync, "check_account_sync");
-	i = add_timer_interval(gettick() + 60000, check_account_sync, 0, 0, 60000); /* every minute we check if we must save accounts file (only if necessary to save) */
+	i = add_timer_interval(gettick_cache + 60000, check_account_sync, 0, 0, 60000); /* every minute we check if we must save accounts file (only if necessary to save) */
 #endif /* TXT_ONLY */
 
 	/* console */

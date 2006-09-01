@@ -193,7 +193,7 @@ void pc_setinvincibletimer(struct map_session_data *sd, int val) {
 	nullpo_retv(sd);
 
 	pc_delinvincibletimer(sd);
-	sd->invincible_timer = add_timer(gettick() + val, pc_invincible_timer, sd->bl.id, 0);
+	sd->invincible_timer = add_timer(gettick_cache + val, pc_invincible_timer, sd->bl.id, 0);
 
 	return;
 }
@@ -205,7 +205,7 @@ void pc_delinvincibletimer(struct map_session_data *sd) {
 		delete_timer(sd->invincible_timer, pc_invincible_timer);
 		sd->invincible_timer = -1;
 	}
-	skill_unit_move(&sd->bl, gettick(), 1);
+	skill_unit_move(&sd->bl, gettick_cache, 1);
 
 	return;
 }
@@ -295,7 +295,7 @@ void pc_addspiritball(struct map_session_data *sd,int interval,int max) {
 	else
 		sd->spiritball++;
 
-	sd->spirit_timer[sd->spiritball-1] = add_timer(gettick() + interval, pc_spiritball_timer, sd->bl.id, 0);
+	sd->spirit_timer[sd->spiritball-1] = add_timer(gettick_cache + interval, pc_spiritball_timer, sd->bl.id, 0);
 	clif_spiritball(sd);
 
 	return;
@@ -404,7 +404,7 @@ void pc_setrestartvalue(struct map_session_data *sd,int type) {
  */
 int pc_cant_move(struct map_session_data *sd) {
 
-	if (DIFF_TICK(sd->canmove_tick, gettick()) > 0)
+	if (DIFF_TICK(sd->canmove_tick, gettick_cache) > 0)
 		return 1;
 
 	//Any opt1 except for Stone Curse effect (first phase)
@@ -491,7 +491,6 @@ void pc_makesavestatus(struct map_session_data *sd)
  *------------------------------------------
  */
 void pc_setnewpc(struct map_session_data *sd, int account_id, int char_id, int login_id1, int client_tick, unsigned char sex, int fd) {
-	unsigned int tick;
 //	nullpo_retv(sd);
 	
 	sd->bl.id             = account_id;
@@ -500,15 +499,14 @@ void pc_setnewpc(struct map_session_data *sd, int account_id, int char_id, int l
 	//sd->login_id2         = 0; // at this point, we can not know the value :(
 	sd->client_tick       = client_tick;
 	//sd->first_client_tick = client_tick; // to check speed hack
-	//sd->tick_at_start     = gettick(); // to check speed hack
+	//sd->tick_at_start     = gettick_cache; // to check speed hack
 	//sd->first_check_done  = 0; // to check speed hack (to avoid lag when we set value, so don't considere first check)
 	sd->sex               = sex;
 	//sd->state.auth        = 0;
 	sd->bl.type           = BL_PC;
-	tick                  = gettick();
-	sd->canact_tick 			= tick;
-	sd->canmove_tick      = tick; 
-	sd->canlog_tick       = tick;
+	sd->canact_tick       = gettick_cache;
+	sd->canmove_tick      = gettick_cache;
+	sd->canlog_tick       = gettick_cache;
 	//sd->state.waitingdisconnect = 0;
 
 	return;
@@ -731,7 +729,6 @@ void pc_authok_final_step(int id, time_t connect_until_time) { // 0x2b26 <accoun
 	struct party *p;
 	struct guild *g;
 	int i;
-	unsigned int tick;
 
 	sd = map_id2sd(id);
 
@@ -781,12 +778,11 @@ void pc_authok_final_step(int id, time_t connect_until_time) { // 0x2b26 <accoun
 //	sd->sp_sub = 0;
 //	sd->inchealspirithptick = 0;
 //	sd->inchealspiritsptick = 0;
-	tick                = gettick();
-	sd->canact_tick     = tick;
-	sd->canmove_tick    = tick;
-	sd->canregen_tick   = tick;
-	sd->canuseitem_tick = tick;
-	sd->attackabletime  = tick;
+	sd->canact_tick     = gettick_cache;
+	sd->canmove_tick    = gettick_cache;
+	sd->canregen_tick   = gettick_cache;
+	sd->canuseitem_tick = gettick_cache;
+	sd->attackabletime  = gettick_cache;
 
 //	sd->doridori_counter = 0;
 
@@ -849,7 +845,7 @@ void pc_authok_final_step(int id, time_t connect_until_time) { // 0x2b26 <accoun
 //	sd->party_invite = 0;
 //	sd->idletime = 0; // for party experience
 //	sd->emotionlasttime = 0; // to limit flood with emotion packets
-	sd->last_saving = tick; // to limit successive savings with auto-save
+	sd->last_saving = gettick_cache; // to limit successive savings with auto-save
 
 	// ギルド関係の初期化
 //	sd->guild_sended = 0;
@@ -934,7 +930,7 @@ void pc_authok_final_step(int id, time_t connect_until_time) { // 0x2b26 <accoun
 	clif_clearchar_id(server_char_id, 0, sd->fd);
 #endif
 
-	// to load cloned skill from globalreg 
+	// to load cloned skill from globalreg
 	if ((i = pc_checkskill(sd, RG_PLAGIARISM)) > 0) {
 		sd->cloneskill_id = pc_readglobalreg(sd,"CLONE_SKILL");
 		if (sd->cloneskill_id > 0) {
@@ -942,7 +938,7 @@ void pc_authok_final_step(int id, time_t connect_until_time) { // 0x2b26 <accoun
 			sd->status.skill[sd->cloneskill_id].lv = pc_readglobalreg(sd,"CLONE_SKILL_LV");
 			if (i < sd->status.skill[sd->cloneskill_id].lv)
 				sd->status.skill[sd->cloneskill_id].lv = i;
-			sd->status.skill[sd->cloneskill_id].flag = 13;				
+			sd->status.skill[sd->cloneskill_id].flag = 13;
 			clif_skillinfoblock(sd);
 		}
 	}
@@ -1050,10 +1046,10 @@ void pc_authok_final_step(int id, time_t connect_until_time) { // 0x2b26 <accoun
 		// finished time
 		if (timestamp < time(NULL) + 5) { // wait at least 5 seconds
 			// timer can do all discharge function.
-			sd->jailtimer = add_timer(gettick() + (5 * 1000), pc_jail_timer, sd->bl.id, 0); // discharge in 5 sec (time to send all informations)
+			sd->jailtimer = add_timer(gettick_cache + (5 * 1000), pc_jail_timer, sd->bl.id, 0); // discharge in 5 sec (time to send all informations)
 		} else {
 			clif_displaymessage(sd->fd, msg_txt(626)); // Remember, you are in jails.
-			sd->jailtimer = add_timer(gettick() + ((timestamp - time(NULL)) * 1000), pc_jail_timer, sd->bl.id, 0);
+			sd->jailtimer = add_timer(gettick_cache + ((timestamp - time(NULL)) * 1000), pc_jail_timer, sd->bl.id, 0);
 			// prisoner not in jail map. 2 solutions:
 			// - jail map doesn't exist. he must wait end of jail time
 			// - GM help him to escape from jail :)
@@ -2248,14 +2244,14 @@ void pc_bonus(struct map_session_data *sd, int type, int val) {
 			sd->hp_gain_value += val;
 		break;
 	case SP_DAMAGE_WHEN_UNEQUIP:
- 		if (!sd->state.lr_flag)
- 			sd->unequip_hpdamage += val;
+		if (!sd->state.lr_flag)
+			sd->unequip_hpdamage += val;
 		/*if(!sd->state.lr_flag)
 			sd->unequip_decreasehp[current_equip_item_index] += val;*/
 		break;
 	case SP_LOSESP_WHEN_UNEQUIP:
- 		if (!sd->state.lr_flag)
- 			sd->unequip_spdamage += val;
+		if (!sd->state.lr_flag)
+			sd->unequip_spdamage += val;
 		/*if(!sd->state.lr_flag)
 			sd->unequip_decreasesp[current_equip_item_index] += val;*/
 		break;
@@ -2815,7 +2811,7 @@ int pc_blockskill_start(struct map_session_data *sd, int skillid, int tick) {
 
 	sd->blockskill[skillid] = 1;
 
-	return add_timer(gettick() + tick, pc_blockskill_end, sd->bl.id, skillid);
+	return add_timer(gettick_cache + tick, pc_blockskill_end, sd->bl.id, skillid);
 }
 
 /*==========================================
@@ -3125,7 +3121,6 @@ void pc_dropitem(struct map_session_data *sd, int n, int amount) {
  */
 void pc_takeitem(struct map_session_data *sd, struct flooritem_data *fitem) {
 	int flag;
-	unsigned int tick = gettick();
 	struct map_session_data *first_sd, *second_sd, *third_sd;
 
 //	nullpo_retr(0, sd); // checked before to call function
@@ -3133,14 +3128,14 @@ void pc_takeitem(struct map_session_data *sd, struct flooritem_data *fitem) {
 
 	if (fitem->first_get_id > 0) {
 		first_sd = map_id2sd(fitem->first_get_id);
-		if (tick < fitem->first_get_tick) {
+		if (gettick_cache < fitem->first_get_tick) {
 			if (fitem->first_get_id != sd->bl.id && !(first_sd && first_sd->status.party_id == sd->status.party_id && first_sd->status.party_id)) {
 				clif_additem(sd, 0, 0, 6); // 6: you cannot get the item.
 				return;
 			}
 		} else if (fitem->second_get_id > 0) {
 			second_sd = map_id2sd(fitem->second_get_id);
-			if (tick < fitem->second_get_tick) {
+			if (gettick_cache < fitem->second_get_tick) {
 				if (fitem->first_get_id != sd->bl.id && fitem->second_get_id != sd->bl.id &&
 				    !(first_sd  &&  first_sd->status.party_id == sd->status.party_id &&  first_sd->status.party_id) &&
 				    !(second_sd && second_sd->status.party_id == sd->status.party_id && second_sd->status.party_id)) {
@@ -3149,7 +3144,7 @@ void pc_takeitem(struct map_session_data *sd, struct flooritem_data *fitem) {
 				}
 			} else if (fitem->third_get_id > 0) {
 				third_sd = map_id2sd(fitem->third_get_id);
-				if (tick < fitem->third_get_tick) {
+				if (gettick_cache < fitem->third_get_tick) {
 					if (fitem->first_get_id != sd->bl.id && fitem->second_get_id != sd->bl.id && fitem->third_get_id != sd->bl.id &&
 					    !(first_sd  &&  first_sd->status.party_id == sd->status.party_id &&  first_sd->status.party_id) &&
 					    !(second_sd && second_sd->status.party_id == sd->status.party_id && second_sd->status.party_id) &&
@@ -3245,7 +3240,7 @@ void pc_useitem(struct map_session_data *sd, short n) {
 		amount = sd->status.inventory[n].amount;
 		if (amount <= 0)
 			return;
-		if (gettick() < sd->canuseitem_tick || // Prevent mass item usage. [Skotlex]
+		if (gettick_cache < sd->canuseitem_tick || // Prevent mass item usage. [Skotlex]
 		    sd->sc_data[SC_BERSERK].timer != -1 ||
 			sd->sc_data[SC_GRAVITATION].timer != -1 ||
 		    (pc_issit(sd) && (itemid == 605 || itemid == 606)) || // 605: Anodyne, 606: Aloevera
@@ -3266,7 +3261,7 @@ void pc_useitem(struct map_session_data *sd, short n) {
 		pc_delitem(sd, n, 1, 1);
 		amount = sd->status.inventory[n].amount;
 		clif_useitemack(sd, n, amount, 1);
-		sd->canuseitem_tick = gettick() + battle_config.item_use_interval; // Update item use time.
+		sd->canuseitem_tick = gettick_cache + battle_config.item_use_interval; // Update item use time.
 	}
 
 	return;
@@ -3545,7 +3540,7 @@ void pc_item_refine(struct map_session_data *sd, short idx) {
 				if (ep)
 					pc_equipitem(sd, idx, ep);
 				clif_misceffect(&sd->bl, 3);
-				if(item->refine == 10 && item->card[0] == 0x00ff && 
+				if(item->refine == 10 && item->card[0] == 0x00ff &&
 					*((unsigned long *)(&sd->status.inventory[idx].card[2])) == sd->status.char_id) { // Fame point system for blacksmith based on eA code [Proximus]
 					switch(ditem->wlv) {
 						case 1:
@@ -3854,7 +3849,7 @@ int pc_setpos(struct map_session_data *sd, char *mapname_org, int x, int y, int 
 			int ip, port;
 			if (map_mapname2ipport(mapname, &ip, &port) == 0) {
 				skill_stop_dancing(&sd->bl,1);
-				skill_unit_move(&sd->bl, gettick(), 0);
+				skill_unit_move(&sd->bl, gettick_cache, 0);
 				clif_clearchar_area(&sd->bl,clrtype&0xffff);
 				skill_gangsterparadise(sd,0);
 				map_delblock(&sd->bl);
@@ -3912,7 +3907,7 @@ int pc_setpos(struct map_session_data *sd, char *mapname_org, int x, int y, int 
 	}
 
 	if(sd->mapname[0] && sd->bl.prev != NULL) {
-		skill_unit_move(&sd->bl, gettick(), 0);
+		skill_unit_move(&sd->bl, gettick_cache, 0);
 		clif_clearchar_area(&sd->bl,clrtype&0xffff);
 		skill_gangsterparadise(sd,0);
 		map_delblock(&sd->bl);
@@ -4050,7 +4045,7 @@ int pc_run(struct map_session_data *sd, int skilllv, int dir)
 
 	nullpo_retr(0, sd);
 
-	if (sd->canmove_tick > gettick())
+	if (sd->canmove_tick > gettick_cache)
 		return 0;
 
 	to_x = sd->bl.x;
@@ -4220,7 +4215,7 @@ static int pc_walk(int tid, unsigned int tick, int id, int data)
 					if (unit) {
 						if (unit->group && unit->group->src_id != sd->bl.id && unit->group->src_id != sd->sc_data[SC_DANCING].val4)
 							skill_stop_dancing(&sd->bl,0);
-					} 
+					}
 					else
 						skill_stop_dancing(&sd->bl,0);
 				}
@@ -4242,7 +4237,7 @@ static int pc_walk(int tid, unsigned int tick, int id, int data)
 		if (i < 1 && sd->walkpath.path_half == 0)
 			i = 1;
 		sd->walktimer = add_timer(tick + i, pc_walk, id, sd->walkpath.path_pos);
-	} 
+	}
 	else if(sd->sc_data[SC_RUN].timer != -1 ) //Keep trying to run.
 		pc_run(sd, sd->sc_data[SC_RUN].val1, sd->sc_data[SC_RUN].val2);
 
@@ -4271,7 +4266,7 @@ static int pc_walktoxy_sub(struct map_session_data *sd)
 		i = i >> 2;
 		if (sd->walktimer != -1) // in a call, it's possible to already have a timer.
 			delete_timer(sd->walktimer, pc_walk);
-		sd->walktimer = add_timer(gettick() + i, pc_walk, sd->bl.id, 0);
+		sd->walktimer = add_timer(gettick_cache + i, pc_walk, sd->bl.id, 0);
 	}
 	clif_movechar(sd);
 
@@ -4296,7 +4291,7 @@ void pc_walktoxy(struct map_session_data *sd, short x, short y) {
 		sd->to_y = y;
 	}
 
-	sd->idletime = gettick(); // for party experience
+	sd->idletime = gettick_cache; // for party experience
 
 	if (sd->walktimer != -1 /*&& sd->state.change_walk_target == 0*/) {
 		// 現在歩いている最中の目的地変更なのでマス目の中心に来た時に
@@ -4359,9 +4354,8 @@ void pc_stop_walking(struct map_session_data *sd, int type)
 	if (type & 0x01)
 		clif_fixpos(&sd->bl);
 	if (type & 0x02 && battle_config.pc_damage_delay) {
-			unsigned int tick = gettick();
-		if (DIFF_TICK(sd->canmove_tick, tick) > 0)
-			sd->canmove_tick = tick + status_get_dmotion(&sd->bl);
+		if (DIFF_TICK(sd->canmove_tick, gettick_cache) > 0)
+			sd->canmove_tick = gettick_cache + status_get_dmotion(&sd->bl);
 	}
 	if (sd->sc_data[SC_RUN].timer != -1)
 		status_change_end(&sd->bl, SC_RUN, -1);
@@ -4399,7 +4393,6 @@ int pc_movepos(struct map_session_data *sd, int dst_x, int dst_y, int freepath)
 {
 	int moveblock;
 	int dx, dy;
-	unsigned int tick = gettick();
 
 	struct walkpath_data wpd;
 
@@ -4417,12 +4410,12 @@ int pc_movepos(struct map_session_data *sd, int dst_x, int dst_y, int freepath)
 
 	map_foreachinmovearea(clif_pcoutsight,sd->bl.m,sd->bl.x-AREA_SIZE,sd->bl.y-AREA_SIZE,sd->bl.x+AREA_SIZE,sd->bl.y+AREA_SIZE,dx,dy,0,sd);
 
-	skill_unit_move(&sd->bl, tick, 0);
+	skill_unit_move(&sd->bl, gettick_cache, 0);
 	if (moveblock) map_delblock(&sd->bl);
 	sd->bl.x = dst_x;
 	sd->bl.y = dst_y;
 	if (moveblock) map_addblock(&sd->bl);
-	skill_unit_move(&sd->bl, tick, 1);
+	skill_unit_move(&sd->bl, gettick_cache, 1);
 
 	map_foreachinmovearea(clif_pcinsight,sd->bl.m,sd->bl.x-AREA_SIZE,sd->bl.y-AREA_SIZE,sd->bl.x+AREA_SIZE,sd->bl.y+AREA_SIZE,-dx,-dy,0,sd);
 
@@ -4743,7 +4736,6 @@ int pc_attack_timer(int tid, unsigned int tick, int id, int data)
 int pc_attack(struct map_session_data *sd, int target_id, int type) {
 	struct block_list *bl;
 	int d;
-	unsigned int tick;
 
 	nullpo_retr(0, sd);
 
@@ -4756,8 +4748,7 @@ int pc_attack(struct map_session_data *sd, int target_id, int type) {
 		return 1;
 	}
 
-	tick = gettick();
-	sd->idletime = tick; // for party experience
+	sd->idletime = gettick_cache; // for party experience
 
 	if (bl->type == BL_NPC) { // monster npcs [Valaris]
 		if (sd->npc_id == 0)
@@ -4775,14 +4766,14 @@ int pc_attack(struct map_session_data *sd, int target_id, int type) {
 	}
 
 	sd->attacktarget = target_id;
- 	sd->state.attack_continue = type;
+	sd->state.attack_continue = type;
 
-	d = DIFF_TICK(sd->attackabletime, tick);
+	d = DIFF_TICK(sd->attackabletime, gettick_cache);
 	if (d > 0 && d < 2000) { // 攻撃delay中
 		sd->attacktimer = add_timer(sd->attackabletime, pc_attack_timer, sd->bl.id, 0);
 	} else {
 		// 本来timer関数なので引数を合わせる
-		pc_attack_timer(-1, tick, sd->bl.id, 0);
+		pc_attack_timer(-1, gettick_cache, sd->bl.id, 0);
 	}
 
 	return 0;
@@ -4891,7 +4882,7 @@ int pc_follow(struct map_session_data *sd, int target_id) {
 		sd->followtimer = -1;
 	}
 
-	pc_follow_timer(-1, gettick(), sd->bl.id, 0);
+	pc_follow_timer(-1, gettick_cache, sd->bl.id, 0);
 
 	return 0;
 }
@@ -5708,11 +5699,11 @@ int pc_damage(struct block_list *src, struct map_session_data *sd, int damage)
 			// オートバーサーク発動
 			status_change_start(&sd->bl, SC_PROVOKE, 10, 1, 0, 0, 0, 0);
 
-		sd->canlog_tick = gettick();
+		sd->canlog_tick = gettick_cache;
 
 		if (sd->status.party_id > 0) { // on-the-fly party hp updates [Valaris]
 			struct party *p = party_search(sd->status.party_id);
-			if (p != NULL) 
+			if (p != NULL)
 				clif_party_hp(p, sd);
 		} // end addition [Valaris]
 
@@ -5737,7 +5728,7 @@ int pc_damage(struct block_list *src, struct map_session_data *sd, int damage)
 	skill_castcancel(&sd->bl, 0); // 詠唱の中止
 	clif_clearchar_area(&sd->bl, 1);
 	pc_setdead(sd);
-	skill_unit_move(&sd->bl, gettick(), 0);
+	skill_unit_move(&sd->bl, gettick_cache, 0);
 	if (sd->sc_data[SC_BLADESTOP].timer != -1) //白刃は事前に解除
 		status_change_end(&sd->bl, SC_BLADESTOP, -1);
 	sd->status.die_counter++; //死にカウンター書き込み
@@ -6298,7 +6289,7 @@ int pc_heal(struct map_session_data *sd,int hp,int sp)
 
 	if (sd->status.party_id > 0) { // on-the-fly party hp updates [Valaris]
 		struct party *p = party_search(sd->status.party_id);
-		if (p != NULL) 
+		if (p != NULL)
 			clif_party_hp(p, sd);
 	} // end addition [Valaris]
 
@@ -7093,7 +7084,7 @@ void pc_addeventtimer(struct map_session_data *sd, int tick, const char *name) {
 	if (i < MAX_EVENTTIMER) {
 		CALLOC(evname, char, 25); // 24 + NULL
 		strncpy(evname, name, 24);
-		sd->eventtimer[i] = add_timer(gettick() + tick, pc_eventtimer, sd->bl.id, (int)evname);
+		sd->eventtimer[i] = add_timer(gettick_cache + tick, pc_eventtimer, sd->bl.id, (int)evname);
 	} else {
 		if (battle_config.error_log)
 			printf("pc_addtimer: event timer is full !\n");
@@ -7293,10 +7284,10 @@ void pc_equipitem(struct map_session_data *sd, int n, int pos) {
 	if(sd->special_state.infinite_endure) {
 		if(sd->sc_data[SC_ENDURE].timer == -1)
 			status_change_start(&sd->bl,SC_ENDURE,10,1,0,0,0,0);
-	}	else {
-  	if(sd->sc_count && sd->sc_data[SC_ENDURE].timer != -1 && sd->sc_data[SC_ENDURE].val2)
-  		status_change_end(&sd->bl, SC_ENDURE, -1);
-  }
+	} else {
+		if(sd->sc_count && sd->sc_data[SC_ENDURE].timer != -1 && sd->sc_data[SC_ENDURE].val2)
+			status_change_end(&sd->bl, SC_ENDURE, -1);
+	}
 
 	if(sd->sc_count) {
 		if(sd->sc_data[SC_SIGNUMCRUCIS].timer != -1 && !battle_check_undead(7, sd->def_ele))
@@ -7389,18 +7380,18 @@ void pc_unequipitem(struct map_session_data *sd, int n, int flag) {
 	} else
 		clif_unequipitemack(sd, n, 0, 0);
 
-  	if (sd->unequip_hpdamage > 0) {
-  		short dmg = sd->unequip_hpdamage;
-  		if (dmg > sd->status.hp)
-  			dmg = sd->status.hp;
-  		pc_heal(sd, -dmg, 0);
-  	}
-  	if (sd->unequip_spdamage > 0) {
-  		short dmg = sd->unequip_spdamage;
-  		if (dmg > sd->status.sp)
-  			dmg = sd->status.sp;
-  		pc_heal(sd, 0, -dmg);
-  	}
+	if (sd->unequip_hpdamage > 0) {
+		short dmg = sd->unequip_hpdamage;
+		if (dmg > sd->status.hp)
+			dmg = sd->status.hp;
+		pc_heal(sd, -dmg, 0);
+	}
+	if (sd->unequip_spdamage > 0) {
+		short dmg = sd->unequip_spdamage;
+		if (dmg > sd->status.sp)
+			dmg = sd->status.sp;
+		pc_heal(sd, 0, -dmg);
+	}
 
 	if (flag&1) {
 		status_calc_pc(sd, 0);
@@ -7947,7 +7938,7 @@ static void pc_natural_heal_sp(struct map_session_data *sd)
 			}
 		}
 	}
-	else 
+	else
 		sd->inchealsptick = 0;
 
 	return;
@@ -8013,19 +8004,19 @@ static void pc_spirit_heal_sp(struct map_session_data *sd)
 	if (sd->inchealspiritsptick >= interval) {
 		bonus_sp = sd->nsshealsp;
 		while(sd->inchealspiritsptick >= interval) {
-  			if (pc_issit(sd) && sd->state.previously_sit_sp) { // 0: not sit when is was previously SP regen, 1: sit... (to avoid people that sit down and stand up between 2 timers)				sd->inchealspiritsptick -= interval;
-  				sd->inchealspiritsptick -= interval;
-  				if (sd->status.sp < sd->status.max_sp) {
-  					if (sd->status.sp + bonus_sp <= sd->status.max_sp)
-  						sd->status.sp += bonus_sp;
-  					else {
-  						bonus_sp = sd->status.max_sp - sd->status.sp;
-  						sd->status.sp = sd->status.max_sp;
-						}
-  					clif_heal(sd->fd, SP_SP, bonus_sp);
-  					sd->inchealspiritsptick = 0;
-  				}			
-  			} else {
+			if (pc_issit(sd) && sd->state.previously_sit_sp) { // 0: not sit when is was previously SP regen, 1: sit... (to avoid people that sit down and stand up between 2 timers)				sd->inchealspiritsptick -= interval;
+				sd->inchealspiritsptick -= interval;
+				if (sd->status.sp < sd->status.max_sp) {
+					if (sd->status.sp + bonus_sp <= sd->status.max_sp)
+						sd->status.sp += bonus_sp;
+					else {
+						bonus_sp = sd->status.max_sp - sd->status.sp;
+						sd->status.sp = sd->status.max_sp;
+					}
+					clif_heal(sd->fd, SP_SP, bonus_sp);
+					sd->inchealspiritsptick = 0;
+				}
+			} else {
 				sd->inchealspiritsptick -= natural_heal_diff_tick;
 				break;
 			}
@@ -8037,9 +8028,9 @@ static void pc_spirit_heal_sp(struct map_session_data *sd)
 
 static void pc_bleeding(struct map_session_data *sd) {
 	int interval, hp;
- 	
- 	nullpo_retv(sd);
- 
+
+	nullpo_retv(sd);
+
 	interval = sd->hp_loss_rate;
 	hp = sd->hp_loss_value;
 
@@ -8050,14 +8041,13 @@ static void pc_bleeding(struct map_session_data *sd) {
 			if (sd->status.hp < hp)
 				hp = sd->status.hp;
 			if (sd->hp_loss_type == 1)
-				clif_damage(&sd->bl, &sd->bl, gettick(), 0, 0, hp, 0, 0, 0);
+				clif_damage(&sd->bl, &sd->bl, gettick_cache, 0, 0, hp, 0, 0, 0);
 			pc_heal(sd, -hp, 0);
- 			sd->hp_loss_tick = 0;
- 		}
- 	}
+			sd->hp_loss_tick = 0;
+		}
+	}
 
- 
- 	return;
+	return;
 }
 
 /*==========================================
@@ -8108,7 +8098,7 @@ static int pc_natural_heal_sub(struct map_session_data *sd, va_list ap) {
 		pc_bleeding(sd);
 	else
 		sd->hp_loss_tick = 0;
-		
+
 	return 0;
 }
 
@@ -8272,11 +8262,10 @@ int pc_autosave(int tid, unsigned int tick, int id, int data) {
 	struct map_session_data *sd;
 	int i;
 	int interval;
-	unsigned int tick_cache = gettick();
-	
+
 	for(i = last_save_fd + 1; i < fd_max; i++) { // + 1: to avoid console (0) or latest saved player
 		if (session[i] && (sd = session[i]->session_data) && sd->state.auth)
-			if (sd->last_saving + 10000 < tick_cache) { // not save if previous saving was done recently // to limit successive savings with auto-save (you can not do a lot of thing in 10 seconds)
+			if (sd->last_saving + 10000 < gettick_cache) { // not save if previous saving was done recently // to limit successive savings with auto-save (you can not do a lot of thing in 10 seconds)
 //				if (battle_config.save_log)
 //					printf("autosave %d\n", sd->fd);
 				// pet
@@ -8305,7 +8294,7 @@ int pc_autosave(int tid, unsigned int tick, int id, int data) {
 		interval = 10000; // maximum 10 sec
 	if (agit_flag == 1) // in WoE, save less often to reduce lag
 		interval = interval * 3 / 2;
-	add_timer(tick_cache + interval, pc_autosave, 0, 0);
+	add_timer(gettick_cache + interval, pc_autosave, 0, 0);
 
 	return 0;
 }
@@ -8611,9 +8600,9 @@ int do_init_pc(void) {
 	add_timer_func_list(pc_spiritball_timer, "pc_spiritball_timer");
 	add_timer_func_list(pc_follow_timer, "pc_follow_timer");
 
-	add_timer_interval((natural_heal_prev_tick = gettick() + NATURAL_HEAL_INTERVAL), pc_natural_heal, 0, 0, NATURAL_HEAL_INTERVAL);
-	add_timer(gettick() + autosave_interval, pc_autosave, 0, 0);
-	add_timer_interval(gettick() + 30000, pc_idle_timer, 0, 0, 30000); // check every 30 secs
+	add_timer_interval((natural_heal_prev_tick = gettick_cache + NATURAL_HEAL_INTERVAL), pc_natural_heal, 0, 0, NATURAL_HEAL_INTERVAL);
+	add_timer(gettick_cache + autosave_interval, pc_autosave, 0, 0);
+	add_timer_interval(gettick_cache + 30000, pc_idle_timer, 0, 0, 30000); // check every 30 secs
 
 	// add night/day timer (by [yor])
 	add_timer_func_list(map_day_timer, "map_day_timer");
@@ -8627,12 +8616,12 @@ int do_init_pc(void) {
 		night_duration = 60000;
 	if (battle_config.night_at_start == 0) {
 		night_flag = 0; // 0=day, 1=night [Yor]
-		day_timer_tid = add_timer_interval(gettick() + day_duration + night_duration, map_day_timer, 0, 0, day_duration + night_duration);
-		night_timer_tid = add_timer_interval(gettick() + day_duration, map_night_timer, 0, 0, day_duration + night_duration);
+		day_timer_tid = add_timer_interval(gettick_cache + day_duration + night_duration, map_day_timer, 0, 0, day_duration + night_duration);
+		night_timer_tid = add_timer_interval(gettick_cache + day_duration, map_night_timer, 0, 0, day_duration + night_duration);
 	} else {
 		night_flag = 1; // 0=day, 1=night [Yor]
-		day_timer_tid = add_timer_interval(gettick() + night_duration, map_day_timer, 0, 0, day_duration + night_duration);
-		night_timer_tid = add_timer_interval(gettick() + day_duration + night_duration, map_night_timer, 0, 0, day_duration + night_duration);
+		day_timer_tid = add_timer_interval(gettick_cache + night_duration, map_day_timer, 0, 0, day_duration + night_duration);
+		night_timer_tid = add_timer_interval(gettick_cache + day_duration + night_duration, map_night_timer, 0, 0, day_duration + night_duration);
 	}
   }
 
