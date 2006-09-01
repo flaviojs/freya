@@ -7,7 +7,7 @@ Date	Added
 	* Removed: Slotted Sunnies & Slotted Glasses from Old Purple Box [Tsuyuki
 	  - http://www.ragnainfo.net/forums/viewtopic.php?t=105161&postdays=0&postorder=asc&highlight=glasses&start=15
 	* Added: 4x Gargoyle Slaves to Chimera Mini-boss [Tsuyuki]
-	* Enabled: The effect box dropping cards (Fixed in Aegis FINALLY) [Tsuyuki]
+	* Enabled: The effect box dropping cards (Fixed in Aegis finally) [Tsuyuki]
 	 - Orc Archer card, Raydric Archer card, Jing Guai card, Sleeper card, Stem Worm card, etc..
 	 - http://www.ragnainfo.net/forums/viewtopic.php?t=102696
 	 - http://www.ragnainfo.net/forums/viewtopic.php?t=105828
