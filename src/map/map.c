@@ -2929,7 +2929,7 @@ void do_final(void) {
 //	map_removenpc();
 	timer_final();
 
-	do_final_msg_config();
+	do_final_atcommand();
 	do_final_script();
 	do_final_itemdb();
 	do_final_storage();

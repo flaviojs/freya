@@ -1,4 +1,13 @@
 // $Id: atcommand.c 577 2005-12-03 18:06:48Z Yor $
+
+// Files concerned by the creation of a GM command:
+// conf/atcommand_athena.conf
+// conf/help.txt
+// conf/help_fr.txt (add it in english if you don't know french)
+// readme/gmcmds.html
+// src/map/atcommand.c
+// src/map/atcommand.h
+
 #include <config.h>
 
 #include <stdio.h>
@@ -50,6 +59,12 @@ time_t last_spawn; /* # of seconds 1/1/1970 (timestamp): to limit number of spaw
 #define MSG_NUMBER 1000
 static char *msg_table[MSG_NUMBER]; /* Server messages (0-499 reserved for GM commands, 500-999 reserved for others) */
 static int msg_config_read_done = 0; /* for multiple configuration read */
+
+static struct synonym_table { /* table for GM command synonyms */
+	char* synonym;
+	char* command;
+} *synonym_table = NULL;
+static int synonym_count = 0; /* number of synonyms */
 
 #define ATCOMMAND_FUNC(x) int atcommand_ ## x (const int fd, struct map_session_data* sd, const char* command, const char* message)
 ATCOMMAND_FUNC(broadcast);
@@ -342,21 +357,12 @@ static struct AtCommandInfo {
 	int (*proc)(const int, struct map_session_data*, const char* command, const char* message);
 } atcommand_info[] = {
 	{ AtCommand_RuraP,                 "@rura+",                60, atcommand_rurap },
-	{ AtCommand_RuraP,                 "@charrura",             60, atcommand_rurap },
-	{ AtCommand_RuraP,                 "@charwarp",             60, atcommand_rurap },
-	{ AtCommand_RuraP,                 "@charmapmove",          60, atcommand_rurap },
-	{ AtCommand_Rura,                  "@rura",                 40, atcommand_rura },
-	{ AtCommand_Warp,                  "@warp",                 40, atcommand_rura },
-	{ AtCommand_MapMove,               "@mapmove",              40, atcommand_rura }, // /mm /mapmove command
+	{ AtCommand_Rura,                  "@rura",                 40, atcommand_rura }, // /mm /mapmove command
 	{ AtCommand_Where,                 "@where",                 3, atcommand_where },
 	{ AtCommand_JumpTo,                "@jumpto",               20, atcommand_jumpto }, // + /shift and /remove
-	{ AtCommand_JumpTo,                "@warpto",               20, atcommand_jumpto },
-	{ AtCommand_JumpTo,                "@shift",                20, atcommand_jumpto },
-	{ AtCommand_JumpTo,                "@goto",                 20, atcommand_jumpto },
 	{ AtCommand_Jump,                  "@jump",                 40, atcommand_jump },
 	{ AtCommand_Users,                 "@users",                10, atcommand_users },
 	{ AtCommand_Who,                   "@who",                  20, atcommand_who },
-	{ AtCommand_Who,                   "@whois",                20, atcommand_who },
 	{ AtCommand_Who2,                  "@who2",                 20, atcommand_who2 },
 	{ AtCommand_Who3,                  "@who3",                 20, atcommand_who3 },
 	{ AtCommand_WhoMap,                "@whomap",               20, atcommand_whomap },
@@ -364,310 +370,108 @@ static struct AtCommandInfo {
 	{ AtCommand_WhoMap3,               "@whomap3",              20, atcommand_whomap3 },
 	{ AtCommand_WhoGM,                 "@whogm",                20, atcommand_whogm },
 	{ AtCommand_Save,                  "@save",                 40, atcommand_save },
-	{ AtCommand_Load,                  "@return",               40, atcommand_load },
 	{ AtCommand_Load,                  "@load",                 40, atcommand_load },
-	{ AtCommand_CharLoad,              "@charreturn",           60, atcommand_charload },
 	{ AtCommand_CharLoad,              "@charload",             60, atcommand_charload },
-	{ AtCommand_CharLoadMap,           "@charreturnmap",        60, atcommand_charloadmap },
 	{ AtCommand_CharLoadMap,           "@charloadmap",          60, atcommand_charloadmap },
-	{ AtCommand_CharLoadMap,           "@returnmap",            60, atcommand_charloadmap },
-	{ AtCommand_CharLoadMap,           "@loadmap",              60, atcommand_charloadmap },
-	{ AtCommand_CharLoadAll,           "@charreturnall",        80, atcommand_charloadall },
 	{ AtCommand_CharLoadAll,           "@charloadall",          80, atcommand_charloadall },
-	{ AtCommand_CharLoadAll,           "@returnall",            80, atcommand_charloadall },
-	{ AtCommand_CharLoadAll,           "@loadall",              80, atcommand_charloadall },
 	{ AtCommand_Speed,                 "@speed",                40, atcommand_speed },
 	{ AtCommand_CharSpeed,             "@charspeed",            60, atcommand_charspeed },
 	{ AtCommand_CharSpeedMap,          "@charspeedmap",         60, atcommand_charspeedmap },
-	{ AtCommand_CharSpeedMap,          "@speedmap",             60, atcommand_charspeedmap },
 	{ AtCommand_CharSpeedAll,          "@charspeedall",         80, atcommand_charspeedall },
-	{ AtCommand_CharSpeedAll,          "@speedall",             80, atcommand_charspeedall },
 	{ AtCommand_Storage,               "@storage",               3, atcommand_storage },
 	{ AtCommand_CharStorage,           "@charstorage",          20, atcommand_charstorage },
 	{ AtCommand_GuildStorage,          "@gstorage",             50, atcommand_guildstorage },
-	{ AtCommand_GuildStorage,          "@guildstorage",         50, atcommand_guildstorage },
 	{ AtCommand_CharGuildStorage,      "@chargstorage",         60, atcommand_charguildstorage },
-	{ AtCommand_CharGuildStorage,      "@charguildstorage",     60, atcommand_charguildstorage },
 	{ AtCommand_Option,                "@option",               40, atcommand_option },
 	{ AtCommand_OptionAdd,             "@optionadd",            40, atcommand_optionadd },
 	{ AtCommand_OptionRemove,          "@optionremove",         40, atcommand_optionremove },
 	{ AtCommand_Hide,                  "@hide",                 20, atcommand_hide }, // + /hide
 	{ AtCommand_JobChange,             "@jobchange",            40, atcommand_jobchange },
-	{ AtCommand_JobChange,             "@jchange",              40, atcommand_jobchange },
-	{ AtCommand_JobChange,             "@job",                  40, atcommand_jobchange },
 	{ AtCommand_Die,                   "@die",                   2, atcommand_die },
-	{ AtCommand_Die,                   "@killme",                2, atcommand_die },
-	{ AtCommand_Die,                   "@suicide",               2, atcommand_die },
 	{ AtCommand_Kill,                  "@kill",                 60, atcommand_kill },
-	{ AtCommand_Kill,                  "@charkill",             60, atcommand_kill },
-	{ AtCommand_Kill,                  "@chardie",              60, atcommand_kill },
 	{ AtCommand_Alive,                 "@alive",                60, atcommand_alive },
-	{ AtCommand_Alive,                 "@revive",               60, atcommand_alive },
-	{ AtCommand_Alive,                 "@resurrect",            60, atcommand_alive },
 	{ AtCommand_Heal,                  "@heal",                 40, atcommand_heal },
-	{ AtCommand_Heal,                  "@restore",              40, atcommand_heal },
-	{ AtCommand_Kami,                  "@kami",                 40, atcommand_kami },
-	{ AtCommand_Kami,                  "@nb",                   40, atcommand_kami }, // /b, /nb and /bb command
+	{ AtCommand_Kami,                  "@kami",                 40, atcommand_kami }, // /b, /nb and /bb command
 	{ AtCommand_KamiB,                 "@kamib",                40, atcommand_kamib },
 	{ AtCommand_KamiC,                 "@kamic",                40, atcommand_kami }, // code by [LuzZza]
-	{ AtCommand_KamiGM,                "@bgm",                  20, atcommand_kamiGM },
 	{ AtCommand_KamiGM,                "@kamigm",               20, atcommand_kamiGM },
 	{ AtCommand_Item,                  "@item",                 60, atcommand_item }, // + /item
 	{ AtCommand_CharItem,              "@charitem",             60, atcommand_charitem },
-	{ AtCommand_CharItem,              "@giveitem",             60, atcommand_charitem },
-	{ AtCommand_CharItemAll,           "@itemall",              80, atcommand_charitemall },
 	{ AtCommand_CharItemAll,           "@charitemall",          80, atcommand_charitemall },
-	{ AtCommand_CharItemAll,           "@giveitemall",          80, atcommand_charitemall },
 	{ AtCommand_Item2,                 "@item2",                60, atcommand_item2 },
 	{ AtCommand_ItemReset,             "@itemreset",            40, atcommand_itemreset },
-	{ AtCommand_ItemReset,             "@inventoryreset",       40, atcommand_itemreset },
 	{ AtCommand_CharItemReset,         "@charitemreset",        60, atcommand_charitemreset },
-	{ AtCommand_CharItemReset,         "@charinventoryreset",   60, atcommand_charitemreset },
 	{ AtCommand_ItemCheck,             "@itemcheck",            60, atcommand_itemcheck },
 	{ AtCommand_CharItemCheck,         "@charitemcheck",        60, atcommand_charitemcheck },
 	{ AtCommand_BaseLevelUp,           "@lvup",                 60, atcommand_baselevelup },
-	{ AtCommand_BaseLevelUp,           "@lvlup",                60, atcommand_baselevelup },
-	{ AtCommand_BaseLevelUp,           "@levelup",              60, atcommand_baselevelup },
-	{ AtCommand_BaseLevelUp,           "@blvl",                 60, atcommand_baselevelup },
-	{ AtCommand_BaseLevelUp,           "@blevel",               60, atcommand_baselevelup },
-	{ AtCommand_BaseLevelUp,           "@blvlup",               60, atcommand_baselevelup },
-	{ AtCommand_BaseLevelUp,           "@blevelup",             60, atcommand_baselevelup },
-	{ AtCommand_BaseLevelUp,           "@baselvlup",            60, atcommand_baselevelup },
-	{ AtCommand_BaseLevelUp,           "@baselevelup",          60, atcommand_baselevelup },
 	{ AtCommand_JobLevelUp,            "@jlvl",                 60, atcommand_joblevelup },
-	{ AtCommand_JobLevelUp,            "@jlevel",               60, atcommand_joblevelup },
-	{ AtCommand_JobLevelUp,            "@jlvlup",               60, atcommand_joblevelup },
-	{ AtCommand_JobLevelUp,            "@jlevelup",             60, atcommand_joblevelup },
-	{ AtCommand_JobLevelUp,            "@joblvup",              60, atcommand_joblevelup },
-	{ AtCommand_JobLevelUp,            "@joblvlup",             60, atcommand_joblevelup },
-	{ AtCommand_JobLevelUp,            "@joblevelup",           60, atcommand_joblevelup },
-	{ AtCommand_H,                     "@h",                     2, atcommand_help },
 	{ AtCommand_Help,                  "@help",                  2, atcommand_help },
 	{ AtCommand_GM,                    "@gm",                  100, atcommand_gm },
 	{ AtCommand_PvPOff,                "@pvpoff",               40, atcommand_pvpoff },
 	{ AtCommand_PvPOn,                 "@pvpon",                40, atcommand_pvpon },
 	{ AtCommand_GvGOff,                "@gvgoff",               40, atcommand_gvgoff },
-	{ AtCommand_GvGOff,                "@gpvpoff",              40, atcommand_gvgoff },
 	{ AtCommand_GvGOn,                 "@gvgon",                40, atcommand_gvgon },
-	{ AtCommand_GvGOn,                 "@gpvpon",               40, atcommand_gvgon },
 	{ AtCommand_Model,                 "@model",                20, atcommand_model },
 	{ AtCommand_Go,                    "@go",                   10, atcommand_go },
 
-	{ AtCommand_Spawn,                 "@spawn",                50, atcommand_spawn },
-	{ AtCommand_Spawn,                 "@monster",              50, atcommand_spawn }, // + /monster
+	{ AtCommand_Spawn,                 "@spawn",                50, atcommand_spawn }, // + /monster
 	{ AtCommand_Spawn,                 "@spawnsmall",           50, atcommand_spawn },
-	{ AtCommand_Spawn,                 "@monstersmall",         50, atcommand_spawn },
 	{ AtCommand_Spawn,                 "@spawnbig",             50, atcommand_spawn },
-	{ AtCommand_Spawn,                 "@monsterbig",           50, atcommand_spawn},
 	{ AtCommand_Spawn,                 "@spawnagro",            60, atcommand_spawn },
-	{ AtCommand_Spawn,                 "@monsteragro",          60, atcommand_spawn },
 	{ AtCommand_Spawn,                 "@spawnneutral",         60, atcommand_spawn },
-	{ AtCommand_Spawn,                 "@monsterneutral",       60, atcommand_spawn },
 
 	{ AtCommand_Spawn,                 "@spawnagrosmall",       60, atcommand_spawn },
-	{ AtCommand_Spawn,                 "@monsteragrosmall",     60, atcommand_spawn },
-	{ AtCommand_Spawn,                 "@spawnsmallagro",       60, atcommand_spawn },
-	{ AtCommand_Spawn,                 "@monstersmallagro",     60, atcommand_spawn },
 	{ AtCommand_Spawn,                 "@spawnneutralsmall",    60, atcommand_spawn },
-	{ AtCommand_Spawn,                 "@monsterneutralsmall",  60, atcommand_spawn },
-	{ AtCommand_Spawn,                 "@spawnsmallneutral",    60, atcommand_spawn },
-	{ AtCommand_Spawn,                 "@monstersmallneutral",  60, atcommand_spawn },
-
 	{ AtCommand_Spawn,                 "@spawnagrobig",         60, atcommand_spawn },
-	{ AtCommand_Spawn,                 "@monsteragrobig",       60, atcommand_spawn},
-	{ AtCommand_Spawn,                 "@spawnbigagro",         60, atcommand_spawn },
-	{ AtCommand_Spawn,                 "@monsterbigagro",       60, atcommand_spawn},
 	{ AtCommand_Spawn,                 "@spawnneutralbig",      60, atcommand_spawn },
-	{ AtCommand_Spawn,                 "@monsterneutralbig",    60, atcommand_spawn},
-	{ AtCommand_Spawn,                 "@spawnbigneutral",      60, atcommand_spawn },
-	{ AtCommand_Spawn,                 "@monsterbigneutral",    60, atcommand_spawn},
 
 	{ AtCommand_SpawnMap,              "@spawnmap",             50, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monstermap",           50, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@spawnmapsmall",        50, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monstermapsmall",      50, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@spawnsmallmap",        50, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monstersmallmap",      50, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@spawnmapbig",          50, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monstermapbig",        50, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@spawnbigmap",          50, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monsterbigmap",        50, atcommand_spawnmap },
-
-	{ AtCommand_SpawnMap,              "@spawnagromap",         60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monsteragromap",       60, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@spawnmapagro",         60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monstermapagro",       60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@spawnneutralmap",      60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monsterneutralmap",    60, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@spawnmapneutral",      60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monstermapneutral",    60, atcommand_spawnmap },
 
-	{ AtCommand_SpawnMap,              "@spawnmapsmallagro",    60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monstermapsmallagro",  60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@spawnsmallmapagro",    60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monstersmallmapagro",  60, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@spawnmapagrosmall",    60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monstermapagrosmall",  60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@spawnsmallagromap",    60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monstersmallagromap",  60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@spawnagromapsmall",    60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monsteragromapsmall",  60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@spawnagrosmallmap",    60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monsteragrosmallmap",  60, atcommand_spawnmap },
-
-	{ AtCommand_SpawnMap,              "@spawnmapsmallneutral",   60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monstermapsmallneutral", 60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@spawnsmallmapneutral",   60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monstersmallmapneutral", 60, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@spawnmapneutralsmall",   60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monstermapneutralsmall", 60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@spawnsmallneutralmap",   60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monstersmallneutralmap", 60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@spawnneutralmapsmall",   60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monsterneutralmapsmall", 60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@spawnneutralsmallmap",   60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monsterneutralsmallmap", 60, atcommand_spawnmap },
-
-	{ AtCommand_SpawnMap,              "@spawnmapbigagro",      60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monstermapbigagro",    60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@spawnbigmapagro",      60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monsterbigmapagro",    60, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@spawnmapagrobig",      60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monstermapagrobig",    60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@spawnbigagromap",      60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monsterbigagromap",    60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@spawnagromapbig",      60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monsteragromapbig",    60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@spawnagrobigmap",      60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monsteragrobigmap",    60, atcommand_spawnmap },
-
-	{ AtCommand_SpawnMap,              "@spawnmapbigneutral",   60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monstermapbigneutral", 60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@spawnbigmapneutral",   60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monsterbigmapneutral", 60, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@spawnmapneutralbig",   60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monstermapneutralbig", 60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@spawnbigneutralmap",   60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monsterbigneutralmap", 60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@spawnneutralmapbig",   60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monsterneutralmapbig", 60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@spawnneutralbigmap",   60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@monsterneutralbigmap", 60, atcommand_spawnmap },
 
 	{ AtCommand_SpawnAll,              "@spawnall",             60, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsterall",           60, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@spawnallsmall",        60, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsterallsmall",      60, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@spawnsmallall",        60, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monstersmallall",      60, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@spawnallbig",          60, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsterallbig",        60, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@spawnbigall",          60, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsterbigall",        60, atcommand_spawnall },
 
-	{ AtCommand_SpawnAll,              "@spawnagroall",         70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsteragroall",       70, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@spawnallagro",         70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsterallagro",       70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@spawnneutralall",      70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsterneutralall",    70, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@spawnallneutral",      70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsterallneutral",    70, atcommand_spawnall },
 
-	{ AtCommand_SpawnAll,              "@spawnallsmallagro",    70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsterallsmallagro",  70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@spawnsmallallagro",    70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monstersmallallagro",  70, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@spawnallagrosmall",    70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsterallagrosmall",  70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@spawnsmallagroall",    70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monstersmallagroall",  70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@spawnagroallsmall",    70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsteragroallsmall",  70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@spawnagrosmallall",    70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsteragrosmallall",  70, atcommand_spawnall },
-
-	{ AtCommand_SpawnAll,              "@spawnallsmallneutral",   70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsterallsmallneutral", 70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@spawnsmallallneutral",   70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monstersmallallneutral", 70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@spawnallneutralsmall",   70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsterallneutralsmall", 70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@spawnsmallneutralall",   70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monstersmallneutralall", 70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@spawnneutralallsmall",   70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsterneutralallsmall", 70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@spawnneutralsmallall",   70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsterneutralsmallall", 70, atcommand_spawnall },
-
-	{ AtCommand_SpawnAll,              "@spawnallbigagro",      70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsterallbigagro",    70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@spawnbigallagro",      70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsterbigallagro",    70, atcommand_spawnall },
+	{ AtCommand_SpawnAll,              "@spawnallneutralsmall", 70, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@spawnallagrobig",      70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsterallagrobig",    70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@spawnbigagroall",      70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsterbigagroall",    70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@spawnagroallbig",      70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsteragroallbig",    70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@spawnagrobigall",      70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsteragrobigall",    70, atcommand_spawnall },
-
-	{ AtCommand_SpawnAll,              "@spawnallbigneutral",   70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsterallbigneutral", 70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@spawnbigallneutral",   70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsterbigallneutral", 70, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@spawnallneutralbig",   70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsterallneutralbig", 70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@spawnbigneutralall",   70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsterbigneutralall", 70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@spawnneutralallbig",   70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsterneutralallbig", 70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@spawnneutralbigall",   70, atcommand_spawnall },
-	{ AtCommand_SpawnAll,              "@monsterneutralbigall", 70, atcommand_spawnall },
 
 	{ AtCommand_Summon,                "@summon",               60, atcommand_summon },
 	{ AtCommand_Summon,                "@summonsmall",          60, atcommand_summon },
 	{ AtCommand_Summon,                "@summonbig",            60, atcommand_summon },
 
 	{ AtCommand_DeadBranch,            "@deadbranch",           60, atcommand_deadbranch },
-	{ AtCommand_DeadBranch,            "@dead_branch",          60, atcommand_deadbranch },
 	{ AtCommand_DeadBranch,            "@deadbranchsmall",      60, atcommand_deadbranch },
-	{ AtCommand_DeadBranch,            "@dead_branchsmall",     60, atcommand_deadbranch },
 	{ AtCommand_DeadBranch,            "@deadbranchbig",        60, atcommand_deadbranch },
-	{ AtCommand_DeadBranch,            "@dead_branchbig",       60, atcommand_deadbranch },
+
 	{ AtCommand_CharDeadBranch,        "@chardeadbranch",       60, atcommand_chardeadbranch },
-	{ AtCommand_CharDeadBranch,        "@chardead_branch",      60, atcommand_chardeadbranch },
 	{ AtCommand_CharDeadBranch,        "@chardeadbranchsmall",  60, atcommand_chardeadbranch },
-	{ AtCommand_CharDeadBranch,        "@chardead_branchsmall", 60, atcommand_chardeadbranch },
 	{ AtCommand_CharDeadBranch,        "@chardeadbranchbig",    60, atcommand_chardeadbranch },
-	{ AtCommand_CharDeadBranch,        "@chardead_branchbig",   60, atcommand_chardeadbranch },
+
 	{ AtCommand_DeadBranchMap,         "@deadbranchmap",        60, atcommand_deadbranchmap },
-	{ AtCommand_DeadBranchMap,         "@dead_branchmap",       60, atcommand_deadbranchmap },
 	{ AtCommand_DeadBranchMap,         "@deadbranchmapsmall",   60, atcommand_deadbranchmap },
-	{ AtCommand_DeadBranchMap,         "@deadbranchsmallmap",   60, atcommand_deadbranchmap },
-	{ AtCommand_DeadBranchMap,         "@dead_branchmapsmall",  60, atcommand_deadbranchmap },
-	{ AtCommand_DeadBranchMap,         "@dead_branchsmallmap",  60, atcommand_deadbranchmap },
 	{ AtCommand_DeadBranchMap,         "@deadbranchmapbig",     60, atcommand_deadbranchmap },
-	{ AtCommand_DeadBranchMap,         "@deadbranchbigmap",     60, atcommand_deadbranchmap },
-	{ AtCommand_DeadBranchMap,         "@dead_branchmapbig",    60, atcommand_deadbranchmap },
-	{ AtCommand_DeadBranchMap,         "@dead_branchbigmap",    60, atcommand_deadbranchmap },
+
 	{ AtCommand_DeadBranchAll,         "@deadbranchall",        70, atcommand_deadbranchall },
-	{ AtCommand_DeadBranchAll,         "@dead_branchall",       70, atcommand_deadbranchall },
 	{ AtCommand_DeadBranchAll,         "@deadbranchallsmall",   70, atcommand_deadbranchall },
-	{ AtCommand_DeadBranchAll,         "@deadbranchsmallall",   70, atcommand_deadbranchall },
-	{ AtCommand_DeadBranchAll,         "@dead_branchallsmall",  70, atcommand_deadbranchall },
-	{ AtCommand_DeadBranchAll,         "@dead_branchsmallall",  70, atcommand_deadbranchall },
 	{ AtCommand_DeadBranchAll,         "@deadbranchallbig",     70, atcommand_deadbranchall },
-	{ AtCommand_DeadBranchAll,         "@deadbranchbigall",     70, atcommand_deadbranchall },
-	{ AtCommand_DeadBranchAll,         "@dead_branchallbig",    70, atcommand_deadbranchall },
-	{ AtCommand_DeadBranchAll,         "@dead_branchbigall",    70, atcommand_deadbranchall },
 
 	{ AtCommand_KillMonster,           "@killmonster",          60, atcommand_killmonster },
 	{ AtCommand_KillMonster2,          "@killmonster2",         40, atcommand_killmonster2 },
 	{ AtCommand_KillMonsterArea,       "@killmonsterarea",      60, atcommand_killmonsterarea },
 	{ AtCommand_KillMonster2Area,      "@killmonster2area",     40, atcommand_killmonster2area },
-	{ AtCommand_KillMonster2Area,      "@killmonsterarea2",     40, atcommand_killmonster2area },
 
 	{ AtCommand_Refine,                "@refine",               60, atcommand_refine },
 	{ AtCommand_RefineAll,             "@refineall",            60, atcommand_refineall },
@@ -685,33 +489,17 @@ static struct AtCommandInfo {
 	{ AtCommand_Dexterity,             "@dex",                  60, atcommand_param },
 	{ AtCommand_Luck,                  "@luk",                  60, atcommand_param },
 	{ AtCommand_GuildLevelUp,          "@guildlvup",            60, atcommand_guildlevelup },
-	{ AtCommand_GuildLevelUp,          "@guildlvlup",           60, atcommand_guildlevelup },
-	{ AtCommand_GuildLevelUp,          "@guildlevelup",         60, atcommand_guildlevelup },
 	{ AtCommand_CharGuildLevelUp,      "@charguildlvup",        60, atcommand_charguildlevelup },
-	{ AtCommand_CharGuildLevelUp,      "@charguildlvlup",       60, atcommand_charguildlevelup },
-	{ AtCommand_CharGuildLevelUp,      "@charguildlevelup",     60, atcommand_charguildlevelup },
 	{ AtCommand_MakeEgg,               "@makeegg",              60, atcommand_makeegg },
-	{ AtCommand_MakeEgg,               "@createegg",            60, atcommand_makeegg },
 	{ AtCommand_Hatch,                 "@hatch",                40, atcommand_hatch },
-	{ AtCommand_Hatch,                 "@incubate",             40, atcommand_hatch },
-	{ AtCommand_Hatch,                 "@incubator",            40, atcommand_hatch },
-	{ AtCommand_Hatch,                 "@pet_incubator",        40, atcommand_hatch },
-	{ AtCommand_Hatch,                 "@petincubator",         40, atcommand_hatch },
-	{ AtCommand_Hatch,                 "@petbirth",             40, atcommand_hatch },
-	{ AtCommand_Hatch,                 "@pet_birth",            40, atcommand_hatch },
 	{ AtCommand_PetFriendly,           "@petfriendly",          40, atcommand_petfriendly },
 	{ AtCommand_PetHungry,             "@pethungry",            40, atcommand_pethungry },
 	{ AtCommand_PetRename,             "@petrename",             2, atcommand_petrename },
 	{ AtCommand_CharPetRename,         "@charpetrename",        50, atcommand_charpetrename },
 	{ AtCommand_Recall,                "@recall",               60, atcommand_recall }, // + /recall and /summon
 	{ AtCommand_CharacterJob,          "@charjob",              60, atcommand_character_job },
-	{ AtCommand_CharacterJob,          "@charjchange",          60, atcommand_character_job },
-	{ AtCommand_CharacterJob,          "@charjobchange",        60, atcommand_character_job },
 	{ AtCommand_Revive,                "@charalive",            60, atcommand_revive },
-	{ AtCommand_Revive,                "@charrevive",           60, atcommand_revive },
-	{ AtCommand_Revive,                "@charresurrect",        60, atcommand_revive },
 	{ AtCommand_CharacterHeal,         "@charheal",             60, atcommand_charheal },
-	{ AtCommand_CharacterHeal,         "@charrestore",          60, atcommand_charheal },
 	{ AtCommand_CharacterStats,        "@charstats",            20, atcommand_character_stats },
 	{ AtCommand_CharacterStatsAll,     "@charstatsall",         40, atcommand_character_stats_all },
 	{ AtCommand_CharacterOption,       "@charoption",           60, atcommand_character_option },
@@ -725,75 +513,36 @@ static struct AtCommandInfo {
 	{ AtCommand_Raise,                 "@raise",                80, atcommand_raise },
 	{ AtCommand_RaiseMap,              "@raisemap",             70, atcommand_raisemap },
 	{ AtCommand_CharacterBaseLevel,    "@charlvup",             60, atcommand_character_baselevel },
-	{ AtCommand_CharacterBaseLevel,    "@charlvlup",            60, atcommand_character_baselevel },
-	{ AtCommand_CharacterBaseLevel,    "@charlevelup",          60, atcommand_character_baselevel },
-	{ AtCommand_CharacterBaseLevel,    "@charblvl",             60, atcommand_character_baselevel },
-	{ AtCommand_CharacterBaseLevel,    "@charblevel",           60, atcommand_character_baselevel },
-	{ AtCommand_CharacterBaseLevel,    "@charblvlup",           60, atcommand_character_baselevel },
-	{ AtCommand_CharacterBaseLevel,    "@charblevelup",         60, atcommand_character_baselevel },
-	{ AtCommand_CharacterBaseLevel,    "@charbaselvlup",        60, atcommand_character_baselevel },
-	{ AtCommand_CharacterBaseLevel,    "@charbaselevelup",      60, atcommand_character_baselevel },
 	{ AtCommand_CharacterJobLevel,     "@charjlvl",             60, atcommand_character_joblevel },
-	{ AtCommand_CharacterJobLevel,     "@charjlevel",           60, atcommand_character_joblevel },
-	{ AtCommand_CharacterJobLevel,     "@charjlvlup",           60, atcommand_character_joblevel },
-	{ AtCommand_CharacterJobLevel,     "@charjlevelup",         60, atcommand_character_joblevel },
-	{ AtCommand_CharacterJobLevel,     "@charjoblvup",          60, atcommand_character_joblevel },
-	{ AtCommand_CharacterJobLevel,     "@charjoblvlup",         60, atcommand_character_joblevel },
-	{ AtCommand_CharacterJobLevel,     "@charjoblevelup",       60, atcommand_character_joblevel },
 	{ AtCommand_Kick,                  "@kick",                 20, atcommand_kick }, // + right click menu for GM "(name) force to quit"
 	{ AtCommand_KickMap,               "@kickmap",              70, atcommand_kickmap },
 	{ AtCommand_KickAll,               "@kickall",              99, atcommand_kickall },
 	{ AtCommand_AllSkill,              "@allskill",             60, atcommand_allskill },
-	{ AtCommand_AllSkill,              "@allskills",            60, atcommand_allskill },
-	{ AtCommand_AllSkill,              "@skillall",             60, atcommand_allskill },
-	{ AtCommand_AllSkill,              "@skillsall",            60, atcommand_allskill },
 	{ AtCommand_QuestSkill,            "@questskill",           40, atcommand_questskill },
 	{ AtCommand_CharQuestSkill,        "@charquestskill",       60, atcommand_charquestskill },
 	{ AtCommand_LostSkill,             "@lostskill",            40, atcommand_lostskill },
-	{ AtCommand_LostSkill,             "@lostquest",            40, atcommand_lostskill },
 	{ AtCommand_CharLostSkill,         "@charlostskill",        60, atcommand_charlostskill },
-	{ AtCommand_CharLostSkill,         "@charlostquest",        60, atcommand_charlostskill },
 	{ AtCommand_SpiritBall,            "@spiritball",           40, atcommand_spiritball },
 	{ AtCommand_CharSpiritBall,        "@charspiritball",       60, atcommand_charspiritball },
 	{ AtCommand_Party,                 "@party",                 2, atcommand_party },
 	{ AtCommand_Guild,                 "@guild",                50, atcommand_guild },
 	{ AtCommand_AgitStart,             "@agitstart",            60, atcommand_agitstart },
-	{ AtCommand_AgitStart,             "@woestart",             60, atcommand_agitstart },
-	{ AtCommand_AgitStart,             "@startwoe",             60, atcommand_agitstart },
 	{ AtCommand_AgitEnd,               "@agitend",              60, atcommand_agitend },
-	{ AtCommand_AgitEnd,               "@woeend",               60, atcommand_agitend },
-	{ AtCommand_AgitEnd,               "@endwoe",               60, atcommand_agitend },
 	{ AtCommand_MapExit,               "@mapexit",              99, atcommand_mapexit },
 	{ AtCommand_IDSearch,              "@idsearch",             60, atcommand_idsearch },
-	{ AtCommand_IDSearch,              "@itemsearch",           60, atcommand_idsearch },
-	{ AtCommand_IDSearch,              "@searchid",             60, atcommand_idsearch },
-	{ AtCommand_IDSearch,              "@searchitem",           60, atcommand_idsearch },
-	{ AtCommand_WhoDrops,              "@whodrop",               0, atcommand_whodrops },
 	{ AtCommand_WhoDrops,              "@whodrops",              0, atcommand_whodrops },
 	{ AtCommand_Broadcast,             "@broadcast",            40, atcommand_broadcast },
 	{ AtCommand_LocalBroadcast,        "@localbroadcast",       20, atcommand_localbroadcast },
-	{ AtCommand_LocalBroadcast,        "@local_broadcast",      20, atcommand_localbroadcast },
-	{ AtCommand_LocalBroadcast,        "@lb",                   20, atcommand_localbroadcast },
 	{ AtCommand_LocalBroadcast2,       "@nlb",                  40, atcommand_localbroadcast2 }, // /lb, /nlb and /mb commands
 	{ AtCommand_LocalBroadcast2,       "@mb",                   40, atcommand_localbroadcast2 }, // /lb, /nlb and /mb commands
 	{ AtCommand_RecallAll,             "@recallall",            80, atcommand_recallall },
 	{ AtCommand_ResetState,            "@resetstate",           40, atcommand_resetstate }, // + /resetstate
-	{ AtCommand_ResetState,            "@resetstat",            40, atcommand_resetstate },
-	{ AtCommand_ResetState,            "@resetstats",           40, atcommand_resetstate },
-	{ AtCommand_ResetState,            "@statreset",            40, atcommand_resetstate },
-	{ AtCommand_ResetState,            "@statsreset",           40, atcommand_resetstate },
 	{ AtCommand_ResetSkill,            "@resetskill",           40, atcommand_resetskill }, // + /resetskill
-	{ AtCommand_ResetSkill,            "@resetskills",          40, atcommand_resetskill },
-	{ AtCommand_ResetSkill,            "@skillreset",           40, atcommand_resetskill },
-	{ AtCommand_ResetSkill,            "@skillsreset",          40, atcommand_resetskill },
 	{ AtCommand_CharStReset,           "@charstreset",          60, atcommand_charstreset },
-	{ AtCommand_CharStReset,           "@charresetstate",       60, atcommand_charstreset },
 	{ AtCommand_CharSkReset,           "@charskreset",          60, atcommand_charskreset },
-	{ AtCommand_CharSkReset,           "@charresetskill",       60, atcommand_charskreset },
 	{ AtCommand_ReloadItemDB,          "@reloaditemdb",         99, atcommand_reloaditemdb }, // admin command
 	{ AtCommand_ReloadMobDB,           "@reloadmobdb",          99, atcommand_reloadmobdb }, // admin command
 	{ AtCommand_ReloadSkillDB,         "@reloadskilldb",        99, atcommand_reloadskilldb }, // admin command
-	{ AtCommand_ReloadScript,          "@rehash",               99, atcommand_reloadscript }, // admin command
 	{ AtCommand_ReloadScript,          "@reloadscript",         99, atcommand_reloadscript }, // admin command
 //	{ AtCommand_ReloadGMDB,            "@reloadgmdb",           99, atcommand_reloadgmdb }, // admin command // removed, it's automatic now
 	{ AtCommand_CharReset,             "@charreset",            60, atcommand_charreset },
@@ -803,40 +552,18 @@ static struct AtCommandInfo {
 	{ AtCommand_CharZeny,              "@charzeny",             60, atcommand_charzeny },
 	{ AtCommand_MapInfo,               "@mapinfo",              40, atcommand_mapinfo },
 	{ AtCommand_MobInfo,               "@mobinfo",              20, atcommand_mobinfo },
-	{ AtCommand_MobInfo,               "@monsterinfo",          20, atcommand_mobinfo },
-	{ AtCommand_MobInfo,               "@mi",                   20, atcommand_mobinfo },
-	{ AtCommand_MobInfo,               "@infomob",              20, atcommand_mobinfo },
-	{ AtCommand_MobInfo,               "@infomonster",          20, atcommand_mobinfo },
 	{ AtCommand_Dye,                   "@dye",                  20, atcommand_dye },
-	{ AtCommand_Dye,                   "@ccolor",               20, atcommand_dye },
-	{ AtCommand_Dye,                   "@clothescolor",         20, atcommand_dye },
 	{ AtCommand_Hstyle,                "@hairstyle",            20, atcommand_hair_style },
-	{ AtCommand_Hstyle,                "@hstyle",               20, atcommand_hair_style },
 	{ AtCommand_Hcolor,                "@haircolor",            20, atcommand_hair_color },
-	{ AtCommand_Hcolor,                "@hcolor",               20, atcommand_hair_color },
 	{ AtCommand_StatAll,               "@statall",              60, atcommand_stat_all },
-	{ AtCommand_StatAll,               "@statsall",             60, atcommand_stat_all },
-	{ AtCommand_StatAll,               "@allstats",             60, atcommand_stat_all },
-	{ AtCommand_StatAll,               "@allstat",              60, atcommand_stat_all },
 	{ AtCommand_ChangeSex,             "@changesex",            20, atcommand_change_sex },
 	{ AtCommand_CharChangeSex,         "@charchangesex",        60, atcommand_char_change_sex },
-	{ AtCommand_CharBlock,             "@block",                60, atcommand_char_block },
 	{ AtCommand_CharBlock,             "@charblock",            60, atcommand_char_block },
-	{ AtCommand_CharBan,               "@ban",                  60, atcommand_char_ban },
-	{ AtCommand_CharBan,               "@banish",               60, atcommand_char_ban },
 	{ AtCommand_CharBan,               "@charban",              60, atcommand_char_ban },
-	{ AtCommand_CharBan,               "@charbanish",           60, atcommand_char_ban },
-	{ AtCommand_CharUnBlock,           "@unblock",              80, atcommand_char_unblock },
 	{ AtCommand_CharUnBlock,           "@charunblock",          80, atcommand_char_unblock },
-	{ AtCommand_CharUnBan,             "@unban",                80, atcommand_char_unban },
-	{ AtCommand_CharUnBan,             "@unbanish",             80, atcommand_char_unban },
 	{ AtCommand_CharUnBan,             "@charunban",            80, atcommand_char_unban },
-	{ AtCommand_CharUnBan,             "@charunbanish",         80, atcommand_char_unban },
 	{ AtCommand_MountPeco,             "@peco",                 20, atcommand_mount_peco },
-	{ AtCommand_MountPeco,             "@pecopeco",             20, atcommand_mount_peco },
-	{ AtCommand_MountPeco,             "@mountpeco",            20, atcommand_mount_peco },
 	{ AtCommand_CharMountPeco,         "@charpeco",             50, atcommand_char_mount_peco },
-	{ AtCommand_CharMountPeco,         "@charmountpeco",        50, atcommand_char_mount_peco },
 	{ AtCommand_Falcon,                "@falcon",               20, atcommand_falcon },
 	{ AtCommand_CharFalcon,            "@charfalcon",           50, atcommand_char_falcon },
 	{ AtCommand_Cart,                  "@cart",                 20, atcommand_cart },
@@ -862,51 +589,31 @@ static struct AtCommandInfo {
 	{ AtCommand_PartyRecall,           "@partyrecall",          60, atcommand_partyrecall },
 	{ AtCommand_Nuke,                  "@nuke",                 60, atcommand_nuke },
 	{ AtCommand_Enablenpc,             "@enablenpc",            80, atcommand_enablenpc },
-	{ AtCommand_Enablenpc,             "@npcon",                80, atcommand_enablenpc },
 	{ AtCommand_Disablenpc,            "@disablenpc",           80, atcommand_disablenpc },
-	{ AtCommand_Disablenpc,            "@npcoff",               80, atcommand_disablenpc },
 	{ AtCommand_ServerTime,            "@time",                  0, atcommand_servertime },
-	{ AtCommand_ServerTime,            "@date",                  0, atcommand_servertime },
-	{ AtCommand_ServerTime,            "@server_date",           0, atcommand_servertime },
-	{ AtCommand_ServerTime,            "@serverdate",            0, atcommand_servertime },
-	{ AtCommand_ServerTime,            "@server_time",           0, atcommand_servertime },
-	{ AtCommand_ServerTime,            "@servertime",            0, atcommand_servertime },
 	{ AtCommand_CharDelItem,           "@chardelitem",          60, atcommand_chardelitem },
 	{ AtCommand_Jail,                  "@jail",                 60, atcommand_jail },
-	{ AtCommand_Jail,                  "@prison",               60, atcommand_jail },
 	{ AtCommand_UnJail,                "@unjail",               60, atcommand_unjail },
-	{ AtCommand_UnJail,                "@discharge",            60, atcommand_unjail },
 	{ AtCommand_JailTime,              "@jailtime",              0, atcommand_jailtime },
-	{ AtCommand_JailTime,              "@jail_time",             0, atcommand_jailtime },
-	{ AtCommand_JailTime,              "@prisontime",            0, atcommand_jailtime },
-	{ AtCommand_JailTime,              "@prison_time",           0, atcommand_jailtime },
 	{ AtCommand_CharJailTime,          "@charjailtime",         20, atcommand_charjailtime },
-	{ AtCommand_CharJailTime,          "@charjail_time",        20, atcommand_charjailtime },
-	{ AtCommand_CharJailTime,          "@charprisontime",       20, atcommand_charjailtime },
-	{ AtCommand_CharJailTime,          "@charprison_time",      20, atcommand_charjailtime },
 	{ AtCommand_Disguise,              "@disguise",             20, atcommand_disguise },
 	{ AtCommand_UnDisguise,            "@undisguise",           20, atcommand_undisguise },
 	{ AtCommand_CharDisguise,          "@chardisguise",         60, atcommand_chardisguise },
 	{ AtCommand_CharUnDisguise,        "@charundisguise",       60, atcommand_charundisguise },
 	{ AtCommand_CharDisguiseMap,       "@disguisemap",          60, atcommand_chardisguisemap },
-	{ AtCommand_CharDisguiseMap,       "@chardisguisemap",      60, atcommand_chardisguisemap },
 	{ AtCommand_CharUnDisguiseMap,     "@undisguisemap",        60, atcommand_charundisguisemap },
-	{ AtCommand_CharUnDisguiseMap,     "@charundisguisemap",    60, atcommand_charundisguisemap },
 	{ AtCommand_CharDisguiseAll,       "@disguiseall",          70, atcommand_chardisguiseall },
-	{ AtCommand_CharDisguiseAll,       "@chardisguiseall",      70, atcommand_chardisguiseall },
 	{ AtCommand_CharUnDisguiseAll,     "@undisguiseall",        60, atcommand_charundisguiseall },
-	{ AtCommand_CharUnDisguiseAll,     "@charundisguiseall",    60, atcommand_charundisguiseall },
 	{ AtCommand_ChangeLook,            "@changelook",           20, atcommand_changelook },
 	{ AtCommand_CharChangeLook,        "@charchangelook",       60, atcommand_charchangelook },
 	{ AtCommand_IgnoreList,            "@ignorelist",            0, atcommand_ignorelist },
 	{ AtCommand_CharIgnoreList,        "@charignorelist",       20, atcommand_charignorelist },
-	{ AtCommand_IgnoreList,            "@inall",                20, atcommand_inall },
+	{ AtCommand_InAll,                 "@inall",                20, atcommand_inall },
 	{ AtCommand_ExAll,                 "@exall",                20, atcommand_exall },
 	{ AtCommand_EMail,                 "@email",                 0, atcommand_email },
 	{ AtCommand_Password,              "@password",             20, atcommand_password },
 	{ AtCommand_Effect,                "@effect",               40, atcommand_effect },
 	{ AtCommand_Char_Item_List,        "@charitemlist",         20, atcommand_character_item_list },
-	{ AtCommand_Char_Item_List,        "@charinventorylist",    20, atcommand_character_item_list },
 	{ AtCommand_Char_Storage_List,     "@charstoragelist",      20, atcommand_character_storage_list },
 	{ AtCommand_Char_Cart_List,        "@charcartlist",         20, atcommand_character_cart_list },
 	{ AtCommand_Follow,                "@follow",               20, atcommand_follow },
@@ -918,17 +625,12 @@ static struct AtCommandInfo {
 	{ AtCommand_Killer,                "@killer",               60, atcommand_killer },
 	{ AtCommand_CharKiller,            "@charkiller",           60, atcommand_charkiller },
 	{ AtCommand_NpcMove,               "@npcmove",              80, atcommand_npcmove },
-	{ AtCommand_NpcMove,               "@movenpc",              80, atcommand_npcmove },
 	{ AtCommand_Killable,              "@killable",             40, atcommand_killable },
 	{ AtCommand_CharKillable,          "@charkillable",         60, atcommand_charkillable },
 	{ AtCommand_Chareffect,            "@chareffect",           40, atcommand_chareffect },
 	{ AtCommand_Chardye,               "@chardye",              50, atcommand_chardye },
-	{ AtCommand_Chardye,               "@charccolor",           50, atcommand_chardye },
-	{ AtCommand_Chardye,               "@charclothescolor",     50, atcommand_chardye },
 	{ AtCommand_Charhairstyle,         "@charhairstyle",        50, atcommand_charhairstyle },
-	{ AtCommand_Charhairstyle,         "@charhstyle",           50, atcommand_charhairstyle },
 	{ AtCommand_Charhaircolor,         "@charhaircolor",        50, atcommand_charhaircolor },
-	{ AtCommand_Charhaircolor,         "@charhcolor",           50, atcommand_charhaircolor },
 	{ AtCommand_Dropall,               "@dropall",              40, atcommand_dropall },
 	{ AtCommand_Chardropall,           "@chardropall",          60, atcommand_chardropall },
 	{ AtCommand_Storeall,              "@storeall",             40, atcommand_storeall },
@@ -942,57 +644,29 @@ static struct AtCommandInfo {
 	{ AtCommand_Leaves,                "@leaves",               80, atcommand_leaves },
 	{ AtCommand_Rainbow,               "@rainbow",              80, atcommand_rainbow },
 	{ AtCommand_Clsweather,            "@clsweather",           80, atcommand_clsweather },
-	{ AtCommand_Clsweather,            "@clearweather",         80, atcommand_clsweather },
 	{ AtCommand_MobSearch,             "@mobsearch",            20, atcommand_mobsearch },
-	{ AtCommand_MobSearch,             "@monstersearch",        20, atcommand_mobsearch },
-	{ AtCommand_MobSearch,             "@searchmob",            20, atcommand_mobsearch },
-	{ AtCommand_MobSearch,             "@searchmonster",        20, atcommand_mobsearch },
 	{ AtCommand_CleanMap,              "@cleanmap",             40, atcommand_cleanmap },
 //	{ AtCommand_Shuffle,               "@shuffle",              99, atcommand_shuffle },
 //	{ AtCommand_Maintenance,           "@maintenance",          99, atcommand_maintenance },
 	{ AtCommand_MiscEffect,            "@misceffect",           60, atcommand_misceffect },
 	{ AtCommand_AdjGmLvl,              "@adjgmlvl",             80, atcommand_adjgmlvl },
-	{ AtCommand_AdjGmLvl,              "@setgmlvl",             80, atcommand_adjgmlvl },
-	{ AtCommand_AdjGmLvl,              "@adjgmlevel",           80, atcommand_adjgmlvl },
-	{ AtCommand_AdjGmLvl,              "@setgmlevel",           80, atcommand_adjgmlvl },
 	{ AtCommand_AdjGmLvl2,             "@adjgmlvl2",            99, atcommand_adjgmlvl2 },
-	{ AtCommand_AdjGmLvl2,             "@setgmlvl2",            99, atcommand_adjgmlvl2 },
-	{ AtCommand_AdjGmLvl2,             "@adjgmlevel2",          99, atcommand_adjgmlvl2 },
-	{ AtCommand_AdjGmLvl2,             "@setgmlevel2",          99, atcommand_adjgmlvl2 },
 	{ AtCommand_AdjGmLvl2,             "@adjgm0",               20, atcommand_adjgmlvl2 },
-	{ AtCommand_AdjGmLvl2,             "@setgm0",               20, atcommand_adjgmlvl2 },
 	{ AtCommand_AdjGmLvl2,             "@adjgm1",               20, atcommand_adjgmlvl2 },
-	{ AtCommand_AdjGmLvl2,             "@setgm1",               20, atcommand_adjgmlvl2 },
 	{ AtCommand_AdjGmLvl2,             "@adjgm2",               60, atcommand_adjgmlvl2 },
-	{ AtCommand_AdjGmLvl2,             "@setgm2",               60, atcommand_adjgmlvl2 },
 	{ AtCommand_AdjGmLvl2,             "@adjgm3",               60, atcommand_adjgmlvl2 },
-	{ AtCommand_AdjGmLvl2,             "@setgm3",               60, atcommand_adjgmlvl2 },
 	{ AtCommand_AdjGmLvl2,             "@adjgm4",               60, atcommand_adjgmlvl2 },
-	{ AtCommand_AdjGmLvl2,             "@setgm4",               60, atcommand_adjgmlvl2 },
 	{ AtCommand_AdjGmLvl2,             "@adjgm5",               60, atcommand_adjgmlvl2 },
-	{ AtCommand_AdjGmLvl2,             "@setgm5",               60, atcommand_adjgmlvl2 },
 	{ AtCommand_AdjGmLvl2,             "@adjgm6",               60, atcommand_adjgmlvl2 },
-	{ AtCommand_AdjGmLvl2,             "@setgm6",               60, atcommand_adjgmlvl2 },
 	{ AtCommand_AdjGmLvl2,             "@adjgm7",               60, atcommand_adjgmlvl2 },
-	{ AtCommand_AdjGmLvl2,             "@setgm7",               60, atcommand_adjgmlvl2 },
 	{ AtCommand_AdjGmLvl2,             "@adjgm8",               60, atcommand_adjgmlvl2 },
-	{ AtCommand_AdjGmLvl2,             "@setgm8",               60, atcommand_adjgmlvl2 },
 	{ AtCommand_AdjGmLvl2,             "@adjgm9",               60, atcommand_adjgmlvl2 },
-	{ AtCommand_AdjGmLvl2,             "@setgm9",               60, atcommand_adjgmlvl2 },
 	{ AtCommand_AdjGmLvl2,             "@adjgm10",              60, atcommand_adjgmlvl2 },
-	{ AtCommand_AdjGmLvl2,             "@setgm10",              60, atcommand_adjgmlvl2 },
 	{ AtCommand_AdjCmdLvl,             "@adjcmdlvl",            99, atcommand_adjcmdlvl },
-	{ AtCommand_AdjCmdLvl,             "@setcmdlvl",            99, atcommand_adjcmdlvl },
-	{ AtCommand_AdjCmdLvl,             "@adjcmdlevel",          99, atcommand_adjcmdlvl },
-	{ AtCommand_AdjCmdLvl,             "@setcmdlevel",          99, atcommand_adjcmdlvl },
 	{ AtCommand_Trade,                 "@trade",                60, atcommand_trade },
 	{ AtCommand_Send,                  "@send",                 60, atcommand_send },
 	{ AtCommand_SetBattleFlag,         "@setbattleflag",        99, atcommand_setbattleflag },
-	{ AtCommand_SetBattleFlag,         "@adjbattleflag",        99, atcommand_setbattleflag },
-	{ AtCommand_SetBattleFlag,         "@setbattleconf",        99, atcommand_setbattleflag },
-	{ AtCommand_SetBattleFlag,         "@adjbattleconf",        99, atcommand_setbattleflag },
 	{ AtCommand_SetMapFlag,            "@setmapflag",           99, atcommand_setmapflag },
-	{ AtCommand_SetMapFlag,            "@adjmapflag",           99, atcommand_setmapflag },
 	{ AtCommand_UnMute,                "@unmute",               60, atcommand_unmute },
 	{ AtCommand_UpTime,                "@uptime",                0, atcommand_uptime },
 	{ AtCommand_Clock,                 "@clock",                 0, atcommand_clock },
@@ -1003,37 +677,22 @@ static struct AtCommandInfo {
 	{ AtCommand_WhoHas,                "@whohas",               20, atcommand_whohas },
 	{ AtCommand_WhoHasMap,             "@whohasmap",            20, atcommand_whohasmap },
 	{ AtCommand_HappyHappyJoyJoy,      "@happyhappyjoyjoy",     40, atcommand_happyhappyjoyjoy },
-	{ AtCommand_HappyHappyJoyJoy,      "@happyhappy",           40, atcommand_happyhappyjoyjoy },
-	{ AtCommand_HappyHappyJoyJoy,      "@joyjoy",               40, atcommand_happyhappyjoyjoy },
 	{ AtCommand_HappyHappyJoyJoyMap,   "@happyhappyjoyjoymap",  40, atcommand_happyhappyjoyjoymap },
-	{ AtCommand_HappyHappyJoyJoyMap,   "@happyhappymap",        40, atcommand_happyhappyjoyjoymap },
-	{ AtCommand_HappyHappyJoyJoyMap,   "@joyjoymap",            40, atcommand_happyhappyjoyjoymap },
 	{ AtCommand_Refresh,               "@refresh",              40, atcommand_refresh }, /* It seems authorize to xp without die (exploit)*/
 	{ AtCommand_PetId,                 "@petid",                40, atcommand_petid },
 	{ AtCommand_Identify,              "@identify",             40, atcommand_identify },
 	{ AtCommand_Motd,                  "@motd",                  0, atcommand_motd },
 	{ AtCommand_Gmotd,                 "@gmotd",                60, atcommand_gmotd },
-	{ AtCommand_Gmotd,                 "@globalmotd",           60, atcommand_gmotd },
 	{ AtCommand_SkillTree,             "@skilltree",            40, atcommand_skilltree },
 	{ AtCommand_Marry,                 "@marry",                40, atcommand_marry },
 	{ AtCommand_Divorce,               "@divorce",              40, atcommand_divorce },
 	{ AtCommand_Rings,                 "@rings",                40, atcommand_rings },
 	{ AtCommand_Grind,                 "@grind",                99, atcommand_grind }, // (on test GM command)
-	{ AtCommand_Grind,                 "@grindskill",           99, atcommand_grind }, // (on test GM command)
-	{ AtCommand_Grind,                 "@grindskills",          99, atcommand_grind }, // (on test GM command)
 	{ AtCommand_Grind2,                "@grind2",               60, atcommand_grind2 },
-	{ AtCommand_Grind2,                "@grindmob",             60, atcommand_grind2 },
-	{ AtCommand_Grind2,                "@grindmonster",         60, atcommand_grind2 },
-	{ AtCommand_Grind2,                "@grindmobs",            60, atcommand_grind2 },
-	{ AtCommand_Grind2,                "@grindmonsters",        60, atcommand_grind2 },
 	{ AtCommand_Sound,                 "@sound",                40, atcommand_sound },
 
 	{ AtCommand_NpcTalk,               "@npctalk",              40, atcommand_npctalk },
-	{ AtCommand_NpcTalk,               "@npcmessage",           40, atcommand_npctalk },
-	{ AtCommand_NpcTalk,               "@npcmes",               40, atcommand_npctalk },
 	{ AtCommand_PetTalk,               "@pettalk",              10, atcommand_pettalk },
-	{ AtCommand_PetTalk,               "@petmessage",           10, atcommand_pettalk },
-	{ AtCommand_PetTalk,               "@petmes",               10, atcommand_pettalk },
 	{ AtCommand_AutoLoot,              "@autoloot",              0, atcommand_autoloot },
 	{ AtCommand_AutoLootLoot,          "@autolootloot",          0, atcommand_autolootloot },
 	{ AtCommand_Displayexp,            "@displayexp",            0, atcommand_displayexp },
@@ -1041,7 +700,6 @@ static struct AtCommandInfo {
 	{ AtCommand_DisplayLootDrop,       "@displaylootdrop",       0, atcommand_displaylootdrop },
 	{ AtCommand_Main,                  "@main",                  1, atcommand_main },
 	{ AtCommand_Request,               "@request",               0, atcommand_request },
-	{ AtCommand_Request,               "@contactgm",             0, atcommand_request },
 	{ AtCommand_Version,               "@version",               0, atcommand_version },
 	{ AtCommand_Version2,              "@version2",              0, atcommand_version2 },
 
@@ -1270,6 +928,15 @@ AtCommandType is_atcommand(const int fd, struct map_session_data* sd, const char
 	for (i = 0; command[i]; i++)
 		command[i] = tolower((unsigned char)command[i]); // tolower needs unsigned char
 
+	// check for synonym here
+	for (i = 0; i < synonym_count; i++) {
+		if (strcmp(command + 1, synonym_table[i].synonym) == 0) {
+			memset(command + 1, 0, sizeof(command) - 1); // don't change command_symbol (+1)
+			strcpy(command + 1, synonym_table[i].command);
+			break;
+		}
+	}
+
 	/* search gm command type and check level*/
 	i = 0;
 	while (atcommand_info[i].type != AtCommand_Unknown) {
@@ -1346,6 +1013,25 @@ AtCommandType is_atcommand(const int fd, struct map_session_data* sd, const char
  *
  *------------------------------------------
  */
+static void atcommand_synonym_free(void) {
+	int i;
+
+	for (i = 0; i < synonym_count; i++) {
+		FREE(synonym_table[i].synonym);
+		FREE(synonym_table[i].command);
+	}
+	if (synonym_table != NULL) {
+		FREE(synonym_table);
+	}
+	synonym_count = 0;
+
+	return;
+}
+
+/*==========================================
+ *
+ *------------------------------------------
+ */
 int atcommand_config_read(const char *cfgName) {
 	static int read_counter = 0; // to count every time we enter in the function (for 'import' option)
 	char line[512], w1[512], w2[512];
@@ -1362,6 +1048,12 @@ int atcommand_config_read(const char *cfgName) {
 //		}
 	}
 
+	if (read_counter == 0) {
+		atcommand_synonym_free();
+		command_symbol = '@'; /* first char of the commands */
+		char_command_symbol = '#'; /* first char of the remote commands */
+		main_channel_symbol = '.'; /* first char of the main channel */
+	}
 	read_counter++;
 
 	while (fgets(line, sizeof(line), fp)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
@@ -1370,52 +1062,89 @@ int atcommand_config_read(const char *cfgName) {
 		// it's not necessary to remove 'carriage return ('\n' or '\r')
 
 		memset(w2, 0, sizeof(w2));
-		if (sscanf(line, "%[^:]:%s", w1, w2) < 2)
-			continue;
-		for (i = 0; w1[i]; i++) /* speed up, only 1 lowercase for all loops */
-			w1[i] = tolower((unsigned char)w1[i]); // tolower needs unsigned char
-		/* searching gm command */
-		for (i = 0; atcommand_info[i].type != AtCommand_Unknown; i++)
-			if (strcmp(atcommand_info[i].command + 1, w1) == 0)
-				break;
-		if (atcommand_info[i].type != AtCommand_Unknown) {
-			level = atoi(w2);
-			if (level > 100)
-				level = 100;
-			else if (level < 0)
-				level = 0;
-			atcommand_info[i].level = level;
-		} else if (strcmp(w1, "command_symbol") == 0) {
-			if (!iscntrl((int)w2[0]) && // w2[0] > 31 &&
-			    w2[0] != '/' && // symbol of standard ragnarok GM commands
-			    w2[0] != '%' && // symbol of party chat speaking
-			    w2[0] != char_command_symbol && // symbol of 'remote' GM commands
-			    w2[0] != main_channel_symbol) // symbol of the Main channel
-				command_symbol = w2[0];
-		} else if (strcmp(w1, "char_command_symbol") == 0) {
-			if (!iscntrl((int)w2[0]) && // w2[0] > 31 &&
-			    w2[0] != '/' && // symbol of standard ragnarok GM commands
-			    w2[0] != '%' && // symbol of party chat speaking
-			    w2[0] != command_symbol && // symbol of 'normal' GM commands
-			    w2[0] != main_channel_symbol) // symbol of the Main channel
-				char_command_symbol = w2[0];
-		} else if (strcmp(w1, "main_channel_symbol") == 0) {
-			if (!iscntrl((int)w2[0]) && // w2[0] > 31 &&
-			    w2[0] != '/' && // symbol of standard ragnarok GM commands
-			    w2[0] != '%' && // symbol of party chat speaking
-			    w2[0] != command_symbol && // symbol of 'normal' GM commands
-			    w2[0] != char_command_symbol) // symbol of 'remote' GM commands
-				main_channel_symbol = w2[0];
-		} else if (strcmp(w1, "messages_filename") == 0) {
-			memset(messages_filename, 0, sizeof(messages_filename));
-			strncpy(messages_filename, w2, sizeof(messages_filename) - 1);
+
+		if (sscanf(line, "%[^:]:%s", w1, w2) == 2) {
+			for (i = 0; w1[i]; i++) /* speed up, only 1 lowercase for all loops */
+				w1[i] = tolower((unsigned char)w1[i]); // tolower needs unsigned char
+			/* searching gm command */
+			for (i = 0; atcommand_info[i].type != AtCommand_Unknown; i++)
+				if (strcmp(atcommand_info[i].command + 1, w1) == 0)
+					break;
+// GM commands
+			if (atcommand_info[i].type != AtCommand_Unknown) {
+				level = atoi(w2);
+				if (level > 100)
+					level = 100;
+				else if (level < 0)
+					level = 0;
+				atcommand_info[i].level = level;
+			} else if (strcmp(w1, "command_symbol") == 0) {
+				if (!iscntrl((int)w2[0]) && // w2[0] > 31 &&
+				    w2[0] != '/' && // symbol of standard ragnarok GM commands
+				    w2[0] != '%' && // symbol of party chat speaking
+				    w2[0] != char_command_symbol && // symbol of 'remote' GM commands
+				    w2[0] != main_channel_symbol) // symbol of the Main channel
+					command_symbol = w2[0];
+			} else if (strcmp(w1, "char_command_symbol") == 0) {
+				if (!iscntrl((int)w2[0]) && // w2[0] > 31 &&
+				    w2[0] != '/' && // symbol of standard ragnarok GM commands
+				    w2[0] != '%' && // symbol of party chat speaking
+				    w2[0] != command_symbol && // symbol of 'normal' GM commands
+				    w2[0] != main_channel_symbol) // symbol of the Main channel
+					char_command_symbol = w2[0];
+			} else if (strcmp(w1, "main_channel_symbol") == 0) {
+				if (!iscntrl((int)w2[0]) && // w2[0] > 31 &&
+				    w2[0] != '/' && // symbol of standard ragnarok GM commands
+				    w2[0] != '%' && // symbol of party chat speaking
+				    w2[0] != command_symbol && // symbol of 'normal' GM commands
+				    w2[0] != char_command_symbol) // symbol of 'remote' GM commands
+					main_channel_symbol = w2[0];
+			} else if (strcmp(w1, "messages_filename") == 0) {
+				memset(messages_filename, 0, sizeof(messages_filename));
+				strncpy(messages_filename, w2, sizeof(messages_filename) - 1);
 // import
-		} else if (strcmp(w1, "import") == 0) {
-			printf("atcommand_config_read: Import file: %s.\n", w2);
-			atcommand_config_read(w2);
+			} else if (strcmp(w1, "import") == 0) {
+				printf("atcommand_config_read: Import file: %s.\n", w2);
+				atcommand_config_read(w2);
 // unknown option/command
-		} else {
-			printf("Unknown GM command: '%s'.\n", w1);
+			} else {
+				printf("Unknown GM command: '%s'.\n", w1);
+			}
+
+// Synonym commands
+		} else if (sscanf(line, "%[^=]=%s", w1, w2) == 2) { // synonym
+			/* searching if synonym is not a gm command */
+			for (i = 0; atcommand_info[i].type != AtCommand_Unknown; i++)
+				if (strcmpi(atcommand_info[i].command + 1, w1) == 0) {
+					printf("Error in %s file: GM synonym '%s' is not a synonym, but a GM command.\n", cfgName, w1);
+					break;
+				}
+			// if synonym is ok
+			if (atcommand_info[i].type == AtCommand_Unknown) {
+				/* searching if gm command exists */
+				for (i = 0; atcommand_info[i].type != AtCommand_Unknown; i++)
+					if (strcmpi(atcommand_info[i].command + 1, w2) == 0) {
+						// GM command found, create synonym
+						//printf("new synonym: %s->%s\n", w1, w2);
+						if (synonym_count == 0) {
+							CALLOC(synonym_table, struct synonym_table, 1);
+						} else {
+							REALLOC(synonym_table, struct synonym_table, synonym_count + 1);
+						}
+						for (i = 0; w1[i]; i++) /* speed up, only 1 lowercase for all loops */
+							w1[i] = tolower((unsigned char)w1[i]); // tolower needs unsigned char
+						CALLOC(synonym_table[synonym_count].synonym, char, strlen(w1) + 1);
+						strcpy(synonym_table[synonym_count].synonym, w1);
+						for (i = 0; w2[i]; i++) /* speed up, only 1 lowercase for all loops */
+							w2[i] = tolower((unsigned char)w2[i]); // tolower needs unsigned char
+						CALLOC(synonym_table[synonym_count].command, char, strlen(w2) + 1);
+						strcpy(synonym_table[synonym_count].command, w2);
+						synonym_count++;
+						break;
+					}
+				if (atcommand_info[i].type == AtCommand_Unknown)
+					printf("Error in %s file: GM command '%s' of synonym '%s' doesn't exist.\n", cfgName, w2, w1);
+			}
 		}
 	}
 	fclose(fp);
@@ -2083,6 +1812,17 @@ void do_final_msg_config() {
 	for (msg_number = 0; msg_number < MSG_NUMBER; msg_number++) {
 		FREE(msg_table[msg_number]);
 	}
+
+	return;
+}
+
+/*==========================================
+ *
+ *------------------------------------------
+ */
+void do_final_atcommand(void) {
+	do_final_msg_config();
+	atcommand_synonym_free();
 
 	return;
 }
@@ -5341,6 +5081,15 @@ static int log_fp;
 char tmpstr[256];
 log_fp = open("help_save.txt", O_WRONLY | O_CREAT | O_APPEND, 0644);
 */
+				// check for synonym here
+				for (i = 0; i < synonym_count; i++) {
+					if (strcmpi(w1 + 1, synonym_table[i].synonym) == 0) {
+						memset(w1 + 1, 0, sizeof(w1) - 1); // don't change command_symbol (+1)
+						strcpy(w1 + 1, synonym_table[i].command);
+						break;
+					}
+				}
+
 				// search gm command type
 				i = 0;
 				while (atcommand_info[i].type != AtCommand_Unknown) {

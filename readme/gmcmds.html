@@ -54,7 +54,7 @@ The following is the syntax for GM commands:<br />
 
 <h4>Help:</h4>
 <span class="cmd">
-@h/@help [&lt;page_number&gt;|&lt;keyword&gt;]</span><br />
+@h/@help/@? [&lt;page_number&gt;|&lt;keyword&gt;]</span><br />
 Displays the help.txt file, a short help of GM commands.<br />
 If a keyword is given:<br />
 	this command display only help of this keyword (if key word is found).<br />
@@ -100,7 +100,8 @@ Broadcasts a GM message with your name (in yellow) ONLY on your map.<br /><br />
 @mb &lt;message&gt;</span><br />
 Broadcasts a GM message without your name (in yellow) ONLY on your map.<br /><br />
 
-<span class="cmd">@kamigm &lt;min_lvl_gm&gt; &lt;message&gt;</span><br />
+<span class="cmd">@kamigm &lt;min_lvl_gm&gt; &lt;message&gt;<br />
+@bgm &lt;min_lvl_gm&gt; &lt;message&gt;</span><br />
 Sends a message to GM with a level upper or egal to &lt;min_lvl_gm&gt;.<br /><br />
 
 <span class="cmd">@request &lt;message&gt;<br />
@@ -118,11 +119,37 @@ Sends a message to GM with a level upper or egal to &lt;min_lvl_gm&gt;.<br /><br
 
 <br />
 
+<h4>Mail system (SQL only):</h4>
+
+<span class="cmd">@checkmail<br />
+</span>Check # of messages.<br /><br />
+
+<span class="cmd">@listmail<br />
+</span>List all messages.<br /><br />
+
+<span class="cmd">@listnewmail<br />
+</span>List only new mail.<br /><br />
+
+<span class="cmd">@readmail<br />
+</span>Read a message.<br /><br />
+
+<span class="cmd">@sendmail<br />
+</span>Send mail.<br /><br />
+
+<span class="cmd">@deletemail<br />
+</span>Delete a message.<br /><br />
+
+<span class="cmd">@sendprioritymail<br />
+</span>Send priority mail (tagged with Priority and cannot be deleted until read).<br /><br />
+
+<br />
+
 <h4>Information:</h4>
 <span class="cmd">@users</span><br />
 Displays a listing of maps with (number of) players.<br /><br />
 
-<span class="cmd">@who [match_text]</span><br />
+<span class="cmd">@who [match_text]<br />
+@whois [match_text]</span><br />
 Lists who is currently online in your server and their location.<br />
 With a match_text, list display only characters that have 'match_text' is their name.<br /><br />
 
@@ -272,8 +299,8 @@ Perfect hide that&#39;s totally invisible (GM invisibility). Type @hide again be
 <span class="cmd">@save</span><br />
 Sets save/respawn point to your current location.<br /><br />
 
-<span class="cmd">@load</span><br />
-<span class="cmd">@return</span><br />
+<span class="cmd">@load<br />
+@return</span><br />
 Warps you to your save point (like butterfly wing).<br /><br />
 
 <span class="cmd">@warp &lt;map_name&gt; &lt;x&gt; &lt;y&gt;<br />
@@ -299,6 +326,9 @@ Warps you to selected character.<br /><br />
 
 <span class="cmd">@follow &lt;char name|account_id&gt;</span><br />
 Follows a player (to unfollow, type '@follow off' or '@follow &lt;YOUR name&gt;').<br /><br />
+
+<span class="cmd">@unfollow</span><br />
+Cancels @follow command.<br /><br />
 
 <span class="cmd">@go &lt;number/city_name&gt;</span><br />
 Warps you to a set city:</pre><br /><br />
@@ -373,11 +403,18 @@ Heals the desired amount of HP and SP (but don't resurrect). No value specified 
 
 <h4>Self-Modifying:</h4>
 <span class="cmd">/resetstate<br />
-@resetstate</span><br />
+@resetstate<br />
+@resetstat<br />
+@resetstats<br />
+@statreset<br />
+@statsreset</span><br />
 Resets all status points for you to reuse.<br /><br />
 
 <span class="cmd">/resetskill<br />
-@resetskill</span><br />
+@resetskill<br />
+@resetskills<br />
+@skillreset<br />
+@skillsreset</span><br />
 Resets all skill points for you to reuse.<br /><br />
 
 <span class="cmd">@job &lt;job_ID|job_name|"job_name"&gt; [upper]<br />
@@ -517,6 +554,7 @@ Raises your base level the desired number of levels. The max is 99 (unless it's 
 @jlevel &lt;number_of_levels&gt;<br />
 @jlvlup &lt;number_of_levels&gt;<br />
 @jlevelup &lt;number_of_levels&gt;<br />
+@joblvl &lt;number_of_levels&gt;<br />
 @joblvup &lt;number_of_levels&gt;<br />
 @joblvlup &lt;number_of_levels&gt;<br />
 @joblevelup &lt;number_of_levels&gt;</span><br />
@@ -616,7 +654,8 @@ Adds options for your character<br /><br />
 Removes options for your character<br /><br />
 
 <span class="cmd">@peco<br />
-@mountpeco</span><br />
+@mountpeco<br />
+@pecopeco</span><br />
 Give/remove you a peco (Class is required, but not skill).<br /><br />
 
 <span class="cmd">@falcon</span><br />
@@ -844,6 +883,9 @@ Looks up a skill by name.<br /><br />
 <span class="cmd">@email &lt;actual@email&gt; &lt;new@email&gt;</span><br />
 Changes your e-mail (characters deletion protection).<br /><br />
 
+<span class="cmd">@password &lt;old_password&gt; &lt;new_password&gt;</span><br />
+Permanently change your account password to the given one.<br /><br />
+
 <br />
 
 <h4>Item:</h4>
@@ -853,10 +895,11 @@ If a NO-LOOTED item is droped, does it go stright into the users inventory (when
 <span class="cmd">@autolootloot</span><br />
 If a LOOTED item is droped, does it go stright into the users inventory.<br /><br />
 
-<span class="cmd">@storage </span><br />
+<span class="cmd">@storage</span><br />
 Opens storage anywhere.<br /><br />
 
-<span class="cmd">@gstorage </span><br />
+<span class="cmd">@gstorage<br />
+@guildstorage</span><br />
 Opens guild storage anywhere.<br /><br />
 
 <span class="cmd">@dropall</span><br />
@@ -1096,10 +1139,14 @@ Turns gvg on on the current map. This does NOT enable War of Emperium.<br /><br 
 @gpvpoff</span><br />
 Turns gvg off on the current map. This does NOT disable War of Emperium.<br /><br />
 
-<span class="cmd">@agitstart</span><br />
+<span class="cmd">@agitstart<br />
+@woestart<br />
+@startwoe</span><br />
 Starts Guild Wars (War of Emperium).<br /><br />
 
-<span class="cmd">@agitend</span><br />
+<span class="cmd">@agitend<br />
+@woeend<br />
+@endwoe</span><br />
 Ends Guild Wars (War of Emperium).<br /><br />
 
 <span class="cmd">@killer</span><br />
@@ -1306,13 +1353,13 @@ Gives/takes a player&#39;s stat points.<br /><br />
 <span class="cmd">@charskpoint &lt;amount&gt; &lt;char name|account_id&gt;</span><br />
 gives/takes a player&#39;s skill points.<br /><br />
 
-<span class="cmd">@charskreset &lt;char name|account_id&gt;<br />
-@charresetskill &lt;char name|account_id&gt;</span><br />
-Resets skills of a character.<br /><br />
-
 <span class="cmd">@charstreset &lt;char name|account_id&gt;<br />
 @charresetstate &lt;char name|account_id&gt;</span><br />
 Resets stats of a character.<br /><br />
+
+<span class="cmd">@charskreset &lt;char name|account_id&gt;<br />
+@charresetskill &lt;char name|account_id&gt;</span><br />
+Resets skills of a character.<br /><br />
 
 <span class="cmd">@charreset &lt;char name|account_id&gt;</span><br />
 Resets stats AND skills of a character.<br /><br />
