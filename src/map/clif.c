@@ -5520,11 +5520,10 @@ void clif_closevendingboard(struct block_list* bl, int fd) {
 void clif_vendinglist(struct map_session_data *sd, struct map_session_data *vsd)
 {
 	struct item_data *data;
-	struct vending *vending = NULL;
+	struct vending *vending = (struct vending *)vsd->vending;
 	int i, j, n, idx;
 
 //nullpo_retv(sd); //checked before to call function
-	nullpo_retv(vending = (struct vending *)vsd->vending);
 
 	n = 0;
 	for(i = 0; i < vsd->vend_num; i++) {
