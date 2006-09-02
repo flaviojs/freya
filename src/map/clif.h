@@ -214,8 +214,8 @@ void clif_fame_point(struct map_session_data *sd, unsigned char type, unsigned i
 void clif_openvendingreq(struct map_session_data *sd, int num);
 int clif_showvendingboard(struct block_list* bl,char *message, int fd);
 void clif_closevendingboard(struct block_list* bl, int fd);
-int clif_vendinglist(struct map_session_data *sd, int id, struct vending *vending);
-int clif_buyvending(struct map_session_data *sd, int idx, int amount,int fail);
+void clif_vendinglist(struct map_session_data *sd, struct map_session_data *vsd);
+int clif_buyvending(struct map_session_data *sd, int idx, int amount, int fail);
 int clif_openvending(struct map_session_data *sd, int id, struct vending *vending);
 int clif_vendingreport(struct map_session_data *sd, int idx, int amount);
 

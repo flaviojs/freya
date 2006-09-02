@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 09/01/06
+	* Improved: clif_vendinglist function [Proximus]
 	* Improved: replaced function call (gettick()) by the variable (gettick_cache) -> speeder [Yor]
 	            call a function is slower to simply access to a variable.
 	* Improved: do_timer() function. [Yor]

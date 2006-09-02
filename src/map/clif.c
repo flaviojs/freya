@@ -5517,15 +5517,14 @@ void clif_closevendingboard(struct block_list* bl, int fd) {
  * 露店アイテムリスト
  *------------------------------------------
  */
-int clif_vendinglist(struct map_session_data *sd, int id, struct vending *vending)
+void clif_vendinglist(struct map_session_data *sd, struct map_session_data *vsd)
 {
 	struct item_data *data;
+	struct vending *vending = NULL;
 	int i, j, n, idx;
-	struct map_session_data *vsd;
 
-	nullpo_retr(0, sd);
-	nullpo_retr(0, vending);
-	nullpo_retr(0, vsd = map_id2sd(id));
+//nullpo_retv(sd); //checked before to call function
+	nullpo_retv(vending = (struct vending *)vsd->vending);
 
 	n = 0;
 	for(i = 0; i < vsd->vend_num; i++) {
@@ -5573,11 +5572,11 @@ int clif_vendinglist(struct map_session_data *sd, int id, struct vending *vendin
 	if (n) {
 		WPACKETW(0) = 0x133;
 		WPACKETW(2) = 8 + n * 22;
-		WPACKETL(4) = id;
+		WPACKETL(4) = vsd->bl.id;
 		SENDPACKET(sd->fd, WPACKETW(2));
 	}
 
-	return 0;
+	return;
 }
 
 /*==========================================
