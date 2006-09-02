@@ -1,6 +1,13 @@
 
 Date	Added
 
+09/02/06
+	* Fixed: Summon Slave/Summon Monster for a lot of MvPs/Mini-Bosses [Tsuyuki]
+	 - Added some missing slaves to monsters, and made most slaves accurate to Aegis (New mobs not enough info)
+	 - Changed the current slaves from normal mobs to G_ mobs (no drops/exp)
+	 - Fixed some MvPs/Mini-bosses not spawning slaves on Idle
+	* Fixed: Ancient Mummy, Event Baphomet, and Errende Ebecee Skills [Tsuyuki]
+
 09/01/06
 	* Removed: Teleport from Ungoliant (I didn't realize it was supposed to be rudeattacked, not regular tele) [Tsuyuki]
 	* Fixed: Redid all monster drops from Episode 2.5 ~ Episode 10.2 COMPLETE! [Tsuyuki]
