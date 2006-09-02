@@ -4,6 +4,18 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+09/02/06
+	* Merged subdev changes r39:40 into trunk [Proximus]
+		** Updated: Prepped mob database for implementation of the Juperos Quest [Tsuyuki]
+		** Imported: Missing skill quests from eAthena [Tsuyuki]
+			- Bard [Pang Voice], Alchemist [Create Elemental Potion]
+		** Fixed: Cleaned up @job command class names a bit [Tsuyuki]
+		** Added: iRO Job names to @job command [Tsuyuki]
+		** Added: New @commands for @resetstate [Tsuyuki]
+			- @statreset, @statsreset, @resetstat, @resetstats
+		** Added: New @commands for @agitstart & @agitend [Tsuyuki]
+			- @woestart, @startwoe, @woeend, @endwoe
+
 09/01/06
 	* Improved: clif_vendinglist function [Proximus]
 	* Improved: replaced function call (gettick()) by the variable (gettick_cache) -> speeder [Yor]
