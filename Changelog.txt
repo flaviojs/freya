@@ -2,6 +2,9 @@
 Date	Added
 
 09/02/06
+	* Fixed: The Divorce NPC will now charge 2.5 mil zeny until the official Divorce script is implemented [Tsuyuki]
+	 - I can't add the official script just yet, waiting on a script command from Proximus
+	 - Also, it does in fact charge 2.5 mil zeny in the official script as well
 	* Fixed: Summon Slave/Summon Monster for a lot of MvPs/Mini-Bosses [Tsuyuki]
 	 - Added some missing slaves to monsters, and made most slaves accurate to Aegis (New mobs not enough info)
 	 - Changed the current slaves from normal mobs to G_ mobs (no drops/exp)
