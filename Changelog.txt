@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 09/03/06
+	* Fixed: compilation warning with strcmpi (atcommand.c) [Yor]
 	* Added: an option to set idle delay before a party's member losts experience when idle option is set (battle_athena.conf) [Yor]
 	* Fixed: send usage of a GM command with used command (including symbol of GM command, or if it's a synonym GM command) [Yor]
 	* Fixed: on error of a GM command, use used GM command [Yor]

@@ -1117,17 +1117,21 @@ int atcommand_config_read(const char *cfgName) {
 
 // Synonym commands
 		} else if (sscanf(line, "%[^=]=%s", w1, w2) == 2) { // synonym
+			for (i = 0; w1[i]; i++) /* speed up, only 1 lowercase for all loops */
+				w1[i] = tolower((unsigned char)w1[i]); // tolower needs unsigned char
 			/* searching if synonym is not a gm command */
 			for (i = 0; atcommand_info[i].type != AtCommand_Unknown; i++)
-				if (strcmpi(atcommand_info[i].command + 1, w1) == 0) {
+				if (strcmp(atcommand_info[i].command + 1, w1) == 0) {
 					printf("Error in %s file: GM synonym '%s' is not a synonym, but a GM command.\n", cfgName, w1);
 					break;
 				}
 			// if synonym is ok
 			if (atcommand_info[i].type == AtCommand_Unknown) {
+				for (i = 0; w2[i]; i++) /* speed up, only 1 lowercase for all loops */
+					w2[i] = tolower((unsigned char)w2[i]); // tolower needs unsigned char
 				/* searching if gm command exists */
 				for (i = 0; atcommand_info[i].type != AtCommand_Unknown; i++)
-					if (strcmpi(atcommand_info[i].command + 1, w2) == 0) {
+					if (strcmp(atcommand_info[i].command + 1, w2) == 0) {
 						// GM command found, create synonym
 						//printf("new synonym: %s->%s\n", w1, w2);
 						if (synonym_count == 0) {
@@ -4935,7 +4939,7 @@ log_fp = open("help_save.txt", O_WRONLY | O_CREAT | O_APPEND, 0644);
 */
 				// check for synonym here
 				for (i = 0; i < synonym_count; i++) {
-					if (strcmpi(w1 + 1, synonym_table[i].synonym) == 0) {
+					if (strcmp(w1 + 1, synonym_table[i].synonym) == 0) {
 						memset(w1 + 1, 0, sizeof(w1) - 1); // don't change command_symbol (+1)
 						strcpy(w1 + 1, synonym_table[i].command);
 						break;
