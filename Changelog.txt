@@ -2,6 +2,9 @@
 Date	Added
 
 09/02/06
+	* Added: The Juperos quest, correct warps, and some Juperos mob fixes [Tsuyuki]
+	 - The Juperos script is missing a few things which I'll implement in.. a few hours? Or tomorrow
+	 - Its fully functional for players for the time being however
 	* Fixed: The Divorce NPC will now charge 2.5 mil zeny until the official Divorce script is implemented [Tsuyuki]
 	 - I can't add the official script just yet, waiting on a script command from Proximus
 	 - Also, it does in fact charge 2.5 mil zeny in the official script as well
