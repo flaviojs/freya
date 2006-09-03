@@ -142,6 +142,10 @@ static unsigned char sstatus_php_enable;
 static int auth_before_save_file = 0; /* Counter. First save when 1st char-server do connection. */
 #endif /* TXT_ONLY */
 
+/* all variables about char-servers connection security */
+static char *access_char_allow = NULL;
+static int access_char_allownum = 0;
+
 /* all variables about admin */
 static unsigned char admin_state; /* authorize or not connection in admin mode */
 static char admin_pass[25];
@@ -302,7 +306,39 @@ static inline int check_ladminip(unsigned int ip) {
 	sprintf(buf, "%d.%d.%d.%d.", p[0], p[1], p[2], p[3]);
 
 	for(i = 0; i < access_ladmin_allownum; i++) {
-		access_ip = access_ladmin_allow + i * ACO_STRSIZE;
+		access_ip = access_ladmin_allow + (i * ACO_STRSIZE);
+		if (strncmp(access_ip, buf, strlen(access_ip)) == 0 || check_ipmask(ip, access_ip))
+			return 1;
+	}
+
+	return 0;
+}
+
+/*---------------------------------
+  Access control by IP for char-servers
+---------------------------------*/
+static inline int check_charip(unsigned int ip) {
+	int i;
+	unsigned char *p = (unsigned char *)&ip;
+	char buf[17];
+	char * access_ip;
+
+	if (access_char_allownum == 0)
+		return 1; /* When there is no restriction, all IP are authorized. */
+
+/*	+   012.345.: front match form, or
+	    all: all IP are matched, or
+	    012.345.678.901/24: network form (mask with # of bits), or
+	    012.345.678.901/255.255.255.0: network form (mask with ip mask)
+	+   Note about the DNS resolution (like www.ne.jp, etc.):
+	    There is no guarantee to have an answer.
+	    If we have an answer, there is no guarantee to have a 100% correct value.
+	    And, the waiting time (to check) can be long (over 1 minute to a timeout). That can block the software.
+	    So, DNS notation isn't authorized for ip checking.*/
+	sprintf(buf, "%d.%d.%d.%d.", p[0], p[1], p[2], p[3]);
+
+	for(i = 0; i < access_char_allownum; i++) {
+		access_ip = access_char_allow + (i * ACO_STRSIZE);
 		if (strncmp(access_ip, buf, strlen(access_ip)) == 0 || check_ipmask(ip, access_ip))
 			return 1;
 	}
@@ -2074,69 +2110,80 @@ int parse_login(int fd) {
 		case 0x2710:
 			if (RFIFOREST(fd) < 86)
 				return 0;
-		  {
-			char server_name[21]; // 20 + NULL
-#ifdef USE_SQL
-			char t_uid[41]; // 20 * 2 + NULL
-#endif /* USE_SQL */
-			memset(account.userid, 0, sizeof(account.userid));
-			strncpy(account.userid, RFIFOP(fd,2), 24);
-			remove_control_chars(account.userid);
-			memset(account.passwd, 0, sizeof(account.passwd));
-			strncpy(account.passwd, RFIFOP(fd,26), 24);
-			remove_control_chars(account.passwd);
-			account.passwdenc = 0;
-			memset(server_name, 0, sizeof(server_name));
-			strncpy(server_name, RFIFOP(fd,60), 20);
-			remove_control_chars(server_name);
-			write_log("Connection request of the char-server '%s' @ %d.%d.%d.%d:%d (ip: %s)" RETCODE,
-			          server_name, RFIFOB(fd,54), RFIFOB(fd,55), RFIFOB(fd,56), RFIFOB(fd,57), RFIFOW(fd,58), ip);
-			result = mmo_auth(&account, fd);
-			if (result == -1 && account.sex == 2 && account.account_id >= 0 && account.account_id < MAX_SERVERS && server_fd[account.account_id] == -1) {
-				write_log("Connection of the char-server '%s' accepted (account: %s, ip: %s)" RETCODE,
-				          server_name, account.userid, ip);
-				printf("Connection of the char-server '" CL_CYAN "%s" CL_RESET "' (" CL_WHITE "%d.%d.%d.%d:%d" CL_RESET ") accepted.\n",
-				       server_name, RFIFOB(fd,54), RFIFOB(fd,55), RFIFOB(fd,56), RFIFOB(fd,57), RFIFOW(fd,58));
-				memset(&server[account.account_id], 0, sizeof(struct mmo_char_server));
-				server[account.account_id].ip          = RFIFOL(fd,54);
-				server[account.account_id].port        = RFIFOW(fd,58);
-				strncpy(server[account.account_id].name, server_name, 20);
-				server[account.account_id].users       = 0;
-				server[account.account_id].maintenance = RFIFOW(fd,82);
-				server[account.account_id].new         = RFIFOW(fd,84);
-				server_fd[account.account_id]          = fd;
-				server_freezeflag[account.account_id]  = anti_freeze_counter; /* Char anti-freeze system. Counter. 6 ok, 5...0 frozen */
-				WPACKETW(0) = 0x2711;
-				WPACKETB(2) = 0; // 0: accepted, 3: refused
-				SENDPACKET(fd, 3);
-				session[fd]->func_parse = parse_fromchar;
-				realloc_fifo(fd, RFIFOSIZE_SERVER, WFIFOSIZE_SERVER);
-				create_sstatus_files();
-#ifdef USE_SQL
-				// better: use REPLACE, but there is no KEY in the table
-				sql_request("DELETE FROM `sstatus` WHERE `index` = '%d'", account.account_id);
-				mysql_escape_string(t_uid, server[account.account_id].name, strlen(server[account.account_id].name));
-				sql_request("INSERT INTO `sstatus`(`index`, `name`, `user`) VALUES ('%d', '%s', '%d')", account.account_id, t_uid, 0);
-#endif /* USE_SQL */
-			} else {
-				if (server_fd[account.account_id] != -1) {
-					printf("Connection of the char-server '%s' REFUSED - already connected (account: %d-%s, ip: %s)\n",
-					        server_name, account.account_id, account.userid, ip);
-					printf("You must probably wait that the freeze system detects the disconnection.\n");
-					write_log("Connection of the char-server '%s' REFUSED - already connected (account: %d-%s, ip: %s)" RETCODE,
-					          server_name, account.account_id, account.userid, ip);
-					write_log("You must probably wait that the freeze system detects the disconnection." RETCODE);
-				} else {
-					printf("Connection of the char-server '%s' REFUSED (account: %s, ip: %s).\n", server_name, account.userid, ip);
-					write_log("Connection of the char-server '%s' REFUSED (account: %s, ip: %s)" RETCODE, server_name, account.userid, ip);
-				}
+			if (!check_charip(session[fd]->client_addr.sin_addr.s_addr)) {
+				printf("Connection of a char-server REFUSED (char_allow, ip: %s).\n", ip);
+				printf("   Check your login_athena.conf (option: charallowip)\n");
+				printf("   if connection must be authorised.\n");
+				write_log("Connection of a char-server REFUSED (char_allow, ip: %s)" RETCODE, ip);
+				/* send answer */
 				WPACKETW(0) = 0x2711;
 				WPACKETB(2) = 3; // 0: accepted, 3: refused
 				SENDPACKET(fd, 3);
 				/* set eof */
 				session[fd]->eof = 1;
+			} else {
+				char server_name[21]; // 20 + NULL
+#ifdef USE_SQL
+				char t_uid[41]; // 20 * 2 + NULL
+#endif /* USE_SQL */
+				memset(account.userid, 0, sizeof(account.userid));
+				strncpy(account.userid, RFIFOP(fd,2), 24);
+				remove_control_chars(account.userid);
+				memset(account.passwd, 0, sizeof(account.passwd));
+				strncpy(account.passwd, RFIFOP(fd,26), 24);
+				remove_control_chars(account.passwd);
+				account.passwdenc = 0;
+				memset(server_name, 0, sizeof(server_name));
+				strncpy(server_name, RFIFOP(fd,60), 20);
+				remove_control_chars(server_name);
+				write_log("Connection request of the char-server '%s' @ %d.%d.%d.%d:%d (ip: %s)" RETCODE,
+				          server_name, RFIFOB(fd,54), RFIFOB(fd,55), RFIFOB(fd,56), RFIFOB(fd,57), RFIFOW(fd,58), ip);
+				result = mmo_auth(&account, fd);
+				if (result == -1 && account.sex == 2 && account.account_id >= 0 && account.account_id < MAX_SERVERS && server_fd[account.account_id] == -1) {
+					write_log("Connection of the char-server '%s' accepted (account: %s, ip: %s)" RETCODE,
+					          server_name, account.userid, ip);
+					printf("Connection of the char-server '" CL_CYAN "%s" CL_RESET "' (" CL_WHITE "%d.%d.%d.%d:%d" CL_RESET ") accepted.\n",
+					       server_name, RFIFOB(fd,54), RFIFOB(fd,55), RFIFOB(fd,56), RFIFOB(fd,57), RFIFOW(fd,58));
+					memset(&server[account.account_id], 0, sizeof(struct mmo_char_server));
+					server[account.account_id].ip          = RFIFOL(fd,54);
+					server[account.account_id].port        = RFIFOW(fd,58);
+					strncpy(server[account.account_id].name, server_name, 20);
+					server[account.account_id].users       = 0;
+					server[account.account_id].maintenance = RFIFOW(fd,82);
+					server[account.account_id].new         = RFIFOW(fd,84);
+					server_fd[account.account_id]          = fd;
+					server_freezeflag[account.account_id]  = anti_freeze_counter; /* Char anti-freeze system. Counter. 6 ok, 5...0 frozen */
+					WPACKETW(0) = 0x2711;
+					WPACKETB(2) = 0; // 0: accepted, 3: refused
+					SENDPACKET(fd, 3);
+					session[fd]->func_parse = parse_fromchar;
+					realloc_fifo(fd, RFIFOSIZE_SERVER, WFIFOSIZE_SERVER);
+					create_sstatus_files();
+#ifdef USE_SQL
+					// better: use REPLACE, but there is no KEY in the table
+					sql_request("DELETE FROM `sstatus` WHERE `index` = '%d'", account.account_id);
+					mysql_escape_string(t_uid, server[account.account_id].name, strlen(server[account.account_id].name));
+					sql_request("INSERT INTO `sstatus`(`index`, `name`, `user`) VALUES ('%d', '%s', '%d')", account.account_id, t_uid, 0);
+#endif /* USE_SQL */
+				} else {
+					if (server_fd[account.account_id] != -1) {
+						printf("Connection of the char-server '%s' REFUSED - already connected (account: %d-%s, ip: %s)\n",
+						        server_name, account.account_id, account.userid, ip);
+						printf("You must probably wait that the freeze system detects the disconnection.\n");
+						write_log("Connection of the char-server '%s' REFUSED - already connected (account: %d-%s, ip: %s)" RETCODE,
+						          server_name, account.account_id, account.userid, ip);
+						write_log("You must probably wait that the freeze system detects the disconnection." RETCODE);
+					} else {
+						printf("Connection of the char-server '%s' REFUSED (account: %s, ip: %s).\n", server_name, account.userid, ip);
+						write_log("Connection of the char-server '%s' REFUSED (account: %s, ip: %s)" RETCODE, server_name, account.userid, ip);
+					}
+					WPACKETW(0) = 0x2711;
+					WPACKETB(2) = 3; // 0: accepted, 3: refused
+					SENDPACKET(fd, 3);
+					/* set eof */
+					session[fd]->eof = 1;
+				}
 			}
-		  }
 			RFIFOSKIP(fd,86);
 			return 0;
 
@@ -3916,6 +3963,31 @@ static void login_config_read(const char *cfgName) { // not inline, called too o
 					}
 				}
 
+			/* Char-servers connection security */
+			} else if (strcasecmp(w1, "charallowip") == 0) {
+				if (strcasecmp(w2, "clear") == 0) {
+					FREE(access_char_allow);
+					access_char_allownum = 0;
+				} else {
+					if (strcasecmp(w2, "all") == 0) {
+						/* reset all previous values */
+						FREE(access_char_allow);
+						/* set to all */
+						CALLOC(access_char_allow, char, ACO_STRSIZE);
+						access_char_allownum = 1;
+						//access_char_allow[0] = '\0';
+					} else if (w2[0] && !(access_char_allownum == 1 && access_char_allow[0] == '\0')) { /* don't add IP if already 'all' */
+						if (access_char_allow) {
+							REALLOC(access_char_allow, char, (access_char_allownum + 1) * ACO_STRSIZE);
+							memset(access_char_allow + (access_char_allownum * ACO_STRSIZE), 0, sizeof(char) * ACO_STRSIZE);
+						} else {
+							CALLOC(access_char_allow, char, ACO_STRSIZE);
+						}
+						strncpy(access_char_allow + (access_char_allownum++) * ACO_STRSIZE, w2, ACO_STRSIZE - 1); // 32 - NULL
+						access_char_allow[access_char_allownum * ACO_STRSIZE - 1] = '\0';
+					}
+				}
+
 			/* Network security */
 			} else if (strcasecmp(w1, "check_ip_flag") == 0) {
 				check_ip_flag = config_switch(w2);
@@ -3978,6 +4050,7 @@ static void login_config_read(const char *cfgName) { // not inline, called too o
 						access_deny[access_denynum * ACO_STRSIZE - 1] = '\0';
 					}
 				}
+
 			/* dynamic password error ban */
 			} else if (strcasecmp(w1, "dynamic_pass_failure_ban") == 0) {
 				dynamic_pass_failure_ban = config_switch(w2);
@@ -4212,6 +4285,8 @@ static inline void display_conf_warnings(void) {
 				printf(CL_RED "***ERROR: LAN IP of the char-server doesn't belong to the specified Sub-network." CL_RESET "\n");
 		}
 	}
+
+/* Char-servers connection security */
 
 /* Network security */
 	if (access_order == ACO_DENY_ALLOW) {
@@ -4471,6 +4546,15 @@ static inline void save_config_in_log(void) {
 	write_log("- with sub-network of the char-server: %hd.%hd.%hd.%hd." RETCODE, subnet[0], subnet[1], subnet[2], subnet[3]);
 	write_log("- with sub-network mask of the char-server: %hd.%hd.%hd.%hd." RETCODE, subnetmask[0], subnetmask[1], subnetmask[2], subnetmask[3]);
 
+	/* Char-servers connection security */
+	if (access_char_allownum == 0 || (access_char_allownum == 1 && access_char_allow[0] == '\0')) {
+		write_log("- to accept any IP for all char-servers connetions" RETCODE);
+	} else {
+		write_log("- to accept following IP for all char-servers connetions:" RETCODE);
+		for(i = 0; i < access_char_allownum; i++)
+			write_log("  %s" RETCODE, (char *)(access_char_allow + i * ACO_STRSIZE));
+	}
+
 	/* Network security */
 	write_log("* Network security *" RETCODE);
 	if (check_ip_flag)
@@ -4520,6 +4604,7 @@ static inline void save_config_in_log(void) {
 				write_log("    %s" RETCODE, (char *)(access_deny + i * ACO_STRSIZE));
 		}
 	}
+
 	/* dynamic password error ban */
 	if (dynamic_pass_failure_ban == 0)
 		write_log("- with NO dynamic password error ban." RETCODE);
@@ -4686,6 +4771,8 @@ void do_final(void) {
 	access_allownum = 0;
 	FREE(access_deny);
 	access_denynum = 0;
+	FREE(access_char_allow);
+	access_char_allownum = 0;
 	FREE(access_ladmin_allow);
 	access_ladmin_allownum = 0;
 
@@ -4786,6 +4873,10 @@ static inline void init_conf_variables(void) {
 	sstatus_html_enable = 1; /* 0: no, 1 yes, 2: yes with ID of servers */
 	sstatus_php_enable = 0; /* 0: no, 1 yes */
 
+	/* Char-servers connection security */
+	access_char_allow = NULL;
+	access_char_allownum = 0;
+
 	/* Lan support options */
 	memset(lan_char_ip, 0, sizeof(lan_char_ip));
 	strcpy(lan_char_ip, "127.0.0.1");
@@ -4804,6 +4895,7 @@ static inline void init_conf_variables(void) {
 	access_allownum = 0;
 	access_deny = NULL;
 	access_denynum = 0;
+
 	/* dynamic password error ban */
 	dynamic_pass_failure_ban = 1; /* yes */
 	dynamic_pass_failure_ban_time = 60;
@@ -4893,6 +4985,7 @@ void do_init(const int argc, char **argv) {
 	/* must be init here for the atexit function */
 	access_allow = NULL;
 	access_deny = NULL;
+	access_char_allow = NULL;
 	access_ladmin_allow = NULL;
 
 	/* init the ban list */
