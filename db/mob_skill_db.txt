@@ -2298,7 +2298,7 @@
 1621,Venomous@NPC_BlindAttack,attack,177,3,300,1000,1000,no,target,always,0,,,,,,
 1622,Teddy Bear@NPC_CurseAttack,attack,181,3,300,1000,1000,no,target,always,0,,,,,,
 1622,Teddy Bear@CriticalSlash,attack,170,1,300,0,30000,no,target,always,0,,,,,,
-1622,Teddy Bear@NPC_Dispel,attack,289,1,100,300,1000.no,target,always,0,,,,,,
+1622,Teddy Bear@NPC_Dispel,attack,289,1,100,300,1000,no,target,always,0,,,,,,
 1622,Teddy Bear@SelfDestruction,any,173,1,200,0,0,no,self,myhpltmaxrate,80,,,,,,
 1623,RSX-0806@NPC_SummonSlave,any,196,5,100000,2000,3600000,no,self,slavele,0,1624,,,,,
 1623,RSX-0806@NPC_SummonSlave,any,196,5,100000,2000,10000,no,self,slavele,0,1624,,,,,
@@ -2765,9 +2765,9 @@
 1690,G_Spring Rabbit@NPC_GROUNDATTACK,attack,185,1,2000,0,5000,no,target,always,0,,,,,,
 1690,G_Spring Rabbit@NPC_EMOTION,walk,197,1,500,0,5000,no,self,always,0,2,,,,,
 1690,G_Spring Rabbit@NPC_EMOTION,chase,197,1,50,0,30000,no,self,always,0,19,131,,,,
-1691,G_Kraben,attack@NPC_CRITICALSLASH,170,1,500,500,5000,no,target,always,0,,,,,,19
-1691,G_Kraben,attack@NPC_COMBOATTACK,171,1,500,700,5000,no,target,always,0,,,,,,19
-1691,G_Kraben,attack@NPC_STUNATTACK,179,3,500,1500,5000,no,target,always,0,,,,,,06
+1691,G_Kraben@NPC_CRITICALSLASH,attack,170,1,500,500,5000,no,target,always,0,,,,,,19
+1691,G_Kraben@NPC_COMBOATTACK,attack,171,1,500,700,5000,no,target,always,0,,,,,,19
+1691,G_Kraben@NPC_STUNATTACK,attack,179,3,500,1500,5000,no,target,always,0,,,,,,06
 
 // Hugel
 1692,Breeze,attack,161,1,500,2000,60000,no,self,myhpltmaxrate,30,,,,,,09

@@ -4811,13 +4811,13 @@ static int mob_read_randommonster(void)
 static void mob_readskilldb(void)
 {
 	FILE *fp;
-	char line[1024];
+	char line[1024], line2[1024];
 	int i;
 
 	const struct {
 		char str[32];
 		int id;
-	} cond1[] = {
+	} cond1[] = { // don't add a condition if code can not supported it
 		{ "always",            MSC_ALWAYS            },
 		{ "myhpltmaxrate",     MSC_MYHPLTMAXRATE     },
 		{ "friendhpltmaxrate", MSC_FRIENDHPLTMAXRATE },
@@ -4881,6 +4881,7 @@ static void mob_readskilldb(void)
 				printf("can't read %s\n", filename[x]);
 			continue;
 		}
+		memset(line, 0, sizeof(line));
 		while(fgets(line, sizeof(line), fp)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
 			char *sp[20], *p;
 			int mob_id;
@@ -4889,7 +4890,11 @@ static void mob_readskilldb(void)
 
 			if ((line[0] == '/' && line[1] == '/') || line[0] == '\0' || line[0] == '\n' || line[0] == '\r')
 				continue;
-			// it's not necessary to remove 'carriage return ('\n' or '\r')
+			/* remove carriage return if exist */
+			while(line[0] != '\0' && (line[(i = strlen(line) - 1)] == '\n' || line[i] == '\r'))
+				line[i] = '\0';
+
+			strcpy(line2, line); // to display right error
 
 			memset(sp, 0, sizeof(sp));
 			for(i = 0, p = line; i < 18 && p; i++) {
@@ -4917,8 +4922,13 @@ static void mob_readskilldb(void)
 
 			ms->state = atoi(sp[2]);
 			for(j = 0; j < sizeof(state) / sizeof(state[0]); j++) {
-				if (strcmp(sp[2],state[j].str) == 0)
+				if (strcmp(sp[2], state[j].str) == 0) {
 					ms->state = state[j].id;
+					break;
+				}
+			}
+			if (j == sizeof(state) / sizeof(state[0]) && sp[2][0] != '\0' && (sp[2][0] < '0' || sp[2][0] > '9')) {
+				printf("DB (%s): " CL_RED "Unknown state '%s' line:" CL_RESET "\n%s\n", filename[x], sp[2], line2);
 			}
 			ms->skill_id = atoi(sp[3]);
 			j = atoi(sp[4]);
@@ -4933,18 +4943,33 @@ static void mob_readskilldb(void)
 				ms->cancel = 1;
 			ms->target = atoi(sp[9]);
 			for(j = 0; j < sizeof(target) / sizeof(target[0]); j++) {
-				if (strcmp(sp[9], target[j].str) == 0)
+				if (strcmp(sp[9], target[j].str) == 0) {
 					ms->target = target[j].id;
+					break;
+				}
+			}
+			if (j == sizeof(target) / sizeof(target[0]) && sp[9][0] != '\0' && (sp[9][0] < '0' || sp[9][0] > '9')) {
+				printf("DB (%s): " CL_RED "Unknown target '%s' line:" CL_RESET "\n%s\n", filename[x], sp[9], line2);
 			}
 			ms->cond1 = -1;
 			for(j = 0; j < sizeof(cond1) / sizeof(cond1[0]); j++) {
-				if (strcmp(sp[10],cond1[j].str) == 0)
+				if (strcmp(sp[10], cond1[j].str) == 0) {
 					ms->cond1 = cond1[j].id;
+					break;
+				}
+			}
+			if (j == sizeof(cond1) / sizeof(cond1[0]) && sp[10][0] != '\0' && (sp[10][0] < '0' || sp[10][0] > '9')) {
+				printf("DB (%s): " CL_RED "Unknown condition 1 '%s' line:" CL_RESET "\n%s\n", filename[x], sp[10], line2);
 			}
 			ms->cond2 = atoi(sp[11]);
 			for(j = 0; j < sizeof(cond2) / sizeof(cond2[0]); j++) {
-				if (strcmp(sp[11],cond2[j].str) == 0)
+				if (strcmp(sp[11], cond2[j].str) == 0) {
 					ms->cond2 = cond2[j].id;
+					break;
+				}
+			}
+			if (j == sizeof(cond2) / sizeof(cond2[0]) && sp[11][0] != '\0' && (sp[11][0] < '0' || sp[11][0] > '9')) {
+				printf("DB (%s): " CL_RED "Unknown condition 2 '%s' line:" CL_RESET "\n%s\n", filename[x], sp[11], line2);
 			}
 			ms->val[0] = atoi(sp[12]);
 			ms->val[1] = atoi(sp[13]);
@@ -4956,6 +4981,8 @@ static void mob_readskilldb(void)
 			else
 				ms->emotion = -1;
 			mob_db[mob_id].maxskill = i + 1;
+
+			memset(line, 0, sizeof(line));
 		}
 		fclose(fp);
 		printf("DB '" CL_WHITE "%s" CL_RESET "' readed.\n", filename[x]);
