@@ -2,6 +2,8 @@
 Date	Added
 
 09/02/06
+	* Removed: Bonus Def/Mdef +1 on Amon Ra Card (Not present in Aegis database) [Tsuyuki]
+	* Fixed: Incubus + Succubus card set not working properly [Tsuyuki]
 	* Added: The Juperos quest, correct warps, and some Juperos mob fixes [Tsuyuki]
 	 - The Juperos script is missing a few things which I'll implement in.. a few hours? Or tomorrow
 	 - Its fully functional for players for the time being however
