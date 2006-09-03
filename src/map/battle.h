@@ -375,6 +375,7 @@ extern struct Battle_Config {
 	unsigned short finding_ore_rate;
 	unsigned short min_skill_delay_limit;
 	unsigned short idle_no_share; // exp share in party
+	int idle_delay_no_share; // exp share in party
 	unsigned short chat_no_share; // exp share in party
 	unsigned short npc_chat_no_share; // exp share in party
 	unsigned short shop_no_share; // exp share in party

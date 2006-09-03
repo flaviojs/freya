@@ -715,7 +715,7 @@ void party_exp_share(struct party *p, short map_id, int base_exp, int job_exp, i
 	for(i = 0; i < MAX_PARTY; i++) {
 		// note: Characters that die during battle will not receive any experience distributed.
 		if ((sd = p->member[i].sd) != NULL && sd->fd > 0 && session[sd->fd] != NULL && !pc_isdead(sd) && sd->bl.m == map_id) {
-			if (battle_config.idle_no_share == 2 && (sd->idletime < (gettick_cache - 2 * 60 * 1000))) // 2 minutes idle
+			if (battle_config.idle_no_share == 2 && (sd->idletime < (gettick_cache - battle_config.idle_delay_no_share))) // 2 minutes idle by default
 				continue;
 			if (battle_config.chat_no_share == 2 && sd->chatID)
 				continue;
@@ -752,7 +752,7 @@ void party_exp_share(struct party *p, short map_id, int base_exp, int job_exp, i
 
 	for(i = 0; i < c; i++) {
 		sd = sdlist[i];
-		if (battle_config.idle_no_share == 1 && (sd->idletime < (gettick_cache - 2 * 60 * 1000))) // 2 minutes idle
+		if (battle_config.idle_no_share == 1 && (sd->idletime < (gettick_cache - battle_config.idle_delay_no_share))) // 2 minutes idle by default
 			continue;
 		if (battle_config.chat_no_share == 1 && sd->chatID)
 			continue;

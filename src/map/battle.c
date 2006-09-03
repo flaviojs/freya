@@ -3621,6 +3621,7 @@ static const struct battle_config_int {
 	{ "day_duration",                               &battle_config.day_duration }, // added by [Yor]
 	{ "night_duration",                             &battle_config.night_duration }, // added by [Yor]
 	{ "check_maximum_skill_points",                 &battle_config.check_maximum_skill_points },
+	{ "idle_delay_no_share",                        &battle_config.idle_delay_no_share}, // [Yor]
 	{ "ban_hack_trade",                             &battle_config.ban_hack_trade }, // added by [Yor]
 	{ "ban_bot",                                    &battle_config.ban_bot }, // added by [Yor]
 };
@@ -3924,6 +3925,7 @@ void battle_set_defaults() {
 	battle_config.finding_ore_rate = 100;
 	battle_config.min_skill_delay_limit = 150;
 	battle_config.idle_no_share = 0; // [Yor]
+	battle_config.idle_delay_no_share = 120000; // [Yor] (2 minutes)
 	battle_config.chat_no_share = 0; // [Yor]
 	battle_config.npc_chat_no_share = 1; // [Yor]
 	battle_config.shop_no_share = 1; // [Yor]
@@ -4224,6 +4226,8 @@ void battle_validate_conf() {
 		battle_config.idle_no_share = 0;
 	else if (battle_config.idle_no_share > 2)
 		battle_config.idle_no_share = 2;
+	if (battle_config.idle_delay_no_share < 15000)
+		battle_config.idle_delay_no_share = 15000;
 	if (battle_config.chat_no_share < 1)
 		battle_config.chat_no_share = 0;
 	else if (battle_config.chat_no_share > 2)
