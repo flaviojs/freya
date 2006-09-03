@@ -1086,6 +1086,7 @@ int atcommand_config_read(const char *cfgName) {
 				if (!iscntrl((int)w2[0]) && // w2[0] > 31 &&
 				    w2[0] != '/' && // symbol of standard ragnarok GM commands
 				    w2[0] != '%' && // symbol of party chat speaking
+				    w2[0] != '$' && // symbol of guild chat speaking
 				    w2[0] != char_command_symbol && // symbol of 'remote' GM commands
 				    w2[0] != main_channel_symbol) // symbol of the Main channel
 					command_symbol = w2[0];
@@ -1093,6 +1094,7 @@ int atcommand_config_read(const char *cfgName) {
 				if (!iscntrl((int)w2[0]) && // w2[0] > 31 &&
 				    w2[0] != '/' && // symbol of standard ragnarok GM commands
 				    w2[0] != '%' && // symbol of party chat speaking
+				    w2[0] != '$' && // symbol of guild chat speaking
 				    w2[0] != command_symbol && // symbol of 'normal' GM commands
 				    w2[0] != main_channel_symbol) // symbol of the Main channel
 					char_command_symbol = w2[0];
@@ -1100,6 +1102,7 @@ int atcommand_config_read(const char *cfgName) {
 				if (!iscntrl((int)w2[0]) && // w2[0] > 31 &&
 				    w2[0] != '/' && // symbol of standard ragnarok GM commands
 				    w2[0] != '%' && // symbol of party chat speaking
+				    w2[0] != '$' && // symbol of guild chat speaking
 				    w2[0] != command_symbol && // symbol of 'normal' GM commands
 				    w2[0] != char_command_symbol) // symbol of 'remote' GM commands
 					main_channel_symbol = w2[0];
@@ -3173,7 +3176,7 @@ ATCOMMAND_FUNC(speed) {
 	sscanf(message, "%d", &speed);
 
 	if (speed != 0 && (speed < MIN_WALK_SPEED || speed > MAX_WALK_SPEED)) {
-		send_usage(fd, "Please, enter a valid speed value (usage:%s 0(restore normal speed)|@speed <%d-%d>).", original_command, MIN_WALK_SPEED, MAX_WALK_SPEED);
+		send_usage(fd, "Please, enter a valid speed value (usage:%s 0(restore normal speed)|%s <%d-%d>).", original_command, original_command, MIN_WALK_SPEED, MAX_WALK_SPEED);
 		return -1;
 	}
 
@@ -4844,6 +4847,53 @@ ATCOMMAND_FUNC(joblevelup) {
 }
 
 /*==========================================
+ * replace all @ from help.txt to command_symbol before display
+ *------------------------------------------
+ */
+void change_arrobas_to_symbol(char* line) {
+	char * p;
+	char buf[256];
+	int i;
+
+	if (command_symbol == '@')
+		return;
+
+	p = line;
+	while ((p = strchr(p, '@')) != NULL) {
+		memcpy(buf, p + 1, 4);
+		buf[4] = 0;
+		// search for @char (a lot of gm commands begins with @char)
+		if (strcasecmp(buf, "char") == 0) { // strncmpi will be better, but doesn't work under win32 (bcc32 don't recognize strncasecmp)
+			*p = command_symbol;
+		} else {
+			// search for synonyms commands
+			for (i = 0; i < synonym_count; i++) {
+				memcpy(buf, p + 1, strlen(synonym_table[i].synonym));
+				buf[strlen(synonym_table[i].synonym)] = 0;
+				if (strcasecmp(buf, synonym_table[i].synonym) == 0) { // strncmpi will be better, but doesn't work under win32 (bcc32 don't recognize strncasecmp)
+					*p = command_symbol;
+					break;
+				}
+			}
+			if (i == synonym_count) {
+				// search for normal commands
+				for (i = 0; atcommand_info[i].type != AtCommand_Unknown; i++) {
+					memcpy(buf, p + 1, strlen(atcommand_info[i].command + 1));
+					buf[strlen(atcommand_info[i].command + 1)] = 0;
+					if (strcasecmp(buf, atcommand_info[i].command + 1) == 0) { // strncmpi will be better, but doesn't work under win32 (bcc32 don't recognize strncasecmp)
+						*p = command_symbol;
+						break;
+					}
+				}
+			}
+		}
+		p++;
+	}
+
+	return;
+}
+
+/*==========================================
  *
  *------------------------------------------
  */
@@ -5014,6 +5064,7 @@ if (log_fp != -1) {
 			clif_displaymessage(fd, buf);
 		}
 		for(i = first_line; i < last_line; i++) {
+			change_arrobas_to_symbol(cmd_line[i]);
 			clif_displaymessage(fd, cmd_line[i]);
 		}
 
@@ -5024,8 +5075,10 @@ if (log_fp != -1) {
 			if (strncmp(key, "key", 3) != 0) {
 				sprintf(buf, "----- Help commands keys (key: %s) - key not found!", key);
 				clif_displaymessage(fd, buf);
-			} else
-				clif_displaymessage(fd, "----- Help command keys (@help <key_word>):");
+			} else {
+				sprintf(buf, "----- Help command keys (%s <key_word>):", original_command);
+				clif_displaymessage(fd, buf);
+			}
 			memset(cmd_line, 0, sizeof(cmd_line)); // so save all keywords and not repeat them
 			counter = 0;
 			for(i = 0; i < counter_keys; i++) {
@@ -5047,8 +5100,10 @@ if (log_fp != -1) {
 			if (counter == 0)
 				clif_displaymessage(fd, "There is no keyword in the help file.");
 			else {
-				for(i = 0; i < counter; i++)
+				for(i = 0; i < counter; i++) {
+					change_arrobas_to_symbol(cmd_line[i]);
 					clif_displaymessage(fd, cmd_line[i]);
+				}
 			}
 		// if key found
 		} else {
@@ -5064,8 +5119,10 @@ if (log_fp != -1) {
 							last_line = counter;
 					} else
 						last_line = counter;
-					for(i = first_line; i < last_line; i++)
+					for(i = first_line; i < last_line; i++) {
+						change_arrobas_to_symbol(cmd_line[i]);
 						clif_displaymessage(fd, cmd_line[i]);
+					}
 					if (last_line == counter)
 						break;
 				}
@@ -7067,7 +7124,7 @@ ATCOMMAND_FUNC(produce) {
 		}
 	} else {
 		if (battle_config.error_log)
-			printf("@produce NOT WEAPON [%d]\n", item_id);
+			printf("%s NOT WEAPON [%d]\n", original_command, item_id);
 		if (item_id != 0 && itemdb_exists(item_id)) {
 			sprintf(atcmd_output, msg_txt(169), item_id, item_data->name); // This item (%d: '%s') is not an equipment.
 			clif_displaymessage(fd, atcmd_output);
@@ -13157,7 +13214,7 @@ ATCOMMAND_FUNC(follow) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id> or @follow off).", original_command);
+		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id> or %s off).", original_command, original_command);
 		return -1;
 	}
 

@@ -192,7 +192,7 @@ key:gm,state,other,me,moi,autre
 @questskill        :  147 = Arrow Creation   Acolyte                    152 = Stone Throw    Magician
 @questskill        :  148 = Charge Arrows    156 = Holy Light                                157 = Energy Coat
 @skillid           :@skillid <nom_de_compétence> - Recherche l'id d'une compétence par son nom.
-@email             :@email <email@actuelle> <nouvelle@email> - Change votre e-mail (protection contre la suppression des personnages).
+@email             :@email <e-mail@actuelle> <nouvelle@e-mail> - Change votre e-mail (protection contre la suppression des personnages).
 @password          :@password <ancien_mot_de_passe> <nouveau_mot_de_passe> - Change définitivement le mot de passe de votre compte par le nouveau mot de passe.
 key:monster,monstre,spawn,summon,deadbranch,dead_branch
                  40: 

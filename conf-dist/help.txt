@@ -192,7 +192,7 @@ key:gm,state,other,me
 @questskill        :  147 = Arrow Creation   Acolyte                    152 = Stone Throw    Magician
 @questskill        :  148 = Charge Arrows    156 = Holy Light                                157 = Energy Coat
 @skillid           :@skillid <skill_name> - Looks up a skill by name.
-@email             :@email <actual@email> <new@email> - Changes your e-mail (characters deletion protection).
+@email             :@email <actual@e-mail> <new@e-mail> - Changes your e-mail (characters deletion protection).
 @password          :@password <old_password> <new_password> - Permanently change your account password to the given one.
 key:monster,monstre,spawn,summon,deadbranch,dead_branch
                  40: 
