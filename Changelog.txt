@@ -2,6 +2,9 @@
 Date	Added
 
 09/02/06
+	* Removed: Custom Divorce script from the Wedding.txt file [Tsuyuki]
+	* Added: Official Divorce script (converted from Aegis) [Thanks to LightFighter] [Tsuyuki]
+	* Imported: Updated Niflheim warps from eAthena [Tsuyuki]
 	* Removed: Bonus Def/Mdef +1 on Amon Ra Card (Not present in Aegis database) [Tsuyuki]
 	* Fixed: Incubus + Succubus card set not working properly [Tsuyuki]
 	* Added: The Juperos quest, correct warps, and some Juperos mob fixes [Tsuyuki]
