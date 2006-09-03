@@ -2,6 +2,7 @@
 Date	Added
 
 09/03/06
+	* Imported: Converted Zealotus Mask quest to Freya's script engine from eAthena [Thanks to Kirimoru] [Tsuyuki]
 	* Removed: Custom Divorce script from the Wedding.txt file [Tsuyuki]
 	* Added: Official Divorce script (converted from Aegis) [Thanks to LightFighter] [Tsuyuki]
 	* Imported: Updated Niflheim warps from eAthena [Tsuyuki]
