@@ -101,7 +101,12 @@ FILE *log_fp = NULL;
 
 int log_char = 1; // loggin char or not
 
-//Added for lan support
+// Maps-servers connection security
+#define ACO_STRSIZE 32 // max normal value: 255.255.255.255/255.255.255.255 + NULL, so 15 + 1 + 15 + 1 = 32
+static int access_map_allownum = 0;
+static char *access_map_allow = NULL;
+
+// Added for lan support
 char lan_map_ip[128];
 int subnet[4];
 int subnetmask[4];
@@ -4215,6 +4220,69 @@ int search_mapserver(char *map) {
 	return -1;
 }
 
+//--------------------------------------------------------------
+// Test of the IP mask
+// (ip: IP to be tested, str: mask x.x.x.x/# or x.x.x.x/y.y.y.y)
+//--------------------------------------------------------------
+static inline int check_ipmask(unsigned int ip, const char *str) {
+	int i = 0;
+	unsigned int mask = 0, m, ip2;
+	unsigned short a0, a1, a2, a3;
+	unsigned char *p = (unsigned char *)&ip2, *p2 = (unsigned char *)&mask;
+
+	if (sscanf(str, "%hu.%hu.%hu.%hu/%n", &a0, &a1, &a2, &a3, &i) != 4 || i == 0 ||
+	    a0 > 255 || a1 > 255 || a2 > 255 || a3 > 255)
+		return 0;
+	p[0] = a0; p[1] = a1; p[2] = a2; p[3] = a3;
+
+	if (sscanf(str + i, "%hu.%hu.%hu.%hu", &a0, &a1, &a2, &a3) == 4 &&
+	    a0 <= 255 && a1 <= 255 && a2 <= 255 && a3 <= 255) {
+		p2[0] = a0; p2[1] = a1; p2[2] = a2; p2[3] = a3;
+		mask = ntohl(mask);
+	} else if (sscanf(str + i, "%u", &m) == 1 && m <= 32) { // m unsigned, not need to check m >= 0
+		for(i = 0; i < m; i++)
+			mask = (mask >> 1) | 0x80000000;
+	} else {
+		printf("check_ipmask: invalid mask [%s].\n", str);
+		return 0;
+	}
+
+/*	printf("Tested IP: %08x, network: %08x, network mask: %08x\n", (unsigned int)ntohl(ip), (unsigned int)ntohl(ip2), mask); */
+	return ((ntohl(ip) & mask) == (ntohl(ip2) & mask));
+}
+
+//-------------------------------------
+// Access control by IP for map-servers
+//-------------------------------------
+static inline int check_mapip(unsigned int ip) {
+	int i;
+	unsigned char *p = (unsigned char *)&ip;
+	char buf[17];
+	char * access_ip;
+
+	if (access_map_allownum == 0)
+		return 1; /* When there is no restriction, all IP are authorized. */
+
+/*	+   012.345.: front match form, or
+	    all: all IP are matched, or
+	    012.345.678.901/24: network form (mask with # of bits), or
+	    012.345.678.901/255.255.255.0: network form (mask with ip mask)
+	+   Note about the DNS resolution (like www.ne.jp, etc.):
+	    There is no guarantee to have an answer.
+	    If we have an answer, there is no guarantee to have a 100% correct value.
+	    And, the waiting time (to check) can be long (over 1 minute to a timeout). That can block the software.
+	    So, DNS notation isn't authorized for ip checking.*/
+	sprintf(buf, "%d.%d.%d.%d.", p[0], p[1], p[2], p[3]);
+
+	for(i = 0; i < access_map_allownum; i++) {
+		access_ip = access_map_allow + (i * ACO_STRSIZE);
+		if (strncmp(access_ip, buf, strlen(access_ip)) == 0 || check_ipmask(ip, access_ip))
+			return 1;
+	}
+
+	return 0;
+}
+
 //-----------------------------------------------------
 // Test to know if an IP come from LAN or WAN. by [Yor]
 //-----------------------------------------------------
@@ -4237,6 +4305,9 @@ int lan_ip_check(unsigned char *p) {
 	return lancheck;
 }
 
+//-----------------------------------------------------
+// Main parse function
+//-----------------------------------------------------
 int parse_char(int fd) {
 	int i, ch;
 	char email[41]; // 40 + NULL
@@ -4811,10 +4882,11 @@ int parse_char(int fd) {
 		case 0x2af8: // login as map-server
 			if (RFIFOREST(fd) < 56)
 				return 0;
-			for(i = 0; i < MAX_MAP_SERVERS; i++)
-				if (server_fd[i] < 0)
-					break;
-			if (i == MAX_MAP_SERVERS || strncmp(RFIFOP(fd,2), userid, 24) || memcmp(RFIFOP(fd,26), passwd, 24)) {
+			if (!check_mapip(session[fd]->client_addr.sin_addr.s_addr)) {
+				unsigned char *p = (unsigned char *) &session[fd]->client_addr.sin_addr;
+				printf("Connection of a map-server REFUSED (map_allow, ip: %d.%d.%d.%d).\n", p[0], p[1], p[2], p[3]);
+				printf("   Check your login_athena.conf (option: mapallowip)\n");
+				printf("   if connection must be authorised.\n");
 				WPACKETW(0) = 0x2af9;
 				WPACKETB(2) = 3;
 				SENDPACKET(fd, 3);
@@ -4822,41 +4894,53 @@ int parse_char(int fd) {
 				session[fd]->eof = 1;
 				RFIFOSKIP(fd,56);
 			} else {
-				int len;
-				WPACKETW(0) = 0x2af9;
-				WPACKETB(2) = 0;
-				SENDPACKET(fd, 3);
-				session[fd]->func_parse = parse_frommap;
-				server_fd[i] = fd;
-				server_freezeflag[i] = anti_freeze_counter; // Map anti-freeze system. Counter. 6 ok, 5...0 frozen
-				server[i].ip = RFIFOL(fd,50);
-				server[i].port = RFIFOW(fd,54);
-				server[i].users = 0;
-				printf("User count: 0 (server: %d)\n", i);
-				FREE(server[i].map);
-				server[i].map_num = 0; // MAX_MAP_PER_SERVER
-				RFIFOSKIP(fd,56);
-				realloc_fifo(fd, RFIFOSIZE_SERVER, WFIFOSIZE_SERVER);
-				inter_mapif_init(fd);
-				// send gm acccounts level to map-servers
-				len = 4;
-				WPACKETW(0) = 0x2b15;
-				for(i = 0; i < GM_num && len < 32760; i++) { // max size of packet = 32767
-					WPACKETL(len    ) = gm_account[i].account_id;
-					WPACKETB(len + 4) = gm_account[i].level;
-					len += 5;
+				for(i = 0; i < MAX_MAP_SERVERS; i++)
+					if (server_fd[i] < 0)
+						break;
+				if (i == MAX_MAP_SERVERS || strncmp(RFIFOP(fd,2), userid, 24) || memcmp(RFIFOP(fd,26), passwd, 24)) {
+					WPACKETW(0) = 0x2af9;
+					WPACKETB(2) = 3;
+					SENDPACKET(fd, 3);
+					/* set eof */
+					session[fd]->eof = 1;
+					RFIFOSKIP(fd,56);
+				} else {
+					int len;
+					WPACKETW(0) = 0x2af9;
+					WPACKETB(2) = 0;
+					SENDPACKET(fd, 3);
+					session[fd]->func_parse = parse_frommap;
+					server_fd[i] = fd;
+					server_freezeflag[i] = anti_freeze_counter; // Map anti-freeze system. Counter. 6 ok, 5...0 frozen
+					server[i].ip = RFIFOL(fd,50);
+					server[i].port = RFIFOW(fd,54);
+					server[i].users = 0;
+					printf("User count: 0 (server: %d)\n", i);
+					FREE(server[i].map);
+					server[i].map_num = 0; // MAX_MAP_PER_SERVER
+					RFIFOSKIP(fd,56);
+					realloc_fifo(fd, RFIFOSIZE_SERVER, WFIFOSIZE_SERVER);
+					inter_mapif_init(fd);
+					// send gm acccounts level to map-servers
+					len = 4;
+					WPACKETW(0) = 0x2b15;
+					for(i = 0; i < GM_num && len < 32760; i++) { // max size of packet = 32767
+						WPACKETL(len    ) = gm_account[i].account_id;
+						WPACKETB(len + 4) = gm_account[i].level;
+						len += 5;
+					}
+					WPACKETW(2) = len;
+					SENDPACKET(fd, len);
+					// continue with one to one packet if quantity is too important
+					while(i < GM_num) {
+						WPACKETW(0) = 0x2b1f; // 0x2b1f <account_id>.L <GM_Level>.B
+						WPACKETL(2) = gm_account[i].account_id;
+						WPACKETB(6) = gm_account[i].level;
+						SENDPACKET(fd, 7);
+						i++;
+					}
+					return 0;
 				}
-				WPACKETW(2) = len;
-				SENDPACKET(fd, len);
-				// continue with one to one packet if quantity is too important
-				while(i < GM_num) {
-					WPACKETW(0) = 0x2b1f; // 0x2b1f <account_id>.L <GM_Level>.B
-					WPACKETL(2) = gm_account[i].account_id;
-					WPACKETB(6) = gm_account[i].level;
-					SENDPACKET(fd, 7);
-					i++;
-				}
-				return 0;
 			}
 			break;
 
@@ -5114,67 +5198,67 @@ void sql_config_read(const char *cfgName) {
 
 		if (strcasecmp(w1, "char_db") == 0) {
 			memset(char_db, 0, sizeof(char_db));
-			strcpy(char_db, w2);
+			strncpy(char_db, w2, sizeof(char_db) - 1);
 		} else if (strcasecmp(w1, "cart_db") == 0) {
 			memset(cart_db, 0, sizeof(cart_db));
-			strcpy(cart_db, w2);
+			strncpy(cart_db, w2, sizeof(cart_db) - 1);
 		} else if (strcasecmp(w1, "inventory_db") == 0) {
 			memset(inventory_db, 0, sizeof(inventory_db));
-			strcpy(inventory_db, w2);
+			strncpy(inventory_db, w2, sizeof(inventory_db) - 1);
 		} else if (strcasecmp(w1, "charlog_db") == 0) {
 			memset(charlog_db, 0, sizeof(charlog_db));
-			strcpy(charlog_db, w2);
+			strncpy(charlog_db, w2, sizeof(charlog_db) - 1);
 		} else if (strcasecmp(w1, "storage_db") == 0) {
 			memset(storage_db, 0, sizeof(storage_db));
-			strcpy(storage_db, w2);
+			strncpy(storage_db, w2, sizeof(storage_db) - 1);
 		} else if (strcasecmp(w1, "reg_db") == 0) {
 			memset(global_reg_value, 0, sizeof(global_reg_value));
-			strcpy(global_reg_value, w2);
+			strncpy(global_reg_value, w2, sizeof(global_reg_value) - 1);
 		} else if (strcasecmp(w1, "skill_db") == 0) {
 			memset(skill_db, 0, sizeof(skill_db));
-			strcpy(skill_db, w2);
+			strncpy(skill_db, w2, sizeof(skill_db) - 1);
 		} else if (strcasecmp(w1, "interlog_db") == 0) {
 			memset(interlog_db, 0, sizeof(interlog_db));
-			strcpy(interlog_db, w2);
+			strncpy(interlog_db, w2, sizeof(interlog_db) - 1);
 		} else if (strcasecmp(w1, "memo_db") == 0) {
 			memset(memo_db, 0, sizeof(memo_db));
-			strcpy(memo_db, w2);
+			strncpy(memo_db, w2, sizeof(memo_db) - 1);
 		} else if (strcasecmp(w1, "guild_db") == 0) {
 			memset(guild_db, 0, sizeof(guild_db));
-			strcpy(guild_db, w2);
+			strncpy(guild_db, w2, sizeof(guild_db) - 1);
 		} else if (strcasecmp(w1, "guild_alliance_db") == 0) {
 			memset(guild_alliance_db, 0, sizeof(guild_alliance_db));
-			strcpy(guild_alliance_db, w2);
+			strncpy(guild_alliance_db, w2, sizeof(guild_alliance_db) - 1);
 		} else if (strcasecmp(w1, "guild_castle_db") == 0) {
 			memset(guild_castle_db, 0, sizeof(guild_castle_db));
-			strcpy(guild_castle_db, w2);
+			strncpy(guild_castle_db, w2, sizeof(guild_castle_db) - 1);
 		} else if (strcasecmp(w1, "guild_expulsion_db") == 0) {
 			memset(guild_expulsion_db, 0, sizeof(guild_expulsion_db));
-			strcpy(guild_expulsion_db, w2);
+			strncpy(guild_expulsion_db, w2, sizeof(guild_expulsion_db) - 1);
 		} else if (strcasecmp(w1, "guild_member_db") == 0) {
 			memset(guild_member_db, 0, sizeof(guild_member_db));
-			strcpy(guild_member_db, w2);
+			strncpy(guild_member_db, w2, sizeof(guild_member_db) - 1);
 		} else if (strcasecmp(w1, "guild_skill_db") == 0) {
 			memset(guild_skill_db, 0, sizeof(guild_skill_db));
-			strcpy(guild_skill_db, w2);
+			strncpy(guild_skill_db, w2, sizeof(guild_skill_db) - 1);
 		} else if (strcasecmp(w1, "guild_position_db") == 0) {
 			memset(guild_position_db, 0, sizeof(guild_position_db));
-			strcpy(guild_position_db, w2);
+			strncpy(guild_position_db, w2, sizeof(guild_position_db) - 1);
 		} else if (strcasecmp(w1, "guild_storage_db") == 0) {
 			memset(guild_storage_db, 0, sizeof(guild_storage_db));
-			strcpy(guild_storage_db, w2);
+			strncpy(guild_storage_db, w2, sizeof(guild_storage_db) - 1);
 		} else if (strcasecmp(w1, "party_db") == 0) {
 			memset(party_db, 0, sizeof(party_db));
-			strcpy(party_db, w2);
+			strncpy(party_db, w2, sizeof(party_db) - 1);
 		} else if (strcasecmp(w1, "pet_db") == 0) {
 			memset(pet_db, 0, sizeof(pet_db));
-			strcpy(pet_db, w2);
+			strncpy(pet_db, w2, sizeof(pet_db) - 1);
 		} else if(strcasecmp(w1, "statuschange_db") == 0) {
 			memset(statuschange_db, 0, sizeof(statuschange_db));
-			strcpy(statuschange_db, w2);
+			strncpy(statuschange_db, w2, sizeof(statuschange_db) - 1);
 		} else if (strcasecmp(w1, "rank_db") == 0) {
 			memset(rank_db, 0, sizeof(rank_db));
-			strcpy(rank_db, w2);
+			strncpy(rank_db, w2, sizeof(rank_db) - 1);
 // import
 		} else if (strcasecmp(w1, "import") == 0) {
 			printf("sql_config_read: Import file: %s.\n", w2);
@@ -5420,6 +5504,31 @@ static void char_config_read(const char *cfgName) { // not inline, called too of
 			memset(console_pass, 0, sizeof(console_pass));
 			strncpy(console_pass, w2, sizeof(console_pass) - 1);
 
+/* Maps-servers connection security */
+		} else if (strcasecmp(w1, "mapallowip") == 0) {
+			if (strcasecmp(w2, "clear") == 0) {
+				FREE(access_map_allow);
+				access_map_allownum = 0;
+			} else {
+				if (strcasecmp(w2, "all") == 0) {
+					/* reset all previous values */
+					FREE(access_map_allow);
+					/* set to all */
+					CALLOC(access_map_allow, char, ACO_STRSIZE);
+					access_map_allownum = 1;
+					//access_map_allow[0] = '\0';
+				} else if (w2[0] && !(access_map_allownum == 1 && access_map_allow[0] == '\0')) { /* don't add IP if already 'all' */
+					if (access_map_allow) {
+						REALLOC(access_map_allow, char, (access_map_allownum + 1) * ACO_STRSIZE);
+						memset(access_map_allow + (access_map_allownum * ACO_STRSIZE), 0, sizeof(char) * ACO_STRSIZE);
+					} else {
+						CALLOC(access_map_allow, char, ACO_STRSIZE);
+					}
+					strncpy(access_map_allow + (access_map_allownum++) * ACO_STRSIZE, w2, ACO_STRSIZE - 1); // 32 - NULL
+					access_map_allow[access_map_allownum * ACO_STRSIZE - 1] = '\0';
+				}
+			}
+
 /* lan options */
 		} else if (strcasecmp(w1, "lan_map_ip") == 0) { // Read map-server Lan IP Address
 			memset(lan_map_ip, 0, sizeof(lan_map_ip));
@@ -5562,6 +5671,10 @@ void do_final(void) {
 		FREE(server[i].map);
 		server[i].map_num = 0; // MAX_MAP_PER_SERVER
 	}
+
+	// Maps-servers connection security
+	FREE(access_map_allow);
+	access_map_allownum = 0;
 
 	/* restore console parameters */
 	term_input_disable();

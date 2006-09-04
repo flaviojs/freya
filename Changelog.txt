@@ -4,6 +4,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+09/04/06
+	* Fixed: possible overflow when reading SQL configuration in Char-server [Yor]
+	* Added: Security based on IP for all map-servers connections with the char-server -> not more possible to connect an unknown map-server (hacker) [Yor]
+
 09/03/06
 	* Fixed: some skills of some monsters in database [Yor]
 	* Added: A check display about mob_skill_db.txt to help coders of DataBases [Yor]

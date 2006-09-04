@@ -29,7 +29,7 @@ enum {
 int memitemdata_to_sql(struct item *itemlist, int list_id, int tableswitch);
 #endif /* USE_SQL */
 
-int search_character_index(char* character_name); // return -1 if not found, index in char_dat[] if found
+int char_nick2idx(char* character_name); // return -1 if not found, index in char_dat[] if found
 
 unsigned char mapif_sendall(unsigned int len);
 unsigned char mapif_sendallwos(int fd, unsigned int len);
@@ -38,26 +38,28 @@ void mapif_send(int fd, unsigned int len);
 void char_log(char *fmt, ...);
 
 #ifdef USE_SQL
-extern char char_db[1024];
-extern char cart_db[1024];
-extern char inventory_db[1024];
-extern char charlog_db[1024];
-extern char storage_db[1024];
-extern char interlog_db[1024];
-extern char global_reg_value[1024];
-extern char skill_db[1024];
-extern char memo_db[1024];
-extern char guild_db[1024];
-extern char guild_alliance_db[1024];
-extern char guild_castle_db[1024];
-extern char guild_expulsion_db[1024];
-extern char guild_member_db[1024];
-extern char guild_position_db[1024];
-extern char guild_skill_db[1024];
-extern char guild_storage_db[1024];
-extern char party_db[1024];
-extern char pet_db[1024];
-extern char friends_db[1024];
+extern char char_db[256];
+extern char cart_db[256];
+extern char inventory_db[256];
+extern char charlog_db[256];
+extern char storage_db[256];
+extern char interlog_db[256];
+extern char global_reg_value[256];
+extern char skill_db[256];
+extern char memo_db[256];
+extern char guild_db[256];
+extern char guild_alliance_db[256];
+extern char guild_castle_db[256];
+extern char guild_expulsion_db[256];
+extern char guild_member_db[256];
+extern char guild_position_db[256];
+extern char guild_skill_db[256];
+extern char guild_storage_db[256];
+extern char party_db[256];
+extern char pet_db[256];
+extern char friends_db[256];
+extern char statuschange_db[256];
+extern char rank_db[256];
 #endif /* USE_SQL */
 
 #endif // _CHAR_H_

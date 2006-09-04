@@ -312,6 +312,7 @@ static void inter_config_read(const char *cfgName) { // not inline, called too o
 			map_is_alone = config_switch(w2);
 			if (map_is_alone != 0)
 				map_is_alone = 1;
+
 		} else if (strcasecmp(w1, "log_atcommand_path") == 0) { //Path of the log file for GM commads
 			memset(logging[LOG_ATCOMMAND].path, 0, sizeof(logging[LOG_ATCOMMAND].path));
 			strncpy(logging[LOG_ATCOMMAND].path, w2, sizeof(logging[LOG_ATCOMMAND].path) - 1);
@@ -398,7 +399,7 @@ static void inter_config_read(const char *cfgName) { // not inline, called too o
 	}
 	fclose(fp);
 
-	printf("success reading interserver configuration.\n");
+	printf("Success reading interserver configuration!\n");
 
 	return;
 }
@@ -498,7 +499,7 @@ void inter_init(const char *file) {
 	int i;
 #endif // USE_SQL
 
-	printf("interserver initialize...\n");
+	printf("Initializing Inter-server...\n");
 	inter_config_read(file);
 
 #ifdef USE_SQL
@@ -523,7 +524,7 @@ void inter_init(const char *file) {
 		                "  `value` int(11) NOT NULL default '0',"
 		                "  PRIMARY KEY (`account_id`, `str`)"
 		                ") TYPE = MyISAM") == 0) {
-			printf(CL_RED "ERROR: Char-server can not create `account_reg_db` SQL table." CL_RESET "\n");
+			printf(CL_RED "ERROR: Char-server could not create `account_reg_db` SQL table." CL_RESET "\n");
 			printf("       Char-server must be stopped.\n");
 			exit(1);
 		}
@@ -655,7 +656,7 @@ static inline void mapif_parse_WisRequest(int fd) { // 0x3001/0x3801 <packet_len
 	player[24] = '\0';
 #ifdef TXT_ONLY
 	// if player is not found or not inline
-	if ((idx = search_character_index(player)) < 0 || online_chars[idx] == 0) { // -1: no char with this name, -2: exact sensitive name not found // to check online here, check visible and hidden characters
+	if ((idx = char_nick2idx(player)) < 0 || online_chars[idx] == 0) { // -1: no char with this name, -2: exact sensitive name not found // to check online here, check visible and hidden characters
 		WPACKETW( 0) = 0x3802; // 0x3802 <sender_name>.24B <flag>.B (flag: 0: success to send wisper, 1: target character is not loged in?, 2: ignored by target)
 		memcpy(WPACKETP(2), RFIFOP(fd,5), 24);
 		WPACKETB(26) = 1; // flag: 0: success to send wisper, 1: target character is not loged in?, 2: ignored by target
@@ -667,7 +668,7 @@ static inline void mapif_parse_WisRequest(int fd) { // 0x3001/0x3801 <packet_len
 		strncpy(RFIFOP(fd,29), char_dat[idx].name, 24);
 #else /* TXT_ONLY -> USE_SQL*/
 	// search player name in memory (-> -1, player is offline or doesn't exist; -2 player was found, but with incorrect sensitive case)
-	if ((idx = search_character_index(player)) == -2) { // -1: no char with this name, -2: exact sensitive name not found
+	if ((idx = char_nick2idx(player)) == -2) { // -1: no char with this name, -2: exact sensitive name not found
 		// if not found in memory, try to found if name is unique or offline
 		mysql_escape_string(t_player, player, strlen(player));
 		sql_request("SELECT `name` FROM `%s` WHERE `name`='%s'", char_db, t_player);
@@ -1003,7 +1004,7 @@ int inter_parse_frommap(int fd) {
 //	case 0x3005: mapif_parse_AccRegRequest(fd, RFIFOL(fd,2)); break; // 0x3005 <account_id>.L // now send at same moment of character (synchronized)
 	case 0x3006: mapif_parse_MainMessage(fd); break; // 0x3006/0x3806 <packet_len>.w <wispname>.24B <message>.?B
 	case 0x3007: mapif_parse_MessageToGM(fd); break; // 0x3007/0x3807 <packet_len>.w <wispname>.24B <message>.?B
-	case 0x3008: mapif_parse_LogSaveReq(RFIFOB(fd,4), RFIFOP(fd,5)); break; // 0x3008 <packet_len>.w <log_type>.B <message>.?B (types: 1 GM commands, 2: Trades, 3: Scripts, 4: Vending)
+	case 0x3008: mapif_parse_LogSaveReq(RFIFOB(fd,4), RFIFOP(fd,5)); break; // 0x3008 <packet_len>.w <log_type>.B <message>.?B (types: 0 GM commands, 1: Trades, 2: Scripts, 3: Vending)
 	case 0x3009: mapif_parse_announce(fd); break; // 0x3009/0x3809 <packet_len>.w <color>.L <flag>.L <message>.?B
 	default:
 		if (inter_party_parse_frommap(fd))
