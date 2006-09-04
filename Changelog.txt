@@ -2,6 +2,8 @@
 Date	Added
 
 09/04/06
+	* Fixed: Added Lucky Potion's effect, +15 LUK for 5 minutes [Tsuyuki]
+	* Fixed: MvP SummonSlave delay/time values (Should be good now) [Tsuyuki]
 	* Updated: New monster changes (New kRO Patches) [Tsuyuki]
 	 - Details: http://ro.doddlercon.com/wiki/index.php?title=Monster_Changes
 	 - Note: This completes all the monster changes, now we just need the new mob spawns
