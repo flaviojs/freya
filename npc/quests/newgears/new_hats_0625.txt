@@ -362,7 +362,14 @@ gl_prison1.gat,137,138,5	script	Zealotus#LhzHat	1200,{
 		end;
 
 	Zealotus4:
-		if(countitem(7263) == 1 || countitem(660) == 1 || countitem(7099) >= 30)goto Zealotus5;
+		if(countitem(7263) == 1)goto ZealCount1;
+		goto ZealNoItems;
+
+	ZealCount1: if(countitem(660) >= 1)goto ZealCount2;
+		goto ZealNoItems;
+
+	ZealCount2: if(countitem(7099) >= 30)goto Zealotus5;
+		goto ZealNoItems;
 
 	Zealotus5:
 			mes "[Zealotus]";
@@ -428,6 +435,7 @@ gl_prison1.gat,137,138,5	script	Zealotus#LhzHat	1200,{
 				close;
 				end;
 
+	ZealNoItems:
 		mes "[Zealotus]";
 		mes "I will need";
 		mes "^3131FF1 Cat's Eye^000000,";
@@ -453,7 +461,7 @@ gl_prison1.gat,137,138,5	script	Zealotus#LhzHat	1200,{
 		mes "passionate ways. Now I can";
 		mes "show him the stinging love";
 		mes "of my whip! Hohohohohoho!";
-		emotion e_kis;
+		emotion 30;
 		close;
 		end;
 }
@@ -476,15 +484,28 @@ gl_prison1.gat,97,104,1	script	Phendark#LhzHat	1202,{
 		close;
 
 	PhenDark2:
-		if(countitem(1164) || isequipped(1164))set @whipcount,@whipcount+1;
-		if(countitem(1165) || isequipped(1165))set @whipcount,@whipcount+1;
-		if(countitem(1166) || isequipped(1166))set @whipcount,@whipcount+1;
-		if(countitem(1167) || isequipped(1167))set @whipcount,@whipcount+1;
-		if(countitem(1168) || isequipped(1168))set @whipcount,@whipcount+1;
-		if(countitem(1169) || isequipped(1169))set @whipcount,@whipcount+1;
-		if(countitem(1170) || isequipped(1170))set @whipcount,@whipcount+1;
-		if(countitem(1261) || isequipped(1261))set @whipcount,@whipcount+1;
-		if(countitem(1363) || isequipped(1363))set @whipcount,@whipcount+1;
+		if(countitem(1950) || isequipped(1950))set @whipcount,@whipcount+1;
+		if(countitem(1951) || isequipped(1951))set @whipcount,@whipcount+1;
+		if(countitem(1952) || isequipped(1952))set @whipcount,@whipcount+1;
+		if(countitem(1953) || isequipped(1953))set @whipcount,@whipcount+1;
+		if(countitem(1954) || isequipped(1954))set @whipcount,@whipcount+1;
+		if(countitem(1955) || isequipped(1955))set @whipcount,@whipcount+1;
+		if(countitem(1956) || isequipped(1956))set @whipcount,@whipcount+1;
+		if(countitem(1957) || isequipped(1957))set @whipcount,@whipcount+1;
+		if(countitem(1958) || isequipped(1958))set @whipcount,@whipcount+1;
+		if(countitem(1959) || isequipped(1959))set @whipcount,@whipcount+1;
+		if(countitem(1960) || isequipped(1960))set @whipcount,@whipcount+1;
+		if(countitem(1961) || isequipped(1961))set @whipcount,@whipcount+1;
+		if(countitem(1962) || isequipped(1962))set @whipcount,@whipcount+1;
+		if(countitem(1963) || isequipped(1963))set @whipcount,@whipcount+1;
+		if(countitem(1964) || isequipped(1964))set @whipcount,@whipcount+1;
+		if(countitem(1965) || isequipped(1965))set @whipcount,@whipcount+1;
+		if(countitem(1966) || isequipped(1966))set @whipcount,@whipcount+1;
+		if(countitem(1967) || isequipped(1967))set @whipcount,@whipcount+1;
+		if(countitem(1968) || isequipped(1968))set @whipcount,@whipcount+1;
+		if(countitem(1969) || isequipped(1969))set @whipcount,@whipcount+1;
+		if(countitem(1970) || isequipped(1970))set @whipcount,@whipcount+1;
+		if(countitem(1971) || isequipped(1971))set @whipcount,@whipcount+1;
 		mes "[Phendark]";
 		mes "Huh? Oh no!";
 		mes "Another h-human?!";
@@ -506,7 +527,7 @@ gl_prison1.gat,97,104,1	script	Phendark#LhzHat	1202,{
 		mes "honestly not carrying anything";
 		mes "of value! Z-Zealotus, please!";
 		mes "Zealotus, heeeeeelp me~!";
-		emotion e_sob;
+		emotion 28;
 		if(!@whipcount)close;
 		next;
 		mes "[" + strcharinfo(0) + "]";
@@ -548,7 +569,8 @@ gl_prison1.gat,97,104,1	script	Phendark#LhzHat	1202,{
 		close;
 
 	PhenDark3:
-		if(countitem(7315) > 368 && ZLMASKQ == 3)goto PhenDark4;
+		if(countitem(7315) >= 369)goto PhenDark4;
+		goto PhenDark1;
 
 		PhenDark4:
 			mes "[Phendark]";
@@ -557,7 +579,7 @@ gl_prison1.gat,97,104,1	script	Phendark#LhzHat	1202,{
 			mes "Th-there's nothing I can";
 			mes "give you, so please don't";
 			mes "hurt me! Oh, oh p-please...!";
-			emotion e_swt2;
+			emotion 19;
 			next;
 			menu "Feed him Dark Crystal Fragment.",FeedFragment,"Threaten him.",Threaten;
 
@@ -626,7 +648,7 @@ gl_prison1.gat,97,104,1	script	Phendark#LhzHat	1202,{
 		mes "They're everywhere!";
 		mes "You guys--I can't...";
 		mes "You're torturing me!";
-		emotion e_sob;
+		emotion 28;
 		close;
 
 	PhenDark4b:
@@ -699,7 +721,7 @@ gl_prison1.gat,97,104,1	script	Phendark#LhzHat	1202,{
 				mes "Zealotus is too good for me.";
 				mes "I'm not even worthy of tasting";
 				mes "the sting of her Love Whip.";
-				emotion e_sob;
+				emotion 28;
 				close;
 
 			if(@temp1 == 3 && @temp2 == 1)goto PhenDarkSelect02;
@@ -728,7 +750,7 @@ gl_prison1.gat,97,104,1	script	Phendark#LhzHat	1202,{
 				mes "Zealotus is too good for me.";
 				mes "I'm not even worthy of tasting";
 				mes "the sting of her Love Whip.";
-				emotion e_sob;
+				emotion 28;
 				close;
 
 		ZealotusSelect2:
@@ -794,7 +816,7 @@ gl_prison1.gat,97,104,1	script	Phendark#LhzHat	1202,{
 					mes "[Phendark]";
 					mes "GRRRRRR!";
 					mes "THAT'S ENOUGH!";
-					emotion e_ag;
+					emotion 6;
 					next;
 					mes "[Phendark]";
 					mes "I don't care who the";
@@ -803,7 +825,7 @@ gl_prison1.gat,97,104,1	script	Phendark#LhzHat	1202,{
 					mes "that tramp a piece of my";
 					mes "mind! Grrrr! She'll be sorry!";
 					set ZLMASKQ,6;
-					emotion e_an;
+					emotion 6;
 					close;
 					end;
 
