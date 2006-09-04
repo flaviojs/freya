@@ -1,6 +1,12 @@
 
 Date	Added
 
+09/04/06
+	* Removed: Jellopies from all NPC shops as per Aegis [Tsuyuki]
+	 - http://www.ragnainfo.net/forums/viewtopic.php?t=106163
+	* Imported: Official Arrow Quiver Maker NPC from eAthena [Originally done by Prometheus - Muad_Dib] [Tsuyuki]
+	* Removed: Temp Arrow Quiver/Scroll selling script since it was removed in Aegis (long time ago) [Tsuyuki]
+
 09/03/06
 	* Fixed: A couple fixes to MvP slaves [Tsuyuki]
 	* Fixed: A few more things in the Zealotus Mask quest [Tsuyuki]
