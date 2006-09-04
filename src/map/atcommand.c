@@ -1864,14 +1864,28 @@ static int atkillmonster_sub(struct block_list *bl, va_list ap) {
  * to send usage of a GM command to a player
  *------------------------------------------
  */
-void send_usage(int fd, char *fmt, ...) {
+void send_usage(struct map_session_data *sd, char *fmt, ...) {
 	va_list ap;
-	char tmpstr[2048];
+	char mes[2048];
 
 	va_start(ap, fmt);
 
-	vsprintf(tmpstr, fmt, ap);
-	clif_displaymessage(fd, tmpstr);
+	vsprintf(mes, fmt, ap);
+
+	if (battle_config.atcommand_send_usage_type == -5) { // -5: like a GM message (in blue)
+		clif_GMmessage(&sd->bl, mes, strlen(mes) + 1, 3 | 0x10); // 3 -> SELF + 0x10 for blue
+	} else if (battle_config.atcommand_send_usage_type == -4) { // -4: like a GM message (in yellow)
+		clif_GMmessage(&sd->bl, mes, strlen(mes) + 1, 3); // 3 -> SELF + 
+	} else if (battle_config.atcommand_send_usage_type == -3) { // -3: like a guild message
+		clif_disp_onlyself(sd, mes);
+	} else if (battle_config.atcommand_send_usage_type == -2) { // -2: like a party message
+		clif_party_message_self(sd, mes, strlen(mes) + 1);
+	//} else if (battle_config.atcommand_send_usage_type == -1) { // -1: like a chat message (default)
+	} else if (battle_config.atcommand_send_usage_type >= 0 && battle_config.atcommand_send_usage_type <= 0xFFFFFF) { // 0 to 16777215 (0xFFFFFF): like a colored GM message (set the color of the GM message; each basic color from 0 to 255 -> (65536 * Red + 256 * Green + Blue))
+		clif_announce(&sd->bl, mes, battle_config.atcommand_send_usage_type, 3); // flag = 3 = SELF
+	} else { // -1: like a chat message (default)
+		clif_displaymessage(sd->fd, mes);
+	}
 
 	va_end(ap);
 
@@ -1889,7 +1903,7 @@ ATCOMMAND_FUNC(rurap) {
 
 	if (!message || !*message || (sscanf(message, "%s %d %d %[^\n]", atcmd_mapname, &x, &y, atcmd_name) < 4 &&
 	                              sscanf(message, "%[^, ],%d,%d %[^\n]", atcmd_mapname, &x, &y, atcmd_name) < 4)) {
-		send_usage(fd, "Usage: %s <mapname> <x> <y> <char name|account_id>", original_command);
+		send_usage(sd, "Usage: %s <mapname> <x> <y> <char name|account_id>", original_command);
 		return -1;
 	}
 
@@ -1951,7 +1965,7 @@ ATCOMMAND_FUNC(rura) {
 
 	if (!message || !*message || (sscanf(message, "%[^, ],%d,%d", atcmd_mapname, &x, &y) < 3 &&
 	                              sscanf(message, "%s %d %d", atcmd_mapname, &x, &y) < 1)) {
-		send_usage(fd, "Please, enter a map (usage: %s <mapname> <x> <y>).", original_command);
+		send_usage(sd, "Please, enter a map (usage: %s <mapname> <x> <y>).", original_command);
 		return -1;
 	}
 
@@ -2026,7 +2040,7 @@ ATCOMMAND_FUNC(jumpto) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -2720,7 +2734,7 @@ ATCOMMAND_FUNC(whohas) {
 	memset(item_name, 0, sizeof(item_name));
 
 	if (!message || !*message || sscanf(message, "%s", item_name) < 1) {
-		send_usage(fd, "Please, enter an item name/id (usage: %s <item_name|ID>).", original_command);
+		send_usage(sd, "Please, enter an item name/id (usage: %s <item_name|ID>).", original_command);
 		return -1;
 	}
 
@@ -2830,7 +2844,7 @@ ATCOMMAND_FUNC(whohasmap) {
 	memset(atcmd_mapname, 0, sizeof(atcmd_mapname));
 
 	if (!message || !*message || sscanf(message, "%s %s", item_name, atcmd_mapname) < 1) {
-		send_usage(fd, "Please, enter an item name/id (usage: %s <item_name|ID> [map]).", original_command);
+		send_usage(sd, "Please, enter an item name/id (usage: %s <item_name|ID> [map]).", original_command);
 		return -1;
 	}
 
@@ -3057,7 +3071,7 @@ ATCOMMAND_FUNC(charload) {
 	int m;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -3176,7 +3190,7 @@ ATCOMMAND_FUNC(speed) {
 	sscanf(message, "%d", &speed);
 
 	if (speed != 0 && (speed < MIN_WALK_SPEED || speed > MAX_WALK_SPEED)) {
-		send_usage(fd, "Please, enter a valid speed value (usage:%s 0(restore normal speed)|%s <%d-%d>).", original_command, original_command, MIN_WALK_SPEED, MAX_WALK_SPEED);
+		send_usage(sd, "Please, enter a valid speed value (usage:%s 0(restore normal speed)|%s <%d-%d>).", original_command, original_command, MIN_WALK_SPEED, MAX_WALK_SPEED);
 		return -1;
 	}
 
@@ -3200,12 +3214,12 @@ ATCOMMAND_FUNC(charspeed) {
 	int speed = 0;
 
 	if (!message || !*message || sscanf(message, "%d %[^\n]", &speed, atcmd_name) < 2) {
-		send_usage(fd, "Please, enter a speed value and a player name (usage: %s 0(restore normal speed)|<%d-%d> <player name>).", original_command, MIN_WALK_SPEED, MAX_WALK_SPEED);
+		send_usage(sd, "Please, enter a speed value and a player name (usage: %s 0(restore normal speed)|<%d-%d> <player name>).", original_command, MIN_WALK_SPEED, MAX_WALK_SPEED);
 		return -1;
 	}
 
 	if (speed != 0 && (speed < MIN_WALK_SPEED || speed > MAX_WALK_SPEED)) {
-		send_usage(fd, "Please, enter a valid speed value (usage: %s 0(restore normal speed)|<%d-%d> <player name>).", original_command, MIN_WALK_SPEED, MAX_WALK_SPEED);
+		send_usage(sd, "Please, enter a valid speed value (usage: %s 0(restore normal speed)|<%d-%d> <player name>).", original_command, MIN_WALK_SPEED, MAX_WALK_SPEED);
 		return -1;
 	}
 
@@ -3245,7 +3259,7 @@ ATCOMMAND_FUNC(charspeedmap) {
 	sscanf(message, "%d %[^\n]", &speed, atcmd_mapname);
 
 	if (speed != 0 && (speed < MIN_WALK_SPEED || speed > MAX_WALK_SPEED)) {
-		send_usage(fd, "Please, enter a valid speed value (usage: %s [0(restore normal speed)|<%d-%d>] [map name]).", original_command, MIN_WALK_SPEED, MAX_WALK_SPEED);
+		send_usage(sd, "Please, enter a valid speed value (usage: %s [0(restore normal speed)|<%d-%d>] [map name]).", original_command, MIN_WALK_SPEED, MAX_WALK_SPEED);
 		return -1;
 	}
 
@@ -3298,7 +3312,7 @@ ATCOMMAND_FUNC(charspeedall) {
 	sscanf(message, "%d", &speed);
 
 	if (speed != 0 && (speed < MIN_WALK_SPEED || speed > MAX_WALK_SPEED)) {
-		send_usage(fd, "Please, enter a valid speed value (usage: %s [0(restore normal speed)|<%d-%d>]).", original_command, MIN_WALK_SPEED, MAX_WALK_SPEED);
+		send_usage(sd, "Please, enter a valid speed value (usage: %s [0(restore normal speed)|<%d-%d>]).", original_command, MIN_WALK_SPEED, MAX_WALK_SPEED);
 		return -1;
 	}
 
@@ -3365,7 +3379,7 @@ ATCOMMAND_FUNC(charstorage) {
 	struct storage *stor;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -3436,7 +3450,7 @@ ATCOMMAND_FUNC(charguildstorage) {
 	struct storage *stor;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -3482,7 +3496,7 @@ ATCOMMAND_FUNC(option) {
 	int opt1 = 0, opt2 = 0, opt3 = 0;
 
 	if (!message || !*message || sscanf(message, "%d %d %d", &opt1, &opt2, &opt3) < 1 || opt1 < 0 || opt2 < 0 || opt3 < 0) {
-		send_usage(fd, "Please, enter at least a option (usage: %s <opt1:0+> <opt2:0+> <opt3:0+>).", original_command);
+		send_usage(sd, "Please, enter at least a option (usage: %s <opt1:0+> <opt2:0+> <opt3:0+>).", original_command);
 		return -1;
 	}
 
@@ -3558,7 +3572,7 @@ ATCOMMAND_FUNC(optionadd) {
 	int opt1 = 0, opt2 = 0, opt3 = 0;
 
 	if (!message || !*message || sscanf(message, "%d %d %d", &opt1, &opt2, &opt3) < 1 || opt1 < 0 || opt2 < 0 || opt3 < 0 || (opt1 == 0 && opt2 == 0 && opt3 == 0)) {
-		send_usage(fd, "Please, enter at least a option (usage: %s <opt1:0+> <opt2:0+> <opt3:0+>).", original_command);
+		send_usage(sd, "Please, enter at least a option (usage: %s <opt1:0+> <opt2:0+> <opt3:0+>).", original_command);
 		return -1;
 	}
 
@@ -3634,7 +3648,7 @@ ATCOMMAND_FUNC(optionremove) {
 	int opt1 = 0, opt2 = 0, opt3 = 0;
 
 	if (!message || !*message || sscanf(message, "%d %d %d", &opt1, &opt2, &opt3) < 1 || opt1 < 0 || opt2 < 0 || opt3 < 0 || (opt1 == 0 && opt2 == 0 && opt3 == 0)) {
-		send_usage(fd, "Please, enter at least a option (usage: %s <opt1:0+> <opt2:0+> <opt3:0+>).", original_command);
+		send_usage(sd, "Please, enter at least a option (usage: %s <opt1:0+> <opt2:0+> <opt3:0+>).", original_command);
 		return -1;
 	}
 
@@ -3877,29 +3891,29 @@ ATCOMMAND_FUNC(jobchange) {
 		}
 		/* if class name not found */
 		if ((i == (int)(sizeof(jobs) / sizeof(jobs[0])))) {
-			send_usage(fd, "Please, enter a valid job ID (usage: %s <job ID|\"job name\"> [upper]).", original_command);
-			send_usage(fd, "   0 Novice            7 Knight           14 Crusader         21 Peco Crusader");
-			send_usage(fd, "   1 Swordman          8 Priest           15 Monk             22 Formal");
-			send_usage(fd, "   2 Mage              9 Wizard           16 Sage             23 Super Novice");
-			send_usage(fd, "   3 Archer           10 Blacksmith       17 Rogue");
-			send_usage(fd, "   4 Acolyte          11 Hunter           18 Alchemist");
-			send_usage(fd, "   5 Merchant         12 Assassin         19 Bard");
-			send_usage(fd, "   6 Thief            13 Peco Knight      20 Dancer");
-			send_usage(fd, "4001 Novice High    4008 Lord Knight      4015 Paladin        4022 Peco Paladin");
-			send_usage(fd, "4002 Swordman High  4009 High Priest      4016 Champion");
-			send_usage(fd, "4003 Mage High      4010 High Wizard      4017 Professor");
-			send_usage(fd, "4004 Archer High    4011 Whitesmith       4018 Stalker");
-			send_usage(fd, "4005 Acolyte High   4012 Sniper           4019 Creator");
-			send_usage(fd, "4006 Merchant High  4013 Assassin Cross   4020 Clown");
-			send_usage(fd, "4007 Thief High     4014 Peco Lord Knight 4021 Gypsy");
-			send_usage(fd, "4023 Baby Novice    4030 Baby Knight      4037 Baby Crusader  4044 Baby Peco Crusader");
-			send_usage(fd, "4024 Baby Swordsman 4031 Baby Priest      4038 Baby Monk      4045 Super Baby");
-			send_usage(fd, "4025 Baby Mage      4032 Baby Wizard      4039 Baby Sage      4046 Taekwon Kid");
-			send_usage(fd, "4026 Baby Archer    4033 Baby Blacksmith  4040 Baby Rogue     4047 Star Gladiator");
-			send_usage(fd, "4027 Baby Acolyte   4034 Baby Hunter      4041 Baby Alchemist 4048 Fly Star Gladiator");
-			send_usage(fd, "4028 Baby Merchant  4035 Baby Assassin    4042 Baby Bard      4049 Soul Linker");
-			send_usage(fd, "4029 Baby Thief     4036 Baby Peco-Knight 4043 Baby Dancer");
-			send_usage(fd, "[upper]: -1 (default) to automatically determine the 'level', 0 to force normal job, 1 to force high job.");
+			send_usage(sd, "Please, enter a valid job ID (usage: %s <job ID|\"job name\"> [upper]).", original_command);
+			send_usage(sd, "   0 Novice            7 Knight           14 Crusader         21 Peco Crusader");
+			send_usage(sd, "   1 Swordman          8 Priest           15 Monk             22 Formal");
+			send_usage(sd, "   2 Mage              9 Wizard           16 Sage             23 Super Novice");
+			send_usage(sd, "   3 Archer           10 Blacksmith       17 Rogue");
+			send_usage(sd, "   4 Acolyte          11 Hunter           18 Alchemist");
+			send_usage(sd, "   5 Merchant         12 Assassin         19 Bard");
+			send_usage(sd, "   6 Thief            13 Peco Knight      20 Dancer");
+			send_usage(sd, "4001 Novice High    4008 Lord Knight      4015 Paladin        4022 Peco Paladin");
+			send_usage(sd, "4002 Swordman High  4009 High Priest      4016 Champion");
+			send_usage(sd, "4003 Mage High      4010 High Wizard      4017 Professor");
+			send_usage(sd, "4004 Archer High    4011 Whitesmith       4018 Stalker");
+			send_usage(sd, "4005 Acolyte High   4012 Sniper           4019 Creator");
+			send_usage(sd, "4006 Merchant High  4013 Assassin Cross   4020 Clown");
+			send_usage(sd, "4007 Thief High     4014 Peco Lord Knight 4021 Gypsy");
+			send_usage(sd, "4023 Baby Novice    4030 Baby Knight      4037 Baby Crusader  4044 Baby Peco Crusader");
+			send_usage(sd, "4024 Baby Swordsman 4031 Baby Priest      4038 Baby Monk      4045 Super Baby");
+			send_usage(sd, "4025 Baby Mage      4032 Baby Wizard      4039 Baby Sage      4046 Taekwon Kid");
+			send_usage(sd, "4026 Baby Archer    4033 Baby Blacksmith  4040 Baby Rogue     4047 Star Gladiator");
+			send_usage(sd, "4027 Baby Acolyte   4034 Baby Hunter      4041 Baby Alchemist 4048 Fly Star Gladiator");
+			send_usage(sd, "4028 Baby Merchant  4035 Baby Assassin    4042 Baby Bard      4049 Soul Linker");
+			send_usage(sd, "4029 Baby Thief     4036 Baby Peco-Knight 4043 Baby Dancer");
+			send_usage(sd, "[upper]: -1 (default) to automatically determine the 'level', 0 to force normal job, 1 to force high job.");
 			return -1;
 		}
 	}
@@ -3996,7 +4010,7 @@ ATCOMMAND_FUNC(kill) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -4099,7 +4113,7 @@ ATCOMMAND_FUNC(kami) {
 	switch (*(command + 5)) {
 	case 'c': // command is convert to lower before to be called
 		if (!message || !*message || sscanf(message, "%x %[^\n]", &color, atcmd_output) < 2) {
-			send_usage(fd, "Please, enter color and message (usage: %s <hex_color> <message>).", original_command);
+			send_usage(sd, "Please, enter color and message (usage: %s <hex_color> <message>).", original_command);
 			return -1;
 		}
 		if (color < 0 || color > 0xFFFFFF) {
@@ -4113,7 +4127,7 @@ ATCOMMAND_FUNC(kami) {
 
 	default:
 		if (!message || !*message) {
-			send_usage(fd, "Please, enter a message (usage: %s <message>).", original_command);
+			send_usage(sd, "Please, enter a message (usage: %s <message>).", original_command);
 			return -1;
 		}
 
@@ -4141,7 +4155,7 @@ ATCOMMAND_FUNC(kami) {
  */
 ATCOMMAND_FUNC(kamib) {
 	if (!message || !*message) {
-		send_usage(fd, "Please, enter a message (usage: %s <message>).", original_command);
+		send_usage(sd, "Please, enter a message (usage: %s <message>).", original_command);
 		return -1;
 	}
 
@@ -4165,7 +4179,7 @@ ATCOMMAND_FUNC(kamiGM) {
 	memset(message_to_gm2, 0, sizeof(message_to_gm2));
 
 	if (!message || !*message || sscanf(message, "%d %[^\n]", &min_level, message_to_gm) < 2) {
-		send_usage(fd, "Please, enter a level and a message (usage: %s <min_gm_level> <message>).", original_command);
+		send_usage(sd, "Please, enter a level and a message (usage: %s <min_gm_level> <message>).", original_command);
 		return -1;
 	}
 
@@ -4237,7 +4251,7 @@ ATCOMMAND_FUNC(item) {
 	memset(item_name, 0, sizeof(item_name));
 
 	if (!message || !*message || sscanf(message, "%s %d", item_name, &number) < 1) {
-		send_usage(fd, "Please, enter an item name/id (usage: %s <item name | ID> [quantity]).", original_command);
+		send_usage(sd, "Please, enter an item name/id (usage: %s <item name | ID> [quantity]).", original_command);
 		return -1;
 	}
 
@@ -4309,7 +4323,7 @@ ATCOMMAND_FUNC(charitem) {
 	memset(item_name, 0, sizeof(item_name));
 
 	if (!message || !*message || sscanf(message, "%s %d %[^\n]", item_name, &number, atcmd_name) < 3) {
-		send_usage(fd, "Please, enter an item name/id and a player name (usage: %s <item name | ID> <quantity> <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter an item name/id and a player name (usage: %s <item name | ID> <quantity> <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -4387,7 +4401,7 @@ ATCOMMAND_FUNC(charitemall) {
 	memset(item_name, 0, sizeof(item_name));
 
 	if (!message || !*message || sscanf(message, "%s %d", item_name, &number) < 1) {
-		send_usage(fd, "Please, enter an item name/id (usage: %s <item name | ID> [quantity]).", original_command);
+		send_usage(sd, "Please, enter an item name/id (usage: %s <item name | ID> [quantity]).", original_command);
 		return -1;
 	}
 
@@ -4470,8 +4484,8 @@ ATCOMMAND_FUNC(item2) {
 	memset(item_name, 0, sizeof(item_name));
 
 	if (!message || !*message || sscanf(message, "%s %d %d %d %d %d %d %d %d", item_name, &number, &identify, &refine, &attr, &c1, &c2, &c3, &c4) < 9) {
-		send_usage(fd, "Please, enter all informations (usage: %s <item name or ID> <quantity>", original_command);
-		send_usage(fd, "  <Identify_flag> <refine> <attribut> <Card1> <Card2> <Card3> <Card4>).");
+		send_usage(sd, "Please, enter all informations (usage: %s <item name or ID> <quantity>", original_command);
+		send_usage(sd, "  <Identify_flag> <refine> <attribut> <Card1> <Card2> <Card3> <Card4>).");
 		return -1;
 	}
 
@@ -4557,7 +4571,7 @@ ATCOMMAND_FUNC(charitemreset) {
 	int i;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -4600,7 +4614,7 @@ ATCOMMAND_FUNC(charitemcheck) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -4631,7 +4645,7 @@ ATCOMMAND_FUNC(baselevelup) {
 	short modified_status[6]; // need to update only modifed stats
 
 	if (!message || !*message || sscanf(message, "%d", &level) < 1 || level == 0) {
-		send_usage(fd, "Please, enter a level adjustement (usage: %s <number of levels>).", original_command);
+		send_usage(sd, "Please, enter a level adjustement (usage: %s <number of levels>).", original_command);
 		return -1;
 	}
 
@@ -4719,7 +4733,7 @@ ATCOMMAND_FUNC(joblevelup) {
 	struct pc_base_job s_class;
 
 	if (!message || !*message || sscanf(message, "%d", &level) < 1 || level == 0) {
-		send_usage(fd, "Please, enter a level adjustement (usage: %s <number of levels>).", original_command);
+		send_usage(sd, "Please, enter a level adjustement (usage: %s <number of levels>).", original_command);
 		return -1;
 	}
 
@@ -5143,7 +5157,7 @@ ATCOMMAND_FUNC(gm) {
 	memset(password, 0, sizeof(password));
 
 	if (!message || !*message || sscanf(message, "%[^\n]", password) < 1) {
-		send_usage(fd, "Please, enter a password (usage: %s <password>).", original_command);
+		send_usage(sd, "Please, enter a password (usage: %s <password>).", original_command);
 		return -1;
 	}
 
@@ -5269,7 +5283,7 @@ ATCOMMAND_FUNC(model) {
 	int hair_style = 0, hair_color = 0, cloth_color = 0;
 
 	if (!message || !*message || sscanf(message, "%d %d %d", &hair_style, &hair_color, &cloth_color) < 1) {
-		send_usage(fd, "Please, enter at least a value (usage: %s <hair ID: %d-%d> <hair color: %d-%d> <clothes color: %d-%d>).", original_command,
+		send_usage(sd, "Please, enter at least a value (usage: %s <hair ID: %d-%d> <hair color: %d-%d> <clothes color: %d-%d>).", original_command,
 		           battle_config.min_hair_style, battle_config.max_hair_style, battle_config.min_hair_color, battle_config.max_hair_color, battle_config.min_cloth_color, battle_config.max_cloth_color);
 		return -1;
 	}
@@ -5291,7 +5305,7 @@ ATCOMMAND_FUNC(model) {
 		}
 	} else {
 		clif_displaymessage(fd, msg_txt(37)); // An invalid number was specified.
-		send_usage(fd, "Please, enter a valid value (usage: %s <hair ID: %d-%d> <hair color: %d-%d> <clothes color: %d-%d>).", original_command,
+		send_usage(sd, "Please, enter a valid value (usage: %s <hair ID: %d-%d> <hair color: %d-%d> <clothes color: %d-%d>).", original_command,
 		           battle_config.min_hair_style, battle_config.max_hair_style, battle_config.min_hair_color, battle_config.max_hair_color, battle_config.min_cloth_color, battle_config.max_cloth_color);
 		return -1;
 	}
@@ -5308,7 +5322,7 @@ ATCOMMAND_FUNC(dye) {
 	int cloth_color = 0;
 
 	if (!message || !*message || sscanf(message, "%d", &cloth_color) < 1) {
-		send_usage(fd, "Please, enter a clothes color (usage: %s <clothes color: %d-%d>).", original_command, battle_config.min_cloth_color, battle_config.max_cloth_color);
+		send_usage(sd, "Please, enter a clothes color (usage: %s <clothes color: %d-%d>).", original_command, battle_config.min_cloth_color, battle_config.max_cloth_color);
 		return -1;
 	}
 
@@ -5323,7 +5337,7 @@ ATCOMMAND_FUNC(dye) {
 		}
 	} else {
 		clif_displaymessage(fd, msg_txt(37)); // An invalid number was specified.
-		send_usage(fd, "Please, enter a valid clothes color (usage: %s <clothes color: %d-%d>).", original_command, battle_config.min_cloth_color, battle_config.max_cloth_color);
+		send_usage(sd, "Please, enter a valid clothes color (usage: %s <clothes color: %d-%d>).", original_command, battle_config.min_cloth_color, battle_config.max_cloth_color);
 		return -1;
 	}
 
@@ -5339,7 +5353,7 @@ ATCOMMAND_FUNC(chardye) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%d %[^\n]", &cloth_color, atcmd_name) < 2) {
-		send_usage(fd, "Please, enter a clothes color and a player name (usage: %s <clothes color: %d-%d> <char name|account_id>).", original_command, battle_config.min_cloth_color, battle_config.max_cloth_color);
+		send_usage(sd, "Please, enter a clothes color and a player name (usage: %s <clothes color: %d-%d> <char name|account_id>).", original_command, battle_config.min_cloth_color, battle_config.max_cloth_color);
 		return -1;
 	}
 
@@ -5356,7 +5370,7 @@ ATCOMMAND_FUNC(chardye) {
 				}
 			} else {
 				clif_displaymessage(fd, msg_txt(37)); // An invalid number was specified.
-				send_usage(fd, "Please, enter a valid clothes color (usage: %s <clothes color: %d-%d> <char name|account_id>).", original_command, battle_config.min_cloth_color, battle_config.max_cloth_color);
+				send_usage(sd, "Please, enter a valid clothes color (usage: %s <clothes color: %d-%d> <char name|account_id>).", original_command, battle_config.min_cloth_color, battle_config.max_cloth_color);
 				return -1;
 			}
 		} else {
@@ -5379,7 +5393,7 @@ ATCOMMAND_FUNC(hair_style) {
 	int hair_style = 0;
 
 	if (!message || !*message || sscanf(message, "%d", &hair_style) < 1) {
-		send_usage(fd, "Please, enter a hair style (usage: %s <hair ID: %d-%d>).", original_command, battle_config.min_hair_style, battle_config.max_hair_style);
+		send_usage(sd, "Please, enter a hair style (usage: %s <hair ID: %d-%d>).", original_command, battle_config.min_hair_style, battle_config.max_hair_style);
 		return -1;
 	}
 
@@ -5388,7 +5402,7 @@ ATCOMMAND_FUNC(hair_style) {
 		clif_displaymessage(fd, msg_txt(36)); // Appearence changed.
 	} else {
 		clif_displaymessage(fd, msg_txt(37)); // An invalid number was specified.
-		send_usage(fd, "Please, enter a valid hair style (usage: %s <hair ID: %d-%d>).", original_command, battle_config.min_hair_style, battle_config.max_hair_style);
+		send_usage(sd, "Please, enter a valid hair style (usage: %s <hair ID: %d-%d>).", original_command, battle_config.min_hair_style, battle_config.max_hair_style);
 		return -1;
 	}
 
@@ -5404,7 +5418,7 @@ ATCOMMAND_FUNC(charhairstyle) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%d %[^\n]", &hair_style, atcmd_name) < 2) {
-		send_usage(fd, "Please, enter a hair style and a player name (usage: %s <hair ID: %d-%d> <char name|account_id>).", original_command, battle_config.min_hair_style, battle_config.max_hair_style);
+		send_usage(sd, "Please, enter a hair style and a player name (usage: %s <hair ID: %d-%d> <char name|account_id>).", original_command, battle_config.min_hair_style, battle_config.max_hair_style);
 		return -1;
 	}
 
@@ -5415,7 +5429,7 @@ ATCOMMAND_FUNC(charhairstyle) {
 				clif_displaymessage(fd, "Player's appearence changed.");
 			} else {
 				clif_displaymessage(fd, msg_txt(37)); // An invalid number was specified.
-				send_usage(fd, "Please, enter a valid hair style and a player name (usage: %s <hair ID: %d-%d> <char name|account_id>).", original_command, battle_config.min_hair_style, battle_config.max_hair_style);
+				send_usage(sd, "Please, enter a valid hair style and a player name (usage: %s <hair ID: %d-%d> <char name|account_id>).", original_command, battle_config.min_hair_style, battle_config.max_hair_style);
 				return -1;
 			}
 		} else {
@@ -5438,7 +5452,7 @@ ATCOMMAND_FUNC(hair_color) {
 	int hair_color = 0;
 
 	if (!message || !*message || sscanf(message, "%d", &hair_color) < 1) {
-		send_usage(fd, "Please, enter a hair color (usage: %s <hair color: %d-%d>).", original_command, battle_config.min_hair_color, battle_config.max_hair_color);
+		send_usage(sd, "Please, enter a hair color (usage: %s <hair color: %d-%d>).", original_command, battle_config.min_hair_color, battle_config.max_hair_color);
 		return -1;
 	}
 
@@ -5447,7 +5461,7 @@ ATCOMMAND_FUNC(hair_color) {
 		clif_displaymessage(fd, msg_txt(36)); // Appearence changed.
 	} else {
 		clif_displaymessage(fd, msg_txt(37)); // An invalid number was specified.
-		send_usage(fd, "Please, enter a valid hair color (usage: %s <hair color: %d-%d>).", original_command, battle_config.min_hair_color, battle_config.max_hair_color);
+		send_usage(sd, "Please, enter a valid hair color (usage: %s <hair color: %d-%d>).", original_command, battle_config.min_hair_color, battle_config.max_hair_color);
 		return -1;
 	}
 
@@ -5463,7 +5477,7 @@ ATCOMMAND_FUNC(charhaircolor) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%d %[^\n]", &hair_color, atcmd_name) < 2) {
-		send_usage(fd, "Please, enter a hair color and a player name (usage: %s <hair color: %d-%d> <char name|account_id>).", original_command, battle_config.min_hair_color, battle_config.max_hair_color);
+		send_usage(sd, "Please, enter a hair color and a player name (usage: %s <hair color: %d-%d> <char name|account_id>).", original_command, battle_config.min_hair_color, battle_config.max_hair_color);
 		return -1;
 	}
 
@@ -5474,7 +5488,7 @@ ATCOMMAND_FUNC(charhaircolor) {
 				clif_displaymessage(fd, "Player's appearence changed.");
 			} else {
 				clif_displaymessage(fd, msg_txt(37)); // An invalid number was specified.
-				send_usage(fd, "Please, enter a valid hair color and a player name (usage: %s <hair color: %d-%d> <char name|account_id>).", original_command, battle_config.min_hair_color, battle_config.max_hair_color);
+				send_usage(sd, "Please, enter a valid hair color and a player name (usage: %s <hair color: %d-%d> <char name|account_id>).", original_command, battle_config.min_hair_color, battle_config.max_hair_color);
 				return -1;
 			}
 		} else {
@@ -5539,18 +5553,18 @@ ATCOMMAND_FUNC(go) {
 
 	// if no value, display all value
 	if (!message || !*message || sscanf(message, "%s", atcmd_mapname) < 1 || town < -3 || town >= (int)(sizeof(data) / sizeof(data[0]))) {
-		send_usage(fd, msg_txt(38)); // Invalid location number or name.
-		send_usage(fd, msg_txt(82)); // Please, use one of this numbers/names:
-		send_usage(fd, "-3=(Memo point 2)   7=Lutie           17=Valkyrie");
-		send_usage(fd, "-2=(Memo point 1)   8=Comodo          18=Orc dungeon");
-		send_usage(fd, "-1=(Memo point 0)   9=Yuno            19=village (payon)");
-		send_usage(fd, " 0=Prontera        10=Amatsu          20=Glast Heim");
-		send_usage(fd, " 1=Morroc          11=Gon Ryun        21=Jawaii");
-		send_usage(fd, " 2=Geffen          12=Umbala          22=Ayothaya");
-		send_usage(fd, " 3=Payon           13=Niflheim        23=Einbroch");
-		send_usage(fd, " 4=Alberta         14=Lou Yang        24=Lighthalzen");
-		send_usage(fd, " 5=Izlude          15=Start point     25=Hugel");
-		send_usage(fd, " 6=Al de Baran     16=Prison          26=Rachel");
+		send_usage(sd, msg_txt(38)); // Invalid location number or name.
+		send_usage(sd, msg_txt(82)); // Please, use one of this numbers/names:
+		send_usage(sd, "-3=(Memo point 2)   7=Lutie           17=Valkyrie");
+		send_usage(sd, "-2=(Memo point 1)   8=Comodo          18=Orc dungeon");
+		send_usage(sd, "-1=(Memo point 0)   9=Yuno            19=village (payon)");
+		send_usage(sd, " 0=Prontera        10=Amatsu          20=Glast Heim");
+		send_usage(sd, " 1=Morroc          11=Gon Ryun        21=Jawaii");
+		send_usage(sd, " 2=Geffen          12=Umbala          22=Ayothaya");
+		send_usage(sd, " 3=Payon           13=Niflheim        23=Einbroch");
+		send_usage(sd, " 4=Alberta         14=Lou Yang        24=Lighthalzen");
+		send_usage(sd, " 5=Izlude          15=Start point     25=Hugel");
+		send_usage(sd, " 6=Al de Baran     16=Prison          26=Rachel");
 		return -1;
 	} else {
 		// get possible name of the city and add .gat if not in the name
@@ -5630,18 +5644,18 @@ ATCOMMAND_FUNC(go) {
 		           strncmp(atcmd_mapname, "rachael.gat", 3) == 0) // name of the position (3 first characters)
 			town = 26;
 		else if (sscanf(message, "%d", &i) < 1) { /* not a number */
-			send_usage(fd, msg_txt(38)); // Invalid location number or name.
-			send_usage(fd, msg_txt(82)); // Please, use one of this numbers/names:
-			send_usage(fd, "-3=(Memo point 2)   7=Lutie        17=Valkyrie");
-			send_usage(fd, "-2=(Memo point 1)   8=Comodo       18=Orc dungeon");
-			send_usage(fd, "-1=(Memo point 0)   9=Yuno         19=village (payon)");
-			send_usage(fd, " 0=Prontera        10=Amatsu       20=Glast Heim");
-			send_usage(fd, " 1=Morroc          11=Gon Ryun     21=Jawaii");
-			send_usage(fd, " 2=Geffen          12=Umbala       22=Ayothaya");
-			send_usage(fd, " 3=Payon           13=Niflheim     23=Einbroch");
-			send_usage(fd, " 4=Alberta         14=Lou Yang     24=Lighthalzen");
-			send_usage(fd, " 5=Izlude          15=Start point  25=Hugel");
-			send_usage(fd, " 6=Al de Baran     16=Prison         26=Rachel");
+			send_usage(sd, msg_txt(38)); // Invalid location number or name.
+			send_usage(sd, msg_txt(82)); // Please, use one of this numbers/names:
+			send_usage(sd, "-3=(Memo point 2)   7=Lutie        17=Valkyrie");
+			send_usage(sd, "-2=(Memo point 1)   8=Comodo       18=Orc dungeon");
+			send_usage(sd, "-1=(Memo point 0)   9=Yuno         19=village (payon)");
+			send_usage(sd, " 0=Prontera        10=Amatsu       20=Glast Heim");
+			send_usage(sd, " 1=Morroc          11=Gon Ryun     21=Jawaii");
+			send_usage(sd, " 2=Geffen          12=Umbala       22=Ayothaya");
+			send_usage(sd, " 3=Payon           13=Niflheim     23=Einbroch");
+			send_usage(sd, " 4=Alberta         14=Lou Yang     24=Lighthalzen");
+			send_usage(sd, " 5=Izlude          15=Start point  25=Hugel");
+			send_usage(sd, " 6=Al de Baran     16=Prison         26=Rachel");
 			return -1;
 		}
 
@@ -6345,7 +6359,7 @@ ATCOMMAND_FUNC(chardeadbranch) {
 	if (!message || !*message || sscanf(message, "%d %[^\n]", &number, atcmd_name) < 2) {
 		number = 1;
 		if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-			send_usage(fd, "Please, enter a player name (usage: %s [# of monsters] <char name|account_id>).", original_command);
+			send_usage(sd, "Please, enter a player name (usage: %s [# of monsters] <char name|account_id>).", original_command);
 			return -1;
 		}
 	}
@@ -7009,8 +7023,8 @@ ATCOMMAND_FUNC(refine) {
 
 	sscanf(message, "%d %d", &position, &refine);
 	if (position < 0) {
-		send_usage(fd, "Please, enter a position and a amount (usage: %s [equip position [+/- amount]]).", original_command);
-		send_usage(fd, "(%s 0 [+/- amount] -> refine all items.)", original_command);
+		send_usage(sd, "Please, enter a position and a amount (usage: %s [equip position [+/- amount]]).", original_command);
+		send_usage(sd, "(%s 0 [+/- amount] -> refine all items.)", original_command);
 		return -1;
 	}
 
@@ -7087,7 +7101,7 @@ ATCOMMAND_FUNC(produce) {
 	memset(item_name, 0, sizeof(item_name));
 
 	if (!message || !*message || sscanf(message, "%s %d %d", item_name, &attribute, &star) < 1) {
-		send_usage(fd, "Please, enter at least an item name/id (usage: %s <equip name or equip ID> <element> <# of very's>).", original_command);
+		send_usage(sd, "Please, enter at least an item name/id (usage: %s <equip name or equip ID> <element> <# of very's>).", original_command);
 		return -1;
 	}
 
@@ -7183,7 +7197,7 @@ ATCOMMAND_FUNC(memo) {
 				clif_displaymessage(fd, msg_txt(173)); // Note: you don't have the 'Warp' skill level to use it.
 			atcommand_memo_sub(sd);
 		} else {
-			send_usage(fd, "Please, enter a valid position (usage: %s <memo_position:%d-%d>).", original_command, 0, MAX_PORTAL_MEMO - 1);
+			send_usage(sd, "Please, enter a valid position (usage: %s <memo_position:%d-%d>).", original_command, 0, MAX_PORTAL_MEMO - 1);
 			atcommand_memo_sub(sd);
 			return -1;
 		}
@@ -7248,7 +7262,7 @@ ATCOMMAND_FUNC(packet) {
 	int x, y;
 
 	if (!message || !*message || sscanf(message, "%d %d", &x, &y) < 2) {
-		send_usage(fd, "Please, enter a status type/flag (usage: %s <status type> <flag>).", original_command);
+		send_usage(sd, "Please, enter a status type/flag (usage: %s <status type> <flag>).", original_command);
 		return -1;
 	}
 
@@ -7265,7 +7279,7 @@ ATCOMMAND_FUNC(statuspoint) {
 	int point, new_status_point;
 
 	if (!message || !*message || sscanf(message, "%d", &point) < 1 || point == 0) {
-		send_usage(fd, "Please, enter a number (usage: %s <number of points>).", original_command);
+		send_usage(sd, "Please, enter a number (usage: %s <number of points>).", original_command);
 		return -1;
 	}
 
@@ -7312,7 +7326,7 @@ ATCOMMAND_FUNC(skillpoint) {
 	int point, new_skill_point;
 
 	if (!message || !*message || sscanf(message, "%d", &point) < 1 || point == 0) {
-		send_usage(fd, "Please, enter a number (usage: %s <number of points>).", original_command);
+		send_usage(sd, "Please, enter a number (usage: %s <number of points>).", original_command);
 		return -1;
 	}
 
@@ -7345,7 +7359,7 @@ ATCOMMAND_FUNC(zeny) {
 	int zeny, new_zeny;
 
 	if (!message || !*message || sscanf(message, "%d", &zeny) < 1 || zeny == 0) {
-		send_usage(fd, "Please, enter an amount (usage: %s <amount>).", original_command);
+		send_usage(sd, "Please, enter an amount (usage: %s <amount>).", original_command);
 		return -1;
 	}
 
@@ -7383,7 +7397,7 @@ ATCOMMAND_FUNC(param) {
 	};
 
 	if (!message || !*message || sscanf(message, "%d", &value) < 1 || value == 0) {
-		send_usage(fd, "Please, enter a valid value (usage: %s <+/-adjustement>).", original_command);
+		send_usage(sd, "Please, enter a valid value (usage: %s <+/-adjustement>).", original_command);
 		return -1;
 	}
 
@@ -7395,7 +7409,7 @@ ATCOMMAND_FUNC(param) {
 		}
 	}
 	if (idx < 0 || idx > MAX_STATUS_TYPE) { // normaly impossible...
-		send_usage(fd, "Please, enter a valid value (usage: %s <+/-adjustement>).", original_command);
+		send_usage(sd, "Please, enter a valid value (usage: %s <+/-adjustement>).", original_command);
 		return -1;
 	}
 
@@ -7501,7 +7515,7 @@ ATCOMMAND_FUNC(guildlevelup) {
 	struct guild *guild_info;
 
 	if (!message || !*message || sscanf(message, "%d", &level) < 1 || level == 0) {
-		send_usage(fd, "Please, enter a valid level (usage: %s <# of levels>).", original_command);
+		send_usage(sd, "Please, enter a valid level (usage: %s <# of levels>).", original_command);
 		return -1;
 	}
 
@@ -7542,7 +7556,7 @@ ATCOMMAND_FUNC(charguildlevelup) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%d %[^\n]", &level, atcmd_name) < 2 || level == 0) {
-		send_usage(fd, "Please, enter a valid level (usage: %s <# of levels> <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a valid level (usage: %s <# of levels> <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -7591,7 +7605,7 @@ ATCOMMAND_FUNC(makeegg) {
 	int id, pet_id;
 
 	if (!message || !*message) {
-		send_usage(fd, "Please, enter a monters/egg name/id (usage: %s <pet_id>).", original_command);
+		send_usage(sd, "Please, enter a monters/egg name/id (usage: %s <pet_id>).", original_command);
 		return -1;
 	}
 
@@ -7650,7 +7664,7 @@ ATCOMMAND_FUNC(petfriendly) {
 	int t;
 
 	if (!message || !*message || sscanf(message, "%d", &friendly) < 1 || friendly < 0 || friendly > 1000) {
-		send_usage(fd, "Please, enter a valid value (usage: %s <0-1000>).", original_command);
+		send_usage(sd, "Please, enter a valid value (usage: %s <0-1000>).", original_command);
 		return -1;
 	}
 
@@ -7689,7 +7703,7 @@ ATCOMMAND_FUNC(pethungry) {
 	int hungry;
 
 	if (!message || !*message || sscanf(message, "%d", &hungry) < 1 || hungry < 0 || hungry > 100) {
-		send_usage(fd, "Please, enter a valid number (usage: %s <0-100>).", original_command);
+		send_usage(sd, "Please, enter a valid number (usage: %s <0-100>).", original_command);
 		return -1;
 	}
 
@@ -7741,7 +7755,7 @@ ATCOMMAND_FUNC(charpetrename) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -7776,7 +7790,7 @@ ATCOMMAND_FUNC(recall) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -7985,29 +7999,29 @@ ATCOMMAND_FUNC(character_job) {
 				}
 	/* if class name not found */
 	if ((i == (int)(sizeof(jobs) / sizeof(jobs[0])))) {
-		send_usage(fd, "Please, enter a valid job ID (usage: %s <job ID|\"job name\"> [upper]).", original_command);
-		send_usage(fd, "   0 Novice            7 Knight           14 Crusader         21 Peco Crusader");
-		send_usage(fd, "   1 Swordman          8 Priest           15 Monk             22 Formal");
-		send_usage(fd, "   2 Mage              9 Wizard           16 Sage             23 Super Novice");
-		send_usage(fd, "   3 Archer           10 Blacksmith       17 Rogue");
-		send_usage(fd, "   4 Acolyte          11 Hunter           18 Alchemist");
-		send_usage(fd, "   5 Merchant         12 Assassin         19 Bard");
-		send_usage(fd, "   6 Thief            13 Peco Knight      20 Dancer");
-		send_usage(fd, "4001 Novice High    4008 Lord Knight      4015 Paladin        4022 Peco Paladin");
-		send_usage(fd, "4002 Swordman High  4009 High Priest      4016 Champion");
-		send_usage(fd, "4003 Mage High      4010 High Wizard      4017 Professor");
-		send_usage(fd, "4004 Archer High    4011 Whitesmith       4018 Stalker");
-		send_usage(fd, "4005 Acolyte High   4012 Sniper           4019 Creator");
-		send_usage(fd, "4006 Merchant High  4013 Assassin Cross   4020 Clown");
-		send_usage(fd, "4007 Thief High     4014 Peco Lord Knight 4021 Gypsy");
-		send_usage(fd, "4023 Baby Novice    4030 Baby Knight      4037 Baby Crusader  4044 Baby Peco Crusader");
-		send_usage(fd, "4024 Baby Swordsman 4031 Baby Priest      4038 Baby Monk      4045 Super Baby");
-		send_usage(fd, "4025 Baby Mage      4032 Baby Wizard      4039 Baby Sage      4046 Taekwon Kid");
-		send_usage(fd, "4026 Baby Archer    4033 Baby Blacksmith  4040 Baby Rogue     4047 Star Gladiator");
-		send_usage(fd, "4027 Baby Acolyte   4034 Baby Hunter      4041 Baby Alchemist 4048 Fly Star Gladiator");
-		send_usage(fd, "4028 Baby Merchant  4035 Baby Assassin    4042 Baby Bard      4049 Soul Linker");
-		send_usage(fd, "4029 Baby Thief     4036 Baby Peco-Knight 4043 Baby Dancer");
-		send_usage(fd, "[upper]: -1 (default) to automatically determine the 'level', 0 to force normal job, 1 to force high job.");
+		send_usage(sd, "Please, enter a valid job ID (usage: %s <job ID|\"job name\"> [upper]).", original_command);
+		send_usage(sd, "   0 Novice            7 Knight           14 Crusader         21 Peco Crusader");
+		send_usage(sd, "   1 Swordman          8 Priest           15 Monk             22 Formal");
+		send_usage(sd, "   2 Mage              9 Wizard           16 Sage             23 Super Novice");
+		send_usage(sd, "   3 Archer           10 Blacksmith       17 Rogue");
+		send_usage(sd, "   4 Acolyte          11 Hunter           18 Alchemist");
+		send_usage(sd, "   5 Merchant         12 Assassin         19 Bard");
+		send_usage(sd, "   6 Thief            13 Peco Knight      20 Dancer");
+		send_usage(sd, "4001 Novice High    4008 Lord Knight      4015 Paladin        4022 Peco Paladin");
+		send_usage(sd, "4002 Swordman High  4009 High Priest      4016 Champion");
+		send_usage(sd, "4003 Mage High      4010 High Wizard      4017 Professor");
+		send_usage(sd, "4004 Archer High    4011 Whitesmith       4018 Stalker");
+		send_usage(sd, "4005 Acolyte High   4012 Sniper           4019 Creator");
+		send_usage(sd, "4006 Merchant High  4013 Assassin Cross   4020 Clown");
+		send_usage(sd, "4007 Thief High     4014 Peco Lord Knight 4021 Gypsy");
+		send_usage(sd, "4023 Baby Novice    4030 Baby Knight      4037 Baby Crusader  4044 Baby Peco Crusader");
+		send_usage(sd, "4024 Baby Swordsman 4031 Baby Priest      4038 Baby Monk      4045 Super Baby");
+		send_usage(sd, "4025 Baby Mage      4032 Baby Wizard      4039 Baby Sage      4046 Taekwon Kid");
+		send_usage(sd, "4026 Baby Archer    4033 Baby Blacksmith  4040 Baby Rogue     4047 Star Gladiator");
+		send_usage(sd, "4027 Baby Acolyte   4034 Baby Hunter      4041 Baby Alchemist 4048 Fly Star Gladiator");
+		send_usage(sd, "4028 Baby Merchant  4035 Baby Assassin    4042 Baby Bard      4049 Soul Linker");
+		send_usage(sd, "4029 Baby Thief     4036 Baby Peco-Knight 4043 Baby Dancer");
+		send_usage(sd, "[upper]: -1 (default) to automatically determine the 'level', 0 to force normal job, 1 to force high job.");
 			return -1;
 				}
 			}
@@ -8100,7 +8114,7 @@ ATCOMMAND_FUNC(revive) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -8145,7 +8159,7 @@ ATCOMMAND_FUNC(charheal) {
 		if (!message || !*message || sscanf(message, "%d %[^\n]", &hp, atcmd_name) < 2) {
 			hp = 0;
 			if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-				send_usage(fd, "Please, enter a player name (usage: %s [<HP> [<SP>]] <char name|account_id>).", original_command);
+				send_usage(sd, "Please, enter a player name (usage: %s [<HP> [<SP>]] <char name|account_id>).", original_command);
 				return -1;
 			}
 		}
@@ -8209,7 +8223,7 @@ ATCOMMAND_FUNC(character_stats) {
 	int i;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -8311,7 +8325,7 @@ ATCOMMAND_FUNC(character_option) {
 	struct map_session_data* pl_sd;
 
 	if (!message || !*message || sscanf(message, "%d %d %d %[^\n]", &opt1, &opt2, &opt3, atcmd_name) < 4 || opt1 < 0 || opt2 < 0 || opt3 < 0) {
-		send_usage(fd, "Please, enter valid options and a player name (usage: %s <opt1:0+> <opt2:0+> <opt3:0+> <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter valid options and a player name (usage: %s <opt1:0+> <opt2:0+> <opt3:0+> <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -8397,7 +8411,7 @@ ATCOMMAND_FUNC(character_optionadd) {
 	struct map_session_data* pl_sd;
 
 	if (!message || !*message || sscanf(message, "%d %d %d %[^\n]", &opt1, &opt2, &opt3, atcmd_name) < 4 || opt1 < 0 || opt2 < 0 || opt3 < 0 || (opt1 == 0 && opt2 == 0 && opt3 == 0)) {
-		send_usage(fd, "Please, enter valid options and a player name (usage: %s <opt1:0+> <opt2:0+> <opt3:0+> <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter valid options and a player name (usage: %s <opt1:0+> <opt2:0+> <opt3:0+> <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -8483,7 +8497,7 @@ ATCOMMAND_FUNC(character_optionremove) {
 	struct map_session_data* pl_sd;
 
 	if (!message || !*message || sscanf(message, "%d %d %d %[^\n]", &opt1, &opt2, &opt3, atcmd_name) < 4 || opt1 < 0 || opt2 < 0 || opt3 < 0 || (opt1 == 0 && opt2 == 0 && opt3 == 0)) {
-		send_usage(fd, "Please, enter valid options and a player name (usage: %s <opt1:0+> <opt2:0+> <opt3:0+> <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter valid options and a player name (usage: %s <opt1:0+> <opt2:0+> <opt3:0+> <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -8572,7 +8586,7 @@ ATCOMMAND_FUNC(char_change_sex) {
 	struct map_session_data* pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -8605,7 +8619,7 @@ ATCOMMAND_FUNC(char_block) {
 	struct map_session_data* pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -8654,9 +8668,9 @@ ATCOMMAND_FUNC(char_ban) {
 	memset(modif, 0, sizeof(modif));
 
 	if (!message || !*message || sscanf(message, "%s %[^\n]", modif, atcmd_name) < 2) {
-		send_usage(fd, "Please, enter ban time and a player name (usage: %s <time> <char name|account_id>).", original_command);
-		send_usage(fd, "time usage: adjustement (+/- value) and element (y/a, m, d/j, h, mn, s)");
-		send_usage(fd, "Example: %s +1m-2mn1s-6y testplayer", original_command);
+		send_usage(sd, "Please, enter ban time and a player name (usage: %s <time> <char name|account_id>).", original_command);
+		send_usage(sd, "time usage: adjustement (+/- value) and element (y/a, m, d/j, h, mn, s)");
+		send_usage(sd, "Example: %s +1m-2mn1s-6y testplayer", original_command);
 		return -1;
 	}
 
@@ -8727,7 +8741,7 @@ ATCOMMAND_FUNC(char_unblock) {
 	struct map_session_data* pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -8760,7 +8774,7 @@ ATCOMMAND_FUNC(char_unban) {
 	struct map_session_data* pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -8795,7 +8809,7 @@ ATCOMMAND_FUNC(character_save) {
 	int m;
 
 	if (!message || !*message || sscanf(message, "%s %d %d %[^\n]", atcmd_mapname, &x, &y, atcmd_name) < 4 || x < 0 || y < 0) {
-		send_usage(fd, "Please, enter a valid save point and a player name (usage: %s <map> <x> <y> <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a valid save point and a player name (usage: %s <map> <x> <y> <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -9055,7 +9069,7 @@ ATCOMMAND_FUNC(character_baselevel) {
 	short modified_status[6]; // need to update only modifed stats
 
 	if (!message || !*message || sscanf(message, "%d %[^\n]", &level, atcmd_name) < 2 || level == 0) {
-		send_usage(fd, "Please, enter a level adjustement and a player name (usage: %s <#> <nickname>).", original_command);
+		send_usage(sd, "Please, enter a level adjustement and a player name (usage: %s <#> <nickname>).", original_command);
 		return -1;
 	}
 
@@ -9155,7 +9169,7 @@ ATCOMMAND_FUNC(character_joblevel) {
 	struct pc_base_job pl_s_class;
 
 	if (!message || !*message || sscanf(message, "%d %[^\n]", &level, atcmd_name) < 2 || level == 0) {
-		send_usage(fd, "Please, enter a level adjustement and a player name (usage: %s <#> <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a level adjustement and a player name (usage: %s <#> <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -9299,7 +9313,7 @@ ATCOMMAND_FUNC(kick) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -9407,20 +9421,20 @@ ATCOMMAND_FUNC(questskill) {
 	int skill_id;
 
 	if (!message || !*message || sscanf(message, "%d", &skill_id) < 1 || skill_id < 0) {
-		send_usage(fd, "Please, enter a quest skill number (usage: %s <#:0+>).", original_command);
-		send_usage(fd, "Novice                 Swordsman                  Thief                Merchant");
-		send_usage(fd, "142 = Emergency Care   144 = Moving HP Recovery   149 = Throw Sand     153 = Cart Revolution");
-		send_usage(fd, "143 = Act dead         145 = Attack Weak Point    150 = Back Sliding   154 = Change Cart");
-		send_usage(fd, "Archer                 146 = Auto Berserk         151 = Take Stone     155 = Crazy Uproar/Loud Voice");
-		send_usage(fd, "147 = Arrow Creation   Acolyte                    152 = Stone Throw    Magician");
-		send_usage(fd, "148 = Charge Arrows    156 = Holy Light                                157 = Energy Coat");
-		send_usage(fd, "Knight                 Blacksmith                 Priest");
-		send_usage(fd, "1001 = Charge Attack   1013 = Greed               1014 = Redemptio");
-		send_usage(fd, "Rogue                  Monk                       Sage");
-		send_usage(fd, "1005 = Close Confine   1015 = Ki Translation      1008 = Elemental Change Water");
-		send_usage(fd, "Dancer                 1016 = Ki Explosion        1017 = Elemental Change Earth");
-		send_usage(fd, "1011 = Wink of Charm                              1018 = Elemental Change Fire");
-		send_usage(fd, "                                                  1019 = Elemental Change Wind");
+		send_usage(sd, "Please, enter a quest skill number (usage: %s <#:0+>).", original_command);
+		send_usage(sd, "Novice                 Swordsman                  Thief                Merchant");
+		send_usage(sd, "142 = Emergency Care   144 = Moving HP Recovery   149 = Throw Sand     153 = Cart Revolution");
+		send_usage(sd, "143 = Act dead         145 = Attack Weak Point    150 = Back Sliding   154 = Change Cart");
+		send_usage(sd, "Archer                 146 = Auto Berserk         151 = Take Stone     155 = Crazy Uproar/Loud Voice");
+		send_usage(sd, "147 = Arrow Creation   Acolyte                    152 = Stone Throw    Magician");
+		send_usage(sd, "148 = Charge Arrows    156 = Holy Light                                157 = Energy Coat");
+		send_usage(sd, "Knight                 Blacksmith                 Priest");
+		send_usage(sd, "1001 = Charge Attack   1013 = Greed               1014 = Redemptio");
+		send_usage(sd, "Rogue                  Monk                       Sage");
+		send_usage(sd, "1005 = Close Confine   1015 = Ki Translation      1008 = Elemental Change Water");
+		send_usage(sd, "Dancer                 1016 = Ki Explosion        1017 = Elemental Change Earth");
+		send_usage(sd, "1011 = Wink of Charm                              1018 = Elemental Change Fire");
+		send_usage(sd, "                                                  1019 = Elemental Change Wind");
 		return -1;
 	}
 
@@ -9458,20 +9472,20 @@ ATCOMMAND_FUNC(charquestskill) {
 	int skill_id;
 
 	if (!message || !*message || sscanf(message, "%d %[^\n]", &skill_id, atcmd_name) < 2 || skill_id < 0) {
-		send_usage(fd, "Please, enter a quest skill number and a player name (usage: %s <#:0+> <char name|account_id>).", original_command);
-		send_usage(fd, "Novice                 Swordsman                  Thief                Merchant");
-		send_usage(fd, "142 = Emergency Care   144 = Moving HP Recovery   149 = Throw Sand     153 = Cart Revolution");
-		send_usage(fd, "143 = Act dead         145 = Attack Weak Point    150 = Back Sliding   154 = Change Cart");
-		send_usage(fd, "Archer                 146 = Auto Berserk         151 = Take Stone     155 = Crazy Uproar/Loud Voice");
-		send_usage(fd, "147 = Arrow Creation   Acolyte                    152 = Stone Throw    Magician");
-		send_usage(fd, "148 = Charge Arrows    156 = Holy Light                                157 = Energy Coat");
-		send_usage(fd, "Knight                 Blacksmith                 Priest");
-		send_usage(fd, "1001 = Charge Attack   1013 = Greed               1014 = Redemptio");
-		send_usage(fd, "Rogue                  Monk                       Sage");
-		send_usage(fd, "1005 = Close Confine   1015 = Ki Translation      1008 = Elemental Change Water");
-		send_usage(fd, "Dancer                 1016 = Ki Explosion        1017 = Elemental Change Earth");
-		send_usage(fd, "1011 = Wink of Charm                              1018 = Elemental Change Fire");
-		send_usage(fd, "                                                  1019 = Elemental Change Wind");
+		send_usage(sd, "Please, enter a quest skill number and a player name (usage: %s <#:0+> <char name|account_id>).", original_command);
+		send_usage(sd, "Novice                 Swordsman                  Thief                Merchant");
+		send_usage(sd, "142 = Emergency Care   144 = Moving HP Recovery   149 = Throw Sand     153 = Cart Revolution");
+		send_usage(sd, "143 = Act dead         145 = Attack Weak Point    150 = Back Sliding   154 = Change Cart");
+		send_usage(sd, "Archer                 146 = Auto Berserk         151 = Take Stone     155 = Crazy Uproar/Loud Voice");
+		send_usage(sd, "147 = Arrow Creation   Acolyte                    152 = Stone Throw    Magician");
+		send_usage(sd, "148 = Charge Arrows    156 = Holy Light                                157 = Energy Coat");
+		send_usage(sd, "Knight                 Blacksmith                 Priest");
+		send_usage(sd, "1001 = Charge Attack   1013 = Greed               1014 = Redemptio");
+		send_usage(sd, "Rogue                  Monk                       Sage");
+		send_usage(sd, "1005 = Close Confine   1015 = Ki Translation      1008 = Elemental Change Water");
+		send_usage(sd, "Dancer                 1016 = Ki Explosion        1017 = Elemental Change Earth");
+		send_usage(sd, "1011 = Wink of Charm                              1018 = Elemental Change Fire");
+		send_usage(sd, "                                                  1019 = Elemental Change Wind");
 		return -1;
 	}
 
@@ -9513,7 +9527,7 @@ ATCOMMAND_FUNC(lostskill) {
 	int skill_id;
 
 	if (!message || !*message || sscanf(message, "%d", &skill_id) < 1 || skill_id < 0) {
-		send_usage(fd, "Please, enter a quest skill number (usage: %s <#:0+>).", original_command);
+		send_usage(sd, "Please, enter a quest skill number (usage: %s <#:0+>).", original_command);
 		return -1;
 	}
 
@@ -9550,7 +9564,7 @@ ATCOMMAND_FUNC(charlostskill) {
 	int skill_id;
 
 	if (!message || !*message || sscanf(message, "%d %[^\n]", &skill_id, atcmd_name) < 2 || skill_id < 0) {
-		send_usage(fd, "Please, enter a quest skill number and a player name (usage: %s <#:0+> <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a quest skill number and a player name (usage: %s <#:0+> <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -9591,7 +9605,7 @@ ATCOMMAND_FUNC(spiritball) {
 	int number;
 
 	if (!message || !*message || sscanf(message, "%d", &number) < 1 || number < 0) {
-		send_usage(fd, "Please, enter a valid spirit ball number (usage: %s <number: 0-500>).", original_command);
+		send_usage(sd, "Please, enter a valid spirit ball number (usage: %s <number: 0-500>).", original_command);
 		return -1;
 	}
 
@@ -9624,7 +9638,7 @@ ATCOMMAND_FUNC(charspiritball) {
 	int number;
 
 	if (!message || !*message || sscanf(message, "%d %[^\n]", &number, atcmd_name) < 2 || number < 0) {
-		send_usage(fd, "Please, enter a spirit ball number and a player name (usage: %s <number: 0-500> <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a spirit ball number and a player name (usage: %s <number: 0-500> <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -9671,7 +9685,7 @@ ATCOMMAND_FUNC(party) {
 	memset(party_name, 0, sizeof(party_name));
 
 	if (!message || !*message || (sscanf(message, "\"%[^\"]\"", party_name) < 1 && sscanf(message, "%[^\n]", party_name) < 1) || party_name[0] == '\0') {
-		send_usage(fd, "Please, enter a party name (usage: %s \"party_name\"|<party_name>).", original_command);
+		send_usage(sd, "Please, enter a party name (usage: %s \"party_name\"|<party_name>).", original_command);
 		return -1;
 	}
 
@@ -9696,7 +9710,7 @@ ATCOMMAND_FUNC(guild) {
 	memset(guild_name, 0, sizeof(guild_name));
 
 	if (!message || !*message || (sscanf(message, "\"%[^\"]\"", guild_name) < 1 && sscanf(message, "%[^\n]", guild_name) < 1) || guild_name[0] == '\0') {
-		send_usage(fd, "Please, enter a guild name (usage: %s \"guild_name\"|<guild_name>).", original_command);
+		send_usage(sd, "Please, enter a guild name (usage: %s \"guild_name\"|<guild_name>).", original_command);
 		return -1;
 	}
 
@@ -9790,7 +9804,7 @@ ATCOMMAND_FUNC(idsearch) {
 	memset(item_name, 0, sizeof(item_name));
 
 	if (!message || !*message || sscanf(message, "%s", item_name) < 0) {
-		send_usage(fd, "Please, enter a part of item name (usage: %s <part_of_item_name>).", original_command);
+		send_usage(sd, "Please, enter a part of item name (usage: %s <part_of_item_name>).", original_command);
 		return -1;
 	}
 
@@ -9834,7 +9848,7 @@ ATCOMMAND_FUNC(whodrops) {
 	memset(item_name, 0, sizeof(item_name));
 
 	if (!message || !*message || sscanf(message, "%s", item_name) < 0) {
-		send_usage(fd, "Please, enter an item name/id (usage: %s <name/id_of_item>).", original_command);
+		send_usage(sd, "Please, enter an item name/id (usage: %s <name/id_of_item>).", original_command);
 		return -1;
 	}
 
@@ -10000,7 +10014,7 @@ ATCOMMAND_FUNC(charstreset) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -10029,7 +10043,7 @@ ATCOMMAND_FUNC(charskreset) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -10058,7 +10072,7 @@ ATCOMMAND_FUNC(charreset) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -10089,7 +10103,7 @@ ATCOMMAND_FUNC(charmodel) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%d %d %d %[^\n]", &hair_style, &hair_color, &cloth_color, atcmd_name) < 4 || hair_style < 0 || hair_color < 0 || cloth_color < 0) {
-		send_usage(fd, "Please, enter a valid model and a player name (usage: %s <hair ID: %d-%d> <hair color: %d-%d> <clothes color: %d-%d> <name>).", original_command,
+		send_usage(sd, "Please, enter a valid model and a player name (usage: %s <hair ID: %d-%d> <hair color: %d-%d> <clothes color: %d-%d> <name>).", original_command,
 		           battle_config.min_hair_style, battle_config.max_hair_style, battle_config.min_hair_color, battle_config.max_hair_color, battle_config.min_cloth_color, battle_config.max_cloth_color);
 		return -1;
 	}
@@ -10133,7 +10147,7 @@ ATCOMMAND_FUNC(charskpoint) {
 	int point;
 
 	if (!message || !*message || sscanf(message, "%d %[^\n]", &point, atcmd_name) < 2 || point == 0) {
-		send_usage(fd, "Please, enter a number and a player name (usage: %s <amount> <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a number and a player name (usage: %s <amount> <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -10172,7 +10186,7 @@ ATCOMMAND_FUNC(charstpoint) {
 	int point;
 
 	if (!message || !*message || sscanf(message, "%d %[^\n]", &point, atcmd_name) < 2 || point == 0) {
-		send_usage(fd, "Please, enter a number and a player name (usage: %s <amount> <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a number and a player name (usage: %s <amount> <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -10224,7 +10238,7 @@ ATCOMMAND_FUNC(charzeny) {
 	int zeny, new_zeny;
 
 	if (!message || !*message || sscanf(message, "%d %[^\n]", &zeny, atcmd_name) < 2 || zeny == 0) {
-		send_usage(fd, "Please, enter a number and a player name (usage: %s <zeny> <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a number and a player name (usage: %s <zeny> <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -10301,7 +10315,7 @@ ATCOMMAND_FUNC(guildrecall) {
 	memset(guild_name, 0, sizeof(guild_name));
 
 	if (!message || !*message || sscanf(message, "%[^\n]", guild_name) < 1) {
-		send_usage(fd, "Please, enter a guild name/id (usage: %s <guild_name/id>).", original_command);
+		send_usage(sd, "Please, enter a guild name/id (usage: %s <guild_name/id>).", original_command);
 		return -1;
 	}
 
@@ -10351,7 +10365,7 @@ ATCOMMAND_FUNC(partyrecall) {
 	memset(party_name, 0, sizeof(party_name));
 
 	if (!message || !*message || sscanf(message, "%[^\n]", party_name) < 1) {
-		send_usage(fd, "Please, enter a party name/id (usage: %s <party_name/id>).", original_command);
+		send_usage(sd, "Please, enter a party name/id (usage: %s <party_name/id>).", original_command);
 		return -1;
 	}
 
@@ -10502,7 +10516,7 @@ ATCOMMAND_FUNC(mapinfo) {
 	sscanf(message, "%d %[^\n]", &list, atcmd_mapname);
 
 	if (list < 0 || list > 3) {
-		send_usage(fd, "Please, enter at least a valid list number (usage: %s <0-3> [map]).", original_command);
+		send_usage(sd, "Please, enter at least a valid list number (usage: %s <0-3> [map]).", original_command);
 		return -1;
 	}
 
@@ -10667,7 +10681,7 @@ ATCOMMAND_FUNC(mapinfo) {
 		}
 		break;
 	default: // normally impossible to arrive here
-		send_usage(fd, "Please, enter at least a valid list number (usage: %s <0-3> [map]).", original_command);
+		send_usage(sd, "Please, enter at least a valid list number (usage: %s <0-3> [map]).", original_command);
 		return -1;
 		break;
 	}
@@ -10697,7 +10711,7 @@ ATCOMMAND_FUNC(mobinfo) {
 	memset(output2, 0, sizeof(output2));
 
 	if (!message || !*message) {
-		send_usage(fd, "Please, enter a Monster/NPC name/id (usage: %s <monster_name_or_monster_ID>).", original_command);
+		send_usage(sd, "Please, enter a Monster/NPC name/id (usage: %s <monster_name_or_monster_ID>).", original_command);
 		return -1;
 	}
 
@@ -10925,7 +10939,7 @@ ATCOMMAND_FUNC(char_mount_peco) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -11025,7 +11039,7 @@ ATCOMMAND_FUNC(char_falcon) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -11067,7 +11081,7 @@ ATCOMMAND_FUNC(cart) {
 			return -1;
 		}
 	} else if (!message || !*message || sscanf(message, "%hd", &cart) < 1 || cart < 0 || cart > 5) {
-		send_usage(fd, "Please, enter a cart type (usage: %s <cart_type:0-5>).", original_command);
+		send_usage(sd, "Please, enter a cart type (usage: %s <cart_type:0-5>).", original_command);
 		return -1;
 	}
 
@@ -11145,11 +11159,11 @@ ATCOMMAND_FUNC(char_cart) {
 	if (command[9] != 0) { // charcart0, charcart1, charcart2, charcart3, charcart4, charcart5
 		cart = (short)command[9] - 48;
 		if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1 || cart < 0 || cart > 5) {
-			send_usage(fd, "Please, enter a cart type and a character name (usage: %s <char name|account_id>).", original_command);
+			send_usage(sd, "Please, enter a cart type and a character name (usage: %s <char name|account_id>).", original_command);
 			return -1;
 		}
 	} else if (!message || !*message || sscanf(message, "%hd %[^\n]", &cart, atcmd_name) < 2 || cart < 0 || cart > 5) {
-		send_usage(fd, "Please, enter a cart type and a character name (usage: %s <cart_type:0-5> <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a cart type and a character name (usage: %s <cart_type:0-5> <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -11210,7 +11224,7 @@ ATCOMMAND_FUNC(char_remove_cart) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a character name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a character name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -11244,7 +11258,7 @@ ATCOMMAND_FUNC(guildspy) {
 	memset(guild_name, 0, sizeof(guild_name));
 
 	if (!message || !*message || sscanf(message, "%[^\n]", guild_name) < 1) {
-		send_usage(fd, "Please, enter a guild name/id (usage: %s <guild_name/id>).", original_command);
+		send_usage(sd, "Please, enter a guild name/id (usage: %s <guild_name/id>).", original_command);
 		return -1;
 	}
 
@@ -11278,7 +11292,7 @@ ATCOMMAND_FUNC(partyspy) {
 	memset(party_name, 0, sizeof(party_name));
 
 	if (!message || !*message || sscanf(message, "%[^\n]", party_name) < 1) {
-		send_usage(fd, "Please, enter a party name/id (usage: %s <party_name/id>).", original_command);
+		send_usage(sd, "Please, enter a party name/id (usage: %s <party_name/id>).", original_command);
 		return -1;
 	}
 
@@ -11337,7 +11351,7 @@ ATCOMMAND_FUNC(nuke) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -11368,7 +11382,7 @@ ATCOMMAND_FUNC(enablenpc) {
 	memset(NPCname, 0, sizeof(NPCname));
 
 	if (!message || !*message || sscanf(message, "%[^\n]", NPCname) < 1) {
-		send_usage(fd, "Please, enter a NPC name (usage: %s <NPC_name>).", original_command);
+		send_usage(sd, "Please, enter a NPC name (usage: %s <NPC_name>).", original_command);
 		return -1;
 	}
 
@@ -11394,7 +11408,7 @@ ATCOMMAND_FUNC(disablenpc) {
 	memset(NPCname, 0, sizeof(NPCname));
 
 	if (!message || !*message || sscanf(message, "%[^\n]", NPCname) < 1) {
-		send_usage(fd, "Please, enter a NPC name (usage: %s <NPC_name>).", original_command);
+		send_usage(sd, "Please, enter a NPC name (usage: %s <NPC_name>).", original_command);
 		return -1;
 	}
 
@@ -11547,7 +11561,7 @@ ATCOMMAND_FUNC(chardelitem) {
 	memset(item_name, 0, sizeof(item_name));
 
 	if (!message || !*message || sscanf(message, "%s %d %[^\n]", item_name, &number, atcmd_name) < 3 || number < 1) {
-		send_usage(fd, "Please, enter an item name/id, a quantity and a player name (usage: %s <item_name_or_ID> <quantity> <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter an item name/id, a quantity and a player name (usage: %s <item_name_or_ID> <quantity> <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -11623,9 +11637,9 @@ ATCOMMAND_FUNC(jail) {
 	memset(modif, 0, sizeof(modif));
 
 	if (!message || !*message || sscanf(message, "%s %[^\n]", modif, atcmd_name) < 2) {
-		send_usage(fd, "Please, enter a player name (usage: %s <time> <char name|account_id>).", original_command);
-		send_usage(fd, "time usage: adjustement (+/- value) and element (y/a, m, d/j, h, mn, s)");
-		send_usage(fd, "Example: %s +1m-2mn1s-6y testplayer", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <time> <char name|account_id>).", original_command);
+		send_usage(sd, "time usage: adjustement (+/- value) and element (y/a, m, d/j, h, mn, s)");
+		send_usage(sd, "Example: %s +1m-2mn1s-6y testplayer", original_command);
 		return -1;
 	}
 
@@ -11780,7 +11794,7 @@ ATCOMMAND_FUNC(unjail) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -11854,7 +11868,7 @@ ATCOMMAND_FUNC(charjailtime) {
 	time_t jail_time;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -11887,7 +11901,7 @@ ATCOMMAND_FUNC(disguise) {
 	int mob_id;
 
 	if (!message || !*message) {
-		send_usage(fd, "Please, enter a Monster/NPC name/id (usage: %s <monster_name_or_monster_ID>).", original_command);
+		send_usage(sd, "Please, enter a Monster/NPC name/id (usage: %s <monster_name_or_monster_ID>).", original_command);
 		return -1;
 	}
 
@@ -11953,7 +11967,7 @@ ATCOMMAND_FUNC(chardisguise) {
 	memset(mob_name, 0, sizeof(mob_name));
 
 	if (!message || !*message || sscanf(message, "%s %[^\n]", mob_name, atcmd_name) < 2) {
-		send_usage(fd, "Please, enter a Monster/NPC name/id and a player name (usage: %s <monster_name_or_monster_ID> <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a Monster/NPC name/id and a player name (usage: %s <monster_name_or_monster_ID> <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -12003,7 +12017,7 @@ ATCOMMAND_FUNC(charundisguise) {
 	struct map_session_data* pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -12050,7 +12064,7 @@ ATCOMMAND_FUNC(chardisguisemap) {
 	memset(atcmd_mapname, 0, sizeof(atcmd_mapname));
 
 	if (!message || !*message || sscanf(message, "%s %[^\n]", mob_name, atcmd_mapname) < 1) {
-		send_usage(fd, "Please, enter a Monster/NPC name/id (usage: %s <monster_name_or_monster_ID> [map]).", original_command);
+		send_usage(sd, "Please, enter a Monster/NPC name/id (usage: %s <monster_name_or_monster_ID> [map]).", original_command);
 		return -1;
 	}
 
@@ -12171,7 +12185,7 @@ ATCOMMAND_FUNC(chardisguiseall) {
 	memset(mob_name, 0, sizeof(mob_name));
 
 	if (!message || !*message || sscanf(message, "%s", mob_name) < 1) {
-		send_usage(fd, "Please, enter a Monster/NPC name/id (usage: %s <monster_name_or_monster_ID>).", original_command);
+		send_usage(sd, "Please, enter a Monster/NPC name/id (usage: %s <monster_name_or_monster_ID>).", original_command);
 		return -1;
 	}
 
@@ -12266,7 +12280,7 @@ ATCOMMAND_FUNC(changelook) {
 	struct item_data *item_data;
 
 	if (!message || !*message || sscanf(message, "%s", item_name) < 1) {
-		send_usage(fd, "Usage: %s <item name | ID>", original_command);
+		send_usage(sd, "Usage: %s <item name | ID>", original_command);
 		return -1;
 	}
 
@@ -12322,7 +12336,7 @@ ATCOMMAND_FUNC(charchangelook) {
 	struct map_session_data* pl_sd;
 
 	if (!message || !*message || sscanf(message, "%s %[^\n]", item_name, atcmd_name) < 2) {
-		send_usage(fd, "Usage: %s <item name | ID> <char name|account_id>", original_command);
+		send_usage(sd, "Usage: %s <item name | ID> <char name|account_id>", original_command);
 		return -1;
 	}
 
@@ -12383,7 +12397,7 @@ ATCOMMAND_FUNC(charchangelook) {
  */
 ATCOMMAND_FUNC(broadcast) {
 	if (!message || !*message) {
-		send_usage(fd, "Please, enter a message (usage: %s <message>).", original_command);
+		send_usage(sd, "Please, enter a message (usage: %s <message>).", original_command);
 		return -1;
 	}
 
@@ -12402,7 +12416,7 @@ ATCOMMAND_FUNC(broadcast) {
  */
 ATCOMMAND_FUNC(localbroadcast) {
 	if (!message || !*message) {
-		send_usage(fd, "Please, enter a message (usage: %s <message>).", original_command);
+		send_usage(sd, "Please, enter a message (usage: %s <message>).", original_command);
 		return -1;
 	}
 
@@ -12424,7 +12438,7 @@ ATCOMMAND_FUNC(localbroadcast) {
  */
 ATCOMMAND_FUNC(localbroadcast2) {
 	if (!message || !*message) {
-		send_usage(fd, "Please, enter a message (usage: %s <message>).", original_command);
+		send_usage(sd, "Please, enter a message (usage: %s <message>).", original_command);
 		return -1;
 	}
 
@@ -12485,7 +12499,7 @@ ATCOMMAND_FUNC(charignorelist) {
 	int i;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -12527,7 +12541,7 @@ ATCOMMAND_FUNC(inall) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -12568,7 +12582,7 @@ ATCOMMAND_FUNC(exall) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -12613,7 +12627,7 @@ ATCOMMAND_FUNC(email) {
 	memset(new_email, 0, sizeof(new_email));
 
 	if (!message || !*message || sscanf(message, "%s %s", actual_email, new_email) < 2) {
-		send_usage(fd, "Please enter 2 emails (usage: %s <actual@email> <new@email>).", original_command);
+		send_usage(sd, "Please enter 2 emails (usage: %s <actual@email> <new@email>).", original_command);
 		return -1;
 	}
 
@@ -12649,7 +12663,7 @@ ATCOMMAND_FUNC(password) {
 	memset(new_password, 0, sizeof(new_password));
 
 	if (!message || !*message || sscanf(message, "%s %s", old_password, new_password) < 2) {
-		send_usage(fd, "Please enter 2 passwords (usage: %s <old_password> <new_password>).", original_command);
+		send_usage(sd, "Please enter 2 passwords (usage: %s <old_password> <new_password>).", original_command);
 		return -1;
 	}
 
@@ -12673,7 +12687,7 @@ ATCOMMAND_FUNC(effect) {
 	int type = 0, flag = 0, i;
 
 	if (!message || !*message || sscanf(message, "%d %d", &type, &flag) < 2) {
-		send_usage(fd, "Please, enter at least an option (usage: %s <type> <flag>).", original_command);
+		send_usage(sd, "Please, enter at least an option (usage: %s <type> <flag>).", original_command);
 		return -1;
 	}
 
@@ -12706,7 +12720,7 @@ ATCOMMAND_FUNC(character_item_list) {
 	memset(outputtmp, 0, sizeof(outputtmp));
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -12813,7 +12827,7 @@ ATCOMMAND_FUNC(character_storage_list) {
 	memset(outputtmp, 0, sizeof(outputtmp));
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -12890,7 +12904,7 @@ ATCOMMAND_FUNC(character_cart_list) {
 	memset(outputtmp, 0, sizeof(outputtmp));
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -12974,7 +12988,7 @@ ATCOMMAND_FUNC(charkiller) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -13017,7 +13031,7 @@ ATCOMMAND_FUNC(charkillable) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -13130,7 +13144,7 @@ ATCOMMAND_FUNC(npcmove) {
 	struct npc_data *nd = 0;
 
 	if (!message || !*message || sscanf(message, "%d %d %[^\n]", &x, &y, atcmd_name) < 3) {
-		send_usage(fd, "Please, enter a NPC name and its new coordinates (usage: %s <New_X> <New_Y> <NPC_name>).", original_command);
+		send_usage(sd, "Please, enter a NPC name and its new coordinates (usage: %s <New_X> <New_Y> <NPC_name>).", original_command);
 		return -1;
 	}
 
@@ -13175,7 +13189,7 @@ ATCOMMAND_FUNC(addwarp) {
 	int x, y;
 
 	if (!message || !*message || sscanf(message, "%s %d %d", atcmd_mapname, &x, &y) < 3) {
-		send_usage(fd, "Please, enter a map name with a position (usage: %s <map name> <x_coord> <y_coord>).", original_command);
+		send_usage(sd, "Please, enter a map name with a position (usage: %s <map name> <x_coord> <y_coord>).", original_command);
 		return -1;
 	}
 
@@ -13214,7 +13228,7 @@ ATCOMMAND_FUNC(follow) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id> or %s off).", original_command, original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id> or %s off).", original_command, original_command);
 		return -1;
 	}
 
@@ -13240,7 +13254,7 @@ ATCOMMAND_FUNC(follow) {
 				}
 			} else {
 				pc_follow(sd, pl_sd->bl.id);
-				send_usage(fd, "To cancel follow GM command, type: %s off.", original_command);
+				send_usage(sd, "To cancel follow GM command, type: %s off.", original_command);
 			}
 		} else {
 			clif_displaymessage(fd, msg_txt(3)); // Character not found.
@@ -13278,7 +13292,7 @@ ATCOMMAND_FUNC(chareffect) {
 	int type = 0;
 
 	if (!message || !*message || sscanf(message, "%d %[^\n]", &type, atcmd_name) < 2) {
-		send_usage(fd, "usage: %s <type+> <char name|account_id>.", original_command);
+		send_usage(sd, "usage: %s <type+> <char name|account_id>.", original_command);
 		return -1;
 	}
 
@@ -13323,7 +13337,7 @@ ATCOMMAND_FUNC(chardropall) {
 	int i;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -13384,7 +13398,7 @@ ATCOMMAND_FUNC(charstoreall) {
 	short i;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -13458,7 +13472,7 @@ ATCOMMAND_FUNC(useskill) {
 	int inf;
 
 	if (!message || !*message || sscanf(message, "%d %d %[^\n]", &skillnum, &skilllv, atcmd_name) < 3) {
-		send_usage(fd, "Usage: %s <skillnum> <skillv> <char name|account_id>", original_command);
+		send_usage(sd, "Usage: %s <skillnum> <skillv> <char name|account_id>", original_command);
 		return -1;
 	}
 
@@ -13489,7 +13503,7 @@ ATCOMMAND_FUNC(skilltree) {
 	struct skill_tree_entry *ent;
 
 	if (!message || !*message || sscanf(message, "%d %[^\r\n]", &skillnum, atcmd_name) < 2) {
-		send_usage(fd, "Usage: %s <skillnum:1+> <char name|account_id>", original_command);
+		send_usage(sd, "Usage: %s <skillnum:1+> <char name|account_id>", original_command);
 		return -1;
 	}
 
@@ -13566,7 +13580,7 @@ ATCOMMAND_FUNC(marry) {
 	     sscanf(message, "%[^,],\"%[^\"]\"", player1, player2) < 2 &&
 	     sscanf(message, "\"%[^\"]\",%[^\r\n]", player1, player2) < 2 &&
 	     sscanf(message, "%[^,],%[^\r\n]", player1, player2) < 2)) {
-		send_usage(fd, "usage: %s \"<player1>\",\"<player2>\" or %s <player1>,<player2>.", original_command, original_command);
+		send_usage(sd, "usage: %s \"<player1>\",\"<player2>\" or %s <player1>,<player2>.", original_command, original_command);
 		return -1;
 	}
 
@@ -13607,7 +13621,7 @@ ATCOMMAND_FUNC(divorce) {
 	struct map_session_data *pl_sd2;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -13681,7 +13695,7 @@ ATCOMMAND_FUNC(grind) {
 	int hp, sp;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (Usage: %s <target>).", original_command);
+		send_usage(sd, "Please, enter a player name (Usage: %s <target>).", original_command);
 		return -1;
 	}
 
@@ -13966,7 +13980,7 @@ ATCOMMAND_FUNC(sound) {
 	memset(sound_file2, 0, sizeof(sound_file2));
 
 	if(!message || !*message || sscanf(message, "%s", sound_file) < 1) {
-		send_usage(fd, "Please, enter a sound filename. (usage: %s <filename>)", original_command);
+		send_usage(sd, "Please, enter a sound filename. (usage: %s <filename>)", original_command);
 		return -1;
 	}
 
@@ -14105,7 +14119,7 @@ ATCOMMAND_FUNC(adjcmdlvl) {
 	char cmd[100];
 
 	if (!message || !*message || sscanf(message, "%d %s", &newlev, cmd) != 2) {
-		send_usage(fd, "usage: %s <lvl> <command>.", original_command);
+		send_usage(sd, "usage: %s <lvl> <command>.", original_command);
 		return -1;
 	}
 
@@ -14135,7 +14149,7 @@ ATCOMMAND_FUNC(adjgmlvl) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%d %[^\r\n]", &newlev, atcmd_name) != 2 || newlev < 0 || newlev > 99) {
-		send_usage(fd, "usage: %s <lvl:0-99> <player>.", original_command);
+		send_usage(sd, "usage: %s <lvl:0-99> <player>.", original_command);
 		return -1;
 	}
 
@@ -14177,12 +14191,12 @@ ATCOMMAND_FUNC(adjgmlvl2) {
 	if (command[6] >= '0' && command[6] <= '9') {
 		newlev = atoi(command + 6);
 		if (!message || !*message || sscanf(message, "%[^\r\n]", atcmd_name) != 1) {
-			send_usage(fd, "usage: %s <player>.", original_command);
+			send_usage(sd, "usage: %s <player>.", original_command);
 			return -1;
 		}
 	} else {
 		if (!message || !*message || sscanf(message, "%d %[^\r\n]", &newlev, atcmd_name) != 2 || newlev < 0 || newlev > 99) {
-			send_usage(fd, "usage: %s <lvl:0-99> <player>.", original_command);
+			send_usage(sd, "usage: %s <lvl:0-99> <player>.", original_command);
 			return -1;
 		}
 	}
@@ -14228,7 +14242,7 @@ ATCOMMAND_FUNC(trade) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (Usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (Usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -14252,7 +14266,7 @@ ATCOMMAND_FUNC(setbattleflag) {
 	char flag[100], value[100];
 
 	if (!message || !*message || sscanf(message, "%s %s", flag, value) < 2) {
-		send_usage(fd, "usage: %s <flag> <value>.", original_command);
+		send_usage(sd, "usage: %s <flag> <value>.", original_command);
 		return -1;
 	}
 
@@ -14278,7 +14292,7 @@ ATCOMMAND_FUNC(setmapflag) {
 	memset(mapflaglower, 0, sizeof(mapflaglower));
 
 	if (!message || !*message || sscanf(message, "%s %s %[^\n]", atcmd_mapname, mapflag, option) < 2) {
-		send_usage(fd, "usage: %s <map> <mapflag> [option|value].", original_command);
+		send_usage(sd, "usage: %s <map> <mapflag> [option|value].", original_command);
 		return -1;
 	}
 
@@ -14360,7 +14374,7 @@ ATCOMMAND_FUNC(unmute) {
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(fd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
+		send_usage(sd, "Please, enter a player name (usage: %s <char name|account_id>).", original_command);
 		return -1;
 	}
 
@@ -14393,7 +14407,7 @@ ATCOMMAND_FUNC(mute) {
 	int manner;
 
 	if (!message || !*message || sscanf(message, "%d %[^\n]", &manner, atcmd_name) < 2) {
-		send_usage(fd, "usage: %s <time> <character name>.", original_command);
+		send_usage(sd, "usage: %s <time> <character name>.", original_command);
 		return -1;
 	}
 
@@ -14575,7 +14589,7 @@ ATCOMMAND_FUNC(npctalk) {
 	if (!message || !*message ||
 	    (sscanf(message, "\"%[^\"]\" %[^\n]", npc_name, mes) < 2 &&
 	     sscanf(message, "%s %[^\n]", npc_name, mes) < 2)) {
-		send_usage(fd, "Please, enter a NPC name and a message (usage: %s <npc_name> <message>).", original_command);
+		send_usage(sd, "Please, enter a NPC name and a message (usage: %s <npc_name> <message>).", original_command);
 		return -1;
 	}
 
@@ -14602,7 +14616,7 @@ ATCOMMAND_FUNC(pettalk) {
 	struct pet_data *pd;
 
 	if (!message || !*message || sscanf(message, "%[^\n]", mes) < 1) {
-		send_usage(fd, "Please, enter a message (usage: %s <message>).", original_command);
+		send_usage(sd, "Please, enter a message (usage: %s <message>).", original_command);
 		return -1;
 	}
 
@@ -14648,7 +14662,7 @@ ATCOMMAND_FUNC(autoloot) {
 		if (result_sscanf != 0) {
 			drop_rate = drop_rate2;
 		} else {
-			send_usage(fd, "Please, enter a max drop rate (usage: %s <max_drop_rate>).", original_command);
+			send_usage(sd, "Please, enter a max drop rate (usage: %s <max_drop_rate>).", original_command);
 			if (sd->state.autoloot_rate == 0)
 				clif_displaymessage(fd, msg_txt(270)); // Your current autoloot option is disabled.
 			else {
@@ -14746,7 +14760,7 @@ ATCOMMAND_FUNC(displaydrop) {
 		if (result_sscanf != 0) {
 			drop_rate = drop_rate2;
 		} else {
-			send_usage(fd, "Please, enter a max drop rate (usage: %s <max_drop_rate>).", original_command);
+			send_usage(sd, "Please, enter a max drop rate (usage: %s <max_drop_rate>).", original_command);
 			if (sd->state.displaydrop_rate == 0)
 				clif_displaymessage(fd, msg_txt(661)); // Your current display drop option is disabled.
 			else {
@@ -14808,7 +14822,7 @@ ATCOMMAND_FUNC(main) {
 	char message_to_all[100];
 
 	if (!message || !*message || sscanf(message, "%[^\n]", message_to_all) < 1) {
-		send_usage(fd, "Please, enter a message (usage: %s <message>).", original_command);
+		send_usage(sd, "Please, enter a message (usage: %s <message>).", original_command);
 		return -1;
 	}
 
@@ -14859,7 +14873,7 @@ ATCOMMAND_FUNC(request) {
 	char message_to_GM[100];
 
 	if (!message || !*message || sscanf(message, "%[^\n]", message_to_GM) < 1) {
-		send_usage(fd, "Please, enter a message (usage: %s <message>).", original_command);
+		send_usage(sd, "Please, enter a message (usage: %s <message>).", original_command);
 		return -1;
 	}
 

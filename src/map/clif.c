@@ -4871,7 +4871,7 @@ void clif_GlobalMessage(struct block_list *bl, char *message) {
  * Does an announce message in the given color.
  *------------------------------------------
  */
-void clif_announce(char* mes, unsigned int color, unsigned int flag) {
+void clif_announce(struct block_list *bl, char* mes, unsigned int color, unsigned int flag) {
 	WPACKETW( 0) = 0x1c3;
 	WPACKETW( 2) = 16 + strlen(mes) + 1;
 	WPACKETL( 4) = color;
@@ -4881,7 +4881,7 @@ void clif_announce(char* mes, unsigned int color, unsigned int flag) {
 	strcpy(WPACKETP(16), mes);
 
 	flag &= 0x07;
-	clif_send(WPACKETW(2), NULL,
+	clif_send(WPACKETW(2), bl,
 	          (flag == 1) ? ALL_SAMEMAP :
 	          (flag == 2) ? AREA :
 	          (flag == 3) ? SELF :
@@ -5825,6 +5825,22 @@ int clif_party_leaved(struct party *p, struct map_session_data *sd, int account_
 	}
 
 	return 0;
+}
+
+/*==========================================
+ * to send a message like a party message to 1 player
+ *------------------------------------------
+ */
+void clif_party_message_self(struct map_session_data *sd, char *mes, int len) {
+	nullpo_retv(sd);
+
+	WPACKETW(0) = 0x109;
+	WPACKETW(2) = len + 8;
+	WPACKETL(4) = sd->status.account_id;
+	strncpy(WPACKETP(8), mes, len);
+	clif_send(len + 8, &sd->bl, SELF);
+
+	return;
 }
 
 /*==========================================

@@ -3624,6 +3624,7 @@ static const struct battle_config_int {
 	{ "idle_delay_no_share",                        &battle_config.idle_delay_no_share}, // [Yor]
 	{ "ban_hack_trade",                             &battle_config.ban_hack_trade }, // added by [Yor]
 	{ "ban_bot",                                    &battle_config.ban_bot }, // added by [Yor]
+	{ "atcommand_send_usage_type",                  &battle_config.atcommand_send_usage_type }, // added by [Yor]
 };
 
 int battle_set_value(char *w1, char *w2) {
@@ -3819,6 +3820,7 @@ void battle_set_defaults() {
 	battle_config.holywater_name_input = 1;
 	battle_config.atcommand_item_creation_name_input = 1; // Add name to all items, except item with slot (to give possibility to add cards)
 	battle_config.atcommand_max_player_gm_level = 10; // GM level 10 is maximum GM level of a 'normal' player
+	battle_config.atcommand_send_usage_type = -1; // Send usage of GM commands like a chat message
 	battle_config.display_delay_skill_fail = 1;
 	battle_config.display_snatcher_skill_fail = 1;
 	battle_config.chat_warpportal = 0;
@@ -4215,6 +4217,10 @@ void battle_validate_conf() {
 		battle_config.atcommand_max_player_gm_level = 0;
 	else if (battle_config.atcommand_max_player_gm_level > 100)
 		battle_config.atcommand_max_player_gm_level = 100;
+	if (battle_config.atcommand_send_usage_type < -5) // Send usage of GM commands like a chat message
+		battle_config.atcommand_send_usage_type = -1; // set default
+	else if (battle_config.atcommand_send_usage_type > 16777215) // 0xFFFFFF
+		battle_config.atcommand_send_usage_type = -1; // set default
 
 	if (battle_config.vending_max_value > 2000000000 || battle_config.vending_max_value <= 0)
 		battle_config.vending_max_value = 2000000000;

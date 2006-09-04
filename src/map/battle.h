@@ -266,6 +266,7 @@ extern struct Battle_Config {
 	unsigned short holywater_name_input;
 	unsigned short atcommand_item_creation_name_input;
 	unsigned short atcommand_max_player_gm_level;
+	int atcommand_send_usage_type;
 	unsigned short display_delay_skill_fail;
 	unsigned short display_snatcher_skill_fail;
 	unsigned short chat_warpportal;

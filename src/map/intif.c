@@ -145,7 +145,7 @@ int intif_GMmessage(char* mes, int flag) { // 0x3000/0x3800 <packet_len>.w <mess
 }
 
 void intif_announce(char* mes, unsigned int color, unsigned int flag) {
-	clif_announce(mes, color, flag);
+	clif_announce(NULL, mes, color, flag);
 
 		// send message (if multi-servers)
 	if (!map_is_alone) {
@@ -1432,7 +1432,7 @@ int intif_parse(int fd) {
 	case 0x3806:	mapif_parse_MainMessage(RFIFOP(fd,4), RFIFOP(fd,28), RFIFOW(fd,2) - 28); break; // 0x3006/0x3806 <packet_len>.w <wispname>.24B <message>.?B
 	case 0x3807:	mapif_parse_MessageToGM(RFIFOP(fd,4), RFIFOP(fd,28), RFIFOW(fd,2) - 28); break; // 0x3007/0x3807 <packet_len>.w <wispname>.24B <message>.?B
 
-	case 0x3809:	clif_announce(RFIFOP(fd,12), RFIFOL(fd,4), RFIFOL(fd,8)); break; // 0x3009/0x3809 <packet_len>.w <color>.L <flag>.L <message>.?B
+	case 0x3809:	clif_announce(NULL, RFIFOP(fd,12), RFIFOL(fd,4), RFIFOL(fd,8)); break; // 0x3009/0x3809 <packet_len>.w <color>.L <flag>.L <message>.?B
 
 	case 0x3810:	intif_parse_LoadStorage(fd); break;
 	case 0x3811:	intif_parse_SaveStorage(fd); break; // need to remove storage's flag of saving
