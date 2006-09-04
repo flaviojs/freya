@@ -166,11 +166,11 @@
 1038,Osiris,chase,172,1,200,0,5000,yes,target,always,0,,,,,,
 1038,Osiris,chase,140,8,200,0,0,yes,target,always,0,,,,,,
 1038,Osiris,chase,181,1,100,0,10000,yes,target,always,0,,,,,,
-1038,Osiris@NPC_SUMMONMONSTER,attack,209,5,1000,3000,120000,no,self,myhpltmaxrate,5,1522,,,,, // Ancient Mummy
-1038,Osiris@NPC_SUMMONMONSTER,chase,209,5,1000,3000,120000,no,self,myhpltmaxrate,5,1522,,,,, // Ancient Mummy
-1038,Osiris@NPC_SUMMONSLAVE,attack,196,6,1000,3000,120000,no,self,slavele,2,1421,,,,, // Isis
-1038,Osiris@NPC_SUMMONSLAVE,chase,196,6,10000,3000,120000,no,self,slavele,2,1421,,,,, // Isis
-1038,Osiris@NPC_SUMMONSLAVE,idle,196,6,10000,3000,120000,no,self,slavele,2,1421,,,,, // Isis
+1038,Osiris@NPC_SUMMONMONSTER,attack,209,5,1000,3000,180000,no,self,myhpltmaxrate,5,1522,,,,, // Ancient Mummy
+1038,Osiris@NPC_SUMMONMONSTER,chase,209,5,1000,3000,180000,no,self,myhpltmaxrate,5,1522,,,,, // Ancient Mummy
+1038,Osiris@NPC_SUMMONSLAVE,attack,196,6,1000,3000,180000,no,self,slavele,2,1421,,,,, // Isis
+1038,Osiris@NPC_SUMMONSLAVE,chase,196,6,1000,3000,180000,no,self,slavele,2,1421,,,,, // Isis
+1038,Osiris@NPC_SUMMONSLAVE,idle,196,6,1000,3000,180000,no,self,slavele,2,1421,,,,, // Isis
 1038,Osiris@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1038,Osiris@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1038,Osiris@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -190,11 +190,11 @@
 1039,Baphomet,chase,85,10,800,1500,4000,no,target,skillused,18,,,,,,
 1039,Baphomet@AL_TELEPORT,idle,26,1,500,0,5000,yes,self,always,,,,,,,
 1039,Baphomet@AL_TELEPORT,walk,26,1,500,0,5000,yes,self,always,,,,,,,
-1039,Baphomet@NPC_SUMMONMONSTER,attack,209,4,1000,3000,120000,no,self,myhpltmaxrate,5,1431,,,,, // Baphomet Jr
-1039,Baphomet@NPC_SUMMONMONSTER,chase,209,4,1000,3000,120000,no,self,myhpltmaxrate,5,1431,,,,, // Baphomet Jr
-1039,Baphomet@NPC_SUMMONSLAVE,attack,196,4,1000,3000,120000,no,self,slavele,2,1431,,,,, // Baphomet Jr
-1039,Baphomet@NPC_SUMMONSLAVE,chase,196,4,10000,3000,120000,no,self,slavele,2,1431,,,,, // Baphomet Jr
-1039,Baphomet@NPC_SUMMONSLAVE,idle,196,4,1000,3000,120000,no,self,slavele,2,1431,,,,, // Baphomet Jr
+1039,Baphomet@NPC_SUMMONMONSTER,attack,209,4,1000,3000,180000,no,self,myhpltmaxrate,5,1431,,,,, // Baphomet Jr
+1039,Baphomet@NPC_SUMMONMONSTER,chase,209,4,1000,3000,180000,no,self,myhpltmaxrate,5,1431,,,,, // Baphomet Jr
+1039,Baphomet@NPC_SUMMONSLAVE,attack,196,4,1000,3000,180000,no,self,slavele,2,1431,,,,, // Baphomet Jr
+1039,Baphomet@NPC_SUMMONSLAVE,chase,196,4,1000,3000,180000,no,self,slavele,2,1431,,,,, // Baphomet Jr
+1039,Baphomet@NPC_SUMMONSLAVE,idle,196,4,1000,3000,180000,no,self,slavele,2,1431,,,,, // Baphomet Jr
 1039,Baphomet@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1039,Baphomet@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1039,Baphomet@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -228,11 +228,11 @@
 1046,Doppelganger,chase,29,1,500,3000,120000,no,self,myhpltmaxrate,50,,,,,,
 1046,Doppelganger,chase,15,10,1000,1500,10000,no,target,longrangeattacked,,,,,,,
 1046,Doppelganger,chase,15,10,500,1500,10000,no,target,always,0,,,,,,
-1046,Doppelganger@NPC_SUMMONMONSTER,attack,209,5,1000,3000,120000,no,self,myhpltmaxrate,5,1427,,,,, // Nightmare
-1046,Doppelganger@NPC_SUMMONMONSTER,chase,209,5,1000,3000,120000,no,self,myhpltmaxrate,5,1427,,,,, // Nightmare
-1046,Doppelganger@NPC_SUMMONSLAVE,attack,196,5,1000,3000,120000,no,self,slavele,2,1427,,,,, // Nightmare
-1046,Doppelganger@NPC_SUMMONSLAVE,chase,196,5,10000,3000,120000,no,self,slavele,2,1427,,,,, // Nightmare
-1046,Doppelganger@NPC_SUMMONSLAVE,idle,196,5,1000,3000,120000,no,self,slavele,2,1427,,,,, // Nightmare
+1046,Doppelganger@NPC_SUMMONMONSTER,attack,209,5,1000,3000,180000,no,self,myhpltmaxrate,5,1427,,,,, // Nightmare
+1046,Doppelganger@NPC_SUMMONMONSTER,chase,209,5,1000,3000,180000,no,self,myhpltmaxrate,5,1427,,,,, // Nightmare
+1046,Doppelganger@NPC_SUMMONSLAVE,attack,196,5,1000,3000,180000,no,self,slavele,2,1427,,,,, // Nightmare
+1046,Doppelganger@NPC_SUMMONSLAVE,chase,196,5,1000,3000,180000,no,self,slavele,2,1427,,,,, // Nightmare
+1046,Doppelganger@NPC_SUMMONSLAVE,idle,196,5,1000,3000,180000,no,self,slavele,2,1427,,,,, // Nightmare
 1046,Doppelganger@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1046,Doppelganger@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1046,Doppelganger@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -286,11 +286,11 @@
 1059,Mistress,chase,76,8,300,1500,5000,no,target,always,0,,,,,,
 1059,Mistress@AL_TELEPORT,idle,26,1,500,0,5000,yes,self,always,,,,,,,
 1059,Mistress@AL_TELEPORT,walk,26,1,500,0,5000,yes,self,always,,,,,,,
-1059,Mistress@NPC_SUMMONMONSTER,attack,209,4,1000,3000,120000,no,self,myhpltmaxrate,5,1604,,,,, // Giant Hornet
-1059,Mistress@NPC_SUMMONMONSTER,spawn,209,4,1000,3000,120000,no,self,myhpltmaxrate,5,1604,,,,, // Giant Hornet
-1059,Mistress@NPC_SUMMONSLAVE,attack,196,4,1000,3000,120000,no,self,slavele,2,1156,,,,, // Sky Petite
-1059,Mistress@NPC_SUMMONSLAVE,chase,196,4,10000,3000,120000,no,self,slavele,2,1156,,,,, // Sky Petite
-1059,Mistress@NPC_SUMMONSLAVE,idle,196,4,10000,3000,120000,no,self,slavele,2,1156,,,,, // Sky Petite
+1059,Mistress@NPC_SUMMONMONSTER,attack,209,4,1000,3000,180000,no,self,myhpltmaxrate,5,1604,,,,, // Giant Hornet
+1059,Mistress@NPC_SUMMONMONSTER,spawn,209,4,1000,3000,180000,no,self,myhpltmaxrate,5,1604,,,,, // Giant Hornet
+1059,Mistress@NPC_SUMMONSLAVE,attack,196,4,1000,3000,180000,no,self,slavele,2,1156,,,,, // Sky Petite
+1059,Mistress@NPC_SUMMONSLAVE,chase,196,4,1000,3000,180000,no,self,slavele,2,1156,,,,, // Sky Petite
+1059,Mistress@NPC_SUMMONSLAVE,idle,196,4,1000,3000,180000,no,self,slavele,2,1156,,,,, // Sky Petite
 1059,Mistress@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1059,Mistress@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1059,Mistress@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -363,11 +363,11 @@
 1086,Golden Thief Bug,chase,19,10,100,0,5000,no,target,longrangeattacked,,,,,,,
 1086,Golden Thief Bug,attack,28,10,700,0,0,yes,self,myhpltmaxrate,30,,,,,,
 1086,Golden Thief Bug,attack,28,10,700,0,0,yes,friend,friendhpltmaxrate,80,,,,,,
-1086,Golden Thief Bug@NPC_SUMMONMONSTER,attack,209,10,1000,3000,120000,no,self,myhpltmaxrate,5,1608,,,,, // Male Thiefbug
-1086,Golden Thief Bug@NPC_SUMMONMONSTER,chase,209,10,1000,3000,120000,no,self,myhpltmaxrate,5,1608,,,,, // Male Thiefbug
-1086,Golden Thief Bug@NPC_SUMMONSLAVE,attack,196,10,1000,3000,10000,no,self,slavele,3,1608,,,,, // Male Thiefbug
-1086,Golden Thief Bug@NPC_SUMMONSLAVE,chase,196,10,10000,3000,120000,no,self,slavele,3,1608,,,,, // Male Thiefbug
-1086,Golden Thief Bug@NPC_SUMMONSLAVE,idle,196,10,10000,3000,120000,no,self,slavele,3,1608,,,,, // Male Thiefbug
+1086,Golden Thief Bug@NPC_SUMMONMONSTER,attack,209,10,1000,3000,180000,no,self,myhpltmaxrate,5,1608,,,,, // Male Thiefbug
+1086,Golden Thief Bug@NPC_SUMMONMONSTER,chase,209,10,1000,3000,180000,no,self,myhpltmaxrate,5,1608,,,,, // Male Thiefbug
+1086,Golden Thief Bug@NPC_SUMMONSLAVE,attack,196,10,1000,3000,180000,no,self,slavele,3,1608,,,,, // Male Thiefbug
+1086,Golden Thief Bug@NPC_SUMMONSLAVE,chase,196,10,1000,3000,180000,no,self,slavele,3,1608,,,,, // Male Thiefbug
+1086,Golden Thief Bug@NPC_SUMMONSLAVE,idle,196,10,1000,3000,180000,no,self,slavele,3,1608,,,,, // Male Thiefbug
 1087,Orc Hero,attack,111,5,100,0,30000,yes,self,attackpcge,2,,,,,,
 1087,Orc Hero,attack,21,10,500,1500,3000,no,target,longrangeattacked,,,,,,,
 1087,Orc Hero,attack,21,10,800,1500,3000,no,target,skillused,18,,,,,,
@@ -383,11 +383,11 @@
 1087,Orc Hero,chase,21,10,800,1500,3000,no,target,skillused,18,,,,,,
 1087,Orc Hero,chase,21,10,500,1500,0,no,target,always,0,,,,,,
 1087,Orc Hero,chase,29,1,500,3000,120000,no,self,myhpltmaxrate,50,,,,,,
-1087,Orc Hero@NPC_SUMMONMONSTER,attack,209,5,1000,3000,120000,no,self,myhpltmaxrate,5,1439,,,,, // High Orc
-1087,Orc Hero@NPC_SUMMONMONSTER,chase,209,5,1000,3000,120000,no,self,myhpltmaxrate,5,1439,,,,, // High Orc
-1087,Orc Hero@NPC_SUMMONSLAVE,attack,196,5,1000,3000,120000,no,self,slavele,2,1439,,,,, // High Orc
-1087,Orc Hero@NPC_SUMMONSLAVE,chase,196,5,10000,3000,120000,no,self,slavele,2,1439,,,,, // High Orc
-1087,Orc Hero@NPC_SUMMONSLAVE,idle,196,5,10000,3000,120000,no,self,slavele,2,1439,,,,, // High Orc
+1087,Orc Hero@NPC_SUMMONMONSTER,attack,209,5,1000,3000,180000,no,self,myhpltmaxrate,5,1439,,,,, // High Orc
+1087,Orc Hero@NPC_SUMMONMONSTER,chase,209,5,1000,3000,180000,no,self,myhpltmaxrate,5,1439,,,,, // High Orc
+1087,Orc Hero@NPC_SUMMONSLAVE,attack,196,5,1000,3000,180000,no,self,slavele,2,1439,,,,, // High Orc
+1087,Orc Hero@NPC_SUMMONSLAVE,chase,196,5,1000,3000,180000,no,self,slavele,2,1439,,,,, // High Orc
+1087,Orc Hero@NPC_SUMMONSLAVE,idle,196,5,1000,3000,180000,no,self,slavele,2,1439,,,,, // High Orc
 1087,Orc Hero@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1087,Orc Hero@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1087,Orc Hero@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -441,11 +441,11 @@
 1096,Angeling,attack,28,10,1000,0,3000,yes,self,friendstatusoff,30,,,,,,
 1096,Angeling,attack,156,1,200,0,5000,yes,target,always,0,,,,,,
 1096,Angeling,chase,156,1,200,0,5000,yes,target,always,0,,,,,,
-1096,Angeling@NPC_SUMMONMONSTER,attack,209,3,1000,3000,120000,no,self,myhpltmaxrate,5,1031,,,,, // Poporing
-1096,Angeling@NPC_SUMMONMONSTER,chase,209,3,1000,3000,120000,no,self,myhpltmaxrate,5,1031,,,,, // Poporing
-1096,Angeling@NPC_SUMMONSLAVE,attack,196,3,300,3000,10000,no,self,slavele,2,1031,1062,,,, // Poporing/Santa Poring
-1096,Angeling@NPC_SUMMONSLAVE,chase,196,3,300,3000,10000,no,self,slavele,2,1031,1062,,,, // Poporing/Santa Poring
-1096,Angeling@NPC_SUMMONSLAVE,idle,196,3,300,3000,10000,no,self,slavele,2,1031,1062,,,, // Poporing/Santa Poring
+1096,Angeling@NPC_SUMMONMONSTER,attack,209,3,1000,3000,180000,no,self,myhpltmaxrate,5,1031,,,,, // Poporing
+1096,Angeling@NPC_SUMMONMONSTER,chase,209,3,1000,3000,180000,no,self,myhpltmaxrate,5,1031,,,,, // Poporing
+1096,Angeling@NPC_SUMMONSLAVE,attack,196,3,1000,3000,180000,no,self,slavele,2,1031,1062,,,, // Poporing/Santa Poring
+1096,Angeling@NPC_SUMMONSLAVE,chase,196,3,1000,3000,180000,no,self,slavele,2,1031,1062,,,, // Poporing/Santa Poring
+1096,Angeling@NPC_SUMMONSLAVE,idle,196,3,1000,3000,180000,no,self,slavele,2,1031,1062,,,, // Poporing/Santa Poring
 1097,Ant Egg,idle,197,1,500,0,10000,yes,self,always,0,19,,,,,
 1097,Ant Egg,idle,193,1,1,2000,0,yes,self,always,0,1095,1105,,,,
 1099,Argiope,attack,52,5,100,1500,10000,no,target,always,0,,,,,,
@@ -518,11 +518,11 @@
 1112,Drake,chase,59,4,100,0,10000,yes,target,always,0,,,,,,
 1112,Drake,chase,30,1,100,0,10000,yes,target,always,0,,,,,,
 1112,Drake,chase,162,1,1000,0,300000,yes,self,myhpltmaxrate,50,,,,,,
-1112,Drake@NPC_SUMMONMONSTER,attack,209,4,1000,3000,120000,no,self,myhpltmaxrate,5,1475,,,,, // Wraith
-1112,Drake@NPC_SUMMONMONSTER,chase,209,4,1000,3000,120000,no,self,myhpltmaxrate,5,1475,,,,, // Wraith
-1112,Drake@NPC_SUMMONSLAVE,attack,196,4,1000,3000,120000,no,self,slavele,2,1291,,,,, // Wraith Dead
-1112,Drake@NPC_SUMMONSLAVE,chase,196,4,10000,3000,120000,no,self,slavele,2,1291,,,,, // Wraith Dead
-1112,Drake@NPC_SUMMONSLAVE,idle,196,4,10000,3000,120000,no,self,slavele,2,1291,,,,, // Wraith Dead
+1112,Drake@NPC_SUMMONMONSTER,attack,209,4,1000,3000,180000,no,self,myhpltmaxrate,5,1475,,,,, // Wraith
+1112,Drake@NPC_SUMMONMONSTER,chase,209,4,1000,3000,180000,no,self,myhpltmaxrate,5,1475,,,,, // Wraith
+1112,Drake@NPC_SUMMONSLAVE,attack,196,4,1000,3000,180000,no,self,slavele,2,1291,,,,, // Wraith Dead
+1112,Drake@NPC_SUMMONSLAVE,chase,196,4,1000,3000,180000,no,self,slavele,2,1291,,,,, // Wraith Dead
+1112,Drake@NPC_SUMMONSLAVE,idle,196,4,1000,3000,180000,no,self,slavele,2,1291,,,,, // Wraith Dead
 1112,Drake@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1112,Drake@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1112,Drake@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -546,11 +546,11 @@
 1115,Eddga,chase,17,10,900,0,2000,no,target,longrangeattacked,,,,,,,
 1115,Eddga@AL_TELEPORT,idle,26,1,500,0,5000,yes,self,always,,,,,,,
 1115,Eddga@AL_TELEPORT,walk,26,1,500,0,5000,yes,self,always,,,,,,,
-1115,Eddga@NPC_SUMMONMONSTER,attack,209,5,1000,3000,120000,no,self,myhpltmaxrate,5,1603,,,,, // Bigfoot
-1115,Eddga@NPC_SUMMONMONSTER,chase,209,5,1000,3000,120000,no,self,myhpltmaxrate,5,1603,,,,, // Bigfoot
-1115,Eddga@NPC_SUMMONSLAVE,attack,196,8,1000,3000,120000,no,self,slavele,3,1603,,,,, // Bigfoot
-1115,Eddga@NPC_SUMMONSLAVE,chase,196,8,10000,3000,120000,no,self,slavele,3,1603,,,,, // Bigfoot
-1115,Eddga@NPC_SUMMONSLAVE,idle,196,8,10000,3000,120000,no,self,slavele,3,1603,,,,, // Bigfoot
+1115,Eddga@NPC_SUMMONMONSTER,attack,209,5,1000,3000,180000,no,self,myhpltmaxrate,5,1603,,,,, // Bigfoot
+1115,Eddga@NPC_SUMMONMONSTER,chase,209,5,1000,3000,180000,no,self,myhpltmaxrate,5,1603,,,,, // Bigfoot
+1115,Eddga@NPC_SUMMONSLAVE,attack,196,8,1000,3000,180000,no,self,slavele,3,1603,,,,, // Bigfoot
+1115,Eddga@NPC_SUMMONSLAVE,chase,196,8,1000,3000,180000,no,self,slavele,3,1603,,,,, // Bigfoot
+1115,Eddga@NPC_SUMMONSLAVE,idle,196,8,1000,3000,180000,no,self,slavele,3,1603,,,,, // Bigfoot
 1115,Eddga@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1115,Eddga@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1115,Eddga@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -585,9 +585,9 @@
 1120,Ghostring,chase,30,1,50,3000,120000,yes,target,always,0,,,,,,
 1120,Ghostring@AL_TELEPORT,attack,26,1,5000,0,5000,yes,self,myhpltmaxrate,30,,,,,,
 1120,Ghostring@AL_TELEPORT,chase,26,1,5000,0,5000,yes,self,myhpltmaxrate,30,,,,,,
-1120,Ghostring@SUMMONSLAVE,attack,196,5,1000,3000,300000,no,self,slavele,2,1186,,,,, // Giant Whisper
-1120,Ghostring@SUMMONSLAVE,chase,196,5,1000,3000,300000,no,self,slavele,2,1186,,,,, // Giant Whisper
-1120,Ghostring@SUMMONSLAVE,idle,196,5,1000,3000,300000,no,self,slavele,2,1186,,,,, // Giant Whisper
+1120,Ghostring@SUMMONSLAVE,attack,196,5,1000,3000,180000,no,self,slavele,2,1186,,,,, // Giant Whisper
+1120,Ghostring@SUMMONSLAVE,chase,196,5,1000,3000,180000,no,self,slavele,2,1186,,,,, // Giant Whisper
+1120,Ghostring@SUMMONSLAVE,idle,196,5,1000,3000,180000,no,self,slavele,2,1186,,,,, // Giant Whisper
 1121,Giearth,idle,119,5,50,1500,30000,yes,self,always,0,,,,,,
 1121,Giearth,walk,197,1,15,0,10000,yes,self,always,0,,,,,,
 1121,Giearth,attack,149,1,300,0,10000,yes,target,myhpltmaxrate,30,,,,,,
@@ -709,9 +709,9 @@
 1147,Maya,chase,91,5,300,1000,0,no,target,attackpcge,2,,,,,,
 1147,Maya,chase,91,5,300,1000,0,no,target,longrangeattacked,,,,,,,
 1147,Maya,chase,91,5,800,1500,3000,no,target,skillused,18,,,,,,
-1147,Maya@SUMMONSLAVE,attack,196,10,1000,3000,10000,no,self,slavele,3,1477,,,,, // Arclouze
-1147,Maya@SUMMONSLAVE,chase,196,10,10000,3000,120000,no,self,slavele,3,1477,,,,, // Arclouze
-1147,Maya@SUMMONSLAVE,idle,196,10,10000,3000,120000,no,self,slavele,3,1477,,,,, // Arclouze
+1147,Maya@SUMMONSLAVE,attack,196,10,1000,3000,180000,no,self,slavele,3,1477,,,,, // Arclouze
+1147,Maya@SUMMONSLAVE,chase,196,10,1000,3000,180000,no,self,slavele,3,1477,,,,, // Arclouze
+1147,Maya@SUMMONSLAVE,idle,196,10,1000,3000,180000,no,self,slavele,3,1477,,,,, // Arclouze
 1147,Maya@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1147,Maya@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1147,Maya@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -738,11 +738,11 @@
 1150,Moonlight Flower@NPC_GUIDEDATTACK,attack,172,1,1000,0,5000,yes,target,always,0,,,,,,
 1150,Moonlight Flower@NPC_GUIDEDATTACK,chase,172,1,1000,0,5000,yes,target,always,0,,,,,,
 1150,Moonlight Flower@NPC_MAMMONITE,attack,42,7,1000,0,10000,yes,target,always,2,,,,,,
-1150,Moonlight Flower@NPC_SUMMONMONSTER,attack,209,3,1000,3000,120000,no,self,myhpltmaxrate,5,1471,,,,, // Nine Tail
-1150,Moonlight Flower@NPC_SUMMONMONSTER,attack,209,3,1000,3000,120000,no,self,myhpltmaxrate,5,1471,,,,, // Nine Tail
-1150,Moonlight Flower@NPC_SUMMONSLAVE,attack,196,5,1000,3000,120000,no,self,slavele,2,1471,,,,, // Nine Tail
-1150,Moonlight Flower@NPC_SUMMONSLAVE,chase,196,5,10000,3000,120000,no,self,slavele,2,1471,,,,, // Nine Tail
-1150,Moonlight Flower@NPC_SUMMONSLAVE,idle,196,5,10000,3000,120000,no,self,slavele,2,1471,,,,, // Nine Tail
+1150,Moonlight Flower@NPC_SUMMONMONSTER,attack,209,3,1000,3000,180000,no,self,myhpltmaxrate,5,1471,,,,, // Nine Tail
+1150,Moonlight Flower@NPC_SUMMONMONSTER,attack,209,3,1000,3000,180000,no,self,myhpltmaxrate,5,1471,,,,, // Nine Tail
+1150,Moonlight Flower@NPC_SUMMONSLAVE,attack,196,5,1000,3000,180000,no,self,slavele,2,1471,,,,, // Nine Tail
+1150,Moonlight Flower@NPC_SUMMONSLAVE,chase,196,5,1000,3000,180000,no,self,slavele,2,1471,,,,, // Nine Tail
+1150,Moonlight Flower@NPC_SUMMONSLAVE,idle,196,5,1000,3000,180000,no,self,slavele,2,1471,,,,, // Nine Tail
 1150,Moonlight Flower@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1150,Moonlight Flower@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1150,Moonlight Flower@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -777,9 +777,9 @@
 1157,Pharaoh@AL_TELEPORT,chase,26,1,500,0,5000,yes,self,always,0,,,,,,
 1157,Pharaoh@AL_TELEPORT,idle,26,1,500,0,5000,yes,self,always,0,,,,,,
 1157,Pharaoh@AL_TELEPORT,walk,26,1,500,0,5000,yes,self,always,0,,,,,,
-1157,Pharaoh@NPC_SUMMONSLAVE,attack,196,3,1000,3000,120000,no,self,slavele,2,1458,1464,,,, // Marduk/Pasana
-1157,Pharaoh@NPC_SUMMONSLAVE,chase,196,3,1000,3000,120000,no,self,slavele,2,1458,1464,,,, // Marduk/Pasana
-1157,Pharaoh@NPC_SUMMONSLAVE,idle,196,3,1000,3000,120000,no,self,slavele,2,1458,1464,,,, // Marduk/Pasana
+1157,Pharaoh@NPC_SUMMONSLAVE,attack,196,3,1000,3000,180000,no,self,slavele,2,1458,1464,,,, // Marduk/Pasana
+1157,Pharaoh@NPC_SUMMONSLAVE,chase,196,3,1000,3000,180000,no,self,slavele,2,1458,1464,,,, // Marduk/Pasana
+1157,Pharaoh@NPC_SUMMONSLAVE,idle,196,3,1000,3000,180000,no,self,slavele,2,1458,1464,,,, // Marduk/Pasana
 1157,Pharaoh@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1157,Pharaoh@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1157,Pharaoh@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -800,11 +800,11 @@
 1159,Phreeoni,chase,172,1,200,0,5000,yes,target,always,0,,,,,,
 1159,Phreeoni,chase,91,5,300,1500,0,no,target,attackpcge,2,,,,,,
 1159,Phreeoni,chase,91,5,800,1500,3000,no,target,skillused,18,,,,,,
-1159,Phreeoni@NPC_SUMMONMONSTER,attack,209,9,1000,3000,120000,no,self,myhpltmaxrate,5,1127,,,,, // Hode
-1159,Phreeoni@NPC_SUMMONMONSTER,chase,209,9,1000,3000,120000,no,self,myhpltmaxrate,5,1127,,,,, // Hode
-1159,Phreeoni@NPC_SUMMONSLAVE,attack,196,6,1000,3000,120000,no,self,slavele,2,1165,,,,, // Sandman
-1159,Phreeoni@NPC_SUMMONSLAVE,idle,196,6,1000,3000,120000,no,self,slavele,2,1165,,,,, // Sandman
-1159,Phreeoni@NPC_SUMMONSLAVE,chase,196,6,10000,3000,120000,no,self,slavele,2,1165,,,,, // Sandman
+1159,Phreeoni@NPC_SUMMONMONSTER,attack,209,9,1000,3000,180000,no,self,myhpltmaxrate,5,1127,,,,, // Hode
+1159,Phreeoni@NPC_SUMMONMONSTER,chase,209,9,1000,3000,180000,no,self,myhpltmaxrate,5,1127,,,,, // Hode
+1159,Phreeoni@NPC_SUMMONSLAVE,attack,196,6,1000,3000,180000,no,self,slavele,2,1165,,,,, // Sandman
+1159,Phreeoni@NPC_SUMMONSLAVE,idle,196,6,1000,3000,180000,no,self,slavele,2,1165,,,,, // Sandman
+1159,Phreeoni@NPC_SUMMONSLAVE,chase,196,6,1000,3000,180000,no,self,slavele,2,1165,,,,, // Sandman
 1159,Phreeoni@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1159,Phreeoni@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1159,Phreeoni@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -898,9 +898,9 @@
 1190,Orc Lord,chase,6,8,100,0,10000,yes,target,always,0,,,,,,
 1190,Orc Lord,chase,76,8,100,1500,5000,yes,target,attackpcge,2,,,,,,
 1190,Orc Lord,chase,76,5,800,1500,3000,no,target,skillused,18,,,,,,
-1190,Orc Lord@NPC_SUMMONSLAVE,attack,196,6,1000,3000,120000,no,self,slavele,2,1473,,,,, // Orc Archer
-1190,Orc Lord@NPC_SUMMONSLAVE,chase,196,6,1000,3000,120000,no,self,slavele,2,1473,,,,, // Orc Archer
-1190,Orc Lord@NPC_SUMMONSLAVE,idle,196,6,1000,3000,120000,no,self,slavele,2,1473,,,,, // Orc Archer
+1190,Orc Lord@NPC_SUMMONSLAVE,attack,196,6,1000,3000,180000,no,self,slavele,2,1473,,,,, // Orc Archer
+1190,Orc Lord@NPC_SUMMONSLAVE,chase,196,6,1000,3000,180000,no,self,slavele,2,1473,,,,, // Orc Archer
+1190,Orc Lord@NPC_SUMMONSLAVE,idle,196,6,1000,3000,180000,no,self,slavele,2,1473,,,,, // Orc Archer
 1190,Orc Lord@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1190,Orc Lord@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1190,Orc Lord@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -928,9 +928,9 @@
 1200,Zealotus,attack,6,10,50,1000,30000,yes,target,always,0,,,,,,
 1200,Zealotus,chase,197,1,15,0,10000,yes,self,always,0,30,,,,,
 1200,Zealotus,chase,6,10,100,1000,30000,yes,target,always,0,,,,,,
-1200,Zealotus@NPC_SUMMONSLAVE,attack,196,3,1000,3000,120000,no,self,slavele,0,1257,,,,, // Injustice
-1200,Zealotus@NPC_SUMMONSLAVE,chase,196,3,1000,3000,120000,no,self,slavele,0,1257,,,,, // Injustice
-1200,Zealotus@NPC_SUMMONSLAVE,idle,196,3,1000,3000,120000,no,self,slavele,0,1257,,,,, // Injustice
+1200,Zealotus@NPC_SUMMONSLAVE,attack,196,3,1000,3000,180000,no,self,slavele,0,1257,,,,, // Injustice
+1200,Zealotus@NPC_SUMMONSLAVE,chase,196,3,1000,3000,180000,no,self,slavele,0,1257,,,,, // Injustice
+1200,Zealotus@NPC_SUMMONSLAVE,idle,196,3,1000,3000,180000,no,self,slavele,0,1257,,,,, // Injustice
 1201,Rybio,attack,188,4,100,0,15000,yes,target,always,0,,,,,,
 1201,Rybio,attack,6,8,100,0,10000,yes,target,always,0,,,,,,
 1201,Rybio,attack,136,5,10,1500,10000,no,target,always,0,,,,,,
@@ -1094,9 +1094,9 @@
 1251,Stormy Knight@WZ_STORMGUST,chase,89,10,1000,1500,3000,no,target,always,0,,,,,,
 1251,Stormy Knight@AL_TELEPORT,idle,26,1,500,0,100000,yes,self,always,0,,,,,,
 1251,Stormy Knight@AL_TELEPORT,walk,26,1,500,0,100000,yes,self,always,0,,,,,,
-1251,Stormy Knight@NPC_SUMMONSLAVE,attack,196,6,1000,3000,120000,no,self,slavele,2,1607,,,,, // Xmas Goblin
-1251,Stormy Knight@NPC_SUMMONSLAVE,chase,196,6,1000,3000,120000,no,self,slavele,2,1607,,,,, // Xmas Goblin
-1251,Stormy Knight@NPc_SUMMONSlAVE,idle,196,6,1000,3000,120000,no,self,slavele,2,1607,,,,, // Xmas Goblin
+1251,Stormy Knight@NPC_SUMMONSLAVE,attack,196,6,1000,3000,180000,no,self,slavele,2,1607,,,,, // Xmas Goblin
+1251,Stormy Knight@NPC_SUMMONSLAVE,chase,196,6,1000,3000,180000,no,self,slavele,2,1607,,,,, // Xmas Goblin
+1251,Stormy Knight@NPc_SUMMONSlAVE,idle,196,6,1000,3000,180000,no,self,slavele,2,1607,,,,, // Xmas Goblin
 1251,Stormy Knight@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1251,Stormy Knight@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1251,Stormy Knight@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -1123,9 +1123,9 @@
 1252,Hatii,chase,15,8,100,1500,10000,no,target,always,0,,,,,,
 1252,Hatii@WZ_STORMGUST,attack,89,10,1000,1500,5000,no,target,always,0,,,,,,
 1252,Hatii@WZ_STORMGUST,chase,89,10,1000,1500,3000,no,target,always,0,,,,,,
-1252,Hatii@NPC_SUMMONSLAVE,attack,196,5,1000,3000,120000,no,self,slavele,2,1606,,,,, // Hatii Bebe
-1252,Hatii@NPC_SUMMONSLAVE,chase,196,5,10000,3000,120000,no,self,slavele,2,1606,,,,, // Hatii Bebe
-1252,Hatii@NPC_SUMMONSLAVE,idle,196,5,10000,3000,120000,no,self,slavele,2,1606,,,,, // Hatii Bebe
+1252,Hatii@NPC_SUMMONSLAVE,attack,196,5,1000,3000,180000,no,self,slavele,2,1606,,,,, // Hatii Bebe
+1252,Hatii@NPC_SUMMONSLAVE,chase,196,5,1000,3000,180000,no,self,slavele,2,1606,,,,, // Hatii Bebe
+1252,Hatii@NPC_SUMMONSLAVE,idle,196,5,1000,3000,180000,no,self,slavele,2,1606,,,,, // Hatii Bebe
 1252,Hatii@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1252,Hatii@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1252,Hatii@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -1261,9 +1261,9 @@
 1272,Dark Lord,chase,83,9,300,1500,1000,no,target,longrangeattacked,,,,,,,
 1272,Dark Lord,chase,83,9,100,1500,1000,no,target,skillused,18,,,,,,
 1272,Dark Lord,chase,83,9,300,1500,1000,no,target,always,0,,,,,,
-1272,Dark Lord@NPC_SUMMONSLAVE,attack,196,4,1000,3000,10000,no,self,slavele,1,1605,,,,, // Dark Illusion
-1272,Dark Lord@NPC_SUMMONSLAVE,chase,196,4,1000,3000,120000,no,self,slavele,1,1605,,,,, // Dark Illusion
-1272,Dark Lord@NPC_SUMMONSLAVE,idle,196,4,1000,3000,10000,no,self,slavele,1,1605,,,,, // Dark Illusion
+1272,Dark Lord@NPC_SUMMONSLAVE,attack,196,4,1000,3000,180000,no,self,slavele,1,1605,,,,, // Dark Illusion
+1272,Dark Lord@NPC_SUMMONSLAVE,chase,196,4,1000,3000,180000,no,self,slavele,1,1605,,,,, // Dark Illusion
+1272,Dark Lord@NPC_SUMMONSLAVE,idle,196,4,1000,3000,180000,no,self,slavele,1,1605,,,,, // Dark Illusion
 1272,Dark Lord@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1272,Dark Lord@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1272,Dark Lord@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -1281,9 +1281,9 @@
 1275,Alice,attack,28,7,1000,0,7000,yes,self,myhpltmaxrate,30,,,,,,
 1275,Alice,chase,28,7,1000,2500,7000,yes,friend,friendhpltmaxrate,60,,,,,,
 1275,Alice,chase,28,7,1000,0,7000,yes,self,myhpltmaxrate,30,,,,,,
-1275,Alice@NPC_SUMMONSLAVE,attack,196,1,1000,3000,10000,no,self,slavele,0,1261,,,,, // Wild Rose
-1275,Alice@NPC_SUMMONSLAVE,chase,196,1,1000,3000,120000,no,self,slavele,0,1261,,,,, // Wild Rose
-1275,Alice@NPC_SUMMONSLAVE,idle,196,1,1000,3000,10000,no,self,slavele,0,1261,,,,, // Wild Rose
+1275,Alice@NPC_SUMMONSLAVE,attack,196,1,1000,3000,180000,no,self,slavele,0,1261,,,,, // Wild Rose
+1275,Alice@NPC_SUMMONSLAVE,chase,196,1,1000,3000,180000,no,self,slavele,0,1261,,,,, // Wild Rose
+1275,Alice@NPC_SUMMONSLAVE,idle,196,1,1000,3000,180000,no,self,slavele,0,1261,,,,, // Wild Rose
 1276,Raydric Archer,attack,190,3,200,0,7500,yes,target,always,0,,,,,,
 1276,Raydric Archer,attack,148,1,300,2000,10000,no,target,myhpltmaxrate,30,,,,,,
 1276,Raydric Archer,attack,148,1,100,2000,10000,no,target,always,0,,,,,,
@@ -1331,9 +1331,9 @@
 1283,Chimera,attack,91,5,100,2500,10000,no,target,always,0,,,,,,
 1283,Chimera,chase,91,5,100,2500,10000,no,target,longrangeattacked,,,,,,,
 1283,Chimera,chase,91,5,100,2500,10000,no,target,always,0,,,,,,
-1283,Chimera@NPC_SUMMONSLAVE,attack,196,4,1000,0,120000,no,self,slavele,1,1253,,,,, // Gargoyle
-1283,Chimera@NPC_SUMMONSLAVE,chase,196,4,1000,0,120000,no,self,slavele,1,1253,,,,, // Gargoyle
-1283,Chimera@NPC_SUMMONSLAVE,idle,196,4,1000,0,120000,no,self,slavele,1,1253,,,,, // Gargoyle
+1283,Chimera@NPC_SUMMONSLAVE,attack,196,4,1000,3000,180000,no,self,slavele,1,1253,,,,, // Gargoyle
+1283,Chimera@NPC_SUMMONSLAVE,chase,196,4,1000,3000,180000,no,self,slavele,1,1253,,,,, // Gargoyle
+1283,Chimera@NPC_SUMMONSLAVE,idle,196,4,1000,3000,180000,no,self,slavele,1,1253,,,,, // Gargoyle
 
 // War of Emperium/Turtle Dungeon - Episode 4.1 ~ 5.0
 1285,Guardian Archer,attack,46,10,200,0,0,yes,target,always,0,,,,,,
@@ -1355,15 +1355,15 @@
 1289,Maya Purple,chase,28,10,100,1000,10000,yes,self,myhpltmaxrate,30,,,,,,
 1289,Maya Purple,chase,91,5,100,1000,10000,yes,target,attackpcge,2,,,,,,
 1289,Maya Purple,chase,91,5,100,1500,10000,yes,target,skillused,18,,,,,,
-1289,Maya Purple@NPC_SUMMONSLAVE,attack,196,3,1000,3000,10000,no,self,slavele,0,1194,,,,, // Arclouze
-1289,Maya Purple@NPC_SUMMONSLAVE,chase,196,3,1000,3000,120000,no,self,slavele,0,1194,,,,, // Arclouze
-1289,Maya Purple@NPC_SUMMONSLAVE,idle,196,3,1000,3000,120000,no,self,slavele,0,1194,,,,, // Arclouze
+1289,Maya Purple@NPC_SUMMONSLAVE,attack,196,3,1000,3000,180000,no,self,slavele,0,1194,,,,, // Arclouze
+1289,Maya Purple@NPC_SUMMONSLAVE,chase,196,3,1000,3000,180000,no,self,slavele,0,1194,,,,, // Arclouze
+1289,Maya Purple@NPC_SUMMONSLAVE,idle,196,3,1000,3000,180000,no,self,slavele,0,1194,,,,, // Arclouze
 1290,Skeleton General,attack,174,1,1000,1500,0,no,target,attackpcge,2,,,,,,
 1290,Skeleton General,attack,136,5,250,1500,0,no,target,always,0,,,,,,
 1290,Skeleton General,attack,171,2,250,0,0,no,target,always,0,,,,,,
-1290,Skeleton General@NPC_SUMMONSLAVE,attack,196,1,1000,3000,120000,no,self,slavele,0,1028,1016,,,, // Skel Soldier/Archer
-1290,Skeleton General@NPC_SUMMONSLAVE,chase,196,1,1000,3000,120000,no,self,slavele,0,1028,1016,,,, // Skel Soldier/Archer
-1290,Skeleton General@NPC_SUMMONSLAVE,idle,196,1,1000,3000,120000,no,self,slavele,0,1028,1016,,,, // Skel Soldier/Archer
+1290,Skeleton General@NPC_SUMMONSLAVE,attack,196,1,1000,3000,180000,no,self,slavele,0,1028,1016,,,, // Skel Soldier/Archer
+1290,Skeleton General@NPC_SUMMONSLAVE,chase,196,1,1000,3000,180000,no,self,slavele,0,1028,1016,,,, // Skel Soldier/Archer
+1290,Skeleton General@NPC_SUMMONSLAVE,idle,196,1,1000,3000,180000,no,self,slavele,0,1028,1016,,,, // Skel Soldier/Archer
 1291,Wraith Dead,attack,52,10,250,1500,0,no,target,always,0,,,,,,
 1291,Wraith Dead,attack,181,5,250,0,0,no,target,always,0,,,,,,
 1291,Wraith Dead,chase,137,5,200,0,0,no,target,always,0,,,,,,
@@ -1373,35 +1373,35 @@
 1292,Mini Demon,attack,84,5,250,4000,0,yes,target,always,0,,,,,,
 1292,Mini Demon,attack,178,5,250,0,0,no,target,always,0,,,,,,
 1292,Mini Demon,chase,160,1,250,2000,0,yes,target,always,0,,,,,,
-1292,Mini Demon@NPC_SUMMONSLAVE,attack,196,2,1000,3000,120000,no,self,slavele,0,1109,,,,, // Deviruchi
-1292,Mini Demon@NPC_SUMMONSLAVE,chase,196,2,1000,3000,120000,no,self,slavele,0,1109,,,,, // Deviruchi
-1292,Mini Demon@NPC_SUMMONSLAVE,idle,196,2,1000,3000,120000,no,self,slavele,0,1109,,,,, // Deviruchi
+1292,Mini Demon@NPC_SUMMONSLAVE,attack,196,2,1000,3000,180000,no,self,slavele,0,1109,,,,, // Deviruchi
+1292,Mini Demon@NPC_SUMMONSLAVE,chase,196,2,1000,3000,180000,no,self,slavele,0,1109,,,,, // Deviruchi
+1292,Mini Demon@NPC_SUMMONSLAVE,idle,196,2,1000,3000,180000,no,self,slavele,0,1109,,,,, // Deviruchi
 1293,Creamy Fear,attack,177,5,250,0,0,no,target,always,0,,,,,,
 1293,Creamy Fear,attack,181,5,250,0,0,no,target,always,0,,,,,,
-1293,Creamy Fear@NPC_SUMMONSLAVE,attack,196,3,1000,3000,120000,no,self,slavele,0,1300,,,,, // Creamy
-1293,Creamy Fear@NPC_SUMMONSLAVE,chase,196,3,1000,3000,120000,no,self,slavele,0,1300,,,,, // Creamy
-1293,Creamy Fear@NPC_SUMMONSLAVE,idle,196,3,1000,3000,120000,no,self,slavele,0,1300,,,,, // Creamy
+1293,Creamy Fear@NPC_SUMMONSLAVE,attack,196,3,1000,3000,180000,no,self,slavele,0,1300,,,,, // Creamy
+1293,Creamy Fear@NPC_SUMMONSLAVE,chase,196,3,1000,3000,180000,no,self,slavele,0,1300,,,,, // Creamy
+1293,Creamy Fear@NPC_SUMMONSLAVE,idle,196,3,1000,3000,180000,no,self,slavele,0,1300,,,,, // Creamy
 1294,Killer Mantis,attack,170,5,250,0,0,no,target,always,0,,,,,,
 1294,Killer Mantis,attack,185,5,200,0,7500,yes,target,always,0,,,,,,
 1294,Killer Mantis,attack,171,2,250,0,0,no,target,always,0,,,,,,
-1294,Killer Mantis@NPC_SUMMONSLAVE,attack,196,2,1000,3000,120000,no,self,slavele,0,1139,,,,, // Mantis
-1294,Killer Mantis@NPC_SUMMONSLAVE,chase,196,2,1000,3000,120000,no,self,slavele,0,1139,,,,, // Mantis
-1294,Killer Mantis@NPC_SUMMONSLAVE,idle,196,2,1000,3000,120000,no,self,slavele,0,1139,,,,, // Mantis
+1294,Killer Mantis@NPC_SUMMONSLAVE,attack,196,2,1000,3000,180000,no,self,slavele,0,1139,,,,, // Mantis
+1294,Killer Mantis@NPC_SUMMONSLAVE,chase,196,2,1000,3000,180000,no,self,slavele,0,1139,,,,, // Mantis
+1294,Killer Mantis@NPC_SUMMONSLAVE,idle,196,2,1000,3000,180000,no,self,slavele,0,1139,,,,, // Mantis
 1295,Owl Baron,idle,197,1,5,0,10000,yes,self,always,0,9,,,,,
 1295,Owl Baron,attack,209,1,1000,0,120000,no,self,slavele,2,,,,,,
 1295,Owl Baron,attack,20,7,300,0,2000,yes,target,myhpltmaxrate,30,,,,,,
 1295,Owl Baron,attack,20,1,300,0,2000,yes,target,always,0,,,,,,
 1295,Owl Baron,attack,20,3,200,0,2000,yes,target,always,0,,,,,,
 1295,Owl Baron,attack,20,5,100,0,2000,yes,target,always,0,,,,,,
-1295,Owl Baron@NPC_SUMMONSLAVE,attack,196,2,1000,3000,120000,no,self,slavele,0,1320,,,,, // Owl Duke
-1295,Owl Baron@NPC_SUMMONSLAVE,chase,196,2,1000,3000,120000,no,self,slavele,0,1320,,,,, // Owl Duke
-1295,Owl Baron@NPC_SUMMONSLAVE,idle,196,2,1000,3000,120000,no,self,slavele,0,1320,,,,, // Owl Duke
+1295,Owl Baron@NPC_SUMMONSLAVE,attack,196,2,1000,3000,180000,no,self,slavele,0,1320,,,,, // Owl Duke
+1295,Owl Baron@NPC_SUMMONSLAVE,chase,196,2,1000,3000,180000,no,self,slavele,0,1320,,,,, // Owl Duke
+1295,Owl Baron@NPC_SUMMONSLAVE,idle,196,2,1000,3000,180000,no,self,slavele,0,1320,,,,, // Owl Duke
 1296,Kobold Leader,attack,111,1,250,1500,30000,yes,self,always,0,,,,,,
 1296,Kobold Leader,attack,170,5,250,0,0,no,target,always,0,,,,,,
 1296,Kobold Leader,chase,111,1,120,1500,30000,yes,self,always,0,,,,,,
-1296,Kobold Leader@NPC_SUMMONSLAVE,attack,196,1,1000,3000,120000,no,self,slavele,2,1133,1134,1135,1136,1137, // Kobolds
-1296,Kobold Leader@NPC_SUMMONSLAVE,chase,196,1,1000,3000,120000,no,self,slavele,2,1133,1134,1135,1136,1137, // Kobolds
-1296,Kobold Leader@NPC_SUMMONSLAVE,idle,196,1,1000,3000,120000,no,self,slavele,2,1133,1134,1135,1136,1137, // Kobolds
+1296,Kobold Leader@NPC_SUMMONSLAVE,attack,196,1,1000,3000,180000,no,self,slavele,2,1133,1134,1135,1136,1137, // Kobolds
+1296,Kobold Leader@NPC_SUMMONSLAVE,chase,196,1,1000,3000,180000,no,self,slavele,2,1133,1134,1135,1136,1137, // Kobolds
+1296,Kobold Leader@NPC_SUMMONSLAVE,idle,196,1,1000,3000,180000,no,self,slavele,2,1133,1134,1135,1136,1137, // Kobolds
 1297,Ancient Mummy@NPC_DARKBREATH,attack,202,5,500,0,0,no,target,always,0,,,,,,
 1297,Ancient Mummy@NPC_DARKBREATH,chase,202,5,500,0,0,no,target,always,0,,,,,,
 1297,Ancient Mummy@NPC_UNDEADATTACK,attack,347,5,500,0,0,no,target,always,0,,,,,,
@@ -1411,15 +1411,15 @@
 1298,Zombie Master,attack,57,10,1000,2500,0,no,target,attackpcge,2,,,,,,
 1298,Zombie Master,attack,57,10,160,2500,0,no,target,always,0,,,,,,
 1298,Zombie Master,attack,176,5,250,1000,0,no,target,always,0,,,,,,
-1298,Zombie Master@NPC_SUMMONSLAVE,attack,196,2,1000,3000,120000,no,self,slavele,0,1036,,,,, // Ghoul
-1298,Zombie Master@NPC_SUMMONSLAVE,chase,196,2,1000,3000,120000,no,self,slavele,0,1036,,,,, // Ghoul
-1298,Zombie Master@NPC_SUMMONSLAVE,idle,196,2,1000,3000,120000,no,self,slavele,0,1036,,,,, // Ghoul
+1298,Zombie Master@NPC_SUMMONSLAVE,attack,196,2,1000,3000,180000,no,self,slavele,0,1036,,,,, // Ghoul
+1298,Zombie Master@NPC_SUMMONSLAVE,chase,196,2,1000,3000,180000,no,self,slavele,0,1036,,,,, // Ghoul
+1298,Zombie Master@NPC_SUMMONSLAVE,idle,196,2,1000,3000,180000,no,self,slavele,0,1036,,,,, // Ghoul
 1299,Goblin Leader,attack,114,1,100,1000,40000,yes,self,always,0,,,,,,
 1299,Goblin Leader,attack,171,1,250,0,0,no,target,always,0,,,,,,
 1299,Goblin Leader,chase,114,1,100,1000,40000,yes,self,always,0,,,,,,
-1299,Goblin Leader@NPC_SUMMONSLAVE,attack,196,1,10000,3000,120000,no,self,slavele,0,1122,1123,1124,1125,1126, // Goblins
-1299,Goblin Leader@NPC_SUMMONSLAVE,chase,196,1,10000,3000,120000,no,self,slavele,0,1122,1123,1124,1125,1126, // Goblins
-1299,Goblin Leader@NPC_SUMMONSLAVE,idle,196,1,10000,3000,120000,no,self,slavele,0,1122,1123,1124,1125,1126, // Goblins
+1299,Goblin Leader@NPC_SUMMONSLAVE,attack,196,1,1000,3000,180000,no,self,slavele,0,1122,1123,1124,1125,1126, // Goblins
+1299,Goblin Leader@NPC_SUMMONSLAVE,chase,196,1,1000,3000,180000,no,self,slavele,0,1122,1123,1124,1125,1126, // Goblins
+1299,Goblin Leader@NPC_SUMMONSLAVE,idle,196,1,1000,3000,180000,no,self,slavele,0,1122,1123,1124,1125,1126, // Goblins
 1300,Caterpillar,attack,52,5,300,1500,10000,no,target,myhpltmaxrate,30,,,,,,
 1300,Caterpillar,attack,52,5,100,1500,10000,no,target,always,0,,,,,,
 1300,Caterpillar,attack,188,5,200,0,7500,yes,target,always,0,,,,,,
@@ -1429,9 +1429,9 @@
 1301,Am Mut,attack,111,1,250,1000,30000,yes,self,always,0,,,,,,
 1301,Am Mut,attack,190,5,100,0,15000,yes,target,always,0,,,,,,
 1301,Am Mut,attack,42,10,250,1500,0,no,target,always,0,,,,,,
-1301,Am Mut@NPC_SUMMONSLAVE,attack,196,2,1000,3000,120000,no,self,slavele,0,1077,,,,, // Dokebi
-1301,Am Mut@NPC_SUMMONSLAVE,chase,196,2,1000,3000,120000,no,self,slavele,0,1077,,,,, // Dokebi
-1301,Am Mut@NPC_SUMMONSLAVE,idle,196,2,1000,3000,120000,no,self,slavele,0,1077,,,,, // Dokebi
+1301,Am Mut@NPC_SUMMONSLAVE,attack,196,2,1000,3000,180000,no,self,slavele,0,1077,,,,, // Dokebi
+1301,Am Mut@NPC_SUMMONSLAVE,chase,196,2,1000,3000,180000,no,self,slavele,0,1077,,,,, // Dokebi
+1301,Am Mut@NPC_SUMMONSLAVE,idle,196,2,1000,3000,180000,no,self,slavele,0,1077,,,,, // Dokebi
 1302,Dark Illusion,attack,187,5,100,1000,10000,yes,target,always,0,,,,,,
 1302,Dark Illusion,attack,172,1,100,1000,10000,yes,target,always,0,,,,,,
 1302,Dark Illusion,attack,18,7,100,1000,10000,yes,target,always,0,,,,,,
@@ -1487,9 +1487,9 @@
 1307,Cat o' Nine Tails,chase,28,10,100,1000,10000,yes,self,myhpltmaxrate,30,,,,,,
 1307,Cat o' Nine Tails,chase,19,5,100,1000,10000,yes,target,always,0,,,,,,
 1307,Cat o' Nine Tails,chase,20,5,100,1000,10000,yes,target,always,0,,,,,,
-1307,Cat o' Nine Tails@NPC_SUMMONSLAVE,attack,196,2,1000,3000,120000,no,self,slavele,0,1180,,,,, // Nine Tail
-1307,Cat o' Nine Tails@NPC_SUMMONSLAVE,chase,196,2,1000,3000,120000,no,self,slavele,0,1180,,,,, // Nine Tail
-1307,Cat o' Nine Tails@NPC_SUMMONSLAVE,idle,196,2,1000,3000,120000,no,self,slavele,0,1180,,,,, // Nine Tail
+1307,Cat o' Nine Tails@NPC_SUMMONSLAVE,attack,196,2,1000,3000,180000,no,self,slavele,0,1180,,,,, // Nine Tail
+1307,Cat o' Nine Tails@NPC_SUMMONSLAVE,chase,196,2,1000,3000,180000,no,self,slavele,0,1180,,,,, // Nine Tail
+1307,Cat o' Nine Tails@NPC_SUMMONSLAVE,idle,196,2,1000,3000,180000,no,self,slavele,0,1180,,,,, // Nine Tail
 1308,Panzer Goblin,attack,173,1,50,3000,0,no,self,myhpltmaxrate,40,,,,,,
 1308,Panzer Goblin,attack,187,5,200,0,7500,yes,target,always,0,,,,,,
 1308,Panzer Goblin,attack,7,10,1000,2000,0,no,target,attackpcge,2,,,,,,
@@ -1504,9 +1504,9 @@
 1309,Gajomart,chase,10,1,1000,0,20000,yes,self,skillused,137,,,,,,
 1309,Gajomart,chase,10,1,100,0,20000,yes,self,always,0,,,,,,
 1309,Gajomart,chase,7,10,400,2000,0,no,target,always,0,,,,,,
-1309,Gajomart@NPC_SUMMONSLAVE,attack,196,2,1000,3000,120000,no,self,slavele,0,1129,,,,, // Horong
-1309,Gajomart@NPC_SUMMONSLAVE,chase,196,2,1000,3000,120000,no,self,slavele,0,1129,,,,, // Horong
-1309,Gajomart@NPC_SUMMONSLAVE,idle,196,2,1000,3000,120000,no,self,slavele,0,1129,,,,, // Horong
+1309,Gajomart@NPC_SUMMONSLAVE,attack,196,2,1000,3000,180000,no,self,slavele,0,1129,,,,, // Horong
+1309,Gajomart@NPC_SUMMONSLAVE,chase,196,2,1000,3000,180000,no,self,slavele,0,1129,,,,, // Horong
+1309,Gajomart@NPC_SUMMONSLAVE,idle,196,2,1000,3000,180000,no,self,slavele,0,1129,,,,, // Horong
 1310,Majoruros,attack,186,5,200,0,7500,yes,target,always,0,,,,,,
 1310,Majoruros,attack,110,5,250,3000,10000,no,target,always,0,,,,,,
 1310,Majoruros,attack,91,5,250,2000,0,yes,target,always,0,,,,,,
@@ -1520,9 +1520,9 @@
 1311,Gullinbursti,chase,8,1,1000,0,30000,yes,self,longrangeattacked,,,,,,,
 1311,Gullinbursti,chase,8,1,1000,0,30000,yes,self,skillused,18,,,,,,
 1311,Gullinbursti,chase,29,1,100,1000,0,yes,self,always,0,,,,,,
-1311,Gullinbursti@NPC_SUMMONSLAVE,attack,196,4,1000,3000,120000,no,self,slavele,0,1166,,,,, // Savage
-1311,Gullinbursti@NPC_SUMMONSLAVE,chase,196,4,1000,3000,120000,no,self,slavele,0,1166,,,,, // Savage
-1311,Gullinbursti@NPC_SUMMONSLAVE,idle,196,4,1000,3000,120000,no,self,slavele,0,1166,,,,, // Savage
+1311,Gullinbursti@NPC_SUMMONSLAVE,attack,196,4,1000,3000,180000,no,self,slavele,0,1166,,,,, // Savage
+1311,Gullinbursti@NPC_SUMMONSLAVE,chase,196,4,1000,3000,180000,no,self,slavele,0,1166,,,,, // Savage
+1311,Gullinbursti@NPC_SUMMONSLAVE,idle,196,4,1000,3000,180000,no,self,slavele,0,1166,,,,, // Savage
 1312,Turtle General,attack,86,5,250,1500,10000,no,target,always,0,,,,,,
 1312,Turtle General,attack,179,5,250,1500,10000,no,target,always,0,,,,,,
 1312,Turtle General,attack,185,5,200,0,7500,yes,target,always,0,,,,,,
@@ -1537,9 +1537,9 @@
 1312,Turtle General,chase,8,7,1000,0,30000,yes,self,skillused,18,,,,,,
 1312,Turtle General,chase,86,5,250,1500,10000,no,target,always,0,,,,,,
 1312,Turtle General,chase,29,1,500,3000,120000,no,self,myhpltmaxrate,50,,,,,,
-1312,Turtle General@NPC_SUMMONSLAVE,attack,196,1,1000,3000,120000,no,self,slavele,2,1601,1602,1600,1594,1364,
-1312,Turtle General@NPC_SUMMONSLAVE,chase,196,1,10000,3000,120000,no,self,slavele,2,1601,1602,1600,1594,1364,
-1312,Turtle General@NPC_SUMMONSLAVE,idle,196,1,10000,3000,120000,no,self,slavele,2,1601,1602,1600,1594,1364,
+1312,Turtle General@NPC_SUMMONSLAVE,attack,196,1,1000,3000,180000,no,self,slavele,2,1601,1602,1600,1594,1364,
+1312,Turtle General@NPC_SUMMONSLAVE,chase,196,1,1000,3000,180000,no,self,slavele,2,1601,1602,1600,1594,1364,
+1312,Turtle General@NPC_SUMMONSLAVE,idle,196,1,1000,3000,180000,no,self,slavele,2,1601,1602,1600,1594,1364,
 // Turtle General Slaves - Permeter/Solider/Heater/Freezer/Assaulter
 1312,Turtle General@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1312,Turtle General@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -1611,9 +1611,9 @@
 1365,Apocalypse,attack,173,1,50,3000,0,no,self,myhpltmaxrate,30,,,,,,
 1365,Apocalypse,attack,171,4,250,1500,0,no,target,always,0,,,,,,
 1366,Lava Golem,attack,186,5,100,0,15000,yes,target,always,0,,,,,,
-1366,Lava Golem@NPC_SUMMONSLAVE,attack,196,2,1000,3000,120000,no,self,slavele,0,1367,,,,, // Blazer
-1366,Lava Golem@NPC_SUMMONSLAVE,chase,196,2,1000,3000,120000,no,self,slavele,0,1367,,,,, // Blazer
-1366,Lava Golem@NPC_SUMMONSLAVE,idle,196,2,1000,3000,120000,no,self,slavele,0,1367,,,,, // Blazer
+1366,Lava Golem@NPC_SUMMONSLAVE,attack,196,2,1000,3000,180000,no,self,slavele,0,1367,,,,, // Blazer
+1366,Lava Golem@NPC_SUMMONSLAVE,chase,196,2,1000,3000,180000,no,self,slavele,0,1367,,,,, // Blazer
+1366,Lava Golem@NPC_SUMMONSLAVE,idle,196,2,1000,3000,180000,no,self,slavele,0,1367,,,,, // Blazer
 1367,Blazer,attack,17,10,350,0,0,no,target,attackpcge,2,,,,,,
 1367,Blazer,attack,186,3,100,0,15000,yes,target,always,0,,,,,,
 1367,Blazer,chase,17,10,350,0,0,no,target,always,0,,,,,,
@@ -1636,7 +1636,7 @@
 1371,False Angel,attack,181,5,100,0,10000,yes,target,always,0,,,,,,
 1371,False Angel,attack,178,5,100,0,10000,no,target,always,0,,,,,,
 1371,False Angel,attack,180,5,50,0,10000,no,target,always,0,,,,,,
-1371,False Angel,attack,196,2,1000,3000,120000,no,self,myhpltmaxrate,20,1011,1042,,,,
+1371,False Angel,attack,196,2,1000,3000,180000,no,self,myhpltmaxrate,20,1011,1042,,,,
 1372,Goat,attack,111,5,100,0,30000,yes,self,attackpcge,2,,,,,,
 1372,Goat,attack,179,5,100,1500,10000,no,target,always,0,,,,,,
 1372,Goat,attack,174,1,1000,1500,10000,no,target,attackpcge,2,,,,,,
@@ -1647,9 +1647,9 @@
 1373,Lord of Death,attack,58,8,100,0,5000,yes,target,always,0,,,,,,
 1373,Lord of Death,chase,58,8,100,0,5000,yes,target,always,0,,,,,,
 1373,Lord of Death,chase,30,1,100,0,10000,yes,target,always,0,,,,,,
-1373,Lord of Death@NPC_SUMMONSLAVE,attack,196,2,1000,3000,120000,no,self,slavele,2,1208,1179,1508,1509,,
-1373,Lord of Death@NPC_SUMMONSLAVE,chase,196,2,1000,3000,120000,no,self,slavele,2,1208,1179,1508,1509,,
-1373,Lord of Death@NPC_SUMMONSlAVE,idle,196,2,1000,3000,120000,no,self,slavele,2,1208,1179,1508,1509,,
+1373,Lord of Death@NPC_SUMMONSLAVE,attack,196,2,1000,3000,180000,no,self,slavele,2,1208,1179,1508,1509,,
+1373,Lord of Death@NPC_SUMMONSLAVE,chase,196,2,1000,3000,180000,no,self,slavele,2,1208,1179,1508,1509,,
+1373,Lord of Death@NPC_SUMMONSlAVE,idle,196,2,1000,3000,180000,no,self,slavele,2,1208,1179,1508,1509,,
 // Lord of Death Slaves - Wanderer/Whisper/Quve/Lude
 1373,Lord of Death@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1373,Lord of Death@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -1733,7 +1733,7 @@
 1389,Dracula,attack,159,5,100,0,0,yes,target,myhpltmaxrate,70,,,,,,
 1389,Dracula,attack,135,1,100,1500,10000,yes,self,always,0,,,,,,
 1389,Dracula,attack,26,1,10,0,100000,yes,self,always,0,,,,,,
-1389,Dracula,attack,209,6,1000,3000,120000,no,self,myhpltmaxrate,5,1005,,,,,
+1389,Dracula,attack,209,6,1000,3000,180000,no,self,myhpltmaxrate,5,1005,,,,,
 1389,Dracula,attack,196,6,1000,3000,10000,no,self,slavele,0,1005,,,,,
 1389,Dracula,attack,30,1,50,3000,120000,yes,target,always,0,,,,,,
 1389,Dracula,attack,171,7,100,0,10000,no,target,always,0,,,,,,
@@ -1836,9 +1836,9 @@
 1418,Evil Snake Lord,attack,15,10,800,1500,10000,no,target,skillused,18,,,,,,
 1418,Evil Snake Lord,chase,15,10,800,1500,10000,no,target,skillused,18,,,,,,
 1418,Evil Snake Lord,chase,202,5,500,0,100000,no,target,always,0,,,,,,
-1418,Evil Snake Lord@NPC_SUMMONSLAVE,attack,196,3,1000,3000,120000,no,self,slavele,2,1412,1416,,,,
-1418,Evil Snake Lord@NPC_SUMMONSLAVE,chase,196,3,1000,3000,120000,no,self,slavele,2,1412,1416,,,,
-1418,Evil Snake Lord@NPC_SUMMONSLAVE,idle,196,3,1000,3000,120000,no,self,slavele,2,1412,1416,,,,
+1418,Evil Snake Lord@NPC_SUMMONSLAVE,attack,196,3,1000,3000,180000,no,self,slavele,2,1412,1416,,,,
+1418,Evil Snake Lord@NPC_SUMMONSLAVE,chase,196,3,1000,3000,180000,no,self,slavele,2,1412,1416,,,,
+1418,Evil Snake Lord@NPC_SUMMONSLAVE,idle,196,3,1000,3000,180000,no,self,slavele,2,1412,1416,,,,
 // Evil Snake Lord Slaves - Taoist Hermit/Evil Nymph
 1418,Evil Snake Lord@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1418,Evil Snake Lord@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -2186,9 +2186,9 @@
 1492,Incarnation Samurai,attack,60,10,500,3000,300000,yes,self,myhpltmaxrate,20,,,,,,
 1492,Incarnation Samurai,attack,57,5,1000,0,50000,yes,target,attackpcge,2,,,,,,
 1492,Incarnation Samurai,attack,57,5,1000,0,50000,yes,target,always,0,,,,,,
-1492,Incarnation Samurai@NPC_SUMMONSLAVE,attack,196,5,1000,3000,120000,no,self,slavele,2,1401,,,,, // Shinobi
-1492,Incarnation Samurai@NPC_SUMMONSLAVE,chase,196,5,1000,3000,120000,no,self,slavele,2,1401,,,,, // Shinobi
-1492,Incarnation Samurai@NPC_SUMMONSLAVE,idle,196,5,1000,3000,120000,no,self,slavele,2,1401,,,,, // Shinobi
+1492,Incarnation Samurai@NPC_SUMMONSLAVE,attack,196,5,1000,3000,180000,no,self,slavele,2,1401,,,,, // Shinobi
+1492,Incarnation Samurai@NPC_SUMMONSLAVE,chase,196,5,1000,3000,180000,no,self,slavele,2,1401,,,,, // Shinobi
+1492,Incarnation Samurai@NPC_SUMMONSLAVE,idle,196,5,1000,3000,180000,no,self,slavele,2,1401,,,,, // Shinobi
 1492,Incarnation Samurai@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1492,Incarnation Samurai@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1492,Incarnation Samurai@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -2418,11 +2418,11 @@
 1623,RSX-0806@AL_TELEPORT,idle,26,1,1000,0,10000,no,self,longrangeattacked,0,,,,,,
 1623,RSX-0806@RG_STRIPWEAPON,attack,215,5,500,0,30000,no,target,always,0,,,,,,
 1623,RSX-0806@LK_BERSERK,attack,359,1,1000,0,60000,no,self,myhpltmaxrate,30,,,,,,
-1623,RSX-0806@NPC_SUMMONMONSTER,attack,209,5,1000,3000,120000,no,self,myhpltmaxrate,5,1624,,,,, // Waste Stove
-1623,RSX-0806@NPC_SUMMONMONSTER,chase,209,5,1000,3000,120000,no,self,myhpltmaxrate,5,1624,,,,, // Waste Stove
-1623,RSX-0806@NPC_SUMMONSLAVE,attack,196,1,1000,3000,120000,no,self,slavele,0,1624,1624,1624,1620,1621,
-1623,RSX-0806@NPC_SUMMONSLAVE,chase,196,1,1000,3000,120000,no,self,slavele,0,1624,1624,1624,1620,1621,
-1623,RSX-0806@NPC_SUMMONSLAVE,walk,196,1,1000,3000,120000,no,self,slavele,0,1624,1624,1624,1620,1621,
+1623,RSX-0806@NPC_SUMMONMONSTER,attack,209,5,1000,3000,180000,no,self,myhpltmaxrate,5,1624,,,,, // Waste Stove
+1623,RSX-0806@NPC_SUMMONMONSTER,chase,209,5,1000,3000,180000,no,self,myhpltmaxrate,5,1624,,,,, // Waste Stove
+1623,RSX-0806@NPC_SUMMONSLAVE,attack,196,1,1000,3000,180000,no,self,slavele,0,1624,1624,1624,1620,1621,
+1623,RSX-0806@NPC_SUMMONSLAVE,chase,196,1,1000,3000,180000,no,self,slavele,0,1624,1624,1624,1620,1621,
+1623,RSX-0806@NPC_SUMMONSLAVE,walk,196,1,1000,3000,180000,no,self,slavele,0,1624,1624,1624,1620,1621,
 // RSX-0806 Slaves - Waste Stove/Noxious/Venemous
 1623,RSX-0806@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1623,RSX-0806@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -2608,9 +2608,9 @@
 1646,Lord Knight Seyren@SM_MAGNUM,attack,7,10,500,500,5000,no,target,always,0,,,,,,
 1646,Lord Knight Seyren@KN_BOWLINGBASH,angry,62,7,500,800,5000,no,target,always,0,,,,,,
 1646,Lord Knight Seyren@KN_BRANDISHSPEAR,attack,57,10,2000,0,5000,yes,target,always,0,,,,,,29
-1646,Lord Knight Seyren@NPC_SUMMONSLAVE,attack,196,1,1000,3000,120000,no,self,slavele,1,1641,1642,1643,1644,1645,0
-1646,Lord Knight Seyren@NPC_SUMMONSLAVE,chase,196,1,1000,3000,120000,no,self,slavele,1,1641,1642,1643,1644,1645,0
-1646,Lord Knight Seyren@NPC_SUMMONSLAVE,idle,196,1,1000,3000,120000,no,self,slavele,1,1641,1642,1643,1644,1645,0
+1646,Lord Knight Seyren@NPC_SUMMONSLAVE,attack,196,1,1000,3000,180000,no,self,slavele,1,1641,1642,1643,1644,1645,0
+1646,Lord Knight Seyren@NPC_SUMMONSLAVE,chase,196,1,1000,3000,180000,no,self,slavele,1,1641,1642,1643,1644,1645,0
+1646,Lord Knight Seyren@NPC_SUMMONSLAVE,idle,196,1,1000,3000,180000,no,self,slavele,1,1641,1642,1643,1644,1645,0
 1646,Lord Knight Seyren@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1646,Lord Knight Seyren@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1646,Lord Knight Seyren@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -2627,9 +2627,9 @@
 1647,Assassin Cross Eremes@NPC_AGIUP,chase,350,5,2500,0,5000,no,self,always,0,,,,,,
 1647,Assassin Cross Eremes@NPC_CHANGEWIND,attack,165,1,10000,2000,600000,no,self,myhpltmaxrate,30,,,,,,
 1647,Assassin Cross Eremes@NPC_CHANGETELEKINESIS,attack,169,1,500,2000,5000,no,self,myhpltmaxrate,5,,,,,,7
-1647,Assassin Cross Eremes@NPC_SUMMONSLAVE,attack,196,1,1000,3000,120000,no,self,slavele,1,1640,1642,1643,1644,1645,0
-1647,Assassin Cross Eremes@NPC_SUMMONSLAVE,chase,196,1,1000,3000,120000,no,self,slavele,1,1640,1642,1643,1644,1645,0
-1647,Assassin Cross Eremes@NPC_SUMMONSLAVE,idle,196,1,1000,3000,120000,no,self,slavele,1,1640,1642,1643,1644,1645,0
+1647,Assassin Cross Eremes@NPC_SUMMONSLAVE,attack,196,1,1000,3000,180000,no,self,slavele,1,1640,1642,1643,1644,1645,0
+1647,Assassin Cross Eremes@NPC_SUMMONSLAVE,chase,196,1,1000,3000,180000,no,self,slavele,1,1640,1642,1643,1644,1645,0
+1647,Assassin Cross Eremes@NPC_SUMMONSLAVE,idle,196,1,1000,3000,180000,no,self,slavele,1,1640,1642,1643,1644,1645,0
 1647,Assassin Cross Eremes@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1647,Assassin Cross Eremes@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1647,Assassin Cross Eremes@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -2649,9 +2649,9 @@
 1648,Mastersmith Howard@BS_HAMMERFALL,chase,110,5,2000,0,5000,no,target,always,0,,,,,,0
 1648,Mastersmith Howard@BS_HAMMERFALL,attack,110,5,2000,0,5000,no,target,always,0,,,,,,0
 1648,Mastersmith Howard@NPC_CHANGETELEKINESIS,attack,169,1,500,2000,5000,no,self,myhpltmaxrate,10,,,,,,7
-1648,Mastersmith Howard@NPC_SUMMONSLAVE,attack,196,1,1000,3000,120000,no,self,slavele,1,1640,1641,1643,1644,1645,0
-1648,Mastersmith Howard@NPC_SUMMONSLAVE,chase,196,1,1000,3000,120000,no,self,slavele,1,1640,1641,1643,1644,1645,0
-1648,Mastersmith Howard@NPC_SUMMONSLAVE,idle,196,1,1000,3000,120000,no,self,slavele,1,1640,1641,1643,1644,1645,0
+1648,Mastersmith Howard@NPC_SUMMONSLAVE,attack,196,1,1000,3000,180000,no,self,slavele,1,1640,1641,1643,1644,1645,0
+1648,Mastersmith Howard@NPC_SUMMONSLAVE,chase,196,1,1000,3000,180000,no,self,slavele,1,1640,1641,1643,1644,1645,0
+1648,Mastersmith Howard@NPC_SUMMONSLAVE,idle,196,1,1000,3000,180000,no,self,slavele,1,1640,1641,1643,1644,1645,0
 1648,Mastersmith Howard@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1648,Mastersmith Howard@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1648,Mastersmith Howard@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -2667,9 +2667,9 @@
 1649,High Priest Margaretha@AL_HEAL,chase,28,9,10000,500,5000,no,self,myhpltmaxrate,30,,,,,,18
 1649,High Priest Margaretha@AL_HEAL,attack,28,10,10000,500,5000,no,self,myhpltmaxrate,30,,,,,,18
 1649,High Priest Margaretha@AL_HEAL,any,28,10,10000,500,5000,no,friend,friendhpltmaxrate,60,,,,,,18
-1649,High Priest Margaretha@NPC_SUMMONSLAVE,attack,196,1,1000,3000,120000,no,self,slavele,1,1640,1641,1642,1644,1645,0
-1649,High Priest Margaretha@NPC_SUMMONSLAVE,chase,196,1,1000,3000,120000,no,self,slavele,1,1640,1641,1642,1644,1645,0
-1649,High Priest Margaretha@NPC_SUMMONSLAVE,idle,196,1,1000,3000,120000,no,self,slavele,1,1640,1641,1642,1644,1645,0
+1649,High Priest Margaretha@NPC_SUMMONSLAVE,attack,196,1,1000,3000,180000,no,self,slavele,1,1640,1641,1642,1644,1645,0
+1649,High Priest Margaretha@NPC_SUMMONSLAVE,chase,196,1,1000,3000,180000,no,self,slavele,1,1640,1641,1642,1644,1645,0
+1649,High Priest Margaretha@NPC_SUMMONSLAVE,idle,196,1,1000,3000,180000,no,self,slavele,1,1640,1641,1642,1644,1645,0
 1649,High Priest Margaretha@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1649,High Priest Margaretha@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1649,High Priest Margaretha@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -2688,9 +2688,9 @@
 1650,Sniper Cecil@HT_FLASHER,idle,120,5,50,0,300000,yes,self,always,0,,,,,,
 1650,Sniper Cecil@NPC_CHANGEWATER,attack,162,1,10000,2000,600000,no,self,myhpltmaxrate,30,,,,,,
 1650,Sniper Cecil@NPC_CHANGETELEKINESIS,attack,169,1,500,2000,5000,no,self,myhpltmaxrate,10,,,,,,7
-1650,Sniper Cecil@NPC_SUMMONSLAVE,attack,196,1,1000,3000,120000,no,self,slavele,1,1640,1641,1642,1643,1645,0
-1650,Sniper Cecil@NPC_SUMMONSLAVE,chase,196,1,1000,3000,120000,no,self,slavele,1,1640,1641,1642,1643,1645,0
-1650,Sniper Cecil@NPC_SUMMONSLAVE,idle,196,1,1000,3000,120000,no,self,slavele,1,1640,1641,1642,1643,1645,0
+1650,Sniper Cecil@NPC_SUMMONSLAVE,attack,196,1,1000,3000,180000,no,self,slavele,1,1640,1641,1642,1643,1645,0
+1650,Sniper Cecil@NPC_SUMMONSLAVE,chase,196,1,1000,3000,180000,no,self,slavele,1,1640,1641,1642,1643,1645,0
+1650,Sniper Cecil@NPC_SUMMONSLAVE,idle,196,1,1000,3000,180000,no,self,slavele,1,1640,1641,1642,1643,1645,0
 1650,Sniper Cecil@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1650,Sniper Cecil@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1650,Sniper Cecil@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -2707,9 +2707,9 @@
 1651,High Wizard Kathryne@WZ_METEOR,chase,83,10,2000,0,5000,yes,target,always,0,,,,,,29
 1651,High Wizard Kathryne@WZ_METEOR,attack,83,10,2000,0,5000,yes,target,always,0,,,,,,29
 1651,High Wizard Kathryne@WZ_HEAVENDRIVE,attack,91,5,2000,0,5000,yes,target,always,0,,,,,,29
-1651,High Wizard Kathryne@NPC_SUMMONSLAVE,attack,196,1,1000,3000,120000,no,self,slavele,1,1640,1641,1642,1643,1644,0
-1651,High Wizard Kathryne@NPC_SUMMONSLAVE,chase,196,1,1000,3000,120000,no,self,slavele,1,1640,1641,1642,1643,1644,0
-1651,High Wizard Kathryne@NPC_SUMMONSLAVE,idle,196,1,1000,3000,120000,no,self,slavele,1,1640,1641,1642,1643,1644,0
+1651,High Wizard Kathryne@NPC_SUMMONSLAVE,attack,196,1,1000,3000,180000,no,self,slavele,1,1640,1641,1642,1643,1644,0
+1651,High Wizard Kathryne@NPC_SUMMONSLAVE,chase,196,1,1000,3000,180000,no,self,slavele,1,1640,1641,1642,1643,1644,0
+1651,High Wizard Kathryne@NPC_SUMMONSLAVE,idle,196,1,1000,3000,180000,no,self,slavele,1,1640,1641,1642,1643,1644,0
 1651,High Wizard Kathryne@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1651,High Wizard Kathryne@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1651,High Wizard Kathryne@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -2753,9 +2753,9 @@
 1658,MvP Egnigem Cenia@NPC_CHANGEWATER,attack,162,1,10000,2000,600000,no,self,myhpltmaxrate,20,,,,,,
 1658,MvP Egnigem Cenia@KN_TWOHANDQUICKEN,attack,60,10,10000,0,120000,yes,self,myhpltmaxrate,30,,,,,,
 1658,MvP Egnigem Cenia@NPC_SHIELDBRAKE,attack,346,5,500,0,5000,yes,target,always,0,,,,,,
-1658,MvP Egnigem Cenia@NPC_SUMMONSLAVE,attack,196,1,1000,3000,120000,no,self,slavele,1,1659,1660,1661,1662,1663,0
-1658,MvP Egnigem Cenia@NPC_SUMMONSLAVE,chase,196,1,1000,3000,120000,no,self,slavele,1,1659,1660,1661,1662,1663,0
-1658,MvP Egnigem Cenia@NPC_SUMMONSLAVE,idle,196,1,1000,3000,120000,no,self,slavele,1,1659,1660,1661,1662,1663,0
+1658,MvP Egnigem Cenia@NPC_SUMMONSLAVE,attack,196,1,1000,3000,180000,no,self,slavele,1,1659,1660,1661,1662,1663,0
+1658,MvP Egnigem Cenia@NPC_SUMMONSLAVE,chase,196,1,1000,3000,180000,no,self,slavele,1,1659,1660,1661,1662,1663,0
+1658,MvP Egnigem Cenia@NPC_SUMMONSLAVE,idle,196,1,1000,3000,180000,no,self,slavele,1,1659,1660,1661,1662,1663,0
 1658,MvP Egnigem Cenia@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1658,MvP Egnigem Cenia@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1658,MvP Egnigem Cenia@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -3001,9 +3001,9 @@
 1708,Recollection of Thanatos@AL_HEAL,chase,28,11,10000,0,5000,yes,self,myhpltmaxrate,50,,,,,,
 1708,Recollection of Thanatos@AL_HEAL,idle,28,11,10000,0,5000,yes,self,myhpltmaxrate,50,,,,,,
 1708,Recollection of Thanatos@AL_HEAL,any,28,11,10000,0,5000,yes,friend,friendhpltmaxrate,60,,,,,,
-1708,Recollection of Thanatos@NPC_SUMMONSLAVE,attack,196,1,1000,3000,120000,no,self,slavele,2,1709,1710,1711,1712,,
-1708,Recollection of Thanatos@NPC_SUMMONSLAVE,chase,196,1,1000,3000,120000,no,self,slavele,2,1709,1710,1711,1712,,
-1708,Recollection of Thanatos@NPC_SUMMONSLAVE,idle,196,1,1000,3000,120000,no,self,slavele,2,1709,1710,1711,1712,,
+1708,Recollection of Thanatos@NPC_SUMMONSLAVE,attack,196,1,1000,3000,180000,no,self,slavele,2,1709,1710,1711,1712,,
+1708,Recollection of Thanatos@NPC_SUMMONSLAVE,chase,196,1,1000,3000,180000,no,self,slavele,2,1709,1710,1711,1712,,
+1708,Recollection of Thanatos@NPC_SUMMONSLAVE,idle,196,1,1000,3000,180000,no,self,slavele,2,1709,1710,1711,1712,,
 1708,Recollection of Thanatos@NPC_CALLSLAVE,attack,352,1,2000,0,10000,yes,self,always,0,,,,,,
 1708,Recollection of Thanatos@NPC_CALLSLAVE,chase,352,1,2000,0,10000,yes,self,always,0,,,,,,
 1708,Recollection of Thanatos@NPC_CALLSLAVE,idle,352,1,2000,0,10000,yes,self,always,0,,,,,,
@@ -3060,16 +3060,16 @@
 1719,Detardeurus@NPC_POWERUP,attack,349,5,10000,0,30000,no,self,myhpltmaxrate,30,,,,,,06
 1719,Detardeurus@NPC_BREAKWEAPON,attack,343,10,500,1000,120000,no,target,always,0,,,,,,
 1719,Detardeurus@NPC_BREAKARMOR,attack,344,10,500,1000,120000,no,target,always,0,,,,,,
-1719,Detardeurus@NPC_SUMMONSLAVE,attack,196,2,1000,3000,120000,no,self,slavele,0,1756,,,,, // Hydrolancer
-1719,Detardeurus@NPC_SUMMONSLAVE,chase,196,2,1000,3000,120000,no,self,slavele,0,1756,,,,, // Hydrolancer
-1719,Detardeurus@NPC_SUMMONSLAVE,idle,196,2,1000,3000,120000,no,self,slavele,0,1756,,,,, // Hydrolancer
+1719,Detardeurus@NPC_SUMMONSLAVE,attack,196,2,1000,3000,180000,no,self,slavele,0,1756,,,,, // Hydrolancer
+1719,Detardeurus@NPC_SUMMONSLAVE,chase,196,2,1000,3000,180000,no,self,slavele,0,1756,,,,, // Hydrolancer
+1719,Detardeurus@NPC_SUMMONSLAVE,idle,196,2,1000,3000,180000,no,self,slavele,0,1756,,,,, // Hydrolancer
 1719,Detardeurus@NPC_CALLSLAVE,attack,352,1,10000,500,20000,yes,self,always,0,,,,,,
 1719,Detardeurus@NPC_CALLSLAVE,chase,352,1,10000,500,20000,yes,self,always,0,,,,,,
 1719,Detardeurus@NPC_CALLSLAVE,idle,352,1,10000,500,20000,yes,self,always,0,,,,,,
 1720,Hydrolancer@AL_HEAL,attack,28,11,10000,0,5000,yes,self,myhpltmaxrate,99,,,,,,2
-1720,Hydrolancer@NPC_SUMMONSLAVE,attack,196,1,1000,3000,120000,no,self,slavele,2,1713,1714,1716,1717,, // Acidus/Ferus
-1720,Hydrolancer@NPC_SUMMONSLAVE,chase,196,1,1000,3000,120000,no,self,slavele,2,1713,1714,1716,1717,, // Acidus/Ferus
-1720,Hydrolancer@NPC_SUMMONSLAVE,idle,196,1,1000,3000,120000,no,self,slavele,2,1713,1714,1716,1717,, // Acidus/Ferus
+1720,Hydrolancer@NPC_SUMMONSLAVE,attack,196,1,1000,3000,180000,no,self,slavele,2,1713,1714,1716,1717,, // Acidus/Ferus
+1720,Hydrolancer@NPC_SUMMONSLAVE,chase,196,1,1000,3000,180000,no,self,slavele,2,1713,1714,1716,1717,, // Acidus/Ferus
+1720,Hydrolancer@NPC_SUMMONSLAVE,idle,196,1,1000,3000,180000,no,self,slavele,2,1713,1714,1716,1717,, // Acidus/Ferus
 1720,Hydrolancer@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1720,Hydrolancer@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1720,Hydrolancer@NPC_CALLSLAVE,idle,352,1,2000,0,10000,yes,self,always,0,,,,,
@@ -3136,9 +3136,9 @@
 1751,Valkyrie Randgris@AS_SONICBLOW,attack,136,10,1000,0,5000,no,target,always,0,,,,,,
 1751,Valkyrie Randgris@NPC_AGIUP,chase,350,5,5000,0,120000,no,self,myhpltmaxrate,30,,,,,,06
 1751,Valkyrie Randgris@NPC_POWERUP,attack,349,5,5000,0,120000,no,self,myhpltmaxrate,30,,,,,,06
-1751,Valkyrie Randgris@NPC_SUMMONSLAVE,attack,196,5,1000,3000,120000,no,self,slavele,2,1765,,,,, // Valkyrie
-1751,Valkyrie Randgris@NPC_SUMMONSLAVE,chase,196,5,1000,3000,120000,no,self,slavele,2,1765,,,,, // Valkyrie
-1751,Valkyrie Randgris@NPC_SUMMONSLAVE,idle,196,5,1000,3000,120000,no,self,slavele,2,1765,,,,, // Valkyrie
+1751,Valkyrie Randgris@NPC_SUMMONSLAVE,attack,196,5,1000,3000,180000,no,self,slavele,2,1765,,,,, // Valkyrie
+1751,Valkyrie Randgris@NPC_SUMMONSLAVE,chase,196,5,1000,3000,180000,no,self,slavele,2,1765,,,,, // Valkyrie
+1751,Valkyrie Randgris@NPC_SUMMONSLAVE,idle,196,5,1000,3000,180000,no,self,slavele,2,1765,,,,, // Valkyrie
 1751,Valkyrie Randgris@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1751,Valkyrie Randgris@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1751,Valkyrie Randgris@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -3161,18 +3161,18 @@
 1754,Skeggiold,attack,12,3,1000,0,0,no,self,always,0,,,,,,
 1754,Skeggiold,chase,230,5,200,0,5000,no,target,always,0,,,,,,
 1754,Skeggiold,attack,28,11,10000,0,5000,no,self,myhpltmaxrate,30,,,,,,
-1754,Skeggiold@NPC_SUMMONSLAVE,attack,196,2,1000,3000,120000,no,self,slavele,0,1763,,,,, // Skeggiold
-1754,Skeggiold@NPC_SUMMONSLAVE,chase,196,2,1000,3000,120000,no,self,slavele,0,1763,,,,, // Skeggiold
-1754,Skeggiold@NPC_SUMMONSLAVE,idle,196,2,1000,3000,120000,no,self,slavele,0,1763,,,,, // Skeggiold
+1754,Skeggiold@NPC_SUMMONSLAVE,attack,196,2,1000,3000,180000,no,self,slavele,0,1763,,,,, // Skeggiold
+1754,Skeggiold@NPC_SUMMONSLAVE,chase,196,2,1000,3000,180000,no,self,slavele,0,1763,,,,, // Skeggiold
+1754,Skeggiold@NPC_SUMMONSLAVE,idle,196,2,1000,3000,180000,no,self,slavele,0,1763,,,,, // Skeggiold
 1755,Skeggiold_,attack,294,1,1000,0,0,no,target,always,0,,,,,,
 1755,Skeggiold_,attack,189,5,500,0,5000,no,target,always,0,,,,,,06
 1755,Skeggiold_,attack,12,5,2000,1000,5000,no,self,myhpltmaxrate,30,,,,,,19
 1755,Skeggiold_,chase,13,10,1000,700,5000,no,target,always,0,,,,,,
 1755,Skeggiold_,attack,253,10,1000,0,0,no,target,always,0,,,,,,
 1755,Skeggiold_,attack,28,11,1000,0,10000,no,self,myhpltmaxrate,30,,,,,,
-1755,Skeggiold_@NPC_SUMMONSLAVE,attack,196,2,1000,3000,120000,no,self,slavele,0,1764,,,,, // Skeggiold
-1755,Skeggiold_@NPC_SUMMONSLAVE,chase,196,2,1000,3000,120000,no,self,slavele,0,1764,,,,, // Skeggiold
-1755,Skeggiold_@NPC_SUMMONSLAVE,idle,196,2,1000,3000,120000,no,self,slavele,0,1764,,,,, // Skeggiold
+1755,Skeggiold_@NPC_SUMMONSLAVE,attack,196,2,1000,3000,180000,no,self,slavele,0,1764,,,,, // Skeggiold
+1755,Skeggiold_@NPC_SUMMONSLAVE,chase,196,2,1000,3000,180000,no,self,slavele,0,1764,,,,, // Skeggiold
+1755,Skeggiold_@NPC_SUMMONSLAVE,idle,196,2,1000,3000,180000,no,self,slavele,0,1764,,,,, // Skeggiold
 
 // MvP Slaves/Duplicates
 1756,G_Hydrolancer@AL_HEAL,attack,28,11,10000,0,5000,yes,self,myhpltmaxrate,99,,,,,,2
