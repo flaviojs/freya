@@ -1,11 +1,11 @@
-//===== eAthena Script ======================================= 
+//===== Freya Script =========================================
 //= Einbech Town
 //===== By: ================================================== 
 //= Muad_dib
 //===== Current Version: ===================================== 
-//= 1.0
+//= 1.4
 //===== Compatible With: ===================================== 
-//= eAthena Revision 3000+
+//= Freya
 //===== Description: ========================================= 
 //=
 //===== Additional Comments: ================================= 
@@ -17,6 +17,11 @@
 //= 0.3 Added some more npcs, thanks to Muad_Dib [MasterOfMuppets]
 //= 1.0 Added the last of the town npcs, [MasterOfMuppets]
 //=     all credits to muad_dib for scripting them.
+//= 1.1 Made some changes according to the Shinokas quest, [MasterOfMuppets]
+//=	thanks to Dj-Yhn for scripting them.
+//= 1.2 Removed Duplicates [Silent]
+//= 1.3 Implemented the Lover's quest. [MasterOfMuppets]
+//= 1.4 Moved quests to quests/quests_einbroch.txt [Evera]
 //============================================================
 
 
@@ -381,31 +386,6 @@ einbech.gat,105,218,6	script	Gushenmu	848,{
 	close;
 }
 	
-einbech.gat,57,210,4	script	Young Man	854,{
-	mes "[Young Man]"; 
-	mes "Behind the pub,";
-	mes "you'll see this old man";
-	mes "who's always mumbling";
-	mes "something to himself.";
-	next;
-	mes "[Young Man]";
-	mes "Sometimes he seems really";
-	mes "angry, but other times he looks";
-	mes "awfully depressed. He must have";
-	mes "lived through some really horrible";
-	mes "experiences. I can't help but feel";
-	mes "really sorry for the old guy.";
-	next;
-	mes "[Young Man]";
-	mes "He says and does";
-	mes "a lot of strange things.";
-	mes "It's sad to see someone";
-	mes "that old act that way, but";
-	mes "it makes me wonder what";
-	mes "could have happened to him.";
-	close;
-}
-	
 einbech.gat,39,215,6	script	Train Station Staff	852,{
 	mes "[Staff]";
 	mes "Welcome to";
@@ -536,7 +516,7 @@ einbech.gat,148,242,5	script	Jung	855,{
 	mes "people who's lived";
 	mes "in both Einbech and";
 	mes "Einbroch for a long time,";
-	mes "So I gyess I'm one of the";
+	mes "So I guess I'm one of the";
 	mes "best guides of this area.";
 	next;
 	mes "[Jung]";
@@ -705,7 +685,7 @@ L_OKAY:
 	mes "about the creature in the";
 	mes "Mine Dungeon or what's";
 	mes "happened in town recently?";
-	mes "Wich would you like to";
+	mes "Which would you like to";
 	mes "know more about?";
 	next;
 	menu "Creature of Mine Dungeon",L_CREATURE,"Town Incident",-;
@@ -721,7 +701,7 @@ L_OKAY:
 	mes "It turns out that every family";
 	mes "that had been murdered had";
 	mes "bought one of these teddy bears.";
-	mes "There were even rumors tat these";
+	mes "There were even rumors that these";
 	mes "teddy bears were comming to life.";
 	next;
 	mes "[Franz]";
@@ -729,7 +709,7 @@ L_OKAY:
 	mes "authorities learned that all the";
 	mes "merchants who sold these bears";
 	mes "had purchased them from the";
-	mes "smae wholesaler, an outsider";
+	mes "same wholesaler, an outsider";
 	mes "noone knew anything about.";
 	next;
 	mes "[Franz]";
@@ -753,18 +733,18 @@ L_OKAY:
 	mes "bears are scattered all over";
 	mes "the place and the government";
 	mes "has classified them as monsters.";
-	mes "Kill with exstreme prejudice!";
+	mes "Kill with extreme prejudice!";
  	next;
 	mes "[Franz]";
 	mes "According to adventurers";
 	mes "who have caught these bears,";
 	mes "they're small, neutral monsters";
-	mes "wich drop Honey, Screw, Well-baked";
+	mes "which drop Honey, Screw, Well-baked";
 	mes "Cookie and Oridecon Hammer.";
 	next;
 	mes "[Franz]";
 	mes "That's all I know";
-	mes "about it. watch out";
+	mes "about it. Watch out";
 	mes "for those bears if you";
 	mes "go exploring, okay? They";
 	mes "may be cute, but they're";
@@ -773,7 +753,7 @@ L_OKAY:
 L_CREATURE:
 	mes "[Franz]";
 	mes "The creature I'm talking about is";
-	mes "Ungoliant, wich also called the";
+	mes "Ungoliant, which also called the";
 	mes "Master of the Caves around here.";
 	mes "It's said to live deep in the caves";
 	mes "where it giards peculiar ores and";
@@ -812,7 +792,7 @@ L_CREATURE:
 	mes "to anyone entering the mines.";
 	next;
 	mes "[Franz]";
-	mes "Now, and adventurer that";
+	mes "Now, an adventurer that";
 	mes "managed to kill an Ungoliant";
 	mes "has told me that it drops Ant's";
 	mes "Jaw, Colorful Shell, Very Hard";
@@ -972,288 +952,7 @@ L_FINE:
 	close;
 }
 
-einbech.gat,165,105,7	script	Buender Hikeman	847,{
-	if(einbech_buender == 2)goto L_BEST;
-	if(einbech_buender == 1)goto L_BASTARD;
-	mes "[Buender Hikeman]";
-	mes "...";
-	mes "......";
-	next;
-	mes "[Buender Hikeman]";
-	mes "...";
-	mes "......";
-	mes "......You...";
-	next;
-	mes "[Buender Hikeman]";
-	mes "...";
-	mes "......";
-	mes "......You...";
-	mes "......Stop it...";
-	next;
-	mes "[Buender Hikeman]";
-	mes "...";
-	mes "......";
-	mes "......You...";
-	mes "......Stop it...";
-	mes "...You ^FF0000bastard^000000!";
-	next;
-	mes "[Buender Hikeman]";
-	mes "RaaaaAAAARGHHH!!";
-	next;
-	mes "[Buender Hikeman]";
-	mes "^0000FFThe old man seems^000000";
-	mes "^0000FFslightly irked at seeing^000000";
-	mes "^0000FFyou. Unfortunately, his^000000";
-	mes "^0000FFscreaming and rambling^000000";
-	mes "^0000FFis totally incoherent.^000000";
-	next;
-	mes "[Buender Hikeman]";
-	mes "It ^FF0000is^000000 you!";
-	mes "You're responsible!";
-	mes "You've taken everything";
-	mes "away from me!!";
-	next;
-	menu "What are you talking about?",L_WHAT,"Ignore Him.",-;
-	mes "[Buender Hikeman]";
-	mes "W...wait!";
-	mes "I said wait!";
-	mes "*Cough!*";
-	close;
-L_WHAT:
-	mes "[Buender Hikeman]";
-	mes "How dare you...";
-	mes "How dare you treat";
-	mes "after destroying all the";
-	mes "happiness in my life!";
-	next;
-	mes "[Buender Hikeman]";
-	mes "Damn you...";
-	mes "How can you have";
-	mes "the audacity to pretend";
-	mes "as if nothing happened?!";
-	mes "*C-cough Cough...*";
-	next;
-	mes "[Buender Hikeman]";
-	mes "Are you so evil to";
-	mes "just shallowly forget";
-	mes "what you've done to our";
-	mes "lives? Did you already";
-	mes "forget what you did";
-	mes "here in Einbech?!";
-	next;
-	mes "[Buender Hikeman]";
-	mes "It was such a long";
-	mes "time ago, but I'll never";
-	mes "forget. This town was";
-	mes "small, but full of folk";
-	mes "with warm hearts...";
-	next;
-	mes "[Buender Hikeman]";
-	mes "Me, Khartophe, Anuto,";
-	mes "Maskharundt... All of";
-	mes "us were friends hired";
-	mes "by that businessman";
-	mes "to dig up ores in the mine.";
-	next;
-	mes "[Buender Hikeman]";
-	mes "And then there";
-	mes "was you! All of us";
-	mes "put together made the";
-	mes "greatest mining team!";
-	mes "That was, until, we";
-	mes "discovered ^FF0000it^000000.";
-	next;
-	mes "[Buender Hikeman]";
-	mes "Yes...";
-	mes "The mysterious ore";
-	mes "that dazzled with a";
-	mes "magnificent light.";
-	next;
-	mes "[Buender Hikeman]";
-	mes "But we should have known";
-	mes "that the ^0000FFUngoliant^000000 would";
-	mes "be arround that ore. We";
-	mes "should have realized";
-	mes "the danger...";
-	next;
-	mes "[Buender Hikeman]";
-	mes "We reported our findings";
-	mes "to our employer, and then";
-	mes "the ore just disappeared. He";
-	mes "must have sent it somewhere,";
-	mes "it was none of our business.";
-	next;
-	mes "[Buender Hikeman]";
-	mes "Then life was back";
-	mes "to normal for a while.";
-	mes "But one day you yelled";
-	mes "to us that you had found";
-	mes "another special, mysterious";
-	mes "ore in the mines.";
-	next;
-	mes "[Buender Hikeman]";
-	mes "But when we came";
-	mes "over to check the hole";
-	mes "you dug up, you know";
-	mes "what we found...?!";
-	next;
-	menu "Ungoliant?",L_UNGOLIANT,"A mysterious ore, right?",L_ORE,"Nothing...?",-;
-	mes "[Buender Hikeman]";
-	mes "Yes...";
-	mes "Nothing.";
-	goto L_CONTINUE;
-L_UNGOLIANT:
-	mes "[Buender Hikeman]";
-	mes "Don't you remember";
-	mes "what happened? What";
-	mes "you did to us at that time?!";
-	next;
-L_CONTINUE:
-	mes "[Buender Hikeman]";
-	mes "There was nothing";
-	mes "inside the hole!";
-	next;
-	mes "[Buender Hikeman]";
-	mes "Then you pointed to";
-	mes "the wall behind us and";
-	mes "screamed that Ungoliant";
-	mes "was coming! In our panic";
-	mes "we started to dig our way out!";
-	next;
-	mes "[Buender Hikeman]";
-	mes "I remember that the expression on";
-	mes "your face seemed so strange. I had";
-	mes "thought you looked sad, but now I'm";
-	mes "sure you were consumed by greed! We";
-	mes "trusted you and you betrayed us!";
-	next;
-	mes "[Buender Hikeman]";
-	mes "When we finally smashed";
-	mes "down that last wall, everything";
-	mes "started to fall around us. We";
-	mes "were the only two to survive";
-	mes "that tunnel collapse.";
-	next;
-	mes "[Buender Hikeman]";
-	mes "Then I learned...";
-	mes "You planned it all along.";
-	set einbech_buender,1;
-	close;
-L_ORE:
-	mes "[Buender Hikeman]";
-	mes "Don't you remember";
-	mes "what happened? What";
-	mes "you did to us at that time?!";
-	goto L_CONTINUE;
-L_BASTARD:
-	mes "[Buender Hikeman]";
-	mes "Bastard!";
-	mes "I'm sick of";
-	mes "your lies!";
-	next;
-	menu "I'm not who you think!",L_IM,"How did you survive the accident?",-;
-L_HOW:
-	mes "[Buender Hikeman]";
-	mes "When I came to,";
-	mes "I was lying on my";
-	mes "stomach in the ruins";
-	mes "of that dark tunnel.";
-	next;	
-	mes "[Buender Hikeman]";
-	mes "And I found...";
-	mes "You know what I found.";
-	next;
-	mes "[Buender Hikeman]";
-	mes "*Cough Cough*";
-	mes "The corpses of my friends!";
-	mes "Kartophe, Anuto, Maskharundt";
-	mes "Great men and my best friends.";
-	mes "But where were you?!";
-	next;
-	mes "[Buender Hikeman]";
-	mes "Your body was nowhere";
-	mes "to be found. I searched";
-	mes "the tunnel and finnaly";
-	mes "climbed outside where";
-	mes "I was found unconscious.";
-	next;
-	mes "[Buender Hikeman]";
-	mes "I was so stupid.";
-	mes "It was because of";
-	mes "that ore! You killed our";
-	mes "friend and destroyed";
-	mes "my life for that thing!";
-	next;
-	mes "[Buender Hikeman]";
-	mes "And now...";
-	mes "You come out of";
-	mes "hiding and show up.";
-	mes "What do you want of";
-	mes "me? What more can";
-	mes "you possibly take away?!";
-	next;
-	menu "I'm not who you think I am!",L_THINK,"I'd like to apologize.",-;
-	mes "[Buender Hikeman]";
-	mes "Ha ha...";
-	mes "Apologize?";
-	mes "The harm is";
-	mes "already done...";
-	goto L_CONTINUE2;
-L_THINK:
-	mes "[Buender Hikeman]";
-	mes "Quit lying!";
-	mes "You've stirred up";
-	mes "my hatred by showing";
-	mes "up again! I've never";
-	mes "forgotten that day!";
-	next;
-L_CONTINUE2:
-	mes "[Buender Hikeman]";
-	mes "It's too late";
-	mes "for you now. For";
-	mes "the sake of my friends,";
-	mes "I'll have my vengeance!";
-	next;
-	mes "[Buender Hikeman]";
-	mes "Prepare to die!";
-	mes "^0000FFShinokas^000000!!!!";
-	next;
-	mes "[Buender Hikeman]";
-	mes "...!";
-	mes "*Cough! Cough!*";
-	mes "Noooo! N-not now...";
-	mes "*Cough! Cough!*";
-	next;
-	mes "[" + strcharinfo(0) + "]";
-	mes "...";
-	mes "I better";
-	mes "get away";
-	mes "from him!";
-	next;
-	mes "^0000FFYou ran away from Hikeman^000000";
-	mes "^0000FFas he collapsed on the ground^000000";
-	mes "^0000FFIt wouldn't be a good idea to^000000";
-	mes "^0000FFprovoke the old man anymore,^000000";
-	mes "^0000FFintentionally or not.^000000";
-	set einbech_buender,2;
-	close;
-L_BEST:
-	mes "^0000FFIt'd be best^000000";
-	mes "^0000FFto avoid aggravating^000000";
-	mes "^0000FFthe old man for now.^000000";
-	close;
-L_IM:
-	mes "[Buender Hikeman]";
-	mes "Ha...!";
-	mes "Do you think";
-	mes "I'd so easily";
-	mes "forget the face";
-	mes "of the person who";
-	mes "shattered my life?!";
-	goto L_HOW;
-}
-
-ein_in01.gat,281,85,2	script	Drunken Man	849,{
+ein_in01.gat,281,85,2	script	Drunken Man#01	849,{
 	mes "[Drunken Man]";
 	mes "...*Hiccup*...";
 	mes "*Hiccup*...";
@@ -1340,7 +1039,7 @@ ein_in01.gat,279,92,2	script	Tavern Lady	854,{
 	close;
 }
 
-einbech.gat,197,139,4	script	Young Man	855,{	
+einbech.gat,197,139,4	script	Young Man#05	855,{	
 	mes "[Heinz]";
 	mes "Wow...";
 	mes "And adventurer from";
@@ -1377,53 +1076,6 @@ einbech.gat,197,139,4	script	Young Man	855,{
 	mes "of all that is good and holy, I'm";
 	mes "begging you, please kill thise foul";
 	mes "and evil creatures. Please!!";
-	close;
-}
-
-ein_in01.gat,191,102,4	script	Kaijeta	846,{	
-	mes "[Kaijeta]";
-	mes "Welcome to my humble";
-	mes "abode, adventurer. I'm";
-	mes "sorry if I'm a poor host.";
-	next;
-	mes "[Kaijeta]";
-	mes "As you can see, we have";
-	mes "to share this house with";
-	mes "other families so we don't";
-	mes "have much open space or";
-	mes "privacy. I'm afraid we can't";
-	mes "even affor basic comfort.";
-	next;
-	mes "[Kaijeta]";
-	mes "For now, this is the best";
-	mes "we can do. We don't have";
-	mes "the zeny to buy a house or";
-	mes "land, so we have no choice";
-	mes "but to endure through this...";
-	close;
-}
-
-ein_in01.gat,200,101,4	script	Clitzer	854,{	
-	mes "[Clitzer]";
-	mes "Is there something";
-	mes "that you really want";
-	mes "in life, but it's just";
-	mes "beyond your grasp?";
-	next;
-	mes "[Clitzer]";
-	mes "I wish I was more";
-	mes "like you adventurers.";
-	mes "People like you never";
-	mes "seem to give up, no matter";
-	mes "what the obstacles may be.";
-	mes "But I'm so helpless...";
-	next;
-	mes "[Clitzer]";
-	mes "I can't even see";
-	mes "the one person that";
-	mes "I love. We're just so";
-	mes "different that it's not";
-	mes "even possible anymore...";
 	close;
 }
 

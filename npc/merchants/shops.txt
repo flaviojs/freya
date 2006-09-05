@@ -1,13 +1,13 @@
-//===== eAthena / Freya Script ======================================= 
+//===== Freya Script =========================================
 //= Shops
 //===== By: ================================================== 
 //= eAthena Dev Team
 //===== Current Version: ===================================== 
 //= 1.9
 //===== Compatible With: ===================================== 
-//= eAthena 7.15 + / Freya 2.0 +
+//= Freya
 //===== Description: ========================================= 
-//=
+//= Shops across Rune Midgard
 //===== Additional Comments: ================================= 
 //= Swapped shop titles in GONRYUN, thanks to Kashy
 //= 1.3a Fixed Louyang map name. Added additional shops in Yuno. [kobra_k88]
@@ -46,6 +46,7 @@
 //= 1.7 Added some missing iRO - Lighthalzen NPCs [Musashiden]
 //= 1.8 Added Rachel Official shops. Special Thanks to RockmanEXE. [erKURITA]
 //= 1.9 Converted some things for Freya compatibility. Removed Gunslinger/Ninja Shops [Tsuyuki]
+//= 2.0 Removed Jellopies from NPCs (As per new patches) [Tsuyuki]
 //============================================================
 
 //=======================================================

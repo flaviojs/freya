@@ -1,23 +1,24 @@
-//===== eAthena Script =======================================
-//= Item Quest NPCs located in Geffen
-//===== By: ==================================================
+//===== Freya Script =========================================
+//= Quest NPCs related to Geffen
+//===== By: ================================================== 
 //= kobra_k88
-//===== Current Version: =====================================
-//= 1.0
-//===== Compatible With: =====================================
-//= eAthena 7.15 +
-//===== Description: =========================================
+//===== Current Version: ===================================== 
+//= 1.3
+//===== Compatible With: ===================================== 
+//= Freya
+//===== Description: ========================================= 
 //= Welding Mask and Headset Quests.
-//===== Additional Comments: =================================
-//= Fully working
-//============================================================
+//===== Additional Comments: ================================= 
+//= 1.1 Fixed exploits [Lupus]
+//= 1.2 Removed Duplicates [Silent]
+//= 1.3 Converted Emoticon Commands to Freya [Tsuyuki]
+//============================================================ 
 
 
-
-//===========================================================//
-// Blacksmith: 'Welding Mask' Quest
-//===========================================================//
-geffen_in.gat,144,166,4	script	Blacksmith	63,{
+//==============================================================================================//
+// 					Blacksmith: 'Welding Mask' Quest
+//==============================================================================================//
+geffen_in.gat,144,166,4	script	Blacksmith#01	63,{
 	mes "[Blacksmith]";
 	mes "Who am I?!........";
 	emotion 0;
@@ -30,9 +31,8 @@ geffen_in.gat,144,166,4	script	Blacksmith	63,{
 	mes "[Blacksmith]";
 	mes "Since I became a Blacksmith, I invented something really incredible..... wanna hear about it?";
 	next;
-	menu "I'd love to.",M_Yes, "Well, not really....",M_No;
+	menu "I'd love to.",-, "Well, not really....",M_No;
 
-	M_Yes:
 		mes "[Blacksmith]";
 		mes "Blacksmiths are always welding metals under the HOTEST and must grueling conditions!";
 		mes "The tremendous heat from the metals is so intense that it almost feels as if your face is going to burn off....";
@@ -48,19 +48,18 @@ geffen_in.gat,144,166,4	script	Blacksmith	63,{
 		mes "[Blacksmith]";
 		mes "So what do you think? For ^4455FF'50 Steels'^000000 and only ^4455FF2000 Zeny^000000, I can make you one.";
 		next;
-		menu "Hm.. Not bad. Alright.",sM_Yes, "No thanks.  I'd have no use for it.",sM_No;
+		menu "Hm.. Not bad. Alright.",-, "No thanks.  I'd have no use for it.",sM_No;
 
-		sM_Yes:
 			mes "[Blacksmith]";
-			if((countitem(999) < 50) || (Zeny < 2000)) goto sL_NotEnuf;
+			if(countitem(999) < 50 || Zeny < 2000) goto sL_NotEnuf;
+			delitem 999,50;
+			set Zeny, Zeny - 2000;
 			mes "Great! I'll make one right away.......";
-			next;
+			next;	
 			mes "~!clonk!~!clank!~!bang!~ ~!clonk!~!clank!~!bang!~";
 			next;
 			mes "[Blacksmith]";
 			mes "Here you are, your very own Welding Mask! It was a pleasure doing buisness with you!";
-			delitem 999,50;
-			set Zeny, Zeny - 2000;
 			getitem 2292,1;
 			close;
 
@@ -91,9 +90,8 @@ geffen_in.gat,30,71,4	script	Eric	83,{
 	mes "Please listen to the story of my blessed grand father...";
 	emotion 28;
 	next;
-	menu "Listen.",M_Listen, "Ask about Items needed.",M_Ask, "Make.",M_Make, "End Conversation.",M_End;
+	menu "Listen.",-, "Ask about Items needed.",M_Ask, "Make.",M_Make, "End Conversation.",M_End;
 
-	M_Listen:
 		mes "[Eric]";
 		mes "My grand father passed away few years ago.... he was very special to me.....";
 		next;
@@ -135,7 +133,7 @@ geffen_in.gat,30,71,4	script	Eric	83,{
 		next;
 		mes "[Eric]";
 		mes "My only goal in life is to realize my grand fathers ideas and pay tribute to the man I hold so dear to my heart.......";
-		emotion 28;
+		emotion 20;
 		next;
 		mes "[Eric]";
 		mes "If only I had those materials.... Hmm... would you be iterested in this project? All I ask is that you gather the right items for me....";
@@ -153,17 +151,17 @@ geffen_in.gat,30,71,4	script	Eric	83,{
 
 	M_Make:
 		mes "[Eric]";
-		if(countitem(999) < 40) || (countitem(984) < 1) || (countitem(970)<1) || (countitem(1003) < 1) goto L_NotEnuf;
+		if(countitem(999) < 40 || countitem(984) < 1 || countitem(970)<1 || countitem(1003) < 1) goto L_NotEnuf;
+		delitem 999,40;
+		delitem 984,1;
+		delitem 970,1;
+		delitem 1003,1;
 		mes "Oh this is GREAT!! You have all of the materials I need to make my grandfather's Headset!";
 		emotion 5;
 		next;
 		mes "[Eric]";
 		mes "Give me a few minutes to assemble it...............";
 		next;
-		delitem 999,40;
-		delitem 984,1;
-		delitem 970,1;
-		delitem 1003,1;
 		getitem 5001,1;
 		mes "[Eric]";
 		mes "FINALLY!! It's complete! My grand father's Headset! Please take them... without your help this wouldn't have been possible.";

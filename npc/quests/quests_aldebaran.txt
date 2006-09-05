@@ -1,11 +1,11 @@
-//===== eAthena Script =======================================
+//===== Freya Script =========================================
 //= Item Quest NPCs located in Aldebaran
 //===== By: ==================================================
-//=
+//= eAthena
 //===== Current Version: =====================================
 //= 1.1
 //===== Compatible With: =====================================
-//= eAthena 7.15 +
+//= Freya
 //===== Description: =========================================
 //= 'Doctor Band', 'Feather Bonnet', 'Opera Masque', 'Sakkat Hat' Quests.
 //===== Additional Comments: =================================

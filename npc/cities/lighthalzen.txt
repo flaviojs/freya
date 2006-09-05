@@ -1,9 +1,9 @@
-//===== Freya Script ======================================= 
+//===== Freya Script =========================================
 //= Lighthalzen City
 //===== By: ================================================== 
 //=  erKURITA
 //===== Current Version: ===================================== 
-//= 0.5
+//= 0.9
 //===== Compatible With: ===================================== 
 //= Freya
 //===== Description: ========================================= 
@@ -15,11 +15,10 @@
 //= 0.4 More Town NPCs. [Musashiden]
 //= 0.5 Added a BIG load of Lighthalzen NPCs. [musashiden]
 //= 0.6 Fixed some typos+Coordinates. [Musashiden]
+//= 0.7 Implemented some more crap NPCs and the second entrance to biolabs [MasterOfMuppets]
+//= 0.8 Removed Duplicates [Silent]
+//= 0.9 Removed Duplicates [Toms]
 //=============================================================
-
-lighthalzen.gat,154,100,5	script	Lighthalzen Guard#1	852,{end;}
-lighthalzen.gat,207,310,5	script	Lighthalzen Guard#2	852,{end;}
-
 
 lighthalzen.gat,198,285,5	script	Jiwon	862,{
 
@@ -427,7 +426,7 @@ lighthalzen.gat,115,159,5	script	Collins	866,{
 
 lighthalzen.gat,77,157,5	script	Villagomez	866,{
 
-	mes "[Mauro]";
+	mes "[Villagomez]";
 	mes "I just step out to get";
 	mes "a haircut and now i'm";
 	mes "lost. Boy oh boy, I hope";
@@ -668,7 +667,55 @@ lighthalzen.gat,147,105,3	script	Laqumet	869,{
 
 }
 
-lhz_in02.gat,241,172,8	script	Hotel Employee	868,{
+lhz_in02.gat,230,284,4	script	Hotel Employee#01	86,{
+
+	mes "[Hotel Employee]";
+	mes "Welcome to";
+	mes "the Royal Dragon,";
+	mes "where you can find the";
+	mes "finest accomodations";
+	mes "and the best service.";
+	next;
+	menu "Save Point",s_Save,"Rest - 5,000 zeny",s_Rest,"Cancel",-;
+
+	mes "[Hotel Employee]";
+	mes "Thank you and";
+	mes "have a nice day.";
+	close;
+
+s_Save:
+	savepoint "lhz_in02.gat",209,275;
+	mes "[Hotel Employee]";
+	mes "Thank you, your";
+	mes "Respawn Point has";
+	mes "been saved here in";
+	mes "the Royal Dragon.";
+	close;
+
+s_Rest:
+	if(Zeny < 5000)goto s_NEnoughZ;
+	set Zeny,Zeny - 5000;
+	mes "[Hotel Employee]";
+	mes "Thank you~";
+	mes "I hope you enjoy";
+	mes "your stay in the";
+	mes "Royal Dragon.";
+	close2;
+	warp "lhz_in02.gat",219,150;
+	percentheal 100,100;
+	sc_start SC_BLESSING,240000,10;
+	skilleffect AL_BLESSING,0;
+	end;
+
+s_NEnoughZ:
+	mes "[Hotel Employee]";
+	mes "I'm sorry but you do not";
+	mes "have enough zeny, please";
+	mes "come back when you do!";
+	close;
+}
+
+lhz_in02.gat,241,172,8	script	Hotel Employee#02	868,{
 
 	mes "[Hotel Employee]";
 	mes "Please use the stairs";
@@ -721,7 +768,7 @@ lhz_in02.gat,201,181,6	script	Safwat Fahmy	853,{
 
 }
 
-lhz_in02.gat,251,212,2	script	Hotel Employee	868,{
+lhz_in02.gat,251,212,2	script	Hotel Employee#03	868,{
 
 	mes "[Hotel Employee]";
 	mes "This is the Couple Suite.";
@@ -789,7 +836,7 @@ lhz_in02.gat,221,276,4	script	Harp	869,{
 
 }
 
-lhz_in02.gat,238,275,4	script	Hotel Employee	869,{
+lhz_in02.gat,238,275,4	script	Hotel Employee#04	869,{
 
 	mes "[Hotel Employee]";
 	mes "\"Hospitality with a smile";
@@ -802,7 +849,7 @@ lhz_in02.gat,238,275,4	script	Hotel Employee	869,{
 
 }
 
-lhz_in02.gat,247,275,4	script	Hotel Employee	868,{
+lhz_in02.gat,247,275,4	script	Hotel Employee#05	868,{
 
 	mes "[Hotel Employee]";
 	mes "Welcome to the";
@@ -821,7 +868,7 @@ lhz_in02.gat,247,275,4	script	Hotel Employee	868,{
 
 }
 
-lhz_in02.gat,271,281,2	script	Citizen	47,{
+lhz_in02.gat,271,281,2	script	Citizen#01	47,{
 
 	mes "[Hachi]";
 	mes "Oh yeah. I love-love-love";
@@ -853,7 +900,7 @@ lhz_in02.gat,277,285,4	script	Bartender	61,{
 
 }
 
-lhz_in02.gat,281,280,6	script	Customer	816,{
+lhz_in02.gat,281,280,6	script	Customer#01	816,{
 
 	mes "[Rona]";
 	mes "I hate it when guys";
@@ -872,7 +919,7 @@ lhz_in02.gat,281,280,6	script	Customer	816,{
 
 }
 
-lhz_in02.gat,287,282,4	script	Customer	853,{
+lhz_in02.gat,287,282,4	script	Customer#02	853,{
 
 	mes "[Greenfield]";
 	mes "I don't believe it...";
@@ -1404,7 +1451,7 @@ lhz_in01.gat,116,45,6	script	Joshua	704,{
 
 // ---------------------------------------------------------------------------
 
-lhz_in01.gat,93,45,4	script	Researcher	865,{
+lhz_in01.gat,93,45,4	script	Researcher#02	865,{
 
 	mes "[Researcher]";
 	mes "You know what's weird?";
@@ -1569,7 +1616,7 @@ lhz_in03.gat,192,19,2	script	Haggar	855,{
 
 // ---------------------------------------------------------------------------
 
-lhz_in03.gat,193,25,2	script	Bartender	61,{
+lhz_in03.gat,193,25,2	script	Bartender#01	61,{
 
 	mes "[Tony]";
 	mes "Hey man, I know this";
@@ -1664,7 +1711,7 @@ lhz_in03.gat,192,93,2	script	City Girl#City_Girl	862,{
 
 // ---------------------------------------------------------------------------
 
-lhz_in03.gat,189,87,4	script	Drunken Man#Drunken_Man	869,{
+lhz_in03.gat,189,87,4	script	Drunken Man#04	869,{
 
 	mes "[Enku]";
 	mes "*Sob* I just got";
@@ -1686,7 +1733,7 @@ lhz_in03.gat,189,87,4	script	Drunken Man#Drunken_Man	869,{
 
 // ---------------------------------------------------------------------------
 
-lhz_in03.gat,183,82,6	script	Drunken Man#Drunken_Man2	870,{
+lhz_in03.gat,183,82,6	script	Drunken Man#05	870,{
 
 	mes "[Linus]";
 	mes "After ten years";
@@ -1706,7 +1753,7 @@ lhz_in03.gat,183,82,6	script	Drunken Man#Drunken_Man2	870,{
 
 // ---------------------------------------------------------------------------
 
-lhz_dun03.gat,180,83,6	script	Citizen	86,{
+lhz_in03.gat,180,83,6	script	Citizen#02	86,{
 
 	mes "[Mitchell]";
 	mes "You know, everyone";
@@ -1771,5 +1818,238 @@ lhz_in03.gat,184,38,2	script	Loudmouth	55,{
 	mes "look for? What, you";
 	mes "don't believe me?!";
 	close;
+
+}
+// ---------------------------------------------------------------------------
+
+lhz_in01.gat,114,181,3	script	Representative::LhzRep	71,{
+
+	mes "[Representative]";
+	mes "Greetings, and welcome";
+	mes "to the Rekenber Corporation.";
+	mes "How may I be of service today?";
+	next;
+	menu "Building Information.",-;
+
+loopback:
+	mes "[Representative]";
+	mes "Please tell me";
+	mes "which floor you'd like";
+	mes "to know more about.";
+	next;
+	menu "1F",s_1,"2F",s_2,"B1",s_B,"Cancel",-;
+
+	mes "[Representative]";
+	mes "We are always doing our";
+	mes "best to provide the best";
+	mes "services to our customers.";
+	mes "Remember that Rekenber";
+	mes "is the name you can trust.";
+	mes "Thank you and have a nice day.";
+	close;
+
+s_1:
+	mes "[Representative]";
+	mes "The ^3131FFRekenber Library^000000 can";
+	mes "be found at the end of the";
+	mes "left hallway. Our library is";
+	mes "a great resource of innovative";
+	mes "ideas and information for our";
+	mes "system development employees.";
+	next;
+	mes "[Representative]";
+	mes "The ^3131FFBall Room^000000, where";
+	mes "various official events are";
+	mes "usually held, can be accessed";
+	mes "through the right hallway.";
+	next;
+	goto loopback;
+
+s_2:
+	mes "[Representative]";
+	mes "Please use the stairs";
+	mes "located on both sides of";
+	mes "the Help Desk to go to the";
+	mes "Second Floor. The Second";
+	mes "Floor is mostly used for";
+	mes "administrative purposes.";
+	next;
+	mes "[Representative]";
+	mes "There, you can find";
+	mes "the ^3131FFConference Room^000000,";
+	mes "^3131FFSecretary Office^000000, the";
+	mes "^3131FFAuditorium^000000 and the";
+	mes "^3131FFChairman's Office^000000.";
+	next;
+	goto loopback;
+s_B:
+	mes "[Representative]";
+	mes "The first underground floor";
+	mes "is used by the ^3131FFRegenshirm^000000,";
+	mes "our laboratory affiliate. For";
+	mes "security reasons, this floor";
+	mes "is not accessible to visitors";
+	next;
+	goto loopback;
+	
+}
+
+lhz_in01.gat,26,247,2	duplicate(LhzRep)	Representative	71
+
+lhz_in01.gat,173,28,4	script	Guard#01::LhzRekGuard	868,{
+
+	mes "[Guard]";
+	mes "This is a";
+	mes "restricted area.";
+	mes "Please keep clear";
+	mes "if you do not have";
+	mes "special authorization.";
+	mes "Thank you for your cooperating.";
+	close;
+
+}
+
+lhz_in01.gat,180,28,4	duplicate(LhzRekGuard)	Guard#03	868
+
+lhz_in01.gat,72,209,4	script	Guide#01	862,{
+
+	mes "[Lasoei]";
+	mes "Oh phooey.";
+	mes "The same customers";
+	mes "are always coming in,";
+	mes "day after day. Can it";
+	mes "get any less exciting?";
+	next;
+	mes "[Lasoei]";
+	mes "Oh...!";
+	mes "W-welcome~";
+	mes "C-can I help you";
+	mes "with anything?";
+	close;
+
+}
+
+lhz_in01.gat,72,195,8	script	Guide#02	90,{
+
+	mes "[Geonuii]";
+	mes "Greetings. This path";
+	mes "leads to the Library and";
+	mes "the Laboratory. Please be";
+	mes "aware that these places";
+	mes "are restricted from access";
+	mes "by the general public.";
+	close;
+
+}
+
+lhz_in01.gat,73,188,4	script	Guide#03	862,{
+
+	mes "[Bonnie]";
+	mes "Oh no...";
+	mes "Where did I put it?";
+	close;
+
+}
+
+lhz_in01.gat,34,226,4	script	Rekenber Guard#01	867,{
+
+	if(isequipped(2241) && isequipped(2243)) goto s_Staff;
+	mes "[Rekenber Guard]";
+	mes "This is a restricted";
+	mes "area! Please show";
+	mes "some ID immediately!";
+	next;
+	menu "ID?",s_ID,"Cancel",-;
+
+	mes "[Rekenber Guard]";
+	mes "Unless you have special";
+	mes "authorization, nobody is";
+	mes "allowed into the Underground";
+	mes "Laboratory for security reasons.";
+	close;
+
+s_ID:
+	mes "[Rekenber Guard]";
+	mes "I don't know how you";
+	mes "adventurers do things in";
+	mes "Rune-Midgard, but over here";
+	mes "we have laws about trespassing!";
+	close;
+
+s_Staff:
+	mes "[Rekenber Guard]";
+	mes "^3131FF(Whoa, it's a member";
+	mes "of the staff)^000000 Good day!";
+	close2;
+	warp "lhz_in01.gat",37,225;
+	end;
+
+}
+
+lhz_in01.gat,19,129,0	script	LhzHiddenTrg1::LhzTrig	-1,1,1{
+OnTouch:
+	if(isequipped(2241) && isequipped(2243)) goto s_Staff;
+	mes "[Rekenber Guard]";
+	mes "This area is restricted";
+	mes "to the public! Who are you";
+	mes "and how did you get in here?!";
+	mes "Hey, I need backup right away!";
+	close2;
+	warp "lhz_in01.gat",34,224;
+	end;
+
+s_Staff:
+	mes "[Rekenber Guard]";
+	mes "Keep your eyes open.";
+	mes "I've heard rumors that some";
+	mes "adventurers from Rune-Midgard";
+	mes "are trying to sneak into here!";
+	mes "I know the security here is";
+	mes "pretty much failsafe, but...";
+	close;
+
+}
+
+lhz_in01.gat,23,137,0	duplicate(LhzTrig)	LhzHiddenTrg2	-1,1,1
+
+lhz_in01.gat,24,131,2	duplicate(LhzTrig)	Rekenber Guard#02	867
+
+lhz_in01.gat,25,141,4	script	Regenschirm Guard	868,{
+
+	if(isequipped(2241) && isequipped(2243)) goto s_Staff;
+	mes "[Regenschirm Guard]";
+	mes "This area is restricted";
+	mes "to the public! Who are you";
+	mes "and how did you get in here?!";
+	mes "Hey, I need backup right away!";
+	close2;
+	warp "lhz_in01.gat",34,224;
+	end;
+
+s_Staff:
+	mes "[Regenschirm Guard]";
+	mes "Do you wish to";
+	mes "go underground?";
+	next;
+	menu "Yes",s_Yes,"No",-;
+
+	mes "[Regenschirm Guard]";
+	mes "Thank you and";
+	mes "have a nice day.";
+	close;
+
+s_Yes:
+	if(isequipped(2657)) goto s_Auth;
+	mes "[Regenschirm Guard]";
+	mes "I'm sorry but I can't let";
+	mes "staff without proper autorization";
+	mes "pass. Only staff members with";
+	mes "Laboratory Passports are allowed";
+	mes "to enter the underground.";
+	close;
+
+s_Auth:
+	warp "lhz_dun01.gat",150,288;
+	end;
 
 }

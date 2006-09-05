@@ -1,6 +1,17 @@
 
 Date	Added
 
+9/05/06
+	* Updated: Imported/converted new scripts & updated the old ones from eAthena [Tsuyuki]
+	* Added: Converted and implemented quite a few new missing scripts from eAthena [Tsuyuki]
+	* Merged: Several scripts together for a cleaner NPC folder [Tsuyuki]
+	* Disabled: The Old Blue Box quest since its in iRO, and not kRO [Tsuyuki]
+	* To-Do: Import/convert the following quests/npcs from eAthena:
+	 - Thanatos Tower Quest, Eye of Hellion Quest, The Seal God Weapon Quests, Socket Enchant NPC,
+	 - Npc/cities/valkyrie.txt, the Wedding System, The Cool Event Corp NPCs, and probably some more
+	* To-Do: Convert The Sign quest from Aegis and add it into Freya.
+	* Fixed/Updated: A lot of other things in the NPC folder that I can't even remember now.. [Tsuyuki]
+
 09/04/06
 	* Fixed: Added Lucky Potion's effect, +15 LUK for 5 minutes [Tsuyuki]
 	* Fixed: MvP SummonSlave delay/time values (Should be good now) [Tsuyuki]

@@ -1,11 +1,11 @@
-//===== eAthena Script ======================================= 
+//===== Freya Script =========================================
 //= Quest NPCs related to Niflheim
 //===== By: ================================================== 
 //= Evera and The eAthena Dev Team
 //===== Current Version: ===================================== 
 //= 1.0
 //===== Compatible With: ===================================== 
-//= eAthena 7.15 +
+//= Freya
 //===== Description: ========================================= 
 //= Book of Devil and Piano Key quest
 //===== Additional Comments: ================================= 

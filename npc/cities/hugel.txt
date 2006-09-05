@@ -1,13 +1,41 @@
-//===== Freya Script =======================================
+//===== Freya Script =========================================
 //= Hugel City NPCs
 //===== By: ==================================================
 //= Started by Tsuyuki
 //===== Current Version: =====================================
-//= 0.0
+//= 0.1
 //===== Compatible With: =====================================
-//= Freya 2.0+
+//= Freya
 //===== Description: =========================================
-//=
+//= Hugel City NPCs
 //===== Additional Comments: =================================
-//
+//= 0.1 Imported Temp Firecracker seller from eAthena [Tsuyuki]
+//= Note: I plan to do this script when Episode 10.4 hits iRO 
+//= (Currently on 10.3) - Tsuyuki
 //============================================================
+
+hu_in01.gat,23,311,4	script	Josh	898,{
+
+	mes "[Josh]";
+	mes "Hi ho~ I sell some awesome firecrackers, would you like to buy one?";
+	mes "Only 500z and you get 5 ^FF0000firecrackers^000000!";
+	next;
+	menu "Yes Please",Yes,"No thanks",No;
+
+	JoshYes:
+		if (Zeny >= 500)goto JoshGotZeny;
+			mes "[Josh]";
+			mes "Err sir, you don't have 500z zeny. I can't sell you anything";
+			close;
+	JoshGotZeny:
+		set Zeny,Zeny-500;
+		getitem 12018,5;
+		mes "[Josh]";
+		mes "Good! here you go! Have fun with them!";
+		close;
+
+	JoshNo:
+		mes "[Josh]";
+		mes "Aww~~ you miss it";
+		close;
+}

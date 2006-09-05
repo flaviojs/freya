@@ -1,27 +1,28 @@
-//===== eAthena Script =======================================
-//= Item Quest NPCs located in Prontera
-//===== By: ==================================================
+//===== Freya Script =========================================
+//= Quest NPCs related to Prontera
+//===== By: ================================================== 
 //= kobra_k88
-//===== Current Version: =====================================
-//= 1.1
-//===== Compatible With: =====================================
-//= eAthena 7.15 +
-//===== Description: =========================================
-//= Ph.D Hat Quest
-//===== Additional Comments: =================================
-//= Fully working
+//===== Current Version: ===================================== 
+//= 1.4
+//===== Compatible With: ===================================== 
+//= Freya
+//===== Description: ========================================= 
+//= Ph.D Hat Quest + Culvert
+//===== Additional Comments: ================================= 
 //= Fixed flower name Dreamy -> Illusion
-//============================================================
+//= 1.2 Fixed exploit [Lupus]
+//= 1.3 Removed Duplicates [Silent]
+//= 1.4 Moved Culvert here from Cities/Prontera.txt [Tsuyuki]
+//============================================================ 
 
 
 // Ph.D Hat Quest-------------------------------------------------------
-prt_in.gat,38,108,4	script	Teacher	53,{
-	if((countitem(710) >= 1) && (countitem(703) >= 1) && (countitem(704) >= 1) && (countitem(708) >= 1)) goto L_Start;//Items: Illusion Flower, Hinalle, Aloe, Ment,
+prt_in.gat,38,108,4	script	Teacher#01	53,{
+	if(countitem(710) >= 1 && countitem(703) >= 1 && countitem(704) >= 1 && countitem(708) >= 1) goto L_Start;//Items: Illusion Flower, Hinalle, Aloe, Ment,
 	mes "Don't you think.... ^4444FF'flowers'^000000 are pretty?";
 	next;
-	menu "Talk.",M_Talk, "End Conversation.",M_End;
-
-	M_Talk:
+	menu "Talk.",-, "End Conversation.",M_End;
+	
 		mes "[Teacher]";
 		mes "When I was young, I didn't play with friends like the other children.  Instead, I spent time studing by myself.";
 		next;
@@ -52,10 +53,10 @@ prt_in.gat,38,108,4	script	Teacher	53,{
 		mes "I need 1 ^3355FFIllusion Flower^000000 ,1 ^3355FFHinalle^000000,1 ^3355FFAloe^000000 and 1 ^3355FFMent^000000...";
 		mes "If you can bring these flowers to me, I would be willing to give you a special item...";
 		close;
-
+	
 	M_End:
 		mes "[Teacher]";
-		mes "One of thesedays I will cover whole world in Flowers!.....";
+		mes "One of these days I will cover whole world in Flowers!.....";
 		close;
 
 L_Start:
@@ -63,9 +64,8 @@ L_Start:
 	mes "Oh... Those Flowers in your hand are....";
 	M_Menu:
 	next;
-	menu "Show Flowers",M_Show, "Give Flowers",M_Give, "Cancel",M_End;
+	menu "Show Flowers",-, "Give Flowers",M_Give, "Cancel",M_End;
 
-	M_Show:
 		mes "[Teacher]";
 		mes "Ah... How wonderful!! These are definately the 4 kinds of Flowers I was looking for ..";
 		mes "The ^3355FFIllusion Flower, Hinalle, Aloe, and Ment^000000.  Would you give them to me?...";
@@ -75,17 +75,117 @@ L_Start:
 		goto M_Menu;
 
 	M_Give:
-		mes "[Teacher]";
-		mes "I really, really appreciate what you've done for me!! I trully am grateful! I will give you a very special item as I promised.";
-		emotion 15;
-		next;
-		mes "[Teacher]";
-		mes "This is the hat I wore at my Graduation Ceremony.  It is a reminder of my joyfull school days at the University.";
-		mes "Please take it...";
+		if(countitem(710) < 1 || countitem(703) < 1 || countitem(704) < 1 || countitem(708) < 1) goto L_Cheater;//Items: Illusion Flower, Hinalle, Aloe, Ment,
 		delitem 710,1;//Items: Illusion Flower,
 		delitem 703,1;//Items: Hinalle,
 		delitem 704,1;//Items: Aloe,
 		delitem 708,1;//Items: Ment,
+		mes "[Teacher]";
+		mes "I really, really appreciate what you've done for me!! I trully am grateful! I will give you a very special item as I promised.";
+		emotion e_thx;
+		next;
+		mes "[Teacher]";
+		mes "This is the hat I wore at my Graduation Ceremony.  It is a reminder of my joyfull school days at the University.";
+		mes "Please take it...";
 		getitem 5012,1;//Items: Ph.D Hat,
+		close;
+
+	L_Cheater:
+		mes "[Teacher]";
+		mes "I won't give a special item to a cheater...";
+		mes "Now go away!";
+		emotion e_bzz;
+		close;
+}
+
+// ------------------------------------------------------------------------------------------- Culvert -------------------------------------------------------------------------------\\
+// Culvert Gaurdian ----------------------------------------------------
+prt_fild05.gat,270,212,5	script	Culvert Gaurdian	105,{
+	if(sewer_prt == 1) goto L0;
+	mes "[Culvert Guardian]";
+	mes "Sorry, but only volunteers for the Culvert Campaign can go inside.";
+	mes "Speak with the ^000077Recruiter^000000 about volunteering.  He's located in the ^ff0000Prontera Chivalry^000000.";
+	close;
+
+	L0:
+		mes "[Culvert Guardian]";
+		mes "Here you are. The entrance of the Culvert. Are you sure you want to Go inside?";
+		next;
+		menu "Sure.",L0a,"Quit.",L1a;
+
+		L0a:
+			warp "prt_sewb1.gat",131,247;
+			close;
+		L1a:
+			close;
+}
+
+// Recruiter -----------------------------------------------------------
+prt_in.gat,88,105,2	script	Recruiter	105,{
+	if(sewer_prt == 1) goto L0a;
+	mes "[Recruiter]";
+	mes "Let me inform about the official Notice from the Capital Defence Headquarter of Rune-Midgard Kingdom";
+	next;
+	mes "[Recruiter]";
+	mes "We decided to recruit volunteers to deal with the 'issues' that have been plauging our cities' sewers.";
+	if (BaseJob==Job_Novice) mes "But you're a novice. Go get at least a job...";
+	if (BaseJob==Job_Novice) close;
+	next;
+	menu "Volunteer.",L0,"Issues...?",L1,"Quit",LEnd;
+
+	L0:
+		mes "[Recruiter]";
+		mes "Very good!!! Your Registration is confirmed. We will try to maintain peace and order in Rune-Midgard Kingdom.";
+		mes "I appreciate your support of the Capital Defence Headquarter.  Here are some subsidies....";
+		next;
+		mes "[Recruiter]";
+		mes "3 Red Potions, 1 Milk, and 1 Orange Potion for an emergency.";
+		set sewer_prt,1;
+		getitem 501,3;
+		getitem 519,1;
+		getitem 502,1;
+		next;
+
+		L0a:
+			mes "[Recruiter]";
+			mes "Are you ready? I will warp you to the Culvert.";
+			next;
+			warp "prt_fild05.gat",274,208;
+			close;
+
+	L1:
+		mes "[Recruiter]";
+		mes "Didn't you hear yet? The Culvert is infested with noxious insects. We found bugs, maggots, and other creatures there.";
+		mes "They've become a huge problem... You've Never heard of this?";
+		emotion 1;
+		next;
+		mes "[Recruiter]";
+		mes "Because of the severity of these 'issues',it is forbidden for the people to use the water supply for the time being.";
+		next;
+		mes "[Recruiter]";
+		mes "Needless to say, the people have been greatly inconvenienced by this. If this were to linger on it would cause great ill will among the people of the Prontera.";
+		next;
+		mes "[Recruiter]";
+		mes "The situation is becoming critical! There is restlessness among the people!!";
+		next;
+		mes "[Recruiter]";
+		mes "Mighty Warrior!! The People NEED YOU!! Let's EXPEL these VILE creatures from our land!!!";
+		emotion 27;
+		next;
+		mes "[Recruiter]";
+		mes "WILL YOU volunteer????";
+		next;
+		menu "Volunteer.",L1a,"Quit.",L1aEnd;
+
+		L1a:
+			goto L0;
+			close;
+
+		L1aEnd:
+			mes "[Recruiter]";
+			mes "..............";
+			emotion 4;
+			close;
+	LEnd:
 		close;
 }

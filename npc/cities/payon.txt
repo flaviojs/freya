@@ -1,16 +1,16 @@
 //======= Freya Script =======================================
 //= Payon Town NPCs
 //===== By: ================================================== 
-//= Muad_Dib
+//= Muad_Dib & Tsuyuki
 //===== Current Version: ===================================== 
 //= 1.1
 //===== Compatible With: ===================================== 
 //= Freya
 //===== Additional Comments: ================================= 
 //= 1.0 Added 1st Version [Muad_Dib]
-//= 1.01 Fixed typos [Danimoth]
-//= 1.02 Fixed color bugs [Danimoth]
-//= 1.1 Fixed more typos and converted script to Freya format from Aegis [Tsuyuki]
+//= 1.0a Fixed typos [Danimoth]
+//= 1.0b Fixed color bugs [Danimoth]
+//= 1.1 Fixed more typos and converted script to Aegis to Freya [Tsuyuki]
 //============================================================ 
 
 payon.gat,246,154,0	script	Lady	90,{
@@ -218,7 +218,7 @@ W_EndMenu:
 //	close;
 //}
 
-// Conflicts with Warps atm - Tsuyuki
+// Also conflicts with Warps.. - Tsuyuki
 //payon_in03.gat,96,116,3	script	Chief Guardsman	708,3,3,{
 //
 //OnTouch:
@@ -850,7 +850,7 @@ pay_arche.gat,77,131,2	script	Archer Joe	88,{
 		mes "You're not shy, are you?";
 		mes "Come on, there's no reason";
 		mes "to be bashful around me~";
-	close;
+		close;
 }
 
 payon.gat,132,235,3	script	Monster Scholar	98,{
@@ -1023,7 +1023,7 @@ payon_in03.gat,102,185,5	script	Guard	708,{
 		mes "[Guard]";
 		mes "Sorry but you are not allowed to come in.";
 		mes "Please leave. ";
-	close;
+		close;
 }
 
 payon_in01.gat,132,62,5	script	Inn Employee	53,{
@@ -1147,35 +1147,17 @@ payon.gat,154,170,4	script	Hagin	78,{
 		mes "a flower's life is brief.";
 		mes "I better snag Daewoon";
 		mes "While I still can~";
-	close;
+		close;
 }
 
-payon_in03.gat,81,22,4	script	Maid	1170,{
+payon_in03.gat,81,22,4	script	Maid	1170,{end;}
 
-end;
-}
+payon_in03.gat,79,22,4	script	Maid	1404,{end;}
 
-payon_in03.gat,79,22,4	script	Maid	1404,{
+payon_in03.gat,81,15,0	script	Maid	1170,{end;}
 
-end;
-}
+payon_in03.gat,79,15,0	script	Maid	1404,{end;}
 
-payon_in03.gat,81,15,0	script	Maid	1170,{
+payon_in03.gat,13,31,4	script	Maid	1416,{end;}
 
-end;
-}
-
-payon_in03.gat,79,15,0	script	Maid	1404,{
-
-end;
-}
-
-payon_in03.gat,13,31,4	script	Maid	1416,{
-
-end;
-}
-
-payon_in03.gat,8,31,4	script	Maid	1416,{
-
-end;
-}
+payon_in03.gat,8,31,4	script	Maid	1416,{end;}
