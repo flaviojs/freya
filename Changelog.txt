@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 09/05/06
+	* Added: a GM command to set the level that the player had when he changed job (job 1 -> job 2) [Yor]
 	* Fixed: information message about atcommand_send_usage_type (char.c) [Yor]
 
 09/04/06

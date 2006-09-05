@@ -332,6 +332,7 @@ key:remote,char,character,personnage
 @charbaselevelup   :@charlvup/@charlvlup/@charlevelup/@charblvl/@charblevel/@charblvlup/@charblevelup/@charbaselvlup/@charbaselevelup <#> <nom personnage|numéro_compte> - Changes a character's base level.
 @charjoblevelup    :@charjlvl/@charjlevel/@charjlvlup/@charjlevelup/@charjoblvup/@charjoblvlup/@charjoblevelup  <#> <nom personnage|numéro_compte> - Changes a character's job level.
 @charjob           :@charjob/@charjchange/@charjobchange <Id_du_job|Nom_du_job|"Nom_du_job"> [upper] <nom personnage|numéro_compte> - Changes target character's job.
+@charchangelevel   :@charchangelevel/@charchangelvl/@setchangelevel/@setchangelvl/@changelevel/@changelvl <niveau:40-50> <nom personnage|numéro_compte> - Indique le niveau que le joueur avait en changeant de job (job 1 -> job 2).
 @charspeedmap      :@charspeed <vitesse> <nom personnage|numéro_compte> - Changes a players speed. 0 to restore normal speed.
 @speedmap          :@charspeedmap/@speedmap [vitesse [carte]] - Changes speed of all characters on the specified map. 0 to restore normal speed.
 @charspiritball    :@charspiritball <nombre: 1-500> <nom personnage|numéro_compte> - Donne des "spirit spheres" à la façon de la compétence "Call Spirits" au joueur spécifié.

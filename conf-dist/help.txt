@@ -332,6 +332,7 @@ key:remote,char,character
 @charbaselevelup   :@charlvup/@charlvlup/@charlevelup/@charblvl/@charblevel/@charblvlup/@charblevelup/@charbaselvlup/@charbaselevelup <#> <char name|account_id> - Changes a character's base level.
 @charjoblevelup    :@charjlvl/@charjlevel/@charjlvlup/@charjlevelup/@charjoblvup/@charjoblvlup/@charjoblevelup  <#> <char name|account_id> - Changes a character's job level.
 @charjob           :@charjob/@charjchange/@charjobchange <job_ID|job_name|"job_name"> [upper] <char name|account_id> - Changes target character's job.
+@charchangelevel   :@charchangelevel/@charchangelvl/@setchangelevel/@setchangelvl/@changelevel/@changelvl <level:40-50> <char name|account_id> - Sets the level that the player had when he changed job (job 1 -> job 2).
 @charspeed         :@charspeed <speed> <char name|account_id> - Changes a players speed. 0 to restore normal speed.
 @charspeedmap      :@charspeedmap/@speedmap [speed [map]] - Changes speed of all characters on the specified map. 0 to restore normal speed.
 @charspiritball    :@charspiritball <number: 1-500> <char name|account_id> - Gives to a player monk "spirit spheres" like from the skill "Call Spirits".

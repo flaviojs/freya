@@ -181,6 +181,7 @@ ATCOMMAND_FUNC(raisemap);
 ATCOMMAND_FUNC(raise);
 ATCOMMAND_FUNC(character_baselevel);
 ATCOMMAND_FUNC(character_joblevel);
+ATCOMMAND_FUNC(change_level);
 ATCOMMAND_FUNC(kick);
 ATCOMMAND_FUNC(kickmap);
 ATCOMMAND_FUNC(kickall);
@@ -498,6 +499,7 @@ static struct AtCommandInfo {
 	{ AtCommand_CharPetRename,         "@charpetrename",        50, atcommand_charpetrename },
 	{ AtCommand_Recall,                "@recall",               60, atcommand_recall }, // + /recall and /summon
 	{ AtCommand_CharacterJob,          "@charjob",              60, atcommand_character_job },
+	{ AtCommand_ChangeLevel,           "@charchangelevel",      60, atcommand_change_level },
 	{ AtCommand_Revive,                "@charalive",            60, atcommand_revive },
 	{ AtCommand_CharacterHeal,         "@charheal",             60, atcommand_charheal },
 	{ AtCommand_CharacterStats,        "@charstats",            20, atcommand_character_stats },
@@ -8092,6 +8094,45 @@ ATCOMMAND_FUNC(character_job) {
 				clif_displaymessage(fd, msg_txt(48)); // Character's job changed.
 			} else {
 				clif_displaymessage(fd, msg_txt(192)); // Impossible to change the character's job.
+				return -1;
+			}
+		} else {
+			clif_displaymessage(fd, msg_txt(81)); // Your GM level don't authorize you to do this action on this player.
+			return -1;
+		}
+	} else {
+		clif_displaymessage(fd, msg_txt(3)); // Character not found.
+		return -1;
+	}
+
+	return 0;
+}
+
+/*==========================================
+ * @charchangelevel - character set the level when the player changed of job (job 1 -> job 2)
+ *------------------------------------------
+ */
+ATCOMMAND_FUNC(change_level) {
+	struct map_session_data *pl_sd;
+	int level;
+
+	if (!message || !*message || sscanf(message, "%d %[^\n]", &level, atcmd_name) < 2 || level < 40 || level > 50) {
+		send_usage(sd, "Please, enter a right level and a player name (usage: %s <lvl:40-50> <char name|account_id>).", original_command);
+		return -1;
+	}
+
+	if ((pl_sd = map_nick2sd(atcmd_name)) != NULL || ((pl_sd = map_id2sd(atoi(atcmd_name))) != NULL && pl_sd->state.auth)) {
+		if (sd->GM_level >= pl_sd->GM_level) { // only lower or same gm level
+			if (pl_sd->change_level != level) {
+				pl_sd->change_level = level;
+				pc_setglobalreg(pl_sd, "jobchange_level", pl_sd->change_level);
+				// save player immediatly (synchronize with global_reg)
+				chrif_save(pl_sd); // do pc_makesavestatus and save storage + account_reg/account_reg2 too
+				// recalculate skill tree
+				status_calc_pc(pl_sd, 0);
+				clif_displaymessage(fd, "Player's end level of job 1 changed!");
+			} else {
+				clif_displaymessage(fd, "Player already had this level when he became job 2.");
 				return -1;
 			}
 		} else {
