@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+09/05/06
+	* Fixed: information message about atcommand_send_usage_type (char.c) [Yor]
+
 09/04/06
 	* Added: an option to choose how must be displayed usage of GM commands (atcommand_send_usage_type in battle_athena.conf) [Yor]
 	* Fixed: possible overflow when reading SQL configuration in Char-server [Yor]

@@ -5684,7 +5684,7 @@ int parse_char(int fd) {
 			if (!check_mapip(session[fd]->client_addr.sin_addr.s_addr)) {
 				unsigned char *p = (unsigned char *) &session[fd]->client_addr.sin_addr;
 				printf("Connection of a map-server REFUSED (map_allow, ip: %d.%d.%d.%d).\n", p[0], p[1], p[2], p[3]);
-				printf("   Check your login_athena.conf (option: mapallowip)\n");
+				printf("   Check your char_athena.conf (option: mapallowip)\n");
 				printf("   if connection must be authorised.\n");
 				WPACKETW(0) = 0x2af9;
 				WPACKETB(2) = 3;
