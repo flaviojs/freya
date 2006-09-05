@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 09/05/06
+	* Improved: explanation of client_version_to_connect option in login_athena.conf [Yor]
+	* Fixed: set default ladmin allowed ip to 127.0.0.1 (security) [Yor]
 	* Added: a GM command to set the level that the player had when he changed job (job 1 -> job 2) [Yor]
 	* Fixed: information message about atcommand_send_usage_type (char.c) [Yor]
 
