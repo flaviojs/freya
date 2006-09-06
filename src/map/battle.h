@@ -397,6 +397,7 @@ extern struct Battle_Config {
 	unsigned short party_invite_same_account; //Whether its possible to invite 2 characters from the same account into a party [Proximus]
 
 	unsigned short atcommand_main_channel_at_start;
+	int atcommand_main_channel_type; // how to send main channel
 	unsigned short atcommand_main_channel_on_gvg_map_woe;
 	unsigned short atcommand_main_channel_when_woe;
 	unsigned short atcommand_min_GM_level_for_request;

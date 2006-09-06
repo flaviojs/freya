@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+09/06/06
+	* Added: an option to choose how must be displayed main channel (atcommand_main_channel_type in battle_athena.conf) [Yor]
+
 09/05/06
 	* Improved: explanation of client_version_to_connect option in login_athena.conf [Yor]
 	* Fixed: set default ladmin allowed ip to 127.0.0.1 (security) [Yor]

@@ -1877,7 +1877,7 @@ void send_usage(struct map_session_data *sd, char *fmt, ...) {
 	if (battle_config.atcommand_send_usage_type == -5) { // -5: like a GM message (in blue)
 		clif_GMmessage(&sd->bl, mes, strlen(mes) + 1, 3 | 0x10); // 3 -> SELF + 0x10 for blue
 	} else if (battle_config.atcommand_send_usage_type == -4) { // -4: like a GM message (in yellow)
-		clif_GMmessage(&sd->bl, mes, strlen(mes) + 1, 3); // 3 -> SELF + 
+		clif_GMmessage(&sd->bl, mes, strlen(mes) + 1, 3); // 3 -> SELF
 	} else if (battle_config.atcommand_send_usage_type == -3) { // -3: like a guild message
 		clif_disp_onlyself(sd, mes);
 	} else if (battle_config.atcommand_send_usage_type == -2) { // -2: like a party message

@@ -3625,6 +3625,7 @@ static const struct battle_config_int {
 	{ "ban_hack_trade",                             &battle_config.ban_hack_trade }, // added by [Yor]
 	{ "ban_bot",                                    &battle_config.ban_bot }, // added by [Yor]
 	{ "atcommand_send_usage_type",                  &battle_config.atcommand_send_usage_type }, // added by [Yor]
+	{ "atcommand_main_channel_type",                &battle_config.atcommand_main_channel_type }, // added by [Yor]
 };
 
 int battle_set_value(char *w1, char *w2) {
@@ -3950,6 +3951,7 @@ void battle_set_defaults() {
 	battle_config.castrate_dex_scale = 150;
 	battle_config.area_size = 16;
 	battle_config.atcommand_main_channel_at_start = 3;
+	battle_config.atcommand_main_channel_type = -3; // Send main channel like a guild message
 	battle_config.atcommand_main_channel_on_gvg_map_woe = 2; // only good players and above can use 'Main channel' on GvG maps during WoE -> against abuse
 	battle_config.atcommand_main_channel_when_woe = 0; // all players can use the @main command
 	battle_config.atcommand_min_GM_level_for_request = 20;
@@ -4294,6 +4296,10 @@ void battle_validate_conf() {
 		battle_config.atcommand_main_channel_at_start = 0;
 	else if (battle_config.atcommand_main_channel_at_start > 3)
 		battle_config.atcommand_main_channel_at_start = 3;
+	if (battle_config.atcommand_main_channel_type < -5) // how to send main channel
+		battle_config.atcommand_main_channel_type = -3; // set default
+	else if (battle_config.atcommand_main_channel_type > 16777215) // 0xFFFFFF
+		battle_config.atcommand_main_channel_type = -3; // set default
 	if (battle_config.atcommand_main_channel_on_gvg_map_woe < 1)
 		battle_config.atcommand_main_channel_on_gvg_map_woe = 0;
 	else if (battle_config.atcommand_main_channel_on_gvg_map_woe > 100)
