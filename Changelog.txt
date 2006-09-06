@@ -2,6 +2,7 @@
 Date	Added
 
 9/05/06
+	* Updated: A few more files laying around.. [Tsuyuki]
 	* Updated: Dates/Links/Misc in the Conf-dist folder [Tsuyuki]
 	* Updated: The Readme Folder a little bit [Tsuyuki
 	* Imported: Socket Enchant Script from eAthena [Tsuyuki]
