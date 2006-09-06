@@ -1,12 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-   <title>Freya RO Emulator</title>
+   <title>Freya Ragnarok Online Emulator</title>
    <meta http-equiv="Content-Type" content="text/html; charset=charset=UTF-8" />
    <meta http-equiv="content-style-type" content="text/css">
-   <meta name="Author" content="Freya Team">
-   <meta name="Publisher" content="Freya Team">
-   <meta name="Copyright" content="COPYRIGHT Freya under GPL licence">
+   <meta name="Author" content="Freya Development Team">
+   <meta name="Publisher" content="Freya Development Team">
+   <meta name="Copyright" content="COPYRIGHT Freya Under GPL License">
    <meta name="OWNER" content="Freya">
    <link rel="stylesheet" type="text/css" href="include/style.css" />
 </head>
@@ -14,7 +14,7 @@
 <table border="0" cellpadding="0" cellspacing="3">
 <tr>
 <td width="100" class="content" valign="top"><br />
-<a class="left" href="http://www.ro-freya.net" target="_top">
+<a class="left" href="http://Freya.dns.st/forum/index.php?act=idx" target="_top">
 <b>HOME</b></a>
 <br /><br />
 <a class="left" target="_top" href="index.html" >Introduction</a><br />
@@ -92,13 +92,13 @@ Go in your RO folder, make clean && make (sql), and this problem should resolved
 <span style="font-weight: bold;">Q</span>: Under Cygwin, when I compile for Native Windows (./configure --with-win32), my map-server stops/crashes before to load maps.<br />
 <span style="font-weight: bold;">A</span>: You must remove/uninstall zlib in Cygwin:<br />
 Run setup (of Cygwin), select zlib package in libs category and click on 'remove'. Then, valid.<br />
-After, run configure of freya (./configure + options), and say 'y' when it proposes to crosscompile zlib library.<br />
-Re-run configure of freya after terminated. Then type 'make'.<br />
+After, run configure of Freya (./configure + options), and say 'y' when it proposes to crosscompile zlib library.<br />
+Re-run configure of Freya after terminated. Then type 'make'.<br />
 <br />
 
 <span style="font-weight: bold;">Q</span>: I can not compile under FreeBSD.<br />
 <span style="font-weight: bold;">A</span>: Text from [folx] found in Freya's bug report:<br />
-(on FreeBSD 5.3-RELEASE, using freya-txt: all version)<br />
+(on FreeBSD 5.3-RELEASE, using Freya-txt: all version)<br />
 <u>use</u> <span style="font-weight: bold;">./configure --without-gettext</span> to create the Makefile<br />
 <u>edit Makefile:</u><br />
  * change MAKE = <span style='color:red'>gmake</span> into <span style='color:green'>MAKE = make</span><br />
@@ -114,8 +114,8 @@ should look like :<br />
 	@echo -e " - DIR\tsrc/common"<br />
 	@$(MAKE) -C src/common/ libcommon.a</span><br />
 <u>save modified Makefile</u>  :D <br />
-<u>now compile your own freya version:</u> <span style="font-weight: bold;">make</span><br />
-I don't know why FreeBSD doesn't compile Tool & Add-ons, but what i know is we don't need it to run freya ;-)<br />
+<u>now compile your own Freya version:</u> <span style="font-weight: bold;">make</span><br />
+I don't know why FreeBSD doesn't compile Tool & Add-ons, but what i know is we don't need it to run Freya ;-)<br />
 <br />
 
 <span style="font-weight: bold;">Q</span>: What is the 'import' file for?<br />
