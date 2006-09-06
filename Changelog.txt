@@ -2,6 +2,7 @@
 Date	Added
 
 9/05/06
+	* Imported: Socket Enchant Script from eAthena [Tsuyuki]
 	* Updated: Imported/converted new scripts & updated the old ones from eAthena [Tsuyuki]
 	* Added: Converted and implemented quite a few new missing scripts from eAthena [Tsuyuki]
 	* Merged: Several scripts together for a cleaner NPC folder [Tsuyuki]
