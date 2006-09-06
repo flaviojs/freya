@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 09/06/06
+	* Added: reading of hexadecimal numbers (0xffffff) in configuration files [Yor]
+	* Fixed: default of previous option in battle_athena.conf [Yor]
 	* Added: an option to choose how must be displayed main channel (atcommand_main_channel_type in battle_athena.conf) [Yor]
 
 09/05/06

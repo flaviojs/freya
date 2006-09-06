@@ -20,6 +20,12 @@ int config_switch(const char *str) {
 		return 1;
 	if (strcasecmp(str, "off") == 0 || strcasecmp(str, "no") == 0 || strcasecmp(str, "non") == 0 || strcasecmp(str, "nein") == 0)
 		return 0;
+	if (str[0] == '0' && (str[1] == 'x' || str[1] == 'X') && 
+	    ((str[3] >= '0' && str[3] <= '9') || (str[3] >= 'a' && str[3] <= 'f') || (str[3] >= 'A' && str[3] <= 'F'))) {
+		int i;
+		if (sscanf(str, "%x", &i) == 1)
+			return i;
+	}
 
 	return atoi(str);
 }
