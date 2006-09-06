@@ -1,16 +1,17 @@
-             (c)2004-2005 Free Yor team presents:             
+             (c)2004-2006 Freya Dev Team Presents:            
                  ___   ___    ___   _  _   __                 
                 (  _) (  ,)  (  _) ( \/ ) (  )                
                 (  _)  )  \   ) _)  \  /  /__\                
                 (_)   (_)\_) (___) (__/  (_)(_)               
-             Free Ragnarok Emulator, Yor Adopted.             
+                   Ragnarok Online Emulator                   
+                  http://freya.dns.st/forum/                  
 --------------------------------------------------------------
 
 
 --------------------------------------------------------------
 Freya VERSION
 --------------------------------------------------------------
-Version 1.0.0
+Version 3.0.0
 --------------------------------------------------------------
 
 Please read new HTML readme at:
