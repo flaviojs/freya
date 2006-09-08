@@ -4,12 +4,18 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
-9/08/06
-	* Fixed: All errors in mob_skill_db.txt [Tsuyuki]
+09/08/06
+	* Fixed: All errors in mob_skill_db.txt [Tsuyuki] (from subdev svn 122, 127)
 	 - Note: Had to comment a couple things, "Angry", "Follow", and "Afterskill" since they aren't implemented yet..
+	* Updated: Freya to the latest kRO Patch (8/5/06) [Tsuyuki] (from subdev svn 122, 126)
+	 - Details: Changed 'Shinobi Sash' Def from 0 to 1
+	* Updated: native configuration of SVN for some npc (line feed) [Yor]
+	* Readded: Scripts of servers [Yor]
+	* Added: Explanations about scripts of servers [Yor]
+	* Added: Converted Eye of Hellion quest to Freya from eAthena [Tsuyuki] (from subdev svn 121, 125, 126)
+	* Fixed: Baphomet skill db [Tsuyuki] (from subdev svn 121)
 
-9/07/06
-	* Imported: Converted Eye of Hellion Quest to Freya from eA [Tsuyuki]
+09/07/06
 	* Integrated: Subdev Branch up to Rev. 120 [Mikey]
 	* Updated: The Readme Folder a little bit [Tsuyuki
 	* Imported: Socket Enchant Script from eAthena [Tsuyuki]

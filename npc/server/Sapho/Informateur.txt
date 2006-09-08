@@ -1,0 +1,163 @@
+//===== eAthena Script =======================================
+//= Informateur
+//===== By: ==================================================
+//= GAlion
+//===== Current Version: =====================================
+//= 0.1
+//===== Compatible With: =====================================
+//= Any eAthena Version;
+//===== Description: =========================================
+// affiche une liste de messages rédigés par des GM.
+
+prontera.gat,161,191,5	script	Informateur::info1	97,{
+	if (getgmlevel()>19) goto AUTORISE;
+
+DEBUT:
+	mes "[Informateur]";
+	mes "Bonjour.";
+	mes "Voici la liste des messages laissés par les GM pour informer les joueurs.";
+	mes "Vous trouverez davantage de détails sur 'http://sapho.yorre.com/'";
+	next;
+	menu "1. "+$I_titre1$,-,
+	     "2. "+$I_titre2$,msg2,
+	     "3. "+$I_titre3$,msg3,
+	     "4. "+$I_titre4$,msg4,
+	     "5. "+$I_titre5$,msg5;
+
+		mes "[^9933FF"+$I_titre1$+"^000000]";
+		mes $I_msg11$;
+		next;
+		mes "[^9933FF"+$I_titre1$+"^000000]";
+		mes $I_msg12$;
+		next;
+		mes "[^9933FF"+$I_titre1$+"^000000]";
+		mes $I_msg13$;
+		close;
+	msg2:
+		mes "[^9933FF"+$I_titre2$+"^000000]";
+		mes $I_msg21$;
+		next;
+		mes "[^9933FF"+$I_titre2$+"^000000]";
+		mes $I_msg22$;
+		next;
+		mes "[^9933FF"+$I_titre2$+"^000000]";
+		mes $I_msg23$;
+		close;
+	msg3:
+		mes "[^9933FF"+$I_titre3$+"^000000]";
+		mes $I_msg31$;
+		next;
+		mes "[^9933FF"+$I_titre3$+"^000000]";
+		mes $I_msg32$;
+		next;
+		mes "[^9933FF"+$I_titre3$+"^000000]";
+		mes $I_msg33$;
+		close;
+	msg4:
+		mes "[^9933FF"+$I_titre4$+"^000000]";
+		mes $I_msg41$;
+		next;
+		mes "[^9933FF"+$I_titre4$+"^000000]";
+		mes $I_msg42$;
+		next;
+		mes "[^9933FF"+$I_titre4$+"^000000]";
+		mes $I_msg43$;
+		close;
+	msg5:
+		mes "[^9933FF"+$I_titre5$+"^000000]";
+		mes $I_msg51$;
+		next;
+		mes "[^9933FF"+$I_titre5$+"^000000]";
+		mes $I_msg52$;
+		next;
+		mes "[^9933FF"+$I_titre5$+"^000000]";
+		mes $I_msg53$;
+		close;
+
+AUTORISE:
+	mes "[Informateur]";
+	mes "voici la liste des informations:";
+	mes "1. "+$I_titre1$;
+	mes "2. "+$I_titre2$;
+	mes "3. "+$I_titre3$;
+	mes "4. "+$I_titre4$;
+	mes "5. "+$I_titre5$;
+	next;
+	mes "[Informateur]";
+	mes "Souhaitez-vous créer/remplacer un message?";
+	next;
+	menu "oui",-,"non, juste consulter",DEBUT;
+
+	mes "[Informateur]";
+	mes "Après avoir choisi sur quel emplacement le nouveau message doit apparaître,";
+	mes "Veuillez entrer un titre en premier, puis successivement 3 lignes pour votre message.";
+	next;
+	menu "1. "+$I_titre1$,-,
+	     "2. "+$I_titre2$,E_msg2,
+	     "3. "+$I_titre3$,E_msg3,
+	     "4. "+$I_titre4$,E_msg4,
+	     "5. "+$I_titre5$,E_msg5,
+	     "Annuler",FIN;
+
+		input $I_titre1$;
+		input $I_msg11$;
+		input $I_msg12$;
+		input $I_msg13$;
+		set $I_msg13$,$I_msg13$ + "(signé ^FF6600"+strcharinfo(0)+"^000000).";
+		close;
+
+	E_msg2:
+		input $I_titre2$;
+		input $I_msg21$;
+		input $I_msg22$;
+		input $I_msg23$;
+		set $I_msg23$,$I_msg23$ + "(signé ^FF6600"+strcharinfo(0)+"^000000).";
+		close;
+	E_msg3:
+		input $I_titre3$;
+		input $I_msg31$;
+		input $I_msg32$;
+		input $I_msg33$;
+		set $I_msg33$,$I_msg33$ + "(signé ^FF6600"+strcharinfo(0)+"^000000).";
+		close;
+	E_msg4:
+		input $I_titre4$;
+		input $I_msg41$;
+		input $I_msg42$;
+		input $I_msg43$;
+		set $I_msg43$,$I_msg43$ + "(signé ^FF6600"+strcharinfo(0)+"^000000).";
+		close;
+	E_msg5:
+		input $I_titre5$;
+		input $I_msg51$;
+		input $I_msg52$;
+		input $I_msg53$;
+		set $I_msg53$,$I_msg53$ + "(signé ^FF6600"+strcharinfo(0)+"^000000).";
+		close;
+
+FIN:
+	mes "[Informateur]";
+	mes "Ce sera pour une prochaine fois.";
+	mes "Au revoir.";
+	close;
+}
+
+geffen.gat,122,61,3	duplicate(info1)	Informateur	97
+izlude.gat,134,118,1	duplicate(info1)	Informateur	97
+morocc.gat,161,93,7	duplicate(info1)	Informateur	97
+payon.gat,149,233,5	duplicate(info1)	Informateur	97
+alberta.gat,60,172,5	duplicate(info1)	Informateur	97
+aldebaran.gat,142,124,4	duplicate(info1)	Informateur	97
+xmas.gat,142,127,9	duplicate(info1)	Informateur	97
+comodo.gat,202,152,5	duplicate(info1)	Informateur	97
+yuno.gat,163,47,6	duplicate(info1)	Informateur	97
+amatsu.gat,206,146,3	duplicate(info1)	Informateur	97
+gonryun.gat,161,122,2	duplicate(info1)	Informateur	97
+umbala.gat,83,144,6	duplicate(info1)	Informateur	97
+louyang.gat,223,47,3	duplicate(info1)	Informateur	97
+ayothaya.gat,159,172,3	duplicate(info1)	Informateur	97
+einbroch.gat,150,50,4	duplicate(info1)	Informateur	97
+lighthalzen.gat,167,100,3	duplicate(info1)	Informateur	97
+einbech.gat,68,101,2	duplicate(info1)	Informateur	97
+hugel.gat,101,140,7	duplicate(info1)	Informateur	97
+
