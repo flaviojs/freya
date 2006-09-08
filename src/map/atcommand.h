@@ -9,10 +9,8 @@ enum AtCommandType {
 	AtCommand_Broadcast = 0,
 	AtCommand_LocalBroadcast,
 	AtCommand_LocalBroadcast2,
-	AtCommand_MapMove,
-	AtCommand_RuraP,
 	AtCommand_Rura,
-	AtCommand_Warp,
+	AtCommand_RuraP,
 	AtCommand_Where,
 	AtCommand_JumpTo,
 	AtCommand_Jump,
@@ -50,6 +48,7 @@ enum AtCommandType {
 	AtCommand_Heal,
 	AtCommand_Kami,
 	AtCommand_KamiB,
+	AtCommand_KamiC, // [LuzZza]
 	AtCommand_KamiGM,
 	AtCommand_Item,
 	AtCommand_CharItem,
@@ -61,7 +60,6 @@ enum AtCommandType {
 	AtCommand_CharItemCheck,
 	AtCommand_BaseLevelUp,
 	AtCommand_JobLevelUp,
-	AtCommand_H,
 	AtCommand_Help,
 	AtCommand_GM,
 	AtCommand_PvPOff,
@@ -112,8 +110,7 @@ enum AtCommandType {
 	AtCommand_CharPetRename,
 	AtCommand_Recall,
 	AtCommand_CharacterJob,
-	AtCommand_CharacterJob2,
-	AtCommand_CharacterJob3,
+	AtCommand_ChangeLevel,
 	AtCommand_Revive,
 	AtCommand_CharacterHeal,
 	AtCommand_CharacterStats,
@@ -249,6 +246,7 @@ enum AtCommandType {
 	AtCommand_MobSearch,
 	AtCommand_CleanMap,
 	AtCommand_AdjGmLvl,
+	AtCommand_AdjGmLvl2,
 	AtCommand_AdjCmdLvl,
 	AtCommand_Trade,
 	AtCommand_Send,
@@ -318,7 +316,7 @@ char * msg_txt(int msg_number);
 
 int atcommand_config_read(const char *cfgName);
 int msg_config_read(const char *cfgName);
-void do_final_msg_config();
+void do_final_atcommand(void);
 
 #endif // _ATCOMMAND_H_
 

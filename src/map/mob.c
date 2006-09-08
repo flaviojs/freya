@@ -513,7 +513,7 @@ int mob_get_equip(int class) // mob equip [Valaris]
 int mob_can_move(struct mob_data *md) {
 //	nullpo_retr(0, md); // checked before to call function
 
-	if (md->canmove_tick > gettick() || (md->opt1 > 0 && md->opt1 != 6) || md->option & 2)
+	if (md->canmove_tick > gettick_cache || (md->opt1 > 0 && md->opt1 != 6) || md->option & 2)
 		return 0;
 	// アンクル中で動けないとか
 	if (md->sc_data[SC_ANKLE].timer != -1 || //アンクルスネア
@@ -593,10 +593,11 @@ static void mob_walk(struct mob_data *md, unsigned int tick, int data) {
 			mob_walktoxy_sub(md);
 			return;
 		}
-		if (skill_check_moonlit(&md->bl, x + dx, y + dy)) {
-			mob_walktoxy_sub(md);
-			return;
-		}
+// Deprecated as per the new Moonlit Petals implementation [Proximus]
+//		if (skill_check_moonlit(&md->bl, x + dx, y + dy)) {
+//			mob_walktoxy_sub(md);
+//			return;
+//		}
 
 		moveblock = (x / BLOCK_SIZE != (x + dx) / BLOCK_SIZE || y / BLOCK_SIZE != (y + dy) / BLOCK_SIZE);
 
@@ -775,51 +776,45 @@ void mob_changestate(struct mob_data *md, int state, int type) {
 	case MS_WALK:
 		if ((i = calc_next_walk_step(md)) > 0) {
 			i = i>>2;
-			md->timer = add_timer(gettick() + i, mob_timer, md->bl.id, 0);
+			md->timer = add_timer(gettick_cache + i, mob_timer, md->bl.id, 0);
 		}
 		else
 			md->state.state = MS_IDLE;
 		break;
 	case MS_ATTACK:
-		{
-			unsigned int tick = gettick();
-			i = DIFF_TICK(md->attackabletime, tick);
-			if (i > 0 && i < 2000)
-				md->timer = add_timer(md->attackabletime, mob_timer, md->bl.id, 0);
-			else if (type) {
-				md->attackabletime = tick + status_get_amotion(&md->bl);
-				md->timer = add_timer(md->attackabletime, mob_timer, md->bl.id, 0);
-			}
-			else {
-				md->attackabletime = tick + 1;
-				md->timer = add_timer(md->attackabletime, mob_timer, md->bl.id, 0);
-			}
-			break;
+		i = DIFF_TICK(md->attackabletime, gettick_cache);
+		if (i > 0 && i < 2000)
+			md->timer = add_timer(md->attackabletime, mob_timer, md->bl.id, 0);
+		else if (type) {
+			md->attackabletime = gettick_cache + status_get_amotion(&md->bl);
+			md->timer = add_timer(md->attackabletime, mob_timer, md->bl.id, 0);
 		}
+		else {
+			md->attackabletime = gettick_cache + 1;
+			md->timer = add_timer(md->attackabletime, mob_timer, md->bl.id, 0);
+		}
+		break;
 	case MS_DELAY:
-		md->timer = add_timer(gettick() + type, mob_timer, md->bl.id, 0);
+		md->timer = add_timer(gettick_cache + type, mob_timer, md->bl.id, 0);
 		break;
 	case MS_DEAD:
-		{
-			unsigned int tick = gettick();
-			skill_castcancel(&md->bl, 0);
-//		mobskill_deltimer(md); // replaced by skill_castcancel
-			md->state.skillstate = MSS_DEAD;
-			md->last_deadtime = tick;
-			// Since it died, all aggressors' attack to this mob is stopped.
-			clif_foreachclient(mob_stopattacked, md->bl.id); // clif_foreachclient check if SD exists and is auth
-			skill_unit_move(&md->bl, tick, 0);
-			status_change_clear(&md->bl,2); // The abnormalities in status are canceled.
-			skill_clear_unitgroup(&md->bl); // All skill unit groups are deleted.
-			skill_cleartimerskill(&md->bl);
-			if (md->deletetimer != -1) {
-				delete_timer(md->deletetimer, mob_timer_delete);
-				md->deletetimer = -1;
-			}
-			md->hp = md->target_id = md->attacked_id = 0;
-			md->state.targettype = NONE_ATTACKABLE;
-			break;
+		skill_castcancel(&md->bl, 0);
+//	mobskill_deltimer(md); // replaced by skill_castcancel
+		md->state.skillstate = MSS_DEAD;
+		md->last_deadtime = gettick_cache;
+		// Since it died, all aggressors' attack to this mob is stopped.
+		clif_foreachclient(mob_stopattacked, md->bl.id); // clif_foreachclient check if SD exists and is auth
+		skill_unit_move(&md->bl, gettick_cache, 0);
+		status_change_clear(&md->bl,2); // The abnormalities in status are canceled.
+		skill_clear_unitgroup(&md->bl); // All skill unit groups are deleted.
+		skill_cleartimerskill(&md->bl);
+		if (md->deletetimer != -1) {
+			delete_timer(md->deletetimer, mob_timer_delete);
+			md->deletetimer = -1;
 		}
+		md->hp = md->target_id = md->attacked_id = 0;
+		md->state.targettype = NONE_ATTACKABLE;
+		break;
 	}
 
 	return;
@@ -942,13 +937,13 @@ int mob_walktoxy(struct mob_data *md,int x,int y,int easy)
 	if(md->state.state == MS_WALK && path_search(&wpd,md->bl.m,md->bl.x,md->bl.y,x,y,easy) )
 		return 1;
 
- 	if(md->sc_data[SC_CONFUSION].timer != -1) {
- 		if(mob_randomxy(md))
- 			return 1;
- 	} else {
- 		md->to_x = x;
- 		md->to_y = y;
- 	}
+	if(md->sc_data[SC_CONFUSION].timer != -1) {
+		if(mob_randomxy(md))
+			return 1;
+	} else {
+		md->to_x = x;
+		md->to_y = y;
+	}
 
 	md->state.walk_easy = easy;
 
@@ -1004,7 +999,7 @@ int mob_setdelayspawn(int id)
 
 	spawntime1 = md->last_spawntime + md->spawndelay1;
 	spawntime2 = md->last_deadtime + md->spawndelay2;
-	spawntime3 = gettick() + 5000;
+	spawntime3 = gettick_cache + 5000;
 	// spawntime = max(spawntime1,spawntime2,spawntime3);
 	if (DIFF_TICK(spawntime1,spawntime2) > 0)
 		spawntime = spawntime1;
@@ -1025,7 +1020,6 @@ int mob_setdelayspawn(int id)
 int mob_spawn(int id)
 {
 	int x = 0, y = 0, i;
-	unsigned int tick = gettick();
 	unsigned int skill_delay;
 	struct mob_data *md;
 	struct block_list *bl;
@@ -1040,10 +1034,10 @@ int mob_spawn(int id)
 	if (!md || !md->bl.type || md->bl.type != BL_MOB)
 		return -1;
 
-	md->last_spawntime = tick;
+	md->last_spawntime = gettick_cache;
 	if (md->bl.prev != NULL) {
 //		clif_clearchar_area(&md->bl, 3);
-//		skill_unit_move(&md->bl, tick, 0);
+//		skill_unit_move(&md->bl, gettick_cache, 0);
 		map_delblock(&md->bl);
 	} else {
 		// restore name and speed if necessary (example: pupa -> creamy)
@@ -1080,7 +1074,7 @@ int mob_spawn(int id)
 	if (i >= 50) {
 //		if(battle_config.error_log==1)
 //			printf("MOB spawn error %d @ %s\n",id,map[md->bl.m].name);
-		add_timer(tick + 5000, mob_delayspawn, id, 0);
+		add_timer(gettick_cache + 5000, mob_delayspawn, id, 0);
 		return 1;
 	}
 
@@ -1107,10 +1101,10 @@ int mob_spawn(int id)
 	md->state.state = MS_IDLE;
 	md->state.skillstate = MSS_IDLE;
 	md->timer = -1;
-	md->last_thinktime = tick;
-	md->next_walktime = tick + rand() % 50 + 5000;
-	md->attackabletime = tick;
-	md->canmove_tick = tick;
+	md->last_thinktime = gettick_cache;
+	md->next_walktime = gettick_cache + rand() % 50 + 5000;
+	md->attackabletime = gettick_cache;
+	md->canmove_tick = gettick_cache;
 
 	md->guild_id = 0; // Guilds' gardians & emperiums, otherwize = 0
 	if (md->class >= 1285 && md->class <= 1288) {
@@ -1122,7 +1116,7 @@ int mob_spawn(int id)
 	md->deletetimer = -1;
 
 	md->skilltimer = -1;
-	skill_delay = tick - 1000 * 3600 * 10;
+	skill_delay = gettick_cache - 1000 * 3600 * 10;
 	for(i = 0; i < MAX_MOBSKILL; i++)
 		md->skilldelay[i] = skill_delay;
 	md->skillid = 0;
@@ -1153,7 +1147,7 @@ int mob_spawn(int id)
 	}
 
 	map_addblock(&md->bl);
-	skill_unit_move(&md->bl, tick, 1);
+	skill_unit_move(&md->bl, gettick_cache, 1);
 
 	clif_spawnmob(md);
 
@@ -1221,10 +1215,8 @@ void mob_stop_walking(struct mob_data *md,int type)
 	if(type & 0x01)
 		clif_fixmobpos(md);
 	if(type & 0x02) {
-		int delay = status_get_dmotion(&md->bl);
-		unsigned int tick = gettick();
-		if(md->canmove_tick < tick)
-			md->canmove_tick = tick + delay;
+		if (md->canmove_tick < gettick_cache)
+			md->canmove_tick = gettick_cache + status_get_dmotion(&md->bl); // gettick() + delay
 	}
 
 	return;
@@ -2150,7 +2142,7 @@ static int mob_ai_sub_lazy(void * key, void * data, va_list app) {
 				mob_randomwalk(md, tick);
 
 			// MOB which is not not the summons MOB but BOSS, either sometimes reboils.
-			else if (rand() % 1000 < MOB_LAZYWARPPERC && md->x0 <= 0 && md->master_id != 0 && 
+			else if (rand() % 1000 < MOB_LAZYWARPPERC && md->x0 <= 0 && md->master_id != 0 &&
 				mob_db[md->class].mexp <= 0 && !(mob_db[md->class].mode&0x20))
 				mob_spawn(md->bl.id);
 
@@ -2295,7 +2287,7 @@ int mob_delete(struct mob_data *md)
 		md->level = 0;
 	map_delblock(&md->bl);
 	if (mob_get_viewclass(md->class) <= 1000)
-		clif_clearchar_delay(gettick() + 3000, &md->bl, 0);
+		clif_clearchar_delay(gettick_cache + 3000, &md->bl, 0);
 	mob_deleteslave(md);
 	mob_setdelayspawn(md->bl.id);
 
@@ -2380,7 +2372,6 @@ int mob_damage(struct block_list *src, struct mob_data *md, int damage, int type
 	} pt[DAMAGELOG_SIZE];
 	int pnum;
 	int mvp_damage[3], max_hp;
-	unsigned int tick = gettick();
 	struct map_session_data *mvp_sd = NULL, *second_sd = NULL,*third_sd = NULL;
 	struct block_list *master = NULL;
 	double tdmg, temp;
@@ -2411,7 +2402,7 @@ int mob_damage(struct block_list *src, struct mob_data *md, int damage, int type
 	if (md->state.state == MS_DEAD || md->hp <= 0) {
 		if (md->bl.prev != NULL) {
 			mob_changestate(md, MS_DEAD, 0);
-			mobskill_use(md, tick, -1); // It is skill at the time of death.
+			mobskill_use(md, gettick_cache, -1); // It is skill at the time of death.
 			clif_clearchar_area(&md->bl, 1);
 			if (md->level)
 				md->level = 0;
@@ -2574,7 +2565,7 @@ int mob_damage(struct block_list *src, struct mob_data *md, int damage, int type
 		int skillidx;
 		if ((skillidx = mob_skillid2skillidx(md->class, NPC_SELFDESTRUCTION2)) >= 0) {
 			md->mode |= 0x1;
-			md->next_walktime = tick;
+			md->next_walktime = gettick_cache;
 			mobskill_use_id(md, &md->bl, skillidx);//自爆詠唱開始
 			md->state.special_mob_ai++; // 0: nothing, 1: cannibalize, 2-3: spheremine
 		}
@@ -2599,10 +2590,10 @@ int mob_damage(struct block_list *src, struct mob_data *md, int damage, int type
 		
 	map_freeblock_lock();
 	mob_changestate(md, MS_DEAD, 0);
-	mobskill_use(md, tick, -1); // 死亡時スキル
+	mobskill_use(md, gettick_cache, -1); // 死亡時スキル
 
 	if (src && src->type == BL_MOB)
-		mob_unlocktarget((struct mob_data *)src, tick);
+		mob_unlocktarget((struct mob_data *)src, gettick_cache);
 
 	if (sd) {
 		int sp = 0, hp = 0;
@@ -2876,7 +2867,7 @@ int mob_damage(struct block_list *src, struct mob_data *md, int damage, int type
 						ditem->second_sd = NULL;
 						ditem->third_sd = NULL;
 					}
-					add_timer(tick + 500 + i, mob_delay_item_drop, (int)ditem, drop_rate); // data = drop rate (loot = 1000000000)
+					add_timer(gettick_cache + 500 + i, mob_delay_item_drop, (int)ditem, drop_rate); // data = drop rate (loot = 1000000000)
 				}
 
 				// Ore Discovery [Celest]
@@ -2907,7 +2898,7 @@ int mob_damage(struct block_list *src, struct mob_data *md, int damage, int type
 						ditem->second_sd = NULL;
 						ditem->third_sd = NULL;
 					}
-					add_timer(tick + 500 + i, mob_delay_item_drop, (int)ditem, battle_config.finding_ore_rate); // data = drop rate (loot = 1000000000)
+					add_timer(gettick_cache + 500 + i, mob_delay_item_drop, (int)ditem, battle_config.finding_ore_rate); // data = drop rate (loot = 1000000000)
 				}
 			}
 
@@ -2950,7 +2941,7 @@ int mob_damage(struct block_list *src, struct mob_data *md, int damage, int type
 							ditem->second_sd = NULL;
 							ditem->third_sd = NULL;
 						}
-						add_timer(tick + 520 + i, mob_delay_item_drop, (int)ditem, sd->monster_drop[i].rate); // data = drop rate (loot = 1000000000)
+						add_timer(gettick_cache + 520 + i, mob_delay_item_drop, (int)ditem, sd->monster_drop[i].rate); // data = drop rate (loot = 1000000000)
 					}
 				}
 				if(sd->get_zeny_num && rand()%100 < sd->get_zeny_rate)
@@ -2983,7 +2974,7 @@ int mob_damage(struct block_list *src, struct mob_data *md, int damage, int type
 						ditem->second_sd = NULL;
 						ditem->third_sd = NULL;
 					}
-					add_timer(tick + 540 + i, mob_delay_item_drop2, (int)ditem, 1000000000); // data = drop rate (loot = 1000000000)
+					add_timer(gettick_cache + 540 + i, mob_delay_item_drop2, (int)ditem, 1000000000); // data = drop rate (loot = 1000000000)
 				}
 			}
 		}
@@ -3089,7 +3080,7 @@ int mob_damage(struct block_list *src, struct mob_data *md, int damage, int type
 		md->level = 0;
 	map_delblock(&md->bl);
 	if (mob_get_viewclass(md->class) <= 1000)
-		clif_clearchar_delay(tick + 3000, &md->bl, 0);
+		clif_clearchar_delay(gettick_cache + 3000, &md->bl, 0);
 	mob_deleteslave(md);
 	mob_setdelayspawn(md->bl.id);
 	map_freeblock_unlock();
@@ -3103,7 +3094,6 @@ int mob_damage(struct block_list *src, struct mob_data *md, int damage, int type
  */
 int mob_class_change(struct mob_data *md, int *value, int count)
 {
-	unsigned int tick = gettick();
 	unsigned int skill_delay;
 	int i, hp_rate, max_hp, class;
 
@@ -3145,12 +3135,12 @@ int mob_class_change(struct mob_data *md, int *value, int count)
 	mob_changestate(md,MS_IDLE, 0);
 	skill_castcancel(&md->bl, 0);
 	md->state.skillstate = MSS_IDLE;
-	md->last_thinktime = tick;
-	md->next_walktime = tick + rand() % 50 + 5000;
-	md->attackabletime = tick;
-	md->canmove_tick = tick;
+	md->last_thinktime = gettick_cache;
+	md->next_walktime = gettick_cache + rand() % 50 + 5000;
+	md->attackabletime = gettick_cache;
+	md->canmove_tick = gettick_cache;
 
-	skill_delay = tick - 1000 * 3600 * 10;
+	skill_delay = gettick_cache - 1000 * 3600 * 10;
 	for(i = 0; i < MAX_MOBSKILL; i++)
 		md->skilldelay[i] = skill_delay;
 	md->skillid = 0;
@@ -3275,8 +3265,7 @@ int mob_warpslave(struct mob_data *md,int x, int y)
 int mob_warp(struct mob_data *md, int m, int x, int y, int type)
 {
 	int i, xs = 0, ys = 0, bx = x, by = y;
-	unsigned int tick = gettick();
-	
+
 	nullpo_retr(0, md);
 
 	if (md->bl.prev == NULL)
@@ -3289,7 +3278,7 @@ int mob_warp(struct mob_data *md, int m, int x, int y, int type)
 			return 0;
 		clif_clearchar_area(&md->bl, type);
 	}
-	skill_unit_move(&md->bl, tick, 0);
+	skill_unit_move(&md->bl, gettick_cache, 0);
 	map_delblock(&md->bl);
 
 	if (bx > 0 && by > 0) { // 位置指定の場合周囲９セルを探索
@@ -3331,7 +3320,7 @@ int mob_warp(struct mob_data *md, int m, int x, int y, int type)
 	}
 
 	map_addblock(&md->bl);
-	skill_unit_move(&md->bl, tick, 1);
+	skill_unit_move(&md->bl, gettick_cache, 1);
 	if (type > 0) {
 		clif_spawnmob(md);
 		mob_warpslave(md, md->bl.x, md->bl.y);
@@ -3776,7 +3765,7 @@ int mobskill_use_id(struct mob_data *md,struct block_list *target,int skill_idx)
 	casttime = skill_castfix(&md->bl, ms->casttime);
 
 	md->state.skillcastcancel = ms->cancel;
-	md->skilldelay[skill_idx] = gettick();
+	md->skilldelay[skill_idx] = gettick_cache;
 
 	switch(skill_id){	/* 何か特殊な処理が必要 */
 	case ALL_RESURRECTION:	/* リザレクション */
@@ -3837,9 +3826,9 @@ int mobskill_use_id(struct mob_data *md,struct block_list *target,int skill_idx)
 		md->skilltimer = -1;
 	}
 	if (casttime > 0) // cast with castime
-		md->skilltimer = add_timer(gettick() + casttime, mobskill_castend_id, md->bl.id, 0);
+		md->skilltimer = add_timer(gettick_cache + casttime, mobskill_castend_id, md->bl.id, 0);
 	else // cast immediatly
-		mobskill_castend_id(md->skilltimer, gettick(), md->bl.id, 0); // md->skilltimer = -1
+		mobskill_castend_id(md->skilltimer, gettick_cache, md->bl.id, 0); // md->skilltimer = -1
 
 	return 1;
 }
@@ -3899,7 +3888,7 @@ int mobskill_use_pos( struct mob_data *md,
 
 //	delay = skill_delayfix(&sd->bl, skill_get_delay(skill_id, skill_lv));
 	casttime = skill_castfix(&md->bl, ms->casttime);
-	md->skilldelay[skill_idx] = gettick();
+	md->skilldelay[skill_idx] = gettick_cache;
 	md->state.skillcastcancel = ms->cancel;
 
 	if (battle_config.mob_skill_log)
@@ -3932,9 +3921,9 @@ int mobskill_use_pos( struct mob_data *md,
 		md->skilltimer = -1;
 	}
 	if (casttime > 0) // cast with castime
-		md->skilltimer = add_timer(gettick() + casttime, mobskill_castend_pos, md->bl.id, 0);
+		md->skilltimer = add_timer(gettick_cache + casttime, mobskill_castend_pos, md->bl.id, 0);
 	else // cast immediatly
-		mobskill_castend_pos(md->skilltimer, gettick(), md->bl.id, 0); // md->skilltimer = -1
+		mobskill_castend_pos(md->skilltimer, gettick_cache, md->bl.id, 0); // md->skilltimer = -1
 
 	return 1;
 }
@@ -4127,7 +4116,7 @@ int mobskill_use(struct mob_data *md,unsigned int tick,int event)
 						else if(bl->type == BL_PC)
 							fsd = (struct map_session_data *)bl;
 					}
-					flag = (fmd || fsd); 
+					flag = (fmd || fsd);
 					break;
 				}
 			}
@@ -4143,7 +4132,7 @@ int mobskill_use(struct mob_data *md,unsigned int tick,int event)
 				int x=0,y=0;
 				if(ms[i].target<=MST_AROUND)
 				{
-					switch (ms[i].target) 
+					switch (ms[i].target)
 					{
 						case MST_TARGET:
 						case MST_AROUND5:
@@ -4162,7 +4151,7 @@ int mobskill_use(struct mob_data *md,unsigned int tick,int event)
 							break;
 					}
 					if(bl != NULL) {
-						x = bl->x; 
+						x = bl->x;
 						y = bl->y;
 					}
 				}
@@ -4203,7 +4192,7 @@ int mobskill_use(struct mob_data *md,unsigned int tick,int event)
 				// ID指定
 				if( ms[i].target<=MST_FRIEND ){
 					struct block_list *bl;
-					switch (ms[i].target) 
+					switch (ms[i].target)
 					{
 						case MST_TARGET:
 							bl = map_id2bl(md->target_id);
@@ -4238,15 +4227,13 @@ int mobskill_use(struct mob_data *md,unsigned int tick,int event)
  *------------------------------------------
  */
 int mobskill_event(struct mob_data *md, int flag) {
-	unsigned int tick = gettick();
-	
 	nullpo_retr(0, md);
 
-	if (flag == -1 && mobskill_use(md, tick, MSC_CASTTARGETED))
+	if (flag == -1 && mobskill_use(md, gettick_cache, MSC_CASTTARGETED))
 		return 1;
-	if ((flag & BF_SHORT) && mobskill_use(md, tick, MSC_CLOSEDATTACKED))
+	if ((flag & BF_SHORT) && mobskill_use(md, gettick_cache, MSC_CLOSEDATTACKED))
 		return 1;
-	if ((flag & BF_LONG) && mobskill_use(md, tick, MSC_LONGRANGEATTACKED))
+	if ((flag & BF_LONG) && mobskill_use(md, gettick_cache, MSC_LONGRANGEATTACKED))
 		return 1;
 
 	return 0;
@@ -4264,7 +4251,7 @@ int mob_gvmobcheck(struct map_session_data *sd, struct block_list *bl)
 	nullpo_retr(0, bl);
 
 	if (bl->type == BL_MOB && (md = (struct mob_data *)bl) && (md->class <= 1288 && md->class >= 1285)) {
-	  //1288 = Emperium, 1287 = guardian, 1286 = guardian, 1285 = guardian
+		//1288 = Emperium, 1287 = guardian, 1286 = guardian, 1285 = guardian
 		struct guild_castle *gc = guild_mapname2gc(map[sd->bl.m].name);
 		struct guild *g = guild_search(sd->status.guild_id);
 
@@ -4273,7 +4260,7 @@ int mob_gvmobcheck(struct map_session_data *sd, struct block_list *bl)
 		else if (gc != NULL && !map[sd->bl.m].flag.gvg)
 			return 0; //return 0, player is in castle and GvG is disabled
 		else if (gc != NULL && g->guild_id == gc->guild_id)
-			return 0; //return 0, player is in a castle, and his guild is the same as the mob's guild 
+			return 0; //return 0, player is in a castle, and his guild is the same as the mob's guild
 		else if (g && guild_checkskill(g, GD_APPROVAL) <= 0)
 			return 0;// return 0, player is in a guild, player's guild does not have GD_APPROVAL guild skill
 	}
@@ -4824,13 +4811,13 @@ static int mob_read_randommonster(void)
 static void mob_readskilldb(void)
 {
 	FILE *fp;
-	char line[1024];
+	char line[1024], line2[1024];
 	int i;
 
 	const struct {
 		char str[32];
 		int id;
-	} cond1[] = {
+	} cond1[] = { // don't add a condition if code can not supported it
 		{ "always",            MSC_ALWAYS            },
 		{ "myhpltmaxrate",     MSC_MYHPLTMAXRATE     },
 		{ "friendhpltmaxrate", MSC_FRIENDHPLTMAXRATE },
@@ -4894,6 +4881,7 @@ static void mob_readskilldb(void)
 				printf("can't read %s\n", filename[x]);
 			continue;
 		}
+		memset(line, 0, sizeof(line));
 		while(fgets(line, sizeof(line), fp)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
 			char *sp[20], *p;
 			int mob_id;
@@ -4902,7 +4890,11 @@ static void mob_readskilldb(void)
 
 			if ((line[0] == '/' && line[1] == '/') || line[0] == '\0' || line[0] == '\n' || line[0] == '\r')
 				continue;
-			// it's not necessary to remove 'carriage return ('\n' or '\r')
+			/* remove carriage return if exist */
+			while(line[0] != '\0' && (line[(i = strlen(line) - 1)] == '\n' || line[i] == '\r'))
+				line[i] = '\0';
+
+			strcpy(line2, line); // to display right error
 
 			memset(sp, 0, sizeof(sp));
 			for(i = 0, p = line; i < 18 && p; i++) {
@@ -4930,8 +4922,13 @@ static void mob_readskilldb(void)
 
 			ms->state = atoi(sp[2]);
 			for(j = 0; j < sizeof(state) / sizeof(state[0]); j++) {
-				if (strcmp(sp[2],state[j].str) == 0)
+				if (strcmp(sp[2], state[j].str) == 0) {
 					ms->state = state[j].id;
+					break;
+				}
+			}
+			if (j == sizeof(state) / sizeof(state[0]) && sp[2][0] != '\0' && (sp[2][0] < '0' || sp[2][0] > '9')) {
+				printf("DB (%s): " CL_RED "Unknown state '%s' line:" CL_RESET "\n%s\n", filename[x], sp[2], line2);
 			}
 			ms->skill_id = atoi(sp[3]);
 			j = atoi(sp[4]);
@@ -4946,18 +4943,33 @@ static void mob_readskilldb(void)
 				ms->cancel = 1;
 			ms->target = atoi(sp[9]);
 			for(j = 0; j < sizeof(target) / sizeof(target[0]); j++) {
-				if (strcmp(sp[9], target[j].str) == 0)
+				if (strcmp(sp[9], target[j].str) == 0) {
 					ms->target = target[j].id;
+					break;
+				}
+			}
+			if (j == sizeof(target) / sizeof(target[0]) && sp[9][0] != '\0' && (sp[9][0] < '0' || sp[9][0] > '9')) {
+				printf("DB (%s): " CL_RED "Unknown target '%s' line:" CL_RESET "\n%s\n", filename[x], sp[9], line2);
 			}
 			ms->cond1 = -1;
 			for(j = 0; j < sizeof(cond1) / sizeof(cond1[0]); j++) {
-				if (strcmp(sp[10],cond1[j].str) == 0)
+				if (strcmp(sp[10], cond1[j].str) == 0) {
 					ms->cond1 = cond1[j].id;
+					break;
+				}
+			}
+			if (j == sizeof(cond1) / sizeof(cond1[0]) && sp[10][0] != '\0' && (sp[10][0] < '0' || sp[10][0] > '9')) {
+				printf("DB (%s): " CL_RED "Unknown condition 1 '%s' line:" CL_RESET "\n%s\n", filename[x], sp[10], line2);
 			}
 			ms->cond2 = atoi(sp[11]);
 			for(j = 0; j < sizeof(cond2) / sizeof(cond2[0]); j++) {
-				if (strcmp(sp[11],cond2[j].str) == 0)
+				if (strcmp(sp[11], cond2[j].str) == 0) {
 					ms->cond2 = cond2[j].id;
+					break;
+				}
+			}
+			if (j == sizeof(cond2) / sizeof(cond2[0]) && sp[11][0] != '\0' && (sp[11][0] < '0' || sp[11][0] > '9')) {
+				printf("DB (%s): " CL_RED "Unknown condition 2 '%s' line:" CL_RESET "\n%s\n", filename[x], sp[11], line2);
 			}
 			ms->val[0] = atoi(sp[12]);
 			ms->val[1] = atoi(sp[13]);
@@ -4969,6 +4981,8 @@ static void mob_readskilldb(void)
 			else
 				ms->emotion = -1;
 			mob_db[mob_id].maxskill = i + 1;
+
+			memset(line, 0, sizeof(line));
 		}
 		fclose(fp);
 		printf("DB '" CL_WHITE "%s" CL_RESET "' readed.\n", filename[x]);
@@ -5235,8 +5249,8 @@ int do_init_mob(void)
 	add_timer_func_list(mobskill_castend_pos, "mobskill_castend_pos");
 	add_timer_func_list(mobskill_castend_id, "mobskill_castend_id");
 	add_timer_func_list(mob_timer_delete, "mob_timer_delete");
-	add_timer_interval(gettick() + MIN_MOBTHINKTIME, mob_ai_hard, 0, 0, MIN_MOBTHINKTIME);
-	add_timer_interval(gettick() + MIN_MOBTHINKTIME * 10, mob_ai_lazy, 0, 0, MIN_MOBTHINKTIME * 10);
+	add_timer_interval(gettick_cache + MIN_MOBTHINKTIME, mob_ai_hard, 0, 0, MIN_MOBTHINKTIME);
+	add_timer_interval(gettick_cache + MIN_MOBTHINKTIME * 10, mob_ai_lazy, 0, 0, MIN_MOBTHINKTIME * 10);
 
 	return 0;
 }

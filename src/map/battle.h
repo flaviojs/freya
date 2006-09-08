@@ -265,6 +265,8 @@ extern struct Battle_Config {
 	unsigned short making_arrow_name_input;
 	unsigned short holywater_name_input;
 	unsigned short atcommand_item_creation_name_input;
+	unsigned short atcommand_max_player_gm_level;
+	int atcommand_send_usage_type;
 	unsigned short display_delay_skill_fail;
 	unsigned short display_snatcher_skill_fail;
 	unsigned short chat_warpportal;
@@ -374,6 +376,7 @@ extern struct Battle_Config {
 	unsigned short finding_ore_rate;
 	unsigned short min_skill_delay_limit;
 	unsigned short idle_no_share; // exp share in party
+	int idle_delay_no_share; // exp share in party
 	unsigned short chat_no_share; // exp share in party
 	unsigned short npc_chat_no_share; // exp share in party
 	unsigned short shop_no_share; // exp share in party
@@ -390,9 +393,13 @@ extern struct Battle_Config {
 	unsigned short ruwach_range; // Set the range (number of squares/tiles around you) of 'ruwach' skill to detect invisible.
 	unsigned short sight_range; // Set the range (number of squares/tiles around you) of 'sight' skill to detect invisible.
 	unsigned short max_icewall; // Set maximum number of ice walls active at the same time.
-	unsigned short ignore_items_gender; // Wether item_db gender restrictions will be ignored or not
+	unsigned short ignore_items_gender; //Whether item_db gender restrictions will be ignored or not [Proximus]
+	unsigned short party_invite_same_account; //Whether its possible to invite 2 characters from the same account into a party [Proximus]
 
 	unsigned short atcommand_main_channel_at_start;
+	int atcommand_main_channel_type; // how to send main channel
+	unsigned short atcommand_main_channel_on_gvg_map_woe;
+	unsigned short atcommand_main_channel_when_woe;
 	unsigned short atcommand_min_GM_level_for_request;
 	unsigned short atcommand_follow_stop_dead_target;
 	unsigned short atcommand_add_local_message_info;

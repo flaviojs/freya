@@ -110,5 +110,53 @@ class ladmin {
 		}
 		return $res;
 	}
+
+	function checkaccount($login, $pass) {
+		if (!$this->sock) return false;
+		$packet = pack('va24a24', 0x793a, $login, $pass);
+		fwrite($this->sock, $packet);
+		$res = fread($this->sock, 30);
+		$dat = unpack('vpacket/Vid/a24accname', $res);
+		if ($dat['id']==-1) return false;
+		return $dat;
+	}
+
+	function accountinfo($id) {
+		// ferch info from this account
+		if (!$this->sock) return false;
+		$packet = pack('vV', 0x7954, $id);
+		fwrite($this->sock, $packet);
+		$res = fread($this->sock, 150);
+		$dat = unpack('vpacket/Vid/clevel/a24accname/csex/Vlogincount/vstate/cisonline/cnotused/a20error_msg/a24last_login/a16last_ip/a40email/Vaccexpire/Vbanexpire/vmemolen', $res);
+		if ($dat['memolen'] > 0) {
+			$dat['memo'] = fread($this->sock, $dat['memolen']);
+		} else {
+			$dat['memo'] = null;
+		}
+		if ($dat['packet'] != 0x7953) return false;
+		if ($dat['accname'] === '') return false;
+		return $dat;
+	}
+
+	function changepass($accname, $newpass) {
+		if (!$this->sock) return false;
+		$packet = pack('va24a24', 0x7934, $accname, $newpass);
+		fwrite($this->sock, $packet);
+		$res = fread($this->sock, 30);
+		$dat = unpack('vpacket/Vid/a24accname', $res);
+		if ($dat['packet'] != 0x7935) { fclose($this->sock); $this->sock=false; return false; }
+		if ($dat['id']==-1) return false;
+		return true;
+	}
+
+	function sendbroadcast($msg, $blue=false) {
+		$blue=($blue)?1:0;
+		$packet = pack('vvv', 0x794e, 6+strlen($msg)+1, $blue). $msg."\0";
+		fwrite($this->sock, $packet);
+		$res = fread($this->sock, 4);
+		$dat = unpack('vpacket/vres', $res);
+		if ($dat['res'] == -1) return false;
+		return true;
+	}
 }
 

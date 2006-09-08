@@ -1,11 +1,10 @@
-//             (c)2004-2006 Freya Dev Team Presents:            
+//               (c)2004-2006 Freya team presents:              
 //                 ___   ___    ___   _  _   __                 
 //                (  _) (  ,)  (  _) ( \/ ) (  )                
 //                (  _)  )  \   ) _)  \  /  /__\                
 //                (_)   (_)\_) (___) (__/  (_)(_)               
-//                   Ragnarok Online Emulator                   
-//                  http://freya.dns.st/forum/                  
-//---------------------------------------------------------------
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
 //
 // GM COMMANDS LIST
 //
@@ -19,7 +18,7 @@
 key:all
                   0:To use one command, type it inside the message window where you usually type to chat.
                   0:To use a remote command (begining by @char), type it like a normal command, or replace @char by the specially defined symbol.
-@help              :@h/@help [<page_number>|<keyword>] - Displays this help. With a keyword, display only help of commands concerned by this keyword.
+@help              :@h/@help/@? [<page_number>|<keyword>] - Displays this help. With a keyword, display only help of commands concerned by this keyword.
 @help              :  special keyword: 'key' or 'keyword' to display all keywords.
 @help              :  1 page = 50 lines, if no # of page: all help file is displayed.
 key:message,messages,broadcast
@@ -31,6 +30,7 @@ key:message,messages,broadcast
 @kami              :/nb/@nb/@kami <message> - Broadcasts a GM message without name of the GM (in yellow).
 @kami              :/bb <message> - Broadcasts a GM message without name of the GM (in blue).
 @kamib             :@kamib <message> - Broadcasts a GM message without name of the GM (in blue).
+@kamic             :@kamic <hex_color> <message> - Broadcasts a GM message without name of the GM with specified color (16 millions of colors (RRGGBB): 00-FF for red, green, blue. Example: blue: 0000FF, Red: FF0000, light blue: 8080FF).
 @localbroadcast    :@lb/@localbroadcast/@local_broadcast <message> - Broadcasts a GM message with name of the GM (in yellow) ONLY on your map.
 // the level of /lb is the same of @nlb, and not the same of @lb or @localbroadcast, so 2 different lines:
 @nlb               :/lb <message> - Like @lb.
@@ -40,6 +40,15 @@ key:message,messages,broadcast
 @request           :@request/@contactgm on|off - (for GM) Accept to receive or not requests from players.
 @motd              :@motd - Sends again to you the 'Message of the day'.
 @gmotd             :@gmotd/@globalmotd - Sends again to all players the 'Message of the day (motd.txt)'.
+                  0: 
+                  0:--- MAIL SYSTEM CMD (SQL only) ---
+@checkmail         :@checkmail - Check # of messages.
+@listmail          :@listmail - List all messages.
+@listnewmail       :@listnewmail - List only new mail.
+@readmail          :@readmail - Read a message.
+@sendmail          :@sendmail - Send mail.
+@deletemail        :@deletemail - Delete a message.
+@sendprioritymail  :@sendprioritymail - Send priority mail (tagged with Priority and cannot be deleted until read).
 key:information,guild,party,spy,time,hour
                   0: 
                   0:--- INFORMATION CMD ---
@@ -85,7 +94,7 @@ key:gm,state,position,move
 @hide              :/hide/@hide - GM Hide. Perfect hide that's totally invisible (GM invisibility). Type @hide again become visible.
 @save              :@save - Sets save/respawn point to your current location.
 @load              :@load/@return - Warps you to your save point (like butterfly wing).
-@warp              :/mm//mapmove/@warp/@rura/@mapmove <map_name> <x> <y> - Warps you to the selected position.
+@rura              :/mm//mapmove/@warp/@rura/@mapmove <map_name> <x> <y> - Warps you to the selected position.
 @jump              :@jump [x [y]]- Teleports you randomly in the map (like a fly wing), or to the specified location with x and y.
 @warpto            :/shift//remove/@jumpto/@warpto/@shift/@goto <char name|account_id> - Warps you to selected character.
 @follow            :@follow <char name|account_id> - Follows a player (to unfollow, type '@follow off' or '@follow <YOUR name>').
@@ -107,8 +116,8 @@ key:gm,state,health
 key:gm,state,other,me
                   0: 
                   0:--- OTHER YOURSELF CMD ---
-@resetstate        :/resetstate/@resetstate - Resets all your stats to reuse status points.
-@resetskill        :/resetskill/@resetskill - Resets all your skill to reuse skill pointse.
+@resetstate        :/resetstate/@resetstate/@resetstat/@resetstats/@statreset/@statsreset - Resets all your stats to reuse status points.
+@resetskill        :/resetskill/@resetskill/@resetskills/@skillreset/@skillsreset - Resets all your skill to reuse skill pointse.
 @jobchange         :@job/@jchange/@jobchange <job_ID|job_name|"job_name"> [upper] - Changes your job to the job assigned by the ID or the name.
 @jobchange         :     0 Novice            7 Knight           14 Crusader       22 Formal
 @jobchange         :     1 Swordman          8 Priest           15 Monk           23 Super Novice
@@ -133,7 +142,7 @@ key:gm,state,other,me
 @jobchange         :  4029 Baby Thief     4036 Baby Peco-Knight 4043 Baby Dancer
 @jobchange         :  [upper]: -1 (default) to automatically determine the 'level', 0 to force normal job, 1 to force high job.
 @baselevelup       :@lvup/@lvlup/@levelup/@blvl/@blevel/@blvlup/@blevelup/@baselvlup/@baselevelup <number_of_levels> - Raises/decreases your base level the desired number of levels. The max is 99 (unless it's changed in battle_athena.conf).
-@joblevelup        :@jlvl/@jlevel/@jlvlup/@jlevelup/@joblvup/@joblvlup/@joblevelup <number_of_levels> - Raises/decreases your job level the desired number of levels. The max is 10 for novice, 50 for 1st and 2nd classes, and 70 for advanced classes.
+@joblevelup        :@jlvl/@jlevel/@jlvlup/@jlevelup/@joblvl/@joblvup/@joblvlup/@joblevelup <number_of_levels> - Raises/decreases your job level the desired number of levels. The max is 10 for novice, 50 for 1st and 2nd classes, and 70 for advanced classes.
 @skillall          :@allskill/@allskills/@skillall/@skillsall - Gives you all skills.
 @option            :@option <param1> <param2> <param3> - Sets different visual effects on your character.
 @option            :	<param1>      <param2>      <p3>(stackable)   <param3>               <param3>
@@ -145,7 +154,7 @@ key:gm,state,other,me
 @option            :	              16 darkness                    1024 Level 5 Cart
 @optionadd         :@optionadd <param1> <param2> <param3> - Adds different visual effects on your character.
 @optionremove      :@optionremove <param1> <param2> <param3> - Removes different visual effects on your character.
-@mountpeco         :@peco/@mountpeco - Give/remove you a peco (Class is required, but not skill).
+@mountpeco         :@peco/@mountpeco/@pecopeco - Give/remove you a peco (Class is required, but not skill).
 @falcon            :@falcon - Give/remove you a falcon (skill is not required).
 @cart              :@cart <cart_type:0-5> - Remove(0)/Give you a cart (skill is not required).
 @cart1             :@cart0/@cart1/@cart2/@cart3/@cart4/@cart5 - Remove(0)/Give you a cart (skill is not required).
@@ -183,7 +192,8 @@ key:gm,state,other,me
 @questskill        :  147 = Arrow Creation   Acolyte                    152 = Stone Throw    Magician
 @questskill        :  148 = Charge Arrows    156 = Holy Light                                157 = Energy Coat
 @skillid           :@skillid <skill_name> - Looks up a skill by name.
-@email             :@email <actual@email> <new@email> - Changes your e-mail (characters deletion protection).
+@email             :@email <actual@e-mail> <new@e-mail> - Changes your e-mail (characters deletion protection).
+@password          :@password <old_password> <new_password> - Permanently change your account password to the given one.
 key:monster,monstre,spawn,summon,deadbranch,dead_branch
                  40: 
                  40:--- MONSTERS CMD ---
@@ -196,6 +206,7 @@ key:monster,monstre,spawn,summon,deadbranch,dead_branch
 @spawnbig          :	You can use @spawnbig to spawn monsters with big sprites (can cause lags).
 @spawnsmall        :	You can use @spawnsmall to spawn monsters with small sprites (can cause lags).
 @spawnagro         :	If you add 'agro' to the command, monsters are agressiv (like dead branch).
+@spawnneutral      :	If you add 'neutral' to the command, monsters are NOT agressiv (note: followers stay agressiv if they exist).
 @spawnmap          :@spawnmap/@monstermap <monster_name|monster_ID> [<number_to_spawn> [<desired_monster_name>]]
 @spawnmap          :@spawnmap/@monstermap "desired monster name" <monster_name|monster_ID> [<number_to_spawn>]
 @spawnmap          :@spawnmap/@monstermap <monster_name|monster_ID> "desired monster name" [<number_to_spawn>]
@@ -204,6 +215,7 @@ key:monster,monstre,spawn,summon,deadbranch,dead_branch
 @spawnbigmap       :	If you add 'big' to the command, you spawn monsters on entire map with big sprites (can cause lags).
 @spawnsmallmap     :	If you add 'small' to the command, you spawn monsters on entire map with small sprites (can cause lags).
 @spawnagromap      :	If you add 'agro' to the command, monsters are agressiv (like dead branch).
+@spawnneutralmap   :	If you add 'neutral' to the command, monsters are NOT agressiv (note: followers stay agressiv if they exist).
 @spawnall          :@spawnall/@monsterall <monster_name|monster_ID> [<number_to_spawn> [<desired_monster_name>]]
 @spawnall          :@spawnall/@monsterall "desired monster name" <monster_name|monster_ID> [<number_to_spawn>]
 @spawnall          :@spawnall/@monsterall <monster_name|monster_ID> "desired monster name" [<number_to_spawn>]
@@ -212,6 +224,7 @@ key:monster,monstre,spawn,summon,deadbranch,dead_branch
 @spawnbigall       :	If you add 'big' to the command, you spawn monsters with big sprites (can cause lags).
 @spawnsmallall     :	If you add 'small' to the command, you spawn monsters with small sprites (can cause lags).
 @spawnagroall      :	If you add 'agro' to the command, monsters are agressiv (like dead branch).
+@spawnneutralall   :	If you add 'neutral' to the command, monsters are NOT agressiv (note: followers stay agressiv if they exist).
 @summon            :@summon <monster_name|monster_ID> [<number_to_spawn> [<desired_monster_name> [<x_coord> [<y_coord>]]]]
 @summon            :@summon "desired monster name" <monster_name|monster_ID> [<number_to_spawn> [<x_coord> [<y_coord>]]]
 @summon            :@summon <monster_name|monster_ID> "desired monster name" [<number_to_spawn> [<x_coord> [<y_coord>]]]
@@ -253,7 +266,7 @@ key:item,items,storage,refine,produce,repair
 @itemreset         :@itemreset/@inventoryreset - Removes all your items.
 @itemcheck         :@itemcheck - Checks your items with authorized items.
 @idsearch          :@idsearch/@itemsearch/@searchid/@searchitem <part_of_item_name> - Searchs all items that name have 'part_of_item_name'.
-@whodrop           :@whodrop/@whodrops <item_name|item_ID> - Gives list of monsters that drop specified item.
+@whodrops          :@whodrop/@whodrops <item_name|item_ID> - Gives list of monsters that drop specified item.
 @refine            :@refine [equip_position [+/-value]] - Upgrades equipment at the position specified (Stackable).
 @refineall         :@refineall [+/-value] - Upgrades all equipments.
 @produce           :@produce <equip_name|equip_ID> <element> <#_of_very's> - Create an equipement.
@@ -266,23 +279,23 @@ key:pvp,groups,guild,party,woe,gvg
 @pvpoff            :@pvpoff - Turns PVP off on the current map.
 @gvgon             :@gvgon/@gpvpon - Turns GVG on on the current map. This does NOT enable War of Emperium.
 @gvgoff            :@gvgoff/@gpvpoff - Turns GVG off on the current map. This does NOT disable War of Emperium.
-@agitstart         :@agitstart - Starts Guild Wars (War of Emperium).
-@agitend           :@agitend - Ends Guild Wars (War of Emperium).
+@agitstart         :@agitstart/@woestart/@startwoe - Starts Guild Wars (War of Emperium).
+@agitend           :@agitend/@woeend/@endwoe - Ends Guild Wars (War of Emperium).
 @killer            :@killer - Enable hitting a player even when not in pvp.
 @charkiller        :@charkiller <char name|account_id> - Enable a player hitting any player even when not in pvp.
 @killable          :@killable - Makes your character killable.
 @charkillable      :@charkillable <char name|account_id> - Makes another character killable.
 key:groups,guild,party
-                  1: 
-                  1:--- GROUPS CMD ---
+                  2: 
+                  2:--- GROUPS CMD ---
 @party             :@party "party_name"|<party_name> - Create a party.
 @guild             :@guild "Desired guild name"|<Desired guild name> - Creates a guild with the desired name (Spaces are allowed)
 @guildlevelup      :@guildlvup/@guildlvlup/@guildlevelup <#_of_levels> - Raises Guild by desired number of levels.
 @guildrecall       :@guildrecall <guild_name|guild_id> - Warps all online characters of a guild to you.
 @partyrecall       :@partyrecall <party_name|party_id> - Warps all online characters of a party to you.
 key:pet,pets,egg
-                  1: 
-                  1:--- PETS CMD ---
+                  2: 
+                  2:--- PETS CMD ---
 @makeegg           :@makeegg/@createegg <pet_id> - Gives pet egg for monster ID in pet DB.
 @hatch             :@hatch/@incubate/@incubator/@pet_incubator/@petincubator/@petbirth/@pet_birth - Creates a pet from your inventory eggs list.
 @petfriendly       :@petfriendly <#> - Sets pet friendly amount (0-1000) 1000 = Max
@@ -318,15 +331,16 @@ key:remote,char,character
 @charload          :@charload/@charreturn <char name|account_id> - Warps the target to its respawn point.
 @charbaselevelup   :@charlvup/@charlvlup/@charlevelup/@charblvl/@charblevel/@charblvlup/@charblevelup/@charbaselvlup/@charbaselevelup <#> <char name|account_id> - Changes a character's base level.
 @charjoblevelup    :@charjlvl/@charjlevel/@charjlvlup/@charjlevelup/@charjoblvup/@charjoblvlup/@charjoblevelup  <#> <char name|account_id> - Changes a character's job level.
-@charjobchange     :@charjob/@charjchange/@charjobchange <job_ID|job_name|"job_name"> [upper] <char name|account_id> - Changes target character's job.
+@charjob           :@charjob/@charjchange/@charjobchange <job_ID|job_name|"job_name"> [upper] <char name|account_id> - Changes target character's job.
+@charchangelevel   :@charchangelevel/@charchangelvl/@setchangelevel/@setchangelvl/@changelevel/@changelvl <level:40-50> <char name|account_id> - Sets the level that the player had when he changed job (job 1 -> job 2).
 @charspeed         :@charspeed <speed> <char name|account_id> - Changes a players speed. 0 to restore normal speed.
-@speedmap          :@charspeedmap/@speedmap [speed [map]] - Changes speed of all characters on the specified map. 0 to restore normal speed.
+@charspeedmap      :@charspeedmap/@speedmap [speed [map]] - Changes speed of all characters on the specified map. 0 to restore normal speed.
 @charspiritball    :@charspiritball <number: 1-500> <char name|account_id> - Gives to a player monk "spirit spheres" like from the skill "Call Spirits".
 @charzeny          :@charzeny <amount> <char name|account_id> - Gives/takes a players Zeny
 @charstpoint       :@charstpoint <amount> <char name|account_id> - Gives/takes a players stat points.
 @charskpoint       :@charskpoint <amount> <char name|account_id> - Gives/takes a players skill points.
-@charresetskill    :@charskreset/@charresetskill <char name|account_id> - Resets skills of a character.
 @charresetstate    :@charstreset/@charresetstate <char name|account_id> - Resets stats of a character.
+@charresetskill    :@charskreset/@charresetskill <char name|account_id> - Resets skills of a character.
 @charreset         :@charreset <char name|account_id> - Resets stats AND skills of a character.
 @charguildlevelup  :@charguildlvup/@charguildlvlup/@charguildlevelup <#_of_levels> <char name|account_id> - Raises character Guild by desired number of levels.
 @charquestskill    :@charquestskill <#> <char name|account_id> - Gives to a player the specified quest skill.
@@ -373,7 +387,7 @@ key:remote,char,character,mass
                  40:--- MASS CONTROL CMD ---
 @joyjoymap         :@happyhappyjoyjoymap/@happyhappymap/@joyjoymap [map] - Makes everyone on a specified map do a random emote
 @joyjoy            :@happyhappyjoyjoy/@happyhappy/@joyjoy - Makes everyone on server do a random emote
-@loadmap           :@charloadmap/@charreturnmap/@loadmap/@returnmap [map] - Warps all characters from a map to their respawn point.
+@charloadmap       :@charloadmap/@charreturnmap/@loadmap/@returnmap [map] - Warps all characters from a map to their respawn point.
 @loadall           :@charloadall/@charreturnall/@loadall/@returnall - Warps all characters of the server to their respawn point.
 @speedall          :@charspeedall/@speedall [speed] - Changes speed of all characters of the server. 0 to restore normal speed.
 @charitemall       :@itemall/@charitemall/@giveitemall <item_name|item_ID> [quantity] - Adds items to everyone.
@@ -416,8 +430,10 @@ key:admin,administration,administrator
 @reloadskilldb     :@reloadskilldb - Reloads skills definition database (admin command).
 @reloadscript      :@reloadscript|@rehash - Reloads all scripts (admin command). It's better to restart map-server.
 //@reloadgmdb        :@reloadgmdb - Reloads GM levels (admin command). // removed, it's automatic now
-@adjgmlvl          :@adjgmlvl/@setgmlvl <lvl> <char name|account_id> - Temporatly modify GM level of an online player.
-@adjcmdlvl         :@adjcmdlvl/@setcmdlvl <lvl> <command> - Modify level of a command for the actual session of the software.
+@adjgmlvl          :@adjgmlvl/@setgmlvl/@adjgmlevel/@setgmlevel <lvl> <char name|account_id> - Temporarily modify GM level of an online player.
+@adjgmlvl2         :@adjgmlvl2/@setgmlvl2/@adjgmlevel2/@setgmlevel2 <lvl> <char name|account_id> - Permanently modify GM level of a player!
+@adjgm0            :@adjgm[0-10] <char name|account_id> - Permanently modify GM level of a player from 0 to 10 (level depends of your gm command).
+@adjcmdlvl         :@adjcmdlvl/@setcmdlvl/@adjcmdlevel/@setcmdlevel <lvl> <command> - Modify level of a command for the actual session of the software.
                  99: 
 @gat               :@gat - For debugging (you inspect around gat).
 @packet            :@packet - For debugging (packet variety, depends of the source code).

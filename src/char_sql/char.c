@@ -95,12 +95,18 @@ int email_creation = 0; // disabled by default
 
 char unknown_char_name[1024] = "Unknown";
 char char_log_filename[1024] = "log/char.log";
+static unsigned char log_file_date = 3; /* year + month (example: log/login-2006-12.log) */
 char temp_char_buffer[1024]; // temporary buffer of type char (see php_addslashes)
 FILE *log_fp = NULL;
 
 int log_char = 1; // loggin char or not
 
-//Added for lan support
+// Maps-servers connection security
+#define ACO_STRSIZE 32 // max normal value: 255.255.255.255/255.255.255.255 + NULL, so 15 + 1 + 15 + 1 = 32
+static int access_map_allownum = 0;
+static char *access_map_allow = NULL;
+
+// Added for lan support
 char lan_map_ip[128];
 int subnet[4];
 int subnetmask[4];
@@ -195,18 +201,68 @@ void char_log(char *fmt, ...) {
 	struct timeval tv;
 	time_t now;
 	char tmpstr[2048];
+	static char log_filename_used[sizeof(char_log_filename) + 64] = "1"; // +64 for date size
+	char log_filename_to_use[sizeof(char_log_filename) + 64]; // must be different to log_filename_used
 
-	// if not already open, try to opeen log
+	// get time for file name and logs
+	gettimeofday(&tv, NULL);
+	now = time(NULL);
+
+	// create file name
+	memset(log_filename_to_use, 0, sizeof(log_filename_to_use));
+	if (log_file_date == 0) {
+		strcpy(log_filename_to_use, char_log_filename);
+	} else {
+		char* last_point;
+		char* last_slash; // to avoid name like ../log_file_name_without_point
+		// search position of '.'
+		last_point = strrchr(char_log_filename, '.');
+		last_slash = strrchr(char_log_filename, '/');
+		if (last_point == NULL || (last_slash != NULL && last_slash > last_point))
+			last_point = char_log_filename + strlen(char_log_filename);
+		strncpy(log_filename_to_use, char_log_filename, last_point - char_log_filename);
+		switch (log_file_date) {
+		case 1:
+			strftime(log_filename_to_use + strlen(log_filename_to_use), 63, "-%Y", localtime(&now));
+			strcat(log_filename_to_use, last_point);
+			break;
+		case 2:
+			strftime(log_filename_to_use + strlen(log_filename_to_use), 63, "-%m", localtime(&now));
+			strcat(log_filename_to_use, last_point);
+			break;
+		case 3:
+			strftime(log_filename_to_use + strlen(log_filename_to_use), 63, "-%Y-%m", localtime(&now));
+			strcat(log_filename_to_use, last_point);
+			break;
+		case 4:
+			strftime(log_filename_to_use + strlen(log_filename_to_use), 63, "-%Y-%m-%d", localtime(&now));
+			strcat(log_filename_to_use, last_point);
+			break;
+		default: // case 0:
+			strcpy(log_filename_to_use, char_log_filename);
+			break;
+		}
+	}
+
+	// if previously used file has different name from the file to use
+	if (strcmp(log_filename_used, log_filename_to_use) != 0) {
+		if (log_fp != NULL) {
+			fclose(log_fp);
+			log_fp = NULL; // it'll be checked down there...
+		}
+//		counter = 0;
+		memcpy(log_filename_used, log_filename_to_use, sizeof(log_filename_used));
+	}
+
+	// if not already open, try to open log
 	if (log_fp == NULL)
-		log_fp = fopen(char_log_filename, "a");
+		log_fp = fopen(log_filename_used, "a");
 
 	if (log_fp) {
 		if (fmt[0] == '\0') // jump a line if no message
 			fprintf(log_fp, RETCODE);
 		else {
 			va_start(ap, fmt);
-			gettimeofday(&tv, NULL);
-			now = time(NULL);
 			memset(tmpstr, 0, sizeof(tmpstr));
 			strftime(tmpstr, 24, "%d-%m-%Y %H:%M:%S", localtime(&now));
 			sprintf(tmpstr + strlen(tmpstr), ".%03d: %s", (int)tv.tv_usec / 1000, fmt);
@@ -2117,7 +2173,7 @@ void create_online_files(void) {
 			// write heading
 			fprintf(fp, "<?php" RETCODE
 			            "// File generated on %s" RETCODE, temp);
-			fprintf(fp, "$freya = array(\n" RETCODE
+			fprintf(fp, "$freya = array(" RETCODE
 			            "\t'server_name'=>'%s'," RETCODE, php_addslashes(server_name));
 			fprintf(fp, "\t'time'=>%d," RETCODE, (int)time_server);
 			fprintf(fp, "\t'agit_flag'=>%d," RETCODE, agit_flag);
@@ -2132,7 +2188,9 @@ void create_online_files(void) {
 					j = id[i];
 					fprintf(fp, "\t\t%d=>array(" RETCODE, char_dat[j].account_id);
 					fprintf(fp, "\t\t\t'charname'=>'%s'," RETCODE, php_addslashes(char_dat[j].name));
-					fprintf(fp, "\t\t\t'isgm'=>%s," RETCODE, isGM(char_dat[j].account_id) ? "true" : "false");
+					k = isGM(char_dat[j].account_id);
+					fprintf(fp, "\t\t\t'isgm'=>%s," RETCODE, (k >= online_gm_display_min_level) ? "true" : "false");
+					fprintf(fp, "\t\t\t'gmlevel'=>%d," RETCODE, k);
 					fprintf(fp, "\t\t\t'class'=>%d," RETCODE, char_dat[j].class);
 					fprintf(fp, "\t\t\t'baselvl'=>%d," RETCODE, char_dat[j].base_level);
 					fprintf(fp, "\t\t\t'joblvl'=>%d," RETCODE, char_dat[j].job_level);
@@ -2821,6 +2879,17 @@ int parse_tologin(int fd) {
 			RFIFOSKIP(fd, 38);
 			break;
 
+		// Answer of login-server after a request to change a gm level from a map-server
+		case 0x272f: // 0x272f/0x2b21 <account_id>.L <GM_level>.B <accound_id_of_GM>.L (GM_level = -1 -> player not found, -2: gm level doesn't authorise you, -3: already right value; account_id_of_GM = -1 -> script)
+			if (RFIFOREST(fd) < 11)
+				return 0;
+			// transmit answer to all map-servers
+			WPACKETW(0) = 0x2b21; // 0x272f/0x2b21 <account_id>.L <GM_level>.B <accound_id_of_GM>.L (GM_level = -1 -> player not found, -2: gm level doesn't authorise you, -3: already right value; account_id_of_GM = -1 -> script)
+			memcpy(WPACKETP(2), RFIFOP(fd,2), 11 - 2);
+			mapif_sendall(11);
+			RFIFOSKIP(fd, 11);
+			break;
+
 		// Account deletion notification (from login-server)
 		case 0x2730:
 			if (RFIFOREST(fd) < 6)
@@ -2931,9 +3000,7 @@ int parse_tologin(int fd) {
 				}
 			// if not found, add it
 			if (i == GM_num) {
-				// limited to 4000, because we send information to char-servers (more than 4000 GM accounts???)
-				// int (id) + int (level) = 8 bytes * 4000 = 32k (limit of packets in windows)
-				if (((int)RFIFOB(fd,6)) > 0 && GM_num < 4000) {
+				if (((int)RFIFOB(fd,6)) > 0) {
 					if (GM_num == 0) {
 						MALLOC(gm_account, struct gm_account, 1);
 					} else {
@@ -2943,28 +3010,18 @@ int parse_tologin(int fd) {
 					gm_account[GM_num].level = RFIFOB(fd,6);
 					new_level = 1;
 					GM_num++;
-					if (GM_num >= 4000) {
-						printf("***WARNING: 4000 GM accounts found. Next GM accounts are not readed.\n");
-						char_log("***WARNING: 4000 GM accounts found. Next GM accounts are not readed." RETCODE);
-					}
 				}
 			}
 			if (new_level == 1) {
-				int len;
 				printf("From login-server: receiving a GM account information (%d: level %d).\n", RFIFOL(fd,2), (int)RFIFOB(fd,6));
 				char_log("From login-server: receiving a GM account information (%d: level %d)." RETCODE, RFIFOL(fd,2), (int)RFIFOB(fd,6));
-				//create_online_files(); // not change online file for only 1 player (in next timer, that will be done
-				// send gm acccounts level to map-servers
-				len = 4;
-				WPACKETW(0) = 0x2b15;
-				for(i = 0; i < GM_num; i++) {
-					WPACKETL(len    ) = gm_account[i].account_id;
-					WPACKETB(len + 4) = gm_account[i].level;
-					len += 5;
-				}
-				WPACKETW(2) = len;
-				mapif_sendall(len);
 			}
+			//create_online_files(); // not change online file for only 1 player (in next timer, that will be done
+			// send gm acccounts level to map-servers to update value if necessary (send anyway to avoid error when char-server was crashed)
+			WPACKETW(0) = 0x2b1f; // 0x2b1f <account_id>.L <GM_Level>.B
+			WPACKETL(2) = RFIFOL(fd,2);
+			WPACKETB(6) = RFIFOB(fd,6);
+			mapif_sendall(7);
 		  }
 			RFIFOSKIP(fd,7);
 			break;
@@ -3556,19 +3613,31 @@ int parse_frommap(int fd) {
 			i = char_nick2idx(character_name);
 			// if index not found in memory, we search if the name is an account id and if a character exists
 			if (i < 0) { // -1: no char with this name, -2: exact sensitive name not found
+				char *p_character_name;
 				i = 0;
-				for(j = 0; j < char_num; j++)
-					if (char_dat[j].account_id == account_id) {
-						strncpy(character_name_found, char_dat[j].name, 24);
-						character_name_found[24] = '\0';
-						i = 1;
-						break;
-					}
+				p_character_name = character_name;
+				while(isspace(*p_character_name))
+					p_character_name++;
+				if (*p_character_name == '+' || *p_character_name == '-')
+					p_character_name++;
+				// if character_name is a number
+				if (*p_character_name >= '0' && *p_character_name <= '9') {
+					for(j = 0; j < char_num; j++)
+						if (char_dat[j].account_id == account_id && char_dat[j].sex != 2) { // if not a server account
+							strncpy(character_name_found, char_dat[j].name, 24);
+							character_name_found[24] = '\0';
+							i = 1;
+							break;
+						}
+				}
 			} else {
-				account_id = char_dat[i].account_id;
-				strncpy(character_name_found, char_dat[i].name, 24);
-				character_name_found[24] = '\0';
-				i = 1;
+				if (char_dat[i].sex != 2) { // if not a server account
+					account_id = char_dat[i].account_id;
+					strncpy(character_name_found, char_dat[i].name, 24);
+					character_name_found[24] = '\0';
+					i = 1;
+				} else
+					i = 0;
 			}
 			// if not found in memory
 			if (i != 1) {
@@ -3589,12 +3658,22 @@ int parse_frommap(int fd) {
 				}
 				// if not found (unique or not), we search if the name is an account id and if a character exists
 				if (i == 0) {
-					sql_request("SELECT `account_id` FROM `%s` WHERE `account_id` = '%d'", char_db, atoi(character_name));
-					if (sql_get_row()) {
-						account_id = atoi(character_name); // sql_get_integer(0);
-						strncpy(character_name_found, character_name, 24);
-						character_name_found[24] = '\0';
-						i = 1;
+					char *p_character_name;
+					p_character_name = character_name;
+					while(isspace(*p_character_name))
+						p_character_name++;
+					if (*p_character_name == '+' || *p_character_name == '-')
+						p_character_name++;
+					// if character_name is a number
+					if (*p_character_name >= '0' && *p_character_name <= '9') {
+						// try to found player with account id
+						sql_request("SELECT `account_id` FROM `%s` WHERE `account_id` = '%d'", char_db, atoi(character_name));
+						if (sql_get_row()) {
+							account_id = atoi(character_name); // sql_get_integer(0);
+							strncpy(character_name_found, character_name, 24);
+							character_name_found[24] = '\0';
+							i = 1;
+						}
 					}
 				}
 			}
@@ -3613,7 +3692,7 @@ int parse_frommap(int fd) {
 								WPACKETW( 0) = 0x2b0f; // answer
 								WPACKETL( 2) = acc; // who want do operation
 								memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 								WPACKETW(32) = 0; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 								SENDPACKET(fd, 34);
 							}
@@ -3623,7 +3702,7 @@ int parse_frommap(int fd) {
 								WPACKETW( 0) = 0x2b0f; // answer
 								WPACKETL( 2) = acc; // who want do operation
 								memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 								WPACKETW(32) = 3; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 								SENDPACKET(fd, 34);
 							}
@@ -3633,7 +3712,7 @@ int parse_frommap(int fd) {
 							WPACKETW( 0) = 0x2b0f; // answer
 							WPACKETL( 2) = acc; // who want do operation
 							memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-							WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+							WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 							WPACKETW(32) = 2; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 							SENDPACKET(fd, 34);
 						}
@@ -3657,7 +3736,7 @@ int parse_frommap(int fd) {
 								WPACKETW( 0) = 0x2b0f; // answer
 								WPACKETL( 2) = acc; // who want do operation
 								memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 								WPACKETW(32) = 0; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 								SENDPACKET(fd, 34);
 							}
@@ -3667,7 +3746,7 @@ int parse_frommap(int fd) {
 								WPACKETW( 0) = 0x2b0f; // answer
 								WPACKETL( 2) = acc; // who want do operation
 								memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 								WPACKETW(32) = 3; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 								SENDPACKET(fd, 34);
 							}
@@ -3677,7 +3756,7 @@ int parse_frommap(int fd) {
 							WPACKETW( 0) = 0x2b0f; // answer
 							WPACKETL( 2) = acc; // who want do operation
 							memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-							WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+							WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 							WPACKETW(32) = 2; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 							SENDPACKET(fd, 34);
 						}
@@ -3695,7 +3774,7 @@ int parse_frommap(int fd) {
 								WPACKETW( 0) = 0x2b0f; // answer
 								WPACKETL( 2) = acc; // who want do operation
 								memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 								WPACKETW(32) = 0; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 								SENDPACKET(fd, 34);
 							}
@@ -3705,7 +3784,7 @@ int parse_frommap(int fd) {
 								WPACKETW( 0) = 0x2b0f; // answer
 								WPACKETL( 2) = acc; // who want do operation
 								memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 								WPACKETW(32) = 3; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 								SENDPACKET(fd, 34);
 							}
@@ -3715,7 +3794,7 @@ int parse_frommap(int fd) {
 							WPACKETW( 0) = 0x2b0f; // answer
 							WPACKETL( 2) = acc; // who want do operation
 							memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-							WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+							WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 							WPACKETW(32) = 2; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 							SENDPACKET(fd, 34);
 						}
@@ -3732,7 +3811,7 @@ int parse_frommap(int fd) {
 								WPACKETW( 0) = 0x2b0f; // answer
 								WPACKETL( 2) = acc; // who want do operation
 								memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 								WPACKETW(32) = 0; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 								SENDPACKET(fd, 34);
 							}
@@ -3742,7 +3821,7 @@ int parse_frommap(int fd) {
 								WPACKETW( 0) = 0x2b0f; // answer
 								WPACKETL( 2) = acc; // who want do operation
 								memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 								WPACKETW(32) = 3; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 								SENDPACKET(fd, 34);
 							}
@@ -3752,7 +3831,7 @@ int parse_frommap(int fd) {
 							WPACKETW( 0) = 0x2b0f; // answer
 							WPACKETL( 2) = acc; // who want do operation
 							memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-							WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+							WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 							WPACKETW(32) = 2; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 							SENDPACKET(fd, 34);
 						}
@@ -3770,7 +3849,7 @@ int parse_frommap(int fd) {
 								WPACKETW( 0) = 0x2b0f; // answer
 								WPACKETL( 2) = acc; // who want do operation
 								memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 								WPACKETW(32) = 0; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 								SENDPACKET(fd, 34);
 							}
@@ -3780,7 +3859,7 @@ int parse_frommap(int fd) {
 								WPACKETW( 0) = 0x2b0f; // answer
 								WPACKETL( 2) = acc; // who want do operation
 								memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 								WPACKETW(32) = 3; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 								SENDPACKET(fd, 34);
 							}
@@ -3790,7 +3869,46 @@ int parse_frommap(int fd) {
 							WPACKETW( 0) = 0x2b0f; // answer
 							WPACKETL( 2) = acc; // who want do operation
 							memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
-							WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+							WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
+							WPACKETW(32) = 2; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
+							SENDPACKET(fd, 34);
+						}
+					break;
+				case 6: // changeGMlevel
+					if (acc == -1 || isGM(acc) >= isGM(account_id)) {
+						if (login_fd > 0) { // don't send request if no login-server
+							WPACKETW(0) = 0x272f; // 0x272f <account_id>.L <accound_id_of_GM>.L <GM_level>.B (account_id_of_GM = -1 -> script)
+							WPACKETL(2) = account_id; // account value
+							WPACKETL(6) = acc; // who want do operation
+							WPACKETB(10) = RFIFOB(fd, 32); // New GM level
+							SENDPACKET(login_fd, 11);
+//							printf("char : GM level change -> login: account %d, new level: %d \n", account_id, (int)RFIFOB(fd, 32));
+							// send answer if a player ask, not if the server ask
+							if (acc != -1) {
+								WPACKETW( 0) = 0x2b0f; // answer
+								WPACKETL( 2) = acc; // who want do operation
+								memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
+								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
+								WPACKETW(32) = 0; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
+								SENDPACKET(fd, 34);
+							}
+						} else
+							// send answer if a player ask, not if the server ask
+							if (acc != -1) {
+								WPACKETW( 0) = 0x2b0f; // answer
+								WPACKETL( 2) = acc; // who want do operation
+								memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
+								WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
+								WPACKETW(32) = 3; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
+								SENDPACKET(fd, 34);
+							}
+					} else
+						// send answer if a player ask, not if the server ask
+						if (acc != -1) {
+							WPACKETW( 0) = 0x2b0f; // answer
+							WPACKETL( 2) = acc; // who want do operation
+							memcpy(WPACKETP(6), character_name_found, 24); // put correct name if found
+							WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 							WPACKETW(32) = 2; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 							SENDPACKET(fd, 34);
 						}
@@ -3803,7 +3921,7 @@ int parse_frommap(int fd) {
 					WPACKETW( 0) = 0x2b0f; // answer
 					WPACKETL( 2) = acc; // who want do operation
 					memcpy(WPACKETP(6), character_name, 24);
-					WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex
+					WPACKETW(30) = RFIFOW(fd, 30); // type of operation: 1-block, 2-ban, 3-unblock, 4-unban, 5-changesex, 6-changeGMlevel
 					WPACKETW(32) = 1; // answer: 0-login-server resquest done, 1-player not found, 2-gm level too low, 3-login-server offline
 					SENDPACKET(fd, 34);
 				}
@@ -4102,6 +4220,69 @@ int search_mapserver(char *map) {
 	return -1;
 }
 
+//--------------------------------------------------------------
+// Test of the IP mask
+// (ip: IP to be tested, str: mask x.x.x.x/# or x.x.x.x/y.y.y.y)
+//--------------------------------------------------------------
+static inline int check_ipmask(unsigned int ip, const char *str) {
+	int i = 0;
+	unsigned int mask = 0, m, ip2;
+	unsigned short a0, a1, a2, a3;
+	unsigned char *p = (unsigned char *)&ip2, *p2 = (unsigned char *)&mask;
+
+	if (sscanf(str, "%hu.%hu.%hu.%hu/%n", &a0, &a1, &a2, &a3, &i) != 4 || i == 0 ||
+	    a0 > 255 || a1 > 255 || a2 > 255 || a3 > 255)
+		return 0;
+	p[0] = a0; p[1] = a1; p[2] = a2; p[3] = a3;
+
+	if (sscanf(str + i, "%hu.%hu.%hu.%hu", &a0, &a1, &a2, &a3) == 4 &&
+	    a0 <= 255 && a1 <= 255 && a2 <= 255 && a3 <= 255) {
+		p2[0] = a0; p2[1] = a1; p2[2] = a2; p2[3] = a3;
+		mask = ntohl(mask);
+	} else if (sscanf(str + i, "%u", &m) == 1 && m <= 32) { // m unsigned, not need to check m >= 0
+		for(i = 0; i < m; i++)
+			mask = (mask >> 1) | 0x80000000;
+	} else {
+		printf("check_ipmask: invalid mask [%s].\n", str);
+		return 0;
+	}
+
+/*	printf("Tested IP: %08x, network: %08x, network mask: %08x\n", (unsigned int)ntohl(ip), (unsigned int)ntohl(ip2), mask); */
+	return ((ntohl(ip) & mask) == (ntohl(ip2) & mask));
+}
+
+//-------------------------------------
+// Access control by IP for map-servers
+//-------------------------------------
+static inline int check_mapip(unsigned int ip) {
+	int i;
+	unsigned char *p = (unsigned char *)&ip;
+	char buf[17];
+	char * access_ip;
+
+	if (access_map_allownum == 0)
+		return 1; /* When there is no restriction, all IP are authorized. */
+
+/*	+   012.345.: front match form, or
+	    all: all IP are matched, or
+	    012.345.678.901/24: network form (mask with # of bits), or
+	    012.345.678.901/255.255.255.0: network form (mask with ip mask)
+	+   Note about the DNS resolution (like www.ne.jp, etc.):
+	    There is no guarantee to have an answer.
+	    If we have an answer, there is no guarantee to have a 100% correct value.
+	    And, the waiting time (to check) can be long (over 1 minute to a timeout). That can block the software.
+	    So, DNS notation isn't authorized for ip checking.*/
+	sprintf(buf, "%d.%d.%d.%d.", p[0], p[1], p[2], p[3]);
+
+	for(i = 0; i < access_map_allownum; i++) {
+		access_ip = access_map_allow + (i * ACO_STRSIZE);
+		if (strncmp(access_ip, buf, strlen(access_ip)) == 0 || check_ipmask(ip, access_ip))
+			return 1;
+	}
+
+	return 0;
+}
+
 //-----------------------------------------------------
 // Test to know if an IP come from LAN or WAN. by [Yor]
 //-----------------------------------------------------
@@ -4124,6 +4305,9 @@ int lan_ip_check(unsigned char *p) {
 	return lancheck;
 }
 
+//-----------------------------------------------------
+// Main parse function
+//-----------------------------------------------------
 int parse_char(int fd) {
 	int i, ch;
 	char email[41]; // 40 + NULL
@@ -4698,10 +4882,11 @@ int parse_char(int fd) {
 		case 0x2af8: // login as map-server
 			if (RFIFOREST(fd) < 56)
 				return 0;
-			for(i = 0; i < MAX_MAP_SERVERS; i++)
-				if (server_fd[i] < 0)
-					break;
-			if (i == MAX_MAP_SERVERS || strncmp(RFIFOP(fd,2), userid, 24) || memcmp(RFIFOP(fd,26), passwd, 24)) {
+			if (!check_mapip(session[fd]->client_addr.sin_addr.s_addr)) {
+				unsigned char *p = (unsigned char *) &session[fd]->client_addr.sin_addr;
+				printf("Connection of a map-server REFUSED (map_allow, ip: %d.%d.%d.%d).\n", p[0], p[1], p[2], p[3]);
+				printf("   Check your char_athena.conf (option: mapallowip)\n");
+				printf("   if connection must be authorised.\n");
 				WPACKETW(0) = 0x2af9;
 				WPACKETB(2) = 3;
 				SENDPACKET(fd, 3);
@@ -4709,33 +4894,53 @@ int parse_char(int fd) {
 				session[fd]->eof = 1;
 				RFIFOSKIP(fd,56);
 			} else {
-				int len;
-				WPACKETW(0) = 0x2af9;
-				WPACKETB(2) = 0;
-				SENDPACKET(fd, 3);
-				session[fd]->func_parse = parse_frommap;
-				server_fd[i] = fd;
-				server_freezeflag[i] = anti_freeze_counter; // Map anti-freeze system. Counter. 6 ok, 5...0 frozen
-				server[i].ip = RFIFOL(fd,50);
-				server[i].port = RFIFOW(fd,54);
-				server[i].users = 0;
-				printf("User count: 0 (server: %d)\n", i);
-				FREE(server[i].map);
-				server[i].map_num = 0; // MAX_MAP_PER_SERVER
-				RFIFOSKIP(fd,56);
-				realloc_fifo(fd, RFIFOSIZE_SERVER, WFIFOSIZE_SERVER);
-				inter_mapif_init(fd);
-				// send gm acccounts level to map-servers
-				len = 4;
-				WPACKETW(0) = 0x2b15;
-				for(i = 0; i < GM_num; i++) {
-					WPACKETL(len    ) = gm_account[i].account_id;
-					WPACKETB(len + 4) = gm_account[i].level;
-					len += 5;
+				for(i = 0; i < MAX_MAP_SERVERS; i++)
+					if (server_fd[i] < 0)
+						break;
+				if (i == MAX_MAP_SERVERS || strncmp(RFIFOP(fd,2), userid, 24) || memcmp(RFIFOP(fd,26), passwd, 24)) {
+					WPACKETW(0) = 0x2af9;
+					WPACKETB(2) = 3;
+					SENDPACKET(fd, 3);
+					/* set eof */
+					session[fd]->eof = 1;
+					RFIFOSKIP(fd,56);
+				} else {
+					int len;
+					WPACKETW(0) = 0x2af9;
+					WPACKETB(2) = 0;
+					SENDPACKET(fd, 3);
+					session[fd]->func_parse = parse_frommap;
+					server_fd[i] = fd;
+					server_freezeflag[i] = anti_freeze_counter; // Map anti-freeze system. Counter. 6 ok, 5...0 frozen
+					server[i].ip = RFIFOL(fd,50);
+					server[i].port = RFIFOW(fd,54);
+					server[i].users = 0;
+					printf("User count: 0 (server: %d)\n", i);
+					FREE(server[i].map);
+					server[i].map_num = 0; // MAX_MAP_PER_SERVER
+					RFIFOSKIP(fd,56);
+					realloc_fifo(fd, RFIFOSIZE_SERVER, WFIFOSIZE_SERVER);
+					inter_mapif_init(fd);
+					// send gm acccounts level to map-servers
+					len = 4;
+					WPACKETW(0) = 0x2b15;
+					for(i = 0; i < GM_num && len < 32760; i++) { // max size of packet = 32767
+						WPACKETL(len    ) = gm_account[i].account_id;
+						WPACKETB(len + 4) = gm_account[i].level;
+						len += 5;
+					}
+					WPACKETW(2) = len;
+					SENDPACKET(fd, len);
+					// continue with one to one packet if quantity is too important
+					while(i < GM_num) {
+						WPACKETW(0) = 0x2b1f; // 0x2b1f <account_id>.L <GM_Level>.B
+						WPACKETL(2) = gm_account[i].account_id;
+						WPACKETB(6) = gm_account[i].level;
+						SENDPACKET(fd, 7);
+						i++;
+					}
+					return 0;
 				}
-				WPACKETW(2) = len;
-				SENDPACKET(fd, len);
-				return 0;
 			}
 			break;
 
@@ -4993,67 +5198,67 @@ void sql_config_read(const char *cfgName) {
 
 		if (strcasecmp(w1, "char_db") == 0) {
 			memset(char_db, 0, sizeof(char_db));
-			strcpy(char_db, w2);
+			strncpy(char_db, w2, sizeof(char_db) - 1);
 		} else if (strcasecmp(w1, "cart_db") == 0) {
 			memset(cart_db, 0, sizeof(cart_db));
-			strcpy(cart_db, w2);
+			strncpy(cart_db, w2, sizeof(cart_db) - 1);
 		} else if (strcasecmp(w1, "inventory_db") == 0) {
 			memset(inventory_db, 0, sizeof(inventory_db));
-			strcpy(inventory_db, w2);
+			strncpy(inventory_db, w2, sizeof(inventory_db) - 1);
 		} else if (strcasecmp(w1, "charlog_db") == 0) {
 			memset(charlog_db, 0, sizeof(charlog_db));
-			strcpy(charlog_db, w2);
+			strncpy(charlog_db, w2, sizeof(charlog_db) - 1);
 		} else if (strcasecmp(w1, "storage_db") == 0) {
 			memset(storage_db, 0, sizeof(storage_db));
-			strcpy(storage_db, w2);
+			strncpy(storage_db, w2, sizeof(storage_db) - 1);
 		} else if (strcasecmp(w1, "reg_db") == 0) {
 			memset(global_reg_value, 0, sizeof(global_reg_value));
-			strcpy(global_reg_value, w2);
+			strncpy(global_reg_value, w2, sizeof(global_reg_value) - 1);
 		} else if (strcasecmp(w1, "skill_db") == 0) {
 			memset(skill_db, 0, sizeof(skill_db));
-			strcpy(skill_db, w2);
+			strncpy(skill_db, w2, sizeof(skill_db) - 1);
 		} else if (strcasecmp(w1, "interlog_db") == 0) {
 			memset(interlog_db, 0, sizeof(interlog_db));
-			strcpy(interlog_db, w2);
+			strncpy(interlog_db, w2, sizeof(interlog_db) - 1);
 		} else if (strcasecmp(w1, "memo_db") == 0) {
 			memset(memo_db, 0, sizeof(memo_db));
-			strcpy(memo_db, w2);
+			strncpy(memo_db, w2, sizeof(memo_db) - 1);
 		} else if (strcasecmp(w1, "guild_db") == 0) {
 			memset(guild_db, 0, sizeof(guild_db));
-			strcpy(guild_db, w2);
+			strncpy(guild_db, w2, sizeof(guild_db) - 1);
 		} else if (strcasecmp(w1, "guild_alliance_db") == 0) {
 			memset(guild_alliance_db, 0, sizeof(guild_alliance_db));
-			strcpy(guild_alliance_db, w2);
+			strncpy(guild_alliance_db, w2, sizeof(guild_alliance_db) - 1);
 		} else if (strcasecmp(w1, "guild_castle_db") == 0) {
 			memset(guild_castle_db, 0, sizeof(guild_castle_db));
-			strcpy(guild_castle_db, w2);
+			strncpy(guild_castle_db, w2, sizeof(guild_castle_db) - 1);
 		} else if (strcasecmp(w1, "guild_expulsion_db") == 0) {
 			memset(guild_expulsion_db, 0, sizeof(guild_expulsion_db));
-			strcpy(guild_expulsion_db, w2);
+			strncpy(guild_expulsion_db, w2, sizeof(guild_expulsion_db) - 1);
 		} else if (strcasecmp(w1, "guild_member_db") == 0) {
 			memset(guild_member_db, 0, sizeof(guild_member_db));
-			strcpy(guild_member_db, w2);
+			strncpy(guild_member_db, w2, sizeof(guild_member_db) - 1);
 		} else if (strcasecmp(w1, "guild_skill_db") == 0) {
 			memset(guild_skill_db, 0, sizeof(guild_skill_db));
-			strcpy(guild_skill_db, w2);
+			strncpy(guild_skill_db, w2, sizeof(guild_skill_db) - 1);
 		} else if (strcasecmp(w1, "guild_position_db") == 0) {
 			memset(guild_position_db, 0, sizeof(guild_position_db));
-			strcpy(guild_position_db, w2);
+			strncpy(guild_position_db, w2, sizeof(guild_position_db) - 1);
 		} else if (strcasecmp(w1, "guild_storage_db") == 0) {
 			memset(guild_storage_db, 0, sizeof(guild_storage_db));
-			strcpy(guild_storage_db, w2);
+			strncpy(guild_storage_db, w2, sizeof(guild_storage_db) - 1);
 		} else if (strcasecmp(w1, "party_db") == 0) {
 			memset(party_db, 0, sizeof(party_db));
-			strcpy(party_db, w2);
+			strncpy(party_db, w2, sizeof(party_db) - 1);
 		} else if (strcasecmp(w1, "pet_db") == 0) {
 			memset(pet_db, 0, sizeof(pet_db));
-			strcpy(pet_db, w2);
+			strncpy(pet_db, w2, sizeof(pet_db) - 1);
 		} else if(strcasecmp(w1, "statuschange_db") == 0) {
 			memset(statuschange_db, 0, sizeof(statuschange_db));
-			strcpy(statuschange_db, w2);
+			strncpy(statuschange_db, w2, sizeof(statuschange_db) - 1);
 		} else if (strcasecmp(w1, "rank_db") == 0) {
 			memset(rank_db, 0, sizeof(rank_db));
-			strcpy(rank_db, w2);
+			strncpy(rank_db, w2, sizeof(rank_db) - 1);
 // import
 		} else if (strcasecmp(w1, "import") == 0) {
 			printf("sql_config_read: Import file: %s.\n", w2);
@@ -5174,6 +5379,10 @@ static void char_config_read(const char *cfgName) { // not inline, called too of
 		} else if (strcasecmp(w1, "char_log_filename") == 0) {
 			memset(char_log_filename, 0, sizeof(char_log_filename));
 			strcpy(char_log_filename, w2);
+		} else if (strcasecmp(w1, "log_file_date") == 0) {
+			log_file_date = atoi(w2);
+			if (log_file_date > 4)
+				log_file_date = 3; // default
 		} else if (strcasecmp(w1, "chars_per_account") == 0) {
 			if (atoi(w2) >= 0 && atoi(w2) <= 9)
 				chars_per_account = atoi(w2);
@@ -5294,6 +5503,31 @@ static void char_config_read(const char *cfgName) { // not inline, called too of
 		} else if (strcasecmp(w1, "console_pass") == 0) {
 			memset(console_pass, 0, sizeof(console_pass));
 			strncpy(console_pass, w2, sizeof(console_pass) - 1);
+
+/* Maps-servers connection security */
+		} else if (strcasecmp(w1, "mapallowip") == 0) {
+			if (strcasecmp(w2, "clear") == 0) {
+				FREE(access_map_allow);
+				access_map_allownum = 0;
+			} else {
+				if (strcasecmp(w2, "all") == 0) {
+					/* reset all previous values */
+					FREE(access_map_allow);
+					/* set to all */
+					CALLOC(access_map_allow, char, ACO_STRSIZE);
+					access_map_allownum = 1;
+					//access_map_allow[0] = '\0';
+				} else if (w2[0] && !(access_map_allownum == 1 && access_map_allow[0] == '\0')) { /* don't add IP if already 'all' */
+					if (access_map_allow) {
+						REALLOC(access_map_allow, char, (access_map_allownum + 1) * ACO_STRSIZE);
+						memset(access_map_allow + (access_map_allownum * ACO_STRSIZE), 0, sizeof(char) * ACO_STRSIZE);
+					} else {
+						CALLOC(access_map_allow, char, ACO_STRSIZE);
+					}
+					strncpy(access_map_allow + (access_map_allownum++) * ACO_STRSIZE, w2, ACO_STRSIZE - 1); // 32 - NULL
+					access_map_allow[access_map_allownum * ACO_STRSIZE - 1] = '\0';
+				}
+			}
 
 /* lan options */
 		} else if (strcasecmp(w1, "lan_map_ip") == 0) { // Read map-server Lan IP Address
@@ -5438,6 +5672,10 @@ void do_final(void) {
 		server[i].map_num = 0; // MAX_MAP_PER_SERVER
 	}
 
+	// Maps-servers connection security
+	FREE(access_map_allow);
+	access_map_allownum = 0;
+
 	/* restore console parameters */
 	term_input_disable();
 
@@ -5526,16 +5764,16 @@ void do_init(const int argc, char **argv) {
 	add_timer_func_list(check_manner_file, "check_manner_file");
 	add_timer_func_list(check_account_reg2, "check_account_reg2");
 
-	i = add_timer_interval(gettick() + 1000, check_connect_login_server, 0, 0, 5 * 1000);
-	i = add_timer_interval(gettick() + 1000, send_users_tologin, 0, 0, 5 * 1000);
-	i = add_timer_interval(gettick() + 30 * 1000, mmo_char_sync_timer, 0, 0, 30 * 1000); // to check characters in memory and free if not used for 15 seconds
+	i = add_timer_interval(gettick_cache + 1000, check_connect_login_server, 0, 0, 5 * 1000);
+	i = add_timer_interval(gettick_cache + 1000, send_users_tologin, 0, 0, 5 * 1000);
+	i = add_timer_interval(gettick_cache + 30 * 1000, mmo_char_sync_timer, 0, 0, 30 * 1000); // to check characters in memory and free if not used for 15 seconds
 
 	if (anti_freeze_interval == 0)
-		i = add_timer_interval(gettick() + 6000, map_anti_freeze_system, 0, 0, 6 * 1000); // every 6 sec (users are sended every 5 sec)
+		i = add_timer_interval(gettick_cache + 6000, map_anti_freeze_system, 0, 0, 6 * 1000); // every 6 sec (users are sended every 5 sec)
 	else
-		i = add_timer_interval(gettick() + anti_freeze_interval * 1000, map_anti_freeze_system, 0, 0, anti_freeze_interval * 1000); // every 6 sec (users are sended every 5 sec)
-	i = add_timer_interval(gettick() + 60000, check_manner_file, 0, 0, 60000); // every 60 sec we check if manner file has been changed
-	i = add_timer_interval(gettick() + 300000, check_account_reg2, 0, 0, 300000); // every 300 sec (5 minutes) we check account reg2 to clean up it
+		i = add_timer_interval(gettick_cache + anti_freeze_interval * 1000, map_anti_freeze_system, 0, 0, anti_freeze_interval * 1000); // every 6 sec (users are sended every 5 sec)
+	i = add_timer_interval(gettick_cache + 60000, check_manner_file, 0, 0, 60000); // every 60 sec we check if manner file has been changed
+	i = add_timer_interval(gettick_cache + 300000, check_account_reg2, 0, 0, 300000); // every 300 sec (5 minutes) we check account reg2 to clean up it
 
 #ifdef DYNAMIC_LINKING
 	addons_enable_all();

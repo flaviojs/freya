@@ -31,7 +31,7 @@ struct logs {
 	char extension[24];
 	unsigned short level;
 	unsigned short length; //to store total length of path+prefix+extension
-} logging[LOG_MAX] = 
+} logging[LOG_MAX] =
 {
 	{ "log/atcommand/", "", "log", 40, 256 },
 	{ "log/trade/", "", "log", 0, 256 },
@@ -59,7 +59,7 @@ static int wisid = 0; // identify each wisp message
 
 // recv. packet list // 受信パケット長リスト
 int inter_recv_packet_length[] = {
-	-1,-1, 7,-1, -1, 6, -1, -1, -1, 0, 0, 0,  0, 0,  0, 0, // 0x3000-0x300f
+	-1,-1, 7,-1, -1, 6, -1, -1, -1,-1, 0, 0,  0, 0,  0, 0, // 0x3000-0x300f
 	 6,-1, 0, 0,  0, 0,  0,  0, 10,-1, 0, 0,  0, 0,  0, 0, // 0x3010-0x301f
 	74, 6,52,14, 10,29,  6, -1, 34, 0, 0, 0,  0, 0,  0, 0, // 0x3020-0x302f
 	-1, 6,-1, 0, 55,19,  6, -1, 14,-1,-1,-1, 18,19,186,-1, // 0x3030-0x303f
@@ -79,7 +79,7 @@ int inter_recv_packet_length[] = {
  * 3 -> Vending    | LOG_VENDING
  *-----------------------------------------------
  */
-static inline void mapif_parse_LogSaveReq(unsigned char type, const char *log_mes) { // 0x3008 <packet_len>.w <log_type>.B <message>.?B 
+static inline void mapif_parse_LogSaveReq(unsigned char type, const char *log_mes) { // 0x3008 <packet_len>.w <log_type>.B <message>.?B
 	int log_fp, tmpstr_len;
 	struct timeval tv;
 	time_t now;
@@ -152,7 +152,11 @@ void inter_log_init(void) {
 	printf("Checking and creating logging folder(s)...\n");
 	for(i = LOG_BASE; i < LOG_MAX; i++) {
 		logging[i].length = strlen(logging[i].path) + strlen(logging[i].prefix) + strlen(logging[i].extension);
+#ifdef __WIN32
+		mkdir(logging[i].path);
+#else
 		mkdir(logging[i].path, 0700);
+#endif
 	}
 }
 
@@ -316,7 +320,7 @@ void inter_init(const char *file) {
 	// Update DB if necessary
 	sql_request("SHOW TABLES");
 	while (sql_get_row()) {
-   	if (strcmp(sql_get_string(0), "account_reg_db") == 0)
+		if (strcmp(sql_get_string(0), "account_reg_db") == 0)
 			flag.acc_reg_db = 1;
 		else if (strcmp(sql_get_string(0), statuschange_db) == 0)
 			flag.scdata_db = 1;
@@ -421,7 +425,7 @@ void inter_init(const char *file) {
 
 	// Whether the failure of previous wisp/page transmission (timeout)
 	add_timer_func_list(check_ttl_wisdata, "check_ttl_wisdata");
-	add_timer_interval(gettick() + 30000, check_ttl_wisdata, 0, 0, 30000);
+	add_timer_interval(gettick_cache + 30000, check_ttl_wisdata, 0, 0, 30000);
 
 	return;
 }
@@ -482,6 +486,16 @@ static inline void mapif_parse_GMmessage(int fd) { // 0x3000/0x3800 <packet_len>
 	memcpy(WPACKETP(2), RFIFOP(fd,2), RFIFOW(fd,2) - 2);
 	mapif_sendallwos(fd, WPACKETW(2)); // sender server have send message to these local players
 	//printf(CL_BLUE " inter server: GM[len:%d] - '%s'" CL_RESET "\n", RFIFOW(fd, 2), RFIFOP(fd, 4));
+
+	return;
+}
+
+// Colored GM message sending
+static inline void mapif_parse_announce(int fd) { // 0x3009/0x3809 <packet_len>.w <color>.L <flag>.L <message>.?B
+	WPACKETW(0) = 0x3809;
+	memcpy(WPACKETP(2), RFIFOP(fd,2), RFIFOW(fd,2) - 2);
+	mapif_sendallwos(fd, WPACKETW(2)); // sender server have send message to these local players
+	//printf(CL_BLUE " inter server: colored GM[len:%d] - '%s'" CL_RESET "\n", RFIFOW(fd, 2), RFIFOP(fd, 12));
 
 	return;
 }
@@ -555,7 +569,7 @@ static inline void mapif_parse_WisRequest(int fd) { // 0x3001/0x3801 <packet_len
 			}
 			wis_db[wis_db_num].id = ++wisid;
 			strncpy(wis_db[wis_db_num].src, RFIFOP(fd,5), 24);
-			wis_db[wis_db_num].tick = gettick();
+			wis_db[wis_db_num].tick = gettick_cache;
 			// ask all map-servers
 			WPACKETW(0) = 0x3801; // 0x3001/0x3801 <packet_len>.w (<w_id_0x3801>.L) <sender_GM_level>.B <sender_name>.24B <nick_name>.24B <message>.?B
 			WPACKETW(2) = 57 + RFIFOW(fd,2) - 53; // including NULL
@@ -738,6 +752,7 @@ int inter_parse_frommap(int fd) {
 	case 0x3006: mapif_parse_MainMessage(fd); break; // 0x3006/0x3806 <packet_len>.w <wispname>.24B <message>.?B
 	case 0x3007: mapif_parse_MessageToGM(fd); break; // 0x3007/0x3807 <packet_len>.w <wispname>.24B <message>.?B
 	case 0x3008: mapif_parse_LogSaveReq(RFIFOB(fd,4), RFIFOP(fd,5)); break; // 0x3008 <packet_len>.w <log_type>.B <message>.?B (types: 0 GM commands, 1: Trades, 2: Scripts, 3: Vending)
+	case 0x3009: mapif_parse_announce(fd); break; // 0x3009/0x3809 <packet_len>.w <color>.L <flag>.L <message>.?B
 	default:
 		if (inter_party_parse_frommap(fd))
 			break;

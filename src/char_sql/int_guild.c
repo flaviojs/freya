@@ -790,7 +790,6 @@ int guild_calcinfo(struct guild *g) {
 		if (g->member[i].account_id > 0) {
 			g->average_lv += g->member[i].lv;
 			c++;
-
 			if (g->member[i].online > 0)
 				g->connect_member++;
 		}
@@ -864,6 +863,7 @@ int mapif_guild_memberadded(int fd, int guild_id, int account_id, int char_id, i
 
 	return 0;
 }
+
 // ’E‘Þ/’Ç•ú’Ê’m
 int mapif_guild_leaved(int guild_id, int account_id, int char_id, int flag, const char *name, const char *mes) {
 	WPACKETW( 0) = 0x3834;
@@ -1613,7 +1613,7 @@ int mapif_parse_GuildCastleDataSave(int fd, int castle_id, int idx, int value) {
 		if (gc->guild_id != value) {
 			int gid = (value) ? value : gc->guild_id;
 #ifdef TXT_ONLY
-			struct guild *g = numdb_search(guild_db, gid);
+			struct guild *g = numdb_search(guild_db, (CPU_INT)gid);
 #endif /* TXT_ONLY */
 #ifdef USE_SQL
 			struct guild *g = guild_pt;

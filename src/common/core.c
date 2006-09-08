@@ -178,7 +178,7 @@ void versionscreen() {
  */
 void display_title(void) {
 	printf(CL_CLS CL_DARK_WHITE CL_BG_BLUE "          (=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=)" CL_CLL CL_RESET "\n"); // white writing (37) on blue background (44)
-	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "          (c)2004-2006 Free Yor team presents :          " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n");
+	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "            (c)2004-2006 Freya team presents:            " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n");
 	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "         ___   ___    ___   _  _   __                    " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n"); // 1: bold char, 0: normal char
 	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "        (  _) (  ,)  (  _) ( \\/ ) (  )                   " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n"); // 1: bold char, 0: normal char
 	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "        (  _)  )  \\   ) _)  \\  /  /__\\  v%1d.%1d.%1d %3s %5s " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n", FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION, // 1: bold char, 0: normal char
@@ -195,7 +195,6 @@ void display_title(void) {
 #else
 		printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "        (_)   (_)\\_) (___) (__/  (_)(_)                  " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n"); // 1: bold char, 0: normal char
 #endif /* SVN_REVISION */
-	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "          Free Ragnarok Emulator, Yor Adopted.           " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n");
 	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "              http://www.project-freya.net               " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n");
 	printf(CL_DARK_WHITE CL_BG_BLUE "          (=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=)" CL_CLL CL_RESET "\n\n"); // reset color
 }
@@ -304,8 +303,10 @@ int main(int argc, char **argv) {
 	do_init(argc, argv);
 	runflag = 1;
 	while(runflag) {
-		next = do_timer(gettick_nocache());
+		gettick_nocache();
+		next = do_timer();
 		do_sendrecv(next);
+		gettick_nocache();
 		do_parsepacket();
 	}
 

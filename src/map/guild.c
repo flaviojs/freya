@@ -118,7 +118,7 @@ int guild_read_guildskill_tree_db(void)
 			continue;
 		guild_skill_tree[id].id=atoi(split[0]);
 		guild_skill_tree[id].max=atoi(split[1]);
-		if (guild_skill_tree[id].id==GD_GLORYGUILD && battle_config.no_guilds_glory && guild_skill_tree[id].max==0) 
+		if (guild_skill_tree[id].id==GD_GLORYGUILD && battle_config.no_guilds_glory && guild_skill_tree[id].max==0)
 			guild_skill_tree[id].max=1;
 		for(k=0;k<5;k++){
 			guild_skill_tree[id].need[k].id=atoi(split[k*2+2]);
@@ -145,7 +145,7 @@ int guild_check_skill_require(struct guild *g,int id)
 
 	for(i=0;i<5;i++)
 	{
-		if(guild_skill_tree[idx].need[i].id == 0) 
+		if(guild_skill_tree[idx].need[i].id == 0)
 			break;
 		if(guild_skill_tree[idx].need[i].lv > guild_checkskill(g,guild_skill_tree[idx].need[i].id))
 			return 0;
@@ -219,7 +219,7 @@ void do_init_guild(void)
 
 	add_timer_func_list(guild_gvg_eliminate_timer, "guild_gvg_eliminate_timer");
 	add_timer_func_list(guild_payexp_timer, "guild_payexp_timer");
-	add_timer_interval(gettick() + GUILD_PAYEXP_INVERVAL, guild_payexp_timer, 0, 0, GUILD_PAYEXP_INVERVAL);
+	add_timer_interval(gettick_cache + GUILD_PAYEXP_INVERVAL, guild_payexp_timer, 0, 0, GUILD_PAYEXP_INVERVAL);
 }
 
 // ŒŸõ
@@ -641,7 +641,7 @@ void guild_invite(struct map_session_data *sd, int account_id) {
 	}
 
 	if (sd->state.gmaster_flag == NULL && ((i = guild_getposition(sd, g)) < 0 || !(g->position[i].mode & 0x0001)))
-		return; //Only members who have permission should be able to expel people. Modes: invite 0x0001, expel 0x0010 
+		return; //Only members who have permission should be able to expel people. Modes: invite 0x0001, expel 0x0010
 
 	// ’èˆõŠm”F
 	for(i = 0; i < g->max_member; i++) {
@@ -1756,7 +1756,7 @@ int guild_agit_break(struct mob_data *md)
 //      int c = npc_event_do(evname);
 	if (!agit_flag) // Agit already End
 		return 0;
-	add_timer(gettick() + battle_config.gvg_eliminate_time, guild_gvg_eliminate_timer, md->bl.m, (int)evname);
+	add_timer(gettick_cache + battle_config.gvg_eliminate_time, guild_gvg_eliminate_timer, md->bl.m, (int)evname);
 
 	return 0;
 }

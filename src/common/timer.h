@@ -26,13 +26,12 @@ struct TimerData {
 // Function prototype declaration
 
 #ifdef __WIN32
-void gettimeofday(struct timeval *t, void *dummy);
+int gettimeofday(struct timeval *t, void *dummy);
 #endif
 
 void init_gettick(void);
 unsigned int gettick_nocache(void);
-unsigned int gettick(void);
-//extern unsigned int gettick_cache;
+extern unsigned int gettick_cache;
 
 int add_timer(unsigned int, int (*)(int,unsigned int,int,int), int, int);
 int add_timer_interval(unsigned int, int (*)(int,unsigned int,int,int), int, int, int);
@@ -41,7 +40,7 @@ int delete_timer(int, int (*)(int,unsigned int, int, int));
 unsigned int addtick_timer(int tid, int added_tick);
 struct TimerData *get_timer(int tid);
 
-int do_timer(unsigned int tick);
+int do_timer(void);
 
 int add_timer_func_list(int (*)(int,unsigned int,int,int), char*);
 

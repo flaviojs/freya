@@ -1,108 +1,77 @@
+Note: Don't remove comments of old coders except if code is removed (respect of old coders work).
+      It is not because you can not understand the reason or the language that other coders can not.
+
 
 Date	Added
 
 9/07/06
-	* Updated: Freya to the latest kRO Patch (8/5/06) [Tsuyuki]
-	 - Details: Changed 'Shinobi Sash' Def from 0 to 1
-	* Added: Converted Eye of Hellion quest to Freya from eAthena [Tsuyuki]
-
-9/05/06
-	* Updated: A few more files laying around.. [Tsuyuki]
-	* Updated: Dates/Links/Misc in the Conf-dist folder [Tsuyuki]
+	* Integrated: Subdev Branch up to Rev. 120 [Mikey]
 	* Updated: The Readme Folder a little bit [Tsuyuki
 	* Imported: Socket Enchant Script from eAthena [Tsuyuki]
 	* Updated: Imported/converted new scripts & updated the old ones from eAthena [Tsuyuki]
-	* Added: Converted and implemented quite a few new missing scripts from eAthena [Tsuyuki]
 	* Merged: Several scripts together for a cleaner NPC folder [Tsuyuki]
 	* Disabled: The Old Blue Box quest since its in iRO, and not kRO [Tsuyuki]
-	* To-Do: Import/convert the following quests/npcs from eAthena:
-	 - Thanatos Tower Quest, Eye of Hellion Quest, The Seal God Weapon Quests, Socket Enchant NPC,
-	 - Npc/cities/valkyrie.txt, the Wedding System, The Cool Event Corp NPCs, and probably some more
-	* To-Do: Convert The Sign quest from Aegis and add it into Freya.
-	* Fixed/Updated: A lot of other things in the NPC folder that I can't even remember now.. [Tsuyuki]
-
-09/04/06
 	* Fixed: Added Lucky Potion's effect, +15 LUK for 5 minutes [Tsuyuki]
-	* Fixed: MvP SummonSlave delay/time values (Should be good now) [Tsuyuki]
+	* Fixed: MVP SummonSlave delay/time values [Tsuyuki]
 	* Updated: New monster changes (New kRO Patches) [Tsuyuki]
 	 - Details: http://ro.doddlercon.com/wiki/index.php?title=Monster_Changes
 	 - Note: This completes all the monster changes, now we just need the new mob spawns
 	* Removed: Jellopies from all NPC shops as per Aegis [Tsuyuki]
 	 - http://www.ragnainfo.net/forums/viewtopic.php?t=106163
-	* Imported: Official Arrow Quiver Maker NPC from eAthena [Originally done by Prometheus - Muad_Dib] [Tsuyuki]
-	* Removed: Temp Arrow Quiver/Scroll selling script since it was removed in Aegis (long time ago) [Tsuyuki]
-
-09/03/06
-	* Fixed: A couple fixes to MvP slaves [Tsuyuki]
-	* Fixed: A few more things in the Zealotus Mask quest [Tsuyuki]
-	* Imported: Converted Zealotus Mask quest to Freya's script engine from eAthena [Thanks to Kirimoru] [Tsuyuki]
+	* Added: Official Arrow Quiver Maker NPC from eAthena [Originally done by Prometheus - Muad_Dib] [Tsuyuki]
+	* Removed: Temp Arrow Quiver/Scroll selling script since it was removed in Aegis [Tsuyuki]
+	* Fixed: A couple fixes to MVP slaves [Tsuyuki]
+	* Added: Converted & fixed Zealotus Mask quest to Freya's script engine from eAthena [Thanks to Kirimoru] [Tsuyuki]
 	* Removed: Custom Divorce script from the Wedding.txt file [Tsuyuki]
 	* Added: Official Divorce script (converted from Aegis) [Thanks to LightFighter] [Tsuyuki]
-	* Imported: Updated Niflheim warps from eAthena [Tsuyuki]
-
-09/02/06
-	* Removed: Bonus Def/Mdef +1 on Amon Ra Card (Not present in Aegis database) [Tsuyuki]
+	* Updated: Niflheim warps from eAthena [Tsuyuki]
+	* Removed: Bonus Def/Mdef +1 on Amon Ra Card [Tsuyuki]
 	* Added: The Juperos quest, correct warps, and some Juperos mob fixes [Tsuyuki]
-	 - The Juperos script is missing a few things which I'll implement in.. a few hours? Or tomorrow
-	 - Its fully functional for players for the time being however
-	* Fixed: The Divorce NPC will now charge 2.5 mil zeny until the official Divorce script is implemented [Tsuyuki]
-	 - I can't add the official script just yet, waiting on a script command from Proximus
-	 - Also, it does in fact charge 2.5 mil zeny in the official script as well
-	* Fixed: Summon Slave/Summon Monster for a lot of MvPs/Mini-Bosses [Tsuyuki]
-	 - Added some missing slaves to monsters, and made most slaves accurate to Aegis (New mobs not enough info)
+	* Fixed: The Divorce NPC will now charge 2.5 mil zeny as per kRO [Tsuyuki]
+	* Fixed: Summons for many MVPs and Mini-Bosses [Tsuyuki]
+	 - Added some missing slaves to monsters, and made most slaves accurate to Aegis
 	 - Changed the current slaves from normal mobs to G_ mobs (no drops/exp)
-	 - Fixed some MvPs/Mini-bosses not spawning slaves on Idle
+	 - Fixed some MVPs/Mini-bosses not spawning slaves on Idle
 	* Fixed: Ancient Mummy, Event Baphomet, and Errende Ebecee Skills [Tsuyuki]
-
-09/01/06
-	* Removed: Teleport from Ungoliant (I didn't realize it was supposed to be rudeattacked, not regular tele) [Tsuyuki]
-	* Fixed: Redid all monster drops from Episode 2.5 ~ Episode 10.2 COMPLETE! [Tsuyuki]
-	* To-Do: Pre-Episode 2.5 Mob drops (RO Alpha~Beta), and Episode 10.3+ drops/rates [Tsuyuki]
-	* Removed: Slotted Sunnies & Slotted Glasses from Old Purple Box [Tsuyuki
+	* Removed: Teleport from Ungoliant [Tsuyuki]
+	* Updated: All monster drops from Episode 2.5 ~ Episode 10.2 [Tsuyuki]
+	* Removed: Slotted Sunnies & Slotted Glasses from Old Purple Box [Tsuyuki]
 	  - http://www.ragnainfo.net/forums/viewtopic.php?t=105161&postdays=0&postorder=asc&highlight=glasses&start=15
-	* Added: 4x Gargoyle Slaves to Chimera Mini-boss [Tsuyuki]
-	* Enabled: The effect box dropping cards (Fixed in Aegis finally) [Tsuyuki]
+	* Added: 4x Gargoyle Slaves to Chimera miniboss [Tsuyuki]
+	* Enabled: The effect box dropping cards [Tsuyuki]
 	 - Orc Archer card, Raydric Archer card, Jing Guai card, Sleeper card, Stem Worm card, etc..
 	 - http://www.ragnainfo.net/forums/viewtopic.php?t=102696
 	 - http://www.ragnainfo.net/forums/viewtopic.php?t=105828
 	* Fixed: Replaced all Awakening Potion drops with Grapes (new kRO Patch) [Tsuyuki]
 	* Updated: Imported updated Xmas Event script from eAthena [Tsuyuki]
-	* To-DO: Replace that Xmas script with my own, auto-start version (Under Development) [Tsuyuki]
 	* Updated: The city cleaners script (Wild Rose in cities) [Tsuyuki]
-	* Fixed: Valkyrie Randgris spawn time from 1 hour > 8 hours [Tsuyuki]
-	* Fixed: Changed Valkyrie Randgris drops from 30% to 20% (more accurate temp estimate) [Tsuyuki]
-	* Added: Some episode-related comments to the mob/mob skill database [Tsuyuki]
-	* Fixed: A couple misc things in the mob database (mob names, stats, etc) [Tsuyuki]
+	* Fixed: Valkyrie Randgris drops and spawn time from 1 hour > 8 hours [Tsuyuki]
 	* Added: New set items to mobs, they're fully functional now [Tsuyuki]
-
-8/30/2006
-	* Added: A bunch of missing Duplicate mobs. Not completely finished with them [Tsuyuki]
-	* Added: Missing Event MvP "Bring it on!" [ID: 1502] & skills [Tsuyuki]
+	* Added: Some missing duplicate mobs [Tsuyuki]
+	* Added: Missing Event MVP "Bring it on!" [ID: 1502] & skills [Tsuyuki]
 	* Updated: A couple items as per kRO patches [Tsuyuki]
 	* Fixed: Changed some more pot drops to herbs as per kRO [Tsuyuki]
-	* Added: New items/equips up to kRO Patch 8/29/06 (Last Patch) [Tsuyuki]
+	* Added: New items/equips up to kRO Patch 8/29/06[Tsuyuki]
 	* Fixed: Added stats for Golden Axe [1308] & Equestrian's Spear [1475] [Tsuyuki]
 	* Fixed: Job Equip IDs for a bunch of new items [Tsuyuki]
 	* Updated: Fully implemented/fixed new set items [Tsuyuki]
 	* Added: Socket Enchant System items (Fully functional) [Tsuyuki]
-	* Fixed: Some Biolabs MvP Slaves Elements from Water 1 to their proper Element [Tsuyuki]
-	* Fixed: Kathryne Keyron mob missing ID 1639 (Got deleted somehow??) [Tsuyuki]
-	* Fixed: Some new mob Move-Speed rates [Tsuyuki]
-	* Fixed: Starting zeny from 500z to 0z as per Aegis (Confirmed on iRO) [Tsuyuki]
-	* Enabled: Teleport in Geffenia Dungeon Maps (New kRO Patch) [Tsuyuki]
-	* Enabled: Teleport in Thanatos Tower L12 (New kRO Patch) [Tsuyuki]
-	* Added: Item "Marionette Doll" to Marionette (Temp drop rate: 0.01%) [Tsuyuki]
-	* Fixed: Increased Dimik Move-Speed (New kRO Patch) [Tsuyuki]
-
-8/29/2006
+	* Fixed: Some Biolabs MVP Slaves Elements from Water 1 to their proper Element [Tsuyuki]
+	* Fixed: Kathryne Keyron mob missing ID 1639 [Tsuyuki]
+	* Fixed: Some new mob speed rates [Tsuyuki]
+	* Fixed: Starting zeny from 500z to 0z as per Aegis [Tsuyuki]
+	* Enabled: Teleport in Geffenia Dungeon maps [Tsuyuki]
+	* Enabled: Teleport in Thanatos Tower L12 [Tsuyuki]
+	* Added: Item "Marionette Doll" to Marionette (drop rate: 0.01%) [Tsuyuki]
+	* Fixed: Increased Dimik Move-Speed [Tsuyuki]
 	* Added: Implemented the Cooking System & Cooking Quest [Tsuyuki]
 	* Added: Cooking-related drops to monsters [Tsuyuki]
 	* Fixed: Alchemist Create Elemental Potion not working [Tsuyuki]
 		- Note: The potions this skill produces will not work until the new status effects for them are implemented
-	* Updated: The const.txt Database with new status effects [Tsuyuki]
-	* Updated: Item Database with new Episode 10.3 info [Tsuyuki]
+	* Updated: The const.txt database with new status effects [Tsuyuki]
+	* Updated: Item database with new Episode 10.3 info [Tsuyuki]
 	* Fixed: SC_BLESSING in the Lighthalzen Inn script [Tsuyuki]
-	* Improved: way to calculate magic damage reflection [Harbin]
+	* Improved: method of calculating magic damage reflection [Harbin]
 	* Added: SC for magnum break [Harbin]
 	* Fixed: magnum break should give +20% fire damage bonus for 10 seconds [Harbin]
 	 - source: http://ragnainfo.net/forums/viewtopic.php?t=104874
@@ -113,8 +82,6 @@ Date	Added
 	 - base level difference between caster and target should be equal or less than 5
 	 - target can't be gypsy or clown
 	 - source: http://ragnainfo.net/forums/viewtopic.php?t=28669
-
-8/28/2006
 	* Enabled: The other/wedding.txt, and other/books.txt scripts automatically [Tsuyuki]
 	* Moved: IceCream.txt to the npc/merchants folder [Tsuyuki]
 	* Removed: Some more customs NPCs, and removed them from map_athena.conf as well[Tsuyuki]
@@ -132,18 +99,98 @@ Date	Added
 	 - checks for dark element
 	 - sanctuary has 50% change to reflect
 
-8/27/2006
-	* Updated: Prepped mob database for implementation of the Juperos Quest [Tsuyuki]
-	* Imported: Missing skill quests from eAthena [Tsuyuki]
-		-Bard [Pang Voice], Alchemist [Create Elemental Potion]
-	* Fixed: Cleaned up @job command class names a bit [Tsuyuki]
-	* Added: iRO Job names to @job command [Tsuyuki]
-	* Added: New @commands for @resetstate [Tsuyuki]
-		-@statreset, @statsreset, @resetstat, @resetstats
-	* Added: New @commands for @agitstart & @agitend [Tsuyuki]
-		-@woestart, @startwoe, @woeend, @endwoe
+09/06/06
+	* Added: reading of hexadecimal numbers (0xffffff) in configuration files [Yor]
+	* Fixed: default of previous option in battle_athena.conf [Yor]
+	* Added: an option to choose how must be displayed main channel (atcommand_main_channel_type in battle_athena.conf) [Yor]
 
-08/26/2006
+09/05/06
+	* Improved: explanation of client_version_to_connect option in login_athena.conf [Yor]
+	* Fixed: set default ladmin allowed ip to 127.0.0.1 (security) [Yor]
+	* Added: a GM command to set the level that the player had when he changed job (job 1 -> job 2) [Yor]
+	* Fixed: information message about atcommand_send_usage_type (char.c) [Yor]
+
+09/04/06
+	* Added: an option to choose how must be displayed usage of GM commands (atcommand_send_usage_type in battle_athena.conf) [Yor]
+	* Fixed: possible overflow when reading SQL configuration in Char-server [Yor]
+	* Added: Security based on IP for all map-servers connections with the char-server -> not more possible to connect an unknown map-server (hacker) [Yor]
+
+09/03/06
+	* Fixed: some skills of some monsters in database [Yor]
+	* Added: A check display about mob_skill_db.txt to help coders of DataBases [Yor]
+	* Added: Security based on IP for all char-servers connections with the login-server [Yor]
+	* Fixed: help GM command: now symbol of GM command is correctly displayed [Yor]
+	* Fixed: don't use $ as symbol for GM command (guild chat) [Yor]
+	* Fixed: compilation warning with strcmpi (atcommand.c) [Yor]
+	* Added: an option to set idle delay before a party's member losts experience when idle option is set (battle_athena.conf) [Yor]
+	* Fixed: send usage of a GM command with used command (including symbol of GM command, or if it's a synonym GM command) [Yor]
+	* Fixed: on error of a GM command, use used GM command [Yor]
+
+09/02/06
+	* Added: synonymous GM commands (read atcommand_athena.conf for more information) [Yor]
+	         -> clean up duplicated GM commands
+	* Merged subdev changes r39:40 into trunk [Proximus]
+		** Updated: Prepped mob database for implementation of the Juperos Quest [Tsuyuki]
+		** Imported: Missing skill quests from eAthena [Tsuyuki]
+			- Bard [Pang Voice], Alchemist [Create Elemental Potion]
+		** Fixed: Cleaned up @job command class names a bit [Tsuyuki]
+		** Added: iRO Job names to @job command [Tsuyuki]
+		** Added: New @commands for @resetstate [Tsuyuki]
+			- @statreset, @statsreset, @resetstat, @resetstats
+		** Added: New @commands for @agitstart & @agitend [Tsuyuki]
+			- @woestart, @startwoe, @woeend, @endwoe
+
+09/01/06
+	* Improved: clif_vendinglist function [Proximus]
+	* Improved: replaced function call (gettick()) by the variable (gettick_cache) -> speeder [Yor]
+	            call a function is slower to simply access to a variable.
+	* Improved: do_timer() function. [Yor]
+	* Fixed: player who uses skills can gain xp in a party and is not more considered like idle member [Yor]
+	* Fixed: @kamic atcommand on multi map-servers [Yor]
+
+08/31/06
+	* Fixed: WS_CARTTERMINATION will no longer work with SC_MELTDOWN status, neither carry status aliments except from the skill itself [Proximus]
+	* Added: @kamic atcommand: kami with specified color (based on [LuzZza]'s and [akrus]'s code, based on jAthena) [Yor]
+	* Added: an option to disable @main GM command when it's WoE and player is member of a guild [Yor]
+	* Added: an option to disable @main GM command when it's WoE and player is member of a guild ON Gvg Maps [Yor]
+	* Added: party_invite_same_account battle_config switch (conf/battle_athena.conf) [Proximus]
+		- Whether it is possible to invite 2 characters from the same account into a party or not
+		- Default value: NO (Aegis Software)
+
+08/30/06
+	* Added: @setgm[0-10] to manage easily player gm levels. [Yor]
+	         example: any gm team member can have an access to a command to change player level (0: without main channel, 1: with main channel with default configuration, etc.)
+	* Fixed: 'Immaterial Sword' item bonus. Added unbreakable bonus. As per Aegis special.sc file [Proximus]
+		- Updated item_db_map.sql
+	* Added: Default gm level 20 for @password to atcommand_athena.conf [Proximus]
+		- Documented it in readme/gmcmds.html
+	* Fixed: teleporting to another map will no longer cancel an on-going delay [Proximus]
+	* Fixed: party_invite function, its no longer possible to invite 2 characters from the same account into the same party. As per Aegis [Proximus]
+		- "Character from the same account already joined" error message (packet) will be sent instead.
+	* Fixed: Rewritten CG_MOONLIT code implementation to fit Aegis mechanic [Proximus]
+		- Switched it's implementation to behave as a ground skill.
+		- Will no longer works on castle maps, as per Aegis (hardcoded for now, skillnotok function).
+		- Fixed the "pink orb" sprite effect being visible only when casted in front of the player.
+		- It can not longer be casted near a wall. A check is performed in a 9*9 area around the caster.
+
+08/29/06
+	* Fixed: map name deletion [Yor]
+	* Improved: SQL account searching in some GM commands (@(un)block, @(un)ban, @changesex, @adjgmlvl2) [Yor]
+	* Added: @adjgmlvl2/@setgmlvl2/@adjgmlevel2/@setgmlevel2 - Permanently modify GM level of a player! [Yor]
+
+08/28/06
+	* Reverted: 'Loki's Wail/Classical Pluck' skill_nocast_db fix. Mainly designed for WoE/GvG maps [Proximus]
+		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=51467&highlight=classical+pluck
+		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=80029&highlight=classical+pluck
+	* Improved: 'Trick Dead' fix commited in Rev. 42 [Proximus]
+	* Fixed: fclose() in src/char/char.c:266 trying to close NULL pointer. [Yor] - sorry for the bug
+	* Fixed: fclose() in src/char_sql/char.c:244 trying to close NULL
+		pointer.
+	* Fixed: Packet_db.txt: [Yor]
+	         - re-add function definition previously removed (2006-04-04aSakexe: 0x0116, 0x0113) -- thanks to not do a simple copy of other emulator.
+	         - sort new packet by packet number
+	* Fixed: Map-server can now read customed GRF [Yor]
+	* Improved: Reduce number of memmove (a very slow function) when socket is parsed -> less CPU usage (-5%)! [Yor]
 	* Added: Hellion Revenant quest MvP's correct skills [Tsuyuki]
 	* Fixed: Small issue with Rachel MvP skills [Tsuyuki]
 	* Imported: New Packets from eAthena (packet_db.txt) [Tsuyuki]
@@ -162,8 +209,6 @@ Date	Added
 	* Fixed: Some messy code in the Biolabs entrance quest script [Tsuyuki]
 	* Fixed: A variable exploit in the Friendship quest script [Tsuyuki]
 	* Fixed: Added "Door" exit NPC to the lhz_cube.gat room [Tsuyuki]
-
-08/25/2006
 	* Imported: New Hat Quests from eAthena [Tsuyuki]
 	* Updated: Item No Refine Database with new items [Tsuyuki]
 	* Updated: Item database with new items [Tsuyuki]
@@ -194,8 +239,6 @@ Date	Added
 	 - Source: http://www.ragnainfo.net/forums/viewtopic.php?t=34782
 	* Fixed: compilation error. invalid skill name (skill.c l3198) [Harbin]
 	* Fixed: compilation error. invalid variable name (battle.c l1043) [Harbin]
-
-08/24/2006
 	* Updated: Geffen Dungeon L4 Spawns as per Eye of Hellion quest [Tsuyuki]
 	* Removed: Access to Geffen Dungeon L4 (warps) due to Eye of Hellion Quest [Tsuyuki]
 	* Updated: Ice Dungeon spawns with jA info [Tsuyuki]
@@ -238,7 +281,48 @@ Date	Added
 	* Fixed: bmagicdamagereturn should reflect all damage, not just x% damage (x% is for reflection chance) [Harbin]
 	* Fixed: rokis veil skill doesn't work in gvg maps anymore [Harbin]
 
+08/27/2006
+	* Added: 'neutral' option in all @spawn GM commands to force non-agressiv monster [Yor]
+	          note: followers stay agressiv if they exist.
+	* Improved: GM level transmission: cancel temporarily GM level when player comes back from map-server to char-server [Yor]
+	* Added: special option (atcommand_max_player_gm_level) to know when a player is a 'normal' player or GM for some actions with GM commands: [Yor]
+	         for @whogm, @gm and answer with a wrong GM command.
+	         note: created because 'normal' players with level upper than 0 will have 'unknown command' instead of '(their sentence)' when they type a wrong GM command.
+	         read 'atcommand_max_player_gm_level' in battle_athena.conf for more informations.
+	* Fixed: end lines in some created files [Yor]
+
+08/26/2006
+	* Fixed: a little error on last commit: 1 string variable needs to be defined 'static' [Yor]
+	* Added: an option to add date on main log files of each server (ladmin.log, login.log, char.log, inter.log) [Yor]
+	* Fixed: definition of gettimeofday under win32 (compilation error) [Yor]
+	* Fixed: mkdir under win32 (compilation error) [Yor]
+	* Added: mob_deny.txt to limit spawn and summon with GM commands [Yor]
+	* Added: some options in login configuration to reduce the log file [Yor]
+	* Updated: mob_db_map.sql based on mob_db.txt [Yor]
+	* Updated: item_db_map.sql based on item_db.txt [Yor]
+	* Fixed: no more limit to transmit GM levels from char-server to map-servers [Yor]
+	* Added: gmlevel field in online.php [Yor]
+
+08/24/2006
+	* Added: 2 php scripts (which need only nezumi.php) [Yor]
+	       - chgpasswd.php: to change password (in different languages)
+	         createaccount.php : to create accounts
+	* Added: some functions in freya.php script: [Yor]
+	       - checkaccount($login, $pass)
+	       - accountinfo($id)
+	       - changepass($accname, $newpass)
+	       - sendbroadcast($msg, $blue=false)
+	* Removed: acronym "Free Ragnarok Emulator, Yor Adopted." [Yor]
+	* Changed: 'Free Yor team' to 'Freya team' [Yor]
+	* Added: an option to choose minimum level of a GM with listGM/lsgm ladmin command [Yorre]
+	* Added: default GM level for a new account [Yorre]
+	* Changed: default levels of some GM commands for players [Yorre]
+	         - @main 0 -> 1 (most of biggest servers disable this command)
+	         - creation of a 'good player' (level 2) with : @help/@h, @die/@killme/@suicide, @petrename and @party
+	         - creation of a 'Super player' (level 3) with : @storage and @where
+
 08/23/2006
+	* Fixed: Possible dangling pointer with SC_GOSPEL at status_change_end function [Proximus]
 	* Fixed: hp regen and max hp bonus calculation of apple of idun skill [Harbin]
 	* Added: adoption skills to skill_cast_db [Harbin]
 	* Fixed: gryphon card was giving level 50 bowling bash autocast. should be level 5 [Harbin]
@@ -250,7 +334,7 @@ Date	Added
 08/05/2006
 	* Removed: Drops from Biolabs MVP slaves (Source: ROCards.de) [Thanks to Kastjodo] [Tsuyuki]
 	* Added: Effect for "Holy Egg" (Source: ROCards.de) [Tsuyuki]
-	* Fixed: Bow Thimble dex increase rate changed from 10% to 3% [Thanks to Kastjodo] [Tsuyuki]
+	* Fixed: Bow Thimble drop rate changed from 10% to 3% [Thanks to Kastjodo] [Tsuyuki]
 		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=61110&highlight=bow+thimble
 	* Added: Rachel/Ice Dungeon/Sanctuary warps from eAthena [Tsuyuki]
 	* Fixed: Cowardice blade price [Tsuyuki]
@@ -5275,4 +5359,5 @@ CODE
 	* Added rules of the team [Yor]
 
 FREYA BEGIN HERE, based on eAthena 1.0 RC4
+
 

@@ -684,7 +684,7 @@ int clif_authok(struct map_session_data *sd) {
 	nullpo_retr(0, sd);
 
 	WPACKETW( 0) = 0x73;
-	WPACKETL( 2) = gettick();
+	WPACKETL( 2) = gettick_cache;
 	WPACKETPOS(6, sd->bl.x, sd->bl.y);
 	WPACKETB( 9) = 5;
 	WPACKETB(10) = 5;
@@ -963,7 +963,7 @@ static int clif_set007b(struct map_session_data *sd) {
 		WPACKETW(10) = sd->opt2;
 		WPACKETW(12) = sd->status.option & ~0x0020; // fix peco;
 		WPACKETW(14) = sd->disguise;
-		WPACKETL(22) = gettick();
+		WPACKETL(22) = gettick_cache;
 		WPACKETW(46) = 0;
 		WPACKETB(48) = 0;
 		WBUFPOS2(WPACKETP(0), 50, sd->bl.x, sd->bl.y, sd->to_x, sd->to_y);
@@ -990,20 +990,20 @@ static int clif_set007b(struct map_session_data *sd) {
 			WPACKETW(20) = sd->inventory_data[sd->equip_index[9]]->view_id; //weapon
 		else
 			WPACKETW(20) = sd->status.inventory[sd->equip_index[9]].nameid; //weapon
-	}	else
+	} else
 		WPACKETW(20) = 0; //weapon
 
-	if (sd->equip_index[8] >= 0 && sd->equip_index[8] != sd->equip_index[9] && 
+	if (sd->equip_index[8] >= 0 && sd->equip_index[8] != sd->equip_index[9] &&
 		sd->inventory_data[sd->equip_index[8]] && sd->view_class != 22) {
 		if (sd->inventory_data[sd->equip_index[8]]->view_id > 0)
 			WPACKETW(22) = sd->inventory_data[sd->equip_index[8]]->view_id; //shield
 		else
 			WPACKETW(22) = sd->status.inventory[sd->equip_index[8]].nameid; //shield
-	}	else
+	} else
 		WPACKETW(22) = 0; //shield
 
 	WPACKETW(24) = sd->status.head_bottom;
-	WPACKETL(26) = gettick();
+	WPACKETL(26) = gettick_cache;
 	WPACKETW(30) = sd->status.head_top;
 	WPACKETW(32) = sd->status.head_mid;
 	WPACKETW(34) = sd->status.hair_color;
@@ -1036,20 +1036,20 @@ static int clif_set007b(struct map_session_data *sd) {
 			WPACKETW(18) = sd->inventory_data[sd->equip_index[9]]->view_id; //weapon
 		else
 			WPACKETW(18) = sd->status.inventory[sd->equip_index[9]].nameid; //weapon
-	}	else
+	} else
 		WPACKETW(18) = 0; //weapon
 
-	if (sd->equip_index[8] >= 0 && sd->equip_index[8] != sd->equip_index[9] && 
+	if (sd->equip_index[8] >= 0 && sd->equip_index[8] != sd->equip_index[9] &&
 		sd->inventory_data[sd->equip_index[8]] && sd->view_class != 22) {
 		if (sd->inventory_data[sd->equip_index[8]]->view_id > 0)
 			WPACKETW(20) = sd->inventory_data[sd->equip_index[8]]->view_id; //shield
 		else
 			WPACKETW(20) = sd->status.inventory[sd->equip_index[8]].nameid; //shield
-	}	else
+	} else
 		WPACKETW(20) = 0; //shield
 
 	WPACKETW(22) = sd->status.head_bottom;
-	WPACKETL(24) = gettick();
+	WPACKETL(24) = gettick_cache;
 	WPACKETW(28) = sd->status.head_top;
 	WPACKETW(30) = sd->status.head_mid;
 	WPACKETW(32) = sd->status.hair_color;
@@ -1199,7 +1199,7 @@ static int clif_mob007b(struct mob_data *md) {
 		WPACKETW(16) = mob_get_hair(md->class);
 		WPACKETW(18) = mob_get_weapon(md->class);
 		WPACKETW(20) = mob_get_head_buttom(md->class);
-		WPACKETL(22) = gettick();
+		WPACKETL(22) = gettick_cache;
 		WPACKETW(26) = mob_get_shield(md->class);
 		WPACKETW(28) = mob_get_head_top(md->class);
 		WPACKETW(30) = mob_get_head_mid(md->class);
@@ -1213,7 +1213,7 @@ static int clif_mob007b(struct mob_data *md) {
 		}
 		WPACKETB(49) = mob_get_sex(md->class);
 	} else {
-		WPACKETL(22) = gettick();
+		WPACKETL(22) = gettick_cache;
 		if (md->guild_id) { // Guilds' gardians & emperiums, otherwize = 0
 			struct guild *g = guild_search(md->guild_id);
 			if (g) {
@@ -1279,7 +1279,7 @@ static int clif_npc007b(struct npc_data *nd) {
 		WPACKETL(26) = g->guild_id;
 	}
 
-	WPACKETL(22) = gettick();
+	WPACKETL(22) = gettick_cache;
 	WBUFPOS2(WPACKETP(0), 50, nd->bl.x, nd->bl.y, nd->to_x, nd->to_y);
 	WPACKETB(56) = 5;
 	WPACKETB(57) = 5;
@@ -1350,7 +1350,7 @@ static int clif_pet007b(struct pet_data *pd) {
 		WPACKETW(16) = mob_get_hair(pd->class);
 		WPACKETW(18) = mob_get_weapon(pd->class);
 		WPACKETW(20) = mob_get_head_buttom(pd->class);
-		WPACKETL(22) = gettick();
+		WPACKETL(22) = gettick_cache;
 		WPACKETW(26) = mob_get_shield(pd->class);
 		WPACKETW(28) = mob_get_head_top(pd->class);
 		WPACKETW(30) = mob_get_head_mid(pd->class);
@@ -1364,7 +1364,7 @@ static int clif_pet007b(struct pet_data *pd) {
 			WPACKETW(20) = view;
 		else
 			WPACKETW(20) = pd->equip;
-		WPACKETL(22) = gettick();
+		WPACKETL(22) = gettick_cache;
 	}
 	WBUFPOS2(WPACKETP(0), 50, pd->bl.x, pd->bl.y, pd->to_x, pd->to_y);
 //	WPACKETB(56) = 0;
@@ -1610,7 +1610,7 @@ int clif_movenpc(struct npc_data *nd) {
 	nullpo_retr(0, sd);
 
 	WPACKETW(0) = 0x7f;
-	WPACKETL(2) = gettick();
+	WPACKETL(2) = gettick_cache;
 	SENDPACKET(sd->fd, packet_len_table[0x7f]);
 
 	return 0;
@@ -1625,7 +1625,7 @@ int clif_walkok(struct map_session_data *sd)
 	nullpo_retr(0, sd);
 
 	WPACKETW( 0) = 0x87;
-	WPACKETL( 2) = gettick();
+	WPACKETL( 2) = gettick_cache;
 	WPACKETPOS2(6, sd->bl.x, sd->bl.y, sd->to_x, sd->to_y);
 	WPACKETB(11) = 0;
 	SENDPACKET(sd->fd, packet_len_table[0x87]);
@@ -1684,9 +1684,9 @@ void clif_setwaitclose(int fd) {
 	// if player is not already in the game (double connection probably) [yor]
 	if ((sd = session[fd]->session_data) == NULL) {
 		// limited timer, just to send information.
-		add_timer(gettick() + 1000, clif_waitclose, fd, 0);
+		add_timer(gettick_cache + 1000, clif_waitclose, fd, 0);
 	} else
-		add_timer(gettick() + 5000, clif_waitclose, fd, sd->bl.id);
+		add_timer(gettick_cache + 5000, clif_waitclose, fd, sd->bl.id);
 }
 
 /*==========================================
@@ -4758,7 +4758,7 @@ int clif_skill_produce_mix_list(struct map_session_data *sd, int trigger)
  *------------------------------------------
  */
 int clif_status_load(struct map_session_data *sd, int type) {
-	if(!sd) 
+	if(!sd)
 		return 0;
 
 	if(type == ICO_BLANK)  //It shows nothing on the client...
@@ -4769,6 +4769,7 @@ int clif_status_load(struct map_session_data *sd, int type) {
 	WPACKETL( 4) = sd->bl.id;
 	WPACKETB( 8) = 1; //Status start
 	SENDPACKET(sd->fd, packet_len_table[0x196]);
+
 	return 0;
 }
 #endif
@@ -4862,6 +4863,29 @@ void clif_GlobalMessage(struct block_list *bl, char *message) {
 	WPACKETL(4) = bl->id;
 	strncpy(WPACKETP(8), message, len);
 	clif_send(len + 8, bl, AREA_CHAT_WOC);
+
+	return;
+}
+
+/*==========================================
+ * Does an announce message in the given color.
+ *------------------------------------------
+ */
+void clif_announce(struct block_list *bl, char* mes, unsigned int color, unsigned int flag) {
+	WPACKETW( 0) = 0x1c3;
+	WPACKETW( 2) = 16 + strlen(mes) + 1;
+	WPACKETL( 4) = color;
+	WPACKETW( 8) = 0x190; // Font style? Type?
+	WPACKETW(10) = 0x0c; // 12? Font size?
+	WPACKETL(12) = 0; // Unknown!
+	strcpy(WPACKETP(16), mes);
+
+	flag &= 0x07;
+	clif_send(WPACKETW(2), bl,
+	          (flag == 1) ? ALL_SAMEMAP :
+	          (flag == 2) ? AREA :
+	          (flag == 3) ? SELF :
+	          ALL_CLIENT);
 
 	return;
 }
@@ -5153,22 +5177,22 @@ void clif_item_identified(struct map_session_data *sd, short idx, unsigned char 
  */
 void clif_item_repair_list(struct map_session_data *sd)
 {
-  //nullpo_retv(sd); //checked before to call function
- 	int i, c;
- 	c = 0;
+	//nullpo_retv(sd); //checked before to call function
+	int i, c;
+	c = 0;
 
- 	for(i = 0; i < MAX_INVENTORY; i++) {
+	for(i = 0; i < MAX_INVENTORY; i++) {
 		if (sd->status.inventory[i].nameid > 0 && sd->status.inventory[i].attribute == 1) {
 			WPACKETW(c * 2 + 4) = i + 2;
- 			c++;
- 		}
- 	}
+			c++;
+		}
+	}
 	if (c > 0) {
 		WPACKETW(0) = 0x177; // temporarily use same packet as clif_item_identify
 		WPACKETW(2) = c * 2 + 4;
 		SENDPACKET(sd->fd, WPACKETW(2));
 	}
-   
+
 	return;
 }
 
@@ -5493,15 +5517,13 @@ void clif_closevendingboard(struct block_list* bl, int fd) {
  * ˜I“XƒAƒCƒeƒ€ƒŠƒXƒg
  *------------------------------------------
  */
-int clif_vendinglist(struct map_session_data *sd, int id, struct vending *vending)
+void clif_vendinglist(struct map_session_data *sd, struct map_session_data *vsd)
 {
 	struct item_data *data;
+	struct vending *vending = (struct vending *)vsd->vending;
 	int i, j, n, idx;
-	struct map_session_data *vsd;
 
-	nullpo_retr(0, sd);
-	nullpo_retr(0, vending);
-	nullpo_retr(0, vsd = map_id2sd(id));
+//nullpo_retv(sd); //checked before to call function
 
 	n = 0;
 	for(i = 0; i < vsd->vend_num; i++) {
@@ -5549,11 +5571,11 @@ int clif_vendinglist(struct map_session_data *sd, int id, struct vending *vendin
 	if (n) {
 		WPACKETW(0) = 0x133;
 		WPACKETW(2) = 8 + n * 22;
-		WPACKETL(4) = id;
+		WPACKETL(4) = vsd->bl.id;
 		SENDPACKET(sd->fd, WPACKETW(2));
 	}
 
-	return 0;
+	return;
 }
 
 /*==========================================
@@ -5803,6 +5825,22 @@ int clif_party_leaved(struct party *p, struct map_session_data *sd, int account_
 	}
 
 	return 0;
+}
+
+/*==========================================
+ * to send a message like a party message to 1 player
+ *------------------------------------------
+ */
+void clif_party_message_self(struct map_session_data *sd, char *mes, int len) {
+	nullpo_retv(sd);
+
+	WPACKETW(0) = 0x109;
+	WPACKETW(2) = len + 8;
+	WPACKETL(4) = sd->status.account_id;
+	strncpy(WPACKETP(8), mes, len);
+	clif_send(len + 8, &sd->bl, SELF);
+
+	return;
 }
 
 /*==========================================
@@ -6185,13 +6223,13 @@ int clif_devotion(struct map_session_data *sd, int target)
  *------------------------------------------
  */
 void clif_gospel(struct map_session_data *sd, int type) {
-	if(!sd) 
+	if(!sd)
 		return;
 
 	WPACKETW( 0) = 0x215;
 	WPACKETL( 2) = 20 + type;
 	SENDPACKET(sd->fd, 6);
-	
+
 	return;
 }
 
@@ -6552,7 +6590,7 @@ void clif_guild_basicinfo(struct map_session_data *sd) {
 	strncpy(WPACKETP(70), g->master, 24);
 //	memcpy(WPACKETP(94),"",20); // –{‹’’n
 
-	if (t == MAX_GUILDCASTLE) 
+	if (t == MAX_GUILDCASTLE)
 		strncpy(WPACKETP(94), "Total Domination", 20);
 	else {
 		switch(t) {
@@ -7758,7 +7796,7 @@ void clif_parse_WantToConnection(int fd, struct map_session_data *sd) { // S 0x0
 		SENDPACKET(fd, 4);
 
 		map_addiddb(&sd->bl);
-		add_timer(gettick() + 40000, clif_waitauth, fd, account_id); // wait 40 sec authentification, and then disconnect player
+		add_timer(gettick_cache + 40000, clif_waitauth, fd, account_id); // wait 40 sec authentification, and then disconnect player
 
 		if (chrif_authreq(sd))
 			session[fd]->eof = 1;
@@ -8059,7 +8097,7 @@ void clif_parse_LoadEndAck(int fd, struct map_session_data *sd) { // S 0x007d
 	// pvp
 	if (map[sd->bl.m].flag.pvp) {
 		if (!battle_config.pk_mode) { // remove pvp stuff for pk_mode [Valaris]
-			sd->pvp_timer = add_timer(gettick() + 200, pc_calc_pvprank_timer, sd->bl.id, 0);
+			sd->pvp_timer = add_timer(gettick_cache + 200, pc_calc_pvprank_timer, sd->bl.id, 0);
 			sd->pvp_rank = 0;
 			sd->pvp_lastusers = 0;
 			sd->pvp_point = 5;
@@ -8092,8 +8130,8 @@ void clif_parse_LoadEndAck(int fd, struct map_session_data *sd) { // S 0x007d
 
 	if (map[sd->bl.m].flag.gvg)
 		clif_set0199(fd, 3);
- 	else if (map[sd->bl.m].flag.gvg_dungeon)
- 		clif_set0199(sd->fd, 1);
+	else if (map[sd->bl.m].flag.gvg_dungeon)
+		clif_set0199(sd->fd, 1);
 	
 	// view equipment item
 	clif_changelook(&sd->bl, LOOK_WEAPON, 0);
@@ -8191,25 +8229,24 @@ void clif_parse_TickSend(int fd, struct map_session_data *sd) { // S 0x007e <cli
 /*
 	if (battle_config.speed_hack_info_GM_level < 100) {
 		// tick changed
-		unsigned int tick = gettick();
-		if (sd->client_tick < sd->first_client_tick || tick < sd->tick_at_start || sd->first_client_tick == 0) {
+		if (sd->client_tick < sd->first_client_tick || gettick_cache < sd->tick_at_start || sd->first_client_tick == 0) {
 			sd->first_client_tick = sd->client_tick; // to check speed hack
-			sd->tick_at_start     = tick; // to check speed hack
+			sd->tick_at_start     = gettick_cache; // to check speed hack
 			sd->first_check_done  = 0; // to check speed hack (to avoid lag when we set value, so don't considere first check)
 			//clif_servertick(sd);
 			WPACKETW(0) = 0x7f;
-			WPACKETL(2) = tick;
+			WPACKETL(2) = gettick_cache;
 			SENDPACKET(fd, packet_len_table[0x7f]);
 		} else {
 			double diff_tick, diff_tick2;
 			diff_tick  = (double)(sd->client_tick - sd->first_client_tick);
-			diff_tick2 = (double)(tick - sd->tick_at_start);
+			diff_tick2 = (double)(gettick_cache - sd->tick_at_start);
 			// check speed hack usage (if lesser value, no problem (slower player, player will have lag or lag of server))
 			if (diff_tick - 5000. > diff_tick2 && (diff_tick - diff_tick2) / diff_tick2 > .1) { // with a marge of 5 sec and more than 10%
 				// if it just after to have set the reference, don't display message
 				if (!sd->first_check_done || diff_tick2 < 15000.) { // don't display in the fisrt 15 seconds (to parse all cumulativ lags of client). note: tick is sended every 12 sec
 					sd->first_client_tick = sd->client_tick; // to check speed hack
-					sd->tick_at_start     = tick; // to check speed hack
+					sd->tick_at_start     = gettick_cache; // to check speed hack
 					sd->first_check_done  = 1; // to check speed hack (to avoid lag when we set value, so don't considere first check)
 				} else {
 					char message_to_gm[MAX_MSG_LEN + 100]; // max size of msg_txt + security (char name, char id, etc...) (100)
@@ -8222,11 +8259,11 @@ void clif_parse_TickSend(int fd, struct map_session_data *sd) { // S 0x007e <cli
 			// init again (every 10 min) first_client_tick to avoid player that connect a long time and after use speed hack
 			if (diff_tick > (10 * 60 * 1000) && diff_tick2 > (10 * 60 * 1000)) { // check client AND server tick to avoid problem with some possible lag (on client OR server)
 				sd->first_client_tick = sd->client_tick; // to check speed hack
-				sd->tick_at_start     = tick; // to check speed hack
+				sd->tick_at_start     = gettick_cache; // to check speed hack
 				sd->first_check_done  = 0; // to check speed hack (to avoid lag when we set value, so don't considere first check)
 				//clif_servertick(sd);
 				WPACKETW(0) = 0x7f;
-				WPACKETL(2) = tick;
+				WPACKETL(2) = gettick_cache;
 				SENDPACKET(fd, packet_len_table[0x7f]);
 			} else {
 				// send client diff of client tick -> client can not adjust tick with server tick
@@ -8239,7 +8276,7 @@ void clif_parse_TickSend(int fd, struct map_session_data *sd) { // S 0x007e <cli
 	} else {*/
 		//clif_servertick(sd);
 		WPACKETW(0) = 0x7f;
-		WPACKETL(2) = gettick();
+		WPACKETL(2) = gettick_cache;
 		SENDPACKET(fd, packet_len_table[0x7f]);
 	//}
 
@@ -8349,14 +8386,13 @@ void clif_parse_WalkToXY(int fd, struct map_session_data *sd) { // S 0x0085 <X_Y
  *------------------------------------------
  */
 void clif_parse_QuitGame(int fd, struct map_session_data *sd) { // S 0x018a ?.w
-	unsigned int tick = gettick();
 	struct skill_unit_group* sg;
 
 //	nullpo_retv(sd); // checked before to call function
 
 	if ((!pc_isdead(sd) && (sd->opt1 || (sd->opt2 && !(night_flag == 1 && (sd->opt2 & STATE_BLIND) == STATE_BLIND)))) ||
 	    sd->skilltimer != -1 ||
-	    (DIFF_TICK(tick, sd->canact_tick) < 0) ||
+	    (DIFF_TICK(gettick_cache, sd->canact_tick) < 0) ||
 	    (sd->sc_data[SC_DANCING].timer!=-1 && sd->sc_data[SC_DANCING].val4 && (sg = (struct skill_unit_group *)sd->sc_data[SC_DANCING].val2) && sg->src_id == sd->bl.id)) {
 		WPACKETW(0) = 0x18b;
 		WPACKETW(2) = 1; // flag= 0: success, 1: failure (please wait 15 sec...)
@@ -8365,7 +8401,7 @@ void clif_parse_QuitGame(int fd, struct map_session_data *sd) { // S 0x018a ?.w
 	}
 
 	// Rovert's prevent logout option fixed [Valaris]
-	if ((battle_config.prevent_logout && (tick - sd->canlog_tick) >= 10000) || (!battle_config.prevent_logout)) {
+	if ((battle_config.prevent_logout && (gettick_cache - sd->canlog_tick) >= 10000) || (!battle_config.prevent_logout)) {
 		clif_setwaitclose(fd);
 		WPACKETW(0) = 0x18b;
 		WPACKETW(2) = 0; // flag= 0: success, 1: failure (please wait 15 sec...)
@@ -8587,7 +8623,7 @@ void clif_parse_GetCharNameRequest(int fd, struct map_session_data *sd) { // S 0
 //		if (md == NULL) // not: nullpo_retv(md); --> if mob was spawned and killed, it's not an error (not display a message)
 //			return;
 
- 		if (md->guild_id && (g = guild_search(md->guild_id)) != NULL && // Guilds' gardians & emperiums, otherwize = 0
+		if (md->guild_id && (g = guild_search(md->guild_id)) != NULL && // Guilds' gardians & emperiums, otherwize = 0
 	    (gc = guild_mapname2gc(map[md->bl.m].name))) {
 			memset(WPACKETP(0), 0, packet_len_table[0x195]);
 			WPACKETW( 0) = 0x195;
@@ -8911,7 +8947,6 @@ void clif_parse_ChangeDir(int fd, struct map_session_data *sd) { // S 0x009b <he
  *------------------------------------------
  */
 void clif_parse_Emotion(int fd, struct map_session_data *sd) { // S 0x00bf <type>.B
-	unsigned int tick;
 //	nullpo_retv(sd); // checked before to call function
 
 //	if (battle_config.basic_skill_check == 0 || pc_checkskill(sd, NV_BASIC) >= 2) { // other solution speeder
@@ -8921,12 +8956,12 @@ void clif_parse_Emotion(int fd, struct map_session_data *sd) { // S 0x00bf <type
 			return;
 		}
 		// fix flood of emotion icon (ro-proxy): flood only the hacker player
-		if (sd->emotionlasttime >= (tick = gettick())) {
-			sd->emotionlasttime = tick + 1000; // not more than 1 every second (normal client is every 3-4 seconds)
+		if (sd->emotionlasttime >= gettick_cache) {
+			sd->emotionlasttime = gettick_cache + 1000; // not more than 1 every second (normal client is every 3-4 seconds)
 			clif_displaymessage(fd, msg_txt(591)); // Don't flood server with emotion icons, please.
 			return;
 		}
-		sd->emotionlasttime = tick + 1000; // not more than 1 every second (normal client is every 3-4 seconds)
+		sd->emotionlasttime = gettick_cache + 1000; // not more than 1 every second (normal client is every 3-4 seconds)
 
 		WPACKETW(0) = 0xc0;
 		WPACKETL(2) = sd->bl.id;
@@ -9052,7 +9087,7 @@ void clif_parse_ActionRequest(int fd, struct map_session_data *sd) { // S 0x0089
 		if (sd->vender_id != 0)
 			return;
 		if (!battle_config.sdelay_attack_enable && pc_checkskill(sd, SA_FREECAST) <= 0) {
-			if (DIFF_TICK(gettick(), sd->canact_tick) < 0) {
+			if (DIFF_TICK(gettick_cache, sd->canact_tick) < 0) {
 				clif_skill_fail(sd, 1, 4, 0);
 				return;
 			}
@@ -9112,7 +9147,7 @@ void clif_parse_Restart(int fd, struct map_session_data *sd) { // S 00b2 <type>.
 			return;
 
 		// Rovert's Prevent logout option - Fixed [Valaris]
-		if ((gettick() - sd->canlog_tick) >= 10000 || (!battle_config.prevent_logout)) {
+		if ((gettick_cache - sd->canlog_tick) >= 10000 || (!battle_config.prevent_logout)) {
 			if (chrif_charselectreq(sd)) { // refuse disconnection if char-server is disconnected
 				WPACKETW(0) = 0x18b;
 				WPACKETW(2) = 1; // flag= 0: success, 1: failure (please wait 15 sec...)
@@ -9476,7 +9511,7 @@ void clif_parse_UseItem(int fd, struct map_session_data *sd) { // S 0x00a7 <inde
 	if (sd->npc_id != 0 || sd->vender_id != 0 || (sd->opt1 > 0 && sd->opt1 != 6) ||
 	    sd->sc_data[SC_TRICKDEAD].timer != -1 || //Ž€‚ñ‚¾‚Ó‚è
 	    sd->sc_data[SC_BLADESTOP].timer != -1 || //”’nŽæ‚è
-	    sd->sc_data[SC_BERSERK].timer != -1 || 
+	    sd->sc_data[SC_BERSERK].timer != -1 ||
 		sd->sc_data[SC_GRAVITATION].timer !=- 1 ||
 	    sd->sc_data[SC_NOCHAT].timer != -1) //‰ï˜b‹ÖŽ~
 		return;
@@ -10098,7 +10133,7 @@ void clif_parse_UseSkillToId(int fd, struct map_session_data *sd) { // S 0x0113 
 	if (sd->skilltimer != -1) {
 		if (skillnum != SA_CASTCANCEL)
 			return;
-	} else if (DIFF_TICK(gettick(), sd->canact_tick) < 0 &&
+	} else if (DIFF_TICK(gettick_cache, sd->canact_tick) < 0 &&
 	           // allow monk combos to ignore this delay [celest]
 	           !(sd->sc_count && sd->sc_data[SC_COMBO].timer != -1 &&
 	            (skillnum == MO_EXTREMITYFIST ||
@@ -10117,6 +10152,8 @@ void clif_parse_UseSkillToId(int fd, struct map_session_data *sd) { // S 0x0113 
 	     sd->sc_data[SC_WEDDING].timer != -1 || sd->view_class == 22)
 		return;
 
+	sd->idletime = gettick_cache; // for party experience
+
 	pc_delinvincibletimer(sd);
 	if (sd->skillitem >= 0 && sd->skillitem == skillnum) {
 		if (skilllv != sd->skillitemlv)
@@ -10125,7 +10162,7 @@ void clif_parse_UseSkillToId(int fd, struct map_session_data *sd) { // S 0x0113 
 	} else {
 		sd->skillitem = sd->skillitemlv = -1;
 		if (skillnum == MO_EXTREMITYFIST) {
-				if ((sd->sc_data[SC_COMBO].timer == -1 || 
+				if ((sd->sc_data[SC_COMBO].timer == -1 ||
 				(sd->sc_data[SC_COMBO].val1 != MO_COMBOFINISH && sd->sc_data[SC_COMBO].val1 != CH_TIGERFIST && sd->sc_data[SC_COMBO].val1 != CH_CHAINCRUSH))) {
 				if (!sd->state.skill_flag) {
 					sd->state.skill_flag = 1;
@@ -10136,7 +10173,7 @@ void clif_parse_UseSkillToId(int fd, struct map_session_data *sd) { // S 0x0113 
 					return;
 				}
 			}
-		} 
+		}
 		else if (skillnum == TK_JUMPKICK) {
 			if (sd->sc_data[SC_COMBO].timer == -1 || sd->sc_data[SC_COMBO].val1 != TK_JUMPKICK) {
 				if (!sd->state.skill_flag) {
@@ -10309,7 +10346,7 @@ void clif_parse_UseSkillToPos(int fd, struct map_session_data *sd) { // S 0x0116
 
 	if (sd->skilltimer != -1)
 		return;
-	else if (DIFF_TICK(gettick(), sd->canact_tick) < 0 &&
+	else if (DIFF_TICK(gettick_cache, sd->canact_tick) < 0 &&
 	         // allow monk combos to ignore this delay [celest]
 	         !(sd->sc_count && sd->sc_data[SC_COMBO].timer!=-1 &&
 	          (skillnum == MO_EXTREMITYFIST ||
@@ -10326,6 +10363,8 @@ void clif_parse_UseSkillToPos(int fd, struct map_session_data *sd) { // S 0x0116
 	    sd->sc_data[SC_BERSERK].timer != -1 || sd->sc_data[SC_NOCHAT].timer != -1 ||
 	    sd->sc_data[SC_WEDDING].timer != -1 || sd->view_class == 22)
 		return;
+
+	sd->idletime = gettick_cache; // for party experience
 
 	pc_delinvincibletimer(sd);
 	if (sd->skillitem >= 0 && sd->skillitem == skillnum) {
@@ -11795,8 +11834,8 @@ void clif_parse_GMReqNoChat(int fd, struct map_session_data *sd) { // S 0149 <ID
 		return;
 	}
 
-	if ((type == 2 && !sd->GM_level && tid == sd->bl.id) || 
-		  (sd->GM_level > dstsd->GM_level && sd->GM_level >= get_atcommand_level(AtCommand_Mute))) {
+	if ((type == 2 && !sd->GM_level && tid == sd->bl.id) ||
+	    (sd->GM_level > dstsd->GM_level && sd->GM_level >= get_atcommand_level(AtCommand_Mute))) {
 		if (type == 0)
 			limit = 0 - limit;
 		if((dstsd->status.manner - limit) < (-32768)) //Negative overflow fix [Proximus]
@@ -12841,8 +12880,8 @@ static int clif_parse(int fd) {
 							antibot_action(sd); // IMPORTANT: after parse, to know if player is moving
 #endif
 						// check inactiv player
-						if (battle_config.idle_disconnect != 0 && 
-							clif_parse_func_table[packet_ver][cmd] != clif_parse_GetCharNameRequest) // not charname solve (mouse can stay in front, and player doesn't ask for)
+						if (battle_config.idle_disconnect != 0 &&
+						    clif_parse_func_table[packet_ver][cmd] != clif_parse_GetCharNameRequest) // not charname solve (mouse can stay in front, and player doesn't ask for)
 							sd->lastpackettime = time(NULL); // for disconnection if player is inactive
 					}
 				}
@@ -12878,20 +12917,20 @@ static int clif_parse(int fd) {
 						time(&now);
 						if (sd->state.auth) {
 							if (sd->status.name != NULL)
-								fprintf(fp, "%sPlayer with account ID %d (character ID %d, player name %s) sent wrong packet:\n",
+								fprintf(fp, "%sPlayer with account ID %d (character ID %d, player name %s) sent wrong packet:" RETCODE,
 								        asctime(localtime(&now)), sd->status.account_id, sd->status.char_id, sd->status.name);
 							else
-								fprintf(fp, "%sPlayer with account ID %d sent wrong packet:\n", asctime(localtime(&now)), sd->bl.id);
+								fprintf(fp, "%sPlayer with account ID %d sent wrong packet:" RETCODE, asctime(localtime(&now)), sd->bl.id);
 						} else // not authentified! (refused by char-server or disconnect before to be authentified)
-							fprintf(fp, "%sPlayer with account ID %d sent wrong packet:\n", asctime(localtime(&now)), sd->bl.id);
+							fprintf(fp, "%sPlayer with account ID %d sent wrong packet:" RETCODE, asctime(localtime(&now)), sd->bl.id);
 
 						fprintf(fp, "\t---- 00-01-02-03-04-05-06-07-08-09-0A-0B-0C-0D-0E-0F");
 						for(i = 0; i < packet_len; i++) {
 							if ((i & 15) == 0)
-								fprintf(fp, "\n\t%04X ", i);
+								fprintf(fp, RETCODE "\t%04X ", i);
 							fprintf(fp, "%02X ", RFIFOB(fd,i));
 						}
-						fprintf(fp, "\n\n");
+						fprintf(fp, RETCODE RETCODE);
 						fclose(fp);
 					}
 				  }
@@ -13408,7 +13447,7 @@ int do_init_clif(void) {
 	add_timer_func_list(clif_waitauth, "clif_waitauth");
 	add_timer_func_list(clif_clearchar_delay_sub, "clif_clearchar_delay_sub");
 
-	add_timer_interval(gettick() + 60000, check_manner_file, 0, 0, 60000); // every 60 sec we check if manner file has been changed
+	add_timer_interval(gettick_cache + 60000, check_manner_file, 0, 0, 60000); // every 60 sec we check if manner file has been changed
 
 	return 0;
 }

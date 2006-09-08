@@ -353,22 +353,19 @@ int pet_changestate(struct pet_data *pd,int state,int type)
 		case MS_WALK:
 			if ((i = calc_next_walk_step(pd)) > 0){
 				i = i >> 2;
-				pd->timer = add_timer(gettick() + i, pet_timer, pd->bl.id, 0);
+				pd->timer = add_timer(gettick_cache + i, pet_timer, pd->bl.id, 0);
 			} else
 				pd->state.state = MS_IDLE;
 			break;
 		case MS_ATTACK:
-		{
-			unsigned int tick = gettick();
-			i = DIFF_TICK(pd->attackabletime, tick);
+			i = DIFF_TICK(pd->attackabletime, gettick_cache);
 			if (i > 0 && i < 2000)
 				pd->timer = add_timer(pd->attackabletime, pet_timer, pd->bl.id, 0);
 			else
-				pd->timer = add_timer(tick + 1, pet_timer, pd->bl.id, 0);
+				pd->timer = add_timer(gettick_cache + 1, pet_timer, pd->bl.id, 0);
 			break;
-		}
 		case MS_DELAY:
-			pd->timer = add_timer(gettick() + type, pet_timer, pd->bl.id, 0);
+			pd->timer = add_timer(gettick_cache + type, pet_timer, pd->bl.id, 0);
 			break;
 	}
 
@@ -727,7 +724,9 @@ int pet_data_init(struct map_session_data *sd)
 	pd->timer = -1;
 	pd->target_id = 0;
 	pd->move_fail_count = 0;
-	pd->next_walktime = pd->attackabletime = pd->last_thinktime = gettick();
+	pd->next_walktime = gettick_cache;
+	pd->attackabletime = gettick_cache;
+	pd->last_thinktime = gettick_cache;
 	pd->msd = sd;
 
 	// init timers
@@ -755,11 +754,11 @@ int pet_data_init(struct map_session_data *sd)
 		interval = sd->petDB->hungry_delay;
 	if(interval <= 0)
 		interval = 1;
-	sd->pet_hungry_timer = add_timer(gettick() + interval, pet_hungry, sd->bl.id, 0);
+	sd->pet_hungry_timer = add_timer(gettick_cache + interval, pet_hungry, sd->bl.id, 0);
 	CALLOC(pd->lootitem, struct item, PETLOOT_SIZE);
 	pd->lootitem_count = 0;
 	pd->lootitem_weight = 0;
-	pd->lootitem_timer = gettick();
+	pd->lootitem_timer = gettick_cache;
 
 	return 0;
 }
@@ -1171,7 +1170,7 @@ static int pet_ai_sub_hard(struct pet_data *pd,unsigned int tick)
 	if(pd->state.state == MS_DELAY || pd->bl.m != sd->bl.m)
 		return 0;
 	// ペットによるルート
-	if(!pd->target_id && pd->lootitem_count < PETLOOT_SIZE && pd->lootitem_count < pd->lootmax && pd->loot==1 && DIFF_TICK(gettick(),pd->lootitem_timer)>0)
+	if(!pd->target_id && pd->lootitem_count < PETLOOT_SIZE && pd->lootitem_count < pd->lootmax && pd->loot==1 && DIFF_TICK(gettick_cache,pd->lootitem_timer)>0)
 		map_foreachinarea(pet_ai_sub_hard_lootsearch,pd->bl.m,
 						  pd->bl.x-AREA_SIZE*2,pd->bl.y-AREA_SIZE*2,
 						  pd->bl.x+AREA_SIZE*2,pd->bl.y+AREA_SIZE*2,
@@ -1384,12 +1383,12 @@ int pet_lootitem_drop(struct pet_data *pd,struct map_session_data *sd)
 					FREE(ditem);
 				}
 				else
-					add_timer(gettick() + 540 + i, pet_delay_item_drop2, (int)ditem, 0);
+					add_timer(gettick_cache + 540 + i, pet_delay_item_drop2, (int)ditem, 0);
 			}
 			memset(pd->lootitem, 0, sizeof(struct item) * PETLOOT_SIZE);
 			pd->lootitem_count = 0;
 			pd->lootitem_weight = 0;
-			pd->lootitem_timer = gettick() + 10000;	//	10*1000msの間拾わない
+			pd->lootitem_timer = gettick_cache + 10000;	//	10*1000msの間拾わない
 		}
 	}
 
@@ -1457,7 +1456,7 @@ int pet_skill_bonus_timer(int tid, unsigned int tick, int id, int data) {
 
 	// wait for the next timer
 	if (timer)
-		pd->skillbonustimer = add_timer(gettick() + timer, pet_skill_bonus_timer, sd->bl.id, 0);
+		pd->skillbonustimer = add_timer(gettick_cache + timer, pet_skill_bonus_timer, sd->bl.id, 0);
 
 	return 0;
 }
@@ -1483,7 +1482,7 @@ int pet_recovery_timer(int tid,unsigned int tick,int id,int data)
 	if (battle_config.pet_status_support && sd->sc_data[pd->skilltype].timer != -1)
 		status_change_end(&sd->bl, pd->skilltype, -1);
 
-	pd->recoverytimer = add_timer(gettick() + pd->skilltimer * 1000, pet_recovery_timer, sd->bl.id, 0);
+	pd->recoverytimer = add_timer(gettick_cache + pd->skilltimer * 1000, pet_recovery_timer, sd->bl.id, 0);
 
 	return 0;
 }
@@ -1511,7 +1510,7 @@ int pet_heal_timer(int tid, unsigned int tick, int id, int data)
 		pc_heal(sd, pd->skillval, 0);
 	}
 
-	pd->healtimer = add_timer(gettick() + pd->skilltimer * 1000, pet_heal_timer, sd->bl.id, 0);
+	pd->healtimer = add_timer(gettick_cache + pd->skilltimer * 1000, pet_heal_timer, sd->bl.id, 0);
 
 	return 0;
 }
@@ -1539,7 +1538,7 @@ int pet_mag_timer(int tid, unsigned int tick, int id, int data)
 		status_change_start(&sd->bl, SkillStatusChangeTable[PR_MAGNIFICAT], pd->skillval, 0, 0, 0, skill_get_time(PR_MAGNIFICAT, pd->skillval), 0);
 	}
 
-	pd->magtimer = add_timer(gettick() + pd->skilltimer * 1000, pet_mag_timer, sd->bl.id, 0);
+	pd->magtimer = add_timer(gettick_cache + pd->skilltimer * 1000, pet_mag_timer, sd->bl.id, 0);
 
 	return 0;
 }
@@ -1567,7 +1566,7 @@ int pet_skillattack_timer(int tid, unsigned int tick, int id, int data)
 	if (md == NULL || md->bl.type != BL_MOB || pd->bl.m != md->bl.m || md->bl.prev == NULL ||
 	    distance(pd->bl.x, pd->bl.y, md->bl.x, md->bl.y) > 6 || md->class == 1288) {
 		pd->target_id = 0;
-		pd->skillattacktimer = add_timer(gettick() + 100, pet_skillattack_timer, sd->bl.id, pd->skillduration);
+		pd->skillattacktimer = add_timer(gettick_cache + 100, pet_skillattack_timer, sd->bl.id, pd->skillduration);
 		return 0;
 	}
 
@@ -1587,11 +1586,11 @@ int pet_skillattack_timer(int tid, unsigned int tick, int id, int data)
 			skill_castend_damage_id(&pd->bl, &md->bl, pd->skilltype, pd->skillval, tick, 0);
 			break;
 		}
-		pd->skillattacktimer = add_timer(gettick() + 1000, pet_skillattack_timer, sd->bl.id, 0);
+		pd->skillattacktimer = add_timer(gettick_cache + 1000, pet_skillattack_timer, sd->bl.id, 0);
 		return 0;
 	}
 
-	pd->skillattacktimer = add_timer(gettick() + 100, pet_skillattack_timer, sd->bl.id, 0);
+	pd->skillattacktimer = add_timer(gettick_cache + 100, pet_skillattack_timer, sd->bl.id, 0);
 
 	return 0;
 }
@@ -1697,7 +1696,7 @@ int do_init_pet(void)
 	add_timer_func_list(pet_skillattack_timer, "pet_skillattack_timer"); // [Valaris]
 	add_timer_func_list(pet_delay_item_drop2, "pet_delay_item_drop2");
 
-	add_timer_interval(gettick() + MIN_PETTHINKTIME, pet_ai_hard, 0, 0, MIN_PETTHINKTIME);
+	add_timer_interval(gettick_cache + MIN_PETTHINKTIME, pet_ai_hard, 0, 0, MIN_PETTHINKTIME);
 
 	return 0;
 }

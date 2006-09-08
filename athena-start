@@ -20,7 +20,7 @@ print_start() {
 #	more << EOF
 echo "Freya is now starting..."
 echo "			(c) 2004-2006 Freya Project."
-echo "			URL:http://freya.dns.st/forum/"
+echo "			URL:http://www.ro-freya.net/"
 echo ""
 echo "Debug information will appear,"
 echo "since this is a test release."

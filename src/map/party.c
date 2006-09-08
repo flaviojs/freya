@@ -49,7 +49,7 @@ void do_init_party(void)
 {
 	party_db = numdb_init();
 	add_timer_func_list(party_send_xyhp_timer, "party_send_xyhp_timer");
-	add_timer_interval(gettick() + PARTY_SEND_XYHP_INVERVAL, party_send_xyhp_timer, 0, 0, PARTY_SEND_XYHP_INVERVAL);
+	add_timer_interval(gettick_cache + PARTY_SEND_XYHP_INVERVAL, party_send_xyhp_timer, 0, 0, PARTY_SEND_XYHP_INVERVAL);
 }
 
 // 検索
@@ -245,19 +245,20 @@ void party_invite(struct map_session_data *sd, int account_id) {
 
 	if (!battle_config.invite_request_check) { // Are other requests accepted during a request or not?
 		if (tsd->guild_invite > 0 || tsd->trade_partner) { // 相手が取引中かどうか
-			clif_party_inviteack(sd, tsd->status.name, 0); // 0: the player is already in other party, 1: invitation was denied, 2: success to invite
+			clif_party_inviteack(sd, tsd->status.name, 0); // 0: the player is already in other party, 1: invitation was denied, 2: success to invite, 4: character in the same account already joined
 			return;
 		}
 	}
 	if (tsd->status.party_id > 0 || tsd->party_invite > 0) { // 相手の所属確認
-		clif_party_inviteack(sd, tsd->status.name, 0); // 0: the player is already in other party, 1: invitation was denied, 2: success to invite
+		clif_party_inviteack(sd, tsd->status.name, 0); // 0: the player is already in other party, 1: invitation was denied, 2: success to invite, 4: character in the same account already joined
 		return;
 	}
 	for(i = 0; i < MAX_PARTY; i++) { // 同アカウント確認
-		if (p->member[i].account_id == account_id &&
-		    strncmp(p->member[i].name, tsd->status.name, 24) == 0) {
-			clif_party_inviteack(sd, tsd->status.name, 0); // 0: the player is already in other party, 1: invitation was denied, 2: success to invite
-			return;
+		if (p->member[i].account_id == account_id) {
+			if (battle_config.party_invite_same_account == 0 || strncmp(p->member[i].name, tsd->status.name, 24) == 0) {
+				clif_party_inviteack(sd, tsd->status.name, 4); // 0: the player is already in other party, 1: invitation was denied, 2: success to invite, 4: character in the same account already joined
+				return;
+			}
 		}
 	}
 
@@ -284,7 +285,7 @@ void party_reply_invite(struct map_session_data *sd, int account_id, int flag) {
 		tsd = map_id2sd(account_id);
 		if (tsd == NULL)
 			return;
-		clif_party_inviteack(tsd, sd->status.name, 1); // 0: the player is already in other party, 1: invitation was denied, 2: success to invite
+		clif_party_inviteack(tsd, sd->status.name, 1); // 0: the player is already in other party, 1: invitation was denied, 2: success to invite, 4: character in the same account already joined
 	}
 
 	return;
@@ -294,7 +295,7 @@ void party_reply_invite(struct map_session_data *sd, int account_id, int flag) {
 int party_member_added(int party_id, int account_id, int flag)
 {
 	struct map_session_data *sd = map_id2sd(account_id), *sd2;
-	struct party *p; 
+	struct party *p;
 
 	if (sd == NULL) {
 		if (flag == 0) {
@@ -310,7 +311,7 @@ int party_member_added(int party_id, int account_id, int flag)
 
 	if (flag == 1) { // 失敗
 		if (sd2 != NULL)
-			clif_party_inviteack(sd2, sd->status.name, 0); // 0: the player is already in other party, 1: invitation was denied, 2: success to invite
+			clif_party_inviteack(sd2, sd->status.name, 0); // 0: the player is already in other party, 1: invitation was denied, 2: success to invite, 4: character in the same account already joined
 		return 0;
 	}
 
@@ -319,7 +320,7 @@ int party_member_added(int party_id, int account_id, int flag)
 	sd->status.party_id = party_id;
 
 	if (sd2 != NULL)
-		clif_party_inviteack(sd2, sd->status.name, 2); // 0: the player is already in other party, 1: invitation was denied, 2: success to invite
+		clif_party_inviteack(sd2, sd->status.name, 2); // 0: the player is already in other party, 1: invitation was denied, 2: success to invite, 4: character in the same account already joined
 
 	// いちおう競合確認
 	party_check_conflict(sd);
@@ -707,17 +708,14 @@ void party_exp_share(struct party *p, short map_id, int base_exp, int job_exp, i
 	struct map_session_data *sd;
 	struct map_session_data *sdlist[MAX_PARTY];
 	int i, c;
-	unsigned int tick;
-	
 
 //	nullpo_retv(p); // checked before to call function
 
 	c = 0;
-	tick = gettick();
 	for(i = 0; i < MAX_PARTY; i++) {
 		// note: Characters that die during battle will not receive any experience distributed.
 		if ((sd = p->member[i].sd) != NULL && sd->fd > 0 && session[sd->fd] != NULL && !pc_isdead(sd) && sd->bl.m == map_id) {
-			if (battle_config.idle_no_share == 2 && (sd->idletime < (tick - 2 * 60 * 1000))) // 2 minutes idle
+			if (battle_config.idle_no_share == 2 && (sd->idletime < (gettick_cache - battle_config.idle_delay_no_share))) // 2 minutes idle by default
 				continue;
 			if (battle_config.chat_no_share == 2 && sd->chatID)
 				continue;
@@ -754,7 +752,7 @@ void party_exp_share(struct party *p, short map_id, int base_exp, int job_exp, i
 
 	for(i = 0; i < c; i++) {
 		sd = sdlist[i];
-		if (battle_config.idle_no_share == 1 && (sd->idletime < (tick - 2 * 60 * 1000))) // 2 minutes idle
+		if (battle_config.idle_no_share == 1 && (sd->idletime < (gettick_cache - battle_config.idle_delay_no_share))) // 2 minutes idle by default
 			continue;
 		if (battle_config.chat_no_share == 1 && sd->chatID)
 			continue;

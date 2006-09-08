@@ -436,12 +436,11 @@ END{ cooked() }
 # Display title
 	print($CL_CLS);
 	print($CL_DARK_WHITE.$CL_BG_BLUE."          (=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=)".$CL_CLL.$CL_RESET."\n"); # white writing (37) on blue background (44)
-	print($CL_DARK_WHITE.$CL_BG_BLUE."          (".$CL_BOLD."          (c)2004-2005 Free Yor team presents :          ".$CL_DARK_WHITE.$CL_BG_BLUE.")".$CL_CLL.$CL_RESET."\n");
+	print($CL_DARK_WHITE.$CL_BG_BLUE."          (".$CL_BOLD."            (c)2004-2006 Freya team presents:            ".$CL_DARK_WHITE.$CL_BG_BLUE.")".$CL_CLL.$CL_RESET."\n");
 	print($CL_DARK_WHITE.$CL_BG_BLUE."          (".$CL_BOLD."         ___   ___    ___   _  _   __                    ".$CL_DARK_WHITE.$CL_BG_BLUE.")".$CL_CLL.$CL_RESET."\n"); # 1: bold char, 0: normal char
 	print($CL_DARK_WHITE.$CL_BG_BLUE."          (".$CL_BOLD."        (  _) (  ,)  (  _) ( \\/ ) (  )                   ".$CL_DARK_WHITE.$CL_BG_BLUE.")".$CL_CLL.$CL_RESET."\n"); # 1: bold char, 0: normal char
 	print($CL_DARK_WHITE.$CL_BG_BLUE."          (".$CL_BOLD."        (  _)  )  \\   ) _)  \\  /  /__\\                   ".$CL_DARK_WHITE.$CL_BG_BLUE.")".$CL_CLL.$CL_RESET."\n"); # 1: bold char, 0: normal char
 	print($CL_DARK_WHITE.$CL_BG_BLUE."          (".$CL_BOLD."        (_)   (_)\\_) (___) (__/  (_)(_)                  ".$CL_DARK_WHITE.$CL_BG_BLUE.")".$CL_CLL.$CL_RESET."\n"); # 1: bold char, 0: normal char
-	print($CL_DARK_WHITE.$CL_BG_BLUE."          (".$CL_BOLD."          Free Ragnarok Emulator, Yor Adopted.           ".$CL_DARK_WHITE.$CL_BG_BLUE.")".$CL_CLL.$CL_RESET."\n");
 	print($CL_DARK_WHITE.$CL_BG_BLUE."          (".$CL_BOLD."                http://www.ro-freya.net                  ".$CL_DARK_WHITE.$CL_BG_BLUE.")".$CL_CLL.$CL_RESET."\n");
 	print($CL_DARK_WHITE.$CL_BG_BLUE."          (=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=)".$CL_CLL.$CL_RESET."\n\n"); # reset color
 

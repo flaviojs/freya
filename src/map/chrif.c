@@ -44,8 +44,8 @@ static const int packet_len_table[0x30] = {
 	 6,30,-1, 8,86,11,44,34,	// 2b08-2b0f
 	-1,-1,10, 6,11,-1,-1, 7,	// 2b10-2b17
 
-	46, 6,-1,-1, 6, 70, 38, 0,	// 2b18-2b1f
-	-1, 0,10,10,-1,-1,10,-1,	// 2b20-2b27
+	46, 6,-1,-1, 6,70,38, 7,	// 2b18-2b1f
+	-1,11,10,10,-1,-1,10,-1,	// 2b20-2b27
 };
 
 int char_fd = -1;
@@ -152,7 +152,7 @@ void chrif_save(struct map_session_data *sd) {
 	sd->status.manner = manner;
 	memcpy(&sd->status.skill, &skill_cpy, sizeof(skill_cpy));
 
-	sd->last_saving = gettick(); // to limit successive savings with auto-save
+	sd->last_saving = gettick_cache; // to limit successive savings with auto-save
 
 	return;
 }
@@ -455,9 +455,10 @@ void chrif_updatefame(int char_id, unsigned char rank_id, int points) {
  *   3: unblock
  *   4: unban
  *   5: changesex
+ *   6: change GM level
  *------------------------------------------
  */
-int chrif_char_ask_name(int id, char * character_name, short operation_type, int year, int month, int day, int hour, int minute, int second) {
+int chrif_char_ask_name(int id, char * character_name, short operation_type, int year_gmlvl, int month, int day, int hour, int minute, int second) {
 
 //	printf("chrif : sended 0x2b0e\n");
 
@@ -467,7 +468,8 @@ int chrif_char_ask_name(int id, char * character_name, short operation_type, int
 	WPACKETL( 2) = id; // account_id of who ask (for answer) -1 if nobody
 	strncpy(WPACKETP(6), character_name, 24);
 	WPACKETW(30) = operation_type; // type of operation
-	if (operation_type == 2) {
+	switch(operation_type) {
+	case 2:
 		// check values...
 		if (second > 32767) {
 			minute = minute + (second / 60);
@@ -483,18 +485,22 @@ int chrif_char_ask_name(int id, char * character_name, short operation_type, int
 		}
 		// don't check days, because days are not same in all months
 		if (month > 32767) {
-			year = year + (month / 12);
+			year_gmlvl = year_gmlvl + (month / 12);
 			month = month % 12;
 		}
 		// if no ban, don't send paket
-		if (year == 0 && month == 0 && day == 0 && hour == 0 && minute == 0 && second == 0)
+		if (year_gmlvl == 0 && month == 0 && day == 0 && hour == 0 && minute == 0 && second == 0)
 			return 0;
-		WPACKETW(32) = year;
+		WPACKETW(32) = year_gmlvl;
 		WPACKETW(34) = month;
 		WPACKETW(36) = day;
 		WPACKETW(38) = hour;
 		WPACKETW(40) = minute;
 		WPACKETW(42) = second;
+		break;
+	case 6:
+		WPACKETB(32) = year_gmlvl;
+		break;
 	}
 	SENDPACKET(char_fd, 44);
 
@@ -510,6 +516,7 @@ int chrif_char_ask_name(int id, char * character_name, short operation_type, int
  *   3: unblock
  *   4: unban
  *   5: changesex
+ *   6: change GM level
  * type of answer:
  *   0: login-server resquest done
  *   1: player not found
@@ -601,6 +608,20 @@ int chrif_char_ask_name_answer(int fd) {
 						break;
 					case 3: // login-server offline
 						sprintf(output, msg_txt(557), player_name); // Login-server is offline. Impossible to change the sex of the player '%s'.
+						break;
+					}
+					break;
+				case 6: // change GM level
+					switch(RFIFOW(fd, 32)) {
+					case 0: // login-server resquest done
+						sprintf(output, msg_txt(675), player_name); // Login-server has been asked to change the GM level of the player '%s'.
+						break;
+					//case 1: // player not found
+					case 2: // gm level too low
+						sprintf(output, msg_txt(676), player_name); // Your GM level don't authorize you to change the GM level of the player '%s'.
+						break;
+					case 3: // login-server offline
+						sprintf(output, msg_txt(677), player_name); // Login-server is offline. Impossible to change the GM level of the player '%s'.
 						break;
 					}
 					break;
@@ -966,7 +987,7 @@ int chrif_accountban(int fd) {
 					char tmpstr[2048];
 					memset(tmpstr, 0, sizeof(tmpstr));
 					timestamp = (time_t)RFIFOL(fd,7); // status or final date of a banishment
-					strcpy(tmpstr, msg_txt(572)); // Your account has been banished until 
+					strcpy(tmpstr, msg_txt(572)); // Your account has been banished until
 					strftime(tmpstr + strlen(tmpstr), 24, msg_txt(573), localtime(&timestamp)); // %m-%d-%Y %H:%M:%S
 					clif_displaymessage(sd->fd, tmpstr);
 				}
@@ -1231,6 +1252,7 @@ int chrif_load_scdata(int fd) {
 		status_change_start(&sd->bl, data.type, data.val1, data.val2, data.val3, data.val4, data.tick, 7);
 		//Flag 3 is 1&2, 1: Force status start, 2: Do not modify the tick value sent.
 	}
+
 	return 0;
 }
 
@@ -1240,24 +1262,21 @@ int chrif_load_scdata(int fd) {
  */
 int chrif_save_scdata(struct map_session_data *sd) {
 	int i, count = 0;
-	unsigned int tick;
 	struct status_change_data data;
 	struct TimerData *timer;
 
-	if(!chrif_isconnect()) 
+	if(!chrif_isconnect())
 		return -1;
-	
-	tick = gettick();
-	
+
 	WPACKETW( 0) = 0x2b2b;
 	WPACKETL( 4) = sd->status.char_id;
 	for (i = 0; i < SC_MAX; i++) {
 		if (sd->sc_data[i].timer == -1)
 			continue;
 		timer = get_timer(sd->sc_data[i].timer);
-		if (timer == NULL || timer->func != status_change_timer || DIFF_TICK(timer->tick, tick) < 0)
+		if (timer == NULL || timer->func != status_change_timer || DIFF_TICK(timer->tick, gettick_cache) < 0)
 			continue;
-		data.tick = DIFF_TICK(timer->tick, tick); //Duration that is left before ending.
+		data.tick = DIFF_TICK(timer->tick, gettick_cache); //Duration that is left before ending.
 		data.type = i;
 		data.val1 = sd->sc_data[i].val1;
 		data.val2 = sd->sc_data[i].val2;
@@ -1420,8 +1439,11 @@ int chrif_parse(int fd) {
 		case 0x2b1a: chrif_globalreg(fd); break; // 0x2b1a <packet_len>.w <account_id>.L account_reg.structure.*B
 		case 0x2b1c: chrif_globalregAck(fd); break; // 0x2b1c <char_id>.L
 		case 0x2b1e: chrif_recv_password_change_answer(fd); break; // 0x272e/0x2b1e <account_id>.L <new_password>.32B
+		case 0x2b1f: pc_set_gm_level(RFIFOL(fd,2), RFIFOB(fd,6)); break; // 0x2b1f <account_id>.L <GM_Level>.B
 
 		case 0x2b20: chrif_recv_top10rank(fd); break;
+
+		case 0x2b21: pc_set_gm_level_by_gm(RFIFOL(fd,2), (signed char)RFIFOB(fd,6), RFIFOL(fd,7)); break; // 0x272e/0x2b1e <account_id>.L <GM_level>.B <accound_id_of_GM>.L (GM_level = -1 -> player not found, -2: gm level doesn't authorise you, -3: already right value; account_id_of_GM = -1 -> script)
 
 		case 0x2b22: chrif_parse_friend_delete(fd); break; // 0x2b22 <owner_char_id_list>.L <deleted_char_id>.L
 		case 0x2b25: chrif_recv_friends_list(fd); break; // 0x2b25 <size>.W <char_id>.L <friend_num>.W {<friend_account_id>.L <friend_char_id>.L <friend_name>.24B}.x
@@ -1542,8 +1564,8 @@ int do_init_chrif(void) {
 
 	add_timer_func_list(check_connect_char_server, "check_connect_char_server");
 	add_timer_func_list(send_users_tochar, "send_users_tochar");
-	add_timer_interval(gettick() + 1000, check_connect_char_server, 0, 0, 5 * 1000);
-	add_timer_interval(gettick() + 1000, send_users_tochar, 0, 0, 5 * 1000);
+	add_timer_interval(gettick_cache + 1000, check_connect_char_server, 0, 0, 5 * 1000);
+	add_timer_interval(gettick_cache + 1000, send_users_tochar, 0, 0, 5 * 1000);
 
 	return 0;
 }

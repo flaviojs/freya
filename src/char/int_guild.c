@@ -637,7 +637,7 @@ void inter_guild_save() {
 	}
 
 	numdb_foreach(guild_db, inter_guild_save_sub, fp);
-//	fprintf(fp, "%d\t%%newid%%\n", guild_newid);
+//	fprintf(fp, "%d\t%%newid%%" RETCODE, guild_newid);
 	lock_fclose(fp, guild_txt, &lock);
 //	printf("int_guild: %s saved.\n", guild_txt);
 
@@ -676,7 +676,8 @@ int guild_check_empty(struct guild *g) {
 			return 0;
 		}
 	}
-		// ’N‚à‚¢‚È‚¢‚Ì‚Å‰ðŽU
+
+	// ’N‚à‚¢‚È‚¢‚Ì‚Å‰ðŽU
 	numdb_foreach(guild_db, guild_break_sub, g->guild_id);
 	numdb_erase(guild_db, (CPU_INT)g->guild_id);
 	inter_guild_storage_delete(g->guild_id);
@@ -1583,7 +1584,6 @@ int mapif_parse_GuildCastleDataSave(int fd, int castle_id, int idx, int value) {
 		printf("mapif_parse_GuildCastleDataSave ERROR!! (Not found index=%d).\n", idx);
 		return 0;
 	}
-
 
 #ifdef USE_SQL
 	sql_request("REPLACE INTO `%s` "

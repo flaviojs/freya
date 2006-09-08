@@ -301,7 +301,7 @@ struct map_session_data {
 	short add_def_classid[10], add_mdef_classid[10];
 	int add_def_classrate[10], add_mdef_classrate[10];
 	short monster_drop_item_count;
-	struct { 
+	struct {
 		short id, group;
 		int race, rate;
 	} monster_drop[MAX_PC_BONUS];
@@ -350,9 +350,9 @@ struct map_session_data {
 	int random_attack_increase_add, random_attack_increase_per; // [Valaris]
 	int perfect_hiding; // [Valaris]
 	int classchange; // [Valaris]
-	 
+
 	short doridori_counter;
-	 
+
 	int jailtimer; // timer to finish jail
 
 	int reg_num;
@@ -769,9 +769,9 @@ typedef enum {
 } cell_t;
 // map_setcell()で使用されるフラグ
 enum {
-	CELL_SETNPC=0x10,	// タッチタイプのNPCをセット
-	CELL_SETBASILICA,	// バジリカをセット
-	CELL_CLRBASILICA 	// バジリカをクリア
+	CELL_SETNPC=0x10, // タッチタイプのNPCをセット
+	CELL_SETBASILICA, // バジリカをセット
+	CELL_CLRBASILICA  // バジリカをクリア
 };
 
 struct chat_data {

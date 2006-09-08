@@ -52,7 +52,7 @@ void vending_vendinglistreq(struct map_session_data *sd, int id) {
 	if (vsd->vender_id == 0)
 		return;
 
-	clif_vendinglist(sd, id, vsd->vending);
+	clif_vendinglist(sd, vsd);
 
 	return;
 }

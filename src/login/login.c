@@ -3,8 +3,8 @@
 
 /*------------------------------------------------------------------------
  Module:        Version 1.0.0 - Yor
- Author:        Freya Team Copyrights (c) 2004-2005
- Project:       Project Freya Account Server
+ Author:        Freya Team Copyrights (c) 2004-2006
+ Project:       Freya Account Server
  Creation Date: December 3, 2004
  Modified Date: January 8, 2005
  Description:   Ragnarok Online Server Emulator - Main part of login-server
@@ -113,8 +113,13 @@ struct auth_dat *auth_dat = NULL;
 static short auth_fifo_pos = 0;
 int auth_num = 0, auth_max = 0;
 
+static unsigned char level_new_account = 0; // GM level of a new account
+
 /* Logs options */
 static unsigned char log_request_connection; // Enable/disable logs of 'Request for connection' message (packet 0x64/0x1dd)
+static unsigned char log_request_version; // Enable/disable logs of 'Request of the server version' (athena version) message (packet 0x7530 with 'normal' connection)
+static unsigned char log_request_freya_version; // Enable/disable logs of 'Request of the server version' (freya version) message (packet 0x7535 with 'normal' connection)
+static unsigned char log_request_uptime; // Enable/disable logs of 'Request of the server uptime' message (packet 0x7533 with 'normal' connection)
 
 /* sstatus files name */
 static char temp_char_buffer[1024]; /* temporary buffer of type char (see php_addslashes) */
@@ -136,6 +141,10 @@ static unsigned char sstatus_php_enable;
 #ifdef TXT_ONLY
 static int auth_before_save_file = 0; /* Counter. First save when 1st char-server do connection. */
 #endif /* TXT_ONLY */
+
+/* all variables about char-servers connection security */
+static char *access_char_allow = NULL;
+static int access_char_allownum = 0;
 
 /* all variables about admin */
 static unsigned char admin_state; /* authorize or not connection in admin mode */
@@ -297,7 +306,39 @@ static inline int check_ladminip(unsigned int ip) {
 	sprintf(buf, "%d.%d.%d.%d.", p[0], p[1], p[2], p[3]);
 
 	for(i = 0; i < access_ladmin_allownum; i++) {
-		access_ip = access_ladmin_allow + i * ACO_STRSIZE;
+		access_ip = access_ladmin_allow + (i * ACO_STRSIZE);
+		if (strncmp(access_ip, buf, strlen(access_ip)) == 0 || check_ipmask(ip, access_ip))
+			return 1;
+	}
+
+	return 0;
+}
+
+/*---------------------------------
+  Access control by IP for char-servers
+---------------------------------*/
+static inline int check_charip(unsigned int ip) {
+	int i;
+	unsigned char *p = (unsigned char *)&ip;
+	char buf[17];
+	char * access_ip;
+
+	if (access_char_allownum == 0)
+		return 1; /* When there is no restriction, all IP are authorized. */
+
+/*	+   012.345.: front match form, or
+	    all: all IP are matched, or
+	    012.345.678.901/24: network form (mask with # of bits), or
+	    012.345.678.901/255.255.255.0: network form (mask with ip mask)
+	+   Note about the DNS resolution (like www.ne.jp, etc.):
+	    There is no guarantee to have an answer.
+	    If we have an answer, there is no guarantee to have a 100% correct value.
+	    And, the waiting time (to check) can be long (over 1 minute to a timeout). That can block the software.
+	    So, DNS notation isn't authorized for ip checking.*/
+	sprintf(buf, "%d.%d.%d.%d.", p[0], p[1], p[2], p[3]);
+
+	for(i = 0; i < access_char_allownum; i++) {
+		access_ip = access_char_allow + (i * ACO_STRSIZE);
 		if (strncmp(access_ip, buf, strlen(access_ip)) == 0 || check_ipmask(ip, access_ip))
 			return 1;
 	}
@@ -1173,6 +1214,8 @@ int parse_fromchar(int fd) {
 				strncpy(WPACKETP(6), auth_dat[i].email, 40);
 				WPACKETL(46) = (unsigned long)auth_dat[i].connect_until_time;
 				SENDPACKET(fd, 50);
+				// send gm level to update it in char-server and map-server if necessary
+				send_GM_account(acc, auth_dat[i].level);
 			/* if account not found */
 			} else
 				write_log("Char-server '%s': Request of an e-mail/limited time: unknown account (account: %d, ip: %s)." RETCODE, server[id].name, acc, ip);
@@ -1620,13 +1663,109 @@ int parse_fromchar(int fd) {
 			RFIFOSKIP(fd, 70);
 			break;
 
+		/* Receiving of map-server via char-server a GM level change resquest */
+		case 0x272f: // 0x272f <account_id>.L <accound_id_of_GM>.L <GM_level>.B (account_id_of_GM = -1 -> script)
+			if (RFIFOREST(fd) < 11)
+				return 0;
+			server_freezeflag[id] = anti_freeze_counter; /* Char anti-freeze system. Counter. 6 ok, 5...0 frozen - only on valid packet*/
+		  {
+			char gm_level, gm_level_of_who_ask = -1;
+			acc = RFIFOL(fd,2);
+			gm_level = (char)RFIFOB(fd,10);
+			// get GM level of who ask
+			if (RFIFOL(fd,6) == -1) { // if script
+				gm_level_of_who_ask = 100;
+			} else {
+				i = search_account_index2(RFIFOL(fd,6));
+				if (i != -1)
+					gm_level_of_who_ask = auth_dat[i].level;
+			}
+			if (gm_level_of_who_ask == -1) { // if nobody ask????
+				write_log("Char-server '%s': Request of GM level change: GM who asks doesn't exist (account of the GM: %d, ip: %s)." RETCODE,
+				          server[id].name, (int)RFIFOL(fd,6), ip);
+				// note: no answer because no GM
+			} else {
+				// work on player to modify
+				i = search_account_index2(acc);
+				/* if account found */
+				if (i != -1) {
+					// check if it's a server account
+					if (auth_dat[i].sex == 2) {
+						write_log("Char-server '%s': Request of GM level change: account is Server account (Account: %d, suggested Level %d, ip: %s)." RETCODE,
+						          server[id].name, acc, (int)RFIFOB(fd,10), ip);
+						// do answer only if not a script
+						if (RFIFOL(fd,6) != -1) {
+							WPACKETW(0) = 0x272f; // 0x272f/0x2b21 <account_id>.L <GM_level>.B <accound_id_of_GM>.L (GM_level = -1 -> player not found, -2: gm level doesn't authorise you, -3: already right value; account_id_of_GM = -1 -> script)
+							WPACKETL(2) = acc;
+							WPACKETB(6) = -1; // GM level == -1 -> not found
+							WPACKETL(7) = RFIFOL(fd,6); // who want do operation: -1, script. other: account_id of GM
+							charif_sendall(11);
+						}
+					// check difference of levels
+					} else if (auth_dat[i].level >= gm_level_of_who_ask) {
+						write_log("Char-server '%s': Request of GM level change: GM doesn't have authorisation to modify this player (Player's account: %d (lvl: %d), suggested level %d, GM's account: %d (lvl: %d), ip: %s)." RETCODE,
+						          server[id].name, acc, (int)auth_dat[i].level, (int)RFIFOB(fd,10), RFIFOL(fd,6), (int)gm_level_of_who_ask, ip);
+						// do answer only if not a script
+						if (RFIFOL(fd,6) != -1) {
+							WPACKETW(0) = 0x272f; // 0x272f/0x2b21 <account_id>.L <GM_level>.B <accound_id_of_GM>.L (GM_level = -1 -> player not found, -2: gm level doesn't authorise you, -3: already right value; account_id_of_GM = -1 -> script)
+							WPACKETL(2) = acc;
+							WPACKETB(6) = -2; // GM level == -2: gm level doesn't authorise you
+							WPACKETL(7) = RFIFOL(fd,6); // who want do operation: -1, script. other: account_id of GM
+							charif_sendall(11);
+						}
+					} else if (auth_dat[i].level == gm_level || gm_level < 0 || gm_level > 99) {
+						write_log("Char-server '%s': Request of GM level change: Player already have the right value (Player's account: %d, level %d, ip: %s)." RETCODE,
+						          server[id].name, acc, (int)gm_level, ip);
+						// do answer only if not a script
+						if (RFIFOL(fd,6) != -1) {
+							WPACKETW(0) = 0x272f; // 0x272f/0x2b21 <account_id>.L <GM_level>.B <accound_id_of_GM>.L (GM_level = -1 -> player not found, -2: gm level doesn't authorise you, -3: already right value; account_id_of_GM = -1 -> script)
+							WPACKETL(2) = acc;
+							WPACKETB(6) = -3; // GM level == -3: already right value
+							WPACKETL(7) = RFIFOL(fd,6); // who want do operation: -1, script. other: account_id of GM
+							charif_sendall(11);
+						}
+					} else {
+						write_log("Char-server '%s': Request of GM level change: ok (Player's account: %d, level %d->%d, ip: %s)." RETCODE,
+						          server[id].name, acc, (int)auth_dat[i].level, (int)gm_level, ip);
+						// do answer only if not a script
+						if (RFIFOL(fd,6) != -1) {
+							WPACKETW(0) = 0x272f; // 0x272f/0x2b21 <account_id>.L <GM_level>.B <accound_id_of_GM>.L (GM_level = -1 -> player not found, -2: gm level doesn't authorise you, -3: already right value; account_id_of_GM = -1 -> script)
+							WPACKETL(2) = acc;
+							WPACKETB(6) = gm_level; // GM level
+							WPACKETL(7) = RFIFOL(fd,6); // who want do operation: -1, script. other: account_id of GM
+							charif_sendall(11);
+						}
+						/* send GM level to char-server and map server */
+						send_GM_account(acc, gm_level);
+						// Change GM level
+						auth_dat[i].level = gm_level;
+						// Save
+						save_account(i, 1);
+					}
+				/* if account not found */
+				} else {
+					write_log("Char-server '%s': Request of GM level change: unknown account (account: %d, ip: %s)." RETCODE, server[id].name, acc, ip);
+					// do answer only if not a script
+					if (RFIFOL(fd,6) != -1) {
+						WPACKETW(0) = 0x272f; // 0x272f/0x2b21 <account_id>.L <GM_level>.B <accound_id_of_GM>.L (GM_level = -1 -> player not found, -2: gm level doesn't authorise you, -3: already right value; account_id_of_GM = -1 -> script)
+						WPACKETL(2) = acc;
+						WPACKETB(6) = -1; // GM level == -1 -> not found
+						WPACKETL(7) = RFIFOL(fd,6); // who want do operation: -1, script. other: account_id of GM
+						charif_sendall(11);
+					}
+				}
+			}
+		  }
+			RFIFOSKIP(fd,11);
+			return 0;
+
 		default:
 		  {
 			FILE *logfp;
 			char tmpstr[24];
 			struct timeval tv;
 			time_t now;
-			logfp = fopen(login_log_unknown_packets_filename, "a");
+			logfp = fopen(login_log_unknown_packets_filename, "a"); // it is not necessary to create a specifical file with the date (like done for log/login-2006.log)
 			if (logfp) {
 				gettimeofday(&tv, NULL);
 				now = time(NULL);
@@ -1971,75 +2110,87 @@ int parse_login(int fd) {
 		case 0x2710:
 			if (RFIFOREST(fd) < 86)
 				return 0;
-		  {
-			char server_name[21]; // 20 + NULL
-#ifdef USE_SQL
-			char t_uid[41]; // 20 * 2 + NULL
-#endif /* USE_SQL */
-			memset(account.userid, 0, sizeof(account.userid));
-			strncpy(account.userid, RFIFOP(fd,2), 24);
-			remove_control_chars(account.userid);
-			memset(account.passwd, 0, sizeof(account.passwd));
-			strncpy(account.passwd, RFIFOP(fd,26), 24);
-			remove_control_chars(account.passwd);
-			account.passwdenc = 0;
-			memset(server_name, 0, sizeof(server_name));
-			strncpy(server_name, RFIFOP(fd,60), 20);
-			remove_control_chars(server_name);
-			write_log("Connection request of the char-server '%s' @ %d.%d.%d.%d:%d (ip: %s)" RETCODE,
-			          server_name, RFIFOB(fd,54), RFIFOB(fd,55), RFIFOB(fd,56), RFIFOB(fd,57), RFIFOW(fd,58), ip);
-			result = mmo_auth(&account, fd);
-			if (result == -1 && account.sex == 2 && account.account_id >= 0 && account.account_id < MAX_SERVERS && server_fd[account.account_id] == -1) {
-				write_log("Connection of the char-server '%s' accepted (account: %s, ip: %s)" RETCODE,
-				          server_name, account.userid, ip);
-				printf("Connection of the char-server '" CL_CYAN "%s" CL_RESET "' (" CL_WHITE "%d.%d.%d.%d:%d" CL_RESET ") accepted.\n",
-				       server_name, RFIFOB(fd,54), RFIFOB(fd,55), RFIFOB(fd,56), RFIFOB(fd,57), RFIFOW(fd,58));
-				memset(&server[account.account_id], 0, sizeof(struct mmo_char_server));
-				server[account.account_id].ip          = RFIFOL(fd,54);
-				server[account.account_id].port        = RFIFOW(fd,58);
-				strncpy(server[account.account_id].name, server_name, 20);
-				server[account.account_id].users       = 0;
-				server[account.account_id].maintenance = RFIFOW(fd,82);
-				server[account.account_id].new         = RFIFOW(fd,84);
-				server_fd[account.account_id]          = fd;
-				server_freezeflag[account.account_id]  = anti_freeze_counter; /* Char anti-freeze system. Counter. 6 ok, 5...0 frozen */
-				WPACKETW(0) = 0x2711;
-				WPACKETB(2) = 0; // 0: accepted, 3: refused
-				SENDPACKET(fd, 3);
-				session[fd]->func_parse = parse_fromchar;
-				realloc_fifo(fd, RFIFOSIZE_SERVER, WFIFOSIZE_SERVER);
-				create_sstatus_files();
-#ifdef USE_SQL
-				// better: use REPLACE, but there is no KEY in the table
-				sql_request("DELETE FROM `sstatus` WHERE `index` = '%d'", account.account_id);
-				mysql_escape_string(t_uid, server[account.account_id].name, strlen(server[account.account_id].name));
-				sql_request("INSERT INTO `sstatus`(`index`, `name`, `user`) VALUES ('%d', '%s', '%d')", account.account_id, t_uid, 0);
-#endif /* USE_SQL */
-			} else {
-				if (server_fd[account.account_id] != -1) {
-					printf("Connection of the char-server '%s' REFUSED - already connected (account: %d-%s, ip: %s)\n",
-					        server_name, account.account_id, account.userid, ip);
-					printf("You must probably wait that the freeze system detects the disconnection.\n");
-					write_log("Connection of the char-server '%s' REFUSED - already connected (account: %d-%s, ip: %s)" RETCODE,
-					          server_name, account.account_id, account.userid, ip);
-					write_log("You must probably wait that the freeze system detects the disconnection." RETCODE);
-				} else {
-					printf("Connection of the char-server '%s' REFUSED (account: %s, ip: %s).\n", server_name, account.userid, ip);
-					write_log("Connection of the char-server '%s' REFUSED (account: %s, ip: %s)" RETCODE, server_name, account.userid, ip);
-				}
+			if (!check_charip(session[fd]->client_addr.sin_addr.s_addr)) {
+				printf("Connection of a char-server REFUSED (char_allow, ip: %s).\n", ip);
+				printf("   Check your login_athena.conf (option: charallowip)\n");
+				printf("   if connection must be authorised.\n");
+				write_log("Connection of a char-server REFUSED (char_allow, ip: %s)" RETCODE, ip);
+				/* send answer */
 				WPACKETW(0) = 0x2711;
 				WPACKETB(2) = 3; // 0: accepted, 3: refused
 				SENDPACKET(fd, 3);
 				/* set eof */
 				session[fd]->eof = 1;
+			} else {
+				char server_name[21]; // 20 + NULL
+#ifdef USE_SQL
+				char t_uid[41]; // 20 * 2 + NULL
+#endif /* USE_SQL */
+				memset(account.userid, 0, sizeof(account.userid));
+				strncpy(account.userid, RFIFOP(fd,2), 24);
+				remove_control_chars(account.userid);
+				memset(account.passwd, 0, sizeof(account.passwd));
+				strncpy(account.passwd, RFIFOP(fd,26), 24);
+				remove_control_chars(account.passwd);
+				account.passwdenc = 0;
+				memset(server_name, 0, sizeof(server_name));
+				strncpy(server_name, RFIFOP(fd,60), 20);
+				remove_control_chars(server_name);
+				write_log("Connection request of the char-server '%s' @ %d.%d.%d.%d:%d (ip: %s)" RETCODE,
+				          server_name, RFIFOB(fd,54), RFIFOB(fd,55), RFIFOB(fd,56), RFIFOB(fd,57), RFIFOW(fd,58), ip);
+				result = mmo_auth(&account, fd);
+				if (result == -1 && account.sex == 2 && account.account_id >= 0 && account.account_id < MAX_SERVERS && server_fd[account.account_id] == -1) {
+					write_log("Connection of the char-server '%s' accepted (account: %s, ip: %s)" RETCODE,
+					          server_name, account.userid, ip);
+					printf("Connection of the char-server '" CL_CYAN "%s" CL_RESET "' (" CL_WHITE "%d.%d.%d.%d:%d" CL_RESET ") accepted.\n",
+					       server_name, RFIFOB(fd,54), RFIFOB(fd,55), RFIFOB(fd,56), RFIFOB(fd,57), RFIFOW(fd,58));
+					memset(&server[account.account_id], 0, sizeof(struct mmo_char_server));
+					server[account.account_id].ip          = RFIFOL(fd,54);
+					server[account.account_id].port        = RFIFOW(fd,58);
+					strncpy(server[account.account_id].name, server_name, 20);
+					server[account.account_id].users       = 0;
+					server[account.account_id].maintenance = RFIFOW(fd,82);
+					server[account.account_id].new         = RFIFOW(fd,84);
+					server_fd[account.account_id]          = fd;
+					server_freezeflag[account.account_id]  = anti_freeze_counter; /* Char anti-freeze system. Counter. 6 ok, 5...0 frozen */
+					WPACKETW(0) = 0x2711;
+					WPACKETB(2) = 0; // 0: accepted, 3: refused
+					SENDPACKET(fd, 3);
+					session[fd]->func_parse = parse_fromchar;
+					realloc_fifo(fd, RFIFOSIZE_SERVER, WFIFOSIZE_SERVER);
+					create_sstatus_files();
+#ifdef USE_SQL
+					// better: use REPLACE, but there is no KEY in the table
+					sql_request("DELETE FROM `sstatus` WHERE `index` = '%d'", account.account_id);
+					mysql_escape_string(t_uid, server[account.account_id].name, strlen(server[account.account_id].name));
+					sql_request("INSERT INTO `sstatus`(`index`, `name`, `user`) VALUES ('%d', '%s', '%d')", account.account_id, t_uid, 0);
+#endif /* USE_SQL */
+				} else {
+					if (server_fd[account.account_id] != -1) {
+						printf("Connection of the char-server '%s' REFUSED - already connected (account: %d-%s, ip: %s)\n",
+						        server_name, account.account_id, account.userid, ip);
+						printf("You must probably wait that the freeze system detects the disconnection.\n");
+						write_log("Connection of the char-server '%s' REFUSED - already connected (account: %d-%s, ip: %s)" RETCODE,
+						          server_name, account.account_id, account.userid, ip);
+						write_log("You must probably wait that the freeze system detects the disconnection." RETCODE);
+					} else {
+						printf("Connection of the char-server '%s' REFUSED (account: %s, ip: %s).\n", server_name, account.userid, ip);
+						write_log("Connection of the char-server '%s' REFUSED (account: %s, ip: %s)" RETCODE, server_name, account.userid, ip);
+					}
+					WPACKETW(0) = 0x2711;
+					WPACKETB(2) = 3; // 0: accepted, 3: refused
+					SENDPACKET(fd, 3);
+					/* set eof */
+					session[fd]->eof = 1;
+				}
 			}
-		  }
 			RFIFOSKIP(fd,86);
 			return 0;
 
 		/* Request of the server version */
 		case 0x7530:
-			write_log("Request of the server version: ok (ip: %s)" RETCODE, ip);
+			if (log_request_version)
+				write_log("Request of the server version: ok (ip: %s)" RETCODE, ip);
 			WPACKETW(0) = 0x7531;
 			WPACKETB(2) = FREYA_MAJORVERSION;
 			WPACKETB(3) = FREYA_MINORVERSION;
@@ -2067,7 +2218,8 @@ int parse_login(int fd) {
 			for(i = 0; i < MAX_SERVERS; i++)
 				if (server_fd[i] >= 0)
 					j = j + server[i].users;
-			write_log("Request of the server uptime: ok (ip: %s)" RETCODE, ip);
+			if (log_request_uptime)
+				write_log("Request of the server uptime: ok (ip: %s)" RETCODE, ip);
 			WPACKETW(0) = 0x7534;
 			WPACKETL(2) = time(NULL) - start_time;
 			WPACKETW(6) = j;
@@ -2076,9 +2228,10 @@ int parse_login(int fd) {
 			RFIFOSKIP(fd, 2);
 			return 0;
 
-		/* Request of the server version */
+		/* Request of the server version (freya version) */
 		case 0x7535:
-			write_log("Request of the server version: ok (ip: %s)" RETCODE, ip);
+			if (log_request_freya_version)
+				write_log("Request of the server version: ok (ip: %s)" RETCODE, ip);
 			WPACKETW(0) = 0x7536;
 			WPACKETB(2) = FREYA_MAJORVERSION;
 			WPACKETB(3) = FREYA_MINORVERSION;
@@ -2193,7 +2346,7 @@ int parse_login(int fd) {
 				char tmpstr[24];
 				struct timeval tv;
 				time_t now;
-				logfp = fopen(login_log_unknown_packets_filename, "a");
+				logfp = fopen(login_log_unknown_packets_filename, "a"); // it is not necessary to create a specifical file with the date (like done for log/login-2006.log)
 				if (logfp) {
 					gettimeofday(&tv, NULL);
 					now = time(NULL);
@@ -3015,7 +3168,7 @@ void init_new_account(struct auth_dat * account) {
 	}
 	strcpy(account->last_ip, "-");
 /*	account->memo = NULL; */
-/*	account->level = 0; */
+	account->level = level_new_account;
 #ifdef TXT_ONLY
 /*	account->account_reg2_num = 0; */
 /*	account->account_reg2 = NULL; */
@@ -3695,6 +3848,8 @@ static void login_config_read(const char *cfgName) { // not inline, called too o
 				new_account_flag = config_switch(w2);
 			} else if (strcasecmp(w1, "unique_case_account_name_creation") == 0) {
 				unique_case_account_name_creation = config_switch(w2);
+			} else if (strcasecmp(w1, "level_new_account") == 0) {
+				level_new_account = atoi(w2);
 			} else if (strcasecmp(w1, "min_level_to_connect") == 0) {
 				min_level_to_connect = atoi(w2);
 			} else if (strcasecmp(w1, "client_version_to_connect") == 0) {
@@ -3730,8 +3885,16 @@ static void login_config_read(const char *cfgName) { // not inline, called too o
 				strncpy(login_log_filename, w2, sizeof(login_log_filename) - 1);
 			} else if (strcasecmp(w1, "log_login") == 0) {
 				log_login = config_switch(w2);
+			} else if (strcasecmp(w1, "log_file_date") == 0) {
+				log_file_date = atoi(w2);
 			} else if (strcasecmp(w1, "log_request_connection") == 0) {
 				log_request_connection = config_switch(w2);
+			} else if (strcasecmp(w1, "log_request_version") == 0) {
+				log_request_version = config_switch(w2);
+			} else if (strcasecmp(w1, "log_request_freya_version") == 0) {
+				log_request_freya_version = config_switch(w2);
+			} else if (strcasecmp(w1, "log_request_uptime") == 0) {
+				log_request_uptime = config_switch(w2);
 
 			/* Anti-freeze options */
 			} else if (strcasecmp(w1, "anti_freeze_counter") == 0) {
@@ -3800,6 +3963,31 @@ static void login_config_read(const char *cfgName) { // not inline, called too o
 					}
 				}
 
+			/* Char-servers connection security */
+			} else if (strcasecmp(w1, "charallowip") == 0) {
+				if (strcasecmp(w2, "clear") == 0) {
+					FREE(access_char_allow);
+					access_char_allownum = 0;
+				} else {
+					if (strcasecmp(w2, "all") == 0) {
+						/* reset all previous values */
+						FREE(access_char_allow);
+						/* set to all */
+						CALLOC(access_char_allow, char, ACO_STRSIZE);
+						access_char_allownum = 1;
+						//access_char_allow[0] = '\0';
+					} else if (w2[0] && !(access_char_allownum == 1 && access_char_allow[0] == '\0')) { /* don't add IP if already 'all' */
+						if (access_char_allow) {
+							REALLOC(access_char_allow, char, (access_char_allownum + 1) * ACO_STRSIZE);
+							memset(access_char_allow + (access_char_allownum * ACO_STRSIZE), 0, sizeof(char) * ACO_STRSIZE);
+						} else {
+							CALLOC(access_char_allow, char, ACO_STRSIZE);
+						}
+						strncpy(access_char_allow + (access_char_allownum++) * ACO_STRSIZE, w2, ACO_STRSIZE - 1); // 32 - NULL
+						access_char_allow[access_char_allownum * ACO_STRSIZE - 1] = '\0';
+					}
+				}
+
 			/* Network security */
 			} else if (strcasecmp(w1, "check_ip_flag") == 0) {
 				check_ip_flag = config_switch(w2);
@@ -3862,6 +4050,7 @@ static void login_config_read(const char *cfgName) { // not inline, called too o
 						access_deny[access_denynum * ACO_STRSIZE - 1] = '\0';
 					}
 				}
+
 			/* dynamic password error ban */
 			} else if (strcasecmp(w1, "dynamic_pass_failure_ban") == 0) {
 				dynamic_pass_failure_ban = config_switch(w2);
@@ -3907,6 +4096,8 @@ static void login_config_read(const char *cfgName) { // not inline, called too o
 				add_to_unlimited_account = config_switch(w2);
 			} else if (strcasecmp(w1, "start_limited_time") == 0) {
 				start_limited_time = atoi(w2);
+			} else if (strcasecmp(w1, "ladmin_min_GM_level") == 0) {
+				ladmin_min_GM_level = atoi(w2);
 
 			/* Debug options */
 			} else if (strcasecmp(w1, "save_unknown_packets") == 0) {
@@ -4017,6 +4208,16 @@ static inline void display_conf_warnings(void) {
 		}
 	}
 
+/*	if (level_new_account < 0) {
+		printf("***WARNING: value of level_new_account (%d) is invalid.\n", level_new_account);
+		printf("            -> Using default value (0).\n");
+		level_new_account = 0;
+	} else*/ if (level_new_account > 99) {
+		printf("***WARNING: value of level_new_account (%d) is invalid.\n", level_new_account);
+		printf("            -> Using default value (0).\n");
+		level_new_account = 0;
+	}
+
 /*	if (min_level_to_connect < 0) { // 0: all players, 1-99 at least gm level x
 		printf("***WARNING: Invalid value for min_level_to_connect (%d) parameter\n", min_level_to_connect);
 		printf("            -> set to 0 (any player).\n");
@@ -4047,6 +4248,10 @@ static inline void display_conf_warnings(void) {
 	}
 
 /* Logs options */
+	if (log_file_date > 4) {
+		printf("***WARNING: Invalid value for log_file_date parameter -> set to 3 (default).\n");
+		log_file_date = 3;
+	}
 
 /* Anti-freeze options */
 	if (anti_freeze_counter < 2) {
@@ -4080,6 +4285,8 @@ static inline void display_conf_warnings(void) {
 				printf(CL_RED "***ERROR: LAN IP of the char-server doesn't belong to the specified Sub-network." CL_RESET "\n");
 		}
 	}
+
+/* Char-servers connection security */
 
 /* Network security */
 	if (access_order == ACO_DENY_ALLOW) {
@@ -4136,6 +4343,16 @@ static inline void display_conf_warnings(void) {
 		printf("***WARNING: Invalid value for start_limited_time parameter\n");
 		printf("            -> set to -1 (new accounts are created with unlimited time).\n");
 		start_limited_time = -1;
+	}
+
+	if (ladmin_min_GM_level < 1) { /* if 0, it's like ls ladmin command */
+		printf("***WARNING: Invalid value for ladmin_min_GM_level (%d) parameter\n", ladmin_min_GM_level);
+		printf("            -> set to 20 (mediators and upper accounts).\n");
+		ladmin_min_GM_level = 20;
+	} else if (ladmin_min_GM_level > 99) { /* minimum GM level of a account for listGM/lsGM ladmin command */
+		printf("***WARNING: Invalid value for ladmin_min_GM_level (%d) parameter\n", ladmin_min_GM_level);
+		printf("            -> set to 20 (mediators and upper accounts).\n");
+		ladmin_min_GM_level = 20;
 	}
 
 /* Debug options */
@@ -4228,6 +4445,7 @@ static inline void save_config_in_log(void) {
 		write_log("- to REFUSE creation of accounts with different case name." RETCODE);
 	else
 		write_log("- to ALLOW creation of accounts with different case name." RETCODE);
+	write_log("- New accounts are created with level: %d." RETCODE, level_new_account);
 	if (min_level_to_connect == 0) /* 0: all players, 1-99 at least gm level x */
 		write_log("- with no minimum level for connection." RETCODE);
 	else if (min_level_to_connect == 99)
@@ -4256,10 +4474,39 @@ static inline void save_config_in_log(void) {
 		write_log("* Logs options *" RETCODE);
 		/* not necessary to log the 'login_log_filename', we are inside */
 		/* not necessary to log the 'log_login', we are inside */
+		switch (log_file_date) {
+		case 1:
+			write_log("- to add the year to the log file name (example: log/login-2006.log)." RETCODE);
+			break;
+		case 2:
+			write_log("- to add the month to the log file name (example: log/login-12.log)." RETCODE);
+			break;
+		case 3:
+			write_log("- to add the year and the month to the log file name (example: log/login-2006-12.log)." RETCODE);
+			break;
+		case 4:
+			write_log("- to add the date to the log file name (example: log/login-2006-12-25.log)." RETCODE);
+			break;
+		default: // case 0:
+			write_log("- to not change the log file name with a date." RETCODE);
+			break;
+		}
 		if (log_request_connection)
 			write_log("- to log 'Request for connection' message (packet 0x64/0x1dd)." RETCODE);
 		else
 			write_log("- to NOT log 'Request for connection' message (packet 0x64/0x1dd)." RETCODE);
+		if (log_request_version)
+			write_log("- to log 'Request of the server version' (athena version) message (packet 0x7530)." RETCODE);
+		else
+			write_log("- to NOT log 'Request of the server version' (athena version) message (packet 0x7530)." RETCODE);
+		if (log_request_freya_version)
+			write_log("- to log 'Request of the server version' (freya version) message (packet 0x7535)." RETCODE);
+		else
+			write_log("- to NOT log 'Request of the server version' (freya version) message (packet 0x7535)." RETCODE);
+		if (log_request_uptime)
+			write_log("- to log 'Request of the server uptime' message (packet 0x7533)." RETCODE);
+		else
+			write_log("- to NOT log 'Request of the server uptime' message (packet 0x7533)." RETCODE);
 	}
 
 	/* Anti-freeze options */
@@ -4298,6 +4545,15 @@ static inline void save_config_in_log(void) {
 	write_log("- with LAN IP of char-server: %s." RETCODE, lan_char_ip);
 	write_log("- with sub-network of the char-server: %hd.%hd.%hd.%hd." RETCODE, subnet[0], subnet[1], subnet[2], subnet[3]);
 	write_log("- with sub-network mask of the char-server: %hd.%hd.%hd.%hd." RETCODE, subnetmask[0], subnetmask[1], subnetmask[2], subnetmask[3]);
+
+	/* Char-servers connection security */
+	if (access_char_allownum == 0 || (access_char_allownum == 1 && access_char_allow[0] == '\0')) {
+		write_log("- to accept any IP for all char-servers connetions" RETCODE);
+	} else {
+		write_log("- to accept following IP for all char-servers connetions:" RETCODE);
+		for(i = 0; i < access_char_allownum; i++)
+			write_log("  %s" RETCODE, (char *)(access_char_allow + i * ACO_STRSIZE));
+	}
 
 	/* Network security */
 	write_log("* Network security *" RETCODE);
@@ -4348,6 +4604,7 @@ static inline void save_config_in_log(void) {
 				write_log("    %s" RETCODE, (char *)(access_deny + i * ACO_STRSIZE));
 		}
 	}
+
 	/* dynamic password error ban */
 	if (dynamic_pass_failure_ban == 0)
 		write_log("- with NO dynamic password error ban." RETCODE);
@@ -4388,6 +4645,10 @@ static inline void save_config_in_log(void) {
 		write_log("- to create new accounts with a limited time: time of creation." RETCODE);
 	else
 		write_log("- to create new accounts with a limited time: time of creation + %d second(s)." RETCODE, start_limited_time);
+	if (ladmin_min_GM_level == 99)
+		write_log("- listGM/lsGM ladmin command will display GM accounts of level 99 (only)." RETCODE);
+	else
+		write_log("- listGM/lsGM ladmin command will display GM accounts from level %d to 99." RETCODE, ladmin_min_GM_level);
 
 	/* Debug options */
 	write_log("* Debug options *" RETCODE);
@@ -4510,6 +4771,8 @@ void do_final(void) {
 	access_allownum = 0;
 	FREE(access_deny);
 	access_denynum = 0;
+	FREE(access_char_allow);
+	access_char_allownum = 0;
 	FREE(access_ladmin_allow);
 	access_ladmin_allownum = 0;
 
@@ -4575,6 +4838,7 @@ static inline void init_conf_variables(void) {
 	use_md5_passwds = 0; /* no */
 	new_account_flag = 1; /* yes */
 	unique_case_account_name_creation = 1; /* yes */
+	level_new_account = 0; /* level 0 */
 	min_level_to_connect = 0;
 	client_version_to_connect = 0; /* Client version needed to connect: 0: any client, otherwise client version */
 	memset(date_format, 0, sizeof(date_format));
@@ -4587,7 +4851,11 @@ static inline void init_conf_variables(void) {
 	memset(login_log_filename, 0, sizeof(login_log_filename));
 	strcpy(login_log_filename, "log/login.log");
 	log_login = 1; /* yes */
+	log_file_date = 3; /* year + month (example: log/login-2006-12.log) */
 	log_request_connection = 1; /* yes */
+	log_request_version = 0; /* no */
+	log_request_freya_version = 0; /* no */
+	log_request_uptime = 0; /* no */
 
 	/* Anti-freeze options */
 	anti_freeze_counter = 12;
@@ -4604,6 +4872,10 @@ static inline void init_conf_variables(void) {
 	sstatus_txt_enable = 0; /* 0: no, 1 yes, 2: yes with ID of servers */
 	sstatus_html_enable = 1; /* 0: no, 1 yes, 2: yes with ID of servers */
 	sstatus_php_enable = 0; /* 0: no, 1 yes */
+
+	/* Char-servers connection security */
+	access_char_allow = NULL;
+	access_char_allownum = 0;
 
 	/* Lan support options */
 	memset(lan_char_ip, 0, sizeof(lan_char_ip));
@@ -4623,6 +4895,7 @@ static inline void init_conf_variables(void) {
 	access_allownum = 0;
 	access_deny = NULL;
 	access_denynum = 0;
+
 	/* dynamic password error ban */
 	dynamic_pass_failure_ban = 1; /* yes */
 	dynamic_pass_failure_ban_time = 60;
@@ -4638,6 +4911,7 @@ static inline void init_conf_variables(void) {
 	access_ladmin_allownum = 0;
 	add_to_unlimited_account = 0; /* no */
 	start_limited_time = -1;
+	ladmin_min_GM_level = 20; /* minimum GM level of a account for listGM/lsGM ladmin command */
 
 	/* Debug options */
 	save_unknown_packets = 0; /* no */
@@ -4711,6 +4985,7 @@ void do_init(const int argc, char **argv) {
 	/* must be init here for the atexit function */
 	access_allow = NULL;
 	access_deny = NULL;
+	access_char_allow = NULL;
 	access_ladmin_allow = NULL;
 
 	/* init the ban list */
@@ -4813,12 +5088,12 @@ void do_init(const int argc, char **argv) {
 
 	add_timer_func_list(char_anti_freeze_system, "char_anti_freeze_system");
 	if (anti_freeze_interval == 0)
-		i = add_timer_interval(gettick() + 6000, char_anti_freeze_system, 0, 0, 6000); /* every 6 sec (users are sended every 5 sec) */
+		i = add_timer_interval(gettick_cache + 6000, char_anti_freeze_system, 0, 0, 6000); /* every 6 sec (users are sended every 5 sec) */
 	else
-		i = add_timer_interval(gettick() + anti_freeze_interval * 1000, char_anti_freeze_system, 0, 0, anti_freeze_interval * 1000); /* every 10 sec (users are sended every 5 sec) */
+		i = add_timer_interval(gettick_cache + anti_freeze_interval * 1000, char_anti_freeze_system, 0, 0, anti_freeze_interval * 1000); /* every 10 sec (users are sended every 5 sec) */
 #ifdef TXT_ONLY
 	add_timer_func_list(check_account_sync, "check_account_sync");
-	i = add_timer_interval(gettick() + 60000, check_account_sync, 0, 0, 60000); /* every minute we check if we must save accounts file (only if necessary to save) */
+	i = add_timer_interval(gettick_cache + 60000, check_account_sync, 0, 0, 60000); /* every minute we check if we must save accounts file (only if necessary to save) */
 #endif /* TXT_ONLY */
 
 	/* console */
