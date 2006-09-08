@@ -79,7 +79,7 @@
 1010,Willow,chase,11,10,100,1000,10000,yes,target,always,0,,,,,,
 1011,ChonChon,idle,194,1,2,0,0,yes,self,always,0,1,,,,,
 1011,ChonChon,attack,187,1,100,0,15000,yes,target,always,0,,,,,,
-1012,Roda Frog,184,1,100,0,15000,yes,target,always,0,,,,,,
+1012,Roda Frog,attack,184,1,100,0,15000,yes,target,always,0,,,,,,
 1013,Wolf,attack,185,1,100,0,15000,yes,target,always,0,,,,,,
 1014,Spore,idle,197,1,5,0,10000,yes,self,always,0,,,,,,
 1014,Spore,attack,184,1,100,0,15000,yes,target,always,0,,,,,,
@@ -280,7 +280,7 @@
 1059,Mistress@AL_TELEPORT,idle,26,1,500,0,5000,yes,self,always,,,,,,,
 1059,Mistress@AL_TELEPORT,walk,26,1,500,0,5000,yes,self,always,,,,,,,
 1059,Mistress@NPC_SUMMONMONSTER,attack,209,4,1000,3000,360000,no,self,myhpltmaxrate,5,1604,,,,, // Giant Hornet
-1059,Mistress@NPC_SUMMONMONSTER,spawn,209,4,1000,3000,360000,no,self,myhpltmaxrate,5,1604,,,,, // Giant Hornet
+1059,Mistress@NPC_SUMMONMONSTER,chase,209,4,1000,3000,360000,no,self,myhpltmaxrate,5,1604,,,,, // Giant Hornet
 1059,Mistress@NPC_SUMMONSLAVE,attack,196,4,5000,3000,360000,no,self,slavele,2,1156,,,,, // Sky Petite
 1059,Mistress@NPC_SUMMONSLAVE,chase,196,4,5000,3000,360000,no,self,slavele,2,1156,,,,, // Sky Petite
 1059,Mistress@NPC_SUMMONSLAVE,idle,196,4,5000,3000,360000,no,self,slavele,2,1156,,,,, // Sky Petite
@@ -328,7 +328,7 @@
 1069,Swordfish,attack,184,2,200,0,7500,yes,target,always,0,,,,,,
 1069,Swordfish,chase,86,1,300,2000,10000,yes,target,myhpltmaxrate,30,,,,,,
 1069,Swordfish,chase,86,1,100,2000,10000,yes,target,always,0,,,,,,
-1070,Kukre,184,1,100,0,15000,yes,target,always,0,,,,,,
+1070,Kukre,attack,184,1,100,0,15000,yes,target,always,0,,,,,,
 1070,Kukre,loot,197,1,15,0,10000,yes,self,always,0,,,,,,
 1071,Pirate Skeleton,attack,5,3,300,1500,10000,no,target,myhpltmaxrate,30,,,,,,
 1071,Pirate Skeleton,attack,5,3,100,1500,10000,no,target,always,0,,,,,,
@@ -2399,7 +2399,7 @@
 1621,Venomous@NPC_BLINDATTACK,attack,177,3,300,1000,1000,no,target,always,0,,,,,,
 1622,Teddy Bear@NPC_CURSEATTACK,attack,181,3,300,1000,1000,no,target,always,0,,,,,,
 1622,Teddy Bear@NPC_CRITICALSLASH,attack,170,1,300,0,30000,no,target,always,0,,,,,,
-1622,Teddy Bear@NPC_DISPEL,attack,289,1,100,300,1000.no,target,always,0,,,,,,
+1622,Teddy Bear@NPC_DISPEL,attack,289,1,100,300,1000,no,target,always,0,,,,,,
 1622,Teddy Bear@NPC_SELFDESTRUCTION,any,173,1,200,0,0,no,self,myhpltmaxrate,20,,,,,,
 1623,RSX-0806@NPC_AGIUP,attack,350,3,500,0,60000,no,self,myhpltmaxrate,30,,,,,,
 1623,RSX-0806@NPC_AGIUP,chase,350,3,500,0,60000,no,self,myhpltmaxrate,30,,,,,,
@@ -2456,7 +2456,7 @@
 
 // Normal Advanced Class Mobs
 1634,Seyren Windsor@KN_SPEARBOOMERANG,chase,59,5,500,0,5000,yes,target,always,0,,,,,,
-1634,Seyren Windsor@KN_BOWLINGBASH,angry,62,7,500,800,5000,no,target,always,0,,,,,,
+//1634,Seyren Windsor@KN_BOWLINGBASH,angry,62,7,500,800,5000,no,target,always,0,,,,,,
 1634,Seyren Windsor@NPC_CRITICALSLASH,attack,170,1,1000,0,30000,no,target,always,0,,,,,,
 1634,Seyren Windsor@NPC_POWERUP,attack,349,5,100,0,30000,no,self,always,0,,,,,,
 1634,Seyren Windsor@NPC_STUNATTACK,attack,179,4,3000,1000,10000,no,target,myhpltmaxrate,30,,,,,,
@@ -2478,7 +2478,7 @@
 1636,Howard Alt-Eisen@NPC_SHIELDBRAKE,attack,346,5,500,0,5000,yes,target,always,0,,,,,,
 1636,Howard Alt-Eisen@NPC_FIREATTACK,attack,186,3,500,500,5000,no,target,always,0,,,,,,
 1636,Howard Alt-Eisen@NPC_GROUNDATTACK,attack,185,2,500,500,5000,no,target,always,0,,,,,,
-1636,Howard Alt-Eisen@MC_MAMMONITE,angry,42,5,500,800,5000,no,target,always,0,,,,,,
+//1636,Howard Alt-Eisen@MC_MAMMONITE,angry,42,5,500,800,5000,no,target,always,0,,,,,,
 1636,Howard Alt-Eisen@BS_MAXIMIZE,chase,114,5,500,1000,5000,no,self,always,0,,,,,,
 1636,Howard Alt-Eisen@BS_MAXIMIZE,attack,114,5,500,1000,5000,no,self,always,0,,,,,,
 1636,Howard Alt-Eisen@BS_ADRENALINE,chase,111,1,500,1500,5000,no,self,always,0,,,,,,
@@ -2509,14 +2509,14 @@
 1638,Cecil Damon@HT_FREEZINGTRAP,idle,121,5,50,0,300000,yes,self,always,0,,,,,,
 1638,Cecil Damon@HT_FLASHER,idle,120,5,50,0,300000,yes,self,always,0,,,,,,
 1638,Cecil Damon@AC_CHARGEARROW,attack,148,1,500,0,5000,yes,target,always,0,,,,,,
-1639,Kathryne Keyron@MG_FIREWALL,attack,18,5,10000,500,5000,yes,casttargeted,always,,,,,,,
+1639,Kathryne Keyron@MG_FIREWALL,attack,18,5,10000,500,5000,yes,target,always,,,,,,,
 1639,Kathryne Keyron@HW_GRAVITATION,attack,484,10,500,1000,5000,yes,target,always,0,,,,,,
 1639,Kathryne Keyron@MG_FROSTDIVER,attack,15,10,5000,1000,5000,yes,target,always,0,,,,,,
 1639,Kathryne Keyron@MG_FROSTDIVER,chase,15,10,2500,1000,5000,yes,target,always,0,,,,,,
-1639,Kathryne Keyron@WZ_JUPITEL,attack,84,20,10000,1500,5000,yes,target,afterskill,15,,,,,,6
-1639,Kathryne Keyron@WZ_JUPITEL,chase,84,20,10000,1500,5000,yes,target,afterskill,15,,,,,,6
-1639,Kathryne Keyron@WZ_THUNDERSTORM,attack,21,15,10000,1500,5000,yes,target,afterskill,84,,,,,,
-1639,Kathryne Keyron@WZ_THUNDERSTORM,chase,21,15,10000,1500,5000,yes,target,afterskill,84,,,,,,
+//1639,Kathryne Keyron@WZ_JUPITEL,attack,84,20,10000,1500,5000,yes,target,afterskill,15,,,,,,6
+//1639,Kathryne Keyron@WZ_JUPITEL,chase,84,20,10000,1500,5000,yes,target,afterskill,15,,,,,,6
+//1639,Kathryne Keyron@WZ_THUNDERSTORM,attack,21,15,10000,1500,5000,yes,target,afterskill,84,,,,,,
+//1639,Kathryne Keyron@WZ_THUNDERSTORM,chase,21,15,10000,1500,5000,yes,target,afterskill,84,,,,,,
 1639,Kathryne Keyron@MG_COLDBOLT,attack,14,3,500,1500,5000,yes,target,always,0,,,,,,
 1639,Kathryne Keyron@MG_COLDBOLT,chase,14,3,500,1500,5000,yes,target,always,0,,,,,,
 1639,Kathryne Keyron@MG_SIGHT,chase,10,1,2000,0,5000,yes,self,always,0,,,,,,
@@ -2533,7 +2533,7 @@
 1640,G_Lord Knight Seyren@NPC_STUNATTACK,attack,179,4,3000,1000,10000,no,target,myhpltmaxrate,30,,,,,,
 1640,G_Lord Knight Seyren@NPC_STUNATTACK,attack,179,4,1000,1000,10000,no,target,always,0,,,,,,
 1640,G_Lord Knight Seyren@SM_MAGNUM,attack,7,10,500,500,5000,no,target,always,0,,,,,,
-1640,G_Lord Knight Seyren@KN_BOWLINGBASH,angry,62,7,500,800,5000,no,target,always,0,,,,,,
+//1640,G_Lord Knight Seyren@KN_BOWLINGBASH,angry,62,7,500,800,5000,no,target,always,0,,,,,,
 1640,G_Lord Knight Seyren@KN_BRANDISHSPEAR,attack,57,10,2000,0,5000,yes,target,always,0,,,,,,29
 1641,G_Assassin Cross Eremes@BS_MAXIMIZE,chase,114,5,500,1000,5000,no,self,always,0,,,,,,
 1641,G_Assassin Cross Eremes@BS_MAXIMIZE,attack,114,5,500,1000,5000,no,self,always,0,,,,,,
@@ -2552,7 +2552,7 @@
 1642,G_Mastersmith Howard@NPC_FIREATTACK,attack,186,3,500,500,5000,no,target,always,0,,,,,,
 1642,G_Mastersmith Howard@NPC_GROUNDATTACK,attack,185,2,500,500,5000,no,target,always,0,,,,,,
 1642,G_Mastersmith Howard@NPC_POWERUP,attack,349,5,500,0,30000,yes,self,myhpltmaxrate,30,,,,,,
-1642,G_Mastersmith Howard@MC_MAMMONITE,angry,42,5,500,800,5000,no,target,always,0,,,,,,
+//1642,G_Mastersmith Howard@MC_MAMMONITE,angry,42,5,500,800,5000,no,target,always,0,,,,,,
 1642,G_Mastersmith Howard@BS_MAXIMIZE,chase,114,5,500,1000,5000,no,self,always,0,,,,,,
 1642,G_Mastersmith Howard@BS_MAXIMIZE,attack,114,5,500,1000,5000,no,self,always,0,,,,,,
 1642,G_Mastersmith Howard@WS_MELTDOWN,attack,384,5,500,1000,5000,no,self,always,0,,,,,,
@@ -2599,7 +2599,7 @@
 1646,Lord Knight Seyren@NPC_STUNATTACK,attack,179,4,3000,1000,10000,no,target,myhpltmaxrate,30,,,,,,
 1646,Lord Knight Seyren@NPC_STUNATTACK,attack,179,4,1000,1000,10000,no,target,always,0,,,,,,
 1646,Lord Knight Seyren@SM_MAGNUM,attack,7,10,500,500,5000,no,target,always,0,,,,,,
-1646,Lord Knight Seyren@KN_BOWLINGBASH,angry,62,7,500,800,5000,no,target,always,0,,,,,,
+//1646,Lord Knight Seyren@KN_BOWLINGBASH,angry,62,7,500,800,5000,no,target,always,0,,,,,,
 1646,Lord Knight Seyren@KN_BRANDISHSPEAR,attack,57,10,2000,0,5000,yes,target,always,0,,,,,,29
 1646,Lord Knight Seyren@NPC_SUMMONSLAVE,attack,196,1,5000,3000,360000,no,self,slavele,1,1641,1642,1643,1644,1645,0
 1646,Lord Knight Seyren@NPC_SUMMONSLAVE,chase,196,1,5000,3000,360000,no,self,slavele,1,1641,1642,1643,1644,1645,0
@@ -2634,7 +2634,7 @@
 1648,Mastersmith Howard@NPC_FIREATTACK,attack,186,3,500,500,5000,no,target,always,0,,,,,,
 1648,Mastersmith Howard@NPC_GROUNDATTACK,attack,185,2,500,500,5000,no,target,always,0,,,,,,
 1648,Mastersmith Howard@NPC_POWERUP,attack,349,5,500,0,30000,yes,self,myhpltmaxrate,30,,,,,,
-1648,Mastersmith Howard@MC_MAMMONITE,angry,42,5,500,800,5000,no,target,always,0,,,,,,
+//1648,Mastersmith Howard@MC_MAMMONITE,angry,42,5,500,800,5000,no,target,always,0,,,,,,
 1648,Mastersmith Howard@BS_MAXIMIZE,chase,114,5,500,1000,5000,no,self,always,0,,,,,,
 1648,Mastersmith Howard@BS_MAXIMIZE,attack,114,5,500,1000,5000,no,self,always,0,,,,,,
 1648,Mastersmith Howard@WS_MELTDOWN,attack,384,5,500,1000,5000,no,self,always,0,,,,,,
@@ -2716,7 +2716,7 @@
 1653,Wickebine Tres@TF_THROWSTONE,chase,152,1,500,0,10000,no,target,always,0,,,,,,
 1653,Wickebine Tres@TF_POISON,attack,52,10,500,0,20000,no,target,always,0,,,,,,
 1653,Wickebine Tres@NPC_POISONATTACK,attack,188,3,500,0,10000,no,target,always,0,,,,,,
-1654,Armeyer Dinze@MC_MAMMONITE,angry,42,7,500,800,5000,no,target,always,0,,,,,,
+//1654,Armeyer Dinze@MC_MAMMONITE,angry,42,7,500,800,5000,no,target,always,0,,,,,,
 1654,Armeyer Dinze@NPC_STUNATTACK,attack,179,4,500,1000,10000,no,target,always,0,,,,,,
 1654,Armeyer Dinze@NPC_GROUNDATTACK,attack,185,3,1000,0,10000,no,target,always,0,,,,,,
 1655,Errende Ebecee@AL_DECAGI,chase,30,10,2000,0,60000,no,target,always,0,,,,,,29
@@ -2754,7 +2754,7 @@
 1658,MvP Egnigem Cenia@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
 1659,G_Wickebine Tres@TF_DOUBLE,attack,48,10,500,0,10000,no,target,always,0,,,,,,
 1659,G_Wickebine Tres@TF_POISON,attack,52,10,500,0,10000,no,target,always,0,,,,,,
-1660,G_Armeyer Dinze@MC_MAMMONITE,angry,42,7,500,800,5000,no,target,always,0,,,,,,
+//1660,G_Armeyer Dinze@MC_MAMMONITE,angry,42,7,500,800,5000,no,target,always,0,,,,,,
 1660,G_Armeyer Dinze@NPC_STUNATTACK,attack,179,4,1000,1000,10000,no,target,always,0,,,,,,
 1661,G_Errende Ebecee@AL_DECAGI,chase,30,10,2000,0,60000,no,target,always,0,,,,,,29
 1661,G_Errende Ebecee@AL_HEAL,attack,28,10,10000,500,5000,no,self,myhpltmaxrate,30,,,,,,18
@@ -2887,9 +2887,9 @@
 1690,G_Spring Rabbit@NPC_GROUNDATTACK,attack,185,1,2000,0,5000,no,target,always,0,,,,,,
 1690,G_Spring Rabbit@NPC_EMOTION,walk,197,1,500,0,5000,no,self,always,0,2,,,,,
 1690,G_Spring Rabbit@NPC_EMOTION,chase,197,1,50,0,30000,no,self,always,0,19,131,,,,
-1691,G_Kraben,@NPC_CRITICALSLASH,attack,170,1,500,500,5000,no,target,always,0,,,,,,19
-1691,G_Kraben,@NPC_COMBOATTACK,attack,171,1,500,700,5000,no,target,always,0,,,,,,19
-1691,G_Kraben,@NPC_STUNATTACK,attack,179,3,500,1500,5000,no,target,always,0,,,,,,06
+1691,G_Kraben@NPC_CRITICALSLASH,attack,170,1,500,500,5000,no,target,always,0,,,,,,19
+1691,G_Kraben@NPC_COMBOATTACK,attack,171,1,500,700,5000,no,target,always,0,,,,,,19
+1691,G_Kraben@NPC_STUNATTACK,attack,179,3,500,1500,5000,no,target,always,0,,,,,,06
 
 // Hugel Fields - Episode 10.3
 1692,Breeze,attack,161,1,500,2000,60000,no,self,myhpltmaxrate,30,,,,,,09
@@ -2922,9 +2922,9 @@
 1698,Death Word@NPC_SPLASHATTACK,angry,174,1,2000,0,5000,yes,target,attackpcgt,2,,,,,,
 1698,Death Word@NPC_SPLASHATTACK,attack,174,1,2000,0,5000,yes,target,attackpcgt,2,,,,,,
 1698,Death Word@NPC_CURSEATTACK,attack,181,3,500,800,5000,no,target,always,0,,,,,,
-1698,Death Word@NPC_BLOODDRAIN,angry,199,1,500,0,5000,yes,target,always,0,,,,,,
+//1698,Death Word@NPC_BLOODDRAIN,angry,199,1,500,0,5000,yes,target,always,0,,,,,,
 1698,Death Word@NPC_BLOODDRAIN,attack,199,1,500,0,5000,yes,target,always,0,,,,,,
-1698,Death Word@NPC_PIERCINGATT,angry,158,3,500,0,5000,yes,target,always,0,,,,,,
+//1698,Death Word@NPC_PIERCINGATT,angry,158,3,500,0,5000,yes,target,always,0,,,,,,
 1698,Death Word@NPC_PIERCINGATT,attack,158,3,500,0,5000,yes,target,always,0,,,,,,
 1699,Ancient Mimic@CR_AUTOGUARD,attack,249,2,500,0,300000,yes,self,always,0,,,,,,
 1699,Ancient Mimic@CR_AUTOGUARD,chase,249,2,2000,0,300000,yes,self,longrangeattacked,0,,,,,,
@@ -2938,10 +2938,10 @@
 1700,Dame of Sentinel@AL_HEAL,attack,28,3,10000,500,5000,yes,friend,friendhpltmaxrate,60,,,,,,
 1701,Bearer of Shelter@NPC_DARKTHUNDER,attack,341,3,500,1500,5000,yes,target,always,0,,,,,,
 1701,Bearer of Shelter@NPC_DARKTHUNDER,chase,341,3,500,1500,5000,yes,target,always,0,,,,,,
-1701,Bearer of Shelter@NPC_DARKTHUNDER,follow,341,3,500,1500,5000,yes,target,always,0,,,,,,
+//1701,Bearer of Shelter@NPC_DARKTHUNDER,follow,341,3,500,1500,5000,yes,target,always,0,,,,,,
 1701,Bearer of Shelter@AS_VENOMDUST,attack,140,1,500,1500,5000,no,target,always,0,,,,,,
 1701,Bearer of Shelter@NPC_DARKNESSATTACK,attack,190,3,500,0,5000,yes,target,always,0,,,,,,
-1701,Bearer of Shelter@NPC_BLINDATTACK,angry,177,3,500,0,5000,yes,target,always,0,,,,,,
+//1701,Bearer of Shelter@NPC_BLINDATTACK,angry,177,3,500,0,5000,yes,target,always,0,,,,,,
 1701,Bearer of Shelter@NPC_BLINDATTACK,attack,177,3,500,0,5000,yes,target,always,0,,,,,,
 1702,Baroness of Retribution@NPC_GRANDDARKNESS,attack,339,1,2000,0,10000,yes,self,myhpltmaxrate,50,,,,,,
 1702,Baroness of Retribution@NPC_DARKCROSS,attack,338,5,2000,0,10000,no,target,always,0,,,,,,
@@ -2950,7 +2950,6 @@
 1702,Baroness of Retribution@NPC_CURSEATTACK,attack,181,3,2000,0,10000,no,target,always,0,,,,,,
 1702,Baroness of Retribution@NPC_CURSEATTACK,chase,181,3,2000,0,10000,no,target,always,0,,,,,,
 1702,Baroness of Retribution@KN_BOWLINGBASH,attack,62,5,500,0,10000,no,target,always,0,,,,,,
-1702,Baroness of Retribution@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
 1703,Lady Solace@CR_GRANDCROSS,attack,254,1,2000,0,10000,yes,self,myhpltmaxrate,50,,,,,,
 1703,Lady Solace@PR_LEXAETERNA,attack,78,1,2000,0,10000,yes,target,always,0,,,,,,
 1703,Lady Solace@PR_LEXAETERNA,chase,78,1,2000,0,10000,yes,target,always,0,,,,,,
@@ -2965,7 +2964,7 @@
 1704,Odium of Thanatos@NPC_STOP,attack,342,1,500,500,5000,no,target,always,0,,,,,,
 1704,Odium of Thanatos@NPC_CHANGEDARKNESS,attack,168,1,10000,2000,600000,no,self,myhpltmaxrate,30,,,,,,
 1705,Despero of Thanatos@NPC_FIREATTACK,attack,186,5,500,0,5000,no,target,always,0,,,,,,
-1705,Despero of Thanatos@SM_PROVOKE,follow,5,10,1000,600,5000,no,target,always,0,,,,,,
+//1705,Despero of Thanatos@SM_PROVOKE,follow,5,10,1000,600,5000,no,target,always,0,,,,,,
 1705,Despero of Thanatos@SM_PROVOKE,chase,5,10,1000,600,5000,no,target,always,0,,,,,,
 1705,Despero of Thanatos@NPC_CRITICALSLASH,attack,170,1,500,500,5000,no,target,always,0,,,,,,
 1705,Despero of Thanatos@NPC_TELEKINESISATTACK,attack,191,5,500,0,5000,yes,target,always,0,,,,,,
@@ -3007,7 +3006,7 @@
 1709,G_Odium of Thanatos@NPC_STOP,attack,342,1,500,500,5000,no,target,always,0,,,,,,
 1709,G_Odium of Thanatos@NPC_CHANGEDARKNESS,attack,168,1,10000,2000,600000,no,self,myhpltmaxrate,30,,,,,,
 1710,G_Despero of Thanatos@NPC_FIREATTACK,attack,186,5,500,0,5000,no,target,always,0,,,,,,
-1710,G_Despero of Thanatos@SM_PROVOKE,follow,5,10,1000,600,5000,no,target,always,0,,,,,,
+//1710,G_Despero of Thanatos@SM_PROVOKE,follow,5,10,1000,600,5000,no,target,always,0,,,,,,
 1710,G_Despero of Thanatos@SM_PROVOKE,chase,5,10,1000,600,5000,no,target,always,0,,,,,,
 1710,G_Despero of Thanatos@NPC_CRITICALSLASH,attack,170,1,500,500,5000,no,target,always,0,,,,,,
 1710,G_Despero of Thanatos@NPC_TELEKINESISATTACK,attack,191,5,500,0,5000,yes,target,always,0,,,,,,

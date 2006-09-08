@@ -4,6 +4,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+9/08/06
+	* Fixed: All errors in mob_skill_db.txt [Tsuyuki]
+	 - Note: Had to comment a couple things, "Angry", "Follow", and "Afterskill" since they aren't implemented yet..
+
 9/07/06
 	* Imported: Converted Eye of Hellion Quest to Freya from eA [Tsuyuki]
 	* Integrated: Subdev Branch up to Rev. 120 [Mikey]
