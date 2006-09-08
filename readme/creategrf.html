@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-   <title>Freya RO Emulator</title>
+   <title>Freya Ragnarok Online Emulator</title>
    <meta http-equiv="Content-Type" content="text/html; charset=charset=UTF-8" />
    <meta http-equiv="content-style-type" content="text/css">
-   <meta name="Author" content="Freya Team">
-   <meta name="Publisher" content="Freya Team">
+   <meta name="Author" content="Freya Development Team">
+   <meta name="Publisher" content="Freya Development Team">
    <meta name="Copyright" content="COPYRIGHT Freya under GPL licence">
    <meta name="OWNER" content="Freya">
    <link rel="stylesheet" type="text/css" href="include/style.css" />
@@ -15,7 +15,7 @@
 <table border="0" cellpadding="0" cellspacing="3">
 <tr>
 <td width="100" class="content" valign="top"><br />
-<a class="left" href="http://www.ro-freya.net" target="_top">
+<a class="left" href="http://freya.dns.st/forum/index.php?act=idx" target="_top">
 <b>HOME</b></a>
 <br /><br />
 <a class="left" target="_top" href="index.html" >Introduction</a><br />
@@ -51,53 +51,47 @@ With a data folder, it can take a lot of room on your computer, but with a .GRF 
 Also, unless botters know how to extract .GRF's it makes it harder to get your servers IP, when with a data folder its right there in your sclientinfo.xml.
 Also, .GRFs can be updated with patch files such as .GPF's with RO Loader.</p>
 
-<p>1. The first thing you'll need to do is head to<br />
-<a href="http://eamirror.skamfroj.net/">http://eamirror.skamfroj.net/</a></p>
+<p>1. The first thing you'll need to do is download these files:<br /><br />
 
-<p>2. Scroll down and un-hide the Client Stuff section.</p>
-
-<p>3. Download the files GRF Factory by Timecop, and Gay Convert by Timecop.</p>
-
-<p>(If those files are down then download them from my mirror here:<br />
 Gay Convert here:<br />
-<a href="http://www.jodaho.5gigs.com/gayconv.rar">http://www.jodaho.5gigs.com/gayconv.rar</a></p>
-GRF Factory here:<br />
-<a href="http://www.jodaho.5gigs.com/GRF%20Factory.rar">http://www.jodaho.5gigs.com/GRF%20Factory.rar</a>)</p>
-<p>Extract both those files with <a href="http://www.rarlabs.com">WinRAR</a></p>
+<a href="http://eamirror.skamfroj.net/xdl/download.php?id=107">http://eamirror.skamfroj.net/xdl/download.php?id=107</a><br /><br />
+And GRF Factory here:<br />
+<a href="http://www.shadowro.net/tsuyuki/Tools/GRF%20Factory%200.6c%20-%20TimeCop.rar">http://www.shadowro.net/tsuyuki/Tools/GRF%20Factory%200.6c%20-%20TimeCop.rar</a></p>
+<p>You can extract those files with <a href="http://www.rarlabs.com">WinRAR</a></p>
 
-<p>4. Take the data folder that you want to turn into a .GRF, right click on it, select Copy, then head into the same folder as you installed Gay Convert, and right click and select Paste to bring the data folder right by gayconv.exe</p>
+<p>2. Take the data folder that you want to turn into a .GRF, right click on it, select Copy, then head into the same folder as you installed Gay Convert, and right click and select Paste to bring the data folder right by gayconv.exe</p>
 
-<p>5. Run gayconv.exe and after it's completed, your data folder instead of being in messed up letters (ASCII) should now be in Korea.
+<p>3. Run gayconv.exe and after it's completed, your data folder instead of being in messed up letters (ASCII) should now be in Korea.
 If it isn't, and it just has little squares, that means you need to install Korean fonts on your PC before you can continue.
 If it says "cannot cd into the dir" then use the solution at the bottom of the post.</p>
 
-<p>6. Head to where you installed GRF Factory and run GRF Factory.exe</p>
+<p>4. Head to where you installed GRF Factory and run GRF Factory.exe</p>
 
-<p>7. Click the Add Dir button and choose the Korean data folder.
+<p>5. Click the Add Dir button and choose the Korean data folder.
 Then after its loaded on, click Repack and name your GRF something like yourservernamehere.grf
 (In the choose file name box don't just write yourservernamehere and expect it to add the .grf on the end, you have to actually type yourservernamehere.grf)</p>
 
-<p>8. Now, in your Korean data folder directory there should be a file called yourservernamehere.grf</p>
+<p>6. Now, in your Korean data folder directory there should be a file called yourservernamehere.grf</p>
 
-<p>9. You now have to configure the DATA.ini. Open it up in your RO folder and it should look something like this:</p>
+<p>7. You now have to configure the DATA.ini. Open it up in your RO folder and it should look something like this:</p>
 <p><span style='color:green'>0=adata.grf<br />
 1=sdata.grf<br />
 2=data.grf</span></p>
 
-<p>10. Now, edit the DATA.ini to read like this:</p>
+<p>8. Now, edit the DATA.ini to read like this:</p>
 <p><span style='color:green'>0=yourservernamehere.grf<br />
 1=adata.grf<br />
 2=sdata.grf<br />
 3=data.grf</span></p>
 
-<p>11. Now, make sure the client you're using reads the .GRF first. You can also edit the DATA.ini to read many .GRFs so it could be like:</p>
+<p>9. Now, make sure the client you're using reads the .GRF first. You can also edit the DATA.ini to read many .GRFs so it could be like:</p>
 <p><span style='color:green'>0=yourservernamehere.grf<br />
 1=adata.grf<br />
 2=sdata.grf<br />
 3=data.grf<br />
 4=yourserversmapshere.grf</span></p>
 
-<p>12. You're all set to go. Just release the DATA.ini and yourservernamehere.grf to your players and they're ready to go.</p>
+<p>10. You're all set to go. Just release the DATA.ini and yourservernamehere.grf to your players and they're ready to go.</p>
 
 <p>Any questions? Just ask.</p>
 
@@ -110,7 +104,7 @@ Then after its loaded on, click Repack and name your GRF something like yourserv
 
 <span style="font-weight: bold;">Q</span>:I get the error "can't cd into the dir" when I try to translate from ASCII to Korean.<br />
 <span style="font-weight: bold;">A</span>: Use this alternative method:<br />
-1. Download Unbolloxer here: <a href="http://www.jodaho.5gigs.com/unbollox.exe">http://www.jodaho.5gigs.com/unbollox.exe</a><br />
+1. Download Unbollox here: <a href="http://www.shadowro.net/tsuyuki/Server%20Files/Tools/Unbollox%202k4%20-%20StelTechCor.rar">http://www.shadowro.net/tsuyuki/Server%20Files/Tools/Unbollox%202k4%20-%20StelTechCor.rar</a><br />
 2. Open it and write in the path to your data folder at the top with back slashes (Not forward slashes, so C:/data would be wrong but C:\data would be right)<br />
 3. Click the button with the Korean text at the bottom left hand corner (Not the one with the weird ASCII letters.
  If the box next to it has squares in it then you need to install Korean fonts on your computer.

@@ -4237,7 +4237,7 @@ int clif_skillinfo(struct map_session_data *sd, int skillid, int type, int range
 	WPACKETW( 8) = sd->status.skill[skillid].lv;
 	WPACKETW(10) = skill_get_sp(id,sd->status.skill[skillid].lv);
 	if (range < 0) {
-		range = skill_get_range(id, sd->status.skill[skillid].lv);
+		range = skill_get_range(id, sd->status.skill[skillid].lv, pc_checkskill(sd, AC_VULTURE));
 		if (range < 0)
 			range = status_get_range(&sd->bl) - (range + 1);
 		WPACKETW(12) = range;
@@ -4275,7 +4275,7 @@ int clif_skillinfoblock(struct map_session_data *sd)
 			WPACKETW(len +  4) = 0;
 			WPACKETW(len +  6) = sd->status.skill[i].lv;
 			WPACKETW(len +  8) = skill_get_sp(id, sd->status.skill[i].lv);
-			range = skill_get_range(id, sd->status.skill[i].lv);
+			range = skill_get_range(id, sd->status.skill[i].lv, pc_checkskill(sd, AC_VULTURE));
 			if (range < 0)
 				range = status_get_range(&sd->bl) - (range + 1);
 			WPACKETW(len + 10)= range;
@@ -4311,7 +4311,7 @@ int clif_skillup(struct map_session_data *sd, int skill_num)
 	WPACKETW( 2) = skill_num;
 	WPACKETW( 4) = sd->status.skill[skill_num].lv;
 	WPACKETW( 6) = skill_get_sp(skill_num, sd->status.skill[skill_num].lv);
-	range = skill_get_range(skill_num, sd->status.skill[skill_num].lv);
+	range = skill_get_range(skill_num, sd->status.skill[skill_num].lv, pc_checkskill(sd, AC_VULTURE));
 	if (range < 0)
 		range = status_get_range(&sd->bl) - (range + 1);
 	WPACKETW( 8) = range;
@@ -5237,7 +5237,7 @@ int clif_item_skill(struct map_session_data *sd, int skillid, int skilllv, const
 	WPACKETW( 6) = 0;
 	WPACKETW( 8) = skilllv;
 	WPACKETW(10) = skill_get_sp(skillid, skilllv);
-	range = skill_get_range(skillid, skilllv);
+	range = skill_get_range(skillid, skilllv, pc_checkskill(sd, AC_VULTURE));
 	if (range < 0)
 		range = status_get_range(&sd->bl) - (range + 1);
 	WPACKETW(12) = range;
@@ -12606,13 +12606,13 @@ static int clif_parse(int fd) {
 		// 管理用パケット処理 - administration packets
 		case 0x7530: // Athena情報所得
 			WPACKETW(0) = 0x7531;
-			WPACKETB(2) = ATHENA_MAJOR_VERSION;
-			WPACKETB(3) = ATHENA_MINOR_VERSION;
-			WPACKETB(4) = ATHENA_REVISION;
-			WPACKETB(5) = ATHENA_RELEASE_FLAG;
-			WPACKETB(6) = ATHENA_OFFICIAL_FLAG;
-			WPACKETB(7) = ATHENA_SERVER_MAP;
-			WPACKETW(8) = ATHENA_MOD_VERSION;
+			WPACKETB(2) = FREYA_MAJORVERSION;
+			WPACKETB(3) = FREYA_MINORVERSION;
+			WPACKETB(4) = FREYA_REVISION;
+			WPACKETB(5) = FREYA_STATE;
+			WPACKETB(6) = 0;
+			WPACKETB(7) = FREYA_MAPVERSION;
+			WPACKETW(8) = 0;
 			SENDPACKET(fd, 10);
 			session[fd]->eof = 1;
 			RFIFOSKIP(fd,2);
@@ -12643,13 +12643,13 @@ static int clif_parse(int fd) {
 			return 0;
 		case 0x7535: // Request of the server version (freya version)
 			WPACKETW(0) = 0x7536;
-			WPACKETB(2) = ATHENA_MAJOR_VERSION;
-			WPACKETB(3) = ATHENA_MINOR_VERSION;
-			WPACKETB(4) = ATHENA_REVISION;
-			WPACKETB(5) = ATHENA_RELEASE_FLAG;
-			WPACKETB(6) = ATHENA_OFFICIAL_FLAG;
-			WPACKETB(7) = ATHENA_SERVER_MAP;
-			WPACKETW(8) = ATHENA_MOD_VERSION;
+			WPACKETB(2) = FREYA_MAJORVERSION;
+			WPACKETB(3) = FREYA_MINORVERSION;
+			WPACKETB(4) = FREYA_REVISION;
+			WPACKETB(5) = FREYA_STATE;
+			WPACKETB(6) = 0;
+			WPACKETB(7) = FREYA_MAPVERSION;
+			WPACKETW(8) = 0;
 #ifdef SVN_REVISION
 			if (SVN_REVISION >= 1) // in case of .svn directories have been deleted
 				WPACKETW(10) = SVN_REVISION;

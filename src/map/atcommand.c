@@ -3891,8 +3891,8 @@ ATCOMMAND_FUNC(jobchange) {
 				}
 			}
 		}
-		/* if class name not found */
-		if ((i == (int)(sizeof(jobs) / sizeof(jobs[0])))) {
+	/* if class name not found */
+	if ((i == (int)(sizeof(jobs) / sizeof(jobs[0])))) {
 			send_usage(sd, "Please, enter a valid job ID (usage: %s <job ID|\"job name\"> [upper]).", original_command);
 			send_usage(sd, "   0 Novice            7 Knight           14 Crusader         21 Peco Crusader");
 			send_usage(sd, "   1 Swordman          8 Priest           15 Monk             22 Formal");
@@ -14960,7 +14960,7 @@ ATCOMMAND_FUNC(request) {
  *------------------------------------------
  */
 ATCOMMAND_FUNC(version) {
-	sprintf(atcmd_output, "Freya version %d.%d.%d %s", ATHENA_MAJOR_VERSION, ATHENA_MINOR_VERSION, ATHENA_REVISION,
+	sprintf(atcmd_output, "Freya version %d.%d.%d %s", FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION,
 #ifdef USE_SQL
 	"SQL");
 #else
@@ -14981,17 +14981,16 @@ ATCOMMAND_FUNC(version) {
  *------------------------------------------
  */
 ATCOMMAND_FUNC(version2) {
-	sprintf(atcmd_output, "Freya version %d.%d.%d %s %s", ATHENA_MAJOR_VERSION, ATHENA_MINOR_VERSION, ATHENA_REVISION,
+	sprintf(atcmd_output, "Freya version %d.%d.%d %s %s", FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION,
 #ifdef USE_SQL
-	"SQL", ATHENA_RELEASE_FLAG ? "beta" : "final");
+	"SQL", FREYA_STATE ? "beta" : "final");
 #else
-	"TXT", ATHENA_RELEASE_FLAG ? "beta" : "final");
+	"TXT", FREYA_STATE ? "beta" : "final");
 #endif /* USE_SQL */
 #ifdef SVN_REVISION
 	if (SVN_REVISION >= 1) // in case of .svn directories have been deleted
 		sprintf(atcmd_output + strlen(atcmd_output), " (SVN rev.: %d)", (int)SVN_REVISION);
 #endif /* SVN_REVISION */
-	sprintf(atcmd_output + strlen(atcmd_output), ", Athena Mod version %d.", ATHENA_MOD_VERSION);
 	clif_displaymessage(fd, atcmd_output);
 
 	return 0;

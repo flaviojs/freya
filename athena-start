@@ -18,11 +18,11 @@ M_SRV_C6=./conf/grf-files.txt
 
 print_start() {
 #	more << EOF
-echo "Freya Starting..."
+echo "Freya is now starting..."
 echo "			(c) 2004-2006 Freya Project."
 echo "			URL:http://www.ro-freya.net/"
 echo ""
-echo "Debug informations will appear,"
+echo "Debug information will appear,"
 echo "since this is a test release."
 echo ""
 echo "checking..."
@@ -45,14 +45,14 @@ check_files() {
 	do
 		if [ ! -f ./$i ]; then
 			echo "$i does not exist, or can't run."
-			echo "Stoped, Check your compile or configuration file."
+			echo "Session terminated, check your compile or configuration file."
 			exit 1;
 		fi
 	done
 
 #	more << EOF
 echo "Check done."
-echo "Looks good, have a nice Freya!"
+echo "Looks good, have a nice session!"
 #EOF
 }
 	
@@ -69,7 +69,7 @@ case $1 in
 		exec ./${C_SRV} ${C_SRV_C} ${C_SRV_C2}&
 		exec ./${M_SRV} ${M_SRV_C} ${M_SRV_C2} ${M_SRV_C3} ${M_SRV_C4} ${M_SRV_C5} ${M_SRV_C6}&
 
-		echo "Now started Freya."
+		echo "Freya has now started."
 ;;
 	'stop')
 		ps ax | grep -E "${L_SRV}|${C_SRV}|${M_SRV}" | awk '{print $1}' | xargs kill -9

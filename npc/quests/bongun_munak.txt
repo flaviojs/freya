@@ -1,0 +1,176 @@
+//===== Freya Script =========================================
+//= Bon Gun/Munak Related Quests
+//===== By: ==================================================
+//= Unknown
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
+//= 3 Quests to get Taming Items for Munak/Bon Gun, and to get
+//= Bon Gun Pet Item.
+//===== Additional Comments: =================================
+//= 1.0 Merged three seperate files together [Tsuyuki]
+//============================================================
+
+// Bon Gun Taming Item Quest
+
+comodo.gat,135,227,5	script	Sherri	93,{
+	mes "[Sherri]";
+	mes " ";
+	mes "*sighs*";
+	next;
+	mes "[Sherri]";
+	mes "Oh? Whats the matter? ...Well, I have finally managed to encase the soul of a handsome boy ...";
+	next;
+	mes "[Sherri]";
+	mes "...so why am I sad?";
+	mes " ";
+	mes "It's because I don't even know how his personality is...say, if you can find me a 'Girl's Diary' about him, I'll give you his diary!";
+	next;
+	mes "[Sherri]";
+	mes "Can you please help me?";
+	next;
+	menu "What do I need again?",ExItems,"Here! I got what you need!",ExCreate,"Sorry, I can't help you.",ExEnd;
+
+ExItems:
+	mes "[Sherri]";
+	mes "What I desire is...";
+	mes " ";
+	mes "A 'Girl's Diary' about him...";
+	close;
+
+ExCreate:
+	mes "[Sherri]";
+	mes "Really!! You'll help me!";
+	next;
+	if(countitem(1558)<1) goto NoItem;
+	goto ExGive;
+
+NoItem:
+	mes "[Sherri]";
+	mes "Waahhhh, stop playing with my feelings!";
+	mes " ";
+	mes "Go away!";
+	close;
+
+ExGive:
+	mes "[Sherri]";
+	mes "YES! I am forever in your debt!";
+	delitem 1558,1;
+	getitem 659,1;
+	mes " ";
+	mes "Here is his diary as promised! Again - Thank you!";
+	next;
+	mes "[Sherri]";
+		mes "Wait! Here's his sword, I found it next to him. But it's broken...I know of a old man just west of Geffen who can fix such a sword!";
+	getitem 7110,1;
+	close;
+
+ExEnd:
+	mes "[Sherri]";
+		mes "*sighs*";
+	close;
+}
+
+// Bon Gun Sword Quest
+
+gef_fild07.gat,183,239,5	script	Old Smith	120,{
+	mes "[Old Smith]";
+	mes "Ah, isn't it peaceful up here - I used to be one of the legendary Blacksmiths of midgard...sadly my skills have faded.";
+	next;
+	if(countitem(7110)<1) goto NoItemS;
+	mes "[Old Smith]";
+	mes "Hmm, it seems as if you need something. What would that be?";
+
+	menu "Can you fix this broken sword?",ExItems,"Nothing really...",ExEnd;
+
+	ExItems:
+		mes "[Old Smith]";
+		mes "Ahhh, this is a very old sword and yes I can fix it, I'll need an 'Oridecon' to mend the breaks though.";
+		next;
+		if(countitem(7110)<1) goto NoItem;
+		if(countitem(984)<1) goto NoItem;
+		goto ExGive;
+
+	NoItem:
+		mes "[Old Smith]";
+		mes "Hmm, you seem to be missing something...probably that 'Oridecon'.";
+		close;
+
+	NoItemS:
+		mes "[Old Smith]";
+		mes "...ah well, go out and live life young one. Time never stops!";
+		close;
+
+	ExGive:
+		mes "[Old Smith]";
+		mes "Ah yes here we go!";
+		delitem 7110,1;
+		delitem 984,1;
+		getitem 10020,1;
+		mes " ";
+		mes "Haha! Gramps still has that old magic touch, Here you go!";
+		close;
+
+	ExEnd:
+		mes "[Old Smith]";
+		mes "...ah well, go out and live life young one. Time never stops!";
+		close;
+}
+
+// Munak Taming Item Quest
+
+izlude_in.gat,115,76,5	script	Evan	47,{
+	mes "[Evan]";
+		mes " ";
+		mes "*sighs*";
+	next;
+	mes "[Evan]";
+		mes "Oh? Whats the matter? ...Well, I have finally managed to encase the soul of a pretty girl ...";
+	next;
+	mes "[Evan]";
+		mes "...so why am I sad?";
+		mes " ";
+		mes "It's because I don't even know how she looks like...say, if you can find me and 'Old Portrait' of her, I'll give you her lover's lost letter!";
+	next;
+	mes "[Evan]";
+		mes "Whaddaya say? ..pal?";
+	next;
+	menu "What do I need again?",ExItems,"Here! I got what you need!",ExCreate,"Sorry, I can't help you.",ExEnd;
+
+ExItems:
+	mes "[Evan]";
+		mes "A picture of her lovely face...";
+		mes " ";
+		mes "An 'Old Portrait' preferrably...";
+	close;
+
+ExCreate:
+	mes "[Evan]";
+		mes "Really!! You'll help me!";
+	next;
+if(countitem(7014)<1) goto NoItem;
+	goto ExGive;
+
+NoItem:
+	mes "[Evan]";
+		mes "Waahhhh, stop playing with my feelings!";
+		mes " ";
+		mes "Go away!";
+	close;
+
+ExGive:
+	mes "[Evan]";
+		mes "YES! I am forever in your debt!";
+	delitem 7014,1;
+	getitem 636,1;
+		mes " ";
+		mes "Here is lover's lost letter as promised! Again - Thank you!";
+	close;
+
+ExEnd:
+	mes "[Evan]";
+		mes "*sighs*";
+	close;
+}

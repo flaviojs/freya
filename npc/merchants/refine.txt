@@ -35,6 +35,7 @@
 //= 1.7 - Added Einbroch Refiners (Custom names ^^;) and a duplicated BS Shop. [Poki#3]
 //= 1.8 - Added Lighthalzen Refiners (Custom names again ^^;) [Poki#3]
 //= 1.9 - Replaced all 'ends' for 'break' as per Freya script engine [Proximus]
+//= 2.0 - Fixed Lighthalzen & Einbroch Refiner Names [Tsuyuki]
 //============================================================
 
 
@@ -188,12 +189,12 @@ yuno_in01.gat,164,26,6	script	Disturb	88,{
 	callfunc "refinemain";
 	break;
 }
-ein_in01.gat,24,87,6	script	Katamo	826,{
+ein_in01.gat,24,87,6	script	Manthasman	826,{
 	set @name$,"Katamo";
 	callfunc "refinemain";
 	break;
 }
-lhz_in02.gat,282,20,7	script	Marc	869,{
+lhz_in02.gat,282,20,7	script	Fulerr	869,{
 	set @name$,"Marc";
 	callfunc "refinemain";
 	break;
@@ -573,12 +574,12 @@ yuno_in01.gat,171,26,6	script	Dillemat	88,{
 	callfunc "phramain";
 	break;
 }
-ein_in01.gat,15,87,7	script	Gorly	86,{
+ein_in01.gat,15,87,7	script	Tirehaus	86,{
 	set @name$,"Gorly";
 	callfunc "phramain";
 	break;
 }
-lhz_in02.gat,278,24,3	script	Kato	86,{
+lhz_in02.gat,278,24,3	script	Krugg	86,{
 	set @name$,"Kato";
 	callfunc "phramain";
 	break;
@@ -666,12 +667,12 @@ yuno_in01.gat,171,22,6	script	Delayt	88,{
 	callfunc "orimain";
 	break;
 }
-ein_in01.gat,18,82,6	script	Dati	84,{
+ein_in01.gat,18,82,6	script	Matestein	84,{
 	set @name$,"Dati";
 	callfunc "orimain";
 	break;
 }
-lhz_in02.gat,281,24,5	script	Gadamari	84,{
+lhz_in02.gat,281,24,5	script	Fruel	84,{
 	set @name$,"Gadamari";
 	callfunc "orimain";
 	break;
@@ -747,17 +748,17 @@ prt_in.gat,62,54,2	script	Grendal	84,{
 	break;
 }
 //Temp Spot, Not Sure Where To place
-payon.gat,149,182,2	script	Repairman	88,{
+payon.gat,149,182,2	script	Repairman#01	88,{
 	set @name$,"Repairman";
 	callfunc "repairmain";
 	break;
 }
-morocc_in.gat,71,40,2	script	Repairman	99,{
+morocc_in.gat,71,40,2	script	Repairman#02	99,{
 	set @name$,"Repairman";
 	callfunc "repairmain";
 	break;
 }
-lhz_in02.gat,284,14,3	script	Repairman	86,{
+lhz_in02.gat,284,14,3	script	Repairman#03	86,{
 	set @name$,"Repairman";
 	callfunc "repairmain";
 	break;
@@ -766,7 +767,7 @@ lhz_in02.gat,284,14,3	script	Repairman	86,{
 //============================================================
 //= Equipment Repair Function
 //============================================================
-function	script	repairmain	{
+function	script	Repairmain	{
 	set @repairprice,5000;
 	mes "[" + @name$ + "]";
 	mes "I am the Repair Smith and I can repair any Arms you want.";

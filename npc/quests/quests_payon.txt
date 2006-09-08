@@ -1,19 +1,20 @@
-//===== eAthena Script =======================================
-//= Item Quest NPCs located in Payon
-//===== By: ==================================================
+//===== Freya Script =========================================
+//= Quest NPCs related to Payon
+//===== By: ================================================== 
 //= kobra_k88
-//===== Current Version: =====================================
-//= 1.2
-//===== Compatible With: =====================================
-//= eAthena 7.15 +
-//===== Description: =========================================
+//===== Current Version: ===================================== 
+//= 1.4
+//===== Compatible With: ===================================== 
+//= Freya
+//===== Description: ========================================= 
 //= Pretend Murder, Ear Muffs, Oxygen, Derivuchi Cap, Helm of Angel Quests.
-//===== Additional Comments: =================================
+//===== Additional Comments: ================================= 
 //= Fully working
 //= 1.1 Helm of Angel bug fixed [Lupus]
 //= 1.2 Fixed skirt of virgin [Lupus]
-//============================================================
-
+//= 1.3 Fixed exploits [Lupus]
+//= 1.4 Removed Duplicates [Silent]
+//============================================================ 
 
 
 //==========================================================================================//
@@ -35,7 +36,7 @@ payon.gat,154,170,4	script	Granny	78,{
 	mes "[Granny]";
 	mes "What was I saying before? Oh yes! I need some special cloth to make clothes for my family.";
 	mes "If you happen to come across some ^5555FF'Skirt of Virgin'^000000, please let me know.";
-	emotion 20;
+	emotion e_hmm;
 	next;
 	mes "[Granny]";
 	mes "I need ^5555FF'4 Skirt of Virgin'^000000 to make the clothes.  I will be very greatfull if you could bring me some.";
@@ -46,9 +47,10 @@ L_Get:
 	next;
 	menu "Why of course granny",-,"Heck no ya old bag!",M_No;
 
+		if(countitem(1049) < 4) goto M_No;
 		mes "[Granny]";
 		mes "Bless your kind heart.  Now I can make some special clothes for my family.  Let me give you a reward for being so genrous dear.";
-		emotion 14;
+		emotion e_lv2;
 		next;
 		getitem 2293,1;
 		delitem 1049,4;
@@ -57,14 +59,15 @@ L_Get:
 		mes "I've kept it as a reminder of my days as an actress, but with my memory as bad as it is, it's really of no use to me anymore.";
 		next;
 		mes "[Granny]";
-		mes "I'm sure you'll have fun using it at parties.";
+		mes "I'm sure you'll have fun using it at parties."; 
 		close;
-
+		
 	M_No:
 		mes "[Granny]";
 		mes "Well I never!!! Kids these days just have no respect or compasion for their elders!";
-		emotion 32;
+		emotion e_pif;
 		close;
+
 }
 
 
@@ -97,9 +100,13 @@ payon_in01.gat,18,10,4	script	Mystic Lady	75,{
 		mes "[Mystic Lady]";
 		mes "With those items I can make you a pair of 'Ear Muffs'.  Believe me, they are of the highest quality and look good on just about anybody!";
 		close;
-
+	
 	M_Muffs:
-		if((countitem(724)<1) || (countitem(5001)<1) || (countitem(949)<200) || (zeny<5000)) goto sL_NotEnuf;
+		if(countitem(724)<1 || countitem(5001)<1 || countitem(949)<200 || zeny<5000) goto sL_NotEnuf;
+		delitem 724,1;
+		delitem 5001,1;
+		delitem 949,200;
+		set Zeny, Zeny-5000;
 		mes "[Mystic Lady]";
 		mes "Oh, I see that you have brought all of the required items.  Just a moment please...";
 		next;
@@ -107,10 +114,6 @@ payon_in01.gat,18,10,4	script	Mystic Lady	75,{
 		mes "... this goes here... that goes there...... some glue here... a couple stitches over there..........";
 		next;
 		getitem 2283,1;
-		delitem 724,1;
-		delitem 5001,1;
-		delitem 949,200;
-		set Zeny, Zeny-5000;
 		mes "[Mystic Lady]";
 		mes "Ah, there you are! One pair of my familys' specialty Ear Muffs.  Enjoy!";
 		close;
@@ -121,20 +124,21 @@ payon_in01.gat,18,10,4	script	Mystic Lady	75,{
 			close;
 	M_End:
 		close;
+
 }
 
 
 //========================================================================================//
 //					Oxygen Mask Quest
 //========================================================================================//
-payon_in02.gat,25,71,4	script	Young Man	86,{
+payon_in02.gat,25,71,4	script	Young Man#11	86,{
 	mes "[Young Man]";
 	if(countitem(701) >= 5) goto L_GotOra;
 	mes "Blahhhhhh! I... I... I JUST CAN'T take it anymore!! You little stinky, filthy, BASTARDS!!!";
-	emotion 6;
+	emotion e_an;
 	next;
 	menu "Continue.",M_Cont, "End Conversation.",M_End;
-
+	
 	M_Cont:
 		mes "[Young Man]";
 		mes "~Sigh~ I've had a rough life.  You see, both my parents passed away when I was a kid, so I had to work to support myself at a young age.";
@@ -148,7 +152,7 @@ payon_in02.gat,25,71,4	script	Young Man	86,{
 		next;
 		mes "[Young Man]";
 		mes "Jeez was that a mistake...... The house turned out to be a HAVEN for THIEF BUGS!!!";
-		emotion 23;
+		emotion e_omg;
 		next;
 		mes "[Young Man]";
 		mes "I tried EVERYTHING to get rid of them! I sprayed them, I smashed them, I lured them out with food.........";
@@ -156,7 +160,7 @@ payon_in02.gat,25,71,4	script	Young Man	86,{
 		next;
 		mes "[Young Man]";
 		mes "Grrr! What will it take to get rid of these vile creatures???";
-		emotion 32;
+		emotion e_pif;
 		next;
 		mes "[Young Man]";
 		mes "I've heard there is something called ^3355FF'Ora Ora'^000000, that people in other countries use to fight bugs.....";
@@ -170,33 +174,33 @@ payon_in02.gat,25,71,4	script	Young Man	86,{
 	M_End:
 		mes "[Young Man]";
 		mes "I'm just so tired of fighting this never ending battle against these bugs...... those dirty scumbags!!";
-		emotion 32;
+		emotion e_pif;
 		close;
 
 L_GotOra:
-	mes "ArrrGgghhh!! No!... It can't be!..... I think I'm going mad... they're starting to look so cute... ArrrGgghhh!!... Nooooooo!!";
-	emotion 23;
+		mes "ArrrGgghhh!! No!... It can't be!..... I think I'm going mad... they're starting to look so cute... ArrrGgghhh!!... Nooooooo!!";
+		emotion e_omg;
 	M_Menu:
-	next;
-	menu "Continue",M_Cont, "Show Ora Ora",M_Show, "Give Ora Ora",M_Give, "Cancel",M_End2;
+		next;
+		menu "Continue",M_Cont, "Show Ora Ora",-, "Give Ora Ora",M_Give, "Cancel",M_End2;
 
-	M_Show:
 		mes "[Young Man]";
 		mes "Oooooohhhh..... is.. is this... is this... Ora Ora...??? If you give it to me I'll give you my prized treasure in return!";
 		mes "What do you say?? Is it a deal?";
 		goto M_Menu;
 
 	M_Give:
+		if(countitem(701) < 5) goto L_Cheater;
+		delitem 701,5;
 		mes "[Young Man]";
 		mes "Muhahahahah!!! Finally, I have it.... Ora Ora! Stupid and distgusting Thief Bugs.... you'll pay for invading MY HOME!!!";
-		emotion 29;
+		emotion e_gg;
 		next;
 		mes "[Young Man]";
-		mes "..... Eh em... sorry.  I was a little outa control there.... Ah, let me give you my valuable treasure......";
-		emotion 4;
+		mes "..... Eh em... sorry.  I was a little outa control there.... Ah, let me give you my valuable treasure......";	
+		emotion e_swt;
 		next;
 		getitem 5004,1;
-		delitem 701,5;
 		mes "[Young Man]";
 		mes "By wearing this over your mouth, the air you breathe will be filltered so that you can breathe clean air.";
 		mes "I picked it up while I was a Sailor out at sea.  I really have no need for it.";
@@ -205,30 +209,33 @@ L_GotOra:
 		mes "Hehehehe!! I can't wait to use this Ora Ora!!!";
 		close;
 
+	L_Cheater:
+		mes "Oh... Where is it?!";
+		next;
+
 	M_End2:
 		mes "[Young Man]";
 		mes "What if I CAN'T get rid of these thief bugs???... I guess the only other thing I could do is fall in love with them...... heh... heh... heh....";
-		emotion 4;
+		emotion e_swt;
 		close;
+
 }
 
 
 //========================================================================================//
 //			Derivuchi Cap(Hat of Petite Diablo), Helm of Angel
 //========================================================================================//
-payon_in01.gat,56,12,4	script	Young Man	89,{
+payon_in01.gat,56,12,4	script	Young Man#12	89,{
 	mes "[Young Man]";
 	mes "What is it?............";
 	next;
-	menu "Can you make me a special item?",M_0, "Nothing.",M_End;
+	menu "Can you make me a special item?",-, "Nothing.",M_End;
 
-	M_0:
 		mes "[Young Man]";
 		mes "I see.... so you know about me huh?.... Ok, tell me what you want.";
 		next;
-		menu "-Helm of Angel",sM_Angel, "-Deviruchi Cap(Hat of Petite Diablo)",sM_Devir, "-I'll come back later.",M_End;
+		menu "-Helm of Angel",-, "-Deviruchi Hat",sM_Devir, "-I'll come back later.",M_End;
 
-		sM_Angel:
 			mes "[Young Man]";
 			mes "For the Helm of Angel I will need:";
 			mes "- ^5555FF1 Helm (slotted)^000000.";
@@ -239,7 +246,7 @@ payon_in01.gat,56,12,4	script	Young Man	89,{
 			goto sL_GetHat;
 		sM_Devir:
 			mes "[Young Man]";
-			mes "For the Deviruchi Cap(Hat of Petite Diablo) I will need:";
+			mes "For the Deviruchi Hat I will need:";
 			mes "- ^5555FF600 Little Evil Horn^000000.";
 			mes "- ^5555FF40 Talon of Griffon^000000.";
 			set @HAT, 2;
@@ -256,21 +263,20 @@ payon_in01.gat,56,12,4	script	Young Man	89,{
 
 				if(@HAT == 2) goto ssL_Devir;
 
-				ssL_Angel:
 					if(countitem(2229)<1 || countitem(2254)<1 || countitem(7036)<5) goto ssL_NotEnuf;
-					mes "[Young Man]";
-					mes "Here is your Helm of Angel.";
 					delitem 2229, 1;
 					delitem 2254, 1;
 					delitem 7036, 5;
+					mes "[Young Man]";
+					mes "Here is your Helm of Angel.";
 					getitem 5025, 1;
 					close;
 				ssL_Devir:
 					if(countitem(1038)<600 || countitem(7048)<40) goto ssL_NotEnuf;
-					mes "[Young Man]";
-					mes "Here is your Deviruchi Cap(Hat of Petite Diablo).";
 					delitem 1038, 600;
 					delitem 7048, 40;
+					mes "[Young Man]";
+					mes "Here is your Deviruchi Hat.";
 					getitem 5038, 1;
 					close;
 				ssL_NotEnuf:
@@ -282,4 +288,5 @@ payon_in01.gat,56,12,4	script	Young Man	89,{
 		mes "[Young Man]";
 		mes "Fine then.....";
 		close;
+
 }

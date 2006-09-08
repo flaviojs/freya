@@ -4662,10 +4662,10 @@ void do_init(const int argc, char **argv) {
 
 	if (defaultlanguage == 'F') {
 		printf("Outil d'administration à distance de Freya (créé par Yor).\n");
-		printf("(pour Freya version %d.%d.%d.).\n", ATHENA_MAJOR_VERSION, ATHENA_MINOR_VERSION, ATHENA_REVISION);
+		printf("(pour Freya version %d.%d.%d.).\n", FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION);
 	} else {
 		printf("Freya login-server administration tool (created by Yor).\n");
-		printf("(for Freya version %d.%d.%d.).\n", ATHENA_MAJOR_VERSION, ATHENA_MINOR_VERSION, ATHENA_REVISION);
+		printf("(for Freya version %d.%d.%d.).\n", FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION);
 	}
 
 #ifdef __DEBUG

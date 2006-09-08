@@ -1,0 +1,121 @@
+//===== Freya Script =========================================
+//= Einbech Guides
+//===== By: ================================================== 
+//= Muad_dib
+//===== Current Version: ===================================== 
+//= 1.4
+//===== Compatible With: ===================================== 
+//= Freya
+//===== Description: ========================================= 
+//=
+//===== Additional Comments: ================================= 
+//= 1.0 Einbech guide by Muad_dib in prometheus format
+//= 1.0a Conversion to eA format [MasterOfMuppets]
+//= 1.1 missing tabs [Lupus]
+//= 1.2 Optimized, updated common guide names [Lupus]
+//= 1.3 Fitted the many lines into 1 or 2, and corrected some typos [erKURITA]
+//= 1.4 Removed Duplicates [Silent]
+//============================================================
+
+
+einbech.gat,67,37,4 script Guide#1::Einbech_Guide 852,{
+	cutin "ein_soldier",2;
+	mes "[Einbech Guide]";
+	mes "Welcome to Einbech, the Mining Town.";
+	mes "We're here to assist tourists, so if you have any questions, please feel free to ask us.";
+L_MENU:
+	next;
+	menu "City Guide",-,"Remove Marks from Mini-Map",L_REMOVE,"Notice",L_NOTICE,"Cancel",L_END;
+
+	mes "[Einbech Guide]";
+	mes "Please select a location from the following menu.";
+	mes "Would you like me to mark locations on your Mini-Map?";
+	next;
+	menu "Yes.",L_YES,"No.",-;
+
+	set @COMPASS_CHECK,0;
+	goto L_CONT;
+L_YES:
+	set @COMPASS_CHECK,1;
+L_CONT:
+L_MENU_2:
+	menu "Train Station",L_TRAIN,"Tavern",L_TAVERN,"Tool Shop",L_TOOL,"Swordman Guild",L_SWORD,"Mine",L_MINE,"Cancel",-;
+
+	mes "[Einbech Guide]";
+	mes "Please ask me to Remove marks from Mini-Map if you no longer wish to have the location marks displayed on your Mini-Map.";
+	goto L_MENU;
+L_TRAIN:
+	mes "[Einbech Guide]";
+	mes "The Train Stations are located in the nortwest and northeast parts of Einbech.";
+	mes "There, you can take a train to Einbroch. They are running between here and Einbroch all day long, everyday.";
+	viewpoint 1,44,216,1,0xFF0000;
+	next;
+	goto L_WIPE;
+L_TAVERN:
+	mes "[Einbech Guide]";
+	mes "The Tavern is located in the southern part of Einbech.";
+	mes "It's a nice place to relax after a long day.";
+	viewpoint 1,145,112,2,0xFF00FF;
+	next; 
+	goto L_WIPE;
+L_TOOL:
+	mes "[Einbech Guide]";
+	mes "You can find the Tool Shop in the center of Einbech.";
+	mes "There, you can purchase any tools you might need for your travels.";
+	viewpoint 1,177,135,3,0xFF00FF;
+	next; 
+	goto L_WIPE;
+L_SWORD:
+	mes "[Einbech Guide]";
+	mes "The Swordman Guild is located in the eastern outskirts of Einbech. ";
+	mes "It's under construction and they haven't started accepting applications.";
+	viewpoint 1,253,109,4,0xFF00FF;
+	next; 
+	goto L_WIPE;
+L_MINE:
+	mes "[Einbech Guide]";
+	mes "The Mine, which is Einbech's major industry, is located in the northern part of this town.";
+	mes "It's where we get all of our ores, although monsters get in the mines way.";
+	viewpoint 1,138,250,5,0x00FF00;
+	next;
+	goto L_WIPE; 
+L_WIPE:
+	if(@COMPASS_CHECK == 1)goto L_MENU_2;
+	viewpoint 2,44,216,1,0xFF0000;
+	viewpoint 2,145,112,2,0xFF00FF;
+	viewpoint 2,177,135,3,0xFF00FF;
+	viewpoint 2,253,109,4,0xFF00FF;
+	viewpoint 2,138,250,5,0x00FF00;
+	goto L_MENU_2;
+L_REMOVE:
+	viewpoint 2,44,216,1,0xFF0000;
+	viewpoint 2,145,112,2,0xFF00FF;
+	viewpoint 2,177,135,3,0xFF00FF;
+	viewpoint 2,253,109,4,0xFF00FF;
+	viewpoint 2,138,250,5,0x00FF00;
+	mes "[Einbech Guide]";
+	mes "Okay, the marks from your Mini-Map have been removed.";
+	mes "If you need any guidance around Einbroch please let me or one of the other Einbech Guides know.";
+	goto L_MENU;
+L_NOTICE:
+	mes "[Einbech Guide]";
+	mes "Through the technology of the Schwartzwalt Republic, we've upgraded to a digital information system that allows us to mark locations on your Mini-Map for easier navigation.";
+	next;
+  	mes "[Einbech Guide]";
+  	mes "Your Mini-Map is located in the upper right corner of the screen.";
+	mes "If you can't see it, press the Ctrl + Tab keys or click the 'Map' button in your Basic Information Window.";
+  	next;
+  	mes "[Einbech Guide]";
+ 	mes "On your Mini-Map, click on the '+' and '-' symbols to zoom in and out of your Mini-Map.";
+	mes "We hope you enjoy your travels here in the city of Einbech.";
+ 	goto L_MENU;
+L_END:
+	mes "[Einbech Guide]";
+	mes "We hope that you";
+	mes "enjoy your travels";
+	mes "here in Einbech.";
+	cutin "ein_soldier",255; 
+	close;
+}
+
+einbech.gat,48,214,4	duplicate(Einbech_Guide)	Guide#Ein2	852

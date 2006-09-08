@@ -16,8 +16,7 @@ enum {	// struct map_session_data の status_changeの番号テーブル
 	SC_BLEEDING,
 	SC_DPOISON, //10
 	
-	//Some room for future "new" status aliments
-	SC_DISPELLMIN           = 15, //Min Reference for Dispell
+	SC_DISPELLMIN           = 15,
 	SC_ASPDPOTION0          = 16,
 	SC_ASPDPOTION1          = 17,
 	SC_ASPDPOTION2          = 18,
@@ -32,7 +31,7 @@ enum {	// struct map_session_data の status_changeの番号テーブル
 	SC_WATERWEAPON          = 27,
 	SC_WINDWEAPON           = 28,
 	SC_EARTHWEAPON          = 29,
-	SC_PROVOKE, //30
+	SC_PROVOKE				= 30,
 	SC_ENDURE,
 	SC_TWOHANDQUICKEN,
 	SC_CONCENTRATE,
@@ -193,18 +192,30 @@ enum {	// struct map_session_data の status_changeの番号テーブル
 	SC_INCMSPRATE,
 	SC_INCMATKRATE,
 	SC_INCATKRATE,
-	SC_INCDEFRATE, //190
+	SC_INCDEFRATE,		// 190
 	SC_INCHITRATE,
 	SC_INCFLEERATE,
 	SC_INCASPDRATE,
-	SC_STOP,            //Prevents inflicted chars from walking. [Skotlex]
+	SC_STOP,
 	SC_COMA,
 	SC_SHRINK,
-	SC_SIGHTBLASTER, //195
+	SC_SIGHTBLASTER,
 	SC_TKREST,
 	SC_SHADOWWEAPON,
-	SC_GHOSTWEAPON,
+	SC_GHOSTWEAPON,		// 200
 	SC_GDSKILLDELAY,
+	SC_STRFOOD,
+	SC_AGIFOOD,
+	SC_VITFOOD,
+	SC_INTFOOD,
+	SC_DEXFOOD,
+	SC_LUKFOOD,
+	SC_HITFOOD,
+	SC_FLEEFOOD,
+	SC_BATKFOOD,		// 210
+	SC_WATKFOOD,
+	SC_MATKFOOD,
+	SC_MAGNUM,
 	
 	SC_MAX
 };

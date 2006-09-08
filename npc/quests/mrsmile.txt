@@ -1,25 +1,27 @@
-//===== eAthena Script =======================================
+//===== Freya Script =========================================
 //= Mr. Smile Quest
-//===== By: ==================================================
+//===== By: ================================================== 
 //= kobra_k88, Akaru
-//===== Current Version: =====================================
-//= 1.1
-//===== Compatible With: =====================================
-//= eAthena 7.15 +
-//===== Description: =========================================
-//=
-//===== Additional Comments: =================================
+//===== Current Version: ===================================== 
+//= 1.3
+//===== Compatible With: ===================================== 
+//= Freya
+//===== Description: ========================================= 
+//= 
+//===== Additional Comments: ================================= 
 //= Fully working. 1.1 Optimized
-//============================================================
+//= 1.2 updated Payon coords [Lupus]
+//= 1.3 fixed exploit [Lupus]
+//============================================================ 
 
 
 // Alberta ------------------------------------------------------------------------------------------
 alberta.gat,113,53,3	script	Smile Assistance::SmileAT	92,{
 	mes "[Smile Assistant]";
-	mes "Hi, I'm a Smile Assistance. How may I help you?";
+	mes "Hi, I'm a Smile Assistance.  How may I help you?";
 	next;
-	menu "^0099FFMr. Smile^000000?", M_0, "Construct a ^0099FFMr. Smile^000000", M_1, "Quit", M_End;
-
+	menu "^0099FFMr. Smile^000000?",M_0, "Construct a ^0099FFMr. Smile^000000",M_1, "Quit",M_End;
+	
 	M_0:
 		mes "[Smile Assistant]";
 		mes "Oh, the Mr. Smile Event is a nationwide event that is being sponsered by ^0099FFHis Majesty Tristram the 3rd^000000.";
@@ -30,7 +32,7 @@ alberta.gat,113,53,3	script	Smile Assistance::SmileAT	92,{
 		mes "As you may have guessed, the Mr. Smile mask is simply a smiley face.";
 		next;
 		mes "[Smile Assistance]";
-		mes "Although it may be simple, no one can argue the power of a smile! And if everybody in the kingdom were to wear one...";
+		mes "Although it may be simple, no one can argue the power of a smile! And if everybody in the kingdom were to wear one....";
 		mes "just imagine how much joy and cheer the world would see!";
 		next;
 		mes "[Smile Assistant]";
@@ -41,20 +43,20 @@ alberta.gat,113,53,3	script	Smile Assistance::SmileAT	92,{
 		mes "^5555FF10 Clover^000000";
 		next;
 		mes "[Smile Girl]";
-		mes "The world could use more smiles so get those items and come back soon. I'll be waiting right here.";
+		mes "The world could use more smiles so get those items and come back soon.  I'll be waiting right here.";
 		close;
 	M_1:
 		mes "[Smile Assistant]";
-		if((countitem(705) < 10) | (countitem(909) < 10) | (countitem(914) < 10)) goto sL_NoItems;
-		mes "Oh, great! You've brought back all of the items needed. Wait just a sec while I get your Mr. Smile ready...";
+		if(countitem(705) < 10 || countitem(909) < 10 || countitem(914) < 10) goto sL_NoItems;
+		delitem 705,10;
+		delitem 909,10;
+		delitem 914,10;
+		mes "Oh, great! You've brought back all of the items needed.  Wait just a sec while I get your Mr. Smile ready.....";
 		next;
 		mes "~!shook!~!shook!~!clack!~!clack!~!tok!~!tok!~";
 		next;
 		mes "[Smile Assistant]";
 		mes "Here ya go, your very own Mr. Smile!";
-		delitem 705,10;
-		delitem 909,10;
-		delitem 914,10;
 		getitem 2278,1;
 		next;
 		mes "[Smile Assistant]";
@@ -63,15 +65,14 @@ alberta.gat,113,53,3	script	Smile Assistance::SmileAT	92,{
 		mes "[Smile Assistant]";
 		mes "Hopefully you will be reminded of that fact everytime you put on your Mr. Smile.";
 		close;
-
-	sL_NoItems:
-		mes "Oh... Unfortunately you don't have enough items for a Mr. Smile. What you need are:";
-		mes "^5555FF10 Jellopy^000000,";
-		mes "^5555FF10 Fluff^000000,";
-		mes "^5555FF10 Clover^000000,";
-		mes "I'll be waiting here so hurry back.";
-		close;
-
+	
+		sL_NoItems:
+			mes "Oh... Unfortunately you don't have enough items for a Mr. Smile.  What you need are:";
+			mes "^5555FF10 Jellopy^000000,";
+			mes "^5555FF10 Fluff^000000,";
+			mes "^5555FF10 Clover^000000,";
+			mes "I'll be waiting here so hurry back.";
+			close;
 	M_End:
 		close;
 }
@@ -85,6 +86,6 @@ izlude.gat,129,118,4	duplicate(SmileAT)	Smile Assistance#4	92
 // Morroc -----------------------------------------------------------------------------------
 morocc.gat,158,97,4	duplicate(SmileAT)	Smile Assistance#5	92
 // Payon ------------------------------------------------------------------------------------
-payon.gat,187,104,4	duplicate(SmileAT)	Smile Assistance#6	92
+payon.gat,168,225,4	duplicate(SmileAT)	Smile Assistance#6	92
 // Prontera ---------------------------------------------------------------------------------
-prontera.gat,152,191,4	duplicate(SmileAT)	Smile Assistance#7	92
+prontera.gat,157,187,4	duplicate(SmileAT)	Smile Assistance#7	92

@@ -1,22 +1,24 @@
-//===== eAthena Script =======================================
+//===== Freya Script =========================================
 //= Gonryun Town
-//===== By: ==================================================
+//===== By: ================================================== 
 //=  edited by x[tsk] 4/30/04
-//===== Current Version: =====================================
-//= 1.0
-//===== Compatible With: =====================================
-//= eAthena 1.0
-//===== Description: =========================================
+//===== Current Version: ===================================== 
+//= 1.2
+//===== Compatible With: ===================================== 
+//= Freya
+//===== Description: ========================================= 
 //
-//===== Additional Comments: =================================
+//===== Additional Comments: ================================= 
 // May be missing npc's and dialogue.
+//= 1.1 Fixed Typoís [Nexon]
+//= 1.2 Removed Duplicates [Silent]
+//= 1.3 Max NPC Name is 23 [Toms]
 //============================================================
-
 
 
 //Eventñ¢í≤ç∏ÅI
 
-alberta.gat,245,69,4	script	Gonryun Public Relations Official	776,{
+alberta.gat,245,69,4	script	Public Relations#01	776,{
 	mes "[Waba]";
 	mes "Hello there! I have traveled far from the Kingdom of Gonryun, my hometown.";
 	mes "I invite all to visit and celebrate the diversity of Gonryun! We welcome all sorts of visitors.";
@@ -34,28 +36,29 @@ alberta.gat,245,69,4	script	Gonryun Public Relations Official	776,{
 		goto M_Menu;
 	M_2:
 		mes "[Waba]";
-		mes "The traveling expenses are ^0000ff10,000 zeny^000000.  The fee is a bit pricy but this is beacuse of the dangerous nature of the trip.";
+		mes "The traveling expenses are ^0000ff10,000 zeny^000000.  The fee is a bit pricy but this is because of the dangerous nature of the trip.";
 		mes "The return trip is free, however. Are you prepared to go?";
 		next;
 		menu "Let's Go!",-, "Actually... I changed my mind, sorry.",M_End;
-
+		
 			if (Zeny < 10000) goto L_NoZeny;
 			set Zeny,Zeny-10000;
 			warp "gon_fild01.gat",258,82;
 			end;
-		L_Zeny:
+		L_NoZeny:
 			mes "[Waba]";
-			mes "I am sorry if it seems like alot, but the ^0000ff10,000 zeny^000000 we request is necessary in order to make the trip.";
+			mes "I am sorry if it seems like a lot, but the ^0000ff10,000 zeny^000000 we request is necessary in order to make the trip.";
 			close;
 	M_End:
-		mes "[Waba]";
+		mes "[Waba]";	
 		mes "Please see me again if you want to visit! I am pleased just to meet an honored guest from the Continent.";
 		close;
+
 }
 
 //===============================================================================
 
-gon_fild01.gat,255,79,6	script	Gonryun Public Relations Official	776,{
+gon_fild01.gat,255,79,6	script	Public Relations#02	776,{
 	mes "[Waba]";
 	mes "We are ready to head back as soon as the conditions are favorable.";
 	next;
@@ -71,7 +74,7 @@ gon_fild01.gat,255,79,6	script	Gonryun Public Relations Official	776,{
 
 //===============================================================================
 
-gon_fild01.gat,187,239,4	script	Gonryun Public Relations Official	776,{
+gon_fild01.gat,187,239,4	script	Public Relations#03	776,{
 	mes "[Choseryu]";
 	mes "The sacred pillar of light connects this island to Gonryun Kingdom. There's no time to idly chit chat now, be on your way.";
 	mes "I hope you will have many fond memories of Gonryun before you leave.";
@@ -80,7 +83,7 @@ gon_fild01.gat,187,239,4	script	Gonryun Public Relations Official	776,{
 
 //===============================================================================
 
-gonryun.gat,153,64,0	script	Gonryun Public Relations Official	776,{
+gonryun.gat,153,64,0	script	Public Relations#04	776,{
 	mes "[Choseryu]";
 	mes "If you're ready to set sail I can send you back to the harbor.";
 	next;
@@ -137,7 +140,7 @@ gon_in.gat,165,16,4	script	Drunkard	748,{
 	mes "[Sorubun]";
 	mes "Oh my head! I had too much to drink yesterday and passed out right here on the table.";
 	mes "The manager told me that I shouldn't drink anymore and I should have listened.";
-	emotion 19;
+	emotion e_swt2;
 	next;
 	mes "[Sorubun]";
 	mes "Wow, the drinks here are strong! Much stronger than anything we have back home.";
@@ -146,20 +149,20 @@ gon_in.gat,165,16,4	script	Drunkard	748,{
 
 //===============================================================================
 
-gonryun.gat,139,142,6	script	Girl	772,{
+gonryun.gat,139,142,6	script	Girl#08	772,{
 	mes "[Sanfayon]";
 	mes "................";
 	mes "It's been great having new visitors come to the village, but........ ever since I was robbed by that Thief.......";
 	next;
 	mes "[Sanfayon]";
-	mes "I have been sooooo afraid of the foreigners.....";
-	emotion 16;
+	mes "I have been so afraid of the foreigners.....";
+	emotion e_wah;
 	close;
 }
 
 //===============================================================================
 
-gonryun.gat,113,135,6	script	Guardsman	780,{
+gonryun.gat,113,135,6	script	Guardsman#01	780,{
 	mes "[Guardsman]";
 	mes "Welcome to Gonryun. This is the home of our governor, Sayoumun.";
 	next;
@@ -173,7 +176,7 @@ gonryun.gat,113,135,6	script	Guardsman	780,{
 
 //===============================================================================
 
-gonryun.gat,113,127,6	script	Guardsman	780,{
+gonryun.gat,113,127,6	script	Guardsman#02	780,{
 	mes "[Guardsman]";
 	mes "Welcome to Gonryun. This is the home of our elder, Sayoumun. He rules all of Gonryun.";
 	next;
@@ -209,7 +212,7 @@ gon_in.gat,18,27,4	script	Elder's Wife	771,{
 
 gon_in.gat,17,93,4	script	Village Elder	775,{
 	mes "[Sayoumun]";
-	emotion 45;
+	emotion e_yawn;
 	mes "Zzzzzzzzzzz.......";
 	next;
 	mes "[Sayoumun]";
@@ -240,7 +243,7 @@ gonryun.gat,119,111,4	script	Chen Wan Sok	89,{
 //===============================================================================
 
 gonryun.gat,100,241,5	script	Unsociable Man	733,{
-	emotion 9;
+	emotion e_dots;
 	mes "[Saunso]";
 	mes "I am too busy to talk, come back later!";
 	close;
@@ -276,7 +279,7 @@ gonryun.gat,237,225,4	script	Hanyon Kyou	776,{
 	mes "..............";
 	next;
 	mes "[Hanyon Kyou]";
-	mes "I've dropped my lucky knife! Now it's probably gone forever.";
+	mes "I've dropped my lucky knife! Now it's probably gone forever."; 
 	close;
 }
 
@@ -284,7 +287,7 @@ gonryun.gat,237,225,4	script	Hanyon Kyou	776,{
 
 gonryun.gat,51,101,4	script	Gaiysonchoru	778,{
 	mes "[Gaiysonchoru]";
-	emotion 4;
+	emotion e_swt;
 	mes "..............";
 	next;
 	mes "[Gaiysonchoru]";
@@ -297,7 +300,7 @@ gonryun.gat,51,101,4	script	Gaiysonchoru	778,{
 
 //===============================================================================
 
-gonryun.gat,166,196,4	script	Soldier	780,{
+gonryun.gat,166,196,4	script	Soldier#17	780,{
 	mes "[Wagou]";
 	mes "Do you know what this is?";
 	next;

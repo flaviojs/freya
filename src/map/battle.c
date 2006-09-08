@@ -1,6 +1,6 @@
 // $Id: battle.c 539 2005-11-21 09:58:59Z Yor $
-#include <config.h>
 
+#include <config.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -1039,7 +1039,9 @@ struct Damage battle_calc_weapon_attack(
 					skillratio += 100 * sd->cart_weight / sd->cart_max_weight;
 				break;
 			case MC_MAMMONITE:
-				skillratio += 50 * skill_lv;	// FORMULA: damage * (100+ 50 * skill_lv) / 100
+				skillratio += 50 * skill_lv;
+				s_ele = 0;
+				s_ele_ = 0;
 				flag.cardfix = 0;
 				break;
 			// swordsman
@@ -1821,12 +1823,18 @@ struct Damage battle_calc_weapon_attack(
 	    (md && (skill_num || !battle_config.mob_attack_attr_none)) ||
 	    (pd && (skill_num || !battle_config.pet_attack_attr_none))) {
 		short t_element = status_get_element(target);
-		if (!(!sd && tsd && battle_config.mob_ghostring_fix && t_ele == 8)) {
-			if (wd.damage > 0) {
-				wd.damage = battle_attr_fix(wd.damage, s_ele, t_element);
-			if(skill_num == MC_CARTREVOLUTION) //Cart Revolution applies the element fix once more with neutral element
-				wd.damage = battle_attr_fix(wd.damage, 0, t_element);
-		}
+		if(!(!sd && tsd && battle_config.mob_ghostring_fix && t_ele == 8))
+		{
+			if(wd.damage > 0)
+			{
+				if(skill_num == MC_CARTREVOLUTION)
+					s_ele = 0;
+
+				if(sc_data[SC_MAGNUM].timer != -1)
+					wd.damage = battle_attr_fix(wd.damage, s_ele, t_element) + (battle_attr_fix(wd.damage, 3, t_element) * 20 / 100);
+				else
+					wd.damage = battle_attr_fix(wd.damage, s_ele, t_element);
+			}
 		if (flag.lefthand && wd.damage2 > 0)
 			wd.damage2 = battle_attr_fix(wd.damage2, s_ele_, t_element);
 		}
@@ -2122,6 +2130,7 @@ struct Damage battle_calc_magic_attack(
 	int aflag;
 	int normalmagic_flag = 1;
 	int matk_flag = 1;
+	int flag_aoe = 0;
 	int ele = 0, race = 7, size = 1, t_ele = 0, t_race = 7, t_mode = 0, cardfix, t_class, i;
 	struct map_session_data *sd = NULL, *tsd = NULL;
 	struct mob_data *mb = NULL, *tmd = NULL;
@@ -2164,8 +2173,10 @@ struct Damage battle_calc_magic_attack(
 	else
 		aflag = BF_MAGIC|BF_LONG|BF_SKILL;
 
-	if(skill_num > 0) {
-		switch(skill_num) {	// 基本ダメージ計算(スキルごとに処理)
+	if(skill_num > 0)
+	{
+		switch(skill_num)
+		{
 		case AL_HEAL:
 		case PR_BENEDICTIO:
 			damage = skill_calc_heal(bl, skill_lv) / 2;
@@ -2173,11 +2184,11 @@ struct Damage battle_calc_magic_attack(
 				damage += damage * pc_checkskill(sd, HP_MEDITATIO) * 2 / 100;
 			normalmagic_flag = 0;
 			break;
-		case PR_ASPERSIO:		/* アスペルシオ */
-			damage = 40; //固定ダメージ
+		case PR_ASPERSIO:
+			damage = 40;
 			normalmagic_flag = 0;
 			break;
-		case PR_SANCTUARY:	// サンクチュアリ
+		case PR_SANCTUARY:
 			damage = (skill_lv > 6)? 388 : skill_lv * 50;
 			normalmagic_flag = 0;
 			blewcount |= 0x10000;
@@ -2211,40 +2222,38 @@ struct Damage battle_calc_magic_attack(
 					printf("battle_calc_magic_attack(): napam enemy count=0 !\n");
 			}
 			break;
-		case MG_FIREBALL:	// ファイヤーボール
+		case MG_FIREBALL:
 			{
-				const int drate[]={100,90,70};
-				if(flag>2)
-					matk1=matk2=0;
+				const int drate[] = {100, 90, 70};
+				if(flag > 2)
+					matk1 = matk2 = 0;
 				else
-					MATK_FIX( (95+skill_lv*5)*drate[flag] ,10000 );
+					MATK_FIX((95 + skill_lv * 5) * drate[flag], 10000);
+				flag_aoe = 1;
 			}
 			break;
-		case MG_FIREWALL:	// ファイヤーウォール
-/*
-			if( (t_ele!=3 && !battle_check_undead(t_race,t_ele)) || target->type==BL_PC ) //PCは火属性でも飛ぶ？そもそもダメージ受ける？
-				blewcount |= 0x10000;
-			else
-				blewcount = 0;
-*/
-			if((t_ele==3 || battle_check_undead(t_race,t_ele)) && target->type!=BL_PC)
+		case MG_FIREWALL:
+			if((t_ele == 3 || battle_check_undead(t_race, t_ele)) && target->type != BL_PC)
 				blewcount = 0;
 			else
 				blewcount |= 0x10000;
 			MATK_FIX(1, 2);
+			flag_aoe = 1;
 			break;
-		case MG_THUNDERSTORM:	// サンダーストーム
+		case MG_THUNDERSTORM:
 			MATK_FIX(80, 100);
+			flag_aoe = 1;
 			break;
-		case MG_FROSTDIVER:	// フロストダイバ
+		case MG_FROSTDIVER:
 			MATK_FIX(100 + skill_lv * 10, 100);
 			break;
-		case WZ_FROSTNOVA:	// フロストダイバ
+		case WZ_FROSTNOVA:
 			MATK_FIX((100 + skill_lv * 10) * 2 / 3, 100);
+			flag_aoe = 1;
 			break;
-		case WZ_FIREPILLAR:	// ファイヤーピラー
+		case WZ_FIREPILLAR:
 			if(mdef1 < 1000000)
-				mdef1 = mdef2 = 0;	// MDEF無視
+				mdef1 = mdef2 = 0;
 			MATK_FIX(1, 5);
 			matk1+=50;
 			matk2+=50;
@@ -2253,27 +2262,27 @@ struct Damage battle_calc_magic_attack(
 			MATK_FIX(100 + skill_lv * 20, 100);
 			break;
 		case WZ_METEOR:
-		case WZ_JUPITEL:	// ユピテルサンダー
+		case WZ_JUPITEL:
+			flag_aoe = 1;
 			break;
-		case WZ_VERMILION:	// ロードオブバーミリオン
+		case WZ_VERMILION:
 			MATK_FIX(skill_lv * 20 + 80, 100);
+			flag_aoe = 1;
 			break;
-		case WZ_WATERBALL:	// ウォーターボール
-			//matk1+= skill_lv*30;
-			//matk2+= skill_lv*30;
+		case WZ_WATERBALL:
 			MATK_FIX(100 + skill_lv * 30, 100);
 			break;
-		case WZ_STORMGUST:	// ストームガスト
-			MATK_FIX(skill_lv * 40 + 100,100);
-//			blewcount|=0x10000;
+		case WZ_STORMGUST:
+			MATK_FIX(skill_lv * 40 + 100, 100);
+			flag_aoe = 1;
 			break;
-		case AL_HOLYLIGHT:	// ホーリーライト
+		case AL_HOLYLIGHT:
 			MATK_FIX(125, 100);
 			break;
 		case AL_RUWACH:
 			MATK_FIX(145, 100);
 			break;
-		case HW_NAPALMVULCAN:	// ナパームビート（分散計算込み）
+		case HW_NAPALMVULCAN:
 			MATK_FIX(70 + skill_lv * 10, 100);
 			if(flag>0){
 				MATK_FIX(1, flag);
@@ -2282,7 +2291,7 @@ struct Damage battle_calc_magic_attack(
 					printf("battle_calc_magic_attack(): napalmvulcan enemy count=0 !\n");
 			}
 			break;
-		case PF_SOULBURN: // Celest
+		case PF_SOULBURN:
 			if (target->type != BL_PC || skill_lv < 5) {
 				memset(&md, 0, sizeof(md));
 				return md;
@@ -2301,7 +2310,8 @@ struct Damage battle_calc_magic_attack(
 			damage = 200 + 200 * skill_lv;
 			if(tmd && tmd->class == 1288) //According reports, it has a fixed damage of 400 on emp [Proximus]
 				damage = 400;
-			normalmagic_flag = 0; //Damage is not affected by matk and ignores mdef
+			flag_aoe = 1;
+			normalmagic_flag = 0;
 			break;
 		}
 	}
@@ -2396,36 +2406,68 @@ struct Damage battle_calc_magic_attack(
 		damage = (damage + wd.damage) * (100 + 40*skill_lv)/100;
 		if(battle_config.gx_dupele) damage=battle_attr_fix(damage, ele, status_get_element(target) );	//属性2回かかる
 		if(bl==target)
-			damage >>= 1;	//反動は半分
+			damage >>= 1;
 	}
 
-	div_=skill_get_num( skill_num,skill_lv );
+	div_ = skill_get_num(skill_num, skill_lv);
 
 	if (div_ > 1 && skill_num != WZ_VERMILION)
 		damage*=div_;
 
-//	if(mdef1 >= 1000000 && damage > 0)
-	if(t_mode&0x40 && damage > 0)
+	if(t_mode & 0x40 && damage > 0)
 		damage = 1;
 
-	if(tsd && status_isimmune(target)) {
-		if (battle_config.gtb_pvp_only != 0) { // [MouseJstr]
-			if ((map[target->m].flag.pvp || map[target->m].flag.gvg))
+	if(tsd && status_isimmune(target))
+	{
+		if(battle_config.gtb_pvp_only != 0)
+		{
+			if((map[target->m].flag.pvp || map[target->m].flag.gvg))
 				damage = (damage * (100 - battle_config.gtb_pvp_only)) / 100;
 		} else
-			damage = 0; // 黄 金蟲カード（魔法ダメージ０）
+			damage = 0;
 	}
 
 	if(skill_num != HW_GRAVITATION)
-		damage = battle_calc_damage(bl, target, damage, div_, skill_num, skill_lv, aflag);	// 最終修正
+		damage = battle_calc_damage(bl, target, damage, div_, skill_num, skill_lv, aflag);
 
 	if(tsd && tsd->magic_damage_return > 0 && tsd->magic_damage_return > rand()%100)
 	{
-		rdamage += damage;
-		if(rdamage < 1)
-			rdamage = 1;
-		clif_damage(target, bl, gettick_cache, 0, 0, rdamage, 0, 0, 0);
-		battle_damage(target, bl, rdamage, 0);
+		short calc_rdamage = 1;
+
+		if(skill_num == AL_HEAL || skill_num == PR_SANCTUARY)
+		{
+			if(status_get_element(target) == 7)
+			{
+				if(skill_num == PR_SANCTUARY)
+				{
+					if(rand()%100 > 50)
+					{
+						rdamage += -damage;
+						damage = 0;
+					} else {
+						battle_heal(NULL, target, 0, 0, 0);
+						damage = 0;
+						calc_rdamage = 0;
+					}
+				} else {
+					rdamage += -damage;
+					damage = 0;
+				}
+			} else {
+				calc_rdamage = 0;
+			}
+		} else {
+			rdamage += damage;
+			damage = 0;
+		}
+
+		if(calc_rdamage == 1)
+		{
+			if(rdamage < 1)
+				rdamage = 1;
+			clif_damage(target, bl, gettick_cache, 0, 0, rdamage, 0, 0, 0);
+			battle_damage(target, bl, rdamage, 0);
+		}
 	}
 
 	md.damage = damage;

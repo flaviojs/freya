@@ -1,39 +1,36 @@
-/////////////////////////////////////////////////////////
-//             Wedding Script Alpha (v1.4)             //
-/////////////////////////////////////////////////////////
-//
-//=====eAthena Script====================================
-// Wedding Script
-//=====By================================================
-// AppleGirl and Evera(version 1.0)
-//=====Current Version===================================
-// 1.45b
-//=====Compatible With:==================================
-// Any eAthena Version; RO Episode 6+
-//=====Description=======================================
-// Fully working wedding script for all kind of weddings
-//=====Additional Comments:==============================
-// Tested and debugged by whocares (maybe 1-2 bugs left)(version 1.1)
-//======= Version 1.2 By ShadowLady =====================
-// Same Sex Weddings.
-// Now the script(npcs) tell the players how they must perform exactly.
-//======= Version 1.3 By ShadowLady =====================
-// You might need to update the wedding rings in item_db
-// Same for the tux/dress, so all classes and lvs can use it ^^
-// And check if they are wearing the tux/dress and not only have it on the inventory.
-//======= Version 1.4 By ShadowLady =====================
-// Added some code ideas. Thanks to Jbain for help me debbuging
-// Added @outfit variable, to check if you already bought a tux/dress
-// Fixed "part" of the divorce npc. The code is bugged by itself -_- Need both chars to be online yet.
-//======= Version 1.45 By ShadowLady ====================
-// Fixed some minor bugs. Same-sex is disabled by default now.
-// Change $progress variable to $@progress, so it dont screw up the ceremony on a server crash.
-// Added a Special GM Menu to enable/disable same-sex weddings and reset most variables.
-//=========== Version 1.45b By Aria =====================
-// Added the $progress to $@progress variable change that ShadowLady put in notes, but not in code.
-//=======================================================
-// Variable Notes:
-//
+//===== Freya Script =========================================
+//= Wedding Script
+//===== By: ==================================================
+//= AppleGirl & Evera
+//===== Current Version: =====================================
+//= 1.6
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
+//= Fully working for normal and same-sex marriages. The Divorce
+//= NPC is bugged however, and will be fixed very soon.
+//===== Additional Comments: =================================
+//= 1.0 Added first version [AppleGirl/Evera]
+//= 1.1 Tested and debugged [whocares]
+//= 1.2 Same Sex Weddings [ShadowLady]
+//= 1.2 Now the script(npcs) tell the players how they must perform exactly [ShadowLady]
+//= 1.3 You might need to update the wedding rings in item_db [ShadowLady]
+//= 1.3 Same for the tux/dress, so all classes and lvs can use it ^^ [ShadowLady]
+//= 1.3 And check if they are wearing the tux/dress and not only have it on the inventory [ShadowLady]
+//= 1.4 Added some code ideas. Thanks to Jbain for help me debbuging [ShadowLady]
+//= 1.4 Added @outfit variable, to check if you already bought a tux/dress [ShadowLady]
+//= 1.4 Fixed "part" of the divorce npc. The code is bugged by itself -_- Need both chars to be online yet [ShadowLady]
+//= 1.5 Fixed some minor bugs. Same-sex is disabled by default now [ShadowLady]
+//= 1.5 Change $progress variable to $@progress, so it dont screw up the ceremony on a server crash [ShadowLady]
+//= 1.5 Added a Special GM Menu to enable/disable same-sex weddings and reset most variables [ShadowLady]
+//= 1.6 Added the $progress to $@progress variable change that ShadowLady put in notes, but not in code [Aria]
+//= 1.7 Made the current custom Divorce NPC charge 2.5 mil zeny until the official script is implemented [Tsuyuki]
+//= Note: The official script charges 2.5 mil zeny
+//============================================================
+
+//============================================================
+//= Variable Notes
+//============================================================
 // event_wedding - 1 signifies marriage
 // $groom$ - Groom's name storage
 // $bride$ - Bride's name storage
@@ -45,9 +42,9 @@
 // $get_ring - Check so you can't get ring twice
 // $reason$ - Objection to wedding
 // @outfit - Check if the char already got a dress or tuxedo from the npc
-// Tristan
 
 
+// King Tristan III
 prt_church.gat,99,125,4	script	Tristan the Third	108,{
 	if($groom$ == strcharinfo(0) && $@progress != 3) goto L_GroomCeremony;
 	if(@register == 0) goto L_GroomNeedToRegister;
@@ -366,6 +363,7 @@ L_WeddingSystem:
 	mes "If you ever decide to get married.";
 	mes "Remember to register.";
 	close;
+
 L_Marry:
 	mes "[Marry Happy]";
 	mes "If you wish to get married you must first register.";
@@ -412,6 +410,7 @@ L_Marry:
 	deltimer "a13";
 	addtimer 300000,"a13";
 	close;
+
 L_BrideRegister:
 	if ($name$ != strcharinfo(0)) goto L_NotBride;
 	if($groom$ == strcharinfo(0)) goto L_CantMarryYourself;
@@ -472,6 +471,7 @@ L_GroomRegister2:
 	deltimer "a13";
 	addtimer 300000,"a13";
 	close;
+
 L_BrideRegister2:
 	mes "[Marry Happy]";
 	if(sex == 1) mes "No problem sir, please fill out your name here.";
@@ -506,24 +506,28 @@ L_NeedZeny1:
 	mes "I'm terribly sorry, I am unable to register you. You seem to be "+@zleft+"z short.";
 	set @zleft,0;
 	close;
+
 L_NeedZeny2:
 	set @zleft,@costbrideA-zeny;
 	mes "[Marry Happy]";
 	mes "I'm terribly sorry, I am unable to register you. You seem to be "+@zleft+"z short.";
 	set @zleft,0;
 	close;
+
 L_NeedZeny3:
 	set @zleft,@costgroomB-zeny;
 	mes "[Marry Happy]";
 	mes "I'm terribly sorry, I am unable to register you. You seem to be "+@zleft+"z short.";
 	set @zleft,0;
 	close;
+
 L_NeedZeny4:
 	set @zleft,@costbrideB-zeny;
 	mes "[Marry Happy]";
 	mes "I'm terribly sorry, I am unable to register you. You seem to be "+@zleft+"z short.";
 	set @zleft,0;
 	close;
+
 L_AlreadyRegistered:
 	mes "[Marry Happy]";
 	mes "You can't register a second time silly.";
@@ -538,10 +542,12 @@ L_InProgress:
 	mes "[Marry Happy]";
 	mes "I cannot accept registrations while a wedding is in progress, try again later.";
 	close;
+
 L_WrongName:
 	mes "[Marry Happy]";
 	mes "No one have registered with that name. Sorry.";
 	close;
+
 L_GroomNotRegistered:
 	mes "[Marry Happy]";
 	mes "The groom must register first in order to initiate the wedding.";
@@ -551,70 +557,23 @@ L_Married:
 	mes "[Marry Happy]";
 	mes "Hello again "+strcharinfo(0)+", I hope wish for the best of luck in your life.";
 	close;
+
 L_LiveSolo:
 	mes "[Marry Happy]";
 	mes "Well live a happy bachelors life";
 	close;
+
 L_NotBride:
 	mes "[Marry Happy]";
 	mes "You're not the bride";
 	close;
+
 L_YouCantMarryYourself:
 	mes "[Marry Happy]";
-	mes "What the hell you trying to do? Marry yourself?O_O";
+	mes "What the hell you trying to do? Marry yourself? O_O";
 	close;
 }
 
-prt_church.gat,95,95,4	script	Marry	71,{
-	mes "[Marry Sad]";
-	mes "Getting divorce can bring a lot of sorrow.";
-	mes "By any chance, you you want to get divorced?";
-	next;
-	menu "I came to get a divorce",L_FirstDivorce,"What do I need for a divorce",L_DivorceSystem;
-L_FirstDivorce:
-	if(divorce > 0) goto L_AlreadyDivorced;
-	mes "[Marry Sad]";
-	mes "So you came for a divorce, i have been divorced 2 times myself.";
-	mes "Life will continue whoever said you need a partner was wrong.";
-	mes "Dont forget that you and your partner must be online!";
-	next;
-	menu "Are you sure",-,"No i'm not ready",L_No;
-	mes "[Marry Sad]";
-	mes "You have made your choice,";
-	mes "now you must live with it.";
-	next;
-	mes "You have been divorced!";
-	set event_wedding,0;
-	set divorce,1;
-	set @register,0;
-	divorce;
-	close;
-L_AlreadyDivorced:
-	mes "[Marry Sad]";
-	mes "So you came for another divorce,wow you must be trying to find true love.";
-	mes "Dont worry about it, it's not you, it's their fault.";
-	next;
-	menu "Are you sure",-,"No i'm not ready",L_No;
-	mes "[Marry Sad]";
-	mes "You have made your choice,";
-	mes "now you must live with it.";
-	next;
-	mes "You have been divorced again!";
-	set event_wedding,0;
-	set divorce,2;
-	set @register,0;
-	divorce;
-	close;
-L_No:
-	mes "[Marry Sad]";
-	mes "You should always be sure about what step you take in life.";
-	close;
-L_DivorceSystem:
-	mes "[Marry Sad]";
-	mes "You just need to wish to not be married again and i will perform the divorce.";
-	mes "Both you and your partner must be online.";
-	close;
-}
 prt_church.gat,99,124,0	script	weddinglimit1	-1,{
 	announce "The bride has not registered within the alotted time frame.",3;
 	announce "Your wedding has been cancelled.",3;
@@ -664,36 +623,47 @@ prt_church.gat,99,124,0	script	weddinglimit2	-1,{
 prt_church.gat,99,124,0	script	a1	-1,{
 areaannounce "prt_church.gat",0,0,350,350,"Ladies and Gentlemen, We will now join in holy matrimony these two lovers.",0;
 }
+
 prt_church.gat,99,124,0	script	a2	-1,{
 areaannounce "prt_church.gat",0,0,350,350,"Now more than ever, will both of your lives be entwined together as so will be your souls.",0;
 }
+
 prt_church.gat,99,124,0	script	a3	-1,{
 areaannounce "prt_church.gat",0,0,350,350,"You will both honor and cherish each other through the best and worst of times.",0;
 }
+
 prt_church.gat,99,124,0	script	a4	-1,{
 areaannounce "prt_church.gat",0,0,350,350,"The safety and well being of your other will now also be your responsibility.",0;
 }
+
 prt_church.gat,99,124,0	script	a5	-1,{
 areaannounce "prt_church.gat",0,0,350,350,"May in sickness or good health, your love will burn bright as no force can extinguish it.",0;
 }
+
 prt_church.gat,99,124,0	script	a6	-1,{
 areaannounce "prt_church.gat",0,0,350,350,"Those here stand witness to these vows bestowed upon you, you must act accordingly to them.",0;
 }
+
 prt_church.gat,99,124,0	script	a7	-1,{
 areaannounce "prt_church.gat",0,0,350,350,"Understanding that, we are nothing more but mortals on this earth, but this is our triumph.",0;
 }
+
 prt_church.gat,99,124,0	script	a8	-1,{
 areaannounce "prt_church.gat",0,0,350,350,"We here will now join these two mortal entities, and create an immortal love.",0;
 }
+
 prt_church.gat,99,124,0	script	a9	-1,{
 areaannounce "prt_church.gat",0,0,350,350,$groom$+", do you you wish to take "+$bride$+" as your lawfully beloved wife?",0;
 }
+
 prt_church.gat,99,124,0	script	a10	-1,{
 areaannounce "prt_church.gat",0,0,350,350,"And do you "+$bride$+", wish to take "+$groom$+" as your lawfully beloved husband?",0;
 }
+
 prt_church.gat,99,124,0	script	a11	-1,{
 areaannounce "prt_church.gat",0,0,350,350,"And so be it, by the powers vested in me...",0;
 }
+
 prt_church.gat,99,124,0	script	a12	-1,{
 areaannounce "prt_church.gat",0,0,350,350,"I pronouce you Husband and Wife, you may kiss the bride.",0;
 	wedding;
@@ -703,6 +673,7 @@ areaannounce "prt_church.gat",0,0,350,350,"I pronouce you Husband and Wife, you 
 	set $name$,"null";
 	set $name2$,"null";
 }
+
 prt_church.gat,99,124,0	script	a13	-1,{
 
 areaannounce "prt_church.gat",0,0,350,350,"The wedding has been cancelled.",0;

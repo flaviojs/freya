@@ -4,6 +4,101 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+9/07/06
+	* Integrated: Subdev Branch up to Rev. 120 [Mikey]
+	* Updated: The Readme Folder a little bit [Tsuyuki
+	* Imported: Socket Enchant Script from eAthena [Tsuyuki]
+	* Updated: Imported/converted new scripts & updated the old ones from eAthena [Tsuyuki]
+	* Merged: Several scripts together for a cleaner NPC folder [Tsuyuki]
+	* Disabled: The Old Blue Box quest since its in iRO, and not kRO [Tsuyuki]
+	* Fixed: Added Lucky Potion's effect, +15 LUK for 5 minutes [Tsuyuki]
+	* Fixed: MVP SummonSlave delay/time values [Tsuyuki]
+	* Updated: New monster changes (New kRO Patches) [Tsuyuki]
+	 - Details: http://ro.doddlercon.com/wiki/index.php?title=Monster_Changes
+	 - Note: This completes all the monster changes, now we just need the new mob spawns
+	* Removed: Jellopies from all NPC shops as per Aegis [Tsuyuki]
+	 - http://www.ragnainfo.net/forums/viewtopic.php?t=106163
+	* Added: Official Arrow Quiver Maker NPC from eAthena [Originally done by Prometheus - Muad_Dib] [Tsuyuki]
+	* Removed: Temp Arrow Quiver/Scroll selling script since it was removed in Aegis [Tsuyuki]
+	* Fixed: A couple fixes to MVP slaves [Tsuyuki]
+	* Added: Converted & fixed Zealotus Mask quest to Freya's script engine from eAthena [Thanks to Kirimoru] [Tsuyuki]
+	* Removed: Custom Divorce script from the Wedding.txt file [Tsuyuki]
+	* Added: Official Divorce script (converted from Aegis) [Thanks to LightFighter] [Tsuyuki]
+	* Updated: Niflheim warps from eAthena [Tsuyuki]
+	* Removed: Bonus Def/Mdef +1 on Amon Ra Card [Tsuyuki]
+	* Added: The Juperos quest, correct warps, and some Juperos mob fixes [Tsuyuki]
+	* Fixed: The Divorce NPC will now charge 2.5 mil zeny as per kRO [Tsuyuki]
+	* Fixed: Summons for many MVPs and Mini-Bosses [Tsuyuki]
+	 - Added some missing slaves to monsters, and made most slaves accurate to Aegis
+	 - Changed the current slaves from normal mobs to G_ mobs (no drops/exp)
+	 - Fixed some MVPs/Mini-bosses not spawning slaves on Idle
+	* Fixed: Ancient Mummy, Event Baphomet, and Errende Ebecee Skills [Tsuyuki]
+	* Removed: Teleport from Ungoliant [Tsuyuki]
+	* Updated: All monster drops from Episode 2.5 ~ Episode 10.2 [Tsuyuki]
+	* Removed: Slotted Sunnies & Slotted Glasses from Old Purple Box [Tsuyuki]
+	  - http://www.ragnainfo.net/forums/viewtopic.php?t=105161&postdays=0&postorder=asc&highlight=glasses&start=15
+	* Added: 4x Gargoyle Slaves to Chimera miniboss [Tsuyuki]
+	* Enabled: The effect box dropping cards [Tsuyuki]
+	 - Orc Archer card, Raydric Archer card, Jing Guai card, Sleeper card, Stem Worm card, etc..
+	 - http://www.ragnainfo.net/forums/viewtopic.php?t=102696
+	 - http://www.ragnainfo.net/forums/viewtopic.php?t=105828
+	* Fixed: Replaced all Awakening Potion drops with Grapes (new kRO Patch) [Tsuyuki]
+	* Updated: Imported updated Xmas Event script from eAthena [Tsuyuki]
+	* Updated: The city cleaners script (Wild Rose in cities) [Tsuyuki]
+	* Fixed: Valkyrie Randgris drops and spawn time from 1 hour > 8 hours [Tsuyuki]
+	* Added: New set items to mobs, they're fully functional now [Tsuyuki]
+	* Added: Some missing duplicate mobs [Tsuyuki]
+	* Added: Missing Event MVP "Bring it on!" [ID: 1502] & skills [Tsuyuki]
+	* Updated: A couple items as per kRO patches [Tsuyuki]
+	* Fixed: Changed some more pot drops to herbs as per kRO [Tsuyuki]
+	* Added: New items/equips up to kRO Patch 8/29/06[Tsuyuki]
+	* Fixed: Added stats for Golden Axe [1308] & Equestrian's Spear [1475] [Tsuyuki]
+	* Fixed: Job Equip IDs for a bunch of new items [Tsuyuki]
+	* Updated: Fully implemented/fixed new set items [Tsuyuki]
+	* Added: Socket Enchant System items (Fully functional) [Tsuyuki]
+	* Fixed: Some Biolabs MVP Slaves Elements from Water 1 to their proper Element [Tsuyuki]
+	* Fixed: Kathryne Keyron mob missing ID 1639 [Tsuyuki]
+	* Fixed: Some new mob speed rates [Tsuyuki]
+	* Fixed: Starting zeny from 500z to 0z as per Aegis [Tsuyuki]
+	* Enabled: Teleport in Geffenia Dungeon maps [Tsuyuki]
+	* Enabled: Teleport in Thanatos Tower L12 [Tsuyuki]
+	* Added: Item "Marionette Doll" to Marionette (drop rate: 0.01%) [Tsuyuki]
+	* Fixed: Increased Dimik Move-Speed [Tsuyuki]
+	* Added: Implemented the Cooking System & Cooking Quest [Tsuyuki]
+	* Added: Cooking-related drops to monsters [Tsuyuki]
+	* Fixed: Alchemist Create Elemental Potion not working [Tsuyuki]
+		- Note: The potions this skill produces will not work until the new status effects for them are implemented
+	* Updated: The const.txt database with new status effects [Tsuyuki]
+	* Updated: Item database with new Episode 10.3 info [Tsuyuki]
+	* Fixed: SC_BLESSING in the Lighthalzen Inn script [Tsuyuki]
+	* Improved: method of calculating magic damage reflection [Harbin]
+	* Added: SC for magnum break [Harbin]
+	* Fixed: magnum break should give +20% fire damage bonus for 10 seconds [Harbin]
+	 - source: http://ragnainfo.net/forums/viewtopic.php?t=104874
+	* Fixed: shockwave trap's sp damage should work in gvg maps too [Harbin]
+	* Fixed: vultures eye should effect the attack range of blitz beat [Harbin]
+	 - source: http://www.rocards.de/Hunter.rc#blitz & http://opensvn.csie.org/EnglishTranslation/data/skilldesctable.txt
+	* Fixed: some marionette control issues [Harbin]
+	 - base level difference between caster and target should be equal or less than 5
+	 - target can't be gypsy or clown
+	 - source: http://ragnainfo.net/forums/viewtopic.php?t=28669
+	* Enabled: The other/wedding.txt, and other/books.txt scripts automatically [Tsuyuki]
+	* Moved: IceCream.txt to the npc/merchants folder [Tsuyuki]
+	* Removed: Some more customs NPCs, and removed them from map_athena.conf as well[Tsuyuki]
+	* Removed: Custom NPCs from map_athena.conf that Harbin removed [Tsuyuki]
+	* Fixed: mammonite damage should ignore weapon element damage modifiers [Harbin]
+	* Fixed: some issues regarding magic damage reflection [Harbin]
+	 - original target should not receive any kind of damage
+	 - aoe damage is not reflectable
+	* Added: support for the new food SC:s [Harbin]
+	* Removed: some custom scrips that do not belong here [Harbin]
+	* Improved: version management file [Harbin]
+	 - removed useless definations
+	 - updated version numbers
+	* Fixed: heal and sanctuary skills damage reflection [Harbin]
+	 - checks for dark element
+	 - sanctuary has 50% change to reflect
+
 09/06/06
 	* Added: reading of hexadecimal numbers (0xffffff) in configuration files [Yor]
 	* Fixed: default of previous option in battle_athena.conf [Yor]
@@ -5264,4 +5359,5 @@ CODE
 	* Added rules of the team [Yor]
 
 FREYA BEGIN HERE, based on eAthena 1.0 RC4
+
 

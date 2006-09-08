@@ -9,11 +9,11 @@
 //===== Description: =========================================
 //= Arunafeltz NPCs
 //===== Additional Comments: =================================
-//= Temporary text, incomplete, missing some NPCs
+//= 0.5 Text translated from Korean > English, incomplete, 
+//= possibly missing some NPCs and missing all quests.
 //============================================================
 
 
-//first guide from the field East of Rachel City
 ra_fild12.gat,45,230,3	script	Airport Guide	934,{
 
 	mes "[Airport Guide]";
@@ -192,11 +192,9 @@ rachel.gat,157,183,3	script	Follower Ustiala	916,{
 
 		L_Menu2: // No Info
 		close;
-		end;
 
 		L_Helpout: // No Info
 		close;
-		end;
 
 }
 
@@ -228,74 +226,6 @@ rachel.gat,151,155,3	script	Kid	921,{
 	close;
 }
 
-rachel.gat,138,146,5	script	Rachel Guide Agent	934,{
-
-	mes "[Rachel Guide Agent]";
-	mes "Welcome to Rachel, the capitol of Arunafeltz";
-	mes "where you can almost feel the breath of our goddess Freya.";
-	mes "If this is your time at Rachel, please check out";
-	mes "our 'General Announcements'.";
-	next;
-	goto L_menu2;
-
-	L_menu2:
-	menu "Get town info",-,"Erase all minimap indications",L_menu2,"General Announcements",L_menu2,"End Conversation",L_end;
-
-	mes "[Rachel Guide Agent]";
-	mes "Which location do you want to know?";
-	mes "Do you want an indication on the minimap?";
-	next;
-	
-	menu "Yes",L_menu1,"No",L_menu1; // Does user want blinky + marks on minimap?
-
-	L_menu1: menu "Sessimir",-,"Inn",L_inn,"Weapon Shop",L_weap,"Tool Shop",L_tools,"Airport",L_airp,"Cancel",L_end2;
-
-		mes "[Rachel Guide Agent]";
-		mes "Sessimir is the Holy Temple at which the Pope,";
-		mes "who is the embodiment of Freya, resides.";
-		mes "Follow the road north to reach Sessimir";
-		next;
-		goto L_menu1;
-	
-	L_inn:
-		mes "[Rachel Guide Agent]";
-		mes "The comfortable Inn is a great place to rest";
-		mes "and relax. The building just to the left is the Rachel Inn.";
-		next;
-		goto L_menu1;
-	
-	L_weap:
-		mes "[Rachel Guide Agent]";
-		mes "Would you like to see the strong weapons being sold";
-		mes "in Rachel? The weapon shop is near the Western gate.";
-		next;
-		goto L_menu1;
-		
-	L_tools:
-		mes "[Rachel Guide Agent]";
-		mes "Our selective tool shop which only deals the finest";
-		mes "high-quality potions is near the Western gate.";
-		next;
-		goto L_menu1;
-	
-	L_airp:
-		mes "[Rachel Guide Agent]";
-		mes "The airport is located outside the Eastern gate of rachel.";
-		next;
-		goto L_menu1;
-
-	L_end:
-		close;
-		end;
-
-	L_end2:
-		mes "[Rachel Guide Agent]";
-		mes "If you ever want the indicators removed from the";
-		mes "minimap, pick 'Erase minimap inidcations'.";
-		goto L_menu2;
-
-}
-
 rachel.gat,124,132,1	script	Town Native	921,{
 
 	mes "[Town Native]";
@@ -311,10 +241,6 @@ rachel.gat,124,132,1	script	Town Native	921,{
 
 rachel.gat,109,138,5	script	Cool Event Corp	874,{
 
-	end;
-}
-
-//
 //	mes "[Cool Event Corp Employee]";
 //	mes "Welcome to Cool Event Corp. We always";
 //	mes "bring you the best service.";
@@ -324,10 +250,11 @@ rachel.gat,109,138,5	script	Cool Event Corp	874,{
 //	
 //	Z_end:
 //		close;
-//		end;
-//}
+	end;
+}
 
 ra_in01.gat,376,68,4	script	Hotel Employee	931,{
+
 	mes "[Hotel Employee]";
 	mes "My Freya's blessings be with you...";
 	mes "Welcome to Rachel Hotel. Our Hotel takes pride in being";
@@ -337,10 +264,10 @@ ra_in01.gat,376,68,4	script	Hotel Employee	931,{
 
 	H_end:
 		close;
-		end;
 }
 
 rachel.gat,197,137,3	script	Wandering Citizen	51,{
+
 	mes "[Wandering Citizen]";
 	mes "Oh oh~ I'm the wandering citizen wandering to various lands~";
 	next;
@@ -367,24 +294,24 @@ rachel.gat,197,137,3	script	Wandering Citizen	51,{
 	next;
 	mes "[Wandering Citizen]";
 	mes "....................."; 
-	//emtion ; /sob
+	emotion 28;
 	close;
 }
 
 rachel.gat,138,73,3	script	Speechless Shopkeeper	85,{
 
-mes "[Speechless Shopkeeper]";
-mes "Jeez business is slow today.";
-mes "I better call it a day, close up, and go home.";
-close;
+	mes "[Speechless Shopkeeper]";
+	mes "Jeez business is slow today.";
+	mes "I better call it a day, close up, and go home.";
+	close;
 }
 
 rachel.gat,120,46,3	script	Idle Shopkeeper	85,{
 
-mes "[Idle Shopkeeper]";
-mes "There's not even a single fly...";
-mes "Maybe I should give up on this too...";
-close;
+	mes "[Idle Shopkeeper]";
+	mes "There's not even a single fly...";
+	mes "Maybe I should give up on this too...";
+	close;
 }
 
 rachel.gat,125,33,5	script	Shopkeeper	85,{
@@ -454,11 +381,9 @@ rachel.gat,243,37,3	script	Kid	921,{
 	mes "[Kid]";
 	mes "Beeeeeeh!";	
 	close2;
-	end;
 
 	K_end: // No Info
 		close;
-		end;
 }
 
 // bottom right, right bottom of pond.
@@ -539,7 +464,6 @@ rachel.gat,76,77,3	script	Rachel Bishop	927,{
 	close;
 }
 
-// grassy cafe area
 rachel.gat,74,150,7	script	Village Girl	914,{
 
 	mes "[Village Girl]";
@@ -655,9 +579,9 @@ ra_in01.gat,384,246,3	script	Vincent	47,{
 		close;
 }
 
-// player didn't talk to the servants again, but I'd imagine
-//they'd say something different now that Vincent's quest has
-//been started.
+// Player didn't talk to the servants again, but I'd imagine
+// they'd say something different now that Vincent's quest has
+// been started.
 
 rachel.gat,48,237,5	script	Jenny	893,{
 
@@ -692,17 +616,15 @@ OnTouch:
 	next;
 	menu "Kick it",-,"Take out your weapon",L_weap;
 
-	// The Bishop NPC in front of the portal emotes /omg
-
+	emotion 23;
 	mes "[Bishop Nema]";
 	mes "Please stop!";
 	close;
 	end;
 	
 	L_weap:
-		// Bishop Nema emotes /omg.
+		emotion 23;
 		close;
-		end;
 }
 
 ra_temple.gat,116,174,3	script	Bishop Nema	920,{
