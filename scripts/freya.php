@@ -7,6 +7,56 @@
  **    May you share freely, never taking more than you give.
  **/
 
+// ladmin class
+// functions:
+//   ladmin->connect(ip, password[, port]);
+//   ladmin->make_account($accname,$pass,$sex[,$email]);
+//   ladmin->delete_account($accname);
+//   ladmin->close();
+//   ladmin->get_version();
+//      answer in a $array:
+//        $array['string'] - complete/detailled version
+//        $array['FREYA_MAJOR_VERSION']
+//        $array['FREYA_MINOR_VERSION']
+//        $array['FREYA_REVISION']
+//        $array['FREYA_RELEASE_FLAG']
+//        $array['FREYA_OFFICIAL_FLAG']
+//        $array['FREYA_SERVER_LOGIN']
+//        $array['FREYA_MOD_VERSION']
+//        $array['FREYA_SVN_VERSION']
+//        $array['FREYA_DB_SYSTEM']
+//   ladmin->get_servers();
+//      answer in a $array:
+//        $array['ip']
+//        $array['port']
+//        $array['name']
+//        $array['users']
+//        $array['maintenance']
+//        $array['new']
+//   ladmin->checkaccount($accname, $pass);
+//   ladmin->accountinfo($id); -- based on list of account
+//      answer in a $array:
+//        $array['packet'] - always 0x7953
+//        $array['id']
+//        $array['level']
+//        $array['accname']
+//        $array['sex']
+//        $array['logincount']
+//        $array['state']
+//        $array['isonline']
+//        $array['notused'] - not used
+//        $array['error_msg']
+//        $array['last_login']
+//        $array['last_ip']
+//        $array['email']
+//        $array['accexpire']
+//        $array['banexpire']
+//        $array['memolen']
+//        $array['memo']
+//   ladmin->changepass($accname, $newpass);
+//   ladmin->sendbroadcast($msg[, $blue]);
+// Note: all functions return 'false' if an error occurs or if action is not executed.
+
 class ladmin {
 	var $sock=false;
 
@@ -30,7 +80,7 @@ class ladmin {
 		return true;
 	}
 
-	function make_account($login,$pass,$sex,$email) {
+	function make_account($login,$pass,$sex,$email='a@a.com') {
 		if (!$this->sock) return false;
 		$sex=strtoupper($sex);
 		if ( ($sex!='F') and ($sex!='M') ) return false;
@@ -48,6 +98,30 @@ class ladmin {
 		if (($data=="\x00\x00\x00\x00") or ($data=="\xFF\xFF\xFF\xFF")) return false;
 		$accid=unpack('Vid',$dat);
 		return $accid['id'];
+	}
+
+	function delete_account($accname) {
+		// do we have connection?
+		if (!$this->sock) return false;
+		// check values
+		if ((strlen($accname)<4) or (strlen($accname)>24)) return false;
+		// send deletion packet
+		$packet = pack('va24', 0x7932, $accname);
+		if (fwrite($this->sock, $packet)==false) {
+			fclose($this->sock);
+			$this->sock=false;
+			return false;
+		}
+		// get answer
+		$res = fread($this->sock, 30);
+		$dat = unpack('vpacket/Vid/a24accname', $res);
+		if ($dat['packet'] != 0x7933) {
+			fclose($this->sock);
+			$this->sock=false;
+			return false;
+		}
+		if ($dat['id']==-1) return false;
+		return true;
 	}
 
 	function close() {
@@ -111,9 +185,9 @@ class ladmin {
 		return $res;
 	}
 
-	function checkaccount($login, $pass) {
+	function checkaccount($accname, $pass) {
 		if (!$this->sock) return false;
-		$packet = pack('va24a24', 0x793a, $login, $pass);
+		$packet = pack('va24a24', 0x793a, $accname, $pass);
 		fwrite($this->sock, $packet);
 		$res = fread($this->sock, 30);
 		$dat = unpack('vpacket/Vid/a24accname', $res);
