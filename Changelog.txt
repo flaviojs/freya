@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 9/07/06
+	* Imported: Converted Eye of Hellion Quest to Freya from eA [Tsuyuki]
 	* Integrated: Subdev Branch up to Rev. 120 [Mikey]
 	* Updated: The Readme Folder a little bit [Tsuyuki
 	* Imported: Socket Enchant Script from eAthena [Tsuyuki]
