@@ -1,6 +1,9 @@
 
 Date	Added
 
+9/07/06
+	* Added: Converted Eye of Hellion quest to Freya from eAthena [Tsuyuki]
+
 9/05/06
 	* Updated: A few more files laying around.. [Tsuyuki]
 	* Updated: Dates/Links/Misc in the Conf-dist folder [Tsuyuki]
