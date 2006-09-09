@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 09/08/06
+	* Fixed: Problem with the Thief Stone Fling quest [Tsuyuki]
 	* Added: delete_account in class of ladmin (freya.php) [Yor]
 	* Fixed: All errors in mob_skill_db.txt [Tsuyuki] (from subdev svn 122, 127)
 	 - Note: Had to comment a couple things, "Angry", "Follow", and "Afterskill" since they aren't implemented yet..
