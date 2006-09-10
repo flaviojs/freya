@@ -7,6 +7,7 @@
 // 500000  = 50%
 // 1000000 = 100%
 
+0,Gift Box,644
 756,Rough Oridecon,50000
 757,Rough Elunium,20000
 984,Oridecon,20000
