@@ -4,6 +4,23 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+09/09/06
+	* Added: Temp warper for Kiel Hyre and Rachel Sanctuary [Tsuyuki]
+	 - The quests for these dungeons are incomplete so you can't access them.
+	* Added: Some missing duplicate mobs [Tsuyuki]
+	* Imported: Homunuclus mob data from eAthena [Tsuyuki]
+	* Updated: Biolabs monsters with new kRO updates [Tsuyuk]
+	* Updated: Byalan and Juperos Dungeon Spawns (More Updates) [Tsuyuki]
+	* Updated: Merman's DEX lowered (New kRO Updates) [Tsuyuki]
+	* Updated: Some new episode 10.3 monster/card names [Tsuyuki]
+	* Removed: Power Up skill from Venatu/Dimik (New kRO Patch) [Tsuyuki]
+	* Fixed: Some MvP Spawn times [Tsuyuki]
+	 - Details: Fixed backwards spawn times and RSX's from 4 hours to 2 hours
+	* Updated: Arunafeltz spawn info [Tsuyuki]
+	* Updated: Arunafeltz monster skills [Tsuyuki]
+	* Updated: Rachel Field/Ice Dungeon monsters and added drops [Tsuyuki]
+	* Added: Rachel Sanctuary monsters [Tsuyuki]
+
 09/08/06
 	* Fixed: Problem with the Thief Stone Fling quest [Tsuyuki]
 	* Added: delete_account in class of ladmin (freya.php) [Yor]

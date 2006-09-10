@@ -1,14 +1,15 @@
-//===== eAthena Script =======================================
+//===== Freya Script =========================================
 //= Abyss Lake Dungeon Monster Spawn Script
 //===== By: ==================================================
-//= Athena (1.0)
+//= eAthena
 //===== Current Version: =====================================
-//= 1.1
+//= 1.2
 //===== Compatible With: =====================================
 //= Any Athena Version
 //===== Additional Comments: =================================
 //= 1.0 Real spawns by Poki#3 [Nexon]
 //= 1.1 More official spawns [Playtester]
+//= 1.2 Fixed mob names [Tsuyuki]
 //============================================================
 
 //==================================================

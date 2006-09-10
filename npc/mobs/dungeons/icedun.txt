@@ -1,11 +1,11 @@
-//===== Freya Script =======================================
-//= Rachel Fields	monster	Spawn Script
+//===== Freya Script =========================================
+//= Rachel Fields Monster Spawns
 //===== By: ==================================================
 //= Tsuyuki
 //===== Current Version: =====================================
-//= 1.0
+//= 1.1
 //===== Compatible With: =====================================
-//= Freya 2.0+
+//= Freya
 //===== Additional Comments: =================================
 //= 1.0 Written 7/04/06, Based on jAthena Information
 //= 1.1 Updated with new jAthena information
@@ -29,3 +29,4 @@ ice_dun03.gat,0,0,0,0	monster	Gazeti	1778,30,0,0,0
 ice_dun03.gat,0,0,0,0	monster	Icicle	1789,10,0,0,0
 ice_dun03.gat,0,0,0,0	monster	Snowier	1775,30,0,0,0
 ice_dun03.gat,0,0,0,0	monster	Ice Titan	1777,50,0,0,0
+ice_dun03.gat,0,0,0,0	monster	Ktullanux	1779,1,0,0,0

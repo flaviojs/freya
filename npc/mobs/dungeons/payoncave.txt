@@ -1,13 +1,14 @@
-//===== eAthena Script =======================================
+//===== Freya Script =========================================
 //= Payon Cave Monster Spawn Script
 //===== By: ==================================================
-//= Athena (1.0)
+//= Athena
 //===== Current Version: =====================================
-//= 1.0
+//= 1.1
 //===== Compatible With: =====================================
-//= Any Athena Version
+//= Freya
 //===== Additional Comments: =================================
-//=
+//= 1.0 Added first version [Athena]
+//= 1.1 Fixed some messed up spawn times [Tsuyuki]
 //============================================================
 
 // pay_dun00
@@ -142,13 +143,13 @@ pay_dun03.gat,52,262,10,4	monster	White Plant	1082,2,180000,90000,1
 pay_dun04.gat,0,0,0,0	monster	Dokebi	1110,40,0,0,0
 pay_dun04.gat,0,0,0,0	monster	Sohee	1170,5,0,0,0
 pay_dun04.gat,0,0,0,0	monster	Horong	1129,30,0,0,0
-pay_dun04.gat,120,115,0,0	monster	Moonlight Flower	1150,1,3600000,7200000,1
+pay_dun04.gat,120,115,0,0	monster	Moonlight Flower	1150,1,7200000,3600000,1
 pay_dun04.gat,0,0,0,0	monster	Greatest General	1277,15,0,0,0
 pay_dun04.gat,0,0,0,0	monster	Skeleton Archer	1016,15,0,0,0
 pay_dun04.gat,0,0,0,0	monster	Nine-Tail	1180,20,60000,30000,0
 pay_dun04.gat,120,115,5,5	monster	Skeleton General	1290,1,1800000,1200000,0
 pay_dun04.gat,120,115,5,5	monster	Am Mut	1301,1,1800000,1200000,0
-pay_dun04.gat,120,115,0,0	monster	Cat'o'Nine Tails	1307,1,3600000,7200000,1
+pay_dun04.gat,120,115,0,0	monster	Cat'o'Nine Tails	1307,1,7200000,3600000,1
 pay_dun04.gat,120,120,10,10	monster	Shining Plant	1083,1,1800000,900000,1
 pay_dun04.gat,28,110,5,5	monster	Shining Plant	1083,1,1800000,900000,1
 pay_dun04.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1

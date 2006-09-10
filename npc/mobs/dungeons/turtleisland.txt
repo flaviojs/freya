@@ -1,11 +1,11 @@
-//===== eAthena Script =======================================
+//===== Freya Script =========================================
 //= Turtle Island Monster Spawn Script
 //===== By: ==================================================
-//= Athena (1.0)
+//= Athena
 //===== Current Version: =====================================
-//= 1.1
+//= 1.2
 //===== Compatible With: =====================================
-//= Any Athena Version
+//= Freya
 //===== Additional Comments: =================================
 //=
 //============================================================
@@ -35,7 +35,7 @@ tur_dun03.gat,0,0,0,0	monster	Heater	1318,10,50000,0,0
 //tur_dun04
 
 tur_dun04.gat,99,92,10,10	monster	Wanderer	1208,1,60000,30000,0
-tur_dun04.gat,99,93,20,20	monster	Turtle General	1312,1,3600000,7200000,0
+tur_dun04.gat,99,93,20,20	monster	Turtle General	1312,1,7200000,3600000,0
 tur_dun04.gat,100,93,20,20	monster	Heater	1318,3,120000,60000,0
 tur_dun04.gat,100,93,20,20	monster	Assaulter	1315,10,120000,60000,0
 tur_dun04.gat,100,93,20,20	monster	Freezer	1319,5,120000,60000,0
