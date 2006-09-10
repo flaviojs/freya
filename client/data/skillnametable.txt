@@ -163,7 +163,7 @@ AS_POISONREACT#Poison_React#
 AS_VENOMDUST#Venom_Dust#
 AS_SPLASHER#Venom_Splasher#
 AS_SONICACCEL#Sonic_Acceleration#
-AS_VENOMKNIFE#Throw_Venom_Knife#
+AS_VENOMKNIFE#Venom_Knife#
 
 // Blacksmith \\
 BS_IRON#Iron_Tempering#
@@ -187,7 +187,7 @@ BS_ADRENALINE#Adrenaline_Rush#
 BS_WEAPONPERFECT#Weapon_Perfection#
 BS_OVERTHRUST#Power-Thrust#
 BS_MAXIMIZE#Power_Maximize#
-BS_UNFAIRLYTRICK#Unfair_Trick#
+BS_UNFAIRLYTRICK#Dubious_Salesmanship#
 BS_GREED#Greed#
 BS_ADRENALINE2#Advanced_Adrenaline_Rush#
 
@@ -258,8 +258,8 @@ MO_EXPLOSIONSPIRITS#Fury#
 MO_EXTREMITYFIST#Asura_Strike#
 MO_CHAINCOMBO#Raging_Quadruple_Blow#
 MO_COMBOFINISH#Raging_Thrust#
-MO_KITRANSLATION#Ki_Translation#
-MO_BALKYOUNG#Ki_Explosion#
+MO_KITRANSLATION#Spiritual_Bestowment#
+MO_BALKYOUNG#Excruciating_Palm#
 
 // Sage \\
 SA_ADVANCEDBOOK#Study#
@@ -279,7 +279,7 @@ SA_SEISMICWEAPON#Endow_Quake#
 SA_DRAGONOLOGY#Dragonology#
 SA_DISPELL#Dispell#
 SA_ABRACADABRA#Hocus-pocus#
-SA_CREATECON#Create_Converter#
+SA_CREATECON#Create_Elemental_Converter#
 SA_ELEMENTWATER#Elemental_Change_Water#
 SA_ELEMENTGROUND#Elemental_Change_Earth#
 SA_ELEMENTFIRE#Elemental_Change_Fire#
@@ -332,7 +332,7 @@ DC_SCREAM#Dazzler#
 DC_SERVICEFORYOU#Gypsy's_Kiss#
 DC_THROWARROW#Slinging_Arrow#
 DC_UGLYDANCE#Hip_Shaker#
-DC_WINKCHARM#Wink_of_Charm#
+DC_WINKCHARM#Charming_Wink#
 
 // Wedding \\
 WE_CALLPARTNER#Romantic_Rendezvous#
@@ -387,6 +387,7 @@ PF_FOGWALL#Blinding_Mist#
 PF_MINDBREAKER#Mind_Breaker#
 PF_SPIDERWEB#Fiber_Lock#
 PF_DOUBLECASTING#Double_Bolt#
+
 
 // Assassin Cross \\
 ASC_BREAKER#Soul_Destroyer#
@@ -539,7 +540,7 @@ SL_ASSASIN#Assassin_Spirit#
 SL_BLACKSMITH#Blacksmith_Spirit#
 SL_HUNTER#Hunter_Spirit#
 SL_SOULLINKER#Soul_Linker_Spirit#
-SL_HIGH#Transcendent_Spirit#
+SL_HIGH#1st_Transcendent_Spirit#
 SL_KAIZEL#Kaizel#
 SL_KAAHI#Kaahi#
 SL_KAUPE#Kaupe#
@@ -580,7 +581,7 @@ GS_GROUNDDRIFT#Ground_Drift#
 NJ_TOBIDOUGU#Assassination_Training#
 NJ_SYURIKEN#Throw_Shuriken#
 NJ_KUNAI#Throw_Kunai#
-NJ_HUUMA#Throw_Wind_Shuriken#
+NJ_HUUMA#Throw_Fuuma_Shuriken#
 NJ_ZENYNAGE#Throw_Money#
 NJ_TATAMIGAESHI#Reverse_Tatami#
 NJ_KASUMIKIRI#Vanishing_Slash#

@@ -4,6 +4,14 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+09/10/06
+	* Fixed: Fixed all the broken new cards and fully implemented them, test and report please [Tsuyuki]
+	 - Margaretha Sorin Card (4364) could not be fully implemented, check buglist
+	* Updated: Client files to the latest SVN versions along with appropriate fixes [Tsuyuki]
+	* Updated: The Dead Branch list with new mobs [Tsuyuki]
+	* Fixed: Some monster/cards names all over Freya [Tsuyuki]
+	* Added: Luna Bow's bonuses [Tsuyuki]
+
 09/09/06
 	* Added: Temp warper for Kiel Hyre and Rachel Sanctuary [Tsuyuki]
 	 - The quests for these dungeons are incomplete so you can't access them.
