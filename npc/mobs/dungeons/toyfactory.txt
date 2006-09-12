@@ -1,13 +1,13 @@
-//===== eAthena Script =======================================
+//===== Freya Script =========================================
 //= Toy Factory Monster Spawn Script
 //===== By: ==================================================
-//= Athena (1.0)
+//= Athena
 //===== Current Version: =====================================
 //= 1.1
 //===== Compatible With: =====================================
-//= Any Athena Version
+//= Freya
 //===== Additional Comments: =================================
-//= 1.1 added Hatii Baby according to May 10 patch
+//= 1.2 added Hatii Baby according to May 10 patch
 //============================================================
 
 // Christmas Dungeon 1F
@@ -29,5 +29,5 @@ xmas_dun02.gat,0,0,0,0	monster	Christmas Cookie	1246,20,0,0,0
 xmas_dun02.gat,0,0,0,0	monster	Cookie	1265,20,0,0,0
 xmas_dun02.gat,0,0,0,0	monster	Cruiser	1248,35,0,0,0
 xmas_dun02.gat,0,0,0,0	monster	Myst Case	1249,50,0,0,0
-xmas_dun02.gat,0,0,0,0	monster	Hatii Bebe	1515,1,1800000,0,0
-xmas_dun02.gat,0,0,0,0	monster	Stormy Knight	1251,1,3600000,7200000,0
+xmas_dun02.gat,0,0,0,0	monster	Hatii Bebe	1515,1,1800000,900000,0
+xmas_dun02.gat,0,0,0,0	monster	Stormy Knight	1251,1,7200000,3600000,0

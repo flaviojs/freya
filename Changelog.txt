@@ -4,6 +4,31 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+09/12/06
+	* Fixed: Some things with OBB/DB related items [Tsuyuki] (from subdev svn 137)
+	* Fixed: Fixed all the broken new cards and fully implemented them, test and report please [Tsuyuki] (from subdev svn 136)
+	 - Margaretha Sorin Card (4364) could not be fully implemented, check buglist
+	* Updated: Client files to the latest SVN versions along with appropriate fixes [Tsuyuki] (from subdev svn 136)
+	* Updated: The Dead Branch list with new mobs [Tsuyuki] (from subdev svn 136)
+	* Fixed: Some monster/cards names all over Freya [Tsuyuki] (from subdev svn 136)
+	* Added: Luna Bow's bonuses [Tsuyuki] (from subdev svn 136)
+	* Added: Temp warper for Kiel Hyre and Rachel Sanctuary [Tsuyuki] (from subdev svn 135)
+	 - The quests for these dungeons are incomplete so you can't access them.
+	* Added: Some missing duplicate mobs [Tsuyuki] (from subdev svn 135)
+	* Imported: Homunuclus mob data from eAthena [Tsuyuki] (from subdev svn 135)
+	* Updated: Biolabs monsters with new kRO updates [Tsuyuk] (from subdev svn 135)
+	* Updated: Byalan and Juperos Dungeon Spawns (More Updates) [Tsuyuki] (from subdev svn 135)
+	* Updated: Merman's DEX lowered (New kRO Updates) [Tsuyuki] (from subdev svn 135)
+	* Updated: Some new episode 10.3 monster/card names [Tsuyuki] (from subdev svn 135)
+	* Removed: Power Up skill from Venatu/Dimik (New kRO Patch) [Tsuyuki] (from subdev svn 135)
+	* Fixed: Some MvP Spawn times [Tsuyuki] (from subdev svn 135)
+	 - Details: Fixed backwards spawn times and RSX's from 4 hours to 2 hours
+	* Updated: Arunafeltz spawn info [Tsuyuki] (from subdev svn 135)
+	* Updated: Arunafeltz monster skills [Tsuyuki] (from subdev svn 135)
+	* Updated: Rachel Field/Ice Dungeon monsters and added drops [Tsuyuki] (from subdev svn 135)
+	* Added: Rachel Sanctuary monsters [Tsuyuki] (from subdev svn 135)
+	* Fixed: Problem with the Thief Stone Fling quest [Tsuyuki] (from subdev svn 134)
+
 09/08/06
 	* Added: delete_account in class of ladmin (freya.php) [Yor]
 	* Fixed: All errors in mob_skill_db.txt [Tsuyuki] (from subdev svn 122, 127)

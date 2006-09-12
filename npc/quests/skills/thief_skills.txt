@@ -1,7 +1,7 @@
-//===== eAthena/Freya Script =======================================
+//===== Freya Script =========================================
 //= Thief Skills Quests
 //===== By: ==================================================
-//= kobra_k88. Edited by dragonjka.
+//= kobra_k88
 //===== Current Version: =====================================
 //= 1.2
 //===== Compatible With: =====================================
@@ -15,7 +15,8 @@
 //= Added npc RuRumuni, maker of Leather Bag of Infinity. [kobra_k88]
 //= v1.1a Now using functions found in "Global_Functions.txt" for
 //= class checks.[kobra_k88]
-//= v1.2 Fixed several grammatical errors and fixed incorrect Stone Fling requirements.
+//= v1.2 Fixed several grammatical errors and fixed incorrect Stone Fling requirements [Tsuyuki]
+// v1.2a Fixed small checkitem bug [Tsuyuki]
 //============================================================
 
 
@@ -286,7 +287,7 @@ L_Find:
 
 L_Fling:
 	if (getskilllv(151) == 0) goto L_NotRdy4;
-	if ((countitem(910)<2) || (countitem(911)<2)) goto L_NotRdy4;
+	if (countitem(910)<2 || countitem(911)<2) goto L_NotRdy4;
 	mes "Good! You look like your ready for me to teach you the Stone Fling skill.  Let us begin....";
 	next;
 	mes "[Alcouskou]";
@@ -322,6 +323,7 @@ L_Fling:
 	L_NotRdy4:
 		mes "You need ^5555FF2 Scell and 2 Garlet^000000, and the ability to use ^5555FFFind Stone^000000 to learn Stone Fling.";
 		close;
+
 	L_GotFling:
 		mes "So Stone Fling is coming in handy huh? Just make sure you don't hit the wrong moster.";
 		close;

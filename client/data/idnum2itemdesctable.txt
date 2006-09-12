@@ -18685,6 +18685,15 @@ A Moon Snack which has 'Receive' written in the center in Chinese.
 ^ffffff_^000000
 Weight :^777777 1^000000
 #
+5198#
+A cute bunny doll which can be worn on top of the head.
+DEX + 1, Flee Rate + 2.
+Class :^777777 Headgear^000000
+Defense :^777777 1^000000
+Equipped On :^777777 Upper^000000
+Weight :^777777 10^000000
+Applicable Job :^777777 Every Job^000000
+#
 
 // -------------------- Japanese Ribbons 2006 --------------------
 5191#
@@ -18755,4 +18764,71 @@ Applicable Job :^777777 Every Job^000000
 A box that glows with a mysterious, red color. If you open it, something good may be inside.
 ^ffffff_^000000
 Weight :^777777 20^000000
+#
+
+// -------------------- Europe Revenge 2006 --------------------
+7594#
+A letter from Sonia to Grandma Emma.
+^ffffff_^000000
+Weight :^777777 1^000000
+#
+7595#
+A sword made by Giancarlo. It feels like it has some special aura.
+^ffffff_^000000
+Weight :^777777 1^000000
+#
+7596#
+A sturdy looking shield. It feels like it has some special aura.
+^ffffff_^000000
+Weight :^777777 1^000000
+#
+7597#
+Valentina's magical stone. It feels like it has some special aura.
+^ffffff_^000000
+Weight :^777777 1^000000
+#
+5200#
+Marco's favorite hat. Andrea's has written the words "His memories to you..." on the inside of the hat.
+Class :^777777 Headgear^000000
+Defense :^777777 0^000000
+Equipped On :^777777 Upper^000000
+Weight :^777777 30^000000
+Applicable Job :^777777 Every Job^000000
+#
+
+// -------------------- India 2006 Independence Event --------------------
+5199#
+India independence celebration hat.
+[^000088Event Bonus, will NOT work outside of Event^000000]
+Increase Movement Speed.
+Class :^777777 Headgear^000000
+Defense :^777777 3^000000
+Equipped On :^777777 Upper^000000
+Weight :^777777 20^000000
+Applicable Job :^777777 Every Job^000000
+#
+7598#
+A card with the letter "^000088I^000000" printed on it.
+^ffffff_^000000
+Weight :^777777 1^000000
+#
+7599#
+A card with the letter "^000088D^000000" printed on it.
+^ffffff_^000000
+Weight :^777777 1^000000
+#
+7600#
+A card with the letter "^000088K^000000" printed on it.
+^ffffff_^000000
+Weight :^777777 1^000000
+#
+7601#
+A card with the letter "^000088S^000000" printed on it.
+^ffffff_^000000
+Weight :^777777 1^000000
+#
+7602#
+A card with the letter "^000088R^000000" printed on it.
+^ffffff_^000000
+Weight :^777777 1^000000
 #

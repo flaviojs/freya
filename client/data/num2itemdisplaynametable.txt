@@ -785,7 +785,7 @@
 4014#Roda_Frog_Card#
 4015#Condor_Card#
 4016#Thief_Bug_Card#
-4017#Savage_Babe_Card#
+4017#Savage_Bebe_Card#
 4018#Andre_Larva_Card#
 4019#Hornet_Card#
 4020#Familiar_Card#
@@ -801,7 +801,6 @@
 4030#Mandragora_Card#
 4031#Peco_Peco_Card#
 4032#Ambernite_Card#
-
 4033#Poporing_Card#
 4034#Wormtail_Card#
 4035#Hydra_Card#
@@ -872,7 +871,6 @@
 4100#Sohee_Card#
 4101#Sandman_Card#
 4102#Whisper_Card#
-
 4103#Horong_Card#
 4104#Requiem_Card#
 4105#Marc_Card#
@@ -1645,14 +1643,14 @@
 4157#Goblin_Archer_Card#
 4158#Sky_Deleter_Card#
 4159#Nine_Tail_Card#
-4160#Antique_Firelock_Card#
+4160#Firelock_Soldier_Card#
 4161#Grand_Peco_Card#
 4162#Grizzly_Card#
 4163#Gryphon_Card#
 4164#Gullinbursti_Card#
 4165#Gig_Card#
 4166#Nightmare_Terror_Card#
-4167#Neraid_Card#
+4167#Nereid_Card#
 4168#Dark_Lord_Card#
 4169#Dark_Illusion_Card#
 4170#Dark_Frame_Card#
@@ -1714,7 +1712,7 @@
 4226#Sting_Card#
 4227#Spring_Rabbit_Card#
 4228#Sleeper_Card#
-4229#Clock_Tower_Manager_Card#
+4229#Tower_Keeper_Card#
 4230#Shinobi_Card#
 4231#Mi_Gao_Card#
 4232#Hermit_Plant_Card#
@@ -1725,7 +1723,7 @@
 4237#Owl_Duke_Card#
 4238#Owl_Baron_Card#
 4239#Iron_Fist_Card#
-4240#Arclouse_Card#
+4240#Arclouze_Card#
 4241#Arc_Angeling_Card#
 4242#Apocalipse_Card#
 4243#Antonio_Card#
@@ -1748,7 +1746,7 @@
 4260#Wootan_Shooter_Card#
 4261#Wootan_Fighter_Card#
 4262#Cloud_Hermit_Card#
-4263#Incantation_Samurai_Card#
+4263#Incarnation_Samurai_Card#
 4264#Wind_Ghost_Card#
 4265#Jing_Guai_Card#
 4266#Eclipse_Card#
@@ -1757,7 +1755,7 @@
 4269#Incubus_Card#
 4270#Giant_Spider_Card#
 4271#Giant_Hornet_Card#
-4272#Dancing_Dragon_Card#
+4272#Zhu_Po_Long_Card#
 4273#Shell_Fish_Card#
 4274#Zombie_Master_Card#
 4275#Zombie_Prisoner_Card#
@@ -1811,7 +1809,7 @@
 4323#Hatii_Bebe_Card#
 4324#Hatii_Card#
 4325#Harpy_Card#
-4326#Sea-Otter_Card#
+4326#Sea Otter_Card#
 4327#Bloody_Butterfly_Card#
 4328#Yao_Jun_Card#
 4329#Phendark_Card#
@@ -2674,7 +2672,7 @@
 4349#Errende_Ebecee_Card#
 4350#Laurell_Weinder_Card#
 4351#Kavach_Icarus_Card#
-4352#General_Egnigem_Cenia_Card#
+4352#Egnigem_Cenia_(MvP)_Card#
 4353#Remover_Card#
 4354#Gemini-S58_Card#
 4355#Gremlin_Card#
@@ -2699,7 +2697,7 @@
 4374#Vesper_Card#
 4375#Orc_Baby_Card#
 4376#Lady_Tanee_Card#
-4377#Green_Iguana_Card#
+4377#Grove_Card#
 4378#Gold_Acidus_Card#
 4379#Blue_Acidus_Card#
 4380#Red_Ferus_Card#
@@ -2708,20 +2706,20 @@
 4383#Red_Novus_Card#
 4384#Hydrolancer_Card#
 4385#Dragon_Egg_Card#
-4386#Detale_Deurus_Card#
+4386#Detalardeurus_Card#
 4387#Ancient_Mimic_Card#
-4388#Deathword_Card#
+4388#Death_Word_Card#
 4389#Plasma_Card#
 4390#Breeze_Card#
-4391#Retribution_Card#
-4392#Observation_Card#
-4393#Shelter_Card#
-4394#Solace_Card#
-4395#Thanatos_Maero_Card#
-4396#Thanatos_Odium_Card#
-4397#Thanatos_Despero_Card#
-4398#Thanatos_Dolor_Card#
-4399#Thanatos_Card#
+4391#Baroness_of_Retribution_Card#
+4392#Dame_of_Sentinel_Card#
+4393#Mistress_of_Shelter_Card#
+4394#Lady_Solace_Card#
+4395#Maero_of_Thanatos_Card#
+4396#Odium_of_Thanatos_Card#
+4397#Despero_of_Thanatos_Card#
+4398#Dolor_of_Thanatos_Card#
+4399#Thanatos_Phantom_Card#
 4400#Aliza_Card#
 4401#Alicel_Card#
 4402#Aliot_Card#
@@ -2864,6 +2862,7 @@
 7591#Lettered_Moon_Snack_03#
 7592#Lettered_Moon_Snack_04#
 7593#Lettered_Moon_Snack_05#
+5198#Hat#
 
 // ----- Japanese Ribbons 2006 -----
 5191#Accessory#
@@ -2875,3 +2874,18 @@
 5197#Accessory#
 
 12189#Old_Red_Box#
+
+// ----- Europe Revenge 2006 -----
+7594#Sonia's_Letter#
+7595#Special_Sword#
+7596#Special_Shield#
+7597#Magic_Stone#
+5200#Hat#
+
+// ----- India 2006 Independence Event -----
+5199#Hat#
+7598#Blue_I_Card#
+7599#Blue_D_Card#
+7600#Blue_K_Card#
+7601#Blue_S_Card#
+7602#Blue_R_Card#

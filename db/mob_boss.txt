@@ -7,6 +7,7 @@
 // 1000000 = 100%
 //
 
+0,Osiris,1038
 1038,Osiris,1000000
 1039,Baphomet,1000000
 1046,Doppelganger,1000000
@@ -31,7 +32,7 @@
 1511,Amon Ra,1000000
 1518,White Lady,1000000
 1583,Tao Gunka,1000000
-1623,RSX 0806,1000000
+1623,RSX-0806,1000000
 1646,Lord Knight Seyren,1000000
 1647,Assassin Cross Eremes,1000000
 1648,Mastersmith Howard,1000000
@@ -39,11 +40,11 @@
 1650,Sniper Cecil,1000000
 1651,High Wizard Kathryne,1000000
 1685,Vesper,1000000
-1688,Lady Tany,1000000
-1708,Thanatos,1000000
-1719,Detale,1000000
+1688,Lady Tanee,1000000
+1708,Thanatos Phantom,1000000
+1719,Detardeurus,1000000
 1734,Kiel_D-01,1000000
 1751,Valkyrie Randgris,1000000
-1768,Gloom Under Night,1000000
+1768,Gloom Undernight,1000000
 1779,Ktullanux,1000000
 1785,Atros,1000000
