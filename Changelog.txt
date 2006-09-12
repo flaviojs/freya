@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 09/12/06
+	* Updated: packet_db.txt [Yor]
 	* Fixed: Some things with OBB/DB related items [Tsuyuki] (from subdev svn 137)
 	* Fixed: Fixed all the broken new cards and fully implemented them, test and report please [Tsuyuki] (from subdev svn 136)
 	 - Margaretha Sorin Card (4364) could not be fully implemented, check buglist
