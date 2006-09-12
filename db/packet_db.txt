@@ -1,12 +1,7 @@
-//packet_db.txt, Server/Client Packet Database
-//
-// Need a Translation:
-//
-// 同じ番号のパケットは後ので上書きされるので変更のあったパケットは一番下に追加すればよいです
-// 古いパケットで使いたい場合は新しい定義を削除するかコメントアウトすればよいです
-//
+// packet_db.txt, Server/Client Packet Database
+// (translation from japanese: not used in Freya -> removed)
 
-// packet_ver: 0
+packet_ver: 0
 0x0064,55
 0x0065,17
 0x0066,3
@@ -267,7 +262,7 @@
 0x0165,30,createguild,6
 0x0166,-1
 0x0167,3
-0x0168,14,guildinvite,2
+0x0168,14,guildinvite,2:6:10
 0x0169,3
 0x016a,30
 0x016b,10,guildreplyinvite,2:6
@@ -410,19 +405,19 @@
 0x01f4,32
 0x01f5,9
 0x01f6,34
-0x01f7,14
+0x01f7,14,babyreply,2:6:10
 0x01f8,2
-0x01f9,6
+0x01f9,6,babyrequest,2
 0x01fa,48
 0x01fb,56
 0x01fc,-1
-0x01fd,4
+0x01fd,4,repairitem,2
 0x01fe,5
 0x01ff,10
 0x0200,26
 0x0201,-1
-0x0202,26
-0x0203,10
+0x0202,26,friendaddrequest,2
+0x0203,10,frienddeleterequest,2:6
 0x0204,18
 0x0205,26
 0x0206,11
@@ -433,11 +428,11 @@
 0x020b,0
 0x020c,0
 0x020d,-1
-0x020e,24
-0x020f,0
+0x020e,32
+
 
 //2004-07-06 kRO Client
-// packet_ver: 1
+packet_ver: 1
 0x0072,22,wanttoconnection,5:9:13:17:21
 0x0085,8,walktoxy,5
 0x00a7,13,useitem,5:9
@@ -446,7 +441,7 @@
 0x0190,95,useskilltopos,4:9:11:13:15
 
 //2004-07-13 kRO Client
-// packet_ver: 2
+packet_ver: 2
 0x0072,39,wanttoconnection,12:22:30:34:38
 0x0085,9,walktoxy,6
 0x009b,13,changedir,5:12
@@ -457,7 +452,7 @@
 0x0190,99,useskilltopos,7:9:15:17:19
 
 //2004-07-2 kRO Client
-// packet_ver: 3
+packet_ver: 3
 0x0072,14,dropitem,5:12
 0x007e,33,wanttoconnection,12:18:24:28:32
 0x0085,20,useskilltoid,7:12:16
@@ -477,7 +472,7 @@
 0x0193,9,actionrequest,3:8
 
 //2004-08-09 kRO Client
-// packet_ver: 4
+packet_ver: 4
 0x0072,17,dropitem,8:15
 0x007e,37,wanttoconnection,9:21:28:32:36
 0x0085,26,useskilltoid,11:18:22
@@ -509,7 +504,7 @@
 0x0210,22
 
 //2004-09-06aSakexe.exe
-// packet_ver: 5
+packet_ver: 5
 0x0072,20,useitem,7:16
 0x007e,19,movetokafra,3:15
 0x0085,23,actionrequest,9:22
@@ -527,41 +522,50 @@
 0x0116,11,ticksend,7
 0x0190,22,useskilltoid,9:15:18
 0x0193,17,movefromkafra,3:13
-//0x020f,10
-//0x0210,22
-//0x0211,0
-//0x0212,26
-//0x0213,26
-//0x0214,42
 
 //2004-09-21aSakexe.exe
-// packet_ver: 11->6
-0x0072,18,useitem,10,14
-0x007e,25,movetokafra,6,21
-0x0085,9,actionrequest,3,8
+//2004-09-26bSakexe
+packet_ver: 6
+0x0072,18,useitem,10:14
+0x007e,25,movetokafra,6:21
+0x0085,9,actionrequest,3:8
 0x0089,14,walktoxy,11
-0x008c,109,useskilltopos,6,20,23,27,29
-0x0094,19,dropitem,12,17
+0x008c,109,useskilltopos,6:20:23:27:29
+0x0094,19,dropitem,12:17
 0x009b,10,getcharnamerequest,6
 //0x009f,-1,globalmessage,2:4
 0x00a2,10,solvecharname,6
-0x00a7,29,useskilltopos,6,20,23,27
-0x00f3,18,changedir,8,17
-0x00f5,32,wanttoconnection,10,17,23,27,31
+0x00a7,29,useskilltopos,6:20:23:27
+0x00f3,18,changedir,8:17
+0x00f5,32,wanttoconnection,10:17:23:27:31
 //0x00f7,2,closekafra,0
 0x0113,14,takeitem,10
 0x0116,14,ticksend,10
-0x0190,14,useskilltoid,4,7,10
-0x0193,12,movefromkafra,4,8
-//0x020f,10
-//0x0210,22
-//0x0211,0
-//0x0212,26
-//0x0213,26
-//0x0214,42
+0x0190,14,useskilltoid,4:7:10
+0x0193,12,movefromkafra,4:8
+
+//2004-09-21bSakexe
+// no packet_ver - not coded
+//0x0072,18,useitem,7:16
+//0x007e,25,movetokafra,3:15
+//0x0085,9,actionrequest,9:22
+//0x0089,14,walktoxy,6
+//0x008c,109,useskilltopos,10:14:18:23:25
+//0x0094,19,dropitem,6:15
+//0x009b,10,getcharnamerequest,10
+//0x009f,-1,globalmessage,2:4
+//0x00a2,10,solvecharname,10
+//0x00a7,29,useskilltopos,10:14:18:23
+//0x00f3,18,changedir,4:9
+//0x00f5,32,wanttoconnection,7:15:25:29:33
+//0x00f7,2,closekafra,0
+//0x0113,14,takeitem,7
+//0x0116,14,ticksend,7
+//0x0190,14,useskilltoid,9:15:18
+//0x0193,12,movefromkafra,3:13
 
 //2004-10-18bSakexe.exe
-// packet_ver: 12->7
+packet_ver: 7
 0x0072,17,useitem,6:13
 0x007e,16,movetokafra,5:12
 //0x0085,9,actionrequest,3:8
@@ -579,15 +583,9 @@
 0x0116,10,ticksend,6
 0x0190,20,useskilltoid,7:12:16
 0x0193,26,movefromkafra,10:22
-//0x020f,10
-//0x0210,22
-//0x0211,0
-//0x0212,26
-//0x0213,26
-//0x0214,42
 
 //2004-10-25aSakexe.exe
-// packet_ver: 13->8
+packet_ver: 8
 0x0072,13,useitem,5:9
 0x007e,13,movetokafra,6:9
 0x0085,15,actionrequest,4:14
@@ -605,47 +603,19 @@
 0x0116,9,ticksend,5
 0x0190,26,useskilltoid,4:10:22
 0x0193,22,movefromkafra,12:18
-//0x020f,10
-//0x0210,22
-//0x0211,0
-//0x0212,26
-//0x0213,26
-//0x0214,42
 
 //2004-11-08aSakexe.exe
-//0x0072,13,useitem,5:9
-//0x007e,13,movetokafra,6:9
-//0x0085,15,actionrequest,4:14
-//0x0089,6,walktoxy,3
-//0x008c,108,useskilltopos,6:9:23:26:28
-//0x0094,12,dropitem,6:10
-//0x009b,10,getcharnamerequest,6
-//0x009f,-1,globalmessage,2:4
-//0x00a2,16,solvecharname,12
-//0x00a7,28,useskilltopos,6:9:23:26
-//0x00f3,15,changedir,6:14
-//0x00f5,29,wanttoconnection,5:14:20:24:28
-//0x0113,9,takeitem,5
-//0x0116,9,ticksend,5
-//0x0190,26,useskilltoid,4:10:22
-//0x0193,22,movefromkafra,12:18
-//0x020f,10
-//0x0210,22
-//0x0211,0
-//0x0212,26
-//0x0213,26
-//0x0214,42
 0x0215,6
 0x0216,6
-0x0217,2
-0x0218,2
+0x0217,2,rankingblacksmith,0
+0x0218,2,rankingalchemist,0
 0x0219,282
 0x021a,282
 0x021b,10
 0x021c,10
 
 //2004-12-06aSakexe
-// packet_ver: 9
+packet_ver: 9
 0x0072,22,useskilltoid,8:12:18
 0x007e,30,useskilltopos,4:9:22:28
 0x0085,-1,globalmessage,2:4
@@ -663,28 +633,16 @@
 0x0116,12,dropitem,4:10
 0x0190,15,useitem,3:11
 0x0193,21,movefromkafra,4:17
-//0x020f,10
-//0x0210,22
-//0x0211,0
-//0x0212,26
-//0x0213,26
-//0x0214,42
-//0x0215,6
-//0x0216,6
-//0x0217,2
-//0x0218,2
-//0x0219,282
-//0x021a,282
-//0x021b,10
-//0x021c,10
-0x021d,6
+0x021d,6,clientsetting,0
 0x021e,6
+0x021f,66
+0x0220,10
 0x0221,-1
-0x0222,6
+0x0222,6,weaponrefine,2
 0x0223,8
 
 //2005-01-10bSakexe
-// packet_ver: 10
+packet_ver: 10
 0x0072,26,useskilltoid,8:16:22
 0x007e,114,useskilltopos,10:18:22:32:34
 0x0085,23,changedir,12:22
@@ -702,27 +660,6 @@
 0x0116,20,dropitem,15:18
 0x0190,20,actionrequest,9:19
 0x0193,2,closekafra,0
-//0x020f,10
-//0x0210,22
-//0x0211,0
-//0x0212,26
-//0x0213,26
-//0x0214,42
-//0x0215,6
-//0x0216,6
-//0x0217,2
-//0x0218,2
-//0x0219,282
-//0x021a,282
-//0x021b,10
-//0x021c,10
-//0x021d,6
-//0x021e,6
-0x021f,66
-0x0220,10
-//0x0221,-1
-//0x0222,6
-//0x0223,8
 
 //2005-05-09aSakexe [Sara]
 packet_ver: 11
@@ -744,7 +681,7 @@ packet_ver: 11
 0x0190,19,actionrequest,5:18
 0x0193,2,closekafra,0
 0x0224,10
-0x0225,2
+0x0225,2,rankingtaekwon,0
 0x0226,282
 0x0227,18
 0x0228,18
@@ -752,10 +689,24 @@ packet_ver: 11
 0x022a,58
 0x022b,57
 0x022c,64
-0x022d,5
-0x0232,9
-0x0233,11
-0x0234,-1
+0x022d,5,hommenu,4
+0x022e,71
+0x022f,5
+0x0230,12
+0x0231,26,changehomname,2
+0x0232,9,homwalktoxy,6
+0x0233,11,homactionrequest,6:10
+0x0234,6,homwalkmaster,2
+0x0235,-1
+0x0236,10
+0x0237,2,rankingpk,0
+0x0238,282
+0x0239,11
+0x023a,4
+0x023b,36
+0x023c,6
+0x023d,6
+0x023e,4
 
 //2005-06-28aSakexe [Sara]
 packet_ver: 12
@@ -776,6 +727,42 @@ packet_ver: 12
 0x0116,12,dropitem,3:10
 0x0190,24,actionrequest,11:23
 0x0193,2,closekafra,0
+
+//2005-11-29aSakexe
+0x023f,2,refleshmailbox,0
+0x0240,-1
+0x0241,6,readmail,2
+0x0242,-1
+0x0243,6,deletemail,2
+0x0244,6,mailgetappend,2
+0x0245,3
+0x0246,4,mailwinopen,2
+0x0247,8,sendmailsetappend,2,4
+0x0248,-1,sendmail,2:4:28:69
+
+//Don't know exactly on which release between 2005-11-29aSakexe and 2006-06-07aSakexe
+0x0249,3
+0x024a,70
+0x024b,4
+0x024c,8
+0x024d,12
+0x024e,6
+0x024f,10
+0x0250,3
+0x0251,34
+0x0252,-1
+0x0253,3
+0x0254,3,feelsaveack,2
+0x0255,5
+0x0256,5
+0x0257,8
+0x0258,2
+0x0259,3
+0x025a,-1
+0x025b,6
+0x025c,4
+0x025d,6
+0x025e,4
 
 //2006-04-04aSakexe [blackhole89]
 packet_ver: 13
@@ -799,7 +786,7 @@ packet_ver: 13
 0x0193,2,closekafra,0
 
 //2006-06-07aSakexe
-0x025F,6
+0x025f,6
 0x0260,6
 0x0261,11
 0x0262,11
@@ -810,30 +797,29 @@ packet_ver: 13
 0x0267,4
 0x0268,4
 0x0269,4
-0x026A,4
-0x026B,4
-0x026C,4
-0x026D,4
-0x026F,2
+0x026a,4
+0x026b,4
+0x026c,4
+0x026d,4
+0x026f,2
 0x0270,2
 0x0271,40
 0x0272,44
 0x0273,30
 0x0274,8
+
 0x0277,84
 0x0278,2
 0x0279,2
-0x027A,-1
+0x027a,-1
 
 //2006-07-03aSakexe
-0x027B,14
-0x027C,60
-0x027D,62
+0x027b,14
+0x027c,60
+0x027d,62
 
 //2006-07-24aSakexe
-//0x025B,-1
-0x027E,-1
+0x027e,-1
 
 //2006-08-07aSakexe
-0x025B,6
-0x027F,4
+0x027f,4
