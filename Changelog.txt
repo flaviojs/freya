@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 09/15/06
+	* Fixed: Some monster teleport rates/delays [Tsuyuki]
 	* Fixed: Some NPC bugs [Tsuyuki]
 
 09/12/06

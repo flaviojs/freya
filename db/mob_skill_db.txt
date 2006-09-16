@@ -1236,7 +1236,7 @@
 1270,Tower Keeper,chase,76,7,300,3500,10000,yes,target,myhpltmaxrate,30,,,,,,
 1270,Tower Keeper,chase,76,5,1000,3500,10000,yes,target,casttargeted,,,,,,,
 1270,Tower Keeper,chase,76,7,100,3500,10000,yes,target,always,0,,,,,,
-1270,Tower Keeper@NPC_TELEPORT,idle,26,1,500,0,5000,yes,self,always,0,,,,,,
+1270,Tower Keeper@NPC_TELEPORT,idle,26,1,500,0,60000,yes,self,always,0,,,,,,
 1271,Alligator,attack,184,2,100,0,15000,yes,target,always,0,,,,,,
 1272,Dark Lord,attack,200,1,1000,2000,10000,no,target,myhpltmaxrate,70,,,,,,
 1272,Dark Lord,attack,187,5,200,0,5000,yes,target,always,0,,,,,,
