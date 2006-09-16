@@ -742,6 +742,8 @@ function	script	orimain	{
 //=====================================================================================
 // Equipment Repairmen
 //=====================================================================================
+
+
 prt_in.gat,62,54,2	script	Grendal	84,{
 	set @name$,"Grendal";
 	callfunc "repairmain";
@@ -767,7 +769,7 @@ lhz_in02.gat,284,14,3	script	Repairman#03	86,{
 //============================================================
 //= Equipment Repair Function
 //============================================================
-function	script	Repairmain	{
+function	script	repairmain	{
 	set @repairprice,5000;
 	mes "[" + @name$ + "]";
 	mes "I am the Repair Smith and I can repair any Arms you want.";

@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+09/15/06
+	* Fixed: Some NPC bugs [Tsuyuki]
+
 09/12/06
 	* Fixed: Ghostring's Teleport skill [Tsuyuki]
 	* Updated: packet_db.txt [Yor]
