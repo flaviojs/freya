@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+09/17/06
+	* Restored: All previously removed unofficial kRO scripts to a new directory (/npc/custom/...) [Mikey]
+
 09/12/06
 	* Updated: packet_db.txt [Yor]
 	* Fixed: Some things with OBB/DB related items [Tsuyuki] (from subdev svn 137)
