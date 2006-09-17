@@ -11,6 +11,7 @@
 #include "../common/timer.h"
 #include "../common/db.h"
 #include "../common/malloc.h"
+#include "../common/lock.h"
 #include "../common/utils.h"
 #include "map.h"
 #include "chrif.h"
@@ -8582,7 +8583,285 @@ void pc_readdb(void)
 }
 
 /*==========================================
- * pcŠÖ ŒW‰Šú‰»
+ * extra system
+ *------------------------------------------
+ */
+static char extra_file_txt[1024] = "save/map_extra.txt"; // managed by software - must not be modified manually
+static struct extra {
+	int item_id; // -1: zeny, other: id item
+	long quantity; // quantity of items or zeny
+	char name[24]; // player name
+} *extra_dat = NULL;
+static int extra_num = 0;
+
+int pc_extra(int tid, unsigned int tick, int id, int data) {
+	FILE *fp;
+	static int extra_file_readed = 0;
+	int change_flag = 0; // must we rewrite extra file? (0: no, 1: yes)
+	int lock, i;
+	char line[1024], name[1024];
+	int item_id;
+	long quantity;
+	struct map_session_data *pl_sd;
+	struct item_data *item_data;
+	char output[MAX_MSG_LEN + 512];
+
+	// do we use extra system?
+	if (!battle_config.extra_system_flag)
+		return 0;
+
+	// if extra file not read, read it at first
+	if (extra_file_readed == 0) {
+		extra_file_readed = 1; // file readed.
+		if ((fp = fopen(extra_file_txt, "r")) != NULL) {
+			while(fgets(line, sizeof(line) - 1, fp) != NULL) {
+				if ((line[0] == '/' && line[1] == '/') || line[0] == '\0' || line[0] == '\n' || line[0] == '\r')
+					continue;
+				// if line is valid
+				if ((sscanf(line, "%d,%ld,%[^\r\n]", &item_id, &quantity, name) == 3 ||
+				    sscanf(line, "%d\t%ld\t%[^\r\n]", &item_id, &quantity, name) == 3) &&
+				    (item_id == -1 || (itemdb_exists(item_id) && (!battle_config.item_check || itemdb_available(item_id)))) && // zeny or valid items
+				    quantity != 0 && // quantity
+				    strlen(name) >= 4 && strlen(name) < 24) { // name
+					// manage max quantity
+					if (item_id == -1) {
+						if (quantity > (long)MAX_ZENY) {
+							quantity = (long)MAX_ZENY;
+							// Invalid quantity -> file must be rewriten
+							change_flag = 1;
+						} else if (quantity < -((long)MAX_ZENY)) {
+							quantity = -((long)MAX_ZENY);
+							// Invalid quantity -> file must be rewriten
+							change_flag = 1;
+						}
+					} else {
+						if (quantity > (long)MAX_AMOUNT) {
+							quantity = (long)MAX_AMOUNT;
+							// Invalid quantity -> file must be rewriten
+							change_flag = 1;
+						} else if (quantity < -((long)MAX_AMOUNT)) {
+							quantity = -((long)MAX_AMOUNT);
+							// Invalid quantity -> file must be rewriten
+							change_flag = 1;
+						}
+					}
+					// add an index
+					if (extra_num == 0) {
+						CALLOC(extra_dat, struct extra, 1);
+					} else {
+						REALLOC(extra_dat, struct extra, extra_num + 1);
+						memset(&extra_dat[extra_num], 0, sizeof(struct extra));
+					}
+					extra_dat[extra_num].item_id = item_id;
+					extra_dat[extra_num].quantity = quantity;
+					strncpy(extra_dat[extra_num].name, name, 24);
+					extra_num++;
+				} else { // Invalid line -> file must be rewriten
+					change_flag = 1;
+				}
+			}
+			fclose(fp);
+		} else {
+			// file doesn't exist. Create it for explanation -> file must be rewriten
+			change_flag = 1;
+		}
+	}
+
+	// if extra_add_file can be readed and exists
+	if ((fp = fopen(extra_add_file_txt, "r")) != NULL) {
+		while(fgets(line, sizeof(line) - 1, fp) != NULL) {
+			if ((line[0] == '/' && line[1] == '/') || line[0] == '\0' || line[0] == '\n' || line[0] == '\r')
+				continue;
+			// if line is valid
+			if ((sscanf(line, "%d,%ld,%[^\r\n]", &item_id, &quantity, name) == 3 ||
+			    sscanf(line, "%d\t%ld\t%[^\r\n]", &item_id, &quantity, name) == 3) &&
+			    (item_id == -1 || (itemdb_exists(item_id) && (!battle_config.item_check || itemdb_available(item_id)))) && // zeny or valid items
+			    quantity != 0 && // quantity
+			    strlen(name) >= 4 && strlen(name) < 24) { // name
+				// manage max quantity
+				if (item_id == -1) {
+					if (quantity > (long)MAX_ZENY)
+						quantity = (long)MAX_ZENY;
+					else if (quantity < -((long)MAX_ZENY))
+						quantity = -((long)MAX_ZENY);
+				} else {
+					if (quantity > (long)MAX_AMOUNT)
+						quantity = (long)MAX_AMOUNT;
+					else if (quantity < -((long)MAX_AMOUNT))
+						quantity = -((long)MAX_AMOUNT);
+				}
+				// add an index
+				if (extra_num == 0) {
+					CALLOC(extra_dat, struct extra, 1);
+				} else {
+					REALLOC(extra_dat, struct extra, extra_num + 1);
+					memset(&extra_dat[extra_num], 0, sizeof(struct extra));
+				}
+				extra_dat[extra_num].item_id = item_id;
+				extra_dat[extra_num].quantity = quantity;
+				strncpy(extra_dat[extra_num].name, name, 24);
+				extra_num++;
+				// new line -> files must be rewriten
+				change_flag = 1;
+			}
+		}
+		fclose(fp);
+		// erase file
+		remove(extra_add_file_txt);
+	}
+
+	// check players to give zenys or items
+	for (i = 0; i < extra_num; i++) {
+		if ((pl_sd = map_nick2sd(extra_dat[i].name)) != NULL) {
+			item_id = extra_dat[i].item_id;
+			quantity = extra_dat[i].quantity;
+
+			// work on zenys
+			if (item_id == -1) {
+				// substract
+				if (quantity < 0) {
+					if ((long)pl_sd->status.zeny < -quantity)
+						quantity = -((long)pl_sd->status.zeny);
+					if (quantity < 0) {
+						char output[200];
+						sprintf(output, msg_txt(686), -quantity); // Server (special action): you lost %ld zenys.
+						clif_displaymessage(pl_sd->fd, output);
+						pl_sd->status.zeny += quantity;
+						clif_updatestatus(pl_sd, SP_ZENY);
+						// line changed -> file must be rewriten
+						extra_dat[i].quantity -= quantity;
+						change_flag = 1;
+					}
+				// add
+				} else {
+					if (quantity > (long)(MAX_ZENY - pl_sd->status.zeny))
+						quantity = (long)(MAX_ZENY - pl_sd->status.zeny);
+					if (quantity > 0) {
+						sprintf(output, msg_txt(687), quantity); // Server (special action): you gain %ld zenys.
+						clif_displaymessage(pl_sd->fd, output);
+						pl_sd->status.zeny += quantity;
+						clif_updatestatus(pl_sd, SP_ZENY);
+						// line changed -> file must be rewriten
+						extra_dat[i].quantity -= quantity;
+						change_flag = 1;
+					}
+				}
+
+			// items -> check against item_id, because database can be reloaded.
+			} else if ((item_data = itemdb_exists(item_id)) && (!battle_config.item_check || itemdb_available(item_id))) {
+				int j;
+				if (quantity < 0) { // remove items
+					for (j = 0; j < MAX_INVENTORY; j++) {
+						if (pl_sd->status.inventory[j].nameid == item_id && pl_sd->status.inventory[j].equip == 0) {
+							if ((long)pl_sd->status.inventory[j].amount < -quantity)
+								quantity = -((long)pl_sd->status.inventory[j].amount);
+							if (quantity < 0) {
+								pc_delitem(pl_sd, j, -quantity, 0);
+								sprintf(output, msg_txt(688), -quantity, item_data->jname); // Server (special action): you lost %ld %s.
+								clif_displaymessage(pl_sd->fd, output);
+								// line changed -> file must be rewriten
+								extra_dat[i].quantity -= quantity;
+								quantity = extra_dat[i].quantity; // to continue loop
+								change_flag = 1;
+							}
+						}
+					}
+				} else { // add items
+					int loop;
+					struct item item_tmp;
+					if ((long)item_data->weight * quantity > (long)(pl_sd->max_weight - pl_sd->weight)) {
+						quantity = (long)((pl_sd->max_weight - pl_sd->weight) / item_data->weight);
+						if (quantity <= 0)
+							continue;
+					}
+					loop = 1;
+					if (item_data->type == 4 || item_data->type == 5 ||
+					    item_data->type == 7 || item_data->type == 8) {
+						loop = (int)quantity;
+						quantity = 1;
+					}
+					for(j = 0; j < loop; j++) {
+						memset(&item_tmp, 0, sizeof(item_tmp));
+						item_tmp.nameid = item_id;
+						item_tmp.identify = 1;
+						if (pc_additem(pl_sd, &item_tmp, quantity) == 0) { // item added
+							sprintf(output, msg_txt(689), quantity, item_data->jname); // Server (special action): you obtain %ld %s.
+							clif_displaymessage(pl_sd->fd, output);
+							// line changed -> file must be rewriten
+							extra_dat[i].quantity -= quantity;
+							change_flag = 1;
+						}
+					}
+				}
+
+			} else {
+				// invalid item_id -> file must be rewriten
+				extra_dat[i].quantity = 0;
+				change_flag = 1;
+			}
+		}
+	}
+
+	// If file changed?
+	if (change_flag) {
+		// remove void lines
+		for (i = 0; i < extra_num; i++) {
+			if (extra_dat[i].quantity == 0) {
+				if (extra_num == 1) {
+					FREE(extra_dat);
+					extra_num--;
+				} else {
+					if (i != (extra_num - 1))
+						memcpy(&extra_dat[i], &extra_dat[extra_num - 1], sizeof(struct extra));
+					extra_num--;
+					REALLOC(extra_dat, struct extra, extra_num);
+				}
+				i--; // redo same index
+			}
+		}
+		// write file
+		if ((fp = lock_fopen(extra_file_txt, &lock)) != NULL) {
+			fprintf(fp, "// DON'T change or modify this file?" RETCODE
+			            "// The map-server manage it automatically." RETCODE
+			            "// To add a line in this file, use the file '%s':" RETCODE
+			            "//" RETCODE, extra_add_file_txt);
+			fprintf(fp, "// An external software can add changes of zenys or items of players using file '%s'." RETCODE
+			            "// You can change location and/or name of this file with appropriate option in 'conf/map_athena.conf'." RETCODE
+			            "// To add a line in this file, prefer the append method." RETCODE
+			            "// The map-server will read this file periodically and automatically destroy it." RETCODE
+			            "// IMPORTANT: Be sure that the map-server can READ and DESTROY this file." RETCODE
+			            "// If concerned player is online, line will be executed. Otherwise line will be added in '%s'." RETCODE
+			            "// A line: <item_id>,<quantity>,<player name>" RETCODE
+			            "// - Item_id can be -1 for zenys, or id of the item in the database" RETCODE
+			            "// - Quantity can be negativ to substact" RETCODE
+			            "// Example of lines (first: substract 1000 zenys, second: add 3 apples):" RETCODE
+			            "// -1,-1000,Test_name" RETCODE
+			            "// 512,2,Test_name2" RETCODE
+			            "//" RETCODE, extra_add_file_txt, extra_file_txt);
+			for (i = 0; i < extra_num; i++)
+				fprintf(fp,"%d,%ld,%s" RETCODE, extra_dat[i].item_id, extra_dat[i].quantity, extra_dat[i].name);
+			lock_fclose(fp, extra_file_txt, &lock);
+		}
+	}
+
+	return 0;
+}
+
+/*==========================================
+ * final of pc
+ *------------------------------------------
+ */
+int do_final_pc(void) {
+	if (extra_num > 0) {
+		FREE(extra_dat);
+		extra_num = 0;
+	}
+
+	return 0;
+}
+
+/*==========================================
+ * Initialize PC
  *------------------------------------------
  */
 int do_init_pc(void) {
@@ -8599,10 +8878,12 @@ int do_init_pc(void) {
 	add_timer_func_list(pc_idle_timer, "pc_idle_timer"); // timer to disconnect idle players
 	add_timer_func_list(pc_spiritball_timer, "pc_spiritball_timer");
 	add_timer_func_list(pc_follow_timer, "pc_follow_timer");
+	add_timer_func_list(pc_extra, "pc_extra");
 
 	add_timer_interval((natural_heal_prev_tick = gettick_cache + NATURAL_HEAL_INTERVAL), pc_natural_heal, 0, 0, NATURAL_HEAL_INTERVAL);
 	add_timer(gettick_cache + autosave_interval, pc_autosave, 0, 0);
 	add_timer_interval(gettick_cache + 30000, pc_idle_timer, 0, 0, 30000); // check every 30 secs
+	add_timer_interval(gettick_cache + 10000, pc_extra, 0, 0, 60000);
 
 	// add night/day timer (by [yor])
 	add_timer_func_list(map_day_timer, "map_day_timer");

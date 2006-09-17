@@ -1748,6 +1748,11 @@ void set_default_msg() {
 	add_msg(684, "For the record: War of Emperium is actually running. Because you are member of a guild, you can not use 'Main channel' on GvG maps.");
 	add_msg(685, "War of Emperium is actually running. Because you are member of a guild, you can not use 'Main channel' on GvG maps.");
 
+	add_msg(686, "Server (special action): you lost %ld zenys.");
+	add_msg(687, "Server (special action): you gain %ld zenys.");
+	add_msg(688, "Server (special action): you lost %ld %s.");
+	add_msg(689, "Server (special action): you obtain %ld %s.");
+
 	return;
 }
 

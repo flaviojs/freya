@@ -216,6 +216,7 @@ int pc_eventtimer(int tid, unsigned int tick, int id, int data); // for npc_dequ
 
 int pc_run(struct map_session_data *sd, int skilllv, int dir);
 
+int do_final_pc(void);
 int do_init_pc(void);
 
 enum {ADDITEM_EXIST, ADDITEM_NEW, ADDITEM_OVERAMOUNT};

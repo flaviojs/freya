@@ -808,6 +808,7 @@ enum {
 
 extern char motd_txt[];
 extern char help_txt[];
+extern char extra_add_file_txt[]; // to add items from external software (use append to add a line)
 
 extern char talkie_mes[];
 

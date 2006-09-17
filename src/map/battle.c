@@ -3623,9 +3623,11 @@ static const struct battle_config_short{
 	{ "atcommand_storage_on_pvp_map",               &battle_config.atcommand_storage_on_pvp_map },
 	{ "atcommand_gstorage_on_pvp_map",              &battle_config.atcommand_gstorage_on_pvp_map },
 	{ "pm_gm_not_ignored",                          &battle_config.pm_gm_not_ignored }, // GM minimum level to be not ignored in private message. [BeoWulf] (from freya's bug report)
-	
+
 	{ "char_disconnect_mode",                       &battle_config.char_disconnect_mode },
-	
+
+	{ "extra_system_flag",                          &battle_config.extra_system_flag },
+
 //SQL-only options start
 #ifdef USE_SQL
 	{ "mail_system",                                &battle_config.mail_system }, // added by [Valaris]
@@ -4005,6 +4007,8 @@ void battle_set_defaults() {
 	battle_config.pm_gm_not_ignored = 60; // GM minimum level to be not ignored in private message. [BeoWulf] (from freya's bug report)
 
 	battle_config.char_disconnect_mode = 2; // nobody is disconnected
+
+	battle_config.extra_system_flag = 1;
 
 //SQL-only options start
 #ifdef USE_SQL
