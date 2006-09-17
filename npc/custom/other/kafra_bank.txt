@@ -3,6 +3,7 @@
 //===== By: ==================================================
 //= Lupus (1.0)
 //= Yor (1.3/1.4)
+//= Sensei (1.5)
 //===== Current Version: =====================================
 //= 1.4
 //===== Compatible With: =====================================
@@ -20,6 +21,7 @@
 //     zeny exploits when you change DATE at your server
 // 1.3 Fix logmes, limit bank balance to 1,000,000,000z [Yor]
 // 1.4 Fix interest reg value [Yor]
+// 1.5 Added bank in all cities [Sensei]
 //============================================================
 
 prontera.gat,131,190,1	script	Bank Clerk::bankg	833,{
@@ -133,3 +135,19 @@ B_EXIT2:
 geffen.gat,125,73,3	duplicate(bankg)	Bank Clerk#2	833
 izlude.gat,145,107,1	duplicate(bankg)	Bank Clerk#3	833
 morocc.gat,147,84,7	duplicate(bankg)	Bank Clerk#4	833
+payon.gat,170,225,5	duplicate(bankg)	Bank Clerk#5	833
+alberta.gat,25,238,5	duplicate(bankg)	Bank Clerk#6	833
+aldebaran.gat,135,123,4	duplicate(bankg)	Bank Clerk#7	833
+xmas.gat,154,126,9	duplicate(bankg)	Bank Clerk#8	833
+comodo.gat,195,151,5	duplicate(bankg)	Bank Clerk#9	833
+yuno.gat,339,109,6	duplicate(bankg)	Bank Clerk#10	833
+amatsu.gat,102,152,3	duplicate(bankg)	Bank Clerk#11	833
+gonryun.gat,157,122,2	duplicate(bankg)	Bank Clerk#12	833
+umbala.gat,130,133,6	duplicate(bankg)	Bank Clerk#13	833
+louyang.gat,210,102,3	duplicate(bankg)	Bank Clerk#14	833
+pay_arche.gat,55,121,3	duplicate(bankg)	Bank Clerk#15	833
+ayothaya.gat,212,180,3	duplicate(bankg)	Bank Clerk#16	833
+einbroch.gat,57,203,4	duplicate(bankg)	Bank Clerk#17	833
+lightalzen.gat,154,105,3	duplicate(bankg)	Bank Clerk#18	833
+einbech.gat,181,126,2	duplicate(bankg)	Bank Clerk#19	833
+hugel.gat,103,143,7	duplicate(bankg)	Bank Clerk#20	833
