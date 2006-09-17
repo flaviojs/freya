@@ -959,7 +959,13 @@ int mmo_char_fromsql(int char_id) {
 		p.pet_id = sql_get_integer(26);
 
 		p.hair = sql_get_integer(27);
+		if (p.hair > max_hair_style) {
+			p.hair = max_hair_style;
+		}
 		p.hair_color = sql_get_integer(28);
+		if (p.hair_color > max_hair_color) {
+			p.hair_color = max_hair_color;
+		}
 		p.clothes_color = sql_get_integer(29);
 
 		p.weapon = sql_get_integer(30);
@@ -2281,6 +2287,9 @@ int mmo_char_send006b(int fd, struct char_session_data *sd) {
 //		printf("char #%d: status_point %d, hp: %d/%d, sp: %d/%d, speed: %d\n", found_num, WPACKETW(j+40), WPACKETW(j+42), WPACKETW(j+44), WPACKETW(j+46), WPACKETW(j+48), WPACKETW(j+50));
 		WPACKETW(j+ 52) = sql_get_integer(13); // class
 		WPACKETW(j+ 54) = sql_get_integer(14); // hair
+		if (sql_get_integer(14) > max_hair_style) {
+			WPACKETW(j+ 54) = max_hair_style; // hair
+		}
 		/* pecopeco knights/crusaders crash fix from freya's forum (thanks to [celest]) */
 		if (sql_get_integer(13) ==   13 || sql_get_integer(13) ==   21 ||
 		    sql_get_integer(13) == 4014 || sql_get_integer(13) == 4022 ||
@@ -2297,6 +2306,9 @@ int mmo_char_send006b(int fd, struct char_session_data *sd) {
 		WPACKETW(j+ 68) = sql_get_integer(21); // head_mid
 //		printf("char #%d: head_bottom %d, shield: %d, head_top: %d, head_mid: %d\n", found_num, WPACKETW(j+62), WPACKETW(j+64), WPACKETW(j+66), WPACKETW(j+68));
 		WPACKETW(j+ 70) = sql_get_integer(22); // hair_color
+		if (sql_get_integer(22) > max_hair_color) {
+			WPACKETW(j+ 70) = max_hair_color;
+		}
 		WPACKETW(j+ 72) = sql_get_integer(23); // clothes_color
 
 		strncpy(WPACKETP(j+74), sql_get_string(24), 24); // name
@@ -4707,6 +4719,9 @@ int parse_char(int fd) {
 						WPACKETW(2+ 50) = DEFAULT_WALK_SPEED; // speed
 						WPACKETW(2+ 52) =  sql_get_integer(13); // class
 						WPACKETW(2+ 54) =  sql_get_integer(14); // hair
+						if (sql_get_integer(14) > max_hair_style) {
+							WPACKETW(2+ 54) = max_hair_style; // hair
+						}
 
 						WPACKETW(2+ 56) =  sql_get_integer(15); // weapon
 						WPACKETW(2+ 58) =  sql_get_integer(16); // base_level
@@ -4716,6 +4731,9 @@ int parse_char(int fd) {
 						WPACKETW(2+ 66) =  sql_get_integer(20); // head_top
 						WPACKETW(2+ 68) =  sql_get_integer(21); // head_mid
 						WPACKETW(2+ 70) =  sql_get_integer(22); // hair_color
+						if (sql_get_integer(22) > max_hair_color) {
+							WPACKETW(2+ 70) = max_hair_color;
+						}
 						WPACKETW(2+ 72) =  sql_get_integer(23); // clothes_color
 
 						strncpy(WPACKETP(2+74), sql_get_string(24), 24); // name
