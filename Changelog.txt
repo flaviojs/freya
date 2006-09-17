@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 09/17/06
+	* Added: a missing // in atcommand_athena.conf [Yor]
 	* Added: extra system. What is it? [Yor]
 	  - it a system managed by map-server to add/remove zenys/items to/from characters.
 	  - map-server use save/map_extra.txt file and manage it alone.
