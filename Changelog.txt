@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 09/17/06
+	* Updated: /npc/custom/other/kafra_bank.txt - with new cities [Sensei]
 	* Added: nozenypenalty.txt mapflag file [Yor]
 	* Fixed: Some monster teleport rates/delays [Tsuyuki] (from subdev svn 144)
 	* Fixed: Some NPC bugs [Tsuyuki] (from subdev svn 143)
