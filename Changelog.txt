@@ -5,6 +5,16 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 09/17/06
+	* Added: extra system. What is it? [Yor]
+	  - it a system managed by map-server to add/remove zenys/items to/from characters.
+	  - map-server use save/map_extra.txt file and manage it alone.
+	  - to add a line in this file, use an other file (default: ./map_extra_add.txt; you can choose location and name of this file). map-server will check it every minute.
+	  - because map-server READ and DESTROY this file, be sure that map-server has all permissions.
+	  - When a character is online, map-serverwill do supposed actions (and check all: weigth, max values, etc...)
+	  - To have more informations, read save/map_extra.txt file after a start of the map-server.
+	  - you can disable this function by a option in map_athena.conf.
+	  - The name? Because it's extra bonus/malus.
+	  - Example of usages: on web site (bonus after an action), to remove easily some items from a character (sprite error?), exchange of items, etc...
 	* Updated: /npc/custom/other/kafra_bank.txt - with new cities [Sensei]
 	* Added: nozenypenalty.txt mapflag file [Yor]
 	* Fixed: Some monster teleport rates/delays [Tsuyuki] (from subdev svn 144)

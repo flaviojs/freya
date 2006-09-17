@@ -410,6 +410,8 @@ extern struct Battle_Config {
 
 	unsigned short char_disconnect_mode;
 
+	unsigned short extra_system_flag;
+
 #ifdef USE_SQL /* SQL-only options */
 	unsigned short mail_system; // [Valaris]
 #endif /* USE_SQL */

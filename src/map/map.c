@@ -110,6 +110,7 @@ char map_cache_file[1024] = "db/mapinfo.txt"; //ビットマップファイルのデフォルト
 
 char motd_txt[1024] = "conf/motd.txt";
 char help_txt[1024] = "conf/help.txt";
+char extra_add_file_txt[1024] = "map_extra_add.txt"; // to add items from external software (use append to add a line)
 
 char wisp_server_name[25] = "Server"; // can be modified in char-server configuration file
 int server_char_id; // char id used by server
@@ -2674,6 +2675,10 @@ int map_config_read(char *cfgName) {
 				remove_ended_comments(w2); // remove ended comments
 				memset(mapreg_txt, 0, sizeof(mapreg_txt));
 				strncpy(mapreg_txt, w2, sizeof(mapreg_txt) - 1);
+			} else if(strcasecmp(w1, "extra_add_file_txt") == 0) {
+				remove_ended_comments(w2); // remove ended comments
+				memset(extra_add_file_txt, 0, sizeof(extra_add_file_txt));
+				strncpy(extra_add_file_txt, w2, sizeof(extra_add_file_txt) - 1);
 			} else if (strcasecmp(w1, "read_map_from_cache") == 0) {
 				remove_ended_comments(w2); // remove ended comments
 				if (atoi(w2) == 2)
@@ -2935,6 +2940,7 @@ void do_final(void) {
 	do_final_storage();
 	do_final_guild();
 	do_final_pet();
+	do_final_pc();
 
 	for(i = 0; i < map_num; i++) {
 		FREE(map[i].gat);
