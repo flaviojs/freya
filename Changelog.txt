@@ -4,12 +4,13 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
-09/15/06
-	* Fixed: Some monster teleport rates/delays [Tsuyuki]
-	* Fixed: Some NPC bugs [Tsuyuki]
+09/17/06
+	* Fixed: Some monster teleport rates/delays [Tsuyuki] (from subdev svn 144)
+	* Fixed: Some NPC bugs [Tsuyuki] (from subdev svn 143)
+	* Fixed: Ghostring's Teleport skill [Tsuyuki] (from subdev svn 142)
+	* Restored: All previously removed unofficial kRO scripts to a new directory (/npc/custom/...) [Mikey]
 
 09/12/06
-	* Fixed: Ghostring's Teleport skill [Tsuyuki]
 	* Updated: packet_db.txt [Yor]
 	* Fixed: Some things with OBB/DB related items [Tsuyuki] (from subdev svn 137)
 	* Fixed: Fixed all the broken new cards and fully implemented them, test and report please [Tsuyuki] (from subdev svn 136)
