@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 09/17/06
+	* Fixed: check options of max_hair_color and max_hair_style when reading a character [Yor]
 	* Added: Packet parsing of nProtect (login-server) [Yor]
 	* Added: New packet connection of client 0x27c (login-server) [Yor]
 	* Added: a missing // in atcommand_athena.conf [Yor]
