@@ -1,0 +1,134 @@
+//===== Nezumi Script ========================================
+//= Disable zeny penalty on specific Maps:
+//= - gvg maps
+//= - pvp maps
+//===== By: ==================================================
+//= Nezumi Developer Team
+//===== Current Version: =====================================
+//= 1.0.0
+//===== Compatible With: =====================================
+//= Nezumi 1.0.0 or newer
+//============================================================
+
+// GvG Arenas =============
+guild_vs1.gat	mapflag	nozenypenalty
+guild_vs2.gat	mapflag	nozenypenalty
+guild_vs3.gat	mapflag	nozenypenalty
+guild_vs4.gat	mapflag	nozenypenalty
+guild_vs5.gat	mapflag	nozenypenalty
+
+// Guild Castles ==========
+aldeg_cas01.gat	mapflag	nozenypenalty
+aldeg_cas02.gat	mapflag	nozenypenalty
+aldeg_cas03.gat	mapflag	nozenypenalty
+aldeg_cas04.gat	mapflag	nozenypenalty
+aldeg_cas05.gat	mapflag	nozenypenalty
+gefg_cas01.gat	mapflag	nozenypenalty
+gefg_cas02.gat	mapflag	nozenypenalty
+gefg_cas03.gat	mapflag	nozenypenalty
+gefg_cas04.gat	mapflag	nozenypenalty
+gefg_cas05.gat	mapflag	nozenypenalty
+payg_cas01.gat	mapflag	nozenypenalty
+payg_cas02.gat	mapflag	nozenypenalty
+payg_cas03.gat	mapflag	nozenypenalty
+payg_cas04.gat	mapflag	nozenypenalty
+payg_cas05.gat	mapflag	nozenypenalty
+prtg_cas01.gat	mapflag	nozenypenalty
+prtg_cas02.gat	mapflag	nozenypenalty
+prtg_cas03.gat	mapflag	nozenypenalty
+prtg_cas04.gat	mapflag	nozenypenalty
+prtg_cas05.gat	mapflag	nozenypenalty
+
+nguild_alde.gat	mapflag	nozenypenalty
+nguild_gef.gat	mapflag	nozenypenalty
+nguild_pay.gat	mapflag	nozenypenalty
+nguild_prt.gat	mapflag	nozenypenalty
+
+// Guild Dungeons =========
+gld_dun01.gat	mapflag	nozenypenalty
+gld_dun02.gat	mapflag	nozenypenalty
+gld_dun03.gat	mapflag	nozenypenalty
+gld_dun04.gat	mapflag	nozenypenalty
+
+// PvP ====================
+pvp_y_1-1.gat	mapflag	nozenypenalty
+pvp_y_1-2.gat	mapflag	nozenypenalty
+pvp_y_1-3.gat	mapflag	nozenypenalty
+pvp_y_1-4.gat	mapflag	nozenypenalty
+pvp_y_1-5.gat	mapflag	nozenypenalty
+pvp_y_2-1.gat	mapflag	nozenypenalty
+pvp_y_2-2.gat	mapflag	nozenypenalty
+pvp_y_2-3.gat	mapflag	nozenypenalty
+pvp_y_2-4.gat	mapflag	nozenypenalty
+pvp_y_2-5.gat	mapflag	nozenypenalty
+pvp_y_3-1.gat	mapflag	nozenypenalty
+pvp_y_3-2.gat	mapflag	nozenypenalty
+pvp_y_3-3.gat	mapflag	nozenypenalty
+pvp_y_3-4.gat	mapflag	nozenypenalty
+pvp_y_3-5.gat	mapflag	nozenypenalty
+pvp_y_4-1.gat	mapflag	nozenypenalty
+pvp_y_4-2.gat	mapflag	nozenypenalty
+pvp_y_4-3.gat	mapflag	nozenypenalty
+pvp_y_4-4.gat	mapflag	nozenypenalty
+pvp_y_4-5.gat	mapflag	nozenypenalty
+pvp_y_5-1.gat	mapflag	nozenypenalty
+pvp_y_5-2.gat	mapflag	nozenypenalty
+pvp_y_5-3.gat	mapflag	nozenypenalty
+pvp_y_5-4.gat	mapflag	nozenypenalty
+pvp_y_5-5.gat	mapflag	nozenypenalty
+pvp_y_6-1.gat	mapflag	nozenypenalty
+pvp_y_6-2.gat	mapflag	nozenypenalty
+pvp_y_6-3.gat	mapflag	nozenypenalty
+pvp_y_6-4.gat	mapflag	nozenypenalty
+pvp_y_6-5.gat	mapflag	nozenypenalty
+pvp_y_7-1.gat	mapflag	nozenypenalty
+pvp_y_7-2.gat	mapflag	nozenypenalty
+pvp_y_7-3.gat	mapflag	nozenypenalty
+pvp_y_7-4.gat	mapflag	nozenypenalty
+pvp_y_7-5.gat	mapflag	nozenypenalty
+pvp_y_8-1.gat	mapflag	nozenypenalty
+pvp_y_8-2.gat	mapflag	nozenypenalty
+pvp_y_8-3.gat	mapflag	nozenypenalty
+pvp_y_8-4.gat	mapflag	nozenypenalty
+pvp_y_8-5.gat	mapflag	nozenypenalty
+pvp_n_1-1.gat	mapflag	nozenypenalty
+pvp_n_1-2.gat	mapflag	nozenypenalty
+pvp_n_1-3.gat	mapflag	nozenypenalty
+pvp_n_1-4.gat	mapflag	nozenypenalty
+pvp_n_1-5.gat	mapflag	nozenypenalty
+pvp_n_2-1.gat	mapflag	nozenypenalty
+pvp_n_2-2.gat	mapflag	nozenypenalty
+pvp_n_2-3.gat	mapflag	nozenypenalty
+pvp_n_2-4.gat	mapflag	nozenypenalty
+pvp_n_2-5.gat	mapflag	nozenypenalty
+pvp_n_3-1.gat	mapflag	nozenypenalty
+pvp_n_3-2.gat	mapflag	nozenypenalty
+pvp_n_3-3.gat	mapflag	nozenypenalty
+pvp_n_3-4.gat	mapflag	nozenypenalty
+pvp_n_3-5.gat	mapflag	nozenypenalty
+pvp_n_4-1.gat	mapflag	nozenypenalty
+pvp_n_4-2.gat	mapflag	nozenypenalty
+pvp_n_4-3.gat	mapflag	nozenypenalty
+pvp_n_4-4.gat	mapflag	nozenypenalty
+pvp_n_4-5.gat	mapflag	nozenypenalty
+pvp_n_5-1.gat	mapflag	nozenypenalty
+pvp_n_5-2.gat	mapflag	nozenypenalty
+pvp_n_5-3.gat	mapflag	nozenypenalty
+pvp_n_5-4.gat	mapflag	nozenypenalty
+pvp_n_5-5.gat	mapflag	nozenypenalty
+pvp_n_6-1.gat	mapflag	nozenypenalty
+pvp_n_6-2.gat	mapflag	nozenypenalty
+pvp_n_6-3.gat	mapflag	nozenypenalty
+pvp_n_6-4.gat	mapflag	nozenypenalty
+pvp_n_6-5.gat	mapflag	nozenypenalty
+pvp_n_7-1.gat	mapflag	nozenypenalty
+pvp_n_7-2.gat	mapflag	nozenypenalty
+pvp_n_7-3.gat	mapflag	nozenypenalty
+pvp_n_7-4.gat	mapflag	nozenypenalty
+pvp_n_7-5.gat	mapflag	nozenypenalty
+pvp_n_8-1.gat	mapflag	nozenypenalty
+pvp_n_8-2.gat	mapflag	nozenypenalty
+pvp_n_8-3.gat	mapflag	nozenypenalty
+pvp_n_8-4.gat	mapflag	nozenypenalty
+pvp_n_8-5.gat	mapflag	nozenypenalty
+pvp_2vs2.gat	mapflag	nozenypenalty
