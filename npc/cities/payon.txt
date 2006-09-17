@@ -13,6 +13,7 @@
 //= 1.1 Fixed more typos and converted script to Aegis to Freya [Tsuyuki]
 //============================================================ 
 
+
 payon.gat,246,154,0	script	Lady	90,{
 
 	mes "[Lady]";
@@ -202,7 +203,7 @@ W_EndMenu:
 	close;
 }
 
-// Conflicts with Warps atm - Tsuyuki
+//Conflicts with unofficial messed up warps [Tsuyuki]
 //payon.gat,158,246,3	script	Guardsman	708,3,3,{
 //
 //OnTouch:
@@ -218,7 +219,7 @@ W_EndMenu:
 //	close;
 //}
 
-// Also conflicts with Warps.. - Tsuyuki
+//Conflicts with unofficial messed up warps [Tsuyuki]
 //payon_in03.gat,96,116,3	script	Chief Guardsman	708,3,3,{
 //
 //OnTouch:
@@ -258,7 +259,7 @@ payon.gat,249,156,1	script	Woman	90,{
 		mes "Just how many monsters have you killed?!";
 		next;
 		goto W2_Next;
-	w2_Fem:
+	W2_Fem:
 		mes "[Woman]";
 		mes "Miss, how many monsters have you killed?";
 		next;
