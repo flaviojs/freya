@@ -116,7 +116,7 @@ int auth_num = 0, auth_max = 0;
 static unsigned char level_new_account = 0; // GM level of a new account
 
 /* Logs options */
-static unsigned char log_request_connection; // Enable/disable logs of 'Request for connection' message (packet 0x64/0x1dd)
+static unsigned char log_request_connection; // Enable/disable logs of 'Request for connection' message (packet 0x64/0x1dd/0x27c)
 static unsigned char log_request_version; // Enable/disable logs of 'Request of the server version' (athena version) message (packet 0x7530 with 'normal' connection)
 static unsigned char log_request_freya_version; // Enable/disable logs of 'Request of the server version' (freya version) message (packet 0x7535 with 'normal' connection)
 static unsigned char log_request_uptime; // Enable/disable logs of 'Request of the server uptime' message (packet 0x7533 with 'normal' connection)
@@ -1834,7 +1834,7 @@ int parse_login(int fd) {
 			/* set eof */
 			session[fd]->eof = 1;
 			/* send special message if it's a connection/authentification request */
-			if (RFIFOREST(fd) >= 2 && (RFIFOW(fd,0) == 0x64 || RFIFOW(fd,0) == 0x01dd)) {
+			if (RFIFOREST(fd) >= 2 && (RFIFOW(fd,0) == 0x64 || RFIFOW(fd,0) == 0x01dd || RFIFOW(fd,0) == 0x027c)) {
 				memset(WPACKETP(0), 0, 23);
 				WPACKETW(0) = 0x6a;
 				WPACKETB(2) = 3; /* 3 = Rejected from Server */
@@ -1850,7 +1850,7 @@ int parse_login(int fd) {
 			/* set eof */
 			session[fd]->eof = 1;
 			/* send special message if it's a connection/authentification request */
-			if (RFIFOREST(fd) >= 2 && (RFIFOW(fd,0) == 0x64 || RFIFOW(fd,0) == 0x01dd)) {
+			if (RFIFOREST(fd) >= 2 && (RFIFOW(fd,0) == 0x64 || RFIFOW(fd,0) == 0x01dd || RFIFOW(fd,0) == 0x027c)) {
 				memset(WPACKETP(0), 0, 23);
 				WPACKETW( 0) = 0x6a;
 				WPACKETB( 2) = 6; /* 6 = Your are Prohibited to log in until %s */
@@ -1877,8 +1877,8 @@ int parse_login(int fd) {
 
 		/* display parse if asked */
 		if (display_parse_login == 1) {
-			if (RFIFOW(fd,0) == 0x64 || RFIFOW(fd,0) == 0x01dd) {
-				if (RFIFOREST(fd) >= ((RFIFOW(fd,0) == 0x64) ? 55 : 47))
+			if (RFIFOW(fd,0) == 0x64 || RFIFOW(fd,0) == 0x01dd || RFIFOW(fd,0) == 0x027c) {
+				if (RFIFOREST(fd) >= ((RFIFOW(fd,0) == 0x64) ? 55 : ((RFIFOW(fd,0) == 0x01dd) ? 47 : 60)))
 					printf("parse_login: connection #%d, packet: 0x%x (with being read: %d), account: %s.\n", fd, RFIFOW(fd,0), RFIFOREST(fd), RFIFOP(fd,6));
 			} else if (RFIFOW(fd,0) == 0x2710) {
 				if (RFIFOREST(fd) >= 86)
@@ -1903,11 +1903,38 @@ int parse_login(int fd) {
 			RFIFOSKIP(fd,18);
 			break;
 
+		// 20051214 nProtect Part 1
+		case 0x258:
+			memset(WPACKETP(0), 0, 18);
+			WPACKETW(0) = 0x0227;
+			SENDPACKET(fd,18);
+			RFIFOSKIP(fd,2);
+			break;
+
+		// 20051214 nProtect Part 2
+		case 0x228:
+			if (RFIFOREST(fd) < 18)
+				return 0;
+			WPACKETW(0) = 0x0259;
+			WPACKETB(2) = 1;
+			SENDPACKET(fd,3);
+			RFIFOSKIP(fd,18);
+			break;
+
 		/* Ask connection of a client */
 		case 0x64:
 		/* Ask connection of a client (encryption mode) */
 		case 0x01dd:
-			if (RFIFOREST(fd) < ((RFIFOW(fd,0) == 0x64) ? 55 : 47))
+		/* new packet of client login connection (non encrypted) */
+		case 0x027c:
+		  {
+			int length = 55; // default: 0x64
+			switch(RFIFOW(fd,0)) {
+			//case 0x64: length = 55; break;
+			case 0x01dd: length = 47; break;
+			case 0x027c: length = 60; break;
+			}
+			if (RFIFOREST(fd) < length)
 				return 0;
 			/* get parameters */
 			account.version = RFIFOL(fd,2);
@@ -1915,10 +1942,10 @@ int parse_login(int fd) {
 			strncpy(account.userid, RFIFOP(fd,6), 24);
 			remove_control_chars(account.userid);
 			memset(account.passwd, 0, sizeof(account.passwd));
-			if (RFIFOW(fd,0) == 0x64)
-				strncpy(account.passwd, RFIFOP(fd,30), 24);
+			if (length - 31 > sizeof(account.passwd) - 1)
+				strncpy(account.passwd, RFIFOP(fd,30), sizeof(account.passwd) - 1);
 			else
-				memcpy(account.passwd, RFIFOP(fd,30), 16);
+				memcpy(account.passwd, RFIFOP(fd,30), length - 31); // 0x64 (24), 0x1dd (16), 0x27c (how exactly??)
 			remove_control_chars(account.passwd);
 			account.passwdenc = (RFIFOW(fd,0) == 0x64) ? 0 : 3; /* A definition is given when making an encryption password correspond.
 			                                                       It is 1 at the time of passwordencrypt.
@@ -2069,7 +2096,8 @@ int parse_login(int fd) {
 				/* set eof */
 				session[fd]->eof = 1;
 			}
-			RFIFOSKIP(fd,(RFIFOW(fd,0) == 0x64) ? 55 : 47);
+			RFIFOSKIP(fd,length);
+		  }
 			break;
 
 		/* Sending request of the coding key */
@@ -4492,9 +4520,9 @@ static inline void save_config_in_log(void) {
 			break;
 		}
 		if (log_request_connection)
-			write_log("- to log 'Request for connection' message (packet 0x64/0x1dd)." RETCODE);
+			write_log("- to log 'Request for connection' message (packet 0x64/0x1dd/0x27c)." RETCODE);
 		else
-			write_log("- to NOT log 'Request for connection' message (packet 0x64/0x1dd)." RETCODE);
+			write_log("- to NOT log 'Request for connection' message (packet 0x64/0x1dd/0x27c)." RETCODE);
 		if (log_request_version)
 			write_log("- to log 'Request of the server version' (athena version) message (packet 0x7530)." RETCODE);
 		else
