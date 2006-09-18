@@ -3,10 +3,13 @@
 // Files concerned by the creation of a GM command:
 // conf/atcommand_athena.conf
 // conf/help.txt
-// conf/help_fr.txt (add it in english if you don't know french)
+// conf/help_fr.txt (add the GM command in english if you don't know french)
 // readme/gmcmds.html
 // src/map/atcommand.c
 // src/map/atcommand.h
+// and perahps:
+// conf/msg_athena.txt
+// conf/msg_athena_fr.txt (add your message in english if you don't know french)
 
 #include <config.h>
 
@@ -297,6 +300,7 @@ ATCOMMAND_FUNC(rainbow);
 ATCOMMAND_FUNC(clsweather);
 ATCOMMAND_FUNC(mobsearch);
 ATCOMMAND_FUNC(cleanmap);
+ATCOMMAND_FUNC(shuffle);
 ATCOMMAND_FUNC(adjgmlvl);
 ATCOMMAND_FUNC(adjgmlvl2);
 ATCOMMAND_FUNC(adjcmdlvl);
@@ -648,7 +652,7 @@ static struct AtCommandInfo {
 	{ AtCommand_Clsweather,            "@clsweather",           80, atcommand_clsweather },
 	{ AtCommand_MobSearch,             "@mobsearch",            20, atcommand_mobsearch },
 	{ AtCommand_CleanMap,              "@cleanmap",             40, atcommand_cleanmap },
-//	{ AtCommand_Shuffle,               "@shuffle",              99, atcommand_shuffle },
+	{ AtCommand_Shuffle,               "@shuffle",              60, atcommand_shuffle },
 //	{ AtCommand_Maintenance,           "@maintenance",          99, atcommand_maintenance },
 	{ AtCommand_MiscEffect,            "@misceffect",           60, atcommand_misceffect },
 	{ AtCommand_AdjGmLvl,              "@adjgmlvl",             80, atcommand_adjgmlvl },
@@ -1532,6 +1536,8 @@ void set_default_msg() {
 
 	add_msg(282, "Invalid color.");
 
+	add_msg(283, "Shuffle done!");
+
 	// Messages of others (not for GM commands)
 	add_msg(500, "Actually, it's the night...");
 	add_msg(501, "Your account time limit is: %d-%m-%Y %H:%M:%S.");
@@ -1961,9 +1967,8 @@ ATCOMMAND_FUNC(rurap) {
 	return 0;
 }
 
-// @rura
 /*==========================================
- *
+ * @rura
  *------------------------------------------
  */
 ATCOMMAND_FUNC(rura) {
@@ -14147,6 +14152,57 @@ ATCOMMAND_FUNC(cleanmap) {
 	                  sd->bl.x + area_size, sd->bl.y + area_size,
 	                  BL_ITEM);
 	clif_displaymessage(fd, "All dropped items have been cleaned up.");
+
+	return 0;
+}
+
+/*==========================================
+ * @shuffle
+ *------------------------------------------
+ */
+static int atshuffle_sub(struct block_list *bl, va_list ap) {
+	nullpo_retr(0, bl);
+
+	mob_warp((struct mob_data *)bl, bl->m, -1, -1, 3);
+
+	return 0;
+}
+
+ATCOMMAND_FUNC(shuffle) {
+	struct map_session_data *pl_sd;
+	int i, mode;
+
+	if (!message || !*message || sscanf(message, "%d", &mode) != 1 || mode < 1 || mode > 3) {
+		send_usage(sd, "usage: %s <mode:1-3>.", original_command);
+		return -1;
+	}
+
+	switch (mode) {
+	// Shuffle players on the map
+	case 1:
+		for (i = 0; i < fd_max; i++) {
+			if (session[i] && (pl_sd = session[i]->session_data) && pl_sd->state.auth)
+				if (sd->bl.m == pl_sd->bl.m && sd->GM_level >= pl_sd->GM_level)
+					if (sd != pl_sd)
+						pc_setpos(pl_sd, map[pl_sd->bl.m].name, 0, 0, 3, 1);
+		}
+		break;
+	// Shuffle monsters on the map
+	case 2:
+		map_foreachinarea(atshuffle_sub, sd->bl.m, 0, 0, map[sd->bl.m].xs, map[sd->bl.m].ys, BL_MOB);
+		break;
+	// Shuffle players AND monsters on the map
+	case 3:
+		for (i = 0; i < fd_max; i++) {
+			if (session[i] && (pl_sd = session[i]->session_data) && pl_sd->state.auth)
+				if (sd->bl.m == pl_sd->bl.m && sd->GM_level >= pl_sd->GM_level)
+					if (sd != pl_sd)
+						pc_setpos(pl_sd, map[pl_sd->bl.m].name, 0, 0, 3, 1);
+		}
+		map_foreachinarea(atshuffle_sub, sd->bl.m, 0, 0, map[sd->bl.m].xs, map[sd->bl.m].ys, BL_MOB);
+		break;
+	}
+	clif_displaymessage(fd, msg_txt(283));
 
 	return 0;
 }

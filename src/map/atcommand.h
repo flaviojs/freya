@@ -245,6 +245,7 @@ enum AtCommandType {
 	AtCommand_Clsweather,
 	AtCommand_MobSearch,
 	AtCommand_CleanMap,
+	AtCommand_Shuffle,
 	AtCommand_AdjGmLvl,
 	AtCommand_AdjGmLvl2,
 	AtCommand_AdjCmdLvl,
