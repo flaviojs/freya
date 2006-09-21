@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 09/21/06
+	* Fixed: status changes packets and fame points packets for TCT version (char.c) [Yor]
 	* Improved: debug messaging of battle_attr_fix function [Harbin]
 	* Fixed: SC_MAGNUM bonus damage calculation [Harbin]
 	  - now it checks if sc_data exists before checking if SC_MAGNUM status is active
