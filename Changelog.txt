@@ -4,6 +4,25 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+09/21/06
+	* Improved: debug messaging of battle_attr_fix function [Harbin]
+	* Fixed: SC_MAGNUM bonus damage calculation [Harbin]
+	  - now it checks if sc_data exists before checking if SC_MAGNUM status is active
+	  - now it calculates bonus damage before applying normal attribute fix to base damage
+	  - now it does not reduce total damage if target is resistant to fire (only bonus damage)
+	* Fixed: shockwave trap should reduce sp in pvp and gvg maps [Harbin]
+	  - small fix, replaced && with ||, thanks to Damlug for figuring it out
+	* Fixed: some marionette control issues [Harbin]
+	  - clowns cant control bards and gypsies cant control dancers
+	  - +-5 levelcheck only applies to non-party members
+	  - non-party members can be controlled
+	  - sources: http://ragnainfo.net/forums/viewtopic.php?t=28669, http://www.ragnainfo.net/forums/viewtopic.php?p=729053, http://www.ragnainfo.net/forums/viewtopic.php?p=836936
+	* Fixed: close confine skill should not work on bosses or minibosses [Harbin]
+	  - source: http://freya.dns.st/mantis/view.php?id=245
+	* Fixed: venom splasher should not ignore card damage effects [Harbin]
+	  - source: http://forums.roempire.com/showthread.php?t=132751
+	* Fixed: freya 'title' had wrong website url [Harbin]
+
 09/18/06
 	* Added: @shuffle (based on jAthena) [Yor]
 
@@ -5422,5 +5441,3 @@ CODE
 	* Added rules of the team [Yor]
 
 FREYA BEGIN HERE, based on eAthena 1.0 RC4
-
-

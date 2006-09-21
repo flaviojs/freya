@@ -971,7 +971,7 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 		break;
 		
 	case HT_SHOCKWAVE:
-		if(dstsd && (map[bl->m].flag.pvp && map[bl->m].flag.gvg))
+		if(dstsd && (map[bl->m].flag.pvp || map[bl->m].flag.gvg))
 		{
 			dstsd->status.sp -= dstsd->status.sp * (5 + 15 * skilllv) / 100;
 			clif_updatestatus(dstsd, SP_SP);
@@ -3539,16 +3539,30 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		{
 			struct status_change *sc_data = sd->sc_data;
 			struct status_change *tsc_data = dstsd->sc_data;
-			short lvcheck = sd->status.base_level - dstsd->status.base_level;
-			short jobid = pc_calc_base_job2(dstsd->status.class);
+			short jobid1 = pc_calc_base_job2(sd->status.class);
+			short jobid2 = pc_calc_base_job2(dstsd->status.class);
+			short lvcheck = 0;
 			int sc = SC_MARIONETTE;
 			int sc2 = SC_MARIONETTE2;
 
-			if(dstsd->bl.type != BL_PC || sd->bl.id == dstsd->bl.id || !sd->status.party_id || sd->status.party_id != dstsd->status.party_id || lvcheck < -5 || lvcheck > 5 || jobid == 43 || jobid == 44)
+			// clowns cant control bards and gypsies cant control dancers
+			if(dstsd->bl.type != BL_PC || sd->bl.id == dstsd->bl.id || (jobid1 == 43 && jobid2 == 19) || (jobid1 == 44 && jobid2 == 20))
 			{
 				clif_skill_fail(sd, skillid, 0, 0);
 				map_freeblock_unlock();
 				return 1;
+			}
+
+			// +-5 levelcheck applies only to non-party members
+			if(!sd->status.party_id || !dstsd->status.party_id || sd->status.party_id != dstsd->status.party_id)
+			{
+				lvcheck = sd->status.base_level - dstsd->status.base_level;
+				if(lvcheck < -5 || lvcheck > 5)
+				{
+					clif_skill_fail(sd, skillid, 0, 0);
+					map_freeblock_unlock();
+					return 1;
+				}
 			}
 
 			if(sc_data[sc].timer == -1 && tsc_data[sc2].timer == -1)
@@ -3568,9 +3582,14 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		}
 		break;
 	case RG_CLOSECONFINE:
-		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
-		status_change_start(src, SC_CLOSECONFINE, skilllv, bl->id, 0, 0, skill_get_time(skillid, skilllv), 0);	// caster
-		status_change_start(bl, SC_CLOSECONFINE2, skilllv, src->id, 0, 0, skill_get_time(skillid, skilllv), 0);	// target
+		if(status_get_mode(bl) & 0x20)
+		{
+			clif_skill_fail(sd, skillid, 0, 0);
+		} else {
+			clif_skill_nodamage(src, bl, skillid, skilllv, 1);
+			status_change_start(src, SC_CLOSECONFINE, skilllv, bl->id, 0, 0, skill_get_time(skillid, skilllv), 0);	// caster
+			status_change_start(bl, SC_CLOSECONFINE2, skilllv, src->id, 0, 0, skill_get_time(skillid, skilllv), 0);	// target
+		}
 		break;
 	//I assume mobs will never use this skill in the future.. as right now it has no protection for sd [Proximus]
 	case SA_FLAMELAUNCHER:	// added failure chance and chance to break weapon if turned on [Valaris]
