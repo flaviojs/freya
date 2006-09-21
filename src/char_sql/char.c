@@ -4104,81 +4104,68 @@ int parse_frommap(int fd) {
 		case 0x2b2b:
 			if (RFIFOREST(fd) < 4 || RFIFOREST(fd) < RFIFOW(fd,2) || RFIFOW(fd, 8) == 0)
 				return 0;
-		{
+			server_freezeflag[id] = anti_freeze_counter; // Map anti-freeze system. Counter. 6 ok, 5...0 frozen
+		  {
 			int count, charid, i;
 			struct status_change_data data;
-			
 			charid = RFIFOL(fd, 4);
 			count = RFIFOW(fd, 8);
-			
 			sprintf(tmp_sql, "INSERT INTO `%s` (`char_id`, `type`, `tick`, `val1`, `val2`, `val3`, `val4`) VALUES ", statuschange_db);
-			
 			for (i = 0; i < count; i++)	{
-				memcpy (&data, RFIFOP(fd, 14+i*sizeof(struct status_change_data)), sizeof(struct status_change_data));
-				sprintf (tmp_sql, "%s ('%d','%hu','%d','%d','%d','%d','%d'),", tmp_sql, charid,
-					data.type, data.tick, data.val1, data.val2, data.val3, data.val4);
-			}
+				memcpy(&data, RFIFOP(fd, 14 + i * sizeof(struct status_change_data)), sizeof(struct status_change_data));
+				sprintf(tmp_sql, "%s ('%d','%hu','%d','%d','%d','%d','%d'),", tmp_sql, charid,
+				        data.type, data.tick, data.val1, data.val2, data.val3, data.val4);
+		  }
 			tmp_sql[strlen(tmp_sql)-1] = '\0'; //Remove final comma.
-
 			sql_request(tmp_sql);
-
 			RFIFOSKIP(fd, RFIFOW(fd, 2));
 			break;
 		}
-		
+	
 		//Update of fame points
 		case 0x2b2c: // 0x2b2c <char_id>.L <points>.L <rank_id>.B
 			if (RFIFOREST(fd) < 11) //check packet length
 				return 0;
 			server_freezeflag[id] = anti_freeze_counter; // Map anti-freeze system. Counter. 6 ok, 5...0 frozen
-			{
-		  int char_id = RFIFOL(fd, 2);
+		  {
+			int char_id = RFIFOL(fd, 2);
 			int points = RFIFOL(fd, 6);
-			unsigned int update_flag = 0,
-									 rank_id = RFIFOB(fd, 10);
+			unsigned int update_flag = 0, rank_id = RFIFOB(fd, 10);
 			unsigned int i;
-
-			if(rank_id >= RK_MAX)
+			if (rank_id >= RK_MAX)
 				return 0;
 
 			for(i = 0; i < MAX_RANKER; i++) {
-				if(char_id == ranking_data[rank_id][i].char_id || !ranking_data[rank_id][i].char_id) {
+				if (char_id == ranking_data[rank_id][i].char_id || !ranking_data[rank_id][i].char_id) {
 					ranking_data[rank_id][i].point = points;
-					if(!ranking_data[rank_id][i].char_id) { //Free room?, insert in it the name/char_id
+					if (!ranking_data[rank_id][i].char_id) { //Free room?, insert in it the name/char_id
 						char_id2nick(char_id, ranking_data[rank_id][i].name);
 						ranking_data[rank_id][i].char_id = char_id;
-					}else
+					} else
 						update_flag = 1; //Sort
 					break;
 				}
 			}
-
-			if(MAX_RANKER == i) { //If not found
+			if (MAX_RANKER == i) { //If not found
 				//Å‰ºˆÊ‚æ‚è‚“¾“_‚È‚çÅ‰ºˆÊ‚Éƒ‰ƒ“ƒNƒCƒ“
-				if(ranking_data[rank_id][MAX_RANKER - 1].point < points) {
+				if (ranking_data[rank_id][MAX_RANKER - 1].point < points) {
 					char_id2nick(char_id, ranking_data[rank_id][MAX_RANKER - 1].name);
 					ranking_data[rank_id][MAX_RANKER - 1].point = points;
 					ranking_data[rank_id][MAX_RANKER - 1].char_id = char_id;
 					update_flag = 1; //Sort
 				}
 			}
-
-			if(update_flag)
-				qsort(ranking_data[rank_id], MAX_RANKER, sizeof(struct Ranking_Data),(int (*)(const void*,const void*))compare_ranking_data);
-
+			if (update_flag)
+				qsort(ranking_data[rank_id], MAX_RANKER, sizeof(struct Ranking_Data), (int (*)(const void*,const void*))compare_ranking_data);
 			//`ranking` (`char_id`,`class`,`points`)
 			sql_request("DELETE FROM `%s` WHERE `char_id`='%d' AND `class`='%d'", rank_db, char_id, rank_id); //Delete old record
 			// insert here.
 			sql_request("INSERT INTO `%s` (`char_id`, `class`, `points`) VALUES ('%d', '%d', '%d')", rank_db, char_id, rank_id, points);
-
 			memcpy(WPACKETP(4), &ranking_data, sizeof(ranking_data));
-
 			WPACKETW(0) = 0x2b20;
-			i = 4 + sizeof(ranking_data); //Reuse 'i' var to store the size of the packet
-			WPACKETW(2) = i; //Packet length
-			SENDPACKET(fd, i);
-			}
-
+			WPACKETW(2) = 4 + sizeof(ranking_data); //Packet length
+			SENDPACKET(fd, WPACKETW(2));
+		  }
 			RFIFOSKIP(fd, 11);
 			break;
 

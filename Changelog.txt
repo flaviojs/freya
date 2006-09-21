@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+09/21/06
+	* Fixed: status changes packets and fame points packets for TCT version (char.c) [Yor]
+
 09/18/06
 	* Added: @shuffle (based on jAthena) [Yor]
 

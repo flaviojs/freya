@@ -4925,7 +4925,34 @@ int parse_frommap(int fd) {
 			break;
 
 		case 0x2b2b:	// save player's status changes
+			if (RFIFOREST(fd) < 4 || RFIFOREST(fd) < RFIFOW(fd,2) || RFIFOW(fd, 8) == 0)
+				return 0;
+			server_freezeflag[id] = anti_freeze_counter; // Map anti-freeze system. Counter. 6 ok, 5...0 frozen
+		  {
+//			int count, charid, i;
+//			struct status_change_data data;
+//			charid = RFIFOL(fd, 4);
+//			count = RFIFOW(fd, 8);
+			// TODO: management of player's status
+		  }
 			RFIFOSKIP(fd, RFIFOW(fd, 2));
+			break;
+
+		//Update of fame points
+		case 0x2b2c: // 0x2b2c <char_id>.L <points>.L <rank_id>.B
+			if (RFIFOREST(fd) < 11) //check packet length
+				return 0;
+			server_freezeflag[id] = anti_freeze_counter; // Map anti-freeze system. Counter. 6 ok, 5...0 frozen
+		  {
+//			int char_id = RFIFOL(fd, 2);
+//			int points = RFIFOL(fd, 6);
+//			unsigned int update_flag = 0, rank_id = RFIFOB(fd, 10);
+//			unsigned int i;
+//			if (rank_id >= RK_MAX)
+//				return 0;
+			// TODO: management of fame points
+		  }
+			RFIFOSKIP(fd, 11);
 			break;
 
 		default:
