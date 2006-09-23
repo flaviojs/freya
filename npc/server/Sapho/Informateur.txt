@@ -10,7 +10,7 @@
 // affiche une liste de messages rédigés par des GM.
 
 prontera.gat,161,191,5	script	Informateur::info1	97,{
-	if (getgmlevel()>19) goto AUTORISE;
+	if (getgmlevel(0)>19) goto AUTORISE;
 
 DEBUT:
 	mes "[Informateur]";
