@@ -2240,7 +2240,7 @@
 
 7419,Embryo_Creation_Guide,Embryo Creation Guide,3,4800,2400,10,,,,,,,,,,,{},{}
 
-7420,Cranium,Cranium,3,20,10,0,,,,,,,,,,,{},{} // Missing Price/Sell/Weight
+7420,Cranium,Cranium,3,20,10,0,,,,,,,,,,,{},{} // Missing Price/Sell=0(dropped when a character is killed)/Weight
 7421,Red_Key,Red Key,3,20,10,10,,,,,,,,,,,{},{}
 7422,Yellow_Key,Yellow Key,3,20,10,10,,,,,,,,,,,{},{}
 7423,Blue_Key,Blue Key,3,20,10,10,,,,,,,,,,,{},{}
