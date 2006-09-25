@@ -5,6 +5,20 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 09/25/06
+	* Improved: debug messaging of battle_attr_fix function [Harbin]
+	* Fixed: SC_MAGNUM bonus damage calculation [Harbin]
+	  - now it checks if sc_data exists before checking if SC_MAGNUM status is active
+	  - now it calculates bonus damage before applying normal attribute fix to base damage
+	  - now it does not reduce total damage if target is resistant to fire (only bonus damage)
+	* Fixed: shockwave trap should reduce sp in pvp and gvg maps [Harbin]
+	  - small fix, replaced && with ||, thanks to Damlug for figuring it out
+	* Fixed: some marionette control issues [Harbin]
+	  - clowns cant control bards and gypsies cant control dancers
+	  - +-5 levelcheck only applies to non-party members
+	  - non-party members can be controlled
+	* Fixed: close confine skill should not work on bosses or minibosses [Harbin]
+	* Fixed: venom splasher should not ignore card damage effects [Harbin]
+	* Fixed: freya 'title' had wrong website url [Harbin]
 	* Fixed: custom/dye.txt: Remove hair color 9 to 20. They doesn't really exist. [Yor]
 
 09/23/06

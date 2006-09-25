@@ -318,22 +318,31 @@ void battle_stopwalking(struct block_list *bl,int type)
 	return;
 }
 
-/*==========================================
- * ダメージの属性修正
- *------------------------------------------
- */
+/* battle_attr_fix: apply damage attribute fix
+   ------------------------------------------- */
 int battle_attr_fix(int damage, int atk_elem, int def_elem)
 {
 	int def_type = def_elem % 10, def_lv = def_elem / 10 / 2;
-
-	if (atk_elem<0 || atk_elem > 9 || def_type < 0 || def_type > 9 ||
-		def_lv < 1 || def_lv > 4) { // 属 性値がおかしいのでとりあえずそのまま返す
-		if (battle_config.error_log)
-			printf("battle_attr_fix: unknown attr type: atk=%d def_type=%d def_lv=%d\n", atk_elem, def_type, def_lv);
+	
+	if(atk_elem < 0 || atk_elem > 9)
+	{
+		printf("battle_attr_fix: invalid attack element '%i'. ignoring attribute fix \n", atk_elem);
+		return damage;
+	}
+	
+	if(def_type < 0 || def_type > 9)
+	{
+		printf("battle_attr_fix: invalid defence element '%i'. ignoring attribute fix \n", def_elem);
+		return damage;
+	}
+	
+	if(def_lv < 1 || def_lv > 4)
+	{
+		printf("battle_attr_fix: invalid defence level '%i'. ignoring attribute fix \n", def_lv);
 		return damage;
 	}
 
-	return damage * attr_fix_table[def_lv-1][atk_elem][def_type] / 100;
+	return damage * attr_fix_table[def_lv - 1][atk_elem][def_type] / 100;
 }
 
 /*==========================================
@@ -1111,10 +1120,10 @@ struct Damage battle_calc_weapon_attack(
 					hitrate += 50;
 				break;
 			case AS_SPLASHER:
-				flag.cardfix = 0;
 				skillratio += 100 + 20 * skill_lv;	// FORMULA: damage * (200 + 20 * skill_lv + 20 * pc_checkskill(sd, AS_POISONREACT)) / 100
-				if (sd) skillratio += 20 * pc_checkskill(sd, AS_POISONREACT);
-				if(wflag > 1) //FIXME: Splash damage... is this the correct method? [Skotlex]
+				if(sd)
+					skillratio += 20 * pc_checkskill(sd, AS_POISONREACT);
+				if(wflag > 1)
 					skillratio /= wflag;
 				break;
 			// knight
@@ -1818,7 +1827,7 @@ struct Damage battle_calc_weapon_attack(
 	if(skill_num == TF_POISON)
 		ATK_ADD(15 * skill_lv);
 
-	//Elemental attribute fix
+	// calculate elemental damage fix
 	if ((sd && (skill_num || !battle_config.pc_attack_attr_none)) ||
 	    (md && (skill_num || !battle_config.mob_attack_attr_none)) ||
 	    (pd && (skill_num || !battle_config.pet_attack_attr_none))) {
@@ -1830,13 +1839,22 @@ struct Damage battle_calc_weapon_attack(
 				if(skill_num == MC_CARTREVOLUTION)
 					s_ele = 0;
 
-				if(sc_data[SC_MAGNUM].timer != -1)
-					wd.damage = battle_attr_fix(wd.damage, s_ele, t_element) + (battle_attr_fix(wd.damage, 3, t_element) * 20 / 100);
-				else
+				// SC_MAGNUM adds +20% fire damage to base damage but does never reduce damage
+				if(sc_data && sc_data[SC_MAGNUM].timer != -1)
+				{
+					int bonus_dmg = battle_attr_fix(wd.damage, 3, t_element) * (20 / 100);
+					
+					if(bonus_dmg > 0)
+						wd.damage = battle_attr_fix(wd.damage, s_ele, t_element) + bonus_dmg;
+					else
+						wd.damage = battle_attr_fix(wd.damage, s_ele, t_element);
+				} else {
 					wd.damage = battle_attr_fix(wd.damage, s_ele, t_element);
+				}
 			}
-		if (flag.lefthand && wd.damage2 > 0)
-			wd.damage2 = battle_attr_fix(wd.damage2, s_ele_, t_element);
+
+			if(flag.lefthand && wd.damage2 > 0)
+				wd.damage2 = battle_attr_fix(wd.damage2, s_ele, t_element);
 		}
 	}
 
@@ -4424,4 +4442,3 @@ int battle_config_read(const char *cfgName) {
 
 	return 0;
 }
-
