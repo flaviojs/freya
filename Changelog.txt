@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+09/25/06
+	* Fixed: custom/dye.txt: Remove hair color 9 to 20. They doesn't really exist. [Yor]
+
 09/23/06
 	* Updated: start-freya.sh script (from work of Magical Tux) [Yor]
 	* Fixed: server/sapho/informateur.txt [Sapho team]
