@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 09/25/06
+	* Fixed: price of a skull (7420) [Yor]
 	* Fixed: custom/dye.txt: Remove hair color 9 to 20. They doesn't really exist. [Yor]
 
 09/23/06

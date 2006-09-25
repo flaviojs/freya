@@ -2265,7 +2265,7 @@ INSERT INTO `item_db` VALUES (7418, 'Written_Request(B)', 'Written Request(B)', 
 
 INSERT INTO `item_db` VALUES (7419, 'Embryo_Creation_Guide', 'Embryo Creation Guide', 3, 4800, 2400, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 
-INSERT INTO `item_db` VALUES (7420, 'Cranium', 'Cranium', 3, 20, 10, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL); # Missing Price/Sell/Weight
+INSERT INTO `item_db` VALUES (7420, 'Cranium', 'Cranium', 3, 20, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL); # Missing Price/Sell=0(dropped when a character is killed)/Weight
 INSERT INTO `item_db` VALUES (7421, 'Red_Key', 'Red Key', 3, 20, 10, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7422, 'Yellow_Key', 'Yellow Key', 3, 20, 10, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7423, 'Blue_Key', 'Blue Key', 3, 20, 10, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
