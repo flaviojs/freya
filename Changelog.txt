@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+09/26/06
+	* Added: npc/server/Sapho/other/dye.txt [Sapho Team]
+
 09/25/06
 	* Fixed: price of a skull (7420) [Yor]
 	* Improved: debug messaging of battle_attr_fix function [Harbin]
