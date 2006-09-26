@@ -40,7 +40,7 @@ prontera.gat,149,189,1	script	Stylist	122,{
 	mes "[^FF8000Stylist^000000]";
 	mes "Que voulez vous changer?";
 	next;
-	menu "Coupe de cheveux",Lstyle,"Couleur des cheveux",Lcolor,"Couleur des habits",Lcloth,"Rien, merci",LCancel;
+	menu "Coupe de cheveux",Lstyle,"Couleur des cheveux",Lcolor,"Couleur des habits",Lcloth,"Rien, merci",LCancel2;
 
 	LNoShell:
 		mes "[^FF8000Stylist^000000]";
@@ -157,6 +157,15 @@ prontera.gat,149,189,1	script	Stylist	122,{
 		mes "A bientôt.";
 		close;
 
+	LCancel2:
+		mes "[^FF8000Stylist^000000]";
+		mes "Tenez, je vous rends vos Shells.";
+		getitem 935, 10;
+		next;
+		mes "[^FF8000Stylist^000000]";
+		mes "A bientôt.";
+		close;
+
 	Lcloth:
 		if (Class == 4046) goto Ltaekwon;
 		mes "[^FF8000Stylist^000000]";
@@ -207,8 +216,10 @@ prontera.gat,149,189,1	script	Stylist	122,{
 		mes "[^FF8000Stylist^000000]";
 		mes "Désolé mais je n'ai pas de vêtements de taekwon en stock.";
 		mes "Tenez, je vous rends vos Shells.";
-		next;
 		getitem 935, 10;
+		next;
+		mes "[^FF8000Stylist^000000]";
+		mes "A bientôt.";
 		close;
 }
 
