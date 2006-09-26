@@ -1,0 +1,214 @@
+//===== eAthena Script =======================================
+//= Stylist & Tailor Script (former Dye Script)
+//===== By: ==================================================
+//= eAthena Dev team
+//= Revised by Nekosume [pyRO v3.0]
+//===== Current Version: =====================================
+//= 5.0
+//===== Compatible With: =====================================
+//= Any eAthena Version
+//===== Description: =========================================
+//= Revised dye NPC, split into two NPCs, one for hair color
+//= and style, the other for clothes color.
+//===== Additional Comments: =================================
+//= v5.0 - Added new style hair [Yor]
+//= v4.0 - Refined and Combined [Darkchild]
+//= v3.0 - Added the 'Browse' options
+//= v2.5 - Added more hair colors
+//= v2.0 - Changed palette and hair style select
+//= v1.5 - Revised script / different dialog
+//= v1.0 - Split into two NPCs
+//============================================================
+
+
+//Stylist------------------------------------------------------------------------------------------------------------
+prontera.gat,149,189,1	script	Stylist	122,{
+	mes "[^FF8000Stylist^000000]";
+	mes "Je suis le plus grand styliste de tout l'empire~~!";
+	mes "Je peux changer la couleur de vos cheveux ou de vos habits!";
+	next;
+	mes "[^FF8000Stylist^000000]";
+	mes "Et ceci uniquement pour la modique somme de ^0000FF10 Shells^000000.";
+	next;
+	menu "Ca m'interesse.",-,"Non, merci...",LCancel;
+	mes "[^FF8000Stylist^000000]";
+	mes "Je vous demanderai de payer d'abord.";
+	mes ". . . . . . . .";
+	next;
+	if (countitem(935)<10) goto LNoShell;
+	delitem 935, 10;
+	mes "[^FF8000Stylist^000000]";
+	mes "Que voulez vous changer?";
+	next;
+	menu "Coupe de cheveux",Lstyle,"Couleur des cheveux",Lcolor,"Couleur des habits",Lcloth,"Rien, merci",LCancel;
+
+	LNoShell:
+		mes "[^FF8000Stylist^000000]";
+		mes "Je ne demande pas grand chose. Juste ^0000FF10 Shells^000000.";
+		mes "Si vous n'en avez pas... Eh bien, allez donc taper du monstre !";
+		close;
+
+	Lstyle:
+		mes "[^FF8000Stylist^000000]";
+		mes "Désirez-vous voir tout ce que je peux faire, ou savez-vous déjà ce que vous voulez ?";
+		next;
+		menu "Voir",Lbrowsesty,"Je sais ce que je veux",Lwantsty;
+
+	Lwantsty:
+		mes "[^FF8000Stylist^000000]";
+		mes "Bien! On peut commencer";
+		mes "Tant que vous ne validez pas votre choix vous pourrez me demander une autre coupe, sans avoir à repayer";
+		next;
+		mes "[^FF8000Stylist^000000]";
+		mes "Si vous quittez la conversation, vous devrez à nouveau payer pour pouvoir changer de coupe.";
+		next;
+		mes "[^FF8000Stylist^000000]";
+		mes "Entrez le numéro de la coupe de cheveux que vous désirez ^0000FFentre 0 et 23^000000.";
+		mes "0 représente, bien évidemment, la coupe par défaut de votre personnage.";
+		next;
+		input @sty;
+		if (@sty>23) close;
+		if (@sty<0) close;
+		setlook 1,@sty;
+		next;
+		mes "[^FF8000Stylist^000000]";
+		mes "Ca vous plait ? Ou vous-voulez en voir une autre ?";
+		next;
+		menu "Ca me va",-,"Autre chose, s'il vous plait",Lwantsty;
+		next;
+		mes "[^FF8000Stylist^000000]";
+		mes "Ca vous va très bien~! Revenez me voir, ok ?";
+		close;
+
+	Lbrowsesty:
+		set @look, -1;
+		mes "[^FF8000Stylist^000000]";
+		mes "Ok, c'est partit~! Arrêtez-moi quand vous voyez quelque chose qui vous plait, ok ?";
+		next;
+
+	Lbrowserep:
+		set @look,@look+1;
+		setlook 1,@look;
+		mes "Voici la coupe numéro^FF9009 "+@look+" ^000000!";
+		if(@look == 23) menu "Revenir au tout début",Lbrowsesty,"Celle-ci me plait",Lstop;
+		if(@look != 23) menu "Continuez",Lbrowserep,"Celle-ci me plait",Lstop;
+
+	Lcolor:
+		mes "[^FF8000Stylist^000000]";
+		mes "Désirez-vous voir tout ce que je peux faire, ou savez-vous déjà ce que vous voulez ?";
+		next;
+		menu "Voir",Lbrowsecolor,"Je sais ce que je veux",Lwantcolor;
+
+	Lwantcolor:
+		mes "[^FF8000Stylist^000000]";
+		mes "Très bien, on peut y aller.";
+		mes "Tant que vous ne validez pas votre choix vous pourrez me demander une autre palette, sans avoir à repayer";
+		next;
+		mes "[^FF8000Stylist^000000]";
+		mes "Si vous quittez la conversation, vous devrez à nouveau payer pour pouvoir changer de palette.";
+		next;
+		mes "[^FF8000Stylist^000000]";
+		mes "Entrez le numéro de la palette que vous voulez ^0000FFEntre 0 et 8^000000.";
+		next;
+		mes "[^FF8000Stylist^000000]";
+		mes "0 est la couleur par défaut...";
+		mes "1 pour blond...";
+		mes "2 pour lavande...";
+		mes "3 pour brun...";
+		mes "4 pour vert...";
+		mes "5 pour bleu...";
+		mes "6 pour blanc...";
+		mes "7 pour noir...";
+		mes "8 pour rouge...";
+		input @color;
+		if (@color>8) close;
+		if (@color<0) close;
+		setlook 6,@color;
+		next;
+		mes "[^FF8000Stylist^000000]";
+		mes "Ca vous plait? Ou désirez-vous autre chose ?";
+		next;
+		menu "Ca me va",-,"Autre chose, s'il vous plait",Lwantcolor;
+		next;
+		mes "[^FF8000Stylist^000000]";
+		mes "Magnifique~! Revenez me voir, ok ?";
+		close;
+
+	Lbrowsecolor:
+		set @look, -1;
+		mes "[^FF8000Stylist^000000]";
+		mes "Ok, c'est partit~! Arrêtez-moi quand vous voyez quelque chose qui vous plait, ok ?";
+		next;
+
+	Lbrowsecolorrep:
+		set @look,@look+1;
+		setlook 6,@look;
+		mes "Ceci est la palette numéro^FF9009 "+@look+" ^000000!";
+		if(@look == 8) menu "Revenir au tout début",Lbrowsecolor,"Celle-ci me plait",Lstop;
+		if(@look != 8) menu "Continuez",Lbrowsecolorrep,"Celle-ci me plait",Lstop;
+
+		Lstop:
+			mes "[^FF8000Stylist^000000]";
+			mes "Magnifique! ^_^";
+			close;
+
+	LCancel:
+		mes "[^FF8000Stylist^000000]";
+		mes "A bientôt.";
+		close;
+
+	Lcloth:
+		if (Class == 4046) goto Ltaekwon;
+		mes "[^FF8000Stylist^000000]";
+		mes "Désirez vous voir tout ce que je peux faire, ou vous savez déjà ce que vous voulez ?";
+		next;
+		menu "Voir",Lbrowsecloth,"Je sais ce que je veux",Lwantcloth;
+
+	Lwantcloth:
+		mes "[^FF8000Stylist^000000]";
+		mes "Bien!  On peut commencer!";
+		mes "Tant que vous ne validez pas votre choix vous pourrez me demander une autre palette, sans avoir à repayer";
+		next;
+		mes "[^FF8000Stylist^000000]";
+		mes "Si vous quittez la conversation, vous devrez à nouveau payer pour pouvoir changer de palette.";
+		next;
+		mes "[^FF8000Stylist^000000]";
+		mes "Entrez le numéro de la palette que vous désirez ^0000FFentre 0 et 77^000000.";
+		mes "0 représente, bien évidemment, la palette par défaut de votre personnage.";
+		next;
+		input @pal;
+		if (@pal>77) close;
+		if (@pal<0) close;
+		setlook 7,@pal;
+		next;
+		mes "[^FF8000Stylist^000000]";
+		mes "Ca vous va ? ou vous désirez autre chose ?";
+		next;
+		menu "Ca me va",-,"Autre chose, s'il vous plait",Lwantcloth;
+		next;
+		mes "[^FF8000Stylist^000000]";
+		mes "Fantastique~! Revenez me voir, ok ?";
+		close;
+
+	Lbrowsecloth:
+		set @look, -1;
+		mes "[^FF8000Stylist^000000]";
+		mes "Ok, c'est partit~! Arrêtez-moi quand vous voyez quelque chose qui vous plait, ok ?";
+		next;
+
+	Lbrowseclothrep:
+		set @look,@look+1;
+		setlook 7,@look;
+		mes "Ceci est la palette numéro^FF9009 "+@look+" ^000000!";
+		if(@look == 77) menu "Revenir au tout début",Lbrowsecloth,"Celle-ci me plait",Lstop;
+		if(@look != 77) menu "Continuez",Lbrowseclothrep,"Celle-ci me plait",Lstop;
+
+	Ltaekwon:
+		mes "[^FF8000Stylist^000000]";
+		mes "Désolé mais je n'ai pas de vêtements de taekwon en stock.";
+		mes "Tenez, je vous rends vos Shells.";
+		next;
+		getitem 935, 10;
+		close;
+}
+
