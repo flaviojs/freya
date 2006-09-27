@@ -20,6 +20,10 @@
 //= v1.0 - Split into two NPCs
 //============================================================
 
+// vendeur de coquillages
+prontera.gat,141,228,5	shop	Vendeur de coquillages	93,935:50
+
+
 
 //Stylist------------------------------------------------------------------------------------------------------------
 prontera.gat,149,189,1	script	Stylist	122,{
