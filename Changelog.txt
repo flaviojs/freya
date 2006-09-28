@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 09/28/06
+	* Fixed: Priest not being able to equip Assassin's Mask, as per kRO [Tsuyuki]
 	* Fixed: The effects of the three main Valkyrie items [Tsuyuki]
 
 09/27/06
