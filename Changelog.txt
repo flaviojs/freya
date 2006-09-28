@@ -5,6 +5,25 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 09/28/06
+	* Added: A few missing skills to skill_castnodex_db.txt [Tsuyuki]
+	* Fixed: Item Sabbath's effects [Tsuyuki]
+	* Fixed: Dark Priest Card bSPVanishRate [Tsuyuki]
+	* Fixed: Weight of Serin's Gold Ring to 0 [Tsuyuki]
+	* Fixed: Enchanted Peach Tree should be able to move (speed 400) [Tsuyuki]
+	* Fixed: Clock's ATK range (1 - 2) [Tsuyuki]
+	* Fixed: 'Stave Crasher'? (forgot name) skill's element is now weapon's element instead of neutral [Tsuyuki]
+	* Fixed: Stormy Knight Card now freezes when attacking, not by being hit [Tsuyuki]
+	* Fixed: Hatii Claw's ATK power (115 - 152) [Tsuyuki]
+	* Fixed: Detardeurus only summons 1 Hydrolancer [Tsuyuki]
+	 - Note: I think Hydrolancer is supposed to summon its own slaves as well?
+	 - However, when I tested, it didn't work (the summon skills were in for the G_Hydrolancer at the time)
+	* Fixed: Incantation's Move Speed (200 - 135) [Tsuyuki]
+	* Fixed: Note Headphones have 3 Mdef [Tsuyuki]
+	* Added: 'Awaken' effect to Awakening Potion [Tsuyuki]
+	* Added: Correct prices for a few older items [Tsuyuki]
+	* Updated: Unholy Touch's ATK power (95 - 151) [Tsuyuki]
+	* Fixed: Immaterial Sword effect rate [Tsuyuki]
+	* Fixed: Valkyrie Randgris resummon slave requirements [Tsuyuki]
 	* Fixed: Priest not being able to equip Assassin's Mask, as per kRO [Tsuyuki]
 	* Fixed: The effects of the three main Valkyrie items [Tsuyuki]
 
