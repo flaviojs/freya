@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+09/28/06
+	* Fixed: The effects of the three main Valkyrie items [Tsuyuki]
+
 09/27/06
 	* Added: Official drops for Ep 10.3 monsters [Tsuyuki]
 	* Imported: Converted and added Ayothaya, Louyang, and Kunlun Guide scripts from jAthena [Tsuyuki]
