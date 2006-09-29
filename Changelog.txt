@@ -4,6 +4,15 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+09/29/06
+	* Updated: Translated the skill_cast_db.txt 100% [Tsuyuki]
+	* Fixed: Cleaned up the abra_db.txt [Tsuyuki]
+	* Imported: Updated Kiel warps from eAthena [Tsuyuki]
+	* Fixed: Rafflesia's range (1 - 7) [Tsuyuki]
+	* Updated: Arrow Repel skill database entry [Tsuyuki]
+	* Updated: Translated the skill_db.txt 100% [Tsuyuki]
+	* Fixed: size_fix.txt database entry descriptions [Tsuyuki]
+
 09/28/06
 	* Fixed: Broken labels in Firecracker NPC (Hugel) [Tsuyuki]
 	* Added: MvP Exp for Detardeurus [Tsuyuki]
