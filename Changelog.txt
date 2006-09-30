@@ -5,13 +5,15 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 09/30/06
+	* Added: Gunslinger & Ninja Weapons & Ammunition [Tsuyuki]
+	* Added: Some other missing new weapons [Tsuyuki]
 	* Fixed: Arc Angeling Card incorrectly requiring 78 LUK or higher for its effect (should be 77 LUK) [Tsuyuki]
 	* Fixed: Luna Bow missing 2 slots [Tsuyuki]
 	* Updated: Massive update to the mob_skill_db.txt, almost everything overwritten excluding Arunafeltz [Tsuyuki]
 	 - This should solve the MvPs behaving strangely. Credits to eAthena for the database
 	 - Based on the Aegis Ep 10.2 NPCAddSkillInfo.sc file, so we'll be quite accurate now
 	 - Also had to comment skills with these functions: 
-	 - Angry, Rudeattacked, Alchemist, Masterattacked, Master, Onspawn, Hiding
+	 - Angry, Rudeattacked, Alchemist, Masterattacked, Master, Onspawn, Hiding, Follow
 	* Fixed: Double Attacks element (take weapon's element now) [Tsuyuki]
 	* Fixed: Item 'The Sign' bonuses [Tsuyuki]
 	* Fixed: Kaho's walkspeed (200 > 175) [Tsuyuki]
