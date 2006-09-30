@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 09/30/06
+	* Fixed: Arc Angeling Card incorrectly requiring 78 LUK or higher for its effect (should be 77 LUK) [Tsuyuki]
+	* Fixed: Luna Bow missing 2 slots [Tsuyuki]
 	* Updated: Massive update to the mob_skill_db.txt, almost everything overwritten excluding Arunafeltz [Tsuyuki]
 	 - This should solve the MvPs behaving strangely. Credits to eAthena for the database
 	 - Based on the Aegis Ep 10.2 NPCAddSkillInfo.sc file, so we'll be quite accurate now
@@ -14,10 +16,10 @@ Date	Added
 	* Fixed: Item 'The Sign' bonuses [Tsuyuki]
 	* Fixed: Kaho's walkspeed (200 > 175) [Tsuyuki]
 	* Fixed: Mirror Shield's Defense (4 > 5) [Tsuyuki]
-	* Fixed: Envenom's Range (2 - 3) [Tsuyuki]
+	* Fixed: Envenom's Range (2 > 3) [Tsuyuki]
 	* Fixed: Gravitation Field's Range (9 > 8) [Tsuyuki]
 	* Fixed: Guild exp from Tribal Solidarity [Tsuyuki]
-	* Fixed: Asura Strike Range (2 - 3) [Tsuyuki]
+	* Fixed: Asura Strike Range (2 > 3) [Tsuyuki]
 	* Updated: npc/kafra/kafras_alde.txt [from nezumi, Lupus' work]
 	* Updated: Fully translated/fixed up all database files except db/skill_tree.txt [Tsuyuki]
 

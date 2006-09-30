@@ -780,7 +780,7 @@
 1720,Rudra's_Bow,Rudra's Bow,4,20,0,1200,150,,5,0,1705992,2,34,4,48,11,{},{ bonus bAtkEle,6; bonus bInt,5; skill 35,1; skill 28,1; bonus2 bResEff,Eff_Poison,5000; bonus2 bResEff,Eff_Curse,5000; bonus2 bResEff,Eff_Silence,5000; bonus2 bResEff,Eff_Confusion,5000; bonus2 bResEff,Eff_Blind,5000; }
 1721,Repeating_Crossbow,Repeating Crossbow,4,89000,0,2000,95,,9,1,133184,2,34,3,65,11,{},{}
 1722,Ballista,Ballista,4,20,0,3500,145,,5,0,1574912,2,34,4,77,11,{},{}
-1723,Luna_Bow,Luna Bow,4,20,0,2000,100,,5,0,2048,2,34,3,30,11,{},{ bonus bDef,2+3*(getequiprefinerycnt(3)>9)+(getequiprefinerycnt(3)>6 && getequiprefinerycnt(3)<=9); }
+1723,Luna_Bow,Luna Bow,4,20,0,2000,100,,5,2,2048,2,34,3,30,11,{},{ bonus bDef,2+3*(getequiprefinerycnt(3)>9)+(getequiprefinerycnt(3)>6 && getequiprefinerycnt(3)<=9); }
 1724,Dragon_Wing,Dragon Wing,4,20,0,1200,100,,5,0,1706056,2,34,4,60,11,{},{ bonus3 bAddMonsterDropItem,1765,9,300; bonus bIgnoreDefRace,9; bonus bAtkEle,0; }
 1725,Ministrel_Bow,Ministrel_Bow,4,,10,1700,120,,5,1,1574912,2,34,4,70,11,{ bonus bInt,2; bonus bSPrecovRate,10; },{}
 1726,Hunter_Bow_,Hunter Bow,4,64000,0,1500,125,,5,1,2048,2,34,3,33,11,{},{}
@@ -1424,7 +1424,7 @@
 4238,Owl_Baron_Card,Owl Baron Card,6,20,0,10,,,,,,,136,,,,{},{ bonus4 bAutoSpell,78,1,300,1; }
 4239,Iron_Fist_Card,Iron Fist Card,6,20,0,10,,,,,,,64,,,,{},{ bonus2 bSubRace,0,-20; bonus2 bExpAddRace,0,10; }
 4240,Arclouze_Card,Arclouze Card,6,20,0,10,,,,,,,32,,,,{},{ if(getequiprefinerycnt(3) > 5) end; bonus bMdef,3; bonus bDef,2; }
-4241,Arc_Angeling_Card,Arc Angeling Card,6,20,0,10,,,,,,,769,,,,{},{ bonus bMaxHP,300; if(readparam(bLuk)<=77) end; bonus bHPrecovRate,100; bonus bSPrecovRate,100; }
+4241,Arc_Angeling_Card,Arc Angeling Card,6,20,0,10,,,,,,,769,,,,{},{ bonus bMaxHP,300; if(readparam(bLuk)<77) end; bonus bHPrecovRate,100; bonus bSPrecovRate,100; }
 4242,Apocalypse_Card,Apocalypse Card,6,20,0,10,,,,,,,16,,,,{},{ bonus bVit,2; if(getequiprefinerycnt(2) > 8) bonus bMaxHP,800; }
 4243,Antonio_Card,Antonio Card,6,20,0,10,,,,,,,16,,,,{},{ bonus4 bAutoSpellWhenHit,26,1,5000,0; }
 4244,Alarm_Card,Alarm Card,6,20,0,10,,,,,,,64,,,,{},{ bonus4 bAutoSpellWhenHit,10,1,2000,0; bonus bMaxHP,300; bonus bVit,1; }
