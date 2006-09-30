@@ -1,0 +1,114 @@
+//===== Sapho Script ========================================= 
+//= Gemstone exchanger in Payon City
+//===== By: ================================================== 
+//= Yor
+//===== Current Version: ===================================== 
+//= 1.0
+//===== Compatible With: ===================================== 
+//= Any freya version
+//===== Description: ========================================= 
+//= Payon City Npcs to exchange gemstone
+//===== Additional Comments: ================================= 
+//============================================================ 
+
+payon.gat,173,238,5 script Jade 754,{
+	mes "[Jade]";
+	mes "Bonjour.";
+	mes "Je suis un négociant en Gemstones.";
+	mes "Mon job est l'échange de Gemstones.";
+	next;
+	mes "[Jade]";
+	mes "Donnez-moi 2 Gemstones de la même couleur, et je vous les échange contre une Gemstone d'une autre couleur.";
+	next;
+
+	menu "2 Blue Gemstones en une Red",L_BlueToRed,"2 Red Gemstones en une Yellow",L_RedToYellow,"2 Yellow Gemstones en une Blue",L_YellowToBlue,"Annuler",L_Cancel;
+
+L_BlueToRed:
+	set @SourceGemstones$,"Blue";
+	set @SourceGemstonesID,717;
+	set @TargetGemstones$,"Red";
+	set @TargetGemstonesID,716;
+	goto L_BeginExchange;
+
+L_RedToYellow:
+	set @SourceGemstones$,"Red";
+	set @SourceGemstonesID,716;
+	set @TargetGemstones$,"Yellow";
+	set @TargetGemstonesID,715;
+	goto L_BeginExchange;
+
+L_YellowToBlue:
+	set @SourceGemstones$,"Yellow";
+	set @SourceGemstonesID,715;
+	set @TargetGemstones$,"Blue";
+	set @TargetGemstonesID,717;
+	goto L_BeginExchange;
+
+L_BeginExchange:
+	if(countitem(@SourceGemstonesID) >= 2) goto L_ExchangeOK;
+	mes "[Jade]";
+	mes "Haha...!";
+	mes "Vous avez essayé de m'avoir!";
+	mes "Je ne peux vous donner des "+@TargetGemstones$+" Gemstone";
+	mes "que si vous me donnez au moins 2 "+@SourceGemstones$+" Gemstones!";
+	mes "Au revoir.";
+	close;
+
+L_ExchangeOK:
+	set @ExchangeCount,countitem(@SourceGemstonesID)/2;
+	mes "[Jade]";
+	mes "Je peux vous donner "+@ExchangeCount+" "+@TargetGemstones$+" Gemstones avec ce que vous avez.";
+	mes "Combien désirez-vous m'en prendre?";
+	next;
+	menu "Toutes les prendre",L_ExchangeAll,"Je veux vous indiquer la quantité",L_PointCount,"Annuler",L_Cancel;
+
+L_ExchangeAll:
+	if(countitem(@SourceGemstonesID) < 2) goto L_ExchangeNo;
+	set @ExchangeCount,countitem(@SourceGemstonesID)/2;
+	delitem @SourceGemstonesID,@ExchangeCount*2;
+	getitem @TargetGemstonesID,@ExchangeCount;
+	goto L_ExchangeDone;
+
+L_PointCount:
+	mes "[Jade]";
+	mes "Combien voulez-vous m'en prendre?";
+	next;
+
+L_InputPointCount:
+	input @number;
+	if(countitem(@SourceGemstonesID) < 2) goto L_ExchangeNo;
+	if(@number < 0) goto L_ExchangeNo;
+	if(@number == 0) goto L_Cancel;
+	if(countitem(@SourceGemstonesID) < @number*2) goto L_ExchangeNotEnough;
+	delitem @SourceGemstonesID,@number*2;
+	getitem @TargetGemstonesID,@number;
+	goto L_ExchangeDone;
+
+L_ExchangeNo:
+	mes "[Jade]";
+	mes "Hmmm... Très comique...";
+	close;
+
+L_ExchangeNotEnough:
+	mes "[Jade]";
+	mes "Hmmm... Les "+@SourceGemstones$+" Gemstones que vous avez";
+	mes "ne sont pas assez nombreuses pour obtenir "+@number+" "+@TargetGemstones$+" Gemstones.";
+	mes "Indiquez-moi une autre quantité svp.";
+	next;
+	goto L_InputPointCount;
+
+L_ExchangeDone:
+	mes "[Jade]";
+	mes "Voilà. Voici vos "+@TargetGemstones$+" Gemstones...";
+	mes "Revenez aussi souvent que vous le désirez.";
+	mes "Au revoir.";
+	close;
+
+L_Cancel:
+	mes "[Jade]";
+	mes "OK, très bien... Revenez me voir si vous voulez échanger des Gemstones une autre fois.";
+	mes "Je peux échanger des Gemstones à tous moment.";
+	mes "Au revoir.";
+	close;
+}
+
