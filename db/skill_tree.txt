@@ -4,7 +4,7 @@
 //
 // JobNo,SkillID,MaxLV,PrerequisiteSkillID-1,‘O’ñSkill-ID-1-Lv,Œv5ŒÂ‚Ü‚ÅŒJ‚è•Ô‚µ
 //
-// Note: Need Translations
+// Note: Need to translate this file
 //
 
 // Novice
@@ -1983,7 +1983,7 @@
 // Taekwon
 4046,1,9,0,0,0,0,0,0,0,0,0,0		//NV_BASIC#Basic Skill#
 4046,142,1,0,0,0,0,0,0,0,0,0,0		//NV_FIRSTAID#First Aid#
-4046,411,10,0,0,0,0,0,0,0,0,0,0		//TK_RUN#Sprint#
+4046,411,10,0,0,0,0,0,0,0,0,0,0		//TK_RUN#Running#
 4046,412,1,413,1,0,0,0,0,0,0,0,0	//TK_READYSTORM#Prepare Whirlwind Kick#
 4046,413,7,0,0,0,0,0,0,0,0,0,0		//TK_STORMKICK#Whirlwind Kick#
 4046,414,1,415,1,0,0,0,0,0,0,0,0	//TK_READYDOWN#Prepare Axe Kick#
@@ -1992,11 +1992,11 @@
 4046,417,7,0,0,0,0,0,0,0,0,0,0		//TK_TURNKICK#Round Kick#
 4046,418,1,419,1,0,0,0,0,0,0,0,0	//TK_READYCOUNTER#Prepare Counter Kick#
 4046,419,7,0,0,0,0,0,0,0,0,0,0		//TK_COUNTER#Counter Kick#
-4046,420,1,421,7,0,0,0,0,0,0,0,0	//TK_DODGE#Break Fall#
+4046,420,1,421,7,0,0,0,0,0,0,0,0	//TK_DODGE#Tumbling#
 4046,421,7,0,0,0,0,0,0,0,0,0,0		//TK_JUMPKICK#Flying Side Kick#
 4046,422,10,0,0,0,0,0,0,0,0,0,0		//TK_HPTIME#Peacefull Rest#
 4046,423,10,0,0,0,0,0,0,0,0,0,0		//TK_SPTIME#Enjoyable Rest#
-4046,424,5,0,0,0,0,0,0,0,0,0,0		//TK_POWER#Fighting Chant#
+4046,424,5,0,0,0,0,0,0,0,0,0,0		//TK_POWER#Kihop#
 4046,425,7,422,5,423,5,424,5,0,0,0,0 //TK_SEVENWIND#Warm Wind#
 4046,426,5,0,0,0,0,0,0,0,0,0,0		//TK_HIGHJUMP#High Jump#
 //4046,493,1,424,5,0,0,0,0,0,0,0,0 //TK_MISSION#Taekwon Mission#

@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+09/30/06
+	* Updated: Fully translated/fixed up all database files except db/skill_tree.txt [Tsuyuki]
+
 09/29/06
 	* Updated: Translated the skill_cast_db.txt 100% [Tsuyuki]
 	* Fixed: Cleaned up the abra_db.txt [Tsuyuki]
