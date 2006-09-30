@@ -5,6 +5,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 09/30/06
+	* Added: Implemented Cookie Bag and its proper items from Aegis X.3 (Credits to eAthena) [Tsuyuki]
+	* Changed: Renamed item_violetbox.txt > item_purplebox.txt [Tsuyuki]
+	* Moved: All item givers, along with monster summoning items to db/random for organizational purposes [Tsuyuki]
+	* Removed: db/item_scroll.txt Worn Out Scroll Database [Tsuyuki]
 	* Added: Gunslinger & Ninja Weapons & Ammunition [Tsuyuki]
 	* Added: Some other missing new weapons [Tsuyuki]
 	* Fixed: Arc Angeling Card incorrectly requiring 78 LUK or higher for its effect (should be 77 LUK) [Tsuyuki]

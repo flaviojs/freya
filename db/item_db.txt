@@ -1,6 +1,6 @@
 // item_db.txt, Item Database
 //
-//ID,DB_Name,Natural name,Type,Price,Sell,Weight,ATK,DEF,Range,Slot,Job,Gender,Loc,wLV,eLV,View,{UseScript},{EquipScript}
+//ID,DB_Name,Natural Name,Type,Price,Sell,Weight,ATK,DEF,Range,Slot,Job,Gender,Loc,wLV,eLV,View,{UseScript},{EquipScript}
 // Type: 0 Healing, 2: Usable, 3: Misc, 4: Weapon, 5: Armor, 6: Card, 7: Pet egg,
 //       8: petequip, 10: arrow, 11: Usable with delayed consumption (all items with
 // Elements: 0 Nothing, 1 Water, 2 Earth ,3 Fire, 4 Wind, 5 Poison, 6 Saint, 7 Darkness, 8 Sense, 9 Immortality
@@ -123,7 +123,7 @@
 // Item Obtainables
 616,Old_Card_Album,Old Card Album,2,10000,5000,50,,,,,27254783,2,,,,,{ getitem -3,1; },{}
 617,Old_Purple_Box,Old Purple Box,2,10000,5000,200,,,,,27254783,2,,,,,{ getitem -2,1; },{}
-618,Worn_Out_Scroll,Worn Out Scroll,2,50,25,20,,,,,27254783,2,,,,,{ getitem -5,1; },{} // Not working correctly
+618,Worn_Out_Scroll,Worn Out Scroll,2,50,25,20,,,,,27254783,2,,,,,{},{}
 
 // Pet Taming Items
 619,Unripe_Apple,Unripe Apple,2,1000,500,50,,,,,27254783,2,,,,,{ pet 1002; },{}
@@ -2663,7 +2663,7 @@
 12129,Fantastic_Cooking_Set,Fantastic Cooking Set,2,10000,5000,70,,,,,27254783,2,,,,,{ produce 15; },{}
 
 // More Misc Items - Incomplete
-12130,Cookie_Bag,Cookie Bag,3,20,10,70,,,,,27254783,2,,,,,{},{} // getitem groupranditem(IG_CookieBag),1; 
+12130,Cookie_Bag,Cookie Bag,2,20,10,70,,,,,27254783,2,,,,,{ getitem -5,1; },{}
 12131,Lucky_Potion,Lucky Potion,0,,10,100,,,,,27254783,2,,,,,{ sc_start SC_LUKFOOD, 300000, 15; },{}
 12132,Santa's_Bag,Red Package,2,20,10,200,,,,,27254783,2,,,,,{},{} // Turns you into Xmas Suit for 10 Minutes
 12133,McDonald's_Ice_Cone,McDonald's Ice Cone,0,50,,80,,,,,27254783,2,,,,,{ itemheal rand(45,64),0; },{} // Incomplete
