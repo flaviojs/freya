@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 09/30/06
+	* Updated: npc/kafra/kafras_alde.txt [from nezumi, Lupus' work]
 	* Updated: Fully translated/fixed up all database files except db/skill_tree.txt [Tsuyuki]
 
 09/29/06
