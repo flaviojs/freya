@@ -21,7 +21,7 @@
 //============================================================
 
 // vendeur de coquillages
-prontera.gat,141,228,5	shop	Vendeur de coquillages	93,935:50
+prontera.gat,141,228,5	shop	Vendeuse de coquillages	93,935:50
 
 
 
