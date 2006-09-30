@@ -72,11 +72,11 @@
 45,0,6,4,0,1,10,1,no,0,0,0,weapon,0	//AC_CONCENTRATION#Improve Concentration#
 46,-3,8,1,0,0,10,2,no,0,0,0,weapon,0	//AC_DOUBLE#Double Strafe#
 47,-3,6,2,0,2,10,1,no,0,0,0,weapon,2	//AC_SHOWER#Arrow Shower#
-48,0,0,0,0,0,10,0,no,0,0,0,weapon,0	//TF_DOUBLE#Double Attack#
+48,0,0,0,-1,0,10,0,no,0,0,0,weapon,0	//TF_DOUBLE#Double Attack#
 49,0,0,0,0,0,10,0,no,0,0,0,weapon,0	//TF_MISS#Improve Dodge#
 50,1,6,1,0,1,10,1,no,0,0,0,weapon,0	//TF_STEAL#Steal#
 51,1,6,4,0,1,10,1,no,0,0,0,none,0	//TF_HIDING#Hide#
-52,2,6,1,5,0,10,1,no,0,0,0,weapon,0	//TF_POISON#Envenom#
+52,3,6,1,5,0,10,1,no,0,0,0,weapon,0	//TF_POISON#Envenom#
 53,9,6,16,5,1,1,1,no,0,0,0,weapon,0	//TF_DETOXIFY#Detoxify#
 54,9,6,16,0,1,4,1,yes,0,0,0,magic,0	//ALL_RESURRECTION#Resurrection#
 
@@ -303,7 +303,7 @@
 268,0,6,4,0,1,5,1,no,0,0,0,weapon,0	//MO_STEELBODY#Mental Strength#
 269,0,6,4,0,1,5,1,no,0,0,0,weapon,0	//MO_BLADESTOP#Root#
 270,0,6,4,0,1,5,0,no,0,0,0,weapon,0	//MO_EXPLOSIONSPIRITS#Fury#
-271,2,6,4,0,0,5,1,yes,0,4,0,weapon,0	//MO_EXTREMITYFIST#Asura Strike#
+271,3,6,4,0,0,5,1,yes,0,4,0,weapon,0	//MO_EXTREMITYFIST#Asura Strike#
 272,-2,8,4,0,0,5,4,no,0,0,0,weapon,0	//MO_CHAINCOMBO#Raging Quadruple Blow#
 273,-2,6,4,0,0,5,1,no,0,0,0,weapon,0	//MO_COMBOFINISH#Raging Thrust#
 274,0,0,0,0,0,10,0,no,0,0,0,weapon,0	//SA_ADVANCEDBOOK#Study#
@@ -405,7 +405,7 @@
 362,4,6,4,0,1,5,1,yes,0,0,0,magic,2	//HP_BASILICA#Basilica#
 363,0,0,0,0,0,10,0,no,0,0,0,magic,0	//HP_MEDITATIO#Meditatio#
 364,0,0,0,0,0,10,1,no,0,0,0,magic,0	//HW_SOULDRAIN#Soul Drain#
-365,9,8,1,-1,2,1,1,yes,0,0,0,magic,0	//HW_MAGICCRASHER#Stave Crasher#
+365,9,8,1,-1,0,1,1,yes,0,0,0,magic,0	//HW_MAGICCRASHER#Stave Crasher#
 366,0,6,4,0,1,10,1,no,0,0,0,magic,0	//HW_MAGICPOWER#Mystical Amplification#
 367,9,8,1,0,2,5,1,no,0,0,0,magic,0	//PA_PRESSURE#Gloria Domini#
 368,0,6,4,0,1,5,1,yes,0,0,0,magic,0	//PA_SACRIFICE#Martyr's Reckoning#
@@ -528,7 +528,7 @@
 481,0,0,0,0,0,5,0,no,0,0,0,none,0	//HP_MANARECHARGE#Mana Recharge#
 482,0,6,4,0,1,5,1,yes,0,0,0,magic,0	//PF_DOUBLECASTING#Double Casting#
 483,9,6,2,0,1,1,1,yes,0,0,0,none,0	//HW_GANBANTEIN#Ganbantein#
-484,9,6,2,0,1,5,1,yes,0,0,0,magic,0	//HW_GRAVITATION#Gravitation Field#
+484,8,6,2,0,1,5,1,yes,0,0,0,magic,0	//HW_GRAVITATION#Gravitation Field#
 485,-2,6,1,0,0,10,1,no,0,0,0,weapon,0	//WS_CARTTERMINATION#Cart Termination#
 486,0,6,4,0,1,5,1,no,0,0,0,weapon,0	//WS_MAXOVERTHRUST#Maximum Power Thrust#
 487,0,6,4,0,1,5,1,no,0,0,0,none,0	//CG_LONGINGFREEDOM#Longing for Freedom#

@@ -157,7 +157,7 @@
 645,Concentration_Potion,Concentration Potion,2,800,400,100,,,,,27254783,2,,,,,{ sc_start SC_SpeedPot0,1800000,0; },{}
 656,Awakening_Potion,Awakening Potion,2,1500,750,150,,,,,25681647,2,,,40,,{ sc_end SC_Sleep; sc_start SC_SpeedPot1,1800000,0; },{}
 657,Berserk_Potion,Berserk Potion,2,3000,1500,200,,,,,17188518,2,,,85,,{ sc_start SC_SpeedPot2,1800000,0; },{}
-658,Tribal_Solidarity,Tribal Solidarity,2,1000,500,500,,,,,27254783,2,,,,,{ guildgetexp rand(500000,1000000); },{}
+658,Tribal_Solidarity,Tribal Solidarity,2,1000,500,500,,,,,27254783,2,,,,,{ guildgetexp rand(600000,1200000); },{}
 659,Her_Heart,Her Heart,2,500,250,50,,,,,27254783,2,,,,,{ pet 1188; },{}
 660,Forbidden_Red_Candle,Red Candle,2,20000,10000,50,,,,,27254783,2,,,,,{ pet 1200; },{}
 661,Soft_Apron,Soft Apron,2,20000,10000,50,,,,,27254783,2,,,,,{ pet 1275; },{}
@@ -883,8 +883,8 @@
 2104,Buckler_,Buckler,5,14000,0,600,,4,,1,2020850,2,32,,0,2,{},{}
 2105,Shield,Shield,5,56000,0,1300,,6,,0,16514,2,32,,0,3,{},{}
 2106,Shield_,Shield,5,56000,0,1300,,6,,1,16514,2,32,,0,3,{},{}
-2107,Mirror_Shield,Mirror Shield,5,60000,0,1000,,4,,0,16514,2,32,,0,4,{},{ bonus bMdef,5; }
-2108,Mirror_Shield_,Mirror Shield,5,60000,0,1000,,4,,1,16514,2,32,,0,4,{},{ bonus bMdef,5; }
+2107,Mirror_Shield,Mirror Shield,5,60000,0,1000,,5,,0,16514,2,32,,0,4,{},{ bonus bMdef,5; }
+2108,Mirror_Shield_,Mirror Shield,5,60000,0,1000,,5,,1,16514,2,32,,0,4,{},{ bonus bMdef,5; }
 2109,Memory_Book,Memory Book,5,20,0,1000,,3,,0,66052,2,32,,0,,{},{ bonus bInt,1; bonus bMdef,2; }
 2110,Holy_Guard,Holy Guard,5,20,0,1400,,5,,0,16384,2,32,,68,3,{},{ bonus bVit,2; bonus bMdef,2; }
 2111,Sacred_Mission,Sacred Mission,5,20,0,1400,,5,,0,16384,2,32,,83,3,{},{ bonus bVit,3; bonus bInt,2; bonus bMdef,3; bonus bUnbreakableShield,0; }
@@ -1151,7 +1151,7 @@
 2641,Fashion_Hip_Sack,Fashion Hip Sack,5,20,0,700,,0,,0,263200,2,136,,50,0,{},{ bonus bStr,2; }
 2642,Serin's_Gold_Ring,Serin's Gold Ring,5,20,0,0,,0,,0,27254783,2,136,,,,{},{}
 2643,Serin's_Gold_Ring_,Serin's Gold Ring,5,20,0,100,,0,,0,27254783,2,136,,,,{},{}
-2644,The_Sign_,The Sign,5,20,0,0,,0,,0,27254783,2,136,,,,{},{ bonus bMatkRate,5; }
+2644,The_Sign_,The Sign,5,20,0,0,,0,,0,27254783,2,136,,,,{},{ bonus bMatkRate,5;  bonus bAtkRate,5; }
 2645,Moonlight_Ring,Moonlight Ring,5,20,0,200,,0,,0,135232,2,136,,60,,{ bonus bCritical,3; bonus bAspdAddRate,3; },{}
 2646,Bunch_of_Carnation,Bunch of Carnation,5,20,0,100,,0,,0,27254783,2,136,,,,{},{ bonus bAllStats,3; }
 2647,Nile_Rose,Nile Rose,5,20,0,100,0,0,0,0,27254783,2,136,0,0,0,{},{ bonus bAllStats,5; }
