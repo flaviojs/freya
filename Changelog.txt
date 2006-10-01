@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 09/30/06
+	* Changed: Arranged Ninja/Gunslinger items in a temp area until the classes are actually in [Tsuyuki]
 	* Added: Implemented Cookie Bag and its proper items from Aegis X.3 (Credits to eAthena) [Tsuyuki]
 	* Changed: Renamed item_violetbox.txt > item_purplebox.txt [Tsuyuki]
 	* Moved: All item givers, along with monster summoning items to db/random for organizational purposes [Tsuyuki]
