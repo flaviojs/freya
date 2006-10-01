@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 09/31/06
+	* Added: npc/server/Sapho/jobs/1-1/swordman.txt [Sapho Team]
 	* Fixed: Some major bugs with monsters that summon multiple, different slaves [Tsuyuki]
 	 - Note: Someone update Trunk IMMEDIATELY please~
 	* Added: New duplicate mobs and skills [Tsuyuki]
