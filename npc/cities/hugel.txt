@@ -9,7 +9,7 @@
 //===== Description: =========================================
 //= Hugel City NPCs
 //===== Additional Comments: =================================
-//= 0.1 Imported Temp Firecracker seller from eAthena [Tsuyuki]
+//= 0.1 Imported Temp Firecracker seller from eAthena (eRKURITA) [Tsuyuki]
 //= Note: I plan to do this script when Episode 10.4 hits iRO 
 //= (Currently on 10.3) - Tsuyuki
 //============================================================
@@ -20,7 +20,7 @@ hu_in01.gat,23,311,4	script	Josh	898,{
 	mes "Hi ho~ I sell some awesome firecrackers, would you like to buy one?";
 	mes "Only 500z and you get 5 ^FF0000firecrackers^000000!";
 	next;
-	menu "Yes Please",Yes,"No thanks",No;
+	menu "Yes Please",JoshYes,"No thanks",JoshNo;
 
 	JoshYes:
 		if (Zeny >= 500)goto JoshGotZeny;

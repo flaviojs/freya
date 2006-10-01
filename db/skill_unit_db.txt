@@ -10,15 +10,16 @@
 //
 // Target = Friend / Party / All / Enemy
 //          Friend:NOENEMY, Party:PARTY, 0x20000:BCT_ALL, Enemy:ENEMY
-// Flag 0x001(UF_DEFNOTENEMY)    Affected by 'defunit_not_enemy' // defunit_not_enemyの影響を受ける
-//
-//      0x002(UF_NOREITERRATION) Spell Cannot Be Stacked // 重ね置き不可
-//      0x004(UF_NOFOOTSET)      Spell Cannot Be Cast Near/On Players // 足元置き不可
-//      0x008(UF_NOOVERLAP)      Spell Effects Do Not Overlap // 効果が重複しない
-//      0x100(UF_DANCE)          Dance Skill // ダンススキル
-//      0x200(UF_ENSEMBLE)       Ensemble Skill // 合奏スキル
+// Flag 0x001(UF_DEFNOTENEMY)    If 'defunit_not_enemy' is set, the target is changed to 'friend'
+//      0x002(UF_NOREITERRATION) Spell Cannot Be Stacked
+//      0x004(UF_NOFOOTSET)      Spell Cannot Be Cast Near/On Targets
+//      0x008(UF_NOOVERLAP)      Spell Effects Do Not Overlap
+//      0x100(UF_DANCE)          Dance Skill
+//      0x200(UF_ENSEMBLE)       Ensemble Skill
 //      Example: 0x006 = 0x002+0x004 -> Cannot Be Stacked Nor Cast Near Players
 //
+// Notes:
+// ------
 //    0x89,0x8a,0x8b 表示無し
 //    0x9a 炎属性の詠唱みたいなエフェクト
 //    0x9b 水属性の詠唱みたいなエフェクト
@@ -27,66 +28,64 @@
 //
 //    u1   u2 lay  r intr target  flag
 //
-// Note: Need Translations
-//
 
- 12,0x7e,    ,  0, 0,  -1,all,   0x002	//MG_SAFETYWALL#セイフティウォール
- 18,0x7f,    , -1, 0,   1,enemy, 0x008	//MG_FIREWALL#ファイアーウォール
- 21,0x86,    ,  0, 2,1000,enemy, 0x008	//MG_THUNDERSTORM#サンダーストーム
- 25,0x85,    ,  1, 0,  -1,all,   0x002	//AL_PNEUMA#ニューマ
- 27,0x81,0x80,  0, 0,  -1,all,   0x006	//AL_WARP#ワープポータル
- 70,0x83,    , -1, 1,1000,all,   0x008	//PR_SANCTUARY#サンクチュアリ
- 79,0x84,    , -1, 1,3000,enemy, 0x008	//PR_MAGNUS#マグヌスエクソシズム
- 80,0x87,0x88,  0, 1,2000,enemy, 0x006	//WZ_FIREPILLAR#ファイアーピラー
- 83,0x86,    ,  0, 3,1000,enemy, 0x000	//WZ_METEOR#メテオストーム
- 85,0x86,    ,  0, 6,1250,enemy, 0x008	//WZ_VERMILION#ロードオブヴァーミリオン
- 87,0x8d,    , -1, 0,  -1,all,   0x000	//WZ_ICEWALL#アイスウォール
- 88,0x86,    ,  0, 2,1000,enemy, 0x000	//WZ_FROSTNOVA#フロストノヴァ
- 89,0x86,    ,  0, 5, 450,enemy, 0x008	//WZ_STORMGUST#ストームガスト
- 91,0x86,    ,  0, 2,1000,enemy, 0x080	//WZ_HEAVENDRIVE#ヘヴンズドライブ
- 92,0x8e,    ,  2, 0,  -1,enemy, 0x000	//WZ_QUAGMIRE#クァグマイア
-115,0x90,    ,  0, 1,1000,enemy, 0x006	//HT_SKIDTRAP#スキッドトラップ
-116,0x93,    ,  0, 1,1000,enemy, 0x006	//HT_LANDMINE#ランドマイン
-117,0x91,    ,  0, 1,1000,enemy, 0x006	//HT_ANKLESNARE#アンクルスネア
-118,0x94,    ,  0, 1,1000,enemy, 0x006	//HT_SHOCKWAVE#ショックウェーブトラップ
-119,0x95,    ,  0, 2,1000,enemy, 0x006	//HT_SANDMAN#サンドマン
-120,0x96,    ,  0, 1,1000,enemy, 0x006	//HT_FLASHER#フラッシャー
-121,0x97,    ,  0, 1,1000,enemy, 0x006	//HT_FREEZINGTRAP#フリージングトラップ
-122,0x8f,    ,  0, 1,1000,enemy, 0x006	//HT_BLASTMINE#ブラストマイン
-123,0x98,    ,  0, 2,1000,enemy, 0x006	//HT_CLAYMORETRAP#クレイモアトラップ
-125,0x99,    ,  0, 1,1000,all,   0x002	//HT_TALKIEBOX#トーキーボックス
-140,0x92,    , -1, 0,1000,enemy, 0x000	//AS_VENOMDUST#ベナムダスト
-220,0xb0,    ,  0, 0,  -1,all,   0x002	//RG_GRAFFITI#グラフィティ
-229,0xb1,    ,  0, 1,1000,enemy, 0x006	//AM_DEMONSTRATION#デモンストレーション
-254,0x86,    , -1, 0, 400,enemy, 0x000	//CR_GRANDCROSS#グランドクロス
-285,0x9a,    ,  3, 0,  -1,all,   0x000	//SA_VOLCANO#ボルケーノ
-286,0x9b,    ,  3, 0,  -1,all,   0x000	//SA_DELUGE#デリュージ
-287,0x9c,    ,  3, 0,  -1,all,   0x000	//SA_VIOLENTGALE#バイオレントゲイル
-288,0x9d,,3:3:4:4:5,0, -1,all,   0x000	//SA_LANDPROTECTOR#ランドプロテクター
-306,0x9e,    ,  4, 0,6000,all,   0x300	//BD_LULLABY#子守歌
-307,0x9f,    ,  4, 0,  -1,party, 0x300	//BD_RICHMANKIM#ニヨルドの宴
-308,0xa0,    ,  4, 0,  -1,all, 0x300	//BD_ETERNALCHAOS#永遠の混沌
-309,0xa1,    ,  4, 0,  -1,party, 0x300	//BD_DRUMBATTLEFIELD#戦太鼓の響き
-310,0xa2,    ,  4, 0,  -1,party, 0x300	//BD_RINGNIBELUNGEN#ニーベルングの指輪
-311,0xa3,    ,  4, 0,  -1,all,   0x300	//BD_ROKISWEIL#ロキの叫び
-312,0xa4,    ,  4, 0,  -1,party, 0x300	//BD_INTOABYSS#深淵の中に
-313,0xa5,    ,  4, 0,  -1,party, 0x300	//BD_SIEGFRIED#不死身のジークフリード
-317,0xa6,    ,  3, 0,3000,enemy, 0x100	//BA_DISSONANCE#不協和音
-319,0xa7,    ,  3, 0,  -1,all,   0x120	//BA_WHISTLE#口笛
-320,0xa8,    ,  3, 0,  -1,all,   0x120	//BA_ASSASSINCROSS#夕陽のアサシンクロス
-321,0xa9,    ,  3, 0,  -1,all,   0x120	//BA_POEMBRAGI#ブラギの詩
-322,0xaa,    ,  3, 0,6000,all,   0x920	//BA_APPLEIDUN#イドゥンの林檎
-325,0xab,    ,  3, 0,3000,enemy, 0x100	//DC_UGLYDANCE#自分勝手なダンス
-327,0xac,    ,  3, 0,  -1,all,   0x120	//DC_HUMMING#ハミング
-328,0xad,    ,  3, 0,  -1,enemy, 0x100	//DC_DONTFORGETME#私を忘れないで…
-329,0xae,    ,  3, 0,  -1,all,   0x120	//DC_FORTUNEKISS#幸運のキス
-330,0xaf,    ,  3, 0,  -1,party, 0x100	//DC_SERVICEFORYOU#サービスフォーユー
-336,0xb2,    ,  0,-1,  -1,noone, 0x000	//WE_CALLPARTNER#あなたに逢いたい
-339,0x86,    , -1, 0, 400,enemy, 0x000	//NPC_DARKGRANDCROSS#闇グランドクロス
-362,0xb4,    ,  0, 3,  -1,all,   0x000	//HP_BASILICA#バジリカ
-395,0xb5,    ,  4, 0,  -1,all,   0x300	//CG_MOONLIT#月明りの下で#
-369,0xb3,    , -1, 0,10000,all,  0x000	//PA_GOSPEL#ゴスペル
-404,0xb6,    , -1, 0,  -1,all,   0x000	//PF_FOGWALL#フォグウォール
-405,0xb7,    ,  0, 1,1000,enemy, 0x000	//PF_SPIDERWEB#スパイダーウェッブ
-484,0xb8,    ,  2, 0,1000,enemy, 0x008	//HW_GRAVITATION
+ 12,0x7e,    ,  0, 0,  -1,all,   0x002	//MG_SAFETYWALL#Safety Wall#
+ 18,0x7f,    , -1, 0,   1,enemy, 0x008	//MG_FIREWALL#Fire Wall#
+ 21,0x86,    ,  0, 2,1000,enemy, 0x008	//MG_THUNDERSTORM#Thunderstorm#
+ 25,0x85,    ,  1, 0,  -1,all,   0x002	//AL_PNEUMA#Pneuma#
+ 27,0x81,0x80,  0, 0,  -1,all,   0x006	//AL_WARP#Warp Portal#
+ 70,0x83,    , -1, 1,1000,all,   0x008	//PR_SANCTUARY#Sanctuary#
+ 79,0x84,    , -1, 1,3000,enemy, 0x008	//PR_MAGNUS#Magnus Exorcismus#
+ 80,0x87,0x88,  0, 1,2000,enemy, 0x006	//WZ_FIREPILLAR#Fire Pillar#
+ 83,0x86,    ,  0, 3,1000,enemy, 0x000	//WZ_METEOR#Meteor Storm#
+ 85,0x86,    ,  0, 6,1250,enemy, 0x008	//WZ_VERMILION#Lord of Vermilion#
+ 87,0x8d,    , -1, 0,  -1,all,   0x000	//WZ_ICEWALL#Ice Wall#
+ 88,0x86,    ,  0, 2,1000,enemy, 0x000	//WZ_FROSTNOVA#Frost Nova#
+ 89,0x86,    ,  0, 5, 450,enemy, 0x008	//WZ_STORMGUST#Storm Gust#
+ 91,0x86,    ,  0, 2,1000,enemy, 0x080	//WZ_HEAVENDRIVE#Heaven's Drive#
+ 92,0x8e,    ,  2, 0,  -1,enemy, 0x000	//WZ_QUAGMIRE#Quagmire#
+115,0x90,    ,  0, 1,1000,enemy, 0x006	//HT_SKIDTRAP#Skid Trap#
+116,0x93,    ,  0, 1,1000,enemy, 0x006	//HT_LANDMINE#Land Mine#
+117,0x91,    ,  0, 1,1000,enemy, 0x006	//HT_ANKLESNARE#Ankle Snare#
+118,0x94,    ,  0, 1,1000,enemy, 0x006	//HT_SHOCKWAVE#Shockwave Trap#
+119,0x95,    ,  0, 2,1000,enemy, 0x006	//HT_SANDMAN#Sandman#
+120,0x96,    ,  0, 1,1000,enemy, 0x006	//HT_FLASHER#Flasher#
+121,0x97,    ,  0, 1,1000,enemy, 0x006	//HT_FREEZINGTRAP#Freezing Trap#
+122,0x8f,    ,  0, 1,1000,enemy, 0x006	//HT_BLASTMINE#Blast Mine#
+123,0x98,    ,  0, 2,1000,enemy, 0x006	//HT_CLAYMORETRAP#Claymore Trap#
+125,0x99,    ,  0, 1,1000,all,   0x002	//HT_TALKIEBOX#Talkie Box#
+140,0x92,    , -1, 0,1000,enemy, 0x000	//AS_VENOMDUST#Venom Dust#
+220,0xb0,    ,  0, 0,  -1,all,   0x002	//RG_GRAFFITI#Scribble#
+229,0xb1,    ,  0, 1,1000,enemy, 0x006	//AM_DEMONSTRATION#Bomb#
+254,0x86,    , -1, 0, 400,enemy, 0x000	//CR_GRANDCROSS#Grandcross#
+285,0x9a,    ,  3, 0,  -1,all,   0x000	//SA_VOLCANO#Volcano#
+286,0x9b,    ,  3, 0,  -1,all,   0x000	//SA_DELUGE#Deluge#
+287,0x9c,    ,  3, 0,  -1,all,   0x000	//SA_VIOLENTGALE#Whirlwind#
+288,0x9d,,3:3:4:4:5,0, -1,all,   0x000	//SA_LANDPROTECTOR#Magnetic Earth#
+306,0x9e,    ,  4, 0,6000,all,   0x300	//BD_LULLABY#Lullaby#
+307,0x9f,    ,  4, 0,  -1,party, 0x300	//BD_RICHMANKIM#Mental Sensing#
+308,0xa0,    ,  4, 0,  -1,all, 0x300	//BD_ETERNALCHAOS#Down Tempo#
+309,0xa1,    ,  4, 0,  -1,party, 0x300	//BD_DRUMBATTLEFIELD#Battle Theme#
+310,0xa2,    ,  4, 0,  -1,party, 0x300	//BD_RINGNIBELUNGEN#Harmonic Luck#
+311,0xa3,    ,  4, 0,  -1,all,   0x300	//BD_ROKISWEIL#Classical Puck#
+312,0xa4,    ,  4, 0,  -1,party, 0x300	//BD_INTOABYSS#Power Chord#
+313,0xa5,    ,  4, 0,  -1,party, 0x300	//BD_SIEGFRIED#Acoustic Rhythm#
+317,0xa6,    ,  3, 0,3000,enemy, 0x100	//BA_DISSONANCE#Unchained Serenade#
+319,0xa7,    ,  3, 0,  -1,all,   0x120	//BA_WHISTLE#Perfect Tablature#
+320,0xa8,    ,  3, 0,  -1,all,   0x120	//BA_ASSASSINCROSS#Impressive Riff#
+321,0xa9,    ,  3, 0,  -1,all,   0x120	//BA_POEMBRAGI#Magical Strings#
+322,0xaa,    ,  3, 0,6000,all,   0x920	//BA_APPLEIDUN#Song of Lutie#
+325,0xab,    ,  3, 0,3000,enemy, 0x100	//DC_UGLYDANCE#Hip Shaker#
+327,0xac,    ,  3, 0,  -1,all,   0x120	//DC_HUMMING#Focus Ballet#
+328,0xad,    ,  3, 0,  -1,enemy, 0x100	//DC_DONTFORGETME#Slow Grace#
+329,0xae,    ,  3, 0,  -1,all,   0x120	//DC_FORTUNEKISS#Lady Luck#
+330,0xaf,    ,  3, 0,  -1,party, 0x100	//DC_SERVICEFORYOU#Gypsy's Kiss#
+336,0xb2,    ,  0,-1,  -1,noone, 0x000	//WE_CALLPARTNER#Call Partner#
+339,0x86,    , -1, 0, 400,enemy, 0x000	//NPC_DARKGRANDCROSS#Dark Grandcross#
+362,0xb4,    ,  0, 3,  -1,all,   0x000	//HP_BASILICA#Basilica#
+395,0xb5,    ,  4, 0,  -1,all,   0x300	//CG_MOONLIT#Sheltering Bliss#
+369,0xb3,    , -1, 0,10000,all,  0x000	//PA_GOSPEL#Battle Chant#
+404,0xb6,    , -1, 0,  -1,all,   0x000	//PF_FOGWALL#Blinding Mist#
+405,0xb7,    ,  0, 1,1000,enemy, 0x000	//PF_SPIDERWEB#Fiber Lock#
+484,0xb8,    ,  2, 0,1000,enemy, 0x008	//HW_GRAVITATION#Gravitation Field#
 488,0xb9,    ,  3, 0,  -1,all,   0x000	//CG_HERMODE#Wand of Hermod#

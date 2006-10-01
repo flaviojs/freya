@@ -1,4 +1,4 @@
-// mob_poring.txt, Poring Box Summon Database
+// mob_poringbox.txt, Poring Box Summon Database
 //
 // Structure of Database:
 // <MobID>,<DummyName>,<Rate>

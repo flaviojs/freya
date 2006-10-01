@@ -1,4 +1,4 @@
-// mob_branch.txt‚ Bloody Branch MvP Summon List
+// mob_bloodybranch.txt‚ Bloody Branch MvP Summon List
 // MobID, MobName(Dummy), Rate
 //
 // Rate Formula

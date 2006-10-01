@@ -1,0 +1,80 @@
+//===== Freya Script =========================================
+//= Kunlun/Gonryun Guide NPCs
+//===== By: ==================================================
+//= jAthena
+//===== Current Version: =====================================
+//= 0.5
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
+//= jAthena Japanese (Not.. translated) Guide NPCs, need
+//= someone to translate them! Ayothaya + Louyang guides also
+//= need to be translated.
+//===== Additional Comments: =================================
+//= Fully working
+//= 0.5 Added first, Japanese version [Tsuyuki]
+//============================================================
+
+
+//----------------------------------------------------------------------
+//[ˆÄ“à—vˆõ - ƒRƒ“ƒƒ“]
+
+gonryun.gat,163,60,4	script	ƒRƒ“ƒƒ“ƒKƒCƒh	780,{
+
+	mes "[ƒn ƒEƒHƒ“ƒ`]";
+	mes "‚¢‚Â‚àŠˆ‹C‚É–‚¿‚ÄA”M‹C‚ª‚ ‚Ó‚ê";
+	mes "–ˆ“úlX‚ªs‚«Œğ‚Á‚Ä‚¢‚é";
+	mes "ƒRƒ“ƒƒ“‚É‚¢‚ç‚Á‚µ‚á‚¢‚Ü‚¹!";
+	next;
+	mes "[ƒn ƒEƒHƒ“ƒ`]";
+	mes "¤”„‚ª‚çA‘º‚ÌˆÄ“à‚ğ‚µ‚Ä";
+	mes "‚¢‚Ü‚·B’m‚è‚½‚¢‚±‚Æ‚ª‚ ‚ê‚Î";
+	mes "‰½‚Å‚à•·‚¢‚Ä‚­‚¾‚³‚¢B";
+	next;
+	menu "‘º’·‚Ì‰Æ",GonCase1,"“¹‹ï¤l",GonCase2,"•Ší¤l",GonCase3,"–h‹ï¤l",GonCase4,"—·ŠÙ",GonCase5;
+
+	GonCase1:
+		viewpoint 1,109,131,0,0xff3355;
+		mes "[ƒn ƒEƒHƒ“ƒ`]";
+		mes "ƒ~ƒjƒ}ƒbƒv‚Ì";
+		mes "^ff3355+^000000‚ÌˆÊ’u‚É";
+		mes "‘º’·‚Ì‰Æ‚ª‚ ‚è‚Ü‚·B";
+		goto GonEnd;
+
+	GonCase2:
+		viewpoint 1,147,84,1,0xce6300;
+		mes "[ƒn ƒEƒHƒ“ƒ`]";
+		mes "ƒ~ƒjƒ}ƒbƒv‚Ì";
+		mes "^ce6300+^000000‚ÌˆÊ’u‚É";
+		mes "“¹‹ï¤l‚ª‚¢‚Ü‚·B";
+		goto GonEnd;
+
+	GonCase3:
+		viewpoint 1,174,101,2,0x55ff33;
+		mes "[ƒn ƒEƒHƒ“ƒ`]";
+		mes "ƒ~ƒjƒ}ƒbƒv‚Ì";
+		mes "^55ff33+^000000‚ÌˆÊ’u‚É";
+		mes "•Ší¤l‚ª‚¢‚Ü‚·B";
+		goto GonEnd;
+
+	GonCase4:
+		viewpoint 1,173,84,3,0x3355ff;
+		mes "[ƒn ƒEƒHƒ“ƒ`]";
+		mes "ƒ~ƒjƒ}ƒbƒv‚Ì";
+		mes "^3355ff+^000000‚ÌˆÊ’u‚É";
+		mes "–h‹ï¤l‚ª‚¢‚Ü‚·B";
+		goto GonEnd;
+
+	GonCase5:
+		viewpoint 1,215,114,4,0xffffff;
+		mes "[ƒn ƒEƒHƒ“ƒ`]";
+		mes "ƒ~ƒjƒ}ƒbƒv‚Ì";
+		mes "^ffffff+^000000‚ÌˆÊ’u‚É";
+		mes "—·ŠÙ‚ª‚ ‚è‚Ü‚·B";
+		goto GonEnd;
+
+GonEnd:
+	mes "„’B‚ÌŠy‚µ‚¢ƒRƒ“ƒƒ“‚ğ";
+	mes "v‚¢‚Á‚«‚èŠy‚µ‚ñ‚Å‚­‚¾‚³‚¢I";
+	close;
+}

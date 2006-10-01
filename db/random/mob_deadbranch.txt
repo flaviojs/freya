@@ -1,4 +1,4 @@
-// mob_branch.txt‚ Dead Branch Summon List
+// mob_deadbranch.txt‚ Dead Branch Summon List
 // MobID, MobName(Dummy), Rate
 //
 // Rate Formula

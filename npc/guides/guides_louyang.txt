@@ -1,0 +1,122 @@
+//===== Freya Script =========================================
+//= Louyang Guide NPCs
+//===== By: ==================================================
+//= jAthena
+//===== Current Version: =====================================
+//= 0.5
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
+//= jAthena Japanese (Not.. translated) Guide NPCs, need
+//= someone to translate them! Ayothaya + Kunlun guides also
+//= need to be translated.
+//===== Additional Comments: =================================
+//= Fully working
+//= 0.5 Added first, Japanese version [Tsuyuki]
+//============================================================
+
+//----------------------------------------------------------------------
+//[ˆÄ“à—vˆõ - —´”Vé]
+
+louyang.gat,224,104,4	script	L•ñ‘åg#Lou	818,{
+
+	mes "[L•ñ‘åg]";
+	mes "—´”Vé‚Ö‚æ‚¤‚±‚»B";
+	mes "‚±‚Ì“xA—´”Vé‚ÍŠO‘‚Æ‚ÌÏ‹É“I‚È";
+	mes "Œğ—¬‚Ì‚½‚ßAV‚½‚Éq˜H‚ğŠJ‘ñ‚¢‚½‚µ";
+	mes "‚Ü‚µ‚½B‚»‚Ì‚¨‚©‚°‚Å‘½‚­‚Ì‘‚Ì•ûX‚ª";
+	mes "ˆÀS‚µ‚Ä–K‚ê‚é‚±‚Æ‚ªo—ˆ‚é‚æ‚¤‚É";
+	mes "‚È‚Á‚½‚Ì‚Å‚·B";
+	next;
+	mes "[L•ñ‘åg]";
+	mes "—´”Vé‚Í’·‚¢—ğj‚Æ‹¤‚Éİ‚è‚Ü‚·B";
+	mes "‚Å‚·‚Ì‚ÅAŒ©‚Ä‰ñ‚ê‚éêŠ‚à‚½‚­‚³‚ñ";
+	mes "ŒäÀ‚¢‚Ü‚·B";
+	mes "‚í‚©‚ç‚È‚¢–‚ª‚ ‚è‚Ü‚µ‚½‚ç";
+	mes "‚²ˆÄ“à‚¢‚½‚µ‚Ü‚µ‚å‚¤B";
+	next;
+	menu "‘º‚ÌˆÄ“à‚ğ‚¨Šè‚¢‚·‚é",LouCase1A,"ƒ~ƒjƒ}ƒbƒv‚Ì•\¦‚ğÁ‚·",LouCase2A,"‚â‚ß‚é",LouCase3A;
+
+	LouCase1A:
+		mes "[L•ñ‘åg]";
+		mes "‚Ç‚±‚ğˆÄ“à‚¢‚½‚µ‚Ü‚µ‚å‚¤H";
+		next;
+		menu "é",LouCase1B,"•a‰@",LouCase2B,"Š¯’¡",LouCase3B,"•Ší“X",LouCase4B,"“¹‹ï“X",LouCase5B,"ğê",LouCase6B,"‚â‚ß‚é",LouCase7B;
+
+			LouCase1B:
+				mes "[L•ñ‘åg]";
+				mes "é‚Í^ff0000+^000000‚É‚ ‚è‚Ü‚·B";
+				mes "é‚É‚Íéå—l‚ğŠÜ‚ßAg•ª‚Ì‚‚¢•ûX‚ª";
+				mes "‚¨‚ç‚ê‚Ü‚·Bˆê“xAéå—l‚Ö‚²ˆ¥A‚É";
+				mes "f‚í‚ê‚é‚Ì‚àA‚æ‚ë‚µ‚¢‚Ì‚Å‚Í‚È‚¢‚Å";
+				mes "‚µ‚å‚¤‚©B";
+				viewpoint 1,218,255,1,0xff0000;
+				close;
+			LouCase2B:
+				mes "[L•ñ‘åg]";
+				mes "—´”Vé‚É‚Í—L–¼‚È•a‰@‚ª";
+				mes "^8a0000+^000000‚É‚²‚´‚¢‚Ü‚·B";
+				mes "‰\‚É‚æ‚é‚ÆA”Ş“™‚É¡‚¹‚È‚¢•a‹C‚Í‚È‚¢";
+				mes "‚ÆŒ¾‚¤‚±‚Æ‚Å‚·‚ªA‚»‚ê‚ª^À‚È‚Ì‚©";
+				mes "‚Ç‚¤‚©‚Í‚í‚©‚è‚Ü‚¹‚ñB";
+				viewpoint 1,263,93,2,0x8a0000;
+				close;
+			LouCase3B:
+				mes "[L•ñ‘åg]";
+				mes "—´”Vé‚É‚ÍŠ¯’¡‚ª‚²‚´‚¢‚Ü‚·B";
+				mes "^777777+^000000‚ªŠ¯’¡‚ÌêŠ‚Æ‚È‚è‚Ü‚·B";
+				mes "‰½‚©–â‘è‚ª”­¶‚µ‚½ê‡‚Í";
+				mes "Š¯’¡‚ğ‚¨q‚Ë‰º‚³‚¢B";
+				viewpoint 1,309,80,3,0x00ff00;
+				close;
+			LouCase4B:
+				mes "[L•ñ‘åg]";
+				mes "•Ší“X‚Í ^00ff00+^000000‚É‚ ‚è‚Ü‚·B";
+				mes "˜r©–‚ÌEl‚É‚æ‚é—§”h‚È•Ší‚ª";
+				mes "•À‚ñ‚Å‚¨‚è‚Ü‚·B";
+				viewpoint 1,145,174,4,0x00ff00;
+				close;
+			LouCase5B:
+				mes "[L•ñ‘åg]";
+				mes "“¹‹ï“X‚Í ^0000ff+^000000‚É‚ ‚è‚Ü‚·B";
+				mes "€”õ‚ğ‘Ó‚ç‚È‚¯‚ê‚Î•Sí•SŸI";
+				viewpoint 1,136,97,5,0x0000ff;
+				close;
+			LouCase6B:
+				mes "[L•ñ‘åg]";
+				mes "”æ‚ê‚½‚Íğê‚É—§‚¿Šñ‚Á‚Ä‚İ‚Ä‚Í";
+				mes "‚¢‚©‚ª‚Å‚µ‚å‚¤B";
+				mes "ğê‚Í ^00ff00+^000000‚É‚ ‚è‚Ü‚·B";
+				mes "‘¼‚É‚à‘å¨‚Ì—·s‹q‚ª‚¢‚ç‚µ‚Ä";
+				mes "‚ç‚Á‚µ‚á‚é‚æ‚¤‚Å‚·‚æB";
+				viewpoint 1,280,167,6,0x00ff00;
+				close;
+			LouCase7B:
+				mes "[L•ñ‘åg]";
+				mes "ˆÊ’u•\¦‚ğÁ‚µ‚½‚¯‚ê‚Î";
+				mes "wƒ~ƒjƒ}ƒbƒv‚Ì•\¦‚ğÁ‚·x‚ğ";
+				mes "‘I‘ğ‚µ‚Ä‚­‚¾‚³‚¢B";
+				close;
+
+	LouCase2A:
+		mes "[L•ñ‘åg]";
+		mes "ƒ~ƒjƒ}ƒbƒv‚Ì•\¦‚ğ‘S‚ÄÁ‚µ‚Ü‚µ‚½B";
+		mes "‚Ü‚½‰½‚©•\¦‚µ‚½‚¯‚ê‚Î";
+		mes "‚¢‚Â‚Å‚à‚²ˆÄ“à‚¢‚½‚µ‚Ü‚·B";
+		viewpoint 2,218,255,1,0xff0000;
+		viewpoint 2,263,93,2,0x8a0000;
+		viewpoint 2,309,80,3,0x00ff00;
+		viewpoint 2,145,174,4,0x00ff00;
+		viewpoint 2,136,97,5,0x0000ff;
+		viewpoint 2,280,167,6,0x00ff00;
+		close;
+
+	LouCase3A:
+		mes "[L•ñ‘åg]";
+		mes "‚²©•ª‚Å•à‚«‰ñ‚é‚Ì‚à—Ç‚¢‚Å‚·‚ËB";
+		mes "‚Å‚ÍAŒä‹@Œ™‚æ‚¤B";
+		close;
+}
+
+louyang.gat,160,175,4	duplicate(L•ñ‘åg#Lou)	•ºm	825
+louyang.gat,213,213,4	duplicate(L•ñ‘åg#Lou)	•ºm	825

@@ -1,4 +1,4 @@
-// item_violetbox.txt, Old Purple Box Database
+// item_purplebox.txt, Old Purple Box Database
 //
 // <Item_ID>,<Description (Dummy)>,<Rate>
 //

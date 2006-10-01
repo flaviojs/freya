@@ -26,9 +26,9 @@
 
 static struct dbt* item_db;
 
-static struct random_item_data blue_box[MAX_RANDITEM], violet_box[MAX_RANDITEM], card_album[MAX_RANDITEM], gift_box[MAX_RANDITEM], scroll[MAX_RANDITEM];
-static int blue_box_count=0,violet_box_count=0,card_album_count=0,gift_box_count=0,scroll_count=0;
-static int blue_box_default=0,violet_box_default=0,card_album_default=0,gift_box_default=0,scroll_default=0;
+static struct random_item_data blue_box[MAX_RANDITEM], violet_box[MAX_RANDITEM], card_album[MAX_RANDITEM], gift_box[MAX_RANDITEM], cookie[MAX_RANDITEM];
+static int blue_box_count=0,violet_box_count=0,card_album_count=0,gift_box_count=0,cookie_count=0;
+static int blue_box_default=0,violet_box_default=0,card_album_default=0,gift_box_default=0,cookie_default=0;
 static struct item_group itemgroup_db[MAX_ITEMGROUP];
 
 // Function declarations
@@ -120,7 +120,7 @@ int itemdb_searchrandomid(int flags)
 	data[2].nameid = violet_box_default;  data[2].count = violet_box_count;  data[2].list = violet_box;
 	data[3].nameid = card_album_default;  data[3].count = card_album_count;  data[3].list = card_album;
 	data[4].nameid = gift_box_default;    data[4].count = gift_box_count;    data[4].list = gift_box;
-	data[5].nameid = scroll_default;      data[5].count = scroll_count;      data[5].list = scroll;
+	data[5].nameid = cookie_default;      data[5].count = cookie_count;      data[5].list = cookie;
 //	data[6].nameid = finding_ore_default; data[6].count = finding_ore_count; data[6].list = finding_ore;
 
 	if (flags >= 1 && flags <= 5) {
@@ -637,11 +637,11 @@ static int itemdb_read_randomitem()
 		struct random_item_data *pdata;
 		int *pcount,*pdefault;
 	} data[] = {
-		{"db/item_bluebox.txt",   blue_box,   &blue_box_count,   &blue_box_default },
-		{"db/item_violetbox.txt", violet_box, &violet_box_count, &violet_box_default },
-		{"db/item_cardalbum.txt", card_album, &card_album_count, &card_album_default },
-		{"db/item_giftbox.txt",   gift_box,   &gift_box_count,   &gift_box_default },
-		{"db/item_scroll.txt",    scroll,     &scroll_count,     &scroll_default },
+		{"db/random/item_bluebox.txt",   blue_box,   &blue_box_count,   &blue_box_default },
+		{"db/random/item_purplebox.txt", violet_box, &violet_box_count, &violet_box_default },
+		{"db/random/item_cardalbum.txt", card_album, &card_album_count, &card_album_default },
+		{"db/random/item_giftbox.txt",   gift_box,   &gift_box_count,   &gift_box_default },
+		{"db/random/item_cookiebag.txt", cookie,     &cookie_count,     &cookie_default },
 	};
 
 	for(i = 0; i < sizeof(data) / sizeof(data[0]); i++) {

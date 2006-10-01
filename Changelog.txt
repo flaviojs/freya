@@ -5,7 +5,69 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 09/30/06
+	* Changed: Arranged Ninja/Gunslinger items in a temp area until the classes are actually in [Tsuyuki]
+	* Added: Implemented Cookie Bag and its proper items from Aegis X.3 (Credits to eAthena) [Tsuyuki]
+	* Changed: Renamed item_violetbox.txt > item_purplebox.txt [Tsuyuki]
+	* Moved: All item givers, along with monster summoning items to db/random for organizational purposes [Tsuyuki]
+	* Removed: db/item_scroll.txt Worn Out Scroll Database [Tsuyuki]
+	* Added: Gunslinger & Ninja Weapons & Ammunition [Tsuyuki]
+	* Added: Some other missing new weapons [Tsuyuki]
+	* Fixed: Arc Angeling Card incorrectly requiring 78 LUK or higher for its effect (should be 77 LUK) [Tsuyuki]
+	* Fixed: Luna Bow missing 2 slots [Tsuyuki]
+	* Updated: Massive update to the mob_skill_db.txt, almost everything overwritten excluding Arunafeltz [Tsuyuki]
+	 - This should solve the MvPs behaving strangely. Credits to eAthena for the database
+	 - Based on the Aegis Ep 10.2 NPCAddSkillInfo.sc file, so we'll be quite accurate now
+	 - Also had to comment skills with these functions: 
+	 - Angry, Rudeattacked, Alchemist, Masterattacked, Master, Onspawn, Hiding, Follow
+	* Fixed: Double Attacks element (take weapon's element now) [Tsuyuki]
+	* Fixed: Item 'The Sign' bonuses [Tsuyuki]
+	* Fixed: Kaho's walkspeed (200 > 175) [Tsuyuki]
+	* Fixed: Mirror Shield's Defense (4 > 5) [Tsuyuki]
+	* Fixed: Envenom's Range (2 > 3) [Tsuyuki]
+	* Fixed: Gravitation Field's Range (9 > 8) [Tsuyuki]
+	* Fixed: Guild exp from Tribal Solidarity [Tsuyuki]
+	* Fixed: Asura Strike Range (2 > 3) [Tsuyuki]
 	* Updated: npc/kafra/kafras_alde.txt [from nezumi, Lupus' work]
+	* Updated: Fully translated/fixed up all database files except db/skill_tree.txt [Tsuyuki]
+
+09/29/06
+	* Updated: Translated the skill_cast_db.txt 100% [Tsuyuki]
+	* Fixed: Cleaned up the abra_db.txt [Tsuyuki]
+	* Imported: Updated Kiel warps from eAthena [Tsuyuki]
+	* Fixed: Rafflesia's range (1 > 7) [Tsuyuki]
+	* Updated: Arrow Repel skill database entry [Tsuyuki]
+	* Updated: Translated the skill_db.txt 100% [Tsuyuki]
+	* Fixed: size_fix.txt database entry descriptions [Tsuyuki]
+
+09/28/06
+	* Fixed: Broken labels in Firecracker NPC (Hugel) [Tsuyuki]
+	* Added: MvP Exp for Detardeurus [Tsuyuki]
+	* Added: A few missing skills to skill_castnodex_db.txt [Tsuyuki]
+	* Fixed: Item Sabbath's effects [Tsuyuki]
+	* Fixed: Dark Priest Card bSPVanishRate [Tsuyuki]
+	* Fixed: Weight of Serin's Gold Ring to 0 [Tsuyuki]
+	* Fixed: Enchanted Peach Tree should be able to move (speed 400) [Tsuyuki]
+	* Fixed: Clock's ATK range (1 > 2) [Tsuyuki]
+	* Fixed: 'Stave Crasher'? (forgot name) skill's element is now weapon's element instead of neutral [Tsuyuki]
+	* Fixed: Stormy Knight Card now freezes when attacking, not by being hit [Tsuyuki]
+	* Fixed: Hatii Claw's ATK power (115 > 152) [Tsuyuki]
+	* Fixed: Detardeurus only summons 1 Hydrolancer [Tsuyuki]
+	 - Note: I think Hydrolancer is supposed to summon its own slaves as well?
+	 - However, when I tested, it didn't work (the summon skills were in for the G_Hydrolancer at the time)
+	* Fixed: Incantation Samurai's Move Speed (200 > 135) [Tsuyuki]
+	* Fixed: Note Headphones have 3 Mdef [Tsuyuki]
+	* Added: 'Awaken' effect to Awakening Potion [Tsuyuki]
+	* Added: Correct prices for a few older items [Tsuyuki]
+	* Updated: Unholy Touch's ATK power (95 > 151) [Tsuyuki]
+	* Fixed: Immaterial Sword effect rate [Tsuyuki]
+	* Fixed: Valkyrie Randgris resummon slave requirements [Tsuyuki]
+	* Fixed: Priest not being able to equip Assassin's Mask, as per kRO [Tsuyuki]
+	* Fixed: The effects of the three main Valkyrie items [Tsuyuki]
+
+09/27/06
+	* Added: Official drops for Ep 10.3 monsters [Tsuyuki]
+	* Imported: Converted and added Ayothaya, Louyang, and Kunlun Guide scripts from jAthena [Tsuyuki]
+	 - Note: They're currently in Japanese.. aha, anybody want to translate?
 
 09/26/06
 	* Added: npc/server/Sapho/other/dye.txt [Sapho Team]
@@ -5453,5 +5515,4 @@ CODE
 	* Added rules of the team [Yor]
 
 FREYA BEGIN HERE, based on eAthena 1.0 RC4
-
 
