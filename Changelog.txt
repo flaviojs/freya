@@ -4,7 +4,15 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/01/06
+	* Recommitted: Some lost commits from Proximus in Perforce: [Tsuyuki]
+		* Removed: 'Surrender' optin from Kafra guild manager, as it was 100% custom [Proximus]
+		- Not present in the leaked aegis npc scripts. eAthena removed it as well, a while ago.
+		- The only way to surrender a castle would be to break the guild.
+	* Recommitted: Also readded Proximus' adoption skill database changes [Tsuyuki]
+
 09/31/06
+	* Fixed: New Coppola Headgear View ID [Tsuyuki]
 	* Added: npc/server/Sapho/jobs/1-1/swordman.txt [Sapho Team]
 	* Fixed: Some major bugs with monsters that summon multiple, different slaves [Tsuyuki]
 	 - Note: Someone update Trunk IMMEDIATELY please~

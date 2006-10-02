@@ -1802,7 +1802,7 @@
 5197,White_Ribbon,White Ribbon,5,,10,100,,1,,0,27254783,2,256,,1,248,{ bonus bMdef,3; },{}
 5198,Drooping_Bunny,Drooping Bunny,5,,10,100,,1,,0,27254783,2,256,,1,249,{ bonus bDex,1; bonus bFlee,2;},{}
 5199,Baseball_Cap_,Baseball Cap,5,,10,200,,3,,0,27254783,2,256,,1,250,{},{}
-5200,Coppola,Coppola,5,,10,300,,0,,0,27254783,2,256,,1,251,{},{}
+5200,Coppola,Coppola,5,,10,300,,0,,0,27254783,2,256,,1,252,{},{}
 
 // Misc/Collection Items
 7001,Mold_Powder,Mold Powder,3,680,0,10,,,,,,,,,,,{},{}
