@@ -1,0 +1,370 @@
+//===== freya Script =========================================
+//= Spawn Survivor de Sapho
+//===== By: ==================================================
+//= Garion, GAlion, DaVinci, Jondalar, Kheldar
+//===== Current Version: =====================================
+//= 0.1
+//===== Compatible With: =====================================
+//= Espérons, Nezumi, JAthena, et EAthena
+//===== Description: =========================================
+//=
+//===== Additional Comments: =================================
+//=Mettre les warp et les bonnes coordonnées pour les NPC.
+//============================================================
+
+prontera.gat,178,148,4	warp	warpspawn	2,3,guild_vs4.gat,49,49
+guild_vs4.gat,36,49	warp	warprep	2,3,prontera.gat,165,151
+
+
+guild_vs4.gat,51,49,1	script	Surviv	-1,{
+	//mapannounce "guild_vs4.gat","timer: "+ getnpctimer(0)+"     "+getnpctimer(1)+"     "+ getnpctimer(2),0;
+	//close;
+OnStart:
+	initnpctimer;
+	set $@spawn1,1002;
+	set $@spawn2,1063;
+	set $@spawn3,1011;
+	set $@spawn4,1008;
+	set $@spawn5,1031;
+	set $@spawn6,1015;
+	set $@spawn7,1056;
+	set $@spawn8,1068;
+	set $@spawn9,1077;
+	set $@spawn10,1105;
+	set $@spawn11,1178;
+	set $@spawn12,1030;
+	set $@spawn13,1145;
+	set $@spawn14,1100;
+	set $@spawn15,1392;
+	set $@spawn16,1060;
+	set $@spawn17,1067;
+	set $@spawn18,1064;
+	set $@spawn19,1106;
+	set $@spawn20,1258;
+	set $@spawn21,1119;
+	set $@spawn22,1141;
+	set $@spawn23,1127;
+	set $@spawn24,1146;
+	set $@spawn25,1282;
+	set $@spawn26,1110;
+	set $@spawn27,1248;
+	set $@spawn28,1026;
+	set $@spawn29,1471;
+	set $@spawn30,1261;
+	set $@spawn31,1016;
+	set $@spawn32,1400;
+	set $@spawn33,1138;
+	set $@spawn34,1165;
+	set $@spawn35,1249;
+	set $@spawn36,1403;
+	set $@spawn37,1040;
+	set $@spawn38,1680;
+	set $@spawn39,1099;
+	set $@spawn40,1209;
+	set $@spawn41,1029;
+	set $@spawn42,1144;
+	set $@spawn43,1274;
+	set $@spawn44,1102;
+	set $@spawn45,1715;
+	set $@spawn46,1170;
+	set $@spawn47,1156;
+	set $@spawn48,1215;
+	set $@spawn49,1213;
+	set $@spawn50,1271;
+	mapannounce "guild_vs4.gat","Garde Royal: Le Spawn Survivor commence, survivez !",0; //Première slave.
+	mapannounce "guild_vs4.gat","Garde Royal: 30 secondes entre chaque spawn",0;
+	mapannounce "guild_vs4.gat","Invasion de '"+ strmobinfo(2,$@spawn1)+"'." ,0;
+	areamonster "guild_vs4.gat",0,0,200,200,"Survivor",$@spawn1,100; //neutre
+	set $@nb_part,getmapusers("guild_vs4.gat");
+	announce "Il y a " + $@nb_part + " participant(s). Bonne chance!",0;
+	close;
+
+OnTimer30000:
+	callfunc "f_monstres" , $@spawn2;
+	close;
+
+OnTimer60000:
+	callfunc "f_monstres" , $@spawn3;
+	close;
+
+OnTimer90000:
+	callfunc "f_monstres" , $@spawn4;
+	close;
+
+OnTimer120000:
+	callfunc "f_monstres" , $@spawn5;
+	mapannounce "guild_vs4.gat","Garde Royal: 60 secondes entre chaque spawn.",0;
+	close;
+
+OnTimer180000:
+	callfunc "f_monstres" , $@spawn6;
+	mapannounce "guild_vs4.gat","Garde Royal: Bravo, aux survivants ! Plus dur maintenant",0;
+	close;
+
+OnTimer240000:
+	callfunc "f_monstres" , $@spawn7;
+	close;
+
+OnTimer300000:
+	callfunc "f_monstres" , $@spawn8;
+	close;
+
+OnTimer360000:
+	callfunc "f_monstres" , $@spawn9;
+	close;
+
+OnTimer420000:
+	callfunc "f_monstres" , $@spawn10;
+	close;
+
+OnTimer480000:
+	callfunc "f_monstres" , $@spawn11;
+	mapannounce "guild_vs4.gat","Garde Royal: Bravo, aux survivants ! Plus difficile maintenant.",0;
+	mapannounce "guild_vs4.gat","Garde Royal: une minute 30 entre chaque spawn.",0;
+	close;
+
+OnTimer570000:
+	callfunc "f_monstres" , $@spawn12;
+	close;
+
+OnTimer660000:
+	callfunc "f_monstres" , $@spawn13;
+	close;
+
+OnTimer750000:
+	callfunc "f_monstres" , $@spawn14;
+	close;
+
+OnTimer840000:
+	callfunc "f_monstres" , $@spawn15;
+	close;
+
+OnTimer930000:
+	callfunc "f_monstres" , $@spawn16;
+	mapannounce "guild_vs4.gat","Garde Royal: Bravo, aux survivants ! Plus dur maintenant",0;
+	mapannounce "guild_vs4.gat","Garde Royal: 2 minutes entre chaque spawn.",0;
+	close;
+
+OnTimer1050000:
+	callfunc "f_monstres" , $@spawn17;
+	close;
+
+OnTimer1170000:
+	callfunc "f_monstres" , $@spawn18;
+	close;
+
+OnTimer1290000:
+	callfunc "f_monstres" , $@spawn19;
+	close;
+
+OnTimer1410000:
+	callfunc "f_monstres" , $@spawn20;
+	close;
+
+OnTimer1530000:
+	callfunc "f_monstres" , $@spawn21;
+	mapannounce "guild_vs4.gat","Garde Royal: Bravo, aux survivants ! Plus dur maintenant",0;
+	mapannounce "guild_vs4.gat","Garde Royal: 2 minutes 30 entre chaque spawn.",0;
+	close;
+
+OnTimer1680000:
+	callfunc "f_monstres" , $@spawn22;
+	close;
+
+OnTimer1830000:
+	callfunc "f_monstres" , $@spawn23;
+	close;
+
+OnTimer1980000:
+	callfunc "f_monstres" , $@spawn24;
+	close;
+
+OnTimer2130000:
+	callfunc "f_monstres" , $@spawn25;
+	close;
+
+OnTimer2280000:
+	mapannounce "guild_vs4.gat","Garde Royal: Bravo, aux survivants ! Plus dur maintenant",0;
+	mapannounce "guild_vs4.gat","Garde Royal: 3 minutes entre chaque spawn.",0;
+	areamonster "guild_vs4.gat",0,0,200,200,"Survivor",$@spawn26,100,""; //tireur
+	mapannounce "guild_vs4.gat","Invasion de '"+ strmobinfo(2,$@spawn26)+"'." ,0;
+	close;
+
+OnTimer2460000:
+	callfunc "f_monstres" , $@spawn27;
+	close;
+
+OnTimer2640000:
+	callfunc "f_monstres" , $@spawn28;
+	close;
+
+OnTimer2820000:
+	callfunc "f_monstres" , $@spawn29;
+	close;
+
+OnTimer3000000:
+	callfunc "f_monstres" , $@spawn30;
+	close;
+
+OnTimer3180000:
+	callfunc "f_monstres" , $@spawn31;
+	mapannounce "guild_vs4.gat","Garde Royal: 3 minutes 30 entre chaque spawn.",0;
+	close;
+
+OnTimer3390000:
+	callfunc "f_monstres" , $@spawn32;
+	close;
+
+OnTimer3600000:
+	callfunc "f_monstres" , $@spawn33;
+	close;
+
+OnTimer3810000:
+	callfunc "f_monstres" , $@spawn34;
+	close;
+
+OnTimer4020000:
+	callfunc "f_monstres" , $@spawn35;
+	close;
+
+OnTimer4230000:
+	callfunc "f_monstres" , $@spawn36;
+	close;
+
+OnTimer4440000:
+	callfunc "f_monstres" , $@spawn37;
+	mapannounce "guild_vs4.gat","Garde Royal: Bravo, aux survivants ! Plus dur maintenant",0;
+		mapannounce "guild_vs4.gat","Garde Royal: 4 minutes entre chaque spawn.",0;
+	close;
+
+OnTimer4680000:
+	callfunc "f_monstres" , $@spawn38;
+	close;
+
+OnTimer4920000:
+	callfunc "f_monstres" , $@spawn39;
+	close;
+
+OnTimer5160000:
+	callfunc "f_monstres" , $@spawn40;
+	close;
+
+OnTimer5400000:
+	callfunc "f_monstres" , $@spawn41;
+	close;
+
+OnTimer5640000:
+	callfunc "f_monstres" , $@spawn42;
+	mapannounce "guild_vs4.gat","Garde Royal: Bravo, aux survivants ! Plus dur maintenant",0;
+	mapannounce "guild_vs4.gat","Garde Royal: 4 minutes 30 entre chaque spawn.",0;
+	close;
+
+OnTimer5910000:
+	callfunc "f_monstres" , $@spawn43;
+	close;
+
+OnTimer6180000:
+	callfunc "f_monstres" , $@spawn44;
+	close;
+
+OnTimer6450000:
+	callfunc "f_monstres" , $@spawn45;
+	close;
+
+OnTimer6720000:
+	callfunc "f_monstres" , $@spawn46;
+	close;
+
+OnTimer6990000:
+	callfunc "f_monstres" , $@spawn47;
+	mapannounce "guild_vs4.gat","Garde Royal: Bravo, aux survivants ! Plus dur maintenant",0;
+	mapannounce "guild_vs4.gat","Garde Royal: 5 minutes entre chaque spawn.",0;
+	close;
+
+OnTimer7290000:
+	callfunc "f_monstres" , $@spawn48;
+	close;
+
+OnTimer7590000:
+	callfunc "f_monstres" , $@spawn49;
+	mapannounce "guild_vs4.gat","Garde Royal: Avant dernier spawn, ensuite, nous vous laissons 10 minutes avant le dernier...",0;
+	close;
+
+OnTimer8190000:
+	callfunc "f_monstres" , $@spawn50;
+	mapannounce "guild_vs4.gat","Garde Royal: Attention, dernier spawn ! Serez-vous les Masters Survivors ?!",0;
+	close;
+
+}
+
+
+prontera.gat,174,154,3	script	Spawner	743,{
+
+	if (getgmlevel(0)>=20) menu "Menu spécial GM",L_GmMenu,"Menu Joueur",-;
+	mes "[Spawner]";
+	mes "Le Spawn ne peut être activé que par un GM ou";
+	mes "de manière automatisée le Samedi à 13h50.";
+	mes "Une fois activé, vous avez 10 minutes pour venir ici et joindre la partie.";
+	mes "Si vous arrivez en retard, le jeu se déroule sans vous.";
+	close;
+OnInit: 
+	disablenpc "warpspawn";
+	disablenpc "warpret";
+	end;
+OnSat1350:
+	Announce "Garde Royal: Le spawn Survivor est ouvert.",8;
+	goto L_creawarp;
+
+	
+L_GmMenu:
+	mes "[Spawner]";
+	mes "Voulez-vous activer le spawn survivor ?";
+	menu "Oui",-,"Non",close;
+	enablenpc "Surviv";
+	doevent "Surviv::OnStart";
+	Announce "Garde Royal: " +strcharinfo(0)+ " a activé le Spawn Survivor.",8;
+	close2; //le script continue
+L_creawarp:
+	Announce "Garde Royal: L'évent commence dans 10 minutes.",8;
+	killmonsterall "guild_vs4";
+	enablenpc "warpspawn";
+	enablenpc "warpret";
+	initnpctimer;
+	setmapflagnosave "guild_vs4","prontera.gat",155,155;
+	setmapflag "guild_vs4",mf_nopvp;
+	setmapflag "guild_vs4",mf_nomemo;
+	setmapflag "guild_vs4",mf_nobranch;
+	setmapflag "guild_vs4",mf_pvp_noguild;
+	setmapflag "guild_vs4",mf_nopenalty;
+	setmapflag "guild_vs4",mf_nozenypenalty;
+	end;
+OnTimer600000: //10 minutes après je coupe l'accès.
+	Announce "Garde Royal: Le Spawn survivor commence, l'accès en est coupé",8;
+	disablenpc "warpspawn";
+	disablenpc "warprep";
+	doevent "Surviv::OnStart";
+	stopnpctimer;
+	end;	
+}
+	
+function	script	f_monstres	{
+	set $@var,getarg(0);
+	set $@nb_part,getmapusers("guild_vs4.gat");
+	if($@nb_part<1) goto L_stop;
+	areamonster "guild_vs4.gat",0,0,200,200,"Survivor",$@var,100,"";
+	mapannounce "guild_vs4.gat","Il y a " + $@nb_part + " participant(s) encore en lice!",0;
+	mapannounce "guild_vs4.gat","Invasion de '"+ strmobinfo(2,$@var)+"'." ,0;
+	end;
+L_stop:
+	announce "La salle de Spawn survivor est vide.",0;
+	disablenpc "Surviv";
+	stopnpctimer;
+	removemapflag "guild_vs4",mf_nopvp;
+	removemapflag "guild_vs4",mf_nomemo;
+	removemapflag "guild_vs4",mf_nobranch;
+	removemapflag "guild_vs4",mf_pvp_noguild;
+	removemapflag "guild_vs4",mf_nopenalty;
+	removemapflag "guild_vs4",mf_nozenypenalty; 
+	killmonsterall "guild_vs4.gat";
+	end;
+}
