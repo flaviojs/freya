@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/03/06
+	* Fixed: Sight Blaster's range (now takes range of sight) [Tsuyuki]
+
 10/01/06
 	* Recommitted: Some lost commits from Proximus in Perforce: [Tsuyuki]
 		* Removed: 'Surrender' optin from Kafra guild manager, as it was 100% custom [Proximus]
