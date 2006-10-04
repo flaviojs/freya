@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/04/06
+	* Added: A missing Slot to Hatii Claw [Tsuyuki]
 	* Restored: Peco Peco's / Greatest General's modes [Tsuyuki]
 	* Removed: Flying Soul Linker from job_db2.txt (wasn't supposed to be there?) [Tsuyuki]
 	* Fixed: Some job names in the job_dbx.txt files [Tsuyuki]

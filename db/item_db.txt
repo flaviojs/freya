@@ -825,7 +825,7 @@
 1812,Finger_,Finger,4,58000,0,500,97,,1,2,33024,2,2,3,24,12,{},{}
 1813,Kaiser_Knuckle,Kaiser Knuckle,4,20,0,450,110,,1,0,33024,2,2,4,36,12,{},{ bonus bAtkEle,4; bonus2 bAddRace,1,5; bonus2 bAddEle,1,10; bonus2 bAddEle,2,10; bonus2 bAddEle,3,10; bonus2 bAddEle,4,10; }
 1814,Berserk,Berserk,4,20,0,500,120,,1,0,33024,2,2,4,36,12,{},{ bonus bAspdRate,12; }
-1815,Hatii_Claw,Hatii Claw,4,20,0,550,152,0,1,0,32768,2,2,4,70,12,{},{ bonus bMaxHPrate,-2; bonus2 bAddEff,Eff_Bleeding,500; }
+1815,Hatii_Claw,Hatii Claw,4,20,0,550,152,0,1,1,32768,2,2,4,70,12,{},{ bonus bMaxHPrate,-2; bonus2 bAddEff,Eff_Bleeding,500; }
 1816,Berserk_,Berserk,4,20,0,500,120,,1,1,33024,2,2,4,36,12,{},{ bonus bAspdRate,12; }
 
 // Instruments
@@ -2629,7 +2629,7 @@
 12103,Bloody_Branch,Bloody Branch,2,10000,5000,200,,,,,27254783,2,,,,,{ monster "this",0,0,"--ja--",-3,1,""; },{}
 12104,Random_Quiver,Random Quiver,2,10000,5000,200,,,,,27254783,2,,,,,{},{} // Produces an item from Item Group Quivers
 12105,Taming_Gift_Set,Taming Gift Set,2,10000,5000,200,,,,,27254783,2,,,,,{},{} // Produces a Pet Armor & a Pet Taming Item
-12106,Jewelry_Box,Jewelry Box,2,10000,5000,200,,,,,27254783,2,,,,,{},{} // Produces an item from Item Group Scrolls
+12106,Jewelry_Box,Jewelry Box,2,10000,5000,200,,,,,27254783,2,,,,,{},{} // Produces an item from Item Group Accessories
 12107,Wrapped_Mask,Wrapped Mask,2,10000,5000,200,,,,,27254783,2,,,,,{},{} // Produces an item from Item Group Masks
 12108,Scroll_Package,Scroll Package,2,10000,5000,200,,,,,27254783,2,,,,,{},{} // Produces an item from Item Group Scrolls
 12109,Poring_Box,Poring Box,2,10000,5000,200,,,,,27254783,2,,,,,{ monster "this",0,0,"--ja--",-2,1,""; },{}
