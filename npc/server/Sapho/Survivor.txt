@@ -11,6 +11,7 @@
 //= 1.1 - déplacement de la fonction f_monstres au début
 //= 1.2 - harmonisation warp warpret/warprep
 //=       changement getmapusers -> getmapaliveusers
+//= 1.3 - guild_vs4 -> guild_vs4.gat
 //===== Additional Comments: =================================
 //=Mettre les warp et les bonnes coordonnées pour les NPC.
 //============================================================
@@ -32,14 +33,14 @@ L_stop:
 	announce "La salle de Spawn survivor est vide.",0;
 	disablenpc "Surviv";
 	stopnpctimer;
-	setmapflagnosave "guild_vs4","prontera.gat",155,155;
-	removemapflag "guild_vs4",mf_gvg;
-	removemapflag "guild_vs4",mf_nopvp;
-	removemapflag "guild_vs4",mf_nomemo;
-	removemapflag "guild_vs4",mf_nobranch;
-	removemapflag "guild_vs4",mf_pvp_noguild;
-	removemapflag "guild_vs4",mf_nopenalty;
-	removemapflag "guild_vs4",mf_nozenypenalty;
+	setmapflagnosave "guild_vs4.gat","prontera.gat",155,155;
+	removemapflag "guild_vs4.gat",mf_nopvp;
+	removemapflag "guild_vs4.gat",mf_nomemo;
+	removemapflag "guild_vs4.gat",mf_nobranch;
+	removemapflag "guild_vs4.gat",mf_pvp_noguild;
+	removemapflag "guild_vs4.gat",mf_nopenalty;
+	removemapflag "guild_vs4.gat",mf_nozenypenalty;
+	gvgoff "guild_vs4.gat";
 	killmonsterall "guild_vs4.gat";
 	end;
 }
@@ -356,18 +357,18 @@ L_GmMenu:
 	close2; //le script continue
 L_creawarp:
 	Announce "Garde Royal: L'évent commence dans 10 minutes.",8;
-	killmonsterall "guild_vs4";
+	killmonsterall "guild_vs4.gat";
 	enablenpc "warpspawn";
 	enablenpc "warpret";
 	initnpctimer;
-	setmapflagnosave "guild_vs4","prontera.gat",155,155;
-	removemapflag "guild_vs4",mf_gvg;
-	setmapflag "guild_vs4",mf_nopvp;
-	setmapflag "guild_vs4",mf_nomemo;
-	setmapflag "guild_vs4",mf_nobranch;
-	setmapflag "guild_vs4",mf_pvp_noguild;
-	setmapflag "guild_vs4",mf_nopenalty;
-	setmapflag "guild_vs4",mf_nozenypenalty;
+	setmapflagnosave "guild_vs4.gat","prontera.gat",155,155;
+	setmapflag "guild_vs4.gat",mf_nopvp;
+	setmapflag "guild_vs4.gat",mf_nomemo;
+	setmapflag "guild_vs4.gat",mf_nobranch;
+	setmapflag "guild_vs4.gat",mf_pvp_noguild;
+	setmapflag "guild_vs4.gat",mf_nopenalty;
+	setmapflag "guild_vs4.gat",mf_nozenypenalty;
+	gvgoff "guild_vs4.gat";
 	end;
 
 OnTimer600000: //10 minutes après je coupe l'accès.
