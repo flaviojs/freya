@@ -7,18 +7,21 @@
 //===== Compatible With: =====================================
 //= Espérons, Nezumi, JAthena, et EAthena
 //===== Description: =========================================
-//=
+//= 1.0.
+//= 1.1 - déplacement de la fonction f_monstres au début
+//= 1.2 - harmonisation warp warpret/warprep
+//=       changement getmapusers -> getmapaliveusers
 //===== Additional Comments: =================================
 //=Mettre les warp et les bonnes coordonnées pour les NPC.
 //============================================================
 
 prontera.gat,178,148,4	warp	warpspawn	2,3,guild_vs4.gat,49,49
-guild_vs4.gat,36,49	warp	warprep	2,3,prontera.gat,165,151
+guild_vs4.gat,36,49	warp	warpret	2,3,prontera.gat,165,151
 
 
 function	script	f_monstres	{
 	set $@var,getarg(0);
-	set $@nb_part,getmapusers("guild_vs4.gat");
+	set $@nb_part,getmapaliveusers("guild_vs4.gat");
 	if($@nb_part<1) goto L_stop;
 	areamonster "guild_vs4.gat",0,0,200,200,"Survivor",$@var,100,"";
 	mapannounce "guild_vs4.gat","Il y a " + $@nb_part + " participant(s) encore en lice!",0;
@@ -101,7 +104,7 @@ OnStart:
 	mapannounce "guild_vs4.gat","Garde Royal: 30 secondes entre chaque spawn",0;
 	mapannounce "guild_vs4.gat","Invasion de '"+ strmobinfo(2,$@spawn1)+"'." ,0;
 	areamonster "guild_vs4.gat",0,0,200,200,"Survivor",$@spawn1,100; //neutre
-	set $@nb_part,getmapusers("guild_vs4.gat");
+	set $@nb_part,getmapaliveusers("guild_vs4.gat");
 	announce "Il y a " + $@nb_part + " participant(s). Bonne chance!",0;
 	close;
 
@@ -370,7 +373,7 @@ L_creawarp:
 OnTimer600000: //10 minutes après je coupe l'accès.
 	Announce "Garde Royal: Le Spawn survivor commence, l'accès en est coupé",8;
 	disablenpc "warpspawn";
-	disablenpc "warprep";
+	disablenpc "warpret";
 	doevent "Surviv::OnStart";
 	stopnpctimer;
 	end;
