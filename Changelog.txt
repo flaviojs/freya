@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/03/06
+	* Fixed: Bugs in Eye of Hellion Quest (Thanks to galaxy) [Tsuyuki]
+	* Added: Missing Atros MvP to the Rachel field spawns [Tsuyuki]
 	* Fixed: Cowardice Blade is now only equipable by Assassin [Tsuyuki]
 	* Fixed: Alchemist skill quest, you can now get the book properly [Tsuyuki]
 	* Fixed: Geographer's / Parasite's modes restored (attack people again) [Tsuyuki]

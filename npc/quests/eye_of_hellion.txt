@@ -105,7 +105,7 @@ s_Switches:
 		close;
 
 	s_Thirsty:
-		if(countitem(504))goto s_Thirsty2;
+		if(countitem(504) > 0)goto s_Thirsty2;
 		mes "[Welshyun]";
 		mes "^111111*Ahem*^000000 Oh dear me...";
 		mes "I'm unfathombly thirsty...";
@@ -202,7 +202,7 @@ s_Switches:
 		close;
 
 	Hellion5:
-		if(!countitem(717))goto s_NoGem;
+		if(countitem(717) == 0)goto s_NoGem;
 		mes "[Welshyun]";
 		mes "Thank you. You've";
 		mes "brought the book to Enoz";
@@ -742,7 +742,7 @@ s_Input:
 	close;
 
 s_Insert:
-	if(!countitem(7093))goto s_NoCog;
+	if(countitem(7093) == 0)goto s_NoCog;
 	mes "[" + strcharinfo(0) + "]";
 	mes "I just know this";
 	mes "cogwheel will fit";
@@ -1467,7 +1467,7 @@ OnTouch:
 morocc_in.gat,116,101,2	script	Old Scholar Tyus	735,2,2,{
 
 	if(HELLIONQ == 27)goto s_Last;
-	if(countitem(7332))goto s_Tablet;
+	if(countitem(7332) > 0)goto s_Tablet;
 	if(HELLIONQ == 25)goto s_Completion;
 	if(HELLIONQ == 24)goto s_Four;
 	if(HELLIONQ > 18)goto s_Welshyun;
@@ -1864,7 +1864,7 @@ s_Tablet:
 	mes "this bracelet to seal";
 	mes "its power forever...";
 	next;
-	if(countitem(7337))goto s_HellionEye;
+	if(countitem(7337) > 0)goto s_HellionEye;
 	specialeffect 12;
 	mes "[Sir Chilias'Tyus]";
 	mes "Darkness that writhes,";
@@ -2064,7 +2064,7 @@ OnTouch:
 
 gef_fild09.gat,296,59,1	script	Hidden Cave#HellionCave	111,{
 
-	if(!countitem(7332))goto s_NoTablet;
+	if(countitem(7332) == 0)goto s_NoTablet;
 	mes "^3151FFAmongst the wild bushes";
 	mes "and overgrown grass, you";
 	mes "see a large rock slab that";
