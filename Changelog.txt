@@ -4,6 +4,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/04/06
+	* Removed: Flying Soul Linker from job_db2.txt (wasn't supposed to be there?) [Tsuyuki]
+	* Fixed: Some job names in the job_dbx.txt files [Tsuyuki]
+
 10/03/06
 	* Fixed: Bugs in Eye of Hellion Quest (Thanks to galaxy) [Tsuyuki]
 	* Added: Missing Atros MvP to the Rachel field spawns [Tsuyuki]
