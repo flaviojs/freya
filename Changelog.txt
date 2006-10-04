@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/03/06
+	* Fixed: Geographer's / Parasite's modes restored (attack people again) [Tsuyuki]
 	* Fixed: Sight Blaster's range (now takes range of sight) [Tsuyuki]
 
 10/01/06
