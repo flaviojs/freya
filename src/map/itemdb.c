@@ -26,9 +26,9 @@
 
 static struct dbt* item_db;
 
-static struct random_item_data blue_box[MAX_RANDITEM], violet_box[MAX_RANDITEM], card_album[MAX_RANDITEM], gift_box[MAX_RANDITEM], cookie[MAX_RANDITEM];
-static int blue_box_count=0,violet_box_count=0,card_album_count=0,gift_box_count=0,cookie_count=0;
-static int blue_box_default=0,violet_box_default=0,card_album_default=0,gift_box_default=0,cookie_default=0;
+static struct random_item_data blue_box[MAX_RANDITEM], violet_box[MAX_RANDITEM], card_album[MAX_RANDITEM], gift_box[MAX_RANDITEM], cookie[MAX_RANDITEM], rand_quiver[MAX_RANDITEM], tame_gift[MAX_RANDITEM], jewel_box[MAX_RANDITEM], wrap_mask[MAX_RANDITEM], scroll_pack[MAX_RANDITEM], aid_kit[MAX_RANDITEM], food_bundle[MAX_RANDITEM];
+static int blue_box_count=0,violet_box_count=0,card_album_count=0,gift_box_count=0,cookie_count=0,rand_quiver_count=0,tame_gift_count=0,jewel_box_count=0,wrap_mask_count=0,scroll_pack_count=0,aid_kit_count=0,food_bundle_count=0;
+static int blue_box_default=0,violet_box_default=0,card_album_default=0,gift_box_default=0,cookie_default=0,rand_quiver_default=0,tame_gift_default=0,jewel_box_default=0,wrap_mask_default=0,scroll_pack_default=0,aid_kit_default=0,food_bundle_default=0;
 static struct item_group itemgroup_db[MAX_ITEMGROUP];
 
 // Function declarations
@@ -112,16 +112,25 @@ int itemdb_searchrandomid(int flags)
 	struct {
 		int nameid, count;
 		struct random_item_data *list;
-	} data[6];
+	} data[13];
 
 	// for BCC32 compile error
-	data[0].nameid = 0;                   data[0].count = 0;                 data[0].list = NULL;
-	data[1].nameid = blue_box_default;    data[1].count = blue_box_count;    data[1].list = blue_box;
-	data[2].nameid = violet_box_default;  data[2].count = violet_box_count;  data[2].list = violet_box;
-	data[3].nameid = card_album_default;  data[3].count = card_album_count;  data[3].list = card_album;
-	data[4].nameid = gift_box_default;    data[4].count = gift_box_count;    data[4].list = gift_box;
-	data[5].nameid = cookie_default;      data[5].count = cookie_count;      data[5].list = cookie;
-//	data[6].nameid = finding_ore_default; data[6].count = finding_ore_count; data[6].list = finding_ore;
+	data[0].nameid = 0;                    data[0].count = 0;                  data[0].list = NULL;
+	data[1].nameid = blue_box_default;     data[1].count = blue_box_count;     data[1].list = blue_box;
+	data[2].nameid = violet_box_default;   data[2].count = violet_box_count;   data[2].list = violet_box;
+	data[3].nameid = card_album_default;   data[3].count = card_album_count;   data[3].list = card_album;
+	data[4].nameid = gift_box_default;     data[4].count = gift_box_count;     data[4].list = gift_box;
+	data[5].nameid = cookie_default;       data[5].count = cookie_count;       data[5].list = cookie;
+
+//	data[6].nameid = finding_ore_default;  data[6].count = finding_ore_count;  data[6].list = finding_ore;
+
+	data[6].nameid = rand_quiver_default;  data[6].count = rand_quiver_count;  data[6].list = rand_quiver;
+	data[7].nameid = tame_gift_default;    data[7].count = tame_gift_count;    data[7].list = tame_gift;
+	data[8].nameid = jewel_box_default;    data[8].count = jewel_box_count;    data[8].list = jewel_box;
+	data[9].nameid = wrap_mask_default;    data[9].count = wrap_mask_count;    data[9].list = wrap_mask;
+	data[10].nameid = scroll_pack_default; data[10].count = scroll_pack_count; data[10].list = scroll_pack;
+	data[11].nameid = aid_kit_default;     data[11].count = aid_kit_count;     data[11].list = aid_kit;
+	data[12].nameid = food_bundle_default; data[12].count = food_bundle_count; data[12].list = food_bundle;
 
 	if (flags >= 1 && flags <= 5) {
 		nameid = data[flags].nameid;
@@ -637,11 +646,18 @@ static int itemdb_read_randomitem()
 		struct random_item_data *pdata;
 		int *pcount,*pdefault;
 	} data[] = {
-		{"db/random/item_bluebox.txt",   blue_box,   &blue_box_count,   &blue_box_default },
-		{"db/random/item_purplebox.txt", violet_box, &violet_box_count, &violet_box_default },
-		{"db/random/item_cardalbum.txt", card_album, &card_album_count, &card_album_default },
-		{"db/random/item_giftbox.txt",   gift_box,   &gift_box_count,   &gift_box_default },
-		{"db/random/item_cookiebag.txt", cookie,     &cookie_count,     &cookie_default },
+		{"db/random/item_bluebox.txt",     blue_box,    &blue_box_count,    &blue_box_default },
+		{"db/random/item_purplebox.txt",   violet_box,  &violet_box_count,  &violet_box_default },
+		{"db/random/item_cardalbum.txt",   card_album,  &card_album_count,  &card_album_default },
+		{"db/random/item_giftbox.txt",     gift_box,    &gift_box_count,    &gift_box_default },
+		{"db/random/item_cookiebag.txt",   cookie,      &cookie_count,      &cookie_default },
+		{"db/random/item_randquiver.txt",  rand_quiver, &rand_quiver_count, &rand_quiver_default },
+		{"db/random/item_taminggift.txt",  tame_gift,   &tame_gift_count,   &tame_gift_default },
+		{"db/random/item_jewelrybox.txt",  jewel_box,   &jewel_box_count,   &jewel_box_default },
+		{"db/random/item_wrappedmask.txt", wrap_mask,   &wrap_mask_count,   &wrap_mask_default },
+		{"db/random/item_scrollpack.txt",  scroll_pack, &scroll_pack_count, &scroll_pack_default },
+		{"db/random/item_firstaidkit.txt", aid_kit,     &aid_kit_count,     &aid_kit_default },
+		{"db/random/item_foodbundle.txt",  food_bundle, &food_bundle_count, &food_bundle_default },
 	};
 
 	for(i = 0; i < sizeof(data) / sizeof(data[0]); i++) {
@@ -1024,7 +1040,7 @@ static int itemdb_read_norefine(void) {
 	FILE *db = fopen("db/item_norefine.txt", "r");
 
 	if(db == NULL) {
-		printf("Can't read db/item_norefine.txt (missing file) \n");
+		printf("Cannot read db/item_norefine.txt (missing file) \n");
 		exit(1); //It's obligatory
 	}
 
@@ -1063,7 +1079,7 @@ static int itemdb_read_itemtrade(void)
 	struct item_data *id;
 
 	if ((fp = fopen("db/item_bound.txt", "r")) == NULL) {
-		printf("can't read db/item_bound.txt\n");
+		printf("Cannot read db/item_bound.txt\n");
 		return -1;
 	}
 

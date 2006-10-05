@@ -87,19 +87,19 @@
 574,Egg,Egg,0,0,60,30,,,,,27254783,2,,,,,{ itemheal rand(16,21),0; },{}
 575,2nd_Anniversary_Cake,2nd Anniversary Cake,0,0,,100,,,,,27254783,2,,,,,{ itemheal rand(270,329),0; },{}
 576,Prickly_Fruit,Prickly Fruit,0,20,10,40,0,0,0,0,27254783,2,0,0,0,0,{ itemheal rand(10,15),rand(10,15); },{}
-577,Bag_of_Grain,Bag of Grain,0,200,100,20,,,,,16777215,2,,,,,{ itemheal rand(10,14),0; },{}
-578,Strawberry,Strawberry,0,200,100,20,,,,,16777215,2,,,,,{ itemheal 0,rand(10,14); },{}
-579,Fresh_Fish,Fresh Fish,0,250,125,20,,,,,16777215,2,,,,,{ itemheal rand(140,189),0; },{}
-580,Bread,Bread,0,150,75,20,,,,,16777215,20,,,,,{ itemheal rand(20,34),0; },{}
-581,Edible_Mushroom,Edible Mushroom,0,40,20,20,,,,,16777215,2,,,,,{ itemheal rand(10,14),0; },{}
-582,Orange,Orange,0,300,150,20,,,,,16777215,2,,,,,{ itemheal rand(10,15),rand(10,15); },{}
-583,Ketupat,Ketupat,0,100,50,10,,,,,16777215,2,,,,,{ itemheal rand(100,200),0; },{}
-584,Skewer_Soup,Skewer Soup,0,50,25,60,,,,,16777215,2,,,,,{ itemheal rand(45,64),0; },{}
+577,Bag_of_Grain,Bag of Grain,0,200,100,20,,,,,27254783,2,,,,,{ itemheal rand(10,14),0; },{}
+578,Strawberry,Strawberry,0,200,100,20,,,,,27254783,2,,,,,{ itemheal 0,rand(10,14); },{}
+579,Fresh_Fish,Fresh Fish,0,250,125,20,,,,,27254783,2,,,,,{ itemheal rand(140,189),0; },{}
+580,Bread,Bread,0,150,75,20,,,,,27254783,20,,,,,{ itemheal rand(20,34),0; },{}
+581,Edible_Mushroom,Edible Mushroom,0,40,20,20,,,,,27254783,2,,,,,{ itemheal rand(10,14),0; },{}
+582,Orange,Orange,0,300,150,20,,,,,27254783,2,,,,,{ itemheal rand(10,15),rand(10,15); },{}
+583,Ketupat,Ketupat,0,100,50,10,,,,,27254783,2,,,,,{ itemheal rand(100,200),0; },{}
+584,Skewer_Soup,Skewer Soup,0,50,25,60,,,,,27254783,2,,,,,{ itemheal rand(45,64),0; },{}
 585,Brusti,Brusti,0,15,7,40,,,,,16777215,2,,,,,{ itemheal rand(17,20),0; itemskill 74,3,"Magnificat"; },{}
-586,Mother's_Cake,Mother's Cake,0,,10,100,,,,,16777215,2,,,,,{ itemheal rand(325,404),0; },{}
-587,Red_Thorn_Fruit,Red Thorn Fruit,0,,10,40,,,,,16777215,2,,,,,{ itemheal rand(35,49),rand(10,19); },{}
-588,Spaghetti,Spaghetti,0,,10,100,,,,,16777215,2,,,,,{ itemheal rand(45,64),0; },{}
-589,Pizza,Pizza,0,,10,150,,,,,16777215,2,,,,,{ itemheal rand(45,64),0; },{}
+586,Mother's_Cake,Mother's Cake,0,,10,100,,,,,27254783,2,,,,,{ itemheal rand(325,404),0; },{}
+587,Red_Thorn_Fruit,Red Thorn Fruit,0,,10,40,,,,,27254783,2,,,,,{ itemheal rand(35,49),rand(10,19); },{}
+588,Spaghetti,Spaghetti,0,,10,100,,,,,27254783,2,,,,,{ itemheal rand(45,64),0; },{}
+589,Pizza,Pizza,0,,10,150,,,,,27254783,2,,,,,{ itemheal rand(45,64),0; },{}
 
 // Usable Items
 601,Fly_Wing,Fly Wing,2,60,30,50,,,,,27254783,2,,,,,{ warp "Random",0,0; },{}
@@ -163,7 +163,7 @@
 661,Soft_Apron,Soft Apron,2,20000,10000,50,,,,,27254783,2,,,,,{ pet 1275; },{}
 
 // More Random Items
-662,Authoritative_Badge,Authoritative Badge,2,1450,725,30,0,0,0,0,27254783,2,0,0,0,0,{ sc_start SC_SpeedUp0,240000,0; },{}
+662,Authoritative_Badge,Authoritative Badge,2,1450,725,30,0,0,0,0,27254783,2,0,0,0,0,{ sc_start 20,300000,0; },{}
 663,Rice_Cake,Rice Cake,0,20,10,10,,,,,27254783,2,,,,,{ percentheal 10,10; },{}
 664,Gift_Box_,Gift Box,2,1000,500,200,,,,,27254783,2,,,,,{ getitem -4,1; },{}
 665,Gift_Box__,Gift Box,2,1000,500,200,,,,,27254783,2,,,,,{ getitem -4,1; },{}
@@ -825,7 +825,7 @@
 1812,Finger_,Finger,4,58000,0,500,97,,1,2,33024,2,2,3,24,12,{},{}
 1813,Kaiser_Knuckle,Kaiser Knuckle,4,20,0,450,110,,1,0,33024,2,2,4,36,12,{},{ bonus bAtkEle,4; bonus2 bAddRace,1,5; bonus2 bAddEle,1,10; bonus2 bAddEle,2,10; bonus2 bAddEle,3,10; bonus2 bAddEle,4,10; }
 1814,Berserk,Berserk,4,20,0,500,120,,1,0,33024,2,2,4,36,12,{},{ bonus bAspdRate,12; }
-1815,Hatii_Claw,Hatii Claw,4,20,0,550,152,0,1,0,32768,2,2,4,70,12,{},{ bonus bMaxHPrate,-2; bonus2 bAddEff,Eff_Bleeding,500; }
+1815,Hatii_Claw,Hatii Claw,4,20,0,550,152,0,1,1,32768,2,2,4,70,12,{},{ bonus bMaxHPrate,-2; bonus2 bAddEff,Eff_Bleeding,500; }
 1816,Berserk_,Berserk,4,20,0,500,120,,1,1,33024,2,2,4,36,12,{},{ bonus bAspdRate,12; }
 
 // Instruments
@@ -1200,7 +1200,7 @@
 4018,Andre_Larva_Card,Andre Larva Card,6,20,0,10,,,,,,,2,,,,{},{ bonus bInt,1; bonus bMaxSP,10; }
 4019,Hornet_Card,Hornet Card,6,20,0,10,,,,,,,2,,,,{},{ bonus bStr,1; bonus bBaseAtk,3; }
 4020,Farmiliar_Card,Farmiliar Card,6,20,0,10,,,,,,,2,,,,{},{ bonus2 bAddEff,Eff_Blind,500; bonus bBaseAtk,5; }
-4021,Rocker_Card,Rocker Card,6,20,0,10,,,,,,,16,,,,{},{ bonus bDex,1; }
+4021,Rocker_Card,Rocker Card,6,20,0,10,,,,,,,16,,,,{},{ bonus bDex,1; bonus bBaseAtk,5 }
 4022,Spore_Card,Spore Card,6,20,0,10,,,,,,,136,,,,{},{ bonus bVit,2; }
 4023,Desert_Wolf_Babe_Card,Desert Wolf Babe Card,6,20,0,10,,,,,,,16,,,,{},{ bonus bInt,1; }
 4024,Plankton_Card,Plankton Card,6,20,0,10,,,,,,,2,,,,{},{ bonus2 bAddEff,Eff_Sleep,500; bonus bBaseAtk,5; }
@@ -1802,7 +1802,7 @@
 5197,White_Ribbon,White Ribbon,5,,10,100,,1,,0,27254783,2,256,,1,248,{ bonus bMdef,3; },{}
 5198,Drooping_Bunny,Drooping Bunny,5,,10,100,,1,,0,27254783,2,256,,1,249,{ bonus bDex,1; bonus bFlee,2;},{}
 5199,Baseball_Cap_,Baseball Cap,5,,10,200,,3,,0,27254783,2,256,,1,250,{},{}
-5200,Coppola,Coppola,5,,10,300,,0,,0,27254783,2,256,,1,251,{},{}
+5200,Coppola,Coppola,5,,10,300,,0,,0,27254783,2,256,,1,252,{},{}
 
 // Misc/Collection Items
 7001,Mold_Powder,Mold Powder,3,680,0,10,,,,,,,,,,,{},{}
@@ -2531,8 +2531,8 @@
 12015,Rusty_Arrow_Quiver,Rusty Arrow Quiver,2,1500,750,250,,,,,27254783,2,,,,,{ getitem 1762,500; },{}
 
 // New Usables
-12016,Speed_Potion,Speed Potion,2,1000,500,100,,,,,27254783,2,,,,,{ specialeffect 507; sc_start SC_SpeedUp1,5000,0; },{}
-12017,Slow_Potion,Slow Potion,2,1000,500,100,,,,,27254783,2,,,,,{ sc_start SC_DECREASEAGI,300000,10; },{} // Temp Fix
+12016,Speed_Potion,Speed Potion,2,1000,500,100,,,,,27254783,2,,,,,{ specialeffect 507; sc_start 20,300000,0; },{}
+12017,Slow_Potion,Slow Potion,2,1000,500,100,,,,,27254783,2,,,,,{ sc_start SC_SLOWDOWN,300000,10; },{} // Temp Fix
 12018,Firecracker,Firecracker,20,100,50,2,,,,,27254783,2,,,,,{ misceffect(256); },{}
 12019,Holy_Egg,Holy Egg,2,20,0,150,,,,,27254783,2,,,,,{ itemskill 54,2,"Resurrection"; },{}
 12020,Cursed_Water,Cursed_Water,2,2,1,30,,,,,27254783,2,,,,,{ sc_start SC_SHADOWWEAPON, 1200000, 1; },{}
@@ -2623,18 +2623,19 @@
 12099,Blood_Flavored_Soda,Blood Flavored Soda,2,80000,40000,1000,,,,,27254783,2,,,,,{ sc_start SC_LUKFOOD,1200000,9; percentheal 10,4; },{}
 12100,Cooked_Nine_Tail's_Tails,Cooked Nine Tail's Tails,2,100000,50000,500,,,,,27254783,2,,,,,{ sc_start SC_LUKFOOD,1200000,10; percentheal 14,8; },{}
 
-// Misc Items - Incomplete (Need to implement a single new bonus to complete)
+// Misc Items
 12101,Citron,Citron,2,,,300,,,,,27254783,2,,,,,{},{} // Missing Effect & Price/Sell Values
 12102,Grilled_Skewer,Grilled Skewer,2,,,300,,,,,27254783,2,,,,,{},{} // Missing Effect & Price/Sell Values
 12103,Bloody_Branch,Bloody Branch,2,10000,5000,200,,,,,27254783,2,,,,,{ monster "this",0,0,"--ja--",-3,1,""; },{}
-12104,Random_Quiver,Random Quiver,2,10000,5000,200,,,,,27254783,2,,,,,{},{} // Produces an item from Item Group Quivers
-12105,Taming_Gift_Set,Taming Gift Set,2,10000,5000,200,,,,,27254783,2,,,,,{},{} // Produces a Pet Armor & a Pet Taming Item
-12106,Jewelry_Box,Jewelry Box,2,10000,5000,200,,,,,27254783,2,,,,,{},{} // Produces an item from Item Group Scrolls
-12107,Wrapped_Mask,Wrapped Mask,2,10000,5000,200,,,,,27254783,2,,,,,{},{} // Produces an item from Item Group Masks
-12108,Scroll_Package,Scroll Package,2,10000,5000,200,,,,,27254783,2,,,,,{},{} // Produces an item from Item Group Scrolls
+12104,Random_Quiver,Random Quiver,2,10000,5000,200,,,,,27254783,2,,,,,{ getitem -6,2; },{}
+12105,Taming_Gift_Set,Taming Gift Set,2,10000,5000,200,,,,,27254783,2,,,,,{ getitem -7,2; },{}
+// Produces a Pet Armor & a Pet Taming Item, currently just grabs any two Taming items, needs fix
+12106,Jewelry_Box,Jewelry Box,2,10000,5000,200,,,,,27254783,2,,,,,{ getitem -8,1; },{}
+12107,Wrapped_Mask,Wrapped Mask,2,10000,5000,200,,,,,27254783,2,,,,,{ getitem -9,1; },{}
+12108,Scroll_Package,Scroll Package,2,10000,5000,200,,,,,27254783,2,,,,,{ getitem -10,3; },{}
 12109,Poring_Box,Poring Box,2,10000,5000,200,,,,,27254783,2,,,,,{ monster "this",0,0,"--ja--",-2,1,""; },{}
-12110,First_Aid_Kit,First Aid Kit,2,10000,5000,200,,,,,27254783,2,,,,,{},{} // Produces an item from Item Group Potions
-12111,Bundle_of_Food,Bundle of Food,2,,,200,,,,,27254783,2,,,,,{},{} // Produces an item from Item Group Foods
+12110,First_Aid_Kit,First Aid Kit,2,10000,5000,200,,,,,27254783,2,,,,,{ getitem -11,3; },{}
+12111,Bundle_of_Food,Bundle of Food,2,,,200,,,,,27254783,2,,,,,{ getitem -12,3; },{}
 12112,Tropical_Sograt,Tropical Sograt,2,1000,500,100,,,,,27254783,2,,,,,{ sc_start SC_Curse,10000,1; },{}
 12113,Vermilion_on_the_Beach,Vermilion on the Beach,2,1000,500,100,,,,,27254783,2,,,,,{ sc_start SC_Stun,10000,1; },{}
 
@@ -2669,7 +2670,7 @@
 12133,McDonald's_Ice_Cone,McDonald's Ice Cone,0,50,,80,,,,,27254783,2,,,,,{ itemheal rand(45,64),0; },{} // Incomplete
 12134,Red_Envelope,Red Envelope,2,,10,10,,,,,27254783,2,,,,,{ set Zeny,Zeny+rand(1000,10000); },{}
 12135,Green_Ale,Green Ale,2,20,10,30,,,,,27254783,2,,,,,{ percentheal 50,50; if(rand(100) >= 90)sc_start SC_Confusion,10000,0; },{}
-12136,Women's_Bundle,Women's Bundle,2,,10,100,,,,,27254783,2,,,,,{},{} // Gets Item ID 558,529,2668, or 7518
+12136,Women's_Bundle,Women's Bundle,2,,10,100,,,,,27254783,2,,,,,{},{} // Gets Item ID 558,529,2668, or 7518, Incomplete
 12137,First_Stage,First Stage,2,,10,0,,,,,27254783,2,,,,,{},{}
 12138,Second_Stage,Second Stage,2,,10,0,,,,,27254783,2,,,,,{},{}
 12139,Third_Stage,Third Stage,2,,10,0,,,,,27254783,2,,,,,{},{}
@@ -2723,17 +2724,17 @@
 12183,Holy_Arrow_Quiver,Holy Arrow Quiver,2,,10,100,,,,,27254783,2,,,,,{ getitem 1772,500; },{}
 12184,Mercenary's_Red_Potion,Mercenary's Red Potion,2,,10,100,,,,,27254783,2,,,,,{},{}
 12185,Mercenary's_Blue_Potion,Mercenary's Blue Potion,2,,10,100,,,,,27254783,2,,,,,{},{}
-12186,Old_Red_Box,Old Red Box,2,,10,200,,,,,27254783,2,,,,,{},{}
-12187,Old_Green_Box,Old Green Box,2,,10,200,,,,,27254783,2,,,,,{},{}
+12186,Old_Red_Box,Old Red Box,2,,10,200,,,,,27254783,2,,,,,{},{} // Gets a random new headgear (specific list)
+12187,Old_Green_Box,Old Green Box,2,,10,200,,,,,27254783,2,,,,,{},{} // Gets an item of some kind
 12188,Fantastic_Moon_Snack,Fantastic Moon Snack,2,,10,300,,,,,27254783,2,,,,,{ percentheal 50,50; },{}
-12189,Old_Red_Box_,Old Red Box,2,,10,200,,,,,27254783,2,,,,,{},{}
+12189,Old_Red_Box_,Old Red Box,2,,10,200,,,,,27254783,2,,,,,{},{} // Gets an item of some kind
 
 // Extra Daggers
 13000,Jujube_Dagger,Jujube Dagger,4,10000,5000,600,39,0,1,0,10444527,2,2,1,0,1,{},{ bonus bAtkEle,4; }
 13001,Dragon_Killer,Dragon Killer,4,20,10,900,110,0,1,0,10444527,2,2,4,60,1,{},{ bonus bIgnoreDefRace,9; bonus2 bExpAddRace,9,10; }
 13002,Ginnungagap,Ginnungagap,4,20,10,700,120,0,1,0,10444527,2,2,4,70,1,{},{ bonus bAtkEle,7; bonus2 bAddEff,Eff_Blind,500; bonus2 bAddEff2,Eff_Blind,50; }
-13003,Cowardice_Blade,Cowardice Blade,4,62000,26000,700,80,0,1,1,10444527,2,2,3,55,1,{},{ bonus bDef,5; }
-13004,Cowardice_Blade_,Cowardice Blade,4,62000,26000,700,80,0,1,2,10444527,2,2,3,55,1,{},{ bonus bDef,5; }
+13003,Cowardice_Blade,Cowardice Blade,4,62000,26000,700,80,0,1,1,4096,2,2,3,55,1,{},{ bonus bDef,5; }
+13004,Cowardice_Blade_,Cowardice Blade,4,62000,26000,700,80,0,1,2,4096,2,2,3,55,1,{},{ bonus bDef,5; }
 13005,Angelic_Wing_Dagger,Angelic Wing Dagger,4,,10,600,120,,1,1,18866174,2,2,4,50,0,{},{}
 13006,Gokurin,Gokurin,4,240000,,600,150,,1,0,27254783,2,2,3,65,1,{ bonus bAtkEle,Ele_Dark; bonus2 bAddEff,Eff_Curse,500; },{}
 13007,Jitte,Jitte,4,20000,,400,70,,1,0,27254783,2,2,2,35,1,{ bonus bBreakWeaponRate,500; },{}

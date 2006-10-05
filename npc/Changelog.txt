@@ -2,9 +2,6 @@
 Date	Added
 
 2006.10.04
-	* Updated: npc/server/Sapho/Survivor.txt script. [Sapho Team]
-
-2006.10.03
 	* Added: npc/server/Sapho/Survivor.txt script. [Sapho Team]
 
 2006.09.30

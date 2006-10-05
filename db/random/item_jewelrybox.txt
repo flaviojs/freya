@@ -1,0 +1,36 @@
+// item_jewelrybox.txt, Jewelry Box Database
+//
+// <Item_ID>,<Description (Dummy)>,<Rate>
+//
+// Rate Examples
+// 10000   = 1%
+// 500000  = 50%
+// 1000000 = 100%
+
+0,Glove,2604
+2604,Glove,500000
+2610,Gold Ring,500000
+2617,Celebrant's Mitten,500000
+2612,Flower Ring,500000
+2603,Necklace,500000
+2628,Novice Armlet,500000
+2613,Diamond Ring,500000
+2609,Skull Ring,500000
+2619,Bow Thimble,500000
+2608,Rosary,500000
+2601,Ring,500000
+2618,Matyr's Leash,500000
+2627,Belt,500000
+2605,Brooch,500000
+2658,Nile Rose,500000
+2611,Silver Ring,500000
+2607,Clip,500000
+2602,Earring,500000
+2615,Safety Ring,100000
+2616,Critical Ring,100000
+2624,Glove,100000
+2621,Ring,100000
+2626,Rosary,100000
+2625,Brooch,100000
+2622,Earring,100000
+2623,Necklace,100000

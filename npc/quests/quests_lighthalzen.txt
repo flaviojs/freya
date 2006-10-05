@@ -1,9 +1,9 @@
 //===== Freya Script =========================================
 //= Lighthalzen Quests
 //===== By: ==================================================
-//= eAthena, Completed/Fixed by Tsuyuki & Harp (Freya)
+//= eAthena/Freya
 //===== Current Version: =====================================
-//= 1.8
+//= 1.9
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -25,8 +25,8 @@
 //= 1.6 Added Pickpocket Quest by Lord Gywall. Fixed a typo in Biolabs Quest [Tsuyuki]
 //= 1.7 Added Friendship Quest by eAthena. Converted to Freya by Harp [Tsuyuki]
 //= 1.8 Fixed a few bugs in the Friendship quest [Tsuyuki]
+//= 1.9 Rewrote most of the Pickpocket Quest w/ official text, chance rates, and effects [Tsuyuki]
 //= Note: Need proper cutins for the Friendship quest
-//= Another Note: Friendship & Biolabs quest text doesn't match iRO
 //============================================================ 
 
 lighthalzen.gat,1,1,7	script	sneakAddSuber	-1,{
@@ -436,7 +436,7 @@ L_4:
 	mes "So, what're you doing just standing there?";
 	mes "Are you going to do it or not?";
 	next;
-	menu "Definitely!",L_5,"No way! It's impossible!",-;
+	menu "Definately!",L_5,"No way! It's impossible!",-;
 
 	mes "[Fishburn]";
 	mes "Ah well, your loss,";
@@ -1229,120 +1229,343 @@ L4_1:
 
 
 //============================================================
-// Lighthalzen Pickpocket Mini-Quest - Lord Gywall v1.0
+// Lighthalzen Pickpocket Mini-Quest - Lord Gywall/Tsuyuki
 //============================================================
-lighthalzen.gat,240,216,4	script	Man#Pickpocket1	870,2,2,{
-	end;
-OnTouch:
-	callfunc "F_LHZPick",33,1;
-	close;
-}
 
-lighthalzen.gat,220,169,4	script	Man#Pickpocket2	870,2,2,{
-	end;
-OnTouch:
-	callfunc "F_LHZPick",33,2;
-	close;
-}
 
-lighthalzen.gat,164,127,4	script	Man#Pickpocket3	870,2,2,{
+lighthalzen.gat,0,0,0	script	PickPocketControl	139,{
 	end;
-OnTouch:
-	callfunc "F_LHZPick",20,3;
-	if(@caught!=1) close;
-	mes "[Strange Man]";
-	mes "Ayee! I'm trapped.";
-	mes "If you will forgive me,";
-	mes "I can give you something good.";
-	mes "["+strcharinfo(0)+"]";
-	mes "You're forgiven, now what is this";
-	mes "good thing you mentioned?";
-	next;
-	mes "[Strange Man]";
-	mes "The lower part of your body,";
-	mes "will produce a strong power";
-	mes "once you've taken the secret potion.";
-	mes "It's very useful";
-	mes "when you want to run quickly";
-	next;
-	mes "[Strange Man]";
-	mes "I will sell you them for a bargin";
-	mes "price of 15,000 zeny to a maximum";
-	mes "of three potions.";
-	mes "How many do you want?";
-	next;
-	input @number;
-	if(@number>3) set @number,3;
-	set @cost,15000*@number;
-	if(Zeny<@cost) goto L_Zeny;
-	//please check that you add the script to it.
-	set Zeny,zeny-@cost;
-	getitem 12016,@number; //Speed Potion
-	mes "[Strange Man]";
-	mes "Thanks for your money.";
-	if(rand(1,2)==1) goto L_Reset;
-	disablenpc "Man#Pickpocket3";
-	enablenpc "Man#Pickpocket2";
-	close;
-L_Reset:
-	disablenpc "Man#Pickpocket3";
-	enablenpc "Man#Pickpocket1";
-	close;
-L_Zeny:
-	mes "[Strange Man]";
-	mes "Too bad.";
-	mes "No zeny makes you a poor man.";
-	close;
+
 OnInit:
-	disablenpc "Man#Pickpocket2";
-	disablenpc "Man#Pickpocket3";
+	disablenpc "Suspicious Guy#2";
+	disablenpc "Suspicious Guy#3";
+	disablenpc "PickPocketControl";
+	end;
 }
 
-function	script	F_LHZPick	{
-	if(Zeny<100) set Zeny,0;
-	if(Zeny>=100) set Zeny,zeny-100;
-	mes "Pickpocket";
+lighthalzen.gat,240,216,4	script	Suspicious Guy#1	870,2,2,{
+	end;
+	
+OnTouch:
+	set @pickrand2,rand(1,3);
+	if(Zeny<200) set Zeny,0;
+	if(Zeny>=10 && @pickrand2 == 1) set Zeny,zeny-10;
+	if(Zeny>=100 && @pickrand2 == 2) set Zeny,zeny-100;
+	if(Zeny>=200 && @pickrand2 == 3) set Zeny,zeny-200;
+//	specialeffect2 274;
+	mes "*SHHHHHHUK*!";
 	next;
-	if(rand(0,100)<getarg(0)) goto L_Caught;
-	mes "Hehehehe....";
-	return;
+	set @pickrand1,rand(0,100);
+	if(@pickrand1 <= 75) goto L_Caught;
+	mes "["+strcharinfo(0)+"]";
+	set @pickrand3,rand(1,2);
+	if(@pickrand3 == 1)goto RandStolen1;
+	if(@pickrand3 == 2)goto RandStolen2;
+	close;
+
+RandStolen1:
+	mes "Huh...?";
+	mes "I could have sworn";
+	mes "that these pockets full";
+	mes "of zeny were heavier";
+	mes "just a second ago...";
+	next;
+	mes "[?????]";
+	mes "Heh heh heh heh...";
+	close;
+
+RandStolen2:
+	mes "Huh...?";
+	mes "I sense something...";
+	mes "No. It might just";
+	mes "be my imagination.";
+	next;
+	mes "[?????]";
+	mes "Heh heh heh heh...";
+	close;
+
 L_Caught:
-	mes "(You notice the man put his";
-	mes "hand in your pocket!)";
 	mes "["+strcharinfo(0)+"]";
-	mes "Eh!? What are you doing!";
-	mes "You are!! Stealing my money?!";
-	mes "[Strange Man]";
-	mes "Ah! I'm caught!";
-	mes "["+strcharinfo(0)+"]";
-	mes "You're a pickpocket?!?";
-	mes "[Strange Man]";
-	mes "Hehehehe....";
+	mes "Huh...?";
+	mes "What the?!";
+	mes "That guy, did he just...?";
+	mes "He did! Hey! That guy";
+	mes "stole some of my money!";
 	next;
-	set @rand,rand(1,4);
-	if(getarg(1)==1 && @rand<4) goto L_MoveB;
-	if(getarg(1)==2 && @rand<4) goto L_MoveA;
-	if(getarg(1)==1 && @rand==4) goto L_MoveC1;
-	if(getarg(1)==2 && @rand==4) goto L_MoveC2;
-	set @caught,1;
-	return;
-L_MoveA:
-	disablenpc "Man#Pickpocket2";
-	enablenpc "Man#Pickpocket1";
-	return;
-L_MoveB:
-	disablenpc "Man#Pickpocket1";
-	enablenpc "Man#Pickpocket2";
-	return;
-L_MoveC1:
-	disablenpc "Man#Pickpocket1";
-	enablenpc "Man#Pickpocket3";
-	return;
-L_MoveC2:
-	disablenpc "Man#Pickpocket2";
-	enablenpc "Man#Pickpocket3";
-	return;
+	mes "[Suspicious Guy]";
+	mes "Oh crap!";
+	mes "Gotta scram!";
+	mes "Eat my dust, good guy!";
+	next;
+	set @rand,rand(1,2);
+	if(@rand == 1) goto L_MoveA1;
+	if(@rand == 2) goto L_MoveB1;
+	close;
+
+L_MoveA1:
+	specialeffect 16;
+	disablenpc "Suspicious Guy#1";
+	enablenpc "Suspicious Guy#2";
+	close;
+
+L_MoveB1:
+	specialeffect 16;
+	disablenpc "Suspicious Guy#1";
+	enablenpc "Suspicious Guy#3";
+	close;
 }
+
+lighthalzen.gat,220,169,4	script	Suspicious Guy#2	870,2,2,{
+	end;
+
+OnTouch:
+	set @pickrand2,rand(1,3);
+	if(Zeny<200) set Zeny,0;
+	if(Zeny>=10 && @pickrand2 == 1) set Zeny,zeny-10;
+	if(Zeny>=100 && @pickrand2 == 2) set Zeny,zeny-100;
+	if(Zeny>=200 && @pickrand2 == 3) set Zeny,zeny-200;
+//	specialeffect2 274;
+	mes "*SHHHHHHUK*!";
+	next;
+	set @pickrand1,rand(0,100);
+	if(@pickrand1 <= 75) goto L_Caught;
+	mes "["+strcharinfo(0)+"]";
+	set @pickrand3,rand(1,2);
+	if(@pickrand3 == 1)goto RandStolen1;
+	if(@pickrand3 == 2)goto RandStolen2;
+	close;
+
+RandStolen1:
+	mes "Huh...?";
+	mes "I could have sworn";
+	mes "that these pockets full";
+	mes "of zeny were heavier";
+	mes "just a second ago...";
+	next;
+	mes "[?????]";
+	mes "Heh heh heh heh...";
+	close;
+
+RandStolen2:
+	mes "Huh...?";
+	mes "I sense something...";
+	mes "No. It might just";
+	mes "be my imagination.";
+	next;
+	mes "[?????]";
+	mes "Heh heh heh heh...";
+	close;
+
+L_Caught:
+	mes "["+strcharinfo(0)+"]";
+	mes "Huh...?";
+	mes "What the?!";
+	mes "That guy, did he just...?";
+	mes "He did! Hey! That guy";
+	mes "stole some of my money!";
+	next;
+	mes "[Suspicious Guy]";
+	mes "Oh crap!";
+	mes "Gotta scram!";
+	mes "Eat my dust, good guy!";
+	next;
+	set @rand,rand(1,2);
+	if(@rand == 1) goto L_MoveA2;
+	if(@rand == 2) goto L_MoveB2;
+	close;
+
+L_MoveA2:
+	specialeffect 16;
+	disablenpc "Suspicious Guy#2";
+	enablenpc "Suspicious Guy#1";
+	close;
+
+L_MoveB2:
+	specialeffect 16;
+	disablenpc "Suspicious Guy#3";
+	enablenpc "Suspicious Guy#1";
+	close;
+}
+
+lighthalzen.gat,164,127,4	script	Suspicious Guy#3	870,2,2,{
+	end;
+
+OnTouch:
+	set @pickrand2,rand(1,3);
+	if(Zeny<200) set Zeny,0;
+	if(Zeny>=10 && @pickrand2 == 1) set Zeny,zeny-10;
+	if(Zeny>=100 && @pickrand2 == 2) set Zeny,zeny-100;
+	if(Zeny>=200 && @pickrand2 == 3) set Zeny,zeny-200;
+//	specialeffect2 274;
+	mes "*SHHHHHHUK*!";
+	next;
+	set @pickrand1,rand(0,100);
+	if(@pickrand1 <= 25) goto L_Caught;
+	mes "["+strcharinfo(0)+"]";
+	set @pickrand3,rand(1,2);
+	if(@pickrand3 == 1)goto RandStolen1;
+	if(@pickrand3 == 2)goto RandStolen2;
+	close;
+
+RandStolen1:
+	mes "Huh...?";
+	mes "I could have sworn";
+	mes "that these pockets full";
+	mes "of zeny were heavier";
+	mes "just a second ago...";
+	next;
+	mes "[?????]";
+	mes "Heh heh heh heh...";
+	close;
+
+RandStolen2:
+	mes "Huh...?";
+	mes "I sense something...";
+	mes "No. It might just";
+	mes "be my imagination.";
+	next;
+	mes "[?????]";
+	mes "Heh heh heh heh...";
+	close;
+
+L_Caught:
+	mes "["+strcharinfo(0)+"]";
+	mes "Huh...?";
+	mes "What the?!";
+	mes "That guy, did he just...?";
+	mes "He did! Hey! That guy";
+	mes "stole some of my money!";
+	next;
+	mes "[Suspicious Guy]";
+	mes "Oh crap!";
+	mes "Gotta scram!";
+	mes "Eat my dust, good gu--!";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "Oh no, you don't!";
+	mes "I'm turning you in,";
+	mes "you pickpocket!";
+	next;
+	mes "[Suspicious Guy]";
+	mes "No...! I'm sorry!";
+	mes "I'll give you back";
+	mes "your money, just";
+	mes "let me go! Crap!";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "Alright, fine,";
+	mes "but you better quit";
+	mes "this life of crime!";
+	next;
+	mes "[Suspicious Guy]";
+	mes "You're right, that was";
+	mes "wrong of me. Thanks";
+	mes "for letting me go. Since";
+	mes "you did me a favor, I'll";
+	mes "sell you some tonic that";
+	mes "I use to run really fast.";
+	next;
+	mes "[Suspicious Guy]";
+	mes "I can only sell up to";
+	mes "three of my secret tonic";
+	mes "to you since that's all";
+	mes "I have. Each one will";
+	mes "cost 15,000 zeny. So";
+	mes "what do you say?";
+	next;
+	menu "Give me 1.",P_Tonic1,"Give me 2.",P_Tonic2,"Give me 3.",P_Tonic3,"No I'm fine",P_NoTonic;
+
+	P_Tonic1:
+		if(Zeny < 15000)goto L_Zeny;
+		mes "[Suspicious Guy]";
+		mes "Here you go~";
+		set Zeny,zeny-15000;
+		getitem 12016,1;
+		next;
+		mes "[Suspicious Guy]";
+		mes "Anyway, I'm gonna";
+		mes "get back to work.";
+		mes "Heh heh heh~";
+		if(rand(1,2)==1) goto L_Reset;
+		specialeffect 16;
+		disablenpc "Suspicious Guy#3";
+		enablenpc "Suspicious Guy#2";
+		close;
+
+	P_Tonic2:
+		if(Zeny < 30000)goto L_Zeny;
+		mes "[Suspicious Guy]";
+		mes "Here you go~";
+		set Zeny,zeny-30000;
+		getitem 12016,2;
+		next;
+		mes "[Suspicious Guy]";
+		mes "Anyway, I'm gonna";
+		mes "get back to work.";
+		mes "Heh heh heh~";
+		if(rand(1,2)==1) goto L_Reset;
+		specialeffect 16;
+		disablenpc "Suspicious Guy#3";
+		enablenpc "Suspicious Guy#2";
+		close;
+
+	P_Tonic3:
+		if(Zeny < 45000)goto L_Zeny;
+		mes "[Suspicious Guy]";
+		mes "Here you go~";
+		set Zeny,zeny-45000;
+		getitem 12016,3;
+		next;
+		mes "[Suspicious Guy]";
+		mes "Anyway, I'm gonna";
+		mes "get back to work.";
+		mes "Heh heh heh~";
+		if(rand(1,2)==1) goto L_Reset;
+		specialeffect 16;
+		disablenpc "Suspicious Guy#3";
+		enablenpc "Suspicious Guy#2";
+		close;
+
+	P_NoTonic:
+		mes "[Suspicious Guy]";
+		mes "Well...";
+		mes "You're just gonna";
+		mes "let me go, then?";
+		mes "That's awful generous.";
+		mes "Thanks, I appreciate it.";
+		next;
+		mes "[Suspicious Guy]";
+		mes "Anyway, I'm gonna";
+		mes "get back to work.";
+		mes "Heh heh heh~";
+		if(rand(1,2)==1) goto L_Reset;
+		specialeffect 16;
+		disablenpc "Suspicious Guy#3";
+		enablenpc "Suspicious Guy#2";
+		close;
+
+L_Reset:
+	specialeffect 16;
+	disablenpc "Suspicious Guy#3";
+	enablenpc "Suspicious Guy#1";
+	close;
+
+L_Zeny:
+	mes "[Suspicious Guy]";
+	mes "Uh..";
+	mes "you don't have enough zeny.";
+	next;
+	mes "[Suspicious Guy]";
+	mes "Anyway, I'm gonna";
+	mes "get back to work.";
+	mes "Heh heh heh~";
+	if(rand(1,2)==1) goto L_Reset;
+	specialeffect 16;
+	disablenpc "Suspicious Guy#3";
+	enablenpc "Suspicious Guy#2";
+	close;
+}
+
 
 //==============================================================
 // Friendship Quest

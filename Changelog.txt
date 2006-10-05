@@ -4,7 +4,39 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/05/06
+	* Added: 7 new random item giving items, Jewelry Box, Wrapped Mask, Bundle of Food, etc [Tsuyuki]
+	 - Note: I implemented the code in map/itemdb.c, but for some reason they do nothing..
+	 - Note: Can someone look at the for me? =D
+	* Fixed: Rewrote most of the Pickpocket quest with official dialogue + effects + rates [Tsuyuki]
+	* Fixed: Speed Potion/Authoritative Badge (Horse Crest) not working correctly [Tsuyuki]
+	* Added: Correct effect for Slow Potion [Tsuyuki]
+
+10/04/06
+	* Fixed: Problem with certain classes not being able to use cooking items [Tsuyuki]
+	* Added: Soul Linker + TaeKwon Master job quests, commented for now [Tsuyuki]
+	* Added: A missing Slot to Hatii Claw [Tsuyuki]
+	* Restored: Peco Peco's / Greatest General's modes [Tsuyuki]
+	* Removed: Flying Soul Linker from job_db2.txt (wasn't supposed to be there?) [Tsuyuki]
+	* Fixed: Some job names in the job_dbx.txt files [Tsuyuki]
+
+10/03/06
+	* Fixed: Bugs in Eye of Hellion Quest (Thanks to galaxy) [Tsuyuki]
+	* Added: Missing Atros MvP to the Rachel field spawns [Tsuyuki]
+	* Fixed: Cowardice Blade is now only equipable by Assassin [Tsuyuki]
+	* Fixed: Alchemist skill quest, you can now get the book properly [Tsuyuki]
+	* Fixed: Geographer's / Parasite's modes restored (attack people again) [Tsuyuki]
+	* Fixed: Sight Blaster's range (now takes range of sight) [Tsuyuki]
+
+10/01/06
+	* Recommitted: Some lost commits from Proximus in Perforce: [Tsuyuki]
+		* Removed: 'Surrender' optin from Kafra guild manager, as it was 100% custom [Proximus]
+		- Not present in the leaked aegis npc scripts. eAthena removed it as well, a while ago.
+		- The only way to surrender a castle would be to break the guild.
+	* Recommitted: Also readded Proximus' adoption skill database changes [Tsuyuki]
+
 09/31/06
+	* Fixed: New Coppola Headgear View ID [Tsuyuki]
 	* Added: npc/server/Sapho/jobs/1-1/swordman.txt [Sapho Team]
 	* Fixed: Some major bugs with monsters that summon multiple, different slaves [Tsuyuki]
 	 - Note: Someone update Trunk IMMEDIATELY please~

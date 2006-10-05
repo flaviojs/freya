@@ -46,7 +46,7 @@ void initStatusIconTable(void) {
 	//ENUM SKILLID skill.h       ENUM SC_ status.h     ENUM ICO_ status.h
 	init_sc(SM_PROVOKE,             SC_PROVOKE,          ICO_PROVOKE);
 	init_sc(SM_ENDURE,              SC_ENDURE,           ICO_ENDURE);
-	init_sc(SM_MAGNUM,				SC_MAGNUM,			 ICO_BLANK);
+	init_sc(SM_MAGNUM,              SC_MAGNUM,           ICO_BLANK);
 	init_sc(MG_SIGHT,               SC_SIGHT,            ICO_BLANK);
 	init_sc(MG_SAFETYWALL,          SC_SAFETYWALL,       ICO_BLANK);
 	init_sc(MG_FROSTDIVER,          SC_FREEZE,           ICO_BLANK);
@@ -4681,6 +4681,10 @@ int status_change_timer(int tid, unsigned int tick, int id, int data)
 	case SC_SIGHTBLASTER:		
 	  {
 		int range = battle_config.ruwach_range;
+
+		if (type == SC_SIGHTBLASTER)
+			range = battle_config.sight_range;
+
 		if (type == SC_SIGHT)
 			range = battle_config.sight_range;
 		map_foreachinarea(status_change_timer_sub, bl->m, bl->x - range, bl->y - range, bl->x + range, bl->y + range, 0, bl, type, tick);

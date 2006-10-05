@@ -21,6 +21,7 @@ ra_fild01.gat,0,0,0,0	monster	Gryphon	1447,1,0,0,0
 ra_fild02.gat,0,0,0,0	monster	Muscipular	1780,30,0,0,0
 ra_fild02.gat,0,0,0,0	monster	Drosera	1781,10,0,0,0
 ra_fild02.gat,0,0,0,0	monster	Galion	1783,20,0,0,0
+ra_fild02.gat,0,0,0,0	monster	Atros	1785,1,7200000,3600000,1
 
 // Ra_Fild03
 ra_fild03.gat,0,0,0,0	monster	Roween	1782,20,0,0,0
