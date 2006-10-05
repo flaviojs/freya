@@ -87,19 +87,19 @@
 574,Egg,Egg,0,0,60,30,,,,,27254783,2,,,,,{ itemheal rand(16,21),0; },{}
 575,2nd_Anniversary_Cake,2nd Anniversary Cake,0,0,,100,,,,,27254783,2,,,,,{ itemheal rand(270,329),0; },{}
 576,Prickly_Fruit,Prickly Fruit,0,20,10,40,0,0,0,0,27254783,2,0,0,0,0,{ itemheal rand(10,15),rand(10,15); },{}
-577,Bag_of_Grain,Bag of Grain,0,200,100,20,,,,,16777215,2,,,,,{ itemheal rand(10,14),0; },{}
-578,Strawberry,Strawberry,0,200,100,20,,,,,16777215,2,,,,,{ itemheal 0,rand(10,14); },{}
-579,Fresh_Fish,Fresh Fish,0,250,125,20,,,,,16777215,2,,,,,{ itemheal rand(140,189),0; },{}
-580,Bread,Bread,0,150,75,20,,,,,16777215,20,,,,,{ itemheal rand(20,34),0; },{}
-581,Edible_Mushroom,Edible Mushroom,0,40,20,20,,,,,16777215,2,,,,,{ itemheal rand(10,14),0; },{}
-582,Orange,Orange,0,300,150,20,,,,,16777215,2,,,,,{ itemheal rand(10,15),rand(10,15); },{}
-583,Ketupat,Ketupat,0,100,50,10,,,,,16777215,2,,,,,{ itemheal rand(100,200),0; },{}
-584,Skewer_Soup,Skewer Soup,0,50,25,60,,,,,16777215,2,,,,,{ itemheal rand(45,64),0; },{}
+577,Bag_of_Grain,Bag of Grain,0,200,100,20,,,,,27254783,2,,,,,{ itemheal rand(10,14),0; },{}
+578,Strawberry,Strawberry,0,200,100,20,,,,,27254783,2,,,,,{ itemheal 0,rand(10,14); },{}
+579,Fresh_Fish,Fresh Fish,0,250,125,20,,,,,27254783,2,,,,,{ itemheal rand(140,189),0; },{}
+580,Bread,Bread,0,150,75,20,,,,,27254783,20,,,,,{ itemheal rand(20,34),0; },{}
+581,Edible_Mushroom,Edible Mushroom,0,40,20,20,,,,,27254783,2,,,,,{ itemheal rand(10,14),0; },{}
+582,Orange,Orange,0,300,150,20,,,,,27254783,2,,,,,{ itemheal rand(10,15),rand(10,15); },{}
+583,Ketupat,Ketupat,0,100,50,10,,,,,27254783,2,,,,,{ itemheal rand(100,200),0; },{}
+584,Skewer_Soup,Skewer Soup,0,50,25,60,,,,,27254783,2,,,,,{ itemheal rand(45,64),0; },{}
 585,Brusti,Brusti,0,15,7,40,,,,,16777215,2,,,,,{ itemheal rand(17,20),0; itemskill 74,3,"Magnificat"; },{}
-586,Mother's_Cake,Mother's Cake,0,,10,100,,,,,16777215,2,,,,,{ itemheal rand(325,404),0; },{}
-587,Red_Thorn_Fruit,Red Thorn Fruit,0,,10,40,,,,,16777215,2,,,,,{ itemheal rand(35,49),rand(10,19); },{}
-588,Spaghetti,Spaghetti,0,,10,100,,,,,16777215,2,,,,,{ itemheal rand(45,64),0; },{}
-589,Pizza,Pizza,0,,10,150,,,,,16777215,2,,,,,{ itemheal rand(45,64),0; },{}
+586,Mother's_Cake,Mother's Cake,0,,10,100,,,,,27254783,2,,,,,{ itemheal rand(325,404),0; },{}
+587,Red_Thorn_Fruit,Red Thorn Fruit,0,,10,40,,,,,27254783,2,,,,,{ itemheal rand(35,49),rand(10,19); },{}
+588,Spaghetti,Spaghetti,0,,10,100,,,,,27254783,2,,,,,{ itemheal rand(45,64),0; },{}
+589,Pizza,Pizza,0,,10,150,,,,,27254783,2,,,,,{ itemheal rand(45,64),0; },{}
 
 // Usable Items
 601,Fly_Wing,Fly Wing,2,60,30,50,,,,,27254783,2,,,,,{ warp "Random",0,0; },{}

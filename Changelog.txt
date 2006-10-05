@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/04/06
+	* Fixed: Problem with certain classes not being able to use cooking items [Tsuyuki]
 	* Added: Soul Linker + TaeKwon Master job quests, commented for now [Tsuyuki]
 	* Added: A missing Slot to Hatii Claw [Tsuyuki]
 	* Restored: Peco Peco's / Greatest General's modes [Tsuyuki]
