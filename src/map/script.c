@@ -181,7 +181,9 @@ int buildin_guildopenstorage(struct script_state *st);
 int buildin_itemskill(struct script_state *st);
 int buildin_produce(struct script_state *st);
 int buildin_monster(struct script_state *st);
+int buildin_monsteragro(struct script_state *st);
 int buildin_areamonster(struct script_state *st);
+int buildin_areamonsteragro(struct script_state *st);
 int buildin_killmonster(struct script_state *st);
 int buildin_killmonsterall(struct script_state *st);
 int buildin_doevent(struct script_state *st);
@@ -423,7 +425,9 @@ struct {
 	{buildin_itemskill,"itemskill","iis"},
 	{buildin_produce,"produce","i"},
 	{buildin_monster,"monster","siisii*"},
+	{buildin_monsteragro,"monsteragro","siisii*"}, // as monster, but all monster are agressiv
 	{buildin_areamonster,"areamonster","siiiisii*"},
+	{buildin_areamonster,"areamonsteragro","siiiisii*"}, // as monster, but all monster are agressiv
 	{buildin_killmonster,"killmonster","ss"},
 	{buildin_killmonsterall,"killmonsterall","s"},
 	{buildin_doevent,"doevent","s"},
@@ -3978,6 +3982,34 @@ int buildin_monster(struct script_state *st)
  * モンスター発生
  *------------------------------------------
  */
+int buildin_monsteragro(struct script_state *st)
+{
+	int class, amount, x, y, i, id;
+	char *str, *mapname, *event = "";
+	struct mob_data *md;
+
+	mapname = conv_str(st, &(st->stack->stack_data[st->start + 2]));
+	x       = conv_num(st, &(st->stack->stack_data[st->start + 3]));
+	y       = conv_num(st, &(st->stack->stack_data[st->start + 4]));
+	str     = conv_str(st, &(st->stack->stack_data[st->start + 5]));
+	class   = conv_num(st, &(st->stack->stack_data[st->start + 6]));
+	amount  = conv_num(st, &(st->stack->stack_data[st->start + 7]));
+	if (st->end > st->start + 8)
+		event = conv_str(st, &(st->stack->stack_data[st->start + 8]));
+
+	for (i = 0; i < amount; i++) {
+		id = mob_once_spawn(map_id2sd(st->rid), mapname, x, y, str, class, 1, event);
+		if ((md = (struct mob_data *)map_id2bl(id)))
+			md->mode = mob_db[md->class].mode | (0x1 + 0x4 + 0x80); // like dead branch
+	}
+
+	return 0;
+}
+
+/*==========================================
+ * モンスター発生
+ *------------------------------------------
+ */
 int buildin_areamonster(struct script_state *st)
 {
 	int class, amount, x0, y0, x1, y1;
@@ -3995,6 +4027,36 @@ int buildin_areamonster(struct script_state *st)
 		event = conv_str(st, &(st->stack->stack_data[st->start + 10]));
 
 	mob_once_spawn_area(map_id2sd(st->rid), mapname, x0, y0, x1, y1, str, class, amount, event);
+
+	return 0;
+}
+
+/*==========================================
+ * モンスター発生
+ *------------------------------------------
+ */
+int buildin_areamonsteragro(struct script_state *st)
+{
+	int class, amount, x0, y0, x1, y1, i, id;
+	char *str, *mapname, *event = "";
+	struct mob_data *md;
+
+	mapname = conv_str(st, &(st->stack->stack_data[st->start + 2]));
+	x0      = conv_num(st, &(st->stack->stack_data[st->start + 3]));
+	y0      = conv_num(st, &(st->stack->stack_data[st->start + 4]));
+	x1      = conv_num(st, &(st->stack->stack_data[st->start + 5]));
+	y1      = conv_num(st, &(st->stack->stack_data[st->start + 6]));
+	str     = conv_str(st, &(st->stack->stack_data[st->start + 7]));
+	class   = conv_num(st, &(st->stack->stack_data[st->start + 8]));
+	amount  = conv_num(st, &(st->stack->stack_data[st->start + 9]));
+	if (st->end > st->start + 10)
+		event = conv_str(st, &(st->stack->stack_data[st->start + 10]));
+
+	for (i = 0; i < amount; i++) {
+		id = mob_once_spawn_area(map_id2sd(st->rid), mapname, x0, y0, x1, y1, str, class, 1, event);
+		if ((md = (struct mob_data *)map_id2bl(id)))
+			md->mode = mob_db[md->class].mode | (0x1 + 0x4 + 0x80); // like dead branch
+	}
 
 	return 0;
 }

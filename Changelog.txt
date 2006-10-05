@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/05/06
+	* Added: monsteragro and areamonsteragro script commands to spawn agressiv monster [Yor]
 	* Added: 7 new random item giving items, Jewelry Box, Wrapped Mask, Bundle of Food, etc [Tsuyuki]
 	 - Note: I implemented the code in map/itemdb.c, but for some reason they do nothing..
 	 - Note: Can someone look at the for me? =D
