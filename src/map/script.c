@@ -427,7 +427,7 @@ struct {
 	{buildin_monster,"monster","siisii*"},
 	{buildin_monsteragro,"monsteragro","siisii*"}, // as monster, but all monster are agressiv
 	{buildin_areamonster,"areamonster","siiiisii*"},
-	{buildin_areamonster,"areamonsteragro","siiiisii*"}, // as monster, but all monster are agressiv
+	{buildin_areamonsteragro,"areamonsteragro","siiiisii*"}, // as monster, but all monster are agressiv
 	{buildin_killmonster,"killmonster","ss"},
 	{buildin_killmonsterall,"killmonsterall","s"},
 	{buildin_doevent,"doevent","s"},
@@ -3999,8 +3999,8 @@ int buildin_monsteragro(struct script_state *st)
 
 	for (i = 0; i < amount; i++) {
 		id = mob_once_spawn(map_id2sd(st->rid), mapname, x, y, str, class, 1, event);
-		if ((md = (struct mob_data *)map_id2bl(id)))
-			md->mode = mob_db[md->class].mode | (0x1 + 0x4 + 0x80); // like dead branch
+		if ((md = (struct mob_data *)map_id2bl(id)) != NULL)
+			md->mode = md->mode | (0x1 + 0x4 + 0x80); // like dead branch
 	}
 
 	return 0;
@@ -4054,8 +4054,8 @@ int buildin_areamonsteragro(struct script_state *st)
 
 	for (i = 0; i < amount; i++) {
 		id = mob_once_spawn_area(map_id2sd(st->rid), mapname, x0, y0, x1, y1, str, class, 1, event);
-		if ((md = (struct mob_data *)map_id2bl(id)))
-			md->mode = mob_db[md->class].mode | (0x1 + 0x4 + 0x80); // like dead branch
+		if ((md = (struct mob_data *)map_id2bl(id)) != NULL)
+			md->mode = md->mode | (0x1 + 0x4 + 0x80); // like dead branch
 	}
 
 	return 0;

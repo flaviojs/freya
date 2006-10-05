@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/05/06
+	* Fixed: areamonsteragro: invalid function call (function of areamonster) [Yor]
 	* Updated: mob_db_map.sql and item_db_map.sql [Yor]
 	* Fixed: item_db.txt: missing a ";" (Rocker Card) [Yor]
 	* Added: monsteragro and areamonsteragro script commands to spawn agressiv monster [Yor]
