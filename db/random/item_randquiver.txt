@@ -1,0 +1,23 @@
+// item_randquiver.txt, Random Quiver Database
+//
+// <Item_ID>,<Description (Dummy)>,<Rate>
+//
+// Rate Examples
+// 10000   = 1%
+// 500000  = 50%
+// 1000000 = 100%
+
+0,Quiver,12004
+12004,Quiver,500000
+12005,Iron Arrow Quiver,500000
+12006,Steel Arrow Quiver,500000
+12007,Oridecon Arrow Quiver,500000
+12008,Fire Arrow Quiver,500000
+12009,Silver Arrow Quiver,500000
+12010,Wind Arrow Quiver,500000
+12011,Stone Arrow Quiver,500000
+12012,Crystal Arrow Quiver,500000
+12013,Shadow Arrow Quiver,500000
+12014,Immaterial Arrow Quiver,500000
+12015,Rusty Arrow Quiver,500000
+12183,Holy Arrow Quiver,500000

@@ -1,0 +1,21 @@
+// item_foodbundle.txt, Bundle of Food Database
+//
+// <Item_ID>,<Description (Dummy)>,<Rate>
+//
+// Rate Examples
+// 10000   = 1%
+// 500000  = 50%
+// 1000000 = 100%
+
+0,Apple,512
+512,Apple,500000
+513,Banana,500000
+514,Grape,500000
+515,Carrot,500000
+516,Potato,500000
+517,Meat,500000
+528,Monster's Feed,500000
+529,Candy,500000
+530,Candy Cane,500000
+544,Fresh Fish,500000
+551,Sushi,500000

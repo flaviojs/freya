@@ -4,6 +4,14 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/05/06
+	* Added: 7 new random item giving items, Jewelry Box, Wrapped Mask, Bundle of Food, etc [Tsuyuki]
+	 - Note: I implemented the code in map/itemdb.c, but for some reason they do nothing..
+	 - Note: Can someone look at the for me? =D
+	* Fixed: Rewrote most of the Pickpocket quest with official dialogue + effects + rates [Tsuyuki]
+	* Fixed: Speed Potion/Authoritative Badge (Horse Crest) not working correctly [Tsuyuki]
+	* Added: Correct effect for Slow Potion [Tsuyuki]
+
 10/04/06
 	* Fixed: Problem with certain classes not being able to use cooking items [Tsuyuki]
 	* Added: Soul Linker + TaeKwon Master job quests, commented for now [Tsuyuki]
