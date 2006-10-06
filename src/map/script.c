@@ -181,9 +181,9 @@ int buildin_guildopenstorage(struct script_state *st);
 int buildin_itemskill(struct script_state *st);
 int buildin_produce(struct script_state *st);
 int buildin_monster(struct script_state *st);
-int buildin_monsteragro(struct script_state *st);
+int buildin_monsteragro(struct script_state *st); // as monster, but all monster are agressiv
 int buildin_areamonster(struct script_state *st);
-int buildin_areamonsteragro(struct script_state *st);
+int buildin_areamonsteragro(struct script_state *st); // as areamonster, but all monster are agressiv
 int buildin_killmonster(struct script_state *st);
 int buildin_killmonsterall(struct script_state *st);
 int buildin_doevent(struct script_state *st);
@@ -205,6 +205,8 @@ int buildin_getusers(struct script_state *st);
 int buildin_getmapusers(struct script_state *st);
 int buildin_getmapusers2(struct script_state *st); // Return number of ALIVE players on a map
 int buildin_getmapusers3(struct script_state *st); // Return number of DEAD players on a map
+int buildin_getmapgms2(struct script_state *st); // as getmapusers2, return number of ALIVE GMs on a map (with minimum level of concerned GMs)
+int buildin_getmapgms3(struct script_state *st); // as getmapusers3, return number of DEAD GMs on a map (with minimum level of concerned GMs)
 int buildin_getareausers(struct script_state *st);
 int buildin_getareadropitem(struct script_state *st);
 int buildin_enablenpc(struct script_state *st);
@@ -427,7 +429,7 @@ struct {
 	{buildin_monster,"monster","siisii*"},
 	{buildin_monsteragro,"monsteragro","siisii*"}, // as monster, but all monster are agressiv
 	{buildin_areamonster,"areamonster","siiiisii*"},
-	{buildin_areamonsteragro,"areamonsteragro","siiiisii*"}, // as monster, but all monster are agressiv
+	{buildin_areamonsteragro,"areamonsteragro","siiiisii*"}, // as areamonster, but all monster are agressiv
 	{buildin_killmonster,"killmonster","ss"},
 	{buildin_killmonsterall,"killmonsterall","s"},
 	{buildin_doevent,"doevent","s"},
@@ -452,6 +454,10 @@ struct {
 	{buildin_getmapusers2,"getmapaliveusers","s"}, // Return number of ALIVE players on a map
 	{buildin_getmapusers3,"getmapusers3","s"}, // Return number of DEAD players on a map
 	{buildin_getmapusers3,"getmapdeadusers","s"}, // Return number of DEAD players on a map
+	{buildin_getmapgms2,"getmapgms2","si"}, // as getmapusers2, return number of ALIVE GMs on a map (with minimum level of concerned GMs)
+	{buildin_getmapgms2,"getmapalivegms","si"}, // as getmapaliveusers, return number of ALIVE GMs on a map (with minimum level of concerned GMs)
+	{buildin_getmapgms3,"getmapgms3","si"}, // as getmapusers3, return number of DEAD GMs on a map (with minimum level of concerned GMs)
+	{buildin_getmapgms3,"getmapdeadgms","si"}, // as getmapdeadusers, return number of DEAD GMs on a map (with minimum level of concerned GMs)
 	{buildin_getareausers,"getareausers","siiii"},
 	{buildin_getareadropitem,"getareadropitem","siiiii"},
 	{buildin_enablenpc,"enablenpc","s"},
@@ -4525,6 +4531,58 @@ int buildin_getmapusers3(struct script_state *st) {
 	for (i = 0; i < fd_max; i++)
 		if (session[i] && (sd = session[i]->session_data) && sd->state.auth && m == sd->bl.m && pc_isdead(sd))
 			j++;
+	push_val(st->stack, C_INT, j);
+
+	return 0;
+}
+
+/*====================================
+ * Return number of ALIVE GMs on a map
+ *------------------------------------
+ */
+int buildin_getmapgms2(struct script_state *st) {
+	struct map_session_data *sd;
+	char *str;
+	int m, i, j, min_lvl;
+
+	str = conv_str(st, &(st->stack->stack_data[st->start + 2]));
+	min_lvl = conv_num(st, &(st->stack->stack_data[st->start + 3]));
+	if ((m = map_mapname2mapid(str)) < 0) { // map id on this server (m == -1 if not in actual map-server)
+		push_val(st->stack, C_INT, -1);
+		return 0;
+	}
+
+	j = 0;
+	for (i = 0; i < fd_max; i++)
+		if (session[i] && (sd = session[i]->session_data) && sd->state.auth && m == sd->bl.m && !pc_isdead(sd))
+			if (sd->GM_level >= min_lvl)
+				j++;
+	push_val(st->stack, C_INT, j);
+
+	return 0;
+}
+
+/*===================================
+ * Return number of DEAD GMs on a map
+ *-----------------------------------
+ */
+int buildin_getmapgms3(struct script_state *st) {
+	struct map_session_data *sd;
+	char *str;
+	int m, i, j, min_lvl;
+
+	str = conv_str(st, &(st->stack->stack_data[st->start + 2]));
+	min_lvl = conv_num(st, &(st->stack->stack_data[st->start + 3]));
+	if ((m = map_mapname2mapid(str)) < 0) { // map id on this server (m == -1 if not in actual map-server)
+		push_val(st->stack, C_INT, -1);
+		return 0;
+	}
+
+	j = 0;
+	for (i = 0; i < fd_max; i++)
+		if (session[i] && (sd = session[i]->session_data) && sd->state.auth && m == sd->bl.m && pc_isdead(sd))
+			if (sd->GM_level >= min_lvl)
+				j++;
 	push_val(st->stack, C_INT, j);
 
 	return 0;
