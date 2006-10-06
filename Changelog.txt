@@ -4,6 +4,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/06/06
+	* Added: getmapgms2/getmapalivegms and getmapgms3/getmapdeadgms script commands to count number of GMs on a map [Yor]
+	         example: getmapalivegms("prontera.gat", 20): get number of alive GM (level 20 or more) on prontera.gat
+
 10/05/06
 	* Fixed: Sage's Elemental Converters now work once again [Tsuyuki]
 	* Fixed: My 7 new random items not working correctly, they now work [Tsuyuki]
