@@ -5,6 +5,24 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/05/06
+	* Fixed: Sage's Elemental Converters now work once again [Tsuyuki]
+	* Fixed: My 7 new random items not working correctly, they now work [Tsuyuki]
+	* Fixed: Added Thanatos Tower to the dev temp warper [Tsuyuki]
+	 - Note: Cannot convert quest from eAthena... so this will do for now
+	* Fixed: Some Kiel Hyre mob skills [Tsuyuki]
+	* Fixed: Corrected custom Kiel Hyre Dungeon warps [Tsuyuki]
+	* Added: Set bonus for Survivor set [Tsuyuki]
+	* Fixed: All new set items/all card sets not working properly (if they weren't) [Tsuyuki]
+	* Added: Undershirt [0] to Pasana [Tsuyuki]
+	* Added: Angel's Cardigan to Vagabond Wolf [Tsuyuki]
+	* Added: Morrigane's Manteau to Thanatos Phantom [Tsuyuki]
+	* Changed: Increased drop rate of Morpheus' Shawl from Aliza [Tsuyuki]
+	* Added: Eagle Wing to High Wizard Kathryne [Tsuyuki]
+	* Added: Angel's Reincarnation to Vocal [Tsuyuki]
+	* Added: Angelic Guard to Mastering [Tsuyuki]
+	* Added: Angelic Protection to Eclipse [Tsuyuki]
+	* Added: Angel's Kiss to Toad [Tsuyuki]
+	* Removed: Odin's Blessings from Valkyrie Randgris [Tsuyuki]
 	* Fixed: areamonsteragro: invalid function call (function of areamonster) [Yor]
 	* Updated: mob_db_map.sql and item_db_map.sql [Yor]
 	* Fixed: item_db.txt: missing a ";" (Rocker Card) [Yor]

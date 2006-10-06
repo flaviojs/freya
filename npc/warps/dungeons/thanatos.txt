@@ -15,6 +15,7 @@
 //= 1.4 Fixed 2 warps [Justin84]
 //= 1.5 Added Thanatos entrance warp. Now you can go in [Justin84]
 //= 1.6 Corrected Warp Locations: tha_scene01, tha_scene02, tha_t10, tha_t11 [Proximus]
+//= 1.7 Enabled custom warps for now, until the quest is implemented [Tsuyuki]
 //============================================================
 
 // Affiliated Files : tha_statues.txt
@@ -40,8 +41,6 @@ tha_scene01.gat,144,200,0	warp	tha_scene01	1,1,tha_t01.gat,150,35
 tha_t01.gat,150,32,0	warp	tha_scene02	1,1,tha_scene01.gat,142,200
 
 //Thanatos Tower
-//tha_scene01.gat,144,200,0	warp	tha_scene03	1,1,tha_t01.gat,150,39
-//tha_t01.gat,150,32,0	warp	tha_scene04	1,1,tha_scene01.gat,142,200
 tha_t01.gat,150,149,0	warp	tha_t02	1,1,tha_t02.gat,150,136
 tha_t02.gat,150,129,0	warp	tha_t01	1,1,tha_t01.gat,150,142
 tha_t02.gat,226,161,0	warp	tha_t03	1,1,tha_t03.gat,220,158
@@ -50,33 +49,33 @@ tha_t03.gat,60,134,0	warp	tha_t04	1,1,tha_t04.gat,59,143
 tha_t04.gat,59,136,0	warp	tha_t03	1,1,tha_t03.gat,59,126
 tha_t04.gat,83,36,0	warp	tha_t05	1,1,tha_t05.gat,62,11
 //According to official info, 5F it is not possible to return to the 4F, so we disable this warp:
-//tha_t05.gat,62,4,0	warp	tha_t04	1,1,tha_t04.gat,90,34
+tha_t05.gat,62,4,0	warp	tha_t04	1,1,tha_t04.gat,90,34
 tha_t05.gat,208,96,0	warp	tha_t06	1,1,tha_t06.gat,119,228
 tha_t05.gat,185,232,0	warp	tha_t06	1,1,tha_t06.gat,119,228
 tha_t05.gat,61,157,0	warp	tha_t06	1,1,tha_t06.gat,119,228
 tha_t06.gat,119,235,0	warp	tha_t05	1,1,tha_t05.gat,61,164
 
-//tha_t06.gat,119,120,0	warp	tha_t07	1,1,tha_t07.gat,35,166
+tha_t06.gat,119,120,0	warp	tha_t07	1,1,tha_t07.gat,35,166
 //Thanatos 6F to 7F
-tha_t06.gat,119,120,4	script	tha_t07warp	45,2,2,{
-	mes "You have to gather 4 types of keys to enter the 7th Floor.";
-	mes "Give me the key of red, yellow, blue & green.";
-	next;
-	menu "Give the keys",-,"Leave",T_CLOSE;
-
-	if(countitem(7421) < 1 || countitem(7422) < 1 || countitem(7423) < 1 || countitem(7424) < 1) goto T_1;
-	delitem 7421,1;
-	delitem 7422,1;
-	delitem 7423,1;
-	delitem 7424,1;
-	warp "tha_t07.gat",35,166;
-	end;
-
-T_1:
-	mes "You don't have enough keys.";
-T_CLOSE:
-	close;
-}
+//tha_t06.gat,119,120,4	script	tha_t07warp	45,2,2,{
+//	mes "You have to gather 4 types of keys to enter the 7th Floor.";
+//	mes "Give me the key of red, yellow, blue & green.";
+//	next;
+//	menu "Give the keys",-,"Leave",T_CLOSE;
+//
+//	if(countitem(7421) < 1 || countitem(7422) < 1 || countitem(7423) < 1 || countitem(7424) < 1) goto //T_1;
+//	delitem 7421,1;
+//	delitem 7422,1;
+//	delitem 7423,1;
+//	delitem 7424,1;
+//	warp "tha_t07.gat",35,166;
+//	end;
+//
+//T_1:
+//	mes "You don't have enough keys.";
+//T_CLOSE:
+//	close;
+//}
 
 
 tha_t07.gat,28,166,0	warp	tha_t06	1,1,tha_t06.gat,119,127
