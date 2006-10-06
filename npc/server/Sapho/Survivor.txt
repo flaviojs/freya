@@ -3,7 +3,7 @@
 //===== By: ==================================================
 //= Garion, GAlion, DaVinci, Jondalar, Kheldar
 //===== Current Version: =====================================
-//= 0.1
+//= 1.4
 //===== Compatible With: =====================================
 //= Espérons, Nezumi, JAthena, et EAthena
 //===== Description: =========================================
@@ -12,6 +12,7 @@
 //= 1.2 - harmonisation warp warpret -> warprep
 //=       changement getmapusers -> getmapaliveusers
 //= 1.3 - guild_vs4 -> guild_vs4.gat
+//= 1.4 - pvpoff/pvpon/gvgoff/gvgon fixées
 //===== Additional Comments: =================================
 //=Mettre les warp et les bonnes coordonnées pour les NPC.
 //============================================================
@@ -27,8 +28,8 @@ function	script	close_spawn	{
 	removemapflag "guild_vs4",mf_nopenalty;
 	removemapflag "guild_vs4",mf_nozenypenalty;
 	killmonsterall "guild_vs4.gat";
-	pvpon(0);
-	gvgon(0);
+	pvpon "guild_vs4.gat";
+	gvgon "guild_vs4.gat";
 	set $@Spawn_flag,0;
 	return;
 }
@@ -363,7 +364,10 @@ L_stoptimer:
 
 
 prontera.gat,174,154,3	script	Spawner	743,{
-	if (getgmlevel(0) >= 20) menu "Menu spécial GM",L_GmMenu,"Menu Joueur",-;
+	if (getgmlevel(0) < 20) goto L_JoueurMenu;
+	menu "Menu spécial GM",L_GmMenu,"Menu Joueur",L_JoueurMenu;
+
+L_JoueurMenu:
 	mes "[Spawner]";
 	mes "Le Spawn ne peut être activé que par un GM ou de manière automatisée le Samedi à 13h50.";
 	mes "Une fois activé, vous avez 10 minutes pour venir ici et joindre la partie.";
@@ -417,8 +421,8 @@ L_creawarp:
 	enablenpc "warpspawn";
 	enablenpc "warprep";
 	initnpctimer;
-	pvpoff(0);
-	gvgoff(0);
+	pvpoff "guild_vs4.gat";
+	gvgoff "guild_vs4.gat";
 	setmapflag "guild_vs4.gat",mf_nosave;
 	setmapflag "guild_vs4.gat",mf_nopvp;
 	setmapflag "guild_vs4.gat",mf_nomemo;
