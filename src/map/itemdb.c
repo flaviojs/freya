@@ -132,7 +132,7 @@ int itemdb_searchrandomid(int flags)
 	data[11].nameid = aid_kit_default;     data[11].count = aid_kit_count;     data[11].list = aid_kit;
 	data[12].nameid = food_bundle_default; data[12].count = food_bundle_count; data[12].list = food_bundle;
 
-	if (flags >= 1 && flags <= 5) {
+	if (flags >= 1 && flags <= 12) {
 		nameid = data[flags].nameid;
 		count = data[flags].count;
 		list = data[flags].list;

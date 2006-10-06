@@ -26,4 +26,5 @@ kh_dun02.gat,0,0,0,0	monster	Alicel	1735,50,0,0,0
 kh_dun02.gat,0,0,0,0	monster	Aliot	1736,45,0,0,0
 kh_dun02.gat,0,0,0,0	monster	Aliza	1737,1,0,0,0
 kh_dun02.gat,0,0,0,0	monster	Constant	1738,40,0,0,0
+kh_dun02.gat,0,0,0,0	monster	Kiel	1733,1,7200000,3600000,1
 kh_dun02.gat,0,0,0,0	monster	Kiel D-01	1734,1,7200000,3600000,1
