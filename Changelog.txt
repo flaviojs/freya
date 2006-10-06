@@ -5,6 +5,15 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/06/06
+	* Fixed: Some other new items not working correctly [Tsuyuki]
+	* Added: Effect for item Women's Bundle [Tsuyuki]
+	* Added: Prices for a couple items [Tsuyuki]
+	* Added: Goddess of Cursed Fortune's Brooch to Teddy Bear [Tsuyuki]
+	* Added: Shinobi Sash item to Shinobi [Tsuyuki]
+	* Added: New items to the no refine database [Tsuyuki]
+	* Added: Two new items, Old Red Box + Old Green Box random item databases [Tsuyuki]
+	* Fixed: Typo in custom/warper.txt script [Tsuyuki]
+	* Removed: Some custom monsters from mob_db2.txt [Tsuyuki]
 	* Added: getmapgms2/getmapalivegms and getmapgms3/getmapdeadgms script commands to count number of GMs on a map [Yor]
 	         example: getmapalivegms("prontera.gat", 20): get number of alive GM (level 20 or more) on prontera.gat
 
@@ -26,7 +35,6 @@ Date	Added
 	* Added: Angelic Guard to Mastering [Tsuyuki]
 	* Added: Angelic Protection to Eclipse [Tsuyuki]
 	* Added: Angel's Kiss to Toad [Tsuyuki]
-	* Removed: Odin's Blessings from Valkyrie Randgris [Tsuyuki]
 	* Fixed: areamonsteragro: invalid function call (function of areamonster) [Yor]
 	* Updated: mob_db_map.sql and item_db_map.sql [Yor]
 	* Fixed: item_db.txt: missing a ";" (Rocker Card) [Yor]

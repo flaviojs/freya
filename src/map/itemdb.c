@@ -26,9 +26,9 @@
 
 static struct dbt* item_db;
 
-static struct random_item_data blue_box[MAX_RANDITEM], violet_box[MAX_RANDITEM], card_album[MAX_RANDITEM], gift_box[MAX_RANDITEM], cookie[MAX_RANDITEM], rand_quiver[MAX_RANDITEM], tame_gift[MAX_RANDITEM], jewel_box[MAX_RANDITEM], wrap_mask[MAX_RANDITEM], scroll_pack[MAX_RANDITEM], aid_kit[MAX_RANDITEM], food_bundle[MAX_RANDITEM];
-static int blue_box_count=0,violet_box_count=0,card_album_count=0,gift_box_count=0,cookie_count=0,rand_quiver_count=0,tame_gift_count=0,jewel_box_count=0,wrap_mask_count=0,scroll_pack_count=0,aid_kit_count=0,food_bundle_count=0;
-static int blue_box_default=0,violet_box_default=0,card_album_default=0,gift_box_default=0,cookie_default=0,rand_quiver_default=0,tame_gift_default=0,jewel_box_default=0,wrap_mask_default=0,scroll_pack_default=0,aid_kit_default=0,food_bundle_default=0;
+static struct random_item_data blue_box[MAX_RANDITEM], violet_box[MAX_RANDITEM], card_album[MAX_RANDITEM], gift_box[MAX_RANDITEM], cookie[MAX_RANDITEM], rand_quiver[MAX_RANDITEM], tame_gift[MAX_RANDITEM], jewel_box[MAX_RANDITEM], wrap_mask[MAX_RANDITEM], scroll_pack[MAX_RANDITEM], aid_kit[MAX_RANDITEM], food_bundle[MAX_RANDITEM], red_box[MAX_RANDITEM], green_box[MAX_RANDITEM];
+static int blue_box_count=0,violet_box_count=0,card_album_count=0,gift_box_count=0,cookie_count=0,rand_quiver_count=0,tame_gift_count=0,jewel_box_count=0,wrap_mask_count=0,scroll_pack_count=0,aid_kit_count=0,food_bundle_count=0,red_box_count=0,green_box_count=0;
+static int blue_box_default=0,violet_box_default=0,card_album_default=0,gift_box_default=0,cookie_default=0,rand_quiver_default=0,tame_gift_default=0,jewel_box_default=0,wrap_mask_default=0,scroll_pack_default=0,aid_kit_default=0,food_bundle_default=0,red_box_default=0,green_box_default=0;
 static struct item_group itemgroup_db[MAX_ITEMGROUP];
 
 // Function declarations
@@ -131,8 +131,10 @@ int itemdb_searchrandomid(int flags)
 	data[10].nameid = scroll_pack_default; data[10].count = scroll_pack_count; data[10].list = scroll_pack;
 	data[11].nameid = aid_kit_default;     data[11].count = aid_kit_count;     data[11].list = aid_kit;
 	data[12].nameid = food_bundle_default; data[12].count = food_bundle_count; data[12].list = food_bundle;
+	data[13].nameid = red_box_default;     data[13].count = red_box_count;     data[13].list = red_box;
+	data[14].nameid = green_box_default;   data[14].count = green_box_count;   data[14].list = green_box;
 
-	if (flags >= 1 && flags <= 12) {
+	if (flags >= 1 && flags <= 14) {
 		nameid = data[flags].nameid;
 		count = data[flags].count;
 		list = data[flags].list;
@@ -658,6 +660,8 @@ static int itemdb_read_randomitem()
 		{"db/random/item_scrollpack.txt",  scroll_pack, &scroll_pack_count, &scroll_pack_default },
 		{"db/random/item_firstaidkit.txt", aid_kit,     &aid_kit_count,     &aid_kit_default },
 		{"db/random/item_foodbundle.txt",  food_bundle, &food_bundle_count, &food_bundle_default },
+		{"db/random/item_redbox.txt",      red_box,     &red_box_count,     &red_box_default },
+		{"db/random/item_greenbox.txt",    green_box,   &green_box_count,   &green_box_default },
 	};
 
 	for(i = 0; i < sizeof(data) / sizeof(data[0]); i++) {

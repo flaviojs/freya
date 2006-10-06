@@ -56,10 +56,10 @@
 547,Condensed_White_Potion,Condensed White Potion,0,1650,825,50,,,,,27254783,2,,,,,{ itemheal rand(325,404),0; },{}
 548,Cheese,Cheese,0,2800,1400,50,,,,,27254783,2,,,,,{ itemheal 0,rand(10,14); },{}
 549,Yam,Yam,0,180,90,80,,,,,27254783,2,,,,,{ itemheal rand(50,99),0; },{}
-550,Rice_Cake,Rice Cake,0,20,10,10,,,,,27254783,2,,,,,{ itemheal 10,0; },{}
+550,Rice_Cake,Rice Cake,0,100,50,10,,,,,27254783,2,,,,,{ itemheal 10,0; },{}
 551,Sushi,Sushi,0,20,10,50,,,,,27254783,2,,,,,{ itemheal rand(50,60),0; },{}
 552,Ketupat,Ketupat,0,100,50,10,,,,,27254783,2,,,,,{ itemheal rand(100,200),0; },{}
-553,Dumpling,Dumpling,0,20,10,50,,,,,27254783,2,,,,,{ itemheal rand(39,68),0; },{}
+553,Dumpling,Dumpling,0,2,1,50,,,,,27254783,2,,,,,{ itemheal rand(39,68),0; },{}
 554,Mochi,Mochi,0,100,50,80,,,,,27254783,2,,,,,{ itemheal rand(15,22),0; if(rand(100)<3) sc_start SC_Stan,10000,0; if(rand(100)<3) sc_start SC_Blind,10000,0; },{}
 555,Traditional_Rice_Cake,Rice_Cake,0,20,10,20,,,,,27254783,2,,,,,{ itemheal rand(30,50),0; },{}
 556,Rolled_Rice,Rolled Rice,0,20,0,10,,,,,27254783,3,,,,,{ itemheal rand(10,50),0; },{}
@@ -70,7 +70,7 @@
 561,Milk_Chocolate_Bar,Milk Chocolate,0,0,0,80,,,,,27254783,2,,,,,{ itemheal rand(100,200),0; },{}
 562,Pizza,Pizza,0,20,0,150,,,,,27254783,2,,,,,{ itemheal rand(100,200),0; },{}
 563,Doublecrust_Swiss_Fondue,Doublecrust Swiss Fondue,0,20,0,150,,,,,27254783,3,,,,,{ itemheal rand(100,200),0; },{}
-564,Rice_Ball,Rice Ball,0,20,10,30,,,,,0,2,,,,,{ itemheal rand(175,234),0; },{}
+564,Rice_Ball,Rice Ball,0,20,10,30,,,,,27254783,2,,,,,{ itemheal rand(175,234),0; },{}
 565,Vita_500,Vita 500,0,2000,0,30,,,,,27254783,2,,,,,{ itemheal 500,0; },{}
 566,Tom_Yum_Goong,Tom Yum Goong,0,10000,5000,150,,,,,27254783,2,,,,,{ itemheal rand(100,200),0; },{}
 567,Shrimp,Shrimp,0,500,250,40,,,,,27254783,3,,,,,{ itemheal rand(50,100),0; },{}
@@ -86,7 +86,7 @@
 // Cooking & Food Item Related - Unfinished
 574,Egg,Egg,0,0,60,30,,,,,27254783,2,,,,,{ itemheal rand(16,21),0; },{}
 575,2nd_Anniversary_Cake,2nd Anniversary Cake,0,0,,100,,,,,27254783,2,,,,,{ itemheal rand(270,329),0; },{}
-576,Prickly_Fruit,Prickly Fruit,0,20,10,40,0,0,0,0,27254783,2,0,0,0,0,{ itemheal rand(10,15),rand(10,15); },{}
+576,Prickly_Fruit,Prickly Fruit,0,540,270,40,0,0,0,0,27254783,2,0,0,0,0,{ itemheal rand(10,15),rand(10,15); },{}
 577,Bag_of_Grain,Bag of Grain,0,200,100,20,,,,,27254783,2,,,,,{ itemheal rand(10,14),0; },{}
 578,Strawberry,Strawberry,0,200,100,20,,,,,27254783,2,,,,,{ itemheal 0,rand(10,14); },{}
 579,Fresh_Fish,Fresh Fish,0,250,125,20,,,,,27254783,2,,,,,{ itemheal rand(140,189),0; },{}
@@ -170,7 +170,7 @@
 666,Gift_Box___,Gift Box,2,1000,500,200,,,,,27254783,2,,,,,{ getitem -4,1; },{}
 667,Gift_Box____,Gift Box,2,1000,500,200,,,,,27254783,2,,,,,{ getitem -4,1; },{}
 668,Angpow,Angpow,0,1,0,2,,,,,27254783,2,,,,,{ set Zeny,Zeny+rand(1000,10000); },{}
-669,Rice_Cake_Soup,Rice Cake Soup,2,20,0,100,,,,,,,,,,,{},{}
+669,Rice_Cake_Soup,Rice Cake Soup,2,10,5,100,,,,,,,,,,,{},{}
 670,Gold_Coin_Pouch,Gold Coin Pouch,2,20,0,400,,,,,,,,,,,{},{}
 671,Gold_Coin,Gold Coin,2,20,0,40,,,,,27254783,2,,,,,{ set Zeny,Zeny+rand(100,1000); },{}
 672,Copper_Coin_Pouch,Copper Coin Pouch,2,20,0,400,,,,,,,,,,,{},{}
@@ -1773,7 +1773,7 @@
 5167,Munak_Turban_,Munak Turban,5,20,,300,,5,,1,27254783,2,769,,0,51,0,{},{ bonus2 bSubRace,1,10; }
 5168,Bongun_Hat_,Bongun Hat,5,20,,300,,5,,1,27254783,2,769,,0,139,,{},{}
 5169,Bride_Mask,Bride Mask,5,,,500,,4,,1,27254783,2,768,,40,223,1,{},{if (Class!=4046 && Class!=4047 && Class!=4048 && Class!=4049) end; bonus bLuk,2; bonus bCritical,5; }
-5170,Feather_Beret,Feather Beret,5,,,600,,1,,0,18866174,2,256,,,224,1,{},{ bonus bMdef,1; bonus2 bSubRace,7,10; bonus2 bMagicSubRace,7,10; }
+5170,Feather_,Feather Beret,5,,,600,,1,,0,18866174,2,256,,,224,1,{},{ bonus bMdef,1; bonus2 bSubRace,7,10; bonus2 bMagicSubRace,7,10; }
 5172,Beret,Beret,5,,,700,,0,,0,27254783,2,256,,,226,,{},{ bonus2 bSubRace,7,10; bonus2 bMagicSubRace,7,10; }
 5173,Hat_of_the_Judge,Judge's Hat,5,,,400,,3,,1,27254783,2,256,,60,227,1,{},{if (Class!=4046 && Class!=4047 && Class!=4048 && Class!=4049) end; bonus bAgi,1; bonus bHPrecovRate,3; }
 5174,A-yam,A-yam,5,,,400,,3,,1,27254783,2,256,,60,228,1,{},{if (Class!=4046 && Class!=4047 && Class!=4048 && Class!=4049) end; bonus bInt,1; bonus bSPrecovRate,3; }
@@ -2348,14 +2348,14 @@
 7514,Monster_Ticket,Monster Ticket,3,,10,0,,,,,0,2,,,,,{},{}
 7515,Interesting_Medal,Interesting Medal,3,2,1,0,,,,,0,2,,,,,{},{}
 7516,Green_Keycard,Green Keycard,3,,10,0,,,,,0,2,,,,,{},{}
-7517,Gold_Coin,Golden Coin,3,,10,100,,,,,0,2,,,,,{},{}
+7517,Gold_Coin,Golden Coin,3,10000,5000,100,,,,,0,2,,,,,{},{}
 7518,Women's_Medal,Women's Medal,3,,10,10,,,,,0,2,,,,,{},{}
 7519,Handsel,Handsel,3,,10,10,,,,,0,,,,,,{},{}
 7520,Please_Be_Rich,Please Be Rich,3,,10,10,,,,,0,,,,,,{},{}
-7521,Burning_Stone,Burning Stone,3,150,,10,,,,,0,2,,,,,{},{}
-7522,Freezing_Stone,Freezing Stone,3,150,,10,,,,,0,2,,,,,{},{}
-7523,Windchime_Stone,Windchime Stone,3,150,,10,,,,,0,2,,,,,{},{}
-7524,Fang_,Fang,3,300,,20,,,,,0,2,,,,,{},{}
+7521,Burning_Stone,Burning Stone,3,150,75,10,,,,,0,2,,,,,{},{}
+7522,Freezing_Stone,Freezing Stone,3,150,75,10,,,,,0,2,,,,,{},{}
+7523,Windchime_Stone,Windchime Stone,3,150,75,10,,,,,0,2,,,,,{},{}
+7524,Fang_,Fang,3,300,150,20,,,,,0,2,,,,,{},{}
 7525,Summer_Festival_Ticket,Summer Festival Ticket,3,,10,10,,,,,0,,,,,,{},{}
 7526,Application,Application,3,,10,0,,,,,0,,,,,,{},{}
 7527,Book_About_True_Life,Book About True Life,3,,10,100,,,,,0,,,,,,{},{}
@@ -2532,7 +2532,7 @@
 
 // New Usables
 12016,Speed_Potion,Speed Potion,2,1000,500,100,,,,,27254783,2,,,,,{ specialeffect 507; sc_start 20,300000,0; },{}
-12017,Slow_Potion,Slow Potion,2,1000,500,100,,,,,27254783,2,,,,,{ sc_start SC_SLOWDOWN,300000,10; },{} // Temp Fix
+12017,Slow_Potion,Slow Potion,2,1000,500,100,,,,,27254783,2,,,,,{ sc_start SC_SLOWDOWN,300000,10; },{}
 12018,Firecracker,Firecracker,20,100,50,2,,,,,27254783,2,,,,,{ misceffect(256); },{}
 12019,Holy_Egg,Holy Egg,2,20,0,150,,,,,27254783,2,,,,,{ itemskill 54,2,"Resurrection"; },{}
 12020,Cursed_Water,Cursed_Water,2,2,1,30,,,,,27254783,2,,,,,{ sc_start SC_SHADOWWEAPON, 1200000, 1; },{}
@@ -2546,14 +2546,14 @@
 12026,Dano_Festival_Egg_,Dano Festival Egg,2,20,0,10,0,0,0,0,0,0,0,0,0,0,{},{} // Missing Effect
 
 // Effect Boxes - Incomplete, Missing Price/Sell/Weight Values
-12027,Giggling_Box,Giggling Box,2,20,0,200,,,,,27254783,2,,,,,{ sc_start SC_Curse,30000,0; percentheal 9,0; },{}
-12028,Box_of_Thunder,Box_of_Thunder,2,20,0,200,,,,,27254783,2,,,,,{ sc_start SC_SpeedUp1,20000,0; },{}
-12029,Box_of_Gloom,Box_of_Gloom,11,20,0,200,,,,,27254783,2,,,,,{ itemskill 45,3,"Improve Concentration"; },{}
-12030,Box_of_Resentment,Box of Resentment,2,20,0,200,,,,,27254783,2,,,,,{ sc_start SC_ATKPot,60000,20; },{}
-12031,Box_of_Drowsiness,Box of Drowsiness,2,20,0,200,,,,,27254783,2,,,,,{ sc_start SC_MATKPot,60000,20; },{}
-12032,Box_of_Storms,Box of Storms,2,20,0,200,,,,,27254783,2,,,,,{ sc_start SC_Frost,180000,0; },{}
-12033,Box_of_Sunlight,Box of Sunlight,2,20,0,200,,,,,27254783,2,,,,,{},{} // Can see cloaked or hidden enemy,,,
-12034,Box_of_Panting,Box of Panting,2,20,0,200,,,,,27254783,2,,,,,{ sc_start SC_Silence,30000,0; percentheal 0,9; },{}
+12027,Giggling_Box,Giggling Box,2,1000,500,200,,,,,27254783,2,,,,,{ sc_start SC_Curse,30000,0; percentheal 9,0; },{}
+12028,Box_of_Thunder,Box_of_Thunder,2,1000,500,200,,,,,27254783,2,,,,,{ sc_start 20,20000,0; },{}
+12029,Box_of_Gloom,Box_of_Gloom,11,1000,500,200,,,,,27254783,2,,,,,{ itemskill 45,3,"Improve Concentration"; },{}
+12030,Box_of_Resentment,Box of Resentment,2,1000,500,200,,,,,27254783,2,,,,,{ sc_start SC_ATKPot,60000,20; },{}
+12031,Box_of_Drowsiness,Box of Drowsiness,2,1000,500,200,,,,,27254783,2,,,,,{ sc_start SC_MATKPot,60000,20; },{}
+12032,Box_of_Storms,Box of Storms,2,1000,500,200,,,,,27254783,2,,,,,{ sc_start SC_WATERWEAPON,180000,1; },{}
+12033,Box_of_Sunlight,Box of Sunlight,2,1000,500,200,,,,,27254783,2,,,,,{},{} // Can see cloaked or hidden enemy,,,
+12034,Box_of_Panting,Box of Panting,2,1000,500,200,,,,,27254783,2,,,,,{ sc_start SC_Silence,30000,0; percentheal 0,9; },{}
 12035,Lotto_Box,Lotto Box,2,20,0,20,,,,,27254783,2,,,,,{ getitem rand(7361,7368),1; },{}
 12036,Lotto_Box_,Lotto Box,2,20,0,20,,,,,27254783,2,,,,,{ getitem rand(7369,7376),1; },{}
 12037,Lotto_Box__,Lotto Box,2,20,0,20,,,,,27254783,2,,,,,{ getitem rand(7377,7384),1; },{}
@@ -2624,12 +2624,12 @@
 12100,Cooked_Nine_Tail's_Tails,Cooked Nine Tail's Tails,2,100000,50000,500,,,,,27254783,2,,,,,{ sc_start SC_LUKFOOD,1200000,10; percentheal 14,8; },{}
 
 // Misc Items
-12101,Citron,Citron,2,,,300,,,,,27254783,2,,,,,{},{} // Missing Effect & Price/Sell Values
+12101,Citron,Citron,2,20,10,10,,,,,27254783,2,,,,,{},{} // Missing Effect
 12102,Grilled_Skewer,Grilled Skewer,2,,,300,,,,,27254783,2,,,,,{},{} // Missing Effect & Price/Sell Values
 12103,Bloody_Branch,Bloody Branch,2,10000,5000,200,,,,,27254783,2,,,,,{ monster "this",0,0,"--ja--",-3,1,""; },{}
 12104,Random_Quiver,Random Quiver,2,10000,5000,200,,,,,27254783,2,,,,,{ getitem -6,2; },{}
 12105,Taming_Gift_Set,Taming Gift Set,2,10000,5000,200,,,,,27254783,2,,,,,{ getitem -7,2; },{}
-// Produces a Pet Armor & a Pet Taming Item, currently just grabs any two Taming items, needs fix
+// Produces a Pet Armor & a Pet Taming Item, currently just grabs two of any pet item
 12106,Jewelry_Box,Jewelry Box,2,10000,5000,200,,,,,27254783,2,,,,,{ getitem -8,1; },{}
 12107,Wrapped_Mask,Wrapped Mask,2,10000,5000,200,,,,,27254783,2,,,,,{ getitem -9,1; },{}
 12108,Scroll_Package,Scroll Package,2,10000,5000,200,,,,,27254783,2,,,,,{ getitem -10,3; },{}
@@ -2664,13 +2664,13 @@
 12129,Fantastic_Cooking_Set,Fantastic Cooking Set,2,10000,5000,70,,,,,27254783,2,,,,,{ produce 15; },{}
 
 // More Misc Items - Incomplete
-12130,Cookie_Bag,Cookie Bag,2,20,10,70,,,,,27254783,2,,,,,{ getitem -5,1; },{}
+12130,Cookie_Bag,Cookie Bag,2,2,1,70,,,,,27254783,2,,,,,{ getitem -5,1; },{}
 12131,Lucky_Potion,Lucky Potion,0,,10,100,,,,,27254783,2,,,,,{ sc_start SC_LUKFOOD, 300000, 15; },{}
 12132,Santa's_Bag,Red Package,2,20,10,200,,,,,27254783,2,,,,,{},{} // Turns you into Xmas Suit for 10 Minutes
 12133,McDonald's_Ice_Cone,McDonald's Ice Cone,0,50,,80,,,,,27254783,2,,,,,{ itemheal rand(45,64),0; },{} // Incomplete
 12134,Red_Envelope,Red Envelope,2,,10,10,,,,,27254783,2,,,,,{ set Zeny,Zeny+rand(1000,10000); },{}
-12135,Green_Ale,Green Ale,2,20,10,30,,,,,27254783,2,,,,,{ percentheal 50,50; if(rand(100) >= 90)sc_start SC_Confusion,10000,0; },{}
-12136,Women's_Bundle,Women's Bundle,2,,10,100,,,,,27254783,2,,,,,{},{} // Gets Item ID 558,529,2668, or 7518, Incomplete
+12135,Green_Ale,Green Ale,2,10,5,30,,,,,27254783,2,,,,,{ percentheal 50,50; if(rand(100) >= 90)sc_start SC_Confusion,10000,0; },{}
+12136,Women's_Bundle,Women's Bundle,2,,10,100,,,,,27254783,2,,,,,{ set WBun,rand(1,4); if(WBun==1)getitem 558,1; if(WBun==2)getitem 529,1; if(WBun==3)getitem 2668,1; if(WBun==4)getitem 7518,1;},{}
 12137,First_Stage,First Stage,2,,10,0,,,,,27254783,2,,,,,{},{}
 12138,Second_Stage,Second Stage,2,,10,0,,,,,27254783,2,,,,,{},{}
 12139,Third_Stage,Third Stage,2,,10,0,,,,,27254783,2,,,,,{},{}
@@ -2724,10 +2724,10 @@
 12183,Holy_Arrow_Quiver,Holy Arrow Quiver,2,,10,100,,,,,27254783,2,,,,,{ getitem 1772,500; },{}
 12184,Mercenary's_Red_Potion,Mercenary's Red Potion,2,,10,100,,,,,27254783,2,,,,,{},{}
 12185,Mercenary's_Blue_Potion,Mercenary's Blue Potion,2,,10,100,,,,,27254783,2,,,,,{},{}
-12186,Old_Red_Box,Old Red Box,2,,10,200,,,,,27254783,2,,,,,{},{} // Gets a random new headgear (specific list)
-12187,Old_Green_Box,Old Green Box,2,,10,200,,,,,27254783,2,,,,,{},{} // Gets an item of some kind
+12186,Old_Red_Box,Old Red Box,2,,10,200,,,,,27254783,2,,,,,{getitem -13,1;},{}
+12187,Old_Green_Box,Old Green Box,2,,10,200,,,,,27254783,2,,,,,{getitem -14,1;},{}
 12188,Fantastic_Moon_Snack,Fantastic Moon Snack,2,,10,300,,,,,27254783,2,,,,,{ percentheal 50,50; },{}
-12189,Old_Red_Box_,Old Red Box,2,,10,200,,,,,27254783,2,,,,,{},{} // Gets an item of some kind
+12189,Old_Red_Box_,Old Red Box,2,,10,200,,,,,27254783,2,,,,,{getitem -13,1;},{}
 
 // Extra Daggers
 13000,Jujube_Dagger,Jujube Dagger,4,10000,5000,600,39,0,1,0,10444527,2,2,1,0,1,{},{ bonus bAtkEle,4; }
