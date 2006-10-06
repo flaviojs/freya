@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/06/06
+	* Fixed: name of kobold archer (mob_db.txt) [Yor]
 	* Changed: Increased some bAddMonsterDrop item script bonuses regarding cards [Tsuyuki]
 	* Fixed: Some other new items not working correctly [Tsuyuki]
 	* Added: Effect for item Women's Bundle [Tsuyuki]
