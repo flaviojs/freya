@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/06/06
+	* Updated: A couple mob speed/delay rates WIP [Tsuyuki]
+	* Fixed: Drake's slave summons [Tsuyuki]
 	* Updated: Big updates to the Lighthalzen NPC files, its almost 100% like official Lighthalzen now [Tsuyuki]
 	* Enabled: Uncommented some new shops (Gunslinger/Ninja/Homunuclus). Won't hurt to have them in [Tsuyuki]
 	* Fixed: name of kobold archer (mob_db.txt) [Yor]
