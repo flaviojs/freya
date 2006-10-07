@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/07/06
+	* Fixed: Delays and such for Guild skills [Tsuyuki]
+
 10/06/06
 	* Updated: A couple mob speed/delay rates WIP [Tsuyuki]
 	* Fixed: Drake's slave summons [Tsuyuki]
