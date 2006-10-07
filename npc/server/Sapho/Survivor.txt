@@ -13,23 +13,31 @@
 //=       changement getmapusers -> getmapaliveusers
 //= 1.3 - guild_vs4 -> guild_vs4.gat
 //= 1.4 - pvpoff/pvpon/gvgoff/gvgon fixées
+//= 1.5 - nombre de monstre! 5xnb de joueurs -> 5x(nb de joueurs + rnd(1,3))
+//=       maximum passé de 100 à 150 (c'est une petite carte)
+//=       mapannounce placés avant les appels aux fonctions
+//=       Suppression des 'removeflag' à la fin de l'event.
+//=       Ajout d'un second warp pour sortir.
 //===== Additional Comments: =================================
 //=Mettre les warp et les bonnes coordonnées pour les NPC.
 //============================================================
 
 prontera.gat,178,148,4	warp	warpspawn	2,3,guild_vs4.gat,50,7
-guild_vs4.gat,49,49	warp	warprep	2,3,prontera.gat,165,151
+guild_vs4.gat,60,60	warp	warprep	2,3,prontera.gat,165,151
+guild_vs4.gat,40,60	warp	warprep2	2,3,prontera.gat,165,151
 
 function	script	close_spawn	{
-	removemapflag "guild_vs4",mf_nopvp;
-	removemapflag "guild_vs4",mf_nomemo;
-	removemapflag "guild_vs4",mf_nobranch;
-	removemapflag "guild_vs4",mf_pvp_noguild;
-	removemapflag "guild_vs4",mf_nopenalty;
-	removemapflag "guild_vs4",mf_nozenypenalty;
+// Ne pas permettre ces flags à la fin de l'event.
+// S'il y a des survivants, cela leur permettrait de se battre, etc...
+//	removemapflag "guild_vs4",mf_nopvp;
+//	removemapflag "guild_vs4",mf_nomemo;
+//	removemapflag "guild_vs4",mf_nobranch;
+//	removemapflag "guild_vs4",mf_pvp_noguild;
+//	removemapflag "guild_vs4",mf_nopenalty;
+//	removemapflag "guild_vs4",mf_nozenypenalty;
+//	pvpon "guild_vs4.gat";
+//	gvgon "guild_vs4.gat";
 	killmonsterall "guild_vs4.gat";
-	pvpon "guild_vs4.gat";
-	gvgon "guild_vs4.gat";
 	set $@Spawn_flag,0;
 	return;
 }
@@ -45,13 +53,13 @@ function	script	f_monstres	{
 	end;
 
 L_stop:
-	doevent "Surviv::L_stoptimer";//tjs en 1ere ligne
-	announce "La salle de Spawn Survivor est vide.",0;
+	doevent "Surviv::L_stoptimer";// tjs en 1ere ligne
+	announce "La salle de Spawn Survivor est vide (ou tous les partipants sont morts).",0;
 	announce "L'évent s'est arrêté de lui-même.",0;
 	goto L_fin;
 
 L_woe:
-	doevent "Surviv::L_stoptimer";//tjs en 1ere ligne
+	doevent "Surviv::L_stoptimer";// tjs en 1ere ligne
 	announce "Le Spawn Survivor est arreté pour cause de Woe.",0;
 	mapannounce "guild_vs4.gat","Garde Royal: Les joueurs présents dans la salle doivent deco/reco. Merci.",0;
 	goto L_fin;
@@ -60,6 +68,34 @@ L_fin:
 	stopnpctimer;
 	callfunc "close_spawn";
 	end;
+}
+
+function	script	check_monstres	{
+	if (GetMapMobs("guild_vs4.gat") >= getmapusers2("guild_vs4.gat") - getmapgms2("guild_vs4.gat",20)) end;
+	// respawner des monstres si les joueurs les tuent trop vite
+	set $@spawn_rnd, rand(1,4);
+	if ($@spawn_rnd == 1) goto rnd1;
+	if ($@spawn_rnd == 2) goto rnd2;
+	if ($@spawn_rnd == 3) goto rnd3;
+
+	// porings
+	areamonsteragro "guild_vs4.gat",0,0,200,200,"Pour patienter...",1002,$@nb_mobs,"Surviv::OnMortMob";
+	return;
+
+rnd1:
+	// lunatics
+	areamonsteragro "guild_vs4.gat",0,0,200,200,"Pour patienter...",1063,$@nb_mobs,"Surviv::OnMortMob";
+	return;
+
+rnd2:
+	// ChonChons
+	areamonsteragro "guild_vs4.gat",0,0,200,200,"Pour patienter...",1063,$@nb_mobs,"Surviv::OnMortMob";
+	return;
+
+rnd3:
+	// le dernier monstre, répété
+	areamonsteragro "guild_vs4.gat",0,0,200,200,"Survivor",getarg(0),$@nb_mobs,"Surviv::OnMortMob";
+	return;
 }
 
 guild_vs4.gat,51,49,1	script	Surviv	-1,{
@@ -123,11 +159,11 @@ OnStart:
 
 	// ajouter: si un seul participant ou aucun, tout arrêter
 
-	set $@nb_mobs,$@nb_part*5;
+	set $@nb_mobs,($@nb_part + rand(1,3)) * 5;
 	if ($@nb_mobs <  30) set $@nb_mobs,30;
-	if ($@nb_mobs > 100) set $@nb_mobs,100;
-	mapannounce "guild_vs4.gat","Garde Royal: Le Spawn Survivor commence, survivez !",0; //Première slave.
-	mapannounce "guild_vs4.gat","Garde Royal: 30 secondes entre chaque spawn",0;
+	if ($@nb_mobs > 150) set $@nb_mobs,150;
+	mapannounce "guild_vs4.gat","Garde Royal: 30 secondes entre chaque spawn différent. Survivez !",0; //Première slave.
+	mapannounce "guild_vs4.gat","Garde Royal: Pour devenir le Master Survivor, il vous faut tuer un monstre en étant le dernier survivant !",0;
 	announce "Il y a " + $@nb_part + " participant(s) pour le Spawn Survivor. Bonne chance!",0;
 	callfunc "f_monstres", $@spawn1;
 	close;
@@ -145,13 +181,13 @@ OnTimer90000:
 	close;
 
 OnTimer120000:
+	mapannounce "guild_vs4.gat","Garde Royal: 60 secondes entre chaque spawn différent.",0;
 	callfunc "f_monstres", $@spawn5;
-	mapannounce "guild_vs4.gat","Garde Royal: 60 secondes entre chaque spawn.",0;
 	close;
 
 OnTimer180000:
-	callfunc "f_monstres", $@spawn6;
 	mapannounce "guild_vs4.gat","Garde Royal: Bravo, aux survivants ! Continuons à monter en puissance...",0;
+	callfunc "f_monstres", $@spawn6;
 	close;
 
 OnTimer240000:
@@ -171,188 +207,309 @@ OnTimer420000:
 	close;
 
 OnTimer480000:
-	callfunc "f_monstres", $@spawn11;
 	mapannounce "guild_vs4.gat","Garde Royal: Bravo, aux survivants ! Plus difficile maintenant.",0;
-	mapannounce "guild_vs4.gat","Garde Royal: une minute 30 entre chaque spawn.",0;
+	mapannounce "guild_vs4.gat","Garde Royal: une minute 30 entre chaque spawn différent.",0;
+	callfunc "f_monstres", $@spawn11;
+	close;
+OnTimer525000: // pour patienter (45 sec après le spawn)
+	callfunc "check_monstres", $@spawn11;
 	close;
 
 OnTimer570000:
 	callfunc "f_monstres", $@spawn12;
 	close;
+OnTimer615000: // pour patienter (45 sec après le spawn)
+	callfunc "check_monstres", $@spawn12;
+	close;
 
 OnTimer660000:
 	callfunc "f_monstres", $@spawn13;
+	close;
+OnTimer705000: // pour patienter (45 sec après le spawn)
+	callfunc "check_monstres", $@spawn13;
 	close;
 
 OnTimer750000:
 	callfunc "f_monstres", $@spawn14;
 	close;
+OnTimer795000: // pour patienter (45 sec après le spawn)
+	callfunc "check_monstres", $@spawn14;
+	close;
 
 OnTimer840000:
 	callfunc "f_monstres", $@spawn15;
 	close;
+OnTimer885000: // pour patienter (45 sec après le spawn)
+	callfunc "check_monstres", $@spawn15;
+	close;
 
 OnTimer930000:
-	callfunc "f_monstres" , $@spawn16;
 	mapannounce "guild_vs4.gat","Garde Royal: Bravo, aux survivants ! Plus dur maintenant.",0;
-	mapannounce "guild_vs4.gat","Garde Royal: 2 minutes entre chaque spawn.",0;
+	mapannounce "guild_vs4.gat","Garde Royal: 2 minutes entre chaque spawn différent.",0;
+	callfunc "f_monstres" , $@spawn16;
+	close;
+OnTimer990000: // pour patienter (1 min après le spawn)
+	callfunc "check_monstres", $@spawn16;
 	close;
 
 OnTimer1050000:
 	callfunc "f_monstres", $@spawn17;
 	close;
+OnTimer1110000: // pour patienter (1 min après le spawn)
+	callfunc "check_monstres", $@spawn17;
+	close;
 
 OnTimer1170000:
 	callfunc "f_monstres", $@spawn18;
+	close;
+OnTimer1230000: // pour patienter (1 min après le spawn)
+	callfunc "check_monstres", $@spawn18;
 	close;
 
 OnTimer1290000:
 	callfunc "f_monstres", $@spawn19;
 	close;
+OnTimer1350000: // pour patienter (1 min après le spawn)
+	callfunc "check_monstres", $@spawn19;
+	close;
 
 OnTimer1410000:
 	callfunc "f_monstres", $@spawn20;
 	close;
+OnTimer1470000: // pour patienter (1 min après le spawn)
+	callfunc "check_monstres", $@spawn20;
+	close;
 
 OnTimer1530000:
-	callfunc "f_monstres" , $@spawn21;
 	mapannounce "guild_vs4.gat","Garde Royal: Bravo, aux survivants ! Encore plus dur maintenant.",0;
-	mapannounce "guild_vs4.gat","Garde Royal: 2 minutes 30 entre chaque spawn.",0;
+	mapannounce "guild_vs4.gat","Garde Royal: 2 minutes 30 entre chaque spawn différent.",0;
+	callfunc "f_monstres" , $@spawn21;
+	close;
+OnTimer1605000: // pour patienter (1 min 15 après le spawn)
+	callfunc "check_monstres", $@spawn21;
 	close;
 
 OnTimer1680000:
 	callfunc "f_monstres", $@spawn22;
 	close;
+OnTimer1755000: // pour patienter (1 min 15 après le spawn)
+	callfunc "check_monstres", $@spawn22;
+	close;
 
 OnTimer1830000:
 	callfunc "f_monstres", $@spawn23;
+	close;
+OnTimer1905000: // pour patienter (1 min 15 après le spawn)
+	callfunc "check_monstres", $@spawn23;
 	close;
 
 OnTimer1980000:
 	callfunc "f_monstres", $@spawn24;
 	close;
+OnTimer2055000: // pour patienter (1 min 15 après le spawn)
+	callfunc "check_monstres", $@spawn24;
+	close;
 
 OnTimer2130000:
 	callfunc "f_monstres", $@spawn25;
 	close;
+OnTimer2205000: // pour patienter (1 min 15 après le spawn)
+	callfunc "check_monstres", $@spawn25;
+	close;
 
 OnTimer2280000:
-	callfunc "f_monstres", $@spawn26;
 	mapannounce "guild_vs4.gat","Garde Royal: Bravo, aux survivants ! Encore plus difficile maintenant.",0;
-	mapannounce "guild_vs4.gat","Garde Royal: 180 secondes entre chaque spawn.",0;
+	mapannounce "guild_vs4.gat","Garde Royal: 180 secondes entre chaque spawn différent.",0;
+	callfunc "f_monstres", $@spawn26;
+	close;
+OnTimer2370000: // pour patienter (1 min 30 après le spawn)
+	callfunc "check_monstres", $@spawn26;
 	close;
 
 OnTimer2460000:
 	callfunc "f_monstres", $@spawn27;
 	close;
+OnTimer2550000: // pour patienter (1 min 30 après le spawn)
+	callfunc "check_monstres", $@spawn27;
+	close;
 
 OnTimer2640000:
 	callfunc "f_monstres", $@spawn28;
+	close;
+OnTimer2730000: // pour patienter (1 min 30 après le spawn)
+	callfunc "check_monstres", $@spawn28;
 	close;
 
 OnTimer2820000:
 	callfunc "f_monstres", $@spawn29;
 	close;
+OnTimer2810000: // pour patienter (1 min 30 après le spawn)
+	callfunc "check_monstres", $@spawn29;
+	close;
 
 OnTimer3000000:
 	callfunc "f_monstres", $@spawn30;
 	close;
+OnTimer3090000: // pour patienter (1 min 30 après le spawn)
+	callfunc "check_monstres", $@spawn30;
+	close;
 
 OnTimer3180000:
-	callfunc "f_monstres", $@spawn31;
 	mapannounce "guild_vs4.gat","Garde Royal: Bravo, aux survivants ! Passons aux choses sérieuses...",0;
-	mapannounce "guild_vs4.gat","Garde Royal: 3 minutes 30 entre chaque spawn.",0;
+	mapannounce "guild_vs4.gat","Garde Royal: 3 minutes 30 entre chaque spawn différent.",0;
+	callfunc "f_monstres", $@spawn31;
+	close;
+OnTimer3285000: // pour patienter (1 min 45 après le spawn)
+	callfunc "check_monstres", $@spawn31;
 	close;
 
 OnTimer3390000:
 	callfunc "f_monstres", $@spawn32;
 	close;
+OnTimer3495000: // pour patienter (1 min 45 après le spawn)
+	callfunc "check_monstres", $@spawn32;
+	close;
 
 OnTimer3600000:
 	callfunc "f_monstres", $@spawn33;
+	close;
+OnTimer3705000: // pour patienter (1 min 45 après le spawn)
+	callfunc "check_monstres", $@spawn33;
 	close;
 
 OnTimer3810000:
 	callfunc "f_monstres", $@spawn34;
 	close;
+OnTimer3915000: // pour patienter (1 min 45 après le spawn)
+	callfunc "check_monstres", $@spawn34;
+	close;
 
 OnTimer4020000:
 	callfunc "f_monstres", $@spawn35;
+	close;
+OnTimer4125000: // pour patienter (1 min 45 après le spawn)
+	callfunc "check_monstres", $@spawn35;
 	close;
 
 OnTimer4230000:
 	callfunc "f_monstres", $@spawn36;
 	close;
+OnTimer4335000: // pour patienter (1 min 45 après le spawn)
+	callfunc "check_monstres", $@spawn36;
+	close;
 
 OnTimer4440000:
-	callfunc "f_monstres", $@spawn37;
 	mapannounce "guild_vs4.gat","Garde Royal: Bravo, aux survivants ! Après ces mises en bouches... le plat principal.",0;
-	mapannounce "guild_vs4.gat","Garde Royal: 4 minutes entre chaque spawn.",0;
+	mapannounce "guild_vs4.gat","Garde Royal: 4 minutes entre chaque spawn différent.",0;
+	callfunc "f_monstres", $@spawn37;
+	close;
+OnTimer4560000: // pour patienter (2 min après le spawn)
+	callfunc "check_monstres", $@spawn37;
 	close;
 
 OnTimer4680000:
 	callfunc "f_monstres", $@spawn38;
 	close;
+OnTimer4800000: // pour patienter (2 min après le spawn)
+	callfunc "check_monstres", $@spawn38;
+	close;
 
 OnTimer4920000:
 	callfunc "f_monstres", $@spawn39;
+	close;
+OnTimer5040000: // pour patienter (2 min après le spawn)
+	callfunc "check_monstres", $@spawn39;
 	close;
 
 OnTimer5160000:
 	callfunc "f_monstres", $@spawn40;
 	close;
+OnTimer5280000: // pour patienter (2 min après le spawn)
+	callfunc "check_monstres", $@spawn40;
+	close;
 
 OnTimer5400000:
 	callfunc "f_monstres", $@spawn41;
 	close;
+OnTimer5520000: // pour patienter (2 min après le spawn)
+	callfunc "check_monstres", $@spawn41;
+	close;
 
 OnTimer5640000:
-	callfunc "f_monstres", $@spawn42;
 	mapannounce "guild_vs4.gat","Garde Royal: Bravo, aux survivants ! Vous avez demandez plus fort...",0;
-	mapannounce "guild_vs4.gat","Garde Royal: 4 minutes 30 entre chaque spawn.",0;
+	mapannounce "guild_vs4.gat","Garde Royal: 4 minutes 30 entre chaque spawn différent.",0;
+	callfunc "f_monstres", $@spawn42;
+	close;
+OnTimer5775000: // pour patienter (2 min 15 après le spawn)
+	callfunc "check_monstres", $@spawn42;
 	close;
 
 OnTimer5910000:
 	callfunc "f_monstres", $@spawn43;
 	close;
+OnTimer6045000: // pour patienter (2 min 15 après le spawn)
+	callfunc "check_monstres", $@spawn43;
+	close;
 
 OnTimer6180000:
 	callfunc "f_monstres", $@spawn44;
+	close;
+OnTimer6315000: // pour patienter (2 min 15 après le spawn)
+	callfunc "check_monstres", $@spawn44;
 	close;
 
 OnTimer6450000:
 	callfunc "f_monstres", $@spawn45;
 	close;
+OnTimer6585000: // pour patienter (2 min 15 après le spawn)
+	callfunc "check_monstres", $@spawn45;
+	close;
 
 OnTimer6720000:
 	callfunc "f_monstres", $@spawn46;
 	close;
+OnTimer6855000: // pour patienter (2 min 15 après le spawn)
+	callfunc "check_monstres", $@spawn46;
+	close;
 
 OnTimer6990000:
-	callfunc "f_monstres", $@spawn47;
 	mapannounce "guild_vs4.gat","Garde Royal: Bravo, aux survivants ! Ok, vous allez voir maintenant...",0;
-	mapannounce "guild_vs4.gat","Garde Royal: 5 minutes entre chaque spawn.",0;
+	mapannounce "guild_vs4.gat","Garde Royal: 5 minutes entre chaque spawn différent.",0;
+	callfunc "f_monstres", $@spawn47;
+	close;
+OnTimer7140000: // pour patienter (2 min 30 après le spawn)
+	callfunc "check_monstres", $@spawn47;
 	close;
 
 OnTimer7290000:
 	callfunc "f_monstres", $@spawn48;
 	close;
+OnTimer7440000: // pour patienter (2 min 30 après le spawn)
+	callfunc "check_monstres", $@spawn48;
+	close;
 
 OnTimer7590000:
-	callfunc "f_monstres", $@spawn49;
 	mapannounce "guild_vs4.gat","Garde Royal: Avant dernier spawn, ensuite, nous vous laissons 10 minutes avant le dernier...",0;
+	callfunc "f_monstres", $@spawn49;
 	close;
+// pas de monstres pour patienter
 
 OnTimer8190000:
-	callfunc "f_monstres", $@spawn50;
 	mapannounce "guild_vs4.gat","Garde Royal: Attention, dernier spawn ! Serez-vous les Masters Survivors ?!",0;
+	callfunc "f_monstres", $@spawn50;
 	close;
 
-OnMortMob: //a chaque mort de mob
-	if ((getmapusers2("guild_vs4.gat") - getmapgms2("guild_vs4.gat",20)) != 1) end;
+OnMortMob: // à chaque mort de mob
+	if ((getmapusers2("guild_vs4.gat") - getmapgms2("guild_vs4.gat",20)) != 1) end; // pas d'unique survivant pour le moment
 	announce "Nous avons un ultime survivant dans le Spawn Survivor!",0;
 	announce "Il s'agit de : "+ strcharinfo(0) + ".",0;
 	mapannounce "guild_vs4.gat","Garde Royal: "+ strcharinfo(0) + " doit deco/reco pour sortir. Merci.",0;
+	if ((getmapusers3("guild_vs4.gat") - getmapgms3("guild_vs4.gat",20)) < 1) goto L_OnMortMob_suite; // pas de morts sur la carte
+	mapannounce "guild_vs4.gat","Garde Royal: Les autres, vous pouvez deco/reco pour aller à Prontera",0;
+	mapannounce "guild_vs4.gat","Garde Royal: ou retourner à votre point de sauvegarde. Merci.",0;
+	goto L_OnMortMob_suite;
+
+L_OnMortMob_suite:
 	stopnpctimer;
 	callfunc "close_spawn";
 	goto L_stoptimer;
@@ -372,19 +529,43 @@ L_JoueurMenu:
 	mes "Le Spawn ne peut être activé que par un GM ou de manière automatisée le Samedi à 13h50.";
 	mes "Une fois activé, vous avez 10 minutes pour venir ici et joindre la partie.";
 	mes "Si vous arrivez en retard, le jeu se déroulera sans vous.";
+	mes "Au revoir.";
 	close;
 
 OnInit:
 	disablenpc "warpspawn";
 	disablenpc "warprep";
+	disablenpc "warprep2";
 	end;
 
 OnSat1350:
 	Announce "Garde Royal: Le spawn Survivor est ouvert.",8;
 	goto L_creawarp;
 
+L_GmMenu:
+	if (agitcheck(0) != 0) goto L_Gmwoe;
+	if ($@Spawn_flag == 1) goto L_GmArreter;
+	mes "[Spawner]";
+	mes "Voulez-vous ^FFBBBBactiver^000000 le Spawn Survivor?";
+	menu "Oui",L_GMlauch,"Non",L_GmFin;
+	close;
+
+L_Gmwoe:
+	mes "[Spawner]";
+	mes "Vous ne pouvez pas activer maintenant le Spawn Survivor.";
+	mes "En effet, la Guerre de l'Emperium est en cours...";
+	mes "Désolé.";
+	close;
+
+L_GmArreter:
+	mes "[Spawner]";
+	mes "Voulez-vous ^FFBBBBarrêter^000000 le Spawn Survivor?";
+	menu "Oui",L_GMclose,"Non",L_GmFin;
+	close;
+
 L_GMclose:
-	close2; //le script continue
+	if ($@Spawn_flag != 1) goto L_GMdejaclose;
+	close2; // le script continue
 	doevent "Surviv::L_stoptimer";//tjs en 1ere ligne
 	Announce "Garde Royal: " +strcharinfo(0)+ " a stoppé le Spawn Survivor.",8;
 	mapannounce "guild_vs4.gat","Garde Royal: Les joueurs présents dans la salle doivent deco/reco. Merci.",0;
@@ -392,34 +573,38 @@ L_GMclose:
 	callfunc "close_spawn";
 	end;
 
-L_GmMenu:
-	if (agitcheck(0) != 0) goto L_Gmwoe;
-
+L_GMdejaclose:
 	mes "[Spawner]";
-	mes "Voulez-vous activer le Spawn Survivor ?";
-	if ($@Spawn_flag == 1) menu "Arreter",L_GMclose;
-	if ($@Spawn_flag != 1) menu "Activer",L_GMlauch;
+	mes "Le Spawn Survivor a été arrêté entre temps.";
+	mes "Au revoir.";
 	close;
 
-L_Gmwoe:
+L_GmFin:
 	mes "[Spawner]";
-	mes "Nous ne pouvons pas activer maintenant le Spawn Survivor.";
-	mes "En effet, la Guerre de l'Emperium est en cours...";
-	mes "Désolé.";
+	mes "Dans ce cas, au revoir.";
 	close;
 
 L_GMlauch:
+	if ($@Spawn_flag == 1) goto L_GMdejaLauch;
 	enablenpc "Surviv";
 	Announce "Garde Royal: " +strcharinfo(0)+ " a activé le Spawn Survivor.",8;
-	close2; //le script continue
+	close2; // le script continue
 	goto L_creawarp;
+
+L_GMdejaLauch:
+	mes "[Spawner]";
+	mes "Le Spawn Survivor a été activé entre temps.";
+	mes "Au revoir.";
+	close;
 
 L_creawarp:
 	set $@Spawn_flag,1;
 	Announce "Garde Royal: L'évent commence dans 10 minutes.",8;
+	Announce "Garde Royal: Rendez-vous dans l'allée au sud de la fontaine de Prontera.",8;
 	killmonsterall "guild_vs4.gat";
 	enablenpc "warpspawn";
 	enablenpc "warprep";
+	enablenpc "warprep2";
 	initnpctimer;
 	pvpoff "guild_vs4.gat";
 	gvgoff "guild_vs4.gat";
@@ -432,22 +617,29 @@ L_creawarp:
 	setmapflag "guild_vs4.gat",mf_nozenypenalty;
 	end;
 
-OnTimer300000: //5 minutes après je fais un rappel.
+OnTimer300000: // 5 minutes après je fais un rappel.
 //OnTimer10000: // pour les tests
 	Announce "Garde Royal: Plus que 5 min. avant le Spawn Survivor, dépéchez-vous !",8;
+	Announce "Garde Royal: Rendez-vous dans l'allée au sud de la fontaine de Prontera.",8;
 	end;
 
 //OnTimer15000: // pour les tests...
-OnTimer540000: //9 minute après je refais une annonce.
+OnTimer540000: // 9 minute après je refais une annonce.
 	Announce "Garde Royal: Le Spawn Survivor commence dans 1 minute, dépéchez-vous !",8;
-	mapannounce "guild_vs4.gat","Garde Royal: PArticipants, préparez-vous au Spawn Survivor...",0;
+	Announce "Garde Royal: Rendez-vous dans l'allée au sud de la fontaine de Prontera.",8;
+	mapannounce "guild_vs4.gat","Garde Royal: Participants, préparez-vous au Spawn Survivor...",0;
 	end;
 
-OnTimer600000: //10 minutes après je coupe l'accès.
+OnTimer600000: // 10 minutes après je coupe l'accès.
 //OnTimer20000: // pour les tests
+	if ((getmapusers2("guild_vs4.gat") - getmapgms2("guild_vs4.gat",20)) > 1) goto L_LancementEvent; // au moins 2 joueurs...
+	// ici l'arrêt en cas d'un joueur (+ message pour se deco/reco) ou aucun joueur
+
+L_LancementEvent:
 	Announce "Garde Royal: Le Spawn Survivor commence, l'accès en est coupé.",8;
 	disablenpc "warpspawn";
 	disablenpc "warprep";
+	disablenpc "warprep2";
 	doevent "Surviv::OnStart";
 	stopnpctimer;
 	end;
