@@ -331,16 +331,12 @@ L_Fling:
 
 
 //====================================================================================
-payon.gat,149,120,4	script	RuRumuni	99,{
+payon.gat,90,77,3	script	Bag Seller	99,{
 	mes "[RuRumuni]";
 	if(SANDATTACK == 1 && BAGNFNTY != 2) goto L_Start;
 
-	mes "I am a humble merchant here in Payon.  I buy leather hides, brought in by the hunters, to make leather pouches to sell.";
-	mes "I grew up around leather and am quite good at working with it.";
-	next;
-	mes "[RuRumuni]";
-	mes "There is a Thief guild in the Morroc area.";
-	mes "I know someone there that sends me Thieves in need of the items I make, such as the ^5533FF'Leather Bag of Infinity'^000000.";
+	mes "I am a humble merchant here in Payon.  I buy the leather hides of animals, brought in by the hunters, and make leather pouches to sell.";
+	mes "I grew up around leather and am quite good at it.";
 	close;
 
 L_Start:
