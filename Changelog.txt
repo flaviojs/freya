@@ -5,7 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/07/06
-	* Fixed: Merchant Card set (Report by Mubbsy) [Tsuyuki]
+	* Fixed: Warp when selecting Archer Job in the Training Grounds (Thanks to Squal) [Tsuyuki]
+	* Fixed: Merchant Card set (Thanks to Mubbsy) [Tsuyuki]
 	* Fixed: Tyrfing item name and effect [Tsuyuki]
 	* Fixed: A bunch of cards/items that use bAddMonsterDropItem [Tsuyuki]
 	* Fixed: Delays and such for Guild skills [Tsuyuki]
