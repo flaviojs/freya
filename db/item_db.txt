@@ -2538,8 +2538,8 @@
 12020,Cursed_Water,Cursed_Water,2,2,1,30,,,,,27254783,2,,,,,{ sc_start SC_SHADOWWEAPON, 1200000, 1; },{}
 
 // More New Usables - Incomplete, Missing Price/Sell/Weight Values
-12021,Pork,Pork,2,20,0,10,,,,,27254783,2,,,,,{ set BaseExp,BaseExp + 33333333 },{}
-12022,Galbi,Galbi,2,20,0,10,,,,,27254783,2,,,,,{ set JobExp,JobExp + 33333333 },{}
+12021,Pork,Pork,2,20,0,10,,,,,27254783,2,,,,,{ set BaseExp,BaseExp + 33333333; },{}
+12022,Galbi,Galbi,2,20,0,10,,,,,27254783,2,,,,,{ set JobExp,JobExp + 33333333; },{}
 12023,Wrapped_Box,Wrapped Box,2,20,0,200,,,,,27254783,2,,,,,{ getitem -4,1; },{}
 12024,Red_Pouch,Red Pouch,2,20,0,50,,,,,27254783,2,,,,,{ monster "this",0,0,"--ja--",-1,1,; },{}
 12025,Dano_Festival_Egg,Dano Festival Egg,2,20,0,10,0,0,0,0,0,0,0,0,0,0,{},{} // Missing Effect

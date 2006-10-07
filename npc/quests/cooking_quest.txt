@@ -171,7 +171,7 @@ prt_castle.gat,43,30,6	script	Chef Apprentice	878,{
 			close;
 
 	ChefCase3:
-		if(countitem(12056) && countitem(12061) && countitem(12046) && countitem(12066) && countitem(12041) && countitem(12051))goto ChefCase4;
+		if(countitem(12056) > 0 && countitem(12061) > 0 && countitem(12046) > 0 && countitem(12066) > 0 && countitem(12041) > 0 && countitem(12051) > 0)goto ChefCase4;
 
 			mes "Please come back when you've cooked";
 			mes "all the Lv 1 foods.";
@@ -302,7 +302,7 @@ payon.gat,209,127,4	script	Cooking Friend	88,{
 	close;
 
 	CookFriend1:
-		if(countitem(7432 > 0))goto CookFriend2;
+		if(countitem(7432) > 0)goto CookFriend2;
 
 			mes "What? My friend sent you";
 			mes "just to say Hello?";
@@ -325,9 +325,9 @@ payon.gat,209,127,4	script	Cooking Friend	88,{
 
 prt_castle.gat,45,35,4	script	Sharle	886,{
 	mes "[Sharle]";
-	if(cooking && getequipid(1) != 5026) goto L_No_Uniform; //Item: Chef's Hat
+	if(cooking > 0 && getequipid(1) != 5026) goto L_No_Uniform; //Item: Chef's Hat
 	if(cooking == 7)goto L_Cooking_7;
-	if(first_cooking)goto L_First_Cooking;
+	if(first_cooking > 0)goto L_First_Cooking;
 
 	if(cooking == 1)goto Sharle1;
 
@@ -349,6 +349,11 @@ prt_castle.gat,45,35,4	script	Sharle	886,{
 		mes "I'm lack of special ingredients,";
 		mes "bring me:";
 		if(first_cooking == 1)goto FirstCooking1;
+		if(first_cooking == 2)goto FirstCooking2;
+		if(first_cooking == 3)goto FirstCooking3;
+		if(first_cooking == 4)goto FirstCooking4;
+		if(first_cooking == 5)goto FirstCooking5;
+		if(first_cooking == 6)goto FirstCooking6;
 
 		FirstCooking1:
 			set @item1, 577;
@@ -363,8 +368,6 @@ prt_castle.gat,45,35,4	script	Sharle	886,{
 			mes "1 Squid Ink.";
 			goto Sharle2;
 
-		if(first_cooking == 2)goto FirstCooking2;
-
 		FirstCooking2:
 			set @item1, 518;
 			set @item1a, 1;
@@ -378,7 +381,6 @@ prt_castle.gat,45,35,4	script	Sharle	886,{
 			mes "1 Red Potion.";
 			goto Sharle2;
 
-		if(first_cooking == 3)goto FirstCooking3;
 
 		FirstCooking3:
 			set @item1, 514;
@@ -391,8 +393,6 @@ prt_castle.gat,45,35,4	script	Sharle	886,{
 
 			mes "3 Grapes and 2 Red Potions.";
 			goto Sharle2;
-
-		if(first_cooking == 4)goto FirstCooking4;
 
 		FirstCooking4:
 			set @item1, 942;
@@ -407,8 +407,6 @@ prt_castle.gat,45,35,4	script	Sharle	886,{
 			mes "1 Cooking Oil.";
 			goto Sharle2;
 
-		if(first_cooking == 5)goto FirstCooking5;
-
 		FirstCooking5:
 			set @item1, 940;
 			set @item1a, 5;
@@ -421,8 +419,6 @@ prt_castle.gat,45,35,4	script	Sharle	886,{
 			mes "5 Grasshopper Legs, 1 Old Frying Pan, and";
 			mes "1 Cooking Oil.";
 			goto Sharle2;
-
-		if(first_cooking == 6)goto FirstCooking6;
 
 		FirstCooking6:
 			set @item1, 960;
@@ -461,7 +457,7 @@ prt_castle.gat,45,35,4	script	Sharle	886,{
 		menu "Yes",-, "No", M_End2, "Return Book", M_ReturnBook;
 
 		mes "[Sharle]";
-		if((cook_book) >= 0)goto Sharle3;
+		if(cook_book >= 0)goto Sharle3;
 
 		Sharle3:
 			mes "You'll have to give me back the";
