@@ -499,8 +499,8 @@
 1135,Cutlus,Cutlus,4,20,0,900,150,,1,0,414946,2,2,4,40,2,{},{ skill 5,5; bonus bStr,2; bonus bDef,1; }
 1136,Solar_Sword,Solar Sword,4,20,0,1200,85,,1,0,414946,2,2,4,40,2,{},{ bonus bAtkEle,3; bonus2 bHPDrainRate,100,1; bonus2 bSPLossRate,15,10000; }
 1137,Excalibur,Excalibur,4,20,0,1200,150,,1,0,414946,2,2,4,40,2,{},{ bonus bInt,5; bonus bLuk,10; bonus bDex,-1; bonus bAtkEle,6; }
-1138,Mysteltainn_,Mysteltainn,4,20,0,1000,170,,1,0,414946,2,2,4,40,2,{},{ bonus bAtkEle,7; bonus2 bAddEle,8,15; bonus2 bAddEff,Eff_Stone,100; bonus bDex,3; }
-1139,Talefing_,Talefing,4,20,0,1000,200,,1,0,414946,2,2,4,40,2,{},{ bonus bAtkEle,7; bonus2 bSPDrainRate,5,-35; }
+1138,Mysteltainn,Mysteltainn,4,20,0,1000,170,,1,0,414946,2,2,4,40,2,{},{ bonus bAtkEle,7; bonus2 bAddEle,8,15; bonus2 bAddEff,Eff_Stone,100; bonus bDex,3; }
+1139,Tyrfing,Tyrfing,4,20,0,1000,200,,1,0,414946,2,2,4,40,2,{},{ bonus bAtkEle,7; bonus2 bHPLossRate,35,10000; }
 1140,Byeollungum,Byeollungum,4,20,0,900,150,,1,0,414946,2,2,4,40,2,{},{ bonus2 bSubRace,11,-10; bonus2 bAddRace,10,50; bonus bAllStats,2; }
 1141,Immaterial_Sword,Immaterial Sword,4,20,0,900,140,,1,0,414946,2,2,4,40,2,{},{ bonus bAtkEle,8; bonus2 bSPVanishRate,30,30; bonus2 bSPDrainValue,-1,0; bonus bUnbreakableWeapon,0; }
 1142,Jewel_Sword,Crystal Sword,4,20,0,2200,104,,1,0,414946,2,2,3,68,2,{},{}
@@ -1366,7 +1366,7 @@
 4183,Vagabond_Wolf_Card,Vagabond Wolf Card,6,20,0,10,,,,,,,4,,,,{},{ bonus bStr,1; if(isequipped(4029)==0) end; bonus bFlee,18; }
 4184,Lava_Golem_Card,Lava Golem Card,6,20,0,10,,,,,,,2,,,,{},{ bonus2 bAddRace2,4,30; }
 4185,Rideword_Card,Rideword Card,6,20,0,10,,,,,,,769,,,,{},{ bonus bInt,1; if(GetPureJob != Job_Acolyte) end; bonus bInt,1; bonus bMdef,1; }
-4186,Raggler_Card,Raggler Card,6,20,0,10,,,,,,,64,,,,{},{ bonus bStr,1; bonus bVit,1; if(isequipped(4206,4281,4321,4233)==0) end; bonus bSPGainValue,2; bonus2 bSkillAtk,42,20; bonus bLuk,10; if(GetPureJob != Job_Merchant) end; bonus3 bAddMonsterDropItem,617,5,11; bonus bMagicDamageReturn,20; }
+4186,Raggler_Card,Raggler Card,6,20,0,10,,,,,,,64,,,,{},{ bonus bStr,1; bonus bVit,1; if(isequipped(4206,4281,4321,4233)==0) end; bonus3 bSPDrainValue,100,3,0; bonus2 bSkillAtk,42,20; bonus bLuk,10; if(GetPureJob != Job_Merchant) end; bonus2 bAddMonsterDropItem,617,5; bonus bMagicDamageReturn,20; }
 4187,Raydric_Archer_Card,Raydric Archer Card,6,20,0,10,,,,,,,136,,,,{},{ bonus3 bAddMonsterDropItem,12030,6,100; } 
 4188,Leib_Olmai_Card,Leib Olmai Card,6,20,0,10,,,,,,,769,,,,{},{ bonus2 bSubEle,3,10; bonus3 bAddMonsterDropItem,990,2,100; }
 4189,Wraith_Dead_Card,Wraith Dead Card,6,20,0,10,,,,,,,16,,,,{},{ bonus2 bAddEffWhenHit,Eff_Curse,600; }
@@ -1713,7 +1713,7 @@
 5108,Renown_Detective's_Hat,Renown Detective's Hat,5,20,0,350,0,3,0,1,27254783,2,256,0,0,189,{},{}
 5109,Red_Bonnet,Red Bonnet,5,20,0,400,0,2,0,0,27254783,2,256,0,0,190,{},{}
 5110,Baby_Pacifier,Baby Pacifier,5,20,0,50,0,0,0,0,27254783,2,1,0,0,191,{},{}
-5111,Galapago_Cap,Galapago Cap,5,20,0,500,0,2,0,0,27254783,2,256,0,55,192,{},{ bonus3 bAddMonsterDropItem,605,11,200; }
+5111,Galapago_Cap,Galapago Cap,5,20,0,500,0,2,0,0,27254783,2,256,0,55,192,{},{ bonus2 bAddMonsterDropItem,605,200; }
 5112,Super_Novice_Hat,Super Novice Hat,5,5000,0,400,0,4,0,0,8388609,2,256,0,40,193,{},{ bonus bAllStats,1; }
 5113,Angry_Snarl,Angry Snarl,5,20,0,50,0,0,0,0,27254783,2,1,0,0,194,{},{}
 5114,Bucket_Hat,Bucket Hat,5,6000,0,300,0,3,0,0,27254783,2,256,0,0,195,{},{}
@@ -2538,10 +2538,10 @@
 12020,Cursed_Water,Cursed_Water,2,2,1,30,,,,,27254783,2,,,,,{ sc_start SC_SHADOWWEAPON, 1200000, 1; },{}
 
 // More New Usables - Incomplete, Missing Price/Sell/Weight Values
-12021,Pork,Pork,2,20,0,10,,,,,27254783,2,,,,,{ itemheal rand(70,99),0; },{}
-12022,Galbi,Galbi,2,20,0,10,,,,,27254783,2,,,,,{ itemheal rand(70,99),0; },{}
+12021,Pork,Pork,2,20,0,10,,,,,27254783,2,,,,,{ set BaseExp,BaseExp + 33333333 },{}
+12022,Galbi,Galbi,2,20,0,10,,,,,27254783,2,,,,,{ set JobExp,JobExp + 33333333 },{}
 12023,Wrapped_Box,Wrapped Box,2,20,0,200,,,,,27254783,2,,,,,{ getitem -4,1; },{}
-12024,Red_Pouch,Red Pouch,2,20,0,50,,,,,27254783,2,,,,,{ set Zeny,Zeny+rand(100,1000); },{}
+12024,Red_Pouch,Red Pouch,2,20,0,50,,,,,27254783,2,,,,,{ monster "this",0,0,"--ja--",-1,1,; },{}
 12025,Dano_Festival_Egg,Dano Festival Egg,2,20,0,10,0,0,0,0,0,0,0,0,0,0,{},{} // Missing Effect
 12026,Dano_Festival_Egg_,Dano Festival Egg,2,20,0,10,0,0,0,0,0,0,0,0,0,0,{},{} // Missing Effect
 
@@ -2552,14 +2552,14 @@
 12030,Box_of_Resentment,Box of Resentment,2,1000,500,200,,,,,27254783,2,,,,,{ sc_start SC_ATKPot,60000,20; },{}
 12031,Box_of_Drowsiness,Box of Drowsiness,2,1000,500,200,,,,,27254783,2,,,,,{ sc_start SC_MATKPot,60000,20; },{}
 12032,Box_of_Storms,Box of Storms,2,1000,500,200,,,,,27254783,2,,,,,{ sc_start SC_WATERWEAPON,180000,1; },{}
-12033,Box_of_Sunlight,Box of Sunlight,2,1000,500,200,,,,,27254783,2,,,,,{},{} // Can see cloaked or hidden enemy,,,
+12033,Box_of_Sunlight,Box of Sunlight,2,1000,500,200,,,,,27254783,2,,,,,{},{} //Shows Cloaked/Hidden, Maya Purple Card effect
 12034,Box_of_Panting,Box of Panting,2,1000,500,200,,,,,27254783,2,,,,,{ sc_start SC_Silence,30000,0; percentheal 0,9; },{}
 12035,Lotto_Box,Lotto Box,2,20,0,20,,,,,27254783,2,,,,,{ getitem rand(7361,7368),1; },{}
 12036,Lotto_Box_,Lotto Box,2,20,0,20,,,,,27254783,2,,,,,{ getitem rand(7369,7376),1; },{}
 12037,Lotto_Box__,Lotto Box,2,20,0,20,,,,,27254783,2,,,,,{ getitem rand(7377,7384),1; },{}
 12038,Lotto_Box___,Lotto Box,2,20,0,20,,,,,27254783,2,,,,,{ getitem rand(7385,7392),1; },{}
 12039,Lotto_Box____,Lotto Box,2,20,0,20,,,,,27254783,2,,,,,{ getitem rand(7393,7398),1; },{}
-12040,Stone_of_Sage,Stone of Sage,2,100000,50000,10,,,,,27254783,2,,,,,{},{} // Complete
+12040,Stone_of_Sage,Stone of Sage,2,100000,50000,10,,,,,27254783,2,,,,,{},{}
 
 // Mixed Food
 12041,Fried_Grasshopper_Legs,Fried Grasshopper Legs,2,2000,1000,60,,,,,27254783,2,,,,,{ sc_start SC_STRFOOD,1200000,1; percentheal 5,0; },{}

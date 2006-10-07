@@ -190,7 +190,7 @@
 4199,Merman Card,10000
 4200,Megalith Card,10000
 4201,Majoruros Card,10000
-4202,Civil Servant Card,10000
+4202,Mao Guai Card,10000
 4203,Mutant Dragonoid Card,10000
 4204,Mini Demon Card,10000
 4205,Mimic Card,10000

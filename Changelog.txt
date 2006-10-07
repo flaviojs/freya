@@ -5,7 +5,11 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/07/06
+	* Fixed: Merchant Card set (Report by Mubbsy) [Tsuyuki]
+	* Fixed: Tyrfing item name and effect [Tsuyuki]
+	* Fixed: A bunch of cards/items that use bAddMonsterDropItem [Tsuyuki]
 	* Fixed: Delays and such for Guild skills [Tsuyuki]
+	* Added: Correct effects for a few new items (Thanks to Muad_Dib) [Tsuyuki]
 
 10/06/06
 	* Updated: A couple mob speed/delay rates WIP [Tsuyuki]
