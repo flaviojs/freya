@@ -170,7 +170,7 @@
 666,Gift_Box___,Gift Box,2,1000,500,200,,,,,27254783,2,,,,,{ getitem -4,1; },{}
 667,Gift_Box____,Gift Box,2,1000,500,200,,,,,27254783,2,,,,,{ getitem -4,1; },{}
 668,Angpow,Angpow,0,1,0,2,,,,,27254783,2,,,,,{ set Zeny,Zeny+rand(1000,10000); },{}
-669,Rice_Cake_Soup,Rice Cake Soup,2,10,5,100,,,,,,,,,,,{},{}
+669,Rice_Cake_Soup,Rice Cake Soup,2,10,5,100,,,,,,,,,,,{ percentheal -100,-100; },{}
 670,Gold_Coin_Pouch,Gold Coin Pouch,2,20,0,400,,,,,,,,,,,{},{}
 671,Gold_Coin,Gold Coin,2,20,0,40,,,,,27254783,2,,,,,{ set Zeny,Zeny+rand(100,1000); },{}
 672,Copper_Coin_Pouch,Copper Coin Pouch,2,20,0,400,,,,,,,,,,,{},{}
@@ -1801,7 +1801,7 @@
 5196,Orange_Ribbon,Orange Ribbon,5,,10,100,,1,,0,27254783,2,256,,1,247,{ bonus bMdef,3; },{}
 5197,White_Ribbon,White Ribbon,5,,10,100,,1,,0,27254783,2,256,,1,248,{ bonus bMdef,3; },{}
 5198,Drooping_Bunny,Drooping Bunny,5,,10,100,,1,,0,27254783,2,256,,1,249,{ bonus bDex,1; bonus bFlee,2;},{}
-5199,Baseball_Cap_,Baseball Cap,5,,10,200,,3,,0,27254783,2,256,,1,250,{},{}
+5199,Baseball_Cap_,Baseball Cap,5,,10,200,,3,,0,27254783,2,256,,1,216,{},{}
 5200,Coppola,Coppola,5,,10,300,,0,,0,27254783,2,256,,1,252,{},{}
 
 // Misc/Collection Items
@@ -2546,20 +2546,20 @@
 12026,Dano_Festival_Egg_,Dano Festival Egg,2,20,0,10,0,0,0,0,0,0,0,0,0,0,{},{} // Missing Effect
 
 // Effect Boxes - Incomplete, Missing Price/Sell/Weight Values
-12027,Giggling_Box,Giggling Box,2,1000,500,200,,,,,27254783,2,,,,,{ sc_start SC_Curse,30000,0; percentheal 9,0; },{}
+12027,Giggling_Box,Giggling Box,2,1000,500,200,,,,,27254783,2,,,,,{ percentheal 9,0; if(rand(100)<30) sc_start SC_Curse,30000,0; },{}
 12028,Box_of_Thunder,Box_of_Thunder,2,1000,500,200,,,,,27254783,2,,,,,{ sc_start 20,20000,0; },{}
-12029,Box_of_Gloom,Box_of_Gloom,11,1000,500,200,,,,,27254783,2,,,,,{ itemskill 45,3,"Improve Concentration"; },{}
+12029,Box_of_Gloom,Box_of_Gloom,11,1000,500,200,,,,,27254783,2,,,,,{ itemskill 45,1,"Improve Concentration"; },{}
 12030,Box_of_Resentment,Box of Resentment,2,1000,500,200,,,,,27254783,2,,,,,{ sc_start SC_ATKPot,60000,20; },{}
 12031,Box_of_Drowsiness,Box of Drowsiness,2,1000,500,200,,,,,27254783,2,,,,,{ sc_start SC_MATKPot,60000,20; },{}
 12032,Box_of_Storms,Box of Storms,2,1000,500,200,,,,,27254783,2,,,,,{ sc_start SC_WATERWEAPON,180000,1; },{}
 12033,Box_of_Sunlight,Box of Sunlight,2,1000,500,200,,,,,27254783,2,,,,,{},{} //Shows Cloaked/Hidden, Maya Purple Card effect
-12034,Box_of_Panting,Box of Panting,2,1000,500,200,,,,,27254783,2,,,,,{ sc_start SC_Silence,30000,0; percentheal 0,9; },{}
+12034,Box_of_Panting,Box of Panting,2,1000,500,200,,,,,27254783,2,,,,,{ percentheal 0,9; if(rand(100)<30) sc_start SC_Silence,30000,0; },{}
 12035,Lotto_Box,Lotto Box,2,20,0,20,,,,,27254783,2,,,,,{ getitem rand(7361,7368),1; },{}
 12036,Lotto_Box_,Lotto Box,2,20,0,20,,,,,27254783,2,,,,,{ getitem rand(7369,7376),1; },{}
 12037,Lotto_Box__,Lotto Box,2,20,0,20,,,,,27254783,2,,,,,{ getitem rand(7377,7384),1; },{}
 12038,Lotto_Box___,Lotto Box,2,20,0,20,,,,,27254783,2,,,,,{ getitem rand(7385,7392),1; },{}
 12039,Lotto_Box____,Lotto Box,2,20,0,20,,,,,27254783,2,,,,,{ getitem rand(7393,7398),1; },{}
-12040,Stone_of_Sage,Stone of Sage,2,100000,50000,10,,,,,27254783,2,,,,,{},{}
+12040,Stone_of_Sage,Stone of Sage,2,100000,50000,10,,,,,27254783,2,,,,,{},{} // Evolves Homunuclus
 
 // Mixed Food
 12041,Fried_Grasshopper_Legs,Fried Grasshopper Legs,2,2000,1000,60,,,,,27254783,2,,,,,{ sc_start SC_STRFOOD,1200000,1; percentheal 5,0; },{}
@@ -2651,9 +2651,9 @@
 12121,Thunderproof_Potion,Thunderproof Potion,2,20,10,10,,,,,27254783,2,,,,,{},{} // sc_start4 SC_ARMOR_ELEMENT,1200000,Ele_Wind,20,Ele_Earth,-15; 
 
 // More Food Items
-12122,Sesame_Pastry,Sesame Pastry,0,2,1,70,,,,,27254783,2,,,,,{ sc_start SC_BATKFood,1200000,30; },{}
+12122,Sesame_Pastry,Sesame Pastry,0,2,1,70,,,,,27254783,2,,,,,{ sc_start SC_HitFood,1200000,30; },{}
 12123,Honey_Pastry,Honey Pastry,0,20,10,70,,,,,27254783,2,,,,,{ sc_start SC_FleeFood,1200000,30; },{}
-12124,Rainbow_Cake,Rainbow Cake,0,20,10,70,,,,,27254783,2,,,,,{ sc_start SC_MATKFood,120000,30; },{}
+12124,Rainbow_Cake,Rainbow Cake,0,20,10,70,,,,,27254783,2,,,,,{ sc_start SC_BATKFood,1200000,10; sc_start SC_MATKFood,120000,10; },{}
 
 // Cooking Kits
 12125,Outdoor_Cooking_Kit,Outdoor Cooking Kit,2,500,250,20,,,,,27254783,2,,,,,{ if(rand(100) <= 12) produce 11; },{}

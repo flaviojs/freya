@@ -5,6 +5,13 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/08/06
+	* Fixed: Cooking Kits can now make L6-10 food items [Tsuyuki]
+	 - To-Do: Add graphical effects and failure messages (src)
+	 - To-Do: If you do not make anything when you use the kits, they should stay in your 
+	 - inventory and not be deleted (src)
+	 - To-Do: Fix food SCs not working, and add their graphical effects (src)
+	 - Note: If these things are fixed, the Cooking System will be 100% fully functional
+	* Updated: More new item updates [Tsuyuki]
 	* Cleaned up useless things in configure [MagicalTux]
 	* Updated: Official entry rates for Cookie Bag (Aegis X.3) [Tsuyuki]
 	* Updated: Official entries for Old Purple Box (Aegis X.3) [Tsuyuki]
