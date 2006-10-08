@@ -21,7 +21,7 @@
 // 12 Attack Type: None, Weapon, Magic, Misc
 // 13 Blowcount Amount of Tiles The Skill Knockbacks
 //
-// Note: Delete 7th & 13th entries when importing from eAthena
+// Note: Delete 7th entry when importing from eAthena
 //
 
 // First Class Skills
