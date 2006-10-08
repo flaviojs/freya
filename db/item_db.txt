@@ -2540,7 +2540,7 @@
 // More New Usables - Incomplete, Missing Price/Sell/Weight Values
 12021,Pork,Pork,2,20,0,10,,,,,27254783,2,,,,,{ set BaseExp,BaseExp + 33333333; },{}
 12022,Galbi,Galbi,2,20,0,10,,,,,27254783,2,,,,,{ set JobExp,JobExp + 33333333; },{}
-12023,Wrapped_Box,Wrapped Box,2,20,0,200,,,,,27254783,2,,,,,{ getitem -4,1; },{}
+12023,Wrapped_Box,Wrapped Box,2,20,0,200,,,,,27254783,2,,,,,{ set WPBOX,rand(1,3); if(WPBOX==1)getitem 603,1; if(WPBOX==2)getitem 617; if(WPBOX==3)getitem 644; },{}
 12024,Red_Pouch,Red Pouch,2,20,0,50,,,,,27254783,2,,,,,{ monster "this",0,0,"--ja--",-1,1,; },{}
 12025,Dano_Festival_Egg,Dano Festival Egg,2,20,0,10,0,0,0,0,0,0,0,0,0,0,{},{} // Missing Effect
 12026,Dano_Festival_Egg_,Dano Festival Egg,2,20,0,10,0,0,0,0,0,0,0,0,0,0,{},{} // Missing Effect
@@ -2628,14 +2628,13 @@
 12102,Grilled_Skewer,Grilled Skewer,2,,,300,,,,,27254783,2,,,,,{},{} // Missing Effect & Price/Sell Values
 12103,Bloody_Branch,Bloody Branch,2,10000,5000,200,,,,,27254783,2,,,,,{ monster "this",0,0,"--ja--",-3,1,""; },{}
 12104,Random_Quiver,Random Quiver,2,10000,5000,200,,,,,27254783,2,,,,,{ getitem -6,2; },{}
-12105,Taming_Gift_Set,Taming Gift Set,2,10000,5000,200,,,,,27254783,2,,,,,{ getitem -7,2; },{}
-// Produces a Pet Armor & a Pet Taming Item, currently just grabs two of any pet item
+12105,Taming_Gift_Set,Taming Gift Set,2,10000,5000,200,,,,,27254783,2,,,,,{ getitem -7,1;  getitem -7,1; },{}
 12106,Jewelry_Box,Jewelry Box,2,10000,5000,200,,,,,27254783,2,,,,,{ getitem -8,1; },{}
 12107,Wrapped_Mask,Wrapped Mask,2,10000,5000,200,,,,,27254783,2,,,,,{ getitem -9,1; },{}
 12108,Scroll_Package,Scroll Package,2,10000,5000,200,,,,,27254783,2,,,,,{ getitem -10,3; },{}
-12109,Poring_Box,Poring Box,2,10000,5000,200,,,,,27254783,2,,,,,{ monster "this",0,0,"--ja--",-2,1,""; },{}
-12110,First_Aid_Kit,First Aid Kit,2,10000,5000,200,,,,,27254783,2,,,,,{ getitem -11,3; },{}
-12111,Bundle_of_Food,Bundle of Food,2,,,200,,,,,27254783,2,,,,,{ getitem -12,3; },{}
+12109,Poring_Box,Poring Box,2,10000,5000,200,,,,,27254783,2,,,,,{ monster "this",0,0,"--ja--",-2,1,"";  monster "this",0,0,"--ja--",-2,1,"";  monster "this",0,0,"--ja--",-2,1,""; },{}
+12110,First_Aid_Kit,First Aid Kit,2,10000,5000,200,,,,,27254783,2,,,,,{ getitem -11,1;  getitem -11,1;  getitem -11,1; },{}
+12111,Bundle_of_Food,Bundle of Food,2,,,200,,,,,27254783,2,,,,,{ getitem -12,1;  getitem -12,1;  getitem -12,1; },{}
 12112,Tropical_Sograt,Tropical Sograt,2,1000,500,100,,,,,27254783,2,,,,,{ sc_start SC_Curse,10000,1; },{}
 12113,Vermilion_on_the_Beach,Vermilion on the Beach,2,1000,500,100,,,,,27254783,2,,,,,{ sc_start SC_Stun,10000,1; },{}
 
@@ -2657,14 +2656,14 @@
 12124,Rainbow_Cake,Rainbow Cake,0,20,10,70,,,,,27254783,2,,,,,{ sc_start SC_MATKFood,120000,30; },{}
 
 // Cooking Kits
-12125,Outdoor_Cooking_Kit,Outdoor Cooking Kit,2,500,250,20,,,,,27254783,2,,,,,{ produce 11; },{}
-12126,Home_Cooking_Kit,Home Cooking Kit,2,1000,500,30,,,,,27254783,2,,,,,{ produce 12; },{}
-12127,Professional_Cooking_Kit,Professional Cooking Kit,2,2000,1000,30,,,,,27254783,2,,,,,{ produce 13; },{}
-12128,Royal_Cooking_Kit,Royal Cooking Kit,2,5000,2500,70,,,,,27254783,2,,,,,{ produce 14; },{}
+12125,Outdoor_Cooking_Kit,Outdoor Cooking Kit,2,500,250,20,,,,,27254783,2,,,,,{ if(rand(100) <= 12) produce 11; },{}
+12126,Home_Cooking_Kit,Home Cooking Kit,2,1000,500,30,,,,,27254783,2,,,,,{ if(rand(100) <= 24) produce 12; },{}
+12127,Professional_Cooking_Kit,Professional Cooking Kit,2,2000,1000,30,,,,,27254783,2,,,,,{ if(rand(100)<= 36) produce 13; },{}
+12128,Royal_Cooking_Kit,Royal Cooking Kit,2,5000,2500,70,,,,,27254783,2,,,,,{ if(rand(100) <= 48) produce 14; },{}
 12129,Fantastic_Cooking_Set,Fantastic Cooking Set,2,10000,5000,70,,,,,27254783,2,,,,,{ produce 15; },{}
 
 // More Misc Items - Incomplete
-12130,Cookie_Bag,Cookie Bag,2,2,1,70,,,,,27254783,2,,,,,{ getitem -5,1; },{}
+12130,Cookie_Bag,Cookie Bag,2,2,1,70,,,,,27254783,2,,,,,{ getitem -5,1;  getitem -5,1;  getitem -5,1; },{}
 12131,Lucky_Potion,Lucky Potion,0,,10,100,,,,,27254783,2,,,,,{ sc_start SC_LUKFOOD, 300000, 15; },{}
 12132,Santa's_Bag,Red Package,2,20,10,200,,,,,27254783,2,,,,,{},{} // Turns you into Xmas Suit for 10 Minutes
 12133,McDonald's_Ice_Cone,McDonald's Ice Cone,0,50,,80,,,,,27254783,2,,,,,{ itemheal rand(45,64),0; },{} // Incomplete

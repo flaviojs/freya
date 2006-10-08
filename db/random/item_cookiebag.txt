@@ -6,16 +6,18 @@
 // 10000   = 1%
 // 500000  = 50%
 // 1000000 = 100%
+//
+// Accurate to Aegis X.3
 
 0,Candy,529 // Default
-529,Candy,100000
-570,Lucky Candy,10000
-530,Candy Cane,100000
-571,Lucky Candy Cane,100000
-538,Well-baked Cookie,100000
-572,Lucky Cookie,100000
-539,Piece of Cake,100000
-564,Rice Ball,100000
+529,Candy,500000
+570,Lucky Candy,500000
+530,Candy Cane,500000
+571,Lucky Candy Cane,500000
+538,Well-baked Cookie,500000
+572,Lucky Cookie,500000
+539,Piece of Cake,500000
+564,Rice Ball,500000
 12122,Sesame Pastry,100000
 12123,Honesty Pastry,100000
 12124,Rainbow Cake,100000

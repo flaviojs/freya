@@ -4,6 +4,18 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/08/06
+	* Updated: Official entry rates for Cookie Bag (Aegis X.3) [Tsuyuki]
+	* Updated: Official entries for Old Purple Box (Aegis X.3) [Tsuyuki]
+	* Updated: Official entries for Gift Box (Aegis X.3) [Tsuyuki]
+	* Updated: Official entries for Old Card Album (Aegis X.3) [Tsuyuki]
+	* Added: Size Fix entries for Ninja/Gunslinger weapons [Tsuyuki]
+	 - Needs to be updated in source code as well (I think?)
+	* Updated: Effects for a few more items (Thanks to Muad_Dib) [Tsuyuki]
+	* Fixed: Cooking item producers not working correctly [Tsuyuki]
+	* Updated: The db/item_group_db.txt file [Tsuyuki]
+	* Updated: The db/monster_race2_db.txt file [Tsuyuki]
+
 10/07/06
 	* Fixed: BS_WEAPONREPAIR is now targetable [Tsuyuki]
 	* Fixed: More bugs in the Eye of Hellion Quest (Thanks to Galaxy) [Tsuyuki]

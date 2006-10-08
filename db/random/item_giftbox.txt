@@ -6,80 +6,83 @@
 // 10000   = 1%
 // 500000  = 50%
 // 1000000 = 100%
+//
+// Accurate to Aegis X.3
 
-0,Gift Box,644
-756,Rough Oridecon,50000
-757,Rough Elunium,20000
-984,Oridecon,20000
-985,Elunium,10000
-714,Emperium,10000
-999,Steel,10000
-1000,Star Crumb,10000
-994,Flame Heart,10000
-995,Mystic Frozen,10000
-996,Rough Wind,10000
-997,Great Nature,10000
-975,Scarlet Dyestuffs,10000
-976,Lemon Dyestuffs,10000
-978,Cobaltblue Dyestuff,10000
-979,Darkgreen Dyestuff,10000
-980,Orange Dyestuff,10000
-981,Violet Dyestuff,10000
-982,White Dyestuff,10000
-983,Black Dyestuff,10000
-969,Gold,10000
-718,Garnet,10000
-719,Amethyst,10000
-720,Aquamarine,10000
-721,Emerald,10000
-722,Pearl,10000
-723,Ruby,10000
-724,Cursed Ruby,10000
-725,Sardonyx,10000
-726,Sapphire,10000
-727,Opal,10000
-728,Topaz,10000
-729,Zircon,10000
-730,1 Carat Diamond,10000
-731,2 Carat Diamond,10000
-732,3 Carat Diamond,10000
-733,Cracked Diamond,10000
-734,Red Frame,10000
-735,Chung Jah,10000
-736,China,10000
-737,Black Ladle,10000
-738,Pencil Case,10000
-739,Rouge,10000
-740,Puppet,10000
-741,Poring Doll,10000
-742,Chonchon Doll,10000
-743,Spore Doll,10000
-744,Bouquet,10000
-745,Wedding Bouquet,10000
-746,Glass Bead,10000
-747,Crystal Mirror,10000
-748,Witherless Rose,10000
-749,Frozen Rose,10000
-750,Baphomet Doll,10000
-751,Osiris Doll,10000
-752,Grasshopper Doll,10000
-753,Yoyo Doll,10000
-754,Raccoon Doll,10000
-706,Four-Leaf Clover,10000
-4005,Santa Poring Card,10000
-7034,Red Socks with Holes,10000
-501,Red Potion,10000
-502,Orange Potion,10000
-503,Yellow Potion,10000
-504,White Potion,10000
-505,Blue Potion,10000
-506,Green Potion,10000
-526,Royal Jelly,10000
-529,Candy,10000
-530,Candy Cane,10000
-537,Pet Food,10000
-538,Well-baked Cookie,10000
-539,Piece of Cake,10000
-603,Old Blue Box,10000
-617,Old Violet Box,10000
-644,Gift Box,190000
+0,DEFAULT,644	// Gift Box
+756,,50000	// Rough Oridecon
+757,,20000	// Rough Elunium
+984,,20000	// Oridecon
+985,,10000	// Elunium
+714,,10000	// Emperium
+999,,10000	// Steel
+1000,,10000	// Star Crumb
+994,,10000	// Flame Heart
+995,,10000	// Mystic Frozen
+996,,10000	// Rough Wind
+997,,10000	// Great Nature
+975,,10000	// Scarlet Dyestuff
+976,,10000	// Lemon Dyestuff
+978,,10000	// Cobaltblue Dyestuff
+979,,10000	// Darkgreen Dyestuff
+980,,10000	// Orange Dyestuff
+981,,10000	// Violet Dyestuff
+982,,10000	// White Dyestuff
+983,,10000	// Black Dyestuff
+969,,10000	// Gold
+718,,10000	// Garnet
+719,,10000	// Amethyst
+720,,10000	// Aquamarine
+721,,10000	// Emerald
+722,,10000	// Pearl
+723,,10000	// Ruby
+724,,10000	// Cursed Ruby
+725,,10000	// Sardonyx
+726,,10000	// Sapphire
+727,,10000	// Opal
+728,,10000	// Topaz
+729,,10000	// Zircon
+730,,10000	// 1carat Diamond
+731,,10000	// 2carat Diamond
+732,,10000	// 3carat Diamond
+733,,10000	// Cracked Diamond
+734,,10000	// Red Frame
+735,,10000	// Chung Jah
+736,,10000	// China
+737,,10000	// Black Ladle
+738,,10000	// Pencil Case
+739,,10000	// Rouge
+740,,10000	// Puppet
+741,,10000	// Poring Doll
+742,,10000	// Chonchon Doll
+743,,10000	// Spore Doll
+744,,10000	// Bouquet
+745,,10000	// Wedding Bouquet
+746,,10000	// Glass Bead
+747,,10000	// Crystal Mirror
+748,,10000	// Witherless Rose
+749,,10000	// Frozen Rose
+750,,10000	// Baphomet Doll
+751,,10000	// Osiris Doll
+752,,10000	// Grasshopper Doll
+753,,10000	// Yoyo Doll
+754,,10000	// Raccoon Doll
+706,,10000	// Four Leaf Clover
+4005,,10000	// Santa Poring Card
+7034,,10000	// Red Stocking
+501,,10000	// Red Potion
+502,,10000	// Orange Potion
+503,,10000	// Yellow Potion
+504,,10000	// White Potion
+505,,10000	// Blue Potion
+506,,10000	// Green Potion
+526,,10000	// Royal Jelly
+529,,10000	// Candy
+530,,10000	// Candy Cane
+537,,10000	// Pet Food
+538,,10000	// Well-baked Cookie
+539,,10000	// Piece of Cake
+603,,10000	// Old Blue Box
+617,,10000	// Old Purple Box
+644,,190000	// Gift Box
+1558,,10000	// Girl's Diary
