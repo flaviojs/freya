@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/08/06
+	* Cleaned up useless things in configure [MagicalTux]
 	* Updated: Official entry rates for Cookie Bag (Aegis X.3) [Tsuyuki]
 	* Updated: Official entries for Old Purple Box (Aegis X.3) [Tsuyuki]
 	* Updated: Official entries for Gift Box (Aegis X.3) [Tsuyuki]
