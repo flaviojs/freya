@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/07/06
+	* Fixed: BS_WEAPONREPAIR is now targetable [Tsuyuki]
 	* Fixed: More bugs in the Eye of Hellion Quest (Thanks to Galaxy) [Tsuyuki]
 	* Fixed: Bug in the Sight Blaster Quest allowing you to do it twice [Tsuyuki]
 	* Fixed: Problems with the Cooking Quest (Thanks to Galaxy) [Tsuyuki]
