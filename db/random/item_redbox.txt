@@ -1,0 +1,16 @@
+// item_redbox.txt, Old Red Box Database
+//
+// <Item_ID>,<Description (Dummy)>,<Rate>
+//
+// Rate Examples
+// 10000   = 1%
+// 500000  = 50%
+// 1000000 = 100%
+
+0,Alice Doll,5137
+5137,Alice Doll,500000
+5138,Magic Eyes,500000
+5139,Hibiscus,500000
+5140,Pretty Ribbon,500000
+5142,Sakurai Helmet,500000 // Crescent Moon Helm
+5143,Kabuki Mask,500000

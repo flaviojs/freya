@@ -1,9 +1,9 @@
 //===== Freya Script =========================================
 //= Lighthalzen City
 //===== By: ================================================== 
-//=  erKURITA
+//= erKURITA
 //===== Current Version: ===================================== 
-//= 0.9
+//= 1.1
 //===== Compatible With: ===================================== 
 //= Freya
 //===== Description: ========================================= 
@@ -18,7 +18,10 @@
 //= 0.7 Implemented some more crap NPCs and the second entrance to biolabs [MasterOfMuppets]
 //= 0.8 Removed Duplicates [Silent]
 //= 0.9 Removed Duplicates [Toms]
+//= 1.0 Fixed some bugs and added some new NPCs (Au{R}oN) [Tsuyuki]
+//= 1.1 Updated Donation NPC (MasterOfMuppets) [Tsuyuki]
 //=============================================================
+
 
 lighthalzen.gat,198,285,5	script	Jiwon	862,{
 
@@ -38,7 +41,7 @@ lighthalzen.gat,198,285,5	script	Jiwon	862,{
 	close;
 }
 
-
+// ---------------------------------------------------------------------------
 
 lighthalzen.gat,220,244,3	script	Samnang	863,{
 
@@ -67,6 +70,7 @@ lighthalzen.gat,220,244,3	script	Samnang	863,{
 	close;
 }
 
+// ---------------------------------------------------------------------------
 
 lighthalzen.gat,261,112,3	script	Ruth	862,{
 
@@ -92,6 +96,7 @@ lighthalzen.gat,261,112,3	script	Ruth	862,{
 	close;
 }
 
+// ---------------------------------------------------------------------------
 
 lighthalzen.gat,259,108,7	script	Oyoung	869,{
 
@@ -120,6 +125,8 @@ lighthalzen.gat,259,108,7	script	Oyoung	869,{
 	close;
 }
 
+// ---------------------------------------------------------------------------
+
 lighthalzen.gat,233,121,4	script	Kariya	72,{
 
 	mes "[Kariya]";
@@ -138,6 +145,7 @@ lighthalzen.gat,233,121,4	script	Kariya	72,{
 	close;
 }
 
+// ---------------------------------------------------------------------------
 
 lighthalzen.gat,233,82,4	script	Sung	716,{
 
@@ -165,6 +173,7 @@ lighthalzen.gat,233,82,4	script	Sung	716,{
 	close;
 }
 
+// ---------------------------------------------------------------------------
 
 lighthalzen.gat,89,73,4	script	Sameer	854,{
 
@@ -201,7 +210,7 @@ lighthalzen.gat,89,73,4	script	Sameer	854,{
 	close;
 }
 
-
+// ---------------------------------------------------------------------------
 
 lighthalzen.gat,45,59,8	script	Janice	863,{
 
@@ -215,6 +224,7 @@ lighthalzen.gat,45,59,8	script	Janice	863,{
 	close;
 }
 
+// ---------------------------------------------------------------------------
 
 lighthalzen.gat,66,94,5	script	Elmer Keays	866,{
 
@@ -234,6 +244,8 @@ lighthalzen.gat,66,94,5	script	Elmer Keays	866,{
 	close;
 }
 
+// ---------------------------------------------------------------------------
+
 lighthalzen.gat,65,94,4	script	Margie Keays	863,{
 
 	mes "[Margie Keays]";
@@ -245,6 +257,8 @@ lighthalzen.gat,65,94,4	script	Margie Keays	863,{
 	mes "a walk together~";
 	close;
 }
+
+// ---------------------------------------------------------------------------
 
 lighthalzen.gat,78,120,3	script	Maivi	862,{
 
@@ -273,6 +287,7 @@ lighthalzen.gat,78,120,3	script	Maivi	862,{
 	close;
 }
 
+// ---------------------------------------------------------------------------
 
 lighthalzen.gat,226,210,3	script	Nannan	86,{
 
@@ -301,6 +316,8 @@ lighthalzen.gat,226,210,3	script	Nannan	86,{
 	mes "to a street guy like me...";
 	close;
 }
+
+// ---------------------------------------------------------------------------
 
 lighthalzen.gat,230,182,4	script	Klaubis	866,{
 
@@ -355,6 +372,7 @@ killer:
 
 }
 
+// ---------------------------------------------------------------------------
 
 lighthalzen.gat,232,156,4	script	Sigmund	866,{
 
@@ -376,6 +394,8 @@ lighthalzen.gat,232,156,4	script	Sigmund	866,{
 
 }
 
+// ---------------------------------------------------------------------------
+
 lighthalzen.gat,190,134,5	script	Joyce	862,{
 
 	mes "[Joyce]";
@@ -388,6 +408,7 @@ lighthalzen.gat,190,134,5	script	Joyce	862,{
 
 }
 
+// ---------------------------------------------------------------------------
 
 lighthalzen.gat,191,134,5	script	Dan Song	869,{
 
@@ -400,7 +421,7 @@ lighthalzen.gat,191,134,5	script	Dan Song	869,{
 
 }
 
-
+// ---------------------------------------------------------------------------
 
 lighthalzen.gat,115,159,5	script	Collins	866,{
 
@@ -422,7 +443,7 @@ lighthalzen.gat,115,159,5	script	Collins	866,{
 
 }
 
-
+// ---------------------------------------------------------------------------
 
 lighthalzen.gat,77,157,5	script	Villagomez	866,{
 
@@ -436,6 +457,7 @@ lighthalzen.gat,77,157,5	script	Villagomez	866,{
 
 }
 
+// ---------------------------------------------------------------------------
 
 lighthalzen.gat,125,68,5	script	Kemp	97,{
 
@@ -455,6 +477,7 @@ lighthalzen.gat,125,68,5	script	Kemp	97,{
 
 }
 
+// ---------------------------------------------------------------------------
 
 lighthalzen.gat,138,50,8	script	Mauro	847,{
 
@@ -477,6 +500,7 @@ lighthalzen.gat,138,50,8	script	Mauro	847,{
 
 }
 
+// ---------------------------------------------------------------------------
 
 lighthalzen.gat,132,103,5	script	Sefith	734,{
 
@@ -498,6 +522,7 @@ lighthalzen.gat,132,103,5	script	Sefith	734,{
 
 }
 
+// ---------------------------------------------------------------------------
 
 lighthalzen.gat,239,64,5	script	Jade	862,{
 
@@ -527,6 +552,8 @@ lighthalzen.gat,239,64,5	script	Jade	862,{
 
 }
 
+// ---------------------------------------------------------------------------
+
 lighthalzen.gat,205,208,3	script	Greedy Looking Man	853,{
 
 	mes "[Khramptd]";
@@ -539,6 +566,8 @@ lighthalzen.gat,205,208,3	script	Greedy Looking Man	853,{
 	close;
 
 }
+
+// ---------------------------------------------------------------------------
 
 lhz_in02.gat,34,213,4	script	Maggie	91,{
 
@@ -560,6 +589,8 @@ lhz_in02.gat,34,213,4	script	Maggie	91,{
 
 }
 
+// ---------------------------------------------------------------------------
+
 lighthalzen.gat,202,94,5	script	Wallace	847,{
 
 	mes "[Wallace]";
@@ -579,6 +610,8 @@ lighthalzen.gat,202,94,5	script	Wallace	847,{
 
 }
 
+// ---------------------------------------------------------------------------
+
 lighthalzen.gat,182,102,3	script	Lucius	866,{
 
 	mes "[Lucius]";
@@ -588,9 +621,10 @@ lighthalzen.gat,182,102,3	script	Lucius	866,{
 	mes "to help the hungry?";
 	next;
 	menu "Sure.",s_Sure,"No, thanks.",-;
+	mes "[Lucius]";
+	goto s_Cancel;
 
 s_Cancel:
-	mes "[Lucius]";
 	mes "I understand. Still,";
 	mes "keep in mind that when";
 	mes "you give from your heart,";
@@ -608,12 +642,12 @@ s_Sure:
 	mes "to cancel, please enter '0'.";
 	next;
 	input @zenydonate;
-		if(@zenydonate > 30000)goto s_Much;
-		if(!@zenydonate)goto s_Cancel;
-		if(Zeny < @zenydonate)goto s_NEnoughZ;
-		set Zeny,Zeny - @zenydonate;
-		set $donatedzeny,$donatedzeny + @zenydonate;
 	mes "[Lucius]";
+	if(@zenydonate == 0)goto s_Cancel;
+	if(@zenydonate > 30000)goto L_Donation1;
+	if(Zeny < @zenydonate)goto L_Donation2;
+	set Zeny,Zeny - @zenydonate;
+	set $donatedzeny,$donatedzeny + @zenydonate;
 	mes "Thank you so much";
 	mes "for your " + @zenydonate + " zeny donation.";
 	mes "I promise that your money";
@@ -626,26 +660,40 @@ s_Sure:
 	mes "donations. I'm glad to see";
 	mes "that there are still kinda and";
 	mes "generous people in the world.";
+	if($donatedzeny > 259999)goto L_Donation3;
 	close;
 
-s_Much:
-	mes "[Lucius]";
-	mes "I'm sorry but you can't";
-	mes "donate more than 30,000";
-	mes "zeny. Please choose another";
-	mes "number.";
-	close;
+	L_Donation1:
+		mes "I'm sorry but you can't";
+		mes "donate more than 30,000";
+		mes "zeny. Please choose another";
+		mes "number.";
+		close;
 
-s_NEnoughZ:
-	mes "[Lucius]";
-	mes "I'm sorry but you do";
-	mes "not have as much zeny";
-	mes "as you wish to donate.";
-	mes "Please come back when you";
-	mes "do!";
-	close;
+	L_Donation2:
+		mes "I'm sorry but you do";
+		mes "not have as much zeny";
+		mes "as you wish to donate.";
+		mes "Please come back when you";
+		mes "do!";
+		close;
 
+	L_Donation3:
+		next;
+		mes "[Lucius]";
+		mes "This should be enough";
+		mes "to send to the Poor Relief";
+		mes "Organization. Please accpet";
+		mes "this small gift as a token of";
+		mes "my gratitude, adventurer. Bless";
+		mes "you, youngster and take care.";
+		getitem 603,1;
+		getitem 12016,1;
+		set $donatedzeny,0;
+		close;
 }
+
+// ---------------------------------------------------------------------------
 
 lighthalzen.gat,147,105,3	script	Laqumet	869,{
 
@@ -667,53 +715,7 @@ lighthalzen.gat,147,105,3	script	Laqumet	869,{
 
 }
 
-lhz_in02.gat,230,284,4	script	Hotel Employee#01	86,{
-
-	mes "[Hotel Employee]";
-	mes "Welcome to";
-	mes "the Royal Dragon,";
-	mes "where you can find the";
-	mes "finest accomodations";
-	mes "and the best service.";
-	next;
-	menu "Save Point",s_Save,"Rest - 5,000 zeny",s_Rest,"Cancel",-;
-
-	mes "[Hotel Employee]";
-	mes "Thank you and";
-	mes "have a nice day.";
-	close;
-
-s_Save:
-	savepoint "lhz_in02.gat",209,275;
-	mes "[Hotel Employee]";
-	mes "Thank you, your";
-	mes "Respawn Point has";
-	mes "been saved here in";
-	mes "the Royal Dragon.";
-	close;
-
-s_Rest:
-	if(Zeny < 5000)goto s_NEnoughZ;
-	set Zeny,Zeny - 5000;
-	mes "[Hotel Employee]";
-	mes "Thank you~";
-	mes "I hope you enjoy";
-	mes "your stay in the";
-	mes "Royal Dragon.";
-	close2;
-	warp "lhz_in02.gat",219,150;
-	percentheal 100,100;
-	sc_start SC_BLESSING,240000,10;
-	skilleffect AL_BLESSING,0;
-	end;
-
-s_NEnoughZ:
-	mes "[Hotel Employee]";
-	mes "I'm sorry but you do not";
-	mes "have enough zeny, please";
-	mes "come back when you do!";
-	close;
-}
+// ---------------------------------------------------------------------------
 
 lhz_in02.gat,241,172,8	script	Hotel Employee#02	868,{
 
@@ -728,6 +730,8 @@ lhz_in02.gat,241,172,8	script	Hotel Employee#02	868,{
 
 }
 
+// ---------------------------------------------------------------------------
+
 lhz_in02.gat,210,189,2	script	Christopher Michael	849,{
 
 	mes "[Christopher Michael]";
@@ -739,6 +743,8 @@ lhz_in02.gat,210,189,2	script	Christopher Michael	849,{
 	close;
 
 }
+
+// ---------------------------------------------------------------------------
 
 lhz_in02.gat,201,181,6	script	Safwat Fahmy	853,{
 
@@ -768,6 +774,8 @@ lhz_in02.gat,201,181,6	script	Safwat Fahmy	853,{
 
 }
 
+// ---------------------------------------------------------------------------
+
 lhz_in02.gat,251,212,2	script	Hotel Employee#03	868,{
 
 	mes "[Hotel Employee]";
@@ -779,6 +787,8 @@ lhz_in02.gat,251,212,2	script	Hotel Employee#03	868,{
 	close;
 
 }
+
+// ---------------------------------------------------------------------------
 
 lhz_in02.gat,229,217,2	script	Tanoue	863,{
 
@@ -797,6 +807,8 @@ lhz_in02.gat,229,217,2	script	Tanoue	863,{
 	close;
 
 }
+
+// ---------------------------------------------------------------------------
 
 lhz_in02.gat,209,277,4	script	Ben Allen	84,{
 
@@ -817,6 +829,8 @@ lhz_in02.gat,209,277,4	script	Ben Allen	84,{
 
 }
 
+// ---------------------------------------------------------------------------
+
 lhz_in02.gat,221,276,4	script	Harp	869,{
 
 	mes "[Harp]";
@@ -836,6 +850,8 @@ lhz_in02.gat,221,276,4	script	Harp	869,{
 
 }
 
+// ---------------------------------------------------------------------------
+
 lhz_in02.gat,238,275,4	script	Hotel Employee#04	869,{
 
 	mes "[Hotel Employee]";
@@ -848,6 +864,8 @@ lhz_in02.gat,238,275,4	script	Hotel Employee#04	869,{
 	close;
 
 }
+
+// ---------------------------------------------------------------------------
 
 lhz_in02.gat,247,275,4	script	Hotel Employee#05	868,{
 
@@ -868,6 +886,8 @@ lhz_in02.gat,247,275,4	script	Hotel Employee#05	868,{
 
 }
 
+// ---------------------------------------------------------------------------
+
 lhz_in02.gat,271,281,2	script	Citizen#01	47,{
 
 	mes "[Hachi]";
@@ -887,6 +907,8 @@ lhz_in02.gat,271,281,2	script	Citizen#01	47,{
 
 }
 
+// ---------------------------------------------------------------------------
+
 lhz_in02.gat,277,285,4	script	Bartender	61,{
 
 	mes "[Duff]";
@@ -899,6 +921,8 @@ lhz_in02.gat,277,285,4	script	Bartender	61,{
 	close;
 
 }
+
+// ---------------------------------------------------------------------------
 
 lhz_in02.gat,281,280,6	script	Customer#01	816,{
 
@@ -918,6 +942,8 @@ lhz_in02.gat,281,280,6	script	Customer#01	816,{
 	close;
 
 }
+
+// ---------------------------------------------------------------------------
 
 lhz_in02.gat,287,282,4	script	Customer#02	853,{
 
@@ -939,6 +965,8 @@ lhz_in02.gat,287,282,4	script	Customer#02	853,{
 	close;
 
 }
+
+// ---------------------------------------------------------------------------
 
 lighthalzen.gat,123,212,4	script	Merpi	700,{
 
@@ -1820,6 +1848,7 @@ lhz_in03.gat,184,38,2	script	Loudmouth	55,{
 	close;
 
 }
+
 // ---------------------------------------------------------------------------
 
 lhz_in01.gat,114,181,3	script	Representative::LhzRep	71,{
@@ -1891,10 +1920,12 @@ s_B:
 	mes "is not accessible to visitors";
 	next;
 	goto loopback;
-	
+
 }
 
 lhz_in01.gat,26,247,2	duplicate(LhzRep)	Representative	71
+
+// ---------------------------------------------------------------------------
 
 lhz_in01.gat,173,28,4	script	Guard#01::LhzRekGuard	868,{
 
@@ -1910,6 +1941,8 @@ lhz_in01.gat,173,28,4	script	Guard#01::LhzRekGuard	868,{
 }
 
 lhz_in01.gat,180,28,4	duplicate(LhzRekGuard)	Guard#03	868
+
+// ---------------------------------------------------------------------------
 
 lhz_in01.gat,72,209,4	script	Guide#01	862,{
 
@@ -1929,6 +1962,8 @@ lhz_in01.gat,72,209,4	script	Guide#01	862,{
 
 }
 
+// ---------------------------------------------------------------------------
+
 lhz_in01.gat,72,195,8	script	Guide#02	90,{
 
 	mes "[Geonuii]";
@@ -1942,6 +1977,8 @@ lhz_in01.gat,72,195,8	script	Guide#02	90,{
 
 }
 
+// ---------------------------------------------------------------------------
+
 lhz_in01.gat,73,188,4	script	Guide#03	862,{
 
 	mes "[Bonnie]";
@@ -1951,9 +1988,11 @@ lhz_in01.gat,73,188,4	script	Guide#03	862,{
 
 }
 
+// ---------------------------------------------------------------------------
+
 lhz_in01.gat,34,226,4	script	Rekenber Guard#01	867,{
 
-	if(isequipped(2241) && isequipped(2243)) goto s_Staff;
+	if(isequipped(2241)==1 && isequipped(2243)==1) goto s_Staff;
 	mes "[Rekenber Guard]";
 	mes "This is a restricted";
 	mes "area! Please show";
@@ -1986,9 +2025,11 @@ s_Staff:
 
 }
 
+// ---------------------------------------------------------------------------
+
 lhz_in01.gat,19,129,0	script	LhzHiddenTrg1::LhzTrig	-1,1,1{
 OnTouch:
-	if(isequipped(2241) && isequipped(2243)) goto s_Staff;
+	if(isequipped(2241)==1 && isequipped(2243)==1) goto s_Staff;
 	mes "[Rekenber Guard]";
 	mes "This area is restricted";
 	mes "to the public! Who are you";
@@ -2014,9 +2055,11 @@ lhz_in01.gat,23,137,0	duplicate(LhzTrig)	LhzHiddenTrg2	-1,1,1
 
 lhz_in01.gat,24,131,2	duplicate(LhzTrig)	Rekenber Guard#02	867
 
+// ---------------------------------------------------------------------------
+
 lhz_in01.gat,25,141,4	script	Regenschirm Guard	868,{
 
-	if(isequipped(2241) && isequipped(2243)) goto s_Staff;
+	if(isequipped(2241)==1 && isequipped(2243)==1) goto s_Staff;
 	mes "[Regenschirm Guard]";
 	mes "This area is restricted";
 	mes "to the public! Who are you";
@@ -2039,7 +2082,7 @@ s_Staff:
 	close;
 
 s_Yes:
-	if(isequipped(2657)) goto s_Auth;
+	if(isequipped(2657)==1) goto s_Auth;
 	mes "[Regenschirm Guard]";
 	mes "I'm sorry but I can't let";
 	mes "staff without proper autorization";
@@ -2053,3 +2096,214 @@ s_Auth:
 	end;
 
 }
+
+// ---------------------------------------------------------------------------
+
+lhz_in02.gat,34,41,7	script	Arthur	849,{
+
+	mes "[Arthur]";
+	mes "The chairs here are";
+	mes "so not ergonomic. And";
+	mes "they're uncomfortable too!";
+	mes "But it's sooo cool inside this";
+	mes "bank and I just wanted to get";
+	mes "get away from all this heat...";
+	close;
+}
+
+lhz_in02.gat,28,39,3	script	Helen	703,{
+
+	mes "[Helen]";
+	mes "You know, maybe when";
+	mes "I grow up, i'll be a bank";
+	mes "clerk. That sounds liek a";
+	mes "really nice jobm, don't you";
+	mes "think? It's laid back and posh...";
+	close;
+}
+
+lhz_in02.gat,31,34,3	script	Tadem	847,{
+
+	mes "[Tadem]";
+	mes "I do so enjoy the";
+	mes "architectural structure";
+	mes "of this bank. It's quite";
+	mes "artistic with both classical";
+	mes "and modern elements. Would";
+	mes "you not agree? Fascinating";
+	close;
+}
+
+lhz_in02.gat,31,33,3	script	Gracie	863,{
+
+	mes "[Gracie]";
+	mes "Oh, it's so comfortable";
+	mes "in there~Though, why are";
+	mes "we inside the bank when";
+	mes "the bank services aren't even";
+	mes "working? Yes, we're standing,";
+	mes "but we're doing it in comfort";
+	next;
+	mes "[Gracie]";
+	mes "In fact, it's so";
+	mes "comfortable here,";
+	mes "I think I'll refuse to leave.";
+	mes "Though, I'm willing to change";
+	mes "my mind if you can find a place";
+	mes "that's even more comfortable.";
+	close;
+}
+
+lhz_in02.gat,34,22,8	script	Bank Clerk::1_st	755,{
+
+	mes "[Bank Clerk]";
+	mes "Due to some critical system";
+	mes "errors, all f the bank services";
+	mes "have been temporarily stopped.";
+	mes "We apologize for any inconvenience.";
+	mes "and appreciate your understanding.";
+	close;
+}
+
+lhz_in02.gat,21,25,9	duplicate(1_st)	Bank Clerk::2_nd	86
+lhz_in02.gat,21,38,9	duplicate(1_st)	Bank Clerk::3_th	86
+
+// ---------------------------------------------------------------------------
+
+lhz_in02.gat,145,179,7	script	Togii::d1	849,{
+
+	mes "[Togii]";
+	mes "Ooo yeah";
+	mes "Goeas down smooth.";
+	mes "Morroc whiskey's the best!";
+	mes "*Hiccup*Whoam, this stuff";
+	mes "really works fast! Heh heh~";
+	close;
+}
+
+lhz_in02.gat,157,198,8	script	Healthy Looking Guy	85,{
+
+	mes "[Healthy Looking Guy]";
+	mes "Grrrrr! Leave me alone!";
+	mes "How many times do I have";
+	mes "to keep telling you? I've never";
+	mes "hoarded item upgrade materials!";
+	mes "I swear that i'm innocent!";
+	close;
+}
+
+lhz_in02.gat,155,201,7	script	Hinkley::d2	870,{
+
+	mes "[Hinkley]";
+	mes "Meh heh heh...";
+	mes "*Hiccup* Believe";
+	mes "it or notsh, I'm...";
+	mes "walkin on a...Air....";
+	mes "Nevah thought I could";
+	mes "b-be sho freee-eeee-eee~";
+	next;
+	mes "[Hinkley]";
+	mes "This guy";
+	mes "Is completely";
+	mes "hammered out";
+	mes "of his mind!";
+	close;
+}
+
+lhz_in02.gat,153,206,6	script	Milette::d3	853,{
+
+	mes "[Milette]";
+	mes "Let me go!";
+	mes "Let me GO!!!";
+	mes "LET ME GO!!!";
+	mes "I didn't do nuthin'";
+	mes "wrong! I'm innocent!";
+	mes "*Hic-Hic-Hiccup...*";
+	next;
+	mes "[Milette]";
+	mes "What's wrong with";
+	mes "drinking and singing";
+	mes "in the street, huh?";
+	mes "Is it a crime to have";
+	mes " a beautiful tenor vice?!";
+	mes "Get me outta this joint!";
+	close;
+}
+
+lhz_in02.gat,147,222,4	script	Officer Guo::off_guo	85,{
+
+	mes "[Officer Guo]";
+	mes "Tell me...!";
+	mes "TELL ME...!!";
+	mes "Admit you did it!!!";
+	next;
+	mes "[Suspect]";
+	mes "Damn it!";
+	mes "I keep telling";
+	mes "you I'm not a guilty!";
+	next;
+	mes "[Officer Guo]";
+	mes "*Sigh...*";
+	next;
+	mes "[Suspect]";
+	mes "You are wasting your";
+	mes "time. Just let me go.";
+	next;
+	mes "[Officer Guo]";
+	mes "So...";
+	mes "How's your mother?";
+	next;
+	mes "[Suspect]";
+	mes "That's none of";
+	mes "your business!";
+	mes "She's fine, i guess.";
+	next;
+	mes "[Officer Guo]";
+	mes "When was the last";
+	mes "time you've seen her?";
+	next;
+	mes "[Suspect]";
+	mes "I just told you,";
+	mes "that's none of";
+	mes "your business....!";
+	next;
+	mes "[Officer Guo]";
+	mes "You know, mothers";
+	mes "throughout the animal";
+	mes "kingdom instinctively";
+	mes "care for their young.";
+	mes "Humans are no exception.";
+	mes "Yours must be worried to death.";
+	next;
+	mes "[Suspect]";
+	mes "...";
+	mes "Man...";
+	mes "You're starting";
+	mes "to weird me out.";
+	next;
+	mes "[Officer Guo]";
+	mes "Funny thing about humans,";
+	mes "though. It seems to be their";
+	mes "nature to lie, even when they";
+	mes "know they'll be caught. But";
+	mes "like all animals, they";
+	mes "instinctively fear pain...";
+	next;
+	mes "[Suspect]";
+	mes "N-no,no...";
+	mes "You gotta be...";
+	mes "You're bluffing.";
+	mes "Right?";
+	next;
+	mes "[Officer Guo]";
+	mes "NO.";
+	mes "You're bluffing.";
+	mes "Tell me...";
+	mes "TELL ME...!!!";
+	mes "Admit you did it!!";
+	close;
+}
+
+lhz_in02.gat,142,221,8	duplicate(off_guo)	Suspect::susp_guo	870
+
+// ---------------------------------------------------------------------------

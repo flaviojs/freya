@@ -6,278 +6,814 @@
 // 10000   = 1%
 // 500000  = 50%
 // 1000000 = 100%
+//
+// Accurate to Aegis X.3
 
-0,Guard,2102
-2102,Guard,10000
-2104,Buckler,10000
-2106,Shield,10000
-2108,Mirror Shield,10000
-2207,Fancy Flower,10000
-2209,Ribbon,10000
-2213,Kitty Band,10000
-2215,Flower Band,10000
-2217,Biretta,10000
-2221,Hat,10000
-2223,Turban,10000
-2227,Cap,10000
-2229,Helm,10000
-2231,Gemmed Sallet,10000
-2233,Circlet,10000
-2236,Santa's Hat,10000
-2244,Big Ribbon,10000
-2249,Coronet,10000
-2250,Cute Ribbon,10000
-2257,Snow Horn,10000
-2258,Spiky Band,10000
-2262,Pierrot Nose,10000
-2263,Zorro Masque,10000
-2265,Gangster Mask,10000
-2269,Romantic Flower,10000
-2270,Romantic Leaf,10000
-2271,Jack be Dandy,10000
-2272,Stop Post,10000
-2273,Doctor Band,10000
-2275,Red Bandana,10000
-2276,Eagle Eyes,10000
-2279,Bomb Wick,10000
-2284,Antler,10000
-2287,Pirate Bandana,10000
-2289,Poo Poo Hat,10000
-2290,Funeral Hat,10000
-2291,Masquerade,10000
-2293,Pretend Murdered,10000
-2294,Stellar,10000
-2295,Blinker,10000
-2296,Binoculars,10000
-2298,Green Feeler,10000
-2299,Orc Helm,10000
-2302,Cotton Shirt,10000
-2304,Jacket,10000
-2306,Adventurer's Suit,10000
-2308,Mantle,10000
-2310,Coat,10000
-2311,Mink Coat,10000
-2313,Padded Armor,10000
-2315,Chain Mail,10000
-2317,Full Plate,10000
-2322,Silk Robe,10000
-2324,Scapulare,10000
-2326,Saint's Robe,10000
-2329,Wooden Mail,10000
-2331,Tights,10000
-2333,Silver Robe,10000
-2336,Thief Clothes,10000
-2337,Ninja Suit,10000
-2338,Wedding Dress,10000
-2339,Pantie,10000
-2402,Sandals,10000
-2404,Shoes,10000
-2407,Crystal Pumps,10000
-2408,Balln' Chain,10000
-2409,Highheals,10000
-2502,Hood,10000
-2504,Muffler,10000
-2506,Manteau,10000
-2507,Ancient Cape,10000
-2508,Ragamuffin Manteau,10000
-2601,Ring,10000
-2602,Earring,10000
-2603,Necklace,10000
-2604,Glove,10000
-2605,Brooch,10000
-2607,Clip,10000
-2608,Rosary,10000
-2609,Skull Ring,10000
-2610,Gold Ring,10000
-2611,Silver Ring,10000
-2612,Flower Ring,10000
-2613,Diamond Ring,10000
-5008,Puppy Love,10000
-5009,Safety Helmet,10000
-5010,Indian Fillet,10000
-5014,Fin Helm,10000
-5015,Egg Shell,10000
-2225,Goggles,10000
-1117,Katana,10000
-1152,Slayer,10000
-1155,Bastard Sword,10000
-1158,Two-handed Sword,10000
-1162,Broad Sword,10000
-1163,Claymore,10000
-1352,Battle Axe,10000
-1355,Hammer,10000
-1358,Buster,10000
-1361,Two-handed Axe,10000
-1452,Guisarme,10000
-1455,Glaive,10000
-1458,Partizan,10000
-1461,Trident,10000
-1464,Halberd,10000
-1410,Lance,10000
-1251,Jur,10000
-1253,Katar,10000
-1255,Jamadhar,10000
-1702,Bow,10000
-1705,Composite Bow,10000
-1718,Hunter Bow,10000
-1711,Cross Bow,10000
-1719,Roguemaster's Bow,10000
-1713,Arbalest,10000
-1714,Gakkung,10000
-701,Ora Ora,10000
-702,Animal Gore,10000
-703,Hinalle,10000
-704,Aloe,10000
-706,Four-Leaf Clover,10000
-707,Singing Plant,10000
-708,Ment,10000
-710,Illusion Flower,10000
-714,Emperium,10000
-715,Yellow Gemstone,10000
-716,Red Gemstone,10000
-717,Blue Gemstone,10000
-718,Garnet,10000
-719,Amethyst,10000
-720,Aquamarine,10000
-721,Emerald,10000
-722,Pearl,10000
-723,Ruby,10000
-724,Cursed Ruby,10000
-725,Sardonyx,10000
-726,Sapphire,10000
-727,Opal,10000
-728,Topaz,10000
-729,Zircon,10000
-730,1 Carat Diamond,10000
-731,2 Carat Diamond,10000
-732,3 Carat Diamond,10000
-733,Cracked Diamond,10000
-734,Red Frame,10000
-735,Chung Jah,10000
-736,China,10000
-737,Black Ladle,10000
-738,Pencil Case,10000
-740,Puppet,10000
-741,Poring Doll,10000
-742,Chonchon Doll,10000
-743,Spore Doll,10000
-745,Wedding Bouquet,10000
-747,Crystal Mirror,10000
-748,Witherless Rose,10000
-749,Frozen Rose,10000
-752,Grasshopper Doll,10000
-753,Yoyo Doll,10000
-754,Raccoon Doll,10000
-756,Rough Oridecon,10000
-757,Rough Elunium,10000
-909,Jellopy,10000
-910,Garlet,10000
-911,Scell,10000
-912,Zargon,10000
-931,Orcish Voucher,10000
-934,Memento,10000
-968,Heroic Emblem,10000
-969,Gold,10000
-970,Alcohol,10000
-971,Detrimindexta,10000
-972,Karvodailnirol,10000
-973,Counteragent,10000
-974,Mixture,10000
-975,Scarlet Dyestuffs,10000
-976,Lemon Dyestuffs,10000
-978,Cobaltblue Dyestuff,10000
-979,Darkgreen Dyestuff,10000
-980,Orange Dyestuff,10000
-981,Violet Dyestuff,10000
-982,White Dyestuff,10000
-983,Black Dyestuff,10000
-984,Oridecon,10000
-985,Elunium,10000
-986,Anvil,10000
-987,Oridecon Anvil,10000
-988,Golden Anvil,10000
-989,Emperium Anvil,10000
-990,Red Blood,10000
-991,Crystal Blue,10000
-992,Wind of Verdure,10000
-993,Green Live,10000
-994,Flame Heart,10000
-995,Mystic Frozen,10000
-996,Rough Wind,10000
-997,Great Nature,10000
-998,Iron,10000
-999,Steel,10000
-1000,Star Crumb,10000
-1001,Star Dust,10000
-1002,Iron Ore,10000
-1003,Coal,10000
-1004,Chivalry Emblem,10000
-1005,Hammer of Blacksmith,10000
-1006,Old Magic Book,10000
-1007,Necklace of Wisdom,10000
-1008,Necklace of Oblivion,10000
-1009,Hand of God,10000
-1010,Phracon,10000
-1011,Emveretarcon,10000
-1065,Trap,10000
-501,Red Potion,10000
-502,Orange Potion,10000
-503,Yellow Potion,10000
-504,White Potion,10000
-505,Blue Potion,10000
-506,Green Potion,10000
-518,Honey,10000
-520,Hinalle Leaflet,10000
-521,Aloe Leaflet,20000
-525,Panacea,10000
-526,Royal Jelly,10000
-529,Candy,10000
-530,Candy Cane,10000
-603,Old Blue Box,400000
-604,Dead Branch,90000
-605,Anodyne,10000
-606,Aloevera,10000
-607,Yggdrasilberry,10000
-608,Yggdrasil Seed,10000
-610,Yggdrasil Leaf,10000
-612,Mini Furnace,50000
-613,Iron Hammer,10000
-614,Golden Hammer,10000
-615,Oridecon Hammer,10000
-1102,Sword,10000
-1105,Falchion,10000
-1108,Blade,10000
-1111,Rapier,10000
-1114,Scimiter,10000
-1120,Tsurugi,10000
-1125,Ring Pommel Saber,10000
-1127,Saber,10000
-1128,Haedonggum,10000
-1129,Flamberge,10000
-1202,Knife,10000
-1205,Cutter,10000
-1208,Main Gauche,10000
-1211,Dirk,10000
-1214,Dagger,10000
-1217,Stiletto,10000
-1220,Gladius,10000
-1226,Damascus,10000
-1302,Axe,10000
-1402,Javelin,10000
-1405,Spear,10000
-1408,Pike,10000
-1502,Club,10000
-1505,Mace,10000
-1508,Smasher,10000
-1511,Flail,10000
-1514,Morning Star,10000
-1517,Sword Mace,10000
-1520,Chain,10000
-1550,Book,10000
-1551,Bible,10000
-1602,Rod,10000
-1605,Wand,10000
-1608,Staff,10000
-1611,Arc Wand,10000
-1613,Mighty Staff,10000
-1902,Violin,10000
+0,DEFAULT,617	// Old Purple Box
+2102,,70000	// Guard
+2104,,70000	// Buckler
+2106,,70000	// Shield
+2108,,70000	// Mirror Shield
+2109,,70000	// Memory Book
+2112,,70000	// Novice Guard
+2302,,70000	// Cotton Shirt
+2304,,70000	// Jacket
+2306,,70000	// Adventurer's Suit
+2308,,70000	// Mantle
+2310,,70000	// Coat
+2311,,70000	// Mink Coat
+2313,,70000	// Padded Armor
+2315,,70000	// Chain Mail
+2317,,70000	// Full Plate
+2318,,70000	// Lord's Clothes
+2320,,70000	// Formal Suit
+2322,,70000	// Silk Robe
+2324,,70000	// Scapulare
+2326,,70000	// Saint's Robe
+2329,,70000	// Wooden Mail
+2331,,70000	// Tights
+2333,,70000	// Silver Robe
+2336,,70000	// Thief Clothes
+2337,,70000	// Ninja Suit
+2338,,70000	// Wedding Dress
+2339,,70000	// Pantie
+2340,,70000	// Novice Breastplate
+2352,,70000	// Tattered Novice Ninja Suit
+2402,,70000	// Sandals
+2404,,70000	// Shoes
+2406,,70000	// Boots
+2407,,70000	// Crystal Pumps
+2408,,70000	// Shackles
+2409,,70000	// High Heels
+2411,,70000	// Greaves
+2414,,70000	// Novice Slippers
+2502,,70000	// Hood
+2504,,70000	// Muffler
+2506,,70000	// Manteau
+2507,,70000	// Ancient Cape
+2508,,70000	// Ragamuffin Manteau
+2510,,70000	// Somber Novice Hood
+2601,,70000	// Ring
+2602,,70000	// Earring
+2603,,70000	// Necklace
+2604,,70000	// Glove
+2605,,70000	// Brooch
+2607,,70000	// Clip
+2608,,70000	// Rosary
+2609,,70000	// Skull Ring
+2610,,70000	// Gold Ring
+2611,,70000	// Silver Ring
+2612,,70000	// Flower Ring
+2613,,70000	// Diamond Ring
+2617,,70000	// Celebrant's Mitten
+2618,,70000	// Matyr's Leash
+2627,,70000	// Belt
+2628,,70000	// Novice Armlet
+1117,,70000	// Katana
+1152,,70000	// Slayer
+1155,,70000	// Bastard Sword
+1158,,70000	// Two-Handed Sword
+1162,,70000	// Broad Sword
+1163,,70000	// Claymore
+1251,,70000	// Jur
+1253,,70000	// Katar
+1255,,70000	// Jamadhar
+1256,,70000	// Katar of Frozen Icicle
+1257,,70000	// Katar of Quaking
+1258,,70000	// Katar of Raging Blaze
+1259,,70000	// Katar of Piercing Wind
+1352,,70000	// Battle Axe
+1355,,70000	// Hammer
+1358,,70000	// Buster
+1361,,70000	// Two-Handed Axe
+1411,,70000	// Lance
+1452,,70000	// Guisarme
+1455,,70000	// Glaive
+1458,,70000	// Partizan
+1461,,70000	// Trident
+1464,,70000	// Halberd
+1472,,70000	// Soul Staff
+1702,,70000	// Bow
+1705,,70000	// Composite Bow
+1708,,70000	// Great Bow
+1711,,70000	// Crossbow
+1715,,70000	// Arbalest
+1716,,70000	// Gakkung Bow
+1718,,70000	// Hunter Bow
+1102,,70000	// Sword
+1105,,70000	// Falchion
+1108,,70000	// Blade
+1111,,70000	// Rapier
+1114,,70000	// Scimitar
+1120,,70000	// Tsurugi
+1124,,70000	// Orcish sword
+1125,,70000	// Ring Pommel Saber
+1127,,70000	// Saber
+1128,,70000	// Haedonggum
+1129,,70000	// Flamberge
+1202,,70000	// Knife
+1205,,70000	// Cutter
+1208,,70000	// Main Gauche
+1211,,70000	// Dirk
+1214,,70000	// Dagger
+1217,,70000	// Stiletto
+1220,,70000	// Gladius
+1226,,70000	// Damascus
+1243,,70000	// Novice Main Gauche
+1302,,70000	// Axe
+1304,,70000	// Orcish Axe
+1402,,70000	// Javelin
+1405,,70000	// Spear
+1408,,70000	// Pike
+1502,,70000	// Club
+1505,,70000	// Mace
+1508,,70000	// Smasher
+1511,,70000	// Flail
+1514,,70000	// Morning Star
+1517,,70000	// Sword Mace
+1520,,70000	// Chain
+1522,,70000	// Stunner
+1550,,70000	// Book
+1551,,70000	// Bible
+1552,,70000	// Tablet
+1553,,70000	// Book of Billows
+1554,,70000	// Book of Mother Earth
+1555,,70000	// Book of the Blazing Sun
+1556,,70000	// Book of Gust of Wind
+1558,,70000	// Girl's Diary
+1602,,70000	// Rod
+1605,,70000	// Wand
+1608,,70000	// Staff
+1611,,70000	// Arc Wand
+1613,,70000	// Mighty Staff
+1614,,70000	// Wand of Occult
+1615,,70000	// Evil Bone Wand
+1802,,70000	// Waghnak
+1804,,70000	// Knuckle Duster
+1806,,70000	// Studded Knuckles
+1808,,70000	// Fist
+1810,,70000	// Claw
+1812,,70000	// Finger
+1902,,70000	// Violin
+1904,,70000	// Mandolin
+1906,,70000	// Lute
+1908,,70000	// Guitar
+1910,,70000	// Harp
+1912,,70000	// Gumoongoh
+1951,,70000	// Rope
+1953,,70000	// Whip
+1955,,70000	// Wire Whip
+1957,,70000	// Rante Whip
+1959,,70000	// Tail Whip
+1961,,70000	// Whip
+2201,,70000	// Sunglasses
+2203,,70000	// Glasses
+2205,,70000	// Diver Goggles
+2206,,70000	// Wedding Veil
+2207,,70000	// Fancy Flower
+2208,,70000	// Ribbon
+2209,,70000	// Ribbon
+2210,,70000	// Hair Band
+2211,,70000	// Bandana
+2212,,70000	// Eye Patch
+2213,,70000	// Kitty Band
+2214,,70000	// Bunny Band
+2215,,70000	// Flower Band
+2216,,70000	// Biretta
+2217,,70000	// Biretta
+2218,,70000	// Flu Mask
+2220,,70000	// Hat
+2221,,70000	// Hat
+2222,,70000	// Turban
+2223,,70000	// Turban
+2226,,70000	// Cap
+2227,,70000	// Cap
+2228,,70000	// Helm
+2229,,70000	// Helm
+2230,,70000	// Gemmed Sallet
+2231,,70000	// Gemmed Sallet
+2232,,70000	// Circlet
+2233,,70000	// Circlet
+2236,,70000	// Santa Hat
+2239,,70000	// Monocle
+2241,,70000	// Grandpa Beard
+2242,,70000	// Purple Glasses
+2243,,70000	// Geek Glasses
+2244,,70000	// Big Ribbon
+2245,,70000	// Sweet Gent
+2246,,70000	// Golden Gear
+2247,,70000	// Romantic Gent
+2248,,70000	// Western Grace
+2250,,70000	// Cute Ribbon
+2251,,70000	// Monk Hat
+2252,,70000	// Wizard Hat
+2253,,70000	// Sunflower
+2257,,70000	// Unicorn Horn
+2259,,70000	// Mini Propeller
+2260,,70000	// Mini Glasses
+2261,,70000	// Army Cap
+2262,,70000	// Clown Nose
+2263,,70000	// Zorro Masque
+2265,,70000	// Gangster Mask
+2266,,70000	// Iron Cain
+2267,,70000	// Cigarette
+2268,,70000	// Pipe
+2269,,70000	// Romantic Flower
+2270,,70000	// Romantic Leaf
+2271,,70000	// Jack be Dandy
+2275,,70000	// Red Bandana
+2276,,70000	// Angled Glasses
+2277,,70000	// Nurse Cap
+2279,,70000	// Bomb Wick
+2282,,70000	// Halo
+2285,,70000	// Apple of Archer
+2287,,70000	// Pirate Bandana
+2289,,70000	// Poo Poo Hat
+2290,,70000	// Funeral Hat
+2291,,70000	// Masquerade
+2294,,70000	// Stellar
+2295,,70000	// Blinker
+2298,,70000	// Green Feeler
+2299,,70000	// Orc Helm
+5003,,70000	// Joker Jester
+5006,,70000	// Machoman's Glasses
+5008,,70000	// Puppy Love
+5009,,70000	// Safety Helmet
+5010,,70000	// Indian Fillet
+5011,,70000	// Aerial
+5014,,70000	// Fin Helm
+5015,,70000	// Egg Shell
+5030,,70000	// Panda Hat
+5035,,70000	// Poring Hat
+5037,,70000	// Nutshell
+5055,,70000	// Novice False Eggshell
+2278,,70000	// Mr. Smile
+2288,,70000	// Mr. Scream
+2297,,70000	// Goblin Mask
+5005,,70000	// Gas Mask
+5088,,70000	// Surprised Mask
+5089,,70000	// Annoyed Mask
+5090,,70000	// Goblin Leader Mask
+2224,,70000	// Goggles
+2225,,70000	// Goggles
+70001,,70000	// Skull Helm
+70002,,70000	// Monster Oxygen Mask
+70003,,70000	// Transparent Headgear
+70004,,70000	// Pacifier
+70005,,70000	// Wig
+70006,,70000	// Queen's Hair Ornament
+70007,,70000	// Silk Ribbon
+70008,,70000	// Punisher
+70009,,70000	// Wild Flower
+10010,,70000	// Battered Pot
+10011,,70000	// Stellar Hairpin
+10012,,70000	// Tiny Egg Shell
+10013,,70000	// Backpack
+10014,,70000	// Rocker Glasses
+10015,,70000	// Green Lace
+10016,,70000	// Golden Bell
+10017,,70000	// Bark Shorts
+10018,,70000	// Monkey Circlet
+10019,,70000	// Red Scarf
+10020,,70000	// Grave Keeper's Sword
+701,,140000	// Ora Ora
+702,,140000	// Animal Gore
+703,,140000	// Hinalle
+704,,140000	// Aloe
+705,,140000	// Clover
+706,,140000	// Four Leaf Clover
+707,,140000	// Singing Plant
+708,,140000	// Ment
+710,,140000	// Illusion Flower
+711,,140000	// Shoot
+712,,140000	// Flower
+713,,140000	// Empty Bottle
+714,,140000	// Emperium
+715,,140000	// Yellow Gemstone
+716,,140000	// Red Gemstone
+717,,140000	// Blue Gemstone
+718,,140000	// Garnet
+719,,140000	// Amethyst
+720,,140000	// Aquamarine
+721,,140000	// Emerald
+722,,140000	// Pearl
+723,,140000	// Ruby
+724,,140000	// Cursed Ruby
+725,,140000	// Sardonyx
+726,,140000	// Sapphire
+727,,140000	// Opal
+728,,140000	// Topaz
+729,,140000	// Zircon
+730,,140000	// 1carat Diamond
+731,,140000	// 2carat Diamond
+732,,140000	// 3carat Diamond
+733,,140000	// Cracked Diamond
+734,,140000	// Red Frame
+735,,140000	// Chung Jah
+736,,140000	// China
+737,,140000	// Black Ladle
+738,,140000	// Pencil Case
+739,,140000	// Rouge
+740,,140000	// Puppet
+741,,140000	// Poring Doll
+742,,140000	// Chonchon Doll
+743,,140000	// Spore Doll
+744,,140000	// Bouquet
+745,,140000	// Wedding Bouquet
+746,,140000	// Glass Bead
+747,,140000	// Crystal Mirror
+748,,140000	// Witherless Rose
+749,,140000	// Frozen Rose
+750,,140000	// Baphomet Doll
+751,,140000	// Osiris Doll
+752,,140000	// Grasshopper Doll
+753,,140000	// Yoyo Doll
+754,,140000	// Raccoon Doll
+756,,140000	// Rough Oridecon
+757,,140000	// Rough Elunium
+901,,140000	// Danggie
+902,,140000	// Tree Root
+903,,140000	// Reptile Tongue
+904,,140000	// Scorpion Tail
+905,,140000	// Stem
+906,,140000	// Pointed Scale
+907,,140000	// Resin
+908,,140000	// Spawn
+909,,140000	// Jellopy
+910,,140000	// Garlet
+911,,140000	// Scell
+912,,140000	// Zargon
+913,,140000	// Tooth of Bat
+914,,140000	// Fluff
+915,,140000	// Chrysalis
+916,,140000	// Feather of Birds
+917,,140000	// Talon
+918,,140000	// Sticky Webfoot
+919,,140000	// Animal Skin
+920,,140000	// Wolf Claw
+921,,140000	// Mushroom Spore
+922,,140000	// Orc's Fang
+923,,140000	// Evil Horn
+924,,140000	// Powder of Butterfly
+925,,140000	// Bill of Birds
+926,,140000	// Snake Scale
+928,,140000	// Insect Feeler
+929,,140000	// Immortal Heart
+930,,140000	// Rotten Bandage
+931,,140000	// Orcish Voucher
+932,,140000	// Skel-Bone
+934,,140000	// Memento
+935,,140000	// Shell
+936,,140000	// Scale Shell
+937,,140000	// Venom Canine
+938,,140000	// Sticky Mucus
+939,,140000	// Bee Sting
+940,,140000	// Grasshopper's Leg
+941,,140000	// Nose Ring
+942,,140000	// Yoyo Tail
+943,,140000	// Solid Shell
+944,,140000	// Horseshoe
+945,,140000	// Raccoon Leaf
+946,,140000	// Snail's Shell
+947,,140000	// Horn
+948,,140000	// Bear's Footskin
+949,,140000	// Feather
+950,,140000	// Heart of Mermaid
+951,,140000	// Fin
+952,,140000	// Cactus Needle
+953,,140000	// Stone Heart
+954,,140000	// Shining Scale
+955,,140000	// Worm Peeling
+956,,140000	// Gill
+957,,140000	// Decayed Nail
+958,,140000	// Horrendous Mouth
+959,,140000	// Stinky Scale
+960,,140000	// Nipper
+961,,140000	// Conch
+962,,140000	// Tentacle
+963,,140000	// Sharp Scale
+964,,140000	// Crab Shell
+965,,140000	// Clam Shell
+966,,140000	// Clam Flesh
+967,,140000	// Turtle Shell
+968,,140000	// Heroic Emblem
+969,,140000	// Gold
+970,,140000	// Alcohol
+971,,140000	// Detrimindexta
+972,,140000	// Karvodailnirol
+973,,140000	// Counteragent
+974,,140000	// Mixture
+975,,140000	// Scarlet Dyestuff
+976,,140000	// Lemon Dyestuff
+978,,140000	// Cobaltblue Dyestuff
+979,,140000	// Darkgreen Dyestuff
+980,,140000	// Orange Dyestuff
+981,,140000	// Violet Dyestuff
+982,,140000	// White Dyestuff
+983,,140000	// Black Dyestuff
+984,,140000	// Oridecon
+985,,140000	// Elunium
+986,,140000	// Anvil
+987,,140000	// Oridecon Anvil
+988,,140000	// Golden Anvil
+989,,140000	// Emperium Anvil
+990,,140000	// Red Blood
+991,,140000	// Crystal Blue
+992,,140000	// Wind of Verdure
+993,,140000	// Green Live
+994,,140000	// Flame Heart
+995,,140000	// Mystic Frozen
+996,,140000	// Rough Wind
+997,,140000	// Great Nature
+998,,140000	// Iron
+999,,140000	// Steel
+1000,,140000	// Star Crumb
+1001,,140000	// Star Dust
+1002,,140000	// Iron Ore
+1003,,140000	// Coal
+1004,,140000	// Chivalry Emblem
+1005,,140000	// Hammer of Blacksmith
+1006,,140000	// Old Magicbook
+1007,,140000	// Necklace of Wisdom
+1008,,140000	// Necklace of Oblivion
+1009,,140000	// Hand of God
+1010,,140000	// Phracon
+1011,,140000	// Emveretarcon
+1012,,140000	// Frill
+1013,,140000	// Rainbow Shell
+1014,,140000	// Ant Jaw
+1015,,140000	// Tongue
+1016,,140000	// Rat Tail
+1017,,140000	// Mole Whiskers
+1018,,140000	// Mole Claw
+1019,,140000	// Trunk
+1020,,140000	// Black Hair
+1021,,140000	// Dokebi Horn
+1022,,140000	// Nine Tails
+1023,,140000	// Fish Tail
+1024,,140000	// Squid Ink
+1025,,140000	// Cobweb
+1026,,140000	// Acorn
+1027,,140000	// Porcupine Quill
+1028,,140000	// Mane
+1029,,140000	// Tiger Skin
+1030,,140000	// Tiger's Footskin
+1031,,140000	// Mantis Scythe
+1032,,140000	// Maneater Blossom
+1033,,140000	// Maneater Root
+1034,,140000	// Blue Hair
+1035,,140000	// Dragon Canine
+1036,,140000	// Dragon Scale
+1037,,140000	// Dragon Tail
+1038,,140000	// Little Evil Horn
+1039,,140000	// Little Evil Wing
+1040,,140000	// Elder Pixie's Moustache
+1041,,140000	// Lantern
+1042,,140000	// Bug Leg
+1043,,140000	// Orc Claw
+1044,,140000	// Zenorc's Fang
+1045,,140000	// Cultish Masque
+1046,,140000	// Scorpion Nipper
+1047,,140000	// Dead Medusa
+1048,,140000	// Horrendous Hair
+1049,,140000	// Skirt of Virgin
+1050,,140000	// Tendon
+1051,,140000	// Detonator
+1052,,140000	// Single Cell
+1053,,140000	// Ancient Tooth
+1054,,140000	// Ancient Lips
+1055,,140000	// Earthworm Peeling
+1056,,140000	// Grit
+1057,,140000	// Moth Dust
+1058,,140000	// Moth Wings
+1059,,140000	// Fabric
+1060,,140000	// Golden Hair
+1061,,140000	// Witched Starsand
+1062,,140000	// Jack o' Pumpkin
+1063,,140000	// Fang
+1064,,140000	// Reins
+1065,,140000	// Trap
+1066,,140000	// Fine-grained Trunk
+1067,,140000	// Solid Trunk
+1068,,140000	// Barren Trunk
+1088,,140000	// Morocc Solution
+1089,,140000	// Payon Solution
+1092,,140000	// Empty Test Tube
+1093,,140000	// Empty Potion Bottle
+1094,,140000	// Short Daenggie
+1095,,140000	// Clock Hand
+1096,,140000	// Round Shell
+1097,,140000	// Worn Out Page
+1098,,140000	// Manacles
+1099,,140000	// Worn-out Prison Uniform
+7001,,140000	// Mould Powder
+7002,,140000	// Ogre Tooth
+7003,,140000	// Anolian Skin
+7004,,140000	// Mud Lump
+7005,,140000	// Skull
+7006,,140000	// Wing of Red Bat
+7007,,140000	// Claw of Rat
+7008,,140000	// Stiff Horn
+7009,,140000	// Glitter Shell
+7010,,140000	// Tail of Steel Scorpion
+7011,,140000	// Claw of Monkey
+7012,,140000	// Tough Scalelike Stem
+7013,,140000	// Coral Reef
+7014,,140000	// Old Portrait
+7015,,140000	// Memory Bookmark
+7016,,140000	// Bent Spoon
+7026,,140000	// Clock_Tower_Key
+7027,,140000	// Key of the Underground
+7030,,140000	// Claw of Desert Wolf
+7031,,140000	// Old Frying Pan
+7032,,140000	// Piece of Egg Shell
+7033,,140000	// Poison Spore
+7034,,140000	// Red Stocking
+7035,,140000	// Matchstick
+7036,,140000	// Fang of Garm
+7038,,140000	// Yarn
+7041,,140000	// Fine Grit
+7047,,140000	// Alice's Apron
+7048,,140000	// Talon of Griffon
+7049,,140000	// Stone
+7053,,140000	// Cyfar
+7054,,140000	// Brigan
+7059,,140000	// Free Ticket for Kafra Storage
+7060,,140000	// Free Ticket for Kafra Transportation
+7061,,140000	// Free Ticket for the Cart Service
+7063,,140000	// Soft Feather
+7064,,140000	// Wing of Dragonfly
+7065,,140000	// Sea-Otter Fur
+7066,,140000	// Ice Cubic
+7067,,140000	// Stone Fragment
+7068,,140000	// Burnt Tree
+7069,,140000	// Destroyed Armor
+7070,,140000	// Broken Shell
+7071,,140000	// Tattered Clothes
+7072,,140000	// Old Shuriken
+7093,,140000	// Cogwheel
+7094,,140000	// Fragment
+7095,,140000	// Metal Fragment
+7096,,140000	// Lava
+7097,,140000	// Burning Heart
+7098,,140000	// Live Coal
+7099,,140000	// Worn-out Magic Scroll
+7100,,140000	// Sharp Leaf
+7101,,140000	// Peco Peco Feather
+7106,,140000	// Antelope Horn
+7107,,140000	// Antelope Skin
+7108,,140000	// Piece of Shield
+7109,,140000	// Shining Spear Blade
+7110,,140000	// Broken Sword
+7111,,140000	// Slick Paper
+7112,,140000	// Sharp Paper
+7113,,140000	// Broken Pharaoh Emblem
+7114,,140000	// Masque of Tutankhamen
+7115,,140000	// Harpy Feather
+7116,,140000	// Harpy Talon
+7117,,140000	// Torn Magic Book
+7118,,140000	// Torn Scroll
+7119,,140000	// Bacillus
+7120,,140000	// Burning Horseshoe
+7121,,140000	// Honey Pot
+7122,,140000	// Burning Hair
+7123,,140000	// Dragon Skin
+7124,,140000	// Sand Clump
+7125,,140000	// Scorpion Claw
+7126,,140000	// Large Jellopy
+7134,,140000	// Medicine Bowl
+7135,,140000	// Fire Bottle
+7136,,140000	// Acid Bottle
+7137,,140000	// Plant Bottle
+7138,,140000	// Marine Sphere Bottle
+7139,,140000	// Glistening Coat
+7149,,140000	// Yellow Plate
+7150,,140000	// Piece of Bamboo
+7151,,140000	// Oil Paper
+7152,,140000	// Glossy Hair
+7153,,140000	// Worn-out Kimono
+7154,,140000	// Poisonous Powder
+7155,,140000	// Poisonous Toad Skin
+7156,,140000	// Broken Shuriken
+7157,,140000	// Dark Mask
+7158,,140000	// Broken Liquor Jar
+7159,,140000	// Tengu Nose
+7161,,140000	// Black Bear Skin
+7162,,140000	// Cloud Crumb
+7163,,140000	// Hard Feeler
+7164,,140000	// Solid_Peach
+7165,,140000	// Transparent Celestial Robe
+7166,,140000	// Soft Silk
+7167,,140000	// Strange Steel Piece
+7168,,140000	// Giant Butterfly Wing
+7169,,140000	// Ba_Gua
+7170,,140000	// Tuxedo
+7171,,140000	// Leopard Skin
+7172,,140000	// Leopard Claw
+7174,,140000	// Wrapping Lace
+7175,,140000	// Wrapping Paper
+7182,,140000	// Cacao
+7186,,140000	// Thin Trunk
+7187,,140000	// Festival Mask
+7188,,140000	// Brown_Root
+7189,,140000	// Wooden Heart
+7190,,140000	// Solid Husk
+7191,,140000	// Lamp
+7192,,140000	// Vane
+7193,,140000	// Sprout
+7194,,140000	// Soft Blade of Grass
+7195,,140000	// Slingshot
+7196,,140000	// Shoulder Protector
+7197,,140000	// Tough Vines
+7198,,140000	// Huge Leaf
+7200,,140000	// Elastic Band
+7201,,140000	// Log
+7202,,140000	// Pincher of Beetle
+7203,,140000	// Strong Branch
+7205,,140000	// Piece of Black Cloth
+7206,,140000	// Black Cat Doll
+7207,,140000	// Old Manteau
+7208,,140000	// Rusty Kitchen Knife
+7209,,140000	// Helm of Dullahan
+7210,,140000	// Armor Piece of Dullahan
+7211,,140000	// Fragment of Rossata Stone
+7212,,140000	// Hung Doll
+7213,,140000	// Needle Packet
+7214,,140000	// Bat Cage
+7215,,140000	// Broken Needle
+7216,,140000	// Red Muffler
+7217,,140000	// Spool
+7218,,140000	// Decomposed Rope
+7219,,140000	// Striped Sock
+7220,,140000	// Ectoplasm
+7221,,140000	// Tangled Chains
+7222,,140000	// Wooden Gnarl
+7223,,140000	// Contorted Self-Portrait
+7225,,140000	// Pumpkin Lantern
+7262,,140000	// Folding Fan of Cat Ghost
+7263,,140000	// Cat's Eye
+7264,,140000	// Dry Sand
+7265,,140000	// Dragon Horn
+7266,,140000	// Denture from Dragon Mask
+7267,,140000	// Tiger Panty
+7268,,140000	// Little Ghost Doll
+7269,,140000	// Pinafore
+7270,,140000	// Nursing_Bottle
+1750,,140000	// Arrow
+1751,,140000	// Silver Arrow
+1752,,140000	// Fire Arrow
+1753,,140000	// Steel Arrow
+1754,,140000	// Crystal Arrow
+1755,,140000	// Arrow of Wind
+1756,,140000	// Stone Arrow
+1757,,140000	// Immaterial Arrow
+1758,,140000	// Stun Arrow
+1759,,140000	// Frozen Arrow
+1760,,140000	// Flash Arrow
+1761,,140000	// Cursed Arrow
+1762,,140000	// Rusty Arrow
+1763,,140000	// Poison Arrow
+1764,,140000	// Sharp Arrow
+1765,,140000	// Oridecon Arrow
+1767,,140000	// Shadow Arrow
+1768,,140000	// Sleep Arrow
+1769,,140000	// Mute Arrow
+1770,,140000	// Iron Arrow
+501,,140000	// Red Potion
+502,,140000	// Orange Potion
+503,,140000	// Yellow Potion
+504,,140000	// White Potion
+505,,140000	// Blue Potion
+506,,140000	// Green Potion
+507,,140000	// Red Herb
+508,,140000	// Yellow Herb
+509,,140000	// White Herb
+510,,140000	// Blue Herb
+511,,140000	// Green Herb
+512,,140000	// Apple
+513,,140000	// Banana
+514,,140000	// Grape
+515,,140000	// Carrot
+516,,140000	// Potato
+517,,140000	// Meat
+518,,140000	// Honey
+519,,140000	// Milk
+520,,140000	// Hinalle Leaflet
+521,,140000	// Aloe Leaflet
+522,,140000	// Mastela Fruit
+523,,140000	// Holy Water
+525,,140000	// Panacea
+526,,140000	// Royal Jelly
+528,,140000	// Monster Food
+529,,140000	// Candy
+530,,140000	// Candy Cane
+531,,140000	// Apple Juice
+532,,140000	// Banana Juice
+533,,140000	// Grape Juice
+534,,140000	// Carrot Juice
+535,,140000	// Pumpkin
+536,,140000	// Ice Cream
+537,,140000	// Pet Food
+538,,140000	// Well-baked Cookie
+539,,140000	// Piece of Cake
+544,,140000	// Raw Fish
+545,,140000	// Condensed Red Potion
+546,,140000	// Condensed Yellow Potion
+547,,140000	// Condensed White Potion
+548,,140000	// Cheese
+549,,140000	// Yam
+550,,140000	// Rice Cake
+551,,140000	// Sushi
+553,,140000	// Bao
+555,,140000	// Traditional Rice Cake
+558,,140000	// Chocolate
+561,,140000	// White Chocolate
+601,,140000	// Fly Wing
+602,,140000	// Butterfly Wing
+603,,140000	// Old Blue Box
+604,,140000	// Dead Branch
+605,,140000	// Anodyne
+606,,140000	// Aloevera
+607,,140000	// Yggdrasil Berry
+608,,140000	// Yggdrasil Seed
+609,,140000	// Amulet
+610,,140000	// Yggdrasil Leaf
+611,,140000	// Magnifier
+612,,140000	// Mini Furnace
+613,,140000	// Iron Hammer
+614,,140000	// Golden Hammer
+615,,140000	// Oridecon Hammer
+618,,140000	// Worn Out Scroll
+619,,140000	// Unripe Apple
+620,,140000	// Orange Juice
+621,,140000	// Bitter Herb
+622,,140000	// Rainbow Carrot
+623,,140000	// Earthworm the Dude
+624,,140000	// Rotten Fish
+625,,140000	// Rusty Iron
+626,,140000	// Monster Juice
+627,,140000	// Sweet Milk
+628,,140000	// Well-Dried Bone
+629,,140000	// Singing Flower
+630,,140000	// Dew Laden Moss
+631,,140000	// Deadly Noxious Herb
+632,,140000	// Fatty Chubby Earthworm
+633,,140000	// Sweet Potato
+634,,140000	// Tropical Banana
+635,,140000	// Orc Trophy
+636,,140000	// No Recipient
+637,,140000	// Old Broom
+638,,140000	// Silver Knife of Chastity
+639,,140000	// Armlet of Obedience
+640,,140000	// Shining Stone
+641,,140000	// Contracts in Shadow
+642,,140000	// Book of the Devil
+643,,140000	// Pet Incubator
+644,,140000	// Gift Box
+645,,140000	// Concentration Potion
+656,,140000	// Awakening Potion
+657,,140000	// Berserk Potion
+659,,140000	// Her Heart
+663,,140000	// Songpyun
+664,,140000	// Gift Box
+665,,140000	// Gift Box
+666,,140000	// Gift Box
+667,,140000	// Gift Box
+668,,140000	// Red_Envelope
+678,,140000	// Poison Bottle
+679,,140000	// Pilule
+2234,,10000	// Tiara
+2235,,10000	// Crown
+2249,,10000	// Coronet
+2254,,10000	// Angel Wing
+2255,,10000	// Evil Wing
+2258,,10000	// Spiky Band
+2256,,10000	// Majestic Goat
+2274,,10000	// Ghost Bandana
+2286,,10000	// Elven Ears
+2327,,10000	// Holy Robe
+2334,,10000	// Mage Coat
+2614,,10000	// Eye of Dullahan
+2615,,10000	// Safety Ring
+2616,,10000	// Critical Ring
+2621,,10000	// Ring
+2622,,10000	// Earring
+2623,,10000	// Necklace
+2624,,10000	// Glove
+2625,,10000	// Brooch
+2626,,10000	// Rosary
+5002,,10000	// Jewel Crown
+5085,,10000	// Small Ribbons
+5007,,10000	// Grand Circlet
+5017,,10000	// Bone Helm
+5019,,10000	// Corsair
+5054,,10000	// Assassin Mask
+5066,,10000	// Succubus Horn
+5072,,10000	// Incubus Horn
+5053,,10000	// Sphinx Hat
+616,,10000	// Old Card Album
+617,,10000	// Old Purple Box
+644,,1000000	// Gift Box
+604,,1000000	// Dead Branch
+603,,6000000	// Old Blue Box
+604,,1000000	// Dead Branch

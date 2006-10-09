@@ -1,15 +1,16 @@
-//===== eAthena Script =======================================
+//===== Freya Script =========================================
 //= Novice Training Grounds
 //===== By: ==================================================
-//= eAthena Dev Team (1.0)
+//= eAthena Dev Team
 //===== Current Version: =====================================
-//= 1.1
+//= 1.2
 //===== Compatible With: =====================================
-//= eAthena 7.15 +
+//= Freya
 //===== Description: =========================================
 //= 1.0 by [Yor]
-//= 1.1 fixed: warp on select the job thief at training ground
+//= 1.1 Fixed: warp on select the job thief at training ground
 //=     by [General__]
+//= 1.2 Fixed: Warp when selecting Archer job (Thanks to Squal) [Tsuyuki]
 //===== Additional Comments: =================================
 //= Fully working
 //============================================================
@@ -160,8 +161,8 @@ new_1-2.gat,100,29,4	script	Usher	86,{
 			close;
 		Ldirect2:
 			if (@TEMP !=3) goto Ldirect3;
-			savepoint "payon.gat",87,117;
-			warp "payon.gat",87,117;
+			savepoint "payon.gat",87,93;
+			warp "payon.gat",87,93;
 			close;
 		Ldirect3:
 			if (@TEMP !=4) goto Ldirect4;
@@ -1955,7 +1956,7 @@ new_1-4.gat,60,149,4	script	Helper	55,{
 		L01:
 			mes "[Helper]";
 			mes "I expect you the best.";
-			savepoint "payon.gat",87,117;
+			savepoint "payon.gat",87,93;
 			next;
 			set nov_1st_cos,0;
 			set nov_get_item01,0;
@@ -2137,7 +2138,7 @@ new_1-4.gat,19,189,4	script	Swordman's Helper	105,{
 // nov_1_4_cos_c (variable) starts with value 25
 // Bonus: 3 Red Potions, 50 zenys
 new_1-4.gat,59,186,4	script	Archer's Helper	105,{
-	savepoint "payon.gat",87,117;
+	savepoint "payon.gat",87,93;
 	mes "['Archer' Agency Helper]";
 	mes "Wecome!";
 	mes "Here is Archer Agency.";

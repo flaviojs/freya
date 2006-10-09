@@ -122,7 +122,7 @@ dicedun:	warp "ra_fild01.gat",	234,	327;	close;
 djupero:	warp "yuno_fild07",	219,	176;	close;
 dkielk:	warp "yuno_fild08",	164,	189;	close;
 dmagma:	warp "yuno_fild03.gat",	39,	140;	close;
-dlight:	warp "lighthalzen,gat",	338,	229;	close;
+dlight:	warp "lighthalzen.gat",	338,	229;	close;
 dorc:		warp "gef_fild10.gat",	70,	332;	close;
 dpayon:	warp "pay_arche.gat",	43,	132;	close;
 dpyramids:	warp "moc_ruins.gat",	62,	162;	close;

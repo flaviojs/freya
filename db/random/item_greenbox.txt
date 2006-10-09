@@ -1,0 +1,10 @@
+// item_greenbox.txt, Old Green Box Database
+//
+// <Item_ID>,<Description (Dummy)>,<Rate>
+//
+// Rate Examples
+// 10000   = 1%
+// 500000  = 50%
+// 1000000 = 100%
+
+// Currently No Item Info

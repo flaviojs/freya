@@ -4,8 +4,55 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/08/06
+	* Fixed: Cooking Kits can now make L6-10 food items [Tsuyuki]
+	 - To-Do: Add graphical effects and failure messages (src)
+	 - To-Do: If you do not make anything when you use the kits, they should stay in your 
+	 - inventory and not be deleted (src)
+	 - To-Do: Fix food SCs not working, and add their graphical effects (src)
+	 - Note: If these things are fixed, the Cooking System will be 100% fully functional
+	* Updated: More new item updates [Tsuyuki]
+	* Cleaned up useless things in configure [MagicalTux]
+	* Updated: Official entry rates for Cookie Bag (Aegis X.3) [Tsuyuki]
+	* Updated: Official entries for Old Purple Box (Aegis X.3) [Tsuyuki]
+	* Updated: Official entries for Gift Box (Aegis X.3) [Tsuyuki]
+	* Updated: Official entries for Old Card Album (Aegis X.3) [Tsuyuki]
+	* Added: Size Fix entries for Ninja/Gunslinger weapons [Tsuyuki]
+	 - Needs to be updated in source code as well (I think?)
+	* Updated: Effects for a few more items (Thanks to Muad_Dib) [Tsuyuki]
+	* Fixed: Cooking item producers not working correctly [Tsuyuki]
+	* Updated: The db/item_group_db.txt file [Tsuyuki]
+	* Updated: The db/monster_race2_db.txt file [Tsuyuki]
+
+10/07/06
+	* Fixed: BS_WEAPONREPAIR is now targetable [Tsuyuki]
+	* Fixed: More bugs in the Eye of Hellion Quest (Thanks to Galaxy) [Tsuyuki]
+	* Fixed: Bug in the Sight Blaster Quest allowing you to do it twice [Tsuyuki]
+	* Fixed: Problems with the Cooking Quest (Thanks to Galaxy) [Tsuyuki]
+	* Fixed: Some text, and coordinates/facing/name of one of the Thief Skill quest NPCs [Tsuyuki]
+	* Fixed: Warp when selecting Archer Job in the Training Grounds (Thanks to Squal) [Tsuyuki]
+	* Fixed: Merchant Card set (Thanks to Mubbsy) [Tsuyuki]
+	* Fixed: Tyrfing item name and effect [Tsuyuki]
+	* Fixed: A bunch of cards/items that use bAddMonsterDropItem [Tsuyuki]
+	* Fixed: Delays and such for Guild skills [Tsuyuki]
+	* Added: Correct effects for a few new items (Thanks to Muad_Dib) [Tsuyuki]
+
 10/06/06
+	* Updated: A couple mob speed/delay rates WIP [Tsuyuki]
+	* Fixed: Drake's slave summons [Tsuyuki]
+	* Updated: Big updates to the Lighthalzen NPC files, its almost 100% like official Lighthalzen now [Tsuyuki]
+	* Enabled: Uncommented some new shops (Gunslinger/Ninja/Homunuclus). Won't hurt to have them in [Tsuyuki]
 	* Fixed: name of kobold archer (mob_db.txt) [Yor]
+	* Changed: Increased some bAddMonsterDrop item script bonuses regarding cards [Tsuyuki]
+	* Fixed: Some other new items not working correctly [Tsuyuki]
+	* Added: Effect for item Women's Bundle [Tsuyuki]
+	* Added: Prices for a couple items [Tsuyuki]
+	* Added: Goddess of Cursed Fortune's Brooch to Teddy Bear [Tsuyuki]
+	* Added: Shinobi Sash item to Shinobi [Tsuyuki]
+	* Added: New items to the no refine database [Tsuyuki]
+	* Added: Two new items, Old Red Box + Old Green Box random item databases [Tsuyuki]
+	* Fixed: Typo in custom/warper.txt script [Tsuyuki]
+	* Removed: Some custom monsters from mob_db2.txt [Tsuyuki]
 	* Added: getmapgms2/getmapalivegms and getmapgms3/getmapdeadgms script commands to count number of GMs on a map [Yor]
 	         example: getmapalivegms("prontera.gat", 20): get number of alive GM (level 20 or more) on prontera.gat
 
@@ -27,7 +74,6 @@ Date	Added
 	* Added: Angelic Guard to Mastering [Tsuyuki]
 	* Added: Angelic Protection to Eclipse [Tsuyuki]
 	* Added: Angel's Kiss to Toad [Tsuyuki]
-	* Removed: Odin's Blessings from Valkyrie Randgris [Tsuyuki]
 	* Fixed: areamonsteragro: invalid function call (function of areamonster) [Yor]
 	* Updated: mob_db_map.sql and item_db_map.sql [Yor]
 	* Fixed: item_db.txt: missing a ";" (Rocker Card) [Yor]

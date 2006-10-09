@@ -166,4 +166,6 @@
 5113 // Angry Teeth
 5134 // Pumpkin Hat
 5137 // Alice Doll
-5139 // Confederate Rose
+5139 // Hibiscus
+5135 // Cyclop's Eye
+5172 // Beret
