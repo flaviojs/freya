@@ -44,6 +44,15 @@
 //=       Modification de l'heure: 13h50->13h30 (le dernier a duré 3h!)
 //=       Check des resurrections.
 //=       Installation de 4 sorties.
+//= 1.8   nombre de monstres: x5 -> x6 (mini: 30->50, maxi: 150->200)
+//=       initialisation des variables à 0 au chargement du npc (OnInit)
+//=       ne pas spawner si l'event n'est pas en cours.
+//=       amélioration de l'indication du nombre de mobs des spawns précédents.
+//=       ajout de messages pour les spawns à mi-temps.
+//=       ajout de skeletons en monstres de mi-temps.
+//=       $@nb_part_en_vie -> $@survivants
+//=       correction test d'affichage du nombre de monstres restants à la fin
+//=       Amélioration du controle des résurrections (test à chaque mort d'un monstre)
 //===== Additional Comments: =================================
 //=Mettre les warp et les bonnes coordonnées pour les NPC.
 //============================================================
@@ -72,28 +81,34 @@ function	script	close_spawn	{
 	set $@Spawn_flag,0; // $@Spawn_flag: 0: event pas en cours, 1: event en cours, 2: dernier mob spawné
 	set $@nb_part,0;
 	set $@nb_mobs,0;
-	set $@nb_part_en_vie,0;
+	set $@survivants,0;
 	return;
 }
 
 
 // spawn des monstres
 function	script	f_monstres	{
-	set $@nb_part,getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20); // alive players less alive GMs
+	set $@nb_part,getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20); // joueurs vivants moins GMs vivants
 	if ($@nb_part < 1) goto L_stop;
 	if (agitcheck(0) != 0) goto L_woe;
-	if ($@nb_part > $@nb_part_en_vie) goto L_triche; // quelqu'un a été téléporté ou rescussité
-	set $@nb_part_en_vie, $@nb_part;
+	if ($@nb_part > $@survivants) goto L_triche; // quelqu'un a été téléporté ou rescussité
+	set $@survivants, $@nb_part;
+
+	// ne pas spawner si l'event n'est pas en cours
+	if ($@Spawn_flag != 1) end; // $@Spawn_flag: 0: event pas en cours, 1: event en cours, 2: dernier mob spawné
 
 	// spawn des monstres
 	set $@var,getarg(0);
+	set $@NbMapMobs, GetMapMobs("guild_vs5.gat");
 	areamonsteragro "guild_vs5.gat",0,0,200,200,"Survivor",$@var,$@nb_mobs,"Surviv::OnMortMob";
 	announce "Garde Royal: Encore " + $@nb_part + " participants en lice pour le titre de Master Survivor!",0;
-	if (GetMapMobs("guild_vs5.gat") <= $@nb_mobs) goto Suite_spawn;
-	mapannounce "guild_vs5.gat","Il reste encore " + (GetMapMobs("guild_vs5.gat") - $@nb_mobs) + " monstres des spawns précédents...",0;
+	// indication du nombre de monstres restant des spawns précédents
+	if ($@NbMapMobs < 1) goto Suite_spawn;
+	mapannounce "guild_vs5.gat","Il reste encore " + $@NbMapMobs + " monstres des spawns précédents...",0;
 	goto Suite_spawn;
 
 Suite_spawn:
+	set $@NbMapMobs, 0;
 	mapannounce "guild_vs5.gat","Invasion de '"+ strmobinfo(2,$@var)+"'.",0;
 	set $@var,0;
 	end;
@@ -106,7 +121,7 @@ L_stop:
 
 L_woe:
 	doevent "Surviv::L_stoptimer";// tjs en 1ere ligne
-	announce "Le Spawn Survivor est arreté pour cause de Woe.",0;
+	announce "Le Spawn Survivor est arreté pour cause de WoE.",0;
 	mapannounce "guild_vs5.gat","Garde Royal: Les joueurs présents dans la salle doivent deco/reco. Merci.",0;
 	goto L_fin;
 
@@ -128,36 +143,49 @@ L_fin:
 function	script	check_monstres	{
 	if (GetMapMobs("guild_vs5.gat") >= ($@nb_mobs / 5)) end;
 	// respawner des monstres si les joueurs les tuent trop vite
-	set $@spawn_rnd, rand(1,5);
+	set $@spawn_rnd, rand(1,6);
 	if ($@spawn_rnd == 1) goto rnd1;
 	if ($@spawn_rnd == 2) goto rnd2;
-	if ($@spawn_rnd == 3 || $@spawn_rnd == 4) goto rnd3;
+	if ($@spawn_rnd == 3) goto rnd3;
+	if ($@spawn_rnd == 4 || $@spawn_rnd == 5) goto rnd4; // spawn même monstre
 
 	// porings
+	mapannounce "guild_vs5.gat","Garde Royal: Voici de quoi vous passer le temps...",0;
 	areamonsteragro "guild_vs5.gat",0,0,200,200,"Pour patienter...",1002,$@nb_mobs,"Surviv::OnMortMob";
 	set $@spawn_rnd, 0;
 	return;
 
 rnd1:
 	// lunatics
+	mapannounce "guild_vs5.gat","Garde Royal: Des lapinoux carnivores se sont échappés du zoo royal. Merci de nous en débarasser...",0;
 	areamonsteragro "guild_vs5.gat",0,0,200,200,"Lapinou carnivore",1063+2000,$@nb_mobs,"Surviv::OnMortMob"; // +2000 pour 'petit' monstre
 	set $@spawn_rnd, 0;
 	return;
 
 rnd2:
 	// ChonChons
+	mapannounce "guild_vs5.gat","Garde Royal: Le sang a attiré des Moustiques. Faîtes attention à vous...",0;
 	areamonsteragro "guild_vs5.gat",0,0,200,200,"Moustique",1011+2000,$@nb_mobs,"Surviv::OnMortMob"; // +2000 pour 'petit' monstre
 	set $@spawn_rnd, 0;
 	return;
 
 rnd3:
-	// le dernier monstre, répété
+	// Skeletons
+	mapannounce "guild_vs5.gat","Garde Royal: Un nécromancien vient de ranimer les monstres morts. Restez sur vos gardes...",0;
+	areamonsteragro "guild_vs5.gat",0,0,200,200,"Monstre mort-vivant",1076,$@nb_mobs,"Surviv::OnMortMob";
+	set $@spawn_rnd, 0;
+	return;
+
+rnd4:
+	// le dernier monstre répété
+	mapannounce "guild_vs5.gat","Garde Royal: Voici une seconde vague de '" + strmobinfo(2,getarg(0)) + "'.",0;
 	areamonsteragro "guild_vs5.gat",0,0,200,200,"Survivor",getarg(0),$@nb_mobs,"Surviv::OnMortMob";
 	set $@spawn_rnd, 0;
 	return;
 }
 
 
+// NPC principal de l'event
 guild_vs5.gat,51,49,1	script	Surviv	-1,{
 	//mapannounce "guild_vs5.gat","timer: "+ getnpctimer(0)+"     "+getnpctimer(1)+"     "+ getnpctimer(2),0;
 	//close;
@@ -216,13 +244,13 @@ OnStart:
 	set $@spawn49,1213; // High Orc
 	set $@spawn50,1271; // Alligator
 	set $@nb_part,getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20); // alive players less alive GMs
-	set $@nb_part_en_vie,$@nb_part; // pour tester les cas de triche
+	set $@survivants,$@nb_part; // pour tester les cas de triche
 
 	// ajouter: si un seul participant ou aucun, tout arrêter
 
-	set $@nb_mobs,($@nb_part + rand(1,4)) * 5;
-	if ($@nb_mobs <  30) set $@nb_mobs,30;
-	if ($@nb_mobs > 150) set $@nb_mobs,150;
+	set $@nb_mobs,($@nb_part + rand(2,5)) * 6;
+	if ($@nb_mobs <  50) set $@nb_mobs,50;
+	if ($@nb_mobs > 200) set $@nb_mobs,200;
 	mapannounce "guild_vs5.gat","Garde Royal: 30 secondes entre chaque spawn de monstres différents. Survivez !",0; //Première slave.
 	mapannounce "guild_vs5.gat","Garde Royal: Pour devenir le Master Survivor, il vous faut tuer un monstre en étant le dernier survivant!",0;
 	mapannounce "guild_vs5.gat","Garde Royal: Règle importante: Il est INTERDIT de téléporter un joueur dans la salle ou de rescussiter un joueur.",0;
@@ -564,16 +592,20 @@ OnTimer8190000:
 
 OnMortMob: // à chaque mort de mob
 	// un seul survivant
-	if ((getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20)) == 1) goto Le_Gagnant;
+	set $@nb_part,getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20); // joueurs vivants moins GMs vivants
+	if ($@nb_part > $@survivants) goto L_tricheur; // quelqu'un a été téléporté ou rescussité
+	set $@survivants, $@nb_part;
+	if ($@nb_part == 1) goto Le_Gagnant;
 	// note: pour tuer un monstre, il faut un joueur vivant, donc le test == 0 est inutile
 
 	// ce n'est pas le dernier spawn
 	if ($@Spawn_flag != 2) end; // $@Spawn_flag: 0: event pas en cours, 1: event en cours, 2: dernier mob spawné
 
 	set $@Mob_a_tuer, GetMapMobs("guild_vs5.gat");
-	if ($@Mob_a_tuer == 500 || $@Mob_a_tuer == 400 || $@Mob_a_tuer == 300 || $@Mob_a_tuer == 200 || $@Mob_a_tuer == 100 || $@Mob_a_tuer == 50 || $@Mob_a_tuer == 10 || $@Mob_a_tuer == 5) goto OnMortMob_sans_quantity;
+	if ($@Mob_a_tuer != 500 && $@Mob_a_tuer != 400 && $@Mob_a_tuer != 300 && $@Mob_a_tuer != 200 && $@Mob_a_tuer != 100 && $@Mob_a_tuer != 50 && $@Mob_a_tuer != 10 && $@Mob_a_tuer != 5) goto OnMortMob_sans_quantity;
 	mapannounce "guild_vs5.gat","Garde Royal: Encore " + $@Mob_a_tuer +" monstres à tuer.",0;
-	goto OnMortMob_sans_quantity;
+	set $@Mob_a_tuer, 0;
+	end;
 
 OnMortMob_sans_quantity:
 	set $@Mob_a_tuer, 0;
@@ -584,7 +616,7 @@ OnMortMob_sans_quantity:
 	announce "Nous avons plusieur Masters Survivors dans le Spawn Survivor!",0;
 	// annonces pour savoir comment quitter la carte
 	mapannounce "guild_vs5.gat","Garde Royal: Vous devez deco/reco pour sortir. Merci.",0;
-	goto L_OnMortMob_suite;
+	goto L_gagnant_suite;
 
 // 1 gagnant!
 Le_Gagnant:
@@ -597,15 +629,21 @@ Le_Gagnant:
 
 	// annonces pour savoir comment quitter la carte
 	mapannounce "guild_vs5.gat","Garde Royal: "+ strcharinfo(0) + " doit deco/reco pour sortir. Merci.",0;
+	goto L_gagnant_suite;
+
+L_gagnant_suite:
+	if ((getmapusers3("guild_vs5.gat") - getmapgms3("guild_vs5.gat",20)) < 1) goto L_OnMortMob_suite; // pas de mort sur la carte
+	mapannounce "guild_vs5.gat","Garde Royal: Les autres, vous pouvez deco/reco pour aller à Prontera",0;
+	mapannounce "guild_vs5.gat","Garde Royal: ou retourner à votre point de sauvegarde. Merci.",0;
+	goto L_OnMortMob_suite;
+
+L_tricheur:
+	announce "Le Spawn Survivor est arreté pour cause de TRICHE!",0;
+	announce "Un joueur a été téléporté dans la salle ou rescussité!",0;
+	mapannounce "guild_vs5.gat","Garde Royal: Les joueurs présents dans la salle doivent deco/reco. Merci.",0;
 	goto L_OnMortMob_suite;
 
 L_OnMortMob_suite:
-	if ((getmapusers3("guild_vs5.gat") - getmapgms3("guild_vs5.gat",20)) < 1) goto L_OnMortMob_suite2; // pas de mort sur la carte
-	mapannounce "guild_vs5.gat","Garde Royal: Les autres, vous pouvez deco/reco pour aller à Prontera",0;
-	mapannounce "guild_vs5.gat","Garde Royal: ou retourner à votre point de sauvegarde. Merci.",0;
-	goto L_OnMortMob_suite2;
-
-L_OnMortMob_suite2:
 	stopnpctimer;
 	callfunc "close_spawn";
 	goto L_stoptimer;
@@ -657,6 +695,10 @@ OnInit:
 	disablenpc "warprep3";
 	disablenpc "warprep4";
 	disablenpc "Surviv";
+	set $@Spawn_flag,0; // $@Spawn_flag: 0: event pas en cours, 1: event en cours, 2: dernier mob spawné
+	set $@nb_part,0;
+	set $@nb_mobs,0;
+	set $@survivants,0;
 	killmonsterall "guild_vs5.gat";
 	end;
 

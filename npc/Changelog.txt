@@ -1,6 +1,9 @@
 // $Id: Changelog.txt 582 2006-01-04 22:38:08Z Yor $
 Date	Added
 
+2006.10.09
+	* Updated: npc/server/Sapho/Survivor.txt script. [Sapho Team]
+
 2006.10.08
 	* Updated: npc/server/Sapho/Survivor.txt script. [Sapho Team]
 
