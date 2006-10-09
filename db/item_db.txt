@@ -1551,7 +1551,7 @@
 4357,Lord_Knight_Seyren_Card,Lord Knight Seyren Card,6,,10,10,,,,,,,769,,,,{},{ skill 359,1; bonus bMaxHPrate,-50; }
 4358,Seyren_Windsor_Card,Seyren Windsor Card,6,,10,10,,,,,,,2,,,,{},{ bonus bStr,getequiprefinerycnt(1)-6; }
 4359,Assassin_Cross_Eremes_Card,Assassin Cross Eremes Card,6,,10,10,,,,,,,2,,,,{},{ skill 135,3; }
-4360,Eremes_Guile_Card,Eremes Guile Card,6,,10,10,,,,,,,2,,,,{},{ bonus2 bAddRace2,6,10; }
+4360,Eremes_Guile_Card,Eremes Guile Card,6,,10,10,,,,,,,2,,,,{},{bonus2 bCriticalAddRace,10,6;}
 4361,Mastersmith_Howard_Card,Mastersmith Howard Card,6,,10,10,,,,,,,2,,,,{},{ bonus bBreakWeaponRate,1000; bonus bBreakArmorRate,700; }
 4362,Howard_Alt-Eisen_Card,Howard Alt-Eisen Card,6,,10,10,,,,,,,2,,,,{},{ bonus bAspdRate,-5; bonus bHit,40; }
 4363,High_Priest_Margaretha_Card,High Priest Margaretha Card,6,,10,10,,,,,,,136,,,,{},{ bonus4 bAutoSpellWhenHit,12,4,50,0; }  // Effect Undecided
@@ -1563,8 +1563,8 @@
 4367,Sniper_Cecil_Card,Sniper Cecil Card,6,,10,10,,,,,,2,,,,{},{ bonus bNoRegen,1; bonus2 bHpDrainRate,20,5; }
 4368,Cecil_Damon_Card,Cecil Damon Card,6,,10,10,,,,,,,2,,,,{},{ bonus bAspdRate,5; bonus bHit,-30; }
 4369,Venatu_Card,Venatu Card,6,,10,10,,,,,,,,16,,,,,{ bonus bLuk,readparam(bAgi)/18; },{},{}
-4370,Dimik_Card,Dimik Card,6,,10,10,,,,,,,32,,,,{},{ bonus bVit,getequiprefinerycnt(2)-5;}
-4371,Archdam_Card,Archdam Card,6,,10,10,,,,,,,16,,,,{},{bonus bBaseAtk,10; bonus bCastrate,20; if(isequipped(4311,4319,4331)==0) end; bonus bInt,1;bonus bStr,1;bonus bDef,2;bonus bSPrecovRate,10;bonus2 bSkillAtk,480,10;bonus2 bSkillAtk,368,10;bonus bCastrate,-10;if(BaseJob==Job_Crusader) bonus bDefEle,6;}
+4370,Dimik_Card,Dimik Card,6,,10,10,,,,,,,32,,,,{},{ bonus bVit,getequiprefinerycnt(2)-5; }
+4371,Archdam_Card,Archdam Card,6,,10,10,,,,,,,16,,,,{},{ bonus bBaseAtk,10; bonus bCastrate,20; if(isequipped(4311,4319,4331)==0) end; bonus bInt,1;bonus bStr,1;bonus bDef,2;bonus bSPrecovRate,10;bonus2 bSkillAtk,480,10;bonus2 bSkillAtk,368,10;bonus bCastrate,-10;if(BaseJob==Job_Crusader) bonus bDefEle,6; }
 4372,White_Lady_Card,White Lady Card,6,,10,10,,,,,,,2,,,,{},{} // Effect Undecided
 4373,Green_Maiden_Card,Green Maiden Card,6,,10,10,,,,,,,4,,,,{},{ bonus bLuk,getequiprefinerycnt(5)-5; }
 4374,Vesper_Card,Vesper Card,6,,10,10,,,,,,,2,,,,{},{} // Effect Undecided
