@@ -1,9 +1,9 @@
 //===== Freya Script ======================================================
-//= Temp Location for New Kafras
+//= New Kafra Employees
 //===== By: ===============================================================
-//= eAthena Dev Team; Updated by Freya
+//= eAthena
 //===== Current Version: ==================================================
-//= 2.1b
+//= 2.3
 //===== Compatible With: ==================================================
 //= Freya
 //===== Description: ======================================================
@@ -14,18 +14,20 @@
 //=  arg(1): Set to 1 to disable teleport menu option.  Otherwise set to 0.
 //=  arg(2): Set to 1 to disable info menu.  Otherwise set to 0.
 //===== Additional Comments: ==============================================
-//= v1.1 Now using functions
-//= v2.1 Added Niflheim Kafra by Dizzy
-//= v2.1b Minor changes to function calls.  Using arguments.
+//= 1.1 Now using functions
+//= 2.1 Added Niflheim Kafra by Dizzy
+//= 2.1b Minor changes to function calls.  Using arguments.
 //= This version uses arrays .[kobra_k88]
-//= v2.2 Added new Kafras. Removed all new kafra teleport service entries temporarily.
+//= 2.2 Added new Kafras. Removed all new Kafra teleport service entries temporarily.
 //= 	 They'll be added once I further test in iRO [Tsuyuki]
+//= 2.3 Officialized script, fixed up the newer Kafras [Tsuyuki]
+//= Note: Need to add Hugel/Rachel Kafra Employees (No Info)
 //=========================================================================
 
 // Complete Kafras:
 
 // Niflheim -----------------------------------------------------------------
-niflheim.gat,190,180,5	script	Kafra	791,{
+niflheim.gat,190,180,5	script	Kafra Employee	791,{
 	callfunc "F_Kafra",1,1,1;
 
 	M_Save:
@@ -34,10 +36,10 @@ niflheim.gat,190,180,5	script	Kafra	791,{
 }
 
 // Umbala -------------------------------------------------------------------
-umbala.gat,128,133,4	script	Kafra	115,{
+umbala.gat,128,133,4	script	Kafra Employee	115,{
 	cutin "kafra_03",2;
 	callfunc "F_KafSetUmb";
-	callfunc "F_Kafra",0,0,1;
+	callfunc "F_Kafra",0,1,1;
 
 	M_Save:
 		savepoint "umbala.gat",126,131;
@@ -45,9 +47,9 @@ umbala.gat,128,133,4	script	Kafra	115,{
 }
 
 // Amatsu -------------------------------------------------------------------
-amatsu.gat,102,149,4	script	Kafra	116,{
+amatsu.gat,102,149,4	script	Kafra Employee	116,{
 	cutin "kafra_02",2;
-	callfunc "F_Kafra",0,0,1;
+	callfunc "F_Kafra",0,1,1;
 
 	M_Save:
 		savepoint "amatsu.gat",116,94;
@@ -55,9 +57,9 @@ amatsu.gat,102,149,4	script	Kafra	116,{
 }
 
 // Ayothaya -----------------------------------------------------------------
-ayothaya.gat,212,169,5	script	Kafra	116,{
+ayothaya.gat,212,169,5	script	Kafra Employee	116,{
 	cutin "kafra_02",2;
-	callfunc "F_Kafra",0,0,1;
+	callfunc "F_Kafra",0,1,1;
 
 	M_Save:
 		savepoint "ayothaya.gat",149,69;
@@ -65,9 +67,9 @@ ayothaya.gat,212,169,5	script	Kafra	116,{
 }
 
 // Gonryun/Kunlun -----------------------------------------------------------
-gonryun.gat,159,122,4	script	Kafra	116,{
+gonryun.gat,159,122,4	script	Kafra Employee	116,{
 	cutin "kafra_02",2;
-	callfunc "F_Kafra",0,0,1;
+	callfunc "F_Kafra",0,1,1;
 
 	M_Save:
 		savepoint "gonryun.gat",160,62;
@@ -75,9 +77,9 @@ gonryun.gat,159,122,4	script	Kafra	116,{
 }
 
 // Louyang ------------------------------------------------------------------
-louyang.gat,210,104,5	script	Kafra	117,{
+louyang.gat,210,104,5	script	Kafra Employee	117,{
 	cutin "kafra_01",2;
-	callfunc "F_Kafra",0,0,1;
+	callfunc "F_Kafra",0,1,1;
 
 	M_Save:
 		savepoint "louyang.gat",217,92;
@@ -88,10 +90,9 @@ louyang.gat,210,104,5	script	Kafra	117,{
 
 // Einbech ------------------------------------------------------------------
 
-einbech.gat,181,132,4	script	Kafra	860,{
+einbech.gat,181,132,4	script	Kafra Employee	860,{
 	cutin "kafra_08",2;
-	callfunc "F_KafSetSwz";
-	callfunc "F_Kafra",0,0,1;
+	callfunc "F_Kafra",0,3,1;
 
 	M_Save:
 		savepoint "einbech.gat",182,124;
@@ -99,10 +100,9 @@ einbech.gat,181,132,4	script	Kafra	860,{
 }
 
 // Einbroch (North-East) ----------------------------------------------------
-einbroch.gat,242,205,5	script	Kafra	115,{
+einbroch.gat,242,205,5	script	Kafra Employee	115,{
 	cutin "kafra_03",2;
-	callfunc "F_KafSetSwz";
-	callfunc "F_Kafra",0,0,1;
+	callfunc "F_Kafra",0,3,1;
 
 	M_Save:
 		savepoint "einbroch.gat",238,198;
@@ -110,10 +110,9 @@ einbroch.gat,242,205,5	script	Kafra	115,{
 }
 
 // Einbroch (East) ----------------------------------------------------------
-einbroch.gat,59,203,5	script	Kafra	117,{
+einbroch.gat,59,203,5	script	Kafra Employee	117,{
 	cutin "kafra_01",2;
-	callfunc "F_KafSetSwz";
-	callfunc "F_Kafra",0,0,1;
+	callfunc "F_Kafra",0,3,1;
 
 	M_Save:
 		savepoint "einbroch.gat",240,197;
@@ -123,10 +122,9 @@ einbroch.gat,59,203,5	script	Kafra	117,{
 // Lighthalzen---------------------------------------------------------------
 
 //Outside the hotel
-lighthalzen.gat,164,100,4	script	Kafra	860,{
+lighthalzen.gat,164,100,4	script	Kafra Employee	860,{
 	cutin "kafra_08",2;
-	callfunc "F_KafSetSwz";
-	callfunc "F_Kafra",0,0,1;
+	callfunc "F_Kafra",0,3,1;
 
 	M_Save:
 		savepoint "lighthalzen.gat",158,94;
@@ -134,34 +132,45 @@ lighthalzen.gat,164,100,4	script	Kafra	860,{
 }
 
 // Entrance
-lighthalzen.gat,191,320,4	script	Kafra	861,{
+lighthalzen.gat,191,320,4	script	Kafra Employee	861,{
 	cutin "kafra_09",2;
-	callfunc "F_KafSetSwz";
-	callfunc "F_Kafra",0,0,1;
+	callfunc "F_Kafra",0,3,1;
 
 	M_Save:
 		savepoint "lighthalzen.gat",194,313;
 		callfunc "F_KafEnd",0,1;
+
 }
 
 //Inside the hotel
-lhz_in02.gat,237,284,4	script	Kafra	861,{
+lhz_in02.gat,237,284,4	script	Kafra Employee	861,{
 	cutin "kafra_09",2;
-	callfunc "F_KafSetSwz";
-	callfunc "F_Kafra",0,0,1;
+	callfunc "F_Kafra",0,3,1;
 
 	M_Save:
 		savepoint "lhz_in02.gat",278,215;
 		callfunc "F_KafEnd",0,1;
 }
 
-// Hugel--------------------------------------------------------------------
+// Hugel - Incomplete ------------------------------------------------------
+//hugel.gat,xxx,xxx,x	script	Kafra Employee	xxx,{
+//	cutin "xxx",2;
+//	callfunc "F_Kafra",0,1,1;
+//
+//	M_Save:
+//		savepoint "hugel.gat",xxx,xxx;
+//		callfunc "F_KafEnd",0,1;
+//}
 
-// Incomplete
-
-// Rachel-------------------------------------------------------------------
-
-// Incomplete
+// Rachel - Incomplete -----------------------------------------------------
+//rachel.gat,xxx,xxx,x	script	Kafra Employee	xxx,{
+//	cutin "xxx",2;
+//	callfunc "F_Kafra",0,1,1;
+//
+//	M_Save:
+//		savepoint "rachel.gat",xxx,xxx;
+//		callfunc "F_KafEnd",0,1;
+//}
 
 // New Kafra Functions -----------------------------------------------------
 
@@ -179,45 +188,21 @@ function	script	F_KafSetUmb	{
 	return;
 }
 
-// Temp fix for Lighthalzen/Einbroch/Einbech/Hugel Kafras ------------------
-
-function	script	F_KafSetSwz	{
-	setarray @wrpD$[0], "";
-	setarray @wrpP[0], "";
-	set @wrpC$[0], "Cancel";
-	set @wrpC$[1], "";
-	set @wrpC$[2], "";
-	set @wrpC$[3], "";
-	set @wrpC$[4], "";
-	set @wrpC$[5], "";
-	set @wrpC$[6], "";
-	return;
+// Function: Teleport Service dialogue for the Swartzvalt Republic Kafras --
+function	script	F_KafSwzTele	{
+	mes "[Kafra Employee]";
+	mes "Because of the ^FF0000Limited^000000";
+	mes "^FF0000Transport Agreement^000000, the";
+	mes "Kafra Corporation cannot";
+	mes "provide Teleport Services";
+	mes "in the Schwartzwald Republic.";
+	next;
+	mes "[Kafra Employee]";
+	mes "We ask that you please";
+	mes "use the Airship Service";
+	mes "instead, Thank you for your";
+	mes "understanding and cooperation.";
+	close2;
+	cutin "", 255;
+	end;
 }
-
-// Function: Text for the Teleport Service for Swartzwald Republic Kafras --
-//function	script	F_KafSetSwz	{
-//
-//	Okay.. I need it to say this when the teleport box pops up:
-//
-//	mes "[Kafra Employee]";
-//	mes "Because of the ^FF0000Limited^000000";
-//	mes "FF0000Transport Agreement^000000, the";
-//	mes "Kafra Corporation cannot";
-//	mes "provide Teleport Services";
-//	mes "in the Schwartzwald Republic.";
-//	next;
-//	mes "[Kafra Employee]";
-//	mes "We ask that you please";
-//	mes "use the Airship Service";
-//	mes "instead, Thank you for your";
-//	mes "understanding and cooperation.";
-//	return;
-//}
-//
-//	Unfortunately.. the array requests the teleports service menu pop up
-//	I think I'd have to rewrite a portion of the script to get it to work
-//	Or add a new arg function thing like the niff Kafra, unfortunately
-//	I can't figure out how to do that. script isn't explanatory enough.
-//	For the time being, teleport service for the callfunc "F_KafSetSwz"
-//	Kafras will have a teleport-service menu popup with only a cancel
-//	option. Maybe someone can fix it?

@@ -4,6 +4,20 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/09/06
+	* Removed: Some custom scripts that didn't even exist from the map_athena.conf file [Tsuyuki]
+	* Removed: Wedding.txt and IceCream.txt from the Custom folder (Duplicate official scripts) [Tsuyuki]
+	* Removed: eAthena Dev NPC from the Custom Script Folder *cough* [Tsuyuki]
+	* Removed: Some duplicate files... [Tsuyuki]
+	* Fixed: NPC-Type Name: Food Seller > Chef Assistant & Comodo Chef Assistant Items [Tsuyuki]
+	* Fixed: Minor dialogue fixes in various other NPCs [Tsuyuki]
+	* Fixed: Some dialogue and other unofficial things with Kafra Employees [Tsuyuki]
+	* Translated: Japanese Louyang Guide NPCs into English (official iRO dialogue) [Tsuyuki]
+	* Updated: First Aid Kit item [Tsuyuki]
+	* Added: Rescripted the Taekwon Job Change Quest with iRO NPC dialogue, etc [Tsuyuki]
+	* Fixed: You can no longer save in Archer's Village via Kafra [Tsuyuki]
+	* Fixed: Thanatos MvP Exp (15 mil as per Aegis) [Tsuyuki]
+
 10/08/06
 	* Fixed: Cooking Kits can now make L6-10 food items [Tsuyuki]
 	 - To-Do: Add graphical effects and failure messages (src)
