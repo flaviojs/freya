@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/09/06
+	* Fixed: Some new cards not working correctly [Tsuyuki]
 	* Fixed: Corrected Eremes Guile Card's effect [Tsuyuki]
 	* Removed: Some custom scripts that didn't even exist from the map_athena.conf file [Tsuyuki]
 	* Removed: Wedding.txt and IceCream.txt from the Custom folder (Duplicate official scripts) [Tsuyuki]

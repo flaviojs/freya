@@ -1531,7 +1531,7 @@
 4337,Porcellio_Card,Porcellio Card,6,,10,10,,,,,,,16,,,,{},{ bonus bBaseAtk,25; bonus bDef,-5; }
 4338,Obsidian_Card,Obsidian Card,6,,10,10,,,,,,,16,,,,{},{ bonus bVit,readparam(bDex)/18; }
 4339,Mineral_Card,Mineral Card,6,,10,10,,,,,,,16,,,,{},{ bonus bBaseAtk,-25; bonus bDef,3; }
-4340,Teddy_Bear_Card,Teddy Bear Card,6,,10,10,,,,,,,32,,,,{},{ bonus2 bSubEle,Ele_Ghost,30; }
+4340,Teddy_Bear_Card,Teddy Bear Card,6,,10,10,,,,,,,32,,,,{},{ bonus2 bSubEle,7,30; }
 4341,Metaling_Card,Metaling Card,6,,10,10,,,,,,,2,,,,{},{ bonus3 bAutoSpell,215,1,500; }
 4342,RSX-0806_Card,RSX 0806 Card,6,,10,10,,,,,,,16,,,,{},{bonus bVit,3; bonus bUnbreakableArmor,0;}
 4343,Holden_Card,Holden Card,6,,10,10,,,,,,,769,,,,{},{ bonus bLuk,2; if(isequipped(4186,4281,4036,4233)==0) end; bonus bStr,4; bonus bMaxHPrate,7; bonus bMaxSPrate,7; bonus2 bSkillAtk,42,20; bonus bSPGainValue,1; if(BaseJob!=Job_Alchem) end; bonus3 bAutoSpell,111,1,10; bonus2 bAddMonsterDropItem,7139,100; bonus2 bAddMonsterDropItem,905,100; }
@@ -1568,7 +1568,7 @@
 4372,White_Lady_Card,White Lady Card,6,,10,10,,,,,,,2,,,,{},{} // Effect Undecided
 4373,Green_Maiden_Card,Green Maiden Card,6,,10,10,,,,,,,4,,,,{},{ bonus bLuk,getequiprefinerycnt(5)-5; }
 4374,Vesper_Card,Vesper Card,6,,10,10,,,,,,,2,,,,{},{} // Effect Undecided
-4375,Orc_Baby_Card,Orc Baby Card,6,,10,10,,,,,,,4,,,,{},{ bonus2 bSubEle,Ele_Neutral,10; bonus bFlee,10; if(getequiprefinerycnt(5)<9) end; bonus2 bSubEle,Ele_Neutral,5; bonus bFlee,5; }
+4375,Orc_Baby_Card,Orc Baby Card,6,,10,10,,,,,,,4,,,,{},{ bonus2 bSubEle,0,10; bonus bFlee,10; if(getequiprefinerycnt(5)<9) end; bonus2 bSubEle,0,5; bonus bFlee,5; }
 4376,Lady_Tanee_Card,Lady Tanee Card,6,,10,10,,,,,,,64,,,,{},{ bonus bMaxHPrate,-50; bonus bMaxSPrate,50; bonus2 bAddMonsterDropItem,513,100; bonus2 bAddItemHealRate,3,100; }
 4377,Grove_Card,Grove Card,6,,10,10,,,,,,,136,,,,{},{ bonus3 bAddMonsterDropItem,12063,0,100; }
 4378,Gold_Acidus_Card,Gold Acidus Card,6,,10,10,,,,,,,64,,,,{},{ bonus bMaxHPrate,4; bonus bMaxSPrate,4; if(getequiprefinerycnt(6)>4) end; bonus bMaxHPrate,5; bonus bMaxSPrate,5; bonus bHPrecovRate,5; bonus bSPrecovRate,5; }
@@ -1591,7 +1591,7 @@
 4395,Maero_of_Card,The Sorrow of Thanatos Card,6,,10,10,,,,,,,2,,,,{},{ bonus bBaseAtk,5; bonus3 bAutoSpell,30,3,50; }
 4396,Odium_of_Card,The Hatred of Thanatos Card,6,,10,10,,,,,,,32,,,,{},{ bonus bAgi, getequiprefinerycnt(6)-5; }
 4397,Despero_of_Card,The Despair of Thanatos Card,6,,10,10,,,,,,,32,,,,{},{ bonus bAgi, getequiprefinerycnt(4)-6; }
-4398,Dolor_of_Thanatos_Card,The Anguish of Thanatos Card,6,,10,10,,,,,,,2,,,,,{},{ bonus2 bMagicAddEle,Ele_Dark,30; }
+4398,Dolor_of_Thanatos_Card,The Anguish of Thanatos Card,6,,10,10,,,,,,,2,,,,,{},{ bonus2 bMagicAddEle,7,30; }
 4399,Thanatos_Phantom_Card,Thantos Phantom Card,6,,10,10,,,,,,,2,,,,{},{ bonus bDefRatioAtkRace,11; bonus bDefRatioAtkRace,RC_NonBoss; bonus bSPDrainValue,-1; bonus bDef,-30; bonus bFlee,-30; }
 4400,Aliza_Card,Aliza Card,6,,10,10,,,,,,,16,,,,{},{ if(BaseClass != Job_Dancer) goto L_next; bonus4 bAutoSpellWhenHit,1011,1,100,1; L_next: bonus4 bAutoSpellWhenHit,1011,1,50,1; }
 4401,Alicel_Card,Alicel Card,6,,10,10,,,,,,,16,,,,{},{ bonus bFlee,10; bonus bDef,-5; }
@@ -1599,7 +1599,7 @@
 4403,Kiel_D-01_Card,Kiel D-01 Card,6,,10,10,,,,,,,2,,,,{},{} // Effect Undecided
 4404,Skogul_Card,Skogul Card,6,,10,10,,,,,,,16,,,,{},{ bonus2 bAddEffWhenHit,Eff_Bleeding,3000; bonus2 bAddEff,Eff_Bleeding,3000; }
 4405,Frus_Card,Frus Card,6,,10,10,,,,,,,2,,,,{},{} // Effect Undecided
-4406,Skeggiold_Card,Skeggiold Card,6,,10,10,,,,,,,2,,,,,{},{ bonus2 bMagicAddEle,Ele_Holy,100; } // Effect Undecided
+4406,Skeggiold_Card,Skeggiold Card,6,,10,10,,,,,,,2,,,,,{},{ bonus2 bMagicAddEle,6,100; } // Effect Undecided
 4407,Valkyrie_Randgris_Card,Valkyrie Randgris Card,6,,10,10,,,,,,,2,,,,,{},{ bonus3 bAutoSpell,289,1,100; } // Effect Undecided
 
 // Extra Headgears
