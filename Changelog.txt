@@ -11,7 +11,7 @@ Date	Added
 	* Removed: Some duplicate files... [Tsuyuki]
 	* Fixed: NPC-Type Name: Food Seller > Chef Assistant & Comodo Chef Assistant Items [Tsuyuki]
 	* Fixed: Minor dialogue fixes in various other NPCs [Tsuyuki]
-	* Fixed: Some dialogue and other unofficial things with Kafra Employees [Tsuyuki]
+	* Fixed: Fully updated all Kafras, and fixed a lot of their dialogue [Tsuyuki]
 	* Translated: Japanese Louyang Guide NPCs into English (official iRO dialogue) [Tsuyuki]
 	* Updated: First Aid Kit item [Tsuyuki]
 	* Added: Rescripted the Taekwon Job Change Quest with iRO NPC dialogue, etc [Tsuyuki]
