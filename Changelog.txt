@@ -4,6 +4,11 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/10/06
+	* Added: The Sign Quest (35% converted from eAthena), do not enable it yet [Tsuyuki]
+	* Added: Some missing G_ duplicate mobs (WIP) [Tsuyuki]
+	* Fixed: Did some bug fixing on the npc/quests/quests_einbroch.txt file [Tsuyuki]
+
 10/09/06
 	* Fixed: More new card fixes [Tsuyuki]
 	* Fixed: Some new cards not working correctly [Tsuyuki]

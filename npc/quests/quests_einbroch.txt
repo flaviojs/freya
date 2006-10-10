@@ -1,9 +1,9 @@
 //===== Freya Script =========================================
 //= Quest NPCs related to Einbroch and Einbech
 //===== By: ================================================== 
-//= Evera and The eAthena Dev Team
+//= Evera and eAthena
 //===== Current Version: ===================================== 
-//= 1.4
+//= 1.5
 //===== Compatible With: ===================================== 
 //= Freya
 //===== Description: ========================================= 
@@ -16,6 +16,7 @@
 //=	quests_ein.txt [Evera]
 //= 1.3 Implemented the polution quest. [MasterOfMuppets]
 //= 1.4 Converted from eAthena to Freya [Tsuyuki]
+//= 1.5 Did some bugfixing.. still may be a little messed up [Tsuyuki]
 //= Note: Shinokas Quest needs to be tested in-game and debugged extensively.
 //============================================================ 
 
@@ -30,7 +31,7 @@ ein_in01.gat,231,163,1	script	Sick Old Man	849,6,6,{
 	if(Shinokas_Quest == 6) goto L_Factory3;
 	if(Shinokas_Quest == 5) goto L_Factory;
 	if(Shinokas_Quest == 4) goto L_Find;
-	//if(!Shinokas_Quest)set Shinokas_Quest,1;
+	if(Shinokas_Quest > 0) set Shinokas_Quest,1;
 	mes "[Sick Old Man]";
 	mes "...!";
 	next;
@@ -73,49 +74,49 @@ L_Ask:
 	next;
 	menu "Remember the mine tunnel collapse?",L_Collapse,"Didn't you used to be a miner?",L_UsedToBe,"Have you lived in Einbroch all your life?",L_YouLiveAll;
 	 L_Collapse:
-		  if(@quest2 > 4 || @quest3 > 4)goto L_Cont;
-		  mes "[Sick Old Man]";
-		  mes "Noooo!";
-		  mes "I don't know";
-		  mes "what the hell";
-		  mes "you're talking";
-		  mes "about!";
-		  next;	
-	 		goto L_Cont;
+		if(@quest2 > 4 || @quest3 > 4)goto L_Cont;
+		mes "[Sick Old Man]";
+		mes "Noooo!";
+		mes "I don't know";
+		mes "what the hell";
+		mes "you're talking";
+		mes "about!";
+		next;	
+	 	goto L_Cont;
 
 	 L_UsedToBe:
-		  if(@quest2 > 1)goto s_Quest2;
-		  mes "[Sick Old Man]";
-		  mes "Noooo...!";
-	 	  mes "W-why would you";
-		  mes "even ask me that";
-		  mes "kind of question?!";
-		  goto L_Cont;
+		if(@quest2 > 1)goto s_Quest2;
+		mes "[Sick Old Man]";
+		mes "Noooo...!";
+	 	mes "W-why would you";
+		mes "even ask me that";
+		mes "kind of question?!";
+		goto L_Cont;
 		  
 	  s_Quest2:
-		  set @quest2,@quest2 + 1;
-		  if(@quest3)set @quest3,0;
-		  next;
-	 		goto L_Cont;
+		set @quest2,@quest2 + 1;
+		if(@quest3 > 0)set @quest3,0;
+		next;
+	 	goto L_Cont;
 
 	 L_YouLiveAll:
-		  if(@quest3 > 1)goto s_Quest3;
-		  mes "[Sick Old Man]";
-		  mes "Y-yes!";
-		  mes "Born and raised";
-		  mes "raised here in";
-		  mes "Einbe--Einbroch!";
-		  next;
-		  mes "^3131FFIt doesn't seem";
-		  mes "like this old man";
-		  mes "is telling the truth...";
-		  goto L_Cont;
+		if(@quest3 > 1)goto s_Quest3;
+		mes "[Sick Old Man]";
+		mes "Y-yes!";
+		mes "Born and raised";
+		mes "raised here in";
+		mes "Einbe--Einbroch!";
+		next;
+		mes "^3131FFIt doesn't seem";
+		mes "like this old man";
+		mes "is telling the truth...";
+		goto L_Cont;
 		  
 	s_Quest3:
-		  set @quest3,@quest3 + 1;
-		  if(@quest2)set @quest2,0;
-		  next;
-	 		goto L_Cont;
+		set @quest3,@quest3 + 1;
+		if(@quest2 > 0)set @quest2,0;
+		next;
+	 	goto L_Cont;
 	
 L_Cont:
 	mes "[Shinokas]";
@@ -363,6 +364,7 @@ L_Factory2:
 	mes "ore might be?";
 	next;
 	menu "Airport",L_AirportA,"Factory",L_FactoryA,"Train Station",L_TrainA,"Airship Repairshop",L_AirshipA,"Laboratory",L_LaborA;
+
 	 L_AirportA:
 	  mes "[Shinokas]";
 	  mes "No...";
@@ -372,7 +374,8 @@ L_Factory2:
 	  mes "something so important";
 	  mes "in that kind of place.";
 	  next;
-		 goto L_Lab1;
+	  goto L_Lab1;
+
 	 L_FactoryA:
 	  mes "[Shinokas]";
 	  mes "Didn't you just";
@@ -380,8 +383,9 @@ L_Factory2:
 	  mes "You couldn't find";
 	  mes "any clues to the";
 	  mes "ore over there...";
-			next;
-	 	goto L_Lab1;
+	  next;
+	  goto L_Lab1;
+
 	 L_TrainA:
 	  mes "[Shinokas]";
 	  mes "Hmm...";
@@ -390,7 +394,8 @@ L_Factory2:
 	  mes "It's not the best place to hide";
 	  mes "something as important as the ore.";
 	  next;
-		 goto L_Lab1;
+	  goto L_Lab1;
+
 	 L_AirshipA:
 	  mes "The Airship? Hm, it does";
 	  mes "fly through some mysterious";
@@ -398,31 +403,32 @@ L_Factory2:
 	  mes "the Airship Replairshop myself.";
 	  mes "I haven't found any trace of";
 	  mes "the ore over there.";
-			next;
-		 goto L_Lab1;
+	  next;
+	  goto L_Lab1;
+
 		L_LaborA:
-		 mes "[Shinokas]";
-		 mes "...!";
-		 mes "Yes. Yes...!";
-		 mes "That could be it!";
-		 mes "Why didn't I think";
-		 mes "about the Laboratory?";
-		 mes "It makes so much sense!";
-			next;
-			mes "[Shinokas]";
-			mes "I have a good feeling";
-			mes "about this. Please sneak";
-			mes "into that Laboratory and";
-			mes "see if you can find the ore!";
-			next;
-			mes "[Shinokas]";
-			mes "Remember...";
-			mes "Not just anybody";
-			mes "can enter that kind";
-			mes "of place. But I'm sure";
-			mes "you'll figure something out.";
-			set Shinokas_Quest,7;
-			close;
+		mes "[Shinokas]";
+		mes "...!";
+		mes "Yes. Yes...!";
+		mes "That could be it!";
+		mes "Why didn't I think";
+		mes "about the Laboratory?";
+		mes "It makes so much sense!";
+		next;
+		mes "[Shinokas]";
+		mes "I have a good feeling";
+		mes "about this. Please sneak";
+		mes "into that Laboratory and";
+		mes "see if you can find the ore!";
+		next;
+		mes "[Shinokas]";
+		mes "Remember...";
+		mes "Not just anybody";
+		mes "can enter that kind";
+		mes "of place. But I'm sure";
+		mes "you'll figure something out.";
+		set Shinokas_Quest,7;
+		close;
 
 L_Lab1:
 	mes "[Shinokas]";
@@ -604,7 +610,7 @@ L_Sec:
 		 mes "enter the password,";
 		 mes "the security system";
 		 mes "will initiate lockout.";
-			close;
+		 close;
 			
 		L_Cancel:
 		 mes "[Security System]";
@@ -692,12 +698,12 @@ L_Sec:
 	 goto L_Suc;
 	 
 	L_ShinCase9:
-		mes "^00CCFFBy the power of^000000";
-		mes "^00CCFFp-po-poi-po-poi-poin-poing";
-		mes "^00CCFFGOD-POING. I NEVER LOSE!";
-		input @str$;
-		if (@str$ != "By the power of p-po-poi-po-poi-poin-poing GOD-POING. I NEVER LOSE!") goto L_SCFail;
-		goto L_Suc;
+	 mes "^00CCFFBy the power of^000000";
+	 mes "^00CCFFp-po-poi-po-poi-poin-poing";
+	 mes "^00CCFFGOD-POING. I NEVER LOSE!";
+	 input @str$;
+	 if (@str$ != "By the power of p-po-poi-po-poi-poin-poing GOD-POING. I NEVER LOSE!") goto L_SCFail;
+	 goto L_Suc;
 		
 	L_ShinCase10:
 	 mes "^00CCFF...silence. quiet benevolence...";
@@ -740,7 +746,7 @@ L_SC60:
 L_SCFail:
 	next;
 	mes "[Security System]";
-	mes "You have failed"; //you haved? =\
+	mes "You have failed";
 	mes "the identification";
 	mes "check. Access denied.";
 	close;
@@ -761,8 +767,8 @@ OnHide:
 OnUnhide:
 	misceffect 215;
 	end;
-
 }
+
 einbroch.gat,51,47,6	script	Laboratory Soldier#02	852,{
 	mes "[Laboratory Soldier]";
 	mes "This area is off limits.";
@@ -778,8 +784,8 @@ OnHide:
 OnUnhide:
 	misceffect 215;
 	end;
-
 }
+
 ein_in01.gat,254,35,1	script	Scientist	749,{
 	mes "[Scientist]";
 	mes "*Grumble grumble*";
@@ -891,7 +897,7 @@ L_ContShin:
 	mes "Waaaaaahhhhhhhhh!";
 	mes "Apples! My apples!";
 	mes "Apples, I need more...!";
-	if (countitem(512) && ein_stuff && ein_scientist) goto L_Apples;
+	if (countitem(512) > 0 && ein_stuff > 0 && ein_scientist > 0) goto L_Apples;
 	close;
 	
 L_Apples:
@@ -900,7 +906,7 @@ L_Apples:
 	mes "Do you want";
 	mes "some of mine?";
 	next;
-	if (countitem(512) <100)goto L_DrunkGuy;
+	if (countitem(512) < 100)goto L_DrunkGuy;
 	goto L_DrunkMan;
 	
 	L_DrunkGuy:
@@ -940,9 +946,9 @@ L_ShinSwitch:
 	if (@ShinocaTemp1 == 2)goto L_Case2;
 
 	L_Case1:
-			if(@man != 12)set @man,@man+1;
-			if(@man == 12)set @main,@main-1;
-			goto L_CaseEnd;
+		if(@man != 12)set @man,@man+1;
+		if(@man == 12)set @main,@main-1;
+		goto L_CaseEnd;
 
 		L_Case2:
 			if(@man != 2)set @man,@man-1;
@@ -981,8 +987,10 @@ L_ShinSwitch:
 	mes "^111111*Hic-hic-hiccup!*^000000";
 	next;
 	menu "So what was that about Ymir's Heart?",L_AboutYmir,"Hehe, you're welcome.",L_Welcome;
+
 		L_AboutYmir:
 		 goto L_Cont2;
+
 		L_Welcome:
 		 mes "[Drunken Man]";
 		 mes "Hahahaha!";
@@ -991,6 +999,7 @@ L_ShinSwitch:
 		 mes "Bwahahahaahahah!";
 		 mes "^111111*Hiccup*^000000";
 		 close;
+
 	L_Cont2:
 	mes "[Drunken Man]";
 	mes "What...?";
@@ -1166,6 +1175,7 @@ einbech.gat,165,105,7	script	Buender Hikeman	847,{
 	mes "I said wait!";
 	mes "*Cough!*";
 	close;
+
 L_WHAT:
 	mes "[Buender Hikeman]";
 	mes "How dare you...";
@@ -1202,7 +1212,6 @@ L_WHAT:
 	mes "by that businessman";
 	mes "to dig up ores in the mine.";
 	next;
-
 	mes "[Buender Hikeman]";
 	mes "And then there";
 	mes "was you! All of us";
@@ -1251,12 +1260,15 @@ L_WHAT:
 	mes "Nothing.";
 	next;
 	goto L_CONTINUE;
+
 L_UNGOLIANT:
 	mes "[Buender Hikeman]";
 	mes "Don't you remember";
 	mes "what happened? What";
 	mes "you did to us at that time?!";
 	next;
+	goto L_CONTINUE;
+
 L_CONTINUE:
 	mes "[Buender Hikeman]";
 	mes "There was nothing";
@@ -1288,6 +1300,7 @@ L_CONTINUE:
 	mes "You planned it all along.";
 	set Shinokas_Quest,2;
 	close;
+
 L_ORE:
 	mes "[Buender Hikeman]";
 	mes "Don't you remember";
@@ -1295,13 +1308,15 @@ L_ORE:
 	mes "you did to us at that time?!";
 	next;
 	goto L_CONTINUE;
+
 L_BASTARD:
 	mes "[Buender Hikeman]";
 	mes "Bastard!";
 	mes "I'm sick of";
 	mes "your lies!";
 	next;
-	menu "I'm not who you think!",L_IM,"How did you survive the accident?",-;
+	menu "I'm not who you think!",L_IM,"How did you survive the accident?",L_HOW;
+
 L_HOW:
 	mes "[Buender Hikeman]";
 	mes "When I came to,";
@@ -1349,6 +1364,7 @@ L_HOW:
 	mes "The harm is";
 	mes "already done...";
 	goto L_CONTINUE2;
+
 L_THINK:
 	mes "[Buender Hikeman]";
 	mes "Quit lying!";
@@ -1357,6 +1373,8 @@ L_THINK:
 	mes "up again! I've never";
 	mes "forgotten that day!";
 	next;
+	goto L_CONTINUE2;
+
 L_CONTINUE2:
 	mes "[Buender Hikeman]";
 	mes "It's too late";
@@ -1387,11 +1405,13 @@ L_CONTINUE2:
 	mes "^0000FFintentionally or not.^000000";
 	set Shinokas_Quest,3;
 	close;
+
 L_BEST:
 	mes "^0000FFIt'd be best^000000";
 	mes "^0000FFto avoid aggravating^000000";
 	mes "^0000FFthe old man for now.^000000";
 	close;
+
 L_IM:
 	mes "[Buender Hikeman]";
 	mes "Ha...!";
@@ -1653,6 +1673,8 @@ s_Advent:
 	mes "than the other peons of";
 	mes "my graceful presence.";
 	next;
+	goto s_Coal1;
+
 s_Coal1:
 	mes "[Satra]";
 	mes "Oh, I have a marvelous";
@@ -1801,7 +1823,6 @@ s_Coal3:
 	mes "recently been quite";
 	mes "delightful, fair adventurer.";
 	next;
-
 	mes "[Satra]";
 	mes "Oh, my apologies!";
 	mes "I supposed you're just";
@@ -1999,12 +2020,12 @@ s_Intimi:
 	mes "boy that he's earned the";
 	mes "honor of speaking with me.";
 	close;
-
 }
 
 ein_in01.gat,31,138,4	script	Calla	90,{
 	if(EIN_LOVERQ > 4 && EIN_LOVERQ < 14)goto s_NoSwitch;
 	if(EIN_LOVERQ > 1)goto s_Switches;
+
 s_NoSwitch:
 	mes "[Calla]";
 	mes "Hello adventurer.";
@@ -2028,7 +2049,7 @@ s_NoSwitch:
 	mes "heart's true desire?";
 	mes "What I would give to";
 	mes "be able to do that...";
-	if(!EIN_LOVERQ)set EIN_LOVERQ,1;
+	if(EIN_LOVERQ < 1)set EIN_LOVERQ,1;
 	close;
 
 s_Switches:
@@ -2090,7 +2111,7 @@ s_Switches:
 		close;
 
 	L_EinCase4:
-		if(!countitem(712))goto s_Regards;
+		if(countitem(712) == 0)goto s_Regards;
 		mes "[Calla]";
 		mes "You've spoken";
 		mes "with Clitzer? How";
@@ -2349,7 +2370,7 @@ s_Learned:
 }
 
 ein_in01.gat,200,101,4	script	Clitzer	854,{
-	if(EIN_LOVERQ)goto s_Switches;
+	if(EIN_LOVERQ > 0)goto s_Switches;
 s_Back:
 	mes "[Clitzer]";
 	mes "Is there something";
@@ -2444,7 +2465,7 @@ s_Switches:
 		close;
 
 	EinLoverCase3:
-		if(!countitem(1901))goto s_Back;
+		if(countitem(1901) == 0)goto s_Back;
 		mes "[Clitzer]";
 		mes "What brings you here?";
 		mes "aren't you tired of hearing";
@@ -2610,7 +2631,7 @@ s_Switches:
 		close;
 
 	EinLoverCase13:
-		if((countitem(2320) || countitem(7170)) || (countitem(2320) && countitem(7170)))goto s_Clothes;
+		if(countitem(2320) > 0 || countitem(7170) > 0 || countitem(2320) > 0 && countitem(7170) > 0)goto s_Clothes;
 		mes "[Clitzer]";
 		mes "Noooooo!";
 		mes "I've got to find";
@@ -2645,9 +2666,13 @@ s_Clothes:
 	mes "um, formal? I've never worn";
 	mes "anything like that before!";
 	next;
-	if(countitem(7170)) set @clothes,7170; goto s_Tux;
-	if(countitem(2320)) set @clothes,2320; goto s_Formal;
+	if(countitem(7170) > 0)goto S_TuxPrimary;
+	if(countitem(2320) > 0) set @clothes,2320; goto s_Formal;
 	close;
+
+S_TuxPrimary:
+	set @clothes,7170;
+	goto s_Tux;
 
 s_Tux:
 	mes "[Clitzer]";
@@ -2884,7 +2909,7 @@ OnPolution:
 	end;
 
 OnMobChk:
-	if(mobcount("einbroch.gat","#PolutionNPC::OnMobChk"))end;
+	if(mobcount("einbroch.gat","#PolutionNPC::OnMobChk") > 0)end;
 
 OnTimer600000:
 	killmonster "einbroch.gat","#PolutionNPC::OnMobChk";
@@ -4009,8 +4034,8 @@ s_Material:
 	mes "[Uwe]";
 	mes "Huh...?";
 	mes "You brought";
-	if(countitem(7126))mes "only " + countitem(7126) + " of them?";
-	if(!countitem(7126))mes "none at all...?";
+	if(countitem(7126) > 0)mes "only " + countitem(7126) + " of them?";
+	if(!countitem(7126) == 0)mes "none at all...?";
 	mes "Next time, be sure";
 	mes "to bring 6 Large Jellopies,";
 	mes "okay? Don't forget, cutie~";
