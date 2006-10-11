@@ -356,7 +356,7 @@ L_spawntype1:
 	set $@spawn48,1215; // Stem Worm
 	set $@spawn49,1213; // High Orc
 	set $@spawn50,1271; // Alligator
-	goto Suite_onstart:
+	goto Suite_onstart;
 
 L_spawntype2:
 	set $@spawn1,1048; // Thief Bug Egg
@@ -418,7 +418,7 @@ L_spawntype2:
 	set $@spawn48,1664; // Photon Canon
 	set $@spawn49,1321; // Dragon Tail
 	set $@spawn50,1383; // Explosion
-	goto Suite_onstart:
+	goto Suite_onstart;
 
 L_spawntype3:
 	set $@spawn1,1002; // Poring
@@ -530,7 +530,7 @@ L_spawntype3:
 	if (rand(1,2) == 1) set $@spawn49,1321; // Dragon Tail
 	set $@spawn50,1271; // Alligator
 	if (rand(1,2) == 1) set $@spawn50,1383; // Explosion
-	goto Suite_onstart:
+	goto Suite_onstart;
 
 Suite_onstart:
 	set $@nb_part,getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20); // alive players less alive GMs
