@@ -87,16 +87,31 @@
 //=       Test plus régulier de l'efficacité des joueurs (pour augmenter le nombre de spawns si nécessaire).
 //=       Ajout spawn liste plus dure
 //=       Choix de la liste par le GM: 1, 2, mélange des 2, ou hasard
+//= 2.3   Meilleure gestion du nombre de spawns.
+//=       Interdiction de l'event aux joueurs bani du 'main'.
 //===== Additional Comments: =================================
 //============================================================
 
 // les Warps
 // ---------
-prontera.gat,178,148,4	warp	warpspawn	2,3,guild_vs5.gat,56,49
 guild_vs5.gat,50,76	warp	warprep	2,3,prontera.gat,165,151
 guild_vs5.gat,78,49	warp	warprep2	2,3,prontera.gat,165,151
 guild_vs5.gat,49,23	warp	warprep3	2,3,prontera.gat,165,151
 guild_vs5.gat,20,50	warp	warprep4	2,3,prontera.gat,165,151
+
+prontera.gat,178,148,4	script	warpspawn	45,2,2,{
+OnTouch:
+	if(getgmlevel(0)== 0) goto L_noss;
+	warp "guild_vs5",56,49;
+	end;
+
+L_noss:
+	mes "[GM Team]";
+	mes "Vous n'avez pas le droit de participer au Spawn Survivor.";
+	mes "L'accés est autorisé aux joueurs respectant les régles du serveur.";
+	mes "Au revoir.";
+	close;
+}
 
 
 // Fin de l'event
@@ -136,6 +151,7 @@ function	script	f_monstres	{
 	if ($@nb_part < 1) goto L_stop;
 	if (agitcheck(0) != 0) goto L_woe;
 	if ($@nb_part > $@survivants) goto L_triche; // quelqu'un a été téléporté ou rescussité
+	set $@nb_mobs, $@nb_mobs - (($@survivants - $@nb_part) * 2); // réduire de 2 le nombre de spawn par mort
 	set $@survivants, $@nb_part;
 
 	// ne pas spawner si l'event n'est pas en cours (juste une sécurité)
@@ -145,6 +161,7 @@ function	script	f_monstres	{
 	set $@NbMapMobs, GetMapMobs("guild_vs5.gat");
 	if ($@NbMapMobs < ($@nb_mobs / 10)) set $@nb_mobs,$@nb_mobs + 5;
 	if ($@nb_mobs > 300) set $@nb_mobs,300;
+	if ($@nb_mobs < 50) set $@nb_mobs,50;
 
 	// spawn des monstres
 	areamonsteragro "guild_vs5.gat",0,0,200,200,"Survivor",getarg(0),$@nb_mobs,"Surviv::OnMortMob";
@@ -206,8 +223,7 @@ function	script	check_monstres	{
 	if (GetMapMobs("guild_vs5.gat") >= ($@nb_mobs / 4)) return;
 
 	// augmenter de 5 le nombre de spawns, les joueurs tuent trop vite les mobs (sans dépasser 300)
-	set $@nb_mobs, $@nb_mobs + 5;
-	if ($@nb_mobs > 300) set $@nb_mobs,300;
+	set $@nb_mobs, $@nb_mobs + 5; // test mini/maxi au moment du spawn
 
 	// respawner des monstres si les joueurs les tuent trop vite
 	set $@spawn_rnd, rand(1,8);
@@ -536,10 +552,8 @@ Suite_onstart:
 	set $@nb_part,getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20); // alive players less alive GMs
 	set $@survivants,$@nb_part; // pour tester les cas de triche
 	set $@nb_part2,$@nb_part; // $@nb_part2: pour afficher en global (announce) le nombre de partipants (quand ca change), sinon seulement en (mapannounce)
+	set $@nb_mobs,($@nb_part + rand(1,4)) * 6; // test mini/maxi au moment du spawn
 
-	set $@nb_mobs,($@nb_part + rand(1,4)) * 6;
-	if ($@nb_mobs <  50) set $@nb_mobs, 50;
-	if ($@nb_mobs > 300) set $@nb_mobs,300;
 	announce "Il y a " + $@nb_part + " participants pour le titre de Master Survivor. Bonne chance!",0;
 	mapannounce "guild_vs5.gat","Garde Royal: Pour devenir le Master Survivor, il vous faut tuer un monstre en étant le dernier survivant!",0;
 	mapannounce "guild_vs5.gat","Garde Royal: Règle importante: Il est INTERDIT de téléporter un joueur dans l'arène ou de rescussiter un joueur.",0;
@@ -883,6 +897,7 @@ OnTimer8190000:
 OnMortMob: // à chaque mort de mob
 	set $@nb_part,getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20); // joueurs vivants moins GMs vivants
 	if ($@nb_part > $@survivants) goto L_tricheur; // quelqu'un a été téléporté ou rescussité
+	set $@nb_mobs, $@nb_mobs - (($@survivants - $@nb_part) * 2); // réduire de 2 le nombre de spawn par mort
 	set $@survivants, $@nb_part;
 
 	// un seul survivant
@@ -988,8 +1003,9 @@ L_JoueurMenu:
 	next;
 	mes "[Spawner]";
 	mes "Quelques règles (suite):";
+	mes "- L'évènement est interdit à ceux qui n'ont pas le 'main'.";
+	mes "- L'évènement ne peut se faire que s'il y a au moins 2 participants.";
 	mes "- Le gagnant est l'unique survivant qui tue un monstre (double condition).";
-	mes "- L'évènement ne pourra se faire que s'il y a au moins 2 participants.";
 	next;
 	mes "[Spawner]";
 	mes "Les différents types de Spawn Survivor:";
