@@ -82,6 +82,11 @@
 //=       Ajout d'un message indiquant que si on arrive en retard, on ne pourra pas entrer.
 //=       Réorganisation premier message dans l'arène.
 //=       Changement couleur 'activer': En vert plutôt que rouge.
+//= 2.2   Tous les jours à 2h00, 10h00, 23h30 et le samedi à 13h30
+//=       Passage du maximum de monstres spawnés à 300 au lieu de 200.
+//=       Test plus régulier de l'efficacité des joueurs (pour augmenter le nombre de spawns si nécessaire).
+//=       Ajout spawn liste plus dure
+//=       Choix de la liste par le GM: 1, 2, mélange des 2, ou hasard
 //===== Additional Comments: =================================
 //============================================================
 
@@ -116,8 +121,9 @@ function	script	close_spawn	{
 	set $@Spawn_flag,0; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
 	set $@nb_part,0;
 	set $@nb_part2,0;
-	set $@nb_mobs,0;
 	set $@survivants,0;
+	set $@nb_mobs,0;
+	set $@spawn_type,0;
 
 	return;
 }
@@ -135,8 +141,12 @@ function	script	f_monstres	{
 	// ne pas spawner si l'event n'est pas en cours (juste une sécurité)
 	if ($@Spawn_flag < 2) return; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
 
-	// spawn des monstres
+	// augmenter de 5 le nombre de spawns, si les joueurs tuent trop vite les mobs (sans dépasser 300)
 	set $@NbMapMobs, GetMapMobs("guild_vs5.gat");
+	if ($@NbMapMobs < ($@nb_mobs / 10)) set $@nb_mobs,$@nb_mobs + 5;
+	if ($@nb_mobs > 300) set $@nb_mobs,300;
+
+	// spawn des monstres
 	areamonsteragro "guild_vs5.gat",0,0,200,200,"Survivor",getarg(0),$@nb_mobs,"Surviv::OnMortMob";
 
 	if ($@nb_part2 == $@nb_part) goto Annonce_map; // $@nb_part2: pour afficher en global (announce) le nombre de partipants (quand ca change), sinon seulement en (mapannounce)
@@ -195,9 +205,9 @@ function	script	check_monstres	{
 
 	if (GetMapMobs("guild_vs5.gat") >= ($@nb_mobs / 4)) return;
 
-	// augmenter de 5 le nombre de spawns, les joueurs tuent trop vite les mobs (sans dépasser 200)
+	// augmenter de 5 le nombre de spawns, les joueurs tuent trop vite les mobs (sans dépasser 300)
 	set $@nb_mobs, $@nb_mobs + 5;
-	if ($@nb_mobs > 200) set $@nb_mobs,200;
+	if ($@nb_mobs > 300) set $@nb_mobs,300;
 
 	// respawner des monstres si les joueurs les tuent trop vite
 	set $@spawn_rnd, rand(1,8);
@@ -279,63 +289,257 @@ OnStart:
 	disablenpc "warprep3";
 	disablenpc "warprep4";
 	initnpctimer;
+
+	// Détermination du type de spawn
+	if ($@spawn_type == 0) set $@spawn_type, rand(1,3);
+	if ($@spawn_type == 2) goto L_spawntype2;
+	if ($@spawn_type == 3) goto L_spawntype3;
+	goto L_spawntype1; // par défaut, le type 'sympa'
+
+L_spawntype1:
 	set $@spawn1,1002; // Poring
 	set $@spawn2,1063; // Lunatic
 	set $@spawn3,1011; // ChonChon
 	set $@spawn4,1008; // Pupa
 	set $@spawn5,1031; // Poporing
+
 	set $@spawn6,1015; // Zombie
 	set $@spawn7,1056; // Smokie
 	set $@spawn8,1068; // Hydra
 	set $@spawn9,1077; // Poison Spore
 	set $@spawn10,1105; // Deniro
+
 	set $@spawn11,1178; // Zerom
 	set $@spawn12,1030; // Anacondaq
 	set $@spawn13,1145; // Martin
 	set $@spawn14,1100; // Argos
 	set $@spawn15,1392; // Rotar Zairo
+
 	set $@spawn16,1060; // Bigfoot
 	set $@spawn17,1067; // Cornutus
 	set $@spawn18,1064; // Megalodon
 	set $@spawn19,1106; // Desert Wolf
 	set $@spawn20,1258; // Goblin Archer
+
 	set $@spawn21,1119; // Frilldora
 	set $@spawn22,1141; // Marina
 	set $@spawn23,1127; // Hode
 	set $@spawn24,1146; // Matyr
 	set $@spawn25,1282; // Kobold Archer
+
 	set $@spawn26,1110; // Dokebi
 	set $@spawn27,1248; // Cruiser
 	set $@spawn28,1026; // Munak
 	set $@spawn29,1471; // Nine Tail
 	set $@spawn30,1261; // Wild Rose
+
 	set $@spawn31,1016; // Skeleton Archer
 	set $@spawn32,1400; // Karakasa
 	set $@spawn33,1138; // Magnolia
 	set $@spawn34,1165; // Sandman
 	set $@spawn35,1249; // Myst Case
+
 	set $@spawn36,1403; // Firelock Soldier
 	set $@spawn37,1040; // Golem
 	set $@spawn38,1680; // Hill Wind
 	set $@spawn39,1099; // Argiope
 	set $@spawn40,1209; // Cramp
+
 	set $@spawn41,1029; // Isis
 	set $@spawn42,1144; // Marse
 	set $@spawn43,1274; // Megalith
 	set $@spawn44,1102; // Bathory
 	set $@spawn45,1715; // Novus
+
 	set $@spawn46,1170; // Sohee
 	set $@spawn47,1156; // Sky Petite
 	set $@spawn48,1215; // Stem Worm
 	set $@spawn49,1213; // High Orc
 	set $@spawn50,1271; // Alligator
+	goto Suite_onstart:
+
+L_spawntype2:
+	set $@spawn1,1048; // Thief Bug Egg
+	set $@spawn2,1049; // Picky
+	set $@spawn3,1010; // Willow
+	set $@spawn4,1012; // Roda Frog
+	set $@spawn5,1167; // Savage Babe
+
+	set $@spawn6,1018; // Creamy
+	set $@spawn7,1033; // Elder Willow
+	set $@spawn8,1176; // Vitata
+	set $@spawn9,1265; // Cookie
+	set $@spawn10,1124; // Goblin 4 (Poison)
+
+	set $@spawn11,1001; // Scorpion
+	set $@spawn12,1111; // Drainliar
+	set $@spawn13,1103; // Caramel
+	set $@spawn14,1153; // Orc Zombie
+	set $@spawn15,1494; // Beetle King
+
+	set $@spawn16,1129; // Horong
+	set $@spawn17,1162; // Rafflesia
+	set $@spawn18,1620; // Noxious
+	set $@spawn19,1246; // Cookie Xmas
+	set $@spawn20,1409; // Dumpling Child
+
+	set $@spawn21,1121; // Giearth
+	set $@spawn22,1280; // Goblin Steamrider
+	set $@spawn23,1415; // Baby Leopard
+	set $@spawn24,1169; // Skeleton Worker
+	set $@spawn25,1143; // Marionette
+
+	set $@spawn26,1165; // Sandman
+	set $@spawn27,1199; // Punk
+	set $@spawn28,1142; // Marine Sphere
+	set $@spawn29,1151; // Myst
+	set $@spawn30,1253; // Gargoyle
+
+	set $@spawn31,1498; // Wootan Shooter
+	set $@spawn32,1069; // Swordfish
+	set $@spawn33,1508; // Quve
+	set $@spawn34,1621; // Venomous
+	set $@spawn35,1263; // Wind Ghost
+
+	set $@spawn36,1276; // Raydric Archer
+	set $@spawn37,1032; // Verit
+	set $@spawn38,1211; // Brilight
+	set $@spawn39,1194; // Arclouze
+	set $@spawn40,1210; // Filamentous
+
+	set $@spawn41,1404; // Miyabi Doll
+	set $@spawn42,1687; // Grove
+	set $@spawn43,1503; // Gibbet
+	set $@spawn44,1109; // Deviruchi
+	set $@spawn45,1189; // Orc Archer
+
+	set $@spawn46,1260; // Dark Frame
+	set $@spawn47,1506; // Disguise
+	set $@spawn48,1664; // Photon Canon
+	set $@spawn49,1321; // Dragon Tail
+	set $@spawn50,1383; // Explosion
+	goto Suite_onstart:
+
+L_spawntype3:
+	set $@spawn1,1002; // Poring
+	if (rand(1,2) == 1) set $@spawn1,1048; // Thief Bug Egg
+	set $@spawn2,1063; // Lunatic
+	if (rand(1,2) == 1) set $@spawn2,1049; // Picky
+	set $@spawn3,1011; // ChonChon
+	if (rand(1,2) == 1) set $@spawn3,1010; // Willow
+	set $@spawn4,1008; // Pupa
+	if (rand(1,2) == 1) set $@spawn4,1012; // Roda Frog
+	set $@spawn5,1031; // Poporing
+	if (rand(1,2) == 1) set $@spawn5,1167; // Savage Babe
+
+	set $@spawn6,1015; // Zombie
+	if (rand(1,2) == 1) set $@spawn6,1018; // Creamy
+	set $@spawn7,1056; // Smokie
+	if (rand(1,2) == 1) set $@spawn7,1033; // Elder Willow
+	set $@spawn8,1068; // Hydra
+	if (rand(1,2) == 1) set $@spawn8,1176; // Vitata
+	set $@spawn9,1077; // Poison Spore
+	if (rand(1,2) == 1) set $@spawn9,1265; // Cookie
+	set $@spawn10,1105; // Deniro
+	if (rand(1,2) == 1) set $@spawn10,1124; // Goblin 4 (Poison)
+
+	set $@spawn11,1178; // Zerom
+	if (rand(1,2) == 1) set $@spawn11,1001; // Scorpion
+	set $@spawn12,1030; // Anacondaq
+	if (rand(1,2) == 1) set $@spawn12,1111; // Drainliar
+	set $@spawn13,1145; // Martin
+	if (rand(1,2) == 1) set $@spawn13,1103; // Caramel
+	set $@spawn14,1100; // Argos
+	if (rand(1,2) == 1) set $@spawn14,1153; // Orc Zombie
+	set $@spawn15,1392; // Rotar Zairo
+	if (rand(1,2) == 1) set $@spawn15,1494; // Beetle King
+
+	set $@spawn16,1060; // Bigfoot
+	if (rand(1,2) == 1) set $@spawn16,1129; // Horong
+	set $@spawn17,1067; // Cornutus
+	if (rand(1,2) == 1) set $@spawn17,1162; // Rafflesia
+	set $@spawn18,1064; // Megalodon
+	if (rand(1,2) == 1) set $@spawn18,1620; // Noxious
+	set $@spawn19,1106; // Desert Wolf
+	if (rand(1,2) == 1) set $@spawn19,1246; // Cookie Xmas
+	set $@spawn20,1258; // Goblin Archer
+	if (rand(1,2) == 1) set $@spawn20,1409; // Dumpling Child
+
+	set $@spawn21,1119; // Frilldora
+	if (rand(1,2) == 1) set $@spawn21,1121; // Giearth
+	set $@spawn22,1141; // Marina
+	if (rand(1,2) == 1) set $@spawn22,1280; // Goblin Steamrider
+	set $@spawn23,1127; // Hode
+	if (rand(1,2) == 1) set $@spawn23,1415; // Baby Leopard
+	set $@spawn24,1146; // Matyr
+	if (rand(1,2) == 1) set $@spawn24,1169; // Skeleton Worker
+	set $@spawn25,1282; // Kobold Archer
+	if (rand(1,2) == 1) set $@spawn25,1143; // Marionette
+
+	set $@spawn26,1110; // Dokebi
+	if (rand(1,2) == 1) set $@spawn26,1165; // Sandman
+	set $@spawn27,1248; // Cruiser
+	if (rand(1,2) == 1) set $@spawn27,1199; // Punk
+	set $@spawn28,1026; // Munak
+	if (rand(1,2) == 1) set $@spawn28,1142; // Marine Sphere
+	set $@spawn29,1471; // Nine Tail
+	if (rand(1,2) == 1) set $@spawn29,1151; // Myst
+	set $@spawn30,1261; // Wild Rose
+	if (rand(1,2) == 1) set $@spawn30,1253; // Gargoyle
+
+	set $@spawn31,1016; // Skeleton Archer
+	if (rand(1,2) == 1) set $@spawn31,1498; // Wootan Shooter
+	set $@spawn32,1400; // Karakasa
+	if (rand(1,2) == 1) set $@spawn32,1069; // Swordfish
+	set $@spawn33,1138; // Magnolia
+	if (rand(1,2) == 1) set $@spawn33,1508; // Quve
+	set $@spawn34,1165; // Sandman
+	if (rand(1,2) == 1) set $@spawn34,1621; // Venomous
+	set $@spawn35,1249; // Myst Case
+	if (rand(1,2) == 1) set $@spawn35,1263; // Wind Ghost
+
+	set $@spawn36,1403; // Firelock Soldier
+	if (rand(1,2) == 1) set $@spawn36,1276; // Raydric Archer
+	set $@spawn37,1040; // Golem
+	if (rand(1,2) == 1) set $@spawn37,1032; // Verit
+	set $@spawn38,1680; // Hill Wind
+	if (rand(1,2) == 1) set $@spawn38,1211; // Brilight
+	set $@spawn39,1099; // Argiope
+	if (rand(1,2) == 1) set $@spawn39,1194; // Arclouze
+	set $@spawn40,1209; // Cramp
+	if (rand(1,2) == 1) set $@spawn40,1210; // Filamentous
+
+	set $@spawn41,1029; // Isis
+	if (rand(1,2) == 1) set $@spawn41,1404; // Miyabi Doll
+	set $@spawn42,1144; // Marse
+	if (rand(1,2) == 1) set $@spawn42,1687; // Grove
+	set $@spawn43,1274; // Megalith
+	if (rand(1,2) == 1) set $@spawn43,1503; // Gibbet
+	set $@spawn44,1102; // Bathory
+	if (rand(1,2) == 1) set $@spawn44,1109; // Deviruchi
+	set $@spawn45,1715; // Novus
+	if (rand(1,2) == 1) set $@spawn45,1189; // Orc Archer
+
+	set $@spawn46,1170; // Sohee
+	if (rand(1,2) == 1) set $@spawn46,1260; // Dark Frame
+	set $@spawn47,1156; // Sky Petite
+	if (rand(1,2) == 1) set $@spawn47,1506; // Disguise
+	set $@spawn48,1215; // Stem Worm
+	if (rand(1,2) == 1) set $@spawn48,1664; // Photon Canon
+	set $@spawn49,1213; // High Orc
+	if (rand(1,2) == 1) set $@spawn49,1321; // Dragon Tail
+	set $@spawn50,1271; // Alligator
+	if (rand(1,2) == 1) set $@spawn50,1383; // Explosion
+	goto Suite_onstart:
+
+Suite_onstart:
 	set $@nb_part,getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20); // alive players less alive GMs
 	set $@survivants,$@nb_part; // pour tester les cas de triche
 	set $@nb_part2,$@nb_part; // $@nb_part2: pour afficher en global (announce) le nombre de partipants (quand ca change), sinon seulement en (mapannounce)
 
 	set $@nb_mobs,($@nb_part + rand(1,4)) * 6;
 	if ($@nb_mobs <  50) set $@nb_mobs, 50;
-	if ($@nb_mobs > 200) set $@nb_mobs,200;
+	if ($@nb_mobs > 300) set $@nb_mobs,300;
 	announce "Il y a " + $@nb_part + " participants pour le titre de Master Survivor. Bonne chance!",0;
 	mapannounce "guild_vs5.gat","Garde Royal: Pour devenir le Master Survivor, il vous faut tuer un monstre en étant le dernier survivant!",0;
 	mapannounce "guild_vs5.gat","Garde Royal: Règle importante: Il est INTERDIT de téléporter un joueur dans l'arène ou de rescussiter un joueur.",0;
@@ -771,7 +975,7 @@ prontera.gat,174,154,3	script	Spawner	743,{
 // texte pour les joueurs
 L_JoueurMenu:
 	mes "[Spawner]";
-	mes "Le Spawn Survivor ne peut être activé que par un GM ou de manière automatisée tous les jours à 01h00 et le Samedi à 13h30.";
+	mes "Le Spawn Survivor ne peut être activé que par un GM ou de manière automatisée tous les jours à 02h00, 10h00 et 23h30 et le Samedi à 13h30.";
 	next;
 	mes "[Spawner]";
 	mes "Une fois le Spawn Survivor activé, vous avez 10 minutes pour venir ici et joindre la partie.";
@@ -793,8 +997,9 @@ OnInit:
 	set $@Spawn_flag,0; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
 	set $@nb_part,0;
 	set $@nb_part2,0;
-	set $@nb_mobs,0;
 	set $@survivants,0;
+	set $@nb_mobs,0;
+	set $@spawn_type,0;
 	stopnpctimer;
 	end;
 
@@ -805,8 +1010,22 @@ OnSat1330:
 	Announce "Garde Royal: Le Spawn Survivor est ouvert.",8;
 	goto L_creawarp;
 
-// Tous les jours à 01h00
-OnClock0100:
+// Tous les jours à 02h00
+OnClock0200:
+	if (agitcheck(0) != 0) end;
+	if ($@Spawn_flag > 0) end; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
+	Announce "Garde Royal: Le Spawn Survivor est ouvert.",8;
+	goto L_creawarp;
+
+// Tous les jours à 10h00
+OnClock1000:
+	if (agitcheck(0) != 0) end;
+	if ($@Spawn_flag > 0) end; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
+	Announce "Garde Royal: Le Spawn Survivor est ouvert.",8;
+	goto L_creawarp;
+
+// Tous les jours à 23h30
+OnClock2330:
 	if (agitcheck(0) != 0) end;
 	if ($@Spawn_flag > 0) end; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
 	Announce "Garde Royal: Le Spawn Survivor est ouvert.",8;
@@ -818,7 +1037,10 @@ L_GmMenu:
 	if ($@Spawn_flag > 0) goto L_GmArreter; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
 	mes "[Spawner]";
 	mes "Voulez-vous ^66FF66activer^000000 le Spawn Survivor?";
-	menu "Oui",L_GMlauch,"Non",L_GmFin;
+	mes "- Type 1: plutot 'sympa'";
+	mes "- Type 2: assez dur'";
+	mes "- Type 3: mélange des types 1 et 2";
+	menu "Oui (type 1)",L_GMlauch1,"Oui (type 2)",L_GMlauch2,"Oui (type 3)",L_GMlauch3,"Oui (hasard)",L_GMlauch,"Non",L_GmFin;
 	close;
 
 L_Gmwoe:
@@ -861,9 +1083,23 @@ L_GmFin:
 	mes "Dans ce cas, au revoir.";
 	close;
 
+L_GMlauch1:
+	set $@spawn_type, 1;
+	goto L_GMlauch;
+
+L_GMlauch2:
+	set $@spawn_type, 2;
+	goto L_GMlauch;
+
+L_GMlauch3:
+	set $@spawn_type, 3;
+	goto L_GMlauch;
+
 L_GMlauch:
+	// si n'est pas défini avant ($@spawn_type == 0), c'est au hasard.
 	if ($@Spawn_flag > 0) goto L_GMdejaLauch; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
-	Announce "Garde Royal: " +strcharinfo(0)+ " a activé le Spawn Survivor.",8;
+	if ($@spawn_type == 0) Announce "Garde Royal: " +strcharinfo(0)+ " a activé le Spawn Survivor.",8;
+	if ($@spawn_type != 0) Announce "Garde Royal: " +strcharinfo(0)+ " a activé le Spawn Survivor de type" + $@spawn_type + ".",8;
 	close2; // le script continue
 	goto L_creawarp;
 
