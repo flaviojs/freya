@@ -4,6 +4,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/12/06
+	* Fixed: Item 'Pumpkin' not doing anything [Tsuyuki]
+	 - Note: Please omit this on merge, but Yor, can you come on IRC sometime?
+
 10/10/06
 	* Added: The Sign Quest (35% converted from eAthena), do not enable it yet [Tsuyuki]
 	* Added: Some missing G_ duplicate mobs (WIP) [Tsuyuki]

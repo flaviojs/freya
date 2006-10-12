@@ -41,7 +41,7 @@
 532,Banana_Juice,Banana Juice,0,20,10,40,,,,,27254783,2,,,,,{ itemheal rand(26,33),0; },{}
 533,Grape_Juice,Grape Juice,0,250,150,40,,,,,27254783,2,,,,,{ itemheal 0,rand(15,24); },{}
 534,Carrot_Juice,Carrot Juice,0,20,10,40,,,,,27254783,2,,,,,{ itemheal rand(27,32),0; },{}
-535,Pumkin,Pumpkin,0,15,7,20,,,,,27254783,2,,,,,{ itemheal 19,0; },{}
+535,Pumkin,Pumpkin,0,15,7,20,,,,,27254783,2,,,,,{ itemheal rand(19,19),0; },{}
 536,Ice_Cream,Ice Cream,0,150,75,80,,,,,27254783,2,,,,,{ itemheal rand(105,144),0; if(rand(100)<24) sc_start SC_Freeze,10000,0; },{}
 537,Pet_Food,Pet Food,0,1000,500,10,,,,,27254783,2,,,,,{ itemheal rand(50,89),0; },{}
 538,Well-baked_Cookie,Well-baked Cookie,0,1000,500,30,,,,,27254783,2,,,,,{ itemheal rand(160,199),0; },{}
