@@ -5,7 +5,7 @@
 //===== By: ==================================================
 //= Garion, GAlion, DaVinci, Jondalar, Kheldar, Yor
 //===== Current Version: =====================================
-//= 2.4
+//= 2.6
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -97,6 +97,9 @@
 //=       Indication du numéro de la vague lors de l'affichage du type de monstre aux participants.
 //= 2.5   Moins de monstres avec type 2 par rapport à type 1 (type 3 = type 2).
 //=       Arrêt de tous les timers à la fin de l'event
+//= 2.6   Meilleur gestion arrêt timers.
+//=       Réduction de l'augmentation du nombre de mobs en type 1 et 3.
+//=       Ajout d'un menu d'informations.
 //===== Additional Comments: =================================
 //============================================================
 
@@ -150,6 +153,9 @@ function	script	close_spawn	{
 	set $@nb_mobs,0;
 	set $@spawn_type,0;
 
+	stopnpctimer "Surviv";
+	stopnpctimer "Spawner";
+
 	return;
 }
 
@@ -169,8 +175,7 @@ function	script	f_monstres	{
 
 	// augmenter de 5 le nombre de spawns, si les joueurs tuent trop vite les mobs (sans dépasser 300)
 	set $@NbMapMobs, GetMapMobs("guild_vs5.gat");
-	if ($@NbMapMobs < ($@nb_mobs / 10) && $@spawn_type != 2) set $@nb_mobs,$@nb_mobs + 5; // type 1 et 3
-	if ($@NbMapMobs < ($@nb_mobs / 10) && $@spawn_type == 2) set $@nb_mobs,$@nb_mobs + 3; // type 2
+	set $@nb_mobs,$@nb_mobs + 3;
 	if ($@nb_mobs > 300) set $@nb_mobs,300;
 	if ($@nb_mobs < 50) set $@nb_mobs,50;
 
@@ -199,28 +204,26 @@ Suite_annonce1:
 
 Suite_spawn:
 	set $@NbMapMobs, 0;
-	mapannounce "guild_vs5.gat","Vague de spawns" + $@numero_spawn + " -> Invasion de '"+ strmobinfo(2,getarg(0))+"'.",0;
+	mapannounce "guild_vs5.gat","Vague de spawns " + $@numero_spawn + " -> Invasion de '"+ strmobinfo(2,getarg(0))+"'.",0;
 	return;
 
 L_stop:
 	announce "L'arène du Spawn Survivor est vide (ou tous les partipants sont morts).",0;
 	announce "L'évent s'est arrêté de lui-même à la vague de spawns " + $@numero_spawn + ".",0;
-	goto L_fin;
+	callfunc "close_spawn";
+	return;
 
 L_woe:
 	announce "Le Spawn Survivor est arreté pour cause de WoE.",0;
 	mapannounce "guild_vs5.gat","Garde Royal: Les joueurs présents doivent emprunter un warp (ou deco/reco) pour quitter l'arène. Merci.",0;
-	goto L_fin;
+	callfunc "close_spawn";
+	return;
 
 L_triche:
 	announce "Le Spawn Survivor est arreté pour cause de TRICHE!",0;
 	announce "Un joueur a été téléporté l'arène ou rescussité!",0;
 	mapannounce "guild_vs5.gat","Garde Royal: Les joueurs présents doivent emprunter un warp (ou deco/reco) pour quitter l'arène. Merci.",0;
-	goto L_fin;
-
-L_fin:
-	stopnpctimer;
-	donpcevent "Spawner::L_arretLancement"; // stop le timer de l'autre npc aussi
+	callfunc "close_spawn";
 	return;
 }
 
@@ -235,8 +238,7 @@ function	script	check_monstres	{
 	if (GetMapMobs("guild_vs5.gat") >= ($@nb_mobs / 4)) return;
 
 	// augmenter le nombre de spawns, les joueurs tuent trop vite les mobs (test mini/maxi au moment du spawn)
-	if ($@spawn_type != 2) set $@nb_mobs,$@nb_mobs + 5; // type 1 et 3
-	if ($@spawn_type == 2) set $@nb_mobs,$@nb_mobs + 3; // type 2
+	set $@nb_mobs,$@nb_mobs + 3;
 
 	// respawner des monstres si les joueurs les tuent trop vite
 re_random:
@@ -567,8 +569,9 @@ Suite_onstart:
 	set $@nb_part,getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20); // alive players less alive GMs
 	set $@survivants,$@nb_part; // pour tester les cas de triche
 	set $@nb_part2,$@nb_part; // $@nb_part2: pour afficher en global (announce) le nombre de partipants (quand ca change), sinon seulement en (mapannounce)
-	if ($@spawn_type != 2) set $@nb_mobs,($@nb_part + rand(1,4)) * 6; // type 1 et 3
+	set $@nb_mobs,($@nb_part + rand(1,4)) * 6; // type 1 (par défaut)
 	if ($@spawn_type == 2) set $@nb_mobs,($@nb_part + rand(1,4)) * 4; // type 2
+	if ($@spawn_type == 3) set $@nb_mobs,($@nb_part + rand(1,4)) * 5; // type 3
 
 	announce "Il y a " + $@nb_part + " participants pour le titre de Master Survivor. Bonne chance!",0;
 	mapannounce "guild_vs5.gat","Garde Royal: Pour devenir le Master Survivor, il vous faut tuer un monstre en étant le dernier survivant!",0;
@@ -1017,7 +1020,6 @@ L_tricheur:
 
 L_stoptimer:
 	callfunc "close_spawn";
-	stopnpctimer;
 	end;
 }
 
@@ -1050,12 +1052,19 @@ Faire_spawn:
 // NPC extérieur (à Prontéra) permettant d'activer l'événement
 // -----------------------------------------------------------
 prontera.gat,174,154,3	script	Spawner	743,{
+	mes "[Spawner]";
+	mes "Que désirez-vous?";
+	next;
 	if (getgmlevel(0) < 20) goto L_JoueurMenu;
-	menu "Menu spécial GM",L_GmMenu,"Menu Joueur",L_JoueurMenu;
+	menu "Menu spécial GM",L_GmMenu,"Les règles",L_Regles,"Infos event en cours",L_informations;
 	close;
 
 // texte pour les joueurs
 L_JoueurMenu:
+	menu "Les règles",L_Regles,"Infos event en cours",L_informations;
+	close;
+
+L_Regles:
 	mes "[Spawner]";
 	mes "Le Spawn Survivor ne peut être activé que par un GM ou de manière automatisée tous les jours à 02h00, 10h00 et 23h30 et le Samedi à 13h30.";
 	next;
@@ -1077,8 +1086,44 @@ L_JoueurMenu:
 	mes "[Spawner]";
 	mes "Les différents types de Spawn Survivor:";
 	mes "- Type 1: plutôt 'sympa'.";
-	mes "- Type 2: assez dur'.";
-	mes "- Type 3: mélange des types 1 et 2.";
+	mes "- Type 2: 'assez dur'.";
+	mes "- Type 3: mélange types 1 et 2.";
+	mes "Au revoir.";
+	close;
+
+L_informations:
+	if ($@Spawn_flag == 1) goto L_info_avant_event;
+	if ($@Spawn_flag == 2) goto L_info_event_en_cours;
+	if ($@Spawn_flag == 3) goto L_info_phase_finale;
+	goto L_info_pas_event;
+
+L_info_pas_event:
+	mes "[Spawner]";
+	mes "Le Spawn Survivor n'est pas activé.";
+	mes "Il ne peut être activé que par un GM ou de manière automatisée tous les jours à 02h00, 10h00 et 23h30 et le Samedi à 13h30.";
+	mes "Au revoir.";
+	close;
+
+L_info_avant_event:
+	mes "[Spawner]";
+	mes "Le Spawn Survivor est actuellement en cours de préparation.";
+	mes "Il y a déjà " + (getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20)) + " participant(s) dans l'arène.";
+	mes "Au revoir.";
+	close;
+
+L_info_event_en_cours:
+	mes "[Spawner]";
+	mes "Le Spawn Survivor est actuellement en cours.";
+	mes "La vague de spawns " + $@numero_spawn + " a été effectuée.";
+	next;
+	mes "Il y a " + $@survivants + " participants en lice qui ont " + GetMapMobs("guild_vs5.gat") + " à tuer.";
+	mes "Au revoir.";
+	close;
+
+L_info_phase_finale:
+	mes "[Spawner]";
+	mes "Le Spawn Survivor est actuellement en sa phase finale.";
+	mes "Il y a " + $@survivants + " participants en lice qui ont " + GetMapMobs("guild_vs5.gat") + " à tuer.";
 	mes "Au revoir.";
 	close;
 
@@ -1136,8 +1181,8 @@ L_GmMenu:
 	mes "[Spawner]";
 	mes "Voulez-vous ^66FF66activer^000000 le Spawn Survivor?";
 	mes "- Type 1: plutôt 'sympa'.";
-	mes "- Type 2: assez dur'.";
-	mes "- Type 3: mélange des types 1 et 2.";
+	mes "- Type 2: 'assez dur'.";
+	mes "- Type 3: mélange types 1 et 2.";
 	menu "Oui (type 1)",L_GMlauch1,"Oui (type 2)",L_GMlauch2,"Oui (type 3)",L_GMlauch3,"Oui (hasard)",L_GMlauch,"Non",L_GmFin;
 	close;
 
@@ -1160,14 +1205,7 @@ L_GMclose:
 	close2; // le script continue
 	Announce "Garde Royal: " + strcharinfo(0) + " a stoppé le Spawn Survivor.",8;
 	mapannounce "guild_vs5.gat","Garde Royal: Les joueurs présents doivent emprunter un warp (ou deco/reco) pour quitter l'arène. Merci.",0;
-	if ($@Spawn_flag > 1) goto L_GMclose_encours; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
 	callfunc "close_spawn";
-	stopnpctimer;
-	end;
-
-L_GMclose_encours:
-	stopnpctimer;
-	donpcevent "Surviv::L_stoptimer"; // arrête le timer de l'autre npc en plus
 	end;
 
 L_GMdejaclose:
@@ -1282,21 +1320,19 @@ OnTimer600000: // 10 minutes après on coupe l'accès.
 
 	if ((getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20)) == 1) goto L_un_seul_joueur;
 	Announce "Garde Royal: Aucun joueur ne s'est présenté pour le Spawn Survivor. L'événement a été arrêté.",8;
-	goto L_arretLancement;
+	callfunc "close_spawn";
+	end;
 
 L_un_seul_joueur:
 	Announce "Garde Royal: Un seul joueur s'est présenté pour le Spawn Survivor. L'événement a été arrêté.",8;
 	mapannounce "guild_vs5.gat","Garde Royal: Le joueur présent doit emprunter un warp (ou deco/reco) pour quitter l'arène. Merci.",0;
-	goto L_arretLancement;
+	callfunc "close_spawn";
+	end;
 
 L_LancementWoE:
 	announce "Le Spawn Survivor est arreté pour cause de WoE.",0;
 	mapannounce "guild_vs5.gat","Garde Royal: Les joueurs présents doivent emprunter un warp (ou deco/reco) pour quitter l'arène. Merci.",0;
-	goto L_arretLancement;
-
-L_arretLancement:
 	callfunc "close_spawn";
-	stopnpctimer;
 	end;
 
 L_LancementEvent:
