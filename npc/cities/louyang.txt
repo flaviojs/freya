@@ -8,7 +8,7 @@
 //= MasterOfMuppets (2.0)
 //= eAthena Dev Team
 //===== Current Version: ===================================== 
-//= 2.7
+//= 2.8
 //===== Compatible With: ===================================== 
 //= Freya
 //===== Description: ========================================= 
@@ -35,6 +35,7 @@
 //= 2.6a Updated a few names with new item_db.txt names [Evera]
 //= 2.7 Split quests to quests/quests_louyang.txt [Evera]
 //=	Replaced some instances of using global vars when not needed [Evera]
+//= 2.8 Minor text fix to the Louyang > Alberta warpra NPC [Tsuyuki]
 //============================================================
 
 alberta.gat,245,45,4	script	Girl#02	815,{
@@ -116,7 +117,9 @@ M_CANCEL2:
 
 lou_fild01.gat,190,100,1	script	Girl#03	815,{
 	mes "[Girl]";
-	mes "You'd like to go back to Alberta?";
+	mes "Would you";
+	mes "like to go back";
+	mes "to Alberta?";
 	next;
 	menu "Go back to Alberta.",-,"Cancel.",M_CANCEL;
 
@@ -130,7 +133,10 @@ lou_fild01.gat,190,100,1	script	Girl#03	815,{
 
 M_CANCEL:
 	mes "[Girl]";
-	mes "If you like this area, why don't you stay and enjoy the food and the sights!";
+	mes "If you like this";
+	mes "area, why don't you";
+	mes "stay and enjoy the";
+	mes "food and the sights!";
 	next;
 	mes "[Girl]";
 	mes "And by sights...";

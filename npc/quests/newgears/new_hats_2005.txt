@@ -154,22 +154,22 @@ L_EXIT:
 
 //-------------------------------------------------------------------------------------------------
 //Red hood (Red Bonnet) ID 5109
-lighthalzen.gat,180,88,4	script	Rich Girl	818,{
-	mes "[Rich Girl]";
+lighthalzen.gat,183,88,7	script	Relaxed-Looking Lady	818,{
+	mes "[Relaxed-Looking Lady]";
 	mes "Hello there! Please, answer my questions.";
 	next;
-	mes "[Rich Girl]";
+	mes "[Relaxed-Looking Lady]";
 	mes "Do you have a grandma?";
 	emotion 20;
 	next;
-	mes "[Rich Girl]";
+	mes "[Relaxed-Looking Lady]";
 	mes "Really? I'm sorry. Do you like wolves?";
 	next;
-	mes "[Rich Girl]";
+	mes "[Relaxed-Looking Lady]";
 	mes "Ha! I knew it! And... my last question. Would you like to put on something reddish?";
 	emotion 1;
 	next;
-	mes "[Rich Girl]";
+	mes "[Relaxed-Looking Lady]";
 	mes "Just kidding, Have you ever read 'Red-Hood'? I can make to you the very same ^FF3300Red Bonnet^000000.";
 	next;
 	menu "Please, make it!",-,"No, thanks",L_EXIT;
@@ -179,16 +179,16 @@ lighthalzen.gat,180,88,4	script	Rich Girl	818,{
 	delitem 10007,1;//Items: Silk_Ribbon,
 	delitem 5032,1;//Items: Sunday_Hat,
 	set Zeny,Zeny-50000;
-	mes "[Rich Girl]";
+	mes "[Relaxed-Looking Lady]";
 	mes "Ok then, I shall make one for you.";
 	next;
-	mes "[Rich Girl]";
+	mes "[Relaxed-Looking Lady]";
 	mes "Now you can drink tea with your grannie and have fun with wolves.";
 	getitem 5109,1;//Items: Red_Bonnet,
 	close;
 
 L_NOITEM:
-	mes "[Rich Girl]";
+	mes "[Relaxed-Looking Lady]";
 	mes "Give me:";
 	mes "^FF3300 Green Lace^000000,";
 	mes "^FF3300 Scarlet Dyestuff ^000000,";
@@ -198,7 +198,7 @@ L_NOITEM:
 	close;
 
 L_EXIT:
-	mes "[Rich Girl]";
+	mes "[Relaxed-Looking Lady]";
 	mes "Well done. Bye.";
 	close;
 }

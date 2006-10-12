@@ -4,6 +4,28 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/10/06
+	* Added: The Sign Quest (35% converted from eAthena), do not enable it yet [Tsuyuki]
+	* Added: Some missing G_ duplicate mobs (WIP) [Tsuyuki]
+	* Fixed: Did some bug fixing on the npc/quests/quests_einbroch.txt file [Tsuyuki]
+
+10/09/06
+	* Fixed: More new card fixes [Tsuyuki]
+	* Fixed: Some new cards not working correctly [Tsuyuki]
+	* Fixed: Corrected Eremes Guile Card's effect [Tsuyuki]
+	* Removed: Some custom scripts that didn't even exist from the map_athena.conf file [Tsuyuki]
+	* Removed: Wedding.txt and IceCream.txt from the Custom folder (Duplicate official scripts) [Tsuyuki]
+	* Removed: eAthena Dev NPC from the Custom Script Folder *cough* [Tsuyuki]
+	* Removed: Some duplicate files... [Tsuyuki]
+	* Fixed: NPC-Type Name: Food Seller > Chef Assistant & Comodo Chef Assistant Items [Tsuyuki]
+	* Fixed: Minor dialogue fixes in various other NPCs [Tsuyuki]
+	* Fixed: Fully updated all Kafras, and fixed a lot of their dialogue [Tsuyuki]
+	* Translated: Japanese Louyang Guide NPCs into English (official iRO dialogue) [Tsuyuki]
+	* Updated: First Aid Kit item [Tsuyuki]
+	* Added: Rescripted the Taekwon Job Change Quest with iRO NPC dialogue, etc [Tsuyuki]
+	* Fixed: You can no longer save in Archer's Village via Kafra [Tsuyuki]
+	* Fixed: Thanatos MvP Exp (15 mil as per Aegis) [Tsuyuki]
+
 10/08/06
 	* Fixed: Cooking Kits can now make L6-10 food items [Tsuyuki]
 	 - To-Do: Add graphical effects and failure messages (src)

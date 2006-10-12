@@ -1,12 +1,12 @@
-//===== eAthena Script =======================================
+//===== Freya Script ==================================================
 //= Al De Baran Kafras
-//===== By: ============================
-//= eAthena Dev Team
-//===== Current Version: =======================
+//===== By: ===========================================================
+//= eAthena
+//===== Current Version: ==============================================
 //= 2.2
-//===== Compatible With: ============================
-//= eAthena 1.0
-//===== Description: ============================================
+//===== Compatible With: ==============================================
+//= Freya
+//===== Description: ==================================================
 //= Description of argument settings for callfunc "F_Kafra".
 //=  arg(0): When set at 0 the default Kafra message is displayed.
 //=    When set to 1 the Niflhiem Kafra message is displayed.
@@ -33,7 +33,7 @@ aldeba_in.gat,96,181,4	script	Kafra Leilah	113,{
 }
 
 // South --------------------------------------------------
-aldebaran.gat,143,119,4	script	Kafra	113,{
+aldebaran.gat,143,119,4	script	Kafra Employee	113,{
 	cutin "kafra_05",2;
 	setarray @wrpP[0], 1200, 1200, 1800, 1700;
 	setarray @wrpD$[0], "Geffen", "Yuno" , "Izlude", "Coal Mine(Dead Pit)";
