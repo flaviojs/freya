@@ -95,6 +95,8 @@
 //=       Ne pas respawner le même monstre s'il y a encore 1 seul monstre dans l'arène (mi-temps), mais spawner un petit monstre
 //=       Indication de la vague atteinte lorsque l'unique Master Survivor gagne.
 //=       Indication du numéro de la vague lors de l'affichage du type de monstre aux participants.
+//= 2.5   Moins de monstres avec type 2 par rapport à type 1 (type 3 = type 2).
+//=       Arrêt de tous les timers à la fin de l'event
 //===== Additional Comments: =================================
 //============================================================
 
@@ -167,7 +169,8 @@ function	script	f_monstres	{
 
 	// augmenter de 5 le nombre de spawns, si les joueurs tuent trop vite les mobs (sans dépasser 300)
 	set $@NbMapMobs, GetMapMobs("guild_vs5.gat");
-	if ($@NbMapMobs < ($@nb_mobs / 10)) set $@nb_mobs,$@nb_mobs + 5;
+	if ($@NbMapMobs < ($@nb_mobs / 10) && $@spawn_type != 2) set $@nb_mobs,$@nb_mobs + 5; // type 1 et 3
+	if ($@NbMapMobs < ($@nb_mobs / 10) && $@spawn_type == 2) set $@nb_mobs,$@nb_mobs + 3; // type 2
 	if ($@nb_mobs > 300) set $@nb_mobs,300;
 	if ($@nb_mobs < 50) set $@nb_mobs,50;
 
@@ -196,12 +199,12 @@ Suite_annonce1:
 
 Suite_spawn:
 	set $@NbMapMobs, 0;
-	mapannounce "guild_vs5.gat","Invasion de '"+ strmobinfo(2,getarg(0))+"'.",0;
+	mapannounce "guild_vs5.gat","Vague de spawns" + $@numero_spawn + " -> Invasion de '"+ strmobinfo(2,getarg(0))+"'.",0;
 	return;
 
 L_stop:
 	announce "L'arène du Spawn Survivor est vide (ou tous les partipants sont morts).",0;
-	announce "L'évent s'est arrêté de lui-même.",0;
+	announce "L'évent s'est arrêté de lui-même à la vague de spawns " + $@numero_spawn + ".",0;
 	goto L_fin;
 
 L_woe:
@@ -216,7 +219,8 @@ L_triche:
 	goto L_fin;
 
 L_fin:
-	doevent "Surviv::L_stoptimer";
+	stopnpctimer;
+	donpcevent "Spawner::L_arretLancement"; // stop le timer de l'autre npc aussi
 	return;
 }
 
@@ -230,8 +234,9 @@ function	script	check_monstres	{
 
 	if (GetMapMobs("guild_vs5.gat") >= ($@nb_mobs / 4)) return;
 
-	// augmenter de 5 le nombre de spawns, les joueurs tuent trop vite les mobs (sans dépasser 300)
-	set $@nb_mobs, $@nb_mobs + 5; // test mini/maxi au moment du spawn
+	// augmenter le nombre de spawns, les joueurs tuent trop vite les mobs (test mini/maxi au moment du spawn)
+	if ($@spawn_type != 2) set $@nb_mobs,$@nb_mobs + 5; // type 1 et 3
+	if ($@spawn_type == 2) set $@nb_mobs,$@nb_mobs + 3; // type 2
 
 	// respawner des monstres si les joueurs les tuent trop vite
 re_random:
@@ -562,7 +567,8 @@ Suite_onstart:
 	set $@nb_part,getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20); // alive players less alive GMs
 	set $@survivants,$@nb_part; // pour tester les cas de triche
 	set $@nb_part2,$@nb_part; // $@nb_part2: pour afficher en global (announce) le nombre de partipants (quand ca change), sinon seulement en (mapannounce)
-	set $@nb_mobs,($@nb_part + rand(1,4)) * 6; // test mini/maxi au moment du spawn
+	if ($@spawn_type != 2) set $@nb_mobs,($@nb_part + rand(1,4)) * 6; // type 1 et 3
+	if ($@spawn_type == 2) set $@nb_mobs,($@nb_part + rand(1,4)) * 4; // type 2
 
 	announce "Il y a " + $@nb_part + " participants pour le titre de Master Survivor. Bonne chance!",0;
 	mapannounce "guild_vs5.gat","Garde Royal: Pour devenir le Master Survivor, il vous faut tuer un monstre en étant le dernier survivant!",0;
@@ -1160,8 +1166,8 @@ L_GMclose:
 	end;
 
 L_GMclose_encours:
-	donpcevent "Surviv::L_stoptimer"; // arrête le timer de l'autre npc en plus
 	stopnpctimer;
+	donpcevent "Surviv::L_stoptimer"; // arrête le timer de l'autre npc en plus
 	end;
 
 L_GMdejaclose:
