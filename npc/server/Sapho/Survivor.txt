@@ -5,7 +5,7 @@
 //===== By: ==================================================
 //= Garion, GAlion, DaVinci, Jondalar, Kheldar, Yor
 //===== Current Version: =====================================
-//= 2.6
+//= 2.7
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -100,6 +100,9 @@
 //= 2.6   Meilleur gestion arrêt timers.
 //=       Réduction de l'augmentation du nombre de mobs en type 1 et 3.
 //=       Ajout d'un menu d'informations.
+//= 2.7   Ajout d'un conseil concernant /effect (dans information et aux participants juste aavant le début).
+//=       Ajout du type de spawn dans les informations
+//=       Ajout du temps restant pour aller dans l'arène (menu informations)
 //===== Additional Comments: =================================
 //============================================================
 
@@ -1088,6 +1091,9 @@ L_Regles:
 	mes "- Type 1: plutôt 'sympa'.";
 	mes "- Type 2: 'assez dur'.";
 	mes "- Type 3: mélange types 1 et 2.";
+	next;
+	mes "[Spawner]";
+	mes "Un conseil: Désactivez les effets avec la commande ^00FF88/effect^000000.";
 	mes "Au revoir.";
 	close;
 
@@ -1099,31 +1105,35 @@ L_informations:
 
 L_info_pas_event:
 	mes "[Spawner]";
-	mes "Le Spawn Survivor n'est pas activé.";
+	mes "L'événement Spawn Survivor n'est pas activé.";
 	mes "Il ne peut être activé que par un GM ou de manière automatisée tous les jours à 02h00, 10h00 et 23h30 et le Samedi à 13h30.";
 	mes "Au revoir.";
 	close;
 
 L_info_avant_event:
 	mes "[Spawner]";
-	mes "Le Spawn Survivor est actuellement en cours de préparation.";
+	mes "Un Spawn Survivor de type " + $@spawn_type + " est actuellement en cours de préparation.";
 	mes "Il y a déjà " + (getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20)) + " participant(s) dans l'arène.";
+	next;
+	mes "[Spawner]";
+	if (getnpctimer(0) <= 54000) mes "Vous avez encore " + ((600000 - getnpctimer(0)) / 1000 / 60) + " minute(s) pour vous y rende.";
+	if (getnpctimer(0) > 54000) mes "Vous avez encore " + ((600000 - getnpctimer(0)) / 1000) + " secondes pour vous y rende.";
 	mes "Au revoir.";
 	close;
 
 L_info_event_en_cours:
 	mes "[Spawner]";
-	mes "Le Spawn Survivor est actuellement en cours.";
-	mes "La vague de spawns " + $@numero_spawn + " a été effectuée.";
+	mes "Un Spawn Survivor de type " + $@spawn_type + " est actuellement en cours.";
+	mes "La vague de spawns numéro " + $@numero_spawn + " a été effectuée.";
 	next;
-	mes "Il y a " + $@survivants + " participants en lice qui ont " + GetMapMobs("guild_vs5.gat") + " à tuer.";
+	mes "Il y a " + $@survivants + " participants en lice qui ont " + GetMapMobs("guild_vs5.gat") + " monstre(s) à tuer.";
 	mes "Au revoir.";
 	close;
 
 L_info_phase_finale:
 	mes "[Spawner]";
-	mes "Le Spawn Survivor est actuellement en sa phase finale.";
-	mes "Il y a " + $@survivants + " participants en lice qui ont " + GetMapMobs("guild_vs5.gat") + " à tuer.";
+	mes "Un Spawn Survivor de type " + $@spawn_type + " est actuellement dans sa phase finale.";
+	mes "Il reste " + GetMapMobs("guild_vs5.gat") + " monstre(s) à tuer aux " + $@survivants + " participants en lice.";
 	mes "Au revoir.";
 	close;
 
@@ -1265,19 +1275,19 @@ L_creawarp:
 	end;
 
 OnTimer60000:
-	callfunc "before_event"; // 1 minute, spawn de montres pour patienter.
+	callfunc "before_event"; // 1 minute, spawn de monstres pour patienter.
 	end;
 
 OnTimer120000:
-	callfunc "before_event"; // 2 minutes, spawn de montres pour patienter.
+	callfunc "before_event"; // 2 minutes, spawn de monstres pour patienter.
 	end;
 
 OnTimer180000:
-	callfunc "before_event"; // 3 minutes, spawn de montres pour patienter.
+	callfunc "before_event"; // 3 minutes, spawn de monstres pour patienter.
 	end;
 
 OnTimer240000:
-	callfunc "before_event"; // 4 minutes, spawn de montres pour patienter.
+	callfunc "before_event"; // 4 minutes, spawn de monstres pour patienter.
 	end;
 
 OnTimer300000: // 5 minutes après je fais un rappel.
@@ -1285,15 +1295,15 @@ OnTimer300000: // 5 minutes après je fais un rappel.
 	Announce "Garde Royal: Rendez-vous dans l'allée au sud de la fontaine de Prontera.",8;
 	Announce "Garde Royal: Si vous arrivez en retard, vous ne pourrez pas entrer dans l'arène.",8;
 	Announce "Garde Royal: Il y a déjà " + (getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20)) + " participant(s) dans l'arène.",8;
-	callfunc "before_event"; // 5 minutes, spawn de montres pour patienter.
+	callfunc "before_event"; // 5 minutes, spawn de monstres pour patienter.
 	end;
 
 OnTimer360000:
-	callfunc "before_event"; // 6 minutes, spawn de montres pour patienter.
+	callfunc "before_event"; // 6 minutes, spawn de monstres pour patienter.
 	end;
 
 OnTimer420000:
-	callfunc "before_event"; // 7 minutes, spawn de montres pour patienter.
+	callfunc "before_event"; // 7 minutes, spawn de monstres pour patienter.
 	end;
 
 OnTimer480000:
@@ -1301,10 +1311,10 @@ OnTimer480000:
 	Announce "Garde Royal: Rendez-vous dans l'allée au sud de la fontaine de Prontera.",8;
 	Announce "Garde Royal: Si vous arrivez en retard, vous ne pourrez pas entrer dans l'arène.",8;
 	Announce "Garde Royal: Déjà " + (getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20)) + " participant(s) arrivé(s) dans l'arène.",8;
-	callfunc "before_event"; // 8 minutes, spawn de montres pour patienter.
+	callfunc "before_event"; // 8 minutes, spawn de monstres pour patienter.
 	end;
 
-OnTimer540000: // 9 minute après je refais une annonce.
+OnTimer540000: // 9 minutes après je refais une annonce.
 	Announce "Garde Royal: Le Spawn Survivor de type " + $@spawn_type + " commence dans 1 minute. Dépéchez-vous !",8;
 	Announce "Garde Royal: Rendez-vous dans l'allée au sud de la fontaine de Prontera.",8;
 	mapannounce "guild_vs5.gat","Garde Royal: Participants, préparez-vous au Spawn Survivor...",0;
@@ -1312,6 +1322,10 @@ OnTimer540000: // 9 minute après je refais une annonce.
 	if (GetMapMobs("guild_vs5.gat") < 1) end;
 	mapannounce "guild_vs5.gat","Garde Royal: *Nettoyage de l'arène...*",0;
 	killmonsterall "guild_vs5.gat"; // destruction des monstres pour laisser une minute tranquille
+	end;
+
+OnTimer590000: // 9 minute 50 sec après, je donne un conseil.
+	mapannounce "guild_vs5.gat","Garde Royal: Un conseil: Désactivez les effets avec la commande /effect.",0;
 	end;
 
 OnTimer600000: // 10 minutes après on coupe l'accès.
