@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/12/06
+	* Fixed: A few monster names [Tsuyuki]
+	* Added: The rest of the missing duplicate monsters [Tsuyuki]
 	* Fixed: Strawberry not dropping from the correct Desert Wolf [Tsuyuki]
 	* Fixed: Item 'Pumpkin' not doing anything [Tsuyuki]
 	 - Note: Please omit this on merge, but Yor, can you come on IRC sometime?
