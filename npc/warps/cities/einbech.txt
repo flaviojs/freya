@@ -1,11 +1,11 @@
-//===== eAthena/Freya Script ======================================= 
+//===== Freya Script =========================================
 //= Einbech Warps
 //===== By: ================================================== 
-//= Muad Dib (1.0), SSUNNY@YOUNG(1.1), Tsuyuki(1.2)
+//= Muad Dib (1.0), SSUNNY@YOUNG(1.1)
 //===== Current Version: ===================================== 
 //= 1.2
 //===== Compatible With: ===================================== 
-//= Any eAthena Version & Freya
+//= Freya
 //===== Description: ========================================= 
 //= Einbech Town warps
 //===== Additional Comments: ================================= 

@@ -1,11 +1,11 @@
-//===== Athena Script ========================================
+//===== Freya Script =========================================
 //= Comodo Warp Script
 //===== By: ==================================================
-//= eAthena dev team
+//= eAthena
 //===== Current Version: =====================================
 //= 1.2
 //===== Compatible With: =====================================
-//= Any Athena Version
+//= Freya
 //===== Description: =========================================
 //= Warp Points Comodo city
 //= Rogue guild

@@ -4,7 +4,7 @@
 //= Nana (1.0)
 //= Yor (1.1/1.1a)
 //===== Current Version: =====================================
-//= 1.1
+//= 1.2
 //===== Compatible With: =====================================
 //= Any Freya Version
 //===== Description: =========================================
@@ -12,6 +12,7 @@
 //===== Additional Comments: =================================
 //= 1.1 fixed destination position of mjol012 warp [Yor]
 //= 1.1a Fixed positions of some warps [Yor]
+//= 1.2 Removed duplicate warp [Tsuyuki]
 //============================================================
 
 //= Mt. Mjolnir ==============================================
@@ -60,4 +61,3 @@ mjolnir_11.gat,174,20,0	warp	mjol010	4,2,prt_fild02.gat,173,379
 mjolnir_11.gat,20,220,0	warp	mjol16-1	2,4,mjolnir_10.gat,381,220
 mjolnir_12.gat,199,378,0	warp	mjol012	2,2,aldebaran.gat,139,37
 mjolnir_12.gat,220,26,0	warp	mjol08-1	3,2,mjolnir_05.gat,220,379
-mjolnir_12.gat,43,20,0	warp	mjol17	2,2,prt_maze01.gat,17,111
