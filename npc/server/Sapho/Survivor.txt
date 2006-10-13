@@ -3,7 +3,7 @@
 //===== Par: =================================================
 //= Garion, GAlion, DaVinci, Jondalar, Kheldar, Yor
 //===== Current Version: =====================================
-//= 2.7
+//= 2.9
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -27,6 +27,15 @@
 //=        lentement les monstres.
 //=      Indication du dernier monstre spawné (dans les
 //=        informations).
+//= 2.9  Event tous les jours à 06h00.
+//=      Minimum/maximum de monstres: 50-300 -> 40-200.
+//=      Réduire le nombre de monstres de 3 au lieu de 2 pour
+//=        chaque mort.
+//=      A mi-temps, ne spawner que 50% du nombre habituel de
+//=        monstres.
+//=      Avant l'event, ajout de quelques shining plants.
+//=      Ajout de la liste des 10 derniers gagnants (basé sur
+//=        le travail de GAlion).
 //============================================================
 
 // les Warps
@@ -49,6 +58,28 @@ L_noss:
 	mes "L'accés est autorisé aux joueurs respectant les régles du serveur.";
 	mes "Au revoir.";
 	close;
+}
+
+
+// Fonction enregistrant le scrore d'un Master Survivor
+// ----------------------------------------------------
+function	script	Record_spawn	{
+	// Nécessite 1 liste permanente de 10 var: $spawn_rec_n$
+
+	// Décalage des 9 précédents
+	set $@i_spawn, 0;
+	goto Boucle;
+
+Boucle:
+	if ($@i_spawn > 8) goto Enregistrement; // Inutile de décaler le 9 (10eme élément)
+	set $spawn_rec_n$[$@i_spawn],$spawn_rec_n$[$@i_spawn + 1];
+	set $@i_spawn, $@i_spawn + 1;
+	goto Boucle;
+
+Enregistrement:
+	set $spawn_rec_n$[9],getarg(0) + " / ^0000FF" + $@numero_spawn + "(type:" + $@spawn_type + ")^000000 / ^999999" + gettimestr("%d/%m - %H:%M",14) + "^000000";
+	set $@i_spawn, 0;
+	return;
 }
 
 
@@ -86,7 +117,7 @@ function	script	f_monstres	{
 	set $@nb_part,getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20); // Joueurs vivants moins GMs vivants
 	if ($@nb_part < 1) goto L_stop;
 	if ($@nb_part > $@survivants) goto L_triche; // Quelqu'un a été téléporté ou rescussité
-	set $@nb_mobs, $@nb_mobs - (($@survivants - $@nb_part) * 2); // Réduire de 2 le nombre de spawns par mort
+	set $@nb_mobs, $@nb_mobs - (($@survivants - $@nb_part) * 3); // Réduire le nombre de spawns par mort
 	set $@survivants, $@nb_part;
 
 	// Ne pas spawner si l'event n'est pas en cours (juste une sécurité)
@@ -94,7 +125,7 @@ function	script	f_monstres	{
 
 	set $@NbMapMobs, GetMapMobs("guild_vs5.gat");
 	// Réduire le nombre de spawns, si les joueurs tuent trop lentement les mobs
-	if ($@NbMapMobs > ($@nb_mobs / 2)) set $@nb_mobs,$@nb_mobs - ($@nb_mobs / 10);
+	if ($@NbMapMobs > ($@nb_mobs / 3)) set $@nb_mobs,$@nb_mobs - ($@nb_mobs / 10);
 	// Augmenter le nombre de spawns, si les joueurs tuent trop vite les mobs
 	if ($@NbMapMobs < ($@nb_mobs / 10)) set $@nb_mobs,$@nb_mobs + 5;
 
@@ -164,10 +195,11 @@ function	script	check_monstres	{
 	if (GetMapMobs("guild_vs5.gat") >= ($@nb_mobs / 4)) return;
 
 	// Augmenter le nombre de spawns, les joueurs tuent trop vite les mobs (test mini/maxi au moment du spawn)
-	set $@nb_mobs,$@nb_mobs + ($@nb_mobs / 6); // +16%
+	set $@nb_mobs,$@nb_mobs + ($@nb_mobs / 20); // +5%
 	set $@a_spawner, $@nb_mobs;
-	if ($@a_spawner < 50) set $@a_spawner,50;
-	if ($@a_spawner > 300) set $@a_spawner,300;
+	if ($@a_spawner < 40) set $@a_spawner,40;
+	if ($@a_spawner > 200) set $@a_spawner,200;
+	set $@a_spawner, $@nb_mobs / 2; // ne pas trop spawner en mi-temps (50%)
 
 re_random:
 	set $@spawn_rnd, rand(1,10);
@@ -498,10 +530,10 @@ Suite_onstart:
 	set $@nb_part,getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20); // Joueurs vivants moins GMs vivants
 	set $@survivants,$@nb_part; // pour tester les cas de triche
 	set $@nb_part2,$@nb_part; // $@nb_part2: pour afficher en global (announce) le nombre de partipants (quand ça change), sinon seulement en (mapannounce)
-	set $@nb_mobs,($@nb_part + rand(1,4)) * 6; // type 1 (par défaut)
+	set $@nb_mobs,($@nb_part + 4) * 5; // type 1 (par défaut)
 	if ($@spawn_type == 2) set $@nb_mobs,($@nb_part + rand(1,4)) * 4; // type 2
 	if ($@spawn_type == 3) set $@nb_mobs,($@nb_part + rand(1,4)) * 5; // type 3
-	if ($@nb_mobs < 50) set $@nb_mobs,50; // minimum 50
+	if ($@nb_mobs < 40) set $@nb_mobs,40; // minimum 40
 
 	announce "Il y a " + $@nb_part + " participants pour le titre de Master Survivor. Bonne chance!",0;
 	mapannounce "guild_vs5.gat","Garde Royal: Pour devenir le Master Survivor, vous devez tuer un monstre en étant le dernier survivant!",0;
@@ -896,7 +928,7 @@ OnTimer8190000:
 OnMortMob: // A chaque mort d'un monstre
 	set $@nb_part,getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20); // Joueurs vivants moins GMs vivants
 	if ($@nb_part > $@survivants) goto L_tricheur; // Quelqu'un a été téléporté ou rescussité
-	set $@nb_mobs, $@nb_mobs - (($@survivants - $@nb_part) * 2); // Réduire de 2 le nombre de spawns par mort
+	set $@nb_mobs, $@nb_mobs - (($@survivants - $@nb_part) * 3); // Réduire le nombre de spawns par mort
 	set $@survivants, $@nb_part;
 
 	// un seul survivant
@@ -932,6 +964,9 @@ Le_Gagnant:
 	announce "Il a gagné lorsqu'il affrontait la vague de spawns numéro " + $@numero_spawn + ".",0;
 	announce "Le Master Survivor est: "+ strcharinfo(0) + ".",0;
 
+	// Enregistrement du gagnant
+	callfunc "Record_spawn", strcharinfo(0);
+
 	// Le prix du gagnant
 	announce strcharinfo(0) + " gagne 10.000 zenys.",0;
 	set Zeny,Zeny + 10000;
@@ -959,6 +994,7 @@ L_stoptimer:
 // NPC extérieur + avant l'event --------------------------------------------
 
 
+
 // Fonction spawnant des monstres pour faire patienter les joueurs avant l'event
 // -----------------------------------------------------------------------------
 function	script	before_event	{
@@ -976,6 +1012,8 @@ function	script	before_event	{
 Faire_spawn:
 	areamonster "guild_vs5.gat",0,0,200,200,"Poring",1002,$@spawn_rnd,"";
 	areamonsteragro "guild_vs5.gat",0,0,200,200,"Poring carnivore",1002,$@spawn_rnd,"";
+	set $@spawn_rnd, $@spawn_rnd / 5;
+	if (rand(1, 5) == 1 && $@spawn_rnd > 0) areamonster "guild_vs5.gat",0,0,200,200,"Plante scintillante",1083,$@spawn_rnd,""; // shining plants
 	set $@spawn_rnd, 0;
 	return;
 }
@@ -988,17 +1026,17 @@ prontera.gat,174,154,3	script	Spawner	743,{
 	mes "Que désirez-vous?";
 	next;
 	if (getgmlevel(0) < 20) goto L_JoueurMenu;
-	menu "Menu spécial GM",L_GmMenu,"Les règles",L_Regles,"Infos event en cours",L_informations;
+	menu "Menu spécial GM",L_GmMenu,"Les règles",L_Regles,"Infos event en cours",L_informations,"Liste des gagnants",L_Gagnants;
 	close;
 
 // Menu pour les joueurs
 L_JoueurMenu:
-	menu "Les règles",L_Regles,"Infos event en cours",L_informations;
+	menu "Les règles",L_Regles,"Infos event en cours",L_informations,"Liste des gagnants",L_Gagnants;
 	close;
 
 L_Regles:
 	mes "[Spawner]";
-	mes "Le Spawn Survivor ne peut être activé que par un GM ou de manière automatisée tous les jours à 02h00, 10h00 et 23h30 et le Samedi à 13h30.";
+	mes "Le Spawn Survivor ne peut être activé que par un GM ou de manière automatisée tous les jours à 02h00, 06h00, 10h00 et 23h30 et le Samedi à 13h30.";
 	next;
 	mes "[Spawner]";
 	mes "Une fois le Spawn Survivor activé, vous avez 10 minutes pour venir ici et joindre la partie.";
@@ -1035,7 +1073,7 @@ L_informations:
 L_info_pas_event:
 	mes "[Spawner]";
 	mes "L'événement Spawn Survivor n'est pas activé.";
-	mes "Il ne peut être activé que par un GM ou de manière automatisée tous les jours à 02h00, 10h00 et 23h30 et le Samedi à 13h30.";
+	mes "Il ne peut être activé que par un GM ou de manière automatisée tous les jours à 02h00, 06h00, 10h00 et 23h30 et le Samedi à 13h30.";
 	mes "Au revoir.";
 	close;
 
@@ -1087,6 +1125,22 @@ L_info_phase_finale:
 	mes "Au revoir.";
 	close;
 
+L_Gagnants:
+	mes "^FF0000[Les 10 derniers Master Survivor]^000000";
+	mes "Master / ^0000FFVague(type)^000000 / ^999999Date^000000";
+	set $@i_spawn, 9; // Commencer par le plus récent
+	goto L_BOUCLE;
+
+L_BOUCLE:
+	if ($@i_spawn < 0) goto L_SUITE;
+	mes $spawn_rec_n$[$@i_spawn];
+	set $@i_spawn, $@i_spawn - 1;
+	goto L_BOUCLE;
+
+L_SUITE:
+	set $@i_spawn, 0;
+	close;
+
 // Initialisation
 OnInit:
 	killmonsterall "guild_vs5.gat";
@@ -1113,6 +1167,14 @@ OnSat1330:
 
 // Tous les jours à 02h00
 OnClock0200:
+	if (agitcheck(0) != 0) end;
+	if ($@Spawn_flag > 0) end; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
+	if ($@spawn_type == 0) set $@spawn_type, rand(1,3);
+	Announce "Garde Royal: Le Spawn Survivor est ouvert (type " + $@spawn_type + ").",8;
+	goto L_creawarp;
+
+// Tous les jours à 06h00
+OnClock0600:
 	if (agitcheck(0) != 0) end;
 	if ($@Spawn_flag > 0) end; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
 	if ($@spawn_type == 0) set $@spawn_type, rand(1,3);
