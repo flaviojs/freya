@@ -4,6 +4,11 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/14/06
+	* Added: Some code corresponding with the cooking SC's [Tsuyuki]
+	 - Note: Gaining progress on cooking SC's, but not completely fixed yet
+	* Added: TK_Run's (Sprint) +10 Atk per skill level effect [Tsuyuki]
+
 10/13/06
 	* Fixed: Armor Charm equipment set not working correctly [Tsuyuki]
 
