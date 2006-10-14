@@ -47,6 +47,7 @@
 //=        important au spawn suivant, la quantité est réduite
 //=        de 12,5% (au lieu de 10%).
 //=      Réduction d'une ligne des pavés de messages.
+//= 2.11 Correction nom des warps.
 //============================================================
 
 // les Warps
@@ -61,19 +62,19 @@ OnTouch:
 	warp "prontera.gat",165,151;
 	end;
 }
-prontera.gat,78,49,4	script	warprep	45,2,2,{
+prontera.gat,78,49,4	script	warprep2	45,2,2,{
 OnTouch:
 	percentheal 100,100; // Soin automatique des joueurs à la sortie de l'arène
 	warp "prontera.gat",165,151;
 	end;
 }
-prontera.gat,49,23,4	script	warprep	45,2,2,{
+prontera.gat,49,23,4	script	warprep3	45,2,2,{
 OnTouch:
 	percentheal 100,100; // Soin automatique des joueurs à la sortie de l'arène
 	warp "prontera.gat",165,151;
 	end;
 }
-prontera.gat,20,50,4	script	warprep	45,2,2,{
+prontera.gat,20,50,4	script	warprep4	45,2,2,{
 OnTouch:
 	percentheal 100,100; // Soin automatique des joueurs à la sortie de l'arène
 	warp "prontera.gat",165,151;
