@@ -47,34 +47,33 @@
 //=        important au spawn suivant, la quantité est réduite
 //=        de 12,5% (au lieu de 10%).
 //=      Réduction d'une ligne des pavés de messages.
-//= 2.11 Correction nom des warps.
+//= 2.11 Correction nom des warps et position des warps.
+//=      Affichages des gagnants en fonction du type de spawn.
+//=      S'il reste beaucoup de monstres à un spawn (80%),
+//=        réduire de 10% le nombre de spawn.
 //============================================================
 
 // les Warps
 // ---------
-//guild_vs5.gat,50,76	warp	warprep	2,3,prontera.gat,165,151
-//guild_vs5.gat,78,49	warp	warprep2	2,3,prontera.gat,165,151
-//guild_vs5.gat,49,23	warp	warprep3	2,3,prontera.gat,165,151
-//guild_vs5.gat,20,50	warp	warprep4	2,3,prontera.gat,165,151
-prontera.gat,50,76,4	script	warprep	45,2,2,{
+guild_vs5.gat,50,76,4	script	warprep	45,2,2,{
 OnTouch:
 	percentheal 100,100; // Soin automatique des joueurs à la sortie de l'arène
 	warp "prontera.gat",165,151;
 	end;
 }
-prontera.gat,78,49,4	script	warprep2	45,2,2,{
+guild_vs5.gat,78,49,4	script	warprep2	45,2,2,{
 OnTouch:
 	percentheal 100,100; // Soin automatique des joueurs à la sortie de l'arène
 	warp "prontera.gat",165,151;
 	end;
 }
-prontera.gat,49,23,4	script	warprep3	45,2,2,{
+guild_vs5.gat,49,23,4	script	warprep3	45,2,2,{
 OnTouch:
 	percentheal 100,100; // Soin automatique des joueurs à la sortie de l'arène
 	warp "prontera.gat",165,151;
 	end;
 }
-prontera.gat,20,50,4	script	warprep4	45,2,2,{
+guild_vs5.gat,20,50,4	script	warprep4	45,2,2,{
 OnTouch:
 	percentheal 100,100; // Soin automatique des joueurs à la sortie de l'arène
 	warp "prontera.gat",165,151;
@@ -103,17 +102,21 @@ function	script	Record_spawn	{
 	// Nécessite 1 liste permanente de 10 var: $spawn_rec_n$
 
 	// Décalage des 9 précédents
-	set $@i_spawn, 0;
+	set $@i_spawn, 10;
 	goto Boucle;
 
 Boucle:
-	if ($@i_spawn > 8) goto Enregistrement; // Inutile de décaler le 9 (10eme élément)
-	set $spawn_rec_n$[$@i_spawn],$spawn_rec_n$[$@i_spawn + 1];
-	set $@i_spawn, $@i_spawn + 1;
+	if ($@spawn_type == 1) set $spawn_rec_1$[$@i_spawn],$spawn_rec_1$[$@i_spawn - 1];
+	if ($@spawn_type == 2) set $spawn_rec_2$[$@i_spawn],$spawn_rec_2$[$@i_spawn - 1];
+	if ($@spawn_type == 3) set $spawn_rec_3$[$@i_spawn],$spawn_rec_3$[$@i_spawn - 1];
+	set $@i_spawn, $@i_spawn - 1;
+	if ($@i_spawn < 1) goto Enregistrement; // Inutile de décaler le 9 (10eme élément)
 	goto Boucle;
 
 Enregistrement:
-	set $spawn_rec_n$[9],getarg(0) + " / ^0000FF" + $@numero_spawn + "(type:" + $@spawn_type + ")^000000 / ^999999" + gettimestr("%d/%m - %H:%M",14) + "^000000";
+	if ($@spawn_type == 1) set $spawn_rec_1$[0],"^999999" + gettimestr("%d/%m - %H:%M",14) + "^000000 / " + getarg(0) + " / ^0000FF" + $@numero_spawn + "^000000";
+	if ($@spawn_type == 2) set $spawn_rec_2$[0],"^999999" + gettimestr("%d/%m - %H:%M",14) + "^000000 / " + getarg(0) + " / ^0000FF" + $@numero_spawn + "^000000";
+	if ($@spawn_type == 3) set $spawn_rec_3$[0],"^999999" + gettimestr("%d/%m - %H:%M",14) + "^000000 / " + getarg(0) + " / ^0000FF" + $@numero_spawn + "^000000";
 	set $@i_spawn, 0;
 	return;
 }
@@ -162,6 +165,7 @@ function	script	f_monstres	{
 	set $@NbMapMobs, GetMapMobs("guild_vs5.gat");
 	// Réduire le nombre de spawns, si les joueurs tuent trop lentement les mobs
 	if ($@NbMapMobs > ($@nb_mobs / 3)) set $@nb_mobs,$@nb_mobs - ($@nb_mobs / 8);
+	if ($@NbMapMobs > ($@nb_mobs * 4 / 5)) set $@nb_mobs,$@nb_mobs - ($@nb_mobs / 10);
 	if ($@nb_mobs < 40) set $@nb_mobs,40;
 	// Augmenter le nombre de spawns, si les joueurs tuent trop vite les mobs
 	if ($@NbMapMobs < ($@nb_mobs / 10)) set $@nb_mobs,$@nb_mobs + 5;
@@ -1163,18 +1167,46 @@ L_info_phase_finale:
 	close;
 
 L_Gagnants:
-	mes "^FF0000[Les 10 derniers Master Survivor]^000000";
-	mes "Master / ^0000FFVague(type)^000000 / ^999999Date^000000";
-	set $@i_spawn, 9; // Commencer par le plus récent
-	goto L_BOUCLE;
+	mes "^FF0000[Les 10 derniers Master Survivor (type 1)]^000000";
+	mes "^999999Date^000000 / Master / ^0000FFVague^000000";
+	set $@i_spawn, 0; // Commencer par le plus récent
+	goto L_BOUCLE1;
 
-L_BOUCLE:
-	if ($@i_spawn < 0) goto L_SUITE;
-	mes $spawn_rec_n$[$@i_spawn];
-	set $@i_spawn, $@i_spawn - 1;
-	goto L_BOUCLE;
+L_BOUCLE1:
+	mes $spawn_rec_1$[$@i_spawn];
+	set $@i_spawn, $@i_spawn + 1;
+	if ($@i_spawn > 10) goto L_SUITE1;
+	goto L_BOUCLE1;
 
-L_SUITE:
+L_SUITE1:
+	next;
+
+	mes "^FF0000[Les 10 derniers Master Survivor (type 2)]^000000";
+	mes "^999999Date^000000 / Master / ^0000FFVague^000000";
+	set $@i_spawn, 0; // Commencer par le plus récent
+	goto L_BOUCLE2;
+
+L_BOUCLE2:
+	mes $spawn_rec_2$[$@i_spawn];
+	set $@i_spawn, $@i_spawn + 1;
+	if ($@i_spawn > 10) goto L_SUITE2;
+	goto L_BOUCLE2;
+
+L_SUITE2:
+	next;
+
+	mes "^FF0000[Les 10 derniers Master Survivor (type 3)]^000000";
+	mes "^999999Date^000000 / Master / ^0000FFVague^000000";
+	set $@i_spawn, 0; // Commencer par le plus récent
+	goto L_BOUCLE3;
+
+L_BOUCLE3:
+	mes $spawn_rec_3$[$@i_spawn];
+	set $@i_spawn, $@i_spawn + 1;
+	if ($@i_spawn > 10) goto L_SUITE3;
+	goto L_BOUCLE3;
+
+L_SUITE3:
 	set $@i_spawn, 0;
 	close;
 
