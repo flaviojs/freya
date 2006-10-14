@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/13/06
+	* Fixed: Armor Charm equipment set not working correctly [Tsuyuki]
+
 10/12/06
 	* Moved: PvP.txt and Guildcastles.txt warps to the warps/other folder [Tsuyuki]
 	* Updated: Major warp updates (Credits to eAthena) [Tsuyuki]
