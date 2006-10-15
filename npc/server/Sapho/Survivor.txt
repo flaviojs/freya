@@ -3,7 +3,7 @@
 //===== Par: =================================================
 //= Garion, GAlion, DaVinci, Jondalar, Kheldar, Yor
 //===== Current Version: =====================================
-//= 3.2
+//= 3.4
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -66,7 +66,9 @@
 //=      Gain: 750 fois le numéro de la dernière vague.
 //= 3.2  Les novices sont exclus du du Spawn Survivor. L'usage
 //=        de act dead/trick dead bloque l'event.
-//= 3.3  Mise en place de 10 thief bugs males en permanence à
+//= 3.3  Mise en place de 10 thief bugs females en permanence
+//=        à partir du spawn 10 (Nettoyeur).
+//= 3.4  Mise en place de 2 thief bugs males en permanence à
 //=        partir du spawn 10 (Nettoyeur).
 //============================================================
 
@@ -348,6 +350,7 @@ function	script	nettoyeur	{
 	mapannounce "guild_vs5.gat","Garde Royal: Mise en place de nettoyeurs pour ramasser les restes.",0;
 	areamonster "guild_vs5.gat",0,0,200,200,"Nettoyeur",1017,5,"Surviv::OnMortBug"; // Thief Bug Female
 	areamonsteragro "guild_vs5.gat",0,0,200,200,"Nettoyeur",1017,5,"Surviv::OnMortBugAgro"; // Thief Bug Female
+	areamonster "guild_vs5.gat",0,0,200,200,"Nettoyeur",1021,2,"Surviv::OnMortBugM"; // Thief Bug Male
 
 	return;
 }
@@ -1159,6 +1162,10 @@ OnMortBug: // A chaque mort d'un nettoyeur
 OnMortBugAgro: // A chaque mort d'un nettoyeur agressif
 	// On en respawn un pour toujours en avoir 10.
 	areamonsteragro "guild_vs5.gat",0,0,200,200,"Nettoyeur",1017,1,"Surviv::OnMortBugAgro"; // Thief Bug Female
+	goto OnMortMob;
+OnMortBugM: // A chaque mort d'un nettoyeur agressif
+	// On en respawn un pour toujours en avoir 10.
+	areamonsteragro "guild_vs5.gat",0,0,200,200,"Nettoyeur",1021,1,"Surviv::OnMortBugM"; // Thief Bug Male
 	goto OnMortMob;
 
 // --------------------------
