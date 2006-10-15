@@ -174,7 +174,7 @@ int start_weapon = 1201;
 int start_armor = 2301;
 int start_item = 0;
 int start_item_quantity = 0;
-int start_zeny = 500;
+int start_zeny = 0;
 int max_hair_style = 24; // added by [Yor]
 int max_hair_color = 9; // added by [Yor]
 
@@ -2169,9 +2169,9 @@ char * job_name(int class) {
 	case 4043: return "Baby Dancer";
 	case 4044: return "Baby Peco Crusader";
 	case 4045: return "Super Baby";
-	case 4046: return "Taekwon Boy/Girl";
-	case 4047: return "Star Knight";
-	case 4048: return "Star Knight";
+	case 4046: return "Taekwon Kid";
+	case 4047: return "Taekwon Master";
+	case 4048: return "Taekwon Master";
 	case 4049: return "Soul Linker";
 	}
 

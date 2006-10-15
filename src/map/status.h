@@ -192,8 +192,8 @@ enum {	// struct map_session_data の status_changeの番号テーブル
 	SC_INCMSPRATE,
 	SC_INCMATKRATE,
 	SC_INCATKRATE,
-	SC_INCDEFRATE,		// 190
-	SC_INCHITRATE,
+	SC_INCDEFRATE,
+	SC_INCHITRATE,		// 190
 	SC_INCFLEERATE,
 	SC_INCASPDRATE,
 	SC_STOP,
@@ -202,8 +202,8 @@ enum {	// struct map_session_data の status_changeの番号テーブル
 	SC_SIGHTBLASTER,
 	SC_TKREST,
 	SC_SHADOWWEAPON,
-	SC_GHOSTWEAPON,		// 200
-	SC_GDSKILLDELAY,
+	SC_GHOSTWEAPON,
+	SC_GDSKILLDELAY,		// 200
 	SC_STRFOOD,
 	SC_AGIFOOD,
 	SC_VITFOOD,
@@ -212,8 +212,8 @@ enum {	// struct map_session_data の status_changeの番号テーブル
 	SC_LUKFOOD,
 	SC_HITFOOD,
 	SC_FLEEFOOD,
-	SC_BATKFOOD,		// 210
-	SC_WATKFOOD,
+	SC_BATKFOOD,
+	SC_WATKFOOD,		// 210
 	SC_MATKFOOD,
 	SC_MAGNUM,
 	

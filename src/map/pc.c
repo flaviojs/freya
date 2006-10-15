@@ -1308,8 +1308,10 @@ void pc_checkminskill(struct map_session_data* sd) {
 	case 4045: // Super Baby
 		min_points = 9 + 20 + sd->status.job_level - 1; // minimum calculation, so changement at base level 45 (not job level) + 20 points bonus
 		break;
-	case 4046: // Taekwon Boy/Girl
-	case 4047: // Star Knight
+	case 4046: // Taekwon Kid
+	case 4047: // Taekwon Master/Star Gladiator
+	case 4048: // Taekwon Master/Star Gladiator (Flying)
+	case 4049: // Soul Linker
 		min_points = 9 + sd->status.job_level - 1;
 	}
 
@@ -1444,8 +1446,10 @@ int pc_checkmaxskill(struct map_session_data* sd) {
 	case 4045: // Super Baby
 		max_points = 9 + 20 + sd->status.job_level - 1; // minimum calculation, so changement at base level 45 (not job level) + 20 points bonus
 		break;
-	case 4046: // Taekwon Boy/Girl
-	case 4047: // Star Knight
+	case 4046: // Taekwon Kid
+	case 4047: // Taekwon Master/Star Gladiator
+	case 4048: // Taekwon Master/Star Gladiator (Flying)
+	case 4049: // Soul Linker
 		max_points = 9 + sd->status.job_level - 1;
 		break;
 	}

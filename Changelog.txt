@@ -4,6 +4,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/15/06
+	* Fixed: TK_RUN (Sprint)'s bonus is only applied if you are not wearing a weapon [Tsuyuki]
+	* Added: TaeKwon Master & Soul Linker skill_tree_db entries (Credits to eAthena) [Tsuyuki]
+
 10/14/06
 	* Added: Some code corresponding with the cooking SC's [Tsuyuki]
 	 - Note: Gaining progress on cooking SC's, but not completely fixed yet

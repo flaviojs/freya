@@ -667,9 +667,11 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 	if ((skill = pc_checkskill(sd, SA_DRAGONOLOGY)) > 0)
 		sd->paramb[3] += (skill % 2 == 0) ? skill / 2 : (skill + 1) / 2;
 
-	// TK_Run adds +10 ATK per level to bare fist, not base attack, need to fix when TKM/SL are implemented..
-	if ((skill = pc_checkskill(sd, TK_RUN)) > 0)
-		sd->base_atk += skill * 10;
+	// TK_Run adds +10 ATK per level if no weapon is equipped [Tsuyuki]
+	if ((skill = pc_checkskill(sd, TK_RUN)) > 0) {
+		if (sd->status.weapon == 0)
+			sd->base_atk += skill * 10;
+		}
 
 	if(sd->sc_count)
 	{
@@ -697,7 +699,7 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 				sd->paramb[0] += (1 << (sd->sc_data[SC_CHASEWALK].val1 - 1)); // increases strength after 10 seconds
 		}
 		if(sd->sc_data[SC_RUN].timer != -1) {
-			sd->speed -= (sd->speed * 25) / 100;
+			sd->speed -= (sd->speed * 50) / 100;
 		}
 		if (sd->sc_data[SC_SLOWDOWN].timer!=-1)
 			sd->speed = sd->speed * 150 / 100;
