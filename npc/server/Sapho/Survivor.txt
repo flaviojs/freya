@@ -346,7 +346,9 @@ function	script	nettoyeur	{
 	if ($@Spawn_flag != 2) return; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
 
 	mapannounce "guild_vs5.gat","Garde Royal: Mise en place de nettoyeurs pour ramasser les restes.",0;
-	areamonster "guild_vs5.gat",0,0,200,200,"Nettoyeur",1017,10,"Surviv::OnInsectMort"; // Thief Bug Male
+	areamonster "guild_vs5.gat",0,0,200,200,"Nettoyeur",1017,5,"Surviv::OnMortBug"; // Thief Bug Female
+	areamonsteragro "guild_vs5.gat",0,0,200,200,"Nettoyeur",1017,5,"Surviv::OnMortBugAgro"; // Thief Bug Female
+
 	return;
 }
 
@@ -1150,9 +1152,13 @@ OnTimer8190000:
 	end;
 
 // --------------------------
-OnInsectMort: // A chaque mort d'un nettoyeur
+OnMortBug: // A chaque mort d'un nettoyeur
 	// On en respawn un pour toujours en avoir 10.
-	areamonster "guild_vs5.gat",0,0,200,200,"Nettoyeur",1017,1,"Surviv::OnInseMort"; // Thief Bug Male
+	areamonster "guild_vs5.gat",0,0,200,200,"Nettoyeur",1017,1,"Surviv::OnMortBug"; // Thief Bug Female
+	goto OnMortMob;
+OnMortBugAgro: // A chaque mort d'un nettoyeur agressif
+	// On en respawn un pour toujours en avoir 10.
+	areamonsteragro "guild_vs5.gat",0,0,200,200,"Nettoyeur",1017,1,"Surviv::OnMortBugAgro"; // Thief Bug Female
 	goto OnMortMob;
 
 // --------------------------
