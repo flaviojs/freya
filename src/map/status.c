@@ -4055,6 +4055,20 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			scflag.calc = 1;
 			break;
 
+		case SC_STRFOOD:
+		case SC_AGIFOOD:
+		case SC_VITFOOD:
+		case SC_INTFOOD:
+		case SC_DEXFOOD:
+		case SC_LUKFOOD:
+		case SC_HITFOOD:
+		case SC_FLEEFOOD:
+		case SC_BATKFOOD:
+		case SC_WATKFOOD:
+		case SC_MATKFOOD:
+			scflag.calc = 1;
+			break;
+
 		case SC_REGENERATION:
 			val1 = 2;
 		case SC_BATTLEORDERS:

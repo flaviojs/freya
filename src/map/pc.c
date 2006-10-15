@@ -3833,6 +3833,29 @@ int pc_setpos(struct map_session_data *sd, char *mapname_org, int x, int y, int 
 			status_change_end(&sd->bl, SC_CLOAKING, -1);
 		if (pc_ischasewalk(sd))
 			status_change_end(&sd->bl, SC_CHASEWALK, -1);
+			
+		if(sd->sc_data[SC_STRFOOD].timer != -1)
+			status_change_end(&sd->bl, SC_STRFOOD, -1);
+		if(sd->sc_data[SC_AGIFOOD].timer != -1)
+			status_change_end(&sd->bl, SC_AGIFOOD, -1);
+		if(sd->sc_data[SC_VITFOOD].timer != -1)
+			status_change_end(&sd->bl, SC_VITFOOD, -1);
+		if(sd->sc_data[SC_INTFOOD].timer != -1)
+			status_change_end(&sd->bl, SC_INTFOOD, -1);
+		if(sd->sc_data[SC_DEXFOOD].timer != -1)
+			status_change_end(&sd->bl, SC_DEXFOOD, -1);
+		if(sd->sc_data[SC_LUKFOOD].timer != -1)
+			status_change_end(&sd->bl, SC_LUKFOOD, -1);
+		if(sd->sc_data[SC_HITFOOD].timer != -1)
+			status_change_end(&sd->bl, SC_HITFOOD, -1);
+		if(sd->sc_data[SC_FLEEFOOD].timer != -1)
+			status_change_end(&sd->bl, SC_FLEEFOOD, -1);
+		if(sd->sc_data[SC_BATKFOOD].timer != -1)
+			status_change_end(&sd->bl, SC_BATKFOOD, -1);
+//		if(sd->sc_data[SC_WATKFOOD].timer != -1)
+//		status_change_end(&sd->bl, SC_WATKFOOD, -1);
+		if(sd->sc_data[SC_MATKFOOD].timer != -1)
+			status_change_end(&sd->bl, SC_MATKFOOD, -1);
 	}
 
 	if (sd->bl.m != m)	// remove area spells on map change
