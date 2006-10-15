@@ -3,7 +3,7 @@
 //===== Par: =================================================
 //= Garion, GAlion, DaVinci, Jondalar, Kheldar, Yor
 //===== Current Version: =====================================
-//= 3.4
+//= 3.5
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -70,6 +70,7 @@
 //=        à partir du spawn 10 (Nettoyeur).
 //= 3.4  Mise en place de 2 thief bugs males en permanence à
 //=        partir du spawn 10 (Nettoyeur).
+//= 3.5  Explication de l'événement dans les règles.
 //============================================================
 
 // les Warps
@@ -1279,6 +1280,11 @@ L_JoueurMenu:
 
 L_Regles:
 	mes "[Spawner]";
+	mes "Le Spawn Survivor est un événement dans lequel les participants doivent résister à des vagues successives de monstres agressifs.";
+	mes "Les monstres sont de plus en plus puissants à chaque vague.";
+	mes "Le dernier joueur à survivre peut espérer gagner et emporter le prix.";
+	next;
+	mes "[Spawner]";
 	mes "Le Spawn Survivor ne peut être activé que par un GM ou de manière automatisée tous les jours à 02h00, 06h00, 10h00 et 23h30 et le Samedi à 13h30.";
 	mes "Présentez-vous 10 minutes avant l'heure prévue pour un Spawn Survivor automatisé.";
 	next;
@@ -1353,8 +1359,6 @@ L_info_event_en_cours:
 	if ($@delai_sec > 59 && $@delai_sec < 120) mes "L'événement a commencé il y a 1 minute et " + ($@delai_sec - 60) + " seconde(s).";
 	if ($@delai_sec > 119) mes "L'événement a commencé il y a " + ($@delai_sec / 60) + " minutes.";
 	set $@delai_sec, 0;
-	next;
-	mes "[Spawner]";
 	mes "Il y a " + $@survivants + " participants en lice qui ont " + GetMapMobs("guild_vs5.gat") + " monstre(s) à tuer.";
 	mes "Au revoir.";
 	close;
