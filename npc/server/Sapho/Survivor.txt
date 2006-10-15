@@ -66,6 +66,8 @@
 //=      Gain: 750 fois le numéro de la dernière vague.
 //= 3.2  Les novices sont exclus du du Spawn Survivor. L'usage
 //=        de act dead/trick dead bloque l'event.
+//= 3.3  Mise en place de 10 thief bugs males en permanence à
+//=        partir du spawn 10 (Nettoyeur).
 //============================================================
 
 // les Warps
@@ -330,6 +332,21 @@ rnd6: // Skeletons
 	areamonsteragro "guild_vs5.gat",0,0,200,200,"Monstre mort-vivant",1076,$@a_spawner,"Surviv::OnMortMob";
 	set $@spawn_rnd, 0;
 	set $@a_spawner, 0;
+	return;
+}
+
+
+
+
+// Fonction spawnant des thief bug non agressifs pour: nettoyer et pour retirer le hide des assassins s'ils attaquent.
+// -------------------------------------------------------------------------------------------------------------------
+function	script	nettoyeur	{
+	if (agitcheck(0) != 0) goto return;
+	// Ne pas spawner si l'event n'est pas en cours (juste une sécurité)
+	if ($@Spawn_flag != 2) return; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
+
+	mapannounce "guild_vs5.gat","Garde Royal: Mise en place de nettoyeurs pour ramasser les restes.",0;
+	areamonster "guild_vs5.gat",0,0,200,200,"Nettoyeur",1021,10,"Surviv::OnInsectMort"; // Thief Bug Male
 	return;
 }
 
@@ -691,6 +708,7 @@ OnTimer525000: // pour patienter (45 sec après le spawn)
 
 OnTimer550000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
+	callfunc "nettoyeur";
 	end;
 OnTimer570000:
 	set $@numero_spawn,12;
@@ -1130,6 +1148,12 @@ OnTimer8190000:
 	set $@Spawn_flag,3; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
 	areamonster "guild_vs5.gat",0,0,200,200,"Survivor",1002,20,"Surviv::OnMortMob"; // spawn de porings pour aider les derniers joueurs
 	end;
+
+// --------------------------
+OnInsectMort: // A chaque mort d'un nettoyeur
+	// On en respawn un pour toujours en avoir 10.
+	areamonster "guild_vs5.gat",0,0,200,200,"Nettoyeur",1021,1,"Surviv::OnInseMort"; // Thief Bug Male
+	goto OnMortMob;
 
 // --------------------------
 OnMortMob: // A chaque mort d'un monstre
