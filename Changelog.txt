@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/15/06
+	* Fixed: Corrected Orc Baby's slaves: Orc Warrior + Orc Lady (Was High Orc + Orc Lady) [Tsuyuki]
 	* Note: Cooking is finally 100% implemented and working
 	* Fixed: Cooking SC's not being dispelled on map change [Tsuyuki]
 	* Fixed: Cooking SC's not working correctly [Tsuyuki]

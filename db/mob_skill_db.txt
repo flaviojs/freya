@@ -3381,9 +3381,9 @@
 //1686,Orc Baby@SM_BASH,angry,5,5,500,0,5000,yes,target,always,0,,,,,,
 1686,Orc Baby@SW_BASH,attack,5,5,500,800,5000,no,target,always,0,,,,,,
 1686,Orc Baby@NPC_EMOTION,idle,197,1,200,0,5000,no,self,always,0,2,,,,,
-1686,Orc Baby@NPC_SUMMONSLAVE,attack,196,1,5000,3000,180000,no,self,always,0,1222,1452,,,,
-1686,Orc Baby@NPC_SUMMONSLAVE,chase,196,1,5000,3000,180000,no,self,always,0,1222,1452,,,,
-1686,Orc Baby@NPC_SUMMONSLAVE,idle,196,1,5000,3000,180000,no,self,always,0,1222,1452,,,,
+1686,Orc Baby@NPC_SUMMONSLAVE,attack,196,1,5000,3000,180000,no,self,always,0,1023,1452,,,,
+1686,Orc Baby@NPC_SUMMONSLAVE,chase,196,1,5000,3000,180000,no,self,always,0,1023,1452,,,,
+1686,Orc Baby@NPC_SUMMONSLAVE,idle,196,1,5000,3000,180000,no,self,always,0,1023,1452,,,,
 1687,Green Iguana@NPC_GROUNDATTACK,attack,185,3,500,500,5000,no,target,always,0,,,,,,06
 1687,Green IguanaNPC_TELEKINESISATTACK,chase,191,5,200,0,5000,no,target,always,0,,,,,,
 1687,Green Iguana@NPC_EMOTION,walk,197,1,500,0,5000,no,self,always,0,2,,,,,
