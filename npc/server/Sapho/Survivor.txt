@@ -3,7 +3,7 @@
 //===== Par: =================================================
 //= Garion, GAlion, DaVinci, Jondalar, Kheldar, Yor
 //===== Current Version: =====================================
-//= 3.0
+//= 3.2
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -64,6 +64,8 @@
 //=        gagner plus facilement.
 //=      Idem lors du dernier spawn.
 //=      Gain: 750 fois le numéro de la dernière vague.
+//= 3.2  Les novices sont exclus du du Spawn Survivor. L'usage
+//=        de act dead/trick dead bloque l'event.
 //============================================================
 
 // les Warps
@@ -96,6 +98,7 @@ OnTouch:
 prontera.gat,178,148,4	script	warpspawn	45,2,2,{
 OnTouch:
 	if(getgmlevel(0)== 0) goto L_noss;
+	if(Class == Job_Novice) goto L_Novice;
 	percentheal 100,100; // Soin automatique des joueurs à l'entrée de l'arène
 	warp "guild_vs5",56,49;
 	end;
@@ -104,6 +107,17 @@ L_noss:
 	mes "[GM Team]";
 	mes "Vous n'avez pas le droit de participer au Spawn Survivor.";
 	mes "L'accés est autorisé aux joueurs respectant les régles du serveur.";
+	mes "Au revoir.";
+	close;
+
+L_Novice: // L'usage de act dead/trick dead bloque l'event.
+	mes "[GM Team]";
+	mes "Vous n'avez pas le droit de participer au Spawn Survivor.";
+	mes "Nous ne voulons pas mettre en péril votre vie.";
+	next;
+	mes "[GM Team]";
+	mes "L'accés est réservé aux joueurs expérimentés.";
+	mes "Vous êtes toujours en apprentissage.";
 	mes "Au revoir.";
 	close;
 }
@@ -1243,8 +1257,12 @@ L_Regles:
 	mes "[Spawner]";
 	mes "Quelques règles (suite):";
 	mes "- L'évènement est interdit à ceux qui n'ont pas le 'main'.";
+	mes "- L'évènement est interdit aux novices (l'event n'est pas adapté à leur puissance).";
 	mes "- L'évènement ne peut se faire que s'il y a au moins 2 participants.";
-	mes "- Le gagnant est l'unique survivant qui tue un monstre (double condition).";
+	next;
+	mes "[Spawner]";
+	mes "Le gagnant est l'unique survivant qui tue un monstre (double condition).";
+	mes "Le gagnant gagne 750 fois le numéro de la dernière vague en zenys.";
 	next;
 	mes "[Spawner]";
 	mes "Les différents types de Spawn Survivor:";
