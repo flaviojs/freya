@@ -5,8 +5,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/15/06
+	* Reverted: Sight Blaster range from 3 to 2 (should actually be 1.. 3x3) [Tsuyuki]
+	 - Note: Found correct range on Ragnainfo.net
 	* Fixed: TK_TURNKICK / Roundhouse Kick is no longer AoE, its now single-targetted [Tsuyuki]
-	- Note: Does not have its AoE pushback yet.. [Tsuyuki]
+	 - Note: Does not have its AoE pushback yet.. [Tsuyuki]
 	* Fixed: TK_RUN's speed from +25% to +50% [Tsuyuki]
 	* Fixed: TK_RUN's bonus is only applied if you are not wearing a weapon [Tsuyuki]
 	* Added: TaeKwon Master & Soul Linker skill_tree_db entries (Credits to eAthena) [Tsuyuki]

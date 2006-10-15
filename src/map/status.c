@@ -4723,9 +4723,6 @@ int status_change_timer(int tid, unsigned int tick, int id, int data)
 	  {
 		int range = battle_config.ruwach_range;
 
-		if (type == SC_SIGHTBLASTER)
-			range = battle_config.sight_range;
-
 		if (type == SC_SIGHT)
 			range = battle_config.sight_range;
 		map_foreachinarea(status_change_timer_sub, bl->m, bl->x - range, bl->y - range, bl->x + range, bl->y + range, 0, bl, type, tick);
