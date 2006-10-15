@@ -5,7 +5,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/15/06
-	* Fixed: TK_RUN (Sprint)'s bonus is only applied if you are not wearing a weapon [Tsuyuki]
+	* Fixed: TK_TURNKICK / Roundhouse Kick is no longer AoE, its now single-targetted [Tsuyuki]
+	- Note: Does not have its AoE pushback yet.. [Tsuyuki]
+	* Fixed: TK_RUN's speed from +25% to +50% [Tsuyuki]
+	* Fixed: TK_RUN's bonus is only applied if you are not wearing a weapon [Tsuyuki]
 	* Added: TaeKwon Master & Soul Linker skill_tree_db entries (Credits to eAthena) [Tsuyuki]
 
 10/14/06

@@ -1091,6 +1091,7 @@ struct Damage battle_calc_weapon_attack(
 					bonus_damage += 10 * pc_checkskill(sd, TK_RUN);
 				break;
 			case TK_TURNKICK:
+				wd.blewcount = 0;
 				skillratio += 90 + 30 * skill_lv;	// FORMULA: damage * (190 + 30 * skill_lv) / 100
 				if (sd && sd->weapontype1 == 0 && sd->weapontype2 == 0)
 					bonus_damage += 10 * pc_checkskill(sd, TK_RUN);
