@@ -59,6 +59,11 @@
 //=        début de l'event, et pas de l'avant-event.
 //=      Ajout d'un message 15 ou 20 secondes avant le
 //=        prochain spawn.
+//= 3.1  Au spawn, lorsqu'il ne reste qu'un seul joueur, on
+//=        spawn en plus des porings pour que le joueur puisse
+//=        gagner plus facilement.
+//=      Idem lors du dernier spawn.
+//=      Gain: 750 fois le numéro de la dernière vague.
 //============================================================
 
 // les Warps
@@ -185,6 +190,7 @@ function	script	f_monstres	{
 	if ($@a_spawner > 200) set $@a_spawner,200;
 
 	// Spawn des monstres
+	if ($@nb_part == 1) areamonsteragro "guild_vs5.gat",0,0,200,200,"Survivor",1002,20,"Surviv::OnMortMob"; // spawn de porings pour aider le dernier joueur
 	set $@dernier_mob, getarg(0);
 	areamonsteragro "guild_vs5.gat",0,0,200,200,"Survivor",$@dernier_mob,$@a_spawner,"Surviv::OnMortMob";
 	set $@a_spawner, 0;
@@ -211,7 +217,8 @@ Suite_annonce1:
 
 Suite_spawn:
 	set $@NbMapMobs, 0;
-	mapannounce "guild_vs5.gat","Vague de spawns numéro " + $@numero_spawn + " -> Invasion de '" + strmobinfo(2,$@dernier_mob) + "'.",0;
+	if ($@nb_part == 1) mapannounce "guild_vs5.gat","Vague de spawns numéro " + $@numero_spawn + " -> Invasion de '" + strmobinfo(2,1002) + "'.",0;
+	if ($@nb_part != 1) mapannounce "guild_vs5.gat","Vague de spawns numéro " + $@numero_spawn + " -> Invasion de '" + strmobinfo(2,$@dernier_mob) + "'.",0;
 	return;
 
 L_stop:
@@ -1107,6 +1114,7 @@ OnTimer8190000:
 	set $@numero_spawn,50;
 	callfunc "f_monstres", $@spawn50;
 	set $@Spawn_flag,3; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
+	areamonster "guild_vs5.gat",0,0,200,200,"Survivor",1002,20,"Surviv::OnMortMob"; // spawn de porings pour aider les derniers joueurs
 	end;
 
 // --------------------------
@@ -1153,8 +1161,8 @@ Le_Gagnant:
 	callfunc "Record_spawn", strcharinfo(0);
 
 	// Le prix du gagnant
-	announce strcharinfo(0) + " gagne 10.000 zenys.",0;
-	set Zeny,Zeny + 10000;
+	announce strcharinfo(0) + " gagne " + ($@numero_spawn * 750) + " zenys.",0;
+	set Zeny,Zeny + ($@numero_spawn * 750);
 
 	mapannounce "guild_vs5.gat","Garde Royal: "+ strcharinfo(0) + " doit emprunter un warp (ou deco/reco) pour quitter l'arène. Merci.",0;
 	goto L_gagnant_suite;
