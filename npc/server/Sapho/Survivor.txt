@@ -3,7 +3,7 @@
 //===== Par: =================================================
 //= Garion, GAlion, DaVinci, Jondalar, Kheldar, Yor
 //===== Current Version: =====================================
-//= 3.6
+//= 3.7
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -78,6 +78,13 @@
 //=        peut tuer un poring). Suppression des autres spawn
 //=        de porings servant à cet usage précédemment.
 //=      Réduction du nombre de monstres avant-event.
+//= 3.7  Suppression d'un double message pour les nettoyeurs.
+//=      Spawner uniquement des Thief Bug Female qui
+//=        deviendront des Thief Bug Male à leur seconde mort.
+//=      Les Thief Bug Male deviendront des Porcellio en
+//=        mourant à partir de la vague numéro 20.
+//=      Ajout d'un NPC drapeau pour informer les participants
+//=        en cours de jeu.
 //============================================================
 
 // les Warps
@@ -135,6 +142,18 @@ L_Novice: // L'usage de act dead/trick dead bloque l'event.
 }
 
 
+// NPC d'information pour les participants (message individuel à la demande)
+// -------------------------------------------------------------------------
+guild_vs5.gat,49,47,4	script	drapeau	722,2,2,{
+OnTouch:
+	announce "Informations instantannées:",3;
+	announce "- vague de spawns numéro " + $@numero_spawn + ".",3;
+	announce "- " + (GetMapMobs("guild_vs5.gat") - $@nb_mobs_permanents) + " monstre(s) à tuer.",3;
+	announce "- " + (getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20)) + " participant(s) dans l'arène.",3;
+	end;
+}
+
+
 // Fonction enregistrant le scrore d'un Master Survivor
 // ----------------------------------------------------
 function	script	Record_spawn	{
@@ -172,6 +191,7 @@ function	script	close_spawn	{
 	enablenpc "warprep2";
 	enablenpc "warprep3";
 	enablenpc "warprep4";
+	disablenpc "drapeau";
 	set $@numero_spawn,0;
 	set $@dernier_mob,0;
 	set $@Spawn_flag,0; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
@@ -365,6 +385,7 @@ OnStart:
 	disablenpc "warprep2";
 	disablenpc "warprep3";
 	disablenpc "warprep4";
+	enablenpc "drapeau";
 	initnpctimer;
 
 	// Détermination du type de spawn
@@ -711,10 +732,8 @@ OnTimer525000: // pour patienter (45 sec après le spawn)
 
 OnTimer550000:
 	mapannounce "guild_vs5.gat","Garde Royal: Mise en place de nettoyeurs plus résistants.",0;
-	mapannounce "guild_vs5.gat","Garde Royal: Mise en place de nettoyeurs plus résistants.",0;
 	areamonsteragro "guild_vs5.gat",0,0,200,200,"Nettoyeur",1017,5,"Surviv::OnMortBugAgro"; // Thief Bug Female
-	areamonsteragro "guild_vs5.gat",0,0,200,200,"Nettoyeur",1021,2,"Surviv::OnMortBugM"; // Thief Bug Male
-	set $@nb_mobs_permanents,$@nb_mobs_permanents + 7;
+	set $@nb_mobs_permanents,$@nb_mobs_permanents + 5;
 
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
@@ -1163,11 +1182,13 @@ OnMortPoring: // A chaque mort d'un nettoyeur
 	goto OnMortMob;
 OnMortBugAgro: // A chaque mort d'un nettoyeur agressif
 	// On en respawn un pour toujours en avoir toujours le même nombre.
-	areamonsteragro "guild_vs5.gat",0,0,200,200,"Nettoyeur",1017,1,"Surviv::OnMortBugAgro"; // Thief Bug Female
+	areamonsteragro "guild_vs5.gat",0,0,200,200,"Nettoyeur",1017,1,"Surviv::OnMortBugM"; // Thief Bug Female
+	// à la prochaine mort, le mob deviendra plus puissant: Thief Bug Male
 	goto OnMortMob;
 OnMortBugM: // A chaque mort d'un nettoyeur agressif
 	// On en respawn un pour toujours en avoir toujours le même nombre.
-	areamonsteragro "guild_vs5.gat",0,0,200,200,"Nettoyeur",1021,1,"Surviv::OnMortBugM"; // Thief Bug Male
+	if ($@numero_spawn < 20) areamonsteragro "guild_vs5.gat",0,0,200,200,"Nettoyeur",1021,1,"Surviv::OnMortBugM"; // Thief Bug Male
+	if ($@numero_spawn > 19) areamonsteragro "guild_vs5.gat",0,0,200,200,"Nettoyeur",1619,1,"Surviv::OnMortBugM"; // Porcellio
 	goto OnMortMob;
 
 // --------------------------
@@ -1427,6 +1448,7 @@ L_SUITE3:
 OnInit:
 	killmonsterall "guild_vs5.gat";
 	disablenpc "warpspawn";
+	disablenpc "drapeau";
 	// note: laisser les warps de sortie activés
 	set $@numero_spawn,0;
 	set $@dernier_mob,0;
