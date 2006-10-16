@@ -528,8 +528,8 @@
 1112,Drake@NPC_CALLSLAVE,idle,352,1,10000,0,30000,yes,self,always,0,,,,,,
 1112,Drake@NPC_GUIDEDATTACK,attack,172,5,500,0,20000,no,target,always,0,,,,,,
 1112,Drake@NPC_GUIDEDATTACK,chase,172,5,500,0,20000,no,target,always,0,,,,,,
-1112,Drake@NPC_SUMMONSLAVE,attack,196,5,10000,700,10000,no,self,slavele,3,1291,,,,,
-1112,Drake@NPC_SUMMONSLAVE,idle,196,5,10000,700,10000,no,self,slavele,3,1291,,,,,
+1112,Drake@NPC_SUMMONSLAVE,attack,196,5,10000,700,10000,no,self,slavele,3,1566,,,,,
+1112,Drake@NPC_SUMMONSLAVE,idle,196,5,10000,700,10000,no,self,slavele,3,1566,,,,,
 //1112,Drake@NPC_SUMMONSLAVE,idle,196,4,10000,0,0,no,self,onspawn,0,1192,,,,,
 1112,Drake@NPC_WATERATTACK,attack,184,5,2000,0,5000,no,target,always,0,,,,,,29
 1112,Drake@NPC_WATERATTACK,chase,184,5,2000,0,5000,no,target,skillused,18,,,,,,29
@@ -2383,23 +2383,23 @@
 1491,G_Dokebi@MC_MAMMONITE,attack,42,5,500,800,5000,no,target,always,0,,,,,,
 1491,G_Dokebi@NPC_DARKNESSATTACK,attack,190,1,2000,0,5000,yes,target,always,0,,,,,,
 
-// Incarnation Samurai
-//1492,Incarnation Samurai@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
-1492,Incarnation Samurai@AL_TELEPORT,idle,26,1,5000,1000,5000,yes,self,myhpltmaxrate,20,,,,,,
-1492,Incarnation Samurai@KN_BRANDISHSPEAR,attack,57,10,2000,500,5000,no,target,always,0,,,,,,
-1492,Incarnation Samurai@NPC_AGIUP,attack,350,5,10000,0,120000,yes,self,myhpltmaxrate,30,,,,,,9
-1492,Incarnation Samurai@NPC_ARMORBRAKE,attack,344,10,2000,0,5000,no,target,always,0,,,,,,
-1492,Incarnation Samurai@NPC_CALLSLAVE,attack,352,1,10000,0,30000,yes,target,always,0,,,,,,
-1492,Incarnation Samurai@NPC_CALLSLAVE,idle,352,1,10000,0,30000,yes,self,always,0,,,,,,
-1492,Incarnation Samurai@NPC_CRITICALSLASH,attack,170,1,2000,0,5000,no,target,always,0,,,,,,
-1492,Incarnation Samurai@NPC_HELMBRAKE,chase,345,10,2000,0,5000,no,target,always,0,,,,,,
-1492,Incarnation Samurai@NPC_GUIDEDATTACK,attack,172,5,500,0,20000,no,target,always,0,,,,,,
-1492,Incarnation Samurai@NPC_SHIELDBRAKE,attack,346,10,2000,0,5000,no,target,always,0,,,,,,
-1492,Incarnation Samurai@NPC_SUMMONSLAVE,attack,196,5,10000,700,10000,no,self,slavele,2,1560,,,,,
-1492,Incarnation Samurai@NPC_SUMMONSLAVE,idle,196,5,10000,700,10000,no,self,slavele,2,1560,,,,,
-//1492,Incarnation Samurai@NPC_SUMMONSLAVE,idle,196,5,10000,0,0,no,self,onspawn,0,1401,,,,,
-1492,Incarnation Samurai@RG_INTIMIDATE,attack,219,10,2000,0,60000,no,target,always,0,,,,,,
-1492,Incarnation Samurai@AL_TELEPORT,chase,26,1,10000,0,0,yes,self,skillused,18,,,,,,
+// Samurai Specter
+//1492,Samurai Specter@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
+1492,Samurai Specter@AL_TELEPORT,idle,26,1,5000,1000,5000,yes,self,myhpltmaxrate,20,,,,,,
+1492,Samurai Specter@KN_BRANDISHSPEAR,attack,57,10,2000,500,5000,no,target,always,0,,,,,,
+1492,Samurai Specter@NPC_AGIUP,attack,350,5,10000,0,120000,yes,self,myhpltmaxrate,30,,,,,,9
+1492,Samurai Specter@NPC_ARMORBRAKE,attack,344,10,2000,0,5000,no,target,always,0,,,,,,
+1492,Samurai Specter@NPC_CALLSLAVE,attack,352,1,10000,0,30000,yes,target,always,0,,,,,,
+1492,Samurai Specter@NPC_CALLSLAVE,idle,352,1,10000,0,30000,yes,self,always,0,,,,,,
+1492,Samurai Specter@NPC_CRITICALSLASH,attack,170,1,2000,0,5000,no,target,always,0,,,,,,
+1492,Samurai Specter@NPC_HELMBRAKE,chase,345,10,2000,0,5000,no,target,always,0,,,,,,
+1492,Samurai Specter@NPC_GUIDEDATTACK,attack,172,5,500,0,20000,no,target,always,0,,,,,,
+1492,Samurai Specter@NPC_SHIELDBRAKE,attack,346,10,2000,0,5000,no,target,always,0,,,,,,
+1492,Samurai Specter@NPC_SUMMONSLAVE,attack,196,5,10000,700,10000,no,self,slavele,2,1560,,,,,
+1492,Samurai Specter@NPC_SUMMONSLAVE,idle,196,5,10000,700,10000,no,self,slavele,2,1560,,,,,
+//1492,Samurai Specter@NPC_SUMMONSLAVE,idle,196,5,10000,0,0,no,self,onspawn,0,1401,,,,,
+1492,Samurai Specter@RG_INTIMIDATE,attack,219,10,2000,0,60000,no,target,always,0,,,,,,
+1492,Samurai Specter@AL_TELEPORT,chase,26,1,10000,0,0,yes,self,skillused,18,,,,,,
 
 // Umbala - Episode 8.0
 1493,Dryad@AL_HEAL,idle,28,9,10000,500,5000,yes,friend,friendhpltmaxrate,60,,,,,,2
@@ -2531,26 +2531,26 @@
 1520,Boiled Rice@NPC_SUICIDE,attack,175,1,10000,4000,0,no,target,myhpltmaxrate,50,,,,,,
 
 // MvP Slaves/Duplicates
+//1555,G_Parasite@NPC_REVENGE,idle,333,1,10000,0,0,yes,target,masterattacked,,,,,,,
+1555,G_Parasite@NPC_CURSEATTACK,attack,181,3,500,800,5000,no,target,always,0,,,,,,9
+1555,G_Parasite@NPC_PETRIFYATTACK,attack,180,3,500,500,5000,no,target,always,0,,,,,,9
+1555,G_Parasite@NPC_POISON,attack,176,3,500,800,5000,no,target,always,0,,,,,,9
 1566,G_Wraith Dead@AL_DECAGI,chase,30,9,500,1000,5000,no,target,always,0,,,,,,29
 1566,G_Wraith Dead@AS_GRIMTOOTH,chase,137,5,2000,0,5000,yes,target,always,0,,,,,,
 1566,G_Wraith Dead@NPC_CURSEATTACK,attack,181,5,500,800,5000,no,target,always,0,,,,,,29
 1566,G_Wraith Dead@NPC_CURSEATTACK,chase,181,5,500,800,5000,no,target,always,0,,,,,,29
 1566,G_Wraith Dead@NPC_POISON,attack,176,5,500,800,5000,no,target,always,0,,,,,,29
-//1555,G_Parasite@NPC_REVENGE,idle,333,1,10000,0,0,yes,target,masterattacked,,,,,,,
-1555,G_Parasite@NPC_CURSEATTACK,attack,181,3,500,800,5000,no,target,always,0,,,,,,9
-1555,G_Parasite@NPC_PETRIFYATTACK,attack,180,3,500,500,5000,no,target,always,0,,,,,,9
-1555,G_Parasite@NPC_POISON,attack,176,3,500,800,5000,no,target,always,0,,,,,,9
 //1575,G_Flora@NPC_REVENGE,idle,333,1,10000,0,0,yes,target,masterattacked,,,,,,,
 1575,G_Flora@NPC_BLOODDRAIN,attack,199,1,500,0,5000,yes,target,always,0,,,,,,
 1575,G_Flora@NPC_GROUNDATTACK,attack,185,1,2000,0,5000,yes,target,always,0,,,,,,
+//1579,G_Hydra@NPC_REVENGE,idle,333,1,10000,0,0,yes,target,masterattacked,,,,,,,
+1579,G_Hydra@NPC_WATERATTACK,attack,184,2,500,500,5000,no,target,always,0,,,,,,
 1580,G_Incubus@NPC_BLINDATTACK,attack,177,5,500,0,5000,yes,target,always,0,,,,,,
 1580,G_Incubus@NPC_DARKNESSATTACK,attack,190,2,500,500,5000,no,target,always,0,,,,,,
 1580,G_Incubus@NPC_DARKSTRIKE,attack,340,9,500,700,5000,no,target,always,0,,,,,,29
 1580,G_Incubus@NPC_DARKSTRIKE,chase,340,9,500,700,5000,no,target,always,0,,,,,,29
 1580,G_Incubus@NPC_MENTALBREAKER,attack,159,3,500,800,5000,no,target,always,0,,,,,,14
 1580,G_Incubus@NPC_MENTALBREAKER,chase,159,3,500,800,5000,no,target,always,0,,,,,,14
-//1579,G_Hydra@NPC_REVENGE,idle,333,1,10000,0,0,yes,target,masterattacked,,,,,,,
-1579,G_Hydra@NPC_WATERATTACK,attack,184,2,500,500,5000,no,target,always,0,,,,,,
 
 // Deviling
 1582,Deviling@NPC_SUMMONSLAVE,attack,196,2,10000,2000,10000,no,self,slavele,3,1595,1595,1595,1433,,6
@@ -3148,15 +3148,15 @@
 1652,Egnigem Cenia@NPC_EMOTION,attack,197,1,10000,0,5000,yes,self,skillused,28,15,,,,,
 1652,Egnigem Cenia@NPC_EMOTION,chase,197,1,10000,0,5000,yes,self,skillused,28,15,,,,,
 //1652,Egnigem Cenia@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
-1653,Wikebine Tres@TF_POISON,attack,52,9,1000,1000,5000,no,target,always,0,,,,,,
-1653,Wikebine Tres@TF_POISON,attack,52,9,10000,1000,1000,no,target,skillused,52,,,,,,
-1653,Wikebine Tres@TF_THROWSTONE,chase,152,1,4000,0,3000,yes,target,always,0,,,,,,
-1653,Wikebine Tres@NPC_POISONATTACK,attack,188,3,500,0,5000,yes,target,always,0,,,,,,
-1653,Wikebine Tres@NPC_POISON,attack,176,5,1000,800,5000,no,target,always,0,,,,,,
-1653,Wikebine Tres@NPC_EMOTION,idle,197,1,10000,0,5000,yes,self,skillused,28,15,,,,,
-1653,Wikebine Tres@NPC_EMOTION,attack,197,1,10000,0,5000,yes,self,skillused,28,15,,,,,
-1653,Wikebine Tres@NPC_EMOTION,chase,197,1,10000,0,5000,yes,self,skillused,28,15,,,,,
-//1653,Wikebine Tres@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
+1653,Wickebine Tres@TF_POISON,attack,52,9,1000,1000,5000,no,target,always,0,,,,,,
+1653,Wickebine Tres@TF_POISON,attack,52,9,10000,1000,1000,no,target,skillused,52,,,,,,
+1653,Wickebine Tres@TF_THROWSTONE,chase,152,1,4000,0,3000,yes,target,always,0,,,,,,
+1653,Wickebine Tres@NPC_POISONATTACK,attack,188,3,500,0,5000,yes,target,always,0,,,,,,
+1653,Wickebine Tres@NPC_POISON,attack,176,5,1000,800,5000,no,target,always,0,,,,,,
+1653,Wickebine Tres@NPC_EMOTION,idle,197,1,10000,0,5000,yes,self,skillused,28,15,,,,,
+1653,Wickebine Tres@NPC_EMOTION,attack,197,1,10000,0,5000,yes,self,skillused,28,15,,,,,
+1653,Wickebine Tres@NPC_EMOTION,chase,197,1,10000,0,5000,yes,self,skillused,28,15,,,,,
+//1653,Wickebine Tres@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
 1654,Armeyer Dinze@NPC_EMOTION,idle,197,1,2000,0,5000,yes,self,always,0,8,,,,,
 1654,Armeyer Dinze@MC_MAMMONITE,attack,42,9,1000,800,5000,no,target,always,0,,,,,,8
 1654,Armeyer Dinze@MC_MAMMONITE,attack,42,9,10000,800,1000,no,target,skillused,42,,,,,,8
@@ -3221,14 +3221,14 @@
 1658,Egnigem Cenia (MvP)@NPC_EMOTION,attack,197,1,10000,0,5000,yes,self,skillused,28,15,,,,,
 1658,Egnigem Cenia (MvP)@NPC_EMOTION,chase,197,1,10000,0,5000,yes,self,skillused,28,15,,,,,
 //1658,Egnigem Cenia (MvP)@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
-1659,Wikebine Tres@TF_POISON,attack,52,9,500,1000,5000,no,target,always,0,,,,,,
-1659,Wikebine Tres@TF_POISON,attack,52,9,10000,1000,1000,no,target,skillused,52,,,,,,
-1659,Wikebine Tres@TF_THROWSTONE,chase,152,1,4000,0,3000,yes,target,always,0,,,,,,
-1659,Wikebine Tres@NPC_POISONATTACK,attack,188,3,1000,0,5000,yes,target,always,0,,,,,,
-1659,Wikebine Tres@NPC_POISON,attack,176,5,1000,800,5000,no,target,always,0,,,,,,
-1659,Wikebine Tres@NPC_EMOTION,idle,197,1,10000,0,5000,yes,self,skillused,28,15,,,,,
-1659,Wikebine Tres@NPC_EMOTION,attack,197,1,10000,0,5000,yes,self,skillused,28,15,,,,,
-1659,Wikebine Tres@NPC_EMOTION,chase,197,1,10000,0,5000,yes,self,skillused,28,15,,,,,
+1659,Wickebine Tres@TF_POISON,attack,52,9,500,1000,5000,no,target,always,0,,,,,,
+1659,Wickebine Tres@TF_POISON,attack,52,9,10000,1000,1000,no,target,skillused,52,,,,,,
+1659,Wickebine Tres@TF_THROWSTONE,chase,152,1,4000,0,3000,yes,target,always,0,,,,,,
+1659,Wickebine Tres@NPC_POISONATTACK,attack,188,3,1000,0,5000,yes,target,always,0,,,,,,
+1659,Wickebine Tres@NPC_POISON,attack,176,5,1000,800,5000,no,target,always,0,,,,,,
+1659,Wickebine Tres@NPC_EMOTION,idle,197,1,10000,0,5000,yes,self,skillused,28,15,,,,,
+1659,Wickebine Tres@NPC_EMOTION,attack,197,1,10000,0,5000,yes,self,skillused,28,15,,,,,
+1659,Wickebine Tres@NPC_EMOTION,chase,197,1,10000,0,5000,yes,self,skillused,28,15,,,,,
 1660,Armeyer Dinze@NPC_EMOTION,idle,197,1,2000,0,5000,yes,self,always,0,8,,,,,
 1660,Armeyer Dinze@MC_MAMMONITE,attack,42,9,1000,800,5000,no,target,always,0,,,,,,8
 1660,Armeyer Dinze@MC_MAMMONITE,attack,42,9,10000,800,1000,no,target,skillused,42,,,,,,8
@@ -3381,9 +3381,9 @@
 //1686,Orc Baby@SM_BASH,angry,5,5,500,0,5000,yes,target,always,0,,,,,,
 1686,Orc Baby@SW_BASH,attack,5,5,500,800,5000,no,target,always,0,,,,,,
 1686,Orc Baby@NPC_EMOTION,idle,197,1,200,0,5000,no,self,always,0,2,,,,,
-1686,Orc Baby@NPC_SUMMONSLAVE,attack,196,1,5000,3000,180000,no,self,always,0,1222,1452,,,,
-1686,Orc Baby@NPC_SUMMONSLAVE,chase,196,1,5000,3000,180000,no,self,always,0,1222,1452,,,,
-1686,Orc Baby@NPC_SUMMONSLAVE,idle,196,1,5000,3000,180000,no,self,always,0,1222,1452,,,,
+1686,Orc Baby@NPC_SUMMONSLAVE,attack,196,1,5000,3000,180000,no,self,always,0,1023,1452,,,,
+1686,Orc Baby@NPC_SUMMONSLAVE,chase,196,1,5000,3000,180000,no,self,always,0,1023,1452,,,,
+1686,Orc Baby@NPC_SUMMONSLAVE,idle,196,1,5000,3000,180000,no,self,always,0,1023,1452,,,,
 1687,Green Iguana@NPC_GROUNDATTACK,attack,185,3,500,500,5000,no,target,always,0,,,,,,06
 1687,Green IguanaNPC_TELEKINESISATTACK,chase,191,5,200,0,5000,no,target,always,0,,,,,,
 1687,Green Iguana@NPC_EMOTION,walk,197,1,500,0,5000,no,self,always,0,2,,,,,

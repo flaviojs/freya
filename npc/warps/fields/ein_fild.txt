@@ -36,7 +36,6 @@ ein_fild08.gat,363,128,0	warp	ein008a	1,1,ein_fild09.gat,36,132
 ein_fild09.gat,70,353,0	warp	ein009	1,1,einbech.gat,62,33
 
 //Einbroch -> Einbroch Field <-> Lighthalzen Field
-ein_fild04.gat,184,26,0	warp	ein045a	1,1,einbroch.gat,158,329
 ein_fild04.gat,20,251,0	warp	ein046	1,1,ein_fild03.gat,361,257
 ein_fild03.gat,363,257,0	warp	ein046a	1,1,ein_fild04.gat,22,251
 ein_fild04.gat,14,215,0	warp	ein047	1,1,ein_fild03.gat,359,219

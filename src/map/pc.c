@@ -1308,8 +1308,10 @@ void pc_checkminskill(struct map_session_data* sd) {
 	case 4045: // Super Baby
 		min_points = 9 + 20 + sd->status.job_level - 1; // minimum calculation, so changement at base level 45 (not job level) + 20 points bonus
 		break;
-	case 4046: // Taekwon Boy/Girl
-	case 4047: // Star Knight
+	case 4046: // Taekwon Kid
+	case 4047: // Taekwon Master/Star Gladiator
+	case 4048: // Taekwon Master/Star Gladiator (Flying)
+	case 4049: // Soul Linker
 		min_points = 9 + sd->status.job_level - 1;
 	}
 
@@ -1444,8 +1446,10 @@ int pc_checkmaxskill(struct map_session_data* sd) {
 	case 4045: // Super Baby
 		max_points = 9 + 20 + sd->status.job_level - 1; // minimum calculation, so changement at base level 45 (not job level) + 20 points bonus
 		break;
-	case 4046: // Taekwon Boy/Girl
-	case 4047: // Star Knight
+	case 4046: // Taekwon Kid
+	case 4047: // Taekwon Master/Star Gladiator
+	case 4048: // Taekwon Master/Star Gladiator (Flying)
+	case 4049: // Soul Linker
 		max_points = 9 + sd->status.job_level - 1;
 		break;
 	}
@@ -3829,6 +3833,29 @@ int pc_setpos(struct map_session_data *sd, char *mapname_org, int x, int y, int 
 			status_change_end(&sd->bl, SC_CLOAKING, -1);
 		if (pc_ischasewalk(sd))
 			status_change_end(&sd->bl, SC_CHASEWALK, -1);
+			
+		if(sd->sc_data[SC_STRFOOD].timer != -1)
+			status_change_end(&sd->bl, SC_STRFOOD, -1);
+		if(sd->sc_data[SC_AGIFOOD].timer != -1)
+			status_change_end(&sd->bl, SC_AGIFOOD, -1);
+		if(sd->sc_data[SC_VITFOOD].timer != -1)
+			status_change_end(&sd->bl, SC_VITFOOD, -1);
+		if(sd->sc_data[SC_INTFOOD].timer != -1)
+			status_change_end(&sd->bl, SC_INTFOOD, -1);
+		if(sd->sc_data[SC_DEXFOOD].timer != -1)
+			status_change_end(&sd->bl, SC_DEXFOOD, -1);
+		if(sd->sc_data[SC_LUKFOOD].timer != -1)
+			status_change_end(&sd->bl, SC_LUKFOOD, -1);
+		if(sd->sc_data[SC_HITFOOD].timer != -1)
+			status_change_end(&sd->bl, SC_HITFOOD, -1);
+		if(sd->sc_data[SC_FLEEFOOD].timer != -1)
+			status_change_end(&sd->bl, SC_FLEEFOOD, -1);
+		if(sd->sc_data[SC_BATKFOOD].timer != -1)
+			status_change_end(&sd->bl, SC_BATKFOOD, -1);
+//		if(sd->sc_data[SC_WATKFOOD].timer != -1)
+//		status_change_end(&sd->bl, SC_WATKFOOD, -1);
+		if(sd->sc_data[SC_MATKFOOD].timer != -1)
+			status_change_end(&sd->bl, SC_MATKFOOD, -1);
 	}
 
 	if (sd->bl.m != m)	// remove area spells on map change

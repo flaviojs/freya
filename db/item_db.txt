@@ -41,7 +41,7 @@
 532,Banana_Juice,Banana Juice,0,20,10,40,,,,,27254783,2,,,,,{ itemheal rand(26,33),0; },{}
 533,Grape_Juice,Grape Juice,0,250,150,40,,,,,27254783,2,,,,,{ itemheal 0,rand(15,24); },{}
 534,Carrot_Juice,Carrot Juice,0,20,10,40,,,,,27254783,2,,,,,{ itemheal rand(27,32),0; },{}
-535,Pumkin,Pumpkin,0,15,7,20,,,,,27254783,2,,,,,{ itemheal 19,0; },{}
+535,Pumkin,Pumpkin,0,15,7,20,,,,,27254783,2,,,,,{ itemheal rand(19,19),0; },{}
 536,Ice_Cream,Ice Cream,0,150,75,80,,,,,27254783,2,,,,,{ itemheal rand(105,144),0; if(rand(100)<24) sc_start SC_Freeze,10000,0; },{}
 537,Pet_Food,Pet Food,0,1000,500,10,,,,,27254783,2,,,,,{ itemheal rand(50,89),0; },{}
 538,Well-baked_Cookie,Well-baked Cookie,0,1000,500,30,,,,,27254783,2,,,,,{ itemheal rand(160,199),0; },{}
@@ -1163,7 +1163,7 @@
 2653,Sacrifice_Ring,Sacrifice Ring,5,20,0,100,0,0,0,0,18866174,2,136,0,90,0,{},{}
 2654,Shinobi_Sash,Shinobi Sash,5,20,0,300,0,1,0,0,135232,2,136,0,30,0,{},{ bonus bStr,1; bonus bAgi,1; bonus bMdef,1; if(isequipped(2337)==0) end; bonus bUseSPrate,-20; bonus bMaxHP,300;}
 2655,Bloodied_Shackle_Ball,Bloodied Shackle Ball,5,20,0,4000,0,0,0,0,414946,2,136,0,0,0,{},{ if (isequipped(2408)==0) end; bonus bAtk,50; bonus2 bAddDefClass,1196,20; bonus2 bAddDefClass,1197,20; }
-2656,Armor_Charm,Armor Charm,5,20,0,1000,0,0,0,0,18866174,2,136,0,0,0,{},{ if((isequipped(2312)==0 || isequipped(2313))==0) end; bonus bDef,6; bonus bMaxHP,200;}
+2656,Armor_Charm,Armor Charm,5,20,0,1000,0,0,0,0,18866174,2,136,0,0,0,{},{ bonus bDef,1; bonus bMaxHP,50; if(isequipped(2312)==0 || isequipped(2313)==0) end; bonus bDef,5; bonus bMaxHP,150;}
 2657,Laboratory_Passport,Laboratory Passport,5,20,0,100,,0,,,27254783,2,136,,,,{},{}
 2658,Nile_Rose_,Nile Rose,5,20,0,100,0,0,0,1,27254783,2,136,0,0,0,{},{ bonus bMaxHP,10; }
 

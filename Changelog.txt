@@ -4,6 +4,37 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/15/06
+	* Fixed: Corrected Orc Baby's slaves: Orc Warrior + Orc Lady (Was High Orc + Orc Lady) [Tsuyuki]
+	* Note: Cooking is finally 100% implemented and working
+	* Fixed: Cooking SC's not being dispelled on map change [Tsuyuki]
+	* Fixed: Cooking SC's not working correctly [Tsuyuki]
+	* Reverted: Sight Blaster range from 3 to 2 (should actually be 1.. 3x3) [Tsuyuki]
+	 - Note: Found correct range on Ragnainfo.net
+	* Fixed: TK_TURNKICK / Roundhouse Kick is no longer AoE, its now single-targetted [Tsuyuki]
+	 - Note: Does not have its AoE pushback yet.. [Tsuyuki]
+	* Fixed: TK_RUN's speed from +25% to +50% [Tsuyuki]
+	* Fixed: TK_RUN's bonus is only applied if you are not wearing a weapon [Tsuyuki]
+	* Added: TaeKwon Master & Soul Linker skill_tree_db entries (Credits to eAthena) [Tsuyuki]
+
+10/14/06
+	* Added: Some code corresponding with the cooking SC's [Tsuyuki]
+	 - Note: Gaining progress on cooking SC's, but not completely fixed yet
+	* Added: TK_Run's (Sprint) +10 Atk per skill level effect [Tsuyuki]
+
+10/13/06
+	* Fixed: Armor Charm equipment set not working correctly [Tsuyuki]
+
+10/12/06
+	* Moved: PvP.txt and Guildcastles.txt warps to the warps/other folder [Tsuyuki]
+	* Updated: Major warp updates (Credits to eAthena) [Tsuyuki]
+	 - Note: A lot of the updated warps had to be omitted due to conflictions..
+	* Fixed: A few monster names [Tsuyuki]
+	* Added: The rest of the missing duplicate monsters [Tsuyuki]
+	* Fixed: Strawberry not dropping from the correct Desert Wolf [Tsuyuki]
+	* Fixed: Item 'Pumpkin' not doing anything [Tsuyuki]
+	 - Note: Please omit this on merge, but Yor, can you come on IRC sometime?
+
 10/10/06
 	* Added: The Sign Quest (35% converted from eAthena), do not enable it yet [Tsuyuki]
 	* Added: Some missing G_ duplicate mobs (WIP) [Tsuyuki]

@@ -667,6 +667,12 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 	if ((skill = pc_checkskill(sd, SA_DRAGONOLOGY)) > 0)
 		sd->paramb[3] += (skill % 2 == 0) ? skill / 2 : (skill + 1) / 2;
 
+	// TK_Run adds +10 ATK per level if no weapon is equipped [Tsuyuki]
+	if ((skill = pc_checkskill(sd, TK_RUN)) > 0) {
+		if (sd->status.weapon == 0)
+			sd->base_atk += skill * 10;
+		}
+
 	if(sd->sc_count)
 	{
 		if (sd->sc_data[SC_INCSTR].timer != -1)
@@ -693,7 +699,7 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 				sd->paramb[0] += (1 << (sd->sc_data[SC_CHASEWALK].val1 - 1)); // increases strength after 10 seconds
 		}
 		if(sd->sc_data[SC_RUN].timer != -1) {
-			sd->speed -= (sd->speed * 25) / 100;
+			sd->speed -= (sd->speed * 50) / 100;
 		}
 		if (sd->sc_data[SC_SLOWDOWN].timer!=-1)
 			sd->speed = sd->speed * 150 / 100;
@@ -1746,6 +1752,8 @@ int status_get_str(struct block_list *bl) {
 				str += sc_data[SC_INCSTR].val1;
 			/*if (sc_data[SC_INCALLSTATUS].timer != -1)
 				str += sc_data[SC_INCALLSTATUS].val1;*/
+			if (sc_data[SC_STRFOOD].timer != -1)
+				str += sc_data[SC_STRFOOD].val1;
 		}
 		if (str < 0)
 			str = 0;
@@ -1796,6 +1804,8 @@ int status_get_agi(struct block_list *bl) {
 				agi += sc_data[SC_INCAGI].val1;
 			if (sc_data[SC_INCALLSTATUS].timer != -1)
 				agi += sc_data[SC_INCALLSTATUS].val1;
+			if (sc_data[SC_AGIFOOD].timer != -1)
+				agi += sc_data[SC_AGIFOOD].val1;
 		}
 		
 		if (agi < 0)
@@ -1834,6 +1844,8 @@ int status_get_vit(struct block_list *bl) {
 				vit += 5;
 			/*if(sc_data[SC_INCALLSTATUS].timer != -1)
 				vit += sc_data[SC_INCALLSTATUS].val1;*/
+			if(sc_data[SC_VITFOOD].timer != -1)
+				vit += sc_data[SC_VITFOOD].val1;
 		}
 
 		if (vit < 0)
@@ -1878,8 +1890,10 @@ int status_get_int(struct block_list *bl) {
 				int_ = int_ * 60 / 100;
 			if (sc_data[SC_TRUESIGHT].timer != -1) // トゥルーサイト
 				int_ += 5;
-			/*if (sc_data[SC_INCALLSTATUS].timer != -1)
+			/*if(sc_data[SC_INCALLSTATUS].timer != -1)
 				int_ += sc_data[SC_INCALLSTATUS].val1;*/
+			if (sc_data[SC_INTFOOD].timer != -1)
+				int_ += sc_data[SC_INTFOOD].val1;
 		}
 		if (int_ < 0)
 			int_ = 0;
@@ -1929,6 +1943,8 @@ int status_get_dex(struct block_list *bl) {
 				dex += sc_data[SC_INCDEX].val1;
 			/*if (sc_data[SC_INCALLSTATUS].timer != -1)
 				dex += sc_data[SC_INCALLSTATUS].val1;*/
+			if (sc_data[SC_DEXFOOD].timer != -1)
+				dex += sc_data[SC_DEXFOOD].val1;
 		}
 		if (dex < 0)
 			dex = 0;
@@ -1969,6 +1985,8 @@ int status_get_luk(struct block_list *bl) {
 				luk = 0;
 			/*if (sc_data[SC_INCALLSTATUS].timer != -1)
 				luk += sc_data[SC_INCALLSTATUS].val1;*/
+			if (sc_data[SC_LUKFOOD].timer != -1)
+				luk += sc_data[SC_LUKFOOD].val1;
 		}
 		if (luk < 0)
 			luk = 0;
@@ -2010,6 +2028,8 @@ int status_get_flee(struct block_list *bl) {
 				flee += flee * sc_data[SC_INCFLEERATE].val1 / 100;
 			if(sc_data[SC_CLOSECONFINE].timer != -1)
 				flee += 10;
+			if(sc_data[SC_FLEEFOOD].timer != -1)
+				flee += sc_data[SC_FLEEFOOD].val1;
 		}
 	}
 
@@ -2048,6 +2068,8 @@ int status_get_hit(struct block_list *bl) {
 				hit += 10 * sc_data[SC_CONCENTRATION].val1;
 			if(sc_data[SC_INCHITRATE].timer != -1)
 				hit += hit * sc_data[SC_INCHITRATE].val1 / 100;
+			if(sc_data[SC_HITFOOD].timer != -1)
+				hit += sc_data[SC_HITFOOD].val1;
 		}
 	}
 	if (hit < 1)
@@ -2150,6 +2172,8 @@ int status_get_baseatk(struct block_list *bl) {
 				batk -= batk * 25 / 100; //base_atkが25%減少
 			if (sc_data[SC_CONCENTRATION].timer != -1) //コンセントレーション
 				batk += batk * (5 * sc_data[SC_CONCENTRATION].val1) / 100;
+			if(sc_data[SC_BATKFOOD].timer != -1)
+				batk += sc_data[SC_BATKFOOD].val1;
 		}
 	}
 	if (batk < 1) //base_atkは最低でも1
@@ -2188,6 +2212,8 @@ int status_get_atk(struct block_list *bl) {
 				atk += atk * (5 * sc_data[SC_CONCENTRATION].val1) / 100;
 			if(sc_data[SC_INCATKRATE].timer != -1)
 				atk += atk * sc_data[SC_INCATKRATE].val1 / 100;
+			/*if(sc_data[SC_WATKFOOD].timer != -1)
+				atk += atk * sc_data[SC_WATKFOOD].val1 / 100;*/
 		}
 	}
 	if (atk < 0)
@@ -2244,6 +2270,8 @@ int status_get_atk2(struct block_list *bl) {
 				atk2 += atk2 * (5 * sc_data[SC_CONCENTRATION].val1) / 100;
 			if(sc_data[SC_INCATKRATE].timer!=-1)
 				atk2 += atk2 * sc_data[SC_INCATKRATE].val1 / 100;
+			/*if(sc_data[SC_WATKFOOD].timer != -1)
+				atk2 += atk2 * sc_data[SC_WATKFOOD].val1 / 100;*/
 		}
 		if (atk2 < 0)
 			atk2 = 0;
@@ -2290,6 +2318,8 @@ int status_get_matk1(struct block_list *bl) {
 				matk = matk * (100 + 2 * sc_data[SC_MINDBREAKER].val1) / 100;
 			if (sc_data[SC_INCMATKRATE].timer!=-1)
 				matk = matk * (100 + sc_data[SC_INCMATKRATE].val1) /100;
+			if (sc_data[SC_MATKFOOD].timer!=-1)
+				matk = matk * (100 + sc_data[SC_MATKFOOD].val1) /100;
 		}
 	}
 
@@ -4025,6 +4055,20 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			scflag.calc = 1;
 			break;
 
+		case SC_STRFOOD:
+		case SC_AGIFOOD:
+		case SC_VITFOOD:
+		case SC_INTFOOD:
+		case SC_DEXFOOD:
+		case SC_LUKFOOD:
+		case SC_HITFOOD:
+		case SC_FLEEFOOD:
+		case SC_BATKFOOD:
+		case SC_WATKFOOD:
+		case SC_MATKFOOD:
+			scflag.calc = 1;
+			break;
+
 		case SC_REGENERATION:
 			val1 = 2;
 		case SC_BATTLEORDERS:
@@ -4322,6 +4366,17 @@ int status_change_end(struct block_list* bl, int type, int tid)
 			case SC_REGENERATION:
 			case SC_GUILDAURA:
 			case SC_SPURT:
+			case SC_STRFOOD:
+			case SC_AGIFOOD:
+			case SC_VITFOOD:
+			case SC_INTFOOD:
+			case SC_DEXFOOD:
+			case SC_LUKFOOD:
+			case SC_HITFOOD:
+			case SC_FLEEFOOD:
+			case SC_BATKFOOD:
+			case SC_WATKFOOD:
+			case SC_MATKFOOD:
 				calc_flag = 1;
 				break;
 
@@ -4681,9 +4736,6 @@ int status_change_timer(int tid, unsigned int tick, int id, int data)
 	case SC_SIGHTBLASTER:		
 	  {
 		int range = battle_config.ruwach_range;
-
-		if (type == SC_SIGHTBLASTER)
-			range = battle_config.sight_range;
 
 		if (type == SC_SIGHT)
 			range = battle_config.sight_range;

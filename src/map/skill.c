@@ -1250,6 +1250,7 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 				pc_breakarmor(dstsd);
 		}
 		break;
+	case TK_TURNKICK:
 	case MO_BALKYOUNG: //Note: attack_type is passed as BF_WEAPON for the actual target, BF_MISC for the splash-affected mobs.
 		if (attack_type == BF_MISC && (rand() % 100 <= 70)) // 70% base stun chance
 			status_change_start(bl, SC_STUN, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
@@ -2624,6 +2625,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		clif_skill_nodamage(src, bl, skillid, skilllv, 0);
 		skill_addtimerskill(src, tick + 1500, bl->id, 0, 0, skillid, skilllv, BF_WEAPON, flag);
 		break;
+	case TK_TURNKICK:
 	case MO_BALKYOUNG: // Active part of the attack. Skill-attack [Skotlex]
 		skill_area_temp[1] = bl->id; //NOTE: This is used in skill_castend_nodamage_id to avoid affecting the target.
 		if (skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,0)) {
@@ -2728,7 +2730,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case TK_COUNTER:
 		skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,flag);
 		break;
-	case TK_TURNKICK:
+/*	case TK_TURNKICK:
 		if(flag&1) {
 			if(bl->id != skill_area_temp[1]) {
 				skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,flag);
@@ -2744,7 +2746,8 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 				src,skillid,skilllv,tick,flag|BCT_ENEMY|1,
 				skill_castend_damage_id);
 		}
-		break;
+		break;*/
+
 	/* 武器系範囲攻撃スキル */
 //	case SM_MAGNUM:			/* マグナムブレイク */
 	case AS_GRIMTOOTH:		/* グリムトゥース */
@@ -3867,6 +3870,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		if(dstsd)
 			pc_addspiritball(dstsd,skill_get_time(skillid,skilllv),5);
 		break;
+	case TK_TURNKICK:
 	case MO_BALKYOUNG: //Passive part of the attack. Splash knock-back+stun. [Skotlex]
 		if (skill_area_temp[1] != bl->id) {
 			skill_blown(src,bl,skill_get_blewcount(skillid,skilllv));

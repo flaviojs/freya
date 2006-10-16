@@ -814,9 +814,9 @@ char * job_name(int class) {
 	case 4043: return "Baby Dancer";
 	case 4044: return "Baby Peco Crusader";
 	case 4045: return "Super Baby";
-	case 4046: return "TaeKwon Kid";
-	case 4047: return "Star Knight";
-	case 4048: return "Star Knight";
+	case 4046: return "Taekwon Kid";
+	case 4047: return "Taekwon Master";
+	case 4048: return "Taekwon Master";
 	case 4049: return "Soul Linker";
 	}
 
@@ -3921,8 +3921,8 @@ ATCOMMAND_FUNC(jobchange) {
 			send_usage(sd, "4023 Baby Novice    4030 Baby Knight      4037 Baby Crusader  4044 Baby Peco Crusader");
 			send_usage(sd, "4024 Baby Swordsman 4031 Baby Priest      4038 Baby Monk      4045 Super Baby");
 			send_usage(sd, "4025 Baby Mage      4032 Baby Wizard      4039 Baby Sage      4046 Taekwon Kid");
-			send_usage(sd, "4026 Baby Archer    4033 Baby Blacksmith  4040 Baby Rogue     4047 Star Gladiator");
-			send_usage(sd, "4027 Baby Acolyte   4034 Baby Hunter      4041 Baby Alchemist 4048 Fly Star Gladiator");
+			send_usage(sd, "4026 Baby Archer    4033 Baby Blacksmith  4040 Baby Rogue     4047 Taekwon Master");
+			send_usage(sd, "4027 Baby Acolyte   4034 Baby Hunter      4041 Baby Alchemist 4048 Flying Taekwon Master");
 			send_usage(sd, "4028 Baby Merchant  4035 Baby Assassin    4042 Baby Bard      4049 Soul Linker");
 			send_usage(sd, "4029 Baby Thief     4036 Baby Peco-Knight 4043 Baby Dancer");
 			send_usage(sd, "[upper]: -1 (default) to automatically determine the 'level', 0 to force normal job, 1 to force high job.");
@@ -7979,8 +7979,6 @@ ATCOMMAND_FUNC(character_job) {
 		{ "fly_taekwon_master",     4048 },
 		{ "soul linker",            4049 },
 		{ "soul_linker",            4049 },
-		{ "fly soul linker",        4049 },
-		{ "fly_soul_linker",        4049 },
 	};
 
 	if (!message || !*message || sscanf(message, "%d %d %[^\n]", &job, &upper, atcmd_name) < 3 || job < 0 || job >= MAX_PC_CLASS || (job > 23 && job < 4001)) { //upperŽw’è‚µ‚Ä‚ ‚é
@@ -8029,8 +8027,8 @@ ATCOMMAND_FUNC(character_job) {
 		send_usage(sd, "4023 Baby Novice    4030 Baby Knight      4037 Baby Crusader  4044 Baby Peco Crusader");
 		send_usage(sd, "4024 Baby Swordsman 4031 Baby Priest      4038 Baby Monk      4045 Super Baby");
 		send_usage(sd, "4025 Baby Mage      4032 Baby Wizard      4039 Baby Sage      4046 Taekwon Kid");
-		send_usage(sd, "4026 Baby Archer    4033 Baby Blacksmith  4040 Baby Rogue     4047 Star Gladiator");
-		send_usage(sd, "4027 Baby Acolyte   4034 Baby Hunter      4041 Baby Alchemist 4048 Fly Star Gladiator");
+		send_usage(sd, "4026 Baby Archer    4033 Baby Blacksmith  4040 Baby Rogue     4047 Taekwon Master");
+		send_usage(sd, "4027 Baby Acolyte   4034 Baby Hunter      4041 Baby Alchemist 4048 Flying Taekwon Master");
 		send_usage(sd, "4028 Baby Merchant  4035 Baby Assassin    4042 Baby Bard      4049 Soul Linker");
 		send_usage(sd, "4029 Baby Thief     4036 Baby Peco-Knight 4043 Baby Dancer");
 		send_usage(sd, "[upper]: -1 (default) to automatically determine the 'level', 0 to force normal job, 1 to force high job.");
