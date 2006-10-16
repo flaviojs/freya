@@ -85,6 +85,8 @@
 //=        mourant à partir de la vague numéro 20.
 //=      Ajout d'un NPC drapeau pour informer les participants
 //=        en cours de jeu.
+//=      Modification des ajouts de monstres à chaque nouveau
+//=        spawn.
 //============================================================
 
 // les Warps
@@ -146,7 +148,7 @@ L_Novice: // L'usage de act dead/trick dead bloque l'event.
 // -------------------------------------------------------------------------
 guild_vs5.gat,49,47,4	script	drapeau	722,2,2,{
 OnTouch:
-	announce "Informations instantannées:",3;
+	announce "Informations instantanées:",3;
 	announce "- vague de spawns numéro " + $@numero_spawn + ".",3;
 	announce "- " + (GetMapMobs("guild_vs5.gat") - $@nb_mobs_permanents) + " monstre(s) à tuer.",3;
 	announce "- " + (getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20)) + " participant(s) dans l'arène.",3;
@@ -228,8 +230,9 @@ function	script	f_monstres	{
 	if ($@NbMapMobs > ($@nb_mobs * 4 / 5)) set $@nb_mobs,$@nb_mobs - ($@nb_mobs / 10);
 	if ($@nb_mobs < 40) set $@nb_mobs,40;
 	// Augmenter le nombre de spawns, si les joueurs tuent trop vite les mobs
-	if ($@NbMapMobs < ($@nb_mobs / 10)) set $@nb_mobs,$@nb_mobs + 5;
 	if ($@NbMapMobs < ($@nb_mobs / 20)) set $@nb_mobs,$@nb_mobs + 5;
+	if ($@NbMapMobs < ($@nb_mobs / 10)) set $@nb_mobs,$@nb_mobs + 4;
+	if ($@NbMapMobs < ($@nb_mobs / 5)) set $@nb_mobs,$@nb_mobs + 2;
 
 	// Détermination des seuils pour les spawns
 	set $@a_spawner, $@nb_mobs;
