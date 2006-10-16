@@ -3,7 +3,7 @@
 //===== Par: =================================================
 //= Garion, GAlion, DaVinci, Jondalar, Kheldar, Yor
 //===== Current Version: =====================================
-//= 3.5
+//= 3.6
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -71,6 +71,13 @@
 //= 3.4  Mise en place de 2 thief bugs males en permanence à
 //=        partir du spawn 10 (Nettoyeur).
 //= 3.5  Explication de l'événement dans les règles.
+//= 3.6  Dans les calculs du nombre de monstres, ne pas tenir
+//=        compte des monstres permanents (nettoyeurs).
+//=      Mise en place de 5 porings en permanence pour aider
+//=        les joueurs à finir (le dernier, même un healer,
+//=        peut tuer un poring). Suppression des autres spawn
+//=        de porings servant à cet usage précédemment.
+//=      Réduction du nombre de monstres avant-event.
 //============================================================
 
 // les Warps
@@ -172,6 +179,7 @@ function	script	close_spawn	{
 	set $@nb_part2,0;
 	set $@survivants,0;
 	set $@nb_mobs,0;
+	set $@nb_mobs_permanents,0;
 	set $@spawn_type,0;
 
 	stopnpctimer "Surviv";
@@ -194,7 +202,7 @@ function	script	f_monstres	{
 	// Ne pas spawner si l'event n'est pas en cours (juste une sécurité)
 	if ($@Spawn_flag < 2) return; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
 
-	set $@NbMapMobs, GetMapMobs("guild_vs5.gat");
+	set $@NbMapMobs, (GetMapMobs("guild_vs5.gat") - $@nb_mobs_permanents);
 	// Réduire le nombre de spawns, si les joueurs tuent trop lentement les mobs
 	if ($@NbMapMobs > ($@nb_mobs / 3)) set $@nb_mobs,$@nb_mobs - ($@nb_mobs / 8);
 	if ($@NbMapMobs > ($@nb_mobs * 4 / 5)) set $@nb_mobs,$@nb_mobs - ($@nb_mobs / 10);
@@ -209,7 +217,6 @@ function	script	f_monstres	{
 	if ($@a_spawner > 200) set $@a_spawner,200;
 
 	// Spawn des monstres
-	if ($@nb_part == 1) areamonsteragro "guild_vs5.gat",0,0,200,200,"Survivor",1002,20,"Surviv::OnMortMob"; // spawn de porings pour aider le dernier joueur
 	set $@dernier_mob, getarg(0);
 	areamonsteragro "guild_vs5.gat",0,0,200,200,"Survivor",$@dernier_mob,$@a_spawner,"Surviv::OnMortMob";
 	set $@a_spawner, 0;
@@ -236,8 +243,7 @@ Suite_annonce1:
 
 Suite_spawn:
 	set $@NbMapMobs, 0;
-	if ($@nb_part == 1) mapannounce "guild_vs5.gat","Vague de spawns numéro " + $@numero_spawn + " -> Invasion de '" + strmobinfo(2,1002) + "'.",0;
-	if ($@nb_part != 1) mapannounce "guild_vs5.gat","Vague de spawns numéro " + $@numero_spawn + " -> Invasion de '" + strmobinfo(2,$@dernier_mob) + "'.",0;
+	mapannounce "guild_vs5.gat","Vague de spawns numéro " + $@numero_spawn + " -> Invasion de '" + strmobinfo(2,$@dernier_mob) + "'.",0;
 	return;
 
 L_stop:
@@ -268,7 +274,7 @@ function	script	check_monstres	{
 	// Ne pas spawner si l'event n'est pas en cours (juste une sécurité)
 	if ($@Spawn_flag != 2) return; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
 
-	if (GetMapMobs("guild_vs5.gat") >= ($@nb_mobs / 5)) return;
+	if ((GetMapMobs("guild_vs5.gat") - $@nb_mobs_permanents) >= ($@nb_mobs / 5)) return;
 
 	// Augmenter le nombre de spawns, les joueurs tuent trop vite les mobs (test mini/maxi au moment du spawn)
 	set $@nb_mobs,$@nb_mobs + ($@nb_mobs / 20); // +5%
@@ -285,7 +291,7 @@ re_random:
 	if ($@spawn_rnd == 4) goto rnd4;
 	if ($@spawn_rnd == 5) goto rnd5;
 	if ($@spawn_rnd == 6) goto rnd6;
-	if (GetMapMobs("guild_vs5.gat") > 0) goto re_random; // ne pas respawner le même monstre s'il reste des monstres
+	if ((GetMapMobs("guild_vs5.gat") - $@nb_mobs_permanents) > 0) goto re_random; // ne pas respawner le même monstre s'il reste des monstres
 	goto Repeter_dernier;
 
 Repeter_dernier:
@@ -339,22 +345,6 @@ rnd6: // Skeletons
 }
 
 
-
-
-// Fonction spawnant des thief bug non agressifs pour: nettoyer et pour retirer le hide des assassins s'ils attaquent.
-// -------------------------------------------------------------------------------------------------------------------
-function	script	nettoyeur	{
-	if (agitcheck(0) != 0) goto return;
-	// Ne pas spawner si l'event n'est pas en cours (juste une sécurité)
-	if ($@Spawn_flag != 2) return; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
-
-	mapannounce "guild_vs5.gat","Garde Royal: Mise en place de nettoyeurs pour ramasser les restes.",0;
-	areamonster "guild_vs5.gat",0,0,200,200,"Nettoyeur",1017,5,"Surviv::OnMortBug"; // Thief Bug Female
-	areamonsteragro "guild_vs5.gat",0,0,200,200,"Nettoyeur",1017,5,"Surviv::OnMortBugAgro"; // Thief Bug Female
-	areamonster "guild_vs5.gat",0,0,200,200,"Nettoyeur",1021,2,"Surviv::OnMortBugM"; // Thief Bug Male
-
-	return;
-}
 
 
 // NPC principal de l'event
@@ -633,8 +623,15 @@ Suite_onstart:
 	mapannounce "guild_vs5.gat","Garde Royal: Pour devenir le Master Survivor, vous devez tuer un monstre en étant le dernier survivant!",0;
 	mapannounce "guild_vs5.gat","Garde Royal: Règle importante: Il est INTERDIT de téléporter un joueur dans l'arène ou de rescussiter un joueur.",0;
 	mapannounce "guild_vs5.gat","Garde Royal: 30 secondes entre chaque spawn de monstres différents. Survivez !",0; //Première slave.
+
 	set $@numero_spawn,1;
 	callfunc "f_monstres", $@spawn1;
+	end;
+
+OnTimer20000:
+	mapannounce "guild_vs5.gat","Garde Royal: Mise en place de nettoyeurs pour ramasser les restes.",0;
+	areamonster "guild_vs5.gat",0,0,200,200,"Nettoyeur",1002,5,"Surviv::OnMortPoring"; // Poring
+	set $@nb_mobs_permanents,$@nb_mobs_permanents + 5;
 	end;
 
 OnTimer30000:
@@ -713,8 +710,13 @@ OnTimer525000: // pour patienter (45 sec après le spawn)
 	end;
 
 OnTimer550000:
+	mapannounce "guild_vs5.gat","Garde Royal: Mise en place de nettoyeurs plus résistants.",0;
+	mapannounce "guild_vs5.gat","Garde Royal: Mise en place de nettoyeurs plus résistants.",0;
+	areamonsteragro "guild_vs5.gat",0,0,200,200,"Nettoyeur",1017,5,"Surviv::OnMortBugAgro"; // Thief Bug Female
+	areamonsteragro "guild_vs5.gat",0,0,200,200,"Nettoyeur",1021,2,"Surviv::OnMortBugM"; // Thief Bug Male
+	set $@nb_mobs_permanents,$@nb_mobs_permanents + 7;
+
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
-	callfunc "nettoyeur";
 	end;
 OnTimer570000:
 	set $@numero_spawn,12;
@@ -1152,20 +1154,19 @@ OnTimer8190000:
 	set $@numero_spawn,50;
 	callfunc "f_monstres", $@spawn50;
 	set $@Spawn_flag,3; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
-	areamonster "guild_vs5.gat",0,0,200,200,"Survivor",1002,20,"Surviv::OnMortMob"; // spawn de porings pour aider les derniers joueurs
 	end;
 
 // --------------------------
-OnMortBug: // A chaque mort d'un nettoyeur
-	// On en respawn un pour toujours en avoir 10.
-	areamonster "guild_vs5.gat",0,0,200,200,"Nettoyeur",1017,1,"Surviv::OnMortBug"; // Thief Bug Female
+OnMortPoring: // A chaque mort d'un nettoyeur
+	// On en respawn un pour toujours en avoir toujours le même nombre.
+	areamonster "guild_vs5.gat",0,0,200,200,"Nettoyeur",1002,1,"Surviv::OnMortPoring"; // Poring
 	goto OnMortMob;
 OnMortBugAgro: // A chaque mort d'un nettoyeur agressif
-	// On en respawn un pour toujours en avoir 10.
+	// On en respawn un pour toujours en avoir toujours le même nombre.
 	areamonsteragro "guild_vs5.gat",0,0,200,200,"Nettoyeur",1017,1,"Surviv::OnMortBugAgro"; // Thief Bug Female
 	goto OnMortMob;
 OnMortBugM: // A chaque mort d'un nettoyeur agressif
-	// On en respawn un pour toujours en avoir 10.
+	// On en respawn un pour toujours en avoir toujours le même nombre.
 	areamonsteragro "guild_vs5.gat",0,0,200,200,"Nettoyeur",1021,1,"Surviv::OnMortBugM"; // Thief Bug Male
 	goto OnMortMob;
 
@@ -1184,7 +1185,7 @@ OnMortMob: // A chaque mort d'un monstre
 	if ($@Spawn_flag != 3) end; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
 
 // affichage special pour le dernier spawn
-	set $@Mob_a_tuer, GetMapMobs("guild_vs5.gat");
+	set $@Mob_a_tuer, (GetMapMobs("guild_vs5.gat") - $@nb_mobs_permanents);
 	if ($@Mob_a_tuer != 500 && $@Mob_a_tuer != 400 && $@Mob_a_tuer != 300 && $@Mob_a_tuer != 200 && $@Mob_a_tuer != 100 && $@Mob_a_tuer != 50 && $@Mob_a_tuer != 10 && $@Mob_a_tuer != 5) goto OnMortMob_sans_quantity;
 	mapannounce "guild_vs5.gat","Garde Royal: Encore " + $@Mob_a_tuer +" monstres à tuer.",0;
 	set $@Mob_a_tuer, 0;
@@ -1194,7 +1195,7 @@ OnMortMob_sans_quantity:
 	set $@Mob_a_tuer, 0;
 
 	// Event est terminé (plus de monstre)?
-	if (GetMapMobs("guild_vs5.gat") > 0) end;
+	if ((GetMapMobs("guild_vs5.gat") - $@nb_mobs_permanents) > 0) end;
 
 // Plusieurs gagnants
 	announce "Nous avons plusieurs Masters Survivors dans le Spawn Survivor!",0;
@@ -1248,7 +1249,7 @@ function	script	before_event	{
 
 	if ((getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20)) < 1) return; // ne pas spawner si aucun joueur n'est dans l'arène
 
-	set $@spawn_rnd, (rand(21,50) - GetMapMobs("guild_vs5.gat")) / 2; // divisé par 2, car 2 spawns (un normal, un agressif)
+	set $@spawn_rnd, (rand(21,40) - GetMapMobs("guild_vs5.gat")) / 2; // divisé par 2, car 2 spawns (un normal, un agressif) // pas encore de monstres permanents ($@nb_mobs_permanents)
 	if ($@spawn_rnd < 0) return;
 	if ($@spawn_rnd < 10) goto Faire_spawn; // Ne pas afficher de message si la quantité est faible
 	mapannounce "guild_vs5.gat","Garde Royal: Voici de quoi vous entraîner en attendant...",0;
@@ -1257,7 +1258,7 @@ function	script	before_event	{
 Faire_spawn:
 	areamonster "guild_vs5.gat",0,0,200,200,"Poring",1002,$@spawn_rnd,"";
 	areamonsteragro "guild_vs5.gat",0,0,200,200,"Poring carnivore",1002,$@spawn_rnd,"";
-	if (rand(1, 3) == 1) areamonster "guild_vs5.gat",0,0,200,200,"Plante scintillante",1083,(getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20)) * 2,""; // shining plants
+	if (rand(1, 3) == 1) areamonster "guild_vs5.gat",0,0,200,200,"Plante scintillante",1083,(getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20)) * 3 / 2,""; // shining plants
 	set $@spawn_rnd, 0;
 	return;
 }
@@ -1359,14 +1360,14 @@ L_info_event_en_cours:
 	if ($@delai_sec > 59 && $@delai_sec < 120) mes "L'événement a commencé il y a 1 minute et " + ($@delai_sec - 60) + " seconde(s).";
 	if ($@delai_sec > 119) mes "L'événement a commencé il y a " + ($@delai_sec / 60) + " minutes.";
 	set $@delai_sec, 0;
-	mes "Il y a " + $@survivants + " participants en lice qui ont " + GetMapMobs("guild_vs5.gat") + " monstre(s) à tuer.";
+	mes "Il y a " + $@survivants + " participants en lice qui ont " + (GetMapMobs("guild_vs5.gat") - $@nb_mobs_permanents) + " monstre(s) à tuer.";
 	mes "Au revoir.";
 	close;
 
 L_info_phase_finale:
 	mes "[Spawner]";
 	mes "Un Spawn Survivor de type " + $@spawn_type + " est actuellement dans sa phase finale.";
-	mes "Il reste " + GetMapMobs("guild_vs5.gat") + " monstre(s) à tuer aux " + $@survivants + " participants en lice.";
+	mes "Il reste " + (GetMapMobs("guild_vs5.gat") - $@nb_mobs_permanents) + " monstre(s) à tuer aux " + $@survivants + " participants en lice.";
 	next;
 	mes "[Spawner]";
 	set $@delai_sec, getnpctimer(0,"Surviv") / 1000;
@@ -1434,6 +1435,7 @@ OnInit:
 	set $@nb_part2,0;
 	set $@survivants,0;
 	set $@nb_mobs,0;
+	set $@nb_mobs_permanents,0;
 	set $@spawn_type,0;
 	stopnpctimer;
 	end;
@@ -1618,7 +1620,7 @@ OnTimer540000: // 9 minutes après je refais une annonce.
 	Announce "Garde Royal: Le Spawn Survivor de type " + $@spawn_type + " commence dans 1 minute. Dépéchez-vous !",8;
 	mapannounce "guild_vs5.gat","Garde Royal: Participants, préparez-vous au Spawn Survivor...",0;
 	// nettoyage de la place
-	if (GetMapMobs("guild_vs5.gat") < 1) end;
+	if (GetMapMobs("guild_vs5.gat") < 1) end; // pas encore de monstres permanents ($@nb_mobs_permanents)
 	mapannounce "guild_vs5.gat","Garde Royal: *Nettoyage de l'arène...*",0;
 	killmonsterall "guild_vs5.gat"; // destruction des monstres pour laisser une minute tranquille
 	end;
