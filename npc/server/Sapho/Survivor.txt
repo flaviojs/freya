@@ -10,47 +10,6 @@
 //= Evénement spawnant des monstres jusqu'à ce qu'il ne reste
 //=   un seul et unique joueur en vie.
 //===== Commentaires: ========================================
-//= 2.8  Nettoyage commentaires et logs.
-//=      Modification calcul augmentation nombre de monstres
-//=        lors d'un nouveau spawn.
-//=      Spawner moins de monstre pour patienter avant l'event
-//=      Meilleur affichage du temps restant pour se rendre à
-//=        l'arène (dans les informations).
-//=      Affichage du temps écoulé concernant l'event en cours
-//=        (dans les informations).
-//=      Au début, nombre de monstres minimum: 50.
-//=      Limite au moment des spawns: 50 <= x <= 300. Cela ne
-//=        change pas le nombre de monstres dans les
-//=        ajouts/soustractions en fonction du nombre de morts
-//=        et/ou de l'efficacité des joueurs.
-//=      Réduire le nombre de spawns si les joueurs tuent trop
-//=        lentement les monstres.
-//=      Indication du dernier monstre spawné (dans les
-//=        informations).
-//= 2.9  Event tous les jours à 06h00.
-//=      Minimum/maximum de monstres: 50-300 -> 40-200.
-//=      Réduire le nombre de monstres de 3 au lieu de 2 pour
-//=        chaque mort.
-//=      A mi-temps, ne spawner que 50% du nombre habituel de
-//=        monstres.
-//=      Avant l'event, ajout de quelques shining plants.
-//=      Ajout de la liste des 10 derniers gagnants (basé sur
-//=        le travail de GAlion).
-//= 2.10 Guérison automatique sur les warps de sortie.
-//=      Lors de spawn de shining plants, la quantité est
-//=        fixe: 2 fois le nombre de joueurs présents.
-//=      La chance de spawner des shining plants passe de 20%
-//=        à 33%.
-//=      Lorsqu'un event est en cours et qu'un GM essaye d'en
-//=        activer un, le type ne change plus.
-//=      Lorsque le nombre de monstres vivants est trop
-//=        important au spawn suivant, la quantité est réduite
-//=        de 12,5% (au lieu de 10%).
-//=      Réduction d'une ligne des pavés de messages.
-//= 2.11 Correction nom des warps et position des warps.
-//=      Affichages des gagnants en fonction du type de spawn.
-//=      S'il reste beaucoup de monstres à un spawn (80%),
-//=        réduire de 10% le nombre de spawn.
 //= 3.0  Réduction du nombre de porings avant l'event.
 //=      Ne spawner les monstres à mi-temps qu s'il reste
 //=        moins de 20% des monstres et non plus moins de 25%.
@@ -89,6 +48,14 @@
 //=        spawn.
 //= 3.8  Ajout d'un test pour savoir si le tueur d'un monstre
 //=        est mort ou non.
+//=      Change le calcul du nombre de joueurs vivants (total
+//=        sur la carte - GMs) en non GMs.
+//=      Information correctement mises à jour concernant le
+//=        nombre de participants dans l'information de
+//=        l'event en cours.
+//=      Suppression changelog avant version 3.0.
+//=      Ajout du drapeau dans la période avant-event.
+//=      Plus d'informations avec le drapeau.
 //============================================================
 
 // les Warps
@@ -151,9 +118,24 @@ L_Novice: // L'usage de act dead/trick dead bloque l'event.
 guild_vs5.gat,49,47,4	script	drapeau	722,2,2,{
 OnTouch:
 	announce "Informations instantanées:",3;
-	announce "- vague de spawns numéro " + $@numero_spawn + ".",3;
+	if ($@Spawn_flag == 1) goto L_info_avant_event; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
+	goto L_info_event_en_cours;
+
+L_info_avant_event:
+	announce "- Spawn Survivor de type " + $@spawn_type + " actuellement en cours de préparation.",3;
+	set $@delai_sec, 600 - (getnpctimer(0, "Spawner") / 1000);
+	if ($@delai_sec > 0 && $@delai_sec < 60) announce "- Début du Spawn survivor dans " + $@delai_sec + " seconde(s).",3;
+	if ($@delai_sec > 59 && $@delai_sec < 120) announce "- Début du Spawn survivor dans 1 minute et " + ($@delai_sec - 60) + " seconde(s).",3;
+	if ($@delai_sec > 119) announce "- Début du Spawn survivor dans " + ($@delai_sec / 60) + " minutes.",3;
+	set $@delai_sec, 0;
+	announce "- Déjà " + getmapnotgms2("guild_vs5.gat",20) + " participant(s) dans l'arène.",3;
+	end;
+
+L_info_event_en_cours:
+	announce "- Spawn Survivor de type " + $@spawn_type + " en cours.",3;
+	announce "- Vague de spawns numéro " + $@numero_spawn + " effectuée (monstre: " + strmobinfo(2,$@dernier_mob) + ").",3;
 	announce "- " + (GetMapMobs("guild_vs5.gat") - $@nb_mobs_permanents) + " monstre(s) à tuer.",3;
-	announce "- " + (getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20)) + " participant(s) dans l'arène.",3;
+	announce "- " + getmapnotgms2("guild_vs5.gat",20) + " participant(s) dans l'arène.",3;
 	end;
 }
 
@@ -217,7 +199,7 @@ function	script	close_spawn	{
 // ------------------
 function	script	f_monstres	{
 	if (agitcheck(0) != 0) goto L_woe;
-	set $@nb_part,getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20); // Joueurs vivants moins GMs vivants
+	set $@nb_part,getmapnotgms2("guild_vs5.gat",20); // Joueurs non GMs vivants
 	if ($@nb_part < 1) goto L_stop;
 	if ($@nb_part > $@survivants) goto L_triche; // Quelqu'un a été téléporté ou rescussité
 	set $@nb_mobs, $@nb_mobs - (($@survivants - $@nb_part) * 3); // Réduire le nombre de spawns par mort
@@ -390,7 +372,6 @@ OnStart:
 	disablenpc "warprep2";
 	disablenpc "warprep3";
 	disablenpc "warprep4";
-	enablenpc "drapeau";
 	initnpctimer;
 
 	// Détermination du type de spawn
@@ -637,7 +618,7 @@ L_spawntype3:
 	goto Suite_onstart;
 
 Suite_onstart:
-	set $@nb_part,getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20); // Joueurs vivants moins GMs vivants
+	set $@nb_part,getmapnotgms2("guild_vs5.gat",20); // Joueurs non GMs vivants
 	set $@survivants,$@nb_part; // pour tester les cas de triche
 	set $@nb_part2,$@nb_part; // $@nb_part2: pour afficher en global (announce) le nombre de partipants (quand ça change), sinon seulement en (mapannounce)
 	set $@nb_mobs,($@nb_part + 4) * 5; // type 1 (par défaut)
@@ -1198,7 +1179,7 @@ OnMortBugM: // A chaque mort d'un nettoyeur agressif
 
 // --------------------------
 OnMortMob: // A chaque mort d'un monstre
-	set $@nb_part,getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20); // Joueurs vivants moins GMs vivants
+	set $@nb_part,getmapnotgms2("guild_vs5.gat",20); // Joueurs non GMs vivants
 	if ($@nb_part > $@survivants) goto L_tricheur; // Quelqu'un a été téléporté ou rescussité
 	set $@nb_mobs, $@nb_mobs - (($@survivants - $@nb_part) * 3); // Réduire le nombre de spawns par mort
 	set $@survivants, $@nb_part;
@@ -1248,7 +1229,7 @@ Le_Gagnant:
 	goto L_gagnant_suite;
 
 L_gagnant_suite:
-	if ((getmapusers3("guild_vs5.gat") - getmapgms3("guild_vs5.gat",20)) < 1) goto L_stoptimer; // pas de mort sur la carte
+	if (getmapnotgms3("guild_vs5.gat",20) < 1) goto L_stoptimer; // pas de mort sur la carte
 	mapannounce "guild_vs5.gat","Garde Royal: Les autres, vous pouvez retourner à votre point de sauvegarde (ou deco/reco).",0;
 	goto L_stoptimer;
 
@@ -1274,7 +1255,7 @@ function	script	before_event	{
 	// Ne pas spawner si l'event n'est pas en cours (juste une sécurité)
 	if ($@Spawn_flag != 1) return; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
 
-	if ((getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20)) < 1) return; // ne pas spawner si aucun joueur n'est dans l'arène
+	if (getmapnotgms2("guild_vs5.gat",20) < 1) return; // ne pas spawner si aucun joueur n'est dans l'arène
 
 	set $@spawn_rnd, (rand(21,40) - GetMapMobs("guild_vs5.gat")) / 2; // divisé par 2, car 2 spawns (un normal, un agressif) // pas encore de monstres permanents ($@nb_mobs_permanents)
 	if ($@spawn_rnd < 0) return;
@@ -1285,7 +1266,7 @@ function	script	before_event	{
 Faire_spawn:
 	areamonster "guild_vs5.gat",0,0,200,200,"Poring",1002,$@spawn_rnd,"";
 	areamonsteragro "guild_vs5.gat",0,0,200,200,"Poring carnivore",1002,$@spawn_rnd,"";
-	if (rand(1, 3) == 1) areamonster "guild_vs5.gat",0,0,200,200,"Plante scintillante",1083,(getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20)) * 3 / 2,""; // shining plants
+	if (rand(1, 3) == 1) areamonster "guild_vs5.gat",0,0,200,200,"Plante scintillante",1083,(getmapnotgms2("guild_vs5.gat",20) * 3) / 2,""; // shining plants
 	set $@spawn_rnd, 0;
 	return;
 }
@@ -1363,7 +1344,7 @@ L_info_pas_event:
 L_info_avant_event:
 	mes "[Spawner]";
 	mes "Un Spawn Survivor de type " + $@spawn_type + " est actuellement en cours de préparation.";
-	mes "Il y a déjà " + (getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20)) + " participant(s) dans l'arène.";
+	mes "Il y a déjà " + getmapnotgms2("guild_vs5.gat",20) + " participant(s) dans l'arène.";
 	next;
 	mes "[Spawner]";
 	set $@delai_sec, 600 - (getnpctimer(0) / 1000);
@@ -1387,14 +1368,14 @@ L_info_event_en_cours:
 	if ($@delai_sec > 59 && $@delai_sec < 120) mes "L'événement a commencé il y a 1 minute et " + ($@delai_sec - 60) + " seconde(s).";
 	if ($@delai_sec > 119) mes "L'événement a commencé il y a " + ($@delai_sec / 60) + " minutes.";
 	set $@delai_sec, 0;
-	mes "Il y a " + $@survivants + " participants en lice qui ont " + (GetMapMobs("guild_vs5.gat") - $@nb_mobs_permanents) + " monstre(s) à tuer.";
+	mes "Il y a " + getmapnotgms2("guild_vs5.gat",20) + " participants en lice qui ont " + (GetMapMobs("guild_vs5.gat") - $@nb_mobs_permanents) + " monstre(s) à tuer.";
 	mes "Au revoir.";
 	close;
 
 L_info_phase_finale:
 	mes "[Spawner]";
 	mes "Un Spawn Survivor de type " + $@spawn_type + " est actuellement dans sa phase finale.";
-	mes "Il reste " + (GetMapMobs("guild_vs5.gat") - $@nb_mobs_permanents) + " monstre(s) à tuer aux " + $@survivants + " participants en lice.";
+	mes "Il reste " + (GetMapMobs("guild_vs5.gat") - $@nb_mobs_permanents) + " monstre(s) à tuer aux " + getmapnotgms2("guild_vs5.gat",20) + " participants en lice.";
 	next;
 	mes "[Spawner]";
 	set $@delai_sec, getnpctimer(0,"Surviv") / 1000;
@@ -1594,6 +1575,7 @@ L_creawarp:
 	Announce "Si vous arrivez en retard, vous ne pourrez pas entrer dans l'arène.",8;
 	killmonsterall "guild_vs5.gat";
 	enablenpc "warpspawn";
+	enablenpc "drapeau";
 	pvpoff "guild_vs5.gat";
 	gvgoff "guild_vs5.gat";
 	setmapflag "guild_vs5.gat",mf_nosave;
@@ -1625,7 +1607,7 @@ OnTimer240000:
 OnTimer300000: // 5 minutes après je fais un rappel.
 	Announce "Garde Royal: Plus que 5 minutes avant le Spawn Survivor de type " + $@spawn_type + ". Dépéchez-vous !",8;
 	Announce "Rendez-vous dans l'allée au sud de la fontaine de Prontera. Si vous arrivez en retard,",8;
-	Announce "vous ne pourrez pas entrer dans l'arène. Il y a déjà " + (getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20)) + " participant(s) dans l'arène.",8;
+	Announce "vous ne pourrez pas entrer dans l'arène. Il y a déjà " + getmapnotgms2("guild_vs5.gat",20) + " participant(s) dans l'arène.",8;
 	callfunc "before_event"; // 5 minutes, spawn de monstres pour patienter.
 	end;
 
@@ -1640,7 +1622,7 @@ OnTimer420000:
 OnTimer480000:
 	Announce "Garde Royal: Début du Spawn Survivor de type " + $@spawn_type + " dans 2 minutes. Dépéchez-vous !",8;
 	Announce "Rendez-vous dans l'allée au sud de la fontaine de Prontera. Si vous arrivez en retard,",8;
-	Announce "vous ne pourrez pas entrer dans l'arène. Déjà " + (getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20)) + " participant(s) arrivé(s) dans l'arène.",8;
+	Announce "vous ne pourrez pas entrer dans l'arène. Déjà " + getmapnotgms2("guild_vs5.gat",20) + " participant(s) arrivé(s) dans l'arène.",8;
 	callfunc "before_event"; // 8 minutes, spawn de monstres pour patienter.
 	end;
 
@@ -1660,9 +1642,9 @@ OnTimer585000: // 9 minute 45 sec après, je donne un conseil.
 
 OnTimer600000: // 10 minutes après on coupe l'accès.
 	if (agitcheck(0) != 0) goto L_LancementWoE;
-	if ((getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20)) > 1) goto L_LancementEvent; // au moins 2 joueurs...
+	if (getmapnotgms2("guild_vs5.gat",20) > 1) goto L_LancementEvent; // au moins 2 joueurs...
 
-	if ((getmapusers2("guild_vs5.gat") - getmapgms2("guild_vs5.gat",20)) == 1) goto L_un_seul_joueur;
+	if (getmapnotgms2("guild_vs5.gat",20) == 1) goto L_un_seul_joueur;
 	Announce "Garde Royal: Aucun joueur ne s'est présenté pour le Spawn Survivor. L'événement a été arrêté.",8;
 	callfunc "close_spawn";
 	end;
