@@ -3,7 +3,7 @@
 //===== Par: =================================================
 //= Garion, GAlion, DaVinci, Jondalar, Kheldar, Yor
 //===== Current Version: =====================================
-//= 3.7
+//= 3.8
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -87,6 +87,8 @@
 //=        en cours de jeu.
 //=      Modification des ajouts de monstres à chaque nouveau
 //=        spawn.
+//= 3.8  Ajout d'un test pour savoir si le tueur d'un monstre
+//=        est mort ou non.
 //============================================================
 
 // les Warps
@@ -1201,8 +1203,9 @@ OnMortMob: // A chaque mort d'un monstre
 	set $@nb_mobs, $@nb_mobs - (($@survivants - $@nb_part) * 3); // Réduire le nombre de spawns par mort
 	set $@survivants, $@nb_part;
 
-	// un seul survivant
-	if ($@nb_part == 1) goto Le_Gagnant;
+	// un seul survivant (et on mort)
+	// Test pour savoir si le tueur est le survivant, car certains skills ont des effets après la mort apparament
+	if ($@nb_part == 1 && isdead(0) == 0) goto Le_Gagnant;
 	// note: pour tuer un monstre, il faut un joueur vivant, donc le test == 0 est inutile
 
 // Ce n'est pas le dernier spawn -> continuer
