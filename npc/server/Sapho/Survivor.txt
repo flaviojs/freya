@@ -56,6 +56,11 @@
 //=      Suppression changelog avant version 3.0.
 //=      Ajout du drapeau dans la période avant-event.
 //=      Plus d'informations avec le drapeau.
+//= 3.9  Déplacement du drapeau dans une zone où un joueur ne
+//=        peut pas aller.
+//=      Mise en place d'un monstre permanent qui soigne 1
+//=        fois sur 5 le joueur qui le tue (type: dernier
+//=        spawn).
 //============================================================
 
 // les Warps
@@ -115,7 +120,7 @@ L_Novice: // L'usage de act dead/trick dead bloque l'event.
 
 // NPC d'information pour les participants (message individuel à la demande)
 // -------------------------------------------------------------------------
-guild_vs5.gat,49,47,4	script	drapeau	722,2,2,{
+guild_vs5.gat,47,48,4	script	drapeau	722,1,1,{
 OnTouch:
 	announce "Informations instantanées:",3;
 	if ($@Spawn_flag == 1) goto L_info_avant_event; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
@@ -124,9 +129,9 @@ OnTouch:
 L_info_avant_event:
 	announce "- Spawn Survivor de type " + $@spawn_type + " actuellement en cours de préparation.",3;
 	set $@delai_sec, 600 - (getnpctimer(0, "Spawner") / 1000);
-	if ($@delai_sec > 0 && $@delai_sec < 60) announce "- Début du Spawn survivor dans " + $@delai_sec + " seconde(s).",3;
-	if ($@delai_sec > 59 && $@delai_sec < 120) announce "- Début du Spawn survivor dans 1 minute et " + ($@delai_sec - 60) + " seconde(s).",3;
-	if ($@delai_sec > 119) announce "- Début du Spawn survivor dans " + ($@delai_sec / 60) + " minutes.",3;
+	if ($@delai_sec > 0 && $@delai_sec < 60) announce "- Début du Spawn Survivor dans " + $@delai_sec + " seconde(s).",3;
+	if ($@delai_sec > 59 && $@delai_sec < 120) announce "- Début du Spawn Survivor dans 1 minute et " + ($@delai_sec - 60) + " seconde(s).",3;
+	if ($@delai_sec > 119) announce "- Début du Spawn Survivor dans " + ($@delai_sec / 60) + " minutes.",3;
 	set $@delai_sec, 0;
 	announce "- Déjà " + getmapnotgms2("guild_vs5.gat",20) + " participant(s) dans l'arène.",3;
 	end;
@@ -644,6 +649,12 @@ OnTimer20000:
 OnTimer30000:
 	set $@numero_spawn,2;
 	callfunc "f_monstres", $@spawn2;
+	end;
+
+OnTimer50000:
+	mapannounce "guild_vs5.gat","Garde Royal: Mise en place d'un soigneur.",0;
+	areamonsteragro "guild_vs5.gat",0,0,200,200,"Soigneur",$@a_spawner,1,"Surviv::OnMortSoigneur";
+	set $@nb_mobs_permanents,$@nb_mobs_permanents + 1;
 	end;
 
 OnTimer60000:
@@ -1177,6 +1188,13 @@ OnMortBugM: // A chaque mort d'un nettoyeur agressif
 	if ($@numero_spawn > 19) areamonsteragro "guild_vs5.gat",0,0,200,200,"Nettoyeur",1619,1,"Surviv::OnMortBugM"; // Porcellio
 	goto OnMortMob;
 
+// Le monstre qui soigne = un bonus pour les joueurs.
+OnMortSoigneur: // A chaque mort d'un soigneur
+	areamonsteragro "guild_vs5.gat",0,0,200,200,"Soigneur",$@a_spawner,1,"Surviv::OnMortSoigneur";
+	if (rand(1, 3) == 1) goto OnMortMob; // Bonus pour avoir tuer ce monstre: guérison 100% une fois sur 5
+	percentheal 100,100;
+	goto OnMortMob;
+
 // --------------------------
 OnMortMob: // A chaque mort d'un monstre
 	set $@nb_part,getmapnotgms2("guild_vs5.gat",20); // Joueurs non GMs vivants
@@ -1184,7 +1202,7 @@ OnMortMob: // A chaque mort d'un monstre
 	set $@nb_mobs, $@nb_mobs - (($@survivants - $@nb_part) * 3); // Réduire le nombre de spawns par mort
 	set $@survivants, $@nb_part;
 
-	// un seul survivant (et on mort)
+	// un seul survivant (et non mort)
 	// Test pour savoir si le tueur est le survivant, car certains skills ont des effets après la mort apparament
 	if ($@nb_part == 1 && isdead(0) == 0) goto Le_Gagnant;
 	// note: pour tuer un monstre, il faut un joueur vivant, donc le test == 0 est inutile
@@ -1300,6 +1318,7 @@ L_Regles:
 	mes "[Spawner]";
 	mes "Une fois le Spawn Survivor activé, vous avez 10 minutes pour venir ici et joindre la partie.";
 	mes "Si vous arrivez en retard, le jeu se déroulera sans vous.";
+	mes "Particularité: Le Spawn Survivor s'arrête automatiquement en cas de WoE.";
 	next;
 	mes "[Spawner]";
 	mes "Quelques règles:";
