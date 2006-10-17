@@ -4369,3 +4369,47 @@
 1811,G_Smokie@NPC_GROUNDATTACK,attack,185,2,500,500,5000,no,target,always,0,,,,,,6
 1811,G_Smokie@NPC_PROVOCATION,chase,194,1,200,0,5000,yes,target,always,0,,,,,,19
 1811,G_Smokie@TF_HIDING,attack,51,1,500,500,5000,no,self,myhpltmaxrate,50,,,,,,19
+1812,G_Lude@AL_HEAL,chase,28,9,10000,500,5000,no,friend,friendhpltmaxrate,60,,,,,,18
+1812,G_Lude@AL_HEAL,attack,28,9,10000,500,5000,no,friend,friendhpltmaxrate,60,,,,,,18
+1812,G_Lude@AL_HEAL,chase,28,9,10000,500,5000,no,self,myhpltmaxrate,30,,,,,,18
+1812,G_Lude@AL_HEAL,attack,28,9,10000,500,5000,no,self,myhpltmaxrate,30,,,,,,18
+1812,G_Lude@NPC_METAMORPHOSIS,attack,193,1,1000,0,60000,no,self,myhpltmaxrate,30,1812,,,,,19
+1812,G_Lude@PR_LEXAETERNA,chase,78,1,1000,1000,5000,yes,target,always,0,,,,,,6
+1812,G_Lude@PR_LEXAETERNA,attack,78,1,1000,1000,5000,yes,target,always,0,,,,,,6
+1813,G_Hydrolancer_@NPC_RANDOMATTACK,attack,183,5,500,500,5000,no,target,always,0,,,,,,
+1813,G_Hydrolancer_@WZ_METEOR,attack,83,3,500,1500,5000,yes,target,always,0,,,,,,
+1813,G_Hydrolancer_@WZ_METEOR,chase,83,3,5000,1500,5000,yes,target,always,0,,,,,,
+1813,G_Hydrolancer_@AS_SONICBLOW,attack,136,5,500,1000,30000,no,target,always,0,,,,,,
+1813,G_Hydrolancer_@NPC_DARKBREATH,attack,202,3,500,800,5000,no,target,always,0,,,,,,
+1813,G_Hydrolancer_@NPC_COMBOATTACK,attack,171,5,2000,0,5000,yes,target,always,0,,,,,,
+1813,G_Hydrolancer_@NPC_CRITICALSLASH,attack,170,1,500,500,5000,no,target,always,0,,,,,,
+1813,G_Hydrolancer_@NPC_POWERUP,attack,349,5,10000,0,30000,yes,self,myhpltmaxrate,30,,,,,,
+1813,G_Hydrolancer_@AL_HEAL,attack,28,3,10000,500,5000,yes,friend,friendhpltmaxrate,60,,,,,,
+1813,G_Hydrolancer_@AL_HEAL,chase,28,3,10000,500,5000,yes,friend,friendhpltmaxrate,60,,,,,,
+1813,G_Hydrolancer_@NPC_SUMMONSLAVE,idle,196,1,10000,2000,240000,no,self,slavele,1,1757,1758,1759,1760,,
+1813,G_Hydrolancer_@NPC_SUMMONSLAVE,attack,196,1,10000,2000,240000,no,self,slavele,1,1757,1758,1759,1760,,
+//1813,G_Hydrolancer_@NPC_SUMMONSLAVE,idle,196,1,10000,0,0,no,self,onspawn,0,1757,1758,1759,1760,,
+1813,G_Hydrolancer_@NPC_CALLSLAVE,attack,352,1,2000,0,10000,yes,target,always,0,,,,,,
+1813,G_Hydrolancer_@NPC_CALLSLAVE,idle,352,1,2000,0,10000,yes,self,always,0,,,,,,
+1814,G_Moonlight Flower@AL_HEAL,attack,28,11,10000,0,5000,no,friend,friendhpltmaxrate,60,,,,,,21
+1814,G_Moonlight Flower@AL_HEAL,attack,28,11,10000,0,5000,no,self,myhpltmaxrate,30,,,,,,21
+1814,G_Moonlight Flower@AL_HEAL,chase,28,11,10000,0,5000,no,friend,friendhpltmaxrate,60,,,,,,21
+1814,G_Moonlight Flower@AL_HEAL,chase,28,11,10000,0,5000,no,self,myhpltmaxrate,30,,,,,,21
+1814,G_Moonlight Flower@NPC_POWERUP,attack,349,5,10000,0,30000,yes,self,myhpltmaxrate,30,,,,,,6
+1814,G_Moonlight Flower@MC_MAMMONITE,attack,42,20,2000,0,5000,no,target,always,0,,,,,,8
+1814,G_Moonlight Flower@MG_COLDBOLT,chase,14,5,2000,0,5000,no,target,always,0,,,,,,0
+1814,G_Moonlight Flower@MG_COLDBOLT,chase,14,5,4000,0,5000,no,target,skillused,18,,,,,,0
+1814,G_Moonlight Flower@MG_FIREBOLT,chase,19,5,2000,0,5000,no,target,always,0,,,,,,0
+1814,G_Moonlight Flower@MG_FIREBOLT,chase,19,5,4000,0,5000,no,target,skillused,18,,,,,,0
+1814,G_Moonlight Flower@MG_LIGHTNINGBOLT,chase,20,5,2000,0,5000,no,target,always,0,,,,,,0
+1814,G_Moonlight Flower@MG_LIGHTNINGBOLT,chase,20,5,4000,0,5000,no,target,skillused,18,,,,,,0
+1814,G_Moonlight Flower@NPC_CALLSLAVE,attack,352,1,10000,0,30000,yes,target,always,0,,,,,,
+1814,G_Moonlight Flower@NPC_CALLSLAVE,idle,352,1,10000,0,30000,yes,self,always,0,,,,,,
+1814,G_Moonlight Flower@NPC_GUIDEDATTACK,attack,172,5,500,0,20000,no,target,always,0,,,,,,6
+1814,G_Moonlight Flower@SA_DISPELL,attack,289,5,2000,500,5000,no,target,always,0,,,,,,6
+1814,G_Moonlight Flower@SA_DISPELL,chase,289,5,2000,500,5000,no,target,always,0,,,,,,6
+1814,G_Moonlight Flower@NPC_SUMMONSLAVE,attack,196,5,10000,700,10000,no,self,slavele,3,1471,,,,,
+1814,G_Moonlight Flower@NPC_SUMMONSLAVE,idle,196,5,10000,700,10000,no,self,slavele,3,1471,,,,,
+//1814,G_Moonlight Flower@NPC_SUMMONSLAVE,idle,196,3,10000,0,0,no,self,onspawn,0,1180,,,,,
+1814,G_Moonlight Flower@BS_HAMMERFALL,chase,110,11,2000,0,5000,no,target,always,0,,,,,,0
+1814,G_Moonlight Flower@BS_HAMMERFALL,attack,110,11,2000,0,5000,no,target,always,0,,,,,,0
