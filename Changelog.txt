@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/16/06
+	* Added: Damz Fish's The Sign Quest eAthena conversion, still needs to be tested, so don't uncomment [Tsuyuki]
 	* Fixed: Novice Trick Dead (not being able to remove the status) (Thanks to Zippy) [Tsuyuki]
 	* Added: A couple new duplicate monsters, and 2 new event monsters; Rice Cake + Gourd (No Stats) [Tsuyuki]
 	* Fixed: High Quality Sandals not being refinable [Tsuyuki]
