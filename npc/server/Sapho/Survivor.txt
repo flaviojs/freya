@@ -1191,7 +1191,7 @@ OnMortBugM: // A chaque mort d'un nettoyeur agressif
 // Le monstre qui soigne = un bonus pour les joueurs.
 OnMortSoigneur: // A chaque mort d'un soigneur
 	areamonsteragro "guild_vs5.gat",0,0,200,200,"Soigneur",$@a_spawner,1,"Surviv::OnMortSoigneur";
-	if (rand(1, 3) == 1) goto OnMortMob; // Bonus pour avoir tuer ce monstre: guérison 100% une fois sur 5
+	if (rand(1, 5) != 1) goto OnMortMob; // Bonus pour avoir tuer ce monstre: guérison 100% une fois sur 5
 	percentheal 100,100;
 	goto OnMortMob;
 
