@@ -1,11 +1,11 @@
-//===== eAthena Script =======================================
+//===== Freya Script =========================================
 //= Rogue Job Quest
 //===== By: ==================================================
 //= kobra_k88
 //===== Current Version: =====================================
 //= 1.6
 //===== Compatible With: =====================================
-//= eAthena 1.0 +
+//= Freya
 //===== Description: =========================================
 //= Rogue job quest based off of official iRO Rogue quest.
 //= There are some differences from official quest due to scripting issues.
@@ -17,6 +17,7 @@
 //= 1.6 Added a func which prevent advanced classes passing
 //= 2nd Job Quests again. It also guides adv classes where
 //= to go. [Lupus]
+//= 1.7 Fixed password capitalized error [Tsuyuki]
 //============================================================
 
 
@@ -369,7 +370,7 @@ L_Test3:
 		next;
 		mes "[Mr. Smith]";
 		mes "That's why you will need this password in order to talk to him.";
-		mes "The password is: '^5533FFMy Father never hoarded upgrade items.^000000'";
+		mes "The password is: '^5533FFMy father never hoarded upgrade items.^000000'";
 		return;
 	sF3_R3:
 		mes "You will have to go and find ^5533FFAntonio Junior.^000000.";

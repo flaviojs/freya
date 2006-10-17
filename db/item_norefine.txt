@@ -58,7 +58,6 @@
 2410 // Sleipnir
 2413 // Safety Shoes
 2414 // Novice Sandals
-2422 // High Quality Sandals
 2509 // Manteau of Life
 2510 // Novice Hood
 2601 // Ring

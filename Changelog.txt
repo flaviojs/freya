@@ -4,6 +4,12 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/16/06
+	* Fixed: High Quality Sandals not being refinable [Tsuyuki]
+	* Fixed: Typo in Rogue Job Change Quest [Tsuyuki]
+	* Fixed: Some misc mob spawn fixes [Tsuyuki]
+	* Updated: Some new mob spawns from jRO Aegis X.3 (Credits to eAthena..) [Tsuyuki]
+
 10/15/06
 	* Fixed: Corrected Orc Baby's slaves: Orc Warrior + Orc Lady (Was High Orc + Orc Lady) [Tsuyuki]
 	* Note: Cooking is finally 100% implemented and working
