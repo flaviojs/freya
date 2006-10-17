@@ -3212,11 +3212,11 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		if(pc_isdead(dstsd) && skillid != ALL_RESURRECTION && skillid != PR_REDEMPTIO)
 			return 1;
 		//Only dispel skill is castable on trickdead novice. other status changes won't work [Harbin]
-		if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL)
+if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid != NV_TRICKDEAD)
 			return 1;
 	} else if (bl->type == BL_MOB) {
 		nullpo_retr(1, dstmd = (struct mob_data *)bl);
-		if(dstmd->class == 1288) //Emeprium can not be affected by nodamage skills
+		if(dstmd->class == 1288) //Emperium can not be affected by nodamage skills
 			return 1;
 	}
 
