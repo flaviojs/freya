@@ -3719,7 +3719,7 @@ int buildin_isdead(struct script_state *st)
 
 	sd=script_rid2sd(st);
 
-	if(sd && pc_isdead(sd)){
+	if(sd == NULL || pc_isdead(sd)){
 		push_val(st->stack,C_INT,1);
 	} else {
 		push_val(st->stack,C_INT,0);

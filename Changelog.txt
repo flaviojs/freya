@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/17/06
+	* Fixed: isdead script command: if no player, set like dead [Yor]
 	* Added: getmapnotgms2/getmapalivenotgms and getmapnotgms3/getmapdeadnotgms script commands to count number of not GMs on a map [Yor]
 	         example: getmapalivenotgms("prontera.gat", 20): get number of alive not GMs (level below of 20) on prontera.gat
 	         getmapalivenotgms + getmapalivegms = getmapaliveusers
