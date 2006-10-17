@@ -172,6 +172,7 @@ int buildin_setfalcon(struct script_state *st);
 int buildin_checkfalcon(struct script_state *st); // check falcon [Valaris]
 int buildin_setriding(struct script_state *st);
 int buildin_checkriding(struct script_state *st); // check for pecopeco [Valaris]
+int buildin_isdead(struct script_state *st); // to know if a player is dead. For script NPC [Yor]
 int buildin_savepoint(struct script_state *st);
 int buildin_gettimetick(struct script_state *st);
 int buildin_gettime(struct script_state *st);
@@ -207,6 +208,8 @@ int buildin_getmapusers2(struct script_state *st); // Return number of ALIVE pla
 int buildin_getmapusers3(struct script_state *st); // Return number of DEAD players on a map
 int buildin_getmapgms2(struct script_state *st); // as getmapusers2, return number of ALIVE GMs on a map (with minimum level of concerned GMs)
 int buildin_getmapgms3(struct script_state *st); // as getmapusers3, return number of DEAD GMs on a map (with minimum level of concerned GMs)
+int buildin_getmapnotgms2(struct script_state *st); // as getmapusers2, return number of ALIVE not GMs on a map (with a lower GM level than specified) getmapgms2 + getmapnotgms2 = getmapusers2
+int buildin_getmapnotgms3(struct script_state *st); // as getmapusers3, return number of DEAD not GMs on a map (with a lower GM level than specified) getmapgms3 + getmapnotgms3 = getmapusers3
 int buildin_getareausers(struct script_state *st);
 int buildin_getareadropitem(struct script_state *st);
 int buildin_enablenpc(struct script_state *st);
@@ -417,6 +420,7 @@ struct {
 	{buildin_checkfalcon,"checkfalcon","*"},	//fixed by Lupus (fixed wrong pointer, added '*')
 	{buildin_setriding,"setriding",""},
 	{buildin_checkriding,"checkriding","*"},	//fixed by Lupus (fixed wrong pointer, added '*')
+	{buildin_isdead,"isdead","*"},	// to know if a player is dead. For script NPC [Yor]
 	{buildin_savepoint,"save","sii"},
 	{buildin_savepoint,"savepoint","sii"},
 	{buildin_gettimetick,"gettimetick","i"},
@@ -458,6 +462,10 @@ struct {
 	{buildin_getmapgms2,"getmapalivegms","si"}, // as getmapaliveusers, return number of ALIVE GMs on a map (with minimum level of concerned GMs)
 	{buildin_getmapgms3,"getmapgms3","si"}, // as getmapusers3, return number of DEAD GMs on a map (with minimum level of concerned GMs)
 	{buildin_getmapgms3,"getmapdeadgms","si"}, // as getmapdeadusers, return number of DEAD GMs on a map (with minimum level of concerned GMs)
+	{buildin_getmapnotgms2,"getmapnotgms2","si"}, // as getmapusers2, return number of ALIVE not GMs on a map (with a lower GM level than specified) getmapgms2 + getmapnotgms2 = getmapusers2
+	{buildin_getmapnotgms2,"getmapalivenotgms","si"}, // as getmapaliveusers, return number of ALIVE not GMs on a map (with a lower GM level than specified) getmapalivegms + getmapalivenotgms = getmapaliveusers
+	{buildin_getmapnotgms3,"getmapnotgms3","si"}, // as getmapusers3, return number of DEAD not GMs on a map (with a lower GM level than specified) getmapgms3 + getmapnotgms3 = getmapusers3
+	{buildin_getmapnotgms3,"getmapdeadnotgms","si"}, // as getmapdeadusers, return number of DEAD not GMs on a map (with a lower GM level than specified) getmapdeadgms + getmapdeadnotgms = getmapdeadusers
 	{buildin_getareausers,"getareausers","siiii"},
 	{buildin_getareadropitem,"getareadropitem","siiiii"},
 	{buildin_enablenpc,"enablenpc","s"},
@@ -3702,6 +3710,25 @@ int buildin_checkriding(struct script_state *st)
 }
 
 /*==========================================
+ * isdead [Yor]
+ *------------------------------------------
+ */
+int buildin_isdead(struct script_state *st)
+{
+	struct map_session_data *sd;
+
+	sd=script_rid2sd(st);
+
+	if(sd && pc_isdead(sd)){
+		push_val(st->stack,C_INT,1);
+	} else {
+		push_val(st->stack,C_INT,0);
+	}
+
+	return 0;
+}
+
+/*==========================================
  * ペコペコ乗り
  *------------------------------------------
  */
@@ -4582,6 +4609,58 @@ int buildin_getmapgms3(struct script_state *st) {
 	for (i = 0; i < fd_max; i++)
 		if (session[i] && (sd = session[i]->session_data) && sd->state.auth && m == sd->bl.m && pc_isdead(sd))
 			if (sd->GM_level >= min_lvl)
+				j++;
+	push_val(st->stack, C_INT, j);
+
+	return 0;
+}
+
+/*===============================================================================
+ * Return number of ALIVE not GMs on a map (with a lower GM level than specified)
+ *-------------------------------------------------------------------------------
+ */
+int buildin_getmapnotgms2(struct script_state *st) {
+	struct map_session_data *sd;
+	char *str;
+	int m, i, j, min_lvl;
+
+	str = conv_str(st, &(st->stack->stack_data[st->start + 2]));
+	min_lvl = conv_num(st, &(st->stack->stack_data[st->start + 3]));
+	if ((m = map_mapname2mapid(str)) < 0) { // map id on this server (m == -1 if not in actual map-server)
+		push_val(st->stack, C_INT, -1);
+		return 0;
+	}
+
+	j = 0;
+	for (i = 0; i < fd_max; i++)
+		if (session[i] && (sd = session[i]->session_data) && sd->state.auth && m == sd->bl.m && !pc_isdead(sd))
+			if (sd->GM_level < min_lvl)
+				j++;
+	push_val(st->stack, C_INT, j);
+
+	return 0;
+}
+
+/*==============================================================================
+ * Return number of DEAD not GMs on a map (with a lower GM level than specified)
+ *------------------------------------------------------------------------------
+ */
+int buildin_getmapnotgms3(struct script_state *st) {
+	struct map_session_data *sd;
+	char *str;
+	int m, i, j, min_lvl;
+
+	str = conv_str(st, &(st->stack->stack_data[st->start + 2]));
+	min_lvl = conv_num(st, &(st->stack->stack_data[st->start + 3]));
+	if ((m = map_mapname2mapid(str)) < 0) { // map id on this server (m == -1 if not in actual map-server)
+		push_val(st->stack, C_INT, -1);
+		return 0;
+	}
+
+	j = 0;
+	for (i = 0; i < fd_max; i++)
+		if (session[i] && (sd = session[i]->session_data) && sd->state.auth && m == sd->bl.m && pc_isdead(sd))
+			if (sd->GM_level < min_lvl)
 				j++;
 	push_val(st->stack, C_INT, j);
 
