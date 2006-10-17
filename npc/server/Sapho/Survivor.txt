@@ -653,7 +653,7 @@ OnTimer30000:
 
 OnTimer50000:
 	mapannounce "guild_vs5.gat","Garde Royal: Mise en place d'un soigneur.",0;
-	areamonsteragro "guild_vs5.gat",0,0,200,200,"Soigneur",$@a_spawner,1,"Surviv::OnMortSoigneur";
+	areamonsteragro "guild_vs5.gat",0,0,200,200,"Soigneur",$@dernier_mob,1,"Surviv::OnMortSoigneur";
 	set $@nb_mobs_permanents,$@nb_mobs_permanents + 1;
 	end;
 
@@ -1190,7 +1190,7 @@ OnMortBugM: // A chaque mort d'un nettoyeur agressif
 
 // Le monstre qui soigne = un bonus pour les joueurs.
 OnMortSoigneur: // A chaque mort d'un soigneur
-	areamonsteragro "guild_vs5.gat",0,0,200,200,"Soigneur",$@a_spawner,1,"Surviv::OnMortSoigneur";
+	areamonsteragro "guild_vs5.gat",0,0,200,200,"Soigneur",$@dernier_mob,1,"Surviv::OnMortSoigneur";
 	if (rand(1, 5) != 1) goto OnMortMob; // Bonus pour avoir tuer ce monstre: guérison 100% une fois sur 5
 	percentheal 100,100;
 	goto OnMortMob;
