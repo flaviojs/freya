@@ -4,6 +4,12 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/17/06
+	* Added: getmapnotgms2/getmapalivenotgms and getmapnotgms3/getmapdeadnotgms script commands to count number of not GMs on a map [Yor]
+	         example: getmapalivenotgms("prontera.gat", 20): get number of alive not GMs (level below of 20) on prontera.gat
+	         getmapalivenotgms + getmapalivegms = getmapaliveusers
+	* Added: isdead script command (to be used with script NPC) [Yor]
+
 10/16/06
 	* Added: Damz Fish's The Sign Quest eAthena conversion, still needs to be tested, so don't uncomment [Tsuyuki]
 	* Fixed: Novice Trick Dead (not being able to remove the status) (Thanks to Zippy) [Tsuyuki]
