@@ -11,7 +11,7 @@
 0,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
 0,142,1,0,0,0,0,0,0,0,0,0,0//NV_FIRSTAID	#応急手当#
 0,143,1,0,0,0,0,0,0,0,0,0,0//NV_TRICKDEAD	#死んだふり#
-0,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//0,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // Swordman
 1,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -26,7 +26,7 @@
 1,144,1,0,0,0,0,0,0,0,0,0,0//SM_MOVINGRECOVERY	#移動時HP回復#
 1,145,1,0,0,0,0,0,0,0,0,0,0//SM_FATALBLOW	#急所攻撃#
 1,146,1,0,0,0,0,0,0,0,0,0,0//SM_AUTOBERSERK	#オートバーサーク#
-1,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//1,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // Magician
 2,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -45,7 +45,7 @@
 2,20,10,0,0,0,0,0,0,0,0,0,0//MG_LIGHTNINGBOLT	#ライトニングボルト#
 2,21,10,20,4,0,0,0,0,0,0,0,0//MG_THUNDERSTORM	#サンダーストーム#
 2,157,1,0,0,0,0,0,0,0,0,0,0//MG_ENERGYCOAT	#エナジーコート#
-2,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//2,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // Archer
 3,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -57,7 +57,7 @@
 3,47,10,46,5,0,0,0,0,0,0,0,0//AC_SHOWER		#アローシャワー#
 3,147,1,0,0,0,0,0,0,0,0,0,0//AC_MAKINGARROW	#矢作成#
 3,148,1,0,0,0,0,0,0,0,0,0,0//AC_CHARGEARROW	#チャージアロー#
-3,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//3,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // Acolyte
 4,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -77,7 +77,7 @@
 4,34,10,22,5,0,0,0,0,0,0,0,0//AL_BLESSING	#ブレッシング#
 4,35,1,28,2,0,0,0,0,0,0,0,0//AL_CURE		#キュアー#
 4,156,1,0,0,0,0,0,0,0,0,0,0//AL_HOLYLIGHT	#ホーリーライト#
-4,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // Merchant
 5,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -92,7 +92,7 @@
 5,153,1,0,0,0,0,0,0,0,0,0,0//MC_CARTREVOLUTION	#カートレボリューション#
 5,154,1,0,0,0,0,0,0,0,0,0,0//MC_CHANGECART	#チェンジカート#
 5,155,1,0,0,0,0,0,0,0,0,0,0//MC_LOUD		#ラウドボイス#
-5,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//5,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // Thief
 6,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -107,7 +107,7 @@
 6,150,1,0,0,0,0,0,0,0,0,0,0//TF_BACKSLIDING	#バックステップ#
 6,151,1,0,0,0,0,0,0,0,0,0,0//TF_PICKSTONE	#石拾い#
 6,152,1,0,0,0,0,0,0,0,0,0,0//TF_THROWSTONE	#石投げ#
-6,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//6,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // Knight
 7,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -133,7 +133,7 @@
 7,63,1,8,1,0,0,0,0,0,0,0,0//KN_RIDING		#ライディング#
 7,64,5,63,1,0,0,0,0,0,0,0,0//KN_CAVALIERMASTERY#騎兵修練#
 7,1001,1,0,0,0,0,0,0,0,0,0,0 //KN_CHARGEATK#Charge Attack#
-7,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//7,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // Priest
 8,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -172,7 +172,7 @@
 8,78,1,76,5,0,0,0,0,0,0,0,0//PR_LEXAETERNA	#レックスエーテルナ#
 8,79,10,12,1,78,1,77,3,0,0,0,0//PR_MAGNUS	#マグヌスエクソシズム#
 8,1014,1,0,0,0,0,0,0,0,0,0,0 //PR_REDEMPTIO#Redemptio#
-8,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//8,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // Wizard
 9,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -206,7 +206,7 @@
 9,92,5,91,1,0,0,0,0,0,0,0,0//WZ_QUAGMIRE	#クァグマイア#
 9,93,1,0,0,0,0,0,0,0,0,0,0//WZ_ESTIMATION	#モンスター情報#
 9,1006,1,0,0,0,0,0,0,0,0,0,0 //WZ_SIGHTBLASTER#Sight Blaster#
-9,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//9,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // Blacksmith
 10,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -244,7 +244,7 @@
 10,114,5,112,3,113,2,0,0,0,0,0,0//BS_MAXIMIZE	#マキシマイズパワー#
 10,1012,1,0,0,0,0,0,0,0,0,0,0 //BS_UNFAIRLYTRICK#Unfair Trick#
 10,1013,1,0,0,0,0,0,0,0,0,0,0 //BS_GREED#Greed#
-10,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//10,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // Hunter
 11,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -274,7 +274,7 @@
 11,130,4,45,1,127,1,0,0,0,0,0,0//HT_DETECTING	#ディテクティング#
 11,131,5,124,1,127,1,0,0,0,0,0,0//HT_SPRINGTRAP	#スプリングトラップ#
 11,1009,1,0,0,0,0,0,0,0,0,0,0 //HT_PHANTASMIC#Phantasmic Arrow#
-11,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//11,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // Assassin
 12,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -301,7 +301,7 @@
 12,141,10,139,5,140,5,0,0,0,0,0,0//AS_SPLASHER	#ベナムスプラッシャー#
 12,1003,1,0,0,0,0,0,0,0,0,0,0 //AS_SONICACCEL#Sonic Acceleration#
 12,1004,1,0,0,0,0,0,0,0,0,0,0 //AS_VENOMKNIFE#Throw Venom Knife#
-12,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//12,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // Peco Knight
 // Knight
@@ -328,7 +328,7 @@
 13,63,1,8,1,0,0,0,0,0,0,0,0//KN_RIDING		#ライディング#
 13,64,5,63,1,0,0,0,0,0,0,0,0//KN_CAVALIERMASTERY#騎兵修練#
 13,1001,1,0,0,0,0,0,0,0,0,0,0//KN_CHARGEATK#Charge Attack#
-13,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//13,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // Crusader
 14,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -362,7 +362,7 @@
 14,257,5,251,1,0,0,0,0,0,0,0,0//CR_DEFENDER		#ディフェンダー#
 14,258,10,55,10,0,0,0,0,0,0,0,0//CR_SPEARQUICKEN	#スピアクイッケン#
 14,1002,1,0,0,0,0,0,0,0,0,0,0 //CR_SHRINK#Shrink#
-14,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//14,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // Monk
 15,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -399,7 +399,7 @@
 15,273,5,272,3,0,0,0,0,0,0,0,0//MO_COMBOFINISH		#猛竜拳#
 15,1015,1,0,0,0,0,0,0,0,0,0,0 //MO_KITRANSLATION#Ki Translation#
 15,1016,1,0,0,0,0,0,0,0,0,0,0 //MO_BALKYOUNG#Ki Explosion#
-15,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//15,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // Sage
 16,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -443,7 +443,7 @@
 16,1017,1,0,0,0,0,0,0,0,0,0,0 //SA_ELEMENTGROUND#Elemental Change Earth#
 16,1018,1,0,0,0,0,0,0,0,0,0,0 //SA_ELEMENTFIRE#Elemental Change Fire#
 16,1019,1,0,0,0,0,0,0,0,0,0,0 //SA_ELEMENTWIND#Elemental Change Wind#
-16,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//16,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // Rogue
 17,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -479,7 +479,7 @@
 17,224,5,223,1,0,0,0,0,0,0,0,0//RG_COMPULSION	#コムパルションディスカウント#
 17,225,10,219,5,0,0,0,0,0,0,0,0//RG_PLAGIARISM	#クローンスキル#
 17,1005,1,0,0,0,0,0,0,0,0,0,0 //RG_CLOSECONFINE#Close Confine#
-17,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//17,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // Alchemist
 18,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -506,7 +506,7 @@
 18,235,5,237,3,0,0,0,0,0,0,0,0//AM_CP_SHIELD	#ケミカルシールドチャージ#
 18,236,5,235,3,0,0,0,0,0,0,0,0//AM_CP_ARMOR	#ケミカルアーマーチャージ#
 18,237,5,228,2,0,0,0,0,0,0,0,0//AM_CP_HELM	#ケミカルヘルムチャージ#
-18,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//18,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // 韓国でも未実装なので以下のツリーコメントアウト
 
@@ -551,7 +551,7 @@
 19,312,1,306,1,0,0,0,0,0,0,0,0//BD_INTOABYSS		#深淵の中に#
 19,313,5,321,10,0,0,0,0,0,0,0,0//BD_SIEGFRIED		#不死身のジークフリード#
 19,1010,1,0,0,0,0,0,0,0,0,0,0 //BA_PANGVOICE#Pang Voice#
-19,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//19,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 //19,314,1,312,1,308,1,0,0,0,0,0,0//BD_RAGNAROK		#ラグナロク#
 
 // Dancer
@@ -583,7 +583,7 @@
 20,312,1,306,1,0,0,0,0,0,0,0,0//BD_INTOABYSS		#深淵の中に#
 20,313,5,329,10,0,0,0,0,0,0,0,0//BD_SIEGFRIED		#不死身のジークフリード#
 20,1011,1,0,0,0,0,0,0,0,0,0,0 //DC_WINKCHARM#Wink of Charm#
-20,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//20,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 //20,314,1,312,1,308,1,0,0,0,0,0,0//BD_RAGNAROK		#ラグナロク#
 
 // Peco Crusader
@@ -618,7 +618,7 @@
 21,257,5,251,1,0,0,0,0,0,0,0,0//CR_DEFENDER		#ディフェンダー#
 21,258,10,55,10,0,0,0,0,0,0,0,0//CR_SPEARQUICKEN	#スピアクイッケン#
 21,1002,1,0,0,0,0,0,0,0,0,0,0 //CR_SHRINK#Shrink#
-21,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//21,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // Super Novice
 23,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -672,15 +672,15 @@
 23,51,10,50,5,0,0,0,0,0,0,0,0//TF_HIDING	#ハイディング#
 23,52,10,0,0,0,0,0,0,0,0,0,0//TF_POISON		#インベナム#
 23,53,1,52,3,0,0,0,0,0,0,0,0//TF_DETOXIFY	#解毒#
-23,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//23,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 //Wedding Class
 22,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基-{スキル#
 22,142,1,0,0,0,0,0,0,0,0,0,0//NV_FIRSTAID	#応急手当#
-22,334,1,0,0,0,0,0,0,0,0,0,0
+22,334,1,0,0,0,0,0,0,0,0,0,0//
 22,335,5,0,0,0,0,0,0,0,0,0,0//
 22,336,5,0,0,0,0,0,0,0,0,0,0//
-22,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//22,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // JobNo,Skill-ID,MaxLV,前提Skill-ID-1,前提Skill-ID-1-Lv,計5個まで繰り返し
 
@@ -688,7 +688,7 @@
 4001,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
 4001,142,1,0,0,0,0,0,0,0,0,0,0//NV_FIRSTAID	#応急手当#
 4001,143,1,0,0,0,0,0,0,0,0,0,0//NV_TRICKDEAD	#死んだふり#
-4001,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4001,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 //Swordsman High
 4002,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -703,7 +703,7 @@
 4002,144,1,0,0,0,0,0,0,0,0,0,0//SM_MOVINGRECOVERY	#移動時HP回復#
 4002,145,1,0,0,0,0,0,0,0,0,0,0//SM_FATALBLOW	#急所攻撃#
 4002,146,1,0,0,0,0,0,0,0,0,0,0//SM_AUTOBERSERK	#オートバーサーク#
-4002,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4002,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 //Mage High
 4003,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -722,7 +722,7 @@
 4003,20,10,0,0,0,0,0,0,0,0,0,0//MG_LIGHTNINGBOLT	#ライトニングボルト#
 4003,21,10,20,4,0,0,0,0,0,0,0,0//MG_THUNDERSTORM	#サンダーストーム#
 4003,157,1,0,0,0,0,0,0,0,0,0,0//MG_ENERGYCOAT	#エナジーコート#
-4003,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4003,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 //Archer High
 4004,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -734,7 +734,7 @@
 4004,47,10,46,5,0,0,0,0,0,0,0,0//AC_SHOWER		#アローシャワー#
 4004,147,1,0,0,0,0,0,0,0,0,0,0//AC_MAKINGARROW	#矢作成#
 4004,148,1,0,0,0,0,0,0,0,0,0,0//AC_CHARGEARROW	#チャージアロー#
-4004,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4004,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 //Acolyte High
 4005,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -754,7 +754,7 @@
 4005,34,10,22,5,0,0,0,0,0,0,0,0//AL_BLESSING	#ブレッシング#
 4005,35,1,28,2,0,0,0,0,0,0,0,0//AL_CURE		#キュアー#
 4005,156,1,0,0,0,0,0,0,0,0,0,0//AL_HOLYLIGHT	#ホーリーライト#
-4005,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4005,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 //Merchant High
 4006,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -769,7 +769,7 @@
 4006,153,1,0,0,0,0,0,0,0,0,0,0//MC_CARTREVOLUTION	#カートレボリューション#
 4006,154,1,0,0,0,0,0,0,0,0,0,0//MC_CHANGECART	#チェンジカート#
 4006,155,1,0,0,0,0,0,0,0,0,0,0//MC_LOUD		#ラウドボイス#
-4006,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4006,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 //Thief High
 4007,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -784,7 +784,7 @@
 4007,150,1,0,0,0,0,0,0,0,0,0,0//TF_BACKSLIDING	#バックステップ#
 4007,151,1,0,0,0,0,0,0,0,0,0,0//TF_PICKSTONE	#石拾い#
 4007,152,1,0,0,0,0,0,0,0,0,0,0//TF_THROWSTONE	#石投げ#
-4007,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4007,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 //Lord Knight
 4008,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -818,7 +818,7 @@
 4008,397,5,55,10,58,5,63,1,0,0,0,0//LK_SPIRALPIERCE
 4008,398,5,55,9,63,1,0,0,0,0,0,0//LK_HEADCRUSH
 4008,399,10,64,3,398,3,0,0,0,0,0,0//LK_JOINTBEAT#ジョイントビート#
-4008,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4008,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 //High Priest
 4009,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -861,7 +861,7 @@
 4009,363,10,68,3,9,5,76,5,0,0,0,0//HP_MEDITATIO
 4009,481,5,65,10,23,10,0,0,0,0,0,0 //HP_MANARECHARGE#Mana Recharge#
 4009,1014,1,0,0,0,0,0,0,0,0,0,0 //PR_REDEMPTIO#Redemptio#
-4009,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4009,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 //High Wizard
 4010,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -901,7 +901,7 @@
 4010,400,5,11,5,0,0,0,0,0,0,0,0//HW_NAPALMVULCAN
 4010,483,1,93,1,87,1,0,0,0,0,0,0 //HW_GANBANTEIN#Ganbantein#
 4010,484,5,365,1,366,10,92,1,0,0,0,0 //HW_GRAVITATION#Gravitation Field#
-4010,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4010,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 //Whitesmith
 4011,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -947,7 +947,7 @@
 4011,485,10,42,10,110,5,387,1,0,0,0,0 //WS_CARTTERMINATION#Cart Termination#
 4011,486,5,113,5,0,0,0,0,0,0,0,0 //WS_MAXOVERTHRUST#Maximum Power Thrust#
 4011,1013,1,0,0,0,0,0,0,0,0,0,0 //BS_GREED#Greed#
-4011,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4011,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 //Sniper
 4012,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -981,7 +981,7 @@
 4012,381,5,128,3,44,10,129,5,127,1,0,0//SN_FALCONASSAULT		#基本スキル#
 4012,382,5,45,10,46,5,0,0,0,0,0,0//SN_SHARPSHOOTING		#基本スキル#
 4012,383,10,45,9,0,0,0,0,0,0,0,0//SN_WINDWALK		#基本スキル#
-4012,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4012,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 //Assassin Cross
 4013,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -1014,7 +1014,7 @@
 4013,379,10,48,5,135,3,138,6,52,5,0,0//ASC_BREAKER		#基本スキル#
 4013,406,10,132,3,134,5,136,5,379,1,0,0//ASC_METEORASSUALT
 4013,407,1,52,10,53,1,138,5,0,0,0,0//ASC_CDP
-4013,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4013,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // Peco Lord Knight
 4014,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -1048,7 +1048,7 @@
 4014,397,5,55,10,58,5,63,1,0,0,0,0//LK_SPIRALPIERCE
 4014,398,5,55,9,63,1,0,0,0,0,0,0//LK_HEADCRUSH
 4014,399,10,64,3,398,3,0,0,0,0,0,0//LK_JOINTBEAT#ジョイントビート#
-4014,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4014,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 //Paladin
 4015,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -1086,7 +1086,7 @@
 4015,368,5,8,5,248,5,255,3,0,0,0,0//PA_SACRIFICE
 4015,369,10,248,8,22,3,23,5,0,0,0,0//PA_GOSPEL
 4015,480,5,251,5,0,0,0,0,0,0,0,0 //PA_SHIELDCHAIN#Shield Chain#
-4015,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4015,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 //Champion
 4016,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -1127,7 +1127,7 @@
 4016,401,1,261,5,262,1,270,5,0,0,0,0//CH_SOULCOLLECT
 4016,1015,1,0,0,0,0,0,0,0,0,0,0 //MO_KITRANSLATION#Ki Translation#
 4016,1016,1,0,0,0,0,0,0,0,0,0,0 //MO_BALKYOUNG#Ki Explosion#
-4016,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4016,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 //Professor
 4017,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC	#基本スキル#
@@ -1179,7 +1179,7 @@
 4017,1017,1,0,0,0,0,0,0,0,0,0,0 //SA_ELEMENTGROUND#Elemental Change Earth#
 4017,1018,1,0,0,0,0,0,0,0,0,0,0 //SA_ELEMENTFIRE#Elemental Change Fire#
 4017,1019,1,0,0,0,0,0,0,0,0,0,0 //SA_ELEMENTWIND#Elemental Change Wind#
-4017,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4017,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 //Stalker
 4018,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -1220,7 +1220,7 @@
 4018,475,1,225,10,0,0,0,0,0,0,0,0//ST_PRESERVE
 4018,476,5,215,5,216,5,217,5,218,5,0,0//ST_FULLSTRIP
 4018,1005,1,0,0,0,0,0,0,0,0,0,0 //RG_CLOSECONFINE#Close Confine#
-4018,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4018,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 //Creator
 4019,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -1248,7 +1248,7 @@
 4019,236,5,235,3,0,0,0,0,0,0,0,0//AM_CP_ARMOR	#ケミカルアーマーチャージ#
 4019,237,5,228,2,0,0,0,0,0,0,0,0//AM_CP_HELM	#ケミカルヘルムチャージ#
 4019,490,10,229,5,230,5,0,0,0,0,0,0 //CR_ACIDDEMONSTRATION#Acid Demonstration#
-4019,491,2,0,0,0,0,0,0,0,0,0,0 //CR_CULTIVATION#Cultivation#
+//4019,491,2,0,0,0,0,0,0,0,0,0,0 //CR_CULTIVATION#Cultivation#
 
 // Homonculus skill tree (disabled as for now)
 //4019,238,1,0,0,0,0,0,0,0,0,0,0//AM_BIOETHICS		#生命倫理#
@@ -1265,7 +1265,7 @@
 //4019,393,5,228,6,390,2,0,0,0,0,0,0//CR_SYNTHESISPOTION	#Potion Synthesis#
 4019,478,10,231,5,0,0,0,0,0,0,0,0//CR_SLIMPITCHER
 4019,479,5,234,5,235,5,236,5,237,5,0,0//CR_FULLPROTECTION
-4019,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4019,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 //Clown
 4020,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -1303,7 +1303,7 @@
 4020,487,5,315,10,317,3,396,1,0,0,0,0 //CG_LONGINGFREEDOM#Longing for Freedom#
 4020,488,5,45,10,315,10,0,0,0,0,0,0 //CG_HERMODE#Wand of Hermod#
 4020,489,5,45,10,317,3,0,0,0,0,0,0 //CG_TAROTCARD#Tarot Card of Fate#
-4020,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4020,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 //Gypsy
 4021,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -1341,7 +1341,7 @@
 4021,488,5,45,10,323,10,0,0,0,0,0,0 //CG_HERMODE#Wand of Hermod#
 4021,489,5,45,10,325,3,0,0,0,0,0,0 //CG_TAROTCARD#Tarot Card of Fate#
 4021,1011,1,0,0,0,0,0,0,0,0,0,0 //DC_WINKCHARM#Wink of Charm#
-4021,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4021,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // Peco Paladin
 4022,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -1379,14 +1379,14 @@
 4022,368,5,8,5,248,5,255,3,0,0,0,0//PA_SACRIFICE
 4022,369,10,248,8,22,3,23,5,0,0,0,0//PA_GOSPEL
 4022,480,5,251,5,0,0,0,0,0,0,0,0 //PA_SHIELDCHAIN#Shield Chain#
-4022,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4022,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // Baby Novice
 4023,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
 4023,142,1,0,0,0,0,0,0,0,0,0,0//NV_FIRSTAID	#応急手当#
 4023,143,1,0,0,0,0,0,0,0,0,0,0//NV_TRICKDEAD	#死んだふり#
-4023,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
-4023,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
+//4023,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
+//4023,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
 
 // Baby Swordman
 4024,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -1401,8 +1401,8 @@
 4024,144,1,0,0,0,0,0,0,0,0,0,0//SM_MOVINGRECOVERY	#移動時HP回復#
 4024,145,1,0,0,0,0,0,0,0,0,0,0//SM_FATALBLOW	#急所攻撃#
 4024,146,1,0,0,0,0,0,0,0,0,0,0//SM_AUTOBERSERK	#オートバーサーク#
-4024,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
-4024,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
+//4024,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
+//4024,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
 
 // Baby Magician
 4025,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -1421,8 +1421,8 @@
 4025,20,10,0,0,0,0,0,0,0,0,0,0//MG_LIGHTNINGBOLT	#ライトニングボルト#
 4025,21,10,20,4,0,0,0,0,0,0,0,0//MG_THUNDERSTORM	#サンダーストーム#
 4025,157,1,0,0,0,0,0,0,0,0,0,0//MG_ENERGYCOAT	#エナジーコート#
-4025,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
-4025,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
+//4025,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
+//4025,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
 
 // Baby Archer
 4026,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -1434,8 +1434,8 @@
 4026,47,10,46,5,0,0,0,0,0,0,0,0//AC_SHOWER		#アローシャワー#
 4026,147,1,0,0,0,0,0,0,0,0,0,0//AC_MAKINGARROW	#矢作成#
 4026,148,1,0,0,0,0,0,0,0,0,0,0//AC_CHARGEARROW	#チャージアロー#
-4026,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
-4026,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
+//4026,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
+//4026,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
 
 // Baby Acolyte
 4027,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -1455,8 +1455,8 @@
 4027,34,10,22,5,0,0,0,0,0,0,0,0//AL_BLESSING	#ブレッシング#
 4027,35,1,28,2,0,0,0,0,0,0,0,0//AL_CURE		#キュアー#
 4027,156,1,0,0,0,0,0,0,0,0,0,0//AL_HOLYLIGHT	#ホーリーライト#
-4027,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
-4027,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
+//4027,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
+//4027,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
 
 // Baby Merchant
 4028,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -1471,8 +1471,8 @@
 4028,153,1,0,0,0,0,0,0,0,0,0,0//MC_CARTREVOLUTION	#カートレボリューション#
 4028,154,1,0,0,0,0,0,0,0,0,0,0//MC_CHANGECART	#チェンジカート#
 4028,155,1,0,0,0,0,0,0,0,0,0,0//MC_LOUD		#ラウドボイス#
-4028,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
-4028,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
+//4028,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
+//4028,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
 
 // Baby Thief
 4029,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -1487,8 +1487,8 @@
 4029,150,1,0,0,0,0,0,0,0,0,0,0//TF_BACKSLIDING	#バックステップ#
 4029,151,1,0,0,0,0,0,0,0,0,0,0//TF_PICKSTONE	#石拾い#
 4029,152,1,0,0,0,0,0,0,0,0,0,0//TF_THROWSTONE	#石投げ#
-4029,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
-4029,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
+//4029,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
+//4029,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
 
 // Baby Knight
 4030,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基本スキル#
@@ -2037,8 +2037,8 @@
 4045,51,10,50,5,0,0,0,0,0,0,0,0//TF_HIDING	#ハイディング#
 4045,52,10,0,0,0,0,0,0,0,0,0,0//TF_POISON		#インベナム#
 4045,53,1,52,3,0,0,0,0,0,0,0,0//TF_DETOXIFY	#解毒#
-4045,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
-4045,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
+//4045,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
+//4045,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
 
 // TaeKwon Kid
 4046,1,9,0,0,0,0,0,0,0,0,0,0		//NV_BASIC#Basic Skill#
@@ -2060,7 +2060,7 @@
 4046,425,7,422,5,423,5,424,5,0,0,0,0 //TK_SEVENWIND#Warm Wind#
 4046,426,5,0,0,0,0,0,0,0,0,0,0		//TK_HIGHJUMP#High Jump#
 //4046,493,1,424,5,0,0,0,0,0,0,0,0 //TK_MISSION#Taekwon Mission#
-4046,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4046,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // TaeKwon Master / Star Gladiator
 4047,1,9,0,0,0,0,0,0,0,0,0,0 //NV_BASIC#Basic Skill#
@@ -2082,25 +2082,25 @@
 4047,425,7,422,5,423,5,424,5,0,0,0,0 //TK_SEVENWIND#Warm Wind#
 4047,426,5,0,0,0,0,0,0,0,0,0,0 //TK_HIGHJUMP#High Jump#
 //4047,493,1,424,5,0,0,0,0,0,0,0,0 //TK_MISSION#Taekwon Mission#
-4047,427,3,0,0,0,0,0,0,0,0,0,0	//SG_FEEL#Feeling the Sun, Moon and Stars#
-4047,428,3,427,1,0,0,0,0,0,0,0,0 //SG_SUN_WARM#Warmth of the Sun#
-4047,429,3,427,2,0,0,0,0,0,0,0,0 //SG_MOON_WARM#Warmth of the Moon#
-4047,430,3,427,3,0,0,0,0,0,0,0,0 //SG_STAR_WARM#Warmth of the Star#
-4047,431,4,427,1,0,0,0,0,0,0,0,0 //SG_SUN_COMFORT#Comfort of the Sun#
-4047,432,4,427,2,0,0,0,0,0,0,0,0 //SG_MOON_COMFORT#Comfort of the Moon#
-4047,433,4,427,3,0,0,0,0,0,0,0,0 //SG_STAR_COMFORT#Comfort of the Star#
-4047,434,3,0,0,0,0,0,0,0,0,0,0	//SG_HATE#Hatred of the Sun, Moon and Stars#
-4047,435,3,434,1,0,0,0,0,0,0,0,0 //SG_SUN_ANGER#Sun's Wrath#
-4047,436,3,434,2,0,0,0,0,0,0,0,0 //SG_MOON_ANGER#Moon's Wrath#
-4047,437,3,434,3,0,0,0,0,0,0,0,0 //SG_STAR_ANGER#Stars's Wrath#
-4047,438,5,427,1,434,1,0,0,0,0,0,0 //SG_SUN_BLESS#Blessing of the Sun#
-4047,439,5,427,2,434,2,0,0,0,0,0,0 //SG_MOON_BLESS#Blessing of the Moon#
-4047,440,5,427,3,434,3,0,0,0,0,0,0 //SG_STAR_BLESS#Blessing of the Star#
-4047,441,10,0,0,0,0,0,0,0,0,0,0	//SG_DEVIL#Demon of the Sun, Moon and Stars#
-4047,442,3,0,0,0,0,0,0,0,0,0,0	//SG_FRIEND#Friend of the Sun, Moon and Stars#
-4047,443,10,0,0,0,0,0,0,0,0,0,0	//SG_KNOWLEDGE#Knowledge of the Sun, Moon and Stars#
-4047,444,1,443,9,0,0,0,0,0,0,0,0 //SG_FUSION#Union of the Sun, Moon and Stars#
-4047,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4047,427,3,0,0,0,0,0,0,0,0,0,0	//SG_FEEL#Feeling the Sun, Moon and Stars#
+//4047,428,3,427,1,0,0,0,0,0,0,0,0 //SG_SUN_WARM#Warmth of the Sun#
+//4047,429,3,427,2,0,0,0,0,0,0,0,0 //SG_MOON_WARM#Warmth of the Moon#
+//4047,430,3,427,3,0,0,0,0,0,0,0,0 //SG_STAR_WARM#Warmth of the Star#
+//4047,431,4,427,1,0,0,0,0,0,0,0,0 //SG_SUN_COMFORT#Comfort of the Sun#
+//4047,432,4,427,2,0,0,0,0,0,0,0,0 //SG_MOON_COMFORT#Comfort of the Moon#
+//4047,433,4,427,3,0,0,0,0,0,0,0,0 //SG_STAR_COMFORT#Comfort of the Star#
+//4047,434,3,0,0,0,0,0,0,0,0,0,0	//SG_HATE#Hatred of the Sun, Moon and Stars#
+//4047,435,3,434,1,0,0,0,0,0,0,0,0 //SG_SUN_ANGER#Sun's Wrath#
+//4047,436,3,434,2,0,0,0,0,0,0,0,0 //SG_MOON_ANGER#Moon's Wrath#
+//4047,437,3,434,3,0,0,0,0,0,0,0,0 //SG_STAR_ANGER#Stars's Wrath#
+//4047,438,5,427,1,434,1,0,0,0,0,0,0 //SG_SUN_BLESS#Blessing of the Sun#
+//4047,439,5,427,2,434,2,0,0,0,0,0,0 //SG_MOON_BLESS#Blessing of the Moon#
+//4047,440,5,427,3,434,3,0,0,0,0,0,0 //SG_STAR_BLESS#Blessing of the Star#
+//4047,441,10,0,0,0,0,0,0,0,0,0,0	//SG_DEVIL#Demon of the Sun, Moon and Stars#
+//4047,442,3,0,0,0,0,0,0,0,0,0,0	//SG_FRIEND#Friend of the Sun, Moon and Stars#
+//4047,443,10,0,0,0,0,0,0,0,0,0,0	//SG_KNOWLEDGE#Knowledge of the Sun, Moon and Stars#
+//4047,444,1,443,9,0,0,0,0,0,0,0,0 //SG_FUSION#Union of the Sun, Moon and Stars#
+//4047,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // TaeKwon Master / Star Gladiator (Flying)
 4048,1,9,0,0,0,0,0,0,0,0,0,0 //NV_BASIC#Basic Skill#
@@ -2122,25 +2122,25 @@
 4048,425,7,422,5,423,5,424,5,0,0,0,0 //TK_SEVENWIND#Warm Wind#
 4048,426,5,0,0,0,0,0,0,0,0,0,0 //TK_HIGHJUMP#High Jump#
 //4048,493,1,424,5,0,0,0,0,0,0,0,0 //TK_MISSION#Taekwon Mission#
-4048,427,3,0,0,0,0,0,0,0,0,0,0	//SG_FEEL#Feeling the Sun, Moon and Stars#
-4048,428,3,427,1,0,0,0,0,0,0,0,0//SG_SUN_WARM#Warmth of the Sun#
-4048,429,3,427,2,0,0,0,0,0,0,0,0 //SG_MOON_WARM#Warmth of the Moon#
-4048,430,3,427,3,0,0,0,0,0,0,0,0 //SG_STAR_WARM#Warmth of the Star#
-4048,431,4,427,1,0,0,0,0,0,0,0,0 //SG_SUN_COMFORT#Comfort of the Sun#
-4048,432,4,427,2,0,0,0,0,0,0,0,0 //SG_MOON_COMFORT#Comfort of the Moon#
-4048,433,4,427,3,0,0,0,0,0,0,0,0 //SG_STAR_COMFORT#Comfort of the Star#
-4048,434,3,0,0,0,0,0,0,0,0,0,0	//SG_HATE#Hatred of the Sun, Moon and Stars#
-4048,435,3,434,1,0,0,0,0,0,0,0,0 //SG_SUN_ANGER#Sun's Wrath#
-4048,436,3,434,2,0,0,0,0,0,0,0,0 //SG_MOON_ANGER#Moon's Wrath#
-4048,437,3,434,3,0,0,0,0,0,0,0,0 //SG_STAR_ANGER#Stars's Wrath#
-4048,438,5,427,1,434,1,0,0,0,0,0,0 //SG_SUN_BLESS#Blessing of the Sun#
-4048,439,5,427,2,434,2,0,0,0,0,0,0 //SG_MOON_BLESS#Blessing of the Moon#
-4048,440,5,427,3,434,3,0,0,0,0,0,0 //SG_STAR_BLESS#Blessing of the Star#
-4048,441,10,0,0,0,0,0,0,0,0,0,0	//SG_DEVIL#Demon of the Sun, Moon and Stars#
-4048,442,3,0,0,0,0,0,0,0,0,0,0	//SG_FRIEND#Friend of the Sun, Moon and Stars#
-4048,443,10,0,0,0,0,0,0,0,0,0,0	//SG_KNOWLEDGE#Knowledge of the Sun, Moon and Stars#
-4048,444,1,443,9,0,0,0,0,0,0,0,0 //SG_FUSION#Union of the Sun, Moon and Stars#
-4048,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4048,427,3,0,0,0,0,0,0,0,0,0,0	//SG_FEEL#Feeling the Sun, Moon and Stars#
+//4048,428,3,427,1,0,0,0,0,0,0,0,0//SG_SUN_WARM#Warmth of the Sun#
+//4048,429,3,427,2,0,0,0,0,0,0,0,0 //SG_MOON_WARM#Warmth of the Moon#
+//4048,430,3,427,3,0,0,0,0,0,0,0,0 //SG_STAR_WARM#Warmth of the Star#
+//4048,431,4,427,1,0,0,0,0,0,0,0,0 //SG_SUN_COMFORT#Comfort of the Sun#
+//4048,432,4,427,2,0,0,0,0,0,0,0,0 //SG_MOON_COMFORT#Comfort of the Moon#
+//4048,433,4,427,3,0,0,0,0,0,0,0,0 //SG_STAR_COMFORT#Comfort of the Star#
+//4048,434,3,0,0,0,0,0,0,0,0,0,0	//SG_HATE#Hatred of the Sun, Moon and Stars#
+//4048,435,3,434,1,0,0,0,0,0,0,0,0 //SG_SUN_ANGER#Sun's Wrath#
+//4048,436,3,434,2,0,0,0,0,0,0,0,0 //SG_MOON_ANGER#Moon's Wrath#
+//4048,437,3,434,3,0,0,0,0,0,0,0,0 //SG_STAR_ANGER#Stars's Wrath#
+//4048,438,5,427,1,434,1,0,0,0,0,0,0 //SG_SUN_BLESS#Blessing of the Sun#
+//4048,439,5,427,2,434,2,0,0,0,0,0,0 //SG_MOON_BLESS#Blessing of the Moon#
+//4048,440,5,427,3,434,3,0,0,0,0,0,0 //SG_STAR_BLESS#Blessing of the Star#
+//4048,441,10,0,0,0,0,0,0,0,0,0,0	//SG_DEVIL#Demon of the Sun, Moon and Stars#
+//4048,442,3,0,0,0,0,0,0,0,0,0,0	//SG_FRIEND#Friend of the Sun, Moon and Stars#
+//4048,443,10,0,0,0,0,0,0,0,0,0,0	//SG_KNOWLEDGE#Knowledge of the Sun, Moon and Stars#
+//4048,444,1,443,9,0,0,0,0,0,0,0,0 //SG_FUSION#Union of the Sun, Moon and Stars#
+//4048,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
 // Soul Linker
 4049,1,9,0,0,0,0,0,0,0,0,0,0 //NV_BASIC#Basic Skill#
@@ -2162,31 +2162,31 @@
 4049,425,7,422,5,423,5,424,5,0,0,0,0 //TK_SEVENWIND#Warm Wind#
 4049,426,5,0,0,0,0,0,0,0,0,0,0 //TK_HIGHJUMP#High Jump#
 //4049,493,1,424,5,0,0,0,0,0,0,0,0 //TK_MISSION#Taekwon Mission#
-4049,445,5,0,0,0,0,0,0,0,0,0,0	//SL_ALCHEMIST#Spirit of the Alchemist#
-4049,447,5,0,0,0,0,0,0,0,0,0,0	//SL_MONK#Spirit of the Monk#
-4049,448,5,0,0,0,0,0,0,0,0,0,0	//SL_STAR#Spirit of the Star Knight#
-4049,449,5,0,0,0,0,0,0,0,0,0,0	//SL_SAGE#Spirit of the Professor#
-4049,450,5,0,0,0,0,0,0,0,0,0,0	//SL_CRUSADER#Spirit of the Crusader#
-4049,451,5,0,0,0,0,0,0,0,0,0,0	//SL_SUPERNOVICE#Spirit of the Supernovice#
-4049,452,5,450,1,0,0,0,0,0,0,0,0 //SL_KNIGHT#Spirit of the Knight#
-4049,453,5,449,1,0,0,0,0,0,0,0,0 //SL_WIZARD#Spirit of the Wizard#
-4049,454,5,447,1,0,0,0,0,0,0,0,0 //SL_PRIEST#Spirit of the Priest#
-4049,455,5,0,0,0,0,0,0,0,0,0,0	//SL_BARDDANCER#Spirit of the Artist#
-4049,456,5,457,1,0,0,0,0,0,0,0,0 //SL_ROGUE#Spirit of the Rogue#
-4049,457,5,0,0,0,0,0,0,0,0,0,0	//SL_ASSASIN#Spirit of the Assasin#
-4049,458,5,445,1,0,0,0,0,0,0,0,0 //SL_BLACKSMITH#Spirit of the Blacksmith#
-4049,460,5,455,1,0,0,0,0,0,0,0,0 //SL_HUNTER#Spirit of the Hunter#
-4049,461,5,448,1,0,0,0,0,0,0,0,0 //SL_SOULLINKER#Spirit of the Soul Linker#
-4049,462,7,454,1,0,0,0,0,0,0,0,0 //SL_KAIZEL#Kaizel#
-4049,463,7,454,1,450,1,0,0,0,0,0,0 //SL_KAAHI#Kahai#
-4049,464,3,456,1,0,0,0,0,0,0,0,0 //SL_KAUPE#Kauf#
-4049,465,7,453,1,0,0,0,0,0,0,0,0 //SL_KAITE#Kaite#
-4049,466,7,423,1,0,0,0,0,0,0,0,0 //SL_KAINA#Kaina#
-4049,467,7,453,1,0,0,0,0,0,0,0,0 //SL_STIN#Estin#
-4049,468,7,453,1,0,0,0,0,0,0,0,0 //SL_STUN#Estern#
-4049,469,10,467,7,468,7,0,0,0,0,0,0 //SL_SMA#Esma#
-4049,470,7,454,1,0,0,0,0,0,0,0,0 //SL_SWOO#Esu#
-4049,471,3,452,1,0,0,0,0,0,0,0,0 //SL_SKE#Esk#
-4049,472,3,447,1,0,0,0,0,0,0,0,0 //SL_SKA#Eska#
-4049,494,5,451,1,0,0,0,0,0,0,0,0 //SL_HIGH#Spirit of Rebirth#
-4049,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+//4049,445,5,0,0,0,0,0,0,0,0,0,0	//SL_ALCHEMIST#Spirit of the Alchemist#
+//4049,447,5,0,0,0,0,0,0,0,0,0,0	//SL_MONK#Spirit of the Monk#
+//4049,448,5,0,0,0,0,0,0,0,0,0,0	//SL_STAR#Spirit of the Star Knight#
+//4049,449,5,0,0,0,0,0,0,0,0,0,0	//SL_SAGE#Spirit of the Professor#
+//4049,450,5,0,0,0,0,0,0,0,0,0,0	//SL_CRUSADER#Spirit of the Crusader#
+//4049,451,5,0,0,0,0,0,0,0,0,0,0	//SL_SUPERNOVICE#Spirit of the Supernovice#
+//4049,452,5,450,1,0,0,0,0,0,0,0,0 //SL_KNIGHT#Spirit of the Knight#
+//4049,453,5,449,1,0,0,0,0,0,0,0,0 //SL_WIZARD#Spirit of the Wizard#
+//4049,454,5,447,1,0,0,0,0,0,0,0,0 //SL_PRIEST#Spirit of the Priest#
+//4049,455,5,0,0,0,0,0,0,0,0,0,0	//SL_BARDDANCER#Spirit of the Artist#
+//4049,456,5,457,1,0,0,0,0,0,0,0,0 //SL_ROGUE#Spirit of the Rogue#
+//4049,457,5,0,0,0,0,0,0,0,0,0,0	//SL_ASSASIN#Spirit of the Assasin#
+//4049,458,5,445,1,0,0,0,0,0,0,0,0 //SL_BLACKSMITH#Spirit of the Blacksmith#
+//4049,460,5,455,1,0,0,0,0,0,0,0,0 //SL_HUNTER#Spirit of the Hunter#
+//4049,461,5,448,1,0,0,0,0,0,0,0,0 //SL_SOULLINKER#Spirit of the Soul Linker#
+//4049,462,7,454,1,0,0,0,0,0,0,0,0 //SL_KAIZEL#Kaizel#
+//4049,463,7,454,1,450,1,0,0,0,0,0,0 //SL_KAAHI#Kahai#
+//4049,464,3,456,1,0,0,0,0,0,0,0,0 //SL_KAUPE#Kauf#
+//4049,465,7,453,1,0,0,0,0,0,0,0,0 //SL_KAITE#Kaite#
+//4049,466,7,423,1,0,0,0,0,0,0,0,0 //SL_KAINA#Kaina#
+//4049,467,7,453,1,0,0,0,0,0,0,0,0 //SL_STIN#Estin#
+//4049,468,7,453,1,0,0,0,0,0,0,0,0 //SL_STUN#Estern#
+//4049,469,10,467,7,468,7,0,0,0,0,0,0 //SL_SMA#Esma#
+//4049,470,7,454,1,0,0,0,0,0,0,0,0 //SL_SWOO#Esu#
+//4049,471,3,452,1,0,0,0,0,0,0,0,0 //SL_SKE#Esk#
+//4049,472,3,447,1,0,0,0,0,0,0,0,0 //SL_SKA#Eska#
+//4049,494,5,451,1,0,0,0,0,0,0,0,0 //SL_HIGH#Spirit of Rebirth#
+//4049,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#

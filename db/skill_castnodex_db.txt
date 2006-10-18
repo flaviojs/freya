@@ -15,9 +15,9 @@
 366,1	// HW_MAGICPOWER#Mystical Amplification#
 370,1	// CH_PALMSTRIKE#Raging Palm Strike#
 403,1	// PF_MEMORIZE#Foresight#
-408,1	// WE_BABY#Baby#
-409,1	// WE_CALLPARENT#Call Parent#
-410,1	// WE_CALLBABY#Call Baby#
+//408,1	// WE_BABY#Baby#
+//409,1	// WE_CALLPARENT#Call Parent#
+//410,1	// WE_CALLBABY#Call Baby#
 482,1	// PF_DOUBLECASTING#Double Casting#
 489,1	// CG_TAROTCARD#Tarot Card of Fate#
 1014,1	// PR_REDEMPTIO#Redemptio#
