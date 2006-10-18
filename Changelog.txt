@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/17/06
+	* Updated: Weapon 'Hatii Claw' (Thanks to slasherdade) [Tsuyuki]
 	* Changed: Commented all unfinished skills in the skill databases [Tsuyuki]
 	* Fixed: Soul Linker not being read correctly (Thanks to Lirathyl) [Tsuyuki]
 	* Fixed: Some things with my Juperos script [Tsuyuki]
