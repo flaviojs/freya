@@ -3,7 +3,7 @@
 //===== By ================================================
 //= Tsuyuki
 //===== Version ===========================================
-//= 0.5
+//= 0.6a
 //===== Compatible With ===================================
 //= Freya
 //===== Description =======================================
@@ -13,6 +13,8 @@
 //= cutins and the broadcasted messages past Juperos_02.gat.
 //===== Comments ==========================================
 //= 0.5 Added first version [Tsuyuki]
+//= 0.6 Replaced 'monster' with 'areamonster' on certain occasions [Tsuyuki]
+//= 0.6a Fixed Gate Switches not respawning [Galaxy & Tsuyuki]
 //=========================================================
 
 
@@ -47,10 +49,20 @@ JupeLv2Warp:
 	end;
 }
 
+
+juperos_02.gat,0,0,0	script	#JupeGateAccess	139,{
+OnSpawn:
+	monster "juperos_02.gat",24,275,"1st Gate Switch",1674,1,"#JupeGateAccess1::OnSwitchADead";
+	monster "juperos_02.gat",240,29,"2nd Gate Switch",1674,1,"#JupeGateAccess2::OnSwitchBDead";
+	monster "juperos_02.gat",282,183,"3rd Gate Switch",1674,1,"#JupeGateAccess3::OnSwitchCDead";
+	end;
+}
+
+
 juperos_02.gat,0,0,0	script	#JupeGateAccess1	139,{
 
 OnInit:
-	monster "juperos_02.gat",24,275,"1st Gate Switch",1674,1,"#JupeGateAccess1::OnSwitchADead";
+	donpcevent "#JupeGateAccess::OnSpawn";
 	end;
 
 OnSwitchADead:
@@ -85,14 +97,13 @@ OnTimer600000:
 	set $@JupeSwitch2,0;
 	set $@JupeSwitch3,0;
 	stopnpctimer;
-	goto OnInit;
+	donpcevent "#JupeGateAccess::OnSpawn";
 	end;
 }
 
 juperos_02.gat,0,0,0	script	#JupeGateAccess2	139,{
 
 OnInit:
-	monster "juperos_02.gat",240,29,"2nd Gate Switch",1674,1,"#JupeGateAccess2::OnSwitchBDead";
 	end;
 
 OnSwitchBDead:
@@ -126,14 +137,13 @@ OnTimer600000:
 	set $@JupeSwitch2,0;
 	set $@JupeSwitch3,0;
 	stopnpctimer;
-	goto OnInit;
+	donpcevent "#JupeGateAccess::OnSpawn";
 	end;
 }
 
 juperos_02.gat,0,0,0	script	#JupeGateAccess3	139,{
 
 OnInit:
-	monster "juperos_02.gat",282,183,"3rd Gate Switch",1674,1,"#JupeGateAccess3::OnSwitchCDead";
 	end;
 
 OnSwitchCDead:
@@ -167,7 +177,7 @@ OnTimer600000:
 	set $@JupeSwitch2,0;
 	set $@JupeSwitch3,0;
 	stopnpctimer;
-	goto OnInit;
+	donpcevent "#JupeGateAccess::OnSpawn";
 	end;
 }
 
@@ -330,9 +340,10 @@ JupeCrestInsert:
 
 	JupeEnterCore:
 		set $@JupeEleRoom,1;
-		monster "jupe_ele_r.gat",51,94,"Dimik",1669,3,"Lever#Lever6::OnMobEleRoomDead";
-		monster "jupe_ele_r.gat",53,93,"Photon Cannon",1664,3,"Lever#Lever6::OnMobEleRoomDead";
-		monster "jupe_ele_r.gat",52,95,"Venatu",1675,2,"Lever#Lever6::OnMobEleRoomDead";
+		areamonster "jupe_ele_r.gat",42,82,57,97,"Dimik",1669,3,"Lever#Lever6::OnMobEleRoomDead";
+		areamonster "jupe_ele_r.gat",42,82,57,97,"Photon Cannon",1664,3,"Lever#Lever6::OnMobEleRoomDead";
+		areamonster "jupe_ele_r.gat",42,82,57,97,"Venatu",1675,2,"Lever#Lever6::OnMobEleRoomDead";
+
 
 		attachnpctimer;
 		initnpctimer;
@@ -375,10 +386,10 @@ JupeEleEnd:
 
 JupeActivate3:
 	set $@JupeElevator,1;
-	monster "jupe_ele.gat",41,48,"Photon Cannon",1664,7,"Lever#Lever7::OnMobElevatorDead";
-	monster "jupe_ele.gat",42,47,"Archdam",1668,2,"Lever#Lever7::OnMobElevatorDead";
-	monster "jupe_ele.gat",42,48,"Dimik",1669,14,"Lever#Lever7::OnMobElevatorDead";
-	monster "jupe_ele.gat",41,47,"Venatu",1675,8,"Lever#Lever7::OnMobElevatorDead";
+	areamonster "jupe_ele.gat",34,40,49,55,"Photon Cannon",1664,7,"Lever#Lever7::OnMobElevatorDead";
+	areamonster "jupe_ele.gat",34,40,49,55,"Archdam",1668,2,"Lever#Lever7::OnMobElevatorDead";
+	areamonster "jupe_ele.gat",34,40,49,55,"Dimik",1669,14,"Lever#Lever7::OnMobElevatorDead";
+	areamonster "jupe_ele.gat",34,40,49,55,"Venatu",1675,8,"Lever#Lever7::OnMobElevatorDead";
 	attachnpctimer;
 	initnpctimer;
 	close;
