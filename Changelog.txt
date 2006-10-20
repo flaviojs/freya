@@ -4,6 +4,11 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/19/06
+	* Changed: Disabled use of skills in the jail map (sec_in02.gat), to prevent exploits [Tsuyuki]
+	* Fixed: Both Priest and Assassin should now be able to equip Assassin's Mask [Tsuyuki]
+	* Reverted: Harbin's Bowling Bash changes (he broke the damage formula) [Tsuyuki]
+
 10/17/06
 	* Updated: Weapon 'Hatii Claw' (Thanks to slasherdade) [Tsuyuki]
 	* Changed: Commented all unfinished skills in the skill databases [Tsuyuki]
