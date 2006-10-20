@@ -3,7 +3,7 @@
 //===== Par: =================================================
 //= Garion, GAlion, DaVinci, Jondalar, Kheldar, Yor
 //===== Current Version: =====================================
-//= 3.8
+//= 4.0
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -61,6 +61,13 @@
 //=      Mise en place d'un monstre permanent qui soigne 1
 //=        fois sur 5 le joueur qui le tue (type: dernier
 //=        spawn).
+//= 4.0  Activation automatisé du Spawn Survivor toutes les
+//=        demi-heures entre 23h00 et 10h00.
+//=      Modification du délai entre chaque spawn: Après 1
+//=        minute, ajouter 20 secondes entre chaque groupe au
+//=        lieu de 30 secondes. Spawn 50 effectué à 6310
+//=        secondes (105 minutes) au lieu de 8190 secondes
+//=       (136 minutes).
 //============================================================
 
 // les Warps
@@ -622,6 +629,7 @@ L_spawntype3:
 	if (rand(1,2) == 1) set $@spawn50,1383; // Explosion
 	goto Suite_onstart;
 
+// GROUPE 1 -------------------------
 Suite_onstart:
 	set $@nb_part,getmapnotgms2("guild_vs5.gat",20); // Joueurs non GMs vivants
 	set $@survivants,$@nb_part; // pour tester les cas de triche
@@ -668,504 +676,514 @@ OnTimer90000:
 	end;
 
 OnTimer120000:
-	mapannounce "guild_vs5.gat","Garde Royal: 60 secondes entre chaque spawn de monstres différents.",0;
 	set $@numero_spawn,5;
 	callfunc "f_monstres", $@spawn5;
 	end;
 
-OnTimer165000:
-	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 15 secondes.",0;
-	end;
-OnTimer180000:
+// GROUPE 6 -------------------------
+OnTimer145000:
 	mapannounce "guild_vs5.gat","Garde Royal: Bravo, aux survivants ! Continuons à monter en puissance...",0;
+	end;
+OnTimer150000:
+	mapannounce "guild_vs5.gat","Garde Royal: 60 secondes entre chaque spawn de monstres différents.",0;
 	set $@numero_spawn,6;
 	callfunc "f_monstres", $@spawn6;
 	end;
 
-OnTimer225000:
+OnTimer195000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 15 secondes.",0;
 	end;
-OnTimer240000:
+OnTimer210000:
 	set $@numero_spawn,7;
 	callfunc "f_monstres", $@spawn7;
 	end;
 
-OnTimer285000:
+OnTimer255000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 15 secondes.",0;
 	end;
-OnTimer300000:
+OnTimer270000:
 	set $@numero_spawn,8;
 	callfunc "f_monstres", $@spawn8;
 	end;
 
-OnTimer345000:
+OnTimer315000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 15 secondes.",0;
 	end;
-OnTimer360000:
+OnTimer330000:
 	set $@numero_spawn,9;
 	callfunc "f_monstres", $@spawn9;
 	end;
 
-OnTimer405000:
+OnTimer375000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 15 secondes.",0;
 	end;
-OnTimer420000:
-	mapannounce "guild_vs5.gat","Garde Royal: Bravo, aux survivants ! Plus difficile maintenant.",0;
+OnTimer390000:
 	set $@numero_spawn,10;
 	callfunc "f_monstres", $@spawn10;
 	end;
 
-OnTimer465000:
-	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 15 secondes.",0;
+// GROUPE 11 -------------------------
+OnTimer430000:
+	mapannounce "guild_vs5.gat","Garde Royal: Bravo, aux survivants ! Plus difficile maintenant.",0;
+	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer480000:
-	mapannounce "guild_vs5.gat","Garde Royal: une minute 30 entre chaque spawn de monstres différents.",0;
+OnTimer450000:
+	mapannounce "guild_vs5.gat","Garde Royal: une minute 20 entre chaque spawn de monstres différents.",0;
 	set $@numero_spawn,11;
 	callfunc "f_monstres", $@spawn11;
 	end;
-OnTimer525000: // pour patienter (45 sec après le spawn)
+OnTimer490000: // pour patienter (40 sec après le spawn)
 	callfunc "check_monstres", $@spawn11;
 	end;
 
-OnTimer550000:
+OnTimer510000:
 	mapannounce "guild_vs5.gat","Garde Royal: Mise en place de nettoyeurs plus résistants.",0;
 	areamonsteragro "guild_vs5.gat",0,0,200,200,"Nettoyeur",1017,5,"Surviv::OnMortBugAgro"; // Thief Bug Female
 	set $@nb_mobs_permanents,$@nb_mobs_permanents + 5;
 
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer570000:
+OnTimer530000:
 	set $@numero_spawn,12;
 	callfunc "f_monstres", $@spawn12;
 	end;
-OnTimer615000: // pour patienter (45 sec après le spawn)
+OnTimer570000: // pour patienter (40 sec après le spawn)
 	callfunc "check_monstres", $@spawn12;
 	end;
 
-OnTimer640000:
+OnTimer590000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer660000:
+OnTimer610000:
 	set $@numero_spawn,13;
 	callfunc "f_monstres", $@spawn13;
 	end;
-OnTimer705000: // pour patienter (45 sec après le spawn)
+OnTimer650000: // pour patienter (40 sec après le spawn)
 	callfunc "check_monstres", $@spawn13;
 	end;
 
-OnTimer730000:
+OnTimer670000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer750000:
+OnTimer690000:
 	set $@numero_spawn,14;
 	callfunc "f_monstres", $@spawn14;
 	end;
-OnTimer795000: // pour patienter (45 sec après le spawn)
+OnTimer730000: // pour patienter (40 sec après le spawn)
 	callfunc "check_monstres", $@spawn14;
 	end;
 
-OnTimer820000:
+OnTimer750000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer840000:
-	mapannounce "guild_vs5.gat","Garde Royal: Bravo, aux survivants ! Plus dur maintenant.",0;
+OnTimer770000:
 	set $@numero_spawn,15;
 	callfunc "f_monstres", $@spawn15;
 	end;
-OnTimer885000: // pour patienter (45 sec après le spawn)
+OnTimer810000: // pour patienter (40 sec après le spawn)
 	callfunc "check_monstres", $@spawn15;
 	end;
 
-OnTimer910000:
+// GROUPE 16 -------------------------
+OnTimer830000:
+	mapannounce "guild_vs5.gat","Garde Royal: Bravo, aux survivants ! Plus dur maintenant.",0;
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer930000:
-	mapannounce "guild_vs5.gat","Garde Royal: 2 minutes entre chaque spawn de monstres différents.",0;
+OnTimer850000:
+	mapannounce "guild_vs5.gat","Garde Royal: 1 minute et 40 secondes entre chaque spawn de monstres différents.",0;
 	set $@numero_spawn,16;
 	callfunc "f_monstres" , $@spawn16;
 	end;
-OnTimer990000: // pour patienter (1 min après le spawn)
+OnTimer900000: // pour patienter (50 sec après le spawn)
 	callfunc "check_monstres", $@spawn16;
+	end;
+
+OnTimer930000:
+	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
+	end;
+OnTimer950000:
+	set $@numero_spawn,17;
+	callfunc "f_monstres", $@spawn17;
+	end;
+OnTimer1000000: // pour patienter (50 sec après le spawn)
+	callfunc "check_monstres", $@spawn17;
 	end;
 
 OnTimer1030000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
 OnTimer1050000:
-	set $@numero_spawn,17;
-	callfunc "f_monstres", $@spawn17;
-	end;
-OnTimer1110000: // pour patienter (1 min après le spawn)
-	callfunc "check_monstres", $@spawn17;
-	end;
-
-OnTimer1150000:
-	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
-	end;
-OnTimer1170000:
 	set $@numero_spawn,18;
 	callfunc "f_monstres", $@spawn18;
 	end;
-OnTimer1230000: // pour patienter (1 min après le spawn)
+OnTimer1100000: // pour patienter (50 sec après le spawn)
 	callfunc "check_monstres", $@spawn18;
 	end;
 
-OnTimer1270000:
+OnTimer1130000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer1290000:
+OnTimer1150000:
 	set $@numero_spawn,19;
 	callfunc "f_monstres", $@spawn19;
 	end;
-OnTimer1350000: // pour patienter (1 min après le spawn)
+OnTimer1200000: // pour patienter (50 sec après le spawn)
 	callfunc "check_monstres", $@spawn19;
 	end;
 
-OnTimer1390000:
+OnTimer1230000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer1410000:
-	mapannounce "guild_vs5.gat","Garde Royal: Bravo, aux survivants ! Encore plus dur maintenant.",0;
+OnTimer1250000:
 	set $@numero_spawn,20;
 	callfunc "f_monstres", $@spawn20;
 	end;
-OnTimer1470000: // pour patienter (1 min après le spawn)
+OnTimer1300000: // pour patienter (50 sec après le spawn)
 	callfunc "check_monstres", $@spawn20;
 	end;
 
-OnTimer1510000:
+// GROUPE 21 -------------------------
+OnTimer1330000:
+	mapannounce "guild_vs5.gat","Garde Royal: Bravo, aux survivants ! Encore plus dur maintenant.",0;
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer1530000:
-	mapannounce "guild_vs5.gat","Garde Royal: 2 minutes 30 entre chaque spawn de monstres différents.",0;
+OnTimer1350000:
+	mapannounce "guild_vs5.gat","Garde Royal: 2 minutes entre chaque spawn de monstres différents.",0;
 	set $@numero_spawn,21;
 	callfunc "f_monstres" , $@spawn21;
 	end;
-OnTimer1605000: // pour patienter (1 min 15 après le spawn)
+OnTimer1410000: // pour patienter (1 min après le spawn)
 	callfunc "check_monstres", $@spawn21;
 	end;
 
-OnTimer1660000:
+OnTimer1450000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer1680000:
+OnTimer1470000:
 	set $@numero_spawn,22;
 	callfunc "f_monstres", $@spawn22;
 	end;
-OnTimer1755000: // pour patienter (1 min 15 après le spawn)
+OnTimer1530000: // pour patienter (1 min après le spawn)
 	callfunc "check_monstres", $@spawn22;
+	end;
+
+OnTimer1570000:
+	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
+	end;
+OnTimer1590000:
+	set $@numero_spawn,23;
+	callfunc "f_monstres", $@spawn23;
+	end;
+OnTimer1650000: // pour patienter (1 min après le spawn)
+	callfunc "check_monstres", $@spawn23;
+	end;
+
+OnTimer1690000:
+	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
+	end;
+OnTimer1710000:
+	set $@numero_spawn,24;
+	callfunc "f_monstres", $@spawn24;
+	end;
+OnTimer1770000: // pour patienter (1 min après le spawn)
+	callfunc "check_monstres", $@spawn24;
 	end;
 
 OnTimer1810000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
 OnTimer1830000:
-	set $@numero_spawn,23;
-	callfunc "f_monstres", $@spawn23;
-	end;
-OnTimer1905000: // pour patienter (1 min 15 après le spawn)
-	callfunc "check_monstres", $@spawn23;
-	end;
-
-OnTimer1960000:
-	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
-	end;
-OnTimer1980000:
-	set $@numero_spawn,24;
-	callfunc "f_monstres", $@spawn24;
-	end;
-OnTimer2055000: // pour patienter (1 min 15 après le spawn)
-	callfunc "check_monstres", $@spawn24;
-	end;
-
-OnTimer2110000:
-	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
-	end;
-OnTimer2130000:
-	mapannounce "guild_vs5.gat","Garde Royal: Bravo, aux survivants ! Encore plus difficile maintenant.",0;
 	set $@numero_spawn,25;
 	callfunc "f_monstres", $@spawn25;
 	end;
-OnTimer2205000: // pour patienter (1 min 15 après le spawn)
+OnTimer1890000: // pour patienter (1 min après le spawn)
 	callfunc "check_monstres", $@spawn25;
 	end;
 
-OnTimer2260000:
+// GROUPE 26 -------------------------
+OnTimer1930000:
+	mapannounce "guild_vs5.gat","Garde Royal: Bravo, aux survivants ! Encore plus difficile maintenant.",0;
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer2280000:
-	mapannounce "guild_vs5.gat","Garde Royal: 180 secondes entre chaque spawn de monstres différents.",0;
+OnTimer1950000:
+	mapannounce "guild_vs5.gat","Garde Royal: 2 minutes et 20 secondes entre chaque spawn de monstres différents.",0;
 	set $@numero_spawn,26;
 	callfunc "f_monstres", $@spawn26;
 	end;
-OnTimer2370000: // pour patienter (1 min 30 après le spawn)
+OnTimer2020000: // pour patienter (1 min 10 après le spawn)
 	callfunc "check_monstres", $@spawn26;
 	end;
 
-OnTimer2440000:
+OnTimer2070000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer2460000:
+OnTimer2090000:
 	set $@numero_spawn,27;
 	callfunc "f_monstres", $@spawn27;
 	end;
-OnTimer2550000: // pour patienter (1 min 30 après le spawn)
+OnTimer2160000: // pour patienter (1 min 10 après le spawn)
 	callfunc "check_monstres", $@spawn27;
 	end;
 
-OnTimer2620000:
+OnTimer2210000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer2640000:
+OnTimer2230000:
 	set $@numero_spawn,28;
 	callfunc "f_monstres", $@spawn28;
 	end;
-OnTimer2730000: // pour patienter (1 min 30 après le spawn)
+OnTimer2300000: // pour patienter (1 min 10 après le spawn)
 	callfunc "check_monstres", $@spawn28;
 	end;
 
-OnTimer2800000:
+OnTimer2350000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer2820000:
+OnTimer2370000:
 	set $@numero_spawn,29;
 	callfunc "f_monstres", $@spawn29;
 	end;
-OnTimer2910000: // pour patienter (1 min 30 après le spawn)
+OnTimer2440000: // pour patienter (1 min 10 après le spawn)
 	callfunc "check_monstres", $@spawn29;
 	end;
 
-OnTimer2980000:
+OnTimer2490000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer3000000:
-	mapannounce "guild_vs5.gat","Garde Royal: Bravo, aux survivants ! Passons aux choses sérieuses...",0;
+OnTimer2510000:
 	set $@numero_spawn,30;
 	callfunc "f_monstres", $@spawn30;
 	end;
-OnTimer3090000: // pour patienter (1 min 30 après le spawn)
+OnTimer2580000: // pour patienter (1 min 10 après le spawn)
 	callfunc "check_monstres", $@spawn30;
 	end;
 
-OnTimer3160000:
+// GROUPE 31 -------------------------
+OnTimer2630000:
+	mapannounce "guild_vs5.gat","Garde Royal: Bravo, aux survivants ! Passons aux choses sérieuses...",0;
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer3180000:
-	mapannounce "guild_vs5.gat","Garde Royal: 3 minutes 30 entre chaque spawn de monstres différents.",0;
+OnTimer2650000:
+	mapannounce "guild_vs5.gat","Garde Royal: 2 minutes 40 entre chaque spawn de monstres différents.",0;
 	set $@numero_spawn,31;
 	callfunc "f_monstres", $@spawn31;
 	end;
-OnTimer3285000: // pour patienter (1 min 45 après le spawn)
+OnTimer2730000: // pour patienter (1 min 20 après le spawn)
 	callfunc "check_monstres", $@spawn31;
 	end;
 
-OnTimer3370000:
+OnTimer2790000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer3390000:
+OnTimer2810000:
 	set $@numero_spawn,32;
 	callfunc "f_monstres", $@spawn32;
 	end;
-OnTimer3495000: // pour patienter (1 min 45 après le spawn)
+OnTimer2890000: // pour patienter (1 min 20 après le spawn)
 	callfunc "check_monstres", $@spawn32;
 	end;
 
-OnTimer3580000:
+OnTimer2950000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer3600000:
+OnTimer2970000:
 	set $@numero_spawn,33;
 	callfunc "f_monstres", $@spawn33;
 	end;
-OnTimer3705000: // pour patienter (1 min 45 après le spawn)
+OnTimer3050000: // pour patienter (1 min 20 après le spawn)
 	callfunc "check_monstres", $@spawn33;
+	end;
+
+OnTimer3110000:
+	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
+	end;
+OnTimer3130000:
+	set $@numero_spawn,34;
+	callfunc "f_monstres", $@spawn34;
+	end;
+OnTimer3210000: // pour patienter (1 min 20 après le spawn)
+	callfunc "check_monstres", $@spawn34;
+	end;
+
+OnTimer3270000:
+	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
+	end;
+OnTimer3290000:
+	set $@numero_spawn,35;
+	callfunc "f_monstres", $@spawn35;
+	end;
+OnTimer3370000: // pour patienter (1 min 20 après le spawn)
+	callfunc "check_monstres", $@spawn35;
+	end;
+
+// GROUPE 36 -------------------------
+OnTimer3430000:
+	mapannounce "guild_vs5.gat","Garde Royal: Bravo, aux survivants ! Après ces mises en bouches... le plat principal.",0;
+	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
+	end;
+OnTimer3450000:
+	mapannounce "guild_vs5.gat","Garde Royal: 3 minutes entre chaque spawn de monstres différents.",0;
+	set $@numero_spawn,36;
+	callfunc "f_monstres", $@spawn36;
+	end;
+OnTimer3540000: // pour patienter (1 min 30 après le spawn)
+	callfunc "check_monstres", $@spawn36;
+	end;
+
+OnTimer3610000:
+	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
+	end;
+OnTimer3630000:
+	set $@numero_spawn,37;
+	callfunc "f_monstres", $@spawn37;
+	end;
+OnTimer3720000: // pour patienter (1 min 30 après le spawn)
+	callfunc "check_monstres", $@spawn37;
 	end;
 
 OnTimer3790000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
 OnTimer3810000:
-	set $@numero_spawn,34;
-	callfunc "f_monstres", $@spawn34;
-	end;
-OnTimer3915000: // pour patienter (1 min 45 après le spawn)
-	callfunc "check_monstres", $@spawn34;
-	end;
-
-OnTimer4000000:
-	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
-	end;
-OnTimer4020000:
-	set $@numero_spawn,35;
-	callfunc "f_monstres", $@spawn35;
-	end;
-OnTimer4125000: // pour patienter (1 min 45 après le spawn)
-	callfunc "check_monstres", $@spawn35;
-	end;
-
-OnTimer4210000:
-	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
-	end;
-OnTimer4230000:
-	mapannounce "guild_vs5.gat","Garde Royal: Bravo, aux survivants ! Après ces mises en bouches... le plat principal.",0;
-	set $@numero_spawn,36;
-	callfunc "f_monstres", $@spawn36;
-	end;
-OnTimer4335000: // pour patienter (1 min 45 après le spawn)
-	callfunc "check_monstres", $@spawn36;
-	end;
-
-OnTimer4420000:
-	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
-	end;
-OnTimer4440000:
-	mapannounce "guild_vs5.gat","Garde Royal: 4 minutes entre chaque spawn de monstres différents.",0;
-	set $@numero_spawn,37;
-	callfunc "f_monstres", $@spawn37;
-	end;
-OnTimer4560000: // pour patienter (2 min après le spawn)
-	callfunc "check_monstres", $@spawn37;
-	end;
-
-OnTimer4660000:
-	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
-	end;
-OnTimer4680000:
 	set $@numero_spawn,38;
 	callfunc "f_monstres", $@spawn38;
 	end;
-OnTimer4800000: // pour patienter (2 min après le spawn)
+OnTimer3900000: // pour patienter (1 min 30 après le spawn)
 	callfunc "check_monstres", $@spawn38;
 	end;
 
-OnTimer4900000:
+OnTimer3970000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer4920000:
+OnTimer3990000:
 	set $@numero_spawn,39;
 	callfunc "f_monstres", $@spawn39;
 	end;
-OnTimer5040000: // pour patienter (2 min après le spawn)
+OnTimer4080000: // pour patienter (1 min 30 après le spawn)
 	callfunc "check_monstres", $@spawn39;
 	end;
 
-OnTimer5140000:
+OnTimer4150000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer5160000:
+OnTimer4170000:
 	set $@numero_spawn,40;
 	callfunc "f_monstres", $@spawn40;
 	end;
-OnTimer5280000: // pour patienter (2 min après le spawn)
+OnTimer4260000: // pour patienter (1 min 30 après le spawn)
 	callfunc "check_monstres", $@spawn40;
 	end;
 
-OnTimer5380000:
+// GROUPE 41 -------------------------
+OnTimer4330000:
+	mapannounce "guild_vs5.gat","Garde Royal: Bravo, aux survivants ! Vous avez demandez plus fort...",0;
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer5400000:
-	mapannounce "guild_vs5.gat","Garde Royal: Bravo, aux survivants ! Vous avez demandez plus fort...",0;
+OnTimer4350000:
+	mapannounce "guild_vs5.gat","Garde Royal: 3 minutes 20 secondes entre chaque spawn de monstres différents.",0;
 	set $@numero_spawn,41;
 	callfunc "f_monstres", $@spawn41;
 	end;
-OnTimer5520000: // pour patienter (2 min après le spawn)
+OnTimer4450000: // pour patienter (1 min 40 après le spawn)
 	callfunc "check_monstres", $@spawn41;
 	end;
 
-OnTimer5620000:
+OnTimer4530000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer5640000:
-	mapannounce "guild_vs5.gat","Garde Royal: 4 minutes 30 entre chaque spawn de monstres différents.",0;
+OnTimer4550000:
 	set $@numero_spawn,42;
 	callfunc "f_monstres", $@spawn42;
 	end;
-OnTimer5775000: // pour patienter (2 min 15 après le spawn)
+OnTimer4650000: // pour patienter (1 min 40 après le spawn)
 	callfunc "check_monstres", $@spawn42;
 	end;
 
-OnTimer5890000:
+OnTimer4730000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer5910000:
+OnTimer4750000:
 	set $@numero_spawn,43;
 	callfunc "f_monstres", $@spawn43;
 	end;
-OnTimer6045000: // pour patienter (2 min 15 après le spawn)
+OnTimer4850000: // pour patienter (1 min 40 après le spawn)
 	callfunc "check_monstres", $@spawn43;
 	end;
 
-OnTimer6160000:
+OnTimer4930000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer6180000:
+OnTimer4950000:
 	set $@numero_spawn,44;
 	callfunc "f_monstres", $@spawn44;
 	end;
-OnTimer6315000: // pour patienter (2 min 15 après le spawn)
+OnTimer5050000: // pour patienter (1 min 40 après le spawn)
 	callfunc "check_monstres", $@spawn44;
 	end;
 
-OnTimer6430000:
+OnTimer5130000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer6450000:
+OnTimer5150000:
 	set $@numero_spawn,45;
 	callfunc "f_monstres", $@spawn45;
 	end;
-OnTimer6585000: // pour patienter (2 min 15 après le spawn)
+OnTimer5250000: // pour patienter (1 min 40 après le spawn)
 	callfunc "check_monstres", $@spawn45;
 	end;
 
-OnTimer6700000:
+// GROUPE 46 -------------------------
+OnTimer5330000:
+	mapannounce "guild_vs5.gat","Garde Royal: Bravo, aux survivants ! Ok, vous allez voir maintenant...",0;
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer6720000:
-	mapannounce "guild_vs5.gat","Garde Royal: Bravo, aux survivants ! Ok, vous allez voir maintenant...",0;
+OnTimer5350000:
+	mapannounce "guild_vs5.gat","Garde Royal: 3 minutes 40 secondes entre chaque spawn de monstres différents.",0;
 	set $@numero_spawn,46;
 	callfunc "f_monstres", $@spawn46;
 	end;
-OnTimer6855000: // pour patienter (2 min 15 après le spawn)
+OnTimer5460000: // pour patienter (1 min 50 après le spawn)
 	callfunc "check_monstres", $@spawn46;
 	end;
 
-OnTimer6970000:
+OnTimer5550000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer6990000:
-	mapannounce "guild_vs5.gat","Garde Royal: 5 minutes entre chaque spawn de monstres différents.",0;
+OnTimer5570000:
 	set $@numero_spawn,47;
 	callfunc "f_monstres", $@spawn47;
 	end;
-OnTimer7140000: // pour patienter (2 min 30 après le spawn)
+OnTimer5680000: // pour patienter (1 min 50 après le spawn)
 	callfunc "check_monstres", $@spawn47;
 	end;
 
-OnTimer7270000:
+OnTimer5770000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer7290000:
+OnTimer5790000:
 	set $@numero_spawn,48;
 	callfunc "f_monstres", $@spawn48;
 	end;
-OnTimer7440000: // pour patienter (2 min 30 après le spawn)
+OnTimer5900000: // pour patienter (1 min 50 après le spawn)
 	callfunc "check_monstres", $@spawn48;
 	end;
 
-OnTimer7570000:
+// GROUPE 49 -------------------------
+OnTimer5990000:
 	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer7590000:
-	mapannounce "guild_vs5.gat","Garde Royal: Avant dernier spawn. Ensuite, nous vous laissons 10 minutes avant le dernier...",0;
+OnTimer6010000:
+	mapannounce "guild_vs5.gat","Garde Royal: Avant dernier spawn. Nnous vous laissons 5 minutes pour faire le ménage avant le dernier spawn...",0;
 	set $@numero_spawn,49;
 	callfunc "f_monstres", $@spawn49;
 	end;
 // pas de monstres pour patienter
 
-OnTimer8170000:
-	mapannounce "guild_vs5.gat","Garde Royal: Prochaine vague de spawn dans 20 secondes.",0;
+// GROUPE 50 -------------------------
+OnTimer6290000:
+	mapannounce "guild_vs5.gat","Garde Royal: Dernière vague de spawn dans 20 secondes.",0;
 	end;
-OnTimer8190000:
+OnTimer6310000:
 	mapannounce "guild_vs5.gat","Garde Royal: Attention, dernier spawn ! Serez-vous les Masters Survivors ?!",0;
 	set $@numero_spawn,50;
 	callfunc "f_monstres", $@spawn50;
@@ -1312,7 +1330,8 @@ L_Regles:
 	mes "Le dernier joueur à survivre peut espérer gagner et emporter le prix.";
 	next;
 	mes "[Spawner]";
-	mes "Le Spawn Survivor ne peut être activé que par un GM ou de manière automatisée tous les jours à 02h00, 06h00, 10h00 et 23h30 et le Samedi à 13h30.";
+	mes "Le Spawn Survivor ne peut être activé que par un GM.";
+	mes "Il est activé de manière automatisée le Samedi à 13h30 et toutes les demi-heures entre 23h00 et 10h00.";
 	mes "Présentez-vous 10 minutes avant l'heure prévue pour un Spawn Survivor automatisé.";
 	next;
 	mes "[Spawner]";
@@ -1355,7 +1374,8 @@ L_informations:
 L_info_pas_event:
 	mes "[Spawner]";
 	mes "L'événement Spawn Survivor n'est pas activé.";
-	mes "Il ne peut être activé que par un GM ou de manière automatisée tous les jours à 02h00, 06h00, 10h00 et 23h30 et le Samedi à 13h30.";
+	mes "Il ne peut être activé que par un GM.";
+	mes "Il est activé de manière automatisée le Samedi à 13h30 et toutes les demi-heures entre 23h00 et 10h00.";
 	mes "Présentez-vous 10 minutes avant l'heure prévue pour un Spawn Survivor automatisé.";
 	mes "Au revoir.";
 	close;
@@ -1476,32 +1496,73 @@ OnSat1320:
 	Announce "Garde Royal: Le Spawn Survivor est ouvert (type déterminé au hasard: " + $@spawn_type + ").",8;
 	goto L_creawarp;
 
-// Tous les jours à 02h00
-OnClock0150:
-	if (agitcheck(0) != 0) end;
-	if ($@Spawn_flag > 0) end; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
-	if ($@spawn_type == 0) set $@spawn_type, rand(1,3);
-	Announce "Garde Royal: Le Spawn Survivor est ouvert (type déterminé au hasard: " + $@spawn_type + ").",8;
-	goto L_creawarp;
+OnClock2320: // Tous les jours à 23h30
+	goto LancementAuto;
 
-// Tous les jours à 06h00
-OnClock0550:
-	if (agitcheck(0) != 0) end;
-	if ($@Spawn_flag > 0) end; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
-	if ($@spawn_type == 0) set $@spawn_type, rand(1,3);
-	Announce "Garde Royal: Le Spawn Survivor est ouvert (type déterminé au hasard: " + $@spawn_type + ").",8;
-	goto L_creawarp;
+OnClock2350: // Tous les jours à 00h00
+	goto LancementAuto;
 
-// Tous les jours à 10h00
-OnClock0950:
-	if (agitcheck(0) != 0) end;
-	if ($@Spawn_flag > 0) end; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
-	if ($@spawn_type == 0) set $@spawn_type, rand(1,3);
-	Announce "Garde Royal: Le Spawn Survivor est ouvert (type déterminé au hasard: " + $@spawn_type + ").",8;
-	goto L_creawarp;
+OnClock0020: // Tous les jours à 00h30
+	goto LancementAuto;
 
-// Tous les jours à 23h30
-OnClock2320:
+OnClock0050: // Tous les jours à 01h00
+	goto LancementAuto;
+
+OnClock0120: // Tous les jours à 01h30
+	goto LancementAuto;
+
+OnClock0150: // Tous les jours à 02h00
+	goto LancementAuto;
+
+OnClock0220: // Tous les jours à 02h30
+	goto LancementAuto;
+
+OnClock0250: // Tous les jours à 03h00
+	goto LancementAuto;
+
+OnClock0320: // Tous les jours à 03h30
+	goto LancementAuto;
+
+OnClock0350: // Tous les jours à 04h00
+	goto LancementAuto;
+
+OnClock0420: // Tous les jours à 04h30
+	goto LancementAuto;
+
+OnClock0450: // Tous les jours à 05h00
+	goto LancementAuto;
+
+OnClock0520: // Tous les jours à 05h30
+	goto LancementAuto;
+
+OnClock0550: // Tous les jours à 06h00
+	goto LancementAuto;
+
+OnClock0620: // Tous les jours à 06h30
+	goto LancementAuto;
+
+OnClock0650: // Tous les jours à 07h00
+	goto LancementAuto;
+
+OnClock0720: // Tous les jours à 07h30
+	goto LancementAuto;
+
+OnClock0750: // Tous les jours à 08h00
+	goto LancementAuto;
+
+OnClock0820: // Tous les jours à 08h30
+	goto LancementAuto;
+
+OnClock0850: // Tous les jours à 09h00
+	goto LancementAuto;
+
+OnClock0920: // Tous les jours à 09h30
+	goto LancementAuto;
+
+OnClock0950: // Tous les jours à 10h00
+	goto LancementAuto;
+
+LancementAuto:
 	if (agitcheck(0) != 0) end;
 	if ($@Spawn_flag > 0) end; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
 	if ($@spawn_type == 0) set $@spawn_type, rand(1,3);
