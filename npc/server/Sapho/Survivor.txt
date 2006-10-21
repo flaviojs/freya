@@ -3,7 +3,7 @@
 //===== Par: =================================================
 //= Garion, GAlion, DaVinci, Jondalar, Kheldar, Yor
 //===== Current Version: =====================================
-//= 5.0
+//= 5.1
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -79,6 +79,11 @@
 //= 5.0  Déplacement des timers avant-event dans le npc
 //=        Drapeau.
 //=      Création de Spawners assistants.
+//= 5.1  Téléportation dans l'arène correctement paramétrée
+//=        pour les GMs.
+//=      Correction: ajout de next avant les menus.
+//=      Dans les règles, information concernant le
+//=        'Soigneur'.
 //============================================================
 
 // les Warps
@@ -1603,12 +1608,14 @@ L_Regles:
 	mes "[Spawner]";
 	mes "Le Spawn Survivor ne peut être activé que par un GM.";
 	mes "Il est activé de manière automatisée le Samedi à 13h30 et toutes les demi-heures entre 23h00 et 10h00.";
+	next;
+	mes "[Spawner]";
 	mes "Présentez-vous 10 minutes avant l'heure prévue pour un Spawn Survivor automatisé.";
+	mes "Particularité: Le Spawn Survivor s'arrête automatiquement en cas de WoE.";
 	next;
 	mes "[Spawner]";
 	mes "Une fois le Spawn Survivor activé, vous avez 10 minutes pour venir ici et joindre la partie.";
 	mes "Si vous arrivez en retard, le jeu se déroulera sans vous.";
-	mes "Particularité: Le Spawn Survivor s'arrête automatiquement en cas de WoE.";
 	next;
 	mes "[Spawner]";
 	mes "Quelques règles:";
@@ -1624,7 +1631,10 @@ L_Regles:
 	mes "[Spawner]";
 	mes "Le gagnant est l'unique survivant qui tue un monstre (double condition).";
 	mes "Le gagnant gagne 750 fois le numéro de la dernière vague en zenys.";
+	next;
+	mes "[Spawner]";
 	mes "Si plusieurs participants résistent aux 50 vagues successives, ils sont alors tous déclarés gagnants.";
+	mes "Ils gagnent chacun 750 fois 50 zenys, soit 37.500 zenys.";
 	next;
 	mes "[Spawner]";
 	mes "Les différents types de Spawn Survivor:";
@@ -1633,7 +1643,11 @@ L_Regles:
 	mes "- Type 3: mélange types 1 et 2.";
 	next;
 	mes "[Spawner]";
-	mes "Un conseil: Désactivez les effets avec la commande ^00FF66/effect^000000.";
+	mes "Un monstre spécial est mis en place rapidement par le Garde Royal pour vous aider à survivre: le ^00FF66Soigneur^000000.";
+	mes "Si vous le tuez, vous avez 1 chance sur 4 qu'il vous revigore (Guérison à 100% de vos HP et SP).";
+	next;
+	mes "[Spawner]";
+	mes "Un conseil: Désactivez les effets avec la commande ^00DD66/effect^000000.";
 	mes "Au revoir.";
 	close;
 
@@ -1670,7 +1684,7 @@ L_info_avant_event:
 	menu "Oui",L_TeleportationArene,"Non",L_info_teleport_Non;
 	close;
 L_TeleportationArene:
-	if ($@Spawn_flag != 1) goto L_TeleportationAnnulee; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
+	if ($@Spawn_flag != 1 && getgmlevel(0) < 20) goto L_TeleportationAnnulee; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
 	percentheal 100,100; // Soin automatique des joueurs à la sortie de l'arène
 	warp "guild_vs5",56,49;
 	close;
@@ -1776,6 +1790,7 @@ L_GmMenu:
 	mes "- Type 1: plutôt 'sympa'.";
 	mes "- Type 2: 'assez dur'.";
 	mes "- Type 3: mélange types 1 et 2.";
+	next;
 	menu "Oui (type 1)",L_GMlauch1,"Oui (type 2)",L_GMlauch2,"Oui (type 3)",L_GMlauch3,"Oui (hasard)",L_GMlauch_hasard,"Non",L_GmFin;
 	close;
 
@@ -1790,6 +1805,7 @@ L_Gmwoe:
 L_GmArreter:
 	mes "[Spawner]";
 	mes "Voulez-vous ^FF6666arrêter^000000 le Spawn Survivor?";
+	next;
 	menu "Oui",L_GMclose,"Non",L_GmFin;
 	close;
 
