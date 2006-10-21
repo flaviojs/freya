@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/21/06
+	* Fixed: Assassin Daggers are now Dark element [Tsuyuki]
 	* Added: Missing Mdef bonus to Excorsist Ring [Tsuyuki]
 	* Fixed: Added missing effect for Morpheus' Hood [Tsuyuki]
 	* Fixed: Some problems with the new headgears [Tsuyuki]
