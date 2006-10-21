@@ -1,5 +1,5 @@
 //===== Freya Script =========================================
-//= Gonryun Town
+//= Kunlun Town
 //===== By: ================================================== 
 //=  edited by x[tsk] 4/30/04
 //===== Current Version: ===================================== 
@@ -20,19 +20,19 @@
 
 alberta.gat,245,69,4	script	Public Relations#01	776,{
 	mes "[Waba]";
-	mes "Hello there! I have traveled far from the Kingdom of Gonryun, my hometown.";
-	mes "I invite all to visit and celebrate the diversity of Gonryun! We welcome all sorts of visitors.";
+	mes "Hello there! I have traveled far from the Kingdom of Kunlun, my hometown.";
+	mes "I invite all to visit and celebrate the diversity of Kunlun! We welcome all sorts of visitors.";
 	M_Menu:
 	next;
-	menu "Gonryun? What is that?",M_1, "Travel to Gonryun.",M_2, "Nevermind.",M_End;
+	menu "Kunlun? What is that?",M_1, "Travel to Kunlun.",M_2, "Nevermind.",M_End;
 
 	M_1:
 		mes "[Waba]";
-		mes "The Kingdom of Gonryun is a sight to behold! It floats high above the sky, beyond the pillar of light!";
+		mes "The Kingdom of Kunlun is a sight to behold! It floats high above the sky, beyond the pillar of light!";
 		next;
 		mes "[Waba]";
 		mes "You can certainly appreciate the sights of the floating mainland! If you go, be sure to try.";
-		mes "The steamed dumplings and peaches, they're a Gonryun specialty not to be missed!";
+		mes "The steamed dumplings and peaches, they're a Kunlun specialty not to be missed!";
 		goto M_Menu;
 	M_2:
 		mes "[Waba]";
@@ -76,8 +76,8 @@ gon_fild01.gat,255,79,6	script	Public Relations#02	776,{
 
 gon_fild01.gat,187,239,4	script	Public Relations#03	776,{
 	mes "[Choseryu]";
-	mes "The sacred pillar of light connects this island to Gonryun Kingdom. There's no time to idly chit chat now, be on your way.";
-	mes "I hope you will have many fond memories of Gonryun before you leave.";
+	mes "The sacred pillar of light connects this island to Kunlun Kingdom. There's no time to idly chit chat now, be on your way.";
+	mes "I hope you will have many fond memories of Kunlun before you leave.";
 	close;
 }
 
@@ -96,7 +96,7 @@ gonryun.gat,153,64,0	script	Public Relations#04	776,{
 		close;
 	M_End:
 		mes "[Choseryu]";
-		mes "Be sure to see all that Gonryun has to offer!";
+		mes "Be sure to see all that Kunlun has to offer!";
 		close;
 }
 
@@ -164,7 +164,7 @@ gonryun.gat,139,142,6	script	Girl#08	772,{
 
 gonryun.gat,113,135,6	script	Guardsman#01	780,{
 	mes "[Guardsman]";
-	mes "Welcome to Gonryun. This is the home of our governor, Sayoumun.";
+	mes "Welcome to Kunlun. This is the home of our governor, Sayoumun.";
 	next;
 	mes "[Guardsman]";
 	mes "We're sure your intentions are benign, but any wrong moves and we'll be forced to take action.";
@@ -178,7 +178,7 @@ gonryun.gat,113,135,6	script	Guardsman#01	780,{
 
 gonryun.gat,113,127,6	script	Guardsman#02	780,{
 	mes "[Guardsman]";
-	mes "Welcome to Gonryun. This is the home of our elder, Sayoumun. He rules all of Gonryun.";
+	mes "Welcome to Kunlun. This is the home of our elder, Sayoumun. He rules all of Kunlun.";
 	next;
 	mes "[Guardsman]";
 	mes "We're sure your intentions are benign, but any wrong moves and we'll be forced to take action.";
@@ -216,7 +216,7 @@ gon_in.gat,17,93,4	script	Village Elder	775,{
 	mes "Zzzzzzzzzzz.......";
 	next;
 	mes "[Sayoumun]";
-	mes "Huh, a visitor?! Oh, hello! I was just, uhm, meditating. I am Sayoumun, mayor of Gonryun village. I welcome you to Gonryun.";
+	mes "Huh, a visitor?! Oh, hello! I was just, uhm, meditating. I am Sayoumun, mayor of Kunlun village. I welcome you to Kunlun.";
 	next;
 	mes "[Sayoumun]";
 	mes "There used to not be many visitors to this land, until the University of Foreign Studies in Alberta began offering trips to our small island.";
@@ -264,7 +264,7 @@ gonryun.gat,268,88,4	script	Ryan Chun Ho	776,{
 
 gonryun.gat,181,161,4	script	Chon Munjin	773,{
 	mes "[Chon Munjin]";
-	mes "The men of Gonryun must be powerful and bold! But being such a man, one just can not get married. Don't you think?";
+	mes "The men of Kunlun must be powerful and bold! But being such a man, one just can not get married. Don't you think?";
 	next;
 	mes "[Chon Munjin]";
 	mes "There's so many more men than women now it makes it even harder to find a woman. I wonder if my son will find himself a good woman?";

@@ -102,7 +102,7 @@ key:gm,state,position,move,déplacement
 @go                :@go <nombre/nom_du_lieu> - Vous téléporte dans une ville/un lieu:
 @go                :  -3: (Memo numéro 2)  3: payon          9: yuno      15: start point  21: jawaii
 @go                :  -2: (Memo numéro 1)  4: alberta       10: amatsu    16: prison/jail  22: ayothaya
-@go                :  -1: (Memo numéro 0)  5: izlude        11: gonryun   17: valkyrie     23: einbroch
+@go                :  -1: (Memo numéro 0)  5: izlude        11: kunlun   17: valkyrie     23: einbroch
 @go                :   0: prontera         6: aldebaran     12: umbala    18: orc dungeon  24: Lighthalzen
 @go                :   1: morocc           7: xmas (lutie)  13: niflheim  19: village (payon)
 @go                :   2: geffen           8: comodo        14: louyang   20: glast heim

@@ -6223,7 +6223,7 @@ Although the Dessert Chef wishes for people to drink this treat elegantly, it's 
 Weight :^777777 15^000000
 #
 
-// -------------------- Gonryun Items - 01 --------------------
+// -------------------- Kunlun Items - 01 --------------------
 552#
 A type of food that is usually eaten by people in a country after their abstinence ceremony.
 ^ffffff_^000000
@@ -10613,7 +10613,7 @@ AGI + 10.
 Weight :^777777 100^000000
 #
 12091#
-A sweet and lightly scrumptious cake made with peaches grown in Gonryun.
+A sweet and lightly scrumptious cake made with peaches grown in Kunlun.
 DEX + 6.
 ^ffffff_^000000
 Weight :^777777 80^000000
@@ -12359,13 +12359,13 @@ While visiting the city, make sure to see:
 4. The ^ff0000Coy Pond^000000, located in the wonderful gardens, whose careful balance and flow reflect the keeper's state of mind.
 #
 7531#
-[Gonryun Travel Brochure]
-Gonryun is a land in the clouds. Being so high in the air affords an unprecedented view of the world and gives a different mindset to those who allow themselves to think freely.
+[Kunlun Travel Brochure]
+Kunlun is a land in the clouds. Being so high in the air affords an unprecedented view of the world and gives a different mindset to those who allow themselves to think freely.
 While visiting the city, make sure to see:
-1. The ^ff0000Statue of Gonryun's Greatest Philosopher^000000, that stands proudly in the middle of town, ready to inspire great thoughts from all those that gaze upon him.
+1. The ^ff0000Statue of Kunlun's Greatest Philosopher^000000, that stands proudly in the middle of town, ready to inspire great thoughts from all those that gaze upon him.
 2. The ^ff0000Overlook of the World^000000. There are particular spots that are exceptionally breathtaking, so please watch your step.
-3. The ^ff0000small hill in Gonryun^000000 that is said to have been the Great Philosophers favorite meditation spot. See if any grand thoughts take you.
-4. The ^ff0000Mini-town^000000 on ground beneath Gonryun that is a lesson against stagnant and small thinking.
+3. The ^ff0000small hill in Kunlun^000000 that is said to have been the Great Philosophers favorite meditation spot. See if any grand thoughts take you.
+4. The ^ff0000Mini-town^000000 on ground beneath Kunlun that is a lesson against stagnant and small thinking.
 #
 7532#
 [Louyang Travel Brochure]
@@ -12389,7 +12389,7 @@ An album with pictures taken in Amatsu.
 Stamped by the official seal of the Rune Midgard Tour Agency.
 #
 7535#
-An album with pictures taken in Gonryun.
+An album with pictures taken in Kunlun.
 Stamped by the official seal of the Rune Midgard Tour Agency.
 #
 7536#

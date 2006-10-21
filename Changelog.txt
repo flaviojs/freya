@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/20/06
+	* Fixed: The city of Gonryun is now known as the city of Kunlun (as per correct english translations) [Tsuyuki]
 	* Updated: X.4 monster names with some more accurate translations [Tsuyuki]
 	* Fixed: Wretched Payon Training Grounds unmovable cell bug once and for all [Tsuyuki]
 	* Updated: Prices for some of the new 'Novice' equipment [Tsuyuki]
@@ -924,7 +925,7 @@ Date	Added
 	* Added: item_norefine text database. Contains the list of no refineable items [Harbin]
 	* Added: Support for 2006-04-04aSakexe clients
 	* Added: Rachel to @go command [Harp]
-	* Translated: Gonryun Arena Event NPCs [Harp]
+	* Translated: Kunlun Arena Event NPCs [Harp]
 	* Fixed: TK can now use Concentration/Awakening Potions [Tsuyuki]
 	* Fixed: Male TKs can now equip Tuxedo [Tsuyuki]
 	* Changed: Mob drops as per kRO [Tsuyuki]

@@ -1326,7 +1326,7 @@
 559#Hand-made_Chocolate#
 573#Chocolate_Drink#
 
-// ----- Gonryun Items - 01 -----
+// ----- Kunlun Items - 01 -----
 552#Ketupat#
 553#Bao#
 7161#Black_Bear_Skin#
@@ -2544,11 +2544,11 @@
 7528#Lottery_Ticket#
 7529#Stolen_Sandal#
 7530#Amatsu_Travel_Brochure#
-7531#Gonryun_Travel_Brochure#
+7531#Kunlun_Travel_Brochure#
 7532#Louyang_Travel_Brochure#
 7533#Ayothaya_Travel_Brochure#
 7534#Amatsu_Photo_Album#
-7535#Gonryun_Photo_Album#
+7535#Kunlun_Photo_Album#
 7536#Louyang_Photo_Album#
 7537#Ayothaya_Photo_Album#
 12143#Red_Can#

@@ -1879,7 +1879,7 @@
 //1406,Kapha@NPC_WATERATTACK,angry,184,3,500,500,5000,yes,target,always,0,,,,,,6
 //1406,Kapha@WZ_WATERBALL,follow,86,3,500,1500,5000,yes,target,always,0,,,,,,16
 
-// Gonryun/Kunlun - Episode 7.0
+// Kunlun/Gonryun - Episode 7.0
 1408,Bloody Butterfly@KN_PIERCE,attack,56,10,500,700,5000,no,target,always,0,,,,,,6
 1408,Bloody Butterfly@NPC_DARKSTRIKE,chase,340,5,2000,700,5000,no,target,always,0,,,,,,6
 1408,Bloody Butterfly@NPC_SLEEPATTACK,attack,182,5,500,0,5000,yes,target,always,0,,,,,,7

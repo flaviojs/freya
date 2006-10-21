@@ -5536,7 +5536,7 @@ ATCOMMAND_FUNC(go) {
 	             { "comodo.gat",      209, 143 },	//	 8=Comodo
 	             { "yuno.gat",        157,  51 },	//	 9=Yuno
 	             { "amatsu.gat",      198,  84 },	//	10=Amatsu
-	             { "gonryun.gat",     160, 120 },	//	11=Gon Ryun
+	             { "gonryun.gat",     160, 120 },	//	11=Kunlun
 	             { "umbala.gat",       89, 157 },	//	12=Umbala
 	             { "niflheim.gat",     21, 153 },	//	13=Niflheim
 	             { "louyang.gat",     217,  40 },	//	14=Lou Yang

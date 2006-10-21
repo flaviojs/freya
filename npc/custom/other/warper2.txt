@@ -22,9 +22,9 @@
 	next;
 	menu "Towns",town,"Dungeons",dungeon;
 town:
-	menu "Alberta",walberta,"Aldebaran",waldebaran,"Amatsu",wamatsu,"Comodo",wcomodo,"Gonryun",wgonryun,"Geffen",wgeffen,"Izlude",wizlude,"Lutie",wxmas,"Morroc",wmorroc,"Niflheim",wniflheim,"Payon",wpayon,"Prontera",wprontera,"Yuno",wyuno,"Umbala",wumbala,"Valkyrie",wvalk,"Louyang",wlouyang;
+	menu "Alberta",walberta,"Aldebaran",waldebaran,"Amatsu",wamatsu,"Comodo",wcomodo,"Kunlun",wkunlun,"Geffen",wgeffen,"Izlude",wizlude,"Lutie",wxmas,"Morroc",wmorroc,"Niflheim",wniflheim,"Payon",wpayon,"Prontera",wprontera,"Yuno",wyuno,"Umbala",wumbala,"Valkyrie",wvalk,"Louyang",wlouyang;
 dungeon:
-	menu "Amatsu Dungeon",ama,"Gonryun Dungeon",gon,"Anthell",ant,"Beach Dungeon",beach,"Byalan Dungeon",byalan,"Clock Tower",clock,"Coal Mines",coal,"Culvert",culvert,"Geffen Dungeon",geffen,"Glast Heim",glast,"Hidden Dungeon",hidden,"Magma Dungeon",magma,"Orc Dungeon",orc,"Payon Dungeon",payon,"Pyramids",pyramids,"Sphinx",sphinx,"Sunken Ship",sunken,"Toy Factory",toy,"Turtle Dungeon",turtle,"Gefenia",gefenia;
+	menu "Amatsu Dungeon",ama,"Kunlun Dungeon",gon,"Anthell",ant,"Beach Dungeon",beach,"Byalan Dungeon",byalan,"Clock Tower",clock,"Coal Mines",coal,"Culvert",culvert,"Geffen Dungeon",geffen,"Glast Heim",glast,"Hidden Dungeon",hidden,"Magma Dungeon",magma,"Orc Dungeon",orc,"Payon Dungeon",payon,"Pyramids",pyramids,"Sphinx",sphinx,"Sunken Ship",sunken,"Toy Factory",toy,"Turtle Dungeon",turtle,"Gefenia",gefenia;
 ant:
 	mes "[Warp NPC]";
 	mes "Please select a Level. Beware that you will be warped directly into the dungeon.";
@@ -132,7 +132,7 @@ walberta:	warp "alberta.gat",192,147;		close;
 waldebaran:	warp "aldebaran.gat",140,131;		close;
 wamatsu:	warp "amatsu.gat",198,84;		close;
 wcomodo:	warp "comodo.gat",209,143;		close;
-wgonryun:	warp "gonryun.gat",160,121;		close;
+wkunlun:	warp "gonryun.gat",160,121;		close;
 wgeffen:	warp "geffen.gat",119,59;		close;
 wizlude:	warp "izlude.gat",128,114;		close;
 wxmas:		warp "xmas.gat",147,134;		close;

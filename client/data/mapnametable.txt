@@ -176,12 +176,12 @@ sec_in01.rsw#Inside Valhalla#
 sec_in02.rsw#Inside Valhalla#
 sec_pri.rsw#Room of Meditation (Valhalla Prison)#
 gon_test.rsw#Arena#
-gon_dun01.rsw#Shrine of Gonryun Queen#
+gon_dun01.rsw#Shrine of Kunlun Queen#
 gon_dun02.rsw#Hermit's Checkers#
 gon_dun03.rsw#Arcadia#
-gon_fild01.rsw#Gonryun Field#
-gon_in.rsw#Inside Gonryun#
-gonryun.rsw#Gonryun, the Hermit Land#
+gon_fild01.rsw#Kunlun Field#
+gon_in.rsw#Inside Kunlun#
+gonryun.rsw#Kunlun, the Hermit Land#
 ama_test.rsw#Momotaro Experience Place#
 ama_dun03.rsw#Amatsu Underground Shrine#
 ama_dun02.rsw#Battle Field in the Underground Forest#

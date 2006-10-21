@@ -6609,7 +6609,7 @@ town_guideとtown_kafraに時期限定の物が常駐してしまうのが気になったので、
 		npc_job_alchemist.txt
 		npc_town_aldebaran.txt
 		npc_town_comodo.txt
-		npc_town_gonryun.txt
+		npc_town_kunlun.txt
 		npc_town_guide.txt
 		npc_town_yuno.txt
 		npc_town_lutie.txt
@@ -8055,9 +8055,9 @@ clif_bladestop()を呼ぶことで白刃取り状態のON、OFFのパケットが送れます。
 //0819 by Kalen
 
 ・コンロン(NPC、Warp)修正
-	conf/npc/npc_town_gonryun.txt(案内員補充)
+	conf/npc/npc_town_kunlun.txt(案内員補充)
 	conf/npc/npc_event_tougijou.txt
-	conf/warp/npc_warp_gonryun.txt(宿2FとD2Fなど)
+	conf/warp/npc_warp_kunlun.txt(宿2FとD2Fなど)
 
 ・MOB修正
 	conf/mob/npc_monster30.txt(一反木綿不足追加)
@@ -8212,7 +8212,7 @@ noteleportはプレイヤーのハエとテレポート、ワープスキルの制限をするが蝶は制限しな
 --------------------
 //0813 by Kalen
 ・コンロンNPC追加
-	conf/npc/npc_town_gonryun.txt(クエストは不明
+	conf/npc/npc_town_kunlun.txt(クエストは不明
 	conf/npc/npc_town_kafra.txt
 	conf/npc/npc_town_guide.txt
 	(conf/npc/npc_event_tougijou.txt)データ不足
@@ -12896,7 +12896,7 @@ conf/npc_monster35.txt
 conf/npc_warp_amatsu.txt
 　　 天津warp pointの設置
 
-conf/npc_warp_gonryun.txt
+conf/npc_warp_kunlun.txt
      崑崙warp pointの設置
 
 conf/npc_town_amatsu.txt
