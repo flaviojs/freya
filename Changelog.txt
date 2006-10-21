@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/21/06
+	* Added: A missing map to the map_athena.conf file (The Sign Quest related) [Tsuyuki]
 	* Fixed: The Taekwon Class's level-up buffs (L10 Blessing, L10 Increase Agi) [Tsuyuki]
 
 10/20/06
