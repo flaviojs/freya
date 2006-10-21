@@ -1598,9 +1598,9 @@
 4402,Aliot_Card,Aliot Card,6,,10,10,,,,,,,2,,,,{},{ if(BaseClass==Job_Swordman||BaseClass==Job_Merchant||BaseClass==Job_Thief) bonus bStr, 2; if(BaseClass==Job_Swordman||BaseClass==Job_Merchant||BaseClass==Job_Thief) bonus bMaxHPrate, 5; if(BaseClass==Job_Mage||BaseClass==Job_Archer||BaseClass==Job_Acolyte) bonus bInt, 2; if(BaseClass==Job_Mage||BaseClass==Job_Archer||BaseClass==Job_Acolyte) bonus bMaxSPrate, 5; }
 4403,Kiel_D-01_Card,Kiel D-01 Card,6,,10,10,,,,,,,2,,,,{},{} // Effect Undecided
 4404,Skogul_Card,Skogul Card,6,,10,10,,,,,,,16,,,,{},{ bonus2 bAddEffWhenHit,9,3000; bonus2 bAddEff,9,3000; }
-4405,Frus_Card,Frus Card,6,,10,10,,,,,,,2,,,,{},{} // Effect Undecided
-4406,Skeggiold_Card,Skeggiold Card,6,,10,10,,,,,,,2,,,,,{},{ bonus2 bMagicAddEle,6,100; } // Effect Undecided
-4407,Valkyrie_Randgris_Card,Valkyrie Randgris Card,6,,10,10,,,,,,,2,,,,,{},{ bonus3 bAutoSpell,289,1,100; } // Effect Undecided
+4405,Thruth_Card,Thruth Card,6,,10,10,,,,,,,2,,,,{},{} // Effect Undecided
+4406,Skeggjold_Card,Skeggjold Card,6,,10,10,,,,,,,2,,,,,{},{ bonus2 bMagicAddEle,6,100; } // Effect Undecided
+4407,Valkyrie_Randgrith_Card,Valkyrie Randgrith Card,6,,10,10,,,,,,,2,,,,,{},{ bonus3 bAutoSpell,289,1,100; } // Effect Undecided
 
 // Extra Headgears
 5001,Headset,Headset,5,20,0,200,,3,,0,18866174,2,256,,0,87,{},{ bonus2 bResEff,5,1000; }

@@ -2725,9 +2725,9 @@
 4402#Aliot_Card#
 4403#Kiel_D-01_Card#
 4404#Skogul_Card#
-4405#Frus_Card#
-4406#Skeggiold_Card#
-4407#Valkyrie_Randgris_Card#
+4405#Thruth_Card#
+4406#Skeggjold_Card#
+4407#Valkyrie_Randgrith_Card#
 
 // ----- Aruna First -----
 7561#Ice_Heart#

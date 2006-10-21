@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/20/06
+	* Updated: X.4 monster names with some more accurate translations [Tsuyuki]
 	* Fixed: Wretched Payon Training Grounds unmovable cell bug once and for all [Tsuyuki]
 	* Updated: Prices for some of the new 'Novice' equipment [Tsuyuki]
 	* Fixed: Nun Hat (Coif)'s Job ID [Tsuyuki]

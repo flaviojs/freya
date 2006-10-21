@@ -348,5 +348,5 @@
 4401,Alicel Card,10000
 4402,Aliot Card,10000
 4404,Skogul Card,10000
-4405,Frus Card,10000
-4406,Skeggiold Card,10000
+4405,Thruth Card,10000
+4406,Skeggjold Card,10000
