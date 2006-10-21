@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/21/06
+	* Fixed: The Taekwon Class's level-up buffs (L10 Blessing, L10 Increase Agi) [Tsuyuki]
+
 10/20/06
 	* Fixed: The city of Gonryun is now known as the city of Kunlun (as per correct english translations) [Tsuyuki]
 	* Updated: X.4 monster names with some more accurate translations [Tsuyuki]

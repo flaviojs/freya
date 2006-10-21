@@ -4943,13 +4943,19 @@ int pc_checkbaselevelup(struct map_session_data *sd)
 		status_calc_pc(sd, 0);
 		pc_heal(sd, sd->status.max_hp, sd->status.max_sp);
 
-		//スパノビはキリエ、イムポ、マニピ、グロ、サフラLv1がかかる
-		if (s_class == JOB_SUPER_NOVICE || s_class == 24) {
+		// Super Novice Level Up Buffs
+		if (s_class == JOB_SUPER_NOVICE) {
 			status_change_start(&sd->bl, SkillStatusChangeTable[PR_KYRIE], 1, 0, 0, 0, skill_get_time(PR_KYRIE, 1), 0);
 			status_change_start(&sd->bl, SkillStatusChangeTable[PR_IMPOSITIO], 1, 0, 0, 0, skill_get_time(PR_IMPOSITIO, 1), 0);
 			status_change_start(&sd->bl, SkillStatusChangeTable[PR_MAGNIFICAT], 1, 0, 0, 0, skill_get_time(PR_MAGNIFICAT, 1), 0);
 			status_change_start(&sd->bl, SkillStatusChangeTable[PR_GLORIA], 1, 0, 0, 0, skill_get_time(PR_GLORIA, 1), 0);
 			status_change_start(&sd->bl, SkillStatusChangeTable[PR_SUFFRAGIUM], 1, 0, 0, 0, skill_get_time(PR_SUFFRAGIUM, 1), 0);
+		}
+		
+		// TaeKwon-Class Level Up Buffs (L10 Blessing, L10 Increase Agi) [Tsuyuki]
+		if (s_class >= 24 && s_class <= 27) {
+			status_change_start(&sd->bl, SkillStatusChangeTable[AL_BLESSING], 10, 0, 0, 0, skill_get_time(AL_BLESSING, 10), 0);
+			status_change_start(&sd->bl, SkillStatusChangeTable[AL_INCAGI], 10, 0, 0, 0, skill_get_time(AL_INCAGI, 10), 0);
 		}
 
 		clif_misceffect(&sd->bl, 0);
