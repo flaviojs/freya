@@ -3,7 +3,7 @@
 //===== Par: =================================================
 //= Garion, GAlion, DaVinci, Jondalar, Kheldar, Yor
 //===== Current Version: =====================================
-//= 4.0
+//= 5.0
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -76,6 +76,9 @@
 //= 4.2  Gestion des multiples gagnants.
 //=      Une chance sur 4 que le soigneur soigne (au lieu de 1
 //=        sur 5).
+//= 5.0  Déplacement des timers avant-event dans le npc
+//=        Drapeau.
+//=      Création de Spawners assistants.
 //============================================================
 
 // les Warps
@@ -136,16 +139,18 @@ L_Novice: // L'usage de act dead/trick dead bloque l'event.
 // NPC d'information pour les participants (message individuel à la demande)
 // NPC servant de fin lorsqu'il y a plusieurs gagnants
 // -------------------------------------------------------------------------
-guild_vs5.gat,47,48,4	script	drapeau	722,1,1,{
-OnTouch:
-	announce "Informations instantanées:",3;
-	if ($@Spawn_flag == 1) goto L_info_avant_event; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
-	if ($@Spawn_flag == 4) goto L_gagnants_a_la_fin; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
-	goto L_info_event_en_cours;
+guild_vs5.gat,47,48,4	script	Drapeau	722,1,1,{
 
-L_info_avant_event:
+OnTouch:
+	if ($@Spawn_flag == 1) goto L_avant_event; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
+	if ($@Spawn_flag == 2 || $@Spawn_flag == 3) goto L_event_en_cours;
+	if ($@Spawn_flag == 4) goto L_gagnants_a_la_fin;
+	end;
+
+L_avant_event:
+	announce "Informations instantanées:",3;
 	announce "- Spawn Survivor de type " + $@spawn_type + " actuellement en cours de préparation.",3;
-	set $@delai_sec, 600 - (getnpctimer(0, "Spawner") / 1000);
+	set $@delai_sec, 600 - (getnpctimer(0, "Drapeau") / 1000);
 	if ($@delai_sec > 0 && $@delai_sec < 60) announce "- Début du Spawn Survivor dans " + $@delai_sec + " seconde(s).",3;
 	if ($@delai_sec > 59 && $@delai_sec < 120) announce "- Début du Spawn Survivor dans 1 minute et " + ($@delai_sec - 60) + " seconde(s).",3;
 	if ($@delai_sec > 119) announce "- Début du Spawn Survivor dans " + ($@delai_sec / 60) + " minutes.",3;
@@ -153,20 +158,219 @@ L_info_avant_event:
 	announce "- Déjà " + getmapnotgms2("guild_vs5.gat",20) + " participant(s) dans l'arène.",3;
 	end;
 
-L_info_event_en_cours:
+L_event_en_cours:
+	announce "Informations instantanées:",3;
 	announce "- Spawn Survivor de type " + $@spawn_type + " en cours.",3;
 	announce "- Vague de spawns numéro " + $@numero_spawn + " effectuée (monstre: " + strmobinfo(2,$@dernier_mob) + ").",3;
 	announce "- " + getmapnotgms2("guild_vs5.gat",20) + " participant(s) et " + (GetMapMobs("guild_vs5.gat") - $@nb_mobs_permanents) + " monstre(s) à tuer dans l'arène.",3;
 	end;
 
 L_gagnants_a_la_fin:
-	// évitons les tricheurs...
-	if (isdead(0) != 0) end; // les morts qui cliquent le drapeau!
+	// évitons les tricheurs... (les morts qui cliquent le Drapeau!)
+	if (isdead(0) != 0) end;
 	announce "Le Master Survivor "+ strcharinfo(0) + " gagne" + ($@numero_spawn * 750) + " zenys.",0;
 	set Zeny,Zeny + ($@numero_spawn * 750);
 	callfunc "Record_spawn", strcharinfo(0); // Enregistrement de ce gagnant
 	percentheal 100,100; // Soin automatique à la sortie de l'arène
 	warp "prontera.gat",165,151;
+	end;
+
+// Initialisation
+OnInit:
+	killmonsterall "guild_vs5.gat";
+	disablenpc "warpspawn";
+	// note: laisser les warps de sortie activés
+	set $@numero_spawn,0;
+	set $@dernier_mob,0;
+	set $@Spawn_flag,0; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
+	set $@nb_part,0;
+	set $@nb_part2,0;
+	set $@survivants,0;
+	set $@nb_mobs,0;
+	set $@nb_mobs_permanents,0;
+	set $@spawn_type,0;
+	stopnpctimer;
+	end;
+
+// Tous les samedis à 13h30
+OnSat1320:
+	if (agitcheck(0) != 0) end;
+	if ($@Spawn_flag > 0) end; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
+	if ($@spawn_type == 0) set $@spawn_type, rand(1,3);
+	Announce "Garde Royal: Le Spawn Survivor est ouvert (type déterminé au hasard: " + $@spawn_type + ").",8;
+	goto OnDemarrage_event;
+
+OnClock2250: // Tous les jours à 23h00
+	goto LancementAuto;
+
+OnClock2320: // Tous les jours à 23h30
+	goto LancementAuto;
+
+OnClock2350: // Tous les jours à 00h00
+	goto LancementAuto;
+
+OnClock0020: // Tous les jours à 00h30
+	goto LancementAuto;
+
+OnClock0050: // Tous les jours à 01h00
+	goto LancementAuto;
+
+OnClock0120: // Tous les jours à 01h30
+	goto LancementAuto;
+
+OnClock0150: // Tous les jours à 02h00
+	goto LancementAuto;
+
+OnClock0220: // Tous les jours à 02h30
+	goto LancementAuto;
+
+OnClock0250: // Tous les jours à 03h00
+	goto LancementAuto;
+
+OnClock0320: // Tous les jours à 03h30
+	goto LancementAuto;
+
+OnClock0350: // Tous les jours à 04h00
+	goto LancementAuto;
+
+OnClock0420: // Tous les jours à 04h30
+	goto LancementAuto;
+
+OnClock0450: // Tous les jours à 05h00
+	goto LancementAuto;
+
+OnClock0520: // Tous les jours à 05h30
+	goto LancementAuto;
+
+OnClock0550: // Tous les jours à 06h00
+	goto LancementAuto;
+
+OnClock0620: // Tous les jours à 06h30
+	goto LancementAuto;
+
+OnClock0650: // Tous les jours à 07h00
+	goto LancementAuto;
+
+OnClock0720: // Tous les jours à 07h30
+	goto LancementAuto;
+
+OnClock0750: // Tous les jours à 08h00
+	goto LancementAuto;
+
+OnClock0820: // Tous les jours à 08h30
+	goto LancementAuto;
+
+OnClock0850: // Tous les jours à 09h00
+	goto LancementAuto;
+
+OnClock0920: // Tous les jours à 09h30
+	goto LancementAuto;
+
+OnClock0950: // Tous les jours à 10h00
+	goto LancementAuto;
+
+LancementAuto:
+	if (agitcheck(0) != 0) end;
+	if ($@Spawn_flag > 0) end; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
+	if ($@spawn_type == 0) set $@spawn_type, rand(1,3);
+	Announce "Garde Royal: Le Spawn Survivor est ouvert (type déterminé au hasard: " + $@spawn_type + ").",8;
+	goto OnDemarrage_event;
+
+// Fonction lançant l'event
+OnDemarrage_event:
+	set $@Spawn_flag,1; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
+	Announce "L'évent commence dans 10 minutes. Rendez-vous dans l'allée au sud de la fontaine de Prontera.",8;
+	Announce "Si vous arrivez en retard, vous ne pourrez pas entrer dans l'arène.",8;
+	killmonsterall "guild_vs5.gat";
+	enablenpc "warpspawn";
+	pvpoff "guild_vs5.gat";
+	gvgoff "guild_vs5.gat";
+	setmapflag "guild_vs5.gat",mf_nosave;
+	setmapflag "guild_vs5.gat",mf_nopvp;
+	setmapflag "guild_vs5.gat",mf_nomemo;
+	setmapflag "guild_vs5.gat",mf_nobranch;
+	setmapflag "guild_vs5.gat",mf_pvp_noguild;
+	setmapflag "guild_vs5.gat",mf_nopenalty;
+	setmapflag "guild_vs5.gat",mf_nozenypenalty;
+	initnpctimer "Drapeau";
+	end;
+
+OnTimer60000:
+	callfunc "before_event"; // 1 minute, spawn de monstres pour patienter.
+	end;
+
+OnTimer120000:
+	callfunc "before_event"; // 2 minutes, spawn de monstres pour patienter.
+	end;
+
+OnTimer180000:
+	callfunc "before_event"; // 3 minutes, spawn de monstres pour patienter.
+	end;
+
+OnTimer240000:
+	callfunc "before_event"; // 4 minutes, spawn de monstres pour patienter.
+	end;
+
+OnTimer300000: // 5 minutes après je fais un rappel.
+	Announce "Garde Royal: Plus que 5 minutes avant le Spawn Survivor de type " + $@spawn_type + ". Dépéchez-vous !",8;
+	Announce "Rendez-vous dans l'allée au sud de la fontaine de Prontera. Si vous arrivez en retard,",8;
+	Announce "vous ne pourrez pas entrer dans l'arène. Il y a déjà " + getmapnotgms2("guild_vs5.gat",20) + " participant(s) dans l'arène.",8;
+	callfunc "before_event"; // 5 minutes, spawn de monstres pour patienter.
+	end;
+
+OnTimer360000:
+	callfunc "before_event"; // 6 minutes, spawn de monstres pour patienter.
+	end;
+
+OnTimer420000:
+	callfunc "before_event"; // 7 minutes, spawn de monstres pour patienter.
+	end;
+
+OnTimer480000:
+	Announce "Garde Royal: Début du Spawn Survivor de type " + $@spawn_type + " dans 2 minutes. Dépéchez-vous !",8;
+	Announce "Rendez-vous dans l'allée au sud de la fontaine de Prontera. Si vous arrivez en retard,",8;
+	Announce "vous ne pourrez pas entrer dans l'arène. Déjà " + getmapnotgms2("guild_vs5.gat",20) + " participant(s) arrivé(s) dans l'arène.",8;
+	callfunc "before_event"; // 8 minutes, spawn de monstres pour patienter.
+	end;
+
+OnTimer540000: // 9 minutes après je refais une annonce.
+	Announce "Garde Royal: Le Spawn Survivor de type " + $@spawn_type + " commence dans 1 minute. Dépéchez-vous !",8;
+	mapannounce "guild_vs5.gat","Garde Royal: Participants, préparez-vous au Spawn Survivor...",0;
+	// nettoyage de la place
+	if (GetMapMobs("guild_vs5.gat") < 1) end; // pas encore de monstres permanents ($@nb_mobs_permanents)
+	mapannounce "guild_vs5.gat","Garde Royal: *Nettoyage de l'arène...*",0;
+	killmonsterall "guild_vs5.gat"; // destruction des monstres pour laisser une minute tranquille
+	end;
+
+OnTimer585000: // 9 minute 45 sec après, je donne un conseil.
+	Announce "Garde Royal: Le Spawn Survivor de type " + $@spawn_type + " commence dans 15 secondes. Dépéchez-vous !",8;
+	mapannounce "guild_vs5.gat","Garde Royal: Un conseil: Désactivez les effets avec la commande /effect.",0;
+	end;
+
+OnTimer600000: // 10 minutes après on coupe l'accès.
+	if (agitcheck(0) != 0) goto L_LancementWoE;
+	if (getmapnotgms2("guild_vs5.gat",20) > 1) goto L_LancementEvent; // au moins 2 joueurs...
+
+	if (getmapnotgms2("guild_vs5.gat",20) == 1) goto L_un_seul_joueur;
+	Announce "Garde Royal: Aucun joueur ne s'est présenté pour le Spawn Survivor. L'événement a été arrêté.",8;
+	callfunc "close_spawn";
+	end;
+
+L_un_seul_joueur:
+	Announce "Garde Royal: Un seul joueur s'est présenté pour le Spawn Survivor. L'événement a été arrêté.",8;
+	mapannounce "guild_vs5.gat","Garde Royal: Le joueur présent doit emprunter un warp (ou deco/reco) pour quitter l'arène. Merci.",0;
+	callfunc "close_spawn";
+	end;
+
+L_LancementWoE:
+	announce "Le Spawn Survivor est arreté pour cause de WoE.",0;
+	mapannounce "guild_vs5.gat","Garde Royal: Les joueurs présents doivent emprunter un warp (ou deco/reco) pour quitter l'arène. Merci.",0;
+	callfunc "close_spawn";
+	end;
+
+L_LancementEvent:
+	stopnpctimer "Drapeau";
+	donpcevent "Surviv::OnStart";
 	end;
 }
 
@@ -208,7 +412,6 @@ function	script	close_spawn	{
 	enablenpc "warprep2";
 	enablenpc "warprep3";
 	enablenpc "warprep4";
-	disablenpc "drapeau";
 	set $@numero_spawn,0;
 	set $@dernier_mob,0;
 	set $@Spawn_flag,0; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
@@ -220,7 +423,7 @@ function	script	close_spawn	{
 	set $@spawn_type,0;
 
 	stopnpctimer "Surviv";
-	stopnpctimer "Spawner";
+	stopnpctimer "Drapeau";
 
 	return;
 }
@@ -361,7 +564,7 @@ rnd3: // lunatics
 	return;
 
 rnd4: // Willows
-	mapannounce "guild_vs5.gat","Garde Royal: Une driade a invoquée des arbres de l'enfer. Merci de détruire ces creatures d'un autre monde...",0;
+	mapannounce "guild_vs5.gat","Garde Royal: Une driade a invoquée des arbres de l'enfer. Merci de détruire ces créatures d'un autre monde...",0;
 	areamonsteragro "guild_vs5.gat",0,0,200,200,"Arbre satanique",1010,$@a_spawner,"Surviv::OnMortMob";
 	set $@spawn_rnd, 0;
 	set $@a_spawner, 0;
@@ -403,7 +606,7 @@ OnStart:
 	disablenpc "warprep2";
 	disablenpc "warprep3";
 	disablenpc "warprep4";
-	initnpctimer;
+	initnpctimer "Surviv";
 
 	// Détermination du type de spawn
 	if ($@spawn_type == 0) set $@spawn_type, rand(1,3);
@@ -1246,7 +1449,7 @@ Plusieurs_Gagnants:
 
 L_gagnants_vague50:
 	set $@Spawn_flag,4; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
-	mapannounce "guild_vs5.gat","Garde Royal: Vous avez 1 minute pour utiliser le drapeau central et obtenir votre lot. Merci.",0;
+	mapannounce "guild_vs5.gat","Garde Royal: Vous avez 1 minute pour utiliser le Drapeau central et obtenir votre lot. Merci.",0;
 	mapannounce "guild_vs5.gat","ATTENTION: après ce délai, vous n'aurez pas votre lot.",0;
 	if (getmapnotgms3("guild_vs5.gat",20) < 1) goto L_Suite_gagnants; // pas de mort sur la carte
 	mapannounce "guild_vs5.gat","Garde Royal: Les morts, vous pouvez retourner à votre point de sauvegarde (ou deco/reco).",0;
@@ -1378,17 +1581,17 @@ Faire_spawn:
 
 // NPC extérieur (à Prontéra) permettant d'activer l'événement
 // -----------------------------------------------------------
-prontera.gat,174,154,3	script	Spawner	743,{
+prontera.gat,174,154,3	script	Spawner#0::Spawner_type	743,{
 	mes "[Spawner]";
 	mes "Que désirez-vous?";
 	next;
 	if (getgmlevel(0) < 20) goto L_JoueurMenu;
-	menu "Menu spécial GM",L_GmMenu,"Les règles",L_Regles,"Infos event en cours",L_informations,"Liste des gagnants",L_Gagnants;
+	menu "Menu spécial GM",L_GmMenu,"Les règles",L_Regles,"Infos event en cours",L_informations,"Liste des gagnants",L_Liste_Gagnants,"Téléportation dans l'arène",L_TeleportationArene;
 	close;
 
 // Menu pour les joueurs
 L_JoueurMenu:
-	menu "Les règles",L_Regles,"Infos event en cours",L_informations,"Liste des gagnants",L_Gagnants;
+	menu "Les règles",L_Regles,"Infos event en cours",L_informations,"Liste des gagnants",L_Liste_Gagnants;
 	close;
 
 L_Regles:
@@ -1456,12 +1659,30 @@ L_info_avant_event:
 	mes "Il y a déjà " + getmapnotgms2("guild_vs5.gat",20) + " participant(s) dans l'arène.";
 	next;
 	mes "[Spawner]";
-	set $@delai_sec, 600 - (getnpctimer(0) / 1000);
+	set $@delai_sec, 600 - (getnpctimer(0, "Drapeau") / 1000);
 	if ($@delai_sec < 1) mes "L'accès à l'arène a été fermé entre temps.";
 	if ($@delai_sec > 0 && $@delai_sec < 60) mes "Vous avez encore " + $@delai_sec + " seconde(s) pour vous rendre dans l'arène.";
 	if ($@delai_sec > 59 && $@delai_sec < 120) mes "Vous avez encore 1 minute et " + ($@delai_sec - 60) + " seconde(s) pour vous rendre dans l'arène.";
 	if ($@delai_sec > 119) mes "Vous avez encore " + ($@delai_sec / 60) + " minutes pour vous rendre dans l'arène.";
 	set $@delai_sec, 0;
+	mes "Voulez-vous que je vous téléporte dans l'arène?";
+	next;
+	menu "Oui",L_TeleportationArene,"Non",L_info_teleport_Non;
+	close;
+L_TeleportationArene:
+	if ($@Spawn_flag != 1) goto L_TeleportationAnnulee; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
+	percentheal 100,100; // Soin automatique des joueurs à la sortie de l'arène
+	warp "guild_vs5",56,49;
+	close;
+L_TeleportationAnnulee:
+	mes "[Spawner]";
+	mes "Désolé, mais le délai pour vous rendre dans l'arène est écoulé.";
+	mes "Je ne peux plus vous y téléporter.";
+	mes "Au revoir.";
+	close;
+L_info_teleport_Non:
+	mes "[Spawner]";
+	mes "Très bien.";
 	mes "Au revoir.";
 	close;
 
@@ -1471,7 +1692,7 @@ L_info_event_en_cours:
 	mes "La dernière vague de spawns (numéro " + $@numero_spawn + ") a été effectuée avec des '" + strmobinfo(2,$@dernier_mob) + "'.";
 	next;
 	mes "[Spawner]";
-	set $@delai_sec, getnpctimer(0,"Surviv") / 1000;
+	set $@delai_sec, getnpctimer(0, "Surviv") / 1000;
 	if ($@delai_sec < 1) mes "L'événement a été arrété entre temps.";
 	if ($@delai_sec > 0 && $@delai_sec < 60) mes "L'événement a commencé il y a " + $@delai_sec + " seconde(s).";
 	if ($@delai_sec > 59 && $@delai_sec < 120) mes "L'événement a commencé il y a 1 minute et " + ($@delai_sec - 60) + " seconde(s).";
@@ -1487,7 +1708,7 @@ L_info_phase_finale:
 	mes "Il reste " + (GetMapMobs("guild_vs5.gat") - $@nb_mobs_permanents) + " monstre(s) à tuer aux " + getmapnotgms2("guild_vs5.gat",20) + " participants en lice.";
 	next;
 	mes "[Spawner]";
-	set $@delai_sec, getnpctimer(0,"Surviv") / 1000;
+	set $@delai_sec, getnpctimer(0, "Surviv") / 1000;
 	if ($@delai_sec < 1) mes "L'événement a été arrété entre temps.";
 	if ($@delai_sec > 0 && $@delai_sec < 60) mes "L'événement a commencé il y a " + $@delai_sec + " seconde(s).";
 	if ($@delai_sec > 59 && $@delai_sec < 120) mes "L'événement a commencé il y a 1 minute et " + ($@delai_sec - 60) + " seconde(s).";
@@ -1502,7 +1723,7 @@ L_info_multi_gagnants:
 	mes "Au revoir.";
 	close;
 
-L_Gagnants:
+L_Liste_Gagnants:
 	mes "^FF0000[Les 10 derniers Master Survivor (type 1)]^000000";
 	mes "^999999Date^000000 / Master / ^0000FFVague^000000";
 	set $@i_spawn, 0; // Commencer par le plus récent
@@ -1545,108 +1766,6 @@ L_BOUCLE3:
 L_SUITE3:
 	set $@i_spawn, 0;
 	close;
-
-// Initialisation
-OnInit:
-	killmonsterall "guild_vs5.gat";
-	disablenpc "warpspawn";
-	disablenpc "drapeau";
-	// note: laisser les warps de sortie activés
-	set $@numero_spawn,0;
-	set $@dernier_mob,0;
-	set $@Spawn_flag,0; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
-	set $@nb_part,0;
-	set $@nb_part2,0;
-	set $@survivants,0;
-	set $@nb_mobs,0;
-	set $@nb_mobs_permanents,0;
-	set $@spawn_type,0;
-	stopnpctimer;
-	end;
-
-// Tous les samedis à 13h30
-OnSat1320:
-	if (agitcheck(0) != 0) end;
-	if ($@Spawn_flag > 0) end; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
-	if ($@spawn_type == 0) set $@spawn_type, rand(1,3);
-	Announce "Garde Royal: Le Spawn Survivor est ouvert (type déterminé au hasard: " + $@spawn_type + ").",8;
-	goto L_creawarp;
-
-OnClock2250: // Tous les jours à 23h00
-	goto LancementAuto;
-
-OnClock2320: // Tous les jours à 23h30
-	goto LancementAuto;
-
-OnClock2350: // Tous les jours à 00h00
-	goto LancementAuto;
-
-OnClock0020: // Tous les jours à 00h30
-	goto LancementAuto;
-
-OnClock0050: // Tous les jours à 01h00
-	goto LancementAuto;
-
-OnClock0120: // Tous les jours à 01h30
-	goto LancementAuto;
-
-OnClock0150: // Tous les jours à 02h00
-	goto LancementAuto;
-
-OnClock0220: // Tous les jours à 02h30
-	goto LancementAuto;
-
-OnClock0250: // Tous les jours à 03h00
-	goto LancementAuto;
-
-OnClock0320: // Tous les jours à 03h30
-	goto LancementAuto;
-
-OnClock0350: // Tous les jours à 04h00
-	goto LancementAuto;
-
-OnClock0420: // Tous les jours à 04h30
-	goto LancementAuto;
-
-OnClock0450: // Tous les jours à 05h00
-	goto LancementAuto;
-
-OnClock0520: // Tous les jours à 05h30
-	goto LancementAuto;
-
-OnClock0550: // Tous les jours à 06h00
-	goto LancementAuto;
-
-OnClock0620: // Tous les jours à 06h30
-	goto LancementAuto;
-
-OnClock0650: // Tous les jours à 07h00
-	goto LancementAuto;
-
-OnClock0720: // Tous les jours à 07h30
-	goto LancementAuto;
-
-OnClock0750: // Tous les jours à 08h00
-	goto LancementAuto;
-
-OnClock0820: // Tous les jours à 08h30
-	goto LancementAuto;
-
-OnClock0850: // Tous les jours à 09h00
-	goto LancementAuto;
-
-OnClock0920: // Tous les jours à 09h30
-	goto LancementAuto;
-
-OnClock0950: // Tous les jours à 10h00
-	goto LancementAuto;
-
-LancementAuto:
-	if (agitcheck(0) != 0) end;
-	if ($@Spawn_flag > 0) end; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
-	if ($@spawn_type == 0) set $@spawn_type, rand(1,3);
-	Announce "Garde Royal: Le Spawn Survivor est ouvert (type déterminé au hasard: " + $@spawn_type + ").",8;
-	goto L_creawarp;
 
 // Menu GM (activer)
 L_GmMenu:
@@ -1698,21 +1817,24 @@ L_GMlauch1:
 	set $@spawn_type, 1;
 	Announce "Garde Royal: " +strcharinfo(0)+ " a activé un Spawn Survivor de type 1.",8;
 	close2; // le script continue
-	goto L_creawarp;
+	donpcevent "Drapeau::OnDemarrage_event";
+	end;
 
 L_GMlauch2:
 	if ($@Spawn_flag > 0) goto L_GMdejaLauch; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
 	set $@spawn_type, 2;
 	Announce "Garde Royal: " +strcharinfo(0)+ " a activé un Spawn Survivor de type 2.",8;
 	close2; // le script continue
-	goto L_creawarp;
+	donpcevent "Drapeau::OnDemarrage_event";
+	end;
 
 L_GMlauch3:
 	if ($@Spawn_flag > 0) goto L_GMdejaLauch; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
 	set $@spawn_type, 3;
 	Announce "Garde Royal: " +strcharinfo(0)+ " a activé un Spawn Survivor de type 3.",8;
 	close2; // le script continue
-	goto L_creawarp;
+	donpcevent "Drapeau::OnDemarrage_event";
+	end;
 
 L_GMlauch_hasard:
 	if ($@Spawn_flag > 0) goto L_GMdejaLauch; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
@@ -1720,108 +1842,37 @@ L_GMlauch_hasard:
 	set $@spawn_type, rand(1,3);
 	Announce "Garde Royal: " +strcharinfo(0)+ " a activé un Spawn Survivor (type déterminé au hasard: " + $@spawn_type + ").",8;
 	close2; // le script continue
-	goto L_creawarp;
+	donpcevent "Drapeau::OnDemarrage_event";
+	end;
 
 L_GMdejaLauch:
 	mes "[Spawner]";
 	mes "Un Spawn Survivor a été activé entre temps.";
 	mes "Au revoir.";
 	close;
-
-L_creawarp:
-	set $@Spawn_flag,1; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
-	Announce "L'évent commence dans 10 minutes. Rendez-vous dans l'allée au sud de la fontaine de Prontera.",8;
-	Announce "Si vous arrivez en retard, vous ne pourrez pas entrer dans l'arène.",8;
-	killmonsterall "guild_vs5.gat";
-	enablenpc "warpspawn";
-	enablenpc "drapeau";
-	pvpoff "guild_vs5.gat";
-	gvgoff "guild_vs5.gat";
-	setmapflag "guild_vs5.gat",mf_nosave;
-	setmapflag "guild_vs5.gat",mf_nopvp;
-	setmapflag "guild_vs5.gat",mf_nomemo;
-	setmapflag "guild_vs5.gat",mf_nobranch;
-	setmapflag "guild_vs5.gat",mf_pvp_noguild;
-	setmapflag "guild_vs5.gat",mf_nopenalty;
-	setmapflag "guild_vs5.gat",mf_nozenypenalty;
-	initnpctimer;
-	end;
-
-OnTimer60000:
-	callfunc "before_event"; // 1 minute, spawn de monstres pour patienter.
-	end;
-
-OnTimer120000:
-	callfunc "before_event"; // 2 minutes, spawn de monstres pour patienter.
-	end;
-
-OnTimer180000:
-	callfunc "before_event"; // 3 minutes, spawn de monstres pour patienter.
-	end;
-
-OnTimer240000:
-	callfunc "before_event"; // 4 minutes, spawn de monstres pour patienter.
-	end;
-
-OnTimer300000: // 5 minutes après je fais un rappel.
-	Announce "Garde Royal: Plus que 5 minutes avant le Spawn Survivor de type " + $@spawn_type + ". Dépéchez-vous !",8;
-	Announce "Rendez-vous dans l'allée au sud de la fontaine de Prontera. Si vous arrivez en retard,",8;
-	Announce "vous ne pourrez pas entrer dans l'arène. Il y a déjà " + getmapnotgms2("guild_vs5.gat",20) + " participant(s) dans l'arène.",8;
-	callfunc "before_event"; // 5 minutes, spawn de monstres pour patienter.
-	end;
-
-OnTimer360000:
-	callfunc "before_event"; // 6 minutes, spawn de monstres pour patienter.
-	end;
-
-OnTimer420000:
-	callfunc "before_event"; // 7 minutes, spawn de monstres pour patienter.
-	end;
-
-OnTimer480000:
-	Announce "Garde Royal: Début du Spawn Survivor de type " + $@spawn_type + " dans 2 minutes. Dépéchez-vous !",8;
-	Announce "Rendez-vous dans l'allée au sud de la fontaine de Prontera. Si vous arrivez en retard,",8;
-	Announce "vous ne pourrez pas entrer dans l'arène. Déjà " + getmapnotgms2("guild_vs5.gat",20) + " participant(s) arrivé(s) dans l'arène.",8;
-	callfunc "before_event"; // 8 minutes, spawn de monstres pour patienter.
-	end;
-
-OnTimer540000: // 9 minutes après je refais une annonce.
-	Announce "Garde Royal: Le Spawn Survivor de type " + $@spawn_type + " commence dans 1 minute. Dépéchez-vous !",8;
-	mapannounce "guild_vs5.gat","Garde Royal: Participants, préparez-vous au Spawn Survivor...",0;
-	// nettoyage de la place
-	if (GetMapMobs("guild_vs5.gat") < 1) end; // pas encore de monstres permanents ($@nb_mobs_permanents)
-	mapannounce "guild_vs5.gat","Garde Royal: *Nettoyage de l'arène...*",0;
-	killmonsterall "guild_vs5.gat"; // destruction des monstres pour laisser une minute tranquille
-	end;
-
-OnTimer585000: // 9 minute 45 sec après, je donne un conseil.
-	Announce "Garde Royal: Le Spawn Survivor de type " + $@spawn_type + " commence dans 15 secondes. Dépéchez-vous !",8;
-	mapannounce "guild_vs5.gat","Garde Royal: Un conseil: Désactivez les effets avec la commande /effect.",0;
-	end;
-
-OnTimer600000: // 10 minutes après on coupe l'accès.
-	if (agitcheck(0) != 0) goto L_LancementWoE;
-	if (getmapnotgms2("guild_vs5.gat",20) > 1) goto L_LancementEvent; // au moins 2 joueurs...
-
-	if (getmapnotgms2("guild_vs5.gat",20) == 1) goto L_un_seul_joueur;
-	Announce "Garde Royal: Aucun joueur ne s'est présenté pour le Spawn Survivor. L'événement a été arrêté.",8;
-	callfunc "close_spawn";
-	end;
-
-L_un_seul_joueur:
-	Announce "Garde Royal: Un seul joueur s'est présenté pour le Spawn Survivor. L'événement a été arrêté.",8;
-	mapannounce "guild_vs5.gat","Garde Royal: Le joueur présent doit emprunter un warp (ou deco/reco) pour quitter l'arène. Merci.",0;
-	callfunc "close_spawn";
-	end;
-
-L_LancementWoE:
-	announce "Le Spawn Survivor est arreté pour cause de WoE.",0;
-	mapannounce "guild_vs5.gat","Garde Royal: Les joueurs présents doivent emprunter un warp (ou deco/reco) pour quitter l'arène. Merci.",0;
-	callfunc "close_spawn";
-	end;
-
-L_LancementEvent:
-	stopnpctimer;
-	donpcevent "Surviv::OnStart";
-	end;
 }
+
+// Les autres Spawner Assistants
+morocc.gat,160,97,3	duplicate(Spawner_type)	Spawner Assistant#1	743
+geffen.gat,116,61,3	duplicate(Spawner_type)	Spawner Assistant#2	743
+payon.gat,172,225,3	duplicate(Spawner_type)	Spawner Assistant#3	743
+alberta.gat,113,45,3	duplicate(Spawner_type)	Spawner Assistant#4	743
+izlude.gat,122,118,3	duplicate(Spawner_type)	Spawner Assistant#5	743
+aldebaran.gat,147,114,3	duplicate(Spawner_type)	Spawner Assistant#1	743
+xmas.gat,150,136,3	duplicate(Spawner_type)	Spawner Assistant#1	743
+comodo.gat,200,152,3	duplicate(Spawner_type)	Spawner Assistant#1	743
+yuno.gat,161,47,3	duplicate(Spawner_type)	Spawner Assistant#1	743
+amatsu.gat,203,153,3	duplicate(Spawner_type)	Spawner Assistant#1	743
+gonryon.gat,165,122,3	duplicate(Spawner_type)	Spawner Assistant#1	743
+umbala.gat,76,149,3	duplicate(Spawner_type)	Spawner Assistant#1	743
+niflheim.gat,194,204,3	duplicate(Spawner_type)	Spawner Assistant#1	743
+louyang.gat,212,47,3	duplicate(Spawner_type)	Spawner Assistant#1	743
+gef_fild10.gat,65,341,3	duplicate(Spawner_type)	Spawner Assistant#1	743
+pay_arche.gat,55,119,3	duplicate(Spawner_type)	Spawner Assistant#1	743
+glast_01.gat,210,122,3	duplicate(Spawner_type)	Spawner Assistant#1	743
+jawaii.gat,251,139,3	duplicate(Spawner_type)	Spawner Assistant#1	743
+ayothaya.gat,142,172,3	duplicate(Spawner_type)	Spawner Assistant#1	743
+einbroch.gat,55,203,3	duplicate(Spawner_type)	Spawner Assistant#1	743
+lighthalzen.gat,151,100,3	duplicate(Spawner_type)	Spawner Assistant#1	743
+hugel.gat,104,152,3	duplicate(Spawner_type)	Spawner Assistant#1	743
+rachel.gat,124,120,3	duplicate(Spawner_type)	Spawner Assistant#1	743
