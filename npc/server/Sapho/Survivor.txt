@@ -68,6 +68,14 @@
 //=        lieu de 30 secondes. Spawn 50 effectué à 6310
 //=        secondes (105 minutes) au lieu de 8190 secondes
 //=       (136 minutes).
+//= 4.1  Modification affichage drapeau pour afficher en
+//=        dernière ligne (celle qui reste) le plus important.
+//=      Ajout d'un message lorsque le monstre Soigneur soigne
+//=        un participant.
+//=      Ajout SS à 23h00 (oublié).
+//= 4.2  Gestion des multiples gagnants.
+//=      Une chance sur 4 que le soigneur soigne (au lieu de 1
+//=        sur 5).
 //============================================================
 
 // les Warps
@@ -126,11 +134,13 @@ L_Novice: // L'usage de act dead/trick dead bloque l'event.
 
 
 // NPC d'information pour les participants (message individuel à la demande)
+// NPC servant de fin lorsqu'il y a plusieurs gagnants
 // -------------------------------------------------------------------------
 guild_vs5.gat,47,48,4	script	drapeau	722,1,1,{
 OnTouch:
 	announce "Informations instantanées:",3;
-	if ($@Spawn_flag == 1) goto L_info_avant_event; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
+	if ($@Spawn_flag == 1) goto L_info_avant_event; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
+	if ($@Spawn_flag == 4) goto L_gagnants_a_la_fin; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
 	goto L_info_event_en_cours;
 
 L_info_avant_event:
@@ -146,8 +156,17 @@ L_info_avant_event:
 L_info_event_en_cours:
 	announce "- Spawn Survivor de type " + $@spawn_type + " en cours.",3;
 	announce "- Vague de spawns numéro " + $@numero_spawn + " effectuée (monstre: " + strmobinfo(2,$@dernier_mob) + ").",3;
-	announce "- " + (GetMapMobs("guild_vs5.gat") - $@nb_mobs_permanents) + " monstre(s) à tuer.",3;
-	announce "- " + getmapnotgms2("guild_vs5.gat",20) + " participant(s) dans l'arène.",3;
+	announce "- " + getmapnotgms2("guild_vs5.gat",20) + " participant(s) et " + (GetMapMobs("guild_vs5.gat") - $@nb_mobs_permanents) + " monstre(s) à tuer dans l'arène.",3;
+	end;
+
+L_gagnants_a_la_fin:
+	// évitons les tricheurs...
+	if (isdead(0) != 0) end; // les morts qui cliquent le drapeau!
+	announce "Le Master Survivor "+ strcharinfo(0) + " gagne" + ($@numero_spawn * 750) + " zenys.",0;
+	set Zeny,Zeny + ($@numero_spawn * 750);
+	callfunc "Record_spawn", strcharinfo(0); // Enregistrement de ce gagnant
+	percentheal 100,100; // Soin automatique à la sortie de l'arène
+	warp "prontera.gat",165,151;
 	end;
 }
 
@@ -192,7 +211,7 @@ function	script	close_spawn	{
 	disablenpc "drapeau";
 	set $@numero_spawn,0;
 	set $@dernier_mob,0;
-	set $@Spawn_flag,0; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
+	set $@Spawn_flag,0; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
 	set $@nb_part,0;
 	set $@nb_part2,0;
 	set $@survivants,0;
@@ -218,7 +237,7 @@ function	script	f_monstres	{
 	set $@survivants, $@nb_part;
 
 	// Ne pas spawner si l'event n'est pas en cours (juste une sécurité)
-	if ($@Spawn_flag < 2) return; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
+	if ($@Spawn_flag < 2 || $@Spawn_flag > 3) return; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
 
 	set $@NbMapMobs, (GetMapMobs("guild_vs5.gat") - $@nb_mobs_permanents);
 	// Réduire le nombre de spawns, si les joueurs tuent trop lentement les mobs
@@ -291,7 +310,7 @@ L_triche:
 function	script	check_monstres	{
 	if (agitcheck(0) != 0) goto return;
 	// Ne pas spawner si l'event n'est pas en cours (juste une sécurité)
-	if ($@Spawn_flag != 2) return; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
+	if ($@Spawn_flag != 2) return; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
 
 	if ((GetMapMobs("guild_vs5.gat") - $@nb_mobs_permanents) >= ($@nb_mobs / 5)) return;
 
@@ -377,7 +396,7 @@ OnInit:
 	end;
 
 OnStart:
-	set $@Spawn_flag,2; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
+	set $@Spawn_flag,2; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
 	Announce "Garde Royal: Le Spawn Survivor commence. L'accès en est coupé.",8;
 	disablenpc "warpspawn";
 	disablenpc "warprep";
@@ -1187,7 +1206,59 @@ OnTimer6310000:
 	mapannounce "guild_vs5.gat","Garde Royal: Attention, dernier spawn ! Serez-vous les Masters Survivors ?!",0;
 	set $@numero_spawn,50;
 	callfunc "f_monstres", $@spawn50;
-	set $@Spawn_flag,3; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
+	set $@Spawn_flag,3; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
+	end;
+
+// Check final -------------------------
+OnTimer6610000: // 5 minutes après, on arrête tout et on check...
+	// Est-on déjà passé ici (les monstres tous tués après le dernier spawn et avant les 5 minutes).
+	if ($@Spawn_flag == 4) end; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
+	// Test WoE inutile (on arrête tout)
+	set $@nb_part,getmapnotgms2("guild_vs5.gat",20); // Joueurs non GMs vivants
+	if ($@nb_part < 1) goto L_aucun_survivant;
+	if ($@nb_part > $@survivants) goto L_triche_a_la_fin; // Quelqu'un a été téléporté ou rescussité
+	if ($@nb_part == 1) goto Un_Gagnant;
+	goto Plusieurs_Gagnants;
+
+L_aucun_survivant:
+	announce "L'arène du Spawn Survivor est vide (ou tous les partipants sont morts).",0;
+	announce "L'évent s'est arrêté de lui-même à la dernière vague de spawns.",0;
+	callfunc "close_spawn";
+	end;
+
+L_triche_a_la_fin:
+	announce "Le Spawn Survivor est arreté pour cause de TRICHE!",0;
+	announce "Un joueur a été rescussité ou téléporté dans l'arène!",0;
+	mapannounce "guild_vs5.gat","Garde Royal: Les joueurs présents doivent emprunter un warp (ou deco/reco) pour quitter l'arène. Merci.",0;
+	callfunc "close_spawn";
+	end;
+
+// 1 gagnant!
+Un_Gagnant:
+	announce "Nous avons un ultime survivant dans le Spawn Survivor!",0;
+	announce "Il a gagné lorsqu'il affrontait la dernière vague de spawns.",0;
+	goto L_gagnants_vague50;
+
+// Plusieurs gagnants!
+Plusieurs_Gagnants:
+	announce "Nous avons " + $@nb_part + " Masters Survivors dans le Spawn Survivor!",0;
+	goto L_gagnants_vague50;
+
+L_gagnants_vague50:
+	set $@Spawn_flag,4; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
+	mapannounce "guild_vs5.gat","Garde Royal: Vous avez 1 minute pour utiliser le drapeau central et obtenir votre lot. Merci.",0;
+	mapannounce "guild_vs5.gat","ATTENTION: après ce délai, vous n'aurez pas votre lot.",0;
+	if (getmapnotgms3("guild_vs5.gat",20) < 1) goto L_Suite_gagnants; // pas de mort sur la carte
+	mapannounce "guild_vs5.gat","Garde Royal: Les morts, vous pouvez retourner à votre point de sauvegarde (ou deco/reco).",0;
+	goto L_Suite_gagnants;
+
+L_Suite_gagnants:
+	killmonsterall "guild_vs5.gat";
+	end;
+
+// Check final -------------------------
+OnTimer6670000: // 1 minute après, on arrête tout (quoi qu'il se passe: sécurité de la fin)
+	callfunc "close_spawn";
 	end;
 
 // --------------------------
@@ -1209,8 +1280,12 @@ OnMortBugM: // A chaque mort d'un nettoyeur agressif
 // Le monstre qui soigne = un bonus pour les joueurs.
 OnMortSoigneur: // A chaque mort d'un soigneur
 	areamonsteragro "guild_vs5.gat",0,0,200,200,"Soigneur",$@dernier_mob,1,"Surviv::OnMortSoigneur";
-	if (rand(1, 5) != 1) goto OnMortMob; // Bonus pour avoir tuer ce monstre: guérison 100% une fois sur 5
+	if (rand(1, 4) != 1) goto Pas_soin; // Bonus pour avoir tuer ce monstre: guérison 100% une fois sur 4
+	mapannounce "guild_vs5.gat","Garde Royal: " + strcharinfo(0) + " a été revigoré par le Soigneur. Un nouveau Soigneur a été mis en place.",0;
 	percentheal 100,100;
+	goto OnMortMob;
+Pas_soin:
+	mapannounce "guild_vs5.gat","Garde Royal: " + strcharinfo(0) + " a tué le Soigneur. Un nouveau Soigneur a été mis en place.",0;
 	goto OnMortMob;
 
 // --------------------------
@@ -1226,9 +1301,9 @@ OnMortMob: // A chaque mort d'un monstre
 	// note: pour tuer un monstre, il faut un joueur vivant, donc le test == 0 est inutile
 
 // Ce n'est pas le dernier spawn -> continuer
-	if ($@Spawn_flag != 3) end; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
+	if ($@Spawn_flag != 3) end; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
 
-// affichage special pour le dernier spawn
+// Affichage spécial pour le dernier spawn
 	set $@Mob_a_tuer, (GetMapMobs("guild_vs5.gat") - $@nb_mobs_permanents);
 	if ($@Mob_a_tuer != 500 && $@Mob_a_tuer != 400 && $@Mob_a_tuer != 300 && $@Mob_a_tuer != 200 && $@Mob_a_tuer != 100 && $@Mob_a_tuer != 50 && $@Mob_a_tuer != 10 && $@Mob_a_tuer != 5) goto OnMortMob_sans_quantity;
 	mapannounce "guild_vs5.gat","Garde Royal: Encore " + $@Mob_a_tuer +" monstres à tuer.",0;
@@ -1237,16 +1312,9 @@ OnMortMob: // A chaque mort d'un monstre
 
 OnMortMob_sans_quantity:
 	set $@Mob_a_tuer, 0;
-
-	// Event est terminé (plus de monstre)?
-	if ((GetMapMobs("guild_vs5.gat") - $@nb_mobs_permanents) > 0) end;
-
-// Plusieurs gagnants
-	announce "Nous avons plusieurs Masters Survivors dans le Spawn Survivor!",0;
-	announce "Malheureusement, le Roy ne veut qu'un gagnant pour monter sur le podium.",0;
-	announce "Aucun prix n'a donc été donné.",0;
-	mapannounce "guild_vs5.gat","Garde Royal: Vous devez emprunter un warp (ou deco/reco) pour quitter l'arène. Merci.",0;
-	goto L_gagnant_suite;
+	// Event est terminé (plus de monstre)? -> Plusieurs gagnants
+	if ((GetMapMobs("guild_vs5.gat") - $@nb_mobs_permanents) < 1) goto Plusieurs_Gagnants;
+	end;
 
 // 1 gagnant!
 Le_Gagnant:
@@ -1289,7 +1357,7 @@ L_stoptimer:
 // -----------------------------------------------------------------------------
 function	script	before_event	{
 	// Ne pas spawner si l'event n'est pas en cours (juste une sécurité)
-	if ($@Spawn_flag != 1) return; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
+	if ($@Spawn_flag != 1) return; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
 
 	if (getmapnotgms2("guild_vs5.gat",20) < 1) return; // ne pas spawner si aucun joueur n'est dans l'arène
 
@@ -1353,6 +1421,7 @@ L_Regles:
 	mes "[Spawner]";
 	mes "Le gagnant est l'unique survivant qui tue un monstre (double condition).";
 	mes "Le gagnant gagne 750 fois le numéro de la dernière vague en zenys.";
+	mes "Si plusieurs participants résistent aux 50 vagues successives, ils sont alors tous déclarés gagnants.";
 	next;
 	mes "[Spawner]";
 	mes "Les différents types de Spawn Survivor:";
@@ -1366,9 +1435,10 @@ L_Regles:
 	close;
 
 L_informations:
-	if ($@Spawn_flag == 1) goto L_info_avant_event;
+	if ($@Spawn_flag == 1) goto L_info_avant_event; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
 	if ($@Spawn_flag == 2) goto L_info_event_en_cours;
 	if ($@Spawn_flag == 3) goto L_info_phase_finale;
+	if ($@Spawn_flag == 4) goto L_info_multi_gagnants;
 	goto L_info_pas_event;
 
 L_info_pas_event:
@@ -1426,6 +1496,12 @@ L_info_phase_finale:
 	mes "Au revoir.";
 	close;
 
+L_info_multi_gagnants:
+	mes "[Spawner]";
+	mes "Un Spawn Survivor de type " + $@spawn_type + " a été gagné par plusieurs participants et est actuellement en cours d'arrêt...";
+	mes "Au revoir.";
+	close;
+
 L_Gagnants:
 	mes "^FF0000[Les 10 derniers Master Survivor (type 1)]^000000";
 	mes "^999999Date^000000 / Master / ^0000FFVague^000000";
@@ -1478,7 +1554,7 @@ OnInit:
 	// note: laisser les warps de sortie activés
 	set $@numero_spawn,0;
 	set $@dernier_mob,0;
-	set $@Spawn_flag,0; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
+	set $@Spawn_flag,0; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
 	set $@nb_part,0;
 	set $@nb_part2,0;
 	set $@survivants,0;
@@ -1491,10 +1567,13 @@ OnInit:
 // Tous les samedis à 13h30
 OnSat1320:
 	if (agitcheck(0) != 0) end;
-	if ($@Spawn_flag > 0) end; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
+	if ($@Spawn_flag > 0) end; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
 	if ($@spawn_type == 0) set $@spawn_type, rand(1,3);
 	Announce "Garde Royal: Le Spawn Survivor est ouvert (type déterminé au hasard: " + $@spawn_type + ").",8;
 	goto L_creawarp;
+
+OnClock2250: // Tous les jours à 23h00
+	goto LancementAuto;
 
 OnClock2320: // Tous les jours à 23h30
 	goto LancementAuto;
@@ -1564,7 +1643,7 @@ OnClock0950: // Tous les jours à 10h00
 
 LancementAuto:
 	if (agitcheck(0) != 0) end;
-	if ($@Spawn_flag > 0) end; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
+	if ($@Spawn_flag > 0) end; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
 	if ($@spawn_type == 0) set $@spawn_type, rand(1,3);
 	Announce "Garde Royal: Le Spawn Survivor est ouvert (type déterminé au hasard: " + $@spawn_type + ").",8;
 	goto L_creawarp;
@@ -1572,7 +1651,7 @@ LancementAuto:
 // Menu GM (activer)
 L_GmMenu:
 	if (agitcheck(0) != 0) goto L_Gmwoe;
-	if ($@Spawn_flag > 0) goto L_GmArreter; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
+	if ($@Spawn_flag > 0) goto L_GmArreter; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
 	mes "[Spawner]";
 	mes "Voulez-vous ^66FF66activer^000000 le Spawn Survivor?";
 	mes "- Type 1: plutôt 'sympa'.";
@@ -1596,7 +1675,7 @@ L_GmArreter:
 	close;
 
 L_GMclose:
-	if ($@Spawn_flag == 0) goto L_GMdejaclose; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
+	if ($@Spawn_flag == 0) goto L_GMdejaclose; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
 	close2; // Le script continue (sans le interaction avec le joueur)
 	Announce "Garde Royal: " + strcharinfo(0) + " a stoppé le Spawn Survivor.",8;
 	mapannounce "guild_vs5.gat","Garde Royal: Les joueurs présents doivent emprunter un warp (ou deco/reco) pour quitter l'arène. Merci.",0;
@@ -1615,28 +1694,28 @@ L_GmFin:
 	close;
 
 L_GMlauch1:
-	if ($@Spawn_flag > 0) goto L_GMdejaLauch; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
+	if ($@Spawn_flag > 0) goto L_GMdejaLauch; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
 	set $@spawn_type, 1;
 	Announce "Garde Royal: " +strcharinfo(0)+ " a activé un Spawn Survivor de type 1.",8;
 	close2; // le script continue
 	goto L_creawarp;
 
 L_GMlauch2:
-	if ($@Spawn_flag > 0) goto L_GMdejaLauch; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
+	if ($@Spawn_flag > 0) goto L_GMdejaLauch; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
 	set $@spawn_type, 2;
 	Announce "Garde Royal: " +strcharinfo(0)+ " a activé un Spawn Survivor de type 2.",8;
 	close2; // le script continue
 	goto L_creawarp;
 
 L_GMlauch3:
-	if ($@Spawn_flag > 0) goto L_GMdejaLauch; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
+	if ($@Spawn_flag > 0) goto L_GMdejaLauch; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
 	set $@spawn_type, 3;
 	Announce "Garde Royal: " +strcharinfo(0)+ " a activé un Spawn Survivor de type 3.",8;
 	close2; // le script continue
 	goto L_creawarp;
 
 L_GMlauch_hasard:
-	if ($@Spawn_flag > 0) goto L_GMdejaLauch; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
+	if ($@Spawn_flag > 0) goto L_GMdejaLauch; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
 	// Si $@spawn_type n'est pas défini avant ($@spawn_type == 0), c'est au hasard, mais on le détermine quand même.
 	set $@spawn_type, rand(1,3);
 	Announce "Garde Royal: " +strcharinfo(0)+ " a activé un Spawn Survivor (type déterminé au hasard: " + $@spawn_type + ").",8;
@@ -1650,7 +1729,7 @@ L_GMdejaLauch:
 	close;
 
 L_creawarp:
-	set $@Spawn_flag,1; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné
+	set $@Spawn_flag,1; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
 	Announce "L'évent commence dans 10 minutes. Rendez-vous dans l'allée au sud de la fontaine de Prontera.",8;
 	Announce "Si vous arrivez en retard, vous ne pourrez pas entrer dans l'arène.",8;
 	killmonsterall "guild_vs5.gat";
