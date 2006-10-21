@@ -4,6 +4,13 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/20/06
+	* Fixed: Wretched Payon Training Grounds unmovable cell bug once and for all [Tsuyuki]
+	* Updated: Prices for some of the new 'Novice' equipment [Tsuyuki]
+	* Fixed: Nun Hat (Coif)'s Job ID [Tsuyuki]
+	* Fixed: G_Gryphon instead of regular Gryphon spawning in a Rachel Field [Tsuyuki]
+	* Fixed: Possibly fixed the server crashing with OPB/GB/OCA items with a certain Linux Distro [Tsuyuki]
+
 10/19/06
 	* Fixed: Small Inn NPC bug [Tsuyuki]
 	* Changed: Disabled use of skills in the jail map (sec_pri.gat), to prevent exploits [Tsuyuki]
