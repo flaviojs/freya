@@ -2815,11 +2815,11 @@
 
 // Advanced Class-Only Equipment - Temp Job Requirements
 
-2357,Valkyrie's_Armor,Valkyrie's Armor,5,20,10,2800,,6,,1,18866174,2,16,,0,1,{},{ bonus bAllStats,1; bonus bUnbreakableArmor,0; if(BaseClass==Job_Mage||BaseClass==Job_Archer||BaseClass==Job_Acolyte) bonus2 bResEff,Eff_Silence,5000; if(BaseClass==Job_Swordman||BaseClass==Job_Merchant||BaseClass==Job_Thief) bonus2 bResEff,Eff_Stun,5000; }
+2357,Valkyrie's_Armor,Valkyrie's Armor,5,20,10,2800,,6,,1,18866174,2,16,,0,1,{},{ bonus bAllStats,1; bonus bUnbreakableArmor,0; if(BaseClass==Job_Mage || BaseClass==Job_Archer || BaseClass==Job_Acolyte) bonus2 bResEff,Eff_Silence,5000; if(BaseClass==Job_Swordman || BaseClass==Job_Merchant || BaseClass==Job_Thief) bonus2 bResEff,Eff_Stan,5000; }
 
-2421,Valkyrie's_Shoes,Valkyrie's Shoes,5,20,10,500,,4,,1,18866174,2,64,,0,1,{},{ bonus bUnbreakableArmor,0; if(BaseClass==Job_Mage||BaseClass==Job_Archer||BaseClass==Job_Acolyte) bonus bMaxHP,(BaseLevel*5); if(BaseClass==Job_Swordman||BaseClass==Job_Merchant||BaseClass==Job_Thief) bonus bMaxSP,(JobLevel*2); },{}
+2421,Valkyrie's_Shoes,Valkyrie's Shoes,5,20,10,500,,4,,1,18866174,2,64,,0,1,{},{ bonus bUnbreakableArmor,0; if(BaseClass==Job_Mage || BaseClass==Job_Archer || BaseClass==Job_Acolyte) bonus bMaxHP,(BaseLevel*5); if(BaseClass==Job_Swordman || BaseClass==Job_Merchant || BaseClass==Job_Thief) bonus bMaxSP,(JobLevel*2); },{}
 
-2524,Valkyrie's_Manteau,Valkyrie's Manteau,5,20,10,500,,3,,1,18866174,2,4,,0,1,{},{ bonus bUnbreakableArmor,0; if(BaseClass==Job_Mage||BaseClass==Job_Archer||BaseClass==Job_Acolyte) bonus bFlee2,5+(getequiprefinerycnt(5)*2); if(BaseClass==Job_Swordman||BaseClass==Job_Merchant||BaseClass==Job_Thief) bonus bShortWeaponDamageReturn,5+(getequiprefinerycnt(5)*2); }
+2524,Valkyrie's_Manteau,Valkyrie's Manteau,5,20,10,500,,3,,1,18866174,2,4,,0,1,{},{ bonus bUnbreakableArmor,0; if(BaseClass==Job_Mage || BaseClass==Job_Archer || BaseClass==Job_Acolyte) bonus bFlee2,5+(getequiprefinerycnt(5)*2); if(BaseClass==Job_Swordman || BaseClass==Job_Merchant || BaseClass==Job_Thief) bonus bShortWeaponDamageReturn,5+(getequiprefinerycnt(5)*2); }
 
 5171,Valkyrie_Helm,Valkyrie Helm,5,,,1000,,5,,1,18866174,2,256,,,225,1,{},{ bonus bMdef,5; }
 

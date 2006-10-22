@@ -2,9 +2,10 @@
 //= The Sign Quest
 //===== By: ==================================================
 //= SinSloth(Most of the NPCs), MasterOfMuppets(Some of the NPCs + bug fixes) & Kargha(The quiz NPCs)
-//= 1.2 By Damz Fish
+//= 1.2 By Damz Fish (Conversion)
+//= 1.4 By galaxy (Testing/Bug Fixing)
 //===== Current Version: =====================================
-//= 1.3
+//= 1.4
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -20,7 +21,10 @@
 //= dont find the equivalent of countitem2 and delitem2 [Damz Fish]
 //= 1.3 Fixed some conversion bugs, and converted countitem2,
 //= getitem2, and delitem2 to getitem, countitem, etc for now.. [Tsuyuki]
+//= 1.4 Fully tested and major bug fixes [galaxy]
 //============================================================
+
+
 //===== Configuration : ======================================
 prontera.gat,1,1,1	script	TheSignConfig	-1,{
 OnInit:
@@ -33,9 +37,11 @@ OnInit:
 //= if raw text will be used in the 'Sign::GeffeniaSigns' script. Set it to
 //= 0 if you want to use text.
 
-	set $signbmps,1;
+	set $signbmps,0;
 }
 //============================================================
+
+
 
 alberta.gat,35,241,1	script	Sign::GeffeniaSigns	111,{
 
@@ -889,7 +895,7 @@ L_GANAANT1:
 	mes "island. What is the very first";
 	mes "thing that you should do?";
 	next;
-	menu "Look for fresh water",-,"Just wait for rescue.",s_1W,"Forage for food.",s_1W,"Explore the island.",s_1W;
+	menu "Just wait for rescue.",s_1W,"Look for fresh water",-,"Forage for food.",s_1W,"Explore the island.",s_1W;
 	set gaananpoint,1;
 s_1W:
 	mes "[Gaanan]";
@@ -898,7 +904,7 @@ s_1W:
 	mes "a narrow place inside some collapsed building. What";
 	mes "do you plan to do first?";
 	next;
-	menu "Scream for help",-,"Stay quiet.",s_2W,"Wait for death to come.",s_2W,"Find a way out.",s_2W;
+	menu "Stay quiet.",s_2W,"Wait for death to come.",s_2W,"Find a way out.",-,"Scream for help",s_2W;
 	set gaananpoint,gaananpoint + 1;
 s_2W:
 	mes "[Gaanan]";
@@ -918,7 +924,7 @@ s_3W:
 	mes "you do first when a murder happens";
 	mes "inside the mansion?";
 	next;
-	menu "Wait for the case to get solved.",-,"Try to find my friends first.",s_4W,"Find a way out.",s_4W,"Solve the murder case on my own.",s_4W,"Kill the others before they kill me.",s_4W;
+	menu "Wait for the case to get solved.",s_4W,"Try to find my friends first.",s_4W,"Find a way out.",s_4W,"Solve the murder case on my own.",-,"Kill the others before they kill me.",s_4W;
 	set gaananpoint,gaananpoint + 1;
 s_4W:
 	mes "[Gaanan]";
@@ -928,7 +934,7 @@ s_4W:
 	mes "So what do you do during";
 	mes "this final week?";
 	next;
-	menu "Wait to see the end.",-,"Plant an apple tree.",s_5W,"Look to move to a different world.",s_5W,"What else? Save the world.",s_5W,"What else? Go on a crime spree.",s_5W;
+	menu "Wait to see the end.",s_5W,"Plant an apple tree.",s_5W,"Look to move to a different world.",s_5W,"What else? Save the world.",s_5W,"What else? Go on a crime spree.",-;
 	set gaananpoint,gaananpoint + 1;
 s_5W:
 	mes "[Gaanan]";
@@ -944,7 +950,7 @@ s_5W:
 
 
 L_ARIAND:
-	emotion e_swt2;
+	emotion 19; // SWT2
 	mes "[Gaanan]";
 	mes "The weather here in";
 	mes "Morroc is too hot for me.";
@@ -975,7 +981,7 @@ L_SIGNQ5:
 	close;
 
 L_SIGNQ3ET5:
-	emotion e_dots;
+	emotion 9; // DOTS
 	end;
 
 
@@ -1283,6 +1289,7 @@ L_ARIANITEM2:
 	mes "[Arian]";
 	mes "I'll confiscate those Poison Spores.";
 	close2;
+	goto Verifyitems;
 
 L_ARIANITEM3:
 	delitem 904,countitem(904);
@@ -1294,6 +1301,7 @@ L_ARIANITEM3:
 	mes "[Arian]";
 	mes "I'll take those Scorpion Tails.";
 	close2;
+	goto Verifyitems;
 
 L_ARIANITEM4:
 	delitem 930,countitem(930);
@@ -1305,6 +1313,7 @@ L_ARIANITEM4:
 	mes "[Arian]";
 	mes "I'll take those Rotten Bandages.";
 	close2;
+	goto Verifyitems;
 
 L_ARIANITEM5:
 	delitem 1038,countitem(1038);
@@ -1316,6 +1325,7 @@ L_ARIANITEM5:
 	mes "[Arian]";
 	mes "I'll confiscate those Little Evil Horns.";
 	close2;
+	goto Verifyitems;
 
 L_ARIANITEM6:
 	delitem 7013,countitem(7013);
@@ -1327,6 +1337,7 @@ L_ARIANITEM6:
 	mes "[Arian]";
 	mes "I'll confiscate those Coral Reefs.";
 	close2;
+	goto Verifyitems;
 
 //VERIFY ITEM FIN
 }
@@ -1405,7 +1416,7 @@ L_SIGNQ5:
 	mes "you and reveal it to";
 	mes "Daewoon's roving eyes.";
 	next;
-	emotion e_gasp;
+	emotion 0; // GASP
 	mes "[Daewoon]";
 	mes "Eh? Why that's...";
 	mes "I see now, Arian must";
@@ -1439,7 +1450,7 @@ L_SIGNQ5:
 	next;
 	menu "It's handy.",-,"I actually don't know...",s_Honest;
 
-	emotion e_dots;
+	emotion 9; // DOTS
 	mes "[Daewoon]";
 	mes "Mmm...?";
 	mes "Handy? If you truly";
@@ -1449,7 +1460,7 @@ L_SIGNQ5:
 	next;
 	goto s_Cont;
 s_Honest:
-	emotion e_pif;
+	emotion 32; // PIF
 	mes "[Daewoon]";
 	mes "Really?";
 	mes "Mm. At least you";
@@ -1457,7 +1468,7 @@ s_Honest:
 	next;
 	goto s_Cont;
 s_How:
-	emotion e_dots;
+	emotion 9; // DOTS
 	mes "[Daewoon]";
 	mes "...";
 	mes "A rather crass way";
@@ -1510,7 +1521,7 @@ s_Cont:
 	goto s_Question;
 
 s_Best:
-	emotion e_ok;
+	emotion 33; // OK
 	mes "[Daewoon]";
 	mes "Mwah ah hah";
 	mes "That's exactly what";
@@ -1537,7 +1548,7 @@ s_Rude:
 	goto s_Question;
 
 s_GetOver:
-	emotion e_dots;
+	emotion 9; // DOTS
 	mes "[Daewoon]";
 	mes "Hmm. That kind of half-hearted";
 	mes "attitude won't get you very far on";
@@ -1547,7 +1558,7 @@ s_GetOver:
 	mes "surviving your challenges.";
 	next;
 s_Question:
-	emotion e_hmm;
+	emotion 20; // HMM
 	set @DaewoonTest,0;
 	mes "[Daewoon]";
 	mes "Now, Metz expects me to ask";
@@ -1566,7 +1577,7 @@ s_Question:
 	menu "Yes, I do",-,"I prefer soloing.",s_Solo,"I am lonely.",s_Lonely;
 
 	set @DaewoonTest,1;
-	emotion e_omg;
+	emotion 23; // OMG
 	mes "[Daewoon]";
 	mes "Oh, that's great~!";
 	mes "To have many friends";
@@ -1622,7 +1633,7 @@ s_Mobtrain:
 	next;
 	menu "Awesome~!",-,"I hate people who do that.",s_Hate,"I do it sometime...",s_Sometimes;
 
-	emotion e_pif;
+	emotion 32; // PIF
 	mes "[Daewoon]";
 	mes "But...";
 	mes "Wouldn't that be really";
@@ -1661,7 +1672,7 @@ s_Hate:
 	mes "myself irked when encountering";
 	mes "such troublemakers.";
 	next;
-	emotion e_no1;
+	emotion 21; // NO1
 	mes "[Daewoon]";
 	mes "When you face obstacles";
 	mes "in your own training, never give in";
@@ -1842,7 +1853,7 @@ s_Life:
 	menu "Yes",-,"No",s_No;
 
 	set @DaewoonTest,@DaewoonTest + 1;
-	emotion e_heh;
+	emotion 18; // HEH
 	mes "[Daewoon]";
 	mes "I'm glad.";
 	mes "When you don't live";
@@ -1883,10 +1894,10 @@ s_No:
 	mes "truly precious to you before you";
 	mes "can define your happiness. That's";
 	mes "why I think it's good to";
-	mes "experience new things as wel";
+	mes "experience new things as well";
 	mes "as reflect.";
 	next;
-	emotion e_no1;
+	emotion 21; // NO1
 	mes "[Daewoon]";
 	mes "Now, what's precious to me?";
 	mes "Three things, actually...";
@@ -1990,7 +2001,7 @@ OnTouch:
 
 aldeba_in.gat,156,118,4	script	Piru Piru	700,{
 
-	emotion e_sob;
+	emotion 28; // SOB
 	mes "[Piru Piru]";
 	mes "Oh, I'm sooo tired~";
 	mes "But we can't sleep yet.";
@@ -1998,7 +2009,7 @@ aldeba_in.gat,156,118,4	script	Piru Piru	700,{
 	mes "just call it a day already?";
 	next;
 	if(signquest == 7) goto L_SIGNQ7;
-	menu "What do you do in here?",-;
+	close;
 
 L_SIGNQ7:
 	menu "What do you do in here?",-,"About vanished Alchemists",s_Vanish,"What is the Stone of Sage?",s_SageStone;
@@ -2034,7 +2045,7 @@ s_Vanish:
 	mes "end they had no choice but";
 	mes "to live in seclusion deep";
 	mes "in the ^FF0000forest to the south^000000.";
-	next;
+	close;
 s_SageStone:
 	mes "[Piru Piru]";
 	mes "Hmm? Well, I wouldn't";
@@ -2049,6 +2060,7 @@ s_SageStone:
 aldeba_in.gat,155,101,2	script	Jore#SignAldeNpc	805,{
 
 	if(gettime(3) <17 || gettime(3) >21) goto TIMEGOOD;
+		if(signquest == 6 && SignJore == 1) goto L_SIGNJ1;
 		if(signquest == 7) goto L_SIGNQ7;
 		if(signquest == 8) goto L_SIGNQ8;
 		if(signquest == 9) goto L_SIGNQ9;
@@ -2132,7 +2144,6 @@ L_SIGNQ8:
 		mes "Acid.....";
 		mes "............Basic..";
 		mes "...";
-		goto L_SIGNQ9;
 		close;
 		
 s_SIGNERED:
@@ -2155,15 +2166,13 @@ L_SIGNQ9:
 	mes "find ^FF0000Jesqurienne^000000 in Geffen.";
 	close;
 
-	if(SignJore == 1) goto L_SIGNJ1;
-
 L_SIGNJ1:
 		if(countitem(1092) >= 10 || countitem(511) >= 10 || countitem(610) >= 2) goto L_SIGNITEMJ1;
 		mes "[Sir Jore]";
 		mes "Please bring m-me";
-		mes "10 Empty Test Tube,";
-		mes "10 Green Herb and";
-		mes "2 Yggdrasil Leaf.";
+		mes "^0000FF10 Empty Test Tube,^000000";
+		mes "^0000FF10 Green Herb and^000000";
+		mes "^0000FF2 Yggdrasil Leaf.^000000";
 		mes "so that I can make a";
 		mes "new research sample.";
 		close;
@@ -2173,8 +2182,9 @@ L_SIGNITEMJ1:
 		delitem 1092,10;
 		delitem 511,10;
 		delitem 610,2;
+		set SignJore,0;
 		set signquest,7;
-		emotion e_thx;
+		emotion 15; // THX
 		mes "[Sir Jore]";
 		mes "Ah! Th-thank you for";
 		mes "bringing what I need.";
@@ -2212,7 +2222,7 @@ L_SIGNOTHER:
 	mes "[" + strcharinfo(0) + "]";
 	mes "Excuse me...";
 	next;
-	emotion e_omg;
+	emotion 23; // OMG
 	mes "^3355FF*Clink*";
 	next;
 	mes "[Sir Jore]";
@@ -2226,7 +2236,7 @@ L_SIGNOTHER:
 	mes "Look what you";
 	mes "made me do!";
 	next;
-	emotion e_sob;
+	emotion 28; // SOB
 	mes "[Sir Jore]";
 	mes "I've been fiddling";
 	mes "with this sample for";
@@ -2253,7 +2263,7 @@ L_SIGNOTHER:
 	close;
 
 s_Daewoon:
-	emotion e_swt;
+	emotion 4; // SWT
 	mes "[Sir Jore]";
 	mes "O-oh!";
 	mes "That's right.";
@@ -2307,9 +2317,9 @@ s_Daewoon:
 	next;
 	mes "[Sir Jore]";
 	mes "Just bring";
-	mes "10 Empty Test Tube,";
-	mes "10 Green Herb and";
-	mes "2 Yggdrasil Leaf.";
+	mes "^0000FF10 Empty Test Tube,^000000";
+	mes "^0000FF10 Green Herb and^000000";
+	mes "^0000FF2 Yggdrasil Leaf.^000000";
 	next;
 	mes "[Sir Jore]";
 	mes "You see, l-lately I've";
@@ -2319,7 +2329,7 @@ s_Daewoon:
 	mes "Yggdrasil. They can be used";
 	mes "to revive the dead, after all.";
 	next;
-	emotion e_swt;
+	emotion 4; // SWT
 	mes "[Sir Jore]";
 	mes "Oh, and make sure to";
 	mes "bring those things to me";
@@ -2390,11 +2400,13 @@ s_Again:
 
 OnPotion:
 	if(rand(0,1) != 1) goto OMG;
-	emotion e_ic;
+	emotion 5; // IC
 	misceffect 305;
+	end;
 OMG:
-	emotion e_omg;
+	emotion 23; // OMG
 	misceffect 306;
+	end;
 }
 
 prt_maze02.gat,57,152,1	script	Girl	91,{
@@ -2427,11 +2439,11 @@ Loopback:
 	return;
 
 Else:
-	killmonster "prt_maze02.gat","OnMonsterDeadSign";
+	killmonster "prt_maze02.gat","OnMonsterDead";
 	set $signmazemonster,0;
 	goto Loopback;
 
-OnMonsterDeadSign:
+OnMonsterDead:
 	set $signmazemonster,$signmazemonster - 1;
 
 }
@@ -2453,16 +2465,16 @@ SIGNQ7OU8:
 	close;
 
 OnHo:
-	emotion e_ho;
+	emotion 2; // HO
 	end;
 OnKis2:
-	emotion e_kis2;
+	emotion 31; // KIS2
 	end;
 OnExclamation:
-	emotion e_gasp;
+	emotion 0; // GASP
 	end;
 OnOmg:
-	emotion e_omg;
+	emotion 23; // OMG
 	end;
 }
 
@@ -2480,7 +2492,7 @@ prt_maze02.gat,14,183,3	script	Gordon	51,{
 	mes "with a white bear and a";
 	mes "blue bear, father.";
 	next;
-	emotion e_ho;
+	emotion 2; // HO
 	mes "[Gordon]";
 	mes "Darling...";
 	mes "Aren't you tired";
@@ -2496,7 +2508,7 @@ prt_maze02.gat,14,183,3	script	Gordon	51,{
 	mes "in peace. I think we deserve to rest";
 	mes "after accomplishing our goals...";
 	next;
-	emotion e_sob;
+	emotion 28; // SOB
 	mes "[Gordon]";
 	mes "Thank you, Pluer.";
 	mes "I have no regrets about";
@@ -2507,7 +2519,7 @@ prt_maze02.gat,14,183,3	script	Gordon	51,{
 	menu "Roar~!",-,"Excuse me.",s_Excuse;
 
 	callfunc "Sign_Alch_Summon";
-	emotion e_omg;
+	emotion 23; // OMG
 	donpcevent "Pleur::OnOmg";
 	set ScareAlchSign,1;
 	mes "[Pleur]";
@@ -2520,7 +2532,7 @@ prt_maze02.gat,14,183,3	script	Gordon	51,{
 	close;
 
 s_Excuse:
-	emotion e_gasp;
+	emotion 0; // GASP
 	donpcevent "Pleur::OnExclamation";
 	mes "[Gordon]";
 	mes "Eh?! Don't you know";
@@ -2642,6 +2654,7 @@ s_Scared:
 	mes "Roaring like some";
 	mes "animal! What do you";
 	mes "think you were doing?";
+
 	next;
 	goto s_Back;
 
@@ -2673,7 +2686,7 @@ L_Sign_Jesq:
 	mes "[Jesqurienne]";
 	mes "Ahhhhhh~";
 	mes "Hm? Why hello there,";
-	if(Sex == 1) goto L_female;
+	if(Sex == 0) goto L_female;
 	mes "You fine specimen of a man~";
 
 L_female:
@@ -2705,10 +2718,11 @@ L_female:
 	mes "wouldn't recognize a famous,";
 	mes "brilliant genius once you";
 	mes "saw her, wouldn't you?";
+	next;
 
 L_ohgosh:
-	next;
 	mes "[Jesqurienne]";
+
 	mes "Anyway, I'm so proud";
 	mes "of my supreme intelligence!";
 	mes "I may be somewhat obsessive";
@@ -2859,7 +2873,7 @@ L_female:
 	mes "a Quiz Challenge moderator";
 	mes "master in my spare time~";
 	mes "You're truly a jewel...";
-	emotion e_lv;
+	emotion 3; // LV
 	close;
 
 L_startquiz:
@@ -2898,7 +2912,7 @@ L_quiztime:
 FORSTART:
 	if(@i > 10) goto FOREND;
 BADQUESTION:
-	set @question,rand(23);
+	set @question,rand(24);
 	set @janswer,rand(3);
 
 	if(@question == 0 && @questiondone0 != 1) goto L_QUESTION0;
@@ -2916,7 +2930,7 @@ BADQUESTION:
 	if(@question == 12 && @questiondone12 != 1) goto L_QUESTION12;
 	if(@question == 13 && @questiondone13 != 1) goto L_QUESTION13;
 	if(@question == 14 && @questiondone14 != 1) goto L_QUESTION14;
-	if(@question == 15 && @questiondone15 != 1) goto L_QUESTION15;
+//	if(@question == 15 && @questiondone15 != 1) goto L_QUESTION15;
 	if(@question == 16 && @questiondone16 != 1) goto L_QUESTION16;
 	if(@question == 17 && @questiondone17 != 1) goto L_QUESTION17;
 	if(@question == 18 && @questiondone18 != 1) goto L_QUESTION18;
@@ -2987,9 +3001,10 @@ L_QUESTION14:
 	set @questiondone14,1;
 	mes "Three thousand one hundred two added to five hundred, plus four, divided by 6 equals...";
 	menu "600",L_REPONSEFAUSSE,"601",a_correct,"602",L_REPONSEFAUSSE;
-L_QUESTION15:
-	set @questiondone15,1;
-	menu "Tavern",L_REPONSEFAUSSE,"Monster Library",L_REPONSEFAUSSE,"Tool Shop",L_REPONSEFAUSSE,"Weapon Shop",a_correct;
+// No question given, ommited
+//L_QUESTION15:
+//	set @questiondone15,1;
+//	menu "Tavern",L_REPONSEFAUSSE,"Monster Library",L_REPONSEFAUSSE,"Tool Shop",L_REPONSEFAUSSE,"Weapon Shop",a_correct;
 L_QUESTION16:
 	set @questiondone16,1;
 	mes "What is the correct weight for 1 Empty Bottle?";
@@ -3027,6 +3042,7 @@ goto BADQUESTION;
 a_correct:
 	set @playerpoints, @playerpoints + 1;
 L_REPONSEFAUSSE:
+	next;
 
 	if(@i == 10) goto QI10;
 	if(@i == 9) goto QI9;
@@ -3056,7 +3072,7 @@ QI2:
 			mes "Any fool should know";
 			mes "this. But do you?";
 			set @jesqpoints, @jesqpoints + 1;
-			emotion e_ho; // <--------------------------------------------------------
+			emotion 2; // HO<--------------------------------------------------------
 			next;
 			goto JANSWER;
 
@@ -3069,14 +3085,14 @@ JANSWER2:
 			mes "Well, I don't need";
 			mes "that point anyway...";
 			next;
-			emotion e_wah; // <--------------------------------------------------------
+			emotion 16; // WAH<--------------------------------------------------------
 			goto JANSWER;
 
 QI3:
 		if(@janswer == 0) goto JANSWER30;
 			set @jesqpoints, @jesqpoints + 1;
 			goto checkpoint1;
-			emotion e_ho; // <--------------------------------------------------------
+			emotion 2; // HO<--------------------------------------------------------
 
 JANSWER30:
 			mes "[Jesqurienne]";
@@ -3086,7 +3102,7 @@ JANSWER30:
 			mes "that point anyway...";
 			next;
 			goto checkpoint1;
-			emotion e_wah; // <--------------------------------------------------------
+			emotion 16; // WAH<--------------------------------------------------------
 
 		checkpoint1:
 			mes "[Jesqurienne]";
@@ -3101,7 +3117,8 @@ JANSWER30:
 				mes "I'm beating you!";
 				mes "But you shouldn't";
 				mes "be suprised...";
-				goto JESQPOINTS0CLOSE;
+				next;
+				goto JESQPOINTS0CLOSE3;
 
 		JESQPOINTS30:
 				mes "[Jesqurienne]";
@@ -3130,7 +3147,7 @@ QI4:
 			mes "a question? You're";
 			mes "being too easy!";
 			set @jesqpoints, @jesqpoints + 1;
-			emotion e_ho;
+			emotion 2; // HO
 			next;
 			goto checkpoint2;
 
@@ -3140,7 +3157,7 @@ QI4:
 			mes "answer! W-why";
 			mes "can't I think of";
 			mes "it right now?!";
-			emotion e_wah;
+			emotion 16; // WAH
 			next;
 			goto checkpoint2;
 
@@ -3173,7 +3190,7 @@ QI5:
 			mes "Are you still thinking?";
 			mes "I wouldn't think you'd know!";
 			set @jesqpoints, @jesqpoints + 1;
-			emotion e_ho;
+			emotion 2; // HO
 			next;
 			goto checkpoint3;
 
@@ -3183,7 +3200,7 @@ QI5:
 			mes "Hold on,";
 			mes "I know this one...";
 			mes "(Oh craaaaaap!)";
-			emotion e_wah;
+			emotion 16; // WAH
 			next;
 			goto checkpoint3;
 
@@ -3216,12 +3233,12 @@ QI6:
 			mes "simple answers.";
 			mes "Did you get it?";
 			set @jesqpoints, @jesqpoints + 1;
-			emotion e_ho;
+			emotion 2; // HO
 			next;
 			goto checkpoint4;
 
 		JANSWER60:
-			emotion e_wah;
+			emotion 16; // WAH
 			goto checkpoint4;
 
 
@@ -3282,7 +3299,7 @@ QI8:
 			mes "That was a";
 			mes "piece of cake!";
 			set @jesqpoints, @jesqpoints + 1;
-			emotion e_ho;
+			emotion 2; // HO
 			next;
 			goto checkpoint6;
 
@@ -3321,7 +3338,7 @@ QI9:
 			mes "through this Quiz Challenge!";
 			mes "Aren't you having a hard time?";
 			set @jesqpoints, @jesqpoints + 1;
-			emotion e_ho;
+			emotion 2; // HO
 			next;
 			goto checkpoint7;
 
@@ -3330,7 +3347,7 @@ QI9:
 			mes "Huh...?";
 			mes "I don't understand";
 			mes "why I don't know this...";
-			emotion e_wah;
+			emotion 16; // WAH
 			next;
 			goto checkpoint7;
 
@@ -3351,7 +3368,7 @@ QI10:
 			mes "the last question";
 			mes "absolutely right~";
 			set @jesqpoints, @jesqpoints + 1;
-			emotion e_ho;
+			emotion 2; // HO
 			next;
 			goto JANSWER;
 
@@ -3391,7 +3408,7 @@ FOREND:
 		mes "Ho ho ho ho ho ho~";
 		set @takenquiz,1;
 		next;
-		goto JESQPOINTS00;
+		goto JESQPOINTSEND;
 
 JESQPOINTS00:
 		mes "[Jesqurienne]";
@@ -3487,7 +3504,7 @@ TAKENQUIZ1:
 	mes "you in a test of intelligence!";
 	mes "Bwahaha! I can't believe how";
 	mes "simple minded you are...!";
-	emotion e_gg;
+	emotion 29; // GG
 	next;
 	menu "I can't let you win!",L_challenge,"Darn it...",-;
 	mes "[Jesqurienne]";
@@ -3693,9 +3710,9 @@ L_Check:
 	if(countitem(741) == 1 )set @dearles_check,@dearles_check+1;
 	if(countitem(742) == 1 )set @dearles_check,@dearles_check+1;
 	if(countitem(743) == 1 )set @dearles_check,@dearles_check+2;
-	if(countitem(744) == 1 )set @dearles_check,@dearles_check+1;
-	if(countitem(745) == 1 )set @dearles_check,@dearles_check+1;
-	if(countitem(746) == 1 )set @dearles_check,@dearles_check+1;
+	if(countitem(734) == 1 )set @dearles_check,@dearles_check+1;
+	if(countitem(735) == 1 )set @dearles_check,@dearles_check+1;
+	if(countitem(736) == 1 )set @dearles_check,@dearles_check+1;
 	if(countitem(747) == 1 )set @dearles_check,@dearles_check+2;
 	if(countitem(750) == 1 )set @dearles_check,@dearles_check+10;
 	if(countitem(751) == 1 )set @dearles_check,@dearles_check+12;
@@ -3703,8 +3720,6 @@ L_Check:
 	if(countitem(753) == 1 )set @dearles_check,@dearles_check+5;
 	if(countitem(754) == 1 )set @dearles_check,@dearles_check+5;
 
-
-	if(@dearles_check < 20) goto BADITEMS;
 	if(countitem(741) >= 1 ) delitem 741,countitem(741);
 	if(countitem(740) >= 1 ) delitem 740,countitem(740);
 	if(countitem(742) >= 1 ) delitem 742,countitem(742);
@@ -3718,6 +3733,8 @@ L_Check:
 	if(countitem(752) >= 1 ) delitem 752,countitem(752);
 	if(countitem(753) >= 1 ) delitem 753,countitem(753);
 	if(countitem(754) >= 1 ) delitem 754,countitem(754);
+	if(@dearles_check < 20) goto BADITEMS;
+
 	mes "[Dearles]";
 	mes "Nice, nice~";
 	mes "These'll sell for--";
@@ -3880,7 +3897,7 @@ L_Win:
 	mes "You got a perfect";
 	mes "score on this test!";
 	next;
-	mes "[Dearles]";
+	mes "[Lamadin]";
 	mes "I'll send a message to";
 	mes "Mister Dearles right away,";
 	mes "so please go speak to him";
@@ -3892,17 +3909,17 @@ L_Win:
 
 }
 
-cmd_in01.gat,33,33,3	script	Waiting Room#SignDance	66,{
+cmd_in01.gat,33,33,3	script	Waiting Room::SignDance	66,{
 	end;
 
 OnWarp:
-	warpwaitingpc "cmd_in01",16,16,1;
+	warpwaitingpc "cmd_in01.gat",16,16;
 	disablewaitingroomevent;
 	disablenpc "SignDance#WARPER";
 	enablenpc "SignDance#CENTER";
 	end;
 OnInit:
-	waitingroom "DANCE~ DANCE~",20,"Waiting Room#SignDance::OnWarp",1;
+	waitingroom "DANCE~ DANCE~",20,"SignDance::OnWarp",1;
 	end;
 }
 
@@ -3915,66 +3932,66 @@ OnTimer1000:
 	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
 	areaannounce "cmd_in01.gat",12,12,35,35,"The test will begin shortly. Please do your best~",8;
 	end;
-OnTimer4000:
+OnTimer8000:
 	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
 	set $signdance,1;
 	areaannounce "cmd_in01.gat",12,12,35,35,"UP LEFT",8;
 	end;
-OnTimer7000:
+OnTimer14000:
 	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
 	if($signdance != 2) set $Signdanceresult,1;
 	set $signdance,3;
 	areaannounce "cmd_in01.gat",12,12,35,35,"DOWN RIGHT",8;
 	end;
-OnTimer10000:
+OnTimer20000:
 	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
 	if($signdance != 4) set $Signdanceresult,1;
 	set $signdance,5;
 	areaannounce "cmd_in01.gat",12,12,35,35,"DOWN LEFT & UP RIGHT",8;
 	end;
-OnTimer13000:
+OnTimer26000:
 	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
 	if($signdance != 7) set $Signdanceresult,1;
 	 set $signdance,8;
 	areaannounce "cmd_in01.gat",12,12,35,35,"DOWN RIGHT",8;
 	end;
-OnTimer15000:
+OnTimer30000:
 	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
 	if($signdance != 9) set $Signdanceresult,1;
 	set $signdance,10;
 	areaannounce "cmd_in01.gat",12,12,35,35,"DOWN LEFT & UP RIGHT & UP LEFT & STAY CENTER",8;
 	end;
-OnTimer20000:
+OnTimer40000:
 	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
 	if($signdance != 14) set $Signdanceresult,1;
 	set $signdance,15;
 	areaannounce "cmd_in01.gat",12,12,35,35,"DOWN LEFT & DOWN RIGHT & DOWN LEFT",8;
 	end;
-OnTimer24000:
+OnTimer48000:
 	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
 	if($signdance != 18) set $Signdanceresult,1;
 	set $signdance,19;
 	areaannounce "cmd_in01.gat",12,12,35,35,"DOWN RIGHT & CENTER & DOWN RIGHT",8;
 	end;
-OnTimer28000:
+OnTimer56000:
 	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
 	if($signdance != 22) set $Signdanceresult,1;
 	set $signdance,23;
 	areaannounce "cmd_in01.gat",12,12,35,35,"DOWN LEFT & UP LEFT & UP RIGHT & DOWN RIGHT & CENTER",8;
 	end;
-OnTimer33000:
+OnTimer66000:
 	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
 	if($signdance != 28) set $Signdanceresult,1;
 	set $signdance,29;
 	areaannounce "cmd_in01.gat",12,12,35,35,"DOWN LEFT & UP RIGHT & UP LEFT & DOWN RIGHT",8;
 	end;
-OnTimer40000:
+OnTimer80000:
 	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
 	if($signdance != 33) set $Signdanceresult,1;
 	set $signdance,34;
 	areaannounce "cmd_in01.gat",12,12,35,35,"UP RIGHT & DOWN RIGHT & UP RIGHT & DOWN RIGHT",8;
 	end;
-OnTimer44000:
+OnTimer88000:
 	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
 	if($signdance != 38) set $Signdanceresult,1;
 	set $signdance,39;
@@ -3984,16 +4001,16 @@ OnTimer44000:
 RANDOMISATER:
 	areaannounce "cmd_in01.gat",12,12,35,35,"UP LEFT & UP RIGHT & DOWN LEFT & UP RIGHT & DOWN LEFT & DOWN RIGHT",8;
 	end;
-OnTimer51500:
+OnTimer103000:
 	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
 	if($signdance != 45)set $Signdanceresult,1;
 	areaannounce "cmd_in01.gat",12,12,35,35,"Well done.",8;
 	end;
-OnTimer54500:
+OnTimer109000:
 	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
 	attachrid($SignDancingrid);
 	if($Signdanceresult) set SignDance,2;
-	if($Signdanceresult != 0 ) set SignDance,1;
+	if($Signdanceresult == 0 ) set SignDance,1;
 	warp "cmd_in01.gat",34,17;
 	detachrid;
 	enablenpc "SignDance#WARPER";
@@ -4002,7 +4019,7 @@ OnTimer54500:
 	set $Signdanceresult,0;
 	set $SignDancingrid,0;
 	set $SignDanceRandomizer,0;
-	enablewaitingroomevent "Waiting Room#SignDance";
+	enablewaitingroomevent "Waiting Room::SignDance";
 	stopnpctimer;
 	end;
 
@@ -4042,16 +4059,17 @@ OnInit:
 //Dancing tiles
 cmd_in01.gat,16,13,4	script	SignDance#DOWNRIGHT	139,1,1,{
 
-	if($signdance == 3) set $signdance,4; soundeffect "effect\\sign_down.wav",1;
-	if($signdance == 8) set $signdance,9; soundeffect "effect\\sign_down.wav",1;
-	if($signdance == 16) set $signdance,17; soundeffect "effect\\sign_down.wav",1;
-	if($signdance == 19) set $signdance,20; soundeffect "effect\\sign_down.wav",1;
-	if($signdance == 21) set $signdance,22; soundeffect "effect\\sign_down.wav",1;
-	if($signdance == 26) set $signdance,27; soundeffect "effect\\sign_down.wav",1;
-	if($signdance == 32) set $signdance,33; soundeffect "effect\\sign_down.wav",1;
-	if($signdance == 35) set $signdance,36; soundeffect "effect\\sign_down.wav",1;
-	if($signdance == 37) set $signdance,38; soundeffect "effect\\sign_down.wav",1;
-	if($signdance == 44) set $signdance,45; soundeffect "effect\\sign_down.wav",1;
+	if($signdance == 3) set $signdance,4;
+	if($signdance == 8) set $signdance,9;
+	if($signdance == 16) set $signdance,17;
+	if($signdance == 19) set $signdance,20;
+	if($signdance == 21) set $signdance,22;
+	if($signdance == 26) set $signdance,27;
+	if($signdance == 32) set $signdance,33;
+	if($signdance == 35) set $signdance,36;
+	if($signdance == 37) set $signdance,38;
+	if($signdance == 44) set $signdance,45;
+	soundeffect "effect\\sign_down.wav",0;
 	if(getcharid(3) != $SignDancingrid)warp "comodo.gat",187,164;
 	end;
 
@@ -4060,14 +4078,15 @@ cmd_in01.gat,16,13,4	script	SignDance#DOWNRIGHT	139,1,1,{
 
 cmd_in01.gat,19,16,4	script	SignDance#UPRIGHT	139,1,1,{
 
-	if($signdance == 6) set $signdance,7; soundeffect "effect\\sign_right.wav",1;
-	if($signdance == 11) set $signdance,12; soundeffect "effect\\sign_right.wav",1;
-	if($signdance == 25) set $signdance,26; soundeffect "effect\\sign_right.wav",1;
-	if($signdance == 30) set $signdance,31; soundeffect "effect\\sign_right.wav",1;
-	if($signdance == 34) set $signdance,35; soundeffect "effect\\sign_right.wav",1;
-	if($signdance == 36) set $signdance,37; soundeffect "effect\\sign_right.wav",1;
-	if($signdance == 40) set $signdance,41; soundeffect "effect\\sign_right.wav",1;
-	if($signdance == 42) set $signdance,43; soundeffect "effect\\sign_right.wav",1;
+	if($signdance == 6) set $signdance,7;
+	if($signdance == 11) set $signdance,12;
+	if($signdance == 25) set $signdance,26;
+	if($signdance == 30) set $signdance,31;
+	if($signdance == 34) set $signdance,35;
+	if($signdance == 36) set $signdance,37;
+	if($signdance == 40) set $signdance,41;
+	if($signdance == 42) set $signdance,43;
+	soundeffect "effect\\sign_right.wav",0;
 	if(getcharid(3) != $SignDancingrid)warp "comodo.gat",187,164;
 	end;
 
@@ -4075,11 +4094,12 @@ cmd_in01.gat,19,16,4	script	SignDance#UPRIGHT	139,1,1,{
 
 cmd_in01.gat,16,19,4	script	SignDance#UPLEFT	139,1,1,{
 
-	if($signdance == 1) set $signdance,2; soundeffect "effect\\sign_up.wav",1;
-	if($signdance == 12) set $signdance,13; soundeffect "effect\\sign_up.wav",1;
-	if($signdance == 24) set $signdance,25; soundeffect "effect\\sign_up.wav",1;
-	if($signdance == 31) set $signdance,32; soundeffect "effect\\sign_up.wav",1;
-	if($signdance == 39) set $signdance,40; soundeffect "effect\\sign_up.wav",1;
+	if($signdance == 1) set $signdance,2;
+	if($signdance == 12) set $signdance,13;
+	if($signdance == 24) set $signdance,25;
+	if($signdance == 31) set $signdance,32;
+	if($signdance == 39) set $signdance,40;
+	soundeffect "effect\\sign_up.wav",0;
 	if(getcharid(3) != $SignDancingrid)warp "comodo.gat",187,164;
 	end;
 
@@ -4093,11 +4113,15 @@ cmd_in01.gat,16,16,4	script	SignDance#WARPER	139,1,1,{
 
 cmd_in01.gat,16,16,4	script	SignDance#CENTER	139,1,1,{
 
-	if($signdance == 0) set $SignDancingrid, getcharid(3); donpcevent "DanceInit::OnInitiation";
-	if($signdance == 13) set $signdance,14; soundeffect "effect\\sign_center.wav",1;
-	if($signdance == 20) set $signdance,21; soundeffect "effect\\sign_center.wav",1;
-	if($signdance == 27) set $signdance,28; soundeffect "effect\\sign_center.wav",1;
-	if($signdance == 41 && !$SignDanceRandomizer) set $signdance,42; soundeffect "effect\\sign_center.wav",1;
+	if($signdance != 0) goto L_CENTERNON0;
+	set $SignDancingrid, getcharid(3);
+	donpcevent "DanceInit::OnInitiation";
+L_CENTERNON0:
+	if($signdance == 13) set $signdance,14;
+	if($signdance == 20) set $signdance,21;
+	if($signdance == 27) set $signdance,28;
+	if($signdance == 41 && !$SignDanceRandomizer) set $signdance,42;
+	soundeffect "effect\\sign_center.wav",0;
 	end;
 
 OnInit:
@@ -4108,14 +4132,15 @@ OnInit:
 
 cmd_in01.gat,13,16,4	script	SignDance#DOWNLEFT	139,1,1,{
 
-	if($signdance == 5) set $signdance,6; soundeffect "effect\\sign_left.wav",1;
-	if($signdance == 10) set $signdance,11; soundeffect "effect\\sign_left.wav",1;
-	if($signdance == 15) set $signdance,16; soundeffect "effect\\sign_left.wav",1;
-	if($signdance == 17) set $signdance,18; soundeffect "effect\\sign_left.wav",1;
-	if($signdance == 23) set $signdance,24; soundeffect "effect\\sign_left.wav",1;
-	if($signdance == 29) set $signdance,30; soundeffect "effect\\sign_left.wav",1;
-	if($signdance == 41 && $SignDanceRandomizer) set $signdance,42; soundeffect "effect\\sign_left.wav",1;
-	if($signdance == 43) set $signdance,44; soundeffect "effect\\sign_left.wav",1;
+	if($signdance == 5) set $signdance,6;
+	if($signdance == 10) set $signdance,11;
+	if($signdance == 15) set $signdance,16;
+	if($signdance == 17) set $signdance,18;
+	if($signdance == 23) set $signdance,24;
+	if($signdance == 29) set $signdance,30;
+	if($signdance == 41 && $SignDanceRandomizer) set $signdance,42;
+	if($signdance == 43) set $signdance,44;
+	soundeffect "effect\\sign_left.wav",0;
 	if(getcharid(3) != $SignDancingrid) warp "comodo.gat",187,164;
 	end;
 
@@ -4344,7 +4369,7 @@ L_Work:
 	mes "You see, it'll be my brother's";
 	mes "birthday but I'm so busy with";
 	mes "work that I can't see him.";
-	emotion e_thx;
+	emotion 15; // THX
 	next;
 	mes "[Seylin]";
 	mes "The last time I saw him,";
@@ -4467,7 +4492,7 @@ L_Thanks:
 	mes "as a token of my gratitude.";
 	mes "You really are a kind person~";
 	getitem 525,3;
-	emotion e_kis2;
+	emotion 31; // KIS2
 	set bakerlan_test,12;
 	close;
 
@@ -4992,7 +5017,7 @@ prt_castle.gat,107,58,5	script	Soldier	105,{
 	mes "me being tired lately. But";
 	mes "does she even know what";
 	mes "Vigorgra is supposed to...?";
-	emotion e_gasp;
+	emotion 0; // GASP
 	next;
 	mes "[Maruin]";
 	mes "Never mind. It's the";
@@ -5051,7 +5076,7 @@ geffen_in.gat,171,43,3	script	Cute Girl	703,{
 	mes "coming home?!";
 	mes "I... I miss him so much~";
 	mes "^222222*Cries*";
-	emotion e_sob;
+	emotion 28; // SOB
 	close;
 
 SIGNQUESTSTART:
@@ -5091,7 +5116,7 @@ L_Father:
 	mes "time to come home and";
 	mes "see me. Sooooooooo~";
 	mes "I wrote this letter!";
-	emotion e_dots;
+	emotion 9; // DOTs
 	next;
 	menu "...",-,"I'll bring this to him",L_Really;
 	mes "[Brenda Howard]";
@@ -5163,7 +5188,7 @@ L_Never:
 
 geffen_in.gat,159,48,5	script	Woman	711,{
 
-	if(signquest >0) goto SIGNQUESTSTART;
+	if(signquest > 14) goto SIGNQUESTSTART;
 	mes "[Brenda Howard]";
 	mes "Hmm...";
 	mes "What should I make for";
@@ -5296,7 +5321,7 @@ mjo_dun02.gat,88,295,3		script	Flaming Spirit Man	85,{
 	if(signquest == 21) goto L_Refine;
 	if(signquest == 18 || signquest == 22) goto L_Check;
 	if(signquest == 17) goto L_Family;
-	emotion e_pif;
+	emotion 32; // PIF
 	mes "[Engel]";
 	mes "I hope you understand that";
 	mes "this forge isn't really open to the";
@@ -5428,11 +5453,11 @@ L_Check:
 	mes "Let me see what you've";
 	mes "brought.";
 	next;
-	if((countitem(612) <= 4) || countitem(615) <= 1)
-	if(countitem(986) > 0) set signanvil,1; goto L_Forge1;
-	if(countitem(987) > 0) set signanvil,2; goto L_Forge2;
-	if(countitem(988) > 0) set signanvil,3; goto L_Forge3;
-	if(countitem(989) > 0) set signanvil,4; goto L_Forge4;
+	if((countitem(612) <= 4) || countitem(615) <= 1) goto L_NotEnough;
+	if(countitem(986) > 0) goto L_Forge1;
+	if(countitem(987) > 0) goto L_Forge2;
+	if(countitem(988) > 0) goto L_Forge3;
+	if(countitem(989) > 0) goto L_Forge4;
 
 L_NotEnough:
 	mes "[Engel]";
@@ -5451,6 +5476,7 @@ L_NotEnough:
 	close;
 
 L_Forge1:
+	set signanvil,1;
 	mes "[Engel]";
 	mes "Ah...";
 	mes "A normal Anvil.";
@@ -5463,6 +5489,7 @@ L_Forge1:
 	goto L_Forge;
 
 L_Forge2:
+	set signanvil,2;
 	mes "[Engel]";
 	mes "Ah...";
 	mes "An Oridecon Anvil.";
@@ -5473,6 +5500,7 @@ L_Forge2:
 	goto L_Forge;
 
 L_Forge3:
+	set signanvil,3;
 	mes "[Engel]";
 	mes "Ah...";
 	mes "A Golden Anvil.";
@@ -5484,6 +5512,7 @@ L_Forge3:
 	goto L_Forge;
 
 L_Forge4:
+	set signanvil,4;
 	mes "[Engel]";
 	mes "Ah...";
 	mes "An Emperium Anvil.";
@@ -5646,7 +5675,7 @@ L_Improve:
 	mes "about you. It's those people who";
 	mes "make everything worth it.";
 	close2;
-	emotion e_dots;
+	emotion 9; // DOTS
 	end;
 
 }
@@ -5679,18 +5708,18 @@ L_Star:
 	next;
 	mes "[Dhota]";
 	mes "...";
-	emotion e_dots;
+	emotion 9; // DOTS
 	next;
 	mes "[Dhota]";
 	mes "...";
 	mes "......";
-	emotion e_dots;
+	emotion 9; // DOTS
 	next;
 	mes "[Dhota]";
 	mes "...";
 	mes "......";
 	mes "BWAAAAH~!";
-	emotion e_ag;
+	emotion 7; // AG
 	next;
 	mes "[Dhota]";
 	mes "Right, he wants that guy";
@@ -5699,7 +5728,7 @@ L_Star:
 	mes "here right now. Went somewhere";
 	mes "near Comodo to investigate some";
 	mes "tribal people or whatever.";
-	emotion e_pif;
+	emotion 32; // PIF
 	set signquest,25;
 	close;
 
@@ -5710,13 +5739,13 @@ L_Answer:
 	mes "What could possibly be";
 	mes "the answer I'm looking";
 	mes "for...? *Sigh...*";
-	emotion e_pif;
+	emotion 32; // PIF
 	close;
 
 }
 
 umbala.gat,163,256,3	script	Native	781,{
-
+	
 	if(event_umbala < 3) goto L_UmWord;
 	if(signquest > 25) goto L_Thanks;
 	if(signquest == 25) goto L_Sign;
@@ -5800,7 +5829,7 @@ um_in.gat,27,23,3	script	Weird Man	121,{
 	mes "then that and then...";
 	mes "Ooh, these calculations";
 	mes "are absolutely perfect!";
-	emotion e_gg;
+	emotion 29; // GG
 	next;
 	mes "[Cyon]";
 	mes "Wh-what?!";
@@ -5808,7 +5837,7 @@ um_in.gat,27,23,3	script	Weird Man	121,{
 	mes "H-how did you get";
 	mes "in here? I demand";
 	mes "that you leave, right now!";
-	emotion e_an;
+	emotion 6; // AN
 	if(signquest == 26) goto L_Sign;
 	close2;
 	warp "um_dun01.gat",129,90;
@@ -5869,7 +5898,7 @@ L_Sorry:
 	mes "then hurry up and get";
 	mes "out of here! Not just anyone";
 	mes "is allowed in here! Leave!";
-	emotion e_pif;
+	emotion 32; // PIF
 	close;
 
 L_Leave:
@@ -6399,18 +6428,14 @@ Seal4:
 	next;
 	mes "[Laichin]";
 	mes "Check out the";
-	set @signseal,1;
-	callfunc "Sign_Seal";
-	set @signseal,2;
-	callfunc "Sign_Seal";
-	set @signseal,3;
-	callfunc "Sign_Seal";
 	set @signseal,4;
+
 	callfunc "Sign_Seal";
-	mes "" + Sign_Seal1$ + ",";
-	mes "" + Sign_Seal2$ + ",";
-	mes "" + Sign_Seal3$ + " and the";
-	mes "" + Sign_Seal4$ + ".";
+
+	mes "" + @Sign_Seal1$ + ",";
+	mes "" + @Sign_Seal2$ + ",";
+	mes "" + @Sign_Seal3$ + " and the";
+	mes "" + @Sign_Seal4$ + ".";
 	next;
 	mes "[Laichin]";
 	mes "Her soul pieces are really";
@@ -6566,10 +6591,11 @@ L_Where:
 L_Where1:
 	mes "[Laichin]";
 	mes "Check out the";
-	mes "" + Sign_Seal1$ + ",";
-	mes "" + Sign_Seal2$ + ",";
-	mes "" + Sign_Seal3$ + " and the";
-	mes "" + Sign_Seal4$ + ".";
+	callfunc "Sign_Seal";
+	mes "" + @Sign_Seal1$ + ",";
+	mes "" + @Sign_Seal2$ + ",";
+	mes "" + @Sign_Seal3$ + " and the";
+	mes "" + @Sign_Seal4$ + ".";
 	mes "And break those seals";
 	mes "in that order, okay?";
 	next;
@@ -6624,66 +6650,57 @@ L_Queen:
 	mes "[Laichin]";
 	mes "I know he's always in";
 	mes "disguise as some sorta";
-	mes "really ^C9CACBdespressing guy^000000";
+	mes "really ^FF0000despressing guy^000000";
 	mes "and I can't remember his";
 	mes "name for the life of me, but";
 	mes "he's around here somewhere...";
 	close;
 }
 
-function	script		Sign_Seal	{
+function	script	Sign_Seal	{
 
-	if(@signseal == 4) goto SIGNSEAL4;
-	if(@signseal == 3) goto SIGNSEAL3;
-	if(@signseal == 2) goto SIGNSEAL2;
-	if(@signseal == 1) goto SIGNSEAL1;
-//	goto RETURN;
+
+		if(Sign_Seal1 == 1) set @Sign_Seal1$,"big 1 o'clock";
+		if(Sign_Seal1 == 2) set @Sign_Seal1$,"big 4 o'clock";
+		if(Sign_Seal1 == 3) set @Sign_Seal1$,"big 5 o'clock";
+		if(Sign_Seal1 == 4) set @Sign_Seal1$,"small 6 o'clock";
+		if(Sign_Seal1 == 5) set @Sign_Seal1$,"big 7 o'clock";
+		if(Sign_Seal1 == 6) set @Sign_Seal1$,"very small 11 o'clock";
+		if(Sign_Seal1 == 7) set @Sign_Seal1$,"big 11 o'clock";
+		if(Sign_Seal1 == 8) set @Sign_Seal1$,"small 11 o'clock";
+
 	
-	SIGNSEAL1:
-		if(Sign_Seal1 == 1) set Sign_Seal1$,"big 1 o'clock";
-		if(Sign_Seal1 == 2) set Sign_Seal1$,"big 4 o'clock";
-		if(Sign_Seal1 == 3) set Sign_Seal1$,"big 5 o'clock";
-		if(Sign_Seal1 == 4) set Sign_Seal1$,"small 6 o'clock";
-		if(Sign_Seal1 == 5) set Sign_Seal1$,"big 7 o'clock";
-		if(Sign_Seal1 == 6) set Sign_Seal1$,"very small 11 o'clock";
-		if(Sign_Seal1 == 7) set Sign_Seal1$,"big 11 o'clock";
-		if(Sign_Seal1 == 8) set Sign_Seal1$,"small 11 o'clock";
-	//	goto RETURN;
+		if(Sign_Seal2 == 1) set @Sign_Seal2$,"big 1 o'clock";
+		if(Sign_Seal2 == 2) set @Sign_Seal2$,"big 4 o'clock";
+		if(Sign_Seal2 == 3) set @Sign_Seal2$,"big 5 o'clock";
+		if(Sign_Seal2 == 4) set @Sign_Seal2$,"small 6 o'clock";
+		if(Sign_Seal2 == 5) set @Sign_Seal2$,"big 7 o'clock";
+		if(Sign_Seal2 == 6) set @Sign_Seal2$,"very small 11 o'clock";
+		if(Sign_Seal2 == 7) set @Sign_Seal2$,"big 11 o'clock";
+		if(Sign_Seal2 == 8) set @Sign_Seal2$,"small 11 o'clock";
+
 	
-		if(Sign_Seal2 == 1) set Sign_Seal2$,"big 1 o'clock";
-		if(Sign_Seal2 == 2) set Sign_Seal2$,"big 4 o'clock";
-		if(Sign_Seal2 == 3) set Sign_Seal2$,"big 5 o'clock";
-		if(Sign_Seal2 == 4) set Sign_Seal2$,"small 6 o'clock";
-		if(Sign_Seal2 == 5) set Sign_Seal2$,"big 7 o'clock";
-		if(Sign_Seal2 == 6) set Sign_Seal2$,"very small 11 o'clock";
-		if(Sign_Seal2 == 7) set Sign_Seal2$,"big 11 o'clock";
-		if(Sign_Seal2 == 8) set Sign_Seal2$,"small 11 o'clock";
-	//	goto RETURN;
+		if(Sign_Seal3 == 1) set @Sign_Seal3$,"big 1 o'clock";
+		if(Sign_Seal3 == 2) set @Sign_Seal3$,"big 4 o'clock";
+		if(Sign_Seal3 == 3) set @Sign_Seal3$,"big 5 o'clock";
+		if(Sign_Seal3 == 4) set @Sign_Seal3$,"small 6 o'clock";
+		if(Sign_Seal3 == 5) set @Sign_Seal3$,"big 7 o'clock";
+		if(Sign_Seal3 == 6) set @Sign_Seal3$,"very small 11 o'clock";
+		if(Sign_Seal3 == 7) set @Sign_Seal3$,"big 11 o'clock";
+		if(Sign_Seal3 == 8) set @Sign_Seal3$,"small 11 o'clock";
+
 	
-		if(Sign_Seal3 == 1) set Sign_Seal3$,"big 1 o'clock";
-		if(Sign_Seal3 == 2) set Sign_Seal3$,"big 4 o'clock";
-		if(Sign_Seal3 == 3) set Sign_Seal3$,"big 5 o'clock";
-		if(Sign_Seal3 == 4) set Sign_Seal3$,"small 6 o'clock";
-		if(Sign_Seal3 == 5) set Sign_Seal3$,"big 7 o'clock";
-		if(Sign_Seal3 == 6) set Sign_Seal3$,"very small 11 o'clock";
-		if(Sign_Seal3 == 7) set Sign_Seal3$,"big 11 o'clock";
-		if(Sign_Seal3 == 8) set Sign_Seal3$,"small 11 o'clock";
-	//	goto RETURN;
-	
-		if(Sign_Seal4 == 1) set Sign_Seal4$,"big 1 o'clock";
-		if(Sign_Seal4 == 2) set Sign_Seal4$,"big 4 o'clock";
-		if(Sign_Seal4 == 3) set Sign_Seal4$,"big 5 o'clock";
-		if(Sign_Seal4 == 4) set Sign_Seal4$,"small 6 o'clock";
-		if(Sign_Seal4 == 5) set Sign_Seal4$,"big 7 o'clock";
-		if(Sign_Seal4 == 6) set Sign_Seal4$,"very small 11 o'clock";
-		if(Sign_Seal4 == 7) set Sign_Seal4$,"big 11 o'clock";
-		if(Sign_Seal4 == 8) set Sign_Seal4$,"small 11 o'clock";
-	//	goto RETURN;
-	
-	
-//RETURN:
-//return @users;
+		if(Sign_Seal4 == 1) set @Sign_Seal4$,"big 1 o'clock";
+		if(Sign_Seal4 == 2) set @Sign_Seal4$,"big 4 o'clock";
+		if(Sign_Seal4 == 3) set @Sign_Seal4$,"big 5 o'clock";
+		if(Sign_Seal4 == 4) set @Sign_Seal4$,"small 6 o'clock";
+		if(Sign_Seal4 == 5) set @Sign_Seal4$,"big 7 o'clock";
+		if(Sign_Seal4 == 6) set @Sign_Seal4$,"very small 11 o'clock";
+		if(Sign_Seal4 == 7) set @Sign_Seal4$,"big 11 o'clock";
+		if(Sign_Seal4 == 8) set @Sign_Seal4$,"small 11 o'clock";
+return;
 }
+
 
 niflheim.gat,313,70,3	script	Pleasant-Featured Lady	90,{
 
@@ -6912,7 +6929,7 @@ L_Queen:
 	mes "At least we both agree that";
 	mes "somehow I don't really belong";
 	mes "here in Niflheim.";
-	emotion e_dots;
+	emotion 9; // DOTS
 	set signquest,49;
 	close;
 
@@ -6937,7 +6954,7 @@ L_Info:
 	mes "but it seems that Angrboda";
 	mes "have been sealed away in the";
 	mes "world of Rune-Midgard...";
-	emotion e_dots;
+	emotion 9; // DOTS
 	set signquest,50;
 	close;
 
@@ -7220,7 +7237,7 @@ L_Home:
 	mes "*Cries*";
 	mes "Where am I?";
 	mes "I... I wanna go home~";
-	emotion e_sob;
+	emotion 28; // SOB
 	close;
 
 L_Help:
@@ -7288,7 +7305,7 @@ L_SignBruce:
 	mes "Just because I'm a cursed spirit,";
 	mes "you adventurers think you can just";
 	mes "dump your curses on me?!";
-	emotion e_dots;
+	emotion 9; // DOTS
 	next;
 	mes "[Ashe Bruce]";
 	mes "I refuse to let";
@@ -8565,11 +8582,11 @@ L_Broken:
 	next;
 	set brokenseal,brokenseal +1;
 	set @sealbreak,0;
-	if(brokenseal > 4) goto L_Soul;
 	mes "You have";
 	mes "obtained a";
-	mes "^C9CACBPiece of Spirit.^000000";
+	mes "^0000FFPiece of Spirit.^000000";
 	getitem 7306,1;
+	if(brokenseal > 4) goto L_Soul;
 	close;
 
 L_Soul:
@@ -8712,9 +8729,16 @@ L_Sense:
 	mes "have something extraordinarily";
 	mes "special in your possesion?";
 	next;
-	if(countitem(2644) == 1 && countitem(7178) == 1 ) menu "The Sign",L_Sign,"Sobbing Starlight",-;
-	if(countitem(2644) == 1 && countitem(7178) == 1 ) menu "Sobbing Starlight",-;
-	if(countitem(2644) == 1 && countitem(7178) == 0 ) menu "The Sign",L_Sign;
+	if(countitem(2644) == 1 && countitem(7178) == 1 ) goto L_BOTH;
+	if(countitem(2644) == 0 && countitem(7178) == 1 ) goto L_7178;
+	if(countitem(2644) == 1 && countitem(7178) == 0 ) goto L_2644;
+L_BOTH:
+	menu "The Sign",L_Sign,"Sobbing Starlight",L_SSTAR;
+L_7178:
+	menu "Sobbing Starlight",L_SSTAR;
+L_2644:
+	menu "The Sign",L_Sign;
+L_SSTAR:
 	mes "[Lady Hell]";
 	mes "^881010Yes, that's it!";
 	mes "I never expected a mortal";

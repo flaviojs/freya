@@ -4,6 +4,18 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/22/06
+	* Added: The Sign Quest to Freya [Tsuyuki]
+	 - Conversion: Damz Fish
+	 - Testing: galaxy
+	 - Bug Fixing: Tsuyuki & galaxy
+	 - Original Script from eAthena (Master of Muppets)
+	 - Special thanks to these people on getting this quest completed =D
+	* Fixed: Lady Tanee's mode [Tsuyuki]
+	* Changed: Increased Bloody Edge drop to 10% from Valkyrie Randgrith [Tsuyuki]
+	* Fixed: Valkyrie Randgrith using some of her skills incorrectly [Tsuyuki]
+	* Fixed: Some minor item database-related things [Tsuyuki]
+
 10/21/06
 	* Fixed: Assassin Daggers are now Dark element [Tsuyuki]
 	* Added: Missing Mdef bonus to Excorsist Ring [Tsuyuki]
