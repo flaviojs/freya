@@ -11898,17 +11898,17 @@ msgstr ""
 
 #: npc/cities/gonryun.txt:21
 msgid ""
-"Hello there! I have traveled far from the Kingdom of Gonryun, my hometown."
+"Hello there! I have traveled far from the Kingdom of Kunlun, my hometown."
 msgstr ""
 
 #: npc/cities/gonryun.txt:22
 msgid ""
-"I invite all to visit and celebrate the diversity of Gonryun! We welcome all "
+"I invite all to visit and celebrate the diversity of Kunlun! We welcome all "
 "sorts of visitors."
 msgstr ""
 
 #: npc/cities/gonryun.txt:25
-msgid "Gonryun? What is that?"
+msgid "Kunlun? What is that?"
 msgstr ""
 
 #: npc/cities/gonryun.txt:25 npc/jobs/1-1/merchant.txt:53
@@ -11917,12 +11917,12 @@ msgid "Nevermind."
 msgstr ""
 
 #: npc/cities/gonryun.txt:25
-msgid "Travel to Gonryun."
+msgid "Travel to Kunlun."
 msgstr ""
 
 #: npc/cities/gonryun.txt:29
 msgid ""
-"The Kingdom of Gonryun is a sight to behold! It floats high above the sky, "
+"The Kingdom of Kunlun is a sight to behold! It floats high above the sky, "
 "beyond the pillar of light!"
 msgstr ""
 
@@ -11934,7 +11934,7 @@ msgstr ""
 
 #: npc/cities/gonryun.txt:33
 msgid ""
-"The steamed dumplings and peaches, they're a Gonryun specialty not to be "
+"The steamed dumplings and peaches, they're a Kunlun specialty not to be "
 "missed!"
 msgstr ""
 
@@ -11995,12 +11995,12 @@ msgstr ""
 
 #: npc/cities/gonryun.txt:77
 msgid ""
-"The sacred pillar of light connects this island to Gonryun Kingdom. There's "
+"The sacred pillar of light connects this island to Kunlun Kingdom. There's "
 "no time to idly chit chat now, be on your way."
 msgstr ""
 
 #: npc/cities/gonryun.txt:78
-msgid "I hope you will have many fond memories of Gonryun before you leave."
+msgid "I hope you will have many fond memories of Kunlun before you leave."
 msgstr ""
 
 #: npc/cities/gonryun.txt:86
@@ -12020,7 +12020,7 @@ msgid "Please come back to visit soon!"
 msgstr ""
 
 #: npc/cities/gonryun.txt:97
-msgid "Be sure to see all that Gonryun has to offer!"
+msgid "Be sure to see all that Kunlun has to offer!"
 msgstr ""
 
 #: npc/cities/gonryun.txt:106 npc/cities/gonryun.txt:110
@@ -12126,7 +12126,7 @@ msgid "[Guardsman]"
 msgstr ""
 
 #: npc/cities/gonryun.txt:165
-msgid "Welcome to Gonryun. This is the home of our governor, Sayoumun."
+msgid "Welcome to Kunlun. This is the home of our governor, Sayoumun."
 msgstr ""
 
 #: npc/cities/gonryun.txt:168 npc/cities/gonryun.txt:182
@@ -12143,8 +12143,8 @@ msgstr ""
 
 #: npc/cities/gonryun.txt:179
 msgid ""
-"Welcome to Gonryun. This is the home of our elder, Sayoumun. He rules all of "
-"Gonryun."
+"Welcome to Kunlun. This is the home of our elder, Sayoumun. He rules all of "
+"Kunlun."
 msgstr ""
 
 #: npc/cities/gonryun.txt:185
@@ -12195,7 +12195,7 @@ msgstr ""
 #: npc/cities/gonryun.txt:217
 msgid ""
 "Huh, a visitor?! Oh, hello! I was just, uhm, meditating. I am Sayoumun, "
-"mayor of Gonryun village. I welcome you to Gonryun."
+"mayor of Kunlun village. I welcome you to Kunlun."
 msgstr ""
 
 #: npc/cities/gonryun.txt:220
@@ -12261,7 +12261,7 @@ msgstr ""
 
 #: npc/cities/gonryun.txt:265
 msgid ""
-"The men of Gonryun must be powerful and bold! But being such a man, one just "
+"The men of Kunlun must be powerful and bold! But being such a man, one just "
 "can not get married. Don't you think?"
 msgstr ""
 
@@ -65467,7 +65467,7 @@ msgid " failed Time Attack Level 1."
 msgstr ""
 
 #: npc/other/arena.txt:428 npc/other/arena.txt:491 npc/other/arena.txt:554
-msgid "gonryun"
+msgid "kunlun"
 msgstr ""
 
 #: npc/other/arena.txt:440 npc/other/arena.txt:503
@@ -77319,7 +77319,7 @@ msgid "Amatsu"
 msgstr ""
 
 #: npc/other/warper.txt:29 npc/other/warper2.txt:25
-msgid "Gonryun"
+msgid "Kunlun"
 msgstr ""
 
 #: npc/other/warper.txt:29 npc/other/warper2.txt:25
@@ -77355,7 +77355,7 @@ msgid "Culvert"
 msgstr ""
 
 #: npc/other/warper.txt:32 npc/other/warper2.txt:27
-msgid "Gonryun Dungeon"
+msgid "Kunlun Dungeon"
 msgstr ""
 
 #: npc/other/warper.txt:32

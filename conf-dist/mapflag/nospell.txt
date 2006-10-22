@@ -6,7 +6,7 @@
 //===== Current Version: =====================================
 // Note: by default, all maps are disabled. add maps as you want.
 
-// cities
+// Cities
 //prontera.gat	mapflag	nospell
 //alberta.gat	mapflag	nospell
 //aldebaran.gat	mapflag	nospell
@@ -27,10 +27,10 @@
 //rachel.gat	mapflag	nospell
 //umbala.gat	mapflag	nospell
 //yuno.gat	mapflag	nospell
-//sec_in02.gat	mapflag	nospell
 //sec_in01.gat	mapflag	nospell
+//sec_in02.gat	mapflag	nospell
 
-// inside buildings
+// Inside Buildings
 //airplane.gat	mapflag	nospell
 //auction01.gat	mapflag	nospell
 //auction02.gat	mapflag	nospell
@@ -81,3 +81,6 @@
 //yuno_in04.gat	mapflag	nospell
 //yuno_in05.gat	mapflag	nospell
 //yuno_pre.gat	mapflag	nospell
+
+// Inside Jail
+sec_pri.gat	mapflag	nospell

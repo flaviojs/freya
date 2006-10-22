@@ -47,6 +47,7 @@ alberta_in.gat,32,142,5	script	Inn Employee::Jennie	53,{
 			set zeny,zeny-5000;
 			percentheal 100,100;
 			warp "alberta_in.gat",18,188;
+			close;
 		InnPoorAlb:
 			mes "[Employee Jennie]";
 			mes "I'm sorry, but the service charge";
@@ -88,6 +89,7 @@ aldeba_in.gat,92,58,2	script	Inn Employee::Moira	53,{
 			set zeny,zeny-5000;
 			percentheal 100,100;
 			warp "aldeba_in.gat",92,112;
+			close;
 		InnPoorAlde:
 			mes "[Employee Moira]";
 			mes "I'm sorry, but the service charge";
@@ -201,6 +203,7 @@ geffen_in.gat,70,64,5	script	Inn Employee::Cena	53,{
 			set zeny,zeny-5000;
 			percentheal 100,100;
 			warp "geffen_in.gat",31,31;
+			close;
 		InnPoorGef:
 			mes "[Employee Cena]";
 			mes "I'm sorry, but the service charge";
@@ -242,6 +245,7 @@ hu_in.gat,246,107,5	script	Inn Employee::Betty	53,{
 			set zeny,zeny-5000;
 			percentheal 100,100;
 			warp "hu_in01.gat",264,96;
+			close;
 		InnPoorHug:
 			mes "[Employee Betty]";
 			mes "I'm sorry, but the service charge";
@@ -284,6 +288,7 @@ morocc_in.gat,147,138,5	script	Inn Employee::Hasna	53,{
 			set zeny,zeny-5000;
 			percentheal 100,100;
 			warp "morocc_in.gat",173,135;
+			close;
 		InnPoorMoca:
 			mes "[Employee Hasna]";
 			mes "I'm sorry, but the service charge";
@@ -322,6 +327,7 @@ morocc_in.gat,80,100,5	script	Inn Employee::Manar	53,{
 			set zeny,zeny-5000;
 			percentheal 100,100;
 			warp "morocc_in.gat",79,123;
+			close;
 		InnPoorMocb:
 			mes "[Employee Manar]";
 			mes "I'm sorry, but the service charge";
@@ -417,6 +423,7 @@ payon_in01.gat,132,62,5	script	Inn Employee::Ahee	53,{
 			set zeny,zeny-5000;
 			percentheal 100,100;
 			warp "payon_in01.gat",132,11;
+			close;
 		InnPoorPay:
 			mes "[Employee Ahee]";
 			mes "I'm sorry, but the service charge";
@@ -459,6 +466,7 @@ prt_in.gat,244,135,2	script	Inn Employee::Sammy	53,{
 			set zeny,zeny-5000;
 			percentheal 100,100;
 			warp "prt_in.gat",247,104;
+			close;
 		InnPoorPrta:
 			mes "[Employee Sammy]";
 			mes "I'm sorry, but the service charge";
@@ -497,6 +505,7 @@ prt_in.gat,61,141,2	script	Inn Employee::Alma	53,{
 			set zeny,zeny-5000;
 			percentheal 100,100;
 			warp "prt_in.gat",60,166;
+			close;
 		InnPoorPrtb:
 			mes "[Employee Alma]";
 			mes "I'm sorry, but the service charge";
@@ -538,6 +547,7 @@ ra_in01.gat,376,69,4	script	Inn Employee::Diego	931,{
 			set zeny,zeny-5000;
 			percentheal 100,100;
 			warp "ra_in01.gat",384,128;
+			close;
 		InnPoorRa:
 			mes "[Employee Diego]";
 			mes "I'm sorry, but the service charge";

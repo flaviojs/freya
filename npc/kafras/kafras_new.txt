@@ -66,7 +66,7 @@ ayothaya.gat,212,169,5	script	Kafra Employee	116,{
 		callfunc "F_KafEnd",0,1;
 }
 
-// Gonryun/Kunlun -----------------------------------------------------------
+// Kunlun/Gonryun -----------------------------------------------------------
 gonryun.gat,159,122,4	script	Kafra Employee	116,{
 	cutin "kafra_02",2;
 	callfunc "F_Kafra",0,1,1;

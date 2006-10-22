@@ -4,6 +4,41 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/22/06
+	* Added: The Sign Quest to Freya [Tsuyuki]
+	 - Conversion: Damz Fish
+	 - Testing: galaxy
+	 - Bug Fixing: Tsuyuki & galaxy
+	 - Original Script from eAthena (Master of Muppets)
+	 - Special thanks to these people on getting this quest completed =D
+	* Fixed: Lady Tanee's mode [Tsuyuki]
+	* Changed: Increased Bloody Edge drop to 10% from Valkyrie Randgrith [Tsuyuki]
+	* Fixed: Valkyrie Randgrith using some of her skills incorrectly [Tsuyuki]
+	* Fixed: Some minor item database-related things [Tsuyuki]
+
+10/21/06
+	* Fixed: Assassin Daggers are now Dark element [Tsuyuki]
+	* Added: Missing Mdef bonus to Excorsist Ring [Tsuyuki]
+	* Fixed: Added missing effect for Morpheus' Hood [Tsuyuki]
+	* Fixed: Some problems with the new headgears [Tsuyuki]
+	* Added: A missing map to the map_athena.conf file (The Sign Quest related) [Tsuyuki]
+	* Fixed: The Taekwon Class's level-up buffs (L10 Blessing, L10 Increase Agi) [Tsuyuki]
+
+10/20/06
+	* Fixed: The city of Gonryun is now known as the city of Kunlun (as per correct english translations) [Tsuyuki]
+	* Updated: X.4 monster names with some more accurate translations [Tsuyuki]
+	* Fixed: Wretched Payon Training Grounds unmovable cell bug once and for all [Tsuyuki]
+	* Updated: Prices for some of the new 'Novice' equipment [Tsuyuki]
+	* Fixed: Nun Hat (Coif)'s Job ID [Tsuyuki]
+	* Fixed: G_Gryphon instead of regular Gryphon spawning in a Rachel Field [Tsuyuki]
+	* Fixed: Possibly fixed the server crashing with OPB/GB/OCA items with a certain Linux Distro [Tsuyuki]
+
+10/19/06
+	* Fixed: Small Inn NPC bug [Tsuyuki]
+	* Changed: Disabled use of skills in the jail map (sec_pri.gat), to prevent exploits [Tsuyuki]
+	* Fixed: Both Priest and Assassin should now be able to equip Assassin's Mask [Tsuyuki]
+	* Reverted: Harbin's Bowling Bash changes (he broke the damage formula) [Tsuyuki]
+
 10/17/06
 	* Updated: Weapon 'Hatii Claw' (Thanks to slasherdade) [Tsuyuki]
 	* Changed: Commented all unfinished skills in the skill databases [Tsuyuki]
@@ -910,7 +945,7 @@ Date	Added
 	* Added: item_norefine text database. Contains the list of no refineable items [Harbin]
 	* Added: Support for 2006-04-04aSakexe clients
 	* Added: Rachel to @go command [Harp]
-	* Translated: Gonryun Arena Event NPCs [Harp]
+	* Translated: Kunlun Arena Event NPCs [Harp]
 	* Fixed: TK can now use Concentration/Awakening Potions [Tsuyuki]
 	* Fixed: Male TKs can now equip Tuxedo [Tsuyuki]
 	* Changed: Mob drops as per kRO [Tsuyuki]

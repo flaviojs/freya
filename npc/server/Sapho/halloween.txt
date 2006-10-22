@@ -167,7 +167,7 @@ amatsu.gat,0,0,0,0	monster	Pomme véreuse	1613,5,0,0,0
 amatsu.gat,0,0,0,0	monster	Plante de sang	1078,30,0,0,0
 
 //============================================================
-// Mob de la ville de gonryun
+// Mob de la ville de Kunlun
 //============================================================
 
 gonryun.gat,0,0,0,0	monster	Squelette d'aventurier	1076,30,0,0,0

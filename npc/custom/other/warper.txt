@@ -40,7 +40,7 @@
 "Einbroch",weinbroch,
 "Hugel",whugel,
 "Geffen",wgeffen,
-"Gonryun",wgonryun,
+"Kunlun",wkunlun,
 "Izlude",wizlude,
 "Lighthalzen",wlhtalzn,
 "Louyang",wlouyang,
@@ -67,7 +67,7 @@
 "Einbroch Dungeon",deindun,
 "Hidden Temple",dhidden,
 "Glast Heim",dglast,
-"Gonryun Dungeon",dgonryun,
+"Kunlun Dungeon",dkunlun,
 "Ice Dungeon",dicedun,
 "Kiel Khayr's Academy",dkielk,
 "Magma Dungeon",dmagma,
@@ -91,7 +91,7 @@ wcomodo:	warp "comodo.gat",	188,	161;	close;
 weinbech:	warp "einbech.gat",	172,	122;	close;
 weinbroch:	warp "einbroch.gat",	232,	188;	close;
 whugel:		warp "hugel.gat",	95,	150;	close;
-wgonryun:	warp "gonryun.gat",	150,	130;	close;
+wkunlun:	warp "gonryun.gat",	150,	130;	close;
 wgeffen:	warp "geffen.gat",	119,	66;	close;
 wizlude:	warp "izlude.gat",	128,	111;	close;
 wlhtalzn:	warp "lighthalzen.gat",	159,	95;	close;
@@ -117,7 +117,7 @@ dcoal:	warp "mjolnir_02.gat",	81,	359;	close;
 deindun:	warp "einbech.gat",	138,	247;	close;
 dhidden:	warp "prt_fild01.gat",	136,	360;	close;
 dglast:	warp "glast_01.gat",	368,	303;	close;
-dgonryun:	warp "gonryun.gat",	160,	195;	close;
+dkunlun:	warp "gonryun.gat",	160,	195;	close;
 dicedun:	warp "ra_fild01.gat",	234,	327;	close;
 djupero:	warp "yuno_fild07",	219,	176;	close;
 dkielk:	warp "yuno_fild08",	164,	189;	close;

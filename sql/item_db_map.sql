@@ -2387,11 +2387,11 @@ INSERT INTO `item_db` VALUES (7527, 'Book_About_True_Life', 'Book About True Lif
 INSERT INTO `item_db` VALUES (7528, 'Lottery_Ticket', 'Lottery Ticket', 3, 0, 10, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7529, 'Stolen_Sandal', 'Stolen Sandal', 3, 0, 10, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7530, 'Travel_Brochure [Amatsu]', 'Travel Brochure [Amatsu]', 3, 0, 10, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
-INSERT INTO `item_db` VALUES (7531, 'Travel_Brochure [Gonryun', 'Travel Brochure [Gonryun', 3, 0, 10, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
+INSERT INTO `item_db` VALUES (7531, 'Travel_Brochure [Kunlun', 'Travel Brochure [Kunlun', 3, 0, 10, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7532, 'Travel_Brochure [Louyang', 'Travel Brochure [Louyang', 3, 0, 10, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7533, 'Travel_Brochure [Ayothay', 'Travel Brochure [Ayothay', 3, 0, 10, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7534, 'Amatsu_Completed_Photo_A', 'Amatsu Completed Photo A', 3, 0, 10, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
-INSERT INTO `item_db` VALUES (7535, 'Gonryun_Completed_Photo_', 'Gonryun Completed Photo ', 3, 0, 10, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
+INSERT INTO `item_db` VALUES (7535, 'Kunlun_Completed_Photo_', 'Kunlun Completed Photo ', 3, 0, 10, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7536, 'Louyang_Completed_Photo_', 'Louyang Completed Photo ', 3, 0, 10, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7537, 'Ayothaya_Completed_Photo', 'Ayothaya Completed Photo', 3, 0, 10, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7538, 'Sand_For_Work', 'Sand For Work', 3, 0, 10, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
@@ -2526,7 +2526,7 @@ INSERT INTO `item_db` VALUES (11009, 'History_Book_', 'Unknown Item', 3, 20, 0, 
 INSERT INTO `item_db` VALUES (11010, 'Book_of_Archer\'s_Village', 'History_Book_of_Archer\'s', 3, 20, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (11011, 'History_Book_of_Lutie', 'History Book of Lutie', 3, 20, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (11012, 'History_Book_of_Jawaii', 'History Book of Jawaii', 3, 20, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
-INSERT INTO `item_db` VALUES (11013, 'History_Book_of_Gonryun', 'History Book of Gonryun', 3, 20, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
+INSERT INTO `item_db` VALUES (11013, 'History_Book_of_Kunlun', 'History Book of Kunlun', 3, 20, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (11014, 'History_Book_of_Mjolnir', 'History Book of Mjolnir', 3, 20, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (11015, 'History_Book_of_Amatsu', 'History Book of Amatsu', 3, 20, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (11016, 'History_Book_of_Umbala', 'History Book of Umbala', 3, 20, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
