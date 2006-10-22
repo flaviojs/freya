@@ -3115,6 +3115,7 @@ int status_get_sc_def(struct block_list *bl, int type) {
 int status_change_start(struct block_list *bl, int type, int val1, int val2, int val3, int val4, int tick, int flag)
 {
 	struct map_session_data *sd = NULL;
+	struct mob_data *md = NULL;
 	struct status_change* sc_data;
 	short *sc_count, *option, *opt1, *opt2, *opt3;
 	int race, mode, elem;
@@ -3128,18 +3129,20 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 
 	nullpo_retr(0, bl);
 
-	switch (bl->type) {
-	case BL_PC:
-		sd = (struct map_session_data *)bl;
-		if(pc_isdead(sd))
+	switch(bl->type)
+	{
+		case BL_PC:
+			sd = (struct map_session_data *)bl;
+			if(pc_isdead(sd))
+				return 0;
+			break;
+		case BL_MOB:
+			md = (struct mob_data *)bl;
+			if(status_isdead(bl))
+				return 0;
+			break;
+		default:
 			return 0;
-		break;
-	case BL_MOB:
-		if (status_isdead(bl))
-			return 0;
-		break;
-	default:
-		return 0;
 	}
 
 	memset(&scflag, 0, sizeof(scflag)); //Init scflag structure with 0's
@@ -3211,8 +3214,11 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			battle_stopwalking(bl, 1);
 	}
 	
-	if(mode&0x20 && !(flag&1)) {
-		switch(type) {
+	// status effects that won't work on bosses and emperium
+	if((mode&0x20 && !(flag&1)) || (md && md->class == 1288))
+	{
+		switch(type)
+		{
 			case SC_BLESSING:
 				if(scflag.undead_bl || race == 6)
 					return 0;
@@ -3232,7 +3238,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			case SC_PROVOKE:
 			case SC_ROKISWEIL:
 			case SC_COMA:
-					return 0; // Bosses are not affected by any of these status effects
+					return 0;
 		}
 	}
 

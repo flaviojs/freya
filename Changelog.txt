@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/22/06
+	* Fixed: The Emperium is no longer affected by status effects [Harbin/Tsuyuki]
 	* Fixed: When you die in PvP/WoE, or are warped, the following statuses will now be properly dispelled: [Tsuyuki]
 	 - Stun, Freeze, Stone, Sleep
 	* Removed: UnbreakableArmor effect from Ragamuffin Manteau (should be UnbreakableGarment) [Tsuyuki]
