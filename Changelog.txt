@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/22/06
+	* Added: New headgears from the latest kRO patches [Tsuyuki]
 	* Added: The Sign Quest to Freya [Tsuyuki]
 	 - Conversion: Damz Fish
 	 - Testing: galaxy
