@@ -84,6 +84,7 @@
 //=      Correction: ajout de next avant les menus.
 //=      Dans les règles, information concernant le
 //=        'Soigneur'.
+//= 5.2  Ajout menu Oui/Non pour être téléporté dans l'arène.
 //============================================================
 
 // les Warps
@@ -1596,7 +1597,12 @@ prontera.gat,174,154,3	script	Spawner#0::Spawner_type	743,{
 
 // Menu pour les joueurs
 L_JoueurMenu:
+	if ($@Spawn_flag == 1) goto L_JoueurMenuWarp; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
 	menu "Les règles",L_Regles,"Infos event en cours",L_informations,"Liste des gagnants",L_Liste_Gagnants;
+	close;
+
+L_JoueurMenuWarp:
+	menu "Les règles",L_Regles,"Infos event en cours",L_informations,"Liste des gagnants",L_Liste_Gagnants,"Téléportation dans l'arène",L_TeleportationArene;
 	close;
 
 L_Regles:
@@ -1681,9 +1687,15 @@ L_info_avant_event:
 	set $@delai_sec, 0;
 	mes "Voulez-vous que je vous téléporte dans l'arène?";
 	next;
-	menu "Oui",L_TeleportationArene,"Non",L_info_teleport_Non;
+	menu "Oui",L_WarpArene,"Non",L_info_teleport_Non;
 	close;
 L_TeleportationArene:
+	mes "[Spawner]";
+	mes "Voulez-vous que je vous téléporte dans l'arène?";
+	next;
+	menu "Oui",L_WarpArene,"Non",L_info_teleport_Non;
+	close;
+L_WarpArene:
 	if ($@Spawn_flag != 1 && getgmlevel(0) < 20) goto L_TeleportationAnnulee; // $@Spawn_flag: 0: event pas en cours, 1: avant-event en cours, 2: event en cours, 3: dernier mob spawné, 4: plusieurs gagnants (faut sortir)
 	percentheal 100,100; // Soin automatique des joueurs à la sortie de l'arène
 	warp "guild_vs5",56,49;
