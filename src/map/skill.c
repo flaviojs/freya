@@ -587,9 +587,15 @@ int skill_get_range(int id, int lv, int vulture_level)
 {
 	skill_chk(id, lv);
 
-	if(id == HT_BLITZBEAT && vulture_level > 0)
-		return skill_db[HT_BLITZBEAT].range[lv - 1] + vulture_level;
+	// special skills which get range bonus from Vulture's Eye skill
+	switch(id)
+	{
+		case HT_BLITZBEAT:
+		case SN_FALCONASSAULT:
+			return skill_db[id].range[lv - 1] + vulture_level;
+	}
 
+	// normal skills
 	return (id < MAX_SKILL) ? skill_db[id].range[lv - 1] : guild_skill_get_range(id);
 }
 

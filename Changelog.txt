@@ -21,6 +21,13 @@ Date	Added
 	* Changed: Increased Bloody Edge drop to 10% from Valkyrie Randgrith [Tsuyuki]
 	* Fixed: Valkyrie Randgrith using some of her skills incorrectly [Tsuyuki]
 	* Fixed: Some minor item database-related things [Tsuyuki]
+	* Fixed: falcon assault's base range should be 3 + vulture's eye's range bonus [Harbin]
+	 - mantis: http://freya.dns.st/mantis/view.php?id=287
+	* Fixed: safetywall should block only levels 1-2 grimtooth and pneuma should block only levels 3-5 grimtooth [Harbin]
+	 - mantis: http://freya.dns.st/mantis/view.php?id=293
+	 - note: we don't know if distance between caster and target effects this
+	* Fixed: players with undead property should be able to walk through firewalls and take full damage without knockback effect [Harbin]
+	 - mantis: http://freya.dns.st/mantis/view.php?id=286
 
 10/21/06
 	* Fixed: Assassin Daggers are now Dark element [Tsuyuki]

@@ -366,30 +366,39 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 	else if (bl->type == BL_MOB)
 		tmd = (struct mob_data *)bl;
 
-	sc_count = status_get_sc_count(bl); //sc_count of target
+	sc_count = status_get_sc_count(bl);
 
-	if (sc_count != NULL && *sc_count > 0) {
-		tsc_data = status_get_sc_data(bl); //sc_data of target
+	if(sc_count != NULL && *sc_count > 0)
+	{
+		tsc_data = status_get_sc_data(bl);
 
-		if (tsc_data[SC_SAFETYWALL].timer != -1 && flag&BF_SHORT && (skill_num != NPC_GUIDEDATTACK && skill_num != AM_DEMONSTRATION)) {
-			// セーフティウォール
-			struct skill_unit *unit;
-			unit = (struct skill_unit *)tsc_data[SC_SAFETYWALL].val2;
-			if (unit) {
-				if (unit->group && (--unit->group->val2) <= 0)
-					skill_delunit(unit);
-				return 0; // No need to continue calculating.. return 0 damage
-			} else {
-				status_change_end(bl, SC_SAFETYWALL, -1);
+		if(tsc_data[SC_SAFETYWALL].timer != -1)
+		{
+			if((flag&BF_SHORT && skill_num != NPC_GUIDEDATTACK && skill_num != AM_DEMONSTRATION) || (skill_num == AS_GRIMTOOTH && skill_lv <= 2))
+			{
+				struct skill_unit *unit = (struct skill_unit *)tsc_data[SC_SAFETYWALL].val2;
+
+				if(unit)
+				{
+					if(unit->group && (--unit->group->val2) <= 0)
+						skill_delunit(unit);
+					return 0;
+				} else {
+					status_change_end(bl, SC_SAFETYWALL, -1);
+				}
 			}
 		}
 
-		if (tsc_data[SC_PNEUMA].timer != -1 && flag&BF_LONG &&
-		   ((flag&BF_WEAPON && skill_num != NPC_GUIDEDATTACK) ||
-		     flag&BF_MISC ||
-		    (flag&BF_MAGIC && skill_num == ASC_BREAKER)))  // It should block only physical part of Breaker! [Lupus], on the contrary, players all over the boards say it completely blocks Breaker x.x' [Skotlex]
-			// ニューマ
-			return 0; // No need to continue calculating.. return 0 damage
+		if(tsc_data[SC_PNEUMA].timer != -1)
+		{
+			if(skill_num == AS_GRIMTOOTH)
+			{
+				if(skill_lv >= 3)
+					return 0;
+			} else if(flag&BF_LONG && ((flag&BF_WEAPON && skill_num != NPC_GUIDEDATTACK) || (flag&BF_MAGIC && skill_num == ASC_BREAKER) || flag&BF_MISC )) {
+				return 0;
+			}
+		}
 
 		if(tsc_data[SC_BASILICA].timer != -1)
 			return 0; // No need to continue calculating.. return 0 damage
@@ -2250,7 +2259,7 @@ struct Damage battle_calc_magic_attack(
 			}
 			break;
 		case MG_FIREWALL:
-			if((t_ele == 3 || battle_check_undead(t_race, t_ele)) && target->type != BL_PC)
+			if(t_ele == 3 || battle_check_undead(t_race, t_ele))
 				blewcount = 0;
 			else
 				blewcount |= 0x10000;
