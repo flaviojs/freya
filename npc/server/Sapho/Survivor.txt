@@ -3,7 +3,7 @@
 //===== Par: =================================================
 //= Garion, GAlion, DaVinci, Jondalar, Kheldar, Yor
 //===== Current Version: =====================================
-//= 5.1
+//= 5.3
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -85,6 +85,11 @@
 //=      Dans les règles, information concernant le
 //=        'Soigneur'.
 //= 5.2  Ajout menu Oui/Non pour être téléporté dans l'arène.
+//= 5.3  Le Soigneur soignera 1 fois sur 5 (1 fois sur 4 c'est
+//=        trop).
+//=      Démarrage avec un minimum de 50 monstres, au lieu de
+//=        40.
+//=      Minimum de 50 monstres à spawner (au lieu de 40).
 //============================================================
 
 // les Warps
@@ -455,12 +460,12 @@ function	script	f_monstres	{
 	if ($@nb_mobs < 40) set $@nb_mobs,40;
 	// Augmenter le nombre de spawns, si les joueurs tuent trop vite les mobs
 	if ($@NbMapMobs < ($@nb_mobs / 20)) set $@nb_mobs,$@nb_mobs + 5;
-	if ($@NbMapMobs < ($@nb_mobs / 10)) set $@nb_mobs,$@nb_mobs + 4;
-	if ($@NbMapMobs < ($@nb_mobs / 5)) set $@nb_mobs,$@nb_mobs + 2;
+	if ($@NbMapMobs < ($@nb_mobs / 10)) set $@nb_mobs,$@nb_mobs + 5;
+	if ($@NbMapMobs < ($@nb_mobs / 5)) set $@nb_mobs,$@nb_mobs + 3;
 
 	// Détermination des seuils pour les spawns
 	set $@a_spawner, $@nb_mobs;
-	if ($@a_spawner < 40) set $@a_spawner,40;
+	if ($@a_spawner < 50) set $@a_spawner,50;
 	if ($@a_spawner > 200) set $@a_spawner,200;
 
 	// Spawn des monstres
@@ -865,12 +870,12 @@ Suite_onstart:
 	set $@nb_mobs,($@nb_part + 4) * 5; // type 1 (par défaut)
 	if ($@spawn_type == 2) set $@nb_mobs,($@nb_part + rand(1,4)) * 4; // type 2
 	if ($@spawn_type == 3) set $@nb_mobs,($@nb_part + rand(1,4)) * 5; // type 3
-	if ($@nb_mobs < 40) set $@nb_mobs,40; // minimum 40
+	if ($@nb_mobs < 50) set $@nb_mobs,50; // minimum 50
 
 	announce "Il y a " + $@nb_part + " participants pour le titre de Master Survivor. Bonne chance!",0;
-	mapannounce "guild_vs5.gat","Garde Royal: Pour devenir le Master Survivor, vous devez tuer un monstre en étant le dernier survivant!",0;
-	mapannounce "guild_vs5.gat","Garde Royal: Règle importante: Il est INTERDIT de téléporter un joueur dans l'arène ou de rescussiter un joueur.",0;
-	mapannounce "guild_vs5.gat","Garde Royal: 30 secondes entre chaque spawn de monstres différents. Survivez !",0; //Première slave.
+	mapannounce "guild_vs5.gat","Garde Royal: Pour obtenir ce titre, vous devez tuer un monstre en étant le dernier survivant ou survivre",0;
+	mapannounce "guild_vs5.gat","à 50 vagues de monstres! Il est INTERDIT de téléporter un joueur dans l'arène ou de rescussiter un joueur.",0;
+	mapannounce "guild_vs5.gat","30 secondes entre chaque spawn de monstres différents. Survivez !",0; //Première slave.
 
 	set $@numero_spawn,1;
 	callfunc "f_monstres", $@spawn1;
@@ -1489,7 +1494,7 @@ OnMortBugM: // A chaque mort d'un nettoyeur agressif
 // Le monstre qui soigne = un bonus pour les joueurs.
 OnMortSoigneur: // A chaque mort d'un soigneur
 	areamonsteragro "guild_vs5.gat",0,0,200,200,"Soigneur",$@dernier_mob,1,"Surviv::OnMortSoigneur";
-	if (rand(1, 4) != 1) goto Pas_soin; // Bonus pour avoir tuer ce monstre: guérison 100% une fois sur 4
+	if (rand(1, 5) != 1) goto Pas_soin; // Bonus pour avoir tuer ce monstre: guérison 100% une fois sur 5
 	mapannounce "guild_vs5.gat","Garde Royal: " + strcharinfo(0) + " a été revigoré par le Soigneur. Un nouveau Soigneur a été mis en place.",0;
 	percentheal 100,100;
 	goto OnMortMob;
@@ -1650,7 +1655,7 @@ L_Regles:
 	next;
 	mes "[Spawner]";
 	mes "Un monstre spécial est mis en place rapidement par le Garde Royal pour vous aider à survivre: le ^00FF66Soigneur^000000.";
-	mes "Si vous le tuez, vous avez 1 chance sur 4 qu'il vous revigore (Guérison à 100% de vos HP et SP).";
+	mes "Si vous le tuez, vous avez 1 chance sur 5 qu'il vous revigore (Guérison à 100% de vos HP et SP).";
 	next;
 	mes "[Spawner]";
 	mes "Un conseil: Désactivez les effets avec la commande ^00DD66/effect^000000.";
