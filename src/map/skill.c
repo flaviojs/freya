@@ -3241,7 +3241,8 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 			break;
 		case PR_BENEDICTIO:
 			i = status_get_race(bl);
-			if (battle_check_undead(i, status_get_elem_type(bl)) || i == 6) {
+			// B.S. Sacramenti does work against enemies in GvG maps [Tsuyuki]
+			if (battle_check_undead(i, status_get_elem_type(bl)) || i == 6 || !map[bl->m].flag.gvg) {
 				if (battle_check_target(src, bl, BCT_ENEMY) < 1)
 					return 0; //Offensive BSS does not works on non-enemies.
 				return skill_castend_damage_id (src, bl, skillid, skilllv, tick, flag);
