@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/23/06
+	* Test *
+
 10/22/06
 	* Added: The Sign Quest to Freya [Tsuyuki]
 	 - Conversion: Damz Fish
