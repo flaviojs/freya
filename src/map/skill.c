@@ -587,9 +587,15 @@ int skill_get_range(int id, int lv, int vulture_level)
 {
 	skill_chk(id, lv);
 
-	if(id == HT_BLITZBEAT && vulture_level > 0)
-		return skill_db[HT_BLITZBEAT].range[lv - 1] + vulture_level;
+	// special skills which get range bonus from Vulture's Eye skill
+	switch(id)
+	{
+		case HT_BLITZBEAT:
+		case SN_FALCONASSAULT:
+			return skill_db[id].range[lv - 1] + vulture_level;
+	}
 
+	// normal skills
 	return (id < MAX_SKILL) ? skill_db[id].range[lv - 1] : guild_skill_get_range(id);
 }
 
@@ -3235,7 +3241,8 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 			break;
 		case PR_BENEDICTIO:
 			i = status_get_race(bl);
-			if (battle_check_undead(i, status_get_elem_type(bl)) || i == 6) {
+			// B.S. Sacramenti does work against enemies in GvG maps [Tsuyuki]
+			if (battle_check_undead(i, status_get_elem_type(bl)) || i == 6 || !map[bl->m].flag.gvg) {
 				if (battle_check_target(src, bl, BCT_ENEMY) < 1)
 					return 0; //Offensive BSS does not works on non-enemies.
 				return skill_castend_damage_id (src, bl, skillid, skilllv, tick, flag);

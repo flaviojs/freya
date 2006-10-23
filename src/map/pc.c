@@ -3856,6 +3856,16 @@ int pc_setpos(struct map_session_data *sd, char *mapname_org, int x, int y, int 
 //		status_change_end(&sd->bl, SC_WATKFOOD, -1);
 		if(sd->sc_data[SC_MATKFOOD].timer != -1)
 			status_change_end(&sd->bl, SC_MATKFOOD, -1);
+
+// Remove following statuses when warped/changing maps [Tsuyuki]
+		if(sd->sc_data[SC_STONE].timer != -1)
+			status_change_end(&sd->bl, SC_STONE, -1);
+		if(sd->sc_data[SC_FREEZE].timer != -1)
+			status_change_end(&sd->bl, SC_FREEZE, -1);
+		if(sd->sc_data[SC_STUN].timer != -1)
+			status_change_end(&sd->bl, SC_STUN, -1);
+		if(sd->sc_data[SC_SLEEP].timer != -1)
+			status_change_end(&sd->bl, SC_SLEEP, -1);
 	}
 
 	if (sd->bl.m != m)	// remove area spells on map change

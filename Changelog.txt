@@ -4,8 +4,24 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+
 10/23/06
-	* Test *
+	* Merged: Subdev branch to Trunk [Tsuyuki]
+	* Fixed: Falcon Assault's base Range should be 3 + Vulture's Eye's Range bonus [Harbin]
+	 - Mantis: http://freya.dns.st/mantis/view.php?id=287
+	* Fixed: Safetywall should block only levels 1-2 Grimtooth and Pneuma should block only levels 3-5 Grimtooth [Harbin]
+	 - Mantis: http://freya.dns.st/mantis/view.php?id=293
+	 - Note: We don't know if distance between caster and target effects this
+	* Fixed: Players w/ Undead Armor now take full damage and are not knocked back from Fire Wall [Harbin]
+	 - Mantis: http://freya.dns.st/mantis/view.php?id=286
+	* Fixed: B.S. Sacramenti now works against enemies on WoE/GvG maps [Tsuyuki]
+	* Fixed: The Emperium is no longer affected by status effects [Harbin/Tsuyuki]
+	* Fixed: When you die in PvP/WoE, or are warped, the following statuses will now be properly dispelled: [Tsuyuki]
+	 - Stun, Freeze, Stone, Sleep
+	* Removed: UnbreakableArmor effect from Ragamuffin Manteau (should be UnbreakableGarment) [Tsuyuki]
+	 - Note: UnbreakableGarment does not exist, someone needs to code it
+	* Changed: charallowip and mapallowip to 'all' by default to help newbie users [Tsuyuki]
+	* Added: New headgears from the latest kRO patches [Tsuyuki]
 
 10/22/06
 	* Added: The Sign Quest to Freya [Tsuyuki]
