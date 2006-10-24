@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/24/06
+	* Removed: Empty npc/quests/custom folder [Tsuyuki]
 	* Removed: Some duplicate scripts, and some unneccessary scripts in the custom script folder [Tsuyuki]
 	 - Wedding.txt, Weddingtxt.txt, IceCream.txt, Devnpc.txt, Geffenia.txt removed
 	 - First 3 duplicate Official scripts, 4th: eAthena Dev NPCs, 5th: Temp Warper for Geffenia
