@@ -4,6 +4,11 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/24/06
+	* Fixed: configuration option to enable or disable character-server logging [Harbin]
+	* Added: configuration option to enable or disable mysql charlog [Harbin]
+	 - mantis: http://freya.dns.st/mantis/view.php?id=280
+	 - note: enabling charlog increases mysql server load
 
 10/23/06
 	* Added: New items from kRO client descriptions [Tsuyuki]
