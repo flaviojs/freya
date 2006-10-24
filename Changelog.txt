@@ -6,6 +6,7 @@ Date	Added
 
 
 10/23/06
+	* Added: New items from kRO client descriptions [Tsuyuki]
 	* Merged: Subdev branch to Trunk [Tsuyuki]
 	* Fixed: Falcon Assault's base Range should be 3 + Vulture's Eye's Range bonus [Harbin]
 	 - Mantis: http://freya.dns.st/mantis/view.php?id=287
