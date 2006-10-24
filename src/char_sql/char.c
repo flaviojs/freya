@@ -99,7 +99,7 @@ static unsigned char log_file_date = 3; /* year + month (example: log/login-2006
 char temp_char_buffer[1024]; // temporary buffer of type char (see php_addslashes)
 FILE *log_fp = NULL;
 
-int log_char = 1; // loggin char or not
+int log_char = 0;
 
 // Maps-servers connection security
 #define ACO_STRSIZE 32 // max normal value: 255.255.255.255/255.255.255.255 + NULL, so 15 + 1 + 15 + 1 = 32
@@ -192,11 +192,14 @@ static struct Ranking_Data ranking_data[RK_MAX][MAX_RANKER];
 int console = 0;
 char console_pass[1024] = "consoleon"; /* password to enable console */
 
-//------------------------------
-// Writing function of logs file
-//------------------------------
-void char_log(char *fmt, ...) {
-//	static int counter = 0;
+// --------------------------
+//  Write a line to log file
+// --------------------------
+void char_log(char *fmt, ...)
+{
+	if(log_char != 1 && log_char != 2)
+		return;
+
 	va_list ap;
 	struct timeval tv;
 	time_t now;
@@ -4520,12 +4523,15 @@ int parse_char(int fd) {
 							session[fd]->eof = 1;
 						} else {
 							mysql_escape_string(t_name, char_dat[ch].name, strlen(char_dat[ch].name));
-							sql_request("INSERT INTO `%s`(`time`, `account_id`, `char_num`, `name`) VALUES (NOW(), '%d', '%d', '%s')",
-							            charlog_db, sd->account_id, char_slot, t_name);
+
+							// use charlog ?
+							if(log_char == 2)
+								sql_request("INSERT INTO `%s`(`time`, `account_id`, `char_num`, `name`) VALUES (NOW(), '%d', '%d', '%s')", charlog_db, sd->account_id, char_slot, t_name);
+
 							// searching map server
 							i = search_mapserver(char_dat[ch].last_point.map);
 							// if map is not found, we check major cities
-							if (i < 0) {
+							if(i < 0) {
 								if ((i = search_mapserver("prontera.gat")) >= 0) { // check is done without 'gat' (gat or afm can be used).
 									strncpy(char_dat[ch].last_point.map, "prontera.gat", 16); // 17 - NULL
 									char_dat[ch].last_point.map[16] = '\0';
@@ -5379,7 +5385,7 @@ static void char_config_read(const char *cfgName) { // not inline, called too of
 		} else if (strcasecmp(w1, "autosave_time") == 0) {
 			if (atoi(w2) > 0)
 				autosave_interval = atoi(w2) * 1000;
-		} else if (strcasecmp(w1, "log_char") == 0) { // log char or not
+		} else if (strcasecmp(w1, "log_char") == 0) {
 			log_char = config_switch(w2);
 		} else if (strcasecmp(w1, "char_log_filename") == 0) {
 			memset(char_log_filename, 0, sizeof(char_log_filename));
