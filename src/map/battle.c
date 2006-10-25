@@ -1151,8 +1151,8 @@ struct Damage battle_calc_weapon_attack(
 				wd.flag = (wd.flag & ~BF_SKILLMASK) | BF_NORMAL;
 				break;
 			case KN_BOWLINGBASH:
-				// FORMULA: (damage * (100 + 40 * skill_lv * 2) / 100)
-				skillratio += 100 + (40 * skill_lv) * 2;
+				// FORMULA: (damage * (100 + 40 * skill_lv) / 100)
+				skillratio += 100 + (40 * skill_lv);
 				wd.blewcount = 0;
 				break;
 			case KN_BRANDISHSPEAR:

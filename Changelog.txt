@@ -5,10 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/25/06
-	* Fixed: behaviour of bowling bash skill [Harbin]
-	 - hits twice (2x 500 damage)
-	 - ignores safetywall on non-woe situations
-	 - pushes back target by 4 cells
+	* Fixed: bowling bash should be able to ignore safetywall on non-woe situations [Harbin]
 
 10/24/06
 	* Fixed: Small error in the Cooking Quest (Thanks to Kaypha) [Tsuyuki]
