@@ -372,7 +372,7 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 	{
 		tsc_data = status_get_sc_data(bl);
 
-		if(tsc_data[SC_SAFETYWALL].timer != -1)
+		if(tsc_data[SC_SAFETYWALL].timer != -1 && (skill_num != KN_BOWLINGBASH || map[bl->m].flag.gvg))
 		{
 			if((flag&BF_SHORT && skill_num != NPC_GUIDEDATTACK && skill_num != AM_DEMONSTRATION) || (skill_num == AS_GRIMTOOTH && skill_lv <= 2))
 			{
@@ -1151,8 +1151,8 @@ struct Damage battle_calc_weapon_attack(
 				wd.flag = (wd.flag & ~BF_SKILLMASK) | BF_NORMAL;
 				break;
 			case KN_BOWLINGBASH:
-				// DAMAGE: basedamage * (100 + 40 * skill_lv) / 100
-				skillratio += 100 + (40 * skill_lv);
+				// FORMULA: (damage * (100 + 40 * skill_lv * 2) / 100)
+				skillratio += 100 + (40 * skill_lv) * 2;
 				wd.blewcount = 0;
 				break;
 			case KN_BRANDISHSPEAR:
