@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 10/24/06
+	* Fixed: Small error in the Cooking Quest (Thanks to Kaypha) [Tsuyuki]
 	* Removed: Empty npc/quests/custom folder [Tsuyuki]
 	* Removed: Some duplicate scripts, and some unneccessary scripts in the custom script folder [Tsuyuki]
 	 - Wedding.txt, Weddingtxt.txt, IceCream.txt, Devnpc.txt, Geffenia.txt removed
