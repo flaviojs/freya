@@ -295,33 +295,41 @@ prt_castle.gat,43,30,6	script	Chef Apprentice	878,{
 
 
 payon.gat,209,127,4	script	Cooking Friend	88,{
-	mes "[Cooking Friend]";
-	if(cooking == 5)goto CookFriend1;
 
+	if(cooking == 5)goto CookFriend1;
+	mes "[Cooking Friend]";
 	mes "Hello, how are you?";
 	close;
 
 	CookFriend1:
 		if(countitem(7432) > 0)goto CookFriend2;
-
-			mes "What? My friend sent you";
-			mes "just to say Hello?";
-			emotion e_hmm;
-			goto CookFriend3;
+		goto CookFriend3;
 
 		CookFriend2:
+			mes "[Cooking Friend]";
 			delitem 7432, 1;//Items: Leather Pouch,
 			mes "I see my friend sent you";
 			mes "to give me something.";
 			set cooking, 6;
 			emotion e_thx;
-			goto CookFriend3;
-	CookFriend3:
+			next;
+			goto CookFriend4;
+
+		CookFriend3:
+			mes "[Cooking Friend]";
+			mes "What? My friend sent you";
+			mes "just to say Hello?";
+			emotion e_hmm;
+			next;
+			goto CookFriend4;
+
+	CookFriend4:
 		mes "Thank you for your";
 		mes "trouble. Tell him I said,";
 		mes "Hello.";
 		close;
 }
+
 
 prt_castle.gat,45,35,4	script	Sharle	886,{
 	mes "[Sharle]";
