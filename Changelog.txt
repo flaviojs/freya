@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+10/28/06
+	* Fixed: You can no longer do the Friendship Quest if you are a Novice [Tsuyuki]
+
 10/24/06
 	* Fixed: Small error in the Cooking Quest (Thanks to Kaypha) [Tsuyuki]
 	* Removed: Empty npc/quests/custom folder [Tsuyuki]

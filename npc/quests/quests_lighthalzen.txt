@@ -2059,7 +2059,7 @@ lighthalzen.gat,337,232,3	script	Maku	870,{
 	mes "[Maku]";
 	mes "Well, when you get bored of the ghetto, you really oughta check out the rich section of town.";
 	mes "I'm bitter, but I'll also admit it's way nicer than this place.";
-	set friendship,1;
+	if(BaseJob != Job_Novice) set friendship,1;
 	close;
 
 	L_friend2:
