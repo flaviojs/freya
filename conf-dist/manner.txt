@@ -217,10 +217,25 @@ language: fr_FR
 ..|.,
 ..|., (o_o),.|..
 ..||..
+//abruti
+//bare-toi
+//barre-toi
+//imbecil
+//imbecile
+//imbeciles
+//imbecils
+//imbécil
+//imbécile
+//imbéciles
+//imbécils
+//meeerde
+//meerde
+//merde
+//pipe
+//pipes
 <(
 \/\/hore
 \\/\//hore
-abruti
 anus
 baise
 baisee
@@ -231,11 +246,10 @@ baisé
 baisée
 baisées
 baisés
+baiz
 bande de tâches
 bander
-bare-toi
 barez-vous
-barre-toi
 barrez-vous
 batard
 batarde
@@ -265,9 +279,15 @@ bâtards
 bèz
 c o n
 c o*n
+c o^n
+c o_n
 c*o n
 c*o*n
 c*on
+c^o n
+c^o^n
+c_o n
+c_o_n
 caca
 cacas
 casse-toi
@@ -284,18 +304,21 @@ cI_Int
 cl_lnt
 clitau
 clito
+co n
+co*n
 cocu
 cocus
 con
-co*n
 con nard
 con nards
+conar
 conard
 conarde
 conardes
 conards
 conasse
 conasses
+connar
 connard
 connarde
 connardes
@@ -412,19 +435,26 @@ gouinnes
 groniasse
 groniasses
 I hate the gms
-imbecil
-imbecile
-imbeciles
-imbecils
-imbécil
-imbécile
-imbéciles
-imbécils
 Je deteste les gms
+k o n
+k o*n
+k o^n
+k o_n
+k*o n
+k*o*n
+k*on
+k^o n
+k^o^n
+k_o n
+k_o_n
+ko n
+ko*n
+kon
 konasse
 konasses
 konnasse
 konnasses
+kons
 l31tcI-I
 Lesbien
 Lesbiene
@@ -441,19 +471,18 @@ masturbé
 masturbée
 masturbées
 masturbés
-meeerde
 meeerdes
 meeerdeux
-meerde
 meerdes
 meerdeux
-merde
 merdes
 merdeux
 morveuse
 morveuses
 morveux
 mouille
+nasi
+nasis
 nazi
 nazis
 negre
@@ -511,13 +540,11 @@ pignouf
 pignoufette
 pignoufettes
 pignoufs
-pipe
-pipes
 pisse
 pissee
 pissees
-pisses
 pisser
+pisses
 pissé
 pissée
 pissées
@@ -569,6 +596,15 @@ pédés
 pénétration
 pétasse
 pétasses
+s e x
+s e x e
+s e x*e
+s e xe
+s e*x
+s ex
+s ex e
+s ex*e
+s exe
 sado
 salau
 salaud
@@ -577,6 +613,19 @@ salaus
 salaut
 salauts
 sale arabe
+sallo
+sallop
+sallopard
+sallopards
+sallope
+sallopes
+salloppard
+salloppards
+salloppe
+salloppes
+sallos
+sallot
+sallots
 salo
 salop
 salopard

@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+11/02/06
+	* Updated: manner.txt for french people [Yorre]
+
 10/28/06
 	* Fixed: You can no longer do the Friendship Quest if you are a Novice [Tsuyuki]
 
