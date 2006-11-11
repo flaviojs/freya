@@ -1,4 +1,4 @@
-//===== eAthena Script =======================================
+//===== Freya Script =========================================
 //= Warp Npc With Warp To Almost Everywhere
 //===== By: ==================================================
 //= Someone(thats his name!) (1.0)

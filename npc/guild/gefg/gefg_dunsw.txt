@@ -1,4 +1,4 @@
-//===== eAthena Script =======================================
+//===== Freya Script =========================================
 //= War of Emperium Dungeon Switch for Geffen Guild Castles
 //===== By: ==================================================
 //= jAthena - kalen (1.0)

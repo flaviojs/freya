@@ -1525,8 +1525,6 @@
 4330,Evil_Snake_Lord_Card,Evil Snake Lord Card,6,20,0,10,,,,,,,769,,,,{},{ bonus bInt,3; bonus2 bResEff,8,10000; bonus2 bResEff,5,10000; }
 4331,Heater_Card,Heater Card,6,20,0,10,,,,,,,136,,,,{},{ bonus bCritical,3; if(BaseJob==Job_Swordman) bonus bFlee2,3; }
 
-
-
 // New Cards 2006
 4332,Waste_Stove_Card,Waste Stove Card,6,20,0,10,,,,,,,16,,,,{},{ bonus bBaseAtk,5; bonus bInt,1; if(isequipped(4185,4293,4312)==0) end; bonus bStr,3; bonus bMaxSP,80; bonus bBaseAtk,25; bonus4 bAutoSpell,32,5,10,1; bonus2 bSkillAtk,271,10; if(BaseJob==Job_Monk) bonus bUseSPrate,-10; bonus bNoCastCancel,0; }
 4333,Venomous_Card,Venomous Card,6,20,0,10,,,,,,,16,,,,{},{ bonus2 bAddEffWhenHit,4,3000; }
@@ -1816,7 +1814,6 @@
 5206,Flower_Clip,Flower Clip,5,,10,100,,0,,0,18866174,2,256,,0,266,{ bonus2 bSubRace,3,3; bonus2 bMagicSubRace,3,3; },{}
 5207,Angel_Circlet,Angel Circlet,5,,10,100,,0,,27254783,2,256,,0,260,{ bonus2 bSubEle,6,3;  bLuk,1; },{}
 5208,Rideword_Hat,Rideword Hat,5,,10,300,,2,,0,18866174,2,256,,40,262,{ bonus2 bHPDrainRate,5,8; bonus2 bSPDrainRate,1,4; bonus2 bHPLossRate,10,5000; },{}
-
 5209,Unknown_Item,Unknown Item,5,,10,300,,2,,0,18866174,2,256,,0,256,{},{}
 
 

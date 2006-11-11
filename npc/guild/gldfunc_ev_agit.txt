@@ -1,4 +1,4 @@
-//===== eAthena Script =======================================
+//===== Freya Script =========================================
 //= War of Emperium Guild Event AgitStart/AgitBreak Functions
 //===== By: ==================================================
 //= jAthena - kalen (1.0)

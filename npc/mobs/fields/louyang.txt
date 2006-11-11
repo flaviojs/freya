@@ -1,17 +1,19 @@
-//===== eAthena Script =======================================
+//===== Freya Script =========================================
 //= Louyang Fields Monster Spawn Script
 //===== By: ==================================================
 //= Evera/Lorri
 //===== Current Version: =====================================
-//= 1.1
+//= 1.2
 //===== Compatible With: =====================================
 //= Any Athena Version
 //===== Additional Comments: =================================
 //= 1.1 updated by MasterOfMuppets
+//= 1.2 Official kRO 10.1 spawns [Playtester]
 //============================================================
 
-
-//lou_fild01
+//==================================================
+// lou_fild01 - Louyang Field
+//==================================================
 lou_fild01.gat,224,315,100,50	monster	Bigfoot	1060,7,0,0,0
 lou_fild01.gat,203,225,110,35	monster	Bigfoot	1060,4,60000,30000,1
 lou_fild01.gat,273,128,75,50	monster	Bigfoot	1060,4,0,0,0

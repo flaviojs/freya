@@ -20,4 +20,5 @@
 1096,Angeling,25000
 1582,Deviling,25000
 1388,Arc Angeling,10000
+//1520,Boiled Rice,????
 //1784,Stapo,????

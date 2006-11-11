@@ -3833,7 +3833,9 @@ int pc_setpos(struct map_session_data *sd, char *mapname_org, int x, int y, int 
 			status_change_end(&sd->bl, SC_CLOAKING, -1);
 		if (pc_ischasewalk(sd))
 			status_change_end(&sd->bl, SC_CHASEWALK, -1);
-			
+
+// Cooking Items are no longer dispelled upon map change (kRO Patch - 11/06/2006) [Tsuyuki]
+/*
 		if(sd->sc_data[SC_STRFOOD].timer != -1)
 			status_change_end(&sd->bl, SC_STRFOOD, -1);
 		if(sd->sc_data[SC_AGIFOOD].timer != -1)
@@ -3856,6 +3858,7 @@ int pc_setpos(struct map_session_data *sd, char *mapname_org, int x, int y, int 
 //		status_change_end(&sd->bl, SC_WATKFOOD, -1);
 		if(sd->sc_data[SC_MATKFOOD].timer != -1)
 			status_change_end(&sd->bl, SC_MATKFOOD, -1);
+*/
 
 // Remove following statuses when warped/changing maps [Tsuyuki]
 		if(sd->sc_data[SC_STONE].timer != -1)

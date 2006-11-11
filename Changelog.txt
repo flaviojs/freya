@@ -4,6 +4,14 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+11/10/06
+	* Updated: Official Episode X.4 drops in the mob database [Tsuyuki]
+	 - Note: May have missed some, but I'm pretty sure I got them all
+	* Updated: Official Monster Spawns for Aegis Episode 10.X (Credits to eAthena/Aegis) [Tsuyuki]
+	* Removed: NPC Folder Changelog since its never really used and outdated [Tsuyuki]
+	* Updated: Cooking Items are no longer dispelled upon map change (kRO Patch - 11/06/2006) [Tsuyuki]
+	* Added: Boiled Rice's official drops [Tsuyuki]
+
 10/28/06
 	* Updated: manner.txt for french people [Yorre]
 	* Fixed: Added a temporary fix for Amon Ra respawning instantly [Tsuyuki]

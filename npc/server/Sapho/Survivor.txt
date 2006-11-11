@@ -1,4 +1,4 @@
-//===== eAthena Script =======================================
+//===== Freya Script =========================================
 //= Spawn Survivor de Sapho
 //===== Par: =================================================
 //= Garion, GAlion, DaVinci, Jondalar, Kheldar, Yor
