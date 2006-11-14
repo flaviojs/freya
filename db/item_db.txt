@@ -2447,6 +2447,22 @@
 7601,Blue_S_Card,Blue S Card,3,,10,10,,,,,0,,,,,,{},{}
 7602,Blue_R_Card,Blue R Card,3,,10,10,,,,,0,,,,,,{},{}
 
+7603,Unknown_Item,Unknown Item,3,,10,10,,,,,0,,,,,,{},{}
+7604,Unknown_Item,Unknown Item,3,,10,10,,,,,0,,,,,,{},{}
+7605,Unknown_Item,Unknown Item,3,,10,10,,,,,0,,,,,,{},{}
+7606,Unknown_Item,Unknown Item,3,,10,10,,,,,0,,,,,,{},{}
+7607,Unknown_Item,Unknown Item,3,,10,10,,,,,0,,,,,,{},{}
+7608,Unknown_Item,Unknown Item,3,,10,10,,,,,0,,,,,,{},{}
+7609,Unknown_Item,Unknown Item,3,,10,10,,,,,0,,,,,,{},{}
+7610,Unknown_Item,Unknown Item,3,,10,10,,,,,0,,,,,,{},{}
+7611,Unknown_Item,Unknown Item,3,,100,10,,,,,0,,,,,,{},{}
+7612,Unknown_Item,Unknown Item,3,,100,10,,,,,0,,,,,,{},{}
+7613,Unknown_Item,Unknown Item,3,,10,10,,,,,0,,,,,,{},{}
+7614,Unknown_Item,Unknown Item,3,,10,10,,,,,0,,,,,,{},{}
+7615,Unknown_Item,Unknown Item,3,,10,10,,,,,0,,,,,,{},{}
+7616,Unknown_Item,Unknown Item,3,,10,10,,,,,0,,,,,,{},{}
+7617,Unknown_Item,Unknown Item,3,,10,10,,,,,0,,,,,,{},{}
+
 // End of Incomplete Misc Entries
 
 // Pet Eggs
@@ -2477,7 +2493,7 @@
 9025,Bongun_Egg,Bongun Egg,7,20,0,0,,,,,,,,,,,{},{}
 9026,Alice_Egg,Alice Egg,7,20,0,0,,,,,,,,,,,{},{}
 9027,Zealotus_Egg,Zealotus Egg,7,20,0,0,,,,,,,,,,,{},{}
-9028,Rice_Cake_Egg,Rice Cake Egg,7,20,0,0,,,,,,,,,,,{},{} // ID: 1815, or 1816 (Uncomfirmed)
+9028,Rice_Cake_Egg,Rice Cake Egg,7,20,0,0,,,,,,,,,,,{},{} // Mob ID: 1815, or 1816 (Uncomfirmed)
 
 // Pet Accessories
 10001,Skull_Helm,Skull Helm,8,20,0,0,,,,,,,,,,,{},{}
@@ -2750,7 +2766,9 @@
 12196,Unknown_Item,Unknown Item,2,,10,100,,,,,27254783,2,,,,,{ itemheal 25,0; },{}
 12197,Unknown_Item,Unknown Item,2,,10,100,,,,,27254783,2,,,,,{ percentheal 25,25; },{}
 12198,Unknown_Item,Unknown Item,2,,10,100,,,,,27254783,2,,,,,{ sc_start SC_INCLUK,300000,21; },{}
-
+12199,Unknown_Item,Unknown Item,2,,10,0,,,,,27254783,2,,,,,{},{}
+12200,Christmas_Cake,Christmas Cake,2,,10,50,,,,,27254783,2,,,,,{},{}
+12201,Unknown_Item,Unknown Item,2,,10,200,,,,,27254783,2,,,,,{},{}
 
 // Extra Daggers
 13000,Jujube_Dagger,Jujube Dagger,4,10000,5000,600,39,0,1,0,10444527,2,2,1,0,1,{},{ bonus bAtkEle,4; }

@@ -4,6 +4,12 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+11/13/06
+	* Added: New items from the latest kRO updates [Tsuyuki]
+	* Fixed: Orc Baby Slave Spawn Bug (Thanks to Galaxy) [Tsuyuki]
+	* Changed: Kiel D-01 now has more slaves [Tsuyuki]
+	* Fixed: Constant and Icicle's Self Destruct not working correctly [Tsuyuki]
+
 11/10/06
 	* Updated: Official Episode X.4 drops in the mob database [Tsuyuki]
 	 - Note: May have missed some, but I'm pretty sure I got them all
