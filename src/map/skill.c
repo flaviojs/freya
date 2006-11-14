@@ -2808,42 +2808,47 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		}
 		break;
 
-	case KN_BOWLINGBASH:
-		if(flag & 1)
-		{
-			if(bl->id != skill_area_temp[1])
-				skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, 0x0500);
+	case KN_BOWLINGBASH:	/* ボウリングバッシュ */
+		if(flag&1){
+			/* 個別にダメージを与える */
+			if(bl->id!=skill_area_temp[1])
+				skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,0x0500);
 		} else {
-			int i, c = skill_get_blewcount(skillid, skilllv);
-			
-			if(map[bl->m].flag.gvg)
-				c = 0;
-			
-			for(i = 0; i < c; i++)
-			{
-				skill_blown(src, bl, 1);
-				
-				if(bl->type == BL_MOB)
-					clif_fixmobpos((struct mob_data *)bl);
-				else if(bl->type == BL_PET)
-					clif_fixpetpos((struct pet_data *)bl);
-				else
-					clif_fixpos(bl);
-				
-				skill_area_temp[0] = 0;
-				
-				map_foreachinarea(skill_area_sub, bl->m, bl->x - 1, bl->y - 1, bl->x + 1, bl->y + 1, 0, src, skillid, skilllv, tick, flag|BCT_ENEMY, skill_area_sub_count);
-				
-				if(skill_area_temp[0] > 1)
-					break;
-			}
-			
-			skill_area_temp[1] = bl->id;
-			skill_area_temp[2] = bl->x;
-			skill_area_temp[3] = bl->y;
-			
-			skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, 0);
-			map_foreachinarea(skill_area_sub, bl->m, bl->x - 1, bl->y - 1, bl->x + 1, bl->y + 1, 0, src, skillid, skilllv, tick, flag|BCT_ENEMY|1, skill_castend_damage_id);
+/*			int damage;
+			damage = skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,0);
+			if(damage > 0) {*/
+				int i,c;	/* 他人から聞いた動きなので間違ってる可能性大＆効率が悪いっす＞＜ */
+				c = skill_get_blewcount(skillid,skilllv);
+				if (map[bl->m].flag.gvg)
+					c = 0;
+				for(i=0;i<c;i++){
+					skill_blown(src,bl,1);
+					if(bl->type == BL_MOB)
+						clif_fixmobpos((struct mob_data *)bl);
+					else if(bl->type == BL_PET)
+						clif_fixpetpos((struct pet_data *)bl);
+					else
+						clif_fixpos(bl);
+					skill_area_temp[0]=0;
+					map_foreachinarea(skill_area_sub,
+						bl->m,bl->x-1,bl->y-1,bl->x+1,bl->y+1,0,
+						src,skillid,skilllv,tick, flag|BCT_ENEMY ,
+						skill_area_sub_count);
+					if (skill_area_temp[0] > 1) break;
+				}
+				skill_area_temp[1]=bl->id;
+				skill_area_temp[2]=bl->x;
+				skill_area_temp[3]=bl->y;
+				skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,0);
+				/* その後ターゲット以外の範囲内の敵全体に処理を行う */
+				map_foreachinarea(skill_area_sub,
+					bl->m,bl->x-1,bl->y-1,bl->x+1,bl->y+1,0,
+					src,skillid,skilllv,tick, flag|BCT_ENEMY|1,
+					skill_castend_damage_id);
+/*				battle_damage(src,bl,damage,1);
+				if(rdamage > 0)
+					battle_damage(bl,src,rdamage,0);
+			}*/
 		}
 		break;
 

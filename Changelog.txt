@@ -5,15 +5,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/02/06
-	* Improved: user can now disable memory-operation debugging with --without-debug compiler flag [Harbin]
-	* Updated: minor version number (now 3.1.0) [Harbin]
 	* Updated: manner.txt for french people [Yorre]
 
 10/28/06
 	* Fixed: You can no longer do the Friendship Quest if you are a Novice [Tsuyuki]
-
-10/25/06
-	* Fixed: bowling bash should be able to ignore safetywall on non-woe situations [Harbin]
 
 10/24/06
 	* Fixed: Small error in the Cooking Quest (Thanks to Kaypha) [Tsuyuki]
