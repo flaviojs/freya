@@ -4,6 +4,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+11/16/06
+	* Added: possibility to disable memory operation debugging (uses __DEBUG precompiler flag) [Harbin]
+	* Updated: freya minor version number, since we are going toward release 3.1 [Harbin]
+
 11/13/06
 	* Added: Some .bat server launchers for easier development, credits to Jbain/eAthena [Tsuyuki]
 	* Added: New items from the latest kRO updates [Tsuyuki]

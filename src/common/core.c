@@ -183,9 +183,9 @@ void display_title(void) {
 	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "        (  _) (  ,)  (  _) ( \\/ ) (  )                   " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n"); // 1: bold char, 0: normal char
 	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "        (  _)  )  \\   ) _)  \\  /  /__\\  v%1d.%1d.%1d %3s %5s " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n", FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION, // 1: bold char, 0: normal char
 #ifdef USE_SQL
-	"SQL", FREYA_STATE ? "beta " : "final");
+	"SQL", FREYA_STATE ? "development " : "final");
 #else
-	"TXT", FREYA_STATE ? "beta " : "final");
+	"TXT", FREYA_STATE ? "development " : "final");
 #endif /* USE_SQL */
 #ifdef SVN_REVISION
 	if (SVN_REVISION >= 1) // in case of .svn directories have been deleted

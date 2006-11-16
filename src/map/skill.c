@@ -695,7 +695,8 @@ int skillnotok(int skillid, struct map_session_data *sd) {
 	switch (skillid) {
 	case AL_TELEPORT:
 	case AL_WARP:
-		if(map[sd->bl.m].flag.noteleport) {
+		if(map[sd->bl.m].flag.noteleport)
+		{
 			clif_skill_teleportmessage(sd, 0);
 			return 1;
 		}
@@ -3191,18 +3192,20 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 {
 	struct map_session_data *sd = NULL, *dstsd = NULL;
 	struct mob_data *md = NULL, *dstmd = NULL;
+	struct status_change *sc_data = NULL, *tsc_data = NULL;
 	int i;
 
-	if (skillid > 0 && skilllv <= 0)
-		return 0; // celest
+	if(skillid > 0 && skilllv <= 0)
+		return 0;
 
 	nullpo_retr(1, src);
 	nullpo_retr(1, bl);
 
-	if (bl->prev == NULL)
+	if(bl->prev == NULL)
 		return 1;
 		
-	if (src->type == BL_PC) {
+	if(src->type == BL_PC)
+	{
 		sd = (struct map_session_data *)src;
 		if(sd) {
 			if(pc_isdead(sd))
@@ -3213,12 +3216,15 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 	} else if (src->type == BL_MOB)
 		md = (struct mob_data *)src;
 
+	sc_data = status_get_sc_data(src);
+	tsc_data = status_get_sc_data(bl);
+
 	if (bl->type == BL_PC) {
 		nullpo_retr(1, dstsd = (struct map_session_data *)bl);
 		if(pc_isdead(dstsd) && skillid != ALL_RESURRECTION && skillid != PR_REDEMPTIO)
 			return 1;
-		//Only dispel skill is castable on trickdead novice. other status changes won't work [Harbin]
-if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid != NV_TRICKDEAD)
+		// only dispel skill is castable on trickdead novice. other status changes wont work [Harbin]
+		if(tsc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid != NV_TRICKDEAD)
 			return 1;
 	} else if (bl->type == BL_MOB) {
 		nullpo_retr(1, dstmd = (struct mob_data *)bl);
@@ -3392,15 +3398,15 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 
 	case PR_LEXDIVINA:		/* レックスディビ?ナ */
 		{
-			struct status_change *sc_data = status_get_sc_data(bl);
-			if (status_get_mode(bl)&0x20) { //It does not works on BOSS monsters. "Skill has failed"
+			if(status_get_mode(bl)&0x20)
+			{ //It does not works on BOSS monsters. "Skill has failed"
 				if(sd) clif_skill_fail(sd, sd->skillid, 0, 0);
 				break;
 			}
 			clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 			if(dstsd && status_isimmune(bl))
 				break;
-			if(sc_data && sc_data[SC_SILENCE].timer != -1)
+			if(tsc_data && tsc_data[SC_SILENCE].timer != -1)
 				status_change_end(bl, SC_SILENCE, -1);
 			else if( rand()%100 < status_get_sc_def_vit(bl)) {
 				status_change_start(bl, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
@@ -3547,8 +3553,6 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 	case CG_MARIONETTE:
 		if(sd && dstsd)
 		{
-			struct status_change *sc_data = sd->sc_data;
-			struct status_change *tsc_data = dstsd->sc_data;
 			short jobid1 = pc_calc_base_job2(sd->status.class);
 			short jobid2 = pc_calc_base_job2(dstsd->status.class);
 			short lvcheck = 0;
@@ -3612,13 +3616,13 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 				break;
 			}
 			if(dstsd->status.weapon == 0 ||
-			   dstsd->sc_data[SC_FIREWEAPON].timer  !=-1 ||
-			   dstsd->sc_data[SC_WINDWEAPON].timer  !=-1 ||
-			   dstsd->sc_data[SC_WINDWEAPON].timer  !=-1 ||
-			   dstsd->sc_data[SC_EARTHWEAPON].timer !=-1 ||
-			   dstsd->sc_data[SC_SHADOWWEAPON].timer != -1 ||
-			   dstsd->sc_data[SC_GHOSTWEAPON].timer != -1 ||
-			   dstsd->sc_data[SC_ENCPOISON].timer   !=-1) {
+			   tsc_data[SC_FIREWEAPON].timer  !=-1 ||
+			   tsc_data[SC_WINDWEAPON].timer  !=-1 ||
+			   tsc_data[SC_WINDWEAPON].timer  !=-1 ||
+			   tsc_data[SC_EARTHWEAPON].timer !=-1 ||
+			   tsc_data[SC_SHADOWWEAPON].timer != -1 ||
+			   tsc_data[SC_GHOSTWEAPON].timer != -1 ||
+			   tsc_data[SC_ENCPOISON].timer   !=-1) {
 				clif_skill_fail(sd, skillid, 0, 0);
 				clif_skill_nodamage(src, bl, skillid, skilllv, 0);
 				break;
@@ -3723,7 +3727,6 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 
 	case SM_AUTOBERSERK:	// Celest
 	  {
-		struct status_change *tsc_data = status_get_sc_data(bl);
 		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 		if(tsc_data){
 			if(tsc_data[SkillStatusChangeTable[skillid]].timer == -1)
@@ -3736,13 +3739,13 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 
 	case AS_ENCHANTPOISON: // Prevent spamming [Valaris]
 		if (sd && dstsd) {
-			if (dstsd->sc_data[SC_FIREWEAPON].timer   != -1 ||
-			    dstsd->sc_data[SC_WATERWEAPON].timer  != -1 ||
-			    dstsd->sc_data[SC_WINDWEAPON].timer   != -1 ||
-			    dstsd->sc_data[SC_EARTHWEAPON].timer  != -1 ||
-			    dstsd->sc_data[SC_SHADOWWEAPON].timer != -1 ||
-			    dstsd->sc_data[SC_GHOSTWEAPON].timer  != -1 ||
-			    dstsd->sc_data[SC_ENCPOISON].timer    != -1) {
+			if (tsc_data[SC_FIREWEAPON].timer   != -1 ||
+			    tsc_data[SC_WATERWEAPON].timer  != -1 ||
+			    tsc_data[SC_WINDWEAPON].timer   != -1 ||
+			    tsc_data[SC_EARTHWEAPON].timer  != -1 ||
+			    tsc_data[SC_SHADOWWEAPON].timer != -1 ||
+			    tsc_data[SC_GHOSTWEAPON].timer  != -1 ||
+			    tsc_data[SC_ENCPOISON].timer    != -1) {
 				clif_skill_nodamage(src, bl, skillid, skilllv, 0);
 				clif_skill_fail(sd, skillid, 0, 0);
 				break;
@@ -3782,7 +3785,6 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 		break;
 	case SM_PROVOKE:		/* プロボック */
 		{
-			struct status_change *sc_data = status_get_sc_data(bl);
 			/* MVPmobと不死には効かない */
 			if((dstmd && status_get_mode(bl) & 0x20) || battle_check_undead(status_get_race(bl), status_get_elem_type(bl))) //不死には効かない
 			{
@@ -3805,12 +3807,12 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 				&& dstsd->state.skillcastcancel && !dstsd->special_state.no_castcancel2)
 				skill_castcancel(bl, 0);
 
-			if(sc_data){
-				if(sc_data[SC_FREEZE].timer != -1)
+			if(tsc_data){
+				if(tsc_data[SC_FREEZE].timer != -1)
 					status_change_end(bl, SC_FREEZE, -1);
-				if(sc_data[SC_STONE].timer != -1 && sc_data[SC_STONE].val2 == 0)
+				if(tsc_data[SC_STONE].timer != -1 && sc_data[SC_STONE].val2 == 0)
 					status_change_end(bl, SC_STONE, -1);
-				if(sc_data[SC_SLEEP].timer != -1)
+				if(tsc_data[SC_SLEEP].timer != -1)
 					status_change_end(bl, SC_SLEEP, -1);
 			}
 
@@ -4073,10 +4075,9 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 	case CR_DEFENDER:		/* ディフェンダー */
 	case CR_AUTOGUARD:		/* オートガード */
 		{
-			struct status_change *tsc_data = status_get_sc_data(bl);
 			clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 			if(tsc_data) {
-				if( tsc_data[SkillStatusChangeTable[skillid]].timer == -1 )
+				if(tsc_data[SkillStatusChangeTable[skillid]].timer == -1 )
 					/* 付加する */
 					status_change_start(bl, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
 				else
@@ -4088,10 +4089,9 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 
 	case TF_HIDING:			/* ハイディング */
 	  {
-		struct status_change *tsc_data = status_get_sc_data(bl);
 		int sc = SkillStatusChangeTable[skillid];
 		clif_skill_nodamage(src,bl,skillid,-1,1);
-		if (tsc_data && tsc_data[sc].timer != -1) {
+		if(tsc_data && tsc_data[sc].timer != -1) {
 			/* 解除する */
 			status_change_end(bl, sc, -1);
 		} else {
@@ -4104,7 +4104,6 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 	case AS_CLOAKING:		/* クローキング */
 		if (skilllv >= 3 || !skill_check_cloaking(bl)) // <--- correction of cloacking and walls found on freya's bug report (thanks to [BeoWulf])
 		{
-			struct status_change *tsc_data = status_get_sc_data(bl);
 			int sc = SkillStatusChangeTable[skillid];
 			if (battle_config.no_caption_cloaking)
 				clif_skill_nodamage(src, bl, skillid, -1, 1);
@@ -4122,7 +4121,6 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 
 	case ST_CHASEWALK:			/* ハイディング */
 	  {
-		struct status_change *tsc_data = status_get_sc_data(bl);
 		int sc=SkillStatusChangeTable[skillid];
 		clif_skill_nodamage(src,bl,skillid,-1,1);
 		if (tsc_data && tsc_data[sc].timer != -1) {
@@ -4136,11 +4134,10 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 		break;
 	case TK_RUN:
 		{
-			struct status_change *sc_data = status_get_sc_data(bl);
 			int type = SkillStatusChangeTable[skillid];
-			if(!sc_data)
+			if(!tsc_data)
 				break;
-			if (sc_data[type].timer != -1)
+			if(tsc_data[type].timer != -1)
 				status_change_end(bl,type,-1);
 			else
 				status_change_start(bl,type,skilllv,status_get_dir(bl),0,0,0,0);
@@ -4153,8 +4150,7 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 	case TK_READYCOUNTER:
 	case TK_DODGE:
 		{
-			struct status_change *sc_data = status_get_sc_data(bl);
-			if (sc_data[SkillStatusChangeTable[skillid]].timer != -1) {
+			if(tsc_data && tsc_data[SkillStatusChangeTable[skillid]].timer != -1) {
 				status_change_end(bl, SkillStatusChangeTable[skillid], -1);
 				break;
 			}
@@ -4204,7 +4200,6 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 
 		case PA_GOSPEL:				/* ゴスペル */
 		{
-			struct status_change *sc_data = status_get_sc_data(src);
 			if(!sc_data)
 				break;
 			if(sc_data[SC_GOSPEL].timer != -1 && sc_data[SC_GOSPEL].val4 == BCT_SELF)
@@ -4221,7 +4216,6 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 
 	case BD_ADAPTATION:			/* アドリブ */
 	  {
-		struct status_change *sc_data = status_get_sc_data(src);
 		if(sc_data && sc_data[SC_DANCING].timer != -1) {
 			clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 			skill_stop_dancing(src, 0);
@@ -4237,7 +4231,6 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 
 	case BA_PANGVOICE://パンボイス
 		{
-		struct status_change *tsc_data = status_get_sc_data(bl);
 		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 		if(status_get_mode(bl)&0x20)
 			break;
@@ -4310,9 +4303,7 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 			if (dstsd && status_isimmune(bl))
 				break;
 		  {
-				// To avoid Stone Curse stacking [Aalye]
-				struct status_change *sc_data = status_get_sc_data(bl);
-				if (sc_data && sc_data[SC_STONE].timer != -1) {
+				if(tsc_data && tsc_data[SC_STONE].timer != -1) {
 					status_change_end(bl, SC_STONE, -1);
 					if (sd)
 						clif_skill_fail(sd, skillid, 0, 0); //Skill has failed
@@ -4409,18 +4400,20 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 			clif_openvendingreq(sd, 2 + sd->skilllv);
 		break;
 
-	case AL_TELEPORT:			/* テレポート */
-		if (sd) {
-			if (map[sd->bl.m].flag.noteleport){	/* テレポ禁止 */
-				clif_skill_teleportmessage(sd,0);
+	case AL_TELEPORT:
+		if(sd)
+		{
+			if(map[sd->bl.m].flag.noteleport)
+			{
+				clif_skill_teleportmessage(sd, 0);
 				break;
 			}
 			clif_skill_nodamage(src, bl, skillid, skilllv, 1);
-			if (sd->skilllv == 1)
+			if(sd->skilllv == 1)
 				clif_skill_warppoint(sd, sd->skillid, "Random", "", "", "");
 			else
 				clif_skill_warppoint(sd, sd->skillid, "Random", sd->status.save_point.map, "", "");
-		} else if (dstmd)
+		} else if(dstmd)
 			mob_warp(dstmd, -1, -1, -1, 3);
 		break;
 
@@ -4490,7 +4483,6 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 		}
 
 		if (dstsd) {
-			struct status_change *tsc_data = dstsd->sc_data;
 			for (i = 0; i < 11; i++) {
 				if (dstsd->equip_index[i] >= 0 && dstsd->inventory_data[dstsd->equip_index[i]]) {
 					if (equip & EQP_WEAPON && (i == 9 || (i == 8 && dstsd->inventory_data[dstsd->equip_index[8]]->type == 4)) && !(dstsd->unstripable_equip&EQP_WEAPON) && !(tsc_data && tsc_data[SC_CP_WEAPON].timer != -1)) {
@@ -4669,7 +4661,6 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 		break;
 	case SA_DISPELL:			/* ディスペル */
 	  {
-		struct status_change *tsc_data = status_get_sc_data(bl);
 		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 		if(tsc_data) {
 			if(dstsd && status_isimmune(bl))
@@ -4724,12 +4715,11 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 		break;
 	case SA_SPELLBREAKER:	// スペルブレイカー
 	  {
-		struct status_change *sc_data = status_get_sc_data(bl);
 		int sp;
-		if(sc_data && sc_data[SC_MAGICROD].timer != -1) {
+		if(tsc_data && tsc_data[SC_MAGICROD].timer != -1) {
 			if(dstsd) {
 				sp = skill_get_sp(skillid,skilllv);
-				sp = sp * sc_data[SC_MAGICROD].val2 / 100;
+				sp = sp * tsc_data[SC_MAGICROD].val2 / 100;
 				if(sp > 0x7fff) sp = 0x7fff;
 				else if(sp < 1) sp = 1;
 				if(dstsd->status.sp + sp > dstsd->status.max_sp) {
@@ -4740,7 +4730,7 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 					dstsd->status.sp += sp;
 				clif_heal(dstsd->fd,SP_SP,sp);
 			}
-			clif_skill_nodamage(bl, bl, SA_MAGICROD, sc_data[SC_MAGICROD].val1, 1);
+			clif_skill_nodamage(bl, bl, SA_MAGICROD, tsc_data[SC_MAGICROD].val1, 1);
 			if(sd) {
 				sp = sd->status.max_sp/5;
 				if(sp < 1) sp = 1;
@@ -5030,7 +5020,7 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 		   (su->group->src_id == src->id || map[bl->m].flag.pvp || map[bl->m].flag.gvg) &&
 		   (su->group->unit_id >= 0x8f && su->group->unit_id <= 0x99) &&
 		   (su->group->unit_id != 0x92)) { //罠を取り返す
-			if(sd && sd->sc_data[SC_INTOABYSS].timer == -1) {
+			if(sd && sc_data[SC_INTOABYSS].timer == -1) {
 				if(battle_config.skill_removetrap_type == 1) {
 					for(i=0;i<10;i++) {
 						if(skill_db[su->group->skill_id].itemid[i] > 0) {
@@ -5106,9 +5096,6 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 		break;
 	case PF_MINDBREAKER: /* プロボック */
 	  {
-		struct status_change *sc_data = status_get_sc_data(bl);
-
-		/* MVPmobと不死には効かない */
 		if((dstmd && status_get_mode(bl) & 0x20) || battle_check_undead(status_get_race(bl), status_get_elem_type(bl))) //不死には効かない
 		{
 			map_freeblock_unlock();
@@ -5124,12 +5111,12 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 			&& dstsd->state.skillcastcancel && !dstsd->special_state.no_castcancel2)
 			skill_castcancel(bl,0);
 
-		if(sc_data){
-			if(sc_data[SC_FREEZE].timer!=-1)
+		if(tsc_data){
+			if(tsc_data[SC_FREEZE].timer!=-1)
 				status_change_end(bl,SC_FREEZE,-1);
-			if(sc_data[SC_STONE].timer!=-1 && sc_data[SC_STONE].val2==0)
+			if(tsc_data[SC_STONE].timer!=-1 && tsc_data[SC_STONE].val2==0)
 				status_change_end(bl,SC_STONE,-1);
-			if(sc_data[SC_SLEEP].timer!=-1)
+			if(tsc_data[SC_SLEEP].timer!=-1)
 				status_change_end(bl,SC_SLEEP,-1);
 		}
 
@@ -5250,7 +5237,6 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 
 	case CG_LONGINGFREEDOM:
 		{
-			struct status_change *sc_data = status_get_sc_data(src);
 			if (sc_data && sc_data[SC_LONGING].timer == -1 && sc_data[SC_DANCING].timer != -1 && sc_data[SC_DANCING].val4
 				&& sc_data[SC_DANCING].val1 != CG_MOONLIT) // if Moonlight Petals is in effect, Longing for Freedom will not work
 			{
@@ -5356,7 +5342,7 @@ if(dstsd->sc_data[SC_TRICKDEAD].timer != -1 && skillid != SA_DISPELL && skillid 
 	case ST_PRESERVE:
 	case CR_SHRINK:	
 		if (sd) {
-			if (sd->sc_data[SkillStatusChangeTable[skillid]].timer != -1)
+			if (sc_data[SkillStatusChangeTable[skillid]].timer != -1)
 				status_change_end(src, SkillStatusChangeTable[skillid], -1);
 			else
 				status_change_start(src, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
@@ -5726,11 +5712,10 @@ int skill_castend_pos2(struct block_list *src, int x, int y, int skillid, int sk
 	case SA_DELUGE:			/* デリュージ */
 	case SA_VIOLENTGALE:	/* バイオレントゲイル */
 	case SA_LANDPROTECTOR:	/* ランドプロテクター */
-		skill_clear_element_field(src);//既に自分が発動している属性場をクリア
+		skill_clear_element_field(src);
 		skill_unitsetting(src, skillid, skilllv, x, y, 0);
 		break;
-
-	case WZ_METEOR:				//メテオストーム
+	case WZ_METEOR:
 		{
 			int flag = 0;
 			for(i = 0; i < 2 + (skilllv >> 1); i++) {
@@ -6076,13 +6061,9 @@ struct skill_unit_group *skill_unitsetting(struct block_list *src, int skillid, 
 	case RG_GRAFFITI: /* Graffiti */
 		count = 1; // Leave this at 1 [Valaris]
 		break;
-	case SA_LANDPROTECTOR:	/* グランドクロス */
-	  {
-		int aoe_diameter;	// -- aoe_diameter (moonsoul) added for sage Area Of Effect skills
+	case SA_LANDPROTECTOR:
 		val1 = skilllv * 15 + 10;
-		aoe_diameter = skilllv + skilllv % 2 + 5;
-		count = aoe_diameter * aoe_diameter; // -- this will not function if changed to ^2 (moonsoul)
-	  }
+		count = (skilllv + skilllv % 2 + 5) * (skilllv + skilllv % 2 + 5);
 		break;
 	/* Future implementation of RICHMANKIM code that should only affect the monster, not the player.
 	//RICHMANKIM affect only the enemy (monster). But this way is still vuln to exp exploits,

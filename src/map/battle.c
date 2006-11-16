@@ -401,18 +401,15 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 		}
 
 		if(tsc_data[SC_BASILICA].timer != -1)
-			return 0; // No need to continue calculating.. return 0 damage
+			return 0;
 
-		if(flag&BF_MAGIC) { //Magic Attacks
+		if(flag & BF_MAGIC)
+		{
 			if(tsc_data[SC_LANDPROTECTOR].timer != -1)
-				return 0; // No need to continue calculating.. return 0 damage
-			
-			if(tsc_data[SC_FOGWALL].timer != -1) {
-				if (rand() % 100 < tsc_data[SC_FOGWALL].val2)
-					return 0; // No need to continue calculating.. return 0 damage
-			}
-		} else
-		if (flag&BF_WEAPON) { //Weapon attacks
+				return 0;
+			if(tsc_data[SC_FOGWALL].timer != -1 && rand()%100 < tsc_data[SC_FOGWALL].val2)
+				return 0;
+		} else if(flag & BF_WEAPON) {
 			// -- moonsoul (chance to block attacks with new Lord Knight skill parrying)
 			if(tsc_data[SC_PARRYING].timer != -1) {
 				if(rand() % 100 < tsc_data[SC_PARRYING].val2) {
