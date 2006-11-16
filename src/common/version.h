@@ -6,7 +6,7 @@
 #define FREYA_STATE				1		// 0 = Release, 1 = Development
 
 #define FREYA_MAJORVERSION		3		// Major version number
-#define FREYA_MINORVERSION		0		// Minor version number
+#define FREYA_MINORVERSION		1		// Minor version number
 #define FREYA_REVISION			0		// Revision number
 
 #define FREYA_LOGINVERSION		1		// Login-server version
