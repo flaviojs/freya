@@ -21,9 +21,9 @@ Date	Added
 
 10/28/06
 	* Updated: manner.txt for french people [Yorre]
+	* Fixed: You can no longer do the Friendship Quest if you are a Novice [Tsuyuki]
 	* Fixed: Added a temporary fix for Amon Ra respawning instantly [Tsuyuki]
 	 - It should work fine now, but we still don't know why the standard way of respawning Amon isn't working
-	* Fixed: You can no longer do the Friendship Quest if you are a Novice [Tsuyuki]
 
 10/24/06
 	* Fixed: Small error in the Cooking Quest (Thanks to Kaypha) [Tsuyuki]
