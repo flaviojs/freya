@@ -8,7 +8,7 @@
 //= Any Athena Version
 //===== Additional Comments: =================================
 //= 1.0 Updated by using Tharis' Homun AI, by Tharis [Vicious]
-//= 1.1 Fixed Valkyrie Randgris' spawn time [Tsuyuki]
+//= 1.1 Fixed Valkyrie Randgrith's spawn time [Tsuyuki]
 //============================================================
 
 //==================================================

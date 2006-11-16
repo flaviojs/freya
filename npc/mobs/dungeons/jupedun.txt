@@ -28,7 +28,7 @@ juperos_01.gat,192,132,60,80	monster	Venatu	1676,45,0,0,1
 juperos_01.gat,192,132,60,80	monster	Venatu	1677,50,0,0,1
 juperos_01.gat,192,132,60,80	monster	Venatu	1678,45,0,0,1
 
-// Custom-ish: From Episode 11 kRO Updates: [Tsuyuki]
+// Custom-ish: From Episode 11.1 kRO Updates: [Tsuyuki]
 juperos_01.gat,0,0,0,0	monster	Dimik	1670,5,0,0,0
 juperos_01.gat,0,0,0,0	monster	Dimik	1671,5,0,0,0
 juperos_01.gat,0,0,0,0	monster	Dimik	1672,5,0,0,0

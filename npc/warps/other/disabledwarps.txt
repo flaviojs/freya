@@ -3,9 +3,9 @@
 //===== By: ==================================================
 //= Nana (1.0)
 //===== Current Version: =====================================
-//= 1.2
+//= 1.0
 //===== Description: =========================================
-//= Disabled Warps in Freya
+//= Disabled Warp's for entire Athena
 //===== Additional Comments: =================================
 //= No comment!
 //============================================================
@@ -33,13 +33,5 @@
 //= Morroc Town ==============================================
 //morocc_in.gat,72,67,0	warp	w341	2,2,morocc_in.gat,44,162
 
-//= Izlude Town ==============================================
-//= Due to Job Quest
-//izlude_in.gat,62,170,0	warp	w1039	1,1,izlude_in.gat,68,165
-
 //= Payon Cave
 //pay_dun03.gat,127,62,0	warp	payd04	1,2,pay_dun04.gat,201,204
-
-// Airplane (no direct access there)
-//airplane.gat,255,55,0	warp	ein044	1,1,airplane.gat,90,68
-//airplane.gat,88,68,0	warp	ein044a	1,1,airplane.gat,253,55

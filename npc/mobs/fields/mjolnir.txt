@@ -1,17 +1,18 @@
-//===== eAthena Script =======================================
+//===== Freya Script =========================================
 //= Mt. Mjolnir Fields Monster Spawn Script
 //===== By: ==================================================
 //= Athena (1.0)
 //===== Current Version: =====================================
-//= 1.1
+//= 1.2
 //===== Compatible With: =====================================
 //= Any Athena Version
 //===== Additional Comments: =================================
-//=
+//= 1.2 Official kRO 10.1 spawns [Playtester]
 //============================================================
 
-// mjolnir_01 (lv2)
-
+//==================================================
+// mjolnir_01 - Mt.Mjolnir
+//==================================================
 mjolnir_01.gat,0,0,0,0	monster	Horn	1128,20,0,0,0
 mjolnir_01.gat,0,0,0,0	monster	Creamy	1018,20,0,0,0
 mjolnir_01.gat,0,0,0,0	monster	Coco	1104,70,0,0,0
@@ -23,11 +24,12 @@ mjolnir_01.gat,75,85,25,25	monster	Green Plant	1080,5,180000,90000,1
 mjolnir_01.gat,78,219,25,25	monster	Green Plant	1080,5,180000,90000,1
 mjolnir_01.gat,311,271,25,25	monster	Blue Plant	1079,5,360000,180000,1
 
-// mjolnir_02 (lv3)
-
+//==================================================
+// mjolnir_02 - Mt.Mjolnir
+//==================================================
 mjolnir_02.gat,0,0,0,0	monster	Hornet	1004,30,0,0,0
 mjolnir_02.gat,0,0,0,0	monster	Creamy	1018,20,0,0,0
-mjolnir_02.gat,0,0,0,0	monster	Earth Petite	1155,50,0,0,0
+mjolnir_02.gat,0,0,0,0	monster	Petite	1155,50,0,0,0
 mjolnir_02.gat,0,0,0,0	monster	Poporing	1031,10,0,0,0
 mjolnir_02.gat,0,0,0,0	monster	Flora	1118,30,0,0,0
 mjolnir_02.gat,86,270,0,0	monster	Green Plant	1080,1,180000,90000,1
@@ -65,11 +67,12 @@ mjolnir_02.gat,273,240,0,0	monster	Green Plant	1080,1,180000,90000,1
 mjolnir_02.gat,289,276,0,0	monster	Green Plant	1080,1,180000,90000,1
 mjolnir_02.gat,188,192,10,10	monster	Blue Plant	1079,2,360000,180000,1
 
-// mjolnir_03 (lv4)
-
+//==================================================
+// mjolnir_03 - Mt.Mjolnir
+//==================================================
 mjolnir_03.gat,0,0,0,0	monster	Mantis	1139,30,0,0,0
 mjolnir_03.gat,0,0,0,0	monster	Creamy	1018,10,0,0,0
-mjolnir_03.gat,0,0,0,0	monster	Sky Petite	1156,70,0,0,0
+mjolnir_03.gat,0,0,0,0	monster	Petite	1156,70,0,0,0
 mjolnir_03.gat,0,0,0,0	monster	Poporing	1031,10,0,0,0
 mjolnir_03.gat,0,0,0,0	monster	Flora	1118,10,0,0,0
 mjolnir_03.gat,0,0,0,0	monster	Argos	1100,20,0,0,0
@@ -89,8 +92,9 @@ mjolnir_03.gat,77,271,0,0	monster	Green Plant	1080,1,180000,90000,1
 mjolnir_03.gat,66,219,0,0	monster	Green Plant	1080,1,180000,90000,1
 mjolnir_03.gat,91,161,0,0	monster	Green Plant	1080,1,180000,90000,1
 
-// mjolnir_04 (lv4)
-
+//==================================================
+// mjolnir_04 - Mt.Mjolnir
+//==================================================
 mjolnir_04.gat,0,0,0,0	monster	Mantis	1139,20,0,0,0
 mjolnir_04.gat,0,0,0,0	monster	Hornet	1004,70,0,0,0
 mjolnir_04.gat,0,0,0,0	monster	Poporing	1031,10,0,0,0
@@ -116,8 +120,9 @@ mjolnir_04.gat,332,122,0,0	monster	Green Plant	1080,1,180000,90000,1
 mjolnir_04.gat,269,39,0,0	monster	Green Plant	1080,1,180000,90000,1
 mjolnir_04.gat,205,33,0,0	monster	Green Plant	1080,1,180000,90000,1
 
-// mjolnir_05 (lv4)
-
+//==================================================
+// mjolnir_05 - Mt.Mjolnir
+//==================================================
 mjolnir_05.gat,0,0,0,0	monster	Mantis	1139,40,0,0,0
 mjolnir_05.gat,0,0,0,0	monster	Poporing	1031,10,0,0,0
 mjolnir_05.gat,0,0,0,0	monster	Flora	1118,20,0,0,0
@@ -129,8 +134,9 @@ mjolnir_05.gat,134,103,20,20	monster	Blue Plant	1079,3,360000,180000,1
 mjolnir_05.gat,261,100,20,10	monster	Blue Plant	1079,3,360000,180000,1
 mjolnir_05.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
 
-// mjolnir_06 (lv2)
-
+//==================================================
+// mjolnir_06 - Mt.Mjolnir
+//==================================================
 mjolnir_06.gat,0,0,0,0	monster	Stainer	1174,70,0,0,0
 mjolnir_06.gat,0,0,0,0	monster	Horn	1128,20,0,0,0
 mjolnir_06.gat,0,0,0,0	monster	Coco	1104,20,0,0,0
@@ -147,8 +153,9 @@ mjolnir_06.gat,73,339,0,0	monster	Red Mushroom	1085,1,180000,90000,1
 mjolnir_06.gat,69,225,0,0	monster	Red Mushroom	1085,1,180000,90000,1
 mjolnir_06.gat,55,276,0,0	monster	Red Mushroom	1085,1,180000,90000,1
 
-// mjolnir_07 (lv3)
-
+//==================================================
+// mjolnir_07 - Mt.Mjolnir
+//==================================================
 mjolnir_07.gat,0,0,0,0	monster	Poison Spore	1077,60,0,0,0
 mjolnir_07.gat,0,0,0,0	monster	Ambernite	1094,30,0,0,0
 mjolnir_07.gat,0,0,0,0	monster	Coco	1104,20,0,0,0
@@ -166,8 +173,9 @@ mjolnir_07.gat,140,179,0,0	monster	Green Plant	1080,1,180000,90000,1
 mjolnir_07.gat,97,210,0,0	monster	Green Plant	1080,1,180000,90000,1
 mjolnir_07.gat,249,214,0,0	monster	Blue Plant	1079,2,360000,180000,1
 
-// mjolnir_08 (lv4)
-
+//==================================================
+// mjolnir_08 - Mt.Mjolnir
+//==================================================
 mjolnir_08.gat,0,0,0,0	monster	Mantis	1139,60,0,0,0
 mjolnir_08.gat,0,0,0,0	monster	Argiope	1099,30,0,0,0
 mjolnir_08.gat,0,0,0,0	monster	Argos	1100,20,0,0,0
@@ -181,8 +189,9 @@ mjolnir_08.gat,207,232,0,0	monster	Green Plant	1080,1,180000,90000,1
 mjolnir_08.gat,180,282,0,0	monster	Green Plant	1080,1,180000,90000,1
 mjolnir_08.gat,149,328,0,0	monster	Green Plant	1080,1,180000,90000,1
 
-// mjolnir_09 (lv2)
-
+//==================================================
+// mjolnir_09 - Mt.Mjolnir
+//==================================================
 mjolnir_09.gat,0,0,0,0	monster	Coco	1104,10,0,0,0
 mjolnir_09.gat,0,0,0,0	monster	Stainer	1174,20,0,0,0
 mjolnir_09.gat,0,0,0,0	monster	Horn	1128,70,0,0,0
@@ -200,19 +209,20 @@ mjolnir_09.gat,120,126,0,0	monster	Red Mushroom	1085,1,180000,90000,1
 mjolnir_09.gat,139,84,0,0	monster	Red Mushroom	1085,1,180000,90000,1
 mjolnir_09.gat,125,82,0,0	monster	Red Mushroom	1085,1,180000,90000,1
 
-// mjolnir_10 (lv3)
-
+//==================================================
+// mjolnir_10 - Mt.Mjolnir
+//==================================================
 mjolnir_10.gat,0,0,0,0	monster	Mantis	1139,20,0,0,0
 mjolnir_10.gat,0,0,0,0	monster	Flora	1118,30,0,0,0
 mjolnir_10.gat,0,0,0,0	monster	Argos	1100,60,0,0,0
 mjolnir_10.gat,0,0,0,0	monster	Poporing	1031,20,0,0,0
-mjolnir_10.gat,0,0,0,0	monster	Earth Petite	1155,10,0,0,0
+mjolnir_10.gat,0,0,0,0	monster	Petite	1155,10,0,0,0
 mjolnir_10.gat,123,331,10,10	monster	Shining Plant	1083,1,1800000,900000,1
 mjolnir_10.gat,0,0,0,0	monster	Green Plant	1080,10,180000,90000,1
 
-
-// mjolnir_11 (lv4)
-
+//==================================================
+// mjolnir_11 - Mt.Mjolnir
+//==================================================
 mjolnir_11.gat,0,0,0,0	monster	Argiope	1099,10,0,0,0
 mjolnir_11.gat,0,0,0,0	monster	Mandragora	1020,50,0,0,0
 mjolnir_11.gat,0,0,0,0	monster	Flora	1118,60,0,0,0
@@ -232,8 +242,9 @@ mjolnir_11.gat,332,327,0,0	monster	Blue Plant	1079,1,360000,180000,1
 mjolnir_11.gat,282,300,0,0	monster	Green Plant	1080,1,180000,90000,1
 mjolnir_11.gat,295,271,0,0	monster	Green Plant	1080,1,180000,90000,1
 
-// mjolnir_12 (lv3)
-
+//==================================================
+// mjolnir_12 - Mt.Mjolnir
+//==================================================
 mjolnir_12.gat,0,0,0,0	monster	Stem Worm	1215,20,0,0,0
 mjolnir_12.gat,0,0,0,0	monster	Dustiness	1114,50,0,0,0
 mjolnir_12.gat,0,0,0,0	monster	Thief Bug Female	1053,20,0,0,0

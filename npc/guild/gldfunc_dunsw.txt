@@ -1,4 +1,4 @@
-//===== eAthena Script =======================================
+//===== Freya Script =========================================
 //= War of Emperium Guild Dungeon Switch Function
 //===== By: ==================================================
 //= jAthena - kalen (1.0)

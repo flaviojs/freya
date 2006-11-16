@@ -7,34 +7,44 @@
 //===== Compatible With: =====================================
 //= Freya
 //===== Additional Comments: =================================
-// 1.0 Added first version [Tsuyuki]
+// 1.0 Added first version (Temp Spawns - Guessed) [Tsuyuki]
 //============================================================
 
-// Sanctuary L1
+//============================================================
+// ra_san01 - Rachel Sanctuary
+//============================================================
 ra_san01.gat,0,0,0,0	monster	Gremlin	1632,20,0,0,0
 ra_san01.gat,0,0,0,0	monster	Beholder	1633,20,0,0,0
 ra_san01.gat,0,0,0,0	monster	Vanberk	1771,40,0,0,0
 ra_san01.gat,0,0,0,0	monster	Isilla	1772,40,0,0,0
 
-// Sanctuary L2
+//============================================================
+// ra_san02 - Rachel Sanctuary
+//============================================================
 ra_san02.gat,0,0,0,0	monster	Gremlin	1632,30,0,0,0
 ra_san02.gat,0,0,0,0	monster	Beholder	1633,30,0,0,0
 ra_san02.gat,0,0,0,0	monster	Vanberk	1771,40,0,0,0
 ra_san02.gat,0,0,0,0	monster	Isilla	1772,40,0,0,0
 
-// Sanctuary L3
+//============================================================
+// ra_san03 - Rachel Sanctuary
+//============================================================
 ra_san03.gat,0,0,0,0	monster	Gremlin	1632,30,0,0,0
 ra_san03.gat,0,0,0,0	monster	Beholder	1633,30,0,0,0
 ra_san03.gat,0,0,0,0	monster	Seeker	1774,40,0,0,0
 ra_san03.gat,0,0,0,0	monster	Hondremlin	1773,40,0,0,0
 
-// Sanctuary L4
+//============================================================
+// ra_san04 - Rachel Sanctuary
+//============================================================
 ra_san04.gat,0,0,0,0	monster	Seeker	1774,30,0,0,0
 ra_san04.gat,0,0,0,0	monster	Hondremlin	1773,30,0,0,0
 ra_san04.gat,0,0,0,0	monster	Agav	1769,40,0,0,0
 ra_san04.gat,0,0,0,0	monster	Echio	1770,40,0,0,0
 
-// Sanctuary L5
+//============================================================
+// ra_san05 - Rachel Sanctuary
+//============================================================
 ra_san05.gat,0,0,0,0	monster	Seeker	1774,40,0,0,0
 ra_san05.gat,0,0,0,0	monster	Hondremlin	1773,40,0,0,0
 ra_san05.gat,0,0,0,0	monster	Agav	1769,40,0,0,0
