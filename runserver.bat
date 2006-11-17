@@ -1,5 +1,7 @@
 @echo off
-echo Jbain's Athena Start script for Windows
-start cmd /k logserv.bat
-start cmd /k charserv.bat
-start cmd /k mapserv.bat
+
+echo > log/launcher.log
+
+start cmd /k login-server.bat
+start cmd /k char-server.bat
+start cmd /k map-server.bat
