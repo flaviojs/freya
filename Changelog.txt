@@ -4,7 +4,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
-11/17/07
+11/17/06
+	* Fixed: Translated some of the db/skill_tree.txt file, work in progress [Tsuyuki]
 	* Updated: Kiel Hyre/Odin's Temple/Abyss Lake/Thanatos Tower monster stats [Tsuyuki]
 	 - Note: The mob database is now fully complete/official up to X.4 (Hugel/Odin's Temple/Kiel Hyre)
 	* Fixed: Kiel Hyre mob skill fixes [Tsuyuki]
