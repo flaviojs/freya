@@ -491,6 +491,7 @@ struct mob_data {
 	short to_x, to_y;
 	short target_dir;
 	short speed;
+	short attacked_count;
 	int hp;
 	int target_id, attacked_id;
 	short target_lv;

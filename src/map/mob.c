@@ -106,6 +106,7 @@ void mob_spawn_dataset(struct mob_data *md, const char *mobname, int class) {
 	md->timer = -1;
 	//md->target_id = 0; // already 0
 	//md->attacked_id = 0; // already 0
+	//md->attacked_count = 0; // already 0
 	md->speed = mob_db[class].speed;
 
 	return;
@@ -812,7 +813,7 @@ void mob_changestate(struct mob_data *md, int state, int type) {
 			delete_timer(md->deletetimer, mob_timer_delete);
 			md->deletetimer = -1;
 		}
-		md->hp = md->target_id = md->attacked_id = 0;
+		md->hp = md->target_id = md->attacked_id = md->attacked_count = 0;
 		md->state.targettype = NONE_ATTACKABLE;
 		break;
 	}
@@ -1085,6 +1086,7 @@ int mob_spawn(int id)
 
 	memset(&md->state, 0, sizeof(md->state));
 	md->attacked_id = 0;
+	md->attacked_count = 0;
 	md->target_id = 0;
 	md->move_fail_count = 0;
 
@@ -1176,6 +1178,7 @@ void mob_stopattack(struct mob_data *md) {
 	md->target_id = 0;
 	md->state.targettype = NONE_ATTACKABLE;
 	md->attacked_id = 0;
+	md->attacked_count = 0;
 
 	return;
 }
@@ -1863,6 +1866,17 @@ static int mob_ai_sub_hard(struct block_list *bl, va_list ap) {
 				                  md->bl.x + 13, md->bl.y + 13,
 				                  BL_MOB, md, &asd->bl);
 			}
+		}
+	}
+	
+	if (mode > 0 && md->attacked_id > 0 && !md->target_id && md->state.targettype == NONE_ATTACKABLE && md->attacked_count++ > 3) {
+		if (mobskill_use(md, tick, MSC_RUDEATTACKED) == 0 && mob_can_move(md)) {
+			struct block_list *abl = map_id2bl(md->attacked_id);
+			int dist = rand() % 10 + 1; // 後退する距離
+			int dir = abl ? map_calc_dir(abl, bl->x, bl->y) : rand() % 8;
+			int mask[8][2] = {{0,1},{-1,1},{-1,0},{-1,-1},{0,-1},{1,-1},{1,0},{1,1}};
+			mob_walktoxy(md, md->bl.x + dist * mask[dir][0], md->bl.y + dist * mask[dir][1], 0);
+			md->next_walktime = tick;
 		}
 	}
 
@@ -2563,7 +2577,7 @@ int mob_damage(struct block_list *src, struct mob_data *md, int damage, int type
 
 	if (md->state.special_mob_ai == 2) {//スフィアーマイン // 0: nothing, 1: cannibalize, 2-3: spheremine
 		int skillidx;
-		if ((skillidx = mob_skillid2skillidx(md->class, NPC_SELFDESTRUCTION2)) >= 0) {
+		if ((skillidx = mob_skillid2skillidx(md->class, NPC_SELFDESTRUCTION)) >= 0) {
 			md->mode |= 0x1;
 			md->next_walktime = gettick_cache;
 			mobskill_use_id(md, &md->bl, skillidx);//自爆詠唱開始
@@ -4118,6 +4132,10 @@ int mobskill_use(struct mob_data *md,unsigned int tick,int event)
 			case MSC_SKILLUSED:		// specificated skill used
 				flag = ((event & 0xffff) == MSC_SKILLUSED && ((event >> 16) == c2 || c2 == 0));
 				break;
+			case MSC_RUDEATTACKED:
+				flag = (!md->attacked_id && md->attacked_count > 0);
+				if (flag) md->attacked_count = 0;
+				break;
 			case MSC_MASTERHPLTMAXRATE:
 				{
 					struct block_list *bl = mob_getmasterhpltmaxrate(md, ms[i].cond2);
@@ -4845,6 +4863,7 @@ static void mob_readskilldb(void)
 		{ "skillused",         MSC_SKILLUSED         },
 		{ "afterskill",        MSC_AFTERSKILL        },
 		{ "casttargeted",      MSC_CASTTARGETED      },
+		{ "rudeattacked",      MSC_RUDEATTACKED      },
 		{ "masterhpltmaxrate", MSC_MASTERHPLTMAXRATE },
 	}, cond2[] ={
 		{ "anybad",    -1           },
