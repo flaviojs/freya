@@ -3389,13 +3389,13 @@ static inline void init_db(void) {
 			/* Some checks */
 			if (account_id > END_ACCOUNT_NUM) {
 				printf(CL_RED "init_db: ******Error: an account has an id higher than %d\n", END_ACCOUNT_NUM);
-				printf(       "         account id #%d -> account not readed (saved in log file)." CL_RESET "\n", account_id);
+				printf(       "         account id #%d -> account not read (saved in log file)." CL_RESET "\n", account_id);
 				write_log("init_db: ******Error: an account has an id (%d) higher than %d -> account not read (saved in next line):" RETCODE, account_id, END_ACCOUNT_NUM);
 				write_log("%s", line);
 				continue;
 			} else if (account_id < 0) {
 				printf(CL_RED "init_db: ******Error: an account has an invalid id (%d)\n", account_id);
-				printf(       "         account id #%d -> account not readed (saved in log file)." CL_RESET "\n", account_id);
+				printf(       "         account id #%d -> account not read (saved in log file)." CL_RESET "\n", account_id);
 				write_log("init_db: ******Error: an account has an invalid id (%d) -> account not read (saved in next line):" RETCODE, account_id);
 				write_log("%s", line);
 				continue;
@@ -3405,15 +3405,15 @@ static inline void init_db(void) {
 			for(j = 0; j < auth_num; j++) {
 				if (auth_dat[j].account_id == account_id) {
 					printf(CL_RED "init_db: ******Error: an account has an identical id to another.\n");
-					printf(       "         account id #%d -> new account not readed (saved in log file)." CL_RESET "\n", account_id);
-					write_log("init_db: ******Error: an account has an identical id (%d) to another -> new account not readed (saved in next line):" RETCODE, account_id);
+					printf(       "         account id #%d -> new account not read (saved in log file)." CL_RESET "\n", account_id);
+					write_log("init_db: ******Error: an account has an identical id (%d) to another -> new account not read (saved in next line):" RETCODE, account_id);
 					write_log("%s", line);
 					break;
 				} else if (strcmp(auth_dat[j].userid, userid) == 0) {
 					printf(CL_RED "init_db: ******Error: account name already exists.\n");
-					printf(       "         account name '%s' -> new account not readed.\n", userid); /* 2 lines, account name can be long. */
+					printf(       "         account name '%s' -> new account not read.\n", userid); /* 2 lines, account name can be long. */
 					printf(       "         Account saved in log file." CL_RESET "\n");
-					write_log("init_db: ******Error: an account has an identical name ('%s') to another -> new account not readed (saved in next line):" RETCODE, userid);
+					write_log("init_db: ******Error: an account has an identical name ('%s') to another -> new account not read (saved in next line):" RETCODE, userid);
 					write_log("%s", line);
 					break;
 				}

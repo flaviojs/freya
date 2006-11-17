@@ -1863,7 +1863,7 @@ static void map_readwater(char *watertxt) {
 	}
 	fclose(fp);
 
-	printf("File '" CL_WHITE "%s" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", watertxt, waterlist_num, (waterlist_num > 1) ? "s" : "");
+	printf("File '" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", watertxt, waterlist_num, (waterlist_num > 1) ? "s" : "");
 }
 
 /*==========================================
@@ -2822,7 +2822,7 @@ int sql_config_read(char *cfgName) {
 	}
 	fclose(fp);
 
-	printf("File '" CL_WHITE "%s" CL_RESET "' readed.\n", cfgName);
+	printf("File '" CL_WHITE "%s" CL_RESET "' read.\n", cfgName);
 
 	return 0;
 }

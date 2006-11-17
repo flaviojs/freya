@@ -8501,7 +8501,7 @@ void pc_readdb(void)
 			break;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/exp.txt" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", i, (i > 1) ? "s" : "");
+	printf("DB '" CL_WHITE "db/exp.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", i, (i > 1) ? "s" : "");
 
 	// スキルツリー
 	memset(&skill_tree, 0, sizeof(skill_tree));
@@ -8547,7 +8547,7 @@ void pc_readdb(void)
 		}
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/skill_tree.txt" CL_RESET "' readed.\n");
+	printf("DB '" CL_WHITE "db/skill_tree.txt" CL_RESET "' read.\n");
 
 	// 属性修正テーブル
 	for(i=0;i<4;i++)
@@ -8595,7 +8595,7 @@ void pc_readdb(void)
 		}
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/attr_fix.txt" CL_RESET "' readed.\n");
+	printf("DB '" CL_WHITE "db/attr_fix.txt" CL_RESET "' read.\n");
 
 	// stat point
 	memset(&statp, 0, sizeof(statp));
@@ -8622,7 +8622,7 @@ void pc_readdb(void)
 			i++;
 		}
 		fclose(fp);
-		printf("DB '" CL_WHITE "db/statpoint.txt" CL_RESET "' readed (levels='" CL_WHITE "%d/%d" CL_RESET "').\n", i, MAX_LEVEL);
+		printf("DB '" CL_WHITE "db/statpoint.txt" CL_RESET "' read (levels='" CL_WHITE "%d/%d" CL_RESET "').\n", i, MAX_LEVEL);
 	}
 
 	return;
@@ -8713,7 +8713,7 @@ int pc_extra(int tid, unsigned int tick, int id, int data) {
 		}
 	}
 
-	// if extra_add_file can be readed and exists
+	// if extra_add_file can be read and exists
 	if ((fp = fopen(extra_add_file_txt, "r")) != NULL) {
 		while(fgets(line, sizeof(line) - 1, fp) != NULL) {
 			if ((line[0] == '/' && line[1] == '/') || line[0] == '\0' || line[0] == '\n' || line[0] == '\r')

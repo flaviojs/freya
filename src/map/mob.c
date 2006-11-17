@@ -4136,6 +4136,9 @@ int mobskill_use(struct mob_data *md,unsigned int tick,int event)
 				flag = (!md->attacked_id && md->attacked_count > 0);
 				if (flag) md->attacked_count = 0;
 				break;
+			case MSC_MASTERATTACKED:
+				flag = (md->master_id > 0 && battle_counttargeted(map_id2bl(md->master_id), NULL, 0) > 0);
+				break;
 			case MSC_MASTERHPLTMAXRATE:
 				{
 					struct block_list *bl = mob_getmasterhpltmaxrate(md, ms[i].cond2);
@@ -4703,7 +4706,7 @@ static int mob_readdb(void)
 			mob_db[class].clothes_color = 0; //Add for player monster dye - Valaris
 		}
 		fclose(fp);
-		printf("DB '" CL_WHITE "%s" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", filename[i], ln, (ln > 1) ? "s" : "");
+		printf("DB '" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", filename[i], ln, (ln > 1) ? "s" : "");
 	}
 
 //#ifndef TXT_ONLY
@@ -4778,7 +4781,7 @@ static int mob_readdb_mobavail(void)
 		ln++;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/mob_avail.txt" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
+	printf("DB '" CL_WHITE "db/mob_avail.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
 
 	return 0;
 }
@@ -4827,7 +4830,7 @@ static int mob_read_randommonster(void)
 				mob_db[class].summonper[i] = per;
 		}
 		fclose(fp);
-		printf("DB '" CL_WHITE "%s" CL_RESET "' readed.\n", mobfile[i]);
+		printf("DB '" CL_WHITE "%s" CL_RESET "' read.\n", mobfile[i]);
 	}
 
 	return 0;
@@ -4864,6 +4867,7 @@ static void mob_readskilldb(void)
 		{ "afterskill",        MSC_AFTERSKILL        },
 		{ "casttargeted",      MSC_CASTTARGETED      },
 		{ "rudeattacked",      MSC_RUDEATTACKED      },
+		{ "masterattacked",    MSC_MASTERATTACKED    },
 		{ "masterhpltmaxrate", MSC_MASTERHPLTMAXRATE },
 	}, cond2[] ={
 		{ "anybad",    -1           },
@@ -5016,7 +5020,7 @@ static void mob_readskilldb(void)
 			memset(line, 0, sizeof(line));
 		}
 		fclose(fp);
-		printf("DB '" CL_WHITE "%s" CL_RESET "' readed.\n", filename[x]);
+		printf("DB '" CL_WHITE "%s" CL_RESET "' read.\n", filename[x]);
 	}
 
 	return;
@@ -5068,7 +5072,7 @@ static void mob_readdb_race(void) {
 		}
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/mob_race2_db.txt" CL_RESET "' readed.\n");
+	printf("DB '" CL_WHITE "db/mob_race2_db.txt" CL_RESET "' read.\n");
 
 	return;
 }
@@ -5247,7 +5251,7 @@ static int mob_read_sqldb(void)
 		mob_db[class].head_mid = 0;
 		mob_db[class].head_buttom = 0;
 	}
-	printf("DB '" CL_WHITE "%s" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", mob_db_db, ln, (ln > 1) ? "s" : "");
+	printf("DB '" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", mob_db_db, ln, (ln > 1) ? "s" : "");
 
 	return 0;
 }

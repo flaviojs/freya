@@ -315,12 +315,12 @@ static inline int mmo_char_fromstr(char *str, struct mmo_charstatus *p, int idx)
 	for(i = 0; i < char_num; i++) {
 		if (char_dat[i].char_id == p->char_id) {
 			printf(CL_RED "mmo_auth_init: ******Error: a character has an identical id to another.\n");
-			printf(       "               character id #%d -> new character not readed.\n", p->char_id);
+			printf(       "               character id #%d -> new character not read.\n", p->char_id);
 			printf(       "               Character saved in log file.\n" CL_RESET);
 			return -1;
 		} else if (strcmp(char_dat[i].name, p->name) == 0) {
 			printf(CL_RED "mmo_auth_init: ******Error: character name already exists.\n");
-			printf(       "               character name '%s' -> new character not readed.\n", p->name);
+			printf(       "               character name '%s' -> new character not read.\n", p->name);
 			printf(       "               Character saved in log file.\n" CL_RESET);
 			return -2;
 		}

@@ -4443,7 +4443,7 @@ int battle_config_read(const char *cfgName) {
 		add_timer_func_list(battle_delay_damage_sub, "battle_delay_damage_sub");
 	}
 
-	printf("File '" CL_WHITE "%s" CL_RESET "' readed.\n", cfgName);
+	printf("File '" CL_WHITE "%s" CL_RESET "' read.\n", cfgName);
 
 	return 0;
 }

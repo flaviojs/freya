@@ -5242,7 +5242,7 @@ int status_readdb(void) {
 			break;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/job_db1.txt" CL_RESET "' readed.\n");
+	printf("DB '" CL_WHITE "db/job_db1.txt" CL_RESET "' read.\n");
 
 	// JOBボーナス
 	memset(&job_bonus, 0, sizeof(job_bonus));
@@ -5270,7 +5270,7 @@ int status_readdb(void) {
 			break;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/job_db2.txt" CL_RESET "' readed.\n");
+	printf("DB '" CL_WHITE "db/job_db2.txt" CL_RESET "' read.\n");
 
 	// JOBボーナス2 転生職用
 	fp = fopen("db/job_db2-2.txt","r");
@@ -5295,7 +5295,7 @@ int status_readdb(void) {
 			break;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/job_db2-2.txt" CL_RESET "' readed.\n");
+	printf("DB '" CL_WHITE "db/job_db2-2.txt" CL_RESET "' read.\n");
 
 	// サイズ補正テーブル
 	for(i=0;i<3;i++)
@@ -5325,7 +5325,7 @@ int status_readdb(void) {
 		i++;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/size_fix.txt" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", i, (i > 1) ? "s" : "");
+	printf("DB '" CL_WHITE "db/size_fix.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", i, (i > 1) ? "s" : "");
 
 	// 精錬データテーブル
 	for(i=0;i<5;i++){
@@ -5362,7 +5362,7 @@ int status_readdb(void) {
 		i++;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/refine_db.txt" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", i, (i > 1) ? "s" : "");
+	printf("DB '" CL_WHITE "db/refine_db.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", i, (i > 1) ? "s" : "");
 
 	return 0;
 }

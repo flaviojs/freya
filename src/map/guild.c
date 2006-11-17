@@ -127,7 +127,7 @@ int guild_read_guildskill_tree_db(void)
 	ln++;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/guild_skill_tree.txt" CL_RESET "' readed.\n");
+	printf("DB '" CL_WHITE "db/guild_skill_tree.txt" CL_RESET "' read.\n");
 
 	return 0;
 }
@@ -199,7 +199,7 @@ static int guild_read_castledb(void)
 		ln++;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/castle_db.txt" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
+	printf("DB '" CL_WHITE "db/castle_db.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
 
 	return 0;
 }
