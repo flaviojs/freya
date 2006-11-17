@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/16/06
+	* Added: Enhanced .bat server launchers by Harbin in replacement of the eAthena ones [Tsuyuki]
 	* Added: Possibility to disable memory operation debugging (uses __DEBUG precompiler flag) [Harbin]
 	* Updated: Freya minor version number [Harbin]
 
