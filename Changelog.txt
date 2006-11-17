@@ -4,6 +4,11 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+11/17/07
+	* Updated: Kiel Hyre/Odin's Temple/Abyss Lake/Thanatos Tower monster stats [Tsuyuki]
+	 - Note: The mob database is now fully complete/official up to X.4 (Hugel/Odin's Temple/Kiel Hyre)
+	* Fixed: Kiel Hyre mob skill fixes [Tsuyuki]
+
 11/16/06
 	* Added: Enhanced .bat server launchers by Harbin in replacement of the eAthena ones [Tsuyuki]
 	* Added: Possibility to disable memory operation debugging (uses __DEBUG precompiler flag) [Harbin]
