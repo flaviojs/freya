@@ -1672,7 +1672,7 @@ int read_petdb() {
 			j++;
 		}
 		fclose(fp);
-		printf("DB '" CL_WHITE "%s" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", filename[i], j, (j > 1) ? "s" : "");
+		printf("DB '" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", filename[i], j, (j > 1) ? "s" : "");
 	}
 
 	return 0;

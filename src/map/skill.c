@@ -10714,7 +10714,7 @@ int skill_readdb(void) {
 		skill_split_atoi(split[13], skill_db[i].blewcount);
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/skill_db.txt" CL_RESET "' readed.\n");
+	printf("DB '" CL_WHITE "db/skill_db.txt" CL_RESET "' read.\n");
 
 	fp=fopen("db/skill_require_db.txt","r");
 	if(fp==NULL){
@@ -10797,7 +10797,7 @@ int skill_readdb(void) {
 		skill_db[i].amount[9]=atoi(split[29]);
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/skill_require_db.txt" CL_RESET "' readed.\n");
+	printf("DB '" CL_WHITE "db/skill_require_db.txt" CL_RESET "' read.\n");
 
 	/* キャスティングデータベース */
 	fp=fopen("db/skill_cast_db.txt","r");
@@ -10827,7 +10827,7 @@ int skill_readdb(void) {
 		skill_split_atoi(split[4], skill_db[i].upkeep_time2);
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/skill_cast_db.txt" CL_RESET "' readed.\n");
+	printf("DB '" CL_WHITE "db/skill_cast_db.txt" CL_RESET "' read.\n");
 
 	/* スキルユニットデータベース */
 	fp = fopen("db/skill_unit_db.txt", "r");
@@ -10871,7 +10871,7 @@ int skill_readdb(void) {
 		k++;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/skill_unit_db.txt" CL_RESET "' readed.\n");
+	printf("DB '" CL_WHITE "db/skill_unit_db.txt" CL_RESET "' read.\n");
 
 	skill_init_unit_layout();
 
@@ -10913,7 +10913,7 @@ int skill_readdb(void) {
 				break;
 		}
 		fclose(fp);
-		printf("DB '" CL_WHITE "%s" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", filename[m], k, (k > 1) ? "s" : "");
+		printf("DB '" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", filename[m], k, (k > 1) ? "s" : "");
 	}
 
 	num_skill_arrow_db = 0;
@@ -10957,7 +10957,7 @@ int skill_readdb(void) {
 		num_skill_arrow_db++;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/create_arrow_db.txt" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", num_skill_arrow_db, (num_skill_arrow_db > 1) ? "s" : "");
+	printf("DB '" CL_WHITE "db/create_arrow_db.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", num_skill_arrow_db, (num_skill_arrow_db > 1) ? "s" : "");
 
 	memset(skill_abra_db, 0, sizeof(skill_abra_db));
 	fp=fopen("db/abra_db.txt","r");
@@ -10987,7 +10987,7 @@ int skill_readdb(void) {
 			break;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/abra_db.txt" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", k, (k > 1) ? "s" : "");
+	printf("DB '" CL_WHITE "db/abra_db.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", k, (k > 1) ? "s" : "");
 
 	fp=fopen("db/skill_castnodex_db.txt","r");
 	if(fp==NULL){
@@ -11016,7 +11016,7 @@ int skill_readdb(void) {
 		skill_split_atoi(split[2], skill_db[i].delaynodex);
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/skill_castnodex_db.txt" CL_RESET "' readed.\n");
+	printf("DB '" CL_WHITE "db/skill_castnodex_db.txt" CL_RESET "' read.\n");
 
 	fp = fopen("db/skill_nocast_db.txt","r");
 	if (fp == NULL) {
@@ -11042,7 +11042,7 @@ int skill_readdb(void) {
 		k++;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/skill_nocast_db.txt" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", k, (k > 1) ? "s" : "");
+	printf("DB '" CL_WHITE "db/skill_nocast_db.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", k, (k > 1) ? "s" : "");
 
 	return 0;
 }
@@ -11089,7 +11089,7 @@ static int skill_read_skillspamount(void) {
 	}
 	FREE(buf);
 
-	printf("File '" CL_WHITE "data\\leveluseskillspamount.txt" CL_RESET "' readed.\n");
+	printf("File '" CL_WHITE "data\\leveluseskillspamount.txt" CL_RESET "' read.\n");
 
 	return 0;
 }

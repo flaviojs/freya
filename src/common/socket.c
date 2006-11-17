@@ -103,7 +103,7 @@ static int recv_to_fifo(int fd) {
 //		printf("recv %d : \n", fd);
 
 		s->rdata_size += len;
-//		printf("Session #%d, readed %d, total readed %d, max possible %d\n", fd, len, s->rdata_size, s->max_rdata);
+//		printf("Session #%d, read %d, total read %d, max possible %d\n", fd, len, s->rdata_size, s->max_rdata);
 		// if Server FIFO
 		if (s->max_rdata > RFIFO_SIZE) {
 			if (s->max_rdata == s->rdata_size) {

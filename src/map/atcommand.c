@@ -1166,7 +1166,7 @@ int atcommand_config_read(const char *cfgName) {
 	}
 	fclose(fp);
 
-	printf("File '" CL_WHITE "%s" CL_RESET "' readed.\n", cfgName);
+	printf("File '" CL_WHITE "%s" CL_RESET "' read.\n", cfgName);
 
 	read_counter--;
 	if (read_counter == 0) {
@@ -1821,7 +1821,7 @@ int msg_config_read(const char *cfgName) {
 	for (i = 0; msg_table[607][i]; i++) // Please help me~ T.T
 		msg_table[607][i] = tolower((unsigned char)msg_table[607][i]); // tolower needs unsigned char
 
-	printf("File '" CL_WHITE "%s" CL_RESET "' readed.\n", cfgName);
+	printf("File '" CL_WHITE "%s" CL_RESET "' read.\n", cfgName);
 
 	return 0;
 }

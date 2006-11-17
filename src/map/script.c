@@ -1208,7 +1208,7 @@ void read_constdb(void) {
 	}
 	fclose(fp);
 
-	printf("DB '" CL_WHITE "db/const.txt" CL_RESET "' readed.\n");
+	printf("DB '" CL_WHITE "db/const.txt" CL_RESET "' read.\n");
 }
 
 /*==========================================
@@ -8630,7 +8630,7 @@ int script_config_read(char *cfgName) {
 
 	fclose(fp);
 
-	printf("File '" CL_WHITE "%s" CL_RESET "' readed.\n", cfgName);
+	printf("File '" CL_WHITE "%s" CL_RESET "' read.\n", cfgName);
 
 	return 0;
 }

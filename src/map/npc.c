@@ -2528,7 +2528,7 @@ static int npc_read_indoors(void) {
 	}
 	FREE(buf);
 
-	printf("File '" CL_WHITE "data\\indoorrswtable.txt" CL_RESET "' readed.\n");
+	printf("File '" CL_WHITE "data\\indoorrswtable.txt" CL_RESET "' read.\n");
 
 	return 0;
 }

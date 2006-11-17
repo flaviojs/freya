@@ -365,7 +365,7 @@ void read_castles_data() {
 					gc->Ghp6 = tmp_int[24];
 					gc->Ghp7 = tmp_int[25]; // end additions [Valaris]
 #ifdef __DEBUG
-//					printf("read_castles_data: castle id #%d (guild: %d) [%s] readed.\n", tmp_int[0], tmp_int[1], castle_txt);
+//					printf("read_castles_data: castle id #%d (guild: %d) [%s] read.\n", tmp_int[0], tmp_int[1], castle_txt);
 #endif
 				} else
 					printf("read_castles_data: invalid castle id (%d) [%s] line %d.\n", tmp_int[0], castle_txt, c);
@@ -427,7 +427,7 @@ void read_castles_data() {
 					else
 						gc->Ghp7 = 0;
 #ifdef __DEBUG
-//					printf("read_castles_data: castle id #%d (guild: %d) [%s] readed.\n", tmp_int[0], tmp_int[1], castle_txt);
+//					printf("read_castles_data: castle id #%d (guild: %d) [%s] read.\n", tmp_int[0], tmp_int[1], castle_txt);
 #endif
 				} else
 					printf("read_castles_data: invalid castle id (%d) [%s] line %d.\n", tmp_int[0], castle_txt, c);
@@ -475,7 +475,7 @@ void read_castles_data() {
 				gc->Ghp6 = sql_get_integer(24);
 				gc->Ghp7 = sql_get_integer(25);
 #ifdef __DEBUG
-//				printf("read_castles_data: castle id #%d (guild: %d) [%s] readed.\n", c, sql_get_integer(1), guild_castle_db);
+//				printf("read_castles_data: castle id #%d (guild: %d) [%s] read.\n", c, sql_get_integer(1), guild_castle_db);
 #endif
 			} else {
 				printf("read_castles_data: invalid castle id (%d) [%s].\n", c, guild_castle_db);

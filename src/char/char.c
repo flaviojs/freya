@@ -391,7 +391,7 @@ void read_manner() {
 		}
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "%s" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", MANNER_CONF_NAME, manner_counter, (manner_counter > 1) ? "s" : "");
+	printf("DB '" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", MANNER_CONF_NAME, manner_counter, (manner_counter > 1) ? "s" : "");
 
 	return;
 }
@@ -975,12 +975,12 @@ static inline int mmo_char_fromstr(char *str, struct mmo_charstatus *p, int idx)
 	for(i = 0; i < char_num; i++) {
 		if (char_dat[i].char_id == p->char_id) {
 			printf(CL_RED "mmo_auth_init: ******Error: a character has an identical id to another.\n");
-			printf(       "               character id #%d -> new character not readed.\n", p->char_id);
+			printf(       "               character id #%d -> new character not read.\n", p->char_id);
 			printf(       "               Character saved in log file." CL_RESET "\n");
 			return -1;
 		} else if (strcmp(char_dat[i].name, p->name) == 0) {
 			printf(CL_RED "mmo_auth_init: ******Error: character name already exists.\n");
-			printf(       "               character name '%s' -> new character not readed.\n", p->name);
+			printf(       "               character name '%s' -> new character not read.\n", p->name);
 			printf(       "               Character saved in log file." CL_RESET "\n");
 			return -2;
 		}
@@ -1468,7 +1468,7 @@ static inline void mmo_char_init(void) {
 				if (j == global_reg_db[char_num].global_reg_num) {
 					printf("mmo_auth_init: ******WARNING: character name has wisp server name.\n");
 					printf("               Character name '%s' = wisp server name '%s'.\n", char_dat[char_num].name, wisp_server_name);
-					printf("               Character readed. Suggestion: change the wisp server name.\n");
+					printf("               Character read. Suggestion: change the wisp server name.\n");
 					char_log("mmo_auth_init: ******WARNING: character name has wisp server name: Character name '%s' = wisp server name '%s'." RETCODE,
 					          char_dat[char_num].name, wisp_server_name);
 				}
@@ -1483,28 +1483,28 @@ static inline void mmo_char_init(void) {
 			printf("               -> Character saved in log file.\n");
 			switch (ret) {
 			case -1:
-				char_log("Duplicate character id in the next character line (character not readed):" RETCODE);
+				char_log("Duplicate character id in the next character line (character not read):" RETCODE);
 				break;
 			case -2:
-				char_log("Duplicate character name in the next character line (character not readed):" RETCODE);
+				char_log("Duplicate character name in the next character line (character not read):" RETCODE);
 				break;
 			case -3:
-				char_log("Invalid memo point structure in the next character line (character not readed):" RETCODE);
+				char_log("Invalid memo point structure in the next character line (character not read):" RETCODE);
 				break;
 			case -4:
-				char_log("Invalid inventory item structure in the next character line (character not readed):" RETCODE);
+				char_log("Invalid inventory item structure in the next character line (character not read):" RETCODE);
 				break;
 			case -5:
-				char_log("Invalid cart item structure in the next character line (character not readed):" RETCODE);
+				char_log("Invalid cart item structure in the next character line (character not read):" RETCODE);
 				break;
 			case -6:
-				char_log("Invalid skill structure in the next character line (character not readed):" RETCODE);
+				char_log("Invalid skill structure in the next character line (character not read):" RETCODE);
 				break;
 			case -7:
-				char_log("Invalid register structure in the next character line (character not readed):" RETCODE);
+				char_log("Invalid register structure in the next character line (character not read):" RETCODE);
 				break;
 			default: // 0
-				char_log("Unabled to get a character in the next line - Basic structure of line (before inventory) is incorrect (character not readed):" RETCODE);
+				char_log("Unabled to get a character in the next line - Basic structure of line (before inventory) is incorrect (character not read):" RETCODE);
 				break;
 			}
 			char_log("%s", line);
@@ -3891,7 +3891,7 @@ int parse_frommap(int fd) {
 				FREE(server[id].map);
 				server[id].map_num = 0; // MAX_MAP_PER_SERVER
 			} else {
-				// exchange map informations only if ALL maps were readed
+				// exchange map informations only if ALL maps were read
 				if (j == server[id].map_num) {
 //					printf("Check... no map removed.\n");
 					// Transmitting maps information to the other map-servers
@@ -6010,7 +6010,7 @@ void mapif_send(int fd, unsigned int len) {
 
 int check_connect_login_server(int tid, unsigned int tick, int id, int data) {
 	if (login_fd <= 0 || session[login_fd] == NULL) {
-		printf("Attempt to connect to login-server (%s:%d). Please wait...\n", login_ip_str, login_port);
+		printf("Attempting to connect to login-server (%s:%d). Please wait...\n", login_ip_str, login_port);
 		login_fd = make_connection(login_ip, login_port);
 		if (login_fd != -1) {
 			session[login_fd]->func_parse = parse_tologin;

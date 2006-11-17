@@ -367,7 +367,7 @@ void read_manner() {
 		}
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "%s" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", MANNER_CONF_NAME, manner_counter, (manner_counter > 1) ? "s" : "");
+	printf("DB '" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", MANNER_CONF_NAME, manner_counter, (manner_counter > 1) ? "s" : "");
 
 	return;
 }
@@ -3228,7 +3228,7 @@ int parse_frommap(int fd) {
 				FREE(server[id].map);
 				server[id].map_num = 0; // MAX_MAP_PER_SERVER
 			} else {
-				// exchange map informations only if ALL maps were readed
+				// exchange map informations only if ALL maps were read
 				if (j == server[id].map_num) {
 //					printf("Check... no map removed.\n");
 					// Transmitting maps information to the other map-servers

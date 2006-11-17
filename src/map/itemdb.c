@@ -616,7 +616,7 @@ static int itemdb_readdb(void)
 //#endif /* not TXT_ONLY */
 		}
 		fclose(fp);
-		printf("DB '" CL_WHITE "%s" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", filename[i], ln, (ln > 1) ? "s" : "");
+		printf("DB '" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", filename[i], ln, (ln > 1) ? "s" : "");
 	}
 
 //#ifndef TXT_ONLY
@@ -709,7 +709,7 @@ static int itemdb_read_randomitem()
 			ln++;
 		}
 		fclose(fp);
-		printf("DB '" CL_WHITE "%s" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", fn, *pc, (*pc > 1) ? "s" : "");
+		printf("DB '" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", fn, *pc, (*pc > 1) ? "s" : "");
 	}
 
 	return 0;
@@ -760,7 +760,7 @@ static int itemdb_read_itemavail(void)
 		ln++;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/item_avail.txt" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
+	printf("DB '" CL_WHITE "db/item_avail.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
 
 	return 0;
 }
@@ -866,7 +866,7 @@ static int itemdb_read_itemnametable(void)
 	}
 	FREE(buf);
 
-	printf("File '" CL_WHITE "data\\idnum2itemdisplaynametable.txt" CL_RESET "' readed.\n");
+	printf("File '" CL_WHITE "data\\idnum2itemdisplaynametable.txt" CL_RESET "' read.\n");
 
 	return 0;
 }
@@ -905,7 +905,7 @@ static int itemdb_read_cardillustnametable(void)
 	}
 	FREE(buf);
 
-	printf("File '" CL_WHITE "data\\num2cardillustnametable.txt" CL_RESET "' readed.\n");
+	printf("File '" CL_WHITE "data\\num2cardillustnametable.txt" CL_RESET "' read.\n");
 
 	return 0;
 }
@@ -946,7 +946,7 @@ static int itemdb_read_itemslottable(void) {
 	}
 	FREE(buf);
 
-	printf("File '" CL_WHITE "data\\itemslottable.txt" CL_RESET "' readed.\n");
+	printf("File '" CL_WHITE "data\\itemslottable.txt" CL_RESET "' read.\n");
 
 	return 0;
 }
@@ -980,7 +980,7 @@ static int itemdb_read_itemslotcounttable(void) {
 	}
 	FREE(buf);
 
-	printf("File '" CL_WHITE "data\\itemslotcounttable.txt" CL_RESET "' readed.\n");
+	printf("File '" CL_WHITE "data\\itemslotcounttable.txt" CL_RESET "' read.\n");
 
 	return 0;
 }
@@ -1027,7 +1027,7 @@ static int itemdb_read_noequip(void)
 	}
 	fclose(fp);
 
-	printf("DB '" CL_WHITE "db/item_noequip.txt" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
+	printf("DB '" CL_WHITE "db/item_noequip.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
 
 	return 0;
 }
@@ -1067,7 +1067,7 @@ static int itemdb_read_norefine(void) {
 		counter++;
 	}
 
-	printf("DB '" CL_WHITE "db/item_norefine.txt" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entries).\n", counter);
+	printf("DB '" CL_WHITE "db/item_norefine.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entries).\n", counter);
 	return 1;
 }
 
@@ -1111,7 +1111,7 @@ static int itemdb_read_itemtrade(void)
 	}
 	fclose(fp);
 
-	printf("DB '" CL_WHITE "db/item_bound.txt" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
+	printf("DB '" CL_WHITE "db/item_bound.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
 
 	return 0;
 }
@@ -1280,7 +1280,7 @@ static int itemdb_read_sqldb(void) {
 		id->flag.value_notoc = 0;
 	}
 
-	printf("DB '" CL_WHITE "%s" CL_RESET "' readed ('" CL_WHITE "%ld" CL_RESET "' entrie%s).\n", item_db_db, ln, (ln > 1) ? "s" : "");
+	printf("DB '" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%ld" CL_RESET "' entrie%s).\n", item_db_db, ln, (ln > 1) ? "s" : "");
 
 	return 0;
 }
