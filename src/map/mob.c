@@ -4091,22 +4091,33 @@ int mobskill_use(struct mob_data *md,unsigned int tick,int event)
 					}
 				}else
 					flag=( md->sc_data[ms[i].cond2].timer!=-1 );
-				flag ^= (ms[i].cond1 == MSC_MYSTATUSOFF); break;
+				flag ^= (ms[i].cond1 == MSC_MYSTATUSOFF);
+				break;
 			case MSC_FRIENDHPLTMAXRATE:	// friend HP < maxhp%
-				flag = ((fmd = mob_getfriendhpltmaxrate(md, ms[i].cond2)) != NULL); break;
+				flag = ((fmd = mob_getfriendhpltmaxrate(md, ms[i].cond2)) != NULL);
+				break;
 			case MSC_FRIENDSTATUSON:	// friend status[num] on
 			case MSC_FRIENDSTATUSOFF:	// friend status[num] off
-				flag = ((fmd = mob_getfriendstatus(md, ms[i].cond1, ms[i].cond2)) != NULL); break;
+				flag = ((fmd = mob_getfriendstatus(md, ms[i].cond1, ms[i].cond2)) != NULL);
+				break;
 			case MSC_SLAVELT:		// slave < num
-				flag = (mob_countslave(md) < c2); break;
+				flag = (mob_countslave(md) < c2);
+				break;
 			case MSC_ATTACKPCGT:	// attack pc > num
-				flag = (mob_counttargeted(md, NULL, 0) > c2); break;
+				flag = (mob_counttargeted(md, NULL, 0) > c2);
+				break;
 			case MSC_SLAVELE:		// slave <= num
-				flag = (mob_countslave(md) <= c2); break;
+				flag = (mob_countslave(md) <= c2);
+				break;
 			case MSC_ATTACKPCGE:	// attack pc >= num
-				flag = (mob_counttargeted(md, NULL, 0) >= c2); break;
+				flag = (mob_counttargeted(md, NULL, 0) >= c2);
+				break;
+			case MSC_AFTERSKILL:
+				flag = (md->skillid == c2);
+				break;
 			case MSC_SKILLUSED:		// specificated skill used
-				flag = ((event & 0xffff) == MSC_SKILLUSED && ((event >> 16) == c2 || c2 == 0)); break;
+				flag = ((event & 0xffff) == MSC_SKILLUSED && ((event >> 16) == c2 || c2 == 0));
+				break;
 			case MSC_MASTERHPLTMAXRATE:
 				{
 					struct block_list *bl = mob_getmasterhpltmaxrate(md, ms[i].cond2);
@@ -4832,6 +4843,7 @@ static void mob_readskilldb(void)
 		{ "closedattacked",    MSC_CLOSEDATTACKED    },
 		{ "longrangeattacked", MSC_LONGRANGEATTACKED },
 		{ "skillused",         MSC_SKILLUSED         },
+		{ "afterskill",        MSC_AFTERSKILL        },
 		{ "casttargeted",      MSC_CASTTARGETED      },
 		{ "masterhpltmaxrate", MSC_MASTERHPLTMAXRATE },
 	}, cond2[] ={

@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/17/06
+	* Added: Mob condition 'afterskill', imported from Nezumi [Tsuyuki]
 	* Added: Missing Pet Merchant NPC in Lighthalzen [Tsuyuki]
 	* Fixed: Translated some of the db/skill_tree.txt file, work in progress [Tsuyuki]
 	* Updated: Kiel Hyre/Odin's Temple/Abyss Lake/Thanatos Tower monster stats [Tsuyuki]
