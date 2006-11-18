@@ -1512,7 +1512,7 @@ int send_users_tochar(int tid, unsigned int tick, int id, int data) {
  */
 int check_connect_char_server(int tid, unsigned int tick, int id, int data) {
 	if (char_fd < 0 || session[char_fd] == NULL) {
-		printf("Attempt to connect to char-server (%s:%d). Please wait...\n", char_ip_str, char_port);
+		printf("Attempting to connect to char-server (%s:%d). Please wait...\n", char_ip_str, char_port);
 		chrif_state = 0;
 		char_fd = make_connection(char_ip, char_port);
 		if (char_fd != -1) {

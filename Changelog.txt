@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/17/06
+	* Fixed: Small fixes to SC_BLEEDING, from Nezumi [Tsuyuki]
+	* Added: Partially implemented 'onspawn', imported from Nezumi [Tsuyuki]
 	* Fixed: Some minor grammar problems in displayed text [Tsuyuki]
 	* Added: Mob condition 'masterattacked', imported from Nezumi [Tsuyuki]
 	* Changed: Extended the max number of mob skills from 35 to 50 [Tsuyuki]

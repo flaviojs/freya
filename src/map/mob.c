@@ -1152,6 +1152,8 @@ int mob_spawn(int id)
 	skill_unit_move(&md->bl, gettick_cache, 1);
 
 	clif_spawnmob(md);
+	
+	mobskill_use(md, gettick_cache, MSC_SPAWN);
 
 	return 0;
 }
@@ -4869,6 +4871,7 @@ static void mob_readskilldb(void)
 		{ "rudeattacked",      MSC_RUDEATTACKED      },
 		{ "masterattacked",    MSC_MASTERATTACKED    },
 		{ "masterhpltmaxrate", MSC_MASTERHPLTMAXRATE },
+		{ "onspawn",           MSC_SPAWN             },
 	}, cond2[] ={
 		{ "anybad",    -1           },
 		{ "stone",     SC_STONE     },
