@@ -5238,7 +5238,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 	case CG_LONGINGFREEDOM:
 		{
 			if (sc_data && sc_data[SC_LONGING].timer == -1 && sc_data[SC_DANCING].timer != -1 && sc_data[SC_DANCING].val4
-				&& sc_data[SC_DANCING].val1 != CG_MOONLIT) // if Moonlight Petals is in effect, Longing for Freedom will not work
+			&& sc_data[SC_DANCING].val1 != CG_MOONLIT && sc_data[SC_DANCING].val1 != CG_HERMODE) // if Moonlight Petals or Wand of Hermode is in effect, Longing for Freedom will not work
 			{
 				status_change_start(src, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
 				clif_skill_nodamage(src, bl, skillid, skilllv, 1);

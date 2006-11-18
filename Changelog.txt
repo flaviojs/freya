@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+11/18/06
+	* Fixed: You can no longer cast Longing for Freedom when you are in the effect of Wand of Hermode [Tsuyuki]
+
 11/17/06
 	* Fixed: When you target a player and they cloak/chasewalk, you will no longer continue to follow them [Tsuyuki]
 	 - Note: Need to test, requires two people so I couldn't check it myself
