@@ -4850,7 +4850,7 @@ int pc_follow_timer(int tid, unsigned int tick, int id, int data) {
 
 	sd->followtimer = -1;
 
-	if (pc_isdead(sd)) {
+	if (pc_isdead(sd) || pc_iscloaking(sd) || pc_ishiding(sd) || pc_ischasewalk(sd)) {
 		sd->followtarget = -1;
 		return 0;
 	}
