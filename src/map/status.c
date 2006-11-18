@@ -5146,6 +5146,7 @@ int status_change_timer_sub(struct block_list *bl, va_list ap) {
 	return 0;
 }
 
+// Note: This function removes almost all status effects when called
 int status_change_clear_buffs (struct block_list *bl) {
 	int i;
 	struct status_change *sc_data = status_get_sc_data(bl);
@@ -5153,7 +5154,9 @@ int status_change_clear_buffs (struct block_list *bl) {
 		return 0;
 
 	for (i = 0; i < SC_BUFFMAX; i++) {
-		if(i == SC_DECREASEAGI || i == SC_SLOWDOWN)
+		if(i == SC_DECREASEAGI || i == SC_SLOWDOWN) // Does not remove Decrease Agi and Slow Down
+			continue;
+		if(sc_data[SC_HERMODE].timer != -1 && i == SC_BERSERK) // Does not remove Frenzy if in Wand of Hermode AoE
 			continue;
 		if(sc_data[i].timer != -1)
 			status_change_end(bl,i,-1);
