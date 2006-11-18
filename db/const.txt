@@ -282,6 +282,7 @@ bAddItemHealRate	2028
 bLoseSPWhenUnequip	2029
 bExpAddRace	2030
 bSPGainRace	2031
+bIntravision	2032
 bAddMonsterDropItemGroup	2039
 bSPLossRate 2040
 bSPVanishRate	2042

@@ -461,7 +461,24 @@ int clif_send_sub(struct block_list *bl, va_list ap) {
 	}
 
 	if (sd->fd >= 0 && session[sd->fd] != NULL && sd->state.auth) {
-		if (packet_size_table[sd->packet_ver][WPACKETW(0)]) { // packet must exist for the client version
+		if (packet_size_table[sd->packet_ver][WPACKETW(0)]) {
+			//check intravision by maya purple card
+			if (sd->special_state.intravision && bl != src_bl)
+			{
+				int opt =0;
+				if (src_bl->type == BL_PC)
+				{
+					opt = ((struct map_session_data *) src_bl)->status.option;
+					
+				} else if (src_bl->type == BL_MOB) 
+				{
+					opt = ((struct mob_data *) src_bl)->option;
+				}
+				
+				if (opt && (opt & (2|4|16388))) 
+					WPACKETW(10) &= ~(2|4|16388);
+
+			}
 			SENDPACKET(sd->fd, len);
 		}
 	}
@@ -5188,7 +5205,8 @@ void clif_item_repair_list(struct map_session_data *sd)
 		}
 	}
 	if (c > 0) {
-		WPACKETW(0) = 0x177; // temporarily use same packet as clif_item_identify
+		//WPACKETW(0) = 0x177; // temporarily use same packet as clif_item_identify
+		WPACKETW(0) = 0x1fc;
 		WPACKETW(2) = c * 2 + 4;
 		SENDPACKET(sd->fd, WPACKETW(2));
 	}
@@ -7901,7 +7919,7 @@ void antibot_action(struct map_session_data *sd) {
 		// not immediatly
 		if ((rand() % 10) != 0)
 			return;
-		// send fake player (exactly same of the player, with HIDE option and char_id of the wisp server name)
+		// send fake player (exactly same of the player, with);HIDE option and char_id of the wisp server name)
 		memset(WPACKETP(0), 0, packet_len_table[0x1d8]);
 		WPACKETW( 0) = 0x1d8;
 		WPACKETL( 2) = server_char_id;
