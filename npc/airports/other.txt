@@ -1,3 +1,15 @@
+//===== Freya Script ======================================= 
+//= Other Airport Properties
+//===== By: ================================================== 
+//= Spirit Death
+//===== Current Version: ===================================== 
+//= 1.0
+//===== Compatible With: ===================================== 
+//= any Freya version
+//===== Additional Comments: ================================= 
+//= 1.0 first release [Spirit Death]
+//============================================================ 
+
 airplane.gat,240,64,5	script	Exit	857,{
 	mes "^FF0000[Warning]";
 	mes "Don't come to close ";
