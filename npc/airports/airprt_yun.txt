@@ -3,14 +3,16 @@
 //===== By: ================================================== 
 //= Spirit Death
 //===== Current Version: ===================================== 
-//= 1.0
+//= 1.1
 //===== Compatible With: ===================================== 
 //= any Freya version
 //===== Additional Comments: ================================= 
 //= 1.0 first release [Spirit Death]
+//= 1.1 Changed the way the script works a little [Tsuyuki]
 //============================================================ 
 
--	script	airportin	90,{
+y_airport.gat,126,43,5	script	Airport Staff::yunairportin	90,{
+
 	mes "[Airport Staff]";
 	mes "Welcome to the Airport.";
 	mes "How may I help you?";
@@ -55,7 +57,8 @@
 		close;
 }
 
--	script	airportout	90,{
+y_airport.gat,126,51,3	script	Airport Staff::yunairportout	90,{
+
 	mes "[Airport Staff]";
 	mes "Welcome";
 	mes "Please head this";
@@ -82,12 +85,10 @@
 		close;
 }
 
-y_airport.gat,126,43,5	duplicate(airportin)	Airport Staff	90
-y_airport.gat,143,43,5	duplicate(airportin)	Airport Staff	90
-y_airport.gat,158,43,5	duplicate(airportin)	Airport Staff	90
-y_airport.gat,126,51,3	duplicate(airportout)	Airport Staff	90
-y_airport.gat,143,49,3	duplicate(airportout)	Airport Staff	90
-y_airport.gat,158,50,3	duplicate(airportout)	Airport Staff	90
+y_airport.gat,143,43,5	duplicate(yunairportin)	Airport Staff	90
+y_airport.gat,158,43,5	duplicate(yunairportin)	Airport Staff	90
+y_airport.gat,143,49,3	duplicate(yunairportout)	Airport Staff	90
+y_airport.gat,158,50,3	duplicate(yunairportout)	Airport Staff	90
 
 y_airport.gat,143,63,4	script	Airport Staff	91,{
 
