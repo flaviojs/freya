@@ -5162,7 +5162,7 @@ void mapif_send(int fd, unsigned int len) {
 
 int check_connect_login_server(int tid, unsigned int tick, int id, int data) {
 	if (login_fd <= 0 || session[login_fd] == NULL) {
-		printf("Attempt to connect to login-server (%s:%d). Please wait...\n", login_ip_str, login_port);
+		printf("Attempting to connect to login-server (%s:%d). Please wait...\n", login_ip_str, login_port);
 		login_fd = make_connection(login_ip, login_port);
 		if (login_fd != -1) {
 			session[login_fd]->func_parse = parse_tologin;

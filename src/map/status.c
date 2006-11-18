@@ -2174,6 +2174,8 @@ int status_get_baseatk(struct block_list *bl) {
 				batk += batk * (5 * sc_data[SC_CONCENTRATION].val1) / 100;
 			if(sc_data[SC_BATKFOOD].timer != -1)
 				batk += sc_data[SC_BATKFOOD].val1;
+			if (sc_data[SC_BLEEDING].timer != -1)
+				batk -= batk * 25 / 100;
 		}
 	}
 	if (batk < 1) //base_atk‚ÍÅ’á‚Å‚à1
