@@ -5,6 +5,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/17/06
+	* Added: Intravision bonus to Maya Purple Card [Tsuyuki]
+	* Added: bIntravision, imported from Nezumi [Tsuyuki]
+	- Note: Tested, and doesn't seem to be working for some reason.. anyone seen zug/zugule?
 	* Fixed: Small fixes to SC_BLEEDING, from Nezumi [Tsuyuki]
 	* Added: Partially implemented 'onspawn', imported from Nezumi [Tsuyuki]
 	* Fixed: Some minor grammar problems in displayed text [Tsuyuki]
