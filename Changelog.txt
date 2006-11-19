@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/19/06
+	* Fixed: Medusa's now give proper experience/drops [Tsuyuki]
+	* Fixed: Updated Polymorph list to Arunafeltz and removed Duplicate/Event/MvP monsters [Tsuyuki]
 	* Fixed: Gravitation Field can now hit the Emperium in WoE [Tsuyuki]
 	* Fixed: Gloria Domini and Gravitation Field now ignore WoE damage reductions [Tsuyuki]
 
