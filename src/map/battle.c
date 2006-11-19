@@ -1837,24 +1837,20 @@ struct Damage battle_calc_weapon_attack(
 	    (md && (skill_num || !battle_config.mob_attack_attr_none)) ||
 	    (pd && (skill_num || !battle_config.pet_attack_attr_none))) {
 		short t_element = status_get_element(target);
-		if(!(!sd && tsd && battle_config.mob_ghostring_fix && t_ele == 8))
-		{
-			if(wd.damage > 0)
-			{
-				if(skill_num == MC_CARTREVOLUTION)
+		if (!(!sd && tsd && battle_config.mob_ghostring_fix && t_ele == 8)) {
+			if (wd.damage > 0) {
+				wd.damage = battle_attr_fix(wd.damage, s_ele, t_element);
+				if (skill_num == MC_CARTREVOLUTION)
 					s_ele = 0;
-
 				// SC_MAGNUM adds +20% fire damage to base damage but does never reduce damage
-				if(sc_data && sc_data[SC_MAGNUM].timer != -1)
-				{
+				if (sc_data && sc_data[SC_MAGNUM].timer != -1) {
 					int bonus_dmg = battle_attr_fix(wd.damage, 3, t_element) * (20 / 100);
-					
-					if(bonus_dmg > 0)
+						
+					if (bonus_dmg > 0) {
 						wd.damage = battle_attr_fix(wd.damage, s_ele, t_element) + bonus_dmg;
-					else
+				}	else {
 						wd.damage = battle_attr_fix(wd.damage, s_ele, t_element);
-				} else {
-					wd.damage = battle_attr_fix(wd.damage, s_ele, t_element);
+					}
 				}
 			}
 
