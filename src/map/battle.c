@@ -564,8 +564,9 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 
 	if(map[bl->m].flag.gvg && tmd) {
 		if (tmd->class >= 1285 && tmd->class <= 1288) {
-			//Skills can't hit the emp, except for 'RTB'
-			if (tmd->class == 1288 && (flag&BF_SKILL && skill_num != MO_TRIPLEATTACK))
+			// Skills can't hit Emperium, except for Raging Triple Blow and Gravitation Field
+			// Note: Gloria Domini/Pressure can no longer hit the Emperium, for future reference (kRO Patch) [Tsuyuki]
+			if ((tmd->class == 1288 && (flag&BF_SKILL && skill_num != MO_TRIPLEATTACK)) || (tmd->class == 1288 && (flag&BF_SKILL && skill_num != HW_GRAVITATION)))
 				return 0; // No need to continue calculating.. return 0 damage
 			
 			if (src->type == BL_PC) {
@@ -595,7 +596,7 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 				if (gc)
 					damage -= damage * (gc->defense / 100) * (battle_config.castle_defense_rate / 100);
 			}
-			if (flag&BF_SKILL) { //Skill attacks
+			if (flag&BF_SKILL && (skill_num != HW_GRAVITATION || skill_num != PA_PRESSURE)) { //Skill attacks, Gravitation Field and Gloria Domini/Pressure ignore all WoE reductions [Tsuyuki]
 				if (flag&BF_WEAPON) //All weapon skills get -40% damage penalty in WoE
 					damage = damage * battle_config.gvg_weapon_damage_rate / 100; //default rate 60%
 				else if (flag&BF_MAGIC) //All magic skills get -50% damage penalty in WoE
