@@ -881,9 +881,9 @@ AtCommandType is_atcommand(const int fd, struct map_session_data* sd, const char
 
 	nullpo_retr(AtCommand_None, sd);
 
-	/* if mutted, don't use GM command */
-	if (!battle_config.allow_atcommand_when_mute && sd->sc_count && sd->sc_data[SC_NOCHAT].timer != -1)
-		return AtCommand_Unknown;
+/* 	if muted, don't use GM command, commented for now */
+/*	if (!battle_config.allow_atcommand_when_mute && sd->sc_count && sd->sc_data[SC_NOCHAT].timer != -1)
+		return AtCommand_Unknown;*/
 
 	if (!message || !*message || strncmp(message, sd->status.name, strlen(sd->status.name)) != 0)
 		return AtCommand_None;

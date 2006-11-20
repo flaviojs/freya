@@ -5832,16 +5832,20 @@ int pc_damage(struct block_list *src, struct map_session_data *sd, int damage)
 		}
 	}
 
-	// activate Steel body if a super novice dies at 99+% exp [celest]
-	if (s_class == JOB_SUPER_NOVICE) {
-		if ((i = pc_nextbaseexp(sd)) <= 0)
+	// activate steel body effect if super novice dies at 99% exp
+	if(s_class == JOB_SUPER_NOVICE)
+	{
+		if((i = pc_nextbaseexp(sd)) <= 0)
 			i = sd->status.base_exp;
-		if (i > 0 && (j = sd->status.base_exp * 1000 / i) >= 990 && j <= 1000)
+		if(i > 0 && (j = sd->status.base_exp * 1000 / i) >= 990 && j <= 1000)
 			sd->state.snovice_flag = 3;
-	} else
-	if (s_class != JOB_NOVICE && // only novices/High novice/Baby novice will recieve no penalty
-	    !map[sd->bl.m].flag.nopenalty && !map[sd->bl.m].flag.gvg) {
-		if (battle_config.death_penalty_type_base > 0) {
+	}
+
+	// death exp penalty
+	if(s_class != JOB_NOVICE && !map[sd->bl.m].flag.nopenalty && !map[sd->bl.m].flag.gvg)
+	{
+		if(battle_config.death_penalty_type_base > 0)
+		{
 			double death_penalty_base;
 			if (sd->status.base_level >= battle_config.death_penalty_base5_lvl)
 				death_penalty_base = (double)battle_config.death_penalty_base5;

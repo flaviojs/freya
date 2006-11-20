@@ -5,6 +5,11 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/19/06
+	* Fixed: Super Novice now properly loses exp when it dies [Harbin]
+	* Changed: You can now pick up items / use @commands / use skills during SC_NOCHAT (Mute) [Tsuyuki]
+	 - Note: Muting is only applied automatically during chat floods, shouldn't have anything to do with actual gameplay
+	 - Note: Not to mention mute is really buggy, so this just makes it a little more convenient for people
+	* Fixed: Items can no longer be used in EDP-mode as per kRO [Tsuyuki]
 	* Fixed: Medusa's now give proper experience/drops [Tsuyuki]
 	* Fixed: Updated Polymorph list to Arunafeltz and removed Duplicate/Event/MvP monsters [Tsuyuki]
 	* Fixed: Gravitation Field can now hit the Emperium in WoE [Tsuyuki]

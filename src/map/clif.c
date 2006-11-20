@@ -8694,6 +8694,7 @@ void clif_parse_GlobalMessage(int fd, struct map_session_data *sd) { // S 0x008c
 
 //	nullpo_retv(sd); // checked before to call function
 
+// Cannot use Global Messaging system during the following statuses
 	if (sd->sc_data[SC_BERSERK].timer != -1 || //バーサーク時は会話も不可
 	    sd->sc_data[SC_NOCHAT].timer != -1) //チャット禁止
 		return;
@@ -9198,6 +9199,7 @@ void clif_parse_Wis(int fd, struct map_session_data *sd) { // S 0x0096 <len>.w <
 
 	//printf("clif_parse_Wis: message: '%s'.\n", RFIFOP(fd,28));
 
+// Cannot use whisper/pm system during following statuses
 	if (sd->sc_data[SC_BERSERK].timer != -1 || //バーサーク時は会話も不可
 	    sd->sc_data[SC_NOCHAT].timer != -1) //チャット禁止
 		return;
@@ -9378,11 +9380,11 @@ void clif_parse_TakeItem(int fd, struct map_session_data *sd) { // S 0x009f <ID>
 		return;
 	}
 
+// Cannot pick up items from floor during following statuses
 	if (sd->npc_id != 0 || sd->vender_id != 0 || sd->opt1 > 0 || sd->trade_partner != 0 ||
 	    sd->sc_data[SC_TRICKDEAD].timer != -1 || //死んだふり
 	    sd->sc_data[SC_BLADESTOP].timer != -1 || //白刃取り
-	    sd->sc_data[SC_BERSERK].timer != -1 || //バーサーク
-	    sd->sc_data[SC_NOCHAT].timer != -1) //会話禁止
+	    sd->sc_data[SC_BERSERK].timer != -1) //バーサーク
 		return;
 
 	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06 (by [Yor])
@@ -9526,12 +9528,16 @@ void clif_parse_UseItem(int fd, struct map_session_data *sd) { // S 0x00a7 <inde
 		clif_clearchar_area(&sd->bl, 1);
 		return;
 	}
-	if (sd->npc_id != 0 || sd->vender_id != 0 || (sd->opt1 > 0 && sd->opt1 != 6) ||
-	    sd->sc_data[SC_TRICKDEAD].timer != -1 || //死んだふり
-	    sd->sc_data[SC_BLADESTOP].timer != -1 || //白刃取り
-	    sd->sc_data[SC_BERSERK].timer != -1 ||
-		sd->sc_data[SC_GRAVITATION].timer !=- 1 ||
-	    sd->sc_data[SC_NOCHAT].timer != -1) //会話禁止
+	
+// Cannot use items during the following statuses
+	if (sd->npc_id != 0 || sd->vender_id != 0 ||
+		 (sd->opt1 > 0 && sd->opt1 != 6) || 
+			sd->sc_data[SC_TRICKDEAD].timer != -1 || 
+	    sd->sc_data[SC_BLADESTOP].timer != -1 || 
+	    sd->sc_data[SC_BERSERK].timer != -1 || 
+			sd->sc_data[SC_GRAVITATION].timer !=- 1 || 
+	    sd->sc_data[SC_NOCHAT].timer != -1 || 
+	    sd->sc_data[SC_EDP].timer != -1)
 		return;
 
 	pc_delinvincibletimer(sd);
@@ -9745,6 +9751,7 @@ void clif_parse_NpcSellListSend(int fd, struct map_session_data *sd) { // S 0x00
 void clif_parse_CreateChatRoom(int fd, struct map_session_data *sd) { // S 0x00d5 <len>.w <limit>.w <pub>.B <passwd>.8B <title>.?B
 //	nullpo_retv(sd); // checked before to call function
 
+// Cannot create chat rooms during the following statuses
 	if (sd->sc_data[SC_BERSERK].timer != -1 || //バーサーク時は会話も不可
 	    sd->sc_data[SC_NOCHAT].timer != -1) { //チャット禁止
 		// no message
@@ -10164,9 +10171,10 @@ void clif_parse_UseSkillToId(int fd, struct map_session_data *sd) { // S 0x0113 
 		return;
 	}
 
+// Cannot use skills during the following statuses
 	if ((sd->sc_data[SC_TRICKDEAD].timer != -1 && skillnum != NV_TRICKDEAD) ||
-	     sd->sc_data[SC_BERSERK].timer != -1 || sd->sc_data[SC_NOCHAT].timer != -1 ||
-	    (sd->sc_data[SC_GOSPEL].timer != -1 && sd->sc_data[SC_GOSPEL].val4 == BCT_SELF && skillnum != PA_GOSPEL) ||
+	     sd->sc_data[SC_BERSERK].timer != -1 || (sd->sc_data[SC_GOSPEL].timer != -1 &&
+			 sd->sc_data[SC_GOSPEL].val4 == BCT_SELF && skillnum != PA_GOSPEL) ||
 	     sd->sc_data[SC_WEDDING].timer != -1 || sd->view_class == 22)
 		return;
 
@@ -10378,8 +10386,8 @@ void clif_parse_UseSkillToPos(int fd, struct map_session_data *sd) { // S 0x0116
 	}
 
 	if ((sd->sc_data[SC_TRICKDEAD].timer != -1 && skillnum != NV_TRICKDEAD) ||
-	    sd->sc_data[SC_BERSERK].timer != -1 || sd->sc_data[SC_NOCHAT].timer != -1 ||
-	    sd->sc_data[SC_WEDDING].timer != -1 || sd->view_class == 22)
+	    sd->sc_data[SC_BERSERK].timer != -1 || sd->sc_data[SC_WEDDING].timer != -1 || 
+	    sd->view_class == 22)
 		return;
 
 	sd->idletime = gettick_cache; // for party experience
@@ -10415,7 +10423,6 @@ void clif_parse_UseSkillMap(int fd, struct map_session_data *sd) { // S 0x011b <
 	if (sd->bl.prev == NULL || sd->chatID != 0 || sd->npc_id != 0 || sd->vender_id != 0 ||
 	    sd->sc_data[SC_TRICKDEAD].timer != -1 ||
 	    sd->sc_data[SC_BERSERK].timer != -1 ||
-	    sd->sc_data[SC_NOCHAT].timer != -1 ||
 	    sd->sc_data[SC_WEDDING].timer != -1 ||
 	    sd->view_class == 22)
 		return;
@@ -11072,6 +11079,7 @@ void clif_parse_PartyMessage(int fd, struct map_session_data *sd) { // S 0x0108 
 
 //	nullpo_retv(sd); // checked before to call function
 
+// Cannot use party chat during the following statuses
 	if (sd->sc_data[SC_BERSERK].timer != -1 || //バーサーク時は会話も不可
 	    sd->sc_data[SC_NOCHAT].timer != -1) //チャット禁止
 		return;
@@ -11464,6 +11472,7 @@ void clif_parse_GuildMessage(int fd, struct map_session_data *sd) { // S 0x017e 
 
 //	nullpo_retv(sd); // checked before to call function
 
+// Cannot use guild chat during the following statuses
 	if (sd->sc_data[SC_BERSERK].timer != -1 || //バーサーク時は会話も不可
 	    sd->sc_data[SC_NOCHAT].timer != -1) //チャット禁止
 		return;
