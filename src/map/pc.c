@@ -3123,16 +3123,15 @@ void pc_dropitem(struct map_session_data *sd, int n, int amount) {
 	return;
 }
 
-/*==========================================
- * ƒAƒCƒeƒ€‚ğE‚¤
- *------------------------------------------
- */
-void pc_takeitem(struct map_session_data *sd, struct flooritem_data *fitem) {
-	int flag;
+// pick an item from the ground
+void pc_takeitem(struct map_session_data *sd, struct flooritem_data *fitem)
+{
 	struct map_session_data *first_sd, *second_sd, *third_sd;
+	int flag;
 
-//	nullpo_retr(0, sd); // checked before to call function
-//	nullpo_retr(0, fitem); // checked before to call function
+/* checked already */
+//	nullpo_retr(0, sd);
+//	nullpo_retr(0, fitem);
 
 	if (fitem->first_get_id > 0) {
 		first_sd = map_id2sd(fitem->first_get_id);
@@ -3165,16 +3164,24 @@ void pc_takeitem(struct map_session_data *sd, struct flooritem_data *fitem) {
 		}
 	}
 
-	if ((flag = pc_additem(sd, &fitem->item_data, fitem->item_data.amount)))
-		// d—Êover‚Åæ“¾¸”s
-		clif_additem(sd, 0, 0, flag);
-	else {
-		/* æ“¾¬Œ÷ */
-		if (sd->attacktimer != -1)
-			pc_stopattack(sd);
-		clif_takeitem(&sd->bl, &fitem->bl);
-		map_clearflooritem(fitem->bl.id);
+	/* cant pick up items while hiding */
+	if(pc_ishiding(sd) || pc_iscloaking(sd) || pc_ischasewalk(sd))
+	{
+		clif_additem(sd, 0, 0, 6);
+		return;
 	}
+
+	if((flag = pc_additem(sd, &fitem->item_data, fitem->item_data.amount)))
+	{
+		clif_additem(sd, 0, 0, flag);
+		return;
+	}
+
+	if(sd->attacktimer != -1)
+		pc_stopattack(sd);
+	
+	clif_takeitem(&sd->bl, &fitem->bl);
+	map_clearflooritem(fitem->bl.id);
 
 	return;
 }

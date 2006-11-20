@@ -4,6 +4,14 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+11/20/06
+	* Fixed: AoE offensive skills no longer affect party members in PvP, and supportive party skills now do [Tsuyuki]
+	* Changed: Enabled Pet skills by default [Tsuyuki]
+	* Fixed: Monsters will now wait 2.5 seconds before attacking instead of 5 seconds when you appear on a map [Tsuyuki]
+	 - Note: 2.5 seconds may be slightly off.. more or less
+	* Fixed: Mobs now start random walking when target becomes non-targetable (WiP) [Harbin]
+	* Fixed: Players can no longer loot items while they are hiding/cloaking/chasewalking [Harbin]
+
 11/19/06
 	* Fixed: Super Novice now properly loses exp when it dies [Harbin]
 	* Changed: You can now pick up items / use @commands / use skills during SC_NOCHAT (Mute) [Tsuyuki]
