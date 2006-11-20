@@ -4,6 +4,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+11/20/06
+	* Fixed: monster should start random walking when target player becomes non-targetable (out-of-range, hidden ...) [Harbin]
+	* Fixed: players can no longer loot items while they are hiding/cloaking/chasewalking [Harbin]
+
 11/19/06
 	* Fixed: Super Novice now properly loses exp when it dies [Harbin]
 	* Changed: You can now pick up items / use @commands / use skills during SC_NOCHAT (Mute) [Tsuyuki]

@@ -641,12 +641,13 @@ static void mob_walk(struct mob_data *md, unsigned int tick, int data) {
  * Attack processing of mob
  *------------------------------------------
  */
-static void mob_attack(struct mob_data *md, unsigned int tick, int data) {
+static void mob_attack(struct mob_data *md, unsigned int tick, int data)
+{
 	struct block_list *tbl = NULL;
 	struct map_session_data *tsd = NULL;
 	struct mob_data *tmd = NULL;
 
-	int mode, race, range;
+	int mode, race, range, unlock_target = 0;
 
 //	nullpo_retv(md); // checked before to call function
 
@@ -654,62 +655,63 @@ static void mob_attack(struct mob_data *md, unsigned int tick, int data) {
 	md->state.state = MS_IDLE;
 	md->state.skillstate = MSS_IDLE;
 
-	if (md->skilltimer != -1) // スキル使用中
+	if(md->skilltimer != -1)
 		return;
 
-	if (md->opt1 > 0 || md->option & 2)
+	if(md->opt1 > 0 || md->option & 2)
 		return;
 
-	if (md->sc_data[SC_AUTOCOUNTER].timer != -1)
+	if(md->sc_data[SC_AUTOCOUNTER].timer != -1)
 		return;
 
-	if (md->sc_data[SC_BLADESTOP].timer != -1)
+	if(md->sc_data[SC_BLADESTOP].timer != -1)
 		return;
 
-	if ((tbl = map_id2bl(md->target_id)) == NULL) {
+	if((tbl = map_id2bl(md->target_id)) == NULL)
+	{
 		md->target_id = 0;
 		md->state.targettype = NONE_ATTACKABLE;
 		return;
 	}
 
-	if (tbl->type == BL_PC)
+	if(tbl->type == BL_PC)
 		tsd = (struct map_session_data *)tbl;
-	else if (tbl->type == BL_MOB)
+	else if(tbl->type == BL_MOB)
 		tmd = (struct mob_data *)tbl;
 	else
 		return;
 
-	if (tsd) {
-		if (pc_isdead(tsd) || tsd->invincible_timer != -1 || pc_isinvisible(tsd) || md->bl.m != tbl->m || tbl->prev == NULL || distance(md->bl.x, md->bl.y, tbl->x, tbl->y) >= 13) {
-			md->target_id = 0;
-			md->state.targettype = NONE_ATTACKABLE;
-			md->attacked_id = 0;
-			return;
-		}
-	} else if (tmd) {
-		if (md->bl.m != tbl->m || tbl->prev == NULL || distance(md->bl.x, md->bl.y, tbl->x, tbl->y) >= 13) {
-			md->target_id = 0;
-			md->state.targettype = NONE_ATTACKABLE;
-			md->attacked_id = 0;
-			return;
-		}
-	}
-
-	if (!md->mode)
+	if(!md->mode)
 		mode = mob_db[md->class].mode;
 	else
 		mode = md->mode;
 
 	race = mob_db[md->class].race;
-	if (!(mode & 0x80)) {
+
+	if(!(mode & 0x80))
+	{
 		md->target_id = 0;
 		md->state.targettype = NONE_ATTACKABLE;
 		return;
 	}
-	if (tsd && !(mode & 0x20) && (tsd->sc_data[SC_TRICKDEAD].timer != -1 || tsd->sc_data[SC_BASILICA].timer != -1 ||
-	    ((pc_ishiding(tsd) || tsd->state.gangsterparadise) && !((race == 4 || race == 6) && !tsd->perfect_hiding)))) {
+
+	if(md->bl.m != tbl->m || tbl->prev == NULL || distance(md->bl.x, md->bl.y, tbl->x, tbl->y) >= 13)
+	{
+		unlock_target = 1;
+	} else if(tsd) {
+		if(pc_isdead(tsd) || pc_isinvisible(tsd) || tsd->state.gangsterparadise || tsd->perfect_hiding || tsd->invincible_timer != -1 || tsd->sc_data[SC_TRICKDEAD].timer != -1 || tsd->sc_data[SC_BASILICA].timer != -1)
+			unlock_target = 1;
+		if(race != 4 && race != 6 && (pc_ishiding(tsd) || pc_iscloaking(tsd) || pc_ischasewalk(tsd)))
+			unlock_target = 1;
+	}
+
+	if(unlock_target == 1)
+	{
 		md->target_id = 0;
+		md->attacked_id = 0;
 		md->state.targettype = NONE_ATTACKABLE;
+		mob_stop_walking(md, 1);
+		mob_changestate(md, MS_WALK, 0);
 		return;
 	}
 
@@ -1189,7 +1191,7 @@ void mob_stopattack(struct mob_data *md) {
  * The stop of MOB's walking
  *------------------------------------------
  */
-void mob_stop_walking(struct mob_data *md,int type)
+void mob_stop_walking(struct mob_data *md, int type)
 {
 	nullpo_retv(md);
 
@@ -2428,16 +2430,15 @@ int mob_damage(struct block_list *src, struct mob_data *md, int damage, int type
 		return 0;
 	}
 
-	if (md->sc_data[SC_ENDURE].timer == -1)
+	if(md->sc_data[SC_ENDURE].timer == -1)
 		mob_stop_walking(md, 3);
-	if (damage > max_hp >> 2)
+	if(damage > max_hp >> 2)
 		skill_stop_dancing(&md->bl, 0);
 
-	if (md->hp > max_hp)
+	if(md->hp > max_hp)
 		md->hp = max_hp;
 
-	// The amount of overkill rounds to hp.
-	if (damage > md->hp)
+	if(damage > md->hp)
 		damage = md->hp;
 
 	if (!(type & 2)) {
