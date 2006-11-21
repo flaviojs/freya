@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/20/06
+	* Fixed: Updated and enabled Novice WoE [Tsuyuki]
 	* Removed: Unnecessary and outdated old WoE scripts [Tsuyuki]
 	* Fixed: AoE offensive skills no longer affect party members in PvP, and supportive party skills now do [Tsuyuki]
 	* Changed: Enabled Pet skills by default [Tsuyuki]
