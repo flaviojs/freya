@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+11/21/06
+	* Removed: Unnecessary /client folder files [Tsuyuki]
+
 11/20/06
 	* Fixed: Updated and disabled Novice WoE by default (No kRO proof it even exists) [Tsuyuki]
 	* Removed: Unnecessary and outdated old WoE scripts [Tsuyuki]
