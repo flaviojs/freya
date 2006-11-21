@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/21/06
+	* Fixed: Re-disabled pet skills automatically [Tsuyuki]
+	 - Note: Apparently they aren't enabled in kRO
 	* Added: Alice/Zealotus Pet Skills partially implemented [Tsuyuki]
 	 - Note: Incorrect damage/heal values, and Sohee should heal hp AND sp to 100% (only heals to 25% right now)
 	* Removed: Unnecessary /client folder files [Tsuyuki]
