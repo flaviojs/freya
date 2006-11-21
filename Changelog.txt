@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/21/06
+	* Fixed: Modification of status.c to transmit personal crusader's skill during devotion [Damz Fish]
 	* Fixed: Re-disabled pet skills automatically [Tsuyuki]
 	 - Note: Apparently they aren't enabled in kRO
 	* Added: Alice/Zealotus Pet Skills partially implemented [Tsuyuki]
