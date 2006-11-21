@@ -1743,12 +1743,13 @@ int skill_attack(int attack_type, struct block_list* src, struct block_list *dsr
 				rdamage += damage * tsd->short_weapon_damage_return / 100;
 				if (rdamage < 1) rdamage = 1;
 			}
-			if(sc_data && sc_data[SC_REFLECTSHIELD].timer != -1) { //リフレクトシールド時
-				rdamage += damage * sc_data[SC_REFLECTSHIELD].val2 / 100; //跳ね返し計算
-				if(rdamage < 1) rdamage = 1;
+			if(sc_data && sc_data[SC_REFLECTSHIELD].timer != -1 && skillid != WS_CARTTERMINATION)
+			{
+				rdamage += damage * sc_data[SC_REFLECTSHIELD].val2 / 100;
+				if(rdamage < 1)
+					rdamage = 1;
 			}
-		}
-		else { //No other choice, has to be BF_LONG
+		} else { //No other choice, has to be BF_LONG
 			if(tsd && tsd->long_weapon_damage_return > 0) { //対象がPCの時
 				rdamage += damage * tsd->long_weapon_damage_return / 100;
 				if(rdamage < 1) rdamage = 1;
@@ -2796,14 +2797,15 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 			{
 				int dist = distance(bl->x, bl->y, skill_area_temp[2], skill_area_temp[3]);
 				skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, 0x0500 | dist);
+				status_change_start(src, SC_MAGNUM, 1, 0, 0, 0, 10000, 0);
 			}
 		} else {
 			skill_area_temp[1] = src->id;
 			skill_area_temp[2] = src->x;
 			skill_area_temp[3] = src->y;
 			map_foreachinarea(skill_area_sub, src->m, src->x - 2, src->y - 2, src->x + 2, src->y + 2, 0, src, skillid, skilllv, tick, flag | BCT_ENEMY | 1, skill_castend_damage_id);
-			status_change_start(src, SC_MAGNUM, 1, 0, 0, 0, 10000, 0);
 			clif_skill_nodamage(src, src, skillid, skilllv, 1);
+			status_change_start(src, SC_MAGNUM, 1, 0, 0, 0, 10000, 0);
 			if(sd)
 				pc_blockskill_start(sd, skillid, skill_get_time(skillid, skilllv)); //block the skill for skill_get_time(skillid, skilllv) seconds
 		}

@@ -3273,6 +3273,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			case SC_ATKPOT:
 			case SC_MATKPOT:
 			case SC_CONCENTRATION:
+			case SC_MAGNUM:
 				break;
 			case SC_GOSPEL:
 				if(sc_data[type].val4 == BCT_SELF)
@@ -4184,6 +4185,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			break;
 
 		case SC_GDSKILLDELAY:
+		case SC_MAGNUM:
 			break;
 
 		default:

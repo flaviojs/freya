@@ -796,8 +796,7 @@ int battle_addmastery(struct map_session_data *sd, struct block_list *target, in
 	return (damage);
 }
 
-struct Damage battle_calc_weapon_attack(
-	struct block_list *src, struct block_list *target, int skill_num, int skill_lv, int wflag)
+struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_list *target, int skill_num, int skill_lv, int wflag)
 {
 	struct map_session_data *sd = NULL, *tsd = NULL;
 	struct pet_data *pd = NULL;
@@ -1833,29 +1832,25 @@ struct Damage battle_calc_weapon_attack(
 	if(skill_num == TF_POISON)
 		ATK_ADD(15 * skill_lv);
 
-	// calculate elemental damage fix
-	if ((sd && (skill_num || !battle_config.pc_attack_attr_none)) ||
-	    (md && (skill_num || !battle_config.mob_attack_attr_none)) ||
-	    (pd && (skill_num || !battle_config.pet_attack_attr_none))) {
-		short t_element = status_get_element(target);
-		if (!(!sd && tsd && battle_config.mob_ghostring_fix && t_ele == 8)) {
-			if (wd.damage > 0) {
-				wd.damage = battle_attr_fix(wd.damage, s_ele, t_element);
-				if (skill_num == MC_CARTREVOLUTION)
+	/* elemental damage fix */
+	if((sd && (skill_num || !battle_config.pc_attack_attr_none)) || (md && (skill_num || !battle_config.mob_attack_attr_none)) || (pd && (skill_num || !battle_config.pet_attack_attr_none)))
+	{
+		if(!(sd && tsd && battle_config.mob_ghostring_fix && t_ele == 8))
+		{
+			short t_element = status_get_element(target);
+			if(wd.damage > 0)
+			{
+				/* Cart Revolution always deals neutral damage */
+				if(skill_num == MC_CARTREVOLUTION)
 					s_ele = 0;
-				// SC_MAGNUM adds +20% fire damage to base damage but does never reduce damage
-				if (sc_data && sc_data[SC_MAGNUM].timer != -1) {
-					int bonus_dmg = battle_attr_fix(wd.damage, 3, t_element) * (20 / 100);
-						
-					if (bonus_dmg > 0) {
-						wd.damage = battle_attr_fix(wd.damage, s_ele, t_element) + bonus_dmg;
-				}	else {
-						wd.damage = battle_attr_fix(wd.damage, s_ele, t_element);
-					}
-				}
-			}
 
-			if(flag.lefthand && wd.damage2 > 0)
+				/* Magnum Break:s 20% fire damage bonus */
+				if(sc_data && sc_data[SC_MAGNUM].timer != -1)
+					wd.damage = battle_attr_fix(wd.damage, s_ele, t_element) + (battle_attr_fix(wd.damage, 3, t_element) * 20 / 100);
+				else
+					wd.damage = battle_attr_fix(wd.damage, s_ele, t_element);
+			}
+			if(wd.damage2 > 0 && flag.lefthand)
 				wd.damage2 = battle_attr_fix(wd.damage2, s_ele, t_element);
 		}
 	}
@@ -2083,14 +2078,16 @@ struct Damage battle_calc_weapon_attack(
 		breakrate_[0] += sd->break_weapon_rate;
 		breakrate_[1] += sd->break_armor_rate;
 
-		if (sd->sc_count) {
-			if (sd->sc_data[SC_MELTDOWN].timer != -1 && skill_num != WS_CARTTERMINATION) {
-				breakrate_[0] += 100 * sd->sc_data[SC_MELTDOWN].val1; //weapon
-				breakrate_[1] = 70 * sd->sc_data[SC_MELTDOWN].val1; //armor
+		if(sd->sc_count)
+		{
+			if(sd->sc_data[SC_MELTDOWN].timer != -1 && skill_num != WS_CARTTERMINATION)
+			{
+				breakrate_[0] += 100 * sd->sc_data[SC_MELTDOWN].val1;	//weapon
+				breakrate_[1] = 70 * sd->sc_data[SC_MELTDOWN].val1;		//armor
 			}
-			if (sd->sc_data[SC_OVERTHRUST].timer != -1)
+			if(sd->sc_data[SC_OVERTHRUST].timer != -1)
 				breakrate += 10;
-			if (sd->sc_data[SC_MAXOVERTHRUST].timer != -1)
+			if(sd->sc_data[SC_MAXOVERTHRUST].timer != -1)
 				breakrate += 10;
 		}
 
