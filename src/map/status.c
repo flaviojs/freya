@@ -3273,6 +3273,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			case SC_ATKPOT:
 			case SC_MATKPOT:
 			case SC_CONCENTRATION:
+			case SC_MAGNUM:
 				break;
 			case SC_GOSPEL:
 				if(sc_data[type].val4 == BCT_SELF)
@@ -3293,12 +3294,26 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			scflag.calc = 1;
 			if (tick <= 0) tick = 1000;	/* (オートバーサーク) */
 			break;
-		case SC_ENDURE:				/* インデュア */
-			if (tick <= 0)
-				tick = 1000 * 60;
-			scflag.calc = 1; // for updating mdef
-			val2 = 7;
-			break;
+        case SC_ENDURE:                /* インデュア */
+            if (tick <= 0)
+                tick = 1000 * 60;
+            scflag.calc = 1; // for updating mdef
+            val2 = 7;
+            
+            //damz fish help for devotion
+            if (sd)
+            {    
+                struct map_session_data *tsd;
+                int i;
+                for (i = 0; i < 5; i++)
+                {    
+                    if (sd->dev.val1[i] && (tsd = map_id2sd(sd->dev.val1[i])))
+                        status_change_start(&tsd->bl,SC_ENDURE,0,0,0,0,tick,1);
+                }//for (i = 0; i < 5; i++)
+            }//if (sd)
+            //damz fish help for devotion
+            
+            break;
 		case SC_AUTOBERSERK:
 			if(!(flag&4))
 				tick = 60 * 1000;
@@ -3493,17 +3508,57 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 		case SC_GHOSTWEAPON:
 			skill_enchant_elemental_end(bl, type);
 			break;
-		case SC_DEVOTION:			/* ディボーション */
-			if(!(flag&4))
-				scflag.calc = 1;
-			break;
+        case SC_DEVOTION:            /* ディボーション */
+            if(!(flag&4))
+                scflag.calc = 1;
+            
+            struct map_session_data *src;
+            if ((src = map_id2sd(val1)) && src->sc_count)
+            {    
+                int type2 = SC_AUTOGUARD;
+                if (src->sc_data[type2].timer != -1)
+                        status_change_start(bl,type2,src->sc_data[type2].val1,0,0,0,tick,1);
+                
+                type2 = SC_ENDURE;
+                if (src->sc_data[type2].timer != -1)
+                        status_change_start(bl,type2,0,0,0,0,tick,1);
+
+                
+                type2 = SC_DEFENDER;
+                if (src->sc_data[type2].timer != -1)
+                    status_change_start(bl,type2,src->sc_data[type2].val1,src->sc_data[type2].val2,0,0,tick,1);
+                        
+                 type2 = SC_REFLECTSHIELD;
+                if (src->sc_data[type2].timer != -1)
+                    status_change_start(bl,type2,src->sc_data[type2].val1,0,0,0,tick,1);  
+
+                                type2 = SC_SHRINK;
+                if (src->sc_data[type2].timer != -1)
+                    status_change_start(bl,type2,src->sc_data[type2].val1,0,0,0,tick,1);
+            }
+            break;
+			
 		case SC_PROVIDENCE:			/* プロヴィデンス */
 			scflag.calc = 1;
 			val2=val1*5;
 			break;
-		case SC_REFLECTSHIELD:
-			val2=10+val1*3;
-			break;
+        case SC_REFLECTSHIELD:
+            val2=10+val1*3;
+
+            //damz fish help for devotion
+            if (sd)
+            {    
+                struct map_session_data *tsd;
+                int i;
+                for (i = 0; i < 5; i++)
+                {    
+                    if (sd->dev.val1[i] && (tsd = map_id2sd(sd->dev.val1[i])))
+                        status_change_start(&tsd->bl,SC_REFLECTSHIELD,val1,0,0,0,tick,1);
+                }//for (i = 0; i < 5; i++)
+            }//if (sd)
+            //damz fish help for devotion
+            break;
+			
 		case SC_STRIPWEAPON:
 			if (val2==0) val2=90;
 			break;
@@ -3870,8 +3925,20 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 		case SC_ANKLE:
 		case SC_STOP:
 		case SC_SCRESIST:
-		case SC_SHRINK:
-			break;
+        case SC_SHRINK:
+            //damz fish help for devotion
+            if (sd)
+            {    
+                struct map_session_data *tsd;
+                int i;
+                for (i = 0; i < 5; i++)
+                {    
+                    if (sd->dev.val1[i] && (tsd = map_id2sd(sd->dev.val1[i])))
+                        status_change_start(&tsd->bl,SC_SHRINK,val1,0,0,0,tick,1);
+                }//for (i = 0; i < 5; i++)
+            }//if (sd)
+            //damz fish help for devotion
+            break;
 
 		/* スキルじゃない/時間に関係しない */
 		case SC_RIDING:
@@ -3888,21 +3955,48 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			tick = 600 * 1000;
 			break;
 
-		case SC_AUTOGUARD:
-			{
-				int i, t;
-				for(i = val2 = 0; i < val1; i++) {
-					t = 5 - (i >> 1);
-					val2 += (t < 0) ? 1 : t;
-				}
-			}
-			break;
+        case SC_AUTOGUARD:
+            {
+                int i, t;
+                for(i = val2 = 0; i < val1; i++) {
+                    t = 5 - (i >> 1);
+                    val2 += (t < 0) ? 1 : t;
+                }
+                //Damz Fish help for devotion
+                if (sd)
+                {
+                    struct map_session_data *tsd;
+                    int i;
+                    for (i = 0; i < 5; i++)
+                    {
+                        if (sd->dev.val1[i] && (tsd = map_id2sd(sd->dev.val1[i])))
+                            status_change_start(&tsd->bl,SC_AUTOGUARD,val1,0,0,0,tick,1);
+                    }//for (i = 0; i < 5; i++)
+                }//if(sd)
+            //end damz fish help for devotion
+            }
+            break;
 
-		case SC_DEFENDER:
-			scflag.calc = 1;
-			if(!flag)
-				val2 = 5 + val1 * 15;
-			break;
+         case SC_DEFENDER:
+            scflag.calc = 1;
+            if(!flag)
+            {
+                val2 = 5 + val1 * 15;
+            }
+            
+            //damz fish help for devotion
+            if (sd)
+            {
+                struct map_session_data *tsd;
+                int i;
+                for (i = 0; i < 5; i++)
+                {    
+                    if (sd->dev.val1[i] && (tsd = map_id2sd(sd->dev.val1[i])))
+                        status_change_start(&tsd->bl,SC_DEFENDER,val1,val2,0,0,tick,1);
+                } //for (i = 0; i < 5; i++)
+            }// if (sd)
+            //end Damz Fish help for devotion
+            break;
 
 		case SC_KEEPING:
 		case SC_BARRIER:
@@ -4091,6 +4185,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			break;
 
 		case SC_GDSKILLDELAY:
+		case SC_MAGNUM:
 			break;
 
 		default:
@@ -4297,7 +4392,98 @@ int status_change_end(struct block_list* bl, int type, int tid)
 
 		switch(type) {	/* 異常の種類ごとの処理 */
 			case SC_PROVOKE:			/* プロボック */
-			case SC_ENDURE:
+            case SC_ENDURE:
+			{
+				//damz fish help for devotion
+				struct map_session_data *sd=NULL;
+				sd = (struct map_session_data *)bl;
+				if (sd)
+				{    
+					struct map_session_data *tsd;
+					int i;
+					for (i = 0; i < 5; i++)
+					{    
+						if (sd->dev.val1[i] && (tsd = map_id2sd(sd->dev.val1[i])))
+						status_change_end(&tsd->bl,SC_ENDURE,-1);
+					}//for (i = 0; i < 5; i++)
+				}//if (sd)
+				//damz fish help for devotion
+			}
+            break;
+            
+            case SC_AUTOGUARD:
+            {
+                struct map_session_data *sd=NULL;
+                sd = (struct map_session_data *)bl;
+                //damz fish help for devotion
+                if (sd)
+                {    
+                    struct map_session_data *tsd;
+                    int i;
+                    for (i = 0; i < 5; i++)
+                    {    
+                        if (sd->dev.val1[i] && (tsd = map_id2sd(sd->dev.val1[i])))
+                            status_change_end(&tsd->bl,SC_AUTOGUARD,-1);
+                    }//for (i = 0; i < 5; i++)
+                }//if (sd)
+            break;
+            }
+            //damz fish help for devotion
+            
+            case SC_DEFENDER:
+            {
+                struct map_session_data *sd=NULL;
+                sd = (struct map_session_data *)bl;
+                //damz fish help for devotion
+                if (sd)
+                {    
+                    struct map_session_data *tsd;
+                    int i;
+                    for (i = 0; i < 5; i++)
+                    {    
+                        if (sd->dev.val1[i] && (tsd = map_id2sd(sd->dev.val1[i])))
+                            status_change_end(&tsd->bl,SC_DEFENDER,-1);
+                    }//for (i = 0; i < 5; i++)
+                }//if (sd)
+            break;
+            }
+            //damz fish help for devotion
+            
+            case SC_REFLECTSHIELD:
+            {
+                struct map_session_data *sd=NULL;
+                sd = (struct map_session_data *)bl;
+                //damz fish help for devotion
+                if (sd)
+                {    
+                    struct map_session_data *tsd;
+                    int i;
+                    for (i = 0; i < 5; i++)
+                    {    
+                        if (sd->dev.val1[i] && (tsd = map_id2sd(sd->dev.val1[i])))
+                            status_change_end(&tsd->bl,SC_REFLECTSHIELD,-1);
+                    }//for (i = 0; i < 5; i++)
+                }//if (sd)
+            break;
+            }
+            
+            case SC_SHRINK:
+            {
+                struct map_session_data *sd=NULL;
+                sd = (struct map_session_data *)bl;
+                //damz fish help for devotion
+                if (sd)
+                {    
+                    struct map_session_data *tsd;
+                    int i;
+                    for (i = 0; i < 5; i++)
+                    {    
+                        if (sd->dev.val1[i] && (tsd = map_id2sd(sd->dev.val1[i])))
+                            status_change_end(&tsd->bl,SC_SHRINK,-1);
+                    }//for (i = 0; i < 5; i++)
+                }//if (sd)
+            break;
+            }
 			case SC_CONCENTRATE:		/* 集中力向上 */
 			case SC_BLESSING:			/* ブレッシング */
 			case SC_ANGELUS:			/* アンゼルス */
@@ -4329,7 +4515,6 @@ int status_change_end(struct block_list* bl, int type, int tid)
 			case SC_SERVICEFORYOU:			/* サービスフォーユー */
 			case SC_EXPLOSIONSPIRITS:	// 爆裂波動
 			case SC_STEELBODY:			// 金剛
-			case SC_DEFENDER:
 			case SC_ASPDPOTION0:		/* 増速ポーション */
 			case SC_ASPDPOTION1:
 			case SC_ASPDPOTION2:
@@ -4405,14 +4590,35 @@ int status_change_end(struct block_list* bl, int type, int tid)
 			case SC_BERSERK:			/* バーサーク */
 				calc_flag = 1;
 				break;
-			case SC_DEVOTION:		/* ディボーション */
-				{
-					struct map_session_data *md = map_id2sd(sc_data[type].val1);
-					sc_data[type].val1=sc_data[type].val2=0;
-					skill_devotion(md,bl->id);
-					calc_flag = 1;
-				}
-				break;
+            case SC_DEVOTION:        /* ディボーション */
+                {
+                    struct map_session_data *md = map_id2sd(sc_data[type].val1);
+                    sc_data[type].val1=sc_data[type].val2=0;
+                    skill_devotion(md,bl->id);
+                    calc_flag = 1;
+                        
+                    int type2 = SC_AUTOGUARD;
+                    if (sc_data[type2].timer != -1)
+                        status_change_end(bl,type2,-1);
+                                    
+                    type2 = SC_ENDURE;        
+                    if (sc_data[type2].timer != -1)
+                        status_change_end(bl,type2,-1);
+
+                    type2 = SC_DEFENDER;
+                    if (sc_data[type2].timer != -1)
+                        status_change_end(bl,type2,-1);
+                        
+                    type2 = SC_REFLECTSHIELD;
+                    if (sc_data[type2].timer != -1)
+                        status_change_end(bl,type2,-1);
+                    
+                    type2 = SC_SHRINK;
+                    if (sc_data[type2].timer != -1)
+                        status_change_end(bl,type2,-1);
+                    
+                }
+                break;
 			case SC_BLADESTOP:
 				{
 				struct status_change *t_sc_data = status_get_sc_data((struct block_list *)sc_data[type].val4);

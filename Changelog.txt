@@ -5,6 +5,12 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/21/06
+	* Fixed: While using Devotion skill, all Crusader's self buffs apply to devoted player [Damz Fish]
+	* Fixed: Cart Termination shouldn't be reflected by Shield Reflect [Harbin]
+	* Fixed: Cart Revolution damage is always neutral [Harbin]
+	* Fixed: Damage bonus of SC_MAGNUM [Harbin]
+	 - Note: Currently the damage bonus applies only to weapon attacks, more information needed
+	 - http://freya.dns.st/mantis/view.php?id=284
 	* Fixed: Re-disabled pet skills automatically [Tsuyuki]
 	 - Note: Apparently they aren't enabled in kRO
 	* Added: Alice/Zealotus Pet Skills partially implemented [Tsuyuki]
