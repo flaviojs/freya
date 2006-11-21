@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/20/06
+	* Removed: Unnecessary and outdated old WoE scripts [Tsuyuki]
 	* Fixed: AoE offensive skills no longer affect party members in PvP, and supportive party skills now do [Tsuyuki]
 	* Changed: Enabled Pet skills by default [Tsuyuki]
 	* Fixed: Monsters will now wait 2.5 seconds before attacking instead of 5 seconds when you appear on a map [Tsuyuki]
