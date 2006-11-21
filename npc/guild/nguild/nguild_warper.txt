@@ -31,7 +31,7 @@ prontera.gat,146,163,6	script	Novice Castles	729,{
 	mes "[Cita]";
 	mes "Hey! I'm a new usher of Novice Castles.";
 	next;
-	if (BaseJob == JOB_TAEKWON || BaseJob == JOB_ARCHER || BaseJob == JOB_ACOLYTE || BaseJob == JOB_SWORDMAN || BaseJob == JOB_MERCHANT || BaseJob == JOB_MAGE || BaseJob == JOB_THIEF && BaseLevel < 60)
+	if (BaseJob == JOB_NOVICE || BaseJob == JOB_SUPERNOVICE || BaseJob == JOB_TAEKWON || BaseJob == JOB_ARCHER || BaseJob == JOB_ACOLYTE || BaseJob == JOB_SWORDSMAN || BaseJob == JOB_MERCHANT || BaseJob == JOB_MAGE || BaseJob == JOB_THIEF || BaseJob == JOB_NOVICE_HIGH || BaseJob == JOB_ARCHER_HIGH || BaseJob == JOB_ACOLYTE_HIGH || BaseJob == JOB_SWORDSMAN_HIGH || BaseJob == JOB_MERCHANT_HIGH || BaseJob == JOB_MAGE_HIGH || BaseJob == JOB_THIEF_HIGH || BaseJob == JOB_BABY || BaseJob == JOB_BABY_ARCHER || BaseJob == JOB_BABY_ACOLYTE || BaseJob == JOB_BABY_SWORDSMAN || BaseJob == JOB_BABY_MERCHANT || BaseJob == JOB_BABY_MAGE || BaseJob == JOB_BABY_THIEF && BaseLevel < 60)
 		menu "Warp me to Novice Castles",M_WARP,"Cancel",-;
 
 	mes "[Cita]";
