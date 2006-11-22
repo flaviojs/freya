@@ -1920,7 +1920,7 @@ ATCOMMAND_FUNC(rurap) {
 		return -1;
 	}
 
-	if (strstr(atcmd_mapname, ".gat") == NULL && strstr(atcmd_mapname, ".afm") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+	if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
 		strcat(atcmd_mapname, ".gat");
 
 	if ((pl_sd = map_nick2sd(atcmd_name)) != NULL || ((pl_sd = map_id2sd(atoi(atcmd_name))) != NULL && pl_sd->state.auth)) {
@@ -1981,7 +1981,7 @@ ATCOMMAND_FUNC(rura) {
 		return -1;
 	}
 
-	if (strstr(atcmd_mapname, ".gat") == NULL && strstr(atcmd_mapname, ".afm") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+	if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
 		strcat(atcmd_mapname, ".gat");
 
 	if ((m = map_checkmapname(atcmd_mapname)) == -1) { // if map doesn't exist in all map-servers
@@ -2324,7 +2324,7 @@ ATCOMMAND_FUNC(whomap) {
 	if (!message || !*message || sscanf(message, "%s", atcmd_mapname) < 1)
 		map_id = sd->bl.m;
 	else {
-		if (strstr(atcmd_mapname, ".gat") == NULL && strstr(atcmd_mapname, ".afm") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+		if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
 			strcat(atcmd_mapname, ".gat");
 		if ((map_id = map_mapname2mapid(atcmd_mapname)) < 0) // only from actual map-server
 			map_id = sd->bl.m;
@@ -2369,7 +2369,7 @@ ATCOMMAND_FUNC(whomap2) {
 	if (!message || !*message || sscanf(message, "%s", atcmd_mapname) < 1)
 		map_id = sd->bl.m;
 	else {
-		if (strstr(atcmd_mapname, ".gat") == NULL && strstr(atcmd_mapname, ".afm") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+		if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
 			strcat(atcmd_mapname, ".gat");
 		if ((map_id = map_mapname2mapid(atcmd_mapname)) < 0) // only from actual map-server
 			map_id = sd->bl.m;
@@ -2416,7 +2416,7 @@ ATCOMMAND_FUNC(whomap3) {
 	if (!message || !*message || sscanf(message, "%s", atcmd_mapname) < 1)
 		map_id = sd->bl.m;
 	else {
-		if (strstr(atcmd_mapname, ".gat") == NULL && strstr(atcmd_mapname, ".afm") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+		if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
 			strcat(atcmd_mapname, ".gat");
 		if ((map_id = map_mapname2mapid(atcmd_mapname)) < 0) // only from actual map-server
 			map_id = sd->bl.m;
@@ -2650,7 +2650,7 @@ ATCOMMAND_FUNC(whozenymap) {
 	if (!message || !*message || sscanf(message, "%s", atcmd_mapname) < 1)
 		map_id = sd->bl.m;
 	else {
-		if (strstr(atcmd_mapname, ".gat") == NULL && strstr(atcmd_mapname, ".afm") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+		if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
 			strcat(atcmd_mapname, ".gat");
 		if ((map_id = map_mapname2mapid(atcmd_mapname)) < 0) // only from actual map-server
 			map_id = sd->bl.m;
@@ -2863,7 +2863,7 @@ ATCOMMAND_FUNC(whohasmap) {
 	if (!atcmd_mapname[0])
 		map_id = sd->bl.m;
 	else {
-		if (strstr(atcmd_mapname, ".gat") == NULL && strstr(atcmd_mapname, ".afm") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+		if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
 			strcat(atcmd_mapname, ".gat");
 		if ((map_id = map_mapname2mapid(atcmd_mapname)) < 0) // only from actual map-server
 			map_id = sd->bl.m;
@@ -3003,7 +3003,7 @@ ATCOMMAND_FUNC(happyhappyjoyjoymap) {
 	if (!message || !*message || sscanf(message, "%s", atcmd_mapname) < 1)
 		map_id = sd->bl.m;
 	else {
-		if (strstr(atcmd_mapname, ".gat") == NULL && strstr(atcmd_mapname, ".afm") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+		if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
 			strcat(atcmd_mapname, ".gat");
 		if ((map_id = map_mapname2mapid(atcmd_mapname)) < 0) // only from actual map-server
 			map_id = sd->bl.m;
@@ -3129,7 +3129,7 @@ ATCOMMAND_FUNC(charloadmap) {
 	if (!message || !*message || sscanf(message, "%s", atcmd_mapname) < 1)
 		map_id = sd->bl.m;
 	else {
-		if (strstr(atcmd_mapname, ".gat") == NULL && strstr(atcmd_mapname, ".afm") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+		if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
 			strcat(atcmd_mapname, ".gat");
 		if ((map_id = map_mapname2mapid(atcmd_mapname)) < 0) // only from actual map-server
 			map_id = sd->bl.m;
@@ -3278,7 +3278,7 @@ ATCOMMAND_FUNC(charspeedmap) {
 	if (!atcmd_mapname[0])
 		map_id = sd->bl.m;
 	else {
-		if (strstr(atcmd_mapname, ".gat") == NULL && strstr(atcmd_mapname, ".afm") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+		if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
 			strcat(atcmd_mapname, ".gat");
 		if ((map_id = map_mapname2mapid(atcmd_mapname)) < 0) // only from actual map-server
 			map_id = sd->bl.m;
@@ -5582,7 +5582,7 @@ ATCOMMAND_FUNC(go) {
 		// get possible name of the city and add .gat if not in the name
 		for (i = 0; atcmd_mapname[i]; i++)
 			atcmd_mapname[i] = tolower((unsigned char)atcmd_mapname[i]); // tolower needs unsigned char
-		if (strstr(atcmd_mapname, ".gat") == NULL && strstr(atcmd_mapname, ".afm") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+		if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
 			strcat(atcmd_mapname, ".gat");
 		// try to see if it's a name, and not a number (try a lot of possibilities, write errors and abbreviations too)
 		if (strncmp(atcmd_mapname, "prontera.gat", 3) == 0) // 3 first characters
@@ -6523,7 +6523,7 @@ ATCOMMAND_FUNC(deadbranchmap) {
 		if (atcmd_mapname[0] == '\0')
 			map_id = sd->bl.m;
 		else {
-			if (strstr(atcmd_mapname, ".gat") == NULL && strstr(atcmd_mapname, ".afm") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+			if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
 				strcat(atcmd_mapname, ".gat");
 			if ((map_id = map_mapname2mapid(atcmd_mapname)) < 0) // only from actual map-server
 				map_id = sd->bl.m;
@@ -6949,7 +6949,7 @@ ATCOMMAND_FUNC(killmonster) {
 	if (!message || !*message || sscanf(message, "%s", atcmd_mapname) < 1)
 		map_id = sd->bl.m;
 	else {
-		if (strstr(atcmd_mapname, ".gat") == NULL && strstr(atcmd_mapname, ".afm") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+		if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
 			strcat(atcmd_mapname, ".gat");
 		if ((map_id = map_mapname2mapid(atcmd_mapname)) < 0) // only from actual map-server
 			map_id = sd->bl.m;
@@ -6973,7 +6973,7 @@ ATCOMMAND_FUNC(killmonster2) {
 	if (!message || !*message || sscanf(message, "%s", atcmd_mapname) < 1)
 		map_id = sd->bl.m;
 	else {
-		if (strstr(atcmd_mapname, ".gat") == NULL && strstr(atcmd_mapname, ".afm") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+		if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
 			strcat(atcmd_mapname, ".gat");
 		if ((map_id = map_mapname2mapid(atcmd_mapname)) < 0) // only from actual map-server
 			map_id = sd->bl.m;
@@ -8862,7 +8862,7 @@ ATCOMMAND_FUNC(character_save) {
 		return -1;
 	}
 
-	if (strstr(atcmd_mapname, ".gat") == NULL && strstr(atcmd_mapname, ".afm") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+	if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
 		strcat(atcmd_mapname, ".gat");
 
 	if ((pl_sd = map_nick2sd(atcmd_name)) != NULL || ((pl_sd = map_id2sd(atoi(atcmd_name))) != NULL && pl_sd->state.auth)) {
@@ -8966,7 +8966,7 @@ ATCOMMAND_FUNC(doommap) {
 	if (!message || !*message || sscanf(message, "%s", atcmd_mapname) < 1)
 		map_id = sd->bl.m;
 	else {
-		if (strstr(atcmd_mapname, ".gat") == NULL && strstr(atcmd_mapname, ".afm") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+		if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
 			strcat(atcmd_mapname, ".gat");
 		if ((map_id = map_mapname2mapid(atcmd_mapname)) < 0) // only from actual map-server
 			map_id = sd->bl.m;
@@ -9056,7 +9056,7 @@ ATCOMMAND_FUNC(raisemap) {
 	if (!message || !*message || sscanf(message, "%s", atcmd_mapname) < 1)
 		map_id = sd->bl.m;
 	else {
-		if (strstr(atcmd_mapname, ".gat") == NULL && strstr(atcmd_mapname, ".afm") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+		if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
 			strcat(atcmd_mapname, ".gat");
 		if ((map_id = map_mapname2mapid(atcmd_mapname)) < 0) // only from actual map-server
 			map_id = sd->bl.m;
@@ -9393,7 +9393,7 @@ ATCOMMAND_FUNC(kickmap) {
 	if (!message || !*message || sscanf(message, "%s", atcmd_mapname) < 1)
 		map_id = sd->bl.m;
 	else {
-		if (strstr(atcmd_mapname, ".gat") == NULL && strstr(atcmd_mapname, ".afm") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+		if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
 			strcat(atcmd_mapname, ".gat");
 		if ((map_id = map_mapname2mapid(atcmd_mapname)) < 0) // only from actual map-server
 			map_id = sd->bl.m;
@@ -10571,7 +10571,7 @@ ATCOMMAND_FUNC(mapinfo) {
 
 	if (atcmd_mapname[0] == '\0')
 		strncpy(atcmd_mapname, sd->mapname, sizeof(atcmd_mapname) - 1);
-	if (strstr(atcmd_mapname, ".gat") == NULL && strstr(atcmd_mapname, ".afm") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+	if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
 		strcat(atcmd_mapname, ".gat");
 
 	if ((map_id = map_mapname2mapid(atcmd_mapname)) < 0) { // only from actual map-server
@@ -12120,7 +12120,7 @@ ATCOMMAND_FUNC(chardisguisemap) {
 	if (atcmd_mapname[0] == '\0')
 		map_id = sd->bl.m;
 	else {
-		if (strstr(atcmd_mapname, ".gat") == NULL && strstr(atcmd_mapname, ".afm") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+		if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
 			strcat(atcmd_mapname, ".gat");
 		if ((map_id = map_mapname2mapid(atcmd_mapname)) < 0) // only from actual map-server
 			map_id = sd->bl.m;
@@ -12182,7 +12182,7 @@ ATCOMMAND_FUNC(charundisguisemap) {
 	if (!message || !*message || sscanf(message, "%s", atcmd_mapname) < 1)
 		map_id = sd->bl.m;
 	else {
-		if (strstr(atcmd_mapname, ".gat") == NULL && strstr(atcmd_mapname, ".afm") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+		if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
 			strcat(atcmd_mapname, ".gat");
 		if ((map_id = map_mapname2mapid(atcmd_mapname)) < 0) // only from actual map-server
 			map_id = sd->bl.m;
@@ -13110,7 +13110,7 @@ ATCOMMAND_FUNC(skillon) {
 	if (!message || !*message || sscanf(message, "%s", atcmd_mapname) < 1)
 		map_id = sd->bl.m;
 	else {
-		if (strstr(atcmd_mapname, ".gat") == NULL && strstr(atcmd_mapname, ".afm") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+		if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
 			strcat(atcmd_mapname, ".gat");
 		if ((map_id = map_mapname2mapid(atcmd_mapname)) < 0) // only from actual map-server
 			map_id = sd->bl.m;
@@ -13138,7 +13138,7 @@ ATCOMMAND_FUNC(skilloff) {
 	if (!message || !*message || sscanf(message, "%s", atcmd_mapname) < 1)
 		map_id = sd->bl.m;
 	else {
-		if (strstr(atcmd_mapname, ".gat") == NULL && strstr(atcmd_mapname, ".afm") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+		if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
 			strcat(atcmd_mapname, ".gat");
 		if ((map_id = map_mapname2mapid(atcmd_mapname)) < 0) // only from actual map-server
 			map_id = sd->bl.m;
@@ -13166,7 +13166,7 @@ ATCOMMAND_FUNC(nospell) {
 	if (!message || !*message || sscanf(message, "%s", atcmd_mapname) < 1)
 		map_id = sd->bl.m;
 	else {
-		if (strstr(atcmd_mapname, ".gat") == NULL && strstr(atcmd_mapname, ".afm") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+		if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
 			strcat(atcmd_mapname, ".gat");
 		if ((map_id = map_mapname2mapid(atcmd_mapname)) < 0) // only from actual map-server
 			map_id = sd->bl.m;
@@ -13242,7 +13242,7 @@ ATCOMMAND_FUNC(addwarp) {
 		return -1;
 	}
 
-	if (strstr(atcmd_mapname, ".gat") == NULL && strstr(atcmd_mapname, ".afm") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+	if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
 		strcat(atcmd_mapname, ".gat");
 
 	if (map_checkmapname(atcmd_mapname) == -1) { // if map doesn't exist in all map-servers
@@ -14396,7 +14396,7 @@ ATCOMMAND_FUNC(setmapflag) {
 		return -1;
 	}
 
-	if (strstr(atcmd_mapname, ".gat") == NULL && strstr(atcmd_mapname, ".afm") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+	if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
 		strcat(atcmd_mapname, ".gat");
 
 	if ((map_id = map_mapname2mapid(atcmd_mapname)) >= 0) { // only from actual map-server

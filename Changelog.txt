@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+11/22/06
+	* Removed: AFM map format support [Harbin]
+
 11/21/06
 	* Fixed: While using Devotion skill, all Crusader's self buffs apply to devoted player [Damz Fish]
 	* Fixed: Cart Termination shouldn't be reflected by Shield Reflect [Harbin]

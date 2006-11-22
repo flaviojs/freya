@@ -3766,7 +3766,7 @@ int pc_setpos(struct map_session_data *sd, char *mapname_org, int x, int y, int 
 
 	strncpy(mapname, mapname_org, 16); // 17 - NULL
 	mapname[16] = '\0';
-	if(strstr(mapname, ".gat") == NULL && strstr(mapname, ".afm") == NULL && strlen(mapname) < 13) { // 16 - 4 (.gat)
+	if(strstr(mapname, ".gat") == NULL && strlen(mapname) < 13) { // 16 - 4 (.gat)
 		strcat(mapname, ".gat");
 	}
 	m = map_mapname2mapid(mapname); // map id on this server (m == -1 if not in actual map-server)

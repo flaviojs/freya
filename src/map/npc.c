@@ -1080,19 +1080,27 @@ int npc_buylist(struct map_session_data *sd, int n, unsigned short *item_list) {
 		}
 
 		w += item_data->weight * amount;
-		if (w + sd->weight > sd->max_weight)
-			return 2; // 0: The deal has successfully completed., 1: You dont have enough zeny., 2: you are overcharged!, 3: You are over your weight limit.
 	}
-	if (pc_inventoryblank(sd) < new)
-		return 3; // 0: The deal has successfully completed., 1: You dont have enough zeny., 2: you are overcharged!, 3: You are over your weight limit.
 
+	/* check for the weight limit */
+	if(sd->weight + w > sd->max_weight)
+		return 2;
+
+	/* check for the inventory space limit */
+	if(pc_inventoryblank(sd) <= new)
+		return 3;
+	
+	/* get zenys from player */
 	pc_payzeny(sd, (int)z);
-	for(i = 0;i < n; i++) {
+
+	/* add items to player's inventory */
+	for(i = 0; i < n; i++)
+	{
 		struct item item_tmp;
 
 		memset(&item_tmp, 0, sizeof(item_tmp));
 		item_tmp.nameid = item_list[i * 2 + 1];
-		item_tmp.identify = 1; // npc”Ì”„ƒAƒCƒeƒ€‚ÍŠÓ’èÏ‚Ý
+		item_tmp.identify = 1;
 
 		pc_additem(sd, &item_tmp, item_list[i * 2]);
 	}
@@ -1519,12 +1527,12 @@ int npc_parse_warp(char *w1, char *w3, char *w4, int lines) {
 	}
 
 	// check map names (need to check both map name, a GM command can call this function directly)
-	if ((strstr(mapname, ".gat") == NULL && strstr(mapname, ".afm") == NULL) || mapname[0] == '\0' || strlen(mapname) > 16) {
+	if (strstr(mapname, ".gat") == NULL || mapname[0] == '\0' || strlen(mapname) > 16) {
 		if (current_file != NULL) // if not a GM command, but a script
 			printf(CL_RED "Bad source map name" CL_RESET " in warp: %s (file:%s:%d) -> " CL_RED "not loaded" CL_RESET "!\n", w3, current_file, lines);
 		return 1;
 	}
-	if ((strstr(to_mapname, ".gat") == NULL && strstr(to_mapname, ".afm") == NULL) || to_mapname[0] == '\0' || strlen(to_mapname) > 16) {
+	if (strstr(to_mapname, ".gat") == NULL || to_mapname[0] == '\0' || strlen(to_mapname) > 16) {
 		if (current_file != NULL) // if not a GM command, but a script
 			printf(CL_RED "Bad destination map name" CL_RESET " in warp: %s (file:%s:%d) -> " CL_RED "not loaded" CL_RESET "!\n", w3, current_file, lines);
 		return 1;
@@ -2302,7 +2310,7 @@ int npc_parse_mapflag(char *w1, char *w3, char *w4, int lines) {
 	}
 
 	// check map name (a GM command can call this function directly)
-	if ((strstr(mapname, ".gat") == NULL && strstr(mapname, ".afm") == NULL) || mapname[0] == '\0' || strlen(mapname) > 16) {
+	if (strstr(mapname, ".gat") == NULL || mapname[0] == '\0' || strlen(mapname) > 16) {
 		if (current_file != NULL) // if not a GM command, but a script
 			printf(CL_RED "Invalid map name" CL_RESET " in map flag line: %s (file:%s:%d)!\n", w3, current_file, lines);
 		return 1;
@@ -2692,7 +2700,7 @@ int do_init_npc(void) {
 			if (strcasecmp(w2, "script") != 0 || (strcmp(w1,"-") != 0 && strcasecmp(w1, "function") != 0)) {
 				sscanf(w1, "%[^,]", mapname);
 				// check map name
-				if ((strstr(mapname, ".gat") == NULL && strstr(mapname, ".afm") == NULL) || mapname[0] == '\0' || strlen(mapname) > 16) {
+				if (strstr(mapname, ".gat") == NULL || mapname[0] == '\0' || strlen(mapname) > 16) {
 					printf(CL_RED "Bad map name" CL_RESET " at start of a script (file:%s, line %d)!\n", current_file, lines);
 					continue;
 				}

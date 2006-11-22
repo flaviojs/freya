@@ -1,5 +1,4 @@
 // $Id: char.c 578 2005-12-07 09:50:16Z Yor $
-// original : char2.c 2003/03/14 11:58:35 Rev.1.5
 
 #include <config.h>
 
@@ -2533,7 +2532,7 @@ void create_online_files(void) {
 							memset(temp, 0, sizeof(temp));
 							strncpy(temp, char_dat[j].last_point.map, 16);
 							if (strchr(temp, '.') != NULL)
-								temp[strchr(temp, '.') - temp] = '\0'; // suppress the '.gat' or '.afm'
+								temp[strchr(temp, '.') - temp] = '\0'; // suppress the '.gat'
 							// write map name
 							if (txt_temp & 16) // map-name AND coordinates
 								fprintf(fp, "%-12s (%3d,%3d) ", temp, char_dat[j].last_point.x, char_dat[j].last_point.y);
@@ -2647,7 +2646,7 @@ void create_online_files(void) {
 							memset(temp, 0, sizeof(temp));
 							strncpy(temp, char_dat[j].last_point.map, 16);
 							if (strchr(temp, '.') != NULL)
-								temp[strchr(temp, '.') - temp] = '\0'; // suppress the '.gat' or '.afm'
+								temp[strchr(temp, '.') - temp] = '\0'; // suppress the '.gat'
 							// write map name
 							if (html_temp & 16) // map-name AND coordinates
 								fprintf(fp, "        <td>%s (%d, %d)</td>" RETCODE, temp, char_dat[j].last_point.x, char_dat[j].last_point.y);
@@ -4989,7 +4988,7 @@ int search_mapserver(char *map) {
 	strncpy(temp_map, map, 16); // 17 - NULL
 	temp_map[16] = '\0';
 	if (strchr(temp_map, '.') != NULL)
-		temp_map[strchr(temp_map, '.') - temp_map + 1] = '\0'; // suppress the '.gat' or '.afm', but conserve the '.' to be sure of the name of the map
+		temp_map[strchr(temp_map, '.') - temp_map + 1] = '\0'; // suppress the '.gat', but conserve the '.' to be sure of the name of the map
 
 	temp_map_len = strlen(temp_map);
 	for(i = 0; i < MAX_MAP_SERVERS; i++)
@@ -5317,32 +5316,32 @@ int parse_char(int fd) {
 						i = search_mapserver(char_dat[ch].last_point.map);
 						// if map is not found, we check major cities
 						if (i < 0) {
-							if ((i = search_mapserver("prontera.gat")) >= 0) { // check is done without 'gat' (gat or afm can be used).
+							if ((i = search_mapserver("prontera.gat")) >= 0) { // check is done without 'gat'
 								strncpy(char_dat[ch].last_point.map, "prontera.gat", 16); // 17 - NULL
 								char_dat[ch].last_point.map[16] = '\0';
 								char_dat[ch].last_point.x = 273; // savepoint coordinates
 								char_dat[ch].last_point.y = 354;
-							} else if ((i = search_mapserver("geffen.gat")) >= 0) { // check is done without 'gat' (gat or afm can be used).
+							} else if ((i = search_mapserver("geffen.gat")) >= 0) { // check is done without 'gat' (gat can be used).
 								strncpy(char_dat[ch].last_point.map, "geffen.gat", 16); // 17 - NULL
 								char_dat[ch].last_point.map[16] = '\0';
 								char_dat[ch].last_point.x = 120; // savepoint coordinates
 								char_dat[ch].last_point.y = 100;
-							} else if ((i = search_mapserver("morocc.gat")) >= 0) { // check is done without 'gat' (gat or afm can be used).
+							} else if ((i = search_mapserver("morocc.gat")) >= 0) { // check is done without 'gat' (gat can be used).
 								strncpy(char_dat[ch].last_point.map, "morocc.gat", 16); // 17 - NULL
 								char_dat[ch].last_point.map[16] = '\0';
 								char_dat[ch].last_point.x = 160; // savepoint coordinates
 								char_dat[ch].last_point.y = 94;
-							} else if ((i = search_mapserver("alberta.gat")) >= 0) { // check is done without 'gat' (gat or afm can be used).
+							} else if ((i = search_mapserver("alberta.gat")) >= 0) { // check is done without 'gat' (gat can be used).
 								strncpy(char_dat[ch].last_point.map, "alberta.gat", 16); // 17 - NULL
 								char_dat[ch].last_point.map[16] = '\0';
 								char_dat[ch].last_point.x = 116; // savepoint coordinates
 								char_dat[ch].last_point.y = 57;
-							} else if ((i = search_mapserver("payon.gat")) >= 0) { // check is done without 'gat' (gat or afm can be used).
+							} else if ((i = search_mapserver("payon.gat")) >= 0) { // check is done without 'gat' (gat can be used).
 								strncpy(char_dat[ch].last_point.map, "payon.gat", 16); // 17 - NULL
 								char_dat[ch].last_point.map[16] = '\0';
 								char_dat[ch].last_point.x = 87; // savepoint coordinates
 								char_dat[ch].last_point.y = 117;
-							} else if ((i = search_mapserver("izlude.gat")) >= 0) { // check is done without 'gat' (gat or afm can be used).
+							} else if ((i = search_mapserver("izlude.gat")) >= 0) { // check is done without 'gat' (gat can be used).
 								strncpy(char_dat[ch].last_point.map, "izlude.gat", 16); // 17 - NULL
 								char_dat[ch].last_point.map[16] = '\0';
 								char_dat[ch].last_point.x = 94; // savepoint coordinates
@@ -6270,7 +6269,7 @@ static void char_config_read(const char *cfgName) { // not inline, called too of
 				printf(CL_YELLOW "WARNING: Invalid start point in configuration file (invalid number of parameters):" CL_RESET " %s.\n", w2);
 				continue;
 			}
-			if ((strstr(map, ".gat") != NULL || strstr(map, ".afm") != NULL || strlen(map) > 16)) { // Verify at least if '.gat' or '.afm' is in the map name
+			if ((strstr(map, ".gat") != NULL || strlen(map) > 16)) { // Verify at least if '.gat' is in the map name
 				if (x > 0 && x < 32767 && y > 0 && y < 32767) { // verify at least a minimum for the coordinates
 					memset(start_point.map, 0, sizeof(start_point.map));
 					strncpy(start_point.map, map, 16); // 17 - NULL
