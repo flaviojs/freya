@@ -4,6 +4,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+11/23/06
+	* Fixed: Gravitation Field now does 400 damage per hit to the Emperium during WoE [Tsuyuki]
+	* Fixed: Smite now properly refreshes the target's client position after knockback [Tsuyuki]
+
 11/22/06
 	* Added: English Kunlun and Ayothaya Guide NPCs, thanks to Harp [Tsuyuki]
 	* Improved: Cleaned up Harbin's AFM support removal and removed extra bits left over [Tsuyuki]
