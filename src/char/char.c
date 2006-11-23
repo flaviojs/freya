@@ -1,4 +1,5 @@
 // $Id: char.c 578 2005-12-07 09:50:16Z Yor $
+// original : char2.c 2003/03/14 11:58:35 Rev.1.5
 
 #include <config.h>
 
@@ -5321,27 +5322,27 @@ int parse_char(int fd) {
 								char_dat[ch].last_point.map[16] = '\0';
 								char_dat[ch].last_point.x = 273; // savepoint coordinates
 								char_dat[ch].last_point.y = 354;
-							} else if ((i = search_mapserver("geffen.gat")) >= 0) { // check is done without 'gat' (gat can be used).
+							} else if ((i = search_mapserver("geffen.gat")) >= 0) { // check is done without 'gat'
 								strncpy(char_dat[ch].last_point.map, "geffen.gat", 16); // 17 - NULL
 								char_dat[ch].last_point.map[16] = '\0';
 								char_dat[ch].last_point.x = 120; // savepoint coordinates
 								char_dat[ch].last_point.y = 100;
-							} else if ((i = search_mapserver("morocc.gat")) >= 0) { // check is done without 'gat' (gat can be used).
+							} else if ((i = search_mapserver("morocc.gat")) >= 0) { // check is done without 'gat'
 								strncpy(char_dat[ch].last_point.map, "morocc.gat", 16); // 17 - NULL
 								char_dat[ch].last_point.map[16] = '\0';
 								char_dat[ch].last_point.x = 160; // savepoint coordinates
 								char_dat[ch].last_point.y = 94;
-							} else if ((i = search_mapserver("alberta.gat")) >= 0) { // check is done without 'gat' (gat can be used).
+							} else if ((i = search_mapserver("alberta.gat")) >= 0) { // check is done without 'gat'
 								strncpy(char_dat[ch].last_point.map, "alberta.gat", 16); // 17 - NULL
 								char_dat[ch].last_point.map[16] = '\0';
 								char_dat[ch].last_point.x = 116; // savepoint coordinates
 								char_dat[ch].last_point.y = 57;
-							} else if ((i = search_mapserver("payon.gat")) >= 0) { // check is done without 'gat' (gat can be used).
+							} else if ((i = search_mapserver("payon.gat")) >= 0) { // check is done without 'gat'
 								strncpy(char_dat[ch].last_point.map, "payon.gat", 16); // 17 - NULL
 								char_dat[ch].last_point.map[16] = '\0';
 								char_dat[ch].last_point.x = 87; // savepoint coordinates
 								char_dat[ch].last_point.y = 117;
-							} else if ((i = search_mapserver("izlude.gat")) >= 0) { // check is done without 'gat' (gat can be used).
+							} else if ((i = search_mapserver("izlude.gat")) >= 0) { // check is done without 'gat'
 								strncpy(char_dat[ch].last_point.map, "izlude.gat", 16); // 17 - NULL
 								char_dat[ch].last_point.map[16] = '\0';
 								char_dat[ch].last_point.x = 94; // savepoint coordinates

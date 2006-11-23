@@ -2960,7 +2960,7 @@ void do_init(const int argc, char *argv[]) {
 	char *SCRIPT_CONF_NAME = "conf/script_athena.conf";
 	char *GRF_PATH_FILENAME = "conf/grf-files.txt";
 	FILE *data_conf;
-	char line[1024], w1[1024], w2[1024];
+	char line[1024],/* w1[1024],*/ w2[1024]; // wi[1024] == unused variable
 
 	printf("The map-server is starting...\n");
 
@@ -3066,11 +3066,6 @@ void do_init(const int argc, char *argv[]) {
 	if (data_conf) {
 		while(fgets(line, sizeof(line), data_conf)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
 			memset(w2, 0, sizeof(w2));
-			if (sscanf(line, "%[^:]: %[^\r\n]", w1, w2) == 2)
-			{
-/*				if (strcmp(w1, "afm_dir") == 0)
-					strcpy(afm_dir, w2); */
-			}
 		}
 		fclose(data_conf);
 	} // end of reading grf-files.txt
