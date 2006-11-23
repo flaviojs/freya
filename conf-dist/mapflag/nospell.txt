@@ -3,8 +3,9 @@
 //===== By: ==================================================
 //= Freya Dev Team
 //= found on freya's forum (thanks to BeoWulf)
-//===== Current Version: =====================================
+//============================================================
 // Note: by default, all maps are disabled. add maps as you want.
+//============================================================
 
 // Cities
 //prontera.gat	mapflag	nospell

@@ -5,7 +5,7 @@
 //===== Current Version: =====================================
 //= 2.1
 //===== Compatible With: =====================================
-//= Any Athena Version
+//= Freya
 //===== Description: =========================================
 //= 'indoors' turns off all night effects.
 //= 2.0 by GARTZ -> Set all dungeons to indoors flag.

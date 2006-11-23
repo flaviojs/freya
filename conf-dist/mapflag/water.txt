@@ -1,5 +1,9 @@
-// 水の設定。
-// waterは水ありでall_waterは全て水だと判断するマップ。
+//===== Freya Script =========================================
+//= Map Flags for maps with water in/on them
+//===== By: ==================================================
+//= eAthena Dev Team
+//= Updated: Freya Development Team
+//============================================================
 
 mjolnir_12.gat	mapflag	water
 mjolnir_02.gat	mapflag	water

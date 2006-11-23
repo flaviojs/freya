@@ -1,3 +1,10 @@
+//===== Freya Script =========================================
+//= Map flags that disable warp
+//===== By: ==================================================
+//= eAthena Dev Team
+//= Updated: Freya Development Team
+//============================================================
+
 // Guild Castles =============
 aldeg_cas01.gat	mapflag	nowarp
 aldeg_cas02.gat	mapflag	nowarp

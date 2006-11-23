@@ -114,6 +114,7 @@ prtg_cas02.gat	mapflag	noicewall
 prtg_cas03.gat	mapflag	noicewall
 prtg_cas04.gat	mapflag	noicewall
 prtg_cas05.gat	mapflag	noicewall
+
 // Novice Guild Castles ===
 nguild_alde.gat	mapflag	noicewall
 nguild_gef.gat	mapflag	noicewall

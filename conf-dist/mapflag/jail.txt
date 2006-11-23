@@ -3,12 +3,11 @@
 //===== By: ==================================================
 //= Freya Dev Team
 //===== Current Version: =====================================
-//= 1.2
+//= 1.1
 //===== Compatible With: =====================================
 //= 1.1 - Jail no DB by EFchen
 //        Because, someone who got a DB can break it and
 //        overkill everyone in Jail.
-//= 1.2 - Uncommented PvP, No Party as per kRO.
 //===== Description: =========================================
 //= pvp: Turns on PvP mode
 //= pvp_noparty: Can't attack player in same party
@@ -16,8 +15,10 @@
 //= nomemo: No Warp Portal Memory Point allowed.
 //= nopenalty: No Exp. penalty when player dies.
 //= nosave: No saving respawn point allowed. Use SavePoint to use the
-//=         players previous savepoint, or choose one manually.
+//=                players previous savepoint, or choose one manually.
 //= noteleport: No Teleporting allowed.  No f-wings or b-wings.
+//===== Additional Comments: =================================
+//=
 //============================================================
 
 
@@ -49,10 +50,7 @@ sec_pri.gat	mapflag	nobranch
 //Uncomment following maps to let your prisoners fight with other prisoners
 
 // PvP ===================================
-sec_pri.gat	mapflag	pvp
+//sec_pri.gat	mapflag	pvp
 
 // No Party ==============================
-sec_pri.gat	mapflag	pvp_noparty
-
-// Nightmare Equipment Drops PVP =========
-sec_pri.gat	mapflag	pvp_nightmaredrop	random,equip,300
+//sec_pri.gat	mapflag	pvp_noparty
