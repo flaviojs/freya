@@ -461,7 +461,8 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 				}
 			}
 		}
-		if(tsc_data[SC_FOGWALL].timer != -1 && rand()%100 <= 75 && flag&BF_SKILL && !flag&BF_MAGIC)
+		if(flag & BF_SKILL && !(flag & BF_MAGIC))
+			if(tsc_data[SC_FOGWALL].timer != -1 && rand()%100 <= 75)
 				return 0;
 		
 		if (tsc_data[SC_AETERNA].timer != -1) { // レックスエーテルナ
@@ -520,7 +521,7 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 				if(tsc_data[SC_DEFENDER].timer != -1)
 					damage = damage * (100 - tsc_data[SC_DEFENDER].val2) / 100;
 		
-				if(tsc_data[SC_FOGWALL].timer != -1 && !flag&BF_SKILL)
+				if(tsc_data[SC_FOGWALL].timer != -1 && !(flag & BF_SKILL))
 					damage /= 4;
 			}
 			
@@ -1565,8 +1566,9 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 					hitrate += hitrate * (2 * skill) / 100;
 			}
 			
-			if (t_sc_data && t_sc_data[SC_FOGWALL].timer != -1 && wd.flag&BF_LONG && !wd.flag&BF_SKILL)
-				hitrate -= 50;
+			if(wd.flag & BF_LONG && !(flag & BF_SKILL)
+				if (t_sc_data && t_sc_data[SC_FOGWALL].timer != -1)
+					hitrate -= 50;
 		
 			if (!sd && hitrate > 95)
 				hitrate = 95;
