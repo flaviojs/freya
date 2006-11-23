@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/22/06
+	* Added: English Kunlun and Ayothaya Guide NPCs, thanks to Harp [Tsuyuki]
+	* Improved: Cleaned up Harbin's AFM support removal and removed extra bits left over [Tsuyuki]
 	* Removed: AFM map format support [Harbin]
 
 11/21/06

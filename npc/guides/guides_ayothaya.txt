@@ -1,105 +1,86 @@
 //===== Freya Script =========================================
 //= Ayothaya Guide NPCs
 //===== By: ==================================================
-//= jAthena
+//= jAthena (0.5), Harp (1.0)
 //===== Current Version: =====================================
-//= 0.5
+//= 1.0
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
-//= jAthena Japanese (Not.. translated) Guide NPCs, need
-//= someone to translate them! Louyang + Kunlun guides also
-//= need to be translated.
+//= Ayothaya Guide NPCs, translated from Japanese. Fully
+//= working thanks to Harp.
 //===== Additional Comments: =================================
-//= Fully working
 //= 0.5 Added first, Japanese version [Tsuyuki]
+//= 1.0 Translated into English [harp]
 //============================================================
 
 //----------------------------------------------------------------------
-//[ˆÄ“à—vˆõ - ƒAƒ†ƒ^ƒ„]
+//[Guide Agent - Ayothaya]
 
-ayothaya.gat,203,169,4	script	ƒmƒC	839,{
+ayothaya.gat,203,169,4	script	Noy	839,{
 
-	mes "[ƒmƒC]";
-	mes "‚±‚ñ‚É‚¿‚ÍB";
-	mes "ƒAƒ†ƒ^ƒ„‚Ö‚æ‚¤‚±‚»B";
-	mes "‚±‚±ƒAƒ†ƒ^ƒ„‚ÍA[‚«X‚ÉˆÍ‚Ü‚ê";
-	mes "ì‚ª—¬‚ê‚é©‘R‚ÉŒb‚Ü‚ê‚½";
-	mes "Ã‚©‚È‘º‚Å‚·B";
+	mes "[Noy]";
+	mes "Good Afternoon.";
+	mes "Welcome to Ayothaya";
+	mes "A river flows through Ayothaya and is surrounded by a deep forest. Ayothaya is very quiet and close to nature.";
 	next;
-	mes "[ƒmƒC]";
-	mes "‚Ü‚½ŠC‚É‚à‹ß‚¢‚Ì‚ÅA…Y•¨sê‚à";
-	mes "‚ ‚è‚Ü‚·B‘¼‘‚Å‚Í‚¨–Ú‚É‚©‚©‚ê‚È‚¢";
-	mes "“Æ“Á‚ÈŒš’z•¨‚à‚½‚­‚³‚ñ‚ ‚è‚Ü‚·B";
-	mes "‚»‚ê‚Å‚Í‚²‚ä‚Á‚­‚è‚Ç‚¤‚¼B";
+	mes "[Noy]";
+	mes "Ayothaya is also close to the sea, so there is a fish market featuring fresh catches from the sea.";
+	mes "Don't forget to enjoy viewing the unique buildings only found in Ayothaya too. Take your time looking around.";
 	next;
-	menu "‘º‚ÌˆÄ“à‚ğ‚µ‚Ä‚à‚ç‚¤",AyoCase1A,"ƒ~ƒjƒ}ƒbƒv‚Ì•\¦‚ğ‘S‚ÄÁ‚·",AyoCase2A,"‰ï˜b‚ğ‚â‚ß‚é",AyoCase3A;
+	menu "Receive a guide of the Village",AyoCase1A,"Remove marks from the Mini-map",AyoCase2A,"End Conversation",AyoCase3A;
 
 	AyoCase1A:
-		mes "[ƒmƒC]";
-		mes "‚Ç‚¿‚ç‚ğ‚²ˆÄ“à‚µ‚Ü‚µ‚å‚¤‚©H";
+		mes "[Noy]";
+		mes "Where would you like me to guide you?";
 		next;
-		menu "•Ší‰®",AyoCase1B,"“¹‹ï‰®",AyoCase2B,"ğê",AyoCase3B,"_“a",AyoCase4B,"’Ş‚èê",AyoCase5B,"æ‚èÁ‚µ",AyoCase6B;
+		menu "Weapons Shop",AyoCase1B,"Tool Shop",AyoCase2B,"Pub",AyoCase3B,"Temple",AyoCase4B,"Fishing Place",AyoCase5B,"Erase all marks from Mini-map",AyoCase6B;
 
 			AyoCase1B:
-				mes "[ƒmƒC]";
-				mes "•Ší‰®‚Í^55FF33+^000000‚ÌˆÊ’u‚É‚ ‚è‚Ü‚·B";
-				mes "ƒAƒ†ƒ^ƒ„‚ÌŠC‚Ì’j‚½‚¿‚Í";
-				mes "‚±‚¿‚ç‚Å•‹ï‚ğ‘µ‚¦‚Ä‚¢‚Ü‚·B";
+				mes "[Noy]";
+				mes "The location of the Weapons Shop has been marked on your mini-map by the ^55FF33+^000000 mark.";
+				mes "The sea men of Ayothaya are very orderly about their weapons.";
 				viewpoint 1,182,59,2,0x00FF00;
 				close;
 
 			AyoCase2B:
-				mes "[ƒmƒC]";
-				mes "“¹‹ï‰®‚Í^3355FF+^000000‚ÌˆÊ’u‚É‚ ‚è‚Ü‚·B";
-				mes "„‹¤ƒAƒ†ƒ^ƒ„‚ÌZ–¯‚Í‚Ç‚±‚©‚Ö";
-				mes "o‚©‚¯‚éÛA•K‚¸“ü”O‚È€”õ‚ğ‚µ‚Ü‚·B";
-				mes "–‘O€”õ‚ğ‚µ‚Á‚©‚è‚·‚é‚±‚Æ‚Í";
-				mes "‚Æ‚Ä‚à‘å–‚Å‚·‚æ‚ËH";
+				mes "[Noy]";
+				mes "The location of the Tool Shop has been marked on your mini-map by the ^3355FF+^000000 mark.";
+				mes "When us residents of Ayothaya are about to go somewhere, we make sure we are ready for the trip.";
+				mes "Being prepared for anything is important,isn't it?";
 				viewpoint 1,129,86,2,0x55FF33;
 				close;
 
 			AyoCase3B:
-				mes "[ƒmƒC]";
-				mes "ˆê“xğê‚És‚Á‚Ä‚İ‚é‚Æ‚æ‚¢‚Å‚µ‚å‚¤B";
-				mes "ğê‚Í^55FF33+^000000‚ÌˆÊ’u‚É‚ ‚è‚Ü‚·B";
-				mes "–`Œ¯‚ÌŠî–{‚Íî•ñûW‚Å‚·B";
-				mes "ğê‚Í‘½‚­‚Ì—·s‹q‚ª–K‚ê‚éêŠ";
-				mes "‚Å‚·‚©‚çA—L—p‚Èî•ñ‚ğ“¾‚é‚±‚Æ‚ª";
-				mes "‚Å‚«‚é‚Å‚µ‚å‚¤B";
+				mes "[Noy]";
+				mes "It's a good idea to visit the Pub at least once.";
+				mes "The location of the Pub has been marked on your mini-map by the ^55FF33+^000000 mark.";
+				mes "One of the basics of adventuring is knowing where to learn useful information.  Since many travellers gather in the Pub, it's probably an ideal place to learn some new information.";
 				viewpoint 1,229,69,2,0x00FF00;
 				close;
 
 			AyoCase4B:
-				mes "[ƒmƒC]";
-				mes "_—l‚É‚¨‹F‚è‚ğ‚È‚³‚è‚½‚¢‚Ì‚È‚ç";
-				mes "^55FF33+^000000‚ÌˆÊ’u‚É‚ ‚é_“a‚É";
-				mes "s‚Á‚Ä‚İ‚Ä‚­‚¾‚³‚¢B";
+				mes "[Noy]";
+				mes "If you would like to offer a prayer in the temple, it is located near the ^55FF33+^000000 mark on your mini-map.";
 				viewpoint 1,208,283,2,0x00FF00;
 				close;
 
 			AyoCase5B:
-				mes "[ƒmƒC]";
-				mes "‚±‚±ƒAƒ†ƒ^ƒ„‚ÍŠCŠİ‚ª‹ß‚¢‚Ì‚Å";
-				mes "ŠC’Ş‚è‚ğŠy‚µ‚Şl‚ª‘½‚¢‚Å‚·B";
-				mes "^55FF33+^000000‚ÌˆÊ’u‚É‚ ‚é’Ş‚èê‚Í";
-				mes "“Á‚É—L–¼‚Å‚·Bˆê“xs‚Á‚Ä‚İ‚é‚Æ";
-				mes "‚æ‚¢‚Å‚µ‚å‚¤B";
+				mes "[Noy]";
+				mes "Here in Ayothaya, many people enjoy fishing because of it's closeness to the sea. ";
+				mes "the fishing place near the ^55FF33+^000000 is particularly popular. You should visit there sometime.";
 				viewpoint 1,253,99,2,0x00FF00;
 				close;
 
 			AyoCase6B:
-				mes "[ƒmƒC]";
-				mes "ˆÊ’u•\¦‚ğÁ‚µ‚½‚¯‚ê‚Î";
-				mes "uƒ~ƒjƒ}ƒbƒv‚Ì•\¦‚ğ‘S‚ÄÁ‚·v";
-				mes "‚ğ‘I‘ğ‚µ‚Ä‚­‚¾‚³‚¢B";
+				mes "[Noy]";
+				mes "If you would like to have all the marks removed, please select ''Remove marks from the Mini-map''.";
 				close;
 
 	AyoCase2A:
-		mes "[ƒmƒC]";
-		mes "ƒ~ƒjƒ}ƒbƒv‚Ì•\¦‚ğ‘S‚ÄÁ‚µ‚Ü‚µ‚½B";
-		mes "Ä“x•\¦‚µ‚½‚¢ê‡‚ÍA‚¢‚Â‚Å‚à";
-		mes "‚¨–â‚¢‡‚í‚¹‚­‚¾‚³‚¢B";
+		mes "[Noy]";
+		mes "All marks have beem erased from your Mini-map";
+		mes "If you would ever like marks on your mini-map again, don't hesistate to ask.";
 		viewpoint 2,182,59,2,0x00FF00;
 		viewpoint 2,129,86,2,0x55FF33;
 		viewpoint 2,229,69,2,0x00FF00;
@@ -108,7 +89,7 @@ ayothaya.gat,203,169,4	script	ƒmƒC	839,{
 		close;
 
 	AyoCase3A:
-		mes "[ƒmƒC]";
-		mes "‚æ‚¢‚²—·s‚É‚È‚è‚Ü‚·‚æ‚¤‚ÉB";
+		mes "[Noy]";
+		mes "I hope you have a good trip.";
 		close;
 }
