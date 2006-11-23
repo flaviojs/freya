@@ -2,11 +2,12 @@
 //= Map flags that allow players to drop items/equips on death
 //===== By: ==================================================
 //= eAthena Dev Team
-//===== Current Version: =====================================
+//= Updated: Freya Development Team
+//============================================================
 // Disabled nightmare mode flags as per kRO Patch 12/20/05
-
-//Due to the Content Rating Panel Representatives (just like ESRB in USA)'s 
-//recommendation, the "Nightmare Mode" has been removed from PvP. 
+// Due to the Content Rating Panel Representatives (just like ESRB in USA)'s 
+// recommendation, the "Nightmare Mode" has been removed from PvP.
+//============================================================
 
 //Nightmare Equipment Drops PVP
 //pvp_n_1-1.gat	mapflag	pvp_nightmaredrop	random,equip,300

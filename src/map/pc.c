@@ -4830,17 +4830,23 @@ int pc_attack(struct map_session_data *sd, int target_id, int type) {
 	return 0;
 }
 
-/*==========================================
- * Œp‘±UŒ‚’â~
- *------------------------------------------
- */
-void pc_stopattack(struct map_session_data *sd) {
-//	nullpo_retv(sd); // checked before to call function
+/* stop attacking and casting */
+void pc_stopattack(struct map_session_data *sd)
+{
 
-	if (sd->attacktimer != -1) {
+	/* already checked */
+//	nullpo_retv(sd);
+
+	/* pressure is uninterruptable */
+	if(sd->skillid == PA_PRESSURE)
+		return;
+
+	if(sd->attacktimer != -1)
+	{
 		delete_timer(sd->attacktimer, pc_attack_timer);
 		sd->attacktimer = -1;
 	}
+
 	sd->attacktarget = 0;
 	sd->state.attack_continue = 0;
 

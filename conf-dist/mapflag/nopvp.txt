@@ -1,6 +1,9 @@
 //===== Freya Script =========================================
-//===== Description: =========================================
 //= nopvp: Disables Player versus Player mode.
+//===== By: ==================================================
+//= eAthena Dev Team
+//= Updated: Freya Development Team
+//============================================================
 //= To disable PvP mode on a specific map add the mapname here.
 //============================================================
 

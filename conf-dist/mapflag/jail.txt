@@ -54,6 +54,3 @@ sec_pri.gat	mapflag	nobranch
 
 // No Party ==============================
 //sec_pri.gat	mapflag	pvp_noparty
-
-// Nightmare Equipment Drops PVP =========
-sec_pri.gat	mapflag	pvp_nightmaredrop	random,equip,300

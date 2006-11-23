@@ -2948,8 +2948,9 @@ void gettext_language_init() {
  * Map-Server Init and Command-line Arguments [Valaris]
  *------------------------------------------------------
  */
-void do_init(const int argc, char *argv[]) {
-	int i;
+void do_init(const int argc, char *argv[])
+{
+	register int i;
 
 #ifndef TXT_ONLY
 	char *SQL_CONF_NAME = "conf/inter_athena.conf";
@@ -2959,8 +2960,6 @@ void do_init(const int argc, char *argv[]) {
 	char *ATCOMMAND_CONF_FILENAME = "conf/atcommand_athena.conf";
 	char *SCRIPT_CONF_NAME = "conf/script_athena.conf";
 	char *GRF_PATH_FILENAME = "conf/grf-files.txt";
-	FILE *data_conf;
-	char line[1024],/* w1[1024],*/ w2[1024]; // wi[1024] == unused variable
 
 	printf("The map-server is starting...\n");
 
@@ -3059,16 +3058,6 @@ void do_init(const int argc, char *argv[]) {
 			if (argv[i][0] == '-' && argv[i][1] == '-')
 				battle_set_value(argv[i] + 2, argv[i+1]);
 	}
-
-	data_conf = fopen(GRF_PATH_FILENAME, "r");
-
-	// It will read, if there is grf-files.txt.
-	if (data_conf) {
-		while(fgets(line, sizeof(line), data_conf)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
-			memset(w2, 0, sizeof(w2));
-		}
-		fclose(data_conf);
-	} // end of reading grf-files.txt
 
 	map_readallmap();
 

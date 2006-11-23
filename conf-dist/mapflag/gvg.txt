@@ -1,13 +1,13 @@
 //===== Freya Script =========================================
-//= GvG On Map Flags
+//= Guild Vs Guild Maps
 //===== By: ==================================================
-//= eAthena Dev Team
+//= Original: English Athena Developer Team
+//= Updated:  Freya Developer Team
 //===== Current Version: =====================================
-//= 1.0
+//= 1.0 First Version [Athena]
+//= 1.1 Added Novice Castles [Jetvictor]
 //===== Description: =========================================
-//= gvg: Turns on GvG mode
-//===== Additional Comments: =================================
-//=
+//= GvG: Turns on GvG mode
 //============================================================
 
 // GvG Arenas =============
@@ -44,3 +44,9 @@ gld_dun01.gat	mapflag	gvg_dungeon
 gld_dun02.gat	mapflag	gvg_dungeon
 gld_dun03.gat	mapflag	gvg_dungeon
 gld_dun04.gat	mapflag	gvg_dungeon
+
+// Novice Castles =========
+nguild_alde.gat mapflag gvg
+nguild_gef.gat mapflag gvg
+nguild_pay.gat mapflag gvg
+nguild_prt.gat mapflag gvg

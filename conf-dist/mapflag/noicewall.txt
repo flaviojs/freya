@@ -2,6 +2,7 @@
 //= Map flags that disable icewall skill
 //===== By: ==================================================
 //= eAthena Dev Team
+//= Updated: Freya Development Team [Jetvictor]
 //============================================================
 //= noicewall: Disables Icewall skill.
 //= To disable Icewall on a specific map add the mapname here.
@@ -52,9 +53,7 @@ prt_church.gat	mapflag	noicewall
 prt_in.gat	mapflag	noicewall
 prontera.gat	mapflag noicewall
 sec_in01.gat	mapflag	noicewall
-sword_1-1.gat	mapflag	noicewall
-sword_2-1.gat	mapflag	noicewall
-sword_3-1.gat	mapflag	noicewall
+job_sword1.gat	mapflag	noicewall
 um_in.gat	mapflag	noicewall
 umbala.gat	mapflag	noicewall
 xmas_in.gat	mapflag	noicewall
@@ -115,6 +114,7 @@ prtg_cas02.gat	mapflag	noicewall
 prtg_cas03.gat	mapflag	noicewall
 prtg_cas04.gat	mapflag	noicewall
 prtg_cas05.gat	mapflag	noicewall
+
 // Novice Guild Castles ===
 nguild_alde.gat	mapflag	noicewall
 nguild_gef.gat	mapflag	noicewall

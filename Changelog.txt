@@ -5,6 +5,13 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/23/06
+	* Improved: WoE Damage Calculation Reductions [Harbin]
+	* Fixed: Status changes now do not interrupt Pressure casting [Harbin]
+	* Fixed: SC_MAGNUM's fire bonus should affect all damage except magic [Harbin]
+	* Removed: unused block code to read grf-files.txt in map.c:do_init [Harbin]
+	* Fixed: Dead Branch-related items can now be used in towns as per kRO [Tsuyuki]
+	* Fixed: A lot of problems with the updated Mapflags [Tsuyuki]
+	* Updated: Mapflags originally done in Nezumi (Credits to eAthena) [Jetvictor]
 	* Fixed: Gravitation Field now does 400 damage per hit to the Emperium during WoE [Tsuyuki]
 	* Fixed: Smite now properly refreshes the target's client position after knockback [Tsuyuki]
 
