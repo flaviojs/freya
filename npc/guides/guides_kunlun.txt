@@ -1,80 +1,78 @@
 //===== Freya Script =========================================
 //= Kunlun/Gonryun Guide NPCs
 //===== By: ==================================================
-//= jAthena
+//= jAthena (0.5), Harp (1.0)
 //===== Current Version: =====================================
-//= 0.5
+//= 1.0
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
-//= jAthena Japanese (Not.. translated) Guide NPCs, need
-//= someone to translate them! Ayothaya + Louyang guides also
-//= need to be translated.
+//= Kunlun Guide NPCs, translated from Japanese. Fully
+//= working thanks to Harp.
 //===== Additional Comments: =================================
-//= Fully working
 //= 0.5 Added first, Japanese version [Tsuyuki]
+//= 1.0 Translated into English [harp]
 //============================================================
 
 
 //----------------------------------------------------------------------
-//[ˆÄ“à—vˆõ - ƒRƒ“ƒƒ“]
+//[Guide Agent - Kunlun]
 
-gonryun.gat,163,60,4	script	ƒRƒ“ƒƒ“ƒKƒCƒh	780,{
+gonryun.gat,163,60,4	script	Kunlun Guide	780,{
 
-	mes "[ƒn ƒEƒHƒ“ƒ`]";
-	mes "‚¢‚Â‚àŠˆ‹C‚É–‚¿‚ÄA”M‹C‚ª‚ ‚Ó‚ê";
-	mes "–ˆ“úlX‚ªs‚«Œğ‚Á‚Ä‚¢‚é";
-	mes "ƒRƒ“ƒƒ“‚É‚¢‚ç‚Á‚µ‚á‚¢‚Ü‚¹!";
+	mes "[Ha Won Chi]";
+	mes "It's always booming with activity around here.";
+	mes "Everyday, people are feverishly trading goods.";
+	mes "Welcome to Kunlun.";
 	next;
-	mes "[ƒn ƒEƒHƒ“ƒ`]";
-	mes "¤”„‚ª‚çA‘º‚ÌˆÄ“à‚ğ‚µ‚Ä";
-	mes "‚¢‚Ü‚·B’m‚è‚½‚¢‚±‚Æ‚ª‚ ‚ê‚Î";
-	mes "‰½‚Å‚à•·‚¢‚Ä‚­‚¾‚³‚¢B";
+	mes "[Ha Won Chi]";
+	mes "This is a guide service offered by the Kunlun businesses. If there's anything you'd like to know, pelase don't hesitate to ask.";
 	next;
-	menu "‘º’·‚Ì‰Æ",GonCase1,"“¹‹ï¤l",GonCase2,"•Ší¤l",GonCase3,"–h‹ï¤l",GonCase4,"—·ŠÙ",GonCase5;
+	menu "House of the Village Elder",KunCase1,"Tool Shop",KunCase2,"Weapon Shop",KunCase3,"Armor Dealer",KunCase4,"Traveller's Inn",KunCase5,"Remove + Marks",KunCase6;
 
-	GonCase1:
+	KunCase1:
 		viewpoint 1,109,131,0,0xff3355;
-		mes "[ƒn ƒEƒHƒ“ƒ`]";
-		mes "ƒ~ƒjƒ}ƒbƒv‚Ì";
-		mes "^ff3355+^000000‚ÌˆÊ’u‚É";
-		mes "‘º’·‚Ì‰Æ‚ª‚ ‚è‚Ü‚·B";
-		goto GonEnd;
+		mes "[Ha Won Chi]";
+		mes "The house of the Village Elder is where the ^ff3355+^000000 mark is on the mini-map.";
+		goto KunEnd;
 
-	GonCase2:
+	KunCase2:
 		viewpoint 1,147,84,1,0xce6300;
-		mes "[ƒn ƒEƒHƒ“ƒ`]";
-		mes "ƒ~ƒjƒ}ƒbƒv‚Ì";
-		mes "^ce6300+^000000‚ÌˆÊ’u‚É";
-		mes "“¹‹ï¤l‚ª‚¢‚Ü‚·B";
-		goto GonEnd;
+		mes "[Ha Won Chi]";
+		mes "The Tool Shop is where the ^ce6300+^000000 is on the mini-map.";
+		goto KunEnd;
 
-	GonCase3:
+	KunCase3:
 		viewpoint 1,174,101,2,0x55ff33;
-		mes "[ƒn ƒEƒHƒ“ƒ`]";
-		mes "ƒ~ƒjƒ}ƒbƒv‚Ì";
-		mes "^55ff33+^000000‚ÌˆÊ’u‚É";
-		mes "•Ší¤l‚ª‚¢‚Ü‚·B";
-		goto GonEnd;
+		mes "[Ha Won Chi]";
+		mes "The Weapons Shop is where the ^55ff33+^000000 is on the mini-map.";
+		goto KunEnd;
 
-	GonCase4:
+	KunCase4:
 		viewpoint 1,173,84,3,0x3355ff;
-		mes "[ƒn ƒEƒHƒ“ƒ`]";
-		mes "ƒ~ƒjƒ}ƒbƒv‚Ì";
-		mes "^3355ff+^000000‚ÌˆÊ’u‚É";
-		mes "–h‹ï¤l‚ª‚¢‚Ü‚·B";
-		goto GonEnd;
+		mes "[Ha Won Chi]";
+		mes "The Armor Shop is where the ^3355ff+^000000 is on the mini-map.";
+		goto KunEnd;
 
-	GonCase5:
+	KunCase5:
 		viewpoint 1,215,114,4,0xffffff;
-		mes "[ƒn ƒEƒHƒ“ƒ`]";
-		mes "ƒ~ƒjƒ}ƒbƒv‚Ì";
-		mes "^ffffff+^000000‚ÌˆÊ’u‚É";
-		mes "—·ŠÙ‚ª‚ ‚è‚Ü‚·B";
-		goto GonEnd;
+		mes "[Ha Won Chi]";
+		mes "The Traveller's Inn is where the ^ffffff+^000000 is on the mini-map.";
+		goto KunEnd;
 
-GonEnd:
-	mes "„’B‚ÌŠy‚µ‚¢ƒRƒ“ƒƒ“‚ğ";
-	mes "v‚¢‚Á‚«‚èŠy‚µ‚ñ‚Å‚­‚¾‚³‚¢I";
+	KunCase6:
+		mes "[Ha Won Chi]";
+		mes "All of the + Marks have been erased!";
+		viewpoint 2,109,131,0,0xff3355;
+		viewpoint 2,147,84,1,0xce6300;
+		viewpoint 2,174,101,2,0x55ff33;
+		viewpoint 2,173,84,3,0x3355ff;
+		viewpoint 2,215,114,4,0xffffff;
+		goto KunEnd;
+
+KunEnd:
+	mes "Have an entertaining in the most entertaining town of tehm all, Kunlun!";
 	close;
+
+		
 }
