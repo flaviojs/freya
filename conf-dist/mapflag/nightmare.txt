@@ -2,6 +2,7 @@
 //= Map flags that allow players to drop items/equips on death
 //===== By: ==================================================
 //= eAthena Dev Team
+//= Updated: Freya Development Team
 //===== Current Version: =====================================
 // Disabled nightmare mode flags as per kRO Patch 12/20/05
 

@@ -2,9 +2,10 @@
 //= Map flags that disable warpto
 //===== By: ==================================================
 //= eAthena Dev Team
-//===== Current Version: =====================================
+//= Updated: Freya Development Team [Jetvictor]
+//============================================================
 
-// Guild Castles ===============
+// Guild Castles ========================
 //alde_gld.gat	mapflag	nowarpto
 aldeg_cas01.gat	mapflag	nowarpto
 aldeg_cas02.gat	mapflag	nowarpto
@@ -28,3 +29,11 @@ prtg_cas02.gat	mapflag	nowarpto
 prtg_cas03.gat	mapflag	nowarpto
 prtg_cas04.gat	mapflag	nowarpto
 prtg_cas05.gat	mapflag	nowarpto
+//Novice Guild
+n_castle.gat	mapflag	nowarpto
+nguild_alde.gat	mapflag	nowarpto
+nguild_gef.gat	mapflag	nowarpto
+nguild_pay.gat	mapflag	nowarpto
+nguild_prt.gat	mapflag	nowarpto
+//Lighthalzen Bio-Lab 3F
+lhz_dun03.gat	mapflag	nowarpto

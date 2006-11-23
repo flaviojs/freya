@@ -2,6 +2,7 @@
 //= Map flags that disables attacking a party member
 //===== By: ==================================================
 //= eAthena
+//= Updated: Freya Development Team [Jetvictor]
 //============================================================
 
 
