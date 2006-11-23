@@ -353,7 +353,11 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 	struct map_session_data *tsd = NULL;
 	struct mob_data *tmd = NULL;
 	struct status_change *tsc_data, *sc;
+//	struct block_list *target; // Target Data Structure - Part of WiP Ghost Fix [Tsuyuki]
 	short *sc_count;
+
+//	short t_element = status_get_element(target); // Target Element - Part of WiP Ghost Fix [Tsuyuki]
+//	int s_ele = status_get_attack_element(src);   // Right-Hand Weapon Element - Part of WiP Ghost Fix [Tsuyuki]
 
 	nullpo_retr(0, src);
 	nullpo_retr(0, bl);
@@ -566,8 +570,13 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 		if (tmd->class >= 1285 && tmd->class <= 1288) {
 			// Skills can't hit Emperium, except for Raging Triple Blow and Gravitation Field
 			// Note: Gloria Domini/Pressure can no longer hit the Emperium, for future reference (kRO Patch) [Tsuyuki]
-			if ((tmd->class == 1288 && (flag&BF_SKILL && skill_num != MO_TRIPLEATTACK)) || (tmd->class == 1288 && (flag&BF_SKILL && skill_num != HW_GRAVITATION)))
+			if ((tmd->class == 1288 && (flag&BF_SKILL && skill_num != MO_TRIPLEATTACK)))
 				return 0; // No need to continue calculating.. return 0 damage
+				// Gravitation Field does 400 damage to Emperium regardless of other factors
+			else if (tmd->class == 1288 && (flag&BF_SKILL && skill_num != HW_GRAVITATION)) {
+				damage = 400;
+				return damage;
+			}
 			
 			if (src->type == BL_PC) {
 				struct guild *g = guild_search(((struct map_session_data *)src)->status.guild_id);
@@ -636,6 +645,15 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 
 	if (tmd != NULL && tmd->hp > 0 && damage > 0) // ”½Œ‚‚È‚Ç‚ÌMOBƒXƒLƒ‹”»’è
 		mobskill_event(tmd, flag);
+
+/* Work In Progress - DO NOT UNCOMMENT */
+// Ghostring Card and Ghost-Armor-Element Fix [Tsuyuki]
+// If player's weapon ele is neutral and target is wearing Ghostring card, damage is 25%
+//	if (s_ele == 0 && t_element == 8 && tsd && tsd->status.inventory.card == 4047)
+//			damage /= 4;		
+// If target is not wearing Ghostring Card, but element is Ghost, damage is 0
+//	else if (s_ele == 0 && t_element == 8)
+//		return 0; // Return 0 damage
 
 	return damage;
 }
