@@ -289,15 +289,16 @@ int battle_heal(struct block_list *bl, struct block_list *target, int hp, int sp
 	return 0;
 }
 
-// 攻撃停止
-void battle_stopattack(struct block_list *bl) {
+/* stop attacking and casting */
+void battle_stopattack(struct block_list *bl)
+{
 	nullpo_retv(bl);
 
-	if (bl->type == BL_MOB)
+	if(bl->type == BL_MOB)
 		mob_stopattack((struct mob_data*)bl);
-	else if (bl->type == BL_PC)
+	else if(bl->type == BL_PC)
 		pc_stopattack((struct map_session_data*)bl);
-	else if (bl->type == BL_PET)
+	else if(bl->type == BL_PET)
 		pet_stopattack((struct pet_data*)bl);
 
 	return;
@@ -352,7 +353,7 @@ int battle_attr_fix(int damage, int atk_elem, int def_elem)
 int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage, int div_, int skill_num, int skill_lv, int flag) {
 	struct map_session_data *tsd = NULL;
 	struct mob_data *tmd = NULL;
-	struct status_change *tsc_data, *sc;
+	struct status_change *sc_data, *tsc_data;
 //	struct block_list *target; // Target Data Structure - Part of WiP Ghost Fix [Tsuyuki]
 	short *sc_count;
 
@@ -369,6 +370,12 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 		tsd = (struct map_session_data *)bl;
 	else if (bl->type == BL_MOB)
 		tmd = (struct mob_data *)bl;
+
+	sc_data = status_get_sc_data(src);
+
+	/* SC_MAGNUM adds 20% firedamage bonus */
+	if(sc_data && sc_data[SC_MAGNUM].timer != -1 && !(flag & BF_MAGIC))
+		damage = damage + (battle_attr_fix(damage, 3, status_get_element(bl)) * 20 / 100);
 
 	sc_count = status_get_sc_count(bl);
 
@@ -533,16 +540,19 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 			}
 		}
 
-		if(tsc_data[SC_KYRIE].timer != -1 && damage > 0){	// キリエエレイソン
-			sc = &tsc_data[SC_KYRIE];
-			sc->val2 -= damage;
-			if(flag&BF_WEAPON || skill_num == TF_THROWSTONE){
-				if(sc->val2 >= 0)	
+		if(tsc_data[SC_KYRIE].timer != -1 && damage > 0)
+		{
+			sc_data[SC_KYRIE].val2 -= damage;
+
+			if(flag & BF_WEAPON || skill_num == TF_THROWSTONE)
+			{
+				if(sc_data[SC_KYRIE].val2 >= 0)	
 					damage = 0;
 				else
-					damage =- sc->val2;
+					damage -= sc_data[SC_KYRIE].val2;
 			}
-			if((--sc->val3) <= 0 || (sc->val2 <= 0) || skill_num == AL_HOLYLIGHT)
+
+			if((--sc_data[SC_KYRIE].val3) <= 0 || (sc_data[SC_KYRIE].val2 <= 0) || skill_num == AL_HOLYLIGHT)
 				status_change_end(bl, SC_KYRIE, -1);
 		}
 
@@ -598,43 +608,51 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 		}
 	}
 
-	if (damage > 0) { // damage reductions from GvG or PK mode
-		if (map[bl->m].flag.gvg) { //GvG
-			if (tmd){ //defenseがあればダメージが減るらしい？
-				struct guild_castle *gc = guild_mapname2gc(map[bl->m].name);
-				if (gc)
-					damage -= damage * (gc->defense / 100) * (battle_config.castle_defense_rate / 100);
-			}
-			if (flag&BF_SKILL && (skill_num != HW_GRAVITATION || skill_num != PA_PRESSURE)) { //Skill attacks, Gravitation Field and Gloria Domini/Pressure ignore all WoE reductions [Tsuyuki]
-				if (flag&BF_WEAPON) //All weapon skills get -40% damage penalty in WoE
-					damage = damage * battle_config.gvg_weapon_damage_rate / 100; //default rate 60%
-				else if (flag&BF_MAGIC) //All magic skills get -50% damage penalty in WoE
-					damage = damage * battle_config.gvg_magic_damage_rate / 100; //default rate 50%
-				else //BF_MISC. No other choice. Same as Weapon skill redution -40%
-					damage = damage * battle_config.gvg_misc_damage_rate / 100; //default rate 60%
-			} else { //Non-skill attacks
-				if (flag&BF_SHORT) //All melee non-skill attacks do 100% (normal) damage
-					damage = damage * battle_config.gvg_short_damage_rate / 100; //default rate 100%
-				else //BF_LONG. No other choice. All ranged non-skill attacks get -25% damage penalty
-					damage = damage * battle_config.gvg_long_damage_rate / 100; //default rate 75%
-			}
-		} else if (battle_config.pk_mode && tsd) {
-			if (flag&BF_WEAPON) {
-				if (flag&BF_SHORT)
-					damage = damage * 4 / 5; // damage = damage * 80 / 100;
-				if (flag&BF_LONG)
-					damage = damage * 7 / 10; // damage = damage * 70 / 100;
-			}
-			if (flag&BF_MAGIC)
-				damage = damage * 3 / 5; // damage = damage * 60 / 100;
-			if (flag&BF_MISC)
-				damage = damage * 3 / 5; // damage = damage * 60 / 100;
+	/* War of Emperium damage reduction */
+	if(damage > 0 && map[bl->m].flag.gvg && skill_num != HW_GRAVITATION && skill_num != PA_PRESSURE)
+	{
+		if(tmd)
+		{
+			struct guild_castle *gc = guild_mapname2gc(map[bl->m].name);
+			if(gc)
+				damage -= damage * (gc->defense / 100) * (battle_config.castle_defense_rate / 100);
 		}
-		if (damage < 1)
-			damage  = 1;
+
+		if(flag & BF_SKILL)
+		{
+			if(flag & BF_WEAPON)
+				damage = damage * battle_config.gvg_weapon_damage_rate / 100;
+			else if(flag & BF_MAGIC)
+				damage = damage * battle_config.gvg_magic_damage_rate / 100;
+			else	/* BF_MISC */
+				damage = damage * battle_config.gvg_misc_damage_rate / 100;
+		} else {	/* BF_WEAPON */
+			if(flag & BF_SHORT)
+				damage = damage * battle_config.gvg_short_damage_rate / 100;
+			else	/* BF_LONG */
+				damage = damage * battle_config.gvg_long_damage_rate / 100;
+		}
+
+		if(damage < 1)
+			damage = 1;
+	/* pkmode pvp reduction */
+	} else if(damage > 0 && tsd && battle_config.pk_mode) {
+		if(flag & BF_WEAPON)
+		{
+			if(flag & BF_SHORT)
+				damage = damage * 4 / 5;
+			if(flag & BF_LONG)
+				damage = damage * 7 / 10;
+		}
+		if(flag & BF_MAGIC || flag & BF_MISC)
+			damage = damage * 3 / 5;
+
+		if(damage < 1)
+			damage = 1;
 	}
 
-	if (battle_config.skill_min_damage || flag&BF_MISC) {
+	if(battle_config.skill_min_damage || flag & BF_MISC)
+	{
 		if (div_ < 255) {
 			if (damage > 0 && damage < div_)
 				damage = div_;
@@ -1861,12 +1879,7 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 				/* Cart Revolution always deals neutral damage */
 				if(skill_num == MC_CARTREVOLUTION)
 					s_ele = 0;
-
-				/* Magnum Break:s 20% fire damage bonus */
-				if(sc_data && sc_data[SC_MAGNUM].timer != -1)
-					wd.damage = battle_attr_fix(wd.damage, s_ele, t_element) + (battle_attr_fix(wd.damage, 3, t_element) * 20 / 100);
-				else
-					wd.damage = battle_attr_fix(wd.damage, s_ele, t_element);
+				wd.damage = battle_attr_fix(wd.damage, s_ele, t_element);
 			}
 			if(wd.damage2 > 0 && flag.lefthand)
 				wd.damage2 = battle_attr_fix(wd.damage2, s_ele, t_element);

@@ -5,6 +5,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/23/06
+	* Fixed: Gravitation Field and Pressure should ignore War of Emperium damage reduction [Harbin]
+	* Fixed: Status changes should not interrupt Pressure casting [Harbin]
+	* Fixed: SC_MAGNUM should effect any damage, but not magic [Harbin]
+	* Removed: unused block code to read grf-files.txt in map.c:do_init [Harbin]
 	* Fixed: Gravitation Field now does 400 damage per hit to the Emperium during WoE [Tsuyuki]
 	* Fixed: Smite now properly refreshes the target's client position after knockback [Tsuyuki]
 
