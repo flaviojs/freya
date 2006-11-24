@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/24/06
+	* Added: Estin, Estun, Eswoo, Esma, Eske & Eska (Soul Linker skills) [Latios]
 	* Added: Dark Collector and Death Knight and related-classes [Tsuyuki]
 	 - NOT FOR USE - Test only
 	* Added: Skill database and source enum entries for new classes [Tsuyuki]

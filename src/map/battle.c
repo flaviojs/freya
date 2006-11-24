@@ -2358,6 +2358,7 @@ struct Damage battle_calc_magic_attack(
 			damage = rand() % 500 + 500 + skill_lv * status_get_int(bl) * 5;
 			normalmagic_flag = 0; //Damage is not affected by matk and ignores mdef
 			break;
+// End ----------- A lot of Corrections to BREAKER SKILL (pneuma included) (Posted on freya's bug report by Gawaine)
 
 		case HW_GRAVITATION:
 			damage = 200 + 200 * skill_lv;
@@ -2366,9 +2367,23 @@ struct Damage battle_calc_magic_attack(
 			flag_aoe = 1;
 			normalmagic_flag = 0;
 			break;
+		case SL_SMA:
+			MATK_FIX(40 + sd->status.base_level, 100);
+			// Esma takes element of Warm Wind
+			ele = status_get_attack_element(bl);
+			break;
+		case SL_STIN:
+			if(status_get_size(target) == 0) {
+				MATK_FIX(10 * skill_lv, 100);
+			} else {
+				MATK_FIX(skill_lv, 100);
+			}
+			break;
+		case SL_STUN:
+			MATK_FIX(5 * skill_lv, 100);
+			break;
 		}
 	}
-// End ----------- A lot of Corrections to BREAKER SKILL (pneuma included) (Posted on freya's bug report by Gawaine)
 
 	if(normalmagic_flag){	// 一般魔法ダメージ計算
 		int imdef_flag = 0;

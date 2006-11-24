@@ -13609,7 +13609,7 @@ ATCOMMAND_FUNC(skilltree) {
 		clif_displaymessage(fd, atcmd_output);
 
 		i = 0;
-		for (skillidx = 0; skillidx < MAX_SKILL_TREE && skill_tree[s][c][skillidx].id > 0; skillidx++)
+		for (skillidx = 0; skillidx < MAX_SKILL_PER_TREE && skill_tree[s][c][skillidx].id > 0; skillidx++)
 			if (skill_tree[s][c][skillidx].id == skillnum) {
 				i = 1;
 				break;

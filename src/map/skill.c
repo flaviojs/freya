@@ -572,15 +572,15 @@ const struct skill_name_db skill_names[] = {
  { SL_PRIEST, "PRIEST", "Priest" } ,
  { SL_ROGUE, "ROGUE", "Rogue" } ,
  { SL_SAGE, "SAGE", "Sage" } ,
- { SL_SKA, "SKA", "SKA" } ,
- { SL_SKE, "SKE", "SKE" } ,
- { SL_SMA, "SMA", "SMA" } ,
+ { SL_SKA, "SKA", "Eska" } ,
+ { SL_SKE, "SKE", "Eske" } ,
+ { SL_SMA, "SL_SMA", "Esma" } ,
  { SL_SOULLINKER, "SOULLINKER", "Soul Linker" } ,
  { SL_STAR, "STAR", "Star" } ,
- { SL_STIN, "STIN", "Stin" } ,
- { SL_STUN, "STUN", "Stun" } ,
+ { SL_STIN, "STIN", "Estin" } ,
+ { SL_STUN, "STUN", "Estun" } ,
  { SL_SUPERNOVICE, "SUPERNOVICE", "Super Novice" } ,
- { SL_SWOO, "SWOO", "Swoo" } ,
+ { SL_SWOO, "SWOO", "Eswoo" } ,
  { SL_WIZARD, "WIZARD", "Wizard" } ,
  { SM_AUTOBERSERK, "AUTOBERSERK", "Auto_Berserk" } ,
  { SM_BASH, "BASH", "Bash" } ,
@@ -747,7 +747,7 @@ int skill_get_unit_flag(int id) { skill_get2(skill_db[id].unit_flag, id); }
 int skill_tree_get_max(int id, int b_class) {
 	struct pc_base_job s_class = pc_calc_base_job(b_class);
 	int i, skillid;
-	for(i = 0; i < MAX_SKILL_TREE && (skillid = skill_tree[s_class.upper][s_class.job][i].id) > 0; i++)
+	for(i = 0; i < MAX_SKILL_PER_TREE && (skillid = skill_tree[s_class.upper][s_class.job][i].id) > 0; i++)
 		if (id == skillid)
 			return skill_tree[s_class.upper][s_class.job][i].max;
 
@@ -1380,6 +1380,11 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 	case MO_BALKYOUNG: //Note: attack_type is passed as BF_WEAPON for the actual target, BF_MISC for the splash-affected mobs.
 		if (attack_type == BF_MISC && (rand() % 100 <= 70)) // 70% base stun chance
 			status_change_start(bl, SC_STUN, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
+		break;
+	case SL_STUN:
+		// Stun Medium monsters
+		if(status_get_size(bl) == 1 && (rand() % 100 < sc_def_vit))
+			status_change_start(bl,SC_STUN,0,0,0,0,2000,0);
 		break;
 	}
 
@@ -3282,6 +3287,23 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 				battle_heal(NULL,src,heal,0,0);
 			}
 		}
+		break;
+		
+	case SL_SMA:
+		if (sc_data && sc_data[SC_SMA].timer != -1)
+			status_change_end(src,SC_SMA,-1);
+	case SL_STIN:
+	case SL_STUN:
+		// Es-type magic can only be used on monsters
+		if(sd && bl->type != BL_MOB) {
+			status_change_start(src,SC_STUN,skilllv,0,0,0,500,10);
+			clif_skill_fail(sd,skillid,0,0);
+			break;
+		}
+		skill_attack(BF_MAGIC, src, src, bl, skillid, skilllv, tick, flag);
+		
+		if(skillid != SL_SMA && skilllv >= 7)
+			status_change_start(src, SC_SMA, 0, 0, 0, 0, 3000, 0);
 		break;
 
 
@@ -5480,6 +5502,26 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 				status_change_start(src, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
 			clif_skill_nodamage(src, src, skillid, skilllv, 1);
 		}
+		break;
+		
+	case SL_SWOO:
+		if((dstsd != NULL && dstsd->sc_data[SkillStatusChangeTable[skillid]].timer != -1) || (dstmd != NULL && dstmd->sc_data[SkillStatusChangeTable[skillid]].timer != -1)) {
+			status_change_start(src,SC_STUN,skilllv,0,0,0,10000,0);
+			break;
+		}
+	case SL_SKA:
+	case SL_SKE:
+		// Es-type magic can only be used on monsters
+		if(sd && bl->type != BL_MOB) {
+			status_change_start(src,SC_STUN,skilllv,0,0,0,500,10);
+			clif_skill_fail(sd,skillid,0,0);
+			break;
+		}
+		clif_skill_nodamage(src,bl,skillid,skilllv,1);
+		status_change_start(bl,SkillStatusChangeTable[skillid],skilllv,0,0,0,skill_get_time(skillid,skilllv),0);
+		
+		if(skillid == SL_SKE)
+			status_change_start(src, SC_SMA, 0, 0, 0, 0, 3000, 0);
 		break;
 
 	// New guild skills [Celest]
@@ -7839,6 +7881,12 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 				return 0;
 			}
 			arrow_flag = 1;
+		}
+		break;
+	case SL_SMA:
+		if (!(type&1) && sd->sc_data[SC_SMA].timer == -1) {
+			clif_skill_fail(sd, skill, 0, 0);
+			return 0;
 		}
 		break;
 	}

@@ -493,34 +493,35 @@
 //444,0,0,0,0,0,0,0,no,0,0,0,none,0	//SG_FUSION#Union of the Sun, Moon and Stars#
 
 // Soul Linker Skills
-//445,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_ALCHEMIST#Spirit of the Alchemist#
-//446,0,0,0,0,0,0,0,no,0,0,0,none,0	//AM_BERSERKPITCHER#Berserk Pitcher#
-//447,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_MONK#Spirit of the Monk#
-//448,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_STAR#Spirit of the Star Knight#
-//449,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_SAGE#Spirit of the Sage#
-//450,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_CRUSADER#Crusader#
-//451,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_SUPERNOVICE#Spirit of the Supernovice#
-//452,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_KNIGHT#Spirit of the Knight#
-//453,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_WIZARD#Spirit of the Wizard#
-//454,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_PRIEST#Spirit of the Priest#
-//455,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_BARDDANCER#Spirit of the Artist#
-//456,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_ROGUE#Spirit of the Rogue#
-//457,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_ASSASIN#Spririt of the Assassin#
-//458,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_BLACKSMITH#Spirit of the Blacksmith#
-//459,0,0,0,0,0,0,0,no,0,0,0,none,0	//BS_ADRENALINE2#Full Adrenaline Rush#
-//460,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_HUNTER#Spirit of the Hunter#
-//461,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_SOULLINKER#Spirit of the Soul Linker#
-//462,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_KAIZEL#Kaizel#
-//463,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_KAAHI#Kahai#
-//464,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_KAUPE#Kuaf#
-//465,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_KAITE#Kaite#
-//466,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_KAINA#Kaina#
-//467,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_STIN#Estin#
-//468,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_STUN#Estern#
-//469,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_SMA#Esma#
-//470,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_SWOO#Esu#
-//471,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_SKE#Esk#
-//472,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_SKA#Eska#
+445,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_ALCHEMIST#Spirit of Alchemist#
+446,9,6,16,0,1,1,1,no,0,3072,0,none,0	//AM_BERSERKPITCHER#Berserk Pitcher#
+447,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_MONK#Spirit of Monk#
+448,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_STAR#Spirit of Star Gladiator#
+449,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_SAGE#Spirit of Sage#
+450,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_CRUSADER#Spirit of Crusader#
+451,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_SUPERNOVICE#Spirit of Super Novice#
+452,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_KNIGHT#Spirit of Knight#
+453,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_WIZARD#Spirit of Wizard#
+454,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_PRIEST#Spirit of Priest#
+455,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_BARDDANCER#Spirit of Bard/Dancer#
+456,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_ROGUE#Spirit of Rogue#
+457,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_ASSASIN#Spirit of Assassin#
+458,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_BLACKSMITH#Spirit of Blacksmith#
+459,0,6,4,0,1,1,1,no,0,0,0,weapon,0	//BS_ADRENALINE2#Full Adrenaline Rush#
+460,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_HUNTER#Spirit of Hunter#
+461,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_SOULLINKER#Spirit of Soul Linker#
+462,9,6,16,0,1,7,1,yes,0,0,0,magic,0	//SL_KAIZEL#Kaizel#
+463,9,6,16,0,1,7,1,yes,0,0,0,magic,0	//SL_KAAHI#Kaahi#
+464,9,6,16,0,1,3,1,yes,0,0,0,magic,0	//SL_KAUPE#Kaupe#
+465,9,6,16,0,1,7,1,yes,0,0,0,magic,0	//SL_KAITE#Kaite#
+466,0,0,0,0,0,7,0,no,0,0,0,none,0	//SL_KAINA#Kaina#
+467,9,6,1,0,0,7,1,yes,0,0,0,magic,2	//SL_STIN#Estun#
+468,9,6,1,0,0,7,1,yes,0,0,0,magic,0	//SL_STUN#Estun#
+469,9,8,1,0,0,10,1:2:3:4:5:6:7:8:9:10,yes,0,0,0,magic,0 //SL_SMA#Esma#
+470,9,6,1,0,1,7,1,yes,0,0,0,magic,0	//SL_SWOO#Eswoo#
+471,9,6,1,0,1,3,1,yes,0,0,0,magic,0	//SL_SKE#Eske#
+472,9,6,1,0,1,3,1,yes,0,0,0,magic,0	//SL_SKA#Eska#
+494,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_HIGH#Spirit of Rebirth#
 
 // Extended Advanced Class Skills
 475,0,0,4,0,1,1,1,yes,0,0,0,magic,0	//ST_PRESERVE#Preserve#
@@ -543,12 +544,11 @@
 
 // Extra TaeKwon Class Skills
 //493,0,6,4,0,1,1,1,no,0,0,0,none,0	//TK_MISSION#Taekwon Mission#
-//494,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_HIGH#Spirit of Rebirth#
-//495,0,6,4,0,1,1,1,no,0,8,0,weapon,0	//KN_ONEHAND#Onehand Quicken#
-//496,0,6,4,0,1,1,0,no,0,8,0,none,0	//AM_TWILIGHT1#Twilight Alchemy 1#
-//497,0,6,4,0,1,1,0,no,0,8,0,none,0	//AM_TWILIGHT2#Twilight Alchemy 2#
-//498,0,6,4,0,1,1,0,no,0,8,0,none,0	//AM_TWILIGHT3#Twilight Alchemy 3#
-//499,-9,8,4,-1,0,1,2,no,0,520,0,weapon,0	//HT_POWER#Beast Strafing#
+495,0,6,4,0,1,1,1,no,0,0,0,weapon,0	//KN_ONEHAND#Onehand Quicken#
+496,0,6,4,0,1,1,0,no,0,0,0,none,0		//AM_TWILIGHT1#Twilight Alchemy 1#
+497,0,6,4,0,1,1,0,no,0,0,0,none,0		//AM_TWILIGHT2#Twilight Alchemy 2#
+498,0,6,4,0,1,1,0,no,0,0,0,none,0		//AM_TWILIGHT3#Twilight Alchemy 3#
+499,-3,8,1,0,0,1,2,no,0,0,0,weapon,0	//HT_POWER#Beast Strafing#
 
 // Gunslinger Class Skills
 //500,0,6,4,0,0,5,1,no,0,0,0,misc,0	//GS_GLITTERING#Flip the Coin#
