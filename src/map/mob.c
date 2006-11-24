@@ -4762,12 +4762,12 @@ static int mob_readdb_mobavail(void)
 		if (class <= 1000 || class >= MAX_MOB_DB) // ’l‚ªˆÙí‚È‚çˆ—‚µ‚È‚¢B
 			continue;
 		k = atoi(str[1]);
-		if (j > 3 && k > 23 && k < 69)
-			k += 3977; // advanced job/baby class
+		if (j > 3 && k > 26 && k < 69)
+			k += 3974; // advanced job/baby class
 		if (k >= 0)
 			mob_db[class].view_class = k;
 
-		if (mob_db[class].view_class < 24 || mob_db[class].view_class > 4000) {
+		if (mob_db[class].view_class < 27 || mob_db[class].view_class > 4000) {
 			mob_db[class].sex = atoi(str[2]);
 			mob_db[class].hair = atoi(str[3]);
 			mob_db[class].hair_color = atoi(str[4]);

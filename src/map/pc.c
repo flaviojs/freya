@@ -1243,6 +1243,10 @@ void pc_checkminskill(struct map_session_data* sd) {
 	case 23: // Super Novice
 		min_points = 9 + 20 + sd->status.job_level - 1; // minimum calculation, so changement at base level (not job level) 45 + 20 points bonus
 		break;
+	case 24: // Gunslinger
+	case 25: // Ninja
+		min_points = 9 + 20 + sd->status.job_level - 1;
+		break;
 	case 4001: // Novice High
 		min_points = sd->status.job_level - 1;
 		break;
@@ -1380,6 +1384,10 @@ int pc_checkmaxskill(struct map_session_data* sd) {
 		break;
 	case 23: // Super Novice
 		max_points = 9 + 20 + sd->status.job_level - 1; // minimum calculation, so changement at base level (not job level) 45 + 20 points bonus
+		break;
+	case 24: // Gunslinger
+	case 25: // Ninja
+		max_points = 9 + 20 + sd->status.job_level - 1;
 		break;
 	case 4001: // Novice High
 		max_points = sd->status.job_level - 1;
@@ -1721,7 +1729,7 @@ int pc_calc_skilltree_normalize_job(int c, int s, struct map_session_data *sd) {
 			return 0;
 
 		// check second classes and first class skills
-		if (c >= 7 && c < 23) {
+		if ((c >= 7 && c < 23) || (c >= 4046 && c <= 4049)) {
 			int c1 = c, previous_class_level;
 			// which classe to check
 			switch(c) {
@@ -1752,6 +1760,10 @@ int pc_calc_skilltree_normalize_job(int c, int s, struct map_session_data *sd) {
 			case 17:
 				c1 = 6;
 				break;
+			case 4047:
+			case 4048:
+			case 4049:
+				c1 = 4046;
 			}
 			// totalize actual skills points
 			for(i = 0; (id = skill_tree[s][c1][i].id) > 0; i++) {
@@ -5108,10 +5120,11 @@ int pc_nextbaseexp(struct map_session_data *sd)
 	if (sd->status.class == 0 || sd->status.class == 4023) i = 0; // Novice & Baby Novice
 	else if (sd->status.class <= 6 || (sd->status.class >= 4024 && sd->status.class <= 4029) ||
 					(sd->status.class >= JOB_TAEKWON && sd->status.class <= JOB_SOUL_LINKER)) i = 1; // 1st Job & Baby 1st Job
-	else if (sd->status.class <= 22 || (sd->status.class >= 4030 && sd->status.class <= 4044)) i = 2; // 2nd Job & Baby 2nd Job
+	else if (sd->status.class <= 21 || (sd->status.class >= 4030 && sd->status.class <= 4044)) i = 2; // 2nd Job & Baby 2nd Job
 	else if (sd->status.class == 23 || sd->status.class == 4045) i = 3; // Super Novice & Super Baby
 	else if (sd->status.class == 4001) i = 4; // High Novice
 	else if (sd->status.class <= 4007) i = 5; // High 1st Job
+	else if (sd->status.class == 24 || sd->status.class == 25) i = 1; // Gunslinger/Ninja 1st Job
 	else i = 6; // 3rd Job
 
 	return exp_table[i][sd->status.base_level-1];
@@ -5137,6 +5150,7 @@ int pc_nextjobexp(struct map_session_data *sd)
 	else if (sd->status.class == 23 || sd->status.class == 4045) i=10; // Super Novice & Super Baby
 	else if (sd->status.class == 4001) i = 11; // High Novice
 	else if (sd->status.class <= 4007) i = 12; // High 1st Job
+	else if (sd->status.class == 24 || sd->status.class == 25) i = 8; // Gunslinger/Ninja 1st Job
 	else i = 13; // 3rd Job
 
 	return exp_table[i][sd->status.job_level-1];
@@ -5162,6 +5176,7 @@ int pc_nextbaseafter(struct map_session_data *sd)
 	else if (sd->status.class == 23 || sd->status.class == 4045) i = 3; // Super Novice & Super Baby
 	else if (sd->status.class == 4001) i = 4; // High Novice
 	else if (sd->status.class <= 4007) i = 5; // High 1st Job
+	else if (sd->status.class == 24 || sd->status.class == 25) i = 1; // Gunslinger/Ninja 1st Job
 	else i = 6; //3rd Job
 
 	return exp_table[i][sd->status.base_level];
@@ -5183,10 +5198,11 @@ int pc_nextjobafter(struct map_session_data *sd)
 	if (sd->status.class == 0 || sd->status.class == 4023) i = 7; // Novice & Baby Novice [Lupus]
 	else if (sd->status.class <= 6 || (sd->status.class >= 4024 && sd->status.class <= 4029) ||
 					(sd->status.class >= JOB_TAEKWON && sd->status.class <= JOB_SOUL_LINKER)) i = 8; // 1st Job & Baby 1st Job
-	else if (sd->status.class <= 22 || (sd->status.class >= 4030 && sd->status.class <= 4044)) i = 9; // 2nd Job & Baby 2nd Job
+	else if (sd->status.class <= 27 || (sd->status.class >= 4030 && sd->status.class <= 4044)) i = 9; // 2nd Job & Baby 2nd Job
 	else if (sd->status.class == 23 || sd->status.class == 4045) i = 10; // Super Novice & Super Baby
 	else if (sd->status.class == 4001) i = 11; // High Novice
 	else if (sd->status.class <= 4007) i = 12; // High 1st Job
+	else if (sd->status.class == 24 || sd->status.class == 25) i = 8; // Gunslinger/Ninja 1st Job
 	else i = 13; // 3rd Job
 
 	return exp_table[i][sd->status.job_level];
@@ -6050,8 +6066,8 @@ int pc_readparam(struct map_session_data *sd,int type)
 		val= sd->status.job_level;
 		break;
 	case SP_CLASS:
-		if (val >= 24 && val < 45)
-			val += 3978;
+		if (val >= 27 && val < 45)
+			val += 3975;
 		else
 		val= sd->status.class;
 		break;
@@ -6104,6 +6120,12 @@ int pc_readparam(struct map_session_data *sd,int type)
 			case JOB_STAR_GLADIATOR2:
 			case JOB_SOUL_LINKER:
 				val= JOB_TAEKWON;
+				break;
+			case JOB_GUNSLINGER:
+				val= JOB_GUNSLINGER;
+				break;
+			case JOB_NINJA:
+				val= JOB_NINJA;
 				break;
 			default:
 				val= s_class.job;
@@ -6208,10 +6230,13 @@ void pc_setparam(struct map_session_data *sd,int type,int val)
 	case SP_JOBLEVEL:
 		if (s_class.job == 0)
 			up_level -= 40;
-		// super novices can go up to 99 [celest]
+		// super novices can go up to job 99 [celest]
 		else if (s_class.job == 23)
 			up_level += 49;
 		else if (sd->status.class >= 4008 && sd->status.class <= 4022)
+			up_level += 20;
+		// Gunslinger/Ninja can go up to job 70
+		else if (sd->status.class == 24 || sd->status.class == 25)
 			up_level += 20;
 		if (val >= sd->status.job_level) {
 			if (val > up_level)val = up_level;
@@ -6545,8 +6570,8 @@ int pc_jobchange(struct map_session_data *sd, int job, int upper)
 			return 1;
 		else if (upper == 2)
 			b_class += 4022;
-	} else if (job > 23 && job < 69) {
-		b_class += 3977;
+	} else if (job >= 26 && job < 69) {
+		b_class += 3974;
 	} else if ((job >= 69 && job < 4001) || (job > MAX_PC_CLASS))
 		return 1;
 

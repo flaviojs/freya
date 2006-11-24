@@ -5,6 +5,12 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/23/06
+	* Added: Gunslinger and Ninja classes [Tsuyuki]
+	 - Skills are messed up.. GS has TK skills, NJ has Novice skills
+	 - Job stat bonuses are messed up for both classes
+	 - Max job level is messed up, but total skill points is correct
+	 - GS/NJ max job level should be 70, currently its 50
+	 - Various other problems, and no skills implemented for either class just yet
 	* Improved: WoE Damage Calculation Reductions [Harbin]
 	* Fixed: Status changes now do not interrupt Pressure casting [Harbin]
 	* Fixed: SC_MAGNUM's fire bonus should affect all damage except magic [Harbin]

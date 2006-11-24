@@ -769,6 +769,9 @@ char * job_name(int class) {
 	case 21:   return "Peco crusader";
 	case 22:   return "Wedding";
 	case 23:   return "Super Novice";
+	case 24:   return "Gunslinger";
+	case 25:   return "Ninja";
+	case 26:   return "Xmas";
 	case 4001: return "Novice High";
 	case 4002: return "Swordsman High";
 	case 4003: return "Mage High";
@@ -3779,6 +3782,10 @@ ATCOMMAND_FUNC(jobchange) {
 		{ "super-novice",             23 },
 		{ "super_novice",             23 },
 		{ "supernovice",              23 },
+		{ "gunslinger",               24 },
+		{ "ninja",                    25 },
+		{ "xmas",                     26 },
+		{ "santa",                    26 },
 		{ "novice high",            4001 },
 		{ "novice_high",            4001 },
 		{ "high novice",            4001 },
@@ -3907,9 +3914,9 @@ ATCOMMAND_FUNC(jobchange) {
 			send_usage(sd, "   0 Novice            7 Knight           14 Crusader         21 Peco Crusader");
 			send_usage(sd, "   1 Swordman          8 Priest           15 Monk             22 Formal");
 			send_usage(sd, "   2 Mage              9 Wizard           16 Sage             23 Super Novice");
-			send_usage(sd, "   3 Archer           10 Blacksmith       17 Rogue");
-			send_usage(sd, "   4 Acolyte          11 Hunter           18 Alchemist");
-			send_usage(sd, "   5 Merchant         12 Assassin         19 Bard");
+			send_usage(sd, "   3 Archer           10 Blacksmith       17 Rogue            24 Gunslinger");
+			send_usage(sd, "   4 Acolyte          11 Hunter           18 Alchemist        25 Ninja");
+			send_usage(sd, "   5 Merchant         12 Assassin         19 Bard             26 Xmas");
 			send_usage(sd, "   6 Thief            13 Peco Knight      20 Dancer");
 			send_usage(sd, "4001 Novice High    4008 Lord Knight      4015 Paladin        4022 Peco Paladin");
 			send_usage(sd, "4002 Swordman High  4009 High Priest      4016 Champion");
@@ -7873,6 +7880,10 @@ ATCOMMAND_FUNC(character_job) {
 		{ "super-novice",             23 },
 		{ "super_novice",             23 },
 		{ "supernovice",              23 },
+		{ "gunslinger",               24 },
+		{ "ninja",                    25 },
+		{ "xmas",                     26 },
+		{ "santa",                    26 },
 		{ "novice high",            4001 },
 		{ "novice_high",            4001 },
 		{ "high novice",            4001 },
@@ -8013,9 +8024,9 @@ ATCOMMAND_FUNC(character_job) {
 		send_usage(sd, "   0 Novice            7 Knight           14 Crusader         21 Peco Crusader");
 		send_usage(sd, "   1 Swordman          8 Priest           15 Monk             22 Formal");
 		send_usage(sd, "   2 Mage              9 Wizard           16 Sage             23 Super Novice");
-		send_usage(sd, "   3 Archer           10 Blacksmith       17 Rogue");
-		send_usage(sd, "   4 Acolyte          11 Hunter           18 Alchemist");
-		send_usage(sd, "   5 Merchant         12 Assassin         19 Bard");
+		send_usage(sd, "   3 Archer           10 Blacksmith       17 Rogue            24 Gunslinger");
+		send_usage(sd, "   4 Acolyte          11 Hunter           18 Alchemist        25 Ninja");
+		send_usage(sd, "   5 Merchant         12 Assassin         19 Bard             26 Xmas");
 		send_usage(sd, "   6 Thief            13 Peco Knight      20 Dancer");
 		send_usage(sd, "4001 Novice High    4008 Lord Knight      4015 Paladin        4022 Peco Paladin");
 		send_usage(sd, "4002 Swordman High  4009 High Priest      4016 Champion");
