@@ -192,6 +192,7 @@ struct pc_base_job pc_calc_base_job(unsigned int b_class);//“]¶‚â—{qE‚ÌŒ³‚ÌE
 
 int pc_calc_base_job2(unsigned int b_class); // Celest
 int pc_calc_upper(unsigned int b_class);
+short pc_get_upper_type(unsigned int class);
 
 struct skill_tree_entry {
 	short id;

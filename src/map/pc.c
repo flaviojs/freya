@@ -617,7 +617,7 @@ void pc_setequipindex(struct map_session_data *sd) {
 int pc_isequip(struct map_session_data *sd, int n)
 {
 	struct item_data *item;
-	short s_class;
+	short s_class, upper_type;
 	//“]¶‚â—{Žq‚Ìê‡‚ÌŒ³‚ÌE‹Æ‚ðŽZo‚·‚é
 
 	nullpo_retr(0, sd);
@@ -633,6 +633,15 @@ int pc_isequip(struct map_session_data *sd, int n)
 		return 0;
 	if (item->elv > 0 && sd->status.base_level < item->elv) //Item base level restriction
 		return 0;
+		
+	// upper job restriction
+	upper_type = pc_get_upper_type(sd->status.class);
+	if(upper_type == 0)
+		return 0;
+	if(item->flag.upper != 0) {		// 0 = 1 + 2 + 4 = 7 = all class
+		if(!(item->flag.upper & upper_type))
+			return 0;
+	}
 	
 	if (map[sd->bl.m].flag.pvp && (item->flag.no_equip&1)) // no_equip = 1- not in PvP, 2- GvG restriction, 3- PvP and GvG which restriction
 		return 0;
@@ -3201,7 +3210,7 @@ void pc_takeitem(struct map_session_data *sd, struct flooritem_data *fitem)
 int pc_isUseitem(struct map_session_data *sd, int n)
 {
 	struct item_data *item;
-	short s_class;
+	short s_class, upper_type;
 	
 	nullpo_retr(0, sd);
 
@@ -3235,6 +3244,15 @@ int pc_isUseitem(struct map_session_data *sd, int n)
 
 	if (item->sex != 2 && sd->status.sex != item->sex) //Item gender restriction
 		return 0;
+		
+	// upper job restriction
+	upper_type = pc_get_upper_type(sd->status.class);
+	if(upper_type == 0)
+		return 0;
+	if(item->flag.upper != 0) {		// 0 = 1 + 2 + 4 = 7 = all class
+		if(!(item->flag.upper & upper_type))
+			return 0;
+	}
 
 	s_class = pc_calc_base_job2(sd->status.class);
 	switch(s_class) { //Normalize Peco classes into their normal version
@@ -4657,14 +4675,29 @@ int pc_calc_base_job2(unsigned int b_class) {
 }
 
 int pc_calc_upper(unsigned int b_class) {
-	if(b_class < JOB_NOVICE_HIGH)
+	if(b_class < JOB_NOVICE_HIGH)	// base classe
 		return 0;
-	if(b_class >= JOB_NOVICE_HIGH && b_class < JOB_BABY)
+	if(b_class >= JOB_NOVICE_HIGH && b_class < JOB_BABY)	// advanced classe
 		return 1;
-	if(b_class >= JOB_TAEKWON && b_class <= JOB_SOUL_LINKER)
+	if(b_class >= JOB_TAEKWON && b_class <= JOB_SOUL_LINKER)	// base classe
 		return 0;
 
-	return 2;
+	return 2;	// other => baby?
+}
+
+//==========================================================================
+// Return upper type of a job, for item_upper db [Latios]
+// 0 = unknown, 1 = base, 2 = advanced, 4 = baby
+//==========================================================================
+short pc_get_upper_type(unsigned int class) {
+	if((JOB_NOVICE <= class && class <= JOB_XMAS) || (JOB_TAEKWON <= class && class <= JOB_SOUL_LINKER))		// base class (xmas? :x)
+		return 1;
+	else if(JOB_NOVICE_HIGH <= class && class <= JOB_PALADIN2)		// advanced class
+		return 2;
+	else if(JOB_BABY <= class && class <= JOB_SUPER_BABY)		// baby class
+		return 4;
+		
+	return 0;
 }
 
 /*==========================================

@@ -45,6 +45,7 @@ static int itemdb_read_itemnametable(void);
 static int itemdb_read_noequip(void);
 static int itemdb_read_norefine(void);
 static int itemdb_read_itemtrade(void);
+static int itemdb_read_upper(void);
 static int itemdb_read_itemslottable(void);
 static int itemdb_read_itemslotcounttable(void);
 static int itemdb_read_cardillustnametable(void);
@@ -345,6 +346,7 @@ void itemdb_read(void) {
 	itemdb_read_noequip();
 	itemdb_read_norefine();
 	itemdb_read_itemtrade();
+	itemdb_read_upper();
 
 	if (battle_config.cardillust_read_grffile)
 		itemdb_read_cardillustnametable();
@@ -535,6 +537,7 @@ static int itemdb_readdb(void)
 			id->flag.available = 1;
 			id->flag.value_notdc = 0;
 			id->flag.value_notoc = 0;
+			id->flag.upper = 0;
 			id->view_id = 0;
 
 			id->use_script = NULL;
@@ -1117,6 +1120,56 @@ static int itemdb_read_itemtrade(void)
 }
 
 /*==========================================
+ * Reads item_upper.txt database
+ *------------------------------------------
+ */
+static int itemdb_read_upper(void) {
+	FILE *fp;
+	char line[1024];
+	int ln = 0, nameid, j;
+	char *str[32], *p;
+	struct item_data *id;
+
+	if((fp = fopen("db/item_upper.txt","r")) == NULL){
+		printf("can't read db/item_upper.txt\n");
+		return -1;
+	}
+	
+	while(fgets(line, sizeof(line) - 1, fp)){
+		if(line[0] == '/' && line[1] == '/')
+			continue;
+			
+		memset(str, 0, sizeof(str));
+		
+		for(j = 0, p = line; j < 2 && p; j++){
+			str[j] = p;
+			p = strchr(p, ',');
+			if(p)
+				*p++ = 0;
+		}
+		
+		if(str[0] == NULL || str[1] == NULL)
+			continue;
+
+		nameid = atoi(str[0]);
+		if(nameid <= 0 || nameid >= 20000 || !(id = itemdb_exists(nameid))) {
+			printf("Invalid item id (%d) on db/item_upper.txt file database\n", nameid);
+
+			continue;
+		}
+
+		id->flag.upper = atoi(str[1]);
+
+		ln++;
+	}
+	fclose(fp);
+	
+	printf("DB '" CL_WHITE "db/item_upper.txt" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
+
+	return 0;
+}
+
+/*==========================================
  * Wether item gender restriction is applied or not [Proximus]
  * Based on certain items and settings
  *------------------------------------------
@@ -1278,6 +1331,7 @@ static int itemdb_read_sqldb(void) {
 		id->flag.available   = 1;
 		id->flag.value_notdc = 0;
 		id->flag.value_notoc = 0;
+		id->flag.upper = 0;
 	}
 
 	printf("DB '" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%ld" CL_RESET "' entrie%s).\n", item_db_db, ln, (ln > 1) ? "s" : "");

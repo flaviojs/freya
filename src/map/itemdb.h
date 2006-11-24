@@ -37,6 +37,7 @@ struct item_data {
 		unsigned no_use : 1;
 		unsigned no_refine : 1; // [celest]
 		unsigned trade_restriction : 7;	// item binding
+		unsigned upper : 4;			// 0 : all; 1 : base class; 2 : advanced class; 4 : baby class
 	} flag;
 	short gm_lv_trade_override;	// GM level required to bypass trade_restriction
 	int view_id;
