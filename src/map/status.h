@@ -216,27 +216,25 @@ enum {	// struct map_session_data の status_changeの番号テーブル
 	SC_WATKFOOD,		// 210
 	SC_MATKFOOD,
 	SC_MAGNUM,
-	SC_SCRESIST, //Increases resistance to status changes.
 	SC_XMAS, // Xmas Suit [Valaris]
 	SC_WARM, //SG skills [Komurka]
 	SC_SUN_COMFORT,
 	SC_MOON_COMFORT,
 	SC_STAR_COMFORT,
 	SC_FUSION,
-	SC_SKILLRATE_UP,	// 220
-	SC_SKE,
+	SC_SKILLRATE_UP,
+	SC_SKE,	// 220
 	SC_KAITE,
 	SC_SWOO, // [marquis007]
 	SC_SKA, // [marquis007]
-	SC_TKREST, // [marquis007]
 	SC_MIRACLE, //SG 'hidden' skill [Komurka]
 	//Ninja/GS states
 	SC_MADNESSCANCEL,
 	SC_ADJUSTMENT,
 	SC_INCREASING,
-	SC_GATLINGFEVER,	// 230
+	SC_GATLINGFEVER,
 	SC_TATAMIGAESHI,
-	SC_UTSUSEMI,
+	SC_UTSUSEMI,	// 230
 	SC_BUNSINJYUTSU,
 	SC_KAENSIN,
 	SC_SUITON,
@@ -244,15 +242,15 @@ enum {	// struct map_session_data の status_changeの番号テーブル
 	SC_KNOWLEDGE,
 	SC_SMA,
 	SC_FLING,
-	SC_AVOID,	// 240
+	SC_AVOID,
 	SC_CHANGE,
-	SC_BLOODLUST,
+	SC_BLOODLUST,	// 240
 	SC_FLEET,
 	SC_SPEED,	//[orn]
 	SC_DEFENCE,	//[orn]
 	SC_INCAGIRATE,
 	SC_INCDEXRATE,
-	SC_JAILED,	// 248
+	SC_JAILED,
 
 	SC_MAX
 };

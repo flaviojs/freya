@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/24/06
+	* Fixed: Compilation error [Tsuyuki]
 	* Added: Gunslinger Weapon Quests [Tsuyuki]
 	 - Note: All Gunslinger/Ninja-related Quests and NPCs should now be in Freya
 	* Added: Gunslinger/Ninja Merchant-Related NPCs [Tsuyuki]
