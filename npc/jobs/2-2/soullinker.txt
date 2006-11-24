@@ -293,6 +293,10 @@ L_JobChange:
 	mes "[Little Boy]";
 	mes "Very well then.";
 	mes "You are now a Soul Linker.";
+	sc_end SC_READYSTORM;
+	sc_end SC_READYDOWN;
+	sc_end SC_READYTURN;
+	sc_end SC_READYCOUNTER;
 	jobchange Job_Soul_Linker;
 	misceffect 247;
 	next;
