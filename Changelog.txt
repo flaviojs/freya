@@ -5,6 +5,15 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/24/06
+	* Fixed: typo in sql files (ranking3 => ranking) [Latios]
+	* Removed: db/exp2.txt, not used anymore [Latios]
+	* Fixed: Zealotus Mask Quest [Latios]
+	* Fixed: A question in Rogue Quest [Latios]
+	* Fixed: db/item_db.txt [Latios]
+		* sloted infiltrator : Infiltrator => Infiltrator_
+		* Alice & Zealotus Egg id
+		* Firecrackers
+		* SC_Stun => SC_Stan
 	* Updated: X.3 and X.4 mob skills, credits to eAthena/Aegis [Tsuyuki]
 	* Fixed: Grove is now a looter, and has no skills [Tsuyuki]
 	* Updated: Red Thorn Fruit heal rates [Tsuyuki]

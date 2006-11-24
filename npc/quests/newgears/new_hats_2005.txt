@@ -362,7 +362,7 @@ gl_prison1.gat,137,138,5	script	Zealotus#LhzHat	1200,{
 		end;
 
 	Zealotus4:
-		if(countitem(7263) == 1)goto ZealCount1;
+		if(countitem(7263) >= 1)goto ZealCount1;
 		goto ZealNoItems;
 
 	ZealCount1: if(countitem(660) >= 1)goto ZealCount2;
@@ -704,11 +704,11 @@ gl_prison1.gat,97,104,1	script	Phendark#LhzHat	1202,{
 
 		Rybio2:
 			mes "Rybio.";
-		end;
+		close;
 
 		Injustice2:
 			mes "Injustice.";
-		end;
+		close;
 
 		PhenDarkSelect:
 			if((@temp1 == 1 || @temp1  == 2) && @temp2 == 1)goto PhenDarkSelect01;
@@ -897,6 +897,8 @@ gl_prison1.gat,100,48,5	script	Rybio#LhzHat	1201,{
 	if(ZLMASKQ == 3)goto Rybio02;
 	if(ZLMASKQ == 4)goto Rybio03;
 	if(ZLMASKQ == 5)goto Rybio04;
+	
+	end;
 
 	Rybio01:
 		mes "[Rybio]";

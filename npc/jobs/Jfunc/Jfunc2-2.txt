@@ -257,7 +257,7 @@ function	script	RogQ_check	{
 		mes "[Markie]";
 		mes "2) Choose a monster that cannot detect a hidden or cloaked character?";
 		next;
-		menu "Mummy",sM1_2, "Worm Tail",-, "Argos",sM1_2, "Soldier Skeleton",sM1_2;
+		menu "Mummy",-, "Worm Tail",sM1_2, "Argos",sM1_2, "Soldier Skeleton",-;
 
 			set @score, @score + 10;
 
