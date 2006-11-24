@@ -97,7 +97,7 @@
 584,Skewer_Soup,Skewer Soup,0,50,25,60,,,,,27254783,2,,,,,{ itemheal rand(45,64),0; },{}
 585,Brusti,Brusti,0,15,7,40,,,,,16777215,2,,,,,{ itemheal rand(17,20),0; itemskill 74,3,"Magnificat"; },{}
 586,Mother's_Cake,Mother's Cake,0,,10,100,,,,,27254783,2,,,,,{ itemheal rand(325,404),0; },{}
-587,Red_Thorn_Fruit,Red Thorn Fruit,0,,10,40,,,,,27254783,2,,,,,{ itemheal rand(35,49),rand(10,19); },{}
+587,Red_Thorn_Fruit,Red Thorn Fruit,0,,10,40,,,,,27254783,2,,,,,{ itemheal rand(10,15),rand(10,15); },{}
 588,Spaghetti,Spaghetti,0,,10,100,,,,,27254783,2,,,,,{ itemheal rand(45,64),0; },{}
 589,Pizza,Pizza,0,,10,150,,,,,27254783,2,,,,,{ itemheal rand(45,64),0; },{}
 590,Unknown_Item,Unknown Item,0,,10,20,,,,,27254783,2,,,,,{ itemheal 25,0; },{}
