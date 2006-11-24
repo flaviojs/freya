@@ -471,6 +471,8 @@
 424,0,0,0,0,0,5,0,no,0,0,0,weapon,0	//TK_POWER#Fighting Chant#
 425,0,6,4,2:4:1:3:8:7:6,1,7,1,no,0,0,0,weapon,0	//TK_SEVENWIND#Mild Wind#
 426,0,6,4,0,1,5,1,no,0,0,0,weapon,0	//TK_HIGHJUMP#Taekwon Jump#
+
+// Star Gladiator/Taekwon Master Skills
 //427,0,0,0,0,0,0,0,no,0,0,0,none,0	//SG_FEEL#Feeling the Sun, Moon and Stars#
 //428,0,0,0,0,0,0,0,no,0,0,0,none,0	//SG_SUN_WARM#Warmth of the Sun#
 //429,0,0,0,0,0,0,0,no,0,0,0,none,0	//SG_MOON_WARM#Warmth of the Moon#
@@ -489,6 +491,8 @@
 //442,0,0,0,0,0,0,0,no,0,0,0,none,0	//SG_FRIEND#Friend of the Sun, Moon and Stars#
 //443,0,0,0,0,0,0,0,no,0,0,0,none,0	//SG_KNOWLEDGE#Knowledge of the Sun, Moon and Stars#
 //444,0,0,0,0,0,0,0,no,0,0,0,none,0	//SG_FUSION#Union of the Sun, Moon and Stars#
+
+// Soul Linker Skills
 //445,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_ALCHEMIST#Spirit of the Alchemist#
 //446,0,0,0,0,0,0,0,no,0,0,0,none,0	//AM_BERSERKPITCHER#Berserk Pitcher#
 //447,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_MONK#Spirit of the Monk#
@@ -539,7 +543,61 @@
 
 // Extra TaeKwon Class Skills
 //493,0,6,4,0,1,1,1,no,0,0,0,none,0	//TK_MISSION#Taekwon Mission#
-//494,0,0,0,0,0,0,0,no,0,0,0,none,0	//SL_HIGH#Spirit of Rebirth#
+//494,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_HIGH#Spirit of Rebirth#
+//495,0,6,4,0,1,1,1,no,0,8,0,weapon,0	//KN_ONEHAND#Onehand Quicken#
+//496,0,6,4,0,1,1,0,no,0,8,0,none,0	//AM_TWILIGHT1#Twilight Alchemy 1#
+//497,0,6,4,0,1,1,0,no,0,8,0,none,0	//AM_TWILIGHT2#Twilight Alchemy 2#
+//498,0,6,4,0,1,1,0,no,0,8,0,none,0	//AM_TWILIGHT3#Twilight Alchemy 3#
+//499,-9,8,4,-1,0,1,2,no,0,520,0,weapon,0	//HT_POWER#Beast Strafing#
+
+// Gunslinger Class Skills
+//500,0,6,4,0,0,5,1,no,0,0,0,misc,0	//GS_GLITTERING#Flip the Coin#
+//501,9,6,1,-1,0,1,1,no,0,0,0,misc,0	//GS_FLING#Fling#
+//502,-9,8,1,-1,0,1,3,no,0,0,0,weapon,0	//GS_TRIPLEACTION#Triple Action#
+//503,-9,6,1,-1,0,1,1,no,0,0,0,weapon,0	//GS_BULLSEYE#Bulls Eye#
+//504,0,6,4,0,1,1,1,no,0,0,0,weapon,0	//GS_MADNESSCANCEL#Madness Canceler#
+//505,0,6,4,0,1,1,1,no,0,0,0,weapon,0	//GS_ADJUSTMENT#AdJustment#
+//506,0,6,4,0,1,1,1,no,0,0,0,weapon,0	//GS_INCREASING#Increasing Accuracy#
+//507,-9,6,1,8,0,1,1,no,0,0,0,weapon,0	//GS_MAGICALBULLET#Magical Bullet#
+//508,-9,6,1,-1,1,1,1,no,0,0,0,weapon,0	//GS_CRACKER#Cracker#
+//509,0,0,0,0,0,10,0,no,0,0,0,none,0	//GS_SINGLEACTION#Single Action#
+//510,0,0,0,0,0,10,0,no,0,0,0,none,0	//GS_SNAKEEYE#Snake Eye#
+//511,-9,8,0,-1,0,10,2,no,0,0,0,weapon,0	//GS_CHAINACTION#Chain Action#
+//512,-9,6,1,-1,0,10,1,no,0,0,0,weapon,0	//GS_TRACKING#Tracking#
+//513,-9,6,1,-1,0,5,1,no,0,0,0,weapon,0	//GS_DISARM#Disarm#
+//514,-9,6,1,-1,0,5,1,no,0,0,0,weapon,0	//GS_PIERCINGSHOT#Piercing Shot#
+//515,-9,8,1,-1,0,10,5,no,0,0,0,weapon,0	//GS_RAPIDSHOWER#Rapid Shower#
+//516,0,8,4,-1,2,10,1,no,0,0,0,weapon,0	//GS_DESPERADO#Desperado#
+//517,0,6,4,-1,1,10,1,no,0,0,0,weapon,0	//GS_GATLINGFEVER#Gatling Fever#
+//518,2,6,1,-1,0,10,1,no,0,0,0,weapon,5	//GS_DUST#Dust#
+//519,-9,6,1,-1,0,10,1,yes,0,0,0,weapon,0	//GS_FULLBUSTER#Full Buster#
+//520,-9,6,1,-1,2,10,1,no,0,0,0,weapon,0	//GS_SPREADATTACK#Spread Attack#
+//521,-9,6,2,-1,0,10,1,no,0,0,0,weapon,3	//GS_GROUNDDRIFT#Ground Drift#
+
+// Ninja Class Skills
+//522,0,0,0,0,0,10,1,no,0,0,0,weapon,0	//NJ_TOBIDOUGU#NJ_TOBIDOUGU#
+//523,9,6,1,-1,0,10,1,no,0,0,0,weapon,0	//NJ_SYURIKEN#NJ_SYURIKEN#
+//524,9,8,1,-1,0,5,3,no,0,0,0,weapon,0	//NJ_KUNAI#NJ_KUNAI#
+//525,9,8,1,-1,4,5,-3:-3:-4:-4:-5,yes,0,0,0,weapon,0	//NJ_HUUMA#NJ_HUUMA#
+//526,9,6,1,0,0,10,1,no,0,0,0,misc,0	//NJ_ZENYNAGE#NJ_ZENYNAGE#
+//527,0,6,4,-1,0,5,1,no,0,0,0,weapon,3	//NJ_TATAMIGAESHI#NJ_TATAMIGAESHI#
+//528,-1,6,1,-1,0,10,1,no,0,0,0,weapon,0	//NJ_KASUMIKIRI#NJ_KASUMIKIRI#
+//529,7:9:11:13:15,6,2,0,1,5,1,no,0,0,0,none,0	//NJ_SHADOWJUMP#NJ_SHADOWJUMP#
+//530,-1,6,1,-1,0,5,1,no,0,0,0,weapon,0	//NJ_KIRIKAGE#NJ_KIRIKAGE#
+//531,0,6,4,0,1,5,1,no,0,0,0,none,7	//NJ_UTSUSEMI#NJ_UTSUSEMI#
+//532,0,6,4,0,1,10,1,yes,0,0,0,magic,0	//NJ_BUNSINJYUTSU#NJ_BUNSINJYUTSU#
+//533,0,0,0,0,0,10,0,no,0,0,0,none,0	//NJ_NINPOU#NJ_NINPOU#
+//534,9,8,1,3,0,10,1:2:3:4:5:6:7:8:9:10,yes,0,0,0,magic,0	//NJ_KOUENKA#NJ_KOUENKA#
+//535,0,8,4,3,0,10,1,yes,0,0,0,magic,0	//NJ_KAENSIN#NJ_KAENSIN#
+//536,9,8,1,3,2,5,3,yes,0,0,0,magic,0	//NJ_BAKUENRYU#NJ_BAKUENRYU#
+//537,9,8,1,1,0,10,3:4:5:6:7:8:9:10:11:12,yes,0,0,0,magic,0	//NJ_HYOUSENSOU#NJ_HYOUSENSOU#
+//538,9,6,2,0,1,10,1,yes,0,0,0,magic,0	//NJ_SUITON#NJ_SUITON#
+//539,0,6,4,1,2,5,1,yes,0,0,0,magic,0	//NJ_HYOUSYOURAKU#NJ_HYOUSYOURAKU#
+//540,9,8,1,4,0,10,1:2:2:3:3:4:4:5:5:6,yes,0,0,0,magic,0	//NJ_HUUJIN#NJ_HUUJIN#
+//541,9,6,4,4,2,5,1,yes,0,0,0,magic,0	//NJ_RAIGEKISAI#NJ_RAIGEKISAI#
+//542,5:6:7:8:9,8,1,4,0,5,1,yes,0,0,0,magic,0	//NJ_KAMAITACHI#NJ_KAMAITACHI#
+//543,0,6,4,0,1,5,1,yes,0,0,0,none,0	//NJ_NEN#NJ_NEN#
+//544,-5,6,1,0,0,10,1,no,0,0,0,weapon,0	//NJ_ISSEN#NJ_ISSEN#
 
 // Second Class Quest Skills
 1001,9,6,1,0,0,1,1,no,0,1,0,weapon,0	//KN_CHARGEATK#Charge Attack#
@@ -561,6 +619,24 @@
 1017,9,6,1,2,1,1,1,yes,0,1,0,magic,0	//SA_ELEMENTGROUND#Elemental Change Earth#
 1018,9,6,1,3,1,1,1,yes,0,1,0,magic,0	//SA_ELEMENTFIRE#Elemental Change Fire#
 1019,9,6,1,4,1,1,1,yes,0,1,0,magic,0	//SA_ELEMENTWIND#Elemental Change Wind#
+
+// Homunuclus Skills
+//8001,9,6,4,0,1,5,1,no,0,0,0,magic,0	//HLIF_HEAL#Healing hand#
+//8002,0,6,4,0,3,5,1,no,0,0,0,none,0	//HLIF_AVOID
+//8003,0,0,0,0,0,5,0,no,0,0,0,none,0	//HLIF_BRAIN
+//8004,0,6,4,0,1,3,0,no,0,0,0,none,0	//HLIF_CHANGE
+//8005,0,6,4,0,1,5,0,no,0,0,0,none,0	//HAMI_CASTLE
+//8006,0,6,4,0,1,5,0,no,0,0,0,none,0	//HAMI_DEFENCE
+//8007,0,0,0,0,1,5,0,no,0,0,0,none,0	//HAMI_SKIN
+//8008,0,6,4,0,1,3,0,no,0,0,0,none,0	//HAMI_BLOODLUST
+//8009,1,8,1,0,0,5,-1:-2:-2:-2:-3,no,0,0,0,weapon,0	//HFLI_MOON
+//8010,0,6,4,0,1,5,0,no,0,0,0,none,0	//HFLI_FLEET
+//8011,0,6,4,0,1,5,0,yes,0,0,0,misc,0	//HFLI_SPEED
+//8012,1,6,1,0,0,3,0,no,0,0,0,none,0	//HFLI_SBR44
+//8013,9,6,1,0,0,5,1:2:3:4:5,no,0,0,0,magic,0	//HVAN_CAPRICE
+//8014,0,6,4,0,1,5,0,no,0,0,0,none,0	//HVAN_CHAOTIC
+//8015,0,0,0,0,1,5,0,no,0,0,0,none,0	//HVAN_INSTRUCT
+//8016,0,6,4,-1,2,3,1,no,0,0,0,misc,0	//HVAN_EXPLOSION
 
 // Guild Skills
 //ID,Range,Hit,Target,Element,SkillInfo1,MaxLv,ListNum,CastCancel,CastDefRate,SkillInfo2,MaxCount,SkillType,BlowCount

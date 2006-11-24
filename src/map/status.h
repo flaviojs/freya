@@ -216,7 +216,44 @@ enum {	// struct map_session_data ÇÃ status_changeÇÃî‘çÜÉeÅ[ÉuÉã
 	SC_WATKFOOD,		// 210
 	SC_MATKFOOD,
 	SC_MAGNUM,
-	
+	SC_SCRESIST, //Increases resistance to status changes.
+	SC_XMAS, // Xmas Suit [Valaris]
+	SC_WARM, //SG skills [Komurka]
+	SC_SUN_COMFORT,
+	SC_MOON_COMFORT,
+	SC_STAR_COMFORT,
+	SC_FUSION,
+	SC_SKILLRATE_UP,	// 220
+	SC_SKE,
+	SC_KAITE,
+	SC_SWOO, // [marquis007]
+	SC_SKA, // [marquis007]
+	SC_TKREST, // [marquis007]
+	SC_MIRACLE, //SG 'hidden' skill [Komurka]
+	//Ninja/GS states
+	SC_MADNESSCANCEL,
+	SC_ADJUSTMENT,
+	SC_INCREASING,
+	SC_GATLINGFEVER,	// 230
+	SC_TATAMIGAESHI,
+	SC_UTSUSEMI,
+	SC_BUNSINJYUTSU,
+	SC_KAENSIN,
+	SC_SUITON,
+	SC_NEN,
+	SC_KNOWLEDGE,
+	SC_SMA,
+	SC_FLING,
+	SC_AVOID,	// 240
+	SC_CHANGE,
+	SC_BLOODLUST,
+	SC_FLEET,
+	SC_SPEED,	//[orn]
+	SC_DEFENCE,	//[orn]
+	SC_INCAGIRATE,
+	SC_INCDEXRATE,
+	SC_JAILED,	// 248
+
 	SC_MAX
 };
 extern int SkillStatusChangeTable[MAX_SKILL];
@@ -346,7 +383,14 @@ enum {
 	ICO_WINKCHARM           = 199,
 	ICO_CLOSECONFINE        = 200,
 	ICO_CLOSECONFINE2       = 201,
-	ICO_TKREST				= 205
+	ICO_MADNESSCANCEL	= 203,	//[blackhole89]
+	ICO_GATLINGFEVER		= 204,
+	ICO_TKREST				= 205,
+	ICO_UTSUSEMI			= 206,
+	ICO_BUNSINJYUTSU		= 207,
+	ICO_NEN				= 208,
+	ICO_ADJUSTMENT		= 209,
+	ICO_ACCURACY			= 210
 };
 extern int StatusIconTable[SC_MAX];
 
