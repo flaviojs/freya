@@ -409,7 +409,7 @@ CREATE TABLE `friends` (
 # Database: Ragnarok
 # Table: 'ranking'
 # 
-CREATE TABLE `ranking3` (
+CREATE TABLE `ranking` (
   `char_id` int(10) unsigned NOT NULL,
   `class` tinyint(1) unsigned NOT NULL,
   `points` int(10) NOT NULL
