@@ -5,10 +5,6 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/23/06
-	* Fixed: Wall of Fog problems [Tsuyuki]
-	 - Reduces long-ranged, non-skill damage by 75%, and lowers hit by 50
-	 - Targeted, non-AoE skills now have a 75% chance to fail
-	 - Testing, may not completely work just yet
 	* Improved: WoE Damage Calculation Reductions [Harbin]
 	* Fixed: Status changes now do not interrupt Pressure casting [Harbin]
 	* Fixed: SC_MAGNUM's fire bonus should affect all damage except magic [Harbin]
