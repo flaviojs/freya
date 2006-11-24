@@ -5,6 +5,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/24/06
+	* Added: Dark Collector and Death Knight and related-classes [Tsuyuki]
+	 - NOT FOR USE - Test only
+	* Added: Skill database and source enum entries for new classes [Tsuyuki]
+	 - No actual code/data implemented, just placeholders
 	* Fixed: typo in sql files (ranking3 => ranking) [Latios]
 	* Removed: db/exp2.txt, not used anymore [Latios]
 	* Fixed: Zealotus Mask Quest [Latios]

@@ -821,6 +821,10 @@ char * job_name(int class) {
 	case 4047: return "Taekwon Master";
 	case 4048: return "Taekwon Master";
 	case 4049: return "Soul Linker";
+	case 4050: return "Bon Gun";
+	case 4051: return "Death Knight";
+	case 4052: return "Dark Collector";
+	case 4053: return "Munak";
 	}
 
 	return "Unknown Job";
@@ -3894,6 +3898,16 @@ ATCOMMAND_FUNC(jobchange) {
 		{ "soul_linker",            4049 },
 		{ "fly soul linker",        4049 },
 		{ "fly_soul_linker",        4049 },
+		{ "bon gun",                4050 },
+		{ "bon_gun",                4050 },
+		{ "bongun",                 4050 },
+		{ "death knight",           4051 },
+		{ "death_knight",           4051 },
+		{ "dark collector",         4052 },
+		{ "dark_collector",         4052 },
+		{ "monster breeder",        4052 },
+		{ "monster_breeder",        4052 },
+		{ "munak",                  4053 },
 	};
 
 	if (!message || !*message || sscanf(message, "%d %d", &job, &upper) < 1 || job < 0 || job >= MAX_PC_CLASS || (job > 23 && job < 4001)) {
@@ -7990,6 +8004,16 @@ ATCOMMAND_FUNC(character_job) {
 		{ "fly_taekwon_master",     4048 },
 		{ "soul linker",            4049 },
 		{ "soul_linker",            4049 },
+		{ "bon gun",                4050 },
+		{ "bon_gun",                4050 },
+		{ "bongun",                 4050 },
+		{ "death knight",           4051 },
+		{ "death_knight",           4051 },
+		{ "dark collector",         4052 },
+		{ "dark_collector",         4052 },
+		{ "monster breeder",        4052 },
+		{ "monster_breeder",        4052 },
+		{ "munak",                  4053 },
 	};
 
 	if (!message || !*message || sscanf(message, "%d %d %[^\n]", &job, &upper, atcmd_name) < 3 || job < 0 || job >= MAX_PC_CLASS || (job > 23 && job < 4001)) { //upperŽw’è‚µ‚Ä‚ ‚é

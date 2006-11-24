@@ -68,6 +68,7 @@ enum {
 	RK_ALCHEMIST,
 	RK_TAEKWON,
 	RK_PK,
+	RK_DEATHKNIGHT,
 	RK_MAX
 };
 
