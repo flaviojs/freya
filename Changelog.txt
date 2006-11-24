@@ -4,6 +4,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+11/24/06
+	* Added: Gunslinger/Ninja Merchant-Related NPCs [Tsuyuki]
+	 - Kunai Maker, Shuriken Maker, Ammo Boxes Dealer, Ammo Dealer
+
 11/23/06
 	* Added: Gunslinger and Ninja classes [Tsuyuki]
 	 - Skills are messed up.. GS has TK skills, NJ has Novice skills
