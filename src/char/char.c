@@ -2179,6 +2179,10 @@ char * job_name(int class) {
 	case 4047: return "Taekwon Master";
 	case 4048: return "Taekwon Master";
 	case 4049: return "Soul Linker";
+	case 4050: return "Bon Gun";
+	case 4051: return "Death Knight";
+	case 4052: return "Dark Collector";
+	case 4053: return "Munak";
 	}
 
 	return "Unknown Job";

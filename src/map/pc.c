@@ -6127,6 +6127,15 @@ int pc_readparam(struct map_session_data *sd,int type)
 			case JOB_NINJA:
 				val= JOB_NINJA;
 				break;
+			// New Classes [Tsuyuki]
+			case JOB_DEATH_KNIGHT:
+				val= JOB_DEATH_KNIGHT;
+			case JOB_DARK_COLLECTOR:
+				val= JOB_DARK_COLLECTOR;
+			case JOB_BON_GUN:
+				val= JOB_BON_GUN;
+			case JOB_MUNAK:
+				val= JOB_MUNAK;
 			default:
 				val= s_class.job;
 		}

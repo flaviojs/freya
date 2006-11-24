@@ -79,6 +79,10 @@ Job_Taekwon	4046
 Job_Star_Gladiator	4047
 Job_Star_Gladiator2	4048
 Job_Soul_Linker	4049
+Job_Bon_Gun 4050
+Job_Death_Knight 4051
+Job_Dark_Collector 4052
+Job_Munak 4053
 
 mf_nomemo	0
 mf_noteleport	1

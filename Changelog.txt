@@ -5,6 +5,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/24/06
+	* Added: Dark Collector and Death Knight and related-classes [Tsuyuki]
+	 - NOT FOR USE - Test only
+	* Added: Skill database and source enum entries for new classes [Tsuyuki]
+	 - No actual code/data implemented, just placeholders
 	* Updated: X.3 and X.4 mob skills, credits to eAthena/Aegis [Tsuyuki]
 	* Fixed: Grove is now a looter, and has no skills [Tsuyuki]
 	* Updated: Red Thorn Fruit heal rates [Tsuyuki]
