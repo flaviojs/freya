@@ -11,6 +11,10 @@ Date	Added
 	 - Max job level is messed up, but total skill points is correct
 	 - GS/NJ max job level should be 70, currently its 50
 	 - Various other problems, and no skills implemented for either class just yet
+	* Added: Gunslinger/Ninja skills/SCs to the source code [Tsuyuki]
+	 - Note: No actual skill code was implemented, just the enum entries, etc
+	* Added: Gunslinger/Ninja skill/job database entries imported from eAthena [Tsuyuki]
+	 - Note: Commented them for now
 	* Improved: WoE Damage Calculation Reductions [Harbin]
 	* Fixed: Status changes now do not interrupt Pressure casting [Harbin]
 	* Fixed: SC_MAGNUM's fire bonus should affect all damage except magic [Harbin]
