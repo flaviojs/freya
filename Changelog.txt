@@ -5,6 +5,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/24/06
+	* Added: item_upper for items equipable only by advanced characters (vesper core, ...) [ Latios]
+	* Added: Estin, Estun, Eswoo, Esma, Eske & Eska (Soul Linker skills) [Latios]
+	* Fixd: Soul Linker and Taekwon Master not reading their skills correctly [Latios]
 	* Added: Dark Collector and Death Knight and related-classes [Tsuyuki]
 	 - NOT FOR USE - Test only
 	* Added: Skill database and source enum entries for new classes [Tsuyuki]

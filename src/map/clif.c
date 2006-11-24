@@ -1157,6 +1157,7 @@ static int clif_mob0078(struct mob_data *md) {
 	WPACKETW( 6) = status_get_speed(&md->bl);
 	WPACKETW( 8) = md->opt1;
 	WPACKETW(10) = md->opt2;
+	WPACKETW(42) = md->opt3;
 	WPACKETW(12) = md->option;
 	WPACKETW(14) = mob_get_viewclass(md->class);
 	if ((mob_get_viewclass(md->class) <= 23) || (mob_get_viewclass(md->class) == 812) || (mob_get_viewclass(md->class) >= 4001)) {
@@ -1209,6 +1210,7 @@ static int clif_mob007b(struct mob_data *md) {
 	WPACKETW( 6) = status_get_speed(&md->bl);
 	WPACKETW( 8) = md->opt1;
 	WPACKETW(10) = md->opt2;
+	WPACKETW(46) = md->opt3;
 	WPACKETW(12) = md->option;
 	WPACKETW(14) = mob_get_viewclass(md->class);
 	if ((mob_get_viewclass(md->class) < 24) || (mob_get_viewclass(md->class) > 4000)) {

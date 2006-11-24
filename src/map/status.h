@@ -361,7 +361,7 @@ enum {
 	ICO_KAIZEL              = 156,
 	ICO_KAAHI               = 157,
 	ICO_KAUPE               = 158,
-// 159 = blue sparks and item-heal sound effect. Looks like item-use effect.
+	ICO_SMA			    = 159,
 // 160
 	ICO_ONEHAND             = 161,
 	ICO_WARM                = 165,	

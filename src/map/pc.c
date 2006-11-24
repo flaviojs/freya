@@ -617,7 +617,7 @@ void pc_setequipindex(struct map_session_data *sd) {
 int pc_isequip(struct map_session_data *sd, int n)
 {
 	struct item_data *item;
-	short s_class;
+	short s_class, upper_type;
 	//ì]ê∂Ç‚ó{éqÇÃèÍçáÇÃå≥ÇÃêEã∆ÇéZèoÇ∑ÇÈ
 
 	nullpo_retr(0, sd);
@@ -633,6 +633,15 @@ int pc_isequip(struct map_session_data *sd, int n)
 		return 0;
 	if (item->elv > 0 && sd->status.base_level < item->elv) //Item base level restriction
 		return 0;
+		
+	// upper job restriction
+	upper_type = pc_get_upper_type(sd->status.class);
+	if(upper_type == 0)
+		return 0;
+	if(item->flag.upper != 0) {		// 0 = 1 + 2 + 4 = 7 = all class
+		if(!(item->flag.upper & upper_type))
+			return 0;
+	}
 	
 	if (map[sd->bl.m].flag.pvp && (item->flag.no_equip&1)) // no_equip = 1- not in PvP, 2- GvG restriction, 3- PvP and GvG which restriction
 		return 0;
@@ -1487,7 +1496,7 @@ int pc_checkmaxskill(struct map_session_data* sd) {
 			if (!battle_config.skillfree) {
 				s_class = pc_calc_base_job(sd->status.class);
 				// second: remove excess skill point from skills (begin by end of skill tree)
-				for(i = MAX_SKILL_TREE - 1; i >= 0 && excess_points > 0; i--)
+				for(i = MAX_SKILL_PER_TREE - 1; i >= 0 && excess_points > 0; i--)
 					if ((id = skill_tree[s_class.upper][s_class.job][i].id) > 0)
 						if (!(skill_get_inf2(id) & 0x01) || battle_config.quest_skill_learn) {
 							if ((id == 142 || id == 143) && sd->status.class >= 4001 && sd->status.class < 4023) // if platinum skills were given for free
@@ -1564,9 +1573,9 @@ void pc_calc_skilltree(struct map_session_data *sd) {
 	if (sd->GM_level >= battle_config.gm_allskill) {
 		// ëSÇƒÇÃÉXÉLÉã
 		for(s = 0; s < 3; s++)
-			for(c = 0; c < 25; c++)
-				for(i = 0; i < MAX_SKILL_TREE && (id = skill_tree[s][c][i].id) > 0; i++)
-					if (sd->status.skill[id].flag != 13) { // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
+			for(c = 0; c < MAX_SKILLTREE; c++)
+				for(i = 0; i < MAX_SKILL_PER_TREE && (id = skill_tree[s][c][i].id) > 0; i++)
+				if (sd->status.skill[id].flag != 13) { // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
 						if (sd->GM_level >= battle_config.gm_all_skill_platinum || !(skill_get_inf2(id) & 0x01) ||
 						    (s_class.job == 1 && (id == 142 || id == 143))) { // high novice free skills
 							sd->status.skill[id].id = id;
@@ -1592,7 +1601,7 @@ void pc_calc_skilltree(struct map_session_data *sd) {
 				for(i = 0; i < MAX_SKILL; i++)
 					if (sd->status.skill[i].flag != 13) // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
 						if (sd->status.skill[i].lv > 0) {
-							for(j = 0; j < MAX_SKILL_TREE && (id = skill_tree[s][c][j].id) > 0; j++)
+							for(j = 0; j < MAX_SKILL_PER_TREE && (id = skill_tree[s][c][j].id) > 0; j++)
 								if (i == id) {
 									// check if database was changed (reduction of maximum level)
 									if (sd->status.skill[i].lv > skill_tree[s][c][j].max)
@@ -1606,7 +1615,7 @@ void pc_calc_skilltree(struct map_session_data *sd) {
 			}
 
 			// add all (job) skills to max value
-			for(i = 0; i < MAX_SKILL_TREE && (id = skill_tree[s][c][i].id) > 0; i++)
+			for(i = 0; i < MAX_SKILL_PER_TREE && (id = skill_tree[s][c][i].id) > 0; i++)
 				if (sd->status.skill[id].flag != 13) { // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
 					if (sd->GM_level >= battle_config.gm_all_skill_platinum || !(skill_get_inf2(id) & 0x01) ||
 					    (s == 1 && (id == 142 || id == 143))) { // high novice free skills
@@ -1633,7 +1642,7 @@ void pc_calc_skilltree(struct map_session_data *sd) {
 				for(i = 0; i < MAX_SKILL; i++)
 					if (sd->status.skill[i].flag != 13) // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
 						if (sd->status.skill[i].lv > 0) {
-							for(j = 0; j < MAX_SKILL_TREE && (id = skill_tree[s][c][j].id) > 0; j++)
+							for(j = 0; j < MAX_SKILL_PER_TREE && (id = skill_tree[s][c][j].id) > 0; j++)
 								if (i == id) {
 									// check if database was changed (reduction of maximum level)
 									if (sd->status.skill[i].lv > skill_tree[s][c][j].max)
@@ -1643,7 +1652,7 @@ void pc_calc_skilltree(struct map_session_data *sd) {
 							// if not found
 							if (i != id) {
 								if (c != s_class.job && skill_get_inf2(i) & 0x01) {	// 2nd class quest skills
-									for(k = 0; k < MAX_SKILL_TREE && (qid = skill_tree[s][s_class.job][k].id) > 0; k++) {
+									for(k = 0; k < MAX_SKILL_PER_TREE && (qid = skill_tree[s][s_class.job][k].id) > 0; k++) {
 										if (i == qid) {
 											sd->status.skill[i].id = qid;
 											if (sd->status.skill[i].lv > skill_tree[s][s_class.job][k].max)
@@ -1661,7 +1670,7 @@ void pc_calc_skilltree(struct map_session_data *sd) {
 			// í èÌÇÃåvéZ
 			do {
 				flag = 0;
-				for(i = 0; i < MAX_SKILL_TREE && (id = skill_tree[s][c][i].id) > 0; i++) {
+				for(i = 0; i < MAX_SKILL_PER_TREE && (id = skill_tree[s][c][i].id) > 0; i++) {
 					if (sd->status.skill[id].flag != 13) {
 						int f = 1, needed_id;
 						// check skill tree
@@ -3201,7 +3210,7 @@ void pc_takeitem(struct map_session_data *sd, struct flooritem_data *fitem)
 int pc_isUseitem(struct map_session_data *sd, int n)
 {
 	struct item_data *item;
-	short s_class;
+	short s_class, upper_type;
 	
 	nullpo_retr(0, sd);
 
@@ -3235,6 +3244,15 @@ int pc_isUseitem(struct map_session_data *sd, int n)
 
 	if (item->sex != 2 && sd->status.sex != item->sex) //Item gender restriction
 		return 0;
+		
+	// upper job restriction
+	upper_type = pc_get_upper_type(sd->status.class);
+	if(upper_type == 0)
+		return 0;
+	if(item->flag.upper != 0) {		// 0 = 1 + 2 + 4 = 7 = all class
+		if(!(item->flag.upper & upper_type))
+			return 0;
+	}
 
 	s_class = pc_calc_base_job2(sd->status.class);
 	switch(s_class) { //Normalize Peco classes into their normal version
@@ -4657,14 +4675,29 @@ int pc_calc_base_job2(unsigned int b_class) {
 }
 
 int pc_calc_upper(unsigned int b_class) {
-	if(b_class < JOB_NOVICE_HIGH)
+	if(b_class < JOB_NOVICE_HIGH)	// base classe
 		return 0;
-	if(b_class >= JOB_NOVICE_HIGH && b_class < JOB_BABY)
+	if(b_class >= JOB_NOVICE_HIGH && b_class < JOB_BABY)	// advanced classe
 		return 1;
-	if(b_class >= JOB_TAEKWON && b_class <= JOB_SOUL_LINKER)
+	if(b_class >= JOB_TAEKWON && b_class <= JOB_SOUL_LINKER)	// base classe
 		return 0;
 
-	return 2;
+	return 2;	// other => baby?
+}
+
+//==========================================================================
+// Return upper type of a job, for item_upper db [Latios]
+// 0 = unknown, 1 = base, 2 = advanced, 4 = baby
+//==========================================================================
+short pc_get_upper_type(unsigned int class) {
+	if((JOB_NOVICE <= class && class <= JOB_XMAS) || (JOB_TAEKWON <= class && class <= JOB_SOUL_LINKER))		// base class (xmas? :x)
+		return 1;
+	else if(JOB_NOVICE_HIGH <= class && class <= JOB_PALADIN2)		// advanced class
+		return 2;
+	else if(JOB_BABY <= class && class <= JOB_SUPER_BABY)		// baby class
+		return 4;
+		
+	return 0;
 }
 
 /*==========================================
@@ -5457,8 +5490,8 @@ void pc_allskillup(struct map_session_data *sd)
 	if (sd->GM_level >= battle_config.gm_allskill) {
 		// ëSÇƒÇÃÉXÉLÉã
 		for(s = 0; s < 3; s++)
-			for(c = 0; c < 25; c++)
-				for(i = 0; i < MAX_SKILL_TREE && (id = skill_tree[s][c][i].id) > 0; i++)
+			for(c = 0; c < MAX_SKILLTREE; c++)
+				for(i = 0; i < MAX_SKILL_PER_TREE && (id = skill_tree[s][c][i].id) > 0; i++)
 					if (sd->status.skill[id].flag != 13) { // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
 						if (sd->GM_level >= battle_config.gm_all_skill_platinum || !(skill_get_inf2(id) & 0x01) ||
 						    (s_class.job == 1 && (id == 142 || id == 143))) { // high novice free skills
@@ -5473,7 +5506,7 @@ void pc_allskillup(struct map_session_data *sd)
 	} else {
 		// GM with all skills (actual job)
 		if (sd->GM_level >= battle_config.gm_all_skill_job) {
-			for(i = 0; i < MAX_SKILL_TREE && (id = skill_tree[s][c][i].id) > 0; i++) {
+			for(i = 0; i < MAX_SKILL_PER_TREE && (id = skill_tree[s][c][i].id) > 0; i++) {
 				if (sd->status.skill[id].flag != 13) { // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
 					if (sd->GM_level >= battle_config.gm_all_skill_platinum || !(skill_get_inf2(id) & 0x01) ||
 					    (s == 1 && (id == 142 || id == 143))) { // high novice free skills
@@ -5486,7 +5519,7 @@ void pc_allskillup(struct map_session_data *sd)
 
 		// normal player
 		} else {
-			for(i = 0; i < MAX_SKILL_TREE && (id = skill_tree[s][c][i].id) > 0; i++) {
+			for(i = 0; i < MAX_SKILL_PER_TREE && (id = skill_tree[s][c][i].id) > 0; i++) {
 				if (sd->status.skill[id].flag != 13) { // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
 					if (!(skill_get_inf2(id) & 0x01) || battle_config.quest_skill_learn ||
 					    (s == 1 && (id == 142 || id == 143))) { // high novice free skills
@@ -8584,11 +8617,11 @@ void pc_readdb(void)
 		i = s_class.job;
 		u = s_class.upper;
 		// check for bounds [celest]
-		if (i >= 25 || u >= 3)
+		if (i >= MAX_SKILLTREE || u >= 3)
 			continue;
-		for(j = 0; j < MAX_SKILL_TREE && skill_tree[u][i][j].id; j++)
+		for(j = 0; j < MAX_SKILL_PER_TREE && skill_tree[u][i][j].id; j++)
 			;
-		if (j == MAX_SKILL_TREE)
+		if (j == MAX_SKILL_PER_TREE)
 			continue;
 		skill_tree[u][i][j].id = atoi(split[1]);
 		skill_tree[u][i][j].max = atoi(split[2]);

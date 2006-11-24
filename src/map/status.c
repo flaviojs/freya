@@ -185,6 +185,10 @@ void initStatusIconTable(void) {
 	init_sc(RG_CLOSECONFINE,        SC_CLOSECONFINE2,    ICO_CLOSECONFINE2);
 	init_sc(RG_CLOSECONFINE,        SC_CLOSECONFINE,     ICO_CLOSECONFINE);
 	init_sc(WZ_SIGHTBLASTER,        SC_SIGHTBLASTER,     ICO_SIGHTBLASTER);
+	init_sc(SL_SKE,					SC_SKE,				 ICO_BLANK);
+	init_sc(SL_SKA,					SC_SKA,				 ICO_BLANK);
+	init_sc(SL_SWOO,				SC_SWOO,			 ICO_BLANK);
+	init_sc(SL_SMA,				SC_SMA,				ICO_BLANK);
 
 #undef init_sc
 
@@ -2176,6 +2180,8 @@ int status_get_baseatk(struct block_list *bl) {
 				batk += sc_data[SC_BATKFOOD].val1;
 			if (sc_data[SC_BLEEDING].timer != -1)
 				batk -= batk * 25 / 100;
+			if(sc_data[SC_SKE].timer != -1)
+				batk *= 4;
 		}
 	}
 	if (batk < 1) //base_atkは最低でも1
@@ -2216,6 +2222,8 @@ int status_get_atk(struct block_list *bl) {
 				atk += atk * sc_data[SC_INCATKRATE].val1 / 100;
 			/*if(sc_data[SC_WATKFOOD].timer != -1)
 				atk += atk * sc_data[SC_WATKFOOD].val1 / 100;*/
+			if(sc_data[SC_SKE].timer != -1)
+				atk *= 4;
 		}
 	}
 	if (atk < 0)
@@ -2274,6 +2282,8 @@ int status_get_atk2(struct block_list *bl) {
 				atk2 += atk2 * sc_data[SC_INCATKRATE].val1 / 100;
 			/*if(sc_data[SC_WATKFOOD].timer != -1)
 				atk2 += atk2 * sc_data[SC_WATKFOOD].val1 / 100;*/
+			if(sc_data[SC_SKE].timer != -1)
+				atk2 *= 4;
 		}
 		if (atk2 < 0)
 			atk2 = 0;
@@ -2419,6 +2429,10 @@ int status_get_def(struct block_list *bl) {
 				}
 				if (sc_data[SC_INCDEFRATE].timer!=-1)
 					def += def * sc_data[SC_INCDEFRATE].val1 / 100;
+				if(sc_data[SC_SKA].timer != - 1)
+					def = sc_data[SC_SKA].val3;
+				if(sc_data[SC_SKE].timer != -1)
+					def /= 2;
 			}
 		}
 		//詠唱中は詠唱時減算率に基づいて減算
@@ -2462,6 +2476,8 @@ int status_get_mdef(struct block_list *bl) {
 				mdef = mdef * 125 / 100;
 			if(sc_data[SC_MINDBREAKER].timer != -1 && bl->type != BL_PC)
 				mdef -= (mdef * 6 * sc_data[SC_MINDBREAKER].val1) / 100;
+			if(sc_data[SC_SKA].timer != -1)
+				mdef = 90;
 		}
 	}
 	if(mdef < 0) mdef = 0;
@@ -2500,6 +2516,8 @@ int status_get_def2(struct block_list *bl) {
 			//コンセントレーション時は減算
 			if (sc_data[SC_CONCENTRATION].timer != -1)
 				def2 = def2 * (100 - 5 * sc_data[SC_CONCENTRATION].val1) / 100;
+			if(sc_data[SC_SKE].timer != -1)
+				def2 /= 2;
 		}
 	}
 
@@ -2582,6 +2600,8 @@ int status_get_speed(struct block_list *bl) {
 			//呪い時は450加算
 			if (sc_data[SC_CURSE].timer != -1)
 				speed = speed + 450;
+			if(sc_data[SC_SWOO].timer != -1)
+				speed += 450;		// same as curse, correct value unknown
 			//ウィンドウォーク時はLv*2%減算
 			if (sc_data[SC_WINDWALK].timer != -1 && sc_data[SC_INCREASEAGI].timer == -1)
 				speed -= (speed * (sc_data[SC_WINDWALK].val1 * 2)) / 100;
@@ -2895,8 +2915,7 @@ int status_get_race(struct block_list *bl) {
 	return 0;
 }
 
-int status_get_size(struct block_list *bl)
-{
+int status_get_size(struct block_list *bl) {
 	int retval;
 	struct map_session_data *sd = (struct map_session_data *)bl;
 
@@ -3193,10 +3212,10 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			scdef = 0;
 	}
 	
-	if(scdef >= 100)
+	if(scdef >= 100 && !(flag&8))
 		return 0; //Total inmunity, can not be inflicted
 	
-	if(sd) {
+	if(sd && !(flag&8)) {
 		if(SC_STONE <= type && type <= SC_BLIND){	/* カードによる耐性 */
 			if(sd->reseff[type - SC_STONE] > 0 && rand() % 10000 < sd->reseff[type - SC_STONE]){
 				if(battle_config.battle_log)
@@ -3215,7 +3234,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 		case SC_CLOSECONFINE2:
 			battle_stopwalking(bl, 1);
 	}
-	
+
 	// status effects that won't work on bosses and emperium
 	if((mode&0x20 && !(flag&1)) || (md && md->class == 1288))
 	{
@@ -3288,32 +3307,46 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 		delete_timer(sc_data[type].timer, status_change_timer);
 		sc_data[type].timer = -1;
 	}
-	
+
 	switch(type) { /* 異常の種類ごとの処理 */
+		case SC_SWOO:
+			if(mode&0x20 && !(flag&1))
+				tick /= 5;
+			scflag.calc = 1;
+			break;
+		case SC_SKE:
+			scflag.calc = 1;
+			break;
+		case SC_SKA:
+			val2 = tick/1000;  
+			val3 = rand()%100; //Def changes randomly every second...  
+			tick = 1000;  
+			scflag.calc = 1;
+			break;
+		case SC_SMA:
+			break;
 		case SC_PROVOKE:			/* プロボック */
 			scflag.calc = 1;
 			if (tick <= 0) tick = 1000;	/* (オートバーサーク) */
 			break;
-        case SC_ENDURE:                /* インデュア */
-            if (tick <= 0)
-                tick = 1000 * 60;
-            scflag.calc = 1; // for updating mdef
-            val2 = 7;
+		case SC_ENDURE:                /* インデュア */
+			if (tick <= 0)
+			tick = 1000 * 60;
+			scflag.calc = 1; // for updating mdef
+			val2 = 7;
             
-            //damz fish help for devotion
-            if (sd)
-            {    
-                struct map_session_data *tsd;
-                int i;
-                for (i = 0; i < 5; i++)
-                {    
-                    if (sd->dev.val1[i] && (tsd = map_id2sd(sd->dev.val1[i])))
-                        status_change_start(&tsd->bl,SC_ENDURE,0,0,0,0,tick,1);
-                }//for (i = 0; i < 5; i++)
-            }//if (sd)
-            //damz fish help for devotion
-            
-            break;
+			//damz fish help for devotion
+			if (sd) {    
+				struct map_session_data *tsd;
+				int i;
+				for (i = 0; i < 5; i++) {    
+					if (sd->dev.val1[i] && (tsd = map_id2sd(sd->dev.val1[i])))
+						status_change_start(&tsd->bl,SC_ENDURE,0,0,0,0,tick,1);
+				}//for (i = 0; i < 5; i++)
+			}//if (sd)
+			//damz fish help for devotion
+
+			break;
 		case SC_AUTOBERSERK:
 			if(!(flag&4))
 				tick = 60 * 1000;
@@ -4264,6 +4297,18 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			*option |= 4096;
 			scflag.send_opt = 1;
 			break;
+		case SC_SKA:
+			*opt3 |= 16;
+			scflag.send_opt = 0;
+			break;
+		case SC_SKE:
+			*opt3 |= 4;
+			scflag.send_opt = 0;
+			break;
+		case SC_SWOO:
+			*opt3 |= 2;
+			scflag.send_opt = 0;
+			break;
 	}
 
 	if (scflag.send_opt) /* optionの変更 */
@@ -4816,6 +4861,19 @@ int status_change_end(struct block_list* bl, int type, int tid)
 			break;
 		}
 		
+		case SC_SKA:
+			*opt3 &= ~16;
+			opt_flag = 0;
+			break;
+		case SC_SKE:
+			*opt3 &= ~4;
+			opt_flag = 0;
+			break;
+		case SC_SWOO:
+			*opt3 &= ~2;
+			opt_flag = 0;
+			break;
+		
 		case SC_SIGHT:
 			*option &= ~1;
 			opt_flag = 1;
@@ -4943,6 +5001,16 @@ int status_change_timer(int tid, unsigned int tick, int id, int data)
 				return 0;
 			}
 		}
+		break;
+		
+	case SC_SKA:  
+		if((--sc_data[type].val2) > 0) {  
+			sc_data[type].val3 = rand()%100; //Random defense.  
+			sc_data[type].timer = add_timer(  
+				1000+tick, status_change_timer,  
+				bl->id, data);  
+			return 0;  
+		}  
 		break;
 
 	case SC_SIGHT: /* サイト */

@@ -8,7 +8,9 @@
 #define OPTION_MASK 0xd7b8
 #define CART_MASK 0x788
 
-#define MAX_SKILL_TREE 51 // supernovice have 51 skills.
+#define MAX_SKILL_PER_TREE 51 // supernovice have 51 skills.
+
+#define MAX_SKILLTREE 32
 
 // dead_sit -> 0: standup, 1: dead, 2: sit
 // previously_sit_hp -> 0: not sit when is was previously HP regen, 1: sit... (to avoid people that sit down and stand up between 2 timers)
@@ -190,6 +192,7 @@ struct pc_base_job pc_calc_base_job(unsigned int b_class);//“]¶‚â—{ŽqE‚ÌŒ³‚ÌE
 
 int pc_calc_base_job2(unsigned int b_class); // Celest
 int pc_calc_upper(unsigned int b_class);
+short pc_get_upper_type(unsigned int class);
 
 struct skill_tree_entry {
 	short id;
@@ -199,7 +202,7 @@ struct skill_tree_entry {
 		unsigned id : 11; // max = 407(499) -> 9 bits (11 for security)
 		unsigned lv : 5; // max = 10 -> 4 bits (5 for security) (11 + 5 = 16, 2 bytes)
 	} need[5]; // 5 are used
-} skill_tree[3][25][MAX_SKILL_TREE]; // from freya's forum (thanks to Celest) [Yor]
+} skill_tree[3][MAX_SKILLTREE][MAX_SKILL_PER_TREE]; // from freya's forum (thanks to Celest) [Yor]
 
 void pc_guardiansave(void);
 int pc_read_gm_account(int fd);
