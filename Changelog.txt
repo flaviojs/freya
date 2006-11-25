@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/25/06
+	* Fixed: A lot of bad grammar in the atcommand.c file [Tsuyuki]
 	* Added: Kaizel, Kaupe, Kaina, Kaite (unfinished), Kaahi is not coded yet [Latios]
 	* Fixed: Biolab MvP random spawn (Thanks to galaxy) [Tsuyuki]
 	* Fixed: Some Cards (incorrect entry, bonus bAddEffWhenHit) [Latios]
