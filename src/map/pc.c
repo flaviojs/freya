@@ -2284,7 +2284,11 @@ void pc_bonus(struct map_session_data *sd, int type, int val) {
 	case SP_INTRAVISION:
 		if(sd->state.lr_flag != 2)
 			sd->special_state.intravision = 1;
-			break;
+		break;
+	case SP_NOKNOCKBACK:
+		if(sd->state.lr_flag != 2)
+			sd->special_state.noknockback = 1;
+		break;
 	default:
 		if (battle_config.error_log)
 			printf("pc_bonus: unknown type %d %d !\n", type, val);

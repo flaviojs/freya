@@ -1528,8 +1528,7 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 /*=========================================================================
  ƒXƒLƒ‹UŒ‚‚«”ò‚Î‚µˆ—
 -------------------------------------------------------------------------*/
-int skill_blown(struct block_list *src, struct block_list *target, int count)
-{
+int skill_blown(struct block_list *src, struct block_list *target, int count) {
 	int dx = 0, dy = 0, nx, ny;
 	int x, y;
 	int ret, prev_state = MS_IDLE;
@@ -1564,6 +1563,10 @@ int skill_blown(struct block_list *src, struct block_list *target, int count)
 		default:
 			return 0;
 	}
+	
+	// RSX 0806 card bonus
+	if(sd->special_state.noknockback)
+		return 0;
 	
 	x = target->x;
 	y = target->y;
