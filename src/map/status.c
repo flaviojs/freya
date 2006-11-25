@@ -3362,6 +3362,10 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 	}
 
 	switch(type) { /* 異常の種類ごとの処理 */
+		case SC_SPIRIT:
+			scflag.calc = 1;
+			*opt3 |= 32768;
+			break;
 		case SC_KAIZEL:
 		case SC_KAAHI:
 		case SC_KAUPE:
@@ -4984,6 +4988,9 @@ int status_change_end(struct block_list* bl, int type, int tid)
 			break;
 		case SC_ASSUMPTIO:		/* アスムプティオ */
 			*opt3 &= ~2048;
+			break;
+		case SC_SPIRIT:
+			*opt3 &= ~32768;		// in jA, but not in eA
 			break;
 		}
 
