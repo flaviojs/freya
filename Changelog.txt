@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/25/06
+	* Fixed: negative damage : should heal the enemy, not miss (for example : poison attack on an undead monster)
+		(bug introduced in Project-Freya 159) [Latios]
 	* Fixed: missing atcommand mute in atcommand_athena.conf [Latios]
 	* Fixed: @cleanmap [Latios]
 	* Added: @cleanarea [Latios]

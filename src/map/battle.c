@@ -2058,8 +2058,8 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 			}
 	}
 
-	if(!flag.righthand || wd.damage < 1) wd.damage = 0;
-	if(!flag.lefthand || wd.damage2 < 1) wd.damage2 = 0;
+	if(!flag.righthand/* || wd.damage < 1*/) wd.damage = 0;
+	if(!flag.lefthand/* || wd.damage2 < 1*/) wd.damage2 = 0;
 
 	if (sd) {
 		if (!flag.righthand && flag.lefthand) { // move lefthand damage to the righthand
