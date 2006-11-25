@@ -558,9 +558,12 @@ const struct skill_name_db skill_names[] = {
  { SG_SUN_WARM, "WARM", "Sun Warm" } ,
  { SL_ALCHEMIST, "ALCHEMIST", "Alchemist" } ,
  { SL_ASSASIN, "ASSASIN", "Assasin" } ,
- { SL_BARDDANCER, "BARDDANCER", "Bard Dancer" } ,
- { SL_BLACKSMITH, "BLACKSMITH", "Black Smith" } ,
+ { SL_BARDDANCER, "BARDDANCER", "Bard_Dancer" } ,
+ { SL_BLACKSMITH, "BLACKSMITH", "Black_Smith" } ,
+ { SL_COLLECTOR, "COLLECTOR", "Dark_Collector" } ,
  { SL_CRUSADER, "CRUSADER", "Crusader" } ,
+ { SL_DEATHKNIGHT, "DEATHKNIGHT", "Death_Knight" } ,
+ { SL_GUNNER, "GUNNER", "Gunslinger" } ,
  { SL_HUNTER, "HUNTER", "Hunter" } ,
  { SL_KAAHI, "KAAHI", "Kaahi" } ,
  { SL_KAINA, "KAINA", "Kaina" } ,
@@ -569,17 +572,18 @@ const struct skill_name_db skill_names[] = {
  { SL_KAUPE, "KAUPE", "Kaupe" } ,
  { SL_KNIGHT, "KNIGHT", "Knight" } ,
  { SL_MONK, "MONK", "Monk" } ,
+ { SL_NINJA, "NINJA", "Ninja" } ,
  { SL_PRIEST, "PRIEST", "Priest" } ,
  { SL_ROGUE, "ROGUE", "Rogue" } ,
  { SL_SAGE, "SAGE", "Sage" } ,
  { SL_SKA, "SKA", "Eska" } ,
  { SL_SKE, "SKE", "Eske" } ,
  { SL_SMA, "SL_SMA", "Esma" } ,
- { SL_SOULLINKER, "SOULLINKER", "Soul Linker" } ,
+ { SL_SOULLINKER, "SOULLINKER", "Soul_Linker" } ,
  { SL_STAR, "STAR", "Star" } ,
  { SL_STIN, "STIN", "Estin" } ,
  { SL_STUN, "STUN", "Estun" } ,
- { SL_SUPERNOVICE, "SUPERNOVICE", "Super Novice" } ,
+ { SL_SUPERNOVICE, "SUPERNOVICE", "Super_Novice" } ,
  { SL_SWOO, "SWOO", "Eswoo" } ,
  { SL_WIZARD, "WIZARD", "Wizard" } ,
  { SM_AUTOBERSERK, "AUTOBERSERK", "Auto_Berserk" } ,
@@ -5683,6 +5687,38 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		break;
 	case SL_SOULLINKER:
 		if(spirit_class != JOB_SOUL_LINKER)   {
+			clif_skill_fail(sd,skillid,0,0);
+		} else {
+			clif_skill_nodamage(src,bl,skillid,skilllv,1);
+			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+		}
+		break;
+	case SL_GUNNER:
+		if(spirit_class != JOB_GUNSLINGER)   {
+			clif_skill_fail(sd,skillid,0,0);
+		} else {
+			clif_skill_nodamage(src,bl,skillid,skilllv,1);
+			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+		}
+		break;
+	case SL_NINJA:
+		if(spirit_class != JOB_NINJA)   {
+			clif_skill_fail(sd,skillid,0,0);
+		} else {
+			clif_skill_nodamage(src,bl,skillid,skilllv,1);
+			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+		}
+		break;
+	case SL_COLLECTOR:
+		if(spirit_class != JOB_DARK_COLLECTOR)   {
+			clif_skill_fail(sd,skillid,0,0);
+		} else {
+			clif_skill_nodamage(src,bl,skillid,skilllv,1);
+			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+		}
+		break;
+	case SL_DEATHKNIGHT:
+		if(spirit_class != JOB_DEATH_KNIGHT)   {
 			clif_skill_fail(sd,skillid,0,0);
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
