@@ -20,7 +20,7 @@ monk_in.gat,99,64,5	script	Master Monk	753,{
 			if(SkillPoint > 0) mes "You need to use up all of your skill points before I can make you a Monk.";
 			if(SkillPoint > 0) close;
 			mes "Your Welcome to Stay here at the Abbey since you are now a Monk.";
-			jobchange 15;// Job: Job_Monk
+			jobchange JOB_MONK;
 			close;
 
 			notlvl:

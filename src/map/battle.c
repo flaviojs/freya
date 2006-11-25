@@ -1753,8 +1753,9 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 			if (sd && sd->sc_data[SC_EDP].timer == -1 && sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_ASSASIN) {
 				if(map[sd->bl.m].flag.gvg) // If GvG map, +50% damage with Spirit of the Assassin, if not GvG, +100%
 					skillratio += 50;
-			}	else
+				else
 					skillratio += 100;
+			}
 			if(sd && pc_checkskill(sd, AS_SONICACCEL) > 0) // Sonic Acceleration 10% Sonic Blow damage bonus
 					skillratio += 10;
 		}

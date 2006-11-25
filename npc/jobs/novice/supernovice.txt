@@ -100,7 +100,7 @@ L_Start2:
 	mes "- Tozel's uncommon demeanor catches you off guard, -";
 	mes "- leaving you speechless! -";
 	next;
-	jobchange 23;
+	jobchange JOB_SUPERNOVICE;
 	delitem 938,30;
 	delitem 907,30;
 	getitem 2339,1;
@@ -207,7 +207,7 @@ L_Otherjob:
 }
 
 
-// -- Car Rental --
+// -- Cart Rental --
 aldebaran.gat,54,238,5	script	Kafra	117,{
 	if(Class != 23) goto L_Otherjob;
 	if(checkcart(0) == 1) goto L_GotCart;

@@ -19,7 +19,7 @@ prt_in.gat,88,103,3	script	Crusader Trainer	752,{
 				if(SkillPoint > 0) mes "You need to use up all of your skill points before I can make you a Crusader.";
 				if(SkillPoint > 0) close;
 				mes "Welcome to the Crusaders Guild";
-				jobchange 14;// Job: Job_Crusader
+				jobchange JOB_CRUSADER;
 				close;
 
 				notlvl:

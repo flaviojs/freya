@@ -1570,7 +1570,7 @@ int skill_blown(struct block_list *src, struct block_list *target, int count) {
 	}
 	
 	// RSX 0806 card bonus
-	if(sd->special_state.noknockback)
+	if(sd && sd->special_state.noknockback)
 		return 0;
 	
 	x = target->x;
@@ -5574,102 +5574,102 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		break;
 		
 	case SL_ALCHEMIST:
-		if(spirit_class != JOB_ALCHEMIST)   {
+		if(spirit_class != JOB_ALCHEMIST) {
 			clif_skill_fail(sd,skillid,0,0);
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
-			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
-			sc_data[SC_SPIRIT].val2 = SL_ALCHEMIST;
+			status_change_start(bl,SC_SPIRIT,skilllv,skillid,0,0,skill_get_time(skillid,skilllv),0);
+			status_change_start(src, SC_SMA, 0, 0, 0, 0, 3000, 0);
 		}
 		break;
 	case SL_MONK:
-		if(spirit_class != JOB_MONK)   {
+		if(spirit_class != JOB_MONK) {
 			clif_skill_fail(sd,skillid,0,0);
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
-			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
-			sc_data[SC_SPIRIT].val2 = SL_MONK;
+			status_change_start(bl,SC_SPIRIT,skilllv,skillid,0,0,skill_get_time(skillid,skilllv),0);
+			status_change_start(src, SC_SMA, 0, 0, 0, 0, 3000, 0);
 		}
 		break;
 	case SL_STAR:
-		if(spirit_class != JOB_STAR_GLADIATOR && spirit_class != JOB_STAR_GLADIATOR2)   {
+		if(spirit_class != pc_calc_base_job2(JOB_STAR_GLADIATOR) && spirit_class != pc_calc_base_job2(JOB_STAR_GLADIATOR2)) {
 			clif_skill_fail(sd,skillid,0,0);
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
-			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
-			sc_data[SC_SPIRIT].val2 = SL_STAR;
+			status_change_start(bl,SC_SPIRIT,skilllv,skillid,0,0,skill_get_time(skillid,skilllv),0);
+			status_change_start(src, SC_SMA, 0, 0, 0, 0, 3000, 0);
 		}
 		break;
 	case SL_SAGE:
-		if(spirit_class != JOB_SAGE)   {
+		if(spirit_class != JOB_SAGE) {
 			clif_skill_fail(sd,skillid,0,0);
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
-			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
-			sc_data[SC_SPIRIT].val2 = SL_SAGE;
+			status_change_start(bl,SC_SPIRIT,skilllv,skillid,0,0,skill_get_time(skillid,skilllv),0);
+			status_change_start(src, SC_SMA, 0, 0, 0, 0, 3000, 0);
 		}
 		break;
 	case SL_CRUSADER:
-		if(spirit_class != JOB_CRUSADER && spirit_class != JOB_CRUSADER2)   {
+		if(spirit_class != JOB_CRUSADER && spirit_class != JOB_CRUSADER2) {
 			clif_skill_fail(sd,skillid,0,0);
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
-			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
-			sc_data[SC_SPIRIT].val2 = SL_CRUSADER;
+			status_change_start(bl,SC_SPIRIT,skilllv,skillid,0,0,skill_get_time(skillid,skilllv),0);
+			status_change_start(src, SC_SMA, 0, 0, 0, 0, 3000, 0);
 		}
 		break;
 	case SL_SUPERNOVICE:
-		if(spirit_class != JOB_SUPER_NOVICE)   {
+		if(spirit_class != JOB_SUPER_NOVICE) {
 			clif_skill_fail(sd,skillid,0,0);
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
-			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
-			sc_data[SC_SPIRIT].val2 = SL_SUPERNOVICE;
+			status_change_start(bl,SC_SPIRIT,skilllv,skillid,0,0,skill_get_time(skillid,skilllv),0);
+			status_change_start(src, SC_SMA, 0, 0, 0, 0, 3000, 0);
 		}
 		break;
 	case SL_KNIGHT:
-		if(spirit_class != JOB_KNIGHT && spirit_class != JOB_KNIGHT2)   {
+		if(spirit_class != JOB_KNIGHT && spirit_class != JOB_KNIGHT2) {
 			clif_skill_fail(sd,skillid,0,0);
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
-			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
-			sc_data[SC_SPIRIT].val2 = SL_KNIGHT;
+			status_change_start(bl,SC_SPIRIT,skilllv,skillid,0,0,skill_get_time(skillid,skilllv),0);
+			status_change_start(src, SC_SMA, 0, 0, 0, 0, 3000, 0);
 		}
 		break;
 	case SL_WIZARD:
-		if(spirit_class != JOB_WIZARD)   {
+		if(spirit_class != JOB_WIZARD) {
 			clif_skill_fail(sd,skillid,0,0);
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
-			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
-			sc_data[SC_SPIRIT].val2 = SL_WIZARD;
+			status_change_start(bl,SC_SPIRIT,skilllv,skillid,0,0,skill_get_time(skillid,skilllv),0);
+			status_change_start(src, SC_SMA, 0, 0, 0, 0, 3000, 0);
 		}
 		break;
 	case SL_PRIEST:
-		if(spirit_class != JOB_PRIEST)   {
+		if(spirit_class != JOB_PRIEST) {
 			clif_skill_fail(sd,skillid,0,0);
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
-			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
-			sc_data[SC_SPIRIT].val2 = SL_PRIEST;
+			status_change_start(bl,SC_SPIRIT,skilllv,skillid,0,0,skill_get_time(skillid,skilllv),0);
+			status_change_start(src, SC_SMA, 0, 0, 0, 0, 3000, 0);
 		}
 		break;
 	case SL_BARDDANCER:
-		if(spirit_class != JOB_BARD && spirit_class != JOB_DANCER)   {
+		if(spirit_class != JOB_BARD && spirit_class != JOB_DANCER) {
 			clif_skill_fail(sd,skillid,0,0);
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
-			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
-			sc_data[SC_SPIRIT].val2 = SL_BARDDANCER;
+			status_change_start(bl,SC_SPIRIT,skilllv,skillid,0,0,skill_get_time(skillid,skilllv),0);
+			status_change_start(src, SC_SMA, 0, 0, 0, 0, 3000, 0);
 		}
 		break;
 	case SL_ROGUE:
-		if(spirit_class != JOB_ROGUE)  {
+		if(spirit_class != JOB_ROGUE) {
 			clif_skill_fail(sd,skillid,0,0);
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
-			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
-			sc_data[SC_SPIRIT].val2 = SL_ROGUE;
+			status_change_start(bl,SC_SPIRIT,skilllv,skillid,0,0,skill_get_time(skillid,skilllv),0);
+			status_change_start(src, SC_SMA, 0, 0, 0, 0, 3000, 0);
 		}
 		break;
 	case SL_ASSASIN:
@@ -5677,80 +5677,80 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 			clif_skill_fail(sd,skillid,0,0);
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
-			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
-			sc_data[SC_SPIRIT].val2 = SL_ASSASIN;
+			status_change_start(bl,SC_SPIRIT,skilllv,skillid,0,0,skill_get_time(skillid,skilllv),0);
+			status_change_start(src, SC_SMA, 0, 0, 0, 0, 3000, 0);
 		}
 		break;
 	case SL_BLACKSMITH:
-		if(spirit_class != JOB_BLACKSMITH)   {
+		if(spirit_class != JOB_BLACKSMITH) {
 			clif_skill_fail(sd,skillid,0,0);
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
-			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
-			sc_data[SC_SPIRIT].val2 = SL_BLACKSMITH;
+			status_change_start(bl,SC_SPIRIT,skilllv,skillid,0,0,skill_get_time(skillid,skilllv),0);
+			status_change_start(src, SC_SMA, 0, 0, 0, 0, 3000, 0);
 		}
 		break;
 	case SL_HUNTER:
-		if(spirit_class != JOB_HUNTER)   {
+		if(spirit_class != JOB_HUNTER) {
 			clif_skill_fail(sd,skillid,0,0);
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
-			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
-			sc_data[SC_SPIRIT].val2 = SL_HUNTER;
+			status_change_start(bl,SC_SPIRIT,skilllv,skillid,0,0,skill_get_time(skillid,skilllv),0);
+			status_change_start(src, SC_SMA, 0, 0, 0, 0, 3000, 0);
 		}
 		break;
 	case SL_SOULLINKER:
-		if(spirit_class != JOB_SOUL_LINKER)   {
+		if(spirit_class != pc_calc_base_job2(JOB_SOUL_LINKER)) {
 			clif_skill_fail(sd,skillid,0,0);
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
-			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
-			sc_data[SC_SPIRIT].val2 = SL_SOULLINKER;
+			status_change_start(bl,SC_SPIRIT,skilllv,skillid,0,0,skill_get_time(skillid,skilllv),0);
+			status_change_start(src, SC_SMA, 0, 0, 0, 0, 3000, 0);
 		}
 		break;
 	case SL_GUNNER:
-		if(spirit_class != JOB_GUNSLINGER)   {
+		if(spirit_class != JOB_GUNSLINGER) {
 			clif_skill_fail(sd,skillid,0,0);
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
-			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
-			sc_data[SC_SPIRIT].val2 = SL_GUNNER;
+			status_change_start(bl,SC_SPIRIT,skilllv,skillid,0,0,skill_get_time(skillid,skilllv),0);
+			status_change_start(src, SC_SMA, 0, 0, 0, 0, 3000, 0);
 		}
 		break;
 	case SL_NINJA:
-		if(spirit_class != JOB_NINJA)   {
+		if(spirit_class != JOB_NINJA) {
 			clif_skill_fail(sd,skillid,0,0);
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
-			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
-			sc_data[SC_SPIRIT].val2 = SL_NINJA;
+			status_change_start(bl,SC_SPIRIT,skilllv,skillid,0,0,skill_get_time(skillid,skilllv),0);
+			status_change_start(src, SC_SMA, 0, 0, 0, 0, 3000, 0);
 		}
 		break;
 	case SL_COLLECTOR:
-		if(spirit_class != JOB_DARK_COLLECTOR)   {
+		if(spirit_class != JOB_DARK_COLLECTOR) {
 			clif_skill_fail(sd,skillid,0,0);
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
-			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
-			sc_data[SC_SPIRIT].val2 = SL_COLLECTOR;
+			status_change_start(bl,SC_SPIRIT,skilllv,skillid,0,0,skill_get_time(skillid,skilllv),0);
+			status_change_start(src, SC_SMA, 0, 0, 0, 0, 3000, 0);
 		}
 		break;
 	case SL_DEATHKNIGHT:
-		if(spirit_class != JOB_DEATH_KNIGHT)   {
+		if(spirit_class != JOB_DEATH_KNIGHT) {
 			clif_skill_fail(sd,skillid,0,0);
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
-			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
-			sc_data[SC_SPIRIT].val2 = SL_DEATHKNIGHT;
+			status_change_start(bl,SC_SPIRIT,skilllv,skillid,0,0,skill_get_time(skillid,skilllv),0);
+			status_change_start(src, SC_SMA, 0, 0, 0, 0, 3000, 0);
 		}
 		break;
 	case SL_HIGH:
-		if(spirit_class < JOB_SWORDMAN || spirit_class > JOB_THIEF || pc_calc_upper(spirit_class) != 1)  {
+		if(spirit_class < JOB_SWORDMAN || spirit_class > JOB_THIEF || pc_calc_upper(spirit_class) != 1) {
 			clif_skill_fail(sd,skillid,0,0);
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
-			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
-			sc_data[SC_SPIRIT].val2 = SL_HIGH;
+			status_change_start(bl,SC_SPIRIT,skilllv,skillid,0,0,skill_get_time(skillid,skilllv),0);
+			status_change_start(src, SC_SMA, 0, 0, 0, 0, 3000, 0);
 		}
 		break;
 
