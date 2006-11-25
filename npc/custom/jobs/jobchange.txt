@@ -4,24 +4,27 @@
 //=     eAthena Scripting Team
 //= 2.2 Yor
 //===== Current Version: =====================================
-//= 2.2
+//= 2.3
 //===== Compatible With: =====================================
-//= Athena Version RC1+
+//= Freya
 //===== Description: =========================================
-//= Changes to every class ingame.
+//= Changes to almost every class ingame.
 //= Making sure they become the right class.
+//= Taekwon/Soul Linker/Taekwon Master/Ninja/Gunslinger
+//= excluded because they're still in development.
 //===== Additional Comments: =================================
 //Added missing param into resetlevel [Lupus]
 //Remade Adv. Classes Menu. [shadowlady]
 //Fixed some bugs, by midas
 //Fixed Mounted Class bugs and Baby Class bugs [Zoc]
 // 2.2 Fixed checks (mixed || with &&) [Yor]
+// 2.3 Updated with new job IDs to prevent problems [Tsuyuki]
 //============================================================
 
 prontera.gat,160,186,6	script	Jobchanger	94,{
 cutin "kafra_01",2;
 mes "[ ^0065DFJobra^000000 ]";
-mes "Sup? I'm the insanely cool and uber cute jobchanger thingy for eAthena! First of all, what class would you like to change into (must meet preliminary requirements for each class..)?";
+mes "Sup? I'm the insanely cool and uber cute jobchanger for Freya! First of all, what class would you like to change into (must meet preliminary requirements for each class..)?";
 next;
 menu "First Class",LFirstClass,"Second Class (2-1)",LSecondClass,"Alternate Second Class (2-2)",LSecondClass2,"Novice High",LNovice2,"Advance First Class",Llevelcheck,"Advance Second Class",Llevelcheck,"Super Novice",LSuperNovice;
 LNovice2:
@@ -35,13 +38,13 @@ LNovice2:
 	close;
 
 Lchange:
-	if (((readparam(19) >= 46) && (readparam(19) <= 68)) || ((readparam(19) >= 4023) && (readparam(19) <= 4045))) goto Babynochange;
+	if (((readparam(19) >= 4023) && (readparam(19) <= 4045))) goto Babynochange;
 	mes "[ ^0065DFJobra^000000 ]";
 	mes "We shall start the ceremony....";
 	next;
 	if (oldclass > 0) goto Llevelcheck;
 	set oldclass, readparam(19);
-	jobchange 24;
+	jobchange JOB_NOVICE_HIGH;
 	resetlvl(1);
 	mes "[ ^0065DFJobra^000000 ]";
 	mes "You have been reborn...";
@@ -169,7 +172,7 @@ Lswordsmanhigh:
 	mes "[ ^0065DFJobra^000000 ]";
 	mes "Wow, fantastic! Doesn't all that hard work feel like its paid off? *kekeke* I see the ^B70004BLOOD of Porings^000000 on your hands! You truly are fit for the ^0005CESwordsman^000000 job! ^_^";
 	cutin "kafra_01",255;
-	jobchange 4002;
+	jobchange JOB_SWORDMAN_HIGH;
 	close;
 
 Llordknight:
@@ -182,7 +185,7 @@ Llordknight:
 	mes "Yes! You are ready to become... a Lord Knight! ";
 	mes "Go save a Damsel in Distress or something..";
 	cutin "kafra_01",255;
-	jobchange 4008;
+	jobchange JOB_LORD_KNIGHT;
 	close;
 
 Lpaladin:
@@ -197,21 +200,21 @@ Lpaladin:
 	mes "That means your not getting paid dumbass!";
 	emotion 29;
 	cutin "kafra_01",255;
-	jobchange 38;
+	jobchange JOB_PALADIN;
 	close;
 //Assassin Cross & Stalker
 Lthiefhigh:
 	mes "[ ^0065DFJobra^000000 ]";
 	mes "Those devious hand of yours really look like they need to grab something (no comment)..... go forth and steal!!";
 	cutin "kafra_01",255;
-	jobchange 4007;
+	jobchange JOB_THIEF_HIGH;
 	close;
 
 Lassassincross:
 	mes "[ ^0065DFJobra^000000 ]";
 	mes "Poof! Kekeke... ";
 	cutin "kafra_01",255;
-	jobchange 4013;
+	jobchange JOB_ASSASSIN_CROSS;
 	close;
 
 Lstalker:
@@ -220,14 +223,14 @@ Lstalker:
 	mes "How goes the stalking lately?";
 	mes "Found Any New Victims?";
 	cutin "kafra_01",255;
-	jobchange 41;
+	jobchange JOB_STALKER;
 	close;
 //High Priest & Champion
 Lacolytehigh:
 	mes "[ ^0065DFJobra^000000 ]";
 	mes "Yay.. go read a Bible.. or whatever.. er..yeah";
 	cutin "kafra_01",255;
-	jobchange 4005;
+	jobchange JOB_ACOLYTE_HIGH;
 	close;
 
 Lhighpriest:
@@ -237,7 +240,7 @@ Lhighpriest:
 	mes "[ ^0065DFJobra^000000 ]";
 	mes "Yay! You've now reached Priesthood! It's sorta like Manhood.. but not really, see with Manhood, you get this little thingy between your legs.. WHOOPs, I am getting so off topic..";
 	cutin "kafra_01",255;
-	jobchange 4009;
+	jobchange JOB_HIGH_PRIEST;
 	close;
 
 Lchampion:
@@ -245,7 +248,7 @@ Lchampion:
 	mes "You are the Champion of the Weak and Poor.";
 	mes "Wow it must suck being you ^_^!!!";
 	cutin "kafra_01",255;
-	jobchange 39;
+	jobchange JOB_CHAMPION;
 	close;
 
 //Sniper & Clown & Gypsy
@@ -256,7 +259,7 @@ Larcherhigh:
 	mes "[ ^0065DFJobra^000000 ]";
 	mes "I guess you're like me! You hurl pointed sticks at things! Kekeke...";
 	cutin "kafra_01",255;
-	jobchange 4004;
+	jobchange JOB_ARCHER_HIGH;
 	close;
 
 Lsniper:
@@ -265,27 +268,26 @@ Lsniper:
 	next;
 	mes "[ ^0065DFJobra^000000 ]";
 	mes "Now you can hurl pointed sticks at monsters AND keep them in one place! w00t, yea! Traps are a great thing...";
-	jobchange 35;// Job: Job_Sniper
 	next;
 	mes "[ ^0065DFJobra^000000 ]";
 	mes "You know what... since I'm just soooo nice... (as long as you dont piss me off *grumble grumble*)";
 	mes "I'm gonna give you a complimentary falcon! Use it well! Oh.. and you might wanna wear a hat, this falcon sometimes, uh... poops..";
 	cutin "kafra_01",255;
 	setfalcon;
-	jobchange 4012;
+	jobchange JOB_SNIPER;
 	close;
 Lclown:
 	mes "[ ^0065DFJobra^000000 ]";
 	mes "What an amusing fellow.";
 	mes "Yay! Go play some ballads for some Dancers or something, I just can't stand your clothes... ewww.";
 	cutin "kafra_01",255;
-	jobchange 43;
+	jobchange JOB_CLOWN;
 	next;
 Lgypsy:
 	mes "[ ^0065DFJobra^000000 ]";
 	mes "Uh-huh, swivel those hips girl! Gypsies are sooo sexy.. too bad I'm stuck in this ugly Kafra dress.. blah, if only I could strip down to a little thong too... *sigh*";
 	cutin "kafra_01",255;
-	jobchange 44;
+	jobchange JOB_GYPSY;
 	close;
 
 //Whitesmith & Creator
@@ -294,7 +296,7 @@ Lmerchanthigh:
 	mes "Oh yeah, Mr. Moneybags, SOMEBODY here just loves the sound of coins jinglin'...";
 	mes "Well its not me!.. >_>..... <_<... bah.. ";
 	cutin "kafra_01",255;
-	jobchange 4006;
+	jobchange JOB_MERCHANT_HIGH;
 	close;
 
 Lwhitesmith:
@@ -304,39 +306,39 @@ Lwhitesmith:
 	mes "[ ^0065DFJobra^000000 ]";
 	mes "YUP! You guessed it! I turned you into a Whitesmith! Aren't you PROUD of yourself... Go and make a few weapons! Open up shops across the nation! Yea yea yea! Go go go! w00t! Ho yeah! ";
 	cutin "kafra_01",255;
-	jobchange 4011;
+	jobchange JOB_WHITESMITH;
 	close;
 Lcreator:
 	mes "[ ^0065DFJobra^000000 ]";
 	mes "Create potions for the brave heros of Rune-Midgart";
 	cutin "kafra_01",255;
-	jobchange 42;
+	jobchange JOB_CREATOR;
 	close;
 //High Wizard & Professor
 Lhighmage:
 	mes "[ ^0065DFJobra^000000 ]";
 	mes "Nice, now you can finally wield the power of ^2200DFM^7600F9A^AF00FBN^DA00DFA^000000, your spiritual energy!!!";
 	cutin "kafra_01",255;
-	jobchange 4003;
+	jobchange JOB_MAGE_HIGH;
 	close;
 
 Lhighwizard:
 	mes "[ ^0065DFJobra^000000 ]";
 	mes "Weeee, doesn't it feel great to finally become a High Wizard? It's like a warm bath.... ahhhhhhh......";
 	cutin "kafra_01",255;
-	jobchange 4010;
+	jobchange JOB_HIGH_WIZARD;
 	close;
 
 Lprofessor:
 	mes "[ ^0065DFJobra^000000 ]";
 	mes "Time for you to teach your first quantum physics class";
 	cutin "kafra_01",255;
-	jobchange 40;
+	jobchange JOB_PROFESSOR;
 	close;
 
 LFirstClass:
 	if(class != 0) goto Lnovice;
-	if(joblevel<10) goto Ljobten;
+	if(joblevel < 10) goto Ljobten;
 	if(SkillPoint != 0) goto Lskillpt;
 	mes "[ ^0065DFJobra^000000 ]";
 	mes "So... getting your first job, eh? Thats cool, we all need to grow up sometime I guess...";
@@ -375,21 +377,21 @@ LSword:
 	mes "[ ^0065DFJobra^000000 ]";
 	mes "Wow, fantastic! Doesn't all that hard work feel like its paid off? *kekeke* I see the ^B70004BLOOD of Porings^000000 on your hands! You truly are fit for the ^0005CESwordsman^000000 job! ^_^";
 	cutin "kafra_01",255;
-	jobchange 1;// Job: Job_Swordman
+	jobchange JOB_SWORDMAN;
 	close;
 
 LMage:
 	mes "[ ^0065DFJobra^000000 ]";
 	mes "Nice, now you can finally wield the power of ^2200DFM^7600F9A^AF00FBN^DA00DFA^000000, your spiritual energy!!!";
 	cutin "kafra_01",255;
-	jobchange 2;// Job: Job_Mage
+	jobchange JOB_MAGE;
 	close;
 
 LThief:
 	mes "[ ^0065DFJobra^000000 ]";
 	mes "Those devious hand of yours really look like they need to grab something (no comment)..... go forth and steal!!";
 	cutin "kafra_01",255;
-	jobchange 6;// Job: Job_Thief
+	jobchange JOB_THIEF;
 	close;
 
 LMerc:
@@ -397,14 +399,14 @@ LMerc:
 	mes "Oh yeah, Mr. Moneybags, SOMEBODY here just loves the sound of coins jinglin'...";
 	mes "Well its not me!.. >_>..... <_<... bah.. ";
 	cutin "kafra_01",255;
-	jobchange 5;// Job: Job_Merchant
+	jobchange JOB_MERCHANT;
 	close;
 
 LAco:
 	mes "[ ^0065DFJobra^000000 ]";
 	mes "Yay.. go read a Bible.. or whatever.. er..yeah";
 	cutin "kafra_01",255;
-	jobchange 4;// Job: Job_Acolyte
+	jobchange JOB_ACOLYTE;
 	close;
 
 LArch:
@@ -414,7 +416,7 @@ LArch:
 	mes "[ ^0065DFJobra^000000 ]";
 	mes "I guess you're like me! You hurl pointed sticks at things! Kekeke...";
 	cutin "kafra_01",255;
-	jobchange 3;// Job: Job_Archer
+	jobchange JOB_ARCHER;
 	close;
 
 LSecondClass:
@@ -443,7 +445,7 @@ LSecondClass:
 		mes "[ ^0065DFJobra^000000 ]";
 		mes "Yes! You are ready to become... a Knight! ";
 		mes "Go save a Damsel in Distress or something..";
-		jobchange 7;// Job: Job_Knight
+		jobchange JOB_KNIGHT;
 		cutin "kafra_01",255;
 		close;
 
@@ -462,7 +464,7 @@ LSecondClass:
 		next;
 		mes "[ ^0065DFJobra^000000 ]";
 		mes "Now you can hurl pointed sticks at monsters AND keep them in one place! w00t, yea! Traps are a great thing...";
-		jobchange 11;// Job: Job_Hunter
+		jobchange JOB_HUNTER;
 		next;
 		mes "[ ^0065DFJobra^000000 ]";
 		mes "You know what... since I'm just soooo nice... (as long as you dont piss me off *grumble grumble*)";
@@ -491,7 +493,7 @@ LSecondClass:
 		mes "[ ^0065DFJobra^000000 ]";
 		mes "YUP! You guessed it! I turned you into a Blacksmith! Aren't you PROUD of yourself... Go and make a few weapons! Open up shops across the nation! Yea yea yea! Go go go! w00t! Ho yeah! ";
 		cutin "kafra_01",255;
-		jobchange 10;// Job: Job_Blacksmith
+		jobchange JOB_BLACKSMITH;
 		close;
 
 	LNotMerc:
@@ -511,7 +513,7 @@ LSecondClass:
 		next;
 		mes "[ ^0065DFJobra^000000 ]";
 		mes "Poof! Kekeke... ";
-		jobchange 12;// Job: Job_Assassin
+		jobchange JOB_ASSASSIN;
 		cutin "kafra_01",255;
 		close;
 
@@ -528,7 +530,7 @@ LSecondClass:
 		next;
 		mes "[ ^0065DFJobra^000000 ]";
 		mes "Yay! You've now reached Priesthood! It's sorta like Manhood.. but not really, see with Manhood, you get this little thingy between your legs.. WHOOPs, I am getting so off topic..";
-		jobchange 8;// Job: Job_Priest
+		jobchange JOB_PRIEST;
 		cutin "kafra_01",255;
 		close;
 
@@ -542,7 +544,7 @@ LSecondClass:
 		if(class !=2) goto LNotMage;
 		mes "[ ^0065DFJobra^000000 ]";
 		mes "Weeee, doesn't it feel great to finally become a Wizard? It's like a warm bath.... ahhhhhhh......";
-		jobchange 9;// Job: Job_Wizard
+		jobchange JOB_WIZARD;
 		cutin "kafra_01",255;
 		close;
 
@@ -569,7 +571,7 @@ LSecondClass2:
 		next;
 		mes "[ ^0065DFJobra^000000 ]";
 		mes "Oooo~~~ yeah, thats it... yummy...";
-		jobchange 14;// Job: Job_Crusader
+		jobchange JOB_CRUSADER;
 		cutin "kafra_01",255;
 		close;
 
@@ -588,7 +590,7 @@ LSecondClass2:
 		if(class !=3) goto LNotArch3;
 		mes "[ ^0065DFJobra^000000 ]";
 		mes "Yay! Go play some ballads for some Dancers or something, I just can't stand your clothes... ewww.";
-		jobchange 19;// Job: Job_Bard
+		jobchange JOB_BARD;
 		cutin "kafra_01",255;
 		close;
 
@@ -603,7 +605,7 @@ LSecondClass2:
 		if(class !=3) goto LNotArch2;
 		mes "[ ^0065DFJobra^000000 ]";
 		mes "Uh-huh, swivel those hips girl ^_~ Dancers are sooo sexy.. too bad I'm stuck in this ugly Kafra dress.. blah, if only I could strip down to a little thong too... *sigh*";
-		jobchange 20;// Job: Job_Dancer
+		jobchange JOB_DANCER;
 		cutin "kafra_01",255;
 		close;
 
@@ -618,7 +620,7 @@ LSecondClass2:
 		mes "[ ^0065DFJobra^000000 ]";
 		if(class !=5) goto LNotMerc2;
 		mes "Cool! Go make some potions! Open a Pharmacy! yeah yeah yeah! ^_^";
-		jobchange 18;// Job: Job_Alchem
+		jobchange JOB_ALCHEM;
 		cutin "kafra_01",255;
 		close;
 
@@ -633,7 +635,7 @@ LSecondClass2:
 		if(class !=6) goto LNotThief2;
 		mes "[ ^0065DFJobra^000000 ]";
 		mes "Wow! ^_^ You.. are.. SOOOOO COOOL!! KYAAHH XD!! *drools*";
-		jobchange 17;// Job: Job_Rogue
+		jobchange JOB_ROGUE;
 		cutin "kafra_01",255;
 		close;
 
@@ -648,7 +650,7 @@ LSecondClass2:
 		if(class !=4) goto LNotAco2;
 		mes "[ ^0065DFJobra^000000 ]";
 		mes "Nice.... Monks are pretty darn cool!";
-		jobchange 15;// Job: Job_Monk
+		jobchange JOB_MONK;
 		cutin "kafra_01",255;
 		close;
 
@@ -664,7 +666,7 @@ LSecondClass2:
 		mes "[ ^0065DFJobra^000000 ]";
 		mes "Ahhhh, soo cool! I'll never get tired of seeing people turn into those new 2-2 sprites.. KYAHH XD!!";
 		mes "Go forth Sage! Show those wizzies what a real mana-wielder can do! Mwahaha...";
-		jobchange 16;// Job: Job_Sage
+		jobchange JOB_SAGE
 		cutin "kafra_01",255;
 		close;
 
@@ -696,7 +698,7 @@ L_SNChange:
 	mes "We pride ourselves on our slogan 'Common Man, Common Goals, Common Dreams'!";
 	mes "Have fun with all those skills.";
 	cutin "kafra_01",255;
-	jobchange 23;
+	jobchange JOB_SUPERNOVICE;
 	close;
 
 L_LowSkill:

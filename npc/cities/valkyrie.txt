@@ -5,7 +5,7 @@
 //= finished, optimized and tested by Lupus
 //= General__ (1.7a)
 //===== Current Version: =====================================
-//= 1.7a
+//= 1.8
 //===== Compatible With: =====================================
 //= Freya any
 //===== Description: =========================================
@@ -25,6 +25,7 @@
 //= to go. [Lupus]
 //= 1.7 On reborn reset some Job Quest Vars and Reset Girls Counter [Lupus]
 //= 1.7a Fixed name displaying of 'Book of Ymir' [General__]
+//= 1.8 Updated Job IDs due to new class changes [Tsuyuki]
 //============================================================
 
 
@@ -79,8 +80,8 @@ L_START:
 // -== The Librarian that watches the "Book of Ymir" ==-
 yuno_in02.gat,91,176,5	script	Librarian	754,{
 	mes "[Librarian]";
-	if(valkyrie_Q>0) goto L_DONE;
-	if(BaseJob >= 7 && Upper==0) goto L_PAY;
+	if(valkyrie_Q > 0) goto L_DONE;
+	if(BaseJob >= 7 && Upper == 0) goto L_PAY;
 	mes "Have a look around, but don't touch the book. Only a few chosen ones can read its wise words.";
 	close;
 
@@ -113,6 +114,7 @@ L_WRONGZ:
 L_DONE:
 	mes "Why? You have already paid me.";
 	mes "Now go and look for the Book of Ymir.";
+
 M_EXIT:
 	close;
 }
@@ -158,8 +160,9 @@ valkyrie.gat,48,86,6	script	Valkyrie	811,{
 	if(BaseJob == 23) goto L_SN;
 	if(Upper == 2 ) goto L_BABY;
 	if(Upper > 0 ) goto L_ALREADY;
-	if(BaseLevel >= 99 && JobLevel >= 50 && BaseJob >= 7) goto L_CHANGE;
-	if(BaseJob < 7) goto L_NOTHING;
+	if(BaseLevel >= 99 && JobLevel >= 50 && BaseJob >= 7 && BaseJob <= 21) goto L_CHANGE;
+	if(BaseJob <= 6 || BaseJob == 24 || BaseJob == 25 || BaseJob >= 4046 ||
+		 BaseJob <= 4053) goto L_NOTHING;
 
 	mes "[Valhallana]";
 	mes "You need 99 Base Level and 50 Job Level.";
@@ -190,9 +193,9 @@ L_ALREADY:
 	mes "[Valhallana]";
 	mes "I can't help you anymore.";
 	if(Class == 4001) mes "You have been reborn already.";
-	if(Class > 4001 && Class < 4008 ) mes "Go and ask these people in the hall.";
+	if(Class >= 4002 && Class <= 4007) mes "Go and ask these people in the hall.";
 	next;
-//	goto L_NOTHING;
+	goto L_NOTHING;
 
 L_NOTHING:
 	mes "[Valhallana]";
@@ -215,7 +218,7 @@ L_CHANGE:
 	mes "[Valhallana]";
 	mes "Welcome to Valkyrie, "+strcharinfo(0)+". From this point on, there is no returning back.";
 	next;
-	if(Zeny || Weight) goto L_ZENYITEMS;
+	if(Zeny > 0 || Weight > 0) goto L_ZENYITEMS;
 	if(checkcart(0)) goto L_CART;
 	if(checkfalcon(0)) goto L_FALCON;
 	if(checkriding(0)) goto L_PECO;
@@ -227,28 +230,15 @@ L_CHANGE:
 
 	set ADVJOB,Class+4001; //memo the target 3rd Job ID
 
-//	callfunc "F_ToHigh",25,"Swordman High",31,"Lord Knight",144,145,146,0;
-//	callfunc "F_ToHigh",28,"Acolyte High",32,"High Priest",156,0,0,0;
-//	callfunc "F_ToHigh",26,"High Mage",33,"High Wizard",157,0,0,0;
-//	callfunc "F_ToHigh",29,"Merchant High",34,"White Smith",153,154,155,0;
-//	callfunc "F_ToHigh",27,"High Archer",35,"Sniper",147,148,0,0;
-//	callfunc "F_ToHigh",30,"Thief High",36,"Assassin Cross",149,150,151,152;
-//	callfunc "F_ToHigh",25,"Swordman High",38,"Paladin",144,145,146,0;
-//	callfunc "F_ToHigh",28,"Acolyte High",39,"Champion",156,0,0,0;
-//	callfunc "F_ToHigh",26,"High Mage",40,"Professor",157,0,0,0;
-//	callfunc "F_ToHigh",30,"Thief High",41,"Stalker",149,150,151,152;
-//	callfunc "F_ToHigh",29,"Merchant High",42,"Creator",153,154,155,0;
-//	callfunc "F_ToHigh",27,"High Archer",43,"Clown",147,148,0,0;
-//	callfunc "F_ToHigh",27,"High Archer",44,"Gypsy",147,148,0,0;
-
 	if( getskilllv(144) || getskilllv(156) || getskilllv(157) || getskilllv(153) || getskilllv(147) || getskilllv(149) ) set QSK1,1;
 	if( getskilllv(145) || getskilllv(154) || getskilllv(148) || getskilllv(150) ) set QSK2,1;
 	if( getskilllv(146) || getskilllv(155) || getskilllv(151) ) set QSK3,1;
 	if( getskilllv(152) ) set QSK4,1;
+
 	mes "[Valhallana]";
 	mes "Done...";
 	mes "Good luck.";
-	jobchange 24; //Novice High
+	jobchange JOB_NOVICE_HIGH;
 	resetlvl(1);
 	callfunc "F_ClearJobVar";
 	set RES_SKILL,0; //we reset Reset Skills NPC counter
@@ -531,4 +521,3 @@ L_ALREADY3RD:
 	emotion 23;
 	close;
 }
-
