@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/25/06
+	* Added: Partially implemented TaeKwon Mission [Latios]
 	* Fixed: Soul Linker Spirit skills [Latios]
 	* Fixed: Dark Priest Card [Tsuyuki]
 	* Fixed: A lot of bad grammar in the atcommand.c file [Tsuyuki]
