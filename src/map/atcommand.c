@@ -300,6 +300,7 @@ ATCOMMAND_FUNC(rainbow);
 ATCOMMAND_FUNC(clsweather);
 ATCOMMAND_FUNC(mobsearch);
 ATCOMMAND_FUNC(cleanmap);
+ATCOMMAND_FUNC(cleanarea);
 ATCOMMAND_FUNC(shuffle);
 ATCOMMAND_FUNC(adjgmlvl);
 ATCOMMAND_FUNC(adjgmlvl2);
@@ -652,6 +653,7 @@ static struct AtCommandInfo {
 	{ AtCommand_Clsweather,            "@clsweather",           80, atcommand_clsweather },
 	{ AtCommand_MobSearch,             "@mobsearch",            20, atcommand_mobsearch },
 	{ AtCommand_CleanMap,              "@cleanmap",             40, atcommand_cleanmap },
+	{ AtCommand_CleanArea,             "@cleanarea",            40, atcommand_cleanarea },
 	{ AtCommand_Shuffle,               "@shuffle",              60, atcommand_shuffle },
 //	{ AtCommand_Maintenance,           "@maintenance",          99, atcommand_maintenance },
 	{ AtCommand_MiscEffect,            "@misceffect",           60, atcommand_misceffect },
@@ -14161,7 +14163,7 @@ ATCOMMAND_FUNC(mobsearch) {
 }
 
 /*==========================================
- * cleanmap
+ * cleanmap & cleanarea
  *------------------------------------------
  */
 static int atcommand_cleanmap_sub(struct block_list *bl, va_list ap) {
@@ -14173,6 +14175,17 @@ static int atcommand_cleanmap_sub(struct block_list *bl, va_list ap) {
 }
 
 ATCOMMAND_FUNC(cleanmap) {
+	struct map_data *m;
+	
+	nullpo_retr(1, m = &map[sd->bl.m]);
+		
+	map_foreachinarea(atcommand_cleanmap_sub, sd->bl.m, 0, 0, m->xs, m->ys, BL_ITEM);
+	clif_displaymessage(fd, "All dropped items have been cleaned up.");
+
+	return 0;
+}
+
+ATCOMMAND_FUNC(cleanarea) {
 	int area_size;
 
 	area_size = AREA_SIZE * 2;
