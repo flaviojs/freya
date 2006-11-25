@@ -5592,7 +5592,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		}
 		break;
 	case SL_STAR:
-		if(spirit_class != JOB_STAR_GLADIATOR && spirit_class != JOB_STAR_GLADIATOR2) {
+		if(spirit_class != pc_calc_base_job2(JOB_STAR_GLADIATOR) && spirit_class != pc_calc_base_job2(JOB_STAR_GLADIATOR2)) {
 			clif_skill_fail(sd,skillid,0,0);
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
@@ -5700,7 +5700,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		}
 		break;
 	case SL_SOULLINKER:
-		if(spirit_class != JOB_SOUL_LINKER) {
+		if(spirit_class != pc_calc_base_job2(JOB_SOUL_LINKER)) {
 			clif_skill_fail(sd,skillid,0,0);
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);

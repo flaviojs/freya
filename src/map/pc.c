@@ -4679,9 +4679,9 @@ int pc_calc_base_job2(unsigned int b_class) {
 
 	if(b_class >= JOB_TAEKWON && b_class <= JOB_SOUL_LINKER) {
 		if (b_class == JOB_STAR_GLADIATOR2)
-			return 24 + JOB_STAR_GLADIATOR - JOB_TAEKWON;
+			return 26 + JOB_STAR_GLADIATOR - JOB_TAEKWON;
 		else
-			return 24 + b_class - JOB_TAEKWON;
+			return 26 + b_class - JOB_TAEKWON;
 	}
 
 	if(b_class == JOB_SUPER_BABY)
