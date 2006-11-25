@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/25/06
+	* Fixed: disabled battle option mob_ghostring_fix by default [Latios]
 	* Updated: NPC Script Job IDs (Job Change Quests/NPCs should be okay now) [Tsuyuki]
 	* Updated: @job/@charjob [Latios]
 	* Fixed: Spirit of Assassin [Latios]
