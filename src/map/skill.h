@@ -142,7 +142,7 @@ int skill_clear_unitgroup(struct block_list *src);
 int skill_unit_ondamaged(struct skill_unit *src, struct block_list *bl, int damage, unsigned int tick);
 
 int skill_castfix(struct block_list *bl, int time_duration);
-int skill_delayfix(struct block_list *bl, int time_duration);
+int skill_delayfix(struct block_list *bl, int time_duration, int skill_num);
 int skill_check_unit_range(int m, int x, int y, int skillid, int skilllv);
 int skill_check_unit_range2(int m, int x, int y, int skillid, int skilllv);
 // -- moonsoul	(added skill_check_unit_cell)
