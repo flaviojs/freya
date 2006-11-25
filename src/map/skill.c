@@ -1771,7 +1771,7 @@ int skill_attack(int attack_type, struct block_list* src, struct block_list *dsr
 				else
 					tsd->status.sp += sp;
 				clif_heal(tsd->fd, SP_SP, sp);
-				tsd->canact_tick = tick + skill_delayfix(bl, skill_get_delay(SA_MAGICROD, sc_data[SC_MAGICROD].val1));
+				tsd->canact_tick = tick + skill_delayfix(bl, skill_get_delay(SA_MAGICROD, sc_data[SC_MAGICROD].val1), skillid);
 			}
 			clif_skill_nodamage(bl, bl, SA_MAGICROD, sc_data[SC_MAGICROD].val1, 1);
 		}
@@ -5579,6 +5579,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
 			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+			sc_data[SC_SPIRIT].val2 = SL_ALCHEMIST;
 		}
 		break;
 	case SL_MONK:
@@ -5587,6 +5588,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
 			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+			sc_data[SC_SPIRIT].val2 = SL_MONK;
 		}
 		break;
 	case SL_STAR:
@@ -5595,6 +5597,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
 			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+			sc_data[SC_SPIRIT].val2 = SL_STAR;
 		}
 		break;
 	case SL_SAGE:
@@ -5603,6 +5606,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
 			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+			sc_data[SC_SPIRIT].val2 = SL_SAGE;
 		}
 		break;
 	case SL_CRUSADER:
@@ -5611,6 +5615,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
 			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+			sc_data[SC_SPIRIT].val2 = SL_CRUSADER;
 		}
 		break;
 	case SL_SUPERNOVICE:
@@ -5619,6 +5624,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
 			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+			sc_data[SC_SPIRIT].val2 = SL_SUPERNOVICE;
 		}
 		break;
 	case SL_KNIGHT:
@@ -5627,6 +5633,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
 			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+			sc_data[SC_SPIRIT].val2 = SL_KNIGHT;
 		}
 		break;
 	case SL_WIZARD:
@@ -5635,6 +5642,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
 			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+			sc_data[SC_SPIRIT].val2 = SL_WIZARD;
 		}
 		break;
 	case SL_PRIEST:
@@ -5643,6 +5651,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
 			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+			sc_data[SC_SPIRIT].val2 = SL_PRIEST;
 		}
 		break;
 	case SL_BARDDANCER:
@@ -5651,6 +5660,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
 			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+			sc_data[SC_SPIRIT].val2 = SL_BARDDANCER;
 		}
 		break;
 	case SL_ROGUE:
@@ -5659,6 +5669,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
 			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+			sc_data[SC_SPIRIT].val2 = SL_ROGUE;
 		}
 		break;
 	case SL_ASSASIN:
@@ -5667,6 +5678,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
 			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+			sc_data[SC_SPIRIT].val2 = SL_ASSASIN;
 		}
 		break;
 	case SL_BLACKSMITH:
@@ -5675,6 +5687,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
 			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+			sc_data[SC_SPIRIT].val2 = SL_BLACKSMITH;
 		}
 		break;
 	case SL_HUNTER:
@@ -5683,6 +5696,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
 			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+			sc_data[SC_SPIRIT].val2 = SL_HUNTER;
 		}
 		break;
 	case SL_SOULLINKER:
@@ -5691,6 +5705,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
 			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+			sc_data[SC_SPIRIT].val2 = SL_SOULLINKER;
 		}
 		break;
 	case SL_GUNNER:
@@ -5699,6 +5714,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
 			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+			sc_data[SC_SPIRIT].val2 = SL_GUNNER;
 		}
 		break;
 	case SL_NINJA:
@@ -5707,6 +5723,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
 			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+			sc_data[SC_SPIRIT].val2 = SL_NINJA;
 		}
 		break;
 	case SL_COLLECTOR:
@@ -5715,6 +5732,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
 			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+			sc_data[SC_SPIRIT].val2 = SL_COLLECTOR;
 		}
 		break;
 	case SL_DEATHKNIGHT:
@@ -5723,6 +5741,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
 			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+			sc_data[SC_SPIRIT].val2 = SL_DEATHKNIGHT;
 		}
 		break;
 	case SL_HIGH:
@@ -5731,6 +5750,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
 			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+			sc_data[SC_SPIRIT].val2 = SL_HIGH;
 		}
 		break;
 
@@ -7606,20 +7626,6 @@ static int skill_check_condition_char_sub(struct block_list *bl,va_list ap)
 			(tsd->bl.x == sd->bl.x - 1 || tsd->bl.x == sd->bl.x + 1) && tsd->status.sp >= 10)
 			(*c)++;
 		break;
-	case AL_HOLYLIGHT:
-			// To-Do: During Spirit Priest mode, SP cost is reduced for Holy Light
-			if(sd && sd->sc_data[SC_SPIRIT].timer!=-1 && sd->sc_data[SC_SPIRIT].val2 == SL_PRIEST)
-			//	sp *= 5;
-			break;
-	case MO_TRIPLEATTACK:
-	case MO_CHAINCOMBO:
-	case MO_COMBOFINISH:
-	case CH_TIGERFIST:
-	case CH_CHAINCRUSH:
-		if(sd && sd->sc_data[SC_SPIRIT].timer!=-1 && sd->sc_data[SC_SPIRIT].val2 == SL_MONK)
-		// To-Do: During Spirit Monk mode, SP cost is reduced for certain skills
-		//			sp -= sp*25/100;
-		break;
 	case BD_LULLABY:				/* 子守歌 */
 	case BD_RICHMANKIM:				/* ニヨルドの宴 */
 	case BD_ETERNALCHAOS:			/* 永遠の混沌 */
@@ -7849,6 +7855,25 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 
 	if(sd->dsprate != 100)
 		sp = sp * sd->dsprate / 100;	/* 消費SP修正 */
+
+	// Skill SP Usage Bonus Reductions [Tsuyuki]
+	switch(skill) {
+	case AL_HOLYLIGHT:
+			// To-Do: During Spirit Priest mode, SP cost is reduced for Holy Light
+			if(sd && sd->sc_data[SC_SPIRIT].timer!=-1 && sd->sc_data[SC_SPIRIT].val2 == SL_PRIEST) {
+				sp *= 5;
+			}
+			break;
+	case MO_TRIPLEATTACK:
+	case MO_CHAINCOMBO:
+	case MO_COMBOFINISH:
+	case CH_TIGERFIST:
+	case CH_CHAINCRUSH:
+		if(sd && sd->sc_data[SC_SPIRIT].timer!=-1 && sd->sc_data[SC_SPIRIT].val2 == SL_MONK) {
+			sp -= sp*25/100;
+		}
+		break;
+	}
 
 	switch(skill) {
 	case MC_MAMMONITE:
@@ -8405,7 +8430,7 @@ int skill_castfix(struct block_list *bl, int time_duration) {
  * ディレイ計算
  *------------------------------------------
  */
-int skill_delayfix(struct block_list *bl, int time_duration) {
+int skill_delayfix(struct block_list *bl, int time_duration, int skill_num) {
 	struct status_change *sc_data;
 
 	nullpo_retr(0, bl);
@@ -8447,14 +8472,13 @@ int skill_delayfix(struct block_list *bl, int time_duration) {
 	if (sc_data && sc_data[SC_POEMBRAGI].timer != -1)
 		time_duration = time_duration * (100 - (sc_data[SC_POEMBRAGI].val1 * 3 + sc_data[SC_POEMBRAGI].val2 + (sc_data[SC_POEMBRAGI].val3&0xffff))) / 100;
 
-	// To-Do: Add skill_id check variable
 	// If its not WoE, and player has Spirit of the Assassin active, delay for Sonic Blow is cut in half
-	/*if (skill_id == AS_SONICBLOW && sc_data && sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_ASSASIN && !map[bl->m].flag.gvg)
+	if (skill_num == AS_SONICBLOW && sc_data && sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_ASSASIN && !map[bl->m].flag.gvg)
 		time_duration /= 2;
 
 	// If its not WoE, and player has Spirit of the Crusader active, delay for Shield Boomerang is cut in half
-	if (skill_id == CR_SHIELDBOOMERANG && sc_data && sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_CRUSADER && !map[bl->m].flag.gvg)
-		time_duration /= 2;*/
+	if (skill_num == CR_SHIELDBOOMERANG && sc_data && sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_CRUSADER && !map[bl->m].flag.gvg)
+		time_duration /= 2;
 		
 	return (time_duration > 0) ? time_duration : 0;
 }
@@ -8645,7 +8669,7 @@ int skill_use_id(struct map_session_data *sd, int target_id, int skill_num, int 
 
 	casttime = skill_castfix(&sd->bl, skill_get_cast(skill_num, skill_lv));
 	if(skill_num != SA_MAGICROD)
-		delay = skill_delayfix(&sd->bl, skill_get_delay(skill_num, skill_lv));
+		delay = skill_delayfix(&sd->bl, skill_get_delay(skill_num, skill_lv), skill_num);
 	//sd->state.skillcastcancel = skill_db[skill_num].castcancel;
 	sd->state.skillcastcancel = skill_get_castcancel(skill_num);
 	switch(skill_num){	/* 何か特殊な処理が必要 */
@@ -8868,7 +8892,7 @@ int skill_use_pos(struct map_session_data *sd,
 	pc_stopattack(sd);
 
 	casttime = skill_castfix(&sd->bl, skill_get_cast(skill_num,skill_lv));
-	delay = skill_delayfix(&sd->bl, skill_get_delay(skill_num,skill_lv));
+	delay = skill_delayfix(&sd->bl, skill_get_delay(skill_num,skill_lv), skill_num);
 	sd->state.skillcastcancel = skill_db[skill_num].castcancel;
 
 	if (battle_config.pc_skill_log)

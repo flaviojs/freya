@@ -728,11 +728,11 @@ int battle_addmastery(struct map_session_data *sd, struct block_list *target, in
 		//damage += (skill * 3);
 
 	// ビーストベイン(+4 ～ +40) vs 動物 or 昆虫
-	if ((skill = pc_checkskill(sd, HT_BEASTBANE)) > 0 && (race == 2 || race == 4))
+	if ((skill = pc_checkskill(sd, HT_BEASTBANE)) > 0 && (race == 2 || race == 4)) {
 		damage += (skill * 4);
-
-	if (sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_HUNTER)
-			damage += sd->status.str;
+		if (sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_HUNTER)
+				damage += sd->status.str;
+	}
 
 	if(type == 0)
 		weapon = sd->weapontype1;
@@ -1289,12 +1289,11 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 						ATK_ADD(sd->inventory_data[idx]->weight / 10);
 				}
 				skillratio += 30 * skill_lv;	// FORMULA: damage * (100 + 30 * skill_lv) / 100
-				// If Spirit of the Crusader is active, Shield Boomerang does not miss
-				if (sd && sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_CRUSADER)
-					flag.hit = 1;
-				// If Spirit of the Crusader is active, Shield Boomerang damage is doubled
-				if (sd && sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_CRUSADER)
+				// If Spirit of the Crusader is active, Shield Boomerang damage is doubled and it does not miss
+				if (sd && sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_CRUSADER) {
 					skillratio += 100;
+					flag.hit = 1;
+				}
 				break;
 			case CR_SHIELDCHARGE:
 				flag.weapon = 0;
@@ -1752,7 +1751,7 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 		if(skill_num == AS_SONICBLOW) {
 			// Soul Link bonus does not stack with EDP
 			if (sd && sd->sc_data[SC_EDP].timer == -1 && sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_ASSASIN) {
-				if(map[sd->bl.m].flag.gvg) // If GvG map, +25% damage with Spirit of the Assassin, if not GvG, +100%
+				if(map[sd->bl.m].flag.gvg) // If GvG map, +50% damage with Spirit of the Assassin, if not GvG, +100%
 					skillratio += 50;
 			}	else
 					skillratio += 100;

@@ -189,11 +189,30 @@ void initStatusIconTable(void) {
 	init_sc(SL_SKA,                 SC_SKA,              ICO_BLANK);
 	init_sc(SL_SWOO,                SC_SWOO,             ICO_BLANK);
 	init_sc(SL_SMA,                 SC_SMA,              ICO_BLANK);
-	init_sc(SL_KAIZEL,			  SC_KAIZEL,		   ICO_KAIZEL);
-	init_sc(SL_KAAHI,			  SC_KAAHI,		   ICO_KAAHI);
-	init_sc(SL_KAUPE,			  SC_KAUPE,		   ICO_KAUPE);
-	init_sc(SL_KAITE,			  SC_KAITE,		   ICO_KAITE);
-
+	init_sc(SL_KAIZEL,		      	  SC_KAIZEL,		       ICO_KAIZEL);
+	init_sc(SL_KAAHI,			          SC_KAAHI,		         ICO_KAAHI);
+	init_sc(SL_KAUPE,	         		  SC_KAUPE,		         ICO_KAUPE);
+	init_sc(SL_KAITE,			          SC_KAITE,		         ICO_KAITE);
+	init_sc(SL_ALCHEMIST,           SC_SPIRIT,           ICO_SPIRIT);
+	init_sc(SL_ASSASIN,             SC_SPIRIT,           ICO_SPIRIT);
+	init_sc(SL_BARDDANCER,          SC_SPIRIT,           ICO_SPIRIT);
+	init_sc(SL_BLACKSMITH,          SC_SPIRIT,           ICO_SPIRIT);
+	init_sc(SL_COLLECTOR,           SC_SPIRIT,           ICO_SPIRIT);
+	init_sc(SL_CRUSADER,            SC_SPIRIT,           ICO_SPIRIT);
+	init_sc(SL_DEATHKNIGHT,         SC_SPIRIT,           ICO_SPIRIT);
+	init_sc(SL_GUNNER,              SC_SPIRIT,           ICO_SPIRIT);
+	init_sc(SL_HUNTER,              SC_SPIRIT,           ICO_SPIRIT);
+	init_sc(SL_KNIGHT,              SC_SPIRIT,           ICO_SPIRIT);
+	init_sc(SL_MONK,                SC_SPIRIT,           ICO_SPIRIT);
+	init_sc(SL_NINJA,               SC_SPIRIT,           ICO_SPIRIT);
+	init_sc(SL_PRIEST,              SC_SPIRIT,           ICO_SPIRIT);
+	init_sc(SL_ROGUE,               SC_SPIRIT,           ICO_SPIRIT);
+	init_sc(SL_SAGE,                SC_SPIRIT,           ICO_SPIRIT);
+	init_sc(SL_SOULLINKER,          SC_SPIRIT,           ICO_SPIRIT);
+	init_sc(SL_STAR,                SC_SPIRIT,           ICO_SPIRIT);
+	init_sc(SL_SUPERNOVICE,         SC_SPIRIT,           ICO_SPIRIT);
+	init_sc(SL_WIZARD,              SC_SPIRIT,           ICO_SPIRIT);
+	
 #undef init_sc
 
 	//Misc status icons. Non-Skills
@@ -207,7 +226,7 @@ void initStatusIconTable(void) {
 	StatusIconTable[SC_ASPDPOTION3]  = ICO_ASPDPOTION3;
 	StatusIconTable[SC_SPEEDUP0]     = ICO_SPEEDPOTION;
 	StatusIconTable[SC_SPEEDUP1]     = ICO_SPEEDPOTION;
-//	StatusIconTable[SC_MIRACLE]      = SI_SPIRIT;
+//StatusIconTable[SC_MIRACLE]      = ICO_SPIRIT;
 
 	//Guild skills have a base index of 10000. Therefore they dont fit in SkillStatusChangeTable as the MAX index is MAX_SKILL (1020)
 	StatusIconTable[SC_BATTLEORDERS] = ICO_BLANK;
