@@ -5832,6 +5832,17 @@ int pc_damage(struct block_list *src, struct map_session_data *sd, int damage)
 	}
 
 	sd->status.hp = 0; //otherwise, player is dead
+	
+	if(sd->sc_data && sd->sc_data[SC_KAIZEL].timer != -1 && map[sd->bl.m].flag.gvg == 0) {
+		clif_skill_nodamage(&sd->bl,&sd->bl,ALL_RESURRECTION,4,1);
+		sd->status.hp = sd->status.max_hp * sd->sc_data[SC_KAIZEL].val1 / 10;
+		clif_updatestatus(sd,SP_HP);
+		status_change_end(&sd->bl,SC_KAIZEL,-1);
+//		clif_skill_nodamage(&sd->bl,&sd->bl,PR_KYRIE,sd->sc_data[SC_KAIZEL].val1,1);
+		status_change_start(&sd->bl,SC_KYRIE,sd->sc_data[SC_KAIZEL].val1,0,0,0,2000,0);
+		return 0;
+	}
+	
 	//pc_setdead(sd);
 	if (sd->vender_id)
 		vending_closevending(sd);

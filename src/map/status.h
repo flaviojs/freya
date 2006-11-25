@@ -31,7 +31,7 @@ enum {	// struct map_session_data の status_changeの番号テーブル
 	SC_WATERWEAPON          = 27,
 	SC_WINDWEAPON           = 28,
 	SC_EARTHWEAPON          = 29,
-	SC_PROVOKE				= 30,
+	SC_PROVOKE		    = 30,
 	SC_ENDURE,
 	SC_TWOHANDQUICKEN,
 	SC_CONCENTRATE,
@@ -252,6 +252,10 @@ enum {	// struct map_session_data の status_changeの番号テーブル
 	SC_INCDEXRATE,
 	SC_JAILED,
 	SC_SPIRIT,
+	
+	SC_KAIZEL,
+	SC_KAAHI,
+	SC_KAUPE,
 
 	SC_MAX
 };

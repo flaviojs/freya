@@ -1741,25 +1741,35 @@ int skill_attack(int attack_type, struct block_list* src, struct block_list *dsr
 	}
 	
 //マジックロッド処理ここから
-	if(attack_type&BF_MAGIC && sc_data && sc_data[SC_MAGICROD].timer != -1 && src == dsrc) { //魔法攻撃でマジックロッド状態でsrc=dsrcなら
-		dmg.damage = dmg.damage2 = 0; //ダメージ0
-		if(tsd) { //対象がPCの場合
-			int sp = skill_get_sp(skillid, skilllv); //使用されたスキルのSPを吸収
-			sp = sp * sc_data[SC_MAGICROD].val2 / 100; //吸収率計算
-			if(skillid == WZ_WATERBALL && skilllv > 1) //ウォーターボールLv1以上
-				sp = sp / ((skilllv | 1) * (skilllv | 1)); //さらに計算？
-			if (sp > 0x7fff) sp = 0x7fff; //SP多すぎの場合は理論最大値
-			else if (sp < 1) sp = 1; //1以下の場合は1
-			if (tsd->status.sp + sp > tsd->status.max_sp) { //回復SP+現在のSPがMSPより大きい場合
-				sp = tsd->status.max_sp - tsd->status.sp; //SPをMSP-現在SPにする
-				tsd->status.sp = tsd->status.max_sp; //現在のSPにMSPを代入
-			}
-			else //回復SP+現在のSPがMSPより小さい場合は回復SPを加算
-				tsd->status.sp += sp;
-			clif_heal(tsd->fd, SP_SP, sp); //SP回復エフェクトの表示
-			tsd->canact_tick = tick + skill_delayfix(bl, skill_get_delay(SA_MAGICROD, sc_data[SC_MAGICROD].val1)); //
+	if(attack_type&BF_MAGIC) {
+		if(sc_data && sc_data[SC_KAITE].timer != -1 && (dmg.damage || dmg.damage2)) {
+			sc_data[SC_KAITE].val2--;
+			if(sc_data[SC_KAITE].val2 == 0)
+				status_change_end(bl,SC_KAITE,-1);
+			
+			rdamage += dmg.damage + dmg.damage2;
 		}
-		clif_skill_nodamage(bl, bl, SA_MAGICROD, sc_data[SC_MAGICROD].val1, 1); //マジックロッドエフェクトを表示
+
+		if(sc_data && sc_data[SC_MAGICROD].timer != -1 && src == dsrc) {
+			dmg.damage = dmg.damage2 = 0;
+			if(tsd) {
+				int sp = skill_get_sp(skillid, skilllv);
+				sp = sp * sc_data[SC_MAGICROD].val2 / 100;
+				if(skillid == WZ_WATERBALL && skilllv > 1)
+					sp = sp / ((skilllv | 1) * (skilllv | 1));
+				if (sp > 0x7fff) sp = 0x7fff;
+				else if (sp < 1) sp = 1;
+				if (tsd->status.sp + sp > tsd->status.max_sp) {
+					sp = tsd->status.max_sp - tsd->status.sp;
+					tsd->status.sp = tsd->status.max_sp;
+				}
+				else
+					tsd->status.sp += sp;
+				clif_heal(tsd->fd, SP_SP, sp);
+				tsd->canact_tick = tick + skill_delayfix(bl, skill_get_delay(SA_MAGICROD, sc_data[SC_MAGICROD].val1));
+			}
+			clif_skill_nodamage(bl, bl, SA_MAGICROD, sc_data[SC_MAGICROD].val1, 1);
+		}
 	}
 //マジックロッド処理ここまで
 
@@ -5720,6 +5730,24 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		if(skillid == SL_SKE)
 			status_change_start(src, SC_SMA, 0, 0, 0, 0, 3000, 0);
 		break;
+		
+	case SL_KAITE:
+	case SL_KAAHI:
+	case SL_KAIZEL:
+	case SL_KAUPE:
+		// Ka-type magic can only be used on yourself, your spouse, children or other Soul Linker
+		if(dstsd && (dstsd->char_id == sd->char_id || dstsd->char_id == sd->status.partner_id /*|| dstsd->char_id == sd->status.child*/ || dstsd->status.class == JOB_SOUL_LINKER)) {
+			clif_skill_nodamage(src,bl,skillid,skilllv,1);
+			status_change_start(bl,SkillStatusChangeTable[skillid],skilllv,0,0,0,skill_get_time(skillid,skilllv),0);
+		} else if(dstsd) {
+			status_change_start(src,SC_STUN,skilllv,0,0,0,500,10);
+			clif_skill_fail(sd,skillid,0,0);
+			break;
+		} else {
+			clif_skill_fail(sd,skillid,0,0);
+			break;
+		}
+		break;
 
 	// New guild skills [Celest]
 	case GD_BATTLEORDER:
@@ -8099,7 +8127,20 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 			clif_skill_fail(sd, skill, 0, 0);
 			return 0;
 		}
-		break;
+	case SL_STUN: //GX^
+	case SL_STIN: //GXeB
+		{
+		int kaina_lv = pc_checkskill(sd,SL_KAINA);
+
+		if(kaina_lv == 0)
+			break;
+		if(sd->status.base_level >= 90)
+			sp -= sp * 7 * kaina_lv / 100;
+		else if(sd->status.base_level >= 80)
+			sp -= sp * 5 * kaina_lv / 100;
+		else if(sd->status.base_level >= 70)
+			sp -= sp * 3 * kaina_lv / 100;
+		}
 	}
 
 	if (!(type & 2)) {

@@ -15,6 +15,33 @@ typedef unsigned int in_addr_t;
 
 extern unsigned char display_unknown_packet;
 
+// local define
+enum {
+	ALL_CLIENT,
+	ALL_SAMEMAP,
+	AREA,
+	AREA_WOS,
+	AREA_WOC,
+	AREA_WOSC,
+	AREA_PET, // to send pet information (hair style) with packet 0x0078 and 0x007b
+	AREA_CHAT_WOC,
+	CHAT,
+	CHAT_WOS,
+	PARTY,
+	PARTY_WOS,
+	PARTY_SAMEMAP,
+	PARTY_SAMEMAP_WOS,
+	PARTY_AREA,
+	PARTY_AREA_WOS,
+	GUILD,
+	GUILD_WOS,
+	GUILD_SAMEMAP,
+	GUILD_SAMEMAP_WOS,
+	GUILD_AREA,
+	GUILD_AREA_WOS,
+	SELF
+};
+
 void delete_manner();
 char check_bad_word(const char* sentence, const int sentence_len, const struct map_session_data *sd);
 
