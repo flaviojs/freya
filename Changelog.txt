@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/25/06
+	* Fixed: a crash with bonus bNoKnockBack [Latios]
 	* Fixed: More Spirit Link skill fixes and updates [Tsuyuki]
 	* Fixed: If you log out on map tha_t12.gat, you will now be warped to your save point [Tsuyuki]
 	* Added: TaeKwon Ranker players with level 90+ will have tripled Maximum HP and SP [Latios]

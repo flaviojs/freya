@@ -1570,7 +1570,7 @@ int skill_blown(struct block_list *src, struct block_list *target, int count) {
 	}
 	
 	// RSX 0806 card bonus
-	if(sd->special_state.noknockback)
+	if(sd && sd->special_state.noknockback)
 		return 0;
 	
 	x = target->x;
