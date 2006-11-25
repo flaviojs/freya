@@ -4622,16 +4622,16 @@ struct pc_base_job pc_calc_base_job(unsigned int b_class)
 	if(b_class < JOB_NOVICE_HIGH) {
 		bj.job = b_class;
 		bj.upper = 0;
-	}else if (b_class >= JOB_NOVICE_HIGH && b_class < JOB_BABY) {
+	} else if(b_class >= JOB_NOVICE_HIGH && b_class < JOB_BABY) {
 		bj.job = b_class - JOB_NOVICE_HIGH;
 		bj.upper = 1;
-	}else if(b_class >= JOB_TAEKWON && b_class <= JOB_SOUL_LINKER) {
+	} else if(b_class >= JOB_TAEKWON && b_class <= JOB_SOUL_LINKER) {
 		if (b_class == JOB_STAR_GLADIATOR2)
-			bj.job = 24 + JOB_STAR_GLADIATOR - JOB_TAEKWON;
+			bj.job = 26 + JOB_STAR_GLADIATOR - JOB_TAEKWON;
 		else
-			bj.job = 24 + b_class - JOB_TAEKWON;
+			bj.job = 26 + b_class - JOB_TAEKWON;
 		bj.upper = 0;
-	}else{
+	} else {
 		if (b_class == JOB_SUPER_BABY)
 			bj.job = JOB_SUPER_NOVICE;
 		else
@@ -8616,6 +8616,7 @@ void pc_readdb(void)
 		s_class = pc_calc_base_job(atoi(split[0]));
 		i = s_class.job;
 		u = s_class.upper;
+
 		// check for bounds [celest]
 		if (i >= MAX_SKILLTREE || u >= 3)
 			continue;
