@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/25/06
+	* Added: TaeKwon Ranker players with level 90+ will have tripled Maximum HP and SP [Latios]
 	* Added: Basic structure for the new soul links [Tsuyuki]
 	 - SL_NINJA, SL_GUNNER, SL_COLLECTOR, SL_DEATHKNIGHT
 	* Updated: Skill databases [Tsuyuki]
