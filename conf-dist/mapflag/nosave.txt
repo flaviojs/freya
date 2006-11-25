@@ -182,4 +182,5 @@ gld_dun04.gat	mapflag	nosave	SavePoint
 
 //Normal Maps =================================
 yggdrasil01.gat	mapflag	nosave	SavePoint
+tha_t12.gat	mapflag	nosave	SavePoint
 thana_boss.gat	mapflag	nosave	SavePoint
