@@ -3,7 +3,7 @@
 //===== By: ==================================================
 // The Prometheus Project
 //===== Current Version: =====================================
-//= 1.8
+//= 1.9
 //===== Compatible With: =====================================
 //= Freya
 //===== Additional Comments: =================================
@@ -17,6 +17,7 @@
 //= 1.6: Fixed Biolabs MvP spawn times [Tsuyuki]
 //= 1.7: Fixed/Added some spawns [Tsuyuki]
 //= 1.8: Updated spawns to Aegis X.3 (Credits to eAthena) [Tsuyuki]
+//= 1.9: Fixed random MvP spawn system [galaxy]
 //============================================================
 
 
@@ -219,47 +220,48 @@ lhz_dun03.gat,138,138,36,34	monster	High Priest Margaretha	1643,1,3300000,300000
 lhz_dun03.gat,138,138,36,34	monster	High Wizard Kathryne	1645,1,2580000,2460000,1
 
 
-lhz_dun03.gat,1,1,3	script	BioMvPChooser	139,{
+lhz_dun03.gat,1,1,3 script BioPickMvP 139,{
 
 OnInit:
-	set $@BioMvP,rand(5);
-	if($@BioMvP == 0)goto BioLordKnight;
-	if($@BioMvP == 1)goto BioAssassinCross;
-	if($@BioMvP == 2)goto BioMasterSmith;
-	if($@BioMvP == 3)goto BioHighPriest;
-	if($@BioMvP == 4)goto BioSniper;
-	if($@BioMvP == 5)goto BioHighWizard;
+    set $@BioMvP,rand(6);
+    if($@BioMvP == 0)goto BioLordKnight;
+    if($@BioMvP == 1)goto BioAssassinCross;
+    if($@BioMvP == 2)goto BioMasterSmith;
+    if($@BioMvP == 3)goto BioHighPriest;
+    if($@BioMvP == 4)goto BioSniper;
+    if($@BioMvP == 5)goto BioHighWizard;
 
-	BioLordKnight:
-		monster "lhz_dun03.gat",0,0,"Lord Knight Seyren",1646,1,"BioPickMvP::BioDeadMvP";
-		end;
+    BioLordKnight:
+        monster "lhz_dun03.gat",0,0,"Lord Knight Seyren",1646,1,"BioPickMvP::OnBioDeadMvP";
+        end;
 
-	BioAssassinCross:
-		monster "lhz_dun03.gat",0,0,"Assassin Cross Eremes",1647,1,"BioPickMvP::BioDeadMvP";
-		end;
+    BioAssassinCross:
+        monster "lhz_dun03.gat",0,0,"Assassin Cross Eremes",1647,1,"BioPickMvP::OnBioDeadMvP";
+        end;
 
-	BioMasterSmith:
-		monster "lhz_dun03.gat",0,0,"Mastersmith Howard",1648,1,"BioPickMvP::BioDeadMvP";
-		end;
+    BioMasterSmith:
+        monster "lhz_dun03.gat",0,0,"Mastersmith Howard",1648,1,"BioPickMvP::OnBioDeadMvP";
+        end;
 
-	BioHighPriest:
-		monster "lhz_dun03.gat",0,0,"High Priest Margaretha",1649,1,"BioPickMvP::BioDeadMvP";
-		end;
+    BioHighPriest:
+        monster "lhz_dun03.gat",0,0,"High Priest Margaretha",1649,1,"BioPickMvP::OnBioDeadMvP";
+        end;
 
-	BioSniper:
-		monster "lhz_dun03.gat",0,0,"Sniper Cecil",1650,1,"BioPickMvP::BioDeadMvP";
-		end;
+    BioSniper:
+        monster "lhz_dun03.gat",0,0,"Sniper Cecil",1650,1,"BioPickMvP::OnBioDeadMvP";
+        end;
 
-	BioHighWizard:
-		monster "lhz_dun03.gat",0,0,"High Wizard Kathryne",1651,1,"BioPickMvP::BioDeadMvP";
-		end;
+    BioHighWizard:
+        monster "lhz_dun03.gat",0,0,"High Wizard Kathryne",1651,1,"BioPickMvP::OnBioDeadMvP";
+        end;
 
-	BioDeadMvP:
-		initnpctimer;
-		setnpctimer 0;
-		end;
+    OnBioDeadMvP:
+        initnpctimer;
+        detachnpctimer;
+        setnpctimer 0;
+        end;
 
-	OnTimer7200000:
-		stopnpctimer;
-		goto OnInit;
+    OnTimer7200:
+        stopnpctimer;
+        goto OnInit;
 }
