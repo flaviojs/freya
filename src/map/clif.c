@@ -124,33 +124,6 @@ static const int packet_len_table[MAX_PACKET_DB] = {
 // size list for each packet version after packet version 4.
 static int packet_size_table[MAX_PACKET_VERSION][MAX_PACKET_DB];
 
-// local define
-enum {
-	ALL_CLIENT,
-	ALL_SAMEMAP,
-	AREA,
-	AREA_WOS,
-	AREA_WOC,
-	AREA_WOSC,
-	AREA_PET, // to send pet information (hair style) with packet 0x0078 and 0x007b
-	AREA_CHAT_WOC,
-	CHAT,
-	CHAT_WOS,
-	PARTY,
-	PARTY_WOS,
-	PARTY_SAMEMAP,
-	PARTY_SAMEMAP_WOS,
-	PARTY_AREA,
-	PARTY_AREA_WOS,
-	GUILD,
-	GUILD_WOS,
-	GUILD_SAMEMAP,
-	GUILD_SAMEMAP_WOS,
-	GUILD_AREA,
-	GUILD_AREA_WOS,
-	SELF
-};
-
 #define WBUFPOS(p,pos,x,y) { unsigned char *__p = (unsigned char *)(p); __p += (pos); __p[0] = (x) >> 2; __p[1] = ((x) << 6) | (((y) >> 4) & 0x3f); __p[2] = (y) << 4; }
 #define WBUFPOS2(p,pos,x0,y0,x1,y1) { unsigned char *__p = (unsigned char *)(p); __p += (pos); __p[0] = (x0) >> 2; __p[1] = ((x0) << 6) | (((y0) >> 4) & 0x3f); __p[2] = ((y0) << 4) | (((x1) >> 6) & 0x0f); __p[3] = ((x1) << 2) | (((y1) >> 8) & 0x03); __p[4] = (y1); }
 

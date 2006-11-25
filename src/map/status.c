@@ -189,6 +189,10 @@ void initStatusIconTable(void) {
 	init_sc(SL_SKA,                 SC_SKA,              ICO_BLANK);
 	init_sc(SL_SWOO,                SC_SWOO,             ICO_BLANK);
 	init_sc(SL_SMA,                 SC_SMA,              ICO_BLANK);
+	init_sc(SL_KAIZEL,			  SC_KAIZEL,		   ICO_KAIZEL);
+	init_sc(SL_KAAHI,			  SC_KAAHI,		   ICO_KAAHI);
+	init_sc(SL_KAUPE,			  SC_KAUPE,		   ICO_KAUPE);
+	init_sc(SL_KAITE,			  SC_KAITE,		   ICO_KAITE);
 
 #undef init_sc
 
@@ -1008,6 +1012,9 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 
 	if(sd->status.max_sp < 0 || sd->status.max_sp > battle_config.max_sp)
 		sd->status.max_sp = battle_config.max_sp;
+		
+	if((skill = pc_checkskill(sd,SL_KAINA)) > 0)
+		sd->status.max_sp += 30 * skill;
 
 	//Ž©‘R‰ñ•œHP
 	sd->nhealhp = 1 + (sd->paramc[2]/5) + (sd->status.max_hp/200);
@@ -1025,19 +1032,21 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 	}
 
 	if((skill = pc_checkskill(sd,MO_SPIRITSRECOVERY)) > 0) {
-		sd->nsshealhp = skill*4 + (sd->status.max_hp*skill/500);
-		sd->nsshealsp = skill*2 + (sd->status.max_sp*skill/500);
+		sd->nsshealhp += skill*4 + (sd->status.max_hp*skill/500);
+		sd->nsshealsp += skill*2 + (sd->status.max_sp*skill/500);
 		if(sd->nsshealhp > 0x7fff) sd->nsshealhp = 0x7fff;
 		if(sd->nsshealsp > 0x7fff) sd->nsshealsp = 0x7fff;
 	}
 
 	if((skill=pc_checkskill(sd,TK_HPTIME)) > 0 && sd->state.rest) {
-		sd->nsshealhp = skill*30 + (sd->status.max_hp*skill/500);
+		sd->nsshealhp += skill*30 + (sd->status.max_hp*skill/500);
 		if(sd->nsshealhp > 0x7fff) sd->nsshealhp = 0x7fff;
 	}
 
 	if((skill=pc_checkskill(sd,TK_SPTIME)) > 0 && sd->state.rest) {
-		sd->nsshealsp = skill*3 + (sd->status.max_sp*skill/500);
+		sd->nsshealsp += skill*3 + (sd->status.max_sp*skill/500);
+		if((skill = pc_checkskill(sd,SL_KAINA)) > 0)
+			sd->nsshealsp += sd->nsshealsp * (30 + skill * 10) / 100;
 		if (sd->nsshealsp > 0x7fff) sd->nsshealsp = 0x7fff;
 	}
 
@@ -3325,6 +3334,16 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 	}
 
 	switch(type) { /* ˆÙí‚ÌŽí—Þ‚²‚Æ‚Ìˆ— */
+		case SC_KAIZEL:
+		case SC_KAAHI:
+		case SC_KAUPE:
+			break;
+		case SC_KAITE:
+			if(val1 >= 5)
+				val2 = 2;
+			else
+				val2 = 1;
+			break;
 		case SC_SWOO:
 			if(mode&0x20 && !(flag&1))
 				tick /= 5;

@@ -463,6 +463,12 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 			}
 		}
 		
+		if(tsc_data[SC_KAUPE].timer != -1 && (rand()%99) < (tsc_data[SC_KAUPE].val1 * 33) && (src->type == BL_PC || !skill_num)) {
+			clif_specialeffect(bl, 462, AREA);
+			status_change_end(bl, SC_KAUPE, -1);
+			return 0;
+		}
+		
 		if (tsc_data[SC_AETERNA].timer != -1) { // レックスエーテルナ
 			damage <<= 1; //double damage
 			status_change_end(bl, SC_AETERNA, -1);
