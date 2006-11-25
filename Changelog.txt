@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/25/06
+	* Fixed: Some Cards (incorrect entry, bonus bAddEffWhenHit) [Latios]
 	* Added: Partially implemented Soul Linker Spirit skills [Tsuyuki]
 	 - They always skill fail for some reason..
 	 - Only some parts added, most of the bonuses/changes are missing
