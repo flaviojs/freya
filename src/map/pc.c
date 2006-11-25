@@ -969,6 +969,13 @@ void pc_authok_final_step(int id, time_t connect_until_time) { // 0x2b26 <accoun
 		sd->state.event_kill = 1;
 		sd->state.event_disconnect = 1;
 	}
+	
+	// TK_MISSION
+	sd->tk_mission_target_id = sd->tk_mission_count = 0;
+	if (pc_checkskill(sd, TK_MISSION)) {
+		sd->tk_mission_target_id = pc_readglobalreg(sd, "TK_MISSION_ID");
+		sd->tk_mission_count = pc_readglobalreg(sd, "TK_MISSION_COUNT");
+	}
 
 	// ステータス初期計算など
 	status_calc_pc(sd, 1);

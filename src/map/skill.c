@@ -627,6 +627,7 @@ const struct skill_name_db skill_names[] = {
  { TK_SPTIME, "TK_SPTIME", "Enjoyable Rest" } ,
  { TK_STORMKICK, "STORMKICK", "Storm Kick" } ,
  { TK_TURNKICK, "TURNKICK", "Turn Kick" } ,
+ { TK_MISSION, "MISSION", "TaeKwon Mission" } ,
  { WE_BABY, "BABY", "Adopt_Baby" } ,
  { WE_CALLBABY, "CALLBABY", "Call_Baby" } ,
  { WE_CALLPARENT, "CALLPARENT", "Call_Parent" } ,
@@ -3925,6 +3926,27 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 				status_change_end(bl, SkillStatusChangeTable[skillid], -1);
 		}
 	  }
+		break;
+	case TK_MISSION:
+		if(sd) {
+			if (sd->tk_mission_target_id && (sd->tk_mission_count || rand()%100)) {
+				clif_mission_mob(sd, sd->tk_mission_target_id, sd->tk_mission_count);
+				clif_skill_fail(sd, skillid, 0, 0);
+				break;
+			}
+
+			do {
+				sd->tk_mission_target_id = rand() % MAX_MOB_DB;
+			} while(mob_db[sd->tk_mission_target_id].max_hp <= 0 || mob_db[sd->tk_mission_target_id].summonper[0]==0 || mob_db[sd->tk_mission_target_id].mode&0x20);
+			
+			sd->tk_mission_count = 0;
+			
+			pc_setglobalreg(sd, "TK_MISSION_ID", sd->tk_mission_target_id);
+			pc_setglobalreg(sd, "TK_MISSION_COUNT", sd->tk_mission_count);
+			
+			clif_mission_mob(sd, sd->tk_mission_target_id, 0);
+			clif_skill_nodamage(src, bl, skillid, skilllv, 1);
+		}
 		break;
 
 	case AS_ENCHANTPOISON: // Prevent spamming [Valaris]
@@ -7814,6 +7836,12 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 	case CR_SHRINK:
 		if(sd->sc_data[SkillStatusChangeTable[skill]].timer != -1)
 			return 1;			/* ‰ðœ‚·‚éê‡‚ÍSPÁ”ï‚µ‚È‚¢ */
+		break;
+	case TK_MISSION:
+		if(sd->status.class != JOB_TAEKWON) {
+			clif_skill_fail(sd, skill, 0, 0);
+			return 0;
+		}
 		break;
 	case TK_RUN:
 		if(sd->sc_data[SC_RUN].timer != -1){

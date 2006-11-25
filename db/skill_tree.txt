@@ -2114,7 +2114,7 @@
 4046,424,5,0,0,0,0,0,0,0,0,0,0		//TK_POWER#Fighting Chant#
 4046,425,7,422,5,423,5,424,5,0,0,0,0 //TK_SEVENWIND#Warm Wind#
 4046,426,5,0,0,0,0,0,0,0,0,0,0		//TK_HIGHJUMP#High Jump#
-//4046,493,1,424,5,0,0,0,0,0,0,0,0 //TK_MISSION#Taekwon Mission#
+4046,493,1,424,5,0,0,0,0,0,0,0,0 //TK_MISSION#Taekwon Mission#
 //4046,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY	#Call Baby#
 
 // TaeKwon Master / Star Gladiator
@@ -2136,7 +2136,7 @@
 4047,424,5,0,0,0,0,0,0,0,0,0,0 //TK_POWER#Fighting Chant#
 4047,425,7,422,5,423,5,424,5,0,0,0,0 //TK_SEVENWIND#Warm Wind#
 4047,426,5,0,0,0,0,0,0,0,0,0,0 //TK_HIGHJUMP#High Jump#
-//4047,493,1,424,5,0,0,0,0,0,0,0,0 //TK_MISSION#Taekwon Mission#
+4047,493,1,424,5,0,0,0,0,0,0,0,0 //TK_MISSION#Taekwon Mission#
 //4047,427,3,0,0,0,0,0,0,0,0,0,0	//SG_FEEL#Feeling the Sun, Moon and Stars#
 //4047,428,3,427,1,0,0,0,0,0,0,0,0 //SG_SUN_WARM#Warmth of the Sun#
 //4047,429,3,427,2,0,0,0,0,0,0,0,0 //SG_MOON_WARM#Warmth of the Moon#
@@ -2176,7 +2176,7 @@
 4048,424,5,0,0,0,0,0,0,0,0,0,0 //TK_POWER#Fighting Chant#
 4048,425,7,422,5,423,5,424,5,0,0,0,0 //TK_SEVENWIND#Warm Wind#
 4048,426,5,0,0,0,0,0,0,0,0,0,0 //TK_HIGHJUMP#High Jump#
-//4048,493,1,424,5,0,0,0,0,0,0,0,0 //TK_MISSION#Taekwon Mission#
+4048,493,1,424,5,0,0,0,0,0,0,0,0 //TK_MISSION#Taekwon Mission#
 //4048,427,3,0,0,0,0,0,0,0,0,0,0	//SG_FEEL#Feeling the Sun, Moon and Stars#
 //4048,428,3,427,1,0,0,0,0,0,0,0,0//SG_SUN_WARM#Warmth of the Sun#
 //4048,429,3,427,2,0,0,0,0,0,0,0,0 //SG_MOON_WARM#Warmth of the Moon#
@@ -2216,7 +2216,7 @@
 4049,424,5,0,0,0,0,0,0,0,0,0,0 //TK_POWER#Fighting Chant#
 4049,425,7,422,5,423,5,424,5,0,0,0,0 //TK_SEVENWIND#Warm Wind#
 4049,426,5,0,0,0,0,0,0,0,0,0,0 //TK_HIGHJUMP#High Jump#
-//4049,493,1,424,5,0,0,0,0,0,0,0,0 //TK_MISSION#Taekwon Mission#
+4049,493,1,424,5,0,0,0,0,0,0,0,0 //TK_MISSION#Taekwon Mission#
 4049,445,5,0,0,0,0,0,0,0,0,0,0	//SL_ALCHEMIST#Spirit of the Alchemist#
 4049,447,5,0,0,0,0,0,0,0,0,0,0	//SL_MONK#Spirit of the Monk#
 4049,448,5,0,0,0,0,0,0,0,0,0,0	//SL_STAR#Spirit of the Star Knight#

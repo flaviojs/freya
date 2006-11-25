@@ -45,6 +45,8 @@ enum {
 void delete_manner();
 char check_bad_word(const char* sentence, const int sentence_len, const struct map_session_data *sd);
 
+void clif_mission_mob(struct map_session_data *sd, short mob_id, short progress);
+
 void clif_setip(char*);
 void clif_setport(int);
 

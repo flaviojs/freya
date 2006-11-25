@@ -543,7 +543,7 @@
 491,1,6,2,0,1,2,1,no,0,0,0,none,0	//CR_CULTIVATION#Cultivation#
 
 // Extra TaeKwon Class Skills
-//493,0,6,4,0,1,1,1,no,0,0,0,none,0	//TK_MISSION#Taekwon Mission#
+493,0,6,4,0,1,1,1,no,0,0,0,none,0	//TK_MISSION#Taekwon Mission#
 495,0,6,4,0,1,1,1,no,0,0,0,weapon,0	//KN_ONEHAND#Onehand Quicken#
 496,0,6,4,0,1,1,0,no,0,0,0,none,0		//AM_TWILIGHT1#Twilight Alchemy 1#
 497,0,6,4,0,1,1,0,no,0,0,0,none,0		//AM_TWILIGHT2#Twilight Alchemy 2#
