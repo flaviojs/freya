@@ -185,10 +185,10 @@ void initStatusIconTable(void) {
 	init_sc(RG_CLOSECONFINE,        SC_CLOSECONFINE2,    ICO_CLOSECONFINE2);
 	init_sc(RG_CLOSECONFINE,        SC_CLOSECONFINE,     ICO_CLOSECONFINE);
 	init_sc(WZ_SIGHTBLASTER,        SC_SIGHTBLASTER,     ICO_SIGHTBLASTER);
-	init_sc(SL_SKE,					SC_SKE,				 ICO_BLANK);
-	init_sc(SL_SKA,					SC_SKA,				 ICO_BLANK);
-	init_sc(SL_SWOO,				SC_SWOO,			 ICO_BLANK);
-	init_sc(SL_SMA,				SC_SMA,				ICO_BLANK);
+	init_sc(SL_SKE,                 SC_SKE,              ICO_BLANK);
+	init_sc(SL_SKA,                 SC_SKA,              ICO_BLANK);
+	init_sc(SL_SWOO,                SC_SWOO,             ICO_BLANK);
+	init_sc(SL_SMA,                 SC_SMA,              ICO_BLANK);
 
 #undef init_sc
 
@@ -203,6 +203,7 @@ void initStatusIconTable(void) {
 	StatusIconTable[SC_ASPDPOTION3]  = ICO_ASPDPOTION3;
 	StatusIconTable[SC_SPEEDUP0]     = ICO_SPEEDPOTION;
 	StatusIconTable[SC_SPEEDUP1]     = ICO_SPEEDPOTION;
+//	StatusIconTable[SC_MIRACLE]      = SI_SPIRIT;
 
 	//Guild skills have a base index of 10000. Therefore they dont fit in SkillStatusChangeTable as the MAX index is MAX_SKILL (1020)
 	StatusIconTable[SC_BATTLEORDERS] = ICO_BLANK;
@@ -1514,8 +1515,11 @@ void status_calc_speed(struct map_session_data *sd) {
 			sd->speed = sd->speed * 125 / 100;
 		if(sd->sc_data[SC_CLOAKING].timer != -1)
 			sd->speed = sd->speed * (sd->sc_data[SC_CLOAKING].val3-sd->sc_data[SC_CLOAKING].val1 * 3) / 100;
-		if(sd->sc_data[SC_CHASEWALK].timer != -1)
+		if(sd->sc_data[SC_CHASEWALK].timer != -1) {
 			sd->speed = sd->speed * sd->sc_data[SC_CHASEWALK].val3 / 100;
+			if (sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_ROGUE)
+				sd->speed -= sd->speed >> 2;
+			}
 		if(sd->sc_data[SC_QUAGMIRE].timer != -1)
 			sd->speed = sd->speed * 3 / 2;
 		if (sd->sc_data[SC_WINDWALK].timer != -1 && sd->sc_data[SC_INCREASEAGI].timer == -1)
@@ -1758,6 +1762,8 @@ int status_get_str(struct block_list *bl) {
 				str += sc_data[SC_INCALLSTATUS].val1;*/
 			if (sc_data[SC_STRFOOD].timer != -1)
 				str += sc_data[SC_STRFOOD].val1;
+			if (sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_HIGH && str < 50)
+				str = 50;
 		}
 		if (str < 0)
 			str = 0;
@@ -1810,6 +1816,8 @@ int status_get_agi(struct block_list *bl) {
 				agi += sc_data[SC_INCALLSTATUS].val1;
 			if (sc_data[SC_AGIFOOD].timer != -1)
 				agi += sc_data[SC_AGIFOOD].val1;
+			if (sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_HIGH && agi < 50)
+				agi = 50;
 		}
 		
 		if (agi < 0)
@@ -1848,8 +1856,10 @@ int status_get_vit(struct block_list *bl) {
 				vit += 5;
 			/*if(sc_data[SC_INCALLSTATUS].timer != -1)
 				vit += sc_data[SC_INCALLSTATUS].val1;*/
-			if(sc_data[SC_VITFOOD].timer != -1)
+			if (sc_data[SC_VITFOOD].timer != -1)
 				vit += sc_data[SC_VITFOOD].val1;
+			if (sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_HIGH && vit < 50)
+				vit = 50;
 		}
 
 		if (vit < 0)
@@ -1898,6 +1908,8 @@ int status_get_int(struct block_list *bl) {
 				int_ += sc_data[SC_INCALLSTATUS].val1;*/
 			if (sc_data[SC_INTFOOD].timer != -1)
 				int_ += sc_data[SC_INTFOOD].val1;
+			if (sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_HIGH && int_ < 50)
+				int_ = 50;
 		}
 		if (int_ < 0)
 			int_ = 0;
@@ -1949,6 +1961,8 @@ int status_get_dex(struct block_list *bl) {
 				dex += sc_data[SC_INCALLSTATUS].val1;*/
 			if (sc_data[SC_DEXFOOD].timer != -1)
 				dex += sc_data[SC_DEXFOOD].val1;
+			if (sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_HIGH && dex < 50)
+				dex = 50;
 		}
 		if (dex < 0)
 			dex = 0;
@@ -1991,6 +2005,8 @@ int status_get_luk(struct block_list *bl) {
 				luk += sc_data[SC_INCALLSTATUS].val1;*/
 			if (sc_data[SC_LUKFOOD].timer != -1)
 				luk += sc_data[SC_LUKFOOD].val1;
+			if (sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_HIGH && luk < 50)
+				luk = 50;
 		}
 		if (luk < 0)
 			luk = 0;
@@ -4981,7 +4997,10 @@ int status_change_timer(int tid, unsigned int tick, int id, int data)
 				sd->status.sp -= sp; // update sp cost [Celest]
 				clif_updatestatus(sd, SP_SP);
 				if ((++sc_data[SC_CHASEWALK].val4) == 1) {
-					status_change_start(bl, SC_INCSTR, 1 << (sc_data[SC_CHASEWALK].val1-1), 0, 0, 0, 30000, 0);
+					if (sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_ROGUE)
+						status_change_start(bl, SC_INCSTR, 1 << (sc_data[SC_CHASEWALK].val1-1), 0, 0, 0, 300000, 0);
+					else
+						status_change_start(bl, SC_INCSTR, 1 << (sc_data[SC_CHASEWALK].val1-1), 0, 0, 0, 30000, 0);
 					status_calc_pc(sd, 0);
 				}
 				sc_data[type].timer = add_timer(sc_data[type].val2 + tick, status_change_timer, bl->id, data); /* タイマー再設定 */

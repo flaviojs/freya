@@ -669,6 +669,11 @@ int pc_isequip(struct map_session_data *sd, int n)
 			return 0;
 		if (item->equip & 0x0100 && sd->sc_data[SC_STRIPHELM].timer != -1)
 			return 0;
+		if (sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_SUPERNOVICE) {
+			// If Spirit of the Super Novice is active, and Super Novice Lv is over 90, can equip all headgears
+			if (item->equip & 0x0100 && sd->status.base_level >= 90)
+				return 1; // Helms are equipable
+			}
 	}
 
 	return 1;
@@ -2284,7 +2289,11 @@ void pc_bonus(struct map_session_data *sd, int type, int val) {
 	case SP_INTRAVISION:
 		if(sd->state.lr_flag != 2)
 			sd->special_state.intravision = 1;
-			break;
+		break;
+	case SP_NOKNOCKBACK:
+		if(sd->state.lr_flag != 2)
+			sd->special_state.noknockback = 1;
+		break;
 	default:
 		if (battle_config.error_log)
 			printf("pc_bonus: unknown type %d %d !\n", type, val);
@@ -4622,16 +4631,16 @@ struct pc_base_job pc_calc_base_job(unsigned int b_class)
 	if(b_class < JOB_NOVICE_HIGH) {
 		bj.job = b_class;
 		bj.upper = 0;
-	}else if (b_class >= JOB_NOVICE_HIGH && b_class < JOB_BABY) {
+	} else if(b_class >= JOB_NOVICE_HIGH && b_class < JOB_BABY) {
 		bj.job = b_class - JOB_NOVICE_HIGH;
 		bj.upper = 1;
-	}else if(b_class >= JOB_TAEKWON && b_class <= JOB_SOUL_LINKER) {
+	} else if(b_class >= JOB_TAEKWON && b_class <= JOB_SOUL_LINKER) {
 		if (b_class == JOB_STAR_GLADIATOR2)
-			bj.job = 24 + JOB_STAR_GLADIATOR - JOB_TAEKWON;
+			bj.job = 26 + JOB_STAR_GLADIATOR - JOB_TAEKWON;
 		else
-			bj.job = 24 + b_class - JOB_TAEKWON;
+			bj.job = 26 + b_class - JOB_TAEKWON;
 		bj.upper = 0;
-	}else{
+	} else {
 		if (b_class == JOB_SUPER_BABY)
 			bj.job = JOB_SUPER_NOVICE;
 		else
@@ -8214,8 +8223,8 @@ static int pc_natural_heal_sub(struct map_session_data *sd, va_list ap) {
 			sd->sp_sub = sd->inchealsptick = 0;
 		} else { //natural heal
 			pc_natural_heal_hp(sd);
-			if(sd->sc_count &&
-				(sd->sc_data[SC_EXTREMITYFIST].timer != -1 ||	sd->sc_data[SC_DANCING].timer != -1))	//No SP natural heal.
+			if(sd->sc_count && (((sd->sc_data[SC_EXTREMITYFIST].timer != -1 && (sd->sc_data[SC_SPIRIT].timer == -1 || 
+				sd->sc_data[SC_SPIRIT].val2 != SL_MONK)) || sd->sc_data[SC_DANCING].timer != -1))) // No Natural SP Recovery
 				sd->sp_sub = sd->inchealsptick = 0;
 			else
 				pc_natural_heal_sp(sd);
@@ -8616,6 +8625,7 @@ void pc_readdb(void)
 		s_class = pc_calc_base_job(atoi(split[0]));
 		i = s_class.job;
 		u = s_class.upper;
+
 		// check for bounds [celest]
 		if (i >= MAX_SKILLTREE || u >= 3)
 			continue;

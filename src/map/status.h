@@ -251,6 +251,7 @@ enum {	// struct map_session_data ‚Ì status_change‚Ì”Ô†ƒe[ƒuƒ‹
 	SC_INCAGIRATE,
 	SC_INCDEXRATE,
 	SC_JAILED,
+	SC_SPIRIT,
 
 	SC_MAX
 };
