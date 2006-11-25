@@ -212,7 +212,7 @@ ATCOMMAND_FUNC(reloaditemdb);
 ATCOMMAND_FUNC(reloadmobdb);
 ATCOMMAND_FUNC(reloadskilldb);
 ATCOMMAND_FUNC(reloadscript);
-//ATCOMMAND_FUNC(reloadgmdb); // removed, it's automatic now
+//ATCOMMAND_FUNC(reloadgmdb); // Removed, automatic now
 ATCOMMAND_FUNC(mapexit);
 ATCOMMAND_FUNC(idsearch);
 ATCOMMAND_FUNC(whodrops);
@@ -551,7 +551,7 @@ static struct AtCommandInfo {
 	{ AtCommand_ReloadMobDB,           "@reloadmobdb",          99, atcommand_reloadmobdb }, // admin command
 	{ AtCommand_ReloadSkillDB,         "@reloadskilldb",        99, atcommand_reloadskilldb }, // admin command
 	{ AtCommand_ReloadScript,          "@reloadscript",         99, atcommand_reloadscript }, // admin command
-//	{ AtCommand_ReloadGMDB,            "@reloadgmdb",           99, atcommand_reloadgmdb }, // admin command // removed, it's automatic now
+//	{ AtCommand_ReloadGMDB,            "@reloadgmdb",           99, atcommand_reloadgmdb }, // admin command // Removed, automatic now
 	{ AtCommand_CharReset,             "@charreset",            60, atcommand_charreset },
 	{ AtCommand_CharModel,             "@charmodel",            50, atcommand_charmodel },
 	{ AtCommand_CharSKPoint,           "@charskpoint",          60, atcommand_charskpoint },
@@ -742,7 +742,7 @@ char atcmd_name[100];
 char atcmd_mapname[100];
 
 /*=========================================
- * This function return the name of the job
+ * This function returns the name of the user's class
  *-----------------------------------------
  */
 char * job_name(int class) {
@@ -855,7 +855,7 @@ void log_atcommand(struct map_session_data *sd, const char *command, const char 
 }
 
 /*===============================================
- * This function return the GM command symbol
+ * This function returns the GM command symbol
  *-----------------------------------------------
  */
 char GM_Symbol() {
@@ -863,7 +863,7 @@ char GM_Symbol() {
 }
 
 /*===============================================
- * This function return the level of a GM command
+ * This function returns the level of a GM command
  *-----------------------------------------------
  */
 int get_atcommand_level(const AtCommandType type) {
@@ -877,7 +877,7 @@ int get_atcommand_level(const AtCommandType type) {
 }
 
 /*==========================================
- *is_atcommand @コマンドに存在するかどうか確認する
+ * This function checks chat for @commands
  *------------------------------------------
  */
 AtCommandType is_atcommand(const int fd, struct map_session_data* sd, const char* message, unsigned char gmlvl) {
@@ -1211,7 +1211,7 @@ void add_msg(int msg_number, const char *Message) {
 			len = MAX_MSG_LEN;
 		if (msg_config_read_done) { /* if already read, some checks */
 			if (msg_table[msg_number] == NULL) {
-				printf(CL_YELLOW "Warning: You add the message #%d. By default this message doesn't exist." CL_RESET"\n", msg_number);
+				printf(CL_YELLOW "Warning: Added the message #%d. By default this message doesn't exist." CL_RESET"\n", msg_number);
 			/* else, check number of % */
 			} else {
 				var1 = 0;
@@ -1233,7 +1233,7 @@ void add_msg(int msg_number, const char *Message) {
 						}
 					}
 				if (var1 != var2) {
-					printf(CL_YELLOW "Warning: You add the message #%d with %d variable%s and replaced message have %d variable%s." CL_RESET" Note: a variable begin by %%.\n", msg_number, var2, (var2 > 1) ? "s" : "", var1, (var1 > 1) ? "s" : "");
+					printf(CL_YELLOW "Warning: Added the message #%d with %d variable%s and replaced the message have %d variable%s." CL_RESET" Note: a variable begin by %%.\n", msg_number, var2, (var2 > 1) ? "s" : "", var1, (var1 > 1) ? "s" : "");
 				}
 			}
 		}
@@ -1242,7 +1242,7 @@ void add_msg(int msg_number, const char *Message) {
 		CALLOC(msg_table[msg_number], char, len + 1); // + NULL
 		strncpy(msg_table[msg_number], Message, len);
 	} else {
-		printf(CL_RED "Error in conf file: You try to add the void message #%d." CL_RESET"\n", msg_number);
+		printf(CL_RED "Error in conf file: Attempted to add the void message #%d." CL_RESET"\n", msg_number);
 	}
 
 	return;
@@ -1257,18 +1257,18 @@ void set_default_msg() {
 	add_msg(  0, "Warped.");
 	add_msg(  1, "Map not found.");
 	add_msg(  2, "Coordinates out of range.");
-	add_msg(  3, "Character not found.");
-	add_msg(  4, "Jump to '%s'.");
-	add_msg(  5, "Jump to %d %d");
-	add_msg(  6, "Character data respawn point saved.");
+	add_msg(  3, "Player not found.");
+	add_msg(  4, "Jumped to '%s'.");
+	add_msg(  5, "Jumped to %d %d");
+	add_msg(  6, "Player data respawn point saved.");
 	add_msg(  7, "Warping to respawn point.");
 	add_msg(  8, "Speed changed.");
 	add_msg(  9, "Options changed.");
 	add_msg( 10, "Invisible: Off.");
 	add_msg( 11, "Invisible: On.");
 	add_msg( 12, "Your job has been changed.");
-	add_msg( 13, "A pity! You've died.");
-	add_msg( 14, "Character killed.");
+	add_msg( 13, "What a pity! You've died.");
+	add_msg( 14, "Player killed.");
 	add_msg( 15, "Player warped (message sends to player too).");
 	add_msg( 16, "You've been revived! It's a miracle!");
 	add_msg( 17, "HP, SP recovered.");
@@ -1282,37 +1282,37 @@ void set_default_msg() {
 	add_msg( 25, "Job level lowered.");
 	add_msg( 26, "Help commands:");
 	add_msg( 27, "File 'help.txt' not found.");
-	add_msg( 28, "No player found.");
+	add_msg( 28, "No players found.");
 	add_msg( 29, "1 player found.");
 	add_msg( 30, "%d players found.");
 	add_msg( 31, "PvP: Off.");
 	add_msg( 32, "PvP: On.");
 	add_msg( 33, "GvG: Off.");
 	add_msg( 34, "GvG: On.");
-	add_msg( 35, "You can't use this clothes color with this class.");
-	add_msg( 36, "Appearence changed.");
-	add_msg( 37, "An invalid number was specified.");
+	add_msg( 35, "Unable to use palette with class.");
+	add_msg( 36, "Appearance changed.");
+	add_msg( 37, "Invalid number specified.");
 	add_msg( 38, "Invalid location number or name.");
-	add_msg( 39, "All monsters summoned!");
+	add_msg( 39, "Monsters summoned!");
 	add_msg( 40, "Invalid monster ID or name.");
-	add_msg( 41, "Impossible to decrease the number/value.");
-	add_msg( 42, "Stat changed.");
-	add_msg( 43, "You're not in a guild.");
-	add_msg( 44, "You're not the master of your guild.");
+	add_msg( 41, "Unable to decrease the number/value.");
+	add_msg( 42, "Stat(s) changed.");
+	add_msg( 43, "Player is not in a guild.");
+	add_msg( 44, "Player is not the master of the guild.");
 	add_msg( 45, "Guild level change failed.");
 	add_msg( 46, "'%s' recalled!");
-	add_msg( 47, "Base level can't go any higher.");
-	add_msg( 48, "Character's job changed.");
-	add_msg( 49, "Command with too long parameters.");
+	add_msg( 47, "Base level unable to go any higher.");
+	add_msg( 48, "Player's job changed.");
+	add_msg( 49, "Command has too long of parameters.");
 	add_msg( 50, "You already have some GM powers.");
-	add_msg( 51, "Character revived.");
+	add_msg( 51, "Player revived.");
 	add_msg( 52, "This option cannot be used in PK Mode.");
 	add_msg( 53, "'%s' (account: %d) stats:");
-	add_msg( 54, "No player found in map '%s'.");
+	add_msg( 54, "No player(s) found in map '%s'.");
 	add_msg( 55, "1 player found in map '%s'.");
 	add_msg( 56, "%d players found in map '%s'.");
-	add_msg( 57, "Character's respawn point changed.");
-	add_msg( 58, "Character's options changed.");
+	add_msg( 57, "Player's respawn point changed.");
+	add_msg( 58, "Player's options changed.");
 	add_msg( 59, "Night has fallen.");
 	add_msg( 60, "Day has arrived.");
 	add_msg( 61, "The holy messenger has given judgement.");
@@ -1321,158 +1321,158 @@ void set_default_msg() {
 	add_msg( 64, "Mercy has been granted.");
 	add_msg( 65, "Character's base level raised.");
 	add_msg( 66, "Character's base level lowered.");
-	add_msg( 67, "Character's job level can't go any higher.");
+	add_msg( 67, "Character's job level is unable go any higher.");
 	add_msg( 68, "character's job level raised.");
 	add_msg( 69, "Character's job level lowered.");
-	add_msg( 70, "You have learned the skill.");
-	add_msg( 71, "You have forgotten the skill.");
-	add_msg( 72, "Guild siege warfare start!");
-	add_msg( 73, "Already it has started siege warfare.");
-	add_msg( 74, "Guild siege warfare end!");
-	add_msg( 75, "Siege warfare hasn't started yet.");
+	add_msg( 70, "Skill has been learned.");
+	add_msg( 71, "Skill has been forgotten.");
+	add_msg( 72, "Guild siege warfare started!");
+	add_msg( 73, "Guild siege warfare has already been started.");
+	add_msg( 74, "Guild siege warfare has ended!");
+	add_msg( 75, "Guild siege warfare has not started yet.");
 	add_msg( 76, "You have received all skills.");
 	add_msg( 77, "The reference result of '%s' (name: id):");
 	add_msg( 78, "%s: %d");
 	add_msg( 79, "It is %d affair above.");
-	add_msg( 80, "Give a display name and monster name/id please.");
-	add_msg( 81, "Your GM level don't authorize you to do this action on this player.");
-	add_msg( 82, "Please, use one of this numbers/names:");
-	add_msg( 83, "Cannot spawn emperium.");
+	add_msg( 80, "Enter a proper display name and monster name/id.");
+	add_msg( 81, "GM level does not authorize you to do action.");
+	add_msg( 82, "Enter one of these numbers/names:");
+	add_msg( 83, "Cannot spawn Emperium.");
 	add_msg( 84, "All stats changed!");
 	add_msg( 85, "Invalid time for ban command.");
-	add_msg( 86, "Sorry, but a player name has at least 4 characters.");
-	add_msg( 87, "Sorry, but a player name has 23 characters maximum.");
-	add_msg( 88, "Character name sends to char-server to ask it.");
-	add_msg( 89, "Sorry, it's already the night. Impossible to execute the command.");
-	add_msg( 90, "Sorry, it's already the day. Impossible to execute the command.");
-	add_msg( 91, "Character's base level can't go any higher.");
-	add_msg( 92, "All characters recalled!");
-	add_msg( 93, "All online characters of the '%s' guild are near you.");
+	add_msg( 86, "Sorry, but a player name must have at least 4 characters.");
+	add_msg( 87, "Sorry, but a player name can only have 23 characters maximum.");
+	add_msg( 88, "Char-server checking character name..");
+	add_msg( 89, "Night-mode is already active.");
+	add_msg( 90, "Day-mode is already active.");
+	add_msg( 91, "Character's base level is at its maximum.");
+	add_msg( 92, "All online players recalled!");
+	add_msg( 93, "All online players of the '%s' guild recalled.");
 	add_msg( 94, "Incorrect name/ID, or no one from the guild is online.");
-	add_msg( 95, "All online characters of the '%s' party are near you.");
+	add_msg( 95, "All online players of the '%s' party recalled.");
 	add_msg( 96, "Incorrect name or ID, or no one from the party is online.");
 	add_msg( 97, "Item database reloaded.");
 	add_msg( 98, "Monster database reloaded.");
 	add_msg( 99, "Skill database reloaded.");
-	add_msg(100, "Scripts reloaded.");
-	add_msg(101, "Login-server asked to reload GM accounts and their level.");
+	add_msg(100, "Npc scripts reloaded.");
+	add_msg(101, "Login-server requested to reload GM accounts and corresponding GM levels.");
 	add_msg(102, "Mounted Peco.");
 	add_msg(103, "No longer spying on the '%s' guild.");
-	add_msg(104, "Spying on the '%s' guild.");
+	add_msg(104, "Initialized spying on the '%s' guild.");
 	add_msg(105, "No longer spying on the '%s' party.");
-	add_msg(106, "Spying on the '%s' party.");
-	add_msg(107, "All items have been repaired.");
-	add_msg(108, "No item need to be repaired.");
+	add_msg(106, "Initialized spying on the '%s' party.");
+	add_msg(107, "All broken items have been repaired.");
+	add_msg(108, "No broken items present.");
 	add_msg(109, "Player has been nuked!");
 	add_msg(110, "Npc Enabled.");
-	add_msg(111, "This NPC doesn't exist.");
+	add_msg(111, "Npc does not exist.");
 	add_msg(112, "Npc Disabled.");
-	add_msg(113, "%d item(s) removed by a GM.");
+	add_msg(113, "%d item(s) removed by GM.");
 	add_msg(114, "%d item(s) removed from the player.");
 	add_msg(115, "%d item(s) removed. Player had only %d on %d items.");
 	add_msg(116, "Character does not have the item.");
-	add_msg(117, "GM has send you in jails for %s.");
-	add_msg(118, "Player warped in jails for %s.");
-	add_msg(119, "This player is not in jails.");
-	add_msg(120, "GM has discharge you.");
+	add_msg(117, "A GM has jailed you for %s.");
+	add_msg(118, "Player warped to jail for %s.");
+	add_msg(119, "Player is not currently in jail.");
+	add_msg(120, "A GM has discharged you from jail.");
 	add_msg(121, "Player warped to Prontera.");
 	add_msg(122, "Disguise applied.");
-	add_msg(123, "Monster/NPC name/id hasn't been found.");
-	add_msg(124, "Undisguise applied.");
-	add_msg(125, "You're not disguised.");
-	add_msg(126, "You accept any wisp (no wisper is refused).");
-	add_msg(127, "You accept any wisp, except thoses from %d player(s):");
-	add_msg(128, "You refuse all wisps (no specifical wisper is refused).");
-	add_msg(129, "You refuse all wisps, AND refuse wisps from %d player(s):");
-	add_msg(130, "'%s' accept any wisp (no wisper is refused).");
-	add_msg(131, "'%s' accept any wisp, except thoses from %d player(s):");
-	add_msg(132, "'%s' refuse all wisps (no specifical wisper is refused).");
-	add_msg(133, "'%s' refuse all wisps, AND refuse wisps from %d player(s):");
-	add_msg(134, "'%s' already accepts all wispers.");
-	add_msg(135, "'%s' now accepts all wispers.");
-	add_msg(136, "A GM has authorized all wispers for you.");
-	add_msg(137, "'%s' already blocks all wispers.");
-	add_msg(138, "'%s' blocks now all wispers.");
-	add_msg(139, "A GM has blocked all wispers for you.");
-	add_msg(140, "Character's disguise applied.");
-	add_msg(141, "Character's undisguise applied.");
-	add_msg(142, "Character is not disguised.");
-	add_msg(143, "Give a monster name/id please.");
-	add_msg(144, "Invalid actual email. If you have default e-mail, type a@a.com.");
-	add_msg(145, "Invalid new email. Please enter a real e-mail.");
-	add_msg(146, "New email must be a real e-mail.");
-	add_msg(147, "New email must be different of the actual e-mail.");
+	add_msg(123, "Monster/NPC name/id not found.");
+	add_msg(124, "Disguise removed.");
+	add_msg(125, "Disguise is not currently in effect.");
+	add_msg(126, "You accept all whispers (no whisper is refused).");
+	add_msg(127, "You accept all whispers, except thoses from %d player(s):");
+	add_msg(128, "You refuse all whispers (no specific whisper is refused).");
+	add_msg(129, "You refuse all whispers, AND refuse whispers from %d player(s):");
+	add_msg(130, "'%s' accept all whispers (no wisper is refused).");
+	add_msg(131, "'%s' accept all whispers, except thoses from %d player(s):");
+	add_msg(132, "'%s' refuse all whispers (no specific whisper is refused).");
+	add_msg(133, "'%s' refuse all whispers, AND refuse whispers from %d player(s):");
+	add_msg(134, "'%s' already accepts all whispers.");
+	add_msg(135, "'%s' now accepts all whispers.");
+	add_msg(136, "A GM has authorized all whispers for you.");
+	add_msg(137, "'%s' already blocks all whispers.");
+	add_msg(138, "'%s' now blocks all whispers.");
+	add_msg(139, "A GM has blocked all whispers for you.");
+	add_msg(140, "Disguise applied.");
+	add_msg(141, "Disguise removed.");
+	add_msg(142, "Disguisse is not currently in effect.");
+	add_msg(143, "Enter a proper monster name/id.");
+	add_msg(144, "Invalid e-mail. If you have default e-mail, type a@a.com.");
+	add_msg(145, "Invalid new e-mail. Please enter a correct e-mail.");
+	add_msg(146, "New e-mail must be a real e-mail.");
+	add_msg(147, "New e-mail must be different from the original e-mail.");
 	add_msg(148, "Information sent to login-server via char-server.");
-	add_msg(149, "Impossible to increase the number/value.");
+	add_msg(149, "Unable to increase the number/value.");
 	add_msg(150, "No GM found.");
 	add_msg(151, "1 GM found.");
 	add_msg(152, "%d GMs found.");
-	add_msg(153, "%s is Unknown Command.");
+	add_msg(153, "%s is an unknown command.");
 	add_msg(154, "%s failed.");
-	add_msg(155, "Impossible to change your job.");
-	add_msg(156, "HP or/and SP modified.");
-	add_msg(157, "HP and SP are already with the good values.");
-	add_msg(158, "Base level can't go any lower.");
-	add_msg(159, "Job level can't go any lower.");
+	add_msg(155, "Unable to change job.");
+	add_msg(156, "HP and/or SP modified.");
+	add_msg(157, "HP and SP are currently full.");
+	add_msg(158, "Base level is at its minimum.");
+	add_msg(159, "Job level is at its minimum.");
 	add_msg(160, "PvP is already Off.");
 	add_msg(161, "PvP is already On.");
 	add_msg(162, "GvG is already Off.");
 	add_msg(163, "GvG is already On.");
-	add_msg(164, "Your memo point #%d doesn't exist.");
-	add_msg(165, "All monsters killed!");
-	add_msg(166, "No item has been refined!");
+	add_msg(164, "Memo point #%d doesn't exist.");
+	add_msg(165, "Monsters killed!");
+	add_msg(166, "No items have been refined!");
 	add_msg(167, "1 item has been refined!");
 	add_msg(168, "%d items have been refined!");
-	add_msg(169, "This item (%d: '%s') is not an equipment.");
-	add_msg(170, "This item is not an equipment.");
+	add_msg(169, "Item (%d: '%s') is not an equipment.");
+	add_msg(170, "Item is not an equipment.");
 	add_msg(171, "%d - void");
-	add_msg(172, "You replace previous memo position %d - %s (%d,%d).");
-	add_msg(173, "Note: you don't have the 'Warp' skill level to use it.");
+	add_msg(172, "Previous memo point replaced: %d - %s (%d,%d).");
+	add_msg(173, "Warp skill not present for memo command.");
 	add_msg(174, "Number of status points changed!");
 	add_msg(175, "Number of skill points changed!");
-	add_msg(176, "Number of zenys changed!");
-	add_msg(177, "Impossible to decrease a stat.");
-	add_msg(178, "Impossible to increase a stat.");
-	add_msg(179, "Guild level changed.");
-	add_msg(180, "The monter/egg name/id doesn't exist.");
+	add_msg(176, "Zeny amount changed!");
+	add_msg(177, "Unable to decrease stat.");
+	add_msg(178, "Unable to increase stat.");
+	add_msg(179, "Guild level modified.");
+	add_msg(180, "Monter/egg name/id doesn't exist.");
 	add_msg(181, "You already have a pet.");
-	add_msg(182, "Pet friendly value changed!");
-	add_msg(183, "Pet friendly is already the good value.");
-	add_msg(184, "Sorry, but you have no pet.");
-	add_msg(185, "Pet hungry value changed!");
-	add_msg(186, "Pet hungry is already the good value.");
-	add_msg(187, "You can now rename your pet.");
-	add_msg(188, "You can already rename your pet.");
-	add_msg(189, "This player can now rename his/her pet.");
-	add_msg(190, "This player can already rename his/her pet.");
-	add_msg(191, "Sorry, but this player has no pet.");
-	add_msg(192, "Impossible to change the character's job.");
-	add_msg(193, "Character's base level can't go any lower.");
-	add_msg(194, "Character's job level can't go any lower.");
+	add_msg(182, "Pet friendliness value changed!");
+	add_msg(183, "Pet friendliness is already the good value.");
+	add_msg(184, "Pet is not present.");
+	add_msg(185, "Pet hunger value changed!");
+	add_msg(186, "Pet hunger is already the good value.");
+	add_msg(187, "Pet is now rename-able.");
+	add_msg(188, "Pet is already name-able.");
+	add_msg(189, "Pet is now rename-able.");
+	add_msg(190, "Pet is already name-able.");
+	add_msg(191, "Pet is not present.");
+	add_msg(192, "Unable to change the character's job.");
+	add_msg(193, "Character's base level is at its minimum.");
+	add_msg(194, "Character's job level is at its minimum.");
 	add_msg(195, "All players have been kicked!");
-	add_msg(196, "You already have this quest skill.");
-	add_msg(197, "This skill number doesn't exist or isn't a quest skill.");
-	add_msg(198, "This skill number doesn't exist.");
-	add_msg(199, "This player has learned the skill.");
-	add_msg(200, "This player already has this quest skill.");
-	add_msg(201, "You don't have this quest skill.");
-	add_msg(202, "This player has forgotten the skill.");
-	add_msg(203, "This player doesn't have this quest skill.");
-	add_msg(204, "WARNING: more than 400 spiritballs can CRASH your client!");
-	add_msg(205, "You already have this number of spiritballs.");
-	add_msg(206, "'%s' skill points reseted!");
-	add_msg(207, "'%s' stats points reseted!");
+	add_msg(196, "Quest skills has already been obtained.");
+	add_msg(197, "Skill number doesn't exist or isn't a quest skill.");
+	add_msg(198, "Skill number doesn't exist.");
+	add_msg(199, "Character has learned skill.");
+	add_msg(200, "Character has already learned skill.");
+	add_msg(201, "Skill is not present.");
+	add_msg(202, "Skill has been removed.");
+	add_msg(203, "Skill is not present");
+	add_msg(204, "WARNING: More than 400 Spirit Balls can CRASH your client!");
+	add_msg(205, "You already have this number of Spirit Balls.");
+	add_msg(206, "'%s' skill points reset!");
+	add_msg(207, "'%s' stats points reset!");
 	add_msg(208, "'%s' skill and stats points reseted!");
-	add_msg(209, "Character's number of skill points changed!");
-	add_msg(210, "Character's number of status points changed!");
-	add_msg(211, "Character's number of zenys changed!");
-	add_msg(212, "Cannot mount a Peco while in disguise.");
-	add_msg(213, "You can not mount a peco with your job.");
+	add_msg(209, "Character's number of skill points modified!");
+	add_msg(210, "Character's number of status points modified!");
+	add_msg(211, "Character's zeny amount changed!");
+	add_msg(212, "Cannot mount Peco while in disguise.");
+	add_msg(213, "Cannot mount peco with current job.");
 	add_msg(214, "Unmounted Peco.");
-	add_msg(215, "This player cannot mount a Peco while in disguise.");
-	add_msg(216, "Now, this player mounts a peco.");
-	add_msg(217, "This player can not mount a peco with his/her job.");
-	add_msg(218, "Now, this player has not more peco.");
+	add_msg(215, "Player cannot mount a Peco while in disguise.");
+	add_msg(216, "Player has mounted a Peco.");
+	add_msg(217, "Player cannot mount a Peco with his/her job.");
+	add_msg(218, "Player has already mounted a Peco.");
 	add_msg(219, "%d day");
 	add_msg(220, "%d days");
 	add_msg(221, "%s %d hour");
@@ -1481,9 +1481,9 @@ void set_default_msg() {
 	add_msg(224, "%s %d minutes");
 	add_msg(225, "%s and %d second");
 	add_msg(226, "%s and %d seconds");
-	add_msg(227, "Cannot wear disguise while riding a Peco.");
-	add_msg(228, "Character cannot wear disguise while riding a Peco.");
-	add_msg(229, "Your Effect Has Changed.");
+	add_msg(227, "Cannot be disguised when riding a Peco.");
+	add_msg(228, "Character cannot be disguised when riding a Peco.");
+	add_msg(229, "Effect has changed.");
 	add_msg(230, "Server time (normal time): %A, %B %d %Y %X.");
 	add_msg(231, "Game time: The game is in permanent daylight.");
 	add_msg(232, "Game time: The game is in permanent night.");
@@ -1495,60 +1495,60 @@ void set_default_msg() {
 	add_msg(238, "Game time: A day cycle has a normal duration of %s.");
 	add_msg(239, "Game time: After, the game will be in daylight for %s.");
 	add_msg(240, "%d monster(s) summoned!");
-	add_msg(241, "All inventory items of the player have been removed.");
-	add_msg(242, "All your items have been checked.");
-	add_msg(243, "Map skills are off.");
-	add_msg(244, "Map skills are on.");
+	add_msg(241, "All inventory items of the character have been removed.");
+	add_msg(242, "All inventory items have been checked.");
+	add_msg(243, "Skills can no longer be used on this map.");
+	add_msg(244, "Skills can now be used on this map.");
 	add_msg(245, "Server Uptime: %s.");
 	add_msg(246, "Message of the day:");
-	add_msg(247, "Your display option (HP of players) is now set to OFF.");
-	add_msg(248, "Your display option (HP of players) is now set to ON.");
-	add_msg(249, "Your display experience option is now set to OFF.");
-	add_msg(250, "Your display experience option is now set to ON.");
-	add_msg(251, "Your request has not been sent. Request system is disabled.");
-	add_msg(252, "Your request has been sent. If there are no GMs is online, your request is lost.");
-	add_msg(253, "(map message)");
+	add_msg(247, "Display option (HP of players) is now set to OFF.");
+	add_msg(248, "Display option (HP of players) is now set to ON.");
+	add_msg(249, "Display experience option is now set to OFF.");
+	add_msg(250, "Display experience option is now set to ON.");
+	add_msg(251, "Request has not been sent. Request system is disabled.");
+	add_msg(252, "Request has been sent. If there are no GMs is online, request will be lost.");
+	add_msg(253, "(Map Message)");
 
 	add_msg(254, "List of monsters (with current drop rate) that drop '%s (%s)' (id: %d):");
-	add_msg(255, "No monster drops item '%s (%s)' (id: %d).");
+	add_msg(255, "No monster(s) drops item '%s (%s)' (id: %d).");
 	add_msg(256, "1 monster drops item '%s (%s)' (id: %d).");
-	add_msg(257, "%d monsters drop item '%s (%s)' (id: %d).");
+	add_msg(257, "%d monster(s) drop item '%s (%s)' (id: %d).");
 
 	add_msg(258, "Invalid party name. Party name must have between 1 to 24 characters.");
 	add_msg(259, "Invalid guild name. Guild name must have between 1 to 24 characters.");
 
 	add_msg(260, "You're now a killer.");
 	add_msg(261, "You're no longer a killer.");
-	add_msg(262, "The player is now a killer.");
-	add_msg(263, "The player is no longer a killer.");
+	add_msg(262, "Player is now a killer.");
+	add_msg(263, "Player is no longer a killer.");
 	add_msg(264, "You're now killable.");
 	add_msg(265, "You're no longer killable.");
-	add_msg(266, "The player is now killable.");
-	add_msg(267, "The player is no longer killable.");
+	add_msg(266, "Player is now killable.");
+	add_msg(267, "Player is no longer killable.");
 
-	add_msg(268, "You're not authorized to use this command on this map. Sorry.");
-	add_msg(269, "This map can't perform this GM command, sorry.");
+	add_msg(268, "You're not authorized to use this command on this map.");
+	add_msg(269, "Current map restricts you from performing this GM command.");
 
-	add_msg(270, "Your current autoloot option is disabled.");
-	add_msg(271, "Your current autoloot option is set to get rate between 0 to %0.02f%%.");
-	add_msg(272, "Your auto loot option for looted items is now set to OFF.");
-	add_msg(273, "Your auto loot option for looted items is now set to ON.");
-	add_msg(274, "And you get drops of looted items.");
-	add_msg(275, "And you don't get drops of looted items.");
+	add_msg(270, "Current autoloot option is disabled.");
+	add_msg(271, "Current autoloot option is set to get rate between 0 to %0.02f%%.");
+	add_msg(272, "Autoloot option for looted items is now set to OFF.");
+	add_msg(273, "Autoloot option for looted items is now set to ON.");
+	add_msg(274, "You now receive drops of looted items.");
+	add_msg(275, "You no longer receive drops looted items.");
 	add_msg(276, "Invalid drop rate. Value must be between 0 (no autoloot) to 100 (autoloot all drops).");
 	add_msg(277, "Autoloot of monster drops disabled.");
 	add_msg(278, "Set autoloot of monster drops when they are between 0 to %0.02f%%.");
 
-	add_msg(279, "Invalid coordinates (can't move on).");
-	add_msg(280, "Invalid coordinates (a NPC is already at this position).");
-	add_msg(281, "NPC moved.");
+	add_msg(279, "Invalid coordinates.");
+	add_msg(280, "Invalid coordinates (an Npc is already at this position).");
+	add_msg(281, "Npc's coordinates have been changed.");
 
 	add_msg(282, "Invalid color.");
 
 	add_msg(283, "Shuffle done!");
 
 	// Messages of others (not for GM commands)
-	add_msg(500, "Actually, it's the night...");
+	add_msg(500, "It's night...");
 	add_msg(501, "Your account time limit is: %d-%m-%Y %H:%M:%S.");
 	add_msg(502, "The day has arrived!");
 	add_msg(503, "The night has fallen...");
@@ -1664,15 +1664,15 @@ void set_default_msg() {
 	add_msg(606, "My name is %s, and I'm a Super Novice~");
 	add_msg(607, "Please help me~ T.T");
 
-	add_msg(608, "Your Main channel is OFF.");
-	add_msg(609, "Your Main channel is ON.");
+	add_msg(608, "Main channel is now OFF.");
+	add_msg(609, "Main channel is now ON.");
 	add_msg(610, "Experience gained: Base:%d (%2.02f%%), Job:%d (%2.02f%%).");
 	add_msg(611, "Unable to read motd.txt file.");
 	add_msg(612, "You are not active. In order to provide better service to other players, you will be disconnected in 30 seconds.");
-	add_msg(613, "You were disconnected because of your inactivity.");
+	add_msg(613, "Disconnected due to inactivity.");
 
 	add_msg(614, "Vending done for %d z");
-	add_msg(615, "Vendor");
+	add_msg(615, "Vender");
 	add_msg(616, "Buyer");
 	add_msg(617, "price: %d x %d z = %d z.");
 	add_msg(618, "price: %d z.");
@@ -1686,7 +1686,7 @@ void set_default_msg() {
 
 	add_msg(624, "You have been discharged.");
 	add_msg(625, "Invalid time for jail command.");
-	add_msg(626, "Remember, you are in jails.");
+	add_msg(626, "Remember, you are in jail.");
 	add_msg(627, "Invalid final time for jail command.");
 	add_msg(628, "No change done for jail time of this player.");
 	add_msg(629, "Jail time of the player mofified by %+d second%s.");
@@ -1694,7 +1694,7 @@ void set_default_msg() {
 	add_msg(631, "%s has been discharged from jail.");
 	add_msg(632, "A GM has discharged %s from jail.");
 	add_msg(633, "Character is now in jail for %s.");
-	add_msg(634, "Your jail time has been mofified by %+d second%s.");
+	add_msg(634, "Your jail time has been modified by %+d second%s.");
 	add_msg(635, "You are now in jail for %s.");
 	add_msg(636, "You are actually in jail for %s.");
 	add_msg(637, "You are not in jail.");
@@ -1702,7 +1702,7 @@ void set_default_msg() {
 	add_msg(639, "This player is not in jail.");
 	add_msg(640, "%s has been put in jail for %s.");
 
-	add_msg(641, " This player hasn't been banned.");
+	add_msg(641, "Player hasn't been banned.");
 	add_msg(642, "Possible hack on global message (normal message): character '%s' (account: %d) tries to send a big message (%d characters).");
 	add_msg(643, "Possible hack on wisp message (PM): character '%s' (account: %d) tries to send a big message (%d characters).");
 	add_msg(644, "Possible hack on GM message: character '%s' (account: %d) tries to send a big message (%d characters).");
@@ -1712,7 +1712,7 @@ void set_default_msg() {
 
 	add_msg(648, "A merchant with a vending shop can not join a chat, sorry.");
 
-	add_msg(649, "You have too much zenys. You can not get more zenys.");
+	add_msg(649, "You have too much zeny. You can not get more zeny.");
 
 	add_msg(650, "Rudeness is not authorized in this game.");
 	add_msg(651, "Rudeness is not a good way to have fun in this game.");
