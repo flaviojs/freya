@@ -112,7 +112,7 @@ static const int packet_len_table[MAX_PACKET_DB] = {
    30,  8, 34, 14,  2,  6, 26,  2,  28, 81,  6, 10, 26,  2, -1, -1,
    -1, -1, 20, 10, 32,  9, 34, 14,   2,  6, 48, 56, -1,  4,  5, 10,
 //#0x200
-   26, -1, 26, 10, 18, 26, 11, 34,  14, 36, 10,  0,  0, -1, 24,  0,
+   26, -1, 26, 10, 18, 26, 11, 34,  14, 36, 10,  0,  0, -1, 32,  10,
     0,  0,  0,  0,  0,  0,  0,  0,   0,282,282,  0,  0,  0,  0,  0,
     0,  0,  0,  0,  0,  0,282,  0,   0, 15, 58, 57, 64,  0,  0,  0,
     0,  0,  0,  0,  0,  0,  0,  0, 282,  0,  0,  0,  0,  0,  0,  0,
@@ -387,6 +387,18 @@ int clif_foreachclient(int (*func)(struct map_session_data*, va_list),...) {
 	va_end(ap);
 
 	return 0;
+}
+
+/*==========================================
+ * TK_MISSION
+ *------------------------------------------
+ */
+void clif_mission_mob(struct map_session_data *sd, short mob_id, short progress) {
+	WPACKETW(0) = 0x20e; 
+	strncpy(WPACKETP(2), mob_db[mob_id].jname, 24);
+	WPACKETL(26) = mob_id;
+	WPACKETW(30) = 0x1400 + progress;
+	SENDPACKET(sd->fd, packet_len_table[0x20e]);
 }
 
 /*==========================================

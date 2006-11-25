@@ -521,7 +521,6 @@
 470,9,6,1,0,1,7,1,yes,0,0,0,magic,0	//SL_SWOO#Eswoo#
 471,9,6,1,0,1,3,1,yes,0,0,0,magic,0	//SL_SKE#Eske#
 472,9,6,1,0,1,3,1,yes,0,0,0,magic,0	//SL_SKA#Eska#
-494,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_HIGH#Spirit of Rebirth#
 
 // Extended Advanced Class Skills
 475,0,0,4,0,1,1,1,yes,0,0,0,magic,0	//ST_PRESERVE#Preserve#
@@ -543,7 +542,8 @@
 491,1,6,2,0,1,2,1,no,0,0,0,none,0	//CR_CULTIVATION#Cultivation#
 
 // Extra TaeKwon Class Skills
-//493,0,6,4,0,1,1,1,no,0,0,0,none,0	//TK_MISSION#Taekwon Mission#
+493,0,6,4,0,1,1,1,no,0,0,0,none,0	//TK_MISSION#Taekwon Mission#
+494,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_HIGH#Spirit of Rebirth#
 495,0,6,4,0,1,1,1,no,0,0,0,weapon,0	//KN_ONEHAND#Onehand Quicken#
 496,0,6,4,0,1,1,0,no,0,0,0,none,0		//AM_TWILIGHT1#Twilight Alchemy 1#
 497,0,6,4,0,1,1,0,no,0,0,0,none,0		//AM_TWILIGHT2#Twilight Alchemy 2#
@@ -629,11 +629,11 @@
 //571,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_B_EQUIP#?C?N?C?b?v#
 
 // Extra Soul Linker Skills
-//572,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_DEATHKNIGHT#?f?X?i?C?g‚??°#
-//573,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_COLLECTOR#?_?[?N?R???N?^?[‚??°#
-//574,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_NINJA#”E??‚??°#
-//575,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_GUNNER#?K?“?X???“?K?[‚??°#
-//576,0,6,4,0,1,1,0,no,0,0,0,none,0	//AM_TWILIGHT4#?g???C?‰?C?g?t?@?[?}?V?[4#
+572,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_DEATHKNIGHT#Spirit of the Death Knight#
+573,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_COLLECTOR#Spirit of the Dark Collector#
+574,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_NINJA#Spirit of the Ninja#
+575,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_GUNNER#Spirit of the Gunslinger#
+576,0,6,4,0,1,1,0,no,0,0,0,none,0	//AM_TWILIGHT4#Twilight Alchemy 4#
 
 // Death Knight Skills
 //577,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_PASSIVE#?p?b?V?u#

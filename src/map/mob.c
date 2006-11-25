@@ -26,6 +26,7 @@
 #include "npc.h"
 #include "status.h"
 #include "atcommand.h"
+#include "ranking.h"		// for TK_MISSION
 
 #ifdef MEMWATCH
 #include "memwatch.h"
@@ -2611,6 +2612,26 @@ int mob_damage(struct block_list *src, struct mob_data *md, int damage, int type
 
 	if (src && src->type == BL_MOB)
 		mob_unlocktarget((struct mob_data *)src, gettick_cache);
+		
+	// TK_MISSION
+	if(sd && sd->status.class == JOB_TAEKWON && md->class == sd->tk_mission_target_id) {
+		sd->tk_mission_count++;
+		pc_setglobalreg(sd, "TK_MISSION_COUNT", sd->tk_mission_count);
+
+		if(sd->tk_mission_count >= 100) {
+			ranking_gain_point(sd, RK_TAEKWON, 1);
+		
+			do {
+				sd->tk_mission_target_id = rand() % MAX_MOB_DB;
+			} while(mob_db[sd->tk_mission_target_id].max_hp <= 0 || mob_db[sd->tk_mission_target_id].summonper[0]==0 || mob_db[sd->tk_mission_target_id].mode&0x20);
+			
+			sd->tk_mission_count = 0;
+			
+			pc_setglobalreg(sd, "TK_MISSION_ID", sd->tk_mission_target_id);
+
+			clif_mission_mob(sd, sd->tk_mission_target_id, 0);
+		}
+	}
 
 	if (sd) {
 		int sp = 0, hp = 0;

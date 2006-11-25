@@ -558,9 +558,12 @@ const struct skill_name_db skill_names[] = {
  { SG_SUN_WARM, "WARM", "Sun Warm" } ,
  { SL_ALCHEMIST, "ALCHEMIST", "Alchemist" } ,
  { SL_ASSASIN, "ASSASIN", "Assasin" } ,
- { SL_BARDDANCER, "BARDDANCER", "Bard Dancer" } ,
- { SL_BLACKSMITH, "BLACKSMITH", "Black Smith" } ,
+ { SL_BARDDANCER, "BARDDANCER", "Bard_Dancer" } ,
+ { SL_BLACKSMITH, "BLACKSMITH", "Black_Smith" } ,
+ { SL_COLLECTOR, "COLLECTOR", "Dark_Collector" } ,
  { SL_CRUSADER, "CRUSADER", "Crusader" } ,
+ { SL_DEATHKNIGHT, "DEATHKNIGHT", "Death_Knight" } ,
+ { SL_GUNNER, "GUNNER", "Gunslinger" } ,
  { SL_HUNTER, "HUNTER", "Hunter" } ,
  { SL_KAAHI, "KAAHI", "Kaahi" } ,
  { SL_KAINA, "KAINA", "Kaina" } ,
@@ -569,17 +572,18 @@ const struct skill_name_db skill_names[] = {
  { SL_KAUPE, "KAUPE", "Kaupe" } ,
  { SL_KNIGHT, "KNIGHT", "Knight" } ,
  { SL_MONK, "MONK", "Monk" } ,
+ { SL_NINJA, "NINJA", "Ninja" } ,
  { SL_PRIEST, "PRIEST", "Priest" } ,
  { SL_ROGUE, "ROGUE", "Rogue" } ,
  { SL_SAGE, "SAGE", "Sage" } ,
  { SL_SKA, "SKA", "Eska" } ,
  { SL_SKE, "SKE", "Eske" } ,
  { SL_SMA, "SL_SMA", "Esma" } ,
- { SL_SOULLINKER, "SOULLINKER", "Soul Linker" } ,
+ { SL_SOULLINKER, "SOULLINKER", "Soul_Linker" } ,
  { SL_STAR, "STAR", "Star" } ,
  { SL_STIN, "STIN", "Estin" } ,
  { SL_STUN, "STUN", "Estun" } ,
- { SL_SUPERNOVICE, "SUPERNOVICE", "Super Novice" } ,
+ { SL_SUPERNOVICE, "SUPERNOVICE", "Super_Novice" } ,
  { SL_SWOO, "SWOO", "Eswoo" } ,
  { SL_WIZARD, "WIZARD", "Wizard" } ,
  { SM_AUTOBERSERK, "AUTOBERSERK", "Auto_Berserk" } ,
@@ -627,6 +631,7 @@ const struct skill_name_db skill_names[] = {
  { TK_SPTIME, "TK_SPTIME", "Enjoyable Rest" } ,
  { TK_STORMKICK, "STORMKICK", "Storm Kick" } ,
  { TK_TURNKICK, "TURNKICK", "Turn Kick" } ,
+ { TK_MISSION, "MISSION", "TaeKwon Mission" } ,
  { WE_BABY, "BABY", "Adopt_Baby" } ,
  { WE_CALLBABY, "CALLBABY", "Call_Baby" } ,
  { WE_CALLPARENT, "CALLPARENT", "Call_Parent" } ,
@@ -3926,6 +3931,27 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		}
 	  }
 		break;
+	case TK_MISSION:
+		if(sd) {
+			if (sd->tk_mission_target_id && (sd->tk_mission_count || rand()%100)) {
+				clif_mission_mob(sd, sd->tk_mission_target_id, sd->tk_mission_count);
+				clif_skill_fail(sd, skillid, 0, 0);
+				break;
+			}
+
+			do {
+				sd->tk_mission_target_id = rand() % MAX_MOB_DB;
+			} while(mob_db[sd->tk_mission_target_id].max_hp <= 0 || mob_db[sd->tk_mission_target_id].summonper[0]==0 || mob_db[sd->tk_mission_target_id].mode&0x20);
+			
+			sd->tk_mission_count = 0;
+			
+			pc_setglobalreg(sd, "TK_MISSION_ID", sd->tk_mission_target_id);
+			pc_setglobalreg(sd, "TK_MISSION_COUNT", sd->tk_mission_count);
+			
+			clif_mission_mob(sd, sd->tk_mission_target_id, 0);
+			clif_skill_nodamage(src, bl, skillid, skilllv, 1);
+		}
+		break;
 
 	case AS_ENCHANTPOISON: // Prevent spamming [Valaris]
 		if (sd && dstsd) {
@@ -5661,6 +5687,38 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		break;
 	case SL_SOULLINKER:
 		if(spirit_class != JOB_SOUL_LINKER)   {
+			clif_skill_fail(sd,skillid,0,0);
+		} else {
+			clif_skill_nodamage(src,bl,skillid,skilllv,1);
+			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+		}
+		break;
+	case SL_GUNNER:
+		if(spirit_class != JOB_GUNSLINGER)   {
+			clif_skill_fail(sd,skillid,0,0);
+		} else {
+			clif_skill_nodamage(src,bl,skillid,skilllv,1);
+			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+		}
+		break;
+	case SL_NINJA:
+		if(spirit_class != JOB_NINJA)   {
+			clif_skill_fail(sd,skillid,0,0);
+		} else {
+			clif_skill_nodamage(src,bl,skillid,skilllv,1);
+			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+		}
+		break;
+	case SL_COLLECTOR:
+		if(spirit_class != JOB_DARK_COLLECTOR)   {
+			clif_skill_fail(sd,skillid,0,0);
+		} else {
+			clif_skill_nodamage(src,bl,skillid,skilllv,1);
+			status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv));
+		}
+		break;
+	case SL_DEATHKNIGHT:
+		if(spirit_class != JOB_DEATH_KNIGHT)   {
 			clif_skill_fail(sd,skillid,0,0);
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
@@ -7814,6 +7872,12 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 	case CR_SHRINK:
 		if(sd->sc_data[SkillStatusChangeTable[skill]].timer != -1)
 			return 1;			/* ‰ðœ‚·‚éê‡‚ÍSPÁ”ï‚µ‚È‚¢ */
+		break;
+	case TK_MISSION:
+		if(sd->status.class != JOB_TAEKWON) {
+			clif_skill_fail(sd, skill, 0, 0);
+			return 0;
+		}
 		break;
 	case TK_RUN:
 		if(sd->sc_data[SC_RUN].timer != -1){
