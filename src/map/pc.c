@@ -669,6 +669,11 @@ int pc_isequip(struct map_session_data *sd, int n)
 			return 0;
 		if (item->equip & 0x0100 && sd->sc_data[SC_STRIPHELM].timer != -1)
 			return 0;
+		if (sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_SUPERNOVICE) {
+			// If Spirit of the Super Novice is active, and Super Novice Lv is over 90, can equip all headgears
+			if (item->equip & 0x0100 && sd->status.base_level >= 90)
+				return 1; // Helms are equipable
+			}
 	}
 
 	return 1;
@@ -8218,8 +8223,8 @@ static int pc_natural_heal_sub(struct map_session_data *sd, va_list ap) {
 			sd->sp_sub = sd->inchealsptick = 0;
 		} else { //natural heal
 			pc_natural_heal_hp(sd);
-			if(sd->sc_count &&
-				(sd->sc_data[SC_EXTREMITYFIST].timer != -1 ||	sd->sc_data[SC_DANCING].timer != -1))	//No SP natural heal.
+			if(sd->sc_count && (((sd->sc_data[SC_EXTREMITYFIST].timer != -1 && (sd->sc_data[SC_SPIRIT].timer == -1 || 
+				sd->sc_data[SC_SPIRIT].val2 != SL_MONK)) || sd->sc_data[SC_DANCING].timer != -1))) // No Natural SP Recovery
 				sd->sp_sub = sd->inchealsptick = 0;
 			else
 				pc_natural_heal_sp(sd);

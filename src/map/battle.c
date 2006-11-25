@@ -725,6 +725,9 @@ int battle_addmastery(struct map_session_data *sd, struct block_list *target, in
 	if ((skill = pc_checkskill(sd, HT_BEASTBANE)) > 0 && (race == 2 || race == 4))
 		damage += (skill * 4);
 
+	if (sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_HUNTER)
+			damage += sd->status.str;
+
 	if(type == 0)
 		weapon = sd->weapontype1;
 	else
@@ -1280,6 +1283,12 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 						ATK_ADD(sd->inventory_data[idx]->weight / 10);
 				}
 				skillratio += 30 * skill_lv;	// FORMULA: damage * (100 + 30 * skill_lv) / 100
+				// If Spirit of the Crusader is active, Shield Boomerang does not miss
+				if (sd && sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_CRUSADER)
+					flag.hit = 1;
+				// If Spirit of the Crusader is active, Shield Boomerang damage is doubled
+				if (sd && sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_CRUSADER)
+					skillratio += 100;
 				break;
 			case CR_SHIELDCHARGE:
 				flag.weapon = 0;
@@ -1733,10 +1742,19 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 			if(sc_data[SC_EDP].timer != -1 && skill_num != ASC_BREAKER && skill_num != ASC_METEORASSAULT && skill_num != AS_VENOMKNIFE)
 				skillratio += 50 + 50 * sc_data[SC_EDP].val1;
 		}
-		
-		if(skill_num == AS_SONICBLOW && sd && pc_checkskill(sd, AS_SONICACCEL) > 0) //i carries the skill level of Sonic Acceleration
-			skillratio += 10; //Sonic Acceleration skill ratio damage bonus
 			
+		if(skill_num == AS_SONICBLOW) {
+			// Soul Link bonus does not stack with EDP
+			if (sd && sd->sc_data[SC_EDP].timer == -1 && sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_ASSASIN) {
+				if(map[sd->bl.m].flag.gvg) // If GvG map, +25% damage with Spirit of the Assassin, if not GvG, +100%
+					skillratio += 50;
+			}	else
+					skillratio += 100;
+			if(sd && pc_checkskill(sd, AS_SONICACCEL) > 0) // Sonic Acceleration 10% Sonic Blow damage bonus
+					skillratio += 10;
+		}
+			
+
 		if(sd && sd->skillatk[0].id != 0 && skill_num) {
 			for (i = 0; i < MAX_PC_BONUS && sd->skillatk[i].id != 0 && sd->skillatk[i].id != skill_num; i++);
 				if (i < MAX_PC_BONUS && sd->skillatk[i].id == skill_num)
@@ -2330,7 +2348,11 @@ struct Damage battle_calc_magic_attack(
 			flag_aoe = 1;
 			break;
 		case AL_HOLYLIGHT:
-			MATK_FIX(125, 100);
+			if (sd && sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_PRIEST) {
+				MATK_FIX(625, 100);
+			}	else {
+				MATK_FIX(125, 100);
+			}
 			break;
 		case AL_RUWACH:
 			MATK_FIX(145, 100);

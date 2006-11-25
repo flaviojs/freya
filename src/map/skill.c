@@ -1349,9 +1349,9 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 					status_change_end(bl, SC_ASPDPOTION2, -1);
 				if (tsc_data[SC_ASPDPOTION3].timer != -1 && tsc_data[SC_ASPDPOTION3].val4)
 					status_change_end(bl, SC_ASPDPOTION3, -1);
-/*				if (tsc_data[SC_SPIRIT].timer != -1)
+				if (tsc_data[SC_SPIRIT].timer != -1)
 					status_change_end(bl, SC_SPIRIT, -1);
-				if (tsc_data[SC_ONEHAND].timer != -1)
+				/*if (tsc_data[SC_ONEHAND].timer != -1)
 					status_change_end(bl, SC_ONEHAND, -1);
 				if (tsc_data[SC_ADRENALINE2].timer != -1)
 					status_change_end(bl, SC_ADRENALINE2, -1);*/
@@ -2750,11 +2750,29 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 			status_change_end(src,SC_BLADESTOP,-1);
 	  }
 		break;
-	case MO_COMBOFINISH:	/* –Ò—´Œ */
 	case CH_TIGERFIST:		/* •šŒÕŒ */
 	case CH_CHAINCRUSH:		/* ˜A’Œ•öŒ‚ */
 		skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, flag);
 		break;
+	case MO_COMBOFINISH:	/* –Ò—´Œ */
+		if (!(flag & 1) && sd && sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_MONK) {
+			int ar = 3;
+			int x = bl->x, y = bl->y;
+
+			skill_area_temp[1] = bl->id;
+			skill_area_temp[2] = x;
+			skill_area_temp[3] = y;
+
+			map_foreachinarea(skill_area_sub,
+				bl->m,x-ar,y-ar,x+ar,y+ar,0,
+				src, skillid, skilllv, tick, flag|BCT_ENEMY|1,
+				skill_castend_damage_id);
+
+			skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, 0);
+		} else
+				skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, flag);
+			break;
+		
 	case CH_PALMSTRIKE:		/* –ÒŒÕd”hŽR */
 		clif_skill_nodamage(src, bl, skillid, skilllv, 0);
 		skill_addtimerskill(src, tick + 1500, bl->id, 0, 0, skillid, skilllv, BF_WEAPON, flag);
@@ -3352,7 +3370,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 	struct status_change *sc_data = NULL, *tsc_data = NULL;
 	int i;
 
-	if(skillid > 0 && skilllv <= 0)
+	if (skillid > 0 && skilllv <= 0)
 		return 0;
 
 	nullpo_retr(1, src);
@@ -3412,6 +3430,11 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 			}
 			break;
 	}
+
+	int spirit_class;
+
+	if (sd && dstsd)
+		spirit_class = pc_calc_base_job2(dstsd->status.class);
 
 	map_freeblock_lock();
 	switch(skillid)
@@ -4704,6 +4727,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 				map_freeblock_unlock();
 				return 1;
 			}
+			
 			sd->state.potionpitcher_flag = 1;
 			sd->potion_hp = sd->potion_sp = sd->potion_per_hp = sd->potion_per_sp = 0;
 			sd->skilltarget = bl->id;
@@ -4822,6 +4846,12 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		if(tsc_data) {
 			if(dstsd && status_isimmune(bl))
 				break;
+			// If Spirit of the Rogue is present, dispell does not work
+			if ((tsc_data[SC_SPIRIT].timer != -1 && tsc_data[SC_SPIRIT].val2 == SL_ROGUE)) {
+				if (sd)
+					clif_skill_fail(sd,skillid,0,0);
+				break;
+			}
 			if ((rand() % 10) <= (4 - skilllv))
 				break;
 			for(i = SC_DISPELLMIN; i < SC_DISPELLMAX; i++) {
@@ -5506,7 +5536,171 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 			clif_skill_nodamage(src, src, skillid, skilllv, 1);
 		}
 		break;
+
+	case SL_ALCHEMIST:
+		if ((spirit_class == JOB_ALCHEMIST || spirit_class == JOB_CREATOR || spirit_class == JOB_BABY_ALCHEMIST) && sd && dstsd) {
+			clif_skill_nodamage(src,bl,skillid,skilllv,
+				status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv)));
+			break;
+	} else {
+				clif_skill_fail(sd,skillid,0,0);
+			break;
+	}
+
+	case SL_ASSASIN:
+		if ((spirit_class == JOB_ASSASSIN || spirit_class == JOB_ASSASSIN_CROSS || spirit_class == JOB_BABY_ASSASSIN) && sd && dstsd) {
+			clif_skill_nodamage(src,bl,skillid,skilllv,
+				status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv)));
+			break;
+	} else {
+				clif_skill_fail(sd,skillid,0,0);
+			break;
+	}
+
+	case SL_BARDDANCER:
+		if ((spirit_class == JOB_BARD || spirit_class == JOB_DANCER || spirit_class == JOB_CLOWN || 
+		spirit_class == JOB_GYPSY || spirit_class == JOB_BABY_BARD || spirit_class == JOB_BABY_DANCER) && sd && dstsd) {
+			clif_skill_nodamage(src,bl,skillid,skilllv,
+				status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv)));
+			break;
+	} else {
+				clif_skill_fail(sd,skillid,0,0);
+			break;
+	}
+
+	case SL_BLACKSMITH:
+		if ((spirit_class == JOB_BLACKSMITH || spirit_class == JOB_WHITESMITH || spirit_class == JOB_BABY_BLACKSMITH) && sd && dstsd) {
+			clif_skill_nodamage(src,bl,skillid,skilllv,
+				status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv)));
+			break;
+	} else {
+				clif_skill_fail(sd,skillid,0,0);
+			break;
+	}
+
+	case SL_CRUSADER:
+		if ((spirit_class == JOB_CRUSADER || spirit_class == JOB_CRUSADER2 || spirit_class == JOB_PALADIN || 
+			spirit_class == JOB_PALADIN2 || spirit_class == JOB_BABY_CRUSADER || spirit_class == JOB_BABY_CRUSADER2) && sd && dstsd) {
+			clif_skill_nodamage(src,bl,skillid,skilllv,
+				status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv)));
+			break;
+	} else {
+				clif_skill_fail(sd,skillid,0,0);
+			break;
+	}
+
+	case SL_HUNTER:
+		if ((spirit_class == JOB_HUNTER || spirit_class == JOB_SNIPER || spirit_class == JOB_BABY_HUNTER) && sd && dstsd) {
+			clif_skill_nodamage(src,bl,skillid,skilllv,
+				status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv)));
+			break;
+	} else {
+				clif_skill_fail(sd,skillid,0,0);
+			break;
+	}
+
+	case SL_KNIGHT:
+		if ((spirit_class == JOB_KNIGHT || spirit_class == JOB_KNIGHT2 || spirit_class == JOB_LORD_KNIGHT || spirit_class == JOB_LORD_KNIGHT2 || spirit_class == JOB_BABY_KNIGHT || spirit_class == JOB_BABY_KNIGHT2) && sd && dstsd) {
+			clif_skill_nodamage(src,bl,skillid,skilllv,
+				status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv)));
+			break;
+	} else {
+				clif_skill_fail(sd,skillid,0,0);
+			break;
+	}
+
+	case SL_MONK:
+		if ((spirit_class == JOB_MONK || spirit_class == JOB_CHAMPION || spirit_class == JOB_BABY_MONK) && sd && dstsd) {
+			clif_skill_nodamage(src,bl,skillid,skilllv,
+				status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv)));
+			break;
+	} else {
+				clif_skill_fail(sd,skillid,0,0);
+			break;
+	}
+
+	case SL_PRIEST:
+		if ((spirit_class == JOB_PRIEST || spirit_class == JOB_HIGH_PRIEST || spirit_class == JOB_BABY_PRIEST) && sd && dstsd) {
+			clif_skill_nodamage(src,bl,skillid,skilllv,
+				status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv)));
+			break;
+	} else {
+				clif_skill_fail(sd,skillid,0,0);
+			break;
+	}
+
+	case SL_ROGUE:
+		if ((spirit_class == JOB_ROGUE || spirit_class == JOB_STALKER || spirit_class == JOB_BABY_ROGUE) && sd && dstsd) {
+			clif_skill_nodamage(src,bl,skillid,skilllv,
+				status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv)));
+			break;
+	} else {
+				clif_skill_fail(sd,skillid,0,0);
+			break;
+	}
+
+	case SL_SAGE:
+		if ((spirit_class == JOB_SAGE || spirit_class == JOB_PROFESSOR || spirit_class == JOB_BABY_SAGE) && sd && dstsd) {
+			clif_skill_nodamage(src,bl,skillid,skilllv,
+				status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv)));
+			break;
+	} else {
+				clif_skill_fail(sd,skillid,0,0);
+			break;
+	}
+
+	case SL_SOULLINKER:
+		if (spirit_class == JOB_SOUL_LINKER && sd && dstsd) {
+			clif_skill_nodamage(src,bl,skillid,skilllv,
+				status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv)));
+			break;
+	} else {
+				clif_skill_fail(sd,skillid,0,0);
+			break;
+	}
+
+	case SL_STAR:
+		if ((spirit_class == JOB_STAR_GLADIATOR || spirit_class == JOB_STAR_GLADIATOR2) && sd && dstsd) {
+			clif_skill_nodamage(src,bl,skillid,skilllv,
+				status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv)));
+			break;
+	} else {
+				clif_skill_fail(sd,skillid,0,0);
+			break;
+	}
+
+	case SL_SUPERNOVICE:
+		if ((spirit_class == JOB_SUPER_NOVICE || spirit_class == JOB_SUPER_BABY) && sd && dstsd) {
+			clif_skill_nodamage(src,bl,skillid,skilllv,
+				status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv)));
+			break;
+	} else {
+				clif_skill_fail(sd,skillid,0,0);
+			break;
+	}
+
+	case SL_WIZARD:
+		if ((spirit_class == JOB_WIZARD || spirit_class == JOB_HIGH_WIZARD || spirit_class == JOB_BABY_WIZARD) && sd && dstsd) {
+			clif_skill_nodamage(src,bl,skillid,skilllv,
+				status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv)));
+			break;
+	} else {
+				clif_skill_fail(sd,skillid,0,0);
+			break;
+	}
 		
+	case SL_HIGH:
+		if ((spirit_class == JOB_MAGE_HIGH || spirit_class == JOB_SWORDMAN_HIGH || 
+			spirit_class == JOB_ACOLYTE_HIGH || spirit_class == JOB_ARCHER_HIGH || 
+			spirit_class == JOB_MERCHANT_HIGH || spirit_class == JOB_THIEF_HIGH) && sd && dstsd) {
+			clif_skill_nodamage(src,bl,skillid,skilllv,
+				status_change_start(bl,SC_SPIRIT,100,skilllv,skillid,0,0,skill_get_time(skillid,skilllv)));
+			break;
+	} else {
+				clif_skill_fail(sd,skillid,0,0);
+			break;
+	}
+
 	case SL_SWOO:
 		if((dstsd != NULL && dstsd->sc_data[SkillStatusChangeTable[skillid]].timer != -1) || (dstmd != NULL && dstmd->sc_data[SkillStatusChangeTable[skillid]].timer != -1)) {
 			status_change_start(src,SC_STUN,skilllv,0,0,0,10000,0);
@@ -7361,6 +7555,20 @@ static int skill_check_condition_char_sub(struct block_list *bl,va_list ap)
 			(tsd->bl.x == sd->bl.x - 1 || tsd->bl.x == sd->bl.x + 1) && tsd->status.sp >= 10)
 			(*c)++;
 		break;
+	case AL_HOLYLIGHT:
+			// To-Do: During Spirit Priest mode, SP cost is reduced for Holy Light
+			if(sd && sd->sc_data[SC_SPIRIT].timer!=-1 && sd->sc_data[SC_SPIRIT].val2 == SL_PRIEST)
+			//	sp *= 5;
+			break;
+	case MO_TRIPLEATTACK:
+	case MO_CHAINCOMBO:
+	case MO_COMBOFINISH:
+	case CH_TIGERFIST:
+	case CH_CHAINCRUSH:
+		if(sd && sd->sc_data[SC_SPIRIT].timer!=-1 && sd->sc_data[SC_SPIRIT].val2 == SL_MONK)
+		// To-Do: During Spirit Monk mode, SP cost is reduced for certain skills
+		//			sp -= sp*25/100;
+		break;
 	case BD_LULLABY:				/* ŽqŽç‰Ì */
 	case BD_RICHMANKIM:				/* ƒjƒˆƒ‹ƒh‚Ì‰ƒ */
 	case BD_ETERNALCHAOS:			/* ‰i‰“‚Ì¬“× */
@@ -8169,6 +8377,15 @@ int skill_delayfix(struct block_list *bl, int time_duration) {
 	if (sc_data && sc_data[SC_POEMBRAGI].timer != -1)
 		time_duration = time_duration * (100 - (sc_data[SC_POEMBRAGI].val1 * 3 + sc_data[SC_POEMBRAGI].val2 + (sc_data[SC_POEMBRAGI].val3&0xffff))) / 100;
 
+	// To-Do: Add skill_id check variable
+	// If its not WoE, and player has Spirit of the Assassin active, delay for Sonic Blow is cut in half
+	/*if (skill_id == AS_SONICBLOW && sc_data && sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_ASSASIN && !map[bl->m].flag.gvg)
+		time_duration /= 2;
+
+	// If its not WoE, and player has Spirit of the Crusader active, delay for Shield Boomerang is cut in half
+	if (skill_id == CR_SHIELDBOOMERANG && sc_data && sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_CRUSADER && !map[bl->m].flag.gvg)
+		time_duration /= 2;*/
+		
 	return (time_duration > 0) ? time_duration : 0;
 }
 
@@ -8939,7 +9156,9 @@ void skill_autospell(struct map_session_data *sd, int skillid) {
 		case MG_COLDBOLT:
 		case MG_FIREBOLT:
 		case MG_LIGHTNINGBOLT:
-			if (skilllv == 2) maxlv = 1;
+			if (sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_SAGE)
+				maxlv =10;
+			else if (skilllv == 2) maxlv = 1;
 			else if (skilllv == 3) maxlv = 2;
 			else if (skilllv >= 4) maxlv = 3;
 			break;

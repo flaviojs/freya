@@ -2217,21 +2217,21 @@
 4049,425,7,422,5,423,5,424,5,0,0,0,0 //TK_SEVENWIND#Warm Wind#
 4049,426,5,0,0,0,0,0,0,0,0,0,0 //TK_HIGHJUMP#High Jump#
 //4049,493,1,424,5,0,0,0,0,0,0,0,0 //TK_MISSION#Taekwon Mission#
-//4049,445,5,0,0,0,0,0,0,0,0,0,0	//SL_ALCHEMIST#Spirit of the Alchemist#
-//4049,447,5,0,0,0,0,0,0,0,0,0,0	//SL_MONK#Spirit of the Monk#
-//4049,448,5,0,0,0,0,0,0,0,0,0,0	//SL_STAR#Spirit of the Star Knight#
-//4049,449,5,0,0,0,0,0,0,0,0,0,0	//SL_SAGE#Spirit of the Professor#
-//4049,450,5,0,0,0,0,0,0,0,0,0,0	//SL_CRUSADER#Spirit of the Crusader#
-//4049,451,5,0,0,0,0,0,0,0,0,0,0	//SL_SUPERNOVICE#Spirit of the Supernovice#
-//4049,452,5,450,1,0,0,0,0,0,0,0,0 //SL_KNIGHT#Spirit of the Knight#
-//4049,453,5,449,1,0,0,0,0,0,0,0,0 //SL_WIZARD#Spirit of the Wizard#
-//4049,454,5,447,1,0,0,0,0,0,0,0,0 //SL_PRIEST#Spirit of the Priest#
-//4049,455,5,0,0,0,0,0,0,0,0,0,0	//SL_BARDDANCER#Spirit of the Artist#
-//4049,456,5,457,1,0,0,0,0,0,0,0,0 //SL_ROGUE#Spirit of the Rogue#
-//4049,457,5,0,0,0,0,0,0,0,0,0,0	//SL_ASSASIN#Spirit of the Assasin#
-//4049,458,5,445,1,0,0,0,0,0,0,0,0 //SL_BLACKSMITH#Spirit of the Blacksmith#
-//4049,460,5,455,1,0,0,0,0,0,0,0,0 //SL_HUNTER#Spirit of the Hunter#
-//4049,461,5,448,1,0,0,0,0,0,0,0,0 //SL_SOULLINKER#Spirit of the Soul Linker#
+4049,445,5,0,0,0,0,0,0,0,0,0,0	//SL_ALCHEMIST#Spirit of the Alchemist#
+4049,447,5,0,0,0,0,0,0,0,0,0,0	//SL_MONK#Spirit of the Monk#
+4049,448,5,0,0,0,0,0,0,0,0,0,0	//SL_STAR#Spirit of the Star Knight#
+4049,449,5,0,0,0,0,0,0,0,0,0,0	//SL_SAGE#Spirit of the Professor#
+4049,450,5,0,0,0,0,0,0,0,0,0,0	//SL_CRUSADER#Spirit of the Crusader#
+4049,451,5,0,0,0,0,0,0,0,0,0,0	//SL_SUPERNOVICE#Spirit of the Supernovice#
+4049,452,5,450,1,0,0,0,0,0,0,0,0 //SL_KNIGHT#Spirit of the Knight#
+4049,453,5,449,1,0,0,0,0,0,0,0,0 //SL_WIZARD#Spirit of the Wizard#
+4049,454,5,447,1,0,0,0,0,0,0,0,0 //SL_PRIEST#Spirit of the Priest#
+4049,455,5,0,0,0,0,0,0,0,0,0,0	//SL_BARDDANCER#Spirit of the Artist#
+4049,456,5,457,1,0,0,0,0,0,0,0,0 //SL_ROGUE#Spirit of the Rogue#
+4049,457,5,0,0,0,0,0,0,0,0,0,0	//SL_ASSASIN#Spirit of the Assasin#
+4049,458,5,445,1,0,0,0,0,0,0,0,0 //SL_BLACKSMITH#Spirit of the Blacksmith#
+4049,460,5,455,1,0,0,0,0,0,0,0,0 //SL_HUNTER#Spirit of the Hunter#
+4049,461,5,448,1,0,0,0,0,0,0,0,0 //SL_SOULLINKER#Spirit of the Soul Linker#
 //4049,462,7,454,1,0,0,0,0,0,0,0,0 //SL_KAIZEL#Kaizel#
 //4049,463,7,454,1,450,1,0,0,0,0,0,0 //SL_KAAHI#Kahai#
 //4049,464,3,456,1,0,0,0,0,0,0,0,0 //SL_KAUPE#Kauf#
@@ -2243,5 +2243,5 @@
 4049,470,7,454,1,0,0,0,0,0,0,0,0 //SL_SWOO#Esu#
 4049,471,3,452,1,0,0,0,0,0,0,0,0 //SL_SKE#Esk#
 4049,472,3,447,1,0,0,0,0,0,0,0,0 //SL_SKA#Eska#
-//4049,494,5,451,1,0,0,0,0,0,0,0,0 //SL_HIGH#Spirit of Rebirth#
+4049,494,5,451,1,0,0,0,0,0,0,0,0 //SL_HIGH#Spirit of Rebirth#
 //4049,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY	#Call Baby#
