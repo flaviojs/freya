@@ -973,6 +973,9 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 	
 	if(sd->hprate != 100)
 		sd->status.max_hp = sd->status.max_hp * sd->hprate / 100;
+		
+	if(sd->status.class == JOB_TAEKWON && pc_checkskill(sd, TK_MISSION) && ranking_id2rank(sd->status.char_id, RK_TAEKWON) && sd->status.base_level >= 90)
+		sd->status.max_hp *= 3;
 	
 	if(sd->sc_count && sd->sc_data[SC_BERSERK].timer != -1) {	// バーサーク
 		sd->status.max_hp = sd->status.max_hp * 3;
@@ -988,7 +991,8 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 
 	if (sd->status.max_hp > battle_config.max_hp) // removed negative max hp bug by Valaris
 		sd->status.max_hp = battle_config.max_hp;
-	if (sd->status.max_hp <= 0) sd->status.max_hp = 1; // end
+	if (sd->status.max_hp <= 0)
+		sd->status.max_hp = 1; // end
 
 	// 最大SP計算
 	idx = ((sp_coefficient[s_class.job] * bl) + 1000)/100 * (100 + sd->paramc[3])/100 + (sd->parame[3] - sd->paramcard[3]);
@@ -1010,11 +1014,16 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 	if(sd->sprate!=100)
 		sd->status.max_sp = sd->status.max_sp * sd->sprate / 100;
 
-	if(sd->status.max_sp < 0 || sd->status.max_sp > battle_config.max_sp)
-		sd->status.max_sp = battle_config.max_sp;
-		
 	if((skill = pc_checkskill(sd,SL_KAINA)) > 0)
 		sd->status.max_sp += 30 * skill;
+
+	if(sd->status.class == JOB_TAEKWON && pc_checkskill(sd, TK_MISSION) && ranking_id2rank(sd->status.char_id, RK_TAEKWON) && sd->status.base_level >= 90)
+		sd->status.max_sp *= 3;
+
+	if(sd->status.max_sp > battle_config.max_sp)
+		sd->status.max_sp = battle_config.max_sp;
+	if(sd->status.max_sp <= 0)
+		sd->status.max_sp = 1;
 
 	//自然回復HP
 	sd->nhealhp = 1 + (sd->paramc[2]/5) + (sd->status.max_hp/200);
