@@ -2576,6 +2576,10 @@ int map_config_read(char *cfgName) {
 				remove_ended_comments(w2); // remove ended comments
 				memset(mapreg_txt, 0, sizeof(mapreg_txt));
 				strncpy(mapreg_txt, w2, sizeof(mapreg_txt) - 1);
+			} else if (strcasecmp(w1, "mapreg_txt_timer") == 0) {
+				remove_ended_comments(w2); // remove ended comments
+				if (atoi(w2) >= 10 && atoi(w2) <= 3600)
+					mapreg_txt_timer = atoi(w2);
 			} else if(strcasecmp(w1, "extra_add_file_txt") == 0) {
 				remove_ended_comments(w2); // remove ended comments
 				memset(extra_add_file_txt, 0, sizeof(extra_add_file_txt));
