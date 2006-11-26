@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/26/06
+	* Added: Some missing warps in Prontera [Tsuyuki]
+	 - Note: Fixes The Sign Quest problem (Thanks to Calis)
 	* Added: Option to choose interval between each saving of mapreg file [Yor]
 	         (set default to 30 sec, instead of 10 sec)
 
