@@ -1036,7 +1036,7 @@
 2335,Thief_Clothes,Thief Clothes,5,74000,0,100,,6,,0,135232,2,16,,0,0,{},{ bonus bAgi,1; }
 2336,Thief_Clothes_,Thief Clothes,5,74000,0,100,,6,,1,135232,2,16,,0,0,{},{ bonus bAgi,1; }
 2337,Ninja_Suit,Ninja Suit,5,20,0,1500,,7,,0,135232,2,16,,50,0,{},{ bonus bAgi,1; bonus bMdef,3; }
-2338,Wedding_Dress,Wedding Dress,5,43000,0,500,,0,,0,18866174,0,16,,0,0,{},{ bonus bMdef,15; changebase 22; }
+2338,Wedding_Dress,Wedding Dress,5,43000,0,500,,0,,0,27254782,0,16,,0,0,{},{ bonus bMdef,15; changebase 22; }
 2339,Pantie,Pantie,5,1000,0,100,,4,,0,27254783,2,16,,0,0,{},{}
 2340,Novice_Breastplate,Novice Breastplate,5,89000,44500,500,,4,,1,8388609,2,16,,10,0,{},{}
 2341,Legion_Plate_Armor,Legion Plate Armor,5,94000,0,5500,,11,,0,16384,2,16,,70,0,{},{}
@@ -1986,7 +1986,7 @@
 7167,Strange_Steel_Piece,Strange Steel Piece,3,430,0,10,,,,,,,,,,,{},{}
 7168,Giant_Butterfly_Wing,Giant Butterfly Wing,3,614,0,10,,,,,,,,,,,{},{}
 7169,Ba_Gua,Ba Gua,3,280,0,10,,,,,,,,,,,{},{}
-7170,Tuxedo,Tuxedo,5,43000,0,10,,0,,0,18866174,1,16,,0,0,{},{ changebase 22; }
+7170,Tuxedo,Tuxedo,5,43000,0,10,,0,,0,27254782,1,16,,0,0,{},{ changebase 22; }
 7171,Leopard_Skin,Leopard Skin,3,282,0,10,,,,,,,,,,,{},{}
 7172,Leopard_Claw,Leopard Claw,3,290,0,10,,,,,,,,,,,{},{}
 7173,GM's_Backpack,GM's_Backpack,3,20,0,10,,,,,,,,,,,{},{}

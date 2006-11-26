@@ -5,8 +5,11 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/25/06
+	* Fixed: Supernovice can now wear Wedding Dress and Tuxedo items [Tsuyuki]
+	 - Note: In other words, Supernovice can now marry
 	* Fixed: Rebirth Spirit Soul Linker skill [Latios]
 	* Fixed: disabled battle option mob_ghostring_fix by default [Latios]
+	 - Note: In other words, Ghostring Card was never broken in the first place (It's fixed)
 	* Updated: NPC Script Job IDs (Job Change Quests/NPCs should be okay now) [Tsuyuki]
 	* Updated: @job/@charjob [Latios]
 	* Fixed: Spirit of Assassin [Latios]
