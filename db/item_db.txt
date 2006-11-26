@@ -1657,7 +1657,7 @@
 5050,Mysterious_Fruit_Shell,Mysterious Fruit Shell,5,20,0,300,,5,,0,27254783,2,256,,30,134,{},{}
 5051,Bell_of_Pussycat,Bell of Pussycat,5,20,0,100,,5,,0,27254783,2,1,,0,135,{},{}
 5052,Blue_Bandana,Blue Bandana,5,20,0,150,,1,,0,27254783,2,256,,0,136,{},{}
-5053,Sphinx_Hat,Sphinx Hat,5,20,0,3000,,5,,0,16514,2,257,,65,137,{},{ bonus bStr,2; }
+5053,Sphinx_Hat,Sphinx Hat,5,20,0,3000,,5,,0,16514,2,257,,65,137,{},{ bonus bStr,3; }
 5054,Assassin_Mask,Assassin Mask,5,20,0,100,,0,,0,4352,2,1,,70,180,{},{}
 5055,Novice_Eggshell,Novice Eggshell,5,20,0,10,,3,,0,8388609,2,256,,0,101,{},{}
 5056,Seed_Of_Love,Seed Of Love,5,20,0,200,,0,,0,27254783,2,256,,0,140,{},{}
@@ -1696,10 +1696,10 @@
 5089,Annoyed_Mask,Annoyed Mask,5,20,0,100,,1,,0,27254783,2,513,,0,173,{},{}
 5090,Goblin_Leader_Mask,Goblin Leader Mask,5,20,0,100,,2,,0,27254783,2,513,,0,174,{},{}
 5091,Golden_Bells,Golden Bells,5,20,0,200,,2,,0,18866174,2,768,,35,175,{},{}
-5092,Nun_Hat,Nun Hat,5,150000,0,300,,5,,0,4352,0,768,,65,176,{},{}
-5093,Nun_Hat_,Nun Hat,5,20,0,300,,5,,1,4352,0,768,,65,177,{},{ bonus bMaxSP,100; }
-5094,Orc_Hero_Helm,Orc Hero Helm,5,20,0,900,,5,,0,18866174,2,768,,55,178,{},{ bonus bStr,2; bonus bVit,1; }
-// Item 5095 Missing from client Desc Files
+5092,Nun_Hat,Nun Hat,5,150000,75000,300,,5,,0,4352,0,768,,65,176,{},{}
+5093,Nun_Hat_,Nun Hat,5,150000,75000,300,,5,,1,4352,0,768,,65,177,{},{ bonus bMaxSP,100; }
+5094,Orc_Hero_Helm,Orc Hero Helm,5,500000,0,900,,5,,0,18866174,2,768,,55,178,{},{ bonus bStr,2; bonus bVit,1; }
+5095,Orc_Hero_Helm_,Orc Hero Helm,5,800000,0,1000,,5,,1,18866174,2,768,,55,178,{},{ bonus bStr,2; bonus bVit,1; }
 5096,Assassin_Mask_,Assassin Mask,5,20,0,100,,0,,0,4352,2,1,,70,180,{},{}
 5097,Annual_Commemoration_Hat,Annual Commemoration Hat,5,20,0,30,,3,,0,27254783,2,256,,0,166,{},{ bonus bAllStats,3; }
 5098,Tiger_Mask,Tiger Mask,5,20,0,400,,2,,,27254783,2,768,,,181,{},{ bonus bStr,3; bonus bMaxHP,100; }
@@ -1857,7 +1857,7 @@
 7038,Yarn,Yarn,3,20,0,10,,,,,,,,,,,{},{}
 7039,Newbie_Tag,Newbie Tag,3,20,0,10,,,,,,,,,,,{},{}
 7040,Megaphone,Megaphone,3,20,0,10,,,,,,,,,,,{},{}
-7041,Fine_Grit,Fine Grit,3,20,0,10,,,,,,,,,,,{},{}
+7041,Fine_Grit,Fine Grit,3,120,60,10,,,,,,,,,,,{},{}
 7042,Leather_Bag_of_Infinity,Leather Bag of Infinity,3,20,0,10,,,,,,,,,,,{},{}
 7043,Fine_Sand,Fine Sand,3,100,0,10,,,,,,,,,,,{},{}
 7044,Vigorgra,Vigorgra,3,20,0,10,,,,,,,,,,,{},{}
@@ -2404,14 +2404,14 @@
 7558,Invitation_Ticket,Invitation Ticket,3,,10,10,,,,,0,,,,,,{},{}
 7559,Key_to_the_Secret_Garden,Key to the Secret Garden,3,,10,10,,,,,0,,,,,,{},{}
 7560,Longing_Heart_,Longing Heart,3,,10,10,,,,,0,,,,,,{},{}
-7561,Ice_Heart,Ice Heart,3,,10,10,,,,,0,,,,,,{},{}
-7562,Ice_Scale,Ice Scale,3,,10,10,,,,,0,,,,,,{},{}
-7563,Bloody_Rune,Bloody Rune,3,,10,10,,,,,0,,,,,,{},{}
-7564,Rotten_Meat,Rotten Meat,3,,10,10,,,,,0,,,,,,{},{}
-7565,Sticky_Poison,Sticky Poison,3,,10,10,,,,,0,,,,,,{},{}
-7566,Will_of_Red_Darkness,Will of Red Darkness,3,,10,10,,,,,0,,,,,,{},{}
-7567,Suspicious_Hat,Suspicious Hat,3,,10,10,,,,,0,,,,,,{},{}
-7568,White_Mask,White Mask,3,,10,10,,,,,0,,,,,,{},{}
+7561,Ice_Heart,Ice Heart,3,606,303,10,,,,,0,,,,,,{},{}
+7562,Ice_Scale,Ice Scale,3,3020,1510,10,,,,,0,,,,,,{},{}
+7563,Bloody_Rune,Bloody Rune,3,2016,2008,10,,,,,0,,,,,,{},{}
+7564,Rotten_Meat,Rotten Meat,3,102,51,10,,,,,0,,,,,,{},{}
+7565,Sticky_Poison,Sticky Poison,3,350,175,10,,,,,0,,,,,,{},{}
+7566,Will_of_Red_Darkness,Will of Red Darkness,3,1530,765,10,,,,,0,,,,,,{},{}
+7567,Suspicious_Hat,Suspicious Hat,3,1290,645,10,,,,,0,,,,,,{},{}
+7568,White_Mask,White Mask,3,1060,530,10,,,,,0,,,,,,{},{}
 7569,Hammer_of_Wind,Hammer of Wind,3,,10,0,,,,,0,,,,,,{},{}
 7570,Temple_Lottery_Ticket,Temple Lottery Ticket,3,,10,10,,,,,0,,,,,,{},{}
 7571,Blue's_Diary,Blue's Diary,3,,10,0,,,,,0,,,,,,{},{}
