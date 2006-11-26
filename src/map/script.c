@@ -72,6 +72,7 @@ static struct dbt *mapreg_db = NULL;
 static struct dbt *mapregstr_db = NULL;
 static int mapreg_dirty = -1;
 char mapreg_txt[1024] = "save/mapreg.txt";
+int mapreg_txt_timer = 30;
 
 static struct dbt *scriptlabel_db = NULL;
 static struct dbt *userfunc_db = NULL;
@@ -8698,7 +8699,7 @@ int do_init_script()
 	script_load_mapreg();
 
 	add_timer_func_list(script_autosave_mapreg,"script_autosave_mapreg");
-	add_timer_interval(gettick_cache + (10 * 1000), script_autosave_mapreg, 0, 0, 10 * 1000); // every 10 sec
+	add_timer_interval(gettick_cache + (mapreg_txt_timer * 1000), script_autosave_mapreg, 0, 0, mapreg_txt_timer * 1000);
 
 	if (scriptlabel_db == NULL)
 		scriptlabel_db = strdb_init(50);

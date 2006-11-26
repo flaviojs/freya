@@ -51,6 +51,7 @@ int do_init_script();
 int do_final_script();
 
 extern char mapreg_txt[1024];
+extern int mapreg_txt_timer;
 
 extern short log_script_level;
 
