@@ -5745,7 +5745,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		}
 		break;
 	case SL_HIGH:
-		if(spirit_class < JOB_SWORDMAN || spirit_class > JOB_THIEF || pc_calc_upper(spirit_class) != 1) {
+		if(spirit_class < JOB_SWORDMAN || spirit_class > JOB_THIEF || pc_calc_upper(dstsd->status.class) != 1) {
 			clif_skill_fail(sd,skillid,0,0);
 		} else {
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
