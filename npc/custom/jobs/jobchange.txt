@@ -666,7 +666,7 @@ LSecondClass2:
 		mes "[ ^0065DFJobra^000000 ]";
 		mes "Ahhhh, soo cool! I'll never get tired of seeing people turn into those new 2-2 sprites.. KYAHH XD!!";
 		mes "Go forth Sage! Show those wizzies what a real mana-wielder can do! Mwahaha...";
-		jobchange JOB_SAGE
+		jobchange JOB_SAGE;
 		cutin "kafra_01",255;
 		close;
 
