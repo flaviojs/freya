@@ -2252,24 +2252,24 @@
 
 7419,Embryo_Creation_Guide,Embryo Creation Guide,3,4800,2400,10,,,,,,,,,,,{},{}
 
-7420,Cranium,Cranium,3,0,0,0,,,,,,,,,,,{},{} // Missing Price/Sell=0(dropped when a character is killed)/Weight
-7421,Red_Key,Red Key,3,20,10,10,,,,,,,,,,,{},{}
-7422,Yellow_Key,Yellow Key,3,20,10,10,,,,,,,,,,,{},{}
-7423,Blue_Key,Blue Key,3,20,10,10,,,,,,,,,,,{},{}
-7424,Green_Key,Green Key,3,20,10,10,,,,,,,,,,,{},{}
-7425,Black_Key,Black Key,3,20,10,10,,,,,,,,,,,{},{}
-7426,Red_Charm_Stone,Red Charm Stone,3,20,10,10,,,,,,,,,,,{},{}
-7427,Yellow_Charm_Stone,Yellow Charm Stone,3,20,10,10,,,,,,,,,,,{},{}
-7428,Blue_Charm_Stone,Blue Charm Stone,3,20,10,10,,,,,,,,,,,{},{}
-7429,Green_Charm_Stone,Green Charm Stone,3,20,10,10,,,,,,,,,,,{},{}
-7430,Black_Charm_Stone,Black Charm Stone,3,20,10,10,,,,,,,,,,,{},{}
-7431,Pile_of_Books,Pile of Books,3,20,10,10,,,,,,,,,,,{},{}
-7432,Leather_Pouch,Leather Pouch,3,20,10,0,,,,,,,,,,,{},{} // Missing Price/Sell/Weight
-7433,Blank_Scroll,Blank Scroll,3,4000,2000,10,,,,,,,,,,,{},{}
-7434,Elemental_Potion_Guide,Elemental Potion Creation Guide,3,20,10,10,,,,,,,,,,,{},{}
+7420,Cranium,Cranium,3,0,0,0,,,,,,,,,,,{},{}
+7421,Red_Key,Red Key,3,0,0,0,,,,,,,,,,,{},{}
+7422,Yellow_Key,Yellow Key,3,0,0,0,,,,,,,,,,,{},{}
+7423,Blue_Key,Blue Key,3,0,0,0,,,,,,,,,,,{},{}
+7424,Green_Key,Green Key,3,0,0,0,,,,,,,,,,,{},{}
+7425,Black_Key,Black Key,3,0,0,0,,,,,,,,,,,{},{}
+7426,Red_Charm_Stone,Red Charm Stone,3,0,0,0,,,,,,,,,,,{},{}
+7427,Yellow_Charm_Stone,Yellow Charm Stone,3,0,0,0,,,,,,,,,,,{},{}
+7428,Blue_Charm_Stone,Blue Charm Stone,3,0,0,0,,,,,,,,,,,{},{}
+7429,Green_Charm_Stone,Green Charm Stone,3,0,0,0,,,,,,,,,,,{},{}
+7430,Black_Charm_Stone,Black Charm Stone,3,0,0,0,,,,,,,,,,,{},{}
+7431,Pile_of_Books,Pile of Books,3,0,0,0,,,,,,,,,,,{},{}
+7432,Leather_Pouch,Leather Pouch,3,0,0,0,,,,,,,,,,,{},{}
+7433,Blank_Scroll,Blank Scroll,3,8000,4000,10,,,,,,,,,,,{},{}
+7434,Elemental_Potion_Guide,Elemental Potion Creation Guide,3,100000,50000,10,,,,,,,,,,,{},{}
 
 // Thanatos Tower/Abyss Lake Items
-7435,Golden_Ornament,Golden Ornament,3,1906,953,10,,,,,,,,,,,{},{}
+7435,Golden_Ornament,Golden Ornament,3,1907,953,10,,,,,,,,,,,{},{}
 7436,Fragment_of_Agony,Fragment of Agony,3,1506,753,10,,,,,,,,,,,{},{}
 7437,Fragment_of_Misery,Fragment of Sorrow,3,1506,753,10,,,,,,,,,,,{},{}
 7438,Fragment_of_Hatred,Fragment of Hatred,3,1506,753,10,,,,,,,,,,,{},{}
@@ -2406,7 +2406,7 @@
 7560,Longing_Heart_,Longing Heart,3,,10,10,,,,,0,,,,,,{},{}
 7561,Ice_Heart,Ice Heart,3,606,303,10,,,,,0,,,,,,{},{}
 7562,Ice_Scale,Ice Scale,3,3020,1510,10,,,,,0,,,,,,{},{}
-7563,Bloody_Rune,Bloody Rune,3,2016,2008,10,,,,,0,,,,,,{},{}
+7563,Bloody_Rune,Bloody Rune,3,3320,1160,10,,,,,0,,,,,,{},{}
 7564,Rotten_Meat,Rotten Meat,3,102,51,10,,,,,0,,,,,,{},{}
 7565,Sticky_Poison,Sticky Poison,3,350,175,10,,,,,0,,,,,,{},{}
 7566,Will_of_Red_Darkness,Will of Red Darkness,3,1530,765,10,,,,,0,,,,,,{},{}

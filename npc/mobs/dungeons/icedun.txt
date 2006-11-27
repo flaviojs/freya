@@ -3,12 +3,13 @@
 //===== By: ==================================================
 //= Tsuyuki
 //===== Current Version: =====================================
-//= 1.1
+//= 1.2
 //===== Compatible With: =====================================
 //= Freya
 //===== Additional Comments: =================================
 //= 1.0 Written 7/04/06, Based on jAthena Information
 //= 1.1 Updated with new jAthena information
+//= 1.2 Fixed Ktullanux's spawn time [Tsuyuki]
 //============================================================
 
 //==================================================
@@ -35,9 +36,9 @@ ice_dun03.gat,0,0,0,0	monster	Gazeti	1778,30,0,0,0
 ice_dun03.gat,0,0,0,0	monster	Icicle	1789,10,0,0,0
 ice_dun03.gat,0,0,0,0	monster	Snowier	1775,30,0,0,0
 ice_dun03.gat,0,0,0,0	monster	Ice Titan	1777,50,0,0,0
-ice_dun03.gat,0,0,0,0	monster	Ktullanux	1779,1,0,0,0 // Temp Spawn for Players
+ice_dun03.gat,0,0,0,0	monster	Ktullanux	1779,1,7200000,3600000,0 // Temp Spawn for Players
 
 //==================================================
 // ice_dun04 - Ice Cave
 //==================================================
-//ice_dun03.gat,0,0,0,0	monster	Ktullanux	1779,1,0,0,0 // Quest Summon Only
+//ice_dun04.gat,0,0,0,0	monster	Ktullanux	1779,1,0,0,0 // Quest Summon Only

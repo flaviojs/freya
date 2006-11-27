@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/26/06
+	* Fixed: Bug in the custom job changer (Thanks to van84) [Tsuyuki]
+	* Fixed: Item 7563 exploit price [Jetvictor]
 	* Added: Missing headgear: Orc Hero Helm [1] [Tsuyuki]
 	* Fixed: Some values with Sphinx Helm and Nun Hat [Tsuyuki]
 	* Updated: Some item price values [Tsuyuki]
