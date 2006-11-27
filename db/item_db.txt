@@ -2406,7 +2406,7 @@
 7560,Longing_Heart_,Longing Heart,3,,10,10,,,,,0,,,,,,{},{}
 7561,Ice_Heart,Ice Heart,3,606,303,10,,,,,0,,,,,,{},{}
 7562,Ice_Scale,Ice Scale,3,3020,1510,10,,,,,0,,,,,,{},{}
-7563,Bloody_Rune,Bloody Rune,3,2016,2008,10,,,,,0,,,,,,{},{}
+7563,Bloody_Rune,Bloody Rune,3,3320,2008,10,,,,,0,,,,,,{},{}
 7564,Rotten_Meat,Rotten Meat,3,102,51,10,,,,,0,,,,,,{},{}
 7565,Sticky_Poison,Sticky Poison,3,350,175,10,,,,,0,,,,,,{},{}
 7566,Will_of_Red_Darkness,Will of Red Darkness,3,1530,765,10,,,,,0,,,,,,{},{}
