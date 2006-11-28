@@ -3349,7 +3349,13 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		break;
 	case NJ_KASUMIKIRI:
 		break;
-	case NJ_KIRIKAGE:
+	case NJ_KIRIKAGE: //part coded took from Ea (van84)
+		break;
+		case NJ_KAENSIN:
+		skill_clear_group(src, 1); //Delete previous Kaensins/Suitons
+		val2 = (skilllv+1)/2 + 4;
+		break;
+	case GS_GROUNDDRIFT:
 		break;
 	case SL_SMA:
 		if (sc_data && sc_data[SC_SMA].timer != -1)
@@ -6171,6 +6177,17 @@ int skill_castend_pos2(struct block_list *src, int x, int y, int skillid, int sk
 
 	case RG_CLEANER:
 		skill_clear_unitgroup(src);
+		break;
+	case GS_DESPERADO:
+	case NJ_KAENSIN:
+	case NJ_BAKUENRYU:
+	case NJ_SUITON:
+	case NJ_HYOUSYOURAKU:
+	case NJ_RAIGEKISAI:
+	case NJ_KAMAITACHI:
+		flag|=1;//Set flag to 1 to prevent deleting ammo (it will be deleted on group-delete).
+	case GS_GROUNDDRIFT: //Ammo should be deleted right away.
+		skill_unitsetting(src,skillid,skilllv,x,y,0);
 		break;
 	case RG_GRAFFITI:			/* Graffiti [Valaris] */
 		skill_clear_unitgroup(src);
