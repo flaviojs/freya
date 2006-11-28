@@ -1,9 +1,7 @@
-# -------------------------------------------------------
-
 # Database: Ragnarok
 # Table: 'login'
-# 
-CREATE TABLE `login` (
+CREATE TABLE `login`
+(
   `account_id` int(11) NOT NULL AUTO_INCREMENT,
   `userid` varchar(24) NOT NULL default '',
   `user_pass` varchar(32) NOT NULL default '',
@@ -18,12 +16,29 @@ CREATE TABLE `login` (
   `memo` TEXT NOT NULL default '',
   `ban_until` int(11) NOT NULL default '0',
   `state` smallint(3) NOT NULL default '0',
+  INDEX (`account_id`),
   PRIMARY KEY  (`account_id`),
   KEY `name` (`userid`)
 ) TYPE=MyISAM AUTO_INCREMENT=2000001;
 
-# added standard accounts for servers, VERY INSECURE!!!
-# inserted into the table called login which is above
+# Database: Ragnarok
+# Table: 'account_reg2_db'
+CREATE TABLE `account_reg2_db`
+(
+  `account_id` int(11) NOT NULL default '0',
+  `str` varchar(32) NOT NULL default '',
+  `value` int(11) NOT NULL default '0',
+  PRIMARY KEY (`account_id`, `str`)
+) TYPE = MyISAM;
+
+# Database: Ragnarok
+# Table: 'sstatus'
+CREATE TABLE `sstatus`
+(
+  `index` tinyint(4) NOT NULL default '0',
+  `name` varchar(20) NOT NULL default '',
+  `user` int(11) NOT NULL default '0'
+) TYPE=MyISAM;
 
 INSERT INTO `login` (`account_id`, `userid`, `user_pass`, `sex`, `email`) VALUES ('1', 's1', 'p1', 'S','a@a.com');
 INSERT INTO `login` (`account_id`, `userid`, `user_pass`, `sex`, `email`) VALUES ('2', 's2', 'p2', 'S','a@a.com');
@@ -40,23 +55,3 @@ INSERT INTO `login` (`account_id`, `userid`, `user_pass`, `sex`, `email`) VALUES
 INSERT INTO `login` (`account_id`, `userid`, `user_pass`, `sex`, `email`) VALUES ('13', 's13', 'p13', 'S','a@a.com');
 INSERT INTO `login` (`account_id`, `userid`, `user_pass`, `sex`, `email`) VALUES ('14', 's14', 'p14', 'S','a@a.com');
 INSERT INTO `login` (`account_id`, `userid`, `user_pass`, `sex`, `email`) VALUES ('15', 's15', 'p15', 'S','a@a.com');
-
-# Database: Ragnarok
-# Table: 'account_reg2_db'
-# 
-CREATE TABLE `account_reg2_db` (
-  `account_id` int(11) NOT NULL default '0',
-  `str` varchar(32) NOT NULL default '',
-  `value` int(11) NOT NULL default '0',
-  PRIMARY KEY (`account_id`, `str`)
-) TYPE = MyISAM;
-
-# Database: Ragnarok
-# Table: 'sstatus'
-# 
-CREATE TABLE `sstatus` (
-  `index` tinyint(4) NOT NULL default '0',
-  `name` varchar(20) NOT NULL default '',
-  `user` int(11) NOT NULL default '0'
-) TYPE=MyISAM;
-

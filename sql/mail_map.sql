@@ -1,6 +1,5 @@
-# -------------------------------------------------------
-
-CREATE TABLE `mail` (
+CREATE TABLE `mail`
+(
   `message_id` int(11) NOT NULL auto_increment,
   `to_account_id` int(11) NOT NULL default '0',
   `to_char_name` varchar(24) NOT NULL default '',
@@ -10,6 +9,7 @@ CREATE TABLE `mail` (
   `read_flag` tinyint(1) NOT NULL default '0',
   `priority` tinyint(1) NOT NULL default '0',
   `check_flag` tinyint(1) NOT NULL default '0',
+  INDEX (`message_id`),
   PRIMARY KEY (`message_id`)
 ) TYPE=MyISAM;
 

@@ -9,6 +9,8 @@ Date	Added
 	* Added: Inserted skill_castend_pos2 for Ninja/Gunslinger [Van84]
 	* Added: Inserted skill_castend_damage_id for Ninja/Gunslinger [Van84]
 	* Added: Pet constant in const.txt for future usages [Van84]
+	* Improved: added indexing on heavily used database tables and readjusted some data-field sizes [Harbin]
+	 - note: credits to jshcrtmcd
 
 11/27/06
 	* Fixed: Some fixes to JetVictor's changes.. [Tsuyuki]
