@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+11/27/06
+	* Fixed: Heaven's drive shouldn't target traps [Van84]
+
 11/26/06
 	* Fixed: Ktullanux respawning instantly [Tsuyuki]
 	* Fixed: A few items (Thanks to galaxy) [Tsuyuki]
