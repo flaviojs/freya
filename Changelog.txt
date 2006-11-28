@@ -5,11 +5,12 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/27/06
+	* Added: Pet constant in const.txt for future usages [Van84]
 	* Fixed: Some fixes to JetVictor's changes.. [Tsuyuki]
 	* Updated: Enabled missing kafra at center of prontera as per Aegis [Jetvictor]
 	 - Renamed all Kafra to Kafra Employee
 	* Updated: All TK/SG/SL/GS/NJ skills are enabled by default now [Jetvictor]
-	* Updated: Service for should affect all players in range [Van84]
+	* Updated: Service for you should affect all players in range [Van84]
 	* Fixed: Heaven's drive shouldn't target traps [Van84]
 
 11/26/06
