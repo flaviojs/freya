@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/27/06
+	* Fixed: Some fixes to JetVictor's changes.. [Tsuyuki]
 	* Updated: Enabled missing kafra at center of prontera as per Aegis [Jetvictor]
 	 - Renamed all Kafra to Kafra Employee
 	* Updated: All TK/SG/SL/GS/NJ skills are enabled by default now [Jetvictor]

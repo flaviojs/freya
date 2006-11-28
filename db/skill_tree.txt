@@ -675,7 +675,7 @@
 //23,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY	#Call Baby#
 
 // Wedding Class
-22,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#基-{スキル#
+22,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#Basic Skills#
 22,142,1,0,0,0,0,0,0,0,0,0,0//NV_FIRSTAID	#First Aid#
 22,334,1,0,0,0,0,0,0,0,0,0,0//
 22,335,5,0,0,0,0,0,0,0,0,0,0//
@@ -684,7 +684,7 @@
 
 // Gunslinger
 24,1,9,0,0,0,0,0,0,0,0,0,0 //NV_BASIC#Basic Skill#
-//24,142,1,0,0,0,0,0,0,0,0,0,0 //NV_FIRSTAID#First Aid#
+24,142,1,0,0,0,0,0,0,0,0,0,0 //NV_FIRSTAID#First Aid#
 24,500,5,0,0,0,0,0,0,0,0,0,0 //GS_GLITTERING#Flip the Coin#
 24,501,1,500,1,0,0,0,0,0,0,0,0 //GS_FLING#Fling#
 24,502,1,500,1,511,10,0,0,0,0,0,0 //GS_TRIPLEACTION#Triple Action#
@@ -711,7 +711,7 @@
 
 // Ninja
 25,1,9,0,0,0,0,0,0,0,0,0,0 //NV_BASIC#Basic Skill#
-//25,142,1,0,0,0,0,0,0,0,0,0,0 //NV_FIRSTAID#First Aid#
+25,142,1,0,0,0,0,0,0,0,0,0,0 //NV_FIRSTAID#First Aid#
 25,522,10,0,0,0,0,0,0,0,0,0,0 //NJ_TOBIDOUGU#NJ_TOBIDOUGU#
 25,523,10,522,1,0,0,0,0,0,0,0,0 //NJ_SYURIKEN#NJ_SYURIKEN#
 25,524,5,523,5,0,0,0,0,0,0,0,0 //NJ_KUNAI#NJ_KUNAI#
@@ -742,7 +742,7 @@
 //Novice High
 4001,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#Basic Skills#
 4001,142,1,0,0,0,0,0,0,0,0,0,0//NV_FIRSTAID	#First Aid#
-4001,143,1,0,0,0,0,0,0,0,0,0,0//NV_TRICKDEAD	#死んだふり#
+4001,143,1,0,0,0,0,0,0,0,0,0,0//NV_TRICKDEAD	#Trick Dead#
 //4001,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY	#Call Baby#
 
 //Swordsman High
@@ -1932,7 +1932,6 @@
 4041,236,5,235,3,0,0,0,0,0,0,0,0//AM_CP_ARMOR	#ケミカルアーマーチャージ#
 4041,237,5,228,2,0,0,0,0,0,0,0,0//AM_CP_HELM	#ケミカルヘルムチャージ#
 
-// 韓国でも未実装なので以下のツリーコメントアウト
 // Homonculus skill tree (disabled as for now)
 //4041,238,1,0,0,0,0,0,0,0,0,0,0//AM_BIOETHICS		#生命倫理#
 //4041,239,10,238,1,0,0,0,0,0,0,0,0//AM_BIOTECHNOLOGY	#生命工学研究#
@@ -2097,7 +2096,7 @@
 
 // TaeKwon Kid
 4046,1,9,0,0,0,0,0,0,0,0,0,0		//NV_BASIC#Basic Skill#
-//4046,142,1,0,0,0,0,0,0,0,0,0,0		//NV_FIRSTAID#First Aid#
+4046,142,1,0,0,0,0,0,0,0,0,0,0		//NV_FIRSTAID#First Aid#
 4046,411,10,0,0,0,0,0,0,0,0,0,0		//TK_RUN#Sprint#
 4046,412,1,413,1,0,0,0,0,0,0,0,0	//TK_READYSTORM#Prepare Whirlwind Kick#
 4046,413,7,0,0,0,0,0,0,0,0,0,0		//TK_STORMKICK#Whirlwind Kick#
@@ -2119,7 +2118,7 @@
 
 // TaeKwon Master / Star Gladiator
 4047,1,9,0,0,0,0,0,0,0,0,0,0 //NV_BASIC#Basic Skill#
-//4047,142,1,0,0,0,0,0,0,0,0,0,0 //NV_FIRSTAID#First Aid#
+4047,142,1,0,0,0,0,0,0,0,0,0,0 //NV_FIRSTAID#First Aid#
 4047,411,10,0,0,0,0,0,0,0,0,0,0 //TK_RUN#Running#
 4047,412,1,413,1,0,0,0,0,0,0,0,0 //TK_READYSTORM#Prepare Whirlwind#
 4047,413,7,0,0,0,0,0,0,0,0,0,0 //TK_STORMKICK#Whirlwind Kick#
@@ -2159,7 +2158,7 @@
 
 // TaeKwon Master / Star Gladiator (Flying)
 4048,1,9,0,0,0,0,0,0,0,0,0,0 //NV_BASIC#Basic Skill#
-//4048,142,1,0,0,0,0,0,0,0,0,0,0 //NV_FIRSTAID#First Aid#
+4048,142,1,0,0,0,0,0,0,0,0,0,0 //NV_FIRSTAID#First Aid#
 4048,411,10,0,0,0,0,0,0,0,0,0,0 //TK_RUN#Running#
 4048,412,1,413,1,0,0,0,0,0,0,0,0 //TK_READYSTORM#Prepare Whirlwind#
 4048,413,7,0,0,0,0,0,0,0,0,0,0 //TK_STORMKICK#Whirlwind Kick#
@@ -2199,7 +2198,7 @@
 
 // Soul Linker
 4049,1,9,0,0,0,0,0,0,0,0,0,0 //NV_BASIC#Basic Skill#
-//4049,142,1,0,0,0,0,0,0,0,0,0,0 //NV_FIRSTAID#First Aid#
+4049,142,1,0,0,0,0,0,0,0,0,0,0 //NV_FIRSTAID#First Aid#
 4049,411,10,0,0,0,0,0,0,0,0,0,0 //TK_RUN#Running#
 4049,412,1,413,1,0,0,0,0,0,0,0,0 //TK_READYSTORM#Prepare Whirlwind#
 4049,413,7,0,0,0,0,0,0,0,0,0,0 //TK_STORMKICK#Whirlwind Kick#
