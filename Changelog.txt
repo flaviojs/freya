@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/27/06
+	* Updated: Service for should affect all players in range [Van84]
 	* Fixed: Heaven's drive shouldn't target traps [Van84]
 
 11/26/06
