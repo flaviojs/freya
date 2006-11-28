@@ -2650,7 +2650,17 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case AC_SHOWER:
 		skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, flag);
 		break;
-
+	case GS_CHAINACTION:
+	case GS_TRIPLEACTION:
+	case GS_MAGICALBULLET:
+	case GS_TRACKING:
+	case GS_PIERCINGSHOT:
+	case GS_RAPIDSHOWER:
+	case GS_DUST:
+	case GS_FULLBUSTER:
+	case NJ_SYURIKEN:
+	case NJ_KUNAI:
+	case NJ_KAMAITACHI:
 // A lot of Corrections to BREAKER SKILL (pneuma included) (Posted on freya's bug report by Gawaine)
 	case ASC_BREAKER:				/* ソウルブレーカー */
 		// Separate weapon and magic attacks
@@ -2664,7 +2674,6 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		map_foreachinpath(skill_attack_area, src->m, src->x, src->y, bl->x, bl->y, 2, 0, // function, map, source xy, target xy, range, type
 		                  BF_WEAPON, src, src, skillid, skilllv, tick, flag, BCT_ENEMY); // varargs
 		break;
-
 	/*case PA_PRESSURE:	
 		skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, flag);
 		if (rand() % 100 < 50)
@@ -2804,6 +2813,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		}
 		break;	
 	case KN_CHARGEATK:
+	case NJ_ISSEN:
 	case MO_EXTREMITYFIST:	/* 阿修羅覇鳳拳 */
 		{
 			struct status_change *sc_data = status_get_sc_data(src);
@@ -2948,7 +2958,12 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 			skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, 0);
 		}
 		break;
-
+	case NJ_HUUMA:
+	case NJ_BAKUENRYU:
+	case ASC_METEORASSAULT:
+	case GS_DESPERADO:
+	case GS_SPREADATTACK:
+		break;
 	case SM_MAGNUM:
 		if(flag & 1)
 		{
@@ -3144,7 +3159,10 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 					skill_castend_damage_id);
 			}
 			break;
-
+	case NJ_KOUENKA:
+	case NJ_HYOUSENSOU:
+	case NJ_HUUJIN:
+		break;
 	case WZ_FROSTNOVA:			/* フロストノヴァ */
 		//skill_castend_pos2(src, bl->x, bl->y, skillid, skilllv, tick, 0);
 		//skill_attack(BF_MAGIC, src, src, bl, skillid, skilllv, tick, flag);
@@ -3188,7 +3206,10 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case NPC_SMOKING:			/* スモーキング */
 		skill_attack(BF_MISC,src,src,bl,skillid,skilllv,tick,0 );
 		break;
-	
+	case GS_FLING:
+	case NJ_ZENYNAGE:
+		skill_attack(BF_MISC,src,src,bl,skillid,skilllv,tick,flag);
+		break;
 	case CR_SHIELDCHARGE:
 		skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, flag);
 		skill_blown(src,bl,1);
@@ -3324,7 +3345,13 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 			}
 		}
 		break;
-		
+	case GS_BULLSEYE:
+		skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,flag);
+		break;
+	case NJ_KASUMIKIRI:
+		break;
+	case NJ_KIRIKAGE:
+		break;
 	case SL_SMA:
 		if (sc_data && sc_data[SC_SMA].timer != -1)
 			status_change_end(src,SC_SMA,-1);
