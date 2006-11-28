@@ -24,7 +24,7 @@
 
 
 // Center ------------------------------------------------------------------
-yuno.gat,152,187,4	script	Kafra	113,{
+yuno.gat,152,187,4	script	Kafra Employee	113,{
 	cutin "kafra_05",2;
 	callfunc "F_KafSetYun";
 	callfunc "F_Kafra",0,0,0;
@@ -35,7 +35,7 @@ yuno.gat,152,187,4	script	Kafra	113,{
 }
 
 // South East --------------------------------------------------------------
-yuno.gat,327,108,4	script	Kafra	113,{
+yuno.gat,327,108,4	script	Kafra Employee	113,{
 	cutin "kafra_05",2;
 	callfunc "F_KafSetYun";
 	callfunc "F_Kafra",0,0,0;
@@ -46,7 +46,7 @@ yuno.gat,327,108,4	script	Kafra	113,{
 }
 
 // East --------------------------------------------------------------------
-yuno.gat,277,221,4	script	Kafra	117,{
+yuno.gat,277,221,4	script	Kafra Employee	117,{
 	cutin "kafra_01",2;
 	callfunc "F_KafSetYun";
 	callfunc "F_Kafra",0,0,0;
