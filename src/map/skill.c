@@ -3349,11 +3349,9 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		break;
 	case NJ_KASUMIKIRI:
 		break;
-	case NJ_KIRIKAGE: //part coded took from Ea (van84)
+	case NJ_KIRIKAGE:
 		break;
-		case NJ_KAENSIN:
-		skill_clear_group(src, 1); //Delete previous Kaensins/Suitons
-		val2 = (skilllv+1)/2 + 4;
+	case NJ_KAENSIN:
 		break;
 	case GS_GROUNDDRIFT:
 		break;
