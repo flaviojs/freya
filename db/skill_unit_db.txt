@@ -42,7 +42,7 @@
  87,0x8d,    , -1, 0,  -1,all,   0x000	//WZ_ICEWALL#Ice Wall#
  88,0x86,    ,  0, 2,1000,enemy, 0x000	//WZ_FROSTNOVA#Frost Nova#
  89,0x86,    ,  0, 5, 450,enemy, 0x008	//WZ_STORMGUST#Storm Gust#
- 91,0x86,    ,  0, 2,1000,enemy, 0x080	//WZ_HEAVENDRIVE#Heaven's Drive#
+ 91,0x86,    ,  0, 2,1000,enemy, 0x000	//WZ_HEAVENDRIVE#Heaven's Drive#
  92,0x8e,    ,  2, 0,  -1,enemy, 0x000	//WZ_QUAGMIRE#Quagmire#
 115,0x90,    ,  0, 1,1000,enemy, 0x006	//HT_SKIDTRAP#Skid Trap#
 116,0x93,    ,  0, 1,1000,enemy, 0x006	//HT_LANDMINE#Land Mine#
