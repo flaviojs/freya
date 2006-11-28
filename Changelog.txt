@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/28/06
+	* Fixed: Merged the right calculation damage of EDP [Van84]
 	* Added: Inserted skill_castend_pos2 for Ninja/Gunslinger [Van84]
 	* Added: Inserted skill_castend_damage_id for Ninja/Gunslinger [Van84]
 	* Added: Pet constant in const.txt for future usages [Van84]

@@ -3521,7 +3521,8 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			skill_enchant_elemental_end(bl, SC_ENCPOISON);
 			break;
 		case SC_EDP:
-			val2 = val1 + 2;			/* 猛毒付与確率(%) */
+			val2 = val1 + 2;			/* Chance to poison enemies */
+			val3 = 50*(val1+1); // Increased damage took from Ea
 			scflag.calc = 1;
 			break;
 		case SC_POISONREACT:	/* ポイズンリアクト */
