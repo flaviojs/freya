@@ -2960,7 +2960,6 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		break;
 	case NJ_HUUMA:
 	case NJ_BAKUENRYU:
-	case ASC_METEORASSAULT:
 	case GS_DESPERADO:
 	case GS_SPREADATTACK:
 		break;
