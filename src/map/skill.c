@@ -3379,9 +3379,17 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case GS_BULLSEYE:
 		skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,flag);
 		break;
-	case NJ_KASUMIKIRI:
-		if (skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,flag) > 0)
+	case NJ_KASUMIKIRI: 
+		if (skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,flag) > 0){
 			status_change_start(src, SC_HIDING, skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
+		}
+		else
+		{
+			//if status already in hide, unhide! Following what KRO skill description. If you hit target, you stay hidden
+			//if not you will not! Im not sure tho because Ea seem didnt implent it. we will?
+			if(sc_data && sc_data[SC_HIDING].timer != -1) 
+				status_change_end(src, SC_HIDING, -1);  //add by Van84
+		}
 		break;
 	case NJ_KIRIKAGE:
 		if(sc_data && sc_data[SC_HIDING].timer != -1)
