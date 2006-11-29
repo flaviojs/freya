@@ -1303,7 +1303,7 @@
 4019,236,5,235,3,0,0,0,0,0,0,0,0//AM_CP_ARMOR	#ケミカルアーマーチャージ#
 4019,237,5,228,2,0,0,0,0,0,0,0,0//AM_CP_HELM	#ケミカルヘルムチャージ#
 4019,490,10,229,5,230,5,0,0,0,0,0,0 //CR_ACIDDEMONSTRATION#Acid Demonstration#
-//4019,491,2,0,0,0,0,0,0,0,0,0,0 //CR_CULTIVATION#Cultivation#
+4019,491,2,0,0,0,0,0,0,0,0,0,0 //CR_CULTIVATION#Cultivation#
 
 // Homonculus skill tree (disabled as for now)
 //4019,238,1,0,0,0,0,0,0,0,0,0,0//AM_BIOETHICS		#生命倫理#
