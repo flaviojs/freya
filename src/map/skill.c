@@ -931,6 +931,8 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 	
 	int sc_def_mdef, sc_def_vit, sc_def_int, sc_def_luk;
 	int sc_def_mdef2, sc_def_vit2, sc_def_int2, sc_def_luk2;
+
+//	int t_race = status_get_race(target);
 	
 	nullpo_retr(0, src);
 	nullpo_retr(0, bl);
@@ -1390,6 +1392,19 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 		// Stun Medium monsters
 		if(status_get_size(bl) == 1 && (rand() % 100 < sc_def_vit))
 			status_change_start(bl,SC_STUN,0,0,0,0,2000,0);
+		break;
+
+	case GS_BULLSEYE: // 0.1% Coma Rate: To-Do
+/*		if(t_race == 2 || t_race == 7)
+			status_change_start(bl, SC_COMA,   skilllv, 0, 0, 0, 100, 0);*/
+		break;
+	case GS_PIERCINGSHOT:
+			status_change_start(bl, SC_BLEEDING, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
+		break;
+	case NJ_HYOUSYOURAKU:
+	// skill_lv missing from this function.. need to add [Tsuyuki]
+	//if (rand()%100 <= skill_lv*10 + 10)
+		status_change_start(bl, SC_FREEZE, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
 		break;
 	}
 
@@ -2648,8 +2663,6 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case ITM_TOMAHAWK:
 	case ASC_METEORASSAULT:	/* メテオアサルト */ // Meteor Assault skill fix (thanks to [Mikey] from freya's bug report)
 	case AC_SHOWER:
-		skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, flag);
-		break;
 	case GS_CHAINACTION:
 	case GS_TRIPLEACTION:
 	case GS_MAGICALBULLET:
@@ -2660,7 +2673,8 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case GS_FULLBUSTER:
 	case NJ_SYURIKEN:
 	case NJ_KUNAI:
-	case NJ_KAMAITACHI:
+		skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, flag);
+		break;
 // A lot of Corrections to BREAKER SKILL (pneuma included) (Posted on freya's bug report by Gawaine)
 	case ASC_BREAKER:				/* ソウルブレーカー */
 		// Separate weapon and magic attacks
@@ -2669,11 +2683,16 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		break;
 // End ----------- A lot of Corrections to BREAKER SKILL (pneuma included) (Posted on freya's bug report by Gawaine)
 
-	case SN_SHARPSHOOTING:			/* シャープシューティング */
-		// Does it stop if touch an obstacle? it shouldn't shoot trough walls
+	case SN_SHARPSHOOTING:
+	case NJ_KAMAITACHI:
+		// Does it stop if touch an obstacle? it shouldn't go through walls
 		map_foreachinpath(skill_attack_area, src->m, src->x, src->y, bl->x, bl->y, 2, 0, // function, map, source xy, target xy, range, type
-		                  BF_WEAPON, src, src, skillid, skilllv, tick, flag, BCT_ENEMY); // varargs
+		if (skillid == NJ_KAMAITACHI)
+			BF_MAGIC, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
+		else
+			BF_WEAPON, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
 		break;
+
 	/*case PA_PRESSURE:	
 		skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, flag);
 		if (rand() % 100 < 50)
@@ -2861,7 +2880,16 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 			}
 			else
 				skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, skillid == KN_CHARGEATK?1:flag);
-			
+
+			if (skillid == NJ_ISSEN) {
+				sd->status.hp = 1;
+				clif_updatestatus(sd, SP_HP);
+			 	if (sc_data && sc_data[SC_NEN].timer != -1)
+					status_change_end(src,SC_NEN,-1);
+				if (sc_data && sc_data[SC_HIDING].timer != -1)
+					status_change_end(src,SC_HIDING,-1);
+			}
+
 			if (skillid == MO_EXTREMITYFIST && sc_data) {
 				status_change_end(src, SC_EXPLOSIONSPIRITS, -1);
 				if (sc_data[SC_BLADESTOP].timer != -1)
@@ -2926,12 +2954,15 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		break;*/
 
 	/* 武器系範囲攻撃スキル */
-//	case SM_MAGNUM:			/* マグナムブレイク */
-	case AS_GRIMTOOTH:		/* グリムトゥース */
-	case MC_CARTREVOLUTION:	/* カートレヴォリューション */
-	case NPC_SPLASHATTACK:	/* スプラッシュアタック */
-//	case ASC_METEORASSAULT:	/* メテオアサルト */ // Meteor Assault skill fix (thanks to [Mikey] from freya's bug report)
-	case AS_SPLASHER: /* ベナムスプラッシャー */
+//	case SM_MAGNUM:
+	case AS_GRIMTOOTH:
+	case MC_CARTREVOLUTION:
+	case NPC_SPLASHATTACK:
+//	case ASC_METEORASSAULT: // Meteor Assault skill fix (thanks to [Mikey] from freya's bug report)
+	case AS_SPLASHER:
+	case NJ_HUUMA:
+	case GS_DESPERADO:
+	case GS_SPREADATTACK:
 		if (flag & 1) {
 			/* 個別にダメージを与える */
 			if (bl->id != skill_area_temp[1])
@@ -2958,10 +2989,12 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 			skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, 0);
 		}
 		break;
-	case NJ_HUUMA:
-	case NJ_BAKUENRYU:
-	case GS_DESPERADO:
-	case GS_SPREADATTACK:
+	case NJ_SHADOWJUMP:
+		if(sd) {
+			if(!pc_movepos(sd, bl->x, bl->y, 1)) {
+				clif_slide(src, bl->x, bl->y); //teleport effect
+			}
+		}
 		break;
 	case SM_MAGNUM:
 		if(flag & 1)
@@ -2984,7 +3017,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		}
 		break;
 
-	case KN_BOWLINGBASH:	/* ボウリングバッシュ */
+	case KN_BOWLINGBASH:
 		if(flag&1){
 			/* 個別にダメージを与える */
 			if(bl->id!=skill_area_temp[1])
@@ -3055,6 +3088,11 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case PR_BENEDICTIO:
 	case WZ_SIGHTBLASTER:
 //	case HW_NAPALMVULCAN:		/* ナパームバルカン */
+	case NJ_KOUENKA:
+	case NJ_HYOUSENSOU:
+	case NJ_HUUJIN:
+	case NJ_BAKUENRYU:
+	case NJ_KAMAITACHI:
 		skill_attack(BF_MAGIC, src, src, bl, skillid, skilllv, tick, flag);
 		break;
 
@@ -3158,11 +3196,9 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 					skill_castend_damage_id);
 			}
 			break;
-	case NJ_KOUENKA:
-	case NJ_HYOUSENSOU:
-	case NJ_HUUJIN:
-		break;
-	case WZ_FROSTNOVA:			/* フロストノヴァ */
+	case WZ_FROSTNOVA:
+	case NJ_HYOUSYOURAKU:
+	case NJ_RAIGEKISAI:
 		//skill_castend_pos2(src, bl->x, bl->y, skillid, skilllv, tick, 0);
 		//skill_attack(BF_MAGIC, src, src, bl, skillid, skilllv, tick, flag);
 		map_foreachinarea(skill_attack_area, src->m, src->x-5, bl->y-5, bl->x+5, bl->y+5, 0, BF_MAGIC, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
@@ -3348,8 +3384,13 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,flag);
 		break;
 	case NJ_KASUMIKIRI:
+		if (skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,flag) > 0)
+			status_change_start(src, SC_HIDING, skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
 		break;
 	case NJ_KIRIKAGE:
+		if(sc_data && sc_data[SC_HIDING].timer != -1)
+			status_change_end(src, SC_HIDING, -1);	// ハイディング解除
+		skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,flag);
 		break;
 	case NJ_KAENSIN:
 		break;
@@ -8236,6 +8277,42 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 		else if(sd->status.base_level >= 70)
 			sp -= sp * 3 * kaina_lv / 100;
 		}
+	case NJ_ISSEN:
+		if (sd && sd->status.hp <= 1) {
+			clif_skill_fail(sd,skill,0,0);
+			return 0;
+		}
+		break;
+
+	case NJ_BUNSINJYUTSU:
+		if (sd->sc_data[SC_NEN].timer == -1) {
+			clif_skill_fail(sd,skill,0,0);
+			return 0;
+		}
+		break;
+		
+	case NJ_KIRIKAGE:
+		if(sd->sc_data[SC_HIDING].timer == -1) {
+			clif_skill_fail(sd,skill,0,0);
+			return 0;
+		}
+		break;
+	
+	case NJ_SHADOWJUMP:
+		if(sd->sc_data[SC_HIDING].timer == -1) {
+			clif_skill_fail(sd,skill,0,0);
+			return 0;
+		}
+		break;
+
+	case NJ_ZENYNAGE:
+		if(sd->status.zeny < zeny) {
+			clif_skill_fail(sd,skill,5,0);
+			return 0;
+		}	else {
+			zeny = 0; // Zeny is reduced on skill_attack.
+			break;
+		}
 	}
 
 	if (!(type & 2)) {
@@ -8606,7 +8683,7 @@ int skill_use_id(struct map_session_data *sd, int target_id, int skill_num, int 
 	//you can use 'TF_HIDING' while 'Cloaking'. Tested on Aegis
 	//if (pc_iscloaking(sd) && skill_num == TF_HIDING)
 		//return 0;
-	if (sd->status.option&2 && skill_num != TF_HIDING && skill_num != AS_GRIMTOOTH && skill_num != RG_BACKSTAP && skill_num != RG_RAID)
+	if (sd->status.option&2 && skill_num != TF_HIDING && skill_num != AS_GRIMTOOTH && skill_num != RG_BACKSTAP && skill_num != RG_RAID && skill_num != NJ_SHADOWJUMP && skill_num != NJ_KIRIKAGE)
 		return 0;
 	if (pc_ischasewalk(sd) && skill_num != ST_CHASEWALK)
 		return 0;
