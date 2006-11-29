@@ -4,6 +4,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+11/29/06
+	* Fixed compilation problems and a small bug for Ninja skills [Van84]
 11/28/06
 	* Added: The majority of the Ninja-class skills [Tsuyuki]
 	 - Assassination

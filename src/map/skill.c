@@ -2686,11 +2686,11 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case SN_SHARPSHOOTING:
 	case NJ_KAMAITACHI:
 		// Does it stop if touch an obstacle? it shouldn't go through walls
-		map_foreachinpath(skill_attack_area, src->m, src->x, src->y, bl->x, bl->y, 2, 0, // function, map, source xy, target xy, range, type
+		 // function, map, source xy, target xy, range, type
 		if (skillid == NJ_KAMAITACHI)
-			BF_MAGIC, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
+			map_foreachinpath(skill_attack_area, src->m, src->x, src->y, bl->x, bl->y, 2, 0, BF_MAGIC, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
 		else
-			BF_WEAPON, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
+			map_foreachinpath(skill_attack_area, src->m, src->x, src->y, bl->x, bl->y, 2, 0, BF_WEAPON, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
 		break;
 
 	/*case PA_PRESSURE:	
@@ -3092,10 +3092,6 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case NJ_HYOUSENSOU:
 	case NJ_HUUJIN:
 	case NJ_BAKUENRYU:
-	case NJ_KAMAITACHI:
-		skill_attack(BF_MAGIC, src, src, bl, skillid, skilllv, tick, flag);
-		break;
-
 	case WZ_WATERBALL:			/* ウォーターボール */
 		skill_attack(BF_MAGIC, src, src, bl, skillid, skilllv, tick, flag);
 		if (skilllv > 1) {
