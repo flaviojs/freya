@@ -611,7 +611,7 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 	}
 
 	/* War of Emperium damage reduction */
-	if(damage > 0 && map[bl->m].flag.gvg && skill_num != HW_GRAVITATION && skill_num != PA_PRESSURE)
+	if(damage > 0 && map[bl->m].flag.gvg && skill_num != HW_GRAVITATION && skill_num != PA_PRESSURE && skill_num != NJ_ZENYNAGE)
 	{
 		if(tmd)
 		{
@@ -844,7 +844,8 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 	short skill =  0;
 	unsigned short skillratio = 100;	//Skill dmg modifiers.
 	short i;
-	short t_mode = 0, t_size = 0, t_race = 0, t_ele = 0;	//target variables
+	short t_size = 0, t_race = 0, t_ele = 0;	//target variables
+	short t_mode = status_get_mode(target);
 	short s_race = 0, s_ele = 0, s_ele_ = 0;	//source variables
 	struct status_change *sc_data, *t_sc_data;
 	int bonus_damage = 0;	// fixed additional damage to be appended after damage scaling modifiers (skillratio)
@@ -1023,7 +1024,7 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 	//Monsters only do a critical hit if they have used the monster skills Critical Attack or
 	//Counter Attack to make an attack (and then it is an automatic critical hit).
 	if(sd && !flag.cri && battle_config.enemy_critical_rate &&
-	   (!skill_num || skill_num == KN_AUTOCOUNTER || skill_num == SN_SHARPSHOOTING)) {
+	   (!skill_num || skill_num == KN_AUTOCOUNTER || skill_num == SN_SHARPSHOOTING || skill_num == NJ_KIRIKAGE)) {
 			cri = status_get_critical(src);
 			//The official equation is *2, but that only applies when sd's do critical.
 			cri -= status_get_luk(target) * 2;
@@ -1133,6 +1134,84 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 				skillratio += 90 + 30 * skill_lv;	// FORMULA: damage * (190 + 30 * skill_lv) / 100
 				if (sd && sd->weapontype1 == 0 && sd->weapontype2 == 0)
 					bonus_damage += 10 * pc_checkskill(sd, TK_RUN);
+				break;
+
+			/************ GUNSLINGER/NINJA EXPANDED CLASS SKILLS  ************/
+			// Gunslinger
+			case GS_DESPERADO:
+				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_SHORT;
+				skillratio += 50*(skill_lv-1);
+				break;
+			case GS_DUST:
+				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_SHORT;
+				skillratio += 50*skill_lv;
+				break;
+			case GS_CHAINACTION:
+				wd.type = 0x08;
+				break;
+			case GS_GROUNDDRIFT:
+				wd.blewcount = 0;
+				s_ele = s_ele_ = wflag; // Element comes in flag
+				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG;
+				break;
+			case GS_TRIPLEACTION:
+				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG;
+					skillratio += 50*skill_lv;
+					break;
+			case GS_BULLSEYE:
+				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG;
+				if((t_race == 2 || t_race == 7) && !(t_mode&0x20))
+				{	// Only adds damage on Brute/Demi-Human Non-Boss enemies
+					skillratio += 400;
+					flag.cardfix = 0;
+				}
+				break;
+			case GS_MAGICALBULLET:
+				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG;
+				break;
+			case GS_TRACKING:
+				skillratio += 100 *(skill_lv+1);
+				break;
+			case GS_PIERCINGSHOT:
+				skillratio += 20*skill_lv;
+				flag.idef = flag.idef2 = 1;
+				break;
+			case GS_RAPIDSHOWER:
+				skillratio += 10*skill_lv;
+				break;
+			case GS_FULLBUSTER:
+				skillratio += 100*(skill_lv+2);
+				break;
+			case GS_SPREADATTACK:
+				skillratio += 20*(skill_lv-1);
+				break;
+
+			// Ninja
+			case NJ_SYURIKEN:
+				skillratio += 4*skill_lv;
+				if (sd && (skill = pc_checkskill(sd, NJ_TOBIDOUGU)) > 0)
+					skillratio += 3*skill;
+				break;
+			case NJ_HUUMA:
+				skillratio += 150 + 150*skill_lv;
+				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG;
+				if (sd && (skill = pc_checkskill(sd, NJ_TOBIDOUGU)) > 0)
+					skillratio += 3*skill;
+				break;
+			case NJ_TATAMIGAESHI:
+				skillratio += 10*skill_lv;
+				break;
+			case NJ_KASUMIKIRI:
+				skillratio += 10*skill_lv;
+				break;
+			case NJ_KIRIKAGE:
+				skillratio += 100*(skill_lv-1);
+				cri += 250 + 50*skill_lv;
+				break;
+			case NJ_ISSEN:
+				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG;
+				wd.damage = 40*sd->status.str + skill_lv*(sd->status.hp/10 + 35);
+				wd.damage2 = 0;
 				break;
 
 			/************ 2-1 CLASS SKILLS ************/
@@ -1546,6 +1625,20 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 	if (flag.cri)	{
 		wd.type = 0x0a; // the type of a critical attack (used to display the damage as a critical, client side)
 		flag.idef = flag.idef2 = flag.hit = 1; // Critical attacks ignore armor def, vit defense, and always hit
+		
+		if (skill_num && !flag.hit)
+			switch(skill_num)
+			{
+				case SG_SUN_WARM:
+				case SG_MOON_WARM:
+				case SG_STAR_WARM:
+				case GS_GROUNDDRIFT:
+				case NJ_SYURIKEN:
+				case NJ_KUNAI:
+				case NJ_ISSEN:
+					flag.hit = 1;
+					break;
+			}
 	}
 	else if (!flag.hit) { // check for Perfect Hit
 		if(sd && sd->perfect_hit && rand()%100 < sd->perfect_hit)
@@ -2396,7 +2489,25 @@ struct Damage battle_calc_magic_attack(
 			}
 			break;
 		case SL_STUN:
-			MATK_FIX(5 * skill_lv, 100);
+			MATK_FIX(5*skill_lv, 100);
+			break;
+		case NJ_KOUENKA:
+			MATK_FIX(90, 100);
+			break;
+		case NJ_KAENSIN:
+			MATK_FIX(50, 100);
+			break;
+		case NJ_BAKUENRYU:
+			MATK_FIX(100 + 150 + 150*skill_lv, 100);
+			break;
+		case NJ_HYOUSYOURAKU:
+			MATK_FIX((100+50*skill_lv), 100);
+			break;
+		case NJ_RAIGEKISAI:
+			MATK_FIX((100+60+40*skill_lv), 100);
+			break;
+		case NJ_KAMAITACHI:
+			MATK_FIX((100+100+100*skill_lv), 100);
 			break;
 		}
 	}
