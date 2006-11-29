@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/28/06
+	* Added: Missing Star Gladiator skill database entries [Tsuyuki]
 	* Fixed: Bug in The Sign Quest (Thanks to galaxy) [Tsuyuki]
 	* Fixed: Merged the right calculation damage of EDP [Van84]
 	* Added: Inserted skill_castend_pos2 for Ninja/Gunslinger [Van84]
