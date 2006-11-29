@@ -1188,9 +1188,12 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 
 			// Ninja
 			case NJ_SYURIKEN:
-				skillratio += 4*skill_lv;
+				ATK_ADD(4*skill_lv);
 				if (sd && (skill = pc_checkskill(sd, NJ_TOBIDOUGU)) > 0)
-					skillratio += 3*skill;
+				ATK_ADD(3*skill);
+				break;
+			case NJ_KUNAI:
+				ATK_ADD(60);
 				break;
 			case NJ_HUUMA:
 				skillratio += 150 + 150*skill_lv;
@@ -2151,6 +2154,14 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 		if (cardfix != 1000)
 			ATK_SCALE(cardfix / 10);
 	}
+	
+	// NJ_HUUMA Damage Division for multiple targets [Tsuyuki]
+	if(skill_num == NJ_HUUMA) {
+		if(flag>0)
+			wd.damage /= flag;
+		else if(battle_config.error_log)
+			printf("battle_calc_weapon_attack(): NJ_HUUMA enemy count=0 !\n");
+	}
 
 	// Double Attack.
 	if(sd && !skill_num && !flag.cri) {	
@@ -2682,9 +2693,9 @@ struct Damage battle_calc_magic_attack(
  *------------------------------------------
  */
 struct Damage  battle_calc_misc_attack(
-	struct block_list *bl, struct block_list *target, int skill_num, int skill_lv, int flag)
+	struct block_list *bl, struct block_list *target, struct map_session_data *sd, int skill_num, int skill_lv, int flag)
 {
-	struct map_session_data *sd = NULL, *tsd = NULL;
+	struct map_session_data *tsd = NULL;
 	int int_ = status_get_int(bl);
 	int dex = status_get_dex(bl);
 	int skill, cardfix;
@@ -2810,6 +2821,19 @@ struct Damage  battle_calc_misc_attack(
 		break;
 	}
 
+	case NJ_ZENYNAGE:
+		damage = skill_get_zeny(skill_num, skill_lv);
+		if (!damage) damage = 2;
+		damage += rand()%damage;
+		if (status_get_mode(target) & 0x20) // Is Boss
+			damage /= 3;
+		else if (tsd)
+			damage /= 2;
+		flag.cardfix = 0;
+		wd.flag = (wd.flag & ~BF_RANGEMASK) | BF_LONG;
+		break;
+	}
+
 	if (damagefix) {
 		int ele = skill_get_pl(skill_num);
 		int race = status_get_race(bl);
@@ -2857,6 +2881,13 @@ struct Damage  battle_calc_misc_attack(
 	md.blewcount = blewcount;
 	md.flag = aflag;
 
+
+	if (skill_num == NJ_ZENYNAGE && sd) {
+		if (damage > sd->status.zeny )
+			damage = sd->status.zeny;
+		pc_payzeny(sd, damage);
+	}
+
 	return md;
 }
 
@@ -2875,7 +2906,7 @@ struct Damage battle_calc_attack(int attack_type,
 	case BF_MAGIC:
 		return battle_calc_magic_attack(bl, target, skill_num, skill_lv, flag);
 	case BF_MISC:
-		return battle_calc_misc_attack(bl, target, skill_num, skill_lv, flag);
+		return battle_calc_misc_attack(bl, target, sd, skill_num, skill_lv, flag);
 	default:
 		if (battle_config.error_log)
 			printf("battle_calc_attack: unknwon attack type ! %d\n", attack_type);

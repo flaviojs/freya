@@ -2990,11 +2990,10 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		}
 		break;
 	case NJ_SHADOWJUMP:
-		if(sd) {
-			if(!pc_movepos(sd, bl->x, bl->y, 1)) {
-				clif_slide(src, bl->x, bl->y); //teleport effect
-			}
-		}
+		if (sd) {
+			pc_movepos(sd, x, y, 0);
+		} else if (src->type == BL_MOB)
+			mob_warp((struct mob_data *)src, -1, x, y, 0);
 		break;
 	case SM_MAGNUM:
 		if(flag & 1)
