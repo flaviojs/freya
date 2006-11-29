@@ -5,6 +5,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/29/06
+	* Added: Some more Ninja Zeny Nage skill code [Tsuyuki]
+	 - Still broken..
+	* Added: Temp Ninja Shadow Jump skill code [Tsuyuki]
+	 - Also broken for now
 	* Fixed: Ninja KASUMIKIRI skill unhide if attack is miss [Van84]
 	* Fixed: compilation problems and a small bug for Ninja skills [Van84]
 
