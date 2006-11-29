@@ -7,7 +7,7 @@
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
-//= Warp Points for Einbroch
+//= Warp Points for Ice Dungeon
 //===== Additional Comments: =================================
 //= No Comment!
 //============================================================
