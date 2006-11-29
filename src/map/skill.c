@@ -2686,11 +2686,11 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case SN_SHARPSHOOTING:
 	case NJ_KAMAITACHI:
 		// Does it stop if touch an obstacle? it shouldn't go through walls
-		map_foreachinpath(skill_attack_area, src->m, src->x, src->y, bl->x, bl->y, 2, 0, // function, map, source xy, target xy, range, type
+		 // function, map, source xy, target xy, range, type
 		if (skillid == NJ_KAMAITACHI)
-			BF_MAGIC, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
+			map_foreachinpath(skill_attack_area, src->m, src->x, src->y, bl->x, bl->y, 2, 0, BF_MAGIC, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
 		else
-			BF_WEAPON, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
+			map_foreachinpath(skill_attack_area, src->m, src->x, src->y, bl->x, bl->y, 2, 0, BF_WEAPON, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
 		break;
 
 	/*case PA_PRESSURE:	
@@ -3092,10 +3092,6 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case NJ_HYOUSENSOU:
 	case NJ_HUUJIN:
 	case NJ_BAKUENRYU:
-	case NJ_KAMAITACHI:
-		skill_attack(BF_MAGIC, src, src, bl, skillid, skilllv, tick, flag);
-		break;
-
 	case WZ_WATERBALL:			/* ウォーターボール */
 		skill_attack(BF_MAGIC, src, src, bl, skillid, skilllv, tick, flag);
 		if (skilllv > 1) {
@@ -3383,9 +3379,17 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case GS_BULLSEYE:
 		skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,flag);
 		break;
-	case NJ_KASUMIKIRI:
-		if (skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,flag) > 0)
+	case NJ_KASUMIKIRI: 
+		if (skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,flag) > 0){
 			status_change_start(src, SC_HIDING, skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
+		}
+		else
+		{
+			//if status already in hide, unhide! Following what KRO skill description. If you hit target, you stay hidden
+			//if not you will not! Im not sure tho because Ea seem didnt implent it. we will?
+			if(sc_data && sc_data[SC_HIDING].timer != -1) 
+				status_change_end(src, SC_HIDING, -1);  //add by Van84
+		}
 		break;
 	case NJ_KIRIKAGE:
 		if(sc_data && sc_data[SC_HIDING].timer != -1)
