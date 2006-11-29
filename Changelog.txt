@@ -4,6 +4,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+11/28/06
+	* Improved: added indexing on heavily used database tables and readjusted some data-field sizes [Harbin]
+	 - note: credits to jshcrtmcd
+
 11/27/06
 	* Fixed: Some fixes to JetVictor's changes.. [Tsuyuki]
 	* Updated: Enabled missing kafra at center of prontera as per Aegis [Jetvictor]
