@@ -1732,7 +1732,8 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 			if(sc_data[SC_TRUESIGHT].timer != -1)
 				skillratio += 2 * sc_data[SC_TRUESIGHT].val1;
 			if(sc_data[SC_EDP].timer != -1 && skill_num != ASC_BREAKER && skill_num != ASC_METEORASSAULT && skill_num != AS_VENOMKNIFE)
-				skillratio += 50 + 50 * sc_data[SC_EDP].val1;
+				//skillratio += 50 + 50 * sc_data[SC_EDP].val1;
+				skillratio += sc_data[SC_EDP].val3; //merged the EDP correct calculation
 		}
 			
 		if(skill_num == AS_SONICBLOW) {
