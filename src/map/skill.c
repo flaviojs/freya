@@ -1753,7 +1753,7 @@ int skill_attack(int attack_type, struct block_list* src, struct block_list *dsr
 
 	type = -1;
 	lv = (flag>>20)&0xf;
-	dmg = battle_calc_attack(attack_type, src, bl, skillid, skilllv, flag&0xff); //ダメージ計算
+	dmg = battle_calc_attack(attack_type, src, bl, sd, skillid, skilllv, flag&0xff); //ダメージ計算
 
 	if (src->type == BL_PET) { // [Valaris]
 		dmg.damage = battle_attr_fix(skilllv, skill_get_pl(skillid), status_get_element(bl));
@@ -2989,12 +2989,12 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 			skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, 0);
 		}
 		break;
-	case NJ_SHADOWJUMP:
+/*	case NJ_SHADOWJUMP:
 		if (sd) {
 			pc_movepos(sd, x, y, 0);
 		} else if (src->type == BL_MOB)
 			mob_warp((struct mob_data *)src, -1, x, y, 0);
-		break;
+		break;*/
 	case SM_MAGNUM:
 		if(flag & 1)
 		{

@@ -5,6 +5,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/29/06
+	* Fixed: Hiding/Cloaking/Chase Walk will be removed upon the infliction of certain other statuses [Tsuyuki]
+	 - Stun, Freeze, Silence, Stone, Sleep
+	* Fixed: Commented Zeny Nage/Shadow Jump (buggy) [Tsuyuki]
 	* Fixed: A LOT of broken items/cards [Tsuyuki]
 	 - Freya does not have eAthena's "BaseJob" or "BaseClass"
 	 - Our equivalent of those is "GetPureJob"

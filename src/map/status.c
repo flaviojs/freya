@@ -4378,6 +4378,22 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			scflag.send_opt = 0;
 			break;
 	}
+	
+	// Hiding/Cloaking/Chase Walk dispelled if the following statuses exist [Tsuyuki]
+	switch(type) {
+		case SC_STONE:
+		case SC_FREEZE:
+		case SC_STUN:
+		case SC_SLEEP:
+		case SC_SILENCE:
+			if (sc_data && sc_data[SC_HIDING].timer != -1)
+				status_change_end(bl, SC_HIDING, -1);
+			else if (sc_data && sc_data[SC_CLOAKING].timer != -1)
+				status_change_end(bl, SC_CLOAKING, -1);
+			else if (sc_data && sc_data[SC_CHASEWALK].timer != -1)
+				status_change_end(bl, SC_CHASEWALK, -1);
+			break;
+	}
 
 	if (scflag.send_opt) /* option�̕ύX */
 		clif_changeoption(bl);

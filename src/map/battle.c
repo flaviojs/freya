@@ -2155,13 +2155,15 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 			ATK_SCALE(cardfix / 10);
 	}
 	
+	/*
 	// NJ_HUUMA Damage Division for multiple targets [Tsuyuki]
 	if(skill_num == NJ_HUUMA) {
 		if(flag>0)
-			wd.damage /= flag;
+			wd.damage = wd.damage / flag;
 		else if(battle_config.error_log)
 			printf("battle_calc_weapon_attack(): NJ_HUUMA enemy count=0 !\n");
 	}
+	*/
 
 	// Double Attack.
 	if(sd && !skill_num && !flag.cri) {	
@@ -2821,7 +2823,7 @@ struct Damage  battle_calc_misc_attack(
 		break;
 	}
 
-	case NJ_ZENYNAGE:
+/*	case NJ_ZENYNAGE:
 		damage = skill_get_zeny(skill_num, skill_lv);
 		if (!damage) damage = 2;
 		damage += rand()%damage;
@@ -2832,7 +2834,7 @@ struct Damage  battle_calc_misc_attack(
 		flag.cardfix = 0;
 		wd.flag = (wd.flag & ~BF_RANGEMASK) | BF_LONG;
 		break;
-	}
+	}*/
 
 	if (damagefix) {
 		int ele = skill_get_pl(skill_num);
@@ -2881,12 +2883,11 @@ struct Damage  battle_calc_misc_attack(
 	md.blewcount = blewcount;
 	md.flag = aflag;
 
-
-	if (skill_num == NJ_ZENYNAGE && sd) {
+/*	if (skill_num == NJ_ZENYNAGE && sd) {
 		if (damage > sd->status.zeny )
 			damage = sd->status.zeny;
 		pc_payzeny(sd, damage);
-	}
+	}*/
 
 	return md;
 }
@@ -2896,7 +2897,7 @@ struct Damage  battle_calc_misc_attack(
  *------------------------------------------
  */
 struct Damage battle_calc_attack(int attack_type,
-	struct block_list *bl, struct block_list *target, int skill_num, int skill_lv, int flag)
+	struct block_list *bl, struct block_list *target, struct map_session_data *sd, int skill_num, int skill_lv, int flag)
 {
 	struct Damage d;
 
