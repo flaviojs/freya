@@ -5303,7 +5303,8 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 			hp = sd->status.max_hp / 10; //Šî–{‚ÍHP‚Ì10%
 			if(hp >= sd->status.hp)
 				break;
-			sp = hp * 10 * skilllv / 100;
+			//sp = hp * 10 * skilllv / 100; //old convertion formular
+			sp = hp + (hp * 10 * skilllv) / 100; //new conversion formula took from Ea
 			pc_heal(sd, -hp, sp);
 		}
 		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
