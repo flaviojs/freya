@@ -5,6 +5,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/29/06
+	* Fixed: A LOT of broken items/cards [Tsuyuki]
+	 - Freya does not have eAthena's "BaseJob" or "BaseClass"
+	 - Our equivalent of those is "GetPureJob"
+	 - Fixes the Valkyrie Equipment set for those curious
 	* Fixed: Cultivation missing from the Creator class skill tree [Tsuyuki]
 	* Added: Some more Ninja Zeny Nage skill code [Tsuyuki]
 	 - Still broken..
