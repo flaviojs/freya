@@ -5905,8 +5905,13 @@ int clif_party_hp(struct party *p, struct map_session_data *sd)
 
 	WPACKETW(0) = 0x106;
 	WPACKETL(2) = sd->status.account_id;
-	WPACKETW(6) = (sd->status.hp > 0x7fff) ? 0x7fff : sd->status.hp;
-	WPACKETW(8) = (sd->status.max_hp > 0x7fff) ? 0x7fff : sd->status.max_hp;
+
+	if (sd->status.max_hp) {
+    WPACKETW(6) = 10000*sd->status.hp/sd->status.max_hp;
+    WPACKETW(8) = 10000;
+	} else {
+    WPACKETW(6) = sd->status.hp;
+	WPACKETW(8) = sd->status.max_hp;}
 	clif_send(packet_len_table[0x106], &sd->bl, PARTY_AREA_WOS);
 //	if (battle_config.etc_log)
 //		printf("clif_party_hp %d\n", sd->status.account_id);
