@@ -1406,7 +1406,7 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 	//if (rand()%100 <= skill_lv*10 + 10)
 		status_change_start(bl, SC_FREEZE, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
 		break;
-	}
+}
 
 	if (skillid != MC_CARTREVOLUTION && attack_type&BF_WEAPON) {
 		int i;
@@ -2991,12 +2991,6 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 			skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, 0);
 		}
 		break;
-/*	case NJ_SHADOWJUMP:
-		if (sd) {
-			pc_movepos(sd, x, y, 0);
-		} else if (src->type == BL_MOB)
-			mob_warp((struct mob_data *)src, -1, x, y, 0);
-		break;*/
 	case SM_MAGNUM:
 		if(flag & 1)
 		{
@@ -3393,9 +3387,18 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		}
 		break;
 	case NJ_KIRIKAGE:
-		if(sc_data && sc_data[SC_HIDING].timer != -1)
-			status_change_end(src, SC_HIDING, -1);	// ハイディング解除
-		skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,flag);
+		if (sc_data && sc_data[SC_HIDING].timer != -1) {
+			status_change_end(src, SC_HIDING, -1);
+			skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,flag);
+		} else {
+			clif_skill_fail(sd,skillid,0,0);
+		}
+		break;
+	case NJ_SHADOWJUMP:
+		if (sc_data && sc_data[SC_HIDING].timer != -1)
+			status_change_end(src,SC_HIDING,-1);
+		else
+			clif_skill_fail(sd, skillid, 0, 0);
 		break;
 	case NJ_KAENSIN:
 		break;
@@ -4046,7 +4049,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 		status_change_start(bl, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
 		break;
-	case LK_TENSIONRELAX:	/* テンションリラックス */
+	case LK_TENSIONRELAX:
 		if(sd) {
 			pc_setsit(sd);
 			clif_sitting(sd);
@@ -4054,7 +4057,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		status_change_start(bl, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
 		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 		break;
-	case LK_BERSERK: /* バーサーク */
+	case LK_BERSERK:
 		if(sd) {
 			sd->status.hp = sd->status.max_hp * 3;
 			sd->status.sp = 0;
@@ -4068,14 +4071,18 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 	case MC_CHANGECART:
 		clif_skill_nodamage(src,bl,skillid,skilllv,1);
 		break;
-	case AC_CONCENTRATION:	/* 集中力向上 */
+	case NJ_NEN:
+		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
+		status_change_start(bl, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
+		break;
+	case AC_CONCENTRATION:
 		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 		status_change_start(bl, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
 		map_foreachinarea(status_change_timer_sub,
 			src->m, src->x-1, src->y-1, src->x+1,src->y+1, 0,
 			src, SkillStatusChangeTable[skillid], tick);
 		break;
-	case SM_PROVOKE:		/* プロボック */
+	case SM_PROVOKE:
 		{
 			/* MVPmobと不死には効かない */
 			if((dstmd && status_get_mode(bl) & 0x20) || battle_check_undead(status_get_race(bl), status_get_elem_type(bl))) //不死には効かない
@@ -6297,7 +6304,17 @@ int skill_castend_pos2(struct block_list *src, int x, int y, int skillid, int sk
 		} else if (src->type == BL_MOB)
 			mob_warp((struct mob_data *)src, -1, x, y, 0);
 		break;
-	case AM_CANNIBALIZE: // バイオプラント
+	case NJ_SHADOWJUMP: // [Tsuyuki]
+		if (sd) {
+			pc_movepos(sd, x, y, 0);
+	//	status_change_start(src, SC_HIDING, skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
+			if(src->type == BL_PET) // Pet
+				clif_fixpetpos((struct pet_data *)src);
+			else // Player
+				clif_fixpos(src);
+		}
+		break;
+	case AM_CANNIBALIZE:
 		if (sd) {
 			int id;
 			struct mob_data *md;
@@ -6314,7 +6331,7 @@ int skill_castend_pos2(struct block_list *src, int x, int y, int skillid, int sk
 			clif_skill_poseffect(src, skillid, skilllv, x, y, tick);
 		}
 		break;
-	case AM_SPHEREMINE:	// スフィアーマイン
+	case AM_SPHEREMINE:
 		if (sd) {
 			int mx, my, id = 0;
 			struct mob_data *md;
@@ -8286,7 +8303,7 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 			sp -= sp * 3 * kaina_lv / 100;
 		}
 	case NJ_ISSEN:
-		if (sd && sd->status.hp <= 1) {
+		if (sd->status.hp <= 1 || sd->sc_data[SC_NEN].timer == -1) {
 			clif_skill_fail(sd,skill,0,0);
 			return 0;
 		}
@@ -8294,20 +8311,6 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 
 	case NJ_BUNSINJYUTSU:
 		if (sd->sc_data[SC_NEN].timer == -1) {
-			clif_skill_fail(sd,skill,0,0);
-			return 0;
-		}
-		break;
-		
-	case NJ_KIRIKAGE:
-		if(sd->sc_data[SC_HIDING].timer == -1) {
-			clif_skill_fail(sd,skill,0,0);
-			return 0;
-		}
-		break;
-	
-	case NJ_SHADOWJUMP:
-		if(sd->sc_data[SC_HIDING].timer == -1) {
 			clif_skill_fail(sd,skill,0,0);
 			return 0;
 		}
@@ -8691,7 +8694,7 @@ int skill_use_id(struct map_session_data *sd, int target_id, int skill_num, int 
 	//you can use 'TF_HIDING' while 'Cloaking'. Tested on Aegis
 	//if (pc_iscloaking(sd) && skill_num == TF_HIDING)
 		//return 0;
-	if (sd->status.option&2 && skill_num != TF_HIDING && skill_num != AS_GRIMTOOTH && skill_num != RG_BACKSTAP && skill_num != RG_RAID && skill_num != NJ_SHADOWJUMP && skill_num != NJ_KIRIKAGE)
+	if (sd->status.option&2 && skill_num != TF_HIDING && skill_num != AS_GRIMTOOTH && skill_num != RG_BACKSTAP && skill_num != RG_RAID && skill_num != NJ_SHADOWJUMP && skill_num != NJ_KIRIKAGE && skill_num != NJ_ISSEN)
 		return 0;
 	if (pc_ischasewalk(sd) && skill_num != ST_CHASEWALK)
 		return 0;

@@ -212,6 +212,7 @@ void initStatusIconTable(void) {
 	init_sc(SL_STAR,                SC_SPIRIT,           ICO_SPIRIT);
 	init_sc(SL_SUPERNOVICE,         SC_SPIRIT,           ICO_SPIRIT);
 	init_sc(SL_WIZARD,              SC_SPIRIT,           ICO_SPIRIT);
+	init_sc(NJ_NEN,                 SC_NEN,              ICO_NEN);
 	
 #undef init_sc
 
@@ -705,10 +706,15 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 	{
 		if (sd->sc_data[SC_INCSTR].timer != -1)
 			sd->paramb[0] += sd->sc_data[SC_INCSTR].val1;
-		if (sd->sc_data[SC_CONCENTRATE].timer != -1 && sd->sc_data[SC_QUAGMIRE].timer == -1) { // 集中力向上
+		if (sd->sc_data[SC_CONCENTRATE].timer != -1 && sd->sc_data[SC_QUAGMIRE].timer == -1) {
 			sd->paramb[1] += (sd->status.agi + sd->paramb[1] + sd->parame[1] - sd->paramcard[1]) * (2 + sd->sc_data[SC_CONCENTRATE].val1) / 100;
 			sd->paramb[4] += (sd->status.dex + sd->paramb[4] + sd->parame[4] - sd->paramcard[4]) * (2 + sd->sc_data[SC_CONCENTRATE].val1) / 100;
 		}
+		if (sd->sc_data[SC_NEN].timer != -1) {
+			sd->paramb[0] += sd->sc_data[SC_NEN].val1;
+			sd->paramb[3] += sd->sc_data[SC_NEN].val1;
+		}
+
 		if (sd->sc_data[SC_INCREASEAGI].timer != -1 && sd->sc_data[SC_QUAGMIRE].timer == -1 && sd->sc_data[SC_DONTFORGETME].timer == -1) { // 速度増加
 			sd->paramb[1] += 2 + sd->sc_data[SC_INCREASEAGI].val1;
 			sd->speed -= sd->speed * 25 / 100;
@@ -733,12 +739,12 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 			sd->speed = sd->speed * 150 / 100;
 		if (sd->sc_data[SC_SPEEDUP0].timer!=-1)
 			sd->speed -= sd->speed * 25 / 100;
-		if (sd->sc_data[SC_BLESSING].timer!=-1) { // ブレッシング
+		if (sd->sc_data[SC_BLESSING].timer!=-1) {
 			sd->paramb[0] += sd->sc_data[SC_BLESSING].val1;
 			sd->paramb[3] += sd->sc_data[SC_BLESSING].val1;
 			sd->paramb[4] += sd->sc_data[SC_BLESSING].val1;
 		}
-		if(sd->sc_data[SC_GLORIA].timer!=-1)	// グロリア
+		if(sd->sc_data[SC_GLORIA].timer!=-1)
 			sd->paramb[5]+= 30;
 		if(sd->sc_data[SC_LOUD].timer!=-1 && sd->sc_data[SC_QUAGMIRE].timer == -1)	// ラウドボイス
 			sd->paramb[0]+= 4;
@@ -1784,14 +1790,16 @@ int status_get_str(struct block_list *bl) {
 		if (sc_data) {
 			if (sc_data[SC_LOUD].timer!=-1 && sc_data[SC_QUAGMIRE].timer == -1)
 				str += 4;
-			if (sc_data[SC_BLESSING].timer != -1) { // ブレッシング
+			if (sc_data[SC_BLESSING].timer != -1) {
 				int race=status_get_race(bl);
 				if (battle_check_undead(race, status_get_elem_type(bl)) || race == 6)
 					str >>= 1; // 悪 魔/不死
 				else
 					str += sc_data[SC_BLESSING].val1; // その他
 			}
-			if(sc_data[SC_TRUESIGHT].timer != -1) // トゥルーサイト
+			if(sc_data[SC_NEN].timer != -1)
+				str += sc_data[SC_NEN].val1;
+			if(sc_data[SC_TRUESIGHT].timer != -1)
 				str += 5;
 			if (sc_data[SC_INCSTR].timer != -1)
 				str += sc_data[SC_INCSTR].val1;
@@ -1937,6 +1945,8 @@ int status_get_int(struct block_list *bl) {
 				else
 					int_ += sc_data[SC_BLESSING].val1; // その他
 			}
+			if(sc_data[SC_NEN].timer != -1)
+				int_ += sc_data[SC_NEN].val1;
 			if (sc_data[SC_STRIPHELM].timer != -1)
 				int_ = int_ * 60 / 100;
 			if (sc_data[SC_TRUESIGHT].timer != -1) // トゥルーサイト
@@ -3421,9 +3431,10 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 				(sc_data[SC_PROVOKE].timer == -1 || sc_data[SC_PROVOKE].val2 == 0))
 				status_change_start(bl, SC_PROVOKE, 10, 1, 0, 0, 0, 0);
 			break;
-		case SC_CONCENTRATE:		/* 集中力向上 */
+		case SC_CONCENTRATE:
 		case SC_RUN:
 		case SC_SPURT:
+		case SC_NEN:
 			scflag.calc = 1;
 			break;
 		case SC_READYSTORM:
@@ -4659,14 +4670,13 @@ int status_change_end(struct block_list* bl, int type, int tid)
 			case SC_WINDWALK:		/* ウインドウォーク */
 			case SC_TRUESIGHT:		/* トゥルーサイト */
 			case SC_SPIDERWEB:		/* スパイダーウェッブ */
-			case SC_MAGICPOWER:		/* 魔法力増幅 */
+			case SC_MAGICPOWER:
 			case SC_CHASEWALK:
 			case SC_ATKPOT:		/* attack potion [Valaris] */
 			case SC_MATKPOT:		/* magic attack potion [Valaris] */
-			case SC_WEDDING:	//結婚用(結婚衣裳になって歩くのが遅いとか)
-			case SC_MELTDOWN:		/* メルトダウン */
+			case SC_WEDDING:
+			case SC_MELTDOWN:
 			case SC_CARTBOOST:
-			// Celest
 			case SC_EDP:
 			case SC_SLOWDOWN:
 			case SC_SPEEDUP0:
@@ -4682,7 +4692,7 @@ int status_change_end(struct block_list* bl, int type, int tid)
 			case SC_INCHITRATE:
 			case SC_INCATKRATE:
 			case SC_INCDEFRATE:
-			case SC_INCFLEERATE:		/* FLEE%上昇 */
+			case SC_INCFLEERATE:
 			case SC_INCASPDRATE:
 			case SC_BATTLEORDERS:
 			case SC_REGENERATION:
@@ -4699,6 +4709,7 @@ int status_change_end(struct block_list* bl, int type, int tid)
 			case SC_BATKFOOD:
 			case SC_WATKFOOD:
 			case SC_MATKFOOD:
+			case SC_NEN:
 				calc_flag = 1;
 				break;
 

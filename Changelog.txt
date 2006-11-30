@@ -5,7 +5,13 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/30/06
-	* Added: Few conditions in mob_change_class, it should optimize the mob change class to avoid that function work for nothing [Van84]
+	* Fixed: You must now be in Nen-mode to cast Ninja Issen/Final Strike [Tsuyuki]
+	* Added: Ninja Nen/Soul skill [Tsuyuki]
+	* Fixed: Caster can now move during Gravitation Field [Tsuyuki]
+	* Fixed: Added a check to prevent getting negative HP/SP (Thanks to Target) [Tsuyuki]
+	* Added: Some more Death Knight/Dark Collector/Related classes structure [Tsuyuki]
+	* Added: Few conditions in mob_change_class [Van84]
+	 - It should optimize the mob change class to avoid that function work for nothing
 	* Fixed: HT_Phantasmic should knockback even if it is missed [Van84]
 	* Fixed: Correct the knockback for TATAMIGAESHI skill [Van84]
 	* Updated: New HPConversion took from Eathena [Van84]

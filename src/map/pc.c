@@ -412,16 +412,15 @@ int pc_cant_move(struct map_session_data *sd) {
 	if (sd->opt1 > 0 && sd->opt1 != 6)
 		return 1;
 
-	//About statuses that makes the player not able to move
+	// Statuses that immobilize the player
 	if(sd->sc_count &&
-    (sd->sc_data[SC_ANKLE].timer != -1 || //アンクルスネア
-     sd->sc_data[SC_AUTOCOUNTER].timer != -1 || //オートカウンター
-     sd->sc_data[SC_TRICKDEAD].timer != -1 || //死んだふり
-     sd->sc_data[SC_BLADESTOP].timer != -1 || //白刃取り
-     sd->sc_data[SC_SPIDERWEB].timer != -1 || //スパイダーウェッブ
-    (sd->sc_data[SC_DANCING].timer != -1 && sd->sc_data[SC_DANCING].val4 && sd->sc_data[SC_LONGING].timer == -1) || //合奏スキル演奏中は動けない
-    (sd->sc_data[SC_GOSPEL].timer != -1 && sd->sc_data[SC_GOSPEL].val4 == BCT_SELF) ||	// cannot move while gospel is in effect
-	   sd->sc_data[SC_GRAVITATION].timer != -1 ||
+    (sd->sc_data[SC_ANKLE].timer != -1 ||
+     sd->sc_data[SC_AUTOCOUNTER].timer != -1 ||
+     sd->sc_data[SC_TRICKDEAD].timer != -1 ||
+     sd->sc_data[SC_BLADESTOP].timer != -1 ||
+     sd->sc_data[SC_SPIDERWEB].timer != -1 ||
+    (sd->sc_data[SC_DANCING].timer != -1 && sd->sc_data[SC_DANCING].val4 && sd->sc_data[SC_LONGING].timer == -1) ||
+    (sd->sc_data[SC_GOSPEL].timer != -1 && sd->sc_data[SC_GOSPEL].val4 == BCT_SELF) ||	// Cannot move while gospel is in effect
 	   sd->sc_data[SC_STOP].timer != -1 ||
 	   sd->sc_data[SC_CLOSECONFINE].timer != -1 ||
 	   sd->sc_data[SC_CLOSECONFINE2].timer != -1))
@@ -1268,6 +1267,8 @@ void pc_checkminskill(struct map_session_data* sd) {
 	case 25: // Ninja
 		min_points = 9 + 20 + sd->status.job_level - 1;
 		break;
+	case 26: // Xmas
+		break;
 	case 4001: // Novice High
 		min_points = sd->status.job_level - 1;
 		break;
@@ -1338,6 +1339,11 @@ void pc_checkminskill(struct map_session_data* sd) {
 	case 4048: // Taekwon Master/Star Gladiator (Flying)
 	case 4049: // Soul Linker
 		min_points = 9 + sd->status.job_level - 1;
+	case 4050: // Bon Gun
+	case 4051: // Death Knight
+	case 4052: // Dark Collector
+	case 4053: // Munak
+		break;
 	}
 
 //	printf("pc_checkminskill: actual: %d, min: %d, to restore: %d.\n", skill_points, min_points, min_points - skill_points);
@@ -1410,6 +1416,8 @@ int pc_checkmaxskill(struct map_session_data* sd) {
 	case 25: // Ninja
 		max_points = 9 + 20 + sd->status.job_level - 1;
 		break;
+	case 26: // Xmas
+		break;
 	case 4001: // Novice High
 		max_points = sd->status.job_level - 1;
 		break;
@@ -1480,6 +1488,10 @@ int pc_checkmaxskill(struct map_session_data* sd) {
 	case 4048: // Taekwon Master/Star Gladiator (Flying)
 	case 4049: // Soul Linker
 		max_points = 9 + sd->status.job_level - 1;
+	case 4050: // Bon Gun
+	case 4051: // Death Knight
+	case 4052: // Dark Collector
+	case 4053: // Munak
 		break;
 	}
 
@@ -4379,7 +4391,7 @@ void pc_walktoxy(struct map_session_data *sd, short x, short y) {
 
 	if(sd->chatID != 0)
 		return; // to avoid moving while the player is in a chat [Proximus]
-			
+	
 	if(sd->sc_data[SC_CONFUSION].timer != -1) {
 		if(pc_randomxy(sd))
 			return;
@@ -7625,7 +7637,7 @@ int pc_checkitem(struct map_session_data *sd)
 	if (j < MAX_CART)
 		memset(&sd->status.cart[j], 0, sizeof(struct item) * (MAX_CART - j));
 
-	// check illegal slooted card in an item (inventory) - we check ALL items (weapons, armors AND others)
+	// check illegal slotted card in an item (inventory) - we check ALL items (weapons, armors AND others)
 	if (battle_config.check_invalid_slot) {
 		for(i = 0; i < MAX_INVENTORY; i++) {
 			if (sd->status.inventory[i].nameid == 0)
@@ -7685,6 +7697,10 @@ int pc_checkoverhp(struct map_session_data *sd)
 		sd->status.hp = sd->status.max_hp;
 		clif_updatestatus(sd, SP_HP);
 		return 2;
+	} else if(sd->status.hp < 0) {
+		sd->status.hp = 1;
+		clif_updatestatus(sd, SP_HP);
+		return 2;
 	}
 
 	return 0;
@@ -7698,6 +7714,10 @@ int pc_checkoversp(struct map_session_data *sd)
 		return 1;
 	if (sd->status.sp > sd->status.max_sp) {
 		sd->status.sp = sd->status.max_sp;
+		clif_updatestatus(sd, SP_SP);
+		return 2;
+	} else if(sd->status.sp < 0) {
+		sd->status.sp = 1;
 		clif_updatestatus(sd, SP_SP);
 		return 2;
 	}
