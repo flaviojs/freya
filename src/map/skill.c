@@ -4784,6 +4784,8 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 					} else if (equip & EQP_ARMOR && i == 7 && !(dstsd->unstripable_equip&EQP_ARMOR) && !(tsc_data && tsc_data[SC_CP_ARMOR].timer != -1)) {
 						sclist[2] = SC_STRIPARMOR;
 						pc_unequipitem(dstsd, dstsd->equip_index[i], 3);
+						if (tsc_data[SC_WEDDING].timer != -1)
+							status_change_end(bl,SC_WEDDING,-1);
 					} else if (equip & EQP_HELM && i == 6 && !(dstsd->unstripable_equip&EQP_HELM) && !(tsc_data && tsc_data[SC_CP_HELM].timer != -1)) {
 						sclist[3] = SC_STRIPHELM;
 						pc_unequipitem(dstsd, dstsd->equip_index[i], 3);

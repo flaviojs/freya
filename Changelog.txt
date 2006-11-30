@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/29/06
+	* Fixed: Wedding sprites are now properly removed on Strip Armor [Tsuyuki]
+	* Added: The new Rice Cake pet [Tsuyuki]
 	* Fixed: Hiding/Cloaking/Chase Walk will be removed upon the infliction of certain other statuses [Tsuyuki]
 	 - Stun, Freeze, Silence, Stone, Sleep
 	* Fixed: Commented Zeny Nage/Shadow Jump (buggy) [Tsuyuki]

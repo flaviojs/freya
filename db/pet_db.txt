@@ -32,3 +32,4 @@
 // Alice/Zealotus Skills partially implemented (Incorrect damage/heal values, Sohee should heal hp AND sp to 100%)
 1200,ZEALOTUS,Zealotus,660,9027,0,929,80,20,10,100,250,20,50,200,0,1029,2000,100,500,{ petskillattack 136,3000,1,3; }
 1275,ALICE,Alice,661,9026,0,504,80,20,10,100,250,20,100,200,0,1170,100,2000,200,{ petheal 25,750,60; }
+1815,EVENT_RICE_CAKE,Rice Cake,0,9028,0,537,80,20,50,100,250,20,500,300,1,0,100,100,100,{} // Missing Item Tame ID
