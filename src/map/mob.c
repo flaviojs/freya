@@ -3141,6 +3141,11 @@ int mob_class_change(struct mob_data *md, int *value, int count)
 	if (md->bl.prev == NULL) return 0;
 	if (count < 1) return 0;
 
+	//added by van84 to check few condition to avoid mob changing class working for nothing
+	if (md->class == class ) return 0; // if the previous class is the same
+	if (md->class >= 1285 && md->class <= 1288) return 0; //emperium and guardian should be ignored
+	if (md->class >= 1324 && md->class <= 1363) return 0; //treasure chest
+
 	i = rand() % count;
 	if (value[i] && value[i] > 1000 && value[i] < MAX_MOB_DB)
 		class = value[i];
