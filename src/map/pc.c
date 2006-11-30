@@ -8241,9 +8241,8 @@ static int pc_natural_heal_sub(struct map_session_data *sd, va_list ap) {
 			sd->sp_sub = sd->inchealsptick = 0;
 		} else { //natural heal
 			pc_natural_heal_hp(sd);
-			if(sd->sc_count && (((sd->sc_data[SC_EXTREMITYFIST].timer != -1 && (sd->sc_data[SC_SPIRIT].timer == -1 || 
-				sd->sc_data[SC_SPIRIT].val2 != SL_MONK)) || sd->sc_data[SC_DANCING].timer != -1))) // No Natural SP Recovery
-				sd->sp_sub = sd->inchealsptick = 0;
+			if (sd->sc_count && ((sd->sc_data[SC_EXTREMITYFIST].timer != -1 && sd->sc_data[SC_SPIRIT].timer == -1) || sd->sc_data[SC_DANCING].timer != -1))
+					sd->sp_sub = sd->inchealsptick = 0;
 			else
 				pc_natural_heal_sp(sd);
 			sd->canregen_tick = tick;
