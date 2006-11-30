@@ -2503,7 +2503,7 @@
 9025,Bongun_Egg,Bongun Egg,7,20,0,0,,,,,,,,,,,{},{}
 9026,Zealotus_Egg,Zealotus Egg,7,20,0,0,,,,,,,,,,,{},{}
 9027,Alice_Egg,Alice Egg,7,20,0,0,,,,,,,,,,,{},{}
-9028,Rice_Cake_Egg,Rice Cake Egg,7,20,0,0,,,,,,,,,,,{},{} // Mob ID: 1815, or 1816 (Uncomfirmed)
+9028,Rice_Cake_Egg,Rice Cake Egg,7,20,0,0,,,,,,,,,,,{},{}
 
 // Pet Accessories
 10001,Skull_Helm,Skull Helm,8,20,0,0,,,,,,,,,,,{},{}
