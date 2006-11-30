@@ -1801,7 +1801,7 @@ int skill_attack(int attack_type, struct block_list* src, struct block_list *dsr
 	if(flag&0xff00)
 		type = (flag&0xff00)>>8;
 
-	if((damage <= 0 || damage < dmg.div_) && skillid != CH_PALMSTRIKE) //吹き飛ばし判定？※
+	if((damage <= 0 || damage < dmg.div_) && skillid != CH_PALMSTRIKE 	&& skillid != HT_PHANTASMIC) //吹き飛ばし判定？※
 		dmg.blewcount = 0;
 
 	if (skillid == CR_GRANDCROSS || skillid == NPC_GRANDDARKNESS) { //グランドクロス
@@ -1810,7 +1810,9 @@ int skill_attack(int attack_type, struct block_list* src, struct block_list *dsr
 		if (src == bl)
 			type = 4; // 反動はダメージモーションなし
 	}
-
+	if(skillid == NJ_TATAMIGAESHI) {
+		dsrc = src; //knockback by van84
+	}
 //使用者がPCの場合の処理ここから
 	if(sd) {
 		if (sd->sc_data[SC_COMBO].timer != -1 && skillid)
