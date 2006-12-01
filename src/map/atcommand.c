@@ -711,8 +711,8 @@ static struct AtCommandInfo {
 	{ AtCommand_Request,               "@request",               0, atcommand_request },
 	{ AtCommand_Version,               "@version",               0, atcommand_version },
 	{ AtCommand_Version2,              "@version2",              0, atcommand_version2 },
-	{ AtCommand_Tempname,              "@tempname",              0, atcommand_tempname },
-	{ AtCommand_Size,				   "@size",              0, atcommand_size },
+	{ AtCommand_Tempname,              "@tempname",              0, atcommand_Tempname },
+	{ AtCommand_Size,				   "@size",					 0, atcommand_Size },
 #ifdef USE_SQL
 	{ AtCommand_CheckMail,             "@checkmail",             1, atcommand_listmail }, // type: 1:checkmail, 2:listmail, 3:listnewmail
 	{ AtCommand_ListMail,              "@listmail",              1, atcommand_listmail }, // type: 1:checkmail, 2:listmail, 3:listnewmail
@@ -2077,7 +2077,7 @@ ATCOMMAND_FUNC(jumpto) {
 				clif_displaymessage(fd, "You are not authorized to warp you from your actual map.");
 				return -1;
 			}
-			if (pc_setpos(sd, pl_sd->mapname, pl_sd->bl.x, pl_sd->bl.y, 3, 1) == 0) { /* not found ? */
+			if (pc_setpos(sd, pl_sd->mapname, x, y, 3, 1) == 0) { /* not found ? */
 				sprintf(atcmd_output, msg_txt(4), pl_sd->status.name); // Jump to '%s'.
 				clif_displaymessage(fd, atcmd_output);
 			} else {
@@ -2977,9 +2977,9 @@ ATCOMMAND_FUNC(whohasmap) {
  */
 ATCOMMAND_FUNC(happyhappyjoyjoy) {
 	struct map_session_data *pl_sd;
-	int i, e, count;
+	int i, e;
+	int count = 0;
 
-	count = 0;
 	for (i = 0; i < fd_max; i++) {
 		if (session[i] && (pl_sd = session[i]->session_data) && pl_sd->state.auth) {
 			if (!(pl_sd->status.option & OPTION_HIDE)) { // if GM is hiden, don't display on it
@@ -15108,13 +15108,13 @@ ATCOMMAND_FUNC(version2) {
 /*============================================
 tempname added by van
 ============================================*/
-ATCOMMAND_FUNC(tempname) {
+ATCOMMAND_FUNC(Tempname) {
 
-	struct map_session_data* pl_sd;
+	//struct map_session_data* pl_sd;
 	//nullpo_retr(-1, sd);
 	if((!message || !*message) && strlen(sd->fakename) > 1) {
 		sd->fakename[0]='\0';
-		pc_setpos(sd, sd->mapname, sd->bl.x, sd->bl.y, 3);
+		pc_setpos(sd, sd->mapname, sd->bl.x, sd->bl.y, 3, 0);
 		clif_displaymessage(sd,"Returned to real name.");
 	}
 
@@ -15126,7 +15126,7 @@ ATCOMMAND_FUNC(tempname) {
 /*============================================
 size added by van
 ============================================*/
-ATCOMMAND_FUNC(size) {
+ATCOMMAND_FUNC(Size) {
 	clif_displaymessage(sd,"Not implented yet");
 	return 0;
 }
