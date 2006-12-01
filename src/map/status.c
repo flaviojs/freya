@@ -215,7 +215,7 @@ void initStatusIconTable(void) {
 	init_sc(NJ_NEN,                 SC_NEN,              ICO_NEN);
 	init_sc(NJ_UTSUSEMI,            SC_UTSUSEMI,         ICO_UTSUSEMI);
 	init_sc(NJ_BUNSINJYUTSU,        SC_BUNSINJYUTSU,     ICO_BUNSINJYUTSU);
-	
+	init_sc(NJ_TATAMIGAESHI,        SC_TATAMIGAESHI,     ICO_BLANK);
 #undef init_sc
 
 	//Misc status icons. Non-Skills
@@ -3381,14 +3381,6 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 		case SC_BUNSINJYUTSU:
 			val2=(val1+1)/2;
 			break;
-	/*case SC_UTSUSEMI:
-			if (val1 == 1 || val1 == 2)
-				val3 = 1;
-			else if (val1 == 3 || val1 == 4)
-				val3 = 2;
-			else if (val1 == 5)
-			val3 = 3;
-			break;*/
 		case SC_SPIRIT:
 			scflag.calc = 1;
 			*opt3 |= 32768;

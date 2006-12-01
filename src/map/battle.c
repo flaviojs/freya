@@ -535,18 +535,9 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 				return 0;
 		}
 	}
-
-/*		if (tsc_data[SC_UTSUSEMI].timer != -1 && tsc_data[SC_UTSUSEMI].timer != 0 && skill_num != PA_PRESSURE) {
-			skill_blown(src,bl,skill_get_blewcount(NJ_UTSUSEMI,skill_lv)|0x10000);
-			if (src->type == BL_PET) // Pet
-				clif_fixpetpos((struct pet_data *)src);
-			else // Player
-				clif_fixpos(src);
-			tsc_data[SC_UTSUSEMI].val3 -= 1;
-			if (tsc_data[SC_UTSUSEMI].val3 == 0)
-				status_change_end(bl, SC_UTSUSEMI, -1);
+	
+		if(tsc_data[SC_TATAMIGAESHI].timer != -1 && (flag&BF_MAGIC || flag&BF_LONG))
 			return 0;
-		}*/
 
 		if(flag&BF_WEAPON) { //Weapon attacks
 			if(flag&BF_LONG) { //Long ranged attacks
@@ -2186,16 +2177,14 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 		if (cardfix != 1000)
 			ATK_SCALE(cardfix / 10);
 	}
-	
-	/*
+
 	// NJ_HUUMA Damage Division for multiple targets [Tsuyuki]
 	if(skill_num == NJ_HUUMA) {
-		if(flag>0)
-			wd.damage = wd.damage / flag;
+		if(wflag>0)
+			wd.damage = wd.damage / wflag;
 		else if(battle_config.error_log)
 			printf("battle_calc_weapon_attack(): NJ_HUUMA enemy count=0 !\n");
 	}
-	*/
 
 	// Double Attack.
 	if(sd && !skill_num && !flag.cri) {	
