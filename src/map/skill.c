@@ -2242,8 +2242,7 @@ int skill_guildaura_sub(struct block_list *bl, va_list ap) {
 	if (guild_checkskill(g, GD_LEADERSHIP) > 0) flag |= 1 << 0;
 	if (guild_checkskill(g, GD_GLORYWOUNDS) > 0) flag |= 1 << 1;
 	if (guild_checkskill(g, GD_SOULCOLD) > 0) flag |= 1 << 2;
-	if (guild_checkskill(g, GD_HAWKEYES) > 0) flag |= 1 << 3;
-	if (guild_checkskill(g, GD_CHARISMA) > 0) flag |= 1 << 4;*/
+	if (guild_checkskill(g, GD_HAWKEYES) > 0) flag |= 1 << 3;*/
 	flag = va_arg(ap, int); // flag (checked before: > 0)
 
 //	if (flag > 0) { // doesn't calculate flag in skill_guildaura_sub (repetitiv)

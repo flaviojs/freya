@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/30/06
+	* Removed: Effect of GD_CHARISMA (thanks to Damz) [Latios]
+	* Fixed: GD_LEADERSHIP, GD_GLORYWOUNDS, GD_SOULCOLD and GD_HAWKEYES should increase stats by 1*SkillLevel instead of 2 (thanks to bajibbles) [Latios]
 	* Fixed: Mind Breaker formula [Latios]
 	* Improved: clif_walkok for better walking method of characters
 	* Fixed: Wraith now drops the proper Slotted Manteau, not Skeleton Manteau (Also thanks to Zortch) [Tsuyuki]

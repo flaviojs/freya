@@ -797,16 +797,15 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 			sd->paramb[4] += 5;
 		}
 
-		if(sd->sc_data[SC_GUILDAURA].timer != -1)
-		{
+		if(sd->sc_data[SC_GUILDAURA].timer != -1) {
 			if(sd->sc_data[SC_GUILDAURA].val4 & 1 << 0)
-				sd->paramb[0] += 2;
+				sd->paramb[0] += guild_checkskill(sd->state.gmaster_flag, GD_LEADERSHIP);
 			if(sd->sc_data[SC_GUILDAURA].val4 & 1 << 1)
-				sd->paramb[2] += 2;
+				sd->paramb[2] += guild_checkskill(sd->state.gmaster_flag, GD_GLORYWOUNDS);
 			if(sd->sc_data[SC_GUILDAURA].val4 & 1 << 2)
-				sd->paramb[1] += 2;
+				sd->paramb[1] += guild_checkskill(sd->state.gmaster_flag, GD_SOULCOLD);
 			if(sd->sc_data[SC_GUILDAURA].val4 & 1 << 3)
-				sd->paramb[4] += 2;
+				sd->paramb[4] += guild_checkskill(sd->state.gmaster_flag, GD_HAWKEYES);
 		}
 
 		if(sd->sc_data[SC_STRFOOD].timer != -1)
@@ -1393,13 +1392,6 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 			}
 		}
 
-		// custom stats, since there's no info on how much it actually gives ^^; [Celest]
-		if (sd->sc_data[SC_GUILDAURA].timer != -1) {
-			if (sd->sc_data[SC_GUILDAURA].val4 & 1 << 4) {
-				sd->hit += 10;
-				sd->flee += 10;
-			}
-		}
 		if(sd->sc_data[SC_INCHIT].timer != -1)
 			sd->hit += sd->sc_data[SC_INCHIT].val1;
 		if(sd->sc_data[SC_INCFLEE].timer != -1)
