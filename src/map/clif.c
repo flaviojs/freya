@@ -1631,7 +1631,7 @@ int clif_walkok(struct map_session_data *sd)
 	WPACKETW( 0) = 0x87;
 	WPACKETL( 2) = gettick_cache;
 	WPACKETPOS2(6, sd->bl.x, sd->bl.y, sd->to_x, sd->to_y);
-	WPACKETB(11) = 0;
+	WPACKETB(11) = 0x88;
 	SENDPACKET(sd->fd, packet_len_table[0x87]);
 
 	return 0;
