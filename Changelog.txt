@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/30/06
+	* Fixed: Mind Breaker formula [Latios]
 	* Improved: clif_walkok for better walking method of characters
 	* Fixed: Wraith now drops the proper Slotted Manteau, not Skeleton Manteau (Also thanks to Zortch) [Tsuyuki]
 	* Added: Proper effect for Skeleton Manteau (Thanks to Zortch) [Tsuyuki]

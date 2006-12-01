@@ -5414,7 +5414,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		}
 
 		clif_skill_nodamage(src,bl,skillid,skilllv,1);
-		status_change_start(bl,SkillStatusChangeTable[skillid],skilllv,0,0,0,skill_get_time(skillid,skilllv),0 );
+		status_change_start(bl,SkillStatusChangeTable[skillid],skilllv,100 - 12 * skilllv,100 + 20 * skilllv,0,skill_get_time(skillid,skilllv),0 );
 
 		if (dstmd && dstmd->skilltimer != -1 && dstmd->state.skillcastcancel) // ‰r¥–WŠQ
 			skill_castcancel(bl,0);

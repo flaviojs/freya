@@ -189,10 +189,10 @@ void initStatusIconTable(void) {
 	init_sc(SL_SKA,                 SC_SKA,              ICO_BLANK);
 	init_sc(SL_SWOO,                SC_SWOO,             ICO_BLANK);
 	init_sc(SL_SMA,                 SC_SMA,              ICO_BLANK);
-	init_sc(SL_KAIZEL,		      	  SC_KAIZEL,		       ICO_KAIZEL);
-	init_sc(SL_KAAHI,			          SC_KAAHI,		         ICO_KAAHI);
-	init_sc(SL_KAUPE,	         		  SC_KAUPE,		         ICO_KAUPE);
-	init_sc(SL_KAITE,			          SC_KAITE,		         ICO_KAITE);
+	init_sc(SL_KAIZEL,              SC_KAIZEL,           ICO_KAIZEL);
+	init_sc(SL_KAAHI,               SC_KAAHI,            ICO_KAAHI);
+	init_sc(SL_KAUPE,               SC_KAUPE,            ICO_KAUPE);
+	init_sc(SL_KAITE,               SC_KAITE,            ICO_KAITE);
 	init_sc(SL_ALCHEMIST,           SC_SPIRIT,           ICO_SPIRIT);
 	init_sc(SL_ASSASIN,             SC_SPIRIT,           ICO_SPIRIT);
 	init_sc(SL_BARDDANCER,          SC_SPIRIT,           ICO_SPIRIT);
@@ -1146,9 +1146,10 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 		if(sd->sc_data[SC_ENDURE].timer!=-1)
 			sd->mdef += sd->sc_data[SC_ENDURE].val1;
 		if(sd->sc_data[SC_MINDBREAKER].timer!=-1){	// プロボック
-			sd->mdef2 = sd->mdef2*(100-6*sd->sc_data[SC_MINDBREAKER].val1)/100;
-			sd->matk1 = sd->matk1*(100+2*sd->sc_data[SC_MINDBREAKER].val1)/100;
-			sd->matk2 = sd->matk2*(100+2*sd->sc_data[SC_MINDBREAKER].val1)/100;
+			sd->mdef2 = sd->mdef2 * (sd->sc_data[SC_MINDBREAKER].val2) / 100;
+
+			sd->matk1 = sd->matk1 * (sd->sc_data[SC_MINDBREAKER].val3) / 100;
+			sd->matk2 = sd->matk2 * (sd->sc_data[SC_MINDBREAKER].val3) / 100;
 		}
 		if (sd->sc_data[SC_POISON].timer != -1)	// 毒状態
 			sd->def2 = sd->def2 * 75 / 100;
@@ -2392,7 +2393,7 @@ int status_get_matk1(struct block_list *bl) {
 
 		if (sc_data) {
 			if (sc_data[SC_MINDBREAKER].timer!=-1)
-				matk = matk * (100 + 2 * sc_data[SC_MINDBREAKER].val1) / 100;
+				matk = matk * (sc_data[SC_MINDBREAKER].val3) / 100;
 			if (sc_data[SC_INCMATKRATE].timer!=-1)
 				matk = matk * (100 + sc_data[SC_INCMATKRATE].val1) /100;
 			if (sc_data[SC_MATKFOOD].timer!=-1)
@@ -2423,7 +2424,7 @@ int status_get_matk2(struct block_list *bl) {
 
 		if (sc_data) {
 			if (sc_data[SC_MINDBREAKER].timer != -1)
-				matk = matk * (100 + 2 * sc_data[SC_MINDBREAKER].val1) / 100;
+				matk = matk * (sc_data[SC_MINDBREAKER].val3) / 100;
 		}
 	}
 
@@ -2539,8 +2540,6 @@ int status_get_mdef(struct block_list *bl) {
 			//凍結、石化時は1.25倍
 			if(sc_data[SC_FREEZE].timer != -1 || (sc_data[SC_STONE].timer != -1 && sc_data[SC_STONE].val2 == 0))
 				mdef = mdef * 125 / 100;
-			if(sc_data[SC_MINDBREAKER].timer != -1 && bl->type != BL_PC)
-				mdef -= (mdef * 6 * sc_data[SC_MINDBREAKER].val1) / 100;
 			if(sc_data[SC_SKA].timer != -1)
 				mdef = 90;
 		}
@@ -2613,7 +2612,7 @@ int status_get_mdef2(struct block_list *bl) {
 
 		if (sc_data) {
 			if (sc_data[SC_MINDBREAKER].timer != -1)
-				mdef2 -= (mdef2 * 6 * sc_data[SC_MINDBREAKER].val1) / 100;
+				mdef2 = mdef2 * (sc_data[SC_MINDBREAKER].val2) / 100;
 		}
 	}
 
