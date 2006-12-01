@@ -1473,7 +1473,11 @@ int clif_spawnpc(struct map_session_data *sd) {
 			clif_status_change(&sd->bl, ICO_NIGHT, 0);
 			sd->state.night = 0;
 	}
-	
+	if(sd->viewsize==2) // tiny/big players [Valaris]
+		clif_specialeffect(&sd->bl,423,0);
+	else if(sd->viewsize==1)
+		clif_specialeffect(&sd->bl,421,0);
+
 	return 0;
 }
 
@@ -3594,6 +3598,12 @@ void clif_getareachar_pc(struct map_session_data* sd, struct map_session_data* d
 	// display hp of the player if necessary
 	if(battle_config.display_hpmeter)
 		clif_hpmeter(dstsd, sd); // NULL: send to any people, other: send to only 1 player
+
+	if(sd->viewsize==2) // added by van84 from ea
+		clif_specialeffect(&sd->bl,423,0);
+	else if(sd->viewsize==1)
+		clif_specialeffect(&sd->bl,421,0);
+
 }
 
 /*==========================================
@@ -8585,7 +8595,18 @@ void clif_parse_GetCharNameRequest(int fd, struct map_session_data *sd) { // S 0
 			memset(WPACKETP(0), 0, packet_len_table[0x195]);
 			WPACKETW(0) = 0x195;
 			WPACKETL(2) = account_id;
+
+		if(strlen(ssd->fakename)>1) {
+			strncpy(WPACKETP( 6), ssd->fakename, 24);
+			//WFIFOSET(fd,packet_len_table[0x95]);
+			SENDPACKET(fd, packet_len_table[0x95]);
+			break;
+		} else {
+			//memcpy(WFIFOP(fd,6), ssd->status.name, 24);
 			strncpy(WPACKETP( 6), ssd->status.name, 24);
+		}
+
+			
 			
 			if (p != NULL)
 				strncpy(WPACKETP(30), p->name, 24);

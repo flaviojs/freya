@@ -405,6 +405,8 @@ struct map_session_data {
 	
 	short tk_mission_target_id; // Stores the target mob_id for TK_MISSION
 	short tk_mission_count; // Stores the bounty kill count for TK_MISSION
+	char fakename[24]; // fakename by van84 took from Ea
+	short viewsize; // for tiny/large types
 
 	//struct map_session_data *repair_target;
 
