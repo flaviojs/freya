@@ -213,6 +213,8 @@ void initStatusIconTable(void) {
 	init_sc(SL_SUPERNOVICE,         SC_SPIRIT,           ICO_SPIRIT);
 	init_sc(SL_WIZARD,              SC_SPIRIT,           ICO_SPIRIT);
 	init_sc(NJ_NEN,                 SC_NEN,              ICO_NEN);
+	init_sc(NJ_UTSUSEMI,            SC_UTSUSEMI,         ICO_UTSUSEMI);
+	init_sc(NJ_BUNSINJYUTSU,        SC_BUNSINJYUTSU,     ICO_BUNSINJYUTSU);
 	
 #undef init_sc
 
@@ -3371,7 +3373,22 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 		sc_data[type].timer = -1;
 	}
 
-	switch(type) { /* 異常の種類ごとの処理 */
+	switch(type) {
+		case SC_UTSUSEMI:
+			val2=(val1+1)/2;
+			val3=skill_get_blewcount(NJ_UTSUSEMI, val1);
+			break;
+		case SC_BUNSINJYUTSU:
+			val2=(val1+1)/2;
+			break;
+	/*case SC_UTSUSEMI:
+			if (val1 == 1 || val1 == 2)
+				val3 = 1;
+			else if (val1 == 3 || val1 == 4)
+				val3 = 2;
+			else if (val1 == 5)
+			val3 = 3;
+			break;*/
 		case SC_SPIRIT:
 			scflag.calc = 1;
 			*opt3 |= 32768;
@@ -3402,11 +3419,11 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			break;
 		case SC_SMA:
 			break;
-		case SC_PROVOKE:			/* プロボック */
+		case SC_PROVOKE:
 			scflag.calc = 1;
 			if (tick <= 0) tick = 1000;	/* (オートバーサーク) */
 			break;
-		case SC_ENDURE:                /* インデュア */
+		case SC_ENDURE:
 			if (tick <= 0)
 			tick = 1000 * 60;
 			scflag.calc = 1; // for updating mdef
@@ -3444,7 +3461,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 		case SC_READYDODGE:
 			if (flag&4)
 				break;
-		case SC_BLESSING:			/* ブレッシング */
+		case SC_BLESSING:
 			if(bl->type == BL_PC || (!scflag.undead_bl && race != 6)) {
 				if(sc_data[SC_CURSE].timer != -1 )
 					status_change_end(bl, SC_CURSE, -1);
@@ -3453,15 +3470,15 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			}
 			scflag.calc = 1;
 			break;
-		case SC_ANGELUS:			/* アンゼルス */
+		case SC_ANGELUS:
 			scflag.calc = 1;
 			break;
-		case SC_INCREASEAGI:		/* 速度上昇 */
+		case SC_INCREASEAGI:
 			scflag.calc = 1;
 			if(sc_data[SC_DECREASEAGI].timer != -1 )
 				status_change_end(bl,SC_DECREASEAGI,-1);
 			break;
-		case SC_DECREASEAGI:		/* 速度減少 */
+		case SC_DECREASEAGI:
 			if(bl->type == BL_PC)
 				tick >>= 1; //Half duration on players
 			scflag.calc = 1;
@@ -3478,7 +3495,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 					status_change_end(bl, SC_CARTBOOST, -1);
 			}
 			break;
-		case SC_SIGNUMCRUCIS:		/* シグナムクルシス */
+		case SC_SIGNUMCRUCIS:
 			scflag.calc = 1;
 //			val2 = 14 + val1;
 			val2 = 10 + val1*2;
@@ -3490,24 +3507,24 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			if (sc_data[SC_POISON].timer == -1 && sc_data[SC_DPOISON].timer == -1)
 				return 0;
 			break;
-		case SC_TWOHANDQUICKEN:		/* 2HQ */
+		case SC_TWOHANDQUICKEN:
 			if (sc_data[SC_DECREASEAGI].timer != -1)
 				return 0;
 			*opt3 |= 1;
 			scflag.calc = 1;
 			break;
-		case SC_ADRENALINE:			/* アドレナリンラッシュ */
+		case SC_ADRENALINE:
 			if(sd && !(skill_get_weapontype(BS_ADRENALINE)&(1<<sd->status.weapon)))
 				return 0;
 			if (sc_data[SC_DECREASEAGI].timer != -1)
 				return 0;
 			scflag.calc = 1;
 			break;
-		case SC_WEAPONPERFECTION:	/* ウェポンパーフェクション */
+		case SC_WEAPONPERFECTION:
 			/* kRO 14/12/04 Patch - No more time penalty [Aalye]
 			if (battle_config.party_skill_penalty && !val2) tick /= 5; */
 			break;
-		case SC_OVERTHRUST:			/* オーバースラスト */
+		case SC_OVERTHRUST:
 			if(sc_data[SC_MAXOVERTHRUST].timer != -1)
 				return 0; //Overthrust should not take effect if MAXOVERTHRUST is active
 			*opt3 |= 2;
@@ -3518,7 +3535,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			if (sc_data[SC_OVERTHRUST].timer != -1)	// cancels normal overthrust
 				status_change_end(bl, SC_OVERTHRUST, -1);
 			break;
-		case SC_MAXIMIZEPOWER:		/* マキシマイズパワー(SPが1減る時間,val2にも) */
+		case SC_MAXIMIZEPOWER:
 			if(!(flag&4)) {
 				if(bl->type == BL_PC)
 					val2 = tick;
@@ -3526,7 +3543,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 					tick = 5000 * val1;
 			}
 			break;
-		case SC_ENCPOISON:			/* エンチャントポイズン */
+		case SC_ENCPOISON:
 			scflag.calc = 1;
 			val2=(((val1 - 1) / 2) + 3)*100;	/* 毒付与確率 */
 			skill_enchant_elemental_end(bl, SC_ENCPOISON);
@@ -3536,31 +3553,31 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			val3 = 50*(val1+1); // Increased damage took from Ea
 			scflag.calc = 1;
 			break;
-		case SC_POISONREACT:	/* ポイズンリアクト */
+		case SC_POISONREACT:
 			if(!(flag&4))
-				val2 = (val1 >> 1) + val1%2; // [Celest]
+				val2 = (val1 >> 1) + val1%2;
 			break;
-		case SC_IMPOSITIO:			/* インポシティオマヌス */
+		case SC_IMPOSITIO:
 			scflag.calc = 1;
 			break;
-		case SC_ASPERSIO:			/* アスペルシオ */
+		case SC_ASPERSIO:
 			skill_enchant_elemental_end(bl, SC_ASPERSIO);
 			break;
-		case SC_SUFFRAGIUM:			/* サフラギム */
-		case SC_BENEDICTIO:			/* 聖体 */
-		case SC_MAGNIFICAT:			/* マグニフィカート */
+		case SC_SUFFRAGIUM:
+		case SC_BENEDICTIO:
+		case SC_MAGNIFICAT:
 			break;
-		case SC_AETERNA:			/* エーテルナ */
+		case SC_AETERNA:
 			if(sc_data[SC_STONE].timer != -1 || sc_data[SC_FREEZE].timer != -1)
 				return 0; //Aexterna should not take effect if target is Frozen or Stonned
 			break;
-		case SC_ENERGYCOAT:			/* エナジーコート */
+		case SC_ENERGYCOAT:
 			*opt3 |= 4;
 			break;
 		case SC_MAGICROD:
 			val2 = val1 * 20;
 			break;
-		case SC_KYRIE:				/* キリエエレイソン */
+		case SC_KYRIE:
 			if(!(flag&4)) {
 				val2 = status_get_max_hp(bl) * (val1 * 2 + 10) / 100;/* 耐久度 */
 				val3 = (val1 / 2 + 5);	/* 回数 */
@@ -3571,22 +3588,22 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 		case SC_MINDBREAKER:
 			scflag.calc = 1;
 			if(tick <= 0) tick = 1000;	/* (オートバーサーク) */
-		case SC_GLORIA:				/* グロリア */
+		case SC_GLORIA:
 			scflag.calc = 1;
 			break;
-		case SC_LOUD:				/* ラウドボイス */
+		case SC_LOUD:
 			scflag.calc = 1;
 			break;
-		case SC_TRICKDEAD:			/* 死んだふり */
+		case SC_TRICKDEAD:
 			if(sd)
 				pc_stopattack(sd);
 			break;
-		case SC_QUAGMIRE:			/* クァグマイア */
+		case SC_QUAGMIRE:
 			scflag.calc = 1;
 			if(*sc_count > 0) {
-				if(sc_data[SC_CONCENTRATE].timer != -1 )	/* 集中力向上解除 */
+				if(sc_data[SC_CONCENTRATE].timer != -1 )
 					status_change_end(bl, SC_CONCENTRATE, -1);
-				if(sc_data[SC_INCREASEAGI].timer != -1 )	/* 速度上昇解除 */
+				if(sc_data[SC_INCREASEAGI].timer != -1 )
 					status_change_end(bl, SC_INCREASEAGI, -1);
 				if(sc_data[SC_TWOHANDQUICKEN].timer != -1 )
 					status_change_end(bl, SC_TWOHANDQUICKEN,-1);
@@ -3596,15 +3613,15 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 					status_change_end(bl, SC_ADRENALINE, -1);
 				if(sc_data[SC_LOUD].timer != -1 )
 					status_change_end(bl, SC_LOUD, -1);
-				if(sc_data[SC_TRUESIGHT].timer != -1 )	/* トゥルーサイト */
+				if(sc_data[SC_TRUESIGHT].timer != -1 )
 					status_change_end(bl, SC_TRUESIGHT, -1);
-				if(sc_data[SC_WINDWALK].timer != -1 )	/* ウインドウォーク */
+				if(sc_data[SC_WINDWALK].timer != -1 )
 					status_change_end(bl, SC_WINDWALK, -1);
-				if(sc_data[SC_CARTBOOST].timer != -1 )	/* カートブースト */
+				if(sc_data[SC_CARTBOOST].timer != -1 )
 					status_change_end(bl, SC_CARTBOOST,-1);
 			}
 			break;
-		case SC_MAGICPOWER:		/* 魔法力増幅 */
+		case SC_MAGICPOWER:
 			scflag.calc = 1;
 			val2 = 1;
 			break;
@@ -3612,15 +3629,15 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			if(!(flag&4))
 				val2 = 5;
 			break;
-		case SC_FIREWEAPON:		/* フレームランチャー */
-		case SC_WATERWEAPON:		/* フロストウェポン */
-		case SC_WINDWEAPON:	/* ライトニングローダー */
-		case SC_EARTHWEAPON:		/* サイズミックウェポン */
+		case SC_FIREWEAPON:
+		case SC_WATERWEAPON:
+		case SC_WINDWEAPON:
+		case SC_EARTHWEAPON:
 		case SC_SHADOWWEAPON:
 		case SC_GHOSTWEAPON:
 			skill_enchant_elemental_end(bl, type);
 			break;
-        case SC_DEVOTION:            /* ディボーション */
+        case SC_DEVOTION:
             if(!(flag&4))
                 scflag.calc = 1;
             
@@ -3685,7 +3702,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 		case SC_CP_HELM:
 			break;
 
-		case SC_AUTOSPELL:			/* オートスペル */
+		case SC_AUTOSPELL:
 			val4 = 5 + val1*2;
 			break;
 
@@ -3705,7 +3722,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			val4 = val1>=5?20: (val1==4?19: (val1==3?17: ( val1==2?14:10 ) ) );
 			break;
 
-		case SC_SPEARQUICKEN:		/* スピアクイッケン */
+		case SC_SPEARQUICKEN:
 			scflag.calc = 1;
 			val2 = 20+val1;
 			*opt3 |= 1;
@@ -3733,9 +3750,9 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 					break;
 			}
 			break;
-		case SC_BLADESTOP_WAIT:		/* 白刃取り(待ち) */
+		case SC_BLADESTOP_WAIT:
 			break;
-		case SC_BLADESTOP:		/* 白刃取り */
+		case SC_BLADESTOP:
 			if(flag&4)
 				break;
 			if(val2 == 2)
@@ -3743,57 +3760,57 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			*opt3 |= 32;
 			break;
 
-		case SC_LULLABY:			/* 子守唄 */
+		case SC_LULLABY:
 			val2 = 11;
 			break;
 		case SC_RICHMANKIM:
 			break;
-		case SC_ETERNALCHAOS:		/* エターナルカオス */
+		case SC_ETERNALCHAOS:
 			scflag.calc = 1;
 			break;
-		case SC_DRUMBATTLE:			/* 戦太鼓の響き */
+		case SC_DRUMBATTLE:
 			scflag.calc = 1;
 			val2 = (val1+1)*25;
 			val3 = (val1+1)*2;
 			break;
-		case SC_NIBELUNGEN:			/* ニーベルングの指輪 */
+		case SC_NIBELUNGEN:
 			scflag.calc = 1;
 			//val2 = (val1+2)*50;
 			val3 = (val1+2)*25;
 			break;
-		case SC_ROKISWEIL:			/* ロキの叫び */
+		case SC_ROKISWEIL:
 			break;
-		case SC_INTOABYSS:			/* 深淵の中に */
+		case SC_INTOABYSS:
 			break;
-		case SC_SIEGFRIED:			/* 不死身のジークフリード */
+		case SC_SIEGFRIED:
 			scflag.calc = 1;
 			val2 = 55 + val1*5;
 			val3 = val1*10;
 			break;
-		case SC_DISSONANCE:			/* 不協和音 */
+		case SC_DISSONANCE:
 			val2 = 10;
 			break;
-		case SC_WHISTLE:			/* 口笛 */
+		case SC_WHISTLE:
 			scflag.calc = 1;
 			break;
-		case SC_ASSNCROS:			/* 夕陽のアサシンクロス */
+		case SC_ASSNCROS:
 			scflag.calc = 1;
 			break;
-		case SC_POEMBRAGI:			/* ブラギの詩 */
+		case SC_POEMBRAGI:
 			break;
-		case SC_APPLEIDUN:			/* イドゥンの林檎 */
+		case SC_APPLEIDUN:
 			scflag.calc = 1;
 			break;
-		case SC_UGLYDANCE:			/* 自分勝手なダンス */
+		case SC_UGLYDANCE:
 			val2 = 10;
 			break;
-		case SC_HUMMING:			/* ハミング */
+		case SC_HUMMING:
 			scflag.calc = 1;
 			break;
-		case SC_DONTFORGETME:		/* 私を忘れないで */
+		case SC_DONTFORGETME:
 			scflag.calc = 1;
 			if(*sc_count > 0) {
-				if(sc_data[SC_INCREASEAGI].timer!=-1 )	/* 速度上昇解除 */
+				if(sc_data[SC_INCREASEAGI].timer!=-1 )
 					status_change_end(bl,SC_INCREASEAGI,-1);
 				if(sc_data[SC_TWOHANDQUICKEN].timer!=-1 )
 					status_change_end(bl,SC_TWOHANDQUICKEN,-1);
@@ -3803,25 +3820,25 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 					status_change_end(bl,SC_ADRENALINE,-1);
 				if(sc_data[SC_ASSNCROS].timer!=-1 )
 					status_change_end(bl,SC_ASSNCROS,-1);
-				if(sc_data[SC_TRUESIGHT].timer!=-1 )	/* トゥルーサイト */
+				if(sc_data[SC_TRUESIGHT].timer!=-1 )
 					status_change_end(bl,SC_TRUESIGHT,-1);
-				if (sc_data[SC_WINDWALK].timer != -1)	/* ウインドウォーク */
+				if (sc_data[SC_WINDWALK].timer != -1)
 					status_change_end(bl, SC_WINDWALK, -1);
-				if (sc_data[SC_CARTBOOST].timer != -1)	/* カートブースト */
+				if (sc_data[SC_CARTBOOST].timer != -1)
 					status_change_end(bl, SC_CARTBOOST, -1);
 			}
 			break;
-		case SC_FORTUNE:			/* 幸運のキス */
+		case SC_FORTUNE:
 			scflag.calc = 1;
 			break;
-		case SC_SERVICEFORYOU:			/* サービスフォーユー */
+		case SC_SERVICEFORYOU:
 			scflag.calc = 1;
 			break;
 		case SC_MOONLIT:
 			val2 = bl->id;
 			*opt3 |= 512;
 			break;
-		case SC_DANCING:			/* ダンス/演奏中 */
+		case SC_DANCING:
 			scflag.calc = 1;
 			if(!(flag&4)) {
 				if (val1 == CG_MOONLIT) //To set moonlit sprite effect on both chars [Proximus]
@@ -3831,22 +3848,22 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			}
 			break;
 
-		case SC_EXPLOSIONSPIRITS:	// 爆裂波動
+		case SC_EXPLOSIONSPIRITS:
 			scflag.calc = 1;
 			val2 = 75 + 25*val1;
 			*opt3 |= 8;
 			break;
-		case SC_STEELBODY:			// 金剛
+		case SC_STEELBODY:
 			scflag.calc = 1;
 			*opt3 |= 16;
 			break;
-		case SC_EXTREMITYFIST:		/* 阿修羅覇凰拳 */
+		case SC_EXTREMITYFIST:
 			break;
 		case SC_AUTOCOUNTER:
 			val3 = val4 = 0;
 			break;
 
-		case SC_ASPDPOTION0:		/* 増速ポーション */
+		case SC_ASPDPOTION0:
 		case SC_ASPDPOTION1:
 		case SC_ASPDPOTION2:
 		case SC_ASPDPOTION3:
@@ -3860,7 +3877,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 		case SC_MATKPOT:
 			scflag.calc = 1;
 			break;
-		case SC_WEDDING:	//結婚用(結婚衣裳になって歩くのが遅いとか)
+		case SC_WEDDING:
 			{
 				time_t timer;
 				scflag.calc = 1;
@@ -3869,7 +3886,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 					val2 = time(&timer);
 			}
 			break;
-		case SC_NOCHAT:	//チャット禁止状態
+		case SC_NOCHAT:
 			{
 				time_t timer;
 
@@ -3885,14 +3902,14 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 				}
 			}
 			break;
-		case SC_SELFDESTRUCTION: //自爆
+		case SC_SELFDESTRUCTION:
 			clif_skillcasting(bl,bl->id, bl->id,0,0,331,skill_get_time(val2,val1));
 			val3 = tick / 1000;
 			tick = 1000;
 			break;
 
 		/* option1 */
-		case SC_STONE:				/* 石化 */
+		case SC_STONE:
 			if(!(flag&2)) {
 				int sc_def = status_get_mdef(bl)*200;
 				tick = tick - sc_def;
@@ -3904,7 +3921,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 				tick = 5000;
 			val2 = 1;
 			break;
-		case SC_SLEEP:				/* 睡眠 */
+		case SC_SLEEP:
 			if(!(flag&4)) {
 //				int sc_def = 100 - (battle_get_int(bl) + status_get_luk(bl)/3);
 //				tick = tick * sc_def / 100;
@@ -3912,13 +3929,13 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 				tick = 30000;//睡眠はステータス耐性に関わらず30秒
 			}
 			break;
-		case SC_FREEZE:				/* 凍結 */
+		case SC_FREEZE:
 			if(!(flag&2)) {
 				int sc_def = 100 - status_get_mdef(bl);
 				tick = tick * sc_def / 100;
 			}
 			break;
-		case SC_STUN:				/* スタン（val2にミリ秒セット） */
+		case SC_STUN:
 			if(!(flag&2)) {
 				int sc_def = status_get_sc_def_vit(bl);
 				tick = tick * sc_def / 100;
@@ -3926,7 +3943,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			break;
 
 		/* option2 */
-		case SC_DPOISON: /* 猛毒 */
+		case SC_DPOISON:
 		{
 			int mhp = status_get_max_hp(bl);
 			int hp = status_get_hp(bl);
@@ -3947,7 +3964,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 				}
 			}
 		}	// fall through
-		case SC_POISON: /* 毒 */
+		case SC_POISON:
 			scflag.calc = 1;
 			if (!(flag&2)) {
 				int sc_def = 100 - (status_get_vit(bl) + status_get_luk(bl)/5);
@@ -3959,7 +3976,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			if(!(flag&4))
 				tick = 1000;
 			break;
-		case SC_SILENCE:			/* 沈黙（レックスデビーナ） */
+		case SC_SILENCE:
 			if(sc_data[SC_GOSPEL].timer != -1 && sc_data[SC_GOSPEL].val4 == BCT_SELF) {
 				status_change_end(bl, SC_GOSPEL, -1);
 				break;
@@ -3975,7 +3992,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 				tick = 100;
 			}
 			break;
-		case SC_BLIND:				/* 暗黒 */
+		case SC_BLIND:
 			scflag.calc = 1;
 			if(!(flag&4) && tick < 1000)
 				tick = 30000;
@@ -3993,7 +4010,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			break;
 
 		/* option */
-		case SC_HIDING:		/* ハイディング */
+		case SC_HIDING:
 			scflag.calc = 1;
 			if(bl->type == BL_PC && !(flag&4)) {
 				val2 = tick / 1000;		/* 持続時間 */
@@ -4005,18 +4022,18 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 				status_change_end(bl, SC_CLOSECONFINE2, -1);
 			break;
 		case SC_CHASEWALK:
-		case SC_CLOAKING:		/* クローキング */
+		case SC_CLOAKING:
 			if(flag&4)
 				break;
 			if(bl->type == BL_PC) {
-				scflag.calc = 1; // [Celest]
+				scflag.calc = 1;
 				val2 = tick;
 				val3 = type==SC_CLOAKING ? 130-val1*3 : 135-val1*5;
 			}
 			else
 				tick = 5000 * val1;
 			break;
-		case SC_SIGHT:			/* サイト/ルアフ */
+		case SC_SIGHT:
 		case SC_RUWACH:
 		case SC_SIGHTBLASTER:
 			if(flag&4)
@@ -4115,30 +4132,30 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			scflag.calc = 1;
 		case SC_HALLUCINATION:
 			break;
-		case SC_CONCENTRATION:	/* コンセントレーション */
+		case SC_CONCENTRATION:
 			*opt3 |= 1;
 			scflag.calc = 1;
 			break;
-		case SC_TENSIONRELAX:	/* テンションリラックス */
+		case SC_TENSIONRELAX:
 			if(flag&4)
 				break;
 			if(bl->type == BL_PC)
 				tick = 10000;
 			break;
-		case SC_AURABLADE:		/* オーラブレード */
-//		case SC_ASSUMPTIO:		/*  */
-//		case SC_HEADCRUSH:		/* ヘッドクラッシュ */
-//		case SC_JOINTBEAT:		/* ジョイントビート */
-//		case SC_MARIONETTE:		/* マリオネットコントロール */
+		case SC_AURABLADE:
+//		case SC_ASSUMPTIO:
+//		case SC_HEADCRUSH:
+//		case SC_JOINTBEAT:
+//		case SC_MARIONETTE:
 
 			//とりあえず手抜き
 			break;
 
-		case SC_PARRYING:		/* パリイング */
+		case SC_PARRYING:
 			val2 = 20 + val1 * 3;
 			break;
 
-		case SC_WINDWALK:		/* ウインドウォーク */
+		case SC_WINDWALK:
 			scflag.calc = 1;
 			val2 = (val1 / 2); //Flee上昇率
 			break;
@@ -4150,14 +4167,14 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 				status_change_start(bl, SC_BLEEDING, val1, 0, 0, 0, skill_get_time2(type, val1), 0);
 			break;
 
-		case SC_BERSERK:		/* バーサーク */
+		case SC_BERSERK:
 			*opt3 |= 128;
 			if(!(flag&4))
 				tick = 10000;
 			scflag.calc = 1;
 			break;
 
-		case SC_ASSUMPTIO:		/* アスムプティオ */
+		case SC_ASSUMPTIO:
 			if(sc_data[SC_KYRIE].timer != -1)
 				status_change_end(bl, SC_KYRIE, -1);
 			*opt3 |= 2048;
@@ -4178,7 +4195,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			}
 			break;
 
-		case SC_MARIONETTE:		/* マリオネットコントロール */
+		case SC_MARIONETTE:
 		case SC_MARIONETTE2:
 			if(flag&4)
 				break;
@@ -4190,25 +4207,25 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			*opt3 |= 1024;
 			break;
 
-		case SC_MELTDOWN:		/* メルトダウン */
+		case SC_MELTDOWN:
 			scflag.calc = 1;
 			break;
-		case SC_CARTBOOST:		/* カートブースト */
+		case SC_CARTBOOST:
 			if(sc_data[SC_DECREASEAGI].timer != -1) {
 				status_change_end(bl, SC_DECREASEAGI, -1);
 				return 0;
 			}
-		case SC_TRUESIGHT:		/* トゥルーサイト */
-		case SC_SPIDERWEB:		/* スパイダーウェッブ */
+		case SC_TRUESIGHT:
+		case SC_SPIDERWEB:
 			scflag.calc = 1;
 			break;
 
-		case SC_REJECTSWORD:	/* リジェクトソード */
+		case SC_REJECTSWORD:
 			val2 = 3; //3回攻撃を跳ね返す
 			val3 = 0; // Damage reflect state - [Aalye]
 			break;
 
-		case SC_MEMORIZE:		/* メモライズ */
+		case SC_MEMORIZE:
 			val2 = 5; //3回詠唱を1/5にする // Memorize is supposed to reduce the cast time of the next 5 spells by half (thanks to [BLB] from freya's bug report)
 			break;
 
@@ -4225,7 +4242,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			battle_damage(NULL, bl, status_get_hp(bl)-1, 0);
 			return 0;
 
-		case SC_SPLASHER:		/* ベナムスプラッシャー */
+		case SC_SPLASHER:
 			break;
 
 		case SC_FOGWALL:
@@ -4263,7 +4280,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 		case SC_INCMATKRATE:
 		case SC_INCATKRATE:
 		case SC_INCDEFRATE:
-		case SC_INCHITRATE:		/* HIT%上昇 */
+		case SC_INCHITRATE:
 		case SC_INCFLEERATE:
 		case SC_INCASPDRATE:
 			scflag.calc = 1;
@@ -4345,7 +4362,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			*opt2 |= 1<<(type-SC_POISON);
 			scflag.send_opt = 1;
 			break;
-		case SC_DPOISON:	// 暫定で毒のエフェクトを使用
+		case SC_DPOISON:
 			*opt2 |= 1;
 			scflag.send_opt = 1;
 			break;
