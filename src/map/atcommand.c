@@ -338,7 +338,8 @@ ATCOMMAND_FUNC(main);
 ATCOMMAND_FUNC(request);
 ATCOMMAND_FUNC(version);
 ATCOMMAND_FUNC(version2);
-
+ATCOMMAND_FUNC(Tempname);
+ATCOMMAND_FUNC(Size);
 #ifdef USE_SQL
 ATCOMMAND_FUNC(checkmail);
 ATCOMMAND_FUNC(listmail);
@@ -710,7 +711,8 @@ static struct AtCommandInfo {
 	{ AtCommand_Request,               "@request",               0, atcommand_request },
 	{ AtCommand_Version,               "@version",               0, atcommand_version },
 	{ AtCommand_Version2,              "@version2",              0, atcommand_version2 },
-
+	{ AtCommand_Tempname,              "@tempname",              0, atcommand_tempname },
+	{ AtCommand_Size,				   "@size",              0, atcommand_size },
 #ifdef USE_SQL
 	{ AtCommand_CheckMail,             "@checkmail",             1, atcommand_listmail }, // type: 1:checkmail, 2:listmail, 3:listnewmail
 	{ AtCommand_ListMail,              "@listmail",              1, atcommand_listmail }, // type: 1:checkmail, 2:listmail, 3:listnewmail
@@ -15100,6 +15102,32 @@ ATCOMMAND_FUNC(version2) {
 #endif /* SVN_REVISION */
 	clif_displaymessage(fd, atcmd_output);
 
+	return 0;
+}
+
+/*============================================
+tempname added by van
+============================================*/
+ATCOMMAND_FUNC(tempname) {
+
+	struct map_session_data* pl_sd;
+	//nullpo_retr(-1, sd);
+	if((!message || !*message) && strlen(sd->fakename) > 1) {
+		sd->fakename[0]='\0';
+		pc_setpos(sd, sd->mapname, sd->bl.x, sd->bl.y, 3);
+		clif_displaymessage(sd,"Returned to real name.");
+	}
+
+	if (!message || !*message)
+		clif_displaymessage(sd,"You must enter a name.");
+	return 0;
+}
+
+/*============================================
+size added by van
+============================================*/
+ATCOMMAND_FUNC(size) {
+	clif_displaymessage(sd,"Not implented yet");
 	return 0;
 }
 
