@@ -5,6 +5,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/30/06
+	* Fixed: Wraith now drops the proper Slotted Manteau, not Skeleton Manteau (Also thanks to Zortch) [Tsuyuki]
+	* Added: Proper effect for Skeleton Manteau (Thanks to Zortch) [Tsuyuki]
+	* Fixed: Ninja skill Throw Fuuma Shuriken now does proper splash damage [Tsuyuki]
 	* Added: Cicada Skin Tempering and Illusionary Shadow Ninja skills [Tsuyuki]
 	* Improved: Optimized clif_party_hp to show exact value of party members HP bar [Jetvictor]
 	* Fixed: You must now be in Nen-mode to cast Ninja Issen/Final Strike [Tsuyuki]

@@ -1103,7 +1103,7 @@
 2508,Ragamuffin_Manteau,Ragamuffin Manteau,5,20,0,500,,1,,0,18866174,2,4,,0,0,{},{ bonus bMdef,10; }
 2509,Survivor's_Manteau,Survivor's Manteau,5,20,0,550,,0,,0,66052,2,4,,75,0,{},{ bonus bVit,10; if(isequipped(1618) || isequipped(1620)==0) end; bonus bMaxHP,300; bonus bMatkRate,-5; if(isequipped(1617) || isequipped(1618) || isequipped(1619) || isequipped(1620)==0) end; bonus bMatkRate,getequiprefinerycnt(4); bonus2 bSubEle,Ele_Neutral,getequiprefinerycnt(5)*3; }
 2510,Novice_Hood,Novice Hood,5,20,0,1,,2,,0,8388609,2,4,,0,0,{},{}
-2511,Skeleton_Manteau,Skeleton Manteau,5,20,0,700,,1,,,18866174,2,4,,75,,{},{}
+2511,Skeleton_Manteau,Skeleton Manteau,5,20,0,700,,1,,,18866174,2,4,,75,,{ bonus bStr,2; bonus bInt,-3; bonus bDex,2; bonus bVit,-3; bonus bLuk,2; bonus bAgi,-4; },{}
 2512,Novice_Manteau,Novice Manteau,5,50000,25000,500,0,2,0,1,8388609,2,4,0,40,0,{},{ bonus2 bSubEle,0,10; }
 2513,Heavenly_Maiden_Robe,Heavenly Maiden Robe,5,20,0,500,0,3,0,1,18866174,2,4,0,80,0,{},{}
 2514,Pauldren,Pauldren,5,20,0,800,0,5,0,1,414946,2,4,0,80,0,{},{}
