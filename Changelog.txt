@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 11/30/06
+	* Added: Cicada Skin Tempering and Illusionary Shadow Ninja skills [Tsuyuki]
+	* Improved: Optimized clif_party_hp to show exact value of party members HP bar [Jetvictor]
 	* Fixed: You must now be in Nen-mode to cast Ninja Issen/Final Strike [Tsuyuki]
 	* Added: Ninja Nen/Soul skill [Tsuyuki]
 	* Fixed: Caster can now move during Gravitation Field [Tsuyuki]

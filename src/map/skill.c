@@ -3955,44 +3955,44 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 			status_change_start(bl, type, skilllv, 0, 0, 0, skill_get_time(skillid,skilllv), 0);
 		}
 		break;
-	case PR_KYRIE:			/* キリエエレイソン */
+	case PR_KYRIE:
 		clif_skill_nodamage(bl, bl, skillid, skilllv, 1);
 		if(dstsd && status_isimmune(bl))
 			break;
 		status_change_start(bl, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
 		break;
-	case KN_AUTOCOUNTER:		/* オートカウンター */
-	case KN_TWOHANDQUICKEN:	/* ツーハンドクイッケン */
-	case CR_SPEARQUICKEN:	/* スピアクイッケン */
+	case KN_AUTOCOUNTER:
+	case KN_TWOHANDQUICKEN:
+	case CR_SPEARQUICKEN:
 	case CR_REFLECTSHIELD:
-	case AS_POISONREACT:	/* ポイズンリアクト */
-	case MC_LOUD:			/* ラウドボイス */
-	case MG_ENERGYCOAT:		/* エナジーコート */
-	//case SM_ENDURE:			/* インデュア */
-	case MG_SIGHT:			/* サイト */
-	case AL_RUWACH:			/* ルアフ */
-	case MO_EXPLOSIONSPIRITS:	// 爆裂波動
-	case MO_STEELBODY:		// 金剛
-	case LK_AURABLADE:		/* オーラブレード */
-	case LK_PARRYING:		/* パリイング */
-	case LK_CONCENTRATION:	/* コンセントレーション */
-	//case LK_BERSERK:		/* バーサーク */
-	case HP_ASSUMPTIO:		/*  */
-	case WS_CARTBOOST:		/* カートブースト */
-	case SN_SIGHT:			/* トゥルーサイト */
-	case WS_MELTDOWN:		/* メルトダウン */
+	case AS_POISONREACT:
+	case MC_LOUD:
+	case MG_ENERGYCOAT:
+	//case SM_ENDURE:
+	case MG_SIGHT:
+	case AL_RUWACH:
+	case MO_EXPLOSIONSPIRITS:
+	case MO_STEELBODY:
+	case LK_AURABLADE:
+	case LK_PARRYING:
+	case LK_CONCENTRATION:
+	//case LK_BERSERK:
+	case HP_ASSUMPTIO:
+	case WS_CARTBOOST:
+	case SN_SIGHT:
+	case WS_MELTDOWN:
 	case WS_MAXOVERTHRUST:
-	case ST_REJECTSWORD:	/* リジェクトソード */
-	case HW_MAGICPOWER:		/* 魔法力増幅 */
-	case PF_MEMORIZE:		/* メモライズ */
+	case ST_REJECTSWORD:
+	case HW_MAGICPOWER:
+	case PF_MEMORIZE:
 	case PA_SACRIFICE:
 	case ASC_EDP:			// [Celest]
-//case CG_MOONLIT:		/* 月明りの泉に落ちる花びら */
+//case CG_MOONLIT:
 	case WZ_SIGHTBLASTER:
 		status_change_start(bl, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
 		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 		break;
-	case SM_ENDURE:			/* インデュア */
+	case SM_ENDURE:
 		status_change_start(bl, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
 		if (sd)
 			pc_blockskill_start(sd, skillid, 10000);
@@ -4072,6 +4072,8 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		clif_skill_nodamage(src,bl,skillid,skilllv,1);
 		break;
 	case NJ_NEN:
+	case NJ_UTSUSEMI:
+	case NJ_BUNSINJYUTSU:
 		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 		status_change_start(bl, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
 		break;
