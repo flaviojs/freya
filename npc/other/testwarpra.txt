@@ -3,7 +3,7 @@
 //===== By: ==================================================
 //= Tsuyuki
 //===== Current Version: =====================================
-//= 1.0
+//= 1.1
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -14,11 +14,13 @@
 //= from Hugel, as well as Thanatos Tower from Hugel.
 //===== Additional Comments: =================================
 //= 1.0 Added first version for Kiel Hyre, Thanatos Tower, and Rachel Sanctuary [Tsuyuki]
+//= 1.1 Fixed missing npc name [Tsuyuki]
 //============================================================
 
 
 rachel.gat,177,137,5	script	Temp Warpra	94,{
 
+	mes "[Temp Warpra]";
 	mes "Hello,";
 	mes "I'm the Freya Dev Temp Warpra.";
 	mes "I can warp you to dungeons";
@@ -26,6 +28,7 @@ rachel.gat,177,137,5	script	Temp Warpra	94,{
 	mes "to access because their quests";
 	mes "have not yet been scripted.";
 	next;
+	mes "[Temp Warpra]";
 	mes "Currently there are three areas";
 	mes "available. They are Rachel";
 	mes "Sanctuary, Kiel Hyre and Thanatos Tower.";
@@ -33,12 +36,14 @@ rachel.gat,177,137,5	script	Temp Warpra	94,{
 	mes "Kiel Hyre, or Thanatos Tower, you'll need to find";
 	mes "my co-worker in Hugel.";
 	next;
+	mes "[Temp Warpra]";
 	mes "Would you like to enter Rachel";
 	mes "Sanctuary?";
 	next;
 	menu "Enter Dungeon",Enter,"Cancel",Cancel;
 
 Enter:
+	mes "[Temp Warpra]";
 	mes "Alright, I'll warp you now~";
 	next;
 	warp "ra_san01.gat",140,14;
@@ -49,11 +54,13 @@ Cancel:
 
 ra_san01.gat,137,17,5	script	Exit Warpra	94,{
 
+	mes "[Temp Warpra]";
 	mes "Would you like to leave the area?";
 	next;
 	menu "Leave Dungeon",Leave,"Cancel",Cancel4;
 
 Leave:
+	mes "[Temp Warpra]";
 	mes "Alright, I'll warp you now~";
 	next;
 	warp "rachel.gat",175,128;
@@ -64,6 +71,7 @@ Cancel4:
 
 hugel.gat,93,155,5	script	Temp Warpra	94,{
 
+	mes "[Temp Warpra]";
 	mes "Hello,";
 	mes "I'm the Freya Dev Temp Warpra.";
 	mes "I can warp you to dungeons";
@@ -71,6 +79,7 @@ hugel.gat,93,155,5	script	Temp Warpra	94,{
 	mes "to access because their quests";
 	mes "have not yet been scripted.";
 	next;
+	mes "[Temp Warpra]";
 	mes "Currently there are three areas";
 	mes "available. They are Rachel";
 	mes "Sanctuary, Kiel Hyre, and Thanatos Tower.";
@@ -78,16 +87,19 @@ hugel.gat,93,155,5	script	Temp Warpra	94,{
 	mes "Rachel Sanctuary, you'll need to";
 	mes "find my co-worker in Rachel.";
 	next;
+	mes "[Temp Warpra]";
 	mes "Would you like to enter a dungeon?";
 	next;
 	menu "Enter Kiel Hyre",Enter2,"Enter Thanatos Tower",EnterThan,"Cancel",Cancel2;
 
 Enter2:
+	mes "[Temp Warpra]";
 	mes "Alright, I'll warp you now~";
 	next;
 	warp "kh_dun01.gat",24,218;
 
 EnterThan:
+	mes "[Temp Warpra]";
 	mes "Alright, I'll warp you now~";
 	next;
 	warp "tha_scene01.gat",131,224;
@@ -98,11 +110,13 @@ Cancel2:
 
 kh_dun01.gat,30,225,5	script	Exit Warpra	94,{
 
+	mes "[Temp Warpra]";
 	mes "Would you like to leave the area?";
 	next;
 	menu "Leave Dungeon",Leave2,"Cancel",Cancel3;
 
 Leave2:
+	mes "[Temp Warpra]";
 	mes "Alright, I'll warp you now~";
 	next;
 	warp "hugel.gat",95,151;
@@ -113,11 +127,13 @@ Cancel3:
 
 tha_t01.gat,147,40,5	script	Exit Warpra	94,{
 
+	mes "[Temp Warpra]";
 	mes "Would you like to leave the area?";
 	next;
 	menu "Leave Dungeon",Leave3,"Cancel",Cancel4;
 
 Leave3:
+	mes "[Temp Warpra]";
 	mes "Alright, I'll warp you now~";
 	next;
 	warp "hugel.gat",95,151;
