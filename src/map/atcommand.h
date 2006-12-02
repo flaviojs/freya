@@ -289,8 +289,6 @@ enum AtCommandType {
 	AtCommand_Request,
 	AtCommand_Version,
 	AtCommand_Version2,
-	AtCommand_Tempname,
-	AtCommand_Size,
 
 	// SQL-only commands start
 #ifdef USE_SQL

@@ -5,12 +5,11 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/01/06
-	* Updated: few changed improving code. [Van84]
-	* Added: new Atcommand @tempname (still in test) [van84]]
-	* Fixed: added Tsuyuki's corrections to msg_athena.conf [Latios]
-	* Added: fakename and size to allow future function call [van84]
+	* Fixed: Added Tsuyuki's corrections to msg_athena.conf [Latios]
+	* Added: Fakename and Size to allow future function call [van84]
 	* Removed: Effect of GD_CHARISMA (thanks to Damz) [Latios]
-	* Fixed: GD_LEADERSHIP, GD_GLORYWOUNDS, GD_SOULCOLD and GD_HAWKEYES should increase stats by 1*SkillLevel instead of 2 (thanks to bajibbles) [Latios]
+	* Fixed: GD_LEADERSHIP, GD_GLORYWOUNDS, GD_SOULCOLD and GD_HAWKEYES [Latios]
+	 - Now increase stats by 1*SkillLevel instead of 2 (thanks to bajibbles)
 	* Fixed: Mind Breaker formula [Latios]
 	
 11/30/06
