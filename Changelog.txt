@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/01/06
+	* Fixed: bonus3 Autospell -> bonus4 Autospell (Thanks to Galaxy) [Tsuyuki]
 	* Fixed: Test Warpra name fix [Tsuyuki]
 	* Fixed: getpartnerid (Thanks to Galaxy) [Tsuyuki]
 	* Fixed: Added Tsuyuki's corrections to msg_athena.conf [Latios]
