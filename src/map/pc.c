@@ -4419,7 +4419,6 @@ void pc_walktoxy(struct map_session_data *sd, short x, short y) {
 		if (guild_checkskill(sd->state.gmaster_flag, GD_GLORYWOUNDS) > 0) flag |= 1 << 1;
 		if (guild_checkskill(sd->state.gmaster_flag, GD_SOULCOLD) > 0) flag |= 1 << 2;
 		if (guild_checkskill(sd->state.gmaster_flag, GD_HAWKEYES) > 0) flag |= 1 << 3;
-		if (guild_checkskill(sd->state.gmaster_flag, GD_CHARISMA) > 0) flag |= 1 << 4;
 		if (flag > 0) {
 			map_foreachinarea(skill_guildaura_sub, sd->bl.m,
 			                  sd->bl.x - 2, sd->bl.y - 2, sd->bl.x + 2, sd->bl.y + 2, BL_PC,

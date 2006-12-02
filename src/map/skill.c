@@ -2242,8 +2242,7 @@ int skill_guildaura_sub(struct block_list *bl, va_list ap) {
 	if (guild_checkskill(g, GD_LEADERSHIP) > 0) flag |= 1 << 0;
 	if (guild_checkskill(g, GD_GLORYWOUNDS) > 0) flag |= 1 << 1;
 	if (guild_checkskill(g, GD_SOULCOLD) > 0) flag |= 1 << 2;
-	if (guild_checkskill(g, GD_HAWKEYES) > 0) flag |= 1 << 3;
-	if (guild_checkskill(g, GD_CHARISMA) > 0) flag |= 1 << 4;*/
+	if (guild_checkskill(g, GD_HAWKEYES) > 0) flag |= 1 << 3;*/
 	flag = va_arg(ap, int); // flag (checked before: > 0)
 
 //	if (flag > 0) { // doesn't calculate flag in skill_guildaura_sub (repetitiv)
@@ -5414,7 +5413,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		}
 
 		clif_skill_nodamage(src,bl,skillid,skilllv,1);
-		status_change_start(bl,SkillStatusChangeTable[skillid],skilllv,0,0,0,skill_get_time(skillid,skilllv),0 );
+		status_change_start(bl,SkillStatusChangeTable[skillid],skilllv,100 - 12 * skilllv,100 + 20 * skilllv,0,skill_get_time(skillid,skilllv),0 );
 
 		if (dstmd && dstmd->skilltimer != -1 && dstmd->state.skillcastcancel) // ‰r¥–WŠQ
 			skill_castcancel(bl,0);

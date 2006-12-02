@@ -189,10 +189,10 @@ void initStatusIconTable(void) {
 	init_sc(SL_SKA,                 SC_SKA,              ICO_BLANK);
 	init_sc(SL_SWOO,                SC_SWOO,             ICO_BLANK);
 	init_sc(SL_SMA,                 SC_SMA,              ICO_BLANK);
-	init_sc(SL_KAIZEL,		      	  SC_KAIZEL,		       ICO_KAIZEL);
-	init_sc(SL_KAAHI,			          SC_KAAHI,		         ICO_KAAHI);
-	init_sc(SL_KAUPE,	         		  SC_KAUPE,		         ICO_KAUPE);
-	init_sc(SL_KAITE,			          SC_KAITE,		         ICO_KAITE);
+	init_sc(SL_KAIZEL,              SC_KAIZEL,           ICO_KAIZEL);
+	init_sc(SL_KAAHI,               SC_KAAHI,            ICO_KAAHI);
+	init_sc(SL_KAUPE,               SC_KAUPE,            ICO_KAUPE);
+	init_sc(SL_KAITE,               SC_KAITE,            ICO_KAITE);
 	init_sc(SL_ALCHEMIST,           SC_SPIRIT,           ICO_SPIRIT);
 	init_sc(SL_ASSASIN,             SC_SPIRIT,           ICO_SPIRIT);
 	init_sc(SL_BARDDANCER,          SC_SPIRIT,           ICO_SPIRIT);
@@ -797,16 +797,15 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 			sd->paramb[4] += 5;
 		}
 
-		if(sd->sc_data[SC_GUILDAURA].timer != -1)
-		{
+		if(sd->sc_data[SC_GUILDAURA].timer != -1) {
 			if(sd->sc_data[SC_GUILDAURA].val4 & 1 << 0)
-				sd->paramb[0] += 2;
+				sd->paramb[0] += guild_checkskill(sd->state.gmaster_flag, GD_LEADERSHIP);
 			if(sd->sc_data[SC_GUILDAURA].val4 & 1 << 1)
-				sd->paramb[2] += 2;
+				sd->paramb[2] += guild_checkskill(sd->state.gmaster_flag, GD_GLORYWOUNDS);
 			if(sd->sc_data[SC_GUILDAURA].val4 & 1 << 2)
-				sd->paramb[1] += 2;
+				sd->paramb[1] += guild_checkskill(sd->state.gmaster_flag, GD_SOULCOLD);
 			if(sd->sc_data[SC_GUILDAURA].val4 & 1 << 3)
-				sd->paramb[4] += 2;
+				sd->paramb[4] += guild_checkskill(sd->state.gmaster_flag, GD_HAWKEYES);
 		}
 
 		if(sd->sc_data[SC_STRFOOD].timer != -1)
@@ -1146,9 +1145,10 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 		if(sd->sc_data[SC_ENDURE].timer!=-1)
 			sd->mdef += sd->sc_data[SC_ENDURE].val1;
 		if(sd->sc_data[SC_MINDBREAKER].timer!=-1){	// プロボック
-			sd->mdef2 = sd->mdef2*(100-6*sd->sc_data[SC_MINDBREAKER].val1)/100;
-			sd->matk1 = sd->matk1*(100+2*sd->sc_data[SC_MINDBREAKER].val1)/100;
-			sd->matk2 = sd->matk2*(100+2*sd->sc_data[SC_MINDBREAKER].val1)/100;
+			sd->mdef2 = sd->mdef2 * (sd->sc_data[SC_MINDBREAKER].val2) / 100;
+
+			sd->matk1 = sd->matk1 * (sd->sc_data[SC_MINDBREAKER].val3) / 100;
+			sd->matk2 = sd->matk2 * (sd->sc_data[SC_MINDBREAKER].val3) / 100;
 		}
 		if (sd->sc_data[SC_POISON].timer != -1)	// 毒状態
 			sd->def2 = sd->def2 * 75 / 100;
@@ -1392,13 +1392,6 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 			}
 		}
 
-		// custom stats, since there's no info on how much it actually gives ^^; [Celest]
-		if (sd->sc_data[SC_GUILDAURA].timer != -1) {
-			if (sd->sc_data[SC_GUILDAURA].val4 & 1 << 4) {
-				sd->hit += 10;
-				sd->flee += 10;
-			}
-		}
 		if(sd->sc_data[SC_INCHIT].timer != -1)
 			sd->hit += sd->sc_data[SC_INCHIT].val1;
 		if(sd->sc_data[SC_INCFLEE].timer != -1)
@@ -2392,7 +2385,7 @@ int status_get_matk1(struct block_list *bl) {
 
 		if (sc_data) {
 			if (sc_data[SC_MINDBREAKER].timer!=-1)
-				matk = matk * (100 + 2 * sc_data[SC_MINDBREAKER].val1) / 100;
+				matk = matk * (sc_data[SC_MINDBREAKER].val3) / 100;
 			if (sc_data[SC_INCMATKRATE].timer!=-1)
 				matk = matk * (100 + sc_data[SC_INCMATKRATE].val1) /100;
 			if (sc_data[SC_MATKFOOD].timer!=-1)
@@ -2423,7 +2416,7 @@ int status_get_matk2(struct block_list *bl) {
 
 		if (sc_data) {
 			if (sc_data[SC_MINDBREAKER].timer != -1)
-				matk = matk * (100 + 2 * sc_data[SC_MINDBREAKER].val1) / 100;
+				matk = matk * (sc_data[SC_MINDBREAKER].val3) / 100;
 		}
 	}
 
@@ -2539,8 +2532,6 @@ int status_get_mdef(struct block_list *bl) {
 			//凍結、石化時は1.25倍
 			if(sc_data[SC_FREEZE].timer != -1 || (sc_data[SC_STONE].timer != -1 && sc_data[SC_STONE].val2 == 0))
 				mdef = mdef * 125 / 100;
-			if(sc_data[SC_MINDBREAKER].timer != -1 && bl->type != BL_PC)
-				mdef -= (mdef * 6 * sc_data[SC_MINDBREAKER].val1) / 100;
 			if(sc_data[SC_SKA].timer != -1)
 				mdef = 90;
 		}
@@ -2613,7 +2604,7 @@ int status_get_mdef2(struct block_list *bl) {
 
 		if (sc_data) {
 			if (sc_data[SC_MINDBREAKER].timer != -1)
-				mdef2 -= (mdef2 * 6 * sc_data[SC_MINDBREAKER].val1) / 100;
+				mdef2 = mdef2 * (sc_data[SC_MINDBREAKER].val2) / 100;
 		}
 	}
 
