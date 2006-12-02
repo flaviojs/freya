@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/02/06
+	* Fixed: skill_blown : position lag should be fixed for all skills [Latios]
 	* Updated: skills list in doc/miscnotes.txt [Latios]
 	* Fixed: bonus4 bAutospell rate [Latios]
 

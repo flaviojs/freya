@@ -1610,14 +1610,15 @@ int skill_blown(struct block_list *src, struct block_list *target, int count) {
 	ny = ret & 0xffff;
 	moveblock = (x / BLOCK_SIZE != nx / BLOCK_SIZE || y / BLOCK_SIZE != ny / BLOCK_SIZE);
 
-	if (count & 0x20000) {
+	if (!(count & 0x20000)) {
 		battle_stopwalking(target, 1);
 		if (sd) {
 			sd->to_x = nx;
 			sd->to_y = ny;
 //			sd->walktimer = 1;
-			clif_walkok(sd);
-			clif_movechar(sd);
+//			clif_walkok(sd);
+//			clif_movechar(sd);
+			clif_slide(&sd->bl,nx,ny);
 		} else if (md) {
 			md->to_x = nx;
 			md->to_y = ny;
@@ -1953,12 +1954,6 @@ int skill_attack(int attack_type, struct block_list* src, struct block_list *dsr
 	/* 吹き飛ばし処理とそのパケット */
 	if (dmg.blewcount > 0 && bl->type != BL_SKILL && !status_isdead(bl) && !map[src->m].flag.gvg) {
 		skill_blown(dsrc, bl, dmg.blewcount);
-		if (bl->type == BL_MOB)
-			clif_fixmobpos((struct mob_data *)bl);
-		else if (bl->type == BL_PET)
-			clif_fixpetpos((struct pet_data *)bl);
-		else
-			clif_fixpos(bl);
 	}
 
 	map_freeblock_lock();
@@ -2614,6 +2609,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case DC_THROWARROW:		/* 矢撃ち */
 	case BA_DISSONANCE:		/* 不協和音 */
 	case CR_HOLYCROSS:		/* ホーリークロス */
+	case CR_SHIELDCHARGE:
 	case CR_SHIELDBOOMERANG:
 	case PA_SHIELDCHAIN:
 	case WS_CARTTERMINATION:	// Cart Termination
@@ -3235,17 +3231,6 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case NJ_ZENYNAGE:
 		skill_attack(BF_MISC,src,src,bl,skillid,skilllv,tick,flag);
 		break;
-	case CR_SHIELDCHARGE:
-		skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, flag);
-		skill_blown(src,bl,1);
-		if(bl->type == BL_MOB)
-			clif_fixmobpos((struct mob_data *)bl);
-		else if(bl->type == BL_PET)
-			clif_fixpetpos((struct pet_data *)bl);
-		else
-			clif_fixpos(bl);
-		break;
-
 	// Celest
 	case PF_SOULBURN:
 	  {
