@@ -534,7 +534,7 @@
 1168,Zweihander,Zweihander,4,20,0,2200,200,,1,0,16514,2,34,4,48,3,{},{bonus bUnbreakableWeapon,0; }
 1169,Executioner_,Executioner,4,20,0,2200,155,,1,0,16514,2,34,4,48,3,{},{ bonus bIgnoreDefRace,7; bonus2 bAddRace,7,20; bonus2 bSubRace,7,-10; bonus bAtkEle,7; }
 1170,Katzbalger,Katzbalger,4,20,0,2000,175,,1,0,16514,2,34,4,48,3,{},{ bonus bVit,5; bonus bDef,10; }
-1171,Zweihander_,Zweihander,4,20,0,2200,200,,1,1,16514,2,34,4,48,3,{},{bonus bUnbreakableWeapon,0; }
+1171,Zweihander_,Zweihander,4,20,0,2200,200,,1,1,16514,2,34,4,48,3,{},{ bonus bUnbreakableWeapon,0; }
 
 // Knives and Daggers
 1201,Knife,Knife,4,50,0,400,17,,1,3,10444527,2,2,1,1,1,{},{}
@@ -601,7 +601,7 @@
 1260,Ghoul_Leg,Sharpened Legbone,4,52500,0,1700,150,,1,0,4096,2,34,3,65,16,{},{ bonus bAtkEle,9; }
 1261,Infiltrator,Infiltrator,4,57000,0,1500,140,,1,0,4096,2,34,4,75,16,{},{ bonus2 bAddRace,7,50; bonus bDef,3; bonus bFlee,5; bonus bFlee2,2; }
 1262,Loki's_Nail,Loki's Nail,4,20,0,1200,115,0,1,0,4096,2,34,3,55,16,{},{ bonus2 bAddEff,Eff_Bleeding,500; }
-1263,Unholy_Touch,Unholy Touch,4,20,0,1250,151,0,1,0,4096,2,34,4,70,16,{},{ bonus bAtkEle,7; bonus2 bAddEff,Eff_Curse,500; }
+1263,Unholy_Touch,Unholy Touch,4,20,0,1250,151,0,1,0,4096,2,34,4,70,16,{},{ bonus bAtkEle,7; bonus2 bAddEff,Eff_Curse,500; bonus bUnbreakableWeapon,0; }
 1264,Specialty_Jur,Specialty Jur,4,20,0,800,90,0,1,4,4096,2,34,1,0,16,{},{ bonus2 bAddEff2,Eff_Bleeding,200; }
 1265,Bloody_Roar,Bloody Roar,4,20,0,800,120,0,1,0,4096,2,34,4,75,16,{},{ bonus bIgnoreDefRace,7; bonus bFlee,-160; bonus bFlee2,-160; bonus bNoRegen,1; bonus bNoRegen,2; }
 1266,Infiltrator_,Infiltrator,4,57000,0,1500,140,,1,1,4096,2,34,4,75,16,{},{ bonus2 bAddRace,7,50; bonus bDef,3; bonus bFlee,5; bonus bFlee2,2; }
