@@ -3,7 +3,7 @@
 //===== By: ==================================================
 //= AppleGirl & Evera
 //===== Current Version: =====================================
-//= 1.6
+//= 1.8
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -25,7 +25,8 @@
 //= 1.5 Added a Special GM Menu to enable/disable same-sex weddings and reset most variables [ShadowLady]
 //= 1.6 Added the $progress to $@progress variable change that ShadowLady put in notes, but not in code [Aria]
 //= 1.7 Made the current custom Divorce NPC charge 2.5 mil zeny until the official script is implemented [Tsuyuki]
-//= Note: The official script charges 2.5 mil zeny
+//= 1.8 Removed the effect now that the proper Divorce script has been implemented [Tsuyuki]
+//= Note: The official divorce script charges 2.5 mil zeny
 //============================================================
 
 //============================================================
