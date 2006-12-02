@@ -605,15 +605,15 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 
 	if(map[bl->m].flag.gvg && tmd) {
 		if (tmd->class >= 1285 && tmd->class <= 1288) {
+			// Gravitation Field does 400 damage to Emperium regardless of other factors
+			if (tmd->class == 1288 && (flag&BF_SKILL && skill_num == HW_GRAVITATION)) {
+				damage = 400;
+				return damage;
+			}
 			// Skills can't hit Emperium, except for Raging Triple Blow and Gravitation Field
 			// Note: Gloria Domini/Pressure can no longer hit the Emperium, for future reference (kRO Patch) [Tsuyuki]
 			if ((tmd->class == 1288 && (flag&BF_SKILL && skill_num != MO_TRIPLEATTACK)))
 				return 0; // No need to continue calculating.. return 0 damage
-				// Gravitation Field does 400 damage to Emperium regardless of other factors
-			else if (tmd->class == 1288 && (flag&BF_SKILL && skill_num != HW_GRAVITATION)) {
-				damage = 400;
-				return damage;
-			}
 			
 			if (src->type == BL_PC) {
 				struct guild *g = guild_search(((struct map_session_data *)src)->status.guild_id);
