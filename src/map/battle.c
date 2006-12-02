@@ -516,29 +516,6 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 				damage >>= 1;		// Damage on PvM maps should be half of the original dmg.
 		}
 
-		if ((tsc_data[SC_UTSUSEMI].timer != -1 || tsc_data[SC_BUNSINJYUTSU].timer != -1)
-		&& (flag&BF_WEAPON || (flag&(BF_MISC|BF_SHORT)) == (BF_MISC|BF_SHORT))) {
-			if (skill_num != ASC_BREAKER && skill_num != NJ_KUNAI && skill_num != SN_FALCONASSAULT && 
-			skill_num != MO_BALKYOUNG && skill_num != HT_BLITZBEAT && skill_num != NJ_SYURIKEN &&
-			skill_num != PA_PRESSURE)
-			{
-				if (tsc_data[SC_UTSUSEMI].timer != -1) {
-					clif_specialeffect(bl, 462, AREA);
-					skill_blown (src, bl, tsc_data[SC_UTSUSEMI].val3);
-				};
-				if (tsc_data[SC_UTSUSEMI].timer != -1 &&
-					--tsc_data[SC_UTSUSEMI].val2 <= 0)
-					status_change_end(bl, SC_UTSUSEMI, -1);
-				if (tsc_data[SC_BUNSINJYUTSU].timer != -1 &&
-					--tsc_data[SC_BUNSINJYUTSU].val2 <= 0)
-					status_change_end(bl, SC_BUNSINJYUTSU, -1);
-				return 0;
-		}
-	}
-	
-		if(tsc_data[SC_TATAMIGAESHI].timer != -1 && (flag&BF_MAGIC || flag&BF_LONG))
-			return 0;
-
 		if(flag&BF_WEAPON) { //Weapon attacks
 			if(flag&BF_LONG) { //Long ranged attacks
 				if(tsc_data[SC_DEFENDER].timer != -1)
@@ -580,8 +557,33 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 			if((--sc_data[SC_KYRIE].val3) <= 0 || (sc_data[SC_KYRIE].val2 <= 0) || skill_num == AL_HOLYLIGHT)
 				status_change_end(bl, SC_KYRIE, -1);
 		}
+		
+		if (tsc_data[SC_UTSUSEMI].timer != -1 || tsc_data[SC_BUNSINJYUTSU].timer != -1)
+		{
+ 			if (flag&BF_WEAPON || (flag&(BF_MISC|BF_SHORT))) 
+ 			{
+				if (skill_num != ASC_BREAKER && skill_num != NJ_KUNAI && skill_num != SN_FALCONASSAULT && 
+				skill_num != MO_BALKYOUNG && skill_num != HT_BLITZBEAT && skill_num != NJ_SYURIKEN &&
+				skill_num != PA_PRESSURE)
+				{
+					if (tsc_data[SC_UTSUSEMI].timer != -1) {
+						clif_specialeffect(bl, 462, AREA);
+						skill_blown (src, bl, tsc_data[SC_UTSUSEMI].val3);
+					};
+					if (tsc_data[SC_UTSUSEMI].timer != -1 &&
+						--tsc_data[SC_UTSUSEMI].val2 <= 0)
+						status_change_end(bl, SC_UTSUSEMI, -1);
+					if (tsc_data[SC_BUNSINJYUTSU].timer != -1 &&
+						--tsc_data[SC_BUNSINJYUTSU].val2 <= 0)
+						status_change_end(bl, SC_BUNSINJYUTSU, -1);
+					return 0;
+			}
+		}
+	}
 
-		// リジェクトソード
+		if(tsc_data[SC_TATAMIGAESHI].timer != -1 && (flag&BF_MAGIC || flag&BF_LONG))
+			return 0;
+
 		// Reject Sword: Fixed the condition check - The weapon condition was incorrect. Wasn't working for swords - [Aalye]
 		if(tsc_data[SC_REJECTSWORD].timer != -1 && damage > 0 && flag&BF_WEAPON &&
 			(src->type == BL_MOB || (src->type == BL_PC && (((struct map_session_data *)src)->status.weapon == 1 ||
