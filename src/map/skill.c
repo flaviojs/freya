@@ -3378,12 +3378,6 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 			clif_skill_fail(sd,skillid,0,0);
 		}
 		break;
-	case NJ_SHADOWJUMP:
-		if (sc_data && sc_data[SC_HIDING].timer != -1)
-			status_change_end(src,SC_HIDING,-1);
-		else
-			clif_skill_fail(sd, skillid, 0, 0);
-		break;
 	case NJ_KAENSIN:
 		break;
 	case GS_GROUNDDRIFT:
@@ -4055,11 +4049,19 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 	case MC_CHANGECART:
 		clif_skill_nodamage(src,bl,skillid,skilllv,1);
 		break;
+	case NJ_BUNSINJYUTSU:
+		if (sc_data && sc_data[SC_NEN].timer != -1)
+			status_change_end(src,SC_NEN,-1);
 	case NJ_NEN:
 	case NJ_UTSUSEMI:
-	case NJ_BUNSINJYUTSU:
 		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 		status_change_start(bl, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
+		break;
+	case NJ_SHADOWJUMP:
+		if (sc_data && sc_data[SC_HIDING].timer != -1)
+			status_change_end(src,SC_HIDING,-1);
+		else
+			clif_skill_fail(sd, skillid, 0, 0);
 		break;
 	case AC_CONCENTRATION:
 		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
@@ -6290,15 +6292,9 @@ int skill_castend_pos2(struct block_list *src, int x, int y, int skillid, int sk
 		} else if (src->type == BL_MOB)
 			mob_warp((struct mob_data *)src, -1, x, y, 0);
 		break;
-	case NJ_SHADOWJUMP: // [Tsuyuki]
-		if (sd) {
+	case NJ_SHADOWJUMP:
+		if (sd)
 			pc_movepos(sd, x, y, 0);
-	//	status_change_start(src, SC_HIDING, skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
-			if(src->type == BL_PET) // Pet
-				clif_fixpetpos((struct pet_data *)src);
-			else // Player
-				clif_fixpos(src);
-		}
 		break;
 	case AM_CANNIBALIZE:
 		if (sd) {

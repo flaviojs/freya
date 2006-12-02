@@ -557,22 +557,30 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 			if((--sc_data[SC_KYRIE].val3) <= 0 || (sc_data[SC_KYRIE].val2 <= 0) || skill_num == AL_HOLYLIGHT)
 				status_change_end(bl, SC_KYRIE, -1);
 		}
-		
-		if (tsc_data[SC_UTSUSEMI].timer != -1 || tsc_data[SC_BUNSINJYUTSU].timer != -1)
+
+		if (tsc_data[SC_UTSUSEMI].timer != -1)
 		{
- 			if (flag&BF_WEAPON || (flag&(BF_MISC|BF_SHORT))) 
+ 			if (!(flag&BF_MAGIC) && !(flag&BF_LONG) && !(flag&BF_SKILL)) 
+ 			{
+				if (tsc_data[SC_UTSUSEMI].timer != -1) {
+					clif_specialeffect(bl, 462, AREA);
+					skill_blown (src, bl, tsc_data[SC_UTSUSEMI].val3);
+				};
+				if (tsc_data[SC_UTSUSEMI].timer != -1 &&
+					--tsc_data[SC_UTSUSEMI].val2 <= 0)
+					status_change_end(bl, SC_UTSUSEMI, -1);
+				return 0;
+			}
+		}
+
+		if (tsc_data[SC_BUNSINJYUTSU].timer != -1)
+		{
+ 			if (!(flag&BF_MAGIC))
  			{
 				if (skill_num != ASC_BREAKER && skill_num != NJ_KUNAI && skill_num != SN_FALCONASSAULT && 
 				skill_num != MO_BALKYOUNG && skill_num != HT_BLITZBEAT && skill_num != NJ_SYURIKEN &&
 				skill_num != PA_PRESSURE)
 				{
-					if (tsc_data[SC_UTSUSEMI].timer != -1) {
-						clif_specialeffect(bl, 462, AREA);
-						skill_blown (src, bl, tsc_data[SC_UTSUSEMI].val3);
-					};
-					if (tsc_data[SC_UTSUSEMI].timer != -1 &&
-						--tsc_data[SC_UTSUSEMI].val2 <= 0)
-						status_change_end(bl, SC_UTSUSEMI, -1);
 					if (tsc_data[SC_BUNSINJYUTSU].timer != -1 &&
 						--tsc_data[SC_BUNSINJYUTSU].val2 <= 0)
 						status_change_end(bl, SC_BUNSINJYUTSU, -1);
