@@ -799,13 +799,13 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 
 		if(sd->sc_data[SC_GUILDAURA].timer != -1) {
 			if(sd->sc_data[SC_GUILDAURA].val4 & 1 << 0)
-				sd->paramb[0] += guild_checkskill(sd->state.gmaster_flag, GD_LEADERSHIP);
+				sd->paramb[0] += 2;
 			if(sd->sc_data[SC_GUILDAURA].val4 & 1 << 1)
-				sd->paramb[2] += guild_checkskill(sd->state.gmaster_flag, GD_GLORYWOUNDS);
+				sd->paramb[2] += 2;
 			if(sd->sc_data[SC_GUILDAURA].val4 & 1 << 2)
-				sd->paramb[1] += guild_checkskill(sd->state.gmaster_flag, GD_SOULCOLD);
+				sd->paramb[1] += 2;
 			if(sd->sc_data[SC_GUILDAURA].val4 & 1 << 3)
-				sd->paramb[4] += guild_checkskill(sd->state.gmaster_flag, GD_HAWKEYES);
+				sd->paramb[4] += 2;
 		}
 
 		if(sd->sc_data[SC_STRFOOD].timer != -1)

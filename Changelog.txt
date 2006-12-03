@@ -5,10 +5,11 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/02/06
+	* Fixed: Changed the guild_checkskill back on status.c to avoid empty value returned [Van84]
 	* Fixed: Counter Dagger damaging user instead of target [Tsuyuki]
 	* Fixed: Kyrie Eleison when hit overflowing [Jetvictor]
-	* Fixed: Crash on guild_skillcheck.
-	    - it would temporaly fix the crash on the  but not problem, someone have to recheck it [Van84]
+	* Fixed: Crash on guild_skillcheck.[Van84]
+	    - it would temporaly fix the crash on the  but not problem, someone have to recheck it 
 	* Added: a guild check could temporaly fixed the guild crash [Van84]
 	* Fixed: NJ_BUNSINJYUTSU now properly cancels Nen on use [Tsuyuki]
 	* Fixed: NJ_UTSUSEMI and NJ_BUNSINJYUTSU damage block requirements [Tsuyuki]
