@@ -5,6 +5,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/02/06
+	* Fixed: Kyrie Eleison when hit overflowing [Jetvictor]
+	* Fixed: Crash on guild_skillcheck.
+	    - it would temporaly fix the crash on the  but not problem, someone have to recheck it [Van84]
+	* Added: a guild check could temporaly fixed the guild crash [Van84]
 	* Fixed: NJ_BUNSINJYUTSU now properly cancels Nen on use [Tsuyuki]
 	* Fixed: NJ_UTSUSEMI and NJ_BUNSINJYUTSU damage block requirements [Tsuyuki]
 	* Fixed: Unholy Touch is now indestructible [Tsuyuki]
@@ -25,7 +29,7 @@ Date	Added
 	* Fixed: Mind Breaker formula [Latios]
 	
 11/30/06
-	* Improved: clif_walkok for better walking method of characters
+	* Improved: clif_walkok for better walking method of characters [Jetvictor]
 	* Fixed: Wraith now drops the proper Slotted Manteau, not Skeleton Manteau (Also thanks to Zortch) [Tsuyuki]
 	* Added: Proper effect for Skeleton Manteau (Thanks to Zortch) [Tsuyuki]
 	* Fixed: Ninja skill Throw Fuuma Shuriken now does proper splash damage [Tsuyuki]

@@ -79,6 +79,7 @@ int guild_skill_get_max(int id) { // Modified for new skills [Sara]
 
 // ギルドスキルがあるか確認
 int guild_checkskill(struct guild *g, int id) {
+	if (g==NULL) return 0;
 	int idx = id - GD_SKILLBASE;
 
 	if (idx < 0 || idx >= MAX_GUILDSKILL)
@@ -86,6 +87,9 @@ int guild_checkskill(struct guild *g, int id) {
 
 	if (id == GD_GLORYGUILD && battle_config.no_guilds_glory)
 		return 1;
+
+	if (g->skill[idx].lv < 0)
+		return 0;
 
 	return g->skill[idx].lv;
 }
