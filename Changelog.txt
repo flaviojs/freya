@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/03/06
+	* Fixed: possible crash in status.c [Latios]
 	* Fixed: GD_LEADERSHIP, GD_GLORYWOUNDS, GD_SOULCOLD and GD_HAWKEYES should works only on gvg maps [Latios]
 
 12/02/06

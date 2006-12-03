@@ -797,7 +797,7 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 			sd->paramb[4] += 5;
 		}
 
-		if(sd->sc_data[SC_GUILDAURA].timer != -1 && map[sd->bl.m].flag.gvg) {
+		if(sd->state.gmaster_flag != NULL && sd->sc_data[SC_GUILDAURA].timer != -1 && map[sd->bl.m].flag.gvg) {
 			if(sd->sc_data[SC_GUILDAURA].val4 & 1 << 0)
 				sd->paramb[0] += guild_checkskill(sd->state.gmaster_flag, GD_LEADERSHIP);
 			if(sd->sc_data[SC_GUILDAURA].val4 & 1 << 1)
