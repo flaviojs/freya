@@ -5,8 +5,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/03/06
+	* Fixed: The correct duration of stun to offical values as the ones we had were totally customed [Jetvictor]
 	* Fixed: Wrong items command [Van84]
-	* Fixed: possible crash in status.c [Latios]
+	* Fixed: Possible crash in status.c [Latios]
 	* Fixed: GD_LEADERSHIP, GD_GLORYWOUNDS, GD_SOULCOLD and GD_HAWKEYES should works only on gvg maps [Latios]
 
 12/02/06
@@ -14,20 +15,20 @@ Date	Added
 	* Fixed: Counter Dagger damaging user instead of target [Tsuyuki]
 	* Fixed: Kyrie Eleison when hit overflowing [Jetvictor]
 	* Fixed: Crash on guild_skillcheck.[Van84]
-	    - it would temporaly fix the crash on the  but not problem, someone have to recheck it 
-	* Added: a guild check could temporaly fixed the guild crash [Van84]
+	    - It would temporarily fix the crash but not the problem, someone have to recheck it 
+	* Added: A guild check could temporaly fixed the guild crash [Van84]
 	* Fixed: NJ_BUNSINJYUTSU now properly cancels Nen on use [Tsuyuki]
 	* Fixed: NJ_UTSUSEMI and NJ_BUNSINJYUTSU damage block requirements [Tsuyuki]
 	* Fixed: Unholy Touch is now indestructible [Tsuyuki]
 	* Added: New const.txt enumerations [Tsuyuki]
-	* Fixed: skill_blown : position lag should be fixed for all skills [Latios]
+	* Fixed: Skill_blown: Position lag should be fixed for all skills [Latios]
 	* Updated: skills list in doc/miscnotes.txt [Latios]
-	* Fixed: bonus4 bAutospell rate [Latios]
+	* Fixed: Bonus4 bAutospell rate [Latios]
 
 12/01/06
-	* Fixed: bonus3 Autospell -> bonus4 Autospell (Thanks to Galaxy) [Tsuyuki]
+	* Fixed: Bonus3 Autospell -> bonus4 Autospell (Thanks to Galaxy) [Tsuyuki]
 	* Fixed: Test Warpra name fix [Tsuyuki]
-	* Fixed: getpartnerid (Thanks to Galaxy) [Tsuyuki]
+	* Fixed: Getpartnerid (Thanks to Galaxy) [Tsuyuki]
 	* Fixed: Added Tsuyuki's corrections to msg_athena.conf [Latios]
 	* Added: Fakename and Size to allow future function call [van84]
 	* Removed: Effect of GD_CHARISMA (thanks to Damz) [Latios]
