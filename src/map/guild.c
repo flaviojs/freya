@@ -87,7 +87,7 @@ int guild_checkskill(struct guild *g, int id) {
 	if (id == GD_GLORYGUILD && battle_config.no_guilds_glory)
 		return 1;
 
-	if (g->skill[idx].lv == null || g->skill[idx].lv < 0)
+	if (g->skill[idx].lv < 0)
 		return 0;
 
 	return g->skill[idx].lv;
