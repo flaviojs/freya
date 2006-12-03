@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/02/06
+	* Fixed: Counter Dagger damaging user instead of target [Tsuyuki]
 	* Fixed: Kyrie Eleison when hit overflowing [Jetvictor]
 	* Fixed: Crash on guild_skillcheck.
 	    - it would temporaly fix the crash on the  but not problem, someone have to recheck it [Van84]
