@@ -797,7 +797,7 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 			sd->paramb[4] += 5;
 		}
 
-		if(sd->sc_data[SC_GUILDAURA].timer != -1) {
+		if(sd->state.gmaster_flag != NULL && sd->sc_data[SC_GUILDAURA].timer != -1 && map[sd->bl.m].flag.gvg) {
 			if(sd->sc_data[SC_GUILDAURA].val4 & 1 << 0)
 				sd->paramb[0] += guild_checkskill(sd->state.gmaster_flag, GD_LEADERSHIP);
 			if(sd->sc_data[SC_GUILDAURA].val4 & 1 << 1)
@@ -5445,7 +5445,7 @@ int status_change_timer(int tid, unsigned int tick, int id, int data)
 	case SC_GUILDAURA:
 	  {
 		struct block_list *tbl = map_id2bl(sc_data[type].val2);
-		if (tbl && battle_check_range(bl, tbl, 2)) {
+		if (tbl && battle_check_range(bl, tbl, 2) && map[bl->m].flag.gvg) {
 			sc_data[type].timer = add_timer(1000 + tick, status_change_timer, bl->id, data);
 			return 0;
 		}
