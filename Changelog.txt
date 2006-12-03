@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/02/06
+	* Added: a guild check could temporaly fixed the guild crash [Van84]
 	* Fixed: NJ_BUNSINJYUTSU now properly cancels Nen on use [Tsuyuki]
 	* Fixed: NJ_UTSUSEMI and NJ_BUNSINJYUTSU damage block requirements [Tsuyuki]
 	* Fixed: Unholy Touch is now indestructible [Tsuyuki]
