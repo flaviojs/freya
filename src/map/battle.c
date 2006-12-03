@@ -544,14 +544,14 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 
 		if(tsc_data[SC_KYRIE].timer != -1 && damage > 0)
 		{
-			sc_data[SC_KYRIE].val2 -= damage;
+			sc_data[SC_KYRIE].val2 = damage;
 
 			if(flag & BF_WEAPON || skill_num == TF_THROWSTONE)
 			{
 				if(sc_data[SC_KYRIE].val2 >= 0)	
 					damage = 0;
 				else
-					damage -= sc_data[SC_KYRIE].val2;
+					damage = sc_data[SC_KYRIE].val2;
 			}
 
 			if((--sc_data[SC_KYRIE].val3) <= 0 || (sc_data[SC_KYRIE].val2 <= 0) || skill_num == AL_HOLYLIGHT)
