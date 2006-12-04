@@ -6370,6 +6370,8 @@ int skill_castend_pos2(struct block_list *src, int x, int y, int skillid, int sk
 
 	case HW_GRAVITATION:
 		{
+			if (sd && sd->sc_data[SC_LANDPROTECTOR].timer != -1)
+				return 1;
 			struct skill_unit_group *sg;
 			clif_skill_poseffect(src, skillid, skilllv, x, y, tick);
 			sg = skill_unitsetting(src, skillid, skilllv, x, y, 0);

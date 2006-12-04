@@ -610,6 +610,9 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 			}
 		}
 	} // End of (sc_count != NULL && *sc_count > 0)
+	
+	if(tsc_data[SC_GRAVITATION].timer != -1 && damage > 0)
+		status_change_end(bl, SC_GRAVITATION, -1);
 
 	if(map[bl->m].flag.gvg && tmd) {
 		if (tmd->class >= 1285 && tmd->class <= 1288) {
