@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/03/06
+	* Fixed: wrong check on Experience for second class and baby [Van84]
 	* Fixed: If you get hit during Gravitation Field, it will now properly cancel [Tsuyuki]
 	* Fixed: You can once again no longer move during Gravitation Field [Tsuyuki]
 	* Fixed: The correct duration of stun to offical values as the ones we had were totally customed [Jetvictor]
