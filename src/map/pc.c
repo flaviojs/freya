@@ -5181,7 +5181,7 @@ int pc_nextbaseexp(struct map_session_data *sd)
 	if (sd->status.class == 0 || sd->status.class == 4023) i = 0; // Novice & Baby Novice
 	else if (sd->status.class <= 6 || (sd->status.class >= 4024 && sd->status.class <= 4029) ||
 					(sd->status.class >= JOB_TAEKWON && sd->status.class <= JOB_SOUL_LINKER)) i = 1; // 1st Job & Baby 1st Job
-	else if (sd->status.class <= 27 || (sd->status.class >= 4030 && sd->status.class <= 4044)) i = 2; // 2nd Job & Baby 2nd Job
+	else if (sd->status.class <= 21 || (sd->status.class >= 4030 && sd->status.class <= 4044)) i = 2; // 2nd Job & Baby 2nd Job
 	else if (sd->status.class == 23 || sd->status.class == 4045) i = 3; // Super Novice & Super Baby
 	else if (sd->status.class == 4001) i = 4; // High Novice
 	else if (sd->status.class <= 4007) i = 5; // High 1st Job
@@ -5207,7 +5207,7 @@ int pc_nextjobexp(struct map_session_data *sd)
 	if (sd->status.class == 0 || sd->status.class == 4023) i = 7; // Novice & Baby Novice [Lupus]
 	else if (sd->status.class <= 6 || (sd->status.class >= 4024 && sd->status.class <= 4029) ||
 					(sd->status.class >= JOB_TAEKWON && sd->status.class <= JOB_SOUL_LINKER)) i = 8; // 1st Job & Baby 1st Job
-	else if (sd->status.class <= 27 || (sd->status.class >= 4030 && sd->status.class <= 4044)) i = 9; // 2nd Job & Baby 2nd Job
+	else if (sd->status.class <= 22 || (sd->status.class >= 4030 && sd->status.class <= 4044)) i = 9; // 2nd Job & Baby 2nd Job
 	else if (sd->status.class == 23 || sd->status.class == 4045) i=10; // Super Novice & Super Baby
 	else if (sd->status.class == 4001) i = 11; // High Novice
 	else if (sd->status.class <= 4007) i = 12; // High 1st Job
@@ -5233,7 +5233,7 @@ int pc_nextbaseafter(struct map_session_data *sd)
 	if (sd->status.class == 0 || sd->status.class ==4023) i = 0; // Novice & Baby Novice [Lupus]
 	else if (sd->status.class <= 6 || (sd->status.class >= 4024 && sd->status.class <= 4029) ||
 					(sd->status.class >= JOB_TAEKWON && sd->status.class <= JOB_SOUL_LINKER)) i = 1; // 1st Job & Baby 1st Job
-	else if (sd->status.class <= 27 || (sd->status.class >= 4030 && sd->status.class <= 4044)) i = 2; // 2nd Job & Baby 2nd Job
+	else if (sd->status.class <= 22 || (sd->status.class >= 4030 && sd->status.class <= 4044)) i = 2; // 2nd Job & Baby 2nd Job
 	else if (sd->status.class == 23 || sd->status.class == 4045) i = 3; // Super Novice & Super Baby
 	else if (sd->status.class == 4001) i = 4; // High Novice
 	else if (sd->status.class <= 4007) i = 5; // High 1st Job

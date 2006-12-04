@@ -4,15 +4,11 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
-12/04/06
-	* Fixed: Wrong checked in the atcommand.c validation of second class [Van84]
 12/03/06
-	* Fixed: wrong check on Experience for second class and baby [Van84]
 	* Fixed: If you get hit during Gravitation Field, it will now properly cancel [Tsuyuki]
 	* Fixed: You can once again no longer move during Gravitation Field [Tsuyuki]
-	* Fixed: The correct duration of stun to offical values as the ones we had were totally customed [Jetvictor]
 	* Fixed: Wrong items command [Van84]
-	* Fixed: Possible crash in status.c [Latios]
+	* Fixed: possible crash in status.c [Latios]
 	* Fixed: GD_LEADERSHIP, GD_GLORYWOUNDS, GD_SOULCOLD and GD_HAWKEYES should works only on gvg maps [Latios]
 
 12/02/06
@@ -20,20 +16,20 @@ Date	Added
 	* Fixed: Counter Dagger damaging user instead of target [Tsuyuki]
 	* Fixed: Kyrie Eleison when hit overflowing [Jetvictor]
 	* Fixed: Crash on guild_skillcheck.[Van84]
-	    - It would temporarily fix the crash but not the problem, someone have to recheck it 
-	* Added: A guild check could temporaly fixed the guild crash [Van84]
+	    - it would temporaly fix the crash on the  but not problem, someone have to recheck it 
+	* Added: a guild check could temporaly fixed the guild crash [Van84]
 	* Fixed: NJ_BUNSINJYUTSU now properly cancels Nen on use [Tsuyuki]
 	* Fixed: NJ_UTSUSEMI and NJ_BUNSINJYUTSU damage block requirements [Tsuyuki]
 	* Fixed: Unholy Touch is now indestructible [Tsuyuki]
 	* Added: New const.txt enumerations [Tsuyuki]
-	* Fixed: Skill_blown: Position lag should be fixed for all skills [Latios]
+	* Fixed: skill_blown : position lag should be fixed for all skills [Latios]
 	* Updated: skills list in doc/miscnotes.txt [Latios]
-	* Fixed: Bonus4 bAutospell rate [Latios]
+	* Fixed: bonus4 bAutospell rate [Latios]
 
 12/01/06
-	* Fixed: Bonus3 Autospell -> bonus4 Autospell (Thanks to Galaxy) [Tsuyuki]
+	* Fixed: bonus3 Autospell -> bonus4 Autospell (Thanks to Galaxy) [Tsuyuki]
 	* Fixed: Test Warpra name fix [Tsuyuki]
-	* Fixed: Getpartnerid (Thanks to Galaxy) [Tsuyuki]
+	* Fixed: getpartnerid (Thanks to Galaxy) [Tsuyuki]
 	* Fixed: Added Tsuyuki's corrections to msg_athena.conf [Latios]
 	* Added: Fakename and Size to allow future function call [van84]
 	* Removed: Effect of GD_CHARISMA (thanks to Damz) [Latios]
