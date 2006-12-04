@@ -4803,7 +4803,7 @@ ATCOMMAND_FUNC(joblevelup) {
 				return -1;
 			} else if (sd->status.job_level + level >= battle_config.atcommand_max_job_level_job1)
 				level = battle_config.atcommand_max_job_level_job1 - sd->status.job_level;
-		} else if (sd->status.class <= 22) { // 2nd Job
+		} else if (sd->status.class <= 27) { // 2nd Job
 			if (sd->status.job_level >= battle_config.atcommand_max_job_level_job2) {
 				clif_displaymessage(fd, "You're not authorized to increase more your job level.");
 				return -1;
@@ -9291,7 +9291,7 @@ ATCOMMAND_FUNC(character_joblevel) {
 						return -1;
 					} else if (pl_sd->status.job_level + level >= battle_config.atcommand_max_job_level_job1)
 						level = battle_config.atcommand_max_job_level_job1 - pl_sd->status.job_level;
-				} else if (pl_sd->status.class <= 22) { // 2nd Job
+				} else if (pl_sd->status.class <= 27) { // 2nd Job
 					if (pl_sd->status.job_level >= battle_config.atcommand_max_job_level_job2) {
 						clif_displaymessage(fd, "You're not authorized to increase more the job level of this player.");
 						return -1;

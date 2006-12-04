@@ -4,6 +4,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+12/04/06
+	* Fixed: Wrong checked in the atcommand.c validation of second class [Van84]
 12/03/06
 	* Fixed: wrong check on Experience for second class and baby [Van84]
 	* Fixed: If you get hit during Gravitation Field, it will now properly cancel [Tsuyuki]
