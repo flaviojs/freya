@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+12/04/06
+	* Fixed: All skills have a stun duration of 5 seconds as per Aegis [Jetvictor]
+
 12/03/06
 	* Fixed: If you get hit during Gravitation Field, it will now properly cancel [Tsuyuki]
 	* Fixed: You can once again no longer move during Gravitation Field [Tsuyuki]
