@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/07/06
+	* Fixed: Survivor's combo set (Thanks to galaxy) [Tsuyuki]
+	* Cleaned: Some comments in status.c [Tsuyuki]
 	* Added: Some missing job_db2.txt values [Tsuyuki]
 	* Fixed: Gunslinger/Ninja can now properly go up to job 70 [Tsuyuki]
 	* Added: Some SC_XMAS-related code (doesn't work yet..) [Tsuyuki]
