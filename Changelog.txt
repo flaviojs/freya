@@ -5,7 +5,6 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/03/06
-	* Fixed: If you get hit during Gravitation Field, it will now properly cancel [Tsuyuki]
 	* Fixed: You can once again no longer move during Gravitation Field [Tsuyuki]
 	* Fixed: Wrong items command [Van84]
 	* Fixed: possible crash in status.c [Latios]

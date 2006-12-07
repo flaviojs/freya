@@ -421,10 +421,10 @@ int pc_cant_move(struct map_session_data *sd) {
      sd->sc_data[SC_SPIDERWEB].timer != -1 ||
     (sd->sc_data[SC_DANCING].timer != -1 && sd->sc_data[SC_DANCING].val4 && sd->sc_data[SC_LONGING].timer == -1) ||
     (sd->sc_data[SC_GOSPEL].timer != -1 && sd->sc_data[SC_GOSPEL].val4 == BCT_SELF) ||	// Cannot move while gospel is in effect
+	   sd->sc_data[SC_GRAVITATION].timer != -1 ||
 	   sd->sc_data[SC_STOP].timer != -1 ||
 	   sd->sc_data[SC_CLOSECONFINE].timer != -1 ||
-	   sd->sc_data[SC_CLOSECONFINE2].timer != -1 ||
-	   sd->sc_data[SC_GRAVITATION].timer != -1))
+	   sd->sc_data[SC_CLOSECONFINE2].timer != -1))
 		return 1;
 
 	return 0;
@@ -3316,7 +3316,7 @@ void pc_useitem(struct map_session_data *sd, short n) {
 			return;
 		if (gettick_cache < sd->canuseitem_tick || // Prevent mass item usage. [Skotlex]
 		    sd->sc_data[SC_BERSERK].timer != -1 ||
-				sd->sc_data[SC_GRAVITATION].timer != -1 ||
+			sd->sc_data[SC_GRAVITATION].timer != -1 ||
 		    (pc_issit(sd) && (itemid == 605 || itemid == 606)) || // 605: Anodyne, 606: Aloevera
 		    (map[sd->bl.m].flag.pvp && (sd->inventory_data[n]->flag.no_equip & 1)) || // PVP // no_equip = 1- not in PvP, 2- GvG restriction, 3- PvP and GvG which restriction
 		    (map[sd->bl.m].flag.gvg && (sd->inventory_data[n]->flag.no_equip & 2)) || // GVG // no_equip = 1- not in PvP, 2- GvG restriction, 3- PvP and GvG which restriction
