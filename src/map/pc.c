@@ -421,6 +421,7 @@ int pc_cant_move(struct map_session_data *sd) {
      sd->sc_data[SC_SPIDERWEB].timer != -1 ||
     (sd->sc_data[SC_DANCING].timer != -1 && sd->sc_data[SC_DANCING].val4 && sd->sc_data[SC_LONGING].timer == -1) ||
     (sd->sc_data[SC_GOSPEL].timer != -1 && sd->sc_data[SC_GOSPEL].val4 == BCT_SELF) ||	// Cannot move while gospel is in effect
+	   sd->sc_data[SC_GRAVITATION].timer != -1 ||
 	   sd->sc_data[SC_STOP].timer != -1 ||
 	   sd->sc_data[SC_CLOSECONFINE].timer != -1 ||
 	   sd->sc_data[SC_CLOSECONFINE2].timer != -1))
