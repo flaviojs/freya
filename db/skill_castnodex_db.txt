@@ -19,7 +19,6 @@
 //409,1	// WE_CALLPARENT#Call Parent#
 //410,1	// WE_CALLBABY#Call Baby#
 482,1	// PF_DOUBLECASTING#Double Casting#
-489,1	// CG_TAROTCARD#Tarot Card of Fate#
 462,1	// SL_KAIZEL
 //512,3 //GS_TRACKING
 496,1	// AM_TWILIGHT1
