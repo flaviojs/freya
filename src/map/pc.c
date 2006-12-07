@@ -6311,13 +6311,13 @@ void pc_setparam(struct map_session_data *sd,int type,int val)
 	case SP_JOBLEVEL:
 		if (s_class.job == 0)
 			up_level -= 40;
-		// super novices can go up to job 99 [celest]
+		// Super Novice can go up to job 99
 		else if (s_class.job == 23)
 			up_level += 49;
 		else if (sd->status.class >= 4008 && sd->status.class <= 4022)
 			up_level += 20;
 		// Gunslinger/Ninja can go up to job 70
-		else if (sd->status.class == 24 || sd->status.class == 25)
+		else if (s_class.job == 24 || s_class.job == 25)
 			up_level += 20;
 		if (val >= sd->status.job_level) {
 			if (val > up_level)val = up_level;
@@ -6651,8 +6651,8 @@ int pc_jobchange(struct map_session_data *sd, int job, int upper)
 			return 1;
 		else if (upper == 2)
 			b_class += 4022;
-	} else if (job >= 26 && job < 69) {
-		b_class += 3974;
+	} else if (job > 26 && job < 69) {
+		return 1;
 	} else if ((job >= 69 && job < 4001) || (job > MAX_PC_CLASS))
 		return 1;
 
