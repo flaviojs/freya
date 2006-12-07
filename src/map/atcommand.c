@@ -4774,23 +4774,29 @@ ATCOMMAND_FUNC(joblevelup) {
 
 	s_class = pc_calc_base_job(sd->status.class);
 
+	// Standard classes can go to job 50
 	up_level = 50;
-	if (s_class.job == 0) // novice
+	// Novice can go to job 10
+	if (s_class.job == 0)
 		up_level -= 40;
-	// super novices can go up to 99 [celest]
+	// Super Novice can go to job 99
 	else if (s_class.job == 23)
 		up_level += 49;
+	// Gunslinger/Ninja can go to job 70
+	else if (s_class.job == 24 || s_class.job == 25)
+		up_level += 20;
+	// Advanced classes can go to job 70
 	else if (sd->status.class > 4007 && sd->status.class < 4023)
 		up_level += 20;
 
 	if (level > 0) {
 		if (sd->status.job_level == up_level) {
-			clif_displaymessage(fd, msg_txt(23)); // Job level can't go any higher.
+			clif_displaymessage(fd, msg_txt(23)); // Job level can't go any higher
 			return -1;
 		}
-		if (level > up_level || level > (up_level - sd->status.job_level)) // fix positiv overflow
+		if (level > up_level || level > (up_level - sd->status.job_level)) // Fix positive overflow
 			level = up_level - sd->status.job_level;
-		// check with maximum authorized level
+		// Check maximum authorized job level
 		if (sd->status.class == 0) { // Novice
 			if (sd->status.job_level >= battle_config.atcommand_max_job_level_novice) {
 				clif_displaymessage(fd, "You're not authorized to increase more your job level.");
@@ -4815,6 +4821,12 @@ ATCOMMAND_FUNC(joblevelup) {
 				return -1;
 			} else if (sd->status.job_level + level >= battle_config.atcommand_max_job_level_supernovice)
 				level = battle_config.atcommand_max_job_level_supernovice - sd->status.job_level;
+		} else if (sd->status.class == 24 || sd->status.class == 25) { // Gunslinger/Ninja
+			if (sd->status.job_level >= 70) {
+				clif_displaymessage(fd, "You're not authorized to increase more your job level.");
+				return -1;
+			} else if (sd->status.job_level + level >= 70)
+				level = 70 - sd->status.job_level;
 		} else if (sd->status.class == 4001) { // High Novice
 			if (sd->status.job_level >= battle_config.atcommand_max_job_level_highnovice) {
 				clif_displaymessage(fd, "You're not authorized to increase more your job level.");
@@ -4865,31 +4877,31 @@ ATCOMMAND_FUNC(joblevelup) {
 		clif_updatestatus(sd, SP_SKILLPOINT);
 		status_calc_pc(sd, 0);
 		clif_misceffect(&sd->bl, 1);
-		clif_displaymessage(fd, msg_txt(24)); // Job level raised.
+		clif_displaymessage(fd, msg_txt(24)); // Job level raised
 	} else {
 		if (sd->status.job_level == 1) {
-			clif_displaymessage(fd, msg_txt(159)); // Job level can't go any lower.
+			clif_displaymessage(fd, msg_txt(159)); // Job level can't go any lower
 			return -1;
 		}
-		if (level < -up_level || level < (1 - sd->status.job_level)) // fix negativ overflow
+		if (level < -up_level || level < (1 - sd->status.job_level)) // Fix negative overflow
 			level = 1 - sd->status.job_level;
-		// don't check maximum authorized if we reduce level
+		// Don't check maximum authorized if we reduce level
 		sd->status.job_level += level;
 		clif_updatestatus(sd, SP_JOBLEVEL);
 		clif_updatestatus(sd, SP_NEXTJOBEXP);
 		if (sd->status.skill_point > 0) {
-			sd->status.skill_point += level; // note: here, level is negativ
+			sd->status.skill_point += level; // Note: Here, level is negative
 			if (sd->status.skill_point < 0) {
 				level = sd->status.skill_point;
 				sd->status.skill_point = 0;
 			}
 			clif_updatestatus(sd, SP_SKILLPOINT);
 		}
-		if (level < 0) { // if always negativ, skill points must be removed from skills
-			// to add: remove skill points from skills
+		if (level < 0) { // If always negative, skill points must be removed from skills
+			// To Add: Remove skill points from skills
 		}
 		status_calc_pc(sd, 0);
-		clif_displaymessage(fd, msg_txt(25)); // Job level lowered.
+		clif_displaymessage(fd, msg_txt(25)); // Job level lowered
 	}
 
 	return 0;
@@ -13750,7 +13762,7 @@ ATCOMMAND_FUNC(rings) {
 	item_tmp.identify = 1;
 	if ((flag = pc_additem(sd, &item_tmp, 1))) {
 		clif_additem(sd, 0, 0, flag);
-		clif_displaymessage(fd, "You can not receive the Wedding Ring of Mister (id:2634) (overcharged?).");
+		clif_displaymessage(fd, "You cannot receive the Wedding Ring of Groom (id:2634) (overcharged?).");
 		return -1;
 	}
 
@@ -13760,7 +13772,7 @@ ATCOMMAND_FUNC(rings) {
 	item_tmp.identify = 1;
 	if ((flag = pc_additem(sd, &item_tmp, 1))) {
 		clif_additem(sd, 0, 0, flag);
-		clif_displaymessage(fd, "You can not receive the Wedding Ring of Miss (id:2635) (overcharged?).");
+		clif_displaymessage(fd, "You can not receive the Wedding Ring of Bride (id:2635) (overcharged?).");
 		return -1;
 	}
 

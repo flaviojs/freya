@@ -2704,8 +2704,8 @@
 
 // More Misc Items - Incomplete
 12130,Cookie_Bag,Cookie Bag,2,2,1,70,,,,,27254783,2,,,,,{ getitem -5,1;  getitem -5,1;  getitem -5,1; },{}
-12131,Lucky_Potion,Lucky Potion,0,,10,100,,,,,27254783,2,,,,,{ sc_start SC_LUKFOOD, 300000, 15; },{}
-12132,Santa's_Bag,Red Package,2,20,10,200,,,,,27254783,2,,,,,{},{} // Turns you into Xmas Suit for 10 Minutes
+12131,Lucky_Potion,Lucky Potion,0,,10,100,,,,,27254783,2,,,,,{ sc_start SC_LUKFOOD,300000,15; },{}
+12132,Santa's_Bag,Red Package,2,20,10,200,,,,,27254783,2,,,,,{ sc_start SC_XMAS,600000,0; },{}
 12133,McDonald's_Ice_Cone,McDonald's Ice Cone,0,50,,80,,,,,27254783,2,,,,,{ itemheal rand(45,64),0; },{} // Incomplete
 12134,Red_Envelope,Red Envelope,2,,10,10,,,,,27254783,2,,,,,{ set Zeny,Zeny+rand(1000,10000); },{}
 12135,Green_Ale,Green Ale,2,10,5,30,,,,,27254783,2,,,,,{ percentheal 50,50; if(rand(100) >= 90)sc_start SC_Confusion,10000,0; },{}

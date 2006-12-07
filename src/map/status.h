@@ -2,9 +2,9 @@
 #ifndef _STATUS_H_
 #define _STATUS_H_
 
-enum {	// struct map_session_data ÇÃ status_changeÇÃî‘çÜÉeÅ[ÉuÉã
+enum {	// struct map_session_dataÇ status_change function
 
-	SC_STONE = 0,
+	SC_STONE 								= 0,
 	SC_FREEZE,
 	SC_STUN,
 	SC_SLEEP,
@@ -31,7 +31,7 @@ enum {	// struct map_session_data ÇÃ status_changeÇÃî‘çÜÉeÅ[ÉuÉã
 	SC_WATERWEAPON          = 27,
 	SC_WINDWEAPON           = 28,
 	SC_EARTHWEAPON          = 29,
-	SC_PROVOKE		    = 30,
+	SC_PROVOKE							= 30,
 	SC_ENDURE,
 	SC_TWOHANDQUICKEN,
 	SC_CONCENTRATE,
@@ -56,7 +56,7 @@ enum {	// struct map_session_data ÇÃ status_changeÇÃî‘çÜÉeÅ[ÉuÉã
 	SC_TRICKDEAD,
 	SC_LOUD,
 	SC_ENERGYCOAT,
-	SC_SLOWDOWN, //55. for skill slowdown
+	SC_SLOWDOWN, //55, For skill slowdown
 	SC_AUTOBERSERK,
 	SC_AUTOGUARD,
 	SC_REFLECTSHIELD,
@@ -85,7 +85,7 @@ enum {	// struct map_session_data ÇÃ status_changeÇÃî‘çÜÉeÅ[ÉuÉã
 	SC_DOUBLECAST,
 	SC_MEMORIZE,
 	SC_BATTLEORDERS,
-	SC_DISPELLMAX, //End set of status that can be dispelled
+	SC_DISPELLMAX, // End set of status that can be dispelled
 	
 	SC_EDP, //85
 	SC_CP_WEAPON,
@@ -94,7 +94,7 @@ enum {	// struct map_session_data ÇÃ status_changeÇÃî‘çÜÉeÅ[ÉuÉã
 	SC_CP_HELM,
 	SC_PRESERVE, //90
 	SC_CARTBOOST,
-	SC_BUFFMAX, //Normal buffs ends here
+	SC_BUFFMAX, // Normal buffs ends here
 	
 	SC_QUAGMIRE,
 	SC_BASILICA,
@@ -178,14 +178,14 @@ enum {	// struct map_session_data ÇÃ status_changeÇÃî‘çÜÉeÅ[ÉuÉã
 	SC_GRAVITATION,
 	SC_LONGING,
 	SC_HERMODE,
-	SC_INCSTR,          //175. Increase STR by an absolute number
-	SC_INCAGI,          //Increase AGI by an absolute number
-	SC_INCVIT,          //Increase VIT by an absolute number
-	SC_INCINT,          //Increase INT by an absolute number
-	SC_INCDEX,          //Increase DEX by an absolute number
-	SC_INCLUK,          //180. Increase LUK by an absolute number
-	SC_INCALLSTATUS,    //Increase all stats by an absolute number
-	SC_SCRESIST,        //Increases resistance to status changes
+	SC_INCSTR, //175
+	SC_INCAGI,
+	SC_INCVIT,
+	SC_INCINT,
+	SC_INCDEX,
+	SC_INCLUK,
+	SC_INCALLSTATUS,
+	SC_SCRESIST,
 	SC_INCHIT,
 	SC_INCFLEE,
 	SC_INCMHPRATE,
@@ -216,8 +216,8 @@ enum {	// struct map_session_data ÇÃ status_changeÇÃî‘çÜÉeÅ[ÉuÉã
 	SC_WATKFOOD,		// 210
 	SC_MATKFOOD,
 	SC_MAGNUM,
-	SC_XMAS, // Xmas Suit [Valaris]
-	SC_WARM, //SG skills [Komurka]
+	SC_XMAS,
+	SC_WARM,
 	SC_SUN_COMFORT,
 	SC_MOON_COMFORT,
 	SC_STAR_COMFORT,
@@ -225,9 +225,9 @@ enum {	// struct map_session_data ÇÃ status_changeÇÃî‘çÜÉeÅ[ÉuÉã
 	SC_SKILLRATE_UP,
 	SC_SKE,	// 220
 	SC_KAITE,
-	SC_SWOO, // [marquis007]
-	SC_SKA, // [marquis007]
-	SC_MIRACLE, //SG 'hidden' skill [Komurka]
+	SC_SWOO,
+	SC_SKA,
+	SC_MIRACLE,
 	//Ninja/GS states
 	SC_MADNESSCANCEL,
 	SC_ADJUSTMENT,
@@ -246,8 +246,8 @@ enum {	// struct map_session_data ÇÃ status_changeÇÃî‘çÜÉeÅ[ÉuÉã
 	SC_CHANGE,
 	SC_BLOODLUST,	// 240
 	SC_FLEET,
-	SC_SPEED,	//[orn]
-	SC_DEFENCE,	//[orn]
+	SC_SPEED,
+	SC_DEFENCE,
 	SC_INCAGIRATE,
 	SC_INCDEXRATE,
 	SC_JAILED,

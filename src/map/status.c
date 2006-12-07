@@ -3854,8 +3854,6 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			if(!(flag&4))
 				val2 = 5 * (2 + type - SC_ASPDPOTION0);
 			break;
-
-		/* atk & matk potions [Valaris] */
 		case SC_ATKPOT:
 		case SC_MATKPOT:
 			scflag.calc = 1;
@@ -3869,6 +3867,14 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 					val2 = time(&timer);
 			}
 			break;
+		case SC_XMAS:
+			{
+				time_t timer;
+				tick = 10000;
+				if(!val2)
+					val2 = time(&timer);
+				}
+				break;
 		case SC_NOCHAT:
 			{
 				time_t timer;
@@ -4453,6 +4459,7 @@ void status_change_clear(struct block_list *bl, int type)
 		{
 			switch(i)
 			{
+				// These statuses do not dispel on death
 				case SC_EDP:
 				case SC_MELTDOWN:
 				case SC_NOCHAT:
@@ -4474,6 +4481,7 @@ void status_change_clear(struct block_list *bl, int type)
 				case SC_BATKFOOD:
 				case SC_WATKFOOD:
 				case SC_MATKFOOD:
+				case SC_XMAS:
 					continue;
 			}
 		}
@@ -5278,9 +5286,9 @@ int status_change_timer(int tid, unsigned int tick, int id, int data)
 	case SC_FALCON:
 	case SC_WEIGHT50:
 	case SC_WEIGHT90:
-	case SC_MAGICPOWER:		/* 魔法力増幅 */
-	case SC_REJECTSWORD:	/* リジェクトソード */
-	case SC_MEMORIZE:	/* メモライズ */
+	case SC_MAGICPOWER:
+	case SC_REJECTSWORD:
+	case SC_MEMORIZE:
 	case SC_BROKNWEAPON:
 	case SC_BROKNARMOR:
 	case SC_SACRIFICE:
@@ -5294,41 +5302,41 @@ int status_change_timer(int tid, unsigned int tick, int id, int data)
 		return 0;
 	/* End no time-limit statuses */
 	
-	case SC_DANCING: //ダンススキルの時間SP消費
+	case SC_DANCING:
 		{
 			int s = 0, sp = 1;
 			if(sd){
 				if(sd->status.sp > 0 && (--sc_data[type].val3)>0){
 					switch(sc_data[type].val1){
-					case BD_RICHMANKIM:				/* ニヨルドの宴 3秒にSP1 */
-					case BD_DRUMBATTLEFIELD:		/* 戦太鼓の響き 3秒にSP1 */
-					case BD_RINGNIBELUNGEN:			/* ニーベルングの指輪 3秒にSP1 */
-					case BD_SIEGFRIED:				/* 不死身のジークフリード 3秒にSP1 */
-					case BA_DISSONANCE:				/* 不協和音 3秒でSP1 */
-					case BA_ASSASSINCROSS:			/* 夕陽のアサシンクロス 3秒でSP1 */
-					case DC_UGLYDANCE:				/* 自分勝手なダンス 3秒でSP1 */
+					case BD_RICHMANKIM:
+					case BD_DRUMBATTLEFIELD:
+					case BD_RINGNIBELUNGEN:
+					case BD_SIEGFRIED:
+					case BA_DISSONANCE:
+					case BA_ASSASSINCROSS:
+					case DC_UGLYDANCE:
 						s=3;
 						break;
-					case BD_LULLABY:				/* 子守歌 4秒にSP1 */
-					case BD_ETERNALCHAOS:			/* 永遠の混沌 4秒にSP1 */
-					case BD_ROKISWEIL:				/* ロキの叫び 4秒にSP1 */
-					case DC_FORTUNEKISS:			/* 幸運のキス 4秒でSP1 */
+					case BD_LULLABY:
+					case BD_ETERNALCHAOS:
+					case BD_ROKISWEIL:
+					case DC_FORTUNEKISS:
 						s=4;
 						break;
 					case CG_HERMODE:
 						sp = 5;
-					case BD_INTOABYSS:				/* 深淵の中に 5秒にSP1 */
-					case BA_WHISTLE:				/* 口笛 5秒でSP1 */
-					case DC_HUMMING:				/* ハミング 5秒でSP1 */
-					case BA_POEMBRAGI:				/* ブラギの詩 5秒でSP1 */
-					case DC_SERVICEFORYOU:			/* サービスフォーユー 5秒でSP1 */
+					case BD_INTOABYSS:
+					case BA_WHISTLE:
+					case DC_HUMMING:
+					case BA_POEMBRAGI:
+					case DC_SERVICEFORYOU:
 						s = 5;
 						break;
-					case BA_APPLEIDUN: /* イドゥンの林檎 6秒でSP1 */
+					case BA_APPLEIDUN:
 						s = 6;
 						break;
-					case DC_DONTFORGETME: /* 私を忘れないで… 10秒でSP1 */
-					case CG_MOONLIT: /* 月明りの泉に落ちる花びら 10秒でSP1？ */
+					case DC_DONTFORGETME:
+					case CG_MOONLIT:
 						s = 10;
 						break;
 
@@ -5341,7 +5349,7 @@ int status_change_timer(int tid, unsigned int tick, int id, int data)
 						if (sd->status.sp <= 0) sd->status.sp = 0;
 						clif_updatestatus(sd, SP_SP);
 					}
-					sc_data[type].timer = add_timer(1000 + tick, status_change_timer, bl->id, data); /* タイマー再設定 */
+					sc_data[type].timer = add_timer(1000 + tick, status_change_timer, bl->id, data);
 					return 0;
 				}
 				else if (sd->status.sp <= 0) {
@@ -5351,7 +5359,7 @@ int status_change_timer(int tid, unsigned int tick, int id, int data)
 			}
 		}
 		break;
-	case SC_BERSERK: /* バーサーク */
+	case SC_BERSERK:
 		if (sd) { /* HPが100以上なら継続 */
 			if ((sd->status.hp - sd->status.max_hp * 5 / 100) > 100 ) { // 5% every 10 seconds [DracoRPG]
 				sd->status.hp -= sd->status.max_hp * 5 / 100; // changed to max hp [celest]
@@ -5361,7 +5369,7 @@ int status_change_timer(int tid, unsigned int tick, int id, int data)
 			}
 		}
 		break;
-	case SC_WEDDING: //結婚用(結婚衣裳になって歩くのが遅いとか)
+	case SC_WEDDING:
 		if (sd) {
 			time_t timer;
 			if (time(&timer) < ((sc_data[type].val2) + 3600)) { //1時間たっていないので継続
@@ -5370,7 +5378,16 @@ int status_change_timer(int tid, unsigned int tick, int id, int data)
 			}
 		}
 		break;
-	case SC_NOCHAT: //チャット禁止状態
+	case SC_XMAS:
+		if (sd) {
+			time_t timer;
+			if (time(&timer) < ((sc_data[type].val2) + 3600)) {
+				sc_data[type].timer = add_timer(10000 + tick, status_change_timer, bl->id, data);
+				return 0;
+			}
+		}
+		break;
+	case SC_NOCHAT:
 		if (sd && battle_config.muting_players) {
 			time_t timer;
 			if ((++sd->status.manner) && time(&timer) < ((sc_data[type].val2) + 60 * (0 - sd->status.manner))) { //開始からstatus.manner分経ってないので継続
@@ -5380,7 +5397,7 @@ int status_change_timer(int tid, unsigned int tick, int id, int data)
 			}
 		}
 		break;
-	case SC_SELFDESTRUCTION: /* 自爆 */
+	case SC_SELFDESTRUCTION:
 		if (--sc_data[type].val3 > 0) {
 			struct mob_data *md;
 			if (bl->type == BL_MOB && (md = (struct mob_data *)bl) && md->speed > 250) {
@@ -5403,7 +5420,7 @@ int status_change_timer(int tid, unsigned int tick, int id, int data)
 		}
 		break;
 
-	case SC_MARIONETTE: /* マリオネットコントロ?ル */
+	case SC_MARIONETTE:
 	case SC_MARIONETTE2:
 	  {
 		struct block_list *pbl = map_id2bl(sc_data[type].val3);
@@ -5475,14 +5492,14 @@ int status_change_timer_sub(struct block_list *bl, va_list ap) {
 		return 0;
 
 	switch(type) {
-	case SC_SIGHT: /* サイト */
+	case SC_SIGHT:
 	case SC_CONCENTRATE:
 		if ((*status_get_option(bl)) & 6) {
 			status_change_end(bl, SC_HIDING, -1);
 			status_change_end(bl, SC_CLOAKING, -1);
 		}
 		break;
-	case SC_RUWACH: /* ルアフ */
+	case SC_RUWACH:
 		if ((*status_get_option(bl)) & 6) {
 			struct status_change *sc_data = status_get_sc_data(bl); // check whether the target is hiding/cloaking [celest]
 			if (sc_data && (sc_data[SC_HIDING].timer != -1 || // if the target is using a special hiding, i.e not using normal hiding/cloaking, don't bother
