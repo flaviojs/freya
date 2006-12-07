@@ -421,7 +421,7 @@ int pc_cant_move(struct map_session_data *sd) {
      sd->sc_data[SC_SPIDERWEB].timer != -1 ||
     (sd->sc_data[SC_DANCING].timer != -1 && sd->sc_data[SC_DANCING].val4 && sd->sc_data[SC_LONGING].timer == -1) ||
     (sd->sc_data[SC_GOSPEL].timer != -1 && sd->sc_data[SC_GOSPEL].val4 == BCT_SELF) ||	// Cannot move while gospel is in effect
-	   sd->sc_data[SC_GRAVITATION].timer != -1 ||
+		(sd->sc_data[SC_GRAVITATION].timer != -1 && sd->sc_data[SC_GRAVITATION].val3 == BCT_SELF) ||
 	   sd->sc_data[SC_STOP].timer != -1 ||
 	   sd->sc_data[SC_CLOSECONFINE].timer != -1 ||
 	   sd->sc_data[SC_CLOSECONFINE2].timer != -1))
@@ -1751,10 +1751,10 @@ void pc_calc_skilltree(struct map_session_data *sd) {
 }
 
 int pc_calc_skilltree_normalize_job(int c, int s, struct map_session_data *sd) {
-	// check skills up limit
+	// Check skills up limit
 	if (battle_config.skillup_limit) {
 		int skill_point, i, id;
-		// calculation of basic skill and check novice skill points
+		// Calculation of basic skill and check novice skill points
 		skill_point = sd->status.skill[NV_BASIC].lv;
 		if (battle_config.quest_skill_learn && s != 1) // if platinum skills are not free
 			skill_point = skill_point + sd->status.skill[142].lv + sd->status.skill[143].lv; // add the 2 novice quests skills
@@ -1762,10 +1762,10 @@ int pc_calc_skilltree_normalize_job(int c, int s, struct map_session_data *sd) {
 		if (skill_point < 9) // if not all basic skills
 			return 0;
 
-		// check second classes and first class skills
+		// Check second classes and first class skills
 		if ((c >= 7 && c < 23) || (c >= 4046 && c <= 4049)) {
 			int c1 = c, previous_class_level;
-			// which classe to check
+			// Which class to check
 			switch(c) {
 			case 7:
 			case 13:
@@ -1799,14 +1799,14 @@ int pc_calc_skilltree_normalize_job(int c, int s, struct map_session_data *sd) {
 			case 4049:
 				c1 = 4046;
 			}
-			// totalize actual skills points
+			// Totalize actual skills points
 			for(i = 0; (id = skill_tree[s][c1][i].id) > 0; i++) {
-				if (id == NV_BASIC || id == 142 || id == 143) // already added
+				if (id == NV_BASIC || id == 142 || id == 143) // Already added
 					continue;
 				if (sd->status.skill[id].flag != 13 && (battle_config.quest_skill_learn || !(skill_get_inf2(id) & 0x01)))
 					skill_point += sd->status.skill[id].lv;
 			}
-			// calculate skill points for 1st classe and check
+			// Calculate skill points for 1st class and check
 			previous_class_level = sd->change_level;
 			if (previous_class_level < 40 || previous_class_level > 50)
 				previous_class_level = 40;
