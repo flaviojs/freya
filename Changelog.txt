@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/06/06
+	* Fixed: CR/LF conflict in target files affecting dos/unix compatibility during compilation [Mikey]
 	* Fixed: GD_LEADERSHIP, GD_GLORYWOUNDS, GD_SOULCOLD and GD_HAWKEYES now work out of GvG maps.. [Tsuyuki]
 	* Fixed: Tarot Card of Fate is now affected by the caster's DEX [Tsuyuki]
 
