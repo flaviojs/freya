@@ -8311,14 +8311,14 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 		}
 		break;
 
-	case NJ_ZENYNAGE:
+/*	case NJ_ZENYNAGE:
 		if(sd->status.zeny < zeny) {
 			clif_skill_fail(sd,skill,5,0);
 			return 0;
 		}	else {
 			zeny = 0; // Zeny is reduced on skill_attack.
 			break;
-		}
+		}*/
 	}
 
 	if (!(type & 2)) {
