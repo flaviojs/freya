@@ -643,7 +643,8 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 	if(sd->attackrange_ < 1) sd->attackrange_ = 1;
 	if(sd->attackrange < sd->attackrange_)
 		sd->attackrange = sd->attackrange_;
-	if(sd->status.weapon == 11)
+	if(sd->status.weapon == 11 || sd->status.weapon == 17 || sd->status.weapon == 18 ||
+		 sd->status.weapon == 19 || sd->status.weapon == 20 || sd->status.weapon == 21)
 		sd->attackrange += sd->arrow_range;
 	if(wele > 0)
 		sd->atk_ele = wele;
@@ -3394,6 +3395,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 		case SC_RUN:
 		case SC_SPURT:
 		case SC_NEN:
+			*opt3 |= 2;
 			scflag.calc = 1;
 			break;
 		case SC_READYSTORM:

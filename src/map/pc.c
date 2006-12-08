@@ -543,31 +543,37 @@ void pc_setinventorydata(struct map_session_data *sd) {
 	return;
 }
 
+// Calculates Weapon Type: weapontype1 and weapontype2 -> status.weapon
 void pc_calcweapontype(struct map_session_data *sd)
 {
 	nullpo_retv(sd);
 
 	if (sd->weapontype1 != 0 && sd->weapontype2 == 0)
-		sd->status.weapon = sd->weapontype1;
-	if (sd->weapontype1 == 0 && sd->weapontype2 != 0) // ¶Žè•Ší Only
-		sd->status.weapon = sd->weapontype2;
-	else if (sd->weapontype1 == 1 && sd->weapontype2 == 1) // ‘o’ZŒ•
-		sd->status.weapon = 0x11;
-	else if (sd->weapontype1 == 2 && sd->weapontype2 == 2) // ‘o’PŽèŒ•
-		sd->status.weapon = 0x12;
-	else if (sd->weapontype1 == 6 && sd->weapontype2 == 6) // ‘o’PŽè•€
-		sd->status.weapon = 0x13;
+		sd->status.weapon = sd->weapontype1; // Use Left-Handed Weapon Type (Right-Handed Weapon not equiped)
+	if (sd->weapontype1 == 0 && sd->weapontype2 != 0)
+		sd->status.weapon = sd->weapontype2; // Use Right-Handed Weapon Type (Left-Handed Weapon not equiped)
+	else if (sd->weapontype1 == 1 && sd->weapontype2 == 1)
+		sd->status.weapon = 0x11; // Dual Daggers
+	else if (sd->weapontype1 == 2 && sd->weapontype2 == 2)
+		sd->status.weapon = 0x12; // Dual One-Handed Swords
+	else if (sd->weapontype1 == 6 && sd->weapontype2 == 6)
+		sd->status.weapon = 0x13; // Dual One-Handed Axes
 	else if ((sd->weapontype1 == 1 && sd->weapontype2 == 2) ||
-	         (sd->weapontype1 == 2 && sd->weapontype2 == 1)) // ’ZŒ• - ’PŽèŒ•
-		sd->status.weapon = 0x14;
+	         (sd->weapontype1 == 2 && sd->weapontype2 == 1))
+		sd->status.weapon = 0x14; // Dual-Wield: Dagger + One-Handed Sword
 	else if ((sd->weapontype1 == 1 && sd->weapontype2 == 6) ||
-	         (sd->weapontype1 == 6 && sd->weapontype2 == 1)) // ’ZŒ• - •€
-		sd->status.weapon = 0x15;
+	         (sd->weapontype1 == 6 && sd->weapontype2 == 1))
+		sd->status.weapon = 0x15; // Dual-Wield: Dagger + One-Handed Axe
 	else if ((sd->weapontype1 == 2 && sd->weapontype2 == 6) ||
-	         (sd->weapontype1 == 6 && sd->weapontype2 == 2)) // ’PŽèŒ• - •€
-		sd->status.weapon = 0x16;
+	         (sd->weapontype1 == 6 && sd->weapontype2 == 2))
+		sd->status.weapon = 0x16; // Dual-Wield: One-Handed Axe + One-Handed Sword
+	else if (sd->weapontype1 == 17 && sd->weapontype2 == 17)
+		sd->status.weapon = 0x17; // Dual Revolvers [Tsuyuki]
+	else if ((sd->weapontype1 == 17 && sd->weapontype2 == 1) ||
+					 (sd->weapontype1 == 1 && sd->weapontype2 == 17))
+		sd->status.weapon = 0x18; // Dual-Wield: Dagger + Revolver [Tsuyuki]
 	else
-		sd->status.weapon = sd->weapontype1;
+		sd->status.weapon = sd->weapontype1; // If all else fails, use Left-Handed Weapon Type
 
 	return;
 }
@@ -577,7 +583,9 @@ void pc_setequipindex(struct map_session_data *sd) {
 
 	nullpo_retv(sd);
 
-	for(i=0;i<11;i++)
+	// Calculates total number of slots in array sd->equip_index
+	for(i=0;i<11;i++) // Ten equipment slots total
+		// Sets each value to -1 (No equip present), for the time being
 		sd->equip_index[i] = -1;
 
 	for(i=0;i<MAX_INVENTORY;i++) {
@@ -587,17 +595,17 @@ void pc_setequipindex(struct map_session_data *sd) {
 			for(j=0;j<11;j++)
 				if(sd->status.inventory[i].equip & equip_pos[j])
 					sd->equip_index[j] = i;
-			if(sd->status.inventory[i].equip & 0x0002) {
+			if(sd->status.inventory[i].equip & 0x0002) { // Player Left-Handed Weapon Slot
 				if(sd->inventory_data[i])
-					sd->weapontype1 = sd->inventory_data[i]->look;
+					sd->weapontype1 = sd->inventory_data[i]->look; // Gets Left-Handed Weapon Type (item_db: "view" parameter)
 				else
 					sd->weapontype1 = 0;
 			}
-			if(sd->status.inventory[i].equip & 0x0020) {
+			if(sd->status.inventory[i].equip & 0x0020) { // Player Shield/Right-Handed Weapon Slot
 				if(sd->inventory_data[i]) {
 					if(sd->inventory_data[i]->type == 4) {
 						if(sd->status.inventory[i].equip == 0x0020)
-							sd->weapontype2 = sd->inventory_data[i]->look;
+							sd->weapontype2 = sd->inventory_data[i]->look; // Gets Right-Handed Weapon Type (item_db: view parameter)
 						else
 							sd->weapontype2 = 0;
 					}
@@ -609,7 +617,7 @@ void pc_setequipindex(struct map_session_data *sd) {
 			}
 		}
 	}
-	pc_calcweapontype(sd);
+	pc_calcweapontype(sd); // Calculates Weapon Type: weapontype1 and weapontype2 -> status.weapon
 
 	return;
 }
@@ -618,7 +626,6 @@ int pc_isequip(struct map_session_data *sd, int n)
 {
 	struct item_data *item;
 	short s_class, upper_type;
-	//“]¶‚â—{Žq‚Ìê‡‚ÌŒ³‚ÌE‹Æ‚ðŽZo‚·‚é
 
 	nullpo_retr(0, sd);
 
@@ -626,41 +633,13 @@ int pc_isequip(struct map_session_data *sd, int n)
 
 	if (battle_config.gm_allequip > 0 && sd->GM_level >= battle_config.gm_allequip)
 		return 1;
-
-	if (item == NULL)
-		return 0;
-	if (item->sex != 2 && sd->status.sex != item->sex) //Item gender restriction
-		return 0;
-	if (item->elv > 0 && sd->status.base_level < item->elv) //Item base level restriction
-		return 0;
-		
-	// upper job restriction
-	upper_type = pc_get_upper_type(sd->status.class);
-	if(upper_type == 0)
-		return 0;
-	if(item->flag.upper != 0) {		// 0 = 1 + 2 + 4 = 7 = all class
-		if(!(item->flag.upper & upper_type))
-			return 0;
-	}
 	
 	if (map[sd->bl.m].flag.pvp && (item->flag.no_equip&1)) // no_equip = 1- not in PvP, 2- GvG restriction, 3- PvP and GvG which restriction
 		return 0;
 	else if (map[sd->bl.m].flag.gvg && (item->flag.no_equip&2)) // no_equip = 1- not in PvP, 2- GvG restriction, 3- PvP and GvG which restriction
 		return 0;
-	
-	s_class = pc_calc_base_job2(sd->status.class);
-	switch(s_class) { //Normalize Peco classes into their normal version
-		case JOB_KNIGHT2:
-			s_class = JOB_KNIGHT;
-			break;
-		case JOB_CRUSADER2:
-			s_class = JOB_CRUSADER;
-			break;
-	}
-	if (((1<<s_class)&item->class) == 0) //Item class restriction
-		return 0;
 
-	if(sd->sc_count) { //Item restriction based on status changes
+	if(sd->sc_count) { // Item restriction based on status changes
 		if ((item->equip & 0x0002 || item->equip & 0x0020) && sd->sc_data[SC_STRIPWEAPON].timer != -1)
 			return 0;
 		if (item->equip & 0x0020 && item->type == 5 && sd->sc_data[SC_STRIPSHIELD].timer != -1)
@@ -670,11 +649,41 @@ int pc_isequip(struct map_session_data *sd, int n)
 		if (item->equip & 0x0100 && sd->sc_data[SC_STRIPHELM].timer != -1)
 			return 0;
 		if (sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_SUPERNOVICE) {
-			// If Spirit of the Super Novice is active, and Super Novice Lv is over 90, can equip all headgears
+			// If Spirit of the Super Novice is active, and Super Novice Lv is over 90, can equip all upper headgears
 			if (item->equip & 0x0100 && sd->status.base_level >= 90)
-				return 1; // Helms are equipable
+				return 1; // All upper headgears are equipable, regardless of item class restriction
 			}
 	}
+
+	if (item == NULL)
+		return 0;
+	if (item->sex != 2 && sd->status.sex != item->sex) // Item gender restriction
+		return 0;
+	if (item->elv > 0 && sd->status.base_level < item->elv) // Item base level restriction
+		return 0;
+		
+	// Upper job restriction
+	upper_type = pc_get_upper_type(sd->status.class);
+	if(upper_type == 0)
+		return 0;
+	if(item->flag.upper != 0) {		// 0 = 1 + 2 + 4 = 7 = all class
+		if(!(item->flag.upper & upper_type))
+			return 0;
+	}
+
+	s_class = pc_calc_base_job2(sd->status.class);
+	switch(s_class) { // Normalize special classes into their normal version
+		case JOB_KNIGHT2:
+			s_class = JOB_KNIGHT;
+			break;
+		case JOB_CRUSADER2:
+			s_class = JOB_CRUSADER;
+			break;
+		case JOB_STAR_GLADIATOR2:
+			s_class = JOB_STAR_GLADIATOR;
+	}
+	if (((1<<s_class)&item->class) == 0) // Item class restriction
+		return 0;
 
 	return 1;
 }
@@ -693,13 +702,13 @@ int pc_break_equip(struct map_session_data *dstsd, unsigned int where) {
 	
 	if (where == EQP_WEAPON) {
 		switch(dstsd->status.weapon) {
-			case 0:  //Bare fists
-			case 6:  //Axes
-			case 7:  //Maces
-			case 8:  //Maces
-			case 10: //Rods
-			case 15: //Books
-				return 0; //Weapons that cant be broken
+			case 0:  // Bare fists
+			case 6:  // One-Handed Axes
+			case 7:  // Two-Handed Axes
+			case 8:  // Maces
+			case 10: // Rods
+			case 15: // Books
+				return 0; // Weapons that cant be broken
 		}
 	}
 
@@ -3246,35 +3255,35 @@ int pc_isUseitem(struct map_session_data *sd, int n)
 	item = sd->inventory_data[n];
 	if (item == NULL)
 		return 0;
-	if (item->type != 0 && item->type != 2) //Not consumable item
+	if (item->type != 0 && item->type != 2) // Not consumable item
 		return 0;
 
-	switch(sd->status.inventory[n].nameid) { //Items map flags based restrictions
-		case 601: //Fly Wing restriction
+	switch(sd->status.inventory[n].nameid) { // Items map flags based restrictions
+		case 601: // Fly Wing restriction
 			if(map[sd->bl.m].flag.noteleport || map[sd->bl.m].flag.gvg) {
 				clif_skill_teleportmessage(sd, 0);
 				return 0;	
 			}
 			break;
-		case 602: //Butterfly Wing restriction
+		case 602: // Butterfly Wing restriction
 			if(map[sd->bl.m].flag.noreturn)
 				return 0;
 			break;
-		case 604: //Dead Branch
-		case 12103: //Bloody Branch
-		case 12109: //Poring Box
+		case 604: // Dead Branch
+		case 12103: // Bloody Branch
+		case 12109: // Poring Box
 			if(map[sd->bl.m].flag.nobranch || map[sd->bl.m].flag.gvg)
 				return 0;
 			break;
 	}
 
-	if (item->elv > 0 && sd->status.base_level < item->elv) //Item base level restriction
+	if (item->elv > 0 && sd->status.base_level < item->elv) // Item base level restriction
 		return 0;
 
-	if (item->sex != 2 && sd->status.sex != item->sex) //Item gender restriction
+	if (item->sex != 2 && sd->status.sex != item->sex) // Item gender restriction
 		return 0;
 		
-	// upper job restriction
+	// Upper job restriction
 	upper_type = pc_get_upper_type(sd->status.class);
 	if(upper_type == 0)
 		return 0;
@@ -7353,7 +7362,8 @@ void pc_equipitem(struct map_session_data *sd, int n, int pos) {
 		return;
 	}
 
-	if(pos==0x88) { // ƒAƒNƒZƒTƒŠ—p—áŠOˆ—
+	// Accessory equip coordination
+	if(pos==0x88) { // Position is accessory #1 or accessory #2
 		int epor=0;
 		if(sd->equip_index[0] >= 0)
 			epor |= sd->status.inventory[sd->equip_index[0]].equip;
@@ -7363,10 +7373,12 @@ void pc_equipitem(struct map_session_data *sd, int n, int pos) {
 		pos = epor == 0x08 ? 0x80 : 0x08;
 	}
 
-	// “ñ“—¬ˆ—
-	if ((pos == 0x22) // ˆê‰žA‘•”õ—v‹‰ÓŠ‚ª“ñ“—¬•Ší‚©ƒ`ƒFƒbƒN‚·‚é
-	    && (id->equip == 2) // ’P Žè•Ší
-	    && (pc_checkskill(sd, AS_LEFT) > 0 || pc_calc_base_job2(sd->status.class) == JOB_ASSASSIN)) // ¶ŽèC˜B—L
+	// Dual Weapon Wielding
+	if ((pos == 0x22) // Position is left-hand/right-hand
+	    && (id->equip == 2) // Right-hand weapon equip
+	    && (pc_checkskill(sd, AS_LEFT) > 0 || 
+	    pc_calc_base_job2(sd->status.class) == JOB_ASSASSIN || 
+	    pc_calc_base_job2(sd->status.class) == JOB_GUNSLINGER))
 	{
 		int tpos = 0;
 		if (sd->equip_index[8] >= 0)
@@ -7384,7 +7396,7 @@ void pc_equipitem(struct map_session_data *sd, int n, int pos) {
 		}
 	}
 	// ‹|–î‘•”õ
-	if (pos == 0x8000) {
+	if (pos == 0x8000) { // Position is arrow slot
 		clif_arrowequip(sd, n);
 		clif_arrow_fail(sd, 3);	// 3=–î‚ª‘•”õ‚Å‚«‚Ü‚µ‚½
 	} else
@@ -7396,24 +7408,24 @@ void pc_equipitem(struct map_session_data *sd, int n, int pos) {
 	}
 	sd->status.inventory[n].equip=pos;
 
-	if(sd->status.inventory[n].equip & 0x0002) {
+	if(sd->status.inventory[n].equip & 0x0002) { // Left-Handed Weapon Slot
 		if(sd->inventory_data[n])
 			sd->weapontype1 = sd->inventory_data[n]->look;
 		else
-			sd->weapontype1 = 0;
+			sd->weapontype1 = 0; // Left-Hand Weapon Type is Barefist
 		pc_calcweapontype(sd);
 		clif_changelook(&sd->bl,LOOK_WEAPON,sd->status.weapon);
 	}
-	if(sd->status.inventory[n].equip & 0x0020) {
+	if(sd->status.inventory[n].equip & 0x0020) { // Shield/Right-Handed Weapon Slot
 		if(sd->inventory_data[n]) {
-			if(sd->inventory_data[n]->type == 4) {
+			if(sd->inventory_data[n]->type == 4) { // Weapon Equip
 				sd->status.shield = 0;
 				if(sd->status.inventory[n].equip == 0x0020)
 					sd->weapontype2 = sd->inventory_data[n]->look;
 				else
-					sd->weapontype2 = 0;
+					sd->weapontype2 = 0; // Right-Hand Weapon Type is Barefist
 			}
-			else if(sd->inventory_data[n]->type == 5) {
+			else if(sd->inventory_data[n]->type == 5) { // Non-Weapon Equip (Armor Equipment)
 				sd->status.shield = sd->inventory_data[n]->look;
 				sd->weapontype2 = 0;
 			}
@@ -7423,32 +7435,39 @@ void pc_equipitem(struct map_session_data *sd, int n, int pos) {
 		pc_calcweapontype(sd);
 		clif_changelook(&sd->bl,LOOK_SHIELD,sd->status.shield);
 	}
-	if(sd->status.inventory[n].equip & 0x0001) {
+	if(sd->status.inventory[n].equip & 0x0001) { // Lower Headgear Slot
 		if(sd->inventory_data[n])
 			sd->status.head_bottom = sd->inventory_data[n]->look;
 		else
 			sd->status.head_bottom = 0;
 		clif_changelook(&sd->bl,LOOK_HEAD_BOTTOM,sd->status.head_bottom);
 	}
-	if(sd->status.inventory[n].equip & 0x0100) {
+	if(sd->status.inventory[n].equip & 0x0100) { // Upper Headgear Slot
 		if(sd->inventory_data[n])
 			sd->status.head_top = sd->inventory_data[n]->look;
 		else
 			sd->status.head_top = 0;
 		clif_changelook(&sd->bl,LOOK_HEAD_TOP,sd->status.head_top);
 	}
-	if(sd->status.inventory[n].equip & 0x0200) {
+	if(sd->status.inventory[n].equip & 0x0200) { // Mid Headgear Slot
 		if(sd->inventory_data[n])
 			sd->status.head_mid = sd->inventory_data[n]->look;
 		else
 			sd->status.head_mid = 0;
 		clif_changelook(&sd->bl,LOOK_HEAD_MID,sd->status.head_mid);
 	}
-	if(sd->status.inventory[n].equip & 0x0040)
+	if(sd->status.inventory[n].equip & 0x0040) // Footgear Slot
 		clif_changelook(&sd->bl,LOOK_SHOES,0);
 
-	pc_checkallowskill(sd);	// ‘•”õ•i‚ÅƒXƒLƒ‹‚©‰ðœ‚³‚ê‚é‚©ƒ`ƒFƒbƒN
-	if (itemdb_look(sd->status.inventory[n].nameid) == 11 && (arrow >= 0)) {
+	pc_checkallowskill(sd);
+	if ((arrow >= 0) && 
+			(itemdb_look(sd->status.inventory[n].nameid) == 11 ||
+			 itemdb_look(sd->status.inventory[n].nameid) == 17 || 
+			 itemdb_look(sd->status.inventory[n].nameid) == 18 || 
+			 itemdb_look(sd->status.inventory[n].nameid) == 19 || 
+			 itemdb_look(sd->status.inventory[n].nameid) == 20 || 
+			 itemdb_look(sd->status.inventory[n].nameid) == 21 || 
+			 itemdb_look(sd->status.inventory[n].nameid) == 22)) {
 		clif_arrowequip(sd,arrow);
 		sd->status.inventory[arrow].equip=32768;
 	}

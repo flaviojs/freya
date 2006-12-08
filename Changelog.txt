@@ -5,6 +5,21 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/07/06
+	* Fixed: Shuriken/Kunai/Fuuma Shuriken skills now require ammo [Tsuyuki]
+	* Fixed: Gun-type attacks/skills now require ammo [Tsuyuki]
+	* Fixed: Gunslinger/Ninja should now be able to equip/use items that "all jobs" can use.. [Tsuyuki]
+	 - Note: Along with All jobs except Novice/Super Novice
+	 - To-Do: Redo whole item_db.txt with new item class restrictions (TKM, SL, GS, etc)
+	 - Note: Job restriction priveledges still aren't working.. will investigate further later
+	 - Note: GS/NJ can only equip perfectly specific items towards themselves (Ex: GS/NJ-only weapons/armors/ammo, etc)
+	* Fixed: Gunslinger/Ninja can now equip their specific weapons/equipment [Tsuyuki]
+	 - Note: Tested and working.. other items/equips aren't working though
+	* Fixed: Spirit of the Super Novice [Tsuyuki]
+	 - Can now properly equip ANY upper headgear during effect
+	* Added: Dual-Wield Revolver option for Gunslingers [Tsuyuki]
+	* Added: New Gunslinger/Ninja weapon compatibility in the source [Tsuyuki]
+		- Fuuma Shurikens, Revolvers, Rifles, Shotguns, Gatling Guns, Grenade Launchers
+	* Added: doc/src_ref.txt (from now on, constantly under construction) [Tsuyuki]
 	* Fixed: Survivor's combo set (Thanks to galaxy) [Tsuyuki]
 	* Cleaned: Some comments in status.c [Tsuyuki]
 	* Added: Some missing job_db2.txt values [Tsuyuki]
