@@ -4,6 +4,11 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+12/08/06
+	* Fixed: Throw Fuuma Shuriken and Zeny Nage are no longer broken (Working!) [Tsuyuki]
+	 - Note: Fuuma still doesn't do splash Napalm Vulcan-like damage though
+	* Note: Dust and Full Buster Gunslinger Shotgun skills are now fully working [Tsuyuki]
+
 12/07/06
 	* Fixed: Shuriken/Kunai/Fuuma Shuriken skills now require ammo [Tsuyuki]
 	* Fixed: Gun-type attacks/skills now require ammo [Tsuyuki]

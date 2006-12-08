@@ -2895,20 +2895,19 @@ struct Damage  battle_calc_misc_attack(
 			aflag = (aflag&~BF_RANGEMASK)|BF_LONG;
 		}
 		break;
-	}
 
-/*	case NJ_ZENYNAGE:
-		damage = skill_get_zeny(skill_num, skill_lv);
+	case NJ_ZENYNAGE:
+		damage = skill_lv*500;
 		if (!damage) damage = 2;
 		damage += rand()%damage;
 		if (status_get_mode(target) & 0x20) // Is Boss
 			damage /= 3;
 		else if (tsd)
 			damage /= 2;
-		flag.cardfix = 0;
-		wd.flag = (wd.flag & ~BF_RANGEMASK) | BF_LONG;
+		damagefix = 0;
+		aflag = (aflag & ~BF_RANGEMASK)|BF_LONG;
 		break;
-	}*/
+	}
 
 	if (damagefix) {
 		int ele = skill_get_pl(skill_num);
@@ -2956,12 +2955,20 @@ struct Damage  battle_calc_misc_attack(
 	md.type = 0;
 	md.blewcount = blewcount;
 	md.flag = aflag;
+	
+	int nagecalc;
+	nagecalc = damage;
 
-/*	if (skill_num == NJ_ZENYNAGE && sd) {
-		if (damage > sd->status.zeny )
+	if (skill_num == NJ_ZENYNAGE && sd) {
+		nagecalc -= 500*skill_lv; // Already payed some in db/skill_require_db.txt, correcting total
+		if (nagecalc > sd->status.zeny ) {
 			damage = sd->status.zeny;
-		pc_payzeny(sd, damage);
-	}*/
+			sd->status.zeny = 0;
+		}
+		else
+			sd->status.zeny -= nagecalc;
+		clif_updatestatus(sd,SP_ZENY);
+	}
 
 	return md;
 }
