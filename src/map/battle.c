@@ -1013,17 +1013,26 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 		if (skill_num != CR_GRANDCROSS)
 			sd->state.attack_type = BF_WEAPON;
 
-		if (sd->status.weapon == 11) {				// bow attacks
-			wd.flag = (wd.flag&~BF_RANGEMASK)|BF_LONG;	//Normal Attacks done with a bow type weapon: Long ranged
-			flag.arrow = 1;						//Consume arrows
+		if (sd->status.weapon == 11) {				// Bow Attacks
+			wd.flag = (wd.flag&~BF_RANGEMASK)|BF_LONG;	// Normal attacks done with Bow-type weapons: Long ranged
+			flag.arrow = 1;						// Consume arrows
 			if (sd->arrow_ele)
 				s_ele = sd->arrow_ele;
 		}
-		if (!sd->weapontype1 && sd->weapontype2) {	// left-handed weapons
+
+		// Gun Attacks
+		if (sd->status.weapon == 17 || sd->status.weapon == 18 || sd->status.weapon == 19 || sd->status.weapon == 20 || sd->status.weapon == 21) {
+			wd.flag = (wd.flag&~BF_RANGEMASK)|BF_LONG;	// Normal attacks done with Gun-type weapons: Long ranged
+			flag.arrow = 1;						// Requires Ammunition
+			if (sd->arrow_ele)
+				s_ele = sd->arrow_ele;
+		}
+
+		if (!sd->weapontype1 && sd->weapontype2) {	// Left-handed Weapons
 			flag.righthand = 0;
 			flag.lefthand = 1;
 		}
-		if (sd->status.weapon > 16)					// two-handed weapons
+		if (sd->weapontype1 && sd->weapontype2)					// Dual-Wield Weapons
 			flag.righthand = flag.lefthand = 1;
 	}
 	else if ((pd && mob_db[pd->class].range > 3) || (md && mob_db[md->class].range > 3))
@@ -1065,6 +1074,7 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 			cri += sd->critaddrace[t_race];
 			if(flag.arrow)
 				cri += sd->arrow_cri;
+			// Katar-Type Weapons double Crit
 			if(sd->status.weapon == 16)
 				cri <<= 1;
 
@@ -1174,10 +1184,16 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 			case GS_DESPERADO:
 				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_SHORT;
 				skillratio += 50*(skill_lv-1);
+				flag.arrow = 1;
+				if (sd->arrow_ele)
+					s_ele = sd->arrow_ele;
 				break;
 			case GS_DUST:
 				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_SHORT;
 				skillratio += 50*skill_lv;
+				flag.arrow = 1;
+				if (sd->arrow_ele)
+					s_ele = sd->arrow_ele;
 				break;
 			case GS_CHAINACTION:
 				wd.type = 0x08;
@@ -1189,8 +1205,8 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 				break;
 			case GS_TRIPLEACTION:
 				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG;
-					skillratio += 50*skill_lv;
-					break;
+				skillratio += 50*skill_lv;
+				break;
 			case GS_BULLSEYE:
 				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG;
 				if((t_race == 2 || t_race == 7) && !(t_mode&0x20))
@@ -1198,25 +1214,43 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 					skillratio += 400;
 					flag.cardfix = 0;
 				}
+				flag.arrow = 1;
+				if (sd->arrow_ele)
+					s_ele = sd->arrow_ele;
 				break;
 			case GS_MAGICALBULLET:
 				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG;
 				break;
 			case GS_TRACKING:
 				skillratio += 100 *(skill_lv+1);
+				flag.arrow = 1;
+				if (sd->arrow_ele)
+					s_ele = sd->arrow_ele;
 				break;
 			case GS_PIERCINGSHOT:
 				skillratio += 20*skill_lv;
 				flag.idef = flag.idef2 = 1;
+				flag.arrow = 1;
+				if (sd->arrow_ele)
+					s_ele = sd->arrow_ele;
 				break;
 			case GS_RAPIDSHOWER:
 				skillratio += 10*skill_lv;
+				flag.arrow = 1;
+				if (sd->arrow_ele)
+					s_ele = sd->arrow_ele;
 				break;
 			case GS_FULLBUSTER:
 				skillratio += 100*(skill_lv+2);
+				flag.arrow = 1;
+				if (sd->arrow_ele)
+					s_ele = sd->arrow_ele;
 				break;
 			case GS_SPREADATTACK:
 				skillratio += 20*(skill_lv-1);
+				flag.arrow = 1;
+				if (sd->arrow_ele)
+					s_ele = sd->arrow_ele;
 				break;
 
 			// Ninja
@@ -1224,15 +1258,24 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 				ATK_ADD(4*skill_lv);
 				if (sd && (skill = pc_checkskill(sd, NJ_TOBIDOUGU)) > 0)
 				ATK_ADD(3*skill);
+				flag.arrow = 1;
+				if (sd->arrow_ele)
+					s_ele = sd->arrow_ele;
 				break;
 			case NJ_KUNAI:
 				ATK_ADD(60);
+				flag.arrow = 1;
+				if (sd->arrow_ele)
+					s_ele = sd->arrow_ele;
 				break;
 			case NJ_HUUMA:
 				skillratio += 150 + 150*skill_lv;
 				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG;
 				if (sd && (skill = pc_checkskill(sd, NJ_TOBIDOUGU)) > 0)
 					skillratio += 3*skill;
+				flag.arrow = 1;
+				if (sd->arrow_ele)
+					s_ele = sd->arrow_ele;
 				break;
 			case NJ_TATAMIGAESHI:
 				skillratio += 10*skill_lv;
@@ -2196,7 +2239,7 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 			printf("battle_calc_weapon_attack(): NJ_HUUMA enemy count=0 !\n");
 	}
 
-	// Double Attack.
+	// Double Attack
 	if(sd && !skill_num && !flag.cri) {	
 		if(((skill_lv = 5 * pc_checkskill(sd, TF_DOUBLE)) > 0 && sd->weapontype1 == 0x01) ||
 			sd->double_rate > 0) //Success chance is not added, the higher one is used? [Skotlex]
@@ -2211,12 +2254,12 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 	if(!flag.lefthand/* || wd.damage2 < 1*/) wd.damage2 = 0;
 
 	if (sd) {
-		if (!flag.righthand && flag.lefthand) { // move lefthand damage to the righthand
+		if (!flag.righthand && flag.lefthand) { // Move lefthand damage to the righthand
 			wd.damage = wd.damage2;
 			wd.damage2 = 0;
 			flag.righthand = 1;
 			flag.lefthand = 0;
-		} else if(sd->status.weapon > 16) { //Dual-wield
+		} else if(flag.righthand && flag.lefthand) { // Dual-wield
 			if (wd.damage > 0) {
 				skill = pc_checkskill(sd, AS_RIGHT);
 				wd.damage = wd.damage * (50 + (skill * 10))/100;
@@ -2998,8 +3041,9 @@ int battle_weapon_attack(struct block_list *src, struct block_list *target, unsi
 	else if(battle_check_range(src, target, 0)) {
 		race = status_get_race(target);
 		ele = status_get_elem_type(target);
-		// UŒ‚‘ÎÛ‚Æ‚È‚è‚¤‚é‚Ì‚ÅUŒ‚
-		if (sd && sd->status.weapon == 11) {
+
+		if (sd && (sd->status.weapon == 11 || sd->status.weapon == 17 || sd->status.weapon == 18 ||
+			 sd->status.weapon == 19 || sd->status.weapon == 20 || sd->status.weapon == 21)) {
 			if (sd->equip_index[10] >= 0) {
 				if (battle_config.arrow_decrement)
 					pc_delitem(sd, sd->equip_index[10], 1, 0);
@@ -3058,7 +3102,7 @@ int battle_weapon_attack(struct block_list *src, struct block_list *target, unsi
 		//“ñ“—¬¶Žè‚ÆƒJƒ^[ƒ‹’ÇŒ‚‚Ìƒ~ƒX•\Ž¦(–³—‚â‚è`)
 
 		if(sd)  {
-			if(sd->status.weapon >= 16 && wd.damage2 == 0)
+			if(sd->status.weapon == 16 && wd.damage2 == 0)
 				clif_damage(src, target, tick + 10, wd.amotion, wd.dmotion, 0, 1, 0, 0);		
 			
 			if(sd->splash_range > 0 && (wd.damage > 0 || wd.damage2 > 0) )

@@ -2955,7 +2955,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case AS_GRIMTOOTH:
 	case MC_CARTREVOLUTION:
 	case NPC_SPLASHATTACK:
-//	case ASC_METEORASSAULT: // Meteor Assault skill fix (thanks to [Mikey] from freya's bug report)
+	//case ASC_METEORASSAULT: // Meteor Assault skill fix (thanks to [Mikey] from freya's bug report)
 	case AS_SPLASHER:
 	case NJ_HUUMA:
 	case GS_DESPERADO:
@@ -8249,6 +8249,19 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 	case SN_SHARPSHOOTING:
 	case CG_ARROWVULCAN:
 	case AS_VENOMKNIFE:
+	case GS_CRACKER:
+	case GS_TRACKING:
+	case GS_DISARM:
+	case GS_PIERCINGSHOT:
+	case GS_RAPIDSHOWER:
+	case GS_DESPERADO:
+	case GS_GATLINGFEVER:
+	case GS_DUST:
+	case GS_FULLBUSTER:
+	case GS_SPREADATTACK:
+	case NJ_KUNAI:
+	case NJ_HUUMA:
+	case NJ_SYURIKEN:
 		if (sd->equip_index[10] < 0) {
 			clif_arrow_fail(sd, 0);
 			return 0;

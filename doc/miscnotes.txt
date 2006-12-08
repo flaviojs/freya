@@ -18,37 +18,6 @@ case for 'int type':
 8 = $          	18 = Heh (Laughing)	28 = Sobbing  	38 = Two Hearts  	
 9 = ...        	19 = Sweating      	29 = Evil 1   	39 = Tongue      	
 
-// ********************************
-// * Elemental Defense Resistance *
-// ********************************
-sd->subele[0] - Neutral Property
-sd->subele[1] - Water Property
-sd->subele[2] - Earth Property
-sd->subele[3] - Fire Property
-sd->subele[4] - Wind Property
-sd->subele[5] - Poison Property
-sd->subele[6] - Holy Property
-sd->subele[7] - Shadow Property
-sd->subele[8] - Ghost Property
-sd->subele[9] - Undead Property
-
-// ***************************************
-// * Elemental Monster Attack Resistance *
-// ***************************************
-
-sd->subrace[0] - Neutral Type
-sd->subrace[1] - Undead Type
-sd->subrace[2] - Brute Type
-sd->subrace[3] - Plant Type
-sd->subrace[4] - Insect Type
-sd->subrace[5] - Fish Type
-sd->subrace[6] - Demon Type
-sd->subrace[7] - Demi-Human Type
-sd->subrace[8] - Angel Type
-sd->subrace[9] - Dragon Type
-sd->subrace[10] - Boss Type #1?
-sd->subrace[11] - Boss Type #2?
-
 // **************
 // * Misc stuff *
 // **************
@@ -765,7 +734,3 @@ monster:
 percentheal:
 	-Format: percentheal percent_hp,percent_sp;
 	-Example: percentheal 100,100; //Heals you 100% of both HP and SP
-
-// **************************
-// * Item DB - Equip Script *
-// **************************
