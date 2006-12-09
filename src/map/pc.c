@@ -630,6 +630,9 @@ int pc_isequip(struct map_session_data *sd, int n)
 	nullpo_retr(0, sd);
 
 	item = sd->inventory_data[n];
+	
+	int item_id;
+	item_id = sd->status.inventory[n].nameid;
 
 	if (battle_config.gm_allequip > 0 && sd->GM_level >= battle_config.gm_allequip)
 		return 1;
@@ -682,6 +685,20 @@ int pc_isequip(struct map_session_data *sd, int n)
 		case JOB_STAR_GLADIATOR2:
 			s_class = JOB_STAR_GLADIATOR;
 	}
+
+	// New Class Equip Hack Fix (All Jobs/All Jobs Except Super Novice and Novice/All Jobs Except Novice) [Tsuyuki]
+	if((item->class == 77586431 || item->class == 69197822 || item->class == 77586430) &&
+		 (s_class == JOB_GUNSLINGER || s_class == JOB_NINJA || s_class == JOB_SOUL_LINKER || s_class == JOB_STAR_GLADIATOR || 
+		  s_class == JOB_MUNAK || s_class == JOB_BON_GUN || s_class == JOB_DEATH_KNIGHT || s_class == JOB_DARK_COLLECTOR))
+		 return 1;
+
+	// Hack Fix for Ninja-Equipable Items [Tsuyuki]
+	if (s_class == JOB_NINJA)
+		if (item_id == 2620 || item_id == 2335 || item_id == 2336 || item_id == 2337 || item_id == 1238 || item_id == 1239 || item_id == 1240 || 
+				item_id == 2645 || item_id == 1244 || item_id == 13003 || item_id == 13004 || item_id == 2654 || item_id == 13016 || item_id == 13017 || 
+				item_id == 13018 || item_id == 2359 || item->class == 10444527 || item->class == 2055918)
+			return 1;
+
 	if (((1<<s_class)&item->class) == 0) // Item class restriction
 		return 0;
 
@@ -3299,10 +3316,18 @@ int pc_isUseitem(struct map_session_data *sd, int n)
 			break;
 		case JOB_CRUSADER2:
 			s_class = JOB_CRUSADER;
+		case JOB_STAR_GLADIATOR2:
+			s_class = JOB_STAR_GLADIATOR;
 			break;
 	}
 
-	if(((1<<s_class)&item->class) == 0) //Item class restriction
+	// New Class Item Hack Fix (All Jobs/All Jobs Except Super Novice and Novice/All Jobs Except Novice) [Tsuyuki]
+	if((item->class == 77586431 || item->class == 69197822 || item->class == 77586430) &&
+		 (s_class == JOB_GUNSLINGER || s_class == JOB_NINJA || s_class == JOB_SOUL_LINKER || s_class == JOB_STAR_GLADIATOR || 
+		  s_class == JOB_MUNAK || s_class == JOB_BON_GUN || s_class == JOB_DEATH_KNIGHT || s_class == JOB_DARK_COLLECTOR))
+		 return 1;
+
+	if(((1<<s_class)&item->class) == 0) // Item class restriction
 		return 0;
 
 	return 1;

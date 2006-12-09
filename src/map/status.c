@@ -3394,6 +3394,8 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 		case SC_CONCENTRATE:
 		case SC_RUN:
 		case SC_SPURT:
+			scflag.calc = 1;
+			break;
 		case SC_NEN:
 			*opt3 |= 2;
 			scflag.calc = 1;
@@ -4954,6 +4956,7 @@ int status_change_end(struct block_list* bl, int type, int tid)
 			*opt3 &= ~1;
 			break;
 		case SC_OVERTHRUST:
+		case SC_NEN:
 			*opt3 &= ~2;
 			break;
 		case SC_ENERGYCOAT:
