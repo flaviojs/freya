@@ -4,7 +4,15 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+12/09/06
+	* Added: Another hack to allow Ninja-Class to use all their available items/equipment [Tsuyuki]
+	 - Tested and fully working! Ninjas can now use all the items they should be able to use/equip
+	 - To-Do: The same for TKM/SL/GS.. (maybe tomorrow)
+	* Added: A hack to allow new classes to use/equip certain items [Tsuyuki]
+	 - Note: All jobs | All jobs except Novice/Super Novice | All jobs except Novice
+
 12/08/06
+	* Fixed: Ninja's Throw Fuuma Shuriken now does splash damage (AoE may be off though) [Tsuyuki]
 	* Fixed: Throw Fuuma Shuriken and Zeny Nage are no longer broken (Working!) [Tsuyuki]
 	 - Note: Fuuma still doesn't do splash Napalm Vulcan-like damage though
 	* Note: Dust and Full Buster Gunslinger Shotgun skills are now fully working [Tsuyuki]
