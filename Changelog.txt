@@ -4,6 +4,16 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+12/10/06
+	* Fixed: deadly poison doesn't effect boss monsters and emperiums anymore [Harbin]
+	 - http://www.ragnainfo.net/wiki/Enchant_Deadly_Poison
+	* Fixed: pressure skill is now almost totally interruptable (except with hiding, play dead or GTB card) [Harbin]
+	* Fixed: devotion link should not apply crusader's stop/anklesnare/resistsc effect to 'devotion client' player [Harbin]
+	* Fixed: wand of hermode should only effect friendly players [Harbin]
+	* Fixed: palm push strike unhides target on hit [Harbin]
+	* Fixed: converted configure file back to use UNIX line endings [Harbin]
+	 - note: when you edit it, don't use windows line endings. it will cause problems
+
 12/09/06
 	* Added: Another hack to allow Ninja-Class to use all their available items/equipment [Tsuyuki]
 	 - Tested and fully working! Ninjas can now use all the items they should be able to use/equip

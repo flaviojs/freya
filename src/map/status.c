@@ -3251,8 +3251,8 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			battle_stopwalking(bl, 1);
 	}
 
-	// Status effects that won't work on bosses and emperium
-	if((mode&0x20 && !(flag&1)) || (md && md->class == 1288))
+	/* status effects that won't effect boss monsters and emperium */
+	if((mode & 0x20 && !(flag & 1)) || (md && md->class == 1288))
 	{
 		switch(type)
 		{
@@ -3270,12 +3270,13 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			case SC_SIGNUMCRUCIS:
 			case SC_SILENCE:
 			case SC_BLIND:
+			case SC_DPOISON:
 			case SC_QUAGMIRE:
 			case SC_DECREASEAGI:
 			case SC_PROVOKE:
 			case SC_ROKISWEIL:
 			case SC_COMA:
-					return 0;
+				return 0;
 		}
 	}
 
@@ -4004,20 +4005,19 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 		case SC_ANKLE:
 		case SC_STOP:
 		case SC_SCRESIST:
+			break;
         case SC_SHRINK:
-            //damz fish help for devotion
-            if (sd)
-            {    
-                struct map_session_data *tsd;
-                int i;
-                for (i = 0; i < 5; i++)
-                {    
-                    if (sd->dev.val1[i] && (tsd = map_id2sd(sd->dev.val1[i])))
-                        status_change_start(&tsd->bl,SC_SHRINK,val1,0,0,0,tick,1);
-                }//for (i = 0; i < 5; i++)
-            }//if (sd)
-            //damz fish help for devotion
-            break;
+			if(sd)
+			{
+				struct map_session_data *tsd;
+				register int i;
+				for(i = 0; i < 5; i++)
+				{
+					if((sd->dev.val1[i] && (tsd = map_id2sd(sd->dev.val1[i]))))
+						status_change_start(&tsd->bl, SC_SHRINK, val1, 0, 0, 0, tick, 1);
+				}
+			}
+			break;
 
 		case SC_RIDING:
 			scflag.calc = 1;

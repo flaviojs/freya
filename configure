@@ -1,7 +1,7 @@
 #!/bin/sh
 # Configure file made by MagicalTux
 # I took many parts of this code from "standard" configure scripts made by autoconf, but also
-# written a big part of it :)
+# written a big part of it
 VERSION='$Id: configure 570 2005-12-01 23:15:33Z Yor $'
 
 # nice line found in standard-like configure script
