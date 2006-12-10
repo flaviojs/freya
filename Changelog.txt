@@ -5,6 +5,11 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/10/06
+	* Added: Temp implementation of Tatamigaeshi (Reverse Tatami) [Tsuyuki]
+	 - Should be a Unit skill.. graphical effects aren't working with this implementation
+	* Fixed: Corrected Raigekisai's AoE range [Tsuyuki]
+	* Fixed: Corrected Hyousyaraku's freeze chance and AoE range [Tsuyuki]
+	* Fixed: Corrected Nen's HP Usage [Tsuyuki]
 	* Fixed: Soul Linker can now use all of its specified equipment using the correct system [Tsuyuki]
 	 - To-Do: The same for Star Gladiator/Gunslinger
 	* Added: Some more Death Knight/Etc class base code [Tsuyuki]

@@ -3330,6 +3330,9 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			val2=(val1+1)/2;
 			val3=skill_get_blewcount(NJ_UTSUSEMI, val1);
 			break;
+		case SC_TATAMIGAESHI:
+			tick = 3000;
+			break;
 		case SC_BUNSINJYUTSU:
 			val2=(val1+1)/2;
 			break;
