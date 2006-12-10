@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/10/06
+	* Fixed: Dual-Wield weapons sharing the same weapon type value as Gunslinger/Ninja weapons [Tsuyuki]
+	 - Note: Dual-Wield weapons (Specifically dual-dagger sins) no longer require ammo!
 	* Fixed: Char jobs above 4001 not saving correctly in SQL [Tsuyuki/Bison]
 	* Fixed: more position lag [Latios]
 	* Added: Temp implementation of Tatamigaeshi (Reverse Tatami) [Tsuyuki]
