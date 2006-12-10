@@ -928,6 +928,7 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 	
 	int skill, skill2;
 	int rate;
+	int hyoucalc;
 	
 	int sc_def_mdef, sc_def_vit, sc_def_int, sc_def_luk;
 	int sc_def_mdef2, sc_def_vit2, sc_def_int2, sc_def_luk2;
@@ -1402,8 +1403,10 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 			status_change_start(bl, SC_BLEEDING, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
 		break;
 	case NJ_HYOUSYOURAKU:
-	// skill_lv missing from this function.. need to add [Tsuyuki]
-	//if (rand()%100 <= skill_lv*10 + 10)
+		hyoucalc = 0;
+		hyoucalc = (skilllv * 10 + 10) * sc_def_mdef / 100 - (status_get_int(bl) + status_get_luk(bl)) / 15;
+		hyoucalc = hyoucalc <= 5? 5:hyoucalc;
+		if(rand()%100 <= hyoucalc)
 		status_change_start(bl, SC_FREEZE, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
 		break;
 }
@@ -1810,9 +1813,6 @@ int skill_attack(int attack_type, struct block_list* src, struct block_list *dsr
 			dsrc = src; // 敵ダメージ白文字表示
 		if (src == bl)
 			type = 4; // 反動はダメージモーションなし
-	}
-	if(skillid == NJ_TATAMIGAESHI) {
-		dsrc = src; //knockback by van84
 	}
 //使用者がPCの場合の処理ここから
 	if(sd) {
@@ -2564,6 +2564,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	struct map_session_data *sd = NULL;
 	struct status_change *sc_data;
 	int i;
+	int ninjacalc;
 
 	if (skillid < 0) {
 		//printf("skill_castend_damage_id: skillid=%i(lvl:%d)\ncall: %p %p %i %i %i %i", skillid, skilllv, src, bl, skillid, skilllv, tick, flag);
@@ -3183,15 +3184,35 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 			}
 			break;
 	case WZ_FROSTNOVA:
-	case NJ_HYOUSYOURAKU:
-	case NJ_RAIGEKISAI:
 		//skill_castend_pos2(src, bl->x, bl->y, skillid, skilllv, tick, 0);
 		//skill_attack(BF_MAGIC, src, src, bl, skillid, skilllv, tick, flag);
 		map_foreachinarea(skill_attack_area, src->m, src->x-5, bl->y-5, bl->x+5, bl->y+5, 0, BF_MAGIC, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
 		break;
 
+	// Experimental Implementation (Should use Unit Skill mode, currently does not), also missing graphical effects [Tsuyuki]
+	case NJ_TATAMIGAESHI:
+		if (skilllv == 1) ninjacalc = 1;
+		if (skilllv == 2 || skilllv == 3) ninjacalc = 2;
+		if (skilllv >= 4) ninjacalc = 3;
+		map_foreachinarea(skill_attack_area, src->m, src->x-ninjacalc, bl->y-ninjacalc, bl->x+ninjacalc, bl->y+ninjacalc, 0, BF_WEAPON, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
+		//skill_blown(src,bl,skill_get_blewcount(skillid,skilllv));
+		status_change_start(bl, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
+		break;
+
+	case NJ_HYOUSYOURAKU:
+		map_foreachinarea(skill_attack_area, src->m, src->x-7, bl->y-7, bl->x+7, bl->y+7, 0, BF_MAGIC, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
+		break;
+		
+	case NJ_RAIGEKISAI:
+		ninjacalc = 5;
+		if(skilllv == 1 || skilllv == 2) ninjacalc = 5;
+		else if(skilllv == 3 || skilllv == 4) ninjacalc = 7;
+		else if(skilllv >= 5) ninjacalc = 9;
+		map_foreachinarea(skill_attack_area, src->m, src->x-ninjacalc, bl->y-ninjacalc, bl->x+ninjacalc, bl->y+ninjacalc, 0, BF_MAGIC, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
+		break;
+
 	/* その他 */
-	case HT_BLITZBEAT:			/* ブリッツビート */
+	case HT_BLITZBEAT:
 		if(flag&1){
 			/* 個別にダメージを与える */
 			if(bl->id!=skill_area_temp[1])
@@ -3212,8 +3233,8 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		}
 		break;
 
-	case CR_GRANDCROSS:			/* グランドクロス */
-	case NPC_GRANDDARKNESS:		/*闇グランドクロス*/
+	case CR_GRANDCROSS:
+	case NPC_GRANDDARKNESS:
 		/* スキルユニット配置 */
 		skill_castend_pos2(src,bl->x,bl->y,skillid,skilllv,tick,0);
 		if(sd)
@@ -3222,9 +3243,9 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 			mob_changestate((struct mob_data *)src, MS_DELAY, 1000);
 		break;
 
-	case PA_PRESSURE:	/* プレッシャ? */
-	case TF_THROWSTONE:			/* 石投げ */
-	case NPC_SMOKING:			/* スモーキング */
+	case PA_PRESSURE:
+	case TF_THROWSTONE:
+	case NPC_SMOKING:
 		skill_attack(BF_MISC,src,src,bl,skillid,skilllv,tick,0 );
 		break;
 	case GS_FLING:
@@ -3260,8 +3281,8 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	  }
 		break;
 
-	case NPC_SELFDESTRUCTION:	/* 自爆 */
-	case NPC_SELFDESTRUCTION2:	/* 自爆2 */
+	case NPC_SELFDESTRUCTION:
+	case NPC_SELFDESTRUCTION2:
 		if (flag & 1) {
 			/* 個別にダメージを与える */
 			if (bl->id != skill_area_temp[1])
@@ -8304,6 +8325,14 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 			clif_skill_fail(sd,skill,0,0);
 			return 0;
 		}
+		break;
+		
+	case NJ_NEN:
+		if (sd->status.hp <= 80 && lv >= 5) {
+			clif_skill_fail(sd,skill,0,0);
+			return 0;
+		}
+		if (lv >= 5) sd->status.hp -= 80;
 		break;
 
 	case NJ_BUNSINJYUTSU:
