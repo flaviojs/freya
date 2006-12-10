@@ -12,7 +12,7 @@ ALTER TABLE `statuschange` ADD INDEX(char_id);
 ALTER TABLE `cart_inventory` CHANGE `broken` `broken` TINYINT(1) NOT NULL DEFAULT '0';
 ALTER TABLE `char` CHANGE `char_num` `char_num` TINYINT(1) NOT NULL DEFAULT '0';
 ALTER TABLE `char` CHANGE `name` `name` VARCHAR(32) NOT NULL DEFAULT '';
-ALTER TABLE `char` CHANGE `class` `class` TINYINT(5) NOT NULL DEFAULT '0';
+ALTER TABLE `char` CHANGE `class` `class` SMALLINT(5) NOT NULL DEFAULT '0';
 ALTER TABLE `char` CHANGE `base_level` `base_level` TINYINT(3) UNSIGNED NOT NULL DEFAULT '1';
 ALTER TABLE `char` CHANGE `job_level` `job_level` TINYINT(3) UNSIGNED NOT NULL DEFAULT '1';
 ALTER TABLE `char` CHANGE `str` `str` TINYINT(3) UNSIGNED NOT NULL DEFAULT '0';

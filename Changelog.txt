@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/10/06
+	* Fixed: Char jobs above 4001 not saving correctly in SQL [Tsuyuki/Bison]
 	* Fixed: more position lag [Latios]
 	* Added: Temp implementation of Tatamigaeshi (Reverse Tatami) [Tsuyuki]
 	 - Should be a Unit skill.. graphical effects aren't working with this implementation
