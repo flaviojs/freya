@@ -3110,7 +3110,7 @@ int battle_weapon_attack(struct block_list *src, struct block_list *target, unsi
 		//二刀流左手とカタール追撃のミス表示(無理やり～)
 
 		if(sd)  {
-			if(sd->status.weapon == 16 && wd.damage2 == 0)
+			if((sd->status.weapon == 16 || sd->status.weapon >= 50) && wd.damage2 == 0) // Katars or Dual-Wield weapons
 				clif_damage(src, target, tick + 10, wd.amotion, wd.dmotion, 0, 1, 0, 0);		
 			
 			if(sd->splash_range > 0 && (wd.damage > 0 || wd.damage2 > 0) )

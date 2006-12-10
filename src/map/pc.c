@@ -553,25 +553,25 @@ void pc_calcweapontype(struct map_session_data *sd)
 	if (sd->weapontype1 == 0 && sd->weapontype2 != 0)
 		sd->status.weapon = sd->weapontype2; // Use Right-Handed Weapon Type (Left-Handed Weapon not equiped)
 	else if (sd->weapontype1 == 1 && sd->weapontype2 == 1)
-		sd->status.weapon = 0x11; // Dual Daggers
+		sd->status.weapon = 50; // Dual Daggers
 	else if (sd->weapontype1 == 2 && sd->weapontype2 == 2)
-		sd->status.weapon = 0x12; // Dual One-Handed Swords
+		sd->status.weapon = 51; // Dual One-Handed Swords
 	else if (sd->weapontype1 == 6 && sd->weapontype2 == 6)
-		sd->status.weapon = 0x13; // Dual One-Handed Axes
+		sd->status.weapon = 52; // Dual One-Handed Axes
 	else if ((sd->weapontype1 == 1 && sd->weapontype2 == 2) ||
 	         (sd->weapontype1 == 2 && sd->weapontype2 == 1))
-		sd->status.weapon = 0x14; // Dual-Wield: Dagger + One-Handed Sword
+		sd->status.weapon = 53; // Dual-Wield: Dagger + One-Handed Sword
 	else if ((sd->weapontype1 == 1 && sd->weapontype2 == 6) ||
 	         (sd->weapontype1 == 6 && sd->weapontype2 == 1))
-		sd->status.weapon = 0x15; // Dual-Wield: Dagger + One-Handed Axe
+		sd->status.weapon = 54; // Dual-Wield: Dagger + One-Handed Axe
 	else if ((sd->weapontype1 == 2 && sd->weapontype2 == 6) ||
 	         (sd->weapontype1 == 6 && sd->weapontype2 == 2))
-		sd->status.weapon = 0x16; // Dual-Wield: One-Handed Axe + One-Handed Sword
+		sd->status.weapon = 55; // Dual-Wield: One-Handed Axe + One-Handed Sword
 	else if (sd->weapontype1 == 17 && sd->weapontype2 == 17)
-		sd->status.weapon = 0x17; // Dual Revolvers [Tsuyuki]
+		sd->status.weapon = 56; // Dual Revolvers [Tsuyuki]
 	else if ((sd->weapontype1 == 17 && sd->weapontype2 == 1) ||
 					 (sd->weapontype1 == 1 && sd->weapontype2 == 17))
-		sd->status.weapon = 0x18; // Dual-Wield: Dagger + Revolver [Tsuyuki]
+		sd->status.weapon = 57; // Dual-Wield: Dagger + Revolver [Tsuyuki]
 	else
 		sd->status.weapon = sd->weapontype1; // If all else fails, use Left-Handed Weapon Type
 
