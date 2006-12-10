@@ -27,7 +27,7 @@ CREATE TABLE `char`
   `account_id` int(11) NOT NULL default '0',
   `char_num` tinyint(1) NOT NULL default '0',
   `name` varchar(32) NOT NULL default '',
-  `class` tinyint(5) NOT NULL default '0',
+  `class` smallint(5) NOT NULL default '0',
   `base_level` tinyint(3) unsigned NOT NULL default '1',
   `job_level` tinyint(3) unsigned NOT NULL default '1',
   `base_exp` bigint(20) NOT NULL default '0',
