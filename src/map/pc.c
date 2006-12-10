@@ -686,19 +686,6 @@ int pc_isequip(struct map_session_data *sd, int n)
 			s_class = JOB_STAR_GLADIATOR;
 	}
 
-	// New Class Equip Hack Fix (All Jobs/All Jobs Except Super Novice and Novice/All Jobs Except Novice) [Tsuyuki]
-	if((item->class == 77586431 || item->class == 69197822 || item->class == 77586430) &&
-		 (s_class == JOB_GUNSLINGER || s_class == JOB_NINJA || s_class == JOB_SOUL_LINKER || s_class == JOB_STAR_GLADIATOR || 
-		  s_class == JOB_MUNAK || s_class == JOB_BON_GUN || s_class == JOB_DEATH_KNIGHT || s_class == JOB_DARK_COLLECTOR))
-		 return 1;
-
-	// Hack Fix for Ninja-Equipable Items [Tsuyuki]
-	if (s_class == JOB_NINJA)
-		if (item_id == 2620 || item_id == 2335 || item_id == 2336 || item_id == 2337 || item_id == 1238 || item_id == 1239 || item_id == 1240 || 
-				item_id == 2645 || item_id == 1244 || item_id == 13003 || item_id == 13004 || item_id == 2654 || item_id == 13016 || item_id == 13017 || 
-				item_id == 13018 || item_id == 2359 || item->class == 10444527 || item->class == 2055918)
-			return 1;
-
 	if (((1<<s_class)&item->class) == 0) // Item class restriction
 		return 0;
 
@@ -1366,10 +1353,12 @@ void pc_checkminskill(struct map_session_data* sd) {
 	case 4048: // Taekwon Master/Star Gladiator (Flying)
 	case 4049: // Soul Linker
 		min_points = 9 + sd->status.job_level - 1;
+		break;
 	case 4050: // Bon Gun
 	case 4051: // Death Knight
 	case 4052: // Dark Collector
 	case 4053: // Munak
+		min_points = 9 + sd->status.job_level - 1;
 		break;
 	}
 
@@ -1515,10 +1504,12 @@ int pc_checkmaxskill(struct map_session_data* sd) {
 	case 4048: // Taekwon Master/Star Gladiator (Flying)
 	case 4049: // Soul Linker
 		max_points = 9 + sd->status.job_level - 1;
+		break;
 	case 4050: // Bon Gun
 	case 4051: // Death Knight
 	case 4052: // Dark Collector
 	case 4053: // Munak
+		max_points = 9 + sd->status.job_level - 1;
 		break;
 	}
 
@@ -3321,12 +3312,6 @@ int pc_isUseitem(struct map_session_data *sd, int n)
 			break;
 	}
 
-	// New Class Item Hack Fix (All Jobs/All Jobs Except Super Novice and Novice/All Jobs Except Novice) [Tsuyuki]
-	if((item->class == 77586431 || item->class == 69197822 || item->class == 77586430) &&
-		 (s_class == JOB_GUNSLINGER || s_class == JOB_NINJA || s_class == JOB_SOUL_LINKER || s_class == JOB_STAR_GLADIATOR || 
-		  s_class == JOB_MUNAK || s_class == JOB_BON_GUN || s_class == JOB_DEATH_KNIGHT || s_class == JOB_DARK_COLLECTOR))
-		 return 1;
-
 	if(((1<<s_class)&item->class) == 0) // Item class restriction
 		return 0;
 
@@ -4689,9 +4674,9 @@ struct pc_base_job pc_calc_base_job(unsigned int b_class)
 		bj.upper = 1;
 	} else if(b_class >= JOB_TAEKWON && b_class <= JOB_SOUL_LINKER) {
 		if (b_class == JOB_STAR_GLADIATOR2)
-			bj.job = 26 + JOB_STAR_GLADIATOR - JOB_TAEKWON;
+			bj.job = 24 + JOB_STAR_GLADIATOR - JOB_TAEKWON;
 		else
-			bj.job = 26 + b_class - JOB_TAEKWON;
+			bj.job = 24 + b_class - JOB_TAEKWON;
 		bj.upper = 0;
 	} else {
 		if (b_class == JOB_SUPER_BABY)
@@ -4700,10 +4685,19 @@ struct pc_base_job pc_calc_base_job(unsigned int b_class)
 			bj.job = b_class - JOB_BABY;
 		bj.upper = 2;
 	}
+	
+	if(b_class == JOB_NINJA)
+		bj.job = 28;
+	
+	if(b_class == JOB_GUNSLINGER)
+		bj.job = 29;
+	
+	if(b_class >= JOB_BON_GUN && b_class <= JOB_MUNAK)
+		bj.job = 30 + b_class - JOB_BON_GUN;
 
 	if(bj.job == JOB_NOVICE)
 		bj.type = 0;
-	else if(bj.job < JOB_THIEF || bj.job == JOB_TAEKWON)
+	else if(bj.job < JOB_THIEF || bj.job == JOB_TAEKWON || bj.job == JOB_GUNSLINGER || bj.job == JOB_NINJA)
 		bj.type = 1;
 	else
 		bj.type = 2;
@@ -4717,6 +4711,15 @@ struct pc_base_job pc_calc_base_job(unsigned int b_class)
  */
 int pc_calc_base_job2(unsigned int b_class) {
 	
+	if(b_class == JOB_NINJA)
+		return  28;
+	
+	if(b_class == JOB_GUNSLINGER)
+		return 29;
+	
+	if(b_class >= JOB_BON_GUN && b_class <= JOB_MUNAK)
+		return 30 + b_class - JOB_BON_GUN;
+
 	if(b_class < JOB_NOVICE_HIGH)
 		return b_class;
 
@@ -4725,9 +4728,9 @@ int pc_calc_base_job2(unsigned int b_class) {
 
 	if(b_class >= JOB_TAEKWON && b_class <= JOB_SOUL_LINKER) {
 		if (b_class == JOB_STAR_GLADIATOR2)
-			return 26 + JOB_STAR_GLADIATOR - JOB_TAEKWON;
+			return 24 + JOB_STAR_GLADIATOR - JOB_TAEKWON;
 		else
-			return 26 + b_class - JOB_TAEKWON;
+			return 24 + b_class - JOB_TAEKWON;
 	}
 
 	if(b_class == JOB_SUPER_BABY)
@@ -5220,6 +5223,7 @@ int pc_nextbaseexp(struct map_session_data *sd)
 	else if (sd->status.class == 4001) i = 4; // High Novice
 	else if (sd->status.class <= 4007) i = 5; // High 1st Job
 	else if (sd->status.class == 24 || sd->status.class == 25) i = 1; // Gunslinger/Ninja 1st Job
+	else if (sd->status.class >= 4050 && sd->status.class <= 4053) i = 1; // Death Knight/Dark Collector/Munak/Bon Gun Temp Values
 	else i = 6; // 3rd Job
 
 	return exp_table[i][sd->status.base_level-1];
@@ -5246,6 +5250,7 @@ int pc_nextjobexp(struct map_session_data *sd)
 	else if (sd->status.class == 4001) i = 11; // High Novice
 	else if (sd->status.class <= 4007) i = 12; // High 1st Job
 	else if (sd->status.class == 24 || sd->status.class == 25) i = 8; // Gunslinger/Ninja 1st Job
+	else if (sd->status.class >= 4050 && sd->status.class <= 4053) i = 8; // Death Knight/Dark Collector/Munak/Bon Gun Temp Values
 	else i = 13; // 3rd Job
 
 	return exp_table[i][sd->status.job_level-1];
@@ -5272,6 +5277,7 @@ int pc_nextbaseafter(struct map_session_data *sd)
 	else if (sd->status.class == 4001) i = 4; // High Novice
 	else if (sd->status.class <= 4007) i = 5; // High 1st Job
 	else if (sd->status.class == 24 || sd->status.class == 25) i = 1; // Gunslinger/Ninja 1st Job
+	else if (sd->status.class >= 4050 && sd->status.class <= 4053) i = 1; // Death Knight/Dark Collector/Munak/Bon Gun Temp Values
 	else i = 6; //3rd Job
 
 	return exp_table[i][sd->status.base_level];
@@ -5298,6 +5304,7 @@ int pc_nextjobafter(struct map_session_data *sd)
 	else if (sd->status.class == 4001) i = 11; // High Novice
 	else if (sd->status.class <= 4007) i = 12; // High 1st Job
 	else if (sd->status.class == 24 || sd->status.class == 25) i = 8; // Gunslinger/Ninja 1st Job
+	else if (sd->status.class >= 4050 && sd->status.class <= 4053) i = 8; // Death Knight/Dark Collector/Munak/Bon Gun Temp Values
 	else i = 13; // 3rd Job
 
 	return exp_table[i][sd->status.job_level];
@@ -6351,7 +6358,7 @@ void pc_setparam(struct map_session_data *sd,int type,int val)
 		else if (sd->status.class >= 4008 && sd->status.class <= 4022)
 			up_level += 20;
 		// Gunslinger/Ninja can go up to job 70
-		else if (s_class.job == 24 || s_class.job == 25)
+		else if (sd->status.class == 24 || sd->status.class == 25)
 			up_level += 20;
 		if (val >= sd->status.job_level) {
 			if (val > up_level)val = up_level;
@@ -6702,7 +6709,7 @@ int pc_jobchange(struct map_session_data *sd, int job, int upper)
 	if ((job >= 7 && job <= 21) || (job >= 4008 && job <= 4022) || (job >= 4030 && job <= 4044) ||
 		(job >= JOB_STAR_GLADIATOR && job <= JOB_SOUL_LINKER)) {
 		if ((s_class.job > 0 && s_class.job < 7) || (s_class.job > 4001 && s_class.job < 4008) ||
-			(s_class.job > 4023 && s_class.job < 4030) || (s_class.job == JOB_TAEKWON))
+			(s_class.job > 4023 && s_class.job < 4030) || (s_class.job >= 4047 && s_class.job <= 4049))
 			sd->change_level = sd->status.job_level;
 		else
 			sd->change_level = 40;
@@ -7402,8 +7409,7 @@ void pc_equipitem(struct map_session_data *sd, int n, int pos) {
 	if ((pos == 0x22) // Position is left-hand/right-hand
 	    && (id->equip == 2) // Right-hand weapon equip
 	    && (pc_checkskill(sd, AS_LEFT) > 0 || 
-	    pc_calc_base_job2(sd->status.class) == JOB_ASSASSIN || 
-	    pc_calc_base_job2(sd->status.class) == JOB_GUNSLINGER))
+	    pc_calc_base_job2(sd->status.class) == JOB_ASSASSIN))
 	{
 		int tpos = 0;
 		if (sd->equip_index[8] >= 0)

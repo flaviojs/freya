@@ -7,7 +7,7 @@
 #include <mmo.h>
 
 #define MAX_PC_CLASS 4054
-#define MAX_PC_JOB_CLASS 30
+#define MAX_PC_JOB_CLASS 34
 #define PC_CLASS_BASE 0
 #define PC_CLASS_BASE2 (PC_CLASS_BASE + 4001)
 #define PC_CLASS_BASE3 (PC_CLASS_BASE2 + 22)

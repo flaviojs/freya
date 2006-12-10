@@ -1125,7 +1125,9 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 				break;
 			// merchant
 			case MC_CARTREVOLUTION:
-				skillratio += 50;	// FORMULA: 150% + 1% every 1% weight
+				skillratio += 50;	// DAMAGE: 150% + 1% every 1% weight
+				s_ele = 0;
+				s_ele_ = 0;
 				if(sd && sd->cart_max_weight > 0 && sd->cart_weight > 0)
 					skillratio += 100 * sd->cart_weight / sd->cart_max_weight;
 				break;
@@ -1637,7 +1639,11 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 				skillratio += 300 + 100 * skill_lv;	// FORMULA: damage * (400 + 100 * skill_lv) / 100
 				break;
 			case CH_PALMSTRIKE:
-				skillratio += 100 + 100 * skill_lv;	// FORMULA: damage * (200 + 100 * skill_lv) / 100
+				/* DAMAGE: damage * (200 + 100 * skill_lv) / 100 */
+				skillratio += 100 + (100 * skill_lv);
+				/* palm strike unhides target on hits */
+				if(t_sc_data && t_sc_data[SC_HIDING].timer != -1)
+					status_change_end(target, SC_HIDING, -1);
 				break;
 			case CH_TIGERFIST:
 				skillratio += 100 * skill_lv - 60;	// FORMULA: damage * (40 + 100 * skill_lv) / 100
@@ -2059,12 +2065,7 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 		{
 			short t_element = status_get_element(target);
 			if(wd.damage > 0)
-			{
-				/* Cart Revolution always deals neutral damage */
-				if(skill_num == MC_CARTREVOLUTION)
-					s_ele = 0;
 				wd.damage = battle_attr_fix(wd.damage, s_ele, t_element);
-			}
 			if(wd.damage2 > 0 && flag.lefthand)
 				wd.damage2 = battle_attr_fix(wd.damage2, s_ele, t_element);
 		}

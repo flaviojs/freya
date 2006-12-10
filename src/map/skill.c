@@ -6818,14 +6818,12 @@ int skill_unit_onplace(struct skill_unit *src, struct block_list *bl, unsigned i
 		//}
 		break;*/
 
-	/* Dance Skills - affects all except caster */
 	case 0x9f:	/* BD_RICHMANKIM */
 	case 0xa1:	/* BD_DRUMBATTLEFIELD */
 	case 0xa2:	/* BD_RINGNIBELUNGEN */
 	case 0xa3:	/* BD_ROKISWEIL */
 	case 0xa4:	/* BD_INTOABYSS */
 	case 0xa5:	/* BD_SIEGFRIED */
-	//case 0xa6:	/* BA_DISSONANCE */
 	case 0xa7:	/* BA_WHISTLE */
 	case 0xa8:	/* BA_ASSASSINCROSS */
 	case 0xa9:	/* BA_POEMBRAGI */
@@ -6836,7 +6834,11 @@ int skill_unit_onplace(struct skill_unit *src, struct block_list *bl, unsigned i
 	case 0xae:	/* DC_FORTUNEKISS */
 	case 0xaf:	/* DC_SERVICEFORYOU */
 	case 0xb9:	/* CG_HERMODE */
-		if (sg->src_id == bl->id)
+		/* the skills won't effect the caster */
+		if(sg->src_id == bl->id)
+			break;
+		/* wand of hermode only effects friendly players */
+		if(sg->unit_id == 0xb9 && battle_check_target(&src->bl, bl, BCT_NOENEMY) != 1)
 			break;
 		sc_data = status_get_sc_data(bl);
 		type = SkillStatusChangeTable[sg->skill_id];
@@ -9083,11 +9085,17 @@ int skill_castcancel(struct block_list *bl, int type)
 
 	nullpo_retr(0, bl);
 
-	if (bl->type == BL_PC) {
+	if(bl->type == BL_PC)
+	{
 		struct map_session_data *sd = (struct map_session_data *)bl;
 		nullpo_retr(0, sd);
 		
-		if (sd->skilltimer != -1) {
+		if(sd->skilltimer != -1)
+		{
+			/* pressure is uninterruptable */
+			if(sd->skillid == PA_PRESSURE)
+				return 1;
+
 			sd->canact_tick = gettick_cache;
 			sd->canmove_tick = gettick_cache;
 
