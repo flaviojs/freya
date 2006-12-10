@@ -1621,19 +1621,21 @@ int skill_blown(struct block_list *src, struct block_list *target, int count) {
 //			sd->walktimer = 1;
 //			clif_walkok(sd);
 //			clif_movechar(sd);
-			clif_slide(&sd->bl,nx,ny);
+			clif_slide(target,nx,ny);
 		} else if (md) {
 			md->to_x = nx;
 			md->to_y = ny;
 			prev_state = md->state.state;
 			md->state.state = MS_WALK;
-			clif_fixmobpos(md);
+//			clif_fixmobpos(md);
+			clif_slide(target,nx,ny);
 		} else if (pd) {
 			pd->to_x = nx;
 			pd->to_y = ny;
 			prev_state = pd->state.state;
 			pd->state.state = MS_WALK;
-			clif_fixpetpos(pd);
+//			clif_fixpetpos(pd);
+			clif_slide(target,nx,ny);
 		}
 	} else
 		battle_stopwalking(target, 2);
