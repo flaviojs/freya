@@ -5,10 +5,21 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/10/06
+	* Fixed: Soul Linker can now use all of its specified equipment using the correct system [Tsuyuki]
+	 - To-Do: The same for Star Gladiator/Gunslinger
+	* Added: Some more Death Knight/Etc class base code [Tsuyuki]
+	* Added: Some Death Knight/Dark Collector/Etc base skills to their corresponding trees [Tsuyuki]
+	* Fixed: Bon Gun, Munak, Death Knight, and Dark Collector's skill trees [Tsuyuki]
+	* Fixed: The job_db1.txt and job_db2.txt files are now read with full support for the new jobs [Tsuyuki]
+	* Fixed: Ninja can now use all of its specified equipment using the correct system ^^ [Tsuyuki]
+	* Fixed: Super Novice not being able to wear a lot of its designated items [Tsuyuki]
+	* Fixed: Correct way of calculating item class restrictions for the new jobs [Tsuyuki]
+	* Fixed: Several marriage-related bugs (Thanks to Galaxy) [Tsuyuki]
+	* Removed: Item class restriction hack fix [Tsuyuki]
 	* Fixed: deadly poison doesn't effect boss monsters and emperiums anymore [Harbin]
 	 - http://www.ragnainfo.net/wiki/Enchant_Deadly_Poison
-	* Fixed: pressure skill is now almost totally interruptable (except with hiding, play dead or GTB card) [Harbin]
-	* Fixed: devotion link should not apply crusader's stop/anklesnare/resistsc effect to 'devotion client' player [Harbin]
+	* Fixed: sacrifice skill is now almost totally interruptable (except with hiding, play dead or GTB card) [Harbin]
+	* Fixed: devotion link should not apply crusader's stop/anklesnare/resistsc effect to 'sac client' player [Harbin]
 	* Fixed: wand of hermode should only effect friendly players [Harbin]
 	* Fixed: palm push strike unhides target on hit [Harbin]
 	* Fixed: converted configure file back to use UNIX line endings [Harbin]

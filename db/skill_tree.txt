@@ -620,6 +620,14 @@
 21,1002,1,0,0,0,0,0,0,0,0,0,0 //CR_SHRINK#Shrink#
 //21,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY	#Call Baby#
 
+// Wedding Class
+22,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#Basic Skills#
+22,142,1,0,0,0,0,0,0,0,0,0,0//NV_FIRSTAID	#First Aid#
+22,334,1,0,0,0,0,0,0,0,0,0,0//
+22,335,5,0,0,0,0,0,0,0,0,0,0//
+22,336,5,0,0,0,0,0,0,0,0,0,0//
+//22,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY	#Call Baby#
+
 // Super Novice
 23,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#Basic Skills#
 23,142,1,0,0,0,0,0,0,0,0,0,0//NV_FIRSTAID	#First Aid#
@@ -673,14 +681,6 @@
 23,52,10,0,0,0,0,0,0,0,0,0,0//TF_POISON		#ƒCƒ“ƒxƒiƒ€#
 23,53,1,52,3,0,0,0,0,0,0,0,0//TF_DETOXIFY	#‰ð“Å#
 //23,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY	#Call Baby#
-
-// Wedding Class
-22,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#Basic Skills#
-22,142,1,0,0,0,0,0,0,0,0,0,0//NV_FIRSTAID	#First Aid#
-22,334,1,0,0,0,0,0,0,0,0,0,0//
-22,335,5,0,0,0,0,0,0,0,0,0,0//
-22,336,5,0,0,0,0,0,0,0,0,0,0//
-//22,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY	#Call Baby#
 
 // Gunslinger
 24,1,9,0,0,0,0,0,0,0,0,0,0 //NV_BASIC#Basic Skill#
@@ -2244,3 +2244,23 @@
 4049,472,3,447,1,0,0,0,0,0,0,0,0 //SL_SKA#Eska#
 4049,494,5,451,1,0,0,0,0,0,0,0,0 //SL_HIGH#Spirit of Rebirth#
 //4049,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY	#Call Baby#
+
+// Bon Gun
+4050,1,9,0,0,0,0,0,0,0,0,0,0 //NV_BASIC#Basic Skill#
+4050,142,1,0,0,0,0,0,0,0,0,0,0 //NV_FIRSTAID#First Aid#
+//4050,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY	#Call Baby#
+
+// Death Knight
+4051,1,9,0,0,0,0,0,0,0,0,0,0 //NV_BASIC#Basic Skill#
+4051,142,1,0,0,0,0,0,0,0,0,0,0 //NV_FIRSTAID#First Aid#
+//4051,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY	#Call Baby#
+
+// Dark Collector
+4052,1,9,0,0,0,0,0,0,0,0,0,0 //NV_BASIC#Basic Skill#
+4052,142,1,0,0,0,0,0,0,0,0,0,0 //NV_FIRSTAID#First Aid#
+//4052,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY	#Call Baby#
+
+// Munak
+4053,1,9,0,0,0,0,0,0,0,0,0,0 //NV_BASIC#Basic Skill#
+4053,142,1,0,0,0,0,0,0,0,0,0,0 //NV_FIRSTAID#First Aid#
+//4053,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY	#Call Baby#

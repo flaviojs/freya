@@ -10,7 +10,7 @@
 
 #define MAX_SKILL_PER_TREE 51 // supernovice have 51 skills.
 
-#define MAX_SKILLTREE 32
+#define MAX_SKILLTREE 34
 
 // dead_sit -> 0: standup, 1: dead, 2: sit
 // previously_sit_hp -> 0: not sit when is was previously HP regen, 1: sit... (to avoid people that sit down and stand up between 2 timers)

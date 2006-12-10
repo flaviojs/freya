@@ -4783,7 +4783,7 @@ ATCOMMAND_FUNC(joblevelup) {
 	else if (s_class.job == 23)
 		up_level += 49;
 	// Gunslinger/Ninja can go to job 70
-	else if (s_class.job == 24 || s_class.job == 25)
+	else if (sd->status.class == 24 || sd->status.class == 25)
 		up_level += 20;
 	// Advanced classes can go to job 70
 	else if (sd->status.class > 4007 && sd->status.class < 4023)

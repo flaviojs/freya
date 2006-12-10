@@ -6254,18 +6254,18 @@ int buildin_divorce(struct script_state *st)
 
 int buildin_ispartneron(struct script_state *st)
 {
-	struct map_session_data *sd = script_rid2sd(st);
-	struct map_session_data *p_sd = NULL;
+    struct map_session_data *sd = script_rid2sd(st);
+    struct map_session_data *p_sd = NULL;
 
-	if (sd == NULL || !pc_ismarried(sd) ||
-	    (p_sd = map_id2sd(sd->status.partner_id)) == NULL) {
-		push_val(st->stack, C_INT, 0);
-		return 0;
-	}
+    if (sd == NULL || !pc_ismarried(sd) ||
+        (p_sd = map_nick2sd(map_charid2nick(sd->status.partner_id))) == NULL) {
+        push_val(st->stack, C_INT, 0);
+        return 0;
+    }
 
-	push_val(st->stack, C_INT, 1);
+    push_val(st->stack, C_INT, 1);
 
-	return 0;
+    return 0;
 }
 
 int buildin_getpartnerid(struct script_state *st)
@@ -6283,26 +6283,26 @@ int buildin_getpartnerid(struct script_state *st)
 }
 
 int buildin_warppartner(struct script_state *st) {
-	int x, y;
-	char *str;
-	struct map_session_data *sd = script_rid2sd(st);
-	struct map_session_data *p_sd = NULL;
+    int x, y;
+    char *str;
+    struct map_session_data *sd = script_rid2sd(st);
+    struct map_session_data *p_sd = NULL;
 
-	if (sd == NULL || !pc_ismarried(sd) ||
-	    (p_sd = map_id2sd(sd->status.partner_id)) == NULL) {
-		push_val(st->stack, C_INT, 0);
-		return 0;
-	}
+    if (sd == NULL || !pc_ismarried(sd) ||
+        (p_sd = map_nick2sd(map_charid2nick(sd->status.partner_id))) == NULL) {
+        push_val(st->stack, C_INT, 0);
+        return 0;
+    }
 
-	str = conv_str(st, &(st->stack->stack_data[st->start+2]));
-	x = conv_num(st, &(st->stack->stack_data[st->start+3]));
-	y = conv_num(st, &(st->stack->stack_data[st->start+4]));
+    str = conv_str(st, &(st->stack->stack_data[st->start+2]));
+    x = conv_num(st, &(st->stack->stack_data[st->start+3]));
+    y = conv_num(st, &(st->stack->stack_data[st->start+4]));
 
-	pc_setpos(p_sd, str, x, y, 0, 1);
+    pc_setpos(p_sd, str, x, y, 0, 1);
 
-	push_val(st->stack, C_INT, 1);
+    push_val(st->stack, C_INT, 1);
 
-	return 0;
+    return 0;
 }
 
 /*================================================
