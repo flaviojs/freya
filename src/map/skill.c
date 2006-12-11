@@ -8293,7 +8293,8 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 	case NJ_HUUMA:
 	case NJ_SYURIKEN:
 		/* venom knife skill requires dagger-type weapon */
-		if(skill == AS_VENOMKNIFE && sd->status.weapon != 1)
+		if(skill == AS_VENOMKNIFE && (sd->status.weapon != 1 || sd->status.weapon != 50 || 
+			 sd->status.weapon != 53 || sd->status.weapon != 54 || sd->status.weapon != 57))
 			return 0;
 		if(sd->equip_index[10] < 0)
 		{
