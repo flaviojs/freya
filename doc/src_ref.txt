@@ -79,14 +79,14 @@ sd->status.weapon == 21 // Grenade Launcher
 sd->status.weapon == 22 // Fuuma Shuriken
 
 // Dual-Wielding status.weapon Options
-sd->status.weapon == 0x11 // Dual Daggers
-sd->status.weapon == 0x12 // Dual One-Handed Swords
-sd->status.weapon == 0x13 // Dual One-Handed Axes
-sd->status.weapon == 0x14 // Dual Weapon Combo: Dagger + One-Handed Sword
-sd->status.weapon == 0x15 // Dual Weapon Combo: Dagger + One-Handed Axe
-sd->status.weapon == 0x16 // Dual Weapon Combo: One-Handed Sword + One-Handed Axe
-sd->status.weapon == 0x17 // Dual Revolvers
-sd->status.weapon == 0x18 // Dual Weapon Combo: Revolver + Dagger
+sd->status.weapon == 50 // Dual Daggers
+sd->status.weapon == 51 // Dual One-Handed Swords
+sd->status.weapon == 52 // Dual One-Handed Axes
+sd->status.weapon == 53 // Dual Weapon Combo: Dagger + One-Handed Sword
+sd->status.weapon == 54 // Dual Weapon Combo: Dagger + One-Handed Axe
+sd->status.weapon == 55 // Dual Weapon Combo: One-Handed Sword + One-Handed Axe
+sd->status.weapon == 56 // Dual Revolvers
+sd->status.weapon == 57 // Dual Weapon Combo: Revolver + Dagger
 
 // Definition of weapontype: Individual Weapon-Types for Equiped Weapons
 // These variables merge to become status.weapon

@@ -4,6 +4,12 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+12/11/06
+	* Fixed: Now song/dance positions updates when player gets knocked back [Harbin]
+	* Fixed: All land spells and skills should be removed when caster changes map [Harbin/NO-IP]
+	* Fixed: Venom Knife skill should ignore race, size, element, cards, edp and icepick [Harbin]
+	* Fixed: Venom Knife also works only with dagger-type weapon [Harbin] 
+
 12/10/06
 	* Fixed: Dual-Wield weapons sharing the same weapon type value as Gunslinger/Ninja weapons [Tsuyuki]
 	 - Note: Dual-Wield weapons (Specifically dual-dagger sins) no longer require ammo!

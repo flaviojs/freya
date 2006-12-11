@@ -1325,6 +1325,9 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 				if(wflag > 1)
 					skillratio /= wflag;
 				break;
+			case AS_VENOMKNIFE:
+				flag.cardfix = 0;
+				break;
 			// knight
 			case KN_AUTOCOUNTER:
 				flag.vit_penalty = 0;
@@ -1937,7 +1940,8 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 		if(skillratio != 100)
 			ATK_SCALE(skillratio);	// apply damage modifier
 
-		if(sd && skill_num != CR_GRANDCROSS) {
+		if(sd && skill_num != CR_GRANDCROSS && skill_num != AS_VENOMKNIFE)
+		{
 			// Added Shield Chain/Boomerang  to ignore the Ice Pick effects. [Bison]
 			if (skill_num != PA_SACRIFICE && skill_num != MO_INVESTIGATE && skill_num != PA_SHIELDCHAIN
 			    && skill_num != CR_SHIELDBOOMERANG && !flag.cri) { //Elemental/Racial adjustments
@@ -2059,7 +2063,7 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 		ATK_ADD(15 * skill_lv);
 
 	/* elemental damage fix */
-	if((sd && (skill_num || !battle_config.pc_attack_attr_none)) || (md && (skill_num || !battle_config.mob_attack_attr_none)) || (pd && (skill_num || !battle_config.pet_attack_attr_none)))
+	if((sd && skill_num != AS_VENOMKNIFE && (skill_num || !battle_config.pc_attack_attr_none)) || (md && (skill_num || !battle_config.mob_attack_attr_none)) || (pd && (skill_num || !battle_config.pet_attack_attr_none)))
 	{
 		if(!(sd && tsd && battle_config.mob_ghostring_fix && t_ele == 8))
 		{
