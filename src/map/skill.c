@@ -1564,11 +1564,12 @@ int skill_blown(struct block_list *src, struct block_list *target, int count) {
 	nullpo_retr(0, src);
 	nullpo_retr(0, target);
 
-	// no knockback in WoE
-	if (map[target->m].flag.gvg) //No knockbacking in GvG maps, this includes emperium as well
+	/* no knockback in gvg maps */
+	if(map[target->m].flag.gvg)
 		return 0;
 
-	switch (target->type) {
+	switch(target->type)
+	{
 		case BL_PC:
 			sd = (struct map_session_data *)target;
 			break;
@@ -1661,17 +1662,21 @@ int skill_blown(struct block_list *src, struct block_list *target, int count) {
 		skill_unit_move(target, gettick_cache, 1);
 	}
 
-	if (sd) {	/* ‰æ–Ê“à‚É“ü‚Á‚Ä‚«‚½‚Ì‚Å•\¦ */
+	if(sd)
+	{
 		map_foreachinmovearea(clif_pcinsight, target->m, nx - AREA_SIZE, ny - AREA_SIZE, nx + AREA_SIZE, ny + AREA_SIZE, -dx, -dy, 0, sd);
-		if (count & 0x20000)
+		if(count & 0x20000)
 			pc_stop_walking(sd, 1);
-	} else if (md) {
+		/* update dance position */
+		if(sd->sc_data[SC_DANCING].timer != -1)
+			skill_unit_move_unit_group((struct skill_unit_group *)sd->sc_data[SC_DANCING].val2, target->m, dx, dy);
+	} else if(md) {
 		map_foreachinmovearea(clif_mobinsight, target->m, nx - AREA_SIZE, ny - AREA_SIZE, nx + AREA_SIZE, ny + AREA_SIZE, -dx, -dy, BL_PC, md);
-		if (count & 0x20000)
+		if(count & 0x20000)
 			md->state.state = prev_state;
-	} else if (pd) {
+	} else if(pd) {
 		map_foreachinmovearea(clif_petinsight, target->m, nx - AREA_SIZE, ny - AREA_SIZE, nx + AREA_SIZE, ny + AREA_SIZE, -dx, -dy, BL_PC, pd);
-		if (count & 0x20000)
+		if(count & 0x20000)
 			pd->state.state = prev_state;
 	}
 
@@ -8287,7 +8292,11 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 	case NJ_KUNAI:
 	case NJ_HUUMA:
 	case NJ_SYURIKEN:
-		if (sd->equip_index[10] < 0) {
+		/* venom knife skill requires dagger-type weapon */
+		if(skill == AS_VENOMKNIFE && sd->status.weapon != 1)
+			return 0;
+		if(sd->equip_index[10] < 0)
+		{
 			clif_arrow_fail(sd, 0);
 			return 0;
 		}
