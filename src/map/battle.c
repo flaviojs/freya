@@ -544,17 +544,20 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 
 		if(tsc_data[SC_KYRIE].timer != -1 && damage > 0)
 		{
-			sc_data[SC_KYRIE].val2 = damage;
-
-			if(flag & BF_WEAPON || skill_num == TF_THROWSTONE)
+			/* kyrie eleison is able to block damage completely */
+			if(sc_data[SC_KYRIE].val2 > damage)
 			{
-				if(sc_data[SC_KYRIE].val2 >= 0)	
+				sc_data[SC_KYRIE].val2 -= damage;
+				if(flag & BF_WEAPON || skill_num == TF_THROWSTONE)
 					damage = 0;
-				else
-					damage = sc_data[SC_KYRIE].val2;
+			/* kyrie eleison is able to block damage partially -> reduce damage and end kyrie eleison */
+			} else {
+				status_change_end(bl, SC_KYRIE, -1);
+				if(flag & BF_WEAPON || skill_num == TF_THROWSTONE)
+					damage -= sc_data[SC_KYRIE].val2;
 			}
-
-			if((--sc_data[SC_KYRIE].val3) <= 0 || (sc_data[SC_KYRIE].val2 <= 0) || skill_num == AL_HOLYLIGHT)
+			/* count hits blocked by kyrie eleison */
+			if((--sc_data[SC_KYRIE].val3) <= 0 || || skill_num == AL_HOLYLIGHT)
 				status_change_end(bl, SC_KYRIE, -1);
 		}
 

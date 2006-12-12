@@ -3754,28 +3754,30 @@ int mobskill_castend_pos(int tid, unsigned int tick, int id, int data)
  * Skill use (an aria start, ID specification)
  *------------------------------------------
  */
-int mobskill_use_id(struct mob_data *md,struct block_list *target,int skill_idx)
+int mobskill_use_id(struct mob_data *md, struct block_list *target, int skill_idx)
 {
 	int casttime,range;
 	struct mob_skill *ms;
 	int skill_id, skill_lv, forcecast = 0;
 
 	nullpo_retr(0, md);
-	nullpo_retr(0, ms=&mob_db[md->class].skill[skill_idx]);
+	nullpo_retr(0, ms = &mob_db[md->class].skill[skill_idx]);
 
-	if( target==NULL && (target=map_id2bl(md->target_id))==NULL )
+	if(target == NULL && (target = map_id2bl(md->target_id)) == NULL)
 		return 0;
 
-	if( target->prev==NULL || md->bl.prev==NULL )
+	if(target->prev == NULL || md->bl.prev == NULL)
 		return 0;
 
-	skill_id=ms->skill_id;
-	skill_lv=ms->skill_lv;
+	skill_id = ms->skill_id;
+	skill_lv = ms->skill_lv;
 
-	// ’¾–Ù‚âˆÙí
-	if(md->sc_count){
-		if(md->opt1>0 || md->sc_data[SC_SILENCE].timer != -1 || md->sc_data[SC_ROKISWEIL].timer != -1 || md->sc_data[SC_STEELBODY].timer != -1)
-		return 0;
+	if(md->sc_count)
+	{
+		if(md->opt1 > 0 || md->sc_data[SC_SILENCE].timer != -1 || md->sc_data[SC_ROKISWEIL].timer != -1 || md->sc_data[SC_STEELBODY].timer != -1)
+			return 0;
+		if(md->sc_data[SC_LANDPROTECTOR].timer != -1 && (skill_id == AL_TELEPORT || skill_id == AL_WARP))
+			return 0;
 		if(md->sc_data[SC_AUTOCOUNTER].timer != -1 && skill_id != KN_AUTOCOUNTER)
 			return 0;
 		if(md->sc_data[SC_BLADESTOP].timer != -1)
@@ -3784,16 +3786,13 @@ int mobskill_use_id(struct mob_data *md,struct block_list *target,int skill_idx)
 			return 0;
 	}
 
-	if(md->option&4 && skill_id==TF_HIDING)
+	if(md->option & 4 && skill_id == TF_HIDING)
 		return 0;
-	if(md->option&2 && skill_id!=TF_HIDING && skill_id!=AS_GRIMTOOTH && skill_id!=RG_BACKSTAP && skill_id!=RG_RAID)
+	if(md->option & 2 && skill_id != TF_HIDING && skill_id != AS_GRIMTOOTH && skill_id != RG_BACKSTAP && skill_id != RG_RAID)
 		return 0;
 
 	if(map[md->bl.m].flag.gvg && (skill_id == SM_ENDURE || skill_id == AL_TELEPORT || skill_id == AL_WARP ||
 		skill_id == WZ_ICEWALL || skill_id == TF_BACKSLIDING))
-		return 0;
-		
-	if(md->sc_data[SC_LANDPROTECTOR].timer != -1 && (skill_id == AL_TELEPORT || skill_id == AL_WARP))
 		return 0;
 
 	if(skill_get_inf2(skill_id)&0x200 && md->bl.id == target->id)
