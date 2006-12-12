@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/11/06
+	* Added: New jRO event maps to the map_athena.conf file [Tsuyuki]
 	* Updated: SQL Mob and Item databases [Tsuyuki]
 	* Fixed: Vesper Cores can now only be equiped if you're Second Advanced class [Tsuyuki]
 	* Fixed: Reading of the item_upper.txt file for simple text editors [Tsuyuki]
