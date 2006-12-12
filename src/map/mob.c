@@ -3612,11 +3612,11 @@ int mobskill_castend_id(int tid, unsigned int tick, int id, int data)
 	if(md->sc_count) {
 		if(md->opt1>0 || md->sc_data[SC_SILENCE].timer != -1 || md->sc_data[SC_ROKISWEIL].timer != -1 || md->sc_data[SC_STEELBODY].timer != -1)
 			return 0;
-		if(md->sc_data[SC_AUTOCOUNTER].timer != -1 && md->skillid != KN_AUTOCOUNTER) //オートカウンター
+		if(md->sc_data[SC_AUTOCOUNTER].timer != -1 && md->skillid != KN_AUTOCOUNTER)
 			return 0;
-		if(md->sc_data[SC_BLADESTOP].timer != -1) //白刃取り
+		if(md->sc_data[SC_BLADESTOP].timer != -1)
 			return 0;
-		if(md->sc_data[SC_BERSERK].timer != -1) //バーサーク
+		if(md->sc_data[SC_BERSERK].timer != -1)
 			return 0;
 	}
 	if (md->skillid != NPC_EMOTION)
@@ -3701,11 +3701,11 @@ int mobskill_castend_pos(int tid, unsigned int tick, int id, int data)
 	if (md->sc_count) {
 		if(md->opt1>0 || md->sc_data[SC_SILENCE].timer != -1 || md->sc_data[SC_ROKISWEIL].timer != -1 || md->sc_data[SC_STEELBODY].timer != -1)
 			return 0;
-		if(md->sc_data[SC_AUTOCOUNTER].timer != -1 && md->skillid != KN_AUTOCOUNTER) //オートカウンター
+		if(md->sc_data[SC_AUTOCOUNTER].timer != -1 && md->skillid != KN_AUTOCOUNTER)
 			return 0;
-		if(md->sc_data[SC_BLADESTOP].timer != -1) //白刃取り
+		if(md->sc_data[SC_BLADESTOP].timer != -1)
 			return 0;
-		if(md->sc_data[SC_BERSERK].timer != -1) //バーサーク
+		if(md->sc_data[SC_BERSERK].timer != -1)
 			return 0;
 	}
 
@@ -3776,11 +3776,11 @@ int mobskill_use_id(struct mob_data *md,struct block_list *target,int skill_idx)
 	if(md->sc_count){
 		if(md->opt1>0 || md->sc_data[SC_SILENCE].timer != -1 || md->sc_data[SC_ROKISWEIL].timer != -1 || md->sc_data[SC_STEELBODY].timer != -1)
 		return 0;
-		if(md->sc_data[SC_AUTOCOUNTER].timer != -1 && md->skillid != KN_AUTOCOUNTER) //オートカウンター
+		if(md->sc_data[SC_AUTOCOUNTER].timer != -1 && skill_id != KN_AUTOCOUNTER)
 			return 0;
-		if(md->sc_data[SC_BLADESTOP].timer != -1) //白刃取り
+		if(md->sc_data[SC_BLADESTOP].timer != -1)
 			return 0;
-		if(md->sc_data[SC_BERSERK].timer != -1) //バーサーク
+		if(md->sc_data[SC_BERSERK].timer != -1)
 			return 0;
 	}
 
@@ -3791,6 +3791,9 @@ int mobskill_use_id(struct mob_data *md,struct block_list *target,int skill_idx)
 
 	if(map[md->bl.m].flag.gvg && (skill_id == SM_ENDURE || skill_id == AL_TELEPORT || skill_id == AL_WARP ||
 		skill_id == WZ_ICEWALL || skill_id == TF_BACKSLIDING))
+		return 0;
+		
+	if(md->sc_data[SC_LANDPROTECTOR].timer != -1 && (skill_id == AL_TELEPORT || skill_id == AL_WARP))
 		return 0;
 
 	if(skill_get_inf2(skill_id)&0x200 && md->bl.id == target->id)
@@ -3811,13 +3814,13 @@ int mobskill_use_id(struct mob_data *md,struct block_list *target,int skill_idx)
 	md->skilldelay[skill_idx] = gettick_cache;
 
 	switch(skill_id){	/* 何か特殊な処理が必要 */
-	case ALL_RESURRECTION:	/* リザレクション */
+	case ALL_RESURRECTION:
 		if(target->type != BL_PC && battle_check_undead(status_get_race(target), status_get_elem_type(target))){	/* 敵がアンデッドなら */
 			forcecast=1;	/* ターンアンデットと同じ詠唱時間 */
 			casttime=skill_castfix(&md->bl, skill_get_cast(PR_TURNUNDEAD,skill_lv) );
 		}
 		break;
-	case MO_EXTREMITYFIST:	/*阿修羅覇鳳拳*/
+	case MO_EXTREMITYFIST:
 	case SA_MAGICROD:
 	case SA_SPELLBREAKER:
 		forcecast=1;
@@ -3903,11 +3906,11 @@ int mobskill_use_pos( struct mob_data *md,
 		    (!(mob_db[md->class].mode & 0x20) && md->sc_data[SC_ROKISWEIL].timer != -1) ||
 		    md->sc_data[SC_STEELBODY].timer != -1)
 			return 0;
-		if (md->sc_data[SC_AUTOCOUNTER].timer != -1 && md->skillid != KN_AUTOCOUNTER) //オートカウンター
+		if (md->sc_data[SC_AUTOCOUNTER].timer != -1 && md->skillid != KN_AUTOCOUNTER)
 			return 0;
-		if (md->sc_data[SC_BLADESTOP].timer != -1) //白刃取り
+		if (md->sc_data[SC_BLADESTOP].timer != -1)
 			return 0;
-		if (md->sc_data[SC_BERSERK].timer != -1) //バーサーク
+		if (md->sc_data[SC_BERSERK].timer != -1)
 			return 0;
 	}
 
@@ -4448,12 +4451,12 @@ static int mob_readdb(void)
 			fprintf(mob_db_fp, "  `ATK2` smallint(6) NOT NULL default '0'," RETCODE);
 			fprintf(mob_db_fp, "  `DEF` smallint(6) NOT NULL default '0'," RETCODE);
 			fprintf(mob_db_fp, "  `MDEF` smallint(6) NOT NULL default '0'," RETCODE);
-			fprintf(mob_db_fp, "  `STR` tinyint(4) NOT NULL default '0'," RETCODE);
-			fprintf(mob_db_fp, "  `AGI` tinyint(4) NOT NULL default '0'," RETCODE);
-			fprintf(mob_db_fp, "  `VIT` tinyint(4) NOT NULL default '0'," RETCODE);
-			fprintf(mob_db_fp, "  `INT` tinyint(4) NOT NULL default '0'," RETCODE);
-			fprintf(mob_db_fp, "  `DEX` tinyint(4) NOT NULL default '0'," RETCODE);
-			fprintf(mob_db_fp, "  `LUK` tinyint(4) NOT NULL default '0'," RETCODE);
+			fprintf(mob_db_fp, "  `STR` tinyint(4) UNSIGNED NOT NULL default '0'," RETCODE);
+			fprintf(mob_db_fp, "  `AGI` tinyint(4) UNSIGNED NOT NULL default '0'," RETCODE);
+			fprintf(mob_db_fp, "  `VIT` tinyint(4) UNSIGNED NOT NULL default '0'," RETCODE);
+			fprintf(mob_db_fp, "  `INT` tinyint(4) UNSIGNED NOT NULL default '0'," RETCODE);
+			fprintf(mob_db_fp, "  `DEX` tinyint(4) UNSIGNED NOT NULL default '0'," RETCODE);
+			fprintf(mob_db_fp, "  `LUK` tinyint(4) UNSIGNED NOT NULL default '0'," RETCODE);
 			fprintf(mob_db_fp, "  `Range2` tinyint(4) NOT NULL default '0'," RETCODE);
 			fprintf(mob_db_fp, "  `Range3` tinyint(4) NOT NULL default '0'," RETCODE);
 			fprintf(mob_db_fp, "  `Scale` tinyint(4) NOT NULL default '0'," RETCODE);

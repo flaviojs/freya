@@ -5,10 +5,18 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/11/06
+	* Updated: SQL Mob and Item databases [Tsuyuki]
+	* Fixed: Vesper Cores can now only be equiped if you're Second Advanced class [Tsuyuki]
+	* Fixed: Reading of the item_upper.txt file for simple text editors [Tsuyuki]
+	* Updated: SQL Mob Database generation script [Tsuyuki/Bison]
+	* Updated: Awakening Potion and Berserk Potion job restrictions [Tsuyuki]
+	* Fixed: Soul Linker not being able to use a few items [Tsuyuki]
+	* Fixed: Gunslinger/Taekwon Master can now equip/use all their specified equipment [Tsuyuki]
+	* Added: Some code for prevention of teleport usage on ME, but isn't working.. [Tsuyuki]
 	* Fixed: Now song/dance positions updates when player gets knocked back [Harbin]
 	* Fixed: All land spells and skills should be removed when caster changes map [Harbin/NO-IP]
 	* Fixed: Venom Knife skill should ignore race, size, element, cards, edp and icepick [Harbin]
-	* Fixed: Venom Knife also works only with dagger-type weapon [Harbin] 
+	* Fixed: Venom Knife also works only with dagger-type weapon [Harbin]
 
 12/10/06
 	* Fixed: Dual-Wield weapons sharing the same weapon type value as Gunslinger/Ninja weapons [Tsuyuki]

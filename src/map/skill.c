@@ -819,7 +819,7 @@ int skillnotok(int skillid, struct map_session_data *sd) {
 	switch (skillid) {
 	case AL_TELEPORT:
 	case AL_WARP:
-		if(map[sd->bl.m].flag.noteleport)
+		if(map[sd->bl.m].flag.noteleport || sd->sc_data[SC_LANDPROTECTOR].timer != -1)
 		{
 			clif_skill_teleportmessage(sd, 0);
 			return 1;
