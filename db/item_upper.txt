@@ -1,7 +1,13 @@
-// item_id, flag
-// flag : 0 = all; 1 = base class; 2 = advanced class; 4 = baby class
+// item_upper.txt, Upper Item Restrictions Database
 //
-// Note : doesn't work for cards
+// Structure of Database:
+//
+// ItemID,Parameter
+//
+// Parameter: 0 = All; 1 = Base Class; 2 = Advanced Class; 4 = Baby Class
+//
+// Note: Does not work for cards
+//
 
 2357,2	// Valkyrie's Armor
 2421,2	// Valkyrie's Shoes
