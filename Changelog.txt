@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/12/06
+	* Changed: Several more SQL variables from tinyint -> smallint to prevent any problems [Tsuyuki/Bison]
 	* Changed: Commented Harbin's unit skill chances due to some problems for now.. [Tsuyuki]
 	* Fixed: Max position-saving bug in Freya SQL [Tsuyuki/Bison]
 
