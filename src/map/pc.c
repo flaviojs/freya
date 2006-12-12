@@ -3959,9 +3959,14 @@ int pc_setpos(struct map_session_data *sd, char *mapname_org, int x, int y, int 
 			status_change_end(&sd->bl, SC_SLEEP, -1);
 	}
 
+	// Commented for now due to some crash/loop-related problems.. [Tsuyuki]
 	/* clear AOE spells on the previous map */
+/*if(sd->bl.m != m)
+		skill_clear_unitgroup(&sd->bl);*/
+
+	// Remove when above is uncommented/fixed
 	if(sd->bl.m != m)
-		skill_clear_unitgroup(&sd->bl);
+		skill_clear_element_field(&sd->bl);
 
 	if(sd->status.pet_id > 0 && sd->pd && sd->pet.intimate > 0)
 	{

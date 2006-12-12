@@ -4,6 +4,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+12/12/06
+	* Changed: Commented Harbin's unit skill chances due to some problems for now.. [Tsuyuki]
+	* Fixed: Max position-saving bug in Freya SQL [Tsuyuki/Bison]
+
 12/11/06
 	* Added: New jRO event maps to the map_athena.conf file [Tsuyuki]
 	* Updated: SQL Mob and Item databases [Tsuyuki]

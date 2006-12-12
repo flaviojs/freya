@@ -63,8 +63,8 @@ CREATE TABLE `char`
   `last_x` tinyint(3) NOT NULL default '53',
   `last_y` tinyint(3) NOT NULL default '111',
   `save_map` varchar(20) NOT NULL default 'new_5-1.gat',
-  `save_x` tinyint(3) NOT NULL default '53',
-  `save_y` tinyint(3) NOT NULL default '111',
+  `save_x` smallint(3) NOT NULL default '53',
+  `save_y` smallint(3) NOT NULL default '111',
   `die_counter` int(11) NOT NULL default '0',
   `partner_id` int(11) NOT NULL default '0',
   `online` tinyint(1) NOT NULL default '0',
@@ -305,8 +305,8 @@ CREATE TABLE `memo`
   `memo_id` int(11) NOT NULL auto_increment,
   `char_id` int(11) NOT NULL default '0',
   `map` varchar(20) NOT NULL default '',
-  `x` tinyint(3) NOT NULL default '0',
-  `y` tinyint(3) NOT NULL default '0',
+  `x` smallint(3) NOT NULL default '0',
+  `y` smallint(3) NOT NULL default '0',
   PRIMARY KEY  (`memo_id`),
   KEY `char_id` (`char_id`)
 ) TYPE=MyISAM; 
