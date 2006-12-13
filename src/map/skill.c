@@ -3422,7 +3422,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 			break;
 		}
 		skill_attack(BF_MAGIC, src, src, bl, skillid, skilllv, tick, flag);
-		
+
 		if(skillid != SL_SMA && skilllv >= 7)
 			status_change_start(src, SC_SMA, 0, 0, 0, 0, 3000, 0);
 		break;
@@ -8332,6 +8332,8 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 		else if(sd->status.base_level >= 70)
 			sp -= sp * 3 * kaina_lv / 100;
 		}
+		break;
+
 	case NJ_ISSEN:
 		if (sd->status.hp <= 1 || sd->sc_data[SC_NEN].timer == -1) {
 			clif_skill_fail(sd,skill,0,0);
