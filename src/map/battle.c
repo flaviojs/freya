@@ -542,21 +542,19 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 			}
 		}
 
-		if(tsc_data[SC_KYRIE].timer != -1 && damage > 0)
-		{
-			sc_data[SC_KYRIE].val2 = damage;
-
+ if(tsc_data[SC_KYRIE].timer != -1 && damage > 0)
+	{
+		tsc_data[SC_KYRIE].val2 -= damage;
 			if(flag & BF_WEAPON || skill_num == TF_THROWSTONE)
-			{
-				if(sc_data[SC_KYRIE].val2 >= 0)	
+				{
+				if(tsc_data[SC_KYRIE].val2 >= 0)	
 					damage = 0;
 				else
-					damage = sc_data[SC_KYRIE].val2;
-			}
-
-			if((--sc_data[SC_KYRIE].val3) <= 0 || (sc_data[SC_KYRIE].val2 <= 0) || skill_num == AL_HOLYLIGHT)
+					damage -= tsc_data[SC_KYRIE].val2;
+				}
+			if((--tsc_data[SC_KYRIE].val3) <= 0 || (tsc_data[SC_KYRIE].val2 <= 0) || skill_num == AL_HOLYLIGHT)
 				status_change_end(bl, SC_KYRIE, -1);
-		}
+			}
 
 		if (tsc_data[SC_UTSUSEMI].timer != -1)
 		{
@@ -2065,7 +2063,7 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 	/* elemental damage fix */
 	if((sd && skill_num != AS_VENOMKNIFE && (skill_num || !battle_config.pc_attack_attr_none)) || (md && (skill_num || !battle_config.mob_attack_attr_none)) || (pd && (skill_num || !battle_config.pet_attack_attr_none)))
 	{
-		if(!(sd && tsd && battle_config.mob_ghostring_fix && t_ele == 8))
+		if(!(!sd && tsd && battle_config.mob_ghostring_fix && t_ele == 8))
 		{
 			short t_element = status_get_element(target);
 			if(wd.damage > 0)
