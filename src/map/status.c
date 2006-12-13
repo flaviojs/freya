@@ -4538,26 +4538,25 @@ int status_change_end(struct block_list* bl, int type, int tid)
                 }//if (sd)
             break;
             }
-            // damz fish help for devotion
-            
-            case SC_DEFENDER:
-            {
-                struct map_session_data *sd=NULL;
-                sd = (struct map_session_data *)bl;
-                // damz fish help for devotion
-                if (sd)
-                {    
-                    struct map_session_data *tsd;
-                    int i;
-                    for (i = 0; i < 5; i++)
-                    {    
-                        if (sd->dev.val1[i] && (tsd = map_id2sd(sd->dev.val1[i])))
-                            status_change_end(&tsd->bl,SC_DEFENDER,-1);
-                    }//for (i = 0; i < 5; i++)
-                }//if (sd)
-            break;
-            }
-            // damz fish help for devotion
+
+			case SC_DEFENDER:
+			{
+				/* apply status end to devotion clients */
+				struct map_session_data *sd = NULL;
+				if((sd = (struct map_session_data *)bl))
+				{
+					struct map_session_data *tsd = NULL;
+					register int i;
+					for(i = 0; i < 5; i++)
+					{
+						if(sd->dev.val1[i] && (tsd = map_id2sd(sd->dev.val1[i])))
+							status_change_end(&tsd->bl, SC_DEFENDER, -1);
+					}
+				}
+				/* update walking speed */
+				calc_flag = 1;
+				break;
+			}
             
             case SC_REFLECTSHIELD:
             {
