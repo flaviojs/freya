@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/13/06
+	* Fixed: Missing break command missing for Estun/Estin [Tsuyuki]
 	* Fixed: Manteau's job equip IDs [Tsuyuki]
 	* Fixed: Ghostring Card working on mobs [Bison]
 	* Fixed: Completely repaired Kyrie Eleison [Bison]
