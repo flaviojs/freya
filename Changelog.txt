@@ -5,6 +5,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/13/06
+	* Fixed: Manteau's job equip IDs [Tsuyuki]
+	* Fixed: Ghostring Card working on mobs [Bison]
+	* Fixed: Completely repaired Kyrie Eleison [Bison]
 	* Improved: the way kyrie eleison blocks and reduces received damage [Harbin]
 
 12/12/06

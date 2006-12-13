@@ -1099,8 +1099,8 @@
 2502,Hood_,Hood,5,1000,0,200,,1,,1,17173569535,2,4,,0,0,{},{}
 2503,Muffler,Muffler,5,5000,0,400,,2,,0,17173569534,2,4,,0,0,{},{}
 2504,Muffler_,Muffler,5,5000,0,400,,2,,1,17173569534,2,4,,0,0,{},{}
-2505,Manteau,Manteau,5,32000,0,600,,4,,0,100663296,2,4,,0,0,{},{}
-2506,Manteau_,Manteau,5,32000,0,600,,4,,1,100663296,2,4,,0,0,{},{}
+2505,Manteau,Manteau,5,32000,0,600,,4,,0,117720226,2,4,,0,0,{},{}
+2506,Manteau_,Manteau,5,32000,0,600,,4,,1,117720226,2,4,,0,0,{},{}
 2507,Cape_of_Old_Marquess,Cape of Old Marquess,5,20,0,600,,2,,0,17173569534,2,4,,40,0,{},{ bonus bAgi,1; }
 2508,Ragamuffin_Manteau,Ragamuffin Manteau,5,20,0,500,,1,,0,17173569534,2,4,,0,0,{},{ bonus bMdef,10; }
 2509,Survivor's_Manteau,Survivor's Manteau,5,20,0,550,,0,,0,134283780,2,4,,75,0,{},{ bonus bVit,10; if((isequipped(1617) || isequipped(1618) || isequipped(1619) || isequipped(1620))==1) goto SurvCombo; end; SurvCombo: bonus bMaxHP,300; bonus bMatkRate,-5; bonus bMatkRate,getequiprefinerycnt(4); bonus2 bSubEle,0,getequiprefinerycnt(5)*3; }
