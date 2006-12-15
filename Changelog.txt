@@ -7,6 +7,7 @@ Date	Added
 12/14/06
 	* Fixed: Incarnation Samurai Card removing 1000 hp instead of 999 when unequiped. [Lex]
 	* Fixed: battle_config.atcommand_max_player_gm_level comparison for @gm command. [Lex]
+	* Fixed: The AI modes for Alice, Deviace, and Goat. [Bison]
 
 12/13/06
 	* Fixed: recalc walking speed right after defender effect ends [Harbin]
