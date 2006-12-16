@@ -30,7 +30,7 @@
 
 //<------------------------------------------------------------------------------------ Chivalry Captain Herman------------------------------------------------------------------------------------------>\\
 prt_in.gat,88,101,3	script	Chivalry Captain Herman	56,{
-	callfunc "F_BlockHigh",25,"Swordman High",31,"Lord Knight","Chivalry Captain Herman";
+	callfunc "F_BlockHigh",Job_Swordman_High,"Swordman High",Job_Lord_Knight,"Lord Knight","Chivalry Captain Herman";
 
 	if (BaseJob == Job_Swordman && KNIGHT_Q > 0) goto L_Check;
 

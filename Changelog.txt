@@ -4,6 +4,13 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+12/15/06
+	* Updated: Massive rewrites/fixes to the Rebirth System to support the new job changes properly [Tsuyuki]
+	 - Note: Rebirth is now working properly once again
+	* Fixed: Some typos in scripts here and there [Tsuyuki]
+	* Added: Partially implemented SG_DEVIL and SG_FUSION Taekwon Master skills [Tsuyuki]
+	 - Note: Missing negative effects, only the good stuff is in
+
 12/14/06
 	* Fixed: level < atcommand_max_player_gm_level check instead of <= in @gm command. [Lex]
 	* Fixed: Incarnation Samurai Card removing 1000 hp instead of 999 when unequiped. [Lex]

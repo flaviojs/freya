@@ -31,7 +31,7 @@
 
 //<=========================================== Blacksmith Altiregen (Job changer)===================================>\\
 geffen_in.gat,110,169,4	script	Guildsman	731,{
-	callfunc "F_BlockHigh",29,"Merchant High",34,"White Smith","Blacksmith Altiregen";
+	callfunc "F_BlockHigh",Job_Merchant_High,"Merchant High",Job_Whitesmith,"White Smith","Blacksmith Altiregen";
 
 	if (BaseJob == 5) goto L_Merc;
 	mes "[Blacksmith Altiregen]";

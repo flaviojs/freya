@@ -185,6 +185,7 @@ void initStatusIconTable(void) {
 	init_sc(RG_CLOSECONFINE,        SC_CLOSECONFINE2,    ICO_CLOSECONFINE2);
 	init_sc(RG_CLOSECONFINE,        SC_CLOSECONFINE,     ICO_CLOSECONFINE);
 	init_sc(WZ_SIGHTBLASTER,        SC_SIGHTBLASTER,     ICO_SIGHTBLASTER);
+	init_sc(SG_FUSION,              SC_FUSION,           ICO_FUSION);
 	init_sc(SL_SKE,                 SC_SKE,              ICO_BLANK);
 	init_sc(SL_SKA,                 SC_SKA,              ICO_BLANK);
 	init_sc(SL_SWOO,                SC_SWOO,             ICO_BLANK);
@@ -975,6 +976,9 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 	}
 	if ((skill = pc_checkskill(sd, SA_ADVANCEDBOOK)) > 0)
 		aspd_rate -= skill >> 1;
+		
+	if ((skill= pc_checkskill(sd, SG_DEVIL)) > 0 && sd->status.job_level >= 50)
+		aspd_rate -= 30*skill;
 
 	bl = sd->status.base_level;
 	idx = (3500 + bl * hp_coefficient2[s_class.job] + hp_sigma_val[s_class.job][(bl > 0)? bl-1:0])/100 * (100 + sd->paramc[2])/100 + (sd->parame[2] - sd->paramcard[2]);
@@ -1241,6 +1245,8 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 			sd->speed -= sd->speed * 25 / 100;
 		if (sd->sc_data[SC_WEDDING].timer != -1)
 			sd->speed = 2*DEFAULT_WALK_SPEED;
+		if(sd->sc_data[SC_FUSION].timer != -1)
+			sd->speed -= sd->speed * 25/100;
 
 		// HIT/FLEE•Ï‰»Œn
 		if(sd->sc_data[SC_WHISTLE].timer!=-1){

@@ -16,5 +16,5 @@
 
 // -== Stalker ==-
 valkyrie.gat,53,58,4	script	Stalker	747,{
-	callfunc "F_Rebirth",30,"Thief High",41,"Stalker",149,150,151,152;
+	callfunc "F_Rebirth",Job_High_Thief,"Thief High",Job_Stalker,"Stalker",0,0,0,0;
 }

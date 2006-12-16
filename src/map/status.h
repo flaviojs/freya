@@ -393,7 +393,8 @@ enum {
 	ICO_BUNSINJYUTSU		= 207,
 	ICO_NEN				= 208,
 	ICO_ADJUSTMENT		= 209,
-	ICO_ACCURACY			= 210
+	ICO_ACCURACY			= 210,
+	ICO_FUSION			= 211
 };
 extern int StatusIconTable[SC_MAX];
 

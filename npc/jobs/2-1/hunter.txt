@@ -42,7 +42,7 @@ pay_fild10.gat,148,251,4	script	Hunter Guildsman	98,{
 
 //<====================================== Job Changer ========================================>\\
 in_hunter.gat,99,99,4	script	Hunter Sharon	727,{
-	callfunc "F_BlockHigh",27,"High Archer",35,"Sniper","Hunter Sharon";
+	callfunc "F_BlockHigh",Job_Archer_High,"High Archer",Job_Sniper,"Sniper","Hunter Sharon";
 
 	if(BaseJob==Job_Archer) goto L_Start;
 	callfunc "Hun_check";

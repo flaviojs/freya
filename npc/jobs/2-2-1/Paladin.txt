@@ -16,5 +16,5 @@
 
 // -== Paladin ==-
 valkyrie.gat,53,39,4	script	Paladin	752,{
-	callfunc "F_Rebirth",25,"Swordman High",38,"Paladin",144,145,146,0;
+	callfunc "F_Rebirth",Job_Swordman_High,"Swordman High",Job_Paladin,"Paladin",0,0,0,0;
 }

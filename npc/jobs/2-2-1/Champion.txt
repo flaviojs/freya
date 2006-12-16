@@ -16,5 +16,5 @@
 
 // -== Champion ==-
 valkyrie.gat,53,42,4	script	Champion	52,{
-	callfunc "F_Rebirth",28,"Acolyte High",39,"Champion",156,0,0,0;
+	callfunc "F_Rebirth",Job_Acolyte_High,"Acolyte High",Job_Champion,"Champion",0,0,0,0;
 }
