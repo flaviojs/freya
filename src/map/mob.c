@@ -514,8 +514,13 @@ int mob_get_equip(int class) // mob equip [Valaris]
  */
 int mob_can_move(struct mob_data *md) {
 //	nullpo_retr(0, md); // checked before to call function
+	int mode;
+	if (!md->mode)
+		mode = mob_db[md->class].mode;
+	else
+		mode = md->mode;
 
-	if (md->canmove_tick > gettick_cache || (md->opt1 > 0 && md->opt1 != 6) || md->option & 2)
+	if (md->canmove_tick > gettick_cache || (md->opt1 > 0 && md->opt1 != 6) || md->option & 2 || !(mode & 1))
 		return 0;
 	// アンクル中で動けないとか
 	if (md->sc_data[SC_ANKLE].timer != -1 || //アンクルスネア

@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+12/16/06
+	* Fixed: Emperium can't walk/attack anymore [Latios]
+
 12/15/06
 	* Fixed: Venom Knife not working at all [Tsuyuki]
 	* Updated: Massive rewrites/fixes to the Rebirth System to support the new job changes properly [Tsuyuki]
