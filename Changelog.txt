@@ -5,6 +5,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/16/06
+	* Fixed: Merchant Set Combo and Dark Priest Card (Thanks to galaxy) [Tsuyuki]
+	* Fixed: Novice being able to wear/use items it wasn't supposed to be able to use [Tsuyuki]
+	 - Note: Do not use jobs past Ninja for item restrictions anymore.. at least for now (Death Knight, etc)
+	* Fixed: Manteau's Job Restrictions [Tsuyuki]
 	* Fixed: Emperium can't walk/attack anymore [Latios]
 
 12/15/06
