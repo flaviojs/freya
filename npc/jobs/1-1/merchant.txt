@@ -20,7 +20,7 @@
 // -- Mahnsoo --
 alberta_in.gat,53,43,6	script	Chief Mahnsoo	86,{
 	if(countitem(9001)>1)goto illuminaRO;
-	callfunc "F_ToHigh",29,"Merchant High",34,"White Smith",153,154,155,0,"Chief Mahnsoo";
+	callfunc "F_ToHigh",Job_Merchant_High,"Merchant High",Job_Whitesmith,"White Smith",0,0,0,0,"Chief Mahnsoo";
 	mes "[Chief Mahnsoo]";
 	if(BaseJob==Job_Novice && job_merchant_q3 == 4) goto L_MakeMerc;
 	if(BaseJob==Job_Novice && job_merchant_q3 == 3) goto L_GiveRecpt;

@@ -5208,7 +5208,7 @@ ATCOMMAND_FUNC(gm) {
 		return -1;
 	}
 
-	if (sd->GM_level <= battle_config.atcommand_max_player_gm_level) { // a GM can not use this function. only a normal player (become gm is not for gm!)
+	if (sd->GM_level > battle_config.atcommand_max_player_gm_level) { // a GM can not use this function. only a normal player (become gm is not for gm!)
 		clif_displaymessage(fd, msg_txt(50)); // You already have some GM powers.
 		return -1;
 	} else

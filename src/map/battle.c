@@ -1701,6 +1701,9 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 		}
 	}
 
+	if (sc_data[SC_FUSION].timer != -1)
+		flag.idef = flag.idef2 = flag.hit = 1;
+
 	// Crit calculation after skill mods
 	if (!flag.cri && cri) {
 		if(tsd && tsd->critical_def) //Critical rate reduced by targets cards
@@ -3014,6 +3017,7 @@ int battle_weapon_attack(struct block_list *src, struct block_list *target, unsi
 	int race = 7, ele = 0;
 	int damage, rdamage = 0;
 	struct Damage wd;
+	int hp = 0, sp = 0;
 
 	nullpo_retr(0, src);
 	nullpo_retr(0, target);
@@ -3188,7 +3192,6 @@ int battle_weapon_attack(struct block_list *src, struct block_list *target, unsi
 		}
 		if (sd) {
 			if (wd.flag&BF_WEAPON && src != target && (wd.damage > 0 || wd.damage2 > 0)) {
-				int hp = 0,sp = 0;
 				if (!battle_config.left_cardfix_to_right) { // “ñ“—¬¶ŽèƒJ[ƒh‚Ì‹zŽûŒnŒø‰Ê‚ð‰EŽè‚É’Ç‰Á‚µ‚È‚¢ê‡
 					hp += battle_calc_drain(wd.damage, sd->hp_drain_rate, sd->hp_drain_per, sd->hp_drain_value);
 					hp += battle_calc_drain(wd.damage2, sd->hp_drain_rate_, sd->hp_drain_per_, sd->hp_drain_value_);
@@ -3337,6 +3340,24 @@ int battle_weapon_attack(struct block_list *src, struct block_list *target, unsi
 
 		map_freeblock_unlock();
 	}
+
+	/*
+	// To-Do: Incomplete due to missing sd structure support [Tsuyuki]
+	if (sc_data && sc_data[SC_FUSION].timer != -1) {
+		if (sd) {
+			hp = sd->status.max_hp;
+			if (100*sd->status.hp <= 20*sd->status.max_hp && target->type == BL_PC)
+				// Add kill player on this line (kills user or attacking person), not target)
+			else if (target->type == BL_PC)
+				hp = hp*8/100;
+			else
+				hp = hp*2/100;
+			// Make 'sd->status.hp' equal 'hp' on this line (this function doesn't support sd.. yet)
+		}
+		else if (md) {
+		// Finish mob version..
+	}
+		*/
 
 	return wd.dmg_lv;
 }

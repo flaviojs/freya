@@ -4027,12 +4027,12 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 			do {
 				sd->tk_mission_target_id = rand() % MAX_MOB_DB;
 			} while(mob_db[sd->tk_mission_target_id].max_hp <= 0 || mob_db[sd->tk_mission_target_id].summonper[0]==0 || mob_db[sd->tk_mission_target_id].mode&0x20);
-			
+
 			sd->tk_mission_count = 0;
 			
 			pc_setglobalreg(sd, "TK_MISSION_ID", sd->tk_mission_target_id);
 			pc_setglobalreg(sd, "TK_MISSION_COUNT", sd->tk_mission_count);
-			
+
 			clif_mission_mob(sd, sd->tk_mission_target_id, 0);
 			clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 		}
@@ -4090,6 +4090,14 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 			status_change_end(src,SC_HIDING,-1);
 		else
 			clif_skill_fail(sd, skillid, 0, 0);
+		break;
+	case SG_FUSION:
+		if (sc_data && sc_data[SC_FUSION].timer != -1)
+			status_change_end(src,SC_FUSION,-1);
+		if (sc_data && sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_STAR) {
+			clif_skill_nodamage(src, bl, skillid, skilllv, 1);
+			status_change_start(bl, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
+		}
 		break;
 	case AC_CONCENTRATION:
 		clif_skill_nodamage(src, bl, skillid, skilllv, 1);

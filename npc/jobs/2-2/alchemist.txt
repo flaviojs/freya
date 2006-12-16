@@ -28,7 +28,7 @@
 //					Registration and First Test
 //==================================================================================================//
 alde_alche.gat,27,185,4	script	Parmry Gianino	744,{
-	callfunc "F_BlockHigh",29,"Merchant High",42,"Creator","Parmry Gianino";
+	callfunc "F_BlockHigh",Job_Merchant_High,"Merchant High",42,"Creator","Parmry Gianino";
 
 	mes "[Parmry Gianino]";
 	if(BaseJob == 5) goto L_Merc;

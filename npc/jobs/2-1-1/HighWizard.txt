@@ -16,5 +16,5 @@
 
 // -== High Wizard ==-
 valkyrie.gat,44,47,6	script	High Wizard	735,{
-	callfunc "F_Rebirth",26,"High Mage",33,"High Wizard",157,0,0,0;
+	callfunc "F_Rebirth",Job_Mage_High,"High Mage",Job_High_Wizard,"High Wizard",0,0,0,0;
 }

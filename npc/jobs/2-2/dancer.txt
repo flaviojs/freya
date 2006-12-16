@@ -37,7 +37,7 @@ L_Can:
 
 //= Warp man, takes you to the quest map (Comodo Theater)
 comodo.gat,193,151,4	script	Bor Robin	86,{
-	callfunc "F_BlockHigh",27,"High Archer",44,"Gypsy","Bor Robin";
+	callfunc "F_BlockHigh",Job_Archer_High,"High Archer",Job_Gypsy,"Gypsy","Bor Robin";
 
 	mes "[Bor Robin]";
 	mes "Well...... alot of people seem to be coming here lately.";

@@ -9,7 +9,7 @@
 
 //Dancer & Bard - Comodo 189 166 4_F_07
 comodo.gat,189,166,4	script	Performance Master	741,{
-	callfunc "F_BlockHigh",27,"High Archer",43,"Clown","Performance Master";
+	callfunc "F_BlockHigh",Job_Archer_High,"High Archer",Job_Clown,"Clown","Performance Master";
 
 	if(BaseJob==19) goto bard;
 	if(BaseJob==20) goto dance;

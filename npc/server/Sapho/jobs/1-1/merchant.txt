@@ -20,7 +20,7 @@
 // == Guild NPCs == 
 // -- Mahnsoo --
 alberta_in.gat,53,43,6	script	Mahnsoo	86,{
-	callfunc "F_ToHigh",Job_Merchant_High,"Merchant High",Job_Whitesmith,"White Smith",153,154,155,0,"Le chef Mahnsoo";
+	callfunc "F_ToHigh",Job_Merchant_High,"Merchant High",Job_Whitesmith,"White Smith",0,0,0,0,"Le chef Mahnsoo";
 	mes "[Le chef Mahnsoo]";
 	if(BaseJob==Job_Novice && job_merchant_q3 == 4) goto L_MakeMerc;
 	if(BaseJob==Job_Novice && job_merchant_q3 == 3) goto L_GiveRecpt;

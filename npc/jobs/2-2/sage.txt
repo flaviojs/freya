@@ -27,7 +27,7 @@
 //Sage Castle
 //==================================
 yuno_in02.gat,38,61,4	script	Magic Academy Headmaster	743,{
-	callfunc "F_BlockHigh",26,"High Mage",40,"Professor","Keiron";
+	callfunc "F_BlockHigh",Job_Mage_High,"High Mage",Job_Professor,"Professor","Keiron";
 	if (BaseJob == 16) goto L_Menu3_3;
 	if (BaseJob != 2) goto L_Menu2_1;
 	if (SAGE_Q == 11) goto L_Menu3_1;
@@ -938,7 +938,7 @@ L_Menu5_4:
 //=================================
 
 yuno_in03.gat,154,35,4	script	Academy Staff	742,{
-	callfunc "F_BlockHigh",26,"High Mage",40,"Professor","Mathias";
+	callfunc "F_BlockHigh",Job_Mage_High,"High Mage",Job_Professor,"Professor","Mathias";
 
 	if (BaseJob == 16) goto L_Menu6_4;
 	if (BaseJob != 2) goto L_Menu1_1;

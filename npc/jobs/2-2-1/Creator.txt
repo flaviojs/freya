@@ -16,5 +16,5 @@
 
 // -== Creator ==-
 valkyrie.gat,53,50,6	script	Creator	122,{
-	callfunc "F_Rebirth",29,"Merchant High",42,"Creator",153,154,155,0;
+	callfunc "F_Rebirth",Job_Merchant_High,"Merchant High",Job_Creator,"Creator",0,0,0,0;
 }
