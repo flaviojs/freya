@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/17/06
+	* Updated: Massive updates/fixes to the item database [Tsuyuki]
 	* Fixed: MVP AI behavior with hide/cloak/basilica/slyness [Bison]
 	* Fixed: Problem with Novices not being able to job change into 1-1 classes [Tsuyuki]
 	* Improved: Revised many custom scripts and started reformation of the /custom folder [Tsuyuki]
@@ -13,11 +14,11 @@ Date	Added
 
 12/16/06
 	* Reverted: Items not being able to be used in EDP-mode (My bad) [Tsuyuki]
-	- Source: http://ragnainfo.net/forums/viewtopic.php?p=1208353#1208353
+	 - Source: http://ragnainfo.net/forums/viewtopic.php?p=1208353#1208353
 	* Improved: The custom Reset Girl NPC a little bit [Tsuyuki]
 	* Improved: Rewrote most of the custom Job Changer script [Tsuyuki]
 	 - Much nicer now, and has support for the new classes!
-	* Fixed: Several mob database entries (Thanks to Vahn) [Tsuyuki]
+	* Fixed: Several mob database entries (Thanks to Vahhn) [Tsuyuki]
 	* Fixed: Merchant Set Combo and Dark Priest Card (Thanks to galaxy) [Tsuyuki]
 	* Fixed: Novice being able to wear/use items it wasn't supposed to be able to use [Tsuyuki]
 	 - Note: Do not use jobs past Ninja for item restrictions anymore.. at least for now (Death Knight, etc)
