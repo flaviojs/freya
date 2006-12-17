@@ -55,6 +55,7 @@
 2297 // Goblini Mask
 2298 // Green Feeler
 2352 // Novice Ninja Suit
+2356 // Blessed Holy Robe
 2410 // Sleipnir
 2413 // Safety Shoes
 2414 // Novice Sandals
