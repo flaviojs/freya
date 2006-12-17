@@ -4,6 +4,11 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+12/17/06
+	* Improved: Revised many custom scripts and started reformation of the /custom folder [Tsuyuki]
+	* Added: A GM Menu to the Job Changer, along with several other optimizations [Tsuyuki]
+	* Fixed: Some bugs in the custom Job Changer [Tsuyuki]
+
 12/16/06
 	* Reverted: Items not being able to be used in EDP-mode (My bad) [Tsuyuki]
 	- Source: http://ragnainfo.net/forums/viewtopic.php?p=1208353#1208353
