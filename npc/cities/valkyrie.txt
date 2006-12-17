@@ -408,6 +408,7 @@ L_SKILLPNTS:
 //getarg(3) - current NPC's name
 
 function	script	F_ToHigh	{
+	if(Class == JOB_NOVICE) return;
 	if(Upper == 2) return; //Baby Class - skip it
 	if(ADVJOB == Job_Lord_Knight2) set ADVJOB,Job_Lord_Knight;
 	if(ADVJOB == Job_Paladin2) set ADVJOB,Job_Paladin;

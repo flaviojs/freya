@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/17/06
+	* Fixed: Problem with Novices not being able to job change into 1-1 classes [Tsuyuki]
 	* Improved: Revised many custom scripts and started reformation of the /custom folder [Tsuyuki]
 	* Added: A GM Menu to the Job Changer, along with several other optimizations [Tsuyuki]
 	* Fixed: Some bugs in the custom Job Changer [Tsuyuki]
