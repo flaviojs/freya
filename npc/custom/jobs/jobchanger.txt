@@ -5,7 +5,7 @@
 //= Yor
 //= Tsuyuki
 //===== Current Version: =====================================
-//= 2.4
+//= 2.6
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -22,21 +22,62 @@
 //= 2.2 Fixed checks (mixed || with &&) [Yor]
 //= 2.3 Updated with new job IDs to prevent problems [Tsuyuki]
 //= 2.4 Major rewrite, added support for new classes (+5 kb) [Tsuyuki]
+//= 2.5 Fixed several bugs, more optimizations [Tsuyuki]
+//= 2.6 Added GM Menu for easier management (GMLv40 or Above) [Tsuyuki]
 //============================================================
 
 
 prontera.gat,160,186,3	script	Job Changer	831,{
 
 	mes "[Amber]";
-	mes "Sup? I'm the insanely cool and uber";
-	mes "cute Job Changer for Freya! First of all,";
-	mes "what class would you like to change into?";
-	mes "You must meet preliminary requirements for";
-	mes "each class..";
+	mes "Sup? I'm the insanely cool and uber cute Job Changer for Freya! First of all, what class would you like to change into? You must meet preliminary requirements for each class..";
 	next;
-	menu "First Class (1-1)",L_FirstClass,"Second Class (2-1)",L_SecondClass,"Alternate Second Class (2-2)",L_SecondClass2,"Rebirth",L_NoviceHigh,"Advanced First Class",L_ReqCheck,"Advanced Second Class",L_ReqCheck,"Super Novice",L_SuperNovice,"Expanded Class",L_ExpandedClass;
+  	if (getgmlevel(0) >= 40) goto L_GMMenu1; // GM Level 40 or Above
+	goto L_Regular;
+
+// GM Options
+
+L_GMMenu1:
+	mes "[Amber]";
+	mes "Oooo.. a GM!";
+	mes "Would you like to access the GM menu, or just continue with the regular script?";
+	emotion 3; // /lv
+	next;
+	menu "GM Menu",L_GMMenu2,"Regular Script",L_GMMenu3,"Cancel",L_Cancel;
+
+	L_GMMenu2:
+		mes "[Amber]";
+		mes "Okay, here you go!";
+		next;
+		menu "Reset Char-Specific Vars",L_ResetVars,"Unload Script",L_Disable,"Cancel",L_Cancel;
+
+		L_ResetVars:
+			mes "[Amber]";
+			mes "Done! Variables pertaining to this script have been reset for this specific character. ^_~";
+			set oldclass,0;
+			emotion 18; // /heh
+			close;
+
+		L_Disable:
+			mes "[Amber]";
+			mes "WTF?? You're disabling me?";
+			mes "Ugh.. not cool.";
+			mes "Bye bye. >_>";
+			disablenpc "Job Changer";
+			emotion 23; // /omg
+			close;
+
+	L_GMMenu3:
+		mes "[Amber]";
+		mes "Okay then, back to the script~";
+		next;
+		goto L_Regular;
+
+L_Regular:
+	menu "First Class (1-1)",L_FirstClass,"Second Class (2-1)",L_SecondClass,"Alternate Second Class (2-2)",L_SecondClass2,"Rebirth",L_NoviceHigh,"Advanced First Class",L_ReqCheck,"Advanced Second Class",L_ReqCheck,"Super Novice",L_SuperNovice,"Expanded Class",L_ExpandedClass,"Cancel",L_Cancel;
 
 	L_NoviceHigh:
+		if (Class >= 4023 && Class <= 4045) goto L_BabyFail;
 		if (BaseLevel >= 99 && JobLevel>= 50 && Class >= 7 && Class <= 21) goto L_Change;
 		mes "[Amber]";
 		mes "Ummmm, excuse me... o.O...";
@@ -48,7 +89,6 @@ prontera.gat,160,186,3	script	Job Changer	831,{
 		close;
 
 	L_Change:
-		if (Class >= 4023 && Class <= 4045) goto L_BabyFail;
 		if (checkcart(0)) goto L_ExtraFail;
 		if (checkfalcon(0)) goto L_ExtraFail;
 		if (checkriding(0)) goto L_ExtraFail;
@@ -57,7 +97,6 @@ prontera.gat,160,186,3	script	Job Changer	831,{
 		mes "[Amber]";
 		mes "We shall start the ceremony....";
 		next;
-		if (oldclass > 0) goto L_ReqCheck;
 		set oldclass,Class;
 		// Peco Classes Normalization Check
 		if (oldclass == 13) set oldclass,7;
@@ -69,7 +108,7 @@ prontera.gat,160,186,3	script	Job Changer	831,{
 		emotion 46; // Congratulations!
 		close;
 
-	L_Weight:
+	L_WeightFail:
 		mes "I can't rebirth you until you lower";
 		mes "your weight under 2000..";
 		emotion 20; // /hmm
@@ -173,31 +212,31 @@ prontera.gat,160,186,3	script	Job Changer	831,{
 		emotion 1; // /?
 		close;
 
-	IsNoviceH:
-		menu "Knight",L_WasKnight,"Priest",L_WasPriest,"Wizard",L_WasWizard,"Blacksmith",L_WasBlacksmith,"Hunter",L_WasHunter,"Assasin",L_WasAssassin,"Crusader",L_WasCrusader,"Monk",L_WasMonk,"Sage",L_WasSage,"Rogue",L_WasRogue,"Alchemist",L_WasAlchemist,"Bard",L_WasBard,"Dancer",L_WasDancer;
+		L_IsNoviceH:
+		menu "Knight",L_WasKnight,"Priest",L_WasPriest,"Wizard",L_WasWizard,"Blacksmith",L_WasBlacksmith,"Hunter",L_WasHunter,"Assasin",L_WasAssassin,"Crusader",L_WasCrusader,"Monk",L_WasMonk,"Sage",L_WasSage,"Rogue",L_WasRogue,"Alchemist",L_WasAlchemist,"Bard",L_WasBard,"Dancer",L_WasDancer,"Cancel",L_Cancel;
 
 		// Determine current job to get to previous rebirth class ->
 
 		L_IsSwordsmanH:
-			menu "Knight",L_WasKnight,"Crusader",L_WasCrusader;
+			menu "Knight",L_WasKnight,"Crusader",L_WasCrusader,"Cancel",L_Cancel;
 
 		L_IsMageH:
-			menu "Wizard",L_WasWizard,"Sage",L_WasSage;
+			menu "Wizard",L_WasWizard,"Sage",L_WasSage,"Cancel",L_Cancel;
 
 		L_IsArcherHF:
-			menu "Hunter",L_WasHunter,"Dancer",L_WasDancer;
+			menu "Hunter",L_WasHunter,"Dancer",L_WasDancer,"Cancel",L_Cancel;
 
 		L_IsArcherHM:
-			menu "Hunter",L_WasHunter,"Bard",L_WasBard;
+			menu "Hunter",L_WasHunter,"Bard",L_WasBard,"Cancel",L_Cancel;
 
 		L_IsAcolyteH:
-			menu "Priest",L_WasPriest,"Monk",L_WasMonk;
+			menu "Priest",L_WasPriest,"Monk",L_WasMonk,"Cancel",L_Cancel;
 
 		L_IsMerchantH:
-			menu "Blacksmith",L_WasBlacksmith,"Alchemist",L_WasAlchemist;
+			menu "Blacksmith",L_WasBlacksmith,"Alchemist",L_WasAlchemist,"Cancel",L_Cancel;
 
 		L_IsThiefH:
-			menu "Assasin",L_WasAssassin,"Rogue",L_WasRogue;
+			menu "Assasin",L_WasAssassin,"Rogue",L_WasRogue,"Cancel",L_Cancel;
 
 		// Set 'oldclass' according to what the player defines his old job as ->
 
@@ -278,6 +317,7 @@ prontera.gat,160,186,3	script	Job Changer	831,{
 		mes "[Amber]";
 		mes "Yes! You are ready to become... a Lord Knight! ";
 		mes "Go save a Damsel in Distress or something..";
+		set oldclass,0;
 		Jobchange JOB_LORD_KNIGHT;
 		emotion 46; // Congratulations!
 		close;
@@ -295,7 +335,7 @@ prontera.gat,160,186,3	script	Job Changer	831,{
 		next;
 		mes "[Amber]";
 		mes "That means you're not getting paid dumbass!";
-		emotion 29;
+		set oldclass,0;
 		Jobchange JOB_PALADIN;
 		emotion 46; // Congratulations!
 		close;
@@ -315,6 +355,7 @@ prontera.gat,160,186,3	script	Job Changer	831,{
 	L_AssassinCross:
 		mes "[Amber]";
 		mes "Poof! Kekeke... ";
+		set oldclass,0;
 		Jobchange JOB_ASSASSIN_CROSS;
 		emotion 46; // Congratulations!
 		close;
@@ -324,6 +365,7 @@ prontera.gat,160,186,3	script	Job Changer	831,{
 		mes "Hmf.";
 		mes "How goes the stalking lately?";
 		mes "Found Any New Victims?";
+		set oldclass,0;
 		Jobchange JOB_STALKER;
 		emotion 46; // Congratulations!
 		close;
@@ -351,11 +393,13 @@ prontera.gat,160,186,3	script	Job Changer	831,{
 		mes "sorta like Manhood.. but not really, see with Manhood,";
 		mes "you get this little thingy between your legs..";
 		mes "WHOOPs, I am getting so off topic..";
+		set oldclass,0;
 		Jobchange JOB_HIGH_PRIEST;
 		emotion 46; // Congratulations!
 		close;
 
 		L_FemaleHPChange:
+			set oldclass,0;
 			Jobchange JOB_HIGH_PRIEST;
 			emotion 46; // Congratulations!
 			close;
@@ -364,6 +408,7 @@ prontera.gat,160,186,3	script	Job Changer	831,{
 		mes "[Amber]";
 		mes "You are the Champion of the Weak and Poor.";
 		mes "Wow it must suck being you ^_^!!!";
+		set oldclass,0;
 		Jobchange JOB_CHAMPION;
 		emotion 46; // Congratulations!
 		close;
@@ -392,6 +437,9 @@ prontera.gat,160,186,3	script	Job Changer	831,{
 		mes "Now you can hurl pointed sticks at monsters";
 		mes "AND keep them in one place! w00t, yea!";
 		mes "Traps are a great thing...";
+		set oldclass,0;
+		Jobchange JOB_SNIPER;
+		emotion 46; // Congratulations!
 		next;
 		mes "[Amber]";
 		mes "You know what... since I'm just soooo";
@@ -403,8 +451,6 @@ prontera.gat,160,186,3	script	Job Changer	831,{
 		mes "wanna wear a hat, this falcon sometimes,";
 		mes "uh... poops..";
 		setfalcon;
-		Jobchange JOB_SNIPER;
-		emotion 46; // Congratulations!
 		close;
 
 	L_Clown:
@@ -412,6 +458,7 @@ prontera.gat,160,186,3	script	Job Changer	831,{
 		mes "What an amusing fellow.";
 		mes "Yay! Go play some ballads for some Dancers";
 		mes "or something, I just can't stand your clothes... ewww.";
+		set oldclass,0;
 		Jobchange JOB_CLOWN;
 		emotion 46; // Congratulations!
 		close;
@@ -422,6 +469,7 @@ prontera.gat,160,186,3	script	Job Changer	831,{
 		mes "sooo sexy.. too bad I'm stuck doing this job..";
 		mes "ugh, if only I could strip down to a";
 		mes "little thong and party too... *sigh*";
+		set oldclass,0;
 		Jobchange JOB_GYPSY;
 		emotion 3; // /lv
 		close;
@@ -448,6 +496,7 @@ prontera.gat,160,186,3	script	Job Changer	831,{
 		mes "Whitesmith! Aren't you PROUD of yourself...";
 		mes "Go and make a few weapons! Open up shops across";
 		mes "the nation! Yea yea yea! Go go go! w00t! Ho yeah! ";
+		set oldclass,0;
 		Jobchange JOB_WHITESMITH;
 		emotion 46; // Congratulations!
 		close;
@@ -455,6 +504,7 @@ prontera.gat,160,186,3	script	Job Changer	831,{
 	L_Creator:
 		mes "[Amber]";
 		mes "Create potions for the brave heros of Rune-Midgart.";
+		set oldclass,0;
 		Jobchange JOB_CREATOR;
 		emotion 46; // Congratulations!
 		close;
@@ -475,6 +525,7 @@ prontera.gat,160,186,3	script	Job Changer	831,{
 		mes "Wheeee, doesn't it feel great to finally become";
 		mes "a High Wizard? It's like a warm bath....";
 		mes "ahhhhhhh......";
+		set oldclass,0;
 		Jobchange JOB_HIGH_WIZARD;
 		emotion 46; // Congratulations!
 		close;
@@ -483,6 +534,7 @@ prontera.gat,160,186,3	script	Job Changer	831,{
 		mes "[Amber]";
 		mes "Time for you to teach your first Quantum";
 		mes "Physics class";
+		set oldclass,0;
 		Jobchange JOB_PROFESSOR;
 		emotion 46; // Congratulations!
 		close;
@@ -595,6 +647,7 @@ prontera.gat,160,186,3	script	Job Changer	831,{
 		mes "[Amber]";
 		mes "What would you like to become?";
 		mes "(Must be the preliminary job)";
+		next;
 		menu "Knight",L_Knight,"Wizard",L_Wizard,"Hunter",L_Hunter,"Blacksmith",L_Blacksmith,"Assassin",L_Assassin,"Priest",L_Priest,"Cancel",L_Cancel;
 
 	L_JobLv40:
@@ -669,7 +722,6 @@ prontera.gat,160,186,3	script	Job Changer	831,{
 		close;
 
 	L_Blacksmith:
-		mes "[Amber]";
 		if(Class != JOB_MERCHANT) goto L_NotMerchant;
 		mes "[Amber]";
 		mes "Oooo~~ Goodie goodie gumdrops! You meet allll the";
@@ -768,6 +820,7 @@ L_SecondClass2:
 	next;
 	mes "[Amber]";
 	mes "Very well then, what would you like to be?";
+	next;
 	menu "Crusader",L_Crusader,"Sage",L_Sage,"Bard / Dancer",L_Musician,"Alchemist",L_Alchemist,"Rogue",L_Rogue,"Monk",L_Monk,"Cancel",L_Cancel;
 
 	L_Crusader:
@@ -1044,7 +1097,7 @@ L_ExpandedClass:
 	L_TaekwonClass:
 		mes "[Amber]";
 		mes "So you're all tough and ready to";
-		mes "become advance as a Taekwon further";
+		mes "advance as a Taekwon further";
 		mes "eh? Then lets get kickin!";
 		next;
 		menu "Taekwon Master",L_TaekwonMaster,"Soul Linker",L_SoulLinker,"Cancel",L_Cancel;

@@ -1,93 +1,99 @@
 //===== Freya Script =========================================
 //= Banker Script
 //===== By: ==================================================
-//= Syrus22 (1.0)
+//= Syrus22
 //===== Current Version: =====================================
-//= 1.0
+//= 1.2
 //===== Compatible With: =====================================
 //= Any Athena with Account variables.
 //===== Description: =========================================
 //= An account wide Banker to store Zeny
-//===== Additional Comments: =================================
-//= 4/17 Script tidied up a tiny bit by [Harp]
 //= Syrus22 - There's an optional transaction fee at the top of
 //= the script. To use it simply change the first set command
 //= to set the cost variable to whatever you want the fee to be.
+//===== Additional Comments: =================================
+//= 1.0 First version [Syrus22]
+//= 1.1 (4/17) Script tidied up a tiny bit by [Harp]
+//= 1.2 Script revised a little, added check for alternate Novice
+//=     classes (Novice High, Baby Novice) [Tsuyuki]
 //============================================================
-prontera.gat,132,217,5	script	Banker	109,{
+
+
+prontera.gat,132,217,5	script	Banker	903,{
+
 	set @cost,500;
-	mes "[Banker]";
-	if((Class == Job_Novice) && (joblevel <6)) goto AntiNovice;
+	mes "[Marcus]";
+	if((Class == JOB_NOVICE || Class == JOB_NOVICE_HIGH || Class == JOB_BABY) && Joblevel < 6) goto L_NoviceFail;
 	mes "Welcome to the First Bank of Prontera. How can I help you today?";
 	next;
-	menu "I'd like to make a deposit.",Ldeposit,"I'd like to make a withdrawl.",Lwithdrawl,"What's my current balance?",Lbalance,"Cancel",-;
+	menu "I'd like to make a deposit.",L_Deposit,"I'd like to make a withdrawl.",L_Withdrawl,"What's my current balance?",L_Balance,"Cancel",-;
 
-Lcancel:
-	mes "[Banker]";
+L_Cancel:
+	mes "[Marcus]";
 	mes "Very well... come again soon.";
 	close;
 
-Ldeposit:
-	mes "[Banker]";
+L_Deposit:
+	mes "[Marcus]";
 	mes "Very well... How much would you like to deposit? The maximum you can deposit at once is 999,999 Zeny.";
 	next;
-	mes "[Banker]";
+	mes "[Marcus]";
 	mes "Oh and don't forget there is a " + @cost + " Zeny charge on all transactions.";
 	next;
 	input @deposit;
-	if (@deposit < 1) goto Lrealamount;
-	if (@deposit > Zeny) goto Lneedzeny;
-	if (@deposit > (Zeny - @cost)) goto Lneedzeny2;
+	if (@deposit < 1) goto L_RealAmount;
+	if (@deposit > Zeny) goto L_NeedZeny;
+	if (@deposit > (Zeny - @cost)) goto L_NeedZeny2;
 	set Zeny,Zeny - @deposit;
 	set Zeny,Zeny - @cost;
 	set #bankstorage,#bankstorage + @deposit;
-	mes "[Banker]";
+	mes "[Marcus]";
 	mes "Thank you very much... Your zeny is in good hands.";
 	close;
 
-	Lrealamount:
-		mes "[Banker]";
+	L_RealAmount:
+		mes "[Marcus]";
 		mes "Don't play jokes with me please. Next time ask for a real amount.";
 		close;
 
-	Lneedzeny:
-		mes "[Banker]";
+	L_NeedZeny:
+		mes "[Marcus]";
 		mes "You don't have enough Zeny to make that deposit.";
 		close;
 
-	Lneedzeny2:
-		mes "[Banker]";
+	L_NeedZeny2:
+		mes "[Marcus]";
 		mes "You don't have enough Zeny to cover the transaction fee.";
 		close;
 
 
-Lwithdrawl:
-	mes "[Banker]";
+L_Withdrawl:
+	mes "[Marcus]";
 	mes "Very well... How much would you like to withdraw? The maximum you can withdraw at one time is 999,999 Zeny";
 	next;
-	mes "[Banker]";
+	mes "[Marcus]";
 	mes "Oh and don't forget there is a " + @cost + " Zeny charge on all transactions.";
 	next;
 	input @withdrawl;
-	if (@withdrawl < 1) goto Lrealamount;
-	if (@withdrawl > #bankstorage) goto Lneedzeny3;
-	if ((@cost > Zeny) && ((Zeny + @withdrawl) > @cost)) goto Lcostask;
-	if (@cost > Zeny) goto Lneedzeny2;
+	if (@withdrawl < 1) goto L_RealAmount;
+	if (@withdrawl > #bankstorage) goto L_NeedZeny3;
+	if ((@cost > Zeny) && ((Zeny + @withdrawl) > @cost)) goto L_CostAsk;
+	if (@cost > Zeny) goto L_NeedZeny2;
 	set Zeny,Zeny - @cost;
 	set Zeny,Zeny + @withdrawl;
 	set #bankstorage,#bankstorage - @withdrawl;
-	mes "[Banker]";
+	mes "[Marcus]";
 	mes "There's your Zeny. Have a good day.";
 	close;
 
-	Lcostask:
-		mes "[Banker]";
+	L_CostAsk:
+		mes "[Marcus]";
 		mes "You don't have the Zeny for the transaction fee right now. Would you like me to take the fee directly from your withdrawl?";
 		next;
-		menu "Yes please.",Lwithtake,"No thank you.",Lcancel;
+		menu "Yes please.",L_WithTake,"No thank you.",L_Cancel;
 
-	Lwithtake:
-		mes "[Banker]";
+	L_WithTake:
+		mes "[Marcus]";
 		mes "Ok then.";
 		set @withdrawl,@withdrawl - @cost;
 		set #bankstorage,#bankstorage - @cost;
@@ -95,23 +101,23 @@ Lwithdrawl:
 		next;
 		goto Lwithcont2;
 
-	Lneedzeny3:
-		mes "[Banker]";
+	L_NeedZeny3:
+		mes "[Marcus]";
 		mes "You don't have enough Zeny in your account.";
 		close;
 
-Lbalance:
-	mes "[Banker]";
+L_Balance:
+	mes "[Marcus]";
 	mes "Hmmmm lemme check the paper work.";
 	next;
 	mes "*Rustle, Rustle*";
 	next;
-	mes "[Banker]";
+	mes "[Marcus]";
 	mes "You currently have " + #bankstorage + " Zeny in your account.";
 	close;
 
-AntiNovice:
-	mes "[Banker]";
+L_NoviceFail:
+	mes "[Marcus]";
 	mes "I'm sorry, but you need to have at least Job Level 6 in order for use any of my services.";
 	close;
 }
