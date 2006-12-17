@@ -705,9 +705,10 @@ static void mob_attack(struct mob_data *md, unsigned int tick, int data)
 	{
 		unlock_target = 1;
 	} else if(tsd) {
-		if(pc_isdead(tsd) || pc_isinvisible(tsd) || tsd->state.gangsterparadise || tsd->perfect_hiding || tsd->invincible_timer != -1 || tsd->sc_data[SC_TRICKDEAD].timer != -1 || tsd->sc_data[SC_BASILICA].timer != -1)
+		if(pc_isdead(tsd) || pc_isinvisible(tsd) || tsd->perfect_hiding || tsd->invincible_timer != -1 || tsd->sc_data[SC_TRICKDEAD].timer != -1)
 			unlock_target = 1;
-		if(race != 4 && race != 6 && (pc_ishiding(tsd) || pc_iscloaking(tsd) || pc_ischasewalk(tsd)))
+		// Corrected MVP behavior.  [Bison]
+		if(race != 4 && race != 6 && !(mode & 0x20) && (pc_ishiding(tsd) || pc_iscloaking(tsd) || pc_ischasewalk(tsd) || tsd->state.gangsterparadise || tsd->sc_data[SC_BASILICA].timer != -1))
 			unlock_target = 1;
 	}
 
