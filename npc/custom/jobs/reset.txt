@@ -1,40 +1,70 @@
-//Reset NPC for Athena by Script&DB Team
-prontera.gat,150,193,4	script	Reset Girl	124,{
-	mes "[Reset Girl]";
-	mes "I am a Reset Girl.";
-	mes "Reset Stats: 5,000z";
-	mes "Reset Skills: 5,000z";
-	mes "Reset Both: 9,000z";
+//===== Freya Script =========================================
+//= Reset Girl Script
+//===== By: ==================================================
+//= Athena Script and DB Team
+//= Tsuyuki
+//===== Current Version: =====================================
+//= 1.1
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
+//= Resets Stats, or Skills, or both for a small fee
+//===== Additional Comments: =================================
+// 1.0 Athena Script and DB Team
+// 1.1 Extra: Modifications by Tsuyuki
+//============================================================
+
+
+prontera.gat,150,193,4	script	Reset Girl	895,{
+
+	mes "[Rieta]";
+	mes "Hi, I'm Freya's young, beautiful and";
+	mes "talented Reset Girl! What would";
+	mes "you like me to do?";
 	next;
-	mes "Please select the service you want:";
-	menu "^FF3355Reset Skills",L0,"Reset Stats",L1,"Reset Both^000000",L2,"Quit",LEnd;
+	mes "[Rieta]";
+	mes "Reset Skills: 50000z";
+	mes "Reset Stats: 50000z";
+	mes "Reset Both: 75000z";
+	next;
+	menu "^FF3355Reset Skills",L_Res1,"Reset Stats",L_Res2,"Reset Both^000000",L_Res3,"Quit",L_End;
 
-	L0:
-		mes "[Reset Girl]";
-		if (Zeny < 5000) goto NeedZenys;
-		mes "Alright, here we go now.. Remember, changes won't take effect until you log back on!";
-		set Zeny,zeny-5000;
+	L_Res1:
+		if (Zeny < 50000) goto L_NeedZeny;
+		mes "[Rieta]";
+		mes "Alright, here we go.. your stats have been skills have been reset!";
+		set Zeny,zeny-50000;
 		ResetSkill;
-		close;
-	L1:
-		mes "[Reset Girl]";
-		if (Zeny < 5000) goto NeedZenys;
-		mes "Alright, here we go now.. Remember, changes won't take effect until you log back on!";
-		set Zeny,zeny-5000;
-		ResetStatus;
-		close;
-	L2:
-		mes "[Reset Girl]";
-		if (Zeny < 9000) goto NeedZenys;
-		mes "Alright, here we go now.. Remember, changes won't take effect until you log back on!";
-		set Zeny,zeny-9000;
-		ResetSkill;
-		ResetStatus;
+		emotion 15; // /thx
 		close;
 
-		NeedZenys:
-			mes "Sorry, you don't have enough Zeny.";
-			close;
-	LEnd:
+	L_Res2:
+		if (Zeny < 50000) goto L_NeedZeny;
+		mes "[Rieta]";
+		mes "Alright, here we go.. your stats have been reset!";
+		set Zeny,zeny-50000;
+		ResetStatus;
+		emotion 15; // /thx
+		close;
+
+	L_Res3:
+		if (Zeny < 75000) goto L_NeedZeny;
+		mes "[Rieta]";
+		mes "Alright, here we go.. your stats and skills have been reset!";
+		set Zeny,zeny-75000;
+		ResetSkill;
+		ResetStatus;
+		emotion 15; // /thx
+		close;
+
+	L_NeedZeny:
+		mes "[Rieta]";
+		mes "I'm sorry, but you don't have enough Zeny.";
+		emotion 20; // /hmm
+		close;
+
+	L_End:
+		mes "[Rieta]";
+		mes "Please come again!";
 		close;
 }
