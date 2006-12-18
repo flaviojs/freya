@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+12/18/06
+	* Fixed: Geographer AI mode that was causing them to bug. [Bison]
+
 12/17/06
 	* Fixed: SC_FUSION code [Tsuyuki/Harbin]
 	* Fixed: Refixed Awakening Potions job restrictions [Tsuyuki]
