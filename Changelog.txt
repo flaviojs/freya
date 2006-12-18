@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/17/06
+	* Fixed: SC_FUSION code [Tsuyuki/Harbin]
 	* Fixed: Refixed Awakening Potions job restrictions [Tsuyuki]
 	* Changed: Commented SC_Fusion code in battle.c as it caused a server crash (couldn't figure out why) [Tsuyuki]
 	* Updated: Massive updates/fixes to the item database [Tsuyuki]
