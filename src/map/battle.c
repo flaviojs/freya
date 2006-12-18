@@ -1701,8 +1701,9 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 		}
 	}
 
-	if (sc_data[SC_FUSION].timer != -1)
-		flag.idef = flag.idef2 = flag.hit = 1;
+// This code somehow caused a crash bug.. don't ask me how (Fix me) [Tsuyuki]
+/*	if (sc_data && sc_data[SC_FUSION].timer != -1)
+		flag.idef = flag.idef2 = flag.hit = 1;*/
 
 	// Crit calculation after skill mods
 	if (!flag.cri && cri) {
@@ -1714,7 +1715,7 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 	if (flag.cri)	{
 		wd.type = 0x0a; // the type of a critical attack (used to display the damage as a critical, client side)
 		flag.idef = flag.idef2 = flag.hit = 1; // Critical attacks ignore armor def, vit defense, and always hit
-		
+
 		if (skill_num && !flag.hit)
 			switch(skill_num)
 			{
