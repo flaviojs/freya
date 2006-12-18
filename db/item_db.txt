@@ -159,7 +159,7 @@
 643,Pet_Incubator,Pet Incubator,2,3000,1500,30,,,,,1071636479,2,,,,,{ bpet; },{}
 644,Gift_Box,Gift Box,2,2,1,200,,,,,1071636479,2,,,,,{ getitem -4,1; },{}
 645,Concentration_Potion,Concentration Potion,2,800,400,100,,,,,1071636479,2,,,,,{ sc_start SC_SpeedPot0,1800000,0; },{}
-656,Awakening_Potion,Awakening Potion,2,1500,750,150,,,,,17171996399,2,,,40,,{ sc_end SC_Sleep; sc_start SC_SpeedPot1,1800000,0; },{}
+656,Awakening_Potion,Awakening Potion,2,1500,750,150,,,,,1070063343,2,,,40,,{ sc_end SC_Sleep; sc_start SC_SpeedPot1,1800000,0; },{}
 657,Berserk_Potion,Berserk Potion,2,3000,1500,200,,,,,260491191,2,,,85,,{ sc_start SC_SpeedPot2,1800000,0; },{}
 658,Tribal_Solidarity,Tribal Solidarity,2,1000,500,500,,,,,1071636479,2,,,,,{ guildgetexp rand(600000,1200000); },{}
 659,Her_Heart,Her Heart,2,500,250,50,,,,,1071636479,2,,,,,{ pet 1188; },{}
