@@ -2601,8 +2601,10 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	switch(skillid)
 	{
 	/* 武器攻撃系スキル */
-	case SM_BASH:			/* バッシュ */
 	case MC_MAMMONITE:		/* メマーナイト */
+		if (sd->inventory_data[sd->equip_index[9]] && sd->inventory_data[sd->equip_index[9]]->nameid == 1364) //Mammonite with Great Axe
+			skill_blown(src,bl,5);
+	case SM_BASH:			/* バッシュ */	
 	case AC_DOUBLE:			/* ダブルストレイフィング */
 	case AS_SONICBLOW:		/* ソニックブロー */
 	case KN_PIERCE:			/* ピアース */
@@ -8005,7 +8007,7 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 	switch(skill) {
 	case MC_MAMMONITE:
 		if(pc_checkskill(sd, BS_UNFAIRLYTRICK) > 0)
-			zeny -= zeny * 10 / 100;
+			zeny -= zeny * 10 / 100;		
 		break;
 	case SA_CASTCANCEL:
 		if (sd->skilltimer == -1) {
