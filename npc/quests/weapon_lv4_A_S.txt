@@ -509,7 +509,7 @@ LV4_HACK:
 }
 
 //---------------------------------------------------------------
-// Hibilaithan, creates Mailbreaker, Swordbreaker and Slaughter
+// Hibilaithan, creates Mailbreaker, Swordbreaker and Great Axe
 //---------------------------------------------------------------
 
 umbala.gat,163,257,3	script	Hibilaithan	785,{
@@ -922,7 +922,7 @@ LV4_12:
 
 	if (lv4_weapon == 12) goto M_Mailbreaker;
 	if (lv4_weapon == 13) goto M_Swordbreaker;
-	if (lv4_weapon == 14) goto M_Slaughter;
+	if (lv4_weapon == 14) goto M_Great_Axe;
 	end;
 
 		M_Mailbreaker:
@@ -935,9 +935,9 @@ LV4_12:
 			getitem 1224, 1; // 1224,Sword_Breaker
 			goto M_End;
 
-		M_Slaughter:
-			mes "it is a Slaughter!";
-			getitem 1367, 1; // 1367,Slaughter
+		M_Great_Axe:
+			mes "it is a Great Axe!";
+			getitem 1364 ,1; // 1364,Great_Axe
 			goto M_End;
 
 	M_End:
@@ -1755,7 +1755,7 @@ LV4_50:
 }
 
 //--------------------------------------------------
-// Kayron, creates Longinus' Spear, Guillotine, Great Axe and Brionac
+// Kayron, creates Longinus' Spear, Guillotine, Slaughter and Brionac
 //--------------------------------------------------
 
 niflheim.gat,240,193,3	script	Kayron	794, {
@@ -2136,8 +2136,8 @@ LV4_30:
 	end;
 
 		M_Set1:
-			if(lv4_weapon == 29) mes "Great Axe! Weee~ I made it!";
-			if(lv4_weapon == 29) getitem 1364 ,1; // 1364,Great_Axe
+			if(lv4_weapon == 29) mes "Slughter! Weee~ I made it!";
+			if(lv4_weapon == 29) getitem 1367, 1; // 1367,Slaughter
 			if(lv4_weapon == 30) mes "Longinus's Spear! Weee~ I made it!";
 			if(lv4_weapon == 30) getitem 1469, 1; // 1469,Longinus's_Spear
 			goto M_End2;

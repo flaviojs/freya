@@ -4121,14 +4121,18 @@ int mobskill_use(struct mob_data *md,unsigned int tick,int event)
 		// ó‘Ô”»’è
 		if( ms[i].state>=0 && ms[i].state!=md->state.skillstate )
 			continue;
-
-		// ğŒ”»’è
-		flag=(event==ms[i].cond1);
-		if(!flag){
-			switch(ms[i].cond1){
-			case MSC_ALWAYS:
-				flag=1; break;
-			case MSC_MYHPLTMAXRATE:		// HP< maxhp%
+			
+		if(event == ms[i].cond1) 
+		{
+			flag = 1;
+		} else if(event == -1) {
+			switch(ms[i].cond1)
+			{
+			case MSC_ALWAYS:			/* use skill regardless of situation */
+			case MSC_SPAWN:				/* use skill regardless of situation */
+				flag = 1;
+				break;
+			case MSC_MYHPLTMAXRATE:		/* use skill if hp is low enough */
 				{
 					int max_hp = status_get_max_hp(&md->bl);	
 					flag = (md->hp < max_hp * c2 / 100); break;
