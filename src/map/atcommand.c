@@ -3759,6 +3759,7 @@ ATCOMMAND_FUNC(jobchange) {
 	const struct { char name[20]; int id; } jobs[] = {
 		{ "novice",                    0 },
 		{ "swordsman",                 1 },
+		{ "swordman",                  1 },
 		{ "mage",                      2 },
 		{ "archer",                    3 },
 		{ "acolyte",                   4 },
@@ -3774,7 +3775,11 @@ ATCOMMAND_FUNC(jobchange) {
 		{ "peco knight",              13 },
 		{ "peco-knight",              13 },
 		{ "peco_knight",              13 },
+		{ "knight peco",              13 },
+		{ "knight-peco",              13 },
+		{ "knight_peco",              13 },
 		{ "crusader",                 14 },
+		{ "defender",                 14 },
 		{ "monk",                     15 },
 		{ "sage",                     16 },
 		{ "rogue",                    17 },
@@ -3784,11 +3789,15 @@ ATCOMMAND_FUNC(jobchange) {
 		{ "peco crusader",            21 },
 		{ "peco-crusader",            21 },
 		{ "peco_crusader",            21 },
+		{ "crusader peco",            21 },
+		{ "crusader-peco",            21 },
+		{ "crusader_peco",            21 },
 		{ "super novice",             23 },
 		{ "super-novice",             23 },
 		{ "super_novice",             23 },
 		{ "supernovice",              23 },
 		{ "gunslinger",               24 },
+		{ "gunner",                   24 },
 		{ "ninja",                    25 },
 		{ "xmas",                     26 },
 		{ "santa",                    26 },
@@ -3800,6 +3809,10 @@ ATCOMMAND_FUNC(jobchange) {
 		{ "swordsman_high",         4002 },
 		{ "high swordsman",         4002 },
 		{ "high_swordsman",         4002 },
+		{ "swordman high",          4002 },
+		{ "swordman_high",          4002 },
+		{ "high swordman",          4002 },
+		{ "high_swordman",          4002 },
 		{ "mage high",              4003 },
 		{ "mage_high",              4003 },
 		{ "high mage",              4003 },
@@ -3829,17 +3842,29 @@ ATCOMMAND_FUNC(jobchange) {
 		{ "high wizard",            4010 },
 		{ "high_wizard",            4010 },
 		{ "whitesmith",             4011 },
+		{ "white smith",            4011 },
+		{ "white_smith",            4011 },
+		{ "white-smith",            4011 },
 		{ "mastersmith",            4011 },
+		{ "master smith",           4011 },
+		{ "master_smith",           4011 },
+		{ "master-smith",           4011 },
 		{ "sniper",                 4012 },
 		{ "assassin cross",         4013 },
+		{ "assassin_cross",         4013 },
+		{ "assassin-cross",         4013 },
 		{ "peco lord knight",       4014 },
+		{ "peco-lord-knight",       4014 },
+		{ "peco_lord_knight",       4014 },
+		{ "lord knight peco",       4014 },
+		{ "lord-knight-peco",       4014 },
+		{ "lord_knight_peco",       4014 },
 		{ "paladin",                4015 },
 		{ "champion",               4016 },
 		{ "scholar",                4017 },
 		{ "professor",              4017 },
 		{ "stalker",                4018 },
 		{ "biochemist",             4019 },
-		{ "bio-chemist",            4019 },
 		{ "creator",                4019 },
 		{ "clown",                  4020 },
 		{ "minstrel",               4020 },
@@ -3847,36 +3872,71 @@ ATCOMMAND_FUNC(jobchange) {
 		{ "peco paladin",           4022 },
 		{ "peco-paladin",           4022 },
 		{ "peco_paladin",           4022 },
+		{ "paladin peco",           4022 },
+		{ "paladin-peco",           4022 },
+		{ "paladin_peco",           4022 },
 		{ "baby novice",            4023 },
+		{ "baby_novice",            4023 },
 		{ "baby swordsman",         4024 },
+		{ "baby_swordsman",         4024 },
+		{ "baby swordman",          4024 },
+		{ "baby_swordman",          4024 },
 		{ "baby mage",              4025 },
+		{ "baby_mage",              4025 },
 		{ "baby archer",            4026 },
+		{ "baby_archer",            4026 },
 		{ "baby acolyte",           4027 },
+		{ "baby_acolyte",           4027 },
 		{ "baby merchant",          4028 },
+		{ "baby_merchant",          4028 },
 		{ "baby thief",             4029 },
+		{ "baby_thief",             4029 },
 		{ "baby knight",            4030 },
+		{ "baby_knight",            4030 },
 		{ "baby priest",            4031 },
+		{ "baby_priest",            4031 },
 		{ "baby priestess",         4031 },
+		{ "baby_priestess",         4031 },
 		{ "baby wizard",            4032 },
+		{ "baby_wizard",            4032 },
 		{ "baby blacksmith",        4033 },
+		{ "baby_blacksmith",        4033 },
 		{ "baby hunter",            4034 },
+		{ "baby_hunter",            4034 },
 		{ "baby assassin",          4035 },
+		{ "baby_assassin",          4035 },
 		{ "baby peco knight",       4036 },
 		{ "baby peco-knight",       4036 },
 		{ "baby peco_knight",       4036 },
+		{ "baby_peco_knight",       4036 },
 		{ "baby crusader",          4037 },
+		{ "baby_crusader",          4037 },
+		{ "baby defender",          4037 },
+		{ "baby_defender",          4037 },
 		{ "baby monk",              4038 },
+		{ "baby_monk",              4038 },
 		{ "baby sage",              4039 },
+		{ "baby_sage",              4039 },
 		{ "baby rogue",             4040 },
+		{ "baby_rogue",             4040 },
 		{ "baby alchemist",         4041 },
+		{ "baby_alchemist",         4041 },
 		{ "baby bard",              4042 },
+		{ "baby_bard",              4042 },
 		{ "baby dancer",            4043 },
+		{ "baby_dancer",            4043 },
 		{ "baby peco crusader",     4044 },
 		{ "baby peco-crusader",     4044 },
 		{ "baby peco_crusader",     4044 },
+		{ "baby_peco_crusader",     4044 },
 		{ "super baby",             4045 },
 		{ "super-baby",             4045 },
 		{ "super_baby",             4045 },
+		{ "baby supernovice",       4045 },
+		{ "baby super-novice",      4045 },
+		{ "baby super novice",      4045 },
+		{ "baby_supernovice",       4045 },
+		{ "baby_super_novice",      4045 },
 		{ "taekwon",                4046 },
 		{ "taekwon kid",            4046 },
 		{ "taekwon_kid",            4046 },
@@ -3890,16 +3950,12 @@ ATCOMMAND_FUNC(jobchange) {
 		{ "star_knight",            4047 },
 		{ "taekwon master",         4047 },
 		{ "taekwon_master",         4047 },
-		{ "fly star gladiator",     4048 },
-		{ "fly_star_gladiator",     4048 },
-		{ "fly star knight",        4048 },
-		{ "fly_star_knight",        4048 },
-		{ "fly taekwon master",     4048 },
-		{ "fly_taekwon_master",     4048 },
+		{ "star gladiator2",        4048 },
+		{ "star_gladiator2",        4048 },
+		{ "taekwon master2",        4048 },
+		{ "taekwon_master2",        4048 },
 		{ "soul linker",            4049 },
 		{ "soul_linker",            4049 },
-		{ "fly soul linker",        4049 },
-		{ "fly_soul_linker",        4049 },
 		{ "bon gun",                4050 },
 		{ "bon_gun",                4050 },
 		{ "bongun",                 4050 },
@@ -3928,11 +3984,11 @@ ATCOMMAND_FUNC(jobchange) {
 	if ((i == (int)(sizeof(jobs) / sizeof(jobs[0])))) {
 			send_usage(sd, "Please, enter a valid job ID (usage: %s <job ID|\"job name\"> [upper]).", original_command);
 			send_usage(sd, "   0 Novice            7 Knight           14 Crusader         21 Peco Crusader");
-			send_usage(sd, "   1 Swordman          8 Priest           15 Monk             22 Formal");
+			send_usage(sd, "   1 Swordman          8 Priest           15 Monk             22 N/A");
 			send_usage(sd, "   2 Mage              9 Wizard           16 Sage             23 Super Novice");
 			send_usage(sd, "   3 Archer           10 Blacksmith       17 Rogue            24 Gunslinger");
 			send_usage(sd, "   4 Acolyte          11 Hunter           18 Alchemist        25 Ninja");
-			send_usage(sd, "   5 Merchant         12 Assassin         19 Bard             26 Xmas");
+			send_usage(sd, "   5 Merchant         12 Assassin         19 Bard             26 N/A");
 			send_usage(sd, "   6 Thief            13 Peco Knight      20 Dancer");
 			send_usage(sd, "4001 Novice High    4008 Lord Knight      4015 Paladin        4022 Peco Paladin");
 			send_usage(sd, "4002 Swordman High  4009 High Priest      4016 Champion");
@@ -3945,7 +4001,7 @@ ATCOMMAND_FUNC(jobchange) {
 			send_usage(sd, "4024 Baby Swordsman 4031 Baby Priest      4038 Baby Monk      4045 Super Baby");
 			send_usage(sd, "4025 Baby Mage      4032 Baby Wizard      4039 Baby Sage      4046 Taekwon Kid");
 			send_usage(sd, "4026 Baby Archer    4033 Baby Blacksmith  4040 Baby Rogue     4047 Taekwon Master");
-			send_usage(sd, "4027 Baby Acolyte   4034 Baby Hunter      4041 Baby Alchemist 4048 Flying Taekwon Master");
+			send_usage(sd, "4027 Baby Acolyte   4034 Baby Hunter      4041 Baby Alchemist 4048 N/A");
 			send_usage(sd, "4028 Baby Merchant  4035 Baby Assassin    4042 Baby Bard      4049 Soul Linker");
 			send_usage(sd, "4029 Baby Thief     4036 Baby Peco-Knight 4043 Baby Dancer");
 			send_usage(sd, "[upper]: -1 (default) to automatically determine the 'level', 0 to force normal job, 1 to force high job.");
@@ -5576,18 +5632,16 @@ ATCOMMAND_FUNC(go) {
 	             { "niflheim.gat",     21, 153 },	//	13=Niflheim
 	             { "louyang.gat",     217,  40 },	//	14=Louyang
 	             { "new_1-1.gat",      53, 111 },	//	15=Novice Grounds (Starting Point)
-	             { "sec_pri.gat",      23,  61 },	//	16=Prison
-	             { "valkyrie.gat",     49,  48 },	//	17=Valkyrie
-	             { "gef_fild10.gat",   66, 335 },	//	18=Orc dungeon
-	             { "pay_arche.gat",    56, 132 },	//	19=Archer's Village
-	             { "glast_01.gat",    200, 129 },	//	20=Glast Heim
-	             { "jawaii.gat",      249, 127 },	//	21=Jawaii
-	             { "ayothaya.gat",    151, 117 },	//	22=Ayothaya
-	             { "einbroch.gat",     64, 200 },	//	23=Einbroch
-	             { "lighthalzen.gat", 159,  93 },	//	24=Lighthalzen
-               { "hugel.gat",        96, 145 },	//	25=Hugel
-               { "rachel.gat",      130, 116 },	//	26=Rachel
-               { "veins.gat",				181,	84 }, //	27=Beins
+	             { "sec_pri.gat",      23,  61 },	//	16=Jail
+	             { "valkyrie.gat",     49,  48 },	//	17=Valkyrie Realm
+	             { "pay_arche.gat",    56, 132 },	//	18=Archer's Village
+	             { "jawaii.gat",      249, 127 },	//	19=Jawaii
+	             { "ayothaya.gat",    151, 117 },	//	20=Ayothaya
+	             { "einbroch.gat",     64, 200 },	//	21=Einbroch
+	             { "lighthalzen.gat", 159,  93 },	//	22=Lighthalzen
+               { "hugel.gat",        96, 145 },	//	23=Hugel
+               { "rachel.gat",      130, 116 },	//	24=Rachel
+               { "veins.gat",				181,	84 }, //	25=Beins
 	};
 
 	if (map[sd->bl.m].flag.nogo && battle_config.any_warp_GM_min_level > sd->GM_level) {
@@ -5603,17 +5657,16 @@ ATCOMMAND_FUNC(go) {
 	if (!message || !*message || sscanf(message, "%s", atcmd_mapname) < 1 || town < -3 || town >= (int)(sizeof(data) / sizeof(data[0]))) {
 		send_usage(sd, msg_txt(38)); // Invalid location number or name.
 		send_usage(sd, msg_txt(82)); // Please, use one of this numbers/names:
-		send_usage(sd, "-3=(Memo Point 2)   7=Lutie           17=Valkyrie");
-		send_usage(sd, "-2=(Memo Point 1)   8=Comodo          18=Orc Dungeon");
-		send_usage(sd, "-1=(Memo Point 0)   9=Yuno            19=Archer's Village");
-		send_usage(sd, " 0=Prontera        10=Amatsu          20=Glast Heim");
-		send_usage(sd, " 1=Morroc          11=Kunlun      	  21=Jawaii");
-		send_usage(sd, " 2=Geffen          12=Umbala          22=Ayothaya");
-		send_usage(sd, " 3=Payon           13=Niflheim        23=Einbroch");
-		send_usage(sd, " 4=Alberta         14=Louyang      	  24=Lighthalzen");
-		send_usage(sd, " 5=Izlude          15=Start Point     25=Hugel");
-		send_usage(sd, " 6=Al de Baran     16=Jail          	26=Rachel");
-		send_usage(sd, " 27=Beins");
+		send_usage(sd, "-3=(Memo Point 2)   7=Lutie           17=Valkyrie Realm");
+		send_usage(sd, "-2=(Memo Point 1)   8=Comodo          18=Archer's Village");
+		send_usage(sd, "-1=(Memo Point 0)   9=Yuno            19=Jawaii");
+		send_usage(sd, " 0=Prontera        10=Amatsu          20=Ayothaya");
+		send_usage(sd, " 1=Morroc          11=Kunlun      	  21=Einbroch");
+		send_usage(sd, " 2=Geffen          12=Umbala          22=Lighthalzen");
+		send_usage(sd, " 3=Payon           13=Niflheim        23=Hugel");
+		send_usage(sd, " 4=Alberta         14=Louyang      	  24=Rachel");
+		send_usage(sd, " 5=Izlude          15=Start Point     25=Beins");
+		send_usage(sd, " 6=Al de Baran     16=Jail");
 		return -1;
 	} else {
 		// get possible name of the city and add .gat if not in the name
@@ -5697,17 +5750,16 @@ ATCOMMAND_FUNC(go) {
 		else if (sscanf(message, "%d", &i) < 1) { /* not a number */
 			send_usage(sd, msg_txt(38)); // Invalid location number or name.
 			send_usage(sd, msg_txt(82)); // Please, use one of this numbers/names:
-			send_usage(sd, "-3=(Memo Point 2)   7=Lutie        17=Valkyrie");
-			send_usage(sd, "-2=(Memo Point 1)   8=Comodo       18=Orc Dungeon");
-			send_usage(sd, "-1=(Memo Point 0)   9=Yuno         19=Archer's Village");
-			send_usage(sd, " 0=Prontera        10=Amatsu       20=Glast Heim");
-			send_usage(sd, " 1=Morroc          11=Gon Ryun     21=Jawaii");
-			send_usage(sd, " 2=Geffen          12=Umbala       22=Ayothaya");
-			send_usage(sd, " 3=Payon           13=Niflheim     23=Einbroch");
-			send_usage(sd, " 4=Alberta         14=Louyang  	   24=Lighthalzen");
-			send_usage(sd, " 5=Izlude          15=Start Point  25=Hugel");
-			send_usage(sd, " 6=Al de Baran     16=Jail    	   26=Rachel");
-			send_usage(sd, " 27=Beins");
+			send_usage(sd, "-3=(Memo Point 2)   7=Lutie           17=Valkyrie Realm");
+			send_usage(sd, "-2=(Memo Point 1)   8=Comodo          18=Archer's Village");
+			send_usage(sd, "-1=(Memo Point 0)   9=Yuno            19=Jawaii");
+			send_usage(sd, " 0=Prontera        10=Amatsu          20=Ayothaya");
+			send_usage(sd, " 1=Morroc          11=Kunlun      	  21=Einbroch");
+			send_usage(sd, " 2=Geffen          12=Umbala          22=Lighthalzen");
+			send_usage(sd, " 3=Payon           13=Niflheim        23=Hugel");
+			send_usage(sd, " 4=Alberta         14=Louyang      	  24=Rachel");
+			send_usage(sd, " 5=Izlude          15=Start Point     25=Beins");
+			send_usage(sd, " 6=Al de Baran     16=Jail");
 			return -1;
 		}
 
@@ -7884,6 +7936,7 @@ ATCOMMAND_FUNC(character_job) {
 	const struct { char name[20]; int id; } jobs[] = {
 		{ "novice",                    0 },
 		{ "swordsman",                 1 },
+		{ "swordman",                  1 },
 		{ "mage",                      2 },
 		{ "archer",                    3 },
 		{ "acolyte",                   4 },
@@ -7899,7 +7952,11 @@ ATCOMMAND_FUNC(character_job) {
 		{ "peco knight",              13 },
 		{ "peco-knight",              13 },
 		{ "peco_knight",              13 },
+		{ "knight peco",              13 },
+		{ "knight-peco",              13 },
+		{ "knight_peco",              13 },
 		{ "crusader",                 14 },
+		{ "defender",                 14 },
 		{ "monk",                     15 },
 		{ "sage",                     16 },
 		{ "rogue",                    17 },
@@ -7909,11 +7966,15 @@ ATCOMMAND_FUNC(character_job) {
 		{ "peco crusader",            21 },
 		{ "peco-crusader",            21 },
 		{ "peco_crusader",            21 },
+		{ "crusader peco",            21 },
+		{ "crusader-peco",            21 },
+		{ "crusader_peco",            21 },
 		{ "super novice",             23 },
 		{ "super-novice",             23 },
 		{ "super_novice",             23 },
 		{ "supernovice",              23 },
 		{ "gunslinger",               24 },
+		{ "gunner",                   24 },
 		{ "ninja",                    25 },
 		{ "xmas",                     26 },
 		{ "santa",                    26 },
@@ -7925,6 +7986,10 @@ ATCOMMAND_FUNC(character_job) {
 		{ "swordsman_high",         4002 },
 		{ "high swordsman",         4002 },
 		{ "high_swordsman",         4002 },
+		{ "swordman high",          4002 },
+		{ "swordman_high",          4002 },
+		{ "high swordman",          4002 },
+		{ "high_swordman",          4002 },
 		{ "mage high",              4003 },
 		{ "mage_high",              4003 },
 		{ "high mage",              4003 },
@@ -7954,17 +8019,29 @@ ATCOMMAND_FUNC(character_job) {
 		{ "high wizard",            4010 },
 		{ "high_wizard",            4010 },
 		{ "whitesmith",             4011 },
+		{ "white smith",            4011 },
+		{ "white_smith",            4011 },
+		{ "white-smith",            4011 },
 		{ "mastersmith",            4011 },
+		{ "master smith",           4011 },
+		{ "master_smith",           4011 },
+		{ "master-smith",           4011 },
 		{ "sniper",                 4012 },
 		{ "assassin cross",         4013 },
+		{ "assassin_cross",         4013 },
+		{ "assassin-cross",         4013 },
 		{ "peco lord knight",       4014 },
+		{ "peco-lord-knight",       4014 },
+		{ "peco_lord_knight",       4014 },
+		{ "lord knight peco",       4014 },
+		{ "lord-knight-peco",       4014 },
+		{ "lord_knight_peco",       4014 },
 		{ "paladin",                4015 },
 		{ "champion",               4016 },
 		{ "scholar",                4017 },
 		{ "professor",              4017 },
 		{ "stalker",                4018 },
 		{ "biochemist",             4019 },
-		{ "bio-chemist",            4019 },
 		{ "creator",                4019 },
 		{ "clown",                  4020 },
 		{ "minstrel",               4020 },
@@ -7972,36 +8049,71 @@ ATCOMMAND_FUNC(character_job) {
 		{ "peco paladin",           4022 },
 		{ "peco-paladin",           4022 },
 		{ "peco_paladin",           4022 },
+		{ "paladin peco",           4022 },
+		{ "paladin-peco",           4022 },
+		{ "paladin_peco",           4022 },
 		{ "baby novice",            4023 },
+		{ "baby_novice",            4023 },
 		{ "baby swordsman",         4024 },
+		{ "baby_swordsman",         4024 },
+		{ "baby swordman",          4024 },
+		{ "baby_swordman",          4024 },
 		{ "baby mage",              4025 },
+		{ "baby_mage",              4025 },
 		{ "baby archer",            4026 },
+		{ "baby_archer",            4026 },
 		{ "baby acolyte",           4027 },
+		{ "baby_acolyte",           4027 },
 		{ "baby merchant",          4028 },
+		{ "baby_merchant",          4028 },
 		{ "baby thief",             4029 },
+		{ "baby_thief",             4029 },
 		{ "baby knight",            4030 },
+		{ "baby_knight",            4030 },
 		{ "baby priest",            4031 },
+		{ "baby_priest",            4031 },
 		{ "baby priestess",         4031 },
+		{ "baby_priestess",         4031 },
 		{ "baby wizard",            4032 },
+		{ "baby_wizard",            4032 },
 		{ "baby blacksmith",        4033 },
+		{ "baby_blacksmith",        4033 },
 		{ "baby hunter",            4034 },
+		{ "baby_hunter",            4034 },
 		{ "baby assassin",          4035 },
+		{ "baby_assassin",          4035 },
 		{ "baby peco knight",       4036 },
 		{ "baby peco-knight",       4036 },
 		{ "baby peco_knight",       4036 },
+		{ "baby_peco_knight",       4036 },
 		{ "baby crusader",          4037 },
+		{ "baby_crusader",          4037 },
+		{ "baby defender",          4037 },
+		{ "baby_defender",          4037 },
 		{ "baby monk",              4038 },
+		{ "baby_monk",              4038 },
 		{ "baby sage",              4039 },
+		{ "baby_sage",              4039 },
 		{ "baby rogue",             4040 },
+		{ "baby_rogue",             4040 },
 		{ "baby alchemist",         4041 },
+		{ "baby_alchemist",         4041 },
 		{ "baby bard",              4042 },
+		{ "baby_bard",              4042 },
 		{ "baby dancer",            4043 },
+		{ "baby_dancer",            4043 },
 		{ "baby peco crusader",     4044 },
 		{ "baby peco-crusader",     4044 },
 		{ "baby peco_crusader",     4044 },
+		{ "baby_peco_crusader",     4044 },
 		{ "super baby",             4045 },
 		{ "super-baby",             4045 },
 		{ "super_baby",             4045 },
+		{ "baby supernovice",       4045 },
+		{ "baby super-novice",      4045 },
+		{ "baby super novice",      4045 },
+		{ "baby_supernovice",       4045 },
+		{ "baby_super_novice",      4045 },
 		{ "taekwon",                4046 },
 		{ "taekwon kid",            4046 },
 		{ "taekwon_kid",            4046 },
@@ -8015,12 +8127,10 @@ ATCOMMAND_FUNC(character_job) {
 		{ "star_knight",            4047 },
 		{ "taekwon master",         4047 },
 		{ "taekwon_master",         4047 },
-		{ "fly star gladiator",     4048 },
-		{ "fly_star_gladiator",     4048 },
-		{ "fly star knight",        4048 },
-		{ "fly_star_knight",        4048 },
-		{ "fly taekwon master",     4048 },
-		{ "fly_taekwon_master",     4048 },
+		{ "star gladiator2",        4048 },
+		{ "star_gladiator2",        4048 },
+		{ "taekwon master2",        4048 },
+		{ "taekwon_master2",        4048 },
 		{ "soul linker",            4049 },
 		{ "soul_linker",            4049 },
 		{ "bon gun",                4050 },
@@ -8065,11 +8175,11 @@ ATCOMMAND_FUNC(character_job) {
 	if ((i == (int)(sizeof(jobs) / sizeof(jobs[0])))) {
 		send_usage(sd, "Please, enter a valid job ID (usage: %s <job ID|\"job name\"> [upper]).", original_command);
 		send_usage(sd, "   0 Novice            7 Knight           14 Crusader         21 Peco Crusader");
-		send_usage(sd, "   1 Swordman          8 Priest           15 Monk             22 Formal");
+		send_usage(sd, "   1 Swordman          8 Priest           15 Monk             22 N/A");
 		send_usage(sd, "   2 Mage              9 Wizard           16 Sage             23 Super Novice");
 		send_usage(sd, "   3 Archer           10 Blacksmith       17 Rogue            24 Gunslinger");
 		send_usage(sd, "   4 Acolyte          11 Hunter           18 Alchemist        25 Ninja");
-		send_usage(sd, "   5 Merchant         12 Assassin         19 Bard             26 Xmas");
+		send_usage(sd, "   5 Merchant         12 Assassin         19 Bard             26 N/A");
 		send_usage(sd, "   6 Thief            13 Peco Knight      20 Dancer");
 		send_usage(sd, "4001 Novice High    4008 Lord Knight      4015 Paladin        4022 Peco Paladin");
 		send_usage(sd, "4002 Swordman High  4009 High Priest      4016 Champion");
@@ -8082,7 +8192,7 @@ ATCOMMAND_FUNC(character_job) {
 		send_usage(sd, "4024 Baby Swordsman 4031 Baby Priest      4038 Baby Monk      4045 Super Baby");
 		send_usage(sd, "4025 Baby Mage      4032 Baby Wizard      4039 Baby Sage      4046 Taekwon Kid");
 		send_usage(sd, "4026 Baby Archer    4033 Baby Blacksmith  4040 Baby Rogue     4047 Taekwon Master");
-		send_usage(sd, "4027 Baby Acolyte   4034 Baby Hunter      4041 Baby Alchemist 4048 Flying Taekwon Master");
+		send_usage(sd, "4027 Baby Acolyte   4034 Baby Hunter      4041 Baby Alchemist 4048 N/A");
 		send_usage(sd, "4028 Baby Merchant  4035 Baby Assassin    4042 Baby Bard      4049 Soul Linker");
 		send_usage(sd, "4029 Baby Thief     4036 Baby Peco-Knight 4043 Baby Dancer");
 		send_usage(sd, "[upper]: -1 (default) to automatically determine the 'level', 0 to force normal job, 1 to force high job.");

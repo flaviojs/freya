@@ -1128,8 +1128,12 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 				skillratio += 50;	// DAMAGE: 150% + 1% every 1% weight
 				s_ele = 0;
 				s_ele_ = 0;
-				if(sd && sd->cart_max_weight > 0 && sd->cart_weight > 0)
+				if(sd && sd->cart_max_weight > 0 && sd->cart_weight > 0) {
+					// Exploit Fix (Can't modify damage more than max cart weight) [Tsuyuki]
+					if(sd->cart_weight > sd->cart_max_weight)
+						sd->cart_weight = sd->cart_max_weight;
 					skillratio += 100 * sd->cart_weight / sd->cart_max_weight;
+				}
 				break;
 			case MC_MAMMONITE:
 				skillratio += 50 * skill_lv;
@@ -1589,9 +1593,12 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 			case WS_CARTTERMINATION:
 				flag.cardfix = 0;
 				// FORMULA: (damage * (cart_weight / (10 * (16 - skill_lv)))) / 100
-				if(sd && sd->cart_weight > 0)
+				if(sd && sd->cart_max_weight > 0 && sd->cart_weight > 0) {
+					// Exploit Fix (Can't modify damage more than max cart weight) [Tsuyuki]
+					if(sd->cart_weight > sd->cart_max_weight)
+						sd->cart_weight = sd->cart_max_weight;
 					skillratio += sd->cart_weight / (10 * (16 - skill_lv)) - 100;
-				else
+				} else
 					skillratio += battle_config.max_cart_weight / (10 * (16 - skill_lv)) - 100;
 				break;
 
