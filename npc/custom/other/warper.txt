@@ -3,7 +3,7 @@
 //===== By: ==================================================
 //= Darkchild
 //===== Current Version: =====================================
-//= 1.5
+//= 1.7
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -17,6 +17,7 @@
 //= 1.4 fixed morroc warp npc overlaying kafra [Aria]
 //= 1.5 Added new city & dungeon warps, & organized script [Tsuyuki]
 //= 1.6 Added Lighthalzen (forgot to add it last time) [Tsuyuki]
+//= 1.7 Added Beins and Thor Volcano [Tsuyuki]
 //============================================================
 
 -	script	Warp NPC::warpra	115,{
@@ -35,6 +36,7 @@
 "Amatsu",wamatsu,
 "Archer's Village",warcher,
 "Ayothaya",wayothaya,
+"Beins",wbeins,
 "Comodo",wcomodo,
 "Einbech",weinbech,
 "Einbroch",weinbroch,
@@ -78,6 +80,7 @@
 "Sphinx",dsphinx,
 "Sunken Ship",dsunken,
 "Thanatos Tower",dthanatos,
+"Thor Volcano",dthor,
 "Turtle Dungeon",dturtle;
 
 //----------------Towns----------------\\
@@ -87,6 +90,7 @@ waldebaran:	warp "aldebaran.gat",	145,	120;	close;
 wamatsu:	warp "amatsu.gat",	197,	86;	close;
 warcher:	warp "pay_arche.gat",	48,	132;	close;
 wayothaya:	warp "ayothaya.gat",	149,	108;	close;
+wbeins:		warp "veins.gat",	181,	84;	close;
 wcomodo:	warp "comodo.gat",	188,	161;	close;
 weinbech:	warp "einbech.gat",	172,	122;	close;
 weinbroch:	warp "einbroch.gat",	232,	188;	close;
@@ -103,7 +107,7 @@ wpayon:		warp "payon.gat",	152,	75;	close;
 wrachel:	warp "rachel.gat",	179,	126;	close;
 wumbala:	warp "umbala.gat",	130,	130;	close;
 wxmas:		warp "xmas.gat",	148,	131;	close;
-wyuno:	warp "yuno.gat",	160,	168;	close;
+wyuno:		warp "yuno.gat",	160,	168;	close;
 
 //----------------Dungeons----------------\\
 
@@ -129,6 +133,7 @@ dpyramids:	warp "moc_ruins.gat",	62,	162;	close;
 dsphinx:	warp "moc_fild19.gat",	107,	100;	close;
 dsunken:	warp "alb2trea.gat",	75,	98;	close;
 dthanatos:	warp "hu_fild01.gat",	139,	152;	close;
+dthor:		warp "ve_fild03.gat",	168,	234;	close;
 dturtle:	warp "tur_dun01.gat",	149,	238;	close;
 }
 
@@ -178,5 +183,7 @@ pay_arche.gat,39,135,4	duplicate(warpra)	Warp NPC	115
 prt_fild01.gat,140,366,4	duplicate(warpra)	Warp NPC	115
 rachel.gat,184,137,4	duplicate(warpra)	Warp NPC	115
 ra_fild01.gat,229,330,4	duplicate(warpra)	Warp NPC	115
+veins.gat,183,89,4	duplicate(warpra)	Warp NPC	115
+ve_fild03.gat,172,237,4	duplicate(warpra)	Warp NPC	115
 yuno_fild07.gat,216,178,4	duplicate(warpra)	Warp NPC	115
 yuno_fild08.gat,159,193,4	duplicate(warpra)	Warp NPC	115

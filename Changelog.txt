@@ -4,7 +4,13 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
-12/18/06
+12/19/06
+	* Added: New @go option: 27 - Beins [Tsuyuki]
+	* Added: Desert City Beins and Thor Volcano to the Custom warpra.txt [Tsuyuki]
+	* Added: Beins and Thor Volcano warps [Tsuyuki]
+	* Fixed: Mammonite now knocks target 5 cells back when Great Axe is equipped. [Lex]
+
+12/18/06	
 	* Added: New kRO maps: The city of Beins, Beins fields, the Thor Volcano dungeon, and others.. [Tsuyuki]
 	* Fixed: Great Axe and Slaughter exchanged in Grade A and S Weapon Quests. [Lex]
 	* Fixed: mob skill overusage [Harbin]
