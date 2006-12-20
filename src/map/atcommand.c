@@ -5574,19 +5574,20 @@ ATCOMMAND_FUNC(go) {
 	             { "gonryun.gat",     160, 120 },	//	11=Kunlun
 	             { "umbala.gat",       89, 157 },	//	12=Umbala
 	             { "niflheim.gat",     21, 153 },	//	13=Niflheim
-	             { "louyang.gat",     217,  40 },	//	14=Lou Yang
-	             { "new_1-1.gat",      53, 111 },	//	15=Start point
+	             { "louyang.gat",     217,  40 },	//	14=Louyang
+	             { "new_1-1.gat",      53, 111 },	//	15=Novice Grounds (Starting Point)
 	             { "sec_pri.gat",      23,  61 },	//	16=Prison
 	             { "valkyrie.gat",     49,  48 },	//	17=Valkyrie
 	             { "gef_fild10.gat",   66, 335 },	//	18=Orc dungeon
-	             { "pay_arche.gat",    56, 132 },	//	19=village (payon)
+	             { "pay_arche.gat",    56, 132 },	//	19=Archer's Village
 	             { "glast_01.gat",    200, 129 },	//	20=Glast Heim
 	             { "jawaii.gat",      249, 127 },	//	21=Jawaii
 	             { "ayothaya.gat",    151, 117 },	//	22=Ayothaya
 	             { "einbroch.gat",     64, 200 },	//	23=Einbroch
-	             { "lighthalzen.gat", 159,  93 },	//	24=lighthalzen
+	             { "lighthalzen.gat", 159,  93 },	//	24=Lighthalzen
                { "hugel.gat",        96, 145 },	//	25=Hugel
                { "rachel.gat",      130, 116 },	//	26=Rachel
+               { "veins.gat",				181,	84 }, //	27=Beins
 	};
 
 	if (map[sd->bl.m].flag.nogo && battle_config.any_warp_GM_min_level > sd->GM_level) {
@@ -5602,16 +5603,17 @@ ATCOMMAND_FUNC(go) {
 	if (!message || !*message || sscanf(message, "%s", atcmd_mapname) < 1 || town < -3 || town >= (int)(sizeof(data) / sizeof(data[0]))) {
 		send_usage(sd, msg_txt(38)); // Invalid location number or name.
 		send_usage(sd, msg_txt(82)); // Please, use one of this numbers/names:
-		send_usage(sd, "-3=(Memo point 2)   7=Lutie           17=Valkyrie");
-		send_usage(sd, "-2=(Memo point 1)   8=Comodo          18=Orc dungeon");
-		send_usage(sd, "-1=(Memo point 0)   9=Yuno            19=village (payon)");
+		send_usage(sd, "-3=(Memo Point 2)   7=Lutie           17=Valkyrie");
+		send_usage(sd, "-2=(Memo Point 1)   8=Comodo          18=Orc Dungeon");
+		send_usage(sd, "-1=(Memo Point 0)   9=Yuno            19=Archer's Village");
 		send_usage(sd, " 0=Prontera        10=Amatsu          20=Glast Heim");
-		send_usage(sd, " 1=Morroc          11=Gon Ryun        21=Jawaii");
+		send_usage(sd, " 1=Morroc          11=Kunlun      	  21=Jawaii");
 		send_usage(sd, " 2=Geffen          12=Umbala          22=Ayothaya");
 		send_usage(sd, " 3=Payon           13=Niflheim        23=Einbroch");
-		send_usage(sd, " 4=Alberta         14=Lou Yang        24=Lighthalzen");
-		send_usage(sd, " 5=Izlude          15=Start point     25=Hugel");
-		send_usage(sd, " 6=Al de Baran     16=Prison          26=Rachel");
+		send_usage(sd, " 4=Alberta         14=Louyang      	  24=Lighthalzen");
+		send_usage(sd, " 5=Izlude          15=Start Point     25=Hugel");
+		send_usage(sd, " 6=Al de Baran     16=Jail          	26=Rachel");
+		send_usage(sd, " 27=Beins");
 		return -1;
 	} else {
 		// get possible name of the city and add .gat if not in the name
@@ -5690,19 +5692,22 @@ ATCOMMAND_FUNC(go) {
 		else if (strncmp(atcmd_mapname, "rachel.gat", 3) == 0 || // name of the position (3 first characters)
 		           strncmp(atcmd_mapname, "rachael.gat", 3) == 0) // name of the position (3 first characters)
 			town = 26;
+		else if (strncmp(atcmd_mapname, "veins.gat", 3) == 0) // 3 first characters
+			town = 27;
 		else if (sscanf(message, "%d", &i) < 1) { /* not a number */
 			send_usage(sd, msg_txt(38)); // Invalid location number or name.
 			send_usage(sd, msg_txt(82)); // Please, use one of this numbers/names:
-			send_usage(sd, "-3=(Memo point 2)   7=Lutie        17=Valkyrie");
-			send_usage(sd, "-2=(Memo point 1)   8=Comodo       18=Orc dungeon");
-			send_usage(sd, "-1=(Memo point 0)   9=Yuno         19=village (payon)");
+			send_usage(sd, "-3=(Memo Point 2)   7=Lutie        17=Valkyrie");
+			send_usage(sd, "-2=(Memo Point 1)   8=Comodo       18=Orc Dungeon");
+			send_usage(sd, "-1=(Memo Point 0)   9=Yuno         19=Archer's Village");
 			send_usage(sd, " 0=Prontera        10=Amatsu       20=Glast Heim");
 			send_usage(sd, " 1=Morroc          11=Gon Ryun     21=Jawaii");
 			send_usage(sd, " 2=Geffen          12=Umbala       22=Ayothaya");
 			send_usage(sd, " 3=Payon           13=Niflheim     23=Einbroch");
-			send_usage(sd, " 4=Alberta         14=Lou Yang     24=Lighthalzen");
-			send_usage(sd, " 5=Izlude          15=Start point  25=Hugel");
-			send_usage(sd, " 6=Al de Baran     16=Prison         26=Rachel");
+			send_usage(sd, " 4=Alberta         14=Louyang  	   24=Lighthalzen");
+			send_usage(sd, " 5=Izlude          15=Start Point  25=Hugel");
+			send_usage(sd, " 6=Al de Baran     16=Jail    	   26=Rachel");
+			send_usage(sd, " 27=Beins");
 			return -1;
 		}
 
