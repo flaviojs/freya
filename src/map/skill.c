@@ -2601,28 +2601,28 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	switch(skillid)
 	{
 	/* 武器攻撃系スキル */
-	case MC_MAMMONITE:		/* メマーナイト */
-		if (sd->inventory_data[sd->equip_index[9]] && sd->inventory_data[sd->equip_index[9]]->nameid == 1364) //Mammonite with Great Axe
+	case MC_MAMMONITE:
+		if (sd && sd->inventory_data[sd->equip_index[9]] && sd->inventory_data[sd->equip_index[9]]->nameid == 1364) // Mammonite with Great Axe
 			skill_blown(src,bl,5);
-	case SM_BASH:			/* バッシュ */	
-	case AC_DOUBLE:			/* ダブルストレイフィング */
-	case AS_SONICBLOW:		/* ソニックブロー */
-	case KN_PIERCE:			/* ピアース */
-	case KN_SPEARBOOMERANG:	/* スピアブーメラン */
-	case TF_POISON:			/* インベナム */
-	case TF_SPRINKLESAND:	/* 砂まき */
-	case AC_CHARGEARROW:	/* チャージアロー */
-	case KN_SPEARSTAB:		/* スピアスタブ */
-	case RG_RAID:		/* サプライズアタック */
-	case RG_INTIMIDATE:		/* インティミデイト */
-	case BA_MUSICALSTRIKE:	/* ミュージカルストライク */
-	case DC_THROWARROW:		/* 矢撃ち */
-	case BA_DISSONANCE:		/* 不協和音 */
-	case CR_HOLYCROSS:		/* ホーリークロス */
+	case SM_BASH:
+	case AC_DOUBLE:
+	case AS_SONICBLOW:
+	case KN_PIERCE:
+	case KN_SPEARBOOMERANG:
+	case TF_POISON:
+	case TF_SPRINKLESAND:
+	case AC_CHARGEARROW:
+	case KN_SPEARSTAB:
+	case RG_RAID:
+	case RG_INTIMIDATE:
+	case BA_MUSICALSTRIKE:
+	case DC_THROWARROW:
+	case BA_DISSONANCE:
+	case CR_HOLYCROSS:
 	case CR_SHIELDCHARGE:
 	case CR_SHIELDBOOMERANG:
 	case PA_SHIELDCHAIN:
-	case WS_CARTTERMINATION:	// Cart Termination
+	case WS_CARTTERMINATION:
 	case AS_VENOMKNIFE:
 	case HT_PHANTASMIC:
 
@@ -2659,16 +2659,16 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case NPC_BREAKWEAPON:
 	case NPC_BREAKHELM:
 	case NPC_BREAKSHIELD:
-	case LK_AURABLADE:		/* オーラブレード */
-	case LK_SPIRALPIERCE:	/* スパイラルピアース */
-	case LK_HEADCRUSH:	/* ヘッドクラッシュ */
-	case LK_JOINTBEAT:	/* ジョイントビート */
-//	case PA_SACRIFICE:	/* サクリファイス */
-//	case SN_SHARPSHOOTING:			/* シャープシューティング */
-	case CG_ARROWVULCAN:			/* アローバルカン */
-	case HW_MAGICCRASHER:		/* マジッククラッシャー */
+	case LK_AURABLADE:
+	case LK_SPIRALPIERCE:
+	case LK_HEADCRUSH:
+	case LK_JOINTBEAT:
+//	case PA_SACRIFICE:
+//	case SN_SHARPSHOOTING:
+	case CG_ARROWVULCAN:
+	case HW_MAGICCRASHER:
 	case ITM_TOMAHAWK:
-	case ASC_METEORASSAULT:	/* メテオアサルト */ // Meteor Assault skill fix (thanks to [Mikey] from freya's bug report)
+	case ASC_METEORASSAULT:	// Meteor Assault skill fix (thanks to [Mikey] from freya's bug report)
 	case AC_SHOWER:
 	case GS_CHAINACTION:
 	case GS_TRIPLEACTION:
@@ -2683,7 +2683,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, flag);
 		break;
 // A lot of Corrections to BREAKER SKILL (pneuma included) (Posted on freya's bug report by Gawaine)
-	case ASC_BREAKER:				/* ソウルブレーカー */
+	case ASC_BREAKER:
 		// Separate weapon and magic attacks
 		skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, flag);
 		skill_attack(BF_MAGIC, src, src, bl, skillid, skilllv, tick, flag);
@@ -2719,7 +2719,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		skill_attack(BF_MISC, src, src, bl, skillid, skilllv, tick, flag);
 		break;
 
-	case MO_INVESTIGATE:	/* 発勁 */
+	case MO_INVESTIGATE:
 		{
 			struct status_change *sc_data = status_get_sc_data(src);
 			skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, flag);
@@ -2728,10 +2728,10 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		}
 		break;
 	case CR_ACIDDEMONSTRATION:  // Acid Demonstration
-	case SN_FALCONASSAULT:			/* ファルコンアサルト */
+	case SN_FALCONASSAULT:
 		skill_attack(BF_MISC,src,src,bl,skillid,skilllv,tick,flag);
 		break;
-	case KN_BRANDISHSPEAR:		/* ブランディッシュスピア */
+	case KN_BRANDISHSPEAR:
 		{
 			struct mob_data *md = (struct mob_data *)bl;
 			if (md == NULL) {
@@ -2750,7 +2750,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 			}
 		}
 		break;
-	case RG_BACKSTAP:		/* バックスタブ */
+	case RG_BACKSTAP:
 		{
 			int dir = map_calc_dir(src,bl->x,bl->y);
 			int t_dir = status_get_dir(bl);
@@ -2758,7 +2758,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 			if ((dist > 0 && !map_check_dir(dir,t_dir)) || bl->type == BL_SKILL) {
 				struct status_change *sc_data = status_get_sc_data(src);
 				if(sc_data && sc_data[SC_HIDING].timer != -1)
-					status_change_end(src, SC_HIDING, -1);	// ハイディング解除
+					status_change_end(src, SC_HIDING, -1);
 				skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,flag);
 				dir = dir < 4 ? dir+4 : dir-4; // change direction [Celest]
 				if (bl->type == BL_PC)
@@ -2772,10 +2772,10 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		}
 		break;
 
-	case AM_ACIDTERROR:		/* アシッドテラー */
+	case AM_ACIDTERROR:
 		skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, flag);
 		break;
-	case MO_FINGEROFFENSIVE:	/* 指弾 */
+	case MO_FINGEROFFENSIVE:
 	  {
 		struct status_change *sc_data = status_get_sc_data(src);
 		if (!battle_config.finger_offensive_type)
@@ -2792,7 +2792,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 			status_change_end(src, SC_BLADESTOP, -1);
 	  }
 		break;
-	case MO_CHAINCOMBO:		/* 連打掌 */
+	case MO_CHAINCOMBO:
 	  {
 		struct status_change *sc_data = status_get_sc_data(src);
 		skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, flag);
@@ -2800,11 +2800,11 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 			status_change_end(src,SC_BLADESTOP,-1);
 	  }
 		break;
-	case CH_TIGERFIST:		/* 伏虎拳 */
-	case CH_CHAINCRUSH:		/* 連柱崩撃 */
+	case CH_TIGERFIST:
+	case CH_CHAINCRUSH:
 		skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, flag);
 		break;
-	case MO_COMBOFINISH:	/* 猛龍拳 */
+	case MO_COMBOFINISH:
 		if (!(flag & 1) && sd && sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_MONK) {
 			int ar = 3;
 			int x = bl->x, y = bl->y;
@@ -2823,7 +2823,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 				skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, flag);
 			break;
 		
-	case CH_PALMSTRIKE:		/* 猛虎硬派山 */
+	case CH_PALMSTRIKE:
 		clif_skill_nodamage(src, bl, skillid, skilllv, 0);
 		skill_addtimerskill(src, tick + 1500, bl->id, 0, 0, skillid, skilllv, BF_WEAPON, flag);
 		break;
@@ -2840,7 +2840,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		break;	
 	case KN_CHARGEATK:
 	case NJ_ISSEN:
-	case MO_EXTREMITYFIST:	/* 阿修羅覇鳳拳 */
+	case MO_EXTREMITYFIST:
 		{
 			struct status_change *sc_data = status_get_sc_data(src);
 
@@ -2978,7 +2978,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 			int ar = 1;
 			int x = bl->x, y = bl->y;
 
-			if (skillid == NPC_SPLASHATTACK) /* スプラッシュアタックは範囲7*7 */
+			if (skillid == NPC_SPLASHATTACK)
 				ar = 3;
 
 //			if (skillid == ASC_METEORASSAULT) // Meteor Assault skill fix (thanks to [Mikey] from freya's bug report)
