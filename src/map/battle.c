@@ -542,19 +542,21 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 			}
 		}
 
- if(tsc_data[SC_KYRIE].timer != -1 && damage > 0)
-	{
-		tsc_data[SC_KYRIE].val2 -= damage;
+		if(tsc_data[SC_KYRIE].timer != -1 && damage > 0)
+		{
+			tsc_data[SC_KYRIE].val2 -= damage;
 			if(flag & BF_WEAPON || skill_num == TF_THROWSTONE)
-				{
+			{
 				if(tsc_data[SC_KYRIE].val2 >= 0)	
 					damage = 0;
 				else
-					damage -= tsc_data[SC_KYRIE].val2;
-				}
+					// Since we're assuming it will be negative, this will make it positive.
+					// This is to solve the last remaining bug of a damage increase when KE wears off.  [Bison]
+					damage = -tsc_data[SC_KYRIE].val2;
+			}
 			if((--tsc_data[SC_KYRIE].val3) <= 0 || (tsc_data[SC_KYRIE].val2 <= 0) || skill_num == AL_HOLYLIGHT)
 				status_change_end(bl, SC_KYRIE, -1);
-			}
+		}
 
 		if (tsc_data[SC_UTSUSEMI].timer != -1)
 		{
@@ -1126,8 +1128,12 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 				skillratio += 50;	// DAMAGE: 150% + 1% every 1% weight
 				s_ele = 0;
 				s_ele_ = 0;
-				if(sd && sd->cart_max_weight > 0 && sd->cart_weight > 0)
+				if(sd && sd->cart_max_weight > 0 && sd->cart_weight > 0) {
+					// Exploit Fix (Can't modify damage more than max cart weight) [Tsuyuki]
+					if(sd->cart_weight > sd->cart_max_weight)
+						sd->cart_weight = sd->cart_max_weight;
 					skillratio += 100 * sd->cart_weight / sd->cart_max_weight;
+				}
 				break;
 			case MC_MAMMONITE:
 				skillratio += 50 * skill_lv;
@@ -1587,9 +1593,12 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 			case WS_CARTTERMINATION:
 				flag.cardfix = 0;
 				// FORMULA: (damage * (cart_weight / (10 * (16 - skill_lv)))) / 100
-				if(sd && sd->cart_weight > 0)
+				if(sd && sd->cart_max_weight > 0 && sd->cart_weight > 0) {
+					// Exploit Fix (Can't modify damage more than max cart weight) [Tsuyuki]
+					if(sd->cart_weight > sd->cart_max_weight)
+						sd->cart_weight = sd->cart_max_weight;
 					skillratio += sd->cart_weight / (10 * (16 - skill_lv)) - 100;
-				else
+				} else
 					skillratio += battle_config.max_cart_weight / (10 * (16 - skill_lv)) - 100;
 				break;
 
