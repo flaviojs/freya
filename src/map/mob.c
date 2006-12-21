@@ -708,7 +708,8 @@ static void mob_attack(struct mob_data *md, unsigned int tick, int data)
 		if(pc_isdead(tsd) || pc_isinvisible(tsd) || tsd->perfect_hiding || tsd->invincible_timer != -1 || tsd->sc_data[SC_TRICKDEAD].timer != -1)
 			unlock_target = 1;
 		// Corrected MVP behavior.  [Bison]
-		if(race != 4 && race != 6 && !(mode & 0x20) && (pc_ishiding(tsd) || pc_iscloaking(tsd) || pc_ischasewalk(tsd) || tsd->state.gangsterparadise || tsd->sc_data[SC_BASILICA].timer != -1))
+		// Changed the check around a bit to differentiate from MVP mobs vs. non-boss mobs.
+		if(!(mode & 0x20) && (tsd->sc_data[SC_BASILICA].timer != -1 && ((race != 4 || race != 6) && (pc_ishiding(tsd) || pc_iscloaking(tsd) || pc_ischasewalk(tsd) || tsd->state.gangsterparadise))))
 			unlock_target = 1;
 	}
 
