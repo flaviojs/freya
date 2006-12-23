@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+12/22/06
+	* Fixed: An issue with perfect hide (from pet smokies), MVP/bosses are still allowed to see you regardless.  [Bison]
+
 12/21/06
 	* Fixed: Tweaked previous AI fix to differentiate between MVP/boss vs. non-MVP/boss mobs. [Bison]
 
