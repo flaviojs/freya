@@ -609,24 +609,6 @@ rachel.gat,155,243,3	script	Guard#Ra02	934,{
 	close;
 }
 
-ra_temple.gat,119,179,3	script	#door1	45,2,2,{
-
-OnTouch:
-	mes "** The door is locked. **";
-	next;
-	menu "Kick it",-,"Take out your weapon",L_weap;
-
-	emotion 23;
-	mes "[Bishop Nema]";
-	mes "Please stop!";
-	close;
-	end;
-	
-	L_weap:
-		emotion 23;
-		close;
-}
-
 ra_temple.gat,116,174,3	script	Bishop Nema	920,{
 
 	mes "[Bishop Nema]";

@@ -3,7 +3,7 @@
 //===== By: ==================================================
 //= erKURITA & RockmanEXE
 //===== Current Version: =====================================
-//= 1.1
+//= 1.2
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -12,7 +12,8 @@
 //= 1.0 Added the official warps and commented out the 
 //= 	  "custom duplicates" for future checkout. Special thanks
 //= 	  to RockmanEXE who provided all the info. [erKURITA]
-//= 1.1 Converted to Freya format. Will need another update later. [Tsuyuki]
+//= 1.1 Converted to Freya format. Will need another update later [Tsuyuki]
+//= 1.2 Updated warps a little bit, still largely inaccurate [Tsuyuki]
 //============================================================
 
 ra_in01.gat,172,392,0	warp	rachel01	1,1,rachel.gat,42,114
@@ -56,9 +57,27 @@ ra_temsky.gat,137,139,0	warp	rasky004	1,1,ra_temsky.gat,108,143
 ra_temsky.gat,87,143,0	warp	rasky005	1,1,ra_temsky.gat,58,139
 ra_temsky.gat,62,139,0	warp	rasky004	1,1,ra_temsky.gat,91,143
 
-//Rachel Temple
+//Rachel Temple (Official entrance, quest missing/not working, so disabled for now)
+//ra_temple.gat,119,179,3	script	#door1	45,2,2,{
+//
+//OnTouch:
+//	mes "** The door is locked. **";
+//	next;
+//	menu "Kick it",-,"Take out your weapon",L_weap;
+//
+//	emotion 23;
+//	mes "[Bishop Nema]";
+//	mes "Please stop!";
+//	close;
+//	end;
+//	
+//	L_weap:
+//		emotion 23;
+//		close;
+//}
+
 ra_temple.gat,119,21,0	warp	rachel002	1,1,rachel.gat,149,244
-//ra_temple.gat,119,181,0	warp	rachel003	1,1,ra_temin.gat,169,22
+ra_temple.gat,119,179,0	warp	rachel003	1,1,ra_temin.gat,169,22
 ra_temin.gat,169,17,0	warp	rachel004	1,1,ra_temple.gat,119,176
 ra_temin.gat,206,93,0	warp	rachel005	1,1,ra_temin.gat,312,257
 ra_temin.gat,312,252,0	warp	rachel006	1,1,ra_temin.gat,206,88
@@ -66,6 +85,7 @@ ra_temin.gat,130,93,0	warp	rachel007	1,1,ra_temin.gat,238,257
 ra_temin.gat,238,252,0	warp	rachel008	1,1,ra_temin.gat,130,88
 
 ra_temin.gat,276,326,0	script	Statue#Rachel	111,{
+
 	mes "Welcome to the temporary Rachel";
 	mes "Sanctuary entrance npc.";
 	next;
@@ -75,7 +95,7 @@ ra_temin.gat,276,326,0	script	Statue#Rachel	111,{
 
 	Yes:
 		close2;
-		warp "ra_san01",139,14;
+		warp "ra_san01.gat",139,14;
 		end;
 	No:
 	close;
@@ -108,7 +128,6 @@ ra_temin.gat,276,326,0	script	Statue#Rachel	111,{
 //ra_in01.gat,315,62,0	warp	ra_in010a	2,2,ra_in01.gat,360,61
 //ra_in01.gat,297,58,0	warp	ra_in011	2,2,ra_in01.gat,340,117
 //ra_in01.gat,338,120,0	warp	ra_in011a	2,2,ra_in01.gat,297,62
-
 
 //== HOUSES ===============================
 rachel.gat,57,259,0	warp	ra_in012	2,2,ra_in01.gat,295,350
