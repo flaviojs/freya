@@ -7,16 +7,18 @@
 //===== Compatible With: ===================================== 
 //= any Freya version
 //===== Additional Comments: ================================= 
-//= 1.0 first release [Spirit Death]
+//= 1.0 First release [Spirit Death]
 //============================================================ 
+
 
 airplane.gat,240,64,5	script	Exit	857,{
 	mes "^FF0000[Warning]";
-	mes "Don't come to close ";
+	mes "Don't come too close ";
 	mes "while the airship is in the air.";
 	mes "You can fall down ^.^^000000";
 	close;
 }
+
 airplane.gat,247,64,5	duplicate(Exit)	Exit	857
 airplane.gat,240,40,0	duplicate(Exit)	Exit	857
 airplane.gat,247,40,0	duplicate(Exit)	Exit	857

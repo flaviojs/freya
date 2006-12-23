@@ -3,7 +3,7 @@
 //===== By: ================================================== 
 //= Spirit Death
 //===== Current Version: ===================================== 
-//= 1.1
+//= 1.2
 //===== Compatible With: ===================================== 
 //= any Freya version
 //===== Description: ========================================= 
@@ -33,6 +33,7 @@
 //= Route 1 airship.
 //= lairp5 - The warp portal that goes from Lighthalzen to the
 //= Route 1 airship.
+//= 1.2 Fixed typo [Tsuyuki]
 //============================================================ 
 
 
@@ -184,7 +185,7 @@ OnTimer81000:
 	set $at_izlude, 0;
 	disablenpc "#warp3";
 	disablenpc "#warp4";
-	mapannounce "airplane_01.gat","Captain: Takeoff. Next stop is the Capitol of Schwartzwald Republic, Yuno.",0x10;
+	mapannounce "airplane_01.gat","Captain: Takeoff. Next stop is the Capital of Schwartzwald Republic, Yuno.",0x10;
 	mapannounce "izlude.gat","Airship Service: The Route 2 airship has departed from Izlude.",0x10;
 	end;
 OnTimer131000:

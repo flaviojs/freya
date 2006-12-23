@@ -4,11 +4,20 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
-12/22/06
-	* Fixed: An issue with perfect hide (from pet smokies), MVP/bosses are still allowed to see you regardless.  [Bison]
-
 12/21/06
+	* Fixed: An issue with perfect hide (from pet smokies), MVP/bosses are still allowed to see you regardless. [Bison]
+	* Fixed: Parasite is now immobile [Tsuyuki]
+	* Fixed: Some grammatical errors in the Airport script system [Tsuyuki]
+	* Updated: Mob database with correct Aegis speed, and delay values (Full credits and thanks to Vahhn) [Tsuyuki]
+	* Added: New Biolab monster skills (kRO Update 12/18/06) [Tsuyuki]
+	 - High Priest: Assumptio
+	 - Lord Knight: Pierce, Spiral Pierce
+	 - Sniper: Sharp Shooting
+	 - High Wizard: Napalm Vulcan
+	 - Assassin Cross: Meteor Assult
+	 - Whitesmith: Unknown/None
 	* Fixed: Tweaked previous AI fix to differentiate between MVP/boss vs. non-MVP/boss mobs. [Bison]
+
 
 12/20/06
 	* Improved: The @job command: Has better class identification support now [Tsuyuki]
