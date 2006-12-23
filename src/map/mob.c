@@ -705,10 +705,12 @@ static void mob_attack(struct mob_data *md, unsigned int tick, int data)
 	{
 		unlock_target = 1;
 	} else if(tsd) {
-		if(pc_isdead(tsd) || pc_isinvisible(tsd) || tsd->perfect_hiding || tsd->invincible_timer != -1 || tsd->sc_data[SC_TRICKDEAD].timer != -1)
+		if(pc_isdead(tsd) || pc_isinvisible(tsd) || tsd->invincible_timer != -1 || tsd->sc_data[SC_TRICKDEAD].timer != -1)
 			unlock_target = 1;
-		// Corrected MVP behavior.  [Bison]
-		if(race != 4 && race != 6 && !(mode & 0x20) && (pc_ishiding(tsd) || pc_iscloaking(tsd) || pc_ischasewalk(tsd) || tsd->state.gangsterparadise || tsd->sc_data[SC_BASILICA].timer != -1))
+		// Corrected MVP behavior [Bison]
+		// Changed the check around a bit to differentiate from MVP mobs vs. non-boss mobs.
+		// Fixed the perfect hide problem with smokies, MVP's are still allowed to see through this effect however.
+		if(!(mode & 0x20) && ((tsd->sc_data[SC_BASILICA].timer != -1 || tsd->perfect_hiding) && ((race != 4 || race != 6) && (pc_ishiding(tsd) || pc_iscloaking(tsd) || pc_ischasewalk(tsd) || tsd->state.gangsterparadise))))
 			unlock_target = 1;
 	}
 
@@ -718,7 +720,6 @@ static void mob_attack(struct mob_data *md, unsigned int tick, int data)
 		md->attacked_id = 0;
 		md->state.targettype = NONE_ATTACKABLE;
 		mob_stop_walking(md, 1);
-		mob_changestate(md, MS_WALK, 0);
 		return;
 	}
 
