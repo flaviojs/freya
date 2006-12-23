@@ -4,7 +4,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
-12/21/06
+12/22/06
+	* Fixed: Windhawk weapon is now Wind-Element [Tsuyuki]
 	* Fixed: An issue with perfect hide (from pet smokies), MVP/bosses are still allowed to see you regardless. [Bison]
 	* Fixed: Parasite is now immobile [Tsuyuki]
 	* Fixed: Some grammatical errors in the Airport script system [Tsuyuki]
@@ -16,6 +17,8 @@ Date	Added
 	 - High Wizard: Napalm Vulcan
 	 - Assassin Cross: Meteor Assult
 	 - Whitesmith: Unknown/None
+
+12/21/06
 	* Fixed: Tweaked previous AI fix to differentiate between MVP/boss vs. non-MVP/boss mobs. [Bison]
 
 12/20/06
