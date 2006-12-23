@@ -18,7 +18,6 @@ Date	Added
 	 - Whitesmith: Unknown/None
 	* Fixed: Tweaked previous AI fix to differentiate between MVP/boss vs. non-MVP/boss mobs. [Bison]
 
-
 12/20/06
 	* Improved: The @job command: Has better class identification support now [Tsuyuki]
 	* Changed: The @go command: Removed dungeons from command [Tsuyuki]
