@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/22/06
+	* Removed: Temp Dungeon Warpra NPC as its no longer necessary [Tsuyuki]
+	* Fixed: Updated/fixed up some Rachel/Sanctuary warps [Tsuyuki]
 	* Added: Temp warps to the upper levels of the Thanatos Tower so players can access the roof [Tsuyuki]
 	* Fixed: Missing Hidden Dungeon/Labrynth Forest/Prontera Maze warp portal [Tsuyuki]
 	* Fixed: Windhawk weapon is now Wind-Element [Tsuyuki]
