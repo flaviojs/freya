@@ -261,7 +261,7 @@ OnInit:
         setnpctimer 0;
         end;
 
-    OnTimer7200:
+    OnTimer7200000:
         stopnpctimer;
         goto OnInit;
 }
