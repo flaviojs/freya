@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/25/06
+	* Fixed: rebirth system for Stalker [Latios]
 	* Fixed: Bio Lab 3 MVP spawn script timer (thanks to galaxy) [Latios]
 	* Fixed: possible client crash with Pressure/Gloria Domini [Latios]
 	* Fixed: @go [Latios]
