@@ -4,6 +4,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+12/25/06
+	* Fixed: possible client crash with Pressure/Gloria Domini [Latios]
+	* Fixed: @go [Latios]
+
 12/22/06
 	* Removed: Temp Dungeon Warpra NPC as its no longer necessary [Tsuyuki]
 	* Fixed: Updated/fixed up some Rachel/Sanctuary warps [Tsuyuki]

@@ -1186,6 +1186,8 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 	case PA_PRESSURE:	/* ƒvƒŒƒbƒVƒƒ? */
 		if (dstsd) {
 			dstsd->status.sp -= dstsd->status.sp * (15 + 5 * skilllv) / 100;
+			if(dstsd->status.sp < 0)
+				dstsd->status.sp = 0;
 			clif_updatestatus(dstsd, SP_SP);
 		}
 		break;

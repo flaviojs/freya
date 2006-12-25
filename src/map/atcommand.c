@@ -5722,31 +5722,25 @@ ATCOMMAND_FUNC(go) {
 			town = 16;
 		else if (strncmp(atcmd_mapname, "valkyrie.gat", 3) == 0) // 3 first characters
 			town = 17;
-		else if (strncmp(atcmd_mapname, "gef_fild10.gat", 4) == 0 || // 4 first characters
-		           strncmp(atcmd_mapname, "orc dungeon.gat", 3) == 0) // name of the position (3 first characters)
-			town = 18;
 		else if (strncmp(atcmd_mapname, "pay_arche.gat", 4) == 0 || // 4 first characters
 		           strncmp(atcmd_mapname, "village.gat", 3) == 0 || // name of the position (3 first characters)
 		           strncmp(atcmd_mapname, "archer.gat", 3) == 0) // name of the position (3 first characters)
-			town = 19;
-		else if (strncmp(atcmd_mapname, "glast_01.gat", 3) == 0 || // 3 first characters
-		           strncmp(atcmd_mapname, "gh.gat", 3) == 0) // name of the position (3 first characters)
-			town = 20;
+			town = 18;
 		else if (strncmp(atcmd_mapname, "jawaii.gat", 3) == 0) // 3 first characters
-			town = 21;
+			town = 19;
 		else if (strncmp(atcmd_mapname, "ayothaya.gat", 3) == 0) // 3 first characters
-			town = 22;
+			town = 20;
 		else if (strncmp(atcmd_mapname, "einbroch.gat", 3) == 0) // 3 first characters
-			town = 23;
+			town = 21;
 		else if (strncmp(atcmd_mapname, "lighthalzen.gat", 3) == 0) // 3 first characters
-			town = 24;
+			town = 22;
 		else if (strncmp(atcmd_mapname, "hugel.gat", 3) == 0) // 3 first characters
-			town = 25;
+			town = 23;
 		else if (strncmp(atcmd_mapname, "rachel.gat", 3) == 0 || // name of the position (3 first characters)
 		           strncmp(atcmd_mapname, "rachael.gat", 3) == 0) // name of the position (3 first characters)
-			town = 26;
+			town = 24;
 		else if (strncmp(atcmd_mapname, "veins.gat", 3) == 0) // 3 first characters
-			town = 27;
+			town = 25;
 		else if (sscanf(message, "%d", &i) < 1) { /* not a number */
 			send_usage(sd, msg_txt(38)); // Invalid location number or name.
 			send_usage(sd, msg_txt(82)); // Please, use one of this numbers/names:
