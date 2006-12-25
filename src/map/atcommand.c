@@ -13715,7 +13715,7 @@ ATCOMMAND_FUNC(skilltree) {
 	}
 
 	if (skillnum >= 10000 && skillnum < 10015) // guild skill????
-		skillnum -= 9500;
+		skillnum -= 9100;
 	if (skillnum <= 0 || skillnum > MAX_SKILL) {
 		clif_displaymessage(fd, "Unknown skill number.");
 		return -1;

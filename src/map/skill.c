@@ -688,14 +688,14 @@ struct skill_abra_db skill_abra_db[MAX_SKILL_ABRA_DB];
 // for values that don't require level use #define xxxx2
 // macros with level
 #define skill_chk(i, l) \
-	if (i >= GD_SKILLBASE && i < GD_SKILLBASE+MAX_GUILDSKILL) i -= 9500; \
+	if (i >= GD_SKILLBASE && i < GD_SKILLBASE+MAX_GUILDSKILL) i -= 9100; \
 	if (i < 1 || i > MAX_SKILL_DB) return 0; \
 	if (l <= 0 || l > MAX_SKILL_LEVEL) return 0
 #define skill_get(var, i, l) \
 	skill_chk(i, l); return var
 // macros without level
 #define skill_chk2(i) \
-	if (i >= GD_SKILLBASE && i < GD_SKILLBASE+MAX_GUILDSKILL) i -= 9500; \
+	if (i >= GD_SKILLBASE && i < GD_SKILLBASE+MAX_GUILDSKILL) i -= 9100; \
 	if (i < 1 || i > MAX_SKILL_DB) return 0
 #define skill_get2(var, i) \
 	skill_chk2(i); return var
@@ -783,7 +783,7 @@ int skillnotok(int skillid, struct map_session_data *sd) {
 		return 1;
 
 	if (i >= GD_SKILLBASE && i < GD_SKILLBASE+MAX_GUILDSKILL) //GD_SKILLBASE = 10000, MAX_GUILDSKILL = 15
-		i -= 9500;
+		i -= 9100;
 		
 	if (i > MAX_SKILL_DB || i < 0)
 		return 1;
@@ -7957,7 +7957,7 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 	if (lv <= 0)
 		return 0;
 	if (skill >= GD_SKILLBASE && skill < GD_SKILLBASE+MAX_GUILDSKILL)
-		skill -= 9500;
+		skill -= 9100;
 	hp = skill_get_hp(skill, lv);	/* Á”ïHP */
 	sp = skill_get_sp(skill, lv);	/* Á”ïSP */
 	if ((sd->skillid_old == BD_ENCORE) && skill==sd->skillid_dance)
@@ -11367,7 +11367,7 @@ int skill_readdb(void) {
 
 		i = atoi(split[0]);
 		if (i >= 10000 && i < 10015) // for guild skills [Celest]
-			i -= 9500;
+			i -= 9100;
 		else if (i <= 0 || i > MAX_SKILL_DB)
 			continue;
 
@@ -11417,7 +11417,7 @@ int skill_readdb(void) {
 
 		i=atoi(split[0]);
 		if (i>=10000 && i<10015) // for guild skills [Celest]
-			i -= 9500;
+			i -= 9100;
 		else if(i<=0 || i>MAX_SKILL_DB)
 			continue;
 
@@ -11501,7 +11501,7 @@ int skill_readdb(void) {
 
 		i=atoi(split[0]);
 		if (i >= GD_SKILLBASE && i < GD_SKILLBASE+MAX_GUILDSKILL)
-			i -= 9500;
+			i -= 9100;
 		else if(i <= 0 || i > MAX_SKILL_DB)
 			continue;
 
@@ -11531,7 +11531,7 @@ int skill_readdb(void) {
 
 		i = atoi(split[0]);
 		if (i >= 10000 && i < 10015) // for guild skills [Celest]
-			i -= 9500;
+			i -= 9100;
 		else if (i <= 0 || i > MAX_SKILL_DB)
 			continue;
 		skill_db[i].unit_id[0] = strtol(split[1], NULL, 16);
@@ -11690,7 +11690,7 @@ int skill_readdb(void) {
 
 		i = atoi(split[0]);
 		if (i >= 10000 && i < 10015) // for guild skills [Celest]
-			i -= 9500;
+			i -= 9100;
 		else if (i <= 0 || i > MAX_SKILL_DB)
 			continue;
 
@@ -11719,7 +11719,7 @@ int skill_readdb(void) {
 			continue;
 		i=atoi(split[0]);
 		if (i>=10000 && i<10015) // for guild skills [Celest]
-			i -= 9500;
+			i -= 9100;
 		else if(i<=0 || i>MAX_SKILL_DB)
 			continue;
 		skill_db[i].nocast=atoi(split[1]);
