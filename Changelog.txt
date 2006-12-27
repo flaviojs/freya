@@ -4,6 +4,13 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+12/25/06
+	* Fixed: guild skills [Latios]
+	* Fixed: rebirth system for Stalker [Latios]
+	* Fixed: Bio Lab 3 MVP spawn script timer (thanks to galaxy) [Latios]
+	* Fixed: possible client crash with Pressure/Gloria Domini [Latios]
+	* Fixed: @go [Latios]
+
 12/22/06
 	* Removed: Temp Dungeon Warpra NPC as its no longer necessary [Tsuyuki]
 	* Fixed: Updated/fixed up some Rachel/Sanctuary warps [Tsuyuki]
@@ -2909,7 +2916,7 @@ Date	Added
 	* Added: an option set the bonus of SKILL Guild EXTENTION. [Yor]
 
 09/26/2005
-	* Fixed: @mute/@unmute can not more be executed on a higher GM [_Latios]
+	* Fixed: @mute/@unmute can not more be executed on a higher GM [Latios]
 	* Updated: kRO Patch - 9/27/05: The Guild skill [Expand Capacity] which increases number of people allowed in the guild, now adds 6 people capacity per level instead of 4. [Yor]
 	* Updated: manner.txt [Yor]
 	* Changed: Disabled by default mingmlvl mapflag (Player could use 'main' channel) [yor])

@@ -2880,7 +2880,7 @@ int pc_blockskill_start(struct map_session_data *sd, int skillid, int tick) {
 	nullpo_retr(-1, sd);
 
 	if (skillid >= 10000 && skillid < 10015)
-		skillid -= 9500;
+		skillid -= 9100;
 	else if (skillid < 0 || skillid > MAX_SKILL)
 		return -1;
 
