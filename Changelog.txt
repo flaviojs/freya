@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+12/29/06
+	* Updated: Thor's Volcano Dungeon warp (thanks to $ephiroth) [Latios]
+
 12/25/06
 	* Fixed: guild skills [Latios]
 	* Fixed: rebirth system for Stalker [Latios]
