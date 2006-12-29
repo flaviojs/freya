@@ -1,6 +1,6 @@
-// eAthena Special NPC
+// Freya Special NPC
 
-// PCLoginEvent NPC (davidsiaw)
+// PCLoginEvent NPC
 //==============================================================================
 // How it works:
 // When a player logs in, the NPC will run as if he just clicked it. Which means
