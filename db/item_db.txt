@@ -1792,7 +1792,6 @@
 5168,Bongun_Hat_,Bongun Hat,5,20,10,300,,5,,1,1071636479,2,769,,0,139,{},{}
 5169,Bride_Mask,Bride Mask,5,30000,15000,500,,4,,1,1071636479,2,768,,40,223,{},{if (GetPureJob!=JOB_TAEKWON) end; bonus bLuk,2; bonus bCritical,5; }
 5170,Feather_Beret,Feather Beret,5,30000,15000,600,,1,,0,1071636478,2,256,,0,224,{},{ bonus bMdef,1; bonus2 bSubRace,7,10; bonus2 bMagicSubRace,7,10; }
-//ID,DatabaseName,DisplayName,Type,Price,Sell,Weight,ATK,DEF,Range,Slot,Job,Gender,Loc,wLV,eLV,View,{UseScript},{EquipScript}
 5171,Valkyrie_Helm,Valkyrie Helm,5,100000,50000,1000,,5,,1,1071636478,2,256,,,225,{},{ bonus bMdef,5; }
 5172,Beret,Beret,5,30000,15000,700,,0,,0,1071636479,2,256,,0,226,{},{ bonus2 bSubRace,7,10; bonus2 bMagicSubRace,7,10; }
 5173,Hat_of_the_Judge,Judge's Hat,5,30000,15000,400,,3,,1,1071636479,2,256,,60,227,{},{if (Class!=4046 && Class!=4047 && Class!=4048 && Class!=4049) end; bonus bAgi,1; bonus bHPrecovRate,3; }
