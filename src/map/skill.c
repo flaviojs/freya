@@ -832,6 +832,14 @@ int skillnotok(int skillid, struct map_session_data *sd) {
 			return 1;
 		}
 		break;
+	case WE_CALLPARTNER:
+	case WE_CALLPARENT:
+	case WE_CALLBABY:
+		if (map[sd->bl.m].flag.nomemo) {
+			clif_skill_teleportmessage(sd, 1);
+			return 1;
+		}
+		break;	
 	case WZ_ICEWALL:
 		if (map[sd->bl.m].flag.noicewall && !map[sd->bl.m].flag.pvp) {
 			clif_skill_fail(sd, sd->skillid, 0, 0);
@@ -5278,7 +5286,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		break;
 
 	case WE_MALE:				/* ŒN‚¾‚¯‚ÍŒì‚é‚æ */
-		//The Skill Loving Touch cost 10% of the users whole HP and should give the Partner 10% of THE PARTNERS OWN max HP
+		//The Skill Loving Touch cost 10% of the caster current HP and should give the Partner 10% of THE PARTNERS OWN max HP 
 		//not the HP that was taken by the user of the skill.
 		if(sd && dstsd) {
 			int gain_hp = dstsd->status.max_hp * 10 / 100;
@@ -5286,7 +5294,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 			pc_heal(dstsd, gain_hp, 0);
 		}
 		break;
-	case WE_FEMALE:				/* ‚ ‚È‚½‚Ìˆ×‚É‹]µ‚É‚È‚è‚Ü‚· */
+	case WE_FEMALE:				/* ‚ ‚È‚½‚Ìˆ×‚É‹]µ‚É‚È‚è‚Ü‚· */
 		//The same for the Skill Undying Love that will cost me by casting 10% of my sp and will Give my Partner ONLY 10% OF HIS OWN SP back.
 		//And not the amount of 10% that i must pay fo it
 		if(sd && dstsd) {
@@ -5296,22 +5304,76 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		}
 		break;
 
-	case WE_CALLPARTNER:			/* ‚ ‚È‚½‚É‰ï‚¢‚½‚¢ */
-		if (sd && dstsd) {
-			if ((dstsd = pc_get_partner(sd)) == NULL) {
+	case WE_CALLPARTNER:			/* ‚ ‚È‚½‚É‰ï‚¢‚½‚¢ */
+		if (sd) {
+			if (dstsd = pc_get_partner(sd) == NULL) {
 				clif_skill_fail(sd, skillid, 0, 0);
 				map_freeblock_unlock();
 				return 0;
 			}
-			if(map[sd->bl.m].flag.nomemo || map[sd->bl.m].flag.nowarpto || map[dstsd->bl.m].flag.nowarp){
-				clif_skill_teleportmessage(sd,1);
+			if(map[sd->bl.m].flag.nomemo || map[sd->bl.m].flag.nowarpto || map[dstsd->bl.m].flag.nowarp) {
+				clif_skill_teleportmessage(sd, 1);
 				map_freeblock_unlock();
 				return 0;
 			}
-			skill_unitsetting(src,skillid,skilllv,sd->bl.x,sd->bl.y,0);
+			skill_unitsetting(src, skillid, skilllv, sd->bl.x, sd->bl.y, 0);
 		}
 		break;
-	
+
+	// parent-baby skills
+	case WE_BABY:
+		if(sd) {
+			struct map_session_data *f_sd = pc_get_father(sd);
+			struct map_session_data *m_sd = pc_get_mother(sd);
+			if(!f_sd && !m_sd) {
+				clif_skill_fail(sd, skillid, 0, 0);
+				map_freeblock_unlock();
+				return 0;
+			}
+			status_change_start(bl, SC_STUN, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
+			if (f_sd) status_change_start(&f_sd->bl, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
+			if (m_sd) status_change_start(&m_sd->bl, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
+		}
+		break;
+	case WE_CALLPARENT:
+		if(sd) {
+			struct map_session_data *f_sd = pc_get_father(sd);
+			struct map_session_data *m_sd = pc_get_mother(sd);
+			// if neither was found
+			if(!f_sd && !m_sd) {
+				clif_skill_fail(sd, skillid, 0, 0);
+				map_freeblock_unlock();
+				return 0;
+			}
+			if(map[sd->bl.m].flag.nomemo || map[sd->bl.m].flag.nowarpto) {
+				clif_skill_teleportmessage(sd, 1);
+				map_freeblock_unlock();
+				return 0;
+			}
+			if((!f_sd && m_sd && map[m_sd->bl.m].flag.nowarp) ||
+				(!m_sd && f_sd && map[f_sd->bl.m].flag.nowarp))	{	//Case where neither one can be warped.
+				clif_skill_teleportmessage(sd, 1);
+				map_freeblock_unlock();
+				return 0;
+			}
+			//Warp those that can be warped.
+			if (f_sd && !map[f_sd->bl.m].flag.nowarp)
+				pc_setpos(f_sd, sd->mapname, sd->bl.x, sd->bl.y, 3, 0);
+			if (m_sd && !map[m_sd->bl.m].flag.nowarp)
+				pc_setpos(m_sd, sd->mapname, sd->bl.x, sd->bl.y, 3, 0);
+		}
+		break;
+	case WE_CALLBABY:
+		if(sd && dstsd) {
+			if(map[sd->bl.m].flag.nomemo || map[sd->bl.m].flag.nowarpto || map[dstsd->bl.m].flag.nowarp) {
+				clif_skill_teleportmessage(sd, 1);
+				map_freeblock_unlock();
+				return 0;
+			}
+			pc_setpos(dstsd, sd->mapname, sd->bl.x, sd->bl.y, 3, 0);
+		}
+		break;
+
 	case NPC_POWERUP:	//NPC”š—ô”g“®
 		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 		//src or bl? the same.. Source in this case, since its the mob who should get the status, but src == bl in this case.
@@ -6892,7 +6954,7 @@ int skill_unit_onplace(struct skill_unit *src, struct block_list *bl, unsigned i
 				status_change_start(bl, type, sg->skill_lv, sg->val1, sg->val2, sg->group_id, skill_get_time2(sg->skill_id, sg->skill_lv), 0);
 		break;
 
-	case 0xb2:	/* WE_CALLPARTNER */
+	case 0xb2:	/* WE_CALLPARTNER, WE_CALLBABY, WE_CALLPARENT */
 		break;
 	
 	//case 0xb3:	/* PA_GOSPEL */
