@@ -5306,7 +5306,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 
 	case WE_CALLPARTNER:			/* ‚ ‚È‚½‚É‰ï‚¢‚½‚¢ */
 		if (sd) {
-			if (dstsd = pc_get_partner(sd) == NULL) {
+			if ((dstsd = pc_get_partner(sd)) == NULL) {
 				clif_skill_fail(sd, skillid, 0, 0);
 				map_freeblock_unlock();
 				return 0;
