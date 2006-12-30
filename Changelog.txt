@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/29/06
+	* Added: Beins/Thor monsters (Poring stats, no drops) [Tsuyuki]
 	* Updated: doc/effect_list.txt (Thanks to Au{R}oN) [Tsuyuki]
 	* Fixed: Incorrect entries in item_db (thanks to galaxy) [Latios]
 	* Updated: Thor's Volcano Dungeon warp (thanks to $ephiroth) [Latios]
