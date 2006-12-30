@@ -4533,14 +4533,18 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		{
 			if(!sc_data)
 				break;
+
 			if(sc_data[SC_GOSPEL].timer != -1 && sc_data[SC_GOSPEL].val4 == BCT_SELF)
 				status_change_end(src, SC_GOSPEL, -1); // Clears the active GOSPEL effect
 			else {
 				struct skill_unit_group *sg = skill_unitsetting(src, skillid, skilllv, src->x, src->y, 0);
 				if(sc_data[SC_GOSPEL].timer != -1)
 					status_change_end(src, SC_GOSPEL, -1);
+
 				status_change_start(src, SkillStatusChangeTable[skillid], skilllv, 0, (int)sg, BCT_SELF, skill_get_time(skillid, skilllv), 0);
+				clif_skill_poseffect(src, skillid, skilllv, 0, 0, tick); //PA_GOSPEL music packet[GoodKat]
 			}
+
 			clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 		}
 		break;
