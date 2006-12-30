@@ -140,7 +140,9 @@ struct friend {
 struct mmo_charstatus {
 	int char_id;
 	int account_id;
-	int partner_id;
+	unsigned int partner_id;
+	unsigned int father, mother;
+	unsigned int child;
 
 	int base_exp, job_exp, zeny;
 
@@ -326,7 +328,7 @@ enum {
 enum {
 	GD_SKILLBASE        = 10000,
 	GD_APPROVAL         = 10000,
-	GD_KAFRACONTACT     = 10001,
+	GD_KAFRACONTRACT    = 10001,
 	GD_GUARDIANRESEARCH = 10002,
 //	GD_CHARISMA         = 10003,
 	GD_GUARDUP          = 10003,

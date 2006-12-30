@@ -3756,7 +3756,10 @@ ATCOMMAND_FUNC(jobchange) {
 	int flag, i;
 	char jobname[100];
 
-	const struct { char name[20]; int id; } jobs[] = {
+	const struct {
+		char name[20]; 
+		int id; 
+	} jobs[] = {
 		{ "novice",                    0 },
 		{ "swordsman",                 1 },
 		{ "swordman",                  1 },
@@ -3968,7 +3971,7 @@ ATCOMMAND_FUNC(jobchange) {
 		{ "munak",                  4053 },
 	};
 
-	if (!message || !*message || sscanf(message, "%d %d", &job, &upper) < 1 || job < 0 || job >= MAX_PC_CLASS || (job > 26 && job < 4001)) {
+	if (!message || !*message || sscanf(message, "%u %u", &job, &upper) < 1 || job < 0 || job >= MAX_PC_CLASS || (job > 26 && job < 4001)) {
 		/* search class name */
 		i = (int)(sizeof(jobs) / sizeof(jobs[0]));
 		if (sscanf(message, "\"%[^\"]\" %d", jobname, &upper) >= 1 ||
@@ -4057,11 +4060,12 @@ ATCOMMAND_FUNC(jobchange) {
 	}
 
 	flag = 0;
-	for (i = 0; i < MAX_INVENTORY; i++)
+	for (i = 0; i < MAX_INVENTORY; i++) {
 		if (sd->status.inventory[i].nameid && (sd->status.inventory[i].equip & 34) != 0) { // righ hand (2) + left hand (32)
 			pc_unequipitem(sd, i, 3); /* unequip weapon to avoid sprite error */
 			flag = 1;
 		}
+	}
 	if (flag)
 		clif_displaymessage(fd, "Weapon unequiped to avoid sprite error.");
 

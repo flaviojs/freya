@@ -7921,25 +7921,83 @@ int pc_divorce(struct map_session_data *sd)
 }
 
 /*==========================================
- * sd‚Ì‘Š•û‚Ìmap_session_data‚ğ•Ô‚·
+ * Adoption system [Proximus]
  *------------------------------------------
  */
-struct map_session_data *pc_get_partner(struct map_session_data *sd)
+void pc_adoption(struct map_session_data *sd, struct map_session_data *tsd, char type)
 {
-	struct map_session_data *p_sd = NULL;
-	char *nick;
-	if(sd == NULL || !pc_ismarried(sd))
-		return NULL;
+	struct map_session_data *p_sd;
 
-	nick=map_charid2nick(sd->status.partner_id);
+	if(sd->status.base_level < 70 || 
+		(p_sd = pc_get_partner(sd)) == NULL || p_sd->status.child > 0 || p_sd->status.base_level < 70)
+		return; //Base level requirements
 
-	if (nick==NULL)
-		return NULL;
+	if(tsd->status.father > 0 || tsd->status.mother > 0 || tsd->status.class > JOB_THIEF)
+		return; //Child requeriments, has no father/mother and is a novice/1st class 
 
-	if ((p_sd = map_nick2sd(nick)) == NULL )
-		return NULL;
+	if(sd->status.party_id != p_sd->status.party_id || sd->status.party_id != tsd->status.party_id)
+		return; //Same party requirement
 
-	return p_sd;
+	if(type == 0) {
+		clif_adoption_invite(sd, tsd);
+		return;
+	}
+
+	tsd->status.father = sd->status.char_id;
+	tsd->status.mother = p_sd->status.char_id;
+	sd->status.child = tsd->status.char_id;
+	p_sd->status.child = tsd->status.char_id;
+
+	if(pc_jobchange(tsd, tsd->status.class, 2) == 0) {
+		//Baby skills
+		pc_skill(tsd, WE_BABY, 1, 0);
+		pc_skill(tsd, WE_CALLPARENT, 1, 0);
+		//Parent skills
+		pc_skill(sd, WE_CALLBABY, 1, 0);
+		pc_skill(p_sd, WE_CALLBABY, 1, 0);
+	}
+
+	chrif_save(sd); // do pc_makesavestatus and save storage + account_reg/account_reg2 too
+	chrif_save(p_sd); // do pc_makesavestatus and save storage + account_reg/account_reg2 too
+
+	return;
+}
+
+/*==========================================
+ * sd‚Ì‘Š•û‚Ìmap_session_data‚ğ•Ô‚·
+ * Family concept functions, redesigned [Goodkat]
+ *------------------------------------------
+ */
+struct map_session_data *pc_get_partner(struct map_session_data *sd) 
+{
+	if (sd && pc_ismarried(sd))
+		return map_charid2sd(sd->status.partner_id);
+
+	return NULL;
+}
+
+struct map_session_data *pc_get_father(struct map_session_data *sd) 
+{
+	if (sd && sd->status.father > 0)
+		return map_charid2sd(sd->status.father);
+
+	return NULL;
+}
+
+struct map_session_data *pc_get_mother(struct map_session_data *sd) 
+{
+	if (sd && sd->status.mother > 0)
+		return map_charid2sd(sd->status.mother);
+
+	return NULL;
+}
+
+struct map_session_data *pc_get_child(struct map_session_data *sd) 
+{
+	if (sd && pc_ismarried(sd) && sd->status.child > 0)
+		return map_charid2sd(sd->status.child);
+
+	return NULL;
 }
 
 //

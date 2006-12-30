@@ -784,10 +784,10 @@ int skillnotok(int skillid, struct map_session_data *sd) {
 
 	if (i >= GD_SKILLBASE && i < GD_SKILLBASE+MAX_GUILDSKILL) //GD_SKILLBASE = 10000, MAX_GUILDSKILL = 15
 		i -= 9100;
-		
+
 	if (i > MAX_SKILL_DB || i < 0)
 		return 1;
-		
+
 	if (sd->blockskill[i] > 0)
 		return 1;
 
@@ -819,8 +819,7 @@ int skillnotok(int skillid, struct map_session_data *sd) {
 	switch (skillid) {
 	case AL_TELEPORT:
 	case AL_WARP:
-		if(map[sd->bl.m].flag.noteleport || sd->sc_data[SC_LANDPROTECTOR].timer != -1)
-		{
+		if(map[sd->bl.m].flag.noteleport || sd->sc_data[SC_LANDPROTECTOR].timer != -1) {
 			clif_skill_teleportmessage(sd, 0);
 			return 1;
 		}
@@ -846,7 +845,7 @@ int skillnotok(int skillid, struct map_session_data *sd) {
 		}
 		break;
 	}
-	
+
 	return(map[sd->bl.m].flag.noskill);
 }
 
@@ -1048,7 +1047,7 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 			skilllv = pc_checkskill(sd, TF_POISON);
 	case TF_POISON: /* インベナム */
 	case AS_SPLASHER: /* ベナムスプラッシャー */
-		if (rand() % 100< (2 * skilllv + 10) * sc_def_vit / 100)
+		if (rand() % 100 < (2 * skilllv + 10) * sc_def_vit / 100)
 			status_change_start(bl, SC_POISON, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
 		else {
 			if (sd && skillid == TF_POISON)
@@ -1086,7 +1085,7 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 		else if(sd && skillid == MG_FROSTDIVER)
 			clif_skill_fail(sd, skillid, 0, 0);
 		break;
-	
+
 	case WZ_STORMGUST:		/* ストームガスト */
 	  {
 		struct status_change *sc_data = status_get_sc_data(bl);
@@ -1098,36 +1097,35 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 		}
 	  }
 		break;
-	
+
 	case HT_LANDMINE:		/* ランドマイン */
 		if(rand() % 100 < (5 * skilllv + 30) * sc_def_vit / 100)
 			status_change_start(bl, SC_STUN, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
 		break;
-		
+
 	case HT_SHOCKWAVE:
-		if(dstsd && (map[bl->m].flag.pvp || map[bl->m].flag.gvg))
-		{
+		if(dstsd && (map[bl->m].flag.pvp || map[bl->m].flag.gvg)) {
 			dstsd->status.sp -= dstsd->status.sp * (5 + 15 * skilllv) / 100;
 			clif_updatestatus(dstsd, SP_SP);
 		}
 		break;
-		
+
 	case HT_SANDMAN:		/* サンドマン */
 		if(rand() % 100 < (5 * skilllv + 30) * sc_def_int / 100)
 			status_change_start(bl, SC_SLEEP, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
 		break;
-		
+
 	case HT_FLASHER:  /* Flasher */
 		if (rand()%100 < (10 * skilllv + 30) * sc_def_int / 100)
 			status_change_start(bl, SC_BLIND, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
 		break;
-	
+
 	case HT_FREEZINGTRAP:	/* フリージングトラップ */
 		rate = skilllv * 3 + 35;
 		if(rand() % 100 < rate * sc_def_mdef / 100)
 			status_change_start(bl, SC_FREEZE, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
 		break;
-		
+
 		/*	case HT_ANKLESNARE: // アンクルスネア
 		
 		{
@@ -1273,16 +1271,15 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 			status_change_start(bl,SC_BLIND,skilllv,0,0,0,skill_get_time2(skillid,skilllv),0);
 		break;
 
-// -- moonsoul (stun ability of new champion skill tigerfist)
-//
+	// -- moonsoul (stun ability of new champion skill tigerfist)
 	case CH_TIGERFIST:
-		if( rand()%100 < (10 + skilllv * 10) * sc_def_vit / 100 ) {
+		if (rand()%100 < (10 + skilllv * 10) * sc_def_vit / 100) {
 			skill = skill_get_time2(skillid, skilllv) - status_get_agi(bl) / 10; // Recycling "skill" to store status time "sec" [Proximus]
 			status_change_start(bl, SC_STUN, skilllv, 0, 0, 0, skill, 0);
 		}
 		break;
 	case LK_SPIRALPIERCE:
-		if( rand()%100 < (15 + skilllv * 5) * sc_def_vit / 100 )
+		if (rand()%100 < (15 + skilllv * 5) * sc_def_vit / 100)
 			status_change_start(bl, SC_STUN, skilllv, 0, 0, 0, skill_get_time2(skillid,skilllv), 0);
 		break;
 	case ST_REJECTSWORD:	/* フリージングトラップ */
@@ -1309,13 +1306,12 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 		break;
 	case PF_SPIDERWEB:		/* スパイダーウェッブ */
 		{
-			if(dstmd || map[sd->bl.m].flag.pvp || map[sd->bl.m].flag.gvg)
-			{
-				int sec = skill_get_time2(skillid,skilllv);
-				if(map[src->m].flag.pvp) //PvPでは拘束時間半減？
-					sec = sec / 2;
-				status_change_start(bl, SC_SPIDERWEB, skilllv, 0, 0, 0, sec, 0);
-			}
+		if(dstmd || map[sd->bl.m].flag.pvp || map[sd->bl.m].flag.gvg)	{
+			int sec = skill_get_time2(skillid,skilllv);
+			if(map[src->m].flag.pvp) //PvPでは拘束時間半減？
+				sec = sec / 2;
+			status_change_start(bl, SC_SPIDERWEB, skilllv, 0, 0, 0, sec, 0);
+		}
 		}
 		break;
 	case ASC_METEORASSAULT:			/* メテオアサルト */
@@ -1394,7 +1390,7 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 	case SL_STUN:
 		// Stun Medium monsters
 		if(status_get_size(bl) == 1 && (rand() % 100 < sc_def_vit))
-			status_change_start(bl,SC_STUN,0,0,0,0,2000,0);
+			status_change_start(bl, SC_STUN, 0, 0, 0, 0, 2000, 0);
 		break;
 
 	case GS_BULLSEYE: // 0.1% Coma Rate: To-Do
