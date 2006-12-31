@@ -1950,11 +1950,10 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 		if(skillratio != 100)
 			ATK_SCALE(skillratio);	// apply damage modifier
 
-		if(sd && skill_num != CR_GRANDCROSS && skill_num != AS_VENOMKNIFE)
+		// Added Shield Chain/Boomerang  to ignore both the Ice Pick and Brocca effects. [Bison]
+		if(sd && skill_num != CR_GRANDCROSS && skill_num != AS_VENOMKNIFE && skill_num != CR_SHIELDBOOMERANG && skill_num != PA_SHIELDCHAIN)
 		{
-			// Added Shield Chain/Boomerang  to ignore the Ice Pick effects. [Bison]
-			if (skill_num != PA_SACRIFICE && skill_num != MO_INVESTIGATE && skill_num != PA_SHIELDCHAIN
-			    && skill_num != CR_SHIELDBOOMERANG && !flag.cri) { //Elemental/Racial adjustments
+			if (skill_num != PA_SACRIFICE && skill_num != MO_INVESTIGATE && !flag.cri) { //Elemental/Racial adjustments
 				char raceele_flag = 0, raceele_flag_ = 0;
 				if(sd->def_ratio_atk_ele & (1<<t_ele) || sd->def_ratio_atk_race & (1<<t_race) ||
 					sd->def_ratio_atk_race & (t_mode&0x20?1<<10:1<<11))

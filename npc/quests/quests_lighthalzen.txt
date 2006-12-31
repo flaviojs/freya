@@ -26,6 +26,7 @@
 //= 1.7 Added Friendship Quest by eAthena. Converted to Freya by Harp [Tsuyuki]
 //= 1.8 Fixed a few bugs in the Friendship quest [Tsuyuki]
 //= 1.9 Rewrote most of the Pickpocket Quest w/ official text, chance rates, and effects [Tsuyuki]
+//= 1.9a Fixed the barrel part of the cube quest. [Bison]
 //= Note: Need proper cutins for the Friendship quest
 //============================================================ 
 
@@ -662,23 +663,23 @@ L_2:
 	next;
 	set @agree,0;
 	input @number;
-	if (num1 == @number) set @agree,@agree+1;
-	input @number;
-	if (num2 == @number) set @agree,@agree+1;
-	input @number;
-	if (num3 == @number) set @agree,@agree+1;
-	input @number;
-	if (num4 == @number) set @agree,@agree+1;
-	input @number;
-	if (num5 == @number) set @agree,@agree+1;
-	input @number;
 	if (num6 == @number) set @agree,@agree+1;
-	input @number;
-	if (num7 == @number) set @agree,@agree+1;
 	input @number;
 	if (num8 == @number) set @agree,@agree+1;
 	input @number;
+	if (num1 == @number) set @agree,@agree+1;
+	input @number;
+	if (num4 == @number) set @agree,@agree+1;
+	input @number;
 	if (num9 == @number) set @agree,@agree+1;
+	input @number;
+	if (num2 == @number) set @agree,@agree+1;
+	input @number;
+	if (num7 == @number) set @agree,@agree+1;
+	input @number;
+	if (num5 == @number) set @agree,@agree+1;
+	input @number;
+	if (num3 == @number) set @agree,@agree+1;
 	if (@agree == 9 && num1) goto L_3;
 	mes "There is no change.";
 	close;

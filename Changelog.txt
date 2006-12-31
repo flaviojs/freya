@@ -4,6 +4,17 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+12/31/06
+	* Fixed: The number inputs for the barrel in Lighthalzen Cube room.  [Bison]
+	* Fixed: NPC_AGIUP/NPC_POWERUP (hitrate bonus) skill formula to be exact with Doddler's calc.  [Bison]
+	* Fixed: NPC_CALLSLAVE will now recall mobs regardless of how far away they are now.  [Bison]
+	* Fixed: Added Shield Boomerang/Chain to ignore Brocca/Skewer defense piercing (Source:  Doddler's calc).  [Bison]
+	* Fixed: 5 tile range on Margaretha Sorin's attack range, now set to 1.  [Bison]
+	* Fixed: Level 11 AL_HEAL will heal for 9999, this is mainly used by MVP's.  [Bison]
+	* Fixed: WZ_JUPITEL for various mobs.  [Bison]
+		- Use level 11 for 30 hit and normal knockback.
+		- Use level 12 for 32 hit and 14 tile knockback, not 100% sure how many hits Mistress' JT does.
+	
 12/30/06
 	* Added: Missing clif_skill_poseffect to PA_GOSPEL code. A client packet to start the Gospel music [GoodKat]
 	* Added: Baby/Parent skills: WE_BABY, WE_CALLPARENT, WE_CALLBABY [GoodKat]

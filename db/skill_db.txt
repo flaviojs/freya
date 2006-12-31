@@ -110,7 +110,7 @@
 81,0,6,4,3,0,10,1,yes,0,0,0,magic,5	//WZ_SIGHTRASHER#Sighthrasher#
 //82,8,6,2,3,0,10,1,yes,0,0,0,magic,0	//WZ_FIREIVY#Fire Ivy#
 83,9,8,2,3,0,10,1:1:2:2:3:3:4:4:5:5,yes,0,0,0,magic,0	//WZ_METEOR#Meteor Storm#
-84,9,8,1,4,0,10,3:4:5:6:7:8:9:10:11:12,yes,0,0,0,magic,2:3:3:4:4:5:5:6:6:7	//WZ_JUPITEL#Jupitel Thunder#
+84,9,8,1,4,0,10,3:4:5:6:7:8:9:10:11:12:30:32,yes,0,0,0,magic,2:3:3:4:4:5:5:6:6:7:7:14	//WZ_JUPITEL#Jupitel Thunder#
 85,9,8,2,4,0,10,10,yes,0,0,0,magic,0	//WZ_VERMILION#Lord of Vermilion#
 86,9,8,1,1,0,5,1,yes,0,0,0,magic,0	//WZ_WATERBALL#Water Ball#
 87,9,6,2,1,0,10,1,yes,0,0,0,magic,0	//WZ_ICEWALL#Ice Wall#

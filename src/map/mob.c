@@ -3300,9 +3300,10 @@ int mob_warpslave_sub(struct block_list *bl, va_list ap)
 int mob_warpslave(struct mob_data *md,int x, int y)
 {
 //printf("warp slave\n");
+	// Now scans the entire map for slaves. [Bison]
 	map_foreachinarea(mob_warpslave_sub, md->bl.m,
-	                  x - AREA_SIZE, y - AREA_SIZE,
-	                  x + AREA_SIZE, y + AREA_SIZE, BL_MOB,
+	                  0, 0,
+	                  map[md->bl.m].xs - 1, map[md->bl.m].ys - 1, BL_MOB,
 	                  md->bl.id, md->bl.x, md->bl.y);
 
 	return 0;
