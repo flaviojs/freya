@@ -440,7 +440,7 @@ void chrif_updatefame(int char_id, unsigned char rank_id, int points) {
 	WPACKETW(0) = 0x2b2c;
 	WPACKETL(2) = char_id;
 	WPACKETL(6) = points;
-	WPACKETL(10)= rank_id;
+	WPACKETB(10)= rank_id;
 	SENDPACKET(char_fd, 11);
 
 	return;

@@ -1440,8 +1440,8 @@
 4023,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#Basic Skills#
 4023,142,1,0,0,0,0,0,0,0,0,0,0//NV_FIRSTAID	#First Aid#
 4023,143,1,0,0,0,0,0,0,0,0,0,0//NV_TRICKDEAD	#死んだふり#
-//4023,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
-//4023,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
+4023,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
+4023,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
 
 // Baby Swordman
 4024,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#Basic Skills#
@@ -1456,8 +1456,8 @@
 4024,144,1,0,0,0,0,0,0,0,0,0,0//SM_MOVINGRECOVERY	#Moving HP-Recovery#
 4024,145,1,0,0,0,0,0,0,0,0,0,0//SM_FATALBLOW	#Attack Weak Point#
 4024,146,1,0,0,0,0,0,0,0,0,0,0//SM_AUTOBERSERK	#Auto-Berserk#
-//4024,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
-//4024,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
+4024,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
+4024,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
 
 // Baby Magician
 4025,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#Basic Skills#
@@ -1476,8 +1476,8 @@
 4025,20,10,0,0,0,0,0,0,0,0,0,0//MG_LIGHTNINGBOLT	#Lightning Bolt#
 4025,21,10,20,4,0,0,0,0,0,0,0,0//MG_THUNDERSTORM	#Thunderstorm#
 4025,157,1,0,0,0,0,0,0,0,0,0,0//MG_ENERGYCOAT	#Energy Coat#
-//4025,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
-//4025,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
+4025,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
+4025,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
 
 // Baby Archer
 4026,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#Basic Skills#
@@ -1489,8 +1489,8 @@
 4026,47,10,46,5,0,0,0,0,0,0,0,0//AC_SHOWER		#Arrow Shower#
 4026,147,1,0,0,0,0,0,0,0,0,0,0//AC_MAKINGARROW	#Arrow Crafting#
 4026,148,1,0,0,0,0,0,0,0,0,0,0//AC_CHARGEARROW	#Arrow Repel#
-//4026,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
-//4026,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
+4026,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
+4026,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
 
 // Baby Acolyte
 4027,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#Basic Skills#
@@ -1510,8 +1510,8 @@
 4027,34,10,22,5,0,0,0,0,0,0,0,0//AL_BLESSING	#ブレッシング#
 4027,35,1,28,2,0,0,0,0,0,0,0,0//AL_CURE		#キュアー#
 4027,156,1,0,0,0,0,0,0,0,0,0,0//AL_HOLYLIGHT	#ホーリーライト#
-//4027,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
-//4027,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
+4027,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
+4027,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
 
 // Baby Merchant
 4028,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#Basic Skills#
@@ -1526,8 +1526,8 @@
 4028,153,1,0,0,0,0,0,0,0,0,0,0//MC_CARTREVOLUTION	#カートレボリューション#
 4028,154,1,0,0,0,0,0,0,0,0,0,0//MC_CHANGECART	#チェンジカート#
 4028,155,1,0,0,0,0,0,0,0,0,0,0//MC_LOUD		#ラウドボイス#
-//4028,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
-//4028,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
+4028,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
+4028,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
 
 // Baby Thief
 4029,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#Basic Skills#
@@ -1542,8 +1542,8 @@
 4029,150,1,0,0,0,0,0,0,0,0,0,0//TF_BACKSLIDING	#バックステップ#
 4029,151,1,0,0,0,0,0,0,0,0,0,0//TF_PICKSTONE	#石拾い#
 4029,152,1,0,0,0,0,0,0,0,0,0,0//TF_THROWSTONE	#石投げ#
-//4029,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
-//4029,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
+4029,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
+4029,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
 
 // Baby Knight
 4030,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#Basic Skills#
@@ -2091,8 +2091,8 @@
 4045,51,10,50,5,0,0,0,0,0,0,0,0//TF_HIDING	#ハイディング#
 4045,52,10,0,0,0,0,0,0,0,0,0,0//TF_POISON		#インベナム#
 4045,53,1,52,3,0,0,0,0,0,0,0,0//TF_DETOXIFY	#解毒#
-//4045,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
-//4045,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
+4045,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
+4045,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
 
 // TaeKwon Kid
 4046,1,9,0,0,0,0,0,0,0,0,0,0		//NV_BASIC#Basic Skill#

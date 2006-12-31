@@ -175,7 +175,13 @@ int pc_calc_pvprank_timer(int tid, unsigned int tick, int id, int data);
 int pc_ismarried(struct map_session_data *sd);
 int pc_marriage(struct map_session_data *sd, struct map_session_data *dstsd);
 int pc_divorce(struct map_session_data *sd);
+void pc_adoption(struct map_session_data *sd, struct map_session_data *tsd, char type);
+
 struct map_session_data *pc_get_partner(struct map_session_data *sd);
+struct map_session_data *pc_get_father(struct map_session_data *sd);
+struct map_session_data *pc_get_mother(struct map_session_data *sd);
+struct map_session_data *pc_get_child(struct map_session_data *sd);
+
 void pc_set_gm_level(int account_id, unsigned char level);
 void pc_set_gm_level_by_gm(int account_id, signed char level, int account_id_of_gm);
 void pc_setstand(struct map_session_data *sd);

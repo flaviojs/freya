@@ -784,10 +784,10 @@ int skillnotok(int skillid, struct map_session_data *sd) {
 
 	if (i >= GD_SKILLBASE && i < GD_SKILLBASE+MAX_GUILDSKILL) //GD_SKILLBASE = 10000, MAX_GUILDSKILL = 15
 		i -= 9100;
-		
+
 	if (i > MAX_SKILL_DB || i < 0)
 		return 1;
-		
+
 	if (sd->blockskill[i] > 0)
 		return 1;
 
@@ -819,8 +819,7 @@ int skillnotok(int skillid, struct map_session_data *sd) {
 	switch (skillid) {
 	case AL_TELEPORT:
 	case AL_WARP:
-		if(map[sd->bl.m].flag.noteleport || sd->sc_data[SC_LANDPROTECTOR].timer != -1)
-		{
+		if(map[sd->bl.m].flag.noteleport || sd->sc_data[SC_LANDPROTECTOR].timer != -1) {
 			clif_skill_teleportmessage(sd, 0);
 			return 1;
 		}
@@ -833,6 +832,14 @@ int skillnotok(int skillid, struct map_session_data *sd) {
 			return 1;
 		}
 		break;
+	case WE_CALLPARTNER:
+	case WE_CALLPARENT:
+	case WE_CALLBABY:
+		if (map[sd->bl.m].flag.nomemo) {
+			clif_skill_teleportmessage(sd, 1);
+			return 1;
+		}
+		break;	
 	case WZ_ICEWALL:
 		if (map[sd->bl.m].flag.noicewall && !map[sd->bl.m].flag.pvp) {
 			clif_skill_fail(sd, sd->skillid, 0, 0);
@@ -846,7 +853,7 @@ int skillnotok(int skillid, struct map_session_data *sd) {
 		}
 		break;
 	}
-	
+
 	return(map[sd->bl.m].flag.noskill);
 }
 
@@ -1048,7 +1055,7 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 			skilllv = pc_checkskill(sd, TF_POISON);
 	case TF_POISON: /* ƒCƒ“ƒxƒiƒ€ */
 	case AS_SPLASHER: /* ƒxƒiƒ€ƒXƒvƒ‰ƒbƒVƒƒ[ */
-		if (rand() % 100< (2 * skilllv + 10) * sc_def_vit / 100)
+		if (rand() % 100 < (2 * skilllv + 10) * sc_def_vit / 100)
 			status_change_start(bl, SC_POISON, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
 		else {
 			if (sd && skillid == TF_POISON)
@@ -1086,7 +1093,7 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 		else if(sd && skillid == MG_FROSTDIVER)
 			clif_skill_fail(sd, skillid, 0, 0);
 		break;
-	
+
 	case WZ_STORMGUST:		/* ƒXƒg[ƒ€ƒKƒXƒg */
 	  {
 		struct status_change *sc_data = status_get_sc_data(bl);
@@ -1098,36 +1105,35 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 		}
 	  }
 		break;
-	
+
 	case HT_LANDMINE:		/* ƒ‰ƒ“ƒhƒ}ƒCƒ“ */
 		if(rand() % 100 < (5 * skilllv + 30) * sc_def_vit / 100)
 			status_change_start(bl, SC_STUN, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
 		break;
-		
+
 	case HT_SHOCKWAVE:
-		if(dstsd && (map[bl->m].flag.pvp || map[bl->m].flag.gvg))
-		{
+		if(dstsd && (map[bl->m].flag.pvp || map[bl->m].flag.gvg)) {
 			dstsd->status.sp -= dstsd->status.sp * (5 + 15 * skilllv) / 100;
 			clif_updatestatus(dstsd, SP_SP);
 		}
 		break;
-		
+
 	case HT_SANDMAN:		/* ƒTƒ“ƒhƒ}ƒ“ */
 		if(rand() % 100 < (5 * skilllv + 30) * sc_def_int / 100)
 			status_change_start(bl, SC_SLEEP, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
 		break;
-		
+
 	case HT_FLASHER:  /* Flasher */
 		if (rand()%100 < (10 * skilllv + 30) * sc_def_int / 100)
 			status_change_start(bl, SC_BLIND, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
 		break;
-	
+
 	case HT_FREEZINGTRAP:	/* ƒtƒŠ[ƒWƒ“ƒOƒgƒ‰ƒbƒv */
 		rate = skilllv * 3 + 35;
 		if(rand() % 100 < rate * sc_def_mdef / 100)
 			status_change_start(bl, SC_FREEZE, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
 		break;
-		
+
 		/*	case HT_ANKLESNARE: // ƒAƒ“ƒNƒ‹ƒXƒlƒA
 		
 		{
@@ -1273,16 +1279,15 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 			status_change_start(bl,SC_BLIND,skilllv,0,0,0,skill_get_time2(skillid,skilllv),0);
 		break;
 
-// -- moonsoul (stun ability of new champion skill tigerfist)
-//
+	// -- moonsoul (stun ability of new champion skill tigerfist)
 	case CH_TIGERFIST:
-		if( rand()%100 < (10 + skilllv * 10) * sc_def_vit / 100 ) {
+		if (rand()%100 < (10 + skilllv * 10) * sc_def_vit / 100) {
 			skill = skill_get_time2(skillid, skilllv) - status_get_agi(bl) / 10; // Recycling "skill" to store status time "sec" [Proximus]
 			status_change_start(bl, SC_STUN, skilllv, 0, 0, 0, skill, 0);
 		}
 		break;
 	case LK_SPIRALPIERCE:
-		if( rand()%100 < (15 + skilllv * 5) * sc_def_vit / 100 )
+		if (rand()%100 < (15 + skilllv * 5) * sc_def_vit / 100)
 			status_change_start(bl, SC_STUN, skilllv, 0, 0, 0, skill_get_time2(skillid,skilllv), 0);
 		break;
 	case ST_REJECTSWORD:	/* ƒtƒŠ[ƒWƒ“ƒOƒgƒ‰ƒbƒv */
@@ -1309,13 +1314,12 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 		break;
 	case PF_SPIDERWEB:		/* ƒXƒpƒCƒ_[ƒEƒFƒbƒu */
 		{
-			if(dstmd || map[sd->bl.m].flag.pvp || map[sd->bl.m].flag.gvg)
-			{
-				int sec = skill_get_time2(skillid,skilllv);
-				if(map[src->m].flag.pvp) //PvP‚Å‚ÍS‘©ŠÔ”¼Œ¸H
-					sec = sec / 2;
-				status_change_start(bl, SC_SPIDERWEB, skilllv, 0, 0, 0, sec, 0);
-			}
+		if(dstmd || map[sd->bl.m].flag.pvp || map[sd->bl.m].flag.gvg)	{
+			int sec = skill_get_time2(skillid,skilllv);
+			if(map[src->m].flag.pvp) //PvP‚Å‚ÍS‘©ŠÔ”¼Œ¸H
+				sec = sec / 2;
+			status_change_start(bl, SC_SPIDERWEB, skilllv, 0, 0, 0, sec, 0);
+		}
 		}
 		break;
 	case ASC_METEORASSAULT:			/* ƒƒeƒIƒAƒTƒ‹ƒg */
@@ -1394,7 +1398,7 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 	case SL_STUN:
 		// Stun Medium monsters
 		if(status_get_size(bl) == 1 && (rand() % 100 < sc_def_vit))
-			status_change_start(bl,SC_STUN,0,0,0,0,2000,0);
+			status_change_start(bl, SC_STUN, 0, 0, 0, 0, 2000, 0);
 		break;
 
 	case GS_BULLSEYE: // 0.1% Coma Rate: To-Do
@@ -4529,14 +4533,18 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		{
 			if(!sc_data)
 				break;
+
 			if(sc_data[SC_GOSPEL].timer != -1 && sc_data[SC_GOSPEL].val4 == BCT_SELF)
 				status_change_end(src, SC_GOSPEL, -1); // Clears the active GOSPEL effect
 			else {
 				struct skill_unit_group *sg = skill_unitsetting(src, skillid, skilllv, src->x, src->y, 0);
 				if(sc_data[SC_GOSPEL].timer != -1)
 					status_change_end(src, SC_GOSPEL, -1);
+
 				status_change_start(src, SkillStatusChangeTable[skillid], skilllv, 0, (int)sg, BCT_SELF, skill_get_time(skillid, skilllv), 0);
+				clif_skill_poseffect(src, skillid, skilllv, 0, 0, tick); //PA_GOSPEL music packet[GoodKat]
 			}
+
 			clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 		}
 		break;
@@ -5282,7 +5290,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		break;
 
 	case WE_MALE:				/* ŒN‚¾‚¯‚ÍŒì‚é‚æ */
-		//The Skill Loving Touch cost 10% of the users whole HP and should give the Partner 10% of THE PARTNERS OWN max HP
+		//The Skill Loving Touch cost 10% of the caster current HP and should give the Partner 10% of THE PARTNERS OWN max HP 
 		//not the HP that was taken by the user of the skill.
 		if(sd && dstsd) {
 			int gain_hp = dstsd->status.max_hp * 10 / 100;
@@ -5290,7 +5298,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 			pc_heal(dstsd, gain_hp, 0);
 		}
 		break;
-	case WE_FEMALE:				/* ‚ ‚È‚½‚Ìˆ×‚É‹]µ‚É‚È‚è‚Ü‚· */
+	case WE_FEMALE:				/* ‚ ‚È‚½‚Ìˆ×‚É‹]µ‚É‚È‚è‚Ü‚· */
 		//The same for the Skill Undying Love that will cost me by casting 10% of my sp and will Give my Partner ONLY 10% OF HIS OWN SP back.
 		//And not the amount of 10% that i must pay fo it
 		if(sd && dstsd) {
@@ -5300,22 +5308,76 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		}
 		break;
 
-	case WE_CALLPARTNER:			/* ‚ ‚È‚½‚É‰ï‚¢‚½‚¢ */
-		if (sd && dstsd) {
+	case WE_CALLPARTNER:			/* ‚ ‚È‚½‚É‰ï‚¢‚½‚¢ */
+		if (sd) {
 			if ((dstsd = pc_get_partner(sd)) == NULL) {
 				clif_skill_fail(sd, skillid, 0, 0);
 				map_freeblock_unlock();
 				return 0;
 			}
-			if(map[sd->bl.m].flag.nomemo || map[sd->bl.m].flag.nowarpto || map[dstsd->bl.m].flag.nowarp){
-				clif_skill_teleportmessage(sd,1);
+			if(map[sd->bl.m].flag.nomemo || map[sd->bl.m].flag.nowarpto || map[dstsd->bl.m].flag.nowarp) {
+				clif_skill_teleportmessage(sd, 1);
 				map_freeblock_unlock();
 				return 0;
 			}
-			skill_unitsetting(src,skillid,skilllv,sd->bl.x,sd->bl.y,0);
+			skill_unitsetting(src, skillid, skilllv, sd->bl.x, sd->bl.y, 0);
 		}
 		break;
-	
+
+	// parent-baby skills
+	case WE_BABY:
+		if(sd) {
+			struct map_session_data *f_sd = pc_get_father(sd);
+			struct map_session_data *m_sd = pc_get_mother(sd);
+			if(!f_sd && !m_sd) {
+				clif_skill_fail(sd, skillid, 0, 0);
+				map_freeblock_unlock();
+				return 0;
+			}
+			status_change_start(bl, SC_STUN, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
+			if (f_sd) status_change_start(&f_sd->bl, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
+			if (m_sd) status_change_start(&m_sd->bl, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
+		}
+		break;
+	case WE_CALLPARENT:
+		if(sd) {
+			struct map_session_data *f_sd = pc_get_father(sd);
+			struct map_session_data *m_sd = pc_get_mother(sd);
+			// if neither was found
+			if(!f_sd && !m_sd) {
+				clif_skill_fail(sd, skillid, 0, 0);
+				map_freeblock_unlock();
+				return 0;
+			}
+			if(map[sd->bl.m].flag.nomemo || map[sd->bl.m].flag.nowarpto) {
+				clif_skill_teleportmessage(sd, 1);
+				map_freeblock_unlock();
+				return 0;
+			}
+			if((!f_sd && m_sd && map[m_sd->bl.m].flag.nowarp) ||
+				(!m_sd && f_sd && map[f_sd->bl.m].flag.nowarp))	{	//Case where neither one can be warped.
+				clif_skill_teleportmessage(sd, 1);
+				map_freeblock_unlock();
+				return 0;
+			}
+			//Warp those that can be warped.
+			if (f_sd && !map[f_sd->bl.m].flag.nowarp)
+				pc_setpos(f_sd, sd->mapname, sd->bl.x, sd->bl.y, 3, 0);
+			if (m_sd && !map[m_sd->bl.m].flag.nowarp)
+				pc_setpos(m_sd, sd->mapname, sd->bl.x, sd->bl.y, 3, 0);
+		}
+		break;
+	case WE_CALLBABY:
+		if(sd && dstsd) {
+			if(map[sd->bl.m].flag.nomemo || map[sd->bl.m].flag.nowarpto || map[dstsd->bl.m].flag.nowarp) {
+				clif_skill_teleportmessage(sd, 1);
+				map_freeblock_unlock();
+				return 0;
+			}
+			pc_setpos(dstsd, sd->mapname, sd->bl.x, sd->bl.y, 3, 0);
+		}
+		break;
+
 	case NPC_POWERUP:	//NPC”š—ô”g“®
 		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 		//src or bl? the same.. Source in this case, since its the mob who should get the status, but src == bl in this case.
@@ -6896,7 +6958,7 @@ int skill_unit_onplace(struct skill_unit *src, struct block_list *bl, unsigned i
 				status_change_start(bl, type, sg->skill_lv, sg->val1, sg->val2, sg->group_id, skill_get_time2(sg->skill_id, sg->skill_lv), 0);
 		break;
 
-	case 0xb2:	/* WE_CALLPARTNER */
+	case 0xb2:	/* WE_CALLPARTNER, WE_CALLBABY, WE_CALLPARENT */
 		break;
 	
 	//case 0xb3:	/* PA_GOSPEL */

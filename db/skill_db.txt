@@ -450,9 +450,9 @@
 407,0,6,4,0,1,1,0,no,0,0,0,none,0	//ASC_CDP#Create Deadly Poison Bottle#
 
 // Adoption Skills
-//408,9,6,4,0,1,1,1,yes,0,1,0,none,0	//WE_BABY#Baby#
-//409,9,6,4,0,1,1,1,yes,0,1,1,none,0	//WE_CALLPARENT#Call Parent#
-//410,9,6,4,0,1,1,1,yes,0,1,1,none,0	//WE_CALLBABY#Call Baby#
+408,9,6,4,0,1,1,1,yes,0,1,0,none,0	//WE_BABY#Baby#
+409,9,6,4,0,1,1,1,yes,0,1,1,none,0	//WE_CALLPARENT#Call Parent#
+410,9,6,4,0,1,1,1,yes,0,1,1,none,0	//WE_CALLBABY#Call Baby#
 
 // TaeKwon Class Skills
 411,0,6,4,0,1,10,1,yes,0,0,0,magic,0	//TK_RUN#Sprint#

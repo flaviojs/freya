@@ -5,6 +5,11 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/30/06
+	* Added: Missing clif_skill_poseffect to PA_GOSPEL code. A client packet to start the Gospel music [GoodKat]
+	* Added: Baby/Parent skills: WE_BABY, WE_CALLPARENT, WE_CALLBABY [GoodKat]
+	* Added: Initial structure for the adoption system: packets, mmo_char struct, sql rows, subroutines [GoodKat]
+		- SQL version only for now. Backup the main char DB before making any upgrade.
+		- Baby skills coming soon.
 	* Updated: Thor Volcano mobs with all the info we currently have [Tsuyuki]
 
 12/29/06

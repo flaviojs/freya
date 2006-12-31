@@ -125,10 +125,13 @@ void clif_talkiebox(struct block_list *bl, char* talkie);
 void clif_wedding_effect(struct block_list *bl);
 //void clif_sitting(int fd, struct map_session_data *sd);
 //void clif_callpartner(struct map_session_data *sd);
-void clif_adopt_process(struct map_session_data *sd);
 void clif_sitting(struct map_session_data *sd);
 void clif_soundeffect(struct map_session_data *sd, struct block_list *bl, char *name, int type);
 int clif_soundeffectall(struct block_list *bl, char *name, int type);
+
+// Adoption Packets related to be used outside clif.c [GoodKat]
+void clif_adopt_process(struct map_session_data *sd);
+void clif_adoption_invite(struct map_session_data *sd, struct map_session_data *tsd);
 
 // trade
 int clif_traderequest(struct map_session_data *sd, char *name);

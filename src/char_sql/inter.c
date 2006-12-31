@@ -305,9 +305,12 @@ void inter_save() {
 // initialize // èâä˙âª
 void inter_init(const char *file) {
 	struct {
-		unsigned int acc_reg_db : 1;
-		unsigned int scdata_db : 1;
-		unsigned int rank_db : 1;
+		unsigned int acc_reg_db 	: 1;
+		unsigned int scdata_db 		: 1;
+		unsigned int rank_db 			: 1;
+		unsigned int adopt_mother	: 1;
+		unsigned int adopt_father	: 1;
+		unsigned int adopt_child	: 1;
 	} flag;
 
 	memset(&flag, 0, sizeof(flag));
@@ -409,6 +412,21 @@ void inter_init(const char *file) {
 		sql_request("DELETE FROM `%s` WHERE `str` = 'PC_DIE_COUNTER'", global_reg_value);
 
 		printf("Transfer of `die_counter` data done.\n");
+	}
+
+	//Adoption system [GoodKat]
+	sql_request("SHOW COLUMNS FROM `%s`", char_db);
+	while (sql_get_row()) {
+   	if (strcmp(sql_get_string(0), "father") == 0)
+			flag.adopt_father = 1;
+		else if (strcmp(sql_get_string(0), "mother") == 0)
+			flag.adopt_mother = 1;
+		else if (strcmp(sql_get_string(0), "child") == 0)
+			flag.adopt_child = 1;
+	}
+	if (flag.adopt_father != 1 || flag.adopt_mother != 1 || !flag.adopt_child != 1) {
+		printf(CL_RED "ERROR: Missing rows in %s table: father, mother, child. \nConsider upgrading it manually!" CL_RESET "\n", char_db);
+		exit(1);
 	}
 
 	wis_db = NULL;

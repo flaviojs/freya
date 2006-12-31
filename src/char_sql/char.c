@@ -577,7 +577,7 @@ inline void mmo_char_tosql(struct mmo_charstatus *p) {
 	            "`str`='%d',`agi`='%d',`vit`='%d',`int`='%d',`dex`='%d',`luk`='%d',"
 	            "`option`='%d',`karma`='%d',`manner`='%d',`party_id`='%d',`guild_id`='%d',`pet_id`='%d',"
 	            "`hair`='%d',`hair_color`='%d',`clothes_color`='%d',`weapon`='%d',`shield`='%d',`head_top`='%d',`head_mid`='%d',`head_bottom`='%d',"
-	            "`last_map`='%s',`last_x`='%d',`last_y`='%d',`save_map`='%s',`save_x`='%d',`save_y`='%d',`die_counter`='%d',`partner_id`='%d' WHERE `char_id` = '%d' LIMIT 1",
+	            "`last_map`='%s',`last_x`='%d',`last_y`='%d',`save_map`='%s',`save_x`='%d',`save_y`='%d',`die_counter`='%d',`partner_id`='%d',`father`='%d',`mother`='%d',`child`='%d'  WHERE `char_id` = '%d' LIMIT 1",
 	            char_db, p->class, p->base_level, p->job_level,
 	            p->base_exp, p->job_exp, p->zeny,
 	            p->max_hp, p->hp, p->max_sp, p->sp, p->status_point, p->skill_point,
@@ -586,7 +586,9 @@ inline void mmo_char_tosql(struct mmo_charstatus *p) {
 	            p->hair, p->hair_color, p->clothes_color,
 	            p->weapon, p->shield, p->head_top, p->head_mid, p->head_bottom,
 	            p->last_point.map, p->last_point.x, p->last_point.y,
-	            p->save_point.map, p->save_point.x, p->save_point.y, p->die_counter, p->partner_id, p->char_id);
+	            p->save_point.map, p->save_point.x, p->save_point.y,
+	            p->die_counter,
+	            p->partner_id, p->father, p->mother, p->child, p->char_id); // Adoption system [GoodKat]
 
 	if (char_dat_id == -1 || memcmp(p->memo_point, char_dat[char_dat_id].memo_point, sizeof(p->memo_point)) != 0) { // save only if changed
 //		printf("- Save memo data to MySQL!\n");
@@ -922,11 +924,16 @@ int mmo_char_fromsql(int char_id) {
 
 	printf("Loaded: ");
 
-	sql_request("SELECT `account_id`,`char_num`,`name`,`class`,`base_level`,`job_level`,`base_exp`,`job_exp`,`zeny`," // 0-8
-	            "`str`,`agi`,`vit`,`int`,`dex`,`luk`, `max_hp`,`hp`,`max_sp`,`sp`,`status_point`,`skill_point`," // 9-20
-	            "`option`,`karma`,`manner`,`party_id`,`guild_id`,`pet_id`,`hair`,`hair_color`," // 21-28
-	            "`clothes_color`,`weapon`,`shield`,`head_top`,`head_mid`,`head_bottom`," // 29-34
-	            "`last_map`,`last_x`,`last_y`,`save_map`,`save_x`,`save_y`, `die_counter`, `partner_id` FROM `%s` WHERE `char_id` = '%d' LIMIT 1", char_db, char_id); // 35-41
+	sql_request("SELECT "
+											"`account_id`,`char_num`,`name`,`class`,`base_level`,`job_level`,`base_exp`,`job_exp`,`zeny`," // 0-8
+											"`str`,`agi`,`vit`,`int`,`dex`,`luk`, `max_hp`,`hp`,`max_sp`,`sp`,`status_point`,`skill_point`," // 9-20
+											"`option`,`karma`,`manner`,`party_id`,`guild_id`,`pet_id`,`hair`,`hair_color`," // 21-28
+											"`clothes_color`,`weapon`,`shield`,`head_top`,`head_mid`,`head_bottom`," // 29-34
+											"`last_map`,`last_x`,`last_y`,`save_map`,`save_x`,`save_y`," // 35-40
+											"`die_counter`," // 41
+											"`partner_id`, `father`, `mother`, `child` " // 42-45
+							"FROM `%s` "  
+							"WHERE `char_id` = '%d' LIMIT 1", char_db, char_id);
 
 	if (sql_get_row()) {
 		p.char_id = char_id;
@@ -984,8 +991,13 @@ int mmo_char_fromsql(int char_id) {
 		strncpy(p.save_point.map, sql_get_string(38), 16); // 17 - NULL
 		p.save_point.x = sql_get_integer(39);
 		p.save_point.y = sql_get_integer(40);
+
 		p.die_counter = sql_get_integer(41);
+
 		p.partner_id = sql_get_integer(42);
+		p.father = sql_get_integer(43);
+		p.mother = sql_get_integer(44);
+		p.child = sql_get_integer(45);
 	} else {
 		printf("char - failed\n"); // Error?! ERRRRRR WHAT THAT SAY!?
 		return -1;

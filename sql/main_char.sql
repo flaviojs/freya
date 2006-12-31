@@ -66,8 +66,11 @@ CREATE TABLE `char`
   `save_x` smallint(3) NOT NULL default '53',
   `save_y` smallint(3) NOT NULL default '111',
   `die_counter` int(11) NOT NULL default '0',
-  `partner_id` int(11) NOT NULL default '0',
-  `online` tinyint(1) NOT NULL default '0',
+  `partner_id` int(11) unsigned NULL default '0',
+  `father` int(11) unsigned NOT NULL default '0',
+  `mother` int(11) unsigned NOT NULL default '0',
+  `child` int(11) unsigned NOT NULL default '0',
+  `online` tinyint(1) NOT NULL default '0'
   INDEX (`char_id`),
   PRIMARY KEY  (`char_id`),
   KEY `account_id` (`account_id`),

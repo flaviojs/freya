@@ -7237,29 +7237,40 @@ void clif_divorced(struct map_session_data *sd, char *name) {
 	return;
 }
 
-/* Future adoption packet
+#ifdef USE_SQL
+/*==========================================
+ * Adoption System [GoodKat]
+ *------------------------------------------
+ */
 void clif_adoption_invite(struct map_session_data *sd, struct map_session_data *tsd) { //0x1f6 <src_accid>.L, <dst_accid>.L, <name>.24
 
 	WPACKETW(0) = 0x1f6;
 	WPACKETL(2) = sd->status.account_id;
 	WPACKETL(6) = tsd->status.account_id;
 	strncpy(WPACKETP(10), sd->status.name, 24);
-	SENDPACKET(tsd->fd, packet_len_table[0xfe]);
-
-	return;
-}*/
-
-/*==========================================
- *
- *------------------------------------------
- */
-void clif_parse_ReqAdopt(int fd, struct map_session_data *sd) { // S 0x01f9 <ID>.l
-//	nullpo_retv(sd); // checked before to call function
-
-//	SENDPACKET(fd, packet_len_table[0x1f6]);
+	SENDPACKET(tsd->fd, packet_len_table[0x1f6]);
 
 	return;
 }
+
+void clif_parse_AdoptReply(int fd, struct map_session_data *tsd) { // S 0x1f7 <src_id>.L <dest_id>.L <answer>.W ??.W ??.B
+	struct block_list *bl = map_id2bl(RFIFOL(fd, 2));
+
+	if(bl && bl->type == BL_PC)
+		pc_adoption((struct map_session_data *)bl, tsd, 1);
+
+	return;
+}
+
+void clif_parse_ReqAdopt(int fd, struct map_session_data *sd) { // S 0x01f9 <char_id>.L
+	struct block_list *bl = map_id2bl(RFIFOL(fd, 2));
+
+	if(bl && bl->type == BL_PC)
+		pc_adoption(sd, (struct map_session_data *)bl, 0);
+
+	return;
+}
+#endif
 
 /*==========================================
  *
@@ -12546,7 +12557,7 @@ static void (*clif_parse_func_table[MAX_PACKET_VERSION][MAX_PACKET_DB])() = {
 	NULL, NULL, NULL, NULL, NULL, NULL, NULL, clif_parse_sn_doridori,
 	clif_parse_CreateParty2, NULL, NULL, NULL, NULL, clif_parse_sn_explosionspirits, NULL, NULL,
 	// 1f0
-	NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, NULL, NULL, NULL, NULL, NULL, NULL, clif_parse_AdoptReply,
 	NULL, clif_parse_ReqAdopt, NULL, NULL, NULL, NULL, NULL, NULL,
 
 	// 200
