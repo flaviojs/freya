@@ -4,8 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
-01/01/07
+01/01/07	
 	* Note: Happy New Year! [Freya Dev Team]
+	* Fixed: Comma missing at main_char.sql. [Lex]
 
 12/31/06
 	* Fixed: Cowardice Blade can now be equipped by the Thief-Class, and by Ninjas [Tsuyuki]
