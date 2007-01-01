@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 12/31/06
+	* Fixed: Cowardice Blade can now be equipped by the Thief-Class, and by Ninjas [Tsuyuki]
 	* Fixed: The number inputs for the barrel in Lighthalzen Cube room.  [Bison]
 	* Fixed: NPC_AGIUP/NPC_POWERUP (hitrate bonus) skill formula to be exact with Doddler's calc.  [Bison]
 	* Fixed: NPC_CALLSLAVE will now recall mobs regardless of how far away they are now.  [Bison]
