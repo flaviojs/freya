@@ -3553,6 +3553,9 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		int heal_get_jobexp;
 		int skill;
 
+		// Level 11 heal = 9999, mainly for MVP's.  [Bison]
+		if(skilllv == 11)
+			heal = 9999;
 		if(dstsd && status_isimmune(&dstsd->bl))
 			heal = 0;	/* 黄金蟲カード（ヒール量０） */
 		if(sd){
@@ -5382,13 +5385,19 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 		//src or bl? the same.. Source in this case, since its the mob who should get the status, but src == bl in this case.
 		status_change_start(src, SC_INCATKRATE, 40 * skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
-		status_change_start(src, SC_INCDEX, 10 * skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
+		// Formula fix from Doddler's calc, since level 5 boosts their hitrate by 2x their dex (100 + 20% per skill level).
+		// Don't really need to declare a var here.  [Bison]
+		short mobDexUp = (status_get_dex(src) * (100 + (20 * skilllv))) / 100;
+		status_change_start(src, SC_INCDEX, mobDexUp, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
 		break;
 
 	case NPC_AGIUP:
 		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 		//src or bl? the same.. Source in this case, since its the mob who should get the status, but src == bl in this case.
-		status_change_start(src, SC_INCAGI, 10 * skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
+		// Formula fix from Doddler's calc, since level 5 boosts their flee by 2x their agi (100 + 20% per skill level).
+		// Don't really need to declare a var here.  [Bison]
+		short mobAgiUp = (status_get_agi(src) * (100 + (20 * skilllv))) / 100;
+		status_change_start(src, SC_INCAGI, mobAgiUp, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
 		break;
 		
 	case NPC_CALLSLAVE:		//取り巻き呼び戻し
