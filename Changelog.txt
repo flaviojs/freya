@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+01/01/06
+	* Note: Happy New Year! [Freya Dev Team]
+
 12/31/06
 	* Fixed: Cowardice Blade can now be equipped by the Thief-Class, and by Ninjas [Tsuyuki]
 	* Fixed: The number inputs for the barrel in Lighthalzen Cube room.  [Bison]
