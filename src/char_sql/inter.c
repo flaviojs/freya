@@ -424,7 +424,7 @@ void inter_init(const char *file) {
 		else if (strcmp(sql_get_string(0), "child") == 0)
 			flag.adopt_child = 1;
 	}
-	if (flag.adopt_father != 1 || flag.adopt_mother != 1 || !flag.adopt_child != 1) {
+	if (flag.adopt_father != 1 || flag.adopt_mother != 1 || flag.adopt_child != 1) {
 		printf(CL_RED "ERROR: Missing rows in %s table: father, mother, child. \nConsider upgrading it manually!" CL_RESET "\n", char_db);
 		exit(1);
 	}
