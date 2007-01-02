@@ -1014,6 +1014,16 @@ else
 	echo >>$CONFIGFILE
 fi
 
+if [ x"$WITH_HASHDUMP" != x"no" ]; then
+	echo "/* script hash dumping enabled */" >>$CONFIGFILE
+	echo "#define SCRIPT_HASHDUMP" >>$CONFIGFILE
+	echo >>$CONFIGFILE
+else
+	echo "/* script hash dumping disabled */" >>$CONFIGFILE
+	echo "#undef SCRIPT_HASHDUMP" >>$CONFIGFILE
+	echo >>$CONFIGFILE
+fi
+
 if [ "$IS_CYGWIN" != no ]; then
 	echo "/* Cygwin environement */" >>$CONFIGFILE
 	echo "#define __CYGWIN" >>$CONFIGFILE
@@ -1025,7 +1035,7 @@ else
 fi
 
 if [ x"$IS_CYGWIN" != x"no" ]; then
-	echo "/* CYGWIN need that */" >>$CONFIGFILE
+	echo "/* reset CYGWIN:s FD_SETSIZE value */" >>$CONFIGFILE
 	echo "#ifdef FD_SETSIZE" >>$CONFIGFILE
 	echo "#undef FD_SETSIZE" >>$CONFIGFILE
 	echo "#endif" >>$CONFIGFILE
@@ -1058,7 +1068,7 @@ else
 	echo >>$CONFIGFILE
 fi
 
-echo "/* Dynamic linking enabled anyway */" >>$CONFIGFILE
+echo "/* enable dynamic addon linking */" >>$CONFIGFILE
 echo "#define DYNAMIC_LINKING" >>$CONFIGFILE
 echo >>$CONFIGFILE
 
