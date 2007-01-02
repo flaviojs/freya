@@ -7237,40 +7237,47 @@ void clif_divorced(struct map_session_data *sd, char *name) {
 	return;
 }
 
-#ifdef USE_SQL
 /*==========================================
  * Adoption System [GoodKat]
  *------------------------------------------
  */
 void clif_adoption_invite(struct map_session_data *sd, struct map_session_data *tsd) { //0x1f6 <src_accid>.L, <dst_accid>.L, <name>.24
 
+#ifdef USE_SQL
 	WPACKETW(0) = 0x1f6;
 	WPACKETL(2) = sd->status.account_id;
 	WPACKETL(6) = tsd->status.account_id;
 	strncpy(WPACKETP(10), sd->status.name, 24);
 	SENDPACKET(tsd->fd, packet_len_table[0x1f6]);
+#endif
 
 	return;
 }
 
 void clif_parse_AdoptReply(int fd, struct map_session_data *tsd) { // S 0x1f7 <src_id>.L <dest_id>.L <answer>.W ??.W ??.B
+
+#ifdef USE_SQL
 	struct block_list *bl = map_id2bl(RFIFOL(fd, 2));
 
 	if(bl && bl->type == BL_PC)
 		pc_adoption((struct map_session_data *)bl, tsd, 1);
+#endif
 
 	return;
 }
 
 void clif_parse_ReqAdopt(int fd, struct map_session_data *sd) { // S 0x01f9 <char_id>.L
+
+#ifdef USE_SQL
 	struct block_list *bl = map_id2bl(RFIFOL(fd, 2));
 
 	if(bl && bl->type == BL_PC)
 		pc_adoption(sd, (struct map_session_data *)bl, 0);
 
+#endif
+
 	return;
 }
-#endif
 
 /*==========================================
  *

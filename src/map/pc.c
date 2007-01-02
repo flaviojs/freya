@@ -655,7 +655,7 @@ int pc_isequip(struct map_session_data *sd, int n)
 			// If Spirit of the Super Novice is active, and Super Novice Lv is over 90, can equip all upper headgears
 			if (item->equip & 0x0100 && sd->status.base_level >= 90)
 				return 1; // All upper headgears are equipable, regardless of item class restriction
-			}
+		}
 	}
 
 	if (item == NULL)
@@ -664,7 +664,7 @@ int pc_isequip(struct map_session_data *sd, int n)
 		return 0;
 	if (item->elv > 0 && sd->status.base_level < item->elv) // Item base level restriction
 		return 0;
-		
+
 	// Upper job restriction
 	upper_type = pc_get_upper_type(sd->status.class);
 	if(upper_type == 0)
@@ -1279,7 +1279,7 @@ void pc_checkminskill(struct map_session_data* sd) {
 		break;
 	case 24: // Gunslinger
 	case 25: // Ninja
-		min_points = 9 + 20 + sd->status.job_level - 1;
+		min_points = 9 + sd->status.job_level - 1; // Both are both 1st class characters, max joblevel 70 [GoodKat]
 		break;
 	case 26: // Xmas
 		break;
@@ -1430,7 +1430,7 @@ int pc_checkmaxskill(struct map_session_data* sd) {
 		break;
 	case 24: // Gunslinger
 	case 25: // Ninja
-		max_points = 9 + 20 + sd->status.job_level - 1;
+		max_points = 9 + sd->status.job_level - 1; // Both are both 1st class characters, max joblevel 70 [GoodKat]
 		break;
 	case 26: // Xmas
 		break;
@@ -4700,7 +4700,7 @@ struct pc_base_job pc_calc_base_job(unsigned int b_class)
 	
 	if(b_class == JOB_GUNSLINGER)
 		bj.job = 29;
-	
+
 	if(b_class >= JOB_BON_GUN && b_class <= JOB_MUNAK)
 		bj.job = 30 + b_class - JOB_BON_GUN;
 
@@ -4745,15 +4745,18 @@ int pc_calc_base_job2(unsigned int b_class) {
 	if(b_class == JOB_SUPER_BABY)
 		return JOB_SUPER_NOVICE;
 
+	if(b_class >= JOB_BON_GUN && b_class <= JOB_MUNAK)
+		return 30 + b_class - JOB_BON_GUN;
+
 	return b_class - 4023;
 }
 
 int pc_calc_upper(unsigned int b_class) {
-	if(b_class < JOB_NOVICE_HIGH)	// base classe
+	if(b_class < JOB_NOVICE_HIGH)	// 1st class
 		return 0;
-	if(b_class >= JOB_NOVICE_HIGH && b_class < JOB_BABY)	// advanced classe
+	if(b_class >= JOB_NOVICE_HIGH && b_class < JOB_BABY)	// Advanced classes
 		return 1;
-	if(b_class >= JOB_TAEKWON && b_class <= JOB_SOUL_LINKER)	// base classe
+	if(b_class >= JOB_TAEKWON && b_class <= JOB_SOUL_LINKER)	// Expanded classes
 		return 0;
 
 	return 2;	// other => baby?
@@ -4763,14 +4766,14 @@ int pc_calc_upper(unsigned int b_class) {
 // Return upper type of a job, for item_upper db [Latios]
 // 0 = unknown, 1 = base, 2 = advanced, 4 = baby
 //==========================================================================
-short pc_get_upper_type(unsigned int class) {
-	if((JOB_NOVICE <= class && class <= JOB_XMAS) || (JOB_TAEKWON <= class && class <= JOB_SOUL_LINKER))		// base class (xmas? :x)
+short pc_get_upper_type(unsigned int b_class) {
+	if((JOB_NOVICE <= b_class && b_class <= JOB_XMAS) || (JOB_TAEKWON <= b_class && b_class <= JOB_SOUL_LINKER))		// base class (xmas? :x)
 		return 1;
-	else if(JOB_NOVICE_HIGH <= class && class <= JOB_PALADIN2)		// advanced class
+	else if(JOB_NOVICE_HIGH <= b_class && b_class <= JOB_PALADIN2)		// advanced class
 		return 2;
-	else if(JOB_BABY <= class && class <= JOB_SUPER_BABY)		// baby class
+	else if(JOB_BABY <= b_class && b_class <= JOB_SUPER_BABY)		// baby class
 		return 4;
-		
+
 	return 0;
 }
 

@@ -4,9 +4,13 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
-01/01/07	
+01/01/07
 	* Note: Happy New Year! [Freya Dev Team]
+	* Fixed: A condition statement in inter_init regarding adoption implementation (inter.c) [GoodKat]
+	* Fixed: Calculation of max/min skill points for Ninja/Guns. Max jlevel 70, Max skpoints 69 [GoodKat]
+	* Fixed: Compilation errors on clif.c - TXT version [GoodKat]
 	* Fixed: Comma missing at main_char.sql. [Lex]
+	* Added: Bingo warps (Thanks to $ephiroth) [Tsuyuki]
 
 12/31/06
 	* Fixed: Cowardice Blade can now be equipped by the Thief-Class, and by Ninjas [Tsuyuki]
