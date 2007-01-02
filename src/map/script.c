@@ -607,7 +607,7 @@ static int calc_hash(const unsigned char *p)
 	while(*p)
 	{
 		h = (h << 1) + (h >> 3) + (h >> 5) + (h >> 8);
-		h += (unsigned char)tolower(*p++);
+		h += *p++;
 	}
 
 	return h & (SCRIPT_HASH_SIZE - 1);
@@ -621,7 +621,7 @@ static int search_str(const char *p)
 
 	while(i)
 	{
-		if(strcasecmp(str_buf + str_data[i].str, p) == 0)
+		if(strcmp(str_buf + str_data[i].str, p) == 0)
 			return i;
 		i = str_data[i].next;
 	}
@@ -648,7 +648,7 @@ static int add_str(const char *p)
 		i = str_hash[i];
 		for(;;)
 		{
-			if(strcasecmp(str_buf + str_data[i].str, p) == 0)
+			if(strcmp(str_buf + str_data[i].str, p) == 0)
 				return i;
 			if(str_data[i].next==0)
 				break;
@@ -8614,8 +8614,8 @@ static int userfunc_db_final(void *key,void *data,va_list ap)
 
 int do_final_script()
 {
-#ifdef SCRIPT_HASHDUMP
-	FILE *fp = fopen("hash_dump.txt","wt");
+	/* generate hash dump */
+/*	FILE *fp = fopen("hash_dump.txt","wt");
 	if(fp)
 	{
 		int i, count[SCRIPT_HASH_SIZE];
@@ -8654,8 +8654,7 @@ int do_final_script()
 		fprintf(fp, "------------------------------------ \n");
 		fprintf(fp, "min = %d, max = %d, zero = %d \n", min, max, zero);
 		fclose(fp);
-	}
-#endif /* SCRIPT_HASHDUMP */
+	} */
 
 	/* apply mapreg changes if neccessary */
 	if(mapreg_dirty >= 0)

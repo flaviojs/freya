@@ -1014,16 +1014,6 @@ else
 	echo >>$CONFIGFILE
 fi
 
-if [ x"$WITH_HASHDUMP" != x"no" ]; then
-	echo "/* script hash dumping enabled */" >>$CONFIGFILE
-	echo "#define SCRIPT_HASHDUMP" >>$CONFIGFILE
-	echo >>$CONFIGFILE
-else
-	echo "/* script hash dumping disabled */" >>$CONFIGFILE
-	echo "#undef SCRIPT_HASHDUMP" >>$CONFIGFILE
-	echo >>$CONFIGFILE
-fi
-
 if [ "$IS_CYGWIN" != no ]; then
 	echo "/* Cygwin environement */" >>$CONFIGFILE
 	echo "#define __CYGWIN" >>$CONFIGFILE
