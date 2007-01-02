@@ -70,7 +70,7 @@ CREATE TABLE `char`
   `father` int(11) unsigned NOT NULL default '0',
   `mother` int(11) unsigned NOT NULL default '0',
   `child` int(11) unsigned NOT NULL default '0',
-  `online` tinyint(1) NOT NULL default '0'
+  `online` tinyint(1) NOT NULL default '0',
   INDEX (`char_id`),
   PRIMARY KEY  (`char_id`),
   KEY `account_id` (`account_id`),
