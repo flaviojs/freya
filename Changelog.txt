@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/01/07
+	* Fixed: Compilation errors on clif.c - TXT version [GoodKat]
 	* Note: Happy New Year! [Freya Dev Team]
 
 12/31/06
