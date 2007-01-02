@@ -6,7 +6,6 @@ Date	Added
 
 01/01/07
 	* Fixed: a condition statement in inter_init regarding adoption implementation (inter.c) [GoodKat]
-	* Fixed: pc_calc_base_job, pc_calc_base_job2 functions [GoodKat]
 	* Fixed: Calculation of max/min skill points for Ninja/Guns. Max jlevel 70, Max skpoints 69 [GoodKat]
 	* Fixed: Compilation errors on clif.c - TXT version [GoodKat]
 	* Note: Happy New Year! [Freya Dev Team]

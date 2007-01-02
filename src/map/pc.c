@@ -4694,6 +4694,12 @@ struct pc_base_job pc_calc_base_job(unsigned int b_class)
 			bj.job = b_class - JOB_BABY;
 		bj.upper = 2;
 	}
+	
+	if(b_class == JOB_NINJA)
+		bj.job = 28;
+	
+	if(b_class == JOB_GUNSLINGER)
+		bj.job = 29;
 
 	if(b_class >= JOB_BON_GUN && b_class <= JOB_MUNAK)
 		bj.job = 30 + b_class - JOB_BON_GUN;
@@ -4713,6 +4719,15 @@ struct pc_base_job pc_calc_base_job(unsigned int b_class)
  *------------------------------------------
  */
 int pc_calc_base_job2(unsigned int b_class) {
+	
+	if(b_class == JOB_NINJA)
+		return  28;
+	
+	if(b_class == JOB_GUNSLINGER)
+		return 29;
+	
+	if(b_class >= JOB_BON_GUN && b_class <= JOB_MUNAK)
+		return 30 + b_class - JOB_BON_GUN;
 
 	if(b_class < JOB_NOVICE_HIGH)
 		return b_class;
