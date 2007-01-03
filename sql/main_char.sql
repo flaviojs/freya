@@ -137,7 +137,7 @@ CREATE TABLE `guild`
   `skill_point` int(11) NOT NULL default '0',
   `castle_id` int(11) NOT NULL default '-1',
   `mes1` varchar(60) NOT NULL default '',
-  `mes2` varchar(60) NOT NULL default '',
+  `mes2` varchar(120) NOT NULL default '',
   `emblem_len` int(11) NOT NULL default '0',
   `emblem_id` int(11) NOT NULL default '0',
   `emblem_data` blob NOT NULL,
