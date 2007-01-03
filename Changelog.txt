@@ -4,13 +4,13 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
-03/01/07
+01/03/07
 	* Improved: script engine hash size handling. should result as a major speedup [Harbin/Rayce]
 	 - new method uses slightly more memory to eliminate (slow) memory reallocation
 	* Added: code to generate script hash dump. see do_final_script function [Harbin/Rayce]
 	 - used to get optimal script hash size
 
-02/01/07
+01/02/07
 	* Fixed: The Freya's url, configure script [GoodKat]
 	* Fixed: guild table structure on main_char.sql [GoodKat]
 		- mes2 should be 120 bytes as the packet structure is: 0x016E <guildID>.L <mess1>.60B <mess2>.120B
