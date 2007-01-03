@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/03/07
+	* Improved: db_mysql.c errors display format [GoodKat]
 	* Improved: sql_request function to log errors on mysql_error.log file if MYSQL_DEBUG is defined [GoodKat]
 	* Added: Support for Two-Handed Maces (The mysterious weapon-type #9) [Tsuyuki]
 	* Fixed: Fuuma Shurikens are now unbreakable [Tsuyuki]
