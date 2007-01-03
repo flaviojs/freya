@@ -2,7 +2,7 @@
 
 /*------------------------------------------------------------------------
  Module:        Version 1.0.0 - Yor
- Author:        Freya Team Copyrights (c) 2004-2006
+ Author:        Freya Team Copyrights (c) 2004-2007
  Project:       Freya Account Server
  Creation Date: December 6, 2004
  Modified Date: January 8, 2005

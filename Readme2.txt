@@ -1,4 +1,4 @@
-               (c)2004-2006 Freya team presents:              
+               (c)2004-2007 Freya team presents:              
                  ___   ___    ___   _  _   __                 
                 (  _) (  ,)  (  _) ( \/ ) (  )                
                 (  _)  )  \   ) _)  \  /  /__\                
