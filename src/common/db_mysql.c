@@ -5,9 +5,7 @@
 #include <config.h>
 
 #ifdef USE_MYSQL
-
-/* Define that to get console output of queries */
-#undef MYSQL_DEBUG
+	#undef MYSQL_DEBUG // Define that to get console output of queries
 
 #include <stdio.h>
 #include <time.h>
@@ -16,8 +14,8 @@
 #include <string.h>
 
 #ifdef __WIN32
-#define __USE_W32_SOCKETS
-#include <windows.h>
+	#define __USE_W32_SOCKETS
+	#include <windows.h>
 #endif
 
 #include "utils.h"
@@ -38,7 +36,7 @@ void sql_init() {
 	if (!mysql_real_connect(&mysql_handle, db_mysql_server_ip, db_mysql_server_id, db_mysql_server_pw,
 	    db_mysql_server_db, db_mysql_server_port, (char *)NULL, 0)) {
 		/* pointer check */
-		printf("Connect DB server error: %s.\n", mysql_error(&mysql_handle));
+		printf(CL_RED "[SQLERR]" CL_RESET " Can't connect to the database: %s.\n", mysql_error(&mysql_handle));
 		exit(1);
 	}
 
@@ -54,8 +52,8 @@ void sql_close(void) {
 	return;
 }
 
-char inbuf[MAX_SQL_BUFFER];
 inline int sql_request(const char *format, ...) {
+	char inbuf[MAX_SQL_BUFFER];
 	int request_with_result;
 	va_list args;
 
@@ -69,20 +67,33 @@ inline int sql_request(const char *format, ...) {
 	request_with_result = (strncasecmp(inbuf, "SELECT", 6) == 0 ||
 	                       strncasecmp(inbuf, "OPTIMIZE", 8) == 0 ||
 	                       strncasecmp(inbuf, "SHOW", 4) == 0);
-	if (request_with_result)
+
+	if (request_with_result) {
 		if (mysql_db_res) {
 			mysql_free_result(mysql_db_res);
 			mysql_db_res = NULL;
 			mysql_db_row = NULL;
 		}
+	}
 
 	strcpy(last_request, inbuf);
 
 #ifdef MYSQL_DEBUG
 	printf("Query: %s\n", inbuf);
 #endif
+
 	if (mysql_query(&mysql_handle, inbuf)) {
-		printf("SQLERR: Req: %s, Error: %s \n", last_request, mysql_error(&mysql_handle));
+
+#ifdef MYSQL_DEBUG // Error logging on mysql_error.log
+		FILE *stderr;
+		stderr = fopen("log/mysql_error.log", "a");
+		if (stderr != NULL) {
+			fprintf(stderr, "[SQLERR] %s, Error: %s \n", last_request, mysql_error(&mysql_handle));
+			fclose(stderr);
+		}
+#endif
+
+		printf(CL_RED "[SQLERR]" CL_RESET " %s, Error: %s \n", last_request, mysql_error(&mysql_handle));
 		return 0;
 	}
 
@@ -93,7 +104,7 @@ inline int sql_request(const char *format, ...) {
 }
 
 int sql_get_row(void) {
-	if (! mysql_db_res)
+	if (!mysql_db_res)
 		return 0;
 
 	mysql_db_row = mysql_fetch_row(mysql_db_res);
@@ -105,12 +116,12 @@ int sql_get_row(void) {
 }
 
 char *sql_get_string(int num_col) {
-	if (! mysql_db_res)
+	if (!mysql_db_res)
 		return NULL;
 
 	if (!mysql_db_row) {
 #ifdef __DEBUG
-		printf("SQLERR: access to null sql row ? (col: %d), last req:%s\n", num_col, last_request);
+		printf(CL_RED "[SQLERR]" CL_RESET " Access to null sql row ? (col: %d), last req:%s\n", num_col, last_request);
 #endif
 		return NULL;
 	}
@@ -122,12 +133,12 @@ char *sql_get_string(int num_col) {
 }
 
 int sql_get_integer(int num_col) {
-	if (! mysql_db_res)
+	if (!mysql_db_res)
 		return -1;
 
 	if (!mysql_db_row) {
 #ifdef __DEBUG
-		printf("SQLERR: access to null sql row ? (col: %d), last req:%s\n", num_col, last_request);
+		printf(CL_RED "[SQLERR]" CL_RESET " Access to null sql row ? (col: %d), last req:%s\n", num_col, last_request);
 #endif
 		return -1;
 	}
