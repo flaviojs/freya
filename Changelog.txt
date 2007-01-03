@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 02/01/07
+	* Fixed: The Freya's url, configure script [GoodKat]
 	* Fixed: guild table structure on main_char.sql [GoodKat]
 		- mes2 should be 120 bytes as the packet structure is: 0x016E <guildID>.L <mess1>.60B <mess2>.120B
 	* Added: testwarpra.txt again since map-server still checking its existence. [Lex]
