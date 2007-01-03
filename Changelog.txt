@@ -5,6 +5,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/03/07
+	* Added: Lion Masquerade's missing bonuses (Thanks to Explosive) [Tsuyuki]
+	* Reverted: Yor's changes to the custom/merchants/dye.txt NPC (Should fix palette problem) [Tsuyuki]
+	* Fixed: Green Ferus Card now gives +10% HP (Thanks to Explosive) [Tsuyuki]
+	* Fixed: Ulle's Cap now has a slot (Thanks to Explosive) [Tsuyuki]
 	* Improved: db_mysql.c errors display format [GoodKat]
 	* Improved: sql_request function to log errors on mysql_error.log file if MYSQL_DEBUG is defined [GoodKat]
 	* Added: Support for Two-Handed Maces (The mysterious weapon-type #9) [Tsuyuki]
