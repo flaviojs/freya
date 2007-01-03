@@ -1092,7 +1092,7 @@
 2419,Gobine's_Greaves,Goibne's Greaves,5,30000,15000,700,0,4,0,0,1071636478,2,64,0,54,0,{},{ bonus bMdef,3; bonus bMaxHPrate,5; bonus bMaxSPrate,5; }
 2420,Angel's_Reincarnation,Angel's Reincarnation,5,10000,5000,300,0,2,0,1,8388609,2,64,0,25,0,{},{ bonus bMaxHP,100; }
 2421,Valkyrie's_Shoes,Valkyrie's Shoes,5,0,,500,,4,,1,1071636478,2,64,,0,0,{},{ bonus bUnbreakableArmor,0; if(GetPureJob==Job_Mage || GetPureJob==Job_Archer || GetPureJob==Job_Acolyte) bonus bMaxHP,(BaseLevel*5); if(GetPureJob==Job_Swordman || GetPureJob==Job_Merchant || GetPureJob==Job_Thief) bonus bMaxSP,(JobLevel*2); }
-2422,High_Quality_Sandals,High Quality Sandals,5,24000,12000,200,,2,,1,142705429,2,64,,40,1,{ bonus bMdef,10; },{}
+2422,High_Quality_Sandals,High Quality Sandals,5,24000,12000,200,,2,,1,142705429,2,64,,40,1,{},{ bonus bMdef,10; }
 
 // Garments
 2501,Hood,Hood,5,1000,0,200,,1,,0,1071636479,2,4,,0,0,{},{}
@@ -2882,13 +2882,13 @@
 
 // Gunslinger Ammunition - Bullets
 13200,Bullet,Bullet,10,1,,2,10,,,,536870912,2,32768,,1,,{},{}
-13201,Silver_Bullet,Silver Bullet,10,15,,2,15,,,,536870912,2,32768,,1,,{ bonus bAtkEle,6; },{}
-13202,Shell_of_Blood,Shell of Blood,10,30,,2,30,,,,536870912,2,32768,,1,,{ bonus2 bAddEff,Eff_Bleeding,500; },{}
-13203,Flare_Sphere,Flare Sphere,10,80,,5,50,,,,536870912,2,32768,,1,,{ bonus bAtkEle,3; },{}
-13204,Lightning_Sphere,Lightning Sphere,10,80,,5,50,,,,536870912,2,32768,,1,,{ bonus bAtkEle,4; },{}
-13205,Poison_Sphere,Poison Sphere,10,80,,5,50,,,,536870912,2,32768,,1,,{ bonus bAtkEle,5; bonus2 bAddEff,Eff_Poison,500; },{}
-13206,Blind_Sphere,Blind Sphere,10,80,,5,50,,,,536870912,2,32768,,1,,{ bonus bAtkEle,7; bonus2 bAddEff,Eff_Blind,500; },{}
-13207,Freezing_Sphere,Freezing Sphere,10,80,,5,50,,,,536870912,2,32768,,1,,{ bonus bAtkEle,1; bonus2 bAddEff,Eff_Freeze,500; },{}
+13201,Silver_Bullet,Silver Bullet,10,15,,2,15,,,,536870912,2,32768,,1,,{},{ bonus bAtkEle,6; }
+13202,Shell_of_Blood,Shell of Blood,10,30,,2,30,,,,536870912,2,32768,,1,,{},{ bonus2 bAddEff,Eff_Bleeding,500; }
+13203,Flare_Sphere,Flare Sphere,10,80,,5,50,,,,536870912,2,32768,,1,,{},{ bonus bAtkEle,3; }
+13204,Lightning_Sphere,Lightning Sphere,10,80,,5,50,,,,536870912,2,32768,,1,,{},{ bonus bAtkEle,4; }
+13205,Poison_Sphere,Poison Sphere,10,80,,5,50,,,,536870912,2,32768,,1,,{},{ bonus bAtkEle,5; bonus2 bAddEff,Eff_Poison,500; }
+13206,Blind_Sphere,Blind Sphere,10,80,,5,50,,,,536870912,2,32768,,1,,{},{ bonus bAtkEle,7; bonus2 bAddEff,Eff_Blind,500; }
+13207,Freezing_Sphere,Freezing Sphere,10,80,,5,50,,,,536870912,2,32768,,1,,{},{ bonus bAtkEle,1; bonus2 bAddEff,Eff_Freeze,500; }
 
 // Ninja Ammunition - Shurikens & Kunais
 13250,Shuriken,Shuriken,10,4,,5,10,,,,268435456,2,32768,,1,,{},{}

@@ -5,6 +5,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/03/07
+	* Fixed: Peco Peco should have 'assist' mode enabled [Harbin]
+	* Fixed: Attack speed of Red & Green Ferus, Yellow & Blue Acidus, Ancient Mimic, Hydrolancer and Detardeurus [Harbin]
+	* Fixed: Item equipment bonus of High Quality Sandals, Silver Bullet, Shell of Blood, Flare Sphere, Lightning Sphere, Poison Sphere, Blind Sphere and Freezing Sphere [Harbin]
+	* Fixed: Green Venatu's elunium droprate [Harbin]
 	* Improved: script engine hash size handling. should result as a major speedup [Harbin/Rayce]
 	 - new method uses slightly more memory to eliminate (slow) memory reallocation
 	* Added: code to generate script hash dump. see do_final_script function [Harbin/Rayce]
