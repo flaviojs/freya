@@ -62,8 +62,8 @@ sd->status.weapon == 4  // One-Handed Spear
 sd->status.weapon == 5  // Two-Handed Spear
 sd->status.weapon == 6  // One-Handed Axe
 sd->status.weapon == 7  // Two-Handed Axe
-sd->status.weapon == 8  // Mace
-sd->status.weapon == 9  // Value Not Used..
+sd->status.weapon == 8  // One-Handed Mace
+sd->status.weapon == 9  // Two-Handed Mace (Value Not Used..)
 sd->status.weapon == 10 // Staff/Rod
 sd->status.weapon == 11 // Bow
 sd->status.weapon == 12 // Knuckle/Fist
