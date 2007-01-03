@@ -841,11 +841,11 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 	}
 
 	// Super novice special stat bonus
-	if(s_class.job == 23)
+/*	if(s_class.job == 23)
 	{
 		if(pc_readglobalreg(sd, "SN_EXSTAT"))
 		{
-			if(sd->status.base_level >= 99)
+			if(sd->status.job_level >= 70 && sd->status.die_counter == 0)
 			{
 				sd->paramb[0] += 10;
 				sd->paramb[1] += 10;
@@ -857,7 +857,7 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 				pc_setglobalreg(sd, "SN_EXSTAT", 0);
 			}
 		} else {
-			if(sd->status.base_level >= 99 && sd->status.die_counter == 0)
+			if(sd->status.job_level >= 70 && sd->status.die_counter == 0)
 			{
 				sd->paramb[0] += 10;
 				sd->paramb[1] += 10;
@@ -868,7 +868,19 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 				pc_setglobalreg(sd, "SN_EXSTAT", 1);
 			}
 		}
-	}
+	}*/
+	if(s_class.job == 23)
+	{
+		if(sd->status.job_level >= 70 && sd->status.die_counter == 0)
+		{
+			sd->paramb[0] += 10;
+			sd->paramb[1] += 10;
+			sd->paramb[2] += 10;
+			sd->paramb[3] += 10;
+			sd->paramb[4] += 10;
+			sd->paramb[5] += 10;
+		}		
+	}	
 
 	sd->paramc[0]=sd->status.str+sd->paramb[0]+sd->parame[0];
 	sd->paramc[1]=sd->status.agi+sd->paramb[1]+sd->parame[1];

@@ -1,7 +1,8 @@
 // $Id: script.c 580 2005-12-09 10:38:11Z Yor $
-//#define DEBUG_FUNCIN
-//#define DEBUG_DISP
-//#define DEBUG_RUN
+
+// #define DEBUG_FUNCIN
+// #define DEBUG_DISP
+// #define DEBUG_RUN
 
 #include <config.h>
 
@@ -45,6 +46,7 @@
 #endif
 
 #define SCRIPT_BLOCK_SIZE 256
+#define SCRIPT_HASH_SIZE 1024	/* optimal script hash size */ /* TODO: figure out optimal hash size. I think 1024 is too much for us [Harbin] */
 
 #define FETCH(n, t) \
 		if (st->end > st->start + (n)) \
@@ -66,7 +68,7 @@ static struct str_data {
 	int next;
 } *str_data;
 int str_num = LABEL_START, str_data_size;
-int str_hash[16];
+int str_hash[SCRIPT_HASH_SIZE];
 
 static struct dbt *mapreg_db = NULL;
 static struct dbt *mapregstr_db = NULL;
@@ -598,85 +600,86 @@ enum {
 	C_XOR,C_OR,C_AND,C_ADD,C_SUB,C_MUL,C_DIV,C_MOD,C_NEG,C_LNOT,C_NOT,C_R_SHIFT,C_L_SHIFT
 };
 
-/*==========================================
- * 文字列のハッシュを計算
- *------------------------------------------
- */
-static int calc_hash(const unsigned char *p) {
-	int h = 0;
+static int calc_hash(const unsigned char *p)
+{
+	register int h = 0;
 
-	while(*p) {
+	while(*p)
+	{
 		h = (h << 1) + (h >> 3) + (h >> 5) + (h >> 8);
 		h += *p++;
 	}
 
-	return h & 15;
+	return h & (SCRIPT_HASH_SIZE - 1);
 }
 
-/*==========================================
- * str_dataの中に名前があるか検索する
- *------------------------------------------
- */
-// 既存のであれば番号、無ければ-1
-static int search_str(const char *p) {
-	int i;
+static int search_str(const char *p)
+{
+	register int i;
 
 	i = str_hash[calc_hash((unsigned char *)p)];
-	while(i) {
-		if (strcmp(str_buf + str_data[i].str, p) == 0) {
+
+	while(i)
+	{
+		if(strcmp(str_buf + str_data[i].str, p) == 0)
 			return i;
-		}
 		i = str_data[i].next;
 	}
 
 	return -1;
 }
 
-/*==========================================
- * str_dataに名前を登録
- *------------------------------------------
- */
-// 既存のであれば番号、無ければ登録して新規番号
-static int add_str(const char *p) {
-	int i;
+static int add_str(const char *p)
+{
+	register int i;
+	int p_len;
 	char *lowcase;
-	int p_len; // speed up
 
-	p_len = strlen(p) + 1; // +1 for NULL
+	p_len = strlen(p) + 1;
 	CALLOC(lowcase, char, p_len);
+
 	for(i = 0; p[i]; i++)
-		lowcase[i] = tolower(p[i]); // tolower needs unsigned char
-	if ((i = search_str(lowcase)) >= 0) {
+		lowcase[i] = tolower(p[i]);
+
+	if((i = search_str(lowcase)) >= 0)
+	{
 		FREE(lowcase);
 		return i;
 	}
+
 	FREE(lowcase);
 
 	i = calc_hash((unsigned char *)p);
-	if (str_hash[i] == 0) {
+	if(str_hash[i] == 0)
+	{
 		str_hash[i] = str_num;
 	} else {
 		i = str_hash[i];
-		for(;;){
-			if (strcmp(str_buf + str_data[i].str, p) == 0) {
+		for(;;)
+		{
+			if(strcmp(str_buf + str_data[i].str, p) == 0)
 				return i;
-			}
 			if(str_data[i].next==0)
 				break;
-			i=str_data[i].next;
+			i = str_data[i].next;
 		}
 		str_data[i].next = str_num;
 	}
-	if (str_num >= str_data_size) {
+
+	if(str_num >= str_data_size)
+	{
 		str_data_size += 128;
 		REALLOC(str_data, struct str_data, str_data_size);
 		memset(str_data + (str_data_size - 128), 0, 128 * sizeof(struct str_data));
 	}
-	while(str_pos + p_len >= str_size) {
+
+	while(str_pos + p_len >= str_size)
+	{
 		str_size += 256;
 		REALLOC(str_buf, char, str_size);
 		memset(str_buf + (str_size - 256), 0, 256 * sizeof(char));
 	}
+
 	strcpy(str_buf + str_pos, p);
 	str_data[str_num].type = C_NOP;
 	str_data[str_num].str = str_pos;
@@ -689,23 +692,18 @@ static int add_str(const char *p) {
 	return str_num++;
 }
 
-/*==========================================
- * スクリプトバッファサイズの確認と拡張
- *------------------------------------------
- */
+/* check script_buf size and expand it if neccessary */
 static void check_script_buf(int size)
 {
-	if (script_pos + size >= script_size) {
+	if(script_pos + size >= script_size)
+	{
 		script_size += SCRIPT_BLOCK_SIZE;
-		REALLOC(script_buf, unsigned char, script_size); // not free script_buf. It's temp pointer saved in each script NPC (freed when NPC is released)
-		memset(script_buf + (script_size - SCRIPT_BLOCK_SIZE), 0, SCRIPT_BLOCK_SIZE);
+		REALLOC(script_buf, unsigned char, script_size);
+//		memset(script_buf + (script_size - SCRIPT_BLOCK_SIZE), 0, SCRIPT_BLOCK_SIZE);
 	}
+	return;
 }
 
-/*==========================================
- * スクリプトバッファに１バイト書き込む
- *------------------------------------------
- */
 static void add_scriptb(int a)
 {
 	check_script_buf(1);
@@ -8662,10 +8660,56 @@ static int userfunc_db_final(void *key,void *data,va_list ap)
 	return 0;
 }
 
-int do_final_script() {
-	if (mapreg_dirty >= 0)
+int do_final_script()
+{
+	/* script hash dump generator */
+/*	FILE *fp = fopen("log/hashdump.txt", "wt");
+	if(fp)
+	{
+		int i, h, count[SCRIPT_HASH_SIZE];
+		int min = 0x7fffffff, max = 0, zero = 0;
+
+		memset(count, 0, sizeof(count));
+		fprintf(fp, "num : calced_val -> hash : data_name \n");
+		fprintf(fp, "------------------------------------ \n");
+
+		for(i = LABEL_START; i < str_num; i++)
+		{
+			h = 0;
+			char *p = str_buf + str_data[i].str;
+
+			while(*p)
+			{
+				h = (h << 1) + (h >> 3) + (h >> 5) + (h >> 8);
+				h += *p++;
+			}
+
+			fprintf(fp, "%04d: %10d ->  %3d : %s\n", i, h, (h & (SCRIPT_HASH_SIZE - 1)), (str_buf + str_data[i].str));
+			count[h & (SCRIPT_HASH_SIZE - 1)]++;
+		}
+
+		fprintf(fp, "------------------------------------ \n\n");
+
+		for(i = 0; i < sizeof(count) / sizeof(count[0]); i++)
+		{
+			fprintf(fp, "  hash %3d = %d\n", i, count[i]);
+
+			if(min > count[i])
+				min = count[i];
+			if(max < count[i])
+				max = count[i];
+			if(count[i] == 0)
+				zero++;
+		}
+		
+		fprintf(fp, "------------------------------------ \n");
+		fprintf(fp, "min = %d, max = %d, zero = %d\n", min, max, zero);
+		fclose(fp);
+	} */
+
+	/* update mapreg if neccessary */
+	if(mapreg_dirty >= 0)
 		script_save_mapreg();
-	//FREE(script_buf); // not free script_buf. It's temp pointer saved in each script NPC (freed when NPC is released)
 
 	if (mapreg_db)
 		numdb_final(mapreg_db, mapreg_db_final);

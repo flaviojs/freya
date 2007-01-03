@@ -52,11 +52,9 @@ CC_OPTIONS="-pipe -Wall"
 COMP_OPTIONS=""
 LOADABLE_EXT=".so"
 
-# Release specific value
-# Set this value when releasing a SVN without giving out the .svn directories
-# it will allow to have non-broken builds.
-# (Enabled it by default since we are using perforce [Harbin])
-#RELEASED_SVN=300
+# Forced revision number
+# Use when .svn directories are not available
+# RELEASED_SVN=0
 
 CONFIGURE_LINE="'"`echo $0 | cut -d"'" -f- --output-delimiter='"'"'"'"'`"'"
 # arguments loop
@@ -1025,7 +1023,7 @@ else
 fi
 
 if [ x"$IS_CYGWIN" != x"no" ]; then
-	echo "/* CYGWIN need that */" >>$CONFIGFILE
+	echo "/* reset CYGWIN:s FD_SETSIZE value */" >>$CONFIGFILE
 	echo "#ifdef FD_SETSIZE" >>$CONFIGFILE
 	echo "#undef FD_SETSIZE" >>$CONFIGFILE
 	echo "#endif" >>$CONFIGFILE
@@ -1058,7 +1056,7 @@ else
 	echo >>$CONFIGFILE
 fi
 
-echo "/* Dynamic linking enabled anyway */" >>$CONFIGFILE
+echo "/* enable dynamic addon linking */" >>$CONFIGFILE
 echo "#define DYNAMIC_LINKING" >>$CONFIGFILE
 echo >>$CONFIGFILE
 
@@ -1193,7 +1191,7 @@ title:
 	@echo -e "\033[0;44m          (\033[1m        (  _) (  ,)  (  _) ( \\/ ) (  )                   \033[0;44m)\033[K\033[0m"
 	@echo -e "\033[0;44m          (\033[1m        (  _)  )  \\   ) _)  \\  /  /__\\                   \033[0;44m)\033[K\033[0m"
 	@echo -e "\033[0;44m          (\033[1m        (_)   (_)\\_) (___) (__/  (_)(_) v${FREYA_VERSION}             \033[0;44m)\033[K\033[0m"
-	@echo -e "\033[0;44m          (\033[1m              http://www.project-freya.net               \033[0;44m)\033[K\033[0m"
+	@echo -e "\033[0;44m          (\033[1m              http://www.ro-freya.net                    \033[0;44m)\033[K\033[0m"
 	@echo -e "\033[37;44m          (=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=)\033[K\033[0m"
 	@echo
 	@echo -n "$BUILD_LINE"
