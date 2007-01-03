@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/03/07
+	* Updated: Corrected reading of the job_db1.txt and size_fix.txt databases to incorporate the new weapons [Tsuyuki]
 	* Fixed: Gun weapons basedamage is based on dexterity, not strength [Harbin]
 	* Updated: Freya's Copyright labels to 2007 [Tsuyuki]
 	* Fixed: All existing reversed item bonus brackets [Tsuyuki]

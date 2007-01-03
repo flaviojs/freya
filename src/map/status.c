@@ -242,15 +242,15 @@ void initStatusIconTable(void) {
 
 static int refinebonus[5][3]; // refine_db.txt
 int percentrefinery[5][10]; // refine_db.txt
-static int max_weight_base[MAX_PC_JOB_CLASS];
-static int hp_coefficient[MAX_PC_JOB_CLASS];
-static int hp_coefficient2[MAX_PC_JOB_CLASS];
-static int hp_sigma_val[MAX_PC_JOB_CLASS][MAX_LEVEL];
-static int sp_coefficient[MAX_PC_JOB_CLASS];
-static int aspd_base[MAX_PC_JOB_CLASS][20];
-static char job_bonus[3][MAX_PC_JOB_CLASS][MAX_LEVEL];
+static int max_weight_base[MAX_PC_JOB_CLASS]; // job_db1.txt
+static int hp_coefficient[MAX_PC_JOB_CLASS]; // job_db1.txt
+static int hp_coefficient2[MAX_PC_JOB_CLASS]; // job_db1.txt
+static int hp_sigma_val[MAX_PC_JOB_CLASS][MAX_LEVEL]; // job_db1.txt
+static int sp_coefficient[MAX_PC_JOB_CLASS]; // job_db1.txt
+static int aspd_base[MAX_PC_JOB_CLASS][23]; // job_db1.txt
+static char job_bonus[3][MAX_PC_JOB_CLASS][MAX_LEVEL]; // job_db1.txt
 
-static int atkmods[3][20];	// size_fix.txt
+static int atkmods[3][23];	// size_fix.txt
 
 /*==========================================
  * 精錬ボーナス
@@ -5600,18 +5600,18 @@ int status_readdb(void) {
 		if ((line[0] == '/' && line[1] == '/') || line[0] == '\0' || line[0] == '\n' || line[0] == '\r')
 			continue;
 		// It's not necessary to remove 'carriage return ('\n' or '\r')
-		for(j = 0, p = line; j < 21 && p; j++) {
+		for(j = 0, p = line; j < 27 && p; j++) {
 			split[j] = p;
 			p = strchr(p, ',');
 			if (p) *p++ = 0;
 		}
-		if (j < 21)
+		if (j < 27)
 			continue;
 		max_weight_base[i] = atoi(split[0]);
 		hp_coefficient[i] = atoi(split[1]);
 		hp_coefficient2[i] = atoi(split[2]);
 		sp_coefficient[i] = atoi(split[3]);
-		for(j=0;j<17;j++)
+		for(j=0;j<23;j++)
 			aspd_base[i][j] = atoi(split[j+4]);
 		i++;
 		if (i == MAX_PC_JOB_CLASS)
@@ -5673,7 +5673,7 @@ int status_readdb(void) {
 
 	// サイズ補正テーブル
 	for(i=0;i<3;i++)
-		for(j = 0; j < 20; j++)
+		for(j = 0; j < 23; j++)
 			atkmods[i][j] = 100;
 	fp=fopen("db/size_fix.txt","r");
 	if(fp==NULL){
@@ -5682,19 +5682,19 @@ int status_readdb(void) {
 	}
 	i=0;
 	while(fgets(line, sizeof(line), fp)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
-		char *split[20];
+		char *split[25];
 		if ((line[0] == '/' && line[1] == '/') || line[0] == '\0' || line[0] == '\n' || line[0] == '\r')
 			continue;
 		// It's not necessary to remove 'carriage return ('\n' or '\r')
 		if(atoi(line)<=0)
 			continue;
 		memset(split,0,sizeof(split));
-		for(j = 0, p = line; j < 20 && p; j++) {
+		for(j = 0, p = line; j < 23 && p; j++) {
 			split[j] = p;
 			p = strchr(p, ',');
 			if (p) *p++ = 0;
 		}
-		for(j = 0; j < 20 && split[j]; j++)
+		for(j = 0; j < 23 && split[j]; j++)
 			atkmods[i][j] = atoi(split[j]);
 		i++;
 	}
