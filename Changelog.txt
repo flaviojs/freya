@@ -4,6 +4,12 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+03/01/07
+	* Improved: script engine hash size handling. should result as a major speedup [Harbin/Rayce]
+	 - new method uses slightly more memory to eliminate (slow) memory reallocation
+	* Added: code to generate script hash dump. see do_final_script function [Harbin/Rayce]
+	 - used to get optimal script hash size
+
 02/01/07
 	* Fixed: The Freya's url, configure script [GoodKat]
 	* Fixed: guild table structure on main_char.sql [GoodKat]
