@@ -36,7 +36,7 @@ void sql_init() {
 	if (!mysql_real_connect(&mysql_handle, db_mysql_server_ip, db_mysql_server_id, db_mysql_server_pw,
 	    db_mysql_server_db, db_mysql_server_port, (char *)NULL, 0)) {
 		/* pointer check */
-		printf(stderr, "[SQLERR] Can't connect to the database: %s.\n", mysql_error(&mysql_handle));
+		printf(CL_RED "[SQLERR]" CL_RESET " Can't connect to the database: %s.\n", mysql_error(&mysql_handle));
 		exit(1);
 	}
 
