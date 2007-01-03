@@ -69,20 +69,33 @@ inline int sql_request(const char *format, ...) {
 	request_with_result = (strncasecmp(inbuf, "SELECT", 6) == 0 ||
 	                       strncasecmp(inbuf, "OPTIMIZE", 8) == 0 ||
 	                       strncasecmp(inbuf, "SHOW", 4) == 0);
-	if (request_with_result)
+
+	if (request_with_result) {
 		if (mysql_db_res) {
 			mysql_free_result(mysql_db_res);
 			mysql_db_res = NULL;
 			mysql_db_row = NULL;
 		}
+	}
 
 	strcpy(last_request, inbuf);
 
 #ifdef MYSQL_DEBUG
 	printf("Query: %s\n", inbuf);
 #endif
+
 	if (mysql_query(&mysql_handle, inbuf)) {
-		printf("SQLERR: Req: %s, Error: %s \n", last_request, mysql_error(&mysql_handle));
+
+#ifdef MYSQL_DEBUG // Error logging on mysql_error.log
+		FILE *stderr;
+		stderr = fopen("log/mysql_error.log", "a");
+		if (stderr != NULL) {
+			fprintf(stderr, "[SQLERR] %s, Error: %s \n", last_request, mysql_error(&mysql_handle));
+			fclose(stderr);
+		}
+#endif
+
+		printf(CL_RED "[SQLERR]" CL_RESET " %s, Error: %s \n", last_request, mysql_error(&mysql_handle));
 		return 0;
 	}
 
