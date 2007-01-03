@@ -54,7 +54,7 @@ item->equip & EQP_ARMOR   // Armor Slot
 
 // Definition of status.weapon: Equiped Weapon-Type
 // Compatible with sd, tsd, dstsd, and pl_sd
-sd->status.weapon == 0  // Barefist (No Weapon Equiped)
+sd->status.weapon == 0  // Bare Fist (No Weapon Equipped)
 sd->status.weapon == 1  // Dagger
 sd->status.weapon == 2  // One-Handed Sword
 sd->status.weapon == 3  // Two-Handed Sword

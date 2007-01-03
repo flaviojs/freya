@@ -5,6 +5,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/03/07
+	* Added: Support for Two-Handed Maces (The mysterious weapon-type #9) [Tsuyuki]
+	* Fixed: Fuuma Shurikens are now unbreakable [Tsuyuki]
+	* Cleaned: battle_addmastery code function [Tsuyuki]
+	* Removed: Support for Dual Revolvers/Revolver + Dagger Combo, as Revolvers are actually Two-Handed [Tsuyuki]
 	* Updated: Corrected reading of the job_db1.txt and size_fix.txt databases to incorporate the new weapons [Tsuyuki]
 	* Fixed: Gun weapons basedamage is based on dexterity, not strength [Harbin]
 	* Updated: Freya's Copyright labels to 2007 [Tsuyuki]

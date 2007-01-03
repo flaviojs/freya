@@ -549,9 +549,9 @@ void pc_calcweapontype(struct map_session_data *sd)
 	nullpo_retv(sd);
 
 	if (sd->weapontype1 != 0 && sd->weapontype2 == 0)
-		sd->status.weapon = sd->weapontype1; // Use Left-Handed Weapon Type (Right-Handed Weapon not equiped)
+		sd->status.weapon = sd->weapontype1; // Use Left-Handed Weapon Type (Right-Handed Weapon not equipped)
 	if (sd->weapontype1 == 0 && sd->weapontype2 != 0)
-		sd->status.weapon = sd->weapontype2; // Use Right-Handed Weapon Type (Left-Handed Weapon not equiped)
+		sd->status.weapon = sd->weapontype2; // Use Right-Handed Weapon Type (Left-Handed Weapon not equipped)
 	else if (sd->weapontype1 == 1 && sd->weapontype2 == 1)
 		sd->status.weapon = 50; // Dual Daggers
 	else if (sd->weapontype1 == 2 && sd->weapontype2 == 2)
@@ -567,11 +567,6 @@ void pc_calcweapontype(struct map_session_data *sd)
 	else if ((sd->weapontype1 == 2 && sd->weapontype2 == 6) ||
 	         (sd->weapontype1 == 6 && sd->weapontype2 == 2))
 		sd->status.weapon = 55; // Dual-Wield: One-Handed Axe + One-Handed Sword
-	else if (sd->weapontype1 == 17 && sd->weapontype2 == 17)
-		sd->status.weapon = 56; // Dual Revolvers [Tsuyuki]
-	else if ((sd->weapontype1 == 17 && sd->weapontype2 == 1) ||
-					 (sd->weapontype1 == 1 && sd->weapontype2 == 17))
-		sd->status.weapon = 57; // Dual-Wield: Dagger + Revolver [Tsuyuki]
 	else
 		sd->status.weapon = sd->weapontype1; // If all else fails, use Left-Handed Weapon Type
 
@@ -709,10 +704,12 @@ int pc_break_equip(struct map_session_data *dstsd, unsigned int where) {
 			case 0:  // Bare fists
 			case 6:  // One-Handed Axes
 			case 7:  // Two-Handed Axes
-			case 8:  // Maces
+			case 8:  // One-Handed Maces
+			case 9:  // Two-Handed Maces (Unused)
 			case 10: // Rods
 			case 15: // Books
-				return 0; // Weapons that cant be broken
+			case 22: // Fuuma Shurikens
+				return 0; // Weapons that can't be broken
 		}
 	}
 

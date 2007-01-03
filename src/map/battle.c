@@ -696,7 +696,7 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 			damage = 3;
 	}
 
-	if (tmd != NULL && tmd->hp > 0 && damage > 0) // 反撃などのMOBスキル判定
+	if (tmd != NULL && tmd->hp > 0 && damage > 0)
 		mobskill_event(tmd, flag);
 
 	return damage;
@@ -731,7 +731,7 @@ int battle_calc_drain(int damage, int rate, int per, int val)
 }
 
 /*==========================================
- * 修練ダメージ
+ * Add Passive Skill Mastery Weapon Damage
  *------------------------------------------
  */
 int battle_addmastery(struct map_session_data *sd, struct block_list *target, int dmg, short race, int type)
@@ -742,12 +742,9 @@ int battle_addmastery(struct map_session_data *sd, struct block_list *target, in
 
 	nullpo_retr(0, sd);
 
-	// デーモンベイン(+3 ～ +30) vs 不死 or 悪魔 (死人は含めない？)
 	if ((skill = pc_checkskill(sd, AL_DEMONBANE)) > 0 && (battle_check_undead(race, status_get_elem_type(target)) || race == 6))
-		damage += (skill * (3 + (sd->status.base_level + 1) / 20)); // submitted by orn
-		//damage += (skill * 3);
+		damage += (skill * (3 + (sd->status.base_level + 1) / 20));
 
-	// ビーストベイン(+4 ～ +40) vs 動物 or 昆虫
 	if ((skill = pc_checkskill(sd, HT_BEASTBANE)) > 0 && (race == 2 || race == 4)) {
 		damage += (skill * 4);
 		if (sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_HUNTER)
@@ -760,85 +757,75 @@ int battle_addmastery(struct map_session_data *sd, struct block_list *target, in
 		weapon = sd->weapontype2;
 	switch(weapon)
 	{
-		case 0x01:	// 短剣 Knife
-		case 0x02:	// 1HS
+		case 0x01:	// Daggers
+		case 0x02:	// One-Handed Swords
 		{
-			// 剣修練(+4 ～ +40) 片手剣 短剣含む
 			if((skill = pc_checkskill(sd, SM_SWORD)) > 0) {
 				damage += (skill * 4);
 			}
 			break;
 		}
-		case 0x03:	// 2HS
+		case 0x03:	// Two-Handed Swords
 		{
-			// 両手剣修練(+4 ～ +40) 両手剣
 			if((skill = pc_checkskill(sd, SM_TWOHAND)) > 0) {
 				damage += (skill * 4);
 			}
 			break;
 		}
-		case 0x04:	// 1HL
-		case 0x05:	// 2HL
+		case 0x04:	// One-Handed Spears
+		case 0x05:	// Two-Handed Spears
 		{
-			// 槍修練(+4 ～ +40,+5 ～ +50) 槍
 			if((skill = pc_checkskill(sd, KN_SPEARMASTERY)) > 0) {
 				if(!pc_isriding(sd))
-					damage += (skill * 4);	// ペコに乗ってない
+					damage += (skill * 4);
 				else
-					damage += (skill * 5);	// ペコに乗ってる
+					damage += (skill * 5);
 			}
 			break;
 		}
-		case 0x06: // 片手斧
-		case 0x07: // Axe by Tato
+		case 0x06: // One-Handed Axes
+		case 0x07: // Two-handed Axes
 		{
 			if((skill = pc_checkskill(sd, AM_AXEMASTERY)) > 0) {
 				damage += (skill * 3);
 			}
 			break;
 		}
-		case 0x08:	// メイス
+		case 0x08:	// One-Handed Maces
+		case 0x09:	// Two-Handed Maces (Unused)
 		{
-			// メイス修練(+3 ～ +30) メイス
 			if((skill = pc_checkskill(sd, PR_MACEMASTERY)) > 0) {
 				damage += (skill * 3);
 			}
 			break;
 		}
-		case 0x09:	// なし?
+		case 0x0a:	// Staffs/Rods
+		case 0x0b:	// Bows
 			break;
-		case 0x0a:	// 杖
-			break;
-		case 0x0b:	// 弓
-			break;
-		case 0x00:	// 素手 Bare Hands
-		case 0x0c:	// Knuckles
+		case 0x00:	// Bare Fist
+		case 0x0c:	// Knuckles/Fists
 		{
-			// 鉄拳(+3 ～ +30) 素手,ナックル
 			if((skill = pc_checkskill(sd, MO_IRONHAND)) > 0) {
 				damage += (skill * 3);
 			}
 			break;
 		}
-		case 0x0d:	// Musical Instrument
+		case 0x0d:	// Instrument
 		{
-			// 楽器の練習(+3 ～ +30) 楽器
 			if((skill = pc_checkskill(sd, BA_MUSICALLESSON)) > 0) {
 				damage += (skill * 3);
 			}
 			break;
 		}
-		case 0x0e:	// Dance Mastery
+		case 0x0e:	// Whips
 		{
-			// Dance Lesson Skill Effect(+3 damage for every lvl = +30) 鞭
 			if((skill = pc_checkskill(sd, DC_DANCINGLESSON)) > 0) {
 				damage += (skill * 3);
 			}
 			break;
 		}
-		case 0x0f:	// Book
+		case 0x0f:	// Books
 		{
-			// Advance Book Skill Effect(+3 damage for every lvl = +30) {
 			if((skill = pc_checkskill(sd, SA_ADVANCEDBOOK)) > 0) {
 				damage += (skill * 3);
 			}
@@ -848,15 +835,20 @@ int battle_addmastery(struct map_session_data *sd, struct block_list *target, in
 		{
 			if((skill = pc_checkskill(sd, ASC_KATAR)) > 0)
 				damage += dmg * (10 + skill * 2) / 100;
-			// カタール修練(+3 ～ +30) カタール
 			if((skill = pc_checkskill(sd, AS_KATAR)) > 0) {
-				//ソニックブロー時は別処理（1撃に付き1/8適応)
 				damage += (skill * 3);
 			}
 			break;
 		}
+		case 0x11: // Revolvers
+		case 0x12: // Rifles
+		case 0x13: // Shotguns
+		case 0x14: // Gatling Guns
+		case 0x15: // Grenade Launchers
+		case 0x16: // Fuuma Shurikens
+			break;
 	}
-	damage = dmg + damage;
+	damage += dmg;
 
 	return (damage);
 }
