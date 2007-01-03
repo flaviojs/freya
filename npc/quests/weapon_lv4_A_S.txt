@@ -1,6 +1,6 @@
 //== Copyrights : ========================================================================
 // -»» DiM's Scripts ««-
-// Copyright (c) 2005-2006, DiM-Online
+// Copyright (c) 2005-2007, DiM-Online
 // http://wwww.dim-online.com/ 
 //===== By: ============================================================================== 
 //= Vicious_Pucca, Reddozen & MasterOfMuppets

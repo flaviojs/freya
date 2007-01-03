@@ -284,14 +284,8 @@ int status_percentrefinery(struct map_session_data *sd, struct item *item) {
 	return percent;
 }
 
-/*==========================================
- * パラメータ計算
- * first==0の時、計算対象のパラメータが呼び出し前から
- * 変 化した場合自動でsendするが、
- * 能動的に変化させたパラメータは自前でsendするように
- *------------------------------------------
- */
-int status_calc_pc(struct map_session_data* sd, int first) {
+int status_calc_pc(struct map_session_data* sd, int first)
+{
 	int b_speed, b_max_hp, b_max_sp, b_hp, b_sp, b_weight, b_max_weight, b_paramb[6], b_parame[6], b_hit, b_flee;
 	int b_aspd, b_watk, b_def, b_watk2, b_def2, b_flee2, b_critical, b_attackrange, b_matk1, b_matk2, b_mdef, b_mdef2, b_class;
 	int b_base_atk;
@@ -899,14 +893,17 @@ int status_calc_pc(struct map_session_data* sd, int first) {
 			sd->paramc[5] = 0;
 	}
 
-	if(sd->status.weapon == 11 || sd->status.weapon == 13 || sd->status.weapon == 14) {
+	/* bows, instruments, whips, revolvers, rifles, shotguns, gatling guns and grenade launcher take basedamage from dexterity */
+	if(sd->status.weapon == 11 || sd->status.weapon == 13 || sd->status.weapon == 14 || sd->status.weapon == 17 || sd->status.weapon == 18 || sd->status.weapon == 19 || sd->status.weapon == 20 || sd->status.weapon == 21)
+	{
 		str = sd->paramc[4];
 		dex = sd->paramc[0];
-	}
-	else {
+	/* and the rest weapons from strenght */
+	} else {
 		str = sd->paramc[0];
 		dex = sd->paramc[4];
 	}
+
 	dstr = str/10;
 	sd->base_atk += str + dstr*dstr + dex/5 + sd->paramc[5]/5;
 	sd->matk1 += sd->paramc[3]+(sd->paramc[3]/5)*(sd->paramc[3]/5);
