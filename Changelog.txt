@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/04/07
+	* Added: A few common Hugel NPCs (Thanks to $ephiroth) [Tsuyuki]
 	* Added: Common Airship NPCs (Thanks to $ephiroth) [Tsuyuki]
 	* Added: A bunch of missing Lighthalzen NPCs (Thanks to $ephiroth) [Tsuyuki]
 	* Updated: Fully updated the item_db.txt with all the latest patch items/equipment (Credits to jAthena) [Tsuyuki]

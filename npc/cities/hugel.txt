@@ -3,16 +3,16 @@
 //===== By: ==================================================
 //= Started by Tsuyuki
 //===== Current Version: =====================================
-//= 0.1
+//= 0.5
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
 //= Hugel City NPCs
 //===== Additional Comments: =================================
 //= 0.1 Imported Temp Firecracker seller from eAthena (eRKURITA) [Tsuyuki]
-//= Note: I plan to do this script when Episode 10.4 hits iRO 
-//= (Currently on 10.3) - Tsuyuki
+//= 0.5 Added more missing npc, might still some missing dialogue [$ephiroth]
 //============================================================
+
 
 hu_in01.gat,23,311,4	script	Josh	898,{
 
@@ -38,4 +38,223 @@ hu_in01.gat,23,311,4	script	Josh	898,{
 		mes "[Josh]";
 		mes "Aww~~ you miss it";
 		close;
+}
+
+hugel.gat,91,152,3	script	Signboard	837,{
+	mes "* While collecting *";
+	mes "Odin sanctuary with volunteer";
+	mes "The venture person whom it can explore";
+	mes "The multitude it collects";
+	mes "Sanctuary excavation group";
+	close;
+}
+
+hugel.gat,85,165,5	script	Cudy	896,{
+	mes "[Cudy]";
+	mes "As for me there are desired ones, it is.";
+	mes "So, the mother does not buy, the ?......";
+	close;
+}
+
+hugel.gat,175,115,5	script	Anhi Anh	897,{
+	mes "[Anhi Anh]";
+	mes "Taking year, this as for the muscle which overflows";
+	mes "Completely, it is to become weak the ? to be.";
+	mes "How is? It tries doing even with arm wrestling?";
+	close;
+}
+
+hugel.gat,169,112,5	script	Sani	892,{
+	mes "[Sani]";
+	mes "????????";
+	mes "In this village the person of the multitude being similar well, the ?.";
+	mes "Certainly, for a long time together";
+	mes "Don't you think? the consequence which lives.";
+	close;
+}
+
+hugel.gat,189,143,5	script	Pure youth	898,{
+	mes "[Pure youth]";
+	mes "……????";
+	mes "Such a big balloon";
+	mes "It floats in the sky, it is...... ";
+	mes "We introducing the air all the way in the stomach";
+	mes "The kana which will try flying through the sky?";
+	close;
+}
+
+hugel.gat,71,197,3	script	Kampia	90,{
+	mes "[Kampia]";
+	mes "Therefore as for ???? small village,";
+	mes "In one day, having something in someone?";
+	mes "Rumor spreads immediately.";
+	next;
+	mes "[Kampia]";
+	mes "As for me such a countryside";
+	mes "Large ? dislike.";
+	mes "In quickly large town";
+	mes "Moving the ? which wants.";
+	close;
+}
+
+hugel.gat,126,151,3	script	Tanyee	90,{
+	mes "[Tanyee]";
+	mes "As for this village it is countryside however,";
+	mes "Very peace it is the place.";
+	mes "The one which comes here everyone";
+	mes "The good just person.";
+	next;
+	mes "[Tanyee]";
+	mes "So, as for my older sister,";
+	mes "It thinks that it comes out of this village only.";
+	mes "When it is story of the older sister";
+	mes "Because to be long you have lived";
+	mes "Fearfulness of this village is recognized, we would like to see, is.";
+	mes "...... It is not well understood in me.";
+	close;
+}
+
+hugel.gat,85,93,5	script	Grandpa Hiho	866,{
+	mes "[Grandpa Hiho]";
+	mes "If you mention the pride here,";
+	mes "That monster race/lace.";
+	next;
+	mes "[Grandpa Hiho]";
+	mes "Therefore here even excessively with countryside boredom,";
+	mes "Obtaining hint from play of the children,";
+	mes "This monster race/lace";
+	mes "Being held.";
+	next;
+	mes "[Grandpa Hiho]";
+	mes "As for monster race/lace meeting place";
+	mes "There is a direction of 7 o'clock";
+	mes "It is outside the hill.";
+	next;
+	mes "[Grandpa Hiho]";
+	mes "As for beginning with simple play";
+	mes "It started, it is, but";
+	mes "Therefore the money which it manages necessity,";
+	mes "Now unless there is a admission fee, it is to insert.";
+	next;
+	mes "[Grandpa Hiho]";
+	mes "If you spare time,";
+	mes "One time going it should have tried.";
+	close;
+}
+
+hu_in01.gat,18,94,3	script	Part-time job	49,{
+	mes "[Katsuki]";
+	mes "Present ?.";
+	mes "Here is the sanctuary excavation group clerk's office.";
+	mes "As for me with part-time job,";
+	mes "You have entrusted the rearrangement of the clerk's office.";
+	next;
+	mes "[Katsuki]";
+	mes "Am the village first rearrangement teacher me who";
+	mes "Work was entrusted especially, it is.";
+	mes "?????";
+	next;
+	mes "[Katsuki]";
+	mes "But on ????????,";
+	mes "It came from runic mid- guts under";
+	mes "The person of excavation group being,";
+	mes "Atmosphere is bad strangely, is......";
+	next;
+	mes "[Katsuki]";
+	mes "It is the consequence, seeing, sort";
+	mes "So, scattering and others being to have applied"; 
+ 	mes "You should have started from somewhere......";
+	mes "As for the latest work we would like to see from normally very much, is.";
+	next;
+	mes "[Katsuki]";
+	mes "You here work";
+	mes "Trying searching, how, is?";
+	mes "As for remuneration being little, the ginger";
+	mes "Doing is and the just work where is.";
+	close;
+}
+
+hu_in01.gat,26,77,4	script	Part-time job	50,{
+	mes "[Bokie]";
+	mes "It is intensive on the rearrangement of the book, -";
+	close;
+}
+
+hu_in01.gat,19,161,3	script	Matilda	803,{
+	cutin "hu_alex02",2;
+	mes "[Matilda]";
+	mes "It is sales?";
+	mes "You do not buy at all";
+	mes "Please keep coming out quickly.";
+	close2;
+	cutin "hu_alex02",255;
+	end;
+}
+
+hu_in01.gat,14,11,4	script	Jana	70,{
+	cutin "hu_laura02",2;
+	mes "[Jana]";
+	mes "Something being business?";
+	mes "To completely, being busy......";
+	mes "The ash, this person expelling!";
+	close2;
+	cutin "hu_laura02",255;
+	warp "hu_in01.gat",15,76;
+	end;
+}
+
+hu_in01.gat,16,20,4	script	Ash	79,{
+	mes "[Ash]";
+	mes "It increased?";
+	next;
+	mes "[Ash]";
+	mes "As for the person who does not give the money";
+	mes "It is off limit.";
+	close;
+}
+
+hu_in01.gat,256,40,3	script	Garud	897,{
+	mes "[Garud]";
+	mes "You say although, that weather is good,";
+	mes "The body is painful, is be able to move honestly......";
+	close;
+}
+
+hu_in01.gat,377,106,3	script	Grandmother of liquor store	892,{
+	mes "[Grandmother of liquor store]";
+	mes "Recently, is seen for the first time the person who";
+	mes "The ? which steadily increases.";
+	mes "A little it becomes busy however,";
+	mes "Eating the tasty food";
+	mes "When happiness so you look at the face";
+	mes "The ? where the fatigue comes off clearly.???.";
+	close;
+}
+
+hu_in01.gat,365,170,3	script	Girl of village	793,{
+	mes "[Girl of village]";
+	mes "Or the stove...... it was...... the favorite.";
+	mes "It is...... it is what...... drowsy";
+	mes "...... Kuu......";
+	close;
+}
+
+hu_in01.gat,111,386,4	script	Jino	86,{
+	mes "[Jino]";
+	mes "To tell the truth in this village";
+	mes "The weapon excessively does not exist.";
+	mes "Hunt and collection, and that time";
+	mes "Those in order for you to protect your own body";
+	mes "Only extent it is prepared.";
+	next;
+	mes "[Jino]";
+	mes "If we would like to live conveniently";
+	mes "You must go to the large city.";
+	close;
+}
+
+hu_in01.gat,310,380,4	script	Girl	891,{
+	mes "[Girl]";
+	mes "Boredom......";
+	close;
 }
