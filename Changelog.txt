@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/04/07
+	* Fixed: Sage's Diary bonuses not working [Tsuyuki]
 	* Fixed: Several bugs with the Kafra system, mainly Kafra passes [Tsuyuki]
 	* Fixed: A typo/bug in the Eye of Hellion Quest [Tsuyuki]
 	* Fixed: Applied all new bug fixes that eAthena has made to The Sign Quest [Tsuyuki]
