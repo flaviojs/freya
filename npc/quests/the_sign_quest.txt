@@ -5,7 +5,7 @@
 //= 1.2 By Damz Fish (Conversion)
 //= 1.4 By galaxy (Testing/Bug Fixing)
 //===== Current Version: =====================================
-//= 1.6
+//= 1.7
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -24,6 +24,7 @@
 //= 1.4 Fully tested and major bug fixes [galaxy]
 //= 1.5 Fixed a major bug [galaxy]
 //= 1.6 Fixed several more bugs [galaxy]
+//= 1.7 Applied all bug fixes that eAthena has made to this script up to version 1.7 [Tsuyuki]
 //============================================================
 
 
@@ -45,7 +46,7 @@ OnInit:
 
 
 
-alberta.gat,35,241,1	script	Sign::GeffeniaSigns	111,{
+alberta.gat,34,241,1	script	Sign::GeffeniaSigns	111,{
 
 	if ($signbmps==0) goto L_SBMP;
 	if (signquest < 1) set signquest,1;
@@ -1911,7 +1912,6 @@ s_No:
 	next;
 s_Last:
 	if (@DaewoonTest != 5) goto L_DAEW5;
-	getitem 7177,1;
 	mes "[Daewoon]";
 	mes "You know, after talking with";
 	mes "you for a while, I now feel fairly";
@@ -1919,6 +1919,8 @@ s_Last:
 	mes "piece of the Sobbing Starlight.";
 	mes "Somehow, I think you're strong";
 	mes "enough to get all the pieces.";
+	getitem 7177,1;
+	set signquest,6;
 	next;
 	mes "[Daewoon]";
 	mes "I hope you will pass the rest of";
@@ -1935,7 +1937,6 @@ s_Last:
 	mes "Alright, then.";
 	mes "Good luck in";
 	mes "Al de Baran~!";
-	set signquest,6;
 	close;
 
 L_DAEW5:
@@ -2125,20 +2126,19 @@ L_SIGNQ8:
 
 		if (@sign_jore$ != "Red Gemstone") goto s_SIGNERED;
 
-
 		mes "[Sir Jore]";
 		mes "That's what I thought too,";
 		mes "but after all maybe it doesn't have";
 		mes "any power.";
 		next;
 		getitem 7177,1;
+		set signquest,9;
 		mes "[Sir Jore]";
 		mes "Take that starry fragment.";
 		mes "I'll inform my friend about you.";
 		mes "Look for ^FF0000Jesqurienne^000000.";
 		mes "She often spends her time";
 		mes "in the bars of Geffen.";
-		set signquest,9;
 		next;
 		mes "[Sir Jore]";
 		mes "I have to return to my researches..";
@@ -2448,7 +2448,7 @@ Else:
 
 OnMonsterDead:
 	set $signmazemonster,$signmazemonster - 1;
-
+	end;
 }
 
 prt_maze02.gat,16,183,3	script	Pleur	91,{
@@ -3464,6 +3464,7 @@ TAKENQUIZ2:
 	mes "to keep it, but I suppose";
 	mes "you're its true owner...";
 	getitem 7177,1;
+	set signquest,10;
 	next;
 	mes "[Jesqurienne]";
 	mes "If you want to know more about the";
@@ -3480,7 +3481,6 @@ TAKENQUIZ2:
 	mes "so I think I'll stay here";
 	mes "and have another drink.";
 	mes "Farewell, " + @quizname$ + ".";
-	set signquest,10;
 	close;
 
 
@@ -3756,6 +3756,7 @@ L_Check:
 	end;
 
 BADITEMS:
+	set @dearles_check,0;
 	mes "[Dearles]";
 	mes "Hmm... Some of this";
 	mes "stuff looks good, but";
@@ -5317,6 +5318,9 @@ L_Cherish:
 
 mjo_dun02.gat,88,295,3		script	Flaming Spirit Man	85,{
 
+	// Get rid of some pieces, to let player reborn in future
+	if(signquest > 22) delitem 7177,countitem(7177);
+
 	if (signquest > 62) goto L_Improve;
 	if (signquest > 61) goto L_Hour;
 	if (signquest > 60 && countitem(2644) > 0) goto L_Sign;
@@ -5528,6 +5532,8 @@ L_Forge4:
 	goto L_Forge;
 
 L_Forge:
+	delitem 612,5;
+	delitem 615,2;
 	next;
 	if (signquest == 22) goto L_Refine;
 	mes "[Engel]";
@@ -5542,11 +5548,9 @@ L_Forge:
 	mes "Well then...";
 	mes "I wish you safety";
 	mes "in your travels.";
-	set signquest,19;
-	delitem 612,5;
-	delitem 615,2;
-	delitem 7177,7;
+	delitem 7177,5; // We'll delete all Sobbing Starlight Pieces later
 	getitem 7278,1;
+	set signquest,19;
 	close;
 
 L_Refine:
@@ -5568,12 +5572,12 @@ L_Refine:
 	close;
 
 L_Success:
+	delitem 7177,countitem(7177); // We delete all the pieces, or else you can't reborn
 	mes "While you were gone, I managed to";
 	mes "restore the Sobbing Starlight. Why";
 	mes "dont you go ahead and take a";
 	mes "look?";
 	next;
-	delitem 7177,7;
 	getitem 7178,1;
 	set signquest,23;
 	specialeffect2 94;
@@ -5803,6 +5807,7 @@ L_Ok:
 	mes "thank you thank you";
 	mes "soooooooooo much!";
 	delitem 2278,1;
+	set signquest,26;
 	next;
 	mes "[Laotan]";
 	mes "Oh right~!";
@@ -5810,7 +5815,6 @@ L_Ok:
 	mes "was in our village for a while, but";
 	mes "ever since he went into that big";
 	mes "tree, nobody's seen him!";
-	set signquest,26;
 	close;
 
 L_Thanks:
@@ -7380,14 +7384,14 @@ L_Check:
 	mes "Muhahahahahaha!";
 	mes "That's not the right spell!";
 	mes "Now death awaits you!";
-	killmonster "niflheim.gat","#signbruce::Onmymob2";
-	monster "niflheim.gat",349,256,"Orc Skeleton",1462,1,"#signbruce::Onmymob2";
-	monster "niflheim.gat",347,258,"Orc Skeleton",1462,1,"#signbruce::Onmymob2";
-	monster "niflheim.gat",347,254,"Orc Skeleton",1462,1,"#signbruce::Onmymob2";
-	monster "niflheim.gat",350,252,"Orc Skeleton",1462,1,"#signbruce::Onmymob2";
-	monster "niflheim.gat",344,255,"Orc Skeleton",1462,1,"#signbruce::Onmymob2";
-	monster "niflheim.gat",348,252,"Orc Skeleton",1462,1,"#signbruce::Onmymob2";
-	monster "niflheim.gat",347,259,"Orc Skeleton",1462,1,"#signbruce::Onmymob2";
+	killmonster "niflheim.gat","#signbruce::Onmymob";
+	monster "niflheim.gat",349,256,"Orc Skeleton",1462,1,"#signbruce::Onmymob";
+	monster "niflheim.gat",347,258,"Orc Skeleton",1462,1,"#signbruce::Onmymob";
+	monster "niflheim.gat",347,254,"Orc Skeleton",1462,1,"#signbruce::Onmymob";
+	monster "niflheim.gat",350,252,"Orc Skeleton",1462,1,"#signbruce::Onmymob";
+	monster "niflheim.gat",344,255,"Orc Skeleton",1462,1,"#signbruce::Onmymob";
+	monster "niflheim.gat",348,252,"Orc Skeleton",1462,1,"#signbruce::Onmymob";
+	monster "niflheim.gat",347,259,"Orc Skeleton",1462,1,"#signbruce::Onmymob";
 	close;
 
 L_Success:
@@ -8826,6 +8830,7 @@ L_Work:
 	mes "humans know it, may actually be";
 	mes "different than the truth.";
 	getitem 7025,1;
+	set signquest,66;
 	next;
 	mes "[Lady Hell]";
 	mes "^881010In other words, there";
@@ -8840,7 +8845,6 @@ L_Work:
 	mes "you for now, mortal. It will";
 	mes "be your job to discover the";
 	mes "truth of the legends...";
-	set signquest,66;
 	close;
 
 L_Greet:
