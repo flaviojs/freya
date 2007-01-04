@@ -5,8 +5,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/03/07
+	* Removed: Duplicate values for min_hair_style, max_hair_style, min_hair_color, max_hair_color [Tsuyuki]
+	 - Removed from char_athena.conf, remember to update your configuration files!
+	 - Fixes Custom hair style/color problems
 	* Added: Lion Masquerade's missing bonuses (Thanks to Explosive) [Tsuyuki]
-	* Reverted: Yor's changes to the custom/merchants/dye.txt NPC (Should fix palette problem) [Tsuyuki]
 	* Fixed: Green Ferus Card now gives +10% HP (Thanks to Explosive) [Tsuyuki]
 	* Fixed: Ulle's Cap now has a slot (Thanks to Explosive) [Tsuyuki]
 	* Improved: db_mysql.c errors display format [GoodKat]

@@ -11,6 +11,7 @@
 //= Revised dye NPC, split into two NPCs, one for hair color
 //= and style, the other for clothes color.
 //===== Additional Comments: =================================
+//= v5.1 - Remove hair color 9 to 20. They doesn't really exist.
 //= v5.0 - Added new style hair [Yor]
 //= v4.0 - Refined and Combined [Darkchild]
 //= v3.0 - Added the 'Browse' options
@@ -82,7 +83,7 @@ prontera.gat,149,189,1	script	Stylist	122,{
 		mes "Just pick a color and we can get started.";
 		next;
 		mes "[^FF8000Stylist^000000]";
-		mes "Please pick a style number ^0000FFbetween 0 and 20^000000.";
+		mes "Please pick a style number ^0000FFbetween 0 and 8^000000.";
 		mes "Number 0, by the way, is the default color for your character.";
 		next;
 		mes "[^FF8000Stylist^000000]";
@@ -94,10 +95,9 @@ prontera.gat,149,189,1	script	Stylist	122,{
 		mes "5 is blue...";
 		mes "6 is white...";
 		mes "7 is black...";
-		mes "8 is red...";
-		mes "and 9-20 are new colors.";
+		mes "and 8 is red.";
 		input @color;
-		if (@color>20) close;
+		if (@color>8) close;
 		if (@color<0) close;
 		setlook 6,@color;
 		next;
@@ -120,8 +120,8 @@ prontera.gat,149,189,1	script	Stylist	122,{
 		set @look,@look+1;
 		setlook 6,@look;
 		mes "This is Pallete Number^FF9009 "+@look+" ^000000!";
-		if(@look == 20) menu "Back To The Begin",Lbrowsecolor,"I like this one",Lstop;
-		if(@look != 20) menu "Keep going",Lbrowsecolorrep,"I like this one",Lstop;
+		if(@look == 8) menu "Back To The Begin",Lbrowsecolor,"I like this one",Lstop;
+		if(@look != 8) menu "Keep going",Lbrowsecolorrep,"I like this one",Lstop;
 
 		Lstop:
 			mes "[^FF8000Stylist^000000]";
