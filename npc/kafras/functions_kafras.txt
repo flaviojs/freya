@@ -9,7 +9,7 @@
 //= Lupus
 //= kobra_k88 (2.0)
 //===== Current Version: =====================================
-//= 2.4
+//= 2.8
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -32,6 +32,7 @@
 //= it uses the Airship system, and the Global Project cities (Ayothaya.. etc) [Tsuyuki]
 //= 2.6 Updated with a big haul of official iRO text, and corrected some other things [Tsuyuki]
 //= 2.7 Added new Menu functions [Tsuyuki]
+//= 2.8 Fixed several bugs as well as fixed the Kafra pass system entirely [Tsuyuki]
 //============================================================
 
 
@@ -75,7 +76,9 @@ function	script	F_Kafra	{
 		mes "Your Respawn Point";
 		mes "has been saved. Thank you";
 		mes "for using the Kafra Service.";
-		return;
+		close2;
+		cutin "", 255;
+		end;
 
 		// To-Do: Official iRO Dialogue for Saving:
 		// mes "[Kafra Employee]";
@@ -98,10 +101,11 @@ function	script	F_Kafra	{
 		callfunc "F_KafTele",getarg(0);
 
 	M_Cart:
-		if (callfunc("F_KafCart",getarg(0)) == 1) next;
+		callfunc "F_KafCart",getarg(0);
 
 	M_Pass:
-		if (callfunc("F_KafPass") == 1) next;
+		callfunc "F_KafPass",getarg(0);
+		goto M_Menu;
 
 	M_Info:
 		callfunc "F_KafInfo",getarg(2);
@@ -199,11 +203,11 @@ function	script	F_KafTele	{
 		set @num, 6;
 
 	L_Warp:
-		if (@wrpC$[@num] == "Cancel") return;
-		if (@kafPass==1) set @wrpP[@num], 0;
-		if (Zeny<@wrpP[@num]) goto sL_CantTele;
-		set Zeny, Zeny-@wrpP[@num];
-		if (@kafPass==0) set RESRVPTS, RESRVPTS + (@wrpP[@num]/16);
+		if (@wrpC$[@num] == "Cancel") goto L_End;
+		if (@kafPass == 1) set @wrpP[@num], 0;
+		if (Zeny < @wrpP[@num]) goto sL_CantTele;
+		set Zeny, Zeny - @wrpP[@num];
+		if (@kafPass == 0) set RESRVPTS, RESRVPTS + (@wrpP[@num]/16);
 
 		if (@wrpD$[@num] == "Alberta") warp "alberta.gat", 117, 56;
 		if (@wrpD$[@num] == "Al De Baran") warp "aldebaran.gat",143,110;
@@ -219,14 +223,19 @@ function	script	F_KafTele	{
 		if (@wrpD$[@num] == "Comodo Pharos Lighthouse") warp "cmd_fild07.gat", 127, 134;
 		if (@wrpD$[@num] == "Orc Dungeon") warp "gef_fild10.gat", 52, 326;
 		if (@wrpD$[@num] == "Umbala") warp "umbala.gat", 130, 130;
-		close2;		// this part safegaurds against errors/typos
-		set zeny, zeny + @wrpP[@num];
+		close2;		// This part safegaurds against errors/typos
+		set Zeny, Zeny + @wrpP[@num];
 		cutin "", 255;
 		end;
 
 		sL_CantTele:
 			mes "[Kafra Employee]";
 			mes "Dear you don't have enough money. Please check your funds again.";
+			close2;
+			cutin "", 255;
+			end;
+
+		L_End:
 			close2;
 			cutin "", 255;
 			end;
@@ -237,18 +246,18 @@ function	script	F_KafTele	{
 
 function	script	F_KafCart	{
 	if (callfunc("Is_Merc_Class") == 0) goto sL_CantRent;
-	if (getskilllv(39)==0) goto sL_NeedSkill;
+	if (getskilllv(39) == 0) goto sL_NeedSkill;
 	if (checkcart(0) == 1) goto sL_GotCart;
 	if (getarg(0) == 2) goto L_Guild;
 	mes "[Kafra Employee]";
-	if (@kafPass==0) mes "The Cart Fee is 800 Zeny.  Do you want to Rent a Cart?";
-	if (@kafPass==1) mes "Since you're using a Kafra Pass, you can rent a cart for free!";
+	if (@kafPass == 0) mes "The Cart Fee is 800 Zeny.  Do you want to Rent a Cart?";
+	if (@kafPass == 1) mes "Since you're using a Kafra Pass, you can rent a cart for free!";
 	next;
 	menu "Rent a Cart.",-, "Cancel.",M_End;
 
-		if (Zeny<800 && kafPass==0) goto sL_CartFee;
-		if (@kafPass==0) set Zeny,Zeny-800;
-		if (@kafPass==0) set RESRVPTS, RESRVPTS + 48;
+		if (Zeny < 800 && kafPass == 0) goto sL_CartFee;
+		if (@kafPass == 0) set Zeny,Zeny-800;
+		if (@kafPass == 0) set RESRVPTS, RESRVPTS + 48;
 		goto L_Guild;
 
 	L_Guild:
@@ -309,24 +318,25 @@ function	script	F_KafPass	{
 		mes "[Kafra Employee]";
 		mes "Let me just check your pass.....";
 		next;
-		if (usedKafPass==0 && countitem(1084)<1) goto sL_NeedPass;
+		if (usedKafPass == 0 && countitem(1084) == 0) goto sL_NeedPass;
 		set @kafPass,1;
 		set usedKafPass, usedKafPass + 1;
-		if (usedKafPass>=3) goto sL_PassExpire;
-		if (usedKafPass > 1) goto L_Cont; //fixed Lupus
+		if (usedKafPass >= 3) goto sL_PassExpire;
+		if (usedKafPass > 1) goto L_Cont; // Fixed Lupus
+		delitem 1084,1;
 		mes "(you hand her your pass)";
 		next;
 		mes "[Kafra Employee]";
 		mes "Great! Everything seems to be in order.  Now that your pass is activated, you may rent a cart or use the teleport services for free.";
 		mes "Your pass number has been entered into our database so you no longer need it.";
-		delitem 1084,1;
 		next;
 		goto L_Cont;
 
 		L_Cont:
 			mes "[Kafra Employee]";
 			mes "You will be able to use the Cart Rental and Teleport services free of charge ^5533FF"+(3 - usedKafPass)+"^000000 more times with any Kafra service agent you choose.";
-			return 1;
+			next;
+			return;
 
 		sL_NeedPass:
 			mes "[Kafra Employee]";
@@ -338,12 +348,12 @@ function	script	F_KafPass	{
 		sL_PassExpire:
 			mes "[Kafra Employee]";
 			mes "This is going to be the 3rd and final time you use this pass, therefore it is now expired.";
-			next;
 			set usedKafPass,0;
+			next;
 			mes "[Kafra Employee]";
 			mes "You may now use the Teleport and Cart Rental services for free.";
-			return 1;
-
+			next;
+			return;
 	sM_PassInfo:
 		mes "[Kafra Employee]";
 		mes "A ^5533FFKafra Pass^000000 is a unique voucher that lets you use Kafra services for free!";
@@ -423,10 +433,10 @@ function	script	F_KafInfo	{
 //===================================================================
 
 function	script	F_KafEnd	{
-	if (getarg(1)==1) goto F_KafSaveEnd; // Player Saved Ending Function
+	if (getarg(1) == 1) goto F_KafSaveEnd; // Player Saved Ending Function
 	mes "[Kafra Employee]";
-	if (getarg(0)!=1) mes "We, here at Kafra Corporation, are always endeavoring to provide you with the best services. We hope that we meet your adventuring needs and standards of excellence.";
-	if (getarg(0)==1) mes "We, Kafra Corporation.... Will be with you.... whenever.... wherever... therefore.... please don't forget us.....";
+	if (getarg(0) != 1) mes "We, here at Kafra Corporation, are always endeavoring to provide you with the best services. We hope that we meet your adventuring needs and standards of excellence.";
+	if (getarg(0) == 1) mes "We, Kafra Corporation.... Will be with you.... whenever.... wherever... therefore.... please don't forget us.....";
 	close2;
 	cutin "", 255;
 	end;
