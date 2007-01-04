@@ -3,7 +3,7 @@
 //===== By: ================================================== 
 //= eAthena Dev Team
 //===== Current Version: ===================================== 
-//= 1.8
+//= 2.0
 //===== Compatible With: ===================================== 
 //= Freya
 //===== Description: ========================================= 
@@ -22,6 +22,7 @@
 //= 1.7 Fixed exploits [Lupus]
 //= 1.8 Removed Duplicates [Silent]
 //= 1.9 Fixed a bunch of typos with information from Crono/Hollengrhen [Evera]
+//= 2.0 Fixed Kafra Pavianee's cutin not dissapearing sometimes [Tsuyuki]
 //============================================================
 
 
@@ -1169,6 +1170,7 @@ aldeba_in.gat,81,166,4	script	Kafra Pavianee	117,{
 		sL_Zeny:
 			mes "[Kafra Pavianne]";
 			mes "I'm sorry but you don't have enough zeny.";
+			cutin "kafra_01",255;
 			close;
 
 	M_1:
