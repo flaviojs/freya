@@ -3,7 +3,7 @@
 //===== By: ================================================== 
 //= erKURITA
 //===== Current Version: ===================================== 
-//= 1.1
+//= 1.2
 //===== Compatible With: ===================================== 
 //= Freya
 //===== Description: ========================================= 
@@ -20,6 +20,7 @@
 //= 0.9 Removed Duplicates [Toms]
 //= 1.0 Fixed some bugs and added some new NPCs (Au{R}oN) [Tsuyuki]
 //= 1.1 Updated Donation NPC (MasterOfMuppets) [Tsuyuki]
+//= 1.2 Added a bunch of missing NPCs (Thanks to $ephiroth) [Tsuyuki]
 //=============================================================
 
 
@@ -2305,5 +2306,731 @@ lhz_in02.gat,147,222,4	script	Officer Guo::off_guo	85,{
 }
 
 lhz_in02.gat,142,221,8	duplicate(off_guo)	Suspect::susp_guo	870
+
+// ---------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------
+
+lhz_in01.gat,14,28,3	script	Banquet Staff	109,{
+
+	mes "[Banquet Staff]";
+	mes "This Banquet Hall is used";
+	mes "to hold events such as dinner";
+	mes "parties with partners, clients";
+	mes "and other associates, and press";
+	mes "conferences. Of course, there's";
+	mes "nothing going on right now.";
+	next;
+	mes "[Banquet Staff]";
+	mes "Sometimes peace and quiet";
+	mes "is a welcome change of pace,";
+	mes "but right now I'm feeling quite";
+	mes "bored. I think I would rather";
+	mes "be busy than twiddling my";
+	mes "thumbs, to tell the truth.";
+	close;
+}
+
+// ---------------------------------------------------------------------------
+
+lhz_in01.gat,43,52,3	script	Luccet#party	703,{
+
+	mes "[Luccet]";
+	mes "Shhhh! Hey, my brother's";
+	mes "'it,' so I gotta find a place";
+	mes "to hide! Wait, would you just";
+	mes "stand really silly? I could";
+	mes "just hide behind you! No?";
+	mes "Nuts! Olly olly oxen free!";
+	close;
+}
+
+// ---------------------------------------------------------------------------
+
+lhz_in01.gat,28,33,7	script	Hanccet#party	706,{
+
+	mes "[Hanccet]";
+	mes "Man... I hate being ''it!";
+	mes "I'm horrible at this game!";
+	mes "Alright, okay, if I were my";
+	mes "sister Luccet, where would";
+	mes "I think I would not look for";
+	mes "me? Of course...! The sewers!";
+	close;
+}
+
+// ---------------------------------------------------------------------------
+
+lhz_in01.gat,21,50,6	script	Annette#party	91,{
+
+	mes "[Annette]";
+	mes "I've heard that the";
+	mes "Rekenber Banquet Hall";
+	mes "is also used to hold weddings.";
+	mes "That must be so wonderful~";
+	next;
+	mes "[Annette]";
+	mes "Even if it is more expensive,";
+	mes "I'd want to have my wedding";
+	mes "here. Marriage is only once";
+	mes "in a lifetime, ideally, so I'd";
+	mes "want to make mine the most";
+	mes "memorable experience.";
+	close;
+}
+
+// ---------------------------------------------------------------------------
+
+lhz_in01.gat,129,54,1	script	Mereth	869,{
+
+	mes "^3131ff*Shhhhhhzzzz*";
+	mes "*Shhhhhhzzzz*";
+	next;
+	mes "[Mereth]";
+	mes "Shhhh...";
+	mes "Aaaaaahhh...";
+	next;
+	mes "^3131ffThe employee turned his";
+	mes "head and peered into your eyes";
+	mes "through the black mask on his face.";
+	mes "Mereth stared wordlessly for a moment";
+	mes "and then began to dance lively, creepily jovial jig.";
+	close;
+}
+
+// ---------------------------------------------------------------------------
+
+lhz_in01.gat,108,53,0	script	#horri	111,{
+
+	mes "^3131ffThis is simply a pile";
+	mes "of files, a smattering of";
+	mes "books and a family portrait.";
+	close;
+}
+
+// ---------------------------------------------------------------------------
+
+lhz_in01.gat,108,47,0	script	#never	111,{
+
+	mes "^3131ffThis desk is very well";
+	mes "neat and well organized in";
+	mes "comparison to the other desks";
+	mes "you've seen in your time.";
+	mes "You take a moment to fully";
+	mes "marvel at its tidiness.";
+	close;
+}
+
+// ---------------------------------------------------------------------------
+
+lhz_in01.gat,166,56,1	script	#crazy4u	111,{
+
+	mes "^3131ffThis desk has a bookshelf";
+	mes "that is crammed with all sorts of books.";
+	mes "Out of curiosity, you decide to pick one out.";
+	next;
+	mes "^3131ffHowever, the book you happen";
+	mes "to touch contains an";
+	mes "amazing amount of dark";
+	mes "power, causing you to drop it.";
+	misceffect 196;
+	close;
+}
+
+// ---------------------------------------------------------------------------
+
+lhz_in01.gat,148,45,2	script	Noama	97,{
+
+	mes "[Noama]";
+	mes "Hee hee~!";
+	mes "You wanna hear something funny?";
+	mes "I heard there's a bar in Prontera where this guy sneaks singles into Jawa--";
+	next;
+	mes "[Mazwon]";
+	mes "Noama....!";
+	mes "These machines are acting up again!";
+	mes "Get over here right now!";
+	next;
+	mes "[Noama]";
+	mes "What?!";
+	mes "Stop bugging me, I didn't do anything!";
+	close;
+}
+
+// --------------------------------------------------------------------------
+
+lhz_in01.gat,147,40,0	script	Mazwon	828,{
+
+	mes "[Mazwon]";
+	mes "Crap. Crap! Crap crap crap crap crap!";
+	mes "These desk machines aren't supposed to work like this!";
+	next;
+	mes "[Mazwon]";
+	mes "Noama...!";
+	mes "These machines are acting up again!";
+	mes "Get over here right now!";
+	next;
+	mes "[Noama]";
+	mes "What?!";
+	mes "Stop bugging me, I didn't do anything!";
+	close;
+}
+
+// ---------------------------------------------------------------------------
+
+lhz_in01.gat,157,47,1	script	Mareth	797,{
+
+	mes "[Mareth]";
+	mes "Yoo hoo hoo~";
+	mes "Oh, how I love";
+	mes "love love chocolate!";
+	close;
+}
+
+// ---------------------------------------------------------------------------
+
+lhz_in01.gat,164,45,2	script	Eiya	91,{
+
+	mes "[Eiya]";
+	mes "Jorje seems so cranky";
+	mes "recently. He's usually";
+	mes "more laid back than this.";
+	mes "Oh well, I hope that he";
+	mes "feels better.";
+	next;
+	mes "[Eiya]";
+	mes "Ooh, would you like?";
+	mes "to look at my miniature";
+	mes "doll collection? I love";
+	mes "collecting cute dolls!";
+	close;
+}
+
+// ---------------------------------------------------------------------------
+
+lhz_in01.gat,135,57,3	script	Blackboard	111,{
+
+	mes "^3131ffYou found a blackboard filled with scribbling.";
+	mes "You can only read some of the messages that have been quickly scrawled on it.^000000";
+	next;
+	mes "''Make sure everything is complete by XX 00.''";
+	mes "- Jorje";
+	next;
+	mes "Late Fee: 59,990 zeny";
+	next;
+	mes "''I want to have %%%.''";
+	mes "- Ellete";
+	mes "''I want $$$ too!''";
+	mes "- Enoz";
+	mes "''How about @@@?''";
+	mes "- Ellette";
+	next;
+	mes "''I wanna buy [#@$].''";
+	mes "- Ninjose";
+	mes "''Go buy it!''";
+	mes "- Senyu";
+	mes "''Working hard and buying hard is the best employee attitude.''";
+	mes "- Mazwon";
+	close;
+}
+
+// ---------------------------------------------------------------------------
+
+lhz_in03.gat,100,18,3	script	Rocky#house	81,{
+
+	mes "[Rocky]";
+	mes "Woof woof!";
+	mes "Grrrrrrr...";
+	close;
+}
+
+// ---------------------------------------------------------------------------
+
+lhz_in03.gat,130,41,5	script	Jay#house	706,{
+
+	mes "[Jay]";
+	mes "My mommy and daddy";
+	mes "always come home late.";
+	mes "So I eat dinner alone.";
+	mes "All by myself. Everyday.";
+	next;
+	mes "[Jay]";
+	mes "Food doesn't taste as";
+	mes "good when you're not";
+	mes "eating with anybody.";
+	mes "Maybe I'm just lonely.";
+	close;
+}
+
+// --------------------------------------------------------------------------
+
+lhz_in03.gat,129,22,7	script	Housemaid Jane#house	850,{
+
+	mes "[Housemaid Jane]";
+	mes "This house is enormous...";
+	mes "It's clearly much too big";
+	mes "for a regularly sized family.";
+	mes "And it takes me forever to";
+	mes "make sure that it stays clean!";
+	next;
+	mes "[Housemaid Jane]";
+	mes "It's not easy keeping";
+	mes "things neat and tidy when";
+	mes "you're responsible for acres";
+	mes "of indoor living space. Being";
+	mes "a maid can be pretty hard...";
+	close;
+}
+
+// ---------------------------------------------------------------------------
+
+lhz_in03.gat,124,117,2	script	Housemaid Brenda#house	74,{
+
+	mes "[Housemaid Brenda]";
+	mes "I better dust extra";
+	mes "gently around this vase.";
+	mes "It's worth ten million zeny";
+	mes "and if it were to-- No. No!";
+	mes "I'm not even going to think it!";
+	close;
+}
+
+// ---------------------------------------------------------------------------
+
+lighthalzen.gat,159,222,1	script	Rekenber Employee	109,{
+
+	mes "[Benauth]";
+	mes "Down there, the repairman";
+	mes "is just finishing manteinance";
+	mes "on our chairman's private";
+	mes "Airship. Can you imagine";
+	mes "having one of those of your";
+	mes "very own to fly around in?";
+	next;
+	mes "[Benauth]";
+	mes "Yeah, the chairman of";
+	mes "the Rekenber Corporation...";
+	mes "He's really powerful person.";
+	mes "It's almost scary what he can";
+	mes "do with his money, you know?";
+	close;
+}
+
+// --------------------------------------------------------------------------
+
+lighthalzen.gat,162,304,7	script	Rekenber Guard Drew	868,{
+
+	mes "[Rekenber Guard Drew]";
+	mes "Dude, check it out~";
+	mes "Official glossy photos";
+	mes "of the Kafra Ladies. Now...";
+	mes "With 20% more garter belts!";
+	emotion 23;
+	next;
+	mes "[Rekenber Guard Tan]";
+	mes "So they're all wearing";
+	mes "garter belts in these?";
+	mes "Whoa, that means they";
+	mes "event got the glasses chick";
+	mes "to wear 'em too? That's the";
+	mes "best news I've heard all day!";
+	next;
+	mes "[Rekenber Guard Drew]";
+	mes "Okay man, you know these";
+	mes "are limited edition collector's";
+	mes "items, so each one is worth";
+	mes "300,000 zeny. I mean, I have";
+	mes "an extra set, but I don't know";
+	mes "if you'd wanna buy them off--";
+	next;
+	emotion 23;
+	mes "[Rekenber Guard Tan]";
+	mes "I'll take them all.";
+	mes "Wait, all of them except";
+	mes "for that young kid. Just the";
+	mes "idea of having her glamour";
+	mes "photo around strikes me as...";
+	mes "Yeah. Yeah, it's no good.";
+	emotion 2;
+	close;
+}
+
+// --------------------------------------------------------------------------
+
+lighthalzen.gat,163,306,3	script	Rekenber Guard Tan	867,{
+
+	mes "[Rekenber Guard Tan]";
+	mes "Whoa, whoa. Now this...";
+	mes "This is art. The lighting,";
+	mes "the angle, the... the...";
+	mes "subject matter. Oh yes.";
+	next;
+	mes "[Rekenber Guard Drew]";
+	mes "Man, these officialy licensed";
+	mes "Kafra Lady glossies... They're";
+	mes "worth every zeny we paid. Say";
+	mes "goodbye Swimsuit Calendar,";
+	mes "and hellooooo Kafra Leilah~";
+	next;
+	mes "[Rekenber Guard Tan]";
+	mes "Leilah? Oh, you mean";
+	mes "the glasses chick? Dude...";
+	mes "Dude. She's my favourite too!";
+	close;
+}
+
+// --------------------------------------------------------------------------
+
+lighthalzen.gat,70,227,4	script	Delna	102,{
+
+	mes "[Delna]";
+	mes "Sometimes the simple";
+	mes "pleasures can give you";
+	mes "the most happiness. For me";
+	mes "going outside and basking in";
+	mes "the sun os the greatest thing~";
+	next;
+	mes "[Delna]";
+	mes "Yes, sunbathing in a quiet";
+	mes "and relaxing place can be";
+	mes "so refreshing. And if you're";
+	mes "careful about not getting a";
+	mes "sunborn or a tan, a little sun";
+	mes "can be really good for you.";
+	close;
+}
+
+// --------------------------------------------------------------------------
+
+lhz_in02.gat,289,277,3	script	Martial Artist	753,{
+
+	mes "[Martial Artist]";
+	mes "Curses...";
+	mes "I've come to the";
+	mes "wrong place to seek";
+	mes "out a challenge. No";
+	mes "one here is really all";
+	mes "that mightly or competitive!";
+	next;
+	mes "[Martial Artist]";
+	mes "This whole city thinks";
+	mes "it can buy power and safety";
+	mes "wih money. They don't know";
+	mes "the value of a nice, friendly";
+	mes "brawl. Hopefully, I'll find a";
+	mes "rival around here soon...";
+	close;
+}
+
+// --------------------------------------------------------------------------
+
+lighthalzen.gat,107,107,3	script	Kosit	869,{
+
+	mes "[Kosit]";
+	mes "This city might have";
+	mes "more guards and rules";
+	mes "than other places, but";
+	mes "I still don't know if it's";
+	mes "really safe to live here.";
+	next;
+	mes "[Kosit]";
+	mes "I mean, the reason we have";
+	mes "these rules is because of all";
+	mes "the unruly gangsters that can";
+	mes "sometimes get into the city.";
+	mes "I mean, it's relatively peaceful";
+	mes "and all. But these rules...";
+	next;
+	mes "[Kosit]";
+	mes "It's good to be safe,";
+	mes "but I don't know if it's";
+	mes "a good idea to sacrifice";
+	mes "our freedoms or standard";
+	mes "of living, you know?";
+	close;
+}
+
+// --------------------------------------------------------------------------
+
+lhz_in03.gat,32,99,3	script	Sopheap	863,{
+
+	mes "[Sopheap]";
+	mes "Oh, you youngsters.";
+	mes "Always traveling around";
+	mes "and having adventures and";
+	mes "fighting monsters. I certainly";
+	mes "had my fill of excitement back";
+	mes "when I was your age, long ago.";
+	next;
+	mes "[Sopheap]";
+	mes "Sure, I miss doing all";
+	mes "of that, but now I'm content";
+	mes "with just relaxing and resting.";
+	mes "Still, there are a lot of old folk";
+	mes "who refuse to sit still like this~";
+	close;
+}
+
+// --------------------------------------------------------------------------
+
+lhz_in03.gat,25,105,5	script	Gopal	869,{
+
+	mes "[Gopal]";
+	mes "Granny may be happy";
+	mes "just sitting around and";
+	mes "enjoying the peaceful life,";
+	mes "but I'm not! I'm too young";
+	mes "to just lay down and let";
+	mes "these days just pass by!";
+	next;
+	mes "[Gopal]";
+	mes "I wanna make something";
+	mes "of myself. Maybe someday,";
+	mes "I'll found a company as big";
+	mes "as the Rekenber Corporation!";
+	close;
+}
+
+// --------------------------------------------------------------------------
+
+lighthalzen.gat,176,65,5	script	Kimmy	862,{
+
+	mes "[Kimmy]";
+	mes "Unlike most places,";
+	mes "Lighthalzen has many";
+	mes "beautiful clothing and";
+	mes "accessory shops. This";
+	mes "place is heaven to a";
+	mes "trendsetter like me~!";
+	next;
+	mes "[Kimmy]";
+	mes "I don't know if you";
+	mes "adventurers are interested";
+	mes "in fashion, but you can thrash";
+	mes "your old clothes and get some";
+	mes "new, unique and trendy gear";
+	mes "over here in Lighthalzen~";
+	close;
+}
+
+// --------------------------------------------------------------------------
+
+lighthalzen.gat,364,282,3	script	Bodger	870,{
+
+	mes "[Bodger]";
+	mes "Another hungry day...";
+	mes "and even if I did, there's";
+	mes "no place that sells food";
+	mes "I'd actually eat. Oh, man.";
+	mes "I'm barely living as it is.";
+	next;
+	mes "[Bodger]";
+	mes "I hear that the people";
+	mes "who live Uptown eat totally";
+	mes "delicious, gourmet food eight";
+	mes "times a day! Hopefully it's just";
+	mes "an exaggeration. 'Cuz if it";
+	mes "wasn't, I'd be so mad...";
+	close;
+}
+
+// --------------------------------------------------------------------------
+
+lhz_in03.gat,239,38,3	script	Avetis	849,{
+
+	mes "[Avetis]";
+	mes "A-ack...";
+	mes "*Cough cough*";
+	mes "Would you give me";
+	mes "some m-medicine?!";
+	mes "*Cough cough haaack*";
+	mes "Sweet Christmas, it hurts...";
+	next;
+	mes "[Avetis]";
+	mes "I sk-skipped work";
+	mes "because I've been too";
+	mes "sick t-to go. *Cough*";
+	mes "But now I don't have";
+	mes "the money to *Haack*";
+	mes "buy med-medicine...";
+	close;
+}
+
+// --------------------------------------------------------------------------
+
+lhz_in02.gat,267,25,4	script	Diana	747,{
+
+	mes "[Diana]";
+	mes "Oh wow, that weapon";
+	mes "is fantastic! But I'm sure";
+	mes "that it must be really";
+	mes "expensive. Huh...";
+	next;
+	mes "[Shop Assistant]";
+	mes "Ma'am, are you talking";
+	mes "about this Stilleto? You";
+	mes "certainly have an eye for";
+	mes "quality weapons. If you";
+	mes "don't mind me asking,";
+	mes "where are you from?";
+	next;
+	mes "[Diana]";
+	mes "Oh, I was born";
+	mes "and raised in Morroc.";
+	next;
+	mes "[Shop Assistant]";
+	mes "Ah yes, I've heard many";
+	mes "good things about that town.";
+	mes "You've certainly proven that";
+	mes "people from Morroc truly have";
+	mes "good taste. Now, this Stilleto";
+	mes "is a steal at 39,800 zeny...";
+	next;
+	emotion 23;
+	mes "[Diana]";
+	mes "Huh...?!";
+	mes "That's ridiculous!";
+	mes "Never mind that, let";
+	mes "me take a look at that";
+	mes "Gladius in the corner.";
+	next;
+	mes "[Shop Assistant]";
+	mes "The Gladius?";
+	mes "Ah, that would be";
+	mes "39,800 zeny, ma'am.";
+	next;
+	mes "[Diana]";
+	mes "Oh, that's a really";
+	mes "good price. I'll take it!";
+	next;
+	mes "[Shop Assistant]";
+	mes "Yes, this replica really";
+	mes "does look just like an";
+	mes "actual Gladius, does it";
+	mes "not? Although not a true";
+	mes "weapon, it's quite capable of";
+	mes "opening the toughest envelopes.";
+	next;
+	mes "[Diana]";
+	mes "...";
+	mes "......";
+	mes "I take that back.";
+	mes "This shop really sucks.";
+	close;
+}
+
+// ---------------------------------------------------------------------------
+
+lhz_in02.gat,267,22,1	script	Shop Assistant	91,{
+
+	mes "[Shop Assistant]";
+	mes "Welcome to our";
+	mes "store where we offer";
+	mes "many unique products that";
+	mes "you can't find anywhere else.";
+	next;
+	mes "[Shop Assistant]";
+	mes "However, shopping is only available";
+	mes "to our members. There's an annual";
+	mes "membership fee that's waived when";
+	mes "you spend a certain amount every";
+	mes "month on our store. If you invite";
+	mes "your friends, you'll receive spe--";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "N-no thank you!";
+	mes "I'm not interested!";
+	close;
+}
+
+// ---------------------------------------------------------------------------
+
+lighthalzen.gat,192,63,4	script	Sergei	92,{
+
+	mes "[Sergei]";	
+	mes "You know, there's an";
+	mes "interesting story about";
+	mes "the axe that's hanging";
+	mes "over there. Would you";
+	mes "like me to tell you?";
+	next;
+	menu "Sure",Yes,"No, thank's.",No;
+
+Yes:
+	mes "[Sergei]";
+	mes "This previous owner of";
+	mes "this Weapon Shop was";
+	mes "a convicted serial killer.";
+	mes "Each night, he'd take that";
+	mes "axe and cruelly murder";
+	mes "beautiful ladies like me.";
+	next;
+	mes "[Sergei]";
+	mes "When he was finally";
+	mes "caught, they beheaded";
+	mes "him with his own axe.";
+	mes "Since then, they say that";
+	mes "his ghost still lingers and";
+	mes "sharpens this axe at night.";
+	next;
+	mes "[Sergei]";
+	mes "Just thinking about";
+	mes "it gives me goosebumps!";
+	mes "And I'm supposed to work";
+	mes "here! It's so creepy!";
+	close;
+
+No:
+	mes "[Sergei]";
+	mes "Oh, how disappointing~";
+	mes "It's the perfect story for";
+	mes "the season. Well, now that";
+	mes "I think about it, that story is";
+	mes "actually pretty creepy...";
+	close;
+}
+
+// ---------------------------------------------------------------------------
+
+lighthalzen.gat,258,223,3	script	Srinivas	866,{
+
+	mes "[Srinivas]";
+	mes "Those rundown buildings";
+	mes "in the slums are an eyesore";
+	mes "that offend the entire city!";
+	mes "I just wish they would wreck";
+	mes "them down. What do I care";
+	mes "about the poor and needy?";
+	close;
+}
+
+// ---------------------------------------------------------------------------	
+
+lighthalzen.gat,77,203,3	script	Victor Perfecto	869,{
+
+	mes "[Victor Perfecto]";
+	mes "I've heard that the";
+	mes "Rekenber Corporation";
+	mes "actually created the";
+	mes "environment in Lighthalzen";
+	mes "through artificial means.";
+	next;
+	mes "[Victor Perfecto]";
+	mes "It seems like it'd take";
+	mes "a lot of investment, but";
+	mes "artificially creating an";
+	mes "environment isn't impossible";
+	mes "with the means avalaible to";
+	mes "the Rekenber Corporation.";
+	next;
+	mes "[Victor Perfecto]";
+	mes "*Sigh...*";
+	mes "Still, it's pretty";
+	mes "depressing to think";
+	mes "that the beauty of nature";
+	mes "can be manmade and";
+	mes "equated to zeny, you know?";
+	close;
+}
 
 // ---------------------------------------------------------------------------
