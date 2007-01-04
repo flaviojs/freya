@@ -4,6 +4,12 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+01/04/07
+	* Added: Common Airship NPCs (Thanks to $ephiroth) [Tsuyuki]
+	* Added: A bunch of missing Lighthalzen NPCs (Thanks to $ephiroth) [Tsuyuki]
+	* Updated: Fully updated the item_db.txt with all the latest patch items/equipment (Credits to jAthena) [Tsuyuki]
+	 - Note: Need a translator for the new item names!
+
 01/03/07
 	* Fixed: Some checks with the Gunslinger/Ninja/Taekwon classes in scripts (Fixes Gunslinger/Ninja Quests) [Tsuyuki]
 	* Changed: Perfected some NPC/Script formatting in the /npc/ folder [Tsuyuki]
