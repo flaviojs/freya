@@ -5,7 +5,7 @@
 //= 1.2 By Damz Fish (Conversion)
 //= 1.4 By galaxy (Testing/Bug Fixing)
 //===== Current Version: =====================================
-//= 1.5
+//= 1.6
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -23,6 +23,7 @@
 //= getitem2, and delitem2 to getitem, countitem, etc for now.. [Tsuyuki]
 //= 1.4 Fully tested and major bug fixes [galaxy]
 //= 1.5 Fixed a major bug [galaxy]
+//= 1.6 Fixed several more bugs [galaxy]
 //============================================================
 
 
@@ -673,6 +674,7 @@ SIGNQ59:
 	set @metzmin,gettime(2);
 	if (@metzmin > 29) set @metzhour,@metzhour +1;
 	set signmetzhour,@metzhour + rand(2,4);
+	if (signmetzhour > 23) set signmetzhour,signmetzhour - 24;
 	set signquest,60;
 	close2;
 	cutin "",255;
@@ -5642,6 +5644,7 @@ L_Sign:
 	set @engelmin,gettime(2);
 	if (@engelmin > 29) set @engelhour,@engelhour +1;
 	set signengelhour,@engelhour + rand(2,4);
+	if (signengelhour > 23) set signengelhour,signengelhour - 24;
 	set signquest,62;
 	close;
 
@@ -8877,7 +8880,7 @@ OnSignDead:
 	set $@Sign_Summon,$@Sign_Summon -1;
 	if ($@Sign_Summon > 0) end;
 	set Sign_Branch8A,8;
-	set $signroomfull,3;
+	set $signroomfull,1;
 	stopnpctimer;
 	goto OnSerin;
 
@@ -8919,7 +8922,7 @@ OnSignDead:
 	set $@Sign_Summon2,$@Sign_Summon2 -1;
 	if ($@Sign_Summon2 > 0) end;
 	set Sign_Branch8B,4;
-	set $signroom2full,3;
+	set $signroom2full,1;
 	stopnpctimer;
 	goto OnSerin;
 

@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/04/07
+	* Fixed: Several bugs in The Sign Quest (Thanks to galaxy) [Tsuyuki]
 	* Added: A few common Hugel NPCs (Thanks to $ephiroth) [Tsuyuki]
 	* Added: Common Airship NPCs (Thanks to $ephiroth) [Tsuyuki]
 	* Added: A bunch of missing Lighthalzen NPCs (Thanks to $ephiroth) [Tsuyuki]
