@@ -74,14 +74,14 @@ M_Menu:
 			set @COMPASS_CHECK, 2;
 
 		sL_Wipe:
-			if(@COMPASS_CHECK != 2) next;
-			if(@COMPASS_CHECK == 1) goto sM_Menu;
+			if (@COMPASS_CHECK != 2) next;
+			if (@COMPASS_CHECK == 1) goto sM_Menu;
 			viewpoint 2,33,41,1,0xFF0000;
 			viewpoint 2,148,57,2,0x6666FF;
 			viewpoint 2,98,154,3,0xFF00FF;
 			viewpoint 2,65,233,4,0xF5AD05;
 			viewpoint 2,136,38,5,0xF5AD05;
-			if(@COMPASS_CHECK == 0) goto sM_Menu;
+			if (@COMPASS_CHECK == 0) goto sM_Menu;
 			mes "[Alberta Soldier]";
 			mes "All indications have been removed";
 			cutin "prt_soldier",255;

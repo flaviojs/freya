@@ -18,9 +18,9 @@
 
 // -- Archer Guildsman -- 
 payon_in02.gat,64,71,4	script	Archer Guildsman	59,{
-	callfunc "F_ToHigh",Job_Archer_High,"High Archer",Job_Sniper,"Sniper",0,0,0,0,"Archer Guildsman";
+	callfunc "F_ToHigh",JOB_ARCHER_HIGH,"High Archer",JOB_SNIPER,"Sniper",0,0,0,0,"Archer Guildsman";
 	mes "[Archer Guildsman]";
-	if(BaseJob==Job_Novice && job_archer_q == 1) goto L_Check;
+	if (BaseJob == JOB_NOVICE && JOB_ARCHER_q == 1) goto L_Check;
 	mes "Bonjour, Puis-je vous aider?";
 	next;
 	menu "Je souhaite devenir Archer.",M_0,"Que faut-il pour être archer?",M_1,"Laissez tomber.",M_End;
@@ -57,8 +57,8 @@ payon_in02.gat,64,71,4	script	Archer Guildsman	59,{
 
 	M_1:
 		mes "[Recruteur des Archers]";
-		if(BaseJob == Job_Archer) goto sM_1a;
-		if(BaseJob != Job_Novice) goto sM_1b;
+		if (BaseJob == JOB_ARCHER) goto sM_1a;
+		if (BaseJob != JOB_NOVICE) goto sM_1b;
 		mes "Laissez-moi vous exposer les exigences pour devenir Archer:";
 		next;
 		mes "[Recruteur des Archers]";
@@ -88,8 +88,8 @@ L_Check:
 	mes "Oh, je vois que vous revenez.";
 	next;
 	mes "[Recruteur des Archers]";
-	if((countitem(1066) == 0) && (countitem(1067) == 0) && (countitem(1068) == 0) && (countitem(1019) == 0)) goto sL_NotRdy;
-	if(SkillPoint > 0) goto sL_SkPoints;
+	if ((countitem(1066) == 0) && (countitem(1067) == 0) && (countitem(1068) == 0) && (countitem(1019) == 0)) goto sL_NotRdy;
+	if (SkillPoint > 0) goto sL_SkPoints;
 	set @Trunk1, countitem(1066)*5;
 	set @Trunk2, countitem(1067)*3;
 	set @Trunk3, countitem(1068)*2;
@@ -109,7 +109,7 @@ L_Check:
 	mes "Ce qui vous fait un total de: ^ff0000" +@TrunkTotal+"^000000";
 	next;
 	mes "[Recruteur des Archers]";
-	if(@TrunkTotal < 25) goto sL_Failed;
+	if (@TrunkTotal < 25) goto sL_Failed;
 
 	mes "Très bien! Vous avez réussi l'épreuve. Fécilitations, vous êtes prêt à devenir Archer.";
 	emotion 21;
@@ -117,7 +117,7 @@ L_Check:
 	mes "[Recruteur des Archers]";
 	mes "A présent, je vais vous transformer...";
 	next;
-	callfunc "Job_Change",Job_Archer;
+	callfunc "Job_Change",JOB_ARCHER;
 	callfunc "F_ClearJobVar";		// clears all job variables for the current player
 	mes "[Recruteur des Archers]";
 	mes "En échange du bois que vous m'avez apporté, je vous offre cet arc et ces quelques flèches. Je vous en prie, prenez-les.";

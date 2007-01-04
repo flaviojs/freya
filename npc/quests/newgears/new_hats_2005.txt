@@ -47,12 +47,12 @@ lighthalzen.gat,360,310,4	script	Boy	818,{
 
 	mes "[Boy]";
 	mes "Rrr..Rrr.. (^FF3300Royal jelly^000000)";			//526
-	mes "Bu.. Ba...Ba-Bu-bi (^FF3300Baby Bottle^000000)";	//7270	(nursing bottle of baby )
+	mes "Bu.. Ba...Ba-Bu-bi (^FF3300Baby Bottle^000000)";	//7270	(nursing bottle of baby)
 	mes "Pa-Pa..Paxfi.. (^FF3300Pacifier^000000)";			//10004
 	mes "Nu..Noos rie.. (^FF3300Nose Ring^000000)";			//941	(Nose Wheel)
 	next;
 
-	if(countitem(526)<1 || countitem(7270)<1 || countitem(10004)<1 || countitem(941)<1) goto L_EXIT;//Items: Royal_Jelly, Baby_Bottle, Pacifier, Nose_Ring,
+	if (countitem(526)<1 || countitem(7270)<1 || countitem(10004)<1 || countitem(941)<1) goto L_EXIT;//Items: Royal_Jelly, Baby_Bottle, Pacifier, Nose_Ring,
 	delitem 526,1;//Items: Royal_Jelly,
 	delitem 7270,1;//Items: Baby_Bottle,
 	delitem 10004,1;//Items: Pacifier,
@@ -82,7 +82,7 @@ lighthalzen.gat,140,68,4	script	Morris	818,{
 	mes "[Morris]";
 	mes "Ok then, I shall make one for you.";
 
-	if(countitem(611)<10 || countitem(7301)<1887 || countitem(5120)<1 || Zeny<50000) goto L_NOITEM;//Items: Magnifier, Tassel, Wide_Bunker_Hat_,
+	if (countitem(611)<10 || countitem(7301)<1887 || countitem(5120)<1 || Zeny<50000) goto L_NOITEM;//Items: Magnifier, Tassel, Wide_Bunker_Hat_,
 	delitem 611,10;   //Items: Magnifier,
 	delitem 7301,1887;  //Tassel//Items: Tassel,
 	delitem 5120,1;   //Items: Wide_Bunker_Hat_,
@@ -124,7 +124,7 @@ lhz_in02.gat,103,31,4	script	Margaret Mary	818,{
 	next;
 	menu "Make me a ^670000Mystic rose^000000.",-,"No, I dont want one.",L_EXIT;
 	
-	if(countitem(731) < 10 || countitem(748) < 3 || countitem(982) < 1 || Zeny<50000) goto L_NOITEM;//Items: 2_Carat_Diamond, Witherless_Rose, White_Dyestuff,
+	if (countitem(731) < 10 || countitem(748) < 3 || countitem(982) < 1 || Zeny<50000) goto L_NOITEM;//Items: 2_Carat_Diamond, Witherless_Rose, White_Dyestuff,
 	delitem 731,10;//Items: 2_Carat_Diamond,
 	delitem 748,3;//Items: Witherless_Rose,
 	delitem 982,1;//Items: White_Dyestuff,
@@ -173,7 +173,7 @@ lighthalzen.gat,183,88,7	script	Relaxed-Looking Lady	818,{
 	mes "Just kidding, Have you ever read 'Red-Hood'? I can make to you the very same ^FF3300Red Bonnet^000000.";
 	next;
 	menu "Please, make it!",-,"No, thanks",L_EXIT;
-	if(countitem(10015) < 1 || countitem(975) < 1 || countitem(10007) < 1 || countitem(5032)<1 || Zeny<50000) goto L_NOITEM;//Items: Green_Lace, Scarlet_Dyestuffs, Silk_Ribbon, Sunday_Hat,
+	if (countitem(10015) < 1 || countitem(975) < 1 || countitem(10007) < 1 || countitem(5032)<1 || Zeny<50000) goto L_NOITEM;//Items: Green_Lace, Scarlet_Dyestuffs, Silk_Ribbon, Sunday_Hat,
 	delitem 10015,1;//Items: Green_Lace,
 	delitem 975,1;//Items: Scarlet_Dyestuffs,
 	delitem 10007,1;//Items: Silk_Ribbon,
@@ -211,7 +211,7 @@ yuno.gat,224,116,4	script	Kacis	818,{
 	next;
 	menu "Please, make one for me",-,"No, thanks. I'm so full",L_EXIT;
 
-	if(countitem(519) < 50 || countitem(548) < 50 || countitem(539) < 50 || countitem(7031)<50) goto L_NOITEM;//Items: Milk, Cheese, Piece_of_Cake, Old_Frying_Pan,
+	if (countitem(519) < 50 || countitem(548) < 50 || countitem(539) < 50 || countitem(7031)<50) goto L_NOITEM;//Items: Milk, Cheese, Piece_of_Cake, Old_Frying_Pan,
 	delitem 519,50;//Items: Milk,
 	delitem 548,50;//Items: Cheese,
 	delitem 539,50;//Items: Piece_of_Cake,
@@ -244,11 +244,11 @@ L_EXIT:
 // Mask_of_Zealotus ID 5121
 gl_prison1.gat,137,138,5	script	Zealotus#LhzHat	1200,{
 
-	if(ZLMASKQ == 0)goto Zealotus1;
-	if(ZLMASKQ > 0 && ZLMASKQ < 6)goto Zealotus2;
-	if(ZLMASKQ == 6)goto Zealotus3;
-	if(ZLMASKQ == 7)goto Zealotus4;
-	if(ZLMASKQ == 8)goto Zealotus6;
+	if (ZLMASKQ == 0) goto Zealotus1;
+	if (ZLMASKQ > 0 && ZLMASKQ < 6) goto Zealotus2;
+	if (ZLMASKQ == 6) goto Zealotus3;
+	if (ZLMASKQ == 7) goto Zealotus4;
+	if (ZLMASKQ == 8) goto Zealotus6;
 
 	Zealotus1:
 		mes "[Zealotus]";
@@ -362,13 +362,13 @@ gl_prison1.gat,137,138,5	script	Zealotus#LhzHat	1200,{
 		end;
 
 	Zealotus4:
-		if(countitem(7263) >= 1)goto ZealCount1;
+		if (countitem(7263) >= 1) goto ZealCount1;
 		goto ZealNoItems;
 
-	ZealCount1: if(countitem(660) >= 1)goto ZealCount2;
+	ZealCount1: if (countitem(660) >= 1) goto ZealCount2;
 		goto ZealNoItems;
 
-	ZealCount2: if(countitem(7099) >= 30)goto Zealotus5;
+	ZealCount2: if (countitem(7099) >= 30) goto Zealotus5;
 		goto ZealNoItems;
 
 	Zealotus5:
@@ -468,12 +468,12 @@ gl_prison1.gat,137,138,5	script	Zealotus#LhzHat	1200,{
 		
 gl_prison1.gat,97,104,1	script	Phendark#LhzHat	1202,{
 
-	if(ZLMASKQ == 0)goto PhenDark1;
-	if(ZLMASKQ == 1)goto PhenDark2;
-	if(ZLMASKQ == 2 || ZLMASKQ == 3)goto PhenDark3;
-	if(ZLMASKQ == 4)goto PhenDark4b;
-	if(ZLMASKQ == 5)goto PhenDark5;
-	if(ZLMASKQ > 5)goto PhenDark6;
+	if (ZLMASKQ == 0) goto PhenDark1;
+	if (ZLMASKQ == 1) goto PhenDark2;
+	if (ZLMASKQ == 2 || ZLMASKQ == 3) goto PhenDark3;
+	if (ZLMASKQ == 4) goto PhenDark4b;
+	if (ZLMASKQ == 5) goto PhenDark5;
+	if (ZLMASKQ > 5) goto PhenDark6;
 
 	PhenDark1:
 		mes "[Phendark]";
@@ -484,28 +484,28 @@ gl_prison1.gat,97,104,1	script	Phendark#LhzHat	1202,{
 		close;
 
 	PhenDark2:
-		if(countitem(1950) || isequipped(1950))set @whipcount,@whipcount+1;
-		if(countitem(1951) || isequipped(1951))set @whipcount,@whipcount+1;
-		if(countitem(1952) || isequipped(1952))set @whipcount,@whipcount+1;
-		if(countitem(1953) || isequipped(1953))set @whipcount,@whipcount+1;
-		if(countitem(1954) || isequipped(1954))set @whipcount,@whipcount+1;
-		if(countitem(1955) || isequipped(1955))set @whipcount,@whipcount+1;
-		if(countitem(1956) || isequipped(1956))set @whipcount,@whipcount+1;
-		if(countitem(1957) || isequipped(1957))set @whipcount,@whipcount+1;
-		if(countitem(1958) || isequipped(1958))set @whipcount,@whipcount+1;
-		if(countitem(1959) || isequipped(1959))set @whipcount,@whipcount+1;
-		if(countitem(1960) || isequipped(1960))set @whipcount,@whipcount+1;
-		if(countitem(1961) || isequipped(1961))set @whipcount,@whipcount+1;
-		if(countitem(1962) || isequipped(1962))set @whipcount,@whipcount+1;
-		if(countitem(1963) || isequipped(1963))set @whipcount,@whipcount+1;
-		if(countitem(1964) || isequipped(1964))set @whipcount,@whipcount+1;
-		if(countitem(1965) || isequipped(1965))set @whipcount,@whipcount+1;
-		if(countitem(1966) || isequipped(1966))set @whipcount,@whipcount+1;
-		if(countitem(1967) || isequipped(1967))set @whipcount,@whipcount+1;
-		if(countitem(1968) || isequipped(1968))set @whipcount,@whipcount+1;
-		if(countitem(1969) || isequipped(1969))set @whipcount,@whipcount+1;
-		if(countitem(1970) || isequipped(1970))set @whipcount,@whipcount+1;
-		if(countitem(1971) || isequipped(1971))set @whipcount,@whipcount+1;
+		if (countitem(1950) || isequipped(1950))set @whipcount,@whipcount+1;
+		if (countitem(1951) || isequipped(1951))set @whipcount,@whipcount+1;
+		if (countitem(1952) || isequipped(1952))set @whipcount,@whipcount+1;
+		if (countitem(1953) || isequipped(1953))set @whipcount,@whipcount+1;
+		if (countitem(1954) || isequipped(1954))set @whipcount,@whipcount+1;
+		if (countitem(1955) || isequipped(1955))set @whipcount,@whipcount+1;
+		if (countitem(1956) || isequipped(1956))set @whipcount,@whipcount+1;
+		if (countitem(1957) || isequipped(1957))set @whipcount,@whipcount+1;
+		if (countitem(1958) || isequipped(1958))set @whipcount,@whipcount+1;
+		if (countitem(1959) || isequipped(1959))set @whipcount,@whipcount+1;
+		if (countitem(1960) || isequipped(1960))set @whipcount,@whipcount+1;
+		if (countitem(1961) || isequipped(1961))set @whipcount,@whipcount+1;
+		if (countitem(1962) || isequipped(1962))set @whipcount,@whipcount+1;
+		if (countitem(1963) || isequipped(1963))set @whipcount,@whipcount+1;
+		if (countitem(1964) || isequipped(1964))set @whipcount,@whipcount+1;
+		if (countitem(1965) || isequipped(1965))set @whipcount,@whipcount+1;
+		if (countitem(1966) || isequipped(1966))set @whipcount,@whipcount+1;
+		if (countitem(1967) || isequipped(1967))set @whipcount,@whipcount+1;
+		if (countitem(1968) || isequipped(1968))set @whipcount,@whipcount+1;
+		if (countitem(1969) || isequipped(1969))set @whipcount,@whipcount+1;
+		if (countitem(1970) || isequipped(1970))set @whipcount,@whipcount+1;
+		if (countitem(1971) || isequipped(1971))set @whipcount,@whipcount+1;
 		mes "[Phendark]";
 		mes "Huh? Oh no!";
 		mes "Another h-human?!";
@@ -528,7 +528,7 @@ gl_prison1.gat,97,104,1	script	Phendark#LhzHat	1202,{
 		mes "of value! Z-Zealotus, please!";
 		mes "Zealotus, heeeeeelp me~!";
 		emotion 28;
-		if(!@whipcount)close;
+		if (!@whipcount) close;
 		next;
 		mes "[" + strcharinfo(0) + "]";
 		mes "You're pathetic!";
@@ -569,7 +569,7 @@ gl_prison1.gat,97,104,1	script	Phendark#LhzHat	1202,{
 		close;
 
 	PhenDark3:
-		if(countitem(7315) >= 369)goto PhenDark4;
+		if (countitem(7315) >= 369) goto PhenDark4;
 		goto PhenDark1;
 
 		PhenDark4:
@@ -711,7 +711,7 @@ gl_prison1.gat,97,104,1	script	Phendark#LhzHat	1202,{
 		close;
 
 		PhenDarkSelect:
-			if((@temp1 == 1 || @temp1  == 2) && @temp2 == 1)goto PhenDarkSelect01;
+			if ((@temp1 == 1 || @temp1  == 2) && @temp2 == 1) goto PhenDarkSelect01;
 
 			PhenDarkSelect01:
 				mes "[Phendark]";
@@ -724,7 +724,7 @@ gl_prison1.gat,97,104,1	script	Phendark#LhzHat	1202,{
 				emotion 28;
 				close;
 
-			if(@temp1 == 3 && @temp2 == 1)goto PhenDarkSelect02;
+			if (@temp1 == 3 && @temp2 == 1) goto PhenDarkSelect02;
 
 			PhenDarkSelect02:
 				mes "[Phendark]";
@@ -740,7 +740,7 @@ gl_prison1.gat,97,104,1	script	Phendark#LhzHat	1202,{
 				mes "supposed to mean?";
 				close;
 
-			if(@temp1 == 3 && @temp2 == 2)goto PhenDarkSelect03;
+			if (@temp1 == 3 && @temp2 == 2) goto PhenDarkSelect03;
 
 			PhenDarkSelect03:
 				mes "[Phendark]";
@@ -893,10 +893,10 @@ gl_prison1.gat,97,104,1	script	Phendark#LhzHat	1202,{
 
 gl_prison1.gat,100,48,5	script	Rybio#LhzHat	1201,{
 
-	if(ZLMASKQ == 2)goto Rybio01;
-	if(ZLMASKQ == 3)goto Rybio02;
-	if(ZLMASKQ == 4)goto Rybio03;
-	if(ZLMASKQ == 5)goto Rybio04;
+	if (ZLMASKQ == 2) goto Rybio01;
+	if (ZLMASKQ == 3) goto Rybio02;
+	if (ZLMASKQ == 4) goto Rybio03;
+	if (ZLMASKQ == 5) goto Rybio04;
 	
 	end;
 
@@ -1015,7 +1015,7 @@ einbech.gat,70,200,7	script	Mater	818,{
 	next;
 	menu "Please, make one for me",-,"No, thanks",L_EXIT;
 
-	if(countitem(7267) < 999 || countitem(983) < 1 || countitem(749) < 1 || Zeny<50000) goto L_NOITEM;//Items: Tigerskin_Underwear, Black_Dyestuff, Frozen_Rose,
+	if (countitem(7267) < 999 || countitem(983) < 1 || countitem(749) < 1 || Zeny<50000) goto L_NOITEM;//Items: Tigerskin_Underwear, Black_Dyestuff, Frozen_Rose,
 	delitem 7267,999;//Items: Tigerskin_Underwear,
 	delitem 983,1;//Items: Black_Dyestuff,
 	delitem 749,1;//Items: Frozen_Rose,

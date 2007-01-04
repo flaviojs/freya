@@ -75,7 +75,7 @@ s_Go:
 	next;
 	menu "I'm ready, let's go!",-,"No.",s_Cancel;
 
-	if(Zeny < 10000) goto s_NoZeny;
+	if (Zeny < 10000) goto s_NoZeny;
 	mes "[Aibakthing]";
 	mes "Hoo! Hah! Hoo! Hah!";
 	mes "Let us be off! Back to my beautiful Ayothaya!";

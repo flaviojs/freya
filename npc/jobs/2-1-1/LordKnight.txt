@@ -16,5 +16,5 @@
 
 // -== Lord Knight ==-
 valkyrie.gat,44,39,6	script	Lord Knight	56,{
-	callfunc "F_Rebirth",Job_Swordman_High,"Swordman High",Job_Lord_Knight,"Lord Knight",0,0,0,0;
+	callfunc "F_Rebirth",JOB_SWORDMAN_High,"Swordman High",JOB_LORD_KNIGHT,"Lord Knight",0,0,0,0;
 }

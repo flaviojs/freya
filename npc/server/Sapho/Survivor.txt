@@ -121,8 +121,8 @@ OnTouch:
 
 prontera.gat,178,148,4	script	warpspawn	45,2,2,{
 OnTouch:
-	if(getgmlevel(0)== 0) goto L_noss;
-	if(Class == Job_Novice) goto L_Novice;
+	if (getgmlevel(0)== 0) goto L_noss;
+	if (Class == JOB_NOVICE) goto L_Novice;
 	percentheal 100,100; // Soin automatique des joueurs à l'entrée de l'arène
 	warp "guild_vs5",56,49;
 	end;

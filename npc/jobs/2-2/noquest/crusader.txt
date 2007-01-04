@@ -3,8 +3,8 @@
 
 //Crusader prt_in 88 103
 prt_in.gat,88,103,3	script	Crusader Trainer	752,{
-	if(Class==14) goto crus;
-	if(Class !=1) goto notsword;
+	if (Class == 14) goto crus;
+	if (Class !=1) goto notsword;
 
 	mes "[Crusader Trainer]";
 	mes "Welcome Have you come to Join our ranks?.";
@@ -14,10 +14,10 @@ prt_in.gat,88,103,3	script	Crusader Trainer	752,{
 	next;
 	menu "Change Job into a Crusader.",case1,"The Requirements.",case2,"Quit.",case3;
 		case1:
-			if(JobLevel < 40) goto notlvl;
+			if (JobLevel < 40) goto notlvl;
 				mes "[Crusader Trainer]";
-				if(SkillPoint > 0) mes "You need to use up all of your skill points before I can make you a Crusader.";
-				if(SkillPoint > 0) close;
+				if (SkillPoint > 0) mes "You need to use up all of your skill points before I can make you a Crusader.";
+				if (SkillPoint > 0) close;
 				mes "Welcome to the Crusaders Guild";
 				jobchange JOB_CRUSADER;
 				close;

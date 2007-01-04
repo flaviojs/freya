@@ -44,7 +44,7 @@ rachel.gat,91,273,4	script	Masked Man	880,{
 			next;
 			mes "[Masked Man]";
 
-		if((countitem(983) < 1) || (countitem(7111) < 100) || (countitem(938) < 99) || (Zeny<100000))goto Anon3;
+		if ((countitem(983) < 1) || (countitem(7111) < 100) || (countitem(938) < 99) || (Zeny<100000)) goto Anon3;
 
 			mes "I see you came prepared.";
 			delitem 7111,100;
@@ -95,7 +95,7 @@ rachel.gat,135,121,4	script	Sakyul	933,{
 			mes "1 White Dyestuff.";
 			next;
 			mes "[Sakyul]";
-			if ((countitem(5172) < 1) || (countitem(982) < 1) || (countitem(7063) < 100))goto FeatBeret3;
+			if ((countitem(5172) < 1) || (countitem(982) < 1) || (countitem(7063) < 100)) goto FeatBeret3;
 
 			mes "Nice to see a well prepared youngster!";
 			delitem 5172,1;
@@ -163,7 +163,7 @@ hugel.gat,146,105,4	script	Genirhimin	897,{
 			mes "1000 Runes of Bloody Color.";
 			next;
 			mes "[Genirhimin]";
-			if ((countitem(4219) < 1) || (countitem(4114) < 1) || (countitem(4177) < 1) || (countitem(4259) < 1) || (countitem(4212) < 1) || (countitem(4073) < 1) || (countitem(4112) < 1) || (countitem(4081) < 1) || (countitem(4251) < 1) || (countitem(4166) < 1) || (countitem(7511) < 1000) || (countitem(7563) < 1000) )goto Valkyrie3;
+			if ((countitem(4219) < 1) || (countitem(4114) < 1) || (countitem(4177) < 1) || (countitem(4259) < 1) || (countitem(4212) < 1) || (countitem(4073) < 1) || (countitem(4112) < 1) || (countitem(4081) < 1) || (countitem(4251) < 1) || (countitem(4166) < 1) || (countitem(7511) < 1000) || (countitem(7563) < 1000)) goto Valkyrie3;
 
 			mes "Give me a minute and I'll work my magic...";
 			delitem 4219,1;
@@ -222,7 +222,7 @@ payon.gat,135,231,5	script	Chung-Wol-Mang	907,{
 			mes "100 Manes.";
 			next;
 
-			if ((countitem(706) < 1) || (countitem(1019) < 500) || (countitem(7200) < 10) || (countitem(7015) < 20) || (countitem(2267) < 1) || (countitem(952) < 100) || (countitem(1028) < 100) || (countitem(1028) < 100))goto Chung5;
+			if ((countitem(706) < 1) || (countitem(1019) < 500) || (countitem(7200) < 10) || (countitem(7015) < 20) || (countitem(2267) < 1) || (countitem(952) < 100) || (countitem(1028) < 100) || (countitem(1028) < 100)) goto Chung5;
 
 			mes "[Chung-Wol-Mang]";
 			mes "You brought all the items, thanks. Here give them to me.";
@@ -255,7 +255,7 @@ payon.gat,135,231,5	script	Chung-Wol-Mang	907,{
 			mes "1 Orange Dyestuff.";
 			next;
 
-			if ((countitem(706) < 1) || (countitem(1019) < 500) || (countitem(7200) < 10) || (countitem(1048) < 500) || (countitem(1053) < 2) || (countitem(980) < 1))goto Chung7;
+			if ((countitem(706) < 1) || (countitem(1019) < 500) || (countitem(7200) < 10) || (countitem(1048) < 500) || (countitem(1053) < 2) || (countitem(980) < 1)) goto Chung7;
 
 			mes "[Chung-Wol-Mang]";
 			mes "You brought all the items, thanks. Here give them to me.";
@@ -289,7 +289,7 @@ payon.gat,135,231,5	script	Chung-Wol-Mang	907,{
 			mes "100 Squid Inks.";
 			next;
 
-			if ((countitem(706) < 1) || (countitem(1019) < 500) || (countitem(7200) < 10) || (countitem(1049) < 20) || (countitem(7165) < 500) || (countitem(1054) < 2) || (countitem(1024) < 100))goto Chung6;
+			if ((countitem(706) < 1) || (countitem(1019) < 500) || (countitem(7200) < 10) || (countitem(1049) < 20) || (countitem(7165) < 500) || (countitem(1054) < 2) || (countitem(1024) < 100)) goto Chung6;
 
 			mes "[Chung-Wol-Mang]";
 			mes "You brought all the items, thanks. Here give them to me.";
@@ -353,7 +353,7 @@ payon.gat,137,123,5	script	Hangaram	740,{
 			mes "1 Slotted Hat.";
 			next;
 
-			if( (countitem(7445)<7) || (countitem(7446)<7) || (countitem(7447)<7) || (countitem(7448)<7) || (countitem(954)<300) || (countitem(983)<1) || (countitem(733)<5) || (countitem(2221)<1) )goto Hang4;
+			if ((countitem(7445)<7) || (countitem(7446)<7) || (countitem(7447)<7) || (countitem(7448)<7) || (countitem(954)<300) || (countitem(983)<1) || (countitem(733)<5) || (countitem(2221)<1)) goto Hang4;
 
 			delitem 7445,7;
 			delitem 7446,7;
@@ -424,7 +424,7 @@ payon.gat,137,123,5	script	Hangaram	740,{
 			mes "50 Soft Silks.";
 			next;
 
-			if( (countitem(7445)<7) || (countitem(7446)<7) || (countitem(7447)<7) || (countitem(7448)<7) || (countitem(954)<300) || (countitem(975)<1) || (countitem(733)<5) || (countitem(7166)<50) )goto Hang5;
+			if ((countitem(7445)<7) || (countitem(7446)<7) || (countitem(7447)<7) || (countitem(7448)<7) || (countitem(954)<300) || (countitem(975)<1) || (countitem(733)<5) || (countitem(7166)<50)) goto Hang5;
 
 			delitem 7445,7;
 			delitem 7446,7;

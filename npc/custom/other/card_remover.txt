@@ -73,9 +73,9 @@ SLOT10:
 	goto CARDNUMCHECK;
 
 CARDNUMCHECK:
-	if(getequipcardcnt(@part) == 0) goto DENYCARDCOUNT;
+	if (getequipcardcnt(@part) == 0) goto DENYCARDCOUNT;
 	set @cardcount,getequipcardcnt(@part);
-	if(@cardcount > 1) goto CARDNUMMULTIMSG;
+	if (@cardcount > 1) goto CARDNUMMULTIMSG;
 	mes "[Wise Old Woman]";
 	mes "This item has " + @cardcount + " card compounded on it. To perform my magic, I will need 225000 zeny, a ^0000FFStar Crumb^000000, and a ^0000FFYellow Gemstone^000000.";
 	goto CARDNUMPOSTMSG;
@@ -107,7 +107,7 @@ REMOVECARD:
 	mes "[Wise Old Woman]";
 	mes "Very well. I shall begin.";
 	next;
-	if((zeny < (200000+(@cardcount * 25000))) || (countitem(1000) < 1) || (countitem(715) < 1)) goto DENYMATERIAL;
+	if ((zeny < (200000+(@cardcount * 25000))) || (countitem(1000) < 1) || (countitem(715) < 1)) goto DENYMATERIAL;
 	set zeny,zeny - (200000+(@cardcount * 25000));
 	delitem 1000,1;
 	delitem 715,1;
@@ -118,10 +118,10 @@ REMOVECARD:
 // Third value = Harmless failure chance (all that's lost is your investment)
 
 	set @failchance,rand(100);
-//	if(@failchance < 2) goto FAILREMOVECARD0;
-//	if((@failchance < 8) && (@failtype == 1)) goto FAILREMOVECARD1;
-//	if((@failchance < 8) && (@failtype == 2)) goto FAILREMOVECARD2;
-	if(@failchance < 10) goto FAILREMOVECARD3;
+//	if (@failchance < 2) goto FAILREMOVECARD0;
+//	if ((@failchance < 8) && (@failtype == 1)) goto FAILREMOVECARD1;
+//	if ((@failchance < 8) && (@failtype == 2)) goto FAILREMOVECARD2;
+	if (@failchance < 10) goto FAILREMOVECARD3;
 	successremovecards @part;
 	mes "[Wise Old Woman]";
 	mes "The process was a success. Here are your cards and your item. Farewell.";

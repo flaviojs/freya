@@ -24,7 +24,7 @@
 alberta_in.gat,130,54,2	script	Merchant Louitz	84,{
 	mes "[Louitz]";
 	mes "What's going on?";
-	if(countitem(970) > 0 && countitem(971) > 0 && countitem(972) > 0) goto M_Menu2; // Items: Alcohol, Detrimindexta, Karvodailnirol,
+	if (countitem(970) > 0 && countitem(971) > 0 && countitem(972) > 0) goto M_Menu2; // Items: Alcohol, Detrimindexta, Karvodailnirol,
 M_Menu:
 	next;
 	menu "Talk",M_Talk,"Cancel",M_Cancel;
@@ -42,13 +42,13 @@ M_Menu2:
 		next;
 		mes "[Merchant Louitz]";
 		mes "He kept on mumbling to himself '^0000ffKarvodainirol... Detrimindexta... Alcohol...^000000'";
-		if(countitem(970) > 0 && countitem(971) > 0 && countitem(972) > 0) goto M_Talk_bis; // Items: Alcohol, Detrimindexta, Karvodailnirol,
+		if (countitem(970) > 0 && countitem(971) > 0 && countitem(972) > 0) goto M_Talk_bis; // Items: Alcohol, Detrimindexta, Karvodailnirol,
 			mes "Where are they..."; // Added message to know how to begin the quest.
 	M_Talk_bis:
 		next;
 		mes "[Merchant Louitz]";
 		mes "I had know idea what he was talking about at first, but I later learned that those were names for some unique and rare solutions.";
-		if(countitem(970) > 0 && countitem(971) > 0 && countitem(972) > 0) goto M_Menu2; // Items: Alcohol, Detrimindexta, Karvodailnirol,
+		if (countitem(970) > 0 && countitem(971) > 0 && countitem(972) > 0) goto M_Menu2; // Items: Alcohol, Detrimindexta, Karvodailnirol,
 		goto M_Menu;
 
 	M_Solut:
@@ -76,7 +76,7 @@ geffen.gat,181,114,4	script	Aure Dupon	55,{
 	mes "[Aure Dupon]";
 	mes "So... why did you stop me??";
 	emotion 20;
-	if(MORGEN == 1) goto M_Menu2;
+	if (MORGEN == 1) goto M_Menu2;
 M_Menu:
 	next;
 	menu "Talk",M_Talk,"Cancel",M_Cancel;
@@ -93,7 +93,7 @@ M_Menu2:
 		next;
 		mes "[Aure Dupon]";
 		mes "Would you be able to give up everthing else in your life to achieve that goal? Even if it meant risking insanity??";
-		if(MORGEN == 1) goto M_Menu2;
+		if (MORGEN == 1) goto M_Menu2;
 		goto M_Menu;
 
 	M_Morgen:
@@ -114,8 +114,8 @@ M_Menu2:
 
 // Chemist Morgenstein -----------------------------------------------------------
 geffen_in.gat,141,140,2	script	Morgenstein	121,{
-	if(MORGEN == 2) goto L_0;
-	if(MORGEN == 3) goto L_1;
+	if (MORGEN == 2) goto L_0;
+	if (MORGEN == 3) goto L_1;
 
 	mes "[Chemist Morgenstein]";
 	mes "Heheheheheh... Sniff Sniff... I can smell something appetizing here.";
@@ -163,7 +163,7 @@ M_Menu:
 		mes "I can make one for you right now,if you want?? Ahhh... Talking about my experiments and research makes me.... 'excited'.......";
 		mes "You too can feel my 'excitement' if you wish..... Ahhhhh.... I can make you feel...";
 		set MORGEN,3;
-		if(ALCH_Q == 4) set al_morgen,1;
+		if (ALCH_Q == 4) set al_morgen,1;
 		close;
 
 L_1:
@@ -202,7 +202,7 @@ M_Menu2:
 			menu "Make",-,"Cancel",M_End;
 
 				mes "[Chemist Morgenstein]";
-				if(countitem(970)>0 && countitem(971)>0 && countitem(713)>0 && Zeny>=3000) goto sl_GetCounter;//Items: Alcohol, Detrimindexta, Empty Bottle,
+				if (countitem(970)>0 && countitem(971)>0 && countitem(713)>0 && Zeny>=3000) goto sl_GetCounter;//Items: Alcohol, Detrimindexta, Empty Bottle,
 				mes "I'm sorry but you need 1 Alcohol, 1 Detrimindexta, and 3000 Zeny for me to make a Counteragent.";
 				close;
 
@@ -238,7 +238,7 @@ M_Menu2:
 			next;
 			menu "Make",-,"Cancel",M_End;
 
-				if(countitem(970)>0 && countitem(972)>0 && countitem(713)>0 && Zeny>=4000) goto sl_GetMix;//Items: Alcohol, Karvodailnirol, Empty Bottle,
+				if (countitem(970)>0 && countitem(972)>0 && countitem(713)>0 && Zeny>=4000) goto sl_GetMix;//Items: Alcohol, Karvodailnirol, Empty Bottle,
 				mes "I'm sorry but you need 1 Alcohol, 1 Karvodainirol, and 4000 Zeny for me to make a Mixture.";
 				close;
 

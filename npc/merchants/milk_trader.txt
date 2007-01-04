@@ -25,18 +25,18 @@ prontera.gat,71,131,7	script	Milk Trader	86,{
 
 	M_0:
 		set @amount, 1000;
-		if(zeny/20 < @amount) set @amount, zeny/20;
-		if(countitem(713) < @amount) set @amount, countitem(713);
-		if(@amount > 0) goto L_Milk;
+		if (zeny/20 < @amount) set @amount, zeny/20;
+		if (countitem(713) < @amount) set @amount, countitem(713);
+		if (@amount > 0) goto L_Milk;
 		mes "[Milk Trader]";
 		mes "..... Are you trying to make a fool of me.... ?";
 		close;
 
 	M_1:
 		input @amount;
-		if(@amount < 1 || @amount > 1000) goto M_End;
-		if(countitem(713) < @amount) goto L_NoBottle;
-		if(zeny < (@amount*20)) goto L_NoZeny;
+		if (@amount < 1 || @amount > 1000) goto M_End;
+		if (countitem(713) < @amount) goto L_NoBottle;
+		if (zeny < (@amount*20)) goto L_NoZeny;
 
 	L_Milk:
 		getitem 519, @amount;

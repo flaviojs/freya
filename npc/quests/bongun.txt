@@ -27,7 +27,7 @@ ExCreate:
 	mes "[Sherri]";
 	mes "Really!! You'll help me!";
 	next;
-	if(countitem(1558)<1) goto NoItem;
+	if (countitem(1558)<1) goto NoItem;
 	goto ExGive;
 
 NoItem:

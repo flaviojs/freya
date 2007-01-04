@@ -80,7 +80,7 @@ L_MINE:
 	next;
 	goto L_WIPE; 
 L_WIPE:
-	if(@COMPASS_CHECK == 1)goto L_MENU_2;
+	if (@COMPASS_CHECK == 1) goto L_MENU_2;
 	viewpoint 2,44,216,1,0xFF0000;
 	viewpoint 2,145,112,2,0xFF00FF;
 	viewpoint 2,177,135,3,0xFF00FF;

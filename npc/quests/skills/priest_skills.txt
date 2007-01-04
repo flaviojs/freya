@@ -26,9 +26,9 @@
 //============================================================
 prt_church.gat,111,112,3	script	Nun Linus	79,{
 	mes "[Nun Linus]";
-	if(BaseJob!=Job_Priest) goto L_nopriest;
-	if(getskilllv(1014)) goto L_alreadyhave;
-	if(getskilllv(54)<1) goto L_norez;
+	if (BaseJob!=JOB_PRIEST) goto L_nopriest;
+	if (getskilllv(1014)) goto L_alreadyhave;
+	if (getskilllv(54)<1) goto L_norez;
 
 	mes "I can teach you the mercy of God";
 	mes "if you bring me a couple things,";
@@ -41,7 +41,7 @@ prt_church.gat,111,112,3	script	Nun Linus	79,{
 	mes "Let me check your items.";
 	next;
 	
-	if(countitem(717)<1 || countitem(523)<1) goto L_noitems;//Items: Blue_Gemstone, Holy_Water,
+	if (countitem(717)<1 || countitem(523)<1) goto L_noitems;//Items: Blue_Gemstone, Holy_Water,
 	delitem 717, 1;//Items: Blue_Gemstone,
 	delitem 523, 1;//Items: Holy_Water,
 	
@@ -50,7 +50,7 @@ prt_church.gat,111,112,3	script	Nun Linus	79,{
 	mes "so we shall see if God finds";
 	mes "you worthy yet!";
 	next;
-	if(rand(100)<JobLevel+25) goto L_bless;
+	if (rand(100)<JobLevel+25) goto L_bless;
 	mes "[Nun Linus]";
 	mes "Sorry, but God has not";
 	mes "shined on you as of yet.";

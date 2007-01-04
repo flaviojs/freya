@@ -101,7 +101,7 @@ L_Regular:
 		// Peco Classes Normalization Check
 		if (oldclass == 13) set oldclass,7;
 		if (oldclass == 21) set oldclass,14;
-		Jobchange JOB_NOVICE_HIGH;
+		jobchange JOB_NOVICE_HIGH;
 		resetlvl(1);
 		mes "[Amber]";
 		mes "You have been reborn...";
@@ -300,7 +300,7 @@ L_Regular:
 		mes "hard work feel like its paid off? *kekeke* I see";
 		mes "the ^B70004BLOOD of Porings^000000 on your hands!";
 		mes "You truly are fit for the ^0005CESwordsman^000000 job! ^_^";
-		Jobchange JOB_SWORDMAN_HIGH;
+		jobchange JOB_SWORDMAN_HIGH;
 		emotion 46; // Congratulations!
 		close;
 
@@ -318,7 +318,7 @@ L_Regular:
 		mes "Yes! You are ready to become... a Lord Knight! ";
 		mes "Go save a Damsel in Distress or something..";
 		set oldclass,0;
-		Jobchange JOB_LORD_KNIGHT;
+		jobchange JOB_LORD_KNIGHT;
 		emotion 46; // Congratulations!
 		close;
 
@@ -336,7 +336,7 @@ L_Regular:
 		mes "[Amber]";
 		mes "That means you're not getting paid dumbass!";
 		set oldclass,0;
-		Jobchange JOB_PALADIN;
+		jobchange JOB_PALADIN;
 		emotion 46; // Congratulations!
 		close;
 
@@ -348,7 +348,7 @@ L_Regular:
 		mes "like they need to grab";
 		mes "something (no comment)....";
 		mes "go forth and steal!!";
-		Jobchange JOB_THIEF_HIGH;
+		jobchange JOB_THIEF_HIGH;
 		emotion 29; // /gg
 		close;
 
@@ -356,7 +356,7 @@ L_Regular:
 		mes "[Amber]";
 		mes "Poof! Kekeke... ";
 		set oldclass,0;
-		Jobchange JOB_ASSASSIN_CROSS;
+		jobchange JOB_ASSASSIN_CROSS;
 		emotion 46; // Congratulations!
 		close;
 
@@ -366,7 +366,7 @@ L_Regular:
 		mes "How goes the stalking lately?";
 		mes "Found Any New Victims?";
 		set oldclass,0;
-		Jobchange JOB_STALKER;
+		jobchange JOB_STALKER;
 		emotion 46; // Congratulations!
 		close;
 
@@ -375,7 +375,7 @@ L_Regular:
 	L_AcolyteHigh:
 		mes "[Amber]";
 		mes "Yay.. go read a Bible.. or whatever.. er..yeah.";
-		Jobchange JOB_ACOLYTE_HIGH;
+		jobchange JOB_ACOLYTE_HIGH;
 		emotion 46; // Congratulations!
 		close;
 
@@ -394,13 +394,13 @@ L_Regular:
 		mes "you get this little thingy between your legs..";
 		mes "WHOOPs, I am getting so off topic..";
 		set oldclass,0;
-		Jobchange JOB_HIGH_PRIEST;
+		jobchange JOB_HIGH_PRIEST;
 		emotion 46; // Congratulations!
 		close;
 
 		L_FemaleHPChange:
 			set oldclass,0;
-			Jobchange JOB_HIGH_PRIEST;
+			jobchange JOB_HIGH_PRIEST;
 			emotion 46; // Congratulations!
 			close;
 
@@ -409,7 +409,7 @@ L_Regular:
 		mes "You are the Champion of the Weak and Poor.";
 		mes "Wow it must suck being you ^_^!!!";
 		set oldclass,0;
-		Jobchange JOB_CHAMPION;
+		jobchange JOB_CHAMPION;
 		emotion 46; // Congratulations!
 		close;
 
@@ -423,7 +423,7 @@ L_Regular:
 		mes "[Amber]";
 		mes "I guess you're like me! You hurl";
 		mes "pointed sticks at things! Kekeke...";
-		Jobchange JOB_ARCHER_HIGH;
+		jobchange JOB_ARCHER_HIGH;
 		emotion 46; // Congratulations!
 		close;
 
@@ -438,7 +438,7 @@ L_Regular:
 		mes "AND keep them in one place! w00t, yea!";
 		mes "Traps are a great thing...";
 		set oldclass,0;
-		Jobchange JOB_SNIPER;
+		jobchange JOB_SNIPER;
 		emotion 46; // Congratulations!
 		next;
 		mes "[Amber]";
@@ -459,7 +459,7 @@ L_Regular:
 		mes "Yay! Go play some ballads for some Dancers";
 		mes "or something, I just can't stand your clothes... ewww.";
 		set oldclass,0;
-		Jobchange JOB_CLOWN;
+		jobchange JOB_CLOWN;
 		emotion 46; // Congratulations!
 		close;
 
@@ -470,7 +470,7 @@ L_Regular:
 		mes "ugh, if only I could strip down to a";
 		mes "little thong and party too... *sigh*";
 		set oldclass,0;
-		Jobchange JOB_GYPSY;
+		jobchange JOB_GYPSY;
 		emotion 3; // /lv
 		close;
 
@@ -481,7 +481,7 @@ L_Regular:
 		mes "Oh yeah, Mr. Moneybags, SOMEBODY here just";
 		mes "loves the sound of coins jinglin'...";
 		mes "Well its not me!.. >_>..... <_<... bah..";
-		Jobchange JOB_MERCHANT_HIGH;
+		jobchange JOB_MERCHANT_HIGH;
 		emotion 46; // Congratulations!
 		close;
 
@@ -497,7 +497,7 @@ L_Regular:
 		mes "Go and make a few weapons! Open up shops across";
 		mes "the nation! Yea yea yea! Go go go! w00t! Ho yeah! ";
 		set oldclass,0;
-		Jobchange JOB_WHITESMITH;
+		jobchange JOB_WHITESMITH;
 		emotion 46; // Congratulations!
 		close;
 
@@ -505,7 +505,7 @@ L_Regular:
 		mes "[Amber]";
 		mes "Create potions for the brave heros of Rune-Midgart.";
 		set oldclass,0;
-		Jobchange JOB_CREATOR;
+		jobchange JOB_CREATOR;
 		emotion 46; // Congratulations!
 		close;
 
@@ -516,7 +516,7 @@ L_Regular:
 		mes "Nice, now you can finally wield the power";
 		mes "of ^2200DFM^7600F9A^AF00FBN^DA00DFA^000000,"; // 'MANA' in colored letters
 		mes "your spiritual energy!!!";
-		Jobchange JOB_MAGE_HIGH;
+		jobchange JOB_MAGE_HIGH;
 		emotion 46; // Congratulations!
 		close;
 
@@ -526,7 +526,7 @@ L_Regular:
 		mes "a High Wizard? It's like a warm bath....";
 		mes "ahhhhhhh......";
 		set oldclass,0;
-		Jobchange JOB_HIGH_WIZARD;
+		jobchange JOB_HIGH_WIZARD;
 		emotion 46; // Congratulations!
 		close;
 
@@ -535,14 +535,14 @@ L_Regular:
 		mes "Time for you to teach your first Quantum";
 		mes "Physics class";
 		set oldclass,0;
-		Jobchange JOB_PROFESSOR;
+		jobchange JOB_PROFESSOR;
 		emotion 46; // Congratulations!
 		close;
 
 	L_FirstClass:
-		if(Class != Job_Novice) goto L_NoviceFail;
-		if(JobLevel < 10) goto L_JobLv10;
-		if(SkillPoint != 0) goto L_SkillPoints;
+		if (Class != JOB_NOVICE) goto L_NoviceFail;
+		if (JobLevel < 10) goto L_JobLv10;
+		if (SkillPoint != 0) goto L_SkillPoints;
 
 		mes "[Amber]";
 		mes "So... getting your first job, eh? Thats cool, we all need to grow up sometime I guess...";
@@ -586,7 +586,7 @@ L_Regular:
 		mes "I see the ^B70004BLOOD of Porings^000000";
 		mes "on your hands! You truly are fit for";
 		mes "the ^0005CESwordsman^000000 job! ^_^";
-		Jobchange JOB_SWORDMAN;
+		jobchange JOB_SWORDMAN;
 		emotion 46; // Congratulations!
 		close;
 
@@ -595,7 +595,7 @@ L_Regular:
 		mes "Nice, now you can finally wield the power";
 		mes "of ^2200DFM^7600F9A^AF00FBN^DA00DFA^000000,"; // 'MANA' in colored letters
 		mes "your spiritual energy!!!";
-		Jobchange JOB_MAGE;
+		jobchange JOB_MAGE;
 		emotion 46; // Congratulations!
 		close;
 
@@ -604,7 +604,7 @@ L_Regular:
 		mes "Those devious hand of yours really look like";
 		mes "they need to grab something (no comment)....";
 		mes "go forth and steal!!";
-		Jobchange JOB_THIEF;
+		jobchange JOB_THIEF;
 		emotion 29; // /gg
 		close;
 
@@ -613,14 +613,14 @@ L_Regular:
 		mes "Oh yeah, Mr. Moneybags, SOMEBODY here";
 		mes "just loves the sound of coins jinglin'...";
 		mes "Well its not me!.. >_>..... <_<... bah.. ";
-		Jobchange JOB_MERCHANT;
+		jobchange JOB_MERCHANT;
 		emotion 46; // Congratulations!
 		close;
 
 	L_Acolyte:
 		mes "[Amber]";
 		mes "Yay.. go read a Bible.. or whatever.. er..yeah";
-		Jobchange JOB_ACOLYTE;
+		jobchange JOB_ACOLYTE;
 		emotion 46; // Congratulations!
 		close;
 
@@ -632,13 +632,13 @@ L_Regular:
 		mes "[Amber]";
 		mes "I guess you're like me! You hurl";
 		mes "pointed sticks at things! Kekeke...";
-		Jobchange JOB_ARCHER;
+		jobchange JOB_ARCHER;
 		emotion 46; // Congratulations!
 		close;
 
 	L_SecondClass:
-		if(SkillPoint != 0) goto L_SkillPoints;
-		if(JobLevel < 40) goto L_JobLv40;
+		if (SkillPoint != 0) goto L_SkillPoints;
+		if (JobLevel < 40) goto L_JobLv40;
 
 		mes "[Amber]";
 		mes "Nice... you are ready to change into the";
@@ -659,7 +659,7 @@ L_Regular:
 		close;
 
 	L_Knight:
-		if(Class != JOB_SWORDMAN) goto L_NotSwordsman;
+		if (Class != JOB_SWORDMAN) goto L_NotSwordsman;
 		mes "[Amber]";
 		mes "w00t w00t! You are Job Level 40, you've been";
 		mes "a Swordie all your life...";
@@ -671,7 +671,7 @@ L_Regular:
 		mes "[Amber]";
 		mes "Yes! You are ready to become... a Knight! ";
 		mes "Go save a Damsel in Distress or something..";
-		Jobchange JOB_KNIGHT;
+		jobchange JOB_KNIGHT;
 		emotion 46; // Congratulations!
 		set oldclass,7;
 		close;
@@ -687,7 +687,7 @@ L_Regular:
 		close;
 
 	L_Hunter:
-		if(Class != JOB_ARCHER) goto L_NotArcher;
+		if (Class != JOB_ARCHER) goto L_NotArcher;
 		mes "[Amber]";
 		mes "Oh goodie, you've met all the requirements... did";
 		mes "you have fun hurling pointed sticks at monsters?";
@@ -696,7 +696,7 @@ L_Regular:
 		mes "[Amber]";
 		mes "Now you can hurl pointed sticks at monsters AND keep";
 		mes "them in one place! w00t, yea! Traps are a great thing...";
-		Jobchange JOB_HUNTER;
+		jobchange JOB_HUNTER;
 		emotion 46; // Congratulations!
 		set oldclass,11;
 		next;
@@ -722,7 +722,7 @@ L_Regular:
 		close;
 
 	L_Blacksmith:
-		if(Class != JOB_MERCHANT) goto L_NotMerchant;
+		if (Class != JOB_MERCHANT) goto L_NotMerchant;
 		mes "[Amber]";
 		mes "Oooo~~ Goodie goodie gumdrops! You meet allll the";
 		mes "requirements! Guess what I'm gonna do ^_^...";
@@ -732,7 +732,7 @@ L_Regular:
 		mes "Aren't you PROUD of yourself... Go and make a few";
 		mes "weapons! Open up shops across the nation! Yea yea";
 		mes "yea! Go go go! w00t! Ho yeah! ";
-		Jobchange JOB_BLACKSMITH;
+		jobchange JOB_BLACKSMITH;
 		emotion 46; // Congratulations!
 		set oldclass,10;
 		close;
@@ -747,10 +747,10 @@ L_Regular:
 		close;
 
 	L_Assassin:
-		if(Class != JOB_THIEF) goto L_NotThief;
+		if (Class != JOB_THIEF) goto L_NotThief;
 		mes "[Amber]";
 		mes "Poof! Kekeke... ";
-		Jobchange JOB_ASSASSIN;
+		jobchange JOB_ASSASSIN;
 		emotion 46; // Congratulations!
 		set oldclass,12;
 		close;
@@ -762,14 +762,14 @@ L_Regular:
 		close;
 
 	L_Priest:
-		if(class != JOB_ACOLYTE) goto L_NotAcolyte;
+		if (class != JOB_ACOLYTE) goto L_NotAcolyte;
 		mes "[Amber]";
 		mes "I bet you are GODDAMNED TIRED of NOT having Sp Recovery,";
 		mes "right? Well I am tired of hearing little";
 		mes "Jesus-Hugging Acolytes scream this every time";
 		mes "they're low on SP... ";
 		if (Sex == 1) goto L_MalePriest;
-		Jobchange JOB_PRIEST;
+		jobchange JOB_PRIEST;
 		emotion 46; // Congratulations!
 		set oldclass,8;
 		close;
@@ -781,7 +781,7 @@ L_Regular:
 			mes "Manhood.. but not really, see with Manhood, you get";
 			mes "this little thingy between your legs.. WHOOPs,";
 			mes "I am getting so off topic..";
-			Jobchange JOB_PRIEST;
+			jobchange JOB_PRIEST;
 			emotion 46; // Congratulations!
 			close;
 
@@ -794,12 +794,12 @@ L_Regular:
 		close;
 
 	L_Wizard:
-		if(Class != JOB_MAGE) goto L_NotMage;
+		if (Class != JOB_MAGE) goto L_NotMage;
 		mes "[Amber]";
 		mes "Weeee, doesn't it feel great to finally";
 		mes "become a Wizard? It's like a warm bath....";
 		mes "ahhhhhhh......";
-		Jobchange JOB_WIZARD;
+		jobchange JOB_WIZARD;
 		emotion 46; // Congratulations!
 		set oldclass,9;
 		close;
@@ -812,8 +812,8 @@ L_Regular:
 		close;
 
 L_SecondClass2:
-	if(SkillPoint != 0) goto L_SkillPoints;
-	if(JobLevel < 40) goto L_JobLv40;
+	if (SkillPoint != 0) goto L_SkillPoints;
+	if (JobLevel < 40) goto L_JobLv40;
 
 	mes "[Amber]";
 	mes "Wow, you're ready to become second job already?!";
@@ -824,7 +824,7 @@ L_SecondClass2:
 	menu "Crusader",L_Crusader,"Sage",L_Sage,"Bard / Dancer",L_Musician,"Alchemist",L_Alchemist,"Rogue",L_Rogue,"Monk",L_Monk,"Cancel",L_Cancel;
 
 	L_Crusader:
-		if(Class != JOB_SWORDMAN) goto L_NotSwordsman2;
+		if (Class != JOB_SWORDMAN) goto L_NotSwordsman2;
 		mes "[Amber]";
 		mes "Mmmmm, I always liked Crusaders..";
 		if (Sex == 0) mes "their massive armor and toughness looks so cute!";
@@ -832,7 +832,7 @@ L_SecondClass2:
 		next;
 		mes "[Amber]";
 		mes "Oooo~~~ yeah, thats it... yummy...";
-		Jobchange JOB_CRUSADER;
+		jobchange JOB_CRUSADER;
 		emotion 3; // /lv
 		set oldclass,14;
 		close;
@@ -846,16 +846,16 @@ L_SecondClass2:
 		close;
 
 	L_Musician:
-		if(Sex == 0) goto L_Dancer;
-		if(Sex == 1) goto L_Bard;
+		if (Sex == 0) goto L_Dancer;
+		if (Sex == 1) goto L_Bard;
 
 	L_Bard:
-		if(Class != JOB_ARCHER) goto L_NotArcher3;
+		if (Class != JOB_ARCHER) goto L_NotArcher3;
 		mes "[Amber]";
 		mes "Yay! Go play some ballads for some Dancers";
 		mes "or something, I just can't stand your";
 		mes "clothes... ewww.";
-		Jobchange JOB_BARD;
+		jobchange JOB_BARD;
 		emotion 46; // Congratulations!
 		set oldclass,19;
 		close;
@@ -869,13 +869,13 @@ L_SecondClass2:
 		close;
 
 	L_Dancer:
-		if(Class != JOB_ARCHER) goto L_NotArcher2;
+		if (Class != JOB_ARCHER) goto L_NotArcher2;
 		mes "[Amber]";
 		mes "Uh-huh, swivel those hips girl ^_~ Dancers are";
 		mes "sooo sexy.. too bad I'm stuck doing this job..";
 		mes "ugh, if only I could strip down to a";
 		mes "little thong and party too... *sigh*";
-		Jobchange JOB_DANCER;
+		jobchange JOB_DANCER;
 		emotion 3; // /lv
 		set oldclass,20;
 		close;
@@ -890,10 +890,10 @@ L_SecondClass2:
 
 	L_Alchemist:
 		mes "[Amber]";
-		if(Class != JOB_MERCHANT) goto L_NotMerchant2;
+		if (Class != JOB_MERCHANT) goto L_NotMerchant2;
 		mes "Cool! Go make some potions! Open a Pharmacy!";
 		mes "Yeah yeah yeah! ^_^";
-		Jobchange JOB_ALCHEM;
+		jobchange JOB_ALCHEM;
 		emotion 46; // Congratulations!
 		set oldclass,18;
 		close;
@@ -905,11 +905,11 @@ L_SecondClass2:
 		close;
 
 	L_Rogue:
-		if(Class != JOB_THIEF) goto L_NotThief2;
+		if (Class != JOB_THIEF) goto L_NotThief2;
 		mes "[Amber]";
 		mes "Wow! ^_^ You.. are.. SOOOOO COOOL!!";
 		mes "KYAAHH XD!! *drools*";
-		Jobchange JOB_ROGUE;
+		jobchange JOB_ROGUE;
 		emotion 46; // Congratulations!
 		set oldclass,17;
 		close;
@@ -924,11 +924,11 @@ L_SecondClass2:
 		close;
 
 	L_Monk:
-		if(Class != JOB_ACOLYTE) goto L_NotAcolyte2;
+		if (Class != JOB_ACOLYTE) goto L_NotAcolyte2;
 		mes "[Amber]";
 		mes "Nice.... Monks are pretty damn cool!";
 		mes "ONE HIT KO! Kyaaa <3";
-		Jobchange JOB_MONK;
+		jobchange JOB_MONK;
 		emotion 46; // Congratulations!
 		set oldclass,15;
 		close;
@@ -942,13 +942,13 @@ L_SecondClass2:
 		close;
 
 	L_Sage:
-		if(Class != JOB_MAGE) goto L_NotMage2;
+		if (Class != JOB_MAGE) goto L_NotMage2;
 		mes "[Amber]";
 		mes "Ahhhh, soo cool! I'll never get tired of seeing";
 		mes "people turn into Mage Classes~ KYAHH XD!!";
 		mes "Go forth Sage! Show those Wizzies what a real";
 		mes "mana-wielder can do! Mwahaha...";
-		Jobchange JOB_SAGE;
+		jobchange JOB_SAGE;
 		emotion 46; // Congratulations!
 		set oldclass,16;
 		close;
@@ -967,11 +967,11 @@ L_Cancel:
 	close;
 
 L_SuperNovice:
-	if(Class == JOB_SUPERNOVICE) goto L_Twice;
-	if(Class != JOB_NOVICE) goto L_Otherjob;
-	if(JobLevel < 10) goto L_LowSkill;
-	if(BaseLevel < 45) goto L_LowLevel;
-	if(SkillPoint != 0) goto L_StillSk;
+	if (Class == JOB_SUPER_NOVICE) goto L_Twice;
+	if (Class != JOB_NOVICE) goto L_Otherjob;
+	if (JobLevel < 10) goto L_LowSkill;
+	if (BaseLevel < 45) goto L_LowLevel;
+	if (SkillPoint != 0) goto L_StillSk;
 
 	mes "[Amber]";
 	mes "Hello, Novice!";
@@ -985,7 +985,7 @@ L_SNChange:
 	mes "Super Novices pride themselves on their slogan 'Common Player,";
 	mes "Common Goals, Common Dreams'!";
 	mes "Have fun with all those skills <3";
-	Jobchange JOB_SUPERNOVICE;
+	jobchange JOB_SUPER_NOVICE;
 	emotion 46; // Congratulations!
 	close;
 
@@ -1052,7 +1052,7 @@ L_ExpandedClass:
 		mes "Adventure the lands, spiritually,";
 		mes "mentally, and physically. Accept";
 		mes "your title as a TAEKWONDO!";
-		Jobchange JOB_TAEKWON;
+		jobchange JOB_TAEKWON;
 		emotion 18; // /heh
 		close;
 
@@ -1060,7 +1060,7 @@ L_ExpandedClass:
 		mes "[Amber]";
 		mes "I like playing with guns too";
 		mes "sometimes~";
-		Jobchange JOB_GUNSLINGER;
+		jobchange JOB_GUNSLINGER;
 		emotion 3; // /lv
 		close;
 
@@ -1070,7 +1070,7 @@ L_ExpandedClass:
 		mes "attack out of no where, and";
 		mes "use deadly techniques from";
 		mes "afar? Talk about cool! <3";
-		Jobchange JOB_NINJA;
+		jobchange JOB_NINJA;
 		emotion 46; // Congratulations!
 		close;
 
@@ -1081,7 +1081,7 @@ L_ExpandedClass:
 		mes "Why don't you become something";
 		mes "else? >_<";
 		emotion 17; // /sry
-		// Jobchange JOB_DEATH_KNIGHT;
+		// jobchange JOB_DEATH_KNIGHT;
 		close;
 
 	L_DarkCollector:
@@ -1091,7 +1091,7 @@ L_ExpandedClass:
 		mes "try and become a class that";
 		mes "actually exists. Hahaha..";
 		emotion 23; // /omg
-		// Jobchange JOB_DARK_COLLECTOR;
+		// jobchange JOB_DARK_COLLECTOR;
 		close;
 
 	L_TaekwonClass:
@@ -1108,7 +1108,7 @@ L_ExpandedClass:
 			mes "Aww you're all grown up!";
 			mes "I liked you better as a cute";
 			mes "helpless lil Taekwon~ <333";
-			Jobchange JOB_STAR_GLADIATOR;
+			jobchange JOB_STAR_GLADIATOR;
 			emotion 18; // /heh
 			close;
 
@@ -1119,7 +1119,7 @@ L_ExpandedClass:
 			mes "can super buff any class to be";
 			mes "really leet. You can't practice";
 			mes "martial arts anymore though =(";
-			Jobchange JOB_SOUL_LINKER;
+			jobchange JOB_SOUL_LINKER;
 			emotion 18; // /heh
 			close;
 

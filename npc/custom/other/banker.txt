@@ -23,7 +23,7 @@ prontera.gat,132,217,5	script	Banker	903,{
 
 	set @cost,500;
 	mes "[Marcus]";
-	if((Class == JOB_NOVICE || Class == JOB_NOVICE_HIGH || Class == JOB_BABY) && Joblevel < 6) goto L_NoviceFail;
+	if ((Class == JOB_NOVICE || Class == JOB_NOVICE_HIGH || Class == JOB_BABY) && Joblevel < 6) goto L_NoviceFail;
 	mes "Welcome to the First Bank of Prontera. How can I help you today?";
 	next;
 	menu "I'd like to make a deposit.",L_Deposit,"I'd like to make a withdrawl.",L_Withdrawl,"What's my current balance?",L_Balance,"Cancel",-;

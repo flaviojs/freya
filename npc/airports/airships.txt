@@ -136,18 +136,18 @@ OnTimer320000:
 }
 airplane.gat,243,74,4	script	#warp1	45,2,2{
 OnTouch:
-	if($route1 == 0) warp "hugel.gat",178,149;
-	if($route1 == 1) warp "einbroch.gat",90,275;
-	if($route1 == 2) warp "lighthalzen.gat",302,75;
-	if($route1 == 3) warp "yuno.gat",85,265;
+	if ($route1 == 0) warp "hugel.gat",178,149;
+	if ($route1 == 1) warp "einbroch.gat",90,275;
+	if ($route1 == 2) warp "lighthalzen.gat",302,75;
+	if ($route1 == 3) warp "yuno.gat",85,265;
 	close;
 }	
 airplane.gat,243,29,4	script	#warp2	45,2,2{
 OnTouch:
-	if($route1 == 0) warp "hugel.gat",178,149;
-	if($route1 == 1) warp "einbroch.gat",90,275;
-	if($route1 == 2) warp "lighthalzen.gat",302,75;
-	if($route1 == 3) warp "yuno.gat",85,265;
+	if ($route1 == 0) warp "hugel.gat",178,149;
+	if ($route1 == 1) warp "einbroch.gat",90,275;
+	if ($route1 == 2) warp "lighthalzen.gat",302,75;
+	if ($route1 == 3) warp "yuno.gat",85,265;
 	close;
 }	
 
@@ -207,14 +207,14 @@ OnTimer160000:
 }
 airplane_01.gat,243,74,4	script	#warp3	45,2,2{
 OnTouch:
-	if($route2 == 0) warp "izlude.gat",202,56;
-	if($route2 == 1) warp "yuno.gat",20,265;
+	if ($route2 == 0) warp "izlude.gat",202,56;
+	if ($route2 == 1) warp "yuno.gat",20,265;
 	close;
 }	
 airplane_01.gat,243,29,4	script	#warp4	45,2,2{
 OnTouch:
-	if($route2 == 0) warp "izlude.gat",202,56;
-	if($route2 == 1) warp "yuno.gat",20,265;
+	if ($route2 == 0) warp "izlude.gat",202,56;
+	if ($route2 == 1) warp "yuno.gat",20,265;
 	close;
 }	
 

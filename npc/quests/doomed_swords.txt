@@ -22,10 +22,10 @@
 //=============================================================================
 // Moet Leng Good: Tablet Of Power
 aldebaran.gat,44,53,4	script	Wizard in Training	64,{
-	if(dmdswrd_Q == 15) goto L_1;
-	if(dmdswrd_Q == 16) goto L_2;
-	if(dmdswrd_Q == 17) goto L_3;
-	if(dmdswrd_Q == 18) goto L_4;
+	if (dmdswrd_Q == 15) goto L_1;
+	if (dmdswrd_Q == 16) goto L_2;
+	if (dmdswrd_Q == 17) goto L_3;
+	if (dmdswrd_Q == 18) goto L_4;
 	mes "[Moet Leng Good]";
 	mes "Did you know that some people signed contract in shadows with the Dark Lord with the";
 	mes "^3355FF`Tablet of Power'^000000?!";
@@ -56,7 +56,7 @@ L_1:
 	set dmdswrd_Q,16;
 	close;
 L_2:
-	if((countitem(717) < 1) || (countitem(726) < 1) || (countitem(720) < 1) || (countitem(640) < 1) || (countitem(757) < 1)) goto L_1;
+	if ((countitem(717) < 1) || (countitem(726) < 1) || (countitem(720) < 1) || (countitem(640) < 1) || (countitem(757) < 1)) goto L_1;
 	mes "[Moet Leng Good]";
 	mes ". . . . . ! !";
 	mes "I can hardly believe that you actually gathered all the resources for the 'Tablet of Power'";
@@ -81,7 +81,7 @@ L_2:
 	mes "^3355FF- working hard on the tablet -^000000";
 	close;
 L_3:
-	if(countitem(1025) > 0) goto sL_3;
+	if (countitem(1025) > 0) goto sL_3;
 	mes "[Moet Leng Good]";
 	mes "The tablet will be done when I finish!";
 	mes "Please do not bother me for now, I need to concentrate";
@@ -134,12 +134,12 @@ L_4:
 //=============================================================================
 // Zaka: Book of Tiresome Sheep
 morocc.gat,202,33,4	script	ZAKA	99,{
-	if(dmdswrd_Q == 18) goto L_1;
-	if(dmdswrd_Q == 19) goto L_2;
-	if(dmdswrd_Q == 20) goto L_3;
-	if(dmdswrd_Q == 21) goto L_4;
-	if(dmdswrd_Q == 22) goto L_5;
-	if(dmdswrd_Q == 23) goto L_6;
+	if (dmdswrd_Q == 18) goto L_1;
+	if (dmdswrd_Q == 19) goto L_2;
+	if (dmdswrd_Q == 20) goto L_3;
+	if (dmdswrd_Q == 21) goto L_4;
+	if (dmdswrd_Q == 22) goto L_5;
+	if (dmdswrd_Q == 23) goto L_6;
 
 	mes "[ZAKA]";
 	mes "...... The sun sets over another day.  The moon rises to take it's nightly place.";
@@ -188,7 +188,7 @@ L_1:
 	set dmdswrd_Q,19;
 	close;
 L_2:
-	if(countitem(926) > 1) goto sL_2;
+	if (countitem(926) > 1) goto sL_2;
 	mes "[ZAKA]";
 	mes "If you want the 'Book of the Tiresome Sheep', I will need^3355FF 2 'Snake Scales'^000000.";
 	close;
@@ -203,7 +203,7 @@ L_2:
 		mes "^3355FF'Scale Shell'^000000 in order to block only negative energies from the book.";
 		close;
 L_3:
-	if(countitem(936) > 0) goto sL_3;
+	if (countitem(936) > 0) goto sL_3;
 	mes "[ZAKA]";
 	mes "Please bring me the next ingredient needed for the 'Book of the Tiresome Sheep', I will need one";
 	mes "^3355FF'Scale Shell'^000000 ??";
@@ -224,7 +224,7 @@ L_3:
 		mes "While you are getting the scale, I will continue to the next phase of crafting, good luck.";
 		close;
 L_4:
-	if(countitem(954) > 0) goto sL_4;
+	if (countitem(954) > 0) goto sL_4;
 	mes "[ZAKA]";
 	mes "In order to finish crafting the 'Book of the Tiresome Sheep', I will need you to gather me one piece of ^3355FF'Shining Scale'^000000, okay?";
 	close;
@@ -240,7 +240,7 @@ L_4:
 		mes "Finally, the last ingredient I need is one ^3355FF'Stinky Scale'^000000 to complete the book, please bring it to me";
 		close;
 L_5:
-	if(countitem(959) > 0) goto sL_5;
+	if (countitem(959) > 0) goto sL_5;
 	mes "[ZAKA]";
 	mes "All I need to craft the 'Book of the Tiresome Sheep' is one piece of ^3355FF'Stinky Scale'^000000 now, please bring one to me.";
 	close;
@@ -284,9 +284,9 @@ L_6:
 //=============================================================================
 // Won: Voucher of Power
 comodo.gat,232,87,4	script	Wandering Swordsman WON	106,{
-	if(dmdswrd_Q == 23) goto L_1;
-	if(dmdswrd_Q == 24) goto L_2;
-	if(dmdswrd_Q == 25) goto L_3;
+	if (dmdswrd_Q == 23) goto L_1;
+	if (dmdswrd_Q == 24) goto L_2;
+	if (dmdswrd_Q == 25) goto L_3;
 
 	mes "[WON]";
 	mes "My name is ^3355FF'Won'^000000.  I have searched far and wide, across the oceans and the mountains, to find one who is worthy.......";
@@ -372,8 +372,8 @@ L_3:
 
 // Cetsu --------------------------------------------
 morocc.gat,281,178,8	script	Cetsu	97,{
-	if(dmdswrd_Q == 25) goto M_Yes;
-	if(dmdswrd_Q > 25) goto L_1;
+	if (dmdswrd_Q == 25) goto M_Yes;
+	if (dmdswrd_Q > 25) goto L_1;
 
 	mes "[Cetsu]";
 	mes "It is rumored that there was once a dagger made out of the tooth of an ogre.  This made the dagger much stronger than those made out of steel.";
@@ -386,7 +386,7 @@ morocc.gat,281,178,8	script	Cetsu	97,{
 	next;
 	mes "[Cetsu]";
 	mes "Unfortunalety he left Prontera long ago and has not been seen since...";
-	if(dmdswrd_Q == 24) goto L_0;
+	if (dmdswrd_Q == 24) goto L_0;
 	close;
 
 L_0:
@@ -415,8 +415,8 @@ L_1:
 
 // Veeyop --------------------------------------------------
 prontera.gat,197,188,4	script	Veeyop	50,{
-	if(dmdswrd_Q == 26) goto M_Yes;
-	if(dmdswrd_Q > 26) goto L_1;
+	if (dmdswrd_Q == 26) goto M_Yes;
+	if (dmdswrd_Q > 26) goto L_1;
 
 	mes "[Veeyop]";
 	mes "Have you ever heard of a doomed sword, ^ff0000Mysteltain^000000? It's named after ^0000bba legendary Young Twig^000000 that was used to murder Balder, the God of Light...";
@@ -430,7 +430,7 @@ prontera.gat,197,188,4	script	Veeyop	50,{
 	next;
 	mes "[Veeyop]";
 	mes "Unfortunately he's disapeared from this town.  Anywho its just heresay.";
-	if(dmdswrd_Q == 25) goto L_0;
+	if (dmdswrd_Q == 25) goto L_0;
 	close;
 
 L_0:
@@ -459,8 +459,8 @@ L_1:
 
 // Nain  -------------------------------------------------------------
 izlude_in.gat,173,88,2	script	Nain	102,{
-	if(dmdswrd_Q == 27) goto M_Yes;
-	if(dmdswrd_Q > 27) goto L_1;
+	if (dmdswrd_Q == 27) goto M_Yes;
+	if (dmdswrd_Q > 27) goto L_1;
 
 	mes "[Nain]";
 	mes "I was once told a legend about a powerfull sword that was used only for executions.";
@@ -484,7 +484,7 @@ izlude_in.gat,173,88,2	script	Nain	102,{
 	mes "Just thinking about it sends shivers down my spine.";
 	mes "No matter how powerfull a sword it is, to think that it is possessed with thousands and thousands of angry ghosts...";
 	mes "I would rather see the Doomed sword stay lost to history.";
-	if(dmdswrd_Q == 26) goto L_0;
+	if (dmdswrd_Q == 26) goto L_0;
 	close;
 
 L_0:
@@ -514,7 +514,7 @@ L_1:
 
 // Rupeto ---------------------------------------------------------
 prt_in.gat,169,16,3	script	Rupeto	86,{
-	if(dmdswrd_Q == 27) goto L_0;
+	if (dmdswrd_Q == 27) goto L_0;
 	mes "[Rupeto]";
 	mes "Hello.";
 	close;
@@ -534,8 +534,8 @@ L_0:
 // Legendary Blacksmith ----------------------------------------------
 pay_fild08.gat,217,273,4	script	Legendary Blacksmith	63,{
 
-	if(dmdswrd_Q == 27) goto L_Start;
-	if(dmdswrd_Q == 28) goto L_Forge;
+	if (dmdswrd_Q == 27) goto L_Start;
+	if (dmdswrd_Q == 28) goto L_Forge;
 	mes "[Legendary Blacksmith]";
 	mes "I wonder what's going on in ^ff0000Prontera^000000?  It's been so long since I've been there.";
 	close;
@@ -563,7 +563,7 @@ L_Start:
 	menu "Executioner",M_Exec, "Grimtooth",M_Grim, "Mysteltain",M_Myst;
 
 	M_Exec:	//1169
-		if(countitem(7017)>=2 && countitem(7024)>=10 && countitem(1008)>=3 && countitem(609)>=50 && countitem(714)>=1) goto L_GetExec;
+		if (countitem(7017)>=2 && countitem(7024)>=10 && countitem(1008)>=3 && countitem(609)>=50 && countitem(714)>=1) goto L_GetExec;
 		mes "[Legendary Blacksmith]";
 		mes "So you're interested in making the legendary Executioner Sword heh?.....";
 		next;
@@ -602,7 +602,7 @@ L_Start:
 			close;
 
 	M_Grim:	//1237
-		if(countitem(7023)>=10 && countitem(724)>=5 && countitem(7002)>=100 && countitem(7022)>=1 && countitem(714)>=1) goto L_GetGrim;
+		if (countitem(7023)>=10 && countitem(724)>=5 && countitem(7002)>=100 && countitem(7022)>=1 && countitem(714)>=1) goto L_GetGrim;
 		mes "[Legendary Blacksmith]";
 		mes "So you're interested in making the legendary Grimtooth Dagger heh?.....";
 		next;
@@ -641,7 +641,7 @@ L_Start:
 			close;
 
 	M_Myst:	//1138
-		if(countitem(7021)>=1 && countitem(7019)>=1 && countitem(7020)>=1 && countitem(7018)>=1 && countitem(714)>=1) goto L_GetMyst;
+		if (countitem(7021)>=1 && countitem(7019)>=1 && countitem(7020)>=1 && countitem(7018)>=1 && countitem(714)>=1) goto L_GetMyst;
 		mes "[Legendary Blacksmith]";
 		mes "So you're interested in making the legendary Mysteltain Sword heh?.....";
 		next;

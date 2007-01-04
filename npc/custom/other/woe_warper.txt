@@ -18,8 +18,8 @@ n_castle.gat,102,107,5	script	Vimta	757,{
 prontera.gat,130,217,5	script	Vimta	757,{
 	mes "[Vimta]";
 	mes "Hello there! I'm a WOE representative, Vimta.";
-	if (getcharid(2) < 1000 ) mes "You are not a guild member, "+ strcharinfo(0) +"? Naff off for now.";
-	if (getcharid(2) < 1000 ) close;
+	if (getcharid(2) < 1000) mes "You are not a guild member, "+ strcharinfo(0) +"? Naff off for now.";
+	if (getcharid(2) < 1000) close;
 	if (agitcheck(0) == 0) mes "When WOE is off I can warp you to Novice Castles only:";
 	if (agitcheck(0) != 0) mes "I can warp you to any Castle:";
 	next;

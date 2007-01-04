@@ -7,18 +7,18 @@
 //===== Compatible With: ===================================== 
 //= Freya
 //===== Description: ========================================= 
-//= Official iRO TaeKwon Job Change Quest
+//= Official iRO Taekwon Job Change Quest
 //===== Additional Comments: ================================= 
 //= 1.0 Replaced previous TK Job Quest with this one [Tsuyuki]
 //============================================================ 
 
 
-payon.gat,157,141,5	script	Phoenix#TKJobChange	753,{
+payon.gat,157,141,5	script	Phoenix#TKjobchange	753,{
 
-	if (Class == Job_Taekwon || Class == Job_Star_Gladiator || Class == Job_Soul_Linker)goto L_Complete;
-	if (TK_Q == 1)goto L_Activated2;
-	if (TK_Q == 2)goto L_JobChange;
-	if (TAEK_Q > 0)goto L_Activated1;
+	if (Class == JOB_TAEKWON || Class == JOB_STAR_GLADIATOR || Class == JOB_STAR_GLADIATOR2 || Class == JOB_SOUL_LINKER) goto L_Complete;
+	if (TK_Q == 1) goto L_Activated2;
+	if (TK_Q == 2) goto L_jobchange;
+	if (TAEK_Q > 0) goto L_Activated1;
 
 	mes "[Phoenix]";
 	mes "This land. Our once";
@@ -63,7 +63,7 @@ payon.gat,157,141,5	script	Phoenix#TKJobChange	753,{
 	menu "Okay, I will join you.",L_Join,"No, thank you.",L_NoThx;
 
 L_Join:
-	if (Class != Job_Novice || JobLevel < 9) goto L_Failed1;
+	if (Class != JOB_NOVICE || JobLevel < 9) goto L_Failed1;
 	mes "[Phoenix]";
 	mes "Very well... I accept you";
 	mes "as my student. In beginning";
@@ -101,7 +101,7 @@ L_NoThx:
 	close;
 
 L_Failed1:
-	if (Class != Job_Novice)goto L_Failed2;
+	if (Class != JOB_NOVICE) goto L_Failed2;
 	mes "[Phoenix]";
 	mes "How unfortunate!";
 	mes "You're not yet ready to";
@@ -118,7 +118,7 @@ L_Failed2: // CUSTOM MESSAGE
 	close;
 
 L_Activated1:
-	if(TAEK_Q < BaseLevel) goto L_Finish;
+	if (TAEK_Q < BaseLevel) goto L_Finish;
 	mes "[Phoenix]";
 	mes "You must gain ^ff00001 more";
 	mes "Base Level^000000 to prove that";
@@ -321,7 +321,7 @@ L_TKQST3:
 	mes "failure. Then, you return to me.";
 	close;
 
-L_JobChange:
+L_jobchange:
 	mes "[Phoenix]";
 	mes "Are you feeling calm";
 	mes "and at peace? I will ask";
@@ -334,9 +334,9 @@ L_JobChange:
 	mes "I will teach you, and uphold";
 	mes "the dignity of its philosophy?^000000";
 	next;
-	menu "Yes.",L_JobChangeA,"No.",L_JobChangeB;
+	menu "Yes.",L_jobchangeA,"No.",L_jobchangeB;
 
-L_JobChangeA:
+L_jobchangeA:
 	mes "[Phoenix]";
 	mes "Very well. You are no";
 	mes "longer just a student.";
@@ -366,7 +366,7 @@ L_JobChangeA:
 	mes "title. Mm. In that case, you";
 	mes "are now a ^ff0000Taekwon Boy^000000.";
 	mes "Yes, that sounds good.";
-	jobchange Job_Taekwon;
+	jobchange JOB_TAEKWON;
 	callfunc "F_ClearJobVar";
 	getitem 2101,1; // Guard[0]
 	next;
@@ -392,7 +392,7 @@ L_JobChangeA:
 	mes "sometime, "+strcharinfo(0)+".";
 	close;
 
-L_JobChangeB:
+L_jobchangeB:
 	mes "[Phoenix]";
 	mes "Hm, perhaps you are not";
 	mes "quite ready to progress from";

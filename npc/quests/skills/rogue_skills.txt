@@ -26,8 +26,8 @@
 //============================================================
 in_rogue.gat,387,94,3	script	Hyzaragrack	84,{
 	mes "[Hyzaragrack]";
-	if(BaseJob!=Job_Rogue) goto L_norogue;
-	if(getskilllv(1005)) goto L_alreadyhave;
+	if (BaseJob!=JOB_ROGUE) goto L_norogue;
+	if (getskilllv(1005)) goto L_alreadyhave;
 
 	mes "I'll teach you all I know, but";
 	mes "you'll have to steal some things";
@@ -41,7 +41,7 @@ in_rogue.gat,387,94,3	script	Hyzaragrack	84,{
 	mes "Let me check your items.";
 	next;
 	
-	if(countitem(929)<5 || countitem(953)<5 || countitem(7097)<2) goto L_noitems;//Items: Immortal_Heart, Stone_Heart, Burning_Heart,
+	if (countitem(929)<5 || countitem(953)<5 || countitem(7097)<2) goto L_noitems;//Items: Immortal_Heart, Stone_Heart, Burning_Heart,
 	delitem 929, 5;//Items: Immortal_Heart,
 	delitem 953, 5;//Items: Stone_Heart,
 	delitem 7097, 2;//Items: Burning_Heart,

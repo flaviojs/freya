@@ -2,7 +2,7 @@ gef_fild07.gat,183,239,5	script	Old Smith	120,{
 	mes "[Old Smith]";
 	mes "Ah, isn't it peaceful up here - I used to be one of the legendary Blacksmiths of midgard...sadly my skills have faded.";
 	next;
-	if(countitem(7110)<1) goto NoItemS;
+	if (countitem(7110)<1) goto NoItemS;
 	mes "[Old Smith]";
 	mes "Hmm, it seems as if you need something. What would that be?";
 
@@ -12,8 +12,8 @@ gef_fild07.gat,183,239,5	script	Old Smith	120,{
 		mes "[Old Smith]";
 		mes "Ahhh, this is a very old sword and yes I can fix it, I'll need an 'Oridecon' to mend the breaks though.";
 		next;
-		if(countitem(7110)<1) goto NoItem;
-		if(countitem(984)<1) goto NoItem;
+		if (countitem(7110)<1) goto NoItem;
+		if (countitem(984)<1) goto NoItem;
 		goto ExGive;
 
 	NoItem:

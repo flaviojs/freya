@@ -14,18 +14,18 @@
 
 new_1-1.gat,111,112,5	script	Heraut	139,0,4,{
 
-	if(BaseJob != Job_Novice || JobLevel > 1 || read_rules == 2) goto pas_deb;
+	if (BaseJob != JOB_NOVICE || JobLevel > 1 || read_rules == 2) goto pas_deb;
 	mes "[Heraut]";
-	if(sex==0) mes "Bienvenue sur Sapho Lady ^5555FF"+strcharinfo(0)+"^000000 !";
-	if(sex==1) mes "Bienvenue sur Sapho Sir ^5555FF"+strcharinfo(0)+"^000000 !";
+	if (sex==0) mes "Bienvenue sur Sapho Lady ^5555FF"+strcharinfo(0)+"^000000 !";
+	if (sex==1) mes "Bienvenue sur Sapho Sir ^5555FF"+strcharinfo(0)+"^000000 !";
 	next;
 	goto starting;
 
 starting:
-	if(anno_done != 1) mes "[Heraut]";
-	if(anno_done != 1) mes "Dois-je annoncer ton arrivée dans nos contrées?";
-	if(anno_done != 1) next;
-	if(anno_done != 1) menu "Je veux bien =)",annonce,"Non merci.",;
+	if (anno_done != 1) mes "[Heraut]";
+	if (anno_done != 1) mes "Dois-je annoncer ton arrivée dans nos contrées?";
+	if (anno_done != 1) next;
+	if (anno_done != 1) menu "Je veux bien =)",annonce,"Non merci.",;
 	mes "[Heraut]";
 	mes "Si tu viens sur nos terres, c'est que ton esprit est fort, et que ton honneur est grand !";
 	mes "Saches qu'en ces lieux, ta vie ne sera pas des plus faciles, il te faudra combattre de nombreux ennemis afin de rester en vie.";
@@ -39,12 +39,12 @@ starting:
 
 pas_deb:
 	mes "[Heraut]";
-	if(sex==0) mes "Bien le bonjour Lady ^5555FF"+strcharinfo(0)+"^000000.";
-	if(sex==1) mes "Bien le bonjour Sir ^5555FF"+strcharinfo(0)+"^000000."; 
+	if (sex==0) mes "Bien le bonjour Lady ^5555FF"+strcharinfo(0)+"^000000.";
+	if (sex==1) mes "Bien le bonjour Sir ^5555FF"+strcharinfo(0)+"^000000."; 
 	next;
 	mes "[Heraut]";
-	if(sex==0) mes "Tu n'es pas novice ou du moins plus une débutante, que puis-je pour toi ?";
-	if(sex==1) mes "Tu n'es pas novice ou du moins plus un débutant, que puis-je pour toi ?";
+	if (sex==0) mes "Tu n'es pas novice ou du moins plus une débutante, que puis-je pour toi ?";
+	if (sex==1) mes "Tu n'es pas novice ou du moins plus un débutant, que puis-je pour toi ?";
 	next;
 	menu "Je voudrais relire les Lois.",Regles,"Pourquoi donc des Lois?",Fous,"Quels sont les GMs connectés?",GM_co,"Rien, merci.",yop;
 
@@ -55,9 +55,9 @@ Choix:
 	menu "Les lois, je veux les lire!",Regles,"Les lois et moi on est pas compatibles !",Nan,"Pourquoi donc des Lois?",Fous,"Quels sont les GMs connectés?",GM_co;
 
 Regles:
-	if(BaseJob == Job_Novice && JobLevel <= 1 && read_rules != 2) set read_rules,1;
-	if(BaseJob == Job_Novice && JobLevel <= 1 && read_rules != 2) initnpctimer;
-	if(BaseJob == Job_Novice && JobLevel <= 1 && read_rules != 2) attachnpctimer;
+	if (BaseJob == JOB_NOVICE && JobLevel <= 1 && read_rules != 2) set read_rules,1;
+	if (BaseJob == JOB_NOVICE && JobLevel <= 1 && read_rules != 2) initnpctimer;
+	if (BaseJob == JOB_NOVICE && JobLevel <= 1 && read_rules != 2) attachnpctimer;
 	mes "[Heraut]";
 	mes "Voila quelqu'un de bonne volonté.";
 	mes "Prends bien le temps de lire et comprendre chaque loi ;)";
@@ -100,7 +100,7 @@ Regles:
 	mes "[Heraut]";
 	mes "^ff0000Loi 07 :";
 	mes "Il est interdit de nommer ses personnages d'une manière déclarée non conforme.^000000";
-	mes "*Note : Les caracteres autorisés sont les lettres de l'alphabet de A a Z (la casse n'a pas d'importance), les chiffres de 0 a 9, l'apostrophe ( ' ), l'espace et le tiret ( - ).";
+	mes "*Note : Les caracteres autorisés sont les lettres de l'alphabet de A a Z (la casse n'a pas d'importance), les chiffres de 0 a 9, l'apostrophe ('), l'espace et le tiret (-).";
 	mes "Les Game Masters ne s'occuperont jamais des personnages dont le nom n'est pas conforme à cette loi.";
 	next;
 	mes "[Heraut]";
@@ -147,14 +147,14 @@ Regles:
 	mes "Ensuite, je te déconseille également de ^ff0000préter des zenys ou des items rares à des personnes^000000 en qui tu n'as pas une totale confiance.";
 	mes "Tout le monde ne sera pas forcément honnête et les Game Master ne te rendront jamais les items ou zenys volés ;)";
 	next;
-	if(BaseJob == Job_Novice && JobLevel <= 1 && read_rules != 2) mes "[Heraut]";
-	if(BaseJob == Job_Novice && JobLevel <= 1 && read_rules != 2) mes "Si tu as bien pris le temps de lire toutes ces lois, une petite surprise devrait alors être apparue dans ton inventaire, elle te permettra de mieux commencer ton aventure =).";
-	if(BaseJob == Job_Novice && JobLevel <= 1 && read_rules != 2) next;
-	if(BaseJob == Job_Novice && JobLevel <= 1 && read_rules == 1) set read_rules,2;
+	if (BaseJob == JOB_NOVICE && JobLevel <= 1 && read_rules != 2) mes "[Heraut]";
+	if (BaseJob == JOB_NOVICE && JobLevel <= 1 && read_rules != 2) mes "Si tu as bien pris le temps de lire toutes ces lois, une petite surprise devrait alors être apparue dans ton inventaire, elle te permettra de mieux commencer ton aventure =).";
+	if (BaseJob == JOB_NOVICE && JobLevel <= 1 && read_rules != 2) next;
+	if (BaseJob == JOB_NOVICE && JobLevel <= 1 && read_rules == 1) set read_rules,2;
 	mes "[Heraut]";
 	mes "Merci d'avoir pris le temps de lire ces règles.";
-	if(sex==0) mes "Bonne chance à toi, courageuse Lady ^5555FF"+strcharinfo(0)+"^000000 !";
-	if(sex==1) mes "Bonne chance à toi, courageux Sir ^5555FF"+strcharinfo(0)+"^000000 !";
+	if (sex==0) mes "Bonne chance à toi, courageuse Lady ^5555FF"+strcharinfo(0)+"^000000 !";
+	if (sex==1) mes "Bonne chance à toi, courageux Sir ^5555FF"+strcharinfo(0)+"^000000 !";
 	mes "Et surtout, bon jeu =)";
 	close;
 
@@ -173,15 +173,15 @@ GM_co:
 
 Nan:
 	mes "[Heraut]";
-	if(sex==0) mes "Très bien Lady ^5555FF"+strcharinfo(0)+"^000000.";
-	if(sex==1) mes "Très bien Sir ^5555FF"+strcharinfo(0)+"^000000."; 
+	if (sex==0) mes "Très bien Lady ^5555FF"+strcharinfo(0)+"^000000.";
+	if (sex==1) mes "Très bien Sir ^5555FF"+strcharinfo(0)+"^000000."; 
 	mes "Saches néanmoins que si tu enfreins une de ces lois, tu risques une sanction plus ou moins importante selon le cas.";
 	mes "De la prison, en passant par le ban temporaire, jusqu'au ban définitif.";
 	mes "Ces lois ne sont pas nombreuses, cela ne prend que quelques minutes pour les lire et ainsi éviter les risques inutiles.";
 	next;
 	mes "[Heraut]";
-	if(sex==0) mes "Es-tu sûre de vouloir ignorer ces quelques lois?";
-	if(sex==1) mes "Es-tu sûr de vouloir ignorer ces quelques lois?";
+	if (sex==0) mes "Es-tu sûre de vouloir ignorer ces quelques lois?";
+	if (sex==1) mes "Es-tu sûr de vouloir ignorer ces quelques lois?";
 	next;
 	menu "Oui !",yop,"Non, finalement, je vais les lire.",lect;
 	close;
@@ -210,11 +210,11 @@ Fous:
 	goto Choix;
 
 annonce:
-	if(anno_done != 1) mes "[Heraut]";
-	if(anno_done != 1) mes "Ton arrivée vient d'être annoncée.";
-	if(anno_done != 1 && sex == 0) announce "Bienvenue à '"+strcharinfo(0)+"', nouvelle joueuse de Sapho =)",16;
-	if(anno_done != 1 && sex == 1) announce "Bienvenue à '"+strcharinfo(0)+"', nouveau joueur de Sapho =)",16;
-	if(anno_done != 1) set anno_done,1;
+	if (anno_done != 1) mes "[Heraut]";
+	if (anno_done != 1) mes "Ton arrivée vient d'être annoncée.";
+	if (anno_done != 1 && sex == 0) announce "Bienvenue à '"+strcharinfo(0)+"', nouvelle joueuse de Sapho =)",16;
+	if (anno_done != 1 && sex == 1) announce "Bienvenue à '"+strcharinfo(0)+"', nouveau joueur de Sapho =)",16;
+	if (anno_done != 1) set anno_done,1;
 	next;
 	goto starting;
 

@@ -38,13 +38,13 @@ L_YAME:
 
 // Teleport from waiting room to ready room
 prt_are_in.gat,29,79,0	script	Time Attack	116,{
-	if( getmapusers("force_1-1.gat")>0 ) goto L_WAIT;
+	if (getmapusers("force_1-1.gat")>0) goto L_WAIT;
 
 	mes "This is the Time Attack selection.";
 	mes "Please choose your challenge.";
 	menu "Level 1 - 5 Porings, 30 secs!",L_GOLV1,"Level 2 - 7 Roda Frogs, 60 secs!",L_GOLV2,"Level 3 - 9 PecoPecos, 100 secs!",L_GOLV3,"Never mind.",L_YAME;
 L_GOLV1:
-	if( getmapusers("force_1-1.gat")>0 ) goto L_WAIT;
+	if (getmapusers("force_1-1.gat")>0) goto L_WAIT;
 	disablenpc "fc103-1";
 	disablenpc "fc105";
 	disablenpc "fc107";
@@ -52,7 +52,7 @@ L_GOLV1:
 	warp "force_1-1.gat",99,12;
 	break;
 L_GOLV2:
-	if( getmapusers("force_1-1.gat")>0 ) goto L_WAIT;
+	if (getmapusers("force_1-1.gat")>0) goto L_WAIT;
 	disablenpc "fc103-1";
 	disablenpc "fc105";
 	disablenpc "fc107";
@@ -60,7 +60,7 @@ L_GOLV2:
 	warp "force_1-1.gat",99,12;
 	break;
 L_GOLV3:
-	if( getmapusers("force_1-1.gat")>0 ) goto L_WAIT;
+	if (getmapusers("force_1-1.gat")>0) goto L_WAIT;
 	disablenpc "fc103-1";
 	disablenpc "fc105";
 	disablenpc "fc107";
@@ -169,7 +169,7 @@ force_1-1.gat,99,12,0	script	arenalv3fgt	-1,{
 //Time Attack Level 1
 force_1-1.gat,25,26,0	script	arenalv1mon	-1,{
 	set $arena00, $arena00 - 1;
-	if( $arena00 > 0 ) goto L_CONT;
+	if ($arena00 > 0) goto L_CONT;
 	deltimer "arenaev8000";
 	announce "Crash!!",3;
 	enablenpc "fc101";
@@ -235,7 +235,7 @@ L_CONT:
 
 force_1-1.gat,25,26,0	script	arenalv2mon	-1,{
 	set $arena00, $arena00 - 1;
-	if( $arena00 > 0 ) goto L_CONT;
+	if ($arena00 > 0) goto L_CONT;
 	deltimer "arenaev8000";
 	announce "Crash!!",3;
 	enablenpc "fc101";
@@ -302,7 +302,7 @@ L_CONT:
 
 force_1-1.gat,25,26,0	script	arenalv3mon	-1,{
 	set $arena00, $arena00 - 1;
-	if( $arena00 > 0 ) goto L_CONT;
+	if ($arena00 > 0) goto L_CONT;
 	deltimer "arenaev8000";
 	announce "Crash!!",3;
 	enablenpc "fc101";

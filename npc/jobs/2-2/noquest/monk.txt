@@ -4,8 +4,8 @@
 
 //Monk Job Change Monk_in 99 64 4_M_MONK (new temp 55 cause of error)
 monk_in.gat,99,64,5	script	Master Monk	753,{
-	if(Class==15) goto monk;
-	if(Class !=4) goto notaco;
+	if (Class == 15) goto monk;
+	if (Class !=4) goto notaco;
 
 	mes "[Master Monk]";
 	mes "Good Day,This is the Monk's Guild.";
@@ -15,10 +15,10 @@ monk_in.gat,99,64,5	script	Master Monk	753,{
 	next;
 	menu "Change Job into a Monk.",Lcase1,"The Requirements.",Lcase2,"Quit.",Lcase3;
 		Lcase1:
-			if(JobLevel < 40) goto notlvl;
+			if (JobLevel < 40) goto notlvl;
 			mes "[Master Monk]";
-			if(SkillPoint > 0) mes "You need to use up all of your skill points before I can make you a Monk.";
-			if(SkillPoint > 0) close;
+			if (SkillPoint > 0) mes "You need to use up all of your skill points before I can make you a Monk.";
+			if (SkillPoint > 0) close;
 			mes "Your Welcome to Stay here at the Abbey since you are now a Monk.";
 			jobchange JOB_MONK;
 			close;

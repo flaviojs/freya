@@ -75,7 +75,7 @@ M_Menu:
 			menu "Alrighty~?",-,"Bah, what a rip off!!",sm_1b;
 			
 				set MISC_QUEST,MISC_QUEST | 16;
-				if(Zeny < 250) goto sl_NoZeny;
+				if (Zeny < 250) goto sl_NoZeny;
 				set Zeny, Zeny - 250;
 				warp "alberta.gat",195,164;
 
@@ -96,7 +96,7 @@ M_Menu:
 				next;
 				menu "Alrighty~!",-,"Why are you being so nice to me?!",sM_2b;
 
-				if(Zeny < 250) goto sl_NoZeny;
+				if (Zeny < 250) goto sl_NoZeny;
 				set Zeny, Zeny - 250;
 				warp "alberta.gat",195,164;
 

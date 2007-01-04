@@ -24,8 +24,8 @@
 //<-------------------------------------- Fatal Blow------------------------------------>\\
 prt_in.gat,75,88,5	script	Leon	85,{
 	mes "[Leon]";
-	if(callfunc("Is_Sword_Class")) goto L_Start;
-	if(BaseJob == Job_Novice) goto L_Novice;
+	if (callfunc("Is_Sword_Class")) goto L_Start;
+	if (BaseJob == JOB_NOVICE) goto L_Novice;
 
 	mes "Hello there.  I am Leon, a well known and well respected member of the famous Prontera Chivalry.";
 	next;
@@ -46,8 +46,8 @@ L_Start:
 	if (FATALBLOW == 1) goto L_Check;
 	if (getskilllv(145)>0) goto L_Done;
 
-	if(sex==1)mes "Oooh! I see that you are quite a strong Swordsman.";
-	if(sex==0)mes "Oooh! I see that you are quite a strong Swordswoman.";
+	if (sex==1)mes "Oooh! I see that you are quite a strong Swordsman.";
+	if (sex==0)mes "Oooh! I see that you are quite a strong Swordswoman.";
 	mes "How did I know? Hahaha! Just look at that strong arm of yours!";
 	next;
 	mes "[Leon]";
@@ -55,9 +55,9 @@ L_Start:
 	emotion 18;
 	next;
 	mes "[Leon]";
-	if(sex==1)mes "I like a Swordsman who isn't afraid to use a powerfull skill such as that.";
-	if(sex==0)mes "Now, now, don't be shy.  It's ok for girls to like Bash.";
-	if(sex==0)mes "Afterall, whether your a Swordsman or Swordswoman, there's no denying the power of Bash!";
+	if (sex==1)mes "I like a Swordsman who isn't afraid to use a powerfull skill such as that.";
+	if (sex==0)mes "Now, now, don't be shy.  It's ok for girls to like Bash.";
+	if (sex==0)mes "Afterall, whether your a Swordsman or Swordswoman, there's no denying the power of Bash!";
 	next;
 	mes "[Leon]";
 	mes "As great as Bash is though, I often felt that it could be even better if there was someway to stun an opponent with it.";
@@ -116,8 +116,8 @@ L_Check:
 	mes "So your back.  Did you get what I asked for?";
 	next;
 	mes "[Leon]";
-	if(countitem(1752)<10 || countitem(1751)<10 || countitem(532)<1 || countitem(962)<30 || countitem(526)<5) goto L_NoItems;
-	if(getskilllv(5)<5) goto L_BashLvl;
+	if (countitem(1752)<10 || countitem(1751)<10 || countitem(532)<1 || countitem(962)<30 || countitem(526)<5) goto L_NoItems;
+	if (getskilllv(5)<5) goto L_BashLvl;
 
 	mes "Great work.  You have everything I need for me to teach you Fatal Blow.";
 	next;
@@ -164,7 +164,7 @@ L_Done:
 //<---------------------------------- Moving HP Recovery ---------------------------------->\\
 izlude_in.gat,175,130,2	script	Knight De Thomas	98,{
 	mes "[Knight De Thomas]";
-	if(callfunc("Is_Sword_Class")) goto L_Start;
+	if (callfunc("Is_Sword_Class")) goto L_Start;
 
 L_Other:
 	mes "I am Thomas De Knight of the Prontera Chivalry.  I am very busy now so please leave me alone.";
@@ -227,7 +227,7 @@ L_Check:
 	next;
 	mes "[Knight De Thomas]";
 	if ((countitem(713)<200) || (countitem(1058)<1)) goto L_NoItems;
-	if (BaseJob==Job_Swordman && JobLevel < 35) goto L_LowLvl;
+	if (BaseJob == JOB_SWORDMAN && JobLevel < 35) goto L_LowLvl;
 	if ((getequipid(2) == 2312) || (getequipid(2) == 2313)) goto L_StartLearn; // Padded Armor, // fix from [General__] (freya's bug report)
 	if ((getequipid(2) == 2314) || (getequipid(2) == 2315)) goto L_StartLearn; // Chain Mail, // fix from [General__] (freya's bug report)
 	if ((getequipid(2) == 2316) || (getequipid(2) == 2317)) goto L_StartLearn; // Full Plate, // fix from [General__] (freya's bug report)
@@ -277,7 +277,7 @@ L_Check:
 //<----------------------------------------- Auto-Berserk --------------------------------->\\
 prt_in.gat,94,57,3	script	Juan	85,{
 	mes "[Juan]";
-	if(callfunc("Is_Sword_Class")) goto L_Start;
+	if (callfunc("Is_Sword_Class")) goto L_Start;
 
 L_Other:
 	mes "So how's your adventure going? I hope there will be good days ahead of you.";
@@ -288,7 +288,7 @@ L_Other:
 	close;
 
 L_Start:
-	if (BaseJob==Job_Swordman && JobLevel<34) goto L_LowLvl;
+	if (BaseJob == JOB_SWORDMAN && JobLevel<34) goto L_LowLvl;
 	if (BERSERK == 1) goto L_Check;
 	if (getskilllv(146)>0) goto L_GotSkill;
 

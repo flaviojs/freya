@@ -123,7 +123,7 @@ cmd_in02.gat,178,92,4	script	Shalone	101,{
 	mes "Ok, ok............ A-4!! Looks like you've lost again sir.... Hoo hoo, if you'd like a little advice, you shouldn't play when your luck's this bad.";
 	next;
 	mes "[Shalone]";
-	mes "( This costumer just can't seem to win! I feel so sorry for him... ~sigh~)";
+	mes "(This costumer just can't seem to win! I feel so sorry for him... ~sigh~)";
 	close;
 }
 
@@ -303,12 +303,12 @@ cmd_fild07.gat,299,83,4	script	Sailor#01	100,{
 	menu "Alberta = 600 Zeny",M0,"Izlude = 800 Zeny",M1,"Cancel",MEnd;
 
 	M0:
-		if(Zeny < 600) goto NoZeny;
+		if (Zeny < 600) goto NoZeny;
 		set Zeny, Zeny - 600;
 		warp "alberta.gat",192,169;
 		close;
 	M1:
-		if(Zeny < 800) goto NoZeny;
+		if (Zeny < 800) goto NoZeny;
 		set Zeny, Zeny - 800;
 		warp "izlude.gat",176,182;
 		close;
@@ -331,12 +331,12 @@ cmd_fild07.gat,94,134,4,	script	Sailor#02	100,{
 	menu "Alberta = 600 Zeny",M0,"Izlude = 800 Zeny",M1,"Cancel",MEnd;
 
 	M0:
-		if(Zeny < 600) goto NoZeny;
+		if (Zeny < 600) goto NoZeny;
 		set Zeny, Zeny - 600;
 		warp "alberta.gat",192,169;
 		close;
 	M1:
-		if(Zeny < 800) goto NoZeny;
+		if (Zeny < 800) goto NoZeny;
 		set Zeny, Zeny - 800;
 		warp "izlude.gat",176,182;
 		close;

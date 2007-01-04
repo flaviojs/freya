@@ -26,10 +26,10 @@
 //============================================================
 monk_test.gat,316,69,3	script	Krate	823,{
 	mes "[Krate]";
-	if(BaseJob!=Job_Monk) goto L_nomonk;
-	if(getskilllv(1015) && getskilllv(1016)) goto L_alreadyhave;
-	if(monk_skill) goto L_verif;
-	if(Weight>0) goto L_heavymonk;
+	if (BaseJob!=JOB_MONK) goto L_nomonk;
+	if (getskilllv(1015) && getskilllv(1016)) goto L_alreadyhave;
+	if (monk_skill) goto L_verif;
+	if (Weight>0) goto L_heavymonk;
 	mes "I'll teach you all I know, but you must bring me:";
 	mes "40 Stems";
 	mes "3 Shoots";
@@ -40,7 +40,7 @@ monk_test.gat,316,69,3	script	Krate	823,{
 L_verif:
 	mes "Let me check your items.";
 	next;
-	if(countitem(711)<3 || countitem(905)<40) goto L_noitems;//Items: Shoot, Stem,
+	if (countitem(711)<3 || countitem(905)<40) goto L_noitems;//Items: Shoot, Stem,
 	delitem 711, 3;//Items: Shoot,
 	delitem 905, 40;//Items: Stem,
 	next;

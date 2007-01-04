@@ -227,8 +227,8 @@ L_Done:
 
 // -== Book of Ymir (Heavens Door) ==-
 yuno_in02.gat,93,207,0	script	Livre de Ymir	111,{
-	if(Q_valkyrie == 1) goto L_Faded;
-	if(Q_valkyrie == 2) goto L_Start;
+	if (Q_valkyrie == 1) goto L_Faded;
+	if (Q_valkyrie == 2) goto L_Start;
 	mes "[Livre de Ymir]";
 	mes ". . . . .";
 	close;

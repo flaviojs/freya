@@ -17,7 +17,7 @@
 
 geffen_in.gat,151,119,4	script	BLIZZARDRISS	71,{
 	mes "[BLIZZARDRISS]";
-	if(callfunc("Is_Magic_Class")) goto L_Start;
+	if (callfunc("Is_Magic_Class")) goto L_Start;
 
 L_Other:
 	mes "What new magic spells will I discover today......??";
@@ -25,8 +25,8 @@ L_Other:
 	close;
 
 L_Start:
-	if(ENRGYCOAT == 1) goto L_GetSkill;
-	if(getskilllv(157)>0) goto L_GotSkill;
+	if (ENRGYCOAT == 1) goto L_GetSkill;
+	if (getskilllv(157)>0) goto L_GotSkill;
 	mes "Hey! My friend! I see that you are a magic user.  If you look within yourself, you'll find that you have... 'HIDDEN ABILITIES'!!";
 	next;
 	menu "'Hidden Abilities'.....?",M_0, "End Conversation.",M_End;
@@ -76,8 +76,8 @@ L_Start:
 		close;
 
 L_GetSkill:
-	if(Class==Job_Mage && joblevel < 35) goto L_JobLvl;
-	if(countitem(746)<3 || countitem(730)<1 || countitem(935)<5 || countitem(943)<1) goto L_Items;
+	if (Class == JOB_MAGE && joblevel < 35) goto L_JobLvl;
+	if (countitem(746)<3 || countitem(730)<1 || countitem(935)<5 || countitem(943)<1) goto L_Items;
 	mes "Ohh my, ohh my...... This is going to be swell.  Hand over the items... Thank you.";
 	next;
 	mes "~ several hours later ~";

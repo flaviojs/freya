@@ -139,7 +139,7 @@ alberta_in.gat,26,146,4	script	Gate Keeper#1::GateKeep	83,{
 		next;
 		menu "Yes I do.",-, "No I don't.",sM_1;
 
-			if(countitem(7029) < 1) goto sM_1;
+			if (countitem(7029) < 1) goto sM_1;
 			delitem 7029, 1;
 			set @mode$, "Fighting";
 			callsub sF_Move;
@@ -163,8 +163,8 @@ sF_Move:
 	next;
 	menu "Yes",-, "No",M_End;
 
-		if(BaseLevel < 31) goto sL_LowLvl;
-		if(Zeny < 500) goto sL_NdZeny;
+		if (BaseLevel < 31) goto sL_LowLvl;
+		if (Zeny < 500) goto sL_NdZeny;
 		set Zeny, Zeny - 500;
 		mes "[Gate Keeper]";
 		mes "Prepare to be warped to the arena.....";
@@ -271,8 +271,8 @@ OnInit:
 function	script	F_PvPRoom	{
 
 	mes "[Fight Square Helper]";
-	if(BaseLevel < getarg(1)) goto L_LowLvl;
-	if(BaseLevel > getarg(2)) goto L_HiLvl;
+	if (BaseLevel < getarg(1)) goto L_LowLvl;
+	if (BaseLevel > getarg(2)) goto L_HiLvl;
 	mes "Please choose an arena to fight in...";
 	M_Menu:
 	next;

@@ -277,7 +277,7 @@ L_Quete4:
 	mes "Héhéhu... Hum... Hé bien, Mm... Pour "+@prix+"zenys, je vous donnerais l'embleme";
 	menu "Accepter",-,"Refuser",refus;
 	next;
-	if ( Zeny < @prix ) goto No_Zeny;
+	if (Zeny < @prix) goto No_Zeny;
 	set Zeny,Zeny-@prix;
 	mes "[Un vieil homme]";
 	mes "Ha... Héhé...";

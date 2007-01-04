@@ -26,8 +26,8 @@
 //============================================================
 in_moc_16.gat,14,21,3	script	Kiltin	884,{
 	mes "[Kiltin]";
-	if(BaseJob!=Job_Assassin) goto L_nosin;
-	if(getskilllv(1003) && getskilllv(1004)) goto L_alreadyhave;
+	if (BaseJob!=JOB_ASSASSIN) goto L_nosin;
+	if (getskilllv(1003) && getskilllv(1004)) goto L_alreadyhave;
 
 	mes "I'll teach you all I know, but";
 	mes "you need to steal some things";
@@ -40,7 +40,7 @@ in_moc_16.gat,14,21,3	script	Kiltin	884,{
 	mes "Let me check your items.";
 	next;
 	
-	if(countitem(726)<3 || countitem(723)<1) goto L_noitems;//Items: Sapphire, Ruby,
+	if (countitem(726)<3 || countitem(723)<1) goto L_noitems;//Items: Sapphire, Ruby,
 	delitem 726, 3;//Items: Sapphire,
 	delitem 723, 1;//Items: Ruby,
 

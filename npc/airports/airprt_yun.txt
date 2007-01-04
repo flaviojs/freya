@@ -28,7 +28,7 @@ y_airport.gat,126,43,5	script	Airport Staff::yunairportin	90,{
 		next;
 		menu "I will pay with pure Zeny.",-,"I got a Ticket",L_Ticket,"Cancel",L_Cancel;
 		
-			if(zeny < 1200) goto L_NoZeny;
+			if (zeny < 1200) goto L_NoZeny;
 			set Zeny,zeny-1200;
 			mes "[Airport Staff]";
 			mes "Have a nice trip.";
@@ -37,7 +37,7 @@ y_airport.gat,126,43,5	script	Airport Staff::yunairportin	90,{
 			close;
 
 		L_Ticket:
-			if(countitem(7311) < 1) goto L_NoTicket;
+			if (countitem(7311) < 1) goto L_NoTicket;
 			delitem 7311,1;
 			mes "[Airport Staff]";
 			mes "Have a nice trip.";

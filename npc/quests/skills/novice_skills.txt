@@ -17,8 +17,8 @@
 //<---------------------------------------------------------------------------------------------- Nurse Aid: First Aid NPC ---------------------------------------------------------------------------->\\
 prt_in.gat,235,133,4	script	Nurse Aid	90,{
 	mes "[Nurse Aid]";
-	if(FIRSTAID == 1) goto L_GetAid;
-	if(getskilllv(142)>0) goto L_GotAid;
+	if (FIRSTAID == 1) goto L_GetAid;
+	if (getskilllv(142)>0) goto L_GotAid;
 
 	mes "Oh hello there!  You look tired and a little worn out.  Have the monsters outside of town been giving you trouble?";
 	next;
@@ -66,7 +66,7 @@ prt_in.gat,235,133,4	script	Nurse Aid	90,{
 			close;
 
 L_GetAid:
-	if((joblevel <  3) || (countitem(507) < 5 ) || (countitem(705) < 5) || (countitem(930) < 1)) goto sM_Yes;
+	if ((joblevel <  3) || (countitem(507) < 5) || (countitem(705) < 5) || (countitem(930) < 1)) goto sM_Yes;
 	mes "Oh good.  You have everything needed for me to teach you first aid.  Here we go...";
 	next;
 	mes "....... 1 hour later.......";
@@ -90,7 +90,7 @@ L_GotAid:
 //<-------------------------------------------------------------------------------------------------- Bulma: Play Dead -------------------------------------------------------------------------------------------->\\
 prt_in.gat,73,87,2	script	Bulma	98,{
 	mes "[Bulma]";
-	if(Class == Job_Novice) goto L_Novice;
+	if (Class == JOB_NOVICE) goto L_Novice;
 
 L_Other:
 	mes "Yeah... I look great.... Afterall, I'm a Knight of the Prontera Chivalry.  Kuhahahaha!";
@@ -102,7 +102,7 @@ L_Other:
 	close;
 
 L_Novice:
-	if(joblevel >= 7) goto L_Start;
+	if (joblevel >= 7) goto L_Start;
 	mes "Hello my young friend.  You remind me of myself when I was young.....";
 	mes "Heh heh, I sure miss those days..... Wow... It's funny to think about those years now......";
 	next;
@@ -112,8 +112,8 @@ L_Novice:
 	close;
 
 L_Start:
-	if(PLAYDEAD == 1) goto L_GetSkill;
-	if(getskilllv(143)>0) goto L_GotSkill;
+	if (PLAYDEAD == 1) goto L_GetSkill;
+	if (getskilllv(143)>0) goto L_GotSkill;
 	mes "Hello my young friend.  You remind me of myself when I was young..... Heh heh, I sure miss those days.....";
 	mes "Look at me acting all sentimental like some old man........";
 	next;
@@ -166,7 +166,7 @@ L_Start:
 	close;
 
 L_GetSkill:
-	if(countitem(7039)<1) goto sL_NotRdy;
+	if (countitem(7039)<1) goto sL_NotRdy;
 	mes "Good to see you again.  Alright, lets start your training....";
 	next;
 	mes "[Bulma]";
@@ -219,15 +219,15 @@ L_GotSkill:
 //Newbie Assistant------------------------------------------------------------------------------
 prt_castle.gat,174,147,2	script	Newbie Assistant	84,{
 	mes "[Newbie Assistant]";
-	if(Class == Job_Novice) goto L_Start;
+	if (Class == JOB_NOVICE) goto L_Start;
 
 L_NonNov:
 	mes "What am I doing here?  I'm just trying to help out young newbies.  You remember how it was to be a newbie... confused.... lost.... heh heh.";
 	emotion 1;
 	close;
 L_Start:
-	if(FIRSTAID==1 && countitem(930)==0 && got_bandage!=1) goto L_Aid;
-	if(PLAYDEAD==1 && countitem(7039)==0 && got_newbietag!=1) goto L_Play;
+	if (FIRSTAID==1 && countitem(930)==0 && got_bandage!=1) goto L_Aid;
+	if (PLAYDEAD==1 && countitem(7039)==0 && got_newbietag!=1) goto L_Play;
 	mes "Hello.  I'm here to provide help to newbies like you.  If there is anything in particular that you need assistance with just let me know.";
 	close;
 L_Aid:

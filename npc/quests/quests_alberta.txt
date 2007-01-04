@@ -30,7 +30,7 @@
 //=======================================================================================================//
 alberta.gat,117,134,8	script	Elin	96,{
 	mes "[Elin]";
-	if(Sex == 0)goto Doll_Female;
+	if (Sex == 0) goto Doll_Female;
 		mes "Hello, mister. Hmm, since you're a boy, you don't like dolls, do you?";
 		goto Doll_Cont;
 
@@ -62,7 +62,7 @@ Doll_Cont:
 		menu "Puppet",-,"Poring doll",sM_2,"Chonchon doll",sM_3,"Rocker doll",sM_4, "Spore doll",sM_5,
 		           "Osiris doll",sM_6,"Baphomet doll",sM_7,"Racoon doll",sM_8,"Yoyo doll",sM_9, "I am as adorable as a doll!",sM_10;
 		
-			if(countitem(740) < 1) goto L_Liar;
+			if (countitem(740) < 1) goto L_Liar;
 			delitem 740,1;
 			mes "[Elin]";
 			mes "Wow--! It's a rabbit! It's SOOOO cute!! Thank you SOOO much!";
@@ -86,7 +86,7 @@ Doll_Cont:
 			close;
 
 		sM_2:
-			if(countitem(741) < 1) goto L_Liar;
+			if (countitem(741) < 1) goto L_Liar;
 			delitem 741,1;
 			mes "[Elin]";
 			mes "Yay! It's a poring doll! It's SOOOO cute! Since you gave me a doll I'll give you this....";
@@ -99,7 +99,7 @@ Doll_Cont:
 			close;
 
 		sM_3:
-			if(countitem(742) < 1) goto L_Liar;
+			if (countitem(742) < 1) goto L_Liar;
 			delitem 742,1;
 			mes "[Elin]";
 			mes "Ew whats this?.... a Chonchon ... doll? ...";
@@ -118,7 +118,7 @@ Doll_Cont:
 			close;
 
 		sM_4:
-			if(countitem(752) < 1) goto L_Liar;
+			if (countitem(752) < 1) goto L_Liar;
 			delitem 752,1;
 			mes "[Elin]";
 			mes "Oh! a Rocker doll.  I hate hopping things but this doll's kinda cute.";
@@ -139,7 +139,7 @@ Doll_Cont:
 			close;
 
 		sM_5:
-			if(countitem(743) < 1) goto L_Liar;
+			if (countitem(743) < 1) goto L_Liar;
 			delitem 743,1;
 			mes "[Elin]";
 			mes "Blehh .... It's a mushroom... Mom's always scolding me for not eating mushrooms ...";
@@ -161,7 +161,7 @@ Doll_Cont:
 			close;
 
 		sM_6:
-			if(countitem(751) < 1) goto L_Liar;
+			if (countitem(751) < 1) goto L_Liar;
 			delitem 751,1;
 			mes "[Elin]";
 			mes "Yay! It's an Osiris doll!";
@@ -174,7 +174,7 @@ Doll_Cont:
 			close;
 
 		sM_7:
-			if(countitem(750) < 1) goto L_Liar;
+			if (countitem(750) < 1) goto L_Liar;
 			delitem 750,1;
 			mes "[Elin]";
 			mes "Yay! It's a Baphomet doll!";
@@ -188,7 +188,7 @@ Doll_Cont:
 			close;
 
 		sM_8:
-			if(countitem(754) < 1) goto L_Liar;
+			if (countitem(754) < 1) goto L_Liar;
 			delitem 754,1;
 			mes "[Elin]";
 			mes "Ah, it's a Smokie doll.  I hate Smokies, but the doll's really cute! Thank you!";
@@ -207,7 +207,7 @@ Doll_Cont:
 			close;
 
 		sM_9:
-			if(countitem(753) < 1) goto L_Liar;
+			if (countitem(753) < 1) goto L_Liar;
 			delitem 753,1;
 			mes "[Elin]";
 			mes "WOW--!!! OH MY GOSH! It's a Yoyo doll! This is what I REALLY wanted!! It's SOOOO cute......";
@@ -260,7 +260,7 @@ alberta_in.gat,28,145,4	script	Grampa	120,{
 	mes "[Grampa]";
 	mes "Even so I STILL feel young at heart..... unfortunately my body is very old and is in poor condtion...... Cough !! Cough .. !!";
 	next;
-	if(countitem(1030) >= 10) menu "Talk.",M_Talk, "Show him Tiger's Footskin.",M_Show, "Cancel.",M_End;
+	if (countitem(1030) >= 10) menu "Talk.",M_Talk, "Show him Tiger's Footskin.",M_Show, "Cancel.",M_End;
 	menu "Talk",M_Talk, "Cancel",M_End;
 	
 	M_Talk:
@@ -310,7 +310,7 @@ alberta_in.gat,28,145,4	script	Grampa	120,{
 		menu "-Give him the Tiger's Footskin.",-, "Walk away.", sM_End;
 
 			mes "[Grampa]";
-			if(countitem(1030) < 10) goto L_NoItems;
+			if (countitem(1030) < 10) goto L_NoItems;
 			delitem 1030,10;
 			getitem 5016,1;
 			mes "T-Thank YOU!! Thank you SO VERY MUCH!!";
@@ -364,7 +364,7 @@ alberta_in.gat,122,53,4	script	Cherokee	47,{
 	menu "You got it!",-, "Shut up Dumbo.",M_End;
 
 		mes "[Cherokee]";
-		if(countitem(923) < 20) goto L_NotEnuf;
+		if (countitem(923) < 20) goto L_NotEnuf;
 		delitem 923,20;
 		mes "Whoah~! This is the first time I've ever seen a real ^3355FF'Evil Horn'^000000!!";
 		emotion e_ic;
@@ -511,7 +511,7 @@ alberta.gat,135,79,3	script	Tempestra	71,{
 	mes "[Tempestra]";
 	mes "Ah...... Such a cool breeze.  It's good to be next to the sea.  I think it was the right choice for me to take a break from my business and come here.";
 	emotion e_ho;
-	if(MISC_QUEST & 2) goto sM_Menu;
+	if (MISC_QUEST & 2) goto sM_Menu;
 	next;
 	mes "[Tempestra]";
 	mes "Oh the sun is so bright today.  I'm glad I brought my hat.  If my skin is exposed to the sun like this everyday, I'm sure to get a sunburn.";
@@ -521,7 +521,7 @@ alberta.gat,135,79,3	script	Tempestra	71,{
 	next;
 	menu "Here you go, my treat.",-, "Then go get one, sheesh....",M_1;
 
-		if(countitem(503) < 1) goto L_NoPot;
+		if (countitem(503) < 1) goto L_NoPot;
 		delitem 503, 1;
 		set MISC_QUEST,MISC_QUEST | 2;
 		mes "[Tempestra]";
@@ -645,7 +645,7 @@ alberta.gat,135,79,3	script	Tempestra	71,{
 			next;
 			menu "Alright.",-, "Not right now thanks.",ssM_1b;
 
-				if(countitem(7086)<1 || countitem(969)<10 || countitem(999)<40 || countitem(1003)<50 || countitem(984)<2) goto ssL_NotEnuf;
+				if (countitem(7086)<1 || countitem(969)<10 || countitem(999)<40 || countitem(1003)<50 || countitem(984)<2) goto ssL_NotEnuf;
 				delitem 7086, 1;
 				delitem 969, 10;
 				delitem 999, 40;
@@ -688,7 +688,7 @@ alberta.gat,135,79,3	script	Tempestra	71,{
 //=======================================================================================================//
 // Gotanblue --------------------------------------------------------------------------
 alberta.gat,247,123,5	script	Gotanblue	709,{
-	if(TURTLE) goto L_Turtle;
+	if (TURTLE) goto L_Turtle;
 	mes "[Gotanblue]";
 	mes "Ha ha! The sea seems endless!! We cannot begin to grasp its size merely by gazing at it from land....";
 	next;
@@ -819,7 +819,7 @@ M_Menu:
 		next;
 		menu "Turtle Island -> 10000 zeny",-, "Cancel",sM_End;
 
-			if(Zeny < 10000) goto sL_Zeny;
+			if (Zeny < 10000) goto sL_Zeny;
 			mes "[Gotanblue]";
 			mes "Alright!! You've made your choice! With my experience we will get to Turtle Island without any problems.";
 			mes "I admire your fighting spirit.  Carry it with you always!";
@@ -831,7 +831,7 @@ M_Menu:
 			next;
 			mes "^5555FF(~choo~choooo~)^000000";
 			next;
-			if(Zeny < 10000) goto sL_Zeny;
+			if (Zeny < 10000) goto sL_Zeny;
 			set Zeny, Zeny - 10000;
 			warp "tur_dun01.gat",154,39;
 			close;
@@ -932,7 +932,7 @@ alberta_in.gat,23,104,2	script	Turtle Grandpa	120,{
 			next;
 			mes "[Turtle Grandpa]";
 			mes "Oh! One more thing... look for his '^5555FFjournal^000000'.  He usually has it close by.  It's definitely an interesting read.";
-			if(TURTLE==0) set TURTLE, 1;
+			if (TURTLE==0) set TURTLE, 1;
 			close;
 		sM_1:
 			mes "[Turtle Grandpa]";
@@ -1057,7 +1057,7 @@ alberta.gat,248,90,1	script	Jornadan Niliria	121,{
 
 // Jornadan's Voyage Log -------------------------------------------------
 alberta.gat,247,93,1	script	A Voyage Log	111,{
-	if(TURTLE == 1) goto L_Treasure;
+	if (TURTLE == 1) goto L_Treasure;
 	mes "[A Voyage Log]";
 	mes "= 03:20 am =";
 	mes "The moon was dark and I couldn't even see 100m in front of me.  I had a bad feeling about the situation..... I was not the only one...";
@@ -1178,7 +1178,7 @@ L_Treasure:
 
 // Burried treasure --------------------------------------------------------------------
 tur_dun01.gat,160,80,1	script	Skull Stone	111,{
-	if(TURTLE == 2) goto L_OpenBox;
+	if (TURTLE == 2) goto L_OpenBox;
 	mes "^5555FF(It's a frightening stone tomb with horrible skull on it.)^000000";
 	close;
 

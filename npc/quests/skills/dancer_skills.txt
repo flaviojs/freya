@@ -26,8 +26,8 @@
 //============================================================
 comodo.gat,205,171,7	script	Chanel	724,{
 	mes "[Chanel]";
-	if(BaseJob!=Job_Dancer) goto L_nodancer;
-	if(getskilllv(1011)) goto L_alreadyhave;
+	if (BaseJob!=JOB_DANCER) goto L_nodancer;
+	if (getskilllv(1011)) goto L_alreadyhave;
 	mes "I'll teach you all I know for:";
 	mes "1 Crystal Mirror";
 	mes "1 Alcohol";
@@ -41,7 +41,7 @@ comodo.gat,205,171,7	script	Chanel	724,{
 	mes "Let me check your items.";
 	next;
 	
-	if(countitem(747)<1 || countitem(970)<1 || countitem(736)<1 || countitem(512)<1 || countitem(513)<3 || countitem(538)<5) goto L_noitems;//Items: Crystal_Mirror, Alcohol, China, Apple, Banana, Well-baked_Cookie,
+	if (countitem(747)<1 || countitem(970)<1 || countitem(736)<1 || countitem(512)<1 || countitem(513)<3 || countitem(538)<5) goto L_noitems;//Items: Crystal_Mirror, Alcohol, China, Apple, Banana, Well-baked_Cookie,
 	delitem 747, 1;//Items: Crystal_Mirror,
 	delitem 970, 1;//Items: Alcohol,
 	delitem 736, 1;//Items: China,

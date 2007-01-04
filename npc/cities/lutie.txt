@@ -67,10 +67,10 @@ aldebaran.gat,168,168,4	script	Mr. Claus	718,{
 // Mima
 //============================================================
 xmas_in.gat,27,103,4	script	Mima	701,{
-	if(xmas_npc==5) goto Xmas5;
-	if(xmas_npc==6) goto Xmas6;
-	if(xmas_npc==7) goto Xmas7;
-	if(xmas_npc==8) goto Xmas8;
+	if (xmas_npc==5) goto Xmas5;
+	if (xmas_npc==6) goto Xmas6;
+	if (xmas_npc==7) goto Xmas7;
+	if (xmas_npc==8) goto Xmas8;
 	mes "[Mima]";
 	mes "Merry Christmas!";
 	mes "I can feel the spirit of Christmas surrounding me whenever I look,";
@@ -134,7 +134,7 @@ Xmas6:
 	mes "Hohohoho -";
 	mes "Let's see... Huh? Didn't you yet bring it?";
 	mes "Oh my goodness, my cabbages will get sour soon!";
-	mes "( ? )";
+	mes "(?)";
 	mes "Hurry up, Chop Chop -!!";
 	next;
 	mes "[Mima]";
@@ -186,7 +186,7 @@ Xmas8:
 // Santa Claus
 //===================================================================
 xmas_in.gat,100,96,4	script	Father Christmas::Santa1	718,{
-	if(@talkedsanta == 1) goto L_Xmas1;
+	if (@talkedsanta == 1) goto L_Xmas1;
 	mes "[Santa Claus]";
 	mes "Ho Ho Ho~";
 	mes "Meeerry Christmas !!";
@@ -205,7 +205,7 @@ xmas_in.gat,100,96,4	script	Father Christmas::Santa1	718,{
 	mes "[Santa Claus]";
 	mes "Ho Ho Ho~ Merry Christmas !!";
 	mes "Merry Christmas!!";
-	if(xmas_npc==0) set @talkedsanta, 1;
+	if (xmas_npc==0) set @talkedsanta, 1;
 	close;
 
 L_Xmas1:
@@ -229,7 +229,7 @@ L_1:
 		goto L_End;
 L_2:
 		getitem 528,1;
-		if(xmas_npc==0) set xmas_npc, 1;
+		if (xmas_npc==0) set xmas_npc, 1;
 		set @talkedsanta, 0;
 		mes "[Santa]";
 		mes "Hmm, you must not have been a very good";
@@ -241,7 +241,7 @@ L_3:
 L_4:
 		getitem 539,1;
 L_End:
-		if(xmas_npc==0) set xmas_npc, 1;
+		if (xmas_npc==0) set xmas_npc, 1;
 		set @talkedsanta, 0;
 		mes "[Santa]";
 		mes "Hope you like your present!";
@@ -252,7 +252,7 @@ L_End:
 // Debra
 //==================================================================
 xmas_in.gat,165,173,4	script	Debra	711,{
-	if(xmas_npc==1 || xmas_npc==2) goto Xmas1;
+	if (xmas_npc==1 || xmas_npc==2) goto Xmas1;
 	mes "[Debra]";
 	mes "Merry Christmas!";
 	mes "Welcome to Lutie!";
@@ -287,7 +287,7 @@ xmas_in.gat,165,173,4	script	Debra	711,{
 	next;
 	mes "[Debra]";
 	mes "I suggest you to talk to other towners...";
-	if(xmas_npc==0) goto Xmas0;
+	if (xmas_npc==0) goto Xmas0;
 	close;
 
 	Xmas0:
@@ -328,7 +328,7 @@ xmas_in.gat,165,173,4	script	Debra	711,{
 // Peterson
 //=========================================================
 xmas.gat,117,304,4	script	Peterson	713,{
-	if((xmas_npc==3) || (xmas_npc==4)) goto Xmas34;
+	if ((xmas_npc==3) || (xmas_npc==4)) goto Xmas34;
 	mes "[Peterson]";
 	mes "Merry Christmas!";
 	next;
@@ -377,8 +377,8 @@ Xmas34:
 // Hairy Uncle Ken
 //==========================================================
 xmas.gat,176,236,4	script	Hairy Uncle Ken	712,{
-	if(xmas_npc==4) goto Xmas4;
-	if(xmas_npc==5) goto Xmas5;
+	if (xmas_npc==4) goto Xmas4;
+	if (xmas_npc==5) goto Xmas5;
 	mes "[Hairy Uncle Ken]";
 	mes "Meeeerrrrrrryyyy Christmas !";
 	mes "Welcome to the Christmas Town!!";
@@ -411,7 +411,7 @@ xmas.gat,176,236,4	script	Hairy Uncle Ken	712,{
 	close;
 
 Xmas4:
-	if(countitem(1024)>0 && countitem(938)>0) goto XmasL0;
+	if (countitem(1024)>0 && countitem(938)>0) goto XmasL0;
 	mes "[Hairy Uncle Ken]";
 	mes "Oh yeah ? Peterson told you to come speak to me, did he?";
 	mes "Haw Haw Haw ! ! Yeah, yeah, I know him a little bit . .";
@@ -510,16 +510,16 @@ Xmas4:
 //====================================================================
 xmas.gat,134,112,4	script	Jack Frost	710,{
 	mes "[Jack Frost]";
-	if(xmas_npc==2) goto Xmas2;
-	if(xmas_npc==3) goto Xmas3;
-	if(xmas_npc==4) goto Xmas4;
-	if(xmas_npc==5) goto Xmas5;
-	if(xmas_npc==6) goto Xmas6;
-	if(xmas_npc==7) goto Xmas7;
-	if(xmas_npc==8) goto Xmas8;
-	if(xmas_npc==9) goto Xmas9;
-	if(xmas_npc==10) goto Xmas10;
-	if(xmas_npc==11) goto Xmas11;
+	if (xmas_npc==2) goto Xmas2;
+	if (xmas_npc==3) goto Xmas3;
+	if (xmas_npc==4) goto Xmas4;
+	if (xmas_npc==5) goto Xmas5;
+	if (xmas_npc==6) goto Xmas6;
+	if (xmas_npc==7) goto Xmas7;
+	if (xmas_npc==8) goto Xmas8;
+	if (xmas_npc==9) goto Xmas9;
+	if (xmas_npc==10) goto Xmas10;
+	if (xmas_npc==11) goto Xmas11;
 	mes "*sob*sob*........ I'm so lonely..... I can't go anywhere! I";
 	mes "am stuck here day and night... frozen to this cold earth....";
 	emotion e_sob;
@@ -671,13 +671,13 @@ Xmas10:
 	set xmas_npc,11;
 
 	set @temp, rand(1,8);
-	if(@temp == 2) goto L_Prize2;
-	if(@temp == 3) goto L_Prize3;
-	if(@temp == 4) goto L_Prize4;
-	if(@temp == 5) goto L_Prize5;
-	if(@temp == 6) goto L_Prize6;
-	if(@temp == 7) goto L_Prize7;
-	if(@temp == 8) goto L_Prize8;
+	if (@temp == 2) goto L_Prize2;
+	if (@temp == 3) goto L_Prize3;
+	if (@temp == 4) goto L_Prize4;
+	if (@temp == 5) goto L_Prize5;
+	if (@temp == 6) goto L_Prize6;
+	if (@temp == 7) goto L_Prize7;
+	if (@temp == 8) goto L_Prize8;
 
 	L_Prize1:
 		getitem 529,5;
@@ -798,7 +798,7 @@ xmas.gat,146,136,4	script	Howie the Clown	715,{
 		mes "HaHaHaHa! HeHeHeHeHe! HoHoHoHoHo! Merry Christmas!!"; 
 		close;
 	L1:
-		if(xmas_npc==8 || xmas_npc==9) goto Xmas8;
+		if (xmas_npc==8 || xmas_npc==9) goto Xmas8;
 		mes "[Howie]";
 		mes "You mean ^5533FF' Jack Frost '^000000? Of course I know him.  Everyone";
 		mes "knows Jack Frost the Snowman.  Sometimes I go and chat with him.";
@@ -859,7 +859,7 @@ xmas.gat,146,136,4	script	Howie the Clown	715,{
 // Charlie
 //================================================================
 xmas.gat,206,168,4	script	Charlie	706,{
-	if(xmas_npc==9) goto Xmas9;
+	if (xmas_npc==9) goto Xmas9;
 	mes "[Charlie]";
 	mes "Merry, Merry Christmas! Did you talk to that clown, ^5533FFHowie^000000 yet? Man that";
 	mes "clown is REALLY boring......";
@@ -894,8 +894,8 @@ Xmas9:
 // Marsha
 //================================================================
 xmas.gat,208,168,4	script	Marsha	703,{
-	if(xmas_npc==10) goto Xmas10;
-	if(xmas_npc==9) goto Xmas9a;
+	if (xmas_npc==10) goto Xmas10;
+	if (xmas_npc==9) goto Xmas9a;
 
 	mes "[Marsha]";
 	mes "Merry Christmas to you!";

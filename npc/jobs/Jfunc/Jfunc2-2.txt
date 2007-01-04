@@ -16,8 +16,8 @@
 //Alchemist Check
 function	script	Alc_check	{
 
-	if(BaseJob == Job_Alchem) goto L_Alch;
-	if(BaseJob == Job_Alchem || BaseJob == Job_Alchem) goto L_Other;
+	if (BaseJob == JOB_ALCHEM) goto L_Alch;
+	if (BaseJob == JOB_ALCHEM || BaseJob == JOB_ALCHEM) goto L_Other;
 	return;
 
 L_Other:
@@ -242,7 +242,7 @@ function	script	RogQ_check	{
 	set @score, 0;
 	set ROGUE_Q, 1;
 	set @temp, rand(2);
-	if(@temp == 1) goto L_QSet2;
+	if (@temp == 1) goto L_QSet2;
 
 	L_QSet1:
 		mes "[Markie]";

@@ -61,7 +61,7 @@ L_Start:
 	next;
 
 	//Novice Castles. (we don't need ELSE here. Menu has direct labels)
-	if(getarg(1) == "nguild_prt" || getarg(1) == "nguild_alde" || getarg(1) == "nguild_gef" || getarg(1) == "nguild_pay" ) menu "Kafra Service Employment / Dismissal",M_Kaf, "Enter Treasure Room",M_Treas, "Cancel",M_End;
+	if (getarg(1) == "nguild_prt" || getarg(1) == "nguild_alde" || getarg(1) == "nguild_gef" || getarg(1) == "nguild_pay") menu "Kafra Service Employment / Dismissal",M_Kaf, "Enter Treasure Room",M_Treas, "Cancel",M_End;
 
 	//Common WoE Castles	
 	menu "Guild Base Briefing",M_Base, "Commerce Investment",M_Comrc, "Defence Investment",M_Def, "Guardian Installation",M_Gaurd,
@@ -88,35 +88,35 @@ L_Start:
 	//=========
 		set @TriggerE,GetCastleData(getarg(1)+".gat",4);
 		set @Economy,GetCastleData(getarg(1)+".gat",2);
-		if(@Economy < 8) set @eco_invest,10000;
-		if(@Economy >= 8) set @eco_invest,20000;
-		if(@Economy >= 16) set @eco_invest,40000;
-		if(@Economy >= 25) set @eco_invest,80000;
-		if(@Economy >= 34) set @eco_invest,160000;
-		if(@Economy >= 44) set @eco_invest,320000;
-		if(@Economy >= 54) set @eco_invest,640000;
-		if(@Economy >= 65) set @eco_invest,1280000;
-		if(@Economy >= 76) set @eco_invest,2560000;
-		if(@Economy >= 88) set @eco_invest,5120000;
+		if (@Economy < 8) set @eco_invest,10000;
+		if (@Economy >= 8) set @eco_invest,20000;
+		if (@Economy >= 16) set @eco_invest,40000;
+		if (@Economy >= 25) set @eco_invest,80000;
+		if (@Economy >= 34) set @eco_invest,160000;
+		if (@Economy >= 44) set @eco_invest,320000;
+		if (@Economy >= 54) set @eco_invest,640000;
+		if (@Economy >= 65) set @eco_invest,1280000;
+		if (@Economy >= 76) set @eco_invest,2560000;
+		if (@Economy >= 88) set @eco_invest,5120000;
 
 		mes "[ "+getarg(0)+" ]";
-		if(@TriggerE == 2) goto L_MaxTimesC;
-		if(@Economy >= 100) goto L_MaxInvesC;
+		if (@TriggerE == 2) goto L_MaxTimesC;
+		if (@Economy >= 100) goto L_MaxInvesC;
 		mes "If you improve your Commerce Investment, the guild's productive power increases to produce more goods.";
 		mes "So an investment will be required if you're considering future growth.";
 		next;
 		mes "[ "+getarg(0)+" ]";
-		if(@TriggerE == 0) mes "You can invest up to two times a day, but the second time costs more";
-		if(@TriggerE == 0) mes "The needed investment amount is ^5533FF" + @eco_invest + "^000000 zeny.";
-		if(@TriggerE == 1) set @eco_invest,@eco_invest*4;
-		if(@TriggerE == 1) mes "You've already invested once today, but you can invest again at ^5533FF" + @eco_invest + "^000000 Zeny.";
+		if (@TriggerE == 0) mes "You can invest up to two times a day, but the second time costs more";
+		if (@TriggerE == 0) mes "The needed investment amount is ^5533FF" + @eco_invest + "^000000 zeny.";
+		if (@TriggerE == 1) set @eco_invest,@eco_invest*4;
+		if (@TriggerE == 1) mes "You've already invested once today, but you can invest again at ^5533FF" + @eco_invest + "^000000 Zeny.";
 		next;
 		mes "[ "+getarg(0)+" ]";
 		mes "Would you like to invest?";
 		next;
 		menu "Invest Commerce.",-,"Cancel.",M_End;
 
-			if(Zeny < @eco_invest) goto sL_NoZenyC;
+			if (Zeny < @eco_invest) goto sL_NoZenyC;
 			set Zeny,Zeny-@eco_invest;
 			SetCastleData getarg(1)+".gat",4,@TriggerE+1;
 			//Permanent Developement: 50% chance to get an economy point when investing.
@@ -145,35 +145,35 @@ L_Start:
 	//========
 		set @TriggerD,GetCastleData(getarg(1)+".gat",5);
 		set @Defence,GetCastleData(getarg(1)+".gat",3);
-		if(@Defence < 8) set @def_invest,20000;
-		if(@Defence >= 8) set @def_invest,40000;
-		if(@Defence >= 16) set @def_invest,80000;
-		if(@Defence >= 25) set @def_invest,160000;
-		if(@Defence >= 34) set @def_invest,320000;
-		if(@Defence >= 44) set @def_invest,640000;
-		if(@Defence >= 54) set @def_invest,1280000;
-		if(@Defence >= 65) set @def_invest,2560000;
-		if(@Defence >= 76) set @def_invest,5120000;
-		if(@Defence >= 88) set @def_invest,10240000;
+		if (@Defence < 8) set @def_invest,20000;
+		if (@Defence >= 8) set @def_invest,40000;
+		if (@Defence >= 16) set @def_invest,80000;
+		if (@Defence >= 25) set @def_invest,160000;
+		if (@Defence >= 34) set @def_invest,320000;
+		if (@Defence >= 44) set @def_invest,640000;
+		if (@Defence >= 54) set @def_invest,1280000;
+		if (@Defence >= 65) set @def_invest,2560000;
+		if (@Defence >= 76) set @def_invest,5120000;
+		if (@Defence >= 88) set @def_invest,10240000;
 
 		mes "[ "+getarg(0)+" ]";
-		if(@TriggerD == 2) goto L_MaxTimesD;
-		if(@Defence >= 100) goto L_MaxInvestD;
+		if (@TriggerD == 2) goto L_MaxTimesD;
+		if (@Defence >= 100) goto L_MaxInvestD;
 		mes "If you improve investment of defence, the durability of our Guardians and the Emperium will increase.";
 		mes "So if you consider our future battles, an investment will be required.";
 		next;
 		mes "[ "+getarg(0)+" ]";
-		if(@TriggerD == 0) mes "You can invest up to two times a day, but the second time costs more";
-		if(@TriggerD == 0) mes "The needed investment amount is ^5533FF" + @def_invest + "^000000 zeny.";
-		if(@TriggerD == 1) set @def_invest,@def_invest*4;
-		if(@TriggerD == 1) mes "You've already invested once today, but you can invest again at ^5533FF" + @def_invest + "^000000 Zeny.";
+		if (@TriggerD == 0) mes "You can invest up to two times a day, but the second time costs more";
+		if (@TriggerD == 0) mes "The needed investment amount is ^5533FF" + @def_invest + "^000000 zeny.";
+		if (@TriggerD == 1) set @def_invest,@def_invest*4;
+		if (@TriggerD == 1) mes "You've already invested once today, but you can invest again at ^5533FF" + @def_invest + "^000000 Zeny.";
 		next;
 		mes "[ "+getarg(0)+" ]";
 		mes "Would you like to invest?";
 		next;
 		menu "Invest Defence.",-, "Cancel",M_End;
 
-			if(Zeny < @def_invest) goto sL_NoZenyD;
+			if (Zeny < @def_invest) goto sL_NoZenyD;
 			set Zeny,Zeny-@def_invest;
 			SetCastleData getarg(1)+".gat",5,@TriggerD+1;
 			SetCastleData getarg(1)+".gat",3,@Defence+1;
@@ -414,7 +414,7 @@ L_Start:
 	//=======
 		mes "[ "+getarg(0)+" ]";
 		emotion 19;
-		if(agitcheck(0) != 0) goto sL_CantSur;
+		if (agitcheck(0) != 0) goto sL_CantSur;
 		mes "Master.... Do you really want to give up this guild base?? It is not worth it master!!! Please reconsider, master!!";
 		next;
 		menu "Surrender Guild Base",-, "Cancel",sM_SurEnd;
@@ -435,7 +435,7 @@ L_Start:
 			L_Loop:
 				set @i, @i + 1;
 				SetCastleData getarg(1)+".gat",@i,0;
-				if(@i < 25) goto L_Loop;
+				if (@i < 25) goto L_Loop;
 
 				Announce "[" + getguildname(@GID) + "] has surrendered the Guild Castle [" + GetCastleName(getarg(1)+".gat") + "]",0;
 				MapRespawnGuildID getarg(1)+".gat",GetCastleData(getarg(1)+".gat",1),7;

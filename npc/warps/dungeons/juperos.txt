@@ -39,7 +39,7 @@ jupe_gate.gat,49,55,0	warp	jupwrp08	1,1,jupe_ele_r.gat,49,30
 jupe_gate.gat,49,55,0	script	jupwrp08	45,2,2,{
 
 OnTouch:
-	if(getmapusers("jupe_ele_r.gat") > 0)goto JupeNoAccess;
+	if (getmapusers("jupe_ele_r.gat") > 0) goto JupeNoAccess;
 	areawarp "jupe_gate.gat",28,55,18,71,"jupe_ele_r.gat",49,30;
 	end;
 

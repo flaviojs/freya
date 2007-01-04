@@ -44,7 +44,7 @@ prontera.gat,78,150,3	script	Dairenne	90,{
 
 	L0:
 		mes "[Town girl Dairenne]";
-		if(Sex == 1) mes "I'm not sure if your into Girllie Dress Stuff..Hohoho..but...";
+		if (Sex == 1) mes "I'm not sure if your into Girllie Dress Stuff..Hohoho..but...";
 		mes "These days, the most interesting topic around here is beautiful dresses Dyed in various Colors.";
 		next;
 		mes "[Town girl Dairenne]";
@@ -458,9 +458,9 @@ prt_in.gat,177,20,2	script	TenSue	97,{
 	mes "[TenSue]";
 	set @TEMP,0;
 	set @TEMP,rand(3);
-	if(@TEMP == 2) goto Rmsg2;
-	if(@TEMP == 1) goto Rmsg1;
-	if(@TEMP == 0) goto Rmsg0;
+	if (@TEMP == 2) goto Rmsg2;
+	if (@TEMP == 1) goto Rmsg1;
+	if (@TEMP == 0) goto Rmsg0;
 
 	Rmsg2:
 		mes "What? You're sick and tired of killing monsters in fields and dungeons?";
@@ -500,7 +500,7 @@ prt_in.gat,177,20,2	script	TenSue	97,{
 
 // Library Girl Ellen ----------------------------------------------------
 prt_in.gat,175,50,2	script	Librarian Ellen	71,{
-	if(ttt_1==1)goto ttt;
+	if (ttt_1==1) goto ttt;
 	mes "[Librarian Ellen]";
 	mes "Welcome. You can find books about monsters, organized by their properties here. There are also books about Merchant and Blacksmith skills.";
 	next;

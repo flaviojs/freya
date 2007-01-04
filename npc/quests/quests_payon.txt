@@ -22,7 +22,7 @@
 //==========================================================================================//
 payon.gat,154,170,4	script	Granny	78,{
 	mes "[Granny]";
-	if(countitem(1049) >= 4) goto L_Get;
+	if (countitem(1049) >= 4) goto L_Get;
 
 	mes "Oh deary me.  What to do... what to do........  You see I want to nitt some special clothes for my family but I don't have the right cloth to do so.";
 	next;
@@ -47,7 +47,7 @@ L_Get:
 	next;
 	menu "Why of course granny",-,"Heck no ya old bag!",M_No;
 
-		if(countitem(1049) < 4) goto M_No;
+		if (countitem(1049) < 4) goto M_No;
 		mes "[Granny]";
 		mes "Bless your kind heart.  Now I can make some special clothes for my family.  Let me give you a reward for being so genrous dear.";
 		emotion e_lv2;
@@ -102,7 +102,7 @@ payon_in01.gat,18,10,4	script	Mystic Lady	75,{
 		close;
 	
 	M_Muffs:
-		if(countitem(724)<1 || countitem(5001)<1 || countitem(949)<200 || zeny<5000) goto sL_NotEnuf;
+		if (countitem(724)<1 || countitem(5001)<1 || countitem(949)<200 || zeny<5000) goto sL_NotEnuf;
 		delitem 724,1;
 		delitem 5001,1;
 		delitem 949,200;
@@ -133,7 +133,7 @@ payon_in01.gat,18,10,4	script	Mystic Lady	75,{
 //========================================================================================//
 payon_in02.gat,25,71,4	script	Young Man#11	86,{
 	mes "[Young Man]";
-	if(countitem(701) >= 5) goto L_GotOra;
+	if (countitem(701) >= 5) goto L_GotOra;
 	mes "Blahhhhhh! I... I... I JUST CAN'T take it anymore!! You little stinky, filthy, BASTARDS!!!";
 	emotion e_an;
 	next;
@@ -190,7 +190,7 @@ L_GotOra:
 		goto M_Menu;
 
 	M_Give:
-		if(countitem(701) < 5) goto L_Cheater;
+		if (countitem(701) < 5) goto L_Cheater;
 		delitem 701,5;
 		mes "[Young Man]";
 		mes "Muhahahahah!!! Finally, I have it.... Ora Ora! Stupid and distgusting Thief Bugs.... you'll pay for invading MY HOME!!!";
@@ -261,9 +261,9 @@ payon_in01.gat,56,12,4	script	Young Man#12	89,{
 				mes "Do you have all of the items needed?";
 				menu "-Give him the items.",-, "Nevermind.",M_End;
 
-				if(@HAT == 2) goto ssL_Devir;
+				if (@HAT == 2) goto ssL_Devir;
 
-					if(countitem(2229)<1 || countitem(2254)<1 || countitem(7036)<5) goto ssL_NotEnuf;
+					if (countitem(2229)<1 || countitem(2254)<1 || countitem(7036)<5) goto ssL_NotEnuf;
 					delitem 2229, 1;
 					delitem 2254, 1;
 					delitem 7036, 5;
@@ -272,7 +272,7 @@ payon_in01.gat,56,12,4	script	Young Man#12	89,{
 					getitem 5025, 1;
 					close;
 				ssL_Devir:
-					if(countitem(1038)<600 || countitem(7048)<40) goto ssL_NotEnuf;
+					if (countitem(1038)<600 || countitem(7048)<40) goto ssL_NotEnuf;
 					delitem 1038, 600;
 					delitem 7048, 40;
 					mes "[Young Man]";

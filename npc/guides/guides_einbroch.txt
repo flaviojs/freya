@@ -116,7 +116,7 @@ SM_2j:
 	goto M_Menu;
 
 sL_Wipe:
-	if(@COMPASS_CHECK == 1) goto sM_Menu;
+	if (@COMPASS_CHECK == 1) goto sM_Menu;
 	viewpoint 2,63,208,1,0xFF0000;
 	viewpoint 2,238,272,2,0x0000FF;
 	viewpoint 2,149,80,3,0x00FF00;

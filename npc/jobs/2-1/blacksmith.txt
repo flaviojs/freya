@@ -16,7 +16,7 @@
 //===== Additional Comments: =================================
 //= Changed some npc names to the iRO names. Changed some variable
 //= names and labels. Edited some text.[kobra_k88]
-//= Removed "if(JobLevel > 48) goto higher". It was a left over line.
+//= Removed "if (JobLevel > 48) goto higher". It was a left over line.
 //= Thx to "Decker".[kobra_k88]
 //= Fixed some typos, thanks to Riotblade [celest]
 //= 1.3-1.5 Added Baby Class support [Lupus]
@@ -31,7 +31,7 @@
 
 //<=========================================== Blacksmith Altiregen (Job changer)===================================>\\
 geffen_in.gat,110,169,4	script	Guildsman	731,{
-	callfunc "F_BlockHigh",Job_Merchant_High,"Merchant High",Job_Whitesmith,"White Smith","Blacksmith Altiregen";
+	callfunc "F_BlockHigh",JOB_MERCHANT_HIGH,"Merchant High",JOB_WHITESMITH,"White Smith","Blacksmith Altiregen";
 
 	if (BaseJob == 5) goto L_Merc;
 	mes "[Blacksmith Altiregen]";
@@ -56,8 +56,8 @@ L_Merc:
 	menu "Apply",M_App,"What's required?",M_Req,"Not now...",M_NtNow;
 
 	M_App:
-		if(JobLevel < 40) goto sL_Lowlvl;
-		if(JobLevel == 50) goto sL_HighLvl;
+		if (JobLevel < 40) goto sL_Lowlvl;
+		if (JobLevel == 50) goto sL_HighLvl;
 		mes "[Blacksmith Altiregen]";
 		mes "Hmmm...";
 		mes "Your job level is satisfactory.";
@@ -160,21 +160,21 @@ L_Test4:
 		close;
 
 L_Change:
-	if(countitem(1005) < 1) goto L_NoHam;
-	if(SkillPoint > 0) mes "You need to use up all of your skill points before I can make you a Blacksmith.";
-	if(SkillPoint > 0) close;
+	if (countitem(1005) < 1) goto L_NoHam;
+	if (SkillPoint > 0) mes "You need to use up all of your skill points before I can make you a Blacksmith.";
+	if (SkillPoint > 0) close;
 	mes "Lo, I can see the fire in your eyes! You've passed!!";
 	mes "I'll grant you the power to work metals!";
 	next;
 	delitem 1005,1;
-	callfunc "Job_Change",Job_Blacksmith;
+	callfunc "Job_Change",JOB_BLACKSMITH;
 	mes "[Blacksmith Altiregen]";
 	mes "Don't forget! We're the artists that put beauty into metal! Don't you dare forget that!";
 	next;
 	mes "[Blacksmith Altiregen]";
 	mes "Here's a present! Congrats on passing!";
-	if(JBLVL != 50) getitem 999,5;
-	if(JBLVL == 50) getitem 999,10;
+	if (JBLVL != 50) getitem 999,5;
+	if (JBLVL == 50) getitem 999,10;
 	callfunc "F_ClearJobVar";		// clears all job variables for the current player
 	emotion 21;
 	close;
@@ -207,7 +207,7 @@ L_Change:
 //<=============================================== Geshupenschte: 1st, 2nd, 3rd Test ===================================================>\\
 alberta_in.gat,174,22,4	script	Geshupenschte	63,{
 
-	if(BaseJob==5) goto L_merchant;
+	if (BaseJob == 5) goto L_merchant;
 	mes "[Geshupenschte]";
 	mes "Hello sir! I'm the blacksmith.  Geshupenschte! Nice to meet you!";
 	next;
@@ -490,7 +490,7 @@ L_ReTest1:
 
 // Test 2-----------------------------------------------------------------
 L_Test2:
-	if(BSMITH_Q2 > 0) goto L_CheckTest2;
+	if (BSMITH_Q2 > 0) goto L_CheckTest2;
 	mes "Let's see... orders....";
 	next;
 	mes "[Geshupenschte]";
@@ -609,7 +609,7 @@ L_CheckTest2:
 	if (BSMITH_Q2 == 5) goto L_2e;
 
 	L_2a:
-		if(countitem(999) < 2 || countitem(930) < 1 || countitem(717) < 2 || countitem(1610) < 1) goto sL_NtEnuf1;
+		if (countitem(999) < 2 || countitem(930) < 1 || countitem(717) < 2 || countitem(1610) < 1) goto sL_NtEnuf1;
 		mes "[Geshupenschte]";
 		mes "Didn't I ask for 3 steels?";
 		next;
@@ -643,7 +643,7 @@ L_CheckTest2:
 			next;
 			goto R_item1;
 	L_2b:
-		if(countitem(1001) < 2 || countitem(932) < 2 || countitem(912) < 1 || countitem(1219) < 1) goto sL_NtEnuf2;
+		if (countitem(1001) < 2 || countitem(932) < 2 || countitem(912) < 1 || countitem(1219) < 1) goto sL_NtEnuf2;
 		mes "[Geshupenschte]";
 		mes "Didn't I ask for 3 Star Dusts?";
 		next;
@@ -677,7 +677,7 @@ L_CheckTest2:
 			next;
 			goto R_item2;
 	L_2c:
-		if(countitem(1003) < 2 || countitem(935) < 2 || countitem(990) < 1 || countitem(1119) < 1) goto sL_NtEnuf3;
+		if (countitem(1003) < 2 || countitem(935) < 2 || countitem(990) < 1 || countitem(1119) < 1) goto sL_NtEnuf3;
 		mes "[Geshupenschte]";
 		mes "Didn't I ask for 3 coals??";
 		next;
@@ -712,7 +712,7 @@ L_CheckTest2:
 			goto R_item3;
 
 	L_2d:
-		if(countitem(1002) < 8 || countitem(1019) < 1 || countitem(717) < 2 || countitem(1713) < 1) goto sL_NtEnuf4;
+		if (countitem(1002) < 8 || countitem(1019) < 1 || countitem(717) < 2 || countitem(1713) < 1) goto sL_NtEnuf4;
 		mes "[Geshupenschte]";
 		mes "Didn't I ask for 30 iron ores?";
 		next;
@@ -747,7 +747,7 @@ L_CheckTest2:
 			goto R_item4;
 
 	L_2e:
-		if(countitem(1002) < 8 || countitem(511) < 20 || countitem(919) < 2 || countitem(1513) < 1) goto sL_NtEnuf5;
+		if (countitem(1002) < 8 || countitem(511) < 20 || countitem(919) < 2 || countitem(1513) < 1) goto sL_NtEnuf5;
 		mes "[Geshupenschte]";
 		mes "Didn't I ask for 40 ores?";
 		next;
@@ -853,7 +853,7 @@ L_CheckTest3:
 	next;
 	menu "Here you go",-,"Wait a second.",M_Wait;
 
-		if(countitem(1073) < 1) goto sL_noreceipt;
+		if (countitem(1073) < 1) goto sL_noreceipt;
 		mes "[Geshupenschte]";
 		mes "Great! Very good! You're definalty a honest merchant! Go see Altiregen back in Geffen!";
 		mes "I know you'll definately pass the test!!!";
@@ -912,9 +912,9 @@ geffen.gat,46,164,4	script	Baisulitst	69,{
 	close;
 
 L_Start:
-	if(BSMITH_Q2 != 1) goto L_Wrong;
-	if(countitem(1073) == 1) goto L_Done;
-	if(countitem(1610) < 1) goto L_NoItem;
+	if (BSMITH_Q2 != 1) goto L_Wrong;
+	if (countitem(1073) == 1) goto L_Done;
+	if (countitem(1610) < 1) goto L_NoItem;
 	mes "[Baisulitst]";
 	mes "Wow! Is it finally here?!";
 	mes "Thank you! I was waiting forever!";
@@ -969,9 +969,9 @@ morocc.gat,27,112,4	script	Wickebine	725,{
 	mes "This is very upsetting......";
 	close;
 L_Start:
-	if(BSMITH_Q2 != 2) goto L_Wrong;
-	if(countitem(1073) == 1) goto L_Done;
-	if(countitem(1219) < 1) goto L_NoItem;
+	if (BSMITH_Q2 != 2) goto L_Wrong;
+	if (countitem(1073) == 1) goto L_Done;
+	if (countitem(1219) < 1) goto L_NoItem;
 	mes "[Wickebine]";
 	mes "Is it finally here!?!";
 	mes "Give it!!!!";
@@ -1029,9 +1029,9 @@ izlude.gat,69,181,4	script	Gromgast	734,{
 	close;
 
 L_Start:
-	if(BSMITH_Q2 != 3) goto L_Wrong;
-	if(countitem(1073) == 1) goto L_Done;
-	if(countitem(1119) < 1) goto L_NoItem;
+	if (BSMITH_Q2 != 3) goto L_Wrong;
+	if (countitem(1073) == 1) goto L_Done;
+	if (countitem(1119) < 1) goto L_NoItem;
 	mes "[Gromgast]";
 	mes "Ahhh, it's finally here";
 	mes "Let me see it.";
@@ -1086,9 +1086,9 @@ payon.gat,214,79,4	script	Tilpitz	59,{
 	mes " T_T ";
 	close;
 L_Start:
-	if(BSMITH_Q2 != 4) goto L_Wrong;
-	if(countitem(1073) == 1) goto L_Done;
-	if(countitem(1713) < 1) goto L_NoItem;
+	if (BSMITH_Q2 != 4) goto L_Wrong;
+	if (countitem(1073) == 1) goto L_Done;
+	if (countitem(1713) < 1) goto L_NoItem;
 	mes "[Tilpitz]";
 	mes ".......Ohhh! It's finally here!!!";
 	mes "Let me see it!";
@@ -1150,9 +1150,9 @@ comodo.gat,158,342,4	script	Bismarck	118,{
 	close;
 
 L_Start:
-	if(BSMITH_Q2 != 5) goto L_Wrong;
-	if(countitem(1073) == 1) goto L_Done;
-	if(countitem(1513) < 1) goto L_NoItem;
+	if (BSMITH_Q2 != 5) goto L_Wrong;
+	if (countitem(1073) == 1) goto L_Done;
+	if (countitem(1513) < 1) goto L_NoItem;
 	mes "[Bismarck]";
 	mes "Ugh.........finally...........";
 	mes "Pant pant..........give it to me~";

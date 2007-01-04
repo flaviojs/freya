@@ -15,14 +15,14 @@
 //Assasin Check
 function	script	Ass_check	{
 
-	if(BaseJob==Job_Assassin) goto L_JobSin;
+	if (BaseJob == JOB_ASSASSIN) goto L_JobSin;
 	mes "[Angry looking man]";
-	if(callfunc("Is_Sword_Class")) goto L_JobSwo;
-	if(callfunc("Is_Magic_Class")) goto L_JobMag;
-	if(callfunc("Is_Bow_Class")) goto L_JobArch;
-	if(callfunc("Is_Holy_Class")) goto L_JobAco;
-	if(callfunc("Is_Merc_Class")) goto L_JobMerc;
-	if(callfunc("Is_Thief_Class")) goto L_JobOther;
+	if (callfunc("Is_Sword_Class")) goto L_JobSwo;
+	if (callfunc("Is_Magic_Class")) goto L_JobMag;
+	if (callfunc("Is_Bow_Class")) goto L_JobArch;
+	if (callfunc("Is_Holy_Class")) goto L_JobAco;
+	if (callfunc("Is_Merc_Class")) goto L_JobMerc;
+	if (callfunc("Is_Thief_Class")) goto L_JobOther;
 
 L_JobNov:
 	mes "....HEY Novice!!! GET out of here now!! I won't be held responsible if anything bad happens to you.......";
@@ -83,8 +83,8 @@ function	script	Bla_check	{
 	close;
 
 L_Nov:
-	if(sex==0) mes "...Hello little lady! If you wish to be a blacksmith, you have to be a merchant first!";
-	if(sex==1) mes "Hmmm, you look like you wish to be a blacksmith! Sorry, but only merchants can be blacksmiths!.";
+	if (sex==0) mes "...Hello little lady! If you wish to be a blacksmith, you have to be a merchant first!";
+	if (sex==1) mes "Hmmm, you look like you wish to be a blacksmith! Sorry, but only merchants can be blacksmiths!.";
 	close;
 L_Sword:
 	mes "Hello! Come here to order a sword? Sorry, but I have some paperwork to do, so I can't forge anything now.";
@@ -109,13 +109,13 @@ L_Black:
 //Hunter Check
 function	script	Hun_check	{
 
-	if(BaseJob==Job_Hunter) goto L_Hunt;
-	if(callfunc("Is_Bow_Class")) goto L_Other;
-	if(callfunc("Is_Sword_Class")) goto L_Swo;
-	if(callfunc("Is_Magic_Class")) goto L_Mage;
-	if(callfunc("Is_Thief_Class")) goto L_Thf;
-	if(callfunc("Is_Holy_Class")) goto L_Aco;
-	if(callfunc("Is_Merc_Class")) goto L_Merc;
+	if (BaseJob == JOB_HUNTER) goto L_Hunt;
+	if (callfunc("Is_Bow_Class")) goto L_Other;
+	if (callfunc("Is_Sword_Class")) goto L_Swo;
+	if (callfunc("Is_Magic_Class")) goto L_Mage;
+	if (callfunc("Is_Thief_Class")) goto L_Thf;
+	if (callfunc("Is_Holy_Class")) goto L_Aco;
+	if (callfunc("Is_Merc_Class")) goto L_Merc;
 
 L_Nov:
 	mes "[Hunter Sharon]";
@@ -162,13 +162,13 @@ L_Other:
 
 function	script	Kni_check	{
 
-		if(BaseJob != Job_Swordman) goto L_NotSwo;
+		if (BaseJob != JOB_SWORDMAN) goto L_NotSwo;
 		mes "Well then, first fill out this application form....";
 		next;
 		mes "...(you fill out the form and hand it back)...";
 		next;
 		mes "[Chivalry Captain Herman]";
-		if(JobLevel < 40) goto L_NotLvl;
+		if (JobLevel < 40) goto L_NotLvl;
 		mes "Impressive.  You have the job qualifications to become a knight..., however you will need much more than that to actually become one.";
 		next;
 		return;
@@ -177,8 +177,8 @@ function	script	Kni_check	{
 			mes "Hmm...it looks like you have not reached Job Level 40 yet.  Please come back when you do.  I shall be waiting here.";
 			close;
 		L_NotSwo:
-			if(BaseJob == Job_Knight) goto sL_JobKni;
-			if(BaseJob == Job_Novice) goto sL_JobNov;
+			if (BaseJob == JOB_KNIGHT) goto sL_JobKni;
+			if (BaseJob == JOB_NOVICE) goto sL_JobNov;
 
 			sL_JobOther:
 				mes "I'm sorry but only Swordsmen can become Knights.";
@@ -202,8 +202,8 @@ function	script	Kni_check	{
 
 function	script	Pri_check	{
 
-	if (BaseJob == Job_Novice) goto L_Novice;
-	if (BaseJob == Job_Priest) goto L_Priest;
+	if (BaseJob == JOB_NOVICE) goto L_Novice;
+	if (BaseJob == JOB_PRIEST) goto L_Priest;
 	mes "May God bless you my child.";
 	next;
 	mes "[Father Thomas]";
@@ -279,9 +279,9 @@ L_Priest:
 			mes "[Father Thomas]";
 			mes "I hope you will also take this opportunity to teach them what it means to be a good Priest.";
 			next;
-			if((getareausers("job_prist.gat", 8, 34, 39,109)) == 1) warp "job_prist.gat", 24, 44;
-			if((getareausers("job_prist.gat", 160, 14, 175, 178)) == 1) warp "job_prist.gat", 98, 40;
-			if((getareausers("job_prist.gat", 90, 34, 105,105)) == 1) warp "job_prist.gat", 168, 17;
+			if ((getareausers("job_prist.gat", 8, 34, 39,109)) == 1) warp "job_prist.gat", 24, 44;
+			if ((getareausers("job_prist.gat", 160, 14, 175, 178)) == 1) warp "job_prist.gat", 98, 40;
+			if ((getareausers("job_prist.gat", 90, 34, 105,105)) == 1) warp "job_prist.gat", 168, 17;
 			mes "[Father Thomas]";
 			mes "Hmm........ wait a minute..... let me check my list.... Either no one is taking the test right now, or another Priest is already helping out.";
 			mes "In any case please check with me again later.";
@@ -320,8 +320,8 @@ L_Priest:
 
 function	script	Wiz1_check	{
 
-	if(callfunc("Is_Magic_Class")) goto L_Magic;
-	if(callfunc("Is_Holy_Class")) goto L_Holy;
+	if (callfunc("Is_Magic_Class")) goto L_Magic;
+	if (callfunc("Is_Holy_Class")) goto L_Holy;
 L_Other:
 	mes "[Dog]";
 	mes "Sheesh....... Why would someone who can't even cast a single spell come all the way up here???";
@@ -348,8 +348,8 @@ L_Magic:
 
 function	script	Wiz2_check	{
 
-	if(BaseJob == Job_Wizard) goto L_Wizard;
-	if(BaseJob == Job_Novice) goto L_Novice;
+	if (BaseJob == JOB_WIZARD) goto L_Wizard;
+	if (BaseJob == JOB_NOVICE) goto L_Novice;
 
 L_Other:
 	mes "Hmm? What brings you all the way up here? If you have nothing to do here, please leave.";
@@ -369,8 +369,8 @@ L_Wizard:
 	mes "What do you need fellow Wizard? If it's nothing, please leave...";
 	next;
 	mes "[Catherine Medichi]";
-	if(sex==1) mes "... Of course, if your here to ask me out... (*giggles*)....";
-	if(sex==0) mes "If you get yourself a boyfriend, feel free to drop by and show him off. XD";
+	if (sex==1) mes "... Of course, if your here to ask me out... (*giggles*)....";
+	if (sex==0) mes "If you get yourself a boyfriend, feel free to drop by and show him off. XD";
 	emotion 3;
 	close;
 }

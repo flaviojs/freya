@@ -34,11 +34,11 @@ prt_monk.gat,55,249,4	script	Tohobu the Guarding Monk	139,0,5,{
 	close;
 }
 prt_monk.gat,59,247,4	script	Master	120,{
-	callfunc "F_BlockHigh",Job_Acolyte_High,"Acolyte High",Job_Champion,"Champion","Tohobu";
+	callfunc "F_BlockHigh",JOB_ACOLYTE_HIGH,"Acolyte High",JOB_CHAMPION,"Champion","Tohobu";
 
-	if(MONK_Q == 1 ) goto Part1;
-	if(MONK_Q == 2 ) goto Part2;
-	if(BaseJob == 15) goto IsMonk;
+	if (MONK_Q == 1) goto Part1;
+	if (MONK_Q == 2) goto Part2;
+	if (BaseJob == 15) goto IsMonk;
 	goto L_START;
 
 IsMonk:
@@ -83,8 +83,8 @@ L_MENU_1:
 		close;
 
 	L_MENU_1_1:
-		if(BaseJob != 4) goto IsNot4;
-		if(joblevel >= 40 ) goto SkillPointChk;
+		if (BaseJob != 4) goto IsNot4;
+		if (joblevel >= 40) goto SkillPointChk;
 			mes "[Tohobu]";
 			mes "Your Job Level is not high enough to be a Monk.";
 			mes "Come back when your Job Level higher then 40.";
@@ -95,7 +95,7 @@ L_MENU_1:
 			close;
 
 		SkillPointChk:
-			if(skillpoint == 0) goto L_GO;
+			if (skillpoint == 0) goto L_GO;
 			mes "[Tohobu]";
 			mes "Well... It seems that you have the ability to be a Monk,";
 			mes "But I believe there are skill needed you have yet to learn.";
@@ -121,7 +121,7 @@ L_MENU_1:
 			mes "Well... Seems you have the ability to be a Monk.";
 			mes "Very well then... Go to Wuhai the Elder, He will guide you.";
 			// used to determine what item to get at the end
-			if(JobLevel == 50) set JBLVL, 50;	// used to determine what item to get at the end
+			if (JobLevel == 50) set JBLVL, 50;	// used to determine what item to get at the end
 			set MONK_Q, 2;
 			close;
 
@@ -151,14 +151,14 @@ Part2:
 }
 
 monk_in.gat,99,58,4	script	Elder Wuhai	60,{
-	if(MONK_Q == 2 ) goto L_START;
-	if(MONK_Q == 3 ) goto Part1;
-	if(MONK_Q == 4 ) goto Part2;
-	if(MONK_Q >= 5 && JOB_MONK < 10) goto Part3;
-	if(MONK_Q >= 10 && countitem(506) > 0) goto Part4;//Items: Green_Potion,
-	if(MONK_Q >= 10 && countitem(506) == 0) goto Part5;//Items: Green_Potion, // fixed. check >= 10, not == 11, because green potion can be already drunk.
-	if(Class == 15 || Class == 4016) goto Part6;
-	if(Class == 4 || Class == 4005) goto Part7;
+	if (MONK_Q == 2) goto L_START;
+	if (MONK_Q == 3) goto Part1;
+	if (MONK_Q == 4) goto Part2;
+	if (MONK_Q >= 5 && JOB_MONK < 10) goto Part3;
+	if (MONK_Q >= 10 && countitem(506) > 0) goto Part4;//Items: Green_Potion,
+	if (MONK_Q >= 10 && countitem(506) == 0) goto Part5;//Items: Green_Potion, // fixed. check >= 10, not == 11, because green potion can be already drunk.
+	if (Class == 15 || Class == 4016) goto Part6;
+	if (Class == 4 || Class == 4005) goto Part7;
 		goto IsOther;
 IsOther:
 	mes "[Elder Wuhai]";
@@ -208,17 +208,17 @@ L_MENU_1:
 	mes "[Elder Wuhai]";
 	mes "Firstly, here's a small exam to test your will to become one of us.";
 	next;
-	if(JBLVL == 50) goto IsJOB50;
+	if (JBLVL == 50) goto IsJOB50;
 
 	set MONK_Q, 3;
 	set JOB_MONK_C,rand(1,6);
 L_Collect:
-	if(JOB_MONK_C == 1 ) goto L_Collect1;
-	if(JOB_MONK_C == 2 ) goto L_Collect2;
-	if(JOB_MONK_C == 3 ) goto L_Collect3;
-	if(JOB_MONK_C == 4 ) goto L_Collect4;
-	if(JOB_MONK_C == 5 ) goto L_Collect5;
-	if(JOB_MONK_C == 6 ) goto L_Collect6;
+	if (JOB_MONK_C == 1) goto L_Collect1;
+	if (JOB_MONK_C == 2) goto L_Collect2;
+	if (JOB_MONK_C == 3) goto L_Collect3;
+	if (JOB_MONK_C == 4) goto L_Collect4;
+	if (JOB_MONK_C == 5) goto L_Collect5;
+	if (JOB_MONK_C == 6) goto L_Collect6;
 
 	L_Collect1:
 		mes "[Elder Wuhai]";
@@ -226,7 +226,7 @@ L_Collect:
 		mes "Tooth of Bat - 10";
 		mes "Bears Footskin - 5";
 		mes "Poison Spore - 20";
-		if(@collect_tmp != 1) goto L_CollectS;
+		if (@collect_tmp != 1) goto L_CollectS;
 		close;
 
 	L_Collect2:
@@ -235,7 +235,7 @@ L_Collect:
 		mes "Porcupine Quill - 5";
 		mes "Cobweb - 20";
 		mes "Grasshopper's Leg - 10";
-		if(@collect_tmp != 1) goto L_CollectS;
+		if (@collect_tmp != 1) goto L_CollectS;
 		close;
 
 	L_Collect3:
@@ -244,7 +244,7 @@ L_Collect:
 		mes "Stem - 30";
 		mes "Jellopy - 5";
 		mes "Worm Peeling -10";
-		if(@collect_tmp != 1) goto L_CollectS;
+		if (@collect_tmp != 1) goto L_CollectS;
 		close;
 
 	L_Collect4:
@@ -253,7 +253,7 @@ L_Collect:
 		mes "Sticky Mucus - 5";
 		mes "Earthworm Peeling - 10";
 		mes "Green Herb - 20";
-		if(@collect_tmp != 1) goto L_CollectS;
+		if (@collect_tmp != 1) goto L_CollectS;
 		close;
 
 	L_Collect5:
@@ -262,7 +262,7 @@ L_Collect:
 		mes "Yoyo Tail - 20";
 		mes "Iron Ore - 5";
 		mes "Blue Herb - 3";
-		if(@collect_tmp != 1) goto L_CollectS;
+		if (@collect_tmp != 1) goto L_CollectS;
 		close;
 
 	L_Collect6:
@@ -271,7 +271,7 @@ L_Collect:
 		mes "Solid Shell - 5";
 		mes "Shell - 20";
 		mes "Zargon - 5";
-		if(@collect_tmp != 1) goto L_CollectS;
+		if (@collect_tmp != 1) goto L_CollectS;
 		close;
 L_CollectS:
 	next;
@@ -299,13 +299,13 @@ IsJOB50:
 	close;
 
 Part1:
-//~	if(joblevel == 50) goto IsJOB50;
-	if(JOB_MONK_C == 1 && countitem(913) >= 10 && countitem(948) >= 5 && countitem(7033) >= 20) goto L_CollectS2_1;//Items: Tooth_of_Bat, Bear's_Footskin, Poison_Spore,
-	if(JOB_MONK_C == 2 && countitem(1027) >= 5 && countitem(1025) >= 20 && countitem(940) >= 10) goto L_CollectS2_2;//Items: Porcupine_Quill, Cobweb, Grasshopper's_Leg,
-	if(JOB_MONK_C == 3 && countitem(905) >= 30 && countitem(909) >= 5 && countitem(955) >= 10) goto L_CollectS2_3;//Items: Stem, Jellopy, Worm_Peeling,
-	if(JOB_MONK_C == 4 && countitem(938) >= 5 && countitem(1055) >= 10 && countitem(511) >= 20) goto L_CollectS2_4;//Items: Sticky_Mucus, Earthworm_Peeling, Green_Herb,
-	if(JOB_MONK_C == 5 && countitem(942) >= 20 && countitem(1002) >= 5 && countitem(510) >= 3) goto L_CollectS2_5;//Items: Yoyo_Tail, Iron_Ore, Blue_Herb,
-	if(JOB_MONK_C == 6 && countitem(943) >= 5 && countitem(935) >= 20 && countitem(912) >= 5) goto L_CollectS2_6;//Items: Solid_Shell, Shell, Zargon,
+//~	if (joblevel == 50) goto IsJOB50;
+	if (JOB_MONK_C == 1 && countitem(913) >= 10 && countitem(948) >= 5 && countitem(7033) >= 20) goto L_CollectS2_1;//Items: Tooth_of_Bat, Bear's_Footskin, Poison_Spore,
+	if (JOB_MONK_C == 2 && countitem(1027) >= 5 && countitem(1025) >= 20 && countitem(940) >= 10) goto L_CollectS2_2;//Items: Porcupine_Quill, Cobweb, Grasshopper's_Leg,
+	if (JOB_MONK_C == 3 && countitem(905) >= 30 && countitem(909) >= 5 && countitem(955) >= 10) goto L_CollectS2_3;//Items: Stem, Jellopy, Worm_Peeling,
+	if (JOB_MONK_C == 4 && countitem(938) >= 5 && countitem(1055) >= 10 && countitem(511) >= 20) goto L_CollectS2_4;//Items: Sticky_Mucus, Earthworm_Peeling, Green_Herb,
+	if (JOB_MONK_C == 5 && countitem(942) >= 20 && countitem(1002) >= 5 && countitem(510) >= 3) goto L_CollectS2_5;//Items: Yoyo_Tail, Iron_Ore, Blue_Herb,
+	if (JOB_MONK_C == 6 && countitem(943) >= 5 && countitem(935) >= 20 && countitem(912) >= 5) goto L_CollectS2_6;//Items: Solid_Shell, Shell, Zargon,
 
 	mes "[Elder Wuhai]";
 	mes "Hmm... Still not ready yet?";
@@ -383,7 +383,7 @@ Part5:
 	mes "[Elder Wuhai]";
 	callfunc "MonkQ_func";
 	setoption 0;
-	callfunc "Job_Change",Job_Monk;
+	callfunc "Job_Change",JOB_MONK;
 	next;
 	mes "[Elder Wuhai]";
 	mes "(Caught!) (Caught!)";
@@ -405,8 +405,8 @@ Part5:
 	mes "[Elder Wuhai]";
 	mes "Now go...";
 	mes "Here is a gift from us to congratulate you.";
-	if(JBLVL < 50) getitem 1801, 1;//Items: Waghnakh,
-	if(JBLVL == 50) getitem 1804, 1;//Items: Knuckle_Duster_,
+	if (JBLVL < 50) getitem 1801, 1;//Items: Waghnakh,
+	if (JBLVL == 50) getitem 1804, 1;//Items: Knuckle_Duster_,
 	callfunc "F_ClearJobVar";
 	close;
 Part6:
@@ -441,10 +441,10 @@ Part7:
 }
 
 prt_monk.gat,251,255,4	script	Wutao	79,{
-	if(MONK_Q == 4 ) goto L_START;
-	if(MONK_Q == 5 ) goto Part1;
-	if(MONK_Q == 6 ) goto Part2;
-	if(MONK_Q > 6 ) goto Part3;
+	if (MONK_Q == 4) goto L_START;
+	if (MONK_Q == 5) goto Part1;
+	if (MONK_Q == 6) goto Part2;
+	if (MONK_Q > 6) goto Part3;
 	goto IsOther;
 
 IsOther:
@@ -502,9 +502,9 @@ L_MENU_1:
 	next;
 	set @JOB_MONK_C2, rand(1,3);
 L_Again:
-	if(@JOB_MONK_C2==0) set @JOB_MONK_C2, rand(1,3);
-	if(@JOB_MONK_C2 == 2) goto L_ROOT_2;
-	if(@JOB_MONK_C2 == 3) goto L_ROOT_3;
+	if (@JOB_MONK_C2==0) set @JOB_MONK_C2, rand(1,3);
+	if (@JOB_MONK_C2 == 2) goto L_ROOT_2;
+	if (@JOB_MONK_C2 == 3) goto L_ROOT_3;
 
 	L_ROOT_1:
 		set @monk_str0$,"Supported by dragon and phoenix,";
@@ -564,7 +564,7 @@ L_MES:
 	next;
 	mes "[Wutao]";
 	mes @monk_str7$;
-	if(@JOB_MONK_C2 < 3) goto L_MES_1;
+	if (@JOB_MONK_C2 < 3) goto L_MES_1;
 	next;
 	mes "[Wutao]";
 	mes @monk_str8$;
@@ -575,8 +575,8 @@ L_MES_1:
 	mes "Now, " + strcharinfo(0) + ", it's your turn.";
 	next;
 	set @monk_q, 0;
-	if(@JOB_MONK_C2 == 2) goto L_MONK_Q2_1;
-	if(@JOB_MONK_C2 == 3) goto L_MONK_Q3_1;
+	if (@JOB_MONK_C2 == 2) goto L_MONK_Q2_1;
+	if (@JOB_MONK_C2 == 3) goto L_MONK_Q3_1;
 
 L_MONK_Q1_1:
 
@@ -888,7 +888,7 @@ L_MONK_QUEST_1_2:
 		set @monk_q, @monk_q + 1;
 L_MONK_QUEST_END:
 
-	if(@monk_q < 9) goto L_C2_FAIL;
+	if (@monk_q < 9) goto L_C2_FAIL;
 
 L_C2_DONE:
 	set @monk_q, 0;
@@ -975,9 +975,9 @@ Part3:
 
 prt_monk.gat,57,179,4	script	Fuhai	110,{
 
-	if(@Choice_mission == 1 ) goto Part1;
-	if(@Choice_mission == 2 ) goto Part2;
-	if(MONK_Q == 6 ) goto L_START;
+	if (@Choice_mission == 1) goto Part1;
+	if (@Choice_mission == 2) goto Part2;
+	if (MONK_Q == 6) goto L_START;
 	goto IsOther;
 IsOther:
 	mes "[Fuhai]";
@@ -1122,8 +1122,8 @@ Part2:
 }
 
 prt_monk.gat,199,169,4	script	Guard	746,{
-	if(MONK_Q == 7) goto L_START;
-	if(MONK_Q > 6) goto Part1;
+	if (MONK_Q == 7) goto L_START;
+	if (MONK_Q > 6) goto Part1;
 	goto IsOther;
 IsOther:
 	mes "[Guard ChaoLi]";
@@ -1154,8 +1154,8 @@ Part1:
 }
 
 monk_test.gat,329,61,4	script	Bashu	753,{
-	if(MONK_Q == 7) goto L_START;
-	if(MONK_Q == 8) goto IsOther;
+	if (MONK_Q == 7) goto L_START;
+	if (MONK_Q == 8) goto IsOther;
 	goto IsOther;
 IsOther:
 	mes "[Bashu]";
@@ -1173,8 +1173,8 @@ L_START:
 	mes "[Bashu]";
 	mes "Please select a test.";
 	next;
-	if(@Choice_mission == 0) goto L_MISSC;
-	if(@Choice_mission == 2) goto L_MISS2;
+	if (@Choice_mission == 0) goto L_MISSC;
+	if (@Choice_mission == 2) goto L_MISS2;
 	mes "[Bashu]";
 	mes "As I know, you choose the Mushroom Collecting as your test.";
 	goto L_MISSC;
@@ -1190,7 +1190,7 @@ L_MISSC:
 	mes "[Bashu]";
 	mes "The test you choose is Monk's patient - Mushroom Collecting";
 	next;
-	warp "job_monk.gat",225,179;
+	warp "JOB_MONK.gat",225,179;
 	end;
 
 L_MENU_1:
@@ -1237,7 +1237,7 @@ L_MENU_1:
 	mes "[Musha]";
 	mes "Before we give you an order to stop....";
 	mes "Run...Run! " + strcharinfo(0) + "! Run!";
-	//if(@runtimes == 0)
+	//if (@runtimes == 0)
 	set @runtimes, rand(8,10);
 	set @run, 0;
 	close;
@@ -1245,8 +1245,8 @@ L_MENU_1:
 
 monk_test.gat,390,387,0	script	monk_warp	45,1,1,{
 	set @run, @run + 1;
-	if(@run == (@runtimes-1)) mapannounce "monk_test.gat","Musha: cheer up! The next circle is the last!",8;
-	if(@run == @runtimes) goto L_DONE;
+	if (@run == (@runtimes-1)) mapannounce "monk_test.gat","Musha: cheer up! The next circle is the last!",8;
+	if (@run == @runtimes) goto L_DONE;
 	warp "monk_test.gat",388,348;
 	end;
 L_DONE:
@@ -1361,10 +1361,10 @@ prt_monk.gat,225,179,4	script	XuanWu	89,{
 	mes "The grower is the root of world. That's quite true.";
 	close;
 }
-job_monk.gat,225,179,4	script	XuanWu	89,{
+JOB_MONK.gat,225,179,4	script	XuanWu	89,{
 
-	if(MONK_Q == 8 ) goto Part2;
-	if(@mission_start == 1 ) goto Part1;
+	if (MONK_Q == 8) goto Part2;
+	if (@mission_start == 1) goto Part1;
 
 	mes "[XuanWu]";
 	mes "Welcome! I'm in charge here with the Mushroom Collecting.";
@@ -1413,8 +1413,8 @@ L_MENU_1:
 	close;
 
 Part1:
-	if(countitem(1069) >= 30 && countitem(1070) >0 ) goto L_DONE;//Items: Orange_Net_Mushroom, Orange_Gooey_Mushroom_,
-	if(countitem(1070) >= 30 && countitem(1069) >0 ) goto L_DONE;//Items: Orange_Gooey_Mushroom_, Orange_Net_Mushroom,
+	if (countitem(1069) >= 30 && countitem(1070) >0) goto L_DONE;//Items: Orange_Net_Mushroom, Orange_Gooey_Mushroom_,
+	if (countitem(1070) >= 30 && countitem(1069) >0) goto L_DONE;//Items: Orange_Gooey_Mushroom_, Orange_Net_Mushroom,
 	mes "[XuanWu]";
 	mes "Hmmm... Is that all you can do? I don't think it's enough.";
 	next;
@@ -1441,21 +1441,21 @@ Part2:
 	mes "Now go to [Daowen], he is in the deep of the building.";
 	close;
 }
-job_monk.gat,191,172,4	script	job_monk_warp	45,1,1,{
+JOB_MONK.gat,191,172,4	script	JOB_MONK_warp	45,1,1,{
 	warp "monk_test.gat",329,57;
 	end;
 }
 
-job_monk.gat,199,169,4	script	Guard ChaoLi	746,{
+JOB_MONK.gat,199,169,4	script	Guard ChaoLi	746,{
 	mes "[Guard ChaoLi]";
 	mes "Silence! In test area!";
 	close;
 }
 
 monk_test.gat,319,139,4	script	Daowen	52,{
-	if(MONK_Q == 8) goto L_START;
-	if(MONK_Q == 9) goto Part1;
-	if(MONK_Q == 10) goto Part2;
+	if (MONK_Q == 8) goto L_START;
+	if (MONK_Q == 9) goto Part1;
+	if (MONK_Q == 10) goto Part2;
 	goto IsOther;
 IsOther:
 	mes "[Daowen]";
@@ -1505,7 +1505,7 @@ Part1:
 	mes "I knew you can do it!";
 	mes "I'll give you a special potion that can increase your power.";
 	next;
-	if(countitem(506) == 0) goto Part1_a;//Items: Green_Potion,
+	if (countitem(506) == 0) goto Part1_a;//Items: Green_Potion,
 	goto Part1_b;
 
 Part1_a:
@@ -1543,7 +1543,7 @@ monk_test.gat,88,91,4	script	Test Assistant	52,{
 	mes "Of course, there will be some monster spawn in the maze. You'll have to fight with them.";
 	mes "Good lucy! May God be with you.";
 	next;
-	if(getareausers("monk_test.gat",126,161,165,199) > 0) goto L_WAIT;
+	if (getareausers("monk_test.gat",126,161,165,199) > 0) goto L_WAIT;
 	killmonster "monk_test.gat","monk_mob1";
 	enablenpc "monk_mob1_1";
 	enablenpc "monk_mob1_2";
@@ -1603,7 +1603,7 @@ monk_test.gat,95,85,4	script	Test Assistant	79,{
 	mes "Of course, there will be some monster spawn in the maze. You'll have to fight with them.";
 	mes "Good lucy! May God be with you.";
 	next;
-	if(getareausers("monk_test.gat",126,262,165,300) > 0) goto L_WAIT;
+	if (getareausers("monk_test.gat",126,262,165,300) > 0) goto L_WAIT;
 	killmonster "monk_test.gat","monk_mob2";
 	enablenpc "monk_mob2_1";
 	enablenpc "monk_mob2_2";
@@ -1665,7 +1665,7 @@ monk_test.gat,82,85,4	script	Test Assistant	95,{
 	mes "Of course, there will be some monster spawn in the maze. You'll have to fight with them.";
 	mes "Good lucy! May God be with you.";
 	next;
-	if(getareausers("monk_test.gat",233,262,269,300) > 0) goto L_WAIT;
+	if (getareausers("monk_test.gat",233,262,269,300) > 0) goto L_WAIT;
 	killmonster "monk_test.gat","monk_mob3";
 	enablenpc "monk_mob3_1";
 	enablenpc "monk_mob3_2";
@@ -1720,8 +1720,8 @@ monk_test.gat,269,279,4	script	monk_mob3_warp	45,1,1,{
 //==============================================================================
 // Monsters of Mushroom Collecting
 //==============================================================================
-job_monk.gat,0,0,0,0	monster	Thief Mushroom	1182,170,0,0,0
-job_monk.gat,0,0,0,0	monster	Thief Bug Larva	1051,120,0,0,0
+JOB_MONK.gat,0,0,0,0	monster	Thief Mushroom	1182,170,0,0,0
+JOB_MONK.gat,0,0,0,0	monster	Thief Bug Larva	1051,120,0,0,0
 
 //==============================================================================
 // warps

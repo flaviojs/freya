@@ -28,11 +28,11 @@
 // WIZARD - SIGHTBLASTER
 //============================================================
 gef_tower.gat,116,37,1	script	Enoz#2	748,{
-	if(HELLIONQ == 22)goto L_remember;
-	if(HELLIONQ == 21)goto L_joke;
-	if(HELLIONQ == 20)goto L_take;
-	if(BaseJob!=Job_Wizard) goto L_nowiz;
-	if(getskilllv(1006) > 0) goto L_alreadyhave;
+	if (HELLIONQ == 22) goto L_remember;
+	if (HELLIONQ == 21) goto L_joke;
+	if (HELLIONQ == 20) goto L_take;
+	if (BaseJob!=JOB_WIZARD) goto L_nowiz;
+	if (getskilllv(1006) > 0) goto L_alreadyhave;
 
 	mes "[Enoz]";
 	mes "I'll teach you all I know for:";
@@ -46,7 +46,7 @@ gef_tower.gat,116,37,1	script	Enoz#2	748,{
 	mes "Let me check your items.";
 	next;
 	
-	if(countitem(990)<10 || countitem(991)<10 || countitem(992)<10 || countitem(993)<10) goto L_noitems;//Items: Red_Blood, Crystal_Blue, Wind_of_Verdure, Green_Live,
+	if (countitem(990)<10 || countitem(991)<10 || countitem(992)<10 || countitem(993)<10) goto L_noitems;//Items: Red_Blood, Crystal_Blue, Wind_of_Verdure, Green_Live,
 	delitem 990, 10;//Items: Red_Blood,
 	delitem 991, 10;//Items: Crystal_Blue,
 	delitem 992, 10;//Items: Wind_of_Verdure,
@@ -83,7 +83,7 @@ L_sent:
 	mes "yet? So what was it called?";
 	next;
 	input @tempstr$;
-	if(@tempstr$ != "Monster Life in the Geffen Area")goto L_wrongstr;
+	if (@tempstr$ != "Monster Life in the Geffen Area") goto L_wrongstr;
 
 	mes "[Enoz]";
 	mes "\"Monster Life in";

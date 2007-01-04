@@ -23,9 +23,9 @@ prontera.gat,122,200,1	script	Rentals	905,{
 	mes "Hi there! I rent Carts, Falcons, and Pecos.";
 	next;
 
-	if (Class==5 || Class==10 || Class==18 || Class==4006 || Class==4011 || Class==4019 || Class==4041 || Class==4028 || Classes==4033) goto L_Cart;
+	if (Class == 5 || Class == 10 || Class == 18 || Class == 4006 || Class == 4011 || Class == 4019 || Class == 4041 || Class == 4028 || Classes==4033) goto L_Cart;
 
-	if (Class==11 || Class==4012 || Class==4034) goto L_Falcon;
+	if (Class == 11 || Class == 4012 || Class == 4034) goto L_Falcon;
 
 	if (Class == 7 || Class == 14 || Class == 4008 || Class == 4015 || Class == 4030 || Class == 4037) goto L_Peco;
 
@@ -57,7 +57,7 @@ L_Peco:
 // Checks if user has needed skill and whether the user has a Cart/Falcon/Peco already or not
 // If neither is true, then user gets a cart
 RentItem:
-	if(getskilllv(@skillid)<1) goto L_Need_Skill;
+	if (getskilllv(@skillid)<1) goto L_Need_Skill;
 	mes "[Adelia]";	
 	mes strcharinfo(0) + ", Would you like to rent a " + @rentem$ + "?";
 	next;

@@ -27,8 +27,8 @@
 //============================================================
 prt_in.gat,84,98,3	script	Esope	734,{
 	mes "[Esope]";
-	if(BaseJob != Job_Knight && BaseJob != Job_Knight2) goto L_noknight;
-	if(getskilllv(1001)) goto L_alreadyhave;
+	if (BaseJob != JOB_KNIGHT && BaseJob != JOB_KNIGHT2) goto L_noknight;
+	if (getskilllv(1001)) goto L_alreadyhave;
 
 	mes "I'll teach you all I know for:";
 	mes "5 Candy canes";
@@ -39,7 +39,7 @@ prt_in.gat,84,98,3	script	Esope	734,{
 	mes "Let me check your items.";
 	next;
 	
-	if(countitem(530)<5 || countitem(748)<3)goto L_noitems;//Items: Candy_Cane, Witherless_Rose,
+	if (countitem(530)<5 || countitem(748)<3) goto L_noitems;//Items: Candy_Cane, Witherless_Rose,
 	delitem 530, 5;//Items: Candy_Cane,
 	delitem 748, 3;//Items: Witherless_Rose,
 	

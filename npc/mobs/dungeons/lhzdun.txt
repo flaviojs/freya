@@ -224,12 +224,12 @@ lhz_dun03.gat,1,1,3 script BioPickMvP 139,{
 
 OnInit:
     set $@BioMvP,rand(6);
-    if($@BioMvP == 0)goto BioLordKnight;
-    if($@BioMvP == 1)goto BioAssassinCross;
-    if($@BioMvP == 2)goto BioMasterSmith;
-    if($@BioMvP == 3)goto BioHighPriest;
-    if($@BioMvP == 4)goto BioSniper;
-    if($@BioMvP == 5)goto BioHighWizard;
+    if ($@BioMvP == 0) goto BioLordKnight;
+    if ($@BioMvP == 1) goto BioAssassinCross;
+    if ($@BioMvP == 2) goto BioMasterSmith;
+    if ($@BioMvP == 3) goto BioHighPriest;
+    if ($@BioMvP == 4) goto BioSniper;
+    if ($@BioMvP == 5) goto BioHighWizard;
 
     BioLordKnight:
         monster "lhz_dun03.gat",0,0,"Lord Knight Seyren",1646,1,"BioPickMvP::OnBioDeadMvP";

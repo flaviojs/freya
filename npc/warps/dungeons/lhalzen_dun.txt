@@ -41,7 +41,7 @@ lhz_dun01.gat,150,290,0	warp	lhz007	1,1,lhz_in01.gat,23,137
 
 lighthalzen.gat,313,301,0	script	Sewer Pipe	111,{
 	mes "You see some pipes for a sewage system.";
-	if(hzdun == 1)goto s_Find;
+	if (hzdun == 1) goto s_Find;
 	close;
 s_Find:
 	mes "You found the way into the lab.";
@@ -66,8 +66,8 @@ lhz_cube.gat,177,96,0	warp	lhzcube4	1,1,lighthalzen.gat,310,302
 
 lhz_dun02.gat,150,149,4	script	lhz-warp	45,2,2,{
 OnTouch:
-	if(Upper != 1 && BaseLevel<95)goto s_Noentry0;
-	if(Upper == 1 && BaseLevel<90)goto s_Noentry1;
+	if (Upper != 1 && BaseLevel<95) goto s_Noentry0;
+	if (Upper == 1 && BaseLevel<90) goto s_Noentry1;
 	warp "lhz_dun03",140,137;
 	end;
 
@@ -203,8 +203,8 @@ lhz_cube.gat,123,26,0	script	cubew08-4	45,1,1,{
 //----- Function for Random Warps ----------------------------
 function	script	randomw	{
 	set @rdm,rand(3);
-	if(@rdm==1)goto rdm1;
-	if(@rdm==2)goto rdm2;
+	if (@rdm==1) goto rdm1;
+	if (@rdm==2) goto rdm2;
  	warp "lhz_cube.gat",67,193; end;
 	rdm1: warp "lhz_cube.gat",66,136; end;
 	rdm2: warp "lhz_cube.gat",66,74; end;

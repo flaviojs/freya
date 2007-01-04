@@ -48,7 +48,7 @@ jawaii.gat,141,200,3	script	Attendant#Sweetness Suite	798,{
 	mes "That really hurts.";
 	next;
 	menu "Use it",-,"Cancel",s_Cancel;
-			if(Zeny <= 999) goto L_LESS;
+			if (Zeny <= 999) goto L_LESS;
 				mes "[Alowawu]";
 				mes "Thank you.";
 				mes "I'll open a portal for you right now.";
@@ -129,7 +129,7 @@ jawaii.gat,107,189,5	script	Attendant#Honeymoon Suite	93,{
 	next;
 	menu "Yes",-,"Cancel",s_Cancel;
 
-			if(Zeny <= 999) goto L_LESS;
+			if (Zeny <= 999) goto L_LESS;
 				mes "[Saroki Lania]";
 				mes "...Please come in.";
 				close2;
@@ -164,7 +164,7 @@ jawaii.gat,112,173,7	script	Attendant#Villa Suite	93,{
 	mes "What do you think?";
 	next;
 	menu "Use it",-,"Cancel",s_Cancel;
-			if(Zeny <= 999) L_LESS;
+			if (Zeny <= 999) L_LESS;
 				mes "[Lakers Lania]";
 				mes "Thanks and rest well.";
 				mes "I hope you'll enjoy your trip.";
@@ -376,7 +376,7 @@ jawaii_in.gat,28,124,0	script	Bartender#jaw	46,{
 	Loopback:
 		menu "Today's special",-,"Nimi",s_Nimi,"Refreshing",s_Refreshing,"Misa",s_Misa,"Magnificent Blue",s_Magn;
 
-			if(@drinkcount < 4) goto L_RANDOMDRINK;
+			if (@drinkcount < 4) goto L_RANDOMDRINK;
 				mes "[Bartender]";
 				mes "You have taken a lot of drinks. Do you still want to continue?";
 				next;
@@ -397,10 +397,10 @@ jawaii_in.gat,28,124,0	script	Bartender#jaw	46,{
 				
 			L_RANDOMDRINK:
 				set @randomdrink,rand(1,4);
-				if(@randomdrink == 1) goto L_DRINK1;
-				if(@randomdrink == 2) goto L_DRINK2;
-				if(@randomdrink == 3) goto L_DRINK3;
-				if(@randomdrink == 4) goto L_DRINK4;
+				if (@randomdrink == 1) goto L_DRINK1;
+				if (@randomdrink == 2) goto L_DRINK2;
+				if (@randomdrink == 3) goto L_DRINK3;
+				if (@randomdrink == 4) goto L_DRINK4;
 
 				L_DRINK1:
 					mes "[Bartender]";
@@ -502,7 +502,7 @@ jawaii_in.gat,28,124,0	script	Bartender#jaw	46,{
 					next;
 
 s_Nimi:
-			if(@drinkcount < 5) goto L_LESS1;
+			if (@drinkcount < 5) goto L_LESS1;
 				mes "[Bartender]";
 				mes "...I'll buy you a drink.";
 				next;

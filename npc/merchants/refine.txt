@@ -57,7 +57,7 @@ geffen_in.gat,110,172,2	script	Christopher#1::Chris	63,{
 			"Better Anvil than others",sM_BetAnvil, "Cancel",M_Menu;
 
 		sM_Anvil:
-			if(Zeny < 30000) goto L_NoZeny;
+			if (Zeny < 30000) goto L_NoZeny;
 			mes "[Christopher Guillenrow]";
 			mes "This is the cheapest one but it's very efficient.";
 			set Zeny, Zeny - 30000;
@@ -65,7 +65,7 @@ geffen_in.gat,110,172,2	script	Christopher#1::Chris	63,{
 			next;
 			goto L_Thanks;
 		sM_OriAnvil:
-			if(Zeny < 120000) goto L_NoZeny;
+			if (Zeny < 120000) goto L_NoZeny;
 			mes "[Christopher Guillenrow]";
 			mes "Ah! Ye have a good eye for anvils. This here is the proper anvil for a Blacksmith.";
 			set Zeny, Zeny - 120000;
@@ -73,7 +73,7 @@ geffen_in.gat,110,172,2	script	Christopher#1::Chris	63,{
 			next;
 			goto L_Thanks;
 		sM_GolAnvil:
-			if(Zeny < 300000) goto L_NoZeny;
+			if (Zeny < 300000) goto L_NoZeny;
 			mes "[Christopher Guillenrow]";
 			mes "This is the best anvil in my workshop! With this ye'll be the best Blasksmith in no time.";
 			set Zeny, Zeny - 300000;
@@ -102,24 +102,24 @@ geffen_in.gat,110,172,2	script	Christopher#1::Chris	63,{
 			set @input, 0;
 			input @input;
 			next;
-			if(@input < 1 ) goto sM_Menu1;
-			if(@input > 1000 ) goto sM_Max;
-			if(Zeny < 150 * @input) goto L_NoZeny;
+			if (@input < 1) goto sM_Menu1;
+			if (@input > 1000) goto sM_Max;
+			if (Zeny < 150 * @input) goto L_NoZeny;
 			set Zeny, Zeny - (150 * @input);
 			getitem 612, @input;
 			goto L_Thanks;
 		sM_IrHam:
-			if(Zeny < 1000) goto L_NoZeny;
+			if (Zeny < 1000) goto L_NoZeny;
 			set Zeny, Zeny - 1000;
 			getitem 613,1;
 			goto L_Thanks;
 		sM_GldHam:
-			if(Zeny < 3000) goto L_NoZeny;
+			if (Zeny < 3000) goto L_NoZeny;
 			set Zeny, Zeny - 3000;
 			getitem 614,1;
 			goto L_Thanks;
 		sM_OriHam:
-			if(Zeny < 5000) goto L_NoZeny;
+			if (Zeny < 5000) goto L_NoZeny;
 			set Zeny, Zeny - 5000;
 			getitem 615,1;
 			goto L_Thanks;
@@ -297,21 +297,21 @@ function	script	refinemain	{
 
 //Check if the item is refinable...
 CHECK1:
-	if(getequipisenableref(@part)) goto CHECK2;
+	if (getequipisenableref(@part)) goto CHECK2;
 	mes "[" + @name$ + "]";
 	mes "I can't work on this item...";
 	close;
 
 //Check if the item is identified... (Don't know why this is in here... but kept it anyway)
 CHECK2:
-	if(getequipisidentify(@part)) goto CHECK3;
+	if (getequipisidentify(@part)) goto CHECK3;
 	mes "[" + @name$ + "]";
 	mes "You must appraise this item first.";
 	close;
 
 //Check to see if the items is already +10
 CHECK3:
-	if(getequiprefinerycnt(@part) < 10) goto REFINE0;
+	if (getequiprefinerycnt(@part) < 10) goto REFINE0;
 	mes "[" + @name$ + "]";
 	mes "This weapon is already at its maximum level and can no longer be refined.";
 	close;
@@ -320,39 +320,39 @@ CHECK3:
 REFINE0:
 	set @refineitemid, getequipid(@part); // save id of the item
 	set @refinerycnt, getequiprefinerycnt(@part); //save refinery count
-	if(getequipweaponlv(@part) > 0) goto REFINE1;
+	if (getequipweaponlv(@part) > 0) goto REFINE1;
 	set @matname$,"Elunium";
 	set @material,985;
 	set @price,2000;
 	set @safe,4;
-	if(@features == 1) goto L_refinefeatures;
+	if (@features == 1) goto L_refinefeatures;
 	goto L_refinenormal;
 //Refine Level 1 Weapon
 REFINE1:
-	if(getequipweaponlv(@part) > 1) goto REFINE2;
+	if (getequipweaponlv(@part) > 1) goto REFINE2;
 	set @matname$,"Phracon";
 	set @material,1010;
 	set @price,50;
 	set @safe,7;
-	if(@features == 1) goto L_refinefeatures;
+	if (@features == 1) goto L_refinefeatures;
 	goto L_refinenormal;
 //Refine Level 2 Weapon
 REFINE2:
-	if(getequipweaponlv(@part) > 2) goto REFINE3;
+	if (getequipweaponlv(@part) > 2) goto REFINE3;
 	set @matname$,"Emveretarcon";
 	set @material,1011;
 	set @price,200;
 	set @safe,6;
-	if(@features == 1) goto L_refinefeatures;
+	if (@features == 1) goto L_refinefeatures;
 	goto L_refinenormal;
 //Refine Level 3 Weapon
 REFINE3:
-	if(getequipweaponlv(@part) > 3) goto REFINE4;
+	if (getequipweaponlv(@part) > 3) goto REFINE4;
 	set @matname$,"Oridecon";
 	set @material,984;
 	set @price,5000;
 	set @safe,5;
-	if(@features == 1) goto L_refinefeatures;
+	if (@features == 1) goto L_refinefeatures;
 	goto L_refinenormal;
 //Refine Level 4 Weapon
 REFINE4:
@@ -360,7 +360,7 @@ REFINE4:
 	set @material,984;
 	set @price,20000;
 	set @safe,4;
-	if(@features == 1) goto L_refinefeatures;
+	if (@features == 1) goto L_refinefeatures;
 	goto L_refinenormal;
 
 L_refinenormal:
@@ -445,7 +445,7 @@ Lcancel2:
 
 // New Refining Functions ========================
 L_refinefeatures:
-	if(getequiprefinerycnt(@part) >= @safe) goto Lnosafe;
+	if (getequiprefinerycnt(@part) >= @safe) goto Lnosafe;
 	mes "[" + @name$ + "]";
 	mes "I can refine this to the safe limit or a desired number of times... it's your choice...";
 	next;
@@ -458,7 +458,7 @@ Lsafe:
 	mes "That will cost you " + @refinecnt + " " + @matname$ + " and " + @fullprice + " Zeny. Is that ok?";
 	next;
 	menu "Yes",-,"No...",Lcancel;
-	if((countitem(@material) < @refinecnt) || (Zeny < @fullprice)) goto Lcancel2;
+	if ((countitem(@material) < @refinecnt) || (Zeny < @fullprice)) goto Lcancel2;
 	delitem @material,@refinecnt;
 	set Zeny,Zeny - @fullprice;
 	goto L_refinesafe;
@@ -470,14 +470,14 @@ Lnosafe:
 	input @refinecnt;
 	if (@refinecnt<1) goto Lcancel3; //fixed by Lupus
 	set @refinecheck,@refinecnt + getequiprefinerycnt(@part);
-	if(@refinecheck > 10) goto Lcancel3;
+	if (@refinecheck > 10) goto Lcancel3;
 	set @fullprice,@price * @refinecnt;
 	mes "[" + @name$ + "]";
 	mes "This will cost you " + @refinecnt + " " + @matname$ + " and " + @price + " Zeny... Is that ok?";
 	next;
 	menu "Yes...",-,"No...",Lcancel;
-		if(@refinecheck > @safe) goto Lwarn;
-		if((countitem(@material) < @refinecnt) || (Zeny < @fullprice)) goto Lcancel2;
+		if (@refinecheck > @safe) goto Lwarn;
+		if ((countitem(@material) < @refinecnt) || (Zeny < @fullprice)) goto Lcancel2;
 		delitem @material,@refinecnt;
 		set Zeny,Zeny - @fullprice;
 		goto L_refinenumber;
@@ -489,7 +489,7 @@ Lnosafe:
 			mes "This will try to refine the equipment " + @refinecheck + " times past the safe limit. Your equipment may be destroyed... is that ok?";
 			next;
 			menu "Yes",-,"No...",Lcancel1;
-				if((countitem(@material) < @refinecnt) || (Zeny < @fullprice)) goto Lcancel2;
+				if ((countitem(@material) < @refinecnt) || (Zeny < @fullprice)) goto Lcancel2;
 				delitem @material,@refinecnt;
 				set Zeny,Zeny - @fullprice;
 				goto L_refinenumber;
@@ -509,7 +509,7 @@ L_refinesafe:
 	emotion 21;
 	set @refinecnt,@refinecnt - 1;
 	next;
-	if(@refinecnt == 0) goto Lend;
+	if (@refinecnt == 0) goto Lend;
 	goto L_refinesafe;
 
 	Lend:
@@ -525,7 +525,7 @@ L_refinenumber:
 	emotion 21;
 	set @refinecnt,@refinecnt - 1;
 	next;
-	if(@refinecnt == 0) goto Lend;
+	if (@refinecnt == 0) goto Lend;
 	goto L_refinenumber;
 
 	Lfail_number:
@@ -534,7 +534,7 @@ L_refinenumber:
 		mes "[" + @name$ + "]";
 		mes "WAHHHH!!! I'm so sorry... I warned you this could happen...";
 		set @refinecnt,@refinecnt - 1;
-		if(@refinecnt == 0) goto Lend2;
+		if (@refinecnt == 0) goto Lend2;
 		mes "Here's the unused Zeny and Material back...";
 		getitem @material,@refinecnt;
 		set @fullprice,@refinecnt * @price;
@@ -589,7 +589,7 @@ lhz_in02.gat,278,24,3	script	Krugg	86,{
 //= Material Salesmen Functions
 //============================================================
 function	script	phramain	{
-	if(@chris == 1) goto M_Menu;
+	if (@chris == 1) goto M_Menu;
 	mes "[" + @name$ + "]";
 	mes "Hello, Im selling metals I just mined.";
 	mes "They are Pharacon and Emvertacon.";
@@ -682,7 +682,7 @@ lhz_in02.gat,281,24,5	script	Fruel	84,{
 //= Ori/Elu Functions
 //============================================================
 function	script	orimain	{
-	if(@chris == 1) goto M_Menu;
+	if (@chris == 1) goto M_Menu;
 	mes "[" + @name$ + "]";
 	mes "If you bring Rough Oridecons and";
 	mes "Rough Eluniums to me,";
@@ -694,7 +694,7 @@ function	script	orimain	{
 	menu "Make Oridecon",M_Ori, "Make Elunium",M_Elu, "Ask about enchanted stones",M_Stones;
 
 	M_Ori:
-		if(countitem(756) < 5) goto L_NoOri;
+		if (countitem(756) < 5) goto L_NoOri;
 		delitem 756,5;
 		getitem 984,1;
 		mes "[" + @name$ + "]";
@@ -707,7 +707,7 @@ function	script	orimain	{
 			mes "Huh? You're kidding, right? Didn't I say I can't make you an Oridecon unless you bring me 5 rough ones?";
 			close;
 	M_Elu:
-		if(countitem(757) < 5) goto L_NoElu;
+		if (countitem(757) < 5) goto L_NoElu;
 		delitem 757,5;
 		getitem 985,1;
 		mes "[" + @name$ + "]";
@@ -785,7 +785,7 @@ function	script	repairmain	{
 	set @broken9,getbrokenid(9);
 	set @broken10,getbrokenid(10);
 	next;
-	if(@broken1==NULL) goto L_CANCEL_3;
+	if (@broken1==NULL) goto L_CANCEL_3;
 	menu getitemname(@broken1),REPAIR1,getitemname(@broken2),REPAIR2,getitemname(@broken3),REPAIR3,
 		getitemname(@broken4),REPAIR4,getitemname(@broken5),REPAIR5,getitemname(@broken6),REPAIR6,
 		getitemname(@broken7),REPAIR7,getitemname(@broken8),REPAIR8,getitemname(@broken9),REPAIR9,

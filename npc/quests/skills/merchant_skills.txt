@@ -46,7 +46,7 @@ L_Start:
 	mes "I'll let you in on something....... My voice is more than just loud..... it's actually quite unique......";
 	next;
 	mes "[Necko]";
-	if(BaseJob==Job_Merchant && JobLevel < 15) goto L_JobLvl;
+	if (BaseJob == JOB_MERCHANT && JobLevel < 15) goto L_JobLvl;
 	mes "You see, I know a skill that lets me shout in a way that actually helps me.... It is the ^3355FFCrazy Uproar^000000 skill!!!";
 	emotion 5;
 	next;
@@ -138,7 +138,7 @@ L_Start:
 	mes "I can change the way your cart looks for you.  Of course some conditions need to be met......";
 	next;
 	mes "[Charlron]";
-	if (BaseJob==Job_Merchant && JobLevel < 30) goto L_JobLvl;
+	if (BaseJob == JOB_MERCHANT && JobLevel < 30) goto L_JobLvl;
 	mes "First you will need to bring me these items:";
 	mes "^3355FF50 Trunks,";
 	mes "20 Animal Skin,";
@@ -238,7 +238,7 @@ L_Start:
 
 		sM_0:
 			mes "[Gershuan]";
-			if (BaseJob==Job_Merchant && JobLevel < 35) goto ssL_LowLvl;
+			if (BaseJob == JOB_MERCHANT && JobLevel < 35) goto ssL_LowLvl;
 			mes "Ok! I will give you the special training for Cart Revolution.  The first thing you will have to do is bring me these items:";
 			mes "^3355FF30 Sticky Mucus,";
 			mes "20 Fly wings,";

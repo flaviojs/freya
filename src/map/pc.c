@@ -6188,9 +6188,6 @@ int pc_readparam(struct map_session_data *sd,int type)
 		val= sd->status.job_level;
 		break;
 	case SP_CLASS:
-		if (val >= 27 && val < 45)
-			val += 3975;
-		else
 		val= sd->status.class;
 		break;
 	case SP_BASEJOB:
@@ -6198,66 +6195,51 @@ int pc_readparam(struct map_session_data *sd,int type)
 		break;
 	case SP_BASECLASS:
 		switch(s_class.job) {
-			//Novice class tree
+			// Novice Class
 			case JOB_NOVICE:
 			case JOB_SUPER_NOVICE:
 				val = JOB_NOVICE;
 				break;
-			//Swordman class tree
+			// Swordsman Class
 			case JOB_KNIGHT:
 			case JOB_KNIGHT2:
 			case JOB_CRUSADER:
 			case JOB_CRUSADER2:
 				val= JOB_SWORDMAN;
 				break;
-			//Mage class tree
+			// Mage Class
 			case JOB_WIZARD:
 			case JOB_SAGE:
 				val= JOB_MAGE;
 				break;
-			//Archer class tree
+			// Archer Class
 			case JOB_HUNTER:
 			case JOB_BARD:
 			case JOB_DANCER:
 				val= JOB_ARCHER;
 				break;
-			//Acolyte class tree
+			// Acolyte Class
 			case JOB_PRIEST:
 			case JOB_MONK:
 				val= JOB_ACOLYTE;
 				break;
-			//Merchant class tree
+			// Merchant Class
 			case JOB_BLACKSMITH:
 			case JOB_ALCHEMIST:
 				val= JOB_MERCHANT;
 				break;
-			//Thief class tree
+			// Thief Class
 			case JOB_ASSASSIN:
 			case JOB_ROGUE:
 				val= JOB_THIEF;
 				break;
-			//Taekwon class tree
+			// Taekwon Class
 			case JOB_TAEKWON:
 			case JOB_STAR_GLADIATOR:
 			case JOB_STAR_GLADIATOR2:
 			case JOB_SOUL_LINKER:
 				val= JOB_TAEKWON;
 				break;
-			case JOB_GUNSLINGER:
-				val= JOB_GUNSLINGER;
-				break;
-			case JOB_NINJA:
-				val= JOB_NINJA;
-				break;
-			// New Classes [Tsuyuki]
-			case JOB_DEATH_KNIGHT:
-				val= JOB_DEATH_KNIGHT;
-			case JOB_DARK_COLLECTOR:
-				val= JOB_DARK_COLLECTOR;
-			case JOB_BON_GUN:
-				val= JOB_BON_GUN;
-			case JOB_MUNAK:
-				val= JOB_MUNAK;
 			default:
 				val= s_class.job;
 		}

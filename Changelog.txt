@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/03/07
+	* Fixed: Some checks with the Gunslinger/Ninja/Taekwon classes in scripts (Fixes Gunslinger/Ninja Quests) [Tsuyuki]
+	* Changed: Perfected some NPC/Script formatting in the /npc/ folder [Tsuyuki]
 	* Removed: Duplicate values for min_hair_style, max_hair_style, min_hair_color, max_hair_color [Tsuyuki]
 	 - Removed from char_athena.conf, remember to update your configuration files!
 	 - Fixes Custom hair style/color problems

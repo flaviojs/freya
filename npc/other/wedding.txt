@@ -47,16 +47,16 @@
 
 // King Tristan III
 prt_church.gat,99,125,4	script	Tristan the Third	108,{
-	if($groom$ == strcharinfo(0) && $@progress != 3) goto L_GroomCeremony;
-	if(@register == 0) goto L_GroomNeedToRegister;
-	if($bride$ == strcharinfo(0)) goto L_BrideCeremony;
+	if ($groom$ == strcharinfo(0) && $@progress != 3) goto L_GroomCeremony;
+	if (@register == 0) goto L_GroomNeedToRegister;
+	if ($bride$ == strcharinfo(0)) goto L_BrideCeremony;
 	menu "Here To Attend",L_Wedding,"Here for another reason",L_OtherReason;
 L_GroomCeremony:
-	if(@register == 0) goto L_GroomNeedToRegister;
-	if($@progress == 1) goto L_BrideNeedToRegister;
-	if($@progress == 0) goto L_Wedding;
-	if(countitem(2613) < 1) goto L_NeedRing;//Items: Diamond_Ring,
-	if((getequipid(2) != 2338) && (getequipid(2) != 7170)) goto L_Attire;
+	if (@register == 0) goto L_GroomNeedToRegister;
+	if ($@progress == 1) goto L_BrideNeedToRegister;
+	if ($@progress == 0) goto L_Wedding;
+	if (countitem(2613) < 1) goto L_NeedRing;//Items: Diamond_Ring,
+	if ((getequipid(2) != 2338) && (getequipid(2) != 7170)) goto L_Attire;
 	mes "[Tristan the Third]";
 	mes "Everything is ready, it's your call now...";
 	next;
@@ -66,7 +66,7 @@ L_GroomCeremony:
 	mes "Well all you have to do now is the easy part input your bride's name, remember to spell it correctly.";
 	input $name2$;
 	next;
-	if($name2$ != $bride$) goto L_WrongBrideName;
+	if ($name2$ != $bride$) goto L_WrongBrideName;
 	deltimer "a13";
 	marriage $name2$;
 	mes "[Tristan the Third]";
@@ -96,13 +96,13 @@ L_GroomCeremony:
 	addtimer 105000,"a12";
 	close;
 L_BrideCeremony:
-	if(countitem(2613) < 1) goto L_NeedRing;//Items: Diamond_Ring,
-	if((getequipid(2) != 2338) && (getequipid(2) != 7170)) goto L_Attire;
+	if (countitem(2613) < 1) goto L_NeedRing;//Items: Diamond_Ring,
+	if ((getequipid(2) != 2338) && (getequipid(2) != 7170)) goto L_Attire;
 	mes "[Tristan the Third]";
 	mes "Well all you have to do now is the easy part input your groom's name, remember to spell it correctly.";
 	input $name$;
 	next;
-	if($name$ != $groom$) goto L_WrongGroomName;
+	if ($name$ != $groom$) goto L_WrongGroomName;
 	deltimer "a13";
 	deltimer "weddinglimit1";
 	deltimer "weddinglimit2";
@@ -140,7 +140,7 @@ L_GroomNeedToRegister:
 	mes "Hello, please register with Marry if you want me to perform a marriage for you.";
 	close;
 L_Wedding:
-	if(event_wedding != 1) goto L_Guest;
+	if (event_wedding != 1) goto L_Guest;
 	mes "[Tristan the Third]";
 	mes "Hello again "+strcharinfo(0)+", I hope wish for the best of luck in your life.";
 	close;
@@ -149,7 +149,7 @@ L_BrideNeedToRegister:
 	mes "I'm sorry, I cannot start the ceremony if the bride has not registered yet.";
 	close;
 L_OtherReason:
-	if(@get_ring == 1) goto L_Wedding;
+	if (@get_ring == 1) goto L_Wedding;
 	mes "[Tristan the Third]";
 	mes "Do you have a reason why these two should not be bonded in holy matrimony?";
 	next;
@@ -183,8 +183,8 @@ L_OtherReason:
 	mes "The wedding has been called off.";
 	close;
 L_NoReason:
-	if($groom$ == strcharinfo(0)) goto L_InProgress;
-	if($bride$ == strcharinfo(0)) goto L_InProgress;
+	if ($groom$ == strcharinfo(0)) goto L_InProgress;
+	if ($bride$ == strcharinfo(0)) goto L_InProgress;
 	mes "[Tristan the Third]";
 	mes "Please have a seat than and let me continue the wedding.";
 	close;
@@ -210,8 +210,8 @@ L_NeedRing:
 	mes "You need a Diamond Ring in order to perform the wedding.";
 	close;
 L_Attire:
-	if(sex == 1) goto L_NeedTuxedo;
-	if(sex == 0) goto L_NeedDress;
+	if (sex == 1) goto L_NeedTuxedo;
+	if (sex == 0) goto L_NeedDress;
 	close;
 L_NeedTuxedo:
 	mes "[Tristan the Third]";
@@ -239,7 +239,7 @@ prt_church.gat,95,100,4	script	Marry	71,{
 	menu "Inquire about the wedding ceremony.",L_Principles,"Inquire about the procedure of wedding ceremony.",L_WeddingSystem,"Apply for a wedding ceremony.",L_Marry,"We are the invincible single army!",L_LiveSolo,"Special Menu",L_GmMenu;
 L_GmMenu:
 	set @gmlevel,getgmlevel(50);
-	if(@gmlevel < 50) goto L_NotGM;
+	if (@gmlevel < 50) goto L_NotGM;
 	mes "Hello " + strcharinfo(0) + " How i can serve you?";
 	menu "Enable Same-Sex Weddings",L_EnableSameSex,"Disable Same-Sex Weddings",L_DisableSameSex,"Reset the Variables",L_ResetVariables,"Just Checking...",L_Bye;
 L_NotGM:
@@ -369,7 +369,7 @@ L_Marry:
 	mes "[Marry Happy]";
 	mes "If you wish to get married you must first register.";
 	mes "Male is ^FF00FF" + @costgroomA + "^000000 zeny and female is ^FF00FF" + @costbrideA + "^000000 zeny";
-	if((countitem(2338) > 0) || (countitem(7170) > 0) || (@outfit == 1)) mes "But only ^FF00FF" + @costgroomB + "^000000 zeny for male and ^FF00FF" + @costbrideB + "^000000 zeny for female if you already have registered before";
+	if ((countitem(2338) > 0) || (countitem(7170) > 0) || (@outfit == 1)) mes "But only ^FF00FF" + @costgroomB + "^000000 zeny for male and ^FF00FF" + @costbrideB + "^000000 zeny for female if you already have registered before";
 	mes "Both male and female must have registered,";
 	mes "and both must have paid fees, have Diamond Rings and be on same party!";
 	mes "The Bride will get a Wedding Dress, while the Groom will get a Chinese Tuxedo";
@@ -379,28 +379,28 @@ L_Marry:
 	mes "you are able to get married strait away.";
 	mes "One must be the Groom and the other the Bride.";
 	mes "Do you wish to register to get married?";
-	if($SameSex == 1)	menu "I'm gonna be the Groom",-,"I'm gonna be the Bride",L_BrideRegister,"Never mind",L_Bye;
-	if(event_wedding == 1) goto L_Married;
-	if(@register >= 1) goto L_AlreadyRegistered;
-	if($@progress >= 2) goto L_InProgress;
-	if(($samesex == 0) && (sex == 0)) goto L_BrideRegister;
-	if((countitem(2338) > 0) || (countitem(7170) > 0) || (@outfit == 1)) goto L_GroomRegister2;
+	if ($SameSex == 1)	menu "I'm gonna be the Groom",-,"I'm gonna be the Bride",L_BrideRegister,"Never mind",L_Bye;
+	if (event_wedding == 1) goto L_Married;
+	if (@register >= 1) goto L_AlreadyRegistered;
+	if ($@progress >= 2) goto L_InProgress;
+	if (($samesex == 0) && (sex == 0)) goto L_BrideRegister;
+	if ((countitem(2338) > 0) || (countitem(7170) > 0) || (@outfit == 1)) goto L_GroomRegister2;
 	mes "[Marry Happy]";
-	if(sex == 1) mes "No problem sir, please fill out your name here.";
-	if(sex == 0) mes "No problem miss, please fill out your name here.";
+	if (sex == 1) mes "No problem sir, please fill out your name here.";
+	if (sex == 0) mes "No problem miss, please fill out your name here.";
 	mes "And I'll need to collect a " + @costgroomA + " zeny fee for your wedding fees and outfit.";
 	next;
 	mes "[Marry Happy]";
 	mes "Now You Must Insert The Your Bride's Name";
 	input $name$;
 	next;
-	if(zeny < @costgroomA) goto L_NeedZeny1;
+	if (zeny < @costgroomA) goto L_NeedZeny1;
 	set $groom$,strcharinfo(0);
 	set @register,1;
 	set zeny,zeny-@costgroomA;
 	set $@progress,1;
-	if(sex == 1) getitem 7170,1;
-	if(sex == 0) getitem 2338,1;
+	if (sex == 1) getitem 7170,1;
+	if (sex == 0) getitem 2338,1;
 	set @outfit,1;
 	mes "[Marry Happy]";
 	mes "You are now registered "+strcharinfo(0)+", I wish you the best of luck with your marriage.";
@@ -414,27 +414,27 @@ L_Marry:
 
 L_BrideRegister:
 	if ($name$ != strcharinfo(0)) goto L_NotBride;
-	if($groom$ == strcharinfo(0)) goto L_CantMarryYourself;
-	if($@progress != 1) goto L_GroomNotRegistered;
-	if(@register >= 1) goto L_AlreadyRegistered;
-	if((countitem(2338) > 0) || (countitem(7170) > 0) || (@outfit == 1)) goto L_BrideRegister2;
+	if ($groom$ == strcharinfo(0)) goto L_CantMarryYourself;
+	if ($@progress != 1) goto L_GroomNotRegistered;
+	if (@register >= 1) goto L_AlreadyRegistered;
+	if ((countitem(2338) > 0) || (countitem(7170) > 0) || (@outfit == 1)) goto L_BrideRegister2;
 	mes "[Marry Happy]";
-	if(sex == 1) mes "No problem sir, please fill out your name here.";
-	if(sex == 0) mes "No problem miss, please fill out your name here.";
+	if (sex == 1) mes "No problem sir, please fill out your name here.";
+	if (sex == 0) mes "No problem miss, please fill out your name here.";
 	mes "And I'll need to collect a 100,000z fee for your wedding fees and outfit.";
 	next;
-	if(zeny < @costbrideA) goto L_NeedZeny2;
+	if (zeny < @costbrideA) goto L_NeedZeny2;
 	mes "[Marry Happy]";
 	mes "Now You Must Insert The Your Groom's Name";
 	input $name2$;
-	if($name2$ != $groom$) goto L_WrongName;
+	if ($name2$ != $groom$) goto L_WrongName;
 	set $bride$,strcharinfo(0);
 	set @register,1;
 	set zeny,zeny-@costbrideA;
 	set $@progress,2;
 	set event_wedding,1;
-	if(sex == 1) getitem 7170,1;
-	if(sex == 0) getitem 2338,1;
+	if (sex == 1) getitem 7170,1;
+	if (sex == 0) getitem 2338,1;
 	set @outfit,1;
 	deltimer "weddinglimit1";
 	addtimer 300000,"weddinglimit2";
@@ -450,15 +450,15 @@ L_BrideRegister:
 
 L_GroomRegister2:
 	mes "[Marry Happy]";
-	if(sex == 1) mes "No problem sir, please fill out your name here.";
-	if(sex == 0) mes "No problem mis, please fill out your name here.";
+	if (sex == 1) mes "No problem sir, please fill out your name here.";
+	if (sex == 0) mes "No problem mis, please fill out your name here.";
 	mes "And I'll need to collect a 60,000z fee for your wedding fees.";
 	next;
 	mes "[Marry Happy]";
 	mes "Now You Must Insert The Your Bride's Name";
 	input $name$;
 	next;
-	if(zeny < @costgroomB) goto L_NeedZeny3;
+	if (zeny < @costgroomB) goto L_NeedZeny3;
 	set $groom$,strcharinfo(0);
 	set @register,1;
 	set zeny,zeny-@costgroomB;
@@ -475,15 +475,15 @@ L_GroomRegister2:
 
 L_BrideRegister2:
 	mes "[Marry Happy]";
-	if(sex == 1) mes "No problem sir, please fill out your name here.";
-	if(sex == 0) mes "No problem mis, please fill out your name here.";
+	if (sex == 1) mes "No problem sir, please fill out your name here.";
+	if (sex == 0) mes "No problem mis, please fill out your name here.";
 	mes "And I'll need to collect a 50,000z fee for your wedding fees.";
 	next;
-	if(zeny < @costbrideB) goto L_NeedZeny4;
+	if (zeny < @costbrideB) goto L_NeedZeny4;
 	mes "[Marry Happy]";
 	mes "Now You Must Insert The Your Groom's Name";
 	input $name2$;
-	if($name2$ != $groom$) goto L_WrongName;
+	if ($name2$ != $groom$) goto L_WrongName;
 	set $bride$,strcharinfo(0);
 	set @register,1;
 	set zeny,zeny-@costbrideB;

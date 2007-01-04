@@ -45,7 +45,7 @@ L_YellowToBlue:
 	goto L_BeginExchange;
 
 L_BeginExchange:
-	if(countitem(@SourceGemstonesID) >= 2) goto L_ExchangeOK;
+	if (countitem(@SourceGemstonesID) >= 2) goto L_ExchangeOK;
 	mes "[Jade]";
 	mes "Haha...!";
 	mes "Vous avez essayé de m'avoir!";
@@ -63,7 +63,7 @@ L_ExchangeOK:
 	menu "Toutes les prendre",L_ExchangeAll,"Je veux vous indiquer la quantité",L_PointCount,"Annuler",L_Cancel;
 
 L_ExchangeAll:
-	if(countitem(@SourceGemstonesID) < 2) goto L_ExchangeNo;
+	if (countitem(@SourceGemstonesID) < 2) goto L_ExchangeNo;
 	set @ExchangeCount,countitem(@SourceGemstonesID)/2;
 	delitem @SourceGemstonesID,@ExchangeCount*2;
 	getitem @TargetGemstonesID,@ExchangeCount;
@@ -76,10 +76,10 @@ L_PointCount:
 
 L_InputPointCount:
 	input @number;
-	if(countitem(@SourceGemstonesID) < 2) goto L_ExchangeNo;
-	if(@number < 0) goto L_ExchangeNo;
-	if(@number == 0) goto L_Cancel;
-	if(countitem(@SourceGemstonesID) < @number*2) goto L_ExchangeNotEnough;
+	if (countitem(@SourceGemstonesID) < 2) goto L_ExchangeNo;
+	if (@number < 0) goto L_ExchangeNo;
+	if (@number == 0) goto L_Cancel;
+	if (countitem(@SourceGemstonesID) < @number*2) goto L_ExchangeNotEnough;
 	delitem @SourceGemstonesID,@number*2;
 	getitem @TargetGemstonesID,@number;
 	goto L_ExchangeDone;

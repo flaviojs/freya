@@ -34,13 +34,13 @@
 //****************************************************************************//
 
 in_moc_16.gat,19,33,4	script	Guildsman	55,{
-	callfunc "F_BlockHigh",Job_Thief_High,"Thief High",Job_Assassin_Cross,"Assassin Cross","Assassin Huey";
+	callfunc "F_BlockHigh",JOB_THIEF_HIGH,"Thief High",JOB_ASSASSIN_CROSS,"Assassin Cross","Assassin Huey";
 
-	if(BaseJob==Job_Thief) goto L_Thief;
+	if (BaseJob == JOB_THIEF) goto L_Thief;
 	callfunc "Ass_check";
 
 L_Thief:
-	if(JobLevel >= 40) goto L_Start;
+	if (JobLevel >= 40) goto L_Start;
 	mes "Hmm? What brings you here?.... I don't think I like the way you're looking at me....?!";
 	emotion 1;
 	next;
@@ -52,9 +52,9 @@ L_Thief:
 	close;
 
 L_Start:
-	if(ASSIN_Q == 1) goto L_Failed1;
-	if(ASSIN_Q == 2) goto L_Failed2;
-	if(ASSIN_Q == 4) goto L_Change;
+	if (ASSIN_Q == 1) goto L_Failed1;
+	if (ASSIN_Q == 2) goto L_Failed2;
+	if (ASSIN_Q == 4) goto L_Change;
 	mes ".... A Thief huh?..... And a well trained one at that, cause I can't seem to find my wallet!";
 	emotion 18;
 	next;
@@ -106,7 +106,7 @@ L_Failed2:
 
 L_Change:
 	if (skillpoint > 0) goto L_SkPoints;
-	if(countitem(1008) < 1) goto L_NoNecklace;
+	if (countitem(1008) < 1) goto L_NoNecklace;
 	mes "Ah... the Necklace of Oblivion..... that means that the Guild Master has accepted you into the Assassin clan.";
 	next;
 	mes "[Assassin Huey]";
@@ -116,7 +116,7 @@ L_Change:
 	mes "[Assassin Huey]";
 	mes "Very well done, you are now offically an Assassin.  Although you are free to visit us at anytime..............";
 	setlook 7,0;
-	callfunc "Job_Change",Job_Assassin;
+	callfunc "Job_Change",JOB_ASSASSIN;
 	callfunc "F_ClearJobVar";		// clears all job variables for the current player
 	set kaitrig, 0;
 	next;
@@ -175,7 +175,7 @@ OnTouch:
 
 // Assassin Kai: Second Position ==============================
 in_moc_16.gat,25,90,4	script	Assassin Kai#2	730,2,1,{
-	if(kaitrig == 1) goto OnTouch;
+	if (kaitrig == 1) goto OnTouch;
 	mes "[Assassin Kai]";
 	mes "Come closer to me, I like to see a persons face when I'm talking to them.";
 	close;
@@ -183,7 +183,7 @@ in_moc_16.gat,25,90,4	script	Assassin Kai#2	730,2,1,{
 OnTouch:
 	set kaitrig, 1;
 	mes "[Assassin Kai]";
-	if(ASSIN_Q==1) goto L_Failed;
+	if (ASSIN_Q==1) goto L_Failed;
 	mes "So you're an Assassin candidate.... ~sigh~.... Let me apologize for my behavior....";
 	mes "You see, when someone comes near me, I can't help but hide...... it's a bad habbit really....";
 	next;
@@ -202,7 +202,7 @@ OnTouch:
 		mes "Let's see... your name is ^5533FF" +strcharinfo(0)+ "^000000... and you have a job level of "+JobLevel+"....";
 		next;
 		mes "[AssassinKai]";
-		if(JobLevel == 50) goto sL_HighLvl;
+		if (JobLevel == 50) goto sL_HighLvl;
 		mes "Well, you barely passed the job requirements but, meh, it's not important";
 		mes "~mumbles~(no one has any guts anymore.... bunch of pansies......)";
 		next;
@@ -398,8 +398,8 @@ L_Failed:
 			close;
 
 sF_Quiz:
-	if(@temp == 1) goto sL_Quiz2;
-	if(@temp == 2) goto sL_Quiz3;
+	if (@temp == 1) goto sL_Quiz2;
+	if (@temp == 2) goto sL_Quiz3;
 
 	sL_Quiz1:
 		mes "[Assassin Kai]";
@@ -482,7 +482,7 @@ sF_Quiz:
 // Keeps the player from moving to far into the room.
 // This is to avoid cheaters who might try to take Bakardi's test first.
 in_moc_16.gat,19,144,1	script	getbacker	139,8,0,{
-	if(ASSIN_Q > 1) end;
+	if (ASSIN_Q > 1) end;
 	warp "in_moc_16.gat",19,142;
 	addtimer 700, "Nameless One::OnTimer700";
 	end;
@@ -492,7 +492,7 @@ in_moc_16.gat,19,144,1	script	getbacker	139,8,0,{
 in_moc_16.gat,19,150,1	script	Nameless One	139,{
 
 OnTimer700:
-	if(ASSIN_Q == 1) goto L_ReTest;
+	if (ASSIN_Q == 1) goto L_ReTest;
 	set @LISTEN, 0;
 
 	mes "[Nameless One]";
@@ -644,7 +644,7 @@ OnTimer700:
 			goto sM_Menu;
 		sM_End:
 			set ASSIN_Q, 1;
-			if(@LISTEN > 0) goto L_Test;
+			if (@LISTEN > 0) goto L_Test;
 			mes "[Nameless One]";
 			mes "Hahaha! You're very cocky aren't you..... Don't want to listen to what I have to say eh?!";
 			next;
@@ -664,8 +664,8 @@ L_Test:
 	mes "[Nameless One]";
 	mes "Alright, let us begin.....";
 	next;
-	if(@temp == 1) goto L_Quiz2;
-	if(@temp == 2) goto L_Quiz3;
+	if (@temp == 1) goto L_Quiz2;
+	if (@temp == 2) goto L_Quiz3;
 
 	L_Quiz1:
 		mes "[Nameless One]";
@@ -918,7 +918,7 @@ L_Score:
 	next;
 	mes "[Nameless One]";
 	mes "Here is your test score: ^FF5544" +@score+ "^000000/100....";
-	if(@score < 90) goto L_Failed;
+	if (@score < 90) goto L_Failed;
 	mes "... Very well, you passed the quiz.";
 	next;
 	mes "[Nameless One]";
@@ -1111,7 +1111,7 @@ OnTimer500:
 OnMobDead:
 	set $@SinMob, $@SinMob -1;
 	areaannounce "in_moc_16.gat", 60, 136, 93, 177, "Good.  You have " + $@SinMob + " targets left to eliminate.",8;
-	if($@SinMob > 0) end;
+	if ($@SinMob > 0) end;
 
 	stopnpctimer "TimerSin";
 	killmonsterall "in_moc_16.gat";
@@ -1241,7 +1241,7 @@ in_moc_16.gat,87,147,0	duplicate(SinTrap)	18_4	139,0,0
 // Thomas ===============================>\\
 in_moc_16.gat,89,98,1	script	Thomas	118,4,2,{
 OnTimer600:
-	if(ASSIN_Q2 == 1) goto L_ReTest;
+	if (ASSIN_Q2 == 1) goto L_ReTest;
 	mes "[Thomas]";
 	mes "My name is Thomas and I am in charge of this portion of the test.";
 	next;
@@ -1390,7 +1390,7 @@ OnTimer188000:
 // Warp
 //=============================================//
 in_moc_16.gat,182,169,1	script	sinWarp3	45,1,1,{
-	if(getareausers(("in_moc_16.gat"),148,74,187,117) > 0) goto L_Wait;
+	if (getareausers(("in_moc_16.gat"),148,74,187,117) > 0) goto L_Wait;
 	disablenpc "Huey#End";
 	disablenpc "Kai#End";
 	disablenpc "Nameless One#End";
@@ -1488,8 +1488,8 @@ OnTouch:
 	mes "'Looks like the Nameless One more or less supports you.  What are your thought Huey?";
 	next;
 	mes "[Huey]";
-	//if( == 1) mes "...What can I say, one of the best Assassin candidates I've seen in the last few weeks.";
-	//if( == 0) mes "... Although a little too mellow and gentle... sort of like a pussy cat, Hahahaha....";
+	//if (== 1) mes "...What can I say, one of the best Assassin candidates I've seen in the last few weeks.";
+	//if (== 0) mes "... Although a little too mellow and gentle... sort of like a pussy cat, Hahahaha....";
 	mes "I think ^5533FF" + strcharinfo(0) + "^000000 will be fine as an Assassin.";
 	next;
 	mes "[Huey]";
@@ -1514,7 +1514,7 @@ OnTouch:
 	mes "[Guild Master]";
 	mes "... I think I've said enough.  Here please take this........";
 	next;
-	if(JBLVL == 40) goto L_LowLvl;
+	if (JBLVL == 40) goto L_LowLvl;
 
 	L_HighLvl:
 		menu "Jur",sM_Jur, "Katar",sM_Kat, "Main Gauche",sM_Main, "Gladius",sM_Glad;
@@ -1534,9 +1534,9 @@ OnTouch:
 
 	L_LowLvl:
 		set @temp, rand(1, 3);
-		if(@temp==1) getitem 1250, 1;
-		if(@temp==2) getitem 1217, 1;
-		if(@temp==3) getitem 1252, 1;
+		if (@temp==1) getitem 1250, 1;
+		if (@temp==2) getitem 1217, 1;
+		if (@temp==3) getitem 1252, 1;
 
 	L_Cont1:
 	mes "[Guild Master]";
@@ -1748,8 +1748,8 @@ sF_Questions2:
 			return;
 		sM_5c:
 			mes "[Guild Master]";
-			if(sex == 1) mes "Oh you have a girlfriend... then become her shadow and protect her.";
-			if(sex == 0) mes "Oh you have a boyfriend... then become his shadow and protect him.";
+			if (sex == 1) mes "Oh you have a girlfriend... then become her shadow and protect her.";
+			if (sex == 0) mes "Oh you have a boyfriend... then become his shadow and protect him.";
 			next;
 			mes "[Guild Master]";
 			mes "As an Assassin you will find it very difficult to ever meet someone else, so make sure you treasure what you have now.";

@@ -40,13 +40,13 @@ lhz_in02.gat,281,35,5	script	Socket Enchant	84,{
       mes "Choose the number of page. Type 1 to 5:";
       next;
       input @weapsite;
-      if(@weapsite > 5 || @weapsite < 1) goto L_WaepJump;
+      if (@weapsite > 5 || @weapsite < 1) goto L_WaepJump;
 
-      if(@weapsite == 1) goto L_Weapon1;
-      if(@weapsite == 2) goto L_Weapon2;
-      if(@weapsite == 3) goto L_Weapon3;
-      if(@weapsite == 4) goto L_Weapon4;
-      if(@weapsite == 5) goto L_Weapon5; 
+      if (@weapsite == 1) goto L_Weapon1;
+      if (@weapsite == 2) goto L_Weapon2;
+      if (@weapsite == 3) goto L_Weapon3;
+      if (@weapsite == 4) goto L_Weapon4;
+      if (@weapsite == 5) goto L_Weapon5; 
 
 
   L_Weapon1:
@@ -246,14 +246,14 @@ lhz_in02.gat,281,35,5	script	Socket Enchant	84,{
       mes "Choose the number of page. Type 1 to 6:";
       next;
       input @armorsite;
-      if(@armorsite > 6 || @armorsite < 1) goto L_ArmorJump;
+      if (@armorsite > 6 || @armorsite < 1) goto L_ArmorJump;
 
-      if(@armorsite == 1) goto L_Armor1;
-      if(@armorsite == 2) goto L_Armor2;
-      if(@armorsite == 3) goto L_Armor3;
-      if(@armorsite == 4) goto L_Armor4;
-      if(@armorsite == 5) goto L_Armor5;
-      if(@armorsite == 6) goto L_Armor6;
+      if (@armorsite == 1) goto L_Armor1;
+      if (@armorsite == 2) goto L_Armor2;
+      if (@armorsite == 3) goto L_Armor3;
+      if (@armorsite == 4) goto L_Armor4;
+      if (@armorsite == 5) goto L_Armor5;
+      if (@armorsite == 6) goto L_Armor6;
 
 
   L_Armor1:
@@ -552,14 +552,14 @@ function	script	addslot	{
       menu "Yes",-,"No",L_No;
 
 
-           if(countitem(@olditem)<1) goto L_NoItem;
-           if(Zeny<@addprice) goto L_NoZeny;
-           if(countitem(@itemup)<@itemupiece) goto L_NoItemUp;
+           if (countitem(@olditem)<1) goto L_NoItem;
+           if (Zeny<@addprice) goto L_NoZeny;
+           if (countitem(@itemup)<@itemupiece) goto L_NoItemUp;
 
            delitem @itemup,@itemupiece;
            set Zeny,Zeny-@addprice;
            delitem @olditem,1;
-           if(@rateit<rand(1,100))goto L_Fail;
+           if (@rateit<rand(1,100)) goto L_Fail;
            misceffect 83;
            getitem @newitem,1;
 
@@ -611,15 +611,15 @@ function	script	addslot2	{
       menu "Yes",-,"No",L_No;
 
 
-           if(countitem(@olditem)<1) goto L_NoItem;
-           if(Zeny<@addprice) goto L_NoZeny;
-           if((countitem(@itemup1)<@itemupiece1) && (countitem(@itemup2)<@itemupiece2)) goto L_NoItemUp;
+           if (countitem(@olditem)<1) goto L_NoItem;
+           if (Zeny<@addprice) goto L_NoZeny;
+           if ((countitem(@itemup1)<@itemupiece1) && (countitem(@itemup2)<@itemupiece2)) goto L_NoItemUp;
 
            delitem @itemup1,@itemupiece1;
            delitem @itemup2,@itemupiece2;
            set Zeny,Zeny-@addprice;
            delitem @olditem,1;
-           if(@rateit<rand(1,100))goto L_Fail;
+           if (@rateit<rand(1,100)) goto L_Fail;
            misceffect 83;
            getitem @newitem,1;
 

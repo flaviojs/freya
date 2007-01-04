@@ -30,8 +30,8 @@
 
 //<=================== Some dog =========================>
 gef_tower.gat,107,35,5	script	Some Dog	81,{
-	callfunc "F_BlockHigh",Job_Mage_High,"High Mage",Job_High_Wizard,"High Wizard","Dog";
-	if(BaseJob == Job_Mage) goto L_JobMage;
+	callfunc "F_BlockHigh",JOB_MAGE_HIGH,"High Mage",JOB_HIGH_WIZARD,"High Wizard","Dog";
+	if (BaseJob == JOB_MAGE) goto L_JobMage;
 	callfunc "Wiz1_check";
 
 L_JobMage:
@@ -136,18 +136,18 @@ L_JobMage:
 
 //<=========================================== Registrar and Examiner Catherine Medichi ==============================================>\\
 gef_tower.gat,111,37,4	script	Catherine Medichi	68,{
-	callfunc "F_BlockHigh",Job_Mage_High,"High Mage",Job_High_Wizard,"High Wizard","Catherine Medichi";
+	callfunc "F_BlockHigh",JOB_MAGE_HIGH,"High Mage",JOB_HIGH_WIZARD,"High Wizard","Catherine Medichi";
 
 	mes "[Catherine Medichi]";
-	if(BaseJob == Job_Mage) goto L_Mage;
+	if (BaseJob == JOB_MAGE) goto L_Mage;
 	callfunc "Wiz2_check";
 
 L_Mage:
-	if(WIZ_Q == 1 && JobLevel == 50) goto sL_Job50; // fix posted by [general] on freya's bug report
-	if(WIZ_Q == 2) goto L_Test2;
-	if(WIZ_Q == 3) goto L_Test3;
-	if(WIZ_Q == 4) goto L_Done;
-	if(WIZ_Q2 > 0) goto L_Test1;
+	if (WIZ_Q == 1 && JobLevel == 50) goto sL_Job50; // fix posted by [general] on freya's bug report
+	if (WIZ_Q == 2) goto L_Test2;
+	if (WIZ_Q == 3) goto L_Test3;
+	if (WIZ_Q == 4) goto L_Done;
+	if (WIZ_Q2 > 0) goto L_Test1;
 
 	mes "My name's Catherine Medichi, and I just became a Wizard.  Relax, you can call me Catherine.";
 	next;
@@ -162,8 +162,8 @@ L_Mage:
 		next;
 		mes "(you fill out the form and hand it back)";
 		next;
-		if(JobLevel < 40) goto sL_JobLvl;
-		if(JobLevel == 50) goto sL_Job50;
+		if (JobLevel < 40) goto sL_JobLvl;
+		if (JobLevel == 50) goto sL_Job50;
 
 		mes "[Catherine]";
 		mes "Alright ^ff0000"+strcharinfo(0)+"^000000, it looks like you have everything in order.";
@@ -184,7 +184,7 @@ L_Mage:
 
 		mes "[Catherine Medichi]";
 		mes "The items you need to bring are:";
-		if(WIZ_Q2 == 2) goto R_2;
+		if (WIZ_Q2 == 2) goto R_2;
 
 		R_1:
 			mes "- 10 ^ff0000Red gemstones^000000";
@@ -254,8 +254,8 @@ L_Mage:
 		mes "Did you get all of the items? Let's see......";
 		next;
 		mes "[Catherine Medichi]";
-		if(WIZ_Q2 == 1) goto sL_Gems;
-		if(WIZ_Q2 == 2) goto sL_Ores;
+		if (WIZ_Q2 == 1) goto sL_Gems;
+		if (WIZ_Q2 == 2) goto sL_Ores;
 
 		sL_Gems:
 			if (countitem(716)<10 || countitem(717)<10 || countitem(715)<10) goto ssL_NotDone;
@@ -296,12 +296,12 @@ L_Mage:
 				next;
 				mes "[Catherine Medichi]";
 				mes "You need:";
-				if(WIZ_Q2 == 1) goto R_1;
-				if(WIZ_Q2 == 2) goto R_2;
+				if (WIZ_Q2 == 1) goto R_1;
+				if (WIZ_Q2 == 2) goto R_2;
 				close;
 
 	L_Test2:
-		if(WIZ_Q2 == 1)goto sL_Failed2;
+		if (WIZ_Q2 == 1) goto sL_Failed2;
 		mes "Hey, did you go talk to the man? No? You can't just become a wizard by getting items.";
 		next;
 		mes "[Catherine Medichi]";
@@ -386,7 +386,7 @@ L_Mage:
 				close;
 
 	L_Test3:
-		if(WIZ_Q2 == 1) goto sL_Failed3;
+		if (WIZ_Q2 == 1) goto sL_Failed3;
 		mes "He he, I could hear you in there working hard on those questions.";
 		next;
 		mes "[Catherine Medichi]";
@@ -399,8 +399,8 @@ L_Mage:
 		sL_Failed3:
 			mes "Why did you come out during the test? I never thought you were that weak...";
 			next;
-			if(sex==1) goto ssL_M3;
-			if(sex==0) goto ssL_F3;
+			if (sex==1) goto ssL_M3;
+			if (sex==0) goto ssL_F3;
 
 			ssL_M3:
 				mes "[Catherine Medichi]";
@@ -417,8 +417,8 @@ L_Mage:
 
 
 	L_Done:
-		if(SkillPoint > 0) mes "You need to use up all of your skill points before I can make you a Wizard.";
-		if(SkillPoint > 0) close;
+		if (SkillPoint > 0) mes "You need to use up all of your skill points before I can make you a Wizard.";
+		if (SkillPoint > 0) close;
 
 		mes "Great! You finished all of the tests! Congrats, congrats, congrats!!";
 		emotion 21;
@@ -426,7 +426,7 @@ L_Mage:
 		mes "[Catherine Medichi]";
 		mes "Ack, I'm wasting time, I better change you!";
 		next;
-		callfunc "Job_Change",Job_Wizard;
+		callfunc "Job_Change",JOB_WIZARD;
 		callfunc "F_ClearJobVar";		// clears all job variables for the current player
 
 		mes "[Catherine Medichi]";
@@ -458,10 +458,10 @@ L_Mage:
 //<================================================ Examiner: Raul Expagarus ==================================================>\\
 gef_tower.gat,102,24,3	script	Raul Expagarus	735,{
 	mes "[Raul Expagarus]";
-	if(BaseJob == Job_Mage) goto L_Mage;
-	if(BaseJob == Job_Wizard) goto L_Wizard;
-	if(callfunc("Is_Holy_Class")) goto L_Holy;
-	if(BaseJob == Job_Novice) goto L_Novice;
+	if (BaseJob == JOB_MAGE) goto L_Mage;
+	if (BaseJob == JOB_WIZARD) goto L_Wizard;
+	if (callfunc("Is_Holy_Class")) goto L_Holy;
+	if (BaseJob == JOB_NOVICE) goto L_Novice;
 L_Other:
 	mes "Ugh, I don't feel good....I feel like I'm trapped in ice........";
 	next;
@@ -486,8 +486,8 @@ L_Wizard:
 	mes "Cough Cough, what can I do for you? Hmmm... you're a magic user too...";
 	next;
 	mes "[Raul Expagarus]";
-	if(sex==1) goto L_M;
-	if(sex==0) goto L_F;
+	if (sex==1) goto L_M;
+	if (sex==0) goto L_F;
 
 	L_M:
 		mes "If you're not responsible, you might accidently learn useless spells.";
@@ -506,10 +506,10 @@ L_Wizard:
 		close;
 
 L_Mage:
-	if(WIZ_Q == 1) goto L_NotRdy;
-	if(WIZ_Q == 2) goto L_Test2;
-	if(WIZ_Q == 3) goto L_Test3;
-	if(WIZ_Q == 4) goto L_Done;
+	if (WIZ_Q == 1) goto L_NotRdy;
+	if (WIZ_Q == 2) goto L_Test2;
+	if (WIZ_Q == 3) goto L_Test3;
+	if (WIZ_Q == 4) goto L_Done;
 
 		mes "Cough, I don't have any time to talk.";
 		next;
@@ -536,7 +536,7 @@ L_Mage:
 		close;
 
 	L_Test2:
-		if(WIZ_Q2 == 1) goto sL_ReTest2;
+		if (WIZ_Q2 == 1) goto sL_ReTest2;
 
 		mes "I see you've passed the 1st test.  My name is Raul Expagarus,  I'm your test examiner.";
 		next;
@@ -581,8 +581,8 @@ L_Mage:
 			next;
 			set @SCORE,0;
 			set @temp,rand(0,2);
-			if(@temp == 1) goto R_1;
-			if(@temp == 2) goto R_2;
+			if (@temp == 1) goto R_1;
+			if (@temp == 2) goto R_2;
 
 			//Spell Quiz
 			R_0:
@@ -904,8 +904,8 @@ L_Mage:
 			mes "Anyway, here is your score: ^ff0000"+@SCORE+"^000000 points.";
 			next;
 			mes "[Raul Expagarus]";
-			if(@SCORE == 100) goto sL_Pass100;
-			if(@SCORE == 90) goto sL_Pass90;
+			if (@SCORE == 100) goto sL_Pass100;
+			if (@SCORE == 90) goto sL_Pass90;
 
 			sL_Failed:
 				set WIZ_Q2, 1;
@@ -935,7 +935,7 @@ L_Mage:
 
 
 	L_Test3:
-		if(WIZ_Q2 == 1) goto sL_ReTest3;
+		if (WIZ_Q2 == 1) goto sL_ReTest3;
 		mes "Got some rest? Good.  Now, let's start the last test.";
 		next;
 		mes "[Raul Expagarus]";
@@ -1307,9 +1307,9 @@ OnMyMobDead2:
 job_wiz.gat,1,1,1	script	TimerWz	-1,{
 
 OnTimer1000:
-	if($@WzRm==1) areaannounce "job_wiz.gat", 98, 154, 129, 185, "[Test Guide]: Room of Water, testing will begin.",8;
-	if($@WzRm==2) areaannounce "job_wiz.gat", 100, 82, 131, 113, "[Test Guide]: Room of Earth, testing will begin.",8;
-	if($@WzRm==3) areaannounce "job_wiz.gat", 30, 82, 61, 113, "[Test Guide]: Room of Fire, testing will begin.",8;
+	if ($@WzRm==1) areaannounce "job_wiz.gat", 98, 154, 129, 185, "[Test Guide]: Room of Water, testing will begin.",8;
+	if ($@WzRm==2) areaannounce "job_wiz.gat", 100, 82, 131, 113, "[Test Guide]: Room of Earth, testing will begin.",8;
+	if ($@WzRm==3) areaannounce "job_wiz.gat", 30, 82, 61, 113, "[Test Guide]: Room of Fire, testing will begin.",8;
 	end;
 OnTimer4000:
 	set $@WzTime$, "You have 3 minutes to defeat all of the monsters in this room starting now!";
@@ -1341,17 +1341,17 @@ OnTimer184000:
 	callsub AnnounceWz;
 OnTimer188000:
 	stopnpctimer;
-	if($@WzRm==1) areawarp "job_wiz.gat", 98, 154, 129, 185, "gef_tower.gat",106, 35;
-	if($@WzRm==2) areawarp "job_wiz.gat", 100, 82, 131, 113, "gef_tower.gat",106, 35;
-	if($@WzRm==3) areawarp "job_wiz.gat", 30, 82, 61, 113, "gef_tower.gat",106, 35;
+	if ($@WzRm==1) areawarp "job_wiz.gat", 98, 154, 129, 185, "gef_tower.gat",106, 35;
+	if ($@WzRm==2) areawarp "job_wiz.gat", 100, 82, 131, 113, "gef_tower.gat",106, 35;
+	if ($@WzRm==3) areawarp "job_wiz.gat", 30, 82, 61, 113, "gef_tower.gat",106, 35;
 	killmonsterall "job_wiz.gat";
 	donpcevent "WzTG::OnStart";
 	end;
 
 AnnounceWz:
-	if($@WzRm==1) areaannounce "job_wiz.gat", 98, 154, 129, 185, "[Test Guide]: "+$@WzTime$+".",8;
-	if($@WzRm==2) areaannounce "job_wiz.gat", 100, 82, 131, 113, "[Test Guide]: "+$@WzTime$+".",8;
-	if($@WzRm==3) areaannounce "job_wiz.gat", 30, 82, 61, 113, "[Test Guide]: "+$@WzTime$+".",8;
+	if ($@WzRm==1) areaannounce "job_wiz.gat", 98, 154, 129, 185, "[Test Guide]: "+$@WzTime$+".",8;
+	if ($@WzRm==2) areaannounce "job_wiz.gat", 100, 82, 131, 113, "[Test Guide]: "+$@WzTime$+".",8;
+	if ($@WzRm==3) areaannounce "job_wiz.gat", 30, 82, 61, 113, "[Test Guide]: "+$@WzTime$+".",8;
 	end;
 }
 

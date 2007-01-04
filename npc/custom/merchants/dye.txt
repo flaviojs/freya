@@ -69,8 +69,8 @@ prontera.gat,149,189,1	script	Stylist	122,{
 		set @look,@look+1;
 		setlook 1,@look;
 		mes "This is Pallete Number^FF9009 "+@look+" ^000000!";
-		if(@look == 23) menu "Back To The Begin",Lbrowsesty,"I like this one",Lstop;
-		if(@look != 23) menu "Keep going",Lbrowserep,"I like this one",Lstop;
+		if (@look == 23) menu "Back To The Begin",Lbrowsesty,"I like this one",Lstop;
+		if (@look != 23) menu "Keep going",Lbrowserep,"I like this one",Lstop;
 
 	Lcolor:
 		mes "[^FF8000Stylist^000000]";
@@ -120,8 +120,8 @@ prontera.gat,149,189,1	script	Stylist	122,{
 		set @look,@look+1;
 		setlook 6,@look;
 		mes "This is Pallete Number^FF9009 "+@look+" ^000000!";
-		if(@look == 8) menu "Back To The Begin",Lbrowsecolor,"I like this one",Lstop;
-		if(@look != 8) menu "Keep going",Lbrowsecolorrep,"I like this one",Lstop;
+		if (@look == 8) menu "Back To The Begin",Lbrowsecolor,"I like this one",Lstop;
+		if (@look != 8) menu "Keep going",Lbrowsecolorrep,"I like this one",Lstop;
 
 		Lstop:
 			mes "[^FF8000Stylist^000000]";
@@ -171,7 +171,7 @@ prontera.gat,149,189,1	script	Stylist	122,{
 		set @look,@look+1;
 		setlook 7,@look;
 		mes "This is Pallete Number^FF9009 "+@look+" ^000000!";
-		if(@look == 77) menu "Back To The Begin",Lbrowsecloth,"I like this one",Lstop;
-		if(@look != 77) menu "Keep going",Lbrowseclothrep,"I like this one",Lstop;
+		if (@look == 77) menu "Back To The Begin",Lbrowsecloth,"I like this one",Lstop;
+		if (@look != 77) menu "Keep going",Lbrowseclothrep,"I like this one",Lstop;
 }
 

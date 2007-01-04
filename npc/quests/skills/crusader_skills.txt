@@ -27,8 +27,8 @@
 //============================================================
 geffen.gat,110,118,3	script	Ford	752,{
 	mes "[Ford]";
-	if(BaseJob != Job_Crusader && BaseJob != Job_Crusader2) goto L_nocruz;
-	if(getskilllv(1002)) goto L_alreadyhave;
+	if (BaseJob != JOB_CRUSADER && BaseJob != JOB_CRUSADER2) goto L_nocruz;
+	if (getskilllv(1002)) goto L_alreadyhave;
 	mes "Maybe I'll teach you a little skill";
 	mes "if you bring me a few things...";
 	mes "Bring me these items and we'll";
@@ -49,7 +49,7 @@ geffen.gat,110,118,3	script	Ford	752,{
 	mes "Let me check your items.";
 	next;
 	
-	if(countitem(501)<1 || countitem(938)<20 || countitem(713)<3 || countitem(909)<5 || countitem(619)<1 || countitem(514)<1 || countitem(1003)<1 || countitem(7053)<3)goto L_noitems;//Items: Red_Potion, Sticky_Mucus, Empty_Bottle, Jellopy, Unripe_Apple, Grape, Coal, Cyfar,
+	if (countitem(501)<1 || countitem(938)<20 || countitem(713)<3 || countitem(909)<5 || countitem(619)<1 || countitem(514)<1 || countitem(1003)<1 || countitem(7053)<3) goto L_noitems;//Items: Red_Potion, Sticky_Mucus, Empty_Bottle, Jellopy, Unripe_Apple, Grape, Coal, Cyfar,
 	delitem 501, 1;//Items: Red_Potion,
 	delitem 938, 20;//Items: Sticky_Mucus,
 	delitem 713, 3;//Items: Empty_Bottle,
@@ -64,7 +64,7 @@ geffen.gat,110,118,3	script	Ford	752,{
 //TODO: add DICE emotions? 8)
 	emotion e_gg;
 	next;
-	if(rand(1,6)!=3) goto L_lose;
+	if (rand(1,6)!=3) goto L_lose;
 	emotion 58;
 	next;
 	

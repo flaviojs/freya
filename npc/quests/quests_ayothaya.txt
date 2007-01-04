@@ -35,7 +35,7 @@
 //============================================== Ayothaya Clue
 //====================================================== Quest
 ayo_dun02.gat,277,178,1	script	OBB	139,4,4,{
-	if(AyoOBB==1 || weddingring!=3) end;
+	if (AyoOBB==1 || weddingring!=3) end;
 	mes "["+strcharinfo(0)+"]";
 	mes "Huh what is this?, not foot prints, this is an Old Blue coloured Box";
 	next;
@@ -48,31 +48,31 @@ ayo_dun02.gat,277,178,1	script	OBB	139,4,4,{
 }
 //Dungeon 1 foot prints x 5
 ayo_dun01.gat,30,149,1	script	Clue#01	139,5,5,{
-	if(weddingring!=3) end;
+	if (weddingring!=3) end;
 	npctalk "There are some foot prints here, they head off to the East.";
 	set @footprints1,1;
 	close;
 }
 ayo_dun01.gat,70,149,1	script	Clue#02	139,5,5,{
-	if(weddingring!=3) end;
+	if (weddingring!=3) end;
 	npctalk "There are some more foot prints, they are heading off to the East too!";
 	set @footprints2,1;
 	close;
 }
 ayo_dun01.gat,100,149,1	script	Clue#03	139,5,5,{
-	if(weddingring!=3) end;
+	if (weddingring!=3) end;
 	npctalk "More foot prints heading to the East, who do they belong too?";
 	set @footprints3,1;
 	close;
 }
 ayo_dun01.gat,190,149,1	script	Clue#04	139,5,5,{
-	if(weddingring!=3) end;
+	if (weddingring!=3) end;
 	npctalk "More foot prints, but these are going North.";
 	set @footprints4,1;
 	close;
 }
 ayo_dun01.gat,261,263,1	script	Clue#05	139,5,5,{
-	if(weddingring!=3) end;
+	if (weddingring!=3) end;
 	npctalk "There are some foot prints, they seem to head into that hole there.";
 	set @footprints5,1;
 	close;
@@ -80,44 +80,44 @@ ayo_dun01.gat,261,263,1	script	Clue#05	139,5,5,{
 
 //Dungeon 2 foot prints x 4 + 1 fake
 ayo_dun02.gat,222,204,1	script	Clue#06	139,5,5,{
-	if(weddingring!=3) end;
+	if (weddingring!=3) end;
 	npctalk "Yet more foot prints, they are either going South or West.";
 	set @footprints6,1;
 	close;
 }
 ayo_dun02.gat,169,212,1	script	Clue#07	139,5,5,{
-	if(weddingring!=3) end;
+	if (weddingring!=3) end;
 	npctalk "Looks like there are foot print going to the West.";
 	set @footprints7,1;
 	close;
 }
 ayo_dun02.gat,129,212,1	script	Clue#08	139,5,5,{
-	if(weddingring!=3) end;
+	if (weddingring!=3) end;
 	npctalk "Ok these foot prints are either going to the North or West.";
 	set @footprints8,1;
 	close;
 }
 ayo_dun02.gat,79,212,1	script	Clue#09	139,7,7,{
-	if(weddingring!=3) end;
+	if (weddingring!=3) end;
 	npctalk "These are very new, they are going North.";
 	set @footprints9,1;
 	close;
 }
 //FAKE
 ayo_dun02.gat,245,166,1	script	Clue#10	139,7,7,{
-	if(weddingring!=3) end;
+	if (weddingring!=3) end;
 	npctalk "Seems something came by this way, to the East.";
 	close;
 }
 
 ayothaya.gat,233,105,7	script	Shuda	838,{
 	mes "[Shuda]";
-	if(BaseLevel<50)goto L_WhereRing;
-	if(weddingring==2) goto L_Quest2;
-	if(weddingring==3) goto L_OnQ2;
-	if(weddingring==4) goto L_QuestComplete;
-	if(weddingring==5) goto L_QuestOver;
-	if(countitem(7288)>=1) goto L_RingFound;
+	if (BaseLevel<50) goto L_WhereRing;
+	if (weddingring==2) goto L_Quest2;
+	if (weddingring==3) goto L_OnQ2;
+	if (weddingring==4) goto L_QuestComplete;
+	if (weddingring==5) goto L_QuestOver;
+	if (countitem(7288)>=1) goto L_RingFound;
 	mes "Oh please wont you help me, my partner has gone missing, but not before droping our ^FF0000Engagement Ring^000000 maybe there is a way of ^0000FFfishing^000000 it out of the sea.";
 	set weddingring,1;
 	close;
@@ -140,7 +140,7 @@ L_WhereRing:
 		
 N_Yes:
 	mes "[Shuda]";
-	if(countitem(7288)<1)goto L_AwayCheater;
+	if (countitem(7288)<1) goto L_AwayCheater;
 
 	delitem 7288,1;
 	mes "Thank you so much, now I have this back maybe my partner will return.";
@@ -205,7 +205,7 @@ ayothaya.gat,253,99,3	script	Fisherman#01	843,{
 	mes "like to try?";
 	next;
 	menu "Yes",-,"No",L_No;
-	if(countitem(528) < 1 || zeny < 50) goto L_Fail;
+	if (countitem(528) < 1 || zeny < 50) goto L_Fail;
 	delitem 528,1;
 	set zeny,zeny-50;
 	mes "[Fisher Man]";
@@ -214,9 +214,9 @@ ayothaya.gat,253,99,3	script	Fisherman#01	843,{
 	next;
 	set @fishing, rand(1,10);
 	mes "[Fisher Man]";
-	if(@fishing<5) goto L_Nothing;
-	if(@fishing<10) goto L_Fish;
-	if(@fishing==10) goto L_RingCheck;
+	if (@fishing<5) goto L_Nothing;
+	if (@fishing<10) goto L_Fish;
+	if (@fishing==10) goto L_RingCheck;
 L_No:
 	mes "[Dannai]";
 	mes "Come back anytime.";
@@ -234,7 +234,7 @@ L_Fish:
 	mes "Look at this you got yourself a fish, well done.";
 	close;
 L_RingCheck:
-	if(weddingring!=1 || recoveredring==1) goto L_Fish;
+	if (weddingring!=1 || recoveredring==1) goto L_Fish;
 	mes "What is this, some sort of ring!!!";
 	mes "Well I guess since you fished it out you can keep it";
 	next;
@@ -248,7 +248,7 @@ L_RingCheck:
 
 ayothaya.gat,192,171,4	script	Old Man#10	824,{
 	mes "[Tham]";
-	if(weddingring==3) goto L_OnQ2;
+	if (weddingring==3) goto L_OnQ2;
 	mes "What a nice day it is today, don't you agree?";
 	close;
 L_OnQ2:
@@ -268,9 +268,9 @@ L_OnQ2:
 }
 
 ayo_dun02.gat,91,264,4	script	Guy	822,{
-	if(weddingring==4) goto L_QuestComplete;
-	if(weddingring==5) goto L_TalkedShuda;
-	if(weddingring==3 && @footprints1==1 && @footprints2==1 && @footprints3==1 && @footprints4==1 && @footprints5==1 && @footprints6==1 && @footprints7==1 && @footprints8==1 && @footprints9==1) goto L_Groom;
+	if (weddingring==4) goto L_QuestComplete;
+	if (weddingring==5) goto L_TalkedShuda;
+	if (weddingring==3 && @footprints1==1 && @footprints2==1 && @footprints3==1 && @footprints4==1 && @footprints5==1 && @footprints6==1 && @footprints7==1 && @footprints8==1 && @footprints9==1) goto L_Groom;
 	mes "[Guy]";
 	mes "She won't find me here,she won't...";
 	close;
@@ -283,7 +283,7 @@ L_Groom:
 	mes "^He seems to be injured very bad...";
 	next;
 	menu "Treat his wounds",-,"Leave him alone",L_Go;
-	if(countitem(504) < 1) goto L_Need;
+	if (countitem(504) < 1) goto L_Need;
 	delitem 504,1;
 	mes "[Annon]";
 	mes "Who are you";
@@ -426,8 +426,8 @@ s_Remo:
 }
 
 ayothaya.gat,153,86,4	script	Thongpool	843,{
-	if(ayoshrimps == 1)goto s_Shrimp2;
-	if(tomyumgoong == 2)goto s_Shrimp;
+	if (ayoshrimps == 1) goto s_Shrimp2;
+	if (tomyumgoong == 2) goto s_Shrimp;
 	mes "[Thongpool]";
 	mes "Welcome, welcome!";
 	mes "I've got the best Shrimp caught in the cleanest waters in the world~!";
@@ -477,14 +477,14 @@ s_Tom:
 	close;
 
 s_Take:
-	if(Zeny < 11000) goto s_NoZeny;
+	if (Zeny < 11000) goto s_NoZeny;
 	set Zeny, Zeny - 11000;
 	getitem 567,20;
 	emotion e_no1;
 	mes "[Thongpool]";
 	mes "Good, now you have the freshest Shrimp in this village!";
 	mes "It's time for you to go back and ask Ms. Mali to cook them for you.";
-	if(ayoshrimps < 1)set ayoshrimps,1;
+	if (ayoshrimps < 1)set ayoshrimps,1;
 	close;
 
 s_NoZeny:
@@ -512,7 +512,7 @@ s_Shrimp2:
 //=========================================== Ayothaya Dungeon
 //====================================================== Quest
 ayothaya.gat,83,132,7	script	Dusit	843,{
-	if(ayodunquest == 1 || ayodunquest == 2 || ayodunquest == 3)goto s_Dun;
+	if (ayodunquest == 1 || ayodunquest == 2 || ayodunquest == 3) goto s_Dun;
 	mes "[Dusit]";
 	mes "Oh...!";
 	mes "You must be a traveller.";
@@ -592,12 +592,12 @@ s_Dun:
 }
 
 ayo_in01.gat,181,193,4	script	Shaman	840,{
-	if(ayodot == 8)goto s_Check2;
-	if(ayodot == 7 && countitem(7285) > 0)goto s_ICheck;
-	if(ayodot == 6 && countitem(7285) > 0)goto s_Holier;
-	if(ayodunquest == 3)goto s_Lose;
-	if(ayodunquest == 2)goto s_Items;
-	if(ayodunquest == 1)goto s_Quest;
+	if (ayodot == 8) goto s_Check2;
+	if (ayodot == 7 && countitem(7285) > 0) goto s_ICheck;
+	if (ayodot == 6 && countitem(7285) > 0) goto s_Holier;
+	if (ayodunquest == 3) goto s_Lose;
+	if (ayodunquest == 2) goto s_Items;
+	if (ayodunquest == 1) goto s_Quest;
 	mes "[Boonthom]";
 	mes "I'm sorry I can't talk to you.";
 	mes "I'm very busy right now.";
@@ -722,7 +722,7 @@ s_Sure:
 	close;
 
 s_Items:
-	if(countitem(7213) < 1 || countitem(7217) < 1 || countitem(7190) < 1 || countitem(523) < 1)goto s_NoItems; //Pin Cusion, Spool, Hard Back Shell, Holy Water
+	if (countitem(7213) < 1 || countitem(7217) < 1 || countitem(7190) < 1 || countitem(523) < 1) goto s_NoItems; //Pin Cusion, Spool, Hard Back Shell, Holy Water
 	delitem 7213,1; //Pin Cusion
 	delitem 7217,1; //Spool
 	delitem 7190,1; //Hard Back Shell
@@ -771,8 +771,8 @@ s_NoItems:
 	close;
 
 s_Lose:
-	if(countitem(7285) > 0)goto s_NoItems2;
-	if(countitem(7213) < 1 || countitem(7217) < 1 || countitem(7190) < 1 || countitem(523) < 1)goto s_NoItems2; //Pin Cusion, Spool, Hard Back Shell, Holy Water
+	if (countitem(7285) > 0) goto s_NoItems2;
+	if (countitem(7213) < 1 || countitem(7217) < 1 || countitem(7190) < 1 || countitem(523) < 1) goto s_NoItems2; //Pin Cusion, Spool, Hard Back Shell, Holy Water
 	//Custom Dialogues
 	mes "[Boonthom]";
 	mes "Oh, you have all the items I require to make holy threads.";
@@ -786,7 +786,7 @@ s_Lose:
 	mes "See you later then.";
 	close;
 s_Yes:
-	if(countitem(7213) < 1 || countitem(7217) < 1 || countitem(7190) < 1 || countitem(523) < 1)goto s_NoItems2; //Pin Cusion, Spool, Hard Back Shell, Holy Water
+	if (countitem(7213) < 1 || countitem(7217) < 1 || countitem(7190) < 1 || countitem(523) < 1) goto s_NoItems2; //Pin Cusion, Spool, Hard Back Shell, Holy Water
 	delitem 7213,1; //Pin Cusion
 	delitem 7217,1; //Spool
 	delitem 7190,1; //Hard Back Shell
@@ -870,8 +870,8 @@ s_Holier:
 	set ayodot,7;
 	close;
 s_ICheck:	
-	if(countitem(523) < 2 || countitem(610) < 1 || countitem(7213) < 2 || countitem(7217) < 2)goto s_NEnoughItems;
-	if(ayodot == 8)goto s_Process;
+	if (countitem(523) < 2 || countitem(610) < 1 || countitem(7213) < 2 || countitem(7217) < 2) goto s_NEnoughItems;
+	if (ayodot == 8) goto s_Process;
 	mes "[Boonthom]";
 	mes "Hmmm~";
 	mes "You've brought";
@@ -890,13 +890,13 @@ s_ICheck:
 	mes "Pffff pffff...";
 	next;
 s_Process:
-	if(countitem(523) < 2 || countitem(610) < 1 || countitem(7213) < 2 || countitem(7217) < 2)goto s_NEnoughItems;
+	if (countitem(523) < 2 || countitem(610) < 1 || countitem(7213) < 2 || countitem(7217) < 2) goto s_NEnoughItems;
 	delitem 523,2;
 	delitem 610,1;
 	delitem 7213,2;
 	delitem 7217,2;
 	getitem 7287,1;
-	if(ayodot != 8)set ayodot,8;
+	if (ayodot != 8)set ayodot,8;
 	mes "[Boonthom]";
 	mes "Here you go.";
 	mes "Please take these holy threads.";
@@ -930,8 +930,8 @@ s_NEnoughItems:
 	mes "threads for you.";
 	close;
 s_Check2:
-	if(countitem(7285) < 1)goto s_Lose;
-	if(countitem(7287) < 1)goto s_LoseThreads;
+	if (countitem(7285) < 1) goto s_Lose;
+	if (countitem(7287) < 1) goto s_LoseThreads;
 	mes "[Boonthom]";
 	mes "Those threads";
 	mes "will protect you";
@@ -957,7 +957,7 @@ s_LoseThreads:
 	close;
 }
 ayo_fild01.gat,129,197,7	script	Puraim	842,{
-	if(countitem(7285) > 0)goto s_Dungeon; //Holy Threads
+	if (countitem(7285) > 0) goto s_Dungeon; //Holy Threads
 	mes "[Puraim]";
 	mes "If I were you, I wouldn't even dare to approach";
 	mes "The ruins down over there.";
@@ -1009,7 +1009,7 @@ s_Yes:
 	mes "^3C2EE6He shoved you off the hill and you plummet like a rock.";
 	close2;
 	set @hpcheck,readparam(6)/10;
-	if(readparam(5) < @hpcheck)goto s_SetHp;
+	if (readparam(5) < @hpcheck) goto s_SetHp;
 	percentheal -10,0;
 s_Warp:
 	warp "ayo_fild02.gat",30,135;
@@ -1021,19 +1021,19 @@ s_SetHp:
 }
 	
 ayo_dun01.gat,260,42,4	script	LocationActivator	139,4,0,{
-	if(ayodot > 5)end;
-	if(countitem(7285) > 0)goto s_Dots;
+	if (ayodot > 5) end;
+	if (countitem(7285) > 0) goto s_Dots;
 	end;
 s_Dots:
 	mes "- Holy threads in your pocket";
 	mes "suddenly started glowing. You felt";
 	mes "something is near you.-";
-	if(ayodot == 0)goto s_0;
-	if(ayodot == 1)goto s_1;
-	if(ayodot == 2)goto s_2;
-	if(ayodot == 3)goto s_3;
-	if(ayodot == 4)goto s_4;
-	if(ayodot == 5)goto s_5;
+	if (ayodot == 0) goto s_0;
+	if (ayodot == 1) goto s_1;
+	if (ayodot == 2) goto s_2;
+	if (ayodot == 3) goto s_3;
+	if (ayodot == 4) goto s_4;
+	if (ayodot == 5) goto s_5;
 	end;
 
 s_0:
@@ -1074,8 +1074,8 @@ s_5:
 
 ayo_dun01.gat,198,164,4	script	#invayo1	111,{
 
-	if(countitem(7285) < 1)end;
-	if(ayodot == 0)goto s_First;
+	if (countitem(7285) < 1) end;
+	if (ayodot == 0) goto s_First;
 
 	mes "^3C2EE6You find a piece of a stone slate with letters etched on it. It seems to be the 1st part of the slate.";
 	close;
@@ -1092,8 +1092,8 @@ s_First:
 
 ayo_dun01.gat,87,16,4	script	#invayo2	111,{
 
-	if(countitem(7285) < 1)end;
-	if(ayodot == 1)goto s_First;
+	if (countitem(7285) < 1) end;
+	if (ayodot == 1) goto s_First;
 
 	mes "^3C2EE6You find a piece of a stone slate with letters etched on it. It seems to be the 2nd part of the slate.";
 	close;
@@ -1110,8 +1110,8 @@ s_First:
 
 ayo_dun01.gat,268,215,4	script	#invayo3	111,{
 
-	if(countitem(7285) < 1)end;
-	if(ayodot == 2)goto s_First;
+	if (countitem(7285) < 1) end;
+	if (ayodot == 2) goto s_First;
 
 	mes "^3C2EE6You find a piece of a stone slate with letters etched on it. It seems to be the 3rd part of the slate.";
 	close;
@@ -1128,8 +1128,8 @@ s_First:
 
 ayo_dun01.gat,147,274,4	script	#invayo4	111,{
 
-	if(countitem(7285) < 1)end;
-	if(ayodot == 3)goto s_First;
+	if (countitem(7285) < 1) end;
+	if (ayodot == 3) goto s_First;
 
 	mes "^3C2EE6You find a piece of a stone slate with letters etched on it. It seems to be the 4th part of the slate.";
 	close;
@@ -1145,8 +1145,8 @@ s_First:
 }
 
 ayo_dun01.gat,99,118,4	script	#invayo5	111,{
-	if(countitem(7285) < 1)end;
-	if(ayodot == 4)goto s_First;
+	if (countitem(7285) < 1) end;
+	if (ayodot == 4) goto s_First;
 	mes "^3C2EE6You find a piece of a stone slate with letters etched on it. It seems to be the 5th part of the slate.";
 	close;
 s_First:
@@ -1159,8 +1159,8 @@ s_First:
 }
 	
 ayo_dun01.gat,16,188,4	script	#invayo6	111,{
-	if(countitem(7285) < 1)end;
-	if(ayodot == 5)goto s_First;
+	if (countitem(7285) < 1) end;
+	if (ayodot == 5) goto s_First;
 	mes "^3C2EE6You find a piece of a stone slate with letters etched on it. It seems to be the last part of the slate.";
 	close;
 s_First:
@@ -1172,11 +1172,11 @@ s_First:
 }
 
 ayo_dun01.gat,24,283,4	script	#ayowarp	111,{
-	if(countitem(7287) < 1)goto s_NoEntry;
+	if (countitem(7287) < 1) goto s_NoEntry;
 	mes "^3C2EE6The holy threads emanate a powerful sense of safety and security. With the protection of holiness, you begin your descent into the 2nd level..";
 	close2;
 	set @ayodunwarp,rand(1,2);
-	if(@ayodunwarp == 2)goto s_2;
+	if (@ayodunwarp == 2) goto s_2;
 	warp "ayo_dun02.gat",275,26;
 	end;
 s_2:
@@ -1197,8 +1197,8 @@ ayo_dun01.gat,26,283,4	duplicate(#ayowarp)	#ayodupe3	111
 
 
 ayothaya.gat,196,265,3	script	Einon	842,{
-	if(tomyumgoong == 5)goto s_Done;
-	if(tomyumgoong == 1 || tomyumgoong == 2 || tomyumgoong == 3 || tomyumgoong == 4)goto s_Resta;
+	if (tomyumgoong == 5) goto s_Done;
+	if (tomyumgoong == 1 || tomyumgoong == 2 || tomyumgoong == 3 || tomyumgoong == 4) goto s_Resta;
 	mes "[Einon]";
 	mes "Do you know what the";
 	mes "most popular cuisine";
@@ -1257,12 +1257,12 @@ s_Done:
 }
 
 ayo_in01.gat,145,163,4	script	Cook	839,{	
-	if(tomyumgoong == 5)goto s_Busy;
-	if(ayopause == 1)goto s_Pause;
-	if(ayopause == 2)goto s_Pause2;
-	if(tomyumgoong == 4)goto s_Chilee;
-	if(tomyumgoong == 3)goto s_Lemons;
-	if(tomyumgoong == 2)goto s_Shrimp;
+	if (tomyumgoong == 5) goto s_Busy;
+	if (ayopause == 1) goto s_Pause;
+	if (ayopause == 2) goto s_Pause2;
+	if (tomyumgoong == 4) goto s_Chilee;
+	if (tomyumgoong == 3) goto s_Lemons;
+	if (tomyumgoong == 2) goto s_Shrimp;
 	mes "[Mali the Spicy]";
 	mes "Hello, there!";
 	mes "I am called Mali the Spicy.";
@@ -1270,7 +1270,7 @@ ayo_in01.gat,145,163,4	script	Cook	839,{
 	next;
 	mes "[Mali the Spicy]";
 	mes "I am especially proud of my ^3C2EE6Tom Yum Goong^000000, which is the best in the village. I suppose it's my fate to cook the greatest Tom Yum Goong ever.";
-	if(tomyumgoong == 1)goto s_Quest;
+	if (tomyumgoong == 1) goto s_Quest;
 	close;
 s_Quest:
 	next;
@@ -1314,7 +1314,7 @@ s_Sure:
 	set tomyumgoong,2;
 	close;
 s_Shrimp:
-	if(countitem(567) > 19)goto s_EnoughShrimp;
+	if (countitem(567) > 19) goto s_EnoughShrimp;
 	mes "[Mali the Spicy]";
 	mes "Did you visit ^0000FFThongpool^000000?";
 	mes "He will be somewhere around the village selling Shrimps. Go and ask him to give you 20 Shrimps to cook Tom Yum Goong.";
@@ -1368,7 +1368,7 @@ s_WLemon:
 	set tomyumgoong,3;
 	close;
 s_Lemons:
-	if(countitem(568) > 9)goto s_EnoughLemon;
+	if (countitem(568) > 9) goto s_EnoughLemon;
 	mes "[Mali the Spicy]";
 	mes "Alright...";
 	mes "I'm counting on you";
@@ -1424,7 +1424,7 @@ s_Okay:
 	set tomyumgoong,4;
 	close;
 s_Chilee:
-	if(countitem(7286) > 29)goto s_EnoughChilee;
+	if (countitem(7286) > 29) goto s_EnoughChilee;
 	mes "[Mali the Spicy]";
 	mes "Did you get the Chilees?";
 	mes "You should talk to the Merchants in the Market, they'll know what you want.";
@@ -1522,7 +1522,7 @@ s_Busy:
 }
 
 ayothaya.gat,213,95,7	script	Merchant	841,{
-	if(tomyumgoong == 4)goto s_Chili;
+	if (tomyumgoong == 4) goto s_Chili;
 s_JumpBack:
 	mes "[Merchant Thongdum]";
 	mes "Hello there!";
@@ -1540,7 +1540,7 @@ s_JumpBack:
 	mes "please come to me~";
 	close;
 s_Chili:
-	if(countitem(7286) > 29)goto s_JumpBack;
+	if (countitem(7286) > 29) goto s_JumpBack;
 	mes "[Merchant Thongdum]";
 	mes "Hello, there~";
 	mes "Are you looking for";
@@ -1565,7 +1565,7 @@ s_Chili:
 	close;
 
 s_Take:
-	if(Zeny < 2000) goto s_NoZeny;
+	if (Zeny < 2000) goto s_NoZeny;
 	set Zeny, Zeny - 2000;
 	getitem 7286,30;
 	mes "[Merchant Thongdum]";
@@ -1588,9 +1588,9 @@ ayothaya.gat,121,240,7	script	Mr. Jun	842,1,1,{
 	mes "...";
 	close;
 OnTouch:
-	if(ayolemon == 2)end;
-	if(ayolemon == 1)goto s_Again;
-	if(tomyumgoong == 3)goto s_Lemon;
+	if (ayolemon == 2) end;
+	if (ayolemon == 1) goto s_Again;
+	if (tomyumgoong == 3) goto s_Lemon;
 	end;
 s_Lemon:
 	emotion e_hmm;
@@ -1721,15 +1721,15 @@ s_Scissors:
 	next;
 	goto s_Play;
 s_Play:
-	if(@playervar == 1 && @npcvar == 1)goto s_RockRock;	
-	if(@playervar == 1 && @npcvar == 2)goto s_RockPaper;
-	if(@playervar == 1 && @npcvar == 3)goto s_RockScissors;
-	if(@playervar == 2 && @npcvar == 1)goto s_PaperRock;
-	if(@playervar == 2 && @npcvar == 2)goto s_PaperPaper;
-	if(@playervar == 2 && @npcvar == 3)goto s_PaperScissors;
-	if(@playervar == 3 && @npcvar == 1)goto s_ScissorsRock;
-	if(@playervar == 3 && @npcvar == 2)goto s_ScissorsPaper;
-	if(@playervar == 3 && @npcvar == 3)goto s_ScissorsScissors;
+	if (@playervar == 1 && @npcvar == 1) goto s_RockRock;	
+	if (@playervar == 1 && @npcvar == 2) goto s_RockPaper;
+	if (@playervar == 1 && @npcvar == 3) goto s_RockScissors;
+	if (@playervar == 2 && @npcvar == 1) goto s_PaperRock;
+	if (@playervar == 2 && @npcvar == 2) goto s_PaperPaper;
+	if (@playervar == 2 && @npcvar == 3) goto s_PaperScissors;
+	if (@playervar == 3 && @npcvar == 1) goto s_ScissorsRock;
+	if (@playervar == 3 && @npcvar == 2) goto s_ScissorsPaper;
+	if (@playervar == 3 && @npcvar == 3) goto s_ScissorsScissors;
 s_RockRock:
 	emotion e_rock;
 	emotion 11;
@@ -1779,18 +1779,18 @@ s_Lose:
 	mes "Yes...!";
 	mes "Oh my god, yes!";
 	set @npcpoint,@npcpoint+1;
-	if(@npcpoint == 3)goto s_Lose2;
+	if (@npcpoint == 3) goto s_Lose2;
 	goto s_Game3;
 s_Win:
 	set @playerpoint,@playerpoint+1;
 	mes "[Mr. Jun]";
-	if(@playerpoint == 1)mes "Noooo...! This cannot be!";
-	if(@playerpoint == 2)mes "What...? I don't believe it! Bah.. !";
-	if(@playerpoint == 3)mes "No...! Sacrilege!";
-	if(@playerpoint == 3)goto s_Win2;
+	if (@playerpoint == 1)mes "Noooo...! This cannot be!";
+	if (@playerpoint == 2)mes "What...? I don't believe it! Bah.. !";
+	if (@playerpoint == 3)mes "No...! Sacrilege!";
+	if (@playerpoint == 3) goto s_Win2;
 	goto s_Game3;
 s_Lose2:
-	if(ayolemon != 1)set ayolemon,1;
+	if (ayolemon != 1)set ayolemon,1;
 //Custom Dialogues
 	next;
 	mes "[Mr. Jun]";

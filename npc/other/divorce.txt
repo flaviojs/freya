@@ -16,7 +16,7 @@
 //============================================================
 
 nif_in.gat,190,112,5 script Deviruchi 738,{
-    if (getpartnerid(0) >= 1)goto DivorceMe;
+    if (getpartnerid(0) >= 1) goto DivorceMe;
         mes "[Deviruchi]";
         mes "Kekeke, humans are always alone in the end,";
         mes "The feeling of lonely is just temporarily.";
