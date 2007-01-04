@@ -95,8 +95,8 @@ morocc_in.gat,146,99,2	script	Dye Maker JavaDullihan	122,{
 
 			sm_Make0:
 				mes "[Dye Maker JavaDullihan]";
-				if((countitem(507) < 30) || (countitem(973) < 1) || (countitem(713) < 1)) goto sl_LowItems;
-				if(Zeny < 3000) goto sl_LowZeny;
+				if ((countitem(507) < 30) || (countitem(973) < 1) || (countitem(713) < 1)) goto sl_LowItems;
+				if (Zeny < 3000) goto sl_LowZeny;
 				mes "Missing text.";
 				mes "Under development";
 				delitem 507,30;
@@ -115,8 +115,8 @@ morocc_in.gat,146,99,2	script	Dye Maker JavaDullihan	122,{
 
 			sm_Make1:
 				mes "[Dye Maker JavaDullihan]";
-				if((countitem(508) < 30) || (countitem(973) < 1) || (countitem(713) < 1)) goto sl_LowItems;
-				if(Zeny < 3000) goto sl_LowZeny;
+				if ((countitem(508) < 30) || (countitem(973) < 1) || (countitem(713) < 1)) goto sl_LowItems;
+				if (Zeny < 3000) goto sl_LowZeny;
 				mes "Missing text.";
 				mes "Under development";
 				delitem 508,30;
@@ -135,8 +135,8 @@ morocc_in.gat,146,99,2	script	Dye Maker JavaDullihan	122,{
 
 			sm_Make2:
 				mes "[Dye Maker JavaDullihan]";
-				if((countitem(510) < 20) || (countitem(973) < 1) || (countitem(713) < 1)) goto sl_LowItems;
-				if(Zeny < 3500) goto sl_LowZeny;
+				if ((countitem(510) < 20) || (countitem(973) < 1) || (countitem(713) < 1)) goto sl_LowItems;
+				if (Zeny < 3500) goto sl_LowZeny;
 				mes "Missing text.";
 				mes "Under development";
 				delitem 510,20;
@@ -156,8 +156,8 @@ morocc_in.gat,146,99,2	script	Dye Maker JavaDullihan	122,{
 
 			sm_Make3:
 				mes "[Dye Maker JavaDullihan]";
-				if((countitem(510) < 5) || (countitem(511) < 20) || (countitem(508) < 20) || (countitem(973) < 1) || (countitem(974) < 1) || (countitem(713)<1)) goto sl_LowItems;
-				if(Zeny < 5000) goto sl_LowZeny;
+				if ((countitem(510) < 5) || (countitem(511) < 20) || (countitem(508) < 20) || (countitem(973) < 1) || (countitem(974) < 1) || (countitem(713)<1)) goto sl_LowItems;
+				if (Zeny < 5000) goto sl_LowZeny;
 				mes "Missing text.";
 				mes "Under development";
 				delitem 510,5;
@@ -179,8 +179,8 @@ morocc_in.gat,146,99,2	script	Dye Maker JavaDullihan	122,{
 
 			sm_Make4:
 				mes "[Dye Maker JavaDullihan]";
-				if((countitem(507) < 20) || (countitem(508) < 20) || (countitem(973) < 1) || (countitem(974) < 1) || (countitem(713) < 1)) goto sl_LowItems;
-				if(Zeny < 5000) goto sl_LowZeny;
+				if ((countitem(507) < 20) || (countitem(508) < 20) || (countitem(973) < 1) || (countitem(974) < 1) || (countitem(713) < 1)) goto sl_LowItems;
+				if (Zeny < 5000) goto sl_LowZeny;
 				mes "Missing text.";
 				mes "Under development";
 				delitem 507,20;
@@ -201,8 +201,8 @@ morocc_in.gat,146,99,2	script	Dye Maker JavaDullihan	122,{
 
 			sm_Make5:
 				mes "[Dye Maker JavaDullihan]";
-				if((countitem(510) < 10) || (countitem(507) < 20) || (countitem(973) < 1) || (countitem(974) < 1) || (countitem(713) < 1)) goto sl_LowItems;
-				if(Zeny < 5000) goto sl_LowZeny;
+				if ((countitem(510) < 10) || (countitem(507) < 20) || (countitem(973) < 1) || (countitem(974) < 1) || (countitem(713) < 1)) goto sl_LowItems;
+				if (Zeny < 5000) goto sl_LowZeny;
 				mes "Missing text.";
 				mes "Under development";
 				delitem 510,10;
@@ -223,8 +223,8 @@ morocc_in.gat,146,99,2	script	Dye Maker JavaDullihan	122,{
 
 			sm_Make6:
 				mes "[Dye Maker JavaDullihan]";
-				if((countitem(509) < 30) || (countitem(973) < 1) || (countitem(713) < 1)) goto sl_LowItems;
-				if(Zeny < 3000) goto sl_LowZeny;
+				if ((countitem(509) < 30) || (countitem(973) < 1) || (countitem(713) < 1)) goto sl_LowItems;
+				if (Zeny < 3000) goto sl_LowZeny;
 				mes "Missing text.";
 				mes "Under development";
 				delitem 509,30;
@@ -243,8 +243,8 @@ morocc_in.gat,146,99,2	script	Dye Maker JavaDullihan	122,{
 
 			sm_Make7:
 				mes "[Dye Maker JavaDullihan]";
-				if((countitem(507) < 30) || (countitem(508) < 30) || (countitem(511) < 30) || (countitem(510) < 5) || (countitem(973) < 1) || (countitem(974) < 1) || (countitem(713)<1)) goto sl_LowItems;
-				if(Zeny < 7000) goto sl_LowZeny;
+				if ((countitem(507) < 30) || (countitem(508) < 30) || (countitem(511) < 30) || (countitem(510) < 5) || (countitem(973) < 1) || (countitem(974) < 1) || (countitem(713)<1)) goto sl_LowItems;
+				if (Zeny < 7000) goto sl_LowZeny;
 				mes "Missing text.";
 				mes "Under development";
 				delitem 507,30;

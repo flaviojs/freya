@@ -15,8 +15,8 @@
 
 alberta.gat,115,204,5	script	Tourist	97,{
 	mes "[Tourist]";
-	if(obb_quest == 1 ) goto L_YES;
-	if(obb_quest == 2 ) goto L_DONE;  
+	if (obb_quest == 1) goto L_YES;
+	if (obb_quest == 2) goto L_DONE;  
 
 	mes "Hello, stranger!";
 	mes "Could you help me with kinda problem... Then I'd tell you something valuable.";
@@ -54,11 +54,11 @@ L_FOOD:
 	mes "At last!";
 	next;
 	mes "[Tourist]";
-	if(countitem(517)<20) goto L_NO_MEAT;//Items: Meat,
+	if (countitem(517)<20) goto L_NO_MEAT;//Items: Meat,
 	delitem 517,20;//Items: Meat,
-	if(countitem(538)<20) goto L_NO_COOK;//Items: Well-baked_Cookie,
+	if (countitem(538)<20) goto L_NO_COOK;//Items: Well-baked_Cookie,
 	delitem 538,20;//Items: Well-baked_Cookie,
-	if(rand(10)<7) goto L_HUNGRY;
+	if (rand(10)<7) goto L_HUNGRY;
 	mes "Well... I'm sorta full.";
 	mes "Now listen to me. It's important.";
 	next;
@@ -99,11 +99,11 @@ L_END:
 //second part Jacob
 morocc.gat,267,142,5	script	Jacob	807,{
 	mes "[Jacob]";
-	if(obb_quest == 1 ) goto L_YES;
-	if(obb_quest == 2 ) goto L_DONE;
+	if (obb_quest == 1) goto L_YES;
+	if (obb_quest == 2) goto L_DONE;
 	mes "Get off! I'm busy!";
-	if(rand(2))mes "And it's none of your business!";
-	if(rand(2))mes "What Alberta? Huh?! Have I said it aloud? Forget it.";
+	if (rand(2))mes "And it's none of your business!";
+	if (rand(2))mes "What Alberta? Huh?! Have I said it aloud? Forget it.";
 	close;
 
 L_YES:
@@ -117,7 +117,7 @@ L_YES:
 
 	mes "[Jacob]";
 	mes "Let me see...";
-	if(countitem(636)<2) goto L_NOITM;//Items: No_Recipient,
+	if (countitem(636)<2) goto L_NOITM;//Items: No_Recipient,
 	delitem 636,2;//Items: No_Recipient,
 	mes "Thank you, that's all I need.";
 	emotion e_thx;
@@ -143,12 +143,12 @@ L_END:
 //third part
 comodo.gat,41,209,5	script	Old Greek	120,{
 	mes "[Old Greek]";
-	if(obb_quest == 2 ) goto L_YES;
-	if(obb_quest < 2 ) goto  L_LOST;
+	if (obb_quest == 2) goto L_YES;
+	if (obb_quest < 2) goto  L_LOST;
 
 L_LOST:
 	mes "The KNOWLEDGE! That's the key, my child...";
-	if(rand(2))mes "Wealth doesn't matter.";
+	if (rand(2))mes "Wealth doesn't matter.";
 	close;
 
 L_YES:
@@ -174,7 +174,7 @@ L_CREATE:
 	mes "Let's see... What have you got...";
 	next;
 L_CREATE2:
-	if(countitem(7053)<50 || countitem(7054)<10 || countitem(965)<10 || countitem(964)<15) goto L_NO;//Items: Cyfar, Brigan, Clam_Shell, Crab_Shell,
+	if (countitem(7053)<50 || countitem(7054)<10 || countitem(965)<10 || countitem(964)<15) goto L_NO;//Items: Cyfar, Brigan, Clam_Shell, Crab_Shell,
 	delitem 7053,50;//Items: Cyfar,
 	delitem 7054,10;//Items: Brigan,
 	delitem 965,10;//Items: Clam_Shell,

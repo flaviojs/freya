@@ -374,7 +374,7 @@ morocc_in.gat,166,76,3	script	Bartender#02	46,{
 	close;
 
 L1:
-	if (zeny < 1000 ) goto Nomoney;
+	if (zeny < 1000) goto Nomoney;
 	getitem 12112,1;
 	set zeny,zeny-1000;
 	mes "[Bartender]";
@@ -384,7 +384,7 @@ L1:
 	close;
 
 L2:
-	if (zeny < 1000 ) goto Nomoney;
+	if (zeny < 1000) goto Nomoney;
 	getitem 12113,1;
 	set zeny,zeny-1000;
 	mes "[Bartender]";
@@ -449,16 +449,16 @@ moc_fild16.gat,199,212,4	script	Hashisid	48,{
 
 moc_fild16.gat,195,281,4	script	Assassin Guardian#1::SinGuard	707,{
 	mes "[Assassin Guardian]";
-	if(BaseJob != Job_Assassin)goto AssGuild1;
+	if (BaseJob != JOB_ASSASSIN) goto AssGuild1;
 		mes "Welcome.";
 		close;
 
 AssGuild1:
 	set @temp, rand(1,4);
-	if(@temp == 1) mes "........";
-	if(@temp == 2) mes "Hmmm..........";
-	if(@temp == 3) mes "Hmmm... you shouldn't be here.....";
-	if(@temp == 4) mes "You're trespassing on forbidden grounds.......";
+	if (@temp == 1) mes "........";
+	if (@temp == 2) mes "Hmmm..........";
+	if (@temp == 3) mes "Hmmm... you shouldn't be here.....";
+	if (@temp == 4) mes "You're trespassing on forbidden grounds.......";
 	close;
 }
 

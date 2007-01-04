@@ -23,7 +23,7 @@ hu_in01.gat,23,311,4	script	Josh	898,{
 	menu "Yes Please",JoshYes,"No thanks",JoshNo;
 
 	JoshYes:
-		if (Zeny >= 500)goto JoshGotZeny;
+		if (Zeny >= 500) goto JoshGotZeny;
 			mes "[Josh]";
 			mes "Err sir, you don't have 500z zeny. I can't sell you anything";
 			close;

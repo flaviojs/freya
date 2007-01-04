@@ -54,8 +54,8 @@ OnMinute40:
 OnMinute45:
 OnMinute50:
 OnMinute55:
-	if($@lhz_alert == 0) set $@sneakguard, $@sneakguard + rand(1,3);
-	if($@lhz_alert == 1) set $@sneakguard, $@sneakguard - 1;  // Monsters will die after 5~10 min. (sneakAddSuber)
+	if ($@lhz_alert == 0) set $@sneakguard, $@sneakguard + rand(1,3);
+	if ($@lhz_alert == 1) set $@sneakguard, $@sneakguard - 1;  // Monsters will die after 5~10 min. (sneakAddSuber)
 	end;
 }
 
@@ -65,17 +65,17 @@ OnMinute55:
 //	end;
 //
 //OnTimer10000:
-//	if($@sneakguard >= $@threshold) goto MakeMob;
-//	if($@sneakguard == 0) goto ClearMob;  // Monsters will die after 5~10 min. (sneakAddSuber)
+//	if ($@sneakguard >= $@threshold) goto MakeMob;
+//	if ($@sneakguard == 0) goto ClearMob;  // Monsters will die after 5~10 min. (sneakAddSuber)
 //	setnpctimer 0;
 //	end;
 //	
 //MakeMob:
-//	if($@lhz_alert == 1) goto ChkEnd;
+//	if ($@lhz_alert == 1) goto ChkEnd;
 //	set $@mobcount, $@mob;
 //	mapannounce "lighthalzen.gat","Maintenance Organization of the Public Order: Currently the security of the city has been compromized, We ask the citizens to be more careful. I repeat. We ask the citizens to be more careful.", 1;
 //	
-//	for( set $@i, 0; $@i < $@mob; set $@i, $@i + 1 ) {
+//	for(set $@i, 0; $@i < $@mob; set $@i, $@i + 1) {
 //		monster "lighthalzen.gat",0,0,"Gangster",1592,1,"Mobs::MobKilled";
 //	}
 //
@@ -85,7 +85,7 @@ OnMinute55:
 //	end;
 //	
 //ClearMob:
-//	if($@lhz_alert == 0) goto ChkEnd;
+//	if ($@lhz_alert == 0) goto ChkEnd;
 //	set $@mobcount, 0;
 //	mapannounce "lighthalzen.gat","Maintenance organization of the Public Order: We were able to get rid of all the trouble makers in the city. You may relax now.", 1;	
 //	killmonster "lighthalzen.gat","Mobs::MobKilled";
@@ -96,7 +96,7 @@ OnMinute55:
 //		
 //MobKilled:
 //	set $@mobcount, $@mobcount - 1;
-//	if($@mobcount == 0) goto ClearMob;
+//	if ($@mobcount == 0) goto ClearMob;
 //	setnpctimer 0;
 //	end;	
 //
@@ -107,12 +107,12 @@ OnMinute55:
 
 lighthalzen.gat,267,200,3	script	Security Guard	868,{
 
-	if(countitem(7350)>0) goto Lhzpass1;
-	if($@lhz_alert == 1) goto Lhzstop;
-	if((gettime(2)>00 && gettime(2)<10)) goto LhzTalk2;
-	if((gettime(2)>30 && gettime(2)<40)) goto LhzTalk2;
+	if (countitem(7350)>0) goto Lhzpass1;
+	if ($@lhz_alert == 1) goto Lhzstop;
+	if ((gettime(2)>00 && gettime(2)<10)) goto LhzTalk2;
+	if ((gettime(2)>30 && gettime(2)<40)) goto LhzTalk2;
 	set @LhzTalk,rand(1,10);
-	if(@LhzTalk  < 2 ) goto LhzTalk1;
+	if (@LhzTalk  < 2) goto LhzTalk1;
 
 LhzTalk:
 	mes "[Guard]";
@@ -132,7 +132,7 @@ LhzTalk1:
 
 LhzTalk2:
 	set @LhzTalk,rand(1,10);
-	if(@LhzTalk  < 2 ) goto LhzTalk;
+	if (@LhzTalk  < 2) goto LhzTalk;
 	mes "[Guard]";
 	mes "zzZ... zzZ... zzZ...";
 	mes "hmm. hmm... zzZ...";
@@ -164,12 +164,12 @@ Lhzstop:
 
 lighthalzen.gat,294,223,7	script	Security Guard	868,{
 
-	if(countitem(7350)>0) goto Lhzpass1;
-	if($@lhz_alert == 1) goto Lhzstop;
-	if((gettime(2)>00 && gettime(2)<10)) goto LhzTalk2;
-	if((gettime(2)>30 && gettime(2)<40)) goto LhzTalk2;
+	if (countitem(7350)>0) goto Lhzpass1;
+	if ($@lhz_alert == 1) goto Lhzstop;
+	if ((gettime(2)>00 && gettime(2)<10)) goto LhzTalk2;
+	if ((gettime(2)>30 && gettime(2)<40)) goto LhzTalk2;
 	set @LhzTalk,rand(1,10);
-	if(@LhzTalk  < 2 ) goto LhzTalk1;
+	if (@LhzTalk  < 2) goto LhzTalk1;
 
 LhzTalk:
 	mes "[Guard]";
@@ -189,7 +189,7 @@ LhzTalk1:
 
 LhzTalk2:
 	set @LhzTalk,rand(1,10);
-	if(@LhzTalk  < 2 ) goto LhzTalk;
+	if (@LhzTalk  < 2) goto LhzTalk;
 	mes "[Guard]";
 	mes "zzZ... zzZ... zzZ...";
 	mes "hmm. hmm... zzZ...";
@@ -542,8 +542,8 @@ L9_1:
 	close2;
 	set Fishburn,Fishburn+1;
 	set @rdm,rand(3);
-	if(@rdm==1)goto L_warp1;
-	if(@rdm==2)goto L_warp2;
+	if (@rdm==1) goto L_warp1;
+	if (@rdm==2) goto L_warp2;
  	warp "lhz_cube.gat",67,193;
 	end;
 
@@ -567,8 +567,8 @@ L10_1:
 	mes "Good luck!";
 	close2;
 	set @rdm,rand(3);
-	if(@rdm==1)goto L_warp1;
-	if(@rdm==2)goto L_warp2;
+	if (@rdm==1) goto L_warp1;
+	if (@rdm==2) goto L_warp2;
  	warp "lhz_cube.gat",67,193;
 	end;
 
@@ -1249,19 +1249,19 @@ lighthalzen.gat,240,216,4	script	Suspicious Guy#1	870,2,2,{
 	
 OnTouch:
 	set @pickrand2,rand(1,3);
-	if(Zeny<200) set Zeny,0;
-	if(Zeny>=10 && @pickrand2 == 1) set Zeny,zeny-10;
-	if(Zeny>=100 && @pickrand2 == 2) set Zeny,zeny-100;
-	if(Zeny>=200 && @pickrand2 == 3) set Zeny,zeny-200;
+	if (Zeny<200) set Zeny,0;
+	if (Zeny>=10 && @pickrand2 == 1) set Zeny,zeny-10;
+	if (Zeny>=100 && @pickrand2 == 2) set Zeny,zeny-100;
+	if (Zeny>=200 && @pickrand2 == 3) set Zeny,zeny-200;
 //	specialeffect2 274;
 	mes "*SHHHHHHUK*!";
 	next;
 	set @pickrand1,rand(0,100);
-	if(@pickrand1 <= 75) goto L_Caught;
+	if (@pickrand1 <= 75) goto L_Caught;
 	mes "["+strcharinfo(0)+"]";
 	set @pickrand3,rand(1,2);
-	if(@pickrand3 == 1)goto RandStolen1;
-	if(@pickrand3 == 2)goto RandStolen2;
+	if (@pickrand3 == 1) goto RandStolen1;
+	if (@pickrand3 == 2) goto RandStolen2;
 	close;
 
 RandStolen1:
@@ -1299,8 +1299,8 @@ L_Caught:
 	mes "Eat my dust, good guy!";
 	next;
 	set @rand,rand(1,2);
-	if(@rand == 1) goto L_MoveA1;
-	if(@rand == 2) goto L_MoveB1;
+	if (@rand == 1) goto L_MoveA1;
+	if (@rand == 2) goto L_MoveB1;
 	close;
 
 L_MoveA1:
@@ -1321,19 +1321,19 @@ lighthalzen.gat,220,169,4	script	Suspicious Guy#2	870,2,2,{
 
 OnTouch:
 	set @pickrand2,rand(1,3);
-	if(Zeny<200) set Zeny,0;
-	if(Zeny>=10 && @pickrand2 == 1) set Zeny,zeny-10;
-	if(Zeny>=100 && @pickrand2 == 2) set Zeny,zeny-100;
-	if(Zeny>=200 && @pickrand2 == 3) set Zeny,zeny-200;
+	if (Zeny<200) set Zeny,0;
+	if (Zeny>=10 && @pickrand2 == 1) set Zeny,zeny-10;
+	if (Zeny>=100 && @pickrand2 == 2) set Zeny,zeny-100;
+	if (Zeny>=200 && @pickrand2 == 3) set Zeny,zeny-200;
 //	specialeffect2 274;
 	mes "*SHHHHHHUK*!";
 	next;
 	set @pickrand1,rand(0,100);
-	if(@pickrand1 <= 75) goto L_Caught;
+	if (@pickrand1 <= 75) goto L_Caught;
 	mes "["+strcharinfo(0)+"]";
 	set @pickrand3,rand(1,2);
-	if(@pickrand3 == 1)goto RandStolen1;
-	if(@pickrand3 == 2)goto RandStolen2;
+	if (@pickrand3 == 1) goto RandStolen1;
+	if (@pickrand3 == 2) goto RandStolen2;
 	close;
 
 RandStolen1:
@@ -1371,8 +1371,8 @@ L_Caught:
 	mes "Eat my dust, good guy!";
 	next;
 	set @rand,rand(1,2);
-	if(@rand == 1) goto L_MoveA2;
-	if(@rand == 2) goto L_MoveB2;
+	if (@rand == 1) goto L_MoveA2;
+	if (@rand == 2) goto L_MoveB2;
 	close;
 
 L_MoveA2:
@@ -1393,19 +1393,19 @@ lighthalzen.gat,164,127,4	script	Suspicious Guy#3	870,2,2,{
 
 OnTouch:
 	set @pickrand2,rand(1,3);
-	if(Zeny<200) set Zeny,0;
-	if(Zeny>=10 && @pickrand2 == 1) set Zeny,zeny-10;
-	if(Zeny>=100 && @pickrand2 == 2) set Zeny,zeny-100;
-	if(Zeny>=200 && @pickrand2 == 3) set Zeny,zeny-200;
+	if (Zeny<200) set Zeny,0;
+	if (Zeny>=10 && @pickrand2 == 1) set Zeny,zeny-10;
+	if (Zeny>=100 && @pickrand2 == 2) set Zeny,zeny-100;
+	if (Zeny>=200 && @pickrand2 == 3) set Zeny,zeny-200;
 //	specialeffect2 274;
 	mes "*SHHHHHHUK*!";
 	next;
 	set @pickrand1,rand(0,100);
-	if(@pickrand1 <= 25) goto L_Caught;
+	if (@pickrand1 <= 25) goto L_Caught;
 	mes "["+strcharinfo(0)+"]";
 	set @pickrand3,rand(1,2);
-	if(@pickrand3 == 1)goto RandStolen1;
-	if(@pickrand3 == 2)goto RandStolen2;
+	if (@pickrand3 == 1) goto RandStolen1;
+	if (@pickrand3 == 2) goto RandStolen2;
 	close;
 
 RandStolen1:
@@ -1477,7 +1477,7 @@ L_Caught:
 	menu "Give me 1.",P_Tonic1,"Give me 2.",P_Tonic2,"Give me 3.",P_Tonic3,"No I'm fine",P_NoTonic;
 
 	P_Tonic1:
-		if(Zeny < 15000)goto L_Zeny;
+		if (Zeny < 15000) goto L_Zeny;
 		mes "[Suspicious Guy]";
 		mes "Here you go~";
 		set Zeny,zeny-15000;
@@ -1487,14 +1487,14 @@ L_Caught:
 		mes "Anyway, I'm gonna";
 		mes "get back to work.";
 		mes "Heh heh heh~";
-		if(rand(1,2)==1) goto L_Reset;
+		if (rand(1,2)==1) goto L_Reset;
 		specialeffect 16;
 		disablenpc "Suspicious Guy#3";
 		enablenpc "Suspicious Guy#2";
 		close;
 
 	P_Tonic2:
-		if(Zeny < 30000)goto L_Zeny;
+		if (Zeny < 30000) goto L_Zeny;
 		mes "[Suspicious Guy]";
 		mes "Here you go~";
 		set Zeny,zeny-30000;
@@ -1504,14 +1504,14 @@ L_Caught:
 		mes "Anyway, I'm gonna";
 		mes "get back to work.";
 		mes "Heh heh heh~";
-		if(rand(1,2)==1) goto L_Reset;
+		if (rand(1,2)==1) goto L_Reset;
 		specialeffect 16;
 		disablenpc "Suspicious Guy#3";
 		enablenpc "Suspicious Guy#2";
 		close;
 
 	P_Tonic3:
-		if(Zeny < 45000)goto L_Zeny;
+		if (Zeny < 45000) goto L_Zeny;
 		mes "[Suspicious Guy]";
 		mes "Here you go~";
 		set Zeny,zeny-45000;
@@ -1521,7 +1521,7 @@ L_Caught:
 		mes "Anyway, I'm gonna";
 		mes "get back to work.";
 		mes "Heh heh heh~";
-		if(rand(1,2)==1) goto L_Reset;
+		if (rand(1,2)==1) goto L_Reset;
 		specialeffect 16;
 		disablenpc "Suspicious Guy#3";
 		enablenpc "Suspicious Guy#2";
@@ -1539,7 +1539,7 @@ L_Caught:
 		mes "Anyway, I'm gonna";
 		mes "get back to work.";
 		mes "Heh heh heh~";
-		if(rand(1,2)==1) goto L_Reset;
+		if (rand(1,2)==1) goto L_Reset;
 		specialeffect 16;
 		disablenpc "Suspicious Guy#3";
 		enablenpc "Suspicious Guy#2";
@@ -1560,7 +1560,7 @@ L_Zeny:
 	mes "Anyway, I'm gonna";
 	mes "get back to work.";
 	mes "Heh heh heh~";
-	if(rand(1,2)==1) goto L_Reset;
+	if (rand(1,2)==1) goto L_Reset;
 	specialeffect 16;
 	disablenpc "Suspicious Guy#3";
 	enablenpc "Suspicious Guy#2";
@@ -1574,20 +1574,20 @@ L_Zeny:
 
 lhz_in02.gat,201,210,3	script	Digotz	869,{
 
-	if(friendship > 9)goto s_Dead;
-	if(friendship == 9)goto s_Wounded;
-	if(friendship == 8)goto s_Cont8;
-	if(friendship == 7 || friendshipextra == 1)goto s_Cont7;
-	if(friendshipextra == 1 || friendship == 6)goto s_Cont6;
-	if(friendship == 6)goto s_Cont5;
-	if(friendship == 4 || friendship == 5)goto s_Cont4;
-	if(friendship == 3)goto s_Cont3;
-	if(friendship == 2)goto s_Cont2;
+	if (friendship > 9) goto s_Dead;
+	if (friendship == 9) goto s_Wounded;
+	if (friendship == 8) goto s_Cont8;
+	if (friendship == 7 || friendshipextra == 1) goto s_Cont7;
+	if (friendshipextra == 1 || friendship == 6) goto s_Cont6;
+	if (friendship == 6) goto s_Cont5;
+	if (friendship == 4 || friendship == 5) goto s_Cont4;
+	if (friendship == 3) goto s_Cont3;
+	if (friendship == 2) goto s_Cont2;
 	mes "[Digotz]";
 	mes "Oh, an adventurer?";
 	mes "I welcome you to Uptown Lighthalzen, but I'm afraid this area won't offer you a lot of excitement.";
 	next;
-	if(friendship == 1)goto s_Cont;
+	if (friendship == 1) goto s_Cont;
 	mes "[Digotz]";
 	mes "Feel free to take a look around if you so wish. I'm actually glad to see somebody aside from the stuck up rich people who live here.";
 	close;
@@ -2060,7 +2060,7 @@ lighthalzen.gat,337,232,3	script	Maku	870,{
 	mes "[Maku]";
 	mes "Well, when you get bored of the ghetto, you really oughta check out the rich section of town.";
 	mes "I'm bitter, but I'll also admit it's way nicer than this place.";
-	if(BaseJob != Job_Novice) set friendship,1;
+	if (BaseJob != JOB_NOVICE) set friendship,1;
 	close;
 
 	L_friend2:
@@ -2149,14 +2149,14 @@ lighthalzen.gat,337,232,3	script	Maku	870,{
 		mes "has to say, line by line!";
 		next;
 		input @digotzstr$;
-		if(@digotzstr$ != "Hopeless bastard!")goto failstr;
+		if (@digotzstr$ != "Hopeless bastard!") goto failstr;
 		mes "[Maku]";
 		mes "\"Hopeless Bastard?!\"";
 		mes "Well, at least he had the stomach to say that.";
 		mes "Through somebody else anyway! What else'd he say?!";
 		next;
 		input @digotzstr$;
-		if(@digotzstr$ != "You're still a stubborn jerk!")goto failstr;
+		if (@digotzstr$ != "You're still a stubborn jerk!") goto failstr;
 		mes "[Maku]";
 		mes "\"Stubborn Jerk?!\"";
 		mes "Takes no one to know one,";
@@ -2164,7 +2164,7 @@ lighthalzen.gat,337,232,3	script	Maku	870,{
 		mes "Grrr! What'd he say next?!";
 		next;
 		input @digotzstr$;
-		if(@digotzstr$ != "You owe me at least 3 lunches!")goto failstr;
+		if (@digotzstr$ != "You owe me at least 3 lunches!") goto failstr;
 		mes "[Maku]";
 		mes "Three lunches?!";
 		mes "I treated that guy to lunch like, fifteen times!";
@@ -2172,7 +2172,7 @@ lighthalzen.gat,337,232,3	script	Maku	870,{
 		mes "What else did that moron say?!";
 		next;
 		input @digotzstr$;	
-		if(@digotzstr$ != "Not to mention an apology!")goto failstr;
+		if (@digotzstr$ != "Not to mention an apology!") goto failstr;
 		mes "[Maku]";
 		mes "Me, apologize?!";
 		mes "He should be on his hands";
@@ -2182,7 +2182,7 @@ lighthalzen.gat,337,232,3	script	Maku	870,{
 		mes "W-what else did he tell you?!";
 		next;
 		input @digotzstr$;
-		if(@digotzstr$ != "But who cares what you think?!")goto failstr;
+		if (@digotzstr$ != "But who cares what you think?!") goto failstr;
 		mes "[Maku]";
 		mes "Who cares what I think?!";
 		mes "GRRRAAH~!! Who cares";
@@ -2192,7 +2192,7 @@ lighthalzen.gat,337,232,3	script	Maku	870,{
 		mes "make me angrier than I am now!";
 		next;
 		input @digotzstr$;
-		if(@digotzstr$ != "I'm so goddamn happy without you!")goto failstr;
+		if (@digotzstr$ != "I'm so goddamn happy without you!") goto failstr;
 		mes "[Maku]";
 		mes "That's it.";
 		mes "It's decided. The";
@@ -2437,7 +2437,7 @@ lighthalzen.gat,337,232,3	script	Maku	870,{
 		mes "Um, now I gotta get";
 		mes "ready for something.";
 		mes "^111111(But not to see Digotz!)";
-		if(countitem(7351))delitem 7351,1;
+		if (countitem(7351))delitem 7351,1;
 		set friendship,9;
 		close;
 
@@ -2481,7 +2481,7 @@ yuno_in04.gat,107,14,4	script	Student	754,{
 	mes "Still, students like Benkastein";
 	mes "can tune out the whole world";
 	mes "when they study hard enough...";
-	if(friendship != 6)close;
+	if (friendship != 6) close;
 	next;
 	mes "[Joey Choryee]";
 	mes "Benkastein...?";
@@ -2496,10 +2496,10 @@ yuno_in04.gat,107,14,4	script	Student	754,{
 
 yuno_in04.gat,96,106,4	script	Passionate Student	754,{
 
-	if(friendship3 == 4)goto s_Finish;
-	if(friendship == 10)goto s_Ask;
-	if(friendship3 == 2 || friendship3 == 3)goto s_Cont2;
-	if(friendship3 == 1)goto s_Cont;
+	if (friendship3 == 4) goto s_Finish;
+	if (friendship == 10) goto s_Ask;
+	if (friendship3 == 2 || friendship3 == 3) goto s_Cont2;
+	if (friendship3 == 1) goto s_Cont;
 	mes "[Passionate Student]";
 	mes "Let's see, now.";
 	mes "Wind Magic, Black Magic,";
@@ -2508,7 +2508,7 @@ yuno_in04.gat,96,106,4	script	Passionate Student	754,{
 	mes "Hopefully this contains";
 	mes "the information I need...";
 	next;
-	if(friendship != 6)goto s_Dialog;
+	if (friendship != 6) goto s_Dialog;
 	mes "Upon briefly glancing at";
 	mes "this student's belongings,";
 	mes "you notice that the name";
@@ -2595,14 +2595,14 @@ s_Cont:
 	close;
 
 s_Cont2:
-	if(friendship > 6)goto s_Dialog;
+	if (friendship > 6) goto s_Dialog;
 	mes "[Benkastein]";
 	mes "Aw nuts, this is";
 	mes "taking much longer";
 	mes "than I had expected.";
 	mes "Now where did I put";
 	mes "that thing? Hmmmm...";
-	if(friendship3 == 3)goto s_Cont3;
+	if (friendship3 == 3) goto s_Cont3;
 	next;
 	mes "^3131FFPerhaps it would";
 	mes "be best if you help";
@@ -2642,7 +2642,7 @@ s_Cont3:
 	mes "acting. Thanks in advance,";
 	mes "and please take care of";
 	mes "Maku and Digotz for me.";
-	if(friendship == 6)set friendship,7;
+	if (friendship == 6)set friendship,7;
 	close;
 
 s_Dialog:
@@ -2684,12 +2684,12 @@ s_Ask:
 	mes "adventurer. When the three";
 	mes "of us get together, I'll be";
 	mes "sure to let you know~";
-	if(BaseLevel < 41)set BaseExp,BaseExp+49500;
-	if(BaseLevel > 40 && BaseLevel < 61)set BaseExp,BaseExp+99000;
-	if(BaseLevel > 60 && BaseLevel < 71)set BaseExp,BaseExp+198000;
-	if(BaseLevel > 70 && BaseLevel < 81)set BaseExp,BaseExp+396000;
-	if(BaseLevel > 80 && BaseLevel < 91)set BaseExp,BaseExp+594000;
-	if(BaseLevel > 90)set BaseExp,BaseExp+792000;
+	if (BaseLevel < 41)set BaseExp,BaseExp+49500;
+	if (BaseLevel > 40 && BaseLevel < 61)set BaseExp,BaseExp+99000;
+	if (BaseLevel > 60 && BaseLevel < 71)set BaseExp,BaseExp+198000;
+	if (BaseLevel > 70 && BaseLevel < 81)set BaseExp,BaseExp+396000;
+	if (BaseLevel > 80 && BaseLevel < 91)set BaseExp,BaseExp+594000;
+	if (BaseLevel > 90)set BaseExp,BaseExp+792000;
 	getitem 7350,1;
 	set friendship,11;
 	set friendship3,4;
@@ -2708,8 +2708,8 @@ s_Finish:
 
 yuno_in04.gat,168,117,1	script	Book	111,{
 
-	if(friendship3 == 3)goto Book2;
-	if(friendship3 == 2)goto Book;
+	if (friendship3 == 3) goto Book2;
+	if (friendship3 == 2) goto Book;
 	mes "^3131FFThis book is labeled,";
 	mes "\"Benkastein's Journal";
 	mes "Vol. 6.\".";

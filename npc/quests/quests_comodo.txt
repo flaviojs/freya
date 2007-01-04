@@ -23,8 +23,8 @@
 //==================================================
 comodo.gat,227,158,4	script	Hair Ornament Girl	700,{
 	mes "[Hair Ornament Girl]";
-	if(sex==1)mes "Oh, hi.  Do you need to buy a present for a friend, your mother, or maybe your girl friend? Then get her a Hair Band! It's the best gift you can get her.";
-	if(sex==0)mes "Oh, hi.  Do you need to buy a present for a friend, your mother, or maybe yourself? Then get a Hair Band! It's the best gift you can give, or get.";
+	if (sex==1)mes "Oh, hi.  Do you need to buy a present for a friend, your mother, or maybe your girl friend? Then get her a Hair Band! It's the best gift you can get her.";
+	if (sex==0)mes "Oh, hi.  Do you need to buy a present for a friend, your mother, or maybe yourself? Then get a Hair Band! It's the best gift you can give, or get.";
 	next;
 	mes "[Hair Ornament Girl]";
 	mes "Just by bringing me a few simple items, I can make you a gorgeous Hair Band!  Here, take a look at these....";
@@ -34,32 +34,32 @@ M_Menu:
 
 		set @BAND$, "Cross Hat Hairband";
 		set @ITEMS$, " ^5555FF1 Rosary^000000 and ^5555FF500 Destroyed Armors^000000.";
-		if(countitem(2608)>=1 && countitem(7069)>=500) set @GETBAND, 1;
+		if (countitem(2608)>=1 && countitem(7069)>=500) set @GETBAND, 1;
 		goto sL_0;
 
 	M_Bulb:
 		set @BAND$, "Bulb Hairband";
 		set @ITEMS$, "^5555FF1 Slotted Circlet^000000 and ^5555FF20 Glass Beads^000000.";
-		if(countitem(2233)>=1 && countitem(746)>=20) set @GETBAND, 2;
+		if (countitem(2233)>=1 && countitem(746)>=20) set @GETBAND, 2;
 		goto sL_0;
 
 	M_Striped:
 		set @BAND$, "Striped Hairband";
 		set @ITEMS$, "^5555FF1500 Worn-out Prison Uniforms^000000.";
-		if(countitem(1099)>=1500) set @GETBAND, 3;
+		if (countitem(1099)>=1500) set @GETBAND, 3;
 		goto sL_0;
 
 	M_Blue:
 		set @BAND$, "Blue Hairband";
 		set @ITEMS$, "^5555FF1 Bandana^000000, ^5555FF1 Cobaltblue Dyestuffs^000000, and ^5555FF300 Anolian Skins^000000.";
-		if(countitem(2211)>=1 && countitem(978)>=1 && countitem(7003)>=300) set @GETBAND, 4;
+		if (countitem(2211)>=1 && countitem(978)>=1 && countitem(7003)>=300) set @GETBAND, 4;
 
 		sL_0:
 			mes "[Hair Ornament Girl]";
 			mes "So you're interested in the "+@BAND$+" huh? Here are the items you'll need for the "+@BAND$+":";
 			mes @ITEMS$;
 			next;
-			if(@GETBAND > 0) goto sL_GetBand;
+			if (@GETBAND > 0) goto sL_GetBand;
 
 			mes "[Hair Ornament Girl]";
 			mes "Bring me all of these items and I will be able to make you a "+@BAND$+".";
@@ -71,30 +71,30 @@ M_Menu:
 			next;
 			menu "Yes, I would.",-, "No thank you.",M_End;
 
-				if(@GETBAND == 1) goto ssL_Cross;
-				if(@GETBAND == 2) goto ssL_Bulb;
-				if(@GETBAND == 3) goto ssL_Striped;
-				if(@GETBAND == 4) goto ssL_Blue;
+				if (@GETBAND == 1) goto ssL_Cross;
+				if (@GETBAND == 2) goto ssL_Bulb;
+				if (@GETBAND == 3) goto ssL_Striped;
+				if (@GETBAND == 4) goto ssL_Blue;
 
 				ssL_Cross:
-					if(countitem(2608)<1 || countitem(7069)<500) goto L_Cheater;
+					if (countitem(2608)<1 || countitem(7069)<500) goto L_Cheater;
 					delitem 2608,1;
 					delitem 7069,500;
 					getitem  5036,1;
 					goto ssL_End;
 				ssL_Bulb:
-					if(countitem(2233)<1 || countitem(746)<20) goto L_Cheater;
+					if (countitem(2233)<1 || countitem(746)<20) goto L_Cheater;
 					delitem 2233,1;
 					delitem 746,20;
 					getitem 5034,1;
 					goto ssL_End;
 				ssL_Striped:
-					if(countitem(1099)<1500) goto L_Cheater;
+					if (countitem(1099)<1500) goto L_Cheater;
 					delitem 1099,1500;
 					getitem 5049,1;
 					goto ssL_End;
 				ssL_Blue:
-					if(countitem(2211)<1 || countitem(978)<1 || countitem(7003)<300) goto L_Cheater;
+					if (countitem(2211)<1 || countitem(978)<1 || countitem(7003)<300) goto L_Cheater;
 					delitem 2211,1;
 					delitem 978,1;
 					delitem 7003,300;
@@ -232,7 +232,7 @@ M_Menu:
 	M_1:
 		menu "-Mine Helmet",-, "-Parcel Hat",sM_MakePar, "-Money Loser's Grief",sM_MakeMon, "-Phantom of the Opera Mask",sM_MakePhan;
 
-			if(countitem(5009)<1 || countitem(5028)<1 || countitem(747)<1 || countitem(999)<25) goto ssL_NoItems;
+			if (countitem(5009)<1 || countitem(5028)<1 || countitem(747)<1 || countitem(999)<25) goto ssL_NoItems;
 			delitem 5009, 1;
 			delitem 5028, 1;
 			delitem 747, 1;
@@ -242,7 +242,7 @@ M_Menu:
 			getitem 5031,1;
 			close;
 		sM_MakePar:
-			if(countitem(1059)<150 || countitem(907)<100 || countitem(978)<1) goto ssL_NoItems;
+			if (countitem(1059)<150 || countitem(907)<100 || countitem(978)<1) goto ssL_NoItems;
 			delitem 1059, 150;
 			delitem 907, 100;
 			delitem 978, 1;
@@ -251,7 +251,7 @@ M_Menu:
 			getitem 5023,1;
 			close;
 		sM_MakeMon:
-			if(countitem(2233)<1 || countitem(969)<1 || countitem(999)<20 || countitem(949)<80 || countitem(938)<800) goto ssL_NoItems;
+			if (countitem(2233)<1 || countitem(969)<1 || countitem(999)<20 || countitem(949)<80 || countitem(938)<800) goto ssL_NoItems;
 			delitem 2233, 1;
 			delitem 969, 1;
 			delitem 999, 20;
@@ -262,7 +262,7 @@ M_Menu:
 			getitem 5021,1;
 			close;
 		sM_MakePhan:
-			if(countitem(2281)<1 || countitem(1048)<50) goto ssL_NoItems; 
+			if (countitem(2281)<1 || countitem(1048)<50) goto ssL_NoItems; 
 			delitem 2281,1;
 			delitem 1048, 50;
 			mes "[Mari Isac]";
@@ -281,11 +281,11 @@ M_Menu:
 //============================================================================//
 //=======================================================
 comodo.gat,206,310,4	script	Rochito	48,{
-	if(dmdswrd_Q == 1) goto L_1;
-	if(dmdswrd_Q == 2) goto L_2;
-	if(dmdswrd_Q == 3) goto sL_2;
-	if(dmdswrd_Q == 4) goto L_3;
-	if(dmdswrd_Q == 5 || dmdswrd_Q == 6) goto sL_3;
+	if (dmdswrd_Q == 1) goto L_1;
+	if (dmdswrd_Q == 2) goto L_2;
+	if (dmdswrd_Q == 3) goto sL_2;
+	if (dmdswrd_Q == 4) goto L_3;
+	if (dmdswrd_Q == 5 || dmdswrd_Q == 6) goto sL_3;
 L_0:
 	mes "[Rochito]";
 	mes "Meat, meat, meat... I LOVE MEAT!! Eat, eat, eat... ALL I eat is MEAT!! I'm sooo obsessed with meat..... I'm... I.. I... I'm a MEAT MAN!!";
@@ -321,7 +321,7 @@ L_0:
 		mes "[Rochito]";
 		mes "Still, the authorities are worried about how Koserahserah should be regulated.";
 		mes "The ^5555FFChief of Comodo^000000 is currently working on a some guidelines for it.";
-		if(dmdswrd_Q == 0) set dmdswrd_Q, 1;
+		if (dmdswrd_Q == 0) set dmdswrd_Q, 1;
 		close;
 	M_End:
 		close;
@@ -402,7 +402,7 @@ L_3:
 		mes "[Rochito]";
 		mes "I believe there is a cheese expert named ^5533FFTORUNA^000000 somewhere on this island.";
 		mes "If your interested in the cheese you should go ask him about it.";
-		if(dmdswrd_Q == 5) set dmdswrd_Q, 6;
+		if (dmdswrd_Q == 5) set dmdswrd_Q, 6;
 		close;
 
 	
@@ -410,8 +410,8 @@ L_3:
 
 //=======================================================
 comodo.gat,204,310,4	script	Rockha	98,{
-	if(dmdswrd_Q == 3) goto L_1;
-	if(dmdswrd_Q == 4 || dmdswrd_Q==5) goto L_2;
+	if (dmdswrd_Q == 3) goto L_1;
+	if (dmdswrd_Q == 4 || dmdswrd_Q==5) goto L_2;
 L_0:
 	mes "[Rockha]";
 	mes ". . . . . . . . . .";
@@ -463,8 +463,8 @@ L_2:
 
 //=======================================================
 comodo.gat,209,314,4	script	Rotute	82,{
-	if(dmdswrd_Q==2 || dmdswrd_Q==3) goto L_1;
-	if(dmdswrd_Q == 4 || dmdswrd_Q==5) goto L_2;
+	if (dmdswrd_Q==2 || dmdswrd_Q==3) goto L_1;
+	if (dmdswrd_Q == 4 || dmdswrd_Q==5) goto L_2;
 
 L_0:
 	mes "[Rotute]";
@@ -579,10 +579,10 @@ comodo.gat,209,305,4	script	Emralhandas	70,{
 
 // Chief's House =========================================================//
 cmd_in02.gat,32,140,4	script	Chief Tausupa	49,{
-	if(dmdswrd_Q == 1) goto L_1;
-	if(dmdswrd_Q == 2) goto sL_1;
-	if(dmdswrd_Q == 3) goto L_2;
-	if(dmdswrd_Q == 4) goto sL_2;
+	if (dmdswrd_Q == 1) goto L_1;
+	if (dmdswrd_Q == 2) goto sL_1;
+	if (dmdswrd_Q == 3) goto L_2;
+	if (dmdswrd_Q == 4) goto sL_2;
 
 L_0:
 	mes "[Chief Tausupa]";
@@ -693,7 +693,7 @@ L_2:
 
 //=======================================================
 comodo.gat,88,97,4	script	Cheese Expert TORUNA	109,{
-	if(dmdswrd_Q == 7) goto sL_2;
+	if (dmdswrd_Q == 7) goto sL_2;
 	mes "[TORUNA]";
 	mes "I hear that the cheese here is delicious.  Every time I come here to visit, I ask for some of that popular cheese.";
 	mes "But they always seem to be out!  If I could just get a taste of that cheese...........";
@@ -728,7 +728,7 @@ M_Menu:
 		mes "They slowly chipped away at the limestone surfaces, to shape the interior of the cave into something much more eye pleasing.";
 		mes "It was from these humble beginnings that the Comodo you see today, was founded.";
 		next;
-		if(dmdswrd_Q == 6) goto sL_1;
+		if (dmdswrd_Q == 6) goto sL_1;
 
 		mes "[TORUNA]";
 		mes "Unfortunately that is only half the story.";
@@ -782,8 +782,8 @@ M_Menu:
 
 //=======================================================
 comodo.gat,164,291,2	script	Rakusa	73,{
-	if(dmdswrd_Q == 7) goto L_1;
-	if(dmdswrd_Q == 8) goto L_2;
+	if (dmdswrd_Q == 7) goto L_1;
+	if (dmdswrd_Q == 8) goto L_2;
 
 	mes "[Rakusa]";
 	mes "Comodo is often referred to as the town of 'recreation and relaxation'.......";
@@ -815,8 +815,8 @@ L_2:
 //=======================================================
 comodo.gat,169,284,4	script	Kichiri	99,{
 	mes "[Kichiri]";
-	if(dmdswrd_Q == 8) goto L_1;
-	if(dmdswrd_Q == 9) goto L_2;
+	if (dmdswrd_Q == 8) goto L_1;
+	if (dmdswrd_Q == 9) goto L_2;
 
 	mes "In the heart of Comodo lies a performance stage.  It's where a number of crazed residents put on shows for the tourists that come to visit.";
 	mes "The shows are so popular that some tourist even come back to Comodo to see them again.";
@@ -843,8 +843,8 @@ L_2:
 //=======================================================
 comodo.gat,163,280,4	script	Magatu	55,{
 	mes "[Magatu]";
-	if(dmdswrd_Q == 9) goto L_1;
-	if(dmdswrd_Q == 10) goto L_2;
+	if (dmdswrd_Q == 9) goto L_1;
+	if (dmdswrd_Q == 10) goto L_2;
 
 	mes "Yes! That's it!! The irresistible smell of that amazing ^5533FFCheese^000000!! It's so delicious!.... Oh, I can't wait any longer......";
 	emotion e_lv;
@@ -883,9 +883,9 @@ L_2:
 
 //======================================================
 cmd_in02.gat,189,99,4	script	Manzi	85,{
-	if(dmdswrd_Q == 10) goto L_1;
-	if(dmdswrd_Q == 11) goto L_2;
-	if(BaseJob == Job_Novice) goto L_Nov;
+	if (dmdswrd_Q == 10) goto L_1;
+	if (dmdswrd_Q == 11) goto L_2;
+	if (BaseJob == JOB_NOVICE) goto L_Nov;
 
 	mes "[Manzi]";
 	mes "There have been some people who've bet too much and have lost their pecopeco and many other precious items.";
@@ -937,10 +937,10 @@ L_2:
 //=======================================================
 comodo.gat,187,153,4	script	Hullaris	701,{
 	mes "[Hullaris]";
-	if(dmdswrd_Q == 11) goto L_1;
-	if(dmdswrd_Q == 12) goto L_2;
-	if(dmdswrd_Q == 13) goto L_3;
-	if(dmdswrd_Q == 14) goto L_4;
+	if (dmdswrd_Q == 11) goto L_1;
+	if (dmdswrd_Q == 12) goto L_2;
+	if (dmdswrd_Q == 13) goto L_3;
+	if (dmdswrd_Q == 14) goto L_4;
 
 	mes "Hula Dance? Who says it's merely a hula dance?? It is much more than just some dance.";
 	mes "To refer to Comodo's unique form of dancing as simply a hula dance, is just insulting!";
@@ -1059,10 +1059,10 @@ L_4:
 //=========================================================
 beach_dun3.gat,30,220,4	script	Wizard Nigirboran	704,{
 	mes "[Nigirboran]";
-	if(dmdswrd_Q == 12) goto L_1;
-	if(dmdswrd_Q == 13) goto L_2;
-	if(dmdswrd_Q == 14) goto L_3;
-	if(dmdswrd_Q == 15) goto L_4;
+	if (dmdswrd_Q == 12) goto L_1;
+	if (dmdswrd_Q == 13) goto L_2;
+	if (dmdswrd_Q == 14) goto L_3;
+	if (dmdswrd_Q == 15) goto L_4;
 
 	mes ". . . . . . . . . . . . . . .";
 	next;
@@ -1142,10 +1142,10 @@ L_2:
 	mes "^5533FF. . . . . . . . . . . . . . .^000000"; 
 	next;
 	sc_end SC_Poison;
-	if(BaseLevel < 25) goto L_LowLvl;
+	if (BaseLevel < 25) goto L_LowLvl;
 	set @TEMP, rand(3);
-	if(@TEMP == 2) goto R_2;
-	if(@TEMP == 1) goto R_1;
+	if (@TEMP == 2) goto R_2;
+	if (@TEMP == 1) goto R_1;
 
 	R_0:
 		mes "^3355FF~ your body seems fine but.....but...but.... ~^000000";

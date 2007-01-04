@@ -23,12 +23,12 @@ function	script	F_ClearJobVar	{
 	// Misc ---------------------------------
 	set JBLVL,0;
 	// First Class Jobs ---------------------
-	set job_acolyte_q,0; set job_acolyte_q2,0;
-	set job_archer_q,0;
+	set JOB_ACOLYTE_q,0; set JOB_ACOLYTE_q2,0;
+	set JOB_ARCHER_q,0;
 	set job_magician_q,0;
-	set job_merchant_q,0; set job_merchant_q2,0; set job_merchant_q3,0;
+	set JOB_MERCHANT_q,0; set JOB_MERCHANT_q2,0; set JOB_MERCHANT_q3,0;
 	set job_sword_q,0; set job_sword_q2,0; set SWTEST, 0;
-	set job_thief_q,0;
+	set JOB_THIEF_q,0;
 	// Super Novice
 	set SUPNOV_Q,0;
 	// 2-1 Jobs ------------------------------
@@ -64,48 +64,48 @@ function	script	Job_Change	{
 //----------------------------------------------------
 // HOW TO USE:
 // i.e. We need all holy classes but monks
-// if ( callfunc("Is_Holy_Class") && callfunc("Is_Monk")==0 ) goto L_Start;
+// if (callfunc("Is_Holy_Class") && callfunc("Is_Monk")==0) goto L_Start;
 //=======================================================
 
 //------------------------------------------------------
 // returns 1 if the player is either Aco,Monk,Priest,Aco High,High Priest,
 // Champion, 0 otherwise
 function	script	Is_Holy_Class	{
-	return ( BaseJob==Job_Acolyte || BaseJob==Job_Priest || BaseJob==Job_Monk);
+	return (BaseJob == JOB_ACOLYTE || BaseJob == JOB_PRIEST || BaseJob == JOB_MONK);
 }
 //------------------------------------------------------
 // returns 1 if the player is either Archer,Hunter,Bard,Dancer,Archer High,Sniper,
 // Clown,Gypsy, 0 otherwise
 function	script	Is_Bow_Class	{
-	return ( BaseJob==Job_Archer || BaseJob==Job_Hunter || BaseJob==Job_Bard || BaseJob==Job_Dancer);
+	return (BaseJob == JOB_ARCHER || BaseJob == JOB_HUNTER || BaseJob == JOB_BARD || BaseJob == JOB_DANCER);
 }
 //------------------------------------------------------
 // returns 1 if the player is either Mage,Wizard,Sage,Mage High,High Wizard,
 // Professor, 0 otherwise
 function	script	Is_Magic_Class	{
-	return ( BaseJob==Job_Mage || BaseJob==Job_Wizard || BaseJob==Job_Sage);
+	return (BaseJob == JOB_MAGE || BaseJob == JOB_WIZARD || BaseJob == JOB_SAGE);
 }
 //----------------------------------------------------
 // returns 1 if the player is either Merc,Blacksmith,Alchemist,Merc High,
 // Whitesmith,Creator, 0 otherwise
 function	script	Is_Merc_Class	{
-	return ( BaseJob==Job_Merchant || BaseJob==Job_Blacksmith || BaseJob==Job_Alchem);
+	return (BaseJob == JOB_MERCHANT || BaseJob == JOB_BLACKSMITH || BaseJob == JOB_ALCHEM);
 }
 //------------------------------------------------------
 // returns 1 if the player is either Thief,Assassin,Rogue,Thief High, Assassin Cross
 // Stalker, 0 otherwise
 function	script	Is_Thief_Class	{
-	return ( BaseJob==Job_Thief || BaseJob==Job_Assassin || BaseJob==Job_Rogue);
+	return (BaseJob == JOB_THIEF || BaseJob == JOB_ASSASSIN || BaseJob == JOB_ROGUE);
 }
 //-----------------------------------------------------
 // returns 1 if the player is either Swordy,Knight,Crusader,Swordy High,
 // Lord Knight,Paladin, 0 otherwise
 function	script	Is_Sword_Class	{
-	return ( BaseJob==Job_Swordman || BaseJob==Job_Knight || BaseJob==Job_Knight2 || BaseJob==Job_Crusader || BaseJob==Job_Crusader2);
+	return (BaseJob == JOB_SWORDMAN || BaseJob == JOB_KNIGHT || BaseJob == JOB_KNIGHT2 || BaseJob == JOB_CRUSADER || BaseJob == JOB_CRUSADER2);
 }
 //-----------------------------------------------------
 // returns 1 if the player is either Taekwon, Star Gladiator,Soul Linker, 0 otherwise
 // these classes can't be adopted nor reborn ()
 function	script	Is_Taekwon_Class	{
-	return ( Class==Job_Taekwon || Class==Job_Star_Gladiator || Class==Job_Star_Gladiator2 || Class==Job_Soul_Linker );
+	return (Class == JOB_TAEKWON || Class == JOB_STAR_GLADIATOR || Class == JOB_STAR_GLADIATOR2 || Class == JOB_SOUL_LINKER);
 }

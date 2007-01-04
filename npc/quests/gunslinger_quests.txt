@@ -21,15 +21,15 @@
 que_ng.gat,182,85,3	script	Mr.Garrison	109,{
 
 	mes "[Mr.Garrison]";
-	if(countitem(13105)>0) goto L_Already;
-	if(countitem(13104)>0) goto L_Slot;
+	if (countitem(13105)>0) goto L_Already;
+	if (countitem(13104)>0) goto L_Slot;
 	mes "I have invented a new Revolver!";
 	mes "I think I call it... Garrison.";
 	next;
 	mes "[" +strcharinfo(0) + "]";
 	mes "Very innovative name really.";
 	next;
-	if(BaseJob != Job_Gunslinger || BaseLevel < 55) goto GSRQ1;
+	if (Class != JOB_GUNSLINGER || BaseLevel < 55) goto GSRQ1;
 	goto GSRQ2;
 
 	GSRQ1:
@@ -70,7 +70,7 @@ GSRQ2:
 			mes "^FF000030000 Zeny^000000.";
 			next;
 			mes "[Mr.Garrison]";
-			if ( (countitem(999)<50) || (countitem(985)<3) || (countitem(984)<1) || (countitem(1003)<50) || (countitem(7317)<20) || (Zeny < 30000) ) goto GSRQ3;
+			if ((countitem(999)<50) || (countitem(985)<3) || (countitem(984)<1) || (countitem(1003)<50) || (countitem(7317)<20) || (Zeny < 30000)) goto GSRQ3;
 			goto GSRQ4;
 
 			GSRQ3:
@@ -139,7 +139,7 @@ L_Slot:
 			mes "of course your ^FF0000Garrison^000000.";
 			next;
 			mes "[Mr.Garrison]";
-			if ((countitem(999)<10) || (countitem(985)<1) || (countitem(1011)<10) ||(countitem(1003)<30) || (countitem(7317)<10) || (countitem(13104)<1) ) goto GSRQ5;
+			if ((countitem(999)<10) || (countitem(985)<1) || (countitem(1011)<10) ||(countitem(1003)<30) || (countitem(7317)<10) || (countitem(13104)<1)) goto GSRQ5;
 			goto GSRQ6;
 
 			GSRQ5:
@@ -188,7 +188,7 @@ que_ng.gat,187,163,3	script	Ingrid	744,{
 	mes "grenade launcher.";
 	mes "It's called ^0000FFInferno^000000.";
 	next;
-	if(BaseJob != Job_Gunslinger || BaseLevel < 65) goto GSIQ1;
+	if (Class != JOB_GUNSLINGER || BaseLevel < 65) goto GSIQ1;
 	goto GSIQ2;
 
 	GSIQ1:
@@ -231,7 +231,7 @@ GSIQ2:
 			mes "^FF0000200000 Zeny^000000.";
 			next;
 			mes "[Ingrid]";
-			if ((countitem(7319)<100) || (countitem(984)<10) || (countitem(7317)<50) || (countitem(7097)<100) || (Zeny < 200000) ) goto GSIQ3;
+			if ((countitem(7319)<100) || (countitem(984)<10) || (countitem(7317)<50) || (countitem(7097)<100) || (Zeny < 200000)) goto GSIQ3;
 			goto GSIQ4;
 
 			GSIQ3:
@@ -272,7 +272,7 @@ que_ng.gat,185,180,3	script	Vanessa	726,{
 	mes "that can destroy armors.";
 	mes "It's called ^0000FFDestroyer^000000.";
 	next;
-	if(BaseJob != Job_Gunslinger || BaseLevel < 52) goto GSVQ1;
+	if (Class != JOB_GUNSLINGER || BaseLevel < 52) goto GSVQ1;
 	goto GSVQ2;
 
 	GSVQ1:
@@ -313,7 +313,7 @@ GSVQ2:
 			mes "^FF0000100000 Zeny^000000.";
 			next;
 			mes "[Vanessa]";
-			if ((countitem(7319)<50) || (countitem(984)<5) || (countitem(7317)<70) || (Zeny < 100000) ) goto GSVQ3;
+			if ((countitem(7319)<50) || (countitem(984)<5) || (countitem(7317)<70) || (Zeny < 100000)) goto GSVQ3;
 			goto GSVQ4;
 
 			GSVQ3:
@@ -352,7 +352,7 @@ que_ng.gat,149,178,5	script	N.A	744,{
 	mes "right person to talk to.";
 	mes "I can make a ^0000FFDrifter^000000.";
 	next;
-	if(BaseJob != Job_Gunslinger || BaseLevel < 55) goto GSNA1;
+	if (Class != JOB_GUNSLINGER || BaseLevel < 55) goto GSNA1;
 	goto GSNA2;
 
 	GSNA1:
@@ -395,7 +395,7 @@ GSNA2:
 			mes "^FF000050000 Zeny^000000.";
 			next;
 			mes "[N.A]";
-			if ( (countitem(999)<70) || (countitem(985)<5) || (countitem(984)<3) || (countitem(1003)<70) || (countitem(7317)<50) || (Zeny < 50000) ) goto GSNA3;
+			if ((countitem(999)<70) || (countitem(985)<5) || (countitem(984)<3) || (countitem(1003)<70) || (countitem(7317)<50) || (Zeny < 50000)) goto GSNA3;
 			goto GSNA4;
 
 			GSNA3:

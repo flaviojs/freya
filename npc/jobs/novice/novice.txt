@@ -1746,15 +1746,15 @@ new_1-4.gat,20,109,4	script	Helper	48,{
 		mes "You can go to the result room now.";
 		next;
 		set @TEMP,rand(4);
-		if (@TEMP !=0 ) goto LQFin0;
+		if (@TEMP !=0) goto LQFin0;
 			warp "new_1-4.gat",54,136;
 			close;
 		LQFin0:
-			if (@TEMP !=1 ) goto LQFin1;
+			if (@TEMP !=1) goto LQFin1;
 			warp "new_1-4.gat",58,136;
 			close;
 		LQFin1:
-			if (@TEMP !=2 ) goto LQFin2;
+			if (@TEMP !=2) goto LQFin2;
 			warp "new_1-4.gat",62,136;
 			close;
 		LQFin2:

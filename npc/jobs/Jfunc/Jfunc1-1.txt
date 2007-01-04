@@ -15,9 +15,9 @@
 //Acolyte Check
 
 function	script	Aco_check	{
-		if(BaseJob == Job_Acolyte) goto JobAco;
-		if(BaseJob != Job_Novice) goto NotNov;
-		if(JobLevel < 10) goto JobLess10;
+		if (BaseJob == JOB_ACOLYTE) goto JobAco;
+		if (BaseJob != JOB_NOVICE) goto NotNov;
+		if (JobLevel < 10) goto JobLess10;
 		return;
 
 		JobAco:
@@ -52,16 +52,16 @@ function	script	Aco_check	{
 
 function	script	Arc_check	{
 
-		if(BaseJob == Job_Archer) goto sL_Archer;
-		if(BaseJob != Job_Novice) goto sL_Other;
+		if (BaseJob == JOB_ARCHER) goto sL_Archer;
+		if (BaseJob != JOB_NOVICE) goto sL_Other;
 		mes "You have made an execellent job choice.";
 		mes "Please submit your resume so that I can check your qualifications.";
 		next;
 		mes "(You hand over your resume)";
 		next;
 		mes "[Archer Guildsman]";
-		if(JobLevel < 10) goto sL_LowLvl;
-		set job_archer_q,1;
+		if (JobLevel < 10) goto sL_LowLvl;
+		set JOB_ARCHER_q,1;
 		return;
 
 		sL_Archer:
@@ -81,14 +81,14 @@ function	script	Arc_check	{
 //mage Check
 function	script	Mag_check	{
 
-		if(BaseJob == 2) goto L_JobMage;
-		if(BaseJob != 0) goto L_JobOther;
+		if (BaseJob == 2) goto L_JobMage;
+		if (BaseJob != 0) goto L_JobOther;
 		mes "Okays, just fill out this application form pleeassse.";
 		next;
 		mes "(you fill out the form and hand it back to her)";
 		next;
 		mes "[Expert Mage]";
-		if(JobLevel < 10) goto L_JobLvl;
+		if (JobLevel < 10) goto L_JobLvl;
 		mes "Oooh~ You have very nice hand writing ^0000dd"+ strcharinfo(0) +"^000000, and more importantly you have met the necessary prerequisites to become a mage.";
 		next;
 		mes "[Expert Mage]";
@@ -116,9 +116,9 @@ function	script	Mag_check	{
 //Merchant Check
 function	script	Mer_check	{
 
-		if(BaseJob==5) goto L_JobMer;
-		if(BaseJob !=0) goto L_JobOther;
-		if(JobLevel < 10) goto L_JobLvl;
+		if (BaseJob == 5) goto L_JobMer;
+		if (BaseJob !=0) goto L_JobOther;
+		if (JobLevel < 10) goto L_JobLvl;
 		mes "[Chief Mahnsoo]";
 		mes "A Merchant you say? Well...";
 		next;
@@ -154,14 +154,14 @@ function	script	Mer_check	{
 //Swordsman Check
 function	script	Swo_check	{
 
-		if(BaseJob == Job_Swordman) goto O_1b;
-		if(BaseJob != Job_Novice) goto O_1c;
+		if (BaseJob == JOB_SWORDMAN) goto O_1b;
+		if (BaseJob != JOB_NOVICE) goto O_1c;
 		mes "So you wish to become a Swordsman aye? A very good choice!!  Fill out this application form first.";
 		next;
 		mes "..(you fill out the form and hand it to him)..";
 		next;
 		mes "[Master Swordsman]";
-		if(JobLevel < 10) goto O_1d;
+		if (JobLevel < 10) goto O_1d;
 		return;
 
 		O_1b:
@@ -185,14 +185,14 @@ function	script	Swo_check	{
 //Thief Check
 function	script	Thi_check	{
 
-	if(BaseJob == Job_Novice) return;
-	if(BaseJob == Job_Thief) goto L_JobThief;
+	if (BaseJob == JOB_NOVICE) return;
+	if (BaseJob == JOB_THIEF) goto L_JobThief;
 	mes "[Thief Guide]";
-	if(BaseJob==1 || BaseJob==7 || BaseJob==14) goto L_Swordman;
-	if(BaseJob==2 || BaseJob==9 || BaseJob==16) goto L_Mage;
-	if(BaseJob==3 || BaseJob==11 || BaseJob==19 || BaseJob==20) goto L_Archer;
-	if(BaseJob==4 || BaseJob==8 || BaseJob==15) goto L_Acolyte;
-	if(BaseJob==5 || BaseJob==10 || BaseJob==18) goto L_Merchant;
+	if (BaseJob == 1 || BaseJob == 7 || BaseJob == 14) goto L_Swordman;
+	if (BaseJob == 2 || BaseJob == 9 || BaseJob == 16) goto L_Mage;
+	if (BaseJob == 3 || BaseJob == 11 || BaseJob == 19 || BaseJob == 20) goto L_Archer;
+	if (BaseJob == 4 || BaseJob == 8 || BaseJob == 15) goto L_Acolyte;
+	if (BaseJob == 5 || BaseJob == 10 || BaseJob == 18) goto L_Merchant;
 
 		mes "You already have a job.  Stop bothering me and go help out some newbies or something.";
 		emotion 21;

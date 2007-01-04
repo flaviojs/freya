@@ -19,18 +19,18 @@
 
 // == Monsters ==
 //Spawn is included in this file so make shure its not elsewhere to!
-job_thief1.gat,0,0,0,0	monster	Orange Mushroom	1182,180,0,0,0
-job_thief1.gat,0,0,0,0	monster	Fabre	1184,50,0,0,0
-job_thief1.gat,0,0,0,0	monster	Chonchon	1183,50,0,0,0
-job_thief1.gat,0,0,0,0	monster	Spore	1014,30,0,0,0
+JOB_THIEF1.gat,0,0,0,0	monster	Orange Mushroom	1182,180,0,0,0
+JOB_THIEF1.gat,0,0,0,0	monster	Fabre	1184,50,0,0,0
+JOB_THIEF1.gat,0,0,0,0	monster	Chonchon	1183,50,0,0,0
+JOB_THIEF1.gat,0,0,0,0	monster	Spore	1014,30,0,0,0
 
 
 // == NPCs ==
 // -- Interviewer --
 moc_prydb1.gat,39,129,5	script	Guide des Thief	69,{
 	callfunc "Thi_check";
-	if(job_thief_q==2) goto L_1;
-	if(job_thief_q==1) goto L_Back;
+	if (JOB_THIEF_q==2) goto L_1;
+	if (JOB_THIEF_q==1) goto L_Back;
 
 	mes "[Thief Guide]";
 	if (Sex) goto mec;
@@ -87,7 +87,7 @@ M_Menu:
 		next;
 		mes "(vous remplissez le questionnaire et le lui rendez)";
 		next;
-		if(JobLevel < 10) goto sL_JobLvl;
+		if (JobLevel < 10) goto sL_JobLvl;
 
 		mes "[Guide des Thief]";
 		mes "Alors, ^ff0000"+ strcharinfo(0) + "^000000, si c'est vraiment ton nom... Vous avez fait des exploits.";
@@ -131,7 +131,7 @@ M_Menu:
 		mes "[Guide des Thief]";
 		mes "Si vous n'avez pas de questions... BOUGEZ!";
 		emotion e_go;
-		set job_thief_q,1;
+		set JOB_THIEF_q,1;
 		close;
 
 		sL_JobLvl:
@@ -140,7 +140,7 @@ M_Menu:
 			close;
 
 	L_Back:
-		if(countitem(1069)>0 || countitem(1070)>0) goto sL_1;//Items: Orange_Net_Mushroom, Orange_Gooey_Mushroom_,
+		if (countitem(1069)>0 || countitem(1070)>0) goto sL_1;//Items: Orange_Net_Mushroom, Orange_Gooey_Mushroom_,
 
 		sL_0:
 			mes "[Guide des Thief]";
@@ -204,9 +204,9 @@ M_Menu:
 
 // -- Test Grader --
 moc_prydb1.gat,42,133,2	script	Brad	118,{
-	callfunc "F_ToHigh",Job_Thief_High,"Thief High",Job_Assassin_Cross,"Assassin Cross",0,0,0,0,"Brad";
-	if(BaseJob == 0) goto L_Novice;
-	if(BaseJob == 6) goto L_Thief;
+	callfunc "F_ToHigh",JOB_THIEF_HIGH,"Thief High",JOB_ASSASSIN_CROSS,"Assassin Cross",0,0,0,0,"Brad";
+	if (BaseJob == 0) goto L_Novice;
+	if (BaseJob == 6) goto L_Thief;
 
 L_Other:
 	mes "[Brad]";
@@ -220,8 +220,8 @@ L_Thief:
 
 L_Novice:
 	mes "[Brad]";
-	if((job_thief_q == 2) && ((countitem(1069) > 0) || (countitem(1070) > 0))) goto L_4;//Items: Orange_Net_Mushroom, Orange_Gooey_Mushroom_,
-	if(job_thief_q >= 1) goto L_3;
+	if ((JOB_THIEF_q == 2) && ((countitem(1069) > 0) || (countitem(1070) > 0))) goto L_4;//Items: Orange_Net_Mushroom, Orange_Gooey_Mushroom_,
+	if (JOB_THIEF_q >= 1) goto L_3;
 
 	mes "Hey? Qu'y a-t-il petit(e)? Si vous voulez devenir thief, allez dans la file d'à coté.";
 	close;
@@ -266,11 +266,11 @@ L_4:
 		mes "Félicitations ^ff0000"+strcharinfo(0)+"^000000, vous avez officiellement réussi le test de Thief! Maintenant vous êtes Thief!!";
 		emotion e_no1;
 		next;
-		if(SkillPoint > 0) goto sL_SkPoint;
+		if (SkillPoint > 0) goto sL_SkPoint;
 		delitem 1069, countitem(1069);//Items: Orange_Net_Mushroom,
 		delitem 1070, countitem(1070);//Items: Orange_Gooey_Mushroom_,
 
-		callfunc "Job_Change",Job_Thief;
+		callfunc "Job_Change",JOB_THIEF;
 		callfunc "F_ClearJobVar";		// clears all job variables for the current player
 
 		mes "[Brad]";
@@ -300,14 +300,14 @@ L_4:
 
 // -- Irrelevant Man --
 moc_ruins.gat,141,125,3	script	irrevelant man	118,{
-	if(BaseJob == 6) goto L_Thief;
-	if(BaseJob == 0) goto L_Novice;
+	if (BaseJob == 6) goto L_Thief;
+	if (BaseJob == 0) goto L_Novice;
 
 L_Other:
-	if(@s_flag==1) goto L_1b;
-	if(@s_flag==2) goto L_1c;
-	if(@s_flag==3) goto L_1d;
-	if(@s_flag==4) goto L_1e;
+	if (@s_flag==1) goto L_1b;
+	if (@s_flag==2) goto L_1c;
+	if (@s_flag==3) goto L_1d;
+	if (@s_flag==4) goto L_1e;
 	set @s_flag, 0;
 
 	L_1a:
@@ -352,8 +352,8 @@ L_Thief:
 	close;
 
 L_Novice:
-	if(job_thief_q==2) goto L_3;
-	if(job_thief_q==1) goto L_2;
+	if (JOB_THIEF_q==2) goto L_3;
+	if (JOB_THIEF_q==1) goto L_2;
 	mes "[irrevelant man]";
 	mes "Hey!! Un(e) novice! Vous voulez devenir plus fort(e) et plus puissant(e)!? Vous voulez jouer à cache-cache?";
 	mes "Si c'est que vous voulez, rejoignez la guide des Thief! Vous y serez bienvenu(e)! Rejoignez-la!";
@@ -366,7 +366,7 @@ L_2:
 	mes "Pssst... Pssst... hey vous! Vous voulez passer le ^ff0000'Test'^000000, si je ne me trompe pas?";
 	next;
 	mes "[irrevelant man]";
-	mes "Voyons-ça...( vérifie sa liste)... vous êtes ^ff0000"+ strcharinfo(0) +"^000000, non ? Bien.";
+	mes "Voyons-ça...(vérifie sa liste)... vous êtes ^ff0000"+ strcharinfo(0) +"^000000, non ? Bien.";
 	next;
 	mes "[irrevelant man]";
 	mes "Ok! Je vous montre le chemin, mais CHUT. Je ne peux pas garantir votre sécurité, alors faîtes gaffe.";
@@ -374,24 +374,24 @@ L_2:
 
 	L_Warp:
 	set @TEMP,rand(5);
-	set job_thief_q,2;
-	if(@TEMP != 0) goto warpL03a;
-		warp "job_thief1.gat",228,106;
+	set JOB_THIEF_q,2;
+	if (@TEMP != 0) goto warpL03a;
+		warp "JOB_THIEF1.gat",228,106;
 		close;
 	warpL03a:
-		if(@TEMP != 1) goto warpL03b;
-		warp "job_thief1.gat",38,50;
+		if (@TEMP != 1) goto warpL03b;
+		warp "JOB_THIEF1.gat",38,50;
 		close;
 	warpL03b:
-		if(@TEMP != 2) goto warpL03c;
-		warp "job_thief1.gat",66,331;
+		if (@TEMP != 2) goto warpL03c;
+		warp "JOB_THIEF1.gat",66,331;
 		close;
 	warpL03c:
-		if(@TEMP != 3) goto warpL03d;
-		warp "job_thief1.gat",196,331;
+		if (@TEMP != 3) goto warpL03d;
+		warp "JOB_THIEF1.gat",196,331;
 		close;
 	warpL03d:
-		warp "job_thief1.gat",309,234;
+		warp "JOB_THIEF1.gat",309,234;
 		close;
 
 L_3:
@@ -417,9 +417,9 @@ L_3:
 //==============================================================================
 // mapflag
 //==============================================================================
-job_thief1.gat	mapflag	nomemo
-job_thief1.gat	mapflag	noteleport
-job_thief1.gat	mapflag	nosave	SavePoint
-job_thief1.gat	mapflag	nopenalty
-job_thief1.gat	mapflag	nobranch
-job_thief1.gat	mapflag	noexp
+JOB_THIEF1.gat	mapflag	nomemo
+JOB_THIEF1.gat	mapflag	noteleport
+JOB_THIEF1.gat	mapflag	nosave	SavePoint
+JOB_THIEF1.gat	mapflag	nopenalty
+JOB_THIEF1.gat	mapflag	nobranch
+JOB_THIEF1.gat	mapflag	noexp

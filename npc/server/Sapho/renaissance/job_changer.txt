@@ -158,7 +158,7 @@ L_99:
 	set @card2,@ele+((@sc*5)<<8);
 	set @card3, @charid & 65535;
 	set @card4, @charid >> 16;
-	getitem2 5098,1,1,9,0,@card1,@card2,@card3,@card4;  // +9 Tiger mask ( x1 ) signé :)
+	getitem2 5098,1,1,9,0,@card1,@card2,@card3,@card4;  // +9 Tiger mask (x1) signé :)
 	getitem rand(9026,9027),1;      // Un alice egg ou Zherlthsh egg aléatoirement. Sans equipement, car celui-ci n'existe pas encore.
 	jobchange 4001;
 	resetlvl(1);
@@ -889,29 +889,29 @@ OnTimer:
 //getarg(8) - current NPC's name
 
 function	script	F_ToHigh	{
-	if(Upper == 2) return; //Baby Class - skip it
+	if (Upper == 2) return; //Baby Class - skip it
 	set @fjob,ADVJOB; //alternative classes should pass, too
-	if(@fjob == Job_Rogue + 4001 ) set @fjob,Job_Assassin+4001;
-	if(@fjob == Job_Alchem + 4001 ) set @fjob,Job_Blacksmith+4001;
-	if(@fjob == Job_Bard + 4001 || @fjob == Job_Dancer + 4001 ) set @fjob,Job_Hunter+4001;
-	if(@fjob == Job_Crusader + 4001 ) set @fjob,Job_Knight+4001;
-	if(@fjob == Job_Monk + 4001 ) set @fjob,Job_Priest+4001;
-	if(@fjob == Job_Sage + 4001 ) set @fjob,Job_Wizard+4001;
+	if (@fjob == JOB_ROGUE + 4001) set @fjob,JOB_ASSASSIN+4001;
+	if (@fjob == JOB_ALCHEM + 4001) set @fjob,JOB_BLACKSMITH+4001;
+	if (@fjob == JOB_BARD + 4001 || @fjob == JOB_DANCER + 4001) set @fjob,JOB_HUNTER+4001;
+	if (@fjob == JOB_CRUSADER + 4001) set @fjob,JOB_KNIGHT+4001;
+	if (@fjob == JOB_MONK + 4001) set @fjob,JOB_PRIEST+4001;
+	if (@fjob == JOB_SAGE + 4001) set @fjob,JOB_WIZARD+4001;
 
-	if(Class == 3977+getarg(0) ) goto L_WELCOME; //3rd Job
-	if(Class >= 4008) goto L_ALREADY; //already advanced class
-	if(Class == 4001 && @fjob == 3977+getarg(2) ) goto L_GETHIGH; //High Novice -> High XXXX
-	if(Class == 4001) mes "Hello, Novice High! If you are going to became a "+getarg(1)+", then go visit your very first job teacher.";
-	if(Class == 4001) close;
+	if (Class == 3977+getarg(0)) goto L_WELCOME; //3rd Job
+	if (Class >= 4008) goto L_ALREADY; //already advanced class
+	if (Class == 4001 && @fjob == 3977+getarg(2)) goto L_GETHIGH; //High Novice -> High XXXX
+	if (Class == 4001) mes "Hello, Novice High! If you are going to became a "+getarg(1)+", then go visit your very first job teacher.";
+	if (Class == 4001) close;
 	return; //this char doesn't want to get HIGH class
 
 L_GETHIGH:
 	mes "["+getarg(8)+"]";
-	if(JobLevel < 10) goto L_NOTREADY;
-	if(checkcart(0)) goto L_CART;
-	if(checkfalcon(0)) goto L_FALCON;
-	if(checkriding(0)) goto L_PECO;
-	if(skillpoint > 0) goto L_SKILLPNTS;
+	if (JobLevel < 10) goto L_NOTREADY;
+	if (checkcart(0)) goto L_CART;
+	if (checkfalcon(0)) goto L_FALCON;
+	if (checkriding(0)) goto L_PECO;
+	if (skillpoint > 0) goto L_SKILLPNTS;
 
 	mes "Hello there, "+strcharinfo(0)+"!";
 	mes "You've made a brave choice in coming here to be reborn and stepping forth into the advanced ranks.";
@@ -989,19 +989,19 @@ L_ALREADY:
 //getarg(3) - 3rd Job Name
 function	script	F_Rebirth	{
 	mes "["+getarg(3)+"]";
-	if(Upper == 2) goto L_BABY; //Baby Class - skip it
-	if(Class >= 4008) goto L_ALREADY; //already advanced class
-	if(Class == (3977+getarg(0)) && ADVJOB == (3977+getarg(2))) goto L_GET3RD; //Hight XXXX -> 3rd Job
+	if (Upper == 2) goto L_BABY; //Baby Class - skip it
+	if (Class >= 4008) goto L_ALREADY; //already advanced class
+	if (Class == (3977+getarg(0)) && ADVJOB == (3977+getarg(2))) goto L_GET3RD; //Hight XXXX -> 3rd Job
 	mes "Go talk to either Valhallana or one of my collegues...";
 	emotion 17;
 	close;
 
 L_GET3RD:
-	if(JobLevel < 45) goto L_NOTREADY;
-	if(checkcart(0)) goto L_CART;
-	if(checkfalcon(0)) goto L_FALCON;
-	if(checkriding(0)) goto L_PECO;
-	if(skillpoint > 0) goto L_SKILLPNTS;
+	if (JobLevel < 45) goto L_NOTREADY;
+	if (checkcart(0)) goto L_CART;
+	if (checkfalcon(0)) goto L_FALCON;
+	if (checkriding(0)) goto L_PECO;
+	if (skillpoint > 0) goto L_SKILLPNTS;
 
 	mes "Congratulations!";
 	mes "You have trained well. Now stroll here as a "+getarg(3)+"!";
@@ -1055,15 +1055,15 @@ L_BABY:
 //getarg(3) - 3rd Job Name
 //getarg(4) - NPC Name
 function	script	F_BlockHigh	{
-	if(Upper != 1) return; //This func should interact with Advanced classes only
+	if (Upper != 1) return; //This func should interact with Advanced classes only
 	mes "["+getarg(4)+"]";
-	if(Class == (3977+getarg(0)) && ADVJOB == (3977+getarg(2))) goto L_RIGHTHIGH;
-	if(Class == (3977+getarg(2))) goto L_RIGHT3RD;
-	if(Class >= 4008) goto L_ALREADY3RD; //already advanced class, but from wrong guild
+	if (Class == (3977+getarg(0)) && ADVJOB == (3977+getarg(2))) goto L_RIGHTHIGH;
+	if (Class == (3977+getarg(2))) goto L_RIGHT3RD;
+	if (Class >= 4008) goto L_ALREADY3RD; //already advanced class, but from wrong guild
 //this player is a High Novice
-	if(Class == 4001) mes "Hello, Novice High! If you are going to became a "+getarg(1)+", then go visit your very first job teacher.";
+	if (Class == 4001) mes "Hello, Novice High! If you are going to became a "+getarg(1)+", then go visit your very first job teacher.";
 //this player has 1st advanced job, but from wrong guild
-	if(Class != 4001) mes "A "+getarg(1)+"? Rumors say only Valhallana knows your way...";
+	if (Class != 4001) mes "A "+getarg(1)+"? Rumors say only Valhallana knows your way...";
 	emotion 17;
 	close;
 
@@ -1080,7 +1080,7 @@ L_RIGHT3RD:
 L_RIGHTHIGH:
 	mes "Hello, "+strcharinfo(0)+"!";
 	mes "If you are going to become a "+getarg(3)+", then you should visit Valhalla again.";
-	if(JobLevel < 45) mes "But you need at least Job Level 45 or higher.";
+	if (JobLevel < 45) mes "But you need at least Job Level 45 or higher.";
 	emotion 0;
 	close;
 

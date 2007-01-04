@@ -52,8 +52,8 @@ niflheim.gat,182,167,0	duplicate(spirits)	Spirit#9	802
 
 nif_fild01.gat,213,268,5	script	Little Boy	797,{
 	mes "[Marius]";
-	if(niflheimlost == 1) goto L_alreadydone;
-	if(lostgirl == 1) goto L_sure2;
+	if (niflheimlost == 1) goto L_alreadydone;
+	if (lostgirl == 1) goto L_sure2;
 	mes "Sairin...where are you?";
 	close;
 L_alreadydone:

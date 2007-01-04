@@ -403,7 +403,7 @@ einbech.gat,39,215,6	script	Train Station Staff	852,{
 	mes "in Einbech.";
 	close;
 L_YES:
-	if(Zeny < 200)goto L_ZENY;
+	if (Zeny < 200) goto L_ZENY;
 	mes "[Staff]";
 	mes "Thank you and";
 	mes "we hope you enjoy";

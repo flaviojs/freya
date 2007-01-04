@@ -136,8 +136,8 @@ yuno.gat,151,228,4	script	Yuno Soldier	105,{
 //======================================================================
 function	script	F_YunoLoc	{
 
-	if(getarg(0) == 1) goto M_Menu;
-	if(getarg(0) == 2) menu "View city locations.",M_0, "End conversation.",M_End;
+	if (getarg(0) == 1) goto M_Menu;
+	if (getarg(0) == 2) menu "View city locations.",M_0, "End conversation.",M_End;
 	mes @name$;
 	mes "Welcome to Yuno, the city of noble-mindedness.";
 	M_Menu:

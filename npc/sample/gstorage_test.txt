@@ -11,8 +11,8 @@ prontera.gat,165,188,4	script	ギルド倉庫カプラ	112,{
 
 GS_OPEN:
 	set @flag,guildopenstorage(0);
-	if(@flag == 1) goto GS_EXIT1;
-	if(@flag == 2) goto GS_EXIT2;
+	if (@flag == 1) goto GS_EXIT1;
+	if (@flag == 2) goto GS_EXIT2;
 	goto GS_EXIT4;
 
 GS_EXIT1:

@@ -71,7 +71,7 @@ alberta.gat,53,39,8	script	Merchant#02	74,{
 // Merchant -------------------------------------------------
 alberta.gat,58,80,8	script	Merchant#03	99,{
 	mes "[Merchant]";
-	if(rand(2)) goto R_1;
+	if (rand(2)) goto R_1;
 		mes "We merchants can open a roadside stand and do business.  With the ^0000ffDiscount skill^000000 we can buy goods from stores for low prices.";
 		next;
 		mes "[Merchant]";
@@ -90,8 +90,8 @@ alberta.gat,58,80,8	script	Merchant#03	99,{
 alberta.gat,62,156,2	script	Phina	102,{
 	set @TEMP,rand(3);
 	mes "[Phina]";
-	if(@TEMP == 1) goto R_1;
-	if(@TEMP == 0) goto R_0;
+	if (@TEMP == 1) goto R_1;
+	if (@TEMP == 0) goto R_0;
 		mes "This one time, I was walking in the forest and I saw a long, slender piece of green grass sticking out on the ground.";
 		next;
 		mes "[Phina]";
@@ -234,7 +234,7 @@ alberta.gat,189,151,5	script	Sailor Fisk	100,{
 	next;
 	menu "Izlude Marina -> 500 Zeny.",-,"Quit",M_End;
 	
-		if(Zeny < 500) goto L_NoZeny;
+		if (Zeny < 500) goto L_NoZeny;
 		set Zeny, Zeny - 500;
 		warp "izlude.gat",176,182;
 		close;
@@ -284,12 +284,12 @@ alberta.gat,190,173,4	script	Phelix	85,{
 				next;
 				set @input,0;
 				input @input;
-				if(@input < 1 || @input > 1000) goto M_Yes;
-				if(checkweight(@item,@input)==0) goto L_OverW;
+				if (@input < 1 || @input > 1000) goto M_Yes;
+				if (checkweight(@item,@input)==0) goto L_OverW;
 
-				if(@item == 501) set @amount, @input*10;
-				if(@item == 516) set @amount, @input*3;
-				if(countitem(909) < @amount) goto L_NotEnough;
+				if (@item == 501) set @amount, @input*10;
+				if (@item == 516) set @amount, @input*3;
+				if (countitem(909) < @amount) goto L_NotEnough;
 
 				getitem @item,@input;
 				delitem 909, @amount;
@@ -327,7 +327,7 @@ alberta.gat,195,151,3	script	Paul	86,{
 	next;
 	menu "Enter",-,"Quit",M_End;
 	
-		if(Zeny < 200) goto L_NoZeny;
+		if (Zeny < 200) goto L_NoZeny;
 		set Zeny, Zeny - 200;
 		warp "alb2trea.gat",62,69;
 		close;

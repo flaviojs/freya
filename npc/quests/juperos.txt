@@ -68,7 +68,7 @@ OnInit:
 OnSwitchADead:
 	mapannounce "juperos_02.gat","Have you come seeking Juperos?! It no longer exists...",1;
 	set $@JupeSwitch1,1;
-	if($@JupeSwitch1 == 1 && $@JupeSwitch2 == 1 && $@JupeSwitch3 == 1)goto JupeContA;
+	if ($@JupeSwitch1 == 1 && $@JupeSwitch2 == 1 && $@JupeSwitch3 == 1) goto JupeContA;
 	end;
 
 JupeContA:
@@ -109,7 +109,7 @@ OnInit:
 OnSwitchBDead:
 	mapannounce "juperos_02.gat","Who are you to come here?",1;
 	set $@JupeSwitch2,1;
-	if($@JupeSwitch1 == 1 && $@JupeSwitch2 == 1 && $@JupeSwitch3 == 1)goto JupeContB;
+	if ($@JupeSwitch1 == 1 && $@JupeSwitch2 == 1 && $@JupeSwitch3 == 1) goto JupeContB;
 	end;
 
 JupeContB:
@@ -149,7 +149,7 @@ OnInit:
 OnSwitchCDead:
 	mapannounce "juperos_02.gat","Have you come to see me? Fine! Find me first!",1;
 	set $@JupeSwitch3,1;
-	if($@JupeSwitch1 == 1 && $@JupeSwitch2 == 1 && $@JupeSwitch3 == 1)goto JupeContC;
+	if ($@JupeSwitch1 == 1 && $@JupeSwitch2 == 1 && $@JupeSwitch3 == 1) goto JupeContC;
 	end;
 
 JupeContC:
@@ -196,7 +196,7 @@ jupe_area2.gat,74,224,0	script	Lever#Lever1	111,{
 
 	mes "It looks like you can fit something";
 	mes "into the lever.";
-	if(countitem(7356) >= 1)goto JupeLever1;
+	if (countitem(7356) >= 1) goto JupeLever1;
 	close;
 
 JupeLever1:
@@ -222,7 +222,7 @@ jupe_area2.gat,138,238,0	script	Lever#Lever2	111,{
 
 	mes "It looks like you can fit something";
 	mes "into the lever.";
-	if(countitem(7357) >= 1)goto JupeLever2;
+	if (countitem(7357) >= 1) goto JupeLever2;
 	close;
 
 JupeLever2:
@@ -248,7 +248,7 @@ jupe_area2.gat,127,146,0	script	Lever#Lever3	111,{
 
 	mes "It looks like you can fit something";
 	mes "into the lever.";
-	if(countitem(7358) >= 1)goto JupeLever3;
+	if (countitem(7358) >= 1) goto JupeLever3;
 	close;
 
 JupeLever3:
@@ -274,7 +274,7 @@ jupe_area2.gat,113,49,0	script	Lever#Lever4	111,{
 
 	mes "It looks like you can fit something";
 	mes "into the lever.";
-	if(countitem(7359) >= 1)goto JupeLever4;
+	if (countitem(7359) >= 1) goto JupeLever4;
 	close;
 
 JupeLever4:
@@ -299,7 +299,7 @@ JupeInsert4:
 jupe_area2.gat,51,162,0	script	Lever#Lever5	111,{
 
 	mes "You see a switch on the lever.";
-	if(countitem(7356) >= 1 && countitem(7357) >= 1 && countitem(7358) >= 1 && countitem(7359) >= 1)goto JupeActivate1;
+	if (countitem(7356) >= 1 && countitem(7357) >= 1 && countitem(7358) >= 1 && countitem(7359) >= 1) goto JupeActivate1;
 	close;
 
 JupeActivate1:
@@ -323,9 +323,9 @@ JupeActivate2:
 
 jupe_ele_r.gat,51,98,0	script	Lever#Lever6	111,{
 
-	if($@JupeEleRoom == 1)goto JupeEleRoomEnd;
+	if ($@JupeEleRoom == 1) goto JupeEleRoomEnd;
 	mes "You see a lever.";
-	if(countitem(7356) >= 1 && countitem(7357) >= 1 && countitem(7358) >= 1 && countitem(7359) >= 1)goto JupeCrestInsert;
+	if (countitem(7356) >= 1 && countitem(7357) >= 1 && countitem(7358) >= 1 && countitem(7359) >= 1) goto JupeCrestInsert;
 	close;
 
 JupeEleRoomEnd:
@@ -360,7 +360,7 @@ OnTimer300000:
 
 OnMobEleRoomDead:
 	set $@JupeEleRoomPass,$@JupeEleRoomPass  + 1;
-	if ($@JupeEleRoomPass == 8)goto JupeEleRoomWarp;
+	if ($@JupeEleRoomPass == 8) goto JupeEleRoomWarp;
 	end;
 
 JupeEleRoomWarp:
@@ -373,7 +373,7 @@ JupeEleRoomWarp:
 
 jupe_ele.gat,42,56,0	script	Lever#Lever7	111,{
 
-	if(JupeElevator == 1)goto JupeEleEnd;
+	if (JupeElevator == 1) goto JupeEleEnd;
 	mes "You see a switch on the lever.";
 	next;
 	mes "Activate switch?";
@@ -405,7 +405,7 @@ OnTimer300000:
 
 OnMobElevatorDead:
 	set $@JupeElePass,$@JupeElePass + 1;
-	if ($@JupeElePass == 31)goto JupeElevatorWarp;
+	if ($@JupeElePass == 31) goto JupeElevatorWarp;
 	end;
 
 JupeElevatorWarp:

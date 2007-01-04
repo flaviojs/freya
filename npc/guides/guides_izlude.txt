@@ -82,15 +82,15 @@ M_Menu:
 			set @COMPASS_CHECK, 2;
 
 		sL_Wipe:
-			if(@COMPASS_CHECK != 2) next;
-			if(@COMPASS_CHECK == 1) goto sM_Menu;
+			if (@COMPASS_CHECK != 2) next;
+			if (@COMPASS_CHECK == 1) goto sM_Menu;
 			viewpoint 2,52,140,1,0xFF0000;
 			viewpoint 2,214,130,2,0x00FF00;
 			viewpoint 2,128,225,3,0x00FF00;
 			viewpoint 2,200,180,4,0xFF0000;
 			viewpoint 2,111,149,5,0xFF00FF;
 			viewpoint 2,148,148,6,0xFF00FF;
-			if(@COMPASS_CHECK == 0) goto sM_Menu;
+			if (@COMPASS_CHECK == 0) goto sM_Menu;
 			mes "[Izlude Soldier]";
 			mes "All indications have been removed";
 			cutin "prt_soldier",255;

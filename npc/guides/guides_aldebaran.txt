@@ -81,8 +81,8 @@ M_Menu:
 			set @COMPASS_CHECK, 2;
 
 		sL_Wipe:
-			if(@COMPASS_CHECK != 2) next;
-			if(@COMPASS_CHECK == 1) goto sM_Menu;
+			if (@COMPASS_CHECK != 2) next;
+			if (@COMPASS_CHECK == 1) goto sM_Menu;
 			viewpoint 2,56,225,1,0xFF0000;
 			viewpoint 2,72,194,2,0x0000FF;
 			viewpoint 2,197,68,3,0x00FF00;

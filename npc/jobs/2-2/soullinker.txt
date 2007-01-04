@@ -16,13 +16,13 @@
 //============================================================ 
 
 morocc_in.gat,174,30,7	script	Little Boy#sltest	716,{
-	if(SOUL_Q==1) goto L_Check;
-	if(SOUL_Q >= 2) goto L_Warp;
-	if(Class==Job_Soul_Linker) goto L_Thanks;
+	if (SOUL_Q==1) goto L_Check;
+	if (SOUL_Q >= 2) goto L_Warp;
+	if (Class == JOB_SOUL_LINKER) goto L_Thanks;
 	mes "[Little Boy]";
 	mes "*sniff sniff*";
 	next;
-	if(Class==Job_Taekwon && JobLevel>=40) goto L_Taekwon;
+	if (Class == JOB_TAEKWON && JobLevel >= 40) goto L_Taekwon;
 	mes "The little boy is crying and";
 	mes "it doesn't look like you're";
 	mes "going to be able to stop him.";
@@ -70,12 +70,12 @@ L_Goon:
 	close;
 
 L_Check:
-	if(countitem(748) < 1 || countitem(732) < 1 || countitem(929) < 1) goto L_Noitem;
+	if (countitem(748) < 1 || countitem(732) < 1 || countitem(929) < 1) goto L_Noitem;
 	delitem 748,1;
 	delitem 732,1;
 	delitem 929,1;
 	set SOUL_Q,2;
-	if(SkillPoint > 0) goto L_Skill;
+	if (SkillPoint > 0) goto L_Skill;
 	mes "[Little Boy]";
 	mes "Wow, Thank you so much!";
 	mes "You're so helpful, I think I";
@@ -102,7 +102,7 @@ L_Noitem:
 	close;
 
 L_Warp:
-	if(SkillPoint) goto L_Skill;
+	if (SkillPoint) goto L_Skill;
 	mes "[Little Boy]";
 	mes "Okay, here we go!";
 	next;
@@ -118,7 +118,7 @@ L_Skill:
 }
 
 job_soul.gat,30,35,2	script	Lost Soul#1	827,{
-	if(SOUL_Q==2) goto L_Talk1;
+	if (SOUL_Q==2) goto L_Talk1;
 	mes "[Lost Soul]";
 	mes "I have said all I have needed to say. Thank you.";
 	close;
@@ -169,8 +169,8 @@ L_Talk1:
 }
 
 job_soul.gat,25,30,3	script	Lost Soul#2	744,{
-	if(SOUL_Q==3) goto L_Talk2;
-	if(SOUL_Q < 3) goto L_Notyet2;
+	if (SOUL_Q==3) goto L_Talk2;
+	if (SOUL_Q < 3) goto L_Notyet2;
 	mes "[Lost Soul]";
 	mes "I have said all I have";
 	mes "needed to say. Thank you.";
@@ -221,8 +221,8 @@ L_Talk2:
 }
 
 job_soul.gat,30,25,0	script	Lost Soul#3	754,{
-	if(SOUL_Q==4) goto L_Talk3;
-	if(SOUL_Q < 4) goto L_Notyet3;
+	if (SOUL_Q==4) goto L_Talk3;
+	if (SOUL_Q < 4) goto L_Notyet3;
 	mes "[Lost Soul]";
 	mes "I have said all I have needed to say. Thank you.";
 	close;
@@ -272,7 +272,7 @@ L_Talk3:
 }
 
 job_soul.gat,35,30,3	script	Little Boy#4	716,{
-	if(SOUL_Q < 5) goto L_Notyet4;
+	if (SOUL_Q < 5) goto L_Notyet4;
 	mes "[Little Boy]";
 	mes "So you have listened to the tales of my friends?";
 	next;
@@ -287,9 +287,9 @@ job_soul.gat,35,30,3	script	Little Boy#4	716,{
 	mes "You seem to have a gift with people, so with your permisson,";
 	mes "I would like to make you a Soul Linker.";
 	next;
-	menu "Yes",L_JobChange,"No",L_Warpout;
+	menu "Yes",L_jobchange,"No",L_Warpout;
 
-L_JobChange:
+L_jobchange:
 	mes "[Little Boy]";
 	mes "Very well then.";
 	mes "You are now a Soul Linker.";
@@ -297,7 +297,7 @@ L_JobChange:
 	sc_end SC_READYDOWN;
 	sc_end SC_READYTURN;
 	sc_end SC_READYCOUNTER;
-	jobchange Job_Soul_Linker;
+	jobchange JOB_SOUL_LINKER;
 	misceffect 247;
 	next;
 	callfunc "F_ClearJobVar";

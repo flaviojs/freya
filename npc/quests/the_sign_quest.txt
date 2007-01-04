@@ -113,9 +113,9 @@ aldebaran.gat,54,223,1	duplicate(GeffeniaSigns)	Sign	111
 
 prt_in.gat,228,26,4	script	Steward	55,{
 
-	if(signquest > 22) goto L_Situation;
-	if(signquest == 14) goto L_Artisan;
-	if(signquest < 1) goto L_Sign1;
+	if (signquest > 22) goto L_Situation;
+	if (signquest == 14) goto L_Artisan;
+	if (signquest < 1) goto L_Sign1;
 
 	mes "[Vendez]";
 	mes "Ah, master " + strcharinfo(0) + ".";
@@ -215,8 +215,8 @@ L_Situation:
 prt_in.gat,227,45,4	script	Archaeologist	804,{
 
 	cutin "mets_alpha",2;
-	if(sign_fail > 0) goto L_Stop;
-	if(signquest > 0)goto s_Cont;
+	if (sign_fail > 0) goto L_Stop;
+	if (signquest > 0) goto s_Cont;
 	mes "[Metz]";
 	mes "Although you need everlasting";
 	mes "patience in an archaeological";
@@ -229,23 +229,23 @@ prt_in.gat,227,45,4	script	Archaeologist	804,{
 	end;
 
 s_Cont:
-	if(signquest > 64) goto L_SIGNQOTHER;
-	if(signquest == 64) goto L_SIGNQ64;
-	if(signquest == 63) goto L_SIGNQ63;
-	if(signquest == 61) goto L_SIGNQ61;
-	if(signquest == 60) goto L_SIGNQ60;
-	if(signquest == 59 && countitem(2644) > 0) goto SIGNQ59;
-	if((signquest > 54 && signquest < 59) || (signquest == 59 && countitem(2644) == 0)) goto SIGNQF;
-	if(signquest == 53) goto L_SIGNQ53;
-	if(signquest == 29) goto L_SIGNQ29;
-	if(signquest == 28) goto L_SIGN28;
-	if(signquest == 24) goto L_SIGNQ24;
-	if(signquest == 23) goto L_SIGN23;
-	if(signquest == 14) goto L_SIGNQ14;
-	if(signquest == 13) goto L_SIGNQ13;
-	if(signquest == 3 || signquest == 4) goto L_SIGNQ3;
-	if(signquest == 2) goto L_SIGNQ2;
-	if(signquest == 1) goto L_SIGNQ1;
+	if (signquest > 64) goto L_SIGNQOTHER;
+	if (signquest == 64) goto L_SIGNQ64;
+	if (signquest == 63) goto L_SIGNQ63;
+	if (signquest == 61) goto L_SIGNQ61;
+	if (signquest == 60) goto L_SIGNQ60;
+	if (signquest == 59 && countitem(2644) > 0) goto SIGNQ59;
+	if ((signquest > 54 && signquest < 59) || (signquest == 59 && countitem(2644) == 0)) goto SIGNQF;
+	if (signquest == 53) goto L_SIGNQ53;
+	if (signquest == 29) goto L_SIGNQ29;
+	if (signquest == 28) goto L_SIGN28;
+	if (signquest == 24) goto L_SIGNQ24;
+	if (signquest == 23) goto L_SIGN23;
+	if (signquest == 14) goto L_SIGNQ14;
+	if (signquest == 13) goto L_SIGNQ13;
+	if (signquest == 3 || signquest == 4) goto L_SIGNQ3;
+	if (signquest == 2) goto L_SIGNQ2;
+	if (signquest == 1) goto L_SIGNQ1;
 
 	goto L_SIGNQOTHER;
 	close;
@@ -274,7 +274,7 @@ s_Sign:
 	mes "humble lodgings.";
 	mes "Hmm, let me see...";
 	next;
-	if(BaseLevel > 70) goto L_mini;
+	if (BaseLevel > 70) goto L_mini;
 
 		mes "[Metz]";
 		mes "Uh, it pains me to say this, but I";
@@ -440,7 +440,7 @@ L_SIGNQ13:
 
 L_SIGNQ14:
 	set @signartisan,rand(1,5);
-	if(@signartisan == 1) goto L_Artisan;
+	if (@signartisan == 1) goto L_Artisan;
 	mes "[Metz]";
 	mes "Although I've made";
 	mes "some progress, I still";
@@ -671,14 +671,14 @@ SIGNQ59:
 	delitem 2644,1;
 	set @metzhour,gettime(3);
 	set @metzmin,gettime(2);
-	if(@metzmin > 29) set @metzhour,@metzhour +1;
+	if (@metzmin > 29) set @metzhour,@metzhour +1;
 	set signmetzhour,@metzhour + rand(2,4);
 	set signquest,60;
 	close2;
 	cutin "",255;
 	end;
 L_SIGNQ60:
-if(gettime(3) == signmetzhour || gettime(3) == signmetzhour +1 || gettime(3) == signmetzhour +2) goto LL_SIGNMET;
+if (gettime(3) == signmetzhour || gettime(3) == signmetzhour +1 || gettime(3) == signmetzhour +2) goto LL_SIGNMET;
 	mes "[Metz]";
 	mes "I'm sorry, but I'm";
 	mes "still examinating the";
@@ -796,7 +796,7 @@ L_SIGNQOTHER:
 
 
 L_Stop:
-	if(sign_fail == 3) goto L_FAIL3;
+	if (sign_fail == 3) goto L_FAIL3;
 
 	mes "[Metz]";
 	mes "What...?";
@@ -823,8 +823,8 @@ L_FAIL3:
 	mes "seen things that some people";
 	mes "will never see in their whole lives.";
 	
-//	if(sign_fail < 3) 
-	if(sign_fail >= 3) goto FALSE;
+//	if (sign_fail < 3) 
+	if (sign_fail >= 3) goto FALSE;
 	getitem 617,1;
 	set BaseExp,BaseExp + 876543;
 
@@ -845,9 +845,9 @@ end;
 morocc_in.gat,114,162,4	script	Young Man	118,{
 
 
-	if(signquest == 5) goto L_SIGNQ5;
-	if(arianstest == 8) goto L_ARIAN8;
-	if(ariantest < 8) goto L_ARIAND;
+	if (signquest == 5) goto L_SIGNQ5;
+	if (arianstest == 8) goto L_ARIAN8;
+	if (ariantest < 8) goto L_ARIAND;
 
 L_SIGNQ5:
 	mes "[Gaanan]";
@@ -861,7 +861,7 @@ L_SIGNQ5:
 
 L_ARIAN8:
 
-	if(gaanantest != 1) goto L_GANAANT1;
+	if (gaanantest != 1) goto L_GANAANT1;
 	mes "[Gaanan]";
 	mes "Hm...?";
 	mes "Arian is the one";
@@ -965,10 +965,10 @@ L_ARIAND:
 }
 
 morocc_in.gat,115,154,5	script	Rogue	810,{
-	if(signquest == 5) goto L_SIGNQ5;
-	if(signquest < 3 || signquest > 5) goto L_SIGNQ3ET5;
-	if(signquest == 3) goto L_SIGNQ3;
-	if(signquest == 4) goto L_SIGNQ4;
+	if (signquest == 5) goto L_SIGNQ5;
+	if (signquest < 3 || signquest > 5) goto L_SIGNQ3ET5;
+	if (signquest == 3) goto L_SIGNQ3;
+	if (signquest == 4) goto L_SIGNQ4;
 	close;
 
 
@@ -1064,19 +1064,19 @@ s_Name:
 
 
 L_SIGNQ4:
-	if(arianstest == 1) goto L_ARIAN1;
-	if(arianstest == 2) goto L_ARIAN2;
-	if(arianstest == 3) goto L_ARIAN3;
-	if(arianstest == 4) goto L_ARIAN4;
-	if(arianstest == 5) goto L_ARIAN5;
-	if(arianstest == 6) goto L_ARIAN6;
-	if(arianstest == 7) goto L_ARIAN7;
-	if(arianstest == 8) goto L_ARIAN8;
+	if (arianstest == 1) goto L_ARIAN1;
+	if (arianstest == 2) goto L_ARIAN2;
+	if (arianstest == 3) goto L_ARIAN3;
+	if (arianstest == 4) goto L_ARIAN4;
+	if (arianstest == 5) goto L_ARIAN5;
+	if (arianstest == 6) goto L_ARIAN6;
+	if (arianstest == 7) goto L_ARIAN7;
+	if (arianstest == 8) goto L_ARIAN8;
 
 
 //ARIAN DEBUT
 L_ARIAN1:
-	if(countitem(914) < 100)goto s_Bringfluff;
+	if (countitem(914) < 100) goto s_Bringfluff;
 	delitem 914,100;
 	mes "[Arian]";
 	mes "What the hell took you so";
@@ -1096,7 +1096,7 @@ s_Bringfluff:
 
 
 L_ARIAN2:
-	if(countitem(7033) < 50)goto s_Bringspore;
+	if (countitem(7033) < 50) goto s_Bringspore;
 	delitem 7033,50;
 	mes "[Arian]";
 	mes "...";
@@ -1119,7 +1119,7 @@ s_Bringspore:
 
 
 L_ARIAN3:
-	if(countitem(904) < 30)goto s_Bringtails;
+	if (countitem(904) < 30) goto s_Bringtails;
 	delitem 904,30;
 	mes "[Arian]";
 	mes "...";
@@ -1142,7 +1142,7 @@ s_Bringtails:
 
 
 L_ARIAN4:
-	if(countitem(930) < 20)goto s_Bringbandages;
+	if (countitem(930) < 20) goto s_Bringbandages;
 	delitem 930,20;
 	mes "[Arian]";
 	mes "...";
@@ -1165,7 +1165,7 @@ s_Bringbandages:
 	close;
 
 L_ARIAN5:
-	if(countitem(1038) < 15)goto s_Bringhorns;
+	if (countitem(1038) < 15) goto s_Bringhorns;
 	delitem 1038,15;
 	mes "[Arian]";
 	mes "...";
@@ -1197,7 +1197,7 @@ s_Bringhorns:
 
 
 L_ARIAN6:
-	if(countitem(7013) < 10)goto s_Bringcorals;
+	if (countitem(7013) < 10) goto s_Bringcorals;
 	delitem 7013,10;
 	mes "[Arian]";
 	mes "Finally you're back";
@@ -1232,8 +1232,8 @@ L_ARIAN7:
 
 
 L_ARIAN8:
-	if(gaanantest != 1) goto L_GANNA1;
-	if(gaananpoint < 3)goto s_Suck;
+	if (gaanantest != 1) goto L_GANNA1;
+	if (gaananpoint < 3) goto s_Suck;
 	mes "[Arian]";
 	mes "Alright. The answers";
 	mes "you have Ganaan tell me";
@@ -1273,11 +1273,11 @@ s_Suck:
 //ARIAN FIN
 //VERIFY ITEM DEBUT
 Verifyitems:
-	if(arianstest == 2 && countitem(7033) > 49) goto L_ARIANITEM2;
-	if(arianstest == 3 && countitem(904) > 29) goto L_ARIANITEM3;
-	if(arianstest == 4 && countitem(930) > 19) goto L_ARIANITEM4;
-	if(arianstest == 5 && countitem(1038) > 14) goto L_ARIANITEM5;
-	if(arianstest == 6 && countitem(7013) > 9) goto L_ARIANITEM6;
+	if (arianstest == 2 && countitem(7033) > 49) goto L_ARIANITEM2;
+	if (arianstest == 3 && countitem(904) > 29) goto L_ARIANITEM3;
+	if (arianstest == 4 && countitem(930) > 19) goto L_ARIANITEM4;
+	if (arianstest == 5 && countitem(1038) > 14) goto L_ARIANITEM5;
+	if (arianstest == 6 && countitem(7013) > 9) goto L_ARIANITEM6;
 	close;
 
 L_ARIANITEM2:
@@ -1383,9 +1383,9 @@ payon_in03.gat,11,31,4	script	Daewoon	808,{
 	mes "I'm the king of the world!";
 	next;
 
-	if(signquest < 4 || signquest > 6) goto L_SIGNQ4A6;
-	if(signquest == 5) goto L_SIGNQ5;
-	if(signquest == 6) goto L_SIGNQ6;
+	if (signquest < 4 || signquest > 6) goto L_SIGNQ4A6;
+	if (signquest == 5) goto L_SIGNQ5;
+	if (signquest == 6) goto L_SIGNQ6;
 	close;
 
 L_SIGNQ4A6:
@@ -1908,7 +1908,7 @@ s_No:
 	mes "Mwah ah hah~!";
 	next;
 s_Last:
-	if(@DaewoonTest != 5) goto L_DAEW5;
+	if (@DaewoonTest != 5) goto L_DAEW5;
 	getitem 7177,1;
 	mes "[Daewoon]";
 	mes "You know, after talking with";
@@ -1994,7 +1994,7 @@ OnTouch:
 
 aldeba_in.gat,147,104,1	script	PotionActivator	139,3,0,{
 OnTouch:
-	if(@aldesigncheck != 0) end;
+	if (@aldesigncheck != 0) end;
 	donpcevent "Jore#SignAldeNpc::OnPotion";
 	set @aldesigncheck,1;
 	end;
@@ -2009,7 +2009,7 @@ aldeba_in.gat,156,118,4	script	Piru Piru	700,{
 	mes "^000200*Sob*^000000 Master, can't we";
 	mes "just call it a day already?";
 	next;
-	if(signquest == 7) goto L_SIGNQ7;
+	if (signquest == 7) goto L_SIGNQ7;
 	close;
 
 L_SIGNQ7:
@@ -2060,11 +2060,11 @@ s_SageStone:
 
 aldeba_in.gat,155,101,2	script	Jore#SignAldeNpc	805,{
 
-	if(gettime(3) <17 || gettime(3) >21) goto TIMEGOOD;
-		if(signquest == 6 && SignJore == 1) goto L_SIGNJ1;
-		if(signquest == 7) goto L_SIGNQ7;
-		if(signquest == 8) goto L_SIGNQ8;
-		if(signquest == 9) goto L_SIGNQ9;
+	if (gettime(3) <17 || gettime(3) >21) goto TIMEGOOD;
+		if (signquest == 6 && SignJore == 1) goto L_SIGNJ1;
+		if (signquest == 7) goto L_SIGNQ7;
+		if (signquest == 8) goto L_SIGNQ8;
+		if (signquest == 9) goto L_SIGNQ9;
 		goto L_SIGNOTHER;
 		close;
 
@@ -2121,7 +2121,7 @@ L_SIGNQ8:
 	next;
 	input @sign_jore$;
 
-		if(@sign_jore$ != "Red Gemstone") goto s_SIGNERED;
+		if (@sign_jore$ != "Red Gemstone") goto s_SIGNERED;
 
 
 		mes "[Sir Jore]";
@@ -2168,7 +2168,7 @@ L_SIGNQ9:
 	close;
 
 L_SIGNJ1:
-		if(countitem(1092) >= 10 || countitem(511) >= 10 || countitem(610) >= 2) goto L_SIGNITEMJ1;
+		if (countitem(1092) >= 10 || countitem(511) >= 10 || countitem(610) >= 2) goto L_SIGNITEMJ1;
 		mes "[Sir Jore]";
 		mes "Please bring m-me";
 		mes "^0000FF10 Empty Test Tube,^000000";
@@ -2179,7 +2179,7 @@ L_SIGNJ1:
 		close;
 
 L_SIGNITEMJ1:
-		if(countitem(1092) < 10 || countitem(511) < 10 || countitem(610) < 2) close;
+		if (countitem(1092) < 10 || countitem(511) < 10 || countitem(610) < 2) close;
 		delitem 1092,10;
 		delitem 511,10;
 		delitem 610,2;
@@ -2243,7 +2243,7 @@ L_SIGNOTHER:
 	mes "with this sample for";
 	mes "five hours. And now";
 	mes "it's ruined ^000200*Sob*";
-	if(signquest != 6)close;
+	if (signquest != 6) close;
 	next;
 	mes "[Sir Jore]";
 	mes "^000200*Sob*^000000";
@@ -2400,7 +2400,7 @@ s_Again:
 	close;
 
 OnPotion:
-	if(rand(0,1) != 1) goto OMG;
+	if (rand(0,1) != 1) goto OMG;
 	emotion 5; // IC
 	misceffect 305;
 	end;
@@ -2415,7 +2415,7 @@ prt_maze02.gat,57,152,1	script	Girl	91,{
 	mes "^3355FFYou catch a glimpse";
 	mes "of a girl headin directly";
 	mes "into a deep forest. You decide";
-	if(signquest != 7)goto s_No;
+	if (signquest != 7) goto s_No;
 	mes "to follow her and see if you can";
 	mes "learn more.";
 	close2;
@@ -2430,7 +2430,7 @@ s_No:
 function	script	Sign_Alch_Summon	{
 
 Loopback:
-	if($signmazemonster != 0) goto Else;
+	if ($signmazemonster != 0) goto Else;
 	set $signmazemonster,5;
 	monster "prt_maze02.gat",14,177,"Flora",1118,1,"Sign_Alch_Summon::OnMonsterDead";
 	monster "prt_maze02.gat",17,171,"Flora",1118,1,"Sign_Alch_Summon::OnMonsterDead";
@@ -2450,7 +2450,7 @@ OnMonsterDead:
 }
 
 prt_maze02.gat,16,183,3	script	Pleur	91,{
-if(signquest == 7 || signquest == 8) goto SIGNQ7OU8;
+if (signquest == 7 || signquest == 8) goto SIGNQ7OU8;
 	mes "[Pleur]";
 	mes "Oh, you're lost?";
 	mes "I'll help you find";
@@ -2480,9 +2480,9 @@ OnOmg:
 }
 
 prt_maze02.gat,14,183,3	script	Gordon	51,{
-	if(signquest != 7 && signquest != 8) goto SIGNQ7ET8;
+	if (signquest != 7 && signquest != 8) goto SIGNQ7ET8;
 
-	if(ScareAlchSign == 1)goto s_Scared;
+	if (ScareAlchSign == 1) goto s_Scared;
 	mes "[Gordon]";
 	mes "Hello darling.";
 	mes "What did you do today?";
@@ -2672,8 +2672,8 @@ SIGNQ7ET8:
 
 geffen_in.gat,59,74,3	script	Jesqurienne	803,{
 
-	if(signquest == 10) goto L_won;
-	if(signquest == 9) goto L_Sign_Jesq;
+	if (signquest == 10) goto L_won;
+	if (signquest == 9) goto L_Sign_Jesq;
 	mes "[Jesqurienne]";
 	mes "Bartender~?";
 	mes "Give me another drink.";
@@ -2687,7 +2687,7 @@ L_Sign_Jesq:
 	mes "[Jesqurienne]";
 	mes "Ahhhhhh~";
 	mes "Hm? Why hello there,";
-	if(Sex == 0) goto L_female;
+	if (Sex == 0) goto L_female;
 	mes "You fine specimen of a man~";
 
 L_female:
@@ -2836,9 +2836,9 @@ L_won:
 
 geffen_in.gat,60,70,6	script	Aaron	754,{
 
-	if(signquest == 10) goto L_done;
-	if(@signquiz == 1) goto L_startquiz;
-	if(@signquiz == 2) goto L_quiztime;
+	if (signquest == 10) goto L_done;
+	if (@signquiz == 1) goto L_startquiz;
+	if (@signquiz == 2) goto L_quiztime;
 	emotion 23;
 	mes "[Aaron]";
 	mes "Goodness...!";
@@ -2847,7 +2847,7 @@ geffen_in.gat,60,70,6	script	Aaron	754,{
 	mes "or you're the most gorgeous";
 	mes "woman I've ever seen in my life!";
 	next;
-	if(Sex == 0) goto L_female;
+	if (Sex == 0) goto L_female;
 	menu "Um, I'm a dude...",-;
 	mes "[Aaron]";
 	mes "N-no...!";
@@ -2911,35 +2911,35 @@ L_quiztime:
 	set @playerpoints,0;
 	set @jesqpoints,0;
 FORSTART:
-	if(@i > 10) goto FOREND;
+	if (@i > 10) goto FOREND;
 BADQUESTION:
 	set @question,rand(24);
 	set @janswer,rand(3);
 
-	if(@question == 0 && @questiondone0 != 1) goto L_QUESTION0;
-	if(@question == 1 && @questiondone1 != 1) goto L_QUESTION1;
-	if(@question == 2 && @questiondone2 != 1) goto L_QUESTION2;
-	if(@question == 3 && @questiondone3 != 1) goto L_QUESTION3;
-	if(@question == 4 && @questiondone4 != 1) goto L_QUESTION4;
-	if(@question == 5 && @questiondone5 != 1) goto L_QUESTION5;
-	if(@question == 6 && @questiondone6 != 1) goto L_QUESTION6;
-	if(@question == 7 && @questiondone7 != 1) goto L_QUESTION7;
-	if(@question == 8 && @questiondone8 != 1) goto L_QUESTION8;
-	if(@question == 9 && @questiondone9 != 1) goto L_QUESTION9;
-	if(@question == 10 && @questiondone10 != 1) goto L_QUESTION10;
-	if(@question == 11 && @questiondone11 != 1) goto L_QUESTION11;
-	if(@question == 12 && @questiondone12 != 1) goto L_QUESTION12;
-	if(@question == 13 && @questiondone13 != 1) goto L_QUESTION13;
-	if(@question == 14 && @questiondone14 != 1) goto L_QUESTION14;
-//	if(@question == 15 && @questiondone15 != 1) goto L_QUESTION15;
-	if(@question == 16 && @questiondone16 != 1) goto L_QUESTION16;
-	if(@question == 17 && @questiondone17 != 1) goto L_QUESTION17;
-	if(@question == 18 && @questiondone18 != 1) goto L_QUESTION18;
-	if(@question == 19 && @questiondone19 != 1) goto L_QUESTION19;
-	if(@question == 20 && @questiondone20 != 1) goto L_QUESTION20;
-	if(@question == 21 && @questiondone21 != 1) goto L_QUESTION21;
-	if(@question == 22 && @questiondone22 != 1) goto L_QUESTION22;
-	if(@question == 23 && @questiondone23 != 1) goto L_QUESTION23;
+	if (@question == 0 && @questiondone0 != 1) goto L_QUESTION0;
+	if (@question == 1 && @questiondone1 != 1) goto L_QUESTION1;
+	if (@question == 2 && @questiondone2 != 1) goto L_QUESTION2;
+	if (@question == 3 && @questiondone3 != 1) goto L_QUESTION3;
+	if (@question == 4 && @questiondone4 != 1) goto L_QUESTION4;
+	if (@question == 5 && @questiondone5 != 1) goto L_QUESTION5;
+	if (@question == 6 && @questiondone6 != 1) goto L_QUESTION6;
+	if (@question == 7 && @questiondone7 != 1) goto L_QUESTION7;
+	if (@question == 8 && @questiondone8 != 1) goto L_QUESTION8;
+	if (@question == 9 && @questiondone9 != 1) goto L_QUESTION9;
+	if (@question == 10 && @questiondone10 != 1) goto L_QUESTION10;
+	if (@question == 11 && @questiondone11 != 1) goto L_QUESTION11;
+	if (@question == 12 && @questiondone12 != 1) goto L_QUESTION12;
+	if (@question == 13 && @questiondone13 != 1) goto L_QUESTION13;
+	if (@question == 14 && @questiondone14 != 1) goto L_QUESTION14;
+//	if (@question == 15 && @questiondone15 != 1) goto L_QUESTION15;
+	if (@question == 16 && @questiondone16 != 1) goto L_QUESTION16;
+	if (@question == 17 && @questiondone17 != 1) goto L_QUESTION17;
+	if (@question == 18 && @questiondone18 != 1) goto L_QUESTION18;
+	if (@question == 19 && @questiondone19 != 1) goto L_QUESTION19;
+	if (@question == 20 && @questiondone20 != 1) goto L_QUESTION20;
+	if (@question == 21 && @questiondone21 != 1) goto L_QUESTION21;
+	if (@question == 22 && @questiondone22 != 1) goto L_QUESTION22;
+	if (@question == 23 && @questiondone23 != 1) goto L_QUESTION23;
 	goto BADQUESTION;
 
 L_QUESTION0:
@@ -3045,16 +3045,16 @@ a_correct:
 L_REPONSEFAUSSE:
 	next;
 
-	if(@i == 10) goto QI10;
-	if(@i == 9) goto QI9;
-	if(@i == 8) goto QI8;
-	if(@i == 7) goto QI7;
-	if(@i == 6) goto QI6;
-	if(@i == 5) goto QI5;
-	if(@i == 4) goto QI4;
-	if(@i == 3) goto QI3;
-	if(@i == 2) goto QI2;
-	if(@i == 1) goto QI1;
+	if (@i == 10) goto QI10;
+	if (@i == 9) goto QI9;
+	if (@i == 8) goto QI8;
+	if (@i == 7) goto QI7;
+	if (@i == 6) goto QI6;
+	if (@i == 5) goto QI5;
+	if (@i == 4) goto QI4;
+	if (@i == 3) goto QI3;
+	if (@i == 2) goto QI2;
+	if (@i == 1) goto QI1;
 
 QI1:
 		mes "[Jesqurienne]";
@@ -3065,8 +3065,8 @@ QI1:
 		next;
 		goto JANSWER;
 QI2:
-//		if(@janswer > 0)
-		if(@janswer == 0) goto JANSWER2;
+//		if (@janswer > 0)
+		if (@janswer == 0) goto JANSWER2;
 			mes "[Jesqurienne]";
 			mes "Ho ho ho ho~!";
 			mes "I know the answer.";
@@ -3078,7 +3078,7 @@ QI2:
 			goto JANSWER;
 
 JANSWER2:
-//		if(@janswer == 0)
+//		if (@janswer == 0)
 
 			mes "[Jesqurienne]";
 			mes "z...z...Z";
@@ -3090,7 +3090,7 @@ JANSWER2:
 			goto JANSWER;
 
 QI3:
-		if(@janswer == 0) goto JANSWER30;
+		if (@janswer == 0) goto JANSWER30;
 			set @jesqpoints, @jesqpoints + 1;
 			goto checkpoint1;
 			emotion 2; // HO<--------------------------------------------------------
@@ -3111,7 +3111,7 @@ JANSWER30:
 			mes "scores, shall we?";
 			mes ".................";
 			next;
-			if(@playerpoints >= @jesqpoints) goto JESQPOINTS30;
+			if (@playerpoints >= @jesqpoints) goto JESQPOINTS30;
 				mes "[Jesqurienne]";
 				mes "Heh heh...";
 				mes "It looks like";
@@ -3142,7 +3142,7 @@ JANSWER30:
 
 QI4:
 
-		if(@janswer == 0) goto JANSWER40;
+		if (@janswer == 0) goto JANSWER40;
 			mes "[Jesqurienne]";
 			mes "That counts as";
 			mes "a question? You're";
@@ -3164,7 +3164,7 @@ QI4:
 
 
 		checkpoint2:
-			if(@playerpoints >= @jesqpoints) goto JESQPOINTS4;
+			if (@playerpoints >= @jesqpoints) goto JESQPOINTS4;
 				mes "[Jesqurienne]";
 				mes "Heh heh~ It looks";
 				mes "like I have the lead.";
@@ -3183,7 +3183,7 @@ QI4:
 				goto JANSWER;
 
 QI5:
-		if(@janswer == 0) goto JANSWER50;
+		if (@janswer == 0) goto JANSWER50;
 			mes "[Jesqurienne]";
 			mes "I didn't have";
 			mes "to think very hard";
@@ -3206,7 +3206,7 @@ QI5:
 			goto checkpoint3;
 
 		checkpoint3:
-				if(@playerpoints >= @jesqpoints) goto JESQPOINTS5;
+				if (@playerpoints >= @jesqpoints) goto JESQPOINTS5;
 				mes "[Jesqurienne]";
 				mes "Oh? What a suprise.";
 				mes "I'm in the lead. I know";
@@ -3227,7 +3227,7 @@ QI5:
 				goto JANSWER;
 
 QI6:
-		if(@janswer == 0) goto JANSWER60;
+		if (@janswer == 0) goto JANSWER60;
 			mes "[Jasqurienne]";
 			mes "*Sigh...*";
 			mes "Simple questions,";
@@ -3244,7 +3244,7 @@ QI6:
 
 
 		checkpoint4:
-			if(@playerpoints >= @jesqpoints) goto JESQPOINTS6;
+			if (@playerpoints >= @jesqpoints) goto JESQPOINTS6;
 				mes "[Jesqurienne]";
 				mes "Oh, look at that.";
 				mes "I have more points";
@@ -3265,7 +3265,7 @@ QI6:
 				goto JANSWER;
 
 QI7:
-		if(@janswer == 0) goto JANSWER70;
+		if (@janswer == 0) goto JANSWER70;
 			set @jesqpoints, @jesqpoints + 1;
 			goto checkpoint5;
 
@@ -3273,7 +3273,7 @@ QI7:
 			goto checkpoint5;
 
 		checkpoint5:
-		if(@playerpoints >= @jesqpoints) goto JESQPOINTS7;
+		if (@playerpoints >= @jesqpoints) goto JESQPOINTS7;
 				mes "[Jesqurienne]";
 				mes "Ah. Did I tell you";
 				mes "I was in the lead";
@@ -3294,7 +3294,7 @@ QI7:
 				goto JANSWER;
 
 QI8:
-		if(@janswer == 0) goto JANSWER80;
+		if (@janswer == 0) goto JANSWER80;
 			mes "[Jesqurienne]";
 			mes "Hah hah~!";
 			mes "That was a";
@@ -3308,7 +3308,7 @@ QI8:
 			goto checkpoint6;
 
 		checkpoint6:
-		if(@playerpoints >= @jesqpoints) goto JESQPOINTS8;
+		if (@playerpoints >= @jesqpoints) goto JESQPOINTS8;
 				mes "[Jesqurienne]";
 				mes "I know, you're wondering";
 				mes "how such an intelligent";
@@ -3332,7 +3332,7 @@ QI8:
 
 QI9:
 
-		if(@janswer == 0) goto JANSWER90;
+		if (@janswer == 0) goto JANSWER90;
 			mes "[Jesqurienne]";
 			mes "Ahhh...";
 			mes "I'm just breezing";
@@ -3363,7 +3363,7 @@ QI9:
 		goto JANSWER;
 
 QI10:
-			if(@janswer == 0) goto JANSWER100;
+			if (@janswer == 0) goto JANSWER100;
 			mes "[Jesqurienne]";
 			mes "As usual, I got";
 			mes "the last question";
@@ -3402,7 +3402,7 @@ FOREND:
 	mes "Jesqurienne...";
 	mes @jesqpoints + " points!";
 	next;
-	if(@playerpoints >= @jesqpoints) goto JESQPOINTS00;
+	if (@playerpoints >= @jesqpoints) goto JESQPOINTS00;
 		mes "[Jesqurienne]";
 		mes "Bwahahaha!";
 		mes "I win! I knew it!";
@@ -3429,8 +3429,8 @@ JESQPOINTSEND:
 	mes "Alright, back to drinking!";
 	next;
 
-	if(@takenquiz == 1) goto TAKENQUIZ1;
-	if(@takenquiz == 2) goto TAKENQUIZ2;
+	if (@takenquiz == 1) goto TAKENQUIZ1;
+	if (@takenquiz == 2) goto TAKENQUIZ2;
 	goto L_challenge;
 
 TAKENQUIZ2:
@@ -3539,17 +3539,17 @@ OnHeh:
 
 cmd_in02.gat,88,51,3	script	Strange Man	806,{
 
-	if(signquest == 12) goto L_Ever;
-	if(signquest == 11) goto L_Test;
+	if (signquest == 12) goto L_Ever;
+	if (signquest == 11) goto L_Test;
 	mes "[Dearles]";
 	mes "No...! Damn it,";
 	mes "not again! When's";
 	mes "my lucky streak";
 	mes "gonna start?";
 
-	if(signquest != 10) close;
+	if (signquest != 10) close;
 	next;
-	if(@pay_dearles == 1) goto L_Pay;
+	if (@pay_dearles == 1) goto L_Pay;
 
 	menu "Excuse me...",L_Excuse,"Just pass by.",-;
 	mes "[Dearles]";
@@ -3615,7 +3615,7 @@ L_Pay:
 	close;
 
 L_Fee:
-	if(Zeny < 30000) goto L_NotEnough;
+	if (Zeny < 30000) goto L_NotEnough;
 	set Zeny, Zeny - 30000;
 	mes "[Dearles]";
 	mes "Ummm.......";
@@ -3637,7 +3637,7 @@ L_NotEnough:
 	close;
 
 L_Test:
-	if(gettime(3) == 19 || gettime(3) == 20 || gettime(3) == 21 || gettime(3) == 22 || gettime(3) == 23) goto L_Time;
+	if (gettime(3) == 19 || gettime(3) == 20 || gettime(3) == 21 || gettime(3) == 22 || gettime(3) == 23) goto L_Time;
 	mes "[Dearles]";
 	mes "Don't you see";
 	mes "I'm busy right now?";
@@ -3647,11 +3647,11 @@ L_Test:
 	close;
 
 L_Time:
-	if(SignDance == 3) goto L_Win;
-	if(SignDance == 2) goto L_Fail;
-	if(dearles_test == 2) goto L_Check;
-	if(dearles_test == 3) goto L_Dance;
-	if(dearles_test == 1) goto L_Test2;
+	if (SignDance == 3) goto L_Win;
+	if (SignDance == 2) goto L_Fail;
+	if (dearles_test == 2) goto L_Check;
+	if (dearles_test == 3) goto L_Dance;
+	if (dearles_test == 1) goto L_Test2;
 	mes "[Dearles]";
 	mes "Nice, you're here";
 	mes "just in time. Well,";
@@ -3707,34 +3707,34 @@ L_Check:
 	mes "the stuff you brought?";
 	mes "Let me take a look-see...";
 	next;
-	if(countitem(740) == 1 )set @dearles_check,@dearles_check+1;
-	if(countitem(741) == 1 )set @dearles_check,@dearles_check+1;
-	if(countitem(742) == 1 )set @dearles_check,@dearles_check+1;
-	if(countitem(743) == 1 )set @dearles_check,@dearles_check+2;
-	if(countitem(734) == 1 )set @dearles_check,@dearles_check+1;
-	if(countitem(735) == 1 )set @dearles_check,@dearles_check+1;
-	if(countitem(736) == 1 )set @dearles_check,@dearles_check+1;
-	if(countitem(747) == 1 )set @dearles_check,@dearles_check+2;
-	if(countitem(750) == 1 )set @dearles_check,@dearles_check+10;
-	if(countitem(751) == 1 )set @dearles_check,@dearles_check+12;
-	if(countitem(752) == 1 )set @dearles_check,@dearles_check+3;
-	if(countitem(753) == 1 )set @dearles_check,@dearles_check+5;
-	if(countitem(754) == 1 )set @dearles_check,@dearles_check+5;
+	if (countitem(740) == 1)set @dearles_check,@dearles_check+1;
+	if (countitem(741) == 1)set @dearles_check,@dearles_check+1;
+	if (countitem(742) == 1)set @dearles_check,@dearles_check+1;
+	if (countitem(743) == 1)set @dearles_check,@dearles_check+2;
+	if (countitem(734) == 1)set @dearles_check,@dearles_check+1;
+	if (countitem(735) == 1)set @dearles_check,@dearles_check+1;
+	if (countitem(736) == 1)set @dearles_check,@dearles_check+1;
+	if (countitem(747) == 1)set @dearles_check,@dearles_check+2;
+	if (countitem(750) == 1)set @dearles_check,@dearles_check+10;
+	if (countitem(751) == 1)set @dearles_check,@dearles_check+12;
+	if (countitem(752) == 1)set @dearles_check,@dearles_check+3;
+	if (countitem(753) == 1)set @dearles_check,@dearles_check+5;
+	if (countitem(754) == 1)set @dearles_check,@dearles_check+5;
 
-	if(countitem(741) >= 1 ) delitem 741,countitem(741);
-	if(countitem(740) >= 1 ) delitem 740,countitem(740);
-	if(countitem(742) >= 1 ) delitem 742,countitem(742);
-	if(countitem(743) >= 1 ) delitem 743,countitem(743);
-	if(countitem(734) >= 1 ) delitem 734,countitem(734);
-	if(countitem(735) >= 1 ) delitem 735,countitem(735);
-	if(countitem(736) >= 1 ) delitem 736,countitem(736);
-	if(countitem(747) >= 1 ) delitem 747,countitem(747);
-	if(countitem(750) >= 1 ) delitem 750,countitem(750);
-	if(countitem(751) >= 1 ) delitem 751,countitem(751);
-	if(countitem(752) >= 1 ) delitem 752,countitem(752);
-	if(countitem(753) >= 1 ) delitem 753,countitem(753);
-	if(countitem(754) >= 1 ) delitem 754,countitem(754);
-	if(@dearles_check < 20) goto BADITEMS;
+	if (countitem(741) >= 1) delitem 741,countitem(741);
+	if (countitem(740) >= 1) delitem 740,countitem(740);
+	if (countitem(742) >= 1) delitem 742,countitem(742);
+	if (countitem(743) >= 1) delitem 743,countitem(743);
+	if (countitem(734) >= 1) delitem 734,countitem(734);
+	if (countitem(735) >= 1) delitem 735,countitem(735);
+	if (countitem(736) >= 1) delitem 736,countitem(736);
+	if (countitem(747) >= 1) delitem 747,countitem(747);
+	if (countitem(750) >= 1) delitem 750,countitem(750);
+	if (countitem(751) >= 1) delitem 751,countitem(751);
+	if (countitem(752) >= 1) delitem 752,countitem(752);
+	if (countitem(753) >= 1) delitem 753,countitem(753);
+	if (countitem(754) >= 1) delitem 754,countitem(754);
+	if (@dearles_check < 20) goto BADITEMS;
 
 	mes "[Dearles]";
 	mes "Nice, nice~";
@@ -3837,8 +3837,8 @@ L_Ever:
 
 cmd_in01.gat,32,25,3	script	Lamadin	724,{
 
-	if(SignDance == 1)goto L_Win;
-	if(SignDance == 2)goto L_Another;
+	if (SignDance == 1) goto L_Win;
+	if (SignDance == 2) goto L_Another;
 	mes "[Lamadin]";
 	mes "Welcome to";
 	mes "Part Two of Dearles'";
@@ -3930,88 +3930,88 @@ OnInitiation:
 	initnpctimer;
 	end;
 OnTimer1000:
-	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
+	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
 	areaannounce "cmd_in01.gat",12,12,35,35,"The test will begin shortly. Please do your best~",8;
 	end;
 OnTimer8000:
-	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
+	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
 	set $signdance,1;
 	areaannounce "cmd_in01.gat",12,12,35,35,"UP LEFT",8;
 	end;
 OnTimer14000:
-	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
-	if($signdance != 2) set $Signdanceresult,1;
+	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
+	if ($signdance != 2) set $Signdanceresult,1;
 	set $signdance,3;
 	areaannounce "cmd_in01.gat",12,12,35,35,"DOWN RIGHT",8;
 	end;
 OnTimer20000:
-	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
-	if($signdance != 4) set $Signdanceresult,1;
+	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
+	if ($signdance != 4) set $Signdanceresult,1;
 	set $signdance,5;
 	areaannounce "cmd_in01.gat",12,12,35,35,"DOWN LEFT & UP RIGHT",8;
 	end;
 OnTimer26000:
-	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
-	if($signdance != 7) set $Signdanceresult,1;
+	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
+	if ($signdance != 7) set $Signdanceresult,1;
 	 set $signdance,8;
 	areaannounce "cmd_in01.gat",12,12,35,35,"DOWN RIGHT",8;
 	end;
 OnTimer30000:
-	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
-	if($signdance != 9) set $Signdanceresult,1;
+	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
+	if ($signdance != 9) set $Signdanceresult,1;
 	set $signdance,10;
 	areaannounce "cmd_in01.gat",12,12,35,35,"DOWN LEFT & UP RIGHT & UP LEFT & STAY CENTER",8;
 	end;
 OnTimer40000:
-	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
-	if($signdance != 14) set $Signdanceresult,1;
+	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
+	if ($signdance != 14) set $Signdanceresult,1;
 	set $signdance,15;
 	areaannounce "cmd_in01.gat",12,12,35,35,"DOWN LEFT & DOWN RIGHT & DOWN LEFT",8;
 	end;
 OnTimer48000:
-	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
-	if($signdance != 18) set $Signdanceresult,1;
+	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
+	if ($signdance != 18) set $Signdanceresult,1;
 	set $signdance,19;
 	areaannounce "cmd_in01.gat",12,12,35,35,"DOWN RIGHT & CENTER & DOWN RIGHT",8;
 	end;
 OnTimer56000:
-	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
-	if($signdance != 22) set $Signdanceresult,1;
+	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
+	if ($signdance != 22) set $Signdanceresult,1;
 	set $signdance,23;
 	areaannounce "cmd_in01.gat",12,12,35,35,"DOWN LEFT & UP LEFT & UP RIGHT & DOWN RIGHT & CENTER",8;
 	end;
 OnTimer66000:
-	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
-	if($signdance != 28) set $Signdanceresult,1;
+	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
+	if ($signdance != 28) set $Signdanceresult,1;
 	set $signdance,29;
 	areaannounce "cmd_in01.gat",12,12,35,35,"DOWN LEFT & UP RIGHT & UP LEFT & DOWN RIGHT",8;
 	end;
 OnTimer80000:
-	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
-	if($signdance != 33) set $Signdanceresult,1;
+	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
+	if ($signdance != 33) set $Signdanceresult,1;
 	set $signdance,34;
 	areaannounce "cmd_in01.gat",12,12,35,35,"UP RIGHT & DOWN RIGHT & UP RIGHT & DOWN RIGHT",8;
 	end;
 OnTimer88000:
-	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
-	if($signdance != 38) set $Signdanceresult,1;
+	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
+	if ($signdance != 38) set $Signdanceresult,1;
 	set $signdance,39;
 	set $SignDanceRandomizer,rand(0,1);
-	if($SignDanceRandomizer != 0) goto RANDOMISATER;
+	if ($SignDanceRandomizer != 0) goto RANDOMISATER;
 	areaannounce "cmd_in01.gat",12,12,35,35,"UP LEFT & UP RIGHT & CENTER & UP RIGHT & DOWN LEFT & DOWN RIGHT",8;
 RANDOMISATER:
 	areaannounce "cmd_in01.gat",12,12,35,35,"UP LEFT & UP RIGHT & DOWN LEFT & UP RIGHT & DOWN LEFT & DOWN RIGHT",8;
 	end;
 OnTimer103000:
-	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
-	if($signdance != 45)set $Signdanceresult,1;
+	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
+	if ($signdance != 45)set $Signdanceresult,1;
 	areaannounce "cmd_in01.gat",12,12,35,35,"Well done.",8;
 	end;
 OnTimer109000:
-	if(isloggedin($SignDancingrid) <= 0)goto s_Cleanup;
+	if (isloggedin($SignDancingrid) <= 0) goto s_Cleanup;
 	attachrid($SignDancingrid);
-	if($Signdanceresult) set SignDance,2;
-	if($Signdanceresult == 0 ) set SignDance,1;
+	if ($Signdanceresult) set SignDance,2;
+	if ($Signdanceresult == 0) set SignDance,1;
 	warp "cmd_in01.gat",34,17;
 	detachrid;
 	enablenpc "SignDance#WARPER";
@@ -4060,18 +4060,18 @@ OnInit:
 //Dancing tiles
 cmd_in01.gat,16,13,4	script	SignDance#DOWNRIGHT	139,1,1,{
 
-	if($signdance == 3) set $signdance,4;
-	if($signdance == 8) set $signdance,9;
-	if($signdance == 16) set $signdance,17;
-	if($signdance == 19) set $signdance,20;
-	if($signdance == 21) set $signdance,22;
-	if($signdance == 26) set $signdance,27;
-	if($signdance == 32) set $signdance,33;
-	if($signdance == 35) set $signdance,36;
-	if($signdance == 37) set $signdance,38;
-	if($signdance == 44) set $signdance,45;
+	if ($signdance == 3) set $signdance,4;
+	if ($signdance == 8) set $signdance,9;
+	if ($signdance == 16) set $signdance,17;
+	if ($signdance == 19) set $signdance,20;
+	if ($signdance == 21) set $signdance,22;
+	if ($signdance == 26) set $signdance,27;
+	if ($signdance == 32) set $signdance,33;
+	if ($signdance == 35) set $signdance,36;
+	if ($signdance == 37) set $signdance,38;
+	if ($signdance == 44) set $signdance,45;
 	soundeffect "effect\\sign_down.wav",0;
-	if(getcharid(3) != $SignDancingrid)warp "comodo.gat",187,164;
+	if (getcharid(3) != $SignDancingrid)warp "comodo.gat",187,164;
 	end;
 
 }
@@ -4079,49 +4079,49 @@ cmd_in01.gat,16,13,4	script	SignDance#DOWNRIGHT	139,1,1,{
 
 cmd_in01.gat,19,16,4	script	SignDance#UPRIGHT	139,1,1,{
 
-	if($signdance == 6) set $signdance,7;
-	if($signdance == 11) set $signdance,12;
-	if($signdance == 25) set $signdance,26;
-	if($signdance == 30) set $signdance,31;
-	if($signdance == 34) set $signdance,35;
-	if($signdance == 36) set $signdance,37;
-	if($signdance == 40) set $signdance,41;
-	if($signdance == 42) set $signdance,43;
+	if ($signdance == 6) set $signdance,7;
+	if ($signdance == 11) set $signdance,12;
+	if ($signdance == 25) set $signdance,26;
+	if ($signdance == 30) set $signdance,31;
+	if ($signdance == 34) set $signdance,35;
+	if ($signdance == 36) set $signdance,37;
+	if ($signdance == 40) set $signdance,41;
+	if ($signdance == 42) set $signdance,43;
 	soundeffect "effect\\sign_right.wav",0;
-	if(getcharid(3) != $SignDancingrid)warp "comodo.gat",187,164;
+	if (getcharid(3) != $SignDancingrid)warp "comodo.gat",187,164;
 	end;
 
 }
 
 cmd_in01.gat,16,19,4	script	SignDance#UPLEFT	139,1,1,{
 
-	if($signdance == 1) set $signdance,2;
-	if($signdance == 12) set $signdance,13;
-	if($signdance == 24) set $signdance,25;
-	if($signdance == 31) set $signdance,32;
-	if($signdance == 39) set $signdance,40;
+	if ($signdance == 1) set $signdance,2;
+	if ($signdance == 12) set $signdance,13;
+	if ($signdance == 24) set $signdance,25;
+	if ($signdance == 31) set $signdance,32;
+	if ($signdance == 39) set $signdance,40;
 	soundeffect "effect\\sign_up.wav",0;
-	if(getcharid(3) != $SignDancingrid)warp "comodo.gat",187,164;
+	if (getcharid(3) != $SignDancingrid)warp "comodo.gat",187,164;
 	end;
 
 }
 
 cmd_in01.gat,16,16,4	script	SignDance#WARPER	139,1,1,{
-	if(getcharid(3) != $SignDancingrid)warp "comodo.gat",187,164;
+	if (getcharid(3) != $SignDancingrid)warp "comodo.gat",187,164;
 	end;
 
 }
 
 cmd_in01.gat,16,16,4	script	SignDance#CENTER	139,1,1,{
 
-	if($signdance != 0) goto L_CENTERNON0;
+	if ($signdance != 0) goto L_CENTERNON0;
 	set $SignDancingrid, getcharid(3);
 	donpcevent "DanceInit::OnInitiation";
 L_CENTERNON0:
-	if($signdance == 13) set $signdance,14;
-	if($signdance == 20) set $signdance,21;
-	if($signdance == 27) set $signdance,28;
-	if($signdance == 41 && !$SignDanceRandomizer) set $signdance,42;
+	if ($signdance == 13) set $signdance,14;
+	if ($signdance == 20) set $signdance,21;
+	if ($signdance == 27) set $signdance,28;
+	if ($signdance == 41 && !$SignDanceRandomizer) set $signdance,42;
 	soundeffect "effect\\sign_center.wav",0;
 	end;
 
@@ -4133,16 +4133,16 @@ OnInit:
 
 cmd_in01.gat,13,16,4	script	SignDance#DOWNLEFT	139,1,1,{
 
-	if($signdance == 5) set $signdance,6;
-	if($signdance == 10) set $signdance,11;
-	if($signdance == 15) set $signdance,16;
-	if($signdance == 17) set $signdance,18;
-	if($signdance == 23) set $signdance,24;
-	if($signdance == 29) set $signdance,30;
-	if($signdance == 41 && $SignDanceRandomizer) set $signdance,42;
-	if($signdance == 43) set $signdance,44;
+	if ($signdance == 5) set $signdance,6;
+	if ($signdance == 10) set $signdance,11;
+	if ($signdance == 15) set $signdance,16;
+	if ($signdance == 17) set $signdance,18;
+	if ($signdance == 23) set $signdance,24;
+	if ($signdance == 29) set $signdance,30;
+	if ($signdance == 41 && $SignDanceRandomizer) set $signdance,42;
+	if ($signdance == 43) set $signdance,44;
 	soundeffect "effect\\sign_left.wav",0;
-	if(getcharid(3) != $SignDancingrid) warp "comodo.gat",187,164;
+	if (getcharid(3) != $SignDancingrid) warp "comodo.gat",187,164;
 	end;
 
 }
@@ -4159,13 +4159,13 @@ alberta.gat,99,151,1	script	Sign::AlbertaSign	111,{
 
 alberta_in.gat,114,178,5	script	Refined Steward	109,{
 
-	if(bakerlan_test > 12) goto L_Hope;
-	if(bakerlan_test == 12) goto L_Thanks;
-	if(bakerlan_test > 6) goto L_Seylin;
-	if(bakerlan_test == 5) goto L_Another;
-	if(countitem(7181) > 0) goto L_JobDone;
-	if(bakerlan_test == 2) goto L_Delivery;
-	if(bakerlan_test > 3) goto L_Sorry;
+	if (bakerlan_test > 12) goto L_Hope;
+	if (bakerlan_test == 12) goto L_Thanks;
+	if (bakerlan_test > 6) goto L_Seylin;
+	if (bakerlan_test == 5) goto L_Another;
+	if (countitem(7181) > 0) goto L_JobDone;
+	if (bakerlan_test == 2) goto L_Delivery;
+	if (bakerlan_test > 3) goto L_Sorry;
 	mes "[Mahatra]";
 	mes "Welcome to the";
 	mes "Alchiesh Estate.";
@@ -4303,15 +4303,15 @@ L_Hope:
 
 alberta_in.gat,154,171,5	script	Maid	758,{
 
-	if(bakerlan_test > 11) goto L_Done;
-	if(bakerlan_test == 11) goto L_Thanks;
-	if(bakerlan_test == 10) goto L_Brother;
-	if(bakerlan_test > 8 && countitem(7044) > 0) goto L_Vigorgra;
-	if(bakerlan_test > 6) goto L_Bring;
-	if(@seylin == 2) goto L_Thought;
-	if(@seylin == 1) goto L_Help;
-	if(bakerlan_test == 6) goto L_NoUse;
-	if(bakerlan_test > 2 && bakerlan_test < 6) goto L_Bother;
+	if (bakerlan_test > 11) goto L_Done;
+	if (bakerlan_test == 11) goto L_Thanks;
+	if (bakerlan_test == 10) goto L_Brother;
+	if (bakerlan_test > 8 && countitem(7044) > 0) goto L_Vigorgra;
+	if (bakerlan_test > 6) goto L_Bring;
+	if (@seylin == 2) goto L_Thought;
+	if (@seylin == 1) goto L_Help;
+	if (bakerlan_test == 6) goto L_NoUse;
+	if (bakerlan_test > 2 && bakerlan_test < 6) goto L_Bother;
 	mes "[Seylin]";
 	mes "I'm sorry, but I'm";
 	mes "busy cleaning the manor";
@@ -4517,7 +4517,7 @@ L_Done:
 
 alberta_in.gat,125,101,5	script	Wealthy-looking Merchant	807,{
 
-	if(signquest > 0) goto SIGNSTART;
+	if (signquest > 0) goto SIGNSTART;
 	mes "[Bakerlan]";
 	mes "Umm...well then...";
 	mes "I shall take the action for";
@@ -4529,12 +4529,12 @@ alberta_in.gat,125,101,5	script	Wealthy-looking Merchant	807,{
 	mes "Mumble mumble...";
 	close;
 SIGNSTART:
-	if(signquest > 12) goto L_Over;
-	if(bakerlan_test == 13) goto L_Help;
-	if(bakerlan_test == 5) goto L_Busy;
-	if(bakerlan_test == 4) goto L_JobDone;
-	if(bakerlan_test > 1) goto L_Steward;
-	if(bakerlan_test == 1) goto L_Later;
+	if (signquest > 12) goto L_Over;
+	if (bakerlan_test == 13) goto L_Help;
+	if (bakerlan_test == 5) goto L_Busy;
+	if (bakerlan_test == 4) goto L_JobDone;
+	if (bakerlan_test > 1) goto L_Steward;
+	if (bakerlan_test == 1) goto L_Later;
 
 	mes "[Bakerlan]";
 	mes "Gosh...";
@@ -4581,7 +4581,7 @@ L_NoStar:
 	close;
 
 L_Star:
-	if(countitem(7177) < 5) goto L_NoStar;
+	if (countitem(7177) < 5) goto L_NoStar;
 	mes "[Bakerlan]";
 	mes "Ah, now I see that";
 	mes "you speak the truth.";
@@ -4732,7 +4732,7 @@ L_Thanks:
 
 alde_alche.gat,169,162,7	script	Alchemist	749,{
 
-if(bakerlan_test > 0) goto BAKERLANTEST;
+if (bakerlan_test > 0) goto BAKERLANTEST;
 	mes "[Melkaba]";
 	mes "Most Alchemists seek out the";
 	mes "Stone of Sage, but in my opinion";
@@ -4763,8 +4763,8 @@ L_What:
 	close;
 
 BAKERLANTEST:
-	if(bakerlan_test > 8) goto L_Done;
-	if(bakerlan_test == 8) goto L_Items;
+	if (bakerlan_test > 8) goto L_Done;
+	if (bakerlan_test == 8) goto L_Items;
 	mes "[Melkaba]";
 	mes "Eh...?";
 	mes "What do you need?";
@@ -4772,7 +4772,7 @@ BAKERLANTEST:
 	mes "please leave my";
 	mes "laboratory.";
 
-	if(bakerlan_test != 7) close;
+	if (bakerlan_test != 7) close;
 	next;
 	menu "Vigorgra?",L_Vigor,"Oh, I'm sorry.",-;
 	mes "[Melkaba]";
@@ -4877,7 +4877,7 @@ L_Check:
 	mes "to see if you have";
 	mes "everything ready...";
 	next;
-	if(countitem(708) > 0 && countitem(518) > 19 && countitem(526) > 9 && countitem(948) > 29 && countitem(520) > 0 && countitem(713) > 0) goto L_Enough;
+	if (countitem(708) > 0 && countitem(518) > 19 && countitem(526) > 9 && countitem(948) > 29 && countitem(520) > 0 && countitem(713) > 0) goto L_Enough;
 	mes "[Melkaba]";
 	mes "Hmm, you're still";
 	mes "missing some of the";
@@ -4915,7 +4915,7 @@ L_Enough:
 	mes "consider Vigorgra's";
 	mes "numerous benefits.";
 	next;
-	if(Zeny < 10000) goto L_Money;
+	if (Zeny < 10000) goto L_Money;
 	mes "^0066CCMelkaba placed";
 	mes "all the ingredients";
 	mes "into a test tube and";
@@ -4980,13 +4980,13 @@ L_Done:
 
 prt_castle.gat,107,58,5	script	Soldier	105,{
 
-	if(bakerlan_test > 10) goto L_Heya;
+	if (bakerlan_test > 10) goto L_Heya;
 	mes "[Maruin]";
 	mes "Welcome to";
 	mes "Prontera Castle.";
 	mes "Please be careful";
 
-	if(bakerlan_test != 10 || countitem(7044) != 1 || countitem(7183) !=1) goto BAKERLEN10;
+	if (bakerlan_test != 10 || countitem(7044) != 1 || countitem(7183) !=1) goto BAKERLEN10;
 	mes "and avoid getting los--";
 	next;
 	mes "[Maruin]";
@@ -5070,7 +5070,7 @@ BAKERLEN10:
 
 geffen_in.gat,171,43,3	script	Cute Girl	703,{
 
-	if(signquest >0 ) goto SIGNQUESTSTART;
+	if (signquest >0) goto SIGNQUESTSTART;
 	mes "[Liana]";
 	mes "^222222*Pout*^000000";
 	mes "When's my daddy";
@@ -5081,10 +5081,10 @@ geffen_in.gat,171,43,3	script	Cute Girl	703,{
 	close;
 
 SIGNQUESTSTART:
-	if(signquest > 20) goto L_Never;
-	if(signquest == 20) goto L_Thanks;
-	if(signquest == 17) goto L_Letter;
-	if(signquest == 16) goto L_Father;
+	if (signquest > 20) goto L_Never;
+	if (signquest == 20) goto L_Thanks;
+	if (signquest == 17) goto L_Letter;
+	if (signquest == 16) goto L_Father;
 	mes "[Liana]";
 	mes "Oh, my mom said she's gonna cook me";
 	mes "something good today.";
@@ -5189,7 +5189,7 @@ L_Never:
 
 geffen_in.gat,159,48,5	script	Woman	711,{
 
-	if(signquest > 14) goto SIGNQUESTSTART;
+	if (signquest > 14) goto SIGNQUESTSTART;
 	mes "[Brenda Howard]";
 	mes "Hmm...";
 	mes "What should I make for";
@@ -5200,11 +5200,11 @@ geffen_in.gat,159,48,5	script	Woman	711,{
 	close;
 
 SIGNQUESTSTART:
-	if(signquest > 22) goto L_Cherish;
-	if(signquest > 19) goto L_Done;
-	if(signquest == 19 && countitem(7278) > 0) goto L_Letter;
-	if(signquest > 15) goto L_Cooking;
-	if(@signbrenda == 1) goto L_Husband;
+	if (signquest > 22) goto L_Cherish;
+	if (signquest > 19) goto L_Done;
+	if (signquest == 19 && countitem(7278) > 0) goto L_Letter;
+	if (signquest > 15) goto L_Cooking;
+	if (@signbrenda == 1) goto L_Husband;
 
 	mes "[Brenda Howard]";
 	mes "Hey, who are you anyhow?";
@@ -5315,13 +5315,13 @@ L_Cherish:
 
 mjo_dun02.gat,88,295,3		script	Flaming Spirit Man	85,{
 
-	if(signquest > 62) goto L_Improve;
-	if(signquest > 61) goto L_Hour;
-	if(signquest > 60 && countitem(2644) > 0) goto L_Sign;
-	if(signquest > 22) goto L_Done;
-	if(signquest == 21) goto L_Refine;
-	if(signquest == 18 || signquest == 22) goto L_Check;
-	if(signquest == 17) goto L_Family;
+	if (signquest > 62) goto L_Improve;
+	if (signquest > 61) goto L_Hour;
+	if (signquest > 60 && countitem(2644) > 0) goto L_Sign;
+	if (signquest > 22) goto L_Done;
+	if (signquest == 21) goto L_Refine;
+	if (signquest == 18 || signquest == 22) goto L_Check;
+	if (signquest == 17) goto L_Family;
 	emotion 32; // PIF
 	mes "[Engel]";
 	mes "I hope you understand that";
@@ -5348,7 +5348,7 @@ L_Family:
 	mes "I'm sorry, but I'm busy at the";
 	mes "moment. Please don't disturb me";
 	mes "while I try to get my work done.";
-	if(signquest != 17 || countitem(7276) != 1) close;
+	if (signquest != 17 || countitem(7276) != 1) close;
 	next;
 	menu "I need your help.",L_Help,"Here is a letter for you.",L_Letter,"I am leaving, leaving.",-;
 	mes "[Engel]";
@@ -5454,11 +5454,11 @@ L_Check:
 	mes "Let me see what you've";
 	mes "brought.";
 	next;
-	if((countitem(612) <= 4) || countitem(615) <= 1) goto L_NotEnough;
-	if(countitem(986) > 0) goto L_Forge1;
-	if(countitem(987) > 0) goto L_Forge2;
-	if(countitem(988) > 0) goto L_Forge3;
-	if(countitem(989) > 0) goto L_Forge4;
+	if ((countitem(612) <= 4) || countitem(615) <= 1) goto L_NotEnough;
+	if (countitem(986) > 0) goto L_Forge1;
+	if (countitem(987) > 0) goto L_Forge2;
+	if (countitem(988) > 0) goto L_Forge3;
+	if (countitem(989) > 0) goto L_Forge4;
 
 L_NotEnough:
 	mes "[Engel]";
@@ -5527,7 +5527,7 @@ L_Forge4:
 
 L_Forge:
 	next;
-	if(signquest == 22) goto L_Refine;
+	if (signquest == 22) goto L_Refine;
 	mes "[Engel]";
 	mes "While I'm working on this, would";
 	mes "you deliver a letter to my family";
@@ -5548,13 +5548,13 @@ L_Forge:
 	close;
 
 L_Refine:
-	if(signanvil == 1) set @signrefine,rand(100);
-	if(signanvil == 2) set @signrefine,rand(60);
-	if(signanvil == 3) set @signrefine,rand(40);
-	if(signanvil == 4) set @signrefine,rand(30);
+	if (signanvil == 1) set @signrefine,rand(100);
+	if (signanvil == 2) set @signrefine,rand(60);
+	if (signanvil == 3) set @signrefine,rand(40);
+	if (signanvil == 4) set @signrefine,rand(30);
 	mes "[Engel]";
 	mes "Are you back already?";
-	if(@signrefine <= 30) goto L_Success;
+	if (@signrefine <= 30) goto L_Success;
 	mes "I am sorry but I failed";
 	mes "restoring the Sobbing";
 	mes "Starlight.. But it isn't";
@@ -5640,13 +5640,13 @@ L_Sign:
 	delitem 2644,1;
 	set @engelhour,gettime(3);
 	set @engelmin,gettime(2);
-	if(@engelmin > 29) set @engelhour,@engelhour +1;
+	if (@engelmin > 29) set @engelhour,@engelhour +1;
 	set signengelhour,@engelhour + rand(2,4);
 	set signquest,62;
 	close;
 
 L_Hour:
-	if(gettime(3) != signengelhour && gettime(3) != signengelhour +1 && gettime(3) != signengelhour +2) goto L_BADHOUR;
+	if (gettime(3) != signengelhour && gettime(3) != signengelhour +1 && gettime(3) != signengelhour +2) goto L_BADHOUR;
 	mes "[Engel]";
 	mes "This is now yours to keep.";
 	mes "Thank you for giving me the";
@@ -5684,8 +5684,8 @@ L_Improve:
 gef_tower.gat,118,36,5	script	Annoyed Man	64,{
 
 
-	if(signquest > 24) goto L_Answer;
-	if(@sign_dhota == 1) goto L_Star;
+	if (signquest > 24) goto L_Answer;
+	if (@sign_dhota == 1) goto L_Star;
 	mes "[Dhota]";
 	mes "Wah~";
 	mes "Why the hell did he even go";
@@ -5698,7 +5698,7 @@ gef_tower.gat,118,36,5	script	Annoyed Man	64,{
 	mes "you're talking about!";
 	mes "If you've got nothing";
 	mes "to say, leave me alone!";
-	if(signquest == 24) set @sign_dhota,1;
+	if (signquest == 24) set @sign_dhota,1;
 	close;
 
 L_Star:
@@ -5747,9 +5747,9 @@ L_Answer:
 
 umbala.gat,163,256,3	script	Native	781,{
 	
-	if(event_umbala < 3) goto L_UmWord;
-	if(signquest > 25) goto L_Thanks;
-	if(signquest == 25) goto L_Sign;
+	if (event_umbala < 3) goto L_UmWord;
+	if (signquest > 25) goto L_Thanks;
+	if (signquest == 25) goto L_Sign;
 	mes "[Laotan]";
 	mes "All my friends have a new";
 	mes "mask and I'm the only one";
@@ -5763,7 +5763,7 @@ L_Sign:
 	mes "A new guy in our village?";
 	mes "I think I know him! Yea, I do!";
 	next;
-	if(countitem(2278) > 0) goto L_Mask;
+	if (countitem(2278) > 0) goto L_Mask;
 	mes "[Laotan]";
 	mes "Waaaait";
 	mes "I knooow~!";
@@ -5822,8 +5822,8 @@ L_Thanks:
 
 um_in.gat,27,23,3	script	Weird Man	121,{
 
-	if(signquest > 27) goto L_Done;
-	if(signquest == 27) goto L_Check;
+	if (signquest > 27) goto L_Done;
+	if (signquest == 27) goto L_Check;
 	mes "[Cyon]";
 	mes "*Giggle*";
 	mes "So, if I do this,";
@@ -5839,7 +5839,7 @@ um_in.gat,27,23,3	script	Weird Man	121,{
 	mes "in here? I demand";
 	mes "that you leave, right now!";
 	emotion 6; // AN
-	if(signquest == 26) goto L_Sign;
+	if (signquest == 26) goto L_Sign;
 	close2;
 	warp "um_dun01.gat",129,90;
 	end;
@@ -5980,9 +5980,9 @@ L_Done:
 
 alberta.gat,165,83,3	script	Fastidious Old Man	755,{
 
-	if(signquest > 30) goto L_Done;
-	if(signquest == 30) goto L_Interpret;
-	if(signquest == 29) goto L_Vision;
+	if (signquest > 30) goto L_Done;
+	if (signquest == 30) goto L_Interpret;
+	if (signquest == 29) goto L_Vision;
 	mes "[Frank]";
 	mes "My back~";
 	mes "It's so sore!";
@@ -5998,7 +5998,7 @@ L_Vision:
 	mes "when I read. I guess this old";
 	mes "man's got no choice but to get";
 	mes "some sort of seeing aid...";
-	if(countitem(2203) == 0)close;
+	if (countitem(2203) == 0) close;
 	next;
 	menu "Wait, I've got a pair of glasses...",L_Glasses,"Pass on by.",-;
 	mes "[Frank]";
@@ -6083,7 +6083,7 @@ L_Star:
 
 L_Interpret:
 	set @sign_frank,rand(1,10);
-	if(@sign_frank != 1) goto SIGN_FRANKFALSE;
+	if (@sign_frank != 1) goto SIGN_FRANKFALSE;
 
 	mes "[Frank]";
 	mes "Well, I've written down the best";
@@ -6122,7 +6122,7 @@ L_Done:
 
 gef_fild07.gat,182,241,1	script	#himinnwarper	111,1,1,{
 
-	if(signquest == 31 && countitem(7013) > 364 && countitem(953) > 11 && countitem(907) > 3) goto L_FirstClick;
+	if (signquest == 31 && countitem(7013) > 364 && countitem(953) > 11 && countitem(907) > 3) goto L_FirstClick;
 	end;
 
 L_FirstClick:
@@ -6135,8 +6135,8 @@ L_FirstClick:
 	close;
 
 OnTouch:
-	if(signquest > 31) goto L_Warp;
-	if(signquest == 31 && countitem(7013) > 364 && countitem(953) > 11 && countitem(907) > 3) goto L_FirstTouch;
+	if (signquest > 31) goto L_Warp;
+	if (signquest == 31 && countitem(7013) > 364 && countitem(953) > 11 && countitem(907) > 3) goto L_FirstTouch;
 	end;
 
 L_FirstTouch:
@@ -6173,10 +6173,10 @@ L_Warp:
 
 himinn.gat,48,86,5	script	Valkyrie	811,{
 
-	if(signquest == 58) goto L_Done;
-	if(signquest > 51) goto L_Gods;
-	if(signquest > 50) goto L_Help;
-	if(signquest > 32) goto L_Duty;
+	if (signquest == 58) goto L_Done;
+	if (signquest > 51) goto L_Gods;
+	if (signquest > 50) goto L_Help;
+	if (signquest > 32) goto L_Duty;
 	mes "[Valkyrie Sandra]";
 	mes "Welcome, " + strcharinfo(0) + " ,";
 	mes "to this realm of holiness.";
@@ -6308,13 +6308,13 @@ L_Done:
 
 niflheim.gat,102,54,4	script	Mad Man		739,{
 
-	if(signquest > 53) goto L_Queen;
-	if(signlaichin == 4) goto L_Where1;
-	if(signlaichin == 3) goto L_Seal;
-	if(signlaichin == 2) goto L_Direction;
-	if(signlaichin == 1) goto L_Risk;
-	if(signquest == 52) goto L_Help;
-	if(signquest) goto L_Asgard;
+	if (signquest > 53) goto L_Queen;
+	if (signlaichin == 4) goto L_Where1;
+	if (signlaichin == 3) goto L_Seal;
+	if (signlaichin == 2) goto L_Direction;
+	if (signlaichin == 1) goto L_Risk;
+	if (signquest == 52) goto L_Help;
+	if (signquest) goto L_Asgard;
 	mes "[Laichin]";
 	mes "What? I look familiar to you?";
 	mes "Eh, you know what they say.";
@@ -6406,19 +6406,19 @@ L_Risk:
 	mes "even have a decent time...";
 	next;
 	menu "Pay Laichin 40.000 Zeny.",-,"Don't pay Laichin.",L_Pay;
-	if(Zeny < 40000) goto L_NotEnough;
+	if (Zeny < 40000) goto L_NotEnough;
 //Settings for the 4 seals you will have to break
 Seal1:
 	set Sign_Seal1,rand(1,8);
 Seal2:
 	set Sign_Seal2,rand(1,8);
-	if(Sign_Seal2 == Sign_Seal1) goto Seal2;
+	if (Sign_Seal2 == Sign_Seal1) goto Seal2;
 Seal3:
 	set Sign_Seal3,rand(1,8);
-	if(Sign_Seal3 == Sign_Seal1 || Sign_Seal3 == Sign_Seal2) goto Seal3;
+	if (Sign_Seal3 == Sign_Seal1 || Sign_Seal3 == Sign_Seal2) goto Seal3;
 Seal4:
 	set Sign_Seal4,rand(1,8);
-	if(Sign_Seal4 == Sign_Seal1 || Sign_Seal4 == Sign_Seal2 || Sign_Seal4 == Sign_Seal3) goto Seal4;
+	if (Sign_Seal4 == Sign_Seal1 || Sign_Seal4 == Sign_Seal2 || Sign_Seal4 == Sign_Seal3) goto Seal4;
 //End of settings
 	mes "[Laichin]";
 	mes "Now we're talkin'!";
@@ -6463,8 +6463,8 @@ L_Mean:
 
 L_Pay2:
 	menu "Don't pay him.",L_NoPay,"Pay him.",-;
-	if(signlaichin != 2) set Zeny,Zeny - 40000;
-	if(Zeny < 20000) goto L_NotEnough2;
+	if (signlaichin != 2) set Zeny,Zeny - 40000;
+	if (Zeny < 20000) goto L_NotEnough2;
 	mes "[Laichin]";
 	mes "Alright, listen up.";
 	mes "Big, small and very small";
@@ -6509,7 +6509,7 @@ L_NoPay:
 	mes "crawling back when";
 	mes "you can't figure out";
 	mes "where the soul pieces are.";
-	if(signlaichin != 2) set Zeny,Zeny - 40000;
+	if (signlaichin != 2) set Zeny,Zeny - 40000;
 	set signlaichin,2;
 	close;
 
@@ -6600,7 +6600,7 @@ L_Where1:
 	mes "And break those seals";
 	mes "in that order, okay?";
 	next;
-	if(signlaichin == 4) goto L_Info;
+	if (signlaichin == 4) goto L_Info;
 	mes "[Laichin]";
 	mes "Big, small and very small";
 	mes "mean the distances from the";
@@ -6661,64 +6661,64 @@ L_Queen:
 function	script	Sign_Seal	{
 
 
-		if(Sign_Seal1 == 1) set @Sign_Seal1$,"big 1 o'clock";
-		if(Sign_Seal1 == 2) set @Sign_Seal1$,"big 4 o'clock";
-		if(Sign_Seal1 == 3) set @Sign_Seal1$,"big 5 o'clock";
-		if(Sign_Seal1 == 4) set @Sign_Seal1$,"small 6 o'clock";
-		if(Sign_Seal1 == 5) set @Sign_Seal1$,"big 7 o'clock";
-		if(Sign_Seal1 == 6) set @Sign_Seal1$,"very small 11 o'clock";
-		if(Sign_Seal1 == 7) set @Sign_Seal1$,"big 11 o'clock";
-		if(Sign_Seal1 == 8) set @Sign_Seal1$,"small 11 o'clock";
+		if (Sign_Seal1 == 1) set @Sign_Seal1$,"big 1 o'clock";
+		if (Sign_Seal1 == 2) set @Sign_Seal1$,"big 4 o'clock";
+		if (Sign_Seal1 == 3) set @Sign_Seal1$,"big 5 o'clock";
+		if (Sign_Seal1 == 4) set @Sign_Seal1$,"small 6 o'clock";
+		if (Sign_Seal1 == 5) set @Sign_Seal1$,"big 7 o'clock";
+		if (Sign_Seal1 == 6) set @Sign_Seal1$,"very small 11 o'clock";
+		if (Sign_Seal1 == 7) set @Sign_Seal1$,"big 11 o'clock";
+		if (Sign_Seal1 == 8) set @Sign_Seal1$,"small 11 o'clock";
 
 	
-		if(Sign_Seal2 == 1) set @Sign_Seal2$,"big 1 o'clock";
-		if(Sign_Seal2 == 2) set @Sign_Seal2$,"big 4 o'clock";
-		if(Sign_Seal2 == 3) set @Sign_Seal2$,"big 5 o'clock";
-		if(Sign_Seal2 == 4) set @Sign_Seal2$,"small 6 o'clock";
-		if(Sign_Seal2 == 5) set @Sign_Seal2$,"big 7 o'clock";
-		if(Sign_Seal2 == 6) set @Sign_Seal2$,"very small 11 o'clock";
-		if(Sign_Seal2 == 7) set @Sign_Seal2$,"big 11 o'clock";
-		if(Sign_Seal2 == 8) set @Sign_Seal2$,"small 11 o'clock";
+		if (Sign_Seal2 == 1) set @Sign_Seal2$,"big 1 o'clock";
+		if (Sign_Seal2 == 2) set @Sign_Seal2$,"big 4 o'clock";
+		if (Sign_Seal2 == 3) set @Sign_Seal2$,"big 5 o'clock";
+		if (Sign_Seal2 == 4) set @Sign_Seal2$,"small 6 o'clock";
+		if (Sign_Seal2 == 5) set @Sign_Seal2$,"big 7 o'clock";
+		if (Sign_Seal2 == 6) set @Sign_Seal2$,"very small 11 o'clock";
+		if (Sign_Seal2 == 7) set @Sign_Seal2$,"big 11 o'clock";
+		if (Sign_Seal2 == 8) set @Sign_Seal2$,"small 11 o'clock";
 
 	
-		if(Sign_Seal3 == 1) set @Sign_Seal3$,"big 1 o'clock";
-		if(Sign_Seal3 == 2) set @Sign_Seal3$,"big 4 o'clock";
-		if(Sign_Seal3 == 3) set @Sign_Seal3$,"big 5 o'clock";
-		if(Sign_Seal3 == 4) set @Sign_Seal3$,"small 6 o'clock";
-		if(Sign_Seal3 == 5) set @Sign_Seal3$,"big 7 o'clock";
-		if(Sign_Seal3 == 6) set @Sign_Seal3$,"very small 11 o'clock";
-		if(Sign_Seal3 == 7) set @Sign_Seal3$,"big 11 o'clock";
-		if(Sign_Seal3 == 8) set @Sign_Seal3$,"small 11 o'clock";
+		if (Sign_Seal3 == 1) set @Sign_Seal3$,"big 1 o'clock";
+		if (Sign_Seal3 == 2) set @Sign_Seal3$,"big 4 o'clock";
+		if (Sign_Seal3 == 3) set @Sign_Seal3$,"big 5 o'clock";
+		if (Sign_Seal3 == 4) set @Sign_Seal3$,"small 6 o'clock";
+		if (Sign_Seal3 == 5) set @Sign_Seal3$,"big 7 o'clock";
+		if (Sign_Seal3 == 6) set @Sign_Seal3$,"very small 11 o'clock";
+		if (Sign_Seal3 == 7) set @Sign_Seal3$,"big 11 o'clock";
+		if (Sign_Seal3 == 8) set @Sign_Seal3$,"small 11 o'clock";
 
 	
-		if(Sign_Seal4 == 1) set @Sign_Seal4$,"big 1 o'clock";
-		if(Sign_Seal4 == 2) set @Sign_Seal4$,"big 4 o'clock";
-		if(Sign_Seal4 == 3) set @Sign_Seal4$,"big 5 o'clock";
-		if(Sign_Seal4 == 4) set @Sign_Seal4$,"small 6 o'clock";
-		if(Sign_Seal4 == 5) set @Sign_Seal4$,"big 7 o'clock";
-		if(Sign_Seal4 == 6) set @Sign_Seal4$,"very small 11 o'clock";
-		if(Sign_Seal4 == 7) set @Sign_Seal4$,"big 11 o'clock";
-		if(Sign_Seal4 == 8) set @Sign_Seal4$,"small 11 o'clock";
+		if (Sign_Seal4 == 1) set @Sign_Seal4$,"big 1 o'clock";
+		if (Sign_Seal4 == 2) set @Sign_Seal4$,"big 4 o'clock";
+		if (Sign_Seal4 == 3) set @Sign_Seal4$,"big 5 o'clock";
+		if (Sign_Seal4 == 4) set @Sign_Seal4$,"small 6 o'clock";
+		if (Sign_Seal4 == 5) set @Sign_Seal4$,"big 7 o'clock";
+		if (Sign_Seal4 == 6) set @Sign_Seal4$,"very small 11 o'clock";
+		if (Sign_Seal4 == 7) set @Sign_Seal4$,"big 11 o'clock";
+		if (Sign_Seal4 == 8) set @Sign_Seal4$,"small 11 o'clock";
 return;
 }
 
 
 niflheim.gat,313,70,3	script	Pleasant-Featured Lady	90,{
 
-	if(signquest > 55) goto L_NoWord;
-	if(Sign_Branch8A > 0) goto L_Memory;
-	if(Sign_Branch8B > 0) goto L_BranchB;
-	if(signquest > 54 && countitem(7305) > 0) goto L_Give;
-	if(signquest > 50) goto L_Symbol;
-	if(signquest > 49) goto L_Valkyrie;
-	if(signquest > 48) goto L_Info;
-	if(signquest > 47) goto L_Look;
-	if(signquest > 43) goto L_Survive;
-	if(signquest > 42) goto L_Bard;
-	if(signquest == 42) goto L_Thanks;
-	if(signquest > 33) goto L_Help;
-	if(Sign_Branch2B > 0) goto L_Advice;
-	if(signquest > 32) goto L_Sign;
+	if (signquest > 55) goto L_NoWord;
+	if (Sign_Branch8A > 0) goto L_Memory;
+	if (Sign_Branch8B > 0) goto L_BranchB;
+	if (signquest > 54 && countitem(7305) > 0) goto L_Give;
+	if (signquest > 50) goto L_Symbol;
+	if (signquest > 49) goto L_Valkyrie;
+	if (signquest > 48) goto L_Info;
+	if (signquest > 47) goto L_Look;
+	if (signquest > 43) goto L_Survive;
+	if (signquest > 42) goto L_Bard;
+	if (signquest == 42) goto L_Thanks;
+	if (signquest > 33) goto L_Help;
+	if (Sign_Branch2B > 0) goto L_Advice;
+	if (signquest > 32) goto L_Sign;
 	mes "[Serin]";
 	mes "I'm sorry,";
 	mes "but you're not";
@@ -7053,7 +7053,7 @@ L_Give:
 	delitem 7305,1;
 	next;
 
-	if(countitem(2642) != 1) goto NO2642;
+	if (countitem(2642) != 1) goto NO2642;
 	mes "[Serin]";
 	mes "May I ask you if I can take a";
 	mes "look at my beloved ring once";
@@ -7088,7 +7088,7 @@ L_Keep:
 	close;
 
 L_BranchB:
-	if(signringreturning != 1) goto NORINGRETURN;
+	if (signringreturning != 1) goto NORINGRETURN;
 	getitem 2643,1;
 	set signringreturning,0;
 NORINGRETURN:
@@ -7098,12 +7098,12 @@ NORINGRETURN:
 	mes "ready to come with me?";
 	next;
 	menu "Yes.",-,"No.",L_No;
-	if(($signroom2full > 1) || getareausers("que_sign01.gat",229,77,166,12) > 0) goto L_Full;
+	if (($signroom2full > 1) || getareausers("que_sign01.gat",229,77,166,12) > 0) goto L_Full;
 	mes "[Serin]";
 	mes "Please follow me";
 	mes "......";
 	close2;
-	if(($signroom2full > 1) || getareausers("que_sign01.gat",229,77,166,12) > 0) end;
+	if (($signroom2full > 1) || getareausers("que_sign01.gat",229,77,166,12) > 0) end;
 	donpcevent "#signserin2::OnSerin";
 	donpcevent "#signserin2::OnCooldown";
 	set $signroom2full,2;
@@ -7132,7 +7132,7 @@ L_Advice:
 	mes "He'll probably tell you his story";
 	mes "and you might understand...";
 	mes "Yes... You should meet him.";
-	if(Sign_Branch2B == 0) set Sign_Branch2B,1;
+	if (Sign_Branch2B == 0) set Sign_Branch2B,1;
 	close;
 
 L_Full:
@@ -7147,14 +7147,14 @@ L_Full:
 
 nif_in.gat,156,93,1	script	#signann	139,2,2,{
 
-	if(signquest > 33) goto L_SignAnn;
+	if (signquest > 33) goto L_SignAnn;
 	end;
 
 L_SignAnn:
-	if(signquest == 39) goto L_Sad;
-	if(signquest == 38 && countitem(7309) > 0) goto L_Crow;
-	if(signquest == 36) goto L_Help;
-	if(signquest > 34) goto L_Home;
+	if (signquest == 39) goto L_Sad;
+	if (signquest == 38 && countitem(7309) > 0) goto L_Crow;
+	if (signquest == 36) goto L_Help;
+	if (signquest > 34) goto L_Home;
 	mes "[Alakina Ann]";
 	mes "Where...Where am I...?";
 	mes "I remember I was sleeping";
@@ -7287,7 +7287,7 @@ L_Sad:
 
 niflheim.gat,350,258,1	script	#signbruce	139,2,2,{
 
-	if(signquest == 35 || Sign_Branch2B == 3) goto L_SignBruce;
+	if (signquest == 35 || Sign_Branch2B == 3) goto L_SignBruce;
 	end;
 
 L_SignBruce:
@@ -7399,8 +7399,8 @@ L_Success:
 	mes "I command you to take this";
 	mes "book and give it to that";
 	mes "weak, pathetic witch!";
-	if(signquest == 35) set signquest,36;
-	if(Sign_Branch2B == 3) set Sign_Branch2B,4;
+	if (signquest == 35) set signquest,36;
+	if (Sign_Branch2B == 3) set Sign_Branch2B,4;
 	getitem 7304,1;
 	close;
 
@@ -7411,19 +7411,19 @@ Onmymob:
 
 nif_in.gat,188,168,1	script	#signwitch	139,2,2,{
 
-	if(signquest > 36) goto L_SignWitch;
-	if(Sign_Branch2B > 1) goto L_Book;
+	if (signquest > 36) goto L_SignWitch;
+	if (Sign_Branch2B > 1) goto L_Book;
 	end;
 
 L_SignWitch:
-	if(signquest > 55 || sign_fail > 0) end;
-	if(Sign_Branch8A > 0 || Sign_Branch8B > 0 || countitem(7305) > 0) goto L_Privacy;
-	if(signquest > 46) goto L_Help;
-	if(signquest > 45) goto L_Courage;
-	if(signquest > 41) goto L_Think;
-	if(signquest > 40) goto L_Tragic;
-	if(signquest > 39) goto L_Crow;
-	if(signquest > 37 || countitem(7304) == 0) end;
+	if (signquest > 55 || sign_fail > 0) end;
+	if (Sign_Branch8A > 0 || Sign_Branch8B > 0 || countitem(7305) > 0) goto L_Privacy;
+	if (signquest > 46) goto L_Help;
+	if (signquest > 45) goto L_Courage;
+	if (signquest > 41) goto L_Think;
+	if (signquest > 40) goto L_Tragic;
+	if (signquest > 39) goto L_Crow;
+	if (signquest > 37 || countitem(7304) == 0) end;
 	mes "[Kirkena]";
 	mes "W-what's this?";
 	mes "Why is it that";
@@ -7599,8 +7599,8 @@ L_Symbol:
 	close;
 
 L_Book:
-	if(countitem(7304) > 0) goto L_Found;
-	if(Sign_Branch2B > 2) end;
+	if (countitem(7304) > 0) goto L_Found;
+	if (Sign_Branch2B > 2) end;
 	mes "[Kirkena]";
 	mes "What are you doing here ?";
 	mes "This is not a place for a";
@@ -7664,7 +7664,7 @@ L_Privacy:
 
 nif_in.gat,105,81,1	script	#signcrayu	139,2,2,{
 
-	if(signquest == 44) goto L_SignCrayu;
+	if (signquest == 44) goto L_SignCrayu;
 	end;
 
 L_SignCrayu:
@@ -7734,11 +7734,11 @@ L_Chosen:
 
 niflheim.gat,146,241,7	script	Depressing Man	735,{
 
-	if(signquest > 56) goto L_Done;
-	if(Sign_Branch8A > 3 || (Sign_Branch8B > 0 && Sign_Branch8B < 4)) goto L_Hurry;
-	if(signquest > 54) goto L_Serin;
-	if(signquest > 53) goto L_Queen;
-	if(signquest > 0) goto L_Seek;
+	if (signquest > 56) goto L_Done;
+	if (Sign_Branch8A > 3 || (Sign_Branch8B > 0 && Sign_Branch8B < 4)) goto L_Hurry;
+	if (signquest > 54) goto L_Serin;
+	if (signquest > 53) goto L_Queen;
+	if (signquest > 0) goto L_Seek;
 	mes "[????]";
 	mes "Leave me be,";
 	mes "ruffian! I'm disinclined";
@@ -7873,7 +7873,7 @@ L_No2:
 
 niflheim.gat,146,241,1	script	#signgen	139,2,2,{
 
-	if(signquest == 45 || Sign_Branch2B == 1) goto L_SignGen;
+	if (signquest == 45 || Sign_Branch2B == 1) goto L_SignGen;
 	end;
 
 L_SignGen:
@@ -7903,28 +7903,28 @@ L_SignGen:
 	mes "too much. First, go and see";
 	mes "the witch and ask her to";
 	mes "help you out, okay?";
-	if(Sign_Branch2B > 0) set Sign_Branch2B,2;
-	if(signquest == 45) set signquest,46;
+	if (Sign_Branch2B > 0) set Sign_Branch2B,2;
+	if (signquest == 45) set signquest,46;
 	close;
 
 }
 
 nif_in.gat,140,177,1	script	#signgrave	111,{
 
-	if(signquest > 47 || countitem(7313) > 0)  warp "que_sign01.gat",115,135;
+	if (signquest > 47 || countitem(7313) > 0)  warp "que_sign01.gat",115,135;
 	end;
 
 }
 
 que_sign01.gat,122,141,5	script	Witch	792,{
 
-	if(Sign_Branch8B > 0 && Sign_Branch8B < 4)goto L_MustHurry;
-	if(signquest > 56) goto L_NoMedal;
-	if(signquest > 55) goto L_Success;
-	if((countitem(7313) > 0) && Sign_Branch8A < 4) goto L_Medal;
-	if(Sign_Branch8A > 0) goto L_BranchA;
-	if(signquest > 54 && countitem(7305) > 0) goto L_Symbol;
-	if(signquest < 48) goto L_NoMedal;
+	if (Sign_Branch8B > 0 && Sign_Branch8B < 4) goto L_MustHurry;
+	if (signquest > 56) goto L_NoMedal;
+	if (signquest > 55) goto L_Success;
+	if ((countitem(7313) > 0) && Sign_Branch8A < 4) goto L_Medal;
+	if (Sign_Branch8A > 0) goto L_BranchA;
+	if (signquest > 54 && countitem(7305) > 0) goto L_Symbol;
+	if (signquest < 48) goto L_NoMedal;
 	mes "[Kirkena]";
 	mes "If you need to learn more";
 	mes "about Angrboda, why don't you";
@@ -7994,11 +7994,11 @@ L_Give:
 	close;
 
 L_BranchA:
-	if(sign_fail > 0) goto L_NoMedal;
-	if(Sign_Branch8A > 3) goto L_Serin;
-	if(Sign_Branch8A > 2) goto L_Complete;
-	if(Sign_Branch8A > 1) goto L_Potion;
-	if(countitem(2642) < 1) goto L_Lack;
+	if (sign_fail > 0) goto L_NoMedal;
+	if (Sign_Branch8A > 3) goto L_Serin;
+	if (Sign_Branch8A > 2) goto L_Complete;
+	if (Sign_Branch8A > 1) goto L_Potion;
+	if (countitem(2642) < 1) goto L_Lack;
 	mes "[Kirkena]";
 	mes "This is Serin's gold ring?";
 	mes "Excellent, this has been";
@@ -8156,7 +8156,7 @@ L_Complete:
 	mes "and command Serin to drink it.";
 	next;
 
-	if(serinring == 0) goto SENRING0;
+	if (serinring == 0) goto SENRING0;
 		mes "[Kirkena]";
 		mes "Luckily, I was able to";
 		mes "use Serin's gold ring to";
@@ -8181,14 +8181,14 @@ SENRING0:
 	mes "of the vouchers I've";
 	mes "given you, alright?";
 	getitem 7308,1;
-	if(serinring > 0) getitem 2643,1;
+	if (serinring > 0) getitem 2643,1;
 	getitem 7313,5;
 	set Sign_Branch8A,4;
 	close;
 
 L_Serin:
-	if(($signroomfull > 1) || getmapusers("que_sign02.gat") > 0 || getareausers("que_sign01.gat",229,227,166,162) > 0) goto L_Full;
-	if(countitem(2643) < 1) goto L_NoRing;
+	if (($signroomfull > 1) || getmapusers("que_sign02.gat") > 0 || getareausers("que_sign01.gat",229,227,166,162) > 0) goto L_Full;
+	if (countitem(2643) < 1) goto L_NoRing;
 	mes "[Kirkena]";
 	mes "You're finally";
 	mes "back, we might not";
@@ -8197,7 +8197,7 @@ L_Serin:
 	mes "to try. Are you ready?";
 	next;
 	menu "Yes",-,"No",L_No;
-	if(($signroomfull > 1) || getmapusers("que_sign02.gat") > 0 || getareausers("que_sign01.gat",229,227,166,162) > 0) goto L_Full;
+	if (($signroomfull > 1) || getmapusers("que_sign02.gat") > 0 || getareausers("que_sign01.gat",229,227,166,162) > 0) goto L_Full;
 	close2;
 	donpcevent "#signserin::OnSerin";
 	donpcevent "#signserin::OnCooldown";
@@ -8241,13 +8241,13 @@ L_NoRing:
 	mes "you ready to go?";
 	next;
 	menu "Yes",-,"No",L_No;
-	if(($signroomfull > 1) || getmapusers("que_sign02.gat") > 0 || getareausers("que_sign01.gat",229,227,166,162) > 0) goto L_Full;
+	if (($signroomfull > 1) || getmapusers("que_sign02.gat") > 0 || getareausers("que_sign01.gat",229,227,166,162) > 0) goto L_Full;
 	mes "[Kirkena]";
 	mes "Okay then.";
 	mes "Good luck,";
 	mes "" + strcharinfo(0) + "...";
 	close2;
-	if(($signroomfull > 1) || getmapusers("que_sign02.gat") > 0 || getareausers("que_sign01.gat",229,227,166,162) > 0) end;
+	if (($signroomfull > 1) || getmapusers("que_sign02.gat") > 0 || getareausers("que_sign01.gat",229,227,166,162) > 0) end;
 	donpcevent "#signserin::OnSerin";
 	donpcevent "#signserin::OnCooldown";
 	set $signroomfull,2;
@@ -8259,8 +8259,8 @@ L_Medal:
 	callfunc "Sign_Party";
 
 L_NoMedal:
-	if(signquest > 56) goto L_Done;
-	if(sign_fail > 0) goto L_Fail;
+	if (signquest > 56) goto L_Done;
+	if (sign_fail > 0) goto L_Fail;
 	mes "[Kirkena]";
 	mes "...";
 	close;
@@ -8304,7 +8304,7 @@ L_Path:
 	end;
 
 L_Success:
-	if(countitem(7313) < 5 && Sign_Branch8A) goto L_Voucher;
+	if (countitem(7313) < 5 && Sign_Branch8A) goto L_Voucher;
 	mes "[Kirkena]";
 	mes "You've done well.";
 	mes "Without her memories of her";
@@ -8360,7 +8360,7 @@ L_MustHurry:
 
 L_Fail:
 
-	if(sign_fail != 1) goto SIGNFAIL1;
+	if (sign_fail != 1) goto SIGNFAIL1;
 	mes "[Kirkena]";
 	mes "Damn! Did you really let";
 	mes "her finish her summoning?";
@@ -8385,7 +8385,7 @@ SIGNFAIL1:
 
 gl_dun02.gat,262,265,1	script	Mysterious Energy	111,{
 
-	if((brokenseal == 1 && Sign_Seal1 == 1) || (brokenseal == 2 && Sign_Seal2 == 1) || (brokenseal == 3 && Sign_Seal3 == 1) || (brokenseal == 4 && Sign_Seal4 == 1)) goto BREAKSEAL;
+	if ((brokenseal == 1 && Sign_Seal1 == 1) || (brokenseal == 2 && Sign_Seal2 == 1) || (brokenseal == 3 && Sign_Seal3 == 1) || (brokenseal == 4 && Sign_Seal4 == 1)) goto BREAKSEAL;
 	mes "^3355FFYou sense a strange";
 	mes "mysterious energy emanating from";
 	mes "this area. For some reason, this";
@@ -8406,7 +8406,7 @@ BREAKSEAL:
 
 gl_dun02.gat,270,98,1	script	Mysterious Energy	111,{
 
-	if((brokenseal == 1 && Sign_Seal1 == 2) || (brokenseal == 2 && Sign_Seal2 == 2) || (brokenseal == 3 && Sign_Seal3 == 2) || (brokenseal == 4 && Sign_Seal4 == 2)) goto BREAKSEAL;
+	if ((brokenseal == 1 && Sign_Seal1 == 2) || (brokenseal == 2 && Sign_Seal2 == 2) || (brokenseal == 3 && Sign_Seal3 == 2) || (brokenseal == 4 && Sign_Seal4 == 2)) goto BREAKSEAL;
 	mes "^3355FFYou sense a strange";
 	mes "mysterious energy emanating from";
 	mes "this area. For some reason, this";
@@ -8426,7 +8426,7 @@ BREAKSEAL:
 }
 
 gl_dun02.gat,268,31,1	script	Mysterious Energy	111,{
-	if((brokenseal == 1 && Sign_Seal1 == 3) || (brokenseal == 2 && Sign_Seal2 == 3) || (brokenseal == 3 && Sign_Seal3 == 3) || (brokenseal == 4 && Sign_Seal4 == 3)) goto BREAKSEAL;
+	if ((brokenseal == 1 && Sign_Seal1 == 3) || (brokenseal == 2 && Sign_Seal2 == 3) || (brokenseal == 3 && Sign_Seal3 == 3) || (brokenseal == 4 && Sign_Seal4 == 3)) goto BREAKSEAL;
 
 	mes "^3355FFYou sense a strange";
 	mes "mysterious energy emanating from";
@@ -8447,7 +8447,7 @@ BREAKSEAL:
 }
 
 gl_dun02.gat,139,72,1	script	Mysterious Energy	111,{
-	if((brokenseal == 1 && Sign_Seal1 == 4) || (brokenseal == 2 && Sign_Seal2 == 4) || (brokenseal == 3 && Sign_Seal3 == 4) || (brokenseal == 4 && Sign_Seal4 == 4)) goto BROKENSEAL;
+	if ((brokenseal == 1 && Sign_Seal1 == 4) || (brokenseal == 2 && Sign_Seal2 == 4) || (brokenseal == 3 && Sign_Seal3 == 4) || (brokenseal == 4 && Sign_Seal4 == 4)) goto BROKENSEAL;
 	mes "^3355FFYou sense a strange";
 	mes "mysterious energy emanating from";
 	mes "this area. For some reason, this";
@@ -8468,7 +8468,7 @@ BROKENSEAL:
 }
 
 gl_dun02.gat,16,26,1	script	Mysterious Energy	111,{
-	if((brokenseal == 1 && Sign_Seal1 == 5) || (brokenseal == 2 && Sign_Seal2 == 5) || (brokenseal == 3 && Sign_Seal3 == 5) || (brokenseal == 4 && Sign_Seal4 == 5)) goto BROKESEAL;
+	if ((brokenseal == 1 && Sign_Seal1 == 5) || (brokenseal == 2 && Sign_Seal2 == 5) || (brokenseal == 3 && Sign_Seal3 == 5) || (brokenseal == 4 && Sign_Seal4 == 5)) goto BROKESEAL;
 
 	mes "^3355FFYou sense a strange";
 	mes "mysterious energy emanating from";
@@ -8491,7 +8491,7 @@ BROKESEAL:
 
 gl_dun02.gat,120,180,1	script	Mysterious Energy	111,{
 
-	if((brokenseal == 1 && Sign_Seal1 == 6) || (brokenseal == 2 && Sign_Seal2 == 6) || (brokenseal == 3 && Sign_Seal3 == 6) || (brokenseal == 4 && Sign_Seal4 == 6)) goto BROKESEAL;
+	if ((brokenseal == 1 && Sign_Seal1 == 6) || (brokenseal == 2 && Sign_Seal2 == 6) || (brokenseal == 3 && Sign_Seal3 == 6) || (brokenseal == 4 && Sign_Seal4 == 6)) goto BROKESEAL;
 	mes "^3355FFYou sense a strange";
 	mes "mysterious energy emanating from";
 	mes "this area. For some reason, this";
@@ -8512,7 +8512,7 @@ BROKESEAL:
 
 gl_dun02.gat,42,251,1	script	Mysterious Energy	111,{
 
-	if((brokenseal == 1 && Sign_Seal1 == 7) || (brokenseal == 2 && Sign_Seal2 == 7) || (brokenseal == 3 && Sign_Seal3 == 7) || (brokenseal == 4 && Sign_Seal4 == 7)) goto BROKESEAL;
+	if ((brokenseal == 1 && Sign_Seal1 == 7) || (brokenseal == 2 && Sign_Seal2 == 7) || (brokenseal == 3 && Sign_Seal3 == 7) || (brokenseal == 4 && Sign_Seal4 == 7)) goto BROKESEAL;
 	mes "^3355FFYou sense a strange";
 	mes "mysterious energy emanating from";
 	mes "this area. For some reason, this";
@@ -8532,7 +8532,7 @@ BROKESEAL:
 
 gl_dun02.gat,124,231,1	script	Mysterious Energy	111,{
 
-	if((brokenseal == 1 && Sign_Seal1 == 8) || (brokenseal == 2 && Sign_Seal2 == 8) || (brokenseal == 3 && Sign_Seal3 == 8) || (brokenseal == 4 && Sign_Seal4 == 8)) goto BROKESEAL;
+	if ((brokenseal == 1 && Sign_Seal1 == 8) || (brokenseal == 2 && Sign_Seal2 == 8) || (brokenseal == 3 && Sign_Seal3 == 8) || (brokenseal == 4 && Sign_Seal4 == 8)) goto BROKESEAL;
 	mes "^3355FFYou sense a strange";
 	mes "mysterious energy emanating from";
 	mes "this area. For some reason, this";
@@ -8559,13 +8559,13 @@ function	script	Break_Seal	{
 	set @i,-1;
 L_Check:
 	set @i,@i+1;
-	if(getiteminfo(@inventorylist_id[@i],13) == 4) goto L_Break;
-	if(@i < @inventorylist_count -1) goto L_Check;
+	if (getiteminfo(@inventorylist_id[@i],13) == 4) goto L_Break;
+	if (@i < @inventorylist_count -1) goto L_Check;
 	return;
 
 L_Break:
 	set @sealbreak,rand(100);
-	if(@sealbreak < 11) goto L_Broken;
+	if (@sealbreak < 11) goto L_Broken;
 	mes "^3355FFYou hit the seal as hard";
 	mes "as you can with the weapon in your";
 	mes "hand. However, the seal is merely";
@@ -8587,7 +8587,7 @@ L_Broken:
 	mes "obtained a";
 	mes "^0000FFPiece of Spirit.^000000";
 	getitem 7306,1;
-	if(brokenseal > 4) goto L_Soul;
+	if (brokenseal > 4) goto L_Soul;
 	close;
 
 L_Soul:
@@ -8617,7 +8617,7 @@ L_Soul:
 //End of Seals
 
 que_sign01.gat,46,55,1	script	Fountain	111,{
-	if(signquest > 54) goto L_Bottle;
+	if (signquest > 54) goto L_Bottle;
 	mes "^3355FFThe water in this";
 	mes "fountain looks clean";
 	mes "enough to drink...";
@@ -8638,7 +8638,7 @@ L_Bottle:
 	mes "enough to be bottled...";
 	next;
 	menu "Bottle.",-,"Don't bottle.",L_No;
-	if(countitem(713) == 0)goto L_Nobottle;
+	if (countitem(713) == 0) goto L_Nobottle;
 	delitem 713,1;
 	getitem 12020,1;
 	close;
@@ -8654,10 +8654,10 @@ L_Nobottle:
 
 que_sign01.gat,45,227,5	script	Queen of the Dead	856,{
 
-	if(signquest > 65) goto L_Greet;
-	if(signquest > 64) goto L_Work;
-	if(signquest > 63) goto L_Sense;
-	if(signquest > 54) goto L_Power;
+	if (signquest > 65) goto L_Greet;
+	if (signquest > 64) goto L_Work;
+	if (signquest > 63) goto L_Sense;
+	if (signquest > 54) goto L_Power;
 	mes "[Lady Hell]";
 	mes "^881010I have been told";
 	mes "by Ganglati that you";
@@ -8711,7 +8711,7 @@ L_Power:
 	mes "symbol wisely. You will";
 	mes "be responsible for the";
 	mes "consequences...";
-	if(signquest == 57) set signquest,58;
+	if (signquest == 57) set signquest,58;
 	close;
 
 L_Sense:
@@ -8730,9 +8730,9 @@ L_Sense:
 	mes "have something extraordinarily";
 	mes "special in your possesion?";
 	next;
-	if(countitem(2644) == 1 && countitem(7178) == 1 ) goto L_BOTH;
-	if(countitem(2644) == 0 && countitem(7178) == 1 ) goto L_7178;
-	if(countitem(2644) == 1 && countitem(7178) == 0 ) goto L_2644;
+	if (countitem(2644) == 1 && countitem(7178) == 1) goto L_BOTH;
+	if (countitem(2644) == 0 && countitem(7178) == 1) goto L_7178;
+	if (countitem(2644) == 1 && countitem(7178) == 0) goto L_2644;
 L_BOTH:
 	menu "The Sign",L_Sign,"Sobbing Starlight",L_SSTAR;
 L_7178:
@@ -8875,7 +8875,7 @@ OnSummon:
 
 OnSignDead:
 	set $@Sign_Summon,$@Sign_Summon -1;
-	if($@Sign_Summon > 0) end;
+	if ($@Sign_Summon > 0) end;
 	set Sign_Branch8A,8;
 	set $signroomfull,3;
 	stopnpctimer;
@@ -8917,7 +8917,7 @@ OnSummon:
 
 OnSignDead:
 	set $@Sign_Summon2,$@Sign_Summon2 -1;
-	if($@Sign_Summon2 > 0) end;
+	if ($@Sign_Summon2 > 0) end;
 	set Sign_Branch8B,4;
 	set $signroom2full,3;
 	stopnpctimer;
@@ -8938,11 +8938,11 @@ OnTimer600000:
 
 que_sign01.gat,197,195,5	script	Serin#serin	90,{
 
-	if(signquest > 55) goto L_Done;
-	if(Sign_Branch8A > 7) goto L_Success;
-	if(Sign_Branch8A > 6) goto L_TryAgain;
-	if(Sign_Branch8A > 4) goto L_Summon;
-	if(Sign_Branch8A < 4) goto L_NoWord;
+	if (signquest > 55) goto L_Done;
+	if (Sign_Branch8A > 7) goto L_Success;
+	if (Sign_Branch8A > 6) goto L_TryAgain;
+	if (Sign_Branch8A > 4) goto L_Summon;
+	if (Sign_Branch8A < 4) goto L_NoWord;
 	mes "[Serin]";
 	mes "You're finally here.";
 	mes "That witch has been watching";
@@ -9140,10 +9140,10 @@ L_Done:
 
 que_sign01.gat,197,45,5	script	Serin#serin2	90,{
 
-	if(signquest > 55) goto L_Done;
-	if(Sign_Branch8B > 3) goto L_Success;
-	if(Sign_Branch8B > 2) goto L_TryAgain;
-	if(Sign_Branch8B > 1) goto L_Summon;
+	if (signquest > 55) goto L_Done;
+	if (Sign_Branch8B > 3) goto L_Success;
+	if (Sign_Branch8B > 2) goto L_TryAgain;
+	if (Sign_Branch8B > 1) goto L_Summon;
 	mes "[Serin]";
 	mes "You're finally here.";
 	mes "That witch has been watching";
@@ -9317,7 +9317,7 @@ L_Success:
 	mes "me than life itself.";
 	next;
 
-	if(countitem(2643) == 0 ) goto NO2643;
+	if (countitem(2643) == 0) goto NO2643;
 	mes "[Serin]";
 	mes "May I ask you one last";
 	mes "favor? I see you kept my";
@@ -9331,7 +9331,7 @@ NO2643:
 	mes "Farewell, now.";
 	mes "And good luck on";
 	mes "your travels, my friend...";
-	if(countitem(2643) == 0 ) goto NO2643bis;
+	if (countitem(2643) == 0) goto NO2643bis;
 
 	delitem 2643,1;
 	set JobExp,JobExp + 393759;
@@ -9362,8 +9362,8 @@ function	script	Sign_Party	{
 
 L_Check:
 	set @i,@i+1;
-	if(getcharid(0) == $@partymembercid[@i]) goto L_Party;
-	if(@i < $@partymembercount -1) goto L_Check;
+	if (getcharid(0) == $@partymembercid[@i]) goto L_Party;
+	if (@i < $@partymembercount -1) goto L_Check;
 	return;
 
 L_Party:
@@ -9410,8 +9410,8 @@ L_Path:
 
 que_sign01.gat,178,169,0	script	#serinwarp	45,1,1,{
 
-	if($signroomfull < 3) goto SIGNROOMFULL3;
-	if(getmapusers("que_sign02.gat") > 0 || getareausers("que_sign01.gat",229,227,166,162) > 0) end;
+	if ($signroomfull < 3) goto SIGNROOMFULL3;
+	if (getmapusers("que_sign02.gat") > 0 || getareausers("que_sign01.gat",229,227,166,162) > 0) end;
 	donpcevent "#signserin::OnInit";
 
 SIGNROOMFULL3:
@@ -9477,7 +9477,7 @@ OnInit:
 
 geffen.gat,119,49,1	script	Fountain#SignFountain	111,{
 
-	if(countitem(7025) == 1 && $GeffeniaWarp == 0)goto L_Lament;
+	if (countitem(7025) == 1 && $GeffeniaWarp == 0) goto L_Lament;
 	mes "^3355FFThis is the";
 	mes "Geffen Fountain.";
 	close;

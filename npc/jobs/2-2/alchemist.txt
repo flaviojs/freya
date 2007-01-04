@@ -28,11 +28,11 @@
 //					Registration and First Test
 //==================================================================================================//
 alde_alche.gat,27,185,4	script	Parmry Gianino	744,{
-	callfunc "F_BlockHigh",Job_Merchant_High,"Merchant High",42,"Creator","Parmry Gianino";
+	callfunc "F_BlockHigh",JOB_MERCHANT_HIGH,"Merchant High",42,"Creator","Parmry Gianino";
 
 	mes "[Parmry Gianino]";
-	if(BaseJob == 5) goto L_Merc;
-	if(BaseJob == Job_Alchem) goto L_Alch;
+	if (BaseJob == 5) goto L_Merc;
+	if (BaseJob == JOB_ALCHEM) goto L_Alch;
 L_Other:
 	mes "Welcome to the Alchemist Union.  Ah, I apologize but I'm busy right now.";
 	close;
@@ -40,13 +40,13 @@ L_Alch:
 	mes "Hey there fellow Alchemist.  How's the business going?  Good I hope, well good luck to you.";
 	close;
 L_Merc:
-	if(ALCH_Q == 1) goto L_Check;
-	if(ALCH_Q == 2) goto L_Test2;
-	if(ALCH_Q == 3) goto L_Test3;
-	if(ALCH_Q == 4) goto L_Test4;
-	if(ALCH_Q == 5) goto L_Test5;
-	if(ALCH_Q == 6) goto L_Test6;
-	if(ALCH_Q == 7) goto L_GoChange;
+	if (ALCH_Q == 1) goto L_Check;
+	if (ALCH_Q == 2) goto L_Test2;
+	if (ALCH_Q == 3) goto L_Test3;
+	if (ALCH_Q == 4) goto L_Test4;
+	if (ALCH_Q == 5) goto L_Test5;
+	if (ALCH_Q == 6) goto L_Test6;
+	if (ALCH_Q == 7) goto L_GoChange;
 	mes "Welcome to the Alchemist Union.";
 	mes "How may i help you?";
 	next;
@@ -80,7 +80,7 @@ L_Merc:
 		close;
 L_Start:
 	mes "[Parmry Gianino]";
-	if(JobLevel < 40) goto L_LowLvl;
+	if (JobLevel < 40) goto L_LowLvl;
 	mes "Is that so? My name is Parmry Gianino of the Alchemist Association.";
 	mes "Nice to meet you.";
 	next;
@@ -137,9 +137,9 @@ L_Check:
 	mes "Oh, your back already... lets see....";
 	next;
 	mes "[Parmry Gianino]";
-	if(countitem(612) < 100) goto L_NoItems;
-	if(countitem(1005) > 0 && countitem(1006) > 0) goto L_Skip;
-	if(zeny < 50000) goto L_NoZeny;
+	if (countitem(612) < 100) goto L_NoItems;
+	if (countitem(1005) > 0 && countitem(1006) > 0) goto L_Skip;
+	if (zeny < 50000) goto L_NoZeny;
 	set zeny,zeny - 50000;
 	delitem 612, 100;
 	mes "You have 50,000 zeny...... You brought 100 mini furnaces.... Great!";
@@ -204,7 +204,7 @@ L_GoChange:
 //==================================================================================================//
 alde_alche.gat,175,107,4	script	Rasputin Gregory	749,{
 	mes "[Rasputin Gregory]";
-	if(BaseJob == 5) goto L_Merc;
+	if (BaseJob == 5) goto L_Merc;
 L_Other:
 	mes "What is it, kikikiki.  Are you curious about what I do...?";
 	mes "I'll just especially let you know.  You see I... Kekeke..";
@@ -216,8 +216,8 @@ L_Other:
 	mes "Kikikikikekekekek.  It's a secret to the people of Prontera.....";
 	close;
 L_Merc:
-	if(ALCH_Q == 2) goto L_Start;
-	if(ALCH_Q == 3) goto L_Done;
+	if (ALCH_Q == 2) goto L_Start;
+	if (ALCH_Q == 3) goto L_Done;
 	mes "Kikikikikekekekeke.";
 	mes "What is it! You punk.";
 	next;
@@ -231,8 +231,8 @@ L_Merc:
 	mes "Dont loiter ... Kekeke.";
 	close;
 L_Start:
-	if(ALCH_Q2 == 1) goto L_ReTest;
-	if(JobLevel == 50) goto L_Skip;
+	if (ALCH_Q2 == 1) goto L_ReTest;
+	if (JobLevel == 50) goto L_Skip;
 	mes "Keke, another dumb one has stumbled into here.";
 	mes "Join the Union?";
 	next;
@@ -260,25 +260,25 @@ L_Start:
 		mes "12+23+34+45 =?";
 		next;
 		input @num;
-		if(@num == 114) set @score,@score+10;
+		if (@num == 114) set @score,@score+10;
 	q2:
 		mes "[Rasputin Gregory]";
 		mes "1000-36-227-348 =?";
 		next;
 		input @num;
-		if(@num == 389) set @score,@score+10;
+		if (@num == 389) set @score,@score+10;
 	q3:
 		mes "[Rasputin Gregory]";
 		mes "9765/3/5/7 =?";
 		next;
 		input @num;
-		if(@num == 93) set @score,@score+10;
+		if (@num == 93) set @score,@score+10;
 	q4:
 		mes "[Rasputin Gregory]";
 		mes "(2646/7) + (13*28) =?";
 		next;
 		input @num;
-		if(@num == 742) set @score,@score+10;
+		if (@num == 742) set @score,@score+10;
 	q5:
 		mes "[Rasputin Gregory]";
 		mes "With a 24% discount";
@@ -287,7 +287,7 @@ L_Start:
 		mes "1 Butterfly Wing altogether?";
 		next;
 		input @num;
-		if(@num == 909) set @score,@score+10;
+		if (@num == 909) set @score,@score+10;
 	q6:
 		mes "[Rasputin Gregory]";
 		mes "What is the total weight of 3 ";
@@ -295,7 +295,7 @@ L_Start:
 		mes "2 Helms and 1 Coat";
 		next;
 		input @num;
-		if(@num == 450) set @score,@score+10;
+		if (@num == 450) set @score,@score+10;
 	q7:
 		mes "[Rasputin Gregory]";
 		mes "What is the total defense of ";
@@ -304,7 +304,7 @@ L_Start:
 		mes "Muffler, Boots, and Ear Muffs?";
 		next;
 		input @num;
-		if(@num == 22) set @score,@score+10;
+		if (@num == 22) set @score,@score+10;
 	q8:
 		mes "[Rasputin Gregory]";
 		mes "If you buy 5 Helms with a 24%";
@@ -313,7 +313,7 @@ L_Start:
 		mes "earn?";
 		next;
 		input @num;
-		if(@num == 1760) set @score,@score+10;
+		if (@num == 1760) set @score,@score+10;
 		goto L_Total;
 
 L_ReTest:
@@ -337,43 +337,43 @@ L_ReTest:
 		mes "13+25+37+48=?";
 		next;
 		input @num;
-		if(@num == 123) set @score,@score+10;
+		if (@num == 123) set @score,@score+10;
 	q12:
 		mes "[Rasputin Gregory]";
 		mes "1000-58-214-416 =?";
 		next;
 		input @num;
-		if(@num == 312) set @score,@score+10;
+		if (@num == 312) set @score,@score+10;
 	q13:
 		mes "[Rasputin Gregory]";
 		mes "12*24*3=?";
 		next;
 		input @num;
-		if(@num == 864) set @score,@score+10;
+		if (@num == 864) set @score,@score+10;
 	q14:
 		mes "[Rasputin Gregory]";
 		mes "10530/3/5/2=?";
 		next;
 		input @num;
-		if(@num == 351) set @score,@score+10;
+		if (@num == 351) set @score,@score+10;
 	q15:
 		mes "[Rasputin Gregory]";
 		mes "(35*19) - (1792/7) =?";
 		next;
 		input @num;
-		if(@num == 400) set @score,@score+10;
+		if (@num == 400) set @score,@score+10;
 	q16:
 		mes "[Rasputin Gregory]";
 		mes "(2368/8) + (24*17) = ?";
 		next;
 		input @num;
-		if(@num == 704) set @score,@score+10;
+		if (@num == 704) set @score,@score+10;
 	q17:
 		mes "[Rasputin Gregory]";
 		mes "(2646/7) + (13*28)=?";
 		next;
 		input @num;
-		if(@num == 742) set @score,@score+10;
+		if (@num == 742) set @score,@score+10;
 	q18:
 		mes "[Rasputin Gregory]";
 		mes "If buying at a 24% discount,";
@@ -382,7 +382,7 @@ L_ReTest:
 		mes "6 Magnifiers and 4 Traps?";
 		next;
 		input @num;
-		if(@num == 934) set @score,@score+10;
+		if (@num == 934) set @score,@score+10;
 	q19:
 		mes "[Rasputin Gregory]";
 		mes "What is the total weight of ";
@@ -390,7 +390,7 @@ L_ReTest:
 		mes "4 Caps and 2 Boots?";
 		next;
 		input @num;
-		if(@num == 550) set @score,@score+10;
+		if (@num == 550) set @score,@score+10;
 	q20:
 		mes "[Rasputin Gregory]";
 		mes "What is the total defense of a ";
@@ -399,7 +399,7 @@ L_ReTest:
 		mes "Glasses?";
 		next;
 		input @num;
-		if(@num == 16) set @score,@score+10;
+		if (@num == 16) set @score,@score+10;
 	q21:
 		mes "[Rasputin Gregory]";
 		mes "How much zeny do you make";
@@ -409,10 +409,10 @@ L_ReTest:
 		mes "price?";
 		next;
 		input @num;
-		if(@num == 2840) set @score,@score+10;
+		if (@num == 2840) set @score,@score+10;
 L_Total:
 	mes "[Rasputin Gregory]";
-	if(@score < 80) goto L_Failed;
+	if (@score < 80) goto L_Failed;
 	set ALCH_Q,3;
 	set ALCH_Q2, 0;
 	mes "Kikiki... I'll let you go.";
@@ -468,7 +468,7 @@ L_Skip:
 //==================================================================================================//
 alde_alche.gat,13,15,8	script	Darwin	750,{
 	mes "[Darwin]";
-	if(BaseJob == 5) goto L_Merc;
+	if (BaseJob == 5) goto L_Merc;
 L_Other:
 	mes "more to lose or gain...";
 	mes "It's always like that...";
@@ -484,12 +484,12 @@ L_Other:
 	close;
 
 L_Merc:
-	if(ALCH_Q == 3) goto L_Start;
-	if(ALCH_Q == 4) goto L_Done;
+	if (ALCH_Q == 3) goto L_Start;
+	if (ALCH_Q == 4) goto L_Done;
 	goto L_Other;
 
 L_Start:
-	if(ALCH_Q2 == 1) goto L_Check;
+	if (ALCH_Q2 == 1) goto L_Check;
 	mes "...........";
 	mes ".........";
 	mes "....Who is it...";
@@ -582,7 +582,7 @@ L_Check:
 	mes "Ah You're the one that wants to learn Alchemy...";
 	mes "So did you prepare everything?";
 	next;
-	if(countitem(7134) < 3 || countitem(713) < 3 || countitem(507) < 1 || countitem(508) < 1 || countitem(509) < 1) goto L_NotEnuf;
+	if (countitem(7134) < 3 || countitem(713) < 3 || countitem(507) < 1 || countitem(508) < 1 || countitem(509) < 1) goto L_NotEnuf;
 	delitem 7134,3;
 	delitem 713,3;
 	delitem 507,1;
@@ -644,7 +644,7 @@ L_Check:
 	M_5:
 
 	mes "[Darwin]";
-	if(@score < 60) goto L_Failed;
+	if (@score < 60) goto L_Failed;
 	mes "... Good job. It came out prettywell considering it's your first time...";
 	mes "As a souvenier, take these.";
 	getitem 501,1;
@@ -691,7 +691,7 @@ L_NotEnuf:
 //==================================================================================================//
 alde_alche.gat,79,19,4	script	Van Helmont	748,{
 	mes "[Van Helmont]";
-	if(BaseJob == 5) goto L_Merc;
+	if (BaseJob == 5) goto L_Merc;
 L_Other:
 	mes "Just a little ... yes, a little bit more ....";
 	mes "agh, just a little bit more and it would've been done!";
@@ -706,11 +706,11 @@ L_Other:
 	mes "But I should be able to complete it one day....Heeh...";
 	close;
 L_Merc:
-	if(ALCH_Q == 4) goto L_Start;
-	if(ALCH_Q == 5) goto L_Done;
+	if (ALCH_Q == 4) goto L_Start;
+	if (ALCH_Q == 5) goto L_Done;
 	goto L_Other;
 L_Start:
-	if(ALCH_Q2 == 1) goto L_Check;
+	if (ALCH_Q2 == 1) goto L_Check;
 	mes "Arrrrgh... Why does this formula just stop... What's wrong.";
 	mes "Theoretically it's all correct...";
 	mes "I'm sure it's because there is an error in the formula";
@@ -771,7 +771,7 @@ L_Start:
 		mes "If you dont have business here just go away. Ok!!!";
 		close;
 L_Check:
-	if(al_morgen != 1) goto L_NotRdy;
+	if (al_morgen != 1) goto L_NotRdy;
 	mes "Yes, cut the Tentacle..";
 	mes "and mix some Sticku Mucus,";
 	mes "Jellopy solution in the test tube Darn, where did the Medicine Bowl go...";
@@ -820,7 +820,7 @@ L_Check:
 
 L_Result:
 	mes "[Van Helmont]";
-	if(@score < 20) goto L_Failed;
+	if (@score < 20) goto L_Failed;
 	mes "Hmm, you learned well. Ok, now you know some stuff about medicine?";
 	mes "Eh?";
 	mes "I know, you must have a lot to say but let me continue with my experiment.";
@@ -856,7 +856,7 @@ L_Done:
 //==================================================================================================//
 alde_alche.gat,145,19,4	script	Nicholas Flamel	57,{
 	mes "[Nicholas Flamel]";
-	if(BaseJob == 5) goto L_Merc;
+	if (BaseJob == 5) goto L_Merc;
 L_Other:
 	mes "Lorem ipsum dolor sit amet,";
 	mes "consectetuer adipiscing elit.";
@@ -866,12 +866,12 @@ L_Other:
 	mes "......mumblemumble........";
 	close;
 L_Merc:
-	if(ALCH_Q == 5) goto L_Start;
-	if(ALCH_Q == 6) goto L_Start2;
-	if(ALCH_Q == 7) goto L_Done;
+	if (ALCH_Q == 5) goto L_Start;
+	if (ALCH_Q == 6) goto L_Start2;
+	if (ALCH_Q == 7) goto L_Done;
 	goto L_Other;
 L_Start:
-	if(ALCH_Q2 == 1) goto L_ReTest;
+	if (ALCH_Q2 == 1) goto L_ReTest;
 	mes "Ooh... you're the Merchant that wants to become an Alchemist?";
 	mes "But you know... not anyone can become an Alchemist.";
 	next;
@@ -932,7 +932,7 @@ L_Start:
 
 			set @score,@score+10;
 L_Score:
-	if(@score < 40) goto L_Failed;
+	if (@score < 40) goto L_Failed;
 	set ALCH_Q,6;
 	set ALCH_Q2,0;
 	mes "[Nicholas Flamel]";
@@ -964,7 +964,7 @@ L_ReTest:
 	goto Q_1;
 
 L_Start2:
-	if(ALCH_Q2 > 0) goto L_Check2;
+	if (ALCH_Q2 > 0) goto L_Check2;
 	mes "Next, you have to go somewhere.";
 	mes "Go to ^5533FF'The Forgotten City of Yuno'^000000 and meet the ^FF3355Bain and Bajin^000000 brothers who are researching alchemy with the Sages there.";
 	next;
@@ -989,7 +989,7 @@ L_Start2:
 	mes "It's Yuno. Come back in one piece.";
 	close;
 L_Check2:
-	if(ALCH_Q2 < 2) goto L_NotDone;
+	if (ALCH_Q2 < 2) goto L_NotDone;
 	set ALCH_Q, 7;
 	set ALCH_Q2, 0;
 	mes "Ooh! Well done on such a long  trip.";
@@ -1016,8 +1016,8 @@ L_Done:
 //==================================================================================================//
 alde_alche.gat,101,184,4	script	Vincent Carsciallo	122,{
 	mes "[Vincent Carsciallo]";
-	if(BaseJob == 5) goto L_Merc;
-	if(BaseJob == Job_Alchem) goto L_Alch;
+	if (BaseJob == 5) goto L_Merc;
+	if (BaseJob == JOB_ALCHEM) goto L_Alch;
 L_Other:
 	mes "Hmmm? What may a civilian have to do here?";
 	next;
@@ -1029,7 +1029,7 @@ L_Alch:
 	mes "I wouldn't want you blowing yourself up or anything.....";
 	close;
 L_Merc:
-	if(ALCH_Q == 7) goto L_Change;
+	if (ALCH_Q == 7) goto L_Change;
 	mes "Hmmm? A merchant.";
 	mes "Are you interested in Alchemy?";
 	next;
@@ -1050,11 +1050,11 @@ L_Merc:
 	mes "try joining our Union.";
 	close;
 L_Change:
-	if(skillpoint != 0) goto L_Skpoint;
+	if (skillpoint != 0) goto L_Skpoint;
 	mes "Ooh, Ok. You joined and learned the basics, too. Well done.";
 	next;
 	set @merchlvl, JobLevel;
-	callfunc "Job_Change",Job_Alchem;
+	callfunc "Job_Change",JOB_ALCHEM;
 	emotion 46;
 	mes "[Vincent Carsciallo]";
 	mes "From now on, you are also a member of the Union as an Alchemist.";

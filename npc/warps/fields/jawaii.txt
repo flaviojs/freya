@@ -25,7 +25,7 @@ jawaii.gat,192,215,0	warp	jawaiiwarp005	1,1,jawaii_in.gat,28,94
 
 jawaii_in.gat,27,91,4	script	jawaiiwarp006	45,1,1,{
 
-if (getpartnerid > 0)goto case1;
+if (getpartnerid > 0) goto case1;
 	warp "jawaii_in.gat",27,94;
 	end;
 

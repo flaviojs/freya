@@ -826,17 +826,17 @@ s_Got:
 			goto ElementOreCont;
 
 ElementOreCont:
-	if(countitem(@stoneID) < 8)goto s_NEnough;
+	if (countitem(@stoneID) < 8) goto s_NEnough;
 	mes "[Laspuchin Gregory]";
 	mes "Kehekeh. I see you brought";
 	mes "enough stones! What kind of";
 	mes "stone do you want me to change";
 	mes "them into? Kehehehe.";
 	next;
-	if(@stoneID == 995)menu "Great Nature",s_Great,"Flame Heart",s_Flame,"Rough Wind",s_Rough;
-	if(@stoneID == 996)menu "Great Nature",s_Great,"Flame Heart",s_Flame,"Mystic Frozen",s_Frozen;
-	if(@stoneID == 997)menu "Mystic Frozen",s_Frozen,"Flame Heart",s_Flame,"Rough Wind",s_Rough;
-	if(@stoneID == 994)menu "Great Nature",s_Great,"Mystic Frozen",s_Frozen,"Rough Wind",s_Rough;
+	if (@stoneID == 995)menu "Great Nature",s_Great,"Flame Heart",s_Flame,"Rough Wind",s_Rough;
+	if (@stoneID == 996)menu "Great Nature",s_Great,"Flame Heart",s_Flame,"Mystic Frozen",s_Frozen;
+	if (@stoneID == 997)menu "Mystic Frozen",s_Frozen,"Flame Heart",s_Flame,"Rough Wind",s_Rough;
+	if (@stoneID == 994)menu "Great Nature",s_Great,"Mystic Frozen",s_Frozen,"Rough Wind",s_Rough;
 
 s_Great:
 	mes "[Laspuchin Gregory]";

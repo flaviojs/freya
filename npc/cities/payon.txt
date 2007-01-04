@@ -124,7 +124,7 @@ payon_in01.gat,180,7,2	script	Waitress	90,{
 	mes "Where can I find the right person, a hot and sexy hunk who can take me away from here?";
 	next;
 	mes "[Pub Lady]";
-	if(Sex != 1)goto PBL_Else1;
+	if (Sex != 1) goto PBL_Else1;
 		mes "Um, hey mister, are you listening?";
 		goto PBL_Next1;
 	PBL_Else1:
@@ -252,7 +252,7 @@ payon.gat,249,156,1	script	Woman	90,{
 	next;
 	mes "[Woman]";
 	mes "To be honest, things are getting tough becuase all of those monsters. *Sigh...*";
-	if(Sex != 1)goto W2_Fem;
+	if (Sex != 1) goto W2_Fem;
 		mes "[Woman]";
 		mes "Whoa~! I just noticed those arms of you look pretty solid.";
 		mes "You look like a pretty strong guy.";
@@ -316,7 +316,7 @@ payon.gat,246,158,5	script	Woman	90,{
 	mes "I guess she's just too excited about what the fortune teller told here.";
 	next;
 	mes "[Jim's Mother]";
-	if(Sex != 1)goto WPFem1;
+	if (Sex != 1) goto WPFem1;
 		mes "Ooh...!";
 		mes "You've got such broad shoulders!";
 		mes "Will you go out with me?";
@@ -349,18 +349,18 @@ payon.gat,246,158,5	script	Woman	90,{
 
 payon.gat,210,110,1	script	Heavy Drinker	120,{
 
-	if(BaseJob==Job_Archer) goto HD_Next1;
-	if(BaseJob==Job_Archer_High) goto HD_Next1;
-	if(BaseJob==Job_Hunter) goto HD_Next1;
-	if(BaseJob==Job_Sniper) goto HD_Next1;
-	if(BaseJob==Job_Bard) goto HD_Next1;
-	if(BaseJob==Job_Dancer) goto HD_Next1;
-	if(BaseJob==Job_Clown) goto HD_Next1;
-	if(BaseJob==Job_Gypsy) goto HD_Next1;
-	if(BaseJob==Job_Baby_Archer) goto HD_Next1;
-	if(BaseJob==Job_Baby_Hunter) goto HD_Next1;
-	if(BaseJob==Job_Baby_Bard) goto HD_Next1;
-	if(BaseJob==Job_Baby_Dancer) goto HD_Next1;
+	if (BaseJob == JOB_ARCHER) goto HD_Next1;
+	if (BaseJob == JOB_ARCHER_HIGH) goto HD_Next1;
+	if (BaseJob == JOB_HUNTER) goto HD_Next1;
+	if (BaseJob == JOB_SNIPER) goto HD_Next1;
+	if (BaseJob == JOB_BARD) goto HD_Next1;
+	if (BaseJob == JOB_DANCER) goto HD_Next1;
+	if (BaseJob == JOB_CLOWN) goto HD_Next1;
+	if (BaseJob == JOB_GYPSY) goto HD_Next1;
+	if (BaseJob == JOB_BABY_ARCHER) goto HD_Next1;
+	if (BaseJob == JOB_BABY_HUNTER) goto HD_Next1;
+	if (BaseJob == JOB_BABY_BARD) goto HD_Next1;
+	if (BaseJob == JOB_BABY_DANCER) goto HD_Next1;
 
 		mes "[Heavy Drinker]";
 		mes "Hey...";
@@ -921,8 +921,8 @@ payon.gat,132,235,3	script	Monster Scholar	98,{
 payon_in03.gat,99,190,4	script	Chief	107,2,2,{
 
 OnTouch:
-	if (BaseLevel < 30)goto PayCont1;
-	if (BaseLevel >= 30)goto PayElse1;
+	if (BaseLevel < 30) goto PayCont1;
+	if (BaseLevel >= 30) goto PayElse1;
 	PayCont1:
 		mes "[Guard]";
 		mes "Hey...";
@@ -932,8 +932,8 @@ OnTouch:
 		close;
 	PayElse1:
 		set PayEldRand,rand(1,2);
-		if(PayEldRand == 1)goto PayEldCase1;
-		if(PayEldRand == 2)goto PayEldCase2;
+		if (PayEldRand == 1) goto PayEldCase1;
+		if (PayEldRand == 2) goto PayEldCase2;
 		PayEldCase1:
 			mes "[Guard]";
 			mes "Hey! I said...";
@@ -1014,8 +1014,8 @@ OnTouch:
 
 payon_in03.gat,102,185,5	script	Guard	708,{
 
-	if(BaseLevel < 30)goto PGuardWeak1;
-	if(BaseLevel >= 30)goto PGuardWeak2;
+	if (BaseLevel < 30) goto PGuardWeak1;
+	if (BaseLevel >= 30) goto PGuardWeak2;
 	PGuardWeak1:
 		mes "[Guard]";
 		mes "Yo yo yo, you are not allowed to come in.";
@@ -1043,7 +1043,7 @@ payon_in01.gat,132,62,5	script	Inn Employee	53,{
 		savepoint "payon_in01.gat",136,61;
 		close;
 	Pay_Inn2:
-		if(Zeny < 5000)goto InnPoor1;
+		if (Zeny < 5000) goto InnPoor1;
 			emotion 15;
 			mes "[Employee SunHee]";
 			mes "Thank you.";

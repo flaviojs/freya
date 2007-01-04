@@ -99,8 +99,8 @@ M_Menu:
 			set @COMPASS_CHECK, 2;
 
 		sL_Wipe:
-			if(@COMPASS_CHECK != 2) next;	// avoids a double 'next' when 'wipe indications' is chosen
-			if(@COMPASS_CHECK == 1) goto sM_Menu;
+			if (@COMPASS_CHECK != 2) next;	// avoids a double 'next' when 'wipe indications' is chosen
+			if (@COMPASS_CHECK == 1) goto sM_Menu;
 			viewpoint 2,140,98,1,0xFF8000;
 			viewpoint 2,188,168,2,0x34B4A0;
 			viewpoint 2,266,70,3,0xFF00FF;

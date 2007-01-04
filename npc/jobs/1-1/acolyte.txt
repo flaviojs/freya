@@ -20,9 +20,9 @@
 
 // -- Father Mareusis --
 prt_church.gat,184,41,4	script	Father Mareusis	60,{
-	callfunc "F_ToHigh",Job_Acolyte_High,"Acolyte High",Job_High_Priest,"High Priest",0,0,0,0,"Father Mareusis";
+	callfunc "F_ToHigh",JOB_ACOLYTE_HIGH,"Acolyte High",JOB_HIGH_PRIEST,"High Priest",0,0,0,0,"Father Mareusis";
 	mes "[Father Mareusis]";
-	if(BaseJob==Job_Novice && job_acolyte_q > 0) goto L_Check;
+	if (BaseJob == JOB_NOVICE && JOB_ACOLYTE_q > 0) goto L_Check;
 	mes "What is it you are looking for?";
 	next;
 	menu "Father, I want to become an Acolyte.",M_0,"The Requirements.",M_1,"I'm just looking around that's all",M_End;
@@ -45,9 +45,9 @@ prt_church.gat,184,41,4	script	Father Mareusis	60,{
 			mes "Well then, here is your Divine Quest.....";
 			next;
 			mes "[Father Mareusis]";
-			set job_acolyte_q, rand(1,3);
-			if(job_acolyte_q == 2) goto sR_2;
-			if(job_acolyte_q == 3) goto sR_3;
+			set JOB_ACOLYTE_q, rand(1,3);
+			if (JOB_ACOLYTE_q == 2) goto sR_2;
+			if (JOB_ACOLYTE_q == 3) goto sR_3;
 
 			sR_1:
 				mes "Please visit ^0000ffFather Rubalkabara^000000, a member of the Prontera Parish and report back here.";
@@ -78,8 +78,8 @@ prt_church.gat,184,41,4	script	Father Mareusis	60,{
 
 	M_1:
 		mes "[Father Mareusis]";
-		if(BaseJob == Job_Acolyte) goto M1b;
-		if(BaseJob != Job_Novice) goto M1a;
+		if (BaseJob == JOB_ACOLYTE) goto M1b;
+		if (BaseJob != JOB_NOVICE) goto M1a;
 
 		mes "So you wish to become an Acolyte do you?";
 		mes "Here are the two requirements you must fullfill first in order to do so.";
@@ -110,8 +110,8 @@ L_Check:
 	mes "Oh, You've come back. Let me check to see if you are ready to serve God... Let's see...";
 	next;
 	mes "[Father Mareusis]";
-	if(job_acolyte_q < 4) goto sL_NotRdy;
-	if(SkillPoint > 0) goto sL_Skpoint;
+	if (JOB_ACOLYTE_q < 4) goto sL_NotRdy;
+	if (SkillPoint > 0) goto sL_Skpoint;
 	mes "Your prayers have been answered my child.  That which has been asked of you has been fullfilled!!.";
 	next;
 	mes "[Father Mareusis]";
@@ -119,7 +119,7 @@ L_Check:
 	next;
 	mes "(whispers a prayer)";
 	next;
-	callfunc "Job_Change",Job_Acolyte;
+	callfunc "Job_Change",JOB_ACOLYTE;
 	callfunc "F_ClearJobVar";		// clears all job variables for the current player
 	mes "[Father Mareusis]";
 	mes "Remember to be thankful to God, who is taking care of us all of the time.";
@@ -133,9 +133,9 @@ L_Check:
 		mes "Hmm... you don't seem to have finished your Divine Quest my child.";
 		next;
 		mes "[Father Mareusis]";
-		if(job_acolyte_q == 1) goto sR_1;
-		if(job_acolyte_q == 2) goto sR_2;
-		if(job_acolyte_q == 3) goto sR_3;
+		if (JOB_ACOLYTE_q == 1) goto sR_1;
+		if (JOB_ACOLYTE_q == 2) goto sR_2;
+		if (JOB_ACOLYTE_q == 3) goto sR_3;
 		close;
 
 	sL_Skpoint:
@@ -148,8 +148,8 @@ L_Check:
 // -- Father Rubalkabara --
 prt_fild03.gat,365,259,2	script	Father Rubalkabara	110,{
 	mes "[Father Rubalkabara]";
-	if(BaseJob==Job_Acolyte || BaseJob==Job_Priest) callfunc "F_FatherRub";
-	if(BaseJob==Job_Novice) goto L_Novice;
+	if (BaseJob == JOB_ACOLYTE || BaseJob == JOB_PRIEST) callfunc "F_FatherRub";
+	if (BaseJob == JOB_NOVICE) goto L_Novice;
 
 L_Other:
 	mes "Oh.. Have you come here to train Or are you just a Wanderer..?";
@@ -159,8 +159,8 @@ L_Other:
 	close;
 
 L_Novice:
-	if(job_acolyte_q==4) goto QuestOver;
-	if(job_acolyte_q > 0) goto L_Start;
+	if (JOB_ACOLYTE_q==4) goto QuestOver;
+	if (JOB_ACOLYTE_q > 0) goto L_Start;
 	mes "Huh..? What brings you here? This is a Very dangerous place for a Novice like you. Please Go back quickly.";
 	emotion 0;
 	close;
@@ -172,7 +172,7 @@ L_Start:
 	mes "Let me just check my list of candidates here to make sure you are at the right place......";
 	next;
 	mes "[Father Rubalkabara]";
-	if(job_acolyte_q != 1) goto Goback;
+	if (JOB_ACOLYTE_q != 1) goto Goback;
 	mes "You're ^0000ff"+strcharinfo(0)+"^000000, right? Thank you for comming to vist me.";
 	next;
 	mes "[Father Rubalkabara]";
@@ -190,7 +190,7 @@ L_Start:
 	next;
 	mes "[Father Rubalkabara]";
 	mes "You may go back to Prontera now.  Farewell and may God bless you.";
-	set job_acolyte_q,4;
+	set JOB_ACOLYTE_q,4;
 	close;
 
 	QuestOver:
@@ -209,8 +209,8 @@ L_Start:
 // -- Mother Marthilda --
 moc_fild07.gat,36,354,4	script	Mother Marthilda	79,{
 	mes "[Mother Marthilda]";
-	if(BaseJob == Job_Acolyte || BaseJob==Job_Priest) callfunc "F_MotherMart";
-	if(BaseJob == Job_Novice) goto L_Novice;
+	if (BaseJob == JOB_ACOLYTE || BaseJob == JOB_PRIEST) callfunc "F_MotherMart";
+	if (BaseJob == JOB_NOVICE) goto L_Novice;
 
 L_Other:
 	mes "Hello and welcome.  I am Mother Marthilda.  Are you a weary traveler or a mighty warrior?";
@@ -218,8 +218,8 @@ L_Other:
 	close;
 
 L_Novice:
-	if(job_acolyte_q == 5) goto QuestOver;
-	if(job_acolyte_q > 0) goto L_Start;
+	if (JOB_ACOLYTE_q == 5) goto QuestOver;
+	if (JOB_ACOLYTE_q > 0) goto L_Start;
 	mes "My!! Aren't you a little far from your town?  A novice like you could get hurt.  Please be safe.";
 	emotion 0;
 	close;
@@ -229,7 +229,7 @@ L_Start:
 	mes "[Mother Marthilda]";
 	mes "Let me just check my list of candidates here to make sure you are at the right place......";
 	next;
-	if(job_acolyte_q != 2) goto Goback;
+	if (JOB_ACOLYTE_q != 2) goto Goback;
 	mes "[Mother Marthilda]";
 	mes ".... ^0000ff"+strcharinfo(0)+"^000000, Yes! I found you.";
 	next;
@@ -243,7 +243,7 @@ L_Start:
 	mes "[Mother Marthilda]";
 	mes "You may go back to Prontera now.";
 	mes "Be safe and may God bless.";
-	set job_acolyte_q,5;
+	set JOB_ACOLYTE_q,5;
 	close;
 
 	Goback:
@@ -264,16 +264,16 @@ L_Start:
 // -- Father Yosuke --
 prt_fild00.gat,208,218,6	script	Father Yosuke	120,{
 	mes "[Father Yosuke]";
-	if(BaseJob == Job_Acolyte || BaseJob==Job_Priest) callfunc "F_FatherYos";
-	if(BaseJob == Job_Novice) goto L_Novice;
+	if (BaseJob == JOB_ACOLYTE || BaseJob == JOB_PRIEST) callfunc "F_FatherYos";
+	if (BaseJob == JOB_NOVICE) goto L_Novice;
 
 L_Other:
 	mes "What brings you to this place.  Try not to bother me ok.";
 	close;
 
 L_Novice:
-	if(job_acolyte_q == 6) goto QuestOver;
-	if(job_acolyte_q > 0) goto L_Start;
+	if (JOB_ACOLYTE_q == 6) goto QuestOver;
+	if (JOB_ACOLYTE_q > 0) goto L_Start;
 	mes "You, Novice...wanna tell me something?";
 	mes "If not go back home.";
 	close;
@@ -287,7 +287,7 @@ L_Start:
 	mes "[Father Yosuke]";
 	mes "Let me just check my list of candidates here to make sure you are at the right place......";
 	next;
-	if(job_acolyte_q != 3) goto Goback;
+	if (JOB_ACOLYTE_q != 3) goto Goback;
 	mes "[Father Yosuke]";
 	mes "Here we are,  ^0000ff"+strcharinfo(0)+"^000000, correct? Not bad, Not bad. You withstood the long journey to get here pretty well.";
 	next;
@@ -297,7 +297,7 @@ L_Start:
 	mes "[Father Yosuke]";
 	mes "Now go back to the Sanctuary and don't forget to carry God's teachings with you where ever you go!";
 	emotion 27;
-	set job_acolyte_q,6;
+	set JOB_ACOLYTE_q,6;
 	close;
 
 	Goback:

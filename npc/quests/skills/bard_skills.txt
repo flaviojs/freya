@@ -25,9 +25,9 @@
 //============================================================
 prontera.gat,134,328,7	script	Timid man	89,{
 	mes "[Timid man]";
-	if(BaseJob!=Job_Bard) goto L_nobard;
-	if(getskilllv(1010)) goto L_alreadyhave;
-	if(JobLevel<40) goto L_nojob;
+	if (BaseJob!=JOB_BARD) goto L_nobard;
+	if (getskilllv(1010)) goto L_alreadyhave;
+	if (JobLevel<40) goto L_nojob;
 
 	mes "I'll teach you all I know, but";
 	mes "I'm a little thirsty. Bring me";

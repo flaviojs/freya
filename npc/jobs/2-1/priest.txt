@@ -28,10 +28,10 @@
 //============================================ Father Thomas: Job changer, Test 1 =============================================\\
 //*****************************************************************************************************************************\\
 prt_church.gat,16,41,4	script	Father Thomas	60,{
-	callfunc "F_BlockHigh",Job_Acolyte_High,"Acolyte High",Job_High_Priest,"High Priest","Father Thomas";
+	callfunc "F_BlockHigh",JOB_ACOLYTE_HIGH,"Acolyte High",JOB_HIGH_PRIEST,"High Priest","Father Thomas";
 
 	mes "[Father Thomas]";
-	if (BaseJob == Job_Acolyte) goto L_Start;
+	if (BaseJob == JOB_ACOLYTE) goto L_Start;
 	callfunc "Pri_check";
 	close;
 
@@ -198,8 +198,8 @@ L_Test1:
 		mes "[Father Thomas]";
 
 L_Test2:
-	if(PRIEST_Q2 == 1) goto L_ReTest2;
-	if(PRIEST_Q2 == 2) goto L_Done2;
+	if (PRIEST_Q2 == 1) goto L_ReTest2;
+	if (PRIEST_Q2 == 2) goto L_Done2;
 	mes "So are you ready to start the second task?";
 	M_Menu:
 	next;
@@ -254,7 +254,7 @@ L_Change:
 	mes "[Father Thomas]";
 	mes "God, please endow "+strcharinfo(0)+" with the strength and courage to fight evil and help mankind.";
 	next;
-	callfunc "Job_Change",Job_Priest;
+	callfunc "Job_Change",JOB_PRIEST;
 	mes "[Father Thomas]";
 	mes "You are now a Priest.  As a Priest, you can now help a lot of people in the name of God.";
 	next;
@@ -276,8 +276,8 @@ L_Change:
 //******************************************************************************************************\\
 // Function: Father Rubalkabara --------------------------------------------------------------------------
 function	script	F_FatherRub	{
-	if(PRIEST_Q == 1 && PRIEST_Q2==1) goto L_Test;
-	if(PRIEST_Q==1 && PRIEST_Q2 > 1) goto L_Done;
+	if (PRIEST_Q == 1 && PRIEST_Q2==1) goto L_Test;
+	if (PRIEST_Q==1 && PRIEST_Q2 > 1) goto L_Done;
 	mes "It's good to see you again.  I expect all is well? Continue on your path of helping others and serving God, and let us pray for humanities salvation.";
 	close;
 
@@ -315,8 +315,8 @@ L_Done:
 // Function: Mother Marthilda  --------------------------------------------------------------------------
 function	script	F_MotherMart	{
 
-	if(PRIEST_Q==1 && PRIEST_Q2==2) goto L_Test;
-	if(PRIEST_Q==1 && PRIEST_Q2 > 2) goto L_Done;
+	if (PRIEST_Q==1 && PRIEST_Q2==2) goto L_Test;
+	if (PRIEST_Q==1 && PRIEST_Q2 > 2) goto L_Done;
 	mes "Oh my... It's been a while since I've seen you.  My how you've grown.  It's nice to see one of God servants continuing to improve.";
 	mes "I wish you continued success child, and always remember to have faith.";
 	close;
@@ -340,8 +340,8 @@ L_Done:
 // Function: Father Yosuke --------------------------------------------------------------------------
 function	script	F_FatherYos	{
 
-	if(PRIEST_Q==1 && PRIEST_Q2==3) goto L_Test;
-	if(PRIEST_Q==1 && PRIEST_Q2==4) goto L_Done;
+	if (PRIEST_Q==1 && PRIEST_Q2==3) goto L_Test;
+	if (PRIEST_Q==1 && PRIEST_Q2==4) goto L_Done;
 	mes "Just because you're a servant of God doesn't mean you can come here and bother me.  Please leave...";
 	close;
 
@@ -447,9 +447,9 @@ OnStart:
 	set $@PrstUsers, getareausers("job_prist.gat", 8, 34, 39,109);
 	set $@PrstUsers, $@PrstUsers + getareausers("job_prist.gat", 160, 14, 175, 178);
 	set $@PrstUsers, $@PrstUsers + getareausers("job_prist.gat", 90, 34, 105,105);
-	if($@PrstUsers > 0) end;				// stops the rest of the script from running if there is already another player taking the test
+	if ($@PrstUsers > 0) end;				// stops the rest of the script from running if there is already another player taking the test
 
-	if((getwaitingroomstate(33)) == 0) end;			// stops the rest of the script from running if there is no one in the waiting room
+	if ((getwaitingroomstate(33)) == 0) end;			// stops the rest of the script from running if there is no one in the waiting room
 	disablenpc "prst1_1";	//disables the exit warp
 	disablenpc "prst2_1";
 	warpwaitingpc "job_prist.gat", 24, 44;
@@ -475,7 +475,7 @@ job_prist.gat,1,1,1	script	PrstTest2_1	-1,{
 
 OnMobDead:
 	set $@mob, $@mob - 1;
-	if($@mob > 0) end;
+	if ($@mob > 0) end;
 
 	enablenpc "prst1_1";
 	areaannounce "job_prist.gat",8,34,39,109,"[Father Peter]: Well done my child.  Enter the warp to start the next test.",8;
@@ -545,7 +545,7 @@ job_prist.gat,23,92,1	script	Zombie5_Trig	139,16,0,{
 // End warp for 1st part of test--------------------------------------------------------------------
 job_prist.gat,24,109,1	script	prst1_1	45,3,3,{
 
-	if(BaseJob == Job_Priest) end;		//If a Priest friend steps on the warp nothing happens.  Need the aco to step on the warp.
+	if (BaseJob == JOB_PRIEST) end;		//If a Priest friend steps on the warp nothing happens.  Need the aco to step on the warp.
 OnTimer30000:
 	stopnpctimer;
 	areawarp "job_prist.gat",8,34,39,109,"job_prist.gat",168,17;
@@ -576,7 +576,7 @@ OnStart:
 
 OnCheck:
 	set $PRIEST_Q3, $PRIEST_Q3 + 1;	//this counter checks to see if the player spoke with each devil and answered the questions
-	if($PRIEST_Q3 < 4) end;
+	if ($PRIEST_Q3 < 4) end;
 
 	enablenpc "prst2_1";
 	areaannounce "job_prist.gat", 160, 14, 175, 178, "[Father Peter]: Excellent! You have shown great courage! Use the warp to move on to the next room.",8;
@@ -594,7 +594,7 @@ OnTimer500:
 job_prist.gat,168,45,4	script	Deviruchi	738,{
 
 OnStart:
-	if(BaseJob == Job_Acolyte) goto L_Aco;
+	if (BaseJob == JOB_ACOLYTE) goto L_Aco;
 
 L_Priest:
 	mes "[Deviruchi]";
@@ -670,7 +670,7 @@ L_Aco:
 job_prist.gat,168,80,4	script	Doppelganger::Doppel	739,{
 
 OnStart:
-	if(BaseJob == Job_Acolyte) goto L_Aco;
+	if (BaseJob == JOB_ACOLYTE) goto L_Aco;
 
 L_Priest:
 	mes "[Doppelganger]";
@@ -744,7 +744,7 @@ L_Aco:
 job_prist.gat,168,115,4	script	Dark Lord	737,{
 
 OnStart:
-	if(BaseJob == Job_Acolyte) goto L_Aco;
+	if (BaseJob == JOB_ACOLYTE) goto L_Aco;
 
 L_Priest:
 	mes "[Dark Lord]";
@@ -805,7 +805,7 @@ L_Aco:
 job_prist.gat,168,150,4	script	Baphomet	736,{
 
 OnStart:
-	if(BaseJob == Job_Acolyte) goto L_Aco;
+	if (BaseJob == JOB_ACOLYTE) goto L_Aco;
 
 L_Priest:
 	mes "[Baphomet]";
@@ -893,7 +893,7 @@ job_prist.gat,167,145,1	script	Bapho_Trig	139,8,0,{
 // End warp for 2nd part of test ---------------------------------------------------------
 job_prist.gat,168,180,0	script	prst2_1	45,3,3,{
 
-	if(BaseJob == Job_Priest) end;		//If a Priest friend steps on the warp nothing happens.  Need the Aco to step on the warp.
+	if (BaseJob == JOB_PRIEST) end;		//If a Priest friend steps on the warp nothing happens.  Need the Aco to step on the warp.
 OnTimer30000:
 	set $@PrstRm, 3;
 	set $PRIEST_Q3, 0;
@@ -939,7 +939,7 @@ job_prist.gat,97,80,0	script	Mummy3_Trig	139,8,1,{
 // End warp for 3rd part of test ----------------------------------------------
 job_prist.gat,98,105,0	script	prst3_1	45,2,2,{
 
-	if(BaseJob == Job_Priest) end;		//If a Priest friend steps on the warp nothing happens.  Need the Aco to step on the warp.
+	if (BaseJob == JOB_PRIEST) end;		//If a Priest friend steps on the warp nothing happens.  Need the Aco to step on the warp.
 	stopnpctimer "TimerPrst";
 	areawarp "job_prist.gat", 90, 34, 105, 105, "prt_church.gat",16, 37;
 	set PRIEST_Q2, 2;
@@ -1007,17 +1007,17 @@ OnTimer302000:
 	goto AnnouncePrst;
 OnTimer306000:
 	stopnpctimer;
-	if($@PrstRm==1) areawarp "job_prist.gat",8,34,39,109,"prt_church.gat",16, 37;
-	if($@PrstRm==2) areawarp "job_prist.gat",160, 14, 175, 178,"prt_church.gat",16, 37;
-	if($@PrstRm==3) areawarp "job_prist.gat", 90, 34, 105,105,"prt_church.gat",16, 37;
+	if ($@PrstRm==1) areawarp "job_prist.gat",8,34,39,109,"prt_church.gat",16, 37;
+	if ($@PrstRm==2) areawarp "job_prist.gat",160, 14, 175, 178,"prt_church.gat",16, 37;
+	if ($@PrstRm==3) areawarp "job_prist.gat", 90, 34, 105,105,"prt_church.gat",16, 37;
 	killmonsterall "job_prist.gat";
 	donpcevent "Father Peter::OnStart";
 	end;
 
 AnnouncePrst:
-	if($@PrstRm==1) areaannounce "job_prist.gat",8,34,39,109,"[Father Peter]: "+$@PrstTime$+".",8;
-	if($@PrstRm==2) areaannounce "job_prist.gat",160, 14, 175, 178, "[Father Peter]: "+$@PrstTime$+".",8;
-	if($@PrstRm==3) areaannounce "job_prist.gat",  90, 34, 105,105, "[Father Peter]: "+$@PrstTime$+".",8;
+	if ($@PrstRm==1) areaannounce "job_prist.gat",8,34,39,109,"[Father Peter]: "+$@PrstTime$+".",8;
+	if ($@PrstRm==2) areaannounce "job_prist.gat",160, 14, 175, 178, "[Father Peter]: "+$@PrstTime$+".",8;
+	if ($@PrstRm==3) areaannounce "job_prist.gat",  90, 34, 105,105, "[Father Peter]: "+$@PrstTime$+".",8;
 	end;
 }
 
@@ -1028,9 +1028,9 @@ AnnouncePrst:
 //**********************************************************************************************************************************************************************************\\
 prt_church.gat,27,24,4	script	Sister Cecile	79,{
 	mes "[Sister Cecile]";
-	if(BaseJob == Job_Priest) goto L_Prst;
-	if(BaseJob == Job_Acolyte) goto L_Aco;
-	if(BaseJob == Job_Novice) goto L_Nov;
+	if (BaseJob == JOB_PRIEST) goto L_Prst;
+	if (BaseJob == JOB_ACOLYTE) goto L_Aco;
+	if (BaseJob == JOB_NOVICE) goto L_Nov;
 
 L_Other:
 	mes "This is the Prontera Church, what can I help you with?";
@@ -1072,18 +1072,18 @@ L_Nov:
 	close;
 
 L_Prst:
-	if(sex == 1) mes "God bless you, brother priest.";
-	if(sex == 0) mes "God bless you, sister priest.";
+	if (sex == 1) mes "God bless you, brother priest.";
+	if (sex == 0) mes "God bless you, sister priest.";
 	mes "I wish you all the best.  Keep your faith strong and remeber that God loves all, and so should you.";
 	close;
 
 L_Aco:
-	if(PRIEST_Q == 1) goto L_Test1;
-	if(PRIEST_Q == 2) goto L_Test2;
-	if(PRIEST_Q == 3) goto L_Start;
-	if(PRIEST_Q == 4) goto L_Done;
-	if(sex == 1) mes "God bless you, brother.";
-	if(sex == 0) mes "God bless you, sister.";
+	if (PRIEST_Q == 1) goto L_Test1;
+	if (PRIEST_Q == 2) goto L_Test2;
+	if (PRIEST_Q == 3) goto L_Start;
+	if (PRIEST_Q == 4) goto L_Done;
+	if (sex == 1) mes "God bless you, brother.";
+	if (sex == 0) mes "God bless you, sister.";
 	mes "Why are you here?";
 	next;
 	menu "I want to become a priest.",-, "I'm just wondering around.",M_End1;
@@ -1111,13 +1111,13 @@ L_Aco:
 		close;
 
 L_Start:
-	if(PRIEST_Q2 == 1) goto L_ReTest;
+	if (PRIEST_Q2 == 1) goto L_ReTest;
 	mes "Good job, you successfully completed the second quest...!";
 	mes "You are now really close to becoming a priest.";
 	next;
 	mes "[Sister Cecile]";
-	if(sex==1) mes "If you want to become a priest, the last step is to answer my questions honestly.";
-	if(sex==0) mes "If you want to become a priestess, the last step is to answer my questions honestly.";
+	if (sex==1) mes "If you want to become a priest, the last step is to answer my questions honestly.";
+	if (sex==0) mes "If you want to become a priestess, the last step is to answer my questions honestly.";
 	mes "Please be honest and answer my question.";
 	next;
 	mes "[Sister Cecile]";
@@ -1289,7 +1289,7 @@ L_Test1:
 	close;
 
 L_Test2:
-	if(PRIEST_Q2 == 1) goto L_Test2a;
+	if (PRIEST_Q2 == 1) goto L_Test2a;
 	mes "You didn't start the second quest yet?.";
 	mes "Well, i can't give u any specific details about this task.";
 	next;

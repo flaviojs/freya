@@ -24,7 +24,7 @@ yuno_in01.gat,103,158,4	script	Bain	98,{
 
 OnStart:
 	mes @name$;
-	if(bros_q == 1) goto L_Check;
+	if (bros_q == 1) goto L_Check;
 	mes "We are going to invent a doll that can talk and communicate! Well, at least that's what I'm trying to do....";
 	mes "The idea came from an old tale about a doll that acted like a real person.";
 	next;
@@ -53,7 +53,7 @@ OnStart:
 		close;
 
 L_Check:
-	if((countitem(974) < 1) || (countitem(612) < 5) || (countitem(7068) < 5) || (countitem(1003) < 5) || (countitem(7043) < 5) ||	(countitem(757) < 3) || (countitem(756) < 3) || (Zeny < 2000)) goto L_NotEnuf;
+	if ((countitem(974) < 1) || (countitem(612) < 5) || (countitem(7068) < 5) || (countitem(1003) < 5) || (countitem(7043) < 5) ||	(countitem(757) < 3) || (countitem(756) < 3) || (Zeny < 2000)) goto L_NotEnuf;
 	mes "Thank you very much! You found all of the items I needed.  We could not have completed this project without your help";
 	next;
 	mes @name$;
@@ -70,10 +70,10 @@ L_Check:
 	mes "AHHH it is a success!";
 	mes "I don't know if we can do anything else, but this time we have created";
 	set @wowitem,rand(2);
-	if(@wowitem == 0) mes "5 Ruby!";
-	if(@wowitem == 0) getitem 723,5;
-	if(@wowitem == 1) mes "3 Gold!";
-	if(@wowitem == 1) getitem 969,3;
+	if (@wowitem == 0) mes "5 Ruby!";
+	if (@wowitem == 0) getitem 723,5;
+	if (@wowitem == 1) mes "3 Gold!";
+	if (@wowitem == 1) getitem 969,3;
 	delitem 974,1;
 	delitem 612,5;
 	delitem 7068,5;
@@ -82,7 +82,7 @@ L_Check:
 	delitem 757,3;
 	delitem 756,3;
 	set Zeny, Zeny-2000;
-	if(ALCH_Q == 6) set ALCH_Q2, 2;	//for Alchemist Job Quest
+	if (ALCH_Q == 6) set ALCH_Q2, 2;	//for Alchemist Job Quest
 	set bros_q, 0;
 	next;
 	mes @name$;

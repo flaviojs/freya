@@ -24,8 +24,8 @@
 //======================================================================================================
 moc_prydb1.gat,154,128,4	script	Alcouskou	118,{
 	mes "[Alcouskou]";
-	if(callfunc("Is_Thief_Class")) goto L_Start;
-	if(Class==Job_Novice) goto L_Novice;
+	if (callfunc("Is_Thief_Class")) goto L_Start;
+	if (Class == JOB_NOVICE) goto L_Novice;
 
 L_Other:
 	mes "Your kind isn't welcome here.";
@@ -57,8 +57,8 @@ M_Menu:
 
 	M_Sand:
 		mes "[Alcouskou]";
-		if(SANDATTACK == 1) goto L_Sand;
-		if(getskilllv(149) > 0) goto L_GotSand;
+		if (SANDATTACK == 1) goto L_Sand;
+		if (getskilllv(149) > 0) goto L_GotSand;
 		mes "The most important aspect of being a good Thief/Assassin is stealth.  One should never be seen our touched unless he/she wants to be";
 		next;
 		mes "[Alcouskou]";
@@ -74,7 +74,7 @@ M_Menu:
 		next;
 		mes "[Alcouskou]";
 		mes "In order to learn this skill you will need to gather ^5555FF5 Fine Grit^000000 and a ^FF3355'Leather Bag of Infinity'^000000.";
-		if(Class == Job_Thief) mes "You will also need a job level of at least ^5555FF25^000000.";
+		if (Class == JOB_THIEF) mes "You will also need a job level of at least ^5555FF25^000000.";
 		next;
 		mes "[Alcouskou]";
 		mes "You can find the Leather Bag of Infinity by talking to a merchant by the name of ^5533FFRuRumuni^000000.";
@@ -86,7 +86,7 @@ M_Menu:
 		goto M_Menu;
 	M_Back:
 		mes "[Alcouskou]";
-		if (BACKSLIDE == 1)goto L_Back;
+		if (BACKSLIDE == 1) goto L_Back;
 		if (getskilllv(150)>0) goto L_GotBack;
 		mes "People tend to focus on attack and damage, but it's necessary to understand that FLEEING is JUST AS IMPORTANT as attacking!";
 		next;
@@ -117,7 +117,7 @@ M_Menu:
 		next;
 		mes "[Alcouskou]";
 		mes "Think of it as the first part of your training.";
-		if(Class == Job_Thief) mes "If you are a Thief, you will also need to have a job level of at least ^5555FF35^000000.";
+		if (Class == JOB_THIEF) mes "If you are a Thief, you will also need to have a job level of at least ^5555FF35^000000.";
 		set BACKSLIDE, 1;
 		goto M_Menu;
 	M_Find:
@@ -173,7 +173,7 @@ M_Menu:
 
 L_Sand:
 	if (countitem(7041)<5 || countitem(7042)<1) goto L_NotRdy1;
-	if (Class==Job_Thief && joblevel<25) goto L_LowLvl1;
+	if (Class == JOB_THIEF && joblevel<25) goto L_LowLvl1;
 	mes "Alright, you've got all the items.  Now its time to learn.... the... ultimate.... attack.... Sand Attack!!!";
 	next;
 	mes "[Alcouskou]";
@@ -220,7 +220,7 @@ L_Sand:
 
 L_Back:
 	if (countitem(940)<20) goto L_NotRdy2;
-	if (Class==Thief && joblevel<35) goto L_LowLvl2;
+	if (Class == Thief && joblevel<35) goto L_LowLvl2;
 	mes "Great, you have the grasshopper legs.  While you were collecting them I'm sure you picked up on many of the characteristics of grasshoppers.";
 	next;
 	mes "[Alcouskou]";
@@ -333,14 +333,14 @@ L_Fling:
 //====================================================================================
 payon.gat,90,77,3	script	Bag Seller	99,{
 	mes "[RuRumuni]";
-	if(SANDATTACK == 1 && BAGNFNTY != 2) goto L_Start;
+	if (SANDATTACK == 1 && BAGNFNTY != 2) goto L_Start;
 
 	mes "I am a humble merchant here in Payon.  I buy the leather hides of animals, brought in by the hunters, and make leather pouches to sell.";
 	mes "I grew up around leather and am quite good at it.";
 	close;
 
 L_Start:
-	if(BAGNFNTY == 1) goto L_Check;
+	if (BAGNFNTY == 1) goto L_Check;
 	mes "Hello.  So you were sent by Alcouskou to obtain a ^5533FF'Leather Bag of Inifinity'^000000........";
 	mes "I will be more than happy to make one for you............";
 	next;
@@ -364,11 +364,11 @@ L_Start:
 L_Check:
 	mes "Nice to see you again.  Do you have all of the items? Lets see........";
 	next;
-	if(countitem(904)<5 || countitem(1025)<1 || countitem(952)<1 || countitem(1055)<1) goto L_List;
+	if (countitem(904)<5 || countitem(1025)<1 || countitem(952)<1 || countitem(1055)<1) goto L_List;
 	mes "[RuRumuni]";
 	mes "Great you have everything I asked for.  Let me start making the bag right away.......";
 	next;
-	mes "~( 30 minutes later)~";
+	mes "~(30 minutes later)~";
 	next;
 	mes "[RuRumuni]";
 	mes "Here you go, one Leather Bag of Infinity.  Enjoy!";

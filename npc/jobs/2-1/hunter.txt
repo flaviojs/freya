@@ -42,17 +42,17 @@ pay_fild10.gat,148,251,4	script	Hunter Guildsman	98,{
 
 //<====================================== Job Changer ========================================>\\
 in_hunter.gat,99,99,4	script	Hunter Sharon	727,{
-	callfunc "F_BlockHigh",Job_Archer_High,"High Archer",Job_Sniper,"Sniper","Hunter Sharon";
+	callfunc "F_BlockHigh",JOB_ARCHER_HIGH,"High Archer",JOB_SNIPER,"Sniper","Hunter Sharon";
 
-	if(BaseJob==Job_Archer) goto L_Start;
+	if (BaseJob == JOB_ARCHER) goto L_Start;
 	callfunc "Hun_check";
 
 L_Start:
 	mes "[Hunter Sharon]";
-	if(HNTR_Q == 1) goto L_Test2;
-	if(HNTR_Q == 2) goto L_Test3;
-	if(HNTR_Q == 3) goto L_Change;
-	if(HNTR_Q2 == 1) goto L_ReTest;
+	if (HNTR_Q == 1) goto L_Test2;
+	if (HNTR_Q == 2) goto L_Test3;
+	if (HNTR_Q == 3) goto L_Change;
+	if (HNTR_Q2 == 1) goto L_ReTest;
 	mes "Hey archer!! Hmmm....... You look like you've trained pretty hard.... I take it you're here to be a hunter!";
 	next;
 	menu "Of course!",M_0, "What are the requirements",M_1, "Not right now.",M_End;
@@ -64,8 +64,8 @@ L_Start:
 		mes "(you fill out the form and hand it back)";
 		next;
 		mes "[Hunter Sharon]";
-		if(JobLevel < 40) goto sL_LowLvl;
-		if(JobLevel == 50) goto sL_HighLvl;
+		if (JobLevel < 40) goto sL_LowLvl;
+		if (JobLevel == 50) goto sL_HighLvl;
 		set JBLVL, 40;
 		mes "Looks good.  Let me start off by introducing myself.  My name is Sharon, nice to meet you.";
 		next;
@@ -230,8 +230,8 @@ L_Start:
 		mes "[Hunter Sharon]";
 		mes "Now we're done!!";
 		next;
-		if(@score < 90) goto sL_Failed;
-		if(@score < 100) goto sL_90;
+		if (@score < 90) goto sL_Failed;
+		if (@score < 100) goto sL_90;
 
 		sL_100:
 			mes "[Hunter Sharon]";
@@ -278,8 +278,8 @@ L_Test3:
 	close;
 
 L_Change:
-	if(skillpoint > 0) goto sL_SkPoints;
-	if(countitem(1007) < 1) goto sL_NotRdy;
+	if (skillpoint > 0) goto sL_SkPoints;
+	if (countitem(1007) < 1) goto sL_NotRdy;
 	mes "Huh? Did you pass the test?";
 	next;
 	mes "[Hunter Sharon]";
@@ -291,13 +291,13 @@ L_Change:
 	next;
 	mes "[Hunter Sharon]";
 	mes "There you go! You look great in the hunter outfit";
-	callfunc "Job_Change",Job_Hunter;
+	callfunc "Job_Change",JOB_HUNTER;
 	emotion 21;
 	next;
 	mes "[Hunter Sharon]";
 	mes "Now, for working so hard, the guild has a small reward for you.";
-	if(JBLVL == 50) getitem 1718, 1;
-	if(JBLVL != 50) getitem 1710, 1;
+	if (JBLVL == 50) getitem 1718, 1;
+	if (JBLVL != 50) getitem 1710, 1;
 	callfunc "F_ClearJobVar";		// clears all job variables for the current player
 	next;
 	mes "[Hunter Sharon]";
@@ -334,8 +334,8 @@ L_Change:
 
 //<=========================== Demon Hunter: Second Test ===============================>\\
 in_hunter.gat,55,99,7	script	Demon Hunter	732,{
-	if(BaseJob == Job_Archer) goto L_Arc;
-	if(BaseJob == Job_Hunter) goto L_Hnt;
+	if (BaseJob == JOB_ARCHER) goto L_Arc;
+	if (BaseJob == JOB_HUNTER) goto L_Hnt;
 
 L_Other:
 	mes "[Demon Hunter]";
@@ -357,10 +357,10 @@ L_Hnt:
 
 L_Arc:
 	mes "[Demon Hunter]";
-	if(HNTR_Q == 1 && HNTR_Q2 > 0) goto L_Check; //Fixed [Lupus]
-	if(HNTR_Q == 1) goto L_Start;
-	if(HNTR_Q == 2) goto L_Test3;
-	if(HNTR_Q == 3) goto L_Done;
+	if (HNTR_Q == 1 && HNTR_Q2 > 0) goto L_Check; //Fixed [Lupus]
+	if (HNTR_Q == 1) goto L_Start;
+	if (HNTR_Q == 2) goto L_Test3;
+	if (HNTR_Q == 3) goto L_Done;
 	mes "You'll have to speak with ^5533FFHunter Sharon^000000 first, if you want to become a hunter.";
 	close;
 L_Start:
@@ -384,10 +384,10 @@ L_Start:
 		mes "Let's see... the items you need to gather are.....";
 		next;
 		set HNTR_Q2, rand(1,5);
-		if(HNTR_Q2 == 2) goto sL_2;
-		if(HNTR_Q2 == 3) goto sL_3;
-		if(HNTR_Q2 == 4) goto sL_4;
-		if(HNTR_Q2 == 5) goto sL_5;
+		if (HNTR_Q2 == 2) goto sL_2;
+		if (HNTR_Q2 == 3) goto sL_3;
+		if (HNTR_Q2 == 4) goto sL_4;
+		if (HNTR_Q2 == 5) goto sL_5;
 
 		sL_1:
 			mes "[Demon Hunter]";
@@ -440,38 +440,38 @@ L_Start:
 L_Check:
 	mes "Yes?";
 	next;
-	if(HNTR_Q2 == 1) goto L_1;
-	if(HNTR_Q2 == 2) goto L_2;
-	if(HNTR_Q2 == 3) goto L_3;
-	if(HNTR_Q2 == 4) goto L_4;
-	if(HNTR_Q2 == 5) goto L_5;
+	if (HNTR_Q2 == 1) goto L_1;
+	if (HNTR_Q2 == 2) goto L_2;
+	if (HNTR_Q2 == 3) goto L_3;
+	if (HNTR_Q2 == 4) goto L_4;
+	if (HNTR_Q2 == 5) goto L_5;
 
 	L_1:
-		if(countitem(925)<20 || countitem(932)<5 || countitem(511)<20) goto sL_1;
+		if (countitem(925)<20 || countitem(932)<5 || countitem(511)<20) goto sL_1;
 		delitem 925, 20;
 		delitem 932, 5;
 		delitem 511, 20;
 		goto L_End;
 	L_2:
-		if(countitem(937)<7 || countitem(919)<20 || countitem(507)<15) goto sL_2;
+		if (countitem(937)<7 || countitem(919)<20 || countitem(507)<15) goto sL_2;
 		delitem 937, 7;
 		delitem 919, 20;
 		delitem 507, 15;
 		goto L_End;
 	L_3:
-		if(countitem(1021)<3 || countitem(7032)<3 || countitem(949)<10) goto sL_3;
+		if (countitem(1021)<3 || countitem(7032)<3 || countitem(949)<10) goto sL_3;
 		delitem 1021, 3;
 		delitem 7032, 3;
 		delitem 949, 10;
 		goto L_End;
 	L_4:
-		if(countitem(1013)<20 || countitem(915)<20 || countitem(508)<9) goto sL_4;
+		if (countitem(1013)<20 || countitem(915)<20 || countitem(508)<9) goto sL_4;
 		delitem 1013, 20;
 		delitem 915, 20;
 		delitem 508, 9;
 		goto L_End;
 	L_5:
-		if(countitem(913)<20 || countitem(938)<20 || countitem(948)<5) goto sL_5;
+		if (countitem(913)<20 || countitem(938)<20 || countitem(948)<5) goto sL_5;
 		delitem 913, 20;
 		delitem 938, 20;
 		delitem 948, 5;
@@ -497,8 +497,8 @@ L_Done:
 
 //<=============================== Guild Master: Last Test =================================>\\
 payon_in02.gat,21,31,1	script	Guild Master	59,{
-	if(BaseJob == Job_Archer) goto L_Archer;
-	if(BaseJob == Job_Hunter) goto L_Hnt;
+	if (BaseJob == JOB_ARCHER) goto L_Archer;
+	if (BaseJob == JOB_HUNTER) goto L_Hnt;
 
 L_Other:
 	mes "[Hunter]";
@@ -516,9 +516,9 @@ L_Hnt:
 
 L_Archer:
 	mes "[Guild Master]";
-	if(HNTR_Q == 1) goto L_Test2;
-	if(HNTR_Q == 2) goto L_Start;
-	if(HNTR_Q == 3) goto L_Done;
+	if (HNTR_Q == 1) goto L_Test2;
+	if (HNTR_Q == 2) goto L_Start;
+	if (HNTR_Q == 3) goto L_Done;
 	mes "You want to be a hunter bad, don't you? In my days, I worked for over a month to become a hunter, hehe.";
 	next;
 	mes "[Guild Master]";
@@ -526,8 +526,8 @@ L_Archer:
 	close;
 
 L_Start:
-	if(HNTR_Q2 == 1) goto L_ReTest;
-	if(HNTR_Q2 == 2) goto L_Passed;
+	if (HNTR_Q2 == 1) goto L_ReTest;
+	if (HNTR_Q2 == 2) goto L_Passed;
 	mes "So, you've come to take the test?  I see.... well then, do you have any questions before we get started?";
 	M_Menu:
 	next;
@@ -676,7 +676,7 @@ job_hunte.gat,1,1,1	script	Ev_HntRm	-1,{
 
 OnMyMobDead1:
 	set $@HntMob, $@HntMob - 1;
-	if($@HntMob != 0) end;
+	if ($@HntMob != 0) end;
 
 	stopnpctimer "TimerHnt";
 	killmonsterall "job_hunte.gat";

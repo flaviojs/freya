@@ -27,9 +27,9 @@
 //============================================================
 payon_in02.gat,54,13,7	script	Master Kabac	55,{
 	mes "[Master Kabac]";
-	if(BaseJob!=Job_Hunter) goto L_hunterno;
-	if(getskilllv(1009)) goto L_alreadyhave;
-	if(JobLevel<40) goto L_nojob;
+	if (BaseJob!=JOB_HUNTER) goto L_hunterno;
+	if (getskilllv(1009)) goto L_alreadyhave;
+	if (JobLevel<40) goto L_nojob;
 
 	mes "I can teach you a secret";
 	mes "technique passed down through";
@@ -50,7 +50,7 @@ payon_in02.gat,54,13,7	script	Master Kabac	55,{
 	mes "Let me check your items.";
 	next;
 	
-	if(countitem(724)<5 || countitem(7115)<5 || countitem(537)<30) goto L_noitems;//Items: Cursed_Ruby, Harpy_Feather, Pet_Food,
+	if (countitem(724)<5 || countitem(7115)<5 || countitem(537)<30) goto L_noitems;//Items: Cursed_Ruby, Harpy_Feather, Pet_Food,
 	delitem 724, 5;//Items: Cursed_Ruby,
 	delitem 7115, 5;//Items: Harpy_Feather,
 	delitem 537, 30;//Items: Pet_Food,

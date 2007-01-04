@@ -18,7 +18,7 @@
 
 yuno_in03.gat,33,118,4	script	Prof. O'Card	121,{
 
-	  if(profocard == 1) goto comeback;
+	  if (profocard == 1) goto comeback;
 	  mes "[Prof. O’Card]";
 	  mes "…Hum … Magie, et vos idées ont du génie...  ";
         next;
@@ -2224,11 +2224,11 @@ connait:
         mes "["+getarg(0)+"]";
 	  mes "5 minutes plus tard.";
 	  next;
-	  if(profocard==0) goto pasvu;
+	  if (profocard==0) goto pasvu;
         mes "["+getarg(0)+"]";
 	  mes "Ha voilà !";
-	  if(sex==0) mes "Lady "+strcharinfo(0)+" !";
-	  if(sex==1) mes "Lord "+strcharinfo(0)+" !";
+	  if (sex==0) mes "Lady "+strcharinfo(0)+" !";
+	  if (sex==1) mes "Lord "+strcharinfo(0)+" !";
 	  next;
 
 L_ListeCard:
@@ -2358,9 +2358,9 @@ non:
 
 oui:
 	  next;
-        if ((cardinprogress != @card )&&(cardinprogress !=0)) mes "["+getarg(0)+"]";
-        if ((cardinprogress != @card )&&(cardinprogress !=0)) mes "Attention, si vous poursuivez, les objets que vous m'avez confié pour la carte precedente seront perdu.";
-        if ((cardinprogress != @card )&&(cardinprogress !=0)) menu "Continuer quand meme",-,"Arreter",non;
+        if ((cardinprogress != @card)&&(cardinprogress !=0)) mes "["+getarg(0)+"]";
+        if ((cardinprogress != @card)&&(cardinprogress !=0)) mes "Attention, si vous poursuivez, les objets que vous m'avez confié pour la carte precedente seront perdu.";
+        if ((cardinprogress != @card)&&(cardinprogress !=0)) menu "Continuer quand meme",-,"Arreter",non;
 	  next;
         set item0,@item0;
         set item1,@item1;

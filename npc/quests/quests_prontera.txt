@@ -18,7 +18,7 @@
 
 // Ph.D Hat Quest-------------------------------------------------------
 prt_in.gat,38,108,4	script	Teacher#01	53,{
-	if(countitem(710) >= 1 && countitem(703) >= 1 && countitem(704) >= 1 && countitem(708) >= 1) goto L_Start;//Items: Illusion Flower, Hinalle, Aloe, Ment,
+	if (countitem(710) >= 1 && countitem(703) >= 1 && countitem(704) >= 1 && countitem(708) >= 1) goto L_Start;//Items: Illusion Flower, Hinalle, Aloe, Ment,
 	mes "Don't you think.... ^4444FF'flowers'^000000 are pretty?";
 	next;
 	menu "Talk.",-, "End Conversation.",M_End;
@@ -75,7 +75,7 @@ L_Start:
 		goto M_Menu;
 
 	M_Give:
-		if(countitem(710) < 1 || countitem(703) < 1 || countitem(704) < 1 || countitem(708) < 1) goto L_Cheater;//Items: Illusion Flower, Hinalle, Aloe, Ment,
+		if (countitem(710) < 1 || countitem(703) < 1 || countitem(704) < 1 || countitem(708) < 1) goto L_Cheater;//Items: Illusion Flower, Hinalle, Aloe, Ment,
 		delitem 710,1;//Items: Illusion Flower,
 		delitem 703,1;//Items: Hinalle,
 		delitem 704,1;//Items: Aloe,
@@ -101,7 +101,7 @@ L_Start:
 // ------------------------------------------------------------------------------------------- Culvert -------------------------------------------------------------------------------\\
 // Culvert Gaurdian ----------------------------------------------------
 prt_fild05.gat,270,212,5	script	Culvert Gaurdian	105,{
-	if(sewer_prt == 1) goto L0;
+	if (sewer_prt == 1) goto L0;
 	mes "[Culvert Guardian]";
 	mes "Sorry, but only volunteers for the Culvert Campaign can go inside.";
 	mes "Speak with the ^000077Recruiter^000000 about volunteering.  He's located in the ^ff0000Prontera Chivalry^000000.";
@@ -122,14 +122,14 @@ prt_fild05.gat,270,212,5	script	Culvert Gaurdian	105,{
 
 // Recruiter -----------------------------------------------------------
 prt_in.gat,88,105,2	script	Recruiter	105,{
-	if(sewer_prt == 1) goto L0a;
+	if (sewer_prt == 1) goto L0a;
 	mes "[Recruiter]";
 	mes "Let me inform about the official Notice from the Capital Defence Headquarter of Rune-Midgard Kingdom";
 	next;
 	mes "[Recruiter]";
 	mes "We decided to recruit volunteers to deal with the 'issues' that have been plauging our cities' sewers.";
-	if (BaseJob==Job_Novice) mes "But you're a novice. Go get at least a job...";
-	if (BaseJob==Job_Novice) close;
+	if (BaseJob == JOB_NOVICE) mes "But you're a novice. Go get at least a job...";
+	if (BaseJob == JOB_NOVICE) close;
 	next;
 	menu "Volunteer.",L0,"Issues...?",L1,"Quit",LEnd;
 

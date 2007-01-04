@@ -74,14 +74,14 @@ L_End:
 	// always end on final clock
 	// 1 chance of 'number of clocks' to stop WoE
 	if (((gettime(3) == 22 || gettime(3) == 18) && gettime(2) ==  0) && rand(10) != 1) end;
-	if (((gettime(3) == 22 || gettime(3) == 18) && gettime(2) == 10) && rand( 9) != 1) end;
-	if (((gettime(3) == 22 || gettime(3) == 18) && gettime(2) == 20) && rand( 8) != 1) end;
-	if (((gettime(3) == 22 || gettime(3) == 18) && gettime(2) == 30) && rand( 7) != 1) end;
-	if (((gettime(3) == 22 || gettime(3) == 18) && gettime(2) == 40) && rand( 6) != 1) end;
-	if (((gettime(3) == 22 || gettime(3) == 18) && gettime(2) == 45) && rand( 5) != 1) end;
-	if (((gettime(3) == 22 || gettime(3) == 18) && gettime(2) == 50) && rand( 4) != 1) end;
-	if (((gettime(3) == 22 || gettime(3) == 18) && gettime(2) == 55) && rand( 3) != 1) end;
-	if (((gettime(3) == 23 || gettime(3) == 19) && gettime(2) ==  0) && rand( 2) != 1) end;
+	if (((gettime(3) == 22 || gettime(3) == 18) && gettime(2) == 10) && rand(9) != 1) end;
+	if (((gettime(3) == 22 || gettime(3) == 18) && gettime(2) == 20) && rand(8) != 1) end;
+	if (((gettime(3) == 22 || gettime(3) == 18) && gettime(2) == 30) && rand(7) != 1) end;
+	if (((gettime(3) == 22 || gettime(3) == 18) && gettime(2) == 40) && rand(6) != 1) end;
+	if (((gettime(3) == 22 || gettime(3) == 18) && gettime(2) == 45) && rand(5) != 1) end;
+	if (((gettime(3) == 22 || gettime(3) == 18) && gettime(2) == 50) && rand(4) != 1) end;
+	if (((gettime(3) == 22 || gettime(3) == 18) && gettime(2) == 55) && rand(3) != 1) end;
+	if (((gettime(3) == 23 || gettime(3) == 19) && gettime(2) ==  0) && rand(2) != 1) end;
 
 	Announce "La Guerre de l'Emperium est terminée! Signez le traité de paix!",8;
 	AgitEnd;

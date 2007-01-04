@@ -108,7 +108,7 @@ LV4_0:
 	
 	menu "Sounds good.",-,"No, thanks.",M_No;
 		
-		if(BaseLevel >= 70) goto L4_0_1;
+		if (BaseLevel >= 70) goto L4_0_1;
 		mes "[Bazo]";
 		mes "Err...I don't think that you are powerful";
 		mes "enough to handle my products.";
@@ -269,13 +269,13 @@ LV4_1_PICK:
 	mes "Okay, now I need some time to prepare...";
 	mes "Talk to you later!";
 	
-	if((countitem($@LV4_Gold) < 10) || (countitem($@LV4_Steel) < 50) || (countitem($@LV4_Emperium) < 10)) goto LV4_HACK;
+	if ((countitem($@LV4_Gold) < 10) || (countitem($@LV4_Steel) < 50) || (countitem($@LV4_Emperium) < 10)) goto LV4_HACK;
 	delitem $@LV4_Gold, 10;
 	delitem $@LV4_Steel, 50;
 	delitem $@LV4_Emperium, 10;
-	if(@gem == $@LV4_Citrine) set lv4_weapon, 2;
-	if(@gem == $@LV4_Turquoise) set lv4_weapon, 3;
-	if(@gem == $@LV4_Agate) set lv4_weapon, 4;	
+	if (@gem == $@LV4_Citrine) set lv4_weapon, 2;
+	if (@gem == $@LV4_Turquoise) set lv4_weapon, 3;
+	if (@gem == $@LV4_Agate) set lv4_weapon, 4;	
 	close;
 
 LV4_1_NOGEM:
@@ -308,10 +308,10 @@ LV4_1_FAIL:
 // * Guessing Game *
 //--------------------------------------------------
 LV4_2:
-	if(lv4_weapon == 2) set @gem, $@LV4_Citrine;
-	if(lv4_weapon == 3) set @gem, $@LV4_Turquoise;
-	if(lv4_weapon == 4) set @gem, $@LV4_Agate;
-	if(countitem(@gem) < 30) goto LV4_2_NOGEM; 
+	if (lv4_weapon == 2) set @gem, $@LV4_Citrine;
+	if (lv4_weapon == 3) set @gem, $@LV4_Turquoise;
+	if (lv4_weapon == 4) set @gem, $@LV4_Agate;
+	if (countitem(@gem) < 30) goto LV4_2_NOGEM; 
 	
 	mes "[Bazo]";
 	mes "Ok, you seem to be ready.";
@@ -338,19 +338,19 @@ LV4_2:
 		Menu "Poring",N_AnPo,"Hode",N_AnHo,"Obeaune",N_AnOb,"Minorous",N_AnMi;
 			
 			N_AnPo:
-				if(@mons == 1) set @dap, @dap + 1;
+				if (@mons == 1) set @dap, @dap + 1;
 				goto M_CheckMonster;
 
 			N_AnHo:
-				if(@mons == 2) set @dap, @dap + 1;
+				if (@mons == 2) set @dap, @dap + 1;
 				goto M_CheckMonster;
 
 			N_AnOb:
-				if(@mons == 3) set @dap, @dap + 1;
+				if (@mons == 3) set @dap, @dap + 1;
 				goto M_CheckMonster;
 
 			N_AnMi:
-				if(@mons == 4) set @dap, @dap + 1;
+				if (@mons == 4) set @dap, @dap + 1;
 				goto M_CheckMonster;
 
 	M_CheckMonster:
@@ -370,15 +370,15 @@ LV4_2:
 
 	set @i, 1;
 	M_ShowMonster:
-		if(@correct[@i] == 1) mes "" + @i+ ") Poring";
-		if(@correct[@i] == 2) mes "" + @i+ ") Hode";
-		if(@correct[@i] == 3) mes "" + @i+ ") Obeaune";
-		if(@correct[@i] == 4) mes "" + @i+ ") Minorous";
+		if (@correct[@i] == 1) mes "" + @i+ ") Poring";
+		if (@correct[@i] == 2) mes "" + @i+ ") Hode";
+		if (@correct[@i] == 3) mes "" + @i+ ") Obeaune";
+		if (@correct[@i] == 4) mes "" + @i+ ") Minorous";
 		
 		set @i, @i + 1;
 		if (@i <= 5) goto M_ShowMonster;
 
-	if(@dap < 1) goto LV4_2_FAIL;
+	if (@dap < 1) goto LV4_2_FAIL;
 	
 	next;
 	mes "[Bazo]";
@@ -388,14 +388,14 @@ LV4_2:
 	mes "Please give me some time to prepare.";
 	mes "Talk to you later.";
 	
-	if(countitem(@gem) < 30) goto LV4_HACK;
+	if (countitem(@gem) < 30) goto LV4_HACK;
 	delitem @gem, 30;
 	set lv4_weapon, lv4_weapon + 3;
 	close;
 	
 	
 LV4_2_FAIL:
-	if(countitem(@gem) < 10) goto LV4_HACK;
+	if (countitem(@gem) < 10) goto LV4_HACK;
 	delitem @gem, 10;
 	
 	next;
@@ -513,7 +513,7 @@ LV4_HACK:
 //---------------------------------------------------------------
 
 umbala.gat,163,257,3	script	Hibilaithan	785,{
-	if(event_umbala < 3) goto LumWord;
+	if (event_umbala < 3) goto LumWord;
 	set @NowWeight, MaxWeight - Weight;
 	if (@NowWeight >= 3000) goto LV4_NOT_OW;
 	mes "- Wait a minute! -";
@@ -561,7 +561,7 @@ LV4_0:
 	
 	menu "...okay.",-,"...sorry, I don't need it!",M_No;
 		
-		if(BaseLevel >= 70) goto L4_0_1;
+		if (BaseLevel >= 70) goto L4_0_1;
 		mes "[Hibilaithan]";
 		mes "...what a shame! I regret to tell you this,";
 		mes "but your spirit is too weak";
@@ -721,9 +721,9 @@ LV4_8_PICK:
 	delitem $@LV4_Gold, 10;
 	delitem $@LV4_Steel, 50;
 	delitem $@LV4_Emperium, 10;
-	if(@gem == $@LV4_Muscovite) set lv4_weapon, 9;
-	if(@gem == $@LV4_Biotite) set lv4_weapon, 10;
-	if(@gem == $@LV4_Pyroxene) set lv4_weapon, 11;	
+	if (@gem == $@LV4_Muscovite) set lv4_weapon, 9;
+	if (@gem == $@LV4_Biotite) set lv4_weapon, 10;
+	if (@gem == $@LV4_Pyroxene) set lv4_weapon, 11;	
 	close;
 
 LV4_8_NOGEM:
@@ -756,10 +756,10 @@ LV4_8_FAIL:
 // * Guessing Game *
 //--------------------------------------------------
 LV4_9:
-	if(lv4_weapon == 9) set @gem, $@LV4_Muscovite;
-	if(lv4_weapon == 10) set @gem, $@LV4_Biotite;
-	if(lv4_weapon == 11) set @gem, $@LV4_Pyroxene;
-	if(countitem(@gem) < 30) goto LV4_9_NOGEM; 
+	if (lv4_weapon == 9) set @gem, $@LV4_Muscovite;
+	if (lv4_weapon == 10) set @gem, $@LV4_Biotite;
+	if (lv4_weapon == 11) set @gem, $@LV4_Pyroxene;
+	if (countitem(@gem) < 30) goto LV4_9_NOGEM; 
 	
 	mes "[Hibilaithan]";
 	mes "Okay, let's get started!";
@@ -783,8 +783,8 @@ LV4_9:
 	 
 		mes "[Hibilaithan]";
 		
-		if(@i == 1) mes "I like Zealotus, Alice,";
-		if(@i == 1) mes "Munak, and Isis among all monsters.";
+		if (@i == 1) mes "I like Zealotus, Alice,";
+		if (@i == 1) mes "Munak, and Isis among all monsters.";
 		
 		mes "Now, guess which one";
 		mes "I am thinking of at this moment.";		
@@ -795,19 +795,19 @@ LV4_9:
 		menu "Zhertilsh",N_AnZh,"Alice",N_AnAl,"Munak",N_AnMu,"Isis",N_AnIs;
 			
 			N_AnZh:
-				if(@mons == 1) set @dap, @dap + 1;
+				if (@mons == 1) set @dap, @dap + 1;
 				goto M_CheckMonster;
 
 			N_AnAl:
-				if(@mons == 2) set @dap, @dap + 1;
+				if (@mons == 2) set @dap, @dap + 1;
 				goto M_CheckMonster;
 
 			N_AnMu:
-				if(@mons == 3) set @dap, @dap + 1;
+				if (@mons == 3) set @dap, @dap + 1;
 				goto M_CheckMonster;
 
 			N_AnIs:
-				if(@mons == 4) set @dap, @dap + 1;
+				if (@mons == 4) set @dap, @dap + 1;
 				goto M_CheckMonster;
 
 	M_CheckMonster:
@@ -828,15 +828,15 @@ LV4_9:
 
 	set @i, 1;
 	M_ShowMonster:
-		if(@correct[@i] == 1) mes "" + @i+ ") Zhertilsh";
-		if(@correct[@i] == 2) mes "" + @i+ ") Alice";
-		if(@correct[@i] == 3) mes "" + @i+ ") Munak";
-		if(@correct[@i] == 4) mes "" + @i+ ") Isis";
+		if (@correct[@i] == 1) mes "" + @i+ ") Zhertilsh";
+		if (@correct[@i] == 2) mes "" + @i+ ") Alice";
+		if (@correct[@i] == 3) mes "" + @i+ ") Munak";
+		if (@correct[@i] == 4) mes "" + @i+ ") Isis";
 				
 		set @i, @i + 1;
 		if (@i <= 5) goto M_ShowMonster;
 
-	if(@dap < 1) goto LV4_9_FAIL;
+	if (@dap < 1) goto LV4_9_FAIL;
 	
 	next;
 	mes "[Hibilaithan]";
@@ -847,14 +847,14 @@ LV4_9:
 	mes "to prolong the work now!";
 	mes "I need some time to prepare, talk to you later!";
 	
-	if(countitem(@gem) < 30) goto LV4_HACK;
+	if (countitem(@gem) < 30) goto LV4_HACK;
 	delitem @gem, 30;
 	set lv4_weapon, lv4_weapon + 3;
 	close;
 	
 	
 LV4_9_FAIL:
-	if(countitem(@gem) < 10) goto LV4_HACK;
+	if (countitem(@gem) < 10) goto LV4_HACK;
 	delitem @gem, 10;
 	
 	next;
@@ -981,7 +981,7 @@ LV4_HACK:
 //--------------------------------------------------
 
 um_in.gat,156,77,5	script	Tabezthan	788,{
-	if(event_umbala < 3) goto LumWord;
+	if (event_umbala < 3) goto LumWord;
 	set @NowWeight, MaxWeight - Weight;
 	if (@NowWeight >= 3000) goto LV4_NOT_OW;
 	mes "- Wait a minute! -";
@@ -1045,7 +1045,7 @@ LV4_0:
 	
 	menu "Yes, please.",-,"No, thank you.",M_No;
 		
-		if(BaseLevel >= 70) goto L4_0_1;
+		if (BaseLevel >= 70) goto L4_0_1;
 		mes "[Tabezthan]";
 		mes "Sebelumnya saya harus menekankan ini";
 		mes "Barang spesial ini akan menjadi berbahaya jika kamu sendiri masih lemah";
@@ -1214,13 +1214,13 @@ LV4_15_PICK:
 	mes "Okay, now I need some time to prepare...";
 	mes "Talk to you later!";
 	
-	if((countitem($@LV4_Gold) < 10) || (countitem($@LV4_Steel) < 50) || (countitem($@LV4_Emperium) < 10)) goto LV4_HACK;
+	if ((countitem($@LV4_Gold) < 10) || (countitem($@LV4_Steel) < 50) || (countitem($@LV4_Emperium) < 10)) goto LV4_HACK;
 	delitem $@LV4_Gold, 10;
 	delitem $@LV4_Steel, 50;
 	delitem $@LV4_Emperium, 10;
-	if(@gem == $@LV4_Phlogopite) set lv4_weapon, 16;
-	if(@gem == $@LV4_Olivine) set lv4_weapon, 17;
-	if(@gem == $@LV4_Rose_Quartz) set lv4_weapon, 18; 
+	if (@gem == $@LV4_Phlogopite) set lv4_weapon, 16;
+	if (@gem == $@LV4_Olivine) set lv4_weapon, 17;
+	if (@gem == $@LV4_Rose_Quartz) set lv4_weapon, 18; 
 	close;
 
 LV4_15_NOGEM:
@@ -1249,10 +1249,10 @@ LV4_15_FAIL:
 // * Guessing Game *
 //--------------------------------------------------
 LV4_16:
-	if(lv4_weapon == 16) set @gem, $@LV4_Phlogopite;
-	if(lv4_weapon == 17) set @gem, $@LV4_Olivine;
-	if(lv4_weapon == 18) set @gem, $@LV4_Rose_Quartz;
-	if(countitem(@gem) < 30) goto LV4_2_NOGEM; 
+	if (lv4_weapon == 16) set @gem, $@LV4_Phlogopite;
+	if (lv4_weapon == 17) set @gem, $@LV4_Olivine;
+	if (lv4_weapon == 18) set @gem, $@LV4_Rose_Quartz;
+	if (countitem(@gem) < 30) goto LV4_2_NOGEM; 
 	
 	mes "[Tabezthan]";
 	mes "Okay, let's get started!";
@@ -1276,8 +1276,8 @@ LV4_16:
 	 
 		mes "[Tabezthan]";
 		
-		if(@i == 1) mes "I like Baphomet, Dark Lord,";
-		if(@i == 1) mes "Bloody Knight, and Stormy Knight among all monsters.";
+		if (@i == 1) mes "I like Baphomet, Dark Lord,";
+		if (@i == 1) mes "Bloody Knight, and Stormy Knight among all monsters.";
 		
 		mes "Now, guess which one";		
 		mes "I am thinking at this moment.";
@@ -1288,19 +1288,19 @@ LV4_16:
 		menu "Baphomet",N_AnBa,"Dark Lord",N_AnDL,"Bloody Knight",N_AnBK,"Stormy Knight",N_AnSK;
 					
 			N_AnBa:
-				if(@mons == 1) set @dap, @dap + 1;
+				if (@mons == 1) set @dap, @dap + 1;
 				goto M_CheckMonster;
 
 			N_AnDL:
-				if(@mons == 2) set @dap, @dap + 1;
+				if (@mons == 2) set @dap, @dap + 1;
 				goto M_CheckMonster;
 
 			N_AnBK:
-				if(@mons == 3) set @dap, @dap + 1;
+				if (@mons == 3) set @dap, @dap + 1;
 				goto M_CheckMonster;
 
 			N_AnSK:
-				if(@mons == 4) set @dap, @dap + 1;
+				if (@mons == 4) set @dap, @dap + 1;
 				goto M_CheckMonster;
 
 	M_CheckMonster:
@@ -1321,15 +1321,15 @@ LV4_16:
 
 	set @i, 1;
 	M_ShowMonster:
-		if(@correct[@i] == 1) mes "" + @i+ ") Baphomet";
-		if(@correct[@i] == 2) mes "" + @i+ ") Dark Lord";
-		if(@correct[@i] == 3) mes "" + @i+ ") Bloody Knight";
-		if(@correct[@i] == 4) mes "" + @i+ ") Stormy Knight";
+		if (@correct[@i] == 1) mes "" + @i+ ") Baphomet";
+		if (@correct[@i] == 2) mes "" + @i+ ") Dark Lord";
+		if (@correct[@i] == 3) mes "" + @i+ ") Bloody Knight";
+		if (@correct[@i] == 4) mes "" + @i+ ") Stormy Knight";
 						
 		set @i, @i + 1;
 		if (@i <= 5) goto M_ShowMonster;
 
-	if(@dap < 1) goto LV4_16_FAIL;
+	if (@dap < 1) goto LV4_16_FAIL;
 	
 	next;
 	mes "[Tabezthan]";
@@ -1337,13 +1337,13 @@ LV4_16:
 	mes "It seems that your luck is at its highest.";
 	mes "I need some time to prepare, talk to you later.";
 	
-	if(countitem(@gem) < 30) goto LV4_HACK;
+	if (countitem(@gem) < 30) goto LV4_HACK;
 	delitem @gem, 30;
 	set lv4_weapon, lv4_weapon + 3;
 	close;
 
 LV4_16_FAIL:
-	if(countitem(@gem) < 10) goto LV4_HACK;
+	if (countitem(@gem) < 10) goto LV4_HACK;
 	delitem @gem, 10;
 	
 	next;
@@ -1479,34 +1479,34 @@ LV4_HACK:
 
 aldebaran.gat,178,239,3	script	Bill Thayer	712,{
 	// Explain Materials
-	if(lv4_weapon == 26) goto LV4_26;
-	if(lv4_weapon == 27) goto LV4_27;
-	if(lv4_weapon == 28) goto LV4_28;
+	if (lv4_weapon == 26) goto LV4_26;
+	if (lv4_weapon == 27) goto LV4_27;
+	if (lv4_weapon == 28) goto LV4_28;
 	
-	if(lv4_weapon == 35) goto LV4_35;
-	if(lv4_weapon == 36) goto LV4_36;
-	if(lv4_weapon == 37) goto LV4_37;
+	if (lv4_weapon == 35) goto LV4_35;
+	if (lv4_weapon == 36) goto LV4_36;
+	if (lv4_weapon == 37) goto LV4_37;
 
-	if(lv4_weapon == 44) goto LV4_44;
-	if(lv4_weapon == 45) goto LV4_45;
-	if(lv4_weapon == 46) goto LV4_46;
+	if (lv4_weapon == 44) goto LV4_44;
+	if (lv4_weapon == 45) goto LV4_45;
+	if (lv4_weapon == 46) goto LV4_46;
 	
-	if(lv4_weapon == 53) goto LV4_53;
-	if(lv4_weapon == 54) goto LV4_54;
-	if(lv4_weapon == 55) goto LV4_55;
+	if (lv4_weapon == 53) goto LV4_53;
+	if (lv4_weapon == 54) goto LV4_54;
+	if (lv4_weapon == 55) goto LV4_55;
 	
 	// Guide
-	if(lv4_weapon == 22) goto LV4_22;
-	if(lv4_weapon == 23) goto LV4_23;
+	if (lv4_weapon == 22) goto LV4_22;
+	if (lv4_weapon == 23) goto LV4_23;
 		
-	if(lv4_weapon == 31) goto LV4_31;
-	if(lv4_weapon == 32) goto LV4_32;
+	if (lv4_weapon == 31) goto LV4_31;
+	if (lv4_weapon == 32) goto LV4_32;
 	
-	if(lv4_weapon == 40) goto LV4_40;
-	if(lv4_weapon == 41) goto LV4_41;
+	if (lv4_weapon == 40) goto LV4_40;
+	if (lv4_weapon == 41) goto LV4_41;
 	
-	if(lv4_weapon == 49) goto LV4_49;
-	if(lv4_weapon == 50) goto LV4_50;
+	if (lv4_weapon == 49) goto LV4_49;
+	if (lv4_weapon == 50) goto LV4_50;
 	
 	mes "[Bill Thayer]";
 	mes "...I cannot do anything now.";
@@ -1523,37 +1523,37 @@ LV4_45:
 LV4_46:
 LV4_54:
 LV4_55:
-	if(lv4_weapon == 27) set @LV4_Gem1Name$, "Peridot";
-	if(lv4_weapon == 27) set @LV4_Gem2Name$, "Turquoise";
-	if(lv4_weapon == 27) set @LV4_Gem3Name$, "Agate";
+	if (lv4_weapon == 27) set @LV4_Gem1Name$, "Peridot";
+	if (lv4_weapon == 27) set @LV4_Gem2Name$, "Turquoise";
+	if (lv4_weapon == 27) set @LV4_Gem3Name$, "Agate";
 
-	if(lv4_weapon == 28) set @LV4_Gem1Name$, "Phlogopite";
-	if(lv4_weapon == 28) set @LV4_Gem2Name$, "Pyroxene";
-	if(lv4_weapon == 28) set @LV4_Gem3Name$, "Rose Quartz";
+	if (lv4_weapon == 28) set @LV4_Gem1Name$, "Phlogopite";
+	if (lv4_weapon == 28) set @LV4_Gem2Name$, "Pyroxene";
+	if (lv4_weapon == 28) set @LV4_Gem3Name$, "Rose Quartz";
 
-	if(lv4_weapon == 36) set @LV4_Gem1Name$, "Muscovite";
-	if(lv4_weapon == 36) set @LV4_Gem2Name$, "Rose Quartz";
-	if(lv4_weapon == 36) set @LV4_Gem3Name$, "Peridot";
+	if (lv4_weapon == 36) set @LV4_Gem1Name$, "Muscovite";
+	if (lv4_weapon == 36) set @LV4_Gem2Name$, "Rose Quartz";
+	if (lv4_weapon == 36) set @LV4_Gem3Name$, "Peridot";
 
-	if(lv4_weapon == 37) set @LV4_Gem1Name$, "Biotite";
-	if(lv4_weapon == 37) set @LV4_Gem2Name$, "Agate";
-	if(lv4_weapon == 37) set @LV4_Gem3Name$, "Citrine";
+	if (lv4_weapon == 37) set @LV4_Gem1Name$, "Biotite";
+	if (lv4_weapon == 37) set @LV4_Gem2Name$, "Agate";
+	if (lv4_weapon == 37) set @LV4_Gem3Name$, "Citrine";
 
-	if(lv4_weapon == 45) set @LV4_Gem1Name$, "Turquoise";
-	if(lv4_weapon == 45) set @LV4_Gem2Name$, "Biotite";
-	if(lv4_weapon == 45) set @LV4_Gem3Name$, "Rose Quartz";
+	if (lv4_weapon == 45) set @LV4_Gem1Name$, "Turquoise";
+	if (lv4_weapon == 45) set @LV4_Gem2Name$, "Biotite";
+	if (lv4_weapon == 45) set @LV4_Gem3Name$, "Rose Quartz";
 
-	if(lv4_weapon == 46) set @LV4_Gem1Name$, "Citrine";
-	if(lv4_weapon == 46) set @LV4_Gem2Name$, "Pyroxene";
-	if(lv4_weapon == 46) set @LV4_Gem3Name$, "Phlogopite";
+	if (lv4_weapon == 46) set @LV4_Gem1Name$, "Citrine";
+	if (lv4_weapon == 46) set @LV4_Gem2Name$, "Pyroxene";
+	if (lv4_weapon == 46) set @LV4_Gem3Name$, "Phlogopite";
 
-	if(lv4_weapon == 54) set @LV4_Gem1Name$, "Muscovite";
-	if(lv4_weapon == 54) set @LV4_Gem2Name$, "Agate";
-	if(lv4_weapon == 54) set @LV4_Gem3Name$, "Citrine";
+	if (lv4_weapon == 54) set @LV4_Gem1Name$, "Muscovite";
+	if (lv4_weapon == 54) set @LV4_Gem2Name$, "Agate";
+	if (lv4_weapon == 54) set @LV4_Gem3Name$, "Citrine";
 
-	if(lv4_weapon == 55) set @LV4_Gem1Name$, "Pyroxene";
-	if(lv4_weapon == 55) set @LV4_Gem2Name$, "Turquoise";
-	if(lv4_weapon == 55) set @LV4_Gem3Name$, "Phlogopite";
+	if (lv4_weapon == 55) set @LV4_Gem1Name$, "Pyroxene";
+	if (lv4_weapon == 55) set @LV4_Gem2Name$, "Turquoise";
+	if (lv4_weapon == 55) set @LV4_Gem3Name$, "Phlogopite";
 
 	mes "[Bill Thayer]";
 	mes "Hmm...it seems that you need 30 of";
@@ -1572,10 +1572,10 @@ LV4_35:
 LV4_44:
 LV4_53:
 	mes "[Bill Thayer]";
-	if(lv4_weapon == 26) mes "What, Kayron's research?";
-	if(lv4_weapon == 35) mes "What, Reyghema's research?";
-	if(lv4_weapon == 44) mes "What? Hein's research?";
-	if(lv4_weapon == 53) mes "What? Waltboughst's research?";	
+	if (lv4_weapon == 26) mes "What, Kayron's research?";
+	if (lv4_weapon == 35) mes "What, Reyghema's research?";
+	if (lv4_weapon == 44) mes "What? Hein's research?";
+	if (lv4_weapon == 53) mes "What? Waltboughst's research?";	
 	mes "How do you know him?";
 	mes "Were you a friend of him when he was still alive?";
 	mes "Ah....there must an act of providence.";
@@ -1769,7 +1769,7 @@ niflheim.gat,240,193,3	script	Kayron	794, {
 
 	
 LV4_NOT_OW:
-	if(BaseLevel >= 80) goto LV4_LEVEL_PASS;
+	if (BaseLevel >= 80) goto LV4_LEVEL_PASS;
 	mes "[Kayron]";
 	mes "Bah, I cannot believe";
 	mes "that such a weak man like you even came here.";
@@ -1779,18 +1779,18 @@ LV4_NOT_OW:
 	
 
 LV4_LEVEL_PASS:
-	if(lv4_weapon == 0) goto LV4_0;
-	if(lv4_weapon < 22) goto LV4_21;
-	if(lv4_weapon == 22) goto LV4_22;
-	if(lv4_weapon == 23) goto LV4_23;
-	if(lv4_weapon == 24) goto LV4_24;
-	if(lv4_weapon == 25) goto LV4_25;
-	if(lv4_weapon == 26) goto LV4_26;
-	if(lv4_weapon == 27) goto LV4_27;
-	if(lv4_weapon == 28) goto LV4_28;
-	if(lv4_weapon == 29) goto LV4_29;
-	if(lv4_weapon == 30) goto LV4_30;
-	if(lv4_weapon > 30) goto LV4_31;
+	if (lv4_weapon == 0) goto LV4_0;
+	if (lv4_weapon < 22) goto LV4_21;
+	if (lv4_weapon == 22) goto LV4_22;
+	if (lv4_weapon == 23) goto LV4_23;
+	if (lv4_weapon == 24) goto LV4_24;
+	if (lv4_weapon == 25) goto LV4_25;
+	if (lv4_weapon == 26) goto LV4_26;
+	if (lv4_weapon == 27) goto LV4_27;
+	if (lv4_weapon == 28) goto LV4_28;
+	if (lv4_weapon == 29) goto LV4_29;
+	if (lv4_weapon == 30) goto LV4_30;
+	if (lv4_weapon > 30) goto LV4_31;
 	
 LV4_0:
 LV4_22:
@@ -1802,7 +1802,7 @@ LV4_22:
 	mes "without a body...";
 	next;
 	
-	if(lv4_weapon == 0) goto LV4_0_ASK;
+	if (lv4_weapon == 0) goto LV4_0_ASK;
 	
 	mes "[Kayron]";
 	mes "Ah...I cannot remember what I was going to say...";
@@ -1845,7 +1845,7 @@ LV4_23:
 	next;
 	set @dap1$, "You are helpless.";
 	input @answer1$;
-	if(@answer1$ == @dap1$) goto LV4_23_CORRECT;
+	if (@answer1$ == @dap1$) goto LV4_23_CORRECT;
 	mes "[Kayron]";
 	mes "...? What did you just say?";
 	mes "I am sorry but I don't think I understood you.";
@@ -2006,17 +2006,17 @@ LV4_28:
 			
 			M_S:
 				set @myhand[@i], 1;
-				if(@npchand[@i] == 3) set @shobu, @shobu + 1;
+				if (@npchand[@i] == 3) set @shobu, @shobu + 1;
 				goto M_S_R_PCheck;
 
 			M_R:
 				set @myhand[@i], 2;
-				if(@npchand[@i] == 1) set @shobu, @shobu + 1;
+				if (@npchand[@i] == 1) set @shobu, @shobu + 1;
 				goto M_S_R_PCheck;
 
 			M_P:
 				set @myhand[@i], 3;
-				if(@npchand[@i] == 2) set @shobu, @shobu + 1;
+				if (@npchand[@i] == 2) set @shobu, @shobu + 1;
 				goto M_S_R_PCheck;
 
 	M_S_R_PCheck:
@@ -2025,7 +2025,7 @@ LV4_28:
 		
 	if ((countitem(LV4_Gem1) < 30) || (countitem(LV4_Gem2) < 30) || (countitem(LV4_Gem3) < 30)) goto LV4_HACK;
 
-	if(@shobu > 1) goto LV4_27_WIN;
+	if (@shobu > 1) goto LV4_27_WIN;
 
 	set @randdel, rand(1 ,3);
 	
@@ -2058,9 +2058,9 @@ LV4_27_RESULT:
 	
 	set @i, 1;
 	M_S_R_PResultNPC:
-		if(@npchand[@i] == 1) mes "Scissors";
-		if(@npchand[@i] == 2) mes "Rock";
-		if(@npchand[@i] == 3) mes "Paper";
+		if (@npchand[@i] == 1) mes "Scissors";
+		if (@npchand[@i] == 2) mes "Rock";
+		if (@npchand[@i] == 3) mes "Paper";
 	
 	set @i, @i + 1;
 	if (@i <= 3) goto M_S_R_PResultNPC;
@@ -2071,16 +2071,16 @@ LV4_27_RESULT:
 
 	set @i, 1;
 	M_S_R_PResultMY:
-		if(@myhand[@i] == 1) mes "Scissors";
-		if(@myhand[@i] == 2) mes "Rock";
-		if(@myhand[@i] == 3) mes "Paper";
+		if (@myhand[@i] == 1) mes "Scissors";
+		if (@myhand[@i] == 2) mes "Rock";
+		if (@myhand[@i] == 3) mes "Paper";
 	
 	set @i, @i + 1;
 	if (@i <= 3) goto M_S_R_PResultMY;
 	
 	next;
 
-	if(@shobu > 1) goto LV4_27_SAY_WIN;
+	if (@shobu > 1) goto LV4_27_SAY_WIN;
 	
 	mes "[Kayron]";
 	mes "Well well well...you lost the game.";
@@ -2136,17 +2136,17 @@ LV4_30:
 	end;
 
 		M_Set1:
-			if(lv4_weapon == 29) mes "Slughter! Weee~ I made it!";
-			if(lv4_weapon == 29) getitem 1367, 1; // 1367,Slaughter
-			if(lv4_weapon == 30) mes "Longinus's Spear! Weee~ I made it!";
-			if(lv4_weapon == 30) getitem 1469, 1; // 1469,Longinus's_Spear
+			if (lv4_weapon == 29) mes "Slughter! Weee~ I made it!";
+			if (lv4_weapon == 29) getitem 1367, 1; // 1367,Slaughter
+			if (lv4_weapon == 30) mes "Longinus's Spear! Weee~ I made it!";
+			if (lv4_weapon == 30) getitem 1469, 1; // 1469,Longinus's_Spear
 			goto M_End2;
 
 		M_Set2:
-			if(lv4_weapon == 29) mes "Guillotine! Weee~ I made it!";
-			if(lv4_weapon == 29) getitem 1369, 1; // 1369,Guillotine
-			if(lv4_weapon == 30) mes "Brionac! Weee~ I made it!";
-			if(lv4_weapon == 30) getitem 1470, 1; // 1470,Brionac
+			if (lv4_weapon == 29) mes "Guillotine! Weee~ I made it!";
+			if (lv4_weapon == 29) getitem 1369, 1; // 1369,Guillotine
+			if (lv4_weapon == 30) mes "Brionac! Weee~ I made it!";
+			if (lv4_weapon == 30) getitem 1470, 1; // 1470,Brionac
 			goto M_End2;
 
 	M_End2:
@@ -2193,7 +2193,7 @@ niflheim.gat,99,268,5	script	Reyghema	794, {
 
 	
 LV4_NOT_OW:
-	if(BaseLevel >= 80) goto LV4_LEVEL_PASS;
+	if (BaseLevel >= 80) goto LV4_LEVEL_PASS;
 	mes "[Reyghema]";
 	mes "Um? Do you have any business with me?";
 	mes "Sorry but I don't. I'm also not";
@@ -2203,18 +2203,18 @@ LV4_NOT_OW:
 	
 
 LV4_LEVEL_PASS:
-	if(lv4_weapon == 0) goto LV4_0;
-	if(lv4_weapon < 31) goto LV4_30;
-	if(lv4_weapon == 31) goto LV4_31;
-	if(lv4_weapon == 32) goto LV4_32;
-	if(lv4_weapon == 33) goto LV4_33;
-	if(lv4_weapon == 34) goto LV4_34;
-	if(lv4_weapon == 35) goto LV4_35;
-	if(lv4_weapon == 36) goto LV4_36;
-	if(lv4_weapon == 37) goto LV4_37;
-	if(lv4_weapon == 38) goto LV4_38;
-	if(lv4_weapon == 39) goto LV4_39;
-	if(lv4_weapon > 39) goto LV4_40;
+	if (lv4_weapon == 0) goto LV4_0;
+	if (lv4_weapon < 31) goto LV4_30;
+	if (lv4_weapon == 31) goto LV4_31;
+	if (lv4_weapon == 32) goto LV4_32;
+	if (lv4_weapon == 33) goto LV4_33;
+	if (lv4_weapon == 34) goto LV4_34;
+	if (lv4_weapon == 35) goto LV4_35;
+	if (lv4_weapon == 36) goto LV4_36;
+	if (lv4_weapon == 37) goto LV4_37;
+	if (lv4_weapon == 38) goto LV4_38;
+	if (lv4_weapon == 39) goto LV4_39;
+	if (lv4_weapon > 39) goto LV4_40;
 	
 LV4_0:
 LV4_31:
@@ -2226,7 +2226,7 @@ LV4_31:
 	mes "Speaking of which...I think I usually said something related to that...";
 	next;
 	
-	if(lv4_weapon == 0) goto LV4_0_ASK;
+	if (lv4_weapon == 0) goto LV4_0_ASK;
 	
 	mes "[Reyghema]";
 	mes "Ah...I cannot remember what I was going to say...";
@@ -2269,7 +2269,7 @@ LV4_32:
 	next;
 	set @dap2$, "That means that you never regret anything!";
 	input @answer2$;
-	if(@answer2$ == @dap2$) goto LV4_32_CORRECT;
+	if (@answer2$ == @dap2$) goto LV4_32_CORRECT;
 	mes "[Reyghema]";
 	mes "What? Do you want to play a game with me or what?";
 	mes "Unfortunately I have something to do...";
@@ -2361,11 +2361,11 @@ LV4_34_BASE_MAT:
 		mes "I need 2 Hammer of Blacksmith,";
 		mes "1 Emperium Anvil, 1 Illusion Flower and 20 Gold...";
 		mes "...wait...are they all...or do I need more?!";
-		if(lv4_weapon == 33) next;
-		if(lv4_weapon == 33) mes "[Reyghema]";
-		if(lv4_weapon == 33) mes "Ah...I think need something more...it's very important...";
-		if(lv4_weapon == 33) mes "But I cannot remember what more I need....!";
-		if(lv4_weapon == 33) mes "Bah...this is so frustrating.";
+		if (lv4_weapon == 33) next;
+		if (lv4_weapon == 33) mes "[Reyghema]";
+		if (lv4_weapon == 33) mes "Ah...I think need something more...it's very important...";
+		if (lv4_weapon == 33) mes "But I cannot remember what more I need....!";
+		if (lv4_weapon == 33) mes "Bah...this is so frustrating.";
 		set lv4_weapon, 34;
 		close;
 		
@@ -2418,17 +2418,17 @@ LV4_37:
 			
 			M_S:
 				set @myhand[@i], 1;
-				if(@npchand[@i] == 3) set @shobu, @shobu + 1;
+				if (@npchand[@i] == 3) set @shobu, @shobu + 1;
 				goto M_S_R_PCheck;
 
 			M_R:
 				set @myhand[@i], 2;
-				if(@npchand[@i] == 1) set @shobu, @shobu + 1;
+				if (@npchand[@i] == 1) set @shobu, @shobu + 1;
 				goto M_S_R_PCheck;
 
 			M_P:
 				set @myhand[@i], 3;
-				if(@npchand[@i] == 2) set @shobu, @shobu + 1;
+				if (@npchand[@i] == 2) set @shobu, @shobu + 1;
 				goto M_S_R_PCheck;
 
 	M_S_R_PCheck:
@@ -2437,7 +2437,7 @@ LV4_37:
 		
 	if ((countitem(LV4_Gem1) < 30) || (countitem(LV4_Gem2) < 30) || (countitem(LV4_Gem3) < 30)) goto LV4_HACK;
 	
-	if(@shobu > 1) goto LV4_36_WIN;
+	if (@shobu > 1) goto LV4_36_WIN;
 
 	set @randdel, rand(1 ,3);
 	
@@ -2470,9 +2470,9 @@ LV4_36_RESULT:
 	
 	set @i, 1;
 	M_S_R_PResultNPC:
-		if(@npchand[@i] == 1) mes "Scissors";
-		if(@npchand[@i] == 2) mes "Rock";
-		if(@npchand[@i] == 3) mes "Paper";
+		if (@npchand[@i] == 1) mes "Scissors";
+		if (@npchand[@i] == 2) mes "Rock";
+		if (@npchand[@i] == 3) mes "Paper";
 	
 	set @i, @i + 1;
 	if (@i <= 3) goto M_S_R_PResultNPC;
@@ -2483,16 +2483,16 @@ LV4_36_RESULT:
 
 	set @i, 1;
 	M_S_R_PResultMY:
-		if(@myhand[@i] == 1) mes "Scissors";
-		if(@myhand[@i] == 2) mes "Rock";
-		if(@myhand[@i] == 3) mes "Paper";
+		if (@myhand[@i] == 1) mes "Scissors";
+		if (@myhand[@i] == 2) mes "Rock";
+		if (@myhand[@i] == 3) mes "Paper";
 	
 	set @i, @i + 1;
 	if (@i <= 3) goto M_S_R_PResultMY;
 	
 	next;
 
-	if(@shobu > 1) goto LV4_36_SAY_WIN;
+	if (@shobu > 1) goto LV4_36_SAY_WIN;
 	
 	mes "[Reyghema]";
 	mes "Well well well...you lost the game.";
@@ -2544,17 +2544,17 @@ LV4_39:
 	if (@randsword == 2) goto M_Set2;
 	end;
 		M_Set1:
-			if(lv4_weapon == 38) mes "Berserk! Weee~ Weee~ I made it!";
-			if(lv4_weapon == 38) getitem 1814 ,1; // 1814,Berserk
-			if(lv4_weapon == 39) mes "Tjungkuletti! Weee~ I made it!";
-			if(lv4_weapon == 39) getitem 1416, 1; // 1416,Tjungkuletti
+			if (lv4_weapon == 38) mes "Berserk! Weee~ Weee~ I made it!";
+			if (lv4_weapon == 38) getitem 1814 ,1; // 1814,Berserk
+			if (lv4_weapon == 39) mes "Tjungkuletti! Weee~ I made it!";
+			if (lv4_weapon == 39) getitem 1416, 1; // 1416,Tjungkuletti
 			goto M_End2;
 
 		M_Set2:
-			if(lv4_weapon == 38) mes "Rudra's Bow! Weee~ I made it!";
-			if(lv4_weapon == 38) getitem 1720, 1; // 1720,Bow_of_Rudra
-			if(lv4_weapon == 39) mes "Brocca!";
-			if(lv4_weapon == 39) getitem 1415, 1; // 1415,Skewer
+			if (lv4_weapon == 38) mes "Rudra's Bow! Weee~ I made it!";
+			if (lv4_weapon == 38) getitem 1720, 1; // 1720,Bow_of_Rudra
+			if (lv4_weapon == 39) mes "Brocca!";
+			if (lv4_weapon == 39) getitem 1415, 1; // 1415,Skewer
 			goto M_End2;
 
 	M_End2:
@@ -2606,7 +2606,7 @@ niflheim.gat,187,280,3	script	Hein	795, {
 	close;
 	
 LV4_NOT_OW:
-	if(BaseLevel >= 80) goto LV4_LEVEL_PASS;
+	if (BaseLevel >= 80) goto LV4_LEVEL_PASS;
 	mes "[Hein]";
 	mes "You should care about other people";
 	mes "more than yourself...";
@@ -2614,18 +2614,18 @@ LV4_NOT_OW:
 	close;
 	
 LV4_LEVEL_PASS:
-	if(lv4_weapon == 0) goto LV4_0;
-	if(lv4_weapon < 40) goto LV4_39;
-	if(lv4_weapon == 40) goto LV4_40;
-	if(lv4_weapon == 41) goto LV4_41;
-	if(lv4_weapon == 42) goto LV4_42;
-	if(lv4_weapon == 43) goto LV4_43;
-	if(lv4_weapon == 44) goto LV4_44;
-	if(lv4_weapon == 45) goto LV4_45;
-	if(lv4_weapon == 46) goto LV4_46;
-	if(lv4_weapon == 47) goto LV4_47;
-	if(lv4_weapon == 48) goto LV4_48;
-	if(lv4_weapon > 48) goto LV4_49;
+	if (lv4_weapon == 0) goto LV4_0;
+	if (lv4_weapon < 40) goto LV4_39;
+	if (lv4_weapon == 40) goto LV4_40;
+	if (lv4_weapon == 41) goto LV4_41;
+	if (lv4_weapon == 42) goto LV4_42;
+	if (lv4_weapon == 43) goto LV4_43;
+	if (lv4_weapon == 44) goto LV4_44;
+	if (lv4_weapon == 45) goto LV4_45;
+	if (lv4_weapon == 46) goto LV4_46;
+	if (lv4_weapon == 47) goto LV4_47;
+	if (lv4_weapon == 48) goto LV4_48;
+	if (lv4_weapon > 48) goto LV4_49;
 	
 LV4_0:
 LV4_40:
@@ -2638,7 +2638,7 @@ LV4_40:
 	mes "Awww....I am confused.";
 	next;
 	
-	if(lv4_weapon == 0) goto LV4_0_ASK;
+	if (lv4_weapon == 0) goto LV4_0_ASK;
 	
 	mes "[Hein]";
 	mes "Why did I speak of money?";
@@ -2683,7 +2683,7 @@ LV4_41:
 	next;
 	set @dap3$, "to forge a good weapon.";
 	input @answer3$;
-	if(@answer3$ == @dap3$) goto LV4_41_CORRECT;
+	if (@answer3$ == @dap3$) goto LV4_41_CORRECT;
 	mes "[Hein]";
 	mes "...? What are you talking about?";
 	mes "What was I going to say?";
@@ -2832,17 +2832,17 @@ LV4_46:
 			
 			M_S:
 				set @myhand[@i], 1;
-				if(@npchand[@i] == 3) set @shobu, @shobu + 1;
+				if (@npchand[@i] == 3) set @shobu, @shobu + 1;
 				goto M_S_R_PCheck;
 
 			M_R:
 				set @myhand[@i], 2;
-				if(@npchand[@i] == 1) set @shobu, @shobu + 1;
+				if (@npchand[@i] == 1) set @shobu, @shobu + 1;
 				goto M_S_R_PCheck;
 
 			M_P:
 				set @myhand[@i], 3;
-				if(@npchand[@i] == 2) set @shobu, @shobu + 1;
+				if (@npchand[@i] == 2) set @shobu, @shobu + 1;
 				goto M_S_R_PCheck;
 
 	M_S_R_PCheck:
@@ -2851,7 +2851,7 @@ LV4_46:
 		
 	if ((countitem(LV4_Gem1) < 30) || (countitem(LV4_Gem2) < 30) || (countitem(LV4_Gem3) < 30)) goto LV4_HACK;
 
-	if(@shobu > 1) goto LV4_45_WIN;
+	if (@shobu > 1) goto LV4_45_WIN;
 
 	set @randdel, rand(1 ,3);
 	
@@ -2884,9 +2884,9 @@ LV4_45_RESULT:
 	
 	set @i, 1;
 	M_S_R_PResultNPC:
-		if(@npchand[@i] == 1) mes "Scissors";
-		if(@npchand[@i] == 2) mes "Rock";
-		if(@npchand[@i] == 3) mes "Paper";
+		if (@npchand[@i] == 1) mes "Scissors";
+		if (@npchand[@i] == 2) mes "Rock";
+		if (@npchand[@i] == 3) mes "Paper";
 	
 	set @i, @i + 1;
 	if (@i <= 3) goto M_S_R_PResultNPC;
@@ -2897,16 +2897,16 @@ LV4_45_RESULT:
 
 	set @i, 1;
 	M_S_R_PResultMY:
-		if(@myhand[@i] == 1) mes "Scissors";
-		if(@myhand[@i] == 2) mes "Rock";
-		if(@myhand[@i] == 3) mes "Paper";
+		if (@myhand[@i] == 1) mes "Scissors";
+		if (@myhand[@i] == 2) mes "Rock";
+		if (@myhand[@i] == 3) mes "Paper";
 	
 	set @i, @i + 1;
 	if (@i <= 3) goto M_S_R_PResultMY;
 	
 	next;
 
-	if(@shobu > 1) goto LV4_45_SAY_WIN;
+	if (@shobu > 1) goto LV4_45_SAY_WIN;
 	
 	mes "[Hein]";
 	mes "Well well well...you lost the game.";
@@ -2959,16 +2959,16 @@ LV4_48:
 	if (@randsword == 2) goto M_Set2;
 	end;
 		M_Set1:
-			if(lv4_weapon == 47) mes "Edge.";
-			if(lv4_weapon == 47) getitem 1132 ,1; // 1132,Edge
-			if(lv4_weapon == 48) mes "Dragon Slayer.";
-			if(lv4_weapon == 48) getitem 1166, 1; // 1166,Dragon_Slayer
+			if (lv4_weapon == 47) mes "Edge.";
+			if (lv4_weapon == 47) getitem 1132 ,1; // 1132,Edge
+			if (lv4_weapon == 48) mes "Dragon Slayer.";
+			if (lv4_weapon == 48) getitem 1166, 1; // 1166,Dragon_Slayer
 			goto M_End2;
 		M_Set2:
-			if(lv4_weapon == 47) mes "Excalibur.";
-			if(lv4_weapon == 47) getitem 1137, 1; // 1137,Excalibur
-			if(lv4_weapon == 48) mes "Schweizersabel.";
-			if(lv4_weapon == 48) getitem 1167, 1; // 1167,Schweizersabel
+			if (lv4_weapon == 47) mes "Excalibur.";
+			if (lv4_weapon == 47) getitem 1137, 1; // 1137,Excalibur
+			if (lv4_weapon == 48) mes "Schweizersabel.";
+			if (lv4_weapon == 48) getitem 1167, 1; // 1167,Schweizersabel
 			goto M_End2;
 	
 	M_End2:	
@@ -3019,25 +3019,25 @@ niflheim.gat,331,72,3	script	Waltboughst	795,{
 
 	
 LV4_NOT_OW:
-	if(BaseLevel >= 80) goto LV4_LEVEL_PASS;
+	if (BaseLevel >= 80) goto LV4_LEVEL_PASS;
 	mes "[Waltboughst]";
 	mes "...Hah!";
 	close;
 	
 
 LV4_LEVEL_PASS:
-	if(lv4_weapon == 0) goto LV4_0;
-	if(lv4_weapon < 49) goto LV4_48;
-	if(lv4_weapon == 49) goto LV4_49;
-	if(lv4_weapon == 50) goto LV4_50;
-	if(lv4_weapon == 51) goto LV4_51;
-	if(lv4_weapon == 52) goto LV4_52;
-	if(lv4_weapon == 53) goto LV4_53;
-	if(lv4_weapon == 54) goto LV4_54;
-	if(lv4_weapon == 55) goto LV4_55;
-	if(lv4_weapon == 56) goto LV4_56;
-	if(lv4_weapon == 57) goto LV4_57;
-	if(lv4_weapon > 57) goto LV4_58;
+	if (lv4_weapon == 0) goto LV4_0;
+	if (lv4_weapon < 49) goto LV4_48;
+	if (lv4_weapon == 49) goto LV4_49;
+	if (lv4_weapon == 50) goto LV4_50;
+	if (lv4_weapon == 51) goto LV4_51;
+	if (lv4_weapon == 52) goto LV4_52;
+	if (lv4_weapon == 53) goto LV4_53;
+	if (lv4_weapon == 54) goto LV4_54;
+	if (lv4_weapon == 55) goto LV4_55;
+	if (lv4_weapon == 56) goto LV4_56;
+	if (lv4_weapon == 57) goto LV4_57;
+	if (lv4_weapon > 57) goto LV4_58;
 	
 LV4_0:
 LV4_49:
@@ -3050,7 +3050,7 @@ LV4_49:
 	mes "However...errr?";
 	next;
 	
-	if(lv4_weapon == 0) goto LV4_0_ASK;
+	if (lv4_weapon == 0) goto LV4_0_ASK;
 	
 	mes "[Waltboughst]";
 	mes "...What was my father's";
@@ -3099,7 +3099,7 @@ LV4_50:
 	next;
 	set @dap4$, "All the successful men in the history tried their best!";
 	input @answer4$;
-	if(@answer4$ == @dap4$) goto LV4_50_CORRECT;
+	if (@answer4$ == @dap4$) goto LV4_50_CORRECT;
 	mes "[Waltboughst]";
 	mes "...What? What did you just say?";
 	mes "Hmmm.";
@@ -3231,17 +3231,17 @@ LV4_55:
 			
 			M_S:
 				set @myhand[@i], 1;
-				if(@npchand[@i] == 3) set @shobu, @shobu + 1;
+				if (@npchand[@i] == 3) set @shobu, @shobu + 1;
 				goto M_S_R_PCheck;
 
 			M_R:
 				set @myhand[@i], 2;
-				if(@npchand[@i] == 1) set @shobu, @shobu + 1;
+				if (@npchand[@i] == 1) set @shobu, @shobu + 1;
 				goto M_S_R_PCheck;
 
 			M_P:
 				set @myhand[@i], 3;
-				if(@npchand[@i] == 2) set @shobu, @shobu + 1;
+				if (@npchand[@i] == 2) set @shobu, @shobu + 1;
 				goto M_S_R_PCheck;
 
 	M_S_R_PCheck:
@@ -3250,7 +3250,7 @@ LV4_55:
 		
 	if ((countitem(LV4_Gem1) < 30) || (countitem(LV4_Gem2) < 30) || (countitem(LV4_Gem3) < 30)) goto LV4_HACK;
 	
-	if(@shobu > 1) goto LV4_54_WIN;
+	if (@shobu > 1) goto LV4_54_WIN;
 
 	set @randdel, rand(1 ,3);
 	
@@ -3283,9 +3283,9 @@ LV4_54_RESULT:
 	
 	set @i, 1;
 	M_S_R_PResultNPC:
-		if(@npchand[@i] == 1) mes "Scissors";
-		if(@npchand[@i] == 2) mes "Rock";
-		if(@npchand[@i] == 3) mes "Paper";
+		if (@npchand[@i] == 1) mes "Scissors";
+		if (@npchand[@i] == 2) mes "Rock";
+		if (@npchand[@i] == 3) mes "Paper";
 	
 	set @i, @i + 1;
 	if (@i <= 3) goto M_S_R_PResultNPC;
@@ -3296,16 +3296,16 @@ LV4_54_RESULT:
 
 	set @i, 1;
 	M_S_R_PResultMY:
-		if(@myhand[@i] == 1) mes "Scissors";
-		if(@myhand[@i] == 2) mes "Rock";
-		if(@myhand[@i] == 3) mes "Paper";
+		if (@myhand[@i] == 1) mes "Scissors";
+		if (@myhand[@i] == 2) mes "Rock";
+		if (@myhand[@i] == 3) mes "Paper";
 	
 	set @i, @i + 1;
 	if (@i <= 3) goto M_S_R_PResultMY;
 	
 	next;
 
-	if(@shobu > 1) goto LV4_54_SAY_WIN;
+	if (@shobu > 1) goto LV4_54_SAY_WIN;
 	
 	mes "[Waltboughst]";
 	mes "Well well well...you lost the game.";
@@ -3359,17 +3359,17 @@ LV4_57:
 	if (@randsword == 2) goto M_Set2;
 	end;
 		M_Set1:
-			if(lv4_weapon == 56) mes "Byeollungum!";
-			if(lv4_weapon == 56) getitem 1140 ,1; // 1140,Byeollungum
-			if(lv4_weapon == 57) mes "Exorciser!";
-			if(lv4_weapon == 57) getitem 1233, 1; // 1233,Exercise
+			if (lv4_weapon == 56) mes "Byeollungum!";
+			if (lv4_weapon == 56) getitem 1140 ,1; // 1140,Byeollungum
+			if (lv4_weapon == 57) mes "Exorciser!";
+			if (lv4_weapon == 57) getitem 1233, 1; // 1233,Exercise
 			goto M_End2;
 
 		M_Set2:
-			if(lv4_weapon == 56) mes "Combat Knife!";
-			if(lv4_weapon == 56) getitem 1228, 1; // 1228,Combat_Knife
-			if(lv4_weapon == 57) mes "Grand Cross!!";
-			if(lv4_weapon == 57) getitem 1528, 1; // 1528,Grand_Cross
+			if (lv4_weapon == 56) mes "Combat Knife!";
+			if (lv4_weapon == 56) getitem 1228, 1; // 1228,Combat_Knife
+			if (lv4_weapon == 57) mes "Grand Cross!!";
+			if (lv4_weapon == 57) getitem 1528, 1; // 1528,Grand_Cross
 			goto M_End2;
 
 	M_End2:

@@ -29,12 +29,12 @@ L_YAME:
 
 // 待機室から準備室への転送
 prt_are_in.gat,29,79,0	script	タイムアタック１	116,{
-	if( getmapusers("force_1-1.gat")>0 ) goto L_WAIT;
+	if (getmapusers("force_1-1.gat")>0) goto L_WAIT;
 	mes "ここはタイムアタックLv1です";
 	mes "挑戦しますか？";
 	menu "はい",L_GOLV1,"やめる",L_YAME;
 L_GOLV1:
-	if( getmapusers("force_1-1.gat")>0 ) goto L_WAIT;
+	if (getmapusers("force_1-1.gat")>0) goto L_WAIT;
 	disablenpc "fc103-1";
 	disablenpc "fc105";
 	disablenpc "fc107";
@@ -76,7 +76,7 @@ force_1-1.gat,99,12,0	script	arenatestev0001	-1,{
 // 倒した処理
 force_1-1.gat,25,26,0	script	arenatestev1000	-1,{
 	set $arenatest00, $arenatest00 - 1;
-	if( $arenatest00 > 0 ) goto L_CONT;
+	if ($arenatest00 > 0) goto L_CONT;
 	deltimer "arenatestev8000";
 	announce "クラッシュ!!",3;
 	enablenpc "fc101";

@@ -19,7 +19,7 @@
 
 geffen.gat,95,201,3	script	Shilo	50,{
 	mes "[Shilo]";
-	if(easter_Q == 1) goto L_Check;
+	if (easter_Q == 1) goto L_Check;
 	mes "*Sigh*... Where is my sister!?";
 	next;
 	mes "[Shilo]";
@@ -31,7 +31,7 @@ geffen.gat,95,201,3	script	Shilo	50,{
 	mes "[Shilo]";
 	mes "I can't wait to go find some easter eggs...";
 	next;
-	if(@talked == 1) menu "I want to look for these eggs.",sM_0, "... Eggs? Why?",M_0, "You seriously bore me... *yawn*...",M_End;
+	if (@talked == 1) menu "I want to look for these eggs.",sM_0, "... Eggs? Why?",M_0, "You seriously bore me... *yawn*...",M_End;
 	menu "... Eggs? Why?",M_0, "You seriously bore me...*yawn*..",M_End;
 
 	M_0:

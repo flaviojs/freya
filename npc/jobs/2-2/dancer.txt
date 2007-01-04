@@ -37,7 +37,7 @@ L_Can:
 
 //= Warp man, takes you to the quest map (Comodo Theater)
 comodo.gat,193,151,4	script	Bor Robin	86,{
-	callfunc "F_BlockHigh",Job_Archer_High,"High Archer",Job_Gypsy,"Gypsy","Bor Robin";
+	callfunc "F_BlockHigh",JOB_ARCHER_HIGH,"High Archer",JOB_GYPSY,"Gypsy","Bor Robin";
 
 	mes "[Bor Robin]";
 	mes "Well...... alot of people seem to be coming here lately.";
@@ -407,7 +407,7 @@ Ltest1:
 
 Ltest2:
 	mes "[Bijou]";
-	if(DANC_Q == 6) mes "Back for another try?";
+	if (DANC_Q == 6) mes "Back for another try?";
 	mes "Good luck to you, now let the test begin.";
 	next;
 
@@ -706,7 +706,7 @@ Ljobchange:
 	mes "[Bijou]";
 	mes "Watch each time you dance from now on.";
 	next;
-	callfunc "Job_Change",Job_Dancer;
+	callfunc "Job_Change",JOB_DANCER;
 	callfunc "F_ClearJobVar";
 	mes "[Bijou]";
 	mes "The enjoyment of the people watching you perform......";

@@ -195,7 +195,7 @@ L_fin:
 }
 //--------------------------------------------------------------------------------------------------------
 priest_1-1.gat,87,111,0	script	Ombre	723,{
-	if ( @ordre[@i] != 0) goto L_Failed;
+	if (@ordre[@i] != 0) goto L_Failed;
 	callfunc "Reussite";
 
 L_Failed:
@@ -203,7 +203,7 @@ L_Failed:
 }
 //--------------------------------------------------------------------------------------------------------
 priest_1-1.gat,111,111,0	script	Ombre	723,{
-	if ( @ordre[@i] != 1) goto L_Failed;
+	if (@ordre[@i] != 1) goto L_Failed;
 	callfunc "Reussite";
 
 L_Failed:
@@ -211,7 +211,7 @@ L_Failed:
 }
 //--------------------------------------------------------------------------------------------------------
 priest_1-1.gat,111,131,0	script	Ombre	723,{
-	if ( @ordre[@i] != 2) goto L_Failed;
+	if (@ordre[@i] != 2) goto L_Failed;
 	callfunc "Reussite";
 
 L_Failed:
@@ -219,7 +219,7 @@ L_Failed:
 }
 //--------------------------------------------------------------------------------------------------------
 priest_1-1.gat,87,131,0	script	Ombre	723,{
-	if ( @ordre[@i] != 3) goto L_Failed;
+	if (@ordre[@i] != 3) goto L_Failed;
 	callfunc "Reussite";
 
 L_Failed:
@@ -227,7 +227,7 @@ L_Failed:
 }
 //--------------------------------------------------------------------------------------------------------
 priest_1-1.gat,100,120,0	script	Ombre	723,{
-	if ( @ordre[@i] != 4) goto L_Failed;
+	if (@ordre[@i] != 4) goto L_Failed;
 	callfunc "Reussite";
 
 L_Failed:

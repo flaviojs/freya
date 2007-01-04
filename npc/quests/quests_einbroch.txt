@@ -24,14 +24,14 @@
 //=================================================== Shinokas
 //====================================================== Quest
 ein_in01.gat,231,163,1	script	Sick Old Man	849,6,6,{
-	if(Shinokas_Quest == 9) goto L_Dead;
-	if(Shinokas_Quest == 8) goto L_Lab2;
-	if(Shinokas_Quest == 7) goto L_Lab1;
-	if(EinFactory == 16 && Shinokas_Quest == 6) goto L_Factory2;
-	if(Shinokas_Quest == 6) goto L_Factory3;
-	if(Shinokas_Quest == 5) goto L_Factory;
-	if(Shinokas_Quest == 4) goto L_Find;
-	if(Shinokas_Quest > 0) set Shinokas_Quest,1;
+	if (Shinokas_Quest == 9) goto L_Dead;
+	if (Shinokas_Quest == 8) goto L_Lab2;
+	if (Shinokas_Quest == 7) goto L_Lab1;
+	if (EinFactory == 16 && Shinokas_Quest == 6) goto L_Factory2;
+	if (Shinokas_Quest == 6) goto L_Factory3;
+	if (Shinokas_Quest == 5) goto L_Factory;
+	if (Shinokas_Quest == 4) goto L_Find;
+	if (Shinokas_Quest > 0) set Shinokas_Quest,1;
 	mes "[Sick Old Man]";
 	mes "...!";
 	next;
@@ -74,7 +74,7 @@ L_Ask:
 	next;
 	menu "Remember the mine tunnel collapse?",L_Collapse,"Didn't you used to be a miner?",L_UsedToBe,"Have you lived in Einbroch all your life?",L_YouLiveAll;
 	 L_Collapse:
-		if(@quest2 > 4 || @quest3 > 4)goto L_Cont;
+		if (@quest2 > 4 || @quest3 > 4) goto L_Cont;
 		mes "[Sick Old Man]";
 		mes "Noooo!";
 		mes "I don't know";
@@ -85,7 +85,7 @@ L_Ask:
 	 	goto L_Cont;
 
 	 L_UsedToBe:
-		if(@quest2 > 1)goto s_Quest2;
+		if (@quest2 > 1) goto s_Quest2;
 		mes "[Sick Old Man]";
 		mes "Noooo...!";
 	 	mes "W-why would you";
@@ -95,12 +95,12 @@ L_Ask:
 		  
 	  s_Quest2:
 		set @quest2,@quest2 + 1;
-		if(@quest3 > 0)set @quest3,0;
+		if (@quest3 > 0)set @quest3,0;
 		next;
 	 	goto L_Cont;
 
 	 L_YouLiveAll:
-		if(@quest3 > 1)goto s_Quest3;
+		if (@quest3 > 1) goto s_Quest3;
 		mes "[Sick Old Man]";
 		mes "Y-yes!";
 		mes "Born and raised";
@@ -114,7 +114,7 @@ L_Ask:
 		  
 	s_Quest3:
 		set @quest3,@quest3 + 1;
-		if(@quest2 > 0)set @quest2,0;
+		if (@quest2 > 0)set @quest2,0;
 		next;
 	 	goto L_Cont;
 	
@@ -572,7 +572,7 @@ L_Ore:
 }
 
 einbroch.gat,51,52,1	script	lab_warp	45,2,2{
-	if(Shinokas_Quest == 7) goto L_Sec;
+	if (Shinokas_Quest == 7) goto L_Sec;
 	mes "^3131FFThe door is locked.";
 	mes "You cannot enter.";
 	close;
@@ -628,17 +628,17 @@ L_Sec:
 	mes "[Security System]";
 	set @startseconds,gettime(3)*60*60+gettime(2)*60+gettime(1);
 	set L_ShinTemp,rand(1,11);
-	if (L_ShinTemp == 1)goto L_ShinCase1;
-	if (L_ShinTemp == 2)goto L_ShinCase2;
-	if (L_ShinTemp == 3)goto L_ShinCase3;
-	if (L_ShinTemp == 4)goto L_ShinCase4;
-	if (L_ShinTemp == 5)goto L_ShinCase5;
-	if (L_ShinTemp == 6)goto L_ShinCase6;
-	if (L_ShinTemp == 7)goto L_ShinCase7;
-	if (L_ShinTemp == 8)goto L_ShinCase8;
-	if (L_ShinTemp == 9)goto L_ShinCase9;
-	if (L_ShinTemp == 10)goto L_ShinCase10;
-	if (L_ShinTemp == 11)goto L_ShinCase11;
+	if (L_ShinTemp == 1) goto L_ShinCase1;
+	if (L_ShinTemp == 2) goto L_ShinCase2;
+	if (L_ShinTemp == 3) goto L_ShinCase3;
+	if (L_ShinTemp == 4) goto L_ShinCase4;
+	if (L_ShinTemp == 5) goto L_ShinCase5;
+	if (L_ShinTemp == 6) goto L_ShinCase6;
+	if (L_ShinTemp == 7) goto L_ShinCase7;
+	if (L_ShinTemp == 8) goto L_ShinCase8;
+	if (L_ShinTemp == 9) goto L_ShinCase9;
+	if (L_ShinTemp == 10) goto L_ShinCase10;
+	if (L_ShinTemp == 11) goto L_ShinCase11;
 	
 	L_ShinCase1:
 		mes "^00CCFFburrdingdingdilidingdingphoohudaamb";
@@ -867,7 +867,7 @@ airplane.gat,31,77,4	script	Drunken Man#03	853,{
 	mes "win some Apples";
 	mes "this time for sure!";
 	next;
-	if(ein_stuff > 0 && ein_scientist > 0)goto DrunkenMan3;
+	if (ein_stuff > 0 && ein_scientist > 0) goto DrunkenMan3;
 	goto L_ContShin;
 	
 	DrunkenMan3:
@@ -906,7 +906,7 @@ L_Apples:
 	mes "Do you want";
 	mes "some of mine?";
 	next;
-	if (countitem(512) < 100)goto L_DrunkGuy;
+	if (countitem(512) < 100) goto L_DrunkGuy;
 	goto L_DrunkMan;
 	
 	L_DrunkGuy:
@@ -937,22 +937,22 @@ L_DrunkMan:
 	delitem 512,countitem(512);
 	set @kaci,rand(2,12);
 	set @man,rand(2,12);
-	if(@man == @kaci)goto L_ShinSwitch;
+	if (@man == @kaci) goto L_ShinSwitch;
 	goto L_CaseEnd;
 	
 L_ShinSwitch:
 	set @ShinocaTemp1,rand(1,2);
-	if (@ShinocaTemp1 == 1)goto L_Case1;
-	if (@ShinocaTemp1 == 2)goto L_Case2;
+	if (@ShinocaTemp1 == 1) goto L_Case1;
+	if (@ShinocaTemp1 == 2) goto L_Case2;
 
 	L_Case1:
-		if(@man != 12)set @man,@man+1;
-		if(@man == 12)set @main,@main-1;
+		if (@man != 12)set @man,@man+1;
+		if (@man == 12)set @main,@main-1;
 		goto L_CaseEnd;
 
 		L_Case2:
-			if(@man != 2)set @man,@man-1;
-			if(@man == 2)set @man,@man+1;
+			if (@man != 2)set @man,@man-1;
+			if (@man == 2)set @man,@man+1;
 			goto L_CaseEnd;
 		
 	L_CaseEnd:
@@ -960,7 +960,7 @@ L_ShinSwitch:
 	mes "Oooh...";
 	mes "I got a total of ^FF0000"+@kaci+"^000000,";
 	mes "and you have a total of ^FF0000"+@man+"^000000.";
-	if (@man < @kaci)goto L_KaciLose;
+	if (@man < @kaci) goto L_KaciLose;
 	mes "Congratulations, you won!";
 	mes "Let me give you your winning";
 	mes "and we'll play again some time~";
@@ -1127,13 +1127,13 @@ einbech.gat,57,210,4	script	Young Man#04	854,{
 }
 
 einbech.gat,165,105,7	script	Buender Hikeman	847,{
-	if(Shinokas_Quest == 9) goto L_P2;
-	if(Shinokas_Quest == 3)goto L_BEST;
-	if(Shinokas_Quest == 2)goto L_BASTARD;
+	if (Shinokas_Quest == 9) goto L_P2;
+	if (Shinokas_Quest == 3) goto L_BEST;
+	if (Shinokas_Quest == 2) goto L_BASTARD;
 	mes "[Buender Hikeman]";
 	mes "...";
 	mes "......";
-	if(!Shinokas_Quest)close;
+	if (!Shinokas_Quest) close;
 	next;
 	mes "[Buender Hikeman]";
 	mes "...";
@@ -1548,12 +1548,12 @@ L_P2:
 	mes "their intentions can't be good.";
 	close2;
 	set Shinokas_Quest,10;
-	if(BaseLevel < 41)set BaseExp,BaseExp+34750;
-	if(BaseLevel > 40 && BaseLevel < 61)set BaseExp,BaseExp+69500;
-	if(BaseLevel > 60 && BaseLevel < 71)set BaseExp,BaseExp+139000;
-	if(BaseLevel > 70 && BaseLevel < 81)set BaseExp,BaseExp+278000;
-	if(BaseLevel > 80 && BaseLevel < 91)set BaseExp,BaseExp+417000;
-	if(BaseLevel > 90)set BaseExp,BaseExp+556000;
+	if (BaseLevel < 41)set BaseExp,BaseExp+34750;
+	if (BaseLevel > 40 && BaseLevel < 61)set BaseExp,BaseExp+69500;
+	if (BaseLevel > 60 && BaseLevel < 71)set BaseExp,BaseExp+139000;
+	if (BaseLevel > 70 && BaseLevel < 81)set BaseExp,BaseExp+278000;
+	if (BaseLevel > 80 && BaseLevel < 91)set BaseExp,BaseExp+417000;
+	if (BaseLevel > 90)set BaseExp,BaseExp+556000;
 	end;
 	
 L_NNotify:
@@ -1593,12 +1593,12 @@ L_NNotify:
 //============================================= Einbroch Lover
 //====================================================== Quest
 ein_in01.gat,31,151,4	script	Satra	850,{
-	if(EIN_LOVERQ > 11)goto s_Intimi;
-	if(EIN_LOVERQ == 11)goto s_Coal4;
-	if(EIN_LOVERQ == 10)goto s_Coal3;
-	if(EIN_LOVERQ == 9)goto s_Coal2;
-	if(EIN_LOVERQ == 8)goto s_Coal1;
-	if(EIN_LOVERQ == 7)goto s_Advent;
+	if (EIN_LOVERQ > 11) goto s_Intimi;
+	if (EIN_LOVERQ == 11) goto s_Coal4;
+	if (EIN_LOVERQ == 10) goto s_Coal3;
+	if (EIN_LOVERQ == 9) goto s_Coal2;
+	if (EIN_LOVERQ == 8) goto s_Coal1;
+	if (EIN_LOVERQ == 7) goto s_Advent;
 	mes "[Satra]";
 	mes "A wandering";
 	mes "adventurer...?";
@@ -1684,11 +1684,11 @@ s_Coal1:
 	mes "this kind of task will require";
 	mes "some effort on your part.";
 	next;
-	if(EIN_LOVERQ == 8 && countitem(1003) > 9)goto s_GotCoal1;
+	if (EIN_LOVERQ == 8 && countitem(1003) > 9) goto s_GotCoal1;
 	mes "[Satra]";
 	mes "Tah tah,";
 	mes "adventurer~";
-	if(EIN_LOVERQ == 7)set EIN_LOVERQ,8;
+	if (EIN_LOVERQ == 7)set EIN_LOVERQ,8;
 	close;
 
 s_GotCoal1:
@@ -1748,7 +1748,7 @@ s_Coal2:
 	mes "intrepid adventurer.";
 	mes "Ho ho ho ho~";
 	next;
-	if(countitem(1003) > 9)goto s_GotCoal2;
+	if (countitem(1003) > 9) goto s_GotCoal2;
 	mes "[Satra]";
 	mes "My apologies, but you";
 	mes "must first prove to me";
@@ -1831,7 +1831,7 @@ s_Coal3:
 	mes "some sort of adventurer's";
 	mes "errand. Am I right?";
 	next;
-	if(countitem(1003) > 9)goto s_GotCoal3;
+	if (countitem(1003) > 9) goto s_GotCoal3;
 	mes "[Satra]";
 	mes "I know you well enough";
 	mes "to know that you wouldn't";
@@ -1908,7 +1908,7 @@ s_Coal4:
 	mes "I so enjoy our little chats.";
 	mes "Hors d'oeuvre?";
 	next;
-	if(countitem(1003) > 9)goto s_GotCoal4;
+	if (countitem(1003) > 9) goto s_GotCoal4;
 	mes "[Satra]";
 	mes "Ah...";
 	mes "It seems you've";
@@ -1948,7 +1948,7 @@ s_GotCoal4:
 	mes "who actually gathered these?";
 	next;
 	input @str$;
-	if(@str$ != "Clitzer")goto s_WrongName;
+	if (@str$ != "Clitzer") goto s_WrongName;
 	mes "[Satra]";
 	mes "Ah, Clitzer?";
 	mes "I must say, that's";
@@ -2023,8 +2023,8 @@ s_Intimi:
 }
 
 ein_in01.gat,31,138,4	script	Calla	90,{
-	if(EIN_LOVERQ > 4 && EIN_LOVERQ < 14)goto s_NoSwitch;
-	if(EIN_LOVERQ > 1)goto s_Switches;
+	if (EIN_LOVERQ > 4 && EIN_LOVERQ < 14) goto s_NoSwitch;
+	if (EIN_LOVERQ > 1) goto s_Switches;
 
 s_NoSwitch:
 	mes "[Calla]";
@@ -2049,15 +2049,15 @@ s_NoSwitch:
 	mes "heart's true desire?";
 	mes "What I would give to";
 	mes "be able to do that...";
-	if(EIN_LOVERQ < 1)set EIN_LOVERQ,1;
+	if (EIN_LOVERQ < 1)set EIN_LOVERQ,1;
 	close;
 
 s_Switches:
-	if (EIN_LOVERQ == 2)goto L_EinCase2;
-	if (EIN_LOVERQ == 3)goto L_EinCase3;
-	if (EIN_LOVERQ == 4)goto L_EinCase4;
-	if (EIN_LOVERQ == 14)goto L_EinCase14;
-	if (EIN_LOVERQ == 15)goto L_EinCase15;
+	if (EIN_LOVERQ == 2) goto L_EinCase2;
+	if (EIN_LOVERQ == 3) goto L_EinCase3;
+	if (EIN_LOVERQ == 4) goto L_EinCase4;
+	if (EIN_LOVERQ == 14) goto L_EinCase14;
+	if (EIN_LOVERQ == 15) goto L_EinCase15;
 	goto S_WrongName;
 
 	L_EinCase2:
@@ -2111,7 +2111,7 @@ s_Switches:
 		close;
 
 	L_EinCase4:
-		if(countitem(712) == 0)goto s_Regards;
+		if (countitem(712) == 0) goto s_Regards;
 		mes "[Calla]";
 		mes "You've spoken";
 		mes "with Clitzer? How";
@@ -2134,7 +2134,7 @@ s_Switches:
 		mes "tell me your name?";
 		next;
 		input @str$;
-		if(@str$ != strcharinfo(0))goto s_WrongName;
+		if (@str$ != strcharinfo(0)) goto s_WrongName;
 		mes "[Calla]";
 		mes "Ah, " + strcharinfo(0) + "!";
 		mes "Such a lovely name~";
@@ -2203,12 +2203,12 @@ s_Switches:
 		mes "soooooo good.";
 		mes "Wait. Now I just";
 		mes "feel goooood~";
-		if(BaseLevel < 41)set BaseExp,BaseExp+3712;
-		if(BaseLevel > 40 && BaseLevel < 61)set BaseExp,BaseExp+7425;
-		if(BaseLevel > 60 && BaseLevel < 71)set BaseExp,BaseExp+14850;
-		if(BaseLevel > 70 && BaseLevel < 81)set BaseExp,BaseExp+29700;
-		if(BaseLevel > 80 && BaseLevel < 91)set BaseExp,BaseExp+59400;
-		if(BaseLevel > 90)set BaseExp,BaseExp+118800;
+		if (BaseLevel < 41)set BaseExp,BaseExp+3712;
+		if (BaseLevel > 40 && BaseLevel < 61)set BaseExp,BaseExp+7425;
+		if (BaseLevel > 60 && BaseLevel < 71)set BaseExp,BaseExp+14850;
+		if (BaseLevel > 70 && BaseLevel < 81)set BaseExp,BaseExp+29700;
+		if (BaseLevel > 80 && BaseLevel < 91)set BaseExp,BaseExp+59400;
+		if (BaseLevel > 90)set BaseExp,BaseExp+118800;
 		set EIN_LOVERQ,15;
 		next;
 		mes "[Calla]";
@@ -2259,10 +2259,10 @@ s_WrongName:
 }
 
 ein_in01.gat,191,102,4	script	Kaijeta	846,{
-	if(EIN_LOVERQ > 13)goto s_Learned;
-	if(EIN_LOVERQ == 13)goto s_Clothes;
-	if(EIN_LOVERQ > 6 && EIN_LOVERQ < 13)goto s_Hatred;
-	if(EIN_LOVERQ == 6)goto s_Helping;
+	if (EIN_LOVERQ > 13) goto s_Learned;
+	if (EIN_LOVERQ == 13) goto s_Clothes;
+	if (EIN_LOVERQ > 6 && EIN_LOVERQ < 13) goto s_Hatred;
+	if (EIN_LOVERQ == 6) goto s_Helping;
 	mes "[Kaijeta]";
 	mes "Welcome to my humble";
 	mes "abode, adventurer. I'm";
@@ -2370,7 +2370,7 @@ s_Learned:
 }
 
 ein_in01.gat,200,101,4	script	Clitzer	854,{
-	if(EIN_LOVERQ > 0)goto s_Switches;
+	if (EIN_LOVERQ > 0) goto s_Switches;
 s_Back:
 	mes "[Clitzer]";
 	mes "Is there something";
@@ -2395,21 +2395,21 @@ s_Back:
 	close;
 
 s_Switches:
-	if (EIN_LOVERQ == 1)goto EinLoverCase1;
-	if (EIN_LOVERQ == 2)goto EinLoverCase2;
-	if (EIN_LOVERQ == 3)goto EinLoverCase3;
-	if (EIN_LOVERQ == 4)goto EinLoverCase4;
-	if (EIN_LOVERQ == 5)goto EinLoverCase5;
-	if (EIN_LOVERQ == 6)goto EinLoverCase6;
-	if (EIN_LOVERQ == 7)goto EinLoverCase6;
-	if (EIN_LOVERQ == 8)goto EinLoverCase6;
-	if (EIN_LOVERQ == 9)goto EinLoverCase6;
-	if (EIN_LOVERQ == 10)goto EinLoverCase6;
-	if (EIN_LOVERQ == 11)goto EinLoverCase6;
-	if (EIN_LOVERQ == 12)goto EinLoverCase12;
-	if (EIN_LOVERQ == 13)goto EinLoverCase13;
-	if (EIN_LOVERQ == 14)goto EinLoverCase14;
-	if (EIN_LOVERQ == 15)goto EinLoverCase14;
+	if (EIN_LOVERQ == 1) goto EinLoverCase1;
+	if (EIN_LOVERQ == 2) goto EinLoverCase2;
+	if (EIN_LOVERQ == 3) goto EinLoverCase3;
+	if (EIN_LOVERQ == 4) goto EinLoverCase4;
+	if (EIN_LOVERQ == 5) goto EinLoverCase5;
+	if (EIN_LOVERQ == 6) goto EinLoverCase6;
+	if (EIN_LOVERQ == 7) goto EinLoverCase6;
+	if (EIN_LOVERQ == 8) goto EinLoverCase6;
+	if (EIN_LOVERQ == 9) goto EinLoverCase6;
+	if (EIN_LOVERQ == 10) goto EinLoverCase6;
+	if (EIN_LOVERQ == 11) goto EinLoverCase6;
+	if (EIN_LOVERQ == 12) goto EinLoverCase12;
+	if (EIN_LOVERQ == 13) goto EinLoverCase13;
+	if (EIN_LOVERQ == 14) goto EinLoverCase14;
+	if (EIN_LOVERQ == 15) goto EinLoverCase14;
 	
 	EinLoverCase1:
 		mes "[Clitzer]";
@@ -2465,7 +2465,7 @@ s_Switches:
 		close;
 
 	EinLoverCase3:
-		if(countitem(1901) == 0)goto s_Back;
+		if (countitem(1901) == 0) goto s_Back;
 		mes "[Clitzer]";
 		mes "What brings you here?";
 		mes "aren't you tired of hearing";
@@ -2519,12 +2519,12 @@ s_Switches:
 		mes "Hell yeah!";
 		mes "That's the stuff!";
 		delitem 1901,1;
-		if(BaseLevel < 41)set BaseExp,BaseExp+3712;
-		if(BaseLevel > 40 && BaseLevel < 61)set BaseExp,BaseExp+7425;
-		if(BaseLevel > 60 && BaseLevel < 71)set BaseExp,BaseExp+14850;
-		if(BaseLevel > 70 && BaseLevel < 81)set BaseExp,BaseExp+29700;
-		if(BaseLevel > 80 && BaseLevel < 91)set BaseExp,BaseExp+59400;
-		if(BaseLevel > 90)set BaseExp,BaseExp+118800;
+		if (BaseLevel < 41)set BaseExp,BaseExp+3712;
+		if (BaseLevel > 40 && BaseLevel < 61)set BaseExp,BaseExp+7425;
+		if (BaseLevel > 60 && BaseLevel < 71)set BaseExp,BaseExp+14850;
+		if (BaseLevel > 70 && BaseLevel < 81)set BaseExp,BaseExp+29700;
+		if (BaseLevel > 80 && BaseLevel < 91)set BaseExp,BaseExp+59400;
+		if (BaseLevel > 90)set BaseExp,BaseExp+118800;
 		set EIN_LOVERQ,4;
 		next;
 		mes "[Clitzer]";
@@ -2560,7 +2560,7 @@ s_Switches:
 		mes "What's your name?";
 		next;
 		input @str$;
-		if(@str$ != strcharinfo(0))goto s_WrongName;
+		if (@str$ != strcharinfo(0)) goto s_WrongName;
 		mes "[Clitzer]";
 		mes "" + strcharinfo(0) + "...";
 		mes "That's very nice. Thank you,";
@@ -2631,7 +2631,7 @@ s_Switches:
 		close;
 
 	EinLoverCase13:
-		if(countitem(2320) > 0 || countitem(7170) > 0 || countitem(2320) > 0 && countitem(7170) > 0)goto s_Clothes;
+		if (countitem(2320) > 0 || countitem(7170) > 0 || countitem(2320) > 0 && countitem(7170) > 0) goto s_Clothes;
 		mes "[Clitzer]";
 		mes "Noooooo!";
 		mes "I've got to find";
@@ -2666,8 +2666,8 @@ s_Clothes:
 	mes "um, formal? I've never worn";
 	mes "anything like that before!";
 	next;
-	if(countitem(7170) > 0)goto S_TuxPrimary;
-	if(countitem(2320) > 0) set @clothes,2320; goto s_Formal;
+	if (countitem(7170) > 0) goto S_TuxPrimary;
+	if (countitem(2320) > 0) set @clothes,2320; goto s_Formal;
 	close;
 
 S_TuxPrimary:
@@ -2739,15 +2739,15 @@ s_Giveclothes:
 	delitem @clothes,1;
 	set EIN_LOVERQ,14;
 	set @SwitchMustDie,rand(1,9);
-	if (@SwitchMustDie == 1)goto KillSwitch1;
-	if (@SwitchMustDie == 2)goto KillSwitch2;
-	if (@SwitchMustDie == 3)goto KillSwitch3;
-	if (@SwitchMustDie == 4)goto KillSwitch4;
-	if (@SwitchMustDie == 5)goto KillSwitch5;
-	if (@SwitchMustDie == 6)goto KillSwitch6;
-	if (@SwitchMustDie == 7)goto KillSwitch7;
-	if (@SwitchMustDie == 8)goto KillSwitch8;
-	if (@SwitchMustDie == 9)goto KillSwitch9;
+	if (@SwitchMustDie == 1) goto KillSwitch1;
+	if (@SwitchMustDie == 2) goto KillSwitch2;
+	if (@SwitchMustDie == 3) goto KillSwitch3;
+	if (@SwitchMustDie == 4) goto KillSwitch4;
+	if (@SwitchMustDie == 5) goto KillSwitch5;
+	if (@SwitchMustDie == 6) goto KillSwitch6;
+	if (@SwitchMustDie == 7) goto KillSwitch7;
+	if (@SwitchMustDie == 8) goto KillSwitch8;
+	if (@SwitchMustDie == 9) goto KillSwitch9;
 
 	KillSwitch1:
 		getitem 7289,1;
@@ -2909,7 +2909,7 @@ OnPolution:
 	end;
 
 OnMobChk:
-	if(mobcount("einbroch.gat","#PolutionNPC::OnMobChk") > 0)end;
+	if (mobcount("einbroch.gat","#PolutionNPC::OnMobChk") > 0) end;
 
 OnTimer600000:
 	killmonster "einbroch.gat","#PolutionNPC::OnMobChk";
@@ -2956,7 +2956,7 @@ OnTimer600000:
 
 sec_in02.gat,127,86,3	script	Einbroch Polution	851,{
 
-	if(getgmlevel > 79)goto Tsu_Polution1;
+	if (getgmlevel > 79) goto Tsu_Polution1;
 	goto Tsu_Polution2;
 
 Tsu_Polution1:
@@ -2977,8 +2977,8 @@ s_Input:
 	mes "Insert a number you want $EinFactory";
 	mes "to be replaced with. Type '0' to cancel.";
 	input @temppol;
-	if(@temppol < 0)goto s_Error;
-	if(@temppol == 0)close;
+	if (@temppol < 0) goto s_Error;
+	if (@temppol == 0) close;
 	set $EinPolution,@temppol;
 	mes "[Einbroch Polution Variable Management]";
 	mes "$EinPolution has been set to: " + $EinPolution + ".";
@@ -2997,7 +2997,7 @@ Tsu_Polution2:
 
 einbroch.gat,132,84,3	script	Liotzburg	853,{
 
-	if($EinPolution > 9)goto Tsu_Liotzburg1;
+	if ($EinPolution > 9) goto Tsu_Liotzburg1;
 	goto Tsu_PolutionNext1;
 
 Tsu_Liotzburg1:
@@ -3018,8 +3018,8 @@ Tsu_Liotzburg1:
 	end;
 
 Tsu_PolutionNext1:
-	if(EinFactory > 13)goto s_Budget2;
-	if(EinFactory == 13)goto s_Budget;
+	if (EinFactory > 13) goto s_Budget2;
+	if (EinFactory == 13) goto s_Budget;
 	mes "[Liotzburg]";
 	mes "I'm the plant";
 	mes "superintendant of this";
@@ -3066,7 +3066,7 @@ s_Budget:
 	mes "ask for a budget increase.";
 	mes "Well, I think he's lying!";
 	mes "Everything's perfect!";
-	if(EinFactory == 13)set EinFactory,14;
+	if (EinFactory == 13)set EinFactory,14;
 	close;
 	
 s_Budget2:
@@ -3089,7 +3089,7 @@ OnUnhide:
 
 ein_in01.gat,67,243,3	script	Zelmeto	851,{
 
-	if($EinPolution > 9)goto Tsu_EinPolute1;
+	if ($EinPolution > 9) goto Tsu_EinPolute1;
 	goto L_PoluteSkip1;
 
 Tsu_EinPolute1:
@@ -3123,7 +3123,7 @@ Tsu_EinPolute1:
 	end;
 
 L_PoluteSkip1:
-	if(EinFactory > 0)goto s_Switches;
+	if (EinFactory > 0) goto s_Switches;
 	mes "[Zelmeto]";
 	mes "Ah, you must be a visitor.";
 	mes "I'm Zelmeto Abellov, the";
@@ -3230,22 +3230,22 @@ s_Help:
 	close;
 	
 s_Switches:
-	if(EinFactory == 1)goto Ein_Case1;
-	if(EinFactory == 2)goto Ein_Case2;
-	if(EinFactory == 3)goto Ein_Case3;
-	if(EinFactory == 4)goto Ein_Case4;
-	if(EinFactory == 5)goto Ein_Case5;
-	if(EinFactory == 6)goto Ein_Case6;
-	if(EinFactory == 7)goto Ein_Case7;
-	if(EinFactory == 8)goto Ein_Case8;
-	if(EinFactory == 9)goto Ein_Case9;
-	if(EinFactory == 10)goto Ein_Case10;
-	if(EinFactory == 11)goto Ein_Case11;
-	if(EinFactory == 12)goto Ein_Case12;
-	if(EinFactory == 13)goto Ein_Case13;
-	if(EinFactory == 14)goto Ein_Case14;
-	if(EinFactory == 15)goto Ein_Case15;
-	if(EinFactory == 16)goto Ein_Case16;
+	if (EinFactory == 1) goto Ein_Case1;
+	if (EinFactory == 2) goto Ein_Case2;
+	if (EinFactory == 3) goto Ein_Case3;
+	if (EinFactory == 4) goto Ein_Case4;
+	if (EinFactory == 5) goto Ein_Case5;
+	if (EinFactory == 6) goto Ein_Case6;
+	if (EinFactory == 7) goto Ein_Case7;
+	if (EinFactory == 8) goto Ein_Case8;
+	if (EinFactory == 9) goto Ein_Case9;
+	if (EinFactory == 10) goto Ein_Case10;
+	if (EinFactory == 11) goto Ein_Case11;
+	if (EinFactory == 12) goto Ein_Case12;
+	if (EinFactory == 13) goto Ein_Case13;
+	if (EinFactory == 14) goto Ein_Case14;
+	if (EinFactory == 15) goto Ein_Case15;
+	if (EinFactory == 16) goto Ein_Case16;
 
 	Ein_Case1:
 		mes "[Zelmeto]";
@@ -3604,7 +3604,7 @@ s_Switches:
 		close;
 
 	Ein_Case15:
-	if(countitem(7325) > 19 && countitem(7317) > 9 && countitem(7319) > 9)goto s_Again;
+	if (countitem(7325) > 19 && countitem(7317) > 9 && countitem(7319) > 9) goto s_Again;
 		mes "[Zelmeto]";
 		mes "We need";
 		mes "at least";
@@ -3653,7 +3653,7 @@ s_Switches:
 		mes "the factory? How did";
 		mes "you find all of these?";
 		next;
-		if(countitem(7325) < 20 || countitem(7317) < 10 || countitem(7319) < 10)close;
+		if (countitem(7325) < 20 || countitem(7317) < 10 || countitem(7319) < 10) close;
 		delitem 7325,20;
 		delitem 7317,10;
 		delitem 7319,10;
@@ -3724,7 +3724,7 @@ s_Switches:
 
 ein_in01.gat,50,232,4	script	2nd Control Panel	111,{
 
-if(EinFactory != 1)end;
+if (EinFactory != 1) end;
 	mes "^3131FFIt's the 2nd control panel";
 	mes "Zelmeto asked you to inspect.";
 	mes "it looks totally broken: screws";
@@ -3737,7 +3737,7 @@ if(EinFactory != 1)end;
 
 ein_in01.gat,108,217,4	script	3rd Pressure Governor	111,{
 
-if(EinFactory != 3)end;
+if (EinFactory != 3) end;
 	mes "^3131FFAt first glance, this";
 	mes "pressure governor looks";
 	mes "perfectly fine. But after you";
@@ -3751,7 +3751,7 @@ if(EinFactory != 3)end;
 
 ein_in01.gat,61,259,4	script	Main Control Panel	111,{
 
-if(EinFactory != 5)end;
+if (EinFactory != 5) end;
 	mes "^3131FFThe main control panel";
 	mes "doesn't look like it has";
 	mes "any problems. But after";
@@ -3764,7 +3764,7 @@ if(EinFactory != 5)end;
 }
 ein_in01.gat,47,197,4	script	Conveyor#01	111,{
 
-if(EinFactory != 7)end;
+if (EinFactory != 7) end;
 	mes "^3131FFThe conveyor's movements";
 	mes "look jittery and clumsy. The";
 	mes "mechanical arm also doesn't";
@@ -3778,7 +3778,7 @@ if(EinFactory != 7)end;
 
 ein_in01.gat,100,267,4	script	Pipe	111,{
 
-if(EinFactory != 9)end;
+if (EinFactory != 9) end;
 	mes "^3131FFThe inspection of this";
 	mes "pipe didn't take very long.";
 	mes "It's bloated and worn out";
@@ -3792,7 +3792,7 @@ if(EinFactory != 9)end;
 
 ein_in01.gat,95,238,4	script	Conveyor#02	111,{
 
-if(EinFactory != 11)end;
+if (EinFactory != 11) end;
 	mes "^3131FFThis conveyor seems";
 	mes "to have similiar problems";
 	mes "as its smaller version. Its";
@@ -3807,8 +3807,8 @@ if(EinFactory != 11)end;
 //====================================================== Quest
 einbroch.gat,215,180,5	script	Uwe Kleine	85,{
 
-	if(EinUwe == 2)goto s_Cont2;
-	if(EinUwe == 1)goto s_Cont;
+	if (EinUwe == 2) goto s_Cont2;
+	if (EinUwe == 1) goto s_Cont;
 	mes "[Uwe]";
 	mes "Cooking is such a joy~!";
 	mes "The scents, the flavors, the";
@@ -3840,7 +3840,7 @@ s_Forge:
 	next;
 	mes "[Uwe]";
 	mes "So, how can";
-	if(Sex != 0)goto PlayerMale;
+	if (Sex != 0) goto PlayerMale;
 	mes "I help you?";
 	goto Uwe_Menu1;
 	
@@ -4030,12 +4030,12 @@ s_Cont:
 	menu "Talk about Einbroch",s_Ein,"Ask him to forge a Weapon.",s_Weap,"Give him the Materials.",s_Material,"Cancel.",-;
 
 s_Material:
-	if(countitem(7126) > 5)goto s_EnoughItems;
+	if (countitem(7126) > 5) goto s_EnoughItems;
 	mes "[Uwe]";
 	mes "Huh...?";
 	mes "You brought";
-	if(countitem(7126) > 0)mes "only " + countitem(7126) + " of them?";
-	if(!countitem(7126) == 0)mes "none at all...?";
+	if (countitem(7126) > 0)mes "only " + countitem(7126) + " of them?";
+	if (!countitem(7126) == 0)mes "none at all...?";
 	mes "Next time, be sure";
 	mes "to bring 6 Large Jellopies,";
 	mes "okay? Don't forget, cutie~";

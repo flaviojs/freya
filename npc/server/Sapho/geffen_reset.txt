@@ -14,37 +14,37 @@
 
 geffen.gat,68,58,4	script	Arkus	743,{
 
-	if(gettime(6) == 1) set @tempmonth$,"Janvier";
-	if(gettime(6) == 1) set @nextmonth$,"Février";
-	if(gettime(6) == 2) set @tempmonth$,"Février"; 
-	if(gettime(6) == 2) set @nextmonth$,"Mars";
-	if(gettime(6) == 3) set @tempmonth$,"Mars";
-	if(gettime(6) == 3) set @nextmonth$,"Avril";
-	if(gettime(6) == 4) set @tempmonth$,"Avril";
-	if(gettime(6) == 4) set @nextmonth$,"Mai";
-	if(gettime(6) == 5) set @tempmonth$,"Mai";
-	if(gettime(6) == 5) set @nextmonth$,"Juin";
-	if(gettime(6) == 6) set @tempmonth$,"Juin";
-	if(gettime(6) == 6) set @nextmonth$,"Juillet";
-	if(gettime(6) == 7) set @tempmonth$,"Juillet";
-	if(gettime(6) == 7) set @nextmonth$,"Août";
-	if(gettime(6) == 8) set @tempmonth$,"Août";
-	if(gettime(6) == 8) set @nextmonth$,"Septembre";
-	if(gettime(6) == 9) set @tempmonth$,"Septembre";
-	if(gettime(6) == 9) set @nextmonth$,"Octobre";
-	if(gettime(6) == 10) set @tempmonth$,"Octobre";
-	if(gettime(6) == 10) set @nextmonth$,"Novembre";
-	if(gettime(6) == 11) set @tempmonth$,"Novembre";
-	if(gettime(6) == 11) set @nextmonth$,"Décembre";
-	if(gettime(6) == 12) set @tempmonth$,"Décembre";
-	if(gettime(6) == 12) set @nextmonth$,"Janvier";
+	if (gettime(6) == 1) set @tempmonth$,"Janvier";
+	if (gettime(6) == 1) set @nextmonth$,"Février";
+	if (gettime(6) == 2) set @tempmonth$,"Février"; 
+	if (gettime(6) == 2) set @nextmonth$,"Mars";
+	if (gettime(6) == 3) set @tempmonth$,"Mars";
+	if (gettime(6) == 3) set @nextmonth$,"Avril";
+	if (gettime(6) == 4) set @tempmonth$,"Avril";
+	if (gettime(6) == 4) set @nextmonth$,"Mai";
+	if (gettime(6) == 5) set @tempmonth$,"Mai";
+	if (gettime(6) == 5) set @nextmonth$,"Juin";
+	if (gettime(6) == 6) set @tempmonth$,"Juin";
+	if (gettime(6) == 6) set @nextmonth$,"Juillet";
+	if (gettime(6) == 7) set @tempmonth$,"Juillet";
+	if (gettime(6) == 7) set @nextmonth$,"Août";
+	if (gettime(6) == 8) set @tempmonth$,"Août";
+	if (gettime(6) == 8) set @nextmonth$,"Septembre";
+	if (gettime(6) == 9) set @tempmonth$,"Septembre";
+	if (gettime(6) == 9) set @nextmonth$,"Octobre";
+	if (gettime(6) == 10) set @tempmonth$,"Octobre";
+	if (gettime(6) == 10) set @nextmonth$,"Novembre";
+	if (gettime(6) == 11) set @tempmonth$,"Novembre";
+	if (gettime(6) == 11) set @nextmonth$,"Décembre";
+	if (gettime(6) == 12) set @tempmonth$,"Décembre";
+	if (gettime(6) == 12) set @nextmonth$,"Janvier";
 	set @ann_proch, gettime(7)+1;
 
-	cutin "job_sage_kayron",2;
-	if(BaseJob != Job_Novice || JobLevel > 1 || read_rules == 2) goto pre_pas_deb;
+	cutin "JOB_SAGE_kayron",2;
+	if (BaseJob != JOB_NOVICE || JobLevel > 1 || read_rules == 2) goto pre_pas_deb;
 	mes "[Arkus]";
-	if(sex==0) mes "Bienvenue sur Sapho Lady ^5555FF"+strcharinfo(0)+"^000000 !";
-	if(sex==1) mes "Bienvenue sur Sapho Sir ^5555FF"+strcharinfo(0)+"^000000 !";
+	if (sex==0) mes "Bienvenue sur Sapho Lady ^5555FF"+strcharinfo(0)+"^000000 !";
+	if (sex==1) mes "Bienvenue sur Sapho Sir ^5555FF"+strcharinfo(0)+"^000000 !";
 	next;
 	goto starting;
 
@@ -62,17 +62,17 @@ starting:
 
 pre_pas_deb:
 	mes "[Arkus]";
-	if(sex==0) mes "Bien le bonjour Lady ^5555FF"+strcharinfo(0)+"^000000.";
-	if(sex==1) mes "Bien le bonjour Sir ^5555FF"+strcharinfo(0)+"^000000."; 
+	if (sex==0) mes "Bien le bonjour Lady ^5555FF"+strcharinfo(0)+"^000000.";
+	if (sex==1) mes "Bien le bonjour Sir ^5555FF"+strcharinfo(0)+"^000000."; 
 	next;
-	if(getgmlevel(99)>= 80) goto menu_gm;
+	if (getgmlevel(99)>= 80) goto menu_gm;
 	goto pas_deb;
 
 pas_deb:
 	mes "[Arkus]";
-	if(getgmlevel(99)<= 60 && sex==0) mes "Tu n'es pas novice ou du moins plus une débutante, que puis-je pour toi ?";
-	if(getgmlevel(99)<= 60 && sex==1) mes "Tu n'es pas novice ou du moins plus un débutant, que puis-je pour toi ?";
-	if(getgmlevel(99)>= 80) mes "Que puis-je pour vous?";
+	if (getgmlevel(99)<= 60 && sex==0) mes "Tu n'es pas novice ou du moins plus une débutante, que puis-je pour toi ?";
+	if (getgmlevel(99)<= 60 && sex==1) mes "Tu n'es pas novice ou du moins plus un débutant, que puis-je pour toi ?";
+	if (getgmlevel(99)>= 80) mes "Que puis-je pour vous?";
 	next;
 	menu "Je voudrais relire les Lois.",Regles,"Pourquoi donc des Lois?",Fous,"Quels sont les GMs connectés?",GM_co,"Pour les reset?",reset,"Rien, merci.",yop;
 
@@ -83,9 +83,9 @@ Choix:
 	menu "Les lois, je veux les lire!",Regles,"Les lois et moi on est pas compatibles !",Nan,"Pourquoi donc des Lois?",Fous,"Quels sont les GMs connectés?",GM_co,"Pour les reset?",reset;
 
 Regles:
-	if(BaseJob == Job_Novice && JobLevel <= 1 && read_rules != 2) set read_rules,1;
-	if(BaseJob == Job_Novice && JobLevel <= 1 && read_rules != 2) initnpctimer;
-	if(BaseJob == Job_Novice && JobLevel <= 1 && read_rules != 2) attachnpctimer;
+	if (BaseJob == JOB_NOVICE && JobLevel <= 1 && read_rules != 2) set read_rules,1;
+	if (BaseJob == JOB_NOVICE && JobLevel <= 1 && read_rules != 2) initnpctimer;
+	if (BaseJob == JOB_NOVICE && JobLevel <= 1 && read_rules != 2) attachnpctimer;
 	mes "[Heraut]";
 	mes "Voila quelqu'un de bonne volonté.";
 	mes "Prends bien le temps de lire et comprendre chaque loi ;)";
@@ -129,7 +129,7 @@ Regles:
 	mes "[Heraut]";
 	mes "^ff0000Loi 07 :";
 	mes "Il est interdit de nommer ses personnages d'une manière déclarée non conforme.^000000";
-	mes "*Note : Les caracteres autorisés sont les lettres de l'alphabet de A a Z (la casse n'a pas d'importance), les chiffres de 0 a 9, l'apostrophe ( ' ), l'espace et le tiret ( - ).";
+	mes "*Note : Les caracteres autorisés sont les lettres de l'alphabet de A a Z (la casse n'a pas d'importance), les chiffres de 0 a 9, l'apostrophe ('), l'espace et le tiret (-).";
 	mes "Les Game Masters ne s'occuperont jamais des personnages dont le nom n'est pas conforme à cette loi.";
 	next;
 	mes "[Heraut]";
@@ -176,16 +176,16 @@ Regles:
 	mes "Ensuite, je te déconseille également de ^ff0000préter des zenys ou des items rares à des personnes^000000 en qui tu n'as pas une totale confiance.";
 	mes "Tout le monde ne sera pas forcément honnête et les Game Master ne te rendront jamais les items ou zenys volés ;)";
 	next;
-	if(BaseJob == Job_Novice && JobLevel <= 1 && read_rules != 2) mes "[Heraut]";
-	if(BaseJob == Job_Novice && JobLevel <= 1 && read_rules != 2) mes "Si tu as bien pris le temps de lire toutes ces lois, une petite surprise devrait alors être apparue dans ton inventaire, elle te permettra de mieux commencer ton aventure =).";
-	if(BaseJob == Job_Novice && JobLevel <= 1 && read_rules != 2) next;
-	if(BaseJob == Job_Novice && JobLevel <= 1 && read_rules == 1) set read_rules,2;
+	if (BaseJob == JOB_NOVICE && JobLevel <= 1 && read_rules != 2) mes "[Heraut]";
+	if (BaseJob == JOB_NOVICE && JobLevel <= 1 && read_rules != 2) mes "Si tu as bien pris le temps de lire toutes ces lois, une petite surprise devrait alors être apparue dans ton inventaire, elle te permettra de mieux commencer ton aventure =).";
+	if (BaseJob == JOB_NOVICE && JobLevel <= 1 && read_rules != 2) next;
+	if (BaseJob == JOB_NOVICE && JobLevel <= 1 && read_rules == 1) set read_rules,2;
 	mes "[Heraut]";
 	mes "Merci d'avoir pris le temps de lire ces règles.";
-	if(sex==0) mes "Bonne chance à toi, courageuse Lady ^5555FF"+strcharinfo(0)+"^000000 !";
-	if(sex==1) mes "Bonne chance à toi, courageux Sir ^5555FF"+strcharinfo(0)+"^000000 !";
+	if (sex==0) mes "Bonne chance à toi, courageuse Lady ^5555FF"+strcharinfo(0)+"^000000 !";
+	if (sex==1) mes "Bonne chance à toi, courageux Sir ^5555FF"+strcharinfo(0)+"^000000 !";
 	mes "Et surtout, bon jeu =)";
-	cutin "job_sage_kayron",255;
+	cutin "JOB_SAGE_kayron",255;
 	close;
 
 GM_co:
@@ -199,19 +199,19 @@ GM_co:
 	next;
 	mes "[Arkus]";
 	mes "A bientôt ;)";
-	cutin "job_sage_kayron",255;
+	cutin "JOB_SAGE_kayron",255;
 	close;
 
 Nan:
 	mes "[Arkus]";
-	if(sex==0) mes "Très bien Lady ^5555FF"+strcharinfo(0)+"^000000. Saches néanmoins que si tu enfreins une de ces lois, tu risques une sanction plus ou moins importante selon le cas.";
-	if(sex==1) mes "Très bien Sir ^5555FF"+strcharinfo(0)+"^000000. Saches néanmoins que si tu enfreins une de ces lois, tu risques une sanction plus ou moins importante selon le cas.";
+	if (sex==0) mes "Très bien Lady ^5555FF"+strcharinfo(0)+"^000000. Saches néanmoins que si tu enfreins une de ces lois, tu risques une sanction plus ou moins importante selon le cas.";
+	if (sex==1) mes "Très bien Sir ^5555FF"+strcharinfo(0)+"^000000. Saches néanmoins que si tu enfreins une de ces lois, tu risques une sanction plus ou moins importante selon le cas.";
 	mes "De la prison, en passant par le ban temporaire, jusqu'au ban définitif.";
 	mes "Ces lois ne sont pas nombreuses, cela ne prend que quelques minutes pour les lire et ainsi éviter les risques inutiles.";
 	next;
 	mes "[Arkus]";
-	if(sex==0) mes "Es-tu sûre de vouloir ignorer ces quelques lois?";
-	if(sex==1) mes "Es-tu sûr de vouloir ignorer ces quelques lois?";
+	if (sex==0) mes "Es-tu sûre de vouloir ignorer ces quelques lois?";
+	if (sex==1) mes "Es-tu sûr de vouloir ignorer ces quelques lois?";
 	next;
 	menu "Oui !",yop,"Non, finalement, je vais les lire.",lect;
 	close;
@@ -222,7 +222,7 @@ yop:
 	if (getgmlevel(99)<= 60) mes "Tu sais ce que tu fais ;)";
 	mes "Bonne chance et/ou bon jeu.";
 
-	cutin "job_sage_kayron",255;
+	cutin "JOB_SAGE_kayron",255;
 	close;
 
 lect:
@@ -280,12 +280,12 @@ res_stats:
 	mes "Ok tes stats viennent d'être reset pour le mois de ^5555FF"+@tempmonth$+" "+gettime(7)+"^000000.";
 	next;
 	mes "[Arkus]";
-	if(gettime(6) != 12) mes "Ton prochain reset pourra se faire en ^5555FF"+@nextmonth$+" "+gettime(7)+"^000000.";
-	if(gettime(6) == 12) mes "Ton prochain reset pourra se faire en ^5555FF"+@nextmonth$+" "+@ann_proch+"^000000.";
+	if (gettime(6) != 12) mes "Ton prochain reset pourra se faire en ^5555FF"+@nextmonth$+" "+gettime(7)+"^000000.";
+	if (gettime(6) == 12) mes "Ton prochain reset pourra se faire en ^5555FF"+@nextmonth$+" "+@ann_proch+"^000000.";
 	next;
 	mes "[Arkus]";
 	mes "A bientôt et bon jeu à toi =)";
-	cutin "job_sage_kayron",255;
+	cutin "JOB_SAGE_kayron",255;
 	close;
 
 res_skill:
@@ -308,12 +308,12 @@ res_skill:
 	mes "Ok tes skills viennent d'être reset pour le mois de ^5555FF"+@tempmonth$+" "+gettime(7)+"^000000.";
 	next;
 	mes "[Arkus]";
-	if(gettime(6) != 12) mes "Ton prochain reset pourra se faire en ^5555FF"+@nextmonth$+" "+gettime(7)+"^000000.";
-	if(gettime(6) == 12) mes "Ton prochain reset pourra se faire en ^5555FF"+@nextmonth$+" "+@ann_proch+"^000000.";
+	if (gettime(6) != 12) mes "Ton prochain reset pourra se faire en ^5555FF"+@nextmonth$+" "+gettime(7)+"^000000.";
+	if (gettime(6) == 12) mes "Ton prochain reset pourra se faire en ^5555FF"+@nextmonth$+" "+@ann_proch+"^000000.";
 	next;
 	mes "[Arkus]";
 	mes "A bientôt et bon jeu à toi =)";
-	cutin "job_sage_kayron",255;
+	cutin "JOB_SAGE_kayron",255;
 	close;
 
 res_both:
@@ -338,12 +338,12 @@ res_both:
 	mes "Ok tes stats et tes skills viennent d'être reset pour le mois de ^5555FF"+@tempmonth$+" "+gettime(7)+"^000000.";
 	next;
 	mes "[Arkus]";
-	if(gettime(6) != 12) mes "Ton prochain reset pourra se faire en ^5555FF"+@nextmonth$+" "+gettime(7)+"^000000.";
-	if(gettime(6) == 12) mes "Ton prochain reset pourra se faire en ^5555FF"+@nextmonth$+" "+@ann_proch+"^000000.";
+	if (gettime(6) != 12) mes "Ton prochain reset pourra se faire en ^5555FF"+@nextmonth$+" "+gettime(7)+"^000000.";
+	if (gettime(6) == 12) mes "Ton prochain reset pourra se faire en ^5555FF"+@nextmonth$+" "+@ann_proch+"^000000.";
 	next;
 	mes "[Arkus]";
 	mes "A bientôt et bon jeu à toi =)";
-	cutin "job_sage_kayron",255;
+	cutin "JOB_SAGE_kayron",255;
 	close;
 
 pas_level:
@@ -351,7 +351,7 @@ pas_level:
 	mes "Désolé mais tu n'as pas le 'Base level' requis pour pouvoir reset.";
 	mes "Tu dois être au minimum ^ff0000'base level' 20^000000.";
 	mes "A bientôt et bon jeu à toi =)";
-	cutin "job_sage_kayron",255;
+	cutin "JOB_SAGE_kayron",255;
 	close;
 
 deja_reset:
@@ -360,12 +360,12 @@ deja_reset:
 	mes "Il n'est permis qu'^ff0000un seul reset par mois et par perso^000000.";
 	next;
 	mes "[Arkus]";
-	if(gettime(6) != 12) mes "Ton prochain reset pourra se faire en ^5555FF"+@nextmonth$+" "+gettime(7)+"^000000.";
-	if(gettime(6) == 12) mes "Ton prochain reset pourra se faire en ^5555FF"+@nextmonth$+" "+@ann_proch+"^000000.";
+	if (gettime(6) != 12) mes "Ton prochain reset pourra se faire en ^5555FF"+@nextmonth$+" "+gettime(7)+"^000000.";
+	if (gettime(6) == 12) mes "Ton prochain reset pourra se faire en ^5555FF"+@nextmonth$+" "+@ann_proch+"^000000.";
 	next;
 	mes "[Arkus]";
 	mes "A bientôt et bon jeu à toi =)";
-	cutin "job_sage_kayron",255;
+	cutin "JOB_SAGE_kayron",255;
 	close;
 
 no_zenys:
@@ -373,7 +373,7 @@ no_zenys:
 	mes "Désolé, mais tu ne disposes pas d'assez de zenys sur toi pour pouvoir reset.";
 	mes "Reviens me voir quant tu auras la somme demandée.";
 	mes "A bientôt et bon jeu à toi =)";
-	cutin "job_sage_kayron",255;
+	cutin "JOB_SAGE_kayron",255;
 	close;
 
 menu_gm:

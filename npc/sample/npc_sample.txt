@@ -130,7 +130,7 @@ prontera.gat,136,203,6	shop	道具商人	73,501:5,502:20,503:55,504:120,506:20,645:8
 //  StatusPoint : 振り分け可能なステータスポイント数
 //  SkillPoint  : 振り分け可能なスキルポイント数
 //  Class : キャラクターの職業の種類
-//     Class値についてはJob_Novice等db/const.txtで定数定義されてますのでこちらを使うと良いでしょう
+//     Class値についてはJOB_NOVICE等db/const.txtで定数定義されてますのでこちらを使うと良いでしょう
 //  Zeny  : お金
 //  Sex   : 性別[0=♂, 1=♀]
 //
@@ -189,7 +189,7 @@ prontera.gat,136,203,6	shop	道具商人	73,501:5,502:20,503:55,504:120,506:20,645:8
 // 先に表示してある画像を消去してから後で指定される画像を表示します
 //
 //  jobchange <Jobid>;
-// PCの職をJobnameで指定した職に変更します。指定できるJobidについてはdb/const.txtのJob_ではじまる行を
+// PCの職をJobnameで指定した職に変更します。指定できるJobidについてはdb/const.txtのJOB_ではじまる行を
 // 参照してください。constで指定している埋めこみ変数名も使用できます。
 // jobchangeを行うと、JobLvは1に、ステータスボーナスはその職に
 // 合わせた物に変化します。Athena-d2.1ではスキルは使えないので、見た目変更だけと思ってください。
@@ -197,7 +197,7 @@ prontera.gat,136,203,6	shop	道具商人	73,501:5,502:20,503:55,504:120,506:20,645:8
 // 1.追加2次職(クルセイダー等)にjobchangeをする場合、服色パレットを変更している場合はリソースエラーが
 // 起きますので、実行しないようにしてください。
 // 2.バードとダンサーのJobnameは別になっています。
-// このため、男性PCに対してJob_Dancerを実行したり、女性PCに対してjob_Birdを実行しないようにしてください。
+// このため、男性PCに対してJOB_DANCERを実行したり、女性PCに対してjob_Birdを実行しないようにしてください。
 // クライアントによってはリソースエラーで落ちます。
 // map側では整合チェックを行っていないため、スクリプト側でチェックする必要があります。
 // npc_testJ.txtの例を参照してください。
@@ -297,13 +297,13 @@ prontera.gat,136,203,6	shop	道具商人	73,501:5,502:20,503:55,504:120,506:20,645:8
 // scriptの例:
 prontera.gat,146,203,2	script	デバッガー要員	116,{
 	cutin "kafra_02",2;
-	if(countitem(515)<10) goto Llesscarrot;
+	if (countitem(515)<10) goto Llesscarrot;
 	mes "[デバッガー要員]";
 	mes "あらあら、にんじんを沢山持ってますね。";
 	mes "という事で、うさうさ好きと勝手にわたしが認定しました。";
 	mes "にんじん10本と交換でうさみみヘアバンドをさしあげますね。";
 	next;
-	if(countitem(515)<10) goto Llesscarrot_err;
+	if (countitem(515)<10) goto Llesscarrot_err;
 	delitem 515,10;
 	getitem 2214,1;
 	goto Llesscarrot;
@@ -366,19 +366,19 @@ Ljobchange:
 		"アサシン",Las,
 		"おまかせ",Lrandom,
 		"やめる",Ljchcancel;
-Lnv:	jobchange Job_Novice;	goto Lend;
-Lsm:	jobchange Job_Swordman;	goto Lend;
-Lmg:	jobchange Job_Mage;	goto Lend;
-Lac:	jobchange Job_Archer;	goto Lend;
-Lal:	jobchange Job_Acolyte;	goto Lend;
-Lmc:	jobchange Job_Merchant;	goto Lend;
-Ltf:	jobchange Job_Thief;	goto Lend;
-Lkn:	jobchange Job_Knight;	goto Lend;
-Lpr:	jobchange Job_Priest;	goto Lend;
-Lwz:	jobchange Job_Wizard;	goto Lend;
-Lbs:	jobchange Job_Blacksmith;	goto Lend;
-Lht:	jobchange Job_Hunter;	goto Lend;
-Las:	jobchange Job_Assassin;	goto Lend;
+Lnv:	jobchange JOB_NOVICE;	goto Lend;
+Lsm:	jobchange JOB_SWORDMAN;	goto Lend;
+Lmg:	jobchange JOB_MAGE;	goto Lend;
+Lac:	jobchange JOB_ARCHER;	goto Lend;
+Lal:	jobchange JOB_ACOLYTE;	goto Lend;
+Lmc:	jobchange JOB_MERCHANT;	goto Lend;
+Ltf:	jobchange JOB_THIEF;	goto Lend;
+Lkn:	jobchange JOB_KNIGHT;	goto Lend;
+Lpr:	jobchange JOB_PRIEST;	goto Lend;
+Lwz:	jobchange JOB_WIZARD;	goto Lend;
+Lbs:	jobchange JOB_BLACKSMITH;	goto Lend;
+Lht:	jobchange JOB_HUNTER;	goto Lend;
+Las:	jobchange JOB_ASSASSIN;	goto Lend;
 Lrandom:
 	mes "[デバッガー要員]";
 	mes "では…";

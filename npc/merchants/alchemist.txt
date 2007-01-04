@@ -29,10 +29,10 @@ alde_alche.gat,24,188,3	script	Gever AI Sharp	740,{
 			mes "Enter '0' if you want to quit.";
 			next;
 			input @num;
-			if((@num < 1) || (@num > 10000)) goto M_Bye;
+			if ((@num < 1) || (@num > 10000)) goto M_Bye;
 			set @price,@num * 8;
 			mes "[Gever AI Sharp]";
-			if(zeny < @price) goto sL_NoZeny;
+			if (zeny < @price) goto sL_NoZeny;
 			if (checkweight(@item,@num) == 0) goto sL_OverW;
 			set zeny,Zeny-@price;
 			getitem 7134,@num;
@@ -89,13 +89,13 @@ alde_alche.gat,24,188,3	script	Gever AI Sharp	740,{
 	L_Choice:
 		mes "[Gever AI Sharp]";
 		mes "An " + @itemname$ + " Creation Guide??";
-		if(@price == 100000) mes "That will be 100,000 Zeny";
-		if(@price == 240000) mes "That will be 240,000 Zeny";
+		if (@price == 100000) mes "That will be 100,000 Zeny";
+		if (@price == 240000) mes "That will be 240,000 Zeny";
 		next;
 		menu "Purchase.",-,"Quit.",M_Bye;
 
 			mes "[Gever AI Sharp]";
-			if(zeny < @price) goto sL_NoZeny;
+			if (zeny < @price) goto sL_NoZeny;
 			if (checkweight(@itemid,1) == 0) goto sL_OverW;
 			getitem @itemid,1;
 			set zeny,zeny-@price;

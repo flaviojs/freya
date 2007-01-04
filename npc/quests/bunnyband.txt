@@ -60,7 +60,7 @@ alberta.gat,23,232,1	script	Kafra Corp. Rep.#1::KCRep	83,{
 		close;
 
 	L_Check:
-		if(countitem(949)<100 || countitem(706)<1 || countitem(722)<1 || countitem(2213)<1) goto sL_NoItems;
+		if (countitem(949)<100 || countitem(706)<1 || countitem(722)<1 || countitem(2213)<1) goto sL_NoItems;
 		delitem 949,100;
 		delitem 706,1;
 		delitem 722,1;

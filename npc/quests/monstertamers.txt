@@ -83,7 +83,7 @@ M_Menu:
 		menu "^5555FF'Monster Juice'^000000",sM_1, "^5555FF'Singing Flower'^000000",sM_2, "^5555FF'Wild Flower'^000000",sM_3, "Cancel",M_End;
 
 		sM_1:
-			if(countitem(702)<1 || countitem(512)<2) goto sL_NoItems;
+			if (countitem(702)<1 || countitem(512)<2) goto sL_NoItems;
 			mes "[Monster Tamer Iwado]";
 			mes "Alright, just a minute while I prepare the tame......";
 			next;
@@ -94,7 +94,7 @@ M_Menu:
 			delitem 512,2;
 			close;
 		sM_2:
-			if(countitem(707)<1) goto sL_NoItems;
+			if (countitem(707)<1) goto sL_NoItems;
 			mes "[Monster Tamer Iwado]";
 			mes "Alright, just a minute while I prepare the tame......";
 			next;
@@ -104,7 +104,7 @@ M_Menu:
 			delitem 707,1;
 			close;
 		sM_3:
-			if(countitem(2207)<1 || countitem(705)<1) goto sL_NoItems;
+			if (countitem(2207)<1 || countitem(705)<1) goto sL_NoItems;
 			mes "[Monster Tamer Iwado]";
 			mes "Alright, just a minute while I prepare the tame......";
 			next;
@@ -249,7 +249,7 @@ M_Menu:
 			"Cancel",M_End;
 
 		sM_1:
-			if(countitem(5017)<1) goto sL_NoItems;
+			if (countitem(5017)<1) goto sL_NoItems;
 			mes "[Monster Tamer YuU]";
 			mes "Alright, just a minute while I prepare the tame......";
 			next;
@@ -259,7 +259,7 @@ M_Menu:
 			delitem 5017,1;
 			close;
 		sM_2:
-			if(countitem(5004)<1) goto sL_NoItems;
+			if (countitem(5004)<1) goto sL_NoItems;
 			mes "[Monster Tamer YuU]";
 			mes "Alright, just a minute while I prepare the tame......";
 			next;
@@ -269,7 +269,7 @@ M_Menu:
 			delitem 5004,1;
 			close;
 		sM_3:
-			if(countitem(2208)<1) goto sL_NoItems;
+			if (countitem(2208)<1) goto sL_NoItems;
 			mes "[Monster Tamer YuU]";
 			mes "Alright, just a minute while I prepare the tame......";
 			next;
@@ -279,7 +279,7 @@ M_Menu:
 			delitem 2208,1;
 			close;
 		sM_4:
-			if(countitem(2294)<1) goto sL_NoItems;
+			if (countitem(2294)<1) goto sL_NoItems;
 			mes "[Monster Tamer YuU]";
 			mes "Alright, just a minute while I prepare the tame......";
 			next;
@@ -289,7 +289,7 @@ M_Menu:
 			delitem 2294,1;
 			close;
 		sM_5:
-			if(countitem(5015)<1) goto sL_NoItems;
+			if (countitem(5015)<1) goto sL_NoItems;
 			mes "[Monster Tamer YuU]";
 			mes "Alright, just a minute while I prepare the tame......";
 			next;
@@ -299,7 +299,7 @@ M_Menu:
 			delitem 5015,1;
 			close;
 		sM_6:
-			if(countitem(2208)<1 || countitem(912)<2 || Zeny<400) goto sL_NoItems;
+			if (countitem(2208)<1 || countitem(912)<2 || Zeny<400) goto sL_NoItems;
 			mes "[Monster Tamer YuU]";
 			mes "Alright, just a minute while I prepare the tame......";
 			next;
@@ -393,7 +393,7 @@ M_Menu:
 		menu "^5555FF'Book of Devil'^000000",sM_1, "^5555FF'No Recipient'^000000",sM_2, "^5555FF'Horror of Tribe'^000000",sM_3, "Cancel",M_End;
 
 		sM_1:
-			if(countitem(1006)<1 || countitem(958)<2) goto sL_NoItems;
+			if (countitem(1006)<1 || countitem(958)<2) goto sL_NoItems;
 			mes "[Monster Tamer Shogo]";
 			mes "Alright, just a minute while I prepare the tame......";
 			next;
@@ -404,7 +404,7 @@ M_Menu:
 			delitem 958,2;
 			close;
 		sM_2:
-			if(countitem(7014)<1) goto sL_NoItems;
+			if (countitem(7014)<1) goto sL_NoItems;
 			mes "[Monster Tamer Shogo]";
 			mes "Alright, just a minute while I prepare the tame......";
 			next;
@@ -414,7 +414,7 @@ M_Menu:
 			delitem 7014,1;
 			close;
 		sM_3:
-			if(countitem(1004)<1 || countitem(904)<1) goto sL_NoItems;
+			if (countitem(1004)<1 || countitem(904)<1) goto sL_NoItems;
 			mes "[Monster Tamer Shogo]";
 			mes "Alright, just a minute while I prepare the tame......";
 			next;

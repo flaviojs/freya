@@ -21,8 +21,8 @@
 // Morrison ------------------------------------------------
 prt_in.gat,47,173,2	script	Morrison	97,{
 	mes "[Little Morrison]";
-	if(MEAT > 10) goto L_Candy;
-	if(MARIANNE == 1) goto L_GoAway;
+	if (MEAT > 10) goto L_Candy;
+	if (MARIANNE == 1) goto L_GoAway;
 
 	mes "Wahhhhh!!! Wahh... NO more! NO more!";
 	mes "I won't... eat anymore stupid ^0000ffFruit^000000 things!!";
@@ -31,7 +31,7 @@ prt_in.gat,47,173,2	script	Morrison	97,{
 	menu "Talk",M_Talk,"Cancel",M_End;
 
 	M_Talk:
-		if(countitem(517) > 0) goto L_Meat; //Meat
+		if (countitem(517) > 0) goto L_Meat; //Meat
 
 		mes "[Little Morrison]";
 		mes "Arhhggg!! I'VE HAD ENOUGH!!! I can't eat anymore ^0000ffFruits^000000! They";
@@ -110,8 +110,8 @@ L_Candy:
 // Housewife Marianne ---------------------------------------------------
 prt_in.gat,49,172,2	script	Housewife Marianne	53,{
 	mes "[Housewife Marianne]";
-	if(MORRISON == 1) goto L_GaveMeat;
-	if(MORRISON == 2) goto L_Juice;
+	if (MORRISON == 1) goto L_GaveMeat;
+	if (MORRISON == 2) goto L_Juice;
 
 	mes "Morrison!! Please eat some fruit will ya? Fruit~!";
 	mes "*Sob*~!! Like father like son...";
@@ -181,7 +181,7 @@ L_Juice:
 // Juicer Marx Hansen ---------------------------------------------------------
 payon_in01.gat,5,48,7	script	Juicer Marx Hansen	86,{
 	mes "[Juicer Marx Hansen]";
-	if(MARIANNE == 1) goto L_Juice;
+	if (MARIANNE == 1) goto L_Juice;
 	mes "Welcome to my shop. What brings you here?";
 	next;
 	menu "Conversation",M_0a,"I am just looking around",M_0b;
@@ -254,10 +254,10 @@ sF_Make:
 
 		set @amount,1000;		//max possible amount of Juice
 		//calc max possible # juices
-		if(Zeny/3 < @amount) set @ipnut, Zeny/3;
-		if(countitem(getarg(0)) < @amount) set @amount, countitem(getarg(0));
-		if(countitem(713) < @amount) set @amount, countitem(713);
-		if(@amount > 0) goto L_Make;
+		if (Zeny/3 < @amount) set @ipnut, Zeny/3;
+		if (countitem(getarg(0)) < @amount) set @amount, countitem(getarg(0));
+		if (countitem(713) < @amount) set @amount, countitem(713);
+		if (@amount > 0) goto L_Make;
 		mes "[Juicer Marx Hansen]";
 		mes "Doh! You don't have enough ingredients for a single bottle of juice.";
 		emotion 0;
@@ -269,10 +269,10 @@ sF_Make:
 		mes "buy more than 1000 at a time.";
 		next;
 		input @amount;
-		if(@amount < 1 || @amount > 1000) return;
-		if(countitem(getarg(0)) < @amount) goto sL_NoFruits;
-		if(countitem(713) <  @amount) goto sL_NoBottles;
-		if(Zeny < @amount * 3) goto sL_NoZeny;
+		if (@amount < 1 || @amount > 1000) return;
+		if (countitem(getarg(0)) < @amount) goto sL_NoFruits;
+		if (countitem(713) <  @amount) goto sL_NoBottles;
+		if (Zeny < @amount * 3) goto sL_NoZeny;
 
 	L_Make:
 		delitem getarg(0), @amount;	//del Fruit

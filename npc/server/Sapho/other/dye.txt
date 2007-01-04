@@ -94,8 +94,8 @@ prontera.gat,149,189,1	script	Stylist	122,{
 		set @look,@look+1;
 		setlook 1,@look;
 		mes "Voici la coupe numéro^FF9009 "+@look+" ^000000!";
-		if(@look == 23) menu "Revenir au tout début",Lbrowsesty,"Celle-ci me plait",Lstop;
-		if(@look != 23) menu "Continuez",Lbrowserep,"Celle-ci me plait",Lstop;
+		if (@look == 23) menu "Revenir au tout début",Lbrowsesty,"Celle-ci me plait",Lstop;
+		if (@look != 23) menu "Continuez",Lbrowserep,"Celle-ci me plait",Lstop;
 
 	Lcolor:
 		mes "[^FF8000Stylist^000000]";
@@ -148,8 +148,8 @@ prontera.gat,149,189,1	script	Stylist	122,{
 		set @look,@look+1;
 		setlook 6,@look;
 		mes "Ceci est la palette numéro^FF9009 "+@look+" ^000000!";
-		if(@look == 8) menu "Revenir au tout début",Lbrowsecolor,"Celle-ci me plait",Lstop;
-		if(@look != 8) menu "Continuez",Lbrowsecolorrep,"Celle-ci me plait",Lstop;
+		if (@look == 8) menu "Revenir au tout début",Lbrowsecolor,"Celle-ci me plait",Lstop;
+		if (@look != 8) menu "Continuez",Lbrowsecolorrep,"Celle-ci me plait",Lstop;
 
 		Lstop:
 			mes "[^FF8000Stylist^000000]";
@@ -213,8 +213,8 @@ prontera.gat,149,189,1	script	Stylist	122,{
 		set @look,@look+1;
 		setlook 7,@look;
 		mes "Ceci est la palette numéro^FF9009 "+@look+" ^000000!";
-		if(@look == 77) menu "Revenir au tout début",Lbrowsecloth,"Celle-ci me plait",Lstop;
-		if(@look != 77) menu "Continuez",Lbrowseclothrep,"Celle-ci me plait",Lstop;
+		if (@look == 77) menu "Revenir au tout début",Lbrowsecloth,"Celle-ci me plait",Lstop;
+		if (@look != 77) menu "Continuez",Lbrowseclothrep,"Celle-ci me plait",Lstop;
 
 	Ltaekwon:
 		mes "[^FF8000Stylist^000000]";

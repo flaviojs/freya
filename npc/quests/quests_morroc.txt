@@ -39,7 +39,7 @@ morocc_in.gat,142,100,4	script	William	89,{
 		mes "50 Trunks,";
 		mes "and 1 Black Dyestuff^000000.";
 		next;
-		if(countitem(1019) >= 50 && countitem(983) >= 1 && Zeny >= 91100) goto sL_GetPost;
+		if (countitem(1019) >= 50 && countitem(983) >= 1 && Zeny >= 91100) goto sL_GetPost;
 		mes "[William]";
 		mes "Come back when you have all of the items.";
 		close;
@@ -92,7 +92,7 @@ morocc_in.gat,76,163,4	script	Alchemist	64,{
 
 	M_Make:
 		mes "[Marius]";
-		if(countitem(2243) < 1 || countitem(999) < 100 || Zeny < 50000) goto sL_NotEnuf;
+		if (countitem(2243) < 1 || countitem(999) < 100 || Zeny < 50000) goto sL_NotEnuf;
 		delitem 2243,1;
 		delitem 999,100;
 		set Zeny, Zeny - 50000;
@@ -104,8 +104,8 @@ morocc_in.gat,76,163,4	script	Alchemist	64,{
 		next;
 		mes "[Marius]";
 		mes "But before you go out and use them I have to tell you......";
-		if(sex==0) mes "DON'T USE THEM TO BE A PEEPING TOM!!!";
-		if(sex==1) mes "Becarefull where you look..... you might see someting you didn't want to........";
+		if (sex==0) mes "DON'T USE THEM TO BE A PEEPING TOM!!!";
+		if (sex==1) mes "Becarefull where you look..... you might see someting you didn't want to........";
 		close;
 
 		sL_NotEnuf:

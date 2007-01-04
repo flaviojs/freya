@@ -33,7 +33,7 @@
 
 // lothar: 45,169,4 not 178,99,6
 prt_castle.gat,45,169,4	script	Lothar	752,{
-	callfunc "F_BlockHigh",Job_Swordman_High,"Swordman High",Job_Paladin,"Paladin","^000080Lothar^000000";
+	callfunc "F_BlockHigh",JOB_SWORDMAN_High,"Swordman High",JOB_PALADIN,"Paladin","^000080Lothar^000000";
 
 	mes "[^000080Lothar^000000]";
 	if (BaseJob > 0) goto NEXT_0;
@@ -169,21 +169,21 @@ NEXT_0:
 				close;
 		CONT1:
 			set @item,0;
-			if(countitem(957)>=10) goto ITEM7;//Items: Decayed_Nail,
+			if (countitem(957)>=10) goto ITEM7;//Items: Decayed_Nail,
 			mes "- 10 ^FF0000Decayed Nails^000000";
 			set @item, item +1;
 		ITEM7:
-			if(countitem(901)>=10) goto ITEM8;//Items: Danggie,
+			if (countitem(901)>=10) goto ITEM8;//Items: Danggie,
 			mes "You still miss the this item";
 			mes "- 10 ^FF0000Danggies^000000";
 			set @item, item +1;
 		ITEM8:
-			if(countitem(959)>=10) goto ITEM9;//Items: Stinky_Scale,
+			if (countitem(959)>=10) goto ITEM9;//Items: Stinky_Scale,
 			mes "You still miss the this item";
 			mes "- 10 ^FF0000Stinky Scales^000000";
 			set @item, item +1;
 		ITEM9:
-			if(countitem(934)>=10) goto ITEM10;//Items: Memento,
+			if (countitem(934)>=10) goto ITEM10;//Items: Memento,
 			mes "You still miss the this item";
 			mes "- 10 ^FF0000Mementos^000000";
 			set @item, item +1;
@@ -210,22 +210,22 @@ NEXT_0:
 			close;
 		CONT2:
 			set @item, 0;
-			if(countitem(932)>=10) goto ITEM11;//Items: Skel-Bone,
+			if (countitem(932)>=10) goto ITEM11;//Items: Skel-Bone,
 			mes "You still miss the this item";
 			mes "- 10 ^FF0000Skel-Bones^000000";
 			set @item, item +1;
 		ITEM11:
-			if(countitem(1043)>=10) goto ITEM12;//Items: Orc_Claw,
+			if (countitem(1043)>=10) goto ITEM12;//Items: Orc_Claw,
 			mes "You still miss the this item";
 			mes "- 10 ^FF0000Orc Claws^000000";
 			set @item, item +1;
 		ITEM12:
-			if(countitem(2408)>=1) goto ITEM13;//Items: Cuffs,
+			if (countitem(2408)>=1) goto ITEM13;//Items: Cuffs,
 			mes "You still miss the this item";
 			mes "- 1 ^FF0000Ball 'n Chain^000000";
 			set @item, item +1;
 		ITEM13:
-			if(countitem(901)>=10) goto ITEM14;//Items: Danggie,
+			if (countitem(901)>=10) goto ITEM14;//Items: Danggie,
 			mes "You still miss the this item";
 			mes "- 10 ^FF0000Danggie^000000";
 			set @item, item +1;
@@ -275,7 +275,7 @@ NEXT_0:
 					if (JBLVL != 50) getitem 1409,1;//Items: Pike__,
 					if (JBLVL == 50) getitem 1408,1;//Items: Pike_,
 
-						callfunc "Job_Change",Job_Crusader;
+						callfunc "Job_Change",JOB_CRUSADER;
 						callfunc "F_ClearJobVar";	// clears all job variables for the current player
 						close;
 NEXT0:
@@ -1118,7 +1118,7 @@ job_cru.gat,167,175,0	script	CR_KILL	-1,{
 
 job_cru.gat,167,175,0	script	CR_TST_4	139,1,1,{
 
-	if(CRUS_Q != 12) goto EXIT;
+	if (CRUS_Q != 12) goto EXIT;
 	set @CRU2,1;
 	announce "Defeat all the enemies.",3;
 	monster "job_cru.gat",163,42,"Bongun",1188,1,"CR_KILL";

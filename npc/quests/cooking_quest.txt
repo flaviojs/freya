@@ -26,13 +26,13 @@ prt_castle.gat,43,30,6	script	Chef Apprentice	878,{
 
 	mes "[Chef's Apprentice]";
 
-	if(cooking == 1)goto L_Remind;
-	if(cooking == 2)goto ChefCase1;
-	if(cooking == 3)goto ChefCase2;
-	if(cooking == 4)goto ChefCase3;
-	if(cooking == 5)goto ChefCase5;
-	if(cooking == 6)goto ChefCase6;
-	if(cooking == 7)goto ChefCase7;
+	if (cooking == 1) goto L_Remind;
+	if (cooking == 2) goto ChefCase1;
+	if (cooking == 3) goto ChefCase2;
+	if (cooking == 4) goto ChefCase3;
+	if (cooking == 5) goto ChefCase5;
+	if (cooking == 6) goto ChefCase6;
+	if (cooking == 7) goto ChefCase7;
 
 	mes "Hi there. What can I";
 	mes "do for you?";
@@ -47,7 +47,7 @@ prt_castle.gat,43,30,6	script	Chef Apprentice	878,{
 		close;
 
 	ap_2:
-		if(baseLevel > 49)goto Cook1;
+		if (baseLevel > 49) goto Cook1;
 
 			mes "[Chef's Apprentice]";
 			mes "You should train a little";
@@ -113,9 +113,9 @@ prt_castle.gat,43,30,6	script	Chef Apprentice	878,{
 			mes "Outdoor Cooking Set - 500z each";
 			mes " How many?";
 			input @amount;
-			if(@amount < 1) goto ER_Invalid;
-			if(@amount > 100) goto ER_TooMuch;
-			if(@amount*500 > Zeny) goto ER_Zeny;
+			if (@amount < 1) goto ER_Invalid;
+			if (@amount > 100) goto ER_TooMuch;
+			if (@amount*500 > Zeny) goto ER_Zeny;
 			set Zeny, Zeny-(@amount*500);
 			getitem 12125, @amount;//Items: Outdoor Cooker,
 			next;
@@ -171,7 +171,7 @@ prt_castle.gat,43,30,6	script	Chef Apprentice	878,{
 			close;
 
 	ChefCase3:
-		if(countitem(12056) > 0 && countitem(12061) > 0 && countitem(12046) > 0 && countitem(12066) > 0 && countitem(12041) > 0 && countitem(12051) > 0)goto ChefCase4;
+		if (countitem(12056) > 0 && countitem(12061) > 0 && countitem(12046) > 0 && countitem(12066) > 0 && countitem(12041) > 0 && countitem(12051) > 0) goto ChefCase4;
 
 			mes "Please come back when you've cooked";
 			mes "all the Lv 1 foods.";
@@ -223,9 +223,9 @@ prt_castle.gat,43,30,6	script	Chef Apprentice	878,{
 			mes "Outdoor Cooking Set - 500z each.";
 			mes " How many?";
 			input @amount;
-			if(@amount < 1) goto ER_Invalid;
-			if(@amount > 100) goto ER_TooMuch;
-			if(@amount*500 > Zeny) goto ER_Zeny;
+			if (@amount < 1) goto ER_Invalid;
+			if (@amount > 100) goto ER_TooMuch;
+			if (@amount*500 > Zeny) goto ER_Zeny;
 			set Zeny, Zeny-(@amount*500);
 			getitem 12125, @amount;//Items: Outdoor Cooker,
 
@@ -275,9 +275,9 @@ prt_castle.gat,43,30,6	script	Chef Apprentice	878,{
 			mes "[Chef's Apprentice]";
 			mes " How many?";
 			input @amount;
-			if(@amount < 1) goto ER_Invalid;
-			if(@amount > 100) goto ER_TooMuch;
-			if(@amount*@price > Zeny) goto ER_Zeny;
+			if (@amount < 1) goto ER_Invalid;
+			if (@amount > 100) goto ER_TooMuch;
+			if (@amount*@price > Zeny) goto ER_Zeny;
 			set Zeny, Zeny-(@amount*@price);
 			getitem @tool, @amount;
 
@@ -296,13 +296,13 @@ prt_castle.gat,43,30,6	script	Chef Apprentice	878,{
 
 payon.gat,209,127,4	script	Cooking Friend	88,{
 
-	if(cooking == 5)goto CookFriend1;
+	if (cooking == 5) goto CookFriend1;
 	mes "[Cooking Friend]";
 	mes "Hello, how are you?";
 	close;
 
 	CookFriend1:
-		if(countitem(7432) > 0)goto CookFriend2;
+		if (countitem(7432) > 0) goto CookFriend2;
 		goto CookFriend3;
 
 		CookFriend2:
@@ -333,11 +333,11 @@ payon.gat,209,127,4	script	Cooking Friend	88,{
 
 prt_castle.gat,45,35,4	script	Sharle	886,{
 	mes "[Sharle]";
-	if(cooking > 0 && getequipid(1) != 5026) goto L_No_Uniform; //Item: Chef's Hat
-	if(cooking == 7)goto L_Cooking_7;
-	if(first_cooking > 0)goto L_First_Cooking;
+	if (cooking > 0 && getequipid(1) != 5026) goto L_No_Uniform; //Item: Chef's Hat
+	if (cooking == 7) goto L_Cooking_7;
+	if (first_cooking > 0) goto L_First_Cooking;
 
-	if(cooking == 1)goto Sharle1;
+	if (cooking == 1) goto Sharle1;
 
 	mes "What a great day to bake some";
 	mes "wonderfull treats!";
@@ -356,12 +356,12 @@ prt_castle.gat,45,35,4	script	Sharle	886,{
 	L_First_Cooking:
 		mes "I'm lack of special ingredients,";
 		mes "bring me:";
-		if(first_cooking == 1)goto FirstCooking1;
-		if(first_cooking == 2)goto FirstCooking2;
-		if(first_cooking == 3)goto FirstCooking3;
-		if(first_cooking == 4)goto FirstCooking4;
-		if(first_cooking == 5)goto FirstCooking5;
-		if(first_cooking == 6)goto FirstCooking6;
+		if (first_cooking == 1) goto FirstCooking1;
+		if (first_cooking == 2) goto FirstCooking2;
+		if (first_cooking == 3) goto FirstCooking3;
+		if (first_cooking == 4) goto FirstCooking4;
+		if (first_cooking == 5) goto FirstCooking5;
+		if (first_cooking == 6) goto FirstCooking6;
 
 		FirstCooking1:
 			set @item1, 577;
@@ -442,7 +442,7 @@ prt_castle.gat,45,35,4	script	Sharle	886,{
 			goto Sharle2;
 
 	Sharle2:
-		if(countitem(@item1) < @item1a || countitem(@item2) < @item2a || countitem(@item3) < @item3a) close;
+		if (countitem(@item1) < @item1a || countitem(@item2) < @item2a || countitem(@item3) < @item3a) close;
 
 		delitem @item1, @item1a;
 		delitem @item2, @item2a;
@@ -465,7 +465,7 @@ prt_castle.gat,45,35,4	script	Sharle	886,{
 		menu "Yes",-, "No", M_End2, "Return Book", M_ReturnBook;
 
 		mes "[Sharle]";
-		if(cook_book >= 0)goto Sharle3;
+		if (cook_book >= 0) goto Sharle3;
 
 		Sharle3:
 			mes "You'll have to give me back the";
@@ -475,7 +475,7 @@ prt_castle.gat,45,35,4	script	Sharle	886,{
 			next;
 			menu "Yes",Sharle5, "No",M_End2;
 
-			if(countitem(cook_book)==0)goto Sharle4;
+			if (countitem(cook_book)==0) goto Sharle4;
 
 			Sharle4:
 				mes "What? You don't have the book I loaned you?";
@@ -493,7 +493,7 @@ prt_castle.gat,45,35,4	script	Sharle	886,{
 		mes "You will need:";
 		mes "10 Pumpkins";
 		next;
-		if(countitem(535) < 10) goto L_No_Items;//Items: Pumpkin,
+		if (countitem(535) < 10) goto L_No_Items;//Items: Pumpkin,
 		delitem 535, 10;//Items: Pumpkin,
 		set @checkout, 7472;
 		mes "And I see you have";
@@ -506,7 +506,7 @@ prt_castle.gat,45,35,4	script	Sharle	886,{
 		mes "You will need:";
 		mes "5 well-baked cookies";
 		next;
-		if(countitem(538) < 5) goto L_No_Items;//Items: Well-baked Cookie,
+		if (countitem(538) < 5) goto L_No_Items;//Items: Well-baked Cookie,
 		delitem 538, 5;//Items: Well-baked Cookie,
 		set @checkout, 7473;
 		mes "And I see you have";
@@ -519,7 +519,7 @@ prt_castle.gat,45,35,4	script	Sharle	886,{
 		mes "You will need:";
 		mes "5 Sushi";
 		next;
-		if(countitem(551) < 5) goto L_No_Items;//Items: Sushi,
+		if (countitem(551) < 5) goto L_No_Items;//Items: Sushi,
 		delitem 551, 5;//Items: Sushi,
 		set @checkout, 7474;
 		mes "And I see you have";
@@ -532,7 +532,7 @@ prt_castle.gat,45,35,4	script	Sharle	886,{
 		mes "You will need:";
 		mes "5 Baos";
 		next;
-		if(countitem(553) < 5) goto L_No_Items;//Items: Bao,
+		if (countitem(553) < 5) goto L_No_Items;//Items: Bao,
 		delitem 553, 5;//Items: Bao,
 		set @checkout, 7475;
 		mes "And I see you have";
@@ -545,7 +545,7 @@ prt_castle.gat,45,35,4	script	Sharle	886,{
 		mes "You will need:";
 		mes "10 shoots";
 		next;
-		if(countitem(711) < 10) goto L_No_Items;//Items: Shoot,
+		if (countitem(711) < 10) goto L_No_Items;//Items: Shoot,
 		delitem 711, 10;//Items: Shoot,
 		set @checkout, 7476;
 		mes "And I see you have";
@@ -559,14 +559,14 @@ prt_castle.gat,45,35,4	script	Sharle	886,{
 		mes "you're welcome to come back and";
 		mes "trade.";
 
-		if(cook_book > 0)goto CookBook1;
+		if (cook_book > 0) goto CookBook1;
 		mes "Good luck! I hope you learn a lot!";
 		getitem @checkout,1;
 		set cook_book, @checkout;
 		close;
 
 		CookBook1:
-			if(countitem(cook_book)==0)goto CookBook2;
+			if (countitem(cook_book)==0) goto CookBook2;
 			delitem cook_book,1;
 			mes "Have fun, and good luck!";
 			getitem @checkout,1;
@@ -594,8 +594,8 @@ prt_castle.gat,45,35,4	script	Sharle	886,{
 
 	M_ReturnBook:
 
-		if(cook_book == 0)goto CookBook3;
-		if(countitem(cook_book) == 0)goto CookBook4;
+		if (cook_book == 0) goto CookBook3;
+		if (countitem(cook_book) == 0) goto CookBook4;
 
 		delitem cook_book,1;
 		set cook_book, 0;

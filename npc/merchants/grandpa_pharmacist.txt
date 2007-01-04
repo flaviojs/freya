@@ -100,11 +100,11 @@ alberta_in.gat,16,28,4	script	Grampa Pharmacist	61,{
 //================================
 sF_Make:
 	set @herbnum, 2;
-	if(getarg(1) != 0) set @herbnum, 1;
-	if(countitem(getarg(0)) < @herbnum) goto L_NdHerbs;
-	if((countitem(getarg(1)) < @herbnum) && (getarg(1) != 0)) goto L_NdHerbs;
-	if(countitem(713) < 1) goto L_NdBottle;
-	if(Zeny < getarg(2)) goto L_NdZeny;
+	if (getarg(1) != 0) set @herbnum, 1;
+	if (countitem(getarg(0)) < @herbnum) goto L_NdHerbs;
+	if ((countitem(getarg(1)) < @herbnum) && (getarg(1) != 0)) goto L_NdHerbs;
+	if (countitem(713) < 1) goto L_NdBottle;
+	if (Zeny < getarg(2)) goto L_NdZeny;
 
 	mes "[Grampa Pharmacist]";
 	mes "How many?";
@@ -113,28 +113,28 @@ sF_Make:
 
 	sM_0a:
 		set @amount, 1000;
-		if(zeny/getarg(2) < @amount) set @amount, zeny/getarg(2);
-		if(countitem(getarg(0))/@herbnum < @amount) set @amount, countitem(getarg(0))/@herbnum;
-		if((countitem(getarg(1))/@herbnum < @amount) && (countitem(getarg(1)) != 0)) set @amount, countitem(getarg(1))/@herbnum;
-		if(countitem(713) < @amount) set @amount, countitem(713);
-		if(@amount > 0) goto L_End;
+		if (zeny/getarg(2) < @amount) set @amount, zeny/getarg(2);
+		if (countitem(getarg(0))/@herbnum < @amount) set @amount, countitem(getarg(0))/@herbnum;
+		if ((countitem(getarg(1))/@herbnum < @amount) && (countitem(getarg(1)) != 0)) set @amount, countitem(getarg(1))/@herbnum;
+		if (countitem(713) < @amount) set @amount, countitem(713);
+		if (@amount > 0) goto L_End;
 		mes "[Grampa Pharmacist]";
 		mes "Jeez... you don't even have the right items.....";
 		close;
 
 	sM_0b:
 		input @amount;
-		if(@amount<1 || @amount>1000) goto L_BadAmnt;
-		if(countitem(getarg(0))/@herbnum < @amount) goto L_NdHerbs;
-		if((countitem(getarg(1))/@herbnum < @amount) && (countitem(getarg(1)) != 0)) goto L_NdHerbs;
-		if(countitem(713) < @amount) goto L_NdBottle;
-		if(Zeny < (getarg(2)*@amount)) goto L_NdZeny;
+		if (@amount<1 || @amount>1000) goto L_BadAmnt;
+		if (countitem(getarg(0))/@herbnum < @amount) goto L_NdHerbs;
+		if ((countitem(getarg(1))/@herbnum < @amount) && (countitem(getarg(1)) != 0)) goto L_NdHerbs;
+		if (countitem(713) < @amount) goto L_NdBottle;
+		if (Zeny < (getarg(2)*@amount)) goto L_NdZeny;
 
 	L_End:
 		mes "[Grampa Pharmacist]";
 		mes "Here are your " +getarg(4)+ " potions.";
 		delitem getarg(0), (@amount*@herbnum);
-		if(getarg(1) != 0) delitem getarg(1), (@amount*@herbnum);
+		if (getarg(1) != 0) delitem getarg(1), (@amount*@herbnum);
 		delitem 713, @amount;
 		set Zeny, Zeny - (getarg(2)*@amount);
 		getitem getarg(3), @amount;

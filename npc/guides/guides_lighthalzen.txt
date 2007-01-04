@@ -80,7 +80,7 @@ s_Tool:
 	mes "located in the 11 o' clock";
 	mes "direction from the center";
 	mes "of the East District.";
-	if(@tempguide)viewpoint 1,324,301,1,0xFF0000;
+	if (@tempguide)viewpoint 1,324,301,1,0xFF0000;
 	next;
 	goto s_Cont;
 
@@ -90,7 +90,7 @@ s_Mill:
 	mes "the Mill can be found in";
 	mes "the 1 o'clock direction";
 	mes "in the East District.";
-	if(@tempguide)viewpoint 1,365,301,2,0xFF00FF;
+	if (@tempguide)viewpoint 1,365,301,2,0xFF00FF;
 	next;
 	goto s_Cont;
 
@@ -99,7 +99,7 @@ s_Pub:
 	mes "The Pub is located";
 	mes "in the southern part";
 	mes "of the East District.";
-	if(@tempguide)viewpoint 1,346,232,3,0xCCFFFF;
+	if (@tempguide)viewpoint 1,346,232,3,0xCCFFFF;
 	next;
 	goto s_Cont;
 
@@ -211,7 +211,7 @@ s_Rekenber:
 	mes "is located in the northwestern";
 	mes "Lighthalzen. You can't miss";
 	mes "the headquarters building.";
-	if(@tempguide)viewpoint 1,103,244,1,0xFF0000;
+	if (@tempguide)viewpoint 1,103,244,1,0xFF0000;
 	next;
 	goto s_Cont;
 
@@ -221,7 +221,7 @@ s_Train:
 	mes "located in the center of";
 	mes "the city, where we have";
 	mes "a direct railroad to Einbroch.";
-	if(@tempguide)viewpoint 1,240,163,2,0xFF00FF;
+	if (@tempguide)viewpoint 1,240,163,2,0xFF00FF;
 	next;
 	goto s_Cont;
 
@@ -233,7 +233,7 @@ s_Police:
 	mes "any suspicious persons and";
 	mes "activity, or if you have any";
 	mes "problems whatsoever.";
-	if(@tempguide)viewpoint 1,236,276,3,0xCCFFFF;
+	if (@tempguide)viewpoint 1,236,276,3,0xCCFFFF;
 	next;
 	goto s_Cont;
 
@@ -244,7 +244,7 @@ s_Bank:
 	mes "Lighthalzen Police Station,";
 	mes "which is a pretety good idea";
 	mes "when I think about it, actually.";
-	if(@tempguide)viewpoint 1,199,257,4,0x0000FF;
+	if (@tempguide)viewpoint 1,199,257,4,0x0000FF;
 	next;
 	goto s_Cont;
 
@@ -255,7 +255,7 @@ s_Hotel:
 	mes "Due to its quality of services and";
 	mes "luxurious accomodations, this";
 	mes "hotel is extremely popular.";
-	if(@tempguide)viewpoint 1,159,133,5,0x0FFF00;
+	if (@tempguide)viewpoint 1,159,133,5,0x0FFF00;
 	next;
 	goto s_Cont;
 
@@ -266,7 +266,7 @@ s_Airport:
 	mes "You can travel anywhere within";
 	mes "the Schwartzwald Republic by";
 	mes "riding one of the Airships.";
-	if(@tempguide)viewpoint 1,266,76,6,0x00FF00;
+	if (@tempguide)viewpoint 1,266,76,6,0x00FF00;
 	next;
 	goto s_Cont;
 
@@ -275,7 +275,7 @@ s_Merchant:
 	mes "The Merchant Guild can be";
 	mes "found in the southwestern";
 	mes "part of Lighthalzen.";
-	if(@tempguide)viewpoint 1,74,52,7,0xEFAEBD;
+	if (@tempguide)viewpoint 1,74,52,7,0xEFAEBD;
 	next;
 	goto s_Cont;
 
@@ -284,7 +284,7 @@ s_Jewel:
 	mes "The Jewelry Shop is";
 	mes "located just west of";
 	mes "the South Plaza.";
-	if(@tempguide)viewpoint 1,92,110,8,0xFF9500;
+	if (@tempguide)viewpoint 1,92,110,8,0xFF9500;
 	next;
 	goto s_Cont;
 
@@ -296,7 +296,7 @@ s_Weap:
 	mes "It's at least worth a look";
 	mes "if you're serious about";
 	mes "adventuring around here.";
-	if(@tempguide)viewpoint 1,196,46,9,0x330033;
+	if (@tempguide)viewpoint 1,196,46,9,0x330033;
 	next;
 	goto s_Cont;
 
@@ -307,7 +307,7 @@ s_Store:
 	mes "Lighthalzen and is the biggest";
 	mes "and most convenient place for";
 	mes "shopping for almost everything.";
-	if(@tempguide)viewpoint 1,199,163,10,0xFFFF00;
+	if (@tempguide)viewpoint 1,199,163,10,0xFFFF00;
 	next;
 	goto s_Cont;
 

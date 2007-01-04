@@ -57,26 +57,26 @@ Q8:
 //==================================
 sF_Make:
 	set @ammonum,500;
-	if(countitem(getarg(0)) < @ammonum) goto L_NdAmmo;
-	if(Zeny < getarg(1)) goto L_NdZeny;
+	if (countitem(getarg(0)) < @ammonum) goto L_NdAmmo;
+	if (Zeny < getarg(1)) goto L_NdZeny;
 	mes "[Kenny]";
 	mes "What do you want me to do?";
 	next;
 	menu "Give me as many as you can.",-, "I want to set the amount.",sM_0b, "Nevermind",M_End;
 
 		set @amount,50;
-		if(zeny/getarg(1) < @amount) set @amount, zeny/getarg(1);
-		if(countitem(getarg(0))/@ammonum < @amount) set @amount, countitem(getarg(0))/@ammonum;
-		if(@amount > 0) goto L_End;
+		if (zeny/getarg(1) < @amount) set @amount, zeny/getarg(1);
+		if (countitem(getarg(0))/@ammonum < @amount) set @amount, countitem(getarg(0))/@ammonum;
+		if (@amount > 0) goto L_End;
 		mes "[Kenny]";
 		mes "Dude, you don't even have the right items...";
 		close;
 		
 	sM_0b:
 		input @amount;
-		if(@amount<1 || @amount>50) goto L_BadAmnt;
-		if(countitem(getarg(0))/@ammonum < @amount) goto L_NdAmmo;
-		if(Zeny < (getarg(1)*@amount)) goto L_NdZeny;
+		if (@amount<1 || @amount>50) goto L_BadAmnt;
+		if (countitem(getarg(0))/@ammonum < @amount) goto L_NdAmmo;
+		if (Zeny < (getarg(1)*@amount)) goto L_NdZeny;
 
 	L_End:
 		set Zeny, Zeny - (getarg(1)*@amount);

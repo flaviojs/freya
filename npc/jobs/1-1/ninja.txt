@@ -20,16 +20,16 @@
 
 que_ng.gat,30,65,3	script	Cool Kid#nq	730,{
 
-	if(Class == Job_Novice && JobLevel > 9) goto NJQ0;
-	if(Class == Job_Novice && JobLevel < 10) goto NJQ9;
-	if(Class == Job_Ninja) goto NJQ10;
+	if (Class == JOB_NOVICE && JobLevel > 9) goto NJQ0;
+	if (Class == JOB_NOVICE && JobLevel < 10) goto NJQ9;
+	if (Class == JOB_NINJA) goto NJQ10;
 	goto NJQ11;
 
 	NJQ0:
-		if(NINJ_Q == 1)goto NJQ1;
-		if(NINJ_Q == 2)goto NJQ2;
-		if(NINJ_Q == 3)goto NJQ3;
-		if(NINJ_Q == 4)goto NJQ4;
+		if (NINJ_Q == 1) goto NJQ1;
+		if (NINJ_Q == 2) goto NJQ2;
+		if (NINJ_Q == 3) goto NJQ3;
+		if (NINJ_Q == 4) goto NJQ4;
 		goto NJQ5;
 
 		NJQ1:
@@ -127,8 +127,8 @@ que_ng.gat,30,65,3	script	Cool Kid#nq	730,{
 
 		NJQ4:
 			mes "[Cool Kid]";
-			if(countitem(7053) < 5 || countitem(1010) < 1) goto NJQ6;
-			if(SkillPoint > 0) goto NJQ7;
+			if (countitem(7053) < 5 || countitem(1010) < 1) goto NJQ6;
+			if (SkillPoint > 0) goto NJQ7;
 			goto NJQ8;
 
 			NJQ6:
@@ -212,7 +212,7 @@ que_ng.gat,30,65,3	script	Cool Kid#nq	730,{
 			mes "Haaa!!!!";
 			next;
 			nude;
-			jobchange Job_Ninja;
+			jobchange JOB_NINJA;
 			set NINJ_Q,0;
 			getitem 13010,1;
 			close;
@@ -460,7 +460,7 @@ NJQ11:
 
 einbroch.gat,184,194,3	script	Exceptional Man	881,{
 
-	if(NINJ_Q >= 3 || Class == Job_Ninja) goto EMQ1;
+	if (NINJ_Q >= 3 || Class == JOB_NINJA) goto EMQ1;
 	goto EMQ2;
 
 	EMQ1:
@@ -472,13 +472,13 @@ einbroch.gat,184,194,3	script	Exceptional Man	881,{
 		goto EMQ3;
 
 EMQ3:
-	if(NINJ_Q == 0) goto EMQ4;
+	if (NINJ_Q == 0) goto EMQ4;
 	goto EMQ7;
 
 	EMQ4:
 		if (EMQName == 1) mes "[Red Cougar Zhao]";
 		if (EMQName == 2) mes "[Exceptional Man]";
-		if(Class == Job_Ninja) goto EMQ5;
+		if (Class == JOB_NINJA) goto EMQ5;
 		goto EMQ6;
 
 		EMQ5:
@@ -498,10 +498,10 @@ EMQ3:
 		close;
 
 EMQ7:
-	if(NINJ_Q == 1)goto EMQ8;
-	if(NINJ_Q == 2)goto EMQ9;
-	if(NINJ_Q == 3)goto EMQ10;
-	if(NINJ_Q == 4)goto EMQ11;
+	if (NINJ_Q == 1) goto EMQ8;
+	if (NINJ_Q == 2) goto EMQ9;
+	if (NINJ_Q == 3) goto EMQ10;
+	if (NINJ_Q == 4) goto EMQ11;
 
 	close2;
 	end;
@@ -617,7 +617,7 @@ EMQ7:
 			close;
 
 	EMQ9:
-		if(countitem(1010) < 1 || countitem(7053) < 5) goto EMQ12;
+		if (countitem(1010) < 1 || countitem(7053) < 5) goto EMQ12;
 		goto EMQ13;
 
 		EMQ12:

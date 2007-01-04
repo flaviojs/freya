@@ -17,12 +17,12 @@
 //=============================================================
 niflheim.gat,184,199,5	script	Little Girl#02	793,{
 	mes "[Sairin]";
-	if(niflheimlost2 == 1) goto L_thanks;
-	if(niflheimlost == 1) goto L_foundhim;
-	if(lostgirl == 1) goto L_sure2;
+	if (niflheimlost2 == 1) goto L_thanks;
+	if (niflheimlost == 1) goto L_foundhim;
+	if (lostgirl == 1) goto L_sure2;
 	mes "Sir, will you please help me?";
-	if(BaseJob==Job_Novice) mes "Oh... you are lost, too..."; //Exploit fix
-	if(BaseJob==Job_Novice) close;
+	if (BaseJob == JOB_NOVICE) mes "Oh... you are lost, too..."; //Exploit fix
+	if (BaseJob == JOB_NOVICE) close;
 	next;
 	menu "Yes",-, "No",M_no;
 
@@ -257,7 +257,7 @@ L_event:
 }
 
 nif_in.gat,118,151,5	script	#5	111,3,3{
-	if((MISC_QUEST & 32)==0) end;
+	if ((MISC_QUEST & 32)==0) end;
 
 	mes "- The very moment the long shadow -";
 	mes "- of your body falls on the piano -";

@@ -1,5 +1,5 @@
 //===== Freya Script =========================================
-//= TaeKwon Master Job Quest
+//= Taekwon Master Job Quest
 //===== By: ================================================== 
 //= Celestria
 //===== Current Version: ===================================== 
@@ -9,7 +9,7 @@
 //===== Description: ========================================= 
 //= 
 //===== Additional Comments: ================================= 
-//= A temp TaeKwon Master (TaeKwon Master/Knight) Job Changer based on 
+//= A temp Taekwon Master (Taekwon Master/Knight) Job Changer based on 
 //= the kRO quest. Quest info from RagnaInfo.
 //= Sprites from kRO screenshots, bar two which I just had to guess at.
 //= 1.0 Optimized, updated [Lupus]
@@ -19,8 +19,8 @@
 
 payon.gat,215,102,2	script	MooHyun	828,{
 	mes "[MooHyun]";
-	if(Class==Job_Taekwon && JobLevel>=40 && STGL_Q==0) goto L_Taekwon;
-	if(STGL_Q > 0) goto L_Quest;
+	if (Class == JOB_TAEKWON && JobLevel >= 40 && STGL_Q == 0) goto L_Taekwon;
+	if (STGL_Q > 0) goto L_Quest;
 	mes "Aaaah, it's such lovely weather today, don't you think?";
 	close;
 
@@ -33,11 +33,11 @@ L_Taekwon:
 
 	mes "[MooHyun]";
 	mes "Well, there are these dedicated";
-	mes "fighters who are known as TaeKwon Master.";
+	mes "fighters who are known as Taekwon Master.";
 	mes "I just so happen to know someone who";
 	mes "can warp to their meditation spot.";
 	next;
-	menu "Oooo.. I wanna be a TaeKwon Master.",-,"So?",L_No;
+	menu "Oooo.. I wanna be a Taekwon Master.",-,"So?",L_No;
 	mes "[MooHyun]";
 	mes "What a coincidence!";
 	mes "However he does need some rare";
@@ -65,8 +65,8 @@ L_No:
 }
 
 comodo.gat,172,231,2	script	Man#SKTest	730,{
-	if(STGL_Q==1) goto L_Talk;
-	if(STGL_Q>=2) goto L_Needwarp;
+	if (STGL_Q==1) goto L_Talk;
+	if (STGL_Q>=2) goto L_Needwarp;
 	mes "[Man]";
 	mes "...";
 	close;
@@ -87,7 +87,7 @@ L_Talk:
 	close;
 
 L_Warp:
-	if(countitem(994) < 1 || countitem(995) < 1 || countitem(996) < 1 || countitem(997) < 1) goto L_Noitem;
+	if (countitem(994) < 1 || countitem(995) < 1 || countitem(996) < 1 || countitem(997) < 1) goto L_Noitem;
 	delitem 994,1;
 	delitem 995,1;
 	delitem 996,1;
@@ -124,10 +124,10 @@ L_Again:
 	close;
 }
 
-job_star.gat,29,33,4	script	TaeKwon of the Sun	823,{
-	if(STGL_Q==3) goto L_Warpnow1;
-	if(Class==Job_Taekwon && JobLevel>=40) goto L_Talk1;
-	mes "[TaeKwon of the Sun]";
+job_star.gat,29,33,4	script	Taekwon of the Sun	823,{
+	if (STGL_Q==3) goto L_Warpnow1;
+	if (Class == JOB_TAEKWON && JobLevel >= 40) goto L_Talk1;
+	mes "[Taekwon of the Sun]";
 	mes "How did you get in here!?";
 	mes "Get out at once!";
 	next;
@@ -135,23 +135,23 @@ job_star.gat,29,33,4	script	TaeKwon of the Sun	823,{
 	close;
 
 L_Talk1:
-	mes "[TaeKwon of the Sun]";
+	mes "[Taekwon of the Sun]";
 	mes "Ah. A Taekwon.";
 	mes "It is always good to see a follower of a disciplined art.";
 	next;
-	mes "[TaeKwon of the Sun]";
-	mes "I assume you came here to become a TaeKwon Master.";
+	mes "[Taekwon of the Sun]";
+	mes "I assume you came here to become a Taekwon Master.";
 	mes "So allow me to explain...";
 	next;
-	mes "[TaeKwon of the Sun]";
+	mes "[Taekwon of the Sun]";
 	mes "The Sun, the Moon, and the Stars.";
 	mes "All have their own subtle";
-	mes "energies. We TaeKwon Masters use";
+	mes "energies. We Taekwon Masters use";
 	mes "these energies in addition";
 	mes "to our own strength to aid us";
 	mes "in combat.";
 	next;
-	mes "[TaeKwon of the Sun]";
+	mes "[Taekwon of the Sun]";
 	mes "In here I teach Taekwons how to";
 	mes "tap into the energy of the sun.";
 	mes "I shall teach you this now.";
@@ -162,7 +162,7 @@ L_Talk1:
 	mes "^0000FFthat's probably because you aren't^000000";
 	mes "^0000FFwearing any suncream.^000000";
 	next;
-	mes "[TaeKwon of the Sun]";
+	mes "[Taekwon of the Sun]";
 	mes "You have learned all I can teach you.";
 	mes "I shall now send you to your";
 	mes "next instructor.";
@@ -175,10 +175,10 @@ L_Warpnow1:
 	close;
 }
 
-job_star.gat,95,34,4	script	TaeKwon of the Moon	758,{
-	if(STGL_Q==3) goto L_Warpnow2;
-	if(Class==Job_Taekwon && JobLevel>=40) goto L_Talk2;
-	mes "[TaeKwon of the Moon]";
+job_star.gat,95,34,4	script	Taekwon of the Moon	758,{
+	if (STGL_Q==3) goto L_Warpnow2;
+	if (Class == JOB_TAEKWON && JobLevel >= 40) goto L_Talk2;
+	mes "[Taekwon of the Moon]";
 	mes "How did you get in here!?";
 	mes "Get out at once!";
 	next;
@@ -186,22 +186,22 @@ job_star.gat,95,34,4	script	TaeKwon of the Moon	758,{
 	close;
 
 L_Talk2:
-	mes "[TaeKwon of the Moon]";
+	mes "[Taekwon of the Moon]";
 	mes "Ah. A Taekwon.";
 	mes "It is good that you have";
 	mes "managed to come this far.";
 	next;
-	mes "[TaeKwon of the Moon]";
+	mes "[Taekwon of the Moon]";
 	mes "My job here is to help";
 	mes "Taekwons become more in";
 	mes "touch with the energies of the Moon.";
 	next;
-	mes "[TaeKwon of the Moon]";
+	mes "[Taekwon of the Moon]";
 	mes "The Moon has calming energies.";
 	mes "So you must be careful not";
 	mes "to fall asleep while meditating";
 	next;
-	mes "[TaeKwon of the Moon]";
+	mes "[Taekwon of the Moon]";
 	mes "Now, sit down.";
 	mes "Stare into the Moon and feel.";
 	mes "it's light flow through you.";
@@ -212,7 +212,7 @@ L_Talk2:
 	mes "^0000FFyourself awake, and feel a^000000";
 	mes "^0000FFrenewed vigour.^000000";
 	next;
-	mes "[TaeKwon of the Moon]";
+	mes "[Taekwon of the Moon]";
 	mes "You have learned all I can teach you.";
 	mes "I shall now send you to the";
 	mes "final instructor.";
@@ -225,10 +225,10 @@ L_Warpnow2:
 	close;
 }
 
-job_star.gat,161,34,4	script	TaeKwon of the Stars	77,{
-	if(Class==Job_Taekwon && JobLevel>=40) goto L_Talk3;
-	if(STGL_Q==3) goto L_Itemcheck;
-	mes "[TaeKwon of the Stars]";
+job_star.gat,161,34,4	script	Taekwon of the Stars	77,{
+	if (Class == JOB_TAEKWON && JobLevel >= 40) goto L_Talk3;
+	if (STGL_Q==3) goto L_Itemcheck;
+	mes "[Taekwon of the Stars]";
 	mes "How did you get in here!?";
 	mes "Get out at once!";
 	next;
@@ -236,7 +236,7 @@ job_star.gat,161,34,4	script	TaeKwon of the Stars	77,{
 	close;
 
 L_Talk3:
-	mes "[TaeKwon of the Stars]";
+	mes "[Taekwon of the Stars]";
 	mes "Greetings Taekwon.";
 	mes "I am here to teach you about";
 	mes "the multiple energies that";
@@ -244,11 +244,11 @@ L_Talk3:
 	next;
 
 L_Itemcheck:
-	if(countitem(1000) < 1 || countitem(1001) < 1) goto L_Noitem3;
-	if(SkillPoint > 0) goto L_Skill;
+	if (countitem(1000) < 1 || countitem(1001) < 1) goto L_Noitem3;
+	if (SkillPoint > 0) goto L_Skill;
 	delitem 1000,1;
 	delitem 1001,1;
-	mes "[TaeKwon of the Stars]";
+	mes "[Taekwon of the Stars]";
 	mes "Since you have the required items,";
 	mes "we shall now begin.";
 	next;
@@ -258,20 +258,20 @@ L_Itemcheck:
 	mes "^0000FFyour own, but like something^000000";
 	mes "^0000FFout there is giving you a hand.^000000";
 	next;
-	jobchange Job_Star_Gladiator;
+	jobchange JOB_STAR_GLADIATOR;
 	callfunc "F_ClearJobVar";
-	mes "[TaeKwon of the Stars]";
+	mes "[Taekwon of the Stars]";
 	mes "It seems that you are indeed";
 	mes "in touch with the sun, moon, and stars.";
 	next;
-	mes "[TaeKwon of the Stars]";
+	mes "[Taekwon of the Stars]";
 	mes "I wish you luck on your journey.";
 	next;
 	warp "payon.gat",256,242;
 	close;
 
 L_Skill:
-	mes "[TaeKwon of the Stars]";
+	mes "[Taekwon of the Stars]";
 	mes "It would seem you still have";
 	mes "some unused skill points.";
 	mes "Use these all up, then come";
@@ -279,13 +279,13 @@ L_Skill:
 	close;
 
 L_Noitem3:
-	mes "[TaeKwon of the Stars]";
+	mes "[Taekwon of the Stars]";
 	mes "In order to become one with";
 	mes "the stars, you will need to bring me:";
 	mes "^0000FF- 1 Star Crumb^000000";
 	mes "^0000FF- 1 Star Dust^000000";
 	next;
-	mes "[TaeKwon of the Stars]";
+	mes "[Taekwon of the Stars]";
 	mes "I will now send you back to";
 	mes "look for these items.";
 	next;

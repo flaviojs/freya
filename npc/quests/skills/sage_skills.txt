@@ -27,8 +27,8 @@
 //============================================================
 yuno_in03.gat,176,24,3	script	Mischna	755,{
 	mes "[Mischna]";
-	if(BaseJob!=Job_Sage) goto L_sageno;
-	if(getskilllv(1007)) goto L_elemental;
+	if (BaseJob!=JOB_SAGE) goto L_sageno;
+	if (getskilllv(1007)) goto L_elemental;
 
 	mes "I can teach you a new skill";
 	mes "that I discovered, but you";
@@ -50,7 +50,7 @@ yuno_in03.gat,176,24,3	script	Mischna	755,{
 	mes "Let me check your items.";
 	next;
 	
-	if(countitem(904)<10 || countitem(947)<7 || countitem(1013)<12 || countitem(946)<10 || countitem(7433)<4) goto L_noitems;//Items: Scorpion_Tail, Horn, Rainbow_Shell, Snail's_Shell, Blank_Scroll,
+	if (countitem(904)<10 || countitem(947)<7 || countitem(1013)<12 || countitem(946)<10 || countitem(7433)<4) goto L_noitems;//Items: Scorpion_Tail, Horn, Rainbow_Shell, Snail's_Shell, Blank_Scroll,
 	delitem 904, 10;//Items: Scorpion_Tail,
 	delitem 947, 7;//Items: Horn,
 	delitem 1013, 12;//Items: Rainbow_Shell,
@@ -99,7 +99,7 @@ L_alreadyhave:
 	close;
 			
 L_elemental:
-	if(getskilllv(1008) || getskilllv(1017) || getskilllv(1018) || getskilllv(1019)) goto L_alreadyhave;
+	if (getskilllv(1008) || getskilllv(1017) || getskilllv(1018) || getskilllv(1019)) goto L_alreadyhave;
 	
 	mes "I have one more skill that";
 	mes "I can teach you, but you";
@@ -123,25 +123,25 @@ L_elemental:
 	menu "Elemental Change Water",sage_1, "Elemental Change Earth",sage_2, "Elemental Change Fire",sage_3, "Elemental Change Wind",sage_4;
 
 		sage_1:
-		if(countitem(991)<20)goto L_sagefail;//Items: Crystal_Blue,
+		if (countitem(991)<20) goto L_sagefail;//Items: Crystal_Blue,
 		delitem 991, 20;		//Items: Crystal_Blue,
 		skill 1008,1,0;
 		goto L_alreadyhave;
 
 		sage_2:
-		if(countitem(993)<20)goto L_sagefail;//Items: Green_Live,
+		if (countitem(993)<20) goto L_sagefail;//Items: Green_Live,
 		delitem 993, 20;//Items: Green_Live,
 		skill 1017,1,0;
 		goto L_alreadyhave;
 
 		sage_3:
-		if(countitem(990)<20)goto L_sagefail;//Items: Red_Blood,
+		if (countitem(990)<20) goto L_sagefail;//Items: Red_Blood,
 		delitem 990, 20;//Items: Red_Blood,
 		skill 1018,1,0;
 		goto L_alreadyhave;
 
 		sage_4:
-		if(countitem(992)<20)goto L_sagefail;//Items: Wind_of_Verdure,
+		if (countitem(992)<20) goto L_sagefail;//Items: Wind_of_Verdure,
 		delitem 992, 20;//Items: Wind_of_Verdure,
 		skill 1019,1,0;
 		goto L_alreadyhave;

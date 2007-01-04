@@ -32,7 +32,7 @@
 
 que_ng.gat,152,167,3	script	Armsmith	901,{
 
-	if (Class == Job_Novice) goto GSQ1;
+	if (Class == JOB_NOVICE) goto GSQ1;
 	goto GSQ11;
 
 	GSQ1:
@@ -69,7 +69,7 @@ que_ng.gat,152,167,3	script	Armsmith	901,{
 				next;
 				mes "[Armsmith]";
 				mes "A Gunslinger!!";
-				jobchange Job_Gunslinger;
+				jobchange JOB_GUNSLINGER;
 				set GUNS_Q,0;
 				next;
 				mes "[Armsmith]";
@@ -144,7 +144,7 @@ GSQ11:
 
 payon.gat,184,65,3	script	Mr. Tanieh	866,{
 
-	if (Class == Job_Gunslinger || GUNS_Q == 10005) goto GST13;
+	if (Class == JOB_GUNSLINGER || GUNS_Q == 10005) goto GST13;
 	if (GUNS_Q == 10003 || GUNS_Q == 10004) goto GST10;
 	if (GSTFix1 == 1) goto GST2;
 	if (GUNS_Q == 1) goto GST1;

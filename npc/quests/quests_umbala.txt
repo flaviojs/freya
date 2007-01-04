@@ -39,8 +39,8 @@
 //===========================================================================
 //this quest is related to Umbalian Chief
 morocc.gat,140,156,5	script	Turban Thief	58,{
-	if(mask_q == 0) goto AWAY;
-	if(mask_q == 2) goto NoBus;
+	if (mask_q == 0) goto AWAY;
+	if (mask_q == 2) goto NoBus;
 	mes "[Turban Thief]";
 	mes "E'llo mah frien, would I interesst tu with this rare mask?  Its value I assure you is real mah frien.  Tis manific!";
 	next;
@@ -49,7 +49,7 @@ morocc.gat,140,156,5	script	Turban Thief	58,{
 	next;
 	menu "Pay 1,000,000z",-,"No deal",NoGo;
 
-		if(Zeny < 1000000) goto NotEnough;
+		if (Zeny < 1000000) goto NotEnough;
 		set Zeny,Zeny-1000000;
 		mes "[Turban Thief]";
 		mes "O ho ho, its a deal then!";
@@ -63,7 +63,7 @@ morocc.gat,140,156,5	script	Turban Thief	58,{
 		next;
 		menu "Pay 750,000",-,"Nope lower",NoGoB;
 
-			if(Zeny < 750000) goto NotEnough;
+			if (Zeny < 750000) goto NotEnough;
 			set Zeny,Zeny-750000;
 			mes "[Turban Thief]";
 			mes "It is a done deal, no refunds!";
@@ -76,7 +76,7 @@ morocc.gat,140,156,5	script	Turban Thief	58,{
 			next;
 			menu "Pay 500,000",-,"It can go lower than that.",NoGoC;
 
-				if(Zeny < 500000) goto NotEnough;
+				if (Zeny < 500000) goto NotEnough;
 				set Zeny,Zeny-500000;
 				mes "[Turban Thief]";
 				mes "Alright, here you go then...";
@@ -108,8 +108,8 @@ morocc.gat,140,156,5	script	Turban Thief	58,{
 
 prontera.gat,145,290,5	script	Mason	742,{
 	mes "[Mason]";
-	if(umb_lang==0) goto L_NOT_GOT_QUEST;
-	if(umb_lang==2 || umb_mason==1) goto L_AGAIN;
+	if (umb_lang==0) goto L_NOT_GOT_QUEST;
+	if (umb_lang==2 || umb_mason==1) goto L_AGAIN;
 
 	mes "Hey there, I came here to Prontera in search of an old lady who can remove cards from slots. Do you know where I can find her?";
 	menu "Yes",-, "No",M_NO;
@@ -189,10 +189,10 @@ M_NO:
 
 aldebaran.gat,153,212,1	script	Mojo	740,{
 	mes "[Mojo]";
-	if(umb_lang!=1) goto L_NOT_GOT_QUEST;
+	if (umb_lang!=1) goto L_NOT_GOT_QUEST;
 	mes "Oh no!  I lost my teacher's ^FF0000old magic book^000000!";
 	mes "What am I going to do... those dumb Bathory...";
-	if(umb_lang==1) set umb_mojo,1;
+	if (umb_lang==1) set umb_mojo,1;
 	close;
 L_NOT_GOT_QUEST:
 	emotion e_what;
@@ -202,9 +202,9 @@ L_NOT_GOT_QUEST:
 
 amatsu.gat,267,189,4	script	Marie	744,{
 	mes "[Marie]";
-	if(umb_lang==0) goto L_NOT_GOT_QUEST;
-	if(umb_lang==2 || umb_marie==1) goto L_AGAIN;
-	if(countitem(9001)>0 && countitem(643)>0) goto L_DONE;//Items: Poring Egg, Pet Incubator,
+	if (umb_lang==0) goto L_NOT_GOT_QUEST;
+	if (umb_lang==2 || umb_marie==1) goto L_AGAIN;
+	if (countitem(9001)>0 && countitem(643)>0) goto L_DONE;//Items: Poring Egg, Pet Incubator,
 	mes "Hello, is there something you need?";
 	next;
 	menu "No nothing at all.",M_NO,"Your teacher sent me.",-;
@@ -232,7 +232,7 @@ L_DONE:
 	menu "Yep!",-, "Sorry, no.",M_DOH;
 
 	mes "[Marie]";
-	if(countitem(9001)==0 && countitem(643)==0) goto M_DOH;//Items: Poring Egg, Pet Incubator,
+	if (countitem(9001)==0 && countitem(643)==0) goto M_DOH;//Items: Poring Egg, Pet Incubator,
 	mes "Yatta!  Here's a lil something in return.";
 	delitem 9001,1;//Items: Poring Egg,
 	delitem 643,1;//Items: Pet Incubator,
@@ -252,12 +252,12 @@ L_AGAIN:
 
 yuno.gat,157,366,2	script	Wise Man Fabius	743,{
 	mes "[Fabius]";
-	if(event_umbala >= 3) set umb_lang,2; //You already learnt Umbalian language from Umbalian Chief. So this Quest is disabled
-	if(umb_lang<2) goto L_QUEST;
+	if (event_umbala >= 3) set umb_lang,2; //You already learnt Umbalian language from Umbalian Chief. So this Quest is disabled
+	if (umb_lang<2) goto L_QUEST;
 	mes "You speak Umbalian fluently! So you will never forget the language of Umbalians!";
 	close;
 L_QUEST:
-	if((countitem(1006) < 1) || (countitem(7118) < 1) || (countitem(7117) < 1)) goto L_DONE;//Items: Old Magic Book, Torn Scroll, Torn Spell Book,
+	if ((countitem(1006) < 1) || (countitem(7118) < 1) || (countitem(7117) < 1)) goto L_DONE;//Items: Old Magic Book, Torn Scroll, Torn Spell Book,
 	delitem 1006,1;	//Items: Old Magic Book,
 	delitem 7118,1;	//Items: Torn Scroll,
 	delitem 7117,1;//Items: Torn Spell Book,
@@ -281,7 +281,7 @@ L_QUEST:
 	set umb_mojo,0;
 	//make you understand Umbalian people
 	//it's an alternative way to learn Umbalian Language
-	if(event_umbala < 3) set event_umbala,3;
+	if (event_umbala < 3) set event_umbala,3;
 	close;
 L_DONE:
 	set umb_lang,1; //got Quest
@@ -289,13 +289,13 @@ L_DONE:
 	next;
 	mes "[Fabius]";
 	mes "From what I know, they're in different seperate towns making something out of themselves.";
-	if(umb_marie==0 && umb_mason==0 && umb_mojo==0) goto L_NOT_MET;
-	if(umb_marie==1) mes "Oh... You found Marie in Amatsu.";
-	if(umb_mojo==1) mes "You saw Mojo in Aldebaran?";
-	if(umb_mason==1) mes "So... Mason's in Prontera now... Well...";
-	if(umb_marie==0) mes "I wonder where is our sea girl Marie?";
-	if(umb_mojo==0) mes "Mojo should be somewhere near water...";
-	if(umb_mason==0) mes "Where'd Mason go then...";
+	if (umb_marie==0 && umb_mason==0 && umb_mojo==0) goto L_NOT_MET;
+	if (umb_marie==1) mes "Oh... You found Marie in Amatsu.";
+	if (umb_mojo==1) mes "You saw Mojo in Aldebaran?";
+	if (umb_mason==1) mes "So... Mason's in Prontera now... Well...";
+	if (umb_marie==0) mes "I wonder where is our sea girl Marie?";
+	if (umb_mojo==0) mes "Mojo should be somewhere near water...";
+	if (umb_mason==0) mes "Where'd Mason go then...";
 	mes "Oh yeah, tell them I sent you";
 	close;
 L_NOT_MET:
@@ -358,8 +358,8 @@ M_TALKUMB:
 	close; 
 M_DUN: 
 	mes "[Tree Guardian]"; 
-	if(umbdun != 1) mes "We do not permit weak people to enter!";
-	if(umbdun != 1) close;
+	if (umbdun != 1) mes "We do not permit weak people to enter!";
+	if (umbdun != 1) close;
 	mes "Come on in, brave warrior!"; 
 	warp "um_dun01.gat",42,30; 
 M_Leave:  
@@ -370,7 +370,7 @@ M_Leave:
 //Skeletal Gate
 //==============================================================================
 umbala.gat,221,193,1	script	 #Skeletal Gate	111,{
-	if(event_umbala==7) goto LwarpNoText;
+	if (event_umbala==7) goto LwarpNoText;
 	set @ryumon,0;
 	mes "^3355FFThe gate is shaped like a skeleton";
 	mes "You cannot pass this point as the gate is";
@@ -394,7 +394,7 @@ umbala.gat,221,193,1	script	 #Skeletal Gate	111,{
 			goto LRight;
 		L1_2:
 			//Blue
-			if(countitem(717) < 1) goto L1_2_e;//Items: Blue Gemstone,
+			if (countitem(717) < 1) goto L1_2_e;//Items: Blue Gemstone,
 				mes "^3355FFYou inserted a Blue Gemstone into the";
 				mes "left socket.^000000";
 				next;
@@ -407,7 +407,7 @@ umbala.gat,221,193,1	script	 #Skeletal Gate	111,{
 				goto LRight;
 		L1_3:
 			//Yellow
-			if(countitem(715) < 1) goto L1_3_e;//Items: Yellow Gemstone,
+			if (countitem(715) < 1) goto L1_3_e;//Items: Yellow Gemstone,
 				mes "^3355FFYou inserted a Yellow Gemstone into the";
 				mes "left socket.^000000";
 				next;
@@ -420,7 +420,7 @@ umbala.gat,221,193,1	script	 #Skeletal Gate	111,{
 				goto LRight;
 		L1_4:
 			//Red
-			if(countitem(716) < 1) goto L1_4_e;//Items: Red Gemstone,
+			if (countitem(716) < 1) goto L1_4_e;//Items: Red Gemstone,
 				mes "^3355FFYou inserted a Red Gemstone into the";
 				mes "left socket.^000000";
 				next;
@@ -453,7 +453,7 @@ umbala.gat,221,193,1	script	 #Skeletal Gate	111,{
 			goto Lfin;
 		L2_2:
 			//Blue
-			if(countitem(717) < 1) goto L2_2_e;//Items: Blue Gemstone,
+			if (countitem(717) < 1) goto L2_2_e;//Items: Blue Gemstone,
 				mes "^3355FFYou inserted a Blue Gemstone into the";
 				mes "right socket.^000000";
 				next;
@@ -466,7 +466,7 @@ umbala.gat,221,193,1	script	 #Skeletal Gate	111,{
 				goto Lfin;
 		L2_3:
 			//Yellow
-			if(countitem(715) < 1) goto L2_3_e;//Items: Yellow Gemstone,
+			if (countitem(715) < 1) goto L2_3_e;//Items: Yellow Gemstone,
 				mes "^3355FFYou inserted a Yellow Gemstone into the";
 				mes "right socket.^000000";
 				next;
@@ -479,7 +479,7 @@ umbala.gat,221,193,1	script	 #Skeletal Gate	111,{
 				goto Lfin;
 		L2_4:
 			//Red
-			if(countitem(716) < 1) goto L2_4_e;//Items: Red Gemstone,
+			if (countitem(716) < 1) goto L2_4_e;//Items: Red Gemstone,
 				mes "^3355FFYou inserted a Red Gemstone into the";
 				mes "right socket.^000000";
 				next;
@@ -512,11 +512,11 @@ umbala.gat,221,193,1	script	 #Skeletal Gate	111,{
 				mes ".........................";
 				mes ".........................^000000";
 				next;
-				if(event_umbala < 6) goto LSecondCheck;
-					if(@ryumon == 33) goto Lwarp;
+				if (event_umbala < 6) goto LSecondCheck;
+					if (@ryumon == 33) goto Lwarp;
 				LSecondCheck:
-				if(event_umbala >= 6) goto LNewEnd;
-					if(@ryumon == 13) goto Lwarp;
+				if (event_umbala >= 6) goto LNewEnd;
+					if (@ryumon == 13) goto Lwarp;
 					LNewEnd:
 						mes "^3355FFNothing happened.";
 						mes "You hear a faint laugh, but";
@@ -544,13 +544,13 @@ Lend:
 //Umbala Event
 //==============================================================================
 um_in.gat,39,122,5	script	Utan Tribal Elder	784,{
-	if(event_umbala == 1) goto LStart2;	
-	if(event_umbala == 2) goto LStart3;
-	if(event_umbala == 3) goto LStart4;
-	if(event_umbala == 4) goto LStart5;
-	if(event_umbala == 5) goto LStart6;
-	if(event_umbala == 6) goto LStart4;
-	if(event_umbala == 7) goto LStart4;
+	if (event_umbala == 1) goto LStart2;	
+	if (event_umbala == 2) goto LStart3;
+	if (event_umbala == 3) goto LStart4;
+	if (event_umbala == 4) goto LStart5;
+	if (event_umbala == 5) goto LStart6;
+	if (event_umbala == 6) goto LStart4;
+	if (event_umbala == 7) goto LStart4;
 	mes "[Karukatan]";
 	mes "Aha, You're new to the Utan";
 	mes "family's little village, aren't";
@@ -793,7 +793,7 @@ LStart5:
 	set event_umbala,5;
 	close;
 LStart6:
-	if(countitem(2278) > 0) goto Lsmileok;//Items: Mr. Smile,
+	if (countitem(2278) > 0) goto Lsmileok;//Items: Mr. Smile,
 	mes "[Karukatan]";
 	mes "Did you find the ^3377FFSmile Mask^000000 yet?";
 	mes "In order to let you see the shaman,";
@@ -824,11 +824,11 @@ Lsmileok:
 //=====================================================================
 um_in.gat,44,71,2	script	Utan Tribe Shaman	782,{
 
-	if (event_umbala == 3)goto UtanCase3;
-	if (event_ubmala == 4)goto UtanCase4;
-	if (event_ubmala == 5)goto UtanCase4;
-	if (event_ubmala == 6)goto UtanCase6;
-	if (event_ubmala == 7)goto UtanCase7;
+	if (event_umbala == 3) goto UtanCase3;
+	if (event_ubmala == 4) goto UtanCase4;
+	if (event_ubmala == 5) goto UtanCase4;
+	if (event_ubmala == 6) goto UtanCase6;
+	if (event_ubmala == 7) goto UtanCase7;
 
 		mes "[?????]";
 		mes "Umbaumbaumbaba Utan Umbaba";
@@ -923,7 +923,7 @@ UtanSwitchCont1:
 		menu "Earth",UtanEarth,"Water",UtanWater,"Fire",UtanFire,"Wind",UtanWind;
 
 			UtanEarth:
-				if(countitem(947)>=15)goto UtanElse1;
+				if (countitem(947)>=15) goto UtanElse1;
 					mes "[Putsuchiritan]";
 					mes "Earth...You need that which is";
 					mes "a friend of the earth.  Explore";
@@ -938,7 +938,7 @@ UtanSwitchCont1:
 					goto UtanCont2;
 
 			UtanWater:
-				if(countitem(946)>=20)goto UtanElse2;
+				if (countitem(946)>=20) goto UtanElse2;
 					mes "[Putsuchiritan]";
 					mes "Water...You need that which is";
 					mes "saturated with water.  Explore";
@@ -953,7 +953,7 @@ UtanSwitchCont1:
 					goto UtanCont2;
 
 			UtanFire:
-				if(countitem(904)>=20)goto UtanElse3;
+				if (countitem(904)>=20) goto UtanElse3;
 					mes "[Putsuchiritan]";
 					mes "Fire...You need that which";
 					mes "can withstand the roiling heat";
@@ -969,7 +969,7 @@ UtanSwitchCont1:
 					goto UtanCont2;
 
 			UtanWind:
-				if(countitem(1013)>=25)goto UtanElse4;
+				if (countitem(1013)>=25) goto UtanElse4;
 					mes "[Putsuchiritan]";
 					mes "Wind...You need that which";
 					mes "has an easy camaraderie with";
@@ -985,7 +985,7 @@ UtanSwitchCont1:
 					goto UtanCont2;
 
 	UtanCont2:
-		if(@need > 0)goto UtanNoNeed;
+		if (@need > 0) goto UtanNoNeed;
 			next;
 			mes "[Putsuchiritan]";
 			mes "Once you've prepared these";
@@ -1004,7 +1004,7 @@ UtanSwitchCont1:
 //		while(1) {
 			next;
 			input @num;
-			if(@num > 0) goto UtanOption2;
+			if (@num > 0) goto UtanOption2;
 				mes "[Putsuchiritan]";
 				mes "If you don't wish my help at the moment,";
 				mes "that's fine.  When you do, please come";
@@ -1012,7 +1012,7 @@ UtanSwitchCont1:
 				close;
 
 		UtanOption2:
-			if(@num>9) goto UtanOption3;
+			if (@num>9) goto UtanOption3;
 			goto UtanSwitchHatred1;
 
 			UtanOption3:
@@ -1026,8 +1026,8 @@ UtanSwitchCont1:
 
 	UtanSwitchHatred1:
 		mes "[Putsuchiritan]";
-		if(@need == 947)goto Case947A;
-		if(@need == 904)goto Case904A;
+		if (@need == 947) goto Case947A;
+		if (@need == 904) goto Case904A;
 		mes "The shell begins to vibrate.";
 		goto UtanSwitchHatred2;
 
@@ -1070,7 +1070,7 @@ UtanSwitchCont1:
 		menu "Earth",Earth,"Water",Water,"Fire",Fire,"Wind",Wind;
 
 			Earth:
-				if(countitem(997)!=0)goto ElseUtan1;
+				if (countitem(997)!=0) goto ElseUtan1;
 					mes "[Putsuchiritan]";
 					mes "You need to have";
 					mes "^3377FF1x Great Nature^000000";
@@ -1085,7 +1085,7 @@ UtanSwitchCont1:
 					goto UtanSwitchDeath1;
 
 			Water:
-				if(countitem(995)!=0)goto ElseUtan2;
+				if (countitem(995)!=0) goto ElseUtan2;
 					mes "[Putsuchiritan]";
 					mes "You need to have";
 					mes "^3377FF1x Mystic Frozen^000000";
@@ -1101,7 +1101,7 @@ UtanSwitchCont1:
 					goto UtanSwitchDeath1;
 
 			Fire:
-				if(countitem(994)!=0)goto ElseUtan3;
+				if (countitem(994)!=0) goto ElseUtan3;
 					mes "[Putsuchiritan]";
 					mes "You need to have";
 					mes "^3377FF1x Flaming Heart^000000";
@@ -1116,7 +1116,7 @@ UtanSwitchCont1:
 					goto UtanSwitchDeath1;
 
 			Wind:
-				if(countitem(996)!=0)goto ElseUtan4;
+				if (countitem(996)!=0) goto ElseUtan4;
 					mes "[Putsuchiritan]";
 					mes "You need to have";
 					mes "^3377FF1x Rough Wind^000000";
@@ -1134,7 +1134,7 @@ UtanSwitchCont1:
 
 	UtanSwitchDeath1:
 		next;
-		if(@need != 0)goto Putsuch2;
+		if (@need != 0) goto Putsuch2;
 			mes "[Putsuchiritan]";
 			mes "Once you have the necessary stone,";
 			mes "please come back and visit me";
@@ -1143,10 +1143,10 @@ UtanSwitchCont1:
 
 	Putsuch2:
 		mes "[Putsuchiritan]";
-		if(@need == 997)goto Case997;
-		if(@need == 995)goto Case995;
-		if(@need == 994)goto Case994;
-		if(@need == 996)goto Case996;
+		if (@need == 997) goto Case997;
+		if (@need == 995) goto Case995;
+		if (@need == 994) goto Case994;
+		if (@need == 996) goto Case996;
 
 		Case997: 
 			mes "I will dismantle your earth crystal";
@@ -1173,8 +1173,8 @@ UtanSwitchCont1:
 //		while(1) {
 			next;
 			input @num;
-			if(@num<=0)goto PutsuchNum1;
-			if(@num>9)goto PutsuchNum9;
+			if (@num<=0) goto PutsuchNum1;
+			if (@num>9) goto PutsuchNum9;
 
 			PutsuchNum1:
 				mes "[Putsuchiritan]";
@@ -1193,9 +1193,9 @@ UtanSwitchCont1:
 
 		PutsuchCont1:
 		set @num,@num+rand(5);
-		if(@num>10)
+		if (@num>10)
 		set @num,@num-10;
-		if(@num<5)
+		if (@num<5)
 		set @num,@num+5;
 		mes "[Putsuchiritan]";
 		mes "Please place the elemental stone";

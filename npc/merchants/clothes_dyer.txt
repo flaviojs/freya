@@ -61,26 +61,26 @@ L_Dye:
 	mes "[Dyer Ginedin Rephere]";
 	mes "Please choose a color that suits you.";
 	next;
-	if(Sex==0) goto Female_dye;
+	if (Sex==0) goto Female_dye;
 //=================================
 // Clothing Dyeing for Males
 //=================================
 
 Male_dye:
-	if(BaseJob==Job_Novice || BaseJob==Job_Novice_High || BaseJob==Job_Baby) goto L_Novice_M;
-	if(BaseJob==Job_Swordman || BaseJob==Job_Swordman_High || BaseJob==Job_Baby_Swordman) goto L_Swordman_M;
-	if(BaseJob==Job_Mage || BaseJob==Job_Mage_High || BaseJob==Job_Baby_Mage) goto L_Mage_M;
-	if(BaseJob==Job_Archer || BaseJob==Job_Archer_High || BaseJob==Job_Baby_Archer) goto L_Archer_M;
-	if(BaseJob==Job_Acolyte || BaseJob==Job_Acolyte_High || BaseJob==Job_Baby_Acolyte) goto L_Acolyte_M;
-	if(BaseJob==Job_Merchant || BaseJob==Job_Merchant_High || BaseJob==Job_Baby_Merchant) goto L_Merchant_M;
-	if(BaseJob==Job_Thief || BaseJob==Job_Thief_High || BaseJob==Job_Baby_Thief) goto L_Thief_M;
-	if(BaseJob==Job_Knight || BaseJob==Job_Knight2 || BaseJob==Job_Crusader || BaseJob==Job_Crusader2 || BaseJob==Job_Lord_Knight || BaseJob==Job_Lord_Knight2 || BaseJob==Job_Paladin || BaseJob==Job_Paladin2 || BaseJob==Job_Stalker || BaseJob==Job_Baby_Knight || BaseJob==Job_Baby_Knight2 || BaseJob==Job_Baby_Crusader || BaseJob==Job_Baby_Crusader2) goto L_Swordman2_M;
-	if(BaseJob==Job_Priest || BaseJob==Job_Monk || BaseJob==Job_High_Priest || BaseJob==Job_Champion || BaseJob==Job_Baby_Priest || BaseJob==Job_Baby_Monk) goto L_Acolyte2_M;
-	if(BaseJob==Job_Wizard || BaseJob==Job_High_Wizard || BaseJob==Job_Baby_Wizard) goto L_Mage2_M;
-	if(BaseJob==Job_Blacksmith || BaseJob==Job_Alchem || BaseJob==Job_Whitesmith || BaseJob==Job_Creator || BaseJob==Job_Baby_Blacksmith || BaseJob==Job_Baby_Alchem) goto L_Merchant2_M;
-	if(BaseJob==Job_Hunter || BaseJob==Job_Bard || BaseJob==Job_Sniper || BaseJob==Job_Clown || BaseJob==Job_Baby_Hunter || BaseJob==Job_Baby_Bard) goto L_Archer2_M;
-	if(BaseJob==Job_Assassin || BaseJob==Job_Rogue || BaseJob==Job_Assassin_Cross || BaseJob==Job_Baby_Assassin || BaseJob==Job_Baby_Rogue) goto L_Thief2_M;
-	if(BaseJob==Job_SuperNovice || BaseJob==Job_Super_Baby) goto L_Super_Novice_M;
+	if (BaseJob == JOB_NOVICE || BaseJob == JOB_NOVICE_HIGH || BaseJob == JOB_BABY) goto L_Novice_M;
+	if (BaseJob == JOB_SWORDMAN || BaseJob == JOB_SWORDMAN_High || BaseJob == JOB_BABY_SWORDMAN) goto L_Swordman_M;
+	if (BaseJob == JOB_MAGE || BaseJob == JOB_MAGE_HIGH || BaseJob == JOB_BABY_MAGE) goto L_Mage_M;
+	if (BaseJob == JOB_ARCHER || BaseJob == JOB_ARCHER_HIGH || BaseJob == JOB_BABY_ARCHER) goto L_Archer_M;
+	if (BaseJob == JOB_ACOLYTE || BaseJob == JOB_ACOLYTE_HIGH || BaseJob == JOB_BABY_ACOLYTE) goto L_Acolyte_M;
+	if (BaseJob == JOB_MERCHANT || BaseJob == JOB_MERCHANT_HIGH || BaseJob == JOB_BABY_MERCHANT) goto L_Merchant_M;
+	if (BaseJob == JOB_THIEF || BaseJob == JOB_THIEF_HIGH || BaseJob == JOB_BABY_THIEF) goto L_Thief_M;
+	if (BaseJob == JOB_KNIGHT || BaseJob == JOB_KNIGHT2 || BaseJob == JOB_CRUSADER || BaseJob == JOB_CRUSADER2 || BaseJob == JOB_LORD_KNIGHT || BaseJob == JOB_LORD_KNIGHT2 || BaseJob == JOB_PALADIN || BaseJob == JOB_PALADIN2 || BaseJob == JOB_STALKER || BaseJob == JOB_BABY_KNIGHT || BaseJob == JOB_BABY_KNIGHT2 || BaseJob == JOB_BABY_CRUSADER || BaseJob == JOB_BABY_CRUSADER2) goto L_Swordman2_M;
+	if (BaseJob == JOB_PRIEST || BaseJob == JOB_MONK || BaseJob == JOB_HIGH_PRIEST || BaseJob == JOB_CHAMPION || BaseJob == JOB_BABY_PRIEST || BaseJob == JOB_BABY_MONK) goto L_Acolyte2_M;
+	if (BaseJob == JOB_WIZARD || BaseJob == JOB_HIGH_WIZARD || BaseJob == JOB_BABY_WIZARD) goto L_Mage2_M;
+	if (BaseJob == JOB_BLACKSMITH || BaseJob == JOB_ALCHEM || BaseJob == JOB_WHITESMITH || BaseJob == JOB_CREATOR || BaseJob == JOB_BABY_BLACKSMITH || BaseJob == JOB_BABY_ALCHEM) goto L_Merchant2_M;
+	if (BaseJob == JOB_HUNTER || BaseJob == JOB_BARD || BaseJob == JOB_SNIPER || BaseJob == JOB_CLOWN || BaseJob == JOB_BABY_HUNTER || BaseJob == JOB_BABY_BARD) goto L_Archer2_M;
+	if (BaseJob == JOB_ASSASSIN || BaseJob == JOB_ROGUE || BaseJob == JOB_ASSASSIN_CROSS || BaseJob == JOB_BABY_ASSASSIN || BaseJob == JOB_BABY_ROGUE) goto L_Thief2_M;
+	if (BaseJob == JOB_SUPER_NOVICE || BaseJob == JOB_SUPER_BABY) goto L_Super_Novice_M;
 	goto sL_Sorry;
 //NOTE: Although Sages have pellets, they color non existent piece's of clothing. They are not listed, so players won't waste their items and zeny.
 //Professors also have a problem <.< The only thing that changes is a part of there Fox scarf. The Stalker Placement is not a bug!
@@ -163,21 +163,21 @@ L_Super_Novice_M:
 // Clothing Dyeing for Females
 //=================================	
 Female_dye:
-	if(BaseJob==Job_Novice || BaseJob==Job_Novice_High || BaseJob==Job_Baby) goto L_Novice_F;
-	if(BaseJob==Job_Swordman || BaseJob==Job_Swordman_High || BaseJob==Job_Baby_Swordman) goto L_Swordman_F;
-	if(BaseJob==Job_Mage || BaseJob==Job_Mage_High || BaseJob==Job_Baby_Mage) goto L_Mage_F;
-	if(BaseJob==Job_Archer || BaseJob==Job_Archer_High || BaseJob==Job_Baby_Archer) goto L_Archer_F;
-	if(BaseJob==Job_Acolyte || BaseJob==Job_Acolyte_High || BaseJob==Job_Baby_Acolyte) goto L_Acolyte_F;
-	if(BaseJob==Job_Merchant || BaseJob==Job_Merchant_High || BaseJob==Job_Baby_Merchant) goto L_Merchant_F;
-	if(BaseJob==Job_Thief || BaseJob==Job_Thief_High || BaseJob==Job_Baby_Thief) goto L_Thief_F;
-	if(BaseJob==Job_Knight || BaseJob==Job_Knight2 || BaseJob==Job_Crusader || BaseJob==Job_Crusader2 || BaseJob==Job_Lord_Knight || BaseJob==Job_Lord_Knight2 || BaseJob==Job_Paladin || BaseJob==Job_Paladin2 || BaseJob==Job_Stalker || BaseJob==Job_Baby_Knight || BaseJob==Job_Baby_Knight2 || BaseJob==Job_Baby_Crusader || BaseJob==Job_Baby_Crusader2) goto L_Swordman2_F;
-	if(BaseJob==Job_Priest || BaseJob==Job_Baby_Priest) goto L_Acolyte2_F;
-	if(BaseJob==Job_Wizard || BaseJob==Job_Sage || BaseJob==Job_High_Wizard || BaseJob==Job_Professor || BaseJob==Job_Baby_Wizard || BaseJob==Job_Baby_Sage) goto L_Mage2_F;
-	if(BaseJob==Job_Blacksmith || BaseJob==Job_Alchem || BaseJob==Job_Whitesmith || BaseJob==Job_Creator || BaseJob==Job_Baby_Blacksmith || BaseJob==Job_Baby_Alchem) goto L_Merchant2_F;
-	if(BaseJob==Job_Hunter || BaseJob==Job_Dancer || BaseJob==Job_Sniper || BaseJob==Job_Gypsy || BaseJob==Job_Baby_Hunter || BaseJob==Job_Baby_Dancer) goto L_Archer2_F;
-	if(BaseJob==Job_Assassin || BaseJob==Job_Baby_Assassin) goto L_Thief2_F;
-	if(BaseJob==Job_Rogue || BaseJob==Job_Assassin_Cross || BaseJob==Job_Baby_Rogue) goto L_Thief3_F;
-	if(BaseJob==Job_SuperNovice || BaseJob==Job_Super_Baby) goto L_Super_Novice_F;
+	if (BaseJob == JOB_NOVICE || BaseJob == JOB_NOVICE_HIGH || BaseJob == JOB_BABY) goto L_Novice_F;
+	if (BaseJob == JOB_SWORDMAN || BaseJob == JOB_SWORDMAN_High || BaseJob == JOB_BABY_SWORDMAN) goto L_Swordman_F;
+	if (BaseJob == JOB_MAGE || BaseJob == JOB_MAGE_HIGH || BaseJob == JOB_BABY_MAGE) goto L_Mage_F;
+	if (BaseJob == JOB_ARCHER || BaseJob == JOB_ARCHER_HIGH || BaseJob == JOB_BABY_ARCHER) goto L_Archer_F;
+	if (BaseJob == JOB_ACOLYTE || BaseJob == JOB_ACOLYTE_HIGH || BaseJob == JOB_BABY_ACOLYTE) goto L_Acolyte_F;
+	if (BaseJob == JOB_MERCHANT || BaseJob == JOB_MERCHANT_HIGH || BaseJob == JOB_BABY_MERCHANT) goto L_Merchant_F;
+	if (BaseJob == JOB_THIEF || BaseJob == JOB_THIEF_HIGH || BaseJob == JOB_BABY_THIEF) goto L_Thief_F;
+	if (BaseJob == JOB_KNIGHT || BaseJob == JOB_KNIGHT2 || BaseJob == JOB_CRUSADER || BaseJob == JOB_CRUSADER2 || BaseJob == JOB_LORD_KNIGHT || BaseJob == JOB_LORD_KNIGHT2 || BaseJob == JOB_PALADIN || BaseJob == JOB_PALADIN2 || BaseJob == JOB_STALKER || BaseJob == JOB_BABY_KNIGHT || BaseJob == JOB_BABY_KNIGHT2 || BaseJob == JOB_BABY_CRUSADER || BaseJob == JOB_BABY_CRUSADER2) goto L_Swordman2_F;
+	if (BaseJob == JOB_PRIEST || BaseJob == JOB_BABY_PRIEST) goto L_Acolyte2_F;
+	if (BaseJob == JOB_WIZARD || BaseJob == JOB_SAGE || BaseJob == JOB_HIGH_WIZARD || BaseJob == JOB_PROFESSOR || BaseJob == JOB_BABY_WIZARD || BaseJob == JOB_BABY_SAGE) goto L_Mage2_F;
+	if (BaseJob == JOB_BLACKSMITH || BaseJob == JOB_ALCHEM || BaseJob == JOB_WHITESMITH || BaseJob == JOB_CREATOR || BaseJob == JOB_BABY_BLACKSMITH || BaseJob == JOB_BABY_ALCHEM) goto L_Merchant2_F;
+	if (BaseJob == JOB_HUNTER || BaseJob == JOB_DANCER || BaseJob == JOB_SNIPER || BaseJob == JOB_GYPSY || BaseJob == JOB_BABY_HUNTER || BaseJob == JOB_BABY_DANCER) goto L_Archer2_F;
+	if (BaseJob == JOB_ASSASSIN || BaseJob == JOB_BABY_ASSASSIN) goto L_Thief2_F;
+	if (BaseJob == JOB_ROGUE || BaseJob == JOB_ASSASSIN_CROSS || BaseJob == JOB_BABY_ROGUE) goto L_Thief3_F;
+	if (BaseJob == JOB_SUPER_NOVICE || BaseJob == JOB_SUPER_BABY) goto L_Super_Novice_F;
 	goto sL_Sorry;
 //NOTE: Same problems as with Males. This time: Monk, High Priest, Champion.
 //Rogue and Assassin Cross have her own check, because the default dye is black <.< The Stalker Placement is not a bug!
@@ -280,8 +280,8 @@ L_Dye_Default:
 	close;
 L_Dye_Orange:
 	mes "[Dyer Ginedin Rephere]";
-	if(countitem(980) < 1) goto sL_NoDye;
-	if(Zeny < 10000) goto sL_Zeny;
+	if (countitem(980) < 1) goto sL_NoDye;
+	if (Zeny < 10000) goto sL_Zeny;
 	delitem 980,1;
 	set Zeny, Zeny - 10000;
 	mes "Ok. I will dye you clothes orange.";
@@ -289,8 +289,8 @@ L_Dye_Orange:
 	close;
 L_Dye_Violet:
 	mes "[Dyer Ginedin Rephere]";
-	if(countitem(981) < 1) goto  sL_NoDye;
-	if(Zeny < 10000) goto sL_Zeny;
+	if (countitem(981) < 1) goto  sL_NoDye;
+	if (Zeny < 10000) goto sL_Zeny;
 	delitem 981,1;
 	set Zeny, Zeny - 10000;
 	mes "Ok. I will dye you clothes Violet.";
@@ -298,8 +298,8 @@ L_Dye_Violet:
 	close;
 L_Dye_Red:
 	mes "[Dyer Ginedin Rephere]";
-	if(countitem(975) < 1) goto sL_NoDye;
-	if(Zeny < 10000) goto sL_Zeny;
+	if (countitem(975) < 1) goto sL_NoDye;
+	if (Zeny < 10000) goto sL_Zeny;
 	delitem 975,1;
 	set Zeny, Zeny - 10000;
 	mes "Ok. I will dye you clothes red.";
@@ -307,8 +307,8 @@ L_Dye_Red:
 	close;
 L_Dye_Black:
 	mes "[Dyer Ginedin Rephere]";
-	if(countitem(983) < 1) goto sL_NoDye;
-	if(Zeny < 10000) goto sL_Zeny;
+	if (countitem(983) < 1) goto sL_NoDye;
+	if (Zeny < 10000) goto sL_Zeny;
 	delitem 983,1;
 	set Zeny, Zeny - 10000;
 	mes "Ok. I will dye you clothes black.";
@@ -316,8 +316,8 @@ L_Dye_Black:
 	close;
 L_Dye_Green:
 	mes "[Dyer Ginedin Rephere]";
-	if(countitem(979) < 1) goto sL_NoDye;
-	if(Zeny < 10000) goto sL_Zeny;
+	if (countitem(979) < 1) goto sL_NoDye;
+	if (Zeny < 10000) goto sL_Zeny;
 	delitem 979,1;
 	set Zeny, Zeny - 10000;
 	mes "Ok. I will dye you clothes green.";
@@ -325,8 +325,8 @@ L_Dye_Green:
 	close;
 L_Dye_Blue:
 	mes "[Dyer Ginedin Rephere]";
-	if(countitem(978) < 1) goto sL_NoDye;
-	if(Zeny < 10000) goto sL_Zeny;
+	if (countitem(978) < 1) goto sL_NoDye;
+	if (Zeny < 10000) goto sL_Zeny;
 	delitem 978,1;
 	set Zeny, Zeny - 10000;
 	mes "Ok. I will dye you clothes blue.";
@@ -334,8 +334,8 @@ L_Dye_Blue:
 	close;
 L_Dye_White:
 	mes "[Dyer Ginedin Rephere]";
-	if(countitem(982) < 1) goto sL_NoDye;
-	if(Zeny < 10000) goto sL_Zeny;
+	if (countitem(982) < 1) goto sL_NoDye;
+	if (Zeny < 10000) goto sL_Zeny;
 	delitem 982,1;
 	set Zeny, Zeny - 10000;
 	mes "Ok. I will dye you clothes white.";
@@ -343,8 +343,8 @@ L_Dye_White:
 	close;
 L_Dye_Yellow:
 	mes "[Dyer Ginedin Rephere]";
-	if(countitem(976) < 1) goto sL_NoDye;
-	if(Zeny < 10000) goto sL_Zeny;
+	if (countitem(976) < 1) goto sL_NoDye;
+	if (Zeny < 10000) goto sL_Zeny;
 	delitem 976,1;
 	set Zeny, Zeny - 10000;
 	mes "Ok. I will dye you clothes yellow.";

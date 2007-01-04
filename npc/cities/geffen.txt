@@ -369,10 +369,10 @@ M_Menu:
 	menu "-Life!",M_0, "-Love!",M_1, "-Fortune!",M_2, "-Grades!",M_3, "-Future!",M_4, "-Fashion!",M_5, "-End.",M_End;
 
 	M_0:
-		if(@temp ==1) goto R0_1;
-		if(@temp ==2) goto R0_2;
-		if(@temp ==3) goto R0_3;
-		if(@temp ==4) goto R0_4;
+		if (@temp ==1) goto R0_1;
+		if (@temp ==2) goto R0_2;
+		if (@temp ==3) goto R0_3;
+		if (@temp ==4) goto R0_4;
 
 		R0_0:
 			mes "[Friend of Youth]";
@@ -432,9 +432,9 @@ M_Menu:
 			goto M_Menu;
 
 	M_1:
-		if(@temp ==1) goto R1_1;
-		if(@temp ==2) goto R1_2;
-		if(@temp ==3) goto R1_3;
+		if (@temp ==1) goto R1_1;
+		if (@temp ==2) goto R1_2;
+		if (@temp ==3) goto R1_3;
 
 		R1_0:
 			mes "[Friend of Youth]";
@@ -490,10 +490,10 @@ M_Menu:
 			goto M_Menu;
 
 	M_2:
-		if(@temp ==1) goto R2_1;
-		if(@temp ==2) goto R2_2;
-		if(@temp ==3) goto R2_3;
-		if(@temp ==4) goto R2_4;
+		if (@temp ==1) goto R2_1;
+		if (@temp ==2) goto R2_2;
+		if (@temp ==3) goto R2_3;
+		if (@temp ==4) goto R2_4;
 
 		R2_0:
 			mes "[Friend of Youth]";
@@ -526,8 +526,8 @@ M_Menu:
 			mes "One man's trash is another man's treasure! Go out and gather everything you can find! Don't be embarrassed about it!";
 			goto M_Menu;
 	M_3:
-		if(@temp ==1) goto R3_1;
-		if(@temp ==2) goto R3_End;
+		if (@temp ==1) goto R3_1;
+		if (@temp ==2) goto R3_End;
 
 		R3_0:
 			mes "[Friend of Youth]";
@@ -547,9 +547,9 @@ M_Menu:
 			goto M_Menu;
 
 	M_4:
-		if(@temp ==1) goto R4_1;
-		if(@temp ==2) goto R4_2;
-		if(@temp ==3) goto R4_3;
+		if (@temp ==1) goto R4_1;
+		if (@temp ==2) goto R4_2;
+		if (@temp ==3) goto R4_3;
 
 		R4_0:
 			mes "[Friend of Youth]";
@@ -591,10 +591,10 @@ M_Menu:
 			mes "And feel free to come back for another reading any time okay?";
 			goto M_Menu;
 	M_5:
-		if(@temp ==1 && countitem(2280)>=1) goto R5_1;
-		if(@temp ==2) goto R5_2;
-		if(@temp ==3) goto R5_3;
-		if(@temp ==4) goto R5_4;
+		if (@temp ==1 && countitem(2280)>=1) goto R5_1;
+		if (@temp ==2) goto R5_2;
+		if (@temp ==3) goto R5_3;
+		if (@temp ==4) goto R5_4;
 
 		R5_0:
 			mes "[Friend of Youth]";
@@ -654,7 +654,7 @@ M_Menu:
 // Dark Wizard -------------------------------------------------------------------------
 geffen_in.gat,164,109,2	script	Dark Wizard	64,{
 
-	if(BaseJob == 2 || BaseJob == 9) goto L_Magic;
+	if (BaseJob == JOB_MAGE || BaseJob == JOB_WIZARD) goto L_Magic;
 	
 	mes "[Dark Wizard]";
 	mes "Hmf.  I only speak to those with magic abilities....";

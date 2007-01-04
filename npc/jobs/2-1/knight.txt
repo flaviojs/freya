@@ -30,9 +30,9 @@
 
 //<------------------------------------------------------------------------------------ Chivalry Captain Herman------------------------------------------------------------------------------------------>\\
 prt_in.gat,88,101,3	script	Chivalry Captain Herman	56,{
-	callfunc "F_BlockHigh",Job_Swordman_High,"Swordman High",Job_Lord_Knight,"Lord Knight","Chivalry Captain Herman";
+	callfunc "F_BlockHigh",JOB_SWORDMAN_High,"Swordman High",JOB_LORD_KNIGHT,"Lord Knight","Chivalry Captain Herman";
 
-	if (BaseJob == Job_Swordman && KNIGHT_Q > 0) goto L_Check;
+	if (BaseJob == JOB_SWORDMAN && KNIGHT_Q > 0) goto L_Check;
 
 	mes "[Chivalry Captain Herman]";
 	mes "Good Day.  This is the Prontera Chivarly, home of the famous Prontera Knights.";
@@ -93,7 +93,7 @@ L_Check:
 	close;
 
 	L_MakeKnight:
-		if(SkillPoint > 0) goto sL_SKpoint;
+		if (SkillPoint > 0) goto sL_SKpoint;
 
 		mes "Oh, ^ff0000"+strcharinfo(0)+"^000000.  So you've passed Sir Grey's test?";
 		mes "Let me just say that I applaud all of your hard work and your determination.";
@@ -163,8 +163,8 @@ L_Check:
 		mes "Though others may think that a Knight's strength lies within his/her sword, we Knights know that true strength lies within ones mind and heart.";
 		next;
 		mes "[Sir Grey]";
-		if(sex==1) mes "After speaking to ^ff0000"+strcharinfo(0)+"^000000, I felt that he had this strength within him.";
-		if(sex==0) mes "After speaking to ^ff0000"+strcharinfo(0)+"^000000, I felt that she had this strength within her.";
+		if (sex==1) mes "After speaking to ^ff0000"+strcharinfo(0)+"^000000, I felt that he had this strength within him.";
+		if (sex==0) mes "After speaking to ^ff0000"+strcharinfo(0)+"^000000, I felt that she had this strength within her.";
 		mes "I would be happy to give ^ff0000"+strcharinfo(0)+"^000000 my recomendation to become a Knight!";
 		next;
 		mes "[Chivalry Captain Herman]";
@@ -179,9 +179,9 @@ L_Check:
 		mes "[Chivalry Captain Herman]";
 		mes "^ff0000"+strcharinfo(0)+"^000000, in the name of King Tristin the 3rd, ruler of the kingdom of Run-Midgard, I hereby bestow upon thee the title of Knight!";
 		next;
-		callfunc "Job_Change",Job_Knight;
-		if(JBLVL != 50) getitem 656, 3;
-		if(JBLVL == 50) getitem 656, 7;
+		callfunc "Job_Change",JOB_KNIGHT;
+		if (JBLVL != 50) getitem 656, 3;
+		if (JBLVL == 50) getitem 656, 7;
 		callfunc "F_ClearJobVar";		// clears all job variables for the current player
 		mes "[Chivalry Captain Herman]";
 		mes "Congratulations!! You are now a fellow Knight and protector of Rune-Midgard! Now go forth and make Rune-Midgard a better place to live!";
@@ -198,10 +198,10 @@ L_Check:
 //<--------------------------------------------------------------------------------- Sir Andrew Syloc (1st test) ------------------------------------------------------------------------------------------>\\
 prt_in.gat,75,107,4	script	Sir Andrew Syloc	65,{
 	mes "[Sir Andrew Syloc]";
-	if (BaseJob == Job_Knight) goto L_Knight;
-	if (BaseJob == Job_Novice) goto L_Novice;
-	if (BaseJob == Job_Swordman && KNIGHT_Q == 1) goto L_Test;
-	if (BaseJob == Job_Swordman && KNIGHT_Q == 2) goto L_Done;
+	if (BaseJob == JOB_KNIGHT) goto L_Knight;
+	if (BaseJob == JOB_NOVICE) goto L_Novice;
+	if (BaseJob == JOB_SWORDMAN && KNIGHT_Q == 1) goto L_Test;
+	if (BaseJob == JOB_SWORDMAN && KNIGHT_Q == 2) goto L_Done;
 L_Other:
 	mes "We Knights of Prontera battle for peace and freedom!  We fight to ensure a prosperous future for the people of Rune-Midgard!";
 	close;
@@ -248,8 +248,8 @@ L_Test:
 		if (joblevel == 50) goto sL_Skip;
 		mes "To pass this test you will need to gather:";
 		set KNIGHT_Q2, rand(1,2);
-		if(KNIGHT_Q2 == 1) callsub sF_R1;
-		if(KNIGHT_Q2 == 2) callsub sF_R2;
+		if (KNIGHT_Q2 == 1) callsub sF_R1;
+		if (KNIGHT_Q2 == 2) callsub sF_R2;
 		next;
 		mes "[Sir Andrew Syloc]";
 		mes "When you have all of those items, return here and give them to me.";
@@ -299,10 +299,10 @@ L_Test:
 L_Check:
 	mes "You've come back ^ff0000"+strcharinfo(0)+"^000000.  Did you get all of the items I asked for?";
 	next;
-	if(KNIGHT_Q2 == 2) goto L_2;
+	if (KNIGHT_Q2 == 2) goto L_2;
 
 	L_1:
-		if(countitem(1040)<5 || countitem(7006)<5 || countitem(931)<5 || countitem(1057)<5 || countitem(903)<5 || countitem(1028)<5) goto L_NotDone;
+		if (countitem(1040)<5 || countitem(7006)<5 || countitem(931)<5 || countitem(1057)<5 || countitem(903)<5 || countitem(1028)<5) goto L_NotDone;
 		delitem 1040,5;
 		delitem 7006,5;
 		delitem 931,5;
@@ -312,7 +312,7 @@ L_Check:
 		goto L_Cont;
 
 	L_2:
-		if(countitem(1042)<5 || countitem(950)<5 || countitem(946)<5 || countitem(966)<5 || countitem(7031)<5 || countitem(1032)<5) goto L_NotDone;
+		if (countitem(1042)<5 || countitem(950)<5 || countitem(946)<5 || countitem(966)<5 || countitem(7031)<5 || countitem(1032)<5) goto L_NotDone;
 		delitem 1042,5;
 		delitem 950,5;
 		delitem 946,5;
@@ -344,8 +344,8 @@ L_Check:
 		next;
 		mes "[Sir Andrew Syloc]";
 		mes "This is what you were SUPPOSED to collect....";
-		if(KNIGHT_Q2 == 1) callsub sF_R1;
-		if(KNIGHT_Q2 == 2) callsub sF_R2;
+		if (KNIGHT_Q2 == 1) callsub sF_R1;
+		if (KNIGHT_Q2 == 2) callsub sF_R2;
 		next;
 		mes "[Sir Andrew Syloc]";
 		mes "Once you have ALL of those items come back and see me.";
@@ -356,10 +356,10 @@ L_Check:
 //<------------------------------------------------------------------------------ Sir James Syracuse (2nd Test) ----------------------------------------------------------------------------------------->\\
 prt_in.gat,71,91,6	script	Sir James Syracuse	65,{
 	mes "[Sir James Syracuse]";
-	if (BaseJob == Job_Knight) goto L_Knight;
-	if (BaseJob == Job_Novice) goto L_Novice;
-	if (BaseJob == Job_Swordman && KNIGHT_Q == 2) goto L_Test;
-	if (BaseJob == Job_Swordman && KNIGHT_Q == 3) goto L_Done;
+	if (BaseJob == JOB_KNIGHT) goto L_Knight;
+	if (BaseJob == JOB_NOVICE) goto L_Novice;
+	if (BaseJob == JOB_SWORDMAN && KNIGHT_Q == 2) goto L_Test;
+	if (BaseJob == JOB_SWORDMAN && KNIGHT_Q == 3) goto L_Done;
 L_Other:
 	mes "Attacking and defending..... is there a way to do both at the same time?";
 	mes "With a 'two-handed' weapon you have a great attack but no defense.  Is there anything that can compensate for this weakness?";
@@ -694,10 +694,10 @@ L_Test:
 // Sir Windsor ---------------------------------------------------------
 prt_in.gat,79,94,3	script	Sir Windsor#1	733,{
 	mes "[Sir Windsor]";
-	if(BaseJob == Job_Knight) goto L_Knight;
-	if(BaseJob == Job_Novice) goto L_Novice;
-	if(BaseJob == Job_Swordman && KNIGHT_Q == 3) goto L_Test;
-	if(BaseJob == Job_Swordman && KNIGHT_Q == 4) goto L_Done;
+	if (BaseJob == JOB_KNIGHT) goto L_Knight;
+	if (BaseJob == JOB_NOVICE) goto L_Novice;
+	if (BaseJob == JOB_SWORDMAN && KNIGHT_Q == 3) goto L_Test;
+	if (BaseJob == JOB_SWORDMAN && KNIGHT_Q == 4) goto L_Done;
 L_Other:
 	mes "..........";
 	next;
@@ -717,8 +717,8 @@ L_Knight:
 
 
 L_Test:
-	if(KNIGHT_Q2 == 2) goto L_Done;
-	if(KNIGHT_Q2 == 1) goto sL_ReTest;
+	if (KNIGHT_Q2 == 2) goto L_Done;
+	if (KNIGHT_Q2 == 1) goto sL_ReTest;
 	mes ".............";
 	next;
 	mes "[Sir Windsor]";
@@ -838,7 +838,7 @@ OnStart:
 	set $@KntUsers, getareausers("job_knt.gat", 24, 126, 63, 165);			// get user count for first lvl
 	set $@KntUsers, $@KntUsers + getareausers("job_knt.gat", 24, 32, 63, 71);		// get user count for second lvl + first lvl
 	set $@KntUsers, $@KntUsers + getareausers("job_knt.gat", 124, 132, 163, 171);		// get user count for third lvl + second lvl + first lvl
-	if($@KntUsers > 0) end;
+	if ($@KntUsers > 0) end;
 
 	if ((getwaitingroomstate(33)) == 0) end;			// stops the rest of the script from running if there is no one in the waiting room;
 	//kills off any left over monsters from other testers
@@ -871,7 +871,7 @@ job_knt.gat,1,1,1	script	KntLvl1	-1,{
 
 OnMyMobDead:
 	set $@KntMob, $@KntMob - 1;
-	if($@KntMob > 0) end;
+	if ($@KntMob > 0) end;
 
 	stopnpctimer "TimerKnt";
 	areaannounce "job_knt.gat", 24, 126, 63, 165, "[Sir Windsor]: Get ready for the second level....",8;
@@ -903,7 +903,7 @@ job_knt.gat,1,1,1	script	KntLvl2	-1,{
 
 OnMyMobDead:
 	set $@KntMob, $@KntMob - 1;
-	if($@KntMob > 0) end;
+	if ($@KntMob > 0) end;
 
 	stopnpctimer "TimerKnt";
 	areaannounce "job_knt.gat", 24, 32, 63, 71, "[Sir Windsor]: Get ready for the third level....",8;
@@ -929,7 +929,7 @@ job_knt.gat,1,1,1	script	KntLvl3	-1,{
 
 OnMyMobDead:
 	set $@KntMob, $@KntMob - 1;
-	if($@KntMob > 0) end;
+	if ($@KntMob > 0) end;
 
 	stopnpctimer "TimerKnt";
 	set KNIGHT_Q2, 2;
@@ -973,9 +973,9 @@ OnTimer182000:
 	callsub AnnounceKnt;
 OnTimer184000:
 	stopnpctimer;
-	if($@KntRm==1) areawarp "job_knt.gat", 24, 126, 63, 165, "prt_in.gat",77,96;
-	if($@KntRm==2) areawarp "job_knt.gat", 24, 32, 63, 71, "prt_in.gat",77,96;
-	if($@KntRm==3) areawarp "job_knt.gat", 124, 132, 163, 171, "prt_in.gat",77,96;
+	if ($@KntRm==1) areawarp "job_knt.gat", 24, 126, 63, 165, "prt_in.gat",77,96;
+	if ($@KntRm==2) areawarp "job_knt.gat", 24, 32, 63, 71, "prt_in.gat",77,96;
+	if ($@KntRm==3) areawarp "job_knt.gat", 124, 132, 163, 171, "prt_in.gat",77,96;
 	areaannounce "job_knt.gat", 82, 98, 97, 113, "[Sir Windsor]: The testing rooms are now open.....",8;
 	killmonster "job_knt.gat", "KntLvl1::OnMyMobDead";
 	killmonster "job_knt.gat", "KntLvl2::OnMyMobDead";
@@ -984,9 +984,9 @@ OnTimer184000:
 	end;
 
 AnnounceKnt:
-	if($@KntRm==1) areaannounce "job_knt.gat", 24, 126, 63, 165, "[Sir Windsor]: "+$@KntTime$+".",8;
-	if($@KntRm==2) areaannounce "job_knt.gat", 24, 32, 63, 71, "[Sir Windsor]: "+$@KntTime$+".",8;
-	if($@KntRm==3) areaannounce "job_knt.gat", 124, 132, 163, 171, "[Sir Windsor]: "+$@KntTime$+".",8;
+	if ($@KntRm==1) areaannounce "job_knt.gat", 24, 126, 63, 165, "[Sir Windsor]: "+$@KntTime$+".",8;
+	if ($@KntRm==2) areaannounce "job_knt.gat", 24, 32, 63, 71, "[Sir Windsor]: "+$@KntTime$+".",8;
+	if ($@KntRm==3) areaannounce "job_knt.gat", 124, 132, 163, 171, "[Sir Windsor]: "+$@KntTime$+".",8;
 	end;
 }
 
@@ -994,11 +994,11 @@ AnnounceKnt:
 //<------------------------------------------------------------------------------------ Lady Amy Beatris (4th Test) ---------------------------------------------------------------------------------------------->\\
 prt_in.gat,69,107,5	script	Lady Amy Beatris	728,{
 	mes "[Lady Amy Beatris]";
-	if (BaseJob == Job_Knight) goto L_Knight;
-	if (BaseJob == Job_Novice) goto L_Novice;
-	if (BaseJob == Job_Swordman && KNIGHT_Q == 4) goto L_Test;
-	if (BaseJob == Job_Swordman && KNIGHT_Q == 5) mes "Speak to the Chivalry Captain Herman about your next test.";
-	if (BaseJob == Job_Swordman && KNIGHT_Q == 5) close;
+	if (BaseJob == JOB_KNIGHT) goto L_Knight;
+	if (BaseJob == JOB_NOVICE) goto L_Novice;
+	if (BaseJob == JOB_SWORDMAN && KNIGHT_Q == 4) goto L_Test;
+	if (BaseJob == JOB_SWORDMAN && KNIGHT_Q == 5) mes "Speak to the Chivalry Captain Herman about your next test.";
+	if (BaseJob == JOB_SWORDMAN && KNIGHT_Q == 5) close;
 L_Other:
 	mes "Welcome to the Prontera Chivalry.";
 	next;
@@ -1011,15 +1011,15 @@ L_Novice:
 	next;
 	mes "[Lady Amy Beatris]";
 	mes "Do you want to become a Knight?";
-	if(sex==0) mes "I bet you'll be lovely as a Knight.";
-	if(sex==1) mes "I bet you'll be really handsome as a Knight.";
+	if (sex==0) mes "I bet you'll be lovely as a Knight.";
+	if (sex==1) mes "I bet you'll be really handsome as a Knight.";
 	next;
 	mes "[Lady Amy Beatris]";
-	if(sex==0) mes "If you become a Knight, come back and see me.  We Lady Knights should stick together.";
-	if(sex==1) mes "If you become a knight, come back and see me okay?(*winks*)";
+	if (sex==0) mes "If you become a Knight, come back and see me.  We Lady Knights should stick together.";
+	if (sex==1) mes "If you become a knight, come back and see me okay?(*winks*)";
 	close;
 L_Knight:
-	if(sex==1) goto L_Male;
+	if (sex==1) goto L_Male;
 
 	L_Female:
 		mes "Oh my! Aren't you just the prettiest Knight.  I love how your sword matches with your shoes.";
@@ -1066,8 +1066,8 @@ L_Knight:
 
 
 L_Test:
-	if(KNIGHT_Q2 == 1) mes "Are you ready to take the test over?";	//for when someone retakes the test
-	if(KNIGHT_Q2 == 1) goto M_Menu;
+	if (KNIGHT_Q2 == 1) mes "Are you ready to take the test over?";	//for when someone retakes the test
+	if (KNIGHT_Q2 == 1) goto M_Menu;
 	mes "Hello.  Your ^ff0000"+strcharinfo(0)+"^000000, right?";
 	next;
 	mes "[Lady Amy Beatris]";
@@ -1268,8 +1268,8 @@ M_Menu:
 		mes "You got a score of ^ff0000"+@score+"^000000 out of ^0000ff100^000000.";
 		next;
 		mes "[Lady Amy Beatris]";
-		if(@score == 100) goto L_100;
-		if(@score >= 80) goto L_80;
+		if (@score == 100) goto L_100;
+		if (@score >= 80) goto L_80;
 
 		L_Failed:
 			mes "I am sorry but you failed the test.  I hope you will try again and do better next time.";
@@ -1308,9 +1308,9 @@ M_Menu:
 //<------------------------------------------------------------------------------------------- Sir Edmund (5th Test) --------------------------------------------------------------------------------------------->\\
 prt_in.gat,70,99,5	script	Sir Edmund	734,{
 	mes "[Sir Edmund]";
-	if (BaseJob == Job_Knight) goto L_Knight;
-	if (BaseJob == Job_Swordman) goto L_Sword;
-	if (BaseJob == Job_Novice) goto L_Novice;
+	if (BaseJob == JOB_KNIGHT) goto L_Knight;
+	if (BaseJob == JOB_SWORDMAN) goto L_Sword;
+	if (BaseJob == JOB_NOVICE) goto L_Novice;
 L_Other:
 	mes "Everything in this world exists in harmony.";
 	next;
@@ -1353,8 +1353,8 @@ L_Sword:
 	mes "Having ominous dreams will result in no dreams at all....";
 	close;
 L_Test:
-	if(KNIGHT_Q2 == 1) goto L_ReTest;
-	if(KNIGHT_Q2 == 2) goto L_Done;
+	if (KNIGHT_Q2 == 1) goto L_ReTest;
+	if (KNIGHT_Q2 == 2) goto L_Done;
 	mes "Oh so its your turn to take my test.";
 	mes "I hope you can pass it";
 	next;
@@ -1453,8 +1453,8 @@ OnMyMobDead:
 	end;
 
 OnTimerWarp:
-	if(KNIGHT_Q2 == 2) warp "prt_in.gat",80,100;
-	if(KNIGHT_Q2 == 1) warp "prt_fild05.gat",353,251;
+	if (KNIGHT_Q2 == 2) warp "prt_in.gat",80,100;
+	if (KNIGHT_Q2 == 1) warp "prt_fild05.gat",353,251;
 	end;
 }
 
@@ -1462,11 +1462,11 @@ OnTimerWarp:
 //<------------------------------------------------------------------------------------------ Sir Grey (Final Test) ------------------------------------------------------------------------------------------------------>\\
 prt_in.gat,87,90,3	script	Sir Grey	119,{
 	mes "[Sir Grey]";
-	if (BaseJob == Job_Knight) goto L_Knight;
-	if (BaseJob == Job_Novice) goto L_Novice;
-	if (BaseJob == Job_Swordman && KNIGHT_Q == 6) goto L_Test;
-	if (BaseJob == Job_Swordman && KNIGHT_Q == 7) mes "Go to Chivalry Captain Herman and allow him to bestow upon you the great honor of Knighthood.";
-	if (BaseJob == Job_Swordman && KNIGHT_Q == 7) close;
+	if (BaseJob == JOB_KNIGHT) goto L_Knight;
+	if (BaseJob == JOB_NOVICE) goto L_Novice;
+	if (BaseJob == JOB_SWORDMAN && KNIGHT_Q == 6) goto L_Test;
+	if (BaseJob == JOB_SWORDMAN && KNIGHT_Q == 7) mes "Go to Chivalry Captain Herman and allow him to bestow upon you the great honor of Knighthood.";
+	if (BaseJob == JOB_SWORDMAN && KNIGHT_Q == 7) close;
 L_Other:
 	mes "Use your time wisely young one......";
 	next;
@@ -1506,7 +1506,7 @@ L_Knight:
 		close;
 
 	M_Buy:
-		if(countitem(999) < 1 || Zeny < 74000) goto L_NotEnough;
+		if (countitem(999) < 1 || Zeny < 74000) goto L_NotEnough;
 
 		mes "[Sir Grey]";
 		mes "Good, you brought me the steel and have enough to cover the labor fee.";
@@ -1701,8 +1701,8 @@ M_Menu:
 				mes "Oh I see! Did you become a knight because of your this person?";
 				next;
 				mes "[Sir Grey]";
-				if(sex == 1) mes "I hope you will be able to protect her anytime and anywhere!";
-				if(sex == 0) mes "I hope you will be able to protect him anytime and anywhere!";
+				if (sex == 1) mes "I hope you will be able to protect her anytime and anywhere!";
+				if (sex == 0) mes "I hope you will be able to protect him anytime and anywhere!";
 				next;
 				mes "[Sir Grey]";
 				mes "Good luck to you and your loved one.";

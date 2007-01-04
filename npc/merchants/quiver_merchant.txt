@@ -94,26 +94,26 @@ Q13:
 //================================
 sF_Make:
 	set @arrownum,500;
-	if(countitem(getarg(0)) < @arrownum) goto L_NdArrows;
-	if(Zeny < getarg(1)) goto L_NdZeny;
+	if (countitem(getarg(0)) < @arrownum) goto L_NdArrows;
+	if (Zeny < getarg(1)) goto L_NdZeny;
 	mes "[Inventor Jaax]";
 	mes "What do you want me to do?";
 	next;
 	menu "Give me as many as you can.",-, "I want to set the amount.",sM_0b, "Nevermind",M_End;
 
 		set @amount,100;
-		if(zeny/getarg(1) < @amount) set @amount, zeny/getarg(1);
-		if(countitem(getarg(0))/@arrownum < @amount) set @amount, countitem(getarg(0))/@arrownum;
-		if(@amount > 0) goto L_End;
+		if (zeny/getarg(1) < @amount) set @amount, zeny/getarg(1);
+		if (countitem(getarg(0))/@arrownum < @amount) set @amount, countitem(getarg(0))/@arrownum;
+		if (@amount > 0) goto L_End;
 		mes "[Inventor Jaax]";
 		mes "Jeez... you don't even have the right items.....";
 		close;
 		
 	sM_0b:
 		input @amount;
-		if(@amount<1 || @amount>100) goto L_BadAmnt;
-		if(countitem(getarg(0))/@arrownum < @amount) goto L_NdArrows;
-		if(Zeny < (getarg(1)*@amount)) goto L_NdZeny;
+		if (@amount<1 || @amount>100) goto L_BadAmnt;
+		if (countitem(getarg(0))/@arrownum < @amount) goto L_NdArrows;
+		if (Zeny < (getarg(1)*@amount)) goto L_NdZeny;
 
 	L_End:
 		set Zeny, Zeny - (getarg(1)*@amount);
