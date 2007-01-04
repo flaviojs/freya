@@ -3,20 +3,22 @@
 //===== By: ==================================================
 //= KitsuneStarwind, usul, kobra_k88
 //===== Current Version: =====================================
-//= 1.1
+//= 1.2
 //===== Compatible With: =====================================
 //= eAthena 1.0 +
 //===== Description: =========================================
 //=
 //===== Additional Comments: =================================
-//= Edited Miss Yoon text. Added town soldiers by usul. Edited town soldiers
+//= 1.1 Edited Miss Yoon text. Added town soldiers by usul. Edited town soldiers
 //= and added map location option for them. [kobra_k88]
+//= 1.2 Fixed typo [Tsuyuki]
 //============================================================
 
 
 
 //=====================================================================================
 yuno.gat,153,47,4	script	Yuno Guide	700,{
+
 	mes "[Miss Yoon]";
 	mes "A place that understands the present and envisions the future............";
 	mes "This is Yuno, the city of Sages.  Welcome to Yuno.";
@@ -27,6 +29,7 @@ yuno.gat,153,47,4	script	Yuno Guide	700,{
 
 //=====================================================================
 yuno.gat,333,182,2	script	Yuno Soldier	105,{
+
 	cutin "prt_soldier",2;
 	set @name$, "[Yuno Soldier]";
 	set @menu1$, "^5533FF'Dagger of Counter'^000000.....";
@@ -42,6 +45,7 @@ yuno.gat,333,182,2	script	Yuno Soldier	105,{
 
 //=====================================================================
 yuno.gat,264,320,2	script	Yuno Soldier	105,{
+
 	cutin "prt_soldier",2;
 	set @name$, "[Yuno Soldier]";
 	set @menu1$, "Holy shield, ^5533FF'Sacred Mission'^000000.....";
@@ -57,6 +61,7 @@ yuno.gat,264,320,2	script	Yuno Soldier	105,{
 
 //=====================================================================
 yuno.gat,228,292,2	script	Yuno Soldier	105,{
+
 	cutin "prt_soldier",2;
 	set @name$, "[Yuno Soldier]";
 	set @menu1$, "^FF3355'False Angel'^000000.....";
@@ -66,12 +71,13 @@ yuno.gat,228,292,2	script	Yuno Soldier	105,{
 	mes "It pretends to be a real angel by blessing adventurers, but then it stabs them in the back afterwards.";
 	next;
 	mes "[Yuno Soldier]";
-	mes "Do not be fooled by its beautifull appereance, otherwise you will find yourself in great peril.";
+	mes "Do not be fooled by its beautiful appereance, otherwise you will find yourself in great peril.";
 	callfunc "F_YunoLoc",1;
 }
 
 //=====================================================================
 yuno.gat,164,283,4	script	Yuno Soldier	105,{
+
 	cutin "prt_soldier",2;
 	set @name$, "[Yuno Soldier]";
 	set @menu1$, "^FF3355'Geographer'^000000.....";
@@ -88,6 +94,7 @@ yuno.gat,164,283,4	script	Yuno Soldier	105,{
 
 //=====================================================================
 yuno.gat,151,283,4	script	Yuno Soldier	105,{
+
 	cutin "prt_soldier",2;
 	set @name$, "[Yuno Soldier]";
 	set @menu1$, "^FF3355'Lava Golem'^000000.....";
@@ -107,6 +114,7 @@ yuno.gat,151,283,4	script	Yuno Soldier	105,{
 
 //=====================================================================
 yuno.gat,164,228,4	script	Yuno Soldier	105,{
+
 	cutin "prt_soldier",2;
 	set @name$, "[Yuno Soldier]";
 	set @menu1$, "Killer ^FF3355'Goats'^000000.....";
@@ -122,6 +130,7 @@ yuno.gat,164,228,4	script	Yuno Soldier	105,{
 
 //=====================================================================
 yuno.gat,151,228,4	script	Yuno Soldier	105,{
+
 	cutin "prt_soldier",2;
 	set @name$, "[Yuno Soldier]";
 	set @menu1$, "Large Jellopy.....";
@@ -137,12 +146,14 @@ yuno.gat,151,228,4	script	Yuno Soldier	105,{
 function	script	F_YunoLoc	{
 
 	if (getarg(0) == 1) goto M_Menu;
-	if (getarg(0) == 2) menu "View city locations.",M_0, "End conversation.",M_End;
+	if (getarg(0) == 2) menu "View city locations.",M_0,"End conversation.",M_End;
 	mes @name$;
 	mes "Welcome to Yuno, the city of noble-mindedness.";
-	M_Menu:
+	goto M_Menu;
+
+M_Menu:
 	next;
-	menu "View city locations.",M_0, @menu1$,M_1, "End conversation.",M_End;
+	menu "View city locations.",M_0,@menu1$,M_1,"End conversation.",M_End;
 
 	M_0:
 		mes @name$;
