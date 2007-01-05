@@ -2991,7 +2991,7 @@ L_QUESTION10:
 L_QUESTION11:
 	set @questiondone11,1;
 	mes "Choose the correct DEF for the Indian Filet item.";
-	menu "0",L_REPONSEFAUSSE,"1",L_REPONSEFAUSSE,"2",L_REPONSEFAUSSE,"3",l_correct;
+	menu "0",L_REPONSEFAUSSE,"1",L_REPONSEFAUSSE,"2",L_REPONSEFAUSSE,"3",a_correct;
 L_QUESTION12:
 	set @questiondone12,1;
 	mes "Which item is not relevant to the creation of a counteragent?";

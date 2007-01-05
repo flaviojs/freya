@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+01/05/07
+	* Fixed: Indian Filet's question stuck for The Sign Quest. [Lex]
+
 01/04/07
 	* Updated: Fully updated new card effects to match kRO 11.2 [Tsuyuki]
 	* Fixed: Phantasmic Arrow is now Ghost/Sense element [Tsuyuki]
