@@ -5,7 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/05/07
-	* Fixed: Gunslinger, Minja and Xmas classes counted as mob disguises [Harbin]
+	* Fixed: Gunslinger, Ninja and Xmas classes counted as mob disguises [Harbin]
 	* Fixed: Mammonite deals neutral damage, but does not ignore weapon element and card bonuses [Harbin]
 	* Fixed: bMagicDamageReturn should reflect only targetable spells [Harbin]
 	* Fixed: Falcon Assault should bypass Defending Aura damage reduction [Harbin]
