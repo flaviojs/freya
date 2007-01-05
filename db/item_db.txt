@@ -1355,7 +1355,7 @@
 4143,Orc_Hero_Card,Orc Hero Card,6,20,0,10,,,,,,,769,,,,{},{ bonus bVit,3; bonus2 bResEff,Eff_Stan,10000; }
 4144,Osiris_Card,Osiris Card,6,20,0,10,,,,,,,136,,,,{},{ bonus bRestartFullRecover,0; }
 4145,Berzebub_Card,Berzebub Card,6,20,0,10,,,,,,,136,,,,{},{ bonus bCastrate,-30; }
-4146,Maya_Card,Maya Card,6,20,0,10,,,,,,,32,,,,{},{ bonus bMagicDamageReturn,30; }
+4146,Maya_Card,Maya Card,6,20,0,10,,,,,,,32,,,,{},{ bonus bMagicDamageReturn,50; }
 4147,Baphomet_Card,Baphomet Card,6,20,0,10,,,,,,,2,,,,{},{ bonus bHit,-10; bonus bSplashRange,1; }
 4148,Pharaoh_Card,Pharaoh Card,6,20,0,10,,,,,,,769,,,,{},{ bonus bUseSPrate,-30; }
 4149,Gargoyle_Card,Gargoyle Card,6,20,0,10,,,,,,,136,,,,{},{ bonus3 bAddMonsterDropItem,12028,4,100; }

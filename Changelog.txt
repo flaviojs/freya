@@ -6,6 +6,7 @@ Date	Added
 
 01/05/07
 	* Fixed: Falcon Assault should bypass Defending Aura damage reduction [Harbin]
+	* Fixed: Maya Card's Magic reflect rate is now 50% instead of 30% [Tsuyuki]
 	* Fixed: Indian Filet's question stuck for The Sign Quest. [Lex]
 
 01/04/07

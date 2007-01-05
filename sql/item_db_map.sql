@@ -1380,7 +1380,7 @@ INSERT INTO `item_db` VALUES (4142, 'Doppelganger_Card', 'Doppelganger Card', 6,
 INSERT INTO `item_db` VALUES (4143, 'Orc_Hero_Card', 'Orc Hero Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 769, 0, 0, 0, NULL, 'bonus bVit,3; bonus2 bResEff,Eff_Stan,10000;');
 INSERT INTO `item_db` VALUES (4144, 'Osiris_Card', 'Osiris Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus bRestartFullRecover,0;');
 INSERT INTO `item_db` VALUES (4145, 'Berzebub_Card', 'Berzebub Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus bCastrate,-30;');
-INSERT INTO `item_db` VALUES (4146, 'Maya_Card', 'Maya Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 32, 0, 0, 0, NULL, 'bonus bMagicDamageReturn,30;');
+INSERT INTO `item_db` VALUES (4146, 'Maya_Card', 'Maya Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 32, 0, 0, 0, NULL, 'bonus bMagicDamageReturn,50;');
 INSERT INTO `item_db` VALUES (4147, 'Baphomet_Card', 'Baphomet Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus bHit,-10; bonus bSplashRange,1;');
 INSERT INTO `item_db` VALUES (4148, 'Pharaoh_Card', 'Pharaoh Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 769, 0, 0, 0, NULL, 'bonus bUseSPrate,-30;');
 INSERT INTO `item_db` VALUES (4149, 'Gargoyle_Card', 'Gargoyle Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus3 bAddMonsterDropItem,12028,4,100;');
