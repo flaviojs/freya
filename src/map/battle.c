@@ -518,9 +518,8 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 
 		if(flag&BF_WEAPON) { //Weapon attacks
 			if(flag&BF_LONG) { //Long ranged attacks
-				if(tsc_data[SC_DEFENDER].timer != -1)
+				if(tsc_data[SC_DEFENDER].timer != -1 && skill_num != SN_FALCONASSAULT)
 					damage = damage * (100 - tsc_data[SC_DEFENDER].val2) / 100;
-		
 				if(tsc_data[SC_FOGWALL].timer != -1)
 					damage >>= 1;
 			}

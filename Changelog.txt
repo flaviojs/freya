@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/05/07
+	* Fixed: Falcon Assault should bypass Defending Aura damage reduction [Harbin]
 	* Fixed: Indian Filet's question stuck for The Sign Quest. [Lex]
 
 01/04/07

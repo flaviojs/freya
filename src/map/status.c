@@ -4075,24 +4075,19 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 
          case SC_DEFENDER:
             scflag.calc = 1;
-            if(!flag)
-            {
-                val2 = 5 + val1 * 15;
-            }
-            
-            //damz fish help for devotion
-            if (sd)
-            {
-                struct map_session_data *tsd;
-                int i;
-                for (i = 0; i < 5; i++)
-                {    
-                    if (sd->dev.val1[i] && (tsd = map_id2sd(sd->dev.val1[i])))
-                        status_change_start(&tsd->bl,SC_DEFENDER,val1,val2,0,0,tick,1);
-                } //for (i = 0; i < 5; i++)
-            }// if (sd)
-            //end Damz Fish help for devotion
-            break;
+			if(!flag)
+				val2 = 5 + val1 * 15;
+			if(sd)
+			{
+				struct map_session_data *tsd;
+				register int i;
+				for(i = 0; i < 5; i++)
+				{
+					if(sd->dev.val1[i] && (tsd = map_id2sd(sd->dev.val1[i])))
+						status_change_start(&tsd->bl,SC_DEFENDER,val1,val2,0,0,tick,1);
+				}
+			}
+			break;
 
 		case SC_KEEPING:
 		case SC_BARRIER:
