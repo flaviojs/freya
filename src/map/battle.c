@@ -1128,9 +1128,6 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 				break;
 			case MC_MAMMONITE:
 				skillratio += 50 * skill_lv;
-				s_ele = 0;
-				s_ele_ = 0;
-				flag.cardfix = 0;
 				break;
 			// swordsman
 			case SM_BASH:
@@ -1888,7 +1885,8 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 		}
 
 		// skill damage bonuses
-		if(sc_data && skill_num != PA_SACRIFICE && skill_num != MC_MAMMONITE) {
+		if(sc_data && skill_num != PA_SACRIFICE && skill_num != MC_MAMMONITE)
+		{
 			if(sc_data[SC_OVERTHRUST].timer != -1)
 				skillratio += 5 * sc_data[SC_OVERTHRUST].val1;
 			if(sc_data[SC_MAXOVERTHRUST].timer != -1)
@@ -2719,35 +2717,35 @@ struct Damage battle_calc_magic_attack(
 
 	if(tsd && tsd->magic_damage_return > 0 && tsd->magic_damage_return > rand()%100)
 	{
-		short calc_rdamage = 1;
-
-		if(skill_num == AL_HEAL || skill_num == PR_SANCTUARY)
+		short calc_rdamage = 0;
+		
+		if(skill_num == AL_HEAL)
 		{
 			if(status_get_element(target) == 7)
 			{
-				if(skill_num == PR_SANCTUARY)
+				calc_rdamage = 1;
+				rdamage += -damage;
+				damage = 0;
+			}
+		} else if(skill_num == PR_SANCTUARY) {
+			if(status_get_element(target) == 7)
+			{
+				if(rand()%100 > 50)
 				{
-					if(rand()%100 > 50)
-					{
-						rdamage += -damage;
-						damage = 0;
-					} else {
-						battle_heal(NULL, target, 0, 0, 0);
-						damage = 0;
-						calc_rdamage = 0;
-					}
-				} else {
+					calc_rdamage = 1;
 					rdamage += -damage;
 					damage = 0;
+				} else {
+					battle_heal(NULL, target, 0, 0, 0);
+					damage = 0;
 				}
-			} else {
-				calc_rdamage = 0;
 			}
-		} else {
+		} else if(skill_db[skill_num].inf == 1) {
+			calc_rdamage = 1;
 			rdamage += damage;
 			damage = 0;
 		}
-
+		
 		if(calc_rdamage == 1)
 		{
 			if(rdamage < 1)

@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/05/07
+	* Fixed: Mammonite deals neutral damage, but does not ignore weapon element and card bonuses [Harbin]
+	* Fixed: bMagicDamageReturn should reflect only targetable spells [Harbin]
 	* Fixed: Falcon Assault should bypass Defending Aura damage reduction [Harbin]
 	* Fixed: Maya Card's Magic reflect rate is now 50% instead of 30% [Tsuyuki]
 	* Fixed: Indian Filet's question stuck for The Sign Quest. [Lex]
