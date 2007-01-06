@@ -1,79 +1,688 @@
 //===== Freya Script =========================================
 //= Quests NPCs located in Yuno City
 //===== By: ==================================================
-//= eAthena Dev Team
+//= Aegis
 //===== Current Version: =====================================
-//= 1.3
+//= 1.0
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
-//= Help the bros and get some rubies or gold. This quest is
-//= also used in part of the Alchemist job quest.
+//= Yuno Quest NPCs
 //===== Additional Comments: =================================
-//= v1.1 Re-did the text and re-organized the script. Corrected some items. [kobra_k88]
-//= v1.2 Added part to Bro's for alchemist quest [Darkchild]
-//= 1.3 fixed that part of Alch Job Quest. [Lupus]
-//= Note: Missing Juperos Research Quest [Tsuyuki]
-//= Note: I plant to do it myself pretty soon [Tsuyuki]
+//= 1.0 Completely redid file now with official Aegis NPCs [Tsuyuki]
 //============================================================
 
 
 //===========================================================================
-yuno_in01.gat,103,158,4	script	Bain	98,{
-	set @name$, "[Bain]";
+// The Ryusei Quest (Metto Quest)
+//===========================================================================
 
-OnStart:
-	mes @name$;
-	if (bros_q == 1) goto L_Check;
-	mes "We are going to invent a doll that can talk and communicate! Well, at least that's what I'm trying to do....";
-	mes "The idea came from an old tale about a doll that acted like a real person.";
-	next;
-	mes @name$;
-	mes "I figure if someone had the ability to make such a doll back then, then it should definitely be possible today.";
-	next;
-	mes @name$;
-	mes "Unfortunately I lack the proper supplies and parts to actually try and build the doll.";
-	mes "Although I can buy some of the things I need, many of these items can only be taken from monsters......";
-	next;
-	mes @name$;
-	mes "I am much to weak to defeat these monsters....... How will I be able to continue this project??.....";
-	next;
-	menu "I'll get the items for you.",-, "Good luck.",M_End;
+// Metto
+yuno_in03.gat,26,39,3	script	Metto	709,{
 
-		mes @name$;
-		mes "Really? Such benevolence is rare in this day and age.  We would be grateful for you assisstance.";
-		mes "Here are the items that we will be needing.......";
-		callsub sF_List;
-		set bros_q, 1;
+	if (mad == 2 || mad == 4 || mad == 6) goto L_Check;
+	if (mad == 1) goto L_Stang;
+	if (mad == 3) goto L_Kato;
+	if (mad == 5) goto L_CiCi;
+	if (mad == 7) goto L_Ruined;
+	if (mad == 8) goto L_Done;
+
+	mes "[Metto]";
+	mes "In the Lab today, in the Lab";
+	mes "tomorrow! Everyday is filled with";
+	mes "research! Even if it takes my";
+	mes "entire life, I will not give up";
+	mes "until I have made a new Juno...";
+	next;
+	mes "[Metto]";
+	mes "A new Juno in which all will bask";
+	mes "in the light of my genius! If I can";
+	mes "just harness the power of flight...";
+	mes "I know I can do it!";
+	next;
+	mes "[Metto]";
+	mes "^FF0000Wagan^000000 said that my idea was crazy";
+	mes "and impossible. But I am no fool, I";
+	mes "won't be swayed by his words of";
+	mes "mockery!";
+	close;
+
+L_Stang:
+	mes "[Metto]";
+	mes "I'm going to ask my colleague";
+	mes "^FF0000Stangckle^000000 to help me. I am";
+	mes "sure he will be more than willing";
+	mes "to help out an old friend.";
+	next;
+	mes "[Metto]";
+	mes "If I had that fellow's help, this";
+	mes "would be much easier. Pray! Pray to";
+	mes "whatever God you believe that we";
+	mes "will succeed!";
+	set mad,2;
+	close;
+
+L_Kato:
+	mes "[Metto]";
+	mes "What? That punk Stangckle said he";
+	mes "doesn't want to help me?! This is";
+	mes "not good. This will slow my";
+	mes "research considerably.";
+	next;
+	mes "[Metto]";
+	mes "...";
+	mes "What will";
+	mes "I do now?!";
+	next;
+	mes "[Metto]";
+	mes "Luckily, I have a back up plan. I";
+	mes "am positive that my friend and";
+	mes "colleague ^FF0000Kato^000000 will lend his aid.";
+	next;
+	mes "[Metto]";
+	mes "If I can only study his super";
+	mes "robot, Great Z, I can continue my";
+	mes "research...";
+	next;
+	mes "[Metto]";
+	mes "I guess if Stangckle doesn't want";
+	mes "to help me, he can have it his way.";
+	mes "I must continue my research,";
+	mes "whether or not he helps me.";
+	next;
+	mes "[Metto]";
+	mes "Expect great things, young friend.";
+	mes "Muahahahha";
+	set mad,4;
+	close;
+
+L_CiCi:
+	mes "[Metto]";
+	mes "What? You mean to tell me that the";
+	mes "very thing I need to continue my";
+	mes "research, the mighty Great Z, has";
+	mes "been destroyed?!!";
+	next;
+	mes "[Metto]";
+	mes "Nooooo~!! Why? Why would they do";
+	mes "that? Are the Gods cursing me?!";
+	next;
+	mes "[Metto]";
+	mes "Wait, I need...";
+	mes "To calm down...";
+	next;
+	mes "[Metto]";
+	mes "If I can just get the help of";
+	mes "professor ^FF0000CiCi^000000 with his Riding";
+	mes "Engine theory, I might be able to";
+	mes "finish my research...";
+	next;
+	mes "[Metto]";
+	mes "I still";
+	mes "have hope!";
+	mes "Ha! Ha! Ha!";
+	set mad,6;
+	close;
+
+L_Check:
+	mes "[Metto]";
+	mes "I better get going to check this";
+	mes "new thing out. What are you still";
+	mes "doing here? I'll be leaving in a";
+	mes "bit.";
+	next;
+	mes "[Metto]";
+	mes "I need to get ready! You go ahead";
+	mes "and take off, I'll be going out";
+	mes "soon.";
+	close;
+
+L_Ruined:
+	mes "[Metto]";
+	mes "...";
+	next;
+	mes "[Metto]";
+	mes "...";
+	mes "......";
+	next;
+	mes "[Metto]";
+	mes "How can this happen 3 times in a";
+	mes "row? It's true, the Gods have";
+	mes "forsaken me! I'm ruined...";
+	mes "RUINED!!!";
+	next;
+	mes "[Metto]";
+	mes "What can I do now...? Has the time";
+	mes "really come for me to forfeit all";
+	mes "my years of research?";
+	next;
+	mes "[Metto]";
+	mes "I know I've disappointed you, but";
+	mes "please, forget all about me.";
+	next;
+	mes "[Metto]";
+	mes "Who would do this to me? What kind";
+	mes "of malicious person would shatter a";
+	mes "man's dreams??";
+	next;
+	mes "[Metto]";
+	mes "I'm tired of this. I think that the";
+	mes "time has come for me to give up.";
+	mes "It's all over. Please don't be to";
+	mes "disappointed...";
+	set mad,8;
+	close;
+
+L_Done:
+	mes "[Metto]";
+	mes "Maybe I should look into a job";
+	mes "change. I hear it is a popular";
+	mes "decision these days.";
+	next;
+	mes "[Metto]";
+	mes "I wonder what I should look into?";
+	mes "All I know for sure is that I don't";
+	mes "want to be a scientist anymore. I'm";
+	mes "done with research...";
+	close;
+}
+
+// Stangckle
+yuno_in01.gat,17,95,5	script	Stangckle	99,{
+
+	if (mad > 2) goto L_Done;
+	if (mad == 2) goto L_Start;
+
+	mes "[Stangckle]";
+	mes "I am one of the scientists in this";
+	mes "city. My name is Stangckle.";
+	next;
+	mes "[Stangckle]";
+	mes "You should remember my name, it may";
+	mes "be useful to you in the future.";
+	close;
+
+L_Start:
+	mes "[Stangckle]";
+	mes "What can I do for you? My colleague";
+	mes "Metto is coming here soon, so I";
+	mes "don't have much time. So what did";
+	mes "you say you needed?";
+	next;
+	menu "I am here to stop your research.",-,"I don't need anything.",M_End;
+
+		mes "[Stangckle]";
+		mes "...";
+		next;
+		mes "[Stangckle]";
+		mes "...";
+		mes "......";
+		next;
+		mes "[Stangckle]";
+		mes "...";
+		mes "......";
+		mes ".........";
+		next;
+		mes "[Stangckle]";
+		mes "Is that true?? Metto doesn't think";
+		mes "of me as a colleague, but still";
+		mes "wants me to help him?!";
+		next;
+		mes "[Stangckle]";
+		mes "He only sees me as an assistant and";
+		mes "is going to steal all the credit";
+		mes "for our discoveries?!";
+		next;
+		mes "[Stangckle]";
+		mes "This guy can't be trusted! The";
+		mes "rumours were true: he really is";
+		mes "mad!";
+		next;
+		mes "[Stangckle]";
+		mes "And to think, I really respected";
+		mes "that traitor! I can't even stand to";
+		mes "see that guy's face anymore.";
+		next;
+		mes "[Stangckle]";
+		mes "I'm glad that an honest,";
+		mes "trustworthy person such as yourself";
+		mes "had the guts to tell me. Thank";
+		mes "you.";
+		next;
+		mes "[Stangckle]";
+		mes "Now, if you'll excuse me, I have";
+		mes "work to do.";
+		set mad,3;
 		close;
 
 	M_End:
-		mes @name$;
-		mes "We'll need a lot of luck if this is going to happen.  If you know of anyone who can help us, please let us know.";
+		mes "[Stangckle]";
+		mes "What are you doing then? Stop";
+		mes "wasting my time.";
+		close;
+
+L_Done:
+	mes "[Stangckle]";
+	mes "So Metto has become one of those";
+	mes "mad scientists. I guess that is the";
+	mes "choice he has ultimately made for";
+	mes "his life.";
+	close;
+}
+
+// Kato
+yuno_in01.gat,19,183,3	script	Kato	55,{
+
+	if (mad > 4) goto L_Done;
+	if (mad == 4) goto L_Start;
+
+	mes "[Kato]";
+	mes "I am a scientist of Artificial";
+	mes "Intelligence and Robotics.";
+	next;
+	mes "[Kato]";
+	mes "I don't have a specific project";
+	mes "right now, but my latest creation,";
+	mes "the 'Great Z', is truly a product";
+	mes "of sheer and utter genius.";
+	close;
+
+L_Start:
+	mes "[Kato]";
+	mes "I am a scientist researching all";
+	mes "sorts of things.";
+	next;
+	mes "[Kato]";
+	mes "Of course, my research is private";
+	mes "and confidential. But is there";
+	mes "anything I can do for you?";
+	next;
+	menu "I want to stop you from making a mistake.",-,"Just saying hello.",M_End;
+
+		mes "[Kato]";
+		mes "What? Metto said, my Great Z is";
+		mes "inferior to Stangckles research?!";
+		next;
+		mes "[Kato]";
+		mes "H-he said I should rename my";
+		mes "invention to 'Lame Z?' *Sniff* I...";
+		mes "I don't believe it... *Sob*";
+		next;
+		mes "[Kato]";
+		mes "I-If my invention is no good, then";
+		mes "I guess I should destroy my Great";
+		mes "Z... *sigh*";
+		next;
+		mes "[Kato]";
+		mes "Thank you for letting me know. I";
+		mes "know it wasn't easy to tell me.";
+		set mad,5;
+		close;
+
+	M_End:
+		mes "[Kato]";
+		mes ".........................";
+		mes "Okay...";
+		mes "Um... Hey.";
+		close;
+
+L_Done:
+	mes "[Kato]";
+	mes "I am interested in researching";
+	mes "artificial intelligence. You know,";
+	mes "like robots.";
+	next;
+	mes "[Kato]";
+	mes "I know it's a very difficult feat to";
+	mes "accomplish, but where there's a";
+	mes "will, there's a way.";
+	next;
+	mes "[Kato]";
+	mes "If you ever see something really";
+	mes "amazing like this, you'll know its";
+	mes "my handywork.";
+	close;
+}
+
+// CiCi
+yuno_in03.gat,178,43,5	script	CiCi	121,{
+
+	if (mad > 6) goto L_Done;
+	if (mad == 6) goto L_Start;
+
+	mes "[CiCi]";
+	mes "My name is CiCi. I am one of the";
+	mes "three great scientists in this";
+	mes "city.";
+	next;
+	mes "[CiCi]";
+	mes "There are many great scientists";
+	mes "here, but being in the top three is";
+	mes "a true honour, wouldn't you agree?";
+	close;
+
+L_Start:
+	mes "[CiCi]";
+	mes "My name is CiCi. I am one of the";
+	mes "three great scientists in this";
+	mes "city.";
+	next;
+	mes "[CiCi]";
+	mes "There are many great scientists in";
+	mes "this city, but being in the top";
+	mes "three is a true honour. Don't you";
+	mes "agree?";
+	next;
+	mes "[CiCi]";
+	mes "Well, I think I've bragged a little";
+	mes "too much now, what can I do for";
+	mes "you?";
+	next;
+	menu "I want to warn you.",-, "Nothing, just saying Hi.",M_End;
+
+		mes "[CiCi]";
+		mes "Hm? Metto said that he doesn't need";
+		mes "my Riding Engine theory?! Hmpf,";
+		mes "what an ingrate!";
+		next;
+		mes "[CiCi]";
+		mes "I have half a mind to teach him a";
+		mes "little something about true science";
+		mes "and intelligent research.";
+		next;
+		mes "[CiCi]";
+		mes "He thinks that I owe him an";
+		mes "apology?! For what? Why should I";
+		mes "apologise...?!";
+		next;
+		mes "[CiCi]";
+		mes "Whatever, I really didn't have the";
+		mes "necessary parts to help him anyway.";
+		mes "I guess, either way, he would not";
+		mes "have had a chance.";
+		next;
+		mes "[CiCi]";
+		mes "Let him know I really don't want to";
+		mes "be a part of what he is doing. He";
+		mes "isn't even doing the type of";
+		mes "research that we would be able to";
+		mes "publicize.";
+		set mad,7;
+		close;
+
+	M_End:
+		mes "[CiCi]";
+		mes "What? That's it? I was bored before";
+		mes "you came, but you've managed to";
+		mes "bore me even more.";
+		close;
+
+L_Done:
+	mes "[CiCi]";
+	mes "Hmmm....";
+	mes "I want to improve the Riding Engine";
+	mes "in a new way, but I lack the parts";
+	mes "I need...";
+	next;
+	mes "[CiCi]";
+	mes "What a headache~ And Metto has";
+	mes "never offered me any help at all.";
+	mes "This will not be easy.";
+	close;
+}
+
+// Wagan
+yuno_in01.gat,17,30,3	script	Wagan	85,{
+
+	if (mad > 0) goto L_Check;
+
+	mes "[Wagan]";
+	mes "I'm sure that you know our city has";
+	mes "been living off our research for";
+	mes "many years.";
+	next;
+	mes "[Wagan]";
+	mes "We oew this quality of life to";
+	mes "those who have dedicated their";
+	mes "lives to research and study.";
+	next;
+	mes "[Wagan]";
+	mes "So we help each other and study";
+	mes "together. It is nice to have such";
+	mes "solid support around when we are";
+	mes "conducting research.";
+	next;
+	mes "[Wagan]";
+	mes "But there are those few bad apples";
+	mes "that just drive me crazy...";
+	next;
+	mes "[Wagan]";
+	mes "It's good to try hard, but there";
+	mes "are those selfish and crazy mad";
+	mes "scientists that make things harder";
+	mes "for the rest of us.";
+	next;
+	mes "[Wagan]";
+	mes "Out of all those, ^FF0000Metto^000000 must be the";
+	mes "worst by far. He's into crazy";
+	mes "things...";
+	next;
+	mes "[Wagan]";
+	mes "For sciences, he's destroyed public";
+	mes "facilities, has been the cause of";
+	mes "noise and air pollution and";
+	mes "generally disturbing the peace...";
+	next;
+	mes "[Wagan]";
+	mes "And he's justifying his behaviour";
+	mes "under the excuse of research! He's";
+	mes "a crazy fellow who's taken it too";
+	mes "far!";
+	next;
+	mes "[Wagan]";
+	mes "I wish there was a way that we";
+	mes "could stop him from wrecking it for";
+	mes "the rest of us. Some brave, daring";
+	mes "soul should be able to do";
+	mes "something...";
+	next;
+	menu "Leave it to me.",-,"I wish your village luck in doing so.",M_End;
+
+		if (Class != JOB_NOVICE) goto L_Cont02;
+
+		mes "[Wagan]";
+		mes "Hmm...";
+		mes "Thanks for the offer, but I don't";
+		mes "think this is something that you";
+		mes "could do...";
+		next;
+		mes "[Wagan]";
+		mes "I think we need someone a bit";
+		mes "harsher to help us out. I think it";
+		mes "would be a little too much for a";
+		mes "Novice.";
+		next;
+		mes "[Wagan]";
+		mes "Please don't be";
+		mes "offended by this.";
+		close;
+
+	L_Cont02:
+		set mad,1;
+		mes "[Wagan]";
+		mes "Oh, are you going to take care of";
+		mes "this for us? We would be very";
+		mes "grateful.";
+		next;
+		mes "[Wagan]";
+		mes "But how do you plan to go about";
+		mes "doing this? I'm guessing it's";
+		mes "harder than it sounds...";
+		next;
+		menu "Of course I have a plan.",-,"I guess I need a plan.",L_Plan;
+
+			mes "[Wagan]";
+			mes "Em...I trust you! You are the sort of person that believe";
+			mes "In destiny. If you can utilize this opportunity in a proper way.";
+			mes "There may be being able to go out a solution.";
+			mes "Since you are confidence,";
+			mes "It's no need to suggest you anything.";
+			mes "Good luck. I am hoping that you can help me to solve the problem.";
+			close;
+
+		L_Plan:
+			mes "[Wagan]";
+			mes "Hmmm... I admire your zeal, but how";
+			mes "do you expect to accomplish";
+			mes "anything without a plan?";
+			next;
+			mes "[Wagan]";
+			mes "You need a ruse to trick him into";
+			mes "quitting. Something subtle, like...";
+			mes "Hmm...";
+			next;
+			mes "[Wagan]";
+			mes "...Sabotaging his experiments and";
+			mes "making it look like it was his";
+			mes "destiny to fail!";
+			next;
+			mes "[Wagan]";
+			mes "He's talkative, so if you approach";
+			mes "him, he'll tell you all you need to";
+			mes "know.";
+			next;
+			mes "[Wagan]";
+			mes "Yeah...";
+			mes "I've been thinking of this plan for";
+			mes "a while...";
+			close;
+
+	M_End:
+		mes "[Wagan]";
+		mes "We will have to pray for fate to";
+		mes "help us. Now to think of it, Metto";
+		mes "is a strong believer in fate.";
+		next;
+		mes "[Wagan]";
+		mes "If only we could use that to our";
+		mes "advantage...";
 		close;
 
 L_Check:
-	if ((countitem(974) < 1) || (countitem(612) < 5) || (countitem(7068) < 5) || (countitem(1003) < 5) || (countitem(7043) < 5) ||	(countitem(757) < 3) || (countitem(756) < 3) || (Zeny < 2000)) goto L_NotEnuf;
-	mes "Thank you very much! You found all of the items I needed.  We could not have completed this project without your help";
+	if (mad == 8) goto L_Thank;
+	if (mad == 9) goto L_Done;
+
+	mes "[Wagan]";
+	mes "How goes your work with Metto?";
+	mes "Hopefully the plan is going well.";
+	mes "I'm sorry to bother you with such a";
+	mes "task.";
+	close;
+
+L_Thank:
+	mes "[Wagan]";
+	mes "Thank you for yuor help. Because of";
+	mes "your work in ridding us of Metto,";
+	mes "we have one less worry.";
 	next;
-	mes @name$;
-	mes "Okay, let's try this out!";
-	mes "Hold on for just a second!";
+	mes "[Wagan]";
+	mes "I'm sure the people of Juno are";
+	mes "very thankful. Here is a little";
+	mes "token of our appreciation...";
 	next;
-	mes "-Vrrrmrmrmrmrmrmrrmrmrmmrmrmrmrmmm";
+
+	set now_weight,MaxWeight-Weight;
+	if (now_weight >= 300) goto L_Cont;
+
+	mes "[Wagan]";
+	mes "Sigh.. the items you bring along";
+	mes "are overloaded! Can you please";
+	mes "decrease them?";
+	close;
+
+L_Cont01:
+	mes "[Wagan]";
+	mes "I wish you luck in your future";
+	mes "endeavours...";
+	getitem 715,10;
+	set mad,9;
+	close;
+
+L_Done:
+	mes "[Wagan]";
+	mes "Things around here seem much more";
+	mes "peaceful without that Metto around.";
+	mes "Thanks for your help.";
+	close;
+}
+
+// Bain
+yuno_in01.gat,103,157,3	script	Bain	98,{
+
+	if (alkemi == 1) goto L_Check;
+
+	mes "[Bain]";
+	mes "We are going to invent a doll that";
+	mes "can talk and communicate! Well,";
+	mes "at least, I'm trying to.";
 	next;
-	mes "-Pakakakakakakakakakakakakakak";
+	mes "[Bain]";
+	mes "I got the idea from a historical";
+	mes "legend. I figure that if it's been";
+	mes "done before, this project is";
+	mes "definitely possible.";
 	next;
-	mes "-Shakakakakakakakakakakaakakak";
+	mes "[Bain]";
+	mes "But right now, I lack the supplies";
+	mes "and parts that I need to attempt";
+	mes "this feat. I don't know how";
+	mes "they gathered all the necessary";
+	mes "materials...";
 	next;
-	mes @name$;
-	mes "AHHH it is a success!";
-	mes "I don't know if we can do anything else, but this time we have created";
-	set @wowitem,rand(2);
-	if (@wowitem == 0) mes "5 Ruby!";
-	if (@wowitem == 0) getitem 723,5;
-	if (@wowitem == 1) mes "3 Gold!";
-	if (@wowitem == 1) getitem 969,3;
+	mes "[Bain]";
+	mes "Money can only buy some of what I";
+	mes "need. There are also those items";
+	mes "that need to be taken from";
+	mes "monsters that are much too";
+	mes "powerful. How will I continue my";
+	mes "research?";
+	next;
+	menu "I'll get them for you.",-,"Good luck.",M_End;
+
+		set alkemi,1;
+		mes "[Bain]";
+		mes "Really? Such benevolence is rare";
+		mes "in this day and age. We would be";
+		mes "grateful for your assistance.";
+		mes "Here are the items that we will be";
+		mes "needing.";
+		next;
+		mes "[Bain]";
+		mes "^FF00001 Mixture^000000, ^FF00005 Mini Furnace^000000,";
+		mes "^FF00005 Burnt Tree^000000, ^FF00005 Coal^000000,";
+		mes "^FF00005 Fine Sand^000000, ^FF00003 Rough Elunium^000000,";
+		mes "^FF00003 Rough Oridecon^000000.";
+		next;
+		mes "[Bain]";
+		mes "We will also need 2,000 Zeny.";
+		mes "The money will help pay for the";
+		mes "minor expenses involved in";
+		mes "undertaking this endeavour.";
+		mes "Godspeed.";
+		close;
+
+	M_End:
+		mes "[Bain]";
+		mes "I wish I could be";
+		mes "a strong adventurer";
+		mes "like you.";
+		close;
+
+L_Check:
+	if ((countitem(974) < 1) || (countitem(612) < 5) || (countitem(7068) < 5) || (countitem(1003) < 5) || (countitem(7043) < 5) ||	(countitem(757) < 3) || (countitem(756) < 3) || (Zeny < 2000)) goto L_NotEnough;
+
+	if (ALCH_Q == 6) set ALCH_Q2, 2; // For Alchemist Job Quest
+
 	delitem 974,1;
 	delitem 612,5;
 	delitem 7068,5;
@@ -81,48 +690,270 @@ L_Check:
 	delitem 7043,5;
 	delitem 757,3;
 	delitem 756,3;
-	set Zeny, Zeny-2000;
-	if (ALCH_Q == 6) set ALCH_Q2, 2;	//for Alchemist Job Quest
-	set bros_q, 0;
+	set Zeny,Zeny-2000;
+	set kyulkwa,rand(1,10);
+
+	mes "[Bain]";
+	mes "Oh...The entire ingredients needed,";
+	mes "are here. I'm really appreciating that.";
+	mes "Let's try to combine it!";
+	mes "Wait a second!!";
 	next;
-	mes @name$;
-	mes "Now that we know that it works,";
-	mes "I don't have any need for this.";
-	mes "Why don't you take it? Oh,";
-	mes "and if you find anymore parts,";
-	mes "bring them to me again. Heheheheh.";
+	mes "-DENGGRONGDENGRONG DUTATATATA PABABABAK-";
 	next;
-	mes @name$;
-	mes "Thanks for helping me out.";
-	mes "You have my eternal gratitude.";
-	mes "I wish you luck in your journeys!";
+	mes "-KIRIRIK KUWAAA PAKPAKPAK CHIIKCHIIK-";
+	next;
+	mes "-SHYAKASHYAKA KWAJIK POBOBOBOBOPOUONG!-";
+	next;
+
+	if (kyulkwa == 1 || kyulkwa == 2 || kyulkwa == 3 || kyulkwa == 4 || kyulkwa == 9 || kyulkwa == 10) goto L_Option01;
+	if (kyulkwa == 5 || kyulkwa == 6 || kyulkwa == 8) goto L_Option02;
+	if (kyulkwa == 7) goto L_Option03;
+
+	L_Option01:
+		mes "[Bain]";
+		mes "Whew... we have successfully combined at the first stage!";
+		mes "The result might have some change.";
+		mes "This time, the production.";
+		mes "Produced 5 ^FF0000Iron Ore^000000!";
+		next;
+		mes "[Bain]";
+		mes "I already knew this result.";
+		mes "I don't need these anymore.";
+		mes "You can have them.";
+		mes "If possible to get those materials, I would like to continue my research.";
+		mes "Bring them to me again.";
+		next;
+		mes "[Bain]";
+		mes "I'm really thank you for your cooperation.";
+		mes "For your adventure in the future.";
+		mes "May the luck be with you!";
+		close2;
+		getitem 1002,5; // Iron Ore
+		end;
+
+	L_Option02:
+		mes "[Bain]";
+		mes "Sigh... we have successfully combined at the first stage!";
+		mes "The result might have some change.";
+		mes "This time, the production...";
+		mes "Produced 5 ^FF0000Ruby^000000!";
+		next;
+		mes "[Bain]";
+		mes "I already knew this result.";
+		mes "I don't need these anymore.";
+		mes "You can have them.";
+		mes "If possible to get those materials, I would like to continue my research.";
+		mes "Bring them to me again.";
+		next;
+		mes "[Bain]";
+		mes "I'm really thank you for your cooperation.";
+		mes "May the luck stay with you all the time for the adventure in your future!";
+		close2;
+		getitem 723,5; // Ruby
+		end;
+
+	L_Option03:
+		mes "[Bain]";
+		mes "Sigh...We have successfully combined at the first stage!";
+		mes "This is the limit of alchemy skill.";
+		mes "I finally,";
+		mes "Made ^FF0000Gold^000000!";
+		next;
+		mes "[Bain]";
+		mes "Although we don't know the detail,";
+		mes "but we are succeeding at last.";
+		mes "I'm really proud of myself! These...";
+		mes "You may take all of these!!";
+		next;
+		mes "[Bain]";
+		mes "I'm really thank you for your cooperation.";
+		mes "If you still want to forge, please get all the materials";
+		mes "and bring them to me again.";
+		close2;
+		getitem 969,3; // Gold
+		end;
+
+L_NotEnough:
+	mes "[Bain]";
+	mes "In case you";
+	mes "forgot, these are the";
+	mes "required materials.";
+	mes "Write it down if you need to.";
+	next;
+	mes "[Bain]";
+	mes "^FF00001 Mixture^000000, ^FF00005 Mini Furnace^000000,";
+	mes "^FF00005 Burnt Tree^000000, ^FF00005 Coal^000000,";
+	mes "^FF00005 Fine Sand^000000, ^FF00003 Rough Elunium^000000,";
+	mes "^FF00003 Rough Oridecon^000000.";
+	next;
+	mes "[Bain]";
+	mes "In addition to this, you";
+	mes "will need 2,000 zeny.";
+	mes "Good Luck...";
 	close;
-
-	L_NotEnuf:
-		mes "In case you forgot, these are the items that we will need.  I suggest you write them down......";
-		callsub sF_List;
-		close;
-
-sF_List:
-	next;
-	mes @name$;
-	mes "^5533FF1 Mixture";
-	mes "5 Mini-Furnaces";
-	mes "5 Burnt Trees";
-	mes "5 Coal";
-	mes "5 Fine Sand";
-	mes "3 Rough Elunium";
-	mes "3 Rough Oridecon^000000";
-	next;
-	mes @name$;
-	mes "We will also need ^5533FF2,000 zeny^000000.";
-	mes "The money will help pay for the minor expenses invovled in the undertaking of this project.  Good luck and please be safe.";
-	return;
 }
 
-//=====================================================================
-yuno_in01.gat,99,153,4	script	Bajin	47,{
-	set @name$, "[Bajin]";
-	doevent "Bain::OnStart";
+// Bajin
+yuno_in01.gat,100,153,4	script	Bajin	47,{
+
+	if (alkemi == 1) goto L_Check;
+
+	mes "[Bajin]";
+	mes "We are going to invent a doll that";
+	mes "can talk and communicate! Well,";
+	mes "at least, I'm trying to.";
+	next;
+	mes "[Bajin]";
+	mes "I got the idea from a historical";
+	mes "legend. I figure that if it's been";
+	mes "done before, this project is";
+	mes "definitely possible.";
+	next;
+	mes "[Bajin]";
+	mes "But right now, I lack the supplies";
+	mes "and parts that I need to attempt";
+	mes "this feat. I don't know how";
+	mes "they gathered all the necessary";
+	mes "materials...";
+	next;
+	mes "[Bajin]";
+	mes "Money can only buy some of what I";
+	mes "need. There are also those items";
+	mes "that need to be taken from";
+	mes "monsters that are much too";
+	mes "powerful. How will I continue my";
+	mes "research?";
+	next;
+	menu "I'll get them for you.",-,"Good luck.",M_End;
+
+		set alkemi,1;
+		mes "[Bajin]";
+		mes "Really? Such benevolence is rare";
+		mes "in this day and age. We would be";
+		mes "grateful for your assistance.";
+		mes "Here are the items that we will be";
+		mes "needing.";
+		next;
+		mes "[Bajin]";
+		mes "^FF00001 Mixture^000000, ^FF00005 Mini Furnace^000000,";
+		mes "^FF00005 Burnt Tree^000000, ^FF00005 Coal^000000,";
+		mes "^FF00005 Fine Sand^000000, ^FF00003 Rough Elunium^000000,";
+		mes "^FF00003 Rough Oridecon^000000.";
+		next;
+		mes "[Bajin]";
+		mes "We will also need 2,000 Zeny.";
+		mes "The money will help pay for the";
+		mes "minor expenses involved in";
+		mes "undertaking this endeavour.";
+		mes "Godspeed.";
+		close;
+
+	M_End:
+		mes "[Bajin]";
+		mes "I wish I could be";
+		mes "a strong adventurer";
+		mes "like you.";
+		close;
+
+L_Check:
+	if ((countitem(974) < 1) || (countitem(612) < 5) || (countitem(7068) < 5) || (countitem(1003) < 5) || (countitem(7043) < 5) ||	(countitem(757) < 3) || (countitem(756) < 3) || (Zeny < 2000)) goto L_NotEnough;
+
+	if (ALCH_Q == 6) set ALCH_Q2, 2; // For Alchemist Job Quest
+
+	delitem 974,1;
+	delitem 612,5;
+	delitem 7068,5;
+	delitem 1003,5;
+	delitem 7043,5;
+	delitem 757,3;
+	delitem 756,3;
+	set Zeny,Zeny-2000;
+	set kyulkwa,rand(1,10);
+
+	mes "[Bajin]";
+	mes "Sigh! I've prepared for it!";
+	mes "I really appreciate that.";
+	mes "So, please wait for a second.";
+	next;
+	mes "-DENGGRONGDENGRONG DUTATATATA PABABABAK-";
+	next;
+	mes "-KIRIRIK KUWAAA PAKPAKPAK CHIIKCHIIK-";
+	next;
+	mes "-SHYAKASHYAKA KWAJIK POBOBOBOBOPOUONG!-";
+	next;
+
+	if (kyulkwa == 1 || kyulkwa == 2 || kyulkwa == 3 || kyulkwa == 4 || kyulkwa == 9 || kyulkwa == 10) goto L_Option01;
+	if (kyulkwa == 5 || kyulkwa == 6 || kyulkwa == 8) goto L_Option02;
+	if (kyulkwa == 7) goto L_Option03;
+
+	L_Option01:
+		mes "[Bajin]";
+		mes "Sigh... we have successfully combined at the first stage!";
+		mes "The result might have some change.";
+		mes "This time, the production.";
+		mes "Produced 5 ^FF0000Steel^000000!";
+		next;
+		mes "[Bajin]";
+		mes "I already knew this result.";
+		mes "I don't need these anymore.";
+		mes "You can have them.";
+		mes "If possible to get those materials, I would like to continue my research.";
+		mes "Bring them to me again.";
+		close2;
+		getitem 999,5; // Steel
+		end;
+
+	L_Option02:
+		mes "[Bajin]";
+		mes "Sigh... we have successfully combined at the first stage!";
+		mes "The result might have some change.";
+		mes "This time, the production...";
+		mes "Produced 5 ^FF0000Ruby^000000!";
+		next;
+		mes "[Bajin]";
+		mes "I already knew this result.";
+		mes "I don't need these anymore.";
+		mes "You can have them.";
+		mes "If possible to get those materials, I would like to continue my research.";
+		mes "Bring them to me again.";
+		close2;
+		getitem 721,5; // Emerald
+		end;
+
+	L_Option03:
+		mes "[Bajin]";
+		mes "Sigh...Emerge successful!";
+		mes "Looks like my alchemy skill...";
+		mes "has to the limit.";
+		mes "Three ^FF0000Oridecon^000000!";
+		next;
+		mes "[Bajin]";
+		mes "I already knew this result.";
+		mes "I don't need these anymore.";
+		mes "You can have them.";
+		mes "If possible to get those materials, I would like to continue my research,";
+		mes "Bring them to me again.";
+		close2;
+		getitem 984,3; // Oridecon
+		end;
+
+L_NotEnough:
+	mes "[Bajin]";
+	mes "In case you";
+	mes "forgot, these are the";
+	mes "required materials.";
+	mes "Write it down if you need to.";
+	next;
+	mes "[Bajin]";
+	mes "^FF00001 Mixture^000000, ^FF00005 Mini Furnace^000000,";
+	mes "^FF00005 Burnt Tree^000000, ^FF00005 Coal^000000,";
+	mes "^FF00005 Fine Sand^000000, ^FF00003 Rough Elunium^000000,";
+	mes "^FF00003 Rough Oridecon^000000.";
+	next;
+	mes "[Bajin]";
+	mes "In addition to this, you";
+	mes "will need 2,000 zeny.";
+	mes "Good Luck...";
 	close;
 }

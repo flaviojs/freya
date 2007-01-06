@@ -5,6 +5,11 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/06/07
+	* Updated: Converted Juno Quests script from Aegis to Freya [Tsuyuki]
+	 - Note: Adds the missing Metto Quest to Freya
+	* Merged: Monster Museum script with the Juno NPCs script [Tsuyuki]
+	* Updated: Converted Juno Guides script from Aegis to Freya [Tsuyuki]
+	* Updated: Converted Juno NPCs from Aegis to Freya [Tsuyuki]
 	* Added: missing bonus bLoseSPWhenUnequip,50; in some cards [Latios]
 	* Added: Mail box NPCs converted from Aegis [Tsuyuki]
 

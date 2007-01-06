@@ -1578,8 +1578,7 @@ INSERT INTO `item_db` VALUES (4331, 'Heater_Card', 'Heater Card', 6, 20, 0, 10, 
 INSERT INTO `item_db` VALUES (4332, 'Waste_Stove_Card', 'Waste Stove Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bBaseAtk,5; bonus bInt,1; if(isequipped(4185,4293,4312)==0) end; bonus bStr,3; bonus bMaxSP,80; bonus bBaseAtk,25; bonus4 bAutoSpell,32,5,10,1; bonus2 bSkillAtk,271,10; if(GetPureJob==Job_Monk) bonus bUseSPrate,-10; bonus bNoCastCancel,0;');
 INSERT INTO `item_db` VALUES (4333, 'Venomous_Card', 'Venomous Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus2 bAddEffWhenHit,4,3000; bonus2 bAddEff,4,3000;');
 INSERT INTO `item_db` VALUES (4334, 'Noxious_Card', 'Noxious Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 4, 0, 0, 0, NULL, 'bonus bLongAtkDef,10; bonus2 bSubEle,0,10;');
-# 4335: Missing -50 SP On Unequip
-INSERT INTO `item_db` VALUES (4335, 'Pitman_Card', 'Pitman_Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus2 bSkillAtk,90,5; bonus2 bSkillAtk,91,5;');
+INSERT INTO `item_db` VALUES (4335, 'Pitman_Card', 'Pitman_Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus2 bSkillAtk,90,5; bonus2 bSkillAtk,91,5; bonus bLoseSPWhenUnequip,50;');
 INSERT INTO `item_db` VALUES (4336, 'Ungoliant_Card', 'Ungoliant Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 769, 0, 0, 0, NULL, 'bonus bHPrecovRate,10; bonus2 bResEff,9,10000;');
 INSERT INTO `item_db` VALUES (4337, 'Porcellio_Card', 'Porcellio Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bBaseAtk,25; bonus bDef,-5;');
 INSERT INTO `item_db` VALUES (4338, 'Obsidian_Card', 'Obsidian Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bVit,readparam(bDex)/18;');
@@ -1589,14 +1588,12 @@ INSERT INTO `item_db` VALUES (4341, 'Metaling_Card', 'Metaling Card', 6, 0, 10, 
 INSERT INTO `item_db` VALUES (4342, 'RSX-0806_Card', 'RSX 0806 Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bVit,3; bonus bUnbreakableArmor,0; bonus bNoKnockBack,0;');
 INSERT INTO `item_db` VALUES (4343, 'Holden_Card', 'Holden Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 769, 0, 0, 0, NULL, 'bonus bLuk,2; if(isequipped(4186,4281,4036,4233)==0) end; bonus bStr,4; bonus bMaxHPrate,7; bonus bMaxSPrate,7; bonus2 bSkillAtk,42,20; bonus bSPGainValue,1; if(GetPureJob!=Job_Alchem) end; bonus4 bAutoSpell,111,1,100,0; bonus2 bAddMonsterDropItem,7139,100; bonus2 bAddMonsterDropItem,905,100;');
 INSERT INTO `item_db` VALUES (4344, 'Anopheles_Card', 'Anopheles Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus3 bAddMonsterDropItem,12058,4,100;');
-# 4345: Missing -50 SP On Unequip
-INSERT INTO `item_db` VALUES (4345, 'Hill_Wind_Card', 'Hill Wind Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus2 bSkillAtk,21,5; bonus2 bSkillAtk,84,5; bonus2 bSkillAtk,85,5;');
+INSERT INTO `item_db` VALUES (4345, 'Hill_Wind_Card', 'Hill Wind Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus2 bSkillAtk,21,5; bonus2 bSkillAtk,84,5; bonus2 bSkillAtk,85,5; bonus bLoseSPWhenUnequip,50;');
 INSERT INTO `item_db` VALUES (4346, 'Egnigem_Cenia_Card', 'Egnigem Cenia Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bStr,readparam(bInt)/18;');
 INSERT INTO `item_db` VALUES (4347, 'Armeyer_Dinze_Card', 'Armeyer Dinze Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus3 bAddMonsterDropItem,12053,5,100;');
 INSERT INTO `item_db` VALUES (4348, 'Wikebine_Tres_Card', 'Wikebine Tres Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus4 bAutoSpell,217,1,50,1; if(isequipped(4039,4210,4257,4230)==0) end; bonus bStr,6; bonus bAgi,4; bonus2 bSkillAtk,212,10; bonus4 bAutoSpell,217,5,50,1; if(GetPureJob != Job_Rogue) end; bonus bUseSPrate,-20; bonus4 bAutoSpell,219,1,200,1;');
 INSERT INTO `item_db` VALUES (4349, 'Errende_Ebecee_Card', 'Errende Ebecee Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus4 bAutoSpellWhenHit,25,1,500,0;');
-# 4350: Missing -50 SP On Unequip
-INSERT INTO `item_db` VALUES (4350, 'Laurell_Weinder_Card', 'Laurell Weinder Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus2 bSkillAtk,88,3; bonus2 bSkillAtk,89,3;');
+INSERT INTO `item_db` VALUES (4350, 'Laurell_Weinder_Card', 'Laurell Weinder Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus2 bSkillAtk,88,3; bonus2 bSkillAtk,89,3; bonus bLoseSPWhenUnequip,50;');
 INSERT INTO `item_db` VALUES (4351, 'Kavach_Icarus_Card', 'Kavach Icarus Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bFlee,10;if(getequiprefinerycnt(5)>4) end; bonus bFlee,20; bonus bFlee2,1;');
 # 4352: Effect Undecided/Missing
 INSERT INTO `item_db` VALUES (4352, 'Egnigem_Cenia_(MvP)_Card', 'Egnigem Cenia (MvP) Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, NULL);
@@ -1633,8 +1630,7 @@ INSERT INTO `item_db` VALUES (4376, 'Lady_Tanee_Card', 'Lady Tanee Card', 6, 0, 
 INSERT INTO `item_db` VALUES (4377, 'Grove_Card', 'Grove Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus3 bAddMonsterDropItem,12063,0,100;');
 INSERT INTO `item_db` VALUES (4378, 'Gold_Acidus_Card', 'Gold Acidus Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 64, 0, 0, 0, NULL, 'bonus bMaxHPrate,4; bonus bMaxSPrate,4; if(getequiprefinerycnt(6)>4) end; bonus bMaxHPrate,4; bonus bMaxSPrate,4; bonus bHPrecovRate,5; bonus bSPrecovRate,5;');
 INSERT INTO `item_db` VALUES (4379, 'Blue_Acidus_Card', 'Blue Acidus Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 769, 0, 0, 0, NULL, 'bonus bMaxSP,40; if(getequiprefinerycnt(1)>4) end; bonus bSPrecovRate,5; bonus bMaxSP,40;');
-# 4380: Missing -50 SP On Unequip
-INSERT INTO `item_db` VALUES (4380, 'Red_Ferus_Card', 'Red Ferus Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 4, 0, 0, 0, NULL, 'bonus2 bSkillAtk,80,5; bonus2 bSkillAtk,83,5;');
+INSERT INTO `item_db` VALUES (4380, 'Red_Ferus_Card', 'Red Ferus Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 4, 0, 0, 0, NULL, 'bonus2 bSkillAtk,80,5; bonus2 bSkillAtk,83,5; bonus bLoseSPWhenUnequip,50;');
 INSERT INTO `item_db` VALUES (4381, 'Green_Ferus_Card', 'Green Ferus Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 64, 0, 0, 0, NULL, 'bonus bVit,1;  bonus bMaxHPrate,10; if(isequipped(4199,4234,4252,4178)==0) end; bonus bDex,5; bonus2 bSkillAtk,394,5; bonus2 bSkillAtk,324,10; bonus2 bSkillAtk,316,10; if(GetPureJob == Job_Bard || GetPureJob == Job_Dancer) bonus4 bAutoSpellWhenHit,489,2,50,1;');
 INSERT INTO `item_db` VALUES (4382, 'Yellow_Novus_Card', 'Yellow Novus Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus2 bResEff,7,3000; bonus2 bAddEff,7,3000;');
 INSERT INTO `item_db` VALUES (4383, 'Red_Novus_Card', 'Red Novus Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bMaxHP,500; bonus bHPrecovRate,10; if(isequipped(4208,4258,4325,4327)==4) end; bonus bInt,3; bonus2 bSkillAtk,91,10; bonus2 bSkillAtk,21,10; if(GetPureJob!=Job_Sage) end; bonus bMagicDamageReturn,20; bonus2 bAddMonsterDropItem,716,100; bonus2 bAddMonsterDropItem,715,100; bonus bCastrate,-20;');
@@ -1642,8 +1638,7 @@ INSERT INTO `item_db` VALUES (4384, 'Hydrolancer_Card', 'Hydrolancer Card', 6, 0
 INSERT INTO `item_db` VALUES (4385, 'Dragon_Egg_Card', 'Dragon Egg Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus3 bAddMonsterDropItem,12048,9,100;');
 INSERT INTO `item_db` VALUES (4386, 'Detardeurus_Card', 'Detardeurus Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus2 bResEff,1,10000; bonus4 bAutoSpellWhenHit,288,1,500,0;');
 INSERT INTO `item_db` VALUES (4387, 'Ancient_Mimic_Card', 'Ancient Mimic Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bAgi,readparam(bLuk)/18;');
-# 4388: Missing -50 SP On Unequip
-INSERT INTO `item_db` VALUES (4388, 'Death_Word_Card', 'Death_Word Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus2 bSkillAtk,11,5; bonus2 bSkillAtk,13,5; bonus2 bSkillAtk,400,5;');
+INSERT INTO `item_db` VALUES (4388, 'Death_Word_Card', 'Death_Word Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus2 bSkillAtk,11,5; bonus2 bSkillAtk,13,5; bonus2 bSkillAtk,400,5; bonus bLoseSPWhenUnequip,50;');
 INSERT INTO `item_db` VALUES (4389, 'Plasma_Card', 'Plasma Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus2 bAddMonsterDropItem,12118,100; bonus2 bAddMonsterDropItem,12119,100; bonus2 bAddMonsterDropItem,12120,100; bonus2 bAddMonsterDropItem,12121,100;');
 INSERT INTO `item_db` VALUES (4390, 'Breeze_Card', 'Breeze Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus bBaseAtk,5; bonus2 bAddEff,9,500;');
 INSERT INTO `item_db` VALUES (4391, 'Baroness_of_Retribution_', 'Baroness of Retribution ', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus3 bAddMonsterDropItem,12068,8,100;');
