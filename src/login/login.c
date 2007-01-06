@@ -1,19 +1,15 @@
-// $Id: login.c 573 2005-12-02 22:21:10Z Yor $
-/* Version 3 of the login-server by [Yor] */
-
-/*------------------------------------------------------------------------
- Module:        Version 1.0.0 - Yor
- Author:        Freya Team Copyrights (c) 2004-2007
- Project:       Freya Account Server
- Creation Date: December 3, 2004
- Modified Date: January 8, 2005
- Description:   Ragnarok Online Server Emulator - Main part of login-server
-------------------------------------------------------------------------*/
-
-/*------------------------------------------------------------------------
- TODO
- - mettre un champ pour autoriser ou non chaque char-serveur
-------------------------------------------------------------------------*/
+/*	This file is a part of Freya.
+		Freya is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	any later version.
+		Freya is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+	GNU General Public License for more details.
+		You should have received a copy of the GNU General Public License
+	along with Freya; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA */
 
 // Include of configuration script
 #include <config.h>

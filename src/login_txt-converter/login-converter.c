@@ -1,6 +1,15 @@
-// $Id: login-converter.c 573 2005-12-02 22:21:10Z Yor $
-// original : login2.c 2003/01/28 02:29:17 Rev.1.1.1.1
-// login data file to mysql conversion utility.
+/*	This file is a part of Freya.
+		Freya is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	any later version.
+		Freya is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+	GNU General Public License for more details.
+		You should have received a copy of the GNU General Public License
+	along with Freya; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA */
 
 // Include of configuration script
 #include <config.h>

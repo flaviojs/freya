@@ -1,24 +1,15 @@
-// $Id: grfio.c 539 2005-11-21 09:58:59Z Yor $
-/*********************************************************************
- *
- *		Ragnarok Online Emulator : grfio.c -- grf file I/O Module
- *--------------------------------------------------------------------
- *		special need library : zlib
- *********************************************************************
- *
- *	2002/12/18... the original edition
- *	2003/01/23 ... Code correction
- *	2003/02/01 ... An addition and decryption processing are improved for LocalFile and two or more GRF(s) check processing.
- *	2003/02/02 ... Even if there is no grf it does not stop -- as -- correction
- *	2003/02/02... grf reading specification can be added later -- as -- correction (grfio_add function addition)
- *	2003/02/03... at the time of grfio_resourcecheck processing the entry addition processing method -- correction
- *	2003/02/05... change of the processing in grfio_init
- *	2003/02/23... a local file check -- GRFIO_LOCAL -- switch (Defoe -- Function Off)
- *	2003/10/21 ... The data of alpha client was read.
- *	2003/11/10 ... Ready new grf format.
- *	2003/11/11 ... version check fix & bug fix
- *	2006/08/28 ... Reading of customed GRF (by Yor)
- */
+/*	This file is a part of Freya.
+		Freya is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	any later version.
+		Freya is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+	GNU General Public License for more details.
+		You should have received a copy of the GNU General Public License
+	along with Freya; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA */
 
 #include <config.h>
 
