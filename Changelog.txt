@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+01/06/07
+	* Added: Mail box NPCs converted from Aegis [Tsuyuki]
+
 01/05/07
 	* Added: GPL licence statements into all source files [Harbin]
 	* Fixed: Gunslinger, Ninja and Xmas classes counted as mob disguises [Harbin]
