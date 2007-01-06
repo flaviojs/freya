@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/06/07
+	* Added: missing bonus bLoseSPWhenUnequip,50; in some cards [Latios]
 	* Added: Mail box NPCs converted from Aegis [Tsuyuki]
 
 01/05/07
