@@ -3313,32 +3313,28 @@ int mob_heal(struct mob_data *md, int heal)
 	return 0;
 }
 
-/*==========================================
- * Added by RoVeRT
- *------------------------------------------
- */
 int mob_warpslave_sub(struct block_list *bl, va_list ap)
 {
 	struct mob_data *md = (struct mob_data *)bl;
-	int id, x, y;
+	int x, y, id, tid;
 
 	id = va_arg(ap, int);
 	x = va_arg(ap, int);
 	y = va_arg(ap, int);
-	if (md->master_id == id) {
+
+	if(md->master_id == id)
+	{
+		tid = md->target_id;		/* preserve target id. mob_warp() resets it */
 		mob_warp(md, -1, x, y, 2);
+		md->target_id = tid;
+		mob_attack(md, 0, 0);		/* immediately start attacking to the original target (if on range) */
 	}
 
 	return 0;
 }
 
-/*==========================================
- * Added by RoVeRT
- *------------------------------------------
- */
-int mob_warpslave(struct mob_data *md,int x, int y)
+int mob_warpslave(struct mob_data *md, int x, int y)
 {
-//printf("warp slave\n");
 	// Now scans the entire map for slaves. [Bison]
 	map_foreachinarea(mob_warpslave_sub, md->bl.m,
 	                  0, 0,

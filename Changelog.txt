@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/07/07
+	* Fixed: Slaves should attack to their original target after being recalled [Harbin]
 	* Improved: Resized SCRIPT_HASH_SIZE to 512 [Harbin]
 	* Added: Battle config options to change mvp item droprate by itemtype [Harbin]
 	 - item_drop_mvp_commonrate, item_drop_mvp_healingrate, item_drop_mvp_usablerate, item_drop_mvp_equiprate and item_drop_mvp_cardrate
