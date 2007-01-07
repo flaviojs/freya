@@ -85,8 +85,6 @@ sd->status.weapon == 52 // Dual One-Handed Axes
 sd->status.weapon == 53 // Dual Weapon Combo: Dagger + One-Handed Sword
 sd->status.weapon == 54 // Dual Weapon Combo: Dagger + One-Handed Axe
 sd->status.weapon == 55 // Dual Weapon Combo: One-Handed Sword + One-Handed Axe
-sd->status.weapon == 56 // Dual Revolvers
-sd->status.weapon == 57 // Dual Weapon Combo: Revolver + Dagger
 
 // Definition of weapontype: Individual Weapon-Types for Equiped Weapons
 // These variables merge to become status.weapon
