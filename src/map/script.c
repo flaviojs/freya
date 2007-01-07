@@ -57,7 +57,7 @@
 #endif
 
 #define SCRIPT_BLOCK_SIZE 256
-#define SCRIPT_HASH_SIZE 1024	/* optimal script hash size */ /* TODO: figure out optimal hash size. I think 1024 is too much for us [Harbin] */
+#define SCRIPT_HASH_SIZE 512	/* optimal script hash size */
 
 #define FETCH(n, t) \
 		if (st->end > st->start + (n)) \
@@ -8716,6 +8716,7 @@ int do_final_script()
 		fprintf(fp, "------------------------------------ \n");
 		fprintf(fp, "min = %d, max = %d, zero = %d\n", min, max, zero);
 		fclose(fp);
+		printf("script hash dump report generated \n");
 	} */
 
 	/* update mapreg if neccessary */
