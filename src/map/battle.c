@@ -3990,7 +3990,13 @@ static const struct battle_config_int {
 	{ "job_exp_rate",                               &battle_config.job_exp_rate				},
 	{ "zeny_penalty",                               &battle_config.zeny_penalty				},
 	{ "mvp_exp_rate",                               &battle_config.mvp_exp_rate				},
-	{ "mvp_item_rate",                              &battle_config.mvp_item_rate },
+
+	{ "item_drop_mvp_commonrate",			&battle_config.mvp_common_rate		},
+	{ "item_drop_mvp_healingrate",			&battle_config.mvp_healing_rate		},
+	{ "item_drop_mvp_usablerate",			&battle_config.mvp_usable_rate		},
+	{ "item_drop_mvp_equiprate",			&battle_config.mvp_equipable_rate	},
+	{ "item_drop_mvp_cardrate",			&battle_config.mvp_card_rate		},
+
 	{ "natural_healhp_interval",                    &battle_config.natural_healhp_interval	},
 	{ "natural_healsp_interval",                    &battle_config.natural_healsp_interval	},
 	{ "natural_heal_skill_interval",                &battle_config.natural_heal_skill_interval},
@@ -4083,7 +4089,11 @@ void battle_set_defaults() {
 	battle_config.zeny_penalty_by_lvl = 0;
 	battle_config.restart_hp_rate = 0;
 	battle_config.restart_sp_rate = 0;
-	battle_config.mvp_item_rate = 100;
+	battle_config.mvp_common_rate = 100;
+	battle_config.mvp_healing_rate = 100;
+	battle_config.mvp_usable_rate = 100;
+	battle_config.mvp_equipable_rate = 100;
+	battle_config.mvp_card_rate = 100;
 	battle_config.mvp_exp_rate = 100;
 	battle_config.mvp_hp_rate = 100;
 	battle_config.monster_hp_rate = 100;

@@ -157,7 +157,8 @@ extern struct Battle_Config {
 	unsigned short zeny_penalty_by_lvl;
 	unsigned short restart_hp_rate;
 	unsigned short restart_sp_rate;
-	int mvp_item_rate,mvp_exp_rate;
+	int mvp_exp_rate;
+	int mvp_common_rate, mvp_healing_rate, mvp_usable_rate, mvp_equipable_rate, mvp_card_rate;
 	unsigned short mvp_hp_rate;
 	unsigned short monster_hp_rate;
 	unsigned short monster_max_aspd;
