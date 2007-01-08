@@ -1,9 +1,9 @@
 //===== Freya Script ======================================================
 //= New Kafra Employees
 //===== By: ===============================================================
-//= eAthena
+//= eAthena/Freya
 //===== Current Version: ==================================================
-//= 2.3
+//= 2.4
 //===== Compatible With: ==================================================
 //= Freya
 //===== Description: ======================================================
@@ -22,6 +22,7 @@
 //= 	 They'll be added once I further test in iRO [Tsuyuki]
 //= 2.3 Officialized script, fixed up the newer Kafras [Tsuyuki]
 //= Note: Need to add Hugel/Rachel Kafra Employees (No Info)
+//= 2.4 Removed commented Hugel/Rachel Kafras, as they don't exist [Tsuyuki]
 //=========================================================================
 
 // Complete Kafras:
@@ -85,8 +86,6 @@ louyang.gat,210,104,5	script	Kafra Employee	117,{
 		savepoint "louyang.gat",217,92;
 		callfunc "F_KafEnd",0,1;
 }
-
-// New Incomplete Kafras (Missing Correct Teleport Service Dialogue)
 
 // Einbech ------------------------------------------------------------------
 
@@ -152,26 +151,6 @@ lhz_in02.gat,237,284,4	script	Kafra Employee	861,{
 		callfunc "F_KafEnd",0,1;
 }
 
-// Hugel - Incomplete ------------------------------------------------------
-//hugel.gat,xxx,xxx,x	script	Kafra Employee	xxx,{
-//	cutin "xxx",2;
-//	callfunc "F_Kafra",0,1,1;
-//
-//	M_Save:
-//		savepoint "hugel.gat",xxx,xxx;
-//		callfunc "F_KafEnd",0,1;
-//}
-
-// Rachel - Incomplete -----------------------------------------------------
-//rachel.gat,xxx,xxx,x	script	Kafra Employee	xxx,{
-//	cutin "xxx",2;
-//	callfunc "F_Kafra",0,1,1;
-//
-//	M_Save:
-//		savepoint "rachel.gat",xxx,xxx;
-//		callfunc "F_KafEnd",0,1;
-//}
-
 // New Kafra Functions -----------------------------------------------------
 
 // Function: Sets variables for the Umbala Kafra ---------------------------
@@ -188,7 +167,7 @@ function	script	F_KafSetUmb	{
 	return;
 }
 
-// Function: Teleport Service dialogue for the Swartzvalt Republic Kafras --
+// Function: Teleport Service dialogue for the Swaltzvalt Republic Kafras --
 function	script	F_KafSwzTele	{
 	mes "[Kafra Employee]";
 	mes "Because of the ^FF0000Limited^000000";
