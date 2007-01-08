@@ -99,13 +99,8 @@ key:gm,state,position,move
 @warpto            :/shift//remove/@jumpto/@warpto/@shift/@goto <char name|account_id> - Warps you to selected character.
 @follow            :@follow <char name|account_id> - Follows a player (to unfollow, type '@follow off' or '@follow <YOUR name>').
 @unfollow          :@unfollow - Cancels @follow command.
-@go                :@go <number/city_name> - Warps you to a city/a place:
-@go                :  -3: (Memo point 2)  3: payon          9: yuno      15: start point  21: jawaii
-@go                :  -2: (Memo point 1)  4: alberta       10: amatsu    16: prison/jail  22: ayothaya
-@go                :  -1: (Memo point 0)  5: izlude        11: kunlun   17: valkyrie     23: einbroch
-@go                :   0: prontera        6: aldebaran     12: umbala    18: orc dungeon  24: Lighthalzen
-@go                :   1: morocc          7: xmas (lutie)  13: niflheim  19: village (payon)
-@go                :   2: geffen          8: comodo        14: louyang   20: glast heim
+@go                :@go <number/city_name> - Warps you to a city/place
+@go2               :@go2 <number/dungeon_name> - Warps you to a dungeon
 @memo              :@memo [memo_position] - Sets/changes a memo location (no position: display memo points).
 key:gm,state,health
                   1: 
