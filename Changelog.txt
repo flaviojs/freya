@@ -10,7 +10,7 @@ Date	Added
 	 - Until I finish her, the quest won't be functional
 	* Updated: Juno Monster Museum, Added script converted from Aegis [Tsuyuki]
 	* Fixed: Added Kafra Max Reserve Points check [Tsuyuki]
-	* Added: Cool Event Kafra-Like NPCs for Hugel/Lighthalzen [Tsuyuki]
+	* Added: Cool Event Kafra-Like NPCs for Hugel/Lighthalzen converted from Aegis[Tsuyuki]
 	* Fixed: Slaves should attack to their original target after being recalled [Harbin]
 	* Improved: Resized SCRIPT_HASH_SIZE to 512 [Harbin]
 	* Added: Battle config options to change mvp item droprate by itemtype [Harbin]
