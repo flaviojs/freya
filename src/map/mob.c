@@ -3051,24 +3051,51 @@ int mob_damage(struct block_list *src, struct mob_data *md, int damage, int type
 			clif_mvp_effect(mvp_sd); // エフェクト
 			clif_mvp_exp(mvp_sd, mexp);
 			pc_gainexp(mvp_sd, mexp, 0);
-			// mapflag: nodrop check
-			if (!map[md->bl.m].flag.nomvpdrop) {
-				// mvp drop
-				for(j = 0; j < 3; j++) {
+
+			/* mvp item drop */
+			if(!map[md->bl.m].flag.nomvpdrop)
+			{
+				for(j = 0; j < 3; j++)
+				{
 					double temp_rate;
+
 					i = rand() % 3;
-					if (mob_db[md->class].mvpitem[i].nameid <= 0)
+
+					/* skip invalid items */
+					if(mob_db[md->class].mvpitem[i].nameid <= 0)
 						continue;
-					// calculation of drop rate
+
+					/* calculate drop rate */
 					if (mob_db[md->class].mvpitem[i].p <= 0)
 						drop_rate = 0;
 					else {
-						temp_rate = ((double)mob_db[md->class].mvpitem[i].p) * ((double)battle_config.mvp_item_rate) / 100.;
-						if (temp_rate > 10000. || temp_rate < 0 || ((int)temp_rate) > 10000)
+						/* item type specific droprate modifier */
+						switch(itemdb_type(mob_db[md->class].mvpitem[i].nameid))
+						{
+							case 0:		/* healing items */
+								temp_rate = ((double)mob_db[md->class].mvpitem[i].p) * ((double)battle_config.mvp_healing_rate) / (double)100;
+								break;
+							case 2:		/* usable items */
+								temp_rate = ((double)mob_db[md->class].mvpitem[i].p) * ((double)battle_config.mvp_usable_rate) / (double)100;
+								break;
+							case 4:
+							case 5:
+							case 8: 	/* equipable items */
+								temp_rate = ((double)mob_db[md->class].mvpitem[i].p) * ((double)battle_config.mvp_equipable_rate) / (double)100;
+								break;
+							case 6:		/* cards */
+								temp_rate = ((double)mob_db[md->class].mvpitem[i].p) * ((double)battle_config.mvp_card_rate) / (double)100;
+								break;
+							default:	/* common items */
+								temp_rate = ((double)mob_db[md->class].mvpitem[i].p) * ((double)battle_config.mvp_common_rate) / (double)100;
+								break;
+						}
+						if(temp_rate > 10000. || temp_rate < 0 || ((int)temp_rate) > 10000)
 							drop_rate = 10000;
 						else
 							drop_rate = (int)temp_rate;
 					}
+
 					// check minimum/maximum with configuration
 					if (drop_rate < battle_config.item_drop_mvp_min)
 						drop_rate = battle_config.item_drop_mvp_min;
@@ -3286,32 +3313,28 @@ int mob_heal(struct mob_data *md, int heal)
 	return 0;
 }
 
-/*==========================================
- * Added by RoVeRT
- *------------------------------------------
- */
 int mob_warpslave_sub(struct block_list *bl, va_list ap)
 {
 	struct mob_data *md = (struct mob_data *)bl;
-	int id, x, y;
+	int x, y, id, tid;
 
 	id = va_arg(ap, int);
 	x = va_arg(ap, int);
 	y = va_arg(ap, int);
-	if (md->master_id == id) {
+
+	if(md->master_id == id)
+	{
+		tid = md->target_id;		/* preserve target id. mob_warp() resets it */
 		mob_warp(md, -1, x, y, 2);
+		md->target_id = tid;
+		mob_attack(md, 0, 0);		/* immediately start attacking to the original target (if on range) */
 	}
 
 	return 0;
 }
 
-/*==========================================
- * Added by RoVeRT
- *------------------------------------------
- */
-int mob_warpslave(struct mob_data *md,int x, int y)
+int mob_warpslave(struct mob_data *md, int x, int y)
 {
-//printf("warp slave\n");
 	// Now scans the entire map for slaves. [Bison]
 	map_foreachinarea(mob_warpslave_sub, md->bl.m,
 	                  0, 0,

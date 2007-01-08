@@ -1,15 +1,19 @@
 //===== Freya Script =========================================
-//= Quests NPCs located in Yuno City
+//= Quests NPCs located in Juno City
 //===== By: ==================================================
-//= Aegis
+//= Aegis/Tsuyuki
 //===== Current Version: =====================================
-//= 1.0
+//= 1.1a
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
-//= Yuno Quest NPCs
+//= Ryusei Quest (Metto Quest)
+//= Juperos History Quest
+//= Note: The Juperos History Quest isn't fully functional..
+//= Fayruz is missing, still converting from Aegis [Tsuyuki]
 //===== Additional Comments: =================================
 //= 1.0 Completely redid file now with official Aegis NPCs [Tsuyuki]
+//= 1.1a Partially implemented Juperos History Quest converted from Aegis [Tsuyuki]
 //============================================================
 
 
@@ -955,5 +959,1295 @@ L_NotEnough:
 	mes "In addition to this, you";
 	mes "will need 2,000 zeny.";
 	mes "Good Luck...";
+	close;
+}
+
+//===========================================================================
+// Juperos History Quest
+//===========================================================================
+
+yuno_in04.gat,34,67,4	script	Librarian	83,{
+
+	mes "[Librarian]";
+	mes "Welcome to";
+	mes "the Juno Library.";
+	mes "How may I help you?";
+	next;
+	menu "What is this place?",L_Case01,"What kind of books do you have?",L_Case02,"Can I borrow a book?",L_Case03,"So... Have you read everything here?",L_Case04,"Nothing, thanks.",L_Case05;
+
+	L_Case01:
+		mes "[Librarian]";
+		mes "This library was recently";
+		mes "reopened after a renovation";
+		mes "that included the addition of";
+		mes "books that are more popular";
+		mes "amongst the general public.";
+		next;
+		mes "[Librarian]";
+		mes "Before we carried popular";
+		mes "literature and periodicals, we";
+		mes "only had ancient documents";
+		mes "and significantly historical";
+		mes "books. Basically, things only";
+		mes "scholars are interested in.";
+		next;
+		mes "[Librarian]";
+		mes "Oh, and let me remind you";
+		mes "that some of the books on";
+		mes "the shelves are written in";
+		mes "different languages. So if";
+		mes "you see any that you can't";
+		mes "read, don't worry about it.";
+		next;
+		mes "[Librarian]";
+		mes "Well, I hope you enjoy";
+		mes "your time in the library.";
+		mes "And always remember";
+		mes "to keep quiet for the other";
+		mes "readers in here. Thank you~";
+		close;
+
+	L_Case02:
+		mes "[Librarian]";
+		mes "Originally, we only had";
+		mes "books related to scientific";
+		mes "and historical research. Of";
+		mes "course, our commitment to";
+		mes "academia and search for";
+		mes "knowledge hasn't changed.";
+		next;
+		mes "[Librarian]";
+		mes "But now we also have";
+		mes "books that the general public";
+		mes "can also enjoy. We also carry";
+		mes "texts that may be helpful to";
+		mes "adventurers like yourself.";
+		next;
+		mes "[Librarian]";
+		mes "Well, I hope you enjoy";
+		mes "your time in the library.";
+		mes "And always remember";
+		mes "to keep quiet for the other";
+		mes "readers in here. Thank you~";
+		close;
+
+	L_Case03:
+		mes "[Librarian]";
+		mes "I'm sorry, but we";
+		mes "currently do not offer";
+		mes "a book lending service.";
+		mes "We've prioritized our funding";
+		mes "on the content we provide, so";
+		mes "we can't afford extra services.";
+		next;
+		mes "[Librarian]";
+		mes "However, this facility";
+		mes "is open twenty-four hours,";
+		mes "seven days a week, so feel";
+		mes "free to visit us at any time.";
+		mes "Just remember that in the";
+		mes "library, silence is golden~";
+		close;
+
+	L_Case04:
+		mes "[Librarian]";
+		mes "Read every book?";
+		mes "Sadly, yes. I've perused";
+		mes "every single scrap of text";
+		mes "in this library. It's a part of";
+		mes "my job, but I love it dearly.";
+		next;
+		mes "[Librarian]";
+		mes "I originally applied for this";
+		mes "job so that I could read as";
+		mes "much as I wanted, even at";
+		mes "work! After all, librarians";
+		mes "should be familiar with the";
+		mes "books they're in charge of.";
+		next;
+		mes "[Librarian]";
+		mes "I love books so much~";
+		mes "But of course, it will be";
+		mes "a while until this library";
+		mes "has the funds to purchase";
+		mes "brand new books for me to";
+		mes "immerse myself in. ^333333*Sigh*^000000";
+		close;
+
+	L_Case05:
+		mes "[Librarian]";
+		mes "Oh, alright.";
+		mes "Feel free to ask me";
+		mes "me if you have any";
+		mes "questions. Good day~";
+		close;
+}
+
+yuno_in04.gat,118,17,0	script	Bagaimana berpetualang sendiri#yuno01	111,{
+
+	mes "^8B6914*Traveling Alone*";
+	mes "''The Guide to Mastering";
+	mes "Every Skill You Need to";
+	mes "Travel By Your Lonesome.''^000000";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "I don't need to";
+	mes "read this. I'm";
+	mes "already the master!";
+	close;
+}
+
+yuno_in04.gat,116,106,0	script	Jellopy Soup#yuno02	111,{
+
+	mes "^8B6914*Jellopy Soup*";
+	mes "By Kim Crawford^000000^000000";
+	mes " ";
+	mes " ";
+	mes " ";
+	mes "Publisher:";
+	mes "Muha Books, Co.^000000";
+	next;
+	menu "Read.",L_Case01,"Close.",L_Case02;
+
+	L_Case01:
+		mes "^8B6914Once upon a time, three";
+		mes "gentle Sages wandered into";
+		mes "a village recently ravaged by";
+		mes "plague and drought. Tired from";
+		mes "their long journey, they begged";
+		mes "the villagers there for food and";
+		mes "lodging, but Alas, there was none.^000000";
+		next;
+		mes "^8B6914''This village was just";
+		mes "ravaged by plague and";
+		mes "drought! There is no food";
+		mes "here!'' said the butcher. ''Of";
+		mes "lodgings, we have none,'' said";
+		mes "the Dancer. But the Sages were";
+		mes "not discouraged by this talk.^000000";
+		next;
+		mes "^8B6914''If we can have but";
+		mes "1 Jellopy, we shall be";
+		mes "on our way,'' the Sages";
+		mes "bargained. ''1 Jellopy,";
+		mes "what can you do with just";
+		mes "1 Jellopy?!'' asked the";
+		mes "stupefied Super Novice.^000000";
+		next;
+		mes "^8B6914''Why, make Jellopy";
+		mes "Soup!'' replied the Sages.";
+		mes "''Is it good?'' asked the Baby";
+		mes "Crusader. ''Kind of,'' said";
+		mes "the Sages. ''But we need the";
+		mes "freshest Jellopy we can find.''^000000";
+		next;
+		mes "^8B6914And so, the entire village";
+		mes "went hunting for Porings to";
+		mes "get their Jellopy. While they";
+		mes "were gone, the Sages took";
+		mes "this chance to plunder the";
+		mes "villagers' homes and then";
+		mes "they lived happily ever after.^000000";
+		close;
+
+	L_Case02:
+		mes "[" + strcharinfo(0) + "]";
+		mes "I don't know...";
+		mes "Isn't this one a";
+		mes "children's book?";
+		close;
+}
+
+yuno_in04.gat,118,6,0	script	Aragham Caul Biography#yuno03	111,{
+
+	mes "^8B6914*The Spectacle that is";
+	mes "the Life of Aragham Caul*";
+	mes "By Aragham Caul";
+	mes " ";
+	mes " ";
+	mes "Publisher:";
+	mes "Caul Books, Co.^000000";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "I don't know if this";
+	mes "one is worth opening,";
+	mes "much less actually read...";
+	close;
+}
+
+yuno_in04.gat,118,15,0	script	Schwaltzvalt Adventurer#yuno04	111,{
+
+	mes "^8B6914*The Schwaltzvalt Adventurer*";
+	mes "Edited by the Sage Historical";
+	mes "Research Community";
+	mes "''The latest in modern";
+	mes "adventure history of the S.R.''";
+	mes "Publisher:";
+	mes "Academia Press, Co.";
+	next;
+	menu "Preface",L_Case01,"Table of Contents",L_Case02,"Close the book.",L_Case03;
+
+	L_Case01:
+		mes "^8B6914It's the golden age";
+		mes "of adventuring. Now,";
+		mes "more than ever, men and";
+		mes "women around the world";
+		mes "are bravely setting off to";
+		mes "new lands for the sake of";
+		mes "excitement and ''do good-ing.''^000000";
+		next;
+		mes "^8B6914But first, we need to cover";
+		mes "all of the technical jargon";
+		mes "that will appear later in this";
+		mes "book. A ''dungeon'' is a place";
+		mes "where creatures that we call";
+		mes "''monsters'' live. A ''weapon''";
+		mes "is a tool that adventurers...^000000";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "Wait a second...";
+		mes "Why I even reading this?";
+		mes "I'm already a certified";
+		mes "adventuring master!";
+		close;
+
+	L_Case02:
+		mes "[" + strcharinfo(0) + "]";
+		mes "Huh...?";
+		next;
+		mes "^8B6914Ch.1: Jellopy Dos and Don'ts";
+		mes "Ch.2: Learning to Sit";
+		mes "Ch.3: What Does a Weapon Do?";
+		mes "Ch.4: Yes, Knives Are Used";
+		mes "for More than Just Cooking";
+		mes "Ch.5: Potions and When";
+		mes "to Drink Them...^000000";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "This is a like";
+		mes "the complete idiot's";
+		mes "guide to adventuring.";
+		mes "Who did they write";
+		mes "this book for?!";
+		close;
+
+	L_Case03:
+		mes "[" + strcharinfo(0) + "]";
+		mes "Nah. Ironically,";
+		mes "I don't feel like";
+		mes "reading right now.";
+		close;
+}
+
+yuno_in04.gat,178,111,0	script	Stack of Books#yuno05	111,{
+
+	mes "^3355FFYou find a series";
+	mes "of paperback books";
+	mes "with titles, printed";
+	mes "on the binding in an";
+	mes "elegantly decorative";
+	mes "cursive style font.";
+	mes "The titles include...^000000";
+	next;
+	mes "^8B6914*Volcanic Passion*";
+	mes "*Midnight Crescendo*";
+	mes "*A Paris Affair*";
+	mes "*Fever Pitch*";
+	mes "*The Cowboy Next Door*";
+	mes "*Platonic Romance*";
+	mes "*How Lara Got Her Groove Back*^000000";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "What the...?!";
+	mes "This place even has";
+	mes "a romance novel section?";
+	close;
+}
+
+yuno_in04.gat,188,127,0	script	Stack of Books#yuno06	111,{
+
+	mes "^3355FFYou find a series";
+	mes "of heavy, hardbound";
+	mes "books with impressive";
+	mes "sounding titles like...^000000";
+	next;
+	mes "^8B6914*Schwaltzvalt Republic History*";
+	mes "*History of Ancient Economics*";
+	mes "*Secrets of the Forgotten Tombs*";
+	mes "*Juno Economy Report A.W. 792*";
+	mes "*Juno Economy Report A.W. 802*";
+	mes "*Juno Economy Report A.W. 822*";
+	mes "*Linguistical Procedural Data*^000000";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "...";
+	mes "Everything here just";
+	mes "looks so academic...";
+	emotion e_swt;
+	close;
+}
+
+yuno_in04.gat,188,116,0	script	Paper#yuno07	111,{
+
+	mes "^3355FFIt's a piece of";
+	mes "paper that looks";
+	mes "like a personal letter.^000000";
+	next;
+	menu "Read it.",L_Case01,"Leave it alone.",L_Case02;
+
+	L_Case01:
+		if (yuno_book <= 7) goto L_Cont01;
+			mes "^8B6914P.S.";
+			mes "Please...";
+			mes "Come back to me.";
+			mes " ";
+			mes " ";
+			mes "Love,";
+			mes "Fayruz^000000";
+			close;
+
+		L_Cont01:
+			mes "^8B6914...";
+			mes "I can't forget your smile.";
+			mes "No matter what, even if you";
+			mes "hate me, I'll always have these";
+			mes "feelings just for you. You are";
+			mes "the one who is most special,";
+			mes "who means the most to my heart.^000000";
+			next;
+			mes "^8B6914I know we've had our";
+			mes "differences, but please";
+			mes "don't refuse my love. By";
+			mes "your hands, I hope that";
+			mes "you can forgive me for us.";
+			mes "- Love, Fayruz^000000";
+			next;
+   			if (getpartnerid(0) == 0) goto L_Cont02;
+
+				mes "[" + strcharinfo(0) + "]";
+				mes "Ahhhhhh~";
+				mes "Love sure is nice!";
+				close;
+
+			L_Cont02:
+				mes "[" + strcharinfo(0) + "]";
+				mes "What th--?!";
+				mes "Booooooooo!";
+				mes "Love stinks!";
+				close;
+
+	L_Case02:
+		mes "[" + strcharinfo(0) + "]";
+		mes "I guess I better";
+		mes "not look at this.";
+		mes "I mean, I might";
+		mes "regret reading it.";
+		close;
+}
+
+yuno_in04.gat,188,118,0	script	Book#yuno08	111,{
+
+	if (yuno_book <= 7) goto L_Cont01;
+
+	mes "^8B6914*Self-Honesty*";
+	mes "*'Benefits Fo' Life!'*";
+	mes "By Stephen Oyoung";
+	mes " ";
+	mes " ";
+	mes "Publisher:";
+	mes "Wushu Publishing, Co.^000000";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "W-whoa!";
+	mes "This book wasn't";
+	mes "here before! It looks";
+	mes "pretty interesting...";
+	close;
+
+	L_Cont01:
+		mes "[" + strcharinfo(0) + "]";
+		mes "You know what?";
+		mes "I think I'll just flip";
+		mes "through some pages";
+		mes "from a random book.";
+		mes "Hmmm, let's see...";
+		next;
+		mes "^8B6914''Admiral, the Kylorians are";
+		mes "still advancing!'' Commander";
+		mes "McKenrick announced without";
+		mes "his usual swagger. ''They're...";
+		mes "They're not stopping!'' But";
+		mes "Admiral Leh's eyes were a cold,";
+		mes "unfeeling shade of sternness.^000000";
+		next;
+		mes "^8B6914''Let the goddamned space";
+		mes "aliens come,'' hissed Leh.";
+		mes "''We don't stand a chance";
+		mes "without the Zenoi Sword";
+		mes "to summon the power of";
+		mes "GOD-POING. It's... It's";
+		mes "all over. Damn it all...''^000000";
+		next;
+		mes "^8B6914The doors burst open as";
+		mes "Bucky flew into the room.";
+		mes "''The Zenoi Sword! The";
+		mes "Zenoi Sword! Someone's";
+		mes "found it!'' the boy yelled.";
+		mes "''Really?! We better hurry:";
+		mes "Earth doesn't have much time!''^000000";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "...";
+		mes "......";
+		mes "Whoa. I really";
+		mes "should have read";
+		mes "this masterpiece";
+		mes "from the beginning...";
+		close;
+}
+
+yuno_in04.gat,186,104,0	script	Book#yuno09	111,{
+
+	mes "^3355FFYou find a book";
+	mes "without a title";
+	mes "on its cover.^000000";
+	next;
+	menu "Table of Contents",L_Case01,"Close the Book.",L_Case02;
+
+	L_Case01:
+		mes "^8B6914Ch.1: The King of Profit";
+		mes "Ch.2: Mystery of the Wealthy Woman";
+		mes "Ch.3: Strange Real Estate Adventure";
+		mes "Ch.4: Investment Apocalypse";
+		mes "Ch.5: Final Attack! Money Clips^000000";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "What's this";
+		mes "supposed to be?";
+		mes "Some kind of economic";
+		mes "action thriller romance?";
+		close;
+
+	L_Case02:
+		mes "[" + strcharinfo(0) + "]";
+		mes "Maybe I should";
+		mes "just put this book";
+		mes "back where I found it...";
+		close;
+}
+
+yuno_in04.gat,188,109,0	script	Book#yuno10	111,{
+
+	mes "^3355FFYou find a book and";
+	mes "find that the all of the";
+	mes "pages are smudged";
+	mes "with ink once you open it.^000000";
+	next;
+	menu "Turn the page.",L_Case01,"Put the book away.",L_Case02;
+
+	L_Case01:
+		mes "^3355FFThe pages are stuck";
+		mes "together, probably because";
+		mes "of the ink that was spilled";
+		mes "and then dried on them.";
+		mes "Upon closer examination,";
+		mes "the ink seems to have a";
+		mes "suspiciously dark red color...^000000";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "Huh...?";
+		mes "N-no way!";
+		mes "This is just...!";
+		close;
+
+	L_Case02:
+		mes "[" + strcharinfo(0) + "]";
+		mes "I shouldn't even";
+		mes "bother trying to read";
+		mes "this. Why would the library";
+		mes "keep such a damaged book?";
+		close;
+}
+
+yuno_in04.gat,186,125,0	script	Bundle of Files#yuno11	111,{
+
+	if (yuno_book < 5) goto L_Check01;
+	if (yuno_book == 5) goto L_Check02;
+	if (yuno_book == 7) goto L_Check03;
+	if (yuno_book == 9) goto L_Check04;
+	if (yuno_book == 10) goto L_Check05;
+
+	mes "^8B6914*Thesis: The Fall of Juperos*";
+	mes "Oleh Fayruz Khrhiyha";
+	mes "Sage Castle Researcher^000000";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "Looks pretty...";
+	mes "Historical.";
+	close;
+
+	L_Check01:
+		mes "^8B6914*Thesis: The Fall of Juperos*";
+		mes "By Fayruz Khrhiyha";
+		mes "Sage Castle Researcher^000000";
+		next;
+		menu "Table of Contents.",L_Bundle01a,"Leave it alone.",L_Bundle02a;
+
+		L_Bundle01a:
+			menu "Preface",L_Bundle03a,"Close the file.",L_Bundle04a;
+
+			L_Bundle03a:
+				mes "^8B6914Scholars are certain";
+				mes "that the Juperos civilization";
+				mes "used to be located above the";
+				mes "ground, but it is now buried";
+				mes "beneath the El Mes Plateau.";
+				mes "The reasons for the city's";
+				mes "ruin are still nebulous...^000000";
+				next;
+				mes "^8B6914There is much speculation";
+				mes "about the reasons for Jupero's";
+				mes "downfall, but any documentation";
+				mes "from that time period has been";
+				mes "difficult to find. As for now, any evidence we have regarding";
+				mes "Juperos is inconclusive.^000000";
+				next;
+				mes "^8B6914In spite of this lack";
+				mes "of empirical or concrete";
+				mes "data on the civilization of";
+				mes "Juperos, our modern world";
+				mes "may be able to learn much";
+				mes "from that ancient city's ruins.";
+				mes "..................^000000";
+				if (yuno_book == 0) set yuno_book,1;
+				next;
+				mes "[" + strcharinfo(0) + "]";
+				mes "This...";
+				mes "This is supposed to";
+				mes "be a research thesis?";
+				mes "There's barely any";
+				mes "research in it...";
+				close;
+
+			L_Bundle04a:
+				mes "[" + strcharinfo(0) + "]";
+				mes "Hmm...";
+				mes "This isn't heavy";
+				mes "enough to be a real";
+				mes "academic work. It must";
+				mes "not even be finished yet.";
+				close;
+
+		L_Bundle02a:
+			mes "[" + strcharinfo(0) + "]";
+			mes "Nah...";
+			mes "I'm tired of reading.";
+			mes "Ironically enough.";
+			close;
+
+	L_Check02:
+		mes "^8B6914*Thesis: The Fall of Juperos*";
+		mes "By Fayruz Khrhiyha";
+		mes "Sage Castle Researcher^000000";
+		next;
+		menu "Check the Table of Contents.",L_Bundle05a,"Leave it alone.",L_Bundle06a;
+
+		L_Bundle05a:
+			mes "^8B6914 1. Preface";
+			mes " 2. Juperos Background";
+			mes " 3. Theory Behind Its Fall^000000";
+			next;
+			menu "Preface",L_Bundle07a,"Juperos Background",L_Bundle08a,"Theory Behind Its Fall",L_Bundle09a,"Leave it alone.",L_Bundle10a;
+
+			L_Bundle07a:
+				mes "^8B6914Scholars are certain";
+				mes "that the Juperos civilization";
+				mes "used to be located above the";
+				mes "ground, but it is now buried";
+				mes "beneath the El Mes Plateau.";
+				mes "The reasons for the city's";
+				mes "ruin are still nebulous...^000000";
+				next;
+				mes "^8B6914There is much speculation";
+				mes "about the reasons for Jupero's";
+				mes "downfall, but any documentation";
+				mes "from that time period has been";
+				mes "difficult to find. As for now, any evidence we have regarding";
+				mes "Juperos is inconclusive.^000000";
+				next;
+				mes "^8B6914In spite of this lack";
+				mes "of empirical or concrete";
+				mes "data on the civilization of";
+				mes "Juperos, our modern world";
+				mes "may be able to learn much";
+				mes "from that ancient city's ruins.";
+				mes "..................^000000";
+				next;
+				mes "[" + strcharinfo(0) + "]";
+				mes "Hmmm...";
+				mes "A whole chapter";
+				mes "dedicated to saying,";
+				mes "''We know absolutely";
+				mes "nothing about something.''";
+				mes "I should write a book~";
+				close;
+
+			L_Bundle08a:
+				mes "^8B6914...";
+				mes "......";
+				mes "..........^000000";
+				next;
+				mes "[" + strcharinfo(0) + "]";
+				mes "This is all just idle";
+				mes "conjecture! This paper";
+				mes "isn't developed enough";
+				mes "yet to be a real thesis...";
+				close;
+
+			L_Bundle09a:
+				mes "^8B6914...";
+				mes "......";
+				mes "..........^000000";
+				next;
+				mes "[" + strcharinfo(0) + "]";
+				mes "Huh. This writer keeps";
+				mes "talking about theories,";
+				mes "but the more I read, the";
+				mes "less clear I am on what";
+				mes "the theory actually is.";
+				mes "I don't think there is one...";
+				emotion e_swt;
+				close;
+
+			L_Bundle10a:
+				mes "[" + strcharinfo(0) + "]";
+				mes "Ugh... My head hurts";
+				mes "too much from reading";
+				mes "a book for smarty people.";
+				mes "I know! I'll play videogames!";
+				close;
+
+		L_Bundle06a:
+			mes "[" + strcharinfo(0) + "]";
+			mes "I don't feel like";
+			mes "reading this. Not";
+			mes "enough pictures...";
+			close;
+
+	L_Check03:
+		mes "^8B6914*Thesis: The Fall of Juperos*";
+		mes "By Fayruz Khrhiyha";
+		mes "Sage Castle Researcher^000000";
+		next;
+		menu "Check the Table of Contents.",L_Bundle01b,"Leave it alone.",L_Bundle02b;
+
+		L_Bundle01b:
+			mes "^8B6914 1. Preface";
+			mes " 2. Juperos Background";
+			mes " 3. Theory Behind Its Fall^000000";
+			next;
+			menu "Preface",L_Bundle03b,"Juperos Background",L_Bundle04b,"Theory Behind Its Fall",L_Bundle05b,"Leave it alone.",L_Bundle06b;
+
+			L_Bundle03b:
+				mes "^8B6914Scholars are certain";
+				mes "that the Juperos civilization";
+				mes "used to be located above the";
+				mes "ground, but it is now buried";
+				mes "beneath the El Mes Plateau.";
+				mes "The reasons for the city's";
+				mes "ruin are still nebulous...^000000";
+				next;
+				mes "^8B6914There is much speculation";
+				mes "about the reasons for Jupero's";
+				mes "downfall, but any documentation";
+				mes "from that time period has been";
+				mes "difficult to find. As for now, any evidence we have regarding";
+				mes "Juperos is inconclusive.^000000";
+				next;
+				mes "^8B6914In spite of this lack";
+				mes "of empirical or concrete";
+				mes "data on the civilization of";
+				mes "Juperos, our modern world";
+				mes "may be able to learn much";
+				mes "from that ancient city's ruins.";
+				mes "..................^000000";
+				close;
+
+			L_Bundle04b:
+				mes "^8B6914...";
+				mes "......";
+				mes "..........^000000";
+				next;
+				mes "[" + strcharinfo(0) + "]";
+				mes "This is all just idle";
+				mes "conjecture! This paper";
+				mes "isn't developed enough";
+				mes "yet to be a real thesis...";
+				close;
+
+			L_Bundle05b:
+				mes "^8B6914...";
+				mes "......";
+				mes "..........^000000";
+				next;
+				mes "[" + strcharinfo(0) + "]";
+				mes "Huh. This writer keeps";
+				mes "talking about theories,";
+				mes "but the more I read, the";
+				mes "less clear I am on what";
+				mes "the theory actually is.";
+				mes "I don't think there is one...";
+				emotion e_swt;
+				close;
+
+			L_Bundle06b:
+				mes "[" + strcharinfo(0) + "]";
+				mes "Ugh... My head hurts";
+				mes "too much from reading";
+				mes "a book for smarty people.";
+				mes "I know! I'll play videogames!";
+				close;
+
+		L_Bundle02b:
+			mes "[" + strcharinfo(0) + "]";
+			mes "It looks very sophisticated...";
+			close;
+
+	L_Check04:
+		mes "^8B6914*Thesis: The Fall of Juperos*";
+		mes "By Fayruz Khrhiyha";
+		mes "Sage Castle Researcher^000000";
+		next;
+		menu "Table of Contents.",L_Bnd01,"Leave it alone.",L_Bnd02;
+
+		L_Bnd01:
+			mes "^8B6914 1. Preface";
+			mes " 2. Juperos Background";
+			mes " 3. Theory Behind Its Fall^000000";
+			next;
+			menu "Preface",L_Bnd03,"Juperos Background",L_Bnd04,"Theory Behind Its Fall",L_Bnd05,"Leave it alone.",L_Bnd06;
+
+			L_Bnd03:
+				mes "^8B6914Scholars are certain";
+				mes "that the Juperos civilization";
+				mes "used to be located above the";
+				mes "ground, but it is now buried";
+				mes "beneath the El Mes Plateau.";
+				mes "The reasons for the city's";
+				mes "ruin are still in debate...^000000";
+				next;
+				mes "^8B6914However, new findings";
+				mes "regarding the history";
+				mes "of Juperos have allowed";
+				mes "us to make a few conclusions.^000000";
+				close;
+
+			L_Bnd04:
+				mes "^8B6914Juperos was built over";
+				mes "a thousand years ago in";
+				mes "an era of peace just after";
+				mes "a major war. Contrary to";
+				mes "popular belief, there isn't any";
+				mes "evidence proving that Juno may";
+				mes "have descended from Juperos.^000000";
+				next;
+				mes "^8B6914In fact, there is a";
+				mes "strong possibility that";
+				mes "another war, between Juno";
+				mes "and Juperos, resulted in Juno's";
+				mes "independence from Juperos and";
+				mes "the destruction of any existing";
+				mes "documentation from that era.^000000";
+				next;
+			
+				mes "[" + strcharinfo(0) + "]";
+				mes "Yes... Of course!";
+				mes "It all makes sense now!";
+				close;
+
+			L_Bnd05:
+				mes "^8B6914...";
+				mes "......";
+				mes "..........^000000";
+				next;
+				mes "[" + strcharinfo(0) + "]";
+				mes "Huh. This writer keeps";
+				mes "talking about theories,";
+				mes "but the more I read, the";
+				mes "less clear I am on what";
+				mes "the theory actually is.";
+				mes "I don't think there is one...";
+				emotion e_swt;
+				close;
+
+			L_Bnd06:
+				mes "[" + strcharinfo(0) + "]";
+				mes "Ugh... My head hurts";
+				mes "too much from reading";
+				mes "a book for smarty people.";
+				mes "I know! I'll play videogames!";
+				close;
+
+		L_Bnd02:
+			mes "[" + strcharinfo(0) + "]";
+			mes "I know this book...";
+			mes "But I don't feel like";
+			mes "reading it right now.";
+			close;
+
+	L_Check05:
+		mes "^8B6914*Thesis: The Fall of Juperos*";
+		mes "By Fayruz Khrhiyha";
+		mes "Sage Castle Researcher^000000";
+		next;
+		menu "Check the Table of Contents.",L_Bndfinal01a,"Leave it alone.",L_Bndfinal02a;
+
+		L_Bndfinal01a:
+			mes "^8B6914 1. Preface";
+			mes " 2. Juperos Background";
+			mes " 3. Theory Behind Its Fall^000000";
+			next;
+			menu "Preface",L_Bndfinal01,"Juperos Background",L_Bndfinal02,"Theory Behind Its Fall",L_Bndfinal03,"Leave it alone.",L_Bndfinal04;
+
+			L_Bndfinal01:
+				mes "^8B6914Scholars are certain";
+				mes "that the Juperos civilization";
+				mes "used to be located above the";
+				mes "ground, but it is now buried";
+				mes "beneath the El Mes Plateau.";
+				mes "The reasons for the city's";
+				mes "ruin are still in debate...^000000";
+				next;
+				mes "^8B6914However, new findings";
+				mes "regarding the history";
+				mes "of Juperos have allowed";
+				mes "us to make a few conclusions.^000000";
+				close;
+
+			L_Bndfinal02:
+				mes "^8B6914Juperos was built over";
+				mes "a thousand years ago in";
+				mes "an era of peace just after";
+				mes "a major war. There is now";
+				mes "direct evidence linking Juno";
+				mes "to Juperos proving that Juno";
+				mes "was but a part of Juperos.^000000";
+				next;
+				mes "^8B6914Just like Juno, Juperos";
+				mes "was a society that prided";
+				mes "itself on its advancement";
+				mes "in the sciences which played";
+				mes "a permeating role in civilized";
+				mes "life. Science was reponsible for Juperos's rise and downfall.";
+				close;
+
+			L_Bndfinal03:
+				mes "^8B6914What is most unsettling";
+				mes "is recent evidence, including";
+				mes "a first hand written account,";
+				mes "regarding the role of one of";
+				mes "Jupero's foremost scientists";
+				mes "in that city's rise and fall.";
+				next;
+				mes "^8B6914If these writings are";
+				mes "authentic, then what actually";
+				mes "happened was that a scientific";
+				mes "revolution occurred as a direct";
+				mes "result of one scientist's effort to manipulate the energies of the";
+				mes "artifact known as Ymir's heart.";
+				next;
+				mes "^8B6914This one man and Ymir's";
+				mes "Heart are credited with";
+				mes "the success and prosperity";
+				mes "of the Jupero's civilization.";
+				mes "However, there are various accounts prior to Jupero's fall detailing his work with chimera...^000000";
+				next;
+				mes "^8B6914This scientist, supposedly";
+				mes "in his passion to benefit his";
+				mes "people by finding a scientific";
+				mes "method for immortality by using";
+				mes "chimera for testing, was driven";
+				mes "insane. He experimented on";
+				mes "himself with disatrous results.^000000";
+				next;
+				mes "^8B6914There was an error in the";
+				mes "energy calibration of Ymir's";
+				mes "Heart and the scientist was";
+				mes "transformed into the monster";
+				mes "we now know as Chimera. He";
+				mes "and his test subjects were set";
+				mes "loose into the city of Juperos.^000000";
+				next;
+				mes "^8B6914These immortal Chimeras";
+				mes "razed the entire city, killing";
+				mes "countless people. Apparently,";
+				mes "a team of scientists were able";
+				mes "to salvage a fragment of Ymir's";
+				mes "Heart, and use it to lauch part";
+				mes "of Juperos into the sky.^000000";
+				next;
+				mes "^8B6914That section of Juperos";
+				mes "eventually developed into";
+				mes "the city of Juno. Since the";
+				mes "scientists who launched Juno into the sky all immediately died";
+				mes "afterwards from an unknown cause, they left no documentation.^000000";
+				next;
+				mes "^8B6914The Chimera, and the";
+				mes "laboratory in which it";
+				mes "was created, is rumored to";
+				mes "remain beneath the ruins of";
+				mes "the once great city of Juperos.^000000";
+				close;
+
+			L_Bndfinal04:
+				mes "[" + strcharinfo(0) + "]";
+				mes "Ugh... My head hurts";
+				mes "too much from reading";
+				mes "a book for smarty people.";
+				mes "I know! I'll play videogames!";
+				close;
+
+		L_Bndfinal02a:
+			mes "[" + strcharinfo(0) + "]";
+			mes "This thesis is";
+			mes "looking pretty good~";
+			mes "Of course, I did have";
+			mes "a hand in making it...";
+			close;
+}
+
+yuno_in04.gat,174,111,0	script	Penniless Hollgrehenn#yuno20	111,{
+
+	mes "^8B6914*Penniless Hollgrehenn*";
+	mes " * Pennyless Hollgrehenn * ";
+	mes "By Hollgrehenn";
+	mes " ";
+	mes " ";
+	mes "Publisher:";
+	mes "Muha Books, Co.^000000";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "This book looks";
+	mes "like a total piece of";
+	mes "crap. I'd have more";
+	mes "fun getting my teeth";
+	mes "drilled by a blindfolded";
+	mes "dentist. Or would I...?";
+	close;
+}
+
+yuno_in04.gat,168,109,0	script	Ambitious Hollgrehenn#yuno20	111,{
+
+	mes "^8B6914*Hollgrehenn: The Ambition* ";
+	mes "By Aragham Caul* ";
+	mes " ";
+	mes " ";
+	mes " ";
+	mes "Publisher:";
+	mes "Muha Books, Co.^000000";
+	next;
+	mes "^8B6914...";
+	mes "He would stop at nothing";
+	mes "to have the greatest weapon";
+	mes "in the world in his possession. He became a smith so that he";
+	mes "could discern which weapons";
+	mes "were the most powerful...^000000";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "That's strange...";
+	mes "The next page";
+	mes "has been torn out.";
+	close;
+}
+
+yuno_in04.gat,102,106,0	script	Popular Feasts#yuno20	111,{
+
+	mes "^8B6914*Popular Feasts*";
+	mes "By Cabbage Pickle Community";
+	mes " ";
+	mes " ";
+	mes " ";
+	mes "Publisher:";
+	mes "Muha Books, Co.^000000";
+	next;
+	menu " 1. Fried Yoyo Tails",L_Case01," 14. Poring Salad",L_Case02," 252. Beak Soup",L_Case03;
+
+	L_Case01:
+		mes "^8B6914...";
+		mes "If possible, try";
+		mes "to use tails cut";
+		mes "from live Yoyos.";
+		mes "Now, as for skinning...^000000";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "Um...";
+		mes "Barf?";
+		close;
+
+	L_Case02:
+		mes "[" + strcharinfo(0) + "]";
+		mes "Hey, this page is gone!";
+		mes "I guess Poring Salad is";
+		mes "the most popular feast";
+		mes "in this entire book.";
+		close;
+
+	L_Case03:
+		mes "^8B6914...";
+		mes "Fry the cut beaks";
+		mes "using herbal oil until";
+		mes "crisp. Then, pour the";
+		mes "feathers into a blender...^000000";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "Hmm...";
+		mes "Sounds a little";
+		mes "too gourmet for my";
+		mes "taste. And by ''gourmet,''";
+		mes "I mean, ''totally gross.''";
+		close;
+}
+
+yuno_in04.gat,111,108,0	script	Hamerun, Rat Hunter#yuno20	111,{
+
+	mes "[" + strcharinfo(0) + "]";
+	mes "I can't...";
+	mes "reach it...!";
+	close;
+}
+
+yuno_in04.gat,167,127,0	script	Red Book#yuno20	111,{
+
+	mes "^3355FFYou find a book";
+	mes "with red binding.^000000";
+	next;
+	menu "Read.",L_Case01,"Leave it alone.",L_Case02;
+
+	L_Case01:
+		mes "^8B6914...^000000";
+		next;
+		mes "^8B6914...";
+		mes "......^000000";
+		next;
+		mes "^8B6914...";
+		mes "......";
+		mes ".........^000000";
+		next;
+		mes "^8B6914...";
+		mes "......";
+		mes ".........";
+		mes "............^000000";
+		next;
+//		Emotion "" ET_PROFUSELY_SWAT
+		mes "[" + strcharinfo(0) + "]";
+		mes "This is...";
+		mes "A compilation of";
+		mes "Shakespeare in ";
+		mes "coloring book format?";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "Wait...";
+		mes "Why would fans of";
+		mes "Shakespeare even";
+		mes "want a coloring book?";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "Hmm... Well...";
+		mes "I suppose little kids who";
+		mes "read Shakespeare would";
+		mes "appreciate something like that.";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "Hold on...";
+		mes "Do little kids who";
+		mes "are able to read the";
+		mes "works of Shakespeare";
+		mes "even exist? I hope not...";
+		close;
+
+	L_Case02:
+		mes "[" + strcharinfo(0) + "]";
+		mes "What a strange";
+		mes "and mysterious book.";
+		mes "I'll never know what's";
+		mes "inside unless I read it!";
+		mes "Come on! Doesn't the red";
+		mes "binding mean something?";
+		close;
+}
+
+yuno_in04.gat,121,109,0	script	Scroll#yuno20	111,{
+
+	mes "^3355FFYou've found an";
+	mes "antiquated scroll";
+	mes "that's collected a";
+	mes "layer of fine dust.^000000";
+	next;
+	menu "Peruse",L_Case01,"Leave it alone",L_Case02;
+
+	L_Case01:
+		mes "^8B6914Item Upgrade Introduction";
+		mes " ";
+		mes " ";
+		mes " ";
+		mes "1. Item Upgrade Definition";
+		mes " ";
+		mes "The key to success when";
+		mes "upgrading items comes from";
+		mes "only one place: Your ''Mind.''";
+		mes " ";
+		mes " ";
+		mes " ";
+		mes "2. Power of a Positive Attitude";
+		mes "Before trying to upgrade";
+		mes "an item, plan out how high";
+		mes "you want to upgrade and how";
+		mes "much you'll spend beforehand.";
+		mes "But like all ladies, Lady Luck";
+		mes "smiles when you fully splurge.^000000";
+		mes " ";
+		mes " ";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "Wait, wait...";
+		mes "This thing IS old.";
+		mes "I mean, it's obviously";
+		mes "written from a patriarchal";
+		mes "standpoint that promotes";
+		mes "bipartisan gender roles.";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "I'm...";
+		mes "I'm so offended.";
+		close;
+
+	L_Case02:
+		mes "[" + strcharinfo(0) + "]";
+		mes "This scroll is far too";
+		mes "primitive. There's been";
+		mes "all sorts of technological";
+		mes "reading advances that I can't";
+		mes "live without... Like pages.";
+		close;
+}
+
+juperos_01.gat,99,112,0	script	Bronze Statue#jupe01	111,{
+
+	if (yuno_book > 3) goto L_Bronze01;
+	if (yuno_book == 3) goto L_Bronze02;
+	goto L_Bronze03;
+
+	L_Bronze01:
+		mes "^3355FF''Do you wish to see";
+		mes "the end of the madness?";
+		mes "He is waiting where the three";
+		mes "columns were destroyed, where";
+		mes "two hundred illusions wander.''^000000";
+		close;
+
+	L_Bronze02:
+		mes "[" + strcharinfo(0) + "]";
+		mes "I better go and";
+		mes "see Fayruz in the";
+		mes "Juno Library and tell";
+		mes "her about the inscription.";
+		close;
+
+	L_Bronze03:
+		mes "^3355FFThere's a peculiar";
+		mes "engraving on the";
+		mes "Bronze Statue's rod.^000000";
+		next;
+		menu "Investigate",L_Case01,"Ignore it",L_Case02;
+
+		L_Case01:
+			mes "^3355FFIt's an inscription that's";
+			mes "written in an old language";
+			mes "that you can't understand,";
+			mes "but have no problem reading";
+			mes "and making out the sounds";
+			mes "for some weird reason.^000000";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "This is creepy!";
+			mes "I know that I'm not";
+			mes "supposed to be able";
+			mes "to read this, but here";
+			mes "I am. I know what sounds";
+			mes "all of these letters make...";
+			next;
+			if (yuno_book != 2) goto L_Cont01;
+				set yuno_book,3;
+				mes "[" + strcharinfo(0) + "]";
+				mes "Then again, Fayruz did";
+				mes "say this was enchanted.";
+				mes "Okay, I guess I'll go back";
+				mes "to the Juno Library and";
+				mes "tell her what I found.";
+				close;
+
+		L_Cont01:
+			mes "[" + strcharinfo(0) + "]";
+			mes "Huh. Only a scholar,";
+			mes "maybe someone even in";
+			mes "Juno, could make sense";
+			mes "of what this stuff says.";
+			close;
+
+		L_Case02:
+			close;
+}
+
+juperos_01.gat,123,92,0	script	Stone Statue#jupe02	111,{
+
+	if (yuno_book == 0) goto L_Cont01;
+
+	mes "^3355FFIt's a stone statue";
+	mes "that looks exactly like";
+	mes "the one in the Juno Library.";
+	mes "However, it has sculptures";
+	mes "of books instead of real ones.^000000";
+	next;
+	mes "^3355FFIt's possible that the";
+	mes "statue in the Juno Library";
+	mes "was made after this one.";
+	mes "But who can be sure?^000000";
+	close;
+
+	L_Cont01:
+		mes "^3355FFIt's an old";
+		mes "statue sculpted";
+		mes "out of stone.^000000";
+		close;
+}
+
+juperos_01.gat,99,71,0	script	Bronze Statue#jupe03	111,{
+
+	mes "^3355FFIt's an elaborate";
+	mes "bronze statue that";
+	mes "is twice the height of";
+	mes "a normal human being.^000000";
+	close;
+}
+
+juperos_01.gat,79,92,0	script	Sculpture#jupe05	111,{
+
+	mes "^3355FFIt's a sculpture that";
+	mes "looks familiar to you.^000000";
+	close;
+}
+
+juperos_01.gat,215,127,0	script	Machine Statue#jupe04	111,{
+
+	mes "^3355FFThis is the bust of a";
+	mes "humanoid machine with";
+	mes "a familiar Crest Piece";
+	mes "carved into the middle.^000000";
+	next;
+	mes "^3355FFThe statue's entire";
+	mes "form is mind boggling,";
+	mes "but you manage to note";
+	mes "that its outstretched";
+	mes "arm points westward.^000000";
 	close;
 }

@@ -1,13 +1,13 @@
 //===== Freya Script =========================================
-//= Yuno Guides
+//= Juno Guide NPCs
 //===== By: ==================================================
-//= Aegis (Danimoth)
+//= Aegis/Tsuyuki
 //===== Current Version: =====================================
 //= 1.0
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
-//= Yuno Guide NPCs
+//= Juno Guide NPCs
 //===== Additional Comments: =================================
 //= 1.0 Fully redone/updated to match Aegis [Tsuyuki]
 //============================================================

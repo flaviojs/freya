@@ -10149,8 +10149,28 @@ ATCOMMAND_FUNC(whodrops) {
 					if (mob->mvpitem[i].p <= 0)
 						drop_rate = 0;
 					else {
-						temp_rate = ((double)mob->mvpitem[i].p) * ((double)battle_config.mvp_item_rate) / 100.;
-						if (temp_rate > 10000. || temp_rate < 0 || ((int)temp_rate) > 10000)
+						/* item type specific droprate modifier */
+						switch(itemdb_type(mob->mvpitem[i].nameid))
+						{
+							case 0:		/* healing items */
+								temp_rate = ((double)mob->mvpitem[i].p) * ((double)battle_config.mvp_healing_rate) / (double)100;
+								break;
+							case 2:		/* usable items */
+								temp_rate = ((double)mob->mvpitem[i].p) * ((double)battle_config.mvp_usable_rate) / (double)100;
+								break;
+							case 4:
+							case 5:
+							case 8: 	/* equipable items */
+								temp_rate = ((double)mob->mvpitem[i].p) * ((double)battle_config.mvp_equipable_rate) / (double)100;
+								break;
+							case 6:		/* cards */
+								temp_rate = ((double)mob->mvpitem[i].p) * ((double)battle_config.mvp_card_rate) / (double)100;
+								break;
+							default:	/* common items */
+								temp_rate = ((double)mob->mvpitem[i].p) * ((double)battle_config.mvp_common_rate) / (double)100;
+								break;
+						}
+						if(temp_rate > 10000. || temp_rate < 0 || ((int)temp_rate) > 10000)
 							drop_rate = 10000;
 						else
 							drop_rate = (int)temp_rate;
@@ -11046,8 +11066,28 @@ ATCOMMAND_FUNC(mobinfo) {
 			if (mob->mvpitem[i].p <= 0)
 				drop_rate = 0;
 			else {
-				temp_rate = ((double)mob->mvpitem[i].p) * ((double)battle_config.mvp_item_rate) / 100.;
-				if (temp_rate > 10000. || temp_rate < 0 || ((int)temp_rate) > 10000)
+				/* item type specific droprate modifier */
+				switch(itemdb_type(mob->mvpitem[i].nameid))
+				{
+					case 0:		/* healing items */
+						temp_rate = ((double)mob->mvpitem[i].p) * ((double)battle_config.mvp_healing_rate) / (double)100;
+						break;
+					case 2:		/* usable items */
+						temp_rate = ((double)mob->mvpitem[i].p) * ((double)battle_config.mvp_usable_rate) / (double)100;
+						break;
+					case 4:
+					case 5:
+					case 8: 	/* equipable items */
+						temp_rate = ((double)mob->mvpitem[i].p) * ((double)battle_config.mvp_equipable_rate) / (double)100;
+						break;
+					case 6:		/* cards */
+						temp_rate = ((double)mob->mvpitem[i].p) * ((double)battle_config.mvp_card_rate) / (double)100;
+						break;
+					default:	/* common items */
+						temp_rate = ((double)mob->mvpitem[i].p) * ((double)battle_config.mvp_common_rate) / (double)100;
+						break;
+				}
+				if(temp_rate > 10000. || temp_rate < 0 || ((int)temp_rate) > 10000)
 					drop_rate = 10000;
 				else
 					drop_rate = (int)temp_rate;

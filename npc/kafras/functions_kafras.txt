@@ -2,28 +2,30 @@
 //= Kafra Functions
 //===== By: ==================================================
 //= Lotsa People (1.0)
-//= eAthena Dev Team
+//= eAthena
 //= Darlskies
 //= Darkchild
 //= Syrus22
 //= Lupus
-//= kobra_k88 (2.0)
+//= kobra_k88
+//= Tsuyuki
 //===== Current Version: =====================================
-//= 2.8
+//= 2.9
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
 //= These functions  handle save, storage, cart rental, teleport,
 //= and Kafra pass options for all Kafra NPCs.
 //===== Additional Comments: =================================
-//= v1.1 Now using functions :)
-//= v2.1 Added Cart Rent for Classes: Whitesmith, Professor.
+//= 1.0 Added first version [Athena]
+//= 1.1 Now using functions :)
+//= 2.1 Added Cart Rent for Classes: Whitesmith, Creator [eAthena]
 //= Replaced checkoption(x) into checkcart(0) [Lupus]
-//= v2.1b Added Fix Kafra Pass Func [Kobra_k88]
-//= 2.2 Final fix of the Kafra Pass Exploit! [Lupus] a -Izlude[4] fix
+//= 2.1b Added Fix Kafra Pass Func [Kobra_k88]
+//= 2.2 Final fix of the Kafra Pass Exploit! A -Izlude[4] fix [Lupus]
 //= 2.2a Minor changes to function calls.  Using agruments. Added Guild options. [kobra_k88]
-//= 2.2b This version uses arrays for the teleport option.
-//= 2.3 Rearranged next statements to make menu transitions smoother. [kobra_k88]
+//= 2.2b This version uses arrays for the teleport option [kobra_k88]
+//= 2.3 Rearranged next statements to make menu transitions smoother [kobra_k88]
 //= 2.3a Fixed typo >_< [Aria]
 //= 2.4 Added new teleport service locations, commented them until I get iRO
 //= warpto locations [Tsuyuki]
@@ -33,6 +35,7 @@
 //= 2.6 Updated with a big haul of official iRO text, and corrected some other things [Tsuyuki]
 //= 2.7 Added new Menu functions [Tsuyuki]
 //= 2.8 Fixed several bugs as well as fixed the Kafra pass system entirely [Tsuyuki]
+//= 2.9 Added special reserve points check [Tsuyuki]
 //============================================================
 
 
@@ -44,7 +47,20 @@
 
 
 function	script	F_Kafra	{
-	set @kafPass, 0;
+
+	if (RESRVPTS < 25000) goto L_Cont01;
+
+	mes "[Kafra Employee]";
+	mes "Your special reserve points have exceeded";
+	mes "the maximum capacity.";
+	mes "Please be advised to spend your";
+	mes "special reserved points";
+	mes "at the headquarters of Kafra Corporation";
+	mes "in Al De Baran before you attempt to use any of Kafra services in the future.";
+	close;
+
+L_Cont01:
+	set @kafPass,0;
 	mes "[Kafra Employee]";
 	if (getarg(0)==0) mes "Welcome to the Kafra Corporation. The Kafra services are always on your side. How may I assist you?";
 	if (getarg(0)==1) mes "Welcome... Kafra Services.... Will be with you even if you die.....";
