@@ -32,7 +32,7 @@ payon.gat,181,104,4	script	Kafra Employee	113,{
 
 	M_Save:
 			savepoint "payon.gat",179,97;
-			callfunc "F_KafEnd",0,1;
+			end;
 }
 
 // Main Town, Middle North --------------------------------------------------
@@ -43,7 +43,7 @@ payon.gat,175,226,4	script	Kafra Employee	116,{
 
 	M_Save:
 		savepoint "payon.gat",257,242;
-		callfunc "F_KafEnd",0,1;
+		end;
 }
 
 // Archer Village ------------------------------------------------------------

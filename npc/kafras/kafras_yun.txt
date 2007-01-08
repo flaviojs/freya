@@ -31,7 +31,7 @@ yuno.gat,152,187,4	script	Kafra Employee	113,{
 
 	M_Save:
 		savepoint "yuno.gat",158,125;
-		callfunc "F_KafEnd",0,1;
+		end;
 }
 
 // South East --------------------------------------------------------------
@@ -42,7 +42,7 @@ yuno.gat,327,108,4	script	Kafra Employee	113,{
 
 	M_Save:
 		savepoint "yuno.gat",328,101;
-		callfunc "F_KafEnd",0,1;
+		end;
 }
 
 // East --------------------------------------------------------------------
@@ -53,7 +53,7 @@ yuno.gat,277,221,4	script	Kafra Employee	117,{
 
 	M_Save:
 		savepoint "yuno.gat",274,229;
-		callfunc "F_KafEnd",0,1;
+		end;
 }
 
 

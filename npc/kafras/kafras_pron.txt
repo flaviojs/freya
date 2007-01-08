@@ -33,7 +33,7 @@ prontera.gat,152,326,4	script	Kafra Employee	112,{
 
 	M_Save:
 		savepoint "prontera.gat",157,327;
-		callfunc "F_KafEnd",0,1;
+		end;
 }
 
 // South ===========================================
@@ -44,7 +44,7 @@ prontera.gat,151,29,8	script	Kafra Employee	116,{
 
 	M_Save:
 			savepoint "prontera.gat",150,33;
-			callfunc "F_KafEnd",0,1;
+			end;
 }
 
 // West ============================================
@@ -55,7 +55,7 @@ prontera.gat,29,207,6	script	Kafra Employee	113,{
 
 	M_Save:
 			savepoint "prontera.gat",33,208;
-			callfunc "F_KafEnd",0,1;
+			end;
 }
 
 // East ============================================
@@ -66,7 +66,7 @@ prontera.gat,282,200,4	script	Kafra Employee	115,{
 
 	M_Save:
 			savepoint "prontera.gat",281,203;
-			callfunc "F_KafEnd",0,1;
+			end;
 }
 
 
@@ -76,9 +76,9 @@ prontera.gat,146,86,6	script	Kafra Employee	117,{
 	callfunc "F_KafSetPront";
 	callfunc "F_Kafra",0,0,0;
 
-M_Save:
-	savepoint "prontera.gat",116,73;
-	callfunc "F_KafEnd",0,1;
+	M_Save:
+		savepoint "prontera.gat",116,73;
+		end;
 }
 
 // Function: Sets variables for Prontera Kafras ----------------------------
