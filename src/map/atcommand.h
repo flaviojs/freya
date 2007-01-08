@@ -80,6 +80,7 @@ enum AtCommandType {
 	AtCommand_GvGOn,
 	AtCommand_Model,
 	AtCommand_Go,
+	AtCommand_Go2,
 
 	AtCommand_Spawn,
 	AtCommand_SpawnMap,

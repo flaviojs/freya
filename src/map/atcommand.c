@@ -135,6 +135,7 @@ ATCOMMAND_FUNC(gvgoff);
 ATCOMMAND_FUNC(gvgon);
 ATCOMMAND_FUNC(model);
 ATCOMMAND_FUNC(go);
+ATCOMMAND_FUNC(go2);
 ATCOMMAND_FUNC(spawn);
 ATCOMMAND_FUNC(spawnmap);
 ATCOMMAND_FUNC(spawnall);
@@ -419,6 +420,7 @@ static struct AtCommandInfo {
 	{ AtCommand_GvGOn,                 "@gvgon",                40, atcommand_gvgon },
 	{ AtCommand_Model,                 "@model",                20, atcommand_model },
 	{ AtCommand_Go,                    "@go",                   10, atcommand_go },
+	{ AtCommand_Go2,                   "@go2",                  10, atcommand_go2 },
 
 	{ AtCommand_Spawn,                 "@spawn",                50, atcommand_spawn }, // + /monster
 	{ AtCommand_Spawn,                 "@spawnsmall",           50, atcommand_spawn },
@@ -5663,7 +5665,7 @@ ATCOMMAND_FUNC(go) {
 		send_usage(sd, msg_txt(82)); // Please, use one of this numbers/names:
 		send_usage(sd, "-3=(Memo Point 2)   7=Lutie           17=Valkyrie Realm");
 		send_usage(sd, "-2=(Memo Point 1)   8=Comodo          18=Archer's Village");
-		send_usage(sd, "-1=(Memo Point 0)   9=Yuno            19=Jawaii");
+		send_usage(sd, "-1=(Memo Point 0)   9=Juno            19=Jawaii");
 		send_usage(sd, " 0=Prontera        10=Amatsu          20=Ayothaya");
 		send_usage(sd, " 1=Morroc          11=Kunlun      	  21=Einbroch");
 		send_usage(sd, " 2=Geffen          12=Umbala          22=Lighthalzen");
@@ -5750,7 +5752,7 @@ ATCOMMAND_FUNC(go) {
 			send_usage(sd, msg_txt(82)); // Please, use one of this numbers/names:
 			send_usage(sd, "-3=(Memo Point 2)   7=Lutie           17=Valkyrie Realm");
 			send_usage(sd, "-2=(Memo Point 1)   8=Comodo          18=Archer's Village");
-			send_usage(sd, "-1=(Memo Point 0)   9=Yuno            19=Jawaii");
+			send_usage(sd, "-1=(Memo Point 0)   9=Juno            19=Jawaii");
 			send_usage(sd, " 0=Prontera        10=Amatsu          20=Ayothaya");
 			send_usage(sd, " 1=Morroc          11=Kunlun      	  21=Einbroch");
 			send_usage(sd, " 2=Geffen          12=Umbala          22=Lighthalzen");
@@ -5811,6 +5813,167 @@ ATCOMMAND_FUNC(go) {
 			}
 		} else { // if you arrive here, you have an error in town variable when reading of names
 			clif_displaymessage(fd, msg_txt(38)); // Invalid location number or name.
+			return -1;
+		}
+	}
+
+	return 0;
+}
+
+/*==========================================
+ * @go2 Dungeon Warp Spots [Tsuyuki]
+ *------------------------------------------
+*/
+ATCOMMAND_FUNC(go2) {
+	int i;
+	int dungeon;
+	int m;
+
+	const struct { char map[17];  int x,   y; } data[] = { // 16 + NULL
+	             { "hu_fild05.gat",     192, 207 },	//	 0=Abyss Lake
+	             { "ama_in02.gat",      213, 161 },	//	 1=Amatsu Dungeon
+	             { "moc_fild15.gat",    243, 246 },	//	 2=Ant Hell
+	             { "ayo_fild02.gat",    273, 149 },	//	 3=Ayothaya Dungeon
+	             { "izlu2dun.gat",      106,  88 },	//	 4=Byalan Dungeon
+	             { "prt_fild05.gat",    273, 210 },	//	 5=Culvert Sewers
+	             { "mjolnir_02.gat",     81, 359 },	//	 6=Coal Mine
+	             { "einbech.gat",       138, 247 },	//	 7=Einbroch Dungeon
+	             { "prt_fild01.gat",    136, 360 },	//	 8=Hidden Temple
+	             { "glast_01.gat",      368, 303 },	//	 9=Glast Heim
+	             { "gonryun.gat",       160, 195 },	//	10=Kunlun Dungeon
+	             { "ra_fild01.gat",     234, 327 },	//	11=Ice Dungeon
+	             { "yuno_fild07.gat",   219, 176 },	//	12=Juperos Ruins
+	             { "yuno_fild08.gat",    69, 170 },	//	13=Kiel Hyre
+	             { "yuno_fild03.gat",    39, 140 },	//	14=Magma Dungeon
+	             { "lighthalzen.gat",   338, 229 },	//	15=Biolabs
+	             { "gef_fild10.gat",     70, 332 },	//	16=Orc Dungeon
+	             { "pay_arche.gat",      43, 132 },	//	17=Payon Dungeon
+	             { "moc_ruins.gat",      62, 162 },	//	18=Pyramids
+	             { "moc_fild19.gat",    107, 100 },	//	19=Sphinx
+	             { "alb2trea.gat",       75,  98 },	//	20=Sunken Ship
+	             { "hu_fild01.gat",     139, 152 },	//	21=Thanatos Tower
+	             { "ve_fild03.gat",     168, 234 },	//	22=Thor Dungeon
+               { "tur_dun01.gat",     149, 238 },	//	23=Turtle Dungeon
+	};
+
+	if (map[sd->bl.m].flag.nogo && battle_config.any_warp_GM_min_level > sd->GM_level) {
+		sprintf(atcmd_output, "You can not use %s on this map.", original_command);
+		clif_displaymessage(fd, atcmd_output);
+		return -1;
+	}
+
+	// Get the number
+	dungeon = atoi(message);
+
+	// If no value, display all value
+	if (!message || !*message || sscanf(message, "%s", atcmd_mapname) < 1 || dungeon < 0 || dungeon >= (int)(sizeof(data) / sizeof(data[0]))) {
+		send_usage(sd, msg_txt(38)); // Invalid location number or name.
+		send_usage(sd, msg_txt(82)); // Please, use one of this numbers/names:
+		send_usage(sd, " 0=Abyss Lake         10=Kunlun Dungeon 20=Sunken Ship");
+		send_usage(sd, " 1=Amatsu Dungeon     11=Ice Dungeon    21=Thanatos Tower");
+		send_usage(sd, " 2=Ant Hell           12=Juperos Ruins  22=Thor Dungeon");
+		send_usage(sd, " 3=Ayothaya Dungeon   13=Kiel Hyre      23=Turtle Dungeon");
+		send_usage(sd, " 4=Byalan Dungeon     14=Magma Dungeon");
+		send_usage(sd, " 5=Culvert Sewers     15=Biolabs");
+		send_usage(sd, " 6=Coal Mine          16=Orc Dungeon");
+		send_usage(sd, " 7=Einbroch Dungeon   17=Payon Dungeon");
+		send_usage(sd, " 8=Hidden Temple      18=Pyramids");
+		send_usage(sd, " 9=Glast Heim         19=Sphinx");
+		return -1;
+	} else {
+		// Get possible name of the dungeon and add .gat if not in the name
+		for (i = 0; atcmd_mapname[i]; i++)
+			atcmd_mapname[i] = tolower((unsigned char)atcmd_mapname[i]); // To lower needs unsigned char
+		if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
+			strcat(atcmd_mapname, ".gat");
+		// Try to see if it's a name, and not a number (try a lot of possibilities, write errors and abbreviations too)
+		if (strncmp(atcmd_mapname, "hu_fild05.gat", 3) == 0) // 3 first characters
+			dungeon = 0;
+		else if (strncmp(atcmd_mapname, "ama_in02.gat", 3) == 0)
+			dungeon = 1;
+		else if (strncmp(atcmd_mapname, "moc_fild15.gat", 3) == 0) // 3 first characters
+			dungeon = 2;
+		else if (strncmp(atcmd_mapname, "ayo_fild02.gat", 3) == 0) // 3 first characters
+			dungeon = 3;
+		else if (strncmp(atcmd_mapname, "izlu2dun.gat", 3) == 0) // 3 first characters
+			dungeon = 4;
+		else if (strncmp(atcmd_mapname, "prt_fild05.gat", 3) == 0) // 3 first characters
+			dungeon = 5;
+		else if (strncmp(atcmd_mapname, "mjolnir_02.gat", 3) == 0) // 3 first characters
+			dungeon = 6;
+		else if (strncmp(atcmd_mapname, "einbech.gat", 3) == 0) // 3 first characters
+			dungeon = 7;
+		else if (strncmp(atcmd_mapname, "prt_fild01.gat", 3) == 0) // 3 first characters
+			dungeon = 8;
+		else if (strncmp(atcmd_mapname, "glast_01.gat", 3) == 0) // 3 first characters
+			dungeon = 9;
+		else if (strncmp(atcmd_mapname, "gonryun.gat", 3) == 0) // 3 first characters
+			dungeon = 10;
+		else if (strncmp(atcmd_mapname, "ra_fild01.gat", 3) == 0) // 3 first characters
+			dungeon = 11;
+		else if (strncmp(atcmd_mapname, "yuno_fild07.gat", 3) == 0) // 3 first characters
+			dungeon = 12;
+		else if (strncmp(atcmd_mapname, "yuno_fild08.gat", 3) == 0) // 3 first characters
+			dungeon = 13;
+		else if (strncmp(atcmd_mapname, "yuno_fild03.gat", 3) == 0) // 3 first characters
+			dungeon = 14;
+		else if (strncmp(atcmd_mapname, "lighthalzen.gat", 3) == 0) // 3 first characters
+			dungeon = 15;
+		else if (strncmp(atcmd_mapname, "gef_fild10.gat", 3) == 0) // 3 first characters
+			dungeon = 16;
+		else if (strncmp(atcmd_mapname, "pay_arche.gat", 3) == 0) // 3 first characters
+			dungeon = 17;
+		else if (strncmp(atcmd_mapname, "moc_ruins.gat", 4) == 0) // 4 first characters
+			dungeon = 18;
+		else if (strncmp(atcmd_mapname, "moc_fild19.gat", 3) == 0) // 3 first characters
+			dungeon = 19;
+		else if (strncmp(atcmd_mapname, "alb2trea.gat", 3) == 0) // 3 first characters
+			dungeon = 20;
+		else if (strncmp(atcmd_mapname, "hu_fild01.gat", 3) == 0) // 3 first characters
+			dungeon = 21;
+		else if (strncmp(atcmd_mapname, "ve_fild03.gat", 3) == 0) // 3 first characters
+			dungeon = 22;
+		else if (strncmp(atcmd_mapname, "tur_dun01.gat", 3) == 0) // 3 first characters
+			dungeon = 23;
+		else if (sscanf(message, "%d", &i) < 1) { /* Not a number */
+			send_usage(sd, msg_txt(38)); // Invalid location number or name
+			send_usage(sd, msg_txt(82)); // Please, use one of these numbers/names:
+			send_usage(sd, " 0=Abyss Lake         10=Kunlun Dungeon 20=Sunken Ship");
+			send_usage(sd, " 1=Amatsu Dungeon     11=Ice Dungeon    21=Thanatos Tower");
+			send_usage(sd, " 2=Ant Hell           12=Juperos Ruins  22=Thor Dungeon");
+			send_usage(sd, " 3=Ayothaya Dungeon   13=Kiel Hyre      23=Turtle Dungeon");
+			send_usage(sd, " 4=Byalan Dungeon     14=Magma Dungeon");
+			send_usage(sd, " 5=Culvert Sewers     15=Biolabs");
+			send_usage(sd, " 6=Coal Mine          16=Orc Dungeon");
+			send_usage(sd, " 7=Einbroch Dungeon   17=Payon Dungeon");
+			send_usage(sd, " 8=Hidden Temple      18=Pyramids");
+			send_usage(sd, " 9=Glast Heim         19=Sphinx");
+			return -1;
+		}
+
+	 if (dungeon >= 0 && dungeon < (int)(sizeof(data) / sizeof(data[0]))) {
+			if ((m = map_checkmapname((char*)data[dungeon].map)) == -1) { // If map doesn't exist in all map-servers
+				clif_displaymessage(fd, msg_txt(1)); // Map not found
+				return -1;
+			}
+			if (m >= 0) { // If on this map-server
+				if (map[m].flag.nowarpto && battle_config.any_warp_GM_min_level > sd->GM_level) {
+					clif_displaymessage(fd, "You are not authorized to warp you to this destination map.");
+					return -1;
+				}
+			}
+			if (sd->bl.m >= 0 && map[sd->bl.m].flag.nowarp && battle_config.any_warp_GM_min_level > sd->GM_level) {
+				clif_displaymessage(fd, "You are not authorized to warp you from your actual map.");
+				return -1;
+			}
+			if (pc_setpos(sd, (char*)data[dungeon].map, data[dungeon].x, data[dungeon].y, 3, 0) == 0) {
+				clif_displaymessage(fd, msg_txt(0)); // Warped
+			} else {
+				clif_displaymessage(fd, msg_txt(1)); // Map not found
+				return -1;
+			}
+		} else { // If you arrive here, you have an error in dungeon variable when reading of names
+			clif_displaymessage(fd, msg_txt(38)); // Invalid location number or name
 			return -1;
 		}
 	}
