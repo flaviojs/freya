@@ -39,7 +39,7 @@ comodo.gat,200,148,4	script	Kafra Employee	721,{
 
 	M_Save:
 		savepoint "comodo.gat",204,143;
-		callfunc "F_KafEnd",0,1;
+		end;
 }
 
 // Comodo Pharos Lighthouse =============================>\\
@@ -58,5 +58,5 @@ cmd_fild07.gat,135,134,4	script	Kafra Employee	721,{
 
 	M_Save:
 		savepoint "cmd_fild07.gat",127,134;
-		callfunc "F_KafEnd",0,1;
+		end;
 }

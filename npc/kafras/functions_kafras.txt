@@ -36,6 +36,7 @@
 //= 2.7 Added new Menu functions [Tsuyuki]
 //= 2.8 Fixed several bugs as well as fixed the Kafra pass system entirely [Tsuyuki]
 //= 2.9 Added special reserve points check [Tsuyuki]
+//= 3.0 Fixed Kafra Save System [Tsuyuki]
 //============================================================
 
 
@@ -94,7 +95,7 @@ L_Cont01:
 		mes "for using the Kafra Service.";
 		close2;
 		cutin "", 255;
-		end;
+		return; // Returns back to function calling place, and passes into the M_Save label
 
 		// To-Do: Official iRO Dialogue for Saving:
 		// mes "[Kafra Employee]";

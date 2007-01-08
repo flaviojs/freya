@@ -30,7 +30,7 @@ morocc.gat,156,97,4	script	Kafra Employee	115,{
 
 	M_Save:
 		savepoint "morocc.gat",156,46;
-		callfunc "F_KafEnd",0,1;
+		end;
 }
 
 // North =================================
@@ -41,7 +41,7 @@ morocc.gat,162,271,4	script	Kafra Employee	114,{
 
 	M_Save:
 			savepoint "morocc.gat",157,272;
-			callfunc "F_KafEnd",0,1;
+			end;
 }
 
 // West  =================================
@@ -52,7 +52,7 @@ morocc.gat,28,167,6	script	Kafra Employee	116,{
 
 	M_Save:
 			savepoint "morocc.gat",31,164;
-			callfunc "F_KafEnd",0,1;
+			end;
 }
 
 // East =================================
@@ -63,7 +63,7 @@ morocc.gat,292,211,4	script	Kafra Employee	112,{
 
 	M_Save:
 			savepoint "morocc.gat",294,207;
-			callfunc "F_KafEnd",0,1;
+			end;
 }
 
 // Function: Sets variables for Morroc Kafras --------------------------------

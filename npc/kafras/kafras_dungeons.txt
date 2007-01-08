@@ -55,7 +55,7 @@ prt_fild05.gat,290,224,1	script	Kafra Employee	114,{
 
 	M_Save:
 		savepoint "prt_fild05.gat",274,243;
-		callfunc "F_KafEnd",0,1;
+		end;
 }
 
 

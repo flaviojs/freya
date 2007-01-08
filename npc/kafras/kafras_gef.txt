@@ -30,7 +30,7 @@ geffen.gat,120,62,8	script	Kafra Employee	115,{
 
 	M_Save:
 		savepoint "geffen.gat",119,40;
-		callfunc "F_KafEnd",0,1;
+		end;
 }
 
 // East ==============================================
@@ -41,7 +41,7 @@ geffen.gat,203,123,3	script	Kafra Employee	114,{
 
 	M_Save:
 			savepoint "geffen.gat",200,124;
-			callfunc "F_KafEnd",0,1;
+			end;
 }
 
 // North ==============================================
@@ -52,7 +52,7 @@ geffen.gat,116,202,3	script	Kafra Employee	116,{
 
 	M_Save:
 			savepoint "geffen.gat",110,199;
-			callfunc "F_KafEnd",0,1;
+			end;
 }
 
 // West =========================================
@@ -63,7 +63,7 @@ geffen.gat,37,116,6	script	Kafra Employee	117,{
 
 	M_Save:
 			savepoint "geffen.gat",43,108;
-			callfunc "F_KafEnd",0,1;
+			end;
 }
 
 

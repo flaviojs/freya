@@ -37,5 +37,5 @@ izlude.gat,134,87,3	script	Kafra Employee	117,{
 
 	M_Save:
 		savepoint "izlude.gat",96,107;
-		callfunc "F_KafEnd",0,1;
+		end;
 }
