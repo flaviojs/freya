@@ -55,7 +55,7 @@ short log_gm_level = 40;
 
 static char command_symbol = '@'; /* first char of the commands */
 static char char_command_symbol = '#'; /* first char of the remote commands */
-static char main_channel_symbol = '.'; /* first char of the main channel */
+static char main_channel_symbol = '~'; /* first char of the main channel */
 
 time_t last_spawn; /* # of seconds 1/1/1970 (timestamp): to limit number of spawn at 1 every 2 seconds (reduction of lag) */
 
@@ -1073,7 +1073,7 @@ int atcommand_config_read(const char *cfgName) {
 		atcommand_synonym_free();
 		command_symbol = '@'; /* first char of the commands */
 		char_command_symbol = '#'; /* first char of the remote commands */
-		main_channel_symbol = '.'; /* first char of the main channel */
+		main_channel_symbol = '~'; /* first char of the main channel */
 	}
 	read_counter++;
 
@@ -2032,7 +2032,7 @@ ATCOMMAND_FUNC(rura) {
 }
 
 /*==========================================
- *
+ * @where - /where
  *------------------------------------------
  */
 ATCOMMAND_FUNC(where) {
@@ -2056,7 +2056,7 @@ ATCOMMAND_FUNC(where) {
 }
 
 /*==========================================
- *
+ * @jumpto - Jumps to a target player
  *------------------------------------------
  */
 ATCOMMAND_FUNC(jumpto) {
@@ -2097,7 +2097,7 @@ ATCOMMAND_FUNC(jumpto) {
 }
 
 /*==========================================
- *
+ * @jump - Teleport
  *------------------------------------------
  */
 ATCOMMAND_FUNC(jump) {
@@ -2131,10 +2131,7 @@ ATCOMMAND_FUNC(jump) {
 }
 
 /*==========================================
- * @users
- * サーバー内の人数マップを表示させる
- * 手抜きのため汚くなっているのは仕様です。
- * simplify by [Yor]
+ * @users - simplify by [Yor]
  *------------------------------------------
  */
 ATCOMMAND_FUNC(users) {
@@ -2179,7 +2176,7 @@ ATCOMMAND_FUNC(users) {
 }
 
 /*==========================================
- *
+ * @who - Shows all users on a server
  *------------------------------------------
  */
 ATCOMMAND_FUNC(who) {
@@ -2226,7 +2223,7 @@ ATCOMMAND_FUNC(who) {
 }
 
 /*==========================================
- *
+ * @who2 - Shows all users on a server with more detailed info
  *------------------------------------------
  */
 ATCOMMAND_FUNC(who2) {
@@ -2273,7 +2270,7 @@ ATCOMMAND_FUNC(who2) {
 }
 
 /*==========================================
- *
+ * @who2 - Shows all users on a server with extra info
  *------------------------------------------
  */
 ATCOMMAND_FUNC(who3) {
@@ -2324,7 +2321,7 @@ ATCOMMAND_FUNC(who3) {
 }
 
 /*==========================================
- *
+ * @whomap - Same as @who only for a map
  *------------------------------------------
  */
 ATCOMMAND_FUNC(whomap) {
@@ -2369,7 +2366,7 @@ ATCOMMAND_FUNC(whomap) {
 }
 
 /*==========================================
- *
+ * @whomap2 - Same as @who2 only for a map
  *------------------------------------------
  */
 ATCOMMAND_FUNC(whomap2) {
@@ -2414,7 +2411,7 @@ ATCOMMAND_FUNC(whomap2) {
 }
 
 /*==========================================
- *
+ * @whomap3 - Same as @who3 only for a map
  *------------------------------------------
  */
 ATCOMMAND_FUNC(whomap3) {
@@ -2463,7 +2460,7 @@ ATCOMMAND_FUNC(whomap3) {
 }
 
 /*==========================================
- *
+ * @whogm - Shows GMs
  *------------------------------------------
  */
 ATCOMMAND_FUNC(whogm) {
@@ -2517,7 +2514,7 @@ ATCOMMAND_FUNC(whogm) {
 }
 
 /*==========================================
- * @whozeny - quick sorting function
+ * @whozeny - Quick sorting function
  *------------------------------------------
  */
 void quick_sorting(int tableau[], int premier, int dernier) {
@@ -2972,7 +2969,7 @@ ATCOMMAND_FUNC(whohasmap) {
 }
 
 /*==========================================
- * Cause random emote on all online players [Valaris]
+ * @happyhappyjoyjoy - Cause random emote on all online players [Valaris]
  *------------------------------------------
  */
 ATCOMMAND_FUNC(happyhappyjoyjoy) {
@@ -3003,7 +3000,7 @@ ATCOMMAND_FUNC(happyhappyjoyjoy) {
 }
 
 /*==========================================
- * Cause random emote on online players of a specifical map
+ * @happyhappyjoyjoymap - Cause random emote on online players of a specifical map
  *------------------------------------------
  */
 ATCOMMAND_FUNC(happyhappyjoyjoymap) {
@@ -3044,7 +3041,7 @@ ATCOMMAND_FUNC(happyhappyjoyjoymap) {
 }
 
 /*==========================================
- *
+ * @save - Makes current position the user's save point
  *------------------------------------------
  */
 ATCOMMAND_FUNC(save) {
@@ -3058,7 +3055,7 @@ ATCOMMAND_FUNC(save) {
 }
 
 /*==========================================
- *
+ * @load - Sends user to respawn point
  *------------------------------------------
  */
 ATCOMMAND_FUNC(load) {
@@ -3086,7 +3083,7 @@ ATCOMMAND_FUNC(load) {
 }
 
 /*==========================================
- *
+ * @charload - Sends target to respawn point
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charload) {
@@ -3129,7 +3126,7 @@ ATCOMMAND_FUNC(charload) {
 }
 
 /*==========================================
- *
+ * @charloadmap - Sends all chars on a map to their respawn point
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charloadmap) {
@@ -3172,7 +3169,7 @@ ATCOMMAND_FUNC(charloadmap) {
 }
 
 /*==========================================
- *
+ * @charloadall - Sends all chars to their respawn point
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charloadall) {
@@ -3204,7 +3201,7 @@ ATCOMMAND_FUNC(charloadall) {
 }
 
 /*==========================================
- *
+ * @speed - Changes user's speed value
  *------------------------------------------
  */
 ATCOMMAND_FUNC(speed) {
@@ -3229,7 +3226,7 @@ ATCOMMAND_FUNC(speed) {
 }
 
 /*==========================================
- *
+ * @charspeed - Changes target's speed value
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charspeed) {
@@ -3268,7 +3265,7 @@ ATCOMMAND_FUNC(charspeed) {
 }
 
 /*==========================================
- *
+ * @charspeedmap - Changes all users on a map's speed values
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charspeedmap) {
@@ -3324,7 +3321,7 @@ ATCOMMAND_FUNC(charspeedmap) {
 }
 
 /*==========================================
- *
+ * @charspeedall - Changes all users on a server's speed values
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charspeedall) {
@@ -3367,7 +3364,7 @@ ATCOMMAND_FUNC(charspeedall) {
 }
 
 /*==========================================
- *
+ * @storage - Opens user's storage
  *------------------------------------------
  */
 ATCOMMAND_FUNC(storage) {
@@ -3394,7 +3391,7 @@ ATCOMMAND_FUNC(storage) {
 }
 
 /*==========================================
- *
+ * @charstorage - Opens target's storage
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charstorage) {
@@ -3436,7 +3433,7 @@ ATCOMMAND_FUNC(charstorage) {
 }
 
 /*==========================================
- *
+ * @guildstorage - Opens user's guild storage
  *------------------------------------------
  */
 ATCOMMAND_FUNC(guildstorage) {
@@ -3465,7 +3462,7 @@ ATCOMMAND_FUNC(guildstorage) {
 }
 
 /*==========================================
- *
+ * @charguildstorage - Opens target's guild storage
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charguildstorage) {
@@ -3512,7 +3509,7 @@ ATCOMMAND_FUNC(charguildstorage) {
 }
 
 /*==========================================
- *
+ * @option
  *------------------------------------------
  */
 ATCOMMAND_FUNC(option) {
@@ -3588,7 +3585,7 @@ ATCOMMAND_FUNC(option) {
 }
 
 /*==========================================
- *
+ * @optionadd
  *------------------------------------------
  */
 ATCOMMAND_FUNC(optionadd) {
@@ -3664,7 +3661,7 @@ ATCOMMAND_FUNC(optionadd) {
 }
 
 /*==========================================
- *
+ * @optionremove
  *------------------------------------------
  */
 ATCOMMAND_FUNC(optionremove) {
@@ -3733,7 +3730,7 @@ ATCOMMAND_FUNC(optionremove) {
 }
 
 /*==========================================
- *
+ * @hide - Makes user invisible
  *------------------------------------------
  */
 ATCOMMAND_FUNC(hide) {
@@ -3750,7 +3747,7 @@ ATCOMMAND_FUNC(hide) {
 }
 
 /*==========================================
- * 転職する upperを指定すると転生や養子にもなれる
+ * @jobchange - Changes user's current job
  *------------------------------------------
  */
 ATCOMMAND_FUNC(jobchange) {
@@ -4082,7 +4079,7 @@ ATCOMMAND_FUNC(jobchange) {
 }
 
 /*==========================================
- *
+ * @die - Kills current user
  *------------------------------------------
  */
 ATCOMMAND_FUNC(die) {
@@ -4100,7 +4097,7 @@ ATCOMMAND_FUNC(die) {
 }
 
 /*==========================================
- *
+ * @kill - Kills a target
  *------------------------------------------
  */
 ATCOMMAND_FUNC(kill) {
@@ -4128,7 +4125,7 @@ ATCOMMAND_FUNC(kill) {
 }
 
 /*==========================================
- *
+ * @alive - Revives user
  *------------------------------------------
  */
 ATCOMMAND_FUNC(alive) {
@@ -4151,7 +4148,7 @@ ATCOMMAND_FUNC(alive) {
 }
 
 /*==========================================
- *
+ * @heal - Heals yourself
  *------------------------------------------
  */
 ATCOMMAND_FUNC(heal) {
@@ -4201,7 +4198,7 @@ ATCOMMAND_FUNC(heal) {
 }
 
 /*==========================================
- *
+ * @kami
  *------------------------------------------
  */
 ATCOMMAND_FUNC(kami) {
@@ -4247,7 +4244,7 @@ ATCOMMAND_FUNC(kami) {
 }
 
 /*==========================================
- *
+ * @kamib
  *------------------------------------------
  */
 ATCOMMAND_FUNC(kamib) {
@@ -4265,7 +4262,7 @@ ATCOMMAND_FUNC(kamib) {
 }
 
 /*==========================================
- *
+ * @kamiGM
  *------------------------------------------
  */
 ATCOMMAND_FUNC(kamiGM) {
@@ -4406,7 +4403,7 @@ ATCOMMAND_FUNC(item) {
 }
 
 /*==========================================
- * @charitem/@giveitem command (modified by [Yor] for pet_egg)
+ * @charitem command (modified by [Yor] for pet_egg)
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charitem) {
@@ -4565,7 +4562,7 @@ ATCOMMAND_FUNC(charitemall) {
 }
 
 /*==========================================
- *
+ * @item2
  *------------------------------------------
  */
 ATCOMMAND_FUNC(item2) {
@@ -4644,7 +4641,7 @@ ATCOMMAND_FUNC(item2) {
 }
 
 /*==========================================
- *
+ * @itemreset - Removes all user's items in inventory
  *------------------------------------------
  */
 ATCOMMAND_FUNC(itemreset) {
@@ -4660,7 +4657,7 @@ ATCOMMAND_FUNC(itemreset) {
 }
 
 /*==========================================
- *
+ * @charitemreset - Removes all target's items in inventory
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charitemreset) {
@@ -4693,7 +4690,7 @@ ATCOMMAND_FUNC(charitemreset) {
 }
 
 /*==========================================
- *
+ * @itemcheck
  *------------------------------------------
  */
 ATCOMMAND_FUNC(itemcheck) {
@@ -4704,7 +4701,7 @@ ATCOMMAND_FUNC(itemcheck) {
 }
 
 /*==========================================
- *
+ * @charitemcheck
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charitemcheck) {
@@ -4734,7 +4731,7 @@ ATCOMMAND_FUNC(charitemcheck) {
 }
 
 /*==========================================
- *
+ * @baselevelup - Levels up user's base level
  *------------------------------------------
  */
 ATCOMMAND_FUNC(baselevelup) {
@@ -4822,7 +4819,7 @@ ATCOMMAND_FUNC(baselevelup) {
 }
 
 /*==========================================
- *
+ * @joblevelup - Levels up user's job level
  *------------------------------------------
  */
 ATCOMMAND_FUNC(joblevelup) {
@@ -4970,7 +4967,7 @@ ATCOMMAND_FUNC(joblevelup) {
 }
 
 /*==========================================
- * replace all @ from help.txt to command_symbol before display
+ * Replace all @ from help.txt to command_symbol before display
  *------------------------------------------
  */
 void change_arrobas_to_symbol(char* line) {
@@ -5017,7 +5014,7 @@ void change_arrobas_to_symbol(char* line) {
 }
 
 /*==========================================
- *
+ * @help
  *------------------------------------------
  */
 ATCOMMAND_FUNC(help) {
@@ -5257,7 +5254,7 @@ if (log_fp != -1) {
 }
 
 /*==========================================
- *
+ * @gm - Makes you a GM (Password-Protected)
  *------------------------------------------
  */
 ATCOMMAND_FUNC(gm) {
@@ -5280,7 +5277,7 @@ ATCOMMAND_FUNC(gm) {
 }
 
 /*==========================================
- *
+ * @pvpoff - Turns PvP off for current map
  *------------------------------------------
  */
 ATCOMMAND_FUNC(pvpoff) {
@@ -5316,7 +5313,7 @@ ATCOMMAND_FUNC(pvpoff) {
 }
 
 /*==========================================
- *
+ * @pvpon - Turns PvP on for current map
  *------------------------------------------
  */
 ATCOMMAND_FUNC(pvpon) {
@@ -5351,7 +5348,7 @@ ATCOMMAND_FUNC(pvpon) {
 }
 
 /*==========================================
- *
+ * @gvgoff - Turns GvG off for current map
  *------------------------------------------
  */
 ATCOMMAND_FUNC(gvgoff) {
@@ -5368,7 +5365,7 @@ ATCOMMAND_FUNC(gvgoff) {
 }
 
 /*==========================================
- *
+ * @gvgon - Turns GvG on for current map
  *------------------------------------------
  */
 ATCOMMAND_FUNC(gvgon) {
@@ -5385,7 +5382,7 @@ ATCOMMAND_FUNC(gvgon) {
 }
 
 /*==========================================
- *
+ * @model - Changes user's palette/hair styles
  *------------------------------------------
  */
 ATCOMMAND_FUNC(model) {
@@ -5423,7 +5420,7 @@ ATCOMMAND_FUNC(model) {
 }
 
 /*==========================================
- * @dye && @ccolor
+ * @dye - Changes user's palettes
  *------------------------------------------
  */
 ATCOMMAND_FUNC(dye) {
@@ -5454,7 +5451,7 @@ ATCOMMAND_FUNC(dye) {
 }
 
 /*==========================================
- * @chardye / @charccolor
+ * @chardye - Changes target's palettes
  *------------------------------------------
  */
 ATCOMMAND_FUNC(chardye) {
@@ -5495,7 +5492,7 @@ ATCOMMAND_FUNC(chardye) {
 }
 
 /*==========================================
- * @hairstyle && @hstyle
+ * @hairstyle - Changes user's hairstyle
  *------------------------------------------
  */
 ATCOMMAND_FUNC(hair_style) {
@@ -5519,7 +5516,7 @@ ATCOMMAND_FUNC(hair_style) {
 }
 
 /*==========================================
- * @charhairstyle / @charhstyle
+ * @charhairstyle - Changes target's hairstyle
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charhairstyle) {
@@ -5554,7 +5551,7 @@ ATCOMMAND_FUNC(charhairstyle) {
 }
 
 /*==========================================
- * @haircolor && @hcolor
+ * @haircolor - Changes user's hair color
  *------------------------------------------
  */
 ATCOMMAND_FUNC(hair_color) {
@@ -5578,7 +5575,7 @@ ATCOMMAND_FUNC(hair_color) {
 }
 
 /*==========================================
- * @charhaircolor / @charhcolor
+ * @charhaircolor - Changes target's hair color
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charhaircolor) {
@@ -5865,7 +5862,7 @@ ATCOMMAND_FUNC(go2) {
 	// Get the number
 	dungeon = atoi(message);
 
-	// If no value, display all value
+	// If no value, display all values
 	if (!message || !*message || sscanf(message, "%s", atcmd_mapname) < 1 || dungeon < 0 || dungeon >= (int)(sizeof(data) / sizeof(data[0]))) {
 		send_usage(sd, msg_txt(38)); // Invalid location number or name.
 		send_usage(sd, msg_txt(82)); // Please, use one of this numbers/names:
@@ -6048,7 +6045,7 @@ int quantity_visible_monster(struct map_session_data* sd) {
 }
 
 /*==========================================
- *
+ * @spawn - Spawns monsters
  *------------------------------------------
  */
 ATCOMMAND_FUNC(spawn) {
@@ -6217,7 +6214,7 @@ ATCOMMAND_FUNC(spawn) {
 }
 
 /*==========================================
- *
+ * @spawnmap - Spawns monsters across a map
  *------------------------------------------
  */
 ATCOMMAND_FUNC(spawnmap) {
@@ -6359,7 +6356,7 @@ ATCOMMAND_FUNC(spawnmap) {
 }
 
 /*==========================================
- *
+ * @spawnall - Spawns all monsters
  *------------------------------------------
  */
 ATCOMMAND_FUNC(spawnall) {
@@ -6477,7 +6474,7 @@ ATCOMMAND_FUNC(spawnall) {
 }
 
 /*==========================================
- *
+ * @deadbranch - Spawns monsters like a dead branch does
  *------------------------------------------
  */
 ATCOMMAND_FUNC(deadbranch) {
@@ -6604,7 +6601,7 @@ ATCOMMAND_FUNC(deadbranch) {
 }
 
 /*==========================================
- *
+ * @chardeadbranch - Spawns monsters like a dead branch does near a target player
  *------------------------------------------
  */
 ATCOMMAND_FUNC(chardeadbranch) {
@@ -6749,7 +6746,7 @@ ATCOMMAND_FUNC(chardeadbranch) {
 }
 
 /*==========================================
- *
+ * @deadbranchmap - Spawns monsters like a dead branch does across a map
  *------------------------------------------
  */
 ATCOMMAND_FUNC(deadbranchmap) {
@@ -6904,7 +6901,7 @@ ATCOMMAND_FUNC(deadbranchmap) {
 }
 
 /*==========================================
- *
+ * @deadbranchall - Spawns all monsters like a dead branch does
  *------------------------------------------
  */
 ATCOMMAND_FUNC(deadbranchall) {
@@ -7028,7 +7025,7 @@ ATCOMMAND_FUNC(deadbranchall) {
 }
 
 /*==========================================
- *
+ * 
  *------------------------------------------
  */
 ATCOMMAND_FUNC(summon) {
@@ -7193,7 +7190,7 @@ ATCOMMAND_FUNC(summon) {
 }
 
 /*==========================================
- *
+ * @killmonster - Kills all monsters on a map
  *------------------------------------------
  */
 ATCOMMAND_FUNC(killmonster) {
@@ -7217,7 +7214,7 @@ ATCOMMAND_FUNC(killmonster) {
 }
 
 /*==========================================
- *
+ * @killmonster2 - Kills all monsters on a map without leaving drops
  *------------------------------------------
  */
 ATCOMMAND_FUNC(killmonster2) {
@@ -7240,7 +7237,7 @@ ATCOMMAND_FUNC(killmonster2) {
 }
 
 /*==========================================
- *
+ * @killmonsterarea - Kills all monsters in a specified area
  *------------------------------------------
  */
 ATCOMMAND_FUNC(killmonsterarea) {
@@ -7260,7 +7257,7 @@ ATCOMMAND_FUNC(killmonsterarea) {
 }
 
 /*==========================================
- *
+ * @killmonster2area - Kills all monsters in a specified area without drops
  *------------------------------------------
  */
 ATCOMMAND_FUNC(killmonster2area) {
@@ -7279,7 +7276,7 @@ ATCOMMAND_FUNC(killmonster2area) {
 }
 
 /*==========================================
- *
+ * @refine - Refines all equipment, regardless of refinery capability
  *------------------------------------------
  */
 ATCOMMAND_FUNC(refine) {
@@ -7339,7 +7336,7 @@ ATCOMMAND_FUNC(refine) {
 }
 
 /*==========================================
- *
+ * @refineall - Refines all items
  *------------------------------------------
  */
 ATCOMMAND_FUNC(refineall) {
@@ -7353,7 +7350,7 @@ ATCOMMAND_FUNC(refineall) {
 }
 
 /*==========================================
- *
+ * @produce
  *------------------------------------------
  */
 ATCOMMAND_FUNC(produce) {
@@ -7435,7 +7432,7 @@ void atcommand_memo_sub(struct map_session_data* sd) {
 }
 
 /*==========================================
- *
+ * @memo - Memos a map like /memo
  *------------------------------------------
  */
 ATCOMMAND_FUNC(memo) {
@@ -7472,7 +7469,7 @@ ATCOMMAND_FUNC(memo) {
 }
 
 /*==========================================
- *
+ * @gat - Displays gat map information
  *------------------------------------------
  */
 ATCOMMAND_FUNC(gat) {
@@ -7502,7 +7499,7 @@ ATCOMMAND_FUNC(gat) {
 }
 
 /*==========================================
- * @send (used for testing packet sends from the client)
+ * @send - Used for testing packet sends from the client
  *------------------------------------------
  */
 ATCOMMAND_FUNC(send) {
@@ -7520,7 +7517,7 @@ ATCOMMAND_FUNC(send) {
 }
 
 /*==========================================
- *
+ * @packet
  *------------------------------------------
  */
 ATCOMMAND_FUNC(packet) {
@@ -7650,7 +7647,7 @@ ATCOMMAND_FUNC(zeny) {
 }
 
 /*==========================================
- *
+ * @param
  *------------------------------------------
  */
 ATCOMMAND_FUNC(param) {
@@ -7714,7 +7711,7 @@ ATCOMMAND_FUNC(param) {
 }
 
 /*==========================================
- * Stat all by fritz (rewritten by [Yor])
+ * @statsall - by fritz (rewritten by [Yor])
  *------------------------------------------
  */
 ATCOMMAND_FUNC(stat_all) {
@@ -7771,7 +7768,7 @@ ATCOMMAND_FUNC(stat_all) {
 }
 
 /*==========================================
- *
+ * @guildlevelup - Levels up user's guild
  *------------------------------------------
  */
 ATCOMMAND_FUNC(guildlevelup) {
@@ -7811,7 +7808,7 @@ ATCOMMAND_FUNC(guildlevelup) {
 }
 
 /*==========================================
- *
+ * @charguildlevelup - Level's up a target's guild
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charguildlevelup) {
@@ -7862,7 +7859,7 @@ ATCOMMAND_FUNC(charguildlevelup) {
 }
 
 /*==========================================
- *
+ * @makeegg - Makes a Pet Egg
  *------------------------------------------
  */
 ATCOMMAND_FUNC(makeegg) {
@@ -7897,7 +7894,7 @@ ATCOMMAND_FUNC(makeegg) {
 }
 
 /*==========================================
- *
+ * @hatch - Hatches a Pet Egg
  *------------------------------------------
  */
 ATCOMMAND_FUNC(hatch) {
@@ -7921,7 +7918,7 @@ ATCOMMAND_FUNC(hatch) {
 }
 
 /*==========================================
- *
+ * @petfriendly - Changes user's pet's intimacy value
  *------------------------------------------
  */
 ATCOMMAND_FUNC(petfriendly) {
@@ -7961,7 +7958,7 @@ ATCOMMAND_FUNC(petfriendly) {
 }
 
 /*==========================================
- *
+ * @pethungry - Changes a user's pet's hunger value
  *------------------------------------------
  */
 ATCOMMAND_FUNC(pethungry) {
@@ -7990,7 +7987,7 @@ ATCOMMAND_FUNC(pethungry) {
 }
 
 /*==========================================
- *
+ * @petrename - Renames user's pet
  *------------------------------------------
  */
 ATCOMMAND_FUNC(petrename) {
@@ -8013,7 +8010,7 @@ ATCOMMAND_FUNC(petrename) {
 }
 
 /*==========================================
- *
+ * @charpetrename - Renames a target's pet
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charpetrename) {
@@ -8048,7 +8045,7 @@ ATCOMMAND_FUNC(charpetrename) {
 }
 
 /*==========================================
- *
+ * @recall - Warps a target to you
  *------------------------------------------
  */
 ATCOMMAND_FUNC(recall) {
@@ -8085,7 +8082,7 @@ ATCOMMAND_FUNC(recall) {
 }
 
 /*==========================================
- * 対象キャラクターを転職させる upper指定で転生や養子も可能
+ * @charjob - Changes a target's job
  *------------------------------------------
  */
 ATCOMMAND_FUNC(character_job) {
@@ -8442,7 +8439,7 @@ ATCOMMAND_FUNC(character_job) {
 }
 
 /*==========================================
- * @charchangelevel - character set the level when the player changed of job (job 1 -> job 2)
+ * @charchangelevel - Character set the level when the player changed of job (job 1 -> job 2)
  *------------------------------------------
  */
 ATCOMMAND_FUNC(change_level) {
@@ -8481,7 +8478,7 @@ ATCOMMAND_FUNC(change_level) {
 }
 
 /*==========================================
- *
+ * @revive - Revives a target
  *------------------------------------------
  */
 ATCOMMAND_FUNC(revive) {
@@ -8521,7 +8518,7 @@ ATCOMMAND_FUNC(revive) {
 }
 
 /*==========================================
- *
+ * @charheal - Fully heals a target
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charheal) {
@@ -8587,7 +8584,7 @@ ATCOMMAND_FUNC(charheal) {
 }
 
 /*==========================================
- *
+ * @charstats - Displays a target's status information
  *------------------------------------------
  */
 ATCOMMAND_FUNC(character_stats) {
@@ -8656,7 +8653,7 @@ ATCOMMAND_FUNC(character_stats) {
 }
 
 /*==========================================
- * Character Stats All by fritz
+ * @charstatsall - Character Stats All by fritz
  *------------------------------------------
  */
 ATCOMMAND_FUNC(character_stats_all) {
@@ -8691,7 +8688,7 @@ ATCOMMAND_FUNC(character_stats_all) {
 }
 
 /*==========================================
- *
+ * @charoption
  *------------------------------------------
  */
 ATCOMMAND_FUNC(character_option) {
@@ -8777,7 +8774,7 @@ ATCOMMAND_FUNC(character_option) {
 }
 
 /*==========================================
- *
+ * @charoptionadd
  *------------------------------------------
  */
 ATCOMMAND_FUNC(character_optionadd) {
@@ -8863,7 +8860,7 @@ ATCOMMAND_FUNC(character_optionadd) {
 }
 
 /*==========================================
- *
+ * @charoptionremove
  *------------------------------------------
  */
 ATCOMMAND_FUNC(character_optionremove) {
@@ -8942,7 +8939,7 @@ ATCOMMAND_FUNC(character_optionremove) {
 }
 
 /*==========================================
- * changesex command (usage: changesex)
+ * @changesex - Change user's gender
  *------------------------------------------
  */
 ATCOMMAND_FUNC(change_sex) {
@@ -8953,7 +8950,7 @@ ATCOMMAND_FUNC(change_sex) {
 }
 
 /*==========================================
- * charchangesex command (usage: charchangesex <player_name>)
+ * @charchangesex - Changes target's gender
  *------------------------------------------
  */
 ATCOMMAND_FUNC(char_change_sex) {
@@ -8986,7 +8983,7 @@ ATCOMMAND_FUNC(char_change_sex) {
 
 /*==========================================
  * charblock command (usage: charblock <player_name>)
- * This command do a definitiv ban on a player
+ * This command do a definitive ban on a player
  *------------------------------------------
  */
 ATCOMMAND_FUNC(char_block) {
@@ -9174,7 +9171,7 @@ ATCOMMAND_FUNC(char_unban) {
 }
 
 /*==========================================
- *
+ * @charsave - Changes a target's save point
  *------------------------------------------
  */
 ATCOMMAND_FUNC(character_save) {
@@ -9229,7 +9226,7 @@ ATCOMMAND_FUNC(character_save) {
 }
 
 /*==========================================
- * @night
+ * @night - Makes the server night-mode
  *------------------------------------------
  */
 ATCOMMAND_FUNC(night) {
@@ -9255,7 +9252,7 @@ ATCOMMAND_FUNC(night) {
 }
 
 /*==========================================
- * @day
+ * @day - Makes the server day-mode
  *------------------------------------------
  */
 ATCOMMAND_FUNC(day) {
@@ -9280,7 +9277,7 @@ ATCOMMAND_FUNC(day) {
 }
 
 /*==========================================
- *
+ * @doommap - Kills all players on a map
  *------------------------------------------
  */
 ATCOMMAND_FUNC(doommap) {
@@ -9320,7 +9317,7 @@ ATCOMMAND_FUNC(doommap) {
 }
 
 /*==========================================
- *
+ * @doom - Kills all players on a server
  *------------------------------------------
  */
 ATCOMMAND_FUNC(doom) {
@@ -9370,7 +9367,7 @@ static void atcommand_raise_sub(struct map_session_data* sd) {
 }
 
 /*==========================================
- *
+ * @raisemap - Revives all players on a map
  *------------------------------------------
  */
 ATCOMMAND_FUNC(raisemap) {
@@ -9407,7 +9404,7 @@ ATCOMMAND_FUNC(raisemap) {
 }
 
 /*==========================================
- *
+ * @raise - Revives all players on a server
  *------------------------------------------
  */
 ATCOMMAND_FUNC(raise) {
@@ -9434,7 +9431,7 @@ ATCOMMAND_FUNC(raise) {
 }
 
 /*==========================================
- * @charbaselvlで対象キャラのレベルを上げる
+ * @charbaselvl - Changes a target's base level
  *------------------------------------------
 */
 ATCOMMAND_FUNC(character_baselevel) {
@@ -9533,7 +9530,7 @@ ATCOMMAND_FUNC(character_baselevel) {
 }
 
 /*==========================================
- * @charjoblvlで対象キャラのJobレベルを上げる
+ * @charjoblvl - Changes a target's job level
  *------------------------------------------
  */
 ATCOMMAND_FUNC(character_joblevel) {
@@ -9680,7 +9677,7 @@ ATCOMMAND_FUNC(character_joblevel) {
 }
 
 /*==========================================
- *
+ * @kick - Kicks a target off a server
  *------------------------------------------
  */
 ATCOMMAND_FUNC(kick) {
@@ -9707,7 +9704,7 @@ ATCOMMAND_FUNC(kick) {
 }
 
 /*==========================================
- *
+ * @kickmap - Kicks all players on a map off a server
  *------------------------------------------
  */
 ATCOMMAND_FUNC(kickmap) {
@@ -9746,7 +9743,7 @@ ATCOMMAND_FUNC(kickmap) {
 }
 
 /*==========================================
- *
+ * @kickall - Kicks all players off a server
  *------------------------------------------
  */
 ATCOMMAND_FUNC(kickall) {
@@ -9777,7 +9774,7 @@ ATCOMMAND_FUNC(kickall) {
 }
 
 /*==========================================
- *
+ * @allskill - Gives user all available skills
  *------------------------------------------
  */
 ATCOMMAND_FUNC(allskill) {
@@ -9788,7 +9785,7 @@ ATCOMMAND_FUNC(allskill) {
 }
 
 /*==========================================
- *
+ * @questskill - Gives a user all available quest skills
  *------------------------------------------
  */
 ATCOMMAND_FUNC(questskill) {
@@ -9838,7 +9835,7 @@ ATCOMMAND_FUNC(questskill) {
 }
 
 /*==========================================
- *
+ * @charquestskill - Gives a target all available quest skills
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charquestskill) {
@@ -9894,7 +9891,7 @@ ATCOMMAND_FUNC(charquestskill) {
 }
 
 /*==========================================
- *
+ * @lostskill
  *------------------------------------------
  */
 ATCOMMAND_FUNC(lostskill) {
@@ -9930,7 +9927,7 @@ ATCOMMAND_FUNC(lostskill) {
 }
 
 /*==========================================
- *
+ * @charlostskill
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charlostskill) {
@@ -9972,7 +9969,7 @@ ATCOMMAND_FUNC(charlostskill) {
 }
 
 /*==========================================
- *
+ * @spiritball - Summons spirit balls on the user
  *------------------------------------------
  */
 ATCOMMAND_FUNC(spiritball) {
@@ -10004,7 +10001,7 @@ ATCOMMAND_FUNC(spiritball) {
 }
 
 /*==========================================
- *
+ * @charspiritball - Summons spirit balls on a target
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charspiritball) {
@@ -10050,7 +10047,7 @@ ATCOMMAND_FUNC(charspiritball) {
 }
 
 /*==========================================
- *
+ * @party - Creates a party
  *------------------------------------------
  */
 ATCOMMAND_FUNC(party) {
@@ -10074,7 +10071,7 @@ ATCOMMAND_FUNC(party) {
 }
 
 /*==========================================
- *
+ * @guild - Creates a guild
  *------------------------------------------
  */
 ATCOMMAND_FUNC(guild) {
@@ -10107,7 +10104,7 @@ ATCOMMAND_FUNC(guild) {
 }
 
 /*==========================================
- *
+ * @agitstart - Starts the War of Emperium
  *------------------------------------------
  */
 ATCOMMAND_FUNC(agitstart) {
@@ -10124,7 +10121,7 @@ ATCOMMAND_FUNC(agitstart) {
 }
 
 /*==========================================
- *
+ * @agitend - Ends the War of Emperium
  *------------------------------------------
  */
 ATCOMMAND_FUNC(agitend) {
@@ -10142,7 +10139,7 @@ ATCOMMAND_FUNC(agitend) {
 }
 
 /*==========================================
- * @mapexitでマップサーバーを終了させる
+ * @mapexit
  *------------------------------------------
  */
 ATCOMMAND_FUNC(mapexit) {
@@ -10379,7 +10376,7 @@ ATCOMMAND_FUNC(whodrops) {
 }
 
 /*==========================================
- * GM Stat Reset
+ * @resetstate - Resets user's stats
  *------------------------------------------
  */
 ATCOMMAND_FUNC(resetstate) {
@@ -10390,7 +10387,7 @@ ATCOMMAND_FUNC(resetstate) {
 }
 
 /*==========================================
- * GM Skill Reset
+ * @resetskill - Resets user's skills
  *------------------------------------------
  */
 ATCOMMAND_FUNC(resetskill) {
@@ -10401,7 +10398,7 @@ ATCOMMAND_FUNC(resetskill) {
 }
 
 /*==========================================
- * Character Stat Reset
+ * @charstreset - Resets a target's stats
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charstreset) {
@@ -10430,7 +10427,7 @@ ATCOMMAND_FUNC(charstreset) {
 }
 
 /*==========================================
- * Character Skill Reset
+ * @charskreset - Resets a target's skills
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charskreset) {
@@ -10459,7 +10456,7 @@ ATCOMMAND_FUNC(charskreset) {
 }
 
 /*==========================================
- * Character Reset
+ * @charreset - Resets a target's stats and skills
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charreset) {
@@ -10489,7 +10486,7 @@ ATCOMMAND_FUNC(charreset) {
 }
 
 /*==========================================
- * Character Model by chbrules
+ * @charmodel - Changes palette/hair styles for a target
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charmodel) {
@@ -10532,7 +10529,7 @@ ATCOMMAND_FUNC(charmodel) {
 }
 
 /*==========================================
- * Character Skill Point (Rewritten by [Yor])
+ * @charskpoint - Character Skill Point (Rewritten by [Yor])
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charskpoint) {
@@ -10571,7 +10568,7 @@ ATCOMMAND_FUNC(charskpoint) {
 }
 
 /*==========================================
- * Character Status Point (rewritten by [Yor])
+ * @charstpoint - Character Status Point (rewritten by [Yor])
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charstpoint) {
@@ -10624,7 +10621,7 @@ ATCOMMAND_FUNC(charstpoint) {
 }
 
 /*==========================================
- * Character Zeny Point (Rewritten by [Yor])
+ * @charzeny - Character Zeny Point (Rewritten by [Yor])
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charzeny) {
@@ -10662,7 +10659,7 @@ ATCOMMAND_FUNC(charzeny) {
 }
 
 /*==========================================
- * Recall All Characters Online To Your Location
+ * @recallall - Recall All Characters Online To Your Location
  *------------------------------------------
  */
 ATCOMMAND_FUNC(recallall) {
@@ -10696,7 +10693,7 @@ ATCOMMAND_FUNC(recallall) {
 }
 
 /*==========================================
- * Recall online characters of a guild to your location
+ * @guildrecall - Recall online characters of a guild to your location
  *------------------------------------------
  */
 ATCOMMAND_FUNC(guildrecall) {
@@ -10746,7 +10743,7 @@ ATCOMMAND_FUNC(guildrecall) {
 }
 
 /*==========================================
- * Recall online characters of a party to your location
+ * @partyrecall - Recall online characters of a party to your location
  *------------------------------------------
  */
 ATCOMMAND_FUNC(partyrecall) {
@@ -10796,7 +10793,7 @@ ATCOMMAND_FUNC(partyrecall) {
 }
 
 /*==========================================
- *
+ * @reloaditemdb - Reloads item database
  *------------------------------------------
  */
 ATCOMMAND_FUNC(reloaditemdb) {
@@ -10807,7 +10804,7 @@ ATCOMMAND_FUNC(reloaditemdb) {
 }
 
 /*==========================================
- *
+ * @reloadmobdb - Reloads mob database
  *------------------------------------------
  */
 ATCOMMAND_FUNC(reloadmobdb) {
@@ -10818,7 +10815,7 @@ ATCOMMAND_FUNC(reloadmobdb) {
 }
 
 /*==========================================
- *
+ * @reloadskilldb - Reloads skill database
  *------------------------------------------
  */
 ATCOMMAND_FUNC(reloadskilldb) {
@@ -10848,7 +10845,7 @@ void rehash(const int fd, struct map_session_data* sd) {
 }
 
 /*==========================================
- *
+ * @reloadscript - Reloads NPC scripts
  *------------------------------------------
  */
 ATCOMMAND_FUNC(reloadscript) {
@@ -11084,7 +11081,7 @@ ATCOMMAND_FUNC(mapinfo) {
 }
 
 /*==========================================
-* Show Monster DB Info   v 1.0
+* @mobinfo - Show Monster DB Info   v 1.0
 * originally by [Lupus] eAthena
 *------------------------------------------
 */
@@ -11282,7 +11279,7 @@ ATCOMMAND_FUNC(mobinfo) {
 }
 
 /*==========================================
- *
+ * @mountpeco - Mounts a peco peco
  *------------------------------------------
  */
 ATCOMMAND_FUNC(mount_peco) {
@@ -11346,7 +11343,7 @@ ATCOMMAND_FUNC(mount_peco) {
 }
 
 /*==========================================
- *
+ * @charmountpeco - Mounts a target on a peco peco
  *------------------------------------------
  */
 ATCOMMAND_FUNC(char_mount_peco) {
@@ -11422,7 +11419,7 @@ ATCOMMAND_FUNC(char_mount_peco) {
 }
 
 /*==========================================
- *
+ * @falcon - Gives user a falcon
  *------------------------------------------
  */
 ATCOMMAND_FUNC(falcon) {
@@ -11446,7 +11443,7 @@ ATCOMMAND_FUNC(falcon) {
 }
 
 /*==========================================
- *
+ * @charfalcon - Gives target a falcon
  *------------------------------------------
  */
 ATCOMMAND_FUNC(char_falcon) {
@@ -11482,7 +11479,7 @@ ATCOMMAND_FUNC(char_falcon) {
 }
 
 /*==========================================
- *
+ * @cart - Gives user a cart
  *------------------------------------------
  */
 ATCOMMAND_FUNC(cart) {
@@ -11544,7 +11541,7 @@ ATCOMMAND_FUNC(cart) {
 }
 
 /*==========================================
- *
+ * @removecart - Removes user's cart
  *------------------------------------------
  */
 ATCOMMAND_FUNC(remove_cart) {
@@ -11563,7 +11560,7 @@ ATCOMMAND_FUNC(remove_cart) {
 }
 
 /*==========================================
- *
+ * @charcart - Gives a target a cart
  *------------------------------------------
  */
 ATCOMMAND_FUNC(char_cart) {
@@ -11631,7 +11628,7 @@ ATCOMMAND_FUNC(char_cart) {
 }
 
 /*==========================================
- *
+ * @charemovecart - Removes a target's cart
  *------------------------------------------
  */
 ATCOMMAND_FUNC(char_remove_cart) {
@@ -11662,7 +11659,7 @@ ATCOMMAND_FUNC(char_remove_cart) {
 }
 
 /*==========================================
- *Spy Commands by Syrus22
+ * @guildspy - Spy Commands by Syrus22
  *------------------------------------------
  */
 ATCOMMAND_FUNC(guildspy) {
@@ -11696,7 +11693,7 @@ ATCOMMAND_FUNC(guildspy) {
 }
 
 /*==========================================
- *
+ * @partyspy
  *------------------------------------------
  */
 ATCOMMAND_FUNC(partyspy) {
@@ -11758,7 +11755,7 @@ ATCOMMAND_FUNC(repairall) {
 }
 
 /*==========================================
- *
+ * @nuke - Nukes a player (kills them with meteor effect)
  *------------------------------------------
  */
 ATCOMMAND_FUNC(nuke) {
@@ -11786,7 +11783,7 @@ ATCOMMAND_FUNC(nuke) {
 }
 
 /*==========================================
- *
+ * @enablenpc - Enables an NPC script
  *------------------------------------------
  */
 ATCOMMAND_FUNC(enablenpc) {
@@ -11812,7 +11809,7 @@ ATCOMMAND_FUNC(enablenpc) {
 }
 
 /*==========================================
- *
+ * @disablenpc - Disables an NPC script
  *------------------------------------------
  */
 ATCOMMAND_FUNC(disablenpc) {
@@ -11838,7 +11835,7 @@ ATCOMMAND_FUNC(disablenpc) {
 }
 
 /*==========================================
- * time in txt for time command (by [Yor])
+ * Time in txt for time command (by [Yor])
  *------------------------------------------
  */
 char * txt_time(unsigned int duration) {
@@ -12348,7 +12345,7 @@ ATCOMMAND_FUNC(disguise) {
 }
 
 /*==========================================
- * @undisguise by [Yor]
+ * @undisguise - by [Yor]
  *------------------------------------------
  */
 ATCOMMAND_FUNC(undisguise) {
@@ -12685,7 +12682,7 @@ ATCOMMAND_FUNC(charundisguiseall) {
 }
 
 /*==========================================
- * @changelook by [Yor]
+ * @changelook - by [Yor]
  *------------------------------------------
  */
 ATCOMMAND_FUNC(changelook) {
@@ -12740,7 +12737,7 @@ ATCOMMAND_FUNC(changelook) {
 }
 
 /*==========================================
- * @charchangelook by [Yor]
+ * @charchangelook - by [Yor]
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charchangelook) {
@@ -12806,7 +12803,7 @@ ATCOMMAND_FUNC(charchangelook) {
 }
 
 /*==========================================
- * @broadcast by [Valaris]
+ * @broadcast - by [Valaris]
  *------------------------------------------
  */
 ATCOMMAND_FUNC(broadcast) {
@@ -12847,7 +12844,7 @@ ATCOMMAND_FUNC(localbroadcast) {
 }
 
 /*==========================================
- * @nlb (without name of GM)
+ * @nlb - (without name of GM)
  *------------------------------------------
  */
 ATCOMMAND_FUNC(localbroadcast2) {
@@ -12877,7 +12874,7 @@ ATCOMMAND_FUNC(localbroadcast2) {
 }
 
 /*==========================================
- * @ignorelist by [Yor]
+ * @ignorelist - by [Yor]
  *------------------------------------------
  */
 ATCOMMAND_FUNC(ignorelist) {
@@ -12905,7 +12902,7 @@ ATCOMMAND_FUNC(ignorelist) {
 }
 
 /*==========================================
- * @charignorelist <player_name> by [Yor]
+ * @charignorelist <player_name> - by [Yor]
  *------------------------------------------
  */
 ATCOMMAND_FUNC(charignorelist) {
@@ -12948,7 +12945,7 @@ ATCOMMAND_FUNC(charignorelist) {
 }
 
 /*==========================================
- * @inall <player_name> by [Yor]
+ * @inall <player_name> - by [Yor]
  *------------------------------------------
  */
 ATCOMMAND_FUNC(inall) {
@@ -12989,7 +12986,7 @@ ATCOMMAND_FUNC(inall) {
 }
 
 /*==========================================
- * @exall <player_name> by [Yor]
+ * @exall <player_name> - by [Yor]
  *------------------------------------------
  */
 ATCOMMAND_FUNC(exall) {
@@ -13030,7 +13027,7 @@ ATCOMMAND_FUNC(exall) {
 }
 
 /*==========================================
- * @email <actual@email> <new@email> by [Yor]
+ * @email <actual@email> <new@email> - by [Yor]
  *------------------------------------------
  */
 ATCOMMAND_FUNC(email) {
@@ -13093,7 +13090,7 @@ ATCOMMAND_FUNC(password) {
 }
 
 /*==========================================
- *@effect
+ *@effect - Displays an effect
  *------------------------------------------
  */
 ATCOMMAND_FUNC(effect) {
@@ -13776,7 +13773,7 @@ ATCOMMAND_FUNC(chardropall) {
 /*==========================================
  * @storeall by [MouseJstr]
  * Put everything into storage to simplify your inventory to make
- * debugging easie
+ * debugging easier
  *------------------------------------------
  */
 ATCOMMAND_FUNC(storeall) {
@@ -14233,7 +14230,7 @@ ATCOMMAND_FUNC(grind2) {
 }
 
 /*==========================================
- * It is made to rain.
+ * @rain - Causes rain client effect on a map
  *------------------------------------------
  */
 ATCOMMAND_FUNC(rain) {
@@ -14254,7 +14251,7 @@ ATCOMMAND_FUNC(rain) {
 }
 
 /*==========================================
- * It is made to snow.
+ * @snow - Causes snow client effect on a map
  *------------------------------------------
  */
 ATCOMMAND_FUNC(snow) {
@@ -14275,7 +14272,7 @@ ATCOMMAND_FUNC(snow) {
 }
 
 /*==========================================
- * Cherry tree snowstorm is made to fall. (Sakura)
+ * @sakura - Causes sakura leaves client effect on a map
  *------------------------------------------
  */
 ATCOMMAND_FUNC(sakura) {
@@ -14296,7 +14293,7 @@ ATCOMMAND_FUNC(sakura) {
 }
 
 /*==========================================
- * Fog hangs over.
+ * @fog - Causes fog client effect on a map
  *------------------------------------------
  */
 ATCOMMAND_FUNC(fog) {
@@ -14317,7 +14314,7 @@ ATCOMMAND_FUNC(fog) {
 }
 
 /*==========================================
- * Fallen leaves fall.
+ * @leaves - Causes falling leaves client effect on a map
  *------------------------------------------
  */
 ATCOMMAND_FUNC(leaves) {
@@ -14338,7 +14335,7 @@ ATCOMMAND_FUNC(leaves) {
 }
 
 /*==========================================
- * Adds a rainbow when it's rain.
+ * @rainbow - Creates a rainbow client effect when @rain is in effect
  *------------------------------------------
  */
 ATCOMMAND_FUNC(rainbow) {
@@ -14353,7 +14350,7 @@ ATCOMMAND_FUNC(rainbow) {
 }
 
 /*==========================================
- * Clear all special weathers on a map.
+ * @clsweather - Clears all weather effects (@rain, @leaves, etc)
  *------------------------------------------
  */
 ATCOMMAND_FUNC(clsweather) {
@@ -14383,7 +14380,7 @@ ATCOMMAND_FUNC(clsweather) {
 }
 
 /*===============================================================
- * Sound Command - plays a sound for everyone! [Yor] (based on poor code of codemaster)
+ * @sounds - Sound Command - Plays a sound for everyone! [Yor] (based on poor code of codemaster)
  *---------------------------------------------------------------
  */
 ATCOMMAND_FUNC(sound) {
@@ -14425,7 +14422,7 @@ ATCOMMAND_FUNC(sound) {
 }
 
 /*==========================================
- * MOB Search
+ * @mobsearch
  *------------------------------------------
  */
 ATCOMMAND_FUNC(mobsearch) {
@@ -14491,7 +14488,7 @@ ATCOMMAND_FUNC(mobsearch) {
 }
 
 /*==========================================
- * cleanmap & cleanarea
+ * @cleanmap - Clears all drops on a map
  *------------------------------------------
  */
 static int atcommand_cleanmap_sub(struct block_list *bl, va_list ap) {
@@ -14513,6 +14510,11 @@ ATCOMMAND_FUNC(cleanmap) {
 	return 0;
 }
 
+/*==========================================
+ * @cleanmap - Clears all drops in a selected area
+ *------------------------------------------
+ */
+
 ATCOMMAND_FUNC(cleanarea) {
 	int area_size;
 
@@ -14531,7 +14533,7 @@ ATCOMMAND_FUNC(cleanarea) {
 }
 
 /*==========================================
- * @shuffle
+ * @shuffle - Randomly repositions players/mobs on a map
  *------------------------------------------
  */
 static int atshuffle_sub(struct block_list *bl, va_list ap) {
@@ -14812,7 +14814,7 @@ ATCOMMAND_FUNC(setmapflag) {
 }
 
 /*==========================================
- * @uptime
+ * @uptime - Shows server uptime
  *------------------------------------------
  */
 ATCOMMAND_FUNC(uptime) {
@@ -14823,7 +14825,7 @@ ATCOMMAND_FUNC(uptime) {
 }
 
 /*==========================================
- * @clock
+ * @clock - Shows server's current time
  *------------------------------------------
  */
 ATCOMMAND_FUNC(clock) {
@@ -14979,7 +14981,7 @@ ATCOMMAND_FUNC(identify) {
 }
 
 /*==========================================
- * @motd (displaye again the MOTD) by [Yor]
+ * @motd - Displays MOTD again by [Yor]
  *------------------------------------------
  */
 ATCOMMAND_FUNC(motd) {
@@ -15040,7 +15042,7 @@ ATCOMMAND_FUNC(gmotd) {
 }
 
 /*==========================================
- *
+ * @misceffect - Shows a misceffect
  *------------------------------------------
  */
 ATCOMMAND_FUNC(misceffect) {
@@ -15055,7 +15057,7 @@ ATCOMMAND_FUNC(misceffect) {
 }
 
 /*==========================================
- * NPC/PETに話させる
+ * @npctalk - Makes an NPC say something
  *------------------------------------------
  */
 ATCOMMAND_FUNC(npctalk) {
@@ -15084,7 +15086,7 @@ ATCOMMAND_FUNC(npctalk) {
 }
 
 /*==========================================
- * NPC/PETに話させる
+ * @pettalk - Makes a pet say something
  *------------------------------------------
  */
 ATCOMMAND_FUNC(pettalk) {
@@ -15193,7 +15195,7 @@ ATCOMMAND_FUNC(autolootloot) {
 }
 
 /*==========================================
-* Turns on/off Displayexp for a specific player
+* @displayexp - Turns on/off Displayexp for a specific player
 *------------------------------------------
 */
 ATCOMMAND_FUNC(displayexp) {
@@ -15209,7 +15211,7 @@ ATCOMMAND_FUNC(displayexp) {
 }
 
 /*==========================================
-* Set display drop for a specific player
+* @displaydrop - Set display drop for a specific player
 *------------------------------------------
 */
 ATCOMMAND_FUNC(displaydrop) {
@@ -15275,7 +15277,7 @@ ATCOMMAND_FUNC(displaydrop) {
 }
 
 /*==========================================
-* Set display drop of loot for a specific player
+* @displaylootdrop - Set display drop of loot for a specific player
 *------------------------------------------
 */
 ATCOMMAND_FUNC(displaylootdrop) {
@@ -15291,7 +15293,7 @@ ATCOMMAND_FUNC(displaylootdrop) {
 }
 
 /*==========================================
- *
+ * @main - Activates main channel (On/Off)
  *------------------------------------------
  */
 ATCOMMAND_FUNC(main) {
@@ -15342,7 +15344,7 @@ ATCOMMAND_FUNC(main) {
 }
 
 /*==========================================
- *
+ * @request
  *------------------------------------------
  */
 ATCOMMAND_FUNC(request) {
