@@ -102,7 +102,7 @@ INSERT INTO `item_db` VALUES (564, 'Rice_Ball', 'Rice Ball', 0, 20, 10, 30, 0, 0
 INSERT INTO `item_db` VALUES (565, 'Vita_500', 'Vita 500', 0, 2000, 0, 30, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(142,284),0;', NULL);
 INSERT INTO `item_db` VALUES (566, 'Tom_Yum_Goong', 'Tom Yum Goong', 0, 10000, 5000, 150, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(244,350),rand(10,30); sc_end SC_Poison; sc_end SC_Silence; sc_end SC_Blind; sc_end SC_Confusion; sc_end SC_Curse; sc_end SC_Hallucination;', NULL);
 INSERT INTO `item_db` VALUES (567, 'Shrimp', 'Shrimp', 0, 500, 250, 40, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(117,192),0;', NULL);
-INSERT INTO `item_db` VALUES (568, 'Lemon', 'Lemon', 0, 60, 30, 40, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 'itemheal 0,rand(10,20);', NULL);
+INSERT INTO `item_db` VALUES (568, 'Lemon', 'Lemon', 0, 60, 30, 40, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal 0,rand(10,20);', NULL);
 INSERT INTO `item_db` VALUES (569, 'Novice_Potion', 'Novice Potion', 0, 20, 0, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(22,33),0;', NULL);
 
 # St.Valentine's Day Items
@@ -1597,7 +1597,7 @@ INSERT INTO `item_db` VALUES (4350, 'Laurell_Weinder_Card', 'Laurell Weinder Car
 INSERT INTO `item_db` VALUES (4351, 'Kavach_Icarus_Card', 'Kavach Icarus Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bFlee,10;if(getequiprefinerycnt(5)>4) end; bonus bFlee,20; bonus bFlee2,1;');
 # 4352: Effect Undecided/Missing
 INSERT INTO `item_db` VALUES (4352, 'Egnigem_Cenia_(MvP)_Card', 'Egnigem Cenia (MvP) Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, NULL);
-INSERT INTO `item_db` VALUES (4353, 'Remover_Card', 'Remover Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bMaxHP,(800-(80*getequiprefinerycnt(2))); bonus bHPrecovRate,10;');
+INSERT INTO `item_db` VALUES (4353, 'Remover_Card', 'Remover Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bMaxHP,(800+(80*getequiprefinerycnt(2))); bonus bHPrecovRate,10;');
 INSERT INTO `item_db` VALUES (4354, 'Gemini-S58_Card', 'Gemini-S58 Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 769, 0, 0, 0, NULL, 'if(readparam(bVit)<80) end; bonus2 bResEff,0,5000; bonus2 bResEff,3,5000; if(readparam(bAgi)<90) end; bonus2 bResEff,6,3000; bonus2 bResEff,2,3000;');
 INSERT INTO `item_db` VALUES (4355, 'Gremlin_Card', 'Gremlin Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus3 bAddMonsterDropItem,12043,2,100;');
 INSERT INTO `item_db` VALUES (4356, 'Beholder_Card', 'Beholder Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'skill 275,1;');

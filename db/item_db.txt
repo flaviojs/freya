@@ -77,7 +77,7 @@
 565,Vita_500,Vita 500,0,2000,0,30,,,,,1071636479,2,,,,,{ itemheal rand(142,284),0; },{}
 566,Tom_Yum_Goong,Tom Yum Goong,0,10000,5000,150,,,,,1071636479,2,,,,,{ itemheal rand(244,350),rand(10,30); sc_end SC_Poison; sc_end SC_Silence; sc_end SC_Blind; sc_end SC_Confusion; sc_end SC_Curse; sc_end SC_Hallucination; },{}
 567,Shrimp,Shrimp,0,500,250,40,,,,,1071636479,3,,,,,{ itemheal rand(117,192),0; },{}
-568,Lemon,Lemon,0,60,30,40,,,,,0,3,,,,,{ itemheal 0,rand(10,20); },{}
+568,Lemon,Lemon,0,60,30,40,,,,,1071636479,3,,,,,{ itemheal 0,rand(10,20); },{}
 569,Novice_Potion,Novice Potion,0,20,0,10,,,,,1071636479,2,,,,,{ itemheal rand(22,33),0; },{}
 
 // St.Valentine's Day Items
