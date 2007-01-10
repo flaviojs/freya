@@ -1572,7 +1572,7 @@
 4351,Kavach_Icarus_Card,Kavach Icarus Card,6,,10,10,,,,,,,16,,,,{},{ bonus bFlee,10;if(getequiprefinerycnt(5)>4) end; bonus bFlee,20; bonus bFlee2,1; }
 // 4352: Effect Undecided/Missing
 4352,Egnigem_Cenia_(MvP)_Card,Egnigem Cenia (MvP) Card,6,,10,10,,,,,,,16,,,,{},{}
-4353,Remover_Card,Remover Card,6,,10,10,,,,,,,16,,,,{},{ bonus bMaxHP,(800-(80*getequiprefinerycnt(2))); bonus bHPrecovRate,10; }
+4353,Remover_Card,Remover Card,6,,10,10,,,,,,,16,,,,{},{ bonus bMaxHP,(800+(80*getequiprefinerycnt(2))); bonus bHPrecovRate,10; }
 4354,Gemini-S58_Card,Gemini-S58 Card,6,,10,10,,,,,,,769,,,,{},{ if(readparam(bVit)<80) end; bonus2 bResEff,0,5000; bonus2 bResEff,3,5000; if(readparam(bAgi)<90) end; bonus2 bResEff,6,3000; bonus2 bResEff,2,3000; }
 4355,Gremlin_Card,Gremlin Card,  6,,10,10,,,,,,,136,,,,{},{ bonus3 bAddMonsterDropItem,12043,2,100; }
 4356,Beholder_Card,Beholder Card,6,,10,10,,,,,,,136,,,,{},{ skill 275,1; }
