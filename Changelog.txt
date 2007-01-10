@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/10/07
+	* Fixed: A usable item not working properly [Tsuyuki]
 	* Fixed: Remover Card's bonus [Tsuyuki]
 
 01/09/07
