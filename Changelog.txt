@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+01/09/07
+	* Changed: Main channel's recognition character from '.' to '~' by default [Tsuyuki]
+
 01/07/07
 	* Fixed: Kafra script's saving system [Tsuyuki]
 	* Added: @go2 atcommand [Tsuyuki]
