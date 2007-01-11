@@ -1,121 +1,201 @@
-//===== Freya Script ========================================================================
-//= Platinum Skills NPC
-//===== By: =================================================================================
-//= Keichii and edited by DarkChild
-//===== Current Version: ====================================================================
-//= 2.1
-//===== Compatible With: ====================================================================
-//= Any eAthena Version
-//===== Description: ========================================================================
+//===== Freya Script =========================================
+//= Quest Skill Girl
+//===== By: ==================================================
+//= Keichii/DarkChild/Tsuyuki
+//===== Current Version: =====================================
+//= 2.4
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
 //= Single NPC that assigns quests skills for all classes.
-//===== Additional Comments: ================================================================
-//= Added advanced classes by ShadowLady.
-//= Added baby clases by Midas
-//===========================================================================================
+//===== Additional Comments: =================================
+//= 1.0 Added first version [eAthena]
+//= x.x Edited script [DarkChild]
+//= x.x Added advanced classes [ShadowLady]
+//= x.x Added baby clases [Midas]
+//= 2.2 Fixed a few bugs [Tsuyuki]
+//= 2.3 Added support for the new classes and redid most of the script [Tsuyuki]
+//= 2.4 Added second class quest skill support [Tsuyuki]
+//============================================================
 
-prontera.gat,128,200,6	script	Platinum Skill NPC	94,{
-	mes "[Platinum Skill NPC]";
-	mes "I can give you the special skills available to your job. Would you like these skills now?";
+
+prontera.gat,128,200,6	script	Quest Skills	892,{
+
+	mes "[Alyssa]";
+	mes "Hey, I'm Freya's Quest Skill girl! I can give";
+	mes "you the quest-related skills for your class so you don't";
+	mes "have to actually do the quests!";
 	next;
-	menu "Yes",Lgetskills,"No",Lnogetskills;
+	mes "[Alyssa]";
+	mes "Would you like to receive your skills?";
+	next;
+	menu "Receive Skills",L_GetSkills,"Cancel",L_Cancel;
 
-	Lgetskills:
-		if ((Class == 0) || (Class == JOB_BABY) || (Class == 4001)) goto Lskillsnovice;
-		if ((Class == JOB_SUPER_NOVICE) || (Class == JOB_SUPER_BABY)) goto Lskillssnovice;
-		if ((Class == JOB_SWORDMAN) || (Class == 7) || (Class == 13) || (Class == 14)|| (Class == 21) || (Class == JOB_BABY_SWORDMAN) || (Class == JOB_BABY_KNIGHT) || (Class == JOB_BABY_KNIGHT2) || (Class == JOB_BABY_CRUSADER) || (Class == JOB_BABY_CRUSADER2)) || (Class == 4002) || (Class == 4008) || (Class == JOB_LORD_KNIGHT2) || (Class == 4015) || (Class == JOB_PALADIN2)  goto Lskillsswordie;
-		if ((Class == JOB_MAGE) || (Class == JOB_BABY_MAGE) || (Class == JOB_BABY_WIZARD) || (Class == JOB_BABY_SAGE) || (Class == 9) || (Class == 16) || (Class == 4003) || (Class == 4010) || (Class == 4017)) goto Lskillsmage;
-		if ((Class == JOB_ARCHER) || (Class == 11) || (Class == 19) || (Class == 20) || (Class == 49) ||  (Class == 65) || (Class == 66) ||(Class == 4004) || (Class == 4012) || (Class == 4020) || (Class == 4021)) goto Lskillsarcher;
-		if ((Class == JOB_ACOLYTE) || (Class == 8) || (Class == 15) || (Class == 50) || (Class == 54) || (Class == 61) || (Class == 4005) || (Class == 4009) || (Class == 4016)) goto Lskillsaco;
-		if ((Class == JOB_MERCHANT) || (Class == 10) || (Class == 18) || (Class == 51) || (Class == 56) || (Class == 64) || (Class == 4006) || (Class == 4011) || (Class == 4019)) goto Lskillsmerchie;
-		if ((Class == JOB_THIEF) || (Class == 12) || (Class == 17) || (Class == 52) || (Class == 58) || (Class == 63) || (Class == 4007) || (Class == 4013) || (Class == 4018)) goto Lskillsthief;
-	Lskillsnovice:
-		mes "[Platinum Skill NPC]";
-		mes "I see that you are a Novice. I will now add the special skills available to the Novice job.";
+	L_GetSkills:
+		// Novice Class Check
+		if (Basejob == JOB_NOVICE) goto L_Novice;
+
+		// Swordsman Class Check
+		if (Basejob == JOB_SWORDMAN || Basejob == JOB_KNIGHT || Basejob == JOB_KNIGHT2 || Basejob == JOB_CRUSADER || Basejob == JOB_CRUSADER2) goto L_Swordsman;
+
+		// Mage Class Check
+		if (Basejob == JOB_MAGE || Basejob == JOB_WIZARD || Basejob == JOB_SAGE) goto L_Mage;
+
+		// Archer Class Check
+		if (Basejob == JOB_ARCHER || Basejob == JOB_HUNTER || Basejob == JOB_BARD || Basejob == JOB_DANCER) goto L_Archer;
+
+		// Acolyte Class Check
+		if (Basejob == JOB_ACOLYTE || Basejob == JOB_PRIEST || Basejob == JOB_MONK) goto L_Acolyte;
+
+		// Merchant Class Check
+		if (Basejob == JOB_MERCHANT || Basejob == JOB_BLACKSMITH || Basejob == JOB_ALCHEM) goto L_Merchant;
+
+		// Thief Class Check
+		if (Basejob == JOB_THIEF || Basejob == JOB_ASSASSIN || Basejob == JOB_ROGUE) goto L_Thief;
+
+		// If class is not listed above
+		mes "[Alyssa]";
+		mes "I'm sorry, but there aren't any skills available for your class.";
+		mes "However.. I'll still give you the standard Novice quest skills.";
+		next;
+		mes "[Alyssa]";
+		mes "Here's your quest skills!";
+		skill 142,1,0;
+		emotion 46;
+		next;
+		mes "[Alyssa]";
+		mes "Enjoy your new skills.";
+		close;
+
+	L_Novice:
+		mes "[Alyssa]";
+		mes "So.. you're a Novice.";
+		next;
+		mes "[Alyssa]";
+		mes "Here's your quest skills!";
 		skill 142,1,0;
 		skill 143,1,0;
-		mes " ";
-		mes "You now have all the special skills available to the Novice job.";
+		emotion 46;
 		next;
-		goto LskillsEND;
-	Lskillssnovice:
-		mes "[Platinum Skills]";
-		mes "I see that you are a Super Novice. I will now add the special skills available to your job.";
-		skill 142,1,0; //Snovices don't have play dead, do they?
-		mes " ";
-		mes "You now have all the special skills available to your Novice job.";
+		mes "[Alyssa]";
+		mes "Enjoy your new skills.";
+		close;
+
+	L_Swordsman:
+		mes "[Alyssa]";
+		mes "So.. you belong to the Swordsman Class.";
 		next;
-		goto LskillsEND;
-	Lskillsswordie:
-		mes "[Platinum Skill NPC]";
-		mes "I see that you are a Swordman, Knight, Crusader, Lord Knight or Paladin. I will now add the special skills available to these jobs.";
+		mes "[Alyssa]";
+		mes "Here's your quest skills!";
 		skill 142,1,0;
 		skill 144,1,0;
 		skill 145,1,0;
 		skill 146,1,0;
-		mes " ";
-		mes "You now have all the special skills available to the these jobs.";
+		if (Basejob == JOB_KNIGHT || Basejob == JOB_KNIGHT2) skill 1001,1,0;
+		if (Basejob == JOB_CRUSADER || Basejob == JOB_CRUSADER2) skill 1002,1,0;
+		emotion 46;
 		next;
-		goto LskillsEND;
-	Lskillsmage:
-		mes "[Platinum Skill NPC]";
-		mes "I see that you are a Mage Class. I will now add the special skills available to these jobs.";
+		mes "[Alyssa]";
+		mes "Enjoy your new skills.";
+		close;
+
+	L_Mage:
+		mes "[Alyssa]";
+		mes "So.. you belong to the Mage Class.";
+		next;
+		mes "[Alyssa]";
+		mes "Here's your quest skills!";
 		skill 142,1,0;
 		skill 157,1,0;
-		mes " ";
-		mes "You now have all the special skills available to the these jobs.";
+		if (Basejob == JOB_WIZARD) skill 1006,1,0;
+		if (Basejob == JOB_SAGE) skill 1007,1,0;
+		if (Basejob == JOB_SAGE) skill 1008,1,0;
+		if (Basejob == JOB_SAGE) skill 1017,1,0;
+		if (Basejob == JOB_SAGE) skill 1018,1,0;
+		if (Basejob == JOB_SAGE) skill 1019,1,0;
+		emotion 46;
 		next;
-		goto LskillsEND;
-	Lskillsarcher:
-		mes "[Platinum Skill NPC]";
-		mes "I see that you are an Archer Class. I will now add the special skills available to these jobs.";
+		mes "[Alyssa]";
+		mes "Enjoy your new skills.";
+		close;
+
+	L_Archer:
+		mes "[Alyssa]";
+		mes "So.. you belong to the Archer Class.";
+		next;
+		mes "[Alyssa]";
+		mes "Here's your quest skills!";
 		skill 142,1,0;
 		skill 147,1,0;
 		skill 148,1,0;
-		mes " ";
-		mes "You now have all the special skills available to the these jobs.";
+		if (Basejob == JOB_HUNTER) skill 1009,1,0;
+		if (Basejob == JOB_BARD) skill 1010,1,0;
+		if (Basejob == JOB_DANCER) skill 1011,1,0;
+		emotion 46;
 		next;
-		goto LskillsEND;
-	Lskillsaco:
-		mes "[Platinum Skill NPC]";
-		mes "I see that you are an Acolyte Class. I will now add the special skills available to these jobs.";
+		mes "[Alyssa]";
+		mes "Enjoy your new skills.";
+		close;
+
+	L_Acolyte:
+		mes "[Alyssa]";
+		mes "So.. you belong to the Acolyte Class.";
+		next;
+		mes "[Alyssa]";
+		mes "Here's your quest skills!";
 		skill 142,1,0;
 		skill 156,1,0;
-		mes " ";
-		mes "You now have all the special skills available to the these jobs.";
+		if (Basejob == JOB_PRIEST) skill 1014,1,0;
+		if (Basejob == JOB_MONK) skill 1015,1,0;
+		if (Basejob == JOB_MONK) skill 1016,1,0;
+		emotion 46;
 		next;
-		goto LskillsEND;
-	Lskillsmerchie:
-		mes "[Platinum Skill NPC]";
-		mes "I see that you are a Merchant Class.I will now add the special skills available to these jobs.";
+		mes "[Alyssa]";
+		mes "Enjoy your new skills.";
+		close;
+
+	L_Merchant:
+		mes "[Alyssa]";
+		mes "So.. you belong to the Merchant Class.";
+		next;
+		mes "[Alyssa]";
+		mes "Here's your quest skills!";
 		skill 142,1,0;
 		skill 153,1,0;
 		skill 154,1,0;
 		skill 155,1,0;
-		mes " ";
-		mes "You now have all the special skills available to the these jobs.";
+		if (Basejob == JOB_BLACKSMITH) skill 1012,1,0;
+		if (Basejob == JOB_BLACKSMITH) skill 1013,1,0;
+		emotion 46;
 		next;
-		goto LskillsEND;
-	Lskillsthief:
-		mes "[Platinum Skill NPC]";
-		mes "I see that you are a Thief Class. I will now add the special skills available to these jobs.";
+		mes "[Alyssa]";
+		mes "Enjoy your new skills.";
+		close;
+
+	L_Thief:
+		mes "[Alyssa]";
+		mes "So.. you belong to the Thief Class.";
+		next;
+		mes "[Alyssa]";
+		mes "Here's your quest skills!";
 		skill 142,1,0;
 		skill 149,1,0;
 		skill 150,1,0;
 		skill 151,1,0;
 		skill 152,1,0;
-		mes " ";
-		mes "You now have all the special skills available to the these jobs.";
+		if (Basejob == JOB_ASSASSIN) skill 1003,1,0;
+		if (Basejob == JOB_ASSASSIN) skill 1004,1,0;
+		if (Basejob == JOB_ROGUE) skill 1005,1,0;
+		emotion 46;
 		next;
-		goto LskillsEND;
-	LskillsEND:
-		mes "[Platinum Skill NPC]";
-		mes "Have a nice day.";
+		mes "[Alyssa]";
+		mes "Enjoy your new skills.";
 		close;
-		Lnogetskills:
-		mes "[Platinum Skill NPC]";
-		mes "Aww, how come you dont want my special skills?";
-		mes "*sob* FINE!";
-		mes "Have a nice day... >.>";
+
+	L_Cancel:
+		mes "[Alyssa]";
+		mes "What? You don't want your skills?";
+		mes "Well fine then..";
+		emotion 9;
 		close;
 }
-
