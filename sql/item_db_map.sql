@@ -1279,7 +1279,7 @@ INSERT INTO `item_db` VALUES (4041, 'Coco_Card', 'Coco Card', 6, 20, 0, 10, 0, 0
 INSERT INTO `item_db` VALUES (4042, 'Steel_Chonchon_Card', 'Steel Chonchon Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus2 bSubEle,4,10; bonus bDef,2;');
 INSERT INTO `item_db` VALUES (4043, 'Andre_Card', 'Andre Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus bBaseAtk,20;');
 INSERT INTO `item_db` VALUES (4044, 'Smokie_Card', 'Smokie Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'skill 51,1;');
-INSERT INTO `item_db` VALUES (4045, 'Horn_Card', 'Horn Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 32, 0, 0, 0, NULL, 'bonus bLongAtkDef,35; bonus bMdef,35;');
+INSERT INTO `item_db` VALUES (4045, 'Horn_Card', 'Horn Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 32, 0, 0, 0, NULL, 'bonus bLongAtkDef,35; bonus bMagicAtkDef,35;');
 INSERT INTO `item_db` VALUES (4046, 'Martin_Card', 'Martin Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 769, 0, 0, 0, NULL, 'bonus2 bResEff,Eff_Blind,2000; bonus bDef,1;');
 INSERT INTO `item_db` VALUES (4047, 'Ghostring_Card', 'Ghostring Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bDefEle,8; bonus bHPrecovRate,-25;');
 INSERT INTO `item_db` VALUES (4048, 'Poison_Spore_Card', 'Poison Spore Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'skill 52,3;');
