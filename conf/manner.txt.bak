@@ -1,0 +1,5701 @@
+//               (c)2004-2006 Freya team presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//
+//--------------------------------------------------------------
+// Freya Manner Configuration File
+//--------------------------------------------------------------
+// 2 types of lines:
+// language: <npc_language>
+//           as defined is map_athena.conf.
+//           All lines (simple word or sentence) after this line
+//           until the next 'language' line are used to define
+//           forbidden word/sentence.
+//           Language definition can be found on ISO 639 (639-1):
+//           http://www.w3.org/WAI/ER/IG/ert/iso639.htm or
+//           http://fr.wikipedia.org/wiki/ISO_639
+//           Country definition (ISO 3166-1-alpha-2 code elements):
+//           http://www.iso.org/iso/fr/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html
+//           Example: en_US (english in US), en_EN (english in England)
+// <line>
+//       is a 'simple word' or a 'sentence'.
+//       All lines following the 'language' are bad words.
+//       For lines, case sensitive is not important.
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// english (american)
+language: en_US
+
+( ^ )^_^( ^ )
+(^)^_^(^)
+)>
+,,I,,
+,,I,,^-^,,I,,
+,.|..
+..l..
+..l..^o^..l..
+..|.,
+..|., (o_o),.|..
+..||..
+<(
+\/\/hore
+\\/\//hore
+ass
+asses
+asshole
+assholes
+assholic
+b i t c h
+b it ch
+b itc h
+bastard
+bastards
+bi t ch
+biaaaaatch
+biatch
+bioootch
+biotch
+bitc h
+bitch
+bitches
+bizitch
+biznatch
+Boner
+c u n t
+c u nt
+chink
+cI_Int
+cl_lnt
+clit
+cock
+Cocksucker
+cu n t
+cu nt
+cum
+cun t
+cunnilingus
+cunt
+c|_|nt
+dam
+damm
+damn
+Dickhead
+Dike
+Dilldos
+Douche
+dumb
+dumbass
+dumbasses
+dumber
+dumbfvck
+Dyke
+f o ck
+f o k
+F U C K
+f u ck
+f uck
+f@get
+f@ggot
+f@got
+f_u_c_k
+faget
+fagget
+faggot
+faggots
+fagot
+fala tio
+fcuk
+fI_Ick
+fl_lck
+fo ck
+foc k
+fock
+fu c k
+fu ck
+fuc
+fuc.k
+fuck
+fucked
+fucker
+fuckers
+fucking
+fuk
+fuker
+fukers
+fuking
+fuuck
+fuuuck
+fuuuuck
+fvck
+f|_|ck
+gook
+hairy snatch
+Hooker
+I hate the gms
+Jackoff
+jailbait
+l31tcI-I
+Lesbo
+Masterbate
+masturbator
+motherfuck
+motherfucker
+motherfuckers
+motherfucking
+niger
+Nigger
+noob
+noober
+noobs
+nub
+nubber
+nubs
+penis
+pennis
+phoney
+phuck
+Poontang
+poser
+posers
+Prostitute
+pussy
+Queer
+screw
+shit
+shut up
+sit on it and rotate
+slut
+sperm
+Tramp
+Twat
+vulva
+wanna be
+wannabe
+wannabes
+Whore
+WTF
+w||-||ore
+zipperhead
+zipperheadtute
+||-||oe
+
+
+
+//--------------------------------------------------------------
+// français (Canada)
+language: fr_CA
+
+Callis
+Ciboire
+Criss
+Tarbanack
+Collis
+ostie
+pute
+saloppe
+
+
+
+//--------------------------------------------------------------
+// français (France)
+language: fr_FR
+
+( ^ )^_^( ^ )
+(^)^_^(^)
+)>
+,,I,,
+,,I,,^-^,,I,,
+,.|..
+..l..
+..l..^o^..l..
+..|.,
+..|., (o_o),.|..
+..||..
+<(
+\/\/hore
+\\/\//hore
+abruti
+anus
+baise
+baisee
+baisent
+baiser
+baises
+baisé
+baisée
+baisées
+baisés
+bande de tâches
+bander
+bare-toi
+barez-vous
+barre-toi
+barrez-vous
+batard
+batarde
+batardes
+batards
+bite
+bites
+bitte
+bittes
+bondage
+bondages
+bonnasse
+bonnasses
+bordel
+bordels
+branle
+branler
+branles
+branlette
+branlettes
+branlé
+branlés
+bâtard
+bâtarde
+bâtardes
+bâtards
+bèz
+c o n
+c o*n
+c*o n
+c*o*n
+c*on
+caca
+cacas
+casse-toi
+cassez-vous
+chatte
+chiasse
+chie
+chient
+chier
+chié
+chiées
+chiés
+cI_Int
+cl_lnt
+clitau
+clito
+cocu
+cocus
+con
+co*n
+con nard
+con nards
+conard
+conarde
+conardes
+conards
+conasse
+conasses
+connard
+connarde
+connardes
+connards
+connasse
+connasses
+conne
+Connerie
+Conneries
+connes
+cons
+couille
+couilles
+couye
+couyes
+creve
+crève
+cul
+culs
+cuni
+cunilingus
+c|_|nt
+de ta mer
+de ta mere
+de ta mèr
+de ta mère
+debil
+debile
+debiles
+débil
+débile
+débiles
+echangisme
+emerde
+emerdent
+emerder
+emerdeur
+emerdeurs
+emerdeuse
+emerdeuses
+emerdé
+emerdée
+emerdés
+emmerde
+emmerdent
+emmerder
+emmerdeur
+emmerdeurs
+emmerdeuse
+emmerdeuses
+emmerdé
+emmerdée
+emmerdés
+en cul
+en cule
+en culer
+en cules
+encule
+enculer
+encules
+enculé
+enculés
+enfoiré
+enfoirée
+enfoirées
+enfoirés
+et ta mere
+et ta mère
+exta
+f o ck
+f o k
+F U C K
+f u ck
+f.uck
+f_u_c_k
+faire mettre
+fcuk
+fcvk
+fela tion
+felation
+fella tion
+fellation
+fI_Ick
+fl_lck
+fo ck
+foc k
+fock
+foutoir
+foutoire
+foutre
+foutrement
+fu c k
+fu ck
+fu.ck
+fuc
+fuc.k
+FUCK
+fuk
+fuque
+fuuck
+fuuuck
+fuuuuck
+fuuuuuck
+fvck
+f|_|ck
+féla tion
+féla tions
+félation
+félations
+gouine
+gouines
+gouinne
+gouinnes
+groniasse
+groniasses
+I hate the gms
+imbecil
+imbecile
+imbeciles
+imbecils
+imbécil
+imbécile
+imbéciles
+imbécils
+Je deteste les gms
+konasse
+konasses
+konnasse
+konnasses
+l31tcI-I
+Lesbien
+Lesbiene
+Lesbienes
+lesbienne
+Lesbiens
+Lesbo
+Lesbos
+maso
+masturbator
+masturbe
+masturber
+masturbé
+masturbée
+masturbées
+masturbés
+meeerde
+meeerdes
+meeerdeux
+meerde
+meerdes
+meerdeux
+merde
+merdes
+merdeux
+morveuse
+morveuses
+morveux
+mouille
+nazi
+nazis
+negre
+negres
+negrillon
+negrillons
+negro
+negros
+nibard
+nibards
+nichon
+nichons
+nik
+nike
+nique
+niquer
+niqué
+niquée
+niquées
+niqués
+nègre
+nègres
+négrillon
+négrillons
+négro
+négros
+ordure
+ordures
+p u t a i n
+p u t a i n s
+partouse
+partouses
+partouze
+partouzes
+pd
+pdd
+pddd
+pdddd
+pddddd
+pdddddd
+pddddddd
+pds
+pedale
+pedales
+pede
+pederaste
+pederastes
+pedes
+penis
+pennis
+petasse
+petasses
+phuck
+pignouf
+pignoufette
+pignoufettes
+pignoufs
+pipe
+pipes
+pisse
+pissee
+pissees
+pisses
+pisser
+pissé
+pissée
+pissées
+pissés
+plouc
+ploucs
+plouk
+plouks
+porno
+pornos
+pouffiass
+pouffiasse
+pouffiasses
+poufiasse
+pouf­fiass
+pouf­fiasse
+pouf­fiasses
+Prostitue
+Prostituee
+Prostituees
+Prostitues
+Prostitué
+Prostituée
+Prostituées
+Prostitués
+prout
+put
+put ain
+put ains
+put in
+put ins
+put1
+putain
+putains
+pute
+putes
+putin
+putins
+putte
+puttes
+puttin
+puttins
+pédale
+pédales
+pédé
+pédéraste
+pédérastes
+pédés
+pénétration
+pétasse
+pétasses
+sado
+salau
+salaud
+salauds
+salaus
+salaut
+salauts
+sale arabe
+salo
+salop
+salopard
+salopards
+salope
+salopes
+saloppard
+saloppards
+saloppe
+saloppes
+salos
+salot
+salots
+se x
+se*x
+sex
+sex e
+sex*e
+sexe
+shit
+skinhead
+sodomie
+sodomise
+sodomisee
+sodomisees
+sodomisent
+sodomiser
+sodomises
+sodomisé
+sodomisée
+sodomisées
+sodomisés
+sperm
+sperme
+spermes
+suce
+suck
+tete de noeud
+tetes de noeud
+tête de noeud
+têtes de noeud
+va te faire
+va te fer
+va te fere
+va te fèr
+va te fère
+vagin
+vagins
+w||-||ore
+zizi
+zizis
+||-||oe
+
+
+
+//--------------------------------------------------------------
+// Chinese
+language: ch_CH
+
+ah gua
+ah kua
+cb
+chau chee buy
+chau chee bye
+chau cheebuy
+chau cheebye
+chau hai
+chauhai
+chee bek
+chee buy
+chee bye
+chee pek
+cheebek
+cheebuy
+cheebye
+cheepek
+ci bai
+cibai
+cibek
+diu
+du lan
+du len
+gong
+hai
+ham ka can
+ham ka chan
+ji bai
+jibai
+jibek
+kan nin na
+kan
+kanasai
+keongkan
+Keong
+keong kan
+knn
+kuai lan
+kuailan
+kwai lan
+kwailan
+lam pa
+lam pah
+lampa
+lampah
+lanpa
+lan ciao
+lanciao
+lan jiao
+lan pa
+lan pah
+lan
+lan tiao
+lap sap
+lap-sap
+lapsap
+le ma
+leh mah
+leh mar
+leh ma
+lei mar
+lei ma
+lei mah
+lema
+lou dao
+lou mou
+lou tao
+ma de
+ma leh
+mah hai
+mah leh
+mahai
+maleh
+mar leh
+na bei
+nabei
+nabe
+nah bei
+nia seng
+nia sing
+pok gai
+pokai
+pokgai
+pokkai
+poo key
+poo key mug
+pookey
+Pu bor
+pu nia bu
+Pubor
+puki
+pukima
+puniabu
+sau pei
+sau seng
+sei
+si gina
+si ginna
+soh hai
+sohai
+sorhai
+tiu
+tu lan
+tu len
+tulan
+
+
+
+//--------------------------------------------------------------
+// German
+language: de_DE
+
+arsch
+Arschloch
+Bastard
+blöd
+blödes
+Fehlgeburt
+fotze
+hure
+Hurensohn
+idiot
+Mistgeburt
+nutte
+pisser
+schlampe
+schwanz
+stricher
+votze
+wichser
+wixer
+
+
+
+//--------------------------------------------------------------
+// Spanish (mexico)
+language: es_MX
+
+( ^ )^_^( ^ )
+(^)^_^(^)
+)>
+,,I,,
+,,I,,^-^,,I,,
+,.|..
+..l..
+..l..^o^..l..
+..|.,
+..|., (o_o),.|..
+..||..
+<(
+\/\/Pendejo
+\\/\//Pendejo
+culo
+Pendejo
+Pendejos
+Pendejisimo
+Pendeja
+Pendejas
+p e r r a
+p er ra
+pe rr a
+perra
+Bastardo
+perras
+pene
+picho
+chupapichos
+eyacular
+estupido
+estupida
+es tu pi do
+gay
+homosexual
+homo sexual
+perra
+malnacido
+malnacida
+malnacidos
+perros
+chinga
+chingas
+puta
+putas
+putamadre
+putamadres
+pedo
+pepa
+tuche
+vagina
+verga
+prostituta
+maldita
+malditos
+maldito
+prosti
+lame huevos
+ano
+jodete
+jodeme
+joda
+cagar
+cagaste
+
+
+
+//--------------------------------------------------------------
+// Finland
+language: fi_FI
+
+hintti
+homo
+horatsu
+huora
+lesbo
+perkele
+saatana
+vittu
+
+
+
+//--------------------------------------------------------------
+// Italiano
+language: it_IT
+
+CAZZO
+FIGA
+TETTE
+CULO
+VAFFANCULO
+MERDA
+PEZZO DI MERDA
+STRONZO
+PIGLIATELO IN CULO
+TROIA
+PUTTANA
+PUTTANA TROIA
+FIGLIO DI TROIA
+FIGLIO DI PUTTANA
+PORCA TROIA
+CORNUTO
+TESTA DI CAZZO
+VAI A MORIRE AMMAZZATO
+FOTTITI
+E CHI SE NE FOTTE
+MINCHIA
+VACCA MERDA
+VADA VIA IL CU
+PUTTANA MERDA
+BAGASCIA
+TESTA DI MINCHIA
+MINCHIA MOLLE
+BASTARDO
+BASTARDO DI MERDA
+BASTARDO DEL CAZZO
+MIGNOTTA
+FIGLIO DI MIGNOTTA
+ECCHISENEFREGA
+ZOCCOLA
+
+
+
+//--------------------------------------------------------------
+// Korean
+language: kr_KR
+
+babo
+cae sheki
+cae sseki
+chae su
+chaesu
+doraii
+pyungshin
+shi bal
+ssi bal
+ssibal
+tatcho
+zzang na
+
+
+
+//--------------------------------------------------------------
+// Burmese
+language: my_MY
+
+bodo
+bodoh
+busuk
+c1ba1
+celaka
+cilaka
+goblok
+jalang
+kimak
+ngentot
+pantat
+puki
+pukimak
+pundek
+sial
+toyol
+
+
+
+//--------------------------------------------------------------
+// Philippines
+language: ph_PH
+
+angas
+baliw
+bobo
+buang
+bulok
+gaga
+gago
+giatay
+igit
+ingak
+iyot
+kalungaton
+kantut
+kantutan
+letsi
+pesti
+pota
+potangina
+puta
+sawsaw
+tae
+tarantado
+tubol
+ugok
+ungas
+yawa
+
+
+
+//--------------------------------------------------------------
+// portuguese (Brazil)
+language: pt_BR
+
+( ^ )^_^( ^ )
+(^)^_^(^)
+,,I,,
+,,I,,^-^,,I,,
+,.|..
+..l..
+..l..^o^..l..
+..|.,
+..|., (o_o),.|..
+..||..
+4LHO
+==D
+\/\/hore
+\\/\//hore
+_|_
+aIho
+ALH0
+b a b a c a
+B I C H A
+b i t c h
+b it ch
+b itc h
+B O C E T A
+B U C E T A
+B.A.B.A.C.A
+B.I.C.H.A
+B.O.C.E.T.A
+B.U.C.E.T.A
+B_A_B_A_C_A
+b_i_c_h_a
+B_O_C_E_T_A
+B_U_C_E_T_A
+BA BA CA
+BAABACA
+BABAACA
+babaca
+babacaa
+babacaaaa
+BAITOLA
+BEIRA-MAR
+bi t ch
+biaaaaatch
+biatch
+bicha
+bioootch
+biotch
+bitc h
+bitch
+bizitch
+biznatch
+BO CE TA
+BOCEETA
+boceta
+bocetaaaa
+boiola
+Boner
+BOQUETE
+Bosta
+BU CE TA
+buceeta
+buceta
+bucetaaaa
+c a r a l h o
+c u n t
+c u nt
+c.a.r.a.l.h.o
+c.aralho
+C.V.
+C_A_R_A_L_H_O
+c_aralho
+c_ralho
+ca.ralho
+ca_ralho
+cacete
+cara!ho
+CARA.LHO
+cara_lho
+caralho
+chink
+cI_Int
+cl_lnt
+clit
+cock
+Cocksucker
+comando vermelho
+COMANDO.VERMELHO
+comando_vermelho
+CRALHO
+cu n t
+cu nt
+cun t
+cunnilingus
+cunt
+CUZÃO
+cuzão
+c|_|nt
+CÚ
+cú
+Dickhead
+Dike
+Dilldos
+Douche
+dumbfvck
+Dyke
+esporr
+eu odeio a level up
+eu odeio os gms
+f o ck
+f o d a
+f o d e
+f o d i
+f o k
+F U C K
+f u ck
+F U D E
+F U D I
+f uck
+f()
+f()da
+F()DE
+F()DI
+F.0O
+F.O.D.A
+F.O.D.E
+f.o.d.i
+F.O0
+F.OO
+F.U.D.E
+F.U.D.I
+f.uck
+f.uu
+F.VV
+f0da
+f0de
+f0di
+F0O
+F[]
+f[]da
+F[]DE
+f[]di
+f_o_d_a
+F_O_D_E
+F_O_D_I
+f_u_c_k
+f_u_d_e
+f_u_d_i
+fcuk
+fcvk
+fda
+fde
+fdi
+fI_Ick
+fl_lck
+fo ck
+fo da
+FO DE
+fo di
+fo.da
+fo.de
+fo.di
+fo0
+foc k
+fock
+FODA
+fode
+FODI
+FOO
+fu c k
+fu ck
+FU DE
+fu di
+fu.ck
+fu.de
+FU.DI
+fuc
+fuc.k
+FUCK
+FUDE
+fudi
+fuk
+fuu
+fuuck
+fuuuck
+fuuuuck
+fvck
+FVDE
+fvdi
+fvv
+F|_|
+f|_|ck
+F|_|DE
+F|_|DI
+gook
+hairy snatch
+Hooker
+I hate gravity
+I hate the gms
+Jackoff
+jailbait
+k.ralho
+K_RALHO
+KARALHO
+kra!ho
+KRALHO
+l31tcI-I
+Lesbo
+M E R D A
+M.E.R.D.A
+m.erda
+m=D
+M_E_R_D_A
+M_ERDA
+Masterbate
+masturbator
+MEEEEEEER
+meeeeeer
+meeeeer
+meeeer
+MEEER
+meer
+mer.da
+mer_da
+merda
+niger
+Nigger
+no cu
+P O R R A
+p u t a
+P.C.C
+p.o.r.r
+P.U.T.A
+P.UTA
+P_O_R_R
+p_orr
+p_u_t_a
+p_uta
+PCC
+PEDERASTA
+penis
+pennis
+phoda
+phode
+PHODI
+phuck
+phude
+PHUDI
+piranha
+po_rr
+Poontang
+POOOOORR
+poooorr
+POOORR
+poorr
+POR_RA
+PORR_
+PORRA
+porrr
+Prostitut
+PU.TA
+PU7A
+PU_TA
+punheta
+pussy
+puta
+PUUT
+pvta
+p|_|
+que cu
+SEU CU
+sit on it and rotate
+slut
+sua galinha!
+SUA VACA!
+suruba
+TERCEIRO COMANDO
+TERCEIRO.COMANDO
+TERCEIRO_COMANDO
+Twat
+V I A D O
+V.I.A.D.O
+V_I_A_D_O
+vaca
+VEADO
+VIADO
+vulva
+Whore
+w||-||ore
+xereca
+XOXOTA
+zipperhead
+zipperheadtute
+||-||oe
+
+
+
+
+//--------------------------------------------------------------
+// russian
+language: ru_RU
+
+eban
+ebat
+hue
+huy
+pizd
+srat
+stal
+suka
+suke
+suki
+suku
+xyu
+áëÿ
+åáàí
+åáàò
+æîï
+ìëÿò
+ïèçä
+ñðàë
+ñðàò
+ñóêà
+ñóêè
+ñóêî
+ñóêó
+ñó÷êà
+ñó÷êè
+ñó÷êî
+ñó÷êó
+ñöóêà
+ñöóêå
+ñöóêè
+ñöóêî
+ñöóêó
+õóå
+õóè
+õóé
+õóÿ
+øëþõà
+øëþõè
+øëþõî
+øëþõó
+
+
+
+//--------------------------------------------------------------
+// thai
+language: th_TH
+
+$hit
+,,l,,
+..l..
+.¤.Ç.Â.
+8:
+8;
+8=
+@ss
+D A M
+Dad Die
+Dog ÍÖé´ your mother
+E RAT
+F      U      C     K
+F   u   c   k   U
+F  U  C  K  YOU
+F A C K
+F U C K
+F(_)CK
+F+U+C+K
+F.U.C.K
+F@ck
+FUCK
+FUG
+F_U_C_K_U
+Fu(k
+FuIck
+Fuc.k
+GADOR
+Ga door
+H I E
+I  hui
+I HEY
+I LOW
+I-HERE
+I-SAD
+K U Y
+K V Y
+K uy
+K(_)Y
+K-------u-------y
+K-V-Y
+K-u-y
+K=U=Y
+KKKKUUUUUUYYYY
+KUAY
+KUY 
+Ka doll
+Ku y
+Kuy
+Kvvy
+Pennis
+Rayum
+S E X
+S EX
+S H I T
+S-U-D
+SEX
+SH IT
+SHI T
+SHIT
+SHlT
+Stuped
+SuDDDD
+Sucka
+Sucker
+Yed Mea
+Yet Yet
+ass hole
+asshold
+asshole
+b i t c h
+b it ch
+b itc h
+baka
+bi t ch
+bit.ch
+bitc h
+bitch
+budsob
+budsop
+bullshit
+c u n t 
+c u nt
+cock
+cu n t
+cu nt
+cum
+cun t
+cunt
+dad u die
+dad you dead
+dam it
+damit
+damn
+dick
+dildo
+dorr
+e dog
+e hia
+e hoy
+e na dan
+e sud
+e wain
+e wane
+e wen
+e- doog
+e-dog
+e.dog
+f   uu    c  k
+f  u   c  k
+f  uck
+f U c  K
+f o ck
+f o k
+f u c k
+f u c k y o u
+f u ck
+f uck
+f v c k
+f*ck
+f*u*c*k
+f+u+c+k 
+f-----------uck
+f-u-c-k
+f-u-c-k-y-o-u
+f......u.......c.......k........
+f..u....c.....k
+f..u..c..k..
+f..u.c.k
+f.u.
+f.u.c.k.
+f.u.c.k.y.o.u.
+f.uck
+f.you
+father die
+father ming daed ror
+father u died
+father you dead
+father you died
+father your dead
+fatherdie
+fu  ck
+fu c k
+fu ck
+fu k
+fu yuck
+fu*k
+fu...k
+fu.ck_u
+fu__________ck
+fuc  k
+fuc k
+fuc u
+fucck
+fuck
+fuck you
+fuckyou
+fuc|(
+fugly
+gadoor
+goddamn
+h e a
+h e e
+h ee
+h.i.a
+he e
+headcock
+hee ban
+heehak
+holy shit
+hooker
+i .......sud.....
+i aon
+i heer
+i here
+i hie
+i hok
+i kajok
+i na hee
+i nar hee
+i ne hee
+i noo
+i-sud
+jaew
+jan rai
+jangrai
+jeaw
+jeddo
+jerk
+jun rai
+k            u           y
+k       y
+k    u      y
+k    u    y
+k   u   y
+k   v    y  
+k   v   y
+k  u  y
+k  v  y
+k u a y
+k u y
+k uy
+k v y
+k vy
+k**u**y
+k+u+y
+k-uy
+k......u.........y........
+k......u......y......
+k.....u.......y
+k....u.....y
+k...u...y...
+k...uy
+k...v...y
+k..u.
+k..u..y
+k..uy
+k..v..y
+k..v.y
+k.u.y
+k.u.y.
+k.uy
+k.v..y
+k.v.a.y
+k.v.y
+k.v.y.
+k/uy
+kkkkkuuuuuuyyyyy
+kkkkuuuuuuuyyyyyyyyyyy
+kkkkuuuuyyyyy
+kkuuyy
+ku y
+ku-y
+ku...y
+ku..y
+ku=y
+kuai
+kuay
+kuay
+kuoy
+kuuuy
+kuuy
+kuy
+kv y
+kv y
+kv.y
+kvay
+kvvvvvvvvvvvvyyyyyy
+kvy
+kway
+kwy
+kyu
+kyw
+k~u~y
+kÇÂ
+layam
+mae yed
+maeyet
+mamungtay
+mang yed
+masterbate
+mather you dead
+mea mung
+mother die
+mother died
+mother fucker
+mother ming daed ror
+motherfucker
+na hee
+na here
+na hree
+naa hee
+nahee
+penis
+pennis
+piss off
+po mung die
+po mung tai
+por dead
+por die
+por meung tai
+por ming tar
+por mueng
+por mueng ror
+por mun die ror
+por mun try
+por mung
+por tai
+por u die
+por u tai
+por ung
+por you tai
+pormung
+portay
+pussy
+pussy
+quai
+ra yam
+rayam
+s H it
+s h i t
+s hit
+s u c k
+s u d
+s ud
+saad
+sadd
+sadnarok
+sh it
+sh!t
+shi t
+shid
+shit
+slut
+sonteen
+su d
+suck
+sud teen
+sudteen
+sux
+vagina
+vian
+vigina
+vulva
+wain
+y e d
+y ed
+yad
+ye d
+yea ke
+yed
+yet  mather !
+yet hear
+yet mae
+yet mai
+yet mang
+yet mea
+yetmai
+yettamon
+your father dead
+your father die
+your father die ?
+your father die?
+your mother dead
+¡ÃÐ ´Í
+¡ÃÐ¨Ùë
+¡ÃÐ´Í
+¡ÃÐ·ÇÂ
+¡ÃÐÊÑ¹
+¡ÃÐÊÑ¹
+¡ÃÐËÃÕè
+¡ÃÐà¨ÕéÂÇ
+¡ÃÐà¨ÕêÂÇ
+¡ÃÐà¨ÕëÂÇ
+¡ÃÐà´éÒ
+¡Ð´Í
+¡ÐÊÑ¹
+¡ÐËÃÕè
+¡Ðà¨ÕêÂÇ
+¡Ðà¨ÕêÂÇ
+¡Ðâ»¡
+¡Ò¨Ùë
+¡Ò´Í
+¡ÒËÃÕè
+¡Òà¨ÕéÂÇ
+¡Ù
+¢ÍÃÇÁà¾ÈË¹èÍÂ
+¢ÒÂµÑÇ
+¤                       Ç    Â
+¤                      ÇÂ
+¤          Ç               Â
+¤          Ç      Â
+¤         Ç        Â
+¤        Ç     Â
+¤       Ç       Â
+¤      Ç         Â
+¤     Ç      Â
+¤     Ç     Â
+¤     ÇÂ
+¤    Ç    Â
+¤    Ç   Â 
+¤   Ç                 Â
+¤   Ç   Â
+¤   Ç   Â   
+¤   ÇÂ
+¤  Ç   Â
+¤  Ç  Â
+¤  Ç Â
+¤ . Ç . Â
+¤ Ã Ç Â
+¤ Ã ÇÂ
+¤ ÃÇ Â
+¤ ÃÇÂ
+¤ Ç   Â
+¤ Ç  Â
+¤ Ç Â
+¤ Ç Ò Â
+¤ ÇÂ
+¤ ÇÒ Â
+¤*Â
+¤*Ç*Â
+¤*ÇÂ
+¤+Ç+Â
+¤---Ç---Â
+¤-Â
+¤-Ã-Ç-Â
+¤-Ç-Â
+¤-Ç-Ò-Â
+¤-ÇÂ
+¤......................................Â
+¤........Ç............Â.........
+¤.......Ç*******p
+¤.......Ç*******Â
+¤.....Ç...........Â
+¤....Ç.....Â
+¤...Â
+¤...Ç...Â
+¤..Â
+¤..Ç..Â
+¤..Ç..Â..
+¤.Ã.Ç.Â
+¤.ÃÇÂ
+¤.Ç.Â
+¤.Ç.Â.
+¤.ÇÂ
+¤//Ç//Â
+¤/Ç/Â
+¤\Ç\Â
+¤^Ç^Â
+¤vÂ
+¤~Ç~Â
+¤¤¤¤¤¤ÇÇÇÇÇÇÇÇÇÇÂÂÂÂÂÂ
+¤Ã ÇÂ 
+¤Ã-ÇÂ
+¤ÃÇ Â
+¤ÃÇÂ
+¤Ç     Â
+¤Ç    Â
+¤Ç   Â
+¤Ç Â
+¤Ç*
+¤Ç*Â
+¤Ç--Â
+¤Ç-Â
+¤Ç-Â 
+¤Ç-ÒÂ
+¤Ç...............Â
+¤Ç.Â
+¤Ç­
+¤ÇÂ
+¤ÇÂ
+¤ÇÇÂ
+¤ÇÇÇÂ
+¤ÇÇÇÇÂ
+¤ÇÇÇÇÇÂ
+¤ÇÇÇÇÇÇÂ
+¤ÇÇÇÇÇÇÇÂ
+¤ÇÇÇÇÇÇÇÇÂ
+¤ÇÇÇÇÇÇÇÇÇÂ
+¤ÇÇÇÇÇÇÇÇÇÇÂ
+¤ÇÇÇÇÇÇÇÇÇÇÇÂ
+¤ÇÒÂ¨ÃÔ§æ
+¤ÇÒÂ¨Ô§æ
+¤ÇÒÂÂ
+¤ÇÒÂàÍéÂ
+¤Í-Ç-Â
+¥ Ç Â
+¥ ÇÂ
+¥-Ç-Â
+¥-ÇÂ
+¥Ç Â
+¥Ç-Â
+¥ÇÂ
+¨Ñ­äÃ
+¨Ñ¹äÃ
+¨ÔëÁ
+¨Ùë
+ªÑ¡ÇèÒÇ
+ªÑèÇªéÒ
+ªÒµÔªÑèÇ
+ªÒµÔËÁÒ
+ªÔ§ËÁÒà¡Ô´
+ªÔºËÒÂ
+´ Í
+´Í¡·Í§
+´Í§·Í§
+´Ù´»Ò¡
+´Ù´ÅÔé¹
+´Ù´ËÑÇ¹Á
+´ÙËÑÇ¹Á
+µ Ù´
+µÍáËÅ
+µÕ ¹
+µÕ©Ôè§
+µÕ¹
+µØëÂ
+µÙ ´
+µÙ´
+¶Í¡
+¶ØÂ
+¶èÍÂ
+·ØàÃÈ
+¹Á·ÐÅÑ¡
+¹ÁãË­è¨Ñ§
+¹èÒÁèÍ
+¹èÒËÁéÍ
+¹éÓ¡ÒÁ
+¹éÓáµ¡
+ºÃÔ¡ÒÃ·Ò§à¾È
+ºÑ¡ËÓ
+ºÑ´«º
+ºÕºËÑÇ¹Á
+ºéÒ»èÒÇÇÐ
+ºêÇº
+»Ôê
+¾è Í ÁÖ § µÒ Â
+¾èÍ die
+¾èÍ¤Ô§ËÂÑè§
+¾èÍ¤Ô§áÁè¤Ô§
+¾èÍ¤Ø³àËÃÍ
+¾èÍµÒÂ
+¾èÍÁÃÖ§µÒÂ
+¾èÍÁÃÖ§ÊÔ
+¾èÍÊÔé¹
+¾èÍàÁÔ§
+¾èÍàÁÔ§µÒÂ
+¾èÍáÁè§µÒÂ
+¾èÍáÁèäÁèÊÑè§ÊÍ¹
+¾èÍáÁèäÁèä´éÊÑè§ÊÍ¹
+¾èÍäÁèÊÑè§ÊÍ¹
+¿Ñ¡ ÂÙ
+¿Ñ¡ÂÙ
+ÁÖ  §
+ÁÖ §
+ÁÖ-§
+ÁÖ§
+ÂÑ¡ÊØà¹çµ
+ÂÑ´áÁè
+ÃÐÂÓ
+ÃØÁâ·ÃÁ
+ÃèÇÁà¾È
+ÃèÒ¹
+Å§á¢¡
+ÅÒÇÊÑ´
+ÅÙ¡ÍÕ¡ÐËÃÕè
+ÅÙ¡ÍÕ´Í¡·Í§
+ÅÙ¡ÍÕÊÒ´
+ÅèÍáÁè
+Ê¶Ø¹
+Ê¶ØÅ
+ÊÃÒ´
+ÊÑµÇì¹Ã¡
+ÊÑµÇì¹Õè
+ÊÑµÇìËÁÒ
+ÊÑ¹´Ò¹ËÁÒ
+ÊÑ¹´Ò¹ä¾Ãè
+ÊÒ-´
+ÊÒ´´
+ÊÒ´ËÁÒ
+ÊÒ´àÍéÂ
+ÊÒ´àÍêÂ
+ÊÒÃàÅÇ
+Ë§Õè
+Ë¹éÒ¤ÇÒÂµÑÇàÁÕÂ
+Ë¹éÒµÑÇàÁÕÂ
+Ë¹éÒ»Ô
+Ë¹éÒÁèÍ
+Ë¹éÒË¹Ñ§áµ´
+Ë¹éÒËÁÒ
+Ë¹éÒËÁéÍ
+Ë¹éÒËÃÕ
+Ë¹éÒàÁç´áµ´
+Ë¹éÒàËÃÕéÂ
+ËÁÍÂ
+ËÁÒ¤Òºä»á´¡
+ËÁÒäÁèá´¡
+ËÂÒºªéÒ
+ËÂÕàËÁç¹ 
+ËÍ¡ËÑ¡
+ËÑÇ´Í
+ËÑÇ¹Á
+ËÓ
+ËÓ¡ÃÐÊ×Í
+ËÓËÁÒ
+ËÕ
+Ë×è¹
+ËéÇ´Í
+Í§¤ªÒµÔ
+ÍÁËÑÇ´Í
+ÍÂÒ¡ÁÕ sex
+ÍÂÒ¡ÍÖº
+ÍÂÒ¡àÊÕÂÇ
+ÍÂÒ¡àÍÒË­Ô§
+ÍÑ³±Ð
+ÍÑ´¶ÑèÇ´Ó
+ÍÒÂÊÒ´
+ÍÒÂàªÕéÂ
+ÍÕ ªÒµÔËÁÒ
+ÍÕ áÃ´
+ÍÕ_´Í¡ 
+ÍÕ¡ÃÐËÃÕè
+ÍÕ¡ÐËÃÕ
+ÍÕªÒµÔªÑéÇ
+ÍÕªéÒ§àÂê´
+ÍÕ´ Í¡
+ÍÕ´-Í¡
+ÍÕ´/Í¡
+ÍÕ´Í¡
+ÍÕµÑÇ
+ÍÕµØê´
+ÍÕºéÒ
+ÍÕÁÐ¢ÇÔ´
+ÍÕÅÙ¡¡ÃÐËÃÕè
+ÍÕÇÍ¡
+ÍÕÊÑ´
+ÍÕÊÑµÇì
+ÍÕÊÒ´
+ÍÕËÍÂ
+ÍÕËÍÂ´Í§
+ÍÕËÑÇÊÓÃÍ¡
+ÍÕËÒ
+ÍÕËèÒ
+ÍÕËèÒÃÒ¡
+ÍÕÍÑº»ÃÕ
+ÍÕà´ÕÂ´
+ÍÕà»Ãµ
+ÍÕà»ç§ÊØ´Ò
+ÍÕàÅÇ
+ÍÕàÇ¹
+ÍÕàÇÃ
+ÍÕàËç´Ê´
+ÍÕàÎÕéÂ
+ÍÕáµ´àºÕéÂÇ
+ÍÕáµÃ´
+ÍÕáÁ§´Ò
+ÍÕáÃ´
+ÍÕâ§è
+ÍÕä¾Ãè
+ÍèÍ¹ÊÑ´
+ÍèÍ¹ÊÑµÇì
+ÍéÒÂ¿ÒÂ
+ÍéÒÂÊÑ´
+ÍéÒÂÊÑµÇì
+ÍéÒÂÊÒ´
+ÍéÒÂÊÒ´ËÁÒ
+ÍéÒÂËèÒ
+ÍéÒÂà Ç Ã
+ÍéÒÂàË-ÃÕéÂ
+ÍéÒÂàËÃÕéÂ
+à Âç ´
+à Âç´
+à Ê× Í ¡
+à Ë Õé Â
+à à Áè §
+à+Âç+´
+à.».Ã.µ
+à.Âç.´
+à.Âç.´.á.Áè
+à.Ê×.Í.¡
+à§ÕèÂ¹
+à§ÕéÂ¹
+à¨´áÁè
+à¨ÊáÁè
+à¨ÕêÂÇ
+à¨×Í¡
+à¨ç·áÁè
+àªèÒÇÑ¡
+à«ç¡
+à«ç¡¨Ñ´
+à«ç¡«ì
+àµÕèÂÁèÍ§ËÃÍ
+à».Ã.µ.
+à»Ãµ
+à»ç¹ ¤ Ç Â ÍÐäÃ
+àÂç ´
+àÂç.´
+àÂç´
+àÂçµ
+àÂç·
+àÂé´
+àÂê´
+àÅÇÁÒ¡
+àÅÇÊÑ´
+àÅÇÊÑµÇì
+àÅÕÂËÑÇ¹Á
+àÇÃµÐäÅ
+àÊÕÂÇ¨Ñ§
+àÊÕÂÇÇéÍÂ
+àÊ×Í¡
+àËÕéÂ
+àËÕéÂ
+àËç´Ê´
+àÍÒ¡Ñ¹»Ð
+àÍÒ·Õ´Ô
+àÍÒËÑÇ¹Á
+àÎ§«ÇÂ
+àÎÕèÂ
+àà¤Á»ÅÔé¹
+ààÁè§
+á µ ´
+á µ´
+á Ã ´
+á Ã´
+á¡è¹áµ´
+á¤Á
+á´¡
+áµ ´
+áµ´
+áÁè§
+áÁèµÒÂ
+áÁèµÒÂËÃÍä§ÇèÐ
+áÁèµÒÂàËÃÍ
+áÁèÁÃÖ§µÒÂ
+áÁèÂéÍÂ
+áÂèàÁç´
+â¤-µ-Ã
+â¤´¾èÍ
+â¤µÃ¾èÍ
+â¤µÃáÁè
+â¤Ãµ¾èÍ
+â¤Ãµ¾èÍâ¤ÃµáÁè
+â¤ÃµáÁè
+ãÍéÊÑ´
+ãÍéÊÑµ
+ä Íè
+ä Íé
+ä.Íé.ËÑ.Ç.¶.Í.¡
+ä.Íéà.ÎÕé.Â
+ä»´Ù´¹ÁáÁèä»
+ä»µÒÂ«Ð
+ä»µÒÂÊÐ
+ä»µÒÂËèÒ
+ä»ËÒÁÒÃ´Ò¤Ø³
+äÍéªÒµÔªÑèÇ
+äÍéªÒµÔËÁÒ
+äÍéªÔ§ËÁÒà¡Ô´
+äÍéªÔºËÒÂ
+äÍé´Í¡
+äÍé´ÍáËÅ¹
+äÍé·ØàÃÈ
+äÍé¹Ã¡
+äÍéºÑ´«º
+äÍé»Ò¡ËÁÒ
+äÍéÃÐÂÓ
+äÍéÅÒÇ
+äÍéÅÙ¡¡ÃÐËÃÕè
+äÍéÅÙ¡ËÁÒ
+äÍéÊÃÒ´
+äÍéÊÃÒ´´´´´´
+äÍéÊÑ¡ËÁÒ
+äÍéÊÑ´
+äÍéÊÑ´¡ÐËÁÒ
+äÍéÊÑ´ËÁÒ
+äÍéÊÑµ
+äÍéÊÑµÂì
+äÍéÊÑµÃì
+äÍéÊÑµÇ
+äÍéÊÑµÇì
+äÍéÊÑ¹´Ò¹
+äÍéÊÒ´
+äÍéÊÒÃàÅÇ
+äÍéË¹éÒ´Í
+äÍéË¹éÒ´éÒ¹
+äÍéË¹éÒµÑÇàÁÕÂ
+äÍéË¹éÒ»Ôê
+äÍéË¹éÒÁÖ¹
+äÍéË¹éÒËÁÒ
+äÍéË¹éÒâ§è
+äÍéËÍ¡
+äÍéËÍÂÂè¹
+äÍéËÑÇ¶Í¡
+äÍéËÓ
+äÍéËèÒ
+äÍéÍèÍ¹
+äÍéà´ç¡àÇÃ
+äÍéà»-Ãµ
+äÍéà»Ãµ
+äÍéàÅÇ
+äÍéàÇÃ
+äÍéàÊÕèÂÇ
+äÍéâ§è
+
+
+
+//--------------------------------------------------------------
+// dutch
+language: nl_NL
+
+aambeienbeffer
+aambeienfohner
+aambeienkop
+aambeienplukker
+aambeienschaap
+aambeienzuiger
+aambeischoffelaar
+aan de muur gespijkerde lul
+aan tienerkontjes verslaafde pisnicht
+aangebrande schaamlip op een stokje
+aangeklede nageboorte
+aangespoelde zeesliffer
+aardappel
+aardbevingsslachtoffer
+aarsgarnaal
+aarsgastripper
+aarsgerichte homo
+aarsglijer
+aarskaars
+aarskoekcommando
+aarslikker
+aarsmaad
+aarsridder van mijn voeten
+aarsridder
+aarsspiermusketier
+aarstoerist
+abbagaza
+abdel
+abjard
+abortuslijkneuker
+abortuspoet
+abubjamongool
+achmed ali illegali
+achterbaks vietnamees hangbuikzwijn
+achterbakse ballenneuker
+achterbakse hypocriete drollenbak
+achterbakse lulmasseur
+achterbakse regenrekel
+achterbakse tering spleetoog
+achterbakse vage hufter with no brains
+achterbakse zeveraar
+achterlijk rot tief pluris kind
+achterlijke abba teen
+achterlijke ajaxanus
+achterlijke alternatieveling
+achterlijke badmuts
+achterlijke big brother fucker
+achterlijke blubberluizennaaier
+achterlijke darmtoerist
+achterlijke debielspast
+achterlijke dildo
+achterlijke dodo
+achterlijke gladiool
+achterlijke grafkut
+achterlijke gadiool
+achterlijke
+achterlijke ondergescheten paardedrol
+achterlijke palingboer
+achterlijke penis
+achterlijke pijpslet
+achterlijke pokkewaal
+achterlijke randdebiel
+achterlijke schelen drekbak
+achterlijke snikpik
+achterlijke wcduiker
+achterlijkekuttekut
+achterlijkste achterbakker
+achteropwerker
+achterstevoren klotenvent
+achteruitgescheten darmtoerist
+afgaanse yoghurtstaaf
+afgebakste schimmelhoer.
+afgebefte biriprengpreng
+afgebefte del
+afgebefte koeienschaamlip
+afgebefte strontkauwer
+afgebeukte heroineslet
+afgefuckte paardelul
+afgekakte poetinlikker
+afgekankerde homolulloklootzak
+afgekeurde gulp
+afgeklove afwazborztel
+afgekloven afwasborstel
+afgekraakte lavabo
+afgekutte paardenbek
+afgekwakte mayonaise die in kutsap ligt
+afgelebber pikkenlikker
+afgelebberd hoerenkind
+afgelebberde baarmoederverslingerde tietvlo
+afgelebberde baarmoederverslingerde tiet
+afgelebberde befkikker
+afgelebberde cut
+afgelebberde drakenkut
+afgelebberde homo penis
+afgelebberde homopatische stront penis
+afgelebberde kamelenkut met hoerenchit
+afgelebberde koeienkut
+afgelebberde paardekuttenkop
+afgelebberde paarden condoom
+afgelebberde paardeneuker
+afgelebberde paardenkut
+afgelebberde paardenpik
+afgelebberde paardepenis
+afgelebberde peniskoker
+afgelebberde pisvinger
+afgelebberde scheefgeneukte dildo
+afgelebberde schurftkut
+afgelebberde soepkip
+afgelebberde spinnenraggekut
+afgelebberde trekeend
+afgelebberde uitgeperste ingevette kneus
+afgelebberde versteende spermahoop
+afgelebberde zuigzoeninkvis
+afgelekte berenscheet
+afgelekte berepruim
+afgelekte boerenlul
+afgelekte diepvrieskut
+afgelekte diepvrieskut
+afgelekte hoerekut
+afgelekte homoaftrekbak
+afgelekte homoaftrekbak
+afgelekte misvormde pombaksmoel
+afgelekte poembaksmoel
+afgelekte zwabber
+afgelikt anuslikkertje
+afgelikte anuskoerier
+afgelikte assenbak
+afgelikte befkut
+afgelikte bommareet
+afgelikte boomkikker
+afgelikte boterham
+afgelikte gore vieze vuile kutturk
+afgelikte haaienneuker.
+afgelikte hoerenloperige kattenkut.
+afgelikte koeienstront
+afgelikte lelijke mogolische homo
+afgelikte moederneuker
+afgelikte paardeneukerige hoerenkip.
+afgelikte paardenhommelpik
+afgelikte paardenlul
+afgelikte spatlapkut
+afgelikte strontneuker
+afgelikte tennisballoper
+afgelikte vaginaslijmlulbefferkut
+afgelikte varkenssmoel
+afgelikte zwarte kut turk
+afgelkoven tandenborstel
+afgelubberde teringleijer
+afgenaaid beffend teringwijf
+afgenaaide pieremegoggel
+afgeneukt gleuforgaan
+afgeneukte afgeleberde rokenjager
+afgeneukte gelikte plug
+afgeneukte kuthoer
+afgeneukte landverader
+afgeneukte makreel
+afgeneukte paardenkut
+afgeneukte spekbuffel
+afgeneukte vieze kankertrekvlek
+afgepijpt leegstaand cobrakutwijf
+afgepijpte beftekkel
+afgepikte hollander
+afgepiste vlooienbal
+afgepoepte koeiepenislikker
+afgeracheld kankerjoch
+afgeragde neukhond
+afgeramde berenkut
+afgerukte asopick
+afgerukte cholerapenis
+afgerukte kippekut
+afgerukte moederpenis
+afgerukte oom neuker
+afgerukte paardenneuker
+afgerukte penis
+afgerukte piemelpijper
+afgerukte tepelconstructie
+afgerukte teringfoetus
+afgerukte trekeend
+afgerukte vibator
+afgerukte zwieberpenis
+afgesabberde hupeltiet
+afgescheurde schaamlip
+afgestoten hersenkwab
+afgestudeerde leegschedel
+afgetrokken blubberende
+afgetrokken homoneuker
+afgetrokken melktiet
+afgetrokken paardenlul
+afgetrokken penisvelletje in een koeievla
+afgetrokken peremuis met uien
+afgetrokken piemelpanty
+afgetrokken pijpgeit
+afgetrokken schaamlippiercingnaaier
+afgetrokken soepkip
+afgetrokken teunneuker
+afgetrokken theezak
+afgetrokken vaginale kutjesbeffer
+afgezabberde droplul
+afgezabberde negerinnentet
+afgezakte boerenpik
+afgezakte lulbroek
+afgezakte papzak van men voete
+afgezogen bokkenlul
+afgezogen konijnentepel
+afgezogen paardelul
+afgezogenpiemellikker
+afghaanse ossekop
+afgtrokken berelul met weerhakjes
+afrikaanse lepravlieg
+afschuwelijke jongen
+aftrap balzak
+aftrekkende hoereloper
+aftreksel van een beer
+afzuigkapje
+agelikt anuslikkertje
+aidsfrikandel
+aidsjunkiezuigende
+aidskop
+aidslijdende drolletikker
+ajacied
+ajax kutclub
+ajax
+ajaxfan
+ajaxied
+ajaxsupporter
+albino neger
+albino
+albinoreetkever
+alcoolstiftbeffer
+alles neukende straathoer
+allochtone turk
+amateur
+amerikaan
+amsterdammer
+amsterdamse hoer
+anaal darmkanaal
+anaal geneukte freak
+anaal kanaal vandaal
+anaal penetrerende fricandel
+anaal platgebefte reetkever
+anaal verwaarloosde
+anaalbeienweglikkende
+anaaleend
+anaalgangstimulant
+anaalgeboren flikker
+anaalkabouter
+anaalkanaaladmiraal
+anaalkanaal
+anaalkever
+anaalneuker
+anaalpaal
+anaalpaling
+anaalridder
+anaalschilfer
+anal probe
+anale bilridder
+anale nageboorte
+anale ridder
+anderlechtsupporter
+animalneuker
+antianderlecht
+anticonceptiepil
+anticonceptionele suppositoir
+antitweedehands geil spermapikkie
+anus vibreranus
+anusacrobaat
+anusastronaut
+anusbek
+anusblaffer
+anusdraaier
+anuskabouter
+anusknager
+anuskrinspiermusketier
+anuskurk
+anuslikker
+anusmasseur
+anuspieper
+anuspiraat
+anusracer
+anusrekker
+anusridder
+anustoerist
+anusverkenner
+anusverknettering
+anusworm
+apenkloot
+apenkop
+apenkopje
+apenkut
+apenluier
+apennaaier
+apenreet
+appetjoek
+arabisch befbeest
+armetierige lippengraaier
+arrogante klootzak
+arrogante ongestelde trut
+asbakbek
+asielzoeker
+augurkenpijperzooi
+baal hooi
+baarmoeder gerukte paarden pik
+baarmoeder neuker
+baarmoederbuikwandschimmel
+baarmoederbuikwantschimmelbal
+baarmoederschurfteter
+baas van kust mijn kloten
+babykonthol
+bacterie op een olifantenkontkorst
+badgans
+badmongool
+badmuts
+badsloef
+baggerbil
+baggerjong
+baklao
+balanus
+balgehakt
+balhaar
+baliekneus
+ballenlikker
+ballenwipper
+baloog
+bamihap
+bamitrekker
+banaalpaal
+banaanklimende klimmer
+banaan
+bananenbeffer
+bananenbuiger
+bananenplukker
+bananenpoephoofd
+bananenpuree
+barakke hoer
+barbequefretter
+bastard
+batistuta
+bavarialoser
+baviaanenneuker
+bavianendrol
+bavianespleetzweetlikker
+beddepisser
+beddezeiker
+bedorven schaamhaar
+beeldschermslet
+bef
+befbarbie
+befbarbie met aardappels met jus
+befbek
+befbezem
+befeend
+beffende klotekut
+beffende slons
+beffiaan
+beffie
+befkanarie
+befketel
+befkonijn
+befkotelet
+befkraam
+beflijster
+beflip
+befslet
+beftekkel
+behanglikker met haarballen
+behangtrekker
+bejaarde keeshond
+bejaarde pijpert
+bejaardenpijper
+beldel
+belg
+belgenbonker
+belgenreetracer
+belgische kietelaar
+berenzeikstraal
+bermslet
+bermslet
+bescheten acnésmoel
+bescheten pisvlek
+beschimmeld hoopje ruksel
+beschimmelde hoerenreet
+beschuitkut
+beschuitlul
+besneden kutjesbeffer
+bevende zoon van een turks geslachte paardepik
+biebsloerie
+big ass
+big brother fucker
+big brother slijmbal
+biggenbeffer
+biggenkip
+biggennaaier
+biggewipper
+bijbal tyfuslijer
+bijna gepesioneerde schijtluis
+bijziende vetklep
+biljartbal met schaamhaar
+bil
+billenbatser
+billenkletser
+billensplitsende kontprikker
+billoze stringelikker
+billy de bibsridder
+bilnaad acrobaat kontholler
+bilnaad acrobaat
+bilnaadslip
+bilnaatlikker
+bilridder
+bilsap
+bilspiermusketierende mongool
+bilspleetatleet
+bilzuiger
+binnenstebuite gepijpte typmiep
+bipsridder
+bitch
+bitch
+bitchass bitch
+blaffende hoer
+blafhert
+blauwe blafkankerlijer
+blauwe smurk
+blinde edeldarm
+bload kankerende computer freak
+bloedgolera
+bloedhoer
+bloedpoepende indianenhoer
+bloedpoeper
+bloedprop
+bloedspuugleier
+bloeiendemaagkankerleiers
+bloemzakpoeper
+blonde type gleuf
+blondje
+bloody fucking moederneuker
+bloody motherfucker
+blote billen gezicht
+boere tiete verneuker
+boeren kanker lul
+boerenboterhammenzak
+boerenhufter
+boerenlul met hondenkop
+boerenpik
+boerenringworst
+boerentrut.
+boerenworst
+boerieneurs
+boeroeoeroe
+boggel
+bohlense afzuipkap
+bokkelul
+bokkenlul
+bokworst
+bollutjesding
+bonkende teringflikker
+bonus irritant
+bonus storend
+boodschappenpot
+boomklever
+boris de beftekkel
+borkoman met aardappels
+boshoer
+bosje konthaar van een duppie
+bosprotter
+boterkop
+boterlurk
+braakbal
+braakselbewerker
+brakende befteckel
+brakkiester
+bram eekhout
+bram vanisterbecq
+breebekbaviaan
+breedbekdiklipkikker
+breedreetantiloop
+breek toch je lul
+brennige zeug
+brent oeyen
+brillenjood
+brillioot
+broccolipulk
+broekschijter
+broekschuiter
+broekventje
+bruin werker
+bruinduiker
+bruine ridder
+bruinhaler
+bruinneuker
+bruinwerker
+brusselmans
+brusselse boer
+bubabobo
+buddy
+bufnukkel
+buidelnaaier
+buitenshuis neukende poepende gnoe
+bungeebaviaan
+bunzing
+bush
+butsnubber
+buttbezoeker
+cactuspijper
+cavianeuker
+celulitkit
+championlul
+cheeseburger
+chickenshit
+chocohoer
+chocoladeprins
+chocoladeridder
+chocopotter
+chocoprins
+chocosmoel
+cholera tentamens
+cholerabak
+clandestiene neukkever
+clitorisbijsnijder
+cocksuckers
+combimagnetron
+cominikutje
+commerciele backstreetlover
+computergestoorde planholddebiel
+computerkloot
+comsumptie verplichtheid
+condoom mapje
+condoom uitlikker
+condoomprikker
+cutkakker
+cut
+dakgootbewoner
+dakhaas
+darmastronaut
+darmknoop
+darmkwal
+darmschasser
+darmtoerist
+darmtoerist
+debiel
+debiele eekhoorn
+defecte vibrator
+dichtgenaaide sufkut
+dichtgeslibd fossiel
+dick
+dickface
+dickhead
+diepvrieshomo
+diepvrieslul
+diepzeeduikendemossel
+dikke drollevanger
+dikkop
+diknek
+dioxinekip
+dipshit
+diskettelikker
+dolgedraaide kakkerlak
+dolgedraaide lul de behanger
+dome kip
+domme anusvergrendelaar
+domme belg
+domme doos
+domme drop dombo
+domme gabber
+domme helmonder
+domme uitspraken op deze site
+domme viagra boerenlul
+dommerik
+donkey raping shiteater
+doodgeneukte varkensbeffer
+doodgerukte afgekloven spermabacterie
+dooie
+dool
+door de anus gedraaide suikerspin
+door de baarmoeder gehaalde eierstok
+door de baarmoeder gerukte anus likker
+door de baarmoeder geslingerde pisnicht
+door de baarmoeder geslingerde tietloze
+door de baarmoeder geslingerde tietvlieg
+door de chlorea gehaalde tyfuslijer
+door de darmen gehaalde hoerenjong
+door de kut gesleurde paarsgeverfde zak
+door de mieren uitgelikte pisnicht
+door de plee geborstelde wceend
+door de plee gespoelde hondedrol
+door de plee getrokken hoerenzoon
+door de ratten besnuffelde mierenneuker
+door de reet getrokken in geblikte eikel
+door de stront gekankerde import turk
+door de stront gesleurde hoerenloper
+door de tyfus gerukte pikzuigende homo
+door de wc gescheten negerin
+door een paard afgeneukte pijpslet
+door een paard afgeneukte teringhoer
+door een telefoonpaal opgezwollen kutlip
+door geneuktephenes leberder
+door get ready geneukte homo
+door gezwelvorming gefroxeerde meukhoer
+door god verdoemde kankerlijer
+door het pleewater gescheten kankerjood
+door je moeder met grote spoed uitgekakte nageboorte
+door je moeder uit model gepijpte klojo
+door jimmy afgetrokken konten beffer
+door kwebbel geneukte kabouter
+door laalaa geneukte plopkoek
+door lsd doordrenkte kutjunkie
+door po geneukt konijn
+door queen amidala geneukte anakin
+door vier kontprostituees verwekt mislukte halvezool
+doordepisgehaaldeafgetrokkenpikkepooier
+dooredollebizongepenetreerdekamelenkont
+doorgeneukte dwarslaesie
+doorgeneukte
+dooshoofd
+doos
+dr. otze
+draadezel
+drachtige pleurisbaarmoedernaaiertje
+drap is scheikundeleraar op het ghc
+dreklul
+dreknek
+dreugneuker
+drie keer plat gewalsde moeraskikker
+driedubbel overgehaalde randdebiel
+driedubbel overgehaalde spermaknikker
+driedubbel overgehaalde vierkantswortel
+driedubbel uit de baarmoeder getrokken vieze vent
+driedubbele doordestrontgehaalde befkanarie
+driemaal door de stront gedraaide hoer
+driemaaldoordekutgenaaidecontainerbaby
+drive in kut
+drokkok
+drolhoofd
+drollenbox
+drollenfanaat
+drol
+drolletje
+drollewipper
+drollie
+drolpijper
+drolveeg
+droogneukpop
+dropkut
+droplullerig balletje
+droplul
+droplulll
+dropstaaf
+drost
+druifluis
+druif
+druipkut
+druplul
+dubbelereetkeespukkelhazewindhond
+dubbelgeconcentreerde terpetijnzeiker
+dubbelgenaaide kippekut
+dufhead
+duilles
+duitsehelmknager
+duizend bommen en granaten
+dumjävel
+dummie
+duncanspaardelul
+duobak bewoner
+dwars overlangsgenaaide gummilul
+dwarsgebakken klootjoker
+ectoplasma
+eeltkut
+eeltlipje
+eendenneuker
+eendereet
+eenogige
+eeuwige druiper
+efteling
+eikelbijtendsnikkelhoofd
+eikelbijter
+eikelbijtster
+eikelboom
+eikel
+eikelbruller
+eikelhoofd
+eikelige theezeefzijker
+eikelloze lulmug
+eikelrandbehanger
+eikelschijter
+eikelwijf
+embryonale nageboorte
+endeldarmreisleider
+endeldarmsapbottelaar
+endeldarmtoerist
+endeldarmtouroperator
+endoplasmatische rectumschrobber
+erwtenbrein
+etterletter
+experimentje
+ezelpoeper
+faalhaas
+fagget
+faggetier
+farizeeër
+faya fucking bitch
+fctwente naaier
+fiboeend
+fibowortel
+fietsbel
+fietspompenlullenbekje
+fietstas
+fjordenracer
+flamoezenhoofd
+flapdrol
+flapkatrol
+flikkerbak
+flikkerbibs
+flikkerbuis
+flikkerpik
+flippo
+flopkind
+flubberkoek
+flubberkut
+fluim
+fluttentrekker
+foemp
+fok
+fokhond
+folkie
+fooraap
+fout
+freggelgezicht
+fries
+frietfietser
+frietfuckers
+frikandellentrekker
+frutkopvarken
+fuckduck
+fuckface
+fuckfazand
+fucking faget
+fuckingbitch
+fuckmohool
+fuckmukker
+fuckpaard
+fuckrukker
+fucksuckcockfucker
+fuufkop
+gabber
+gaberstront
+galo
+galzak
+gamimene pousti tou kerata
+gandalf
+ganzekweker
+gare kankerhoer
+gare loempiadraaier
+garfharsens
+gast bij jerry springer
+gathaartrekker
+gatmaai
+gatneuker
+gatnoedel
+gatplakker
+gay
+gebakken fietsbandvreter
+gechilde kip
+gedrocht
+geelzwarte kanker fc noun turk
+geen hellraiser maar kontracer
+geepileerde paardenkut
+geflambeerde koeienstront
+geflubberdoosde cruxkut
+gefotocopierde strontvlieg
+gefotocopierde strotvlieg
+gefragmenteerde albinonavel uitleurder
+gefrituurde gatgarnaal
+gefroxeerd puppy
+gefucktepaardenneuker
+gehandicaptemongool
+geil biggetje
+geil tepeldier
+geile beftekkel
+geile eend
+geile joep
+geile kloothommel
+geile kut baviaan
+geile pannekoek
+geile pijpebek
+geile pisvinger
+geile struikpiraat
+geile uitgelebberde hondenpenispijper
+geile zaadjunk
+geimplodeerde teelballengezwellen likker
+geitekut
+geitenbeffer
+geitenbreier
+geiteneuker
+geitenkaas
+geitenkeutel
+geitenneuker
+geitepijper
+gekke bassie
+gekke bats
+gekkie
+gekko
+gekrompen lilliputter
+gek
+gelukten abortus
+gemanipuleerde soja scheut
+gemeentewerker
+gemuteerde klitoris
+gemuteerde nageboorte
+genetisch gemanipuleerde kluifkip
+genie van de karpaten
+genitale wrat
+geobsedeerde moeder
+geodriehoekwaldogeneuk
+geparkeerde mossel
+gepekop
+gepenetreerde moederkoek
+gepensioneerde mierenneuker
+geplamuurde taartenkop
+geproptificeerd mannetjie
+gerecycleerde trie
+gerimmeld appeltje
+gerimpeldeukkepukmetgrotebek
+geroosterde kippenlul
+gescheurd diepvrieszakske
+gescheurde schaamlip
+gesjeesde teringkut
+gespierde velopomp
+gespierde veter
+getailleerde tuinslang
+getraumatiseerd inlegkruisje
+gevingerde pijphoer
+gezwaffelfde penisleier
+gezwel
+ghoad saieder
+ghoad
+gierige befkabouter
+gierige geitekop
+giga gay
+ginkelgeit
+gipsnek
+gladiolebol
+gleufdier
+gluiperd
+gnoestinkende rioolkut
+goedkope hoer
+goedkope stinkende rothoer
+goeroeboer
+gonnoroerattekuttenlikkerstster
+goor bef konijn
+goor kankerwijf
+goor stuk hondenvoer
+gooruitgeschorenneukgleufstinkendedel
+gore achterbakse tering tyvus mongool
+gore beftekkel
+gore boeddhist
+gore getectileerde allochtoon
+gore grafkut
+gore graftak
+gore homo
+gore hoofddoek dragende kankermongolen
+gore kutlul
+gore ozonlaagverneuker
+gore pijpslet
+gore pisnicht
+gore protserige reetkever
+gore scrotumbetaster
+gore snotstrontlikkende zakrat
+gore tering grafjanhomokankerfiel
+gore vieze pijplul
+gore vieze uit de reet van een homo geru
+gore vieze vuile bilridder
+gore vieze vuile kanker jood
+gore vleeswarenspecialist
+gore volgevreten varkenskop
+gore vuilnisbakkenragger
+gore wrattenkop
+goregeitennicht met gebruiktspermakots
+goro wrattenkop
+gotvergeite smerige gore achtah de
+gouddief
+goudviskoekvoedselgebruik
+goverdomse klote kerel
+goye
+graf ellende legionellalijer
+graf tak
+grafbek
+grafharsens
+grafkankerhoer
+grafkankerlijer
+grafkankermuskietenjager
+grafkankerpleuristifusteringkutmongool
+grafkankerslet
+grafkop
+grafpleurislijer
+grafsmoel
+graftak
+graftakkenverzamelaar
+grapig
+gratekut met weerhaken
+gratekut
+greppeldel
+greppeldel stoephoer skriel wijf
+greppeldel
+greppelkut
+greppelslet
+griekswiskunde volgende lul
+grind tegel
+groen van de schimmel geworden boerenkol
+groene pater
+groenvandeschimmel geworden boerenkool
+grottezeikerd
+gruiskut
+gulpelikker
+gulpenruiker
+gulpensnuiver
+götünüsiktiim
+haaienkutkop
+hadjimoela
+haider
+half afgemaakte varkenslintwurm
+halfgebakkencondoom
+halfmoale
+halicunerende papagaai
+halve frankskes poeper
+halve worst
+hangende viberatorkut met glijmiddel
+hangtet
+hapsnurker
+hard geworde heksensnotje
+hardcoreluisterende hakkende loser
+harde slijmerige kontneukende hoer
+harige dildobijter
+harm endeldarm
+harry wubs
+hazekut
+heerrukker
+heilige ruftkameel
+heimweemietje
+heineuker
+heksenhoer
+heks
+heksensnotje
+hendrik hiender tosk ut de houtige hage
+hendrik hiendertosk
+henk de spermatank
+henny huisman
+herder
+herder
+herpes hoer
+hersenloze hollandertje ga buiten spelen
+hersenlozedrempelanalfabeet
+hersenscheur
+het bananenlied
+het bejaardenlied
+het stinkt hier naar drap
+hirosjimakop
+hitlerfanaat
+hiv slet
+hoerebende
+hoer
+hoerebok
+hoerekind
+hoereloper
+hoeren loper
+hoeren neuker
+hoerenjas
+hoerenjong
+hoerenvingeraar
+hoerenzoon
+hoerepoeper
+hoerige bastaardzaki
+hoerige neonpaal
+hoerige visse trut
+hoerige vissenkut
+holhaar
+holklont
+hollanders:onze prins is al vant straat
+hollander
+hollandsemoedervanjewerktachterderamenik
+holmaatje
+holnaad zuigend kankerjong
+holstrondverklonteringeter
+holstrontkontverklontering gupje
+holstrontkontverklonteringsmiddel
+holstrontverklonteraar
+holstrontverklontering
+holtor
+holy mongoly
+homelikker
+homeopatische genotsflikker
+homoscheefgepoepte lantaarnpaa
+homoscheefgepoepte lantaarnpaal
+homogeile 3keer om de wereld gepoepte os
+homosexuele apenneuker
+homosexuele pompbaksmoel
+homokind
+homowijf
+homofilius maximalus
+homofiele aap
+homofiele kutinstallatie
+homofiele kutkikker
+homofiele necrofiele pedofiele priester
+homofielemoslimneger
+homo
+homofiel
+homo
+homofielestrontflenspomp
+homohoer
+homopomo
+homo seksuele apenneuker
+homo sexuele mispoepte breedsmoel kikker
+hondekop
+hond
+hondeleven
+hondelul
+hondenlul
+hondenneuker
+hondenpiemellikker
+hondescheiterpoep
+hoofd
+hoofs
+hork
+hosternokke
+houterige spetter
+huistrut
+huite
+huppelkutje
+huppelpuck
+hybride
+hysterisch kieken
+idijood
+idioot van een sukkel
+illegale kankerzwarte
+imbeciel
+impotent aardvarken
+impotente autoradioterrorist
+impotente balzak
+impotente necrofiel
+impotente vibrator
+in de fik gevlogen eicel
+in de fik gevlogen tyfuslul
+in de fik gevlogen tyfusvlo
+in de fik gevlogen zaadcel
+in de kont geneukte baviaanen buttfucker
+in de prullebak geneukte strontvlieg
+in een darm van2 0 meter gerolde clitoris
+in het zaad gedrenkte gemuteerde embryo
+incognikut
+ineengeschupte
+ineke
+ingeblikte eikelrukker
+ingeblikte kameel
+ingeblikte kikkerbil
+ingeblikte moeraskikker op wieltjes
+ingeblikte moeraskikker
+ingeblikte samengeperste klootzak
+ingeblikte strontvlieg
+ingeblikte wormekut
+ingeboort lullenzwijn
+ingedeukte eikellikker
+ingegroeide teennagel
+ingegroeideteennagelschurftnichtmetetter
+ingespoten vaginale kutlul
+ingevroren baarmoedereicel
+ingewikkelde kamelenscheet
+ingewikkelde kamelenstront
+inheemse kakkerlak smoel
+inidibelandatjoekiemaj
+interactieve placenta
+interactieve schobbejak
+interactive vingeraar
+intern aarsspecialist
+internetmalloot
+internetnulgebruiker
+inwendig kontgeneukt embryo
+inwoner uit urk
+iq van een poffertje
+irritante bavianen strontvlieg neuker
+itelkaargevingerde clitoris
+jambek
+jamkut
+janet
+janettebeffer
+jankende biefstuk
+jankende kont
+japanse dakhaas
+jeanetteketet
+jodenkip
+joindeculasneuker
+jointrokende poepfiguur
+joodbuster
+joodejong
+joodsche feyenoorder
+joopie hapsnurkker
+joost
+jopauwels
+jordy
+jullie kunnen niks anders dan schelden
+jullie zijn allemaal mavokinderen
+jullie zijn allemaal zielig
+jurg haider
+kaal gebefte paarderukker
+kaalgeschraapte poepneger
+kaaskneuter
+kaaskop
+kaassouflevreter
+kaasvreter
+kababi
+kadavertrekker
+kadele
+kaffer
+kahba (marrokaans voor hoer)
+kakbuiskrosser
+kakkedoris
+kakker
+kaklul
+kaktuspijper
+kakvent
+kakzuiger
+kale zombie
+kalenderslet
+kameelrukker
+kamelen pijper
+kamelendrijver
+kamelenkop
+kamelenkut
+kamikaze spermazaadcel
+kaneelschijter
+kankahhballah
+kankahlijah
+kankenjood zanddrol
+kanker aap met anaal ingebafde strijkers
+kanker ajax
+kanker baviaan
+kanker casema
+kanker dutchtone
+kanker fietstas
+kanker hoer
+kanker homo
+kanker joden
+kanker leier
+kanker natuurkunde
+kanker reageer buis familie
+kanker stefan
+kanker tering tyfus slette hoerebak
+kanker wiskunde a
+kankerbelg
+kankerbitch
+kankerbith
+kankercomputer
+kankerdanny
+kankerflerk
+kankergurusodeteringpoliopestpokkezooi
+kankerhoertakketeef
+kankerhoer
+kankerjood
+kankerkoud
+kankerlijer
+kankermongool
+kankerrimhond
+kankersnikkel
+kankerteringbeftyfushomo
+kankerteringtyfuskutmongool
+kankertumor
+kankerturk is een asielzoeker
+kankerturken
+kankertyfus
+kankertyfusteringlijer
+kankerverwekkende bacillenverbrenger
+kankerwijf
+kankerzwerver
+kaolo
+kapot geneukte
+kapotgepitste kraterpuist
+kapotgetrokken leegebefte toos tietloos
+kapotjes kauwer
+kapstok
+katheter pijper
+katja schuurman alcoholliste
+katte zak
+kattebakbakkes
+kattenbeffende pedofiel
+kattenbeffer
+kattenverkrachter
+kaulo poeta
+kauwgom kutter
+kauwgomherkauwer
+kees kont vlees
+keeslover
+kelderdel
+kermishoer
+keun
+keuteldeuker
+keuteleur
+keutelknijper
+keutelpoeper
+keutelvreter
+kiekefretter met bananesplitoren
+kiekendrol
+kieken
+kikkeroog
+kiltorusbeschijterer
+kim
+kind van een aidshoer
+kinderkerstkankahkoor likkende pjeut
+kinetisch gemanipuleerde gekke koe
+kippe neuker
+kippeborsie
+kippegatje
+kippelip
+kippelul
+kippen neuker
+kippennaaier
+kippenneuker die een te kleine pik heeft
+kippenneuker uit hilvarenbeek
+kippenwipper
+kippûhteef
+kiss you ass you fucking asshole
+kiwikut
+klamme reetschurft kikker
+klantskalle
+klap kut
+klaphark
+klapkut
+klapkuttende vismeurbak
+klapkut
+klaplong
+klapperende kutto
+klaske
+kleffe tepellikker
+klefklauw
+klefkop
+kleikop
+kleine door een beer geneukte pindarots
+kleine door een beer geneukte pokke pind
+klemtent
+klepzeikerd
+klet
+kleurenspecial
+kleuter
+klieknek
+kliko vreter
+klitklimmer
+klodderhond
+kloefkapper
+klojo
+klokkenluider
+kloosteren
+kloothommel
+kloothoofd
+klootlul
+klootoog
+klootspiraal
+klootviool
+klootwijf enkutzak
+klootzak
+klote reefteef
+klotekippenneukers
+klotelijer
+klotelul
+klotenkammer
+klotenklapper
+klotesloerie
+klotevager
+kluismuis
+klungelaar
+knagende aambeien anaalkanaalvandaal
+kneurd
+kneus
+kneuter
+knikei
+knikezel
+knikpik
+knip nicht
+knoertlikker
+knoflookfreeter
+knurftekakker
+knurft
+knurftige achterbakse hoerenloper
+koeiekut
+koeielul
+koeienaaier
+koeienkut
+koeienwipper
+koekwous
+kojo bemama
+kolenboer
+koljione=klootzak
+kom naar http://syphersweb.hypermart.net
+komkommer likker
+komkommerhomo
+konijnekeutel
+konkerleier
+kont kanarie
+kont kruimel
+kont ridder
+kontaapjeneverbuikzwijntje
+kontbatser
+kontbrommer
+kontcrosser
+konte crosser
+konte gehalueerder
+konte likker
+konte likker uit belgie
+kontebonker
+kontebonkestoter
+konteklotser
+kontekruiper
+kontelikker
+kontenbonker
+kontenneuker
+kontensopper
+kontgatruimer
+kontgenoom
+konthaar
+konthaarverklontering
+konthopper
+kontjebonker
+kontkabouter
+kontklit
+kontknaller
+kontkolenschep
+kontkonijn
+kontkorst krabber
+kontkorstekrabber
+kontkorstenkrabber
+kontkorstkrabber
+kontkorst
+kontkorstschraper
+kontkrijger
+kontkruiper
+kontkrummel
+kontlikker
+kontmaai
+kontmajoor
+kontracefiguur
+kontracer mark
+kontrammer
+kontridder
+kontrups
+kontspiermusketier
+kontsproeier
+konttor
+kontverkoper op internet
+kontvrucht
+koosstinkdoosendoedegroetenaanjemoeder
+kopkaas likker
+kopkaas schraper
+kopkaas slikker
+kopkaasneuker
+kopkluiver
+korneeltandvleesgeel
+korrelatiemongooltje
+kotskop
+krabdakoe
+kraterkop
+kreg de bloedhoest en de blafhik achtah
+krenteklant
+kretskop
+kreupele steroidenlul
+krijtezel
+kringspier
+kringspier musketier
+kringspier musketier
+kringspieravonturier
+kringspiermusketier
+kringspiermusketier
+kringspierportier
+kroatekop
+kroepoekjunk
+kroezelkut
+krokodil
+kromgetrokken reageerbuisbaby
+kromme afgepijpte viagra lul
+kromme tak
+kromme wandelstok
+krotenkoker doodhaan papaver kadaver
+kruikenzeiker
+kruizen ruiker
+krummen hond
+kuiken
+kunstkop
+kussenbijter
+kust men kloten
+kut jood
+kut met klapdeuren
+kut mongool
+kut tieves tering kut holanders
+kut vitesse
+kut wup
+kutanus
+kutbeer
+kutbrommer
+kutbuitenlanders rot op naar je eigen la
+kutfilee
+kutgabber
+kuthaar
+kuthola
+kuthollanders
+kuthomofielegeliktemoederturkhoer
+kuthoofd
+kutjanus
+kutje bef
+kutje foeboe
+kutje frikandel
+kutje karne melk
+kutje schaamhaar
+kutje. kutje. kutje likku likku
+kutjes beffende koeien naaier
+kutjeslikker
+kutkadaver
+kutkapper
+kutkinderpedobeffer
+kutkind
+kutkip
+kutkoeketende aambeilikkende pedofileopa
+kut
+kutkrabber
+kutkruik
+kutlikkerslikker
+kutlulhomofielafgeliktepaardepiel
+kutlul
+kutmongool
+kutmuts
+kutnerd
+kutsap
+kutsnol
+kuttekop
+kuttekop
+kuttelikkertje
+kuttelikker
+kuttenbeffer
+kuttende kankermongool
+kuttenkijker
+kuttenkind
+kuttenkop
+kuttentuffer
+kutterdehoer
+kutter
+kuttesnuffelaar
+kutverdomme
+kutvochtlikker
+kutwijf
+kutwortel
+kutzooi wat een tering homepage
+kwabberbek
+kwakslikbakbeest
+kwantumhoerenjong
+kwatsige stoelpootzuiger
+kweddelaar
+laaf
+laag vliegende tepelrups
+laagoverdegrondvliegendspermazuigendzoog
+laagvliegendereptielenverkracter
+laagvliegendereptielenverkrac
+labberdodderier
+laffe anoniempjes
+lage loon slaaf
+lamgezeken koeiefoef
+langharige herdershond
+langharige tekkel
+langharigebektekel
+langschaamharigeplatbektekkel
+langsdebaarmoederuitgevingerdkutwijf
+lantaarnpaalpijper
+laplazeruslijer
+laplip
+lark
+latente homofiel
+leaseneger
+lebberdel
+lebberflebber
+lebberkonijn
+lebberkut
+leeggepijpte boerenpiet
+leeggerukte dildopik
+leeghanger
+leeghoofd
+leerkracht
+lees van onder naar boven
+lekbek
+lekke bakfiets
+lekker een meisje likken
+lekker likken
+lekker pijppertje van me
+lekkere geile piemelneuker
+leklul
+lelijk blafhert
+lelijk foorwijf
+lelijke kut
+lelijke nageboorte
+lelijke stink trol
+lelijke stontslurpende ruggeklimmer
+lelijke stronzak
+lelijken befaap
+lelijkerd
+lennaert wipper
+lennart crutzen uit vught
+lepelenbuik
+leppelbek
+lepralijer
+lepralul
+lepravlieg
+leraar
+lesbies nijlpaard
+leuke jongen
+levende nageboorte
+leverlip
+liaanschijter
+libresse string kwijler
+lid_van_het_belgisch_koningshuis
+lieverd
+lijkebonker
+lijkenbekijker
+lijkenpikker
+lijmsnuiver
+lik me reet
+likdoorn
+likkiepikkie
+liliputter
+limburger
+links uit de kontgevingerd stukje stront
+linksuitdebaarmoedergehufterdekuthufter
+liplap
+lip
+litsentrekker
+loco
+loeder
+loempiadraaier
+loempiavouwer
+loesoebeekaka
+lompe soepkip
+loser
+loslopende homo
+low motherfucker
+lui varken
+lul maar raak snaak
+lul met oortjes
+lul met vingers
+lulbek
+luldebehanger
+lulhannes
+lullebeffer
+lullebutser
+lullekop
+lullelikker
+lullemepul
+lullenlikker
+lulletjer rozenwater
+lulletje poetskatoen
+lul
+lulletje rozewater
+lullo
+lullo
+lulzuiger
+lulzweer
+luuk ter denge
+maagdarmleier
+maagdarmpier
+maaghond
+maagkankerhonden
+maagzuur
+maaie kop
+madurodampiemel
+mafjanus
+malaka
+mallerd
+manneke pies pijper
+mannepapverslaafde
+manuel
+mapan pang
+marcel is een ongelooflijke kutkoter
+marcel
+marco is een dikke bolle aap
+marco kleinrot is een dikke bolle aap
+marco kontenneuker mark
+marco varkens neuker
+mariken
+masturberende kontkorst
+matennaaier
+matennaaiers
+megadoos
+megagat
+megakankerteringvis
+megakwezel
+meganerd
+meganurt
+meiden zaols sofie beffer
+mein loel ist geblesseerdtzxt
+melige dikkerd
+meneer koeper de poepsnoeper
+menstruatievochtabsorptiekern
+mercedes
+mestduwer
+mestkever met aambeien
+mestneukers
+mestschurftluis
+met 14 soorten zaad gevulde rubbereter
+met aids gepassioneerde vrijetijdsflikke
+met bulten besproeide lul
+met een rampboeing meegevlogen zwarte doos
+met een rietje uitgezogen varkenspiet
+met je ballen aan je tong gepiercde icqterrorist
+met je gierende kloten
+met je gierende nekharen
+met je grinttegel kop
+met je hoerige kankerkop
+met je maaienbek
+met je uileballewangen
+met miniatuur lul.
+met moleculen doorspikkelde leegte
+met schaamhaar begroeide flamingo
+met stront opgevulde linkerkeelsgat
+meteenregenpijpinjeanusgestokenklotehomo
+meute
+meuteneuker
+mexicaanse schapenkut met klapdeuren
+middeleeuwse rugridder
+mieke
+mieren neuker
+mieren pijper
+miereneuker
+mierenneuker
+mierenneukertje
+mierenneuker
+mierenzeker
+mierepoeper
+mieretiet
+miessellikke daarm
+millenniumbug
+millenniumbuk
+min kadaver
+minimaneuker met die puist
+minimaxischeefgeneukte pombaksmoel
+minne holle
+misbaksel
+miskraam
+mislukking van moeder natuur
+mislukt genetisch kernproefje
+mislukt produkt van je vaders proppensch
+mislukt uit je moeders dooie zaadhoek gevallen trekvlek
+mislukte abortus.
+mislukte abortus
+mislukte afgelebbrde verrot geneukte kut
+mislukte bril haas
+mislukte embryo
+mislukte gekloonde teringtubie
+mislukte gepijpte hollander
+mislukte kiwi
+mislukte nageboorte
+mislukte
+mislukte pinguïnscheet
+mislukte piwi
+mislukte roze ridder
+mislukte verrotgeneukte strontturk
+mislukte viagrapil
+misluktproduktvanjevadersproppenschieter
+mismokten osseklooït
+misneuksel
+mispoepte lavabo
+misselijke kankerkop
+mister bean
+modderkindje
+modieuze neger
+moederkoekiesmonster
+moederneuker
+mona
+mondeling tentamen
+mongolenhandje
+mongoolkop
+mongool
+monk
+mooie blafkuitschaap
+mooie pisvinger
+mooie trekpop
+mooie uitgescheurde flapdrol
+moonface
+morpion
+moslim
+mossige gangbeng sterreclamekijkend glashoertje
+mossigen boom
+mottige kloek
+mottige spijskoek
+muffe teelbal
+mufkut
+muisneuker
+muizetrekker
+muppet
+murenzeiker
+mutsefluts
+muts
+mutten
+naaibeer
+naaie kind
+naakte bondjassen neuker
+naar friet stinkend menneke pis
+naar iemand
+naar urine ruikende wcborstel
+naar vis stinkende hollandse kut nichten
+naarling
+naast de pot gescheten marokkaan
+naast het toilet gescheten marokkaan
+nagasakistud
+nageboorte van een loopse teef
+nageboortenueker
+nageboorte
+nagelfrats
+namaak pik
+namaak reetkever
+nammak pik
+nare vent
+nare bruut
+nar
+narjimech met frietjes
+nat zwammetje
+nathalie
+natnek
+natte hen
+natte knakworst
+natte nel
+nederlander
+negerinnenneuker
+neptet
+nerd
+netekop
+netslet
+neuco
+neuk een orchie bij de waldsang
+neuk iemand van eige lengte
+neuk je moeders poes
+neuk je oma en trek je mierelulletje weg
+neukbeer
+neukend kontvocht
+neukende kippennaaier
+neukende mogolische hond
+neukerette
+neukfout
+neukfoutje
+neukofiel
+neukpop
+neus alla suikerbiet
+neusneuker
+neusneuker
+neuspeuterpaling
+nichterige nicht
+nichterukker
+niek
+nienke neuker
+niet helemaal bijdetijdse poetin leier
+nieuwsgroepposter
+niggahhzzz skapipapoe
+nivea hoofdje
+nonnepreut
+nosem
+npp npp npp npp npp npp npp npp npp npp
+nubian cybergoat fucker
+nugfjlbnjgflhuh
+nulprofessor
+obi jan kenobi
+odol
+oebelkit
+oelewapper
+oellie
+oen
+oeps neukfout
+oerenbok
+oeroeboeroefoeki
+oetel
+oetlul de behanger
+oetlul zonder haar
+oetlul
+okkernoot
+okseltor
+oké dries
+olievlek
+olifanten lul
+olifantenpijper
+olifantenrukker
+olifantenschaamhaar
+omgebouwde kutflikker
+omhoeggevallen reetbaggereir
+omhooggerokken mestbakkes
+omhooggescheten boer
+omhooggescheten mierennueker
+omhooggevallen tuinkabouter
+omhooggevallen vliegendrol
+omhooggevallen wceend
+omhooggevallen wcmadam
+onaardige jongen
+onderbroek met remspoor
+ondergepiste straattegel
+ondergezeken pispaal
+onderontwikkelde vervelende broodkoe
+onderstaande 4horen bijelkaar
+onderwatervliegkameel
+ondoordringbaarverk
+ongecultiveerde ajuin
+ongestelde buikspier
+ongestelde cavia
+ongestelde snorremans
+ongewassen poes
+ongewenst nageboorte
+ongewenste kutknuffelaar
+onkieder
+onnafgetimmerde trapleuning
+onnoezel stoem vetprutwoaf
+onnozel manneke
+onnozele anderlechtjood
+onozel manneke
+onrekbare clintonpik
+onsympathiek personage
+ontploft kankergezwel
+ontplofte knakworst
+ontplofte kuttekop
+ontzettende haas
+ontzettende herman
+ontzettende puddingbuks
+onvoldaane miereneuker
+onze naam wordt hellraiser
+oorlellenneuker
+op alleskruiper
+op de kachel gespoten reageerbuis baby
+op de wallen gemaakt mannelijke hoer
+op de wallen gemaakte mannelijke hoer
+Op jonge leeftijd door St.Nicolaas gepaalde pijpknechtje
+Op zijn frans genomen kinderlijkje
+opblaaspoppen leegslurper
+opengerete zakje nootjes met aardbeiensm
+opengeretezakjenootjesmetaardbeiensmaak
+opgebefte printervulselvervanger
+opgeblazen kamelenscheet
+opgedroogd namaakkutsap
+opgedroogd protonplasma
+opgedroogde olifanten condoom
+opgedroogde spermaspons
+opgedroogdeolifantencondoom
+opgefokte breedsmoelkikker
+opgefokte egelneuker
+opgefokte moeraskeutel
+opgefokte oelewapper
+opgefokte oelewapperscheetluis
+opgefokte stier
+opgegraven veenlijk
+opgemaaktemaandverbanddragendehuppelende
+opgevlochtengenaaide balhaar
+opgevlochtengenaaide balhaar
+opgevuld provençaals kieken
+opgewarmd kadaver
+opgezette cobbe
+opgezwollen schurftkut
+opnieuw
+opperslet
+opstalzwendelaar
+optiefen kankerhoer
+oranjeboomdrinker
+oroschpu=hoer
+ortopedishe gehandicapte
+ossdorp pussy gabber
+ossekut
+ossenaar
+oud afgedankte trol
+oude afgedankte trol
+oude buck
+oudeaapdieonderkalizit
+ouwe grafzerk
+ouwe gurk
+ouwe kippendief
+ouwe pisvlek
+ouwe rukker
+ouwe zadelruiker
+ouwekutjanus
+over het paard getilde strontzoeker
+over sexse behang trekker
+overjarigebejaarde
+oversekste kankergozer
+oversekste klipgeit
+oversext fluogeel neukkonijn
+oversexte tuinkabouter
+oversextebalabberdeoventapir
+overtijdig bevallen baarmoederaanhangsel
+paardelul met aambeien
+paardelullevelekop
+paardelul
+paarden homo
+paardenbeffer
+paardenfietser
+paardenhoerenkind
+paardenlul met aambeien
+paardenlul
+paardenpijper
+paardenverkrachter
+paardepenis
+paardepiellepoetser
+paardezwengel
+paarsgeverfde teletubie
+paashaasschaamhaarverzamelaar
+paddekoe
+palestijn
+pannekoek
+pantjang kontel
+pantoffelpekdiertje en de blubberbleffer
+papa hopeloos
+papzak
+parfumtrutdievergelekenmeteenlantraan
+parkeerhufter
+parkingslet
+parkvijverwaterdrinkend halfhoofd
+patathoer
+patjakker
+patsy
+pauper
+pauper
+pauperbak
+pedaalemmervreter
+pedaalslaaf
+pedofilatelist
+pedofilistischeachterbakesekontragger
+pedokleptofilatylist
+pedokleptpfilatylist
+pedopijper
+pedopyrofilatelist
+peerelikker
+peewee
+pendew
+penetratiekamp
+penis brie eter
+penis koker
+penisafrukker
+penisboer
+penisknijper
+peniskoker
+peniskoker
+penispus
+penisrukkende matneuker
+pepslet speedhoer
+pepslet
+perenplukker
+personeelsnaaier
+pessariumschraapsel
+pestkankerlijer
+pestpokkepleurislijer
+pesttyfus
+peter
+peukeneuker
+peul
+peut de cheval
+pielepapper
+piemel zweet
+piemelgaar
+piemelhoofd
+piemel
+piemeligekutwijf
+piemel
+piemelkonter
+piemelpasta
+piemelzak
+pierenbeffer
+pierewaaier
+pieter
+pijpajuin
+pijpbekje
+pijpbek
+pijpelaar
+pijpeling
+pijpende boer
+pijpende schoft
+pijpertje
+pijpgeit
+pijphond
+pijpkonijn
+pijpkonijntje
+pijpleiding
+pijpluis
+pijpmuts
+pikken besnijder
+pikkeneuker
+pikkelikker
+pik
+pikje kut andijvie
+pikkenlikker
+pikketrekker
+pikkenrukker
+pikaftreksel
+piklikkende arnhemmer
+pikhoofd
+pikvrucht
+pikstraal
+pikzuiger
+pinda
+pindaknol
+pinkheadhenk
+pinobats
+pinopopper
+pipo
+pippie krijgt een wippie
+pisbakkemuil
+pisbakkennicht
+pislip
+pislul
+pismiet
+pisnicht
+pispaal
+piss out
+pisvinger
+pisvlek
+pitloze-druiven kin
+piwi de gelikte herdershond
+piwi de schele vislul
+pjotr
+plakkende slijmbal
+planholddebiel
+plantaardige spermakop
+plaspop
+plasser
+plastice hersenkut
+plastice hersenlul
+platbektekel
+platgebefte neonazi
+platgebefte olifantenkut
+platgeneukt hangbuikzwijn
+platgescheten viagra tepelvlieg
+platgestampte balzak
+platte strijkplank
+platte zak
+plattelandsgenotsknuppel
+plavuiskruiper
+pleureskontridderkabouter
+pleurespeanut
+pleurespeunut
+plintenkruiper
+plintenkut
+plofkop
+plois
+plompzakker
+plopkots
+ploprukker
+plork
+pluisje
+plures leier
+pluris leier
+poedelballetje
+poep brakende bejaarde
+poepchinees
+poepdrol
+poepdude
+poepduwer
+poepeend
+poepeloere
+poepende pedo
+poeperd
+poephaan
+poephomo
+poephoofd
+poepjannet
+poepje
+poepkameel met spermakut
+poepknoeier
+poepkop
+poepkut
+poeplul
+poepneus
+poepnicht
+poepsexhomo
+poepstampah
+poepstamper
+pokai
+pokkehoofd
+pokkepik
+pokkesnol
+pokkewijf
+polio agent
+pombaksmoel
+ponypik
+pooier uit het pooiersflat
+populiare speelt
+populiare spleet
+porno kabouter
+pornostier
+portiek hoer
+portiekhoer
+portiekslet
+poschuiter
+postzegellikker
+pot vol koffie
+potjandriepoepefloep
+potje clitoris vet
+potloodventer
+potschijter
+potte truus
+potter
+potverdikie
+potverdikkie
+potver
+potverpillenpap
+potvolblomme
+poubelle
+pratchkop
+pratsjel
+pretentieuze del
+pretvlekgezichtje
+preute
+prikko
+prins van de bruine dreef
+priswalsky jongeheer
+prittelekkerken
+produkt van incestueus geknutsel
+proleet
+proletarier
+prostitueewandelaar
+protgrotfrotter
+prototype van een scheefgebefte dildo
+pruster
+prutser
+prutzeeuw
+psychisch gestoord klein kutventje
+psychologische bianca beffer
+puberkop
+pudding gezig met elastieke klap kuite
+puddingbek
+pudingbugs
+puist uitzuiger met je puist in de broek
+puistenhoerenkindje
+puistenkut
+pukkel kop
+pukkelkut
+pummelige plaggenrukker
+punk ass nigger
+purmy
+puta madre
+putdeksel openerkunde leraar
+putgleuf
+putjesschepper
+puustebubbelkrut
+race kakker
+racekaknaaiende kutjood
+racekaknaaier
+raceneger
+radicalekutkip
+ralf
+rampetamper
+rampmanager
+randdebiel
+randdebiel
+ranskip
+ranzige rattenteef
+ranzigeviezegoreuitgedroogdetarrel
+rasmongool
+rattebacterie
+rattendekker
+rattenkind
+rattubakkuinfectiebacterie
+raymondklaiberteveelgeneuktebounty
+raymond
+reedracer
+reefteef
+reet atleet
+reet racer
+reet schoffelaar
+reet veter
+reetatleet
+reetbooïrder
+reethond
+reetketelsteenleier
+reetketelsteenvreter
+reetkever
+reetkever scrotum
+reetkever
+reetmakker
+reetneef
+reetneuker
+reetpezer
+reetracer
+reetridder
+reetruiter
+reetrunner
+reetspleetatleet
+reetspleetskringsluitspier
+reetveeg
+reetvetervreter
+reetvliegkever
+reetzweer
+reetzweetzuurderige
+regenpijpbeklimmer
+regina of buffel
+relnicht
+remko
+reppende embryo
+resultaat van jaren inteelt
+retelikker
+retenlikker
+retenragger
+retenspleter
+ric
+ricardo groen in het wouk
+ridder van de bruine ster
+ridder van de ronde sluitspier
+ridder van de ronde ster
+ridder van het zwarte gat
+rietflikker
+rijgerschijt
+rik willemsen
+rike
+rimboesprinter
+rimpelkut
+rimpelkut
+rioolduiker
+rioolwerkende gidsleider
+ritse ruiker
+robot met constructiefouten
+rochelende gnoom
+rode dakschijter
+rodeafgeruktebekakteontvildekoalakak
+roeffi
+roestbek
+roetmopneuker
+rolschaatsnijlpaard
+rolstoel volleyballen in een lift
+rolstoelrijdende wijkslet
+rompelkut
+ron brandstichter
+roodgebrand schapenkontje
+rooie dakduvel
+rooie dakschijter
+rooie konthoofdbaviaan
+rooie kwartjespooier
+rooie reet roeier
+rooodkontbafiaan neukende b.s.c drager
+rotgezekenlantaarnpaal
+rotjog
+rotte badsloef
+rotte hindoe
+rotte kanarie
+rotte kut
+rotte kutjeslikker
+rotte kutkop
+rotte metteko
+rotte teun
+rotte vis
+rotte zweetwurm
+rotten tist
+rottend geel pukkelprut
+rottend kadaver
+rottetandenlikker
+roy konings
+roy
+roy zoetemelk
+roze ridder
+rozeflikkerlikkendegesjordekutgay
+rozeflikkerlikkendetyfesgay
+rubber nek
+rudy van doesselaere
+ruftende terinturk
+ruftkikker
+ruftkufter
+ruftkut
+ruftlaken
+rug ruiker
+ruggenieter
+ruggenridder
+ruggentuffer
+ruggeridder
+ruggetuffer
+rugracer
+rugridder
+rugridder
+rugrukker
+rugtuffer
+ruige reet ridder
+ruigridder
+rukeend
+rukkerbi
+rukker
+sabbelaars
+sappig boazeke
+sapschijter
+satanistische hielenlikker
+satanistische kuthoer
+satansucker
+schaamhaaraambeizoeloehavik
+schaamhaarverzamelaar
+schaamlippenbalsem
+schaamlippoetser
+schaamluisvreter
+schaamluis neuker
+schaamluis
+schaamlul
+schaamvlooi
+schaapherder
+schaap
+schandknaap
+schapehoer
+schapen beffer
+schapenlikker
+schapenneuker
+schapenzak
+schapezak
+scheef gepoepte lavabo
+scheef uit de kut getrokken schubbelul
+scheefgeneukte anusinspecteur
+scheefgeneukte
+scheefgeneukte everzwijnepoeper
+scheefgeneukte kontgebonkte kutbrommer
+scheefgepoepte droplul
+scheefgepoepte pinguinscheet
+scheefgepoepte tramroute
+scheefgezakte lavabo
+scheel kadaver
+scheisse kerrel
+scheldwoordennerds
+scheldwoordenverzamelaar
+schele anuskanaal
+schele badmuts
+schele makreel
+schele motvlinder
+schele otter
+schele postbode
+scheurend rubber
+scheve lavabo
+scheve otter
+scheve vulva
+schief gepoepte lavabo
+schieve lavabo
+schijn dooie
+schijnheilige willem
+schijtbak
+schijtbak
+schijteikel
+schijthoosachtige mens
+schijtlijster
+schijtlul
+schijtneef
+schimmel op mijn lul
+schimmellul
+schimmeltenenvreter
+schjwansjoep
+schmiechtekop
+schoenenverkoper
+schoonmoeder
+schorriemorrie
+schrale barbie
+schrale darm
+schrale hoen
+schriemtoute
+schubbenkop
+schuifslet
+schuimbekkende dreknek
+schuimkut
+schurftbal
+schurftdebiel
+schurftige hond
+schurftige knurft
+schurftige varaanneuker
+schurftkut
+schurftleguaan
+schurftvretendeinteeltziekte
+schuurspons
+schwanzhapper
+schweinerauzie
+see kee loo
+see kee poh
+see paad kong
+see paad poh
+seikoos
+seksueel gefrustreerde raspoot
+seniele vetlap
+sepke
+seut
+shadow de geitenneuker ha ha ha
+shele kamelescheet
+shijtwijf
+shit faced cock master
+shit hè
+shitkip
+shitzoon
+sibbo-geval
+siberische pijpmuis
+siefiluslijer
+skrielo
+slagershoofd
+slaplullend kadaver
+slet
+sletigge kuthomo
+slet
+slettebak
+slijmschuiver
+slijmslak
+slikgans
+slikslet
+sloeber
+sloerie
+slokdarm met hulpaccessoires.
+sloove
+sluitspier musketier
+sluitspiermusketier
+slumpie
+smeer beer
+smegma vreter
+smegmagezicht
+smegmaknagende slettebak
+smegmazuiger
+smerc
+smerige bloedpoeper
+smerige pisnicht
+smerige zoeg
+smetlies
+smoel om stront op te sorteren
+smoks
+snackbar harses
+sniekerige probeermeneer
+snikkellikker
+snikkelwikkel
+snoeklul
+snokbaviaan
+snol
+snolle bolle kind
+snol
+snor of te wel befborstel
+snotbol
+snotreet
+snozel
+snufbuks
+snufkut
+snuiverzak
+soaker
+sodeju
+soephoer
+soepkip
+soepkop
+soepkut
+softwarevreter
+somalier
+son of a bitch
+son of a motherless goat
+soort van de klein huizekes
+sopkop
+sorry max
+sorry voor mijn zoontje zijn scheldwoord
+sorry: endeldarmtourist was van:
+spacecakevreter
+spaceteef
+spagaatjager
+spasme
+spastische mongolische rukker
+spast
+spastje
+spatbek
+spatbol
+speedhoer
+speijtuut
+spek beffende graftak
+spekkhut
+speknek
+spekreet
+speliologische konttoerist
+sperma eter
+sperma snol
+spermacontainer
+spermakanon
+spermaluier
+spermaslikkende kankerhoer
+spermaslurper
+spermasnol
+spermaspons
+spermaspuitende anushopper
+spermavlek
+spermazuigende kontneukende hoer
+spermazuigende teringnek
+sperminator
+sperzieboon
+spetsgere
+spleetjes trekker
+springlul
+sprinkhanen beffer
+sproeikut
+spruitelul
+spuitende colombiaan
+spuithoer
+staalholfoedraal
+staatsmongool
+staatssecretaris
+stangenpoetser/darmtoerist/rugtuffer
+steenezel
+steigerpijp
+stelletje endeldarmtoeristen
+stelletje ruige darmstampers
+sterf zeven doden
+steroprekker
+sterrenbeffer
+steuntrekker
+stierelul
+stieren naaier
+stierennaaier
+stijve penis
+stik sterf rot verteer donder op lazernk
+stilbo
+stindende klittenlikker
+stink jood
+stink turk
+stinkbek
+stinkbes
+stinkbikkel
+stinkdeken
+stinkend hoerenwijf
+stinkend karreken
+stinkend schijthuis
+stinkende achterlikker met strontlucht
+stinkende grafteringmarokaan
+stinkende joint rokende junk
+stinkende knurftknoedel
+stinkende rukker
+stinkende spermapiet
+stinkende tepelkever
+stinkende zeerob
+stinkerd
+stinkflikker
+stinkhoer
+stinkhol
+stinkjood
+stinkpila
+stinksnol
+stinkvinger
+stoeme turk
+stoepdel
+stoephoer
+stoere tuinkabouter
+stoet`nvretter
+stom huppelkutje
+stom lichaam
+stom stuk nageboorte
+stoma beffer
+stomabeffer
+stomazuiger
+stome doos
+stomme bananenplukker
+stomme bosmongool
+stomme doos
+stomme eikel
+stomme herder
+stomme kankerjood
+stomme kud
+stomme kut zwanen zak
+stomme mislukte randmongool
+stomme oetel
+stomme paterskut
+stomme twan
+stommelompeeikeligeterintyfeskankerpoot
+stommenezel
+stommerd
+stond gemarineerde graftak
+stonede garnaal
+stout kind
+stoute vis
+stouterd
+straathoer
+strae
+strakke konthaar
+strand janet
+strandbal
+strandjanet
+strandjannet
+strandsexhomo
+streepje
+strondkut
+stront hond met paarde kop
+stront stoter
+strontdegusteerder
+stronthommel
+stronthoofd
+strontkever
+strontlikker
+strontmoejer
+strontmongool
+strontnaaier
+strontnicht
+strontpoppie
+strontrevet
+strontridder
+strontsliert
+strontsnol
+strontstamper
+strontstekker
+strontstomper
+strontvlieg
+strontworst
+strontzak
+strontzo
+strumfenbumpfer
+studiebollige neukfout
+stuit iemand
+stuitermongool
+stuk afgeneukt rubber
+stuk genetisch afval
+stuk ombenul
+stuk schaamlip file
+stukske philippe luickx
+stukske scheefgezakte lavabo
+stupid cow
+stupid dog
+sucker
+sufbek
+suffe schobbejak
+sufferd
+sufgenaaide trekbek
+sufgeneukte
+sufgerukt tietegezicht
+sufgerukte bleekwaterpoonvis
+sufgerukte pc masturbant
+sufgerukte zaadstengel
+sufkut
+sukkelsmoeltje
+sukkel
+sumoworstelaar met suloelipjes
+superlompe uit de baarmoedergerukte lul
+supertrut
+superweb
+swastika
+taartennaaier
+takke teef
+takketeef
+tammo
+tamponhoer
+tamponkikker
+tamponne trekker
+tamponneuker
+tampontouwtjestrekker
+tamponuitzuiger
+tamponvormige kut duck
+tamponvormige kutduck
+tamponzuiger
+tandeloze tapir
+tandenborstel
+tandenborsteltje
+tank
+tapijt
+tappet
+teelballikker
+teeploze tietenvlieg
+teerpoal
+tegen een agent: flikker
+telefoon
+telegefucktetubbiehoer
+telegeleide pispaal
+teletubbiekut
+teletubie
+telifucky
+tepeldier
+tepelhaaropvrouwentiet
+tepelklooflover
+tepelloozetietvlieg
+tepelloze tietvlieg met borstkanker
+tepelloze tietvlieg
+tepelloze uierzuiger
+tepellozetietvlieg
+tepelozetietvlieg
+ter dood veroordeelde
+terin wijf met achterbakse kut in je bek
+tering apenneuker
+tering jantje
+tering lijdende afgeneukte hoerekut
+tering mongool
+tering neet
+tering tubbie
+tering tukker
+teringhoer
+teringkankergalbak
+teringkankerkonthaarkop
+teringkut
+teringlijende pijper
+teringneet
+teringslaaf
+teringslet
+teringsnol
+teringteef
+teringtentamens
+teringtifusleier
+teringtikker
+teringtiveritusteringallechtoon
+teringtubbie
+teringtyfushoer
+teringtyfyspoepkutteringteringstreek
+teringwijf met achterbakse kut in je bek
+teringzwam
+testikelliefje
+tetteflet
+tettekop
+tettenknabbelaar
+teun likker en pijper samen met johan
+teverindekontgeneuktebaviaan
+the_one
+theemuts
+tibetaanse tietloze tepel mug
+tibetaanse voorbinddildo
+tichelellikker
+tiefushond
+tiefusjood
+tientepeligetietvlieg
+tiepi taanse drollestamper
+tietatovenaar
+tietenbek
+tietengezicht
+tietloze bh hanger
+tietloze cabaretslet
+tietloze tepelvlieg
+tietloze tietvlieg
+tietlozetietvlieg
+tietschrobber
+tietvlieg
+tietvliegzondertepels
+tietvlieg
+tifus biologie
+tifuskankertering jij
+tifuslijer die geen email plaatsen
+tikteef
+timspelt
+tim
+tim misset
+tipitaanse befkikker met pukkels
+toetsenbordsloerie
+toetsierukker
+toiletlikkende made
+toiletzuiper
+tomattensmoel
+tong in poepgat steker
+toondebeffer
+tosti kut met extra vee ham
+tot geslachtsrijpheid gekomen apenfoetus
+traanpreut
+trapindekutte
+trek henk
+trek op a kabine
+trek slet
+trekbak
+trekeend
+trekharp
+treknek
+treknicht
+trekpop
+trekslet
+trekvogel
+trekzak
+trekzeug
+triesthoofd
+trol
+tropenfoef
+trotoirhoer
+trottoir prostitue
+truffelklit
+trut
+trutteschutter met jaratelaandrijving
+truttebolletje
+tsjernobiltje
+tsjerno
+tu puta madre
+tubercelose ooievaar
+tubercolose cochon
+tuin flikker
+turbotrut
+tweedehande mexicaanse schapenpenis
+tweedehands schaamhaarverkoper
+tweedehands theezakje
+tweekeeruitgescheten koeienstront
+tyfus hoer
+tyfus hoerenjong
+tyfus naaiende kutjoden
+tyfushenk
+tyfushoer
+tyfuskankawijf
+tyfusleider
+tyfusleiende kanker malarialul
+tyfuslijer
+tyfuspotter
+tyfusteef
+tyfusvlooi
+typgeit
+typhus
+typhusteringjunkie
+typsnol
+typvoud
+tyrza
+tyvesventje
+uit baarmoeder geslingerde ruggetuffers
+uit baarmoeder geslingerde slet va mozes
+uit de anus gerukte sperma vretende kut
+uit de baar moeder gerukte sperma worst
+uit de baar moeder getrokken ellende lin
+uit de baarboedergerukte wcbril
+uit de baarmoder geslingerde rotmoggel
+uit de baarmoeder afgelebberde kontkorst
+uit de baarmoeder gebefte drollenjood
+uit de baarmoeder gelubberde tering jood
+uit de baarmoeder geneukte hoeren jong
+uit de baarmoeder geneukte tepelloze condoom
+uit de baarmoeder geropte vinger aap
+uit de baarmoeder gerukt kutkind
+uit de baarmoeder gerukt tyfuskind
+uit de baarmoeder gerukte aap
+uit de baarmoeder gerukte aardappel
+uit de baarmoeder gerukte bad aap
+uit de baarmoeder gerukte baviaan
+uit de baarmoeder gerukte bosmongool
+uit de baarmoeder gerukte cabaretlul
+uit de baarmoeder gerukte door de pis gehaalde
+uit de baarmoeder gerukte drietepelige
+uit de baarmoeder gerukte embrio
+uit de baarmoeder gerukte embryo
+uit de baarmoeder gerukte kanker hond
+uit de baarmoeder gerukte kankerjood
+uit de baarmoeder gerukte klote hoer
+uit de baarmoeder gerukte kutkoter
+uit de baarmoeder gerukte met spermabesmeurde.
+uit de baarmoeder gerukte mierenneuker
+uit de baarmoeder gerukte moederkoek
+uit de baarmoeder gerukte neukfout
+uit de baarmoeder gerukte neukfout
+uit de baarmoeder gerukte onbevruchte tietmug
+uit de baarmoeder gerukte penis vlees
+uit de baarmoeder gerukte reetloze neukfout
+uit de baarmoeder gerukte reetslinger
+uit de baarmoeder gerukte reptielenneuker
+uit de baarmoeder gerukte spermaklont
+uit de baarmoeder gerukte spermaknikker
+uit de baarmoeder gerukte spermazaad
+uit de baarmoeder gerukte stoephoer
+uit de baarmoeder gerukte strontknikker
+uit de baarmoeder gerukte strontvlieg
+uit de baarmoeder gerukte tepelbaviaan
+uit de baarmoeder gerukte tepelloze tietvlieg
+uit de baarmoeder gerukte tepelloze tietvlieg
+uit de baarmoeder gerukte tepeloze turk
+uit de baarmoeder gerukte tering hoer
+uit de baarmoeder gerukte teringpaap
+uit de baarmoeder gerukte tiet vlieg
+uit de baarmoeder gerukte tyfuslijer
+uit de baarmoeder gerukte typhusbaviaan
+uit de baarmoeder gerukte varkenskop.
+uit de baarmoeder gerukte
+uit de baarmoeder gerukte vetzeug
+uit de baarmoeder gerukte zweefpik
+uit de baarmoeder gerukte zweeftevenneuker
+uit de baarmoeder gescheurde peniskoker
+uit de baarmoeder geschote kankermongool
+uit de baarmoeder gesleeen kut joch
+uit de baarmoeder gesleurd kuttig kind
+uit de baarmoeder geslingerde abortus
+uit de baarmoeder geslingerde appekop
+uit de baarmoeder geslingerde baviaan
+uit de baarmoeder geslingerde bos aap
+uit de baarmoeder geslingerde bosaap
+uit de baarmoeder geslingerde fruitvlieg
+uit de baarmoeder geslingerde genotsflikke
+uit de baarmoeder geslingerde klaphark
+uit de baarmoeder geslingerde kutblaag.
+uit de baarmoeder geslingerde kuttekind
+uit de baarmoeder geslingerde nageboorte
+uit de baarmoeder geslingerde reetkever
+uit de baarmoeder geslingerde reetkever.
+uit de baarmoeder geslingerde slingeraap
+uit de baarmoeder geslingerde strontvlek
+uit de baarmoeder geslingerde teef
+uit de baarmoeder geslingerde
+uit de baarmoeder geslingerde tepelbaviaan
+uit de baarmoeder geslingerde tepelloze
+uit de baarmoeder geslingerde teringturk
+uit de baarmoeder geslingerde tiet vlieg
+uit de baarmoeder geslingerde tietvlieg
+uit de baarmoeder geslingerde variate po
+uit de baarmoeder geslingerde vierwiel
+uit de baarmoeder geslingerde wentelteef
+uit de baarmoeder geslingerde zuidkorea
+uit de baarmoeder geslingerende kutturk
+uit de baarmoeder getroken hoere jong
+uit de baarmoeder getrokkekutkind
+uit de baarmoeder getrokken hond
+uit de baarmoeder getrokken hondenstront
+uit de baarmoeder getrokken kloothommel
+uit de baarmoeder getrokken kut baviaan
+uit de baarmoeder getrokken kutbaviaan
+uit de baarmoeder getrokken kutgezicht
+uit de baarmoeder getrokken miskraam
+uit de baarmoeder getrokken nageboorte
+uit de baarmoeder getrokken reetbaviaan
+uit de baarmoeder getrokken rugridder
+uit de baarmoeder getrokken snol
+uit de baarmoeder getrokken
+uit de baarmoeder getrokken spermacel
+uit de baarmoeder getrokken stoephoer
+uit de baarmoeder getrokken tepelrups
+uit de baarmoeder getrokken tietvlieg
+uit de baarmoeder getrokken tyfusmongool
+uit de baarmoeder getrokken tyvus nerger
+uit de baarmoeder gevingerde biggebeffer
+uit de baarmoeder gevingerde strondvli
+uit de baarmoeder gevingerde tering teef
+uit de baarmoeder gevingerde tietvlieg
+uit de baarmoeder slingerende vuilzak
+uit de bek stinkende breedbekkikker
+uit de bocht gevlogen klapband met microventiel
+uit de boom geslingerde befbaviaan
+uit de eikel gekomen vloeibaar kut kind
+uit de endeldarm gebefte soksnuiver
+uit de goot geraapte daksnol
+uit de grond gekropen made met een minum
+uit de kast gehaalde befturk
+uit de klei getrokken zandhaas
+uit de kont geboren pielhoofd
+uit de kont gerukte diarreebal
+uit de kont gerukte klere leider
+uit de kont gerukte marmot
+uit de kont getrokken kontkind
+uit de kut gerukte woestijn drol
+uit de kut gevallen klootviool
+uit de kutgerukte pukkelige moedervlek
+uit de kutgezogenstierelul
+uit de plee drinkende rattekop
+uit de plee gesleurde zee olifant
+uit de pot gerukte afgelebberdetennisbal
+uit de pot gerukte kleptangmongool
+uit de pot getrokken speekselklierrib
+uit de prostaat getrokken aap
+uit de reet gekropen lintworm
+uit de rimpelkut getrokken kontbonker
+uit de sperma getrokken stiere lul
+uit de stront getrokken holmaat
+uit de stront getrokken stront penis
+uit de uitgelubberde tiet van een vijftigjarige hoer getrokken siliconenimplantaat
+uit de vagina geslingerde
+uit een alzheimeroma gelekt smegmakindje
+uit je baanmoedergeslingerder kanker
+uit je baarmoeder gerukte tepel baviaan
+uit je onderbroek getrokken fartlul
+uit je reet getrokken pik dildo
+uit mekaar gerukte
+uit mijn kont gescheten zeikstinker
+uitdebaarmoedergesleurderolstoelterroris
+uitdebaarmoedergesleurdevariatiehoer
+uitdebaarmoedergeslingerdenavelneuker
+uitdebaarmoedergeslingerdereageerbuislul
+uitdebaarmoedergeslingerdetyfuszuid
+uitdebaarmoedergetrokken kuttekind
+uitdebaarmoedergetrokkenmoederneuker
+uitdebaarmoedergetrokkenrodereetbaviaan
+uitdebaarmoedergetrokkenzwijn
+uitdebaarmoedergetrokkepoepvlieg
+uitdekleigetrokkenkankerleier
+uitdekutgerukte vuilnisbakdoorzoeker
+uitdepaardereetstinkendeknurft
+uitdepotgerukte ingeblikte neukmachine
+uitgebafde vuurwerk bommen neuker
+uitgebafte vuurwerk bommen verkrachter
+uitgebeende vliegenkop
+uitgebefte 60+ers kut
+uitgebefte tyfesbitch
+uitgedrogen heksensnotje
+uitgedroogde bamiehap
+uitgedroogde schimmelkut.
+uitgegroeide spermacel
+uitgeholde spermalikker
+uitgehoonde kringspier
+uitgekakt zwabberbakkes
+uitgekakte olifantenpik
+uitgekakte zetpil
+uitgeknepen pokkenpijper
+uitgeknepen pus puist
+uitgekotste nageboorte
+uitgekotstebiggedarm
+uitgelebberdemisvormdeverlopespermacel
+uitgelebberdevarkenneukendepedofilleopa
+uitgelepelde piemel
+uitgelikt spermahol
+uitgelikte uienschijtert
+uitgelubberde aars
+uitgelubberde koeiekut
+uitgelubberde paardencondoom
+uitgelubberde zeskeerperdag gepenetreerde schaamlippenkut
+uitgeneukt belgische kip
+uitgeneukte hoerenloper
+uitgeneukte jezus rukker
+uitgeperste uier
+uitgepoepte kamelescheet
+uitgepoepte paardefijg
+uitgepopte kamelescheet
+uitgerekt poepgat
+uitgerokken tepelreet
+uitgerukte baarmoeder drilkikker
+uitgerukte rukeend
+uitgerukte schaamlip vreter
+uitgerukte vieze gore bavianenreed
+uitgeruktepenis
+uitgescheten baarmoeder
+uitgescheten palingvel
+uitgescheten stuk endeldarm
+uitgescheurd embriootje
+uitgesopte hoerekut
+uitgevallen rolmobs/transpirerend paasei
+uitgevingerd cobrakut
+uitgevingerde eicel
+uitgewoonde hoerenkutkastneuker
+uitgezogen teelbal
+uitjebaarmoedergevingerdenageboorte
+uitkomst van 3 jaar insest
+uitomaskutgeruktepaardepijper
+uitzuiger
+uncelfucker
+unclefucker
+universitaire eikelkop
+urinaalzuiper
+uw moeder
+uw schoenen zijn vies hahahahah
+vagekankerblaag
+vaginaalgeneuktehond
+vaginale trekpop
+vaginavochtverklonteraar
+vale afgereten paardelul
+vale pongel
+van achtergepakte hon
+van de pot gepleurde kankerboer
+van de pot gerukte anale neuskever
+van de pot gerukte peniskoker
+van de pot gerukte platgedrukte kutsapje
+van de pot gerukte teringlijer
+van de pot gerukte tietloze reedkever baviaan
+vandaag
+varkens depper
+vaselinehomo
+veertiger met midlifecrisis
+verbeter deze lijst maar eens
+verdommense stomme klootzok
+verdraaid
+vergrafde kuthond
+vergumde galge
+verjaardagsvierder
+verkettennek
+verkrachte aarsmens
+verkrachtende kontlikker
+verleptepottesnolletrol
+verloren kost
+vermaledijde onverlaat
+verminkte sossisendraaier
+verneukte abortusfout
+verneukte neukfout heh anna belle
+verneuktemislukteuitgeneukendeturksedrol
+verrekte bananenpeller
+verrimpelde bejaardenpiet
+verrotgeneukte zeepaardjesgatlikker
+verrotgeneukte zwijnenbeffer
+verrotte bananenschil
+versabbelde geitekut
+versabbelde omakut
+verschrompelde schaamlip
+verschrompelden tumor
+versleten binnenband
+verspilling van eten
+verspilling van je vaders sperma
+verspilling van lucht
+verstoten leguanenjong
+vertiefde niersteenkop
+vervelend jongetje
+verzopen schaamluis
+vetkanker
+vetklep
+vette trio turk
+vette zeiklul
+vettig panneke eten
+vettige biggebeffer
+vettige vibratorbatterij
+vettigen emmer
+vetvenerus
+viagra slikkende lul
+viagraslikker
+vibbo
+vibofacige kuthond
+vibrator zonder pillen of ballen
+vierbakkemelksmoel
+vierkante afgelebberde paadencondoom
+viersterrenidioot
+vies in je kanker bek gezeken stinkend marktkoopman zuigend gedrocht
+vies stinkend zweet varken
+vies stinkend zweetvarken
+vies verkankerd aidsgezwel
+vies vuil banenentoetje met pisangsaus
+vies vuil onozel mietje
+vies vuil takkenwijf in een bosjesman
+vies vuil tegen de muur weggerott tampon
+vies vuil tyfus hoer
+viese nagel
+vietnamese nike naaier
+vieze achterlijke kankerpisnicht
+vieze achterlijke pisnicht
+vieze achternaaier
+vieze afgekeurde dennis de tweede
+vieze afgeleberde peniskoker
+vieze afgelikte lesbische heterotrut
+vieze afgestompte inderondtegerukte loopse teef
+vieze afgetrokken versleten pik
+vieze anuskorst likker
+vieze bananenplukker zoek een baan
+vieze bedzeiker
+vieze billenridder
+vieze darmdouwer
+vieze darmonderzoeker
+vieze dikke uitdebaarmoedergeruktelongkop
+vieze geile hoer
+vieze genaaide teef
+vieze gigolorukker
+vieze gore joode beffer
+vieze gore joost
+vieze gore kanker hoer
+vieze gore mazzelpikkers
+vieze gore oetlul
+vieze gore poepedrol
+vieze gore vuile kankerjoden
+vieze hondenaaier son of a bitch
+vieze ingeblikte moeraskikker
+vieze ingeblikte zieke teef
+vieze jode hufter
+vieze kanker hoerezoon
+vieze kankerhonden
+vieze kankerteef
+vieze kankerturk
+vieze kloothommel
+vieze kringspier fukker
+vieze loopse teef
+vieze matennaaier
+vieze meiden struikstok
+vieze mietje
+vieze natte schaamlip
+vieze nichterige boktor
+vieze nicht
+vieze omgekeerde uitgerekte baarmoeder
+vieze pijpende lul
+vieze pikzuigende kloothannes
+vieze pisnichterige kanker gay
+vieze puta
+vieze rascisten hier Flikker zelf op
+vieze ruftkever
+vieze schubbekut
+vieze ssttootttteerraaaarr
+vieze stinkende grafjood
+vieze stinkende zweetkut
+vieze stinkerd kanker kind
+vieze stinkzwam
+vieze sucadelap
+vieze taarzak
+vieze turk
+vieze uit de baar moeder gerukte hoerezoon
+vieze uit je rot bek stinkende gore kut
+vieze uitt de baarmoede gerukte pisnicht
+vieze vellendrukker
+vieze verkankerde endeldarmbonker
+vieze vette pad
+vieze vette uit de kut gerukte penis
+vieze vettige mierenneuker
+vieze veule schaamlippiersingneuker
+vieze vuile afgelebberdekankertyfusturk
+vieze vuile afgeneukte paardenkut
+vieze vuile afgetrokken kuttenkop
+vieze vuile afgetrokken perenlul
+vieze vuile afgetrokken teringjood
+vieze vuile asocialeoetlul
+vieze vuile bekakte kanker joden lul
+vieze vuile boeren kanker lul
+vieze vuile crackslet
+vieze vuile geile spermabank
+vieze vuile gore geile
+vieze vuile gore kankerhoer
+vieze vuile gore uitgeholde slettebak
+vieze vuile gore zuiger
+vieze vuile gorekuthoer
+vieze vuile goreseropositievepisbakflikker
+vieze vuile homeopatischedriedubbeleapenkl
+vieze vuile jos brink
+vieze vuile kaashopen
+vieze vuile kanker lelijke pijphoer
+vieze vuile kankerslet
+vieze vuile klootzak
+vieze vuile klote kut lul
+vieze vuile kontebeffer
+vieze vuile kontenkrabber
+vieze vuile kut turk
+vieze vuile kutkop
+vieze vuile kutmof
+vieze vuile langgerete snikkellikker
+vieze vuile lara
+vieze vuile mener pijpers pijper
+vieze vuile miezerige kutmonnik
+vieze vuile paardeflikker
+vieze vuile paardeneuker
+vieze vuile pascal kulik
+vieze vuile pijphond
+vieze vuile rotte kut turk
+vieze vuile rotte misselijke retskin
+vieze vuile ruggetuffer
+vieze vuile scaamhaartrekker
+vieze vuile schijtershoofd
+vieze vuile seropositieve blubberkop
+vieze vuile sofietjes beffer
+vieze vuile stinkende kamelenstrond
+vieze vuile stinkende kamelenstront
+vieze vuile tepelloze tietvlieg
+vieze vuile tyfusjodenmongooltje
+vieze vuile uit de baarmoeder gerukte neger
+vieze vuile uit de baarmoeder gezogen bi
+vieze vuile uit de barmoeder getrokken a
+vieze vuile uitdebaarmoedergeslinger
+vieze vuile vuile dikke kankernicht
+vieze vuile vuile takke trut
+vieze vuile westland neuker
+vieze vuile zaadhappende stoephoer
+vieze vuile zeverbek
+vieze vuilevozeluis
+vingercut met ne platte voorkant
+vinketering
+visemmer
+viskut
+vislip
+vismeurende kuttyphus
+visstick
+viswijf
+vitesse arnhem
+vitessenaar
+vleesboom
+vleeseikel
+vlektyfus
+vliegekut
+vliegend gierekut
+vlinderschijt
+vloerkadet
+vob
+voddevent
+voetballer
+voetschimmel
+volgekakte wcbril
+volgepoepte smurf
+volgescheten palingvel
+volgescheten worstevel
+volgeschetepalingvel
+volgeschoten condoom
+volgesnoten zakdoek
+volledige neukfout
+voodooslachtoffer
+vooil oer
+vooil slet
+vooil zwaaïn met uw krampachtig spul
+vooilzalf
+voor 4 cent opgewaardeerde zaadbanktjipknippent leraarpijpende grafnicht
+vooral als je niet kan spellen
+voorhuidjogger
+voorneger)uitgeschetendemisluktiveskind
+vorkenfucker
+vormeentriometjemoeder en een kutvlieg
+voule schwein
+voze strandjanet
+vriendelijke jongen
+vrijdag naar de route
+vtmer
+vuif bef
+vuil aambeienschaap /kontsap verzuring
+vuil bekakt afgelikt halfzachte mongool
+vuil sms sletje
+vuil stukske kutkorst
+vuil tapet
+vuil vies vet speenvarken
+vuile aambeienbeffer
+vuile afgekeurde tsjernodebiel
+vuile afgelebberde kontezuiger
+vuile afgeruiktekippe pik
+vuile afgetrokken paardelul
+vuile anusfratergezichtje
+vuile aso_beer
+vuile aswipper
+vuile beer
+vuile bloed kanker lijer
+vuile bruinaap
+vuile bruinwerker
+vuile chineese kut spleetoog.
+vuile darm toerist
+vuile darmtoerist
+vuile donutschijter
+vuile droplul
+vuile geelgeverfde blinde teringvink
+Vuile Geertomatic anuslikker
+Vuile Geertomatic rukker
+vuile gftbult
+vuile godverdomsche strontesteker
+vuile gore kankerhoer
+vuile gore tyfus putjes schepper
+vuile graftak
+vuile hoerige dikke gore turk
+vuile hollander
+vuile hond
+vuile inbiciele kanker jood
+vuile islamiet
+vuile jakhals
+vuile joduh ajaxied
+vuile kaaskopschimmel
+vuile kanker jood
+vuile knufruft
+vuile kontebonker
+vuile kontinfectie
+vuile kringspiermusketier
+vuile kutberggeit
+vuile lcd instopper
+vuile lulhannes
+vuile maaghond bloedbak.
+vuile meertens neuker en likker
+vuile mogolische willem
+vuile naar strontmeurende kutnegerin
+vuile necroviel
+vuile neger
+vuile neukende neger
+vuile nikker
+vuile oelewupper
+vuile ontplofte gore rotpalestijn
+vuile pedo neuker
+vuile pisnicht
+vuile potter
+vuile puisten patapoef
+vuile remspoor
+vuile rijst vreter
+vuile rooie schraaptor
+vuile ruggehtuffer
+vuile satanistische kankerhoer
+vuile schaamhaarkut
+vuile schapenneuker
+vuile scheitbakkebefbek
+vuile schele tyfus nicht
+vuile slarottimof
+vuile slokdarm
+vuile sphinkser
+vuile stinkende pinguinscheet
+vuile stoephoer
+vuile stoeptrekhoer
+vuile stofzuigerbuis pijper
+vuile tange neuker
+vuile tering mogool
+vuile tippelende stoepsnol
+vuile tramjanet
+vuile turk
+vuile tyfus tering schaamhaarkapper
+vuile tyfushond
+vuile uit de baarmoeder gerukte penis
+vuile vette lopende padfrikandel
+vuile vieze anuspiraat
+vuile vieze gore kankerboer
+vuile vieze gore stinkende shithead
+vuile vieze kut kaaskoppen
+vuile vieze pisnicht
+vuile vieze spaanse kakah bosui
+vuile vieze tyfus neukfout
+vuile vieze uit de baarmoedergeruktehoer
+vuile viezerik
+vuile vlooienbunker
+vuile vorte pothoere
+vuile zaadlozing
+vuile zak patatten
+vuilehelgavereijkenrooiespikspantafel
+vuilen dick
+vuilevettigecurryworstigehomofielewceend
+vuileviezedoorjemoederontmaagdekankehomo
+vuileviezegorenstinkendevuile afgelijde
+vuileviezeteringtom
+vuilnisbakkenbaviaan
+vuilnisfucker
+vulen kut me gool
+vulle nichte
+vulvavervuiler
+vunzige puntlul
+vunzigeviezerik
+w.c.duiker
+w.c.eend
+w.c.eend zonder borstel
+waarom niet :loser
+waarom niet loser
+waarom rijdt nen homo met nen 4x4:
+wabbe
+waggadieassbitch
+wandelend millieu delict
+wandelende baarmoeder
+wandelende spermabank
+wandelende wrat
+wandluis
+want het stinkt hier
+warhoofd baviaan met een mieren kop
+warm kabellend kontwater
+waslap
+wc rukker
+wcduiker
+we pikken jullie land in
+wegegooide nageboorte snol
+wegrenjood
+wegwerp hersencel
+wencker
+wentink
+wesley vulen kut me gool
+wesp
+who is that dick who
+who the fuck is fleur
+wieken dairm
+wieken delper
+wierookwipper
+wieten
+wietsmoker
+wiilybrord frequin
+wijventoeker
+windows fan uit usa
+windows gebruiker
+windowsgebruiker
+winterpenen opslagplaats
+wip kip
+wipkip
+witvochtverlieslikkers
+wiwimulletje mijn gat
+wiwimulletje
+woedie wood beffer
+woestijndanser
+wolkenkrabber
+woonwagenkampjoekel
+wormen verkrachter
+wormvormig aanhangsel
+worststamper
+wortel
+wouter mous
+wuile stikende rotte nollegast
+wulpse teef
+zaadbisverbubbering aan je knurftaas
+zaadcel
+zaademmer
+zaadfoutje
+zaadklep
+zaadkutreet
+zaadlip
+zaadnicht
+zaadslikker
+zaadslurper
+zaadstaaf
+zaagselbek
+zachboerende kaalkontige warhoofdbaviaan
+zak hooi
+zak hooi
+zak met gras
+zak o foon
+zak patat
+zakhaar
+zakhooi
+zaki
+zakkenplakker
+zakkenwasser
+zakzuiger
+zebratepel
+zeehond
+zeekoe
+zeepoog
+zeiklul
+zeikstengel
+zeikstraal
+zeldzamezaadstengel
+zelfbevredigende kutvlieg
+zelfgemaaktetrekzalf
+zemelzeiker
+zemmer
+zemmer (marrokaans voor homo)
+zepzeiker
+zerkentrekker
+zestiengranenhufter
+ziek mens
+zieke hin
+zieke kip
+ziekenhuis
+ziepsmoel
+zigeunerkind
+zipmongool
+zittman
+zoetwater primaat
+zoetwatergleufameube
+zoldersnol
+zonnenbloem
+zoon van duizend vaders
+zoon van een dikke zieke hoer
+zoon van een geslachtszieke neger
+zoon van jeroen bal
+zuidafrikaanse zeekomkommer
+zuidkoreaanse naakt reet baviaan
+zuigbek
+zuigende anuslikker
+zuigende zoekmachine
+zuignap
+zuipschuit
+zuipstrot
+zultkop
+zultvouwer
+zurkeltrut
+zwaar over je nek
+zwaarirritantoversextlelijkerarepuber
+zwabbertrut
+zwakzinnig embryootje
+zwangere badsloef
+zwarte kring danser
+zwarte negerpik
+zwartjoekel
+zweefteef
+zweetfoef
+zweethol
+zweetkut
+zweetmailer
+zweetpruim
+zweetreet
+zwembadneuker
+zwembadtrut
+zwerver
+
+
+
+//--------------------------------------------------------------
+// czech [Courtesy of AZ_Online]
+language: cs_CZ
+
+buzna
+buzno
+buzny
+buzerant
+buzerante
+buzeranti
+curak
+curaku
+curaci
+dement
+demente
+dementi
+debil
+debile
+debilove
+debilni
+gay
+gayove
+hajzl
+hajzle
+hajzlove
+homous
+homousi
+homousove
+hovno
+hovna
+idiot
+idioti
+idiote
+imbecil
+imbecile
+imbecilove
+jebat
+jebani
+kreten
+kretene
+kreteni
+kurva
+kurvo
+kurvy
+krava
+kravo
+kravy
+kokot
+kokote
+kokoti
+krypl
+kryple
+kryplove
+mrdat
+mrdani
+mrdej
+namrdat
+nasrat
+nasrany
+naseru
+naser si
+neser
+oprcat
+prdel
+pica
+pico
+srat
+sracka
+ser
+seres
+svine
+teplous
+teplousi
+vymrdat
+vysrat
+vyjebat
+vole

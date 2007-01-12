@@ -1,0 +1,57 @@
+// item_taminggift.txt, Taming Gift Set Database
+//
+// <Item_ID>,<Description (Dummy)>,<Rate>
+//
+// Rate Examples
+// 10000   = 1%
+// 500000  = 50%
+// 1000000 = 100%
+
+0,Unripe Apple,619
+619,Unripe Apple,500000
+620,Orange Juice,500000
+621,Bitter Herb,500000
+622,Rainbow Carrot,500000
+623,Earthworm the Dude,500000
+624,Rotten Fish,500000
+625,Rusty Iron,500000
+626,Monster Juice,500000
+627,Sweet Milk,500000
+628,Well-Dried Bone,500000
+629,Singing Flower,500000
+630,Dew Laden Moss,500000
+631,Deadly Noxious Herb,500000
+632,Fatty Chubby Earthworm,500000
+633,Sweet Potato,500000
+634,Tropical Banana,500000
+635,Orc Trophy,500000
+636,No Recipient,500000
+637,Old Broom,500000
+638,Silver Knife of Chastity,500000
+639,Armlet of Obedience,500000
+640,Shining Stone,500000
+641,Contracts in Shadow,500000
+642,Book of the Devil,500000
+659,Her Heart,500000
+660,Forbidden Red Candle,500000
+661,Soft Apron,500000
+10001,Skull Helm,500000
+10002,Monster Oxygen Mask,500000
+10003,Transparent Headgear,500000
+10004,Pacifier,500000
+10005,Wig,500000
+10006,Queen's Hair Ornament,500000
+10007,Silk Ribbon,500000
+10008,Punisher,500000
+10009,Wild Flower,500000
+10010,Battered Pot,500000
+10011,Stellar Hairpin,500000
+10012,Tiny Egg Shell,500000
+10013,Backpack,500000
+10014,Rocker Glasses,500000
+10015,Green Lace,500000
+10016,Golden Bell,500000
+10017,Bark Shorts,500000
+10018,Monkey Circlet,500000
+10019,Red Scarf,500000
+10020,Grave Keeper's Sword,500000

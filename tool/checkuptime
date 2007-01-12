@@ -1,0 +1,83 @@
+#!/usr/bin/perl -w
+
+##########################################################################
+# INFORMATION TOOL ABOUT THE SERVERS UPTIME OF FREYA
+#
+# By connection on a server, this software display the version of the
+# designed server.
+#-------------------------------------------------------------------------
+# Usages:
+#   ./checkuptime IP:port
+#   ./checkuptime IP port
+#   perl checkuptime IP:port
+#   perl checkuptime IP port
+#
+# note: default port: 6900
+#
+# When successfull, the software return the value 0.
+#
+##########################################################################
+
+#------------------------- start of configuration ------------------------
+
+$connecttimeout = 10;   # Connection Timeout (in seconds)
+
+#-------------------------- End of configuration -------------------------
+
+use IO::Socket;
+
+unless($ARGV[0]) {
+	print "USAGE: $0 server_ip:port\n";
+	exit(1);
+}
+
+$server = $ARGV[0];
+$port = $ARGV[1];
+$port = $1 if ($server =~ s/:(\d+)//);
+$port ||= 6900;
+
+# Connection to the server
+my($so,$er) = ();
+eval{
+	$so = IO::Socket::INET->new(
+		PeerAddr=> $server,
+		PeerPort=> $port,
+		Proto   => "tcp",
+		Timeout => $connecttimeout) or $er = 1;
+};
+
+if($er || $@) {
+	print "Can't not connect to server [$server:$port] !\n";
+	exit(2);
+}
+
+# Request for the server version
+print $so pack("v",30003); # 0x7533
+$so->flush();
+
+# Receiving of the answer of the server
+if (read($so,$buf,8) < 8) {
+	print "Invalid answer. It isn't an freya server or it is a too old version.\n";
+	exit(5);
+}
+
+# Sending end of connection to the server
+print $so pack("v",30002); # 0x7532
+$so->flush();
+
+# Analyse of the answer
+my($ret,$uptime,$users) = unpack("vVv",$buf);
+
+if ($ret != 30004) { # 0x7534
+	print "Invalid answer. It isn't an freya server or it is a too old version.\n";
+	exit(6);
+}
+
+printf "  Uptime of this Freya server: $uptime seconds.\n";
+if ($users > 1) {
+	printf "  Number of online players: $users.\n";
+} else {
+	printf "  Number of online player: $users.\n";
+}
+
+exit(0);

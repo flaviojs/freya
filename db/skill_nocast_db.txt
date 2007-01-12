@@ -1,0 +1,29 @@
+// skill_nocast_db.txt, Disabled Skill Database
+//
+// Structure of Database:
+//
+// SkillID,Mode
+//
+// Mode:
+// 1 - Cannot Be Used In Normal Maps
+// 2 - Cannot Be Used In PvP Maps
+// 4 - Cannot Be Used In GvG Maps
+// 8 - Cannot Be Used During WoE
+// 16 - Cannot Be Used In PK Mode Maps
+// 32 - CAN Be Used With NoSpell On
+//
+// Example: 26,36 = Teleport Cannot Be Used if NoSpell is On and In GvG maps (32 + 4)
+//
+
+26,4     // AL_TELEPORT#Teleport#
+27,4     // AL_WARP#Warp#
+40,32    // MC_IDENTIFY#Item Appraisal#
+41,32    // MC_VENDING#Vending#
+87,4     // WZ_ICEWALL#Ice Wall#
+150,4    // TF_BACKSLIDING#Back Sliding#
+154,32   // MC_CHANGECART#Change Cart#
+361,4    // HP_ASSUMPTIO#Assumptio#
+362,4    // HP_BASILICA#Basilica#
+488,19   // CG_HERMODE#Wand of Hermod#
+491,4    // CR_CULTIVATION#Cultivation#
+10013,19 // GD_EMERGENCYCALL#Emergency Recall#

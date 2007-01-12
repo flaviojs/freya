@@ -1,0 +1,825 @@
+//===== Freya Script =========================================
+//= slotteur script
+//===== By: ==================================================
+//= Panda & GAlion
+//===== Current Version: =====================================
+//= 1.0 (released on 2006 July 1st)
+//===== Compatible With: =====================================
+//= Any eAthena Version and Nezumi versions
+//===== Description: =========================================
+//= allows to add slot to some equipments
+//===== Additional Comments: =================================
+//============================================================
+
+payon.gat,138,182,5	script	Walter::Slotteur	88,{
+	mes "[slotteur]";
+	mes "Bonjour, à quel équipement voulez-vous ajouter un slot?";
+	mes "Je ne crée de slots que sur certaines armes.";
+	next;
+	M_Menu:
+		menu "j'ai changé d'avis...",CLOSEOUT,"Je voudrais qu'on m'explique.",BLABLA,
+		getequipname(1),SLOT1,
+		getequipname(2),SLOT2,
+		getequipname(3),SLOT3,
+		getequipname(4),SLOT4,
+		getequipname(5),SLOT5,
+		getequipname(6),SLOT6,
+		//getequipname(7),SLOT7,
+		//getequipname(8),SLOT8,
+		getequipname(9),SLOT9;//attention à , et ;
+		//getequipname(10),SLOT10;
+	BLABLA:
+		mes "[slotteur]";
+		mes "Certaines personnes, comme moi, peuvent essayer d'ajouter un slot à un objet.";
+		mes "Ceci est assez difficile et je ne réussi pas souvent.";
+		mes "Bien sûr, si j'échoue l'objet devient inutilisable et je le ^ff0040 détruis^000000.";
+		next;
+		mes "[slotteur]";
+		mes "Mais plus l'objet est upgradé, plus la tâche m'est facile. Ainsi pour:";
+		mes "- ^ff4040refine de 0, 25% de réussite^000000.";
+		mes "- ^ff9530refine de 4, 35% de réussite^000000. ";
+		mes "- ^ffcb30refine de 10, 50% de réussite^000000. ";
+		next;
+		mes "[slotteur]";
+		mes "J'ai besoin de différents objets en fonction du niveau de l'objet à améliorer.";
+		mes "Et d'une petite participation financière. Héhé!";
+		next;
+
+		M_BLABLA:
+			menu "armes de niveau 1",a1,
+			     "armes de niveau 2",a2,
+			     "armes de niveau 3",a3,
+			     "armes de niveau 4",a4,
+			     "équipements de niveau 1",e1,
+			     "équipements de niveau 2",e2,
+			     "équipements de niveau 3",e3,
+			     "équipements de niveau 4",e4,
+			     "équipements de niveau 5",e5,
+			     "annuler",M_Menu;
+
+	a1:
+		mes "[slotteur]";
+		mes "Pour les ^ff4040armes de niveau 1^000000, il me faut";
+		mes "- 10.000 z et 1.000 z supplémentaires par upgrade de l'objet,";
+		mes "- 10 phracon comme catalyseur,";
+		mes "- et 10 objets identiques relatifs à l'objet à améliorer.";
+		next;
+		goto M_BLABLA;
+	a2:
+		mes "[slotteur]";
+		mes "Pour les ^ff4040armes de niveau 2^000000, il me faut";
+		mes "- 40.000 z et 4.000 z supplémentaires par upgrade de l'objet,";
+		mes "- 10 emveretarcon comme catalyseur,";
+		mes "- et 20 objets identiques relatifs à l'objet à améliorer.";
+		next;
+		goto M_BLABLA;
+	a3:
+		mes "[slotteur]";
+		mes "Pour les ^ff404armes de niveau 3^000000, il me faut";
+		mes "- 90.000 z et 9.000 z supplémentaires par upgrade de l'objet,";
+		mes "- 10 oridecon comme catalyseur,";
+		mes "- et 30 objets identiques relatifs à l'objet à améliorer.";
+		next;
+		goto M_BLABLA;
+	a4:
+		mes "[slotteur]";
+		mes "Pour les ^ff404armes de niveau 4^000000, il me faut";
+		mes "- 160.000 z et 16.000 z supplémentaires par upgrade de l'objet,";
+		mes "- 20 oridecon comme catalyseur,";
+		mes "- et 40 objets identiques relatifs à l'objet à améliorer.";
+		next;
+		goto M_BLABLA;
+
+	e1:
+		mes "[slotteur]";
+		mes "Pour les ^ff404équipements de niveau 1^000000, il me faut";
+		mes "- 10.000 z et 1.000 z supplémentaires par upgrade de l'objet,";
+		mes "- 5 elunium comme catalyseur,";
+		mes "- 5 steel comme catalyseur,";
+		mes "- et 10 objets identiques relatifs à l'objet à améliorer.";
+		next;
+		goto M_BLABLA;
+	e2:
+		mes "[slotteur]";
+		mes "Pour les ^ff404équipements de niveau 2^000000, il me faut";
+		mes "- 40.000 z et 4.000 z supplémentaires par upgrade de l'objet,";
+		mes "- 10 elunium comme catalyseur,";
+		mes "- 10 steel comme catalyseur,";
+		mes "- et 20 objets identiques relatifs à l'objet à améliorer.";
+		next;
+		goto M_BLABLA;
+	e3:
+		mes "[slotteur]";
+		mes "Pour les ^ff404équipements de niveau 3^000000, il me faut";
+		mes "- 90.000 z et 9.000 z supplémentaires par upgrade de l'objet,";
+		mes "- 20 elunium comme catalyseur,";
+		mes "- 20 steel comme catalyseur,";
+		mes "- et 30 objets identiques relatifs à l'objet à améliorer.";
+		next;
+		goto M_BLABLA;
+	e4:
+		mes "[slotteur]";
+		mes "Pour les ^ff404équipements de niveau 4^000000, il me faut";
+		mes "- 160.000 z et 16.000 z supplémentaires par upgrade de l'objet,";
+		mes "- 40 elunium comme catalyseur,";
+		mes "- 40 steel comme catalyseur,";
+		mes "- et 40 objets identiques relatifs à l'objet à améliorer.";
+		next;
+		goto M_BLABLA;
+	e5:
+		mes "[slotteur]";
+		mes "Pour les ^ff404équipements de niveau 5^000000, il me faut";
+		mes "- 500.000 z,";
+		mes "- 50 elunium comme catalyseur,";
+		mes "- 50 steel comme catalyseur,";
+		mes "- et 50 objets identiques relatifs à l'objet à améliorer.";
+		next;
+		goto M_BLABLA;
+
+	CLOSEOUT:
+		close;
+
+	SLOT1:
+		set @part,1;//Head Gear
+		if (getequipisequiped(1)) goto CHECK1;
+		mes "[slotteur]";
+		mes "Et tu crois que je vais te slotter ta tête, imbécile!";
+		goto M_Menu;
+	SLOT2:
+		set @part,2;//Armor
+		if (getequipisequiped(2)) goto CHECK1;
+		mes "[slotteur]";
+		mes "Je ne pourrais rien faire pour ajouter un slot dans ton nombril!";
+		goto M_Menu;
+	SLOT3:
+		set @part,3;//Left Hand
+		if (getequipisequiped(3)) goto CHECK1;
+		mes "[slotteur]";
+		mes "Tu peux tenir la card dans ta main, pas besoin de slot. imbécile!";
+		goto M_Menu;
+	SLOT4:
+		set @part,4;//Right Hand
+		if (getequipisequiped(4)) goto CHECK1;
+		mes "[slotteur]";
+		mes "Si tu n'as rien dans ta main, pas besoin de slot. imbécile!";
+		goto M_Menu;
+	SLOT5:
+		set @part,5;//Garment
+		if (getequipisequiped(5)) goto CHECK1;
+		mes "[slotteur]";
+		mes "Pas d'objet, pas de slot!";
+		goto M_Menu;
+	SLOT6:
+		set @part,6;//Foot Gear
+		if (getequipisequiped(6)) goto CHECK1;
+		mes "[slotteur]";
+		mes "Hey, tu as déjà 8 slots sur tes pieds nus: un slot entre chaque orteil!!!";
+		goto M_Menu;
+	SLOT7:
+		set @part,7;//Accessory1
+		if (getequipisequiped(7)) goto CHECK1;
+		mes "[slotteur]";
+		mes "Pas d'accessoire, pas de slot!";
+		goto M_Menu;
+	SLOT8:
+		set @part,8;//Accessory2
+		if (getequipisequiped(8)) goto CHECK1;
+		mes "[slotteur]";
+		mes "Pas d'accessoire, pas de slot!";
+		goto M_Menu;
+	SLOT9:
+		set @part,9;//masque,lunettes
+		if (getequipisequiped(9)) goto CHECK1;
+		mes "[slotteur]";
+		mes "Pas d'accessoire, pas de slot!";
+		goto M_Menu;
+	SLOT10:
+		set @part,10;//masque, barbe
+		if (getequipisequiped(10)) goto CHECK1;
+		mes "[slotteur]";
+		mes "Pas d'accessoire, pas de slot!";
+		goto M_Menu;
+
+CHECK1:
+
+	if (getequipweaponlv(@part) > 5) goto LEVELT;//pas un objet de level 1 =>exit
+	set @objetID,getequipid(@part);
+	set @objetUP,getequiprefinerycnt(@part);
+	if (getequipid(@part)==1351) goto Battle_axe;
+	if (getequipid(@part)==1107) goto Blade;
+	if (getequipid(@part)==1704) goto Composite_bow;
+	if (getequipid(@part)==1207) goto Main_gauche;
+	if (getequipid(@part)==1407) goto Pike;
+	if (getequipid(@part)==1116) goto Katana;
+	if (getequipid(@part)==1504) goto Mace;
+	if (getequipid(@part)==1601) goto Rod;
+	if (getequipid(@part)==1950) goto Rope;
+	if (getequipid(@part)==1901) goto Violin;
+	if (getequipid(@part)==1801) goto Waghnak;
+	if (getequipid(@part)==1154) goto Bastard_sword;
+	if (getequipid(@part)==1519) goto Chain;
+	if (getequipid(@part)==1710) goto Cross_bow;
+	if (getequipid(@part)==1216) goto Stiletto;
+	if (getequipid(@part)==1454) goto Glaive;
+	if (getequipid(@part)==1354) goto Hammer;
+	if (getequipid(@part)==1250) goto Jur;
+	if (getequipid(@part)==1805) goto Studded_knuckles;
+	if (getequipid(@part)==1905) goto Lute;
+	if (getequipid(@part)==1122) goto Ring_pommel_saber;
+	if (getequipid(@part)==1607) goto Staff;
+	if (getequipid(@part)==1713) goto Arbalest;
+	if (getequipid(@part)==1610) goto Arc_wand;
+	if (getequipid(@part)==1160) goto Broad_sword;
+	if (getequipid(@part)==1360) goto Two_handed_axe;
+	if (getequipid(@part)==1119) goto Tsurugi;
+	if (getequipid(@part)==1157) goto Two_handed_sword;
+	if (getequipid(@part)==1463) goto Hallberd;
+	if (getequipid(@part)==1460) goto Trident;
+	if (getequipid(@part)==1513) goto Morning_star;
+	if (getequipid(@part)==1516) goto Sword_mace;
+	if (getequipid(@part)==1245) goto Cowardice_blade;
+	if (getequipid(@part)==1222) goto Damascus;
+	if (getequipid(@part)==1219) goto Gladius;
+	if (getequipid(@part)==1254) goto Jamadhar;
+	if (getequipid(@part)==1252) goto Katar;
+	if (getequipid(@part)==1811) goto Finger;
+	if (getequipid(@part)==1621) goto Hypnotist_staff;
+	if (getequipid(@part)==1714) goto Gakkung_bow;
+	if (getequipid(@part)==1907) goto Guitar;
+	if (getequipid(@part)==1956) goto Rante_whip;
+	if (getequipid(@part)==2220) goto Hat;
+	if (getequipid(@part)==2208) goto Ribbon;
+	if (getequipid(@part)==2305) goto Adventurer_suit;
+	if (getequipid(@part)==5114) goto Bucket_hat;
+	if (getequipid(@part)==2309) goto Coat;
+	if (getequipid(@part)==2321) goto Silk_robe;
+	if (getequipid(@part)==2307) goto Mantle;
+	if (getequipid(@part)==2323) goto Scapulare;
+	if (getequipid(@part)==2332) goto Silver_robe;
+	if (getequipid(@part)==2328) goto Wooden_mail;
+	if (getequipid(@part)==2101) goto Guard;
+	if (getequipid(@part)==2501) goto Hood;
+	if (getequipid(@part)==2401) goto Sandal;
+	if (getequipid(@part)==2216) goto Biretta;
+	if (getequipid(@part)==2226) goto Cap;
+	if (getequipid(@part)==2232) goto Circlet;
+	if (getequipid(@part)==2224) goto Goggles;
+	if (getequipid(@part)==2314) goto Chain_mail;
+	if (getequipid(@part)==2325) goto Saints_robe;
+	if (getequipid(@part)==2335) goto Thief_cloth;
+	if (getequipid(@part)==2330) goto Tights;
+	if (getequipid(@part)==2312) goto Padded_armor;
+	if (getequipid(@part)==2107) goto Mirror_shield;
+	if (getequipid(@part)==2103) goto Buckler;
+	if (getequipid(@part)==2503) goto Muffler;
+	if (getequipid(@part)==2403) goto Shoes;
+	if (getequipid(@part)==2228) goto Helm;
+	if (getequipid(@part)==5112) goto Super_novice_hat;
+	if (getequipid(@part)==2316) goto Full_plate;
+	if (getequipid(@part)==2105) goto Shield;
+	if (getequipid(@part)==2505) goto Manteau;
+	if (getequipid(@part)==2405) goto Boots;
+	if (getequipid(@part)==2203) goto Glasses;
+	if (getequipid(@part)==2201) goto Sunglasses;
+	mes "[slotteur]";
+	mes "Je suis désolé, mais je ne peux rien faire sur cet objet.";
+	mes "Vous trouverez la liste complète des objets sur :";
+	mes "^0000ff'http://sapho.yorre.com/'^000000 sur le forum.";
+	close;
+
+	Battle_axe:
+		set @requis,931; // orcish voucher
+		set @nouveau,1352; // Battle Axe 4
+		goto Armeniveau1;
+
+	Blade:
+		set @requis,955; // worm peeling
+		set @nouveau,1108; // Blade 4
+		goto Armeniveau1;
+
+	Composite_bow:
+		set @requis,1765; // oridecon arrow
+		set @nouveau,1705; // composite bow 4
+		goto Armeniveau1;
+
+	Main_gauche:
+		set @requis,7312; // jubilee
+		set @nouveau,1208; // main gauche 4
+		goto Armeniveau1;
+
+	Pike:
+		set @requis,906; // pointed scale
+		set @nouveau,1408; // pike 4
+		goto Armeniveau1;
+
+	Katana:
+		set @requis,963; // sharp scale
+		set @nouveau,1117; // katana 4
+		goto Armeniveau1;
+
+	Mace:
+		set @requis,932; // skel-bone
+		set @nouveau,1505; // mace 4
+		goto Armeniveau1;
+
+	Rod:
+		set @requis,938; // sticky mucus
+		set @nouveau,1602; // rod 4
+		goto Armeniveau1;
+
+	Rope:
+		set @requis,7197; // tough vines
+		set @nouveau,1951; // rope 4
+		goto Armeniveau1;
+
+	Violin:
+		set @requis,1060; // golden hair
+		set @nouveau,1902; // violin 4
+		goto Armeniveau1;
+
+	Waghnak:
+		set @requis,7163; // hard feeler
+		set @nouveau,1802; // waghnak 4
+		goto Armeniveau1;
+
+	Bastard_sword:
+		set @requis,7301; // tassel
+		set @nouveau,1155; // bastard sword 3
+		goto Armeniveau2;
+
+	Chain:
+		set @requis,1050; // tendon
+		set @nouveau,1520; // chain 3
+		goto Armeniveau2;
+
+	Cross_bow:
+		set @requis,1034; // blue hair
+		set @nouveau,1711; // cross bow 3
+		goto Armeniveau2;
+
+	Stiletto:
+		set @requis,7030; // claw of desert wolf
+		set @nouveau,1217; // stiletto 3
+		goto Armeniveau2;
+
+	Glaive:
+		set @requis,1027; // porcupine quill
+		set @nouveau,1455; // glaive 3
+		goto Armeniveau2;
+
+	Hammer:
+		set @requis,1034; // blue hair
+		set @nouveau,1355; // hammer 3
+		goto Armeniveau2;
+
+	Jur:
+		set @requis,1017; // mole whisker
+		set @nouveau,1251; // jur 3
+		goto Armeniveau2;
+
+	Studded_knuckles:
+		set @requis,7053; // cyfar
+		set @nouveau,1806; // studded knuckles 3
+		goto Armeniveau2;
+
+	Lute:
+		set @requis,7165; // transparent celestial robe
+		set @nouveau,1906; // lute 3
+		goto Armeniveau2;
+
+	Ring_pommel_saber:
+		set @requis,932; // skel-bone
+		set @nouveau,1125; // ring pommel saber 3
+		goto Armeniveau2;
+
+	Staff:
+		set @requis,1045; // cultish masque
+		set @nouveau,1608; // staff 3
+		goto Armeniveau2;
+
+	Arbalest:
+		set @requis,7054; // brigan
+		set @nouveau,1715; // arbalest 2
+		goto Armeniveau3;
+
+	Arc_wand:
+		set @requis,1061; // witched starsand
+		set @nouveau,1611; // arc wand 2
+		goto Armeniveau3;
+
+	Broad_sword:
+		set @requis,1064; // reins
+		set @nouveau,1162; // broad sword 2
+		goto Armeniveau3;
+
+	Two_handed_axe:
+		set @requis,941; // nose ring
+		set @nouveau,1361; // two handed axe 2
+		goto Armeniveau3;
+
+	Tsurugi:
+		set @requis,954; // shining scale
+		set @nouveau,1120; // tsurugi 2
+		goto Armeniveau3;
+
+	Two_handed_sword:
+		set @requis,7054; // brigan
+		set @nouveau,1158; // two handed sword 2
+		goto Armeniveau3;
+
+	Hallberd:
+		set @requis,923; // evil horn
+		set @nouveau,1464; // hallberd 2
+		goto Armeniveau3;
+
+	Trident:
+		set @requis,951; // fin
+		set @nouveau,1461; // trident 3
+		goto Armeniveau3;
+
+	Morning_star:
+		set @requis,7345; // handcuffs
+		set @nouveau,1514; // morning star 2
+		goto Armeniveau3;
+
+	Sword_mace:
+		set @requis,1021; // dokebi horn
+		set @nouveau,1517; // sword mace 1
+		goto Armeniveau3;
+
+	Cowardice_blade:
+		set @requis,7345; // handcuffs
+		set @nouveau,1246; // cowardice blade 2
+		goto Armeniveau3;
+
+	Damascus:
+		set @requis,1056; // grit
+		set @nouveau,1226; // damascus 2
+		goto Armeniveau3;
+
+	Gladius:
+		set @requis,7345; // handcuffs
+		set @nouveau,1220; // gladius 3
+		goto Armeniveau3;
+
+	Jamadhar:
+		set @requis,7054; // brigan
+		set @nouveau,1255; // jamadhar 1
+		goto Armeniveau3;
+
+	Katar:
+		set @requis,7030; // claw of desert wolf
+		set @nouveau,1253; // katar 2
+		goto Armeniveau3;
+
+	Finger:
+		set @requis,7196; // shoulder protector
+		set @nouveau,1812; // finger 2
+		goto Armeniveau3;
+
+	Hypnotist_staff:
+		set @requis,1056; // grit
+		set @nouveau,1622; // hypnotist staff 2
+		goto Armeniveau3;
+
+	Gakkung_bow:
+		set @requis,1063; // fang
+		set @nouveau,1716; // gakkung bow 2
+		goto Armeniveau3;
+
+	Guitar:
+		set @requis,7162; // cloud crumb
+		set @nouveau,1908; // guitar 1
+		goto Armeniveau3;
+
+	Rante_whip:
+		set @requis,7193; // sprout
+		set @nouveau,1957; // rante whip 1
+		goto Armeniveau3;
+
+	Hat:
+		set @requis,7033; // poison spore
+		set @nouveau,2221; // hat 1
+		goto Armureniveau1;
+
+	Ribbon:
+		set @requis,913; // tooth of bat
+		set @nouveau,2209; // ribbon 1
+		goto Armureniveau1;
+
+	Adventurer_suit:
+		set @requis,919; // animal skin
+		set @nouveau,2306; // adventurer suit 1
+		goto Armureniveau1;
+
+	Bucket_hat:
+		set @requis,7319; // used iron plate
+		set @nouveau,5120; // bucket hat 1
+		goto Armureniveau2;
+
+	Coat:
+		set @requis,912; // zargon
+		set @nouveau,2310; // coat 1
+		goto Armureniveau2;
+
+	Silk_robe:
+		set @requis,924; // powder of butterfly
+		set @nouveau,2322; // silk robe 1
+		goto Armureniveau2;
+
+	Mantle:
+		set @requis,958; // horrendous mouth
+		set @nouveau,2308; // mantle 1
+		goto Armureniveau2;
+
+	Scapulare:
+		set @requis,7345; // handcuffs
+		set @nouveau,2324; // scapulare 1
+		goto Armureniveau2;
+
+	Silver_robe:
+		set @requis,1059; // fabric
+		set @nouveau,2333; // silver robe 1
+		goto Armureniveau2;
+
+	Wooden_mail:
+		set @requis,907; // resin
+		set @nouveau,2329; // wooden mail 1
+		goto Armureniveau2;
+
+	Guard:
+		set @requis,915; // chrysalis
+		set @nouveau,2102; // guard 1
+		goto Armureniveau2;
+
+	Hood:
+		set @requis,1026; // acorn
+		set @nouveau,2502; // hood 1
+		goto Armureniveau2;
+
+	Sandal:
+		set @requis,538; // well baked cookie
+		set @nouveau,2402; // sandal 1
+		goto Armureniveau2;
+
+	Biretta:
+		set @requis,509; // white herb
+		set @nouveau,2217; // biretta 1
+		goto Armureniveau3;
+
+	Cap:
+		set @requis,1040; // elder pixie's moustache
+		set @nouveau,2227; // cap 1
+		goto Armureniveau3;
+
+	Circlet:
+		set @requis,936; // scale shell
+		set @nouveau,2233; // circlet 1
+		goto Armureniveau3;
+
+	Goggles:
+		set @requis,1017; // mole whiskers
+		set @nouveau,2225; // goggles 1
+		goto Armureniveau3;
+
+	Chain_mail:
+		set @requis,7301; // tassel
+		set @nouveau,2315; // chainmail 1
+		goto Armureniveau3;
+
+	Saints_robe:
+		set @requis,950; // heart of mermaid
+		set @nouveau,2326; // saints robe 1
+		goto Armureniveau3;
+
+	Thief_cloth:
+		set @requis,1059; // fabric
+		set @nouveau,2336; // thief cloth 1
+		goto Armureniveau3;
+
+	Tights:
+		set @requis,1062; // jack o' pumpkin
+		set @nouveau,2331; // tights 1
+		goto Armureniveau3;
+
+	Padded_armor:
+		set @requis,960; // nipper
+		set @nouveau,2313; // padded armor 1
+		goto Armureniveau3;
+
+	Mirror_shield:
+		set @requis,932; // skel bone
+		set @nouveau,2108; // mirror shield 1
+		goto Armureniveau3;
+
+	Buckler:
+		set @requis,1034; // blue hair
+		set @nouveau,2104; // buckler 1
+		goto Armureniveau3;
+
+	Muffler:
+		set @requis,1020; // black hair
+		set @nouveau,2504; // muffler 1
+		goto Armureniveau3;
+
+	Shoes:
+		set @requis,901; // danggie
+		set @nouveau,2404; // shoes 1
+		goto Armureniveau3;
+
+	Helm:
+		set @requis,7345; // handcuffs
+		set @nouveau,2229; // helm 1
+		goto Armureniveau4;
+
+	Super_novice_hat:
+		set @requis,1018; // mole claw
+		set @nouveau,5119; // super novice hat 1
+		goto Armureniveau4;
+
+	Full_plate:
+		set @requis,7096; // lava
+		set @nouveau,2317; // full plate 1
+		goto Armureniveau4;
+
+	Shield:
+		set @requis,961; // conch
+		set @nouveau,2106; // shield 1
+		goto Armureniveau4;
+
+	Manteau:
+		set @requis,7095; // metal fragment
+		set @nouveau,2506; // manteau 1
+		goto Armureniveau4;
+
+	Boots:
+		set @requis,1042; // bug leg
+		set @nouveau,2406; // boots 1
+		goto Armureniveau4;
+
+	Glasses:
+		set @requis,7326; // fluorescent liquid
+		set @nouveau,2204; // glasses 1
+		goto Armureniveau5;
+
+	Sunglasses:
+		set @requis,7167; // strange steel piece
+		set @nouveau,2202; // sunglasses 1
+		goto Armureniveau5;
+
+
+	Armeniveau1:
+		set @prix,10000+ 1000*@objetUP ;	//le prix
+		set @nb_requis,10; 			//nombre d'items requis
+		set @catalyseur1,1010; 			//phracon
+		set @nb_cata1,10;			// 10 phracons
+		set @catalyseur2,1011;			//rien d'autre
+		set @nb_cata2,0;
+		goto ECHANGE;
+
+	Armeniveau2:
+		set @prix,40000 + 4000*@objetUP ;
+		set @nb_requis,20; 			//nombre d'items requis
+		set @catalyseur1,1011; 			//emveretarcon
+		set @nb_cata1,10;			// 10 emveretarcons
+		set @catalyseur2,1010; 			//rien d'autre
+		set @nb_cata2,0;
+		goto ECHANGE;
+
+	Armeniveau3:
+		set @prix,90000 + 9000*@objetUP ;
+		set @nb_requis,30; 			//nombre d'items requis
+		set @catalyseur1,984; 			//oridecon
+		set @nb_cata1,10;			// 10 oridecons
+		set @catalyseur2,1010; 			//rien d'autre
+		set @nb_cata2,0;
+		goto ECHANGE;
+
+	Armeniveau4:
+		set @prix,160000 + 16000*@objetUP ;
+		set @nb_requis,40; 			//nombre d'items requis
+		set @catalyseur1,984; 			//oridecon
+		set @nb_cata1,20;			// 20 oridecon
+		set @catalyseur2,1010; 			//rien d'autre
+		set @nb_cata2,0;
+		goto ECHANGE;
+
+	Armureniveau1:
+		set @prix,10000 + 1000*@objetUP ;
+		set @nb_requis,10; 			//nombre d'items requis
+		set @catalyseur1,985; 			//elunium
+		set @nb_cata1,5;			// 5 eluniums
+		set @catalyseur2,999; 			//steel
+		set @nb_cata2,5; 			//5 steel
+		goto ECHANGE;
+
+	Armureniveau2:
+		set @prix,40000 + 4000*@objetUP ;
+		set @nb_requis,20; 			//nombre d'items requis
+		set @catalyseur1,985; 			//elunium
+		set @nb_cata1,10;			// 10 elunium
+		set @catalyseur2,999; 			//steel
+		set @nb_cata2,10; 			//10 steel
+		goto ECHANGE;
+
+	Armureniveau3:
+		set @prix,90000 + 9000*@objetUP ;
+		set @nb_requis,30; 			//nombre d'items requis
+		set @catalyseur1,985; 			//elunium
+		set @nb_cata1,20;			// 20 elunium
+		set @catalyseur2,999; 			//steel
+		set @nb_cata2,20; 			// 20 steel
+		goto ECHANGE;
+
+	Armureniveau4:
+		set @prix,160000 + 16000*@objetUP ;
+		set @nb_requis,40; 			//nombre d'items requis
+		set @catalyseur1,985; 			//elunium
+		set @nb_cata1,40;			// 40 eluniums
+		set @catalyseur2,999; 			//steel
+		set @nb_cata2,40; 			// 40 steels
+		goto ECHANGE;
+
+	Armureniveau5:
+		set @prix,500000;
+		set @nb_requis,50; 			//nombre d'items requis
+		set @catalyseur1,985; 			//elunium
+		set @nb_cata1,50;			// 50 eluniums
+		set @catalyseur2,999; 			//steel
+		set @nb_cata2,50; 			// 50 steels
+		goto ECHANGE;
+
+
+	ECHANGE:
+		set @chance,2500+ 250*@objetUP;
+		mes "[slotteur]";
+		mes "Pour essayer d'ajouter un slot sur: ^a83fff'"+getitemname(@objetID)+"'^000000.";
+		mes "il me faut:";
+		mes "- "+ @nb_requis + " '"+getitemname(@requis)+"'.";
+		mes "- "+ @nb_cata1 + " '"+getitemname(@catalyseur1)+"'.";
+		if (@nb_cata2 < 1) goto Eskip_cata2;
+		mes "- "+ @nb_cata2 + " '"+getitemname(@catalyseur2)+"'.";
+		Eskip_cata2:
+			mes "et "+ @prix +" zeny pour mon travail.";
+			mes "La probabilité de réussite est de: ^a83fff"+@chance/100+" %^000000.";
+			next;
+			menu "Poursuivre",CHECK2,"Non, je souhaite tout arrêter",M_Menu;
+
+
+	CHECK2:
+		if (countitem(@catalyseur1)<@nb_cata1 || countitem(@catalyseur1)<@nb_cata1 || zeny<@prix ||countitem(@requis)<@nb_requis) goto PAS_ASSEZ;
+		set zeny,zeny - @prix;
+		delitem @catalyseur1,@nb_cata1;
+		delitem @catalyseur2,@nb_cata2;
+		delitem @requis,@nb_requis;
+		failedrefitem(@part); //détruit l'ancien objet présent sur le joueur
+		mes "[slotteur]";
+		mes ".....";
+		mes "(quelques heures plus tard)";
+		next;
+		mes "(encore quelques heures plus tard)";
+		next;
+		if (rand(10000) <@chance) goto SUCCESS;
+		mes "[slotteur]";
+		mes "Après tant d'efforts, je n'ai pas réussi à ajouter le slot.";
+		mes "je suis désolé mais votre objet est perdu.";
+		close;
+
+
+	SUCCESS:
+		getitem @nouveau,1; //crée le nouvel objet
+		mes "[slotteur]";
+		mes "Après tant d'efforts et de patience, j'ai enfin réussi à ajouter le slot.";
+		mes "Voici votre objet: '"+getitemname(@nouveau)+"'.";
+		mes "J'ai eu des difficultés pendant la transformation";
+		mes "et j'ai du consommer tous ses upgrades pour 'sauver' l'objet.";
+		next;
+		mes "[slotteur]";
+		mes "J'espère qu'un objet, à présent aussi puissante, restera entre de bonnes mains.";
+		mes "A bientôt, j'espère.";
+		close;
+
+
+	PAS_ASSEZ:
+		mes "[slotteur]";
+		mes "Vous n'avez pas tous les objets requis, vous n'avez que:";
+		mes "- "+ @nb_requis + " '"+getitemname(@requis)+"'.";
+		mes "- "+ countitem(@catalyseur1) + " '"+getitemname(@catalyseur1)+"'.";
+		if (@nb_cata2 < 1) goto Cskip_cata2;
+		mes "- "+ countitem(@catalyseur2) + " '"+getitemname(@catalyseur2)+"'.";
+		Cskip_cata2:
+			mes "et "+ zeny +" zeny.";
+			close;
+
+
+	LEVELT:
+		mes "[slotteur]";
+		mes "Je peux augmenter le nombre de slot que sur des équipements de niveau 1.";
+		mes "Cet objet est de niveau "+ getequipweaponlv(@part)+".";
+		close;
+}
+
+
+prt_in.gat,125,73,5	duplicate(Slotteur)	Harry	88
+morocc_in.gat,125,73,5	duplicate(Slotteur)	Bill	88
+alberta_in.gat,125,73,5	duplicate(Slotteur)	François	88

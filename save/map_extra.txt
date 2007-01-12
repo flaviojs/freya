@@ -1,0 +1,16 @@
+// DON'T change or modify this file?
+// The map-server manage it automatically.
+// To add a line in this file, use the file 'map_extra_add.txt':
+//
+// An external software can add changes of zenys or items of players using file 'map_extra_add.txt'.
+// You can change location and/or name of this file with appropriate option in 'conf/map_athena.conf'.
+// To add a line in this file, prefer the append method.
+// The map-server will read this file periodically and automatically destroy it.
+// IMPORTANT: Be sure that the map-server can READ and DESTROY this file.
+// If concerned player is online, line will be executed. Otherwise line will be added in 'save/map_extra.txt'.
+// A line: <item_id>,<quantity>,<player name>
+// - Item_id can be -1 for zenys, or id of the item in the database
+// - Quantity can be negativ to substact
+// Example of lines (first: substract 1000 zenys, second: add 3 apples):
+// -1,-1000,Test_name
+// 512,2,Test_name2

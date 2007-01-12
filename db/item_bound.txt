@@ -1,0 +1,27 @@
+// item_bound.txt, Item Restrictions Database
+//
+// Structure of Database:
+//
+// ItemID,BindSetting,GM-LevelOverride
+//
+// Trading/Binding Settings:
+//  1: Item can't be drop
+//  2: Item can't be traded or vended (not even to wedding partner even if 4 is set)
+//  4: Item can only be traded with wedded partner
+//  8: Item can't be sold to npcs
+// 16: Item can't be placed in cart
+// 32: Item can't be placed in storage
+// 64: Item can't be placed in guild storage
+// Add these amounts up for your correct number
+//
+// Example:
+// 1161,67,50 // Balmung: No drop, No trade, No Guild Store (1+2+64 =67)
+//
+// Note: Only GMs of GM Level 50+ Can Override The Setting
+
+2634,109,100	// Wedding Ring (M)
+2635,109,100    // Wedding Ring (F)
+2644,99,100		// The Sign (Valhalla entrance)
+569,8,100		// Novice Red Potion
+
+7432,123,100	//Leather Pouch (Part of Cooking Quest)

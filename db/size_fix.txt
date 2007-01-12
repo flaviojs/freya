@@ -1,0 +1,10 @@
+// size_fix.txt, Size Fix Weapon Damage Database
+//
+// Structure of Database:
+//
+// Base,Dagger,1H-Sword,2H-Sword,1H-Spear,2H-Spear,1H-Axe,2H-Axe,1H-Mace,2H-Mace(Unused),Staff,Bow,Knuckle,Instrument,Whip,Book,Katar,Revolver,Rifle,Shotgun,GatlingGun,GrenadeLauncher,FuumaShuriken
+//
+
+100,100, 75, 75, 75, 75, 50, 50, 75,100,100,100,100, 75, 75,100, 75,100,100,100,100,100,100,	// Size: Small
+100, 75,100, 75, 75, 75, 75, 75,100,100,100,100, 75,100,100,100,100,100,100,100,100,100,100,	// Size: Medium
+100, 50, 75,100,100,100,100,100,100,100,100, 75, 50, 75, 50, 50, 75,100,100,100,100,100,100,	// Size: Large

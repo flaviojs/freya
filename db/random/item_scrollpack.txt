@@ -1,0 +1,28 @@
+// item_scrollpack.txt, Scroll Package Database
+//
+// <Item_ID>,<Description (Dummy)>,<Rate>
+//
+// Rate Examples
+// 10000   = 1%
+// 500000  = 50%
+// 1000000 = 100%
+
+0,Level 3 Earth Spike,686
+686,Level 3 Earth Spike,500000
+687,Level 5 Earth Spike,500000
+688,Level 3 Cold Bolt,500000
+689,Level 5 Cold Bolt,500000
+690,Level 3 Fire Bolt,500000
+691,Level 5 Fire Bolt,500000
+692,Level 3 Lightening Bolt,500000
+693,Level 5 Lightening Bolt,500000
+694,Level 3 Soul Strike,500000
+695,Level 5 Soul Strike,500000
+696,Level 1 Fire Ball,500000
+697,Level 5 Fire Ball,500000
+698,Level 1 Fire Wall,500000
+699,Level 5 Fire Wall,500000
+700,Level 1 Frost Diver,500000
+12000,Level 5 Frost Diver,500000
+12001,Level 3 Heal,500000
+12002,Level 5 Heal,500000

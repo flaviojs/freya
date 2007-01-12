@@ -1,0 +1,322 @@
+//===== Freya Script =========================================
+//= Halloween Event based on DIM halloween event
+//===== By: ==================================================
+//= 1.0 - Yor / Twilight
+//== Copyrights ==============================================
+//= Sapho's Scripts
+//===== Current Version: =====================================
+//= 1.0 [Yor] / [Twilight]
+//= 1.1 [Yor]
+//===== Compatible With: =====================================
+//= Any Freya Version
+//===== Additional Comments: =================================
+//= All monsters are not agressiv
+//= 1.1: Ajout des plantes rouges
+//============================================================
+
+//============================================================
+// Mob de la ville de Prontera
+//============================================================
+
+// skeleton
+prontera.gat,0,0,0,0	monster	Squelette d'aventurier	1076,30,0,0,0
+// tarou (small)
+prontera.gat,0,0,0,0	monster	Rat d'égout	3175,15,0,0,0
+// fabre (small)
+prontera.gat,0,0,0,0	monster	Rat des champs	3007,50,0,0,0
+// eggyra
+prontera.gat,0,0,0,0	monster	Oeuf maudit	1116,15,0,0,0
+// Sohee
+prontera.gat,0,0,0,0	monster	Ame perdue	1170,5,0,0,0
+// Zenorc
+prontera.gat,0,0,0,0	monster	Mutant	1177,15,0,0,0
+// Metaling
+prontera.gat,0,0,0,0	monster	Pomme véreuse	1613,5,0,0,0
+// Red plant
+prontera.gat,0,0,0,0	monster	Plante de sang	1078,30,0,0,0
+
+
+//============================================================
+// Mob de la ville de morocc
+//============================================================
+
+morocc.gat,0,0,0,0	monster	Squelette d'aventurier	1076,30,0,0,0
+morocc.gat,0,0,0,0	monster	Rat d'égout	3175,15,0,0,0
+morocc.gat,0,0,0,0	monster	Rat des champs	3007,50,0,0,0
+morocc.gat,0,0,0,0	monster	Oeuf maudit	1116,15,0,0,0
+morocc.gat,0,0,0,0	monster	Ame perdue	1170,5,0,0,0
+morocc.gat,0,0,0,0	monster	Mutant	1177,15,0,0,0
+morocc.gat,0,0,0,0	monster	Pomme véreuse	1613,5,0,0,0
+morocc.gat,0,0,0,0	monster	Plante de sang	1078,30,0,0,0
+
+//============================================================
+// Mob de la ville de geffen
+//============================================================
+
+geffen.gat,0,0,0,0	monster	Squelette d'aventurier	1076,30,0,0,0
+geffen.gat,0,0,0,0	monster	Rat d'égout	3175,15,0,0,0
+geffen.gat,0,0,0,0	monster	Rat des champs	3007,50,0,0,0
+geffen.gat,0,0,0,0	monster	Oeuf maudit	1116,15,0,0,0
+geffen.gat,0,0,0,0	monster	Ame perdue	1170,5,0,0,0
+geffen.gat,0,0,0,0	monster	Mutant	1177,15,0,0,0
+geffen.gat,0,0,0,0	monster	Pomme véreuse	1613,5,0,0,0
+geffen.gat,0,0,0,0	monster	Plante de sang	1078,30,0,0,0
+
+//============================================================
+// Mob de la ville de Payon
+//============================================================
+
+payon.gat,0,0,0,0	monster	Squelette d'aventurier	1076,30,0,0,0
+payon.gat,0,0,0,0	monster	Rat d'égout	3175,15,0,0,0
+payon.gat,0,0,0,0	monster	Rat des champs	3007,50,0,0,0
+payon.gat,0,0,0,0	monster	Oeuf maudit	1116,15,0,0,0
+payon.gat,0,0,0,0	monster	Ame perdue	1170,5,0,0,0
+payon.gat,0,0,0,0	monster	Mutant	1177,15,0,0,0
+payon.gat,0,0,0,0	monster	Pomme véreuse	1613,5,0,0,0
+payon.gat,0,0,0,0	monster	Plante de sang	1078,30,0,0,0
+
+//============================================================
+// Mob de la ville de alberta
+//============================================================
+
+alberta.gat,0,0,0,0	monster	Squelette d'aventurier	1076,30,0,0,0
+alberta.gat,0,0,0,0	monster	Rat d'égout	3175,15,0,0,0
+alberta.gat,0,0,0,0	monster	Rat des champs	3007,50,0,0,0
+alberta.gat,0,0,0,0	monster	Oeuf maudit	1116,15,0,0,0
+alberta.gat,0,0,0,0	monster	Ame perdue	1170,5,0,0,0
+alberta.gat,0,0,0,0	monster	Mutant	1177,15,0,0,0
+alberta.gat,0,0,0,0	monster	Pomme véreuse	1613,5,0,0,0
+alberta.gat,0,0,0,0	monster	Plante de sang	1078,30,0,0,0
+
+//============================================================
+// Mob de la ville de izlude
+//============================================================
+
+izlude.gat,0,0,0,0	monster	Squelette d'aventurier	1076,30,0,0,0
+izlude.gat,0,0,0,0	monster	Rat d'égout	3175,15,0,0,0
+izlude.gat,0,0,0,0	monster	Rat des champs	3007,50,0,0,0
+izlude.gat,0,0,0,0	monster	Oeuf maudit	1116,15,0,0,0
+izlude.gat,0,0,0,0	monster	Ame perdue	1170,5,0,0,0
+izlude.gat,0,0,0,0	monster	Mutant	1177,15,0,0,0
+izlude.gat,0,0,0,0	monster	Pomme véreuse	1613,5,0,0,0
+izlude.gat,0,0,0,0	monster	Plante de sang	1078,30,0,0,0
+
+//============================================================
+// Mob de la ville de aldebaran
+//============================================================
+
+aldebaran.gat,0,0,0,0	monster	Squelette d'aventurier	1076,30,0,0,0
+aldebaran.gat,0,0,0,0	monster	Rat d'égout	3175,15,0,0,0
+aldebaran.gat,0,0,0,0	monster	Rat des champs	3007,50,0,0,0
+aldebaran.gat,0,0,0,0	monster	Oeuf maudit	1116,15,0,0,0
+aldebaran.gat,0,0,0,0	monster	Ame perdue	1170,5,0,0,0
+aldebaran.gat,0,0,0,0	monster	Mutant	1177,15,0,0,0
+aldebaran.gat,0,0,0,0	monster	Pomme véreuse	1613,5,0,0,0
+aldebaran.gat,0,0,0,0	monster	Plante de sang	1078,30,0,0,0
+
+//============================================================
+// Mob de la ville de xmas
+//============================================================
+
+xmas.gat,0,0,0,0	monster	Squelette d'aventurier	1076,30,0,0,0
+xmas.gat,0,0,0,0	monster	Rat d'égout	3175,15,0,0,0
+xmas.gat,0,0,0,0	monster	Rat des champs	3007,50,0,0,0
+xmas.gat,0,0,0,0	monster	Oeuf maudit	1116,15,0,0,0
+xmas.gat,0,0,0,0	monster	Ame perdue	1170,5,0,0,0
+xmas.gat,0,0,0,0	monster	Mutant	1177,15,0,0,0
+xmas.gat,0,0,0,0	monster	Pomme véreuse	1613,5,0,0,0
+xmas.gat,0,0,0,0	monster	Plante de sang	1078,30,0,0,0
+
+//============================================================
+// Mob de la ville de comodo
+//============================================================
+
+comodo.gat,0,0,0,0	monster	Squelette d'aventurier	1076,30,0,0,0
+comodo.gat,0,0,0,0	monster	Rat d'égout	3175,15,0,0,0
+comodo.gat,0,0,0,0	monster	Rat des champs	3007,50,0,0,0
+comodo.gat,0,0,0,0	monster	Oeuf maudit	1116,15,0,0,0
+comodo.gat,0,0,0,0	monster	Ame perdue	1170,5,0,0,0
+comodo.gat,0,0,0,0	monster	Mutant	1177,15,0,0,0
+comodo.gat,0,0,0,0	monster	Pomme véreuse	1613,5,0,0,0
+comodo.gat,0,0,0,0	monster	Plante de sang	1078,30,0,0,0
+
+//============================================================
+// Mob de la ville de yuno
+//============================================================
+
+yuno.gat,0,0,0,0	monster	Squelette d'aventurier	1076,30,0,0,0
+yuno.gat,0,0,0,0	monster	Rat d'égout	3175,15,0,0,0
+yuno.gat,0,0,0,0	monster	Rat des champs	3007,50,0,0,0
+yuno.gat,0,0,0,0	monster	Oeuf maudit	1116,15,0,0,0
+yuno.gat,0,0,0,0	monster	Ame perdue	1170,5,0,0,0
+yuno.gat,0,0,0,0	monster	Mutant	1177,15,0,0,0
+yuno.gat,0,0,0,0	monster	Pomme véreuse	1613,5,0,0,0
+yuno.gat,0,0,0,0	monster	Plante de sang	1078,30,0,0,0
+
+//============================================================
+// Mob de la ville de amatsu
+//============================================================
+
+amatsu.gat,0,0,0,0	monster	Squelette d'aventurier	1076,30,0,0,0
+amatsu.gat,0,0,0,0	monster	Rat d'égout	3175,15,0,0,0
+amatsu.gat,0,0,0,0	monster	Rat des champs	3007,50,0,0,0
+amatsu.gat,0,0,0,0	monster	Oeuf maudit	1116,15,0,0,0
+amatsu.gat,0,0,0,0	monster	Ame perdue	1170,5,0,0,0
+amatsu.gat,0,0,0,0	monster	Mutant	1177,15,0,0,0
+amatsu.gat,0,0,0,0	monster	Pomme véreuse	1613,5,0,0,0
+amatsu.gat,0,0,0,0	monster	Plante de sang	1078,30,0,0,0
+
+//============================================================
+// Mob de la ville de Kunlun
+//============================================================
+
+gonryun.gat,0,0,0,0	monster	Squelette d'aventurier	1076,30,0,0,0
+gonryun.gat,0,0,0,0	monster	Rat d'égout	3175,15,0,0,0
+gonryun.gat,0,0,0,0	monster	Rat des champs	3007,50,0,0,0
+gonryun.gat,0,0,0,0	monster	Oeuf maudit	1116,15,0,0,0
+gonryun.gat,0,0,0,0	monster	Ame perdue	1170,5,0,0,0
+gonryun.gat,0,0,0,0	monster	Mutant	1177,15,0,0,0
+gonryun.gat,0,0,0,0	monster	Pomme véreuse	1613,5,0,0,0
+gonryun.gat,0,0,0,0	monster	Plante de sang	1078,30,0,0,0
+
+//============================================================
+// Mob de la ville de umbala
+//============================================================
+
+umbala.gat,0,0,0,0	monster	Squelette d'aventurier	1076,30,0,0,0
+umbala.gat,0,0,0,0	monster	Rat d'égout	3175,15,0,0,0
+umbala.gat,0,0,0,0	monster	Rat des champs	3007,50,0,0,0
+umbala.gat,0,0,0,0	monster	Oeuf maudit	1116,15,0,0,0
+umbala.gat,0,0,0,0	monster	Ame perdue	1170,5,0,0,0
+umbala.gat,0,0,0,0	monster	Mutant	1177,15,0,0,0
+umbala.gat,0,0,0,0	monster	Pomme véreuse	1613,5,0,0,0
+umbala.gat,0,0,0,0	monster	Plante de sang	1078,30,0,0,0
+
+//============================================================
+// Mob de la ville de niflheim
+//============================================================
+
+niflheim.gat,0,0,0,0	monster	Squelette d'aventurier	1076,30,0,0,0
+niflheim.gat,0,0,0,0	monster	Rat d'égout	3175,15,0,0,0
+niflheim.gat,0,0,0,0	monster	Rat des champs	3007,50,0,0,0
+niflheim.gat,0,0,0,0	monster	Oeuf maudit	1116,15,0,0,0
+niflheim.gat,0,0,0,0	monster	Ame perdue	1170,5,0,0,0
+niflheim.gat,0,0,0,0	monster	Mutant	1177,15,0,0,0
+niflheim.gat,0,0,0,0	monster	Pomme véreuse	1613,5,0,0,0
+niflheim.gat,0,0,0,0	monster	Plante de sang	1078,30,0,0,0
+
+//============================================================
+// Mob de la ville de louyang
+//============================================================
+
+louyang.gat,0,0,0,0	monster	Squelette d'aventurier	1076,30,0,0,0
+louyang.gat,0,0,0,0	monster	Rat d'égout	3175,15,0,0,0
+louyang.gat,0,0,0,0	monster	Rat des champs	3007,50,0,0,0
+louyang.gat,0,0,0,0	monster	Oeuf maudit	1116,15,0,0,0
+louyang.gat,0,0,0,0	monster	Ame perdue	1170,5,0,0,0
+louyang.gat,0,0,0,0	monster	Mutant	1177,15,0,0,0
+louyang.gat,0,0,0,0	monster	Pomme véreuse	1613,5,0,0,0
+louyang.gat,0,0,0,0	monster	Plante de sang	1078,30,0,0,0
+
+//============================================================
+// Mob de la ville de pay_arche
+//============================================================
+
+pay_arche.gat,0,0,0,0	monster	Squelette d'aventurier	1076,30,0,0,0
+pay_arche.gat,0,0,0,0	monster	Rat d'égout	3175,15,0,0,0
+pay_arche.gat,0,0,0,0	monster	Rat des champs	3007,50,0,0,0
+pay_arche.gat,0,0,0,0	monster	Oeuf maudit	1116,15,0,0,0
+pay_arche.gat,0,0,0,0	monster	Ame perdue	1170,5,0,0,0
+pay_arche.gat,0,0,0,0	monster	Mutant	1177,15,0,0,0
+pay_arche.gat,0,0,0,0	monster	Pomme véreuse	1613,5,0,0,0
+pay_arche.gat,0,0,0,0	monster	Plante de sang	1078,30,0,0,0
+
+//============================================================
+// Mob de la ville de glast_01
+//============================================================
+
+glast_01.gat,0,0,0,0	monster	Squelette d'aventurier	1076,30,0,0,0
+glast_01.gat,0,0,0,0	monster	Rat d'égout	3175,15,0,0,0
+glast_01.gat,0,0,0,0	monster	Rat des champs	3007,50,0,0,0
+glast_01.gat,0,0,0,0	monster	Oeuf maudit	1116,15,0,0,0
+glast_01.gat,0,0,0,0	monster	Ame perdue	1170,5,0,0,0
+glast_01.gat,0,0,0,0	monster	Mutant	1177,15,0,0,0
+glast_01.gat,0,0,0,0	monster	Pomme véreuse	1613,5,0,0,0
+glast_01.gat,0,0,0,0	monster	Plante de sang	1078,30,0,0,0
+
+//============================================================
+// Mob de la ville de jawaii
+//============================================================
+
+jawaii.gat,0,0,0,0	monster	Squelette d'aventurier	1076,30,0,0,0
+jawaii.gat,0,0,0,0	monster	Rat d'égout	3175,15,0,0,0
+jawaii.gat,0,0,0,0	monster	Rat des champs	3007,50,0,0,0
+jawaii.gat,0,0,0,0	monster	Oeuf maudit	1116,15,0,0,0
+jawaii.gat,0,0,0,0	monster	Ame perdue	1170,5,0,0,0
+jawaii.gat,0,0,0,0	monster	Mutant	1177,15,0,0,0
+jawaii.gat,0,0,0,0	monster	Pomme véreuse	1613,5,0,0,0
+jawaii.gat,0,0,0,0	monster	Plante de sang	1078,30,0,0,0
+
+//============================================================
+// Mob de la ville de ayothaya
+//============================================================
+
+ayothaya.gat,0,0,0,0	monster	Squelette d'aventurier	1076,30,0,0,0
+ayothaya.gat,0,0,0,0	monster	Rat d'égout	3175,15,0,0,0
+ayothaya.gat,0,0,0,0	monster	Rat des champs	3007,50,0,0,0
+ayothaya.gat,0,0,0,0	monster	Oeuf maudit	1116,15,0,0,0
+ayothaya.gat,0,0,0,0	monster	Ame perdue	1170,5,0,0,0
+ayothaya.gat,0,0,0,0	monster	Mutant	1177,15,0,0,0
+ayothaya.gat,0,0,0,0	monster	Pomme véreuse	1613,5,0,0,0
+ayothaya.gat,0,0,0,0	monster	Plante de sang	1078,30,0,0,0
+
+//============================================================
+// Mob de la ville de einbroch
+//============================================================
+
+einbroch.gat,0,0,0,0	monster	Squelette d'aventurier	1076,30,0,0,0
+einbroch.gat,0,0,0,0	monster	Rat d'égout	3175,15,0,0,0
+einbroch.gat,0,0,0,0	monster	Rat des champs	3007,50,0,0,0
+einbroch.gat,0,0,0,0	monster	Oeuf maudit	1116,15,0,0,0
+einbroch.gat,0,0,0,0	monster	Ame perdue	1170,5,0,0,0
+einbroch.gat,0,0,0,0	monster	Mutant	1177,15,0,0,0
+einbroch.gat,0,0,0,0	monster	Pomme véreuse	1613,5,0,0,0
+einbroch.gat,0,0,0,0	monster	Plante de sang	1078,30,0,0,0
+
+//============================================================
+// Mob de la ville de lighthalzen
+//============================================================
+
+lighthalzen.gat,0,0,0,0	monster	Squelette d'aventurier	1076,30,0,0,0
+lighthalzen.gat,0,0,0,0	monster	Rat d'égout	3175,15,0,0,0
+lighthalzen.gat,0,0,0,0	monster	Rat des champs	3007,50,0,0,0
+lighthalzen.gat,0,0,0,0	monster	Oeuf maudit	1116,15,0,0,0
+lighthalzen.gat,0,0,0,0	monster	Ame perdue	1170,5,0,0,0
+lighthalzen.gat,0,0,0,0	monster	Mutant	1177,15,0,0,0
+lighthalzen.gat,0,0,0,0	monster	Pomme véreuse	1613,5,0,0,0
+lighthalzen.gat,0,0,0,0	monster	Plante de sang	1078,30,0,0,0
+
+//============================================================
+//= fog
+//============================================================
+prontera.gat	mapflag	fog
+morocc.gat	mapflag	fog
+geffen.gat	mapflag	fog
+payon.gat	mapflag	fog
+alberta.gat	mapflag	fog
+izlude.gat	mapflag	fog
+aldebaran.gat	mapflag	fog
+xmas.gat	mapflag	fog
+comodo.gat	mapflag	fog
+yuno.gat	mapflag	fog
+amatsu.gat	mapflag	fog
+gonryun.gat	mapflag	fog
+umbala.gat	mapflag	fog
+niflheim.gat	mapflag	fog
+louyang.gat	mapflag	fog
+pay_arche.gat	mapflag	fog
+glast_01.gat	mapflag	fog
+jawaii.gat	mapflag	fog
+ayothaya.gat	mapflag	fog
+einbroch.gat	mapflag	fog
+lighthalzen.gat	mapflag	fog

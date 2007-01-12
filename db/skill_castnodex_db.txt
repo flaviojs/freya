@@ -1,0 +1,31 @@
+// skill_castnodex_db.txt, No Dex Instant Cast Skill Database
+//
+// Structure of Database:
+//
+// SkillID, Cast: 1 or 0, Delay - Optional: 1 or 0
+//
+// Cast: With 1, Dex Does Not Affect The Skill's Cast Rate
+// Cast: With 0, Dex Does Affect The Skill's Cast Rate
+// Delay: With 1, Dex Does Not Affect The Skill's Delay Rate
+// Delay: With 0, Dex Does Affect The Skill's Delay Rate
+//
+
+255,1	// CR_DEVOTION#Sacrifice#
+336,1	// WE_CALLPARTNER#I Miss You#
+366,1	// HW_MAGICPOWER#Mystical Amplification#
+370,1	// CH_PALMSTRIKE#Raging Palm Strike#
+403,1	// PF_MEMORIZE#Foresight#
+//408,1	// WE_BABY#Baby#
+//409,1	// WE_CALLPARENT#Call Parent#
+//410,1	// WE_CALLBABY#Call Baby#
+482,1	// PF_DOUBLECASTING#Double Casting#
+462,1	// SL_KAIZEL
+//512,3 //GS_TRACKING
+496,1	// AM_TWILIGHT1
+497,1	// AM_TWILIGHT2
+498,1	// AM_TWILIGHT3
+1014,1	// PR_REDEMPTIO#Redemptio#
+10010,3	// GD_BATTLEORDER#Battle Orders#
+10011,3	// GD_REGENERATION#Regeneration#
+10012,3	// GD_RESTORE#Restore#
+10013,3	// GD_EMERGENCYCALL#Emergency Recall#

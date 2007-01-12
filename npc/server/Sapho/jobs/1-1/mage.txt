@@ -1,0 +1,467 @@
+//===== Freya Script ========================================= 
+//= Mage Job Quest
+//===== By: ================================================== 
+//= kobra_k88
+//===== Current Version: ===================================== 
+//= 1.4
+//===== Compatible With: ===================================== 
+//= eAthena 1.0 +
+//===== Description: ========================================= 
+//= traduit par GAlion
+//===== Additional Comments: ================================= 
+//= Fully working
+//= 1.1 Fixed input ingridients bug [Lupus]
+//= v1.2 Added instant job change for High Novice [Lupus]
+//= 1.3 Added Baby Class support [Lupus]
+//= v1.4 Optimised and moved first checker to Jfunc1-1 [massdriller]
+//============================================================ 
+
+
+// -- Experte en Magie -- 
+geffen_in.gat,164,124,4	script	Experte en Magie	123,{
+	callfunc "F_ToHigh",JOB_MAGE_HIGH,"High Mage",JOB_HIGH_WIZARD,"High Wizard",0,0,0,0,"Experte en Magie";
+	if (BaseJob == JOB_NOVICE && job_magician_q >= 1) goto L_BeMage;
+
+	mes "[Experte en Magie]";
+	mes "Hi hi!  Que puis-je pour vous aujourd'hui?";
+M_Menu:
+	next;
+	menu "J'adore la magie, faites de moi un mage!",M_0,"Quelles sont les conditions.",M_1,"Non, rien merci.",M_End;
+
+	M_0:
+		mes "[Experte en Magie]";
+		mes "Vous voulez être mage? Hmmm...";
+		next;
+		mes "[Experte en Magie]";
+		callfunc "Mag_check";
+		mes "La chose à faire est de passer le test officiel de mage de Geffen. Je vais vous en donner les détails.";
+		next;
+		set job_magician_q, rand(1,4);
+
+		L_Explain:
+		mes "[Experte en Magie]";
+		if (job_magician_q == 1) mes "Votre test est de préparer la ^0000ff'mixture  No.1'^000000  et de me la rapporter.";
+		if (job_magician_q == 2) mes "Votre test est de préparer la ^0000ff'mixture  No.2'^000000  et de me la rapporter.";
+		if (job_magician_q == 3) mes "Votre test est de préparer la ^0000ff'mixture  No.3'^000000  et de me la rapporter.";
+		if (job_magician_q == 4) mes "Votre test est de préparer la ^0000ff'mixture  No.4'^000000  et de me la rapporter.";
+
+		next;
+		if (countitem(1092) == 0) getitem 1092,1;//Items: Empty_Test_Tube,
+		mes "[Experte en Magie]";
+		mes "Vous trouverez la liste des ingrédients nécessaires dans le ^5533FF'Guide des Mixtures'^000000 ici, dans cette pièce.";
+		mes "Regardez dedans pour avoir la liste des ingrédients.";
+		next;
+		mes "[Experte en Magie]";
+		mes "Quand vous serez pret(e) à mélanger, utilisez ^ff0000'le synthétiseur'^000000 au centre de la pièce pour faire la mixture.";
+		next;
+		mes "[Experte en Magie]";
+		mes "Bonne chance! Je vous attends.";
+		close;
+
+	M_1:
+		mes "[Experte en Magie]";
+		mes "Avant tout, vous decez avoir atteint le niveau 9 de novice et avoir appris toutes les compétences (skills) de base.";
+		mes "Ensuite, vous devez réussir le test de Mage.";
+		goto M_Menu;
+	M_End:
+		mes "[Experte en Magie]";
+		mes "Ok. Au revoir.";
+		close;
+
+L_BeMage:
+	mes "[Experte en Magie]";
+	mes "Oh, vous revoilà. Voyons voir ça...";
+	next;
+	mes "[Experte en Magie]";
+	if (countitem(1090) >= 1) goto L_Retry;//Items: Unknown_Test_Tube,
+	if ((countitem(1071)<1) && (countitem(1085)<1) && (countitem(1086)<1) && (countitem(1087)<1)) goto L_NoSol;//Items: Unknown_Test_Tube, Unknown_Test_Tube, Unknown_Test_Tube, Unknown_Test_Tube,
+
+	if (SkillPoint > 0) mes "Vous devez utiliser tous vos points de compétences (skills) avant de passer Mage.";
+	if (SkillPoint > 0) close;
+
+	mes "... La couleur n'est pas géniale... Un léger précipité s'est formé... hmmm...";
+	next;
+	mes "[Experte en Magie]";
+	mes "Bon, ce n'est pas parfait mais ça montre que vous vous êtes donné(e) beaucoup de mal donc... C'est bon! Je vous valide le test. Vous êtes officiellement devenu(e) Mage!";
+	emotion e_no1;
+	next;
+	mes "[Experte en Magie]";
+	mes "Abra-kadabra... schmouloulou... hocus pocus.. Transformez ce novice en ^00aa00MAGE^000000!!";
+	next;
+	callfunc "Job_Change",JOB_MAGE;
+
+	set Zeny,Zeny+500;
+	if (job_magician_q == 1) delitem 1071,1;//Items: Unknown_Test_Tube,
+	if (job_magician_q == 2) delitem 1085,1;//Items: Unknown_Test_Tube,
+	if (job_magician_q == 3) delitem 1086,1;//Items: Unknown_Test_Tube,
+	if (job_magician_q == 4) delitem 1087,1;//Items: Unknown_Test_Tube,
+
+	callfunc "F_ClearJobVar";		// clears all job variables for the current player
+	mes "[Experte en Magie]";
+	mes "'Bienvenue dans MoN MoNdE héhéhé. J'ai toujours voulu dire ça. Et bien, félicitations! Vous êtes un des nôtres à présent. Soyons amis alors!";
+	emotion e_heh;
+	next;
+	mes "[Experte en Magie]";
+	mes "Bonne chance à vous et faites attention!";
+	close;
+
+	L_Retry:
+		mes "Je suis désolé, mais cette solution n'est pas bonne. Je crains que vous n'ayez failli au test. Quoique, vous puissiez toujours recommencer.";
+		mes "Je vous explique à nouveau le test pour qu nous soyons d'accord.";
+		emotion e_swt;
+		next;
+		delitem 1090,1;//Items: Unknown_Test_Tube,
+		goto L_Explain;
+
+	L_NoSol:
+		mes "Où est la mixture que je vous avais demandé? Je ne peux pas vérifier la solution si vous ne l'avez pas. Je vais vous rappeler la solution que vous devez préparer.";
+		emotion e_what;
+		next;
+		goto L_Explain;
+
+}
+// -- Solutions Guide Book --
+geffen_in.gat,177,112,1	script	Guide des Mixtures	111,{
+	mes "[Guide des Mixtures]";
+	mes "J'appartiens à l'ACADEMIE DE MAGIE DE GEFFEN. Merci de me manipuler avec précaution.";
+	next;
+	menu " Mixture No. 1.",Sol1," Mixture No. 2.",Sol2," Mixture No. 3.",Sol3," Mixture No. 4.",Sol4,"Close.",Cancel;
+
+	Sol1:
+		mes "[test de Mage - Mixture No. 1]";
+		mes "* Liste des ingrédients *";
+		mes " - 2 "+getitemname(909);
+		mes " - 3 "+getitemname(914);
+		mes " - 1 "+getitemname(519);
+		next;
+		mes "[test de Mage - Mixture No. 1]";
+		mes "* Solvant *";
+		mes "  1 "+getitemname(1089);
+		mes "  On en trouve au village";
+		mes "  des Archers: Payon.";
+		next;
+		mes "[test de Mage - Mixture No. 1]";
+		mes "* Ingrédient chimique *";
+		mes " - 8472";
+		next;
+		mes "[test de Mage - Mixture No. 1]";
+		mes "* Catalyseur *";
+		mes " - fragment d'ignimbrite";		//yellow gemstone en vrai
+		mes "   (la machine à mélanger";
+		mes "   fournira cet objet.)";
+		close;
+	Sol2:
+		mes "[test de Mage - Mixture No. 2]";
+		mes "* Liste des ingrédients *";
+		mes " - 3 "+getitemname(909);
+		mes " - 1 "+getitemname(914);
+		mes " - 1 "+getitemname(519);
+		next;
+		mes "[test de Mage - Mixture No. 2]";
+		mes "* Solvant *";
+		mes " - inutile";
+		next;
+		mes "[test de Mage - Mixture No. 2]";
+		mes "* Ingrédient chimique *";
+		mes " - 3735";
+		next;
+		mes "[test de Mage - Mixture No. 2]";
+		mes "* Catalyseur *";
+		mes " - éclat de Hyalite";		//red gemstone en vrai
+		mes "   (la machine à mélanger";
+		mes "   fournira cet objet.)";
+		close;
+	Sol3:
+		mes "[test de Mage - Mixture No. 3]";
+		mes "* Liste des ingrédients *";
+		mes " - 6 "+getitemname(909);
+		mes " - 1 "+getitemname(914);
+		next;
+		mes "[test de Mage - Mixture No. 3]";
+		mes "* Solvant *";
+		mes "  1 "+getitemname(1089);
+		mes "  On en trouve au village";
+		mes "  des Archers: Payon.";
+		next;
+		mes "[test de Mage - Mixture No. 3]";
+		mes "* Ingrédient chimique *";
+		mes " - 2750";
+		next;
+		mes "[test de Mage - Mixture No. 3]";
+		mes "* Catalyseur *";
+		mes " - morceau de glaucophane";		//blue gemstone en vrai
+		mes "   (la machine à mélanger";
+		mes "   fournira cet objet.)";
+		close;
+	Sol4:
+		mes "[test de Mage - Mixture No. 4]";
+		mes "* Liste des ingrédients *";
+		mes " - 2 "+getitemname(909);
+		mes " - 3 "+getitemname(914);
+		next;
+		mes "[test de Mage - Mixture No. 4]";
+		mes "* Solvant *";
+		mes "  1 "+getitemname(1088);
+		mes "  On en trouve près de l'entrée";
+		mes "  de la pyramide de Morocc.";
+		next;
+		mes "[test de Mage - Mixture No. 4]";
+		mes "* Ingrédient chimique *";
+		mes " - 5429";
+		next;
+		mes "[test de Mage - Mixture No. 4]";
+		mes "* Catalyseur *";
+		mes " - fossile d'ichtyostéga";		// 1 carat Diamond en vrai
+		mes "   (la machine à mélanger";
+		mes "   fournira cet objet.)";
+		close;
+	Cancel:
+		close;
+}
+
+// -- Synthétiseur --
+geffen_in.gat,164,112,1	script	Synthétiseur	111,{
+	mes "[Synthétiseur]";
+	mes "Ceci est l'unique synthétiseur conçu pour réaliser des solutions magiques. Elle est la propriété de l'ACADEMIE DE MAGIE DE GEFFEN.";
+	next;
+	mes "[Synthétiseur]";
+	mes "Désirez-vous l'utiliser?";
+	next;
+	menu "Oui.",M_Start, "Non.",M_End;
+
+	M_Start:
+		mes "[Synthétiseur]";
+		mes "Veuillez spécifier les ingrédients à utiliser.";
+		next;
+		sM_Menu:
+		menu "- "+getitemname(909),sM_0, "- "+getitemname(914),sM_1, "- "+getitemname(519),sM_2, "Passer à l'étape suivante.",sM_3;
+
+		sM_0:
+			input @JELLOPY;
+			if (@JELLOPY<0 || @JELLOPY>100) set @JELLOPY,0; //set 0 if wrong input
+			goto sM_Menu;
+		sM_1:
+			input @FLUFF;
+			if (@FLUFF<0 || @FLUFF>100) set @FLUFF,0; //set 0 if wrong input
+			goto sM_Menu;
+		sM_2:
+			input @MILK;
+			if (@MILK<0 || @MILK>100) set @MILK,0; //set 0 if wrong input
+			goto sM_Menu;
+		sM_3:
+			mes "[Synthétiseur]";
+			mes "Veuillez spécifier un solvant.";
+			next;
+			menu "-"+getitemname(1089),ssM_0, "-"+getitemname(1088),ssM_1, "pas de solvant",ssM_2;
+
+			ssM_0:
+				set @SOLVENT, 1089;
+				set @SOLVENT$, "Payon";
+				goto L_Cont;
+			ssM_1:
+				set @SOLVENT, 1088;
+				set @SOLVENT$, "Morroc";
+				goto L_Cont;
+			ssM_2:
+				set @SOLVENT, 0;
+				set @SOLVENT$, "aucun";
+
+			L_Cont:
+			mes "[Synthétiseur]";
+			mes "Voici les ingrédients que vous avez sélectionnés:";
+			mes "^4444FF"+@JELLOPY+"^000000 "+ getitemname(909)+",";
+			mes "^4444FF"+@FLUFF+"^000000 "+ getitemname(914)+",";
+			mes "^4444FF"+@MILK+"^000000 "+ getitemname(519)+",";
+			mes "et comme solvant: ^4444FF"+@SOLVENT$+"^000000.";
+			mes "Est-ce correct?";
+			next;
+			menu "Oui.",-, "Non.",M_Start;
+
+			mes "[Synthétiseur]";
+			mes "Veuillez introduire tous les objets requis dans le chaudron et entrer le code du produit chimique.";
+			next;
+
+			L_Input:
+			input @INPUT;
+			mes "[Synthétiseur]";
+			mes "Vous avez tapé ^5555FF"+@INPUT+"^000000. Est-ce exact?";
+			next;
+			menu "Oui.",-, "Non.",L_Input;
+
+			mes "[Synthétiseur]";
+			mes "Pour la dernière étape, veuillez indiquer quel catalyseur utiliser.";
+			next;
+			menu "Ignimbrite.",ssM_Yell, "Hyalite.",ssM_Red, "Glaucophane.",ssM_Blue, "Ichtyostéga.",ssM_Diamd;
+
+			ssM_Yell:
+				if (countitem(909)<@JELLOPY || countitem(914)<@FLUFF || countitem(519)<@MILK) goto sL_NotEnuf;//Items: Jellopy, Fluff, Milk,
+				if (@SOLVENT$!=("No") && countitem(@SOLVENT)<1) goto sL_NotEnuf;
+				mes "[Synthétiseur]";
+				mes "Prêt. Initialisation du procédé de synthétisation. Veuillez patienter.";
+				next;
+				mes "[Synthétiseur]";
+				mes "Blum... Blum... Blum... Blum...";
+				next;
+				mes "[Synthétiseur]";
+				if (job_magician_q != 1 || @INPUT != 8472 || @JELLOPY!=2 || @FLUFF!=3 || @MILK!=1 || @SOLVENT!=1089) goto sL_FAIL;
+				delitem 909,2;//Items: Jellopy,
+				delitem 914,3;//Items: Fluff,
+				delitem 519,1;//Items: Milk,
+				delitem 1089,1;//Items: Payon_Solution,
+				delitem 1092,1;//Items: Empty_Test_Tube,
+				mes "Synthèse terminée";
+				getitem 1071,1;//Items: Unknown_Test_Tube,
+				close;
+
+			ssM_Red:
+				if (countitem(909)<@JELLOPY || countitem(914)<@FLUFF || countitem(519)<@MILK) goto sL_NotEnuf;//Items: Jellopy, Fluff, Milk,
+				mes "[Synthétiseur]";
+				mes "Prêt. Initialisation du procédé de synthétisation. Veuillez patienter.";
+				next;
+				mes "[Synthétiseur]";
+				mes "Blum... Blum... Blum... Blum...";
+				next;
+				mes "[Synthétiseur]";
+				if (job_magician_q != 2 || @INPUT != 3735 || @JELLOPY!=3 || @FLUFF!=1 || @MILK!=1 || @SOLVENT!=0) goto sL_FAIL;
+				delitem 909,3;//Items: Jellopy,
+				delitem 914,1;//Items: Fluff,
+				delitem 519,1;//Items: Milk,
+				delitem 1092,1;//Items: Empty_Test_Tube,
+				mes "Synthèse terminée";
+				getitem 1085,1;//Items: Unknown_Test_Tube,
+				close;
+
+			ssM_Blue:
+				if (countitem(909)<@JELLOPY || countitem(914)<@FLUFF) goto sL_NotEnuf;//Items: Jellopy, Fluff,
+				if (@SOLVENT$!=("No") && countitem(@SOLVENT)<1) goto sL_NotEnuf;
+				mes "[Synthétiseur]";
+				mes "Prêt. Initialisation du procédé de synthétisation. Veuillez patienter.";
+				next;
+				mes "[Synthétiseur]";
+				mes "Blum... Blum... Blum... Blum...";
+				next;
+				mes "[Synthétiseur]";
+				if (job_magician_q != 3 || @INPUT != 2750 || @JELLOPY!=6 || @FLUFF!=1 || @MILK!=0 || @SOLVENT!=1089) goto sL_FAIL;
+				delitem 909,6;//Items: Jellopy,
+				delitem 914,1;//Items: Fluff,
+				delitem 1089,1;//Items: Payon_Solution,
+				delitem 1092,1;//Items: Empty_Test_Tube,
+				mes "Synthèse terminée";
+				getitem 1086,1;//Items: Unknown_Test_Tube,
+				close;
+
+			ssM_Diamd:
+				if (countitem(909)<@JELLOPY || countitem(914)<@FLUFF) goto sL_NotEnuf;//Items: Jellopy, Fluff,
+				if (@SOLVENT$!=("No") && countitem(@SOLVENT)<1) goto sL_NotEnuf;
+				mes "[Synthétiseur]";
+				mes "Prêt. Initialisation du procédé de synthétisation. Veuillez patienter.";
+				next;
+				mes "[Synthétiseur]";
+				mes "Blum... Blum... Blum... Blum...";
+				next;
+				mes "[Synthétiseur]";
+				if (job_magician_q != 4 || @INPUT != 5429 || @JELLOPY!=2 || @FLUFF!=3 || @MILK!=0 || @SOLVENT!=1088) goto sL_FAIL;
+				delitem 909,2;//Items: Jellopy,
+				delitem 914,3;//Items: Fluff,
+				delitem 1088,1;//Items: Morroc_Solution,
+				delitem 1092,1;//Items: Empty_Test_Tube,
+				mes "Synthèse terminée";
+				getitem 1087,1;//Items: Unknown_Test_Tube,
+				close;
+
+			sL_FAIL:
+				delitem 909, @JELLOPY;//Items: Jellopy,
+				delitem 914, @FLUFF;//Items: Fluff,
+				delitem 519, @MILK;//Items: Milk,
+				delitem @SOLVENT,1;
+				mes "Synthèse terminée";
+				getitem 1090,1;//Items: Unknown_Test_Tube,
+				close;
+
+			sL_NotEnuf:
+				mes "[Synthétiseur]";
+				mes "Vous n'avez pas assez d'ingrédients à mettre dans le mixeur pour faire cette solution.";
+				close;
+	M_End:
+		close;
+
+}
+
+
+// -- Morroc Solution --
+moc_ruins.gat,91,150,5	script	Ponka-Hontas	93,{
+	mes "[Ponka-Hontas]";
+	mes "Vous désirez la Solution? Donnez-moi 50z et un "+ getitemname(1092)+" alors.";
+	next;
+	menu "Marché conclu.",L0,"Nan, oubliez ça.",L1;
+
+	L0:
+		if (countitem(1092)<1) goto L0NoT;//Items: Empty_Test_Tube,
+		if (Zeny<50) goto L0NoZ;
+		mes "[Ponka-Hontas]";
+		mes "Ok, vous avez l'argent et un "+ getitemname(1092)+", c'est génial!";
+		delitem 1092,1;//Items: Empty_Test_Tube,
+		set Zeny,Zeny-50;
+		next;
+		mes "[Ponka-Hontas]";
+		getitem 1088,1;//Items: Morroc_Solution,
+		mes "Merci, je pense que vous serez un grand mage, vous êtes si généreux.";
+		mes "J'espère vous revoir bientôt.";
+		emotion e_no1;
+		close;
+
+		L0NoT:
+			mes "[Ponka-Hontas]";
+			mes "Vous ne pouvez transporter de liquide sans bouteille! Etes-vous certain(e) de vouloir être mage?";
+			mes "Rapportez-moi un "+ getitemname(1092)+".";
+			close;
+
+		L0NoZ:
+			mes "[Ponka-Hontas]";
+			mes "Pfff, vous êtes trop pauvre pour acheter notre noble Solution!";
+			mes "Rapportez 50 Zeny, allez vendre quelque chose au marchand. Ce ne sera pas trop difficile, j'espère";
+			close;
+	L1:
+		mes "[Ponka-Hontas]";
+		close;
+}
+
+
+// -- Payon Solution --
+pay_arche.gat,122,100,5	script	Dollshoi	88,{
+	mes "[Dollshoi]";
+	mes "Vous désirez la Solution? Donnez-moi 50z et un "+ getitemname(1092)+" alors.";
+	next;
+	menu "Marché conclu",L0,"Nan, oubliez ça.",L1;
+
+	L0:
+		if (countitem(1092)<1) goto L0NoT;//Items: Empty_Test_Tube,
+		if (Zeny<50) goto L0NoZ;
+		mes "[Dollshoi]";
+		mes "Ok, vous avez l'argent et un "+ getitemname(1092)+", c'est génial!";
+		delitem 1092,1;//Items: Empty_Test_Tube,
+		set Zeny,Zeny-50;
+		next;
+		mes "[Dollshoi]";
+		getitem 1089,1;//Items: Payon_Solution,
+		mes "Merci, je pensez que vous serez un grand mage, vous êtes si généreux.";
+		mes "J'espère vous revoir bientôt.";
+		emotion e_no1;
+		close;
+
+		L0NoT:
+			mes "[Dollshoi]";
+			mes "Vous ne pouvez transporter de liquide sans bouteille! Etes-vous certain(e) de vouloir être mage?";
+			mes "Rapportez-moi un "+ getitemname(1092)+".";
+			close;
+
+		L0NoZ:
+			mes "[Dollshoi]";
+			mes "Pfff, vous êtes trop pauvre pour acheter notre noble Solution!";
+			mes "Rapportez 50 Zeny, allez vendre quelque chose au marchand. Ce ne sera pas trop difficile, j'espère";
+			close;
+	L1:
+		mes "[Dollshoi]";
+		close;
+}
+

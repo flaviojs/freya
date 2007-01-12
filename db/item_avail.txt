@@ -1,0 +1,15 @@
+// item_avail.txt, Item Disguise Database
+//
+// Structure of Database:
+//
+// ItemId,ReplacementSpriteItemID
+//
+// Client will use "ReplacementSpriteItemID" to display the particular item
+
+2240,2241 // Beard - Grampa Beard
+
+// Treasure Hunters Quest Items
+7500,7021 // THG Membership - Foolishness of the Blind
+7501,7042 // Token Bag - Leather Bag of Infinity
+1998,1250 // Jeramiah's Jur - Jur
+1999,1472 // Zed's Staff - Soul Staff

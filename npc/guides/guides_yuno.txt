@@ -1,0 +1,95 @@
+//===== Freya Script =========================================
+//= Juno Guide NPCs
+//===== By: ==================================================
+//= Aegis/Tsuyuki
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
+//= Juno Guide NPCs
+//===== Additional Comments: =================================
+//= 1.0 Fully redone/updated to match Aegis [Tsuyuki]
+//============================================================
+
+
+yuno.gat,153,47,4	script	Juno Guide	700,{
+
+	mes "[Miss Yoon]";
+	mes "A place that understands the present and envisions the future............";
+	mes "This is Yuno, the city of Sages.  Welcome to Yuno.";
+	next;
+	menu "Weapon Shop",L_Yoon01,"Tool Shop",L_Yoon02,"Sage Castle (Sage Job Change Place)",L_Yoon03,"Street of Book Stores",L_Yoon04,"Juphero Plaza",L_Yoon05,"Library of the Republic",L_Yoon06,"Schwheicherbil Magic Academy",L_Yoon07,"Monster Museum",L_Yoon08,"End Conversation",L_End;
+
+	L_Yoon01:
+		viewpoint 1,120,138,1,0xFF3355;
+		mes "[Miss Yoon]";
+		mes "Please look at the mini map.";
+		mes "^FF3355+^000000 -> Weapon Shop";
+		mes "Thank you, have a good day.";
+		close;
+
+	L_Yoon02:
+		viewpoint 1,193,142,2,0x3355FF;
+		mes "[Miss Yoon]";
+		mes "Please look at the mini map.";
+		mes "^3355FF+^000000 -> Tool Shop";
+		mes "Thank you, have a good day.";
+		close;
+
+	L_Yoon03:
+		viewpoint 1,90,318,3,0x33FF55;
+		mes "[Miss Yoon]";
+		mes "Please look at the mini map.";
+		mes "^33FF55+^000000 -> Sage Castle";
+		mes "(Sage Job Change Place)";
+		mes "Thank you, have a good day.";
+		close;
+
+	L_Yoon04:
+		viewpoint 1,257,102,4,0xFF3355;
+		mes "[Miss Yoon]";
+		mes "Please look at the mini map.";
+		mes "^FF3355+^000000 -> Street of Book Stores";
+		mes "Thank you, have a good day.";
+		close;
+
+	L_Yoon05:
+		viewpoint 1,157,170,5,0x3355FF;
+		mes "[Miss Yoon]";
+		mes "Please look at the mini map.";
+		mes "^3355FF+^000000 -> Juphero Plaza";
+		mes "Thank you, have a good day.";
+		close;
+
+	L_Yoon06:
+		viewpoint 1,336,204,6,0x33FF55;
+		mes "[Miss Yoon]";
+		mes "Please look at the mini map.";
+		mes "^33FF55+^000000 -> Library of the Republic";
+		mes "Thank you, have a good day.";
+		close;
+
+	L_Yoon07:
+		viewpoint 1,323,281,7,0xFF3355;
+		mes "[Miss Yoon]";
+		mes "Please look at the mini map.";
+		mes "^FF3355+^000000 -> Schweicherbil Magic Academy";
+		mes "Thank you, have a good day.";
+		close;
+
+	L_Yoon08:
+		viewpoint 1,278,288,8,0x3355FF;
+		mes "[Miss Yoon]";
+		mes "Please look at the mini map.";
+		mes "^3355FF+^000000 -> Monster Museum";
+		mes "Thank you, have a good day.";
+		close;
+
+	L_End:
+		mes "[Miss Yoon]";
+		mes "A great city of wise men.";
+		mes "A city of Knowledge!";
+		mes "Welcome to Juno.";
+		close;
+}

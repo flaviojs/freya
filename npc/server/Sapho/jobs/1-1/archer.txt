@@ -1,0 +1,162 @@
+//===== Freya Script ========================================= 
+//= Archer Job Quest
+//===== By: ================================================== 
+//= kobra_k88
+//===== Current Version: ===================================== 
+//= 1.4
+//===== Compatible With: ===================================== 
+//= eAthena 1.0 +
+//===== Description: ========================================= 
+//= traduit en francais par GAlion
+//===== Additional Comments: ================================= 
+//= Fully working
+//= v1.1 Added instant job change for High Novice [Lupus]
+//= v1.3 Added Baby Class support [Lupus]
+//= v1.4 Optimised and moved first checker to Jfunc1-1 [massdriller]
+//============================================================ 
+
+
+// -- Archer Guildsman -- 
+payon_in02.gat,64,71,4	script	Archer Guildsman	59,{
+	callfunc "F_ToHigh",JOB_ARCHER_HIGH,"High Archer",JOB_SNIPER,"Sniper",0,0,0,0,"Archer Guildsman";
+	mes "[Archer Guildsman]";
+	if (BaseJob == JOB_NOVICE && JOB_ARCHER_q == 1) goto L_Check;
+	mes "Bonjour, Puis-je vous aider?";
+	next;
+	menu "Je souhaite devenir Archer.",M_0,"Que faut-il pour être archer?",M_1,"Laissez tomber.",M_End;
+
+	M_0:
+		mes "[Recruteur des Archers]";
+		callfunc "Arc_check";
+		mes "Bien. Vous avez les compétences nécessaires pour devenir archer...";
+		next;
+		mes "[Recruteur des Archers]";
+		mes "Mais... ";
+		next;
+		mes "[Recruteur des Archers]";
+		mes "Vous devez tout d'abord passer un test. J'espère que vous ne pensiez pas devenir archer aussi facilement. Ha ha!";
+		next;
+		mes "[Recruteur des Archers]";
+		mes "Un bois de bonne qualité est essentiel pour un archer; de même du bois de haute qualité est essentiel pour un bon arc.";
+		mes "Vous serez évalué sur votre aptitude à collecter du bois de haute qualité.";
+		next;
+		mes "[Recruteur des Archers]";
+		mes "Plus la qualité du bois ramassé sera élevée, plus vous marquerez de points.";
+		mes "Vous devez obtenir un score ^ff0000d'au moins 25^000000 afin de ^ff0000réussir le test^000000.";
+		next;
+		mes "[Recruteur des Archers]";
+		mes "Vous trouverez du bois en tuant des ^0000ff'Willows'^000000, une sorte de monstre en forme d'arbre qui rode dans la foret de Payon.";
+		mes "Ils laissent des morceaux de bois appelés ^0000ff 'Trunks'^000000.";
+		next;
+		mes "[Recruteur des Archers]";
+		mes "Il y en a au total 4 sortes, chacun correspondant à un nombre de points différent. Amassez des trunks et rapportez-les moi.";
+		next;
+		mes "[Recruteur des Archers]";
+		mes "Je dois vous avertir, les willows peuvent être difficiles, soyez prudent et pensez à vous reposer et à utiliser des objets qui soignent. Bonne chance!";
+		close;
+
+	M_1:
+		mes "[Recruteur des Archers]";
+		if (BaseJob == JOB_ARCHER) goto sM_1a;
+		if (BaseJob != JOB_NOVICE) goto sM_1b;
+		mes "Laissez-moi vous exposer les exigences pour devenir Archer:";
+		next;
+		mes "[Recruteur des Archers]";
+		mes "Tout d'abord, vous devez avoir un job level de 9 et tous les points de compétence (skill) qui l'accompagnent.";
+		next;
+		mes "[Recruteur des Archers]";
+		mes "Ensuite, vous devrez passer une épreuve qui déterminera si vous êtes apte à devenir Archer.";
+		next;
+		mes "[Recruteur des Archers]";
+		mes "Ceci était les exigences. Remplissez-les et vous pourrez vivre une vie que seul un Archer peut avoir.";
+		close;
+
+		sM_1a:
+			mes "Auriez-vous déjà oublié comment on devient Archer?...";
+			emotion 1;
+			close;
+		sM_1b:
+			mes "Vous expliquer comment devenir Archer, ne vous aidera pas à devenir Archer puisque vous exercer déjà une autre profession.";
+			close;
+
+	M_End:
+		mes "[Recruteur des Archers]";
+		mes "Ok, alors faite attention.";
+		close;
+
+L_Check:
+	mes "Oh, je vois que vous revenez.";
+	next;
+	mes "[Recruteur des Archers]";
+	if ((countitem(1066) == 0) && (countitem(1067) == 0) && (countitem(1068) == 0) && (countitem(1019) == 0)) goto sL_NotRdy;
+	if (SkillPoint > 0) goto sL_SkPoints;
+	set @Trunk1, countitem(1066)*5;
+	set @Trunk2, countitem(1067)*3;
+	set @Trunk3, countitem(1068)*2;
+	set @Trunk4, countitem(1019);
+	set @TrunkTotal, @Trunk1 + @Trunk2 + @Trunk3 + @Trunk4;
+
+	mes "Voyons voir...";
+	next;
+	mes "[Recruteur des Archers]";
+	mes "Vous avez:";
+	mes "^0000FF" +countitem(1066)+ "^000000 '"+getitemname(1066)+"' pour ^ff0000" +@Trunk1+ "^000000 points,";
+	mes "^0000FF" +countitem(1067)+ "^000000 '"+getitemname(1067)+"' pour ^ff0000" +@Trunk2+ "^000000 points,";
+	mes "^0000FF" +countitem(1068)+ "^000000 '"+getitemname(1068)+"' pour ^ff0000" +@Trunk3+ "^000000 points,";
+	mes "^0000FF" +countitem(1019)+ "^000000 '"+getitemname(1019)+"' pour ^ff0000" +@Trunk4+ "^000000 points.....";
+	next;
+	mes "[Recruteur des Archers]";
+	mes "Ce qui vous fait un total de: ^ff0000" +@TrunkTotal+"^000000";
+	next;
+	mes "[Recruteur des Archers]";
+	if (@TrunkTotal < 25) goto sL_Failed;
+
+	mes "Très bien! Vous avez réussi l'épreuve. Fécilitations, vous êtes prêt à devenir Archer.";
+	emotion 21;
+	next;
+	mes "[Recruteur des Archers]";
+	mes "A présent, je vais vous transformer...";
+	next;
+	callfunc "Job_Change",JOB_ARCHER;
+	callfunc "F_ClearJobVar";		// clears all job variables for the current player
+	mes "[Recruteur des Archers]";
+	mes "En échange du bois que vous m'avez apporté, je vous offre cet arc et ces quelques flèches. Je vous en prie, prenez-les.";
+	next;
+	getitem 1702,1;//Items: Bow_,
+	getitem 1750,200;//Items: Arrow,
+	delitem 1066, countitem(1066);//Items: Fine-grained_Trunk,
+	delitem 1067, countitem(1067);//Items: Solid_Trunk,
+	delitem 1068, countitem(1068);//Items: Barren_Trunk,
+	delitem 1019, countitem(1019);//Items: Trunk,
+	mes "[Recruteur des Archers]";
+	mes "Un Archer ne connaît aucune limite, alors vivez votre vie pleinement. Je sais que vous serez un excellent Archer.";
+	next;
+	mes "[Recruteur des Archers]";
+	mes "Adieu et bonne chance dans votre voyage.";
+	close;
+
+	sL_NotRdy:
+		mes "Quoi? Vous n'avez pas apporté de 'trunk'? Laissez-moi vous ré-expliquer, au cas où vous auriez oublié...";
+		emotion 1;
+		next;
+		mes "[Recruteur des Archers]";
+		mes "Il existe au total ^5555FF4 sortes de 'Trunks'^000000, chacun valant un nombre de points différents.";
+		mes "Amassez des 'trunk' et apportez-les moi.";
+		next;
+		mes "[Recruteur des Archers]";
+		mes "Vous trouverez des 'trunk' en détruisant des ^0000ff'Willows'^000000, une sorte d'arbre-monstre qui vit dans la forêt autour de Payon.";
+		close;
+	sL_SkPoints:
+		mes "Vous devez utiliser tous vos points de compétence (skill) avant que je puisse faire de vous un archer.";
+		close;
+	sL_Failed:
+		mes "Votre score est trop faible, j'en suis navré. J'ai peur que vous ayez échoué.";
+		next;
+		mes "[Recruteur des Archers]";
+		mes "Heureusement pour vous, je suis quelque peu compatissant, je vous laisse une autre chance. Rapportez encore quelques 'trunk'.";
+		next;
+		mes "[Recruteur des Archers]";
+		mes "En espérant qu'ils soient de qualité suffisante pour que vous réussissiez le test.";
+		close;
+
+}

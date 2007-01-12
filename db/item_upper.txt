@@ -1,0 +1,19 @@
+// item_upper.txt, Upper Item Restrictions Database
+//
+// Structure of Database:
+//
+// ItemID,Parameter
+//
+// Parameter: 0 = All; 1 = Base Class; 2 = Advanced Class; 4 = Baby Class
+//
+// Note: Does not work for cards
+//
+
+2357,2	// Valkyrie's Armor
+2421,2	// Valkyrie's Shoes
+2524,2	// Valkyrie's Manteau
+5171,2	// Valkyrie Helm
+2659,2	// Vesper Core 01
+2660,2	// Vesper Core 02
+2661,2	// Vesper Core 03
+2662,2	// Vesper Core 04

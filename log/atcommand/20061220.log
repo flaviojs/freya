@@ -1,0 +1,106 @@
+12/20/2006 14:34:17.437: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @refresh
+12/20/2006 14:35:43.050: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal 30
+12/20/2006 14:36:18.009: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal 30
+12/20/2006 14:36:23.965: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @killmonster
+12/20/2006 14:36:42.159: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn margaretha_sorin
+12/20/2006 14:36:46.864: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seyren_windsor
+12/20/2006 14:37:25.158: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn cecil_damon
+12/20/2006 14:37:26.984: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @heal
+12/20/2006 14:37:34.607: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seyren_windsor
+12/20/2006 14:37:35.619: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn margaretha_sorin
+12/20/2006 14:37:39.591: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn margaretha_sorin
+12/20/2006 14:37:45.095: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seyren_windsor
+12/20/2006 14:38:08.355: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @resetstate
+12/20/2006 14:38:21.428: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @statall
+12/20/2006 14:38:22.577: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @heal
+12/20/2006 14:38:29.748: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn eremes_guile
+12/20/2006 14:39:01.080: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn margaretha_sorin
+12/20/2006 14:39:01.762: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn margaretha_sorin
+12/20/2006 14:39:02.353: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn margaretha_sorin
+12/20/2006 14:39:02.815: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn margaretha_sorin
+12/20/2006 14:39:55.876: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @heal
+12/20/2006 14:40:43.109: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @useskill 34 99 TsuyukiSL
+12/20/2006 14:41:19.832: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal
+12/20/2006 14:41:27.694: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal
+12/20/2006 14:41:35.931: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal
+12/20/2006 14:41:52.872: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal
+12/20/2006 14:42:04.454: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn margaretha_sorin
+12/20/2006 14:42:25.205: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @refresh
+12/20/2006 14:42:42.119: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @jobchange star_gladiator
+12/20/2006 14:42:44.812: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @heal
+12/20/2006 14:42:56.767: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @jlvl 255
+12/20/2006 14:43:18.066: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @killmonster
+12/20/2006 14:43:49.307: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @item legacy_of_dragon
+12/20/2006 14:47:20.930: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal 20
+12/20/2006 14:48:45.824: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @pvpon
+12/20/2006 14:49:00.568: Clown [2000003(lvl:99)] (ip:127.0.0.1): @heal
+12/20/2006 14:49:16.471: Clown [2000003(lvl:99)] (ip:127.0.0.1): @heal
+12/20/2006 14:49:36.206: Clown [2000003(lvl:99)] (ip:127.0.0.1): @heal
+12/20/2006 14:49:44.363: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @alive
+12/20/2006 14:50:04.207: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @jobchange soul_linker
+12/20/2006 14:51:50.183: Clown [2000003(lvl:99)] (ip:127.0.0.1): @heal
+12/20/2006 14:54:39.361: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal 20
+12/20/2006 14:55:27.760: Clown [2000003(lvl:99)] (ip:127.0.0.1): @pvpoff
+12/20/2006 14:55:38.059: Clown [2000003(lvl:99)] (ip:127.0.0.1): @alive
+12/20/2006 14:55:51.338: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @heal
+12/20/2006 14:56:36.999: Clown [2000003(lvl:99)] (ip:127.0.0.1): @alive
+12/20/2006 14:56:43.630: Clown [2000003(lvl:99)] (ip:127.0.0.1): @jobchange assassin
+12/20/2006 14:57:07.457: Clown [2000003(lvl:99)] (ip:127.0.0.1): @jobchange soul_linker
+12/20/2006 14:57:15.651: Clown [2000003(lvl:99)] (ip:127.0.0.1): @jobchange assassin
+12/20/2006 14:58:56.070: Clown [2000003(lvl:99)] (ip:127.0.0.1): @jobchange star_gladiator
+12/20/2006 15:18:29.810: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn parasite 10
+12/20/2006 15:18:52.064: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @killmonster
+12/20/2006 15:18:56.398: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal 100
+12/20/2006 15:19:50.003: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @heal
+12/20/2006 15:23:48.027: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal 100
+12/20/2006 15:23:53.260: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @alive
+12/20/2006 15:24:02.516: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal 100
+12/20/2006 15:24:12.346: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @alive
+12/20/2006 15:24:16.105: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal 100
+12/20/2006 15:24:20.649: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @alive
+12/20/2006 15:24:24.556: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @speed 50
+12/20/2006 15:24:29.170: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal 100
+12/20/2006 15:24:33.151: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @heal
+12/20/2006 15:24:35.765: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @speed 100
+12/20/2006 15:24:41.471: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @alive
+12/20/2006 15:24:46.401: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @alive
+12/20/2006 15:25:30.984: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @alive
+12/20/2006 15:25:35.890: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @alive
+12/20/2006 15:26:16.702: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @alive
+12/20/2006 15:26:19.059: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @speed 100
+12/20/2006 15:26:38.245: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @alive
+12/20/2006 15:26:42.825: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @alive
+12/20/2006 15:26:48.038: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @useskill 34 99 TsuyukiSL
+12/20/2006 15:32:41.958: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @heal
+12/20/2006 15:32:44.293: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal 20
+12/20/2006 15:32:48.970: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal 20
+12/20/2006 15:32:52.755: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal 20
+12/20/2006 15:32:59.381: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal 20
+12/20/2006 15:33:02.765: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal 20
+12/20/2006 15:33:10.657: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal 20
+12/20/2006 15:33:21.200: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal 20
+12/20/2006 15:33:24.796: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal 20
+12/20/2006 15:33:29.466: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal 20
+12/20/2006 15:33:35.288: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal 20
+12/20/2006 15:33:39.935: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal 20
+12/20/2006 15:33:43.591: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal 20
+12/20/2006 15:33:47.963: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal 20
+12/20/2006 15:33:51.628: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal 20
+12/20/2006 15:33:56.106: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal 20
+12/20/2006 15:34:51.509: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @killmonster
+12/20/2006 15:34:57.255: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @alive
+12/20/2006 15:35:16.835: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @spawn seal 10
+12/20/2006 15:35:48.315: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @jobchange assassin
+12/20/2006 15:35:56.660: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @heal
+12/20/2006 15:35:58.258: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @jlvl 255
+12/20/2006 15:36:11.880: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @heal
+12/20/2006 15:37:40.541: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @killmonster
+12/20/2006 15:38:07.185: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @jobchange assassin_cross
+12/20/2006 15:38:08.785: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @heal
+12/20/2006 15:38:22.698: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @jobchange hunter
+12/20/2006 15:38:30.123: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @jobchange taekwon
+12/20/2006 15:38:31.882: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @jobchange hunter
+12/20/2006 15:38:35.495: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @jobchange sniper
+12/20/2006 15:38:41.416: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @jobchange baby_hunter
+12/20/2006 15:38:49.358: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @jobchange sniper
+12/20/2006 15:38:50.863: TsuyukiSL [2000002(lvl:99)] (ip:127.0.0.1): @heal

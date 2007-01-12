@@ -1,0 +1,28 @@
+// item_cookiebag.txt, Cookie Bag Database
+//
+// <Item_ID>,<Description (Dummy)>,<Rate>
+//
+// Rate Examples
+// 10000   = 1%
+// 500000  = 50%
+// 1000000 = 100%
+//
+// Accurate to Aegis X.3
+
+0,Candy,529 // Default
+529,Candy,500000
+570,Lucky Candy,500000
+530,Candy Cane,500000
+571,Lucky Candy Cane,500000
+538,Well-baked Cookie,500000
+572,Lucky Cookie,500000
+539,Piece of Cake,500000
+564,Rice Ball,500000
+12122,Sesame Pastry,100000
+12123,Honesty Pastry,100000
+12124,Rainbow Cake,100000
+558,Chocolate,100000
+559,Hand-made Chocolate,100000
+560,Hand-made White Chocolate,100000
+561,White Chocolate,100000
+573,Chocolate Drink,100000

@@ -1,0 +1,190 @@
+//===== Freya Script =========================================
+//= Thanatos Tower Warp Script
+//===== By: ==================================================
+//= Bibilol & Moryagorn  (1.0)
+//===== Current Version: =====================================
+//= 1.8
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
+//= Temporary Warp Points for Thanatos Tower
+//===== Additional Comments: =================================
+//= It's just Temp warps [Lupus]
+//= 1.2 Updated to level tha_t12.gat
+//= 1.3 Some warps changes due to official info [Justin84]
+//= 1.4 Fixed 2 warps [Justin84]
+//= 1.5 Added Thanatos entrance warp. Now you can go in [Justin84]
+//= 1.6 Corrected Warp Locations: tha_scene01, tha_scene02, tha_t10, tha_t11 [Proximus]
+//= 1.7 Enabled custom warps for now, until the quest is implemented [Tsuyuki]
+//= 1.8 Updated script to fully support custom, temporary Thanatos implementation [Tsuyuki]
+//============================================================
+
+
+// Tour Guide - Thanatos Tower
+hu_fild01.gat,140,163,5	script	Thanatos Tower Guard	852,{
+
+	mes "[Thanatos Tower Guard]";
+	mes "Are you sure you want to go to the Thanatos Tower?";
+	mes "You can't go back, and I'll have to charge 5000 Zeny.";
+	next;
+	menu "Yes.",-,"No.",L_End;
+
+		if (Zeny < 5000) goto L_Zeny;
+		set Zeny, Zeny - 5000;
+		warp "tha_scene01.gat",131,224;
+		end;
+
+	L_Zeny:
+		mes "[Thanatos Tower Guard]";
+		mes "You don't have enough Zeny.";
+		close;
+
+	L_End:
+		mes "[Thanatos Tower Guard]";
+		mes "Goodbye.";
+		close;
+
+}
+
+// Thanatos Scene 01 -> Thantos Tower F1
+tha_scene01.gat,144,200,0	warp	tha_scene01	1,1,tha_t01.gat,150,35
+tha_t01.gat,150,32,0	warp	tha_scene02	1,1,tha_scene01.gat,142,200
+
+// Thanatos Tower
+tha_t01.gat,150,149,0	warp	tha_t02	1,1,tha_t02.gat,150,136
+tha_t02.gat,150,129,0	warp	tha_t01	1,1,tha_t01.gat,150,142
+tha_t02.gat,226,161,0	warp	tha_t03	1,1,tha_t03.gat,220,158
+tha_t03.gat,220,165,0	warp	tha_t02	1,1,tha_t02.gat,226,149
+tha_t03.gat,60,134,0	warp	tha_t04	1,1,tha_t04.gat,59,143
+tha_t04.gat,59,136,0	warp	tha_t03	1,1,tha_t03.gat,59,126
+tha_t04.gat,83,36,0	warp	tha_t05	1,1,tha_t05.gat,62,11
+//According to official info, 5F it is not possible to return to the 4F, so we disable this warp:
+tha_t05.gat,62,4,0	warp	tha_t04	1,1,tha_t04.gat,90,34
+tha_t05.gat,208,96,0	warp	tha_t06	1,1,tha_t06.gat,119,228
+tha_t05.gat,185,232,0	warp	tha_t06	1,1,tha_t06.gat,119,228
+tha_t05.gat,61,157,0	warp	tha_t06	1,1,tha_t06.gat,119,228
+tha_t06.gat,119,235,0	warp	tha_t05	1,1,tha_t05.gat,61,164
+
+tha_t06.gat,119,120,0	warp	tha_t07	1,1,tha_t07.gat,35,166
+
+tha_t07.gat,28,166,0	warp	tha_t06	1,1,tha_t06.gat,119,127
+tha_t07.gat,112,166,0	warp	tha_t08	1,1,tha_t08.gat,105,44
+tha_t08.gat,112,44,0	warp	tha_t07	1,1,tha_t07.gat,105,166
+tha_t08.gat,26,44,0	warp	tha_t09	1,1,tha_t09.gat,88,145
+tha_t09.gat,93,145,0	warp	tha_t08	1,1,tha_t08.gat,30,44
+
+tha_t10.gat,171,138,0	warp	tha_t09	1,1,tha_t09.gat,18,97
+tha_t11.gat,93,36,0	warp	tha_t10	1,1,tha_t10.gat,91,130
+tha_t12.gat,130,52,0	warp	tha_t11	1,1,tha_t11.gat,16,60
+
+// Thana_step
+thana_step.gat,12,73,0 warp thana_step1 1,1,tha_t12.gat,128,58
+thana_step.gat,16,16,0 warp thana_step2 1,1,thana_step.gat,32,224
+thana_step.gat,30,224,0 warp thana_step3 1,1,thana_step.gat,19,16
+thana_step.gat,32,166,0 warp thana_step4 1,1,thana_step.gat,184,74
+thana_step.gat,180,74,0 warp thana_step5 1,1,thana_step.gat,36,166
+thana_step.gat,182,16,0 warp thana_step6 1,1,thana_step.gat,184,224
+thana_step.gat,180,224,0 warp thana_step7 1,1,thana_step.gat,185,16
+thana_step.gat,182,166,0 warp thana_step8 1,1,thana_step.gat,73,287
+thana_step.gat,69,287,0 warp thana_step9 1,1,thana_step.gat,186,166
+thana_step.gat,70,371,0 warp thana_step10 1,1,thana_step.gat,170,287
+thana_step.gat,174,287,0 warp thana_step11 1,1,thana_step.gat,74,371 
+
+// Thana_boss
+thana_step.gat,169,371,0	warp	thana_boss	1,1,thana_boss.gat,141,211
+thana_boss.gat,80,76,0	warp	thana_step9	1,1,thana_step.gat,163,371
+thana_boss.gat,62,171,0	warp	thana_step10	1,1,thana_step.gat,163,371
+thana_boss.gat,141,217,0	warp	thana_step11	1,1,thana_step.gat,163,371
+thana_boss.gat,202,75,0	warp	thana_step12	1,1,thana_step.gat,163,371
+
+
+tha_t09.gat,84,153,4	script	Temp Warpra	831,{
+
+	mes "[Temp Warpra]";
+	mes "Hello, I am Freya's Thanatos Tower temp warper.";
+	mes "I can warp you to the next floor even though the quest script is not fully functional, for the time being.";
+	mes "Would you like to proceed?";
+	next;
+	menu "Advance to the next floor.",L_Advance,"Cancel.",L_Cancel;
+
+	L_Advance:
+		mes "[Temp Warpra]";
+		mes "Prepare to be warped...";
+		close2;
+		warp "tha_t10.gat",163,139;
+		end;
+
+	L_Cancel:
+		mes "[Temp Warpra]";
+		mes "Very well..";
+		close;
+
+}
+
+tha_t10.gat,163,145,4	script	Temp Warpra	831,{
+
+	mes "[Temp Warpra]";
+	mes "This is the 10th floor of the tower.";
+	mes "Would you like to proceed to the 11th floor?";
+	next;
+	menu "Advance to the next floor.",L_Advance,"Cancel.",L_Cancel;
+
+	L_Advance:
+		mes "[Temp Warpra]";
+		mes "Prepare to be warped...";
+		close2;
+		warp "tha_t11.gat",85,37;
+		end;
+
+	L_Cancel:
+		mes "[Temp Warpra]";
+		mes "Very well..";
+		close;
+
+}
+
+tha_t11.gat,85,42,4	script	Temp Warpra	831,{
+
+	mes "[Temp Warpra]";
+	mes "This is the 11th floor of the tower.";
+	mes "Would you like to proceed to the 12th floor?";
+	next;
+	menu "Advance to the next floor.",L_Advance,"Cancel.",L_Cancel;
+
+	L_Advance:
+		mes "[Temp Warpra]";
+		mes "Prepare to be warped...";
+		close2;
+		warp "tha_t12.gat",130,57;
+		end;
+
+	L_Cancel:
+		mes "[Temp Warpra]";
+		mes "Very well..";
+		close;
+
+}
+
+tha_t12.gat,130,62,4	script	Temp Warpra	831,{
+
+	mes "[Temp Warpra]";
+	mes "This is the 12th floor of the tower.";
+	mes "Above this point lies a fearsome warrior, one of the most powerful ever known to the world.";
+	mes "No one has ever returned from this point after having gone further.";
+	mes "Are you sure you would like to continue to the top of the tower?";
+	next;
+	menu "Advance to the spiral staircase.",L_Advance,"Cancel.",L_Cancel;
+
+	L_Advance:
+		mes "[Temp Warpra]";
+		mes "Prepare to be warped...";
+		close2;
+		warp "thana_step.gat",35,224;
+		end;
+
+	L_Cancel:
+		mes "[Temp Warpra]";
+		mes "Very well..";
+		close;
+
+}

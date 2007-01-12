@@ -1,0 +1,22 @@
+// item_wrappedmask.txt, Wrapped Mask Database
+//
+// <Item_ID>,<Description (Dummy)>,<Rate>
+//
+// Rate Examples
+// 10000   = 1%
+// 500000  = 50%
+// 1000000 = 100%
+
+0,Mr. Smile,2278
+2278,Mr. Smile,500000
+2281,Opera Masque,500000
+2288,Mr. Scream,500000
+2292,Welding Mask,500000
+2297,Goblin Mask,500000
+5005,Gas Mask,500000
+5086,Alarm Mask,500000
+5087,Poker Face,500000
+5088,Surprised Mask,500000
+5089,Annoyed Mask,500000
+5090,Goblin Leader Mask,500000
+5121,Zealotus Mask,100000

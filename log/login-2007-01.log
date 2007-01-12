@@ -1,0 +1,2250 @@
+
+2007-01-02 02:22:05.790: The login-server (v3.1.0 TXT beta, SVN rev. 809) is starting...
+2007-01-02 02:22:05.790: The configuration of the server is set:
+2007-01-02 02:22:05.790: * General options *
+2007-01-02 02:22:05.790: - with port: 6900.
+2007-01-02 02:22:05.790: - to listen on any IP.
+2007-01-02 02:22:05.790: - with console commands disabled.
+2007-01-02 02:22:05.790: - to force players and remote administrator to use correct case in account name.
+2007-01-02 02:22:05.790: - to save password in plain text.
+2007-01-02 02:22:05.790: - to ALLOW new accounts (with _F/_M).
+2007-01-02 02:22:05.790: - to REFUSE creation of accounts with different case name.
+2007-01-02 02:22:05.790: - New accounts are created with level: 0.
+2007-01-02 02:22:05.790: - with no minimum level for connection.
+2007-01-02 02:22:05.790: - to accept any version of client.
+2007-01-02 02:22:05.790: - to create GM with level '60' when @gm is used.
+2007-01-02 02:22:05.790: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-02 02:22:05.790: * Logs options *
+2007-01-02 02:22:05.790: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-02 02:22:05.790: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-02 02:22:05.790: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-02 02:22:05.790: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-02 02:22:05.790: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-02 02:22:05.790: * Anti-freeze options *
+2007-01-02 02:22:05.790: - with no anti-freeze system.
+2007-01-02 02:22:05.790: * sstatus files options *
+2007-01-02 02:22:05.790: - with non sstatus TXT file.
+2007-01-02 02:22:05.790: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-02 02:22:05.790: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-02 02:22:05.790: - with non sstatus PHP file.
+2007-01-02 02:22:05.790: * Lan support options *
+2007-01-02 02:22:05.790: - with LAN IP of char-server: 127.0.0.1.
+2007-01-02 02:22:05.790: - with sub-network of the char-server: 127.0.0.1.
+2007-01-02 02:22:05.790: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-02 02:22:05.790: - to accept any IP for all char-servers connetions
+2007-01-02 02:22:05.790: * Network security *
+2007-01-02 02:22:05.790: - with control of players IP between login-server and char-server.
+2007-01-02 02:22:05.790: - with control of players login2 between login-server and char-server.
+2007-01-02 02:22:05.790: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-02 02:22:05.790: - with a dynamic password error ban:
+2007-01-02 02:22:05.790:   After 3 invalid passwords in 60 seconds
+2007-01-02 02:22:05.790:   IP is banned for 300 seconds
+2007-01-02 02:22:05.790:   Information about dynamic password ban are NOT saved in any memo
+2007-01-02 02:22:05.790: * Remote administration system (ladmin) *
+2007-01-02 02:22:05.790: - with no remote administration.
+2007-01-02 02:22:05.790: - to accept any IP for remote administration
+2007-01-02 02:22:05.790: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-02 02:22:05.790: - to create new accounts with an unlimited time.
+2007-01-02 02:22:05.790: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-02 02:22:05.790: * Debug options *
+2007-01-02 02:22:05.790: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-02 02:22:05.790: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-02 02:22:05.790: - to NOT display normal parse packets on console.
+2007-01-02 02:22:05.790: - to NOT display administration parse packets on console.
+2007-01-02 02:22:05.790: - to NOT display char-server parse packets on console.
+2007-01-02 02:22:05.790: * *** TXT *** CONFIGURATION *
+2007-01-02 02:22:05.790: - with the accounts file name: 'save/account.txt'.
+2007-01-02 02:22:05.790: - to modify the GM levels at start with the file: 'conf/GM_account.txt'.
+2007-01-02 02:22:05.790: - to save the GM levels in the accounts file.
+2007-01-02 02:22:05.873: 9 accounts found in 'save/account.txt', of which are 3 GM accounts and of which are 5 server accounts ('S').
+2007-01-02 02:22:07.707: The login-server is ready (and is listening on the port 6900 - from any ip).
+2007-01-02 02:22:08.049: Connection request of the char-server 'Freya' @ 192.168.1.3:6121 (ip: 192.168.1.3)
+2007-01-02 02:22:08.049: Authentification accepted (account: s1 (id: 0), ip: 192.168.1.3)
+2007-01-02 02:22:08.368: Connection of the char-server 'Freya' accepted (account: s1, ip: 192.168.1.3)
+
+2007-01-03 00:23:55.564: The login-server (v3.1.0 TXT beta, SVN rev. 809) is starting...
+2007-01-03 00:23:55.564: The configuration of the server is set:
+2007-01-03 00:23:55.564: * General options *
+2007-01-03 00:23:55.564: - with port: 6900.
+2007-01-03 00:23:55.564: - to listen on any IP.
+2007-01-03 00:23:55.565: - with console commands disabled.
+2007-01-03 00:23:55.565: - to force players and remote administrator to use correct case in account name.
+2007-01-03 00:23:55.565: - to save password in plain text.
+2007-01-03 00:23:55.565: - to ALLOW new accounts (with _F/_M).
+2007-01-03 00:23:55.565: - to REFUSE creation of accounts with different case name.
+2007-01-03 00:23:55.565: - New accounts are created with level: 0.
+2007-01-03 00:23:55.565: - with no minimum level for connection.
+2007-01-03 00:23:55.565: - to accept any version of client.
+2007-01-03 00:23:55.565: - to create GM with level '60' when @gm is used.
+2007-01-03 00:23:55.565: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-03 00:23:55.565: * Logs options *
+2007-01-03 00:23:55.565: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-03 00:23:55.565: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-03 00:23:55.565: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-03 00:23:55.565: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-03 00:23:55.565: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-03 00:23:55.565: * Anti-freeze options *
+2007-01-03 00:23:55.565: - with no anti-freeze system.
+2007-01-03 00:23:55.565: * sstatus files options *
+2007-01-03 00:23:55.565: - with non sstatus TXT file.
+2007-01-03 00:23:55.565: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-03 00:23:55.565: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-03 00:23:55.565: - with non sstatus PHP file.
+2007-01-03 00:23:55.565: * Lan support options *
+2007-01-03 00:23:55.565: - with LAN IP of char-server: 127.0.0.1.
+2007-01-03 00:23:55.565: - with sub-network of the char-server: 127.0.0.1.
+2007-01-03 00:23:55.565: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-03 00:23:55.565: - to accept any IP for all char-servers connetions
+2007-01-03 00:23:55.565: * Network security *
+2007-01-03 00:23:55.565: - with control of players IP between login-server and char-server.
+2007-01-03 00:23:55.565: - with control of players login2 between login-server and char-server.
+2007-01-03 00:23:55.565: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-03 00:23:55.565: - with a dynamic password error ban:
+2007-01-03 00:23:55.565:   After 3 invalid passwords in 60 seconds
+2007-01-03 00:23:55.571:   IP is banned for 300 seconds
+2007-01-03 00:23:55.571:   Information about dynamic password ban are NOT saved in any memo
+2007-01-03 00:23:55.571: * Remote administration system (ladmin) *
+2007-01-03 00:23:55.571: - with no remote administration.
+2007-01-03 00:23:55.571: - to accept any IP for remote administration
+2007-01-03 00:23:55.571: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-03 00:23:55.571: - to create new accounts with an unlimited time.
+2007-01-03 00:23:55.571: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-03 00:23:55.571: * Debug options *
+2007-01-03 00:23:55.571: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-03 00:23:55.571: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-03 00:23:55.571: - to NOT display normal parse packets on console.
+2007-01-03 00:23:55.572: - to NOT display administration parse packets on console.
+2007-01-03 00:23:55.572: - to NOT display char-server parse packets on console.
+2007-01-03 00:23:55.572: * *** TXT *** CONFIGURATION *
+2007-01-03 00:23:55.572: - with the accounts file name: 'save/account.txt'.
+2007-01-03 00:23:55.572: - to modify the GM levels at start with the file: 'conf/GM_account.txt'.
+2007-01-03 00:23:55.572: - to save the GM levels in the accounts file.
+2007-01-03 00:23:55.580: 9 accounts found in 'save/account.txt', of which are 3 GM accounts and of which are 5 server accounts ('S').
+2007-01-03 00:23:55.655: The login-server is ready (and is listening on the port 6900 - from any ip).
+2007-01-03 00:23:56.241: Connection request of the char-server 'Freya' @ 192.168.1.3:6121 (ip: 192.168.1.3)
+2007-01-03 00:23:56.241: Authentification accepted (account: s1 (id: 0), ip: 192.168.1.3)
+2007-01-03 00:23:56.317: Connection of the char-server 'Freya' accepted (account: s1, ip: 192.168.1.3)
+
+2007-01-03 22:38:28.046: The login-server (v3.1.0 SQL beta, SVN rev. 837) is starting...
+2007-01-03 22:38:28.046: The configuration of the server is set:
+2007-01-03 22:38:28.046: * General options *
+2007-01-03 22:38:28.046: - with port: 6900.
+2007-01-03 22:38:28.046: - to listen on any IP.
+2007-01-03 22:38:28.046: - with console commands disabled.
+2007-01-03 22:38:28.046: - to force players and remote administrator to use correct case in account name.
+2007-01-03 22:38:28.046: - to save password in plain text.
+2007-01-03 22:38:28.046: - to ALLOW new accounts (with _F/_M).
+2007-01-03 22:38:28.046: - to REFUSE creation of accounts with different case name.
+2007-01-03 22:38:28.046: - New accounts are created with level: 0.
+2007-01-03 22:38:28.047: - with no minimum level for connection.
+2007-01-03 22:38:28.047: - to accept any version of client.
+2007-01-03 22:38:28.047: - to create GM with level '60' when @gm is used.
+2007-01-03 22:38:28.047: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-03 22:38:28.047: * Logs options *
+2007-01-03 22:38:28.047: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-03 22:38:28.047: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-03 22:38:28.047: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-03 22:38:28.047: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-03 22:38:28.047: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-03 22:38:28.047: * Anti-freeze options *
+2007-01-03 22:38:28.047: - with no anti-freeze system.
+2007-01-03 22:38:28.047: * sstatus files options *
+2007-01-03 22:38:28.047: - with non sstatus TXT file.
+2007-01-03 22:38:28.047: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-03 22:38:28.047: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-03 22:38:28.047: - with non sstatus PHP file.
+2007-01-03 22:38:28.047: * Lan support options *
+2007-01-03 22:38:28.047: - with LAN IP of char-server: 127.0.0.1.
+2007-01-03 22:38:28.047: - with sub-network of the char-server: 127.0.0.1.
+2007-01-03 22:38:28.047: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-03 22:38:28.047: - to accept any IP for all char-servers connetions
+2007-01-03 22:38:28.047: * Network security *
+2007-01-03 22:38:28.047: - with control of players IP between login-server and char-server.
+2007-01-03 22:38:28.047: - with control of players login2 between login-server and char-server.
+2007-01-03 22:38:28.047: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-03 22:38:28.047: - with a dynamic password error ban:
+2007-01-03 22:38:28.047:   After 3 invalid passwords in 60 seconds
+2007-01-03 22:38:28.047:   IP is banned for 300 seconds
+2007-01-03 22:38:28.047:   Information about dynamic password ban are NOT saved in any memo
+2007-01-03 22:38:28.047: * Remote administration system (ladmin) *
+2007-01-03 22:38:28.047: - with no remote administration.
+2007-01-03 22:38:28.047: - to accept any IP for remote administration
+2007-01-03 22:38:28.047: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-03 22:38:28.047: - to create new accounts with an unlimited time.
+2007-01-03 22:38:28.048: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-03 22:38:28.048: * Debug options *
+2007-01-03 22:38:28.048: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-03 22:38:28.048: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-03 22:38:28.048: - to NOT display normal parse packets on console.
+2007-01-03 22:38:28.048: - to NOT display administration parse packets on console.
+2007-01-03 22:38:28.048: - to NOT display char-server parse packets on console.
+2007-01-03 22:38:28.048: * *** SQL *** CONFIGURATION *
+2007-01-03 22:38:28.048: - to use login database: 'login'.
+2007-01-03 22:38:28.048: - to use MYSQL server on IP: '127.0.0.1'.
+2007-01-03 22:38:28.048: - to use MYSQL server on port: '3306'.
+2007-01-03 22:38:28.048: - to use MYSQL server with id: 'ragnarok'.
+2007-01-03 22:38:28.048: - to use MYSQL server with a password of 8 characters.
+2007-01-03 22:38:28.048: - to use MYSQL server with db: 'ragnarok'.
+2007-01-03 22:38:28.048: - to use name field of account id: 'account_id'.
+2007-01-03 22:38:28.048: - to use name field of account name: 'userid'.
+2007-01-03 22:38:28.048: - to use name field of account password: 'user_pass'.
+2007-01-03 22:38:28.048: - to use name field of account level: 'level'.
+2007-01-03 22:38:28.048: - to NOT optimize tables at start.
+2007-01-03 22:38:29.220: ----End of login-server (normal end with closing of all files).
+
+2007-01-03 22:38:42.809: The login-server (v3.1.0 SQL beta, SVN rev. 837) is starting...
+2007-01-03 22:38:42.809: The configuration of the server is set:
+2007-01-03 22:38:42.809: * General options *
+2007-01-03 22:38:42.809: - with port: 6900.
+2007-01-03 22:38:42.809: - to listen on any IP.
+2007-01-03 22:38:42.809: - with console commands disabled.
+2007-01-03 22:38:42.809: - to force players and remote administrator to use correct case in account name.
+2007-01-03 22:38:42.809: - to save password in plain text.
+2007-01-03 22:38:42.809: - to ALLOW new accounts (with _F/_M).
+2007-01-03 22:38:42.809: - to REFUSE creation of accounts with different case name.
+2007-01-03 22:38:42.809: - New accounts are created with level: 0.
+2007-01-03 22:38:42.810: - with no minimum level for connection.
+2007-01-03 22:38:42.810: - to accept any version of client.
+2007-01-03 22:38:42.810: - to create GM with level '60' when @gm is used.
+2007-01-03 22:38:42.810: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-03 22:38:42.810: * Logs options *
+2007-01-03 22:38:42.810: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-03 22:38:42.810: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-03 22:38:42.810: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-03 22:38:42.810: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-03 22:38:42.810: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-03 22:38:42.810: * Anti-freeze options *
+2007-01-03 22:38:42.810: - with no anti-freeze system.
+2007-01-03 22:38:42.810: * sstatus files options *
+2007-01-03 22:38:42.810: - with non sstatus TXT file.
+2007-01-03 22:38:42.810: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-03 22:38:42.810: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-03 22:38:42.810: - with non sstatus PHP file.
+2007-01-03 22:38:42.810: * Lan support options *
+2007-01-03 22:38:42.810: - with LAN IP of char-server: 127.0.0.1.
+2007-01-03 22:38:42.810: - with sub-network of the char-server: 127.0.0.1.
+2007-01-03 22:38:42.810: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-03 22:38:42.810: - to accept any IP for all char-servers connetions
+2007-01-03 22:38:42.810: * Network security *
+2007-01-03 22:38:42.810: - with control of players IP between login-server and char-server.
+2007-01-03 22:38:42.810: - with control of players login2 between login-server and char-server.
+2007-01-03 22:38:42.810: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-03 22:38:42.810: - with a dynamic password error ban:
+2007-01-03 22:38:42.810:   After 3 invalid passwords in 60 seconds
+2007-01-03 22:38:42.810:   IP is banned for 300 seconds
+2007-01-03 22:38:42.810:   Information about dynamic password ban are NOT saved in any memo
+2007-01-03 22:38:42.810: * Remote administration system (ladmin) *
+2007-01-03 22:38:42.810: - with no remote administration.
+2007-01-03 22:38:42.810: - to accept any IP for remote administration
+2007-01-03 22:38:42.811: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-03 22:38:42.811: - to create new accounts with an unlimited time.
+2007-01-03 22:38:42.811: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-03 22:38:42.811: * Debug options *
+2007-01-03 22:38:42.811: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-03 22:38:42.811: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-03 22:38:42.811: - to NOT display normal parse packets on console.
+2007-01-03 22:38:42.811: - to NOT display administration parse packets on console.
+2007-01-03 22:38:42.811: - to NOT display char-server parse packets on console.
+2007-01-03 22:38:42.811: * *** SQL *** CONFIGURATION *
+2007-01-03 22:38:42.811: - to use login database: 'login'.
+2007-01-03 22:38:42.811: - to use MYSQL server on IP: '127.0.0.1'.
+2007-01-03 22:38:42.811: - to use MYSQL server on port: '3306'.
+2007-01-03 22:38:42.811: - to use MYSQL server with id: 'ragnarok'.
+2007-01-03 22:38:42.811: - to use MYSQL server with a password of 8 characters.
+2007-01-03 22:38:42.811: - to use MYSQL server with db: 'ragnarok'.
+2007-01-03 22:38:42.811: - to use name field of account id: 'account_id'.
+2007-01-03 22:38:42.811: - to use name field of account name: 'userid'.
+2007-01-03 22:38:42.811: - to use name field of account password: 'user_pass'.
+2007-01-03 22:38:42.811: - to use name field of account level: 'level'.
+2007-01-03 22:38:42.811: - to NOT optimize tables at start.
+2007-01-03 22:38:45.437: ----End of login-server (normal end with closing of all files).
+
+2007-01-03 22:38:57.675: The login-server (v3.1.0 SQL beta, SVN rev. 837) is starting...
+2007-01-03 22:38:57.675: The configuration of the server is set:
+2007-01-03 22:38:57.675: * General options *
+2007-01-03 22:38:57.675: - with port: 6900.
+2007-01-03 22:38:57.675: - to listen on any IP.
+2007-01-03 22:38:57.675: - with console commands disabled.
+2007-01-03 22:38:57.675: - to force players and remote administrator to use correct case in account name.
+2007-01-03 22:38:57.675: - to save password in plain text.
+2007-01-03 22:38:57.675: - to ALLOW new accounts (with _F/_M).
+2007-01-03 22:38:57.675: - to REFUSE creation of accounts with different case name.
+2007-01-03 22:38:57.675: - New accounts are created with level: 0.
+2007-01-03 22:38:57.675: - with no minimum level for connection.
+2007-01-03 22:38:57.675: - to accept any version of client.
+2007-01-03 22:38:57.675: - to create GM with level '60' when @gm is used.
+2007-01-03 22:38:57.675: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-03 22:38:57.675: * Logs options *
+2007-01-03 22:38:57.675: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-03 22:38:57.675: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-03 22:38:57.675: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-03 22:38:57.675: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-03 22:38:57.675: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-03 22:38:57.675: * Anti-freeze options *
+2007-01-03 22:38:57.675: - with no anti-freeze system.
+2007-01-03 22:38:57.675: * sstatus files options *
+2007-01-03 22:38:57.675: - with non sstatus TXT file.
+2007-01-03 22:38:57.675: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-03 22:38:57.675: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-03 22:38:57.676: - with non sstatus PHP file.
+2007-01-03 22:38:57.676: * Lan support options *
+2007-01-03 22:38:57.676: - with LAN IP of char-server: 127.0.0.1.
+2007-01-03 22:38:57.676: - with sub-network of the char-server: 127.0.0.1.
+2007-01-03 22:38:57.676: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-03 22:38:57.676: - to accept any IP for all char-servers connetions
+2007-01-03 22:38:57.676: * Network security *
+2007-01-03 22:38:57.676: - with control of players IP between login-server and char-server.
+2007-01-03 22:38:57.676: - with control of players login2 between login-server and char-server.
+2007-01-03 22:38:57.676: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-03 22:38:57.676: - with a dynamic password error ban:
+2007-01-03 22:38:57.676:   After 3 invalid passwords in 60 seconds
+2007-01-03 22:38:57.676:   IP is banned for 300 seconds
+2007-01-03 22:38:57.676:   Information about dynamic password ban are NOT saved in any memo
+2007-01-03 22:38:57.676: * Remote administration system (ladmin) *
+2007-01-03 22:38:57.676: - with no remote administration.
+2007-01-03 22:38:57.676: - to accept any IP for remote administration
+2007-01-03 22:38:57.676: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-03 22:38:57.676: - to create new accounts with an unlimited time.
+2007-01-03 22:38:57.676: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-03 22:38:57.676: * Debug options *
+2007-01-03 22:38:57.676: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-03 22:38:57.676: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-03 22:38:57.676: - to NOT display normal parse packets on console.
+2007-01-03 22:38:57.676: - to NOT display administration parse packets on console.
+2007-01-03 22:38:57.676: - to NOT display char-server parse packets on console.
+2007-01-03 22:38:57.676: * *** SQL *** CONFIGURATION *
+2007-01-03 22:38:57.676: - to use login database: 'login'.
+2007-01-03 22:38:57.676: - to use MYSQL server on IP: '127.0.0.1'.
+2007-01-03 22:38:57.676: - to use MYSQL server on port: '3306'.
+2007-01-03 22:38:57.676: - to use MYSQL server with id: 'ragnarok'.
+2007-01-03 22:38:57.676: - to use MYSQL server with a password of 8 characters.
+2007-01-03 22:38:57.676: - to use MYSQL server with db: 'ragnarok'.
+2007-01-03 22:38:57.676: - to use name field of account id: 'account_id'.
+2007-01-03 22:38:57.676: - to use name field of account name: 'userid'.
+2007-01-03 22:38:57.676: - to use name field of account password: 'user_pass'.
+2007-01-03 22:38:57.676: - to use name field of account level: 'level'.
+2007-01-03 22:38:57.676: - to NOT optimize tables at start.
+2007-01-03 22:38:58.779: ----End of login-server (normal end with closing of all files).
+
+2007-01-03 22:39:08.991: The login-server (v3.1.0 SQL beta, SVN rev. 837) is starting...
+2007-01-03 22:39:08.991: The configuration of the server is set:
+2007-01-03 22:39:08.991: * General options *
+2007-01-03 22:39:08.991: - with port: 6900.
+2007-01-03 22:39:08.991: - to listen on any IP.
+2007-01-03 22:39:08.991: - with console commands disabled.
+2007-01-03 22:39:08.991: - to force players and remote administrator to use correct case in account name.
+2007-01-03 22:39:08.991: - to save password in plain text.
+2007-01-03 22:39:08.991: - to ALLOW new accounts (with _F/_M).
+2007-01-03 22:39:08.991: - to REFUSE creation of accounts with different case name.
+2007-01-03 22:39:08.991: - New accounts are created with level: 0.
+2007-01-03 22:39:08.992: - with no minimum level for connection.
+2007-01-03 22:39:08.992: - to accept any version of client.
+2007-01-03 22:39:08.992: - to create GM with level '60' when @gm is used.
+2007-01-03 22:39:08.992: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-03 22:39:08.992: * Logs options *
+2007-01-03 22:39:08.992: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-03 22:39:08.992: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-03 22:39:08.992: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-03 22:39:08.992: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-03 22:39:08.992: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-03 22:39:08.992: * Anti-freeze options *
+2007-01-03 22:39:08.992: - with no anti-freeze system.
+2007-01-03 22:39:08.992: * sstatus files options *
+2007-01-03 22:39:08.992: - with non sstatus TXT file.
+2007-01-03 22:39:08.992: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-03 22:39:08.992: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-03 22:39:08.992: - with non sstatus PHP file.
+2007-01-03 22:39:08.992: * Lan support options *
+2007-01-03 22:39:08.992: - with LAN IP of char-server: 127.0.0.1.
+2007-01-03 22:39:08.992: - with sub-network of the char-server: 127.0.0.1.
+2007-01-03 22:39:08.992: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-03 22:39:08.992: - to accept any IP for all char-servers connetions
+2007-01-03 22:39:08.992: * Network security *
+2007-01-03 22:39:08.992: - with control of players IP between login-server and char-server.
+2007-01-03 22:39:08.992: - with control of players login2 between login-server and char-server.
+2007-01-03 22:39:08.992: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-03 22:39:08.992: - with a dynamic password error ban:
+2007-01-03 22:39:08.992:   After 3 invalid passwords in 60 seconds
+2007-01-03 22:39:08.992:   IP is banned for 300 seconds
+2007-01-03 22:39:08.992:   Information about dynamic password ban are NOT saved in any memo
+2007-01-03 22:39:08.992: * Remote administration system (ladmin) *
+2007-01-03 22:39:08.992: - with no remote administration.
+2007-01-03 22:39:08.992: - to accept any IP for remote administration
+2007-01-03 22:39:08.992: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-03 22:39:08.992: - to create new accounts with an unlimited time.
+2007-01-03 22:39:08.993: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-03 22:39:08.993: * Debug options *
+2007-01-03 22:39:08.993: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-03 22:39:08.993: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-03 22:39:08.993: - to NOT display normal parse packets on console.
+2007-01-03 22:39:08.993: - to NOT display administration parse packets on console.
+2007-01-03 22:39:08.993: - to NOT display char-server parse packets on console.
+2007-01-03 22:39:08.993: * *** SQL *** CONFIGURATION *
+2007-01-03 22:39:08.993: - to use login database: 'login'.
+2007-01-03 22:39:08.993: - to use MYSQL server on IP: '127.0.0.1'.
+2007-01-03 22:39:08.993: - to use MYSQL server on port: '3306'.
+2007-01-03 22:39:08.993: - to use MYSQL server with id: 'ragnarok'.
+2007-01-03 22:39:08.993: - to use MYSQL server with a password of 8 characters.
+2007-01-03 22:39:08.993: - to use MYSQL server with db: 'ragnarok'.
+2007-01-03 22:39:08.993: - to use name field of account id: 'account_id'.
+2007-01-03 22:39:08.993: - to use name field of account name: 'userid'.
+2007-01-03 22:39:08.993: - to use name field of account password: 'user_pass'.
+2007-01-03 22:39:08.993: - to use name field of account level: 'level'.
+2007-01-03 22:39:08.993: - to NOT optimize tables at start.
+2007-01-03 22:39:09.008: ----End of login-server (normal end with closing of all files).
+
+2007-01-03 22:39:18.115: The login-server (v3.1.0 SQL beta, SVN rev. 837) is starting...
+2007-01-03 22:39:18.115: The configuration of the server is set:
+2007-01-03 22:39:18.115: * General options *
+2007-01-03 22:39:18.115: - with port: 6900.
+2007-01-03 22:39:18.115: - to listen on any IP.
+2007-01-03 22:39:18.115: - with console commands disabled.
+2007-01-03 22:39:18.115: - to force players and remote administrator to use correct case in account name.
+2007-01-03 22:39:18.115: - to save password in plain text.
+2007-01-03 22:39:18.115: - to ALLOW new accounts (with _F/_M).
+2007-01-03 22:39:18.115: - to REFUSE creation of accounts with different case name.
+2007-01-03 22:39:18.115: - New accounts are created with level: 0.
+2007-01-03 22:39:18.115: - with no minimum level for connection.
+2007-01-03 22:39:18.115: - to accept any version of client.
+2007-01-03 22:39:18.115: - to create GM with level '60' when @gm is used.
+2007-01-03 22:39:18.115: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-03 22:39:18.115: * Logs options *
+2007-01-03 22:39:18.115: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-03 22:39:18.115: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-03 22:39:18.115: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-03 22:39:18.115: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-03 22:39:18.115: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-03 22:39:18.115: * Anti-freeze options *
+2007-01-03 22:39:18.115: - with no anti-freeze system.
+2007-01-03 22:39:18.115: * sstatus files options *
+2007-01-03 22:39:18.115: - with non sstatus TXT file.
+2007-01-03 22:39:18.115: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-03 22:39:18.115: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-03 22:39:18.115: - with non sstatus PHP file.
+2007-01-03 22:39:18.115: * Lan support options *
+2007-01-03 22:39:18.115: - with LAN IP of char-server: 127.0.0.1.
+2007-01-03 22:39:18.115: - with sub-network of the char-server: 127.0.0.1.
+2007-01-03 22:39:18.115: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-03 22:39:18.116: - to accept any IP for all char-servers connetions
+2007-01-03 22:39:18.116: * Network security *
+2007-01-03 22:39:18.116: - with control of players IP between login-server and char-server.
+2007-01-03 22:39:18.116: - with control of players login2 between login-server and char-server.
+2007-01-03 22:39:18.116: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-03 22:39:18.116: - with a dynamic password error ban:
+2007-01-03 22:39:18.116:   After 3 invalid passwords in 60 seconds
+2007-01-03 22:39:18.116:   IP is banned for 300 seconds
+2007-01-03 22:39:18.116:   Information about dynamic password ban are NOT saved in any memo
+2007-01-03 22:39:18.116: * Remote administration system (ladmin) *
+2007-01-03 22:39:18.116: - with no remote administration.
+2007-01-03 22:39:18.116: - to accept any IP for remote administration
+2007-01-03 22:39:18.116: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-03 22:39:18.116: - to create new accounts with an unlimited time.
+2007-01-03 22:39:18.116: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-03 22:39:18.116: * Debug options *
+2007-01-03 22:39:18.116: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-03 22:39:18.116: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-03 22:39:18.116: - to NOT display normal parse packets on console.
+2007-01-03 22:39:18.116: - to NOT display administration parse packets on console.
+2007-01-03 22:39:18.116: - to NOT display char-server parse packets on console.
+2007-01-03 22:39:18.116: * *** SQL *** CONFIGURATION *
+2007-01-03 22:39:18.116: - to use login database: 'login'.
+2007-01-03 22:39:18.116: - to use MYSQL server on IP: '127.0.0.1'.
+2007-01-03 22:39:18.116: - to use MYSQL server on port: '3306'.
+2007-01-03 22:39:18.116: - to use MYSQL server with id: 'ragnarok'.
+2007-01-03 22:39:18.116: - to use MYSQL server with a password of 8 characters.
+2007-01-03 22:39:18.116: - to use MYSQL server with db: 'ragnarok'.
+2007-01-03 22:39:18.116: - to use name field of account id: 'account_id'.
+2007-01-03 22:39:18.116: - to use name field of account name: 'userid'.
+2007-01-03 22:39:18.116: - to use name field of account password: 'user_pass'.
+2007-01-03 22:39:18.116: - to use name field of account level: 'level'.
+2007-01-03 22:39:18.116: - to NOT optimize tables at start.
+2007-01-03 22:39:19.073: ----End of login-server (normal end with closing of all files).
+
+2007-01-03 22:39:28.177: The login-server (v3.1.0 SQL beta, SVN rev. 837) is starting...
+2007-01-03 22:39:28.177: The configuration of the server is set:
+2007-01-03 22:39:28.177: * General options *
+2007-01-03 22:39:28.177: - with port: 6900.
+2007-01-03 22:39:28.177: - to listen on any IP.
+2007-01-03 22:39:28.177: - with console commands disabled.
+2007-01-03 22:39:28.177: - to force players and remote administrator to use correct case in account name.
+2007-01-03 22:39:28.177: - to save password in plain text.
+2007-01-03 22:39:28.177: - to ALLOW new accounts (with _F/_M).
+2007-01-03 22:39:28.177: - to REFUSE creation of accounts with different case name.
+2007-01-03 22:39:28.177: - New accounts are created with level: 0.
+2007-01-03 22:39:28.177: - with no minimum level for connection.
+2007-01-03 22:39:28.177: - to accept any version of client.
+2007-01-03 22:39:28.177: - to create GM with level '60' when @gm is used.
+2007-01-03 22:39:28.177: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-03 22:39:28.177: * Logs options *
+2007-01-03 22:39:28.177: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-03 22:39:28.177: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-03 22:39:28.177: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-03 22:39:28.177: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-03 22:39:28.178: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-03 22:39:28.178: * Anti-freeze options *
+2007-01-03 22:39:28.178: - with no anti-freeze system.
+2007-01-03 22:39:28.178: * sstatus files options *
+2007-01-03 22:39:28.178: - with non sstatus TXT file.
+2007-01-03 22:39:28.178: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-03 22:39:28.178: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-03 22:39:28.178: - with non sstatus PHP file.
+2007-01-03 22:39:28.178: * Lan support options *
+2007-01-03 22:39:28.178: - with LAN IP of char-server: 127.0.0.1.
+2007-01-03 22:39:28.178: - with sub-network of the char-server: 127.0.0.1.
+2007-01-03 22:39:28.178: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-03 22:39:28.178: - to accept any IP for all char-servers connetions
+2007-01-03 22:39:28.178: * Network security *
+2007-01-03 22:39:28.178: - with control of players IP between login-server and char-server.
+2007-01-03 22:39:28.178: - with control of players login2 between login-server and char-server.
+2007-01-03 22:39:28.178: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-03 22:39:28.178: - with a dynamic password error ban:
+2007-01-03 22:39:28.178:   After 3 invalid passwords in 60 seconds
+2007-01-03 22:39:28.178:   IP is banned for 300 seconds
+2007-01-03 22:39:28.178:   Information about dynamic password ban are NOT saved in any memo
+2007-01-03 22:39:28.178: * Remote administration system (ladmin) *
+2007-01-03 22:39:28.178: - with no remote administration.
+2007-01-03 22:39:28.178: - to accept any IP for remote administration
+2007-01-03 22:39:28.178: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-03 22:39:28.178: - to create new accounts with an unlimited time.
+2007-01-03 22:39:28.178: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-03 22:39:28.178: * Debug options *
+2007-01-03 22:39:28.178: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-03 22:39:28.178: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-03 22:39:28.178: - to NOT display normal parse packets on console.
+2007-01-03 22:39:28.178: - to NOT display administration parse packets on console.
+2007-01-03 22:39:28.178: - to NOT display char-server parse packets on console.
+2007-01-03 22:39:28.178: * *** SQL *** CONFIGURATION *
+2007-01-03 22:39:28.179: - to use login database: 'login'.
+2007-01-03 22:39:28.179: - to use MYSQL server on IP: '127.0.0.1'.
+2007-01-03 22:39:28.179: - to use MYSQL server on port: '3306'.
+2007-01-03 22:39:28.179: - to use MYSQL server with id: 'ragnarok'.
+2007-01-03 22:39:28.179: - to use MYSQL server with a password of 8 characters.
+2007-01-03 22:39:28.179: - to use MYSQL server with db: 'ragnarok'.
+2007-01-03 22:39:28.179: - to use name field of account id: 'account_id'.
+2007-01-03 22:39:28.179: - to use name field of account name: 'userid'.
+2007-01-03 22:39:28.179: - to use name field of account password: 'user_pass'.
+2007-01-03 22:39:28.179: - to use name field of account level: 'level'.
+2007-01-03 22:39:28.179: - to NOT optimize tables at start.
+2007-01-03 22:39:29.145: ----End of login-server (normal end with closing of all files).
+
+2007-01-03 22:39:38.322: The login-server (v3.1.0 SQL beta, SVN rev. 837) is starting...
+2007-01-03 22:39:38.322: The configuration of the server is set:
+2007-01-03 22:39:38.322: * General options *
+2007-01-03 22:39:38.322: - with port: 6900.
+2007-01-03 22:39:38.322: - to listen on any IP.
+2007-01-03 22:39:38.322: - with console commands disabled.
+2007-01-03 22:39:38.322: - to force players and remote administrator to use correct case in account name.
+2007-01-03 22:39:38.322: - to save password in plain text.
+2007-01-03 22:39:38.322: - to ALLOW new accounts (with _F/_M).
+2007-01-03 22:39:38.322: - to REFUSE creation of accounts with different case name.
+2007-01-03 22:39:38.322: - New accounts are created with level: 0.
+2007-01-03 22:39:38.322: - with no minimum level for connection.
+2007-01-03 22:39:38.322: - to accept any version of client.
+2007-01-03 22:39:38.322: - to create GM with level '60' when @gm is used.
+2007-01-03 22:39:38.322: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-03 22:39:38.322: * Logs options *
+2007-01-03 22:39:38.322: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-03 22:39:38.322: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-03 22:39:38.322: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-03 22:39:38.322: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-03 22:39:38.323: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-03 22:39:38.323: * Anti-freeze options *
+2007-01-03 22:39:38.323: - with no anti-freeze system.
+2007-01-03 22:39:38.323: * sstatus files options *
+2007-01-03 22:39:38.323: - with non sstatus TXT file.
+2007-01-03 22:39:38.323: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-03 22:39:38.323: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-03 22:39:38.323: - with non sstatus PHP file.
+2007-01-03 22:39:38.323: * Lan support options *
+2007-01-03 22:39:38.323: - with LAN IP of char-server: 127.0.0.1.
+2007-01-03 22:39:38.323: - with sub-network of the char-server: 127.0.0.1.
+2007-01-03 22:39:38.323: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-03 22:39:38.323: - to accept any IP for all char-servers connetions
+2007-01-03 22:39:38.323: * Network security *
+2007-01-03 22:39:38.323: - with control of players IP between login-server and char-server.
+2007-01-03 22:39:38.323: - with control of players login2 between login-server and char-server.
+2007-01-03 22:39:38.323: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-03 22:39:38.323: - with a dynamic password error ban:
+2007-01-03 22:39:38.323:   After 3 invalid passwords in 60 seconds
+2007-01-03 22:39:38.323:   IP is banned for 300 seconds
+2007-01-03 22:39:38.323:   Information about dynamic password ban are NOT saved in any memo
+2007-01-03 22:39:38.323: * Remote administration system (ladmin) *
+2007-01-03 22:39:38.323: - with no remote administration.
+2007-01-03 22:39:38.323: - to accept any IP for remote administration
+2007-01-03 22:39:38.323: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-03 22:39:38.323: - to create new accounts with an unlimited time.
+2007-01-03 22:39:38.323: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-03 22:39:38.323: * Debug options *
+2007-01-03 22:39:38.323: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-03 22:39:38.323: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-03 22:39:38.323: - to NOT display normal parse packets on console.
+2007-01-03 22:39:38.323: - to NOT display administration parse packets on console.
+2007-01-03 22:39:38.323: - to NOT display char-server parse packets on console.
+2007-01-03 22:39:38.323: * *** SQL *** CONFIGURATION *
+2007-01-03 22:39:38.323: - to use login database: 'login'.
+2007-01-03 22:39:38.323: - to use MYSQL server on IP: '127.0.0.1'.
+2007-01-03 22:39:38.323: - to use MYSQL server on port: '3306'.
+2007-01-03 22:39:38.323: - to use MYSQL server with id: 'ragnarok'.
+2007-01-03 22:39:38.323: - to use MYSQL server with a password of 8 characters.
+2007-01-03 22:39:38.324: - to use MYSQL server with db: 'ragnarok'.
+2007-01-03 22:39:38.324: - to use name field of account id: 'account_id'.
+2007-01-03 22:39:38.324: - to use name field of account name: 'userid'.
+2007-01-03 22:39:38.324: - to use name field of account password: 'user_pass'.
+2007-01-03 22:39:38.324: - to use name field of account level: 'level'.
+2007-01-03 22:39:38.324: - to NOT optimize tables at start.
+2007-01-03 22:39:39.288: ----End of login-server (normal end with closing of all files).
+
+2007-01-03 22:39:48.431: The login-server (v3.1.0 SQL beta, SVN rev. 837) is starting...
+2007-01-03 22:39:48.431: The configuration of the server is set:
+2007-01-03 22:39:48.431: * General options *
+2007-01-03 22:39:48.431: - with port: 6900.
+2007-01-03 22:39:48.432: - to listen on any IP.
+2007-01-03 22:39:48.432: - with console commands disabled.
+2007-01-03 22:39:48.432: - to force players and remote administrator to use correct case in account name.
+2007-01-03 22:39:48.432: - to save password in plain text.
+2007-01-03 22:39:48.432: - to ALLOW new accounts (with _F/_M).
+2007-01-03 22:39:48.432: - to REFUSE creation of accounts with different case name.
+2007-01-03 22:39:48.432: - New accounts are created with level: 0.
+2007-01-03 22:39:48.432: - with no minimum level for connection.
+2007-01-03 22:39:48.432: - to accept any version of client.
+2007-01-03 22:39:48.432: - to create GM with level '60' when @gm is used.
+2007-01-03 22:39:48.432: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-03 22:39:48.432: * Logs options *
+2007-01-03 22:39:48.432: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-03 22:39:48.432: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-03 22:39:48.432: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-03 22:39:48.432: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-03 22:39:48.432: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-03 22:39:48.432: * Anti-freeze options *
+2007-01-03 22:39:48.432: - with no anti-freeze system.
+2007-01-03 22:39:48.432: * sstatus files options *
+2007-01-03 22:39:48.432: - with non sstatus TXT file.
+2007-01-03 22:39:48.432: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-03 22:39:48.432: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-03 22:39:48.432: - with non sstatus PHP file.
+2007-01-03 22:39:48.432: * Lan support options *
+2007-01-03 22:39:48.432: - with LAN IP of char-server: 127.0.0.1.
+2007-01-03 22:39:48.432: - with sub-network of the char-server: 127.0.0.1.
+2007-01-03 22:39:48.432: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-03 22:39:48.432: - to accept any IP for all char-servers connetions
+2007-01-03 22:39:48.432: * Network security *
+2007-01-03 22:39:48.432: - with control of players IP between login-server and char-server.
+2007-01-03 22:39:48.432: - with control of players login2 between login-server and char-server.
+2007-01-03 22:39:48.432: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-03 22:39:48.432: - with a dynamic password error ban:
+2007-01-03 22:39:48.432:   After 3 invalid passwords in 60 seconds
+2007-01-03 22:39:48.433:   IP is banned for 300 seconds
+2007-01-03 22:39:48.433:   Information about dynamic password ban are NOT saved in any memo
+2007-01-03 22:39:48.433: * Remote administration system (ladmin) *
+2007-01-03 22:39:48.433: - with no remote administration.
+2007-01-03 22:39:48.433: - to accept any IP for remote administration
+2007-01-03 22:39:48.433: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-03 22:39:48.433: - to create new accounts with an unlimited time.
+2007-01-03 22:39:48.433: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-03 22:39:48.433: * Debug options *
+2007-01-03 22:39:48.433: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-03 22:39:48.433: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-03 22:39:48.433: - to NOT display normal parse packets on console.
+2007-01-03 22:39:48.433: - to NOT display administration parse packets on console.
+2007-01-03 22:39:48.433: - to NOT display char-server parse packets on console.
+2007-01-03 22:39:48.433: * *** SQL *** CONFIGURATION *
+2007-01-03 22:39:48.433: - to use login database: 'login'.
+2007-01-03 22:39:48.433: - to use MYSQL server on IP: '127.0.0.1'.
+2007-01-03 22:39:48.433: - to use MYSQL server on port: '3306'.
+2007-01-03 22:39:48.433: - to use MYSQL server with id: 'ragnarok'.
+2007-01-03 22:39:48.433: - to use MYSQL server with a password of 8 characters.
+2007-01-03 22:39:48.433: - to use MYSQL server with db: 'ragnarok'.
+2007-01-03 22:39:48.433: - to use name field of account id: 'account_id'.
+2007-01-03 22:39:48.433: - to use name field of account name: 'userid'.
+2007-01-03 22:39:48.433: - to use name field of account password: 'user_pass'.
+2007-01-03 22:39:48.433: - to use name field of account level: 'level'.
+2007-01-03 22:39:48.433: - to NOT optimize tables at start.
+2007-01-03 22:39:49.457: ----End of login-server (normal end with closing of all files).
+
+2007-01-03 22:39:58.591: The login-server (v3.1.0 SQL beta, SVN rev. 837) is starting...
+2007-01-03 22:39:58.591: The configuration of the server is set:
+2007-01-03 22:39:58.591: * General options *
+2007-01-03 22:39:58.591: - with port: 6900.
+2007-01-03 22:39:58.591: - to listen on any IP.
+2007-01-03 22:39:58.591: - with console commands disabled.
+2007-01-03 22:39:58.591: - to force players and remote administrator to use correct case in account name.
+2007-01-03 22:39:58.591: - to save password in plain text.
+2007-01-03 22:39:58.591: - to ALLOW new accounts (with _F/_M).
+2007-01-03 22:39:58.591: - to REFUSE creation of accounts with different case name.
+2007-01-03 22:39:58.591: - New accounts are created with level: 0.
+2007-01-03 22:39:58.591: - with no minimum level for connection.
+2007-01-03 22:39:58.591: - to accept any version of client.
+2007-01-03 22:39:58.591: - to create GM with level '60' when @gm is used.
+2007-01-03 22:39:58.591: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-03 22:39:58.591: * Logs options *
+2007-01-03 22:39:58.591: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-03 22:39:58.591: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-03 22:39:58.591: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-03 22:39:58.591: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-03 22:39:58.591: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-03 22:39:58.591: * Anti-freeze options *
+2007-01-03 22:39:58.591: - with no anti-freeze system.
+2007-01-03 22:39:58.591: * sstatus files options *
+2007-01-03 22:39:58.591: - with non sstatus TXT file.
+2007-01-03 22:39:58.591: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-03 22:39:58.591: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-03 22:39:58.591: - with non sstatus PHP file.
+2007-01-03 22:39:58.591: * Lan support options *
+2007-01-03 22:39:58.591: - with LAN IP of char-server: 127.0.0.1.
+2007-01-03 22:39:58.591: - with sub-network of the char-server: 127.0.0.1.
+2007-01-03 22:39:58.591: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-03 22:39:58.591: - to accept any IP for all char-servers connetions
+2007-01-03 22:39:58.591: * Network security *
+2007-01-03 22:39:58.591: - with control of players IP between login-server and char-server.
+2007-01-03 22:39:58.591: - with control of players login2 between login-server and char-server.
+2007-01-03 22:39:58.591: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-03 22:39:58.591: - with a dynamic password error ban:
+2007-01-03 22:39:58.592:   After 3 invalid passwords in 60 seconds
+2007-01-03 22:39:58.592:   IP is banned for 300 seconds
+2007-01-03 22:39:58.592:   Information about dynamic password ban are NOT saved in any memo
+2007-01-03 22:39:58.592: * Remote administration system (ladmin) *
+2007-01-03 22:39:58.592: - with no remote administration.
+2007-01-03 22:39:58.592: - to accept any IP for remote administration
+2007-01-03 22:39:58.592: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-03 22:39:58.592: - to create new accounts with an unlimited time.
+2007-01-03 22:39:58.592: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-03 22:39:58.592: * Debug options *
+2007-01-03 22:39:58.592: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-03 22:39:58.592: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-03 22:39:58.592: - to NOT display normal parse packets on console.
+2007-01-03 22:39:58.592: - to NOT display administration parse packets on console.
+2007-01-03 22:39:58.592: - to NOT display char-server parse packets on console.
+2007-01-03 22:39:58.592: * *** SQL *** CONFIGURATION *
+2007-01-03 22:39:58.592: - to use login database: 'login'.
+2007-01-03 22:39:58.592: - to use MYSQL server on IP: '127.0.0.1'.
+2007-01-03 22:39:58.592: - to use MYSQL server on port: '3306'.
+2007-01-03 22:39:58.592: - to use MYSQL server with id: 'ragnarok'.
+2007-01-03 22:39:58.592: - to use MYSQL server with a password of 8 characters.
+2007-01-03 22:39:58.592: - to use MYSQL server with db: 'ragnarok'.
+2007-01-03 22:39:58.592: - to use name field of account id: 'account_id'.
+2007-01-03 22:39:58.592: - to use name field of account name: 'userid'.
+2007-01-03 22:39:58.593: - to use name field of account password: 'user_pass'.
+2007-01-03 22:39:58.593: - to use name field of account level: 'level'.
+2007-01-03 22:39:58.593: - to NOT optimize tables at start.
+2007-01-03 22:39:59.614: ----End of login-server (normal end with closing of all files).
+
+2007-01-03 22:40:08.771: The login-server (v3.1.0 SQL beta, SVN rev. 837) is starting...
+2007-01-03 22:40:08.771: The configuration of the server is set:
+2007-01-03 22:40:08.771: * General options *
+2007-01-03 22:40:08.771: - with port: 6900.
+2007-01-03 22:40:08.771: - to listen on any IP.
+2007-01-03 22:40:08.771: - with console commands disabled.
+2007-01-03 22:40:08.771: - to force players and remote administrator to use correct case in account name.
+2007-01-03 22:40:08.771: - to save password in plain text.
+2007-01-03 22:40:08.771: - to ALLOW new accounts (with _F/_M).
+2007-01-03 22:40:08.771: - to REFUSE creation of accounts with different case name.
+2007-01-03 22:40:08.772: - New accounts are created with level: 0.
+2007-01-03 22:40:08.772: - with no minimum level for connection.
+2007-01-03 22:40:08.772: - to accept any version of client.
+2007-01-03 22:40:08.772: - to create GM with level '60' when @gm is used.
+2007-01-03 22:40:08.772: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-03 22:40:08.772: * Logs options *
+2007-01-03 22:40:08.772: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-03 22:40:08.772: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-03 22:40:08.772: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-03 22:40:08.772: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-03 22:40:08.772: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-03 22:40:08.772: * Anti-freeze options *
+2007-01-03 22:40:08.772: - with no anti-freeze system.
+2007-01-03 22:40:08.772: * sstatus files options *
+2007-01-03 22:40:08.772: - with non sstatus TXT file.
+2007-01-03 22:40:08.772: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-03 22:40:08.772: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-03 22:40:08.772: - with non sstatus PHP file.
+2007-01-03 22:40:08.772: * Lan support options *
+2007-01-03 22:40:08.772: - with LAN IP of char-server: 127.0.0.1.
+2007-01-03 22:40:08.772: - with sub-network of the char-server: 127.0.0.1.
+2007-01-03 22:40:08.772: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-03 22:40:08.772: - to accept any IP for all char-servers connetions
+2007-01-03 22:40:08.772: * Network security *
+2007-01-03 22:40:08.772: - with control of players IP between login-server and char-server.
+2007-01-03 22:40:08.772: - with control of players login2 between login-server and char-server.
+2007-01-03 22:40:08.772: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-03 22:40:08.772: - with a dynamic password error ban:
+2007-01-03 22:40:08.772:   After 3 invalid passwords in 60 seconds
+2007-01-03 22:40:08.772:   IP is banned for 300 seconds
+2007-01-03 22:40:08.772:   Information about dynamic password ban are NOT saved in any memo
+2007-01-03 22:40:08.772: * Remote administration system (ladmin) *
+2007-01-03 22:40:08.772: - with no remote administration.
+2007-01-03 22:40:08.772: - to accept any IP for remote administration
+2007-01-03 22:40:08.773: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-03 22:40:08.773: - to create new accounts with an unlimited time.
+2007-01-03 22:40:08.773: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-03 22:40:08.773: * Debug options *
+2007-01-03 22:40:08.773: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-03 22:40:08.773: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-03 22:40:08.773: - to NOT display normal parse packets on console.
+2007-01-03 22:40:08.773: - to NOT display administration parse packets on console.
+2007-01-03 22:40:08.773: - to NOT display char-server parse packets on console.
+2007-01-03 22:40:08.773: * *** SQL *** CONFIGURATION *
+2007-01-03 22:40:08.773: - to use login database: 'login'.
+2007-01-03 22:40:08.773: - to use MYSQL server on IP: '127.0.0.1'.
+2007-01-03 22:40:08.773: - to use MYSQL server on port: '3306'.
+2007-01-03 22:40:08.773: - to use MYSQL server with id: 'ragnarok'.
+2007-01-03 22:40:08.773: - to use MYSQL server with a password of 8 characters.
+2007-01-03 22:40:08.773: - to use MYSQL server with db: 'ragnarok'.
+2007-01-03 22:40:08.773: - to use name field of account id: 'account_id'.
+2007-01-03 22:40:08.773: - to use name field of account name: 'userid'.
+2007-01-03 22:40:08.773: - to use name field of account password: 'user_pass'.
+2007-01-03 22:40:08.773: - to use name field of account level: 'level'.
+2007-01-03 22:40:08.773: - to NOT optimize tables at start.
+2007-01-03 22:40:09.766: ----End of login-server (normal end with closing of all files).
+
+2007-01-03 22:40:19.227: The login-server (v3.1.0 SQL beta, SVN rev. 837) is starting...
+2007-01-03 22:40:19.227: The configuration of the server is set:
+2007-01-03 22:40:19.227: * General options *
+2007-01-03 22:40:19.227: - with port: 6900.
+2007-01-03 22:40:19.227: - to listen on any IP.
+2007-01-03 22:40:19.227: - with console commands disabled.
+2007-01-03 22:40:19.227: - to force players and remote administrator to use correct case in account name.
+2007-01-03 22:40:19.227: - to save password in plain text.
+2007-01-03 22:40:19.227: - to ALLOW new accounts (with _F/_M).
+2007-01-03 22:40:19.227: - to REFUSE creation of accounts with different case name.
+2007-01-03 22:40:19.227: - New accounts are created with level: 0.
+2007-01-03 22:40:19.227: - with no minimum level for connection.
+2007-01-03 22:40:19.227: - to accept any version of client.
+2007-01-03 22:40:19.227: - to create GM with level '60' when @gm is used.
+2007-01-03 22:40:19.227: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-03 22:40:19.227: * Logs options *
+2007-01-03 22:40:19.227: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-03 22:40:19.227: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-03 22:40:19.227: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-03 22:40:19.227: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-03 22:40:19.227: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-03 22:40:19.227: * Anti-freeze options *
+2007-01-03 22:40:19.228: - with no anti-freeze system.
+2007-01-03 22:40:19.228: * sstatus files options *
+2007-01-03 22:40:19.228: - with non sstatus TXT file.
+2007-01-03 22:40:19.228: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-03 22:40:19.228: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-03 22:40:19.228: - with non sstatus PHP file.
+2007-01-03 22:40:19.228: * Lan support options *
+2007-01-03 22:40:19.228: - with LAN IP of char-server: 127.0.0.1.
+2007-01-03 22:40:19.228: - with sub-network of the char-server: 127.0.0.1.
+2007-01-03 22:40:19.228: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-03 22:40:19.228: - to accept any IP for all char-servers connetions
+2007-01-03 22:40:19.228: * Network security *
+2007-01-03 22:40:19.228: - with control of players IP between login-server and char-server.
+2007-01-03 22:40:19.228: - with control of players login2 between login-server and char-server.
+2007-01-03 22:40:19.228: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-03 22:40:19.228: - with a dynamic password error ban:
+2007-01-03 22:40:19.228:   After 3 invalid passwords in 60 seconds
+2007-01-03 22:40:19.228:   IP is banned for 300 seconds
+2007-01-03 22:40:19.228:   Information about dynamic password ban are NOT saved in any memo
+2007-01-03 22:40:19.228: * Remote administration system (ladmin) *
+2007-01-03 22:40:19.228: - with no remote administration.
+2007-01-03 22:40:19.228: - to accept any IP for remote administration
+2007-01-03 22:40:19.228: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-03 22:40:19.228: - to create new accounts with an unlimited time.
+2007-01-03 22:40:19.228: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-03 22:40:19.228: * Debug options *
+2007-01-03 22:40:19.228: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-03 22:40:19.228: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-03 22:40:19.228: - to NOT display normal parse packets on console.
+2007-01-03 22:40:19.229: - to NOT display administration parse packets on console.
+2007-01-03 22:40:19.229: - to NOT display char-server parse packets on console.
+2007-01-03 22:40:19.229: * *** SQL *** CONFIGURATION *
+2007-01-03 22:40:19.229: - to use login database: 'login'.
+2007-01-03 22:40:19.229: - to use MYSQL server on IP: '127.0.0.1'.
+2007-01-03 22:40:19.229: - to use MYSQL server on port: '3306'.
+2007-01-03 22:40:19.229: - to use MYSQL server with id: 'ragnarok'.
+2007-01-03 22:40:19.229: - to use MYSQL server with a password of 8 characters.
+2007-01-03 22:40:19.229: - to use MYSQL server with db: 'ragnarok'.
+2007-01-03 22:40:19.229: - to use name field of account id: 'account_id'.
+2007-01-03 22:40:19.229: - to use name field of account name: 'userid'.
+2007-01-03 22:40:19.229: - to use name field of account password: 'user_pass'.
+2007-01-03 22:40:19.229: - to use name field of account level: 'level'.
+2007-01-03 22:40:19.229: - to NOT optimize tables at start.
+2007-01-03 22:40:20.233: ----End of login-server (normal end with closing of all files).
+
+2007-01-03 22:40:29.350: The login-server (v3.1.0 SQL beta, SVN rev. 837) is starting...
+2007-01-03 22:40:29.350: The configuration of the server is set:
+2007-01-03 22:40:29.350: * General options *
+2007-01-03 22:40:29.350: - with port: 6900.
+2007-01-03 22:40:29.350: - to listen on any IP.
+2007-01-03 22:40:29.350: - with console commands disabled.
+2007-01-03 22:40:29.350: - to force players and remote administrator to use correct case in account name.
+2007-01-03 22:40:29.350: - to save password in plain text.
+2007-01-03 22:40:29.350: - to ALLOW new accounts (with _F/_M).
+2007-01-03 22:40:29.350: - to REFUSE creation of accounts with different case name.
+2007-01-03 22:40:29.350: - New accounts are created with level: 0.
+2007-01-03 22:40:29.350: - with no minimum level for connection.
+2007-01-03 22:40:29.350: - to accept any version of client.
+2007-01-03 22:40:29.350: - to create GM with level '60' when @gm is used.
+2007-01-03 22:40:29.350: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-03 22:40:29.350: * Logs options *
+2007-01-03 22:40:29.350: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-03 22:40:29.350: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-03 22:40:29.350: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-03 22:40:29.350: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-03 22:40:29.350: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-03 22:40:29.350: * Anti-freeze options *
+2007-01-03 22:40:29.351: - with no anti-freeze system.
+2007-01-03 22:40:29.351: * sstatus files options *
+2007-01-03 22:40:29.351: - with non sstatus TXT file.
+2007-01-03 22:40:29.351: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-03 22:40:29.351: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-03 22:40:29.351: - with non sstatus PHP file.
+2007-01-03 22:40:29.351: * Lan support options *
+2007-01-03 22:40:29.351: - with LAN IP of char-server: 127.0.0.1.
+2007-01-03 22:40:29.351: - with sub-network of the char-server: 127.0.0.1.
+2007-01-03 22:40:29.351: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-03 22:40:29.351: - to accept any IP for all char-servers connetions
+2007-01-03 22:40:29.351: * Network security *
+2007-01-03 22:40:29.351: - with control of players IP between login-server and char-server.
+2007-01-03 22:40:29.351: - with control of players login2 between login-server and char-server.
+2007-01-03 22:40:29.351: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-03 22:40:29.351: - with a dynamic password error ban:
+2007-01-03 22:40:29.351:   After 3 invalid passwords in 60 seconds
+2007-01-03 22:40:29.351:   IP is banned for 300 seconds
+2007-01-03 22:40:29.351:   Information about dynamic password ban are NOT saved in any memo
+2007-01-03 22:40:29.351: * Remote administration system (ladmin) *
+2007-01-03 22:40:29.351: - with no remote administration.
+2007-01-03 22:40:29.351: - to accept any IP for remote administration
+2007-01-03 22:40:29.351: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-03 22:40:29.351: - to create new accounts with an unlimited time.
+2007-01-03 22:40:29.351: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-03 22:40:29.351: * Debug options *
+2007-01-03 22:40:29.351: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-03 22:40:29.351: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-03 22:40:29.351: - to NOT display normal parse packets on console.
+2007-01-03 22:40:29.351: - to NOT display administration parse packets on console.
+2007-01-03 22:40:29.351: - to NOT display char-server parse packets on console.
+2007-01-03 22:40:29.351: * *** SQL *** CONFIGURATION *
+2007-01-03 22:40:29.351: - to use login database: 'login'.
+2007-01-03 22:40:29.351: - to use MYSQL server on IP: '127.0.0.1'.
+2007-01-03 22:40:29.351: - to use MYSQL server on port: '3306'.
+2007-01-03 22:40:29.351: - to use MYSQL server with id: 'ragnarok'.
+2007-01-03 22:40:29.351: - to use MYSQL server with a password of 8 characters.
+2007-01-03 22:40:29.351: - to use MYSQL server with db: 'ragnarok'.
+2007-01-03 22:40:29.351: - to use name field of account id: 'account_id'.
+2007-01-03 22:40:29.352: - to use name field of account name: 'userid'.
+2007-01-03 22:40:29.352: - to use name field of account password: 'user_pass'.
+2007-01-03 22:40:29.352: - to use name field of account level: 'level'.
+2007-01-03 22:40:29.352: - to NOT optimize tables at start.
+2007-01-03 22:40:30.301: ----End of login-server (normal end with closing of all files).
+
+2007-01-03 22:40:39.792: The login-server (v3.1.0 SQL beta, SVN rev. 837) is starting...
+2007-01-03 22:40:39.792: The configuration of the server is set:
+2007-01-03 22:40:39.792: * General options *
+2007-01-03 22:40:39.792: - with port: 6900.
+2007-01-03 22:40:39.838: - to listen on any IP.
+2007-01-03 22:40:39.838: - with console commands disabled.
+2007-01-03 22:40:39.838: - to force players and remote administrator to use correct case in account name.
+2007-01-03 22:40:39.838: - to save password in plain text.
+2007-01-03 22:40:39.838: - to ALLOW new accounts (with _F/_M).
+2007-01-03 22:40:39.838: - to REFUSE creation of accounts with different case name.
+2007-01-03 22:40:39.838: - New accounts are created with level: 0.
+2007-01-03 22:40:39.838: - with no minimum level for connection.
+2007-01-03 22:40:39.838: - to accept any version of client.
+2007-01-03 22:40:39.838: - to create GM with level '60' when @gm is used.
+2007-01-03 22:40:39.839: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-03 22:40:39.839: * Logs options *
+2007-01-03 22:40:39.839: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-03 22:40:39.839: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-03 22:40:39.839: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-03 22:40:39.839: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-03 22:40:39.839: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-03 22:40:39.839: * Anti-freeze options *
+2007-01-03 22:40:39.839: - with no anti-freeze system.
+2007-01-03 22:40:39.839: * sstatus files options *
+2007-01-03 22:40:39.839: - with non sstatus TXT file.
+2007-01-03 22:40:39.839: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-03 22:40:39.839: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-03 22:40:39.839: - with non sstatus PHP file.
+2007-01-03 22:40:39.839: * Lan support options *
+2007-01-03 22:40:39.839: - with LAN IP of char-server: 127.0.0.1.
+2007-01-03 22:40:39.839: - with sub-network of the char-server: 127.0.0.1.
+2007-01-03 22:40:39.839: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-03 22:40:39.839: - to accept any IP for all char-servers connetions
+2007-01-03 22:40:39.839: * Network security *
+2007-01-03 22:40:39.839: - with control of players IP between login-server and char-server.
+2007-01-03 22:40:39.839: - with control of players login2 between login-server and char-server.
+2007-01-03 22:40:39.839: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-03 22:40:39.839: - with a dynamic password error ban:
+2007-01-03 22:40:39.839:   After 3 invalid passwords in 60 seconds
+2007-01-03 22:40:39.839:   IP is banned for 300 seconds
+2007-01-03 22:40:39.839:   Information about dynamic password ban are NOT saved in any memo
+2007-01-03 22:40:39.839: * Remote administration system (ladmin) *
+2007-01-03 22:40:39.839: - with no remote administration.
+2007-01-03 22:40:39.839: - to accept any IP for remote administration
+2007-01-03 22:40:39.839: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-03 22:40:39.839: - to create new accounts with an unlimited time.
+2007-01-03 22:40:39.839: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-03 22:40:39.839: * Debug options *
+2007-01-03 22:40:39.839: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-03 22:40:39.839: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-03 22:40:39.839: - to NOT display normal parse packets on console.
+2007-01-03 22:40:39.839: - to NOT display administration parse packets on console.
+2007-01-03 22:40:39.840: - to NOT display char-server parse packets on console.
+2007-01-03 22:40:39.840: * *** SQL *** CONFIGURATION *
+2007-01-03 22:40:39.840: - to use login database: 'login'.
+2007-01-03 22:40:39.840: - to use MYSQL server on IP: '127.0.0.1'.
+2007-01-03 22:40:39.840: - to use MYSQL server on port: '3306'.
+2007-01-03 22:40:39.840: - to use MYSQL server with id: 'ragnarok'.
+2007-01-03 22:40:39.904: - to use MYSQL server with a password of 8 characters.
+2007-01-03 22:40:39.904: - to use MYSQL server with db: 'ragnarok'.
+2007-01-03 22:40:39.904: - to use name field of account id: 'account_id'.
+2007-01-03 22:40:39.904: - to use name field of account name: 'userid'.
+2007-01-03 22:40:39.904: - to use name field of account password: 'user_pass'.
+2007-01-03 22:40:39.904: - to use name field of account level: 'level'.
+2007-01-03 22:40:39.904: - to NOT optimize tables at start.
+2007-01-03 22:40:40.859: ----End of login-server (normal end with closing of all files).
+
+2007-01-03 22:40:49.967: The login-server (v3.1.0 SQL beta, SVN rev. 837) is starting...
+2007-01-03 22:40:49.967: The configuration of the server is set:
+2007-01-03 22:40:49.967: * General options *
+2007-01-03 22:40:49.968: - with port: 6900.
+2007-01-03 22:40:49.968: - to listen on any IP.
+2007-01-03 22:40:49.968: - with console commands disabled.
+2007-01-03 22:40:49.968: - to force players and remote administrator to use correct case in account name.
+2007-01-03 22:40:49.968: - to save password in plain text.
+2007-01-03 22:40:49.968: - to ALLOW new accounts (with _F/_M).
+2007-01-03 22:40:49.968: - to REFUSE creation of accounts with different case name.
+2007-01-03 22:40:49.968: - New accounts are created with level: 0.
+2007-01-03 22:40:49.968: - with no minimum level for connection.
+2007-01-03 22:40:49.968: - to accept any version of client.
+2007-01-03 22:40:49.968: - to create GM with level '60' when @gm is used.
+2007-01-03 22:40:49.968: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-03 22:40:49.968: * Logs options *
+2007-01-03 22:40:49.968: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-03 22:40:49.968: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-03 22:40:49.968: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-03 22:40:49.968: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-03 22:40:49.968: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-03 22:40:49.968: * Anti-freeze options *
+2007-01-03 22:40:49.968: - with no anti-freeze system.
+2007-01-03 22:40:49.968: * sstatus files options *
+2007-01-03 22:40:49.968: - with non sstatus TXT file.
+2007-01-03 22:40:49.968: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-03 22:40:49.968: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-03 22:40:49.968: - with non sstatus PHP file.
+2007-01-03 22:40:49.968: * Lan support options *
+2007-01-03 22:40:49.968: - with LAN IP of char-server: 127.0.0.1.
+2007-01-03 22:40:49.968: - with sub-network of the char-server: 127.0.0.1.
+2007-01-03 22:40:49.968: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-03 22:40:49.968: - to accept any IP for all char-servers connetions
+2007-01-03 22:40:49.968: * Network security *
+2007-01-03 22:40:49.968: - with control of players IP between login-server and char-server.
+2007-01-03 22:40:49.968: - with control of players login2 between login-server and char-server.
+2007-01-03 22:40:49.968: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-03 22:40:49.968: - with a dynamic password error ban:
+2007-01-03 22:40:49.968:   After 3 invalid passwords in 60 seconds
+2007-01-03 22:40:49.968:   IP is banned for 300 seconds
+2007-01-03 22:40:49.969:   Information about dynamic password ban are NOT saved in any memo
+2007-01-03 22:40:49.969: * Remote administration system (ladmin) *
+2007-01-03 22:40:49.969: - with no remote administration.
+2007-01-03 22:40:49.969: - to accept any IP for remote administration
+2007-01-03 22:40:49.969: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-03 22:40:49.969: - to create new accounts with an unlimited time.
+2007-01-03 22:40:49.969: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-03 22:40:49.969: * Debug options *
+2007-01-03 22:40:49.969: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-03 22:40:49.969: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-03 22:40:49.969: - to NOT display normal parse packets on console.
+2007-01-03 22:40:49.969: - to NOT display administration parse packets on console.
+2007-01-03 22:40:49.969: - to NOT display char-server parse packets on console.
+2007-01-03 22:40:49.969: * *** SQL *** CONFIGURATION *
+2007-01-03 22:40:49.969: - to use login database: 'login'.
+2007-01-03 22:40:49.969: - to use MYSQL server on IP: '127.0.0.1'.
+2007-01-03 22:40:49.969: - to use MYSQL server on port: '3306'.
+2007-01-03 22:40:49.969: - to use MYSQL server with id: 'ragnarok'.
+2007-01-03 22:40:49.969: - to use MYSQL server with a password of 8 characters.
+2007-01-03 22:40:49.969: - to use MYSQL server with db: 'ragnarok'.
+2007-01-03 22:40:49.969: - to use name field of account id: 'account_id'.
+2007-01-03 22:40:49.969: - to use name field of account name: 'userid'.
+2007-01-03 22:40:49.969: - to use name field of account password: 'user_pass'.
+2007-01-03 22:40:49.969: - to use name field of account level: 'level'.
+2007-01-03 22:40:49.969: - to NOT optimize tables at start.
+2007-01-03 22:40:50.902: ----End of login-server (normal end with closing of all files).
+
+2007-01-03 22:41:00.551: The login-server (v3.1.0 SQL beta, SVN rev. 837) is starting...
+2007-01-03 22:41:00.551: The configuration of the server is set:
+2007-01-03 22:41:00.551: * General options *
+2007-01-03 22:41:00.551: - with port: 6900.
+2007-01-03 22:41:00.551: - to listen on any IP.
+2007-01-03 22:41:00.551: - with console commands disabled.
+2007-01-03 22:41:00.551: - to force players and remote administrator to use correct case in account name.
+2007-01-03 22:41:00.551: - to save password in plain text.
+2007-01-03 22:41:00.551: - to ALLOW new accounts (with _F/_M).
+2007-01-03 22:41:00.551: - to REFUSE creation of accounts with different case name.
+2007-01-03 22:41:00.551: - New accounts are created with level: 0.
+2007-01-03 22:41:00.551: - with no minimum level for connection.
+2007-01-03 22:41:00.551: - to accept any version of client.
+2007-01-03 22:41:00.551: - to create GM with level '60' when @gm is used.
+2007-01-03 22:41:00.551: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-03 22:41:00.551: * Logs options *
+2007-01-03 22:41:00.551: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-03 22:41:00.551: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-03 22:41:00.551: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-03 22:41:00.551: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-03 22:41:00.551: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-03 22:41:00.551: * Anti-freeze options *
+2007-01-03 22:41:00.551: - with no anti-freeze system.
+2007-01-03 22:41:00.551: * sstatus files options *
+2007-01-03 22:41:00.551: - with non sstatus TXT file.
+2007-01-03 22:41:00.551: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-03 22:41:00.551: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-03 22:41:00.551: - with non sstatus PHP file.
+2007-01-03 22:41:00.551: * Lan support options *
+2007-01-03 22:41:00.551: - with LAN IP of char-server: 127.0.0.1.
+2007-01-03 22:41:00.551: - with sub-network of the char-server: 127.0.0.1.
+2007-01-03 22:41:00.551: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-03 22:41:00.551: - to accept any IP for all char-servers connetions
+2007-01-03 22:41:00.551: * Network security *
+2007-01-03 22:41:00.551: - with control of players IP between login-server and char-server.
+2007-01-03 22:41:00.551: - with control of players login2 between login-server and char-server.
+2007-01-03 22:41:00.551: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-03 22:41:00.551: - with a dynamic password error ban:
+2007-01-03 22:41:00.551:   After 3 invalid passwords in 60 seconds
+2007-01-03 22:41:00.551:   IP is banned for 300 seconds
+2007-01-03 22:41:00.551:   Information about dynamic password ban are NOT saved in any memo
+2007-01-03 22:41:00.551: * Remote administration system (ladmin) *
+2007-01-03 22:41:00.551: - with no remote administration.
+2007-01-03 22:41:00.551: - to accept any IP for remote administration
+2007-01-03 22:41:00.551: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-03 22:41:00.551: - to create new accounts with an unlimited time.
+2007-01-03 22:41:00.551: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-03 22:41:00.551: * Debug options *
+2007-01-03 22:41:00.551: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-03 22:41:00.551: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-03 22:41:00.551: - to NOT display normal parse packets on console.
+2007-01-03 22:41:00.551: - to NOT display administration parse packets on console.
+2007-01-03 22:41:00.551: - to NOT display char-server parse packets on console.
+2007-01-03 22:41:00.551: * *** SQL *** CONFIGURATION *
+2007-01-03 22:41:00.552: - to use login database: 'login'.
+2007-01-03 22:41:00.552: - to use MYSQL server on IP: '127.0.0.1'.
+2007-01-03 22:41:00.552: - to use MYSQL server on port: '3306'.
+2007-01-03 22:41:00.552: - to use MYSQL server with id: 'ragnarok'.
+2007-01-03 22:41:00.552: - to use MYSQL server with a password of 8 characters.
+2007-01-03 22:41:00.552: - to use MYSQL server with db: 'ragnarok'.
+2007-01-03 22:41:00.552: - to use name field of account id: 'account_id'.
+2007-01-03 22:41:00.552: - to use name field of account name: 'userid'.
+2007-01-03 22:41:00.552: - to use name field of account password: 'user_pass'.
+2007-01-03 22:41:00.552: - to use name field of account level: 'level'.
+2007-01-03 22:41:00.552: - to NOT optimize tables at start.
+2007-01-03 22:41:01.720: ----End of login-server (normal end with closing of all files).
+
+2007-01-03 22:41:12.265: The login-server (v3.1.0 SQL beta, SVN rev. 837) is starting...
+2007-01-03 22:41:12.265: The configuration of the server is set:
+2007-01-03 22:41:12.265: * General options *
+2007-01-03 22:41:12.265: - with port: 6900.
+2007-01-03 22:41:12.265: - to listen on any IP.
+2007-01-03 22:41:12.265: - with console commands disabled.
+2007-01-03 22:41:12.265: - to force players and remote administrator to use correct case in account name.
+2007-01-03 22:41:12.265: - to save password in plain text.
+2007-01-03 22:41:12.265: - to ALLOW new accounts (with _F/_M).
+2007-01-03 22:41:12.265: - to REFUSE creation of accounts with different case name.
+2007-01-03 22:41:12.265: - New accounts are created with level: 0.
+2007-01-03 22:41:12.265: - with no minimum level for connection.
+2007-01-03 22:41:12.265: - to accept any version of client.
+2007-01-03 22:41:12.265: - to create GM with level '60' when @gm is used.
+2007-01-03 22:41:12.265: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-03 22:41:12.265: * Logs options *
+2007-01-03 22:41:12.265: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-03 22:41:12.265: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-03 22:41:12.266: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-03 22:41:12.266: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-03 22:41:12.266: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-03 22:41:12.266: * Anti-freeze options *
+2007-01-03 22:41:12.266: - with no anti-freeze system.
+2007-01-03 22:41:12.266: * sstatus files options *
+2007-01-03 22:41:12.266: - with non sstatus TXT file.
+2007-01-03 22:41:12.266: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-03 22:41:12.266: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-03 22:41:12.266: - with non sstatus PHP file.
+2007-01-03 22:41:12.266: * Lan support options *
+2007-01-03 22:41:12.266: - with LAN IP of char-server: 127.0.0.1.
+2007-01-03 22:41:12.266: - with sub-network of the char-server: 127.0.0.1.
+2007-01-03 22:41:12.266: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-03 22:41:12.266: - to accept any IP for all char-servers connetions
+2007-01-03 22:41:12.266: * Network security *
+2007-01-03 22:41:12.266: - with control of players IP between login-server and char-server.
+2007-01-03 22:41:12.266: - with control of players login2 between login-server and char-server.
+2007-01-03 22:41:12.266: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-03 22:41:12.266: - with a dynamic password error ban:
+2007-01-03 22:41:12.266:   After 3 invalid passwords in 60 seconds
+2007-01-03 22:41:12.266:   IP is banned for 300 seconds
+2007-01-03 22:41:12.266:   Information about dynamic password ban are NOT saved in any memo
+2007-01-03 22:41:12.266: * Remote administration system (ladmin) *
+2007-01-03 22:41:12.266: - with no remote administration.
+2007-01-03 22:41:12.266: - to accept any IP for remote administration
+2007-01-03 22:41:12.266: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-03 22:41:12.266: - to create new accounts with an unlimited time.
+2007-01-03 22:41:12.266: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-03 22:41:12.266: * Debug options *
+2007-01-03 22:41:12.266: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-03 22:41:12.266: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-03 22:41:12.266: - to NOT display normal parse packets on console.
+2007-01-03 22:41:12.267: - to NOT display administration parse packets on console.
+2007-01-03 22:41:12.267: - to NOT display char-server parse packets on console.
+2007-01-03 22:41:12.267: * *** SQL *** CONFIGURATION *
+2007-01-03 22:41:12.267: - to use login database: 'login'.
+2007-01-03 22:41:12.267: - to use MYSQL server on IP: '127.0.0.1'.
+2007-01-03 22:41:12.267: - to use MYSQL server on port: '3306'.
+2007-01-03 22:41:12.267: - to use MYSQL server with id: 'ragnarok'.
+2007-01-03 22:41:12.267: - to use MYSQL server with a password of 8 characters.
+2007-01-03 22:41:12.267: - to use MYSQL server with db: 'ragnarok'.
+2007-01-03 22:41:12.267: - to use name field of account id: 'account_id'.
+2007-01-03 22:41:12.267: - to use name field of account name: 'userid'.
+2007-01-03 22:41:12.267: - to use name field of account password: 'user_pass'.
+2007-01-03 22:41:12.267: - to use name field of account level: 'level'.
+2007-01-03 22:41:12.267: - to NOT optimize tables at start.
+2007-01-03 22:41:13.951: ----End of login-server (normal end with closing of all files).
+
+2007-01-03 22:41:23.868: The login-server (v3.1.0 SQL beta, SVN rev. 837) is starting...
+2007-01-03 22:41:23.868: The configuration of the server is set:
+2007-01-03 22:41:23.868: * General options *
+2007-01-03 22:41:23.868: - with port: 6900.
+2007-01-03 22:41:23.868: - to listen on any IP.
+2007-01-03 22:41:23.868: - with console commands disabled.
+2007-01-03 22:41:23.869: - to force players and remote administrator to use correct case in account name.
+2007-01-03 22:41:23.869: - to save password in plain text.
+2007-01-03 22:41:23.869: - to ALLOW new accounts (with _F/_M).
+2007-01-03 22:41:23.869: - to REFUSE creation of accounts with different case name.
+2007-01-03 22:41:23.869: - New accounts are created with level: 0.
+2007-01-03 22:41:23.869: - with no minimum level for connection.
+2007-01-03 22:41:23.869: - to accept any version of client.
+2007-01-03 22:41:23.878: - to create GM with level '60' when @gm is used.
+2007-01-03 22:41:23.878: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-03 22:41:23.878: * Logs options *
+2007-01-03 22:41:23.878: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-03 22:41:23.878: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-03 22:41:23.878: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-03 22:41:23.878: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-03 22:41:23.878: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-03 22:41:23.878: * Anti-freeze options *
+2007-01-03 22:41:23.878: - with no anti-freeze system.
+2007-01-03 22:41:23.878: * sstatus files options *
+2007-01-03 22:41:23.878: - with non sstatus TXT file.
+2007-01-03 22:41:23.878: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-03 22:41:23.878: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-03 22:41:23.878: - with non sstatus PHP file.
+2007-01-03 22:41:23.879: * Lan support options *
+2007-01-03 22:41:23.879: - with LAN IP of char-server: 127.0.0.1.
+2007-01-03 22:41:23.879: - with sub-network of the char-server: 127.0.0.1.
+2007-01-03 22:41:23.879: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-03 22:41:23.879: - to accept any IP for all char-servers connetions
+2007-01-03 22:41:23.879: * Network security *
+2007-01-03 22:41:23.879: - with control of players IP between login-server and char-server.
+2007-01-03 22:41:23.879: - with control of players login2 between login-server and char-server.
+2007-01-03 22:41:23.879: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-03 22:41:23.879: - with a dynamic password error ban:
+2007-01-03 22:41:23.879:   After 3 invalid passwords in 60 seconds
+2007-01-03 22:41:23.879:   IP is banned for 300 seconds
+2007-01-03 22:41:23.879:   Information about dynamic password ban are NOT saved in any memo
+2007-01-03 22:41:23.879: * Remote administration system (ladmin) *
+2007-01-03 22:41:23.879: - with no remote administration.
+2007-01-03 22:41:23.879: - to accept any IP for remote administration
+2007-01-03 22:41:23.879: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-03 22:41:23.879: - to create new accounts with an unlimited time.
+2007-01-03 22:41:23.879: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-03 22:41:23.879: * Debug options *
+2007-01-03 22:41:23.879: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-03 22:41:23.879: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-03 22:41:23.879: - to NOT display normal parse packets on console.
+2007-01-03 22:41:23.879: - to NOT display administration parse packets on console.
+2007-01-03 22:41:23.879: - to NOT display char-server parse packets on console.
+2007-01-03 22:41:23.879: * *** SQL *** CONFIGURATION *
+2007-01-03 22:41:23.879: - to use login database: 'login'.
+2007-01-03 22:41:23.879: - to use MYSQL server on IP: '127.0.0.1'.
+2007-01-03 22:41:23.879: - to use MYSQL server on port: '3306'.
+2007-01-03 22:41:23.879: - to use MYSQL server with id: 'ragnarok'.
+2007-01-03 22:41:23.879: - to use MYSQL server with a password of 8 characters.
+2007-01-03 22:41:23.879: - to use MYSQL server with db: 'ragnarok'.
+2007-01-03 22:41:23.879: - to use name field of account id: 'account_id'.
+2007-01-03 22:41:23.879: - to use name field of account name: 'userid'.
+2007-01-03 22:41:23.879: - to use name field of account password: 'user_pass'.
+2007-01-03 22:41:23.879: - to use name field of account level: 'level'.
+2007-01-03 22:41:23.879: - to NOT optimize tables at start.
+2007-01-03 22:41:24.906: ----End of login-server (normal end with closing of all files).
+
+2007-01-03 22:41:33.974: The login-server (v3.1.0 SQL beta, SVN rev. 837) is starting...
+2007-01-03 22:41:33.974: The configuration of the server is set:
+2007-01-03 22:41:33.974: * General options *
+2007-01-03 22:41:33.974: - with port: 6900.
+2007-01-03 22:41:33.974: - to listen on any IP.
+2007-01-03 22:41:33.974: - with console commands disabled.
+2007-01-03 22:41:33.974: - to force players and remote administrator to use correct case in account name.
+2007-01-03 22:41:33.974: - to save password in plain text.
+2007-01-03 22:41:33.974: - to ALLOW new accounts (with _F/_M).
+2007-01-03 22:41:33.974: - to REFUSE creation of accounts with different case name.
+2007-01-03 22:41:33.974: - New accounts are created with level: 0.
+2007-01-03 22:41:33.974: - with no minimum level for connection.
+2007-01-03 22:41:33.974: - to accept any version of client.
+2007-01-03 22:41:33.974: - to create GM with level '60' when @gm is used.
+2007-01-03 22:41:33.974: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-03 22:41:33.974: * Logs options *
+2007-01-03 22:41:33.974: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-03 22:41:33.974: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-03 22:41:33.974: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-03 22:41:33.974: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-03 22:41:33.974: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-03 22:41:33.974: * Anti-freeze options *
+2007-01-03 22:41:33.974: - with no anti-freeze system.
+2007-01-03 22:41:33.974: * sstatus files options *
+2007-01-03 22:41:33.974: - with non sstatus TXT file.
+2007-01-03 22:41:33.974: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-03 22:41:33.974: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-03 22:41:33.974: - with non sstatus PHP file.
+2007-01-03 22:41:33.974: * Lan support options *
+2007-01-03 22:41:33.974: - with LAN IP of char-server: 127.0.0.1.
+2007-01-03 22:41:33.974: - with sub-network of the char-server: 127.0.0.1.
+2007-01-03 22:41:33.974: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-03 22:41:33.974: - to accept any IP for all char-servers connetions
+2007-01-03 22:41:33.974: * Network security *
+2007-01-03 22:41:33.974: - with control of players IP between login-server and char-server.
+2007-01-03 22:41:33.974: - with control of players login2 between login-server and char-server.
+2007-01-03 22:41:33.974: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-03 22:41:33.974: - with a dynamic password error ban:
+2007-01-03 22:41:33.975:   After 3 invalid passwords in 60 seconds
+2007-01-03 22:41:33.975:   IP is banned for 300 seconds
+2007-01-03 22:41:33.975:   Information about dynamic password ban are NOT saved in any memo
+2007-01-03 22:41:33.975: * Remote administration system (ladmin) *
+2007-01-03 22:41:33.975: - with no remote administration.
+2007-01-03 22:41:33.975: - to accept any IP for remote administration
+2007-01-03 22:41:33.975: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-03 22:41:33.975: - to create new accounts with an unlimited time.
+2007-01-03 22:41:33.975: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-03 22:41:33.975: * Debug options *
+2007-01-03 22:41:33.975: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-03 22:41:33.975: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-03 22:41:33.975: - to NOT display normal parse packets on console.
+2007-01-03 22:41:33.975: - to NOT display administration parse packets on console.
+2007-01-03 22:41:33.975: - to NOT display char-server parse packets on console.
+2007-01-03 22:41:33.975: * *** SQL *** CONFIGURATION *
+2007-01-03 22:41:33.975: - to use login database: 'login'.
+2007-01-03 22:41:33.975: - to use MYSQL server on IP: '127.0.0.1'.
+2007-01-03 22:41:33.975: - to use MYSQL server on port: '3306'.
+2007-01-03 22:41:33.975: - to use MYSQL server with id: 'ragnarok'.
+2007-01-03 22:41:33.975: - to use MYSQL server with a password of 8 characters.
+2007-01-03 22:41:33.975: - to use MYSQL server with db: 'ragnarok'.
+2007-01-03 22:41:33.975: - to use name field of account id: 'account_id'.
+2007-01-03 22:41:33.975: - to use name field of account name: 'userid'.
+2007-01-03 22:41:33.975: - to use name field of account password: 'user_pass'.
+2007-01-03 22:41:33.975: - to use name field of account level: 'level'.
+2007-01-03 22:41:33.975: - to NOT optimize tables at start.
+2007-01-03 22:41:34.967: ----End of login-server (normal end with closing of all files).
+
+2007-01-03 22:41:44.036: The login-server (v3.1.0 SQL beta, SVN rev. 837) is starting...
+2007-01-03 22:41:44.036: The configuration of the server is set:
+2007-01-03 22:41:44.036: * General options *
+2007-01-03 22:41:44.036: - with port: 6900.
+2007-01-03 22:41:44.036: - to listen on any IP.
+2007-01-03 22:41:44.036: - with console commands disabled.
+2007-01-03 22:41:44.036: - to force players and remote administrator to use correct case in account name.
+2007-01-03 22:41:44.037: - to save password in plain text.
+2007-01-03 22:41:44.037: - to ALLOW new accounts (with _F/_M).
+2007-01-03 22:41:44.037: - to REFUSE creation of accounts with different case name.
+2007-01-03 22:41:44.037: - New accounts are created with level: 0.
+2007-01-03 22:41:44.037: - with no minimum level for connection.
+2007-01-03 22:41:44.037: - to accept any version of client.
+2007-01-03 22:41:44.037: - to create GM with level '60' when @gm is used.
+2007-01-03 22:41:44.037: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-03 22:41:44.037: * Logs options *
+2007-01-03 22:41:44.037: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-03 22:41:44.037: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-03 22:41:44.037: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-03 22:41:44.037: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-03 22:41:44.037: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-03 22:41:44.037: * Anti-freeze options *
+2007-01-03 22:41:44.037: - with no anti-freeze system.
+2007-01-03 22:41:44.037: * sstatus files options *
+2007-01-03 22:41:44.037: - with non sstatus TXT file.
+2007-01-03 22:41:44.037: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-03 22:41:44.037: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-03 22:41:44.037: - with non sstatus PHP file.
+2007-01-03 22:41:44.037: * Lan support options *
+2007-01-03 22:41:44.037: - with LAN IP of char-server: 127.0.0.1.
+2007-01-03 22:41:44.037: - with sub-network of the char-server: 127.0.0.1.
+2007-01-03 22:41:44.037: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-03 22:41:44.037: - to accept any IP for all char-servers connetions
+2007-01-03 22:41:44.037: * Network security *
+2007-01-03 22:41:44.037: - with control of players IP between login-server and char-server.
+2007-01-03 22:41:44.037: - with control of players login2 between login-server and char-server.
+2007-01-03 22:41:44.037: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-03 22:41:44.037: - with a dynamic password error ban:
+2007-01-03 22:41:44.037:   After 3 invalid passwords in 60 seconds
+2007-01-03 22:41:44.037:   IP is banned for 300 seconds
+2007-01-03 22:41:44.037:   Information about dynamic password ban are NOT saved in any memo
+2007-01-03 22:41:44.037: * Remote administration system (ladmin) *
+2007-01-03 22:41:44.037: - with no remote administration.
+2007-01-03 22:41:44.038: - to accept any IP for remote administration
+2007-01-03 22:41:44.038: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-03 22:41:44.038: - to create new accounts with an unlimited time.
+2007-01-03 22:41:44.038: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-03 22:41:44.038: * Debug options *
+2007-01-03 22:41:44.038: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-03 22:41:44.038: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-03 22:41:44.038: - to NOT display normal parse packets on console.
+2007-01-03 22:41:44.038: - to NOT display administration parse packets on console.
+2007-01-03 22:41:44.038: - to NOT display char-server parse packets on console.
+2007-01-03 22:41:44.038: * *** SQL *** CONFIGURATION *
+2007-01-03 22:41:44.038: - to use login database: 'login'.
+2007-01-03 22:41:44.038: - to use MYSQL server on IP: '127.0.0.1'.
+2007-01-03 22:41:44.038: - to use MYSQL server on port: '3306'.
+2007-01-03 22:41:44.038: - to use MYSQL server with id: 'ragnarok'.
+2007-01-03 22:41:44.038: - to use MYSQL server with a password of 8 characters.
+2007-01-03 22:41:44.038: - to use MYSQL server with db: 'ragnarok'.
+2007-01-03 22:41:44.038: - to use name field of account id: 'account_id'.
+2007-01-03 22:41:44.038: - to use name field of account name: 'userid'.
+2007-01-03 22:41:44.038: - to use name field of account password: 'user_pass'.
+2007-01-03 22:41:44.038: - to use name field of account level: 'level'.
+2007-01-03 22:41:44.038: - to NOT optimize tables at start.
+2007-01-03 22:41:45.031: ----End of login-server (normal end with closing of all files).
+
+2007-01-03 22:41:54.670: The login-server (v3.1.0 SQL beta, SVN rev. 837) is starting...
+2007-01-03 22:41:54.670: The configuration of the server is set:
+2007-01-03 22:41:54.670: * General options *
+2007-01-03 22:41:54.670: - with port: 6900.
+2007-01-03 22:41:54.670: - to listen on any IP.
+2007-01-03 22:41:54.670: - with console commands disabled.
+2007-01-03 22:41:54.670: - to force players and remote administrator to use correct case in account name.
+2007-01-03 22:41:54.670: - to save password in plain text.
+2007-01-03 22:41:54.670: - to ALLOW new accounts (with _F/_M).
+2007-01-03 22:41:54.670: - to REFUSE creation of accounts with different case name.
+2007-01-03 22:41:54.670: - New accounts are created with level: 0.
+2007-01-03 22:41:54.670: - with no minimum level for connection.
+2007-01-03 22:41:54.670: - to accept any version of client.
+2007-01-03 22:41:54.670: - to create GM with level '60' when @gm is used.
+2007-01-03 22:41:54.670: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-03 22:41:54.671: * Logs options *
+2007-01-03 22:41:54.671: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-03 22:41:54.671: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-03 22:41:54.671: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-03 22:41:54.671: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-03 22:41:54.671: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-03 22:41:54.671: * Anti-freeze options *
+2007-01-03 22:41:54.671: - with no anti-freeze system.
+2007-01-03 22:41:54.671: * sstatus files options *
+2007-01-03 22:41:54.671: - with non sstatus TXT file.
+2007-01-03 22:41:54.671: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-03 22:41:54.671: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-03 22:41:54.671: - with non sstatus PHP file.
+2007-01-03 22:41:54.671: * Lan support options *
+2007-01-03 22:41:54.671: - with LAN IP of char-server: 127.0.0.1.
+2007-01-03 22:41:54.671: - with sub-network of the char-server: 127.0.0.1.
+2007-01-03 22:41:54.671: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-03 22:41:54.671: - to accept any IP for all char-servers connetions
+2007-01-03 22:41:54.671: * Network security *
+2007-01-03 22:41:54.671: - with control of players IP between login-server and char-server.
+2007-01-03 22:41:54.671: - with control of players login2 between login-server and char-server.
+2007-01-03 22:41:54.671: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-03 22:41:54.671: - with a dynamic password error ban:
+2007-01-03 22:41:54.671:   After 3 invalid passwords in 60 seconds
+2007-01-03 22:41:54.671:   IP is banned for 300 seconds
+2007-01-03 22:41:54.671:   Information about dynamic password ban are NOT saved in any memo
+2007-01-03 22:41:54.671: * Remote administration system (ladmin) *
+2007-01-03 22:41:54.671: - with no remote administration.
+2007-01-03 22:41:54.671: - to accept any IP for remote administration
+2007-01-03 22:41:54.671: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-03 22:41:54.671: - to create new accounts with an unlimited time.
+2007-01-03 22:41:54.671: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-03 22:41:54.671: * Debug options *
+2007-01-03 22:41:54.672: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-03 22:41:54.672: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-03 22:41:54.672: - to NOT display normal parse packets on console.
+2007-01-03 22:41:54.672: - to NOT display administration parse packets on console.
+2007-01-03 22:41:54.672: - to NOT display char-server parse packets on console.
+2007-01-03 22:41:54.672: * *** SQL *** CONFIGURATION *
+2007-01-03 22:41:54.672: - to use login database: 'login'.
+2007-01-03 22:41:54.672: - to use MYSQL server on IP: '127.0.0.1'.
+2007-01-03 22:41:54.672: - to use MYSQL server on port: '3306'.
+2007-01-03 22:41:54.672: - to use MYSQL server with id: 'ragnarok'.
+2007-01-03 22:41:54.672: - to use MYSQL server with a password of 8 characters.
+2007-01-03 22:41:54.672: - to use MYSQL server with db: 'ragnarok'.
+2007-01-03 22:41:54.672: - to use name field of account id: 'account_id'.
+2007-01-03 22:41:54.672: - to use name field of account name: 'userid'.
+2007-01-03 22:41:54.672: - to use name field of account password: 'user_pass'.
+2007-01-03 22:41:54.672: - to use name field of account level: 'level'.
+2007-01-03 22:41:54.672: - to NOT optimize tables at start.
+2007-01-03 22:41:55.689: ----End of login-server (normal end with closing of all files).
+
+2007-01-03 22:42:04.865: The login-server (v3.1.0 SQL beta, SVN rev. 837) is starting...
+2007-01-03 22:42:04.865: The configuration of the server is set:
+2007-01-03 22:42:04.865: * General options *
+2007-01-03 22:42:04.865: - with port: 6900.
+2007-01-03 22:42:04.865: - to listen on any IP.
+2007-01-03 22:42:04.865: - with console commands disabled.
+2007-01-03 22:42:04.865: - to force players and remote administrator to use correct case in account name.
+2007-01-03 22:42:04.865: - to save password in plain text.
+2007-01-03 22:42:04.865: - to ALLOW new accounts (with _F/_M).
+2007-01-03 22:42:04.865: - to REFUSE creation of accounts with different case name.
+2007-01-03 22:42:04.865: - New accounts are created with level: 0.
+2007-01-03 22:42:04.865: - with no minimum level for connection.
+2007-01-03 22:42:04.865: - to accept any version of client.
+2007-01-03 22:42:04.865: - to create GM with level '60' when @gm is used.
+2007-01-03 22:42:04.865: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-03 22:42:04.865: * Logs options *
+2007-01-03 22:42:04.866: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-03 22:42:04.866: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-03 22:42:04.866: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-03 22:42:04.866: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-03 22:42:04.963: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-03 22:42:04.963: * Anti-freeze options *
+2007-01-03 22:42:04.963: - with no anti-freeze system.
+2007-01-03 22:42:04.963: * sstatus files options *
+2007-01-03 22:42:04.963: - with non sstatus TXT file.
+2007-01-03 22:42:04.963: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-03 22:42:04.963: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-03 22:42:04.963: - with non sstatus PHP file.
+2007-01-03 22:42:04.963: * Lan support options *
+2007-01-03 22:42:04.963: - with LAN IP of char-server: 127.0.0.1.
+2007-01-03 22:42:04.963: - with sub-network of the char-server: 127.0.0.1.
+2007-01-03 22:42:04.963: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-03 22:42:04.963: - to accept any IP for all char-servers connetions
+2007-01-03 22:42:04.963: * Network security *
+2007-01-03 22:42:04.963: - with control of players IP between login-server and char-server.
+2007-01-03 22:42:04.963: - with control of players login2 between login-server and char-server.
+2007-01-03 22:42:04.963: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-03 22:42:04.963: - with a dynamic password error ban:
+2007-01-03 22:42:04.963:   After 3 invalid passwords in 60 seconds
+2007-01-03 22:42:04.963:   IP is banned for 300 seconds
+2007-01-03 22:42:04.963:   Information about dynamic password ban are NOT saved in any memo
+2007-01-03 22:42:04.963: * Remote administration system (ladmin) *
+2007-01-03 22:42:04.963: - with no remote administration.
+2007-01-03 22:42:04.963: - to accept any IP for remote administration
+2007-01-03 22:42:04.964: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-03 22:42:04.964: - to create new accounts with an unlimited time.
+2007-01-03 22:42:04.964: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-03 22:42:04.964: * Debug options *
+2007-01-03 22:42:04.964: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-03 22:42:04.964: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-03 22:42:04.964: - to NOT display normal parse packets on console.
+2007-01-03 22:42:04.964: - to NOT display administration parse packets on console.
+2007-01-03 22:42:04.964: - to NOT display char-server parse packets on console.
+2007-01-03 22:42:04.964: * *** SQL *** CONFIGURATION *
+2007-01-03 22:42:04.964: - to use login database: 'login'.
+2007-01-03 22:42:04.964: - to use MYSQL server on IP: '127.0.0.1'.
+2007-01-03 22:42:04.964: - to use MYSQL server on port: '3306'.
+2007-01-03 22:42:04.964: - to use MYSQL server with id: 'ragnarok'.
+2007-01-03 22:42:04.964: - to use MYSQL server with a password of 8 characters.
+2007-01-03 22:42:04.964: - to use MYSQL server with db: 'ragnarok'.
+2007-01-03 22:42:04.964: - to use name field of account id: 'account_id'.
+2007-01-03 22:42:04.964: - to use name field of account name: 'userid'.
+2007-01-03 22:42:04.964: - to use name field of account password: 'user_pass'.
+2007-01-03 22:42:04.964: - to use name field of account level: 'level'.
+2007-01-03 22:42:04.964: - to NOT optimize tables at start.
+2007-01-03 22:42:05.960: ----End of login-server (normal end with closing of all files).
+
+2007-01-03 22:42:15.052: The login-server (v3.1.0 SQL beta, SVN rev. 837) is starting...
+2007-01-03 22:42:15.052: The configuration of the server is set:
+2007-01-03 22:42:15.052: * General options *
+2007-01-03 22:42:15.052: - with port: 6900.
+2007-01-03 22:42:15.052: - to listen on any IP.
+2007-01-03 22:42:15.052: - with console commands disabled.
+2007-01-03 22:42:15.052: - to force players and remote administrator to use correct case in account name.
+2007-01-03 22:42:15.052: - to save password in plain text.
+2007-01-03 22:42:15.052: - to ALLOW new accounts (with _F/_M).
+2007-01-03 22:42:15.052: - to REFUSE creation of accounts with different case name.
+2007-01-03 22:42:15.052: - New accounts are created with level: 0.
+2007-01-03 22:42:15.052: - with no minimum level for connection.
+2007-01-03 22:42:15.052: - to accept any version of client.
+2007-01-03 22:42:15.052: - to create GM with level '60' when @gm is used.
+2007-01-03 22:42:15.052: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-03 22:42:15.052: * Logs options *
+2007-01-03 22:42:15.052: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-03 22:42:15.052: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-03 22:42:15.052: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-03 22:42:15.052: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-03 22:42:15.052: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-03 22:42:15.052: * Anti-freeze options *
+2007-01-03 22:42:15.052: - with no anti-freeze system.
+2007-01-03 22:42:15.052: * sstatus files options *
+2007-01-03 22:42:15.052: - with non sstatus TXT file.
+2007-01-03 22:42:15.052: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-03 22:42:15.052: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-03 22:42:15.052: - with non sstatus PHP file.
+2007-01-03 22:42:15.052: * Lan support options *
+2007-01-03 22:42:15.052: - with LAN IP of char-server: 127.0.0.1.
+2007-01-03 22:42:15.052: - with sub-network of the char-server: 127.0.0.1.
+2007-01-03 22:42:15.053: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-03 22:42:15.053: - to accept any IP for all char-servers connetions
+2007-01-03 22:42:15.053: * Network security *
+2007-01-03 22:42:15.053: - with control of players IP between login-server and char-server.
+2007-01-03 22:42:15.053: - with control of players login2 between login-server and char-server.
+2007-01-03 22:42:15.053: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-03 22:42:15.053: - with a dynamic password error ban:
+2007-01-03 22:42:15.053:   After 3 invalid passwords in 60 seconds
+2007-01-03 22:42:15.053:   IP is banned for 300 seconds
+2007-01-03 22:42:15.053:   Information about dynamic password ban are NOT saved in any memo
+2007-01-03 22:42:15.053: * Remote administration system (ladmin) *
+2007-01-03 22:42:15.053: - with no remote administration.
+2007-01-03 22:42:15.053: - to accept any IP for remote administration
+2007-01-03 22:42:15.053: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-03 22:42:15.053: - to create new accounts with an unlimited time.
+2007-01-03 22:42:15.053: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-03 22:42:15.053: * Debug options *
+2007-01-03 22:42:15.053: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-03 22:42:15.053: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-03 22:42:15.053: - to NOT display normal parse packets on console.
+2007-01-03 22:42:15.053: - to NOT display administration parse packets on console.
+2007-01-03 22:42:15.053: - to NOT display char-server parse packets on console.
+2007-01-03 22:42:15.053: * *** SQL *** CONFIGURATION *
+2007-01-03 22:42:15.053: - to use login database: 'login'.
+2007-01-03 22:42:15.053: - to use MYSQL server on IP: '127.0.0.1'.
+2007-01-03 22:42:15.053: - to use MYSQL server on port: '3306'.
+2007-01-03 22:42:15.053: - to use MYSQL server with id: 'ragnarok'.
+2007-01-03 22:42:15.053: - to use MYSQL server with a password of 8 characters.
+2007-01-03 22:42:15.053: - to use MYSQL server with db: 'ragnarok'.
+2007-01-03 22:42:15.053: - to use name field of account id: 'account_id'.
+2007-01-03 22:42:15.053: - to use name field of account name: 'userid'.
+2007-01-03 22:42:15.053: - to use name field of account password: 'user_pass'.
+2007-01-03 22:42:15.053: - to use name field of account level: 'level'.
+2007-01-03 22:42:15.053: - to NOT optimize tables at start.
+2007-01-03 22:42:16.002: ----End of login-server (normal end with closing of all files).
+
+2007-01-03 22:42:27.005: The login-server (v3.1.0 SQL beta, SVN rev. 837) is starting...
+2007-01-03 22:42:27.005: The configuration of the server is set:
+2007-01-03 22:42:27.005: * General options *
+2007-01-03 22:42:27.005: - with port: 6900.
+2007-01-03 22:42:27.005: - to listen on any IP.
+2007-01-03 22:42:27.005: - with console commands disabled.
+2007-01-03 22:42:27.005: - to force players and remote administrator to use correct case in account name.
+2007-01-03 22:42:27.005: - to save password in plain text.
+2007-01-03 22:42:27.005: - to ALLOW new accounts (with _F/_M).
+2007-01-03 22:42:27.005: - to REFUSE creation of accounts with different case name.
+2007-01-03 22:42:27.005: - New accounts are created with level: 0.
+2007-01-03 22:42:27.005: - with no minimum level for connection.
+2007-01-03 22:42:27.005: - to accept any version of client.
+2007-01-03 22:42:27.005: - to create GM with level '60' when @gm is used.
+2007-01-03 22:42:27.005: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-03 22:42:27.005: * Logs options *
+2007-01-03 22:42:27.005: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-03 22:42:27.005: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-03 22:42:27.005: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-03 22:42:27.005: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-03 22:42:27.005: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-03 22:42:27.005: * Anti-freeze options *
+2007-01-03 22:42:27.005: - with no anti-freeze system.
+2007-01-03 22:42:27.005: * sstatus files options *
+2007-01-03 22:42:27.005: - with non sstatus TXT file.
+2007-01-03 22:42:27.005: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-03 22:42:27.005: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-03 22:42:27.005: - with non sstatus PHP file.
+2007-01-03 22:42:27.005: * Lan support options *
+2007-01-03 22:42:27.005: - with LAN IP of char-server: 127.0.0.1.
+2007-01-03 22:42:27.005: - with sub-network of the char-server: 127.0.0.1.
+2007-01-03 22:42:27.005: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-03 22:42:27.005: - to accept any IP for all char-servers connetions
+2007-01-03 22:42:27.005: * Network security *
+2007-01-03 22:42:27.006: - with control of players IP between login-server and char-server.
+2007-01-03 22:42:27.006: - with control of players login2 between login-server and char-server.
+2007-01-03 22:42:27.006: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-03 22:42:27.006: - with a dynamic password error ban:
+2007-01-03 22:42:27.006:   After 3 invalid passwords in 60 seconds
+2007-01-03 22:42:27.006:   IP is banned for 300 seconds
+2007-01-03 22:42:27.006:   Information about dynamic password ban are NOT saved in any memo
+2007-01-03 22:42:27.007: * Remote administration system (ladmin) *
+2007-01-03 22:42:27.007: - with no remote administration.
+2007-01-03 22:42:27.007: - to accept any IP for remote administration
+2007-01-03 22:42:27.007: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-03 22:42:27.007: - to create new accounts with an unlimited time.
+2007-01-03 22:42:27.007: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-03 22:42:27.007: * Debug options *
+2007-01-03 22:42:27.007: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-03 22:42:27.007: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-03 22:42:27.007: - to NOT display normal parse packets on console.
+2007-01-03 22:42:27.007: - to NOT display administration parse packets on console.
+2007-01-03 22:42:27.007: - to NOT display char-server parse packets on console.
+2007-01-03 22:42:27.007: * *** SQL *** CONFIGURATION *
+2007-01-03 22:42:27.007: - to use login database: 'login'.
+2007-01-03 22:42:27.007: - to use MYSQL server on IP: '127.0.0.1'.
+2007-01-03 22:42:27.007: - to use MYSQL server on port: '3306'.
+2007-01-03 22:42:27.007: - to use MYSQL server with id: 'ragnarok'.
+2007-01-03 22:42:27.007: - to use MYSQL server with a password of 8 characters.
+2007-01-03 22:42:27.007: - to use MYSQL server with db: 'ragnarok'.
+2007-01-03 22:42:27.007: - to use name field of account id: 'account_id'.
+2007-01-03 22:42:27.007: - to use name field of account name: 'userid'.
+2007-01-03 22:42:27.007: - to use name field of account password: 'user_pass'.
+2007-01-03 22:42:27.007: - to use name field of account level: 'level'.
+2007-01-03 22:42:27.007: - to NOT optimize tables at start.
+2007-01-03 22:42:28.281: ----End of login-server (normal end with closing of all files).
+
+2007-01-03 22:42:37.631: The login-server (v3.1.0 SQL beta, SVN rev. 837) is starting...
+2007-01-03 22:42:37.631: The configuration of the server is set:
+2007-01-03 22:42:37.631: * General options *
+2007-01-03 22:42:37.631: - with port: 6900.
+2007-01-03 22:42:37.631: - to listen on any IP.
+2007-01-03 22:42:37.631: - with console commands disabled.
+2007-01-03 22:42:37.631: - to force players and remote administrator to use correct case in account name.
+2007-01-03 22:42:37.631: - to save password in plain text.
+2007-01-03 22:42:37.631: - to ALLOW new accounts (with _F/_M).
+2007-01-03 22:42:37.631: - to REFUSE creation of accounts with different case name.
+2007-01-03 22:42:37.631: - New accounts are created with level: 0.
+2007-01-03 22:42:37.631: - with no minimum level for connection.
+2007-01-03 22:42:37.631: - to accept any version of client.
+2007-01-03 22:42:37.631: - to create GM with level '60' when @gm is used.
+2007-01-03 22:42:37.631: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-03 22:42:37.631: * Logs options *
+2007-01-03 22:42:37.631: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-03 22:42:37.631: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-03 22:42:37.631: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-03 22:42:37.631: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-03 22:42:37.631: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-03 22:42:37.631: * Anti-freeze options *
+2007-01-03 22:42:37.631: - with no anti-freeze system.
+2007-01-03 22:42:37.631: * sstatus files options *
+2007-01-03 22:42:37.631: - with non sstatus TXT file.
+2007-01-03 22:42:37.631: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-03 22:42:37.631: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-03 22:42:37.631: - with non sstatus PHP file.
+2007-01-03 22:42:37.631: * Lan support options *
+2007-01-03 22:42:37.631: - with LAN IP of char-server: 127.0.0.1.
+2007-01-03 22:42:37.631: - with sub-network of the char-server: 127.0.0.1.
+2007-01-03 22:42:37.631: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-03 22:42:37.631: - to accept any IP for all char-servers connetions
+2007-01-03 22:42:37.631: * Network security *
+2007-01-03 22:42:37.631: - with control of players IP between login-server and char-server.
+2007-01-03 22:42:37.632: - with control of players login2 between login-server and char-server.
+2007-01-03 22:42:37.632: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-03 22:42:37.632: - with a dynamic password error ban:
+2007-01-03 22:42:37.632:   After 3 invalid passwords in 60 seconds
+2007-01-03 22:42:37.632:   IP is banned for 300 seconds
+2007-01-03 22:42:37.632:   Information about dynamic password ban are NOT saved in any memo
+2007-01-03 22:42:37.632: * Remote administration system (ladmin) *
+2007-01-03 22:42:37.632: - with no remote administration.
+2007-01-03 22:42:37.632: - to accept any IP for remote administration
+2007-01-03 22:42:37.632: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-03 22:42:37.632: - to create new accounts with an unlimited time.
+2007-01-03 22:42:37.632: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-03 22:42:37.632: * Debug options *
+2007-01-03 22:42:37.632: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-03 22:42:37.632: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-03 22:42:37.632: - to NOT display normal parse packets on console.
+2007-01-03 22:42:37.632: - to NOT display administration parse packets on console.
+2007-01-03 22:42:37.632: - to NOT display char-server parse packets on console.
+2007-01-03 22:42:37.632: * *** SQL *** CONFIGURATION *
+2007-01-03 22:42:37.632: - to use login database: 'login'.
+2007-01-03 22:42:37.632: - to use MYSQL server on IP: '127.0.0.1'.
+2007-01-03 22:42:37.632: - to use MYSQL server on port: '3306'.
+2007-01-03 22:42:37.632: - to use MYSQL server with id: 'ragnarok'.
+2007-01-03 22:42:37.632: - to use MYSQL server with a password of 8 characters.
+2007-01-03 22:42:37.632: - to use MYSQL server with db: 'ragnarok'.
+2007-01-03 22:42:37.632: - to use name field of account id: 'account_id'.
+2007-01-03 22:42:37.632: - to use name field of account name: 'userid'.
+2007-01-03 22:42:37.632: - to use name field of account password: 'user_pass'.
+2007-01-03 22:42:37.632: - to use name field of account level: 'level'.
+2007-01-03 22:42:37.632: - to NOT optimize tables at start.
+2007-01-03 22:42:38.541: ----End of login-server (normal end with closing of all files).
+
+2007-01-03 22:42:47.598: The login-server (v3.1.0 SQL beta, SVN rev. 837) is starting...
+2007-01-03 22:42:47.598: The configuration of the server is set:
+2007-01-03 22:42:47.598: * General options *
+2007-01-03 22:42:47.598: - with port: 6900.
+2007-01-03 22:42:47.598: - to listen on any IP.
+2007-01-03 22:42:47.598: - with console commands disabled.
+2007-01-03 22:42:47.598: - to force players and remote administrator to use correct case in account name.
+2007-01-03 22:42:47.598: - to save password in plain text.
+2007-01-03 22:42:47.599: - to ALLOW new accounts (with _F/_M).
+2007-01-03 22:42:47.599: - to REFUSE creation of accounts with different case name.
+2007-01-03 22:42:47.599: - New accounts are created with level: 0.
+2007-01-03 22:42:47.599: - with no minimum level for connection.
+2007-01-03 22:42:47.599: - to accept any version of client.
+2007-01-03 22:42:47.599: - to create GM with level '60' when @gm is used.
+2007-01-03 22:42:47.599: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-03 22:42:47.599: * Logs options *
+2007-01-03 22:42:47.599: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-03 22:42:47.599: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-03 22:42:47.599: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-03 22:42:47.599: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-03 22:42:47.599: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-03 22:42:47.599: * Anti-freeze options *
+2007-01-03 22:42:47.599: - with no anti-freeze system.
+2007-01-03 22:42:47.599: * sstatus files options *
+2007-01-03 22:42:47.599: - with non sstatus TXT file.
+2007-01-03 22:42:47.599: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-03 22:42:47.599: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-03 22:42:47.599: - with non sstatus PHP file.
+2007-01-03 22:42:47.599: * Lan support options *
+2007-01-03 22:42:47.599: - with LAN IP of char-server: 127.0.0.1.
+2007-01-03 22:42:47.599: - with sub-network of the char-server: 127.0.0.1.
+2007-01-03 22:42:47.599: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-03 22:42:47.599: - to accept any IP for all char-servers connetions
+2007-01-03 22:42:47.599: * Network security *
+2007-01-03 22:42:47.599: - with control of players IP between login-server and char-server.
+2007-01-03 22:42:47.599: - with control of players login2 between login-server and char-server.
+2007-01-03 22:42:47.599: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-03 22:42:47.599: - with a dynamic password error ban:
+2007-01-03 22:42:47.599:   After 3 invalid passwords in 60 seconds
+2007-01-03 22:42:47.599:   IP is banned for 300 seconds
+2007-01-03 22:42:47.599:   Information about dynamic password ban are NOT saved in any memo
+2007-01-03 22:42:47.600: * Remote administration system (ladmin) *
+2007-01-03 22:42:47.600: - with no remote administration.
+2007-01-03 22:42:47.600: - to accept any IP for remote administration
+2007-01-03 22:42:47.600: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-03 22:42:47.600: - to create new accounts with an unlimited time.
+2007-01-03 22:42:47.600: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-03 22:42:47.600: * Debug options *
+2007-01-03 22:42:47.600: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-03 22:42:47.600: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-03 22:42:47.600: - to NOT display normal parse packets on console.
+2007-01-03 22:42:47.600: - to NOT display administration parse packets on console.
+2007-01-03 22:42:47.600: - to NOT display char-server parse packets on console.
+2007-01-03 22:42:47.600: * *** SQL *** CONFIGURATION *
+2007-01-03 22:42:47.600: - to use login database: 'login'.
+2007-01-03 22:42:47.600: - to use MYSQL server on IP: '127.0.0.1'.
+2007-01-03 22:42:47.600: - to use MYSQL server on port: '3306'.
+2007-01-03 22:42:47.600: - to use MYSQL server with id: 'ragnarok'.
+2007-01-03 22:42:47.600: - to use MYSQL server with a password of 8 characters.
+2007-01-03 22:42:47.600: - to use MYSQL server with db: 'ragnarok'.
+2007-01-03 22:42:47.600: - to use name field of account id: 'account_id'.
+2007-01-03 22:42:47.600: - to use name field of account name: 'userid'.
+2007-01-03 22:42:47.600: - to use name field of account password: 'user_pass'.
+2007-01-03 22:42:47.600: - to use name field of account level: 'level'.
+2007-01-03 22:42:47.600: - to NOT optimize tables at start.
+2007-01-03 22:42:48.596: ----End of login-server (normal end with closing of all files).
+
+2007-01-07 18:15:13.244: The login-server (v3.1.0 TXT beta, SVN rev. 886) is starting...
+2007-01-07 18:15:13.248: The configuration of the server is set:
+2007-01-07 18:15:13.248: * General options *
+2007-01-07 18:15:13.248: - with port: 6900.
+2007-01-07 18:15:13.248: - to listen on any IP.
+2007-01-07 18:15:13.248: - with console commands disabled.
+2007-01-07 18:15:13.248: - to force players and remote administrator to use correct case in account name.
+2007-01-07 18:15:13.248: - to save password in plain text.
+2007-01-07 18:15:13.248: - to ALLOW new accounts (with _F/_M).
+2007-01-07 18:15:13.248: - to REFUSE creation of accounts with different case name.
+2007-01-07 18:15:13.248: - New accounts are created with level: 0.
+2007-01-07 18:15:13.249: - with no minimum level for connection.
+2007-01-07 18:15:13.249: - to accept any version of client.
+2007-01-07 18:15:13.249: - to create GM with level '60' when @gm is used.
+2007-01-07 18:15:13.249: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-07 18:15:13.249: * Logs options *
+2007-01-07 18:15:13.249: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-07 18:15:13.249: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-07 18:15:13.249: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-07 18:15:13.249: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-07 18:15:13.249: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-07 18:15:13.249: * Anti-freeze options *
+2007-01-07 18:15:13.249: - with no anti-freeze system.
+2007-01-07 18:15:13.249: * sstatus files options *
+2007-01-07 18:15:13.249: - with non sstatus TXT file.
+2007-01-07 18:15:13.249: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-07 18:15:13.249: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-07 18:15:13.249: - with non sstatus PHP file.
+2007-01-07 18:15:13.249: * Lan support options *
+2007-01-07 18:15:13.249: - with LAN IP of char-server: 127.0.0.1.
+2007-01-07 18:15:13.249: - with sub-network of the char-server: 127.0.0.1.
+2007-01-07 18:15:13.249: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-07 18:15:13.249: - to accept any IP for all char-servers connetions
+2007-01-07 18:15:13.249: * Network security *
+2007-01-07 18:15:13.249: - with control of players IP between login-server and char-server.
+2007-01-07 18:15:13.249: - with control of players login2 between login-server and char-server.
+2007-01-07 18:15:13.249: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-07 18:15:13.249: - with a dynamic password error ban:
+2007-01-07 18:15:13.249:   After 3 invalid passwords in 60 seconds
+2007-01-07 18:15:13.249:   IP is banned for 300 seconds
+2007-01-07 18:15:13.249:   Information about dynamic password ban are NOT saved in any memo
+2007-01-07 18:15:13.249: * Remote administration system (ladmin) *
+2007-01-07 18:15:13.249: - with no remote administration.
+2007-01-07 18:15:13.249: - to accept any IP for remote administration
+2007-01-07 18:15:13.249: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-07 18:15:13.250: - to create new accounts with an unlimited time.
+2007-01-07 18:15:13.250: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-07 18:15:13.250: * Debug options *
+2007-01-07 18:15:13.250: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-07 18:15:13.250: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-07 18:15:13.250: - to NOT display normal parse packets on console.
+2007-01-07 18:15:13.250: - to NOT display administration parse packets on console.
+2007-01-07 18:15:13.250: - to NOT display char-server parse packets on console.
+2007-01-07 18:15:13.250: * *** TXT *** CONFIGURATION *
+2007-01-07 18:15:13.250: - with the accounts file name: 'save/account.txt'.
+2007-01-07 18:15:13.250: - to modify the GM levels at start with the file: 'conf/GM_account.txt'.
+2007-01-07 18:15:13.250: - to save the GM levels in the accounts file.
+2007-01-07 18:15:13.338: 6 accounts found in 'save/account.txt', of which is 1 GM account and of which are 5 server accounts ('S').
+2007-01-07 18:15:13.599: The login-server is ready (and is listening on the port 6900 - from any ip).
+2007-01-07 18:15:16.050: Connection request of the char-server 'Freya' @ 192.168.1.2:6121 (ip: 192.168.1.2)
+2007-01-07 18:15:16.050: Authentification accepted (account: s1 (id: 0), ip: 192.168.1.2)
+2007-01-07 18:15:16.290: Connection of the char-server 'Freya' accepted (account: s1, ip: 192.168.1.2)
+
+2007-01-07 18:19:33.730: The login-server (v3.1.0 TXT beta, SVN rev. 886) is starting...
+2007-01-07 18:19:33.730: The configuration of the server is set:
+2007-01-07 18:19:33.730: * General options *
+2007-01-07 18:19:33.730: - with port: 6900.
+2007-01-07 18:19:33.731: - to listen on any IP.
+2007-01-07 18:19:33.731: - with console commands disabled.
+2007-01-07 18:19:33.731: - to force players and remote administrator to use correct case in account name.
+2007-01-07 18:19:33.731: - to save password in plain text.
+2007-01-07 18:19:33.731: - to ALLOW new accounts (with _F/_M).
+2007-01-07 18:19:33.731: - to REFUSE creation of accounts with different case name.
+2007-01-07 18:19:33.731: - New accounts are created with level: 0.
+2007-01-07 18:19:33.731: - with no minimum level for connection.
+2007-01-07 18:19:33.731: - to accept any version of client.
+2007-01-07 18:19:33.731: - to create GM with level '60' when @gm is used.
+2007-01-07 18:19:33.731: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-07 18:19:33.731: * Logs options *
+2007-01-07 18:19:33.731: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-07 18:19:33.731: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-07 18:19:33.731: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-07 18:19:33.731: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-07 18:19:33.731: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-07 18:19:33.731: * Anti-freeze options *
+2007-01-07 18:19:33.731: - with no anti-freeze system.
+2007-01-07 18:19:33.731: * sstatus files options *
+2007-01-07 18:19:33.731: - with non sstatus TXT file.
+2007-01-07 18:19:33.731: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-07 18:19:33.731: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-07 18:19:33.731: - with non sstatus PHP file.
+2007-01-07 18:19:33.731: * Lan support options *
+2007-01-07 18:19:33.731: - with LAN IP of char-server: 127.0.0.1.
+2007-01-07 18:19:33.731: - with sub-network of the char-server: 127.0.0.1.
+2007-01-07 18:19:33.731: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-07 18:19:33.732: - to accept any IP for all char-servers connetions
+2007-01-07 18:19:33.732: * Network security *
+2007-01-07 18:19:33.732: - with control of players IP between login-server and char-server.
+2007-01-07 18:19:33.732: - with control of players login2 between login-server and char-server.
+2007-01-07 18:19:33.732: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-07 18:19:33.732: - with a dynamic password error ban:
+2007-01-07 18:19:33.732:   After 3 invalid passwords in 60 seconds
+2007-01-07 18:19:33.732:   IP is banned for 300 seconds
+2007-01-07 18:19:33.732:   Information about dynamic password ban are NOT saved in any memo
+2007-01-07 18:19:33.732: * Remote administration system (ladmin) *
+2007-01-07 18:19:33.732: - with no remote administration.
+2007-01-07 18:19:33.732: - to accept any IP for remote administration
+2007-01-07 18:19:33.732: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-07 18:19:33.732: - to create new accounts with an unlimited time.
+2007-01-07 18:19:33.732: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-07 18:19:33.732: * Debug options *
+2007-01-07 18:19:33.732: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-07 18:19:33.732: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-07 18:19:33.732: - to NOT display normal parse packets on console.
+2007-01-07 18:19:33.732: - to NOT display administration parse packets on console.
+2007-01-07 18:19:33.732: - to NOT display char-server parse packets on console.
+2007-01-07 18:19:33.732: * *** TXT *** CONFIGURATION *
+2007-01-07 18:19:33.732: - with the accounts file name: 'save/account.txt'.
+2007-01-07 18:19:33.732: - to modify the GM levels at start with the file: 'conf/GM_account.txt'.
+2007-01-07 18:19:33.732: - to save the GM levels in the accounts file.
+2007-01-07 18:19:33.781: 6 accounts found in 'save/account.txt', of which is 1 GM account and of which are 5 server accounts ('S').
+2007-01-07 18:19:33.787: The login-server is ready (and is listening on the port 6900 - from any ip).
+2007-01-07 18:19:34.855: Connection request of the char-server 'Freya' @ 192.168.1.2:6121 (ip: 192.168.1.2)
+2007-01-07 18:19:34.855: Authentification accepted (account: s1 (id: 0), ip: 192.168.1.2)
+2007-01-07 18:19:34.858: Connection of the char-server 'Freya' accepted (account: s1, ip: 192.168.1.2)
+2007-01-07 18:19:43.954: Char-server 'Freya' has disconnected (ip: 192.168.1.2).
+
+2007-01-07 18:22:59.075: The login-server (v3.1.0 TXT beta, SVN rev. 886) is starting...
+2007-01-07 18:22:59.075: The configuration of the server is set:
+2007-01-07 18:22:59.075: * General options *
+2007-01-07 18:22:59.075: - with port: 6900.
+2007-01-07 18:22:59.075: - to listen on any IP.
+2007-01-07 18:22:59.075: - with console commands disabled.
+2007-01-07 18:22:59.075: - to force players and remote administrator to use correct case in account name.
+2007-01-07 18:22:59.075: - to save password in plain text.
+2007-01-07 18:22:59.075: - to ALLOW new accounts (with _F/_M).
+2007-01-07 18:22:59.075: - to REFUSE creation of accounts with different case name.
+2007-01-07 18:22:59.075: - New accounts are created with level: 0.
+2007-01-07 18:22:59.075: - with no minimum level for connection.
+2007-01-07 18:22:59.075: - to accept any version of client.
+2007-01-07 18:22:59.075: - to create GM with level '60' when @gm is used.
+2007-01-07 18:22:59.075: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-07 18:22:59.075: * Logs options *
+2007-01-07 18:22:59.075: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-07 18:22:59.075: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-07 18:22:59.075: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-07 18:22:59.075: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-07 18:22:59.075: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-07 18:22:59.075: * Anti-freeze options *
+2007-01-07 18:22:59.075: - with no anti-freeze system.
+2007-01-07 18:22:59.076: * sstatus files options *
+2007-01-07 18:22:59.076: - with non sstatus TXT file.
+2007-01-07 18:22:59.076: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-07 18:22:59.076: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-07 18:22:59.076: - with non sstatus PHP file.
+2007-01-07 18:22:59.076: * Lan support options *
+2007-01-07 18:22:59.076: - with LAN IP of char-server: 127.0.0.1.
+2007-01-07 18:22:59.076: - with sub-network of the char-server: 127.0.0.1.
+2007-01-07 18:22:59.076: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-07 18:22:59.076: - to accept any IP for all char-servers connetions
+2007-01-07 18:22:59.076: * Network security *
+2007-01-07 18:22:59.076: - with control of players IP between login-server and char-server.
+2007-01-07 18:22:59.076: - with control of players login2 between login-server and char-server.
+2007-01-07 18:22:59.076: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-07 18:22:59.076: - with a dynamic password error ban:
+2007-01-07 18:22:59.076:   After 3 invalid passwords in 60 seconds
+2007-01-07 18:22:59.076:   IP is banned for 300 seconds
+2007-01-07 18:22:59.076:   Information about dynamic password ban are NOT saved in any memo
+2007-01-07 18:22:59.076: * Remote administration system (ladmin) *
+2007-01-07 18:22:59.076: - with no remote administration.
+2007-01-07 18:22:59.076: - to accept any IP for remote administration
+2007-01-07 18:22:59.076: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-07 18:22:59.076: - to create new accounts with an unlimited time.
+2007-01-07 18:22:59.076: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-07 18:22:59.076: * Debug options *
+2007-01-07 18:22:59.076: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-07 18:22:59.076: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-07 18:22:59.076: - to NOT display normal parse packets on console.
+2007-01-07 18:22:59.076: - to NOT display administration parse packets on console.
+2007-01-07 18:22:59.076: - to NOT display char-server parse packets on console.
+2007-01-07 18:22:59.076: * *** TXT *** CONFIGURATION *
+2007-01-07 18:22:59.076: - with the accounts file name: 'save/account.txt'.
+2007-01-07 18:22:59.076: - to modify the GM levels at start with the file: 'conf/GM_account.txt'.
+2007-01-07 18:22:59.077: - to save the GM levels in the accounts file.
+2007-01-07 18:22:59.086: 6 accounts found in 'save/account.txt', of which is 1 GM account and of which are 5 server accounts ('S').
+2007-01-07 18:22:59.091: The login-server is ready (and is listening on the port 6900 - from any ip).
+2007-01-07 18:22:59.747: Connection request of the char-server 'Freya' @ 192.168.1.2:6121 (ip: 192.168.1.2)
+2007-01-07 18:22:59.747: Authentification accepted (account: s1 (id: 0), ip: 192.168.1.2)
+2007-01-07 18:22:59.780: Connection of the char-server 'Freya' accepted (account: s1, ip: 192.168.1.2)
+2007-01-07 18:23:09.531: Char-server 'Freya' has disconnected (ip: 192.168.1.2).
+
+2007-01-07 18:26:47.864: The login-server (v3.1.0 TXT beta, SVN rev. 886) is starting...
+2007-01-07 18:26:47.864: The configuration of the server is set:
+2007-01-07 18:26:47.864: * General options *
+2007-01-07 18:26:47.864: - with port: 6900.
+2007-01-07 18:26:47.864: - to listen on any IP.
+2007-01-07 18:26:47.864: - with console commands disabled.
+2007-01-07 18:26:47.864: - to force players and remote administrator to use correct case in account name.
+2007-01-07 18:26:47.864: - to save password in plain text.
+2007-01-07 18:26:47.864: - to ALLOW new accounts (with _F/_M).
+2007-01-07 18:26:47.864: - to REFUSE creation of accounts with different case name.
+2007-01-07 18:26:47.864: - New accounts are created with level: 0.
+2007-01-07 18:26:47.864: - with no minimum level for connection.
+2007-01-07 18:26:47.864: - to accept any version of client.
+2007-01-07 18:26:47.864: - to create GM with level '60' when @gm is used.
+2007-01-07 18:26:47.864: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-07 18:26:47.864: * Logs options *
+2007-01-07 18:26:47.864: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-07 18:26:47.864: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-07 18:26:47.864: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-07 18:26:47.864: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-07 18:26:47.864: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-07 18:26:47.864: * Anti-freeze options *
+2007-01-07 18:26:47.864: - with no anti-freeze system.
+2007-01-07 18:26:47.864: * sstatus files options *
+2007-01-07 18:26:47.864: - with non sstatus TXT file.
+2007-01-07 18:26:47.864: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-07 18:26:47.864: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-07 18:26:47.864: - with non sstatus PHP file.
+2007-01-07 18:26:47.864: * Lan support options *
+2007-01-07 18:26:47.864: - with LAN IP of char-server: 127.0.0.1.
+2007-01-07 18:26:47.864: - with sub-network of the char-server: 127.0.0.1.
+2007-01-07 18:26:47.864: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-07 18:26:47.865: - to accept any IP for all char-servers connetions
+2007-01-07 18:26:47.865: * Network security *
+2007-01-07 18:26:47.865: - with control of players IP between login-server and char-server.
+2007-01-07 18:26:47.865: - with control of players login2 between login-server and char-server.
+2007-01-07 18:26:47.865: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-07 18:26:47.865: - with a dynamic password error ban:
+2007-01-07 18:26:47.865:   After 3 invalid passwords in 60 seconds
+2007-01-07 18:26:47.865:   IP is banned for 300 seconds
+2007-01-07 18:26:47.865:   Information about dynamic password ban are NOT saved in any memo
+2007-01-07 18:26:47.865: * Remote administration system (ladmin) *
+2007-01-07 18:26:47.865: - with no remote administration.
+2007-01-07 18:26:47.865: - to accept any IP for remote administration
+2007-01-07 18:26:47.865: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-07 18:26:47.865: - to create new accounts with an unlimited time.
+2007-01-07 18:26:47.865: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-07 18:26:47.865: * Debug options *
+2007-01-07 18:26:47.865: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-07 18:26:47.865: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-07 18:26:47.865: - to NOT display normal parse packets on console.
+2007-01-07 18:26:47.865: - to NOT display administration parse packets on console.
+2007-01-07 18:26:47.865: - to NOT display char-server parse packets on console.
+2007-01-07 18:26:47.865: * *** TXT *** CONFIGURATION *
+2007-01-07 18:26:47.865: - with the accounts file name: 'save/account.txt'.
+2007-01-07 18:26:47.865: - to modify the GM levels at start with the file: 'conf/GM_account.txt'.
+2007-01-07 18:26:47.865: - to save the GM levels in the accounts file.
+2007-01-07 18:26:47.874: 6 accounts found in 'save/account.txt', of which is 1 GM account and of which are 5 server accounts ('S').
+2007-01-07 18:26:47.878: The login-server is ready (and is listening on the port 6900 - from any ip).
+2007-01-07 18:26:48.416: Connection request of the char-server 'Freya' @ 192.168.1.2:6121 (ip: 192.168.1.2)
+2007-01-07 18:26:48.416: Authentification accepted (account: s1 (id: 0), ip: 192.168.1.2)
+2007-01-07 18:26:48.419: Connection of the char-server 'Freya' accepted (account: s1, ip: 192.168.1.2)
+2007-01-07 18:26:59.058: Char-server 'Freya' has disconnected (ip: 192.168.1.2).
+
+2007-01-07 18:38:18.542: The login-server (v3.1.0 TXT beta, SVN rev. 886) is starting...
+2007-01-07 18:38:18.542: The configuration of the server is set:
+2007-01-07 18:38:18.542: * General options *
+2007-01-07 18:38:18.542: - with port: 6900.
+2007-01-07 18:38:18.542: - to listen on any IP.
+2007-01-07 18:38:18.542: - with console commands disabled.
+2007-01-07 18:38:18.542: - to force players and remote administrator to use correct case in account name.
+2007-01-07 18:38:18.542: - to save password in plain text.
+2007-01-07 18:38:18.542: - to ALLOW new accounts (with _F/_M).
+2007-01-07 18:38:18.542: - to REFUSE creation of accounts with different case name.
+2007-01-07 18:38:18.542: - New accounts are created with level: 0.
+2007-01-07 18:38:18.542: - with no minimum level for connection.
+2007-01-07 18:38:18.542: - to accept any version of client.
+2007-01-07 18:38:18.542: - to create GM with level '60' when @gm is used.
+2007-01-07 18:38:18.542: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-07 18:38:18.542: * Logs options *
+2007-01-07 18:38:18.542: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-07 18:38:18.542: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-07 18:38:18.542: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-07 18:38:18.542: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-07 18:38:18.542: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-07 18:38:18.542: * Anti-freeze options *
+2007-01-07 18:38:18.542: - with no anti-freeze system.
+2007-01-07 18:38:18.542: * sstatus files options *
+2007-01-07 18:38:18.542: - with non sstatus TXT file.
+2007-01-07 18:38:18.542: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-07 18:38:18.543: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-07 18:38:18.543: - with non sstatus PHP file.
+2007-01-07 18:38:18.543: * Lan support options *
+2007-01-07 18:38:18.543: - with LAN IP of char-server: 127.0.0.1.
+2007-01-07 18:38:18.543: - with sub-network of the char-server: 127.0.0.1.
+2007-01-07 18:38:18.543: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-07 18:38:18.543: - to accept any IP for all char-servers connetions
+2007-01-07 18:38:18.543: * Network security *
+2007-01-07 18:38:18.543: - with control of players IP between login-server and char-server.
+2007-01-07 18:38:18.543: - with control of players login2 between login-server and char-server.
+2007-01-07 18:38:18.543: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-07 18:38:18.543: - with a dynamic password error ban:
+2007-01-07 18:38:18.543:   After 3 invalid passwords in 60 seconds
+2007-01-07 18:38:18.543:   IP is banned for 300 seconds
+2007-01-07 18:38:18.543:   Information about dynamic password ban are NOT saved in any memo
+2007-01-07 18:38:18.543: * Remote administration system (ladmin) *
+2007-01-07 18:38:18.543: - with no remote administration.
+2007-01-07 18:38:18.543: - to accept any IP for remote administration
+2007-01-07 18:38:18.543: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-07 18:38:18.543: - to create new accounts with an unlimited time.
+2007-01-07 18:38:18.543: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-07 18:38:18.543: * Debug options *
+2007-01-07 18:38:18.543: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-07 18:38:18.543: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-07 18:38:18.544: - to NOT display normal parse packets on console.
+2007-01-07 18:38:18.544: - to NOT display administration parse packets on console.
+2007-01-07 18:38:18.544: - to NOT display char-server parse packets on console.
+2007-01-07 18:38:18.544: * *** TXT *** CONFIGURATION *
+2007-01-07 18:38:18.544: - with the accounts file name: 'save/account.txt'.
+2007-01-07 18:38:18.544: - to modify the GM levels at start with the file: 'conf/GM_account.txt'.
+2007-01-07 18:38:18.544: - to save the GM levels in the accounts file.
+2007-01-07 18:38:18.587: 6 accounts found in 'save/account.txt', of which is 1 GM account and of which are 5 server accounts ('S').
+2007-01-07 18:38:18.592: The login-server is ready (and is listening on the port 6900 - from any ip).
+2007-01-07 18:38:20.308: Connection request of the char-server 'Freya' @ 192.168.1.2:6121 (ip: 192.168.1.2)
+2007-01-07 18:38:20.308: Authentification accepted (account: s1 (id: 0), ip: 192.168.1.2)
+2007-01-07 18:38:20.314: Connection of the char-server 'Freya' accepted (account: s1, ip: 192.168.1.2)
+2007-01-07 18:39:11.026: Char-server 'Freya' has disconnected (ip: 192.168.1.2).
+
+2007-01-07 18:47:49.140: The login-server (v3.1.0 TXT beta, SVN rev. 886) is starting...
+2007-01-07 18:47:49.140: The configuration of the server is set:
+2007-01-07 18:47:49.140: * General options *
+2007-01-07 18:47:49.140: - with port: 6900.
+2007-01-07 18:47:49.140: - to listen on any IP.
+2007-01-07 18:47:49.140: - with console commands disabled.
+2007-01-07 18:47:49.140: - to force players and remote administrator to use correct case in account name.
+2007-01-07 18:47:49.140: - to save password in plain text.
+2007-01-07 18:47:49.140: - to ALLOW new accounts (with _F/_M).
+2007-01-07 18:47:49.140: - to REFUSE creation of accounts with different case name.
+2007-01-07 18:47:49.140: - New accounts are created with level: 0.
+2007-01-07 18:47:49.140: - with no minimum level for connection.
+2007-01-07 18:47:49.140: - to accept any version of client.
+2007-01-07 18:47:49.140: - to create GM with level '60' when @gm is used.
+2007-01-07 18:47:49.141: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-07 18:47:49.141: * Logs options *
+2007-01-07 18:47:49.141: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-07 18:47:49.141: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-07 18:47:49.141: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-07 18:47:49.141: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-07 18:47:49.141: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-07 18:47:49.141: * Anti-freeze options *
+2007-01-07 18:47:49.141: - with no anti-freeze system.
+2007-01-07 18:47:49.141: * sstatus files options *
+2007-01-07 18:47:49.141: - with non sstatus TXT file.
+2007-01-07 18:47:49.141: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-07 18:47:49.141: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-07 18:47:49.141: - with non sstatus PHP file.
+2007-01-07 18:47:49.141: * Lan support options *
+2007-01-07 18:47:49.141: - with LAN IP of char-server: 127.0.0.1.
+2007-01-07 18:47:49.141: - with sub-network of the char-server: 127.0.0.1.
+2007-01-07 18:47:49.141: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-07 18:47:49.141: - to accept any IP for all char-servers connetions
+2007-01-07 18:47:49.141: * Network security *
+2007-01-07 18:47:49.141: - with control of players IP between login-server and char-server.
+2007-01-07 18:47:49.141: - with control of players login2 between login-server and char-server.
+2007-01-07 18:47:49.141: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-07 18:47:49.141: - with a dynamic password error ban:
+2007-01-07 18:47:49.141:   After 3 invalid passwords in 60 seconds
+2007-01-07 18:47:49.141:   IP is banned for 300 seconds
+2007-01-07 18:47:49.141:   Information about dynamic password ban are NOT saved in any memo
+2007-01-07 18:47:49.141: * Remote administration system (ladmin) *
+2007-01-07 18:47:49.141: - with no remote administration.
+2007-01-07 18:47:49.141: - to accept any IP for remote administration
+2007-01-07 18:47:49.141: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-07 18:47:49.141: - to create new accounts with an unlimited time.
+2007-01-07 18:47:49.141: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-07 18:47:49.141: * Debug options *
+2007-01-07 18:47:49.141: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-07 18:47:49.141: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-07 18:47:49.141: - to NOT display normal parse packets on console.
+2007-01-07 18:47:49.142: - to NOT display administration parse packets on console.
+2007-01-07 18:47:49.142: - to NOT display char-server parse packets on console.
+2007-01-07 18:47:49.142: * *** TXT *** CONFIGURATION *
+2007-01-07 18:47:49.142: - with the accounts file name: 'save/account.txt'.
+2007-01-07 18:47:49.142: - to modify the GM levels at start with the file: 'conf/GM_account.txt'.
+2007-01-07 18:47:49.142: - to save the GM levels in the accounts file.
+2007-01-07 18:47:49.175: 6 accounts found in 'save/account.txt', of which is 1 GM account and of which are 5 server accounts ('S').
+2007-01-07 18:47:49.181: The login-server is ready (and is listening on the port 6900 - from any ip).
+2007-01-07 18:47:53.241: Connection request of the char-server 'Freya' @ 192.168.1.2:6121 (ip: 192.168.1.2)
+2007-01-07 18:47:53.241: Authentification accepted (account: s1 (id: 0), ip: 192.168.1.2)
+2007-01-07 18:47:53.266: Connection of the char-server 'Freya' accepted (account: s1, ip: 192.168.1.2)
+2007-01-07 18:47:59.637: Char-server 'Freya' has disconnected (ip: 192.168.1.2).
+
+2007-01-07 21:44:24.124: The login-server (v3.1.0 TXT beta, SVN rev. 886) is starting...
+2007-01-07 21:44:24.125: The configuration of the server is set:
+2007-01-07 21:44:24.125: * General options *
+2007-01-07 21:44:24.125: - with port: 6900.
+2007-01-07 21:44:24.125: - to listen on any IP.
+2007-01-07 21:44:24.125: - with console commands disabled.
+2007-01-07 21:44:24.125: - to force players and remote administrator to use correct case in account name.
+2007-01-07 21:44:24.125: - to save password in plain text.
+2007-01-07 21:44:24.125: - to ALLOW new accounts (with _F/_M).
+2007-01-07 21:44:24.125: - to REFUSE creation of accounts with different case name.
+2007-01-07 21:44:24.125: - New accounts are created with level: 0.
+2007-01-07 21:44:24.125: - with no minimum level for connection.
+2007-01-07 21:44:24.125: - to accept any version of client.
+2007-01-07 21:44:24.125: - to create GM with level '60' when @gm is used.
+2007-01-07 21:44:24.125: - with the DEFAULT 'To GM become' password (gm_pass).
+2007-01-07 21:44:24.125: * Logs options *
+2007-01-07 21:44:24.125: - to add the year and the month to the log file name (example: log/login-2006-12.log).
+2007-01-07 21:44:24.125: - to log 'Request for connection' message (packet 0x64/0x1dd/0x27c).
+2007-01-07 21:44:24.125: - to NOT log 'Request of the server version' (athena version) message (packet 0x7530).
+2007-01-07 21:44:24.125: - to NOT log 'Request of the server version' (freya version) message (packet 0x7535).
+2007-01-07 21:44:24.125: - to NOT log 'Request of the server uptime' message (packet 0x7533).
+2007-01-07 21:44:24.125: * Anti-freeze options *
+2007-01-07 21:44:24.125: - with no anti-freeze system.
+2007-01-07 21:44:24.125: * sstatus files options *
+2007-01-07 21:44:24.125: - with non sstatus TXT file.
+2007-01-07 21:44:24.125: - with the sstatus (without ID of servers) HTML file name: 'sstatus.html'.
+2007-01-07 21:44:24.125: - with a refresh time of 20 seconds for the sstatus HTML file name'.
+2007-01-07 21:44:24.125: - with non sstatus PHP file.
+2007-01-07 21:44:24.125: * Lan support options *
+2007-01-07 21:44:24.125: - with LAN IP of char-server: 127.0.0.1.
+2007-01-07 21:44:24.125: - with sub-network of the char-server: 127.0.0.1.
+2007-01-07 21:44:24.125: - with sub-network mask of the char-server: 255.255.255.255.
+2007-01-07 21:44:24.125: - to accept any IP for all char-servers connetions
+2007-01-07 21:44:24.125: * Network security *
+2007-01-07 21:44:24.125: - with control of players IP between login-server and char-server.
+2007-01-07 21:44:24.125: - with control of players login2 between login-server and char-server.
+2007-01-07 21:44:24.126: - with the IP security order: 'deny,allow' (allow if not deny). You refuse no IP.
+2007-01-07 21:44:24.126: - with a dynamic password error ban:
+2007-01-07 21:44:24.126:   After 3 invalid passwords in 60 seconds
+2007-01-07 21:44:24.126:   IP is banned for 300 seconds
+2007-01-07 21:44:24.126:   Information about dynamic password ban are NOT saved in any memo
+2007-01-07 21:44:24.126: * Remote administration system (ladmin) *
+2007-01-07 21:44:24.126: - with no remote administration.
+2007-01-07 21:44:24.126: - to accept any IP for remote administration
+2007-01-07 21:44:24.126: - to refuse adjustment (with timeadd ladmin) on an unlimited account. You must use timeset (ladmin command) before.
+2007-01-07 21:44:24.126: - to create new accounts with an unlimited time.
+2007-01-07 21:44:24.126: - listGM/lsGM ladmin command will display GM accounts from level 20 to 99.
+2007-01-07 21:44:24.126: * Debug options *
+2007-01-07 21:44:24.126: - to SAVE only unkown packets sending by a char-server or a remote administration.
+2007-01-07 21:44:24.126: - with the unknown packets file name: 'log/login_unknown_packets.log'.
+2007-01-07 21:44:24.126: - to NOT display normal parse packets on console.
+2007-01-07 21:44:24.126: - to NOT display administration parse packets on console.
+2007-01-07 21:44:24.126: - to NOT display char-server parse packets on console.
+2007-01-07 21:44:24.126: * *** TXT *** CONFIGURATION *
+2007-01-07 21:44:24.126: - with the accounts file name: 'save/account.txt'.
+2007-01-07 21:44:24.126: - to modify the GM levels at start with the file: 'conf/GM_account.txt'.
+2007-01-07 21:44:24.126: - to save the GM levels in the accounts file.
+2007-01-07 21:44:24.401: 6 accounts found in 'save/account.txt', of which is 1 GM account and of which are 5 server accounts ('S').
+2007-01-07 21:44:25.224: The login-server is ready (and is listening on the port 6900 - from any ip).
+2007-01-07 21:44:25.442: Connection request of the char-server 'Freya' @ 192.168.1.2:6121 (ip: 192.168.1.2)
+2007-01-07 21:44:25.443: Authentification accepted (account: s1 (id: 0), ip: 192.168.1.2)
+2007-01-07 21:44:25.596: Connection of the char-server 'Freya' accepted (account: s1, ip: 192.168.1.2)
+2007-01-07 21:45:46.191: Request for connection (non encryption mode) of Test (ip: 127.0.0.1).
+2007-01-07 21:45:46.231: Authentification accepted (account: Test (id: 2000001), ip: 127.0.0.1)
+2007-01-07 21:45:47.043: Char-server 'Freya': Request of an e-mail/limited time: ok (account: 2000001, ip: 192.168.1.2).

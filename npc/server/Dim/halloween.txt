@@ -1,0 +1,80 @@
+//===== Freya Script =========================================
+//= Halloween Event
+//===== By: ==================================================
+//= Halloween Event wrote by Meiji
+//= Scripted by Sigurd999
+//== Copyrights ==============================================
+//= DiM's Scripts
+//= Copyright © 2005-2007, DiM-Online
+//= http://wwww.dim-online.com/
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= Any Freya Version
+//===== Additional Comments: =================================
+//=
+//============================================================
+
+//============================================================
+// Mob de la ville de Payon
+//============================================================
+
+payon.gat,0,0,0,0	monster	Lude	1509,15,0,0,0
+payon.gat,0,0,0,0	monster	Quve	1508,15,0,0,0
+payon.gat,0,0,0,0	monster	Skeleton Prisoner	1196,5,0,0,0
+payon.gat,0,0,0,0	monster	Skeleton Worker	1169,5,0,0,0
+payon.gat,0,0,0,0	monster	Wraith	1192,5,0,0,0
+payon.gat,0,0,0,0	monster	Zombie	1015,20,0,0,0
+payon.gat,0,0,0,0	monster	Zombie Prisoner	1197,5,0,0,0
+payon.gat,0,0,0,0	monster	Ghoul	1036,10,0,0,0
+payon.gat,0,0,0,0	monster	Dullahan	1504,10,0,0,0
+payon.gat,0,0,0,0	monster	Deviruchi	1109,5,0,0,0
+payon.gat,0,0,0,0	monster	Drainliar	1111,15,0,0,0
+payon.gat,0,0,0,0	monster	Giant Whisper	1186,3,0,0,0
+payon.gat,0,0,0,0	monster	Nightmare	1061,5,0,0,0
+payon.gat,0,0,0,0	monster	Whisper	1179,17,0,0,0
+payon.gat,0,0,0,0	monster	Gibbet	1503,1,0,0,0
+payon.gat,0,0,0,0	monster	Wraith Dead	1291,2,1800000,200000,1
+payon.gat,0,0,0,0	monster	Deviling	1582,1,1800000,200000,1
+//payon.gat,0,0,0,0	monster	Dark Priest	1198,1,3600000,7200000,1
+payon.gat,0,0,0,0	monster	Incantation Samurai	1492,1,3600000,7200000,1
+
+//============================================================
+// Mob de la ville de Prontera
+//============================================================
+
+prontera.gat,0,0,0,0	monster	Bathory	1102,30,0,0,0
+prontera.gat,0,0,0,0	monster	Bloody Murderer	1507,5,0,0,0
+prontera.gat,0,0,0,0	monster	Jakk	1130,30,0,0,0
+prontera.gat,0,0,0,0	monster	Marionette	1143,20,0,0,0
+prontera.gat,0,0,0,0	monster	Elder	1377,5,0,0,0
+prontera.gat,0,0,0,0	monster	Rideword	1195,5,0,0,0
+prontera.gat,0,0,0,0	monster	Horong	1129,10,0,0,0
+prontera.gat,0,0,0,0	monster	Whisper	1179,10,0,0,0
+prontera.gat,0,0,0,0	monster	Evil Druid	1117,15,0,0,0
+prontera.gat,0,0,0,0	monster	Bloody Knight	1268,5,1800000,200000,1
+prontera.gat,0,0,0,0	monster	Executioner	1205,5,1800000,200000,1
+prontera.gat,0,0,0,0	monster	Lord of Death	1373,1,3600000,7200000,1
+
+
+//============================================================
+//= fog
+//============================================================
+pay_fild01.gat	mapflag	fog
+pay_fild02.gat	mapflag	fog
+pay_fild03.gat	mapflag	fog
+pay_fild04.gat	mapflag	fog
+pay_fild05.gat	mapflag	fog
+pay_fild06.gat	mapflag	fog
+pay_fild07.gat	mapflag	fog
+pay_fild08.gat	mapflag	fog
+pay_fild09.gat	mapflag	fog
+pay_fild10.gat	mapflag	fog
+pay_fild11.gat	mapflag	fog
+moc_fild02.gat	mapflag	fog
+pay_arche.gat	mapflag	fog
+pay_gld.gat	mapflag	fog
+moc_fild13.gat	mapflag	fog
+payon.gat	mapflag	fog
+prontera.gat	mapflag	fog
+izlude.gat	mapflag	fog

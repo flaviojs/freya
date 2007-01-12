@@ -1,0 +1,5 @@
+data: C:\Program Files\Gravity\Test Client\data.grf
+sdata: C:\Program Files\Gravity\Test Client\sdata.grf
+//adata: C:\Program Files\Gravity\RO\adata.grf
+//data_dir: C:\Program Files\Gravity\Test Client\
+//afm_dir:
