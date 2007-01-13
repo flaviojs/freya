@@ -35,7 +35,7 @@ OnGuardianDied:
 	end;
 
 //NoSpawn:
-//	break;
+//	end;
 }
 //------------------------------------------------------------------------------
 aldeg_cas02.gat,214,24,0	script	Guardian_A02	-1,{

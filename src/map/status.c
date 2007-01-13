@@ -958,7 +958,7 @@ int status_calc_pc(struct map_session_data* sd, int first)
 		sd->mdef2 = (sd->mdef2*sd->mdef2_rate)/100;
 	if(sd->mdef2 < 1) sd->mdef2 = 1;
 
-	if (sd->status.weapon <= 16)
+	if (sd->status.weapon <= 22)
 		// kRO 14/12/04 Patch - Each level of Book mastery gives 0.5% attack speed with books [Aalye]
 		if (sd->status.weapon == 15 && pc_checkskill(sd, SA_ADVANCEDBOOK) > 0)
 			sd->aspd += (aspd_base[s_class.job][sd->status.weapon] - (sd->paramc[1] * 4 + sd->paramc[4] + pc_checkskill(sd, SA_ADVANCEDBOOK) * 5) * aspd_base[s_class.job][sd->status.weapon] / 1000);
@@ -970,8 +970,6 @@ int status_calc_pc(struct map_session_data* sd, int first)
 		            * 140 / 200;
 
 	aspd_rate = sd->aspd_rate;
-
-	//UŒ‚‘¬“x‘‰Á
 
 	if ((skill = pc_checkskill(sd, AC_VULTURE)) > 0) {
 		sd->hit += skill;
