@@ -228,8 +228,8 @@ int buildin_getareausers(struct script_state *st);
 int buildin_getareadropitem(struct script_state *st);
 int buildin_enablenpc(struct script_state *st);
 int buildin_disablenpc(struct script_state *st);
-int buildin_enablearena(struct script_state *st);	// Added by RoVeRT
-int buildin_disablearena(struct script_state *st);	// Added by RoVeRT
+int buildin_enablearena(struct script_state *st);	// [ RoVeRT]
+int buildin_disablearena(struct script_state *st);	// [ RoVeRT]
 int buildin_hideoffnpc(struct script_state *st);
 int buildin_hideonnpc(struct script_state *st);
 int buildin_sc_start(struct script_state *st);
@@ -355,7 +355,9 @@ struct {
 	char *arg;
 } buildin_func[] = {
 	{buildin_mes,"mes","s"},
+	{buildin_mes,"dialog","s"},
 	{buildin_next,"next",""},
+	{buildin_next,"wait",""},
 	{buildin_close,"close",""},
 	{buildin_close2,"close2",""},
 	{buildin_menu,"menu","*"},
@@ -425,16 +427,16 @@ struct {
 	{buildin_basicskillcheck,"basicskillcheck","*"},
 	{buildin_getgmlevel,"getgmlevel","*"},
 	{buildin_end,"end",""},
-	{buildin_end,"break",""},
+//	{buildin_end,"break",""}, // Too confusing with the other types of break commands [Tsuyuki]
 	{buildin_checkoption,"checkoption","i"},
 	{buildin_setoption,"setoption","i"},
 	{buildin_setcart,"setcart",""},
-	{buildin_checkcart,"checkcart","*"},		//fixed by Lupus (added '*')
+	{buildin_checkcart,"checkcart","*"},		// Fixed by Lupus (added '*')
 	{buildin_setfalcon,"setfalcon",""},
-	{buildin_checkfalcon,"checkfalcon","*"},	//fixed by Lupus (fixed wrong pointer, added '*')
+	{buildin_checkfalcon,"checkfalcon","*"},	// Fixed by Lupus (fixed wrong pointer, added '*')
 	{buildin_setriding,"setriding",""},
-	{buildin_checkriding,"checkriding","*"},	//fixed by Lupus (fixed wrong pointer, added '*')
-	{buildin_isdead,"isdead","*"},	// to know if a player is dead. For script NPC [Yor]
+	{buildin_checkriding,"checkriding","*"},	// Fixed by Lupus (fixed wrong pointer, added '*')
+	{buildin_isdead,"isdead","*"},	// Checks if the player is dead [Yor]
 	{buildin_savepoint,"save","sii"},
 	{buildin_savepoint,"savepoint","sii"},
 	{buildin_gettimetick,"gettimetick","i"},
@@ -445,9 +447,9 @@ struct {
 	{buildin_itemskill,"itemskill","iis"},
 	{buildin_produce,"produce","i"},
 	{buildin_monster,"monster","siisii*"},
-	{buildin_monsteragro,"monsteragro","siisii*"}, // as monster, but all monster are agressiv
+	{buildin_monsteragro,"monsteragro","siisii*"}, // Spawns agressive monsters
 	{buildin_areamonster,"areamonster","siiiisii*"},
-	{buildin_areamonsteragro,"areamonsteragro","siiiisii*"}, // as areamonster, but all monster are agressiv
+	{buildin_areamonsteragro,"areamonsteragro","siiiisii*"}, // Area spawns agressive monsters
 	{buildin_killmonster,"killmonster","ss"},
 	{buildin_killmonsterall,"killmonsterall","s"},
 	{buildin_doevent,"doevent","s"},
@@ -460,32 +462,32 @@ struct {
 	{buildin_startnpctimer,"startnpctimer","*"},
 	{buildin_setnpctimer,"setnpctimer","*"},
 	{buildin_getnpctimer,"getnpctimer","i*"},
-	{buildin_attachnpctimer,"attachnpctimer","*"}, // attached the player id to the npc timer [Celest]
-	{buildin_detachnpctimer,"detachnpctimer","*"}, // detached the player id from the npc timer [Celest]
+	{buildin_attachnpctimer,"attachnpctimer","*"}, // Attaches the player ID to the NPC timer [Celest]
+	{buildin_detachnpctimer,"detachnpctimer","*"}, // Removes the player ID from the NPC timer [Celest]
 	{buildin_announce,"announce","si"},
 	{buildin_mapannounce,"mapannounce","ssi"},
 	{buildin_areaannounce,"areaannounce","siiiisi"},
 	{buildin_getusers,"getusers","i"},
 	{buildin_getmapusers,"getmapusers","s"},
 	{buildin_getmapusers,"getmapallusers","s"},
-	{buildin_getmapusers2,"getmapusers2","s"}, // Return number of ALIVE players on a map
-	{buildin_getmapusers2,"getmapaliveusers","s"}, // Return number of ALIVE players on a map
-	{buildin_getmapusers3,"getmapusers3","s"}, // Return number of DEAD players on a map
-	{buildin_getmapusers3,"getmapdeadusers","s"}, // Return number of DEAD players on a map
-	{buildin_getmapgms2,"getmapgms2","si"}, // as getmapusers2, return number of ALIVE GMs on a map (with minimum level of concerned GMs)
-	{buildin_getmapgms2,"getmapalivegms","si"}, // as getmapaliveusers, return number of ALIVE GMs on a map (with minimum level of concerned GMs)
-	{buildin_getmapgms3,"getmapgms3","si"}, // as getmapusers3, return number of DEAD GMs on a map (with minimum level of concerned GMs)
-	{buildin_getmapgms3,"getmapdeadgms","si"}, // as getmapdeadusers, return number of DEAD GMs on a map (with minimum level of concerned GMs)
-	{buildin_getmapnotgms2,"getmapnotgms2","si"}, // as getmapusers2, return number of ALIVE not GMs on a map (with a lower GM level than specified) getmapgms2 + getmapnotgms2 = getmapusers2
-	{buildin_getmapnotgms2,"getmapalivenotgms","si"}, // as getmapaliveusers, return number of ALIVE not GMs on a map (with a lower GM level than specified) getmapalivegms + getmapalivenotgms = getmapaliveusers
-	{buildin_getmapnotgms3,"getmapnotgms3","si"}, // as getmapusers3, return number of DEAD not GMs on a map (with a lower GM level than specified) getmapgms3 + getmapnotgms3 = getmapusers3
-	{buildin_getmapnotgms3,"getmapdeadnotgms","si"}, // as getmapdeadusers, return number of DEAD not GMs on a map (with a lower GM level than specified) getmapdeadgms + getmapdeadnotgms = getmapdeadusers
+	{buildin_getmapusers2,"getmapusers2","s"}, // Returns the number of live players on a map
+	{buildin_getmapusers2,"getmapaliveusers","s"}, // Returns the number of live players on a map
+	{buildin_getmapusers3,"getmapusers3","s"}, // Returns the number of dead players on a map
+	{buildin_getmapusers3,"getmapdeadusers","s"}, // Returns the number of dead players on a map
+	{buildin_getmapgms2,"getmapgms2","si"}, // As getmapusers2, returns the number of live GMs on a map (with minimum level of concerned GMs)
+	{buildin_getmapgms2,"getmapalivegms","si"}, // As getmapaliveusers, returns the number of live GMs on a map (with minimum level of concerned GMs)
+	{buildin_getmapgms3,"getmapgms3","si"}, // As getmapusers3, returns the number of dead GMs on a map (with minimum level of concerned GMs)
+	{buildin_getmapgms3,"getmapdeadgms","si"}, // As getmapdeadusers, returns the number of dead GMs on a map (with minimum level of concerned GMs)
+	{buildin_getmapnotgms2,"getmapnotgms2","si"}, // As getmapusers2, returns the number of live not GMs on a map (with a lower GM level than specified) getmapgms2 + getmapnotgms2 = getmapusers2
+	{buildin_getmapnotgms2,"getmapalivenotgms","si"}, // As getmapaliveusers, returns the number of live not GMs on a map (with a lower GM level than specified) getmapalivegms + getmapalivenotgms = getmapaliveusers
+	{buildin_getmapnotgms3,"getmapnotgms3","si"}, // As getmapusers3, returns the number of dead not GMs on a map (with a lower GM level than specified) getmapgms3 + getmapnotgms3 = getmapusers3
+	{buildin_getmapnotgms3,"getmapdeadnotgms","si"}, // As getmapdeadusers, returns the number of dead not GMs on a map (with a lower GM level than specified) getmapdeadgms + getmapdeadnotgms = getmapdeadusers
 	{buildin_getareausers,"getareausers","siiii"},
 	{buildin_getareadropitem,"getareadropitem","siiiii"},
 	{buildin_enablenpc,"enablenpc","s"},
 	{buildin_disablenpc,"disablenpc","s"},
-	{buildin_enablearena,"enablearena",""},		// Added by RoVeRT
-	{buildin_disablearena,"disablearena",""},	// Added by RoVeRT
+	{buildin_enablearena,"enablearena",""},		// [RoVeRT]
+	{buildin_disablearena,"disablearena",""},	// [RoVeRT]
 	{buildin_hideoffnpc,"hideoffnpc","s"},
 	{buildin_hideonnpc,"hideonnpc","s"},
 	{buildin_sc_start,"sc_start","iii*"},
@@ -519,10 +521,10 @@ struct {
 	{buildin_gvgoff,"gvgoff","s"},
 	{buildin_emotion,"emotion","i"},
 	{buildin_maprespawnguildid,"maprespawnguildid","sii"},
-	{buildin_agitstart,"agitstart",""},	// <Agit>
+	{buildin_agitstart,"agitstart",""},
 	{buildin_agitend,"agitend",""},
-	{buildin_agitcheck,"agitcheck","i"},   // <Agitcheck>
-	{buildin_flagemblem,"flagemblem","i"},	// Flag Emblem
+	{buildin_agitcheck,"agitcheck","i"},
+	{buildin_flagemblem,"flagemblem","i"},
 	{buildin_getcastlename,"getcastlename","s"},
 	{buildin_getcastledata,"getcastledata","si*"},
 	{buildin_setcastledata,"setcastledata","sii"},
@@ -545,22 +547,22 @@ struct {
 	{buildin_classchange,"classchange","ii"},
 	{buildin_misceffect,"misceffect","i"},
 	{buildin_soundeffect,"soundeffect","si"},
-	{buildin_soundeffectall,"soundeffectall","si"},	// SoundEffectAll [Codemaster]
-	{buildin_strmobinfo,"strmobinfo","ii"},	// display mob data [Valaris]
-	{buildin_guardian,"guardian","siisii*i"},	// summon guardians
-	{buildin_guardianinfo,"guardianinfo","i"},	// display guardian data [Valaris]
+	{buildin_soundeffectall,"soundeffectall","si"},	// [Codemaster]
+	{buildin_strmobinfo,"strmobinfo","ii"},	// Displays monster data [Valaris]
+	{buildin_guardian,"guardian","siisii*i"},	// Summons castle guardians
+	{buildin_guardianinfo,"guardianinfo","i"},	// Displays guardian data [Valaris]
 	{buildin_petskillbonus,"petskillbonus","iiii"}, // [Valaris]
 	{buildin_petrecovery,"petrecovery","ii"}, // [Valaris]
 	{buildin_petloot,"petloot","i"}, // [Valaris]
 	{buildin_petheal,"petheal","iii"}, // [Valaris]
 	{buildin_petmag,"petmag","iiii"}, // [Valaris]
 	{buildin_petskillattack,"petskillattack","iiii"}, // [Valaris]
-	{buildin_skilleffect,"skilleffect","ii"}, // skill effect [Celest]
-	{buildin_npcskilleffect,"npcskilleffect","iiii"}, // npc skill effect [Valaris]
-	{buildin_specialeffect,"specialeffect","i"}, // npc skill effect [Valaris]
-	{buildin_specialeffect2,"specialeffect2","i"}, // skill effect on players[Valaris]
-	{buildin_nude,"nude",""}, // nude command [Valaris]
-	{buildin_mapwarp,"mapwarp","ssii"},		// Added by RoVeRT
+	{buildin_skilleffect,"skilleffect","ii"}, // [Celest]
+	{buildin_npcskilleffect,"npcskilleffect","iiii"}, // [Valaris]
+	{buildin_specialeffect,"specialeffect","i"}, // [Valaris]
+	{buildin_specialeffect2,"specialeffect2","i"}, // Skill effect on a player [Valaris]
+	{buildin_nude,"nude",""}, // [Valaris]
+	{buildin_mapwarp,"mapwarp","ssii"},	// [RoVeRT]
 	{buildin_inittimer,"inittimer",""},
 	{buildin_stoptimer,"stoptimer",""},
 	{buildin_cmdothernpc,"cmdothernpc","ss"},
@@ -579,17 +581,17 @@ struct {
 	{buildin_checkoption1,"checkoption1","i"},
 	{buildin_checkoption2,"checkoption2","i"},
 	{buildin_guildgetexp,"guildgetexp","i"},
-	{buildin_skilluseid,"skilluseid","ii"}, // originally by Qamera [Celest]
-	{buildin_skilluseid,"doskill","ii"}, // since a lot of scripts would already use 'doskill'...
+	{buildin_skilluseid,"skilluseid","ii"}, // Originally by Qamera [Celest]
+	{buildin_skilluseid,"doskill","ii"},
 	{buildin_skillusepos,"skillusepos","iiii"}, // [Celest]
-	{buildin_logmes,"logmes","s"}, // this command acts as MES but prints info into LOG file either SQL/TXT [Lupus]
-	{buildin_summon,"summon","si*"}, // summons a slave monster [Celest]
+	{buildin_logmes,"logmes","s"}, // Command acts as 'mes', but prints info into a log file [Lupus]
+	{buildin_summon,"summon","si*"}, // Summons a slave monster [Celest]
 	{buildin_night,"night",""},
 	{buildin_day,"day",""},
-	{buildin_isnight,"isnight",""}, // check whether it is night time [Celest]
-	{buildin_isday,"isday",""}, // check whether it is day time [Celest]
-	{buildin_isequipped,"isequipped","i*"}, // check whether another item/card has been equipped [Celest]
-	{buildin_isequippedcnt,"isequippedcnt","i*"}, // check how many items/cards are being equipped [Celest]
+	{buildin_isnight,"isnight",""}, // Checks if it is night mode [Celest]
+	{buildin_isday,"isday",""}, // Checks if it is day mode [Celest]
+	{buildin_isequipped,"isequipped","i*"}, // Checks whether an item/card has been equipped [Celest]
+	{buildin_isequippedcnt,"isequippedcnt","i*"}, // Checks how many items/cards are equipped [Celest]
 	{buildin_dispbottom,"dispbottom","s"},
 	{buildin_getusersname,"getusersname","*"},
 	{buildin_recovery,"recovery",""},
@@ -599,7 +601,7 @@ struct {
 	{buildin_select,"select","*"},
 	{buildin_globalmes,"globalmes","s*"},
 	{buildin_getmapmobs,"getmapmobs","s"},
-	{buildin_getiteminfo,"getiteminfo","ii"}, // returns Items Buy / sell Price, etc info
+	{buildin_getiteminfo,"getiteminfo","ii"}, // Returns an item's buy / sell price, etc
 	{NULL,NULL,NULL},
 };
 
@@ -607,7 +609,7 @@ enum {
 	C_NOP,C_POS,C_INT,C_PARAM,C_FUNC,C_STR,C_CONSTSTR,C_ARG,
 	C_NAME,C_EOL, C_RETINFO,
 
-	C_LOR,C_LAND,C_LE,C_LT,C_GE,C_GT,C_EQ,C_NE,   //operator
+	C_LOR,C_LAND,C_LE,C_LT,C_GE,C_GT,C_EQ,C_NE,   // Operator
 	C_XOR,C_OR,C_AND,C_ADD,C_SUB,C_MUL,C_DIV,C_MOD,C_NEG,C_LNOT,C_NOT,C_R_SHIFT,C_L_SHIFT
 };
 
@@ -703,7 +705,7 @@ static int add_str(const char *p)
 	return str_num++;
 }
 
-/* check script_buf size and expand it if neccessary */
+// Check script_buf size and expand it if neccessary
 static void check_script_buf(int size)
 {
 	if(script_pos + size >= script_size)
@@ -751,7 +753,6 @@ static void add_scripti(int a)
  * スクリプトバッファにラベル/変数/関数を書き込む
  *------------------------------------------
  */
-// 最大16Mまで
 static void add_scriptl(int l) {
 	int backpatch = str_data[l].backpatch;
 
@@ -763,7 +764,6 @@ static void add_scriptl(int l) {
 		add_scriptb(str_data[l].label >> 16);
 		break;
 	case C_NOP:
-		// ラベルの可能性があるのでbackpatch用データ埋め込み
 		add_scriptc(C_NAME);
 		str_data[l].backpatch = script_pos;
 		add_scriptb(backpatch);
@@ -774,7 +774,6 @@ static void add_scriptl(int l) {
 		add_scripti(str_data[l].val);
 		break;
 	default:
-		// もう他の用途と確定してるので数字をそのまま
 		add_scriptc(C_NAME);
 		add_scriptb(l);
 		add_scriptb(l >> 8);
@@ -831,11 +830,11 @@ static unsigned char *skip_space(unsigned char *p) {
  */
 static unsigned char *skip_word(unsigned char *p)
 {
-	// prefix
-	if(*p=='$') p++;	// MAP鯖内共有変数用
-	if(*p=='@') p++;	// 一時的変数用(like weiss)
-	if(*p=='#') p++;	// account変数用
-	if(*p=='#') p++;	// ワールドaccount変数用
+	// Prefix
+	if(*p=='$') p++;
+	if(*p=='@') p++;
+	if(*p=='#') p++;
+	if(*p=='#') p++;
 
 	while(isalnum(*p)||*p=='_'|| *p>=0x81)
 		if(*p>=0x81 && p[1]){
@@ -843,8 +842,8 @@ static unsigned char *skip_word(unsigned char *p)
 		} else
 			p++;
 
-	// postfix
-	if (*p=='$') p++;	// 文字列変数
+	// Postfix
+	if (*p=='$') p++;
 
 	return p;
 }
@@ -940,18 +939,18 @@ unsigned char* parse_simpleexpr(unsigned char *p)
 	} else {
 		int c,l;
 		char *p2;
-		// label , register , function etc
+		// Label, register, function, etc
 		if(skip_word(p)==p){
 			disp_error_message("unexpected character",p);
 			exit(1);
 		}
 		p2=(char*)skip_word(p);
-		c = *p2; // 名前をadd_strする
-		*p2 = 0; // 名前をadd_strする
+		c = *p2;
+		*p2 = 0;
 		l = add_str((char*)p);
 
-		parse_cmd = l; // warn_*_mismatch_paramnumのために必要
-		if (l == search_str("if")) // warn_cmd_no_commaのために必要
+		parse_cmd = l; // warn_*_mismatch_paramnum
+		if (l == search_str("if")) // warn_cmd_no_comma
 			parse_cmd_if++;
 
 		*p2 = c;
@@ -1080,7 +1079,7 @@ unsigned char* parse_subexpr(unsigned char *p, int limit)
 		printf("parse_subexpr end %s\n",p);
 #endif
 
-	return p;  /* return first untreated operator */
+	return p;  // Return first untreated operator
 }
 
 /*==========================================
@@ -1122,9 +1121,8 @@ unsigned char* parse_line(unsigned char *p)
 	if (*p == ';')
 		return p;
 
-	parse_cmd_if = 0; // warn_cmd_no_commaのために必要
+	parse_cmd_if = 0; // warn_cmd_no_comma
 
-	// 最初は関数名
 	p2 = p;
 	p = parse_simpleexpr(p);
 	p = skip_space(p);
@@ -1141,7 +1139,6 @@ unsigned char* parse_line(unsigned char *p)
 
 		p = parse_expr(p);
 		p = skip_space(p);
-		// 引数区切りの,処理
 		if (*p==',') p++;
 		else if (*p!=';' && script_config.warn_cmd_no_comma && parse_cmd_if * 2 <= i) {
 			disp_error_message("expect ',' or ';' at cmd params", p);
@@ -1202,12 +1199,12 @@ void read_constdb(void) {
 	while(fgets(line, sizeof(line), fp)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
 		if ((line[0] == '/' && line[1] == '/') || line[0] == '\0' || line[0] == '\n' || line[0] == '\r')
 			continue;
-		// it's not necessary to remove 'carriage return ('\n' or '\r')
+		// Its not necessary to remove 'carriage return ('\n' or '\r')
 		type = 0;
 		if (sscanf(line, "%[A-Za-z0-9_],%d,%d", name, &val, &type) >= 2 ||
 		    sscanf(line, "%[A-Za-z0-9_] %d %d", name, &val, &type) >= 2){
 			for(i = 0; name[i]; i++)
-				name[i] = tolower((unsigned char)name[i]); // tolower needs unsigned char
+				name[i] = tolower((unsigned char)name[i]); // tolower needs an unsigned char
 			n = add_str(name);
 			if (type == 0)
 				str_data[n].type = C_INT;
@@ -1237,7 +1234,7 @@ unsigned char* parse_script(unsigned char *src, int line)
 	}
 	first = 0;
 
-	// additional check on the input to filter empty scripts ("{}" and "{ }")
+	// Additional check on the input to filter empty scripts ("{}" and "{ }")
 	p = src;
 	p = skip_space(p);
 	if (*p != '{') {
@@ -1247,11 +1244,11 @@ unsigned char* parse_script(unsigned char *src, int line)
 	p++;
 	p = skip_space(p);
 	if (*p == '}') {
-		// an empty function, just return
+		// An empty function, just return
 		return NULL;
 	}
 
-	CALLOC(script_buf, unsigned char, SCRIPT_BLOCK_SIZE); // not free script_buf. It's temp pointer saved in each script NPC (freed when NPC is released)
+	CALLOC(script_buf, unsigned char, SCRIPT_BLOCK_SIZE); // Not free script_buf, it's temp pointer saved in each script NPC (freed when NPC is released)
 	script_pos = 0;
 	script_size = SCRIPT_BLOCK_SIZE;
 	str_data[LABEL_NEXTLINE].type=C_NOP;
@@ -1265,12 +1262,11 @@ unsigned char* parse_script(unsigned char *src, int line)
 		}
 	}
 
-	// 外部用label dbの初期化
 	if(scriptlabel_db!=NULL)
 		strdb_final(scriptlabel_db,scriptlabel_final);
 	scriptlabel_db=strdb_init(50);
 
-	// for error message
+	// For an error message
 	startptr = src;
 	startline = line;
 
@@ -1282,7 +1278,6 @@ unsigned char* parse_script(unsigned char *src, int line)
 	}
 	for(p++;p && *p && *p!='}';){
 		p=skip_space(p);
-		// labelだけ特殊処理
 		tmpp=skip_space(skip_word(p));
 		if(*tmpp==':'){
 			int l,c;
@@ -1296,7 +1291,7 @@ unsigned char* parse_script(unsigned char *src, int line)
 				exit(1);
 			}
 			set_label(l,script_pos);
-			strdb_insert(scriptlabel_db,p,script_pos);	// 外部用label db登録
+			strdb_insert(scriptlabel_db,p,script_pos);
 			*skip_word(p)=c;
 			p=tmpp+1;
 			continue;
@@ -1317,9 +1312,8 @@ unsigned char* parse_script(unsigned char *src, int line)
 
 	script_size = script_pos;
 	REALLOC(script_buf, unsigned char, script_size);
-	// not need to init new bytes to 0, because here, we always reduce size to adjust at right size
+	// Don't need to init new bytes to 0, because here, we always reduce size to adjust at right size
 
-	// 未解決のラベルを解決
 	for(i = LABEL_START; i < str_num; i++) {
 		if (str_data[i].type == C_NOP) {
 			int j, next;
@@ -1344,12 +1338,9 @@ unsigned char* parse_script(unsigned char *src, int line)
 	printf("\n");
 #endif
 
-	return script_buf; // not free script_buf. It's temp pointer saved in each script NPC (freed when NPC is released)
+	return script_buf; // Not free script_buf, it's a temp pointer saved in each script NPC (freed when NPC is released)
 }
 
-//
-// 実行系
-//
 enum {STOP=1,END,RERUNLINE,GOTO,RETFUNC};
 
 /*==========================================
@@ -1358,7 +1349,7 @@ enum {STOP=1,END,RERUNLINE,GOTO,RETFUNC};
  */
 struct map_session_data *script_rid2sd(struct script_state *st)
 {
-	struct block_list *bl = map_id2bl(st->rid); //map_id2sd
+	struct block_list *bl = map_id2bl(st->rid); // map_id2sd
 	struct map_session_data *sd = NULL;
 	
 	if(bl == NULL || bl->type != BL_PC || (sd = (struct map_session_data *)bl) == NULL)
@@ -1382,7 +1373,7 @@ int get_val(struct script_state*st, struct script_data* data) {
 			if ((sd = script_rid2sd(st)) == NULL)
 				printf("get_val error name?:%s\n", name);
 		}
-		if (name[strlen(name) - 1] == '$') { // postfix
+		if (name[strlen(name) - 1] == '$') { // Postfix
 
 			data->type = C_CONSTSTR;
 			if (prefix == '@') {
@@ -1452,7 +1443,7 @@ void* get_val2(struct script_state*st, int num)
 static int set_reg(struct map_session_data *sd, int num, char *name, void *v) {
 	char prefix = *name;
 
-	if (name[strlen(name)-1] == '$') { // postfix
+	if (name[strlen(name)-1] == '$') { // Postfix
 		char *str = (char*)v;
 		if (prefix == '@') {
 			pc_setregstr(sd, num, str);
@@ -1492,13 +1483,12 @@ char* conv_str(struct script_state *st, struct script_data *data)
 	get_val(st,data);
 	if (data->type == C_INT){
 		char *buf;
-		CALLOC(buf, char, 16); // biggest int: -2147483648 (11 + NULL)
+		CALLOC(buf, char, 16); // Biggest int: -2147483648 (11 + NULL)
 		sprintf(buf, "%d", data->u.num);
 		data->type = C_STR;
 		data->u.str = buf;
 #if 1
 	} else if (data->type == C_NAME) {
-		// テンポラリ。本来無いはず
 		data->type = C_CONSTSTR;
 		data->u.str = str_buf + str_data[data->u.num].str;
 #endif
@@ -1577,7 +1567,7 @@ void push_copy(struct script_stack *stack, int pos)
 	case C_STR:
 		CALLOC(p, char, strlen(stack->stack_data[pos].u.str) + 1);
 		strcpy(p, stack->stack_data[pos].u.str);
-		push_str(stack, C_STR, p); // it's free in pop_stack
+		push_str(stack, C_STR, p); // Its free in pop_stack
 		break;
 	default:
 		push_val(stack, stack->stack_data[pos].type, stack->stack_data[pos].u.num);
@@ -1594,7 +1584,7 @@ void pop_stack(struct script_stack* stack,int start,int end)
 	int i;
 	for(i = start; i < end; i++) {
 		if (stack->stack_data[i].type == C_STR) {
-			FREE(stack->stack_data[i].u.str); // free the strdup
+			FREE(stack->stack_data[i].u.str); // Free the strdup
 		}
 	}
 	if (stack->sp>end) {
@@ -1614,7 +1604,7 @@ int buildin_mes(struct script_state *st) {
 #if ENABLE_NLS
 	// GetText support by MagicalTux
 	char *msg_gettext;
-#endif /* ENABLE_NLS */
+#endif // ENABLE_NLS
 	conv_str(st,& (st->stack->stack_data[st->start+2]));
 #if ENABLE_NLS
 	if (strcmp(st->stack->stack_data[st->start+2].u.str,"")!=0) {
@@ -1623,9 +1613,9 @@ int buildin_mes(struct script_state *st) {
 	} else {
 		clif_scriptmes(script_rid2sd(st),st->oid,"");
 	}
-#else /* ENABLE_NLS */
+#else // ENABLE_NLS
 	clif_scriptmes(script_rid2sd(st),st->oid,st->stack->stack_data[st->start+2].u.str);
-#endif /* ENABLE_NLS */
+#endif // ENABLE_NLS
 
 	return 0;
 }
@@ -1671,10 +1661,10 @@ int buildin_callfunc(struct script_state *st)
 		for(i=st->start+3,j=0;i<st->end;i++,j++)
 			push_copy(st->stack,i);
 
-		push_val(st->stack,C_INT,j);				// 引数の数をプッシュ
-		push_val(st->stack,C_INT,st->defsp);	// 現在の基準スタックポインタをプッシュ
-		push_val(st->stack,C_INT,(int)st->script);	// 現在のスクリプトをプッシュ
-		push_val(st->stack,C_RETINFO,st->pos);		// 現在のスクリプト位置をプッシュ
+		push_val(st->stack,C_INT,j);
+		push_val(st->stack,C_INT,st->defsp);
+		push_val(st->stack,C_INT,(int)st->script);
+		push_val(st->stack,C_RETINFO,st->pos);
 
 		st->pos=0;
 		st->script=scr;
@@ -1699,10 +1689,10 @@ int buildin_callsub(struct script_state *st)
 	for(i=st->start+3,j=0;i<st->end;i++,j++)
 		push_copy(st->stack,i);
 
-	push_val(st->stack,C_INT,j);				// 引数の数をプッシュ
-	push_val(st->stack,C_INT,st->defsp);	// 現在の基準スタックポインタをプッシュ
-	push_val(st->stack,C_INT,(int)st->script);	// 現在のスクリプトをプッシュ
-	push_val(st->stack,C_RETINFO,st->pos);		// 現在のスクリプト位置をプッシュ
+	push_val(st->stack,C_INT,j);
+	push_val(st->stack,C_INT,st->defsp);
+	push_val(st->stack,C_INT,(int)st->script);
+	push_val(st->stack,C_RETINFO,st->pos);
 
 	st->pos=pos;
 	st->defsp=st->start+4+j;
@@ -1743,7 +1733,7 @@ int buildin_getarg(struct script_state *st)
  */
 int buildin_return(struct script_state *st)
 {
-	if(st->end>st->start+2){	// 戻り値有り
+	if(st->end>st->start+2){
 		push_copy(st->stack,st->start+2);
 	}
 	st->state=RETFUNC;
@@ -1803,7 +1793,7 @@ int buildin_menu(struct script_state *st)
 //			conv_str(st,& (st->stack->stack_data[i]));
 //			len+=strlen(st->stack->stack_data[i].u.str)+1;
 //		}
-		len=1024; // base buffer
+		len=1024; // Base buffer
 		CALLOC(buf, char, len);
 //		buf[0]=0;
 		for(i=st->start+2,len=0;i<st->end;i+=2){
@@ -1812,7 +1802,7 @@ int buildin_menu(struct script_state *st)
 #if ENABLE_NLS
 			if (strcmp(msg,"")!=0)
 				msg = gettext(msg); // MagicalTux
-#endif /* ENABLE_NLS */
+#endif // ENABLE_NLS
 			while (strlen(buf)+strlen(msg)>len) {
 				len=len+1024;
 				REALLOC(buf, char, len);
@@ -1822,11 +1812,10 @@ int buildin_menu(struct script_state *st)
 		}
 		clif_scriptmenu(script_rid2sd(st), st->oid, buf);
 		FREE(buf);
-	} else if (sd->npc_menu==0xff){	// cansel
+	} else if (sd->npc_menu==0xff){	// Cancel
 		sd->state.menu_or_input=0;
 		st->state=END;
-	} else {	// goto動作
-		// ragemu互換のため
+	} else {
 		pc_setreg(sd,add_str("l15"),sd->npc_menu);
 		pc_setreg(sd,add_str("@menu"),sd->npc_menu);
 		sd->state.menu_or_input=0;
@@ -1885,15 +1874,15 @@ int buildin_warp(struct script_state *st) {
 	x = conv_num(st, &(st->stack->stack_data[st->start + 3]));
 	y = conv_num(st, &(st->stack->stack_data[st->start + 4]));
 
-	//Fly/Buttlerfly Wings will no longer work while casting. kRO Patch 2/1/2006 [Proximus]
-	//Reference: http://ragnainfo.net/forums/viewtopic.php?t=95973
+	// Fly/Buttlerfly Wings will no longer work while casting, kRO Patch 2/1/2006 [Proximus]
+	// Reference: http://ragnainfo.net/forums/viewtopic.php?t=95973
 	if(sd == NULL || sd->skilltimer != -1)
 		return 0;
 
 	if (strcasecmp(str, "Random") == 0)
 		pc_randomwarp(sd);
 	else if (strcasecmp(str, "SavePoint") == 0 || strcmp(str, "Save") == 0) {
-		if (map[sd->bl.m].flag.noreturn) // 蝶禁止
+		if (map[sd->bl.m].flag.noreturn)
 			return 0;
 		pc_setpos(sd, sd->status.save_point.map, sd->status.save_point.x, sd->status.save_point.y, 3, 0);
 	} else
@@ -1938,9 +1927,9 @@ int buildin_areawarp(struct script_state *st)
 	x = conv_num(st, &(st->stack->stack_data[st->start + 8]));
 	y = conv_num(st, &(st->stack->stack_data[st->start + 9]));
 
-	if ((m = map_mapname2mapid(mapname)) < 0) // map id on this server (m == -1 if not in actual map-server)
+	if ((m = map_mapname2mapid(mapname)) < 0) // Map ID on this server (m == -1 if not in actual map-server)
 		return 0;
-	// what's about map on other map-servers?
+	// What about maps on other map-servers?
 
 	map_foreachinarea(buildin_areawarp_sub, m, x0, y0, x1, y1, BL_PC, str, x, y);
 
@@ -2023,36 +2012,35 @@ int buildin_input(struct script_state *st)
 	sd=script_rid2sd(st);
 	if(sd->state.menu_or_input){
 		sd->state.menu_or_input=0;
-		if (name[strlen(name)-1] == '$') { // postfix
+		if (name[strlen(name)-1] == '$') { // Postfix
 			// 文字列
-			if(st->end>st->start+2){ // 引数1個
+			if(st->end>st->start+2){
 				set_reg(sd, num, name, (void*)sd->npc_str); // npc_str = 255 + NULL
 			}else{
 				printf("buildin_input: string discarded !!\n");
 			}
 		}else{
 
-			// commented by Lupus (check Value Number Input fix in clif.c)
-			// readded by Yor: set ammount to 0 instead of cancel trade.
+			// Commented by Lupus (check Value Number Input fix in clif.c)
+			// Readded by Yor: Set ammount to 0 instead of cancel trade
 			// ** Fix by fritz :X keeps people from abusing old input bugs
 			if (sd->npc_amount < 0) { //** If input amount is less then 0
-//				clif_tradecancelled(sd); // added "Deal has been cancelled" message by Valaris
-//				buildin_close(st); // ** close
+//				clif_tradecancelled(sd); // Added "Deal has been cancelled" message by Valaris
+//				buildin_close(st); // ** Close
 				sd->npc_amount = 0;
-			} else if (sd->npc_amount > battle_config.vending_max_value) // new fix by Yor
+			} else if (sd->npc_amount > battle_config.vending_max_value) // New fix by Yor
 				sd->npc_amount = battle_config.vending_max_value;
 
 			// 数値
-			if(st->end>st->start+2){ // 引数1個
+			if(st->end>st->start+2){
 				set_reg(sd,num,name,(void*)sd->npc_amount);
 			} else {
-				// ragemu互換のため
 				pc_setreg(sd,add_str("l14"),sd->npc_amount);
 			}
 		}
 	} else {
 		st->state = RERUNLINE;
-		if (name[strlen(name)-1] == '$') // postfix
+		if (name[strlen(name)-1] == '$') // Postfix
 			clif_scriptinputstr(sd, st->oid);
 		else
 			clif_scriptinput(sd, st->oid);
@@ -2074,11 +2062,8 @@ int buildin_if(struct script_state *st)
 	if(!sel)
 		return 0;
 
-	// 関数名をコピー
 	push_copy(st->stack,st->start+3);
-	// 間に引数マーカを入れて
 	push_val(st->stack,C_ARG,0);
-	// 残りの引数をコピー
 	for(i=st->start+4;i<st->end;i++){
 		push_copy(st->stack,i);
 	}
@@ -2106,12 +2091,10 @@ int buildin_set(struct script_state *st)
 	if( prefix!='$' )
 		sd=script_rid2sd(st);
 
-	if (name[strlen(name)-1] == '$') { // postfix
-		// 文字列
+	if (name[strlen(name)-1] == '$') { // Postfix
 		char *str = conv_str(st, &(st->stack->stack_data[st->start+3]));
 		set_reg(sd, num, name, (void*)str);
 	} else {
-		// 数値
 		int val = conv_num(st, &(st->stack->stack_data[st->start+3]));
 		set_reg(sd, num, name, (void*)val);
 	}
@@ -2172,7 +2155,7 @@ int buildin_cleararray(struct script_state *st)
 	if( prefix!='$' )
 		sd=script_rid2sd(st);
 
-	if (name[strlen(name)-1] == '$') // postfix
+	if (name[strlen(name)-1] == '$') // Postfix
 		v = (void*)conv_str(st, &(st->stack->stack_data[st->start+3]));
 	else
 		v = (void*)conv_num(st, &(st->stack->stack_data[st->start+3]));
@@ -2245,7 +2228,7 @@ int buildin_getarraysize(struct script_state *st)
 		return 0;
 	}
 
-	push_val(st->stack, C_INT, getarraysize(st, num, name[strlen(name)-1]) ); // postfix
+	push_val(st->stack, C_INT, getarraysize(st, num, name[strlen(name)-1]) ); // Postfix
 
 	return 0;
 }
@@ -2401,7 +2384,7 @@ int buildin_countitem(struct script_state *st)
 	}else
 		nameid=conv_num(st,data);
 
-	if (nameid>=500) //if no such ID then skip this iteration
+	if (nameid>=500) // If there is no such ID then skip this iteration
 		for(i=0;i<MAX_INVENTORY;i++){
 			if(sd->status.inventory[i].nameid==nameid)
 				count+=sd->status.inventory[i].amount;
@@ -2416,7 +2399,7 @@ int buildin_countitem(struct script_state *st)
 }
 
 /*==========================================
- * Count an specific item from cart [Proximus]
+ * Counts a specific item from a player's cart [Proximus]
  *------------------------------------------
  */
 int buildin_countitemcart(struct script_state *st)
@@ -2445,7 +2428,7 @@ int buildin_countitemcart(struct script_state *st)
 	} else
 		nameid = conv_num(st,data);
 
-	if (nameid >= 500) //if no such ID then skip this iteration
+	if (nameid >= 500) // If no such ID then skip this iteration
 		for(i = 0; i < MAX_CART; i++){
 			if(sd->status.cart[i].nameid == nameid)
 				count += sd->status.cart[i].amount;
@@ -2482,7 +2465,7 @@ int buildin_checkweight(struct script_state *st)
 		nameid=conv_num(st,data);
 
 	amount=conv_num(st,& (st->stack->stack_data[st->start+3]));
-	if ( amount<=0 || nameid<500 ) { //if get wrong item ID or amount<=0, don't count weight of non existing items
+	if ( amount<=0 || nameid<500 ) { // If get a wrong item ID or amount<=0, don't count weight of non existing items
 		push_val(st->stack,C_INT,0);
 	}
 
@@ -2521,10 +2504,10 @@ int buildin_getitem(struct script_state *st)
 		nameid=conv_num(st,data);
 
 	if ( ( amount=conv_num(st,& (st->stack->stack_data[st->start+3])) ) <= 0) {
-		return 0; //return if amount <=0, skip the useles iteration
+		return 0; // Return if amount <=0, skip the useless iteration
 	}
-	//Violet Box, Blue Box, etc - random item pick
-	if (nameid < 0) { // ランダム
+	// Old Purple Box, Old Blue Box, etc - Random item pick
+	if (nameid < 0) {
 		nameid = itemdb_searchrandomid(-nameid);
 		flag = 1;
 	}
@@ -2536,9 +2519,9 @@ int buildin_getitem(struct script_state *st)
 			item_tmp.identify = 1;
 		else
 			item_tmp.identify = !itemdb_isequip3(nameid);
-		if (st->end>st->start + 5) //アイテムを指定したIDに渡す
+		if (st->end>st->start + 5)
 			sd=map_id2sd(conv_num(st, &(st->stack->stack_data[st->start+5])));
-		if (sd == NULL) //アイテムを渡す相手がいなかったらお帰り
+		if (sd == NULL)
 			return 0;
 		if ((flag = pc_additem(sd, &item_tmp, amount))) {
 			clif_additem(sd, 0, 0, flag);
@@ -2570,7 +2553,7 @@ int buildin_getitem2(struct script_state *st)
 	if( data->type==C_STR || data->type==C_CONSTSTR ){
 		const char *name=conv_str(st,data);
 		struct item_data *item_data = itemdb_searchname(name);
-		nameid=512; //Apple item ID
+		nameid=512; // Apple item ID
 		if( item_data )
 			nameid=item_data->nameid;
 	}else
@@ -2584,12 +2567,12 @@ int buildin_getitem2(struct script_state *st)
 	c2=conv_num(st,& (st->stack->stack_data[st->start+8]));
 	c3=conv_num(st,& (st->stack->stack_data[st->start+9]));
 	c4=conv_num(st,& (st->stack->stack_data[st->start+10]));
-	if( st->end>st->start+11 ) //アイテムを指定したIDに渡す
+	if( st->end>st->start+11 )
 		sd=map_id2sd(conv_num(st,& (st->stack->stack_data[st->start+11])));
-	if(sd == NULL) //アイテムを渡す相手がいなかったらお帰り
+	if(sd == NULL)
 		return 0;
 
-	if(nameid<0) { // ランダム
+	if(nameid<0) {
 		nameid=itemdb_searchrandomid(-nameid);
 		flag = 1;
 	}
@@ -2651,7 +2634,7 @@ int buildin_makeitem(struct script_state *st)
 	if (data->type == C_STR || data->type == C_CONSTSTR) {
 		const char *name=conv_str(st, data);
 		struct item_data *item_data = itemdb_searchname(name);
-		nameid = 512; //Apple Item ID
+		nameid = 512; // Apple Item ID
 		if (item_data)
 			nameid = item_data->nameid;
 	} else
@@ -2665,9 +2648,9 @@ int buildin_makeitem(struct script_state *st)
 	if (sd && strcmp(mapname, "this") == 0)
 		m = sd->bl.m;
 	else
-		m = map_mapname2mapid(mapname); // map id on this server (m == -1 if not in actual map-server)
+		m = map_mapname2mapid(mapname); // Map ID on this server (m == -1 if not in actual map-server)
 
-	if (nameid < 0) { // ランダム
+	if (nameid < 0) {
 		nameid = itemdb_searchrandomid(-nameid);
 		flag = 1;
 	}
@@ -2707,7 +2690,7 @@ int buildin_delitem(struct script_state *st)
 	if( data->type==C_STR || data->type==C_CONSTSTR ){
 		const char *name=conv_str(st,data);
 		struct item_data *item_data = itemdb_searchname(name);
-		//nameid=512;
+		// nameid=512;
 		if( item_data )
 			nameid=item_data->nameid;
 	}else
@@ -2715,53 +2698,53 @@ int buildin_delitem(struct script_state *st)
 
 	amount=conv_num(st,& (st->stack->stack_data[st->start+3]));
 
-	if (nameid<500 || amount<=0 ) {//by Lupus. Don't run FOR if u got wrong item ID or amount<=0
+	if (nameid<500 || amount<=0 ) {// By Lupus, don't run FOR if you got an incorrect item ID or amount<=0
 		//printf("wrong item ID or amount<=0 : delitem %i,\n",nameid,amount);
 		return 0;
 	}
 	sd=script_rid2sd(st);
-	//1st pass
-	//here we won't delete items with CARDS, named items but we count them
+	// First pass
+	// Here we won't delete items with CARDS, named items but we count them
 	for(i=0;i<MAX_INVENTORY;i++){
-		//we don't delete wrong item or equipped item
+		// We don't delete wrong items or equipped item
 		if(sd->status.inventory[i].nameid<=0 || sd->inventory_data[i] == NULL ||
 		   sd->status.inventory[i].amount<=0 ||	sd->status.inventory[i].nameid!=nameid )
 			continue;
-		//1 egg uses 1 cell in the inventory. so it's ok to delete 1 pet / per cycle
+		// 1 egg uses 1 cell in the inventory. so it's ok to delete 1 pet / per cycle
 		if(sd->inventory_data[i]->type==7 && sd->status.inventory[i].card[0] == (short)0xff00 && search_petDB_index(nameid, PET_EGG) >= 0 ){
 			intif_delete_petdata(*((long *)(&sd->status.inventory[i].card[1])));
-			//clear egg flag. so it won't be put in IMPORTANT items (eggs look like item with 2 cards ^_^)
+			// Clear egg flag, so it won't be put in IMPORTANT items (eggs look like item with 2 cards ^_^)
 			sd->status.inventory[i].card[1] = sd->status.inventory[i].card[0] = 0;
-			//now this egg'll be deleted as a common unimportant item
+			// Now this egg will be deleted as a common unimportant item
 		}
-		//is this item important? does it have cards? or Player's name? or Refined/Upgraded
+		// Is this item important? Does it have cards? Or a player's name? Or refined/upgraded?
 		if( sd->status.inventory[i].card[0] || sd->status.inventory[i].card[1] ||
 			sd->status.inventory[i].card[2] || sd->status.inventory[i].card[3] || sd->status.inventory[i].refine) {
-			//this is important item, count it
+			// This is an important item, count it
 			important_item++;
 			continue;
 		}
 
 		if(sd->status.inventory[i].amount>=amount){
 			pc_delitem(sd,i,amount,0);
-			return 0; //we deleted exact amount of items. now exit
+			return 0; // Deleted exact amount of items, now exit
 		} else {
 			amount-=sd->status.inventory[i].amount;
 			pc_delitem(sd,i,sd->status.inventory[i].amount,0);
 		}
 	}
-	//2nd pass
-	//now if there WERE items with CARDs/REFINED/NAMED... and if we still have to delete some items. we'll delete them finally
+	// Second pass
+	// Now if there WERE items with CARDs/REFINED/NAMED... and if we still have to delete some items. we'll delete them finally
 	if (important_item>0 && amount>0)
 		for(i=0;i<MAX_INVENTORY;i++){
-			//we don't delete wrong item
+			// We don't delete wrong items
 			if(sd->status.inventory[i].nameid<=0 || sd->inventory_data[i] == NULL ||
 				sd->status.inventory[i].amount<=0 || sd->status.inventory[i].nameid!=nameid )
 				continue;
 
 			if(sd->status.inventory[i].amount>=amount){
 				pc_delitem(sd,i,amount,0);
-				return 0; //we deleted exact amount of items. now exit
+				return 0; // We deleted exact amount of items, now exit
 			} else {
 				amount-=sd->status.inventory[i].amount;
 				pc_delitem(sd,i,sd->status.inventory[i].amount,0);
@@ -3163,7 +3146,7 @@ int buildin_getequipisenableref(struct script_state *st)
 	num = conv_num(st, &(st->stack->stack_data[st->start + 2]));
 	sd = script_rid2sd(st);
 	i = pc_checkequip(sd, equip[num - 1]);
-	// replaced by Celest
+	// Replaced by Celest
 	if (i >= 0 && num < 7 && sd->inventory_data[i] && !sd->inventory_data[i]->flag.no_refine)
 /*	if (i >= 0 && num < 7 && sd->inventory_data[i] && (num != 1
 	   || sd->inventory_data[i]->def > 1
@@ -3272,7 +3255,7 @@ int buildin_successrefitem(struct script_state *st)
 		num = conv_num(st, &(st->stack->stack_data[st->start + 2]));
 		i = pc_checkequip(sd, equip[num - 1]);
 		if (i >= 0) {
-			if (sd->status.inventory[i].refine < 10) { // hacker?
+			if (sd->status.inventory[i].refine < 10) {
 				ep = sd->status.inventory[i].equip;
 				sd->status.inventory[i].refine++;
 				pc_unequipitem(sd, i, 2);
@@ -3281,7 +3264,7 @@ int buildin_successrefitem(struct script_state *st)
 				clif_additem(sd, i, 1, 0); // 0: you got...
 				pc_equipitem(sd, i, ep);
 			}
-			// display sprite even if the equipment was already at +10
+			// Display sprite even if the equipment was already at +10
 			clif_misceffect(&sd->bl, 3);
 		}
 	}
@@ -3304,10 +3287,8 @@ int buildin_failedrefitem(struct script_state *st)
 	if(i >= 0) {
 		sd->status.inventory[i].refine = 0;
 		pc_unequipitem(sd, i, 3);
-		// 精錬失敗エフェクトのパケット
 		clif_refine(sd->fd, sd, 1, i, sd->status.inventory[i].refine);
 		pc_delitem(sd,i,1,0);
-		// 他の人にも失敗を通知
 		clif_misceffect(&sd->bl,2);
 	}
 
@@ -3436,7 +3417,7 @@ int buildin_skill(struct script_state *st)
 	return 0;
 }
 
-// add x levels of skill (stackable) [Valaris]
+// Add x levels of skill (stackable) [Valaris]
 int buildin_addtoskill(struct script_state *st)
 {
 	int id,level,flag = 2;
@@ -3701,7 +3682,7 @@ int buildin_setfalcon(struct script_state *st)
 }
 
 /*==========================================
- * Checkcart [Valaris]
+ * checkcart [Valaris]
  *------------------------------------------
  */
 int buildin_checkriding(struct script_state *st)
@@ -3773,7 +3754,7 @@ int buildin_savepoint(struct script_state *st)
  * GetTimeTick(0: System Tick, 1: Time Second Tick)
  *------------------------------------------
  */
-int buildin_gettimetick(struct script_state *st) /* Asgard Version */
+int buildin_gettimetick(struct script_state *st) // Asgard Version
 {
 	int type;
 	time_t timer;
@@ -3783,14 +3764,14 @@ int buildin_gettimetick(struct script_state *st) /* Asgard Version */
 
 	switch(type){
 	case 1:
-		// type 1:(Second Ticks: 0-86399, 00:00:00-23:59:59)
+		// Type 1:(Second Ticks: 0-86399, 00:00:00-23:59:59)
 		time(&timer);
 		t = localtime(&timer);
 		push_val(st->stack, C_INT, ((t->tm_hour) * 3600 + (t->tm_min) * 60 + t->tm_sec));
 		break;
 	case 0:
 	default:
-		// type 0:(System Ticks)
+		// Type 0: (System Ticks)
 		push_val(st->stack, C_INT, gettick_cache);
 		break;
 	}
@@ -3805,7 +3786,7 @@ int buildin_gettimetick(struct script_state *st) /* Asgard Version */
  * 7: Year
  *------------------------------------------
  */
-int buildin_gettime(struct script_state *st) /* Asgard Version */
+int buildin_gettime(struct script_state *st) // Asgard Version
 {
 	int type;
 	time_t timer;
@@ -3903,7 +3884,6 @@ int buildin_itemskill(struct script_state *st)
 	lv=conv_num(st,& (st->stack->stack_data[st->start+3]));
 	str=conv_str(st,& (st->stack->stack_data[st->start+4]));
 
-	// 詠唱中にスキルアイテムは使用できない
 	if (sd->skilltimer != -1)
 		return 0;
 
@@ -4043,7 +4023,7 @@ int buildin_monsteragro(struct script_state *st)
 	for (i = 0; i < amount; i++) {
 		id = mob_once_spawn(map_id2sd(st->rid), mapname, x, y, str, class, 1, event);
 		if ((md = (struct mob_data *)map_id2bl(id)) != NULL)
-			md->mode = md->mode | (0x1 + 0x4 + 0x80); // like dead branch
+			md->mode = md->mode | (0x1 + 0x4 + 0x80); // Like Dead Branch
 	}
 
 	return 0;
@@ -4098,7 +4078,7 @@ int buildin_areamonsteragro(struct script_state *st)
 	for (i = 0; i < amount; i++) {
 		id = mob_once_spawn_area(map_id2sd(st->rid), mapname, x0, y0, x1, y1, str, class, 1, event);
 		if ((md = (struct mob_data *)map_id2bl(id)) != NULL)
-			md->mode = md->mode | (0x1 + 0x4 + 0x80); // like dead branch
+			md->mode = md->mode | (0x1 + 0x4 + 0x80); // Like Dead Branch
 	}
 
 	return 0;
@@ -4136,9 +4116,9 @@ int buildin_killmonster(struct script_state *st)
 	if (strcmp(event, "All") == 0)
 		allflag = 1;
 
-	if ((m = map_mapname2mapid(mapname)) < 0) // map id on this server (m == -1 if not in actual map-server)
+	if ((m = map_mapname2mapid(mapname)) < 0) // Map ID on this server (m == -1 if not in actual map-server)
 		return 0;
-	// what's about map on other map-servers?
+	// What about maps on other map-servers?
 
 	map_foreachinarea(buildin_killmonster_sub, m, 0, 0, map[m].xs, map[m].ys, BL_MOB, event, allflag);
 
@@ -4158,9 +4138,9 @@ int buildin_killmonsterall(struct script_state *st)
 	int m;
 	mapname = conv_str(st, &(st->stack->stack_data[st->start + 2]));
 
-	if ((m = map_mapname2mapid(mapname)) < 0) // map id on this server (m == -1 if not in actual map-server)
+	if ((m = map_mapname2mapid(mapname)) < 0) // Map ID on this server (m == -1 if not in actual map-server)
 		return 0;
-	// what's about map on other map-servers?
+	// What about maps on other map-servers?
 
 	map_foreachinarea(buildin_killmonsterall_sub, m, 0, 0, map[m].xs, map[m].ys, BL_MOB);
 
@@ -4335,7 +4315,7 @@ int buildin_setnpctimer(struct script_state *st)
 }
 
 /*==========================================
- * attaches the player rid to the timer [Celest]
+ * Attaches the player rid to the timer [Celest]
  *------------------------------------------
  */
 int buildin_attachnpctimer(struct script_state *st)
@@ -4360,7 +4340,7 @@ int buildin_attachnpctimer(struct script_state *st)
 }
 
 /*==========================================
- * detaches a player rid from the timer [Celest]
+ * Removes a player rid from the timer [Celest]
  *------------------------------------------
  */
 int buildin_detachnpctimer(struct script_state *st)
@@ -4421,9 +4401,9 @@ int buildin_mapannounce(struct script_state *st)
 	str = conv_str(st, &(st->stack->stack_data[st->start + 3]));
 	flag = conv_num(st, &(st->stack->stack_data[st->start + 4]));
 
-	if ((m = map_mapname2mapid(mapname)) < 0) // map id on this server (m == -1 if not in actual map-server)
+	if ((m = map_mapname2mapid(mapname)) < 0) // Map ID on this server (m == -1 if not in actual map-server)
 		return 0;
-	// what's about map on other map-servers?
+	// Whats about maps on other map-servers?
 
 	map_foreachinarea(buildin_mapannounce_sub, m, 0, 0, map[m].xs, map[m].ys, BL_PC, str, strlen(str)+1, flag&0x10);
 
@@ -4448,9 +4428,9 @@ int buildin_areaannounce(struct script_state *st)
 	str     = conv_str(st, &(st->stack->stack_data[st->start + 7]));
 	flag    = conv_num(st, &(st->stack->stack_data[st->start + 8]));
 
-	if ((m = map_mapname2mapid(mapname)) < 0) // map id on this server (m == -1 if not in actual map-server)
+	if ((m = map_mapname2mapid(mapname)) < 0) // Map ID on this server (m == -1 if not in actual map-server)
 		return 0;
-	// what's about map on other map-servers?
+	// What about maps on other map-servers?
 
 	map_foreachinarea(buildin_mapannounce_sub, m, x0, y0, x1, y1, BL_PC, str, strlen(str)+1, flag&0x10);
 
@@ -4482,7 +4462,7 @@ int buildin_getusers(struct script_state *st) {
 }
 
 /*==========================================
- * Works like @WHO - displays all online users names in window
+ * Works like @who - Displays all online users names in window
  *------------------------------------------
  */
 int buildin_getusersname(struct script_state *st)
@@ -4516,7 +4496,7 @@ int buildin_getmapusers(struct script_state *st) {
 	int m;
 
 	str = conv_str(st, &(st->stack->stack_data[st->start + 2]));
-	if ((m = map_mapname2mapid(str)) < 0) { // map id on this server (m == -1 if not in actual map-server)
+	if ((m = map_mapname2mapid(str)) < 0) { // Map ID on this server (m == -1 if not in actual map-server)
 		push_val(st->stack, C_INT, -1);
 		return 0;
 	}
@@ -4526,7 +4506,7 @@ int buildin_getmapusers(struct script_state *st) {
 }
 
 /*==========================================
- * Return number of ALIVE players on a map
+ * Returns number of live players on a map
  *------------------------------------------
  */
 int buildin_getmapusers2(struct script_state *st) {
@@ -4535,7 +4515,7 @@ int buildin_getmapusers2(struct script_state *st) {
 	int m, i, j;
 
 	str = conv_str(st, &(st->stack->stack_data[st->start + 2]));
-	if ((m = map_mapname2mapid(str)) < 0) { // map id on this server (m == -1 if not in actual map-server)
+	if ((m = map_mapname2mapid(str)) < 0) { // Map ID on this server (m == -1 if not in actual map-server)
 		push_val(st->stack, C_INT, -1);
 		return 0;
 	}
@@ -4550,7 +4530,7 @@ int buildin_getmapusers2(struct script_state *st) {
 }
 
 /*==========================================
- * Return number of DEAD players on a map
+ * Returns number of dead players on a map
  *------------------------------------------
  */
 int buildin_getmapusers3(struct script_state *st) {
@@ -4559,7 +4539,7 @@ int buildin_getmapusers3(struct script_state *st) {
 	int m, i, j;
 
 	str = conv_str(st, &(st->stack->stack_data[st->start + 2]));
-	if ((m = map_mapname2mapid(str)) < 0) { // map id on this server (m == -1 if not in actual map-server)
+	if ((m = map_mapname2mapid(str)) < 0) { // Map ID on this server (m == -1 if not in actual map-server)
 		push_val(st->stack, C_INT, -1);
 		return 0;
 	}
@@ -4574,7 +4554,7 @@ int buildin_getmapusers3(struct script_state *st) {
 }
 
 /*====================================
- * Return number of ALIVE GMs on a map
+ * Returns number of live GMs on a map
  *------------------------------------
  */
 int buildin_getmapgms2(struct script_state *st) {
@@ -4584,7 +4564,7 @@ int buildin_getmapgms2(struct script_state *st) {
 
 	str = conv_str(st, &(st->stack->stack_data[st->start + 2]));
 	min_lvl = conv_num(st, &(st->stack->stack_data[st->start + 3]));
-	if ((m = map_mapname2mapid(str)) < 0) { // map id on this server (m == -1 if not in actual map-server)
+	if ((m = map_mapname2mapid(str)) < 0) { // Map ID on this server (m == -1 if not in actual map-server)
 		push_val(st->stack, C_INT, -1);
 		return 0;
 	}
@@ -4600,7 +4580,7 @@ int buildin_getmapgms2(struct script_state *st) {
 }
 
 /*===================================
- * Return number of DEAD GMs on a map
+ * Returns number of dead GMs on a map
  *-----------------------------------
  */
 int buildin_getmapgms3(struct script_state *st) {
@@ -4610,7 +4590,7 @@ int buildin_getmapgms3(struct script_state *st) {
 
 	str = conv_str(st, &(st->stack->stack_data[st->start + 2]));
 	min_lvl = conv_num(st, &(st->stack->stack_data[st->start + 3]));
-	if ((m = map_mapname2mapid(str)) < 0) { // map id on this server (m == -1 if not in actual map-server)
+	if ((m = map_mapname2mapid(str)) < 0) { // Map ID on this server (m == -1 if not in actual map-server)
 		push_val(st->stack, C_INT, -1);
 		return 0;
 	}
@@ -4626,7 +4606,7 @@ int buildin_getmapgms3(struct script_state *st) {
 }
 
 /*===============================================================================
- * Return number of ALIVE not GMs on a map (with a lower GM level than specified)
+ * Returns number of live not GMs on a map (with a lower GM level than specified)
  *-------------------------------------------------------------------------------
  */
 int buildin_getmapnotgms2(struct script_state *st) {
@@ -4636,7 +4616,7 @@ int buildin_getmapnotgms2(struct script_state *st) {
 
 	str = conv_str(st, &(st->stack->stack_data[st->start + 2]));
 	min_lvl = conv_num(st, &(st->stack->stack_data[st->start + 3]));
-	if ((m = map_mapname2mapid(str)) < 0) { // map id on this server (m == -1 if not in actual map-server)
+	if ((m = map_mapname2mapid(str)) < 0) { // Map ID on this server (m == -1 if not in actual map-server)
 		push_val(st->stack, C_INT, -1);
 		return 0;
 	}
@@ -4652,7 +4632,7 @@ int buildin_getmapnotgms2(struct script_state *st) {
 }
 
 /*==============================================================================
- * Return number of DEAD not GMs on a map (with a lower GM level than specified)
+ * Returns number of dead not GMs on a map (with a lower GM level than specified)
  *------------------------------------------------------------------------------
  */
 int buildin_getmapnotgms3(struct script_state *st) {
@@ -4662,7 +4642,7 @@ int buildin_getmapnotgms3(struct script_state *st) {
 
 	str = conv_str(st, &(st->stack->stack_data[st->start + 2]));
 	min_lvl = conv_num(st, &(st->stack->stack_data[st->start + 3]));
-	if ((m = map_mapname2mapid(str)) < 0) { // map id on this server (m == -1 if not in actual map-server)
+	if ((m = map_mapname2mapid(str)) < 0) { // Map ID on this server (m == -1 if not in actual map-server)
 		push_val(st->stack, C_INT, -1);
 		return 0;
 	}
@@ -4700,7 +4680,7 @@ int buildin_getareausers(struct script_state *st)
 	y0 = conv_num(st, &(st->stack->stack_data[st->start + 4]));
 	x1 = conv_num(st, &(st->stack->stack_data[st->start + 5]));
 	y1 = conv_num(st, &(st->stack->stack_data[st->start + 6]));
-	if ((m = map_mapname2mapid(str))< 0) { // map id on this server (m == -1 if not in actual map-server)
+	if ((m = map_mapname2mapid(str))< 0) { // Map ID on this server (m == -1 if not in actual map-server)
 		push_val(st->stack, C_INT, -1);
 		return 0;
 	}
@@ -4750,7 +4730,7 @@ int buildin_getareadropitem(struct script_state *st)
 	}else
 		item = conv_num(st, data);
 
-	if ((m = map_mapname2mapid(str)) < 0) { // map id on this server (m == -1 if not in actual map-server)
+	if ((m = map_mapname2mapid(str)) < 0) { // Map ID on this server (m == -1 if not in actual map-server)
 		push_val(st->stack, C_INT, -1);
 		return 0;
 	}
@@ -4787,7 +4767,7 @@ int buildin_disablenpc(struct script_state *st)
 	return 0;
 }
 
-int buildin_enablearena(struct script_state *st)	// Added by RoVeRT
+int buildin_enablearena(struct script_state *st)	// [RoVeRT]
 {
 	struct npc_data *nd=(struct npc_data *)map_id2bl(st->oid);
 	struct chat_data *cd;
@@ -4804,7 +4784,7 @@ int buildin_enablearena(struct script_state *st)	// Added by RoVeRT
 	return 0;
 }
 
-int buildin_disablearena(struct script_state *st)	// Added by RoVeRT
+int buildin_disablearena(struct script_state *st)	// [RoVeRT]
 {
 	struct npc_data *nd=(struct npc_data *)map_id2bl(st->oid);
 	nd->arenaflag=0;
@@ -4850,7 +4830,7 @@ int buildin_sc_start(struct script_state *st)
 	type = conv_num(st,& (st->stack->stack_data[st->start+2]));
 	tick = conv_num(st,& (st->stack->stack_data[st->start+3]));
 	val1 = conv_num(st,& (st->stack->stack_data[st->start+4]));
-	if (st->end>st->start + 5) //指定したキャラを状態異常にする
+	if (st->end>st->start + 5)
 		bl = map_id2bl(conv_num(st, &(st->stack->stack_data[st->start+5])));
 	else
 		bl = map_id2bl(st->rid);
@@ -4876,7 +4856,7 @@ int buildin_sc_start2(struct script_state *st)
 	tick = conv_num(st, &(st->stack->stack_data[st->start+3]));
 	val1 = conv_num(st, &(st->stack->stack_data[st->start+4]));
 	per = conv_num(st, &(st->stack->stack_data[st->start+5]));
-	if (st->end>st->start + 6) //指定したキャラを状態異常にする
+	if (st->end>st->start + 6)
 		bl = map_id2bl(conv_num(st,& (st->stack->stack_data[st->start+6])));
 	else
 		bl = map_id2bl(st->rid);
@@ -4923,7 +4903,7 @@ int buildin_getscrate(struct script_state *st)
 
 	type = conv_num(st, &(st->stack->stack_data[st->start+2]));
 	rate = conv_num(st, &(st->stack->stack_data[st->start+3]));
-	if (st->end>st->start + 4) //指定したキャラの耐性を計算する
+	if (st->end>st->start + 4)
 		bl = map_id2bl(conv_num(st, &(st->stack->stack_data[st->start+6])));
 	else
 		bl = map_id2bl(st->rid);
@@ -5040,7 +5020,7 @@ int buildin_changebase(struct script_state *st)
 		return 0;
 
 //	if(vclass==22) {
-//		pc_unequipitem(sd,sd->equip_index[9],0);	// 装備外し
+//		pc_unequipitem(sd,sd->equip_index[9],0);
 //	}
 
 	sd->view_class = vclass;
@@ -5067,8 +5047,8 @@ int buildin_changesex(struct script_state *st) {
 		if(sd->status.class == 19 || sd->status.class == 4020)
 			sd->status.class += 1;
 	}
-	chrif_char_ask_name(-1, sd->status.name, 5, 0, 0, 0, 0, 0, 0); // type: 5 - changesex
-	chrif_save(sd); // do pc_makesavestatus and save storage + account_reg/account_reg2 too
+	chrif_char_ask_name(-1, sd->status.name, 5, 0, 0, 0, 0, 0, 0); // Type: 5 - changesex
+	chrif_save(sd); // Do pc_makesavestatus and save storage + account_reg/account_reg2 too
 
 	return 0;
 }
@@ -5090,16 +5070,13 @@ int buildin_waitingroom(struct script_state *st)
 		struct script_data* data=&(st->stack->stack_data[st->start+5]);
 		get_val(st,data);
 		if(data->type==C_INT){
-			// 新Athena仕様(旧Athena仕様と互換性あり)
 			ev=conv_str(st,& (st->stack->stack_data[st->start+4]));
 			trigger=conv_num(st,& (st->stack->stack_data[st->start+5]));
 		}else{
-			// eathena仕様
 			trigger=conv_num(st,& (st->stack->stack_data[st->start+4]));
 			ev=conv_str(st,& (st->stack->stack_data[st->start+5]));
 		}
 	}else{
-		// 旧Athena仕様
 		if( st->end > st->start+4 )
 			ev=conv_str(st,& (st->stack->stack_data[st->start+4]));
 	}
@@ -5117,11 +5094,11 @@ int buildin_globalmes(struct script_state *st)
 {
 	char *name = NULL, *mes;
 
-	mes = conv_str(st, &(st->stack->stack_data[st->start + 2])); // メッセージの取得
+	mes = conv_str(st, &(st->stack->stack_data[st->start + 2]));
 	if (mes == NULL)
 		return 0;
 
-	if (st->end > st->start + 3){ // NPC名の取得(123#456)
+	if (st->end > st->start + 3){
 		name = conv_str(st, &(st->stack->stack_data[st->start + 3]));
 	} else {
 		struct block_list *bl = map_id2bl(st->oid);
@@ -5129,7 +5106,7 @@ int buildin_globalmes(struct script_state *st)
 		name = nd->name;
 	}
 
-	npc_globalmessage(name, mes); // グローバルメッセージ送信
+	npc_globalmessage(name, mes);
 
 	return 0;
 }
@@ -5280,14 +5257,14 @@ int buildin_warpwaitingpc(struct script_state *st)
 		n=conv_num(st,& (st->stack->stack_data[st->start+5]));
 
 	for(i=0;i<n;i++){
-		struct map_session_data *sd=cd->usersd[0];	// リスト先頭のPCを次々に。
+		struct map_session_data *sd=cd->usersd[0];
 
 		mapreg_setreg(add_str("$@warpwaitingpc") + (i << 24), sd->bl.id);
 
 		if (strcmp(str,"Random") == 0)
 			pc_randomwarp(sd);
 		else if (strcmp(str,"SavePoint") == 0) {
-			if (map[sd->bl.m].flag.noteleport) // テレポ禁止
+			if (map[sd->bl.m].flag.noteleport)
 				return 0;
 
 			pc_setpos(sd, sd->status.save_point.map, sd->status.save_point.x, sd->status.save_point.y, 3, 0);
@@ -5354,8 +5331,8 @@ int buildin_setmapflagnosave(struct script_state *st) {
 	str2=conv_str(st, &(st->stack->stack_data[st->start + 3]));
 	x=conv_num(st, &(st->stack->stack_data[st->start + 4]));
 	y=conv_num(st, &(st->stack->stack_data[st->start + 5]));
-	m = map_mapname2mapid(str); // map id on this server (m == -1 if not in actual map-server)
-	if (m >= 0) { // only change map flag on local maps
+	m = map_mapname2mapid(str); // Map ID on this server (m == -1 if not in actual map-server)
+	if (m >= 0) { // Only change map flag on local maps
 		map[m].flag.nosave = 1;
 		memset(map[m].save.map, 0, sizeof(map[m].save.map));
 		strncpy(map[m].save.map, str2, 16); // 17 - NULL
@@ -5372,8 +5349,8 @@ int buildin_setmapflag(struct script_state *st) {
 
 	str = conv_str(st, &(st->stack->stack_data[st->start + 2]));
 	i = conv_num(st, &(st->stack->stack_data[st->start + 3]));
-	m = map_mapname2mapid(str); // map id on this server (m == -1 if not in actual map-server)
-	if (m >= 0) { // only change map flag on local maps
+	m = map_mapname2mapid(str); // Map ID on this server (m == -1 if not in actual map-server)
+	if (m >= 0) { // Only change map flag on local maps
 		switch(i) {
 		case MF_NOMEMO: // 0
 			map[m].flag.nomemo = 1;
@@ -5382,11 +5359,11 @@ int buildin_setmapflag(struct script_state *st) {
 			map[m].flag.noteleport = 1;
 			break;
 		case MF_NOSAVE: // 2
-//			map[m].flag.nosave = 1; // use setmapflagnosave function
+//			map[m].flag.nosave = 1; // Use setmapflagnosave function
 			printf(CL_YELLOW "WARNING: Don't use setmapflag function to set 'nosave' map flag." CL_RESET " Use setmapflagnosave function.\n");
 			break;
 		case MF_NOBRANCH: // 3
-			map[m].flag.nobranch = 1; // forbid usage of Dead Branch (604), Bloody Branch (12103) and Poring Box (12109)
+			map[m].flag.nobranch = 1; // Forbids usage of Dead Branch (604), Bloody Branch (12103) and Poring Box (12109)
 			break;
 		case MF_NOPENALTY: // 4
 			map[m].flag.nopenalty = 1;
@@ -5481,15 +5458,15 @@ int buildin_setmapflag(struct script_state *st) {
 			map[m].flag.nomvpdrop = 1;
 			break;
 		case MF_PVP_NIGHTMAREDROP: // 34
-//			map[m].flag.pvp_nightmaredrop = 1; // need parameter to be activated
+//			map[m].flag.pvp_nightmaredrop = 1; // Need parameter to be activated
 			printf(CL_YELLOW "WARNING: Don't use setmapflag function to set 'pvp_nightmaredrop' map flag." CL_RESET " You can only use mapflag in script files.\n");
 			break;
 		case MT_NOGMCMD: // 35
-//			map[m].flag.nogmcmd = 1; // need parameter to be activated
+//			map[m].flag.nogmcmd = 1; // Need parameter to be activated
 			printf(CL_YELLOW "WARNING: Don't use setmapflag function to set 'nogmcmd' map flag." CL_RESET " You can only use mapflag in script files.\n");
 			break;
 		case MT_MINGMLVL: // 36
-//			map[m].flag.mingmlvl = 1; // need parameter to be activated
+//			map[m].flag.mingmlvl = 1; // Need parameter to be activated
 			printf(CL_YELLOW "WARNING: Don't use setmapflag function to set 'mingmlvl' map flag." CL_RESET " You can only use mapflag in script files.\n");
 			break;
 		case MF_GVG_DUNGEON: // 37
@@ -5508,7 +5485,7 @@ int buildin_removemapflag(struct script_state *st) {
 	str = conv_str(st, &(st->stack->stack_data[st->start + 2]));
 	i = conv_num(st, &(st->stack->stack_data[st->start + 3]));
 	m = map_mapname2mapid(str);
-	if (m >= 0) { // only change map flag on local maps
+	if (m >= 0) { // Only change map flag on local maps
 		switch(i) {
 		case MF_NOMEMO: // 0
 			map[m].flag.nomemo = 0;
@@ -5520,7 +5497,7 @@ int buildin_removemapflag(struct script_state *st) {
 			map[m].flag.nosave = 0;
 			break;
 		case MF_NOBRANCH: // 3
-			map[m].flag.nobranch = 0; // forbid usage of Dead Branch (604), Bloody Branch (12103) and Poring Box (12109)
+			map[m].flag.nobranch = 0; // Forbids usage of Dead Branch (604), Bloody Branch (12103) and Poring Box (12109)
 			break;
 		case MF_NOPENALTY: // 4
 			map[m].flag.nopenalty = 0;
@@ -5618,7 +5595,7 @@ int buildin_removemapflag(struct script_state *st) {
 			map[m].flag.pvp_nightmaredrop = 0;
 			break;
 		case MT_NOGMCMD: // 35
-			map[m].flag.nogmcmd = 100; // All gm commands can be used
+			map[m].flag.nogmcmd = 100; // All GM commands can be used
 			break;
 		case MT_MINGMLVL: // 36
 			map[m].flag.mingmlvl = 0;
@@ -5639,15 +5616,15 @@ int buildin_pvpon(struct script_state *st)
 	struct map_session_data *pl_sd = NULL;
 
 	str = conv_str(st, &(st->stack->stack_data[st->start + 2]));
-	m = map_mapname2mapid(str); // map id on this server (m == -1 if not in actual map-server)
-	if(m >= 0 && !map[m].flag.pvp) { // what's about map on other map-servers?
+	m = map_mapname2mapid(str); // Map ID on this server (m == -1 if not in actual map-server)
+	if(m >= 0 && !map[m].flag.pvp) { // What about maps on other map-servers?
 		map[m].flag.pvp = 1;
 		clif_send0199(m, 1);
 
-		if (battle_config.pk_mode) // disable ranking functions if pk_mode is on [Valaris]
+		if (battle_config.pk_mode) // Disable ranking functions if pk_mode is on [Valaris]
 			return 0;
 
-		for(i=0;i<fd_max;i++) { //人数分ループ
+		for(i=0;i<fd_max;i++) {
 			if(session[i] && (pl_sd=session[i]->session_data) && pl_sd->state.auth){
 				if(m == pl_sd->bl.m && pl_sd->pvp_timer == -1) {
 					pl_sd->pvp_timer = add_timer(gettick_cache + 200, pc_calc_pvprank_timer, pl_sd->bl.id, 0);
@@ -5669,15 +5646,15 @@ int buildin_pvpoff(struct script_state *st)
 	struct map_session_data *pl_sd=NULL;
 
 	str=conv_str(st,& (st->stack->stack_data[st->start+2]));
-	m = map_mapname2mapid(str); // map id on this server (m == -1 if not in actual map-server)
-	if (m >= 0 && map[m].flag.pvp) { // what's about map on other map-servers?
+	m = map_mapname2mapid(str); // Map ID on this server (m == -1 if not in actual map-server)
+	if (m >= 0 && map[m].flag.pvp) { // What about maps on other map-servers?
 		map[m].flag.pvp = 0;
 		clif_send0199(m, 0);
 
-		if (battle_config.pk_mode) // disable ranking options if pk_mode is on [Valaris]
+		if (battle_config.pk_mode) // Disable ranking options if pk_mode is on [Valaris]
 			return 0;
 
-		for(i=0;i<fd_max;i++) { //人数分ループ
+		for(i=0;i<fd_max;i++) {
 			if (session[i] && (pl_sd=session[i]->session_data) && pl_sd->state.auth){
 				if (m == pl_sd->bl.m) {
 					clif_pvpset(pl_sd, 0, 0, 2);
@@ -5698,8 +5675,8 @@ int buildin_gvgon(struct script_state *st) {
 	char *str;
 
 	str = conv_str(st, &(st->stack->stack_data[st->start + 2]));
-	m = map_mapname2mapid(str); // map id on this server (m == -1 if not in actual map-server)
-	if (m >= 0 && !map[m].flag.gvg) { // what's about map on other map-servers?
+	m = map_mapname2mapid(str); // Map ID on this server (m == -1 if not in actual map-server)
+	if (m >= 0 && !map[m].flag.gvg) { // What about maps on other map-servers?
 		map[m].flag.gvg = 1;
 		clif_send0199(m, 3);
 	}
@@ -5711,8 +5688,8 @@ int buildin_gvgoff(struct script_state *st) {
 	char *str;
 
 	str = conv_str(st, &(st->stack->stack_data[st->start + 2]));
-	m = map_mapname2mapid(str); // map id on this server (m == -1 if not in actual map-server)
-	if (m >= 0 && map[m].flag.gvg) { // what's about map on other map-servers?
+	m = map_mapname2mapid(str); // Map ID on this server (m == -1 if not in actual map-server)
+	if (m >= 0 && map[m].flag.gvg) { // What about maps on other map-servers?
 		map[m].flag.gvg = 0;
 		clif_send0199(m, 0);
 	}
@@ -5737,8 +5714,8 @@ int buildin_emotion(struct script_state *st)
 
 int buildin_maprespawnguildid_sub(struct block_list *bl,va_list ap)
 {
-	//int g_id = va_arg(ap,int);
-	//int flag = va_arg(ap,int);
+	// int g_id = va_arg(ap,int);
+	// int flag = va_arg(ap,int);
 	struct mob_data *md = NULL;
 
  if (bl->type == BL_MOB)
@@ -5758,9 +5735,9 @@ int buildin_maprespawnguildid(struct script_state *st)
 	unsigned int flag = conv_num(st, &(st->stack->stack_data[st->start + 4]));
 	unsigned int i;
 
-	int m = map_mapname2mapid(mapname); // map id on this server (m == -1 if not in actual map-server)
+	int m = map_mapname2mapid(mapname); // Map ID on this server (m == -1 if not in actual map-server)
 
-	if (m < 0) // what's about map on other map-servers?
+	if (m < 0) // What about maps on other map-servers?
 		return 0;
 
 	if(flag&4)
@@ -5784,19 +5761,19 @@ int buildin_maprespawnguildid(struct script_state *st)
 }
 
 int buildin_agitstart(struct script_state *st) {
-	if (agit_flag == 1) return 1; // Agit already Start.
+	if (agit_flag == 1) return 1; // Agit already started
 
-	agit_flag = 1; // 0: WoE not starting, Woe is running
+	agit_flag = 1; // 0: WoE not running, Woe is running
 	guild_agit_start();
 
 	return 0;
 }
 
 int buildin_agitend(struct script_state *st) {
-	if (agit_flag == 0) return 1; // Agit already End.
+	if (agit_flag == 0) return 1; // Agit already ended
 
-	pc_guardiansave(); // save guardians (if necessary)
-	agit_flag = 0; // 0: WoE not starting, Woe is running
+	pc_guardiansave(); // Save guardians (if necessary)
+	agit_flag = 0; // 0: WoE not running, Woe is running
 	guild_agit_end();
 
 	return 0;
@@ -5816,10 +5793,10 @@ int buildin_agitcheck(struct script_state *st) {
 	cond = conv_num(st, &(st->stack->stack_data[st->start+2]));
 
 	if (cond == 0) {
-		push_val(st->stack, C_INT, (int)agit_flag); // 0: WoE not starting, Woe is running
+		push_val(st->stack, C_INT, (int)agit_flag); // 0: WoE not running, Woe is running
 	} else {
 		sd = script_rid2sd(st);
-		pc_setreg(sd, add_str("@agit_flag"), (int)agit_flag); // 0: WoE not starting, Woe is running
+		pc_setreg(sd, add_str("@agit_flag"), (int)agit_flag); // 0: WoE not running, Woe is running
 	}
 
 	return 0;
@@ -5933,7 +5910,7 @@ int buildin_setcastledata(struct script_state *st)
 	for(i=0;i<MAX_GUILDCASTLE;i++){
 		if( (gc=guild_castle_search(i)) != NULL ){
 			if(strcmp(mapname,gc->map_name)==0){
-				// Save Data byself First
+				// Save data by self first
 				switch(idx){
 				case 1: gc->guild_id = value; break;
 				case 2: gc->economy = value; break;
@@ -6002,7 +5979,7 @@ int buildin_getequipcardcnt(struct script_state *st)
 	num=conv_num(st,& (st->stack->stack_data[st->start+2]));
 	sd=script_rid2sd(st);
 	i=pc_checkequip(sd,equip[num-1]);
-	if(sd->status.inventory[i].card[0] == 0x00ff){ // 製造武器はカードなし
+	if(sd->status.inventory[i].card[0] == 0x00ff){
 		push_val(st->stack,C_INT,0);
 		return 0;
 	}
@@ -6033,7 +6010,7 @@ int buildin_successremovecards(struct script_state *st)
 	num=conv_num(st,& (st->stack->stack_data[st->start+2]));
 	sd=script_rid2sd(st);
 	i=pc_checkequip(sd,equip[num-1]);
-	if(sd->status.inventory[i].card[0]==0x00ff){ // 製造武器は処理しない
+	if(sd->status.inventory[i].card[0]==0x00ff){
 		return 0;
 	}
 	do{
@@ -6047,21 +6024,21 @@ int buildin_successremovecards(struct script_state *st)
 			item_tmp.attribute = 0;
 			item_tmp.card[0]=0,item_tmp.card[1]=0,item_tmp.card[2]=0,item_tmp.card[3]=0;
 
-			if ((flag = pc_additem(sd, &item_tmp, 1))) { // 持てないならドロップ
+			if ((flag = pc_additem(sd, &item_tmp, 1))) {
 				clif_additem(sd, 0, 0, flag);
 				map_addflooritem(&item_tmp, 1, sd->bl.m, sd->bl.x, sd->bl.y, NULL, NULL, NULL, sd->bl.id, 0);
 			}
 		}
 	}while(c--);
 
-	if(cardflag == 1){	// カードを取り除いたアイテム所得
+	if(cardflag == 1){
 		flag=0;
 		item_tmp.id=0,item_tmp.nameid=sd->status.inventory[i].nameid;
 		item_tmp.equip = 0, item_tmp.identify = 1, item_tmp.refine = sd->status.inventory[i].refine;
 		item_tmp.attribute=sd->status.inventory[i].attribute;
 		item_tmp.card[0]=0,item_tmp.card[1]=0,item_tmp.card[2]=0,item_tmp.card[3]=0;
 		pc_delitem(sd,i,1,0);
-		if ((flag = pc_additem(sd, &item_tmp, 1))) { // もてないならドロップ
+		if ((flag = pc_additem(sd, &item_tmp, 1))) {
 			clif_additem(sd, 0, 0, flag);
 			map_addflooritem(&item_tmp, 1, sd->bl.m, sd->bl.x, sd->bl.y, NULL, NULL, NULL, sd->bl.id, 0);
 		}
@@ -6088,7 +6065,7 @@ int buildin_failedremovecards(struct script_state *st)
 	typefail=conv_num(st,& (st->stack->stack_data[st->start+3]));
 	sd=script_rid2sd(st);
 	i=pc_checkequip(sd,equip[num-1]);
-	if(sd->status.inventory[i].card[0]==0x00ff){ // 製造武器は処理しない
+	if(sd->status.inventory[i].card[0]==0x00ff){
 		return 0;
 	}
 	do {
@@ -6098,7 +6075,7 @@ int buildin_failedremovecards(struct script_state *st)
 
 			cardflag = 1;
 
-			if(typefail == 2){ // 武具のみ損失なら、カードは受け取らせる
+			if(typefail == 2){
 				item_tmp.id=0,item_tmp.nameid=sd->status.inventory[i].card[c-1];
 				item_tmp.equip = 0, item_tmp.identify = 1, item_tmp.refine = 0;
 				item_tmp.attribute=0;
@@ -6113,12 +6090,12 @@ int buildin_failedremovecards(struct script_state *st)
 
 	if(cardflag == 1){
 
-		if(typefail == 0 || typefail == 2){	// 武具損失
+		if(typefail == 0 || typefail == 2){
 			pc_delitem(sd,i,1,0);
 			clif_misceffect(&sd->bl,2);
 			return 0;
 		}
-		if(typefail == 1){	// カードのみ損失（武具を返す）
+		if(typefail == 1){
 			flag=0;
 			item_tmp.id=0,item_tmp.nameid=sd->status.inventory[i].nameid;
 			item_tmp.equip = 0, item_tmp.identify = 1, item_tmp.refine = sd->status.inventory[i].refine;
@@ -6137,7 +6114,7 @@ int buildin_failedremovecards(struct script_state *st)
 	return 0;
 }
 
-int buildin_mapwarp(struct script_state *st)	// Added by RoVeRT
+int buildin_mapwarp(struct script_state *st) // [RoVeRT]
 {
 	int x, y, m;
 	char *str;
@@ -6148,16 +6125,16 @@ int buildin_mapwarp(struct script_state *st)	// Added by RoVeRT
 	x=conv_num(st, &(st->stack->stack_data[st->start + 4]));
 	y=conv_num(st, &(st->stack->stack_data[st->start + 5]));
 
-	if ((m = map_mapname2mapid(mapname)) < 0) // map id on this server (m == -1 if not in actual map-server)
+	if ((m = map_mapname2mapid(mapname)) < 0) // Map ID on this server (m == -1 if not in actual map-server)
 		return 0;
-	// what's about map on other map-servers?
+	// What about maps on other map-servers?
 
 	map_foreachinarea(buildin_areawarp_sub, m, 0, 0, map[m].xs, map[m].ys, BL_PC, str, x, y);
 
 	return 0;
 }
 
-int buildin_cmdothernpc(struct script_state *st)	// Added by RoVeRT
+int buildin_cmdothernpc(struct script_state *st) // [RoVeRT]
 {
 	char *npc,*command;
 
@@ -6169,7 +6146,7 @@ int buildin_cmdothernpc(struct script_state *st)	// Added by RoVeRT
 	return 0;
 }
 
-int buildin_inittimer(struct script_state *st)	// Added by RoVeRT
+int buildin_inittimer(struct script_state *st) // [RoVeRT]
 {
 //	struct npc_data *nd = (struct npc_data*)map_id2bl(st->oid);
 
@@ -6180,7 +6157,7 @@ int buildin_inittimer(struct script_state *st)	// Added by RoVeRT
 	return 0;
 }
 
-int buildin_stoptimer(struct script_state *st)	// Added by RoVeRT
+int buildin_stoptimer(struct script_state *st) // [RoVeRT]
 {
 //	struct npc_data *nd = (struct npc_data*)map_id2bl(st->oid);
 
@@ -6190,7 +6167,7 @@ int buildin_stoptimer(struct script_state *st)	// Added by RoVeRT
 	return 0;
 }
 
-int buildin_mobcount_sub(struct block_list *bl,va_list ap)	// Added by RoVeRT
+int buildin_mobcount_sub(struct block_list *bl,va_list ap) // [ RoVeRT]
 {
 	char *event=va_arg(ap,char *);
 	int *c=va_arg(ap,int *);
@@ -6201,14 +6178,14 @@ int buildin_mobcount_sub(struct block_list *bl,va_list ap)	// Added by RoVeRT
 	return 0;
 }
 
-int buildin_mobcount(struct script_state *st)	// Added by RoVeRT
+int buildin_mobcount(struct script_state *st)	// [ RoVeRT]
 {
 	char *mapname, *event;
 	int m, c = 0;
 	mapname = conv_str(st, &(st->stack->stack_data[st->start + 2]));
 	event = conv_str(st, &(st->stack->stack_data[st->start + 3]));
 
-	if ((m = map_mapname2mapid(mapname)) < 0) { // map id on this server (m == -1 if not in actual map-server)
+	if ((m = map_mapname2mapid(mapname)) < 0) { // Map ID on this server (m == -1 if not in actual map-server)
 		push_val(st->stack, C_INT, -1);
 		return 0;
 	}
@@ -6315,7 +6292,7 @@ int buildin_warppartner(struct script_state *st) {
 }
 
 /*================================================
- * Script for Displaying MOB Information [Valaris]
+ * Function for displayingmonster Information [Valaris]
  *------------------------------------------------
  */
 int buildin_strmobinfo(struct script_state *st)
@@ -6324,9 +6301,9 @@ int buildin_strmobinfo(struct script_state *st)
 	int class = conv_num(st, &(st->stack->stack_data[st->start+3]));
 
 	if (class >= (MAX_MOB_DB * 2))
-		class -= (MAX_MOB_DB * 2); // big
+		class -= (MAX_MOB_DB * 2); // Big
 	else if (class >= MAX_MOB_DB)
-		class -= MAX_MOB_DB; // small
+		class -= MAX_MOB_DB; // Small
 
 	if ((class >= 0 && class <= 1000) || class >= MAX_MOB_DB)
 		return 0;
@@ -6393,7 +6370,7 @@ int buildin_guardian(struct script_state *st)
 }
 
 /*================================================
- * Script for Displaying Guardian Info [Valaris]
+ * Function for displaying Guardian info [Valaris]
  *------------------------------------------------
  */
 int buildin_guardianinfo(struct script_state *st)
@@ -6454,23 +6431,23 @@ int buildin_petskillbonus(struct script_state *st)
 	if (pd == NULL)
 		return 0;
 
-	// initialise bonuses
+	// Initialize bonuses
 	pd->skillbonustype = conv_num(st, &(st->stack->stack_data[st->start+2]));
 	pd->skillbonusval = conv_num(st, &(st->stack->stack_data[st->start+3]));
 	pd->skillduration = conv_num(st, &(st->stack->stack_data[st->start+4]));
 	pd->skilltimer = conv_num(st, &(st->stack->stack_data[st->start+5]));
 
 	if (pd->state.skillbonus == -1)
-		pd->state.skillbonus = 0; // waiting state
+		pd->state.skillbonus = 0; // Waiting state
 
-	// wait for timer to start
+	// Wait for timer to start
 	pd->skillbonustimer = add_timer(gettick_cache + pd->skilltimer * 1000, pet_skill_bonus_timer, sd->bl.id, 0);
 
 	return 0;
 }
 
 /*==========================================
- * pet looting [Valaris]
+ * petloot [Valaris]
  *------------------------------------------
  */
 int buildin_petloot(struct script_state *st)
@@ -6486,7 +6463,7 @@ int buildin_petloot(struct script_state *st)
 	max=conv_num(st,& (st->stack->stack_data[st->start+2]));
 
 	if(max < 1)
-		max = 1;	//Let'em loot at least 1 item.
+		max = 1;	// Let them loot at least 1 item
 	else if (max > PETLOOT_SIZE)
 		max = PETLOOT_SIZE;
 
@@ -6538,7 +6515,7 @@ int buildin_getskilllist(struct script_state *st)
 		if (sd->status.skill[i].id > 0 && sd->status.skill[i].lv > 0){
 			pc_setreg(sd, add_str("@skilllist_id")  + (j << 24), sd->status.skill[i].id);
 			pc_setreg(sd, add_str("@skilllist_lv")  + (j << 24), sd->status.skill[i].lv);
-			pc_setreg(sd, add_str("@skilllist_flag")+ (j << 24), sd->status.skill[i].flag); // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
+			pc_setreg(sd, add_str("@skilllist_flag")+ (j << 24), sd->status.skill[i].flag); // Flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
 			j++;
 		}
 	}
@@ -6642,7 +6619,7 @@ int buildin_soundeffectall(struct script_state *st)
 }
 
 /*==========================================
- * pet status recovery [Valaris]
+ * Pet Status Recovery [Valaris]
  *------------------------------------------
  */
 int buildin_petrecovery(struct script_state *st)
@@ -6665,7 +6642,7 @@ int buildin_petrecovery(struct script_state *st)
 }
 
 /*==========================================
- * pet healing [Valaris]
+ * Pet Healing [Valaris]
  *------------------------------------------
  */
 int buildin_petheal(struct script_state *st)
@@ -6688,7 +6665,7 @@ int buildin_petheal(struct script_state *st)
 }
 
 /*==========================================
- * pet magnificat [Valaris]
+ * Pet Magnificat [Valaris]
  *------------------------------------------
  */
 int buildin_petmag(struct script_state *st)
@@ -6712,7 +6689,7 @@ int buildin_petmag(struct script_state *st)
 }
 
 /*==========================================
- * pet attack skills [Valaris]
+ * Pet Attack Skills [Valaris]
  *------------------------------------------
  */
 int buildin_petskillattack(struct script_state *st)
@@ -6782,7 +6759,7 @@ int buildin_specialeffect(struct script_state *st) {
 	if (bl == NULL)
 		return 0;
 
-	clif_specialeffect(bl, conv_num(st, &(st->stack->stack_data[st->start + 2])), 0); // flag: 0: player see in the area (normal), 1: only player see only by player, 2: all players in a map that see only their (not see others), 3: all players that see only their (not see others)
+	clif_specialeffect(bl, conv_num(st, &(st->stack->stack_data[st->start + 2])), 0); // Flag: 0: player see in the area (normal), 1: only player see only by player, 2: all players in a map that see only their (not see others), 3: all players that see only their (not see others)
 
 	return 0;
 }
@@ -6793,7 +6770,7 @@ int buildin_specialeffect2(struct script_state *st) {
 	if (sd == NULL)
 		return 0;
 
-	clif_specialeffect(&sd->bl, conv_num(st, &(st->stack->stack_data[st->start + 2])), 0); // flag: 0: player see in the area (normal), 1: only player see only by player, 2: all players in a map that see only their (not see others), 3: all players that see only their (not see others)
+	clif_specialeffect(&sd->bl, conv_num(st, &(st->stack->stack_data[st->start + 2])), 0); // Flag: 0: player see in the area (normal), 1: only player see only by player, 2: all players in a map that see only their (not see others), 3: all players that see only their (not see others)
 
 	return 0;
 }
@@ -6818,7 +6795,7 @@ int buildin_nude(struct script_state *st)
 }
 
 /*==========================================
- * gmcommand [Yor]
+ * GM command [Yor]
  *------------------------------------------
  */
 int buildin_gmcommand(struct script_state *st)
@@ -6833,13 +6810,13 @@ int buildin_gmcommand(struct script_state *st)
 		return 0;
 	cmd = conv_str(st, &(st->stack->stack_data[st->start+2]));
 
-	// void command?
+	// Void command?
 	if (cmd == NULL) {
 		printf("gmcommand in script with no message.\n");
 		return 0;
 	}
 
-	// only spaces?
+	// Only spaces?
 	i = 0;
 	while (cmd[i] != '\0' && isspace(cmd[i]))
 		i++;
@@ -6853,39 +6830,39 @@ int buildin_gmcommand(struct script_state *st)
 	strcat(output, " : ");
 	len_output = strlen(output);
 	len_charname = strlen(sd->status.name);
-	// if script doesn't have character name + " : ", add it
+	// If script doesn't have character name + " : ", add it
 	if (strncmp(cmd, output, len_output) != 0) {
-		// if script begin by " : "
+		// If script begin by " : "
 		if (strncmp(cmd, " : ", 3) == 0) // strlen(" : ") = 3
-			strncpy(output + len_output, cmd + 3, 100); // just add the name before
-		// if script begin by ": "
+			strncpy(output + len_output, cmd + 3, 100); // Just add the name before
+		// If script begin by ": "
 		else if (strncmp(cmd, ": ", 2) == 0) // strlen(": ") = 2
-			strncpy(output + len_output, cmd + 2, 100); // just add the name before
-		// if script begin by ":"
+			strncpy(output + len_output, cmd + 2, 100); // Just add the name before
+		// If script begin by ":"
 		else if (strncmp(cmd, ":", 1) == 0) // strlen(":") = 1
-			strncpy(output + len_output, cmd + 1, 100); // just add the name before
-		// if script begin by " :"
+			strncpy(output + len_output, cmd + 1, 100); // Just add the name before
+		// If script begin by " :"
 		else if (strncmp(cmd, " :", 2) == 0) // strlen(" :") = 2
-			strncpy(output + len_output, cmd + 2, 100); // just add the name before
-		// if script begin by the character name
+			strncpy(output + len_output, cmd + 2, 100); // Just add the name before
+		// If script begin by the character name
 		else if (strncmp(cmd, sd->status.name, len_charname) == 0) {
-			// check for following symbols
+			// Check for following symbols
 			if (strncmp(cmd + len_charname, ": ", 2) == 0) // strlen(": ") = 2
-				strncpy(output + len_output, cmd + len_charname + 2, 100); // just add correct syntax
+				strncpy(output + len_output, cmd + len_charname + 2, 100); // Just add correct syntax
 			else if (strncmp(cmd + len_charname, ":", 1) == 0) // strlen(":") = 1
-				strncpy(output + len_output, cmd + len_charname + 1, 100); // just add correct syntax
+				strncpy(output + len_output, cmd + len_charname + 1, 100); // Just add correct syntax
 			else if (strncmp(cmd + len_charname, " :", 2) == 0) // strlen(" :") = 2
-				strncpy(output + len_output, cmd + len_charname + 2, 100); // just add correct syntax
+				strncpy(output + len_output, cmd + len_charname + 2, 100); // Just add correct syntax
 			else
-				strncpy(output + len_output, cmd + len_charname, 100); // add the " : " add the name before
+				strncpy(output + len_output, cmd + len_charname, 100); // Add the " : " add the name before
 		// if no character name and no " : "
 		} else
-			strncpy(output + len_output, cmd, 100); // then add complete command
-	// if command if already complete
+			strncpy(output + len_output, cmd, 100); // Then add complete command
+	// If command if already complete
 	} else
 		strncpy(output, cmd, 127);
 
-	// replace '@' by correct symbol
+	// Replace '@' by correct symbol
 	i = len_charname + 3; // " : " (3)
 	while (output[i] != '\0' && isspace(output[i]))
 		i++;
@@ -6893,7 +6870,7 @@ int buildin_gmcommand(struct script_state *st)
 		output[i] = GM_Symbol();
 	else if (output[i] != GM_Symbol()) {
 		printf("'gmcommand' in script with no valid command (not begining by '@' or %c).\n", GM_Symbol());
-		// don't stop, it's possible it's Main_symbol or @char_symbol
+		// Don't stop, its possible its Main_symbol or @char_symbol
 		printf("If you use special symbol for 'main' channel or to replace '@char'\n");
 		printf("please use '@main ' or complete GM command.\n");
 	}
@@ -7076,7 +7053,7 @@ int buildin_select(struct script_state *st)
 		}
 		clif_scriptmenu(script_rid2sd(st), st->oid, buf);
 		FREE(buf);
-	} else if (sd->npc_menu == 0xff) { // cansel
+	} else if (sd->npc_menu == 0xff) { // Cancel
 		sd->state.menu_or_input = 0;
 		st->state = END;
 	} else {
@@ -7111,7 +7088,7 @@ int buildin_getmapmobs(struct script_state *st)
 		if (sd)
 			m = sd->bl.m;
 	} else
-		m = map_mapname2mapid(str); // map id on this server (m == -1 if not in actual map-server)
+		m = map_mapname2mapid(str); // Map ID on this server (m == -1 if not in actual map-server)
 
 	if (m < 0) {
 		push_val(st->stack, C_INT, -1);
@@ -7254,8 +7231,8 @@ int buildin_message(struct script_state *st)
 
 #if ENABLE_NLS
 	if (strcmp(msg, "") != 0)
-		msg = gettext(msg); // MagicalTux
-#endif /* ENABLE_NLS */
+		msg = gettext(msg); // [MagicalTux]
+#endif // ENABLE_NLS
 	clif_displaymessage(pl_sd->fd, msg);
 
 	return 0;
@@ -7310,7 +7287,7 @@ int buildin_hasitems(struct script_state *st)
 	return 0;
 }
 
-// change npc walkspeed [Valaris]
+// Change an NPC's walkspeed [Valaris]
 int buildin_npcspeed(struct script_state *st)
 {
 	struct npc_data *nd=(struct npc_data *)map_id2bl(st->oid);
@@ -7324,7 +7301,7 @@ int buildin_npcspeed(struct script_state *st)
 
 	return 0;
 }
-// make an npc walk to a position [Valaris]
+// Makes an NPC walk to a position [Valaris]
 int buildin_npcwalkto(struct script_state *st)
 {
 	struct npc_data *nd=(struct npc_data *)map_id2bl(st->oid);
@@ -7339,7 +7316,7 @@ int buildin_npcwalkto(struct script_state *st)
 
 	return 0;
 }
-// stop an npc's movement [Valaris]
+// Stops an npc's movement [Valaris]
 int buildin_npcstop(struct script_state *st)
 {
 	struct npc_data *nd=(struct npc_data *)map_id2bl(st->oid);
@@ -7364,31 +7341,31 @@ int buildin_getlook(struct script_state *st){
 	type = conv_num(st, &(st->stack->stack_data[st->start+2]));
 	val=-1;
 	switch(type){
-	case LOOK_HAIR: //1
+	case LOOK_HAIR: // 1
 		val=sd->status.hair;
 		break;
-	case LOOK_WEAPON: //2
+	case LOOK_WEAPON: // 2
 		val=sd->status.weapon;
 		break;
-	case LOOK_HEAD_BOTTOM: //3
+	case LOOK_HEAD_BOTTOM: // 3
 		val=sd->status.head_bottom;
 		break;
-	case LOOK_HEAD_TOP: //4
+	case LOOK_HEAD_TOP: // 4
 		val=sd->status.head_top;
 		break;
-	case LOOK_HEAD_MID: //5
+	case LOOK_HEAD_MID: // 5
 		val=sd->status.head_mid;
 		break;
-	case LOOK_HAIR_COLOR: //6
+	case LOOK_HAIR_COLOR: // 6
 		val=sd->status.hair_color;
 		break;
-	case LOOK_CLOTHES_COLOR: //7
+	case LOOK_CLOTHES_COLOR: // 7
 		val=sd->status.clothes_color;
 		break;
-	case LOOK_SHIELD: //8
+	case LOOK_SHIELD: // 8
 		val=sd->status.shield;
 		break;
-	case LOOK_SHOES: //9
+	case LOOK_SHOES: // 9
 		break;
 	}
 
@@ -7398,9 +7375,9 @@ int buildin_getlook(struct script_state *st){
 }
 
 /*==========================================
-  *     get char save point. argument: 0- map name, 1- x, 2- y
+  * get char save point. argument: 0- map name, 1- x, 2- y
   *------------------------------------------
-*/
+	*/
 int buildin_getsavepoint(struct script_state *st)
 {
 	int x, y, type;
@@ -7483,13 +7460,13 @@ int buildin_getmapxy(struct script_state *st){
 	CALLOC(mapname, char, 17); // 17 + NULL
 
 	switch (type){
-	case 0: // Get Character Position
+	case 0: // Get character position
 		if (st->end>st->start+6)
 			sd = map_nick2sd(conv_str(st, &(st->stack->stack_data[st->start+6])));
 		else
 			sd = script_rid2sd(st);
 
-		if (sd == NULL) { // wrong char name or char offline
+		if (sd == NULL) { // Wrong char name or char is offline
 			push_val(st->stack,C_INT,-1);
 			return 0;
 		}
@@ -7497,16 +7474,16 @@ int buildin_getmapxy(struct script_state *st){
 		x = sd->bl.x;
 		y = sd->bl.y;
 		strncpy(mapname, sd->mapname, 16); // 17 - NULL
-		//printf(">>>>%s %d %d\n", mapname, x, y);
+		// printf(">>>>%s %d %d\n", mapname, x, y);
 		break;
 
-	case 1: // Get NPC Position
+	case 1: // Get NPC position
 		if( st->end > st->start+6 )
 			nd = npc_name2id(conv_str(st,& (st->stack->stack_data[st->start+6])));
 		else
 			nd = (struct npc_data *)map_id2bl(st->oid);
 
-		if (nd == NULL) { // wrong npc name or char offline
+		if (nd == NULL) { // Wrong npc name or char offline
 			push_val(st->stack,C_INT,-1);
 			return 0;
 		}
@@ -7514,42 +7491,42 @@ int buildin_getmapxy(struct script_state *st){
 		x = nd->bl.x;
 		y = nd->bl.y;
 		strncpy(mapname, map[nd->bl.m].name, 16); // 17 - NULL
-		//printf(">>>>%s %d %d\n", mapname, x, y);
+		// printf(">>>>%s %d %d\n", mapname, x, y);
 		break;
 
-	case 2: // Get Pet Position
+	case 2: // Get pet position
 		if (st->end>st->start+6)
 			sd = map_nick2sd(conv_str(st, &(st->stack->stack_data[st->start+6])));
 		else
 			sd = script_rid2sd(st);
 
-		if (sd == NULL) { // wrong char name or char offline
+		if (sd == NULL) { // Wrong char name or char offline
 			push_val(st->stack,C_INT,-1);
 			return 0;
 		}
 
 		pd = sd->pd;
 
-		if (pd == NULL) { // ped data not found
+		if (pd == NULL) { // Pet data not found
 			push_val(st->stack,C_INT,-1);
 			return 0;
 		}
 		x = pd->bl.x;
 		y = pd->bl.y;
 		strncpy(mapname, map[pd->bl.m].name, 16); // 17 - NULL
-		//printf(">>>>%s %d %d\n", mapname, x, y);
+		// printf(">>>>%s %d %d\n", mapname, x, y);
 		break;
 
-	case 3: // Get Mob Position
+	case 3: // Get mob position
 		push_val(st->stack,C_INT,-1);
 		return 0;
 
-	default: // Wrong type parameter
+	default: // Wrong type of parameter
 		push_val(st->stack,C_INT,-1);
 		return 0;
 	}
 
-	//Set MapName$
+	// Set MapName$
 	num=st->stack->stack_data[st->start+2].u.num;
 	name=(char *)(str_buf+str_data[num&0x00ffffff].str);
 	prefix=*name;
@@ -7561,7 +7538,7 @@ int buildin_getmapxy(struct script_state *st){
 
 	set_reg(sd, num, name, (void*)mapname);
 
-	//Set MapX
+	// Set MapX
 	num=st->stack->stack_data[st->start+3].u.num;
 	name=(char *)(str_buf+str_data[num&0x00ffffff].str);
 	prefix=*name;
@@ -7572,7 +7549,7 @@ int buildin_getmapxy(struct script_state *st){
 		sd = NULL;
 	set_reg(sd, num, name, (void*)x);
 
-	//Set MapY
+	// Set MapY
 	num=st->stack->stack_data[st->start+4].u.num;
 	name=(char *)(str_buf+str_data[num&0x00ffffff].str);
 	prefix=*name;
@@ -7584,7 +7561,7 @@ int buildin_getmapxy(struct script_state *st){
 
 	set_reg(sd,num,name,(void*)y);
 
-	//Return Success value
+	// Return success value
 	push_val(st->stack,C_INT,0);
 
 	return 0;
@@ -7646,7 +7623,7 @@ int buildin_logmes(struct script_state *st) {
 	else
 		sprintf(log_mes, "%s [%d(lvl:%d)]: %s" RETCODE, sd->status.name, sd->status.account_id, sd->GM_level, st->stack->stack_data[st->start+2].u.str);
 
-	// send log to inter-server
+	// Send log to inter-server
 	intif_send_log(LOG_SCRIPT, log_mes); // 0x3008 <packet_len>.w <log_type>.B <message>.?B (types: 0 GM commands, 1: Trades, 2: Scripts, 3: Vending)
 
 	FREE(log_mes);
@@ -7670,13 +7647,13 @@ int buildin_summon(struct script_state *st)
 			event = conv_str(st, &(st->stack->stack_data[st->start+4]));
 
 		if (_class >= (MAX_MOB_DB * 2)) {
-			_class -= (MAX_MOB_DB * 2); // big
-			size = (MAX_MOB_DB * 2); // +4000 big
+			_class -= (MAX_MOB_DB * 2); // Big
+			size = (MAX_MOB_DB * 2); // + 4000 Big
 		} else if (_class >= MAX_MOB_DB) {
-			_class -= MAX_MOB_DB; // small
-			size = (MAX_MOB_DB * 2); // +4000 big
+			_class -= MAX_MOB_DB; // Small
+			size = (MAX_MOB_DB * 2); // + 4000 Big
 		} else {
-			size = 0; // normal
+			size = 0; // Normal
 		}
 
 		if ((_class >= 0 && _class <= 1000) || _class >= MAX_MOB_DB)
@@ -7688,9 +7665,9 @@ int buildin_summon(struct script_state *st)
 			md->state.special_mob_ai = 1; // 0: nothing, 1: cannibalize, 2-3: spheremine
 			md->mode = mob_db[md->class].mode | 0x04;
 			md->deletetimer = add_timer(gettick_cache + 60000, mob_timer_delete, id, 0);
-			clif_misceffect2(&md->bl, 344); /* display teleport of monster */
+			clif_misceffect2(&md->bl, 344); // Display teleport of monster
 		}
-		/*clif_skill_poseffect(&sd->bl, AM_CALLHOMUN, 1, sd->bl.x, sd->bl.y, gettick_cache); - don't display the skill to other */
+		// clif_skill_poseffect(&sd->bl, AM_CALLHOMUN, 1, sd->bl.x, sd->bl.y, gettick_cache); - don't display the skill to other
 	}
 
 	return 0;
@@ -7712,7 +7689,7 @@ int buildin_day(struct script_state *st)
 }
 
 /*==========================================
- * Checks whether it is daytime/nighttime
+ * Checks whether it is day-time/night-time
  *------------------------------------------
  */
 int buildin_isnight(struct script_state *st) {
@@ -7732,7 +7709,7 @@ int buildin_isday(struct script_state *st) {
  * equipped - used for 2/15's cards patch [celest]
  *------------------------------------------------
  */
-// leave this here, just in case
+// Leave this here, just in case
 int buildin_isequipped(struct script_state *st)
 {
 	struct map_session_data *sd;
@@ -7837,9 +7814,6 @@ int buildin_isequippedcnt(struct script_state *st)
 	return 0;
 }
 
-//
-// 実行部main
-//
 /*==========================================
  * コマンドの読み取り
  *------------------------------------------
@@ -8193,22 +8167,21 @@ int run_func(struct script_state *st)
 	pop_stack(st->stack,start_sp,end_sp);
 
 	if(st->state==RETFUNC){
-		// ユーザー定義関数からの復帰
 		int olddefsp=st->defsp;
 		int i;
 
-		pop_stack(st->stack,st->defsp,start_sp);	// 復帰に邪魔なスタック削除
+		pop_stack(st->stack,st->defsp,start_sp);
 		if(st->defsp<4 || st->stack->stack_data[st->defsp-1].type!=C_RETINFO){
 			printf("script:run_func(return) return without callfunc or callsub!\n");
 			st->state=END;
 			return 0;
 		}
-		i = conv_num(st,& (st->stack->stack_data[st->defsp-4]));				// 引数の数所得
-		st->pos=conv_num(st,& (st->stack->stack_data[st->defsp-1]));			// スクリプト位置の復元
-		st->script=(char*)conv_num(st,& (st->stack->stack_data[st->defsp-2]));	// スクリプトを復元
-		st->defsp=conv_num(st,& (st->stack->stack_data[st->defsp-3]));			// 基準スタックポインタを復元
+		i = conv_num(st,& (st->stack->stack_data[st->defsp-4]));
+		st->pos=conv_num(st,& (st->stack->stack_data[st->defsp-1]));
+		st->script=(char*)conv_num(st,& (st->stack->stack_data[st->defsp-2]));
+		st->defsp=conv_num(st,& (st->stack->stack_data[st->defsp-3]));
 
-		pop_stack(st->stack,olddefsp-4-i,olddefsp);		// 要らなくなったスタック(引数と復帰用データ)削除
+		pop_stack(st->stack,olddefsp-4-i,olddefsp);
 
 		st->state=GOTO;
 	}
@@ -8333,7 +8306,6 @@ int run_script_main(unsigned char *script, int pos, int rid, int oid, struct scr
 	}
 
 	if (st->state != END) {
-		// 再開するためにスタック情報を保存
 		struct map_session_data *sd = map_id2sd(st->rid);
 		if (sd /* && sd->npc_stackbuf == NULL*/){
 			FREE(sd->npc_stackbuf);
@@ -8368,7 +8340,6 @@ int run_script(unsigned char *script, int pos, int rid, int oid)
 		return -1;
 
 	if (sd && sd->npc_stackbuf && sd->npc_scriptroot == rootscript) {
-		// 前回のスタックを復帰
 		script = sd->npc_script;
 		stack.sp = sd->npc_stack;
 		stack.sp_max = sd->npc_stackmax;
@@ -8376,7 +8347,6 @@ int run_script(unsigned char *script, int pos, int rid, int oid)
 		memcpy(stack.stack_data, sd->npc_stackbuf, sizeof(struct script_data) * stack.sp_max);
 		FREE(sd->npc_stackbuf);
 	}else {
-		// スタック初期化
 		stack.sp = 0;
 		stack.sp_max = 64;
 		CALLOC(stack.stack_data, struct script_data, stack.sp_max);
@@ -8569,7 +8539,7 @@ int script_config_read(char *cfgName) {
 	CALLOC(script_config.logout_event_name, char, 25); // 24 + NULL
 	CALLOC(script_config.loadmap_event_name, char, 25); // 24 + NULL
 
-	// set default event_name
+	// Set default event_name
 	strncpy(script_config.die_event_name, "PCDieEvent", 24);
 	strncpy(script_config.kill_event_name, "PCKillEvent", 24);
 	strncpy(script_config.login_event_name, "PCLoginEvent", 24);
@@ -8589,7 +8559,7 @@ int script_config_read(char *cfgName) {
 	while(fgets(line, sizeof(line), fp)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
 		if ((line[0] == '/' && line[1] == '/') || line[0] == '\0' || line[0] == '\n' || line[0] == '\r')
 			continue;
-		// it's not necessary to remove 'carriage return ('\n' or '\r')
+		// Its not necessary to remove 'carriage return ('\n' or '\r')
 
 		memset(w2, 0, sizeof(w2));
 		if (sscanf(line,"%[^:]: %[^\r\n]", w1, w2) != 2)

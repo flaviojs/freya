@@ -4,6 +4,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+01/12/07
+	* Added: Two new script commands - 'dialog' & 'wait' [Tsuyuki]
+	 - Use 'mes' and 'next' code, added to make us more similar to Aegis
+
 01/10/07
 	* Updated: Beins/Thor Dungeon warps once again (Thanks to $ephiroth) [Tsuyuki]
 	* Corrected: Horn Card's bonuses [Tsuyuki]
