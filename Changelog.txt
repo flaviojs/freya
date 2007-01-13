@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/13/07
+	* Added: Beins field spawns, and Thor Volcano spawns (Thanks to $ephiroth) [Tsuyuki]
 	* Improved: Enhanced the jobchange, pc_calc_base_job and pc_calc_base_job2 pc.c functions [Tsuyuki]
 	* Fixed: Soul Linker/Star Gladiator job change skill point calculation [Tsuyuki]
 	* Fixed: Possibly fixed B.S.S Priest skill (can't test.. someone else test?) [Tsuyuki]
