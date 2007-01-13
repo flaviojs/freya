@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/13/07
+	* Fixed: Spirit of the Assassin now stacks with EDP [Tsuyuki]
+	 - Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=105578&postdays=0&postorder=asc&start=15
 	* Fixed: Bug with Quest Skills not returning after rebirth [Tsuyuki]
 	* Fixed: Problem where you could not leave the Valkyrie Realm in certain situations [Tsuyuki]
 	* Added: Quest skill saving/returning functions to the custom Job Changer [Tsuyuki]
