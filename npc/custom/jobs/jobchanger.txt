@@ -1,11 +1,9 @@
 //===== Freya Script =========================================
 //= Job Changer Script
 //===== By: ==================================================
-//= eAthena Scripting Team
-//= Yor
-//= Tsuyuki
+//= eAthena, Yor, Tsuyuki
 //===== Current Version: =====================================
-//= 2.6
+//= 2.7
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -24,6 +22,7 @@
 //= 2.4 Major rewrite, added support for new classes (+5 kb) [Tsuyuki]
 //= 2.5 Fixed several bugs, more optimizations [Tsuyuki]
 //= 2.6 Added GM Menu for easier management (GMLv40 or Above) [Tsuyuki]
+//= 2.7 Script now returns quest skills after rebirth [Tsuyuki]
 //============================================================
 
 
@@ -89,10 +88,11 @@ L_Regular:
 		close;
 
 	L_Change:
+		if (skillpoint != 0) goto L_SkillPoints;
 		if (checkcart(0)) goto L_ExtraFail;
 		if (checkfalcon(0)) goto L_ExtraFail;
 		if (checkriding(0)) goto L_ExtraFail;
-		if (weight > 20000) goto L_WeightFail;
+		if (Weight > 0) goto L_WeightFail;
 
 		mes "[Amber]";
 		mes "We shall start the ceremony....";
@@ -101,16 +101,21 @@ L_Regular:
 		// Peco Classes Normalization Check
 		if (oldclass == 13) set oldclass,7;
 		if (oldclass == 21) set oldclass,14;
+		// Save Quest Skills
+		callfunc "F_SaveQuestSkills";
 		jobchange JOB_NOVICE_HIGH;
 		resetlvl(1);
+		callfunc "F_ReturnQuestSkills";
 		mes "[Amber]";
 		mes "You have been reborn...";
 		emotion 46; // Congratulations!
 		close;
 
 	L_WeightFail:
-		mes "I can't rebirth you until you lower";
-		mes "your weight under 2000..";
+		mes "[Amber]";
+		mes "I can't rebirth you until you lower your weight";
+		mes "to 0.. put all your items and equipment in storage";
+		mes "and we can continue.";
 		emotion 20; // /hmm
 		close;
 
@@ -301,6 +306,7 @@ L_Regular:
 		mes "the ^B70004BLOOD of Porings^000000 on your hands!";
 		mes "You truly are fit for the ^0005CESwordsman^000000 job! ^_^";
 		jobchange JOB_SWORDMAN_HIGH;
+		callfunc "F_ReturnQuestSkills";
 		emotion 46; // Congratulations!
 		close;
 
@@ -319,6 +325,7 @@ L_Regular:
 		mes "Go save a Damsel in Distress or something..";
 		set oldclass,0;
 		jobchange JOB_LORD_KNIGHT;
+		callfunc "F_ReturnQuestSkills";
 		emotion 46; // Congratulations!
 		close;
 
@@ -337,6 +344,7 @@ L_Regular:
 		mes "That means you're not getting paid dumbass!";
 		set oldclass,0;
 		jobchange JOB_PALADIN;
+		callfunc "F_ReturnQuestSkills";
 		emotion 46; // Congratulations!
 		close;
 
@@ -349,6 +357,7 @@ L_Regular:
 		mes "something (no comment)....";
 		mes "go forth and steal!!";
 		jobchange JOB_THIEF_HIGH;
+		callfunc "F_ReturnQuestSkills";
 		emotion 29; // /gg
 		close;
 
@@ -357,6 +366,7 @@ L_Regular:
 		mes "Poof! Kekeke... ";
 		set oldclass,0;
 		jobchange JOB_ASSASSIN_CROSS;
+		callfunc "F_ReturnQuestSkills";
 		emotion 46; // Congratulations!
 		close;
 
@@ -367,6 +377,7 @@ L_Regular:
 		mes "Found Any New Victims?";
 		set oldclass,0;
 		jobchange JOB_STALKER;
+		callfunc "F_ReturnQuestSkills";
 		emotion 46; // Congratulations!
 		close;
 
@@ -376,6 +387,7 @@ L_Regular:
 		mes "[Amber]";
 		mes "Yay.. go read a Bible.. or whatever.. er..yeah.";
 		jobchange JOB_ACOLYTE_HIGH;
+		callfunc "F_ReturnQuestSkills";
 		emotion 46; // Congratulations!
 		close;
 
@@ -395,6 +407,7 @@ L_Regular:
 		mes "WHOOPs, I am getting so off topic..";
 		set oldclass,0;
 		jobchange JOB_HIGH_PRIEST;
+		callfunc "F_ReturnQuestSkills";
 		emotion 46; // Congratulations!
 		close;
 
@@ -410,6 +423,7 @@ L_Regular:
 		mes "Wow it must suck being you ^_^!!!";
 		set oldclass,0;
 		jobchange JOB_CHAMPION;
+		callfunc "F_ReturnQuestSkills";
 		emotion 46; // Congratulations!
 		close;
 
@@ -424,6 +438,7 @@ L_Regular:
 		mes "I guess you're like me! You hurl";
 		mes "pointed sticks at things! Kekeke...";
 		jobchange JOB_ARCHER_HIGH;
+		callfunc "F_ReturnQuestSkills";
 		emotion 46; // Congratulations!
 		close;
 
@@ -439,6 +454,7 @@ L_Regular:
 		mes "Traps are a great thing...";
 		set oldclass,0;
 		jobchange JOB_SNIPER;
+		callfunc "F_ReturnQuestSkills";
 		emotion 46; // Congratulations!
 		next;
 		mes "[Amber]";
@@ -460,6 +476,7 @@ L_Regular:
 		mes "or something, I just can't stand your clothes... ewww.";
 		set oldclass,0;
 		jobchange JOB_CLOWN;
+		callfunc "F_ReturnQuestSkills";
 		emotion 46; // Congratulations!
 		close;
 
@@ -471,6 +488,7 @@ L_Regular:
 		mes "little thong and party too... *sigh*";
 		set oldclass,0;
 		jobchange JOB_GYPSY;
+		callfunc "F_ReturnQuestSkills";
 		emotion 3; // /lv
 		close;
 
@@ -482,6 +500,7 @@ L_Regular:
 		mes "loves the sound of coins jinglin'...";
 		mes "Well its not me!.. >_>..... <_<... bah..";
 		jobchange JOB_MERCHANT_HIGH;
+		callfunc "F_ReturnQuestSkills";
 		emotion 46; // Congratulations!
 		close;
 
@@ -498,6 +517,7 @@ L_Regular:
 		mes "the nation! Yea yea yea! Go go go! w00t! Ho yeah! ";
 		set oldclass,0;
 		jobchange JOB_WHITESMITH;
+		callfunc "F_ReturnQuestSkills";
 		emotion 46; // Congratulations!
 		close;
 
@@ -506,6 +526,7 @@ L_Regular:
 		mes "Create potions for the brave heros of Rune-Midgart.";
 		set oldclass,0;
 		jobchange JOB_CREATOR;
+		callfunc "F_ReturnQuestSkills";
 		emotion 46; // Congratulations!
 		close;
 
@@ -517,6 +538,7 @@ L_Regular:
 		mes "of ^2200DFM^7600F9A^AF00FBN^DA00DFA^000000,"; // 'MANA' in colored letters
 		mes "your spiritual energy!!!";
 		jobchange JOB_MAGE_HIGH;
+		callfunc "F_ReturnQuestSkills";
 		emotion 46; // Congratulations!
 		close;
 
@@ -527,6 +549,7 @@ L_Regular:
 		mes "ahhhhhhh......";
 		set oldclass,0;
 		jobchange JOB_HIGH_WIZARD;
+		callfunc "F_ReturnQuestSkills";
 		emotion 46; // Congratulations!
 		close;
 
@@ -536,6 +559,7 @@ L_Regular:
 		mes "Physics class";
 		set oldclass,0;
 		jobchange JOB_PROFESSOR;
+		callfunc "F_ReturnQuestSkills";
 		emotion 46; // Congratulations!
 		close;
 

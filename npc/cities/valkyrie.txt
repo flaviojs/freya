@@ -5,7 +5,7 @@
 //= Finished, optimized and tested by Lupus
 //= Rewrote some parts by Tsuyuki
 //===== Current Version: ===================================== 
-//= 2.8
+//= 3.0
 //===== Compatible With: ===================================== 
 //= Freya
 //===== Description: ========================================= 
@@ -25,18 +25,22 @@
 //= 2.6a Adding proper dialogues [Lupus]
 //= 2.7 Converted to Freya [Tsuyuki]
 //= 2.8 Rewrote quest skill return process (wish i had 'for'..) [Tsuyuki]
+//= 2.9 Redid quest skill saving/returning as functions for other uses [Tsuyuki]
+//=  -> Both moved to Global Functions
+//= 3.0 Fixed a problem where you couldn't exit the Valkyrie Realm under certain circumstances [Tsuyuki]
 //============================================================ 
 
 
-// -== Warp's needed! ==-
+// -== Warps needed! ==-
 valkyrie.gat,48,73,0	warp	valk01	1,1,valkyrie.gat,48,64
 valkyrie.gat,48,66,0	warp	valk01	1,1,valkyrie.gat,48,75
 
 // -== Book of Ymir (Heavens Door) ==-
 yuno_in02.gat,93,207,0	script	Book of Ymir	111,{
+
 	mes "[The Book of Ymir]";
 	if (Upper == 1 || valkyrie_Q > 1) goto ACQ1;
-	if (valkyrie_Q < 1 || Upper == 2 || Class == JOB_TAEKWON || Class == JOB_STAR_GLADIATOR || Class == JOB_STAR_GLADIATOR2 || Class == JOB_SOUL_LINKER || Class == JOB_GUNSLINGER || Class == JOB_NINJA || Class == JOB_MUNAK || Class == JOB_DEATH_KNIGHT || Class == JOB_DARK_COLLECTOR || Class == JOB_MUNAK || Class == JOB_SUPER_NOVICE) goto ACQ2;
+	if (valkyrie_Q < 1 || Upper == 2 || BaseClass == JOB_TAEKWON || Class == JOB_GUNSLINGER || Class == JOB_NINJA || Class == JOB_MUNAK || Class == JOB_DEATH_KNIGHT || Class == JOB_DARK_COLLECTOR || Class == JOB_MUNAK || Class == JOB_SUPER_NOVICE) goto ACQ2;
 	goto ACQ3;
 
 	ACQ2:
@@ -55,20 +59,20 @@ yuno_in02.gat,93,207,0	script	Book of Ymir	111,{
 		mes "cannot be fulfilled in our reality";
 		mes "can be realized in the Hall of Honor.";
 		next;
-		menu "Stop reading.",YCase1,"Continue reading.",YCase2;
+		menu "Stop reading.",Y_Case1,"Continue reading.",Y_Case2;
 
-		YCase1:
+		Y_Case1:
 			mes "[The Book of Ymir]";
 			mes ". . . . .";
 			close;
 
-		YCase2:
+		Y_Case2:
 			mes "[The Book of Ymir]";
 			mes "There is a forgotten path which leads to";
 			mes "the Hall of Honor, the closest place to the heavens. However, it is forbidden";
 			mes "for ordinary people to know about it...";
 			close2;
-			warp "valkyrie",48,9; //48,8?
+			warp "valkyrie.gat",48,9;
 			end;
 
 ACQ3:
@@ -135,6 +139,7 @@ ACQ3:
 
 // -== The Librarian that watches the "Book of Ymir" ==-
 yuno_in02.gat,91,176,5	script	Librarian	754,{
+
 	mes "[Librarian]";
 	if (valkyrie_Q > 0) goto LQ1;
 	goto LQ2;
@@ -182,6 +187,7 @@ M_EXIT:
 
 // -== The Heart of Ymir ==-
 yuno_in05.gat,50,44,0	script	Heart of Ymir	111,{
+
 	mes "[Heart of Ymir]";
 	if (valkyrie_Q == 1) goto HYQ1;
 	if (valkyrie_Q == 2) goto HYQ2;
@@ -210,6 +216,7 @@ HYQ3:
 
 // -== Researcher of the Book of Ymir ==-
 yuno_in02.gat,90,77,4	script	Researcher#06	744,{
+
 	mes "[Researcher]";
 	mes "Argh, where is it!?";
 	mes "They said that it would be around here somewhere...";
@@ -220,9 +227,10 @@ yuno_in02.gat,90,77,4	script	Researcher#06	744,{
 
 // -== Valhallana ==-
 valkyrie.gat,48,86,6	script	Valkyrie	811,{
+
 	mes "[Valhallana]";
 	if (BaseJob == JOB_SUPER_NOVICE) goto L_SN;
-	if (Class == JOB_TAEKWON || Class == JOB_STAR_GLADIATOR || Class == JOB_STAR_GLADIATOR2 || Class == JOB_SOUL_LINKER || Class == JOB_GUNSLINGER || Class == JOB_NINJA || Class == JOB_MUNAK || Class == JOB_BON_GUN || Class == JOB_DEATH_KNIGHT || Class == JOB_DARK_COLLECTOR) goto L_CANT; // Sent back any expanded classes
+	if (BaseClass == JOB_TAEKWON || Class == JOB_GUNSLINGER || Class == JOB_NINJA || Class == JOB_MUNAK || Class == JOB_BON_GUN || Class == JOB_DEATH_KNIGHT || Class == JOB_DARK_COLLECTOR) goto L_CANT; // Send back any expanded classes
 	if (Upper == 2) goto L_BABY;
 	if (Upper > 0) goto L_ALREADY;
 	if (BaseLevel >= 99 && JobLevel >= 50 && BaseJob >= JOB_KNIGHT) goto L_CHANGE;
@@ -292,44 +300,7 @@ L_CHANGE:
 	if (ADVJOB == JOB_LORD_KNIGHT2) set ADVJOB,JOB_LORD_KNIGHT;
 	if (ADVJOB == JOB_PALADIN2) set ADVJOB,JOB_PALADIN;
 
-	// Save First-Class Quest Skills
-	if (getskilllv(142)) set ADVQ1,1;
-	if (getskilllv(143)) set ADVQ2,1;
-	if (getskilllv(144)) set ADVQ3,1;
-	if (getskilllv(145)) set ADVQ4,1;
-	if (getskilllv(146)) set ADVQ5,1;
-	if (getskilllv(147)) set ADVQ6,1;
-	if (getskilllv(148)) set ADVQ7,1;
-	if (getskilllv(149)) set ADVQ8,1;
-	if (getskilllv(150)) set ADVQ9,1;
-	if (getskilllv(151)) set ADVQ10,1;
-	if (getskilllv(152)) set ADVQ11,1;
-	if (getskilllv(153)) set ADVQ12,1;
-	if (getskilllv(154)) set ADVQ13,1;
-	if (getskilllv(155)) set ADVQ14,1;
-	if (getskilllv(156)) set ADVQ15,1;
-	if (getskilllv(157)) set ADVQ16,1;
-
-	// Save Second-Class Quest Skills
-	if (getskilllv(1001)) set ADVQ17,1;
-	if (getskilllv(1002)) set ADVQ18,1;
-	if (getskilllv(1003)) set ADVQ19,1;
-	if (getskilllv(1004)) set ADVQ20,1;
-	if (getskilllv(1005)) set ADVQ21,1;
-	if (getskilllv(1006)) set ADVQ22,1;
-	if (getskilllv(1007)) set ADVQ23,1;
-	if (getskilllv(1008)) set ADVQ24,1;
-	if (getskilllv(1009)) set ADVQ25,1;
-	if (getskilllv(1010)) set ADVQ26,1;
-	if (getskilllv(1011)) set ADVQ27,1;
-	if (getskilllv(1012)) set ADVQ28,1;
-	if (getskilllv(1013)) set ADVQ29,1;
-	if (getskilllv(1014)) set ADVQ30,1;
-	if (getskilllv(1015)) set ADVQ31,1;
-	if (getskilllv(1016)) set ADVQ32,1;
-	if (getskilllv(1017)) set ADVQ33,1;
-	if (getskilllv(1018)) set ADVQ34,1;
-	if (getskilllv(1019)) set ADVQ35,1;
+	callfunc "F_SaveQuestSkills";
 
 	mes "[Valhallana]";
 	mes "Done...";
@@ -382,23 +353,33 @@ L_Gef:
 L_ZENYITEMS:
 	mes "Your money and items do rope you to your routine life.";
 	mes "You should get rid of them.";
-	close;
+	next;
+	mes "[Valhallana]";
+	goto L_NOTHING;
 
 L_CART:
 	mes "Please, drop your cart and we'll continue.";
-	close;
+	next;
+	mes "[Valhallana]";
+	goto L_NOTHING;
 
 L_FALCON:
 	mes "Please, free your Falcon and we'll continue.";
-	close;
+	next;
+	mes "[Valhallana]";
+	goto L_NOTHING;
 
 L_PECO:
 	mes "Please, free your PecoPeco and we'll continue.";
-	close;
+	next;
+	mes "[Valhallana]";
+	goto L_NOTHING;
 
 L_SKILLPNTS:
 	mes "You will need to use up all of your skill points if you want me to continue.";
-	close;
+	next;
+	mes "[Valhallana]";
+	goto L_NOTHING;
 }
 
 // function HIGH NOVICE -> HIGH 1
@@ -420,7 +401,7 @@ function	script	F_ToHigh	{
 	if (@fjob == JOB_CHAMPION) set @fjob,JOB_HIGH_PRIEST;
 	if (@fjob == JOB_PROFESSOR) set @fjob,JOB_HIGH_WIZARD;
 
-	if (Class == getarg(0)) goto L_WELCOME; //3rd Job
+	if (Class == getarg(0)) goto L_WELCOME; // 3rd Job
 	if (Class >= JOB_LORD_KNIGHT && Class <= JOB_PALADIN2) goto L_ALREADY; //already advanced class
 	if (Class == JOB_NOVICE_HIGH && @fjob == getarg(2)) goto L_GETHIGH; //High Novice -> High XXXX
 	if (Class == JOB_NOVICE_HIGH) goto L_EXTRA;
@@ -455,21 +436,7 @@ L_GETHIGH:
 		mes "Let me just add in the missing Quest Skills you lost under the Reborn process, "+strcharinfo(0)+".";
 		next;
 		// Return learned quest skills
-		if (ADVQ3 == 1) skill 144;
-		if (ADVQ4 == 1) skill 145;
-		if (ADVQ5 == 1) skill 146;
-		if (ADVQ6 == 1) skill 147;
-		if (ADVQ7 == 1) skill 148;
-		if (ADVQ8 == 1) skill 149;
-		if (ADVQ9 == 1) skill 150;
-		if (ADVQ10 == 1) skill 151;
-		if (ADVQ11 == 1) skill 152;
-		if (ADVQ12 == 1) skill 153;
-		if (ADVQ13 == 1) skill 154;
-		if (ADVQ14 == 1) skill 155;
-		if (ADVQ15 == 1) skill 156;
-		if (ADVQ16 == 1) skill 157;
-
+		callfunc "F_ReturnQuestSkills";
 		goto TQ2;
 
 TQ2:
@@ -552,25 +519,7 @@ L_GET3RD:
 		mes "Let me just add in the missing Quest Skills you lost under the Reborn process, "+strcharinfo(0)+".";
 		next;
 		// Return learned quest skills
-		if (ADVQ17 == 1) skill 1001;
-		if (ADVQ18 == 1) skill 1002;
-		if (ADVQ19 == 1) skill 1003;
-		if (ADVQ20 == 1) skill 1004;
-		if (ADVQ21 == 1) skill 1005;
-		if (ADVQ22 == 1) skill 1006;
-		if (ADVQ23 == 1) skill 1007;
-		if (ADVQ24 == 1) skill 1008;
-		if (ADVQ25 == 1) skill 1009;
-		if (ADVQ26 == 1) skill 1010;
-		if (ADVQ27 == 1) skill 1011;
-		if (ADVQ28 == 1) skill 1012;
-		if (ADVQ29 == 1) skill 1013;
-		if (ADVQ30 == 1) skill 1014;
-		if (ADVQ31 == 1) skill 1015;
-		if (ADVQ32 == 1) skill 1016;
-		if (ADVQ33 == 1) skill 1017;
-		if (ADVQ34 == 1) skill 1018;
-		if (ADVQ35 == 1) skill 1019;
+		callfunc "F_ReturnQuestSkills";
 		close;
 
 L_NOTREADY:

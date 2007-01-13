@@ -5,6 +5,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/13/07
+	* Fixed: Problem where you could not leave the Valkyrie Realm in certain situations [Tsuyuki]
+	* Added: Quest skill saving/returning functions to the custom Job Changer [Tsuyuki]
+	* Changed: Quest skill saving/returning on rebirth is now done via script functions [Tsuyuki]
 	* Added: Beins field spawns, and Thor Volcano spawns (Thanks to $ephiroth) [Tsuyuki]
 	* Improved: Enhanced the jobchange, pc_calc_base_job and pc_calc_base_job2 pc.c functions [Tsuyuki]
 	* Fixed: Soul Linker/Star Gladiator job change skill point calculation [Tsuyuki]

@@ -1,18 +1,20 @@
 //===== Freya Script =========================================
 //= Global Functions
 //===== By: ==================================================
-//= Lupus, kobra_k88
+//= Lupus, kobra_k88, Tsuyuki
 //===== Current Version: =====================================
-//= 1.3b
+//= 1.4
 //===== Compatible With: =====================================
-//= eAthena 1.0
+//= Freya
 //===== Description: =========================================
-//= <Description>
+//= Global Functions in Freya
 //===== Additional Comments: =================================
-//= Added F_ClearJobVar - on getting a new job it clears all Job Quest variables
-//= Removed individual job check functions as they were redundant [kobra_k88]
+//= 1.0 Added first versoin [Athena]
+//= 1.1 Added F_ClearJobVar - on getting a new job it clears all Job Quest variables
+//= 1.2 Removed individual job check functions as they were redundant [kobra_k88]
 //= 1.3 Added Job Change Function for Baby/Normal Classes
 //= 1.3b a fix, due to const.txt change [Lupus]
+//= 1.4 Added quest skill save/return rebirth functions [Tsuyuki]
 //============================================================
 
 
@@ -107,5 +109,109 @@ function	script	Is_Sword_Class	{
 // returns 1 if the player is either Taekwon, Star Gladiator,Soul Linker, 0 otherwise
 // these classes can't be adopted nor reborn ()
 function	script	Is_Taekwon_Class	{
-	return (Class == JOB_TAEKWON || Class == JOB_STAR_GLADIATOR || Class == JOB_STAR_GLADIATOR2 || Class == JOB_SOUL_LINKER);
+	return (BaseClass == JOB_TAEKWON);
+}
+
+//=============================================================
+// Function used to save quest skills before rebirth [Tsuyuki]
+//-------------------------------------------------------------
+
+function	script	F_SaveQuestSkills	{
+
+	// Save First-Class Quest Skills
+	if (getskilllv(142) > 0) set ADVQ1,1;
+	if (getskilllv(143) > 0) set ADVQ2,1;
+	if (getskilllv(144) > 0) set ADVQ3,1;
+	if (getskilllv(145) > 0) set ADVQ4,1;
+	if (getskilllv(146) > 0) set ADVQ5,1;
+	if (getskilllv(147) > 0) set ADVQ6,1;
+	if (getskilllv(148) > 0) set ADVQ7,1;
+	if (getskilllv(149) > 0) set ADVQ8,1;
+	if (getskilllv(150) > 0) set ADVQ9,1;
+	if (getskilllv(151) > 0) set ADVQ10,1;
+	if (getskilllv(152) > 0) set ADVQ11,1;
+	if (getskilllv(153) > 0) set ADVQ12,1;
+	if (getskilllv(154) > 0) set ADVQ13,1;
+	if (getskilllv(155) > 0) set ADVQ14,1;
+	if (getskilllv(156) > 0) set ADVQ15,1;
+	if (getskilllv(157) > 0) set ADVQ16,1;
+
+	// Save Second-Class Quest Skills
+	if (getskilllv(1001) > 0) set ADVQ17,1;
+	if (getskilllv(1002) > 0) set ADVQ18,1;
+	if (getskilllv(1003) > 0) set ADVQ19,1;
+	if (getskilllv(1004) > 0) set ADVQ20,1;
+	if (getskilllv(1005) > 0) set ADVQ21,1;
+	if (getskilllv(1006) > 0) set ADVQ22,1;
+	if (getskilllv(1007) > 0) set ADVQ23,1;
+	if (getskilllv(1008) > 0) set ADVQ24,1;
+	if (getskilllv(1009) > 0) set ADVQ25,1;
+	if (getskilllv(1010) > 0) set ADVQ26,1;
+	if (getskilllv(1011) > 0) set ADVQ27,1;
+	if (getskilllv(1012) > 0) set ADVQ28,1;
+	if (getskilllv(1013) > 0) set ADVQ29,1;
+	if (getskilllv(1014) > 0) set ADVQ30,1;
+	if (getskilllv(1015) > 0) set ADVQ31,1;
+	if (getskilllv(1016) > 0) set ADVQ32,1;
+	if (getskilllv(1017) > 0) set ADVQ33,1;
+	if (getskilllv(1018) > 0) set ADVQ34,1;
+	if (getskilllv(1019) > 0) set ADVQ35,1;
+
+	return;
+}
+
+//=============================================================
+// Function used to return quest skills after rebirth [Tsuyuki]
+//-------------------------------------------------------------
+
+function	script	F_ReturnQuestSkills	{
+
+	if (ADVQ1 == 1) skill 142;
+	if (Class == JOB_NOVICE_HIGH && ADVQ2 == 1) skill 143;
+
+	if (Class >= JOB_SWORDMAN_HIGH && Class <= JOB_PALADIN2) goto L_Return1stSkills;
+	return;
+
+	L_Return1stSkills:
+		if (ADVQ3 == 1) skill 144;
+		if (ADVQ4 == 1) skill 145;
+		if (ADVQ5 == 1) skill 146;
+		if (ADVQ6 == 1) skill 147;
+		if (ADVQ7 == 1) skill 148;
+		if (ADVQ8 == 1) skill 149;
+		if (ADVQ9 == 1) skill 150;
+		if (ADVQ10 == 1) skill 151;
+		if (ADVQ11 == 1) skill 152;
+		if (ADVQ12 == 1) skill 153;
+		if (ADVQ13 == 1) skill 154;
+		if (ADVQ14 == 1) skill 155;
+		if (ADVQ15 == 1) skill 156;
+		if (ADVQ16 == 1) skill 157;
+		goto L_ReturnCont01;
+
+	L_ReturnCont01:
+		if (Class >= JOB_LORD_KNIGHT && Class <= JOB_PALADIN2) goto L_Return2ndSkills;
+		return;
+
+		L_Return2ndSkills:
+			if (ADVQ17 == 1) skill 1001;
+			if (ADVQ18 == 1) skill 1002;
+			if (ADVQ19 == 1) skill 1003;
+			if (ADVQ20 == 1) skill 1004;
+			if (ADVQ21 == 1) skill 1005;
+			if (ADVQ22 == 1) skill 1006;
+			if (ADVQ23 == 1) skill 1007;
+			if (ADVQ24 == 1) skill 1008;
+			if (ADVQ25 == 1) skill 1009;
+			if (ADVQ26 == 1) skill 1010;
+			if (ADVQ27 == 1) skill 1011;
+			if (ADVQ28 == 1) skill 1012;
+			if (ADVQ29 == 1) skill 1013;
+			if (ADVQ30 == 1) skill 1014;
+			if (ADVQ31 == 1) skill 1015;
+			if (ADVQ32 == 1) skill 1016;
+			if (ADVQ33 == 1) skill 1017;
+			if (ADVQ34 == 1) skill 1018;
+			if (ADVQ35 == 1) skill 1019;
+			return;
 }
