@@ -5,7 +5,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/12/07
-	* Added: Two new script commands - 'dialog' & 'wait' [Tsuyuki]
+	* Added: More Aegis-like script commands: [Tsuyuki]
+	 - 'dropitem' = 'delitem', 'moveto' = 'warp', 'pcname' = 'strcharinfo'
+	* Added: Two new script commands - 'dialog' and 'wait' [Tsuyuki]
 	 - Use 'mes' and 'next' code, added to make us more similar to Aegis
 
 01/10/07
