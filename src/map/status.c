@@ -909,7 +909,7 @@ int status_calc_pc(struct map_session_data* sd, int first)
 	{
 		str = sd->paramc[4];
 		dex = sd->paramc[0];
-	/* and the rest weapons from strenght */
+	/* and the rest weapons from strength */
 	} else {
 		str = sd->paramc[0];
 		dex = sd->paramc[4];

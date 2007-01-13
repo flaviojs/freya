@@ -5,6 +5,13 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/12/07
+	* Fixed: A bunch of broken cards [Tsuyuki]
+	* Fixed: NJ_BAKUENRYU's (Raging Fire Dragon) damage formula [Tsuyuki]
+	* Fixed: All 5 Taekwon Kicks now do 3 hits (damage formulas corrected as well) [Tsuyuki]
+	* Fixed: BaseClass (GetPureJob), and BaseJob are now fully compatible with the new classes [Tsuyuki]
+	* Cleaned: script.c, skill.c and skill.h comments [Tsuyuki]
+	* Reverted: Weapon Repair being targetable; targets the user for now [Tsuyuki]
+	 - Still need to make it targetable, this revert just makes it usable again
 	* Added: More Aegis-like script commands: [Tsuyuki]
 	 - 'dropitem' = 'delitem', 'moveto' = 'warp', 'pcname' = 'strcharinfo'
 	* Added: Two new script commands - 'dialog' and 'wait' [Tsuyuki]

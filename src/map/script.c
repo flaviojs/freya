@@ -430,7 +430,7 @@ struct {
 	{buildin_basicskillcheck,"basicskillcheck","*"},
 	{buildin_getgmlevel,"getgmlevel","*"},
 	{buildin_end,"end",""},
-//	{buildin_end,"break",""}, // Too confusing with the other types of break commands [Tsuyuki]
+	{buildin_end,"break",""}, // Too confusing with the other types of break commands (Need to remove)
 	{buildin_checkoption,"checkoption","i"},
 	{buildin_setoption,"setoption","i"},
 	{buildin_setcart,"setcart",""},
