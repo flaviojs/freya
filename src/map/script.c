@@ -369,6 +369,7 @@ struct {
 	{buildin_jobchange,"jobchange","i*"},
 	{buildin_input,"input","*"},
 	{buildin_warp,"warp","sii"},
+	{buildin_warp,"moveto","sii"},
 	{buildin_areawarp,"areawarp","siiiisii"},
 	{buildin_setlook,"setlook","ii"},
 	{buildin_set,"set","ii"},
@@ -383,6 +384,7 @@ struct {
 	{buildin_getitem2,"getitem2","iiiiiiiii*"},
 	{buildin_makeitem,"makeitem","iisii"},
 	{buildin_delitem,"delitem","ii"},
+	{buildin_delitem,"dropitem","ii"},
 	{buildin_cutin,"cutin","si"},
 	{buildin_cutincard,"cutincard","i"},
 	{buildin_viewpoint,"viewpoint","iiiii"},
@@ -401,6 +403,7 @@ struct {
 	{buildin_getguildmaster,"getguildmaster","i"},
 	{buildin_getguildmasterid,"getguildmasterid","i"},
 	{buildin_strcharinfo,"strcharinfo","i"},
+	{buildin_strcharinfo,"pcname","i"},
 	{buildin_getequipid,"getequipid","i"},
 	{buildin_getequipname,"getequipname","i"},
 	{buildin_getbrokenid,"getbrokenid","i"}, // [Valaris]
