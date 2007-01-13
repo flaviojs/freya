@@ -15,6 +15,7 @@
 //= 1.3 Added Job Change Function for Baby/Normal Classes
 //= 1.3b a fix, due to const.txt change [Lupus]
 //= 1.4 Added quest skill save/return rebirth functions [Tsuyuki]
+//= 1.5 Fixed bug with quest skills not saving [Tsuyuki]
 //============================================================
 
 
@@ -166,27 +167,27 @@ function	script	F_SaveQuestSkills	{
 
 function	script	F_ReturnQuestSkills	{
 
-	if (ADVQ1 == 1) skill 142;
-	if (Class == JOB_NOVICE_HIGH && ADVQ2 == 1) skill 143;
+	if (ADVQ1 == 1) skill 142,1,0;
+	if (Class == JOB_NOVICE_HIGH && ADVQ2 == 1) skill 143,1,0;
 
 	if (Class >= JOB_SWORDMAN_HIGH && Class <= JOB_PALADIN2) goto L_Return1stSkills;
 	return;
 
 	L_Return1stSkills:
-		if (ADVQ3 == 1) skill 144;
-		if (ADVQ4 == 1) skill 145;
-		if (ADVQ5 == 1) skill 146;
-		if (ADVQ6 == 1) skill 147;
-		if (ADVQ7 == 1) skill 148;
-		if (ADVQ8 == 1) skill 149;
-		if (ADVQ9 == 1) skill 150;
-		if (ADVQ10 == 1) skill 151;
-		if (ADVQ11 == 1) skill 152;
-		if (ADVQ12 == 1) skill 153;
-		if (ADVQ13 == 1) skill 154;
-		if (ADVQ14 == 1) skill 155;
-		if (ADVQ15 == 1) skill 156;
-		if (ADVQ16 == 1) skill 157;
+		if (ADVQ3 == 1) skill 144,1,0;
+		if (ADVQ4 == 1) skill 145,1,0;
+		if (ADVQ5 == 1) skill 146,1,0;
+		if (ADVQ6 == 1) skill 147,1,0;
+		if (ADVQ7 == 1) skill 148,1,0;
+		if (ADVQ8 == 1) skill 149,1,0;
+		if (ADVQ9 == 1) skill 150,1,0;
+		if (ADVQ10 == 1) skill 151,1,0;
+		if (ADVQ11 == 1) skill 152,1,0;
+		if (ADVQ12 == 1) skill 153,1,0;
+		if (ADVQ13 == 1) skill 154,1,0;
+		if (ADVQ14 == 1) skill 155,1,0;
+		if (ADVQ15 == 1) skill 156,1,0;
+		if (ADVQ16 == 1) skill 157,1,0;
 		goto L_ReturnCont01;
 
 	L_ReturnCont01:
@@ -194,24 +195,24 @@ function	script	F_ReturnQuestSkills	{
 		return;
 
 		L_Return2ndSkills:
-			if (ADVQ17 == 1) skill 1001;
-			if (ADVQ18 == 1) skill 1002;
-			if (ADVQ19 == 1) skill 1003;
-			if (ADVQ20 == 1) skill 1004;
-			if (ADVQ21 == 1) skill 1005;
-			if (ADVQ22 == 1) skill 1006;
-			if (ADVQ23 == 1) skill 1007;
-			if (ADVQ24 == 1) skill 1008;
-			if (ADVQ25 == 1) skill 1009;
-			if (ADVQ26 == 1) skill 1010;
-			if (ADVQ27 == 1) skill 1011;
-			if (ADVQ28 == 1) skill 1012;
-			if (ADVQ29 == 1) skill 1013;
-			if (ADVQ30 == 1) skill 1014;
-			if (ADVQ31 == 1) skill 1015;
-			if (ADVQ32 == 1) skill 1016;
-			if (ADVQ33 == 1) skill 1017;
-			if (ADVQ34 == 1) skill 1018;
-			if (ADVQ35 == 1) skill 1019;
+			if (ADVQ17 == 1) skill 1001,1,0;
+			if (ADVQ18 == 1) skill 1002,1,0;
+			if (ADVQ19 == 1) skill 1003,1,0;
+			if (ADVQ20 == 1) skill 1004,1,0;
+			if (ADVQ21 == 1) skill 1005,1,0;
+			if (ADVQ22 == 1) skill 1006,1,0;
+			if (ADVQ23 == 1) skill 1007,1,0;
+			if (ADVQ24 == 1) skill 1008,1,0;
+			if (ADVQ25 == 1) skill 1009,1,0;
+			if (ADVQ26 == 1) skill 1010,1,0;
+			if (ADVQ27 == 1) skill 1011,1,0;
+			if (ADVQ28 == 1) skill 1012,1,0;
+			if (ADVQ29 == 1) skill 1013,1,0;
+			if (ADVQ30 == 1) skill 1014,1,0;
+			if (ADVQ31 == 1) skill 1015,1,0;
+			if (ADVQ32 == 1) skill 1016,1,0;
+			if (ADVQ33 == 1) skill 1017,1,0;
+			if (ADVQ34 == 1) skill 1018,1,0;
+			if (ADVQ35 == 1) skill 1019,1,0;
 			return;
 }
