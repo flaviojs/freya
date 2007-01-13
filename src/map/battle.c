@@ -1296,6 +1296,7 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG;
 				wd.damage = 40*sd->status.str + skill_lv*(sd->status.hp/10 + 35);
 				wd.damage2 = 0;
+				s_ele = s_ele_ = 0; // Always neutral element attack
 				break;
 
 			/************ 2-1 CLASS SKILLS ************/
