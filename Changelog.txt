@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/13/07
+	* Fixed: Bug with Quest Skills not returning after rebirth [Tsuyuki]
 	* Fixed: Problem where you could not leave the Valkyrie Realm in certain situations [Tsuyuki]
 	* Added: Quest skill saving/returning functions to the custom Job Changer [Tsuyuki]
 	* Changed: Quest skill saving/returning on rebirth is now done via script functions [Tsuyuki]

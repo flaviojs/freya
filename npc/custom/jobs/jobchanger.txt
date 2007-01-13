@@ -462,6 +462,7 @@ L_Regular:
 		mes "nice... (as long as you dont piss";
 		mes "me off *grumble grumble*)";
 		next;
+		mes "[Amber]";
 		mes "I'm gonna give you a complementary";
 		mes "falcon! Use it well! Oh.. and you might";
 		mes "wanna wear a hat, this falcon sometimes,";
@@ -727,7 +728,7 @@ L_Regular:
 		mes "[Amber]";
 		mes "You know what... since I'm just soooo nice...";
 		mes "(as long as you dont piss me off *grumble grumble*)";
-		mes "I'm gonna give you a complimentary falcon! Use it well!";
+		mes "I'm gonna give you a complementary falcon! Use it well!";
 		mes "Oh.. and you might wanna wear a hat, this falcon";
 		mes "sometimes, uh... poops..";
 		setfalcon;
