@@ -3,7 +3,7 @@
 //===== By: ==================================================
 //= Keichii/DarkChild/Tsuyuki
 //===== Current Version: =====================================
-//= 2.4
+//= 2.5
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -16,10 +16,11 @@
 //= 2.2 Fixed a few bugs [Tsuyuki]
 //= 2.3 Added support for the new classes and redid most of the script [Tsuyuki]
 //= 2.4 Added second class quest skill support [Tsuyuki]
+//= 2.5 Modified dialogue [Tsuyuki]
 //============================================================
 
 
-prontera.gat,128,200,6	script	Quest Skills	892,{
+prontera.gat,128,200,6	script	Quest Skills	893,{
 
 	mes "[Alyssa]";
 	mes "Hey, I'm Freya's Quest Skill girl! I can give";
@@ -59,12 +60,9 @@ prontera.gat,128,200,6	script	Quest Skills	892,{
 		mes "However.. I'll still give you the standard Novice quest skills.";
 		next;
 		mes "[Alyssa]";
-		mes "Here's your quest skills!";
+		mes "Here's your quest skills. Enjoy!";
 		skill 142,1,0;
 		emotion 46;
-		next;
-		mes "[Alyssa]";
-		mes "Enjoy your new skills.";
 		close;
 
 	L_Novice:
@@ -72,13 +70,10 @@ prontera.gat,128,200,6	script	Quest Skills	892,{
 		mes "So.. you're a Novice.";
 		next;
 		mes "[Alyssa]";
-		mes "Here's your quest skills!";
+		mes "Here's your quest skills. Enjoy!";
 		skill 142,1,0;
 		skill 143,1,0;
 		emotion 46;
-		next;
-		mes "[Alyssa]";
-		mes "Enjoy your new skills.";
 		close;
 
 	L_Swordsman:
@@ -86,7 +81,7 @@ prontera.gat,128,200,6	script	Quest Skills	892,{
 		mes "So.. you belong to the Swordsman Class.";
 		next;
 		mes "[Alyssa]";
-		mes "Here's your quest skills!";
+		mes "Here's your quest skills. Enjoy!";
 		skill 142,1,0;
 		skill 144,1,0;
 		skill 145,1,0;
@@ -94,9 +89,6 @@ prontera.gat,128,200,6	script	Quest Skills	892,{
 		if (Basejob == JOB_KNIGHT || Basejob == JOB_KNIGHT2) skill 1001,1,0;
 		if (Basejob == JOB_CRUSADER || Basejob == JOB_CRUSADER2) skill 1002,1,0;
 		emotion 46;
-		next;
-		mes "[Alyssa]";
-		mes "Enjoy your new skills.";
 		close;
 
 	L_Mage:
@@ -104,7 +96,7 @@ prontera.gat,128,200,6	script	Quest Skills	892,{
 		mes "So.. you belong to the Mage Class.";
 		next;
 		mes "[Alyssa]";
-		mes "Here's your quest skills!";
+		mes "Here's your quest skills. Enjoy!";
 		skill 142,1,0;
 		skill 157,1,0;
 		if (Basejob == JOB_WIZARD) skill 1006,1,0;
@@ -114,9 +106,6 @@ prontera.gat,128,200,6	script	Quest Skills	892,{
 		if (Basejob == JOB_SAGE) skill 1018,1,0;
 		if (Basejob == JOB_SAGE) skill 1019,1,0;
 		emotion 46;
-		next;
-		mes "[Alyssa]";
-		mes "Enjoy your new skills.";
 		close;
 
 	L_Archer:
@@ -124,7 +113,7 @@ prontera.gat,128,200,6	script	Quest Skills	892,{
 		mes "So.. you belong to the Archer Class.";
 		next;
 		mes "[Alyssa]";
-		mes "Here's your quest skills!";
+		mes "Here's your quest skills. Enjoy!";
 		skill 142,1,0;
 		skill 147,1,0;
 		skill 148,1,0;
@@ -132,9 +121,6 @@ prontera.gat,128,200,6	script	Quest Skills	892,{
 		if (Basejob == JOB_BARD) skill 1010,1,0;
 		if (Basejob == JOB_DANCER) skill 1011,1,0;
 		emotion 46;
-		next;
-		mes "[Alyssa]";
-		mes "Enjoy your new skills.";
 		close;
 
 	L_Acolyte:
@@ -142,16 +128,13 @@ prontera.gat,128,200,6	script	Quest Skills	892,{
 		mes "So.. you belong to the Acolyte Class.";
 		next;
 		mes "[Alyssa]";
-		mes "Here's your quest skills!";
+		mes "Here's your quest skills. Enjoy!";
 		skill 142,1,0;
 		skill 156,1,0;
 		if (Basejob == JOB_PRIEST) skill 1014,1,0;
 		if (Basejob == JOB_MONK) skill 1015,1,0;
 		if (Basejob == JOB_MONK) skill 1016,1,0;
 		emotion 46;
-		next;
-		mes "[Alyssa]";
-		mes "Enjoy your new skills.";
 		close;
 
 	L_Merchant:
@@ -159,7 +142,7 @@ prontera.gat,128,200,6	script	Quest Skills	892,{
 		mes "So.. you belong to the Merchant Class.";
 		next;
 		mes "[Alyssa]";
-		mes "Here's your quest skills!";
+		mes "Here's your quest skills. Enjoy!";
 		skill 142,1,0;
 		skill 153,1,0;
 		skill 154,1,0;
@@ -167,9 +150,6 @@ prontera.gat,128,200,6	script	Quest Skills	892,{
 		if (Basejob == JOB_BLACKSMITH) skill 1012,1,0;
 		if (Basejob == JOB_BLACKSMITH) skill 1013,1,0;
 		emotion 46;
-		next;
-		mes "[Alyssa]";
-		mes "Enjoy your new skills.";
 		close;
 
 	L_Thief:
@@ -177,7 +157,7 @@ prontera.gat,128,200,6	script	Quest Skills	892,{
 		mes "So.. you belong to the Thief Class.";
 		next;
 		mes "[Alyssa]";
-		mes "Here's your quest skills!";
+		mes "Here's your quest skills. Enjoy!";
 		skill 142,1,0;
 		skill 149,1,0;
 		skill 150,1,0;
@@ -187,9 +167,6 @@ prontera.gat,128,200,6	script	Quest Skills	892,{
 		if (Basejob == JOB_ASSASSIN) skill 1004,1,0;
 		if (Basejob == JOB_ROGUE) skill 1005,1,0;
 		emotion 46;
-		next;
-		mes "[Alyssa]";
-		mes "Enjoy your new skills.";
 		close;
 
 	L_Cancel:

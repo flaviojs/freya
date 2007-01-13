@@ -19,10 +19,9 @@
 #define MAX_SKILL_DB          1020
 #define MAX_SKILL_PRODUCE_DB   150
 #define MAX_PRODUCE_RESOURCE     7
-//#define MAX_SKILL_ARROW_DB   150 -> dynamic now
+// #define MAX_SKILL_ARROW_DB   150 -> dynamic now
 #define MAX_SKILL_ABRA_DB      350
 
-// スキルデータベース
 struct skill_db {
 	int range[MAX_SKILL_LEVEL], hit, inf, pl, nk, max;
 	int num[MAX_SKILL_LEVEL];
@@ -54,7 +53,7 @@ struct skill_name_db {
 extern const struct skill_name_db skill_names[];
 
 #define MAX_SKILL_UNIT_LAYOUT	50
-#define MAX_SQUARE_LAYOUT		5	// 11*11のユニット配置が最大
+#define MAX_SQUARE_LAYOUT		5
 #define MAX_SKILL_UNIT_COUNT ((MAX_SQUARE_LAYOUT*2+1)*(MAX_SQUARE_LAYOUT*2+1))
 struct skill_unit_layout {
 	int count;
@@ -63,15 +62,14 @@ struct skill_unit_layout {
 };
 
 enum {
-	UF_DEFNOTENEMY   = 0x0001, // defnotenemy 設定でBCT_NOENEMYに切り替え
-	UF_NOREITERATION = 0x0002, // 重複置き禁止
-	UF_NOFOOTSET     = 0x0004, // 足元置き禁止
-	UF_NOOVERLAP     = 0x0008, // ユニット効果が重複しない
-	UF_DANCE         = 0x0100, // ダンススキル
-	UF_ENSEMBLE      = 0x0200  // 合奏スキル
+	UF_DEFNOTENEMY   = 0x0001,
+	UF_NOREITERATION = 0x0002,
+	UF_NOFOOTSET     = 0x0004,
+	UF_NOOVERLAP     = 0x0008,
+	UF_DANCE         = 0x0100,
+	UF_ENSEMBLE      = 0x0200
 };
 
-// アイテム作成データベース
 struct skill_produce_db {
 	int nameid, trigger;
 	int req_skill,itemlv;
@@ -79,16 +77,14 @@ struct skill_produce_db {
 };
 extern struct skill_produce_db skill_produce_db[MAX_SKILL_PRODUCE_DB];
 
-// 矢作成データベース
 struct skill_arrow_db {
 	unsigned short nameid, trigger;
 	unsigned short cre_id[5], cre_amount[5];
 };
-//extern struct skill_arrow_db skill_arrow_db[MAX_SKILL_ARROW_DB]; -> dynamic now
+// extern struct skill_arrow_db skill_arrow_db[MAX_SKILL_ARROW_DB]; -> dynamic now
 extern short num_skill_arrow_db;
 extern struct skill_arrow_db *skill_arrow_db;
 
-// アブラカダブラデータベース
 struct skill_abra_db {
 	int nameid;
 	int req_lv;
@@ -103,7 +99,6 @@ struct skill_unit_group;
 
 int do_init_skill(void);
 
-// スキルデータベースへのアクセサ
 int skill_get_hit( int id );
 int skill_get_inf( int id );
 int skill_get_pl( int id );
@@ -128,7 +123,6 @@ int skill_get_blewcount( int id, int lv );
 int skill_get_unit_flag( int id );
 int skill_tree_get_max( int id, int b_class ); // Celest
 
-// スキルの使用
 int skill_use_id(struct map_session_data *sd, int target_id, int skill_num, int skill_lv);
 int skill_use_pos(struct map_session_data *sd, int skill_x, int skill_y, int skill_num, int skill_lv);
 
@@ -137,11 +131,9 @@ void skill_castend_map(struct map_session_data *sd, int skill_num, const char *m
 int skill_cleartimerskill(struct block_list *src);
 int skill_addtimerskill(struct block_list *src, unsigned int tick, int target, int x, int y, int skill_id, int skill_lv, int type, int flag);
 
-// 追加効果
 int skill_additional_effect(struct block_list* src, struct block_list *bl, int skillid, int skilllv, int attack_type, unsigned int tick);
 int skill_blown(struct block_list *src, struct block_list *target, int count);
 
-// ユニットスキル
 struct skill_unit_group *skill_unitsetting(struct block_list *src, int skillid, int skilllv, int x, int y, int flag);
 struct skill_unit *skill_initunit(struct skill_unit_group *group, int idx, int x, int y);
 int skill_delunit(struct skill_unit *unit);
@@ -166,15 +158,13 @@ int skill_unit_move_unit_group(struct skill_unit_group *group, int m, int dx, in
 struct skill_unit_group *skill_check_dancing(struct block_list *src);
 void skill_stop_dancing(struct block_list *src, int flag);
 
-// Guild skills [celest]
 int skill_guildaura_sub(struct block_list *bl, va_list ap);
 
-// 詠唱キャンセル
 int skill_castcancel(struct block_list *bl, int type);
 
 int skill_gangsterparadise(struct map_session_data *sd, int type);
 int skill_rest(struct map_session_data *sd ,int type);
-//int skill_check_moonlit(struct block_list *bl, int dx, int dy);
+// int skill_check_moonlit(struct block_list *bl, int dx, int dy);
 void skill_brandishspear_first(struct square *tc, int dir, int x, int y);
 void skill_brandishspear_dir(struct square *tc, int dir, int are);
 void skill_autospell(struct map_session_data *md, int skillid);
@@ -185,31 +175,26 @@ void skill_devotion_end(struct map_session_data *md, struct map_session_data *sd
 
 #define skill_calc_heal(bl, skill_lv) ((status_get_lv(bl) + status_get_int(bl)) / 8 * (4 + (skill_lv) * 8))
 
-// その他
 int skill_check_cloaking(struct block_list *bl);
 
-// ステータス異常
 int skill_enchant_elemental_end(struct block_list *bl, int type);
 int skillnotok(int skillid, struct map_session_data *sd);
 
-// アイテム作成
 int skill_can_produce_mix(struct map_session_data *sd, int nameid, int trigger, unsigned int flag);
 int skill_produce_mix(struct map_session_data *sd, int nameid, int slot1, int slot2, int slot3);
 
 void skill_arrow_create(struct map_session_data *sd, unsigned short nameid);
 
-// mobスキルのため
 int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int skillid, int skilllv, unsigned int tick, int flag);
 int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int skillid, int skilllv, unsigned int tick, int flag);
 int skill_castend_pos2(struct block_list *src, int x, int y, int skillid, int skilllv, unsigned int tick, int flag);
 
-// スキル攻撃一括処理
 int skill_attack(int attack_type, struct block_list* src, struct block_list *dsrc,
 	 struct block_list *bl,int skillid,int skilllv,unsigned int tick,int flag);
 
 void skill_reload(void);
 
-/* for 'Plagiarism' from [Aalye] - freya's forum */
+// For 'Plagiarism' from [Aalye] - Freya's forum
 void skill_copy_skill(struct map_session_data *tsd, short skillid, short skilllv);
 
 enum {
@@ -903,4 +888,3 @@ enum {
 };
 
 #endif // _SKILL_H_
-

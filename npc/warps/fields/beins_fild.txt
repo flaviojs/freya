@@ -35,8 +35,9 @@ ve_fild05.gat,206,331,0    warp    veinswarp5018    1,1,ve_fild03.gat,222,45
 ve_fild04.gat,115,50,0    warp    veinswarp5019    1,1,ve_fild06.gat,78,183
 ve_fild05.gat,359,192,0    warp    veinswarp5020    1,1,ve_fild06.gat,78,183
 
-ve_fild06.gat,88,176,0    script    #veinswarp5021    45,1,1,{
+ve_fild06.gat,88,176,0	script	#veinswarp5021	45,2,2,{
 
+OnTouch:
 	set @w,rand(3);
 	if (@w == 1) warp "ve_fild04.gat",115,55;
 	if (@w == 2) warp "ve_fild05.gat",354,192;

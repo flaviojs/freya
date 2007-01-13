@@ -1156,12 +1156,12 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 			// taekwon
 			case TK_COUNTER:
 				flag.hit = 1;
-				skillratio += 90 + 30 * skill_lv;	// FORMULA: damage * (190 + 30 * skill_lv) / 100
+				skillratio += (90 + 30 * skill_lv) / 3;	// FORMULA: damage * (190 + 30 * skill_lv) / 100
 				if (sd && sd->weapontype1 == 0 && sd->weapontype2 == 0)
 					bonus_damage += 10 * pc_checkskill(sd, TK_RUN);
 				break;
 			case TK_DOWNKICK:
-				skillratio += 60 + 20 * skill_lv;	// FORMULA: damage * (160 + 20 * skill_lv) / 100
+				skillratio += (60 + 20 * skill_lv) / 3;	// FORMULA: damage * (160 + 20 * skill_lv) / 100
 				if (sd && sd->weapontype1 == 0 && sd->weapontype2 == 0)
 					bonus_damage += 10 * pc_checkskill(sd, TK_RUN);
 				break;
@@ -1173,13 +1173,13 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 					bonus_damage += 10 * pc_checkskill(sd, TK_RUN);
 				break;
 			case TK_STORMKICK:
-				skillratio += 60 + 20 * skill_lv;	// FORMULA: damage * (160 + 20 * skill_lv) / 100
+				skillratio += (60 + 20 * skill_lv) / 3;	// FORMULA: damage * (160 + 20 * skill_lv) / 100
 				if (sd && sd->weapontype1 == 0 && sd->weapontype2 == 0)
 					bonus_damage += 10 * pc_checkskill(sd, TK_RUN);
 				break;
 			case TK_TURNKICK:
 				wd.blewcount = 0;
-				skillratio += 90 + 30 * skill_lv;	// FORMULA: damage * (190 + 30 * skill_lv) / 100
+				skillratio += (90 + 30 * skill_lv) / 3;	// FORMULA: damage * (190 + 30 * skill_lv) / 100
 				if (sd && sd->weapontype1 == 0 && sd->weapontype2 == 0)
 					bonus_damage += 10 * pc_checkskill(sd, TK_RUN);
 				break;
@@ -2599,7 +2599,7 @@ struct Damage battle_calc_magic_attack(
 			MATK_FIX(50, 100);
 			break;
 		case NJ_BAKUENRYU:
-			MATK_FIX(100 + 150 + 150*skill_lv, 100);
+			MATK_FIX((100 + 150 + 150*skill_lv) / 3, 100);
 			break;
 		case NJ_HYOUSYOURAKU:
 			MATK_FIX((100+50*skill_lv), 100);

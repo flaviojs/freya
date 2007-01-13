@@ -6177,6 +6177,7 @@ int pc_damage(struct block_list *src, struct map_session_data *sd, int damage)
 int pc_readparam(struct map_session_data *sd,int type)
 {
 	int val = 0;
+	int job;
 	struct pc_base_job s_class;
 
 	s_class = pc_calc_base_job(sd->status.class);
@@ -6203,10 +6204,20 @@ int pc_readparam(struct map_session_data *sd,int type)
 		val= sd->status.class;
 		break;
 	case SP_BASEJOB:
-		val= s_class.job;
+		// Fixes for the new classes (Taekwon, Gunslinger, Ninja, Death Knight, Dark Collector) [Tsuyuki]
+		if ((sd->status.class >= 24 && sd->status.class <= 25) || (sd->status.class >= 4046 && sd->status.class <= 4053))
+			val= sd->status.class;
+		else
+			val= s_class.job;
 		break;
 	case SP_BASECLASS:
-		switch(s_class.job) {
+		// Fixes for the new classes (Taekwon, Gunslinger, Ninja, Death Knight, Dark Collector) [Tsuyuki]
+		if ((sd->status.class >= 24 && sd->status.class <= 25) || (sd->status.class >= 4046 && sd->status.class <= 4053))
+			job = sd->status.class;
+		else
+			job = s_class.job;
+		// Main Procedure
+		switch(job) {
 			// Novice Class
 			case JOB_NOVICE:
 			case JOB_SUPER_NOVICE:
@@ -6253,7 +6264,7 @@ int pc_readparam(struct map_session_data *sd,int type)
 				val= JOB_TAEKWON;
 				break;
 			default:
-				val= s_class.job;
+				val= job;
 		}
 		break;
 	case SP_UPPER:
