@@ -55,7 +55,7 @@ LStart2:
 		mes "Very well. Have fun!";
 		next;
 		warp "gon_test.gat",53,6;
-		break;
+		end;
 	Lno:
 		mes "[Song Mu Do]";
 		mes "No thanks? I guess that's Ok too. See you again!";
@@ -70,7 +70,7 @@ gon_test.gat,50,14,4	script	Waiting Room Manager	780,{
 	close;
 OnInit:
 	waitingroom "See you again!!",1,"Waiting Room Manager::Onwarp";
-	break;
+	end;
 Onwarp:
 	set @addmon,0;
 	set @kengaku,0;
@@ -78,7 +78,7 @@ Onwarp:
 	KillMonster "gon_test.gat","All";
 	addtimer 120000,"gontimer120000";
 	disablenpc "Waiting Room Manager";
-	break;
+	end;
 }
 //===============================================================================
 gon_test.gat,46,14,4	script	Arena Guide	770,{
@@ -108,13 +108,13 @@ L3:
 	next;
 	set @kengaku,1;
 	warp "gon_test.gat",25,99;
-	break;
+	end;
 L4:
 	mes "[Song Hui Yon]";
 	mes "Thank you for your patronage. Do come again!";
 	next;
 	warp "gonryun.gat",177,112;
-	break;
+	end;
 L5:
 	mes "[Song Hui Yon]";
 	mes "..... Good bye";
@@ -297,7 +297,7 @@ gon_test.gat,51,90,0	script	gontimer120000	-1,{
 	mapannounce "gon_test.gat",": One Minute Left!",0;
 	deltimer "gontimer120000";
 	addtimer 60000,"gontimer180000";
-	break;
+	end;
 }
 gon_test.gat,50,90,0	script	gontimer180000	-1,{
 Onend:
@@ -306,20 +306,20 @@ Onend:
 	deltimer "gontimer180000";
 	enablenpc "Waiting Room Manager";
 	killmonster "gon_test.gat","All";
-	break;
+	end;
 }
 //===============================================================================
 gon_test.gat,58,87,0	script	mobend	-1,{
 	mapannounce "gon_test.gat","Summoner Congratulations! We hope you participate again!",0;
 	addtimer 3000,"mobend::OnReturn";
-	break;
+	end;
 OnReturn:
 	warp "gon_test.gat",44,4;
 	deltimer "mobend";
 	deltimer "gontimer180000";
 	deltimer "gontimer120000";
 	enablenpc "Waiting Room Manager";
-	break;
+	end;
 }
 //===============================================================================
 gon_test.gat,70,103,4	script	Exit Guide	773,{
@@ -332,7 +332,7 @@ gon_test.gat,70,103,4	script	Exit Guide	773,{
 		next;
 		warp "gon_test.gat",44,4;
 		set @kengaku,0;
-		break;
+		end;
 	Lno:
 		mes "[Che En En]";
 		mes "Thank you very much!";

@@ -3463,10 +3463,9 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 			break;
 		case PR_BENEDICTIO:
 			i = status_get_race(bl);
-			// B.S. Sacramenti does work against enemies in GvG maps [Tsuyuki]
-			if (battle_check_undead(i, status_get_elem_type(bl)) || i == 6 || !map[bl->m].flag.gvg) {
+			if (battle_check_undead(i, status_get_elem_type(bl)) || i == 6) {
 				if (battle_check_target(src, bl, BCT_ENEMY) < 1)
-					return 0; // Offensive BSS does not works on non-enemies
+					return 0; // Offensive BSS does not work on non-enemies
 				return skill_castend_damage_id (src, bl, skillid, skilllv, tick, flag);
 			}
 			break;

@@ -4,6 +4,14 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+01/13/07
+	* Improved: Enhanced the jobchange, pc_calc_base_job and pc_calc_base_job2 pc.c functions [Tsuyuki]
+	* Fixed: Soul Linker/Star Gladiator job change skill point calculation [Tsuyuki]
+	* Fixed: Possibly fixed B.S.S Priest skill (can't test.. someone else test?) [Tsuyuki]
+	 - It was failing outside of GvG maps before, should work fine now
+	* Removed: break script command from all scripts and src [Tsuyuki]
+	 - It *worked* exactly like 'end' before, didn't want people to think it was for something else
+
 01/12/07
 	* Fixed: A bunch of broken cards [Tsuyuki]
 	* Fixed: NJ_BAKUENRYU's (Raging Fire Dragon) damage formula [Tsuyuki]
