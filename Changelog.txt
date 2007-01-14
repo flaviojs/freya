@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/13/07
+	* Fixed: The four main Taekwon kicks now never miss [Tsuyuki]
+	* Updated: Added official stats/drops for 11.1 Arunafeltz monsters (Credits: Aegis/eAthena) [Tsuyuki]
 	* Fixed: Final Strike is always Neutral [Tsuyuki]
 	* Fixed: Spirit of the Assassin now stacks with EDP [Tsuyuki]
 	 - Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=105578&postdays=0&postorder=asc&start=15

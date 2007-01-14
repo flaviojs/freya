@@ -1161,6 +1161,7 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 					bonus_damage += 10 * pc_checkskill(sd, TK_RUN);
 				break;
 			case TK_DOWNKICK:
+				flag.hit = 1;
 				skillratio += (60 + 20 * skill_lv) / 3;	// FORMULA: damage * (160 + 20 * skill_lv) / 100
 				if (sd && sd->weapontype1 == 0 && sd->weapontype2 == 0)
 					bonus_damage += 10 * pc_checkskill(sd, TK_RUN);
@@ -1173,11 +1174,13 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 					bonus_damage += 10 * pc_checkskill(sd, TK_RUN);
 				break;
 			case TK_STORMKICK:
+				flag.hit = 1;
 				skillratio += (60 + 20 * skill_lv) / 3;	// FORMULA: damage * (160 + 20 * skill_lv) / 100
 				if (sd && sd->weapontype1 == 0 && sd->weapontype2 == 0)
 					bonus_damage += 10 * pc_checkskill(sd, TK_RUN);
 				break;
 			case TK_TURNKICK:
+				flag.hit = 1;
 				wd.blewcount = 0;
 				skillratio += (90 + 30 * skill_lv) / 3;	// FORMULA: damage * (190 + 30 * skill_lv) / 100
 				if (sd && sd->weapontype1 == 0 && sd->weapontype2 == 0)
