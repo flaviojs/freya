@@ -130,6 +130,9 @@ INSERT INTO `item_db` VALUES (588, 'Spaghetti', 'Spaghetti', 0, 100, 50, 100, 0,
 INSERT INTO `item_db` VALUES (589, 'Pizza', 'Pizza', 0, 1200, 600, 150, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(375,445),0;', NULL);
 INSERT INTO `item_db` VALUES (590, 'Brezel', 'Brezel', 0, 2, 1, 20, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal 50,90;', NULL);
 
+INSERT INTO `item_db` VALUES (596, 'Unknown_Item', 'Unknown Item', 0, 0, 0, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, NULL, NULL);
+INSERT INTO `item_db` VALUES (597, 'Unknown_Item', 'Unknown item', 0, 0, 0, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, NULL, NULL);
+
 # Usable Items
 INSERT INTO `item_db` VALUES (601, 'Fly_Wing', 'Fly Wing', 2, 60, 30, 50, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'warp \"Random\",0,0;', NULL);
 INSERT INTO `item_db` VALUES (602, 'Butterfly_Wing', 'Butterfly Wing', 2, 300, 150, 50, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'warp \"SavePoint\",0,0;', NULL);
@@ -563,6 +566,7 @@ INSERT INTO `item_db` VALUES (1168, 'Zweihander', 'Zweihander', 4, 20, 0, 2200, 
 INSERT INTO `item_db` VALUES (1169, 'Executioner_', 'Executioner', 4, 20, 0, 2200, 155, 0, 1, 0, 16514, 2, 34, 4, 48, 3, NULL, 'bonus bIgnoreDefRace,7; bonus2 bAddRace,7,20; bonus2 bSubRace,7,-10; bonus bAtkEle,7;');
 INSERT INTO `item_db` VALUES (1170, 'Katzbalger', 'Katzbalger', 4, 20, 0, 2000, 175, 0, 1, 0, 16514, 2, 34, 4, 48, 3, NULL, 'bonus bVit,5; bonus bDef,10;');
 INSERT INTO `item_db` VALUES (1171, 'Zweihander_', 'Zweihander', 4, 20, 0, 2200, 200, 0, 1, 1, 16514, 2, 34, 4, 48, 3, NULL, NULL);
+INSERT INTO `item_db` VALUES (1172, 'Claymore_', 'Claymore', 4, 74000, 0, 2500, 180, 0, 1, 2, 16512, 2, 34, 3, 33, 3, NULL, NULL);
 
 # Knives and Daggers
 INSERT INTO `item_db` VALUES (1201, 'Knife', 'Knife', 4, 50, 0, 400, 17, 0, 1, 3, 413097711, 2, 2, 1, 1, 1, NULL, NULL);
@@ -1233,6 +1237,11 @@ INSERT INTO `item_db` VALUES (2678, 'Unknown_Item', 'Unknown Item', 5, 20, 0, 10
 INSERT INTO `item_db` VALUES (2679, 'Unknown_Item', 'Unknown Item', 5, 20, 0, 100, 0, 2, 0, 0, 2087808, 2, 136, 0, 0, 0, NULL, 'bonus bAgi,2; bonus bVit,1; bonus bMdef,2;');
 INSERT INTO `item_db` VALUES (2680, 'Unknown_Item', 'Unknown Item', 5, 20, 0, 100, 0, 0, 0, 0, 1071636479, 2, 136, 0, 0, 0, NULL, 'bonus bStr,1; bonus bAgi,1; bonus bVit,1; bonus bInt,1; bonus bDex,1; bonus bLuk,1;');
 
+INSERT INTO `item_db` VALUES (2681, 'Unknown_Item', 'Unknown Item', 5, 0, 0, 1000, 0, 0, 0, 0, 1071636479, 2, 136, 0, 0, 0, NULL, 'bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3;');
+INSERT INTO `item_db` VALUES (2682, 'Unknown_Item', 'Unknown Item', 5, 0, 0, 100, 0, 1, 0, 0, 991944702, 2, 136, 0, 20, 0, NULL, 'bonus2 bSubEle,1,5;');
+INSERT INTO `item_db` VALUES (2683, 'Unknown_Item', 'Unknown Item', 5, 0, 0, 100, 0, 1, 0, 0, 991944702, 2, 136, 0, 20, 0, NULL, 'bonus2 bSubEle,3,5;');
+INSERT INTO `item_db` VALUES (2684, 'Unknown_Item', 'Unknown Item', 5, 0, 0, 100, 0, 1, 0, 0, 991944702, 2, 136, 0, 20, 0, NULL, 'bonus2 bSubEle,4,5;');
+INSERT INTO `item_db` VALUES (2685, 'Unknown_Item', 'Unknown Item', 5, 0, 0, 100, 0, 1, 0, 0, 991944702, 2, 136, 0, 20, 0, NULL, 'bonus2 bSubEle,2,5;');
 
 # Cards
 INSERT INTO `item_db` VALUES (4001, 'Poring_Card', 'Poring Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bLuk,2; bonus bFlee2,1;');
@@ -1903,18 +1912,20 @@ INSERT INTO `item_db` VALUES (5240, 'Gray_Wizardry_Hat', 'Gray Wizardry Hat', 5,
 INSERT INTO `item_db` VALUES (5241, 'Blue_Wizardry_Hat', 'Blue Wizardry Hat', 5, 20, 0, 300, 0, 1, 0, 0, 134283780, 2, 256, 0, 0, 285, NULL, 'bonus bInt,2; bonus bMaxSP,150;');
 INSERT INTO `item_db` VALUES (5242, 'Yellow_Wizardry_Hat', 'Yellow Wizardry Hat', 5, 20, 0, 300, 0, 1, 0, 0, 134283780, 2, 256, 0, 0, 286, NULL, 'bonus bInt,2; bonus bMaxSP,150;');
 
-INSERT INTO `item_db` VALUES (5252, 'Unknown_Item', 'Unknown_Item', 5, 20, 0, 300, 0, 1, 0, 0, 1071636479, 2, 256, 0, 20, 296, NULL, 'bonus bAgi,1; bonus bDex,1; bonus4 bAutoSpellWhenHit,75,1,500,0;');
-INSERT INTO `item_db` VALUES (5253, 'Unknown_Item', 'Unknown_Item', 5, 20, 0, 200, 0, 1, 0, 1, 1071636479, 2, 256, 0, 20, 297, NULL, 'bonus bInt,1; bonus bMdef,getequiprefinerycnt(1);');
-INSERT INTO `item_db` VALUES (5254, 'Unknown_Item', 'Unknown_Item', 5, 20, 0, 350, 0, 1, 0, 0, 1071636479, 2, 256, 0, 20, 298, NULL, 'bonus bStr,1; bonus bCritical,3; bonus2 bSubRace,8,-20; if(getequiprefinerycnt(1)>=6) bonus bCriticalRate,getequiprefinerycnt(1)-5;');
+INSERT INTO `item_db` VALUES (5252, 'Unknown_Item', 'Unknown Item', 5, 20, 0, 300, 0, 1, 0, 0, 1071636479, 2, 256, 0, 20, 296, NULL, 'bonus bAgi,1; bonus bDex,1; bonus4 bAutoSpellWhenHit,75,1,500,0;');
+INSERT INTO `item_db` VALUES (5253, 'Unknown_Item', 'Unknown Item', 5, 20, 0, 200, 0, 1, 0, 1, 1071636479, 2, 256, 0, 20, 297, NULL, 'bonus bInt,1; bonus bMdef,getequiprefinerycnt(1);');
+INSERT INTO `item_db` VALUES (5254, 'Unknown_Item', 'Unknown Item', 5, 20, 0, 350, 0, 1, 0, 0, 1071636479, 2, 256, 0, 20, 298, NULL, 'bonus bStr,1; bonus bCritical,3; bonus2 bSubRace,8,-20; if(getequiprefinerycnt(1)>=6) bonus bCriticalRate,getequiprefinerycnt(1)-5;');
 
-INSERT INTO `item_db` VALUES (5255, 'Unknown_Item', 'Unknown_Item', 5, 20, 0, 600, 0, 3, 0, 0, 1071636479, 2, 256, 0, 20, 299, NULL, 'bonus bLuk,3; bonus4 bAutoSpell,1013,1,100,0;');
-INSERT INTO `item_db` VALUES (5256, 'Unknown_Item', 'Unknown_Item', 5, 20, 0, 100, 0, 1, 0, 1, 1071636479, 2, 256, 0, 20, 300, NULL, 'bonus bInt,1; bonus4 bAutoSpellWhenHit,28,1,500,0;');
-INSERT INTO `item_db` VALUES (5257, 'Unknown_Item', 'Unknown_Item', 5, 20, 0, 300, 0, 2, 0, 0, 991944702, 2, 256, 0, 20, 301, NULL, 'bonus bMdef,2; bonus4 bAutoSpellWhenHit,361,1,100,0;');
-INSERT INTO `item_db` VALUES (5258, 'Unknown_Item', 'Unknown_Item', 5, 20, 0, 100, 0, 0, 0, 0, 1071636479, 2, 768, 0, 10, 302, NULL, 'bonus4 bAutoSpellWhenHit,142,1,3000,0; bonus2 bSubEle,0,1;');
-INSERT INTO `item_db` VALUES (5259, 'Unknown_Item', 'Unknown_Item', 5, 0, 0, 500, 0, 3, 0, 0, 1071636479, 2, 256, 0, 0, 215, NULL, 'bonus bVit,1; bonus4 bAutoSpell,86,3,300,1; skill 31,1;');
-INSERT INTO `item_db` VALUES (5260, 'Unknown_Item', 'Unknown_Item', 5, 0, 0, 500, 0, 2, 0, 0, 1071636479, 2, 256, 0, 0, 217, NULL, 'bonus bAgi,1; bonus bFlee2,5; bonus CritAtkRate,5;');
-INSERT INTO `item_db` VALUES (5261, 'Unknown_Item', 'Unknown_Item', 5, 0, 0, 500, 0, 2, 0, 0, 1071636479, 2, 256, 0, 0, 218, NULL, 'bonus bInt,2;');
-INSERT INTO `item_db` VALUES (5262, 'Unknown_Item', 'Unknown_Item', 5, 0, 0, 500, 0, 2, 0, 0, 1071636479, 2, 256, 0, 0, 232, NULL, 'bonus bStr,2; bonus bUnbreakableHelm,0;');
+INSERT INTO `item_db` VALUES (5255, 'Unknown_Item', 'Unknown Item', 5, 20, 0, 600, 0, 3, 0, 0, 1071636479, 2, 256, 0, 20, 299, NULL, 'bonus bLuk,3; bonus4 bAutoSpell,1013,1,100,0;');
+INSERT INTO `item_db` VALUES (5256, 'Unknown_Item', 'Unknown Item', 5, 20, 0, 100, 0, 1, 0, 1, 1071636479, 2, 256, 0, 20, 300, NULL, 'bonus bInt,1; bonus4 bAutoSpellWhenHit,28,1,500,0;');
+INSERT INTO `item_db` VALUES (5257, 'Unknown_Item', 'Unknown Item', 5, 20, 0, 300, 0, 2, 0, 0, 991944702, 2, 256, 0, 20, 301, NULL, 'bonus bMdef,2; bonus4 bAutoSpellWhenHit,361,1,100,0;');
+INSERT INTO `item_db` VALUES (5258, 'Unknown_Item', 'Unknown Item', 5, 20, 0, 100, 0, 0, 0, 0, 1071636479, 2, 768, 0, 10, 302, NULL, 'bonus4 bAutoSpellWhenHit,142,1,3000,0; bonus2 bSubEle,0,1;');
+INSERT INTO `item_db` VALUES (5259, 'Unknown_Item', 'Unknown Item', 5, 0, 0, 500, 0, 3, 0, 0, 1071636479, 2, 256, 0, 0, 215, NULL, 'bonus bVit,1; bonus4 bAutoSpell,86,3,300,1; skill 31,1;');
+INSERT INTO `item_db` VALUES (5260, 'Unknown_Item', 'Unknown Item', 5, 0, 0, 500, 0, 2, 0, 0, 1071636479, 2, 256, 0, 0, 217, NULL, 'bonus bAgi,1; bonus bFlee2,5; bonus CritAtkRate,5;');
+INSERT INTO `item_db` VALUES (5261, 'Unknown_Item', 'Unknown Item', 5, 0, 0, 500, 0, 2, 0, 0, 1071636479, 2, 256, 0, 0, 218, NULL, 'bonus bInt,2;');
+INSERT INTO `item_db` VALUES (5262, 'Unknown_Item', 'Unknown Item', 5, 0, 0, 500, 0, 2, 0, 0, 1071636479, 2, 256, 0, 0, 232, NULL, 'bonus bStr,2; bonus bUnbreakableHelm,0;');
+INSERT INTO `item_db` VALUES (5263, 'Unknown_Item', 'Unknown Item', 5, 0, 0, 100, 0, 1, 0, 0, 991944702, 2, 768, 0, 20, 303, NULL, 'bonus2 bSubEle,1,1; bonus2 bSubEle,2,1; bonus2 bSubEle,3,1; bonus2 bSubEle,4,1; bonus2 bAddEff,Eff_Curse,3;');
+INSERT INTO `item_db` VALUES (5264, 'Unknown_Item', 'Unknown Item', 5, 0, 0, 500, 0, 4, 0, 0, 1071636479, 2, 256, 0, 0, 304, NULL, 'bonus bStr,2; bonus bAgi,2; bonus bVit,2; bonus bInt,2; bonus bDex,2; bonus bLuk,2;');
 
 # Misc/Collection Items
 INSERT INTO `item_db` VALUES (7001, 'Mold_Powder', 'Mold Powder', 3, 680, 0, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
@@ -2576,6 +2587,17 @@ INSERT INTO `item_db` VALUES (7709, 'Unknown_Item', 'Unknown Item', 3, 0, 10, 10
 INSERT INTO `item_db` VALUES (7710, 'Unknown_Item', 'Unknown Item', 3, 0, 10, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7711, 'Unknown_Item', 'Unknown Item', 3, 0, 10, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 
+INSERT INTO `item_db` VALUES (7712, 'Unknown_Item', 'Unknown Item', 3, 0, 10, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
+INSERT INTO `item_db` VALUES (7713, 'Unknown_Item', 'Unknown Item', 3, 0, 10, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
+INSERT INTO `item_db` VALUES (7714, 'Unknown_Item', 'Unknown Item', 3, 0, 10, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
+INSERT INTO `item_db` VALUES (7715, 'Unknown_Item', 'Unknown Item', 3, 0, 10, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
+INSERT INTO `item_db` VALUES (7716, 'Unknown_Item', 'Unknown Item', 3, 0, 10, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
+INSERT INTO `item_db` VALUES (7717, 'Unknown_Item', 'Unknown Item', 3, 0, 10, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
+INSERT INTO `item_db` VALUES (7718, 'Unknown_Item', 'Unknown Item', 3, 0, 10, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
+INSERT INTO `item_db` VALUES (7719, 'Unknown_Item', 'Unknown Item', 3, 0, 10, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
+
+INSERT INTO `item_db` VALUES (7850, 'Unknown_Item', 'Unknown Item', 3, 0, 10, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
+
 # End of Incomplete Misc Entries
 
 # Pet Eggs
@@ -2875,6 +2897,7 @@ INSERT INTO `item_db` VALUES (12186, 'Old_Red_Box', 'Old Red Box', 2, 20, 10, 20
 INSERT INTO `item_db` VALUES (12187, 'Old_Green_Box', 'Old Green Box', 2, 20, 10, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem -14,1;', NULL);
 INSERT INTO `item_db` VALUES (12188, 'Fantastic_Moon_Snack', 'Fantastic Moon Snack', 2, 20, 10, 300, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'percentheal 50,50;', NULL);
 INSERT INTO `item_db` VALUES (12189, 'Old_Red_Box_', 'Old Red Box', 2, 20, 10, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem -13,1;', NULL);
+
 INSERT INTO `item_db` VALUES (12190, 'Unknown_Item', 'Unknown Item', 2, 20, 10, 300, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start 20,300000,0;', NULL);
 INSERT INTO `item_db` VALUES (12191, 'Unknown_Item', 'Unknown Item', 2, 20, 10, 300, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start 20,300000,0; sc_start SC_INCASPDRATE,300000,0;', NULL);
 INSERT INTO `item_db` VALUES (12192, 'Unknown_Item', 'Unknown Item', 2, 20, 10, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'percentheal 10,10;', NULL);
@@ -2887,7 +2910,6 @@ INSERT INTO `item_db` VALUES (12198, 'Unknown_Item', 'Unknown Item', 2, 20, 10, 
 INSERT INTO `item_db` VALUES (12199, 'Unknown_Item', 'Unknown Item', 2, 20, 10, 0, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (12200, 'Christmas_Cake', 'Christmas Cake', 2, 20, 10, 50, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemskill 74,3,\"\";', NULL);
 INSERT INTO `item_db` VALUES (12201, 'Unknown_Item', 'Unknown Item', 2, 20, 10, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, NULL, NULL);
-
 INSERT INTO `item_db` VALUES (12202, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, NULL, NULL); # sc_start SC_MSTR,1800000,10; 
 INSERT INTO `item_db` VALUES (12203, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, NULL, NULL); # sc_start SC_MAGI,1800000,10; 
 INSERT INTO `item_db` VALUES (12204, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, NULL, NULL); # sc_start SC_MINT,1800000,10; 
@@ -2913,6 +2935,11 @@ INSERT INTO `item_db` VALUES (12223, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 10
 INSERT INTO `item_db` VALUES (12224, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (12225, 'Unknown_Item', 'Unknown Item', 2, 20, 10, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'pet 1245;', NULL); # Xmas Goblin Pet Taming Item
 
+INSERT INTO `item_db` VALUES (12234, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 100, 0, 0, 0, 0, 1000333311, 2, 0, 0, 0, 0, NULL, NULL);
+INSERT INTO `item_db` VALUES (12235, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 100, 0, 0, 0, 0, 1000333311, 2, 0, 0, 0, 0, NULL, NULL);
+INSERT INTO `item_db` VALUES (12236, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 100, 0, 0, 0, 0, 1000333311, 2, 0, 0, 0, 0, NULL, NULL);
+INSERT INTO `item_db` VALUES (12237, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 100, 0, 0, 0, 0, 1000333311, 2, 0, 0, 0, 0, NULL, NULL);
+
 INSERT INTO `item_db` VALUES (12900, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem 12208,10;', NULL);
 INSERT INTO `item_db` VALUES (12901, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem 12209,10;', NULL);
 INSERT INTO `item_db` VALUES (12902, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem 12210,10;', NULL);
@@ -2936,6 +2963,18 @@ INSERT INTO `item_db` VALUES (12919, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 10
 INSERT INTO `item_db` VALUES (12920, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem 7619,10;', NULL);
 INSERT INTO `item_db` VALUES (12921, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem 7620,10;', NULL);
 INSERT INTO `item_db` VALUES (12922, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem 7621,10;', NULL);
+INSERT INTO `item_db` VALUES (12923, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem 12925,1;', NULL);
+INSERT INTO `item_db` VALUES (12924, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem 12926,1;', NULL);
+INSERT INTO `item_db` VALUES (12925, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, NULL, NULL);
+INSERT INTO `item_db` VALUES (12926, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, NULL, NULL);
+INSERT INTO `item_db` VALUES (12927, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem 12928,1;', NULL);
+INSERT INTO `item_db` VALUES (12928, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemskill 68,5,\"\";', NULL);
+INSERT INTO `item_db` VALUES (12929, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem 12932,1;', NULL);
+INSERT INTO `item_db` VALUES (12930, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem 12933,1;', NULL);
+INSERT INTO `item_db` VALUES (12931, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem 12934,1;', NULL);
+INSERT INTO `item_db` VALUES (12932, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, NULL, NULL);
+INSERT INTO `item_db` VALUES (12933, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, NULL, NULL);
+INSERT INTO `item_db` VALUES (12934, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, NULL, NULL);
 
 # Extra Daggers
 INSERT INTO `item_db` VALUES (13000, 'Jujube_Dagger', 'Jujube Dagger', 4, 10000, 5000, 600, 39, 0, 1, 0, 144662255, 2, 2, 1, 0, 1, NULL, 'bonus bAtkEle,4;');

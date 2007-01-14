@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/13/07
+	* Added: Latest kRO patch items (1/09/07), imported from jAthena [Tsuyuki]
 	* Fixed: The four main Taekwon kicks now never miss [Tsuyuki]
 	* Updated: Added official stats/drops for 11.1 Arunafeltz monsters (Credits: Aegis/eAthena) [Tsuyuki]
 	* Fixed: Final Strike is always Neutral [Tsuyuki]
