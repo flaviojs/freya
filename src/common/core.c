@@ -112,6 +112,8 @@ void set_termfunc(void (*termfunc)(void)) {
 static void sig_proc(int sn) {
 //	int i;
 	static int is_called = 0;
+	char pidPath[64];  // {oreo} Project: Diablo
+	FILE *fp;	// {oreo} Project: Diablo
 
 	if (is_called++)
 		return;
@@ -139,11 +141,27 @@ static void sig_proc(int sn) {
 			delete_session(i);
 		}
 		term_input_disable();*/
+
+// {oreo} Project: Diablo
+// <start>
+#ifndef __CYGWIN
+#ifndef __WIN32
+        if (!strcmp(service, "login") || !strcmp(service, "char") ||
+			!strcmp(service, "map")) {
+			sprintf(pidPath, "./tmp/pids/%s.pid", service);
+			fp = fopen(pidPath, "w");
+			fclose(fp);
+		}
+#endif
+#endif
+// <end>
+
 		exit(0);
 	}
 
 	is_called--;
 }
+
 
 /*======================================================
  * Server Version Screen

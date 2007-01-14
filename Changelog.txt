@@ -15,6 +15,8 @@ Date	Added
 	 - setsitstand flag; Flag: 0 = Sit, 1 = Stand
 	* Improved: Did a bunch of work on the npc/custom folder [Tsuyuki]
 	 - Completely rewrote heal.txt file
+	* Added: forcing of uid/gid; writing process ID in PID files (tmp/pids); setting umask; changing process priority.
+	         (those options are in the configuration files) [Oreo]
 
 01/13/07
 	* Added: Latest kRO patch items (1/09/07), imported from jAthena [Tsuyuki]
