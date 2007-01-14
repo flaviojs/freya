@@ -4513,4 +4513,73 @@
 1814,G_Moonlight Flower@BS_HAMMERFALL,chase,110,11,2000,0,5000,no,target,always,0,,,,,,0
 1814,G_Moonlight Flower@BS_HAMMERFALL,attack,110,11,2000,0,5000,no,target,always,0,,,,,,0
 
-// To-Do: Missing mob_skill_db.txt entries for 1815-1839
+// To-Do: Missing mob_skill_db.txt entries for 1815-1830
+
+// Thor Volcano - Episode 11.2 - 1831-1839 [Tsuyuki]
+// If you take these entries for yourself, GIVE PROPER CREDIT
+1831,Salamander@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
+1831,Salamander@MG_FIREBALL,attack,17,8,1000,500,10000,yes,target,always,0,,,,,,
+1831,Salamander@MG_FIREBALL,chase,17,8,1000,500,10000,yes,target,always,0,,,,,,
+1831,Salamander@NPC_CRITICALSLASH,attack,170,1,500,500,5000,no,target,always,0,,,,,,
+1831,Salamander@CR_REFLECTSHIELD,attack,252,5,10000,0,300000,yes,self,always,0,,,,,,32
+1831,Salamander@CR_REFLECTSHIELD,chase,252,5,10000,0,300000,yes,self,always,0,,,,,,32
+1831,Salamander@KN_TWOHANDQUICKEN,attack,60,10,2000,0,120000,yes,self,myhpltmaxrate,30,,,,,,
+1831,Salamander@KN_TWOHANDQUICKEN,chase,60,10,2000,0,120000,yes,self,myhpltmaxrate,30,,,,,,
+1832,Ifrit@AL_HEAL,attack,28,1,500,0,5000,no,self,myhpltmaxrate,50,,,,,,21
+1832,Ifrit@AL_HEAL,chase,28,1,500,0,5000,no,self,myhpltmaxrate,50,,,,,,21
+1832,Ifrit@AL_HEAL,attack,28,1,1500,0,5000,no,self,myhpltmaxrate,30,,,,,,21
+1832,Ifrit@AL_HEAL,chase,28,1,1500,0,5000,no,self,myhpltmaxrate,30,,,,,,21
+1832,Ifrit@AL_HEAL,attack,28,11,2500,0,5000,no,self,myhpltmaxrate,10,,,,,,21
+1832,Ifrit@AL_HEAL,chase,28,11,2500,0,5000,no,self,myhpltmaxrate,10,,,,,,21
+1832,Ifrit@ASC_METEOR,attack,406,10,1500,0,5000,yes,target,always,0,,,,,,
+1832,Ifrit@WZ_METEOR,attack,83,11,2000,0,5000,yes,target,always,0,,,,,,
+1832,Ifrit@WZ_METEOR,chase,83,11,2000,0,5000,yes,target,always,0,,,,,,
+1832,Ifrit@HW_GANBANTEIN,attack,483,1,3000,0,5000,yes,around2,skillused,288,,,,,,
+1832,Ifrit@HW_GANBANTEIN,chase,483,1,3000,0,5000,yes,around2,skillused,288,,,,,,
+1832,Ifrit@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
+1832,Ifrit@NPC_SUMMONSLAVE,attack,196,1,5000,3000,360000,no,self,slavele,1,1834,1835,,,,, // Kasa/Salamander
+1832,Ifrit@NPC_SUMMONSLAVE,chase,196,1,5000,3000,360000,no,self,slavele,1,1834,1835,,,,, // Kasa/Salamander
+1832,Ifrit@NPC_SUMMONSLAVE,idle,196,1,5000,3000,360000,no,self,slavele,1,1834,1835,,,,, // Kasa/Salamander
+1832,Ifrit@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
+1832,Ifrit@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
+1832,Ifrit@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
+// Missing Ifrit Skills 'Status Attack', and 'Earthquake' (not implemented yet)
+1833,Kasa@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
+1833,Kasa@WZ_FIREPILLAR,idle,80,10,1000,500,5000,yes,around2,always,0,,,,,,
+1833,Kasa@WZ_METEOR,attack,83,11,1500,1000,5000,yes,target,always,0,,,,,,
+1833,Kasa@WZ_METEOR,chase,83,11,1500,1000,5000,yes,target,always,0,,,,,,
+1833,Kasa@MG_FIREBALL,attack,17,11,1000,500,10000,yes,target,always,0,,,,,,
+1833,Kasa@MG_FIREBALL,chase,17,11,1000,500,10000,yes,target,always,0,,,,,,
+1833,Kasa@LK_SPIRALPIERCE,attack,397,5,500,0,10000,no,target,always,0,,,,,,
+1833,Kasa@HW_GANBANTEIN,attack,483,1,2500,500,5000,yes,around2,skillused,288,,,,,,
+1833,Kasa@HW_GANBANTEIN,chase,483,1,2500,500,5000,yes,around2,skillused,288,,,,,,
+1834,G_SALAMANDER@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
+1834,G_Salamander@MG_FIREBALL,attack,17,8,1000,500,10000,yes,target,always,0,,,,,,
+1834,G_Salamander@MG_FIREBALL,chase,17,8,1000,500,10000,yes,target,always,0,,,,,,
+1834,G_Salamander@NPC_CRITICALSLASH,attack,170,1,500,500,5000,no,target,always,0,,,,,,
+1834,G_Salamander@CR_REFLECTSHIELD,attack,252,5,10000,0,300000,yes,self,always,0,,,,,,32
+1834,G_Salamander@CR_REFLECTSHIELD,chase,252,5,10000,0,300000,yes,self,always,0,,,,,,32
+1834,G_Salamander@KN_TWOHANDQUICKEN,attack,60,10,2000,0,120000,yes,self,myhpltmaxrate,30,,,,,,
+1834,G_Salamander@KN_TWOHANDQUICKEN,chase,60,10,2000,0,120000,yes,self,myhpltmaxrate,30,,,,,,
+1835,G_Kasa@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
+1835,G_Kasa@WZ_FIREPILLAR,idle,80,10,1000,500,5000,yes,around2,always,0,,,,,,
+1835,G_Kasa@WZ_METEOR,attack,83,11,1500,1000,5000,yes,target,always,0,,,,,,
+1835,G_Kasa@WZ_METEOR,chase,83,11,1500,1000,5000,yes,target,always,0,,,,,,
+1835,G_Kasa@MG_FIREBALL,attack,17,11,1000,500,10000,yes,target,always,0,,,,,,
+1835,G_Kasa@MG_FIREBALL,chase,17,11,1000,500,10000,yes,target,always,0,,,,,,
+1835,G_Kasa@LK_SPIRALPIERCE,attack,397,5,500,0,10000,no,target,always,0,,,,,,
+1835,G_Kasa@HW_GANBANTEIN,attack,483,1,2500,500,5000,yes,around2,skillused,288,,,,,,
+1835,G_Kasa@HW_GANBANTEIN,chase,483,1,2500,500,5000,yes,around2,skillused,288,,,,,,
+// Missing Magmaring [1836] Monster Skills
+1837,Imp@RG_STRIPARMOR,attack,217,5,500,0,30000,yes,target,always,0,,,,,,
+1837,Imp@MG_FIREBALL,attack,17,8,1000,500,10000,yes,target,always,0,,,,,,
+1837,Imp@MG_FIREBALL,chase,17,8,1000,500,10000,yes,target,always,0,,,,,,
+1837,Imp@MG_FIREBOLT,chase,19,8,1000,1000,5000,yes,target,always,0,,,,,0
+1837,Imp@MG_FIREBOLT,chase,19,8,1000,1000,5000,yes,target,always,0,,,,,,0
+1838,Knocker@TF_THROWSTONE,attack,152,1,500,0,5000,yes,target,always,0,,,,,,6
+1838,Knocker@TF_THROWSTONE,chase,152,1,500,0,5000,yes,target,always,0,,,,,,6
+1838,Knocker@TF_SPRINKLESAND,attack,149,1,500,0,5000,yes,target,always,0,,,,,,7
+1838,Knocker@TF_SPRINKLESAND,attack,149,1,500,0,5000,yes,target,always,0,,,,,,7
+// Missing Byorgue [1839] Monster Skills
+
+// End of database
