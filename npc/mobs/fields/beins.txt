@@ -25,7 +25,7 @@ ve_fild02.gat,0,0,0	monster	Roween	1782,10,0,0,0
 ve_fild02.gat,0,0,0	monster	Atros	1785,1,86400000,86000000,1
 
 //======== [Beins Field 03] =======================================
-ve_fild03.gat,0,0,0	monster	Magmaring	1036,10,0,0,0
+ve_fild03.gat,0,0,0	monster	Magmaring	1836,10,0,0,0
 ve_fild03.gat,0,0,0	monster	Sleeper	1386,10,0,0,0
 
 //======== [Beins Field-04] =======================================

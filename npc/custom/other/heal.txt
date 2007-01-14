@@ -42,7 +42,7 @@ prontera.gat,151,186,5	script	Sitting Girl	882,{
 		sc_start 38,240000,10; // Increase AGI Status
 
 		specialeffect2 6; // Blue Warping Effect
-		setsitstand 0; // Makes you sit
+		sit; // Makes you sit
 
 		mes "[Misha]";
 		mes "Have you enjoyed our rest?";
@@ -68,5 +68,5 @@ morocc.gat,160,97,5	duplicate(Sitting Girl)	Sitting Girl#10	882
 niflheim.gat,198,183,5	duplicate(Sitting Girl)	Sitting Girl#11	882
 payon.gat,186,105,5	duplicate(Sitting Girl)	Sitting Girl#12	882
 umbala.gat,94,162,5	duplicate(Sitting Girl)	Sitting Girl#13	882
-xmas.gat,149,136,5	duplicate(Sitting Girl)	Sitting Girl#14	882
+xmas.gat,148,135,5	duplicate(Sitting Girl)	Sitting Girl#14	882
 yuno.gat,160,191,3	duplicate(Sitting Girl)	Sitting Girl#15	882

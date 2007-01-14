@@ -5,6 +5,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/14/07
+	* Improved: Lots of work to the custom Warper script [Tsuyuki]
+	* Fixed: Typo in the Beins field spawns script [Tsuyuki]
+	* Changed: Split 'setsitstand' command into two commands: sit, and stand [Tsuyuki]
 	* Added: New script command: setsitstand [Tsuyuki]
 	 - setsitstand flag; Flag: 0 = Sit, 1 = Stand
 	* Improved: Did a bunch of work on the npc/custom folder [Tsuyuki]

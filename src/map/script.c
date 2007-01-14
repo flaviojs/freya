@@ -343,7 +343,8 @@ int buildin_jump_zero(struct script_state *st);
 int buildin_select(struct script_state *st);
 int buildin_getmapmobs(struct script_state *st);
 int buildin_getiteminfo(struct script_state *st); // Returns Items Buy / sell Price, etc info
-int buildin_setsitstand(struct script_state *st); // Makes a person sit or stand
+int buildin_sit(struct script_state *st); // Makes a person sit
+int buildin_stand(struct script_state *st); // Makes a person stand
 
 int run_func(struct script_state *st);
 
@@ -605,7 +606,8 @@ struct {
 	{buildin_globalmes,"globalmes","s*"},
 	{buildin_getmapmobs,"getmapmobs","s"},
 	{buildin_getiteminfo,"getiteminfo","ii"}, // Returns an item's buy / sell price, etc
-	{buildin_setsitstand,"setsitstand","i"}, // Makes a person sit or stand
+	{buildin_sit,"sit",""}, // Makes a player sit
+	{buildin_stand,"stand",""}, // Makes a player stand
 	{NULL,NULL,NULL},
 };
 
@@ -7819,33 +7821,35 @@ int buildin_isequippedcnt(struct script_state *st)
 }
 
 /*==========================================
- * setsitstand - Set sitting/standing for a player [Tsuyuki]
+ * sit - Makes a player sit [Tsuyuki]
  *------------------------------------------
  */
-int buildin_setsitstand(struct script_state *st)
+int buildin_sit(struct script_state *st)
 {
-	struct map_session_data *sd = script_rid2sd(st);;
-	int i;
-	
-	i = conv_num(st,& (st->stack->stack_data[st->start+2]));
-
-	if (i < 0 || i > 1)
-		return 0;
+	struct map_session_data *sd = script_rid2sd(st);
 
 	if (sd)
 	{
-		// Set player sitting
-		if (i == 0)
-		{
-			pc_setsit(sd);
-			clif_sitting(sd);
-		}
-		// Set player standing
-		else if (i == 1)
-		{
-			pc_setstand(sd);
-			clif_standing(sd);
-		}
+		// Sit down
+		pc_setsit(sd);
+		clif_sitting(sd);
+	}
+	return 0;
+}
+
+/*==========================================
+ * stand - Makes a player stand [Tsuyuki]
+ *------------------------------------------
+ */
+int buildin_stand(struct script_state *st)
+{
+	struct map_session_data *sd = script_rid2sd(st);
+
+	if (sd)
+	{
+		// Stand up
+		pc_setstand(sd);
+		clif_standing(sd);
 	}
 	return 0;
 }
