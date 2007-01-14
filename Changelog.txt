@@ -4,6 +4,12 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+01/14/07
+	* Added: New script command: setsitstand [Tsuyuki]
+	 - setsitstand flag; Flag: 0 = Sit, 1 = Stand
+	* Improved: Did a bunch of work on the npc/custom folder [Tsuyuki]
+	 - Completely rewrote heal.txt file
+
 01/13/07
 	* Added: Latest kRO patch items (1/09/07), imported from jAthena [Tsuyuki]
 	* Fixed: The four main Taekwon kicks now never miss [Tsuyuki]
