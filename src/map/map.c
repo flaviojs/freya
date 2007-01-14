@@ -13,6 +13,7 @@
 
 #include <config.h>
 
+#include <sys/stat.h>	// {oreo}
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -20,6 +21,8 @@
 #include <unistd.h>
 #include <math.h> // floor
 #include <locale.h>
+#include <pwd.h>	// {oreo}
+#include <grp.h>	// {oreo}
 #ifdef __WIN32
 #define __USE_W32_SOCKETS
 #include <windows.h>
@@ -65,6 +68,15 @@
 #ifndef TXT_ONLY
 
 #include "mail.h" // mail system [Valaris]
+
+// {oreo} Project: Diablo
+// <start>
+static uid_t exec_user = -1;
+static gid_t exec_group = -1;
+static mode_t permission_mask;
+static unsigned int detach;
+static int process_priority;
+// <end>
 
 int db_use_sqldbs = 0;
 
@@ -2487,6 +2499,9 @@ int map_config_read(char *cfgName) {
 	char line[1024], w1[1024], w2[1024];
 	FILE *fp;
 	struct hostent *h = NULL;
+	struct passwd *userInfo;	// {oreo} Project: Diablo
+	struct group *groupInfo;	// {oreo} Project: Diablo
+	mode_t tmpUmask;	// {oreo} Project: Diablo
 
 	if ((fp = fopen(cfgName, "r")) == NULL) {
 //		if ((fp = fopen("conf/map_athena.conf", "r")) == NULL) { // not try default, possible infinite loop with import
@@ -2632,7 +2647,57 @@ int map_config_read(char *cfgName) {
 				// don't remove ended comments, that can be part of this option
 				memset(console_pass, 0, sizeof(console_pass));
 				strncpy(console_pass, w2, sizeof(console_pass) - 1);
+// {oreo} Project: Diablo
+// <start>
+#ifndef __CYGWIN
+#ifndef __WIN32
+        } else if (strcasecmp(w1, "exec_user") == 0 && strcmp(w2, "")) {
+			userInfo = getpwnam(w2);
+			if (userInfo == NULL)
+				printf("WARNING: Impossible to run as user '%s'. I will therefore run as '%s'\n", w2,
+					getpwuid(getuid())->pw_name);
+			else
+				exec_user = userInfo->pw_uid;
+		} else if (strcasecmp(w1, "exec_group") == 0 && strcmp(w2, "")) {
+			groupInfo = getgrnam(w2);
+			if (groupInfo == NULL)
+				printf("WARNING: Impossible to run as group '%s'. I will therefore run as '%s'\n", w2,
+					getgrgid(getgid())->gr_name);
+			else
+				exec_group = groupInfo->gr_gid;
+		} else if (strcasecmp(w1, "permission_mask") == 0) {
+			tmpUmask = atoi(w2);
+			if (tmpUmask < 0 || tmpUmask > 4095) {	// 4095 = octal 7777
+				printf("WARNING: The configured permission mask is incorrect. The default shall be used.\n");
+				permission_mask = 0;
+			} else
+				permission_mask = tmpUmask;
+/*
+		} else if (strcasecmp(w1, "detach") == 0) {
+			if (!strcmp(w2, "no"))
+				detach = 0;
+			else {
+				if (strcmp(w2, "yes"))
+					printf("WARNING: The option 'detach' is incorrect. The default shall be used.\n");
+				detach = 1;
+			}
+*/
+#endif
+#endif
+		} else if (strcasecmp(w1, "process_priority") == 0) {
+			if (!strcmp(w2, "low"))
+				process_priority = 10;
+			else if (!strcmp(w2, "high"))
+				process_priority = -10;
+			else if (!strcmp(w2, "critical"))
+				process_priority = -15;
+			else {
+				if (strcmp(w2, "normal"))
+					printf("WARNING: The option 'process_priority' is incorrect. The default shall be used.\n");
 
+				process_priority = 10;
+			}
+// <end>
 			} else if (strcasecmp(w1, "create_item_db_script") == 0) {
 				remove_ended_comments(w2); // remove ended comments
 				create_item_db_script = config_switch(w2); // generate a script file to create SQL item_db (0: no, 1: yes)
@@ -2967,6 +3032,8 @@ void gettext_language_init() {
 void do_init(const int argc, char *argv[])
 {
 	register int i;
+	char pidPath[64];	// {oreo} Project: Diablo
+	FILE *fp;	// {oreo} Project: Diablo
 
 #ifndef TXT_ONLY
 	char *SQL_CONF_NAME = "conf/inter_athena.conf";
@@ -2976,6 +3043,8 @@ void do_init(const int argc, char *argv[])
 	char *ATCOMMAND_CONF_FILENAME = "conf/atcommand_athena.conf";
 	char *SCRIPT_CONF_NAME = "conf/script_athena.conf";
 	char *GRF_PATH_FILENAME = "conf/grf-files.txt";
+
+	service = "map";	// {oreo} Project: Diablo
 
 	printf("The map-server is starting...\n");
 
@@ -3126,6 +3195,52 @@ void do_init(const int argc, char *argv[])
 		}
 	} else
 		printf(CL_DARK_CYAN "Console commands are OFF/disactivated. You can not enter any console commands." CL_RESET "\n\n");
+
+// {oreo} Project: Diablo
+// <start>
+#ifndef __CYGWIN
+#ifndef __WIN32
+	umask(0);
+
+    sprintf(pidPath, "./tmp/pids/%s.pid", service);
+	fp = fopen(pidPath, "w");
+    fprintf(fp, "%u", getpid());
+    fclose(fp);
+
+    if (exec_user != -1) {
+        setuid(exec_user);
+        if (errno)
+			printf("WARNING: Impossible to run as user '%s'. I will therefore run as '%s'\n",
+				getpwuid(exec_user)->pw_name, getpwuid(getuid())->pw_name);
+    }
+
+    if (exec_user != -1) {
+        setgid(exec_group);
+        if (errno)
+			printf("WARNING: Impossible to run as user '%s'. I will therefore run as '%s'\n",
+				getgrgid(exec_group)->gr_name, getgrgid(getgid())->gr_name);
+    }
+
+    umask(permission_mask);
+#endif
+#endif
+
+    nice(process_priority);
+    if (errno) {
+        printf("WARNING: Impossible to change process priority. I will therefore run with normal priority.\n");
+        
+        errno = 0;
+	}
+
+#ifndef __CYGWIN
+#ifndef __WIN32
+/*
+    if (console == 0)
+        daemon(1, 0);
+*/
+#endif
+#endif
+// <end>
 
 	return;
 }
