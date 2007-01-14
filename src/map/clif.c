@@ -7307,7 +7307,7 @@ void clif_parse_ReqMarriage(int fd, struct map_session_data *sd) {
 }
 
 /*==========================================
- * 座る
+ * Coordinates with client to make player sit
  *------------------------------------------
  */
 void clif_sitting(struct map_session_data *sd) {
@@ -7317,6 +7317,19 @@ void clif_sitting(struct map_session_data *sd) {
 	WPACKETL( 2) = sd->bl.id;
 	WPACKETB(26) = 2;
 	clif_send(packet_len_table[0x8a], &sd->bl, AREA);
+}
+
+/*==========================================
+ * Coordinates with client to make player stand [Tsuyuki]
+ *------------------------------------------
+ */
+void clif_standing(struct map_session_data *sd) {
+	nullpo_retv(sd);
+	
+		WPACKETW( 0) = 0x8a;
+		WPACKETL( 2) = sd->bl.id;
+		WPACKETB(26) = 3;
+		clif_send(packet_len_table[0x8a], &sd->bl, AREA);
 }
 
 /*==========================================
@@ -9137,15 +9150,15 @@ void clif_parse_ActionRequest(int fd, struct map_session_data *sd) { // S 0x0089
 		target_id = RFIFOL(fd,3);
 		action_type = RFIFOB(fd,8);
 		break;
-	default: // old version by default (and packet version 1 and 2)
+	default: // Old version by default (and packet version 1 and 2)
 		target_id = RFIFOL(fd,2);
 		action_type = RFIFOB(fd,6);
 		break;
 	}
 
 	switch(action_type) {
-	case 0x00: // once attack
-	case 0x07: // continuous attack
+	case 0x00: // Once attack
+	case 0x07: // Continuous attack
 		if (sd->sc_data[SC_WEDDING].timer != -1 || sd->view_class == 22)
 			return;
 		if (sd->vender_id != 0)
@@ -9161,28 +9174,24 @@ void clif_parse_ActionRequest(int fd, struct map_session_data *sd) { // S 0x0089
 			sd->attacktarget = 0;
 		pc_attack(sd, target_id, action_type != 0);
 		break;
-	case 0x02: // sitdown
-		// can not sit down when casting
+	case 0x02: // Sit down
+		// Can't sit down when casting
 		if (sd->skilltimer != -1 || sd->sc_data[SC_GRAVITATION].timer != -1)
 			return;
-//		if (battle_config.basic_skill_check == 0 || pc_checkskill(sd, NV_BASIC) >= 3) { // other solution speeder
 		if (battle_config.basic_skill_check == 0 || (sd->status.skill[NV_BASIC].id == NV_BASIC && sd->status.skill[NV_BASIC].lv >= 3)) {
 			pc_stop_walking(sd, 1);
-			skill_gangsterparadise(sd, 1); // ギャングスターパラダイス設定
+			skill_gangsterparadise(sd, 1);
 			pc_setsit(sd); // (sd)->state.dead_sit = 2 // 0: standup, 1: dead, 2: sit
 			skill_rest(sd, 1);
 			clif_sitting(sd);
 		} else
 			clif_skill_fail(sd, 1, 0, 2);
 		break;
-	case 0x03: // standup
-		skill_gangsterparadise(sd, 0); // ギャングスターパラダイス解除
+	case 0x03: // Stand up
+		skill_gangsterparadise(sd, 0);
 		skill_rest(sd, 0); // TK_HPTIME standing up mode [Dralnu]
 		pc_setstand(sd); // sd->state.dead_sit = 0 // 0: standup, 1: dead, 2: sit
-		WPACKETW( 0) = 0x8a;
-		WPACKETL( 2) = sd->bl.id;
-		WPACKETB(26) = 3;
-		clif_send(packet_len_table[0x8a], &sd->bl, AREA);
+		clif_standing(sd);
 		break;
 	}
 

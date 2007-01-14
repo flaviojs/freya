@@ -342,7 +342,8 @@ int buildin_globalmes(struct script_state *st);
 int buildin_jump_zero(struct script_state *st);
 int buildin_select(struct script_state *st);
 int buildin_getmapmobs(struct script_state *st);
-int buildin_getiteminfo(struct script_state *st); //returns Items Buy / sell Price, etc info
+int buildin_getiteminfo(struct script_state *st); // Returns Items Buy / sell Price, etc info
+int buildin_setsitstand(struct script_state *st); // Makes a person sit or stand
 
 int run_func(struct script_state *st);
 
@@ -604,6 +605,7 @@ struct {
 	{buildin_globalmes,"globalmes","s*"},
 	{buildin_getmapmobs,"getmapmobs","s"},
 	{buildin_getiteminfo,"getiteminfo","ii"}, // Returns an item's buy / sell price, etc
+	{buildin_setsitstand,"setsitstand","i"}, // Makes a person sit or stand
 	{NULL,NULL,NULL},
 };
 
@@ -7813,6 +7815,38 @@ int buildin_isequippedcnt(struct script_state *st)
 
 	push_val(st->stack, C_INT, ret);
 
+	return 0;
+}
+
+/*==========================================
+ * setsitstand - Set sitting/standing for a player [Tsuyuki]
+ *------------------------------------------
+ */
+int buildin_setsitstand(struct script_state *st)
+{
+	struct map_session_data *sd = script_rid2sd(st);;
+	int i;
+	
+	i = conv_num(st,& (st->stack->stack_data[st->start+2]));
+
+	if (i < 0 || i > 1)
+		return 0;
+
+	if (sd)
+	{
+		// Set player sitting
+		if (i == 0)
+		{
+			pc_setsit(sd);
+			clif_sitting(sd);
+		}
+		// Set player standing
+		else if (i == 1)
+		{
+			pc_setstand(sd);
+			clif_standing(sd);
+		}
+	}
 	return 0;
 }
 

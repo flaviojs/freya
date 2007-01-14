@@ -1,7 +1,7 @@
 //===== Freya Script =========================================
 //= Job Changer Script
 //===== By: ==================================================
-//= eAthena, Yor, Tsuyuki
+//= eAthena/Freya
 //===== Current Version: =====================================
 //= 2.7
 //===== Compatible With: =====================================
@@ -15,7 +15,7 @@
 //===== Additional Comments: =================================
 //= 1.x Added missing param into resetlevel [Lupus]
 //= 1.x Remade Adv. Classes Menu. [shadowlady]
-//= 1.x Fixed some bugs, by midas
+//= 1.x Fixed some bugs [midas]
 //= 1.x Fixed Mounted Class bugs and Baby Class bugs [Zoc]
 //= 2.2 Fixed checks (mixed || with &&) [Yor]
 //= 2.3 Updated with new job IDs to prevent problems [Tsuyuki]

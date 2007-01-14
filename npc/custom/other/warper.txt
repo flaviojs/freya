@@ -1,189 +1,144 @@
 //===== Freya Script =======================================
 //= Warper Script
 //===== By: ==================================================
-//= Darkchild
+//= eAthena/Freya
 //===== Current Version: =====================================
-//= 1.7
+//= 1.8
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
-//= Generic Warper
+//= Warper that warps to all towns/dungeons for free.
 //===== Additional Comments: =================================
-//= 1.0 by Darkchild
-//= 1.1 by jabs
-//= 1.2 by Lupus (placement fixed in Amatsu)
-//= 1.3 fixed Louyang label typo, added warp and WARPRA into
-//= Nifleheim. Also sorted all names in alphabet order [Lupus]
-//= 1.4 fixed morroc warp npc overlaying kafra [Aria]
-//= 1.5 Added new city & dungeon warps, & organized script [Tsuyuki]
+//= 1.0 Added first version [Darkchild]
+//= 1.1 Redone [jabs]
+//= 1.2 Fixed placement in Amatsu [Lupus]
+//= 1.3 Fixed Louyang label typo, added warp and WARPRA into
+//= Niflheim, also sorted all names in alphabet order [Lupus]
+//= 1.4 Fixed Morroc Warper overlaying Kafra [Aria]
+//= 1.5 Added new city and dungeon warps, and organized script [Tsuyuki]
 //= 1.6 Added Lighthalzen (forgot to add it last time) [Tsuyuki]
 //= 1.7 Added Beins and Thor Volcano [Tsuyuki]
+//= 1.8 Improved formatting, as well as changed sprite [Tsuyuki]
+//= To-Do: Go through duplicates and improve their positions/directions
 //============================================================
 
--	script	Warp NPC::warpra	115,{
-	mes "[Warp NPC]";
-	mes "Hello,";
-	mes "I can warp you to any Town or Dungeon!";
+-	script	Warper::Warper	859,{
+
+	mes "[Emilia]";
+	mes "Hey there~";
+	mes "I can warp you to any town or dungeon.";
 	mes "Where would you like to go?";
 	next;
-	menu "Towns",town,"Dungeons",dungeon;
+	menu "Towns",L_Town,"Dungeons",L_Dungeon;
 
-	town:
-	menu
+	// Towns Menu
+	L_Town:
+		menu "Alberta",W_alberta,"Aldebaran",W_aldebaran,"Amatsu",W_amatsu,"Archer's Village",W_archer,"Ayothaya",W_ayothaya,"Beins",W_beins,"Comodo",W_comodo,"Einbech",W_einbech,"Einbroch",W_einbroch,"Hugel",W_hugel,"Geffen",W_geffen,"Kunlun",W_kunlun,"Izlude",W_izlude,"Lighthalzen",W_lhtalzn,"Louyang",W_louyang,"Lutie",W_xmas,"Morroc",W_morroc,"Niflheim",W_niflheim,"Payon",W_payon,"Prontera",W_prontera,"Rachel",W_rachel,"Umbala",W_umbala,"Yuno",W_yuno;
 
-"Alberta",walberta,
-"Aldebaran",waldebaran,
-"Amatsu",wamatsu,
-"Archer's Village",warcher,
-"Ayothaya",wayothaya,
-"Beins",wbeins,
-"Comodo",wcomodo,
-"Einbech",weinbech,
-"Einbroch",weinbroch,
-"Hugel",whugel,
-"Geffen",wgeffen,
-"Kunlun",wkunlun,
-"Izlude",wizlude,
-"Lighthalzen",wlhtalzn,
-"Louyang",wlouyang,
-"Lutie",wxmas,
-"Morroc",wmorroc,
-"Niflheim",wniflheim,
-"Payon",wpayon,
-"Prontera",wprontera,
-"Rachel",wrachel,
-"Umbala",wumbala,
-"Yuno",wyuno;
+	// Dungeons Menu
+	L_Dungeon:
+		menu "Abyss Lake Dungeon",D_abyss,"Amatsu Dungeon",D_amatsu,"Anthell",D_ant,"Ayothaya Dungeon",D_ayothaya,"Bibilan Dungeon",D_bibilan,"Biolabs Dungeon",D_light,"Coal Mine",D_coal,"Culverts",D_culvert,"Einbroch Dungeon",D_eindun,"Hidden Temple",D_hidden,"Glast Heim",D_glast,"Kunlun Dungeon",D_kunlun,"Ice Dungeon",D_icedun,"Kiel Khayr's Academy",D_kielk,"Magma Dungeon",D_magma,"Orc Dungeon",D_orc,"Payon Dungeon",D_payon,"Pyramids",D_pyramids,"Ruins of Juperos",D_jupero,"Sphinx",D_sphinx,"Sunken Ship",D_sunken,"Thanatos Tower",D_thanatos,"Thor Volcano",D_thor,"Turtle Dungeon",D_turtle;
 
-	dungeon:
-	menu
+// Towns
+W_alberta:	warp "alberta.gat",	27,	236;	close;
+W_aldebaran:	warp "aldebaran.gat",	145,	120;	close;
+W_amatsu:	warp "amatsu.gat",	197,	86;	close;
+W_archer:	warp "pay_arche.gat",	48,	132;	close;
+W_ayothaya:	warp "ayothaya.gat",	149,	108;	close;
+W_beins:		warp "veins.gat",	181,	84;	close;
+W_comodo:	warp "comodo.gat",	188,	161;	close;
+W_einbech:	warp "einbech.gat",	172,	122;	close;
+W_einbroch:	warp "einbroch.gat",	232,	188;	close;
+W_hugel:		warp "hugel.gat",	95,	150;	close;
+W_kunlun:	warp "gonryun.gat",	150,	130;	close;
+W_geffen:	warp "geffen.gat",	119,	66;	close;
+W_izlude:	warp "izlude.gat",	128,	111;	close;
+W_lhtalzn:	warp "lighthalzen.gat",	159,	95;	close;
+W_louyang:	warp "louyang.gat",	210,	108;	close;
+W_morroc:	warp "morocc.gat",	159,	93;	close;
+W_niflheim:	warp "niflheim.gat",	35,	161;	close;
+W_prontera:	warp "prontera.gat",	156,	187;	close;
+W_payon:		warp "payon.gat",	152,	75;	close;
+W_rachel:	warp "rachel.gat",	179,	126;	close;
+W_umbala:	warp "umbala.gat",	130,	130;	close;
+W_xmas:		warp "xmas.gat",	148,	131;	close;
+W_yuno:		warp "yuno.gat",	160,	168;	close;
 
-"Abyss Lake Dungeon",dabyss,
-"Amatsu Dungeon",damatsu,
-"Anthell",dant,
-"Ayothaya Dungeon",dayothaya,
-"Bibilan Dungeon",dbibilan,
-"Biolabs Dungeon",dlight,
-"Coal Mine",dcoal,
-"Culverts",dculvert,
-"Einbroch Dungeon",deindun,
-"Hidden Temple",dhidden,
-"Glast Heim",dglast,
-"Kunlun Dungeon",dkunlun,
-"Ice Dungeon",dicedun,
-"Kiel Khayr's Academy",dkielk,
-"Magma Dungeon",dmagma,
-"Orc Dungeon",dorc,
-"Payon Dungeon",dpayon,
-"Pyramids",dpyramids,
-"Ruins of Juperos",djupero,
-"Sphinx",dsphinx,
-"Sunken Ship",dsunken,
-"Thanatos Tower",dthanatos,
-"Thor Volcano",dthor,
-"Turtle Dungeon",dturtle;
-
-//----------------Towns----------------\\
-
-walberta:	warp "alberta.gat",	27,	236;	close;
-waldebaran:	warp "aldebaran.gat",	145,	120;	close;
-wamatsu:	warp "amatsu.gat",	197,	86;	close;
-warcher:	warp "pay_arche.gat",	48,	132;	close;
-wayothaya:	warp "ayothaya.gat",	149,	108;	close;
-wbeins:		warp "veins.gat",	181,	84;	close;
-wcomodo:	warp "comodo.gat",	188,	161;	close;
-weinbech:	warp "einbech.gat",	172,	122;	close;
-weinbroch:	warp "einbroch.gat",	232,	188;	close;
-whugel:		warp "hugel.gat",	95,	150;	close;
-wkunlun:	warp "gonryun.gat",	150,	130;	close;
-wgeffen:	warp "geffen.gat",	119,	66;	close;
-wizlude:	warp "izlude.gat",	128,	111;	close;
-wlhtalzn:	warp "lighthalzen.gat",	159,	95;	close;
-wlouyang:	warp "louyang.gat",	210,	108;	close;
-wmorroc:	warp "morocc.gat",	159,	93;	close;
-wniflheim:	warp "niflheim.gat",	35,	161;	close;
-wprontera:	warp "prontera.gat",	156,	187;	close;
-wpayon:		warp "payon.gat",	152,	75;	close;
-wrachel:	warp "rachel.gat",	179,	126;	close;
-wumbala:	warp "umbala.gat",	130,	130;	close;
-wxmas:		warp "xmas.gat",	148,	131;	close;
-wyuno:		warp "yuno.gat",	160,	168;	close;
-
-//----------------Dungeons----------------\\
-
-dabyss:	warp "hu_fild05.gat",	168,	297;	close;
-damatsu:	warp "ama_in02.gat",	213,	161;	close;
-dant:		warp "moc_fild15.gat",	243,	246;	close;
-dayothaya:	warp "ayo_fild02.gat",	273,	149;	close;
-dbibilan:	warp "izlu2dun.gat",	106,	88;	close;
-dculvert:	warp "prt_fild05.gat",	273,	210;	close;
-dcoal:	warp "mjolnir_02.gat",	81,	359;	close;
-deindun:	warp "einbech.gat",	138,	247;	close;
-dhidden:	warp "prt_fild01.gat",	136,	360;	close;
-dglast:	warp "glast_01.gat",	368,	303;	close;
-dkunlun:	warp "gonryun.gat",	160,	195;	close;
-dicedun:	warp "ra_fild01.gat",	234,	327;	close;
-djupero:	warp "yuno_fild07.gat",	219,	176;	close;
-dkielk:	warp "yuno_fild08.gat",	164,	189;	close;
-dmagma:	warp "yuno_fild03.gat",	39,	140;	close;
-dlight:	warp "lighthalzen.gat",	338,	229;	close;
-dorc:		warp "gef_fild10.gat",	70,	332;	close;
-dpayon:	warp "pay_arche.gat",	43,	132;	close;
-dpyramids:	warp "moc_ruins.gat",	62,	162;	close;
-dsphinx:	warp "moc_fild19.gat",	107,	100;	close;
-dsunken:	warp "alb2trea.gat",	75,	98;	close;
-dthanatos:	warp "hu_fild01.gat",	139,	152;	close;
-dthor:		warp "ve_fild03.gat",	168,	234;	close;
-dturtle:	warp "tur_dun01.gat",	149,	238;	close;
+// Dungeons
+D_abyss:	warp "hu_fild05.gat",	168,	297;	close;
+D_amatsu:	warp "ama_in02.gat",	213,	161;	close;
+D_ant:		warp "moc_fild15.gat",	243,	246;	close;
+D_ayothaya:	warp "ayo_fild02.gat",	273,	149;	close;
+D_bibilan:	warp "izlu2dun.gat",	106,	88;	close;
+D_culvert:	warp "prt_fild05.gat",	273,	210;	close;
+D_coal:	warp "mjolnir_02.gat",	81,	359;	close;
+D_eindun:	warp "einbech.gat",	138,	247;	close;
+D_hidden:	warp "prt_fild01.gat",	136,	360;	close;
+D_glast:	warp "glast_01.gat",	368,	303;	close;
+D_kunlun:	warp "gonryun.gat",	160,	195;	close;
+D_icedun:	warp "ra_fild01.gat",	234,	327;	close;
+D_jupero:	warp "yuno_fild07.gat",	219,	176;	close;
+D_kielk:	warp "yuno_fild08.gat",	164,	189;	close;
+D_magma:	warp "yuno_fild03.gat",	39,	140;	close;
+D_light:	warp "lighthalzen.gat",	338,	229;	close;
+D_orc:		warp "gef_fild10.gat",	70,	332;	close;
+D_payon:	warp "pay_arche.gat",	43,	132;	close;
+D_pyramids:	warp "moc_ruins.gat",	62,	162;	close;
+D_sphinx:	warp "moc_fild19.gat",	107,	100;	close;
+D_sunken:	warp "alb2trea.gat",	75,	98;	close;
+D_thanatos:	warp "hu_fild01.gat",	139,	152;	close;
+D_thor:		warp "ve_fild03.gat",	168,	234;	close;
+D_turtle:	warp "tur_dun01.gat",	149,	238;	close;
 }
 
-alb2trea.gat,73,101,4	duplicate(warpra)	Warp NPC	115
-alberta.gat,31,240,4	duplicate(warpra)	Warp NPC	115
-aldebaran.gat,145,118,4	duplicate(warpra)	Warp NPC	115
-amatsu.gat,210,163,1	duplicate(warpra)	Warp NPC	115
-comodo.gat,194,158,4	duplicate(warpra)	Warp NPC	115
-gef_fild10.gat,71,339,4	duplicate(warpra)	Warp NPC	115
-geffen.gat,115,66,4	duplicate(warpra)	Warp NPC	115
-glast_01.gat,370,308,4	duplicate(warpra)	Warp NPC	115
-gonryun.gat,151,130,4	duplicate(warpra)	Warp NPC	115
-gonryun.gat,164,196,4	duplicate(warpra)	Warp NPC	115
-izlude.gat,131,116,4	duplicate(warpra)	Warp NPC	115
-izlu2dun.gat,104,82,4	duplicate(warpra)	Warp NPC	115
-louyang.gat,210,106,4	duplicate(warpra)	Warp NPC	115
-mjolnir_02.gat,85,363,4	duplicate(warpra)	Warp NPC	115
-moc_fild04.gat,207,331,4	duplicate(warpra)	Warp NPC	115
-moc_fild19.gat,106,97,4	duplicate(warpra)	Warp NPC	115
-moc_ruins.gat,64,166,4	duplicate(warpra)	Warp NPC	115
-morocc.gat,156,95,4	duplicate(warpra)	Warp NPC	115
-niflheim.gat,32,161,4	duplicate(warpra)	Warp NPC	115
-pay_arche.gat,39,135,4	duplicate(warpra)	Warp NPC	115
-payon.gat,182,110,4	duplicate(warpra)	Warp NPC	115
-prontera.gat,161,192,4	duplicate(warpra)	Warp NPC	115
-prt_fild05.gat,273,215,4	duplicate(warpra)	Warp NPC	115
-tur_dun01.gat,148,239,4	duplicate(warpra)	Warp NPC	115
-umbala.gat,132,130,4	duplicate(warpra)	Warp NPC	115
-xmas.gat,150,136,4	duplicate(warpra)	Warp NPC	115
-yuno.gat,137,162,4	duplicate(warpra)	Warp NPC	115
-yuno_fild03.gat,37,135,4	duplicate(warpra)	Warp NPC	115
-alberta.gat,97,59,4	duplicate(warpra)	Warp NPC	115
-ama_in.gat,215,164,4	duplicate(warpra) Warp NPC	115
-ayo_fild02.gat,270,153,4	duplicate(warpra)	Warp NPC	115
-ayothaya.gat,153,110,4	duplicate(warpra)	Warp NPC	115
-einbech.gat,168,125,4	duplicate(warpra)	Warp NPC	115
-einbroch.gat,227,191,4	duplicate(warpra)	Warp NPC	115
-einbech.gat,135,249,4	duplicate(warpra)	Warp NPC	115
-hugel.gat,98,155,4	duplicate(warpra)	Warp NPC	115
-hu_fild01.gat,135,157,4	duplicate(warpra)	Warp NPC	115
-hu_fild05.gat,171,299,4	duplicate(warpra)	Warp NPC	115
-jawaii.gat,182,164,4	duplicate(warpra)	Warp NPC	115
-lighthalzen.gat,163,100,4	duplicate(warpra)	Warp NPC	115
-lighthalzen.gat,332,225,4	duplicate(warpra)	Warp NPC	115
-moc_fild15.gat,246,251,4	duplicate(warpra)	Warp NPC	115
-pay_arche.gat,39,135,4	duplicate(warpra)	Warp NPC	115
-prt_fild01.gat,140,366,4	duplicate(warpra)	Warp NPC	115
-rachel.gat,184,137,4	duplicate(warpra)	Warp NPC	115
-ra_fild01.gat,229,330,4	duplicate(warpra)	Warp NPC	115
-veins.gat,183,89,4	duplicate(warpra)	Warp NPC	115
-ve_fild03.gat,172,237,4	duplicate(warpra)	Warp NPC	115
-yuno_fild07.gat,216,178,4	duplicate(warpra)	Warp NPC	115
-yuno_fild08.gat,159,193,4	duplicate(warpra)	Warp NPC	115
+// Duplicates
+alb2trea.gat,73,101,4	duplicate(Warper)	Warper	859
+alberta.gat,31,240,4	duplicate(Warper)	Warper	859
+aldebaran.gat,145,118,4	duplicate(Warper)	Warper	859
+amatsu.gat,210,163,1	duplicate(Warper)	Warper	859
+comodo.gat,194,158,4	duplicate(Warper)	Warper	859
+gef_fild10.gat,71,339,4	duplicate(Warper)	Warper	859
+geffen.gat,859,66,4	duplicate(Warper)	Warper	859
+glast_01.gat,370,308,4	duplicate(Warper)	Warper	859
+gonryun.gat,151,130,4	duplicate(Warper)	Warper	859
+gonryun.gat,164,196,4	duplicate(Warper)	Warper	859
+izlude.gat,131,116,4	duplicate(Warper)	Warper	859
+izlu2dun.gat,104,82,4	duplicate(Warper)	Warper	859
+louyang.gat,210,106,4	duplicate(Warper)	Warper	859
+mjolnir_02.gat,85,363,4	duplicate(Warper)	Warper	859
+moc_fild04.gat,207,331,4	duplicate(Warper)	Warper	859
+moc_fild19.gat,106,97,4	duplicate(Warper)	Warper	859
+moc_ruins.gat,64,166,4	duplicate(Warper)	Warper	859
+morocc.gat,156,95,4	duplicate(Warper)	Warper	859
+niflheim.gat,32,161,4	duplicate(Warper)	Warper	859
+pay_arche.gat,39,135,4	duplicate(Warper)	Warper	859
+payon.gat,182,110,4	duplicate(Warper)	Warper	859
+prontera.gat,161,193,5	duplicate(Warper)	Warper	859
+prt_fild05.gat,273,215,4	duplicate(Warper)	Warper	859
+tur_dun01.gat,148,239,4	duplicate(Warper)	Warper	859
+umbala.gat,132,130,4	duplicate(Warper)	Warper	859
+xmas.gat,150,136,4	duplicate(Warper)	Warper	859
+yuno.gat,137,162,4	duplicate(Warper)	Warper	859
+yuno_fild03.gat,37,135,4	duplicate(Warper)	Warper	859
+alberta.gat,97,59,4	duplicate(Warper)	Warper	859
+ama_in.gat,215,164,4	duplicate(Warper) Warper	859
+ayo_fild02.gat,270,153,4	duplicate(Warper)	Warper	859
+ayothaya.gat,153,110,4	duplicate(Warper)	Warper	859
+einbech.gat,168,125,4	duplicate(Warper)	Warper	859
+einbroch.gat,227,191,4	duplicate(Warper)	Warper	859
+einbech.gat,135,249,4	duplicate(Warper)	Warper	859
+hugel.gat,98,155,4	duplicate(Warper)	Warper	859
+hu_fild01.gat,135,157,4	duplicate(Warper)	Warper	859
+hu_fild05.gat,171,299,4	duplicate(Warper)	Warper	859
+jawaii.gat,182,164,4	duplicate(Warper)	Warper	859
+lighthalzen.gat,163,100,4	duplicate(Warper)	Warper	859
+lighthalzen.gat,332,225,4	duplicate(Warper)	Warper	859
+moc_fild15.gat,246,251,4	duplicate(Warper)	Warper	859
+pay_arche.gat,39,135,4	duplicate(Warper)	Warper	859
+prt_fild01.gat,140,366,4	duplicate(Warper)	Warper	859
+rachel.gat,184,137,4	duplicate(Warper)	Warper	859
+ra_fild01.gat,229,330,4	duplicate(Warper)	Warper	859
+veins.gat,183,89,4	duplicate(Warper)	Warper	859
+ve_fild03.gat,172,237,4	duplicate(Warper)	Warper	859
+yuno_fild07.gat,216,178,4	duplicate(Warper)	Warper	859
+yuno_fild08.gat,159,193,4	duplicate(Warper)	Warper	859

@@ -1,7 +1,7 @@
 //===== Freya Script =========================================
 //= Quest Skill Girl
 //===== By: ==================================================
-//= Keichii/DarkChild/Tsuyuki
+//= eAthena/Freya
 //===== Current Version: =====================================
 //= 2.5
 //===== Compatible With: =====================================
@@ -23,9 +23,9 @@
 prontera.gat,128,200,6	script	Quest Skills	893,{
 
 	mes "[Alyssa]";
-	mes "Hey, I'm Freya's Quest Skill girl! I can give";
+	mes "Hi, I'm Freya's Quest Skill girl. I can give";
 	mes "you the quest-related skills for your class so you don't";
-	mes "have to actually do the quests!";
+	mes "have to actually do the quests.";
 	next;
 	mes "[Alyssa]";
 	mes "Would you like to receive your skills?";
@@ -67,7 +67,7 @@ prontera.gat,128,200,6	script	Quest Skills	893,{
 
 	L_Novice:
 		mes "[Alyssa]";
-		mes "So.. you're a Novice.";
+		mes "So.. you're a " + Class + ".";
 		next;
 		mes "[Alyssa]";
 		mes "Here's your quest skills. Enjoy!";
@@ -78,7 +78,7 @@ prontera.gat,128,200,6	script	Quest Skills	893,{
 
 	L_Swordsman:
 		mes "[Alyssa]";
-		mes "So.. you belong to the Swordsman Class.";
+		mes "So.. you're a " + Class + ".";
 		next;
 		mes "[Alyssa]";
 		mes "Here's your quest skills. Enjoy!";
@@ -93,7 +93,7 @@ prontera.gat,128,200,6	script	Quest Skills	893,{
 
 	L_Mage:
 		mes "[Alyssa]";
-		mes "So.. you belong to the Mage Class.";
+		mes "So.. you're a " + Class + ".";
 		next;
 		mes "[Alyssa]";
 		mes "Here's your quest skills. Enjoy!";
@@ -110,7 +110,7 @@ prontera.gat,128,200,6	script	Quest Skills	893,{
 
 	L_Archer:
 		mes "[Alyssa]";
-		mes "So.. you belong to the Archer Class.";
+		mes "So.. you're a " + Class + ".";
 		next;
 		mes "[Alyssa]";
 		mes "Here's your quest skills. Enjoy!";
@@ -125,7 +125,7 @@ prontera.gat,128,200,6	script	Quest Skills	893,{
 
 	L_Acolyte:
 		mes "[Alyssa]";
-		mes "So.. you belong to the Acolyte Class.";
+		mes "So.. you're a " + Class + ".";
 		next;
 		mes "[Alyssa]";
 		mes "Here's your quest skills. Enjoy!";
@@ -139,7 +139,7 @@ prontera.gat,128,200,6	script	Quest Skills	893,{
 
 	L_Merchant:
 		mes "[Alyssa]";
-		mes "So.. you belong to the Merchant Class.";
+		mes "So.. you're a " + Class + ".";
 		next;
 		mes "[Alyssa]";
 		mes "Here's your quest skills. Enjoy!";
@@ -154,7 +154,7 @@ prontera.gat,128,200,6	script	Quest Skills	893,{
 
 	L_Thief:
 		mes "[Alyssa]";
-		mes "So.. you belong to the Thief Class.";
+		mes "So.. you're a " + Class + ".";
 		next;
 		mes "[Alyssa]";
 		mes "Here's your quest skills. Enjoy!";
@@ -172,7 +172,7 @@ prontera.gat,128,200,6	script	Quest Skills	893,{
 	L_Cancel:
 		mes "[Alyssa]";
 		mes "What? You don't want your skills?";
-		mes "Well fine then..";
+		mes "Well alright then..";
 		emotion 9;
 		close;
 }

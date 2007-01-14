@@ -25,7 +25,9 @@ force_1-1.gat	mapflag	noteleport	dummy
 force_1-1.gat	mapflag	nosave	prontera.gat,156,191
 
 // An entrance is placed in Prontera.
-prontera.gat,160,185,3	script	Arena Entrance	116,{
+prontera.gat,158,183,3	script	Arena Entrance	116,{
+
+	mes "[Arena Entrance]";
 	mes "Want to go to the arena?";
 	next;
 	menu "Let's go!",L_GOARENA,"Nah..",L_YAME;
