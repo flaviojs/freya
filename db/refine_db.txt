@@ -1,0 +1,11 @@
+//Refinement success probability table
+// ---- Translation by Panda and Lyly
+//   Refinement bonus value, excessive refinement bonus value, safety refinement limit, lv1, lv2, …, Lv10
+//   (The safety refinement limit may be different from the actual success rate, but only the excessive refinement bonus will be taken into account)
+ 70, 4,4, 100,100,100,100, 60, 40, 40, 20, 20, 10,	// Equipement
+  2, 3,7, 100,100,100,100,100,100,100, 60, 40, 20,	// WeaponLv.1
+  3, 5,6, 100,100,100,100,100,100, 60, 40, 20, 20,	// WeaponLv.2
+  5, 8,5, 100,100,100,100,100, 60, 50, 20, 20, 20,	// WeaponLv.3
+  7,14,4, 100,100,100,100, 60, 40, 40, 20, 20, 10,	// WeaponLv.4
+
+

@@ -1,0 +1,8 @@
+// Size Modifier Data
+// ---- Translation by Panda.
+
+// Size modifier calculated each attack
+//Bare hand, Dagger, One-Handed Sword, Two-Handed Sword, One-Handed Spear, Two-Handed Spear, One-Handed Axe, Two-Handed Axe, One-Handed Mace, Two-Handed Mace, Rod, Bow, Knuckle, Instrument, Whip, Book, Katar, Pistol, Shotgun, Gatling Gun, Grenade Launcher, Kunai
+100,100, 75, 75, 75, 75, 50, 50, 75,100,100,100,100, 75, 75,100, 75,100,100,100,100,100,100,	// Small
+100, 75,100, 75, 75, 75, 75, 75,100,100,100,100, 75,100,100,100,100,100,100,100,100,100,100,	// Medium
+100, 50, 75,100,100,100,100,100,100,100,100, 75, 50, 75, 50, 50, 75,100,100,100,100,100,100,	// Large

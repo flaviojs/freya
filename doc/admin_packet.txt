@@ -1,0 +1,82 @@
+===========================================================================
+===========================================================================
+			LIST OF ADMINISTRATION PACKETS
+---------------------------------------------------------------------------
+Translation by Darkraven.
+---------------------------------------------------------------------------
+
+
+===========================================================================
+	COMMON PACKETS TO ALL SERVERS
+---------------------------------------------------------------------------
+
+S 7530
+	Request of Athena version.
+R 7531 <major_version>.B <minor_version>.B <revision>.B <release_flag>.B <official_flag>.B <server_type>.B <mod_version>.w
+	Information about Athena version.
+	release_flag : 0=release,1=debug
+	official_flag: 0=official,1=mod
+S 7532
+	End of connection (no reply is sended back).
+	When client requests an end of connection, the server sets eof (=1) and this information is not logged.
+
+===========================================================================
+	ADMINISTRATION PACKETS OF THE LOGIN-SERVER
+---------------------------------------------------------------------------
+
+S 7918 <len>.w <encrypt_flag>.w <ladmin_password>.24(16)B
+	Request to obtain an administration connection.
+	In case of encrypted password, before ask encoding key with packets 01db or 791a.
+	A non-encrypted password is sended with 24 bytes (plain text), and an encrypted password is sended with 16 bytes.
+	encrypt_flag: 0=plain, 1=md5(key+pass), 2=md5(pass+key)
+R 7919 <flag>.B
+	Reply to an administration connection request.
+	flag=0 success/1 failure
+S 791a
+	Encoding key request.
+	This packet is exactly identical to the packet 01db. Answer is the packet 01dc.
+
+---Above are packets for administration connection/Below are packets after the login-server gives success to administration connection---
+
+R 791f
+	Ready signal.
+S 7920 <start_id>.l <end_id>.l <flag>.B
+	Accounts list request.
+	flag=0 (fix)
+R 7921 <len>.w { <account_id>.l <account_name>.24B <sex>.B <dummy>.24B <count>.l state.l }.61B*
+	Reply of an accounts list request.
+S 7930 <len>.w <account_name>.24B <password>.24B <sex>.B [<mail>.40B]
+	Account creation request.
+	Mail is optionnal.
+R 7931 <flag>.w <account_name>.24B
+	Reply of an account creation request. flag= 0 success/1 account name already exists
+S 7932 <len>.w <account_name>.24B
+	Account deletion request.
+R 7933 <flag>.w <account_name>.24B
+	Reply of an account deletion request. flag= 0 success/1 account doesn't exist
+S 7934 <len>.w <account_name>.24B <password>.24B
+	Request to modify the password of an account.
+R 7935 <flag>.w <account_name>.24B
+	Reply of request to modify the password of an account. flag= 0 success/1 account doesn't exist
+S 7936 <len>.w <account_name>.24B <state>.l
+	Request to modify the state of an account.
+R 7937 <flag>.w <account_name>.24B <state>.l
+	Reply of request to modify the state of an account. flag= 0 success/1 account doesn't exist
+S 7938
+	Request to obtain information about servers connected to the login-server (servers list with details)
+R 7939 <length>.w {<IP>.l <port>.w <server_name>.20B <#_of_users>.w <maintenance>.w <new>.w}.32B*
+	Reply of request to obtain servers information.
+S 793a <account_name>.24B <password>.24B
+	Request to test a password.
+R 793b <flag>.w <account_name>.24B
+	Reply of request to a password test. flag= 0 success/1 account doesn't exist or password is invalid
+S 793c <account_name>.24B
+	Request (by name) to obtain complete information about an account.
+	Answer packet: 0x793e.
+S 793d <account_id>.L
+	Request (by id) to obtain complete information about an account.
+	Answer packet: 0x793e.
+R 793e <flag>.w <account_id>.l <GM_level>.B <account_name>.24B <sex>.B <count>.l <state>.W <last_ip>.16B <last_login_time>.24B <email>.40B
+	Reply of request to obtain complete information about an account (0x793c and 0x793d).
+	flag= 0 success/1 account doesn't exist
+

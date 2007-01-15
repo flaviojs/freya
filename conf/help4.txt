@@ -1,0 +1,38 @@
+To use one command, type it inside the message window where you usually type to chat. Then press Enter.
+
+@night            ---- Creates the night (Uses @option +0 +16 +0 on all characters. All characters are in darkness.).
+@day              ---- Restores the day (Uses @option +0 -16 +0 on all characters.).
+
+@mapexit          ---- Kicks all characters (including yourself) and shut down the map-server.
+
+@gat              ---- For debugging (you inspect around gat)
+@packet           ---- For debugging (packet variety, depends of the source code).
+
+@spiritball <number:1-1000> ---- Gives you "spirit spheres" like from the skill "Call Spirits" (If the number you use is > 1000, your server may become instable or crash).
+
+@reloaditemdb     ---- Re-reads Databases of items.
+@reloadmobdb      ---- Re-reads Databases of monsters and pets.
+@reloadskilldb    ---- Re-reads Databases of skills.
+@reloadatcommand  ---- Re-reads atcommand_athena.conf file.
+@reloadbattleconf ---- Re-reads battle_athena.conf file.
+@reloadgmaccount  ---- Re-reads gm_account_filename file.
+@reloadstatusdb   ---- Re-reads Databases of status.
+@reloadpcdb       ---- Re-reads Databases of players (exp, skilltree, attr_fix).
+
+@gm <password> ----
+
+@mapinfo [type:0-3=0 [map_name=your_map]] ---- Gives information about a map (general info +: 0: no more, 1: players, 2: NPC, 3: shops/chats).
+
+@clock ---- Displays server time.
+
+@weather <weather:0-9|day> [map_name=your_map] ---- Makes the specified weather effect on a map.
+	0|day:disable weather effect 1:rain 2:snow 3:sakura 4:fog 5:leaves 6:fireworks 7:low clouds 8:high clouds 9:fast low clouds
+@users ---- Displays a listing of number of characters on each map.
+
+@idsearch <part_of_item_name> ---- Searchs all items that name have 'part_of_item_name'.
+@shuffle [mode:0-2=0]         ---- Randomly change the position of players(0), monsters(1) or players+monsters(2) on your map.
+@maintenance [mode=0]         ---- Change maintenance mode of server (1: Puts in maintenance state, 2: Cancels maintenance state).
+
+@misceffect [effect=0 [object_id=yourself]] ---- Adds an effect to the specified target.
+
+@mailbox --- Opens your mailbox.

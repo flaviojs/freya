@@ -1,0 +1,6 @@
+// ---- Translation by Panda and Lyly
+// Displayed items by using a Scroll.
+// nameid, item_name(dummy), rate
+// Item ID, Item's Name (Dummy), the probability is (*10000) so if 500000 then it is 50% and if 1000000 then it is 100%.)
+// Item ID, However if the pobability fails, it will select the monster ID 0 (in case of multiple, only the last one will be selected)
+0,Jellopy,909

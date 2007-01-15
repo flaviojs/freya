@@ -1,0 +1,103 @@
+//=========================================================================
+// Beginning and End Timers for WoE
+//	Time Settings are acquired from const.txt.
+//	(GvGWeekDay, GvGTimeST, GvGTimeST, GvGTime*ST, GvGTime*ED)
+//
+// It will check if WoE begins 60s after the start of the MAP SERVER or not.
+//-------------------------------------------------------------------------
+// ---- Translation by Darkraven
+
+-	script	#AgitConfig	-1,{
+	end;
+OnInit:
+	if(GvGWeekDay == 0)
+		end;
+	// set flag to 1 for each day of the week that the WoE is activated (depends of bit flag of GvGWeekDay).
+	for(set '@i,0; '@i<7; set '@i,'@i+1) {
+		set 'open['@i],(GvGWeekDay &(1<<'@i))? 1: 0;
+	}
+	// When time depends of the day of the week
+	if(GvGTimeST == GvGTimeED) {
+		setarray 'dbt,GvGTime0ST,GvGTime1ST,GvGTime2ST,GvGTime3ST,GvGTime4ST,GvGTime5ST,GvGTime6ST;
+		setarray 'fin,GvGTime0ED,GvGTime1ED,GvGTime2ED,GvGTime3ED,GvGTime4ED,GvGTime5ED,GvGTime6ED;
+	}
+	// in the case of same time everyday
+	else {
+		cleararray 'dbt,GvGTimeST,7;
+		cleararray 'fin,GvGTimeED,7;
+	}
+	sleep 60000;
+	set '@day,gettime(4);
+	set '@min,gettime(3)*100+gettime(2);
+	// If today is an activated day and if it is already during the WoE time.
+	if('open['@day] && '@min>='dbt['@day] && '@min<'fin['@day]) {
+		debugmes "War of Emperium restarts [ " +gettimestr("%H:%M",6)+ " ].";
+		agitstart;
+	}
+	sleep (60-gettime(1))*1000;	// wait until next minute
+
+OnTimer60000:
+	initnpctimer;
+	set '@day,gettime(4);
+	set '@min,gettime(3)*100+gettime(2);
+
+	// Check 24 o'clock and end of WoE
+	if('@min == 0) {
+		set '@prev,('@day>0)? '@day-1: 6;
+		if('open['@prev] && 'fin['@prev]==2400) {
+			if('open['@day]==0 || 'dbt['@day]>0) {
+				debugmes "The War of Emperium is over [ " +gettimestr("%H:%M",6)+ " ].";
+				agitend;
+			}
+			end;
+		}
+	}
+	if('open['@day]==0)
+		end;
+	if('@min == 'dbt['@day]) {
+		debugmes "The War of Emperium begins [ " +gettimestr("%H:%M",6)+ " ].";
+		agitstart;
+	}
+	else if('@min == 'fin['@day]) {
+		debugmes "The War of Emperium is over [ " +gettimestr("%H:%M",6)+ " ].";
+		agitend;
+	}
+	end;
+}
+
+
+//----- Debug mode only for GMs -----
+//===========================================================
+//prontera.gat,152,208,0	script	GvG-Control	111,{
+//	if(getgmlevel(0)==0)
+//		end;
+//	mes "[WoE-Control^ff0000(GMs only)^000000]";
+//	mes "War of Emperium settings";
+//	next;
+//	switch (select("Start","Stop","Debug mode","Cancel")) {
+//	case 1:
+//		announce "The War of Emperium begins.",0;
+//		agitstart;
+//		break;
+//	case 2:
+//		announce "The War of Emperium is over.",0;
+//		agitend;
+//		break;
+//	case 3:
+//		setarray '@chr$,"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday";
+//		for(set '@i,0; '@i<7; set '@i,'@i+1)
+//			mes '@chr$['@i]+ ": " +(getelementofarray( getvariableofnpc('open,"#AgitConfig"),'@i ))? "activated": "disabled";
+//		next;
+//		if(GvGTimeST != GvGTimeED) {
+//			mes "Time: from " +GvGTimeST+ " to " +GvGTimeED;
+//			break;
+//		}
+//		for(set '@i,0; '@i<7; set '@i,'@i+1) {
+//			mes '@chr$['@i]+ "'s time: from " +getelementofarray( getvariableofnpc('dbt,"#AgitConfig"),'@i )+
+//						" to " +getelementofarray( getvariableofnpc('fin,"#AgitConfig"),'@i );
+//		}
+//		break;
+//	}
+//	close;
+//}
+//===========================================================

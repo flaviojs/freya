@@ -1,0 +1,20 @@
+// Setting the account IDs which you recognize as GM.
+// <account_ID> <GM Level>
+// <The ID of the GM account> <GM Level>
+// <first_account_ID>-<last_account_ID> <GM Level>
+// <first_account_ID>~<last_account_ID> <GM Level>
+// Don't set GM level to 0. It's default GM level of an account.
+// GM level has a maximum of 99 (Greater values will be regarded as set to 99).
+
+//704554-794583 1
+//794544 1
+//950682 1
+//955890 1
+//955899-955904 1
+//955906 1
+//1007116 1
+//1007130 1
+//1007928 1
+//1114772 1
+//1230387-1230390 1
+//1230392

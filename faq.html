@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+	
+<head>
+	<title>Freya - FAQ</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<meta http-equiv="content-style-type" content="text/css">
+</head>
+
+<body>
+	<table width="100%" bgcolor="#FFFFFF" border="1" cellpadding="5" cellspacing="0">
+	<tr>
+		<td>
+			<h1>Frequent Asked Questions</h1>
+			<hr />
+
+			<br />
+
+			<span style="font-weight: bold;">Q</span>: <I>I could not download the svn because of a strange file. I'm under linux Debian.</I><br />
+			<span style="font-weight: bold;">A</span>: Type: LANG=en_EN.UFT8 svn co 'url of SVN repository'. You must be in UTF8.<br />
+			<br />
+
+			<span style="font-weight: bold;">Q</span>: <I>How can I compile easily Freya under Windows?</I><br />
+			<span style="font-weight: bold;">A</span>: Go to <a href="http://www.cygwin.com/" target="_blank">http://www.cygwin.com</a>.<br />
+			                                           Click on the 'Setup' link, and choose 'Open'.<br />
+			                                           You should get a screen with version of cygwin. Click 'Next'.<br />
+			                                           Select 'Install from Internet', then click 'Next'.<br />
+			                                           Choose where you want to install it (C:\cygwin\ is default). Make sure 'Install for All Users' and 'Unix Install Type'/'Unix/Binaries' are selected. Then click 'Next'.<br />
+			                                           Choose where you want the temporary files to be stored. Click 'Next'.<br />
+			                                           Select how you connect to the Internet. Click 'Next'.<br />
+			                                           Choose the mirror you want. The one I have selected ran around 70~80kb/s for me. Click 'Next'.<br />
+			                                           To default choices, add at least these packages:<br />
+			                                           - subversion: A version control system<br />
+			                                           - gcc: C compiler upgrade helper<br />
+			                                           - gcc-core: C compiler<br />
+			                                           - gcc-g++: C++ compiler<br />
+			                                           - gcc-mingw-core: Mingw32 support headers and libraries for GCC<br />
+			                                           - gcc-mingw-g++: Mingw32 support headers and libraries for GCC c++<br />
+			                                           - libiconv: GNU character set conversion library and utilities'<br />
+			                                           - make: The GNU version for the 'make' utility<br />
+			                                           - mingw-runtime: MinGW Runtime<br />
+			                                           - mktemp: allows safe temp file/dir creation from shell scripts<br />
+			                                           - gcc-g++: C++ compiler<br />
+			                                           Then click 'Next'.
+			                                           You should now start downloading and installing cygwin.<br />
+			                                           When it's down installing, click 'Finish'.<br />
+			                                           Now a small popup comes up. Click 'OK'.<br />
+			                                           Delete the temporary folder it created.<br />
+			                                           Open cygwin now. You should see a screen with a prompt.<br />
+			                                           Type ' cd C: '.<br />
+			                                           Type ' cd where\your\Freya\is '.<br />
+			                                           Now type ' make clean '.<br />
+			                                           Finally type ' make '.<br />
+			                                           And you should get no error!<br>
+			                                           YOU ARE NOW FINISHED!<br />
+			                                           To play, type ' ./start ' or ' ./athena-start start '.<br />
+			<br />
+
+			<span style="font-weight: bold;">Q</span>: <I>When compiling under cygwin, I have the error message "'file_name':'line_number': internal compiler error: segmentation fault."</I><br />
+			<span style="font-weight: bold;">A</span>: Modify the 'Makefile' file of the main directory in order to take correctly into account your configuration (computer).<br />
+			                                           Now Type ' make clean '.<br />
+			                                           Then Type ' make '.<br />
+			                                           And you should get no error!<br>
+			<br />
+
+			<span style="font-weight: bold;">Q</span>: <I>I get the error message "This application has failed to start because cygwin1.dll was not found. Re-installing the application may fix this problem."</I><br />
+			<span style="font-weight: bold;">A</span>: You're missing the cygwin dlls. Please get the latest dll at cygwin web site: <a href="http://www.cygwin.com/" target="_blank">http://www.cygwin.com</a>. If you're unsure, asking around you, but always remember - use common sense and search before asking.<br />
+			<br />
+
+			<span style="font-weight: bold;">Q</span>: <I>My map-server can not load maps.</I><br />
+			<span style="font-weight: bold;">A</span>: Edit your conf/grf-files.txt file and verify if all your grf files have correct path.<br />
+			                                           Note: only one grf file is needed, if all mentioned maps are inside.<br />
+			                                           If paths are good, check if you have all maps in grf files. Then, remove missing maps from the list inside conf/map_athena.conf file.<br />
+			<br />
+
+			<span style="font-weight: bold;">Q</span>: <I>My server starts and stops immediatly (windows/win32 compilation).</I><br />
+			<span style="font-weight: bold;">A</span>: You probably don't have installed the 'zlib.dll' library on your computer.<br />
+			                                           Download this file on Internet, and copy it in the server's directory or in the 'system32' directory of the windows directory.<br />
+			<br />
+
+			<span style="font-weight: bold;">Q</span>: <I>How can I create rapidly an account for my tests?</I><br />
+			<span style="font-weight: bold;">A</span>: In the 'login_athena.conf' file, activate the 'new_account' option.<br />
+			                                           Start Freya.<br />
+			                                           You connect, and type an accout name followed by _ F or _ M according to the sex which you wish.<br />
+			                                           Type a password with a minimum of 4 characters, followed by '@' and the administration password setted in the 'login_athena.conf' file ('admin_pass' option).<br />
+			                                           While validating, you will obtain 'unknown account'. However, your account will have been created.<br />
+			                                           Type the account name (without _ F or _ M) and the password (without the '@' followed by the administration password).<br />
+			                                           Validate and play.<br />
+			<br />
+
+			<span style="font-weight: bold;">Q</span>: <I>How can I create an account for a player?</I><br />
+			<span style="font-weight: bold;">A</span>: Start Freya.<br />
+			                                           Run the PERL software 'ladmin' from the directory /bin/tool.<br />
+			                                           If it can not connect to your login-server, check the settings of connection at start of the file 'ladmin' with a text editor.<br />
+			                                           Type 'help', to display commands (including the one to create accounts).<br />
+			<br />
+
+			<span style="font-weight: bold;">Q</span>: <I>How can my players create an account to play?</I><br />
+			<span style="font-weight: bold;">A</span>: Start Freya.<br />
+			                                           Tell to your players to connect with a web explorer on http://<login-server_adress>:<login-server_port>.<br />
+			                                           Now, they can create their account on the displayed page.<br />
+			                                           Note: you must have activate the httpd server (enabled by default).<br />
+			<br />
+
+			<span style="font-weight: bold;">Q</span>: <I>I connect login-server, then choose a character, press enter and... !immediately! see message "disconnected from server".</I><br />
+			<span style="font-weight: bold;">A</span>: It's the packet database related problem. Edit your packet_db.txt file from db/ directory. It looks like:<br />
+			                                           //2005-05-09aSakexe by Sara<br />
+			                                           0x009b,26,wanttoconnection,4:9:17:18:25<br />
+			                                           0x0089,8,ticksend,4<br />
+			                                           ...<br />
+			                                           //2005-06-28aSakexe<br />
+			                                           0x009b,32,wanttoconnection,9:15:23:27:31<br />
+			                                           0x0089,13,ticksend,9<br />
+			                                           ...
+			                                           And so on...<br />
+			                                           Now if your exec is from (for example) 2005-05-26, comment (//) all that's above 2005-05-09 (but don't comment first segment - shared packets) and comment all that's below the next packet versions (from 2005-06-28 in this case).<br />
+			                                           Uncomment 2005-05-26 section.<br />
+			                                           Then, restart map-server and play.<br />
+			<br />
+
+			<span style="font-weight: bold;">Q</span>: <I>What is the 'import' file for?</I><br />
+			<span style="font-weight: bold;">A</span>: Most people don't know the real use of the 'import' files. After you do, you will wonder what you ever did without it.<br />
+			                                           The main thing it does, is provide a way for you to change your config settings without having to modify the actual files. You can test some settings by this way.<br />
+			<br />
+
+			<span style="font-weight: bold;">Q</span>: <I>How does the 'import' file work?</I><br />
+			<span style="font-weight: bold;">A</span>: You place only the settings you have changed in the 'import' files.<br />
+			                                           Say you want to change your job experience rate from the default (100) to 2x (200). Well then you would place this in your import/battle_conf.txt file (folder and name of the 'import' file are mentioned in your 'import' line):<br />
+			                                           job_exp_rate: 200<br />
+			                                           You don't need the comment (it's only a comment!), but you can add it for clarity sake.<br />
+			                                           Now this new setting takes place over the setting in battle_athena.conf file.<br />
+			                                           How? Simple. When the server reads the 'import' line, it reads the mentioned file and all values inside this file replace previously readed values. The last readed setting of each option is the used setting.<br />
+			                                           But, if you add another 'import' file with this option or change this option after the 'import' line, your 'import' setting will not be used. The last readed value is always the value used by the server.<br />
+			<br />
+
+		</td>
+	</tr>
+	</table>
+
+</body>
+
+</html>

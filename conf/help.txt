@@ -1,0 +1,271 @@
+To use one command, type it inside the message window where you usually type to chat. Then press Enter.
+@help  ---- Display the list of @ commands.
+@h     ---- Ditto.
+@help1 ---- Display a partial list of @ commands.
+@h1    ---- Ditto.
+@help2 ---- Display a partial list of @ commands.
+@h2    ---- Ditto.
+@help3 ---- Display a partial list of @ commands.
+@h3    ---- Ditto.
+@help4 ---- Display a partial list of @ commands.
+@h4    ---- Ditto.
+
+@die   ---- Suicide.
+@alive ---- Revives yourself.
+@save  ---- Sets respawn point to current spot and save your character.
+@load  ---- Warps you to your respawn point.
+@rura <map_name> [x=0 [y=0]]               ---- Warps you to the selected position and map.
+@rura+ <map_name> <x> <y> <character name> ---- Warps the specified character to the selected position.
+@jump <x> <y>            ---- Warps you to the selected position.
+@jumpto <character name> ---- Warps you to the specified character.
+@go <number> ---- Warps you to a preset position:
+	0:prontera  6:aldebaran     12:umbala       18:einbroch(2)
+	1:morocc    7:xmas (lutie)  13:niflheim     19:einbech
+	2:geffen    8:comodo        14:louyang      20:Lighthalzen
+	3:payon     9:yuno          15:jawaii       21:hugel
+	4:alberta  10:amatsu        16:ayothaya     22:rachel
+	5:izlude   11:gonryun       17:einbroch(1)
+
+@jobchange <id_of_the_job> [transmigration=-1] ---- Changes your job to 0-29.
+	The transmigration: 0: nomal job, 1: advanced job, 2: adopted child, -1 or if not set: actual condition
+	0:Novice     7:Knight       14:Crusader       22:Wedding design (Change is impossible.)
+	1:Swordman   8:Priest       15:Monk           23:Super Novice
+	2:Mage       9:Wizard       16:Sage           24:taekwon
+	3:Archer    10:Blacksmith   17:Rogue          25:Star Gladiator
+	4:Acolyte   11:Hunter       18:Alchemist      26:Peco-Star Gladiator
+	5:Merchant  12:Assassin     19:Bard           27:Soul linker
+	6:Thief     13:Peco-Knight  20:Dancer         28:Gunslinger
+	                            21:Peco-Crusader  29:Ninja
+
+@option <w> [x=0 [y=0 [z=0]]] ---- Sets different states on your character.
+	w = 01 Petrified                x =   1 Poison         y =     1 Sight             z =     1 ? yellow (2HQ etc.) ?
+	w = 02 Frozen                   x =   2 Cursed         y =     2 Hide              z =     2 ? over trust ?
+	w = 03 Stunned                  x =   4 Silenced       y =     4 Cloak             z =     4 ? energy court ?
+	w = 04 Sleeping                 x =  16 darkness       y =     8 Level 1 Cart      z =     8 ? explosion wave motion ?
+	w = 06 Darkness (you can walk)  x = 128 Deadly poison  y =    16 Falcon            z =    16 ? Kongo ?
+	                                                       y =    32 Peco Peco riding  z =    32 ? dazzling sword removing ?
+	                                                       y =    64 GM Perfect Hide   z =   128 ? bar Sark ?
+	                                                       y =   128 Level 2 Cart      z =  1024 ? marionette ?
+	                                                       y =   256 Level 3 Cart      z =  2048 ? Asm ?
+	                                                       y =   512 Level 4 Cart      z =  4096 ? getting warm ?
+	                                                       y =  1024 Level 5 Cart      z =  8192 ? kite ?
+	                                                       y =  2048 Orc Head          z = 32768 ? State of soul ?
+	                                                       y =  4096 Wedding Sprites
+	                                                       y =  8192 Ruwach
+	                                                       y = 16384 Footprints walking
+	                                                       y = 32768 Santa clothes
+
+@where <character name> ---- Tells you the location of the specified character.
+@who  ---- Displays a listing of online characters.
+@who+ ---- Displays a listing of online characters with their levels and location.
+
+@storage  ---- Opens your storage.
+@gstorage ---- Opens your guild storage.
+@speed <1-1000>  ---- Changes you walking speed. 1 being the fastest and 1000 the slowest. Default: 150.
+@kami <message>  ---- Broadcasts a GM message.
+@kamib <message> ---- Broadcasts a GM message (in blue letters).
+@kamic <hex_color> <message> ---- Broadcasts a GM message with specified color (16 millions of colors (RRGGBB): 00-FF for red, green, blue. Example: blue: 0000FF, Red: FF0000, light blue: 8080FF).
+@pvpon  ---- Turns PvP ON on the current map.
+@pvpoff ---- Turns PvP OFF on the current map (cancellation after the map moving.).
+@gvgon  ---- Turns GvG ON on the current map.
+@gvgoff ---- Turns GvG OFF on the current map (cancellation after the map moving.).
+
+@lvup <number_of_levels>    ---- Raises/reduces your base level by the desired number of levels. The max is 255 (User Defined).
+@jobLvup <number_of_levels> ---- Raises/reduces your job level by the desired number of levels.
+@stpoint <number_of_points> ---- Gives you the desired number of stat points.
+@skpoint <number_of_points> ---- Gives you the desired number of skill points.
+@memo <memo_position:0-2>   ---- Sets/changes a memo location.
+@zeny <amount>              ---- Gives/removes you desired amount of Zeny.
+@model [x:0-19 [y:0-8=0 [z:0-4=0]]] ---- Changes your character's appearence (x: hair type, y: color of the hair, z: color of the clothes). Changes are not saved.
+@hide               ---- GM Hide ON/OFF.
+@heal [HP=0 [SP=0]] ---- Heals the desired amount of HP and SP. No value specified will do a full heal.
+@str,@agi,@vit,@int,@dex,@luk <amount> ---- Adds/substacts desired amount to desired stat.
+@statall [amount]   ---- Adds/substacts value in all stats (maximum if no value).
+
+@makepet <id_of_mob|id_of_egg> ---- Gives you a pet egg.
+@petfriendly <value:0-1000>    ---- Sets pet friendly amount.
+@pethungry <value:0-100>       ---- Sets pet hungry amount.
+@petrename                     ---- Re-enables pet rename.
+
+@item <item_name|item_ID> [quantity=1] ---- Gives you the quantity of desired item.
+@item2 <item_name|item_ID> <quantity> <Identify_flag> <refine> <attribute> <Card1> <Card2> <Card3> <Card4> ---- Gives you the desired item. It's possible to set any value: refining, attribute, etc.
+@item3 <item_name|item_ID> <quantity> <character name> ---- Gives to designed charater the quantity of desired item.
+@itemreset    ---- Removes all of your items (except equiped items).
+@itemidentify ---- Identifies all your unidentified items.
+@refine <equip_position> <amount> ---- Upgrades equipment at the specified position (all equipement=0, otherwise: lower/top/mid head=1/256/512, right hand=2, robe/garment=4, left accessory=8, body/armor=16, left hand=32, feet=64, right accessory=128, stackable).
+@produce <equip_name|equip_ID> [element=0 [Number_of_stars=0]] ---- Creates an equipement (Element: 0=None 1=Ice 2=Earth 3=Fire 4=Wind).
+@repair ---- Repairs all items of your inventory.
+@monster <desired_name> <monster_name|monster_ID> [quantity=1 [x_coord:random [y_coord:random]]] ---- Spawns the desired monster with any desired name and quantity.
+@monster "desired_name" <monster_name|monster_ID> [quantity=1 [x_coord:random [y_coord:random]]] ---- Spawns the desired monster with any desired name and quantity.
+@monstermap <desired_name> <monster_name|monster_ID> [quantity=1] ---- Spawns the desired monster with any desired name and quantity (on all the map).
+@monstermap "desired_name" <monster_name|monster_ID> [quantity=1] ---- Spawns the desired monster with any desired name and quantity (on all the map).
+@killmonster [map_name=your_map]  ---- Kills all monsters of the map (with drops).
+@killmonster2 [map_name=your_map] ---- Kills all monsters of the map (without drops).
+@guildlvup <number_of_levels>     ---- Raises Guild level by desired number of levels.
+@recall <character name>          ---- Warps target character to you.
+@charjob <id_of_the_job> [transmigration=-1] <character name> ---- Changes job of specified character (The transmigration: 0: nomal job, 1: upper job, 2: adopted child, -1 or if not set: actual condition).
+@revive <character name> ---- Revives specified character.
+@kill <character name>   ---- Kills specified character.
+@charbaselvl <number_of_levels> <character name> ---- Raises/reduces the base level of specified character by the desired number of levels.
+@charjlvl <number_of_levels> <character name>    ---- Raises/reduces the job level of specified character by the desired number of levels.
+@charstats <character name>                      ---- Displays a character's stats.
+@charoption <x> <y> <z> <character name>         ---- Sets different states on specified character.
+@charsave <map_name> <x> <y> <character name>    ---- Changes the specified character's respawn point.
+
+@night                 ---- Creates the night (Uses @option +0 +16 +0 on all characters. All characters are in darkness.).
+@day                   ---- Restores the day (Uses @option +0 -16 +0 on all characters.).
+@doom                  ---- Kills all characters on the server.
+@doommap               ---- Kills all characters on the map, except GM.
+@raise                 ---- Resurrects all characters on the server.
+@raisemap              ---- Resurrects all characters on your map.
+@kick <character name> ---- Kicks specified character off the server.
+@kickall               ---- Kicks all characters off the server.
+
+@mapexit               ---- Kicks all characters (including yourself) and shut down the map-server.
+
+@gat                        ---- For debugging (you inspect around gat)
+@packet                     ---- For debugging (packet variety, depends of the source code).
+@icon <number> <0|1>        ---- Activates(1)/Removes(0) icons of skills on client screen.
+@emotion                    ---- For debugging (Displays an emotion icon)
+@spiritball <number:1-1000> ---- Gives you "spirit spheres" like from the skill "Call Spirits" (If the number you use is > 1000, your server may become instable or crash).
+@viewclass  <job_id>        ---- Your character looks like the specified job.
+
+@allskill                    ---- Gives you all skills.
+@skillall                    ---- Ditto.
+@questskill <quest_skill_id> ---- Gives you the specified quest skill.
+@lostskill <quest_skill_id>  ---- Takes away the specified quest skill from you.
+	Novice                         Acolyte
+	 142 = Emergency Care           156 = Holy Light
+	 143 = Act dead                Merchant
+	Swordsman                       153 = Cart Revolution
+	 144 = Moving HP Recovery       154 = Change Cart
+	 145 = Attack Weak Point        155 = Crazy Uproar/Loud Voice
+	 146 = Auto Berserk            Thief
+	Magician                        149 = Throw Sand
+	 157 = Energy Coat              150 = Back Sliding
+	Archer                          151 = Take Stone
+	 147 = Arrow Creation           152 = Stone Throw
+	 148 = Charge Arrows
+
+@party <party name> ---- Creates a party.
+@guild <guild name> ---- Creates a guild.
+
+@reloadatcommand    ---- Re-reads atcommand_athena.conf file.
+@reloadbattleconf   ---- Re-reads battle_athena.conf file.
+@reloadgmaccount    ---- Re-reads gm_account_filename file.
+@reloadhomundb      ---- Re-reads Databases of homunculus.
+@reloaditemdb       ---- Re-reads Databases of items.
+@reloadmobdb        ---- Re-reads Databases of monsters and pets.
+@reloadpcdb         ---- Re-reads Databases of players (exp, skilltree, attr_fix).
+@reloadskilldb      ---- Re-reads Databases of skills.
+@reloadstatusdb     ---- Re-reads Databases of status.
+
+@gm <password> ----
+
+@agitstart          ---- Starts Guild Wars (War of Emperium).
+@agitend            ---- Ends Guild Wars (War of Emperium).
+
+@recallall                ---- Warps all online characters to you.
+@recallparty <party name> ---- Warps all online characters of a party to you.
+@recallguild <guild name> ---- Warps all online characters of a guild to you.
+@hatch                    ---- Hatchs a pet from your inventory eggs list.
+@charquestskill <quest_skill_id> <character name> ---- Gives to a character the specified quest skill.
+@charlostskill <quest_skill_id> <character name>  ---- Takes away the specified quest skill from the character.
+@charpetrename <character name>                   ---- Re-enables pet rename to specified character.
+@charstpoint <number_of_points> <character name>  ---- Gives to specified character the desired number of stat points.
+@charskpoint <number_of_points> <character name>  ---- Gives to specified character the desired number of skill points.
+@charstreset <character name>       ---- Resets stats of a character.
+@charskreset <character name>       ---- Resets skills of a character.
+@charreset <character name>         ---- Resets stats AND skills of a character.
+@charitemreset <character name>     ---- Removes all items of a character (except equiped items).
+@charzeny <amount> <character name> ---- Gives/removes to specified character desired amount of Zeny.
+@mapinfo [type:0-3=0 [map_name=your_map]] ---- Gives information about a map (general info +: 0: no more, 1: players, 2: NPC, 3: shops/chats).
+
+@clock    ---- Displays server time.
+@mobsearch <monster_name|monster_ID|-1|-2> [map_name=your_map]  ---- Gives position of monsters on a map (-1: all monsters, -2: all boss, other: only specified monsters' class).
+@cleanmap ---- Removes items from the map within the distance.
+@giveitem <item_name|item_ID> <quantity> <character name>       ---- Adds items to specified character (When <character name> is set to ALL, it adds items to everyone).
+@weather <weather:0-9|day> [map_name=your_map]                  ---- Makes the specified weather effect on a map.
+	0|day:disable weather effect 1:rain 2:snow 3:sakura 4:fog 5:leaves 6:fireworks 7:low clouds 8:high clouds 9:fast low clouds
+@mes [message]    ---- Transmits a message to all players.
+@mesweb [message] ---- Ditto.
+@users            ---- Displays a listing of number of characters on each map.
+
+@idsearch <part_of_item_name> ---- Searchs all items that name have 'part_of_item_name'.
+@shuffle [mode:0-2=0]         ---- Randomly change the position of players(0), monsters(1) or players+monsters(2) on your map.
+@maintenance [mode=0]         ---- Change maintenance mode of server (1: Puts in maintenance state, 2: Cancels maintenance state).
+
+@mapflag <map_flag_name> [map_flag_options]   ---- Changes a mapflag of your actual map.
+@mannerpoint <manner_points> <character name> ---- Decreases manner points of the specified character.
+@connectlimit <max_number_of_players>         ---- Changes maximum number of players that can be connected.
+
+@misceffect [effect=0 [object_id=yourself]]     ---- Adds an effect to the specified target.
+@summon <monster_name|monster_ID>               ---- Call a homunculus for 1 minute.
+@im <monster_name|monster_ID|item_name|item_ID> ---- Creates a monster or an item (If item is not en equipement, 30 items are created).
+
+@npctalk <npc_name> <message> ---- Makes an NPC say a message in normal chat.
+@pettalk <message>            ---- Makes your pet say a message.
+
+
+broadcast ---- Broadcasts a GM message to every body.
+	/nb <message> ---- without name of the GM (in yellow).
+	/b <message>  ---- with name of the GM (in yellow).
+	/bb <message> ---- without name of the GM (in blue).
+
+local_broadcast ---- Broadcasts a GM message ONLY on your map.
+	/lb <message> ---- with name of the GM (in yellow).
+
+mapmove ---- Warp to a specified position.
+	/mm <map_name> <x> <y>
+
+resetstate
+	/resetstate --- Resets your stats.
+	@resetstate --- Ditto.
+	/resetskill --- Resets your skills.
+	@resetskill --- Ditto.
+
+@econ  ---- Accepts all emergency calls (you must be guild member to use it).
+@ecoff ---- Refuses all emergency calls (you must be guild member to use it).
+
+@ranking <ranking_type:0-3> ---- Displays the specified ranking.
+@blacksmith ---- Displays blacksmith ranking.
+@alchemist  ---- Displays alchemist ranking.
+@taekwon    ---- Displays taekwon ranking.
+@rankingpoint <ranking_type:0-3> <amount> [character name=your self] ---- Changes the ranking points of a character.
+	ranking_type: 0: blacksmith, 1: alchemist, 2: taekwon, 3: pk
+
+@resetfeel <value:0-2> ---- Resets the feeling of the Sun(0), the Moon(1) and the Stars(2).
+@resethate <value:0-2> ---- Resets the hating of the Sun(0), the Moon(1) and the Stars(2).
+
+@mailbox --- Opens your mailbox.
+
+@readvars <variable_name> <name> ---- Displays specified variable.
+                              あらかじめスクリプトに記載された変数に対してのみ読み取り可能
+                              キャラ一時/永続およびアカウント変数の場合、名前を省略時は自分、入力時はそのキャラクターが対象
+                              マップ一時/永続変数の場合、名前は不要
+                              スクリプト依存変数の場合、名前にはNPC名を入力する（必須）
+                              関数依存変数は指定不可。配列を指定することもできます
+@writevars <variable_name> <Value> <name> --- Set specified variable with the value.
+                              以下同上
+                              また、値を"で囲むと"で囲まれた部分を文字列として認識します
+                              これにより半角スペースを含む文字列も書き込むことが可能です
+                              ただしこの場合 "記号は \"、\記号は \\として表記します（doc/script_ref.txt参照）
+
+	Example: @readvars @val -> 自分の持つキャラ一時変数@valの値を表示する
+	         @readvars 'count$[3] Test -> TestというNPCが持つスクリプト依存変数'count$の要素番号3の文字列を表示する
+	         @writevars $num 30 -> マップ永続変数$numの値を30に変更する
+	         @writevars @str$ "X Y" ABCD -> ABCDというキャラクターのキャラ一時変数@str$を文字列 X Y に変更する
+
+@cloneskill <skill_id> [level=maximum]  ---- The specified skill is cloned and memorised (if it's possible).
+@cloneskill2 <skill_id> [level=maximum] ---- The specified skill is memorized.
+
+@mobinfo <monster_name|monster_ID>      ---- Gives information about a monster class.
+
+@homlv <number_of_level>                    ---- Adds levels to homunculus. It's not possible to reduce its level.
+@homviewclass <homunculus_class>            ---- Changes view of your homunculus.
+@homrecalc                                  ---- Recalculates status of your homunculus.
+@evolution [evolution_class=next_evolution] ---- Does evolution of your homunculus.
+@makehomun <homunculus_class>               ---- Gives you a homunculus.
+@homfriendly <friendly_value>               ---- Sets friendly value of your homunculus.
+
+@autoloot ---- Switches on/off autoloot.

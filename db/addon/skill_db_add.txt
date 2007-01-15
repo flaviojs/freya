@@ -1,0 +1,3 @@
+//skill_db.txt - your custumed database (overwrite official db)
+// ---- Translation by Darkraven.
+// id,range,hit,inf,pl,nk,max,list_num,castcancel,cast_defence_rate,inf2,maxcount,skill_type,blow_count

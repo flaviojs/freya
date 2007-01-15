@@ -1,0 +1,7 @@
+
+Date	Added
+
+01/15/07
+	* Added: Newfreya files and SVN [Tsuyuki]
+
+FREYA BEGINS HERE, based off jAthena 23xx

@@ -1,0 +1,44 @@
+To use one command, type it inside the message window where you usually type to chat. Then press Enter.
+
+@die   ---- Suicide.
+@save  ---- Sets respawn point to current spot and save your character.
+@load  ---- Warps you to your respawn point.
+@rura <map_name> [x=0 [y=0]]               ---- Warps you to the selected position and map.
+@rura+ <map_name> <x> <y> <character name> ---- Warps the specified character to the selected position.
+@jump <x> <y>            ---- Warps you to the selected position.
+@jumpto <character name> ---- Warps you to the specified character.
+@go <number> ---- Warps you to a preset position:
+	0:prontera  6:aldebaran     12:umbala       18:einbroch(2)
+	1:morocc    7:xmas (lutie)  13:niflheim     19:einbech
+	2:geffen    8:comodo        14:louyang      20:Lighthalzen
+	3:payon     9:yuno          15:jawaii       21:hugel
+	4:alberta  10:amatsu        16:ayothaya     22:rachel
+	5:izlude   11:gonryun       17:einbroch(1)
+
+@where <character name> ---- Tells you the location of the specified character.
+
+@storage  ---- Opens your storage.
+@gstorage ---- Opens your guild storage.
+
+@itemreset    ---- Removes all of your items (except equiped items).
+@itemidentify ---- Identifies all your unidentified items.
+
+@mes [message]    ---- Transmits a message to all players.
+@mesweb [message] ---- Ditto.
+broadcast ---- Broadcasts a GM message to every body.
+	/nb <message> ---- without name of the GM (in yellow).
+	/b <message>  ---- with name of the GM (in yellow).
+	/bb <message> ---- without name of the GM (in blue).
+
+local_broadcast ---- Broadcasts a GM message ONLY on your map.
+	/lb <message> ---- with name of the GM (in yellow).
+
+@econ  ---- Accepts all emergency calls (you must be guild member to use it).
+@ecoff ---- Refuses all emergency calls (you must be guild member to use it).
+
+@ranking <ranking_type:0-3> ---- Displays the specified ranking.
+@blacksmith ---- Displays blacksmith ranking.
+@alchemist  ---- Displays alchemist ranking.
+@taekwon    ---- Displays taekwon ranking.
+@rankingpoint <ranking_type:0-3> <amount> [character name=your self] ---- Changes the ranking points of a character.
+	ranking_type: 0: blacksmith, 1: alchemist, 2: taekwon, 3: pk

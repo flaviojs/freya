@@ -1,0 +1,25 @@
+// item_meiji.txt@Athena 2005/9/7 19:00:00 (JST)
+// ---- Translation by Panda and Lyly
+// Obtained item by using Meiji Almond
+// nameid, item_name(dummy), rate
+// Item ID, Item's Name (Dummy), the probability is (*10000) so if 500000 then it is 50% and if 1000000 then it is 100%.)
+// Item ID, However if the pobability fails, it will select the monster ID 0 (in case of multiple, only the last one will be selected)
+//There's no default item
+4047,Ghostring Card,1
+4054,Angeling Card,1
+5022,Hat of the Sun God,1
+2234,Tiara,3
+2235,Crown,3
+2254,Angel Wing,2
+5058,Drooping Cat,4
+603,Old Blue Box,15
+616,Old Card Album,10
+617,Old Purple Box,10
+607,Yggdrasil Berry,20
+608,Yggdrasil Seed,20
+660,Forbidden Red Candle,20
+661,Soft Apron,20
+529,Candy,500
+530,Candy Cane,500
+538,Well-baked Cookie,500
+539,Piece of Cake,200

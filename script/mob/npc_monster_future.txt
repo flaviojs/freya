@@ -1,0 +1,231 @@
+//npc_monster.txt—Athena 2006/10/09 20:47:07 (JST)
+// ---- Translation by Panda.
+
+//Thanatos' Tower (Upper Floor)(thana_boss.gat)
+thana_boss.gat,135,119,0,0	monster	Thanatos' Memory	1708,1,7200000,3600000,0
+
+//Geffenia Dungeon(gef_dun03.gat)
+gef_dun03.gat,0,0,0,0	monster	Dark Priest	1626,1,600000,300000,0
+gef_dun03.gat,0,0,0,0	monster	Wraith	1192,5,180000,90000,0
+gef_dun03.gat,0,0,0,0	monster	Wind Ghost	1263,5,180000,90000,0
+gef_dun03.gat,0,0,0,0	monster	Wraith Dead	1291,1,1800000,900000,0
+
+//Odin Temple(odin_tem01.gat)
+odin_tem01.gat,0,0,0,0	monster	Skeggiold	1755,1,3600000,1800000,0
+odin_tem01.gat,0,0,0,0	monster	Skeggiold	1754,1,3600000,1800000,0
+odin_tem01.gat,0,0,0,0	monster	Breeze	1692,10,0,0,0
+odin_tem01.gat,0,0,0,0	monster	Plasma	1693,15,0,0,0
+odin_tem01.gat,0,0,0,0	monster	Plasma	1694,3,0,0,0
+odin_tem01.gat,0,0,0,0	monster	Plasma	1695,3,0,0,0
+odin_tem01.gat,0,0,0,0	monster	Plasma	1696,3,0,0,0
+odin_tem01.gat,0,0,0,0	monster	Plasma	1697,3,0,0,0
+odin_tem01.gat,0,0,0,0	monster	Yellow Plant	1081,5,180000,90000,0
+odin_tem01.gat,0,0,0,0	monster	Blue Plant	1079,5,180000,90000,0
+odin_tem01.gat,0,0,0,0	monster	Green Plant	1080,5,180000,90000,0
+
+//Odin Temple(odin_tem02.gat)
+odin_tem02.gat,0,0,0,0	monster	Skeggiold	1754,3,3600000,1800000,0
+odin_tem02.gat,0,0,0,0	monster	Skeggiold	1755,3,3600000,1800000,0
+odin_tem02.gat,0,0,0,0	monster	Skogul	1752,30,0,0,0
+odin_tem02.gat,0,0,0,0	monster	Plasma	1693,15,0,0,0
+odin_tem02.gat,0,0,0,0	monster	Blue Plant	1079,10,180000,90000,0
+odin_tem02.gat,0,0,0,0	monster	Frus	1753,25,0,0,0
+odin_tem02.gat,0,0,0,0	monster	Randgris	1765,1,3600000,1800000,0
+
+//Odin Temple(odin_tem03.gat)
+odin_tem03.gat,0,0,0,0	monster	Skeggiold	1754,15,0,0,0
+odin_tem03.gat,0,0,0,0	monster	Skeggiold	1755,10,0,0,0
+odin_tem03.gat,0,0,0,0	monster	Skogul	1752,5,0,0,0
+odin_tem03.gat,0,0,0,0	monster	Plasma	1693,15,0,0,0
+odin_tem03.gat,0,0,0,0	monster	Blue Plant	1079,12,180000,90000,0
+odin_tem03.gat,0,0,0,0	monster	Shining Plant	1083,10,180000,90000,0
+odin_tem03.gat,0,0,0,0	monster	Valkyrie Randgris	1751,1,28800000,7200000,0
+odin_tem03.gat,0,0,0,0	monster	Frus	1753,5,0,0,0
+odin_tem03.gat,0,0,0,0	monster	Randgris	1765,2,3600000,1800000,0
+
+//Machine Doll Factory 1F(kh_dun01.gat)
+kh_dun01.gat,0,0,0,0	monster	Alicel	1735,5,0,0,0
+kh_dun01.gat,0,0,0,0	monster	Alice	1275,30,0,0,0
+kh_dun01.gat,0,0,0,0	monster	Aliot	1736,5,0,0,0
+kh_dun01.gat,0,0,0,0	monster	Aliza	1737,60,0,0,0
+kh_dun01.gat,0,0,0,0	monster	Constant	1738,30,0,0,0
+
+//Machine Doll Factory 2F(kh_dun02.gat)
+kh_dun02.gat,0,0,0,0	monster	Alicel	1735,40,0,0,0
+kh_dun02.gat,0,0,0,0	monster	Aliot	1736,35,0,0,0
+kh_dun02.gat,0,0,0,0	monster	Aliza	1737,25,0,0,0
+kh_dun02.gat,0,0,0,0	monster	Constant	1738,30,0,0,0
+kh_dun02.gat,0,0,0,0	monster	Kiel-D-01	1734,1,7200000,3600000,0
+
+//Einbroch Field(ein_fild01.gat)
+ein_fild01.gat,0,0,0,0	monster	Demon Pungus	1378,50,0,0,0
+ein_fild01.gat,0,0,0,0	monster	Punk	1199,50,0,0,0
+
+//Einbroch Field(ein_fild02.gat)
+ein_fild02.gat,0,0,0,0	monster	Driller	1380,40,0,0,0
+ein_fild02.gat,0,0,0,0	monster	Demon Pungus	1378,25,0,0,0
+ein_fild02.gat,0,0,0,0	monster	Ungoliant	1618,1,3600000,1800000,0
+
+//Border Posts(yuno_fild10.gat)
+yuno_fild10.gat,0,0,0,0	monster	Dustiness	1114,20,0,0,0
+yuno_fild10.gat,0,0,0,0	monster	Hunter Fly	1035,10,0,0,0
+yuno_fild10.gat,0,0,0,0	monster	Geographer	1368,20,0,0,0
+yuno_fild10.gat,0,0,0,0	monster	Beetle King	1494,40,0,0,0
+yuno_fild10.gat,0,0,0,0	monster	Stainer	1174,20,0,0,0
+
+//Ice Cave(ice_dun01.gat)
+ice_dun01.gat,0,0,0,0	monster	Gazeti	1778,10,0,0,0
+ice_dun01.gat,0,0,0,0	monster	Roween	1782,40,0,0,0
+ice_dun01.gat,0,0,0,0	monster	Muscipular	1780,20,0,0,0
+ice_dun01.gat,0,0,0,0	monster	Siroma	1776,60,0,0,0
+
+//Ice Cave(ice_dun02.gat)
+ice_dun02.gat,0,0,0,0	monster	Gazeti	1778,30,0,0,0
+ice_dun02.gat,0,0,0,0	monster	Iceicle	1789,10,0,0,0
+ice_dun02.gat,0,0,0,0	monster	Snowier	1775,30,0,0,0
+ice_dun02.gat,0,0,0,0	monster	Siroma	1776,20,0,0,0
+ice_dun02.gat,0,0,0,0	monster	Ice Titan	1777,10,0,0,0
+
+//Ice Cave(ice_dun03.gat)
+ice_dun03.gat,0,0,0,0	monster	Gazeti	1778,15,0,0,0
+ice_dun03.gat,0,0,0,0	monster	Iceicle	1789,10,0,0,0
+ice_dun03.gat,0,0,0,0	monster	Snowier	1775,20,0,0,0
+ice_dun03.gat,0,0,0,0	monster	Ice Titan	1777,30,0,0,0
+ice_dun03.gat,0,0,0,0	monster	Siroma	1776,20,0,0,0
+ice_dun03.gat,0,0,0,0	monster	Ktullanux	1779,1,7200000,3600000,0
+
+//Audumra Grass Land(ra_fild01.gat)
+ra_fild01.gat,0,0,0,0	monster	Muscipular	1780,40,0,0,0
+ra_fild01.gat,0,0,0,0	monster	Geographer	1368,40,0,0,0
+ra_fild01.gat,0,0,0,0	monster	Galion	1783,1,0,0,0
+ra_fild01.gat,0,0,0,0	monster	Roween	1782,10,0,0,0
+ra_fild01.gat,0,0,0,0	monster	Gryphon	1259,1,0,0,0
+ra_fild01.gat,0,0,0,0	monster	Drosera	1781,40,0,0,0
+
+//Oz Gorge(ra_fild02.gat)
+ra_fild02.gat,0,0,0,0	monster	Muscipular	1780,30,0,0,0
+ra_fild02.gat,0,0,0,0	monster	Drosera	1781,30,0,0,0
+ra_fild02.gat,0,0,0,0	monster	Galion	1783,1,0,0,0
+ra_fild02.gat,0,0,0,0	monster	Roween	1782,15,0,0,0
+
+//Ida Plane(ra_fild03.gat)
+ra_fild03.gat,0,0,0,0	monster	Atros	1785,1,7200000,3600000,0
+ra_fild03.gat,0,0,0,0	monster	Galion	1783,1,0,0,0
+ra_fild03.gat,0,0,0,0	monster	Roween	1782,40,0,0,0
+ra_fild03.gat,0,0,0,0	monster	Stapo	1784,45,0,0,0
+
+//Audumra Grass Land(ra_fild04.gat)
+ra_fild04.gat,0,0,0,0	monster	Stapo	1784,10,0,0,0
+ra_fild04.gat,0,0,0,0	monster	Roween	1782,10,0,0,0
+
+//Audumra Grass Land(ra_fild05.gat)
+ra_fild05.gat,0,0,0,0	monster	Hill Wind	1629,35,0,0,0
+ra_fild05.gat,0,0,0,0	monster	Drosera	1781,20,0,0,0
+ra_fild05.gat,0,0,0,0	monster	Geographer	1368,20,0,0,0
+
+//Fortu Luna(ra_fild06.gat)
+ra_fild06.gat,0,0,0,0	monster	Hill Wind	1629,30,0,0,0
+ra_fild06.gat,0,0,0,0	monster	Drosera	1781,25,0,0,0
+ra_fild06.gat,0,0,0,0	monster	Anopheles	1627,10,0,0,0
+
+//Oz Gorge(ra_fild07.gat)
+ra_fild07.gat,0,0,0,0	monster	Galion	1783,1,0,0,0
+ra_fild07.gat,0,0,0,0	monster	Roween	1782,35,0,0,0
+ra_fild07.gat,0,0,0,0	monster	Stapo	1784,30,0,0,0
+
+//Ida Plane(ra_fild08.gat)
+ra_fild08.gat,0,0,0,0	monster	Stapo	1784,60,0,0,0
+ra_fild08.gat,0,0,0,0	monster	Drops	1113,30,0,0,0
+ra_fild08.gat,0,0,0,0	monster	Drosera	1781,25,0,0,0
+
+//Audumra Grass Land(ra_fild09.gat)
+ra_fild09.gat,0,0,0,0	monster	Drosera	1781,50,0,0,0
+ra_fild09.gat,0,0,0,0	monster	Metaling	1613,20,0,0,0
+ra_fild09.gat,0,0,0,0	monster	Hill Wind	1680,20,0,0,0
+
+//Oz Gorge(ra_fild10.gat)
+ra_fild10.gat,0,0,0,0	monster	Galion	1783,1,0,0,0
+ra_fild10.gat,0,0,0,0	monster	Roween	1782,30,0,0,0
+ra_fild10.gat,0,0,0,0	monster	Stapo	1784,30,0,0,0
+ra_fild10.gat,0,0,0,0	monster	Drops	1113,20,0,0,0
+
+//Ida Plane(ra_fild11.gat)
+ra_fild11.gat,0,0,0,0	monster	Stapo	1784,15,0,0,0
+ra_fild11.gat,0,0,0,0	monster	Drops	1113,10,0,0,0
+
+//Ida Plane(ra_fild12.gat)
+ra_fild12.gat,0,0,0,0	monster	Stapo	1784,30,0,0,0
+ra_fild12.gat,0,0,0,0	monster	Drops	1113,20,0,0,0
+
+//Beach of Tears(ra_fild13.gat)
+ra_fild13.gat,0,0,0,0	monster	Stapo	1784,30,0,0,0
+ra_fild13.gat,0,0,0,0	monster	Drops	1113,20,0,0,0
+ra_fild13.gat,0,0,0,0	monster	Roween	1782,25,0,0,0
+
+//Shrine Sacred Precincts(ra_san05.gat)
+ra_san05.gat,0,0,0,0	monster	Gloom Under Night	1768,1,0,0,0
+ra_san05.gat,0,0,0,0	monster	Agav	1769,10,0,0,0
+ra_san05.gat,0,0,0,0	monster	Echio	1770,10,0,0,0
+ra_san05.gat,0,0,0,0	monster	Isilla	1772,10,0,0,0
+ra_san05.gat,0,0,0,0	monster	Hodremlin	1773,10,0,0,0
+ra_san05.gat,0,0,0,0	monster	Seeker	1774,10,0,0,0
+
+//Shrine Sacred Precincts(ra_san01.gat)
+ra_san01.gat,0,0,0,0	monster	Gremlin	1632,10,0,0,0
+ra_san01.gat,0,0,0,0	monster	Beholder	1633,10,0,0,0
+ra_san01.gat,0,0,0,0	monster	Isilla	1772,10,0,0,0
+ra_san01.gat,0,0,0,0	monster	Vanberk	1771,10,0,0,0
+
+//Shrine Sacred Precincts(ra_san02.gat)
+ra_san02.gat,0,0,0,0	monster	Gremlin	1632,10,0,0,0
+ra_san02.gat,0,0,0,0	monster	Beholder	1633,10,0,0,0
+ra_san02.gat,0,0,0,0	monster	Vanberk	1771,10,0,0,0
+ra_san02.gat,0,0,0,0	monster	Isilla	1772,10,0,0,0
+
+//Shrine Sacred Precincts(ra_san03.gat)
+ra_san03.gat,0,0,0,0	monster	Gremlin	1632,10,0,0,0
+ra_san03.gat,0,0,0,0	monster	Beholder	1633,10,0,0,0
+ra_san03.gat,0,0,0,0	monster	Hodremlin	1773,10,0,0,0
+ra_san03.gat,0,0,0,0	monster	Seeker	1774,10,0,0,0
+
+//Shrine Sacred Precincts(ra_san04.gat)
+ra_san04.gat,0,0,0,0	monster	Agav	1769,10,0,0,0
+ra_san04.gat,0,0,0,0	monster	Echio	1770,10,0,0,0
+ra_san04.gat,0,0,0,0	monster	Hodremlin	1773,10,0,0,0
+ra_san04.gat,0,0,0,0	monster	Seeker	1774,10,0,0,0
+
+//Einbroch Field(ein_fild05.gat)
+ein_fild05.gat,0,0,0,0	monster	Mineral	1614,35,0,0,0
+ein_fild05.gat,0,0,0,0	monster	Anopheles	1627,30,0,0,0
+ein_fild05.gat,0,0,0,0	monster	Obsidian	1615,20,0,0,0
+ein_fild05.gat,0,0,0,0	monster	Demon Pungus	1378,20,0,0,0
+ein_fild05.gat,0,0,0,0	monster	Geographer	1368,10,0,0,0
+
+//Hugel Field(hu_fild02.gat)
+hu_fild02.gat,0,0,0,0	monster	Rafflesia	1162,35,0,0,0
+hu_fild02.gat,0,0,0,0	monster	Anopheles	1627,30,0,0,0
+hu_fild02.gat,0,0,0,0	monster	Metaling	1613,20,0,0,0
+hu_fild02.gat,0,0,0,0	monster	Savage Babe	1167,20,0,0,0
+hu_fild02.gat,0,0,0,0	monster	Green Iguana	1687,10,0,0,0
+hu_fild02.gat,0,0,0,0	monster	Breeze	1692,10,0,0,0
+hu_fild02.gat,0,0,0,0	monster	Geographer	1368,10,0,0,0
+hu_fild02.gat,0,0,0,0	monster	Demon Pungus	1378,5,0,0,0
+hu_fild02.gat,0,0,0,0	monster	Novus	1715,2,0,0,0
+hu_fild02.gat,0,0,0,0	monster	Novus	1718,2,0,0,0
+
+//Hugel Field(hu_fild03.gat)
+hu_fild03.gat,0,0,0,0	monster	Metaling	1613,80,0,0,0
+hu_fild03.gat,0,0,0,0	monster	Poporing	1031,20,0,0,0
+hu_fild03.gat,0,0,0,0	monster	Green Iguana	1687,10,0,0,0
+hu_fild03.gat,0,0,0,0	monster	Thief Bug Male	1051,10,0,0,0
+hu_fild03.gat,0,0,0,0	monster	Black Mushroom	1084,10,0,0,0
+hu_fild03.gat,0,0,0,0	monster	Red Mushroom	1085,10,0,0,0
+
+//Hugel Field(hu_fild06.gat)
+hu_fild06.gat,0,0,0,0	monster	Mole	1628,50,0,0,0
+hu_fild06.gat,0,0,0,0	monster	Caramel	1103,20,0,0,0
+hu_fild06.gat,0,0,0,0	monster	Poring	1002,10,0,0,0
+hu_fild06.gat,0,0,0,0	monster	Poporing	1031,10,0,0,0
+hu_fild06.gat,0,0,0,0	monster	Metaling	1613,10,0,0,0
+hu_fild06.gat,0,0,0,0	monster	Green Plant	1080,10,0,0,0
+hu_fild06.gat,0,0,0,0	monster	Yellow Plant	1081,10,0,0,0

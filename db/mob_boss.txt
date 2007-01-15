@@ -1,0 +1,50 @@
+// mob_branch.txt‚MVP Boss listing
+// ---- Translation by Panda
+// MobID, MobName(Dummy), Rate
+// Monster ID, Monster's Name (Dummy), the probability is (*10000) so if 500000 then it is 50% and if 1000000 then it is 100%.)
+// Monster ID‚ However if the the pobability fails, it will select the monster ID 0 (in case of multiple, only the last one will be selected)
+// A Gravity Error will occur if the sprite of the monster is not present client side
+// And, it is noted not to log in while the enemy is near the character.
+
+0,Baphomet,1039
+1038,Osiris,1000000
+1039,Baphomet,1000000
+1046,Doppelganger,1000000
+1059,Mistress,1000000
+1086,Golden Thief Bug,1000000
+1087,Orc Hero,1000000
+1112,Drake,1000000
+1115,Eddga,1000000
+1147,Maya,1000000
+1150,Moonlight Flower,1000000
+1157,Pharaoh,1000000
+1159,Phreeoni,1000000
+1190,Orc Lord,1000000
+1251,Stormy Knight,1000000
+1252,Hatii,1000000
+1272,Dark Lord,1000000
+1312,Turtle General,1000000
+1373,Lord of Death,1000000
+1389,Dracula,1000000
+//1399,Event Baphomet,1000000
+1418,Evil Snake Lord,1000000
+1492,Samurai Specter,1000000
+1511,Amon Ra,1000000
+//1518,Bacsojin,1000000
+1583,Tao Gunka,1000000
+1623,RSX-0806,1000000
+1630,Bacsojin,1000000
+1646,Seyren Windsor,1000000
+1647,Eremes Guile,1000000
+1648,Howard Alt-Eisen,1000000
+1649,Margaretha Solin,1000000
+1650,Cecil Damon,1000000
+1651,Kathryne Keyron,1000000
+1685,Vesper,1000000
+1688,Lady Tanee,1000000
+1708,Thanatos' Memory,1000000
+1719,Detale,1000000
+//1734,Kiel-D-01,1000000
+//1751,Valkyrie Randgris,1000000
+//1768,Gloom Under Night,1000000
+//1779,Ktullanux,1000000

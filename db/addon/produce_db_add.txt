@@ -1,0 +1,3 @@
+//produce_db.txt - your custumed database (overwrite official db)
+// ---- Translation by Darkraven.
+// ID,ItemLV,RequireSkillid,Skilllv,MaterialID1,MaterialAmount1,MaterialID2,MaterialAmount2,MaterialID3,MaterialAmount3,MaterialID4,MaterialAmount4,MaterialID5,MaterialAmount5

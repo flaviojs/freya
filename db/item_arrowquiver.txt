@@ -1,0 +1,19 @@
+//item_arrowquiver.txt@Athena 2005/9/7 19:00:00 (JST)
+// ---- Translation by Panda and Lyly
+// Obtained items by opening an Arrow Quiver.
+// nameid, item_name(dummy), rate
+// Item ID, Item's Name (Dummy), the probability is (*10000) so if 500000 then it is 50% and if 1000000 then it is 100%.)
+// Item ID, However if the pobability fails, it will select the monster ID 0 (in case of multiple, only the last one will be selected)
+0,Arrow Quiver,12004
+12004,Arrow Quiver,100000
+12005,Iron Arrow Quiver,100000
+12006,Steel Arrow Quiver,100000
+12007,Oridecon Arrow Quiver,100000
+12008,Fire Arrow Quiver,100000
+12009,Silver Arrow Quiver,100000
+12010,Arrow of Wind Quiver,100000
+12011,Stone Arrow Quiver,100000
+12012,Crystal Arrow Quiver,100000
+12013,Shadow Arrow Quiver,100000
+12014,Immaterial Arrow Quiver,100000
+12015,Rusty Arrow Quiver,100000

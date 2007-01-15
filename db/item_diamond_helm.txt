@@ -1,0 +1,70 @@
+// diamond_helm.txt@Athena 2005/9/7 19:00:00 (JST)
+// ---- Translation by Panda and Lyly
+// Gaigned items with Diamond helm.
+// nameid, item_name(dummy), rate
+// Item ID, Item's Name (Dummy), the probability is (*10000) so if 500000 then it is 50% and if 1000000 then it is 100%.)
+// Item ID, However if the pobability fails, it will select the monster ID 0 (in case of multiple, only the last one will be selected)
+0,Ribbon,2208
+2209,Ribbon,600000
+2211,Bandana,500000
+2226,Cap,500000
+2232,Circlet,500000
+2222,Turban,500000
+2224,Goggles,500000
+2216,Biretta,500000
+2230,Gemmed Sallet,500000
+2220,Hat,500000
+// Rare
+2206,Wedding Veil,5000
+2213,Kitty Band,5000
+2215,Flower Band,50000
+2217,Biretta,5000
+2221,Hat,50000
+2223,Turban,5000
+2225,Goggles,5000
+2227,Cap,50000
+2228,Helm,50000
+2229,Helm,5000
+2231,Gemmed Sallet,5000
+2233,Circlet,5000
+2234,Tiara,1000
+2235,Crown,1000
+2236,Santa Hat,50000
+2245,Sweet Gent,5000
+2246,Golden Gear,5000
+2247,Romantic Gent,5000
+2248,Western Grace,5000
+2249,Coronet,5000
+2250,Cute Ribbon,5000
+2251,Monk Hat,5000
+2252,Wizard Hat,50000
+2254,Angel Wing,5000
+2255,Evil Wing,5000
+2256,Majestic Goat,1000
+2258,Spiky Band,1000
+2259,Mini Propeller,5000
+2261,Army Cap,5000
+2274,Ghost Bandana,5000
+2275,Red Bandana,50000
+2277,Nurse Cap,5000
+2285,Apple of Archer,5000
+2287,Pirate Bandana,5000
+2290,Funeral Hat,5000
+2299,Orc Helm,50000
+5002,Jewel Crown,5000
+5003,Joker Jester,5000
+5007,Grand circlet,1000
+5008,Puppy Love,5000
+5011,Aerial,5000
+5012,Ph.D Hat,5000
+5015,Egg Shell,50000
+5017,Bone Helm,5000
+5019,Corsair,1000
+5030,Panda Hat,5000
+5035,Poring Hat,5000
+5045,Magician Hat,5000
+5066,Succubus Horn,1000
+5072,Incubus Horn,1000
+5083,Red Ribbon,5000
+5092,Coif,50000
+5093,Coif,5000

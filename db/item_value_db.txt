@@ -1,0 +1,3 @@
+// ---- Translation by Panda and Lyly
+// Item price data (It replace item_db.txt prices)
+//ID,Name,Jname,Price,Sell,Not_DC,Not_OC

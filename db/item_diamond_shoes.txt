@@ -1,0 +1,19 @@
+// diamond_shoes.txt@Athena 2005/9/7 19:00:00 (JST)
+// ---- Translation by Panda and Lyly
+// Gaigned items with Diamond shoes.
+// nameid, item_name(dummy), rate
+// Item ID, Item's Name (Dummy), the probability is (*10000) so if 500000 then it is 50% and if 1000000 then it is 100%.)
+// Item ID, However if the pobability fails, it will select the monster ID 0 (in case of multiple, only the last one will be selected)
+0,Sandals,2401
+2401,Sandals,600000
+2403,Shoes,500000
+2405,Boots,500000
+2411,Greaves,500000
+2408,Shackles,500000
+// Rare
+2402,Sandals,20000
+2404,Shoes,20000
+2406,Boots,20000
+2409,High Heels,20000
+2407,Crystal Pumps,20000
+2412,Greaves,20000

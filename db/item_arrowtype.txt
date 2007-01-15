@@ -1,0 +1,44 @@
+// ---- Translation by Panda and Lyly
+//1:Arrow,2:Throwing Knife (used for the Assassin skill),
+//4:Pistol Bullet,8:Riffle Bullet,16:Shootgun Bullet,
+//32:Gatling Gun Bullet,64:Grenade Launcher Bullet,128:Shuriken,256:Kunai
+1750,Arrow,Arrow,1
+1751,Silver_Arrow,Silver Arrow,1
+1752,Fire_Arrow,Fire Arrow,1
+1753,Steel_Arrow,Steel Arrow,1
+1754,Crystal_Arrow,Crystal Arrow,1
+1755,Arrow_of_Wind,Arrow of Wind,1
+1756,Stone_Arrow,Stone Arrow,1
+1757,Immaterial_Arrow,Immaterial Arrow,1
+1758,Stun_Arrow,Stun Arrow,1
+1759,Freezing_Arrow,Frozen Arrow,1
+1760,Flash_Arrow,Flash Arrow,1
+1761,Curse_Arrow,Cursed Arrow,1
+1762,Rusty_Arrow,Rusty Arrow,1
+1763,Poison_Arrow,Poison Arrow,1
+1764,Incisive_Arrow,Sharp Arrow,1
+1765,Oridecon_Arrow,Oridecon Arrow,1
+1766,Arrow_of_Counter_Evil,Arrow of Counter Evil,1
+1767,Arrow_of_Shadow,Shadow Arrow,1
+1768,Sleep_Arrow,Sleep Arrow,1
+1769,Silence_Arrow,Mute Arrow,1
+1770,Iron_Arrow,Iron Arrow,1
+1771,Venom_Knife,Venom Knife,2
+13200,Bullet,Bullet,124
+13201,Silver_Bullet,Silver Bullet,124
+13202,Cell_of_Blood,Cell of Blood,124
+13203,Flare_Sphere,Flare Sphere,64
+13204,Lightning_Sphere,Lightning Sphere,64
+13205,Poison_Sphere,Poison Sphere,64
+13206,Blind_Sphere,Blinding Sphere,64
+13207,Freezing_Sphere,Freezing Sphere,64
+13250,Syuriken,Shuriken,128
+13251,Unknown_Item,Raincloud Shuriken,128
+13252,Unknown_Item,Flash Shuriken,128
+13253,Unknown_Item,Pointed Leaf Shuriken,128
+13254,Unknown_Item,Piercing Thorn Shuriken,128
+13255,Unknown_Item,Kunai of Frozen Icicle,256
+13256,Unknown_Item,Kunai of Black Earth,256
+13257,Unknown_Item,Kunai of Violent Winds,256
+13258,Unknown_Item,Kunai of Fierce Heat,256
+13259,Unknown_Item,Kunai of Fierce Poison,256

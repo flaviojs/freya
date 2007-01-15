@@ -1,0 +1,52 @@
+To use one command, type it inside the message window where you usually type to chat. Then press Enter.
+
+@alive ---- Revives yourself.
+@who   ---- Displays a listing of online characters.
+@who+  ---- Displays a listing of online characters with their levels and location.
+
+@speed <1-1000>  ---- Changes you walking speed. 1 being the fastest and 1000 the slowest. Default: 150.
+@kami <message>  ---- Broadcasts a GM message.
+@kamib <message> ---- Broadcasts a GM message (in blue letters).
+@pvpon  ---- Turns PvP ON on the current map.
+@pvpoff ---- Turns PvP OFF on the current map (cancellation after the map moving.).
+@gvgon  ---- Turns GvG ON on the current map.
+@gvgoff ---- Turns GvG OFF on the current map (cancellation after the map moving.).
+
+@memo <memo_position:0-2> ---- Sets/changes a memo location.
+
+@model [x:0-19 [y:0-8=0 [z:0-4=0]]] ---- Changes your character's appearence (x: hair type, y: color of the hair, z: color of the clothes). Changes are not saved.
+@hide               ---- GM Hide ON/OFF.
+
+@heal [HP=0 [SP=0]] ---- Heals the desired amount of HP and SP. No value specified will do a full heal.
+
+@monster <desired_name> <monster_name|monster_ID> [quantity=1 [x_coord:random [y_coord:random]]] ---- Spawns the desired monster with any desired name and quantity.
+@monster "desired_name" <monster_name|monster_ID> [quantity=1 [x_coord:random [y_coord:random]]] ---- Spawns the desired monster with any desired name and quantity.
+@monstermap <desired_name> <monster_name|monster_ID> [quantity=1] ---- Spawns the desired monster with any desired name and quantity (on all the map).
+@monstermap "desired_name" <monster_name|monster_ID> [quantity=1] ---- Spawns the desired monster with any desired name and quantity (on all the map).
+@killmonster [map_name=your_map]  ---- Kills all monsters of the map (with drops).
+@killmonster2 [map_name=your_map] ---- Kills all monsters of the map (without drops).
+
+@doom                  ---- Kills all characters on the server.
+@doommap               ---- Kills all characters on the map, except GM.
+@raise                 ---- Resurrects all characters on the server.
+@raisemap              ---- Resurrects all characters on your map.
+@kick <character name> ---- Kicks specified character off the server.
+@kickall               ---- Kicks all characters off the server.
+
+@party <party name> ---- Creates a party.
+@guild <guild name> ---- Creates a guild.
+
+@agitstart          ---- Starts Guild Wars (War of Emperium).
+@agitend            ---- Ends Guild Wars (War of Emperium).
+
+@mobsearch <monster_name|monster_ID|-1|-2> [map_name=your_map]  ---- Gives position of monsters on a map (-1: all monsters, -2: all boss, other: only specified monsters' class).
+@cleanmap ---- Removes items from the map within the distance.
+
+@summon <monster_name|monster_ID>               ---- Call a homunculus for 1 minute.
+@im <monster_name|monster_ID|item_name|item_ID> ---- Creates a monster or an item (If item is not en equipement, 30 items are created).
+
+@npctalk <npc_name> <message> ---- Makes an NPC say a message in normal chat.
+@pettalk <message>            ---- Makes your pet say a message.
+
+mapmove ---- Warp to a specified position.
+	/mm <map_name> <x> <y>

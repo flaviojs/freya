@@ -1,0 +1,71 @@
+==========================================================================
+ Athena dev 2.1.1 save reference
+--------------------------------------------------------------------------
+ Translation by Darkraven.
+--------------------------------------------------------------------------
+
+< Description of this document >
+
+ It is a reference of the saving files of Athena.
+ You can change the path and the name of saving files in inter_athena.conf.
+
+
+< List of explained saving files >
+
+castle.txt     Datas about castles of guilds (WoE).
+map_extra.txt  Extra system
+
+
+==========================================================================
+1. save/castle.txt
+--------------------------------------------------------------------------
+CastleID,GuildID,Economy,Defense,TriggerE,TriggerD,NextTime,PayTime,CreateTime,VisibleC,VisibleG0,1,2,3,4,5,6,7
+
+CastleID      : ID of castle. The relation between the castle ID and the castle name is set up inside the castle_db.txt file.
+GuildID       : ID of the guild.
+Economy       : Economy value (Max 100).
+Defense       : Defence value (Max 100).
+TriggerE      : Number of times the economy was invested in today (0~2).
+TriggerD      : Number of times the defence was invested in today (0~2).
+NextTime      : Next time you must pay cost of the Kafra (now unused).
+PayTime       : Last time you pay for the Kafra (now unused).
+CreateTime    : Time when the Kafra was created (now unused).
+VisibleC      : Is a Kafra hired for this castle? (0: no, 1: yes).
+VisibleG[0-7] : Define if each guardian is present or not?  (0: no, 1: yes).
+                Refer to script/npc/gvg/npc_gvg_monster.txt file for the relation between the number and the guardian type (and name).
+
+
+==========================================================================
+2. save/map_extra.txt
+--------------------------------------------------------------------------
+It is a system to give/remove zenys or items to a character with a text file.
+It can perform operations on zenys or items without an administrator logs into the game.
+You can choose if you activate it or not by the extra_system_flag option of the battle_athena.conf file.
+
+Please set up a file name in conf/map_athena.conf. By the default, it is map_extra_add.txt.
+After, the text file named map_extra_add.txt must be newly made (using formats description hereafter).
+Put the file in main directory of the map-server (by default).
+The file is periodicly readed, and the concerned operations is done on the character at this time.
+
+The saving is done by writing to map_extra.txt file in the save directory.
+It is necessary to save when the concerned character can not be found in game.
+
+Therefore, don't rewrite save/map_extra.txt!
+Map_extra_add.txt is automatically deleted when it is readed.
+Please, append to map_extra_add.txt file or do a new map_extra_add.txt file if you want create a new line.
+
+Line structure:
+ItemID,Amount,Name
+
+ItemID : Item ID or -1 if you want specify zenys.
+Amount : The quantity of zenys or items. A negativ value can be set.
+Name   : Character name.
+
+	Example: -1,-1000,Test_name
+	           Remove 1000 zenys from the character named Test_name.
+	         512,2,Test_name2
+	           Give 2 apples to the character named Test_name2.
+
+==========================================================================
+EOF
+--------------------------------------------------------------------------

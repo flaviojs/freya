@@ -1,0 +1,342 @@
+// Unusual status database
+// ID,Name,SaveFlag
+// Unusual status ID, Name (dummy), Save propriety (0: not saved, 1: saved, -1: undefined, but should be 1 (not saved))
+// * Note: Do not modify the '-1' SaveFlag, otherwise the server would crash.
+0,SC_PROVOKE,1			// Provoke
+1,SC_ENDURE,1			// Endure
+2,SC_TWOHANDQUICKEN,1		// Two-Hand Quicken
+3,SC_CONCENTRATE,1		// Improve Concentration
+4,SC_HIDING,0			// Hiding
+5,SC_CLOAKING,0			// Cloaking
+6,SC_ENCPOISON,0		// Enchant Poison
+7,SC_POISONREACT,0		// Poison React
+8,SC_QUAGMIRE,0			// Quagmire
+9,SC_ANGELUS,1			// Angelus
+10,SC_BLESSING,1		// Blessing
+11,SC_SIGNUMCRUCIS,0		// Signum Crucis
+12,SC_INCREASEAGI,1		// Increase Agility
+13,SC_DECREASEAGI,1		// Decrease Agility
+14,SC_SLOWPOISON,0		// Slow Poison
+15,SC_IMPOSITIO,1		// Impositio Manus
+16,SC_SUFFRAGIUM,0		// Suffragium
+17,SC_ASPERSIO,1		// Aspersio
+18,SC_BENEDICTIO,0		// Benediction
+19,SC_KYRIE,1			// Kyrie Eleison
+20,SC_MAGNIFICAT,1		// Magnificat
+21,SC_GLORIA,1			// Gloria
+22,SC_AETERNA,0			// Lex Aeterna
+23,SC_ADRENALINE,1		// Adrenaline Rush
+24,SC_WEAPONPERFECTION,1	// Weapon Perfection
+25,SC_OVERTHRUST,1		// Over Thrust
+26,SC_MAXIMIZEPOWER,1		// Power Maximize
+27,SC_RIDING,-1			// Pecopeco Ride
+28,SC_FALCON,-1			// Falconry Mastery
+29,SC_TRICKDEAD,0		// Play Dead
+30,SC_LOUD,1			// Loud Exclamation
+31,SC_ENERGYCOAT,1		// Energy Coat
+32,SC_PK_PENALTY,0		// The penalty of PK
+33,SC_REVERSEORCISH,1		// Reverse Orcish
+34,SC_HALLUCINATION,0		// Hallucination
+35,SC_WEIGHT50,-1		// Weight 50% and over
+36,SC_WEIGHT90,-1		// Weight 90% and over
+37,SC_SPEEDPOTION0,1		// Speed potion
+38,SC_SPEEDPOTION1,1		// High speed rise potion
+39,SC_SPEEDPOTION2,1		// Berserk potion
+40,SC_SPEEDPOTION3,0		// Berserk Pitcher
+41,SC_ITEM_DELAY,0		// Item delay
+//
+50,SC_STRIPWEAPON,1		// Strip Weapon
+51,SC_STRIPSHIELD,1		// Strip Shield
+52,SC_STRIPARMOR,1		// Strip Armor
+53,SC_STRIPHELM,1		// Strip Helm
+54,SC_CP_WEAPON,1		// Chemical Protection Weapon
+55,SC_CP_SHIELD,1		// Chemical Protection Shield
+56,SC_CP_ARMOR,1		// Chemical Protection Armor
+57,SC_CP_HELM,1			// Chemical Protection Helm
+58,SC_AUTOGUARD,0		// Auto Guard
+59,SC_REFLECTSHIELD,0		// Shield Reflect
+60,SC_DEVOTION,-1		// Devotion
+61,SC_PROVIDENCE,0		// Providence
+62,SC_DEFENDER,0		// Defender
+63,SC_SANTA,0			// Santa
+//
+65,SC_AUTOSPELL,0		// Auto Spell
+//
+68,SC_SPEARSQUICKEN,1		// Spear Quicken
+//
+86,SC_EXPLOSIONSPIRITS,0	// Critical Explosion
+87,SC_STEELBODY,0		// Steel Body
+//
+89,SC_COMBO,0			// Monk combo
+90,SC_FLAMELAUNCHER,1		// Flame Launcher
+91,SC_FROSTWEAPON,1		// Frost Weapon
+92,SC_LIGHTNINGLOADER,1		// Lightning Loader
+93,SC_SEISMICWEAPON,1		// Seismic Weapon
+//
+103,SC_AURABLADE,1		// Aura blade
+104,SC_PARRYING,1		// Parrying
+105,SC_CONCENTRATION,1		// Concentration
+106,SC_TENSIONRELAX,0		// Tension Relax
+107,SC_BERSERK,0		// Berserk
+//
+110,SC_ASSUMPTIO,1		// Assumptio
+//
+113,SC_MAGICPOWER,1		// Amplify Magic Power
+114,SC_EDP,1			// Enchant Deadly Poison
+115,SC_TRUESIGHT,1		// True Sight
+116,SC_WINDWALK,1		// Wind Walk
+117,SC_MELTDOWN,1		// Melt Down
+118,SC_CARTBOOST,1		// Cart Boost
+119,SC_CHASEWALK,0		// Chase Walk
+120,SC_REJECTSWORD,0		// Reject Sword
+121,SC_MARIONETTE,-1		// Marionette Control (By yourself)
+122,SC_MARIONETTE2,-1		// Marionette Control (Partner)
+//
+124,SC_HEADCRUSH,0		// Head Crush
+125,SC_JOINTBEAT,0		// Joint Beat
+//
+128,SC_STONE,0			// Petrifaction
+129,SC_FREEZE,0			// Freezing
+130,SC_STAN,0			// Stan
+131,SC_SLEEP,0			// Sleep
+132,SC_POISON,1			// Poison
+133,SC_CURSE,1			// Cursing
+134,SC_SILENCE,1		// Silence
+135,SC_CONFUSION,0		// Confusion
+136,SC_BLIND,1			// Darkness
+137,SC_BLEED,1			// Bleeding
+//
+140,SC_SAFETYWALL,-1		// Safety wall
+141,SC_PNEUMA,-1		// Pneuma
+//
+143,SC_ANKLE,-1			// Ankle Snare
+144,SC_DANCING,-1		// State of performance
+145,SC_KEEPING,0		// Keeping
+146,SC_BARRIER,0		// Barrier
+147,SC_TIGERFIST,0		// Tiger Knuckle Fist
+//
+149,SC_MAGICROD,0		// Magic Rod
+150,SC_SIGHT,0			// Sight
+151,SC_RUWACH,0			// Ruwach
+152,SC_AUTOCOUNTER,0		// Counter Attack
+153,SC_VOLCANO,-1		// Volcano
+154,SC_DELUGE,-1		// Deluge
+155,SC_VIOLENTGALE,-1		// Violent Gale
+156,SC_BLADESTOP_WAIT,-1	// Blade Stop (waiting)
+157,SC_BLADESTOP,-1		// When Blade Stoping
+158,SC_EXTREMITYFIST,0		// Asura Strike
+159,SC_GRAFFITI,-1		// Scribble
+160,SC_LULLABY,-1		// Lullaby
+161,SC_RICHMANKIM,-1		// Mister Kim is a Rich Man
+162,SC_ETERNALCHAOS,-1		// Eternal Chaos
+163,SC_DRUMBATTLE,-1		// A Drum on the Battlefield
+164,SC_NIBELUNGEN,-1		// The Ring of Nibelungen
+165,SC_ROKISWEIL,-1		// Loki's Weil
+166,SC_INTOABYSS,-1		// Into the Abyss
+167,SC_SIEGFRIED,-1		// Invulnerable Siegfried
+168,SC_DISSONANCE,-1		// Dissonance
+169,SC_WHISTLE,-1		// A Whistle
+170,SC_ASSNCROS,-1		// Assassin Cross of the Sunset
+171,SC_POEMBRAGI,-1		// Poem of Bragi
+172,SC_APPLEIDUN,-1		// Apple of Idun
+173,SC_UGLYDANCE,-1		// Ugly Dance
+174,SC_HUMMING,-1		// Humming
+175,SC_DONTFORGETME,-1		// Please Don't Forget Me
+176,SC_FORTUNE,-1		// Fortune's Kiss
+177,SC_SERVICE4U,-1		// A Service for You
+178,SC_BASILICA,-1		// Basilica
+179,SC_MINDBREAKER,0		// Mind Breaker
+180,SC_SPIDERWEB,-1		// Spider Web
+181,SC_MEMORIZE,0		// Memorize
+182,SC_DPOISON,1		// Deadly poison
+//
+184,SC_SACRIFICE,0		// Sacrifice
+185,SC_INCATK,0			// ATK rise (for Distilled Fithting Spirit)
+186,SC_INCMATK,0		// MATK rise (for Herb of Incantation)
+187,SC_WEDDING,1		// Wedding
+188,SC_NOCHAT,0			// Red state of Emotion
+189,SC_SPLASHER,0		// Venom Splasher
+190,SC_SELFDESTRUCTION,-1	// Self-destruction
+191,SC_MAGNUM,0			// Magnum Break
+192,SC_GOSPEL,-1		// Gospel
+193,SC_INCALLSTATUS,0		// All status rise (for Gospel)
+194,SC_INCHIT,0			// HIT rise (for Gospel)
+195,SC_INCFLEE,0		// FLEE rise (for Gospel)
+196,SC_INCMHP2,0		// MHP % Rise (for gospel)
+197,SC_INCMSP2,0		// MSP % Rise (for gospel)
+198,SC_INCATK2,0		// ATK % Rise (for gospel)
+199,SC_INCHIT2,0		// HIT % Rise (for gospel)
+200,SC_INCFLEE2,0		// FLEE % Rise (for gospel)
+201,SC_PRESERVE,0		// Preserve
+202,SC_OVERTHRUSTMAX,1		// Maximum Over Thrust
+203,SC_CHASEWALK_STR,0		// STR rise (for Chase Walk)
+204,SC_WHISTLE_,0		// A Whistle (Outside range)
+205,SC_ASSNCROS_,0		// Assassin Cross of the Sunset (Outside range)
+206,SC_POEMBRAGI_,0		// Poem of Bragi (Outside range)
+207,SC_APPLEIDUN_,0		// Apple of Idun (Outside range)
+//
+209,SC_HUMMING_,0		// Humming (Outside range)
+210,SC_DONTFORGETME_,0		// Please Don't Forget Me (Outside range)
+211,SC_FORTUNE_,0		// Fortune's Kiss (Outside range)
+212,SC_SERVICE4U_,0		// A Service for You (Outside range)
+213,SC_BATTLEORDER,0		// Presence condition system
+214,SC_REGENERATION,0		// Regeneration
+215,SC_BATTLEORDER_DELAY,0	// Presence condition system delay
+216,SC_REGENERATION_DELAY,0	// Regeneration delay
+217,SC_RESTORE_DELAY,0		// Restore delay
+218,SC_EMERGENCYCALL_DELAY,0	// Emergency Call delay
+219,SC_POISONPOTION,0		// Poison Bottle
+220,SC_THE_MAGICIAN,0		// Magical teacher (for tarot card identification)
+221,SC_STRENGTH,0		// Power (for tarot card identification)
+222,SC_THE_DEVIL,0		// Devil (for tarot card identification)
+223,SC_THE_SUN,0		// The sun (for tarot card identification)
+224,SC_MEAL_INCSTR,0		// STR rise (for meal)
+225,SC_MEAL_INCAGI,0		// AGI rise (for meal)
+226,SC_MEAL_INCVIT,0		// VIT rise (for meal)
+227,SC_MEAL_INCINT,0		// INT rise (for meal)
+228,SC_MEAL_INCDEX,0		// DEX rise (for meal)
+229,SC_MEAL_INCLUK,0		// LUK rise (for meal)
+230,SC_RUN,0			// Running
+231,SC_SPURT,0			// Running spurt state
+232,SC_TKCOMBO,0		// TEKON combo
+233,SC_DODGE,1			// Break Fall
+234,SC_HERMODE,0		// Wand of Hermod
+235,SC_TRIPLEATTACK_RATE_UP,0	// Rate rise of Triple Attack
+236,SC_COUNTER_RATE_UP,0	// Movement rate improvement of Counter Kick
+237,SC_SUN_WARM,0		// Warmth of the Sun
+238,SC_MOON_WARM,0		// Warmth of the Moon
+239,SC_STAR_WARM,0		// Warmth of the Star
+240,SC_SUN_COMFORT,0		// Comfort of the Moon
+241,SC_MOON_COMFORT,0		// Comfort of the Moon
+242,SC_STAR_COMFORT,0		// Comfort of the Star
+243,SC_FUSION,0			// Union of the Sun, Moon, and Stars
+244,SC_ALCHEMIST,0		// Spirit of the Alchemist
+245,SC_MONK,0			// Spirit of the Monk
+246,SC_STAR,0			// Spirit of the Star Gladiator
+247,SC_SAGE,0			// Spirit of the Sage
+248,SC_CRUSADER,0		// Spirit of the Crusader
+249,SC_SUPERNOVICE,0		// Spirit of the Super Novice
+250,SC_KNIGHT,0			// Spirit of the Knight
+251,SC_WIZARD,0			// Spirit of the Wizard
+252,SC_PRIEST,0			// Spirit of the Priest
+253,SC_BARDDANCER,0		// Spirit of the Bard and Dancer
+254,SC_ROGUE,0			// Spirit of the Rogue
+255,SC_ASSASIN,0		// Spirit of the Assassin
+256,SC_BLACKSMITH,0		// Spirit of the Blacksmith
+257,SC_HUNTER,0			// Spirit of the Hunter
+258,SC_SOULLINKER,0		// Spirit of the Soul Linker
+259,SC_HIGH,0			// Spirit of the Advanced 1st Class
+260,SC_DEATHKINGHT,0		// Death Spirit of the Knight
+261,SC_COLLECTOR,0		// ダークコレクターの魂
+262,SC_NINJA,0			// 忍者の魂
+263,SC_GUNNER,0			// ガンスリンガーの魂
+264,SC_KAIZEL,0			// Kaizel
+265,SC_KAAHI,0			// Kahai
+266,SC_KAUPE,0			// Kauf
+267,SC_KAITE,0			// Kaite
+268,SC_SMA,0			// State that Esma can be chanted
+269,SC_SWOO,0			// Esu
+270,SC_SKE,0			// Esk
+271,SC_SKA,0			// Eska
+272,SC_ONEHAND,0		// One Hand Quicken
+273,SC_READYSTORM,0		// Prepare Whirlwind Kick
+274,SC_READYDOWN,0		// Prepare Axe Kick
+275,SC_READYTURN,0		// Prepare Round Kick
+276,SC_READYCOUNTER,0		// Prepare Counter Kick
+277,SC_DODGE_DELAY,0		// Break Fall (when spurting)
+278,SC_AUTOBERSERK,0		// Berserk
+279,SC_DEVIL,0			// Demon of the Sun, Moon, and Stars
+280,SC_DOUBLECASTING,0		// Double Casting
+281,SC_ELEMENTFIELD,0		// Attribute place
+282,SC_DARKELEMENT,0		// Darkness (weapon)
+283,SC_ATTENELEMENT,0		// Soul (weapon)
+284,SC_MIRACLE,0		// Miracle of the Sun, Moon, and Stars
+285,SC_ANGEL,0			// Angel of the Sun, Moon, and Stars
+286,SC_FORCEWALKING,0		// State of force walking
+287,SC_DOUBLE,0			// Double Strafe state
+288,SC_ACTION_DELAY,0		// Item drop failure state (for malfunction detection)
+289,SC_BABY,0			// Mom, Dad, I love you.
+290,SC_LONGINGFREEDOM,0		// Longing For Freedom
+291,SC_SHRINK,0			// Shrink
+292,SC_CLOSECONFINE,0		// Close Confine
+293,SC_SIGHTBLASTER,0		// Sight Blaster
+294,SC_ELEMENTWATER,0		// Elemental Change : Water
+295,SC_MEAL_INCHIT,0		// HIT rise (for meal)
+296,SC_MEAL_INCFLEE,0		// fLEE rise (for meal)
+297,SC_MEAL_INCFLEE2,0		// FLEE2 rise (for meal)
+298,SC_MEAL_INCCRITICAL,0	// CRITICAL rise (for meal)
+299,SC_MEAL_INCDEF,0		// DEF rise (for meal)
+300,SC_MEAL_INCMDEF,0		// MDEF rise (for meal)
+301,SC_MEAL_INCATK,0		// ATK rise (for meal)
+302,SC_MEAL_INCMATK,0		// MATK rise (for meal)
+303,SC_MEAL_INCEXP,0		// BASEEXP rise (for meal)
+304,SC_MEAL_INCJOB,0		// JOBEXP rise (for meal)
+305,SC_ELEMENTGROUND,0		// Earth (armor)
+306,SC_ELEMENTFIRE,0		// Fire (armor)
+307,SC_ELEMENTWIND,0		// Air/Wind (armor)
+308,SC_WINKCHARM,0		// Wink of Charm
+309,SC_ELEMENTPOISON,0		// Poison (armor)
+310,SC_ELEMENTDARK,0		// Darkness (armor)
+311,SC_ELEMENTELEKINESIS,0	// Soul (armor)
+312,SC_ELEMENTUNDEAD,0		// Undead (armor)
+313,SC_UNDEADELEMENT,0		// Undead (weapon)
+314,SC_ELEMENTHOLY,0		// Holy/Saint (armor)
+315,SC_NPC_DEFENDER,0		// NPC Defender
+316,SC_RESISTWATER,0		// Water resistance
+317,SC_RESISTGROUND,0		// Earth resistance
+318,SC_RESISTFIRE,0		// Fire resistance
+319,SC_RESISTWIND,0		// Air/Wind resistance
+320,SC_RESISTPOISON,0		// Poison resistance
+321,SC_RESISTHOLY,0		// Holy resistance
+322,SC_RESISTDARK,0		// Darkness resistance
+323,SC_RESISTTELEKINESIS,0	// Soul resistance
+324,SC_RESISTUNDEAD,0		// Undead resistance
+325,SC_RESISTALL,0		// All the attribute resistance
+326,SC_RACEUNKNOWN,0		// Unknown race
+327,SC_RACEUNDEAD,0		// Undead race
+328,SC_RACEBEAST,0		// Animal race
+329,SC_RACEPLANT,0		// Plant race
+330,SC_RACEINSECT,0		// Insect race
+//
+332,SC_RACEFISH,0		// Fish race
+333,SC_RACEDEVIL,0		// Devil race
+334,SC_RACEHUMAN,0		// Human race
+335,SC_RACEANGEL,0		// Angel race
+336,SC_RACEDRAGON,0		// Dragon race
+337,SC_TIGEREYE,0		// Tiger eye (hydro penetrating)
+338,SC_GRAVITATION_USER,-1	// Gravitation Field (user)
+339,SC_GRAVITATION,0		// Gravitation Field
+340,SC_FOGWALL,0		// Wall of Fog
+341,SC_FOGWALLPENALTY,0		// Penalty due to Wall of Fog
+342,SC_REDEMPTIO,-1		// Redemptio
+343,SC_TAROTCARD,0		// Tarot card
+344,SC_HOLDWEB,-1		// Holding Web
+345,SC_INVISIBLE,0		// Invisible
+346,SC_DETECTING,0		// For Detect identification
+347,SC_FLING,0			// Fling
+348,SC_MADNESSCANCEL,0		// Madness Canceller
+349,SC_ADJUSTMENT,0		// Adjustment
+350,SC_INCREASING,0		// Increase Accuracy
+351,SC_DISARM,0			// Disarm
+352,SC_GATLINGFEVER,0		// Gatling Fever
+353,SC_FULLBUSTER,0		// Full Buster
+354,SC_TATAMIGAESHI,0		// Reverse Tatami
+355,SC_UTSUSEMI,0		// Cicada Skin Shedding
+356,SC_BUNSINJYUTSU,0		// Illusionary Shadow
+357,SC_SUITON,-1		// Hidden Water
+358,SC_NEN,0			// Soul
+359,SC_AVOID,0			// Emergency Evasion
+360,SC_CHANGE,0			// Change Instruction
+361,SC_DEFENCE,0		// Defence
+362,SC_BLOODLUST,0		// Bloodlust
+363,SC_FLEET,0			// Fleeting Move
+364,SC_SPEED,0			// Over Speed
+365,SC_ADRENALINE2,0		// Full Adrenaline Rush
+366,SC_STATUS_UNCHANGE,0	// State unusual resistance (for gospel)
+367,SC_INCDAMAGE,0		// % rise of damage (for gospel)
+//
+// The thing for clearing all resistances which cannot be used in start by the item side
+//1001,SC_RESISTCLEAR		// Cancellation of all resistances
+//1002,SC_RACECLEAR		// Cancellation of all race changes
+//1003,SC_SOUL			// Soul grant
+//1004,SC_SOULCLEAR		// Soul cancellation

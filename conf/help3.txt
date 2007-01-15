@@ -1,0 +1,101 @@
+To use one command, type it inside the message window where you usually type to chat. Then press Enter.
+
+@jobchange <id_of_the_job> [transmigration=-1] ---- Changes your job to 0-29.
+	The transmigration: 0: nomal job, 1: advanced job, 2: adopted child, -1 or if not set: actual condition
+	0:Novice     7:Knight       14:Crusader       22:Wedding design (Change is impossible.)
+	1:Swordman   8:Priest       15:Monk           23:Super Novice
+	2:Mage       9:Wizard       16:Sage           24:taekwon
+	3:Archer    10:Blacksmith   17:Rogue          25:Star Gladiator
+	4:Acolyte   11:Hunter       18:Alchemist      26:Peco-Star Gladiator
+	5:Merchant  12:Assassin     19:Bard           27:Soul linker
+	6:Thief     13:Peco-Knight  20:Dancer         28:Gunslinger
+	                            21:Peco-Crusader  29:Ninja
+
+@option <w> [x=0 [y=0 [z=0]]] ---- Sets different states on your character.
+	w = 01 Petrified                x =   1 Poison         y =     1 Sight             z =     1 ? yellow (2HQ etc.) ?
+	w = 02 Frozen                   x =   2 Cursed         y =     2 Hide              z =     2 ? over trust ?
+	w = 03 Stunned                  x =   4 Silenced       y =     4 Cloak             z =     4 ? energy court ?
+	w = 04 Sleeping                 x =  16 darkness       y =     8 Level 1 Cart      z =     8 ? explosion wave motion ?
+	w = 06 Darkness (you can walk)  x = 128 Deadly poison  y =    16 Falcon            z =    16 ? Kongo ?
+	                                                       y =    32 Peco Peco riding  z =    32 ? dazzling sword removing ?
+	                                                       y =    64 GM Perfect Hide   z =   128 ? bar Sark ?
+	                                                       y =   128 Level 2 Cart      z =  1024 ? marionette ?
+	                                                       y =   256 Level 3 Cart      z =  2048 ? Asm ?
+	                                                       y =   512 Level 4 Cart      z =  4096 ? getting warm ?
+	                                                       y =  1024 Level 5 Cart      z =  8192 ? kite ?
+	                                                       y =  2048 Orc Head          z = 32768 ? State of soul ?
+	                                                       y =  4096 Wedding Sprites
+	                                                       y =  8192 Ruwach
+	                                                       y = 16384 Footprints walking
+	                                                       y = 32768 Santa clothes
+
+@lvup <number_of_levels>    ---- Raises/reduces your base level by the desired number of levels. The max is 255 (User Defined).
+@jobLvup <number_of_levels> ---- Raises/reduces your job level by the desired number of levels.
+@stpoint <number_of_points> ---- Gives you the desired number of stat points.
+@skpoint <number_of_points> ---- Gives you the desired number of skill points.
+@zeny <amount>              ---- Gives/removes you desired amount of Zeny.
+
+@str,@agi,@vit,@int,@dex,@luk <amount> ---- Adds/substacts desired amount to desired stat.
+
+@makepet <id_of_mob|id_of_egg> ---- Gives you a pet egg.
+@petfriendly <value:0-1000>    ---- Sets pet friendly amount.
+@pethungry <value:0-100>       ---- Sets pet hungry amount.
+@petrename                     ---- Re-enables pet rename.
+
+@item <item_name|item_ID> [quantity=1] ---- Gives you the quantity of desired item.
+@item2 <item_name|item_ID> <quantity> <Identify_flag> <refine> <attribute> <Card1> <Card2> <Card3> <Card4> ---- Gives you the desired item. It's possible to set any value: refining, attribute, etc.
+@item3 <item_name|item_ID> <quantity> <character name> ---- Gives to designed charater the quantity of desired item.
+@refine <equip_position> <amount> ---- Upgrades equipment at the specified position (all equipement=0, otherwise: lower/top/mid head=1/256/512, right hand=2, robe/garment=4, left accessory=8, body/armor=16, left hand=32, feet=64, right accessory=128, stackable).
+@produce <equip_name|equip_ID> [element=0 [Number_of_stars=0]] ---- Creates an equipement (Element: 0=None 1=Ice 2=Earth 3=Fire 4=Wind).
+@guildlvup <number_of_levels>     ---- Raises Guild level by desired number of levels.
+@recall <character name>          ---- Warps target character to you.
+@charjob <id_of_the_job> [transmigration=-1] <character name> ---- Changes job of specified character (The transmigration: 0: nomal job, 1: upper job, 2: adopted child, -1 or if not set: actual condition).
+@revive <character name> ---- Revives specified character.
+@kill <character name>   ---- Kills specified character.
+@charbaselvl <number_of_levels> <character name> ---- Raises/reduces the base level of specified character by the desired number of levels.
+@charjlvl <number_of_levels> <character name>    ---- Raises/reduces the job level of specified character by the desired number of levels.
+@charstats <character name>                      ---- Displays a character's stats.
+@charoption <x> <y> <z> <character name>         ---- Sets different states on specified character.
+@charsave <map_name> <x> <y> <character name>    ---- Changes the specified character's respawn point.
+
+@allskill                    ---- Gives you all skills.
+@skillall                    ---- Ditto.
+@questskill <quest_skill_id> ---- Gives you the specified quest skill.
+@lostskill <quest_skill_id>  ---- Takes away the specified quest skill from you.
+	Novice                         Acolyte
+	 142 = Emergency Care           156 = Holy Light
+	 143 = Act dead                Merchant
+	Swordsman                       153 = Cart Revolution
+	 144 = Moving HP Recovery       154 = Change Cart
+	 145 = Attack Weak Point        155 = Crazy Uproar/Loud Voice
+	 146 = Auto Berserk            Thief
+	Magician                        149 = Throw Sand
+	 157 = Energy Coat              150 = Back Sliding
+	Archer                          151 = Take Stone
+	 147 = Arrow Creation           152 = Stone Throw
+	 148 = Charge Arrows
+
+@recallall                ---- Warps all online characters to you.
+@recallparty <party name> ---- Warps all online characters of a party to you.
+@recallguild <guild name> ---- Warps all online characters of a guild to you.
+@hatch                    ---- Hatchs a pet from your inventory eggs list.
+@charquestskill <quest_skill_id> <character name> ---- Gives to a character the specified quest skill.
+@charlostskill <quest_skill_id> <character name>  ---- Takes away the specified quest skill from the character.
+@charpetrename <character name>                   ---- Re-enables pet rename to specified character.
+@charstpoint <number_of_points> <character name>  ---- Gives to specified character the desired number of stat points.
+@charskpoint <number_of_points> <character name>  ---- Gives to specified character the desired number of skill points.
+@charstreset <character name>       ---- Resets stats of a character.
+@charskreset <character name>       ---- Resets skills of a character.
+@charreset <character name>         ---- Resets stats AND skills of a character.
+@charitemreset <character name>     ---- Removes all items of a character (except equiped items).
+@charzeny <amount> <character name> ---- Gives/removes to specified character desired amount of Zeny.
+
+@giveitem <item_name|item_ID> <quantity> <character name>       ---- Adds items to specified character (When <character name> is set to ALL, it adds items to everyone).
+resetstate
+	/resetstate --- Resets your stats.
+	@resetstate --- Ditto.
+	/resetskill --- Resets your skills.
+	@resetskill --- Ditto.
+
+@resetfeel <value:0-2> ---- Resets the feeling of the Sun(0), the Moon(1) and the Stars(2).
+@resethate <value:0-2> ---- Resets the hating of the Sun(0), the Moon(1) and the Stars(2).

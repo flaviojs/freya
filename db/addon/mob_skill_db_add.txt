@@ -1,0 +1,3 @@
+//mob_skill_db.txt - your custumed database (overwrite official db)
+// ---- Translation by Darkraven.
+// MOB_ID,Dummy skill and monster name,STATE,SKILL_ID,SKILL_LV,rate,casttime,delay,can stop the target,Condition,Condition value,Value 1,Value 2,Value 3,Value 4,Value 5,Emotion associate with the skill

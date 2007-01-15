@@ -1,0 +1,6 @@
+// food.txt@Athena 2005/9/7 19:00:00 (JST)
+// ---- Translation by Panda and Lyly
+// Displayed item for Diamond Food.
+// nameid, item_name(dummy), rate
+// Item ID, Item's Name (Dummy), the probability is (*10000) so if 500000 then it is 50% and if 1000000 then it is 100%.)
+// Item ID, However if the pobability fails, it will select the monster ID 0 (in case of multiple, only the last one will be selected)
