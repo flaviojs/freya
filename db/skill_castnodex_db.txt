@@ -10,7 +10,6 @@
 // Delay: With 0, Dex Does Affect The Skill's Delay Rate
 //
 
-255,1	// CR_DEVOTION#Sacrifice#
 336,1	// WE_CALLPARTNER#I Miss You#
 366,1	// HW_MAGICPOWER#Mystical Amplification#
 370,1	// CH_PALMSTRIKE#Raging Palm Strike#
