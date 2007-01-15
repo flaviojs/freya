@@ -26,6 +26,8 @@ Date	Added
 	 - GS_FULLBUSTER - Full Buster
 	 - GS_SPREADATTACK - Spread Attack
 	 - Note: Only three left to do: Desperado, Disarm, and Ground Drift
+	* Fixed: Crash bug when monsters use Sonic Blow [Tsuyuki/Bison]
+	* Fixed: Enable commented Adoption skills in the skill databases [Tsuyuki]
 	* Improved: Optmized script for the Sign Quest [Lex]
 	* Fixed: Fixed and readded Project Diablo changes [Oreo]
 	* Updated: job_db1.txt modifiers for the new classes [Tsuyuki]
