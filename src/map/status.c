@@ -3614,14 +3614,14 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
         case SC_DEVOTION:
             if(!(flag&4))
                 scflag.calc = 1;
-            
+
             struct map_session_data *src;
             if ((src = map_id2sd(val1)) && src->sc_count)
             {    
                 int type2 = SC_AUTOGUARD;
                 if (src->sc_data[type2].timer != -1)
                         status_change_start(bl,type2,src->sc_data[type2].val1,0,0,0,tick,1);
-                
+
                 type2 = SC_ENDURE;
                 if (src->sc_data[type2].timer != -1)
                         status_change_start(bl,type2,0,0,0,0,tick,1);
@@ -3640,7 +3640,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
                     status_change_start(bl,type2,src->sc_data[type2].val1,0,0,0,tick,1);
             }
             break;
-			
+
 		case SC_PROVIDENCE:
 			scflag.calc = 1;
 			val2=val1*5;
@@ -3654,14 +3654,14 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
                 struct map_session_data *tsd;
                 int i;
                 for (i = 0; i < 5; i++)
-                {    
+                {
                     if (sd->dev.val1[i] && (tsd = map_id2sd(sd->dev.val1[i])))
                         status_change_start(&tsd->bl,SC_REFLECTSHIELD,val1,0,0,0,tick,1);
                 }//for (i = 0; i < 5; i++)
             }//if (sd)
             //damz fish help for devotion
             break;
-			
+
 		case SC_STRIPWEAPON:
 			if (val2==0) val2=90;
 			break;

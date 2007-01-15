@@ -3906,6 +3906,8 @@ int pc_setpos(struct map_session_data *sd, char *mapname_org, int x, int y, int 
 			status_change_end(&sd->bl, SC_CLOAKING, -1);
 		if (pc_ischasewalk(sd))
 			status_change_end(&sd->bl, SC_CHASEWALK, -1);
+		if (sd->sc_data[SC_DEVOTION].timer != -1)
+			status_change_end(&sd->bl, SC_DEVOTION, -1);
 
 // Cooking Items are no longer dispelled upon map change (kRO Patch - 11/06/2006) [Tsuyuki]
 /*

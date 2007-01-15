@@ -5,6 +5,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/14/07
+	* Fixed: The Devotion/Sacrifice status is now removed upon map change [Tsuyuki]
+	* Changed: Modified all @commands with the GM level 0 to GM level 1 [Tsuyuki]
+	 - @commands are not official, therefore they are custom and should be disabled for players by default
 	* Fixed: Mobs not using skills when in attack range of target [Tsuyuki]
 	* Improved: Workaround fix for mob aspds so it doesn't bug other monsters [Tsuyuki/Bison]
 	* Fixed: Added a workaround to fix the 190 aspd monster problems (Thanks to galaxy) [Tsuyuki]
