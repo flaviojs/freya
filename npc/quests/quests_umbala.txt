@@ -825,10 +825,10 @@ Lsmileok:
 um_in.gat,44,71,2	script	Utan Tribe Shaman	782,{
 
 	if (event_umbala == 3) goto UtanCase3;
-	if (event_ubmala == 4) goto UtanCase4;
-	if (event_ubmala == 5) goto UtanCase4;
-	if (event_ubmala == 6) goto UtanCase6;
-	if (event_ubmala == 7) goto UtanCase7;
+	if (event_umbala == 4) goto UtanCase4;
+	if (event_umbala == 5) goto UtanCase4;
+	if (event_umbala == 6) goto UtanCase6;
+	if (event_umbala == 7) goto UtanCase7;
 
 		mes "[?????]";
 		mes "Umbaumbaumbaba Utan Umbaba";
