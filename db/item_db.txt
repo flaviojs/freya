@@ -2353,7 +2353,7 @@
 7430,Black_Charm_Stone,Black Charm Stone,3,0,0,0,,,,,,,,,,,{},{}
 7431,Pile_of_Books,Pile of Books,3,0,0,0,,,,,,,,,,,{},{}
 7432,Leather_Pouch,Leather Pouch,3,0,0,0,,,,,,,,,,,{},{}
-7433,Blank_Scroll,Blank Scroll,3,8000,4000,10,,,,,,,,,,,{},{}
+7433,Blank_Scroll,Blank Scroll,3,4000,2000,10,,,,,,,,,,,{},{}
 7434,Elemental_Potion_Guide,Elemental Potion Creation Guide,3,100000,50000,10,,,,,,,,,,,{},{}
 
 // Thanatos Tower/Abyss Lake Items
