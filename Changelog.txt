@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/15/07
+	* Improved: Optmize script for the Sign Quest. [Lex]
 	* Re-Reverted Tsuyuki's revert on Project: Diablo features and fixed the problem, which was actually due to
 	  compiling with TXT and not just compiling for WIN32. [Oreo]
 	* Updated: job_db1.txt modifiers for the new classes [Tsuyuki]
