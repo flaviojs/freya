@@ -4264,7 +4264,7 @@ int clif_skillinfo(struct map_session_data *sd, int skillid, int type, int range
 	WPACKETW( 8) = sd->status.skill[skillid].lv;
 	WPACKETW(10) = skill_get_sp(id,sd->status.skill[skillid].lv);
 	if (range < 0) {
-		range = skill_get_range(id, sd->status.skill[skillid].lv, pc_checkskill(sd, AC_VULTURE));
+		range = skill_get_range(id, sd->status.skill[skillid].lv, pc_checkskill(sd, AC_VULTURE), pc_checkskill(sd, GS_SNAKEEYE));
 		if (range < 0)
 			range = status_get_range(&sd->bl) - (range + 1);
 		WPACKETW(12) = range;
@@ -4302,7 +4302,7 @@ int clif_skillinfoblock(struct map_session_data *sd)
 			WPACKETW(len +  4) = 0;
 			WPACKETW(len +  6) = sd->status.skill[i].lv;
 			WPACKETW(len +  8) = skill_get_sp(id, sd->status.skill[i].lv);
-			range = skill_get_range(id, sd->status.skill[i].lv, pc_checkskill(sd, AC_VULTURE));
+			range = skill_get_range(id, sd->status.skill[i].lv, pc_checkskill(sd, AC_VULTURE), pc_checkskill(sd, GS_SNAKEEYE));
 			if (range < 0)
 				range = status_get_range(&sd->bl) - (range + 1);
 			WPACKETW(len + 10)= range;
@@ -4338,7 +4338,7 @@ int clif_skillup(struct map_session_data *sd, int skill_num)
 	WPACKETW( 2) = skill_num;
 	WPACKETW( 4) = sd->status.skill[skill_num].lv;
 	WPACKETW( 6) = skill_get_sp(skill_num, sd->status.skill[skill_num].lv);
-	range = skill_get_range(skill_num, sd->status.skill[skill_num].lv, pc_checkskill(sd, AC_VULTURE));
+	range = skill_get_range(skill_num, sd->status.skill[skill_num].lv, pc_checkskill(sd, AC_VULTURE), pc_checkskill(sd, GS_SNAKEEYE));
 	if (range < 0)
 		range = status_get_range(&sd->bl) - (range + 1);
 	WPACKETW( 8) = range;
@@ -5266,7 +5266,7 @@ int clif_item_skill(struct map_session_data *sd, int skillid, int skilllv, const
 	WPACKETW( 6) = 0;
 	WPACKETW( 8) = skilllv;
 	WPACKETW(10) = skill_get_sp(skillid, skilllv);
-	range = skill_get_range(skillid, skilllv, pc_checkskill(sd, AC_VULTURE));
+	range = skill_get_range(skillid, skilllv, pc_checkskill(sd, AC_VULTURE), pc_checkskill(sd, GS_SNAKEEYE));
 	if (range < 0)
 		range = status_get_range(&sd->bl) - (range + 1);
 	WPACKETW(12) = range;

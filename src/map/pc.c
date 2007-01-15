@@ -434,7 +434,8 @@ int pc_cant_move(struct map_session_data *sd) {
 		(sd->sc_data[SC_GRAVITATION].timer != -1 && sd->sc_data[SC_GRAVITATION].val3 == BCT_SELF) ||
 	   sd->sc_data[SC_STOP].timer != -1 ||
 	   sd->sc_data[SC_CLOSECONFINE].timer != -1 ||
-	   sd->sc_data[SC_CLOSECONFINE2].timer != -1))
+	   sd->sc_data[SC_CLOSECONFINE2].timer != -1 ||
+	   sd->sc_data[SC_MADNESSCANCEL].timer != -1))
 		return 1;
 
 	return 0;
@@ -4593,24 +4594,35 @@ void pc_checkallowskill(struct map_session_data *sd)
 	if(!sd->sc_count)
 		return;
 
+	// Player must have a Two-Handed weapon equipped to get bonuses
 	if(sd->sc_data[SC_TWOHANDQUICKEN].timer != -1 && !(skill_get_weapontype(KN_TWOHANDQUICKEN)&(1<<sd->status.weapon)))
 		status_change_end(&sd->bl, SC_TWOHANDQUICKEN, -1);
-		
+
+	// Player must have a Sword-Type weapon equipped to get bonuses
 	if(sd->sc_data[SC_AURABLADE].timer != -1 && !(skill_get_weapontype(LK_AURABLADE)&(1<<sd->status.weapon)))
 		status_change_end(&sd->bl, SC_AURABLADE, -1);
 
+	// Player must have a Sword-Type weapon equipped to get bonuses
 	if(sd->sc_data[SC_PARRYING].timer != -1 && !(skill_get_weapontype(LK_PARRYING)&(1<<sd->status.weapon)))
 		status_change_end(&sd->bl, SC_PARRYING, -1);
 
+	// Player must have a Spear-Type weapon equipped to get bonuses
 	if(sd->sc_data[SC_SPEARQUICKEN].timer != -1 && !(skill_get_weapontype(CR_SPEARQUICKEN)&(1<<sd->status.weapon)))
 		status_change_end(&sd->bl, SC_SPEARQUICKEN, -1);
 
+	// Player must have an Axe-Type weapon equipped to get bonuses
 	if(sd->sc_data[SC_ADRENALINE].timer != -1 && !(skill_get_weapontype(BS_ADRENALINE)&(1<<sd->status.weapon)))
 		status_change_end(&sd->bl, SC_ADRENALINE, -1);
 
-	if(sd->sc_data[SC_SPURT].timer != -1 && sd->status.weapon) // Player must not have a weapon to receive STR bonus
+	// Player must not have a weapon to receive STR bonus
+	if(sd->sc_data[SC_SPURT].timer != -1 && sd->status.weapon)
 		status_change_end(&sd->bl, SC_SPURT, -1);
 
+	// Player must have a Gatling Gun equipped to get bonuses
+	if(sd->sc_data[SC_GATLINGFEVER].timer != -1 && sd->status.weapon != 21)
+		status_change_end(&sd->bl, SC_GATLINGFEVER, -1);
+
+	// Player must have a Shield equipped to get bonuses
 	if(sd->status.shield <= 0) {
 		if(sd->sc_data[SC_AUTOGUARD].timer != -1)
 			status_change_end(&sd->bl, SC_AUTOGUARD, -1);

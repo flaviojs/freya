@@ -527,6 +527,9 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 				damage >>= 1;		// Damage on PvM maps should be half of the original dmg.
 		}
 
+		if(tsc_data[SC_ADJUSTMENT].timer != -1 && (flag&BF_LONG) && (flag&BF_WEAPON))
+			damage -= 20 * damage / 100;
+
 		if(flag&BF_WEAPON) { //Weapon attacks
 			if(flag&BF_LONG) { //Long ranged attacks
 				if(tsc_data[SC_DEFENDER].timer != -1 && skill_num != SN_FALCONASSAULT)
@@ -534,7 +537,7 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 				if(tsc_data[SC_FOGWALL].timer != -1)
 					damage >>= 1;
 			}
-			
+
 			if (tsc_data[SC_ENERGYCOAT].timer != -1 && damage > 0) { // エナジーコート
 				if (tsd) {
 					if (tsd->status.sp > 0) {
@@ -1156,35 +1159,25 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 			// taekwon
 			case TK_COUNTER:
 				flag.hit = 1;
-				skillratio += (90 + 30 * skill_lv) / 3;	// FORMULA: damage * (190 + 30 * skill_lv) / 100
-				if (sd && sd->weapontype1 == 0 && sd->weapontype2 == 0)
-					bonus_damage += 10 * pc_checkskill(sd, TK_RUN);
+				skillratio += 90 + 30 * skill_lv;	// FORMULA: damage * (190 + 30 * skill_lv) / 100
 				break;
 			case TK_DOWNKICK:
 				flag.hit = 1;
-				skillratio += (60 + 20 * skill_lv) / 3;	// FORMULA: damage * (160 + 20 * skill_lv) / 100
-				if (sd && sd->weapontype1 == 0 && sd->weapontype2 == 0)
-					bonus_damage += 10 * pc_checkskill(sd, TK_RUN);
+				skillratio += 60 + 20 * skill_lv;	// FORMULA: damage * (160 + 20 * skill_lv) / 100
 				break;
 			case TK_JUMPKICK:
 				skillratio += -70 + 10 * skill_lv;
 				if (sc_data && sc_data[SC_COMBO].timer != -1 && sc_data[SC_COMBO].val1 == skill_num)
 					skillratio += 10 * status_get_lv(src) / 3;
-				if (sd && sd->weapontype1 == 0 && sd->weapontype2 == 0)
-					bonus_damage += 10 * pc_checkskill(sd, TK_RUN);
 				break;
 			case TK_STORMKICK:
 				flag.hit = 1;
-				skillratio += (60 + 20 * skill_lv) / 3;	// FORMULA: damage * (160 + 20 * skill_lv) / 100
-				if (sd && sd->weapontype1 == 0 && sd->weapontype2 == 0)
-					bonus_damage += 10 * pc_checkskill(sd, TK_RUN);
+				skillratio += 60 + 20 * skill_lv;	// FORMULA: damage * (160 + 20 * skill_lv) / 100
 				break;
 			case TK_TURNKICK:
 				flag.hit = 1;
 				wd.blewcount = 0;
-				skillratio += (90 + 30 * skill_lv) / 3;	// FORMULA: damage * (190 + 30 * skill_lv) / 100
-				if (sd && sd->weapontype1 == 0 && sd->weapontype2 == 0)
-					bonus_damage += 10 * pc_checkskill(sd, TK_RUN);
+				skillratio += 90 + 30 * skill_lv;	// FORMULA: damage * (190 + 30 * skill_lv) / 100
 				break;
 
 			/************ GUNSLINGER/NINJA EXPANDED CLASS SKILLS  ************/
@@ -1193,14 +1186,14 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_SHORT;
 				skillratio += 50*(skill_lv-1);
 				flag.arrow = 1;
-				if (sd->arrow_ele)
+				if (sd && sd->arrow_ele)
 					s_ele = sd->arrow_ele;
 				break;
 			case GS_DUST:
 				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_SHORT;
 				skillratio += 50*skill_lv;
 				flag.arrow = 1;
-				if (sd->arrow_ele)
+				if (sd && sd->arrow_ele)
 					s_ele = sd->arrow_ele;
 				break;
 			case GS_CHAINACTION:
@@ -1223,41 +1216,46 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 					flag.cardfix = 0;
 				}
 				flag.arrow = 1;
-				if (sd->arrow_ele)
+				if (sd && sd->arrow_ele)
 					s_ele = sd->arrow_ele;
 				break;
 			case GS_MAGICALBULLET:
 				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG;
+				if(sd && (sd->matk2 > sd->matk1)) {
+						ATK_ADD(sd->matk1 + rand()% (sd->matk2 - sd->matk1));
+					} else {
+						ATK_ADD(sd->matk1);
+					}
 				break;
 			case GS_TRACKING:
 				skillratio += 100 *(skill_lv+1);
 				flag.arrow = 1;
-				if (sd->arrow_ele)
+				if (sd && sd->arrow_ele)
 					s_ele = sd->arrow_ele;
 				break;
 			case GS_PIERCINGSHOT:
 				skillratio += 20*skill_lv;
 				flag.idef = flag.idef2 = 1;
 				flag.arrow = 1;
-				if (sd->arrow_ele)
+				if (sd && sd->arrow_ele)
 					s_ele = sd->arrow_ele;
 				break;
 			case GS_RAPIDSHOWER:
-				skillratio += 10*skill_lv;
+				skillratio += 100*skill_lv;
 				flag.arrow = 1;
-				if (sd->arrow_ele)
+				if (sd && sd->arrow_ele)
 					s_ele = sd->arrow_ele;
 				break;
 			case GS_FULLBUSTER:
 				skillratio += 100*(skill_lv+2);
 				flag.arrow = 1;
-				if (sd->arrow_ele)
+				if (sd && sd->arrow_ele)
 					s_ele = sd->arrow_ele;
 				break;
 			case GS_SPREADATTACK:
 				skillratio += 20*(skill_lv-1);
 				flag.arrow = 1;
-				if (sd->arrow_ele)
+				if (sd && sd->arrow_ele)
 					s_ele = sd->arrow_ele;
 				break;
 
@@ -1267,13 +1265,13 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 				if (sd && (skill = pc_checkskill(sd, NJ_TOBIDOUGU)) > 0)
 				ATK_ADD(3*skill);
 				flag.arrow = 1;
-				if (sd->arrow_ele)
+				if (sd && sd->arrow_ele)
 					s_ele = sd->arrow_ele;
 				break;
 			case NJ_KUNAI:
 				ATK_ADD(60);
 				flag.arrow = 1;
-				if (sd->arrow_ele)
+				if (sd && sd->arrow_ele)
 					s_ele = sd->arrow_ele;
 				break;
 			case NJ_HUUMA:
@@ -1282,7 +1280,7 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 				if (sd && (skill = pc_checkskill(sd, NJ_TOBIDOUGU)) > 0)
 					skillratio += 3*skill;
 				flag.arrow = 1;
-				if (sd->arrow_ele)
+				if (sd && sd->arrow_ele)
 					s_ele = sd->arrow_ele;
 				break;
 			case NJ_TATAMIGAESHI:
@@ -1297,7 +1295,8 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 				break;
 			case NJ_ISSEN:
 				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG;
-				wd.damage = 40*sd->status.str + skill_lv*(sd->status.hp/10 + 35);
+				if (sd)
+					wd.damage = 40*sd->status.str + skill_lv*(sd->status.hp/10 + 35);
 				wd.damage2 = 0;
 				s_ele = s_ele_ = 0; // Always neutral element attack
 				break;
@@ -1931,14 +1930,14 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 				skillratio += sc_data[SC_EDP].val3; //merged the EDP correct calculation
 		}
 			
-		if(skill_num == AS_SONICBLOW) {
+		if(sd && skill_num == AS_SONICBLOW) {
 			if (sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_ASSASIN) {
 				if(map[sd->bl.m].flag.gvg) // If GvG map, +50% damage with Spirit of the Assassin, if not GvG, +100%
 					skillratio += 50;
 				else
 					skillratio += 100;
 			}
-			if(sd && pc_checkskill(sd, AS_SONICACCEL) > 0) // Sonic Acceleration 10% Sonic Blow damage bonus
+			if(pc_checkskill(sd, AS_SONICACCEL) > 0) // Sonic Acceleration 10% Sonic Blow damage bonus
 					skillratio += 10;
 		}
 			
@@ -2257,14 +2256,23 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 	}
 
 	// Double Attack
-	if(sd && !skill_num && !flag.cri) {	
-		if(((skill_lv = 5 * pc_checkskill(sd, TF_DOUBLE)) > 0 && sd->weapontype1 == 0x01) ||
-			sd->double_rate > 0) //Success chance is not added, the higher one is used? [Skotlex]
+	if (sd && !skill_num && !flag.cri) {
+		// Daggers
+		if (((skill_lv = 5 * pc_checkskill(sd, TF_DOUBLE) > 0) && sd->weapontype1 == 1) ||
+			sd->double_rate > 0) {
 			if (rand()%100 < (skill_lv > sd->double_rate?skill_lv : sd->double_rate)) {
 				wd.damage *= 2;
-				wd.div_ = 2; //Number of hits (double attack)
+				wd.div_ = 2; // Number of hits (Double Attack)
 				wd.type = 0x08;
 			}
+		// Revolvers
+		} else if (((skill_lv = 5 * pc_checkskill(sd, GS_CHAINACTION) > 0) && sd->weapontype1 == 17) || sd->double_rate > 0) {
+			if (rand()%100 < (skill_lv > sd->double_rate?skill_lv : sd->double_rate)) {
+				wd.damage *= 2;
+				wd.div_ = 2; // Number of hits (Double Attack)
+				wd.type = 0x08;
+			}
+		}
 	}
 
 	if(!flag.righthand/* || wd.damage < 1*/) wd.damage = 0;
@@ -2924,6 +2932,15 @@ struct Damage  battle_calc_misc_attack(
 		damagefix = 0;
 		aflag = (aflag & ~BF_RANGEMASK)|BF_LONG;
 		break;
+
+	case GS_FLING:
+		// Currently incompatible
+		// damage = sd?sd->status.job_level:status_get_lv(sd);
+		// Temp fix
+		damage = 50;
+		damagefix = 0;
+		break;
+
 	}
 
 	if (damagefix) {

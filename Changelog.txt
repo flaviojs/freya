@@ -5,8 +5,29 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/15/07
-	* Re-Reverted Tsuyuki's revert on Project: Diablo features and fixed the problem, which was actually due to
-	  compiling with TXT and not just compiling for WIN32. [Oreo]
+	* Added: Most of the Gunslinger class skills: [Tsuyuki]
+	 - GS_GLITTERING - Flip the Coin
+	 - GS_FLING - Fling
+	 - GS_TRIPLEACTION - Triple Action
+	 - GS_BULLSEYE - Bulls Eye
+	 - GS_MADNESSCANCEL - Madness Canceler
+	 - GS_ADJUSTMENT - AdJustment
+	 - GS_INCREASING - Increasing Accuracy
+	 - GS_MAGICALBULLET - Magical Bullet
+	 - GS_CRACKER - Cracker
+	 - GS_SINGLEACTION - Single Action
+	 - GS_SNAKEEYE - Snake Eye
+	 - GS_CHAINACTION - Chain Action
+	 - GS_TRACKING - Tracking
+	 - GS_PIERCINGSHOT - Piercing Shot
+	 - GS_RAPIDSHOWER - Rapid Shower
+	 - GS_GATLINGFEVER - Gatling Fever
+	 - GS_DUST - Dust
+	 - GS_FULLBUSTER - Full Buster
+	 - GS_SPREADATTACK - Spread Attack
+	 - Note: Only three left to do: Desperado, Disarm, and Ground Drift
+	* Improved: Optmized script for the Sign Quest [Lex]
+	* Fixed: Fixed and readded Project Diablo changes [Oreo]
 	* Updated: job_db1.txt modifiers for the new classes [Tsuyuki]
 	 - Note: HP Multiplicator for Gunslinger/Ninja is semi-custom, need to code new system as per Aegis
 

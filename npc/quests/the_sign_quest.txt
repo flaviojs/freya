@@ -8421,7 +8421,6 @@ gl_dun02.gat,270,98,1	script	Mysterious Energy	111,{
 	mes "feeling of sadness.";
 	close;
 
-
 BREAKSEAL:
 		callfunc "Break_Seal";
 		mes "^3355FFThe weapon you're holding";
@@ -8454,7 +8453,7 @@ BREAKSEAL:
 }
 
 gl_dun02.gat,139,72,1	script	Mysterious Energy	111,{
-	if ((brokenseal == 1 && Sign_Seal1 == 4) || (brokenseal == 2 && Sign_Seal2 == 4) || (brokenseal == 3 && Sign_Seal3 == 4) || (brokenseal == 4 && Sign_Seal4 == 4)) goto BROKENSEAL;
+	if ((brokenseal == 1 && Sign_Seal1 == 4) || (brokenseal == 2 && Sign_Seal2 == 4) || (brokenseal == 3 && Sign_Seal3 == 4) || (brokenseal == 4 && Sign_Seal4 == 4)) goto BREAKSEAL;
 	mes "^3355FFYou sense a strange";
 	mes "mysterious energy emanating from";
 	mes "this area. For some reason, this";
@@ -8462,7 +8461,7 @@ gl_dun02.gat,139,72,1	script	Mysterious Energy	111,{
 	mes "feeling of sadness.";
 	close;
 
-BROKENSEAL:
+BREAKSEAL:
 		callfunc "Break_Seal";
 		mes "^3355FFThe weapon you're holding";
 		mes "right now doesn't look like it has";
@@ -8471,11 +8470,10 @@ BROKENSEAL:
 		mes "more powerful...";
 		close;
 
-
 }
 
 gl_dun02.gat,16,26,1	script	Mysterious Energy	111,{
-	if ((brokenseal == 1 && Sign_Seal1 == 5) || (brokenseal == 2 && Sign_Seal2 == 5) || (brokenseal == 3 && Sign_Seal3 == 5) || (brokenseal == 4 && Sign_Seal4 == 5)) goto BROKESEAL;
+	if ((brokenseal == 1 && Sign_Seal1 == 5) || (brokenseal == 2 && Sign_Seal2 == 5) || (brokenseal == 3 && Sign_Seal3 == 5) || (brokenseal == 4 && Sign_Seal4 == 5)) goto BREAKSEAL;
 
 	mes "^3355FFYou sense a strange";
 	mes "mysterious energy emanating from";
@@ -8484,8 +8482,7 @@ gl_dun02.gat,16,26,1	script	Mysterious Energy	111,{
 	mes "feeling of sadness.";
 	close;
 
-
-BROKESEAL:
+BREAKSEAL:
 		callfunc "Break_Seal";
 		mes "^3355FFThe weapon you're holding";
 		mes "right now doesn't look like it has";
@@ -8498,7 +8495,7 @@ BROKESEAL:
 
 gl_dun02.gat,120,180,1	script	Mysterious Energy	111,{
 
-	if ((brokenseal == 1 && Sign_Seal1 == 6) || (brokenseal == 2 && Sign_Seal2 == 6) || (brokenseal == 3 && Sign_Seal3 == 6) || (brokenseal == 4 && Sign_Seal4 == 6)) goto BROKESEAL;
+	if ((brokenseal == 1 && Sign_Seal1 == 6) || (brokenseal == 2 && Sign_Seal2 == 6) || (brokenseal == 3 && Sign_Seal3 == 6) || (brokenseal == 4 && Sign_Seal4 == 6)) goto BREAKSEAL;
 	mes "^3355FFYou sense a strange";
 	mes "mysterious energy emanating from";
 	mes "this area. For some reason, this";
@@ -8506,7 +8503,7 @@ gl_dun02.gat,120,180,1	script	Mysterious Energy	111,{
 	mes "feeling of sadness.";
 	close;
 
-BROKESEAL:
+BREAKSEAL:
 		callfunc "Break_Seal";
 		mes "^3355FFThe weapon you're holding";
 		mes "right now doesn't look like it has";
@@ -8519,7 +8516,7 @@ BROKESEAL:
 
 gl_dun02.gat,42,251,1	script	Mysterious Energy	111,{
 
-	if ((brokenseal == 1 && Sign_Seal1 == 7) || (brokenseal == 2 && Sign_Seal2 == 7) || (brokenseal == 3 && Sign_Seal3 == 7) || (brokenseal == 4 && Sign_Seal4 == 7)) goto BROKESEAL;
+	if ((brokenseal == 1 && Sign_Seal1 == 7) || (brokenseal == 2 && Sign_Seal2 == 7) || (brokenseal == 3 && Sign_Seal3 == 7) || (brokenseal == 4 && Sign_Seal4 == 7)) goto BREAKSEAL;
 	mes "^3355FFYou sense a strange";
 	mes "mysterious energy emanating from";
 	mes "this area. For some reason, this";
@@ -8527,7 +8524,7 @@ gl_dun02.gat,42,251,1	script	Mysterious Energy	111,{
 	mes "feeling of sadness.";
 	close;
 
-BROKESEAL:
+BREAKSEAL:
 		callfunc "Break_Seal";
 		mes "^3355FFThe weapon you're holding";
 		mes "right now doesn't look like it has";
@@ -8535,11 +8532,12 @@ BROKESEAL:
 		mes "You'll definitely need something";
 		mes "more powerful...";
 		close;
+
 }
 
 gl_dun02.gat,124,231,1	script	Mysterious Energy	111,{
 
-	if ((brokenseal == 1 && Sign_Seal1 == 8) || (brokenseal == 2 && Sign_Seal2 == 8) || (brokenseal == 3 && Sign_Seal3 == 8) || (brokenseal == 4 && Sign_Seal4 == 8)) goto BROKESEAL;
+	if ((brokenseal == 1 && Sign_Seal1 == 8) || (brokenseal == 2 && Sign_Seal2 == 8) || (brokenseal == 3 && Sign_Seal3 == 8) || (brokenseal == 4 && Sign_Seal4 == 8)) goto BREAKSEAL;
 	mes "^3355FFYou sense a strange";
 	mes "mysterious energy emanating from";
 	mes "this area. For some reason, this";
@@ -8547,7 +8545,7 @@ gl_dun02.gat,124,231,1	script	Mysterious Energy	111,{
 	mes "feeling of sadness.";
 	close;
 
-BROKESEAL:
+BREAKSEAL:
 		callfunc "Break_Seal";
 		mes "^3355FFThe weapon you're holding";
 		mes "right now doesn't look like it has";
