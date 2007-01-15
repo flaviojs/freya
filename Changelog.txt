@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/14/07
+	* Fixed: Mobs not using skills when in attack range of target [Tsuyuki]
+	* Improved: Workaround fix for mob aspds so it doesn't bug other monsters [Tsuyuki/Bison]
 	* Fixed: Added a workaround to fix the 190 aspd monster problems (Thanks to galaxy) [Tsuyuki]
 	 - Idea orginally from eAthena
 	* Fixed: Blank Scroll sell price: 8000z -> 4000z [Tsuyuki]
