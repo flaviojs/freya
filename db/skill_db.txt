@@ -457,7 +457,7 @@
 // TaeKwon Class Skills
 411,0,6,4,0,1,10,1,yes,0,0,0,magic,0	//TK_RUN#Sprint#
 412,0,6,4,0,1,1,1,no,0,0,0,none,0		//TK_READYSTORM#Prepare Whirlwind Kick#
-413,-2,8,4,0,0,7,3,no,0,0,0,weapon,0	//TK_STORMKICK#Whirlwind Kick#
+413,-2,8,4,0,0,7,1,no,0,0,0,weapon,0	//TK_STORMKICK#Whirlwind Kick#
 414,0,6,4,0,1,1,1,no,0,0,0,none,0		//TK_READYDOWN#Prepare Axe Kick#
 415,-2,8,4,0,0,7,3,no,0,0,0,weapon,0	//TK_DOWNKICK#Axe Kick#
 416,0,6,4,0,1,1,1,no,0,0,0,none,0		//TK_READYTURN#Prepare Round Kick#
