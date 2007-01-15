@@ -500,11 +500,11 @@ L_MENU_1:
 	mes "[Wutao]";
 	mes "All right, let's begin.";
 	next;
-	set @JOB_MONK_C2, rand(1,3);
+	set @job_monk_C2, rand(1,3);
 L_Again:
-	if (@JOB_MONK_C2==0) set @JOB_MONK_C2, rand(1,3);
-	if (@JOB_MONK_C2 == 2) goto L_ROOT_2;
-	if (@JOB_MONK_C2 == 3) goto L_ROOT_3;
+	if (@job_monk_C2==0) set @job_monk_C2, rand(1,3);
+	if (@job_monk_C2 == 2) goto L_ROOT_2;
+	if (@job_monk_C2 == 3) goto L_ROOT_3;
 
 	L_ROOT_1:
 		set @monk_str0$,"Supported by dragon and phoenix,";
@@ -564,7 +564,7 @@ L_MES:
 	next;
 	mes "[Wutao]";
 	mes @monk_str7$;
-	if (@JOB_MONK_C2 < 3) goto L_MES_1;
+	if (@job_monk_C2 < 3) goto L_MES_1;
 	next;
 	mes "[Wutao]";
 	mes @monk_str8$;
@@ -575,8 +575,8 @@ L_MES_1:
 	mes "Now, " + strcharinfo(0) + ", it's your turn.";
 	next;
 	set @monk_q, 0;
-	if (@JOB_MONK_C2 == 2) goto L_MONK_Q2_1;
-	if (@JOB_MONK_C2 == 3) goto L_MONK_Q3_1;
+	if (@job_monk_C2 == 2) goto L_MONK_Q2_1;
+	if (@job_monk_C2 == 3) goto L_MONK_Q3_1;
 
 L_MONK_Q1_1:
 
@@ -1190,7 +1190,7 @@ L_MISSC:
 	mes "[Bashu]";
 	mes "The test you choose is Monk's patient - Mushroom Collecting";
 	next;
-	warp "JOB_MONK.gat",225,179;
+	warp "job_monk.gat",225,179;
 	end;
 
 L_MENU_1:
@@ -1361,7 +1361,7 @@ prt_monk.gat,225,179,4	script	XuanWu	89,{
 	mes "The grower is the root of world. That's quite true.";
 	close;
 }
-JOB_MONK.gat,225,179,4	script	XuanWu	89,{
+job_monk.gat,225,179,4	script	XuanWu	89,{
 
 	if (MONK_Q == 8) goto Part2;
 	if (@mission_start == 1) goto Part1;
@@ -1441,12 +1441,12 @@ Part2:
 	mes "Now go to [Daowen], he is in the deep of the building.";
 	close;
 }
-JOB_MONK.gat,191,172,4	script	JOB_MONK_warp	45,1,1,{
+job_monk.gat,191,172,4	script	job_monk_warp	45,1,1,{
 	warp "monk_test.gat",329,57;
 	end;
 }
 
-JOB_MONK.gat,199,169,4	script	Guard ChaoLi	746,{
+job_monk.gat,199,169,4	script	Guard ChaoLi	746,{
 	mes "[Guard ChaoLi]";
 	mes "Silence! In test area!";
 	close;
@@ -1720,8 +1720,8 @@ monk_test.gat,269,279,4	script	monk_mob3_warp	45,1,1,{
 //==============================================================================
 // Monsters of Mushroom Collecting
 //==============================================================================
-JOB_MONK.gat,0,0,0,0	monster	Thief Mushroom	1182,170,0,0,0
-JOB_MONK.gat,0,0,0,0	monster	Thief Bug Larva	1051,120,0,0,0
+job_monk.gat,0,0,0,0	monster	Thief Mushroom	1182,170,0,0,0
+job_monk.gat,0,0,0,0	monster	Thief Bug Larva	1051,120,0,0,0
 
 //==============================================================================
 // warps

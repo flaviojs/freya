@@ -371,22 +371,22 @@ L_2:
 	set @TEMP,rand(5);
 	set JOB_THIEF_q,2;
 	if (@TEMP != 0) goto warpL03a;
-		warp "JOB_THIEF1.gat",228,106;
+		warp "job_thief1.gat",228,106;
 		close;
 	warpL03a:
 		if (@TEMP != 1) goto warpL03b;
-		warp "JOB_THIEF1.gat",38,50;
+		warp "job_thief1.gat",38,50;
 		close;
 	warpL03b:
 		if (@TEMP != 2) goto warpL03c;
-		warp "JOB_THIEF1.gat",66,331;
+		warp "job_thief1.gat",66,331;
 		close;
 	warpL03c:
 		if (@TEMP != 3) goto warpL03d;
-		warp "JOB_THIEF1.gat",196,331;
+		warp "job_thief1.gat",196,331;
 		close;
 	warpL03d:
-		warp "JOB_THIEF1.gat",309,234;
+		warp "job_thief1.gat",309,234;
 		close;
 
 L_3:
@@ -411,9 +411,9 @@ L_3:
 //==============================================================================
 // mapflag
 //==============================================================================
-JOB_THIEF1.gat	mapflag	nomemo
-JOB_THIEF1.gat	mapflag	noteleport
-JOB_THIEF1.gat	mapflag	nosave	SavePoint
-JOB_THIEF1.gat	mapflag	nopenalty
-JOB_THIEF1.gat	mapflag	nobranch
-JOB_THIEF1.gat	mapflag	noexp
+job_thief1.gat	mapflag	nomemo
+job_thief1.gat	mapflag	noteleport
+job_thief1.gat	mapflag	nosave	SavePoint
+job_thief1.gat	mapflag	nopenalty
+job_thief1.gat	mapflag	nobranch
+job_thief1.gat	mapflag	noexp

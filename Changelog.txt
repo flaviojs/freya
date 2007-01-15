@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/14/07
+	* Fixed: A few minor script bugs [Tsuyuki]
 	* Reverted: Oreo's latest changes as they broke Freya compilation in Win32 [Tsuyuki]
 	* Fixed: Taekwon's Kicking skills damage calculations [Tsuyuki]
 	* Fixed: Vidar's Boots combo set (works together with 2517 - Vali's Manteau, not 2516 - Falcon Muffler)
