@@ -2376,7 +2376,7 @@ INSERT INTO `item_db` VALUES (7429, 'Green_Charm_Stone', 'Green Charm Stone', 3,
 INSERT INTO `item_db` VALUES (7430, 'Black_Charm_Stone', 'Black Charm Stone', 3, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7431, 'Pile_of_Books', 'Pile of Books', 3, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7432, 'Leather_Pouch', 'Leather Pouch', 3, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
-INSERT INTO `item_db` VALUES (7433, 'Blank_Scroll', 'Blank Scroll', 3, 8000, 4000, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
+INSERT INTO `item_db` VALUES (7433, 'Blank_Scroll', 'Blank Scroll', 3, 4000, 2000, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7434, 'Elemental_Potion_Guide', 'Elemental Potion Creatio', 3, 100000, 50000, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 
 # Thanatos Tower/Abyss Lake Items

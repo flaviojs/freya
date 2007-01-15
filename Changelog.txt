@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/14/07
+	* Fixed: Blank Scroll sell price: 8000z -> 4000z [Tsuyuki]
 	* Fixed: A few minor script bugs [Tsuyuki]
 	* Reverted: Oreo's latest changes as they broke Freya compilation in Win32 [Tsuyuki]
 	* Fixed: Taekwon's Kicking skills damage calculations [Tsuyuki]
