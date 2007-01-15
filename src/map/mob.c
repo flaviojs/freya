@@ -4677,6 +4677,10 @@ static int mob_readdb(void)
 			mob_db[class].amotion = atoi(str[27]);
 			mob_db[class].dmotion = atoi(str[28]);
 
+		// If the attack animation is longer than the delay, the client crops the attack animation
+		if (mob_db[class].adelay < mob_db[class].amotion)
+			mob_db[class].adelay = mob_db[class].amotion;
+
 			for(j = 0; j < 10; j++) {
 				int nameid, percent;
 				nameid = atoi(str[29+j*2]);
