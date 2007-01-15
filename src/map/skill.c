@@ -714,19 +714,33 @@ int skill_get_pl(int id) { skill_get2(skill_db[id].pl, id); }
 int skill_get_nk(int id) { skill_get2(skill_db[id].nk, id); }
 int skill_get_max(int id) { skill_chk2(id); return (id < MAX_SKILL) ? skill_db[id].max : guild_skill_get_max(id); }
 
-int skill_get_range(int id, int lv, int vulture_level)
+int skill_get_range(int id, int lv, int vulture_level, int snake_level)
 {
 	skill_chk(id, lv);
 
-	// special skills which get range bonus from Vulture's Eye skill
 	switch(id)
 	{
+		// Under development
+		// Bow skills range increased by Vulture's Eye
+//		case AC_SHOWER:
+//		case AC_DOUBLE:
+//		case AC_CHARGEARROW:
+//		case SN_SHARPSHOOTING:
+//		case HT_POWER:
 		case HT_BLITZBEAT:
 		case SN_FALCONASSAULT:
 			return skill_db[id].range[lv - 1] + vulture_level;
+		// Gunslinger skills range increased by Snake's Eye
+//		case GS_RAPIDSHOWER:
+//		case GS_TRACKING:
+//		case GS_PIERCINGSHOT:
+//		case GS_FULLBUSTER:
+//		case GS_SPREADATTACK:
+//		case GS_GROUNDDRIFT:
+//			return skill_db[id].range[lv - 1] + snake_level;
 	}
 
-	// normal skills
+	// Normal skills range returned
 	return (id < MAX_SKILL) ? skill_db[id].range[lv - 1] : guild_skill_get_range(id);
 }
 
@@ -1396,12 +1410,15 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 			status_change_start(bl, SC_STUN, 0, 0, 0, 0, 2000, 0);
 		break;
 
-	case GS_BULLSEYE: // 0.1% Coma Rate: To-Do
-/*		if(t_race == 2 || t_race == 7)
-			status_change_start(bl, SC_COMA,   skilllv, 0, 0, 0, 100, 0);*/
+	case GS_BULLSEYE:
+		if(status_get_race(bl) == 2 || status_get_race(bl) == 7)
+			status_change_start(bl, SC_COMA, skilllv, 0, 0, 0, 100, 0);
 		break;
 	case GS_PIERCINGSHOT:
 			status_change_start(bl, SC_BLEEDING, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
+		break;
+	case GS_FLING:
+		status_change_start(bl, SC_FLING, skilllv, sd?sd->spiritball_old:5, 0, 0, skill_get_time(skillid,skilllv), 0);
 		break;
 	case NJ_HYOUSYOURAKU:
 		hyoucalc = 0;
@@ -1409,6 +1426,10 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 		hyoucalc = hyoucalc <= 5? 5:hyoucalc;
 		if(rand()%100 <= hyoucalc)
 		status_change_start(bl, SC_FREEZE, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
+		break;
+	case GS_FULLBUSTER:
+		if(rand() % 100 < 20 * sc_def_int / 100)
+			status_change_start(bl, SC_BLIND,2*skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
 		break;
 }
 
@@ -1521,7 +1542,7 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 					tbl = src; // On self
 				else {
 					tbl = bl; // On target
-					if(!battle_check_range(src, tbl, skill_get_range(auto_skillid, auto_skilllv, pc_checkskill(sd, AC_VULTURE))))
+					if(!battle_check_range(src, tbl, skill_get_range(auto_skillid, auto_skilllv, pc_checkskill(sd, AC_VULTURE), pc_checkskill(sd, GS_SNAKEEYE))))
 						continue; // Check for target-src range
  				}
 
@@ -2632,18 +2653,22 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case ITM_TOMAHAWK:
 	case ASC_METEORASSAULT:	// Meteor Assault skill fix (thanks to [Mikey] from freya's bug report)
 	case AC_SHOWER:
-	case GS_CHAINACTION:
 	case GS_TRIPLEACTION:
 	case GS_MAGICALBULLET:
 	case GS_TRACKING:
 	case GS_PIERCINGSHOT:
 	case GS_RAPIDSHOWER:
-	case GS_DUST:
 	case GS_FULLBUSTER:
 	case NJ_SYURIKEN:
 	case NJ_KUNAI:
 		skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, flag);
 		break;
+
+	case GS_DUST:
+		skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, flag);
+		skill_blown(src,bl,skill_get_blewcount(skillid,skilllv));
+		break;
+
 // A lot of Corrections to BREAKER SKILL (pneuma included) (Posted on freya's bug report by Gawaine)
 	case ASC_BREAKER:
 		// Separate weapon and magic attacks
@@ -2792,7 +2817,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case MO_BALKYOUNG: // Active part of the attack. Skill-attack [Skotlex]
 		skill_area_temp[1] = bl->id; // NOTE: This is used in skill_castend_nodamage_id to avoid affecting the target
 		if (skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,0)) {
-			int range = skill_get_range(skillid, skilllv, 0);
+			int range = skill_get_range(skillid, skilllv, 0, 0);
 			map_foreachinarea(skill_area_sub,
 				bl->m, bl->x-range, bl->y-range, bl->x+range, bl->y+range,0,
 				src,skillid,skilllv,tick, flag|BCT_ENEMY|1,
@@ -3516,7 +3541,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 				break;
 			}
 			skill_area_temp[0] = 0;
-			party_foreachsamemap(skill_area_sub, sd, skill_get_range(skillid, skilllv, 0), src, skillid, skilllv,
+			party_foreachsamemap(skill_area_sub, sd, skill_get_range(skillid, skilllv, 0, 0), src, skillid, skilllv,
 				tick, flag|BCT_PARTY|1,	skill_castend_nodamage_id);
 
 			if (skill_area_temp[0] == 0) {
@@ -4032,6 +4057,12 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		else
 			clif_skill_fail(sd, skillid, 0, 0);
 		break;
+	case GS_MADNESSCANCEL:
+	case GS_ADJUSTMENT:
+	case GS_INCREASING:
+		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
+		status_change_start(bl, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
+		break;
 	case SG_FUSION:
 		if (sc_data && sc_data[SC_FUSION].timer != -1)
 			status_change_end(src,SC_FUSION,-1);
@@ -4080,7 +4111,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 			}
 
 			if (dstmd) {
-				int range = skill_get_range(skillid, skilllv, 0);
+				int range = skill_get_range(skillid, skilllv, 0, 0);
 				if (range < 0)
 					range = status_get_range(src) - (range + 1);
 				dstmd->state.provoke_flag = src->id;
@@ -4227,6 +4258,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 
 	case RG_RAID:
 	case ASC_METEORASSAULT: // Meteor Assault skill fix (thanks to [Mikey] from freya's bug report)
+	case GS_SPREADATTACK:
 		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 	  {
 		int x = bl->x, y = bl->y;
@@ -4527,7 +4559,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 	case RG_STEALCOIN:
 		if (sd) {
 			if (pc_steal_coin(sd,bl)) {
-				int range = skill_get_range(skillid, skilllv, 0);
+				int range = skill_get_range(skillid, skilllv, 0, 0);
 				if (range < 0)
 					range = status_get_range(src) - (range + 1);
 				clif_skill_nodamage(src,bl,skillid,skilllv,1);
@@ -4565,7 +4597,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 				}
 		  }
 			if (dstmd)
-				mob_target(dstmd, src, skill_get_range(skillid, skilllv, 0));
+				mob_target(dstmd, src, skill_get_range(skillid, skilllv, 0, 0));
 			if (sd && gem_flag) {
 				if ((i = pc_search_inventory(sd, skill_db[skillid].itemid[0])) < 0) {
 					clif_skill_fail(sd, sd->skillid, 0, 0); // Skill has failed
@@ -5072,7 +5104,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 
 	case BS_GREED:
 		if (sd) {
-			int range = skill_get_range(skillid, skilllv, 0);
+			int range = skill_get_range(skillid, skilllv, 0, 0);
 			if (map[sd->bl.m].flag.gvg || map[sd->bl.m].flag.pvp) {	// Not available in WoE/PvP mode
 				clif_skill_fail(sd, MC_VENDING, 0, 0);
 				map_freeblock_unlock();
@@ -5436,7 +5468,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		}
 
 		if(dstmd) {
-			int range = skill_get_range(skillid, skilllv, 0);
+			int range = skill_get_range(skillid, skilllv, 0, 0);
 			if(range < 0)
 				range = status_get_range(src) - (range + 1);
 			mob_target(dstmd, src, range);
@@ -5655,7 +5687,8 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		break;
 
 	case ST_PRESERVE:
-	case CR_SHRINK:	
+	case CR_SHRINK:
+	case GS_GATLINGFEVER:
 		if (sd) {
 			if (sc_data[SkillStatusChangeTable[skillid]].timer != -1)
 				status_change_end(src, SkillStatusChangeTable[skillid], -1);
@@ -5884,6 +5917,32 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		}
 		break;
 
+	case GS_GLITTERING:
+		if (sd) {
+			clif_skill_nodamage(src,bl,skillid,skilllv,1);
+			if (rand()%100 < (20 + 10*skilllv))
+				pc_addspiritball(sd, skill_get_time(skillid, skilllv),10);
+			else if (sd->spiritball > 0)
+				pc_delspiritball(sd, 1, 0);
+		}
+		break;
+
+	case GS_CRACKER:
+		if (!dstsd)
+		{
+			// Temp Fix: Need to calculate stun chance by range
+			// This will do for the time being
+			// i = 65 -5*distance(src,bl);
+			i = 50;
+			if (i < 30) i = 30;
+			clif_skill_nodamage(src,bl,skillid,skilllv,1);
+			if (rand()%100 <= i)
+				status_change_start(bl, SC_STUN, skilllv, 0, 0, 0, 5000, skilllv);
+		}
+		else if (sd)
+			clif_skill_fail(sd,skillid,0,0);
+		break;
+
 	// New guild skills [Celest]
 	case GD_BATTLEORDER:
 		if (flag&1) {
@@ -6083,7 +6142,7 @@ int skill_castend_id(int tid, unsigned int tick, int id, int data)
 		}
 	}
 
-	range = skill_get_range(sd->skillid, sd->skilllv, pc_checkskill(sd, AC_VULTURE));
+	range = skill_get_range(sd->skillid, sd->skilllv, pc_checkskill(sd, AC_VULTURE), pc_checkskill(sd, GS_SNAKEEYE));
 	if (range < 0)
 		range = status_get_range(&sd->bl) - (range + 1);
 	range += battle_config.pc_skill_add_range;
@@ -7644,7 +7703,7 @@ int skill_castend_pos(int tid, unsigned int tick, int id, int data)
 	}
 
 	if (sd->skilllv <= 0) return 0;
-	range = skill_get_range(sd->skillid, sd->skilllv, pc_checkskill(sd, AC_VULTURE));
+	range = skill_get_range(sd->skillid, sd->skilllv, pc_checkskill(sd, AC_VULTURE), pc_checkskill(sd, GS_SNAKEEYE));
 	if (range < 0)
 		range = status_get_range(&sd->bl) - (range + 1);
 	range += battle_config.pc_skill_add_range;
@@ -8047,6 +8106,7 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 		}
 		break;
 	case MO_FINGEROFFENSIVE:
+	case GS_FLING:
 		if (sd->spiritball > 0 && sd->spiritball < spiritball) {
 			spiritball = sd->spiritball;
 			sd->spiritball_old = sd->spiritball;
@@ -8251,7 +8311,8 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 			break;
 		}
 
-	// Skills require arrows as of 12/07 [celest]
+	// Skills that require ammunition
+	case GS_GATLINGFEVER:
 	case AC_DOUBLE:
 	case AC_SHOWER:
 	case AC_CHARGEARROW:
@@ -8266,7 +8327,6 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 	case GS_PIERCINGSHOT:
 	case GS_RAPIDSHOWER:
 	case GS_DESPERADO:
-	case GS_GATLINGFEVER:
 	case GS_DUST:
 	case GS_FULLBUSTER:
 	case GS_SPREADATTACK:
@@ -8308,6 +8368,13 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 			sp -= sp * 5 * kaina_lv / 100;
 		else if(sd->status.base_level >= 70)
 			sp -= sp * 3 * kaina_lv / 100;
+		}
+		break;
+
+	case GS_GLITTERING:
+		if(sd->spiritball >= 10) {
+			clif_skill_fail(sd,skill,0,0);
+			return 0;
 		}
 		break;
 
@@ -8766,7 +8833,7 @@ int skill_use_id(struct map_session_data *sd, int target_id, int skill_num, int 
 		break;
 	}
 	if (!skill_check_condition(sd, 0)) return 0;
-	range = skill_get_range(skill_num, skill_lv, pc_checkskill(sd, AC_VULTURE));
+	range = skill_get_range(skill_num, skill_lv, pc_checkskill(sd, AC_VULTURE), pc_checkskill(sd, GS_SNAKEEYE));
 	if (range < 0)
 		range = status_get_range(&sd->bl) - (range + 1);
 	// Be lenient if the skill was cast before we have moved to the correct position [Celest]
@@ -8861,7 +8928,7 @@ int skill_use_id(struct map_session_data *sd, int target_id, int skill_num, int 
 			if((p_sd = pc_get_partner(sd)) == NULL || pc_isdead(p_sd)) // Its possible to get null if we're not married --> no use NULLPO
 				return 0;
 			target_id = p_sd->bl.id;
-			range = skill_get_range(skill_num, skill_lv, 0);
+			range = skill_get_range(skill_num, skill_lv, 0, 0);
 			if (range < 0)
 				range = status_get_range(&sd->bl) - (range + 1);
 			if (!battle_check_range(&sd->bl, &p_sd->bl, range))
@@ -8996,7 +9063,7 @@ int skill_use_pos(struct map_session_data *sd,
 
   {
 	int check_range_flag = 0;
-	range = skill_get_range(skill_num, skill_lv, pc_checkskill(sd, AC_VULTURE));
+	range = skill_get_range(skill_num, skill_lv, pc_checkskill(sd, AC_VULTURE), pc_checkskill(sd, GS_SNAKEEYE));
 	if (range < 0)
 		range = status_get_range(&sd->bl) - (range + 1);
 	// Be lenient if the skill was cast before we have moved to the correct position [Celest]
@@ -9554,9 +9621,9 @@ int skill_rest(struct map_session_data *sd ,int type)
 	nullpo_retr(0, sd);
 
 	if((skill_lv = pc_checkskill(sd,TK_HPTIME)) > 0)
-		range = skill_get_range(TK_HPTIME, skill_lv, 0);
+		range = skill_get_range(TK_HPTIME, skill_lv, 0, 0);
 	else if ((skill_lv = pc_checkskill(sd,TK_SPTIME)) > 0)
-		range = skill_get_range(TK_SPTIME, skill_lv, 0);
+		range = skill_get_range(TK_SPTIME, skill_lv, 0, 0);
 	else
 		return 0;
 

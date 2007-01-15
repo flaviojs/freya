@@ -3687,7 +3687,7 @@ int mobskill_castend_id(int tid, unsigned int tick, int id, int data)
 	if( ( (skill_get_inf(md->skillid)&1) || (skill_get_inf2(md->skillid)&4) ) &&	// 彼我敵対関係チェック
 		battle_check_target(&md->bl, bl, BCT_ENEMY) <= 0 )
 		return 0;
-	range = skill_get_range(md->skillid, md->skilllv, 0);
+	range = skill_get_range(md->skillid, md->skilllv, 0, 0);
 	if(range < 0)
 		range = status_get_range(&md->bl) - (range + 1);
 	if(range + battle_config.mob_skill_add_range < distance(md->bl.x,md->bl.y,bl->x,bl->y))
@@ -3776,7 +3776,7 @@ int mobskill_castend_pos(int tid, unsigned int tick, int id, int data)
 		}
 	}
 
-	range = skill_get_range(md->skillid, md->skilllv, 0);
+	range = skill_get_range(md->skillid, md->skilllv, 0, 0);
 	if (range < 0)
 		range = status_get_range(&md->bl) - (range + 1);
 	if (range + battle_config.mob_skill_add_range < distance(md->bl.x,md->bl.y,md->skillx,md->skilly))
@@ -3842,7 +3842,7 @@ int mobskill_use_id(struct mob_data *md, struct block_list *target, int skill_id
 		return 0;
 
 	// 射程と障害物チェック
-	range = skill_get_range(skill_id, skill_lv, 0);
+	range = skill_get_range(skill_id, skill_lv, 0, 0);
 	if(range < 0)
 		range = status_get_range(&md->bl) - (range + 1);
 	if(!battle_check_range(&md->bl, target, range))
@@ -3968,7 +3968,7 @@ int mobskill_use_pos( struct mob_data *md,
 	bl.m = md->bl.m;
 	bl.x = skill_x;
 	bl.y = skill_y;
-	range = skill_get_range(skill_id, skill_lv, 0);
+	range = skill_get_range(skill_id, skill_lv, 0, 0);
 	if (range < 0)
 		range = status_get_range(&md->bl) - (range + 1);
 	if (!battle_check_range(&md->bl, &bl, range))
