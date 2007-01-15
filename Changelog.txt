@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/14/07
+	* Reverted: Oreo's latest changes as they broke Freya compilation in Win32 [Tsuyuki]
+	* Fixed: Taekwon's Kicking skills damage calculations [Tsuyuki]
 	* Fixed: Vidar's Boots combo set (works together with 2517 - Vali's Manteau, not 2516 - Falcon Muffler)
 	* Fixed: Laboratory Pass -> Weight is now 0, to fix the rebirthing process [Tsuyuki]
 	* Added: Thor Dungeon monster mob skills [Tsuyuki]
@@ -17,8 +19,6 @@ Date	Added
 	 - setsitstand flag; Flag: 0 = Sit, 1 = Stand
 	* Improved: Did a bunch of work on the npc/custom folder [Tsuyuki]
 	 - Completely rewrote heal.txt file
-	* Added: forcing of uid/gid; writing process ID in PID files (tmp/pids); setting umask; changing process priority.
-	         (those options are in the configuration files) [Oreo]
 
 01/13/07
 	* Added: Latest kRO patch items (1/09/07), imported from jAthena [Tsuyuki]

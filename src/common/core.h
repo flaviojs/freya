@@ -15,7 +15,6 @@
 #define _CORE_H_
 
 #include <time.h> // time_t
-#include <errno.h>
 
 int runflag;
 
@@ -37,7 +36,5 @@ int get_version(char);
 #define VERSION_FLAG_MOD 5
 
 #define MAX_TERMFUNC 10
-
-char *service;    // {oreo} Project: Diablo
 
 #endif // _CORE_H_

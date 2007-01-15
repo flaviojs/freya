@@ -1156,35 +1156,25 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 			// taekwon
 			case TK_COUNTER:
 				flag.hit = 1;
-				skillratio += (90 + 30 * skill_lv) / 3;	// FORMULA: damage * (190 + 30 * skill_lv) / 100
-				if (sd && sd->weapontype1 == 0 && sd->weapontype2 == 0)
-					bonus_damage += 10 * pc_checkskill(sd, TK_RUN);
+				skillratio += 90 + 30 * skill_lv;	// FORMULA: damage * (190 + 30 * skill_lv) / 100
 				break;
 			case TK_DOWNKICK:
 				flag.hit = 1;
-				skillratio += (60 + 20 * skill_lv) / 3;	// FORMULA: damage * (160 + 20 * skill_lv) / 100
-				if (sd && sd->weapontype1 == 0 && sd->weapontype2 == 0)
-					bonus_damage += 10 * pc_checkskill(sd, TK_RUN);
+				skillratio += 60 + 20 * skill_lv;	// FORMULA: damage * (160 + 20 * skill_lv) / 100
 				break;
 			case TK_JUMPKICK:
 				skillratio += -70 + 10 * skill_lv;
 				if (sc_data && sc_data[SC_COMBO].timer != -1 && sc_data[SC_COMBO].val1 == skill_num)
 					skillratio += 10 * status_get_lv(src) / 3;
-				if (sd && sd->weapontype1 == 0 && sd->weapontype2 == 0)
-					bonus_damage += 10 * pc_checkskill(sd, TK_RUN);
 				break;
 			case TK_STORMKICK:
 				flag.hit = 1;
-				skillratio += (60 + 20 * skill_lv) / 3;	// FORMULA: damage * (160 + 20 * skill_lv) / 100
-				if (sd && sd->weapontype1 == 0 && sd->weapontype2 == 0)
-					bonus_damage += 10 * pc_checkskill(sd, TK_RUN);
+				skillratio += 60 + 20 * skill_lv;	// FORMULA: damage * (160 + 20 * skill_lv) / 100
 				break;
 			case TK_TURNKICK:
 				flag.hit = 1;
 				wd.blewcount = 0;
-				skillratio += (90 + 30 * skill_lv) / 3;	// FORMULA: damage * (190 + 30 * skill_lv) / 100
-				if (sd && sd->weapontype1 == 0 && sd->weapontype2 == 0)
-					bonus_damage += 10 * pc_checkskill(sd, TK_RUN);
+				skillratio += 90 + 30 * skill_lv;	// FORMULA: damage * (190 + 30 * skill_lv) / 100
 				break;
 
 			/************ GUNSLINGER/NINJA EXPANDED CLASS SKILLS  ************/
