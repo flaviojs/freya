@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/14/07
+	* Added: The rest of the Juperos History Quest (Fayruz NPC) [Tsuyuki]
 	* Fixed: The Devotion/Sacrifice status is now removed upon map change [Tsuyuki]
 	* Changed: Modified all @commands with the GM level 0 to GM level 1 [Tsuyuki]
 	 - @commands are not official, therefore they are custom and should be disabled for players by default

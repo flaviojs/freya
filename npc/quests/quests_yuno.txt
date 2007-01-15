@@ -3,17 +3,16 @@
 //===== By: ==================================================
 //= Aegis/Tsuyuki
 //===== Current Version: =====================================
-//= 1.1a
+//= 1.2
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
 //= Ryusei Quest (Metto Quest)
 //= Juperos History Quest
-//= Note: The Juperos History Quest isn't fully functional..
-//= Fayruz is missing, still converting from Aegis [Tsuyuki]
 //===== Additional Comments: =================================
 //= 1.0 Completely redid file now with official Aegis NPCs [Tsuyuki]
-//= 1.1a Partially implemented Juperos History Quest converted from Aegis [Tsuyuki]
+//= 1.1 Partially implemented Juperos History Quest converted from Aegis [Tsuyuki]
+//= 1.2 Added the rest of the Jperos History Quest (Fayruz NPC) [Tsuyuki]
 //============================================================
 
 
@@ -965,6 +964,2890 @@ L_NotEnough:
 //===========================================================================
 // Juperos History Quest
 //===========================================================================
+
+// Fayruz
+yuno_in04.gat,190,125,4	script	Scholar	700,{
+
+	if (yuno_book == 0) goto L_Yuno_Book_Check00;
+	if (yuno_book == 1) goto L_Yuno_Book_Check01;
+	if (yuno_book == 2) goto L_Yuno_Book_Check02;
+	if (yuno_book == 3) goto L_Yuno_Book_Check03;
+	if (yuno_book == 4) goto L_Yuno_Book_Check04;
+	if (yuno_book == 5) goto L_Yuno_Book_Check05;
+	if (yuno_book == 6) goto L_Yuno_Book_Check06;
+	if (yuno_book == 7) goto L_Yuno_Book_Check07;
+	if (yuno_book == 8 || yuno_book == 9) goto L_Yuno_Book_Check08;
+	if (yuno_book == 10) goto L_Yuno_Book_Check10;
+
+	L_Yuno_Book_Check00:
+		mes "[Scholar]";
+		mes "...Mm?";
+		mes "...Yes?";
+		next;
+		mes "[Scholar]";
+		mes "...";
+		mes "......";
+		mes "May I help you?";
+		next;
+		menu "Oh! N-Nothing!",L_FayMenu01,"Excuse me...",L_FayMenu02;
+
+		L_FayMenu01:
+			mes "[Scholar]";
+			mes "...";
+			mes "......";
+			mes "Hmm?";
+			mes "...........";
+			mes "Hmpf.";
+			close;
+
+		L_FayMenu02:
+			mes "[Scholar]";
+			mes "...";
+			mes "......";
+			mes "Hmm?";
+			mes "...........";
+			mes "Hmmm...";
+			next;
+			mes "[Scholar]";
+			mes "You must be lost.";
+			mes "This is the scholarly";
+			mes "research section, you know,";
+			mes "content you couldn't possibly";
+			mes "fathom. The popular novels and picture books are someplace else.";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "...";
+			mes "......";
+			next;
+			mes "[Scholar]";
+			mes "Why don't you rummage";
+			mes "through the bookshelves?";
+			mes "I'm sure you can find some";
+			mes "book there that can hold your";
+			mes "interest. Well, depending on";
+			mes "your actual attention span...";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "(What's her damage?!";
+			mes "Does she have an attitude problem or is she just stuck-up?)";
+			close;
+
+	L_Yuno_Book_Check01:
+		mes "[Scholar]";
+		mes "...Mm?";
+		mes "...Yes?";
+		next;
+		mes "[Scholar]";
+		mes "...";
+		mes "......";
+		mes "May I help you?";
+		next;
+		menu "Oh! N-Nothing!",L_FayMenu03,"By any chance...",L_FayMenu04;
+
+		L_FayMenu03:
+			mes "[Scholar]";
+			mes "...";
+			mes "......";
+			mes "Hmm?";
+			mes "...........";
+			mes "Hmpf.";
+			close;
+
+		L_FayMenu04:
+			mes "[" + strcharinfo(0) + "]";
+			mes "By any chance...";
+			mes "Are you conducting";
+			mes "research about Juperos?";
+			next;
+			mes "[Scholar]";
+			mes "Why yes, that is";
+			mes "correct. But how did";
+			mes "you come to learn about";
+			mes "my current research project?";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "Oh, I managed to read";
+			mes "a thesis paper entitled,";
+			mes "''The Fall of Juperos,'' and";
+			mes "I just thought that the writing";
+			mes "style and your personality";
+			mes "seem to match for some reason.";
+			next;
+			mes "[Scholar]";
+			mes "Oh...! You read my";
+			mes "thesis? So what did";
+			mes "you think about it?";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "So far, it's alright, but";
+			mes "quite frankly it's incomplete.";
+			mes "I mean, you don't have much in";
+			mes "in the way of conjecture, much";
+			mes "less any evidence to back up";
+			mes "any of your statements.";
+			next;
+			mes "[Scholar]";
+			mes "....";
+			mes "Let me apologize for";
+			mes "being rude to you earlier.";
+			mes "As you know, my name is";
+			mes "Fayruz Khrhiyha. May I ask";
+			mes "what your name might be?";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "I'm " + strcharinfo(0) + ",";
+			mes "a brave adventurer in the";
+			mes "service of his royal majesty,";
+			mes "the wise and benevolent";
+			mes "King Tristram III.";
+			set yuno_book,2;
+			next;
+			mes "[Fayruz]";
+			mes "Well, " + strcharinfo(0) + ",";
+			mes "I understand that my thesis";
+			mes "still requires more evidence.";
+			mes "But I'd need some ancient";
+			mes "documents from Juperos";
+			mes "to complete my research...";
+			next;
+			mes "[Fayruz]";
+			mes "If you happen to travel";
+			mes "through Juperos and find";
+			mes "any ancient documents, would";
+			mes "you bring them to me? Having";
+			mes "those would help my research";
+			mes "efforts immensely. Thank you...";
+			close;
+
+	L_Yuno_Book_Check02:
+		if (countitem(7352) > 0 || countitem(7353) > 0 || countitem(7354) > 0 || countitem(7355) > 0) goto L_Fay01;
+
+		mes "[Fayruz]";
+		mes "If you ever chance to";
+		mes "travel through Juperos,";
+		mes "would you let me know if you";
+		mes "find anything that might help";
+		mes "my research there? I'd be";
+		mes "very grateful for your help.";
+		close;
+
+		L_Fay01:
+			mes "[Fayruz]";
+			mes "Ah, it's you! Listen,";
+			mes "I just found a record of";
+			mes "an adventurer who explored";
+			mes "Juperos. There's mention";
+			mes "of a stone statue here that";
+			mes "just might be noteworthy...";
+			next;
+			mes "[Fayruz]";
+			mes "If you happen to find";
+			mes "yourself in Juperos,";
+			mes "would you find the stone";
+			mes "statue at the entrance of";
+			mes "its dungeon and read the";
+			mes "engraved message for me?";
+			next;
+			mes "[Fayruz]";
+			mes "According to my notes,";
+			mes "there's a spell that will";
+			mes "make its reader memorize";
+			mes "its message, even if they don't";
+			mes "know the language. So come";
+			mes "to me if you manage to read it.";
+			close;
+
+	L_Yuno_Book_Check03:
+		mes "[Fayruz]";
+		mes "Well, you look";
+		mes "quite pleased.";
+		mes "May I asked what";
+		mes "happened to put that";
+		mes "expression on your face?";
+		next;
+		menu "I found something in Juperos.",L_FayMenu05,"Nothing much.",L_FayMenu06;
+
+		L_FayMenu05:
+			mes "[" + strcharinfo(0) + "]";
+			mes "I went to Juperos like";
+			mes "you asked and found that";
+			mes "stone statue you were talking";
+			mes "about. Just like you said, there was an engraved message on it.";
+			next;
+			mes "[Fayruz]";
+			mes "Fascinating!";
+			mes "So is it really enchanted";
+			mes "so anyone can memorize it?";
+			mes "Wh-what does the message say?";
+			next;
+			mes "^3355FFYou recite the message";
+			mes "engraved on the stone";
+			mes "statue, unable to interpret";
+			mes "the sounds you're uttering,";
+			mes "but weirdly enough, you can";
+			mes "easily recall them from memory.^000000";
+			next;
+			mes "[Fayruz]";
+			mes "Ah, I see! Wait,";
+			mes "give me a moment to";
+			mes "properly translate this...";
+			next;
+			mes "...";
+			mes "......";
+			mes ".........";
+			next;
+			mes "[Fayruz]";
+			mes "It means, ''Do you wish to";
+			mes "see the end of the madness?";
+			mes "He is waiting where the three";
+			mes "columns were destroyed, where";
+			mes "two hundred illusions wander.''";
+			next;
+			set yuno_book,4;
+			mes "[Fayruz]";
+			mes "''You will see him, the one";
+			mes "who was vain and extravagant,";
+			mes "with your own eyes at the place where the light passes through.";
+			next;
+			mes "[Fayruz]";
+			mes "Ah, usually, descriptions";
+			mes "of the ''vain and extravagant";
+			mes "one'' refer to the mad scientist rumored to have lived in that";
+			mes "ancient era. But if this is true, I may have to rework my thesis...";
+			next;
+			mes "[Fayruz]";
+			mes "I have another favor to";
+			mes "ask of you. If you find any";
+			mes "object of historical significance in Juperos, would you bring it to";
+			mes "me? I'll reward you, of course.";
+			next;
+			mes "[Fayruz]";
+			mes "It would be most helpful";
+			mes "if you could manage to find";
+			mes "documents that existed from that era. Fortunately, back then,";
+			mes "they made all their records on material more durable than paper.";
+			close;
+
+		L_FayMenu06:
+			mes "[Fayruz]";
+			mes "Nothing, huh?";
+			mes "My life is also fairly";
+			mes "uneventful, but somehow,";
+			mes "I don't think I'm content.";
+			close;
+
+	L_Yuno_Book_Check04:
+		mes "[Fayruz]";
+		mes "Oh hello, " + strcharinfo(0) + ".";
+		mes "So what brings you to";
+		mes "the Juno Library today?";
+		next;
+		menu "Nice weather today, isn't it?",L_FayMenu07,"I found something in Juperos.",L_FayMenu08,"Nothing much.",L_FayMenu09;
+
+		L_FayMenu07:
+			mes "[Fayruz]";
+			mes "Well, I wouldn't know.";
+			mes "It's late whenever I go";
+			mes "out, so I always happen to";
+			mes "miss the sunlight. I guess";
+			mes "I really miss nice weather";
+			mes "sometimes, you know?";
+			close;
+
+		L_FayMenu08:
+			if ((countitem(7352) > 0) || (countitem(7353) > 0) || (countitem(7354) > 0) || (countitem(7355) > 0))  goto L_Fay02;
+
+			mes "[Fayruz]";
+			mes "Oh, really?!";
+			mes "That's great news!";
+			mes "W-what did you find?";
+			next;
+			mes "^3355FFIn her excitement,";
+			mes "Fayruz begins to";
+			mes "rummage through your";
+			mes "things before you get";
+			mes "the chance to answer her.^000000";
+			next;
+			mes "[Fayruz]";
+			mes "Oh. There isn't anything";
+			mes "here that would help in my";
+			mes "research, but thank you anyway.";
+			mes "If you find anything else while";
+			mes "you're in Juperos, please come back and show it to me, alright?";
+			close;
+
+			L_Fay02:
+				mes "[Fayruz]";
+				mes "Oh, really?!";
+				mes "That's great news!";
+				mes "W-what did you find?";
+				next;
+				mes "^3355FFIn her excitement,";
+				mes "Fayruz begins to";
+				mes "rummage through your";
+				mes "things before you get";
+				mes "the chance to answer her.^000000";
+				next;
+				mes "[Fayruz]";
+				mes "Oh, this must be it!";
+				mes "Would you mind if I keep";
+				mes "this Transparent Plate for";
+				mes "my research? In return, I'll";
+				mes "tell you some tales about";
+				mes "Juperos that I've learned.";
+				next;
+				menu "Please, be my guest.",L_FayMenu10,"No way, you can't have it.",L_FayMenu11;
+
+				L_FayMenu10:
+					if (countitem(7352) > 0) goto L_Fay03;
+					if (countitem(7353) > 0) goto L_Fay04;
+					if (countitem(7354) > 0) goto L_Fay05;
+					if (countitem(7355) > 0) goto L_Fay06;
+
+					L_Fay03:
+						mes "[Fayruz]";
+						mes "Thank you so much,";
+						mes "you don't know what";
+						mes "this means to me! Okay,";
+						mes "please relax and take a";
+						mes "seat. Close your eyes while";
+						mes "I tell you this ancient story.";
+						next;
+						mes "^3355FFFayruz begins to";
+						mes "relate an ancient tale";
+						mes "about Juperos that seems";
+						mes "typical for a classic story, but her way of storytelling subtly";
+						mes "draws you into a vicarious, yet extremely vivid experience.";
+						next;
+						mes "^3355FFYou feel the protagonist's";
+						mes "glories and tragedies as if";
+						mes "you were actually there with";
+						mes "the hero on his journeys. The";
+						mes "tale eventually comes to an end";
+						mes "and you awaken from the trance,";
+						mes "gently brought back to reality.^000000";
+						delitem 7352,1;
+						set yuno_book,5;
+						set jupe_book,1;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "Everyone can relate";
+						mes "to these old, classic";
+						mes "stories. I hope this tale had";
+						mes "as meaning for you as it did";
+						mes "for me when I first heard it.";
+						next;
+						mes "[Fayruz]";
+						mes "If you can find me";
+						mes "another artifact from";
+						mes "Juperos, I'll share another";
+						mes "tale like that with you. Now";
+						mes "how does that sound? Okay";
+						mes "then, I'll see you, adventurer~";
+						close;
+
+					L_Fay04:
+						mes "[Fayruz]";
+						mes "Thank you so much,";
+						mes "you don't know what";
+						mes "this means to me! Okay,";
+						mes "please relax and take a";
+						mes "seat. Close your eyes while";
+						mes "I tell you this ancient story.";
+						next;
+						mes "^3355FFFayruz begins to";
+						mes "relate an ancient tale";
+						mes "about Juperos that seems";
+						mes "typical for a classic story, but her way of storytelling subtly";
+						mes "draws you into a vicarious, yet extremely vivid experience.";
+						next;
+						mes "^3355FFYou feel the protagonist's";
+						mes "glories and tragedies as if";
+						mes "you were actually there with";
+						mes "the hero on his journeys. The";
+						mes "tale eventually comes to an end";
+						mes "and you awaken from the trance,";
+						mes "gently brought back to reality.^000000";
+						delitem 7353,1;
+						set yuno_book,5;
+						set jupe_book,2;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "Everyone can relate";
+						mes "to these old, classic";
+						mes "stories. I hope this tale had";
+						mes "as meaning for you as it did";
+						mes "for me when I first heard it.";
+						next;
+						mes "[Fayruz]";
+						mes "If you can find me";
+						mes "another artifact from";
+						mes "Juperos, I'll share another";
+						mes "tale like that with you. Now";
+						mes "how does that sound? Okay";
+						mes "then, I'll see you, adventurer~";
+						close;
+
+					L_Fay05:
+						mes "[Fayruz]";
+						mes "Thank you so much,";
+						mes "you don't know what";
+						mes "this means to me! Okay,";
+						mes "please relax and take a";
+						mes "seat. Close your eyes while";
+						mes "I tell you this ancient story.";
+						next;
+						mes "^3355FFFayruz begins to";
+						mes "relate an ancient tale";
+						mes "about Juperos that seems";
+						mes "typical for a classic story, but her way of storytelling subtly";
+						mes "draws you into a vicarious, yet extremely vivid experience.";
+						next;
+						mes "^3355FFYou feel the protagonist's";
+						mes "glories and tragedies as if";
+						mes "you were actually there with";
+						mes "the hero on his journeys. The";
+						mes "tale eventually comes to an end";
+						mes "and you awaken from the trance,";
+						mes "gently brought back to reality.^000000";
+						delitem 7354,1;
+						set yuno_book,5;
+						set jupe_book,4;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "Everyone can relate";
+						mes "to these old, classic";
+						mes "stories. I hope this tale had";
+						mes "as meaning for you as it did";
+						mes "for me when I first heard it.";
+						next;
+						mes "[Fayruz]";
+						mes "If you can find me";
+						mes "another artifact from";
+						mes "Juperos, I'll share another";
+						mes "tale like that with you. Now";
+						mes "how does that sound? Okay";
+						mes "then, I'll see you, adventurer~";
+						close;
+
+					L_Fay06:
+						mes "[Fayruz]";
+						mes "Thank you so much,";
+						mes "you don't know what";
+						mes "this means to me! Okay,";
+						mes "please relax and take a";
+						mes "seat. Close your eyes while";
+						mes "I tell you this ancient story.";
+						next;
+						mes "^3355FFFayruz begins to";
+						mes "relate an ancient tale";
+						mes "about Juperos that seems";
+						mes "typical for a classic story, but her way of storytelling subtly";
+						mes "draws you into a vicarious, yet extremely vivid experience.";
+						next;
+						mes "^3355FFYou feel the protagonist's";
+						mes "glories and tragedies as if";
+						mes "you were actually there with";
+						mes "the hero on his journeys. The";
+						mes "tale eventually comes to an end";
+						mes "and you awaken from the trance,";
+						mes "gently brought back to reality.^000000";
+						delitem 7355,1;
+						set yuno_book,5;
+						set jupe_book,8;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "Everyone can relate";
+						mes "to these old, classic";
+						mes "stories. I hope this tale had";
+						mes "as meaning for you as it did";
+						mes "for me when I first heard it.";
+						next;
+						mes "[Fayruz]";
+						mes "If you can find me";
+						mes "another artifact from";
+						mes "Juperos, I'll share another";
+						mes "tale like that with you. Now";
+						mes "how does that sound? Okay";
+						mes "then, I'll see you, adventurer~";
+						close;
+
+				L_FayMenu11:
+					mes "[Fayruz]";
+					mes "Mm? Are you serious?";
+					mes "This object is very valuable";
+					mes "to a researcher like me, but";
+					mes "I have no idea what use it";
+					mes "would be for an adventurer.";
+					mes "Well, you have your reasons...";
+					close;
+
+		L_FayMenu09:
+			mes "[Fayruz]";
+			mes "Ah, I see. Well, while";
+			mes "you're here, why don't you";
+			mes "read something? There are";
+			mes "many books that cover some";
+			mes "interesting topics, like the";
+			mes "Schwaltzvalt economy...";
+			next;
+			mes "[Fayruz]";
+			mes "Oh, in any case, please";
+			mes "don't forget the favor I asked";
+			mes "of you. If you find anything";
+			mes "in Juperos that's historically";
+			mes "significant, I'd appreciate it";
+			mes "if you bring it right away.";
+			close;
+
+	L_Yuno_Book_Check05:
+		mes "[Fayruz]";
+		mes "Oh, " + strcharinfo(0) + "!";
+		mes "Have you come back with";
+		mes "something from Juperos?";
+		mes "I've been hoping you'd come";
+		mes "back with something that'd";
+		mes "help me in my research!";
+		next;
+		menu "Take a look at this.",L_FayMenu12,"Oh, I'm sorry...",L_FayMenu13;
+
+		L_FayMenu12:
+			if (jupe_book == 1) goto L_Fay07;
+			if (jupe_book == 2) goto L_Fay12;
+			if (jupe_book == 4) goto L_Fay14;
+			if (jupe_book == 8) goto L_Fay15;
+
+			L_Fay07:
+				if (countitem(7353) > 0 || countitem(7354) > 0 || countitem(7355) > 0) goto L_Fay08;
+				if (countitem(7352) > 0) goto L_Fay12a;
+				goto L_Fay13;
+
+				L_Fay08:
+					mes "[Fayruz]";
+					mes "Oh, that's unexpected.";
+					mes "This Transparent Plate";
+					mes "seems to have been made";
+					mes "in a different era than the";
+					mes "one you gave me earlier.";
+					mes "How intriguing...";
+					next;
+					mes "[Fayruz]";
+					mes "*Sigh* I really wish";
+					mes "that I could explore";
+					mes "Juperos on my own, but";
+					mes "I'm just not strong enough.";
+					mes "In a way, I'm quite jealous of you. But it can't be helped...";
+					next;
+					mes "[Fayruz]";
+					mes "You know, that reminds";
+					mes "me of this great story of";
+					mes "a tragic hero that I'd like to";
+					mes "share with you. Let your";
+					mes "mind wander as I relate this ageless, yet bittersweet tale...";
+					next;
+					mes "^3355FFFayruz tells you a story";
+					mes "with a bright beginning, full";
+					mes "of hope that fills you with the";
+					mes "bliss of the heavens, but then";
+					mes "suddenly plummets you into all the despair and torment of hell.^000000";
+					next;
+					mes "^3355FFThe story finally";
+					mes "reaches its ending";
+					mes "and you're surprised";
+					mes "to find yourself sitting";
+					mes "in the Juno Library.^000000";
+
+					if (countitem(7353) > 0) goto L_Fay09;
+					if (countitem(7354) > 0) goto L_Fay10;
+					if (countitem(7355) > 0) goto L_Fay11;
+
+					L_Fay09:
+						delitem 7353,1;
+						set yuno_book,6;
+						set jupe_book,3;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "I know it's a very";
+						mes "depressing story, but";
+						mes "I hope you enjoyed it.";
+						mes "I think you'd agree that";
+						mes "it contains a truth about";
+						mes "mankind that can't be ignored.";
+						next;
+						mes "[Fayruz]";
+						mes "By now I'm sure you've";
+						mes "figured that these classic";
+						mes "tales are like condensed";
+						mes "experiences, refined and";
+						mes "immutable truths that we";
+						mes "can see in our own reality.";
+						next;
+						mes "[Fayruz]";
+						mes "If you find more of";
+						mes "these Transparent";
+						mes "Plates in Juperos, I'd be";
+						mes "very happy to share another";
+						mes "story with you, " + strcharinfo(0) + ".";
+						close;
+
+					L_Fay10:
+						delitem 7354,1;
+						set yuno_book,6;
+						set jupe_book,5;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "I know it's a very";
+						mes "depressing story, but";
+						mes "I hope you enjoyed it.";
+						mes "I think you'd agree that";
+						mes "it contains a truth about";
+						mes "mankind that can't be ignored.";
+						next;
+						mes "[Fayruz]";
+						mes "By now I'm sure you've";
+						mes "figured that these classic";
+						mes "tales are like condensed";
+						mes "experiences, refined and";
+						mes "immutable truths that we";
+						mes "can see in our own reality.";
+						next;
+						mes "[Fayruz]";
+						mes "If you find more of";
+						mes "these Transparent";
+						mes "Plates in Juperos, I'd be";
+						mes "very happy to share another";
+						mes "story with you, " + strcharinfo(0) + ".";
+						close;
+
+					L_Fay11:
+						delitem 7355,1;
+						set yuno_book,6;
+						set jupe_book,9;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "I know it's a very";
+						mes "depressing story, but";
+						mes "I hope you enjoyed it.";
+						mes "I think you'd agree that";
+						mes "it contains a truth about";
+						mes "mankind that can't be ignored.";
+						next;
+						mes "[Fayruz]";
+						mes "By now I'm sure you've";
+						mes "figured that these classic";
+						mes "tales are like condensed";
+						mes "experiences, refined and";
+						mes "immutable truths that we";
+						mes "can see in our own reality.";
+						next;
+						mes "[Fayruz]";
+						mes "If you find more of";
+						mes "these Transparent";
+						mes "Plates in Juperos, I'd be";
+						mes "very happy to share another";
+						mes "story with you, " + strcharinfo(0) + ".";
+						close;
+
+				L_Fay12a:
+					mes "[Fayruz]";
+					mes "Oh, this one seems";
+					mes "to have been created";
+					mes "in a similar era as the";
+					mes "one you gave me earlier.";
+					mes "I'm not sure how much new";
+					mes "information this may provide...";
+					next;
+					mes "[Fayruz]";
+					mes "Still, I'm sure this will";
+					mes "helpful in my research. I just";
+					mes "won't be as making progress";
+					mes "as quickly as I had projected.";
+					mes "Please, I'd like you to take this as a token of my gratitude.";
+					delitem 7352,1;
+					getitem 644,1;
+					next;
+					mes "[Fayruz]";
+					mes "Now if you'll excuse";
+					mes "me, I need to go back";
+					mes "to compiling my research...";
+					mes "Thank you so much for";
+					mes "your help, " + strcharinfo(0) + ".";
+					close;
+
+				L_Fay13:
+					mes "[Fayruz]";
+					mes "Oh. There isn't anything";
+					mes "here that would help in my";
+					mes "research, but thank you anyway.";
+					mes "If you find anything else while";
+					mes "you're in Juperos, please come back and show it to me, alright?";
+					close;
+
+			L_Fay12:
+				if (countitem(7352) > 0 || countitem(7354) > 0 || countitem(7355) > 0) goto L_Fay16;
+				if (countitem(7353) > 0) goto L_Fay20;
+				goto L_Fay21;
+
+				L_Fay16:
+					mes "[Fayruz]";
+					mes "Oh, that's unexpected.";
+					mes "This Transparent Plate";
+					mes "seems to have been made";
+					mes "in a different era than the";
+					mes "one you gave me earlier.";
+					mes "How intriguing...";
+					next;
+					mes "[Fayruz]";
+					mes "*Sigh* I really wish";
+					mes "that I could explore";
+					mes "Juperos on my own, but";
+					mes "I'm just not strong enough.";
+					mes "In a way, I'm quite jealous of you. But it can't be helped...";
+					next;
+					mes "[Fayruz]";
+					mes "You know, that reminds";
+					mes "me of this great story of";
+					mes "a tragic hero that I'd like to";
+					mes "share with you. Let your";
+					mes "mind wander as I relate this ageless, yet bittersweet tale...";
+					next;
+					mes "^3355FFFayruz tells you a story";
+					mes "with a bright beginning, full";
+					mes "of hope that fills you with the";
+					mes "bliss of the heavens, but then";
+					mes "suddenly plummets you into all the despair and torment of hell.^000000";
+					next;
+					mes "^3355FFThe story finally";
+					mes "reaches its ending";
+					mes "and you're surprised";
+					mes "to find yourself sitting";
+					mes "in the Juno Library.^000000";
+
+					if (countitem(7352) > 0) goto L_Fay17;
+					if (countitem(7354) > 0) goto L_Fay18;
+					if (countitem(7355) > 0) goto L_Fay19;
+
+					L_Fay17:
+						delitem 7352,1;
+						set yuno_book,6;
+						set jupe_book,3;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "I know it's a very";
+						mes "depressing story, but";
+						mes "I hope you enjoyed it.";
+						mes "I think you'd agree that";
+						mes "it contains a truth about";
+						mes "mankind that can't be ignored.";
+						next;
+						mes "[Fayruz]";
+						mes "By now I'm sure you've";
+						mes "figured that these classic";
+						mes "tales are like condensed";
+						mes "experiences, refined and";
+						mes "immutable truths that we";
+						mes "can see in our own reality.";
+						next;
+						mes "[Fayruz]";
+						mes "If you find more of";
+						mes "these Transparent";
+						mes "Plates in Juperos, I'd be";
+						mes "very happy to share another";
+						mes "story with you, " + strcharinfo(0) + ".";
+						close;
+
+					L_Fay18:
+						delitem 7354,1;
+						set yuno_book,6;
+						set jupe_book,6;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "I know it's a very";
+						mes "depressing story, but";
+						mes "I hope you enjoyed it.";
+						mes "I think you'd agree that";
+						mes "it contains a truth about";
+						mes "mankind that can't be ignored.";
+						next;
+						mes "[Fayruz]";
+						mes "By now I'm sure you've";
+						mes "figured that these classic";
+						mes "tales are like condensed";
+						mes "experiences, refined and";
+						mes "immutable truths that we";
+						mes "can see in our own reality.";
+						next;
+						mes "[Fayruz]";
+						mes "If you find more of";
+						mes "these Transparent";
+						mes "Plates in Juperos, I'd be";
+						mes "very happy to share another";
+						mes "story with you, " + strcharinfo(0) + ".";
+						close;
+
+					L_Fay19:
+						delitem 7355,1;
+						set yuno_book,6;
+						set jupe_book,10;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "I know it's a very";
+						mes "depressing story, but";
+						mes "I hope you enjoyed it.";
+						mes "I think you'd agree that";
+						mes "it contains a truth about";
+						mes "mankind that can't be ignored.";
+						next;
+						mes "[Fayruz]";
+						mes "By now I'm sure you've";
+						mes "figured that these classic";
+						mes "tales are like condensed";
+						mes "experiences, refined and";
+						mes "immutable truths that we";
+						mes "can see in our own reality.";
+						next;
+						mes "[Fayruz]";
+						mes "If you find more of";
+						mes "these Transparent";
+						mes "Plates in Juperos, I'd be";
+						mes "very happy to share another";
+						mes "story with you, " + strcharinfo(0) + ".";
+						close;
+
+				L_Fay20:
+					mes "[Fayruz]";
+					mes "Oh, this one seems";
+					mes "to have been created";
+					mes "in a similar era as the";
+					mes "one you gave me earlier.";
+					mes "I'm not sure how much new";
+					mes "information this may provide...";
+					next;
+					mes "[Fayruz]";
+					mes "Still, I'm sure this will";
+					mes "helpful in my research. I just";
+					mes "won't be as making progress";
+					mes "as quickly as I had projected.";
+					mes "Please, I'd like you to take this as a token of my gratitude.";
+					delitem 7353,1;
+					getitem 644,1;
+					next;
+					mes "[Fayruz]";
+					mes "Now if you'll excuse";
+					mes "me, I need to go back";
+					mes "to compiling my research...";
+					mes "Thank you so much for";
+					mes "your help, " + strcharinfo(0) + ".";
+					close;
+
+				L_Fay21:
+					mes "[Fayruz]";
+					mes "Oh. There isn't anything";
+					mes "here that would help in my";
+					mes "research, but thank you anyway.";
+					mes "If you find anything else while";
+					mes "you're in Juperos, please come back and show it to me, alright?";
+					close;
+
+			L_Fay14:
+				if (countitem(7352) > 0 || countitem(7353) > 0 || countitem(7355) > 0) goto L_Fay22;
+				if (countitem(7354) > 0) goto L_Fay26;
+				goto L_Fay27;
+
+				L_Fay22:
+					mes "[Fayruz]";
+					mes "Oh, that's unexpected.";
+					mes "This Transparent Plate";
+					mes "seems to have been made";
+					mes "in a different era than the";
+					mes "one you gave me earlier.";
+					mes "How intriguing...";
+					next;
+					mes "[Fayruz]";
+					mes "*Sigh* I really wish";
+					mes "that I could explore";
+					mes "Juperos on my own, but";
+					mes "I'm just not strong enough.";
+					mes "In a way, I'm quite jealous of you. But it can't be helped...";
+					next;
+					mes "[Fayruz]";
+					mes "You know, that reminds";
+					mes "me of this great story of";
+					mes "a tragic hero that I'd like to";
+					mes "share with you. Let your";
+					mes "mind wander as I relate this ageless, yet bittersweet tale...";
+					next;
+					mes "^3355FFFayruz tells you a story";
+					mes "with a bright beginning, full";
+					mes "of hope that fills you with the";
+					mes "bliss of the heavens, but then";
+					mes "suddenly plummets you into all the despair and torment of hell.^000000";
+					next;
+					mes "^3355FFThe story finally";
+					mes "reaches its ending";
+					mes "and you're surprised";
+					mes "to find yourself sitting";
+					mes "in the Juno Library.^000000";
+
+					if (countitem(7352) > 0) goto L_Fay23;
+					if (countitem(7353) > 0) goto L_Fay24;
+					if (countitem(7355) > 0) goto L_Fay25;
+
+					L_Fay23:
+						delitem 7352,1;
+						set yuno_book,6;
+						set jupe_book,5;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "I know it's a very";
+						mes "depressing story, but";
+						mes "I hope you enjoyed it.";
+						mes "I think you'd agree that";
+						mes "it contains a truth about";
+						mes "mankind that can't be ignored.";
+						next;
+						mes "[Fayruz]";
+						mes "By now I'm sure you've";
+						mes "figured that these classic";
+						mes "tales are like condensed";
+						mes "experiences, refined and";
+						mes "immutable truths that we";
+						mes "can see in our own reality.";
+						next;
+						mes "[Fayruz]";
+						mes "If you find more of";
+						mes "these Transparent";
+						mes "Plates in Juperos, I'd be";
+						mes "very happy to share another";
+						mes "story with you, " + strcharinfo(0) + ".";
+						close;
+
+					L_Fay24:
+						delitem 7353,1;
+						set yuno_book,6;
+						set jupe_book,6;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "I know it's a very";
+						mes "depressing story, but";
+						mes "I hope you enjoyed it.";
+						mes "I think you'd agree that";
+						mes "it contains a truth about";
+						mes "mankind that can't be ignored.";
+						next;
+						mes "[Fayruz]";
+						mes "By now I'm sure you've";
+						mes "figured that these classic";
+						mes "tales are like condensed";
+						mes "experiences, refined and";
+						mes "immutable truths that we";
+						mes "can see in our own reality.";
+						next;
+						mes "[Fayruz]";
+						mes "If you find more of";
+						mes "these Transparent";
+						mes "Plates in Juperos, I'd be";
+						mes "very happy to share another";
+						mes "story with you, " + strcharinfo(0) + ".";
+						close;
+
+					L_Fay25:
+						delitem 7355,1;
+						set yuno_book,6;
+						set jupe_book,12;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "I know it's a very";
+						mes "depressing story, but";
+						mes "I hope you enjoyed it.";
+						mes "I think you'd agree that";
+						mes "it contains a truth about";
+						mes "mankind that can't be ignored.";
+						next;
+						mes "[Fayruz]";
+						mes "By now I'm sure you've";
+						mes "figured that these classic";
+						mes "tales are like condensed";
+						mes "experiences, refined and";
+						mes "immutable truths that we";
+						mes "can see in our own reality.";
+						next;
+						mes "[Fayruz]";
+						mes "If you find more of";
+						mes "these Transparent";
+						mes "Plates in Juperos, I'd be";
+						mes "very happy to share another";
+						mes "story with you, " + strcharinfo(0) + ".";
+						close;
+
+				L_Fay26:
+					mes "[Fayruz]";
+					mes "Oh, this one seems";
+					mes "to have been created";
+					mes "in a similar era as the";
+					mes "one you gave me earlier.";
+					mes "I'm not sure how much new";
+					mes "information this may provide...";
+					next;
+					mes "[Fayruz]";
+					mes "Still, I'm sure this will";
+					mes "helpful in my research. I just";
+					mes "won't be as making progress";
+					mes "as quickly as I had projected.";
+					mes "Please, I'd like you to take this as a token of my gratitude.";
+					delitem 7354,1;
+					getitem 644,1;
+					next;
+					mes "[Fayruz]";
+					mes "Now if you'll excuse";
+					mes "me, I need to go back";
+					mes "to compiling my research...";
+					mes "Thank you so much for";
+					mes "your help, " + strcharinfo(0) + ".";
+					close;
+
+				L_Fay27:
+					mes "[Fayruz]";
+					mes "Oh. There isn't anything";
+					mes "here that would help in my";
+					mes "research, but thank you anyway.";
+					mes "If you find anything else while";
+					mes "you're in Juperos, please come back and show it to me, alright?";
+					close;
+
+			L_Fay15:
+				if (countitem(7352) > 0 || countitem(7353) > 0 || countitem(7354) > 0) goto L_Fay28;
+				if (countitem(7355) > 0) goto L_Fay32;
+				goto L_Fay33;
+
+				L_Fay28:
+					mes "[Fayruz]";
+					mes "Oh, that's unexpected.";
+					mes "This Transparent Plate";
+					mes "seems to have been made";
+					mes "in a different era than the";
+					mes "one you gave me earlier.";
+					mes "How intriguing...";
+					next;
+					mes "[Fayruz]";
+					mes "*Sigh* I really wish";
+					mes "that I could explore";
+					mes "Juperos on my own, but";
+					mes "I'm just not strong enough.";
+					mes "In a way, I'm quite jealous of you. But it can't be helped...";
+					next;
+					mes "[Fayruz]";
+					mes "You know, that reminds";
+					mes "me of this great story of";
+					mes "a tragic hero that I'd like to";
+					mes "share with you. Let your";
+					mes "mind wander as I relate this ageless, yet bittersweet tale...";
+					next;
+					mes "^3355FFFayruz tells you a story";
+					mes "with a bright beginning, full";
+					mes "of hope that fills you with the";
+					mes "bliss of the heavens, but then";
+					mes "suddenly plummets you into all the despair and torment of hell.^000000";
+					next;
+					mes "^3355FFThe story finally";
+					mes "reaches its ending";
+					mes "and you're surprised";
+					mes "to find yourself sitting";
+					mes "in the Juno Library.^000000";
+
+					if (countitem(7352) > 0) goto L_Fay29;
+					if (countitem(7353) > 0) goto L_Fay30;
+					if (countitem(7354) > 0) goto L_Fay31;
+
+					L_Fay29:
+						delitem 7352,1;
+						set yuno_book,6;
+						set jupe_book,9;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "I know it's a very";
+						mes "depressing story, but";
+						mes "I hope you enjoyed it.";
+						mes "I think you'd agree that";
+						mes "it contains a truth about";
+						mes "mankind that can't be ignored.";
+						next;
+						mes "[Fayruz]";
+						mes "By now I'm sure you've";
+						mes "figured that these classic";
+						mes "tales are like condensed";
+						mes "experiences, refined and";
+						mes "immutable truths that we";
+						mes "can see in our own reality.";
+						next;
+						mes "[Fayruz]";
+						mes "If you find more of";
+						mes "these Transparent";
+						mes "Plates in Juperos, I'd be";
+						mes "very happy to share another";
+						mes "story with you, " + strcharinfo(0) + ".";
+						close;
+
+					L_Fay30:
+						delitem 7353,1;
+						set yuno_book,6;
+						set jupe_book,10;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "I know it's a very";
+						mes "depressing story, but";
+						mes "I hope you enjoyed it.";
+						mes "I think you'd agree that";
+						mes "it contains a truth about";
+						mes "mankind that can't be ignored.";
+						next;
+						mes "[Fayruz]";
+						mes "By now I'm sure you've";
+						mes "figured that these classic";
+						mes "tales are like condensed";
+						mes "experiences, refined and";
+						mes "immutable truths that we";
+						mes "can see in our own reality.";
+						next;
+						mes "[Fayruz]";
+						mes "If you find more of";
+						mes "these Transparent";
+						mes "Plates in Juperos, I'd be";
+						mes "very happy to share another";
+						mes "story with you, " + strcharinfo(0) + ".";
+						close;
+
+					L_Fay31:
+						delitem 7354,1;
+						set yuno_book,6;
+						set jupe_book,12;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "I know it's a very";
+						mes "depressing story, but";
+						mes "I hope you enjoyed it.";
+						mes "I think you'd agree that";
+						mes "it contains a truth about";
+						mes "mankind that can't be ignored.";
+						next;
+						mes "[Fayruz]";
+						mes "By now I'm sure you've";
+						mes "figured that these classic";
+						mes "tales are like condensed";
+						mes "experiences, refined and";
+						mes "immutable truths that we";
+						mes "can see in our own reality.";
+						next;
+						mes "[Fayruz]";
+						mes "If you find more of";
+						mes "these Transparent";
+						mes "Plates in Juperos, I'd be";
+						mes "very happy to share another";
+						mes "story with you, " + strcharinfo(0) + ".";
+						close;
+
+				L_Fay32:
+					mes "[Fayruz]";
+					mes "Oh, this one seems";
+					mes "to have been created";
+					mes "in a similar era as the";
+					mes "one you gave me earlier.";
+					mes "I'm not sure how much new";
+					mes "information this may provide...";
+					next;
+					mes "[Fayruz]";
+					mes "Still, I'm sure this will";
+					mes "helpful in my research. I just";
+					mes "won't be as making progress";
+					mes "as quickly as I had projected.";
+					mes "Please, I'd like you to take this as a token of my gratitude.";
+					delitem 7355,1;
+					getitem 644,1;
+					next;
+					mes "[Fayruz]";
+					mes "Now if you'll excuse";
+					mes "me, I need to go back";
+					mes "to compiling my research...";
+					mes "Thank you so much for";
+					mes "your help, " + strcharinfo(0) + ".";
+					close;
+
+				L_Fay33:
+					mes "[Fayruz]";
+					mes "Oh. There isn't anything";
+					mes "here that would help in my";
+					mes "research, but thank you anyway.";
+					mes "If you find anything else while";
+					mes "you're in Juperos, please come back and show it to me, alright?";
+					close;
+
+		L_FayMenu13:
+			mes "[Fayruz]";
+			mes "Ah, I see. Well, while";
+			mes "you're here, why don't you";
+			mes "read something? There are";
+			mes "many books that cover some";
+			mes "interesting topics, like...";
+			mes "like... Self-Honesty (?).";
+			next;
+			mes "[Fayruz]";
+			mes "Oh, in any case, please";
+			mes "don't forget the favor I asked";
+			mes "of you. If you find anything";
+			mes "in Juperos that's historically";
+			mes "significant, I'd appreciate it";
+			mes "if you bring it right away.";
+			close;
+
+	L_Yuno_Book_Check06:
+		set yuno_book,7;
+		mes "[Fayruz]";
+		mes "Oh, " + strcharinfo(0) + "!";
+		mes "The Transparent Plate";
+		mes "that you brought for me";
+		mes "last time is really helping me";
+		mes "in my research. If you get the";
+		mes "chance, please bring me more!";
+		next;
+		mes "[Fayruz]";
+		mes "This new data is adding";
+		mes "a lot more credibility to my";
+		mes "thesis. Oh, I'll be with you";
+		mes "in a moment, let me finish";
+		mes "translating this one last";
+		mes "passage really quickly...";
+		close;
+
+	L_Yuno_Book_Check07:
+		mes "[Fayruz]";
+		mes "Hello, " + strcharinfo(0) + "~";
+		mes "Oh, were you able to look";
+		mes "in Juperos for anything that";
+		mes "might help me in my research?";
+		next;
+		menu "Yeah, take a look at this.",L_FayMenu14,"No, I'm sorry...",L_FayMenu15;
+
+		L_FayMenu14:
+			if (jupe_book == 3) goto L_Fay34;
+			if (jupe_book == 5) goto L_Fay35;
+			if (jupe_book == 6) goto L_Fay36;
+			if (jupe_book == 9) goto L_Fay37;
+			if (jupe_book == 10) goto L_Fay38;
+			if (jupe_book == 12) goto L_Fay39;
+
+			L_Fay34:
+				if (countitem(7354) > 0 || countitem(7355) > 0) goto L_Fay40;
+				if (countitem(7352) > 0 || countitem(7353) > 0) goto L_Fay43;
+				goto L_Fay46;
+
+				L_Fay40:
+					mes "[Fayruz]";
+					mes "Is this another";
+					mes "Transparent Plate?";
+					mes "Yes, it's quite different";
+					mes "than the last one you";
+					mes "brought over to me...";
+					mes "This is so exciting!";
+					next;
+					mes "[Fayruz]";
+					mes "Oh. You must be thinking";
+					mes "that I'm a complete academia";
+					mes "addict. Well, my life might be";
+					mes "a little uneventful, but there";
+					mes "are other things I think about!";
+					mes "Like, well... It's weird but...";
+					next;
+					mes "[Fayruz]";
+					mes "You see, there's this";
+					mes "guy that I like. I'm not sure";
+					mes "where he might be now, but";
+					mes "his name is Nadim Amal. He's";
+					mes "my friend's brother who I first";
+					mes "met 10 years ago. ^333333*Sigh...*^000000";
+					next;
+					mes "[Fayruz]";
+					mes "Just recently, I saw";
+					mes "him with his sister, my";
+					mes "friend from Morroc. It's";
+					mes "weird to think that I'd have";
+					mes "these feelings for him after";
+					mes "all this time, isn't it? Oh...!";
+					next;
+					mes "[Fayruz]";
+					mes "I really should repay";
+					mes "you for this Transparent";
+					mes "Plate. Why don't I tell you";
+					mes "the scariest story that I know?";
+					next;
+					mes "^3355FFFayruz tells you a";
+					mes "creepy horror story that";
+					mes "makes you shiver with fear.";
+					mes "You've heard other ghost";
+					mes "stories, but you've never been";
+					mes "so deeply immersed in one before.^000000";
+					next;
+					mes "It is only when the";
+					mes "story ends and you return";
+					mes "to your senses that you notice that you're soaked in cold sweat.^000000";
+
+					if (countitem(7354) > 0) goto L_Fay41;
+					if (countitem(7355) > 0) goto L_Fay42;
+
+					L_Fay41:
+						delitem 7354,1;
+						set yuno_book,8;
+						set jupe_book,7;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "It may be a natural";
+						mes "response, but all people";
+						mes "fear the unknown in one way";
+						mes "or another. Scary stories are";
+						mes "appealing because we actually";
+						mes "like the strange and grotesque.";
+						next;
+						mes "[Fayruz]";
+						mes "Well... That's just my";
+						mes "opinion. Anyway, if you";
+						mes "find anything else in Juperos";
+						mes "that may help in my research,";
+						mes "please come back and show it";
+						mes "to me, alright? See you later~";
+						close;
+
+					L_Fay42:
+						delitem 7355,1;
+						set yuno_book,8;
+						set jupe_book,11;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "It may be a natural";
+						mes "response, but all people";
+						mes "fear the unknown in one way";
+						mes "or another. Scary stories are";
+						mes "appealing because we actually";
+						mes "like the strange and grotesque.";
+						next;
+						mes "[Fayruz]";
+						mes "Well... That's just my";
+						mes "opinion. Anyway, if you";
+						mes "find anything else in Juperos";
+						mes "that may help in my research,";
+						mes "please come back and show it";
+						mes "to me, alright? See you later~";
+						close;
+
+				L_Fay43:
+					mes "[Fayruz]";
+					mes "Oh, this one seems";
+					mes "to have been created";
+					mes "in a similar era as the";
+					mes "one you gave me earlier.";
+					mes "I'm not sure how much new";
+					mes "information this may provide...";
+					next;
+					mes "[Fayruz]";
+					mes "Still, I'm sure this will";
+					mes "helpful in my research. I just";
+					mes "won't be as making progress";
+					mes "as quickly as I had projected.";
+					mes "Please, I'd like you to take this as a token of my gratitude.";
+
+					if (countitem(7352) > 0) goto L_Fay44;
+					if (countitem(7353) > 0) goto L_Fay45;
+
+					L_Fay44:
+						delitem 7352,1;
+						getitem 644,1;
+						next;
+						mes "[Fayruz]";
+						mes "Now if you'll excuse";
+						mes "me, I need to go back";
+						mes "to compiling my research...";
+						mes "Thank you so much for";
+						mes "your help, " + strcharinfo(0) + ".";
+						close;
+
+					L_Fay45:
+						delitem 7353,1;
+						getitem 644,1;
+						next;
+						mes "[Fayruz]";
+						mes "Now if you'll excuse";
+						mes "me, I need to go back";
+						mes "to compiling my research...";
+						mes "Thank you so much for";
+						mes "your help, " + strcharinfo(0) + ".";
+						close;
+
+				L_Fay46:
+					mes "[Fayruz]";
+					mes "Oh. There isn't anything";
+					mes "here that would help in my";
+					mes "research, but thank you anyway.";
+					mes "If you find anything else while";
+					mes "you're in Juperos, please come back and show it to me, alright?";
+					close;
+
+			L_Fay35:
+				if (countitem(7353) > 0 || countitem(7355) > 0) goto L_Fay47;
+				if (countitem(7352) > 0 || countitem(7354) > 0) goto L_Fay48;
+				goto L_Fay49;
+
+				L_Fay47:
+					mes "[Fayruz]";
+					mes "Is this another";
+					mes "Transparent Plate?";
+					mes "Yes, it's quite different";
+					mes "than the last one you";
+					mes "brought over to me...";
+					mes "This is so exciting!";
+					next;
+					mes "[Fayruz]";
+					mes "Oh. You must be thinking";
+					mes "that I'm a complete academia";
+					mes "addict. Well, my life might be";
+					mes "a little uneventful, but there";
+					mes "are other things I think about!";
+					mes "Like, well... It's weird but...";
+					next;
+					mes "[Fayruz]";
+					mes "You see, there's this";
+					mes "guy that I like. I'm not sure";
+					mes "where he might be now, but";
+					mes "his name is Nadim Amal. He's";
+					mes "my friend's brother who I first";
+					mes "met 10 years ago. ^333333*Sigh...*^000000";
+					next;
+					mes "[Fayruz]";
+					mes "Just recently, I saw";
+					mes "him with his sister, my";
+					mes "friend from Morroc. It's";
+					mes "weird to think that I'd have";
+					mes "these feelings for him after";
+					mes "all this time, isn't it? Oh...!";
+					next;
+					mes "[Fayruz]";
+					mes "I really should repay";
+					mes "you for this Transparent";
+					mes "Plate. Why don't I tell you";
+					mes "the scariest story that I know?";
+					next;
+					mes "^3355FFFayruz tells you a";
+					mes "creepy horror story that";
+					mes "makes you shiver with fear.";
+					mes "You've heard other ghost";
+					mes "stories, but you've never been";
+					mes "so deeply immersed in one before.^000000";
+					next;
+					mes "It is only when the";
+					mes "story ends and you return";
+					mes "to your senses that you notice that you're soaked in cold sweat.^000000";
+
+					if (countitem(7353) > 0) goto L_Fay50;
+					if (countitem(7355) > 0) goto L_Fay51;
+
+					L_Fay50:
+						delitem 7353,1;
+						set yuno_book,8;
+						set jupe_book,7;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "It may be a natural";
+						mes "response, but all people";
+						mes "fear the unknown in one way";
+						mes "or another. Scary stories are";
+						mes "appealing because we actually";
+						mes "like the strange and grotesque.";
+						next;
+						mes "[Fayruz]";
+						mes "Well... That's just my";
+						mes "opinion. Anyway, if you";
+						mes "find anything else in Juperos";
+						mes "that may help in my research,";
+						mes "please come back and show it";
+						mes "to me, alright? See you later~";
+						close;
+
+					L_Fay51:
+						delitem 7355,1;
+						set yuno_book,8;
+						set jupe_book,13;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "It may be a natural";
+						mes "response, but all people";
+						mes "fear the unknown in one way";
+						mes "or another. Scary stories are";
+						mes "appealing because we actually";
+						mes "like the strange and grotesque.";
+						next;
+						mes "[Fayruz]";
+						mes "Well... That's just my";
+						mes "opinion. Anyway, if you";
+						mes "find anything else in Juperos";
+						mes "that may help in my research,";
+						mes "please come back and show it";
+						mes "to me, alright? See you later~";
+						close;
+
+				L_Fay48:
+					mes "[Fayruz]";
+					mes "Oh, this one seems";
+					mes "to have been created";
+					mes "in a similar era as the";
+					mes "one you gave me earlier.";
+					mes "I'm not sure how much new";
+					mes "information this may provide...";
+					next;
+					mes "[Fayruz]";
+					mes "Still, I'm sure this will";
+					mes "helpful in my research. I just";
+					mes "won't be as making progress";
+					mes "as quickly as I had projected.";
+					mes "Please, I'd like you to take this as a token of my gratitude.";
+
+					if (countitem(7352) > 0) goto L_Fay52;
+					if (countitem(7354) > 0) goto L_Fay53;
+
+					L_Fay52:
+						delitem 7352,1;
+						getitem 644,1;
+						next;
+						mes "[Fayruz]";
+						mes "Now if you'll excuse";
+						mes "me, I need to go back";
+						mes "to compiling my research...";
+						mes "Thank you so much for";
+						mes "your help, " + strcharinfo(0) + ".";
+						close;
+
+					L_Fay53:
+						delitem 7354,1;
+						getitem 644,1;
+						next;
+						mes "[Fayruz]";
+						mes "Now if you'll excuse";
+						mes "me, I need to go back";
+						mes "to compiling my research...";
+						mes "Thank you so much for";
+						mes "your help, " + strcharinfo(0) + ".";
+						close;
+
+				L_Fay49:
+					mes "[Fayruz]";
+					mes "Oh. There isn't anything";
+					mes "here that would help in my";
+					mes "research, but thank you anyway.";
+					mes "If you find anything else while";
+					mes "you're in Juperos, please come back and show it to me, alright?";
+					close;
+
+			L_Fay36:
+				if (countitem(7352) > 0 || countitem(7355) > 0) goto L_Fay54;
+				if (countitem(7353) > 0 || countitem(7354) > 0) goto L_Fay57;
+				goto L_Fay60;
+
+				L_Fay54:
+					mes "[Fayruz]";
+					mes "Is this another";
+					mes "Transparent Plate?";
+					mes "Yes, it's quite different";
+					mes "than the last one you";
+					mes "brought over to me...";
+					mes "This is so exciting!";
+					next;
+					mes "[Fayruz]";
+					mes "Oh. You must be thinking";
+					mes "that I'm a complete academia";
+					mes "addict. Well, my life might be";
+					mes "a little uneventful, but there";
+					mes "are other things I think about!";
+					mes "Like, well... It's weird but...";
+					next;
+					mes "[Fayruz]";
+					mes "You see, there's this";
+					mes "guy that I like. I'm not sure";
+					mes "where he might be now, but";
+					mes "his name is Nadim Amal. He's";
+					mes "my friend's brother who I first";
+					mes "met 10 years ago. ^333333*Sigh...*^000000";
+					next;
+					mes "[Fayruz]";
+					mes "Just recently, I saw";
+					mes "him with his sister, my";
+					mes "friend from Morroc. It's";
+					mes "weird to think that I'd have";
+					mes "these feelings for him after";
+					mes "all this time, isn't it? Oh...!";
+					next;
+					mes "[Fayruz]";
+					mes "I really should repay";
+					mes "you for this Transparent";
+					mes "Plate. Why don't I tell you";
+					mes "the scariest story that I know?";
+					next;
+					mes "^3355FFFayruz tells you a";
+					mes "creepy horror story that";
+					mes "makes you shiver with fear.";
+					mes "You've heard other ghost";
+					mes "stories, but you've never been";
+					mes "so deeply immersed in one before.^000000";
+					next;
+					mes "It is only when the";
+					mes "story ends and you return";
+					mes "to your senses that you notice that you're soaked in cold sweat.^000000";
+
+					if (countitem(7352) > 0) goto L_Fay55;
+					if (countitem(7355) > 0) goto L_Fay56;
+
+					L_Fay55:
+						delitem 7352,1;
+						set yuno_book,8;
+						set jupe_book,7;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "It may be a natural";
+						mes "response, but all people";
+						mes "fear the unknown in one way";
+						mes "or another. Scary stories are";
+						mes "appealing because we actually";
+						mes "like the strange and grotesque.";
+						next;
+						mes "[Fayruz]";
+						mes "Well... That's just my";
+						mes "opinion. Anyway, if you";
+						mes "find anything else in Juperos";
+						mes "that may help in my research,";
+						mes "please come back and show it";
+						mes "to me, alright? See you later~";
+						close;
+
+					L_Fay56:
+						delitem 7355,1;
+						set yuno_book,8;
+						set jupe_book,14;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "It may be a natural";
+						mes "response, but all people";
+						mes "fear the unknown in one way";
+						mes "or another. Scary stories are";
+						mes "appealing because we actually";
+						mes "like the strange and grotesque.";
+						next;
+						mes "[Fayruz]";
+						mes "Well... That's just my";
+						mes "opinion. Anyway, if you";
+						mes "find anything else in Juperos";
+						mes "that may help in my research,";
+						mes "please come back and show it";
+						mes "to me, alright? See you later~";
+						close;
+
+				L_Fay57:
+					mes "[Fayruz]";
+					mes "Oh, this one seems";
+					mes "to have been created";
+					mes "in a similar era as the";
+					mes "one you gave me earlier.";
+					mes "I'm not sure how much new";
+					mes "information this may provide...";
+					next;
+					mes "[Fayruz]";
+					mes "Still, I'm sure this will";
+					mes "helpful in my research. I just";
+					mes "won't be as making progress";
+					mes "as quickly as I had projected.";
+					mes "Please, I'd like you to take this as a token of my gratitude.";
+
+					if (countitem(7353) > 0) goto L_Fay58;
+					if (countitem(7354) > 0) goto L_Fay59;
+
+					L_Fay58:
+						delitem 7353,1;
+						getitem 644,1;
+						next;
+						mes "[Fayruz]";
+						mes "Now if you'll excuse";
+						mes "me, I need to go back";
+						mes "to compiling my research...";
+						mes "Thank you so much for";
+						mes "your help, " + strcharinfo(0) + ".";
+						close;
+
+					L_Fay59:
+						delitem 7354,1;
+						getitem 644,1;
+						next;
+						mes "[Fayruz]";
+						mes "Now if you'll excuse";
+						mes "me, I need to go back";
+						mes "to compiling my research...";
+						mes "Thank you so much for";
+						mes "your help, " + strcharinfo(0) + ".";
+						close;
+
+				L_Fay60:
+					mes "[Fayruz]";
+					mes "Oh. There isn't anything";
+					mes "here that would help in my";
+					mes "research, but thank you anyway.";
+					mes "If you find anything else while";
+					mes "you're in Juperos, please come back and show it to me, alright?";
+					close;
+
+			L_Fay37:
+				if (countitem(7353) > 0 || countitem(7354) > 0) goto L_Fay61;
+				if (countitem(7352) > 0 || countitem(7355) > 0) goto L_Fay64;
+				goto L_Fay67;
+
+				L_Fay61:
+					mes "[Fayruz]";
+					mes "Is this another";
+					mes "Transparent Plate?";
+					mes "Yes, it's quite different";
+					mes "than the last one you";
+					mes "brought over to me...";
+					mes "This is so exciting!";
+					next;
+					mes "[Fayruz]";
+					mes "Oh. You must be thinking";
+					mes "that I'm a complete academia";
+					mes "addict. Well, my life might be";
+					mes "a little uneventful, but there";
+					mes "are other things I think about!";
+					mes "Like, well... It's weird but...";
+					next;
+					mes "[Fayruz]";
+					mes "You see, there's this";
+					mes "guy that I like. I'm not sure";
+					mes "where he might be now, but";
+					mes "his name is Nadim Amal. He's";
+					mes "my friend's brother who I first";
+					mes "met 10 years ago. ^333333*Sigh...*^000000";
+					next;
+					mes "[Fayruz]";
+					mes "Just recently, I saw";
+					mes "him with his sister, my";
+					mes "friend from Morroc. It's";
+					mes "weird to think that I'd have";
+					mes "these feelings for him after";
+					mes "all this time, isn't it? Oh...!";
+					next;
+					mes "[Fayruz]";
+					mes "I really should repay";
+					mes "you for this Transparent";
+					mes "Plate. Why don't I tell you";
+					mes "the scariest story that I know?";
+					next;
+					mes "^3355FFFayruz tells you a";
+					mes "creepy horror story that";
+					mes "makes you shiver with fear.";
+					mes "You've heard other ghost";
+					mes "stories, but you've never been";
+					mes "so deeply immersed in one before.^000000";
+					next;
+					mes "It is only when the";
+					mes "story ends and you return";
+					mes "to your senses that you notice that you're soaked in cold sweat.^000000";
+
+					if (countitem(7353) > 0) goto L_Fay62;
+					if (countitem(7354) > 0) goto L_Fay63;
+
+					L_Fay62:
+						delitem 7353,1;
+						set yuno_book,8;
+						set jupe_book,11;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "It may be a natural";
+						mes "response, but all people";
+						mes "fear the unknown in one way";
+						mes "or another. Scary stories are";
+						mes "appealing because we actually";
+						mes "like the strange and grotesque.";
+						next;
+						mes "[Fayruz]";
+						mes "Well... That's just my";
+						mes "opinion. Anyway, if you";
+						mes "find anything else in Juperos";
+						mes "that may help in my research,";
+						mes "please come back and show it";
+						mes "to me, alright? See you later~";
+						close;
+
+					L_Fay63:
+						delitem 7354,1;
+						set yuno_book,8;
+						set jupe_book,13;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "It may be a natural";
+						mes "response, but all people";
+						mes "fear the unknown in one way";
+						mes "or another. Scary stories are";
+						mes "appealing because we actually";
+						mes "like the strange and grotesque.";
+						next;
+						mes "[Fayruz]";
+						mes "Well... That's just my";
+						mes "opinion. Anyway, if you";
+						mes "find anything else in Juperos";
+						mes "that may help in my research,";
+						mes "please come back and show it";
+						mes "to me, alright? See you later~";
+						close;
+
+				L_Fay64:
+					mes "[Fayruz]";
+					mes "Oh, this one seems";
+					mes "to have been created";
+					mes "in a similar era as the";
+					mes "one you gave me earlier.";
+					mes "I'm not sure how much new";
+					mes "information this may provide...";
+					next;
+					mes "[Fayruz]";
+					mes "Still, I'm sure this will";
+					mes "helpful in my research. I just";
+					mes "won't be as making progress";
+					mes "as quickly as I had projected.";
+					mes "Please, I'd like you to take this as a token of my gratitude.";
+
+					if (countitem(7352) > 0) goto L_Fay65;
+					if (countitem(7355) > 0) goto L_Fay66;
+
+					L_Fay65:
+						delitem 7352,1;
+						getitem 644,1;
+						next;
+						mes "[Fayruz]";
+						mes "Now if you'll excuse";
+						mes "me, I need to go back";
+						mes "to compiling my research...";
+						mes "Thank you so much for";
+						mes "your help, " + strcharinfo(0) + ".";
+						close;
+
+					L_Fay66:
+						delitem 7355,1;
+						getitem 644,1;
+						next;
+						mes "[Fayruz]";
+						mes "Now if you'll excuse";
+						mes "me, I need to go back";
+						mes "to compiling my research...";
+						mes "Thank you so much for";
+						mes "your help, " + strcharinfo(0) + ".";
+						close;
+
+				L_Fay67:
+					mes "[Fayruz]";
+					mes "Oh. There isn't anything";
+					mes "here that would help in my";
+					mes "research, but thank you anyway.";
+					mes "If you find anything else while";
+					mes "you're in Juperos, please come back and show it to me, alright?";
+					close;
+
+			L_Fay38:
+				if (countitem(7352) > 0 || countitem(7354) > 0) goto L_Fay68;
+				if (countitem(7353) > 0 || countitem(7355) > 0) goto L_Fay71;
+				goto L_Fay74;
+
+				L_Fay68:
+					mes "[Fayruz]";
+					mes "Is this another";
+					mes "Transparent Plate?";
+					mes "Yes, it's quite different";
+					mes "than the last one you";
+					mes "brought over to me...";
+					mes "This is so exciting!";
+					next;
+					mes "[Fayruz]";
+					mes "Oh. You must be thinking";
+					mes "that I'm a complete academia";
+					mes "addict. Well, my life might be";
+					mes "a little uneventful, but there";
+					mes "are other things I think about!";
+					mes "Like, well... It's weird but...";
+					next;
+					mes "[Fayruz]";
+					mes "You see, there's this";
+					mes "guy that I like. I'm not sure";
+					mes "where he might be now, but";
+					mes "his name is Nadim Amal. He's";
+					mes "my friend's brother who I first";
+					mes "met 10 years ago. ^333333*Sigh...*^000000";
+					next;
+					mes "[Fayruz]";
+					mes "Just recently, I saw";
+					mes "him with his sister, my";
+					mes "friend from Morroc. It's";
+					mes "weird to think that I'd have";
+					mes "these feelings for him after";
+					mes "all this time, isn't it? Oh...!";
+					next;
+					mes "[Fayruz]";
+					mes "I really should repay";
+					mes "you for this Transparent";
+					mes "Plate. Why don't I tell you";
+					mes "the scariest story that I know?";
+					next;
+					mes "^3355FFFayruz tells you a";
+					mes "creepy horror story that";
+					mes "makes you shiver with fear.";
+					mes "You've heard other ghost";
+					mes "stories, but you've never been";
+					mes "so deeply immersed in one before.^000000";
+					next;
+					mes "It is only when the";
+					mes "story ends and you return";
+					mes "to your senses that you notice that you're soaked in cold sweat.^000000";
+
+					if (countitem(7352) > 0) goto L_Fay69;
+					if (countitem(7354) > 0) goto L_Fay70;
+
+					L_Fay69:
+						delitem 7352,1;
+						set yuno_book,8;
+						set jupe_book,11;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "It may be a natural";
+						mes "response, but all people";
+						mes "fear the unknown in one way";
+						mes "or another. Scary stories are";
+						mes "appealing because we actually";
+						mes "like the strange and grotesque.";
+						next;
+						mes "[Fayruz]";
+						mes "Well... That's just my";
+						mes "opinion. Anyway, if you";
+						mes "find anything else in Juperos";
+						mes "that may help in my research,";
+						mes "please come back and show it";
+						mes "to me, alright? See you later~";
+						close;
+
+					L_Fay70:
+						delitem 7354,1;
+						set yuno_book,8;
+						set jupe_book,14;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "It may be a natural";
+						mes "response, but all people";
+						mes "fear the unknown in one way";
+						mes "or another. Scary stories are";
+						mes "appealing because we actually";
+						mes "like the strange and grotesque.";
+						next;
+						mes "[Fayruz]";
+						mes "Well... That's just my";
+						mes "opinion. Anyway, if you";
+						mes "find anything else in Juperos";
+						mes "that may help in my research,";
+						mes "please come back and show it";
+						mes "to me, alright? See you later~";
+						close;
+
+				L_Fay71:
+					mes "[Fayruz]";
+					mes "Oh, this one seems";
+					mes "to have been created";
+					mes "in a similar era as the";
+					mes "one you gave me earlier.";
+					mes "I'm not sure how much new";
+					mes "information this may provide...";
+					next;
+					mes "[Fayruz]";
+					mes "Still, I'm sure this will";
+					mes "helpful in my research. I just";
+					mes "won't be as making progress";
+					mes "as quickly as I had projected.";
+					mes "Please, I'd like you to take this as a token of my gratitude.";
+
+					if (countitem(7353) > 0) goto L_Fay72;
+					if (countitem(7355) > 0) goto L_Fay73;
+
+					L_Fay72:
+						delitem 7353,1;
+						getitem 644,1;
+						next;
+						mes "[Fayruz]";
+						mes "Now if you'll excuse";
+						mes "me, I need to go back";
+						mes "to compiling my research...";
+						mes "Thank you so much for";
+						mes "your help, " + strcharinfo(0) + ".";
+						close;
+
+					L_Fay73:
+						delitem 7355,1;
+						getitem 644,1;
+						next;
+						mes "[Fayruz]";
+						mes "Now if you'll excuse";
+						mes "me, I need to go back";
+						mes "to compiling my research...";
+						mes "Thank you so much for";
+						mes "your help, " + strcharinfo(0) + ".";
+						close;
+
+				L_Fay74:
+					mes "[Fayruz]";
+					mes "Oh. There isn't anything";
+					mes "here that would help in my";
+					mes "research, but thank you anyway.";
+					mes "If you find anything else while";
+					mes "you're in Juperos, please come back and show it to me, alright?";
+					close;
+
+			L_Fay39:
+				if (countitem(7352) > 0 || countitem(7353) > 0) goto L_Fay75;
+				if (countitem(7354) > 0 || countitem(7355) > 0) goto L_Fay78;
+				goto L_Fay81;
+
+				L_Fay75:
+					mes "[Fayruz]";
+					mes "Is this another";
+					mes "Transparent Plate?";
+					mes "Yes, it's quite different";
+					mes "than the last one you";
+					mes "brought over to me...";
+					mes "This is so exciting!";
+					next;
+					mes "[Fayruz]";
+					mes "Oh. You must be thinking";
+					mes "that I'm a complete academia";
+					mes "addict. Well, my life might be";
+					mes "a little uneventful, but there";
+					mes "are other things I think about!";
+					mes "Like, well... It's weird but...";
+					next;
+					mes "[Fayruz]";
+					mes "You see, there's this";
+					mes "guy that I like. I'm not sure";
+					mes "where he might be now, but";
+					mes "his name is Nadim Amal. He's";
+					mes "my friend's brother who I first";
+					mes "met 10 years ago. ^333333*Sigh...*^000000";
+					next;
+					mes "[Fayruz]";
+					mes "Just recently, I saw";
+					mes "him with his sister, my";
+					mes "friend from Morroc. It's";
+					mes "weird to think that I'd have";
+					mes "these feelings for him after";
+					mes "all this time, isn't it? Oh...!";
+					next;
+					mes "[Fayruz]";
+					mes "I really should repay";
+					mes "you for this Transparent";
+					mes "Plate. Why don't I tell you";
+					mes "the scariest story that I know?";
+					next;
+					mes "^3355FFFayruz tells you a";
+					mes "creepy horror story that";
+					mes "makes you shiver with fear.";
+					mes "You've heard other ghost";
+					mes "stories, but you've never been";
+					mes "so deeply immersed in one before.^000000";
+					next;
+					mes "It is only when the";
+					mes "story ends and you return";
+					mes "to your senses that you notice that you're soaked in cold sweat.^000000";
+
+					if (countitem(7352) > 0) goto L_Fay76;
+					if (countitem(7353) > 0) goto L_Fay77;
+
+					L_Fay76:
+						delitem 7352,1;
+						set yuno_book,8;
+						set jupe_book,13;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "It may be a natural";
+						mes "response, but all people";
+						mes "fear the unknown in one way";
+						mes "or another. Scary stories are";
+						mes "appealing because we actually";
+						mes "like the strange and grotesque.";
+						next;
+						mes "[Fayruz]";
+						mes "Well... That's just my";
+						mes "opinion. Anyway, if you";
+						mes "find anything else in Juperos";
+						mes "that may help in my research,";
+						mes "please come back and show it";
+						mes "to me, alright? See you later~";
+						close;
+
+					L_Fay77:
+						delitem 7353,1;
+						set yuno_book,8;
+						set jupe_book,14;
+						set BaseExp,BaseExp+100000;
+						next;
+						mes "[Fayruz]";
+						mes "It may be a natural";
+						mes "response, but all people";
+						mes "fear the unknown in one way";
+						mes "or another. Scary stories are";
+						mes "appealing because we actually";
+						mes "like the strange and grotesque.";
+						next;
+						mes "[Fayruz]";
+						mes "Well... That's just my";
+						mes "opinion. Anyway, if you";
+						mes "find anything else in Juperos";
+						mes "that may help in my research,";
+						mes "please come back and show it";
+						mes "to me, alright? See you later~";
+						close;
+
+				L_Fay78:
+					mes "[Fayruz]";
+					mes "Oh, this one seems";
+					mes "to have been created";
+					mes "in a similar era as the";
+					mes "one you gave me earlier.";
+					mes "I'm not sure how much new";
+					mes "information this may provide...";
+					next;
+					mes "[Fayruz]";
+					mes "Still, I'm sure this will";
+					mes "helpful in my research. I just";
+					mes "won't be as making progress";
+					mes "as quickly as I had projected.";
+					mes "Please, I'd like you to take this as a token of my gratitude.";
+
+					if (countitem(7354) > 0) goto L_Fay79;
+					if (countitem(7355) > 0) goto L_Fay80;
+
+					L_Fay79:
+						delitem 7354,1;
+						getitem 644,1;
+						next;
+						mes "[Fayruz]";
+						mes "Now if you'll excuse";
+						mes "me, I need to go back";
+						mes "to compiling my research...";
+						mes "Thank you so much for";
+						mes "your help, " + strcharinfo(0) + ".";
+						close;
+
+					L_Fay80:
+						delitem 7355,1;
+						getitem 644,1;
+						next;
+						mes "[Fayruz]";
+						mes "Now if you'll excuse";
+						mes "me, I need to go back";
+						mes "to compiling my research...";
+						mes "Thank you so much for";
+						mes "your help, " + strcharinfo(0) + ".";
+						close;
+
+				L_Fay81:
+					mes "[Fayruz]";
+					mes "Oh. There isn't anything";
+					mes "here that would help in my";
+					mes "research, but thank you anyway.";
+					mes "If you find anything else while";
+					mes "you're in Juperos, please come back and show it to me, alright?";
+					close;
+
+		L_FayMenu15:
+			mes "[Fayruz]";
+			mes "Oh, that's fine.";
+			mes "Besides, I don't really";
+			mes "have a deadline to complete";
+			mes "this research project. Still,";
+			mes "I just want you to know that";
+			mes "I really appreciate your help.";
+			close;
+
+	L_Yuno_Book_Check08:
+		if (yuno_book == 8) goto L_Fay81a;
+		goto L_Fay82;
+
+		L_Fay81a:
+			mes "[Fayruz]";
+			mes "" + strcharinfo(0) + "...";
+			mes "I'm having great difficulty in";
+			mes "translating that Transparent";
+			mes "Plate you brought for me that";
+			mes "last time. I'm so frustrated...";
+			next;
+			set yuno_book,9;
+			mes "[Fayruz]";
+			mes "Wait a minute...";
+			mes "This here means...";
+			mes "Alright. Okay. Yes.";
+			mes "Yes! Of course, how";
+			mes "could I not see it before!";
+			next;
+			mes "[Fayruz]";
+			mes "I'll be with you";
+			mes "in just a second!";
+			mes "I think I just made";
+			mes "a real breakthrough...!";
+			next;
+			goto L_Fay82;
+
+	L_Fay82:
+		mes "[Fayruz]";
+		mes "Ah, I've been";
+		mes "expecting you, " + strcharinfo(0) + ".";
+		mes "So did you have been to Juperos again? I'm really hoping that you";
+		mes "were able to find something new that would help in my research...";
+		next;
+		menu "Actually, I did find this...",L_FayMenu16,"I'm sorry, I haven't...",L_FayMenu17;
+
+		L_FayMenu16:
+			if (jupe_book == 7) goto L_Fay83;
+			if (jupe_book == 11) goto L_Fay90;
+			if (jupe_book == 13) goto L_Fay97;
+			if (jupe_book == 14) goto L_Fay104;
+
+			L_Fay83:
+				if (countitem(7355) > 0) goto L_Fay84;
+				if (countitem(7352) > 0 || countitem(7353) > 0 || countitem(7354) > 0) goto L_Fay85;
+				goto L_Fay89;
+
+				L_Fay84:
+					mes "[Fayruz]";
+					mes "Oooh...! This one is";
+					mes "much different than the";
+					mes "other ones you gave me";
+					mes "before. This should provide";
+					mes "a wealth of brand new insights";
+					mes "into the Juperos civilization!";
+					next;
+					mes "[Fayruz]";
+					mes "All the Transparent";
+					mes "Plates you've given me";
+					mes "should contain more than";
+					mes "enough data for me to fully";
+					mes "complete my research thesis.";
+					mes "Once again, thank you so much~";
+					next;
+					mes "[Fayruz]";
+					mes "Still, that doesn't mean that";
+					mes "I will stop collecting data for";
+					mes "my research. Anyway, I have one last story to tell you, about";
+					mes "a man of pure heart chosen by the gods to serve and protect mankind.";
+					next;
+					mes "[Fayruz]";
+					mes "For this purpose he was given";
+					mes "gaudy armor which contained";
+					mes "amazing powers, as well as a";
+					mes "book detailing the instructions";
+					mes "for its use. However, he promptly";
+					mes "lost these instructions...";
+					next;
+					mes "^3355FFThe story about the";
+					mes "greatest Juperosian hero";
+					mes "that Fayruz tells you is very";
+					mes "humorous at first, but then it";
+					mes "covers the entire spectrum";
+					mes "of emotion and humanity...";
+					next;
+					mes "^3355FFThe story ends and you";
+					mes "are left with a swelling";
+					mes "feeling of indefatigable";
+					mes "hope and inspiration...";
+					mes "You can make it if you try!^000000";
+					delitem 7355,1;
+					set yuno_book,10;
+					set jupe_book,15;
+					set BaseExp,BaseExp+100000;
+					next;
+					mes "[Fayruz]";
+					mes "Well, that is the";
+					mes "last and the best story";
+					mes "that I have to share";
+					mes "with you. Perhaps next";
+					mes "time, I'll fill you in on my";
+					mes "research progress~";
+					close;
+
+				L_Fay85:
+					mes "Hmm...";
+					mes "This one seems to be created in a similar time";
+					mes "as the previous one.";
+					next;
+					mes "[Fayruz]";
+					mes "Don't you worry.";
+					mes "This will help my research of course,";
+					mes "although I do not think this will";
+					mes "help me in advancing my research";
+					mes "with a great speed unlike this other one.";
+					next;
+					mes "[Fayruz]";
+					mes "Please take this as a token of my gratitude.";
+
+					if (countitem(7352) > 0) goto L_Fay86;
+					if (countitem(7353) > 0) goto L_Fay87;
+					if (countitem(7354) > 0) goto L_Fay88;
+
+					L_Fay86:
+						delitem 7352,1;
+						getitem 644,1;
+						next;
+						mes "[Fayruz]";
+						mes "Now, excuse me. I need to go back to my research.";
+						close;
+
+					L_Fay87:
+						delitem 7353,1;
+						getitem 644,1;
+						next;
+						mes "[Fayruz]";
+						mes "Now, excuse me. I need to go back to my research.";
+						close;
+
+					L_Fay88:
+						delitem 7354,1;
+						getitem 644,1;
+						next;
+						mes "[Fayruz]";
+						mes "Now, excuse me. I need to go back to my research.";
+						close;
+
+				L_Fay89:
+					mes "[Fayruz]";
+					mes "Oh. There isn't anything";
+					mes "here that would help in my";
+					mes "research, but thank you anyway.";
+					mes "If you find anything else while";
+					mes "you're in Juperos, please come back and show it to me, alright?";
+					close;
+
+			L_Fay90:
+				if (countitem(7354) > 0) goto L_Fay91;
+				if (countitem(7352) > 0 || countitem(7353) > 0 || countitem(7355) > 0) goto L_Fay92;
+				goto L_Fay96;
+
+				L_Fay91:
+					mes "[Fayruz]";
+					mes "Oooh...! This one is";
+					mes "much different than the";
+					mes "other ones you gave me";
+					mes "before. This should provide";
+					mes "a wealth of brand new insights";
+					mes "into the Juperos civilization!";
+					next;
+					mes "[Fayruz]";
+					mes "All the Transparent";
+					mes "Plates you've given me";
+					mes "should contain more than";
+					mes "enough data for me to fully";
+					mes "complete my research thesis.";
+					mes "Once again, thank you so much~";
+					next;
+					mes "[Fayruz]";
+					mes "Still, that doesn't mean that";
+					mes "I will stop collecting data for";
+					mes "my research. Anyway, I have one last story to tell you, about";
+					mes "a man of pure heart chosen by the gods to serve and protect mankind.";
+					next;
+					mes "[Fayruz]";
+					mes "For this purpose he was given";
+					mes "gaudy armor which contained";
+					mes "amazing powers, as well as a";
+					mes "book detailing the instructions";
+					mes "for its use. However, he promptly";
+					mes "lost these instructions...";
+					next;
+					mes "^3355FFThe story about the";
+					mes "greatest Juperosian hero";
+					mes "that Fayruz tells you is very";
+					mes "humorous at first, but then it";
+					mes "covers the entire spectrum";
+					mes "of emotion and humanity...";
+					next;
+					mes "^3355FFThe story ends and you";
+					mes "are left with a swelling";
+					mes "feeling of indefatigable";
+					mes "hope and inspiration...";
+					mes "You can make it if you try!^000000";
+					delitem 7354,1;
+					set yuno_book,10;
+					set jupe_book,15;
+					set BaseExp,BaseExp+100000;
+					next;
+					mes "[Fayruz]";
+					mes "Well, that is the";
+					mes "last and the best story";
+					mes "that I have to share";
+					mes "with you. Perhaps next";
+					mes "time, I'll fill you in on my";
+					mes "research progress~";
+					close;
+
+				L_Fay92:
+					mes "[Fayruz]";
+					mes "Oh, this one seems";
+					mes "to have been created";
+					mes "in a similar era as the";
+					mes "one you gave me earlier.";
+					mes "I'm not sure how much new";
+					mes "information this may provide...";
+					next;
+					mes "[Fayruz]";
+					mes "Still, I'm sure this will";
+					mes "helpful in my research. I just";
+					mes "won't be as making progress";
+					mes "as quickly as I had projected.";
+					mes "Please, I'd like you to take this as a token of my gratitude.";
+
+					if (countitem(7352) > 0) goto L_Fay93;
+					if (countitem(7353) > 0) goto L_Fay94;
+					if (countitem(7355) > 0) goto L_Fay95;
+
+					L_Fay93:
+						delitem 7352,1;
+						getitem 644,1;
+						next;
+						mes "[Fayruz]";
+						mes "Now if you'll excuse";
+						mes "me, I need to go back";
+						mes "to compiling my research...";
+						mes "Thank you so much for";
+						mes "your help, " + strcharinfo(0) + ".";
+						close;
+
+					L_Fay94:
+						delitem 7353,1;
+						getitem 644,1;
+						next;
+						mes "[Fayruz]";
+						mes "Now if you'll excuse";
+						mes "me, I need to go back";
+						mes "to compiling my research...";
+						mes "Thank you so much for";
+						mes "your help, " + strcharinfo(0) + ".";
+						close;
+
+					L_Fay95:
+						delitem 7355,1;
+						getitem 644,1;
+						next;
+						mes "[Fayruz]";
+						mes "Now if you'll excuse";
+						mes "me, I need to go back";
+						mes "to compiling my research...";
+						mes "Thank you so much for";
+						mes "your help, " + strcharinfo(0) + ".";
+						close;
+
+				L_Fay96:
+					mes "[Fayruz]";
+					mes "Oh. There isn't anything";
+					mes "here that would help in my";
+					mes "research, but thank you anyway.";
+					mes "If you find anything else while";
+					mes "you're in Juperos, please come back and show it to me, alright?";
+					close;
+
+			L_Fay97:
+				if (countitem(7353) > 0) goto L_Fay98;
+				if (countitem(7352) > 0 || countitem(7354) > 0 || countitem(7355) > 0) goto L_Fay99;
+				goto L_Fay103;
+
+				L_Fay98:
+					mes "[Fayruz]";
+					mes "Oooh...! This one is";
+					mes "much different than the";
+					mes "other ones you gave me";
+					mes "before. This should provide";
+					mes "a wealth of brand new insights";
+					mes "into the Juperos civilization!";
+					next;
+					mes "[Fayruz]";
+					mes "All the Transparent";
+					mes "Plates you've given me";
+					mes "should contain more than";
+					mes "enough data for me to fully";
+					mes "complete my research thesis.";
+					mes "Once again, thank you so much~";
+					next;
+					mes "[Fayruz]";
+					mes "Still, that doesn't mean that";
+					mes "I will stop collecting data for";
+					mes "my research. Anyway, I have one last story to tell you, about";
+					mes "a man of pure heart chosen by the gods to serve and protect mankind.";
+					next;
+					mes "[Fayruz]";
+					mes "For this purpose he was given";
+					mes "gaudy armor which contained";
+					mes "amazing powers, as well as a";
+					mes "book detailing the instructions";
+					mes "for its use. However, he promptly";
+					mes "lost these instructions...";
+					next;
+					mes "^3355FFThe story about the";
+					mes "greatest Juperosian hero";
+					mes "that Fayruz tells you is very";
+					mes "humorous at first, but then it";
+					mes "covers the entire spectrum";
+					mes "of emotion and humanity...";
+					next;
+					mes "^3355FFThe story ends and you";
+					mes "are left with a swelling";
+					mes "feeling of indefatigable";
+					mes "hope and inspiration...";
+					mes "You can make it if you try!^000000";
+					delitem 7353,1;
+					set yuno_book,10;
+					set jupe_book,15;
+					set BaseExp,BaseExp+100000;
+					next;
+					mes "[Fayruz]";
+					mes "Well, that is the";
+					mes "last and the best story";
+					mes "that I have to share";
+					mes "with you. Perhaps next";
+					mes "time, I'll fill you in on my";
+					mes "research progress~";
+					close;
+
+				L_Fay99:
+					mes "[Fayruz]";
+					mes "Oh, this one seems";
+					mes "to have been created";
+					mes "in a similar era as the";
+					mes "one you gave me earlier.";
+					mes "I'm not sure how much new";
+					mes "information this may provide...";
+					next;
+					mes "[Fayruz]";
+					mes "Still, I'm sure this will";
+					mes "helpful in my research. I just";
+					mes "won't be as making progress";
+					mes "as quickly as I had projected.";
+					mes "Please, I'd like you to take this as a token of my gratitude.";
+
+					if (countitem(7352) > 0) goto L_Fay100;
+					if (countitem(7354) > 0) goto L_Fay101;
+					if (countitem(7355) > 0) goto L_Fay102;
+
+					L_Fay100:
+						delitem 7352,1;
+						getitem 644,1;
+						next;
+						mes "[Fayruz]";
+						mes "Now if you'll excuse";
+						mes "me, I need to go back";
+						mes "to compiling my research...";
+						mes "Thank you so much for";
+						mes "your help, " + strcharinfo(0) + ".";
+						close;
+
+					L_Fay101:
+						delitem 7354,1;
+						getitem 644,1;
+						next;
+						mes "[Fayruz]";
+						mes "Now if you'll excuse";
+						mes "me, I need to go back";
+						mes "to compiling my research...";
+						mes "Thank you so much for";
+						mes "your help, " + strcharinfo(0) + ".";
+						close;
+
+					L_Fay102:
+						delitem 7355,1;
+						getitem 644,1;
+						next;
+						mes "[Fayruz]";
+						mes "Now if you'll excuse";
+						mes "me, I need to go back";
+						mes "to compiling my research...";
+						mes "Thank you so much for";
+						mes "your help, " + strcharinfo(0) + ".";
+						close;
+
+				L_Fay103:
+					mes "[Fayruz]";
+					mes "Oh. There isn't anything";
+					mes "here that would help in my";
+					mes "research, but thank you anyway.";
+					mes "If you find anything else while";
+					mes "you're in Juperos, please come back and show it to me, alright?";
+					close;
+
+			L_Fay104:
+				if (countitem(7352) > 0) goto L_Fay105;
+				if (countitem(7353) > 0 || countitem(7354) > 0 || countitem(7355) > 0) goto L_Fay106;
+				goto L_Fay110;
+
+				L_Fay105:
+					mes "[Fayruz]";
+					mes "Oooh...! This one is";
+					mes "much different than the";
+					mes "other ones you gave me";
+					mes "before. This should provide";
+					mes "a wealth of brand new insights";
+					mes "into the Juperos civilization!";
+					next;
+					mes "[Fayruz]";
+					mes "All the Transparent";
+					mes "Plates you've given me";
+					mes "should contain more than";
+					mes "enough data for me to fully";
+					mes "complete my research thesis.";
+					mes "Once again, thank you so much~";
+					next;
+					mes "[Fayruz]";
+					mes "Still, that doesn't mean that";
+					mes "I will stop collecting data for";
+					mes "my research. Anyway, I have one last story to tell you, about";
+					mes "a man of pure heart chosen by the gods to serve and protect mankind.";
+					next;
+					mes "[Fayruz]";
+					mes "For this purpose he was given";
+					mes "gaudy armor which contained";
+					mes "amazing powers, as well as a";
+					mes "book detailing the instructions";
+					mes "for its use. However, he promptly";
+					mes "lost these instructions...";
+					next;
+					mes "^3355FFThe story about the";
+					mes "greatest Juperosian hero";
+					mes "that Fayruz tells you is very";
+					mes "humorous at first, but then it";
+					mes "covers the entire spectrum";
+					mes "of emotion and humanity...";
+					next;
+					mes "^3355FFThe story ends and you";
+					mes "are left with a swelling";
+					mes "feeling of indefatigable";
+					mes "hope and inspiration...";
+					mes "You can make it if you try!^000000";
+					delitem 7352,1;
+					set yuno_book,10;
+					set jupe_book,15;
+					set BaseExp,BaseExp+100000;
+					next;
+					mes "[Fayruz]";
+					mes "Itu adalah";
+					mes "cerita terakhir dan yang terbaik";
+					mes "yang dapat kubagikan dengamu.";
+					mes "Mungkin lain kali,";
+					mes "Aku akan menceritakan padamu";
+					mes "tentang perkembangan penelitianku~";
+					close;
+
+				L_Fay106:
+					mes "[Fayruz]";
+					mes "Oh, this one seems";
+					mes "to have been created";
+					mes "in a similar era as the";
+					mes "one you gave me earlier.";
+					mes "I'm not sure how much new";
+					mes "information this may provide...";
+					next;
+					mes "[Fayruz]";
+					mes "Still, I'm sure this will";
+					mes "helpful in my research. I just";
+					mes "won't be as making progress";
+					mes "as quickly as I had projected.";
+					mes "Please, I'd like you to take this as a token of my gratitude.";
+
+					if (countitem(7353) > 0) goto L_Fay107;
+					if (countitem(7354) > 0) goto L_Fay108;
+					if (countitem(7355) > 0) goto L_Fay109;
+
+					L_Fay107:
+						delitem 7353,1;
+						getitem 644,1;
+						next;
+						mes "[Fayruz]";
+						mes "Now if you'll excuse";
+						mes "me, I need to go back";
+						mes "to compiling my research...";
+						mes "Thank you so much for";
+						mes "your help, " + strcharinfo(0) + ".";
+						close;
+
+					L_Fay108:
+						delitem 7354,1;
+						getitem 644,1;
+						next;
+						mes "[Fayruz]";
+						mes "Now if you'll excuse";
+						mes "me, I need to go back";
+						mes "to compiling my research...";
+						mes "Thank you so much for";
+						mes "your help, " + strcharinfo(0) + ".";
+						close;
+
+					L_Fay109:
+						delitem 7355,1;
+						getitem 644,1;
+						next;
+						mes "[Fayruz]";
+						mes "Now if you'll excuse";
+						mes "me, I need to go back";
+						mes "to compiling my research...";
+						mes "Thank you so much for";
+						mes "your help, " + strcharinfo(0) + ".";
+						close;
+
+				L_Fay110:
+					mes "[Fayruz]";
+					mes "Oh. There isn't anything";
+					mes "here that would help in my";
+					mes "research, but thank you anyway.";
+					mes "If you find anything else while";
+					mes "you're in Juperos, please come back and show it to me, alright?";
+					close;
+
+		L_FayMenu17:
+			mes "[Fayruz]";
+			mes "Ah, I see. Well, while";
+			mes "you're here, why don't you";
+			mes "read something? There are";
+			mes "many books that cover some";
+			mes "interesting topics, like";
+			mes "modern adventure history.";
+			next;
+			mes "[Fayruz]";
+			mes "Oh, in any case, please";
+			mes "don't forget the favor I asked";
+			mes "of you. If you find anything";
+			mes "in Juperos that's historically";
+			mes "significant, I'd appreciate it";
+			mes "if you bring it right away.";
+			close;
+
+	L_Yuno_Book_Check10:
+		mes "[Fayruz]";
+		mes "Oh hello, " + strcharinfo(0) + "~";
+		mes "So what exactly brings you";
+		mes "to the Juno Library this time?";
+		next;
+		menu "I found another Transparent Plate.",L_FayMenu18,"Just visiting, really.",L_FayMenu19;
+
+		L_FayMenu18:
+			if (countitem(7352) > 0 || countitem(7353) > 0 || countitem(7354) > 0 || countitem(7355) > 0) goto L_Fay111;
+			goto L_Fay116;
+
+			L_Fay111:
+				mes "[Fayruz]";
+				mes "Hmm, well, we've made as";
+				mes "much headway as we can";
+				mes "with the Transparent Plates";
+				mes "you've already given me, but";
+				mes "it can't hurt to have too much";
+				mes "evidence to back my theories.";
+				next;
+
+				if (countitem(7352) > 0) goto L_Fay112;
+				if (countitem(7353) > 0) goto L_Fay113;
+				if (countitem(7354) > 0) goto L_Fay114;
+				if (countitem(7355) > 0) goto L_Fay115;
+
+				L_Fay112:
+					delitem 7352,1;
+					getitem 644,1;
+					mes "[Fayruz]";
+					mes "I really appreciate";
+					mes "your continuing efforts";
+					mes "to help me. Please, would";
+					mes "you take this as my way";
+					mes "saying ''Thanks?'' You've been";
+					mes "great, " + strcharinfo(0) + ".";
+					close;
+
+				L_Fay113:
+					delitem 7353,1;
+					getitem 644,1;
+					mes "[Fayruz]";
+					mes "I really appreciate";
+					mes "your continuing efforts";
+					mes "to help me. Please, would";
+					mes "you take this as my way";
+					mes "saying ''Thanks?'' You've been";
+					mes "great, " + strcharinfo(0) + ".";
+					close;
+
+				L_Fay114:
+					delitem 7354,1;
+					getitem 644,1;
+					mes "[Fayruz]";
+					mes "I really appreciate";
+					mes "your continuing efforts";
+					mes "to help me. Please, would";
+					mes "you take this as my way";
+					mes "saying ''Thanks?'' You've been";
+					mes "great, " + strcharinfo(0) + ".";
+					close;
+
+				L_Fay115:
+					delitem 7355,1;
+					getitem 644,1;
+					mes "[Fayruz]";
+					mes "I really appreciate";
+					mes "your continuing efforts";
+					mes "to help me. Please, would";
+					mes "you take this as my way";
+					mes "saying ''Thanks?'' You've been";
+					mes "great, " + strcharinfo(0) + ".";
+					close;
+
+			L_Fay116:
+				mes "[Fayruz]";
+				mes "Mmm...?";
+				mes "It doesn't look like";
+				mes "you brought another";
+				mes "Transparent Plate.";
+				mes "Are you sure that you";
+				mes "didn't misplace it?";
+				close;
+
+		L_FayMenu19:
+			mes "[Fayruz]";
+			mes "Ah, I see. Well,";
+			mes "thanks to your help,";
+			mes "I've made a great deal";
+			mes "of progress on my thesis.";
+			mes "I really appreciate what you";
+			mes "have done for me, adventurer.";
+			close;
+}
 
 yuno_in04.gat,34,67,4	script	Librarian	83,{
 
