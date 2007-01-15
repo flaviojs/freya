@@ -4,6 +4,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+01/15/07
+	* Updated: job_db1.txt modifiers for the new classes [Tsuyuki]
+	 - Note: HP Multiplicator for Gunslinger/Ninja is semi-custom, need to code new system as per Aegis
+
 01/14/07
 	* Added: The rest of the Juperos History Quest (Fayruz NPC) [Tsuyuki]
 	* Fixed: The Devotion/Sacrifice status is now removed upon map change [Tsuyuki]
