@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/16/07
+	* Fixed: Valkyrie Shield item's bonuses [Tsuyuki]
 	* Removed: Some old scripts [Tsuyuki]
 
 01/15/07
