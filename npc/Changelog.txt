@@ -1,1 +1,7 @@
 // Freya NPC Changelog
+
+Date	Added
+
+01/15/07
+	* Changed: Commented all NPC scripts until they're compatible [Tsuyuki]
+	* Merged: Old Freya's NPC scripts [Tsuyuki]

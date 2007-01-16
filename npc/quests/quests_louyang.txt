@@ -1,4 +1,4 @@
-//===== eAthena Script ======================================= 
+//===== Freya Script ========================================= 
 //= Quest NPCs related to Louyang
 //===== By: ================================================== 
 //= Evera and The eAthena Dev Team

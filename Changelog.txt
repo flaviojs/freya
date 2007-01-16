@@ -1,7 +1,12 @@
+// Freya Main Changelog
 
 Date	Added
 
 01/15/07
+	* Added: Freya Database Changelog [Tsuyuki]
+	* Changed: Commented all NPC scripts until they're compatible [Tsuyuki]
+	* Merged: Old Freya's NPC scripts [Tsuyuki]
+	* Added: Server launchers for easier development [Tsuyuki]
 	* Added: Newfreya files and SVN [Tsuyuki]
 
-FREYA BEGINS HERE, based off jAthena 23xx
+NEWFREYA BEGINS HERE, based off jAthena 2219

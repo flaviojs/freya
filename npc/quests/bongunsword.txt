@@ -1,4 +1,4 @@
-//===== eAthena Script ======================================= 
+//===== Freya Script ========================================= 
 //= Munak and Bongun accessory / Taming items Quest
 //===== By: ================================================== 
 //= eAthena Team

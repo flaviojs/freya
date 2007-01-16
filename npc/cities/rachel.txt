@@ -3,7 +3,7 @@
 //===== By: ==================================================
 //= Tsuyuki and Harp
 //===== Current Version: =====================================
-//= 0.6
+//= 0.5
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -11,7 +11,6 @@
 //===== Additional Comments: =================================
 //= 0.5 Text translated from Korean > English, incomplete, 
 //= possibly missing some NPCs and missing all quests.
-//= 0.6 Removed Inn Keeper (it's in inn.txt), name duplicates [Lupus]
 //============================================================
 
 
@@ -35,7 +34,7 @@ rachel.gat,268,120,1	script	Rachel  Guard#01	934,{
 	close;
 }
 
-rachel.gat,261,175,3	script	Kid#ra0	914,{
+rachel.gat,261,175,3	script	Kid	914,{
 
 	mes "[Mankoo]";
 	mes "Ahhh my gosh";
@@ -204,7 +203,7 @@ rachel.gat,141,168,5	script	Looking for Someone	916,{ // No Info
 	end;
 } 
 
-rachel.gat,151,155,3	script	Kid#ra1	921,{
+rachel.gat,151,155,3	script	Kid	921,{
 
 	mes "[Kid]";
 	mes "When I grow up, I'm going to become a traveller that";
@@ -252,6 +251,19 @@ rachel.gat,109,138,5	script	Cool Event Corp	874,{
 //	Z_end:
 //		close;
 	end;
+}
+
+ra_in01.gat,376,68,4	script	Hotel Employee	931,{
+
+	mes "[Hotel Employee]";
+	mes "My Freya's blessings be with you...";
+	mes "Welcome to Rachel Hotel. Our Hotel takes pride in being";
+	mes "as comfortable as Freya's endless love.";
+	next;
+	menu "Save",H_end,"Rest here - 5000z",H_end,"End Conversation",H_end;
+
+	H_end:
+		close;
 }
 
 rachel.gat,197,137,3	script	Wandering Citizen	51,{
@@ -302,7 +314,7 @@ rachel.gat,120,46,3	script	Idle Shopkeeper	85,{
 	close;
 }
 
-rachel.gat,125,33,5	script	Shopkeeper#ra	85,{
+rachel.gat,125,33,5	script	Shopkeeper	85,{
 
 	end;
 }
@@ -324,7 +336,7 @@ rachel.gat,206,30,3	script	Freya Bishop	920,{
 		close;
 }
 
-rachel.gat,243,37,3	script	Kid#ra2	921,{
+rachel.gat,243,37,3	script	Kid	921,{
 
 	mes	"[Kid]";
 	mes	"Stop trying to pat my head!";
@@ -376,7 +388,7 @@ rachel.gat,243,37,3	script	Kid#ra2	921,{
 
 // bottom right, right bottom of pond.
 
-rachel.gat,266,35,3	script	Grandmother#ra	918,{
+rachel.gat,266,35,3	script	Grandmother	918,{
 
 	mes "[Grandmother]";
 	mes "This pond not only has a good view, but it makes";
@@ -389,7 +401,7 @@ rachel.gat,266,35,3	script	Grandmother#ra	918,{
 	close;
 }
 
-rachel.gat,273,33,3	script	Little Kid#ra	931,{
+rachel.gat,273,33,3	script	Little Kid	931,{
 
 	mes "[Little Kid]";
 	mes "I like being alone!!";
@@ -420,7 +432,7 @@ ra_in01.gat,250,19,3	script	Cendal	929,{
 	close;
 }
 
-rachel.gat,196,77,3	script	Kid#ra3	914,{
+rachel.gat,196,77,3	script	Kid	914,{
 
 	mes "[Kid]";
 	mes "Bluestiti is really nice and pretty. She even";
@@ -595,24 +607,6 @@ rachel.gat,155,243,3	script	Guard#Ra02	934,{
 	mes "who is the embodiment of our Goddess Freya.";
 	mes "Empty your mind and spirit, and you may enter.";
 	close;
-}
-
-ra_temple.gat,119,179,3	script	#door1	45,2,2,{
-
-OnTouch:
-	mes "** The door is locked. **";
-	next;
-	menu "Kick it",-,"Take out your weapon",L_weap;
-
-	emotion 23;
-	mes "[Bishop Nema]";
-	mes "Please stop!";
-	close;
-	end;
-	
-	L_weap:
-		emotion 23;
-		close;
 }
 
 ra_temple.gat,116,174,3	script	Bishop Nema	920,{

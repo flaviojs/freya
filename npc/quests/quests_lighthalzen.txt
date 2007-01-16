@@ -1,65 +1,43 @@
-//===== eAthena Script ======================================= 
-//= Quest NPCs located in Lighthalzen
-//===== By: ================================================== 
-//= Persian, Vicious_Pucca, aoa00, Evera, MasterOfMupppets,
-//= Lupus, Lord Gywall
-//===== Current Version: ===================================== 
-//= 2.9
-//===== Compatible With: ===================================== 
-//= eAthena SVN
-//===== Description: ========================================= 
+//===== Freya Script =========================================
+//= Lighthalzen Quests
+//===== By: ==================================================
+//= eAthena/Freya
+//===== Current Version: =====================================
+//= 1.9
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
 //= Event for the Mobster respawn
-//= Bio Labs Quest
-//= Friendship Quest
-//= Pickpocket Mini-Quest
-//= Bio Ethics Quest (Need bug testing!)
-//===== Additional Comments: ================================= 
-//= Grammar/script check please. This was a quick job.
-//= Things to add: Look at the thread "Lighthalzen Guard" in SVN script
+//===== Additional Comments: =================================
 //= 0.3 Initial Release
-//= 0.5 Added mobsters spawn and Einbroch pollution. Alert lasts either 10 minutes or all mob killed.
-//= 0.6-0.9 fix small bug. Added Bio-lab entrance Quest. Added Getting security-card Quest.
+//= 0.9 Fixed small bug. Added Bio-lab entrance Quest. Added Getting security-card Quest.
 //= 1.0 Patched "mobsters spawn & Alert" like Real-RO.
-//= 1.0a fixed rand(1,10) + comparision. There just can't be 'X < 1' [Lupus]
+//= 1.0a Fixed rand(1,10) + comparision. There just can't be 'X < 1' [Lupus]
 //= 1.1 Changed the mobster spawn to g_mobster to prevent exploits [MasterOfMuppets]
 //= 1.2 Added the cube room quest by DeNy, translated by vicious_pucca. [MasterOfMuppets]
 //=	Thanks to Linuxwolf for a grammar check as well =).
 //= 1.2a Moved Biolab entrance to lhz_dun warps. [Vicious]
 //= 1.3 Fixed password bug, fixed endless item exploit, some typos [Lupus]
 //= 1.4 Fixed password abuse. When people don't read the password under the picture
-//= 	and enter Zero shit 8) (TODO: I saw some "Sticks" abuses, too.. where you could skip a part of quest...)
-//= 1.5 Fixed Mobster's OnDead event(it has to start with "On"!) [Playtester]
-//= 1.5a Fixed "free stick" bug, thx 2 Neouni [Lupus]
-//= 1.6 Added Gywall's Pickpocket Quest
-//= 1.7 Implemented the Friendship quest [MasterOfMuppets]
-//= 1.8 Changed the name of the mobsters to Gangster, as it should be. [MasterOfMuppets]
-//= 1.9 Added extra input check on Biolab so that the first letter of the word could be capitalized or undercase. [Evera]
-//= 2.0 Removed Duplicates [Silent]
-//= 2.1 Added first part of Bio Ethics Quest [Evera]
-//= 2.2 Added bit to say Bio Ethics is unfinished, and if a player attempts, it warps them
-//= 	out after finished part... Don't want players getting stuck ;_; [Evera]
-//= 2.3 Finished Bio Ethics Quest. Need bug testers before moving to trunk, my
-//=	mind was somewhere else when writing @_@ [Evera]
-//= 2.4	Fixed the bug where a str&int debug was shown in the console for
-//=	test tube in bio labs quest. [Evera]
-//= 2.5	Fixed Kellasus giving you extra skills in Bio Ethics quest [Evera]
-//= 2.6	Fixed exploit letting any class get homunculus from Bio Ethics Quest [Evera]
-//= 2.6a Moved Bio Ethics Quest to Alchemist SKILL QUESTS [Lupus]
-//= 2.7 fixed bugs that let people bypass some quest parts V_V [Lupus]
-//=	reused cubekey var for 4 Cube Room key vars
-//= 2.8 More optimization. Also fixed bug with "2x short sticks -> long" [Lupus]
-//=	Now uses MISC_QUEST&512 instead of 'hzdun'. WIP
-//= 2.9 Fixed Friendship Quest levelup exploit (u could get EXP twice) [Lupus]
+//= 	and enter Zero shit 8) (TODO: I saw some "Sticks" abuses, too.. where you couls skip
+//=	a part of quest...)
+//= 1.5 Corrected a lot of names, and changed them into iRO names. Fixed warps and fixed the quest completely [Tsuyuki]
+//= 1.6 Added Pickpocket Quest by Lord Gywall. Fixed a typo in Biolabs Quest [Tsuyuki]
+//= 1.7 Added Friendship Quest by eAthena. Converted to Freya by Harp [Tsuyuki]
+//= 1.8 Fixed a few bugs in the Friendship quest [Tsuyuki]
+//= 1.9 Rewrote most of the Pickpocket Quest w/ official text, chance rates, and effects [Tsuyuki]
+//= 1.9a Fixed the barrel part of the cube quest. [Bison]
+//= Note: Need proper cutins for the Friendship quest
 //============================================================ 
 
 lighthalzen.gat,1,1,7	script	sneakAddSuber	-1,{
 OnInit:
-	set $@sneakchance, 3;	// chance of successful sneak(0 = never, 10 = always)
-	set $@sneakguard, 0;	// numbers of people who sneaked past guard
-	set $@threshold, 10;	// numbers of sneakers before mob appears
-	set $@mob, 50;		// Max respawn numbers of "mobsters"
-	set $@mobcount, 0;	// current numbers of "mobsters"
-	set $@lhz_alert, 0;	// Alert on Lighthalzen(0 = off, 1 = on)
+	set $@sneakchance, 3; // chance of successful sneak(0 = never, 10 = always)
+	set $@sneakguard, 0; // numbers of people who sneaked past guard
+	set $@threshold, 10; // numbers of sneakers before mob appears
+	set $@mob, 50; 	  // Max respawn numbers of "mobsters"
+	set $@mobcount, 0; // current numbers of "mobsters"
+	set $@lhz_alert, 0; // Alert on Lighthalzen(0 = off, 1 = on)
 	set $@i, 0;
 	
 	end;
@@ -76,72 +54,72 @@ OnMinute40:
 OnMinute45:
 OnMinute50:
 OnMinute55:
-	if($@lhz_alert == 0) set $@sneakguard, $@sneakguard + rand(1,3);
-	if($@lhz_alert == 1) set $@sneakguard, $@sneakguard - 1;  // Monsters will die after 5~10 min. (sneakAddSuber)
+	if ($@lhz_alert == 0) set $@sneakguard, $@sneakguard + rand(1,3);
+	if ($@lhz_alert == 1) set $@sneakguard, $@sneakguard - 1;  // Monsters will die after 5~10 min. (sneakAddSuber)
 	end;
 }
 
-lighthalzen.gat,1,1,7	script	AlertChk	-1,{
-OnInit:
-	initnpctimer;
-	end;
+//lighthalzen.gat,1,1,7	script	AlertChk	-1,{
+//OnInit:
+//	initnpctimer;
+//	end;
+//
+//OnTimer10000:
+//	if ($@sneakguard >= $@threshold) goto MakeMob;
+//	if ($@sneakguard == 0) goto ClearMob;  // Monsters will die after 5~10 min. (sneakAddSuber)
+//	setnpctimer 0;
+//	end;
+//	
+//MakeMob:
+//	if ($@lhz_alert == 1) goto ChkEnd;
+//	set $@mobcount, $@mob;
+//	mapannounce "lighthalzen.gat","Maintenance Organization of the Public Order: Currently the security of the city has been compromized, We ask the citizens to be more careful. I repeat. We ask the citizens to be more careful.", 1;
+//	
+//	for(set $@i, 0; $@i < $@mob; set $@i, $@i + 1) {
+//		monster "lighthalzen.gat",0,0,"Gangster",1592,1,"Mobs::MobKilled";
+//	}
+//
+//	set $@lhz_alert, 1;	
+//	set $@sneakguard, 2;   // Monsters will die after 5~10 min. (sneakAddSuber)
+//	setnpctimer 0;
+//	end;
+//	
+//ClearMob:
+//	if ($@lhz_alert == 0) goto ChkEnd;
+//	set $@mobcount, 0;
+//	mapannounce "lighthalzen.gat","Maintenance organization of the Public Order: We were able to get rid of all the trouble makers in the city. You may relax now.", 1;	
+//	killmonster "lighthalzen.gat","Mobs::MobKilled";
+//	set $@lhz_alert, 0;
+//	set $@sneakguard, 0;
+//	setnpctimer 0;
+//	end;
+//		
+//MobKilled:
+//	set $@mobcount, $@mobcount - 1;
+//	if ($@mobcount == 0) goto ClearMob;
+//	setnpctimer 0;
+//	end;	
+//
+//ChkEnd:	
+//	setnpctimer 0;
+//	end;	
+//}
 
-OnTimer10000:
-	if($@sneakguard >= $@threshold) goto MakeMob;
-	if($@sneakguard == 0) goto ClearMob;  // Monsters will die after 5~10 min. (sneakAddSuber)
-	setnpctimer 0;
-	end;
-	
-MakeMob:
-	if($@lhz_alert == 1) goto ChkEnd;
-	set $@mobcount, $@mob;
-	mapannounce "lighthalzen.gat","Maintenance Organization of the Public Order: Currently the security of the city has been compromized, We ask the citizens to be more careful. I repeat. We ask the citizens to be more careful.", 1;
-	
-	for( set $@i, 0; $@i < $@mob; set $@i, $@i + 1 ) {
-		monster "lighthalzen.gat",0,0,"Gangster",1592,1,"AlertChk::OnMobKilled";
-	}
+lighthalzen.gat,267,200,3	script	Security Guard	868,{
 
-	set $@lhz_alert, 1;	
-	set $@sneakguard, 2;   // Monsters will die after 5~10 min. (sneakAddSuber)
-	setnpctimer 0;
-	end;
-	
-ClearMob:
-	if($@lhz_alert == 0) goto ChkEnd;
-	set $@mobcount, 0;
-	mapannounce "lighthalzen.gat","Maintenance organization of the Public Order: We were able to get rid of all the trouble makers in the city. You may relax now.", 1;	
-	killmonster "lighthalzen.gat","AlertChk::OnMobKilled";
-	set $@lhz_alert, 0;
-	set $@sneakguard, 0;
-	setnpctimer 0;
-	end;
-		
-OnMobKilled:
-	set $@mobcount, $@mobcount - 1;
-	if($@mobcount == 0) goto ClearMob;
-	setnpctimer 0;
-	end;	
-	
-ChkEnd:	
-	setnpctimer 0;
-	end;	
-}
-
-lighthalzen.gat,267,200,3	script	Security Guard#01	868,{
-
-	if(countitem(7350)>0) goto Lhzpass1;
-	if($@lhz_alert == 1) goto Lhzstop;
-	if((gettime(2)>00 && gettime(2)<10)) goto LhzTalk2;
-	if((gettime(2)>30 && gettime(2)<40)) goto LhzTalk2;
+	if (countitem(7350)>0) goto Lhzpass1;
+	if ($@lhz_alert == 1) goto Lhzstop;
+	if ((gettime(2)>00 && gettime(2)<10)) goto LhzTalk2;
+	if ((gettime(2)>30 && gettime(2)<40)) goto LhzTalk2;
 	set @LhzTalk,rand(1,10);
-	if(@LhzTalk  < 2 ) goto LhzTalk1;
+	if (@LhzTalk  < 2) goto LhzTalk1;
 
 LhzTalk:
 	mes "[Guard]";
 	mes "Hey! Where do you think you are going?";
 	mes "I can not send nobody to the slum district!";
 	mes "If we let suspecious people like you pass,";
-	mes "there is no point in peace keeping!";
+	mes "there is no point in piece keeping!";
 	close;
 
 LhzTalk1:
@@ -154,7 +132,7 @@ LhzTalk1:
 
 LhzTalk2:
 	set @LhzTalk,rand(1,10);
-	if(@LhzTalk  < 2 ) goto LhzTalk;
+	if (@LhzTalk  < 2) goto LhzTalk;
 	mes "[Guard]";
 	mes "zzZ... zzZ... zzZ...";
 	mes "hmm. hmm... zzZ...";
@@ -184,21 +162,21 @@ Lhzstop:
 	close;
 }
 
-lighthalzen.gat,294,223,7	script	Security Guard#02	868,{
+lighthalzen.gat,294,223,7	script	Security Guard	868,{
 
-	if(countitem(7350)>0) goto Lhzpass1;
-	if($@lhz_alert == 1) goto Lhzstop;
-	if((gettime(2)>00 && gettime(2)<10)) goto LhzTalk2;
-	if((gettime(2)>30 && gettime(2)<40)) goto LhzTalk2;
+	if (countitem(7350)>0) goto Lhzpass1;
+	if ($@lhz_alert == 1) goto Lhzstop;
+	if ((gettime(2)>00 && gettime(2)<10)) goto LhzTalk2;
+	if ((gettime(2)>30 && gettime(2)<40)) goto LhzTalk2;
 	set @LhzTalk,rand(1,10);
-	if(@LhzTalk  < 2 ) goto LhzTalk1;
+	if (@LhzTalk  < 2) goto LhzTalk1;
 
 LhzTalk:
 	mes "[Guard]";
 	mes "Hey! Where do you think you are going?";
 	mes "I can not send nobody to the slum district!";
 	mes "If we let suspecious people like you pass,";
-	mes "there is no point in peace keeping!";
+	mes "there is no point in piece keeping!";
 	close;
 
 LhzTalk1:
@@ -211,7 +189,7 @@ LhzTalk1:
 
 LhzTalk2:
 	set @LhzTalk,rand(1,10);
-	if(@LhzTalk  < 2 ) goto LhzTalk;
+	if (@LhzTalk  < 2) goto LhzTalk;
 	mes "[Guard]";
 	mes "zzZ... zzZ... zzZ...";
 	mes "hmm. hmm... zzZ...";
@@ -242,42 +220,40 @@ Lhzstop:
 }
 
 //============================================================
-// Cube Room
+// Biolabs Entrance Quest
 //============================================================
+lighthalzen.gat,341,224,4	script	Fishburn	868,{
+	if (BaseLevel > 60) goto Lstart;
+	mes "[Fishburn]";
+	mes "Keep moving.";
+	close;
 
-//--------------------------Piciburn--------------------------
-
-lighthalzen.gat,341,224,4	script	Piciburn	868,{
-	if (BaseLevel < 60){
-		mes "[Piciburn]";
-		mes "Keep moving.";
-		close;
-	}
-	if (MISC_QUEST&512) goto L_DONE;
-	if (piciburn == 7) goto L_10;
-	if (piciburn == 6) goto L_9;
-	if (piciburn == 5) goto L_6;
-	if (piciburn == 4) goto L_4;
-	if (piciburn == 3) goto L_3;
-	if (piciburn == 2) goto L_2;
-	if (piciburn == 1) goto L_1;
-	mes "[Piciburn]";
+Lstart:
+	if (hzdun == 1) goto L_11;
+	if (Fishburn == 7) goto L_10;
+	if (Fishburn == 6) goto L_9;
+	if (Fishburn == 5) goto L_6;
+	if (Fishburn == 4) goto L_4;
+	if (Fishburn == 3) goto L_3;
+	if (Fishburn == 2) goto L_2;
+	if (Fishburn == 1) goto L_1;
+	mes "[Fishburn]";
 	mes "Hmm...? What is it?";
 	mes "I am busy at the moment,";
 	mes "so stop bothering me.";
-	set piciburn,1;
+	set Fishburn,1;
 	close;
 
 L_1:
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "I'm getting distracted because";
 	mes "You keep staring at me!";
 	mes "Would you please leave me alone?";
-	set piciburn,piciburn+1;
+	set Fishburn,Fishburn+1;
 	close;
 
 L_2:
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Hmm...? Oh, it's you..";
 	mes "You are really getting on my nerves.";
 	mes "You're weird, you know that?";
@@ -288,7 +264,7 @@ L_2:
 	mes "Just looking around...";
 	mes "What are you doing?";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Oh, man...";
 	mes "If I just needed to show you this,";
 	mes "I wouldn't have got all worked up.";
@@ -296,12 +272,12 @@ L_2:
 	mes "[" +strcharinfo(0) + "]";
 	mes "I know. Haha.";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "You really ARE a weird person...";
 	mes "Are you just going to stand there";
 	mes "and keep watching?";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "... You're really annoying me!";
 	mes "What do you want from me?!";
 	next;
@@ -310,17 +286,17 @@ L_2:
 	mes "I asked what you were doing.";
 	mes "This place is hot and sticky.";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Okay, okay..";
 	mes "I'll tell you what i'm doing,";
 	mes "but would you leave me in peace";
 	mes "if i did? Thanks.";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "I'm.. um... doing something illegal...";
 	mes "Don't tell anyone about this!";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "I am the only person who can make a route to";
 	mes "the industrial city's -^FF0000Laboratory^000000- or";
 	mes "places normal people wouldn't usually be able to get to.";
@@ -329,7 +305,7 @@ L_2:
 	mes "The -Laboratory?!!!-";
 	mes "Can you really get people in there?!!!";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Agh! Quieten down! What did i tell you?";
 	mes "I've told you what i do, now will you stop staring at me?";
 	mes "And be quiet~!";
@@ -340,13 +316,13 @@ L_2:
 	mes "I really want to go there,";
 	mes "so I got excited when I heard you can get people in there";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Hmm? You were planning to get in there?";
 	next;
 	mes "[" +strcharinfo(0) + "]";
 	mes "Yeah, but i couldn't get in..";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Hmm...";
 	mes "This is troublesome...";
 	mes "I don't usually tell people i cannot";
@@ -356,20 +332,20 @@ L_2:
 	mes "What do I need to do?";
 	mes "How can I get into the laboratory?";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Geez~, I'm just giving people a route, not sending them there.";
 	next;
 	mes "[" +strcharinfo(0) + "]";
 	mes "Doesn't that mean the same thing?";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "What I'm saying is,";
 	mes "I'm giving people the chance to get into the labs.";
 	next;
 	mes "[" +strcharinfo(0) + "]";
 	mes "You're really talented, huh.";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Hahaha! Damn right.";
 	mes "It's a piece of cake!";
 	mes "...";
@@ -379,7 +355,7 @@ L_2:
 	mes "How's it impossible?";
 	mes "I haven't say anything yet~..";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Oh come on, you were going to BEG me to send you there~!!!";
 	next;
 	mes "[" +strcharinfo(0) + "]";
@@ -388,59 +364,59 @@ L_2:
 	mes "Well...";
 	mes "Pretty please~~?";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "I can never let you in~..";
 	mes "Never ever~!!!";
-	set piciburn,piciburn+1;
+	set Fishburn,Fishburn+1;
 	close;
 
 L_3:
 	mes "[" +strcharinfo(0) + "]";
 	mes "Please?";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "No way.";
-	set piciburn,piciburn+1;
+	set Fishburn,Fishburn+1;
 	close;
 
 L_4:
 	mes "[" +strcharinfo(0) + "]";
 	mes "Pleaseeeee?";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "No.";
 	next;
 	mes "[" +strcharinfo(0) + "]";
 	mes "Pleaseeeeeeeeeee?";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "I don't want to.";
 	next;
 	mes "[" +strcharinfo(0) + "]";
 	mes "Do it!!!";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Never~!!!";
 	next;
 	mes "[" +strcharinfo(0) + "]";
 	mes "Why are you doing this to me?!!";
 	mes "What do you want from me !?!";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "What do I want?";
 	mes "Heh heh.. One billion zeny.";
 	next;
 	mes "[" +strcharinfo(0) + "]";
 	mes "Are you crazy?!";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "It's your choice.";
 	next;
 	mes "[" +strcharinfo(0) + "]";
 	mes "Sir, you know I don't have that much money.";
 	mes "Is there anything else you need?";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Hmm...";
 	mes "Okay fine...";
 	mes "Bring me 20 Jellopies.";
@@ -450,48 +426,48 @@ L_4:
 	mes "........";
 	mes "So that's what you really wanted to ask me?";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Hahaha...";
 	mes "Yeah~~...";
 	next;
 	mes "[" +strcharinfo(0) + "]";
 	mes "........";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "So, what're you doing just standing there?";
 	mes "Are you going to do it or not?";
 	next;
-	menu "Definitely!",L_5,"No way! It's impossible!",-;
+	menu "Definately!",L_5,"No way! It's impossible!",-;
 
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Ah well, your loss,";
 	mes "Too bad!";
 	mes "Bye now~!!";
 	close;
 
 L_5:
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Okay then, do as I said,";
 	mes "bring me 20 jellopies!";
 	mes "....";
 	mes "What're you waiting for?! GO!!";
-	set piciburn,piciburn+1;
+	set Fishburn,Fishburn+1;
 	close;
 
 L_6:
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Did you get the items?";
 	next;
 	menu "Erm.. No..",-,"Hell yeah!",L_7,"What did you want again..?",L7_1;
 
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Hey, I don't feel like playing around anymore.";
 	mes "If you really want to get there, bring the damn items!";
 	close;
 
 L_7:
 	if (countitem(909) >= 20) goto L_8;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Are you joking?";
 	mes "If you keep doing this,";
 	mes "I may not keep the promise either.";
@@ -499,7 +475,7 @@ L_7:
 	close;
 
 L7_1:
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "You're really stupid~!";
 	mes "It's 20 jellopies!";
 	mes "Don't forget this time~";
@@ -507,92 +483,92 @@ L7_1:
 
 L_8:
 	delitem 909,20;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Hmm. You're more reliable than i thought.";
 	mes "Taking this errand into consideration,";
 	mes "i guess you really want to get in there?";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Coming to think of it,";
 	mes "you look different.";
 	mes "Should I say you look more... trustworthy..?";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Well... Anyway...";
 	mes "A promise is a promise.";
 	mes "I will tell you how to get there.";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "As I told you earlier, all I can do is";
 	mes "give you the opportunity to get in.";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "I used to be a manager working for the lab,";
 	mes "but time moves on, as people do,";
 	mes "and now I am working against the lab.";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Now... Answer honestly on all I ask here on out.";
 	mes "Where i send you all depends on how you answer.";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Somewhere in the place I'm going to send you";
 	mes "There will be things you must find,";
 	mes "So search well.";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Well, when you've made your mind up,";
 	mes "come back and talk to me. Okay?";
-	set piciburn,piciburn+1;
+	set Fishburn,Fishburn+1;
 	close;
 
 L_9:
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Hmm... So...";
 	mes "Are you ready to go?";
 	next;
 	menu "No",-,"Yes",L9_1;
 
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Hmm... Not yet, huh...";
 	mes "Well, I guess it is to be expected.";
 	mes "But don't make me wait too long~!";
 	close;
 
 L9_1:
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "This is going to be hard~";
 	mes "Let's go!!!";
 	close2;
-	set piciburn,piciburn+1;
+	set Fishburn,Fishburn+1;
 	set @rdm,rand(3);
-	if(@rdm==1)goto L_warp1;
-	if(@rdm==2)goto L_warp2;
+	if (@rdm==1) goto L_warp1;
+	if (@rdm==2) goto L_warp2;
  	warp "lhz_cube.gat",67,193;
 	end;
 
 L_10:
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Hah!";
 	mes "You failed in there, right? Hahahaha~.";
 	mes "Are you going to try again? Or is it too tough~";
 	next;
 	menu "No",-,"Yes",L10_1;
 
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "It was that hard huh?";
 	mes "Well, come back if you change your mind.";
 	close;
 
 L10_1:
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Okay..";
 	mes "I will send you there again..";
 	mes "Good luck!";
 	close2;
 	set @rdm,rand(3);
-	if(@rdm==1)goto L_warp1;
-	if(@rdm==2)goto L_warp2;
+	if (@rdm==1) goto L_warp1;
+	if (@rdm==2) goto L_warp2;
  	warp "lhz_cube.gat",67,193;
 	end;
 
@@ -603,67 +579,83 @@ L_warp2:
 	warp "lhz_cube.gat",66,74;
 	end;
 
-L_DONE:
-	mes "[Piciburn]";
+L_11:
+	mes "[Fishburn]";
 	mes "Oh~ I guess you found the entrance.";
 	mes "I'll tell you now...";
 	mes "If you want to go in there again";
 	next;
-	mes "[Piciburn]";
-	mes "You can get there by a sewer passage a bit south of the town.";
+	mes "[Fishburn]";
+	mes "You can get there by a sewer passage on the north side of town.";
 	next;
 	mes "[" +strcharinfo(0) + "]";
-	mes "No wayyyyy!!";
+	mes "No waiiiii!!";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "I know. I know...";
 	mes "It is dirty.";
 	mes "But it's only way in, so don't complain!";
 	next;
-	mes "[Piciburn]";
+	mes "[Fishburn]";
 	mes "Now, take care of yourself~.";
 	close;
 }
 
-//--------------------------Box--------------------------
+//--------------------------Door---------------------------
 
-lhz_cube.gat,248,179,0	script	Box#01	111,{
-	if (MISC_QUEST&512 || cubekey&64) goto L_DONE;
-	mes "There is an axe in the box.";
+lhz_cube.gat,249,184,0	script	Door?	111,{
+
+	mes "Leave room?";
 	next;
-	menu "Take the axe.",L_1,"Leave it alone.",-;
+	menu "Yes",LhzLeave,"No",LhzNoLeave;
+
+LhzLeave:
+	warp "lighthalzen.gat",335,227;
+	end;
+
+LhzNoLeave:
+	close;
+}
+
+//--------------------------Chest--------------------------
+
+lhz_cube.gat,248,179,0	script	Chest	111,{
+	if (Axe == 1) goto L_2;
+	mes "There is an Axe in the chest.";
+	next;
+	menu "Take the Axe.",L_1,"Leave it alone.",-;
 	close;
 
 L_1:
-	mes "You acquired the ^FF0000axe^000000.";
-	set cubekey,cubekey|64;
+	mes "You acquired the ^FF0000Axe^000000.";
+	set Axe,1;
 	close;
 
-L_DONE:
-	mes "There is a box that used to contain an ^FF0000axe^000000.";
+L_2:
+	mes "There is a chest that used to contain an ^FF0000Axe^000000.";
 	close;
 }
 
 //--------------------------Barrel--------------------------
 
 lhz_cube.gat,237,183,0	script	Barrel	111,{
-	if (MISC_QUEST&512 || cubekey&1) goto L_DONE;
-	if (cubekey&128) goto L_2;
+	if (yKey == 1) goto L_4;
+	if (Box == 1) goto L_2;
 	mes "There is a box that looks weak.";
-	if ((cubekey&64) == 0) close;
+	if (Axe == 0) close;
 	next;
-	input @axe$;
+	input @Axe$;
 
-	if (@axe$ == "axe" || @axe$ == "Axe") goto L_1;
+	if (@Axe$ == "Axe") goto L_1;
 	mes "There is no change.";
 	close;
 
 L_1:
-	mes "When you break the barrel with an axe,";
+	mes "When you break the barrel with an Axe,";
 	mes "you see that there's a box inside of it.";
 	next;
 	mes "On top of the box, there's a panel with the numbers 1~9";
-	set cubekey,cubekey|128;
+	set Box,1;
 	close;
 
 L_2:
@@ -688,20 +680,20 @@ L_2:
 	if (num5 == @number) set @agree,@agree+1;
 	input @number;
 	if (num3 == @number) set @agree,@agree+1;
-	if (@agree == 9 && num1) goto L_3; //you can't enter correct numbers, till read them under that picture [Lupus]
+	if (@agree == 9 && num1) goto L_3;
 	mes "There is no change.";
 	close;
 
 L_3:
 	mes "The box opened, making a metallic click.";
-	mes "Within the box, there is 'yellow key'.";
+	mes "Within the box, there is 'Yellow Key'.";
 	next;
-	mes "You acquired '^FF0000yellow key^000000'.";
-	set cubekey,cubekey|1;
+	mes "You acquired '^FF0000Yellow Key^000000'.";
+	set yKey,1;
 	close;
 
-L_DONE:
-	mes "This box used to have the '^FF0000yellow key^000000'";
+L_4:
+	mes "This box used to have the '^FF0000Yellow Key^000000'";
 	mes "The box is now empty.";
 	close;
 }
@@ -709,49 +701,49 @@ L_DONE:
 //--------------------------Drawer--------------------------
 
 lhz_cube.gat,242,201,0	script	Drawer	111,{
-	if (MISC_QUEST&512 || cubekey&32) goto L_DONE;
+	if (Jackknife == 1) goto L_3;
 	mes "The drawer is locked.";
-	if (cubekey&2) goto L_1;
+	if (RedKey == 1) goto L_1;
 	close;
 
 L_1:
-	input @key$;
-	if (@key$ == "red key" || @key$ == "Red Key") goto L_2;
-	mes "The drawer is locked, you need some kind of key.";
+	input @Key$;
+	if (@Key$ == "Red Key") goto L_2;
+	mes "The drawer is locked, you need some kind of Key.";
 	close;
 
 L_2:
-	mes "The red key fits the lock perfectly,opening the drawer.";
-	mes "You found a 'small knife' inside.";
+	mes "The Red Key fits the lock perfectly,opening the drawer.";
+	mes "You found a 'Jackknife' inside.";
 	next;
-	mes "You acquired ^FF0000small knife^000000.";
-	set cubekey,cubekey|32;
+	mes "You acquired ^FF0000Jackknife^000000.";
+	set Jackknife,1;
 	close;
 
-L_DONE:
-	mes "It is the drawer you got ^FF0000small knife^000000 from.";
+L_3:
+	mes "It is the drawer you got ^FF0000Jackknife^000000 from.";
 	mes "There is nothing inside now.";
 	close;
 }
 
-//--------------------------Documents--------------------------
+//--------------------------Bundle of Files--------------------------
 
-lhz_cube.gat,237,198,0	script	Documents	111,{
-	if (MISC_QUEST&512 || cubekey&2) goto L_DONE;
+lhz_cube.gat,237,198,0	script	Bundle of Files	111,{
+	if (RedKey == 1) goto L_2;
 	mes "There are tons of documents here.";
 	next;
 	menu "Search the documents.",L_1,"Ignore.",-;
 	close;
 
 L_1:
-	mes "As you look through the documents, a 'red key' falls out.";
+	mes "As you look through the documents, a 'Red Key' falls out.";
 	next;
-	mes "You acquired ^FF0000red key^000000.";
-	set cubekey,cubekey|2;
+	mes "You acquired ^FF0000Red Key^000000.";
+	set RedKey,1;
 	close;
 
-L_DONE:
-	mes "This is where you acquired ^FF0000red key^000000.";
+L_2:
+	mes "This is where you acquired ^FF0000Red Key^000000.";
 	mes "There's nothing else to do here.";
 	close;
 }
@@ -761,103 +753,107 @@ L_DONE:
 lhz_cube.gat,247,198,0	script	Bed	111,{
 	mes "There is a messy bed.";
 	next;
-	menu "Above bed",-,"Below bed",L_1;
+	menu "Above the bed",-,"Under the bed",L_1;
 
 	mes "The blanket is messily placed.";
 	mes "There is nothing special here.";
 	close;
 
 L_1:
-	if (MISC_QUEST&512 || cubekey&131072) goto L_DONE;
-	if (cubekey&2048){
-		mes "As you look under the bed, you see that there";
-		mes "is a small object covered in dust.";
-		next;
-		input @bed$;
-
-		if (cubekey&4096 && (@bed$ == "long stick" || @bed$ == "Long Stick")){
-			mes "You used the long stick to pull it out.";
-			next;
-			mes "You acquired '^FF0000cube model^000000'.";
-			set cubekey,cubekey|131072;
-			close;
-		}
-		mes "It looks like you need some kind of long item to";
-		mes "Get the item out, you can't reach it!";
-		close;
-	}
-	mes "You look below the bed and see a 'small stick'.";
+	if (Quadrangle >= 1) goto L_3;
+	if (srod1 == 1) goto L_2;
+	mes "You look below the bed and see a 'Short Stick'.";
 	mes "It is within your grasp, but there is";
 	mes "also another item hidden under the bed, which";
 	mes "you'll need some kind of long item to pull it out.";
 	next;
-	mes "You acquired the '^FF0000small stick^000000'.";
+	mes "You acquired the '^FF0000Short Stick^000000'.";
 	mes "It looks like this stick could be combined";
-	mes "with another stick to make it larger.";
-	set cubekey,cubekey|2048;
-
-	if ((cubekey&4096) == 0 && cubekey&1024){
-		set cubekey,cubekey|4096;
-		next;
-		mes "It looks similar to the decently sized stick that you";
-		mes "found under the desk.";
-		mes "You put the two end to end, and they click into place.";
-		next;
-		mes "You acquired '^FF0000long stick^000000'.";
-	}
+	mes "with another stick to make it longer.";
+	if (srod2 == 1) goto L1_1;
+	set srod1,1;
 	close;
 
-L_DONE:
-	mes "This is the place where you got '^FF0000cube model^000000' from.";
+L1_1:
+	set srod1,1;
+	next;
+	mes "It seems like the small-sized stick can be";
+	mes "combined with the 'Short Stick' from under the desk.";
+	mes "You put the two end to end, and they click into place.";
+	next;
+	mes "You acquired the '^FF0000Long Stick^000000'";
+	set rod,1;
+	close;
+
+L_2:
+	if (rod == 0 && srod1 == 1 && srod2 == 1) goto L1_1;
+	mes "As you look under the bed, you see that there";
+	mes "is a small object covered in dust.";
+	next;
+	input @bed$;
+	if (@bed$ == "Long Stick" && rod == 1) goto L2_1;
+	mes "It looks like you need some kind of long item to";
+	mes "Get the item out, you can't reach it!";
+	close;
+
+L2_1:
+	mes "You used the Long Stick to pull it out.";
+	next;
+	mes "You acquired '^FF0000Cube^000000'.";
+	set Quadrangle,1;
+	close;
+
+L_3:
+	mes "This is the place where you got '^FF0000Cube^000000' from.";
 	mes "There is nothing down here now but dust.";
 	close;
 }
 
-//--------------------------Cup--------------------------
+//--------------------------Goblet--------------------------
 
-lhz_cube.gat,229,184,0	script	Cup	111,{
-	if (MISC_QUEST&512 || cubekey&4) goto L_DONE;
-	mes "You see an empty bottle and a cup with something in it.";
+lhz_cube.gat,229,184,0	script	Goblet	111,{
+	if (fKey == 1) goto L_2;
+	mes "You see an empty bottle and a goblet with something in it.";
 	next;
 	menu "Leave it alone.",-,"Look what is inside.",L_1;
 	close;
 
 L_1:
-	mes "When you look inside, you see a 'rusty key'.";
+	mes "When you look inside, you see a 'Rusty Key'.";
 	next;
-	mes "You acquired the '^FF0000rusty key^000000'.";
-	set cubekey,cubekey|4;
+	mes "You acquired the '^FF0000Rusty Key^000000'.";
+	set fKey,1;
 	close;
 
-L_DONE:
-	mes "You got the '^FF0000rusty key^000000' here.";
-	mes "There's nothing but an empty cup and an empty bottle.";
+L_2:
+	mes "You got the '^FF0000Rusty Key^000000' here.";
+	mes "There's nothing but an empty goblet and an empty bottle.";
 	close;
 }
 
-//--------------------------Shelf--------------------------
+//--------------------------Chemicals--------------------------
 
-lhz_cube.gat,233,206,0	script	Shelf	111,{
-	if (MISC_QUEST&512 || cubekey&8) goto L_DONE;
-	mes "There are lots of bottles filled with acids lined up";
+lhz_cube.gat,233,206,0	script	Checmicals	111,{
+	if (gKey == 1) goto L_2;
+	mes "There are lots of bottles filled with chemicals lined up";
 	mes "Along the shelf, they have different labels.";
 	next;
 	input @lathe$;
 
-	if (cubekey&4 && (@lathe$ == "rusty key" || @lathe$ == "Rusty Key")) goto L_1;
+	if (@lathe$ == "Rusty Key" && fKey == 1) goto L_1;
 	mes "Nothing happened.";
 	close;
 
 L_1:
-	mes "As you put the 'rusty key' into a bottle, it fizzes";
+	mes "As you put the 'Rusty Key' into a bottle, it fizzes";
 	mes "and bubbles, and all the liquid disappears.";
-	mes "All that's left is a clean, green key.";
+	mes "All that's left is a clean, Green Key.";
 	next;
-	mes "You acquired the '^FF0000green key^000000'";
-	set cubekey,cubekey|8;
+	mes "You acquired the '^FF0000Green Key^000000'";
+	set gKey,1;
 	close;
 
-L_DONE:
+L_2:
 	mes "There is an acid that changed corroded all the rust";
 	mes "off of your key.";
 	next;
@@ -865,13 +861,13 @@ L_DONE:
 	close;
 }
 
-//--------------------------Closet--------------------------
+//--------------------------Cabinet--------------------------
 
-lhz_cube.gat,249,191,0	script	Closet	111,{
-	if (MISC_QUEST&512 || cubekey&8192) goto L_DONE;
-	mes "There is a closet with lots of drawers.";
-	if (cubekey&8) goto L_2;
-	next;
+lhz_cube.gat,249,191,0	script	Cabinet	111,{
+	if (Polygon >= 1) goto L_4;
+	mes "There is a cabinet with lots of drawers.";
+	if (gKey == 1) goto L_2;
+	if (gKey == 0) next;
 	menu "Leave it alone.",-,"Open one of the drawers.",L_1;
 	close;
 
@@ -881,25 +877,25 @@ L_1:
 
 L_2:
 	next;
-	input @gkey$;
+	input @gKey$;
 
-	if (@gkey$ == "green key" || @gkey$ == "Green Key") goto L_3;
+	if (@gKey$ == "Green Key") goto L_3;
 	mes "There's nothing of any interest in this drawer.";
 	close;
 
 L_3:
-	mes "You put the 'green key' into a keyhole,";
+	mes "You put the 'Green Key' into a keyhole,";
 	mes "opening one of the locked drawers.";
 	mes "In the drawer, there is a model of";
-	mes "a polygon.";
+	mes "a Polygon.";
 	next;
-	mes "'You acquired the ^FF0000polygon model^000000.";
-	set cubekey,cubekey|8192;
+	mes "'You acquired the ^FF0000Polygon^000000.";
+	set Polygon,1;
 	close;
 
-L_DONE:
+L_4:
 	mes "This is the closet where you got";
-	mes "the 'polygon model' from.";
+	mes "the 'Polygon' from.";
 	next;
 	mes "The other draws will not open, there's";
 	mes "nothing else to do here.";
@@ -918,38 +914,43 @@ lhz_cube.gat,234,200,0	script	Desk	111,{
 	close;
 
 L_1:
-	if(MISC_QUEST&512 || cubekey&1024) goto L_DONE;
-
+	if (srod2 == 1) goto L1_2;
 	mes "When you look below the desk,";
 	mes "You see a decent sized stick.";
 	next;
-	mes "You acquired '^FF0000short stick^000000'.";
+	mes "You acquired '^FF0000Short Stick^000000'.";
 	mes "It looks like this stick could be combined";
-	mes "with another stick to make it larger.";
-	set cubekey,cubekey|1024;
-	if(cubekey&2048){
-		set cubekey,cubekey|4096;
-		next;
-		mes "It seems like the decently sized stick can be";
-		mes "combined with the 'short stick' from under the bed.";
-		mes "You put the two end to end, and they click into place.";
-		next;
-		mes "You acquired the '^FF0000long stick^000000'";
-	}
+	mes "With another stick to make it larger.";
+	if (srod1 == 1) goto L1_1;
+	set srod2,1;
 	close;
-L_DONE:
-	mes "This is where you acquired the '^FF0000short stick^000000'.";
+
+L1_1:
+	set srod2,1;
+	next;
+	mes "It seems like the decently sized stick can be";
+	mes "combined with the 'Short Stick' from under the bed.";
+	mes "You put the two end to end, and they click into place.";
+	next;
+	mes "You acquired the '^FF0000Long Stick^000000'";
+	set rod,1;
+	close;
+
+L1_2:
+	if (srod1 == 1 && srod2 == 1 && rod == 0) goto L1_1;
+	mes "This is where you acquired the '^FF0000Short Stick^000000'.";
 	mes "There is nothing but dust now.";
 	close;
+
 L_2:
-	mes "It is locked and can't be opened.";
+	mes "It's locked and can't be opened.";
 	close;
 }
 
 //--------------------------Picture--------------------------
 
 lhz_cube.gat,237,206,0	script	Picture	111,{
-	if (MISC_QUEST&512 || num1 > 0) goto L_DONE;
+	if (num1 > 0) goto L_2;
 	mes "There is a picture on the wall.";
 	next;
 	menu "Move it.",L_1,"Leave it alone.",-;
@@ -958,14 +959,14 @@ lhz_cube.gat,237,206,0	script	Picture	111,{
 L_1:
 	mes "It does not move.";
 	next;
-	input @knife$;
+	input @Jackknife$;
 
-	if (cubekey&32 && (@knife$ == "small knife" || @knife$ == "Small Knife")) goto L1_1;
+	if (@Jackknife$ == "Jackknife" && Jackknife == 1) goto L1_1;
 	mes "Nothing happened.";
 	close;
 
 L1_1:
-	mes "You slid the 'small knife' behind the frame";
+	mes "You slid the 'Jackknife' behind the frame";
 	mes "and used it to twist the picture.";
 	mes "As you turn the frame, the picture detatches and";
 	mes "falls from the wall.";
@@ -1023,52 +1024,53 @@ L1_1:
 	if (num6 == num9) goto Lset8;
 	if (num7 == num9) goto Lset8;
 	if (num8 == num9) goto Lset8;
+	goto L_2;
 
-L_DONE:
+L_2:
 	mes "There is a number behind the picture.";
 	mes "" + num1 + "3 " + num2 + "6 " + num3 + "9 " + num4 + "4 " + num5 + "8 " + num6 + "1 " + num7 + "7 " + num8 + "2 " + num9 + "5";
 	mes "Perhaps you should write this number down somewhere...";
 	close;
 }
 
-//--------------------------generator--------------------------
+//--------------------------Power Generator--------------------------
 
-lhz_cube.gat,224,192,0	script	Generator	111,{
-	if (MISC_QUEST&512 || cubekey&256) goto L_DONE;
+lhz_cube.gat,224,192,0	script	Power Generator	111,{
+	if (machine == 1) goto L_2;
 	mes "The big machine is running, making a huge noise.";
 	mes "There are lots weird symbols and";
 	mes "a small key hole beside them.";
 	next;
-	input @key$;
+	input @Key$;
 
-	if (cubekey&1 && (@key$ == "yellow key" || @key$ == "Yellow Key")) goto L_1;
+	if (@Key$ == "Yellow Key" && yKey == 1) goto L_1;
 	mes "There's nothing to do here.";
 	close;
 
 L_1:
-	mes "You insert the 'yellow key' into the keyhole";
+	mes "You insert the 'Yellow Key' into the keyhole";
 	mes "and twist it.";
 	mes "The machine clicks, and becomes silent.";
 	next;
 	mes "When it was stopped, the lamp next to the bed";
 	mes "also turned off.";
-	set cubekey,cubekey|256;
+	set machine,1;
 	close;
 
-L_DONE:
+L_2:
 	mes "The big machine sits quietly.";
 	close;
 }
 
-//--------------------------Lamp--------------------------
+//--------------------------Status Light--------------------------
 
-lhz_cube.gat,248,205,0	script	Lamp	111,{
-	if (MISC_QUEST&512 || cubekey&16) goto L_DONE;
-	if (cubekey&256) goto L_1;
-	mes "There is a bright lamp.";
+lhz_cube.gat,248,205,0	script	Status Light	111,{
+	if (bKey == 1) goto L_3;
+	if (machine == 1) goto L_1;
+	mes "There is a bright light.";
 	mes "Seems like there is something inside";
 	mes "but it is too hot to touch.";
-	mes "It looks like you need to somehow turn the lamp off.";
+	mes "It looks like you need to somehow turn the light off.";
 	close;
 
 L_1:
@@ -1079,82 +1081,82 @@ L_1:
 
 L_2:
 	mes "When you break the bulb, a";
-	mes "'black key' falls out.";
+	mes "'Black Key' falls out.";
 	next;
-	mes "You acquired the '^FF0000black key^000000'.";
-	set cubekey,cubekey|16;
+	mes "You acquired the '^FF0000Black Key^000000'.";
+	set bKey,1;
 	close;
 
-L_DONE:
+L_3:
 	mes "There nothing but a broken bulb.";
 	close;
 }
 
 //--------------------------Box--------------------------
 
-lhz_cube.gat,248,193,0	script	Box#02	111,{
-	if (MISC_QUEST&512 || countitem(2657) || @gotLPkey) goto L_DONE;
+lhz_cube.gat,248,193,0	script	Box	111,{
+	if (countitem(2657) > 0 || @gotKey || hzdun) goto L_5;
 	mes "There is a box with three holes.";
 	next;
-	if (cubekey&65536 && cubekey&262144 && cubekey&16384) goto L_4;
-	menu "Ellipse hole",L_1,"Square hole",L_2,"Polygonal hole",L_3;
+	if (Oval == 2 && Quadrangle == 2 && Polygon == 2) goto L_4;
+	menu "Oval Hole",L_1,"Cube Hole",L_2,"Polygon Hole",L_3;
 
 L_1:
-	if (cubekey&65536) goto L1_2;
-	input @ellipse$;
+	if (Oval == 2) goto L1_2;
+	input @Oval$;
 
-	if (cubekey&32768 && (@ellipse$ == "ellipse model" || @ellipse$ == "Ellipse Model")) goto L1_1;
+	if (@Oval$ == "Oval" && Oval == 1) goto L1_1;
 	mes "Nothing happened.";
 	close;
 
 L1_1:
-	mes "You inserted the 'ellipse model' into the ellipse-shaped hole.";
+	mes "You inserted the 'Oval' into the oval-shaped hole.";
 	mes "The box makes a metallic click.";
-	set cubekey,cubekey|65536;
+	set Oval,2;
 	close;
 
 L1_2:
-	mes "You've already inserted the 'ellipse model'.";
+	mes "You've already inserted the 'Oval'.";
 	close;
 
 L_2:
-	if (cubekey&262144) goto L2_2;
-	input @quadrangle$;
+	if (Quadrangle == 2) goto L2_2;
+	input @Quadrangle$;
 
-	if (cubekey&131072 && (@quadrangle$ == "cube model" || @quadrangle$ == "Cube Model")) goto L2_1;
+	if (@Quadrangle$ == "Cube" && Quadrangle == 1) goto L2_1;
 	mes "Nothing happened.";
 	close;
 
 L2_1:
-	mes "You inserted the 'cube model' into the square-shaped hole.";
+	mes "You inserted the 'Cube' into the cube-shaped hole.";
 	mes "The box makes a metallic click.";
-	set cubekey,cubekey|262144;
+	set Quadrangle,2;
 	close;
 
 L2_2:
-	mes "You already inserted the 'square model'.";
+	mes "You already inserted the 'Cube'.";
 	close;
 
 L_3:
-	if (cubekey&16384) goto L3_2;
-	input @polygon$;
+	if (Polygon == 2) goto L3_2;
+	input @Polygon$;
 
-	if (cubekey&8192 && (@polygon$ == "polygon model" || @polygon$ == "Polygon Model")) goto L3_1;
+	if (@Polygon$ == "Polygon" && Polygon == 1) goto L3_1;
 	mes "Nothing happened.";
 	close;
 
 L3_1:
-	mes "You inserted the 'polygon model' into the polygonal hole.";
+	mes "You inserted the 'Polygon' into the Polygon Hole.";
 	mes "The box makes a metallic click.";
-	set cubekey,cubekey|16384;
+	set Polygon,2;
 	close;
 
 L3_2:
-	mes "You've already inserted the 'polygon model'.";
+	mes "You've already inserted the 'Polygon'.";
 	close;
 
 L_4:
-	mes "All holes are filled with keymodels.";
+	mes "All holes are filled with key models.";
 	next;
 	menu "Leave it alone.",-,"Open the box.",L4_1;
 	close;
@@ -1163,43 +1165,42 @@ L4_1:
 	mes "There is a small card inside of it.";
 	next;
 	mes "You acquired the 'Laboratory Permit'.";
-	set @gotLPkey,1;
+	set @gotKey,1;
 	getitem 2657,1;
 	close;
 
-L_DONE:
+L_5:
 	mes "There is an opened box.";
 	mes "There is nothing inside.";
 	close;
 }
 
-//--------------------------Test tube--------------------------
+//--------------------------Experiment Tube--------------------------
 
-lhz_cube.gat,224,197,0	script	Test Tube	111,{
-	if (MISC_QUEST&512) goto L_DONE;
+lhz_cube.gat,224,197,0	script	Experiment Tube	111,{
 	if (countitem(2657) > 0) goto L_3;
-	if (cubekey&32768) goto L_2;
-	mes "There is a weird test tube.";
+	if (Oval >= 1) goto L_2;
+	mes "There is a weird experiment tube.";
 	mes "It seems like there is something inside.";
 	mes "There' a keyhole and a hole that fits a thin object.";
 	next;
-	input @key$;
+	input @Key$;
 
-	if (cubekey&16 && (@key$ == "black key" || @key$ == "Black Key")) goto L_1;
+	if (@Key$ == "Black Key" && bKey == 1) goto L_1;
 	mes "Nothing happened.";
 	close;
 
 L_1:
-	mes "You inserted the 'black key' and turned it.";
+	mes "You inserted the 'Black Key' and turned it.";
 	mes "The glass window at the front of the machine opened,";
-	mes "Revealing an ellipse model.";
+	mes "Revealing an Oval.";
 	next;
-	mes "You acquired the '^FF0000ellipse model^000000'.";
-	set cubekey,cubekey|32768;
+	mes "You acquired the '^FF0000Oval^000000'.";
+	set Oval,1;
 	close;
 
 L_2:
-	mes "This is where you got '^FF0000ellipse model^000000'.";
+	mes "This is where you got '^FF0000Oval^000000'.";
 	mes "There is a weird symbol on the bottom of the machine.";
 	mes "It looks like it could open as it has hinges on one side.";
 	close;
@@ -1207,188 +1208,394 @@ L_2:
 L_3:
 	mes "There is a rectangular hole in the front of the machine.";
 	next;
-	input @answer$;
-
-	if (@answer$ == "Laboratory Permit" || @answer$ == "permit" || @answer$ == "laboratory permit" || @answer$ == "Permit") goto L_4;
-	mes "Nothing happened.";
-	close;
-
-L_4:
-	mes "You inserted the 'Laboratory Keycard' in the hole,";
+	mes "You inserted the 'Laboratory Permit' in the hole,";
 	mes "and the stair leading down appeared on the floor.";
 	next;
 	menu "Go down.",L4_1,"Do not go down.",-;
 	close;
 
 L4_1:
-	mes "It connected to a long staircase.";
-	set cubekey,0;	
-	set num1,0;	set num2,0;	set num3,0;	set num4,0;	set num5,0;
-	set num6,0;	set num7,0;	set num8,0;	set num9,0;
-	set piciburn,0;
-	set MISC_QUEST,MISC_QUEST|512;
+	mes "Its connected to a long staircase.";
 	close2;
-L_DONE:
+	set Axe,0;	set yKey,0;	set Box,0;	set num1,0;
+	set num2,0;	set num3,0;	set num4,0;	set num5,0;
+	set num6,0;	set num7,0;	set num8,0;	set num9,0;
+	set Jackknife,0;	set RedKey,0;	set srod1,0;	set srod2,0;
+	set fKey,0;	set gKey,0;	set Polygon,0;	set machine,0;
+	set bKey,0;	set Oval,0;	set Quadrangle,0;	set rod,0;
+	set hzdun,1;
 	warp "lhz_cube.gat",177,13;
 	end;
 }
 
+
 //============================================================
-// Lighthalzen Pickpocket Mini-Quest
+// Lighthalzen Pickpocket Mini-Quest - Lord Gywall/Tsuyuki
 //============================================================
 
-lighthalzen.gat,240,216,4	script	Man#Pickpocket1	870,2,2,{
-	end;
-OnTouch:
-	callfunc "F_LHZPick",33,1;
-	close;
-}
 
-lighthalzen.gat,220,169,4	script	Man#Pickpocket2	870,2,2,{
+lighthalzen.gat,0,0,0	script	PickPocketControl	139,{
 	end;
-OnTouch:
-	callfunc "F_LHZPick",33,2;
-	close;
-}
 
-lighthalzen.gat,164,127,4	script	Man#Pickpocket3	870,2,2,{
-	end;
-OnTouch:
-	callfunc "F_LHZPick",20,3;
-	if(@caught!=1) close;
-	mes "[Strange Man]";
-	mes "Ayee! I'm trapped.";
-	mes "If you will forgive me,";
-	mes "I can give you something good.";
-	mes "["+strcharinfo(0)+"]";
-	mes "You're forgiven, now what is this";
-	mes "good thing you mentioned?";
-	next;
-	mes "[Strange Man]";
-	mes "The lower part of your body,";
-	mes "will produce a strong power";
-	mes "once you've taken the secret potion.";
-	mes "It's very useful";
-	mes "when you want to run quickly";
-	next;
-	mes "[Strange Man]";
-	mes "I will sell you them for a bargin";
-	mes "price of 15,000 zeny to a maximum";
-	mes "of three potions.";
-	mes "How many do you want?";
-	next;
-	input @number;
-	if(@number>3) set @number,3;
-	set @cost,15000*@number;
-	if(Zeny<@cost) goto L_Zeny;
-	//please check that you add the script to it.
-	set Zeny,zeny-@cost;
-	getitem 12016,@number; //Speed Potion
-	mes "[Strange Man]";
-	mes "Thanks for your money.";
-	if(rand(1,2)==1) goto L_Reset;
-	disablenpc "Man#Pickpocket3";
-	enablenpc "Man#Pickpocket2";
-	close;
-L_Reset:
-	disablenpc "Man#Pickpocket3";
-	enablenpc "Man#Pickpocket1";
-	close;
-L_Zeny:
-	mes "[Strange Man]";
-	mes "Too bad.";
-	mes "No zeny makes you a poor man.";
-	close;
 OnInit:
-	disablenpc "Man#Pickpocket2";
-	disablenpc "Man#Pickpocket3";
+	disablenpc "Suspicious Guy#2";
+	disablenpc "Suspicious Guy#3";
+	disablenpc "PickPocketControl";
+	end;
 }
 
-function	script	F_LHZPick	{
-	if(Zeny<100) set Zeny,0;
-	if(Zeny>=100) set Zeny,zeny-100;
-	mes "Pickpocket";
+lighthalzen.gat,240,216,4	script	Suspicious Guy#1	870,2,2,{
+	end;
+	
+OnTouch:
+	set @pickrand2,rand(1,3);
+	if (Zeny<200) set Zeny,0;
+	if (Zeny>=10 && @pickrand2 == 1) set Zeny,zeny-10;
+	if (Zeny>=100 && @pickrand2 == 2) set Zeny,zeny-100;
+	if (Zeny>=200 && @pickrand2 == 3) set Zeny,zeny-200;
+//	specialeffect2 274;
+	mes "*SHHHHHHUK*!";
 	next;
-	if(rand(0,100)<getarg(0)) goto L_Caught;
-	mes "Hehehehe....";
-	return;
+	set @pickrand1,rand(0,100);
+	if (@pickrand1 <= 75) goto L_Caught;
+	mes "["+strcharinfo(0)+"]";
+	set @pickrand3,rand(1,2);
+	if (@pickrand3 == 1) goto RandStolen1;
+	if (@pickrand3 == 2) goto RandStolen2;
+	close;
+
+RandStolen1:
+	mes "Huh...?";
+	mes "I could have sworn";
+	mes "that these pockets full";
+	mes "of zeny were heavier";
+	mes "just a second ago...";
+	next;
+	mes "[?????]";
+	mes "Heh heh heh heh...";
+	close;
+
+RandStolen2:
+	mes "Huh...?";
+	mes "I sense something...";
+	mes "No. It might just";
+	mes "be my imagination.";
+	next;
+	mes "[?????]";
+	mes "Heh heh heh heh...";
+	close;
+
 L_Caught:
-	mes "(You notice the man put his";
-	mes "hand in your pocket!)";
 	mes "["+strcharinfo(0)+"]";
-	mes "Eh!? What are you doing!";
-	mes "You are!! Stealing my money?!";
-	mes "[Strange Man]";
-	mes "Ah! I'm caught!";
-	mes "["+strcharinfo(0)+"]";
-	mes "You're a pickpocket?!?";
-	mes "[Strange Man]";
-	mes "Hehehehe....";
+	mes "Huh...?";
+	mes "What the?!";
+	mes "That guy, did he just...?";
+	mes "He did! Hey! That guy";
+	mes "stole some of my money!";
 	next;
-	set @rand,rand(1,4);
-	if(getarg(1)==1 && @rand<4) goto L_MoveB;
-	if(getarg(1)==2 && @rand<4) goto L_MoveA;
-	if(getarg(1)==1 && @rand==4) goto L_MoveC1;
-	if(getarg(1)==2 && @rand==4) goto L_MoveC2;
-	set @caught,1;
-	return;
-L_MoveA:
-	disablenpc "Man#Pickpocket2";
-	enablenpc "Man#Pickpocket1";
-	return;
-L_MoveB:
-	disablenpc "Man#Pickpocket1";
-	enablenpc "Man#Pickpocket2";
-	return;
-L_MoveC1:
-	disablenpc "Man#Pickpocket1";
-	enablenpc "Man#Pickpocket3";
-	return;
-L_MoveC2:
-	disablenpc "Man#Pickpocket2";
-	enablenpc "Man#Pickpocket3";
-	return;
+	mes "[Suspicious Guy]";
+	mes "Oh crap!";
+	mes "Gotta scram!";
+	mes "Eat my dust, good guy!";
+	next;
+	set @rand,rand(1,2);
+	if (@rand == 1) goto L_MoveA1;
+	if (@rand == 2) goto L_MoveB1;
+	close;
+
+L_MoveA1:
+	specialeffect 16;
+	disablenpc "Suspicious Guy#1";
+	enablenpc "Suspicious Guy#2";
+	close;
+
+L_MoveB1:
+	specialeffect 16;
+	disablenpc "Suspicious Guy#1";
+	enablenpc "Suspicious Guy#3";
+	close;
 }
+
+lighthalzen.gat,220,169,4	script	Suspicious Guy#2	870,2,2,{
+	end;
+
+OnTouch:
+	set @pickrand2,rand(1,3);
+	if (Zeny<200) set Zeny,0;
+	if (Zeny>=10 && @pickrand2 == 1) set Zeny,zeny-10;
+	if (Zeny>=100 && @pickrand2 == 2) set Zeny,zeny-100;
+	if (Zeny>=200 && @pickrand2 == 3) set Zeny,zeny-200;
+//	specialeffect2 274;
+	mes "*SHHHHHHUK*!";
+	next;
+	set @pickrand1,rand(0,100);
+	if (@pickrand1 <= 75) goto L_Caught;
+	mes "["+strcharinfo(0)+"]";
+	set @pickrand3,rand(1,2);
+	if (@pickrand3 == 1) goto RandStolen1;
+	if (@pickrand3 == 2) goto RandStolen2;
+	close;
+
+RandStolen1:
+	mes "Huh...?";
+	mes "I could have sworn";
+	mes "that these pockets full";
+	mes "of zeny were heavier";
+	mes "just a second ago...";
+	next;
+	mes "[?????]";
+	mes "Heh heh heh heh...";
+	close;
+
+RandStolen2:
+	mes "Huh...?";
+	mes "I sense something...";
+	mes "No. It might just";
+	mes "be my imagination.";
+	next;
+	mes "[?????]";
+	mes "Heh heh heh heh...";
+	close;
+
+L_Caught:
+	mes "["+strcharinfo(0)+"]";
+	mes "Huh...?";
+	mes "What the?!";
+	mes "That guy, did he just...?";
+	mes "He did! Hey! That guy";
+	mes "stole some of my money!";
+	next;
+	mes "[Suspicious Guy]";
+	mes "Oh crap!";
+	mes "Gotta scram!";
+	mes "Eat my dust, good guy!";
+	next;
+	set @rand,rand(1,2);
+	if (@rand == 1) goto L_MoveA2;
+	if (@rand == 2) goto L_MoveB2;
+	close;
+
+L_MoveA2:
+	specialeffect 16;
+	disablenpc "Suspicious Guy#2";
+	enablenpc "Suspicious Guy#1";
+	close;
+
+L_MoveB2:
+	specialeffect 16;
+	disablenpc "Suspicious Guy#3";
+	enablenpc "Suspicious Guy#1";
+	close;
+}
+
+lighthalzen.gat,164,127,4	script	Suspicious Guy#3	870,2,2,{
+	end;
+
+OnTouch:
+	set @pickrand2,rand(1,3);
+	if (Zeny<200) set Zeny,0;
+	if (Zeny>=10 && @pickrand2 == 1) set Zeny,zeny-10;
+	if (Zeny>=100 && @pickrand2 == 2) set Zeny,zeny-100;
+	if (Zeny>=200 && @pickrand2 == 3) set Zeny,zeny-200;
+//	specialeffect2 274;
+	mes "*SHHHHHHUK*!";
+	next;
+	set @pickrand1,rand(0,100);
+	if (@pickrand1 <= 25) goto L_Caught;
+	mes "["+strcharinfo(0)+"]";
+	set @pickrand3,rand(1,2);
+	if (@pickrand3 == 1) goto RandStolen1;
+	if (@pickrand3 == 2) goto RandStolen2;
+	close;
+
+RandStolen1:
+	mes "Huh...?";
+	mes "I could have sworn";
+	mes "that these pockets full";
+	mes "of zeny were heavier";
+	mes "just a second ago...";
+	next;
+	mes "[?????]";
+	mes "Heh heh heh heh...";
+	close;
+
+RandStolen2:
+	mes "Huh...?";
+	mes "I sense something...";
+	mes "No. It might just";
+	mes "be my imagination.";
+	next;
+	mes "[?????]";
+	mes "Heh heh heh heh...";
+	close;
+
+L_Caught:
+	mes "["+strcharinfo(0)+"]";
+	mes "Huh...?";
+	mes "What the?!";
+	mes "That guy, did he just...?";
+	mes "He did! Hey! That guy";
+	mes "stole some of my money!";
+	next;
+	mes "[Suspicious Guy]";
+	mes "Oh crap!";
+	mes "Gotta scram!";
+	mes "Eat my dust, good gu--!";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "Oh no, you don't!";
+	mes "I'm turning you in,";
+	mes "you pickpocket!";
+	next;
+	mes "[Suspicious Guy]";
+	mes "No...! I'm sorry!";
+	mes "I'll give you back";
+	mes "your money, just";
+	mes "let me go! Crap!";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "Alright, fine,";
+	mes "but you better quit";
+	mes "this life of crime!";
+	next;
+	mes "[Suspicious Guy]";
+	mes "You're right, that was";
+	mes "wrong of me. Thanks";
+	mes "for letting me go. Since";
+	mes "you did me a favor, I'll";
+	mes "sell you some tonic that";
+	mes "I use to run really fast.";
+	next;
+	mes "[Suspicious Guy]";
+	mes "I can only sell up to";
+	mes "three of my secret tonic";
+	mes "to you since that's all";
+	mes "I have. Each one will";
+	mes "cost 15,000 zeny. So";
+	mes "what do you say?";
+	next;
+	menu "Give me 1.",P_Tonic1,"Give me 2.",P_Tonic2,"Give me 3.",P_Tonic3,"No I'm fine",P_NoTonic;
+
+	P_Tonic1:
+		if (Zeny < 15000) goto L_Zeny;
+		mes "[Suspicious Guy]";
+		mes "Here you go~";
+		set Zeny,zeny-15000;
+		getitem 12016,1;
+		next;
+		mes "[Suspicious Guy]";
+		mes "Anyway, I'm gonna";
+		mes "get back to work.";
+		mes "Heh heh heh~";
+		if (rand(1,2)==1) goto L_Reset;
+		specialeffect 16;
+		disablenpc "Suspicious Guy#3";
+		enablenpc "Suspicious Guy#2";
+		close;
+
+	P_Tonic2:
+		if (Zeny < 30000) goto L_Zeny;
+		mes "[Suspicious Guy]";
+		mes "Here you go~";
+		set Zeny,zeny-30000;
+		getitem 12016,2;
+		next;
+		mes "[Suspicious Guy]";
+		mes "Anyway, I'm gonna";
+		mes "get back to work.";
+		mes "Heh heh heh~";
+		if (rand(1,2)==1) goto L_Reset;
+		specialeffect 16;
+		disablenpc "Suspicious Guy#3";
+		enablenpc "Suspicious Guy#2";
+		close;
+
+	P_Tonic3:
+		if (Zeny < 45000) goto L_Zeny;
+		mes "[Suspicious Guy]";
+		mes "Here you go~";
+		set Zeny,zeny-45000;
+		getitem 12016,3;
+		next;
+		mes "[Suspicious Guy]";
+		mes "Anyway, I'm gonna";
+		mes "get back to work.";
+		mes "Heh heh heh~";
+		if (rand(1,2)==1) goto L_Reset;
+		specialeffect 16;
+		disablenpc "Suspicious Guy#3";
+		enablenpc "Suspicious Guy#2";
+		close;
+
+	P_NoTonic:
+		mes "[Suspicious Guy]";
+		mes "Well...";
+		mes "You're just gonna";
+		mes "let me go, then?";
+		mes "That's awful generous.";
+		mes "Thanks, I appreciate it.";
+		next;
+		mes "[Suspicious Guy]";
+		mes "Anyway, I'm gonna";
+		mes "get back to work.";
+		mes "Heh heh heh~";
+		if (rand(1,2)==1) goto L_Reset;
+		specialeffect 16;
+		disablenpc "Suspicious Guy#3";
+		enablenpc "Suspicious Guy#2";
+		close;
+
+L_Reset:
+	specialeffect 16;
+	disablenpc "Suspicious Guy#3";
+	enablenpc "Suspicious Guy#1";
+	close;
+
+L_Zeny:
+	mes "[Suspicious Guy]";
+	mes "Uh..";
+	mes "you don't have enough zeny.";
+	next;
+	mes "[Suspicious Guy]";
+	mes "Anyway, I'm gonna";
+	mes "get back to work.";
+	mes "Heh heh heh~";
+	if (rand(1,2)==1) goto L_Reset;
+	specialeffect 16;
+	disablenpc "Suspicious Guy#3";
+	enablenpc "Suspicious Guy#2";
+	close;
+}
+
 
 //==============================================================
-// Friendship
+// Friendship Quest
 //==============================================================
 
 lhz_in02.gat,201,210,3	script	Digotz	869,{
 
-	if(friendship > 9)goto s_Dead;
-	if(friendship == 9)goto s_Wounded;
-	if(friendship == 8)goto s_Cont7;
-	if(friendship == 6 && friendship2 || friendship == 7)goto s_Cont6;
-	if(friendship == 6)goto s_Cont5;
-	if(friendship == 4 || friendship == 5)goto s_Cont4;
-	if(friendship == 3)goto s_Cont3;
-	if(friendship == 2)goto s_Cont2;
+	if (friendship > 9) goto s_Dead;
+	if (friendship == 9) goto s_Wounded;
+	if (friendship == 8) goto s_Cont8;
+	if (friendship == 7 || friendshipextra == 1) goto s_Cont7;
+	if (friendshipextra == 1 || friendship == 6) goto s_Cont6;
+	if (friendship == 6) goto s_Cont5;
+	if (friendship == 4 || friendship == 5) goto s_Cont4;
+	if (friendship == 3) goto s_Cont3;
+	if (friendship == 2) goto s_Cont2;
 	mes "[Digotz]";
 	mes "Oh, an adventurer?";
-	mes "Welcome to Uptown";
-	mes "Lighthalzen. However,";
-	mes "I'm afraid this area won't";
-	mes "have much to offer you";
-	mes "in the way of excitement.";
+	mes "I welcome you to Uptown Lighthalzen, but I'm afraid this area won't offer you a lot of excitement.";
 	next;
-	if(friendship == 1)goto s_Cont;
+	if (friendship == 1) goto s_Cont;
 	mes "[Digotz]";
-	mes "Feel free to take";
-	mes "a look around if you";
-	mes "so wish. I'm actually";
-	mes "glad to see somebody";
-	mes "aside from the stuck up";
-	mes "rich people who live here.";
+	mes "Feel free to take a look around if you so wish. I'm actually glad to see somebody aside from the stuck up rich people who live here.";
 	close;
 
 s_Cont:
 	mes "[Digotz]";
-	mes "My name is Digotz,";
-	mes "just another citizen";
-	mes "of Upper Lighthalzen.";
-	mes "I hope that you enjoy";
-	mes "your stay in my hometown";
+	mes "My name is Digotz - just another citizen of Upper Lighthalzen.";
+	mes "I hope that you enjoy your stay in my hometown";
 	next;
 	menu "Do you know someone named Maku?",-;
 
@@ -1584,7 +1791,7 @@ s_Cont5:
 	mes "but I'm so angry!";
 	mes "Why am I stressing";
 	mes "out so much over this?!";
-	set friendship2,1;
+	set friendshipextra,1;
 	close;
 
 s_Cont6:
@@ -1595,10 +1802,18 @@ s_Cont6:
 	mes "able to get Maku to apologize";
 	mes "to me. That guy is just way";
 	mes "too stubborn for his own good!";
-	if(friendship != 7)close;
+	close;
+
+s_Cont7:
+	mes "[Digotz]";
+	mes "Even if Benkaistein came";
+	mes "back from wherever he was";
+	mes "studying, I don't think he'd be";
+	mes "able to get Maku to apologize";
+	mes "to me. That guy is just way";
+	mes "too stubborn for his own good!";
 	next;
 	menu "Show Benkastein's Journal",s_Journal,"Don't show Benkastein's Journal.",-;
-
 	mes "[Digotz]";
 	mes "I don't understand";
 	mes "why I'm so angry!";
@@ -1635,7 +1850,7 @@ s_Journal:
 	next;
 	mes "^000000[Digotz]";
 	mes "Oh yeah, I remember that!";
-	mes "Maky wore the wings most";
+	mes "Maku wore the wings most";
 	mes "of the time, but I still hold";
 	mes "the record for staying in the";
 	mes "air the longest! Yeah, I was";
@@ -1699,7 +1914,7 @@ s_Journal:
 	mes "^000000[Digotz]";
 	mes "Well, we were a lot";
 	mes "younger and closer back";
-	mes "then, so... ^111111*Ahem!*^000000Why did";
+	mes "then, so... ^111111*Ahem!*^000000 Why did";
 	mes "Benkastein even write that?!";
 	next;
 	mes "[Benkastein's Journal]";
@@ -1724,11 +1939,11 @@ s_Journal:
 	mes "miss him or anything, but";
 	mes "I gotta get him to cancel";
 	mes "that oath. And maybe I'll";
-	mes "beat up him a little bit.";
+	mes "beat him up a little bit.";
 	set friendship,8;
 	close;
 
-s_Cont7:
+s_Cont8:
 	mes "[Digotz]";
 	mes "Wh-whoa, I need to";
 	mes "get ready! That Maku's";
@@ -1770,7 +1985,7 @@ s_Wounded:
 	mes "suit... He just... He just";
 	mes "stabbed me! I... God. It's";
 	mes "been so long since I've talked";
-	mes "to him. We'll hang out and have";
+	mes "to Maku. We'll hang out and have";
 	mes "fun, just like the good old days.";
 	next;
 	mes "[Digotz]";
@@ -1793,7 +2008,7 @@ s_Wounded:
 	mes ".......................";
 	mes "................................";
 	next;
-	mes "^3131FFDigotz stopped breating.";
+	mes "^3131FFDigotz stopped breathing.";
 	mes "You remove the Knife from";
 	mes "his lifeless body as a final";
 	mes "courtesy to a man who";
@@ -1813,64 +2028,42 @@ s_Dead:
 }
 
 lighthalzen.gat,337,232,3	script	Maku	870,{
-
-	if(friendship > 1)goto Switches;
+	if (friendship == 2) goto L_friend2;
+	if (friendship == 3) goto L_friend3;
+	if (friendship == 4) goto L_friend4;
+	if (friendship == 5) goto L_friend5;
+	if (friendship == 6) goto L_friend6;
+	if (friendship == 7) goto L_friend7;
+	if (friendship == 8) goto L_friend8;
+	if (friendship == 9) goto L_friend9;
+	if (friendship > 9) goto L_friend10;
 	mes "[Maku]";
-	mes "Hey, you're on of";
-	mes "those adventurers, eh?";
+	mes "Hey, you're on of those adventurers, eh?";
 	mes "Welcome to the ghetto.";
-	mes "Nothing too adventurous";
-	mes "here, but hey, you can";
-	mes "explore all you want.";
+	mes "Nothing too adventurous here, but hey, you can explore all you want.";
 	next;
 	mes "[Maku]";
-	mes "I don't know if you know";
-	mes "but actually, the people who";
-	mes "live here ain't allowed to";
-	mes "explore this whole city. It's";
-	mes "kind of taboo to talk about,";
-	mes "but what do I care, right?";
+	mes "I don't know if you know, but actually, the people who live here ain't allowed to explore this whole city. It's kind of taboo to talk about it, but what do I care, right?";
 	next;
 	mes "[Maku]";
-	mes "Yeah, basically the rich";
-	mes "people here are too afraid";
-	mes "of the poor people comin' to";
-	mes "see them, so the security in";
-	mes "this city is pretty tight! Those";
-	mes "upper class guys are trash...";
+	mes "Yeah, basically the rich people here are too afraid of the poor people comin' to see them, so the security in this city is pretty tight!";
+	mes "Those upper class guys are trash...";
 	next;
 	mes "[Maku]";
-	mes "I didn't use to think";
-	mes "this way. I actually used";
-	mes "to have a pretty rich friend";
-	mes "till I found out he's not all";
-	mes "I thought he was. That";
-	mes "moron! Why's he like that?!";
+	mes "I didn't use to think this way. I actually used to have a pretty rich friend till I found out he's not all";
+	mes "I thought he was. That moron! Why's he like that?!";
 	next;
 	mes "[Maku]";
 	mes "Eh, forget about it.";
-	mes "Why am I even talking";
-	mes "about my personal life";
-	mes "to someone I just met";
-	mes "anyway? Sure, we all";
-	mes "do it, but still...";
+	mes "Why am I even talking about my personal life to someone I just met, anyway? Sure, we all do it, but still...";
 	next;
 	mes "[Maku]";
-	mes "Well, when you get";
-	mes "bored of the ghetto,";
-	mes "you really oughta check";
-	mes "out the rich section of town.";
-	mes "I'm bitter, but I'll also admit";
-	mes "it's way nicer than this place.";
-	if(BaseLevel > 29) set friendship,1;
+	mes "Well, when you get bored of the ghetto, you really oughta check out the rich section of town.";
+	mes "I'm bitter, but I'll also admit it's way nicer than this place.";
+	if (BaseJob != JOB_NOVICE) set friendship,1;
 	close;
 
-
-Switches:
-	switch(friendship)
-	{
-	
-	case 2:
+	L_friend2:
 		mes "[Maku]";
 		mes "Hey, what are you";
 		mes "doing back over here?";
@@ -1906,9 +2099,8 @@ Switches:
 		mes "him, I'll beat him to a pulp!";
 		set friendship,3;
 		close;
-	break;
 
-	case 3:
+	L_friend3:
 		mes "[Maku]";
 		mes "Man, I need to blow off some";
 		mes "steam! Sure, me and Digotz";
@@ -1932,9 +2124,8 @@ Switches:
 		mes "holding a grudge. It's all";
 		mes "that guy's fault! Sheeeesh!";
 		close;
-	break;
 
-	case 4:
+	L_friend4:
 		mes "[Maku]";
 		mes "What the hell are you";
 		mes "still doing around here?";
@@ -1958,16 +2149,14 @@ Switches:
 		mes "has to say, line by line!";
 		next;
 		input @digotzstr$;
-		if(@digotzstr$ != "Hopeless bastard!")goto failstr;
+		if (@digotzstr$ != "Hopeless bastard!") goto failstr;
 		mes "[Maku]";
 		mes "\"Hopeless Bastard?!\"";
-		mes "Well, at least he had";
-		mes "the stomach to say that.";
-		mes "Through somebody else";
-		mes "anyway! What else'd he say?!";
+		mes "Well, at least he had the stomach to say that.";
+		mes "Through somebody else anyway! What else'd he say?!";
 		next;
 		input @digotzstr$;
-		if(@digotzstr$ != "You're still a stubborn jerk!")goto failstr;
+		if (@digotzstr$ != "You're still a stubborn jerk!") goto failstr;
 		mes "[Maku]";
 		mes "\"Stubborn Jerk?!\"";
 		mes "Takes no one to know one,";
@@ -1975,17 +2164,15 @@ Switches:
 		mes "Grrr! What'd he say next?!";
 		next;
 		input @digotzstr$;
-		if(@digotzstr$ != "You owe me at least 3 lunches!")goto failstr;
+		if (@digotzstr$ != "You owe me at least 3 lunches!") goto failstr;
 		mes "[Maku]";
 		mes "Three lunches?!";
-		mes "I treated that guy to";
-		mes "lunch like, fifteen times!";
-		mes "I tell you, the guy does not";
-		mes "know the meaning of friendship!";
+		mes "I treated that guy to lunch like, fifteen times!";
+		mes "I tell you, the guy does not know the meaning of friendship!";
 		mes "What else did that moron say?!";
 		next;
 		input @digotzstr$;	
-		if(@digotzstr$ != "Not to mention an apology!")goto failstr;
+		if (@digotzstr$ != "Not to mention an apology!") goto failstr;
 		mes "[Maku]";
 		mes "Me, apologize?!";
 		mes "He should be on his hands";
@@ -1995,7 +2182,7 @@ Switches:
 		mes "W-what else did he tell you?!";
 		next;
 		input @digotzstr$;
-		if(@digotzstr$ != "But who cares what you think?!")goto failstr;
+		if (@digotzstr$ != "But who cares what you think?!") goto failstr;
 		mes "[Maku]";
 		mes "Who cares what I think?!";
 		mes "GRRRAAH~!! Who cares";
@@ -2005,7 +2192,7 @@ Switches:
 		mes "make me angrier than I am now!";
 		next;
 		input @digotzstr$;
-		if(@digotzstr$ != "I'm so goddamn happy without you!")goto failstr;
+		if (@digotzstr$ != "I'm so goddamn happy without you!") goto failstr;
 		mes "[Maku]";
 		mes "That's it.";
 		mes "It's decided. The";
@@ -2014,9 +2201,8 @@ Switches:
 		mes "face all over the floor.";
 		set friendship,5;
 		close;
-	break;
 
-	case 5:
+	L_friend5:
 		mes "[Maku]";
 		mes "RrrrRrrrr.....";
 		mes "RrrrrRRRrrRR.....";
@@ -2073,9 +2259,8 @@ Switches:
 		mes "if it weren't for them...!";		
 		set friendship,6;
 		close;
-	break;
 
-	case 6:
+	L_friend6:
 		mes "[Maku]";
 		mes "Arrrrgh! Whenever I hear";
 		mes "about that Digotz, I get so";
@@ -2091,9 +2276,8 @@ Switches:
 		mes "Arrrrrrrgh! Man, where's";
 		mes "Benkastein when I need him?";
 		close;
-	break;
 
-	case 7:
+	L_friend7:
 		mes "[Maku]";
 		mes "Arrrrgh! Whenever I hear";
 		mes "about that Digotz, I get so";
@@ -2109,9 +2293,8 @@ Switches:
 		mes "Arrrrrrrgh! Man, where's";
 		mes "Benkastein when I need him?";
 		close;
-	break;
 
-	case 8:
+	L_friend8:
 		mes "[Maku]";
 		mes "Hey, what is that? You want";
 		mes "me to read this journal?";
@@ -2254,38 +2437,19 @@ Switches:
 		mes "Um, now I gotta get";
 		mes "ready for something.";
 		mes "^111111(But not to see Digotz!)";
-		if(countitem(7351))delitem 7351,1;
+		if (countitem(7351))delitem 7351,1;
 		set friendship,9;
 		close;
-	break;
 
-	case 9:
+	L_friend9:
 		mes "[Maku]";
 		mes "Why is Digotz";
 		mes "so late? This isn't";
 		mes "like him at all. Maybe";
 		mes "something's wrong?";
 		close;
-	break;
 
-	case 10:
-		mes "[Maku]";
-		mes "Why is Digotz";
-		mes "so late? This isn't";
-		mes "like him at all. Maybe";
-		mes "something's wrong?";
-		next;
-		mes "[Maku]";
-		mes "Eh, he might have";
-		mes "some kinda reason for";
-		mes "being late, but if he don't,";
-		mes "i've been saving a whole";
-		mes "six pack of kickass to open,";
-		mes "just for him. Heh heh heh~";
-		close;
-	break;
-
-	case 11:
+	L_friend10:
 		mes "[Maku]";
 		mes "Why is Digotz";
 		mes "so late? This isn't";
@@ -2296,21 +2460,15 @@ Switches:
 		mes "Eh, he might have";
 		mes "some kinda reason for";
 		mes "being late, but if he don't,";
-		mes "i've been saving a whole";
-		mes "six pack of kickass to open,";
-		mes "just for him. Heh heh heh~";
+		mes "I've been saving a whole";
+		mes "six pack of whoop-ass to open,";
+		mes "just for him. Heh heh heh..";
 		close;
-	break;
-	}
-
-failstr:
+	
+	failstr:
 	mes "[Maku]";
-	mes "Wha...? I dunno if Digotz";
-	mes "would say something like";
-	mes "that. You sure you heard";
-	mes "him carefully enough? It's";
-	mes "been a while, but I know";
-	mes "how Digotz talks, man.";
+	mes "Wha...? I dunno if Digotz would say something like that.";
+	mes "You sure you heard him carefully enough? It's been a while, but I know how Digotz talks, man.";
 	close;
 }
 
@@ -2323,7 +2481,7 @@ yuno_in04.gat,107,14,4	script	Student	754,{
 	mes "Still, students like Benkastein";
 	mes "can tune out the whole world";
 	mes "when they study hard enough...";
-	if(friendship != 6)close;
+	if (friendship != 6) close;
 	next;
 	mes "[Joey Choryee]";
 	mes "Benkastein...?";
@@ -2338,9 +2496,10 @@ yuno_in04.gat,107,14,4	script	Student	754,{
 
 yuno_in04.gat,96,106,4	script	Passionate Student	754,{
 
-	if(friendship == 10)goto s_Ask;
-	if(friendship3 == 2 || friendship3 == 3)goto s_Cont2;
-	if(friendship3 == 1)goto s_Cont;
+	if (friendship3 == 4) goto s_Finish;
+	if (friendship == 10) goto s_Ask;
+	if (friendship3 == 2 || friendship3 == 3) goto s_Cont2;
+	if (friendship3 == 1) goto s_Cont;
 	mes "[Passionate Student]";
 	mes "Let's see, now.";
 	mes "Wind Magic, Black Magic,";
@@ -2349,7 +2508,7 @@ yuno_in04.gat,96,106,4	script	Passionate Student	754,{
 	mes "Hopefully this contains";
 	mes "the information I need...";
 	next;
-	if(friendship != 6)goto s_Dialog;
+	if (friendship != 6) goto s_Dialog;
 	mes "Upon briefly glancing at";
 	mes "this student's belongings,";
 	mes "you notice that the name";
@@ -2436,13 +2595,14 @@ s_Cont:
 	close;
 
 s_Cont2:
+	if (friendship > 6) goto s_Dialog;
 	mes "[Benkastein]";
 	mes "Aw nuts, this is";
 	mes "taking much longer";
 	mes "than I had expected.";
 	mes "Now where did I put";
 	mes "that thing? Hmmmm...";
-	if(friendship3 == 3)goto s_Cont3;
+	if (friendship3 == 3) goto s_Cont3;
 	next;
 	mes "^3131FFPerhaps it would";
 	mes "be best if you help";
@@ -2482,15 +2642,15 @@ s_Cont3:
 	mes "acting. Thanks in advance,";
 	mes "and please take care of";
 	mes "Maku and Digotz for me.";
-	if(friendship == 6)set friendship,7;
+	if (friendship == 6)set friendship,7;
 	close;
 
 s_Dialog:
 	mes "^3131FFThis student seems to";
 	mes "be dilligently conducting";
 	mes "intensive research on some";
-	mes "academic subject. For now,";
-	mes "it would be best to leave him";
+	mes "academic subject.";
+	mes "It would be best to leave him";
 	mes "alone so that he can study.";
 	close;
 
@@ -2524,23 +2684,32 @@ s_Ask:
 	mes "adventurer. When the three";
 	mes "of us get together, I'll be";
 	mes "sure to let you know~";
-	if(BaseLevel < 41)set BaseExp,BaseExp+49500;
-	else if(BaseLevel > 40 && BaseLevel < 61)set BaseExp,BaseExp+99000;
-	else if(BaseLevel > 60 && BaseLevel < 71)set BaseExp,BaseExp+198000;
-	else if(BaseLevel > 70 && BaseLevel < 81)set BaseExp,BaseExp+396000;
-	else if(BaseLevel > 80 && BaseLevel < 91)set BaseExp,BaseExp+594000;
-	else if(BaseLevel > 90)set BaseExp,BaseExp+792000;
+	if (BaseLevel < 41)set BaseExp,BaseExp+49500;
+	if (BaseLevel > 40 && BaseLevel < 61)set BaseExp,BaseExp+99000;
+	if (BaseLevel > 60 && BaseLevel < 71)set BaseExp,BaseExp+198000;
+	if (BaseLevel > 70 && BaseLevel < 81)set BaseExp,BaseExp+396000;
+	if (BaseLevel > 80 && BaseLevel < 91)set BaseExp,BaseExp+594000;
+	if (BaseLevel > 90)set BaseExp,BaseExp+792000;
 	getitem 7350,1;
 	set friendship,11;
-	set friendship3,0;
+	set friendship3,4;
+	close;
+
+s_Finish:
+	mes "^3131FFThis student seems to";
+	mes "be dilligently conducting";
+	mes "intensive research on some";
+	mes "academic subject. For now,";
+	mes "it would be best to leave him";
+	mes "alone so that he can study.";
 	close;
 
 }
 
 yuno_in04.gat,168,117,1	script	Book	111,{
 
-	if(friendship3 >= 3)goto Book2;
-	if(friendship3 == 2)goto Book;
+	if (friendship3 == 3) goto Book2;
+	if (friendship3 == 2) goto Book;
 	mes "^3131FFThis book is labeled,";
 	mes "\"Benkastein's Journal";
 	mes "Vol. 6.\".";
