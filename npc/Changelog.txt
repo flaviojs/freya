@@ -2,6 +2,10 @@
 
 Date	Added
 
+01/16/07
+	* Changed: Enabled all npc/other scripts (now compatible) [Tsuyuki]
+	 - Marriage has been excluded, it will need a massive rewrites to become compatible
+
 01/15/07
 	* Changed: Enabled all Merchants (now compatible) [Tsuyuki]
 	* Changed: Enabled Kafras, Guides, and Aiports (now compatible) [Tsuyuki]

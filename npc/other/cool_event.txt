@@ -73,7 +73,7 @@ hugel.gat,88,168,4	script	Cool Event Employee	874,{
 
 	L_Cart:
 		if (callfunc("Is_Merc_Class") == 0) goto L_End03;
-		if (checkcart(0) == 1) goto L_End04;
+		if (checkcart() == 1) goto L_End04;
 		if (getskilllv(39) == 0) goto L_End05;
 
 		mes "[Cool Event Employee]";
@@ -198,7 +198,7 @@ lighthalzen.gat,94,248,4	script	Cool Event Employee	874,{
 
 	L_Cart:
 		if (callfunc("Is_Merc_Class") == 0) goto L_End03;
-		if (checkcart(0) == 1) goto L_End04;
+		if (checkcart() == 1) goto L_End04;
 		if (getskilllv(39) == 0) goto L_End05;
 
 		mes "[Cool Event Employee]";

@@ -11,7 +11,9 @@ Completely Converted Folders:
 npc/airports/
 npc/guides/
 npc/kafras/
+npc/merchants/
 npc/mobs/
+npc/other/
 npc/warps/
 
 ===========================================
@@ -28,8 +30,20 @@ npc/folder/filename.txt Line: xxx
 
 -------------------------------------------
 
-npc/folder/refine.txt Line: 783
+npc/merchants/refine.txt Line: 783
 
--> Weapon repair NPC script is a little messy.. needs to be tested and possibly modified/officialized.
+-> Weapon repair NPC script is a little messy.. needs to be tested and possibly modified/officialized. [Tsuyuki]
+
+-------------------------------------------
+
+npc/other/Global_Functions.txt Line: 442
+
+-> Rebirth quest skill saving is incompatible with jAthena. Currently commented. I think I'll import Freya's rebirth system instead. It's just as good. I converted it from eAthena rather recently. [Tsuyuki]
+
+-------------------------------------------
+
+npc/other/marriage.txt Line: Entire File
+
+-> Skotlex from eAthena implemented a sort of.. sub-function system, which only eAthena is compatible with. Therefore someone will need to do a big rewrite on the marriage system and convert all the 'sub-functions' into standard script functions and get it all debugged and working. Currently marriage is disabled, though Divorce is enabled and works fine.
 
 -------------------------------------------

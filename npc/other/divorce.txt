@@ -16,7 +16,8 @@
 //============================================================
 
 nif_in.gat,190,112,5 script Deviruchi 738,{
-    if (getpartnerid(0) >= 1) goto DivorceMe;
+
+    if (PartnerId) goto DivorceMe;
         mes "[Deviruchi]";
         mes "Kekeke, humans are always alone in the end,";
         mes "The feeling of lonely is just temporarily.";
@@ -94,27 +95,20 @@ M_Divorce:
     mes "It might take some time...";
     mes "So don't go away, and stay here!";
     next;
-    if (ispartneron(0) == 0) goto M_PartnerOff;
-    //ShowEffect "Deviruchi#Divorce" EF_MAGICROD Dont know, what to do here >.>
-    //ShowEffect "" EF_DEVIL same
-    if (divorce(0) != 1) goto M_DivorceFail;
-    set Zeny, Zeny - 2500000;
-    percentheal -100,-100;
-    set @register,0;
+    set '@name$,getcharname(PartnerId);
     mes "[Deviruchi]";
     mes "Kekeke, you are free now!";
     mes "Throw away all your sinking feelings!";
     mes "You should thank Deviruchi.....!";
-    close;
-
-M_PartnerOff:
-    mes "Kekeke, it may sound unpleasant";
-    mes "but your partner must be on so";
-    mes "Deviruchi can divorce you. We have";
-    mes "our rules: contract cannot be destroyed";
-    mes "in the absence of one the sides.";
-    mes "Sorry... kekeke.";
-    close;
+    close2;
+    set @register,0;
+    set '@name$,getcharname(divorce(0));
+    //ShowEffect "Deviruchi#Divorce" EF_MAGICROD Dont know, what to do here >.>
+    //ShowEffect "" EF_DEVIL same
+    heal -Hp+1,-Sp;
+    set Zeny,Zeny-2500000;
+    announce strcharinfo(0)+ " and " +'@name$+ " have been divorced.",0x1a;
+    end;
 
 M_DivorceFail:
     emotion 23;
