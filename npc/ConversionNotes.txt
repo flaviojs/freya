@@ -9,12 +9,22 @@ This file will be used to take notes on things that are not converted yet, and a
 Completely Converted Folders:
 
 npc/airports/
+npc/cities/
+npc/custom/
+npc/events/
 npc/guides/
 npc/kafras/
 npc/merchants/
 npc/mobs/
 npc/other/
+npc/sample/
 npc/warps/
+
+To-Do:
+
+npc/guild/
+npc/jobs/
+npc/quests/
 
 ===========================================
 
