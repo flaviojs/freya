@@ -1,0 +1,27 @@
+// Freya NPC Script Conversion Notes
+
+What is the purpose of this file?
+
+This file will be used to take notes on things that are not converted yet, and are disabled/commented. There are bound to be things we can't fix right away, so if we come across any of those, we can go ahead and note them down here.
+
+===========================================
+
+Completely Converted Folders:
+
+npc/airports/
+npc/guides/
+npc/kafras/
+npc/mobs/
+npc/warps/
+
+===========================================
+
+Format:
+
+npc/folder/filename.txt Line: xxx
+
+-> Details
+
+===========================================
+
+// Begin Notes Here

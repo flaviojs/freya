@@ -3,8 +3,9 @@
 Date	Added
 
 01/15/07
-	* Changed: Enabled all NPC monster spawns (compatible) [Tsuyuki]
-	* Changed: Enabled all NPC warps (compatible) [Tsuyuki]
+	* Changed: Enabled Kafras, Guides, and Aiports (now compatible) [Tsuyuki]
+	* Changed: Enabled all NPC Monster Spawns (compatible) [Tsuyuki]
+	* Changed: Enabled all NPC Warps (compatible) [Tsuyuki]
 	* Added: Freya Database Changelog [Tsuyuki]
 	* Changed: Commented all NPC scripts until they're compatible [Tsuyuki]
 	* Merged: Old Freya's NPC scripts [Tsuyuki]
