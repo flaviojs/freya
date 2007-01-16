@@ -2258,7 +2258,7 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 	// Double Attack
 	if (sd && !skill_num && !flag.cri) {
 		// Daggers
-		if (((skill_lv = 5 * pc_checkskill(sd, TF_DOUBLE) > 0) && sd->weapontype1 == 1) ||
+		if (((skill_lv = 5 * pc_checkskill(sd, TF_DOUBLE)) > 0 && sd->weapontype1 == 0x01) ||
 			sd->double_rate > 0) {
 			if (rand()%100 < (skill_lv > sd->double_rate?skill_lv : sd->double_rate)) {
 				wd.damage *= 2;
@@ -2266,7 +2266,7 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 				wd.type = 0x08;
 			}
 		// Revolvers
-		} else if (((skill_lv = 5 * pc_checkskill(sd, GS_CHAINACTION) > 0) && sd->weapontype1 == 17) || sd->double_rate > 0) {
+		} else if (((skill_lv = 5 * pc_checkskill(sd, GS_CHAINACTION)) > 0 && sd->weapontype1 == 17) || sd->double_rate > 0) {
 			if (rand()%100 < (skill_lv > sd->double_rate?skill_lv : sd->double_rate)) {
 				wd.damage *= 2;
 				wd.div_ = 2; // Number of hits (Double Attack)
