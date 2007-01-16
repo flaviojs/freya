@@ -25,3 +25,11 @@ npc/folder/filename.txt Line: xxx
 ===========================================
 
 // Begin Notes Here
+
+-------------------------------------------
+
+npc/folder/refine.txt Line: 783
+
+-> Weapon repair NPC script is a little messy.. needs to be tested and possibly modified/officialized.
+
+-------------------------------------------
