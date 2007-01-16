@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+01/16/07
+	* Removed: Some old scripts [Tsuyuki]
+
 01/15/07
 	* Added: Most of the Gunslinger class skills: [Tsuyuki]
 	 - GS_GLITTERING - Flip the Coin
