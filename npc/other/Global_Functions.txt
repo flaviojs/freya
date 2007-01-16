@@ -3,7 +3,7 @@
 //===== By: ==================================================
 //= Lupus, kobra_k88, Tsuyuki
 //===== Current Version: =====================================
-//= 1.4
+//= 1.6
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -16,6 +16,7 @@
 //= 1.3b a fix, due to const.txt change [Lupus]
 //= 1.4 Added quest skill save/return rebirth functions [Tsuyuki]
 //= 1.5 Fixed bug with quest skills not saving [Tsuyuki]
+//= 1.6 Quest Skills function now resets quest skill variables when finished with them [Tsuyuki]
 //============================================================
 
 
@@ -171,9 +172,11 @@ function	script	F_ReturnQuestSkills	{
 	if (Class == JOB_NOVICE_HIGH && ADVQ2 == 1) skill 143,1,0;
 
 	if (Class >= JOB_SWORDMAN_HIGH && Class <= JOB_PALADIN2) goto L_Return1stSkills;
+
 	return;
 
 	L_Return1stSkills:
+
 		if (ADVQ3 == 1) skill 144,1,0;
 		if (ADVQ4 == 1) skill 145,1,0;
 		if (ADVQ5 == 1) skill 146,1,0;
@@ -188,13 +191,17 @@ function	script	F_ReturnQuestSkills	{
 		if (ADVQ14 == 1) skill 155,1,0;
 		if (ADVQ15 == 1) skill 156,1,0;
 		if (ADVQ16 == 1) skill 157,1,0;
+
 		goto L_ReturnCont01;
 
 	L_ReturnCont01:
+
 		if (Class >= JOB_LORD_KNIGHT && Class <= JOB_PALADIN2) goto L_Return2ndSkills;
+
 		return;
 
 		L_Return2ndSkills:
+
 			if (ADVQ17 == 1) skill 1001,1,0;
 			if (ADVQ18 == 1) skill 1002,1,0;
 			if (ADVQ19 == 1) skill 1003,1,0;
@@ -214,5 +221,43 @@ function	script	F_ReturnQuestSkills	{
 			if (ADVQ33 == 1) skill 1017,1,0;
 			if (ADVQ34 == 1) skill 1018,1,0;
 			if (ADVQ35 == 1) skill 1019,1,0;
+
+			// Remove old variables not that we're done with them
+			set ADVQ1,0;
+			set ADVQ2,0;
+			set ADVQ3,0;
+			set ADVQ4,0;
+			set ADVQ5,0;
+			set ADVQ6,0;
+			set ADVQ7,0;
+			set ADVQ8,0;
+			set ADVQ9,0;
+			set ADVQ10,0;
+			set ADVQ11,0;
+			set ADVQ12,0;
+			set ADVQ13,0;
+			set ADVQ14,0;
+			set ADVQ15,0;
+			set ADVQ16,0;
+			set ADVQ17,0;
+			set ADVQ18,0;
+			set ADVQ19,0;
+			set ADVQ20,0;
+			set ADVQ21,0;
+			set ADVQ22,0;
+			set ADVQ23,0;
+			set ADVQ24,0;
+			set ADVQ25,0;
+			set ADVQ26,0;
+			set ADVQ27,0;
+			set ADVQ28,0;
+			set ADVQ29,0;
+			set ADVQ30,0;
+			set ADVQ31,0;
+			set ADVQ32,0;
+			set ADVQ33,0;
+			set ADVQ34,0;
+			set ADVQ35,0;
+
 			return;
 }

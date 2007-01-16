@@ -5,7 +5,7 @@
 //= Finished, optimized and tested by Lupus
 //= Rewrote some parts by Tsuyuki
 //===== Current Version: ===================================== 
-//= 3.1
+//= 3.2
 //===== Compatible With: ===================================== 
 //= Freya
 //===== Description: ========================================= 
@@ -29,6 +29,7 @@
 //=  -> Both moved to Global Functions
 //= 3.0 Fixed a problem where you couldn't exit the Valkyrie Realm under certain circumstances [Tsuyuki]
 //= 3.1 Fixed problem where High Novice wasn't getting it's quest skills [Tsuyuki]
+//= 3.2 Finally fixed quest skill saving/returning process [Tsuyuki]
 //============================================================ 
 
 
@@ -428,18 +429,8 @@ L_GETHIGH:
 	mes "You have become a "+getarg(1)+".";
 	jobchange getarg(0); // High Class
 	next;
-	if (ADVQ1 > 0) goto TQ1;
-	goto TQ2;
-	
-	TQ1:
-		mes "["+getarg(3)+"]";
-		mes "Let me just add in the missing Quest Skills you lost under the Reborn process, "+strcharinfo(0)+".";
-		next;
-		// Return learned quest skills
-		callfunc "F_ReturnQuestSkills";
-		goto TQ2;
-
-TQ2:
+	// Return learned quest skills
+	callfunc "F_ReturnQuestSkills";
 	mes "["+getarg(3)+"]";
 	mes "I wish you good fortune in the near future!";
 	emotion e_grat;
@@ -510,17 +501,9 @@ L_GET3RD:
 	mes "You have trained well. Now stroll here as a "+getarg(3)+"!";
 	jobchange getarg(2); // Rebirth Class
 	set ADVJOB,0;
-	if (ADVQ2 > 0) goto RL1;
+	// Return learned quest skills
+	callfunc "F_ReturnQuestSkills";
 	close;
-	
-	RL1:
-		next;
-		mes "["+getarg(3)+"]";
-		mes "Let me just add in the missing Quest Skills you lost under the Reborn process, "+strcharinfo(0)+".";
-		next;
-		// Return learned quest skills
-		callfunc "F_ReturnQuestSkills";
-		close;
 
 L_NOTREADY:
 	mes "You have went so far to get here. But I am sorry, you aren't quite ready to become a "+getarg(3)+".";

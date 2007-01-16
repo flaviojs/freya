@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/16/07
+	* Improved: Rebirth quest skill system now removes garbage variables when it's done with them [Tsuyuki]
+	* Fixed: Fully fixed quest skill saving/returning through the rebirth process [Tsuyuki]
 	* Fixed: Problem where rebirth High Novice wasn't getting it's quest skills [Tsuyuki]
 	* Fixed: Double attack for both Daggers and Guns [Tsuyuki]
 	* Fixed: Valkyrie Shield item's bonuses [Tsuyuki]
