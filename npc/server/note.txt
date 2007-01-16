@@ -1,4 +1,0 @@
-This directory is for scripts of servers.
-The managers of these servers are accepted to share their scripts for the pleasure of other users.
-These scripts are not official.
-You can do what you want with these scripts. But there are no support about these scripts.
