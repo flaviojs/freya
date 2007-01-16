@@ -38,7 +38,7 @@ npc/merchants/refine.txt Line: 783
 
 npc/other/Global_Functions.txt Line: 442
 
--> Rebirth quest skill saving is incompatible with jAthena. Currently commented. I think I'll import Freya's rebirth system instead. It's just as good. I converted it from eAthena rather recently. [Tsuyuki]
+-> Rebirth quest skill saving is incompatible with jAthena. Currently commented. I think I'll import Freya's rebirth system instead. It's just as good. I converted it from eAthena rather recently as well as improved it in certain areas. [Tsuyuki]
 
 -------------------------------------------
 
