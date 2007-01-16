@@ -3,6 +3,8 @@
 Date	Added
 
 01/15/07
+	* Changed: Enabled all NPC monster spawns (compatible) [Tsuyuki]
+	* Changed: Enabled all NPC warps (compatible) [Tsuyuki]
 	* Added: Freya Database Changelog [Tsuyuki]
 	* Changed: Commented all NPC scripts until they're compatible [Tsuyuki]
 	* Merged: Old Freya's NPC scripts [Tsuyuki]
