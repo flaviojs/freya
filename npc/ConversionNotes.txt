@@ -44,6 +44,18 @@ npc/other/Global_Functions.txt Line: 442
 
 npc/other/marriage.txt Line: Entire File
 
--> Skotlex from eAthena implemented a sort of.. sub-function system, which only eAthena is compatible with. Therefore someone will need to do a big rewrite on the marriage system and convert all the 'sub-functions' into standard script functions and get it all debugged and working. Currently marriage is disabled, though Divorce is enabled and works fine.
+-> Skotlex from eAthena implemented a sort of.. sub-function system, which only eAthena is compatible with. Therefore someone will need to do a big rewrite on the marriage system and convert all the 'sub-functions' into standard script functions and get it all debugged and working. Currently marriage is disabled, though Divorce is enabled and works fine. [Tsuyuki]
+
+-------------------------------------------
+
+npc/other/einbroch.txt Line: Various Lines
+
+-> The script command 'specialeffect' is not implemented in jAthena, but it is working in Freya/eAthena. Currently all specialeffect commands throughout the Einbroch file are commented. [Tsuyuki]
+
+-------------------------------------------
+
+npc/other/jawaii.txt Line: Various Lines
+
+-> Same as above, only this time it's 'specialeffect2'. Commented for now. [Tsuyuki]
 
 -------------------------------------------

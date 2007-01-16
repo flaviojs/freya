@@ -34,3 +34,7 @@
 // trans
 //    0:nomal job      1:advanced job      2:adopted child
 //
+
+// Easter Event
+1920,1047,0
+1921,1093,0

@@ -856,10 +856,10 @@ izlude.gat,171,185,3	script	Honeymoon Helper#Izlude I	71,{
 			close;
 
 s_Go:
-			if(getpartnerid() == 0)
+			if(!PartnerId)
 {
 				mes "[Marry Happy]";
-				mes "UhOh, I'm sorry.";
+				mes "Uh oh, I'm sorry.";
 				mes "You can't go there if you're not married...";
 				mes "Why don't you go to the Prontera Inn,";
 				mes "and cheer yourself up?";

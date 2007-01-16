@@ -3,6 +3,8 @@
 Date	Added
 
 01/16/07
+	* Changed: Tested and fixed up Event scripts (they stay commented of course) [Tsuyuki]
+	* Changed: Enabled all City/Town NPCs (now compatible) [Tsuyuki]
 	* Changed: Enabled all npc/other scripts (now compatible) [Tsuyuki]
 	 - Marriage has been excluded, it will need a massive rewrites to become compatible
 
