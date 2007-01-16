@@ -5,7 +5,7 @@
 //= Finished, optimized and tested by Lupus
 //= Rewrote some parts by Tsuyuki
 //===== Current Version: ===================================== 
-//= 3.0
+//= 3.1
 //===== Compatible With: ===================================== 
 //= Freya
 //===== Description: ========================================= 
@@ -28,6 +28,7 @@
 //= 2.9 Redid quest skill saving/returning as functions for other uses [Tsuyuki]
 //=  -> Both moved to Global Functions
 //= 3.0 Fixed a problem where you couldn't exit the Valkyrie Realm under certain circumstances [Tsuyuki]
+//= 3.1 Fixed problem where High Novice wasn't getting it's quest skills [Tsuyuki]
 //============================================================ 
 
 
@@ -310,8 +311,7 @@ L_CHANGE:
 	callfunc "F_ClearJobVar";
 	set RES_SKILL,0; // We reset Reset Skills NPC counter
 	// Return Novice Quest Skills
-	if (ADVQ1 == 1) skill 142;
-	if (ADVQ2 == 1) skill 143;
+	callfunc "F_ReturnQuestSkills";
 	next;
 	if (ADVJOB == JOB_LORD_KNIGHT || ADVJOB == JOB_PALADIN) goto L_Izl;
 	if (ADVJOB == JOB_HIGH_PRIEST || ADVJOB == JOB_CHAMPION) goto L_Pro;

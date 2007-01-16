@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/16/07
+	* Fixed: Problem where rebirth High Novice wasn't getting it's quest skills [Tsuyuki]
 	* Fixed: Double attack for both Daggers and Guns [Tsuyuki]
 	* Fixed: Valkyrie Shield item's bonuses [Tsuyuki]
 	* Removed: Some old scripts [Tsuyuki]
