@@ -3,6 +3,8 @@
 Date	Added
 
 01/16/07
+	* Moved: Mapflags to npc/other/mapflags.txt for the time being [Tsuyuki]
+	 - Perhaps move it to the 'conf' folder later on
 	* Removed: Deleted old eAthena WoE system, and imported the translated jAthena system [Tsuyuki]
 	* Changed: Tested and fixed up Event scripts (they stay commented of course) [Tsuyuki]
 	* Changed: Enabled all City/Town NPCs (now compatible) [Tsuyuki]
