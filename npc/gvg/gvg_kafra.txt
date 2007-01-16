@@ -1,0 +1,103 @@
+//=========================================================================
+// Menu function of a kafra under exclusive contract inside a Castle.
+//	callfunc "GvKafraMenu";
+//-------------------------------------------------------------------------
+// ---- Translation by Darkraven
+
+function	script	GvKafraMenu	{
+	cutin "kafra_01",2;
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);		// Only '@map$ is necessary
+	set '@gid,getcastledata('@map$,1);
+	if('@gid == 0 || getcharid(2) != '@gid) {
+		mes "[Kafra]";
+		mes "I am here to serve only";
+		mes "^ff0000" + getguildname('@gid) + "^000000";
+		mes "guild members.";
+		mes "Please use another Kafra.";
+		//mes "";
+		mes "Thank you.";
+		close2;
+		cutin "kafra_01",255;
+		end;
+	}
+	mes "[Kafra]";
+	mes "Oh! Welcome ^ff0000" +getguildname('@gid)+ "^000000 member.";
+	mes "The Kafra Service";
+	mes "is always at your service.";
+	next;
+	return;
+}
+
+
+//-------------------------------------------
+// * The main part of the kafra is
+//   the KafraMain function inside npc_town_kafra.txt file.
+//-------------------------------------------
+
+//==========================================
+// Aldebaran
+//------------------------------------------
+-	script	AgitKafra_L0	-1,{
+	callfunc "GvKafraMenu";
+	set '@code,17;
+	set '@price,200;
+	callfunc "KafraMain",3,0x4e,0,0,0,0,0,0,40,800,'@code,'@price;
+	end;
+}
+
+aldeg_cas01.gat,218,170,0	duplicate(AgitKafra_L0)	Kafra::AgitKafra_L1	117
+aldeg_cas02.gat,84,74,0		duplicate(AgitKafra_L0)	Kafra::AgitKafra_L2	117
+aldeg_cas03.gat,118,76,0	duplicate(AgitKafra_L0)	Kafra::AgitKafra_L3	117
+aldeg_cas04.gat,45,88,0		duplicate(AgitKafra_L0)	Kafra::AgitKafra_L4	117
+aldeg_cas05.gat,31,190,0	duplicate(AgitKafra_L0)	Kafra::AgitKafra_L5	117
+
+//==========================================
+// Geffen
+//------------------------------------------
+-	script	AgitKafra_B0	-1,{
+	callfunc "GvKafraMenu";
+	set '@code,15;
+	set '@price,200;
+	callfunc "KafraMain",3,0x4e,0,0,0,0,0,0,40,800,'@code,'@price;
+	end;
+}
+
+gefg_cas01.gat,83,47,3		duplicate(AgitKafra_B0)	Kafra::AgitKafra_B1	117
+gefg_cas02.gat,23,66,3		duplicate(AgitKafra_B0)	Kafra::AgitKafra_B2	117
+gefg_cas03.gat,116,89,5		duplicate(AgitKafra_B0)	Kafra::AgitKafra_B3	117
+gefg_cas04.gat,59,70,3		duplicate(AgitKafra_B0)	Kafra::AgitKafra_B4	117
+gefg_cas05.gat,61,52,5		duplicate(AgitKafra_B0)	Kafra::AgitKafra_B5	117
+
+//==========================================
+// Payon
+//------------------------------------------
+-	script	AgitKafra_C0	-1,{
+	callfunc "GvKafraMenu";
+	set '@code,16;
+	set '@price,200;
+	callfunc "KafraMain",3,0x4e,0,0,0,0,0,0,40,800,'@code,'@price;
+	end;
+}
+
+payg_cas01.gat,128,58,3		duplicate(AgitKafra_C0)	Kafra::AgitKafra_C1	117
+payg_cas02.gat,22,275,5		duplicate(AgitKafra_C0)	Kafra::AgitKafra_C2	117
+payg_cas03.gat,9,263,5		duplicate(AgitKafra_C0)	Kafra::AgitKafra_C3	117
+payg_cas04.gat,40,235,1		duplicate(AgitKafra_C0)	Kafra::AgitKafra_C4	117
+payg_cas05.gat,276,227,1	duplicate(AgitKafra_C0)	Kafra::AgitKafra_C5	117
+
+//==========================================
+// Prontera
+//------------------------------------------
+-	script	AgitKafra_V0	-1,{
+	callfunc "GvKafraMenu";
+	set '@code,14;
+	set '@price,200;
+	callfunc "KafraMain",3,0x4e,0,0,0,0,0,0,40,800,'@code,'@price;
+	end;
+}
+
+prtg_cas01.gat,96,173,0		duplicate(AgitKafra_V0)	Kafra::AgitKafra_V1	117
+prtg_cas02.gat,71,36,4		duplicate(AgitKafra_V0)	Kafra::AgitKafra_V2	117
+prtg_cas03.gat,181,215,4	duplicate(AgitKafra_V0)	Kafra::AgitKafra_V3	117
+prtg_cas04.gat,258,247,4	duplicate(AgitKafra_V0)	Kafra::AgitKafra_V4	117
+prtg_cas05.gat,52,41,4		duplicate(AgitKafra_V0)	Kafra::AgitKafra_V5	117

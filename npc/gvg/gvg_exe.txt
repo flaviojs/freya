@@ -1,0 +1,124 @@
+//=========================================================================
+// WoE starting and guild changements common functions.
+//	callfunc "AgitGiveUp","AgitCode";
+//
+// * Run
+//	"::OnFlagEmb_XY" (refer to npc_gvg_flag.txt file)
+//
+// * Function
+//	When it is WoE, function "AgitSummon" is called·(npc_gvg_monster)
+//-------------------------------------------------------------------------
+// ---- Translation by Darkraven
+
+function	script	AgitGiveUp	{
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);		// Only '@map$ is used.
+	killmonsterall '@map$;
+	disablenpc "AgitKafra_"+getarg(0);
+	for(set '@i,1; '@i<=17; set '@i,'@i+1) {
+		setcastledata '@map$,'@i,('@i==2 || '@i==3)? 1: 0;
+	}
+	donpcevent "::OnFlagEmb_"+getarg(0);		// Change in flag emblem
+	maprespawnguildid '@map$,0,7;
+	if(agitcheck())
+		callfunc "AgitSummon",getarg(0);	// Summoning of monsters and the emperium
+	return;
+}
+
+
+//=========================================================================
+// Section: execution of attack castle.
+//	All processings are performed here!
+//
+// * The information about position is acquired with strnpcinfo(2).
+//   Because it is duplicate function, Map names and NPC names are acquired with specifical functions.
+//-------------------------------------------------------------------------
+
+-	script	AgitExe	-1,{
+OnAgitInit:
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);		// Only '@map$ is used.
+	if('@map$ == "-")					// the 'duplicate' has no origin.
+		end;
+	if(getcastledata('@map$,9) == 0)
+		disablenpc "AgitKafra_"+strnpcinfo(2);
+	for(set '@i,10; '@i<=17; set '@i,'@i+1) {	// We summon Guardians if they exist.
+		if(getcastledata('@map$,'@i))
+			callfunc "GuardianCall",strnpcinfo(2),'@i,0;
+	}
+	end;
+OnAgitStart:
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	if('@map$ == "-")
+		end;
+	maprespawnguildid '@map$,getcastledata('@map$,1),2;
+	callfunc "AgitSummon",strnpcinfo(2);	// Summonning of Emperium (npc_gvg_monster.txt)
+	gvgon '@map$;
+	end;
+OnAgitBreak:
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	if('@map$ == "-")
+		end;
+	killmonsterall '@map$;
+	set '@gid,getcharid(2);		// Get Emperium ID
+	if('@gid <= 0)
+		end;
+	setcastledata '@map$,1,'@gid;
+	for(set '@i,2; '@i<=17; set '@i,'@i+1) {
+		if('@i==2 || '@i==3) {
+			set '@val,getcastledata('@map$,'@i)-5;
+			setcastledata '@map$,'@i,('@val<1)? 1: '@val;
+		}
+		else
+			setcastledata '@map$,'@i,0;
+	}
+	announce "The Emperium has been destroyed.",9,0x00ff00;
+	sleep 800;
+	announce "Castle [" +getcastlename('@map$)+ "] has been taken by [" +getguildname('@gid)+ "] guild.",0;
+	donpcevent "::OnFlagEmb_"+strnpcinfo(2);	// Change of the flag emblem (npc_gvg_flag.txt)
+	end;
+OnAgitEliminate:
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	if('@map$ == "-")
+		end;
+	maprespawnguildid '@map$,getcastledata('@map$,1),6;
+	callfunc "AgitSummon",strnpcinfo(2);	// Only the Emperium is summoned again. (npc_gvg_monster.txt)
+	end;
+OnGuildBreak:
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	if('@map$ == "-")
+		end;
+	callfunc "AgitGiveUp",strnpcinfo(2);
+	end;
+OnAgitEnd:
+	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);
+	if('@map$ == "-")
+		end;
+	maprespawnguildid '@map$,getcastledata('@map$,1),4;
+	killmonster '@map$,strnpcinfo(0)+"::OnAgitBreak";	// Only the Emperium is deleted.
+	gvgoff '@map$;
+	end;
+}
+
+// aldebaran
+aldeg_cas01.gat,0,0,0	duplicate(AgitExe)	AgitExe#L1	-1
+aldeg_cas02.gat,0,0,0	duplicate(AgitExe)	AgitExe#L2	-1
+aldeg_cas03.gat,0,0,0	duplicate(AgitExe)	AgitExe#L3	-1
+aldeg_cas04.gat,0,0,0	duplicate(AgitExe)	AgitExe#L4	-1
+aldeg_cas05.gat,0,0,0	duplicate(AgitExe)	AgitExe#L5	-1
+// geffen
+gefg_cas01.gat,0,0,0	duplicate(AgitExe)	AgitExe#B1	-1
+gefg_cas02.gat,0,0,0	duplicate(AgitExe)	AgitExe#B2	-1
+gefg_cas03.gat,0,0,0	duplicate(AgitExe)	AgitExe#B3	-1
+gefg_cas04.gat,0,0,0	duplicate(AgitExe)	AgitExe#B4	-1
+gefg_cas05.gat,0,0,0	duplicate(AgitExe)	AgitExe#B5	-1
+// payon
+payg_cas01.gat,0,0,0	duplicate(AgitExe)	AgitExe#C1	-1
+payg_cas02.gat,0,0,0	duplicate(AgitExe)	AgitExe#C2	-1
+payg_cas03.gat,0,0,0	duplicate(AgitExe)	AgitExe#C3	-1
+payg_cas04.gat,0,0,0	duplicate(AgitExe)	AgitExe#C4	-1
+payg_cas05.gat,0,0,0	duplicate(AgitExe)	AgitExe#C5	-1
+// prontera
+prtg_cas01.gat,0,0,0	duplicate(AgitExe)	AgitExe#V1	-1
+prtg_cas02.gat,0,0,0	duplicate(AgitExe)	AgitExe#V2	-1
+prtg_cas03.gat,0,0,0	duplicate(AgitExe)	AgitExe#V3	-1
+prtg_cas04.gat,0,0,0	duplicate(AgitExe)	AgitExe#V4	-1
+prtg_cas05.gat,0,0,0	duplicate(AgitExe)	AgitExe#V5	-1

@@ -13,6 +13,7 @@ npc/cities/
 npc/custom/
 npc/events/
 npc/guides/
+npc/gvg/
 npc/kafras/
 npc/merchants/
 npc/mobs/
@@ -22,7 +23,6 @@ npc/warps/
 
 To-Do:
 
-npc/guild/
 npc/jobs/
 npc/quests/
 
