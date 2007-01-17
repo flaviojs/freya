@@ -4578,7 +4578,10 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 					clif_skill_fail(sd, sd->skillid, 0, 0); // Skill has failed
 				break;
 			}
-			
+
+			if (sd && sd->sc_data[SC_SPIRIT].timer!=-1 && sd->sc_data[SC_SPIRIT].val2 == SL_WIZARD) // no gems required with wizard link (Haplo aka dralthan)
+			gem_flag = 0;
+
 			if (dstsd && status_isimmune(bl))
 				break;
 		  {
@@ -7435,7 +7438,7 @@ int skill_unit_onout(struct skill_unit *src, struct block_list *bl, unsigned int
 	  type = SkillStatusChangeTable[sg->skill_id];
 	  if(sc_data && sc_data[type].timer != -1 && sc_data[type].val3 == BCT_SELF) // Basilica should only ends if the caster moves
 			status_change_end(bl, type, -1);
-  break;	
+  break;
 
 	case 0xb6:	/* PF_FOGWALL */
 		sc_data = status_get_sc_data(bl);
@@ -7470,8 +7473,8 @@ int skill_unit_onout(struct skill_unit *src, struct block_list *bl, unsigned int
 		type = SkillStatusChangeTable[sg->skill_id];
 		if(sc_data && sc_data[type].timer != -1)
 			status_change_end(bl, type, -1);
-		break;	
-		
+		break;
+
 	/*default:
 		if (battle_config.error_log)
 			printf("skill_unit_onout: Unknown skill unit id=%d block=%d\n", sg->unit_id, bl->id);
@@ -7870,13 +7873,13 @@ static int skill_check_condition_use_sub(struct block_list *bl,va_list ap)
 	case BD_RAGNAROK:
 	case CG_MOONLIT:
 		if(tsd != sd && //本人以外で
-		  ((t_class == JOB_DANCER && s_class == JOB_BARD) || 
-		   (t_class == JOB_BARD && s_class == JOB_DANCER)) && 
-		   pc_checkskill(tsd, skillid) > 0 && 
+		  ((t_class == JOB_DANCER && s_class == JOB_BARD) ||
+		   (t_class == JOB_BARD && s_class == JOB_DANCER)) &&
+		   pc_checkskill(tsd, skillid) > 0 &&
 		   (*c) == 0 && //最初の一人で
-		   tsd->status.party_id == sd->status.party_id && 
-		   !pc_issit(tsd) && 
-		   tsd->sc_data[SC_DANCING].timer == -1 
+		   tsd->status.party_id == sd->status.party_id &&
+		   !pc_issit(tsd) &&
+		   tsd->sc_data[SC_DANCING].timer == -1
 		  ){
 			sd->sc_data[SC_DANCING].val4 = bl->id;
 			if(skillid != CG_MOONLIT)
@@ -8039,7 +8042,7 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 	switch(skill) {
 	case MC_MAMMONITE:
 		if(pc_checkskill(sd, BS_UNFAIRLYTRICK) > 0)
-			zeny -= zeny * 10 / 100;		
+			zeny -= zeny * 10 / 100;
 		break;
 	case SA_CASTCANCEL:
 		if (sd->skilltimer == -1) {
@@ -8053,7 +8056,7 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 	case AS_CLOAKING:
 	case CR_AUTOGUARD:
 	case CR_DEFENDER:
-	case ST_CHASEWALK:    
+	case ST_CHASEWALK:
 	case PA_GOSPEL:       /* Gospel should not consume SP when turning off */
 	case CR_SHRINK:
 		if(sd->sc_data[SkillStatusChangeTable[skill]].timer != -1)
@@ -8089,12 +8092,12 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 	case TK_COUNTER:
 		if(sd->sc_data[SC_COMBO].timer < 0 || sd->sc_data[SC_COMBO].val1 != skill)
 			return 0;
-		break;	
+		break;
 	case AM_CP_WEAPON:
 	case AM_CP_SHIELD:
 	case AM_CP_ARMOR:
 	case AM_CP_HELM:
-		if (sp > 0 && sd->status.sp < sp) {	
+		if (sp > 0 && sd->status.sp < sp) {
 			clif_skill_fail(sd, skill, 1, 0);
 			return 0;
 		}
@@ -8143,7 +8146,7 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 		if (sd->sc_data[SC_COMBO].timer != -1 && sd->sc_data[SC_COMBO].val1 == MO_BODYRELOCATION)
 			return 0;
 		if(sd->sc_data[SC_BLADESTOP].timer != -1)
-			spiritball--;		
+			spiritball--;
 		else if (sd->sc_data[SC_COMBO].timer != -1) {
 			switch(sd->sc_data[SC_COMBO].val1) {
 				case MO_COMBOFINISH: spiritball = 4; break;
@@ -8267,9 +8270,9 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 		break;
 
 	case WZ_FIREPILLAR:
-		if (lv <= 5) // No gems required at level 1-5
+		if (lv <= 5 || (sd && sd->sc_data[SC_SPIRIT].timer!=-1 && sd->sc_data[SC_SPIRIT].val2 == SL_WIZARD) ) // No gems required at level 1-5
 			itemid[0] = 0;
-		if (battle_config.pc_land_skill_limit) {
+			if (battle_config.pc_land_skill_limit) {
 			int maxcount = skill_get_maxcount(skill);
 			if (maxcount > 0) {
 				int i, c;
@@ -8288,6 +8291,22 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 
 	case HW_GANBANTEIN:
 		break;
+
+	case HW_GRAVITATION:
+		if (sd && sd->sc_data[SC_SPIRIT].timer!=-1 && sd->sc_data[SC_SPIRIT].val2 == SL_WIZARD) // no gems required with wizard link (Haplo aka dralthan)
+		itemid[0] = 0;
+	break;
+
+	case MG_SAFETYWALL:
+		if (sd && sd->sc_data[SC_SPIRIT].timer!=-1 && sd->sc_data[SC_SPIRIT].val2 == SL_WIZARD) // no gems required with wizard link (Haplo aka dralthan)
+		itemid[0] = 0;
+	break;
+
+	case MG_STONECURSE:
+		if (sd && sd->sc_data[SC_SPIRIT].timer!=-1 && sd->sc_data[SC_SPIRIT].val2 == SL_WIZARD) // no gems required with wizard link (Haplo aka dralthan)
+		itemid[0] = 0;
+	break;
+
 
 	case CG_HERMODE:
 		{
@@ -8384,7 +8403,7 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 			return 0;
 		}
 		break;
-		
+
 	case NJ_NEN:
 		if (sd->status.hp <= 80 && lv >= 5) {
 			clif_skill_fail(sd,skill,0,0);
@@ -8586,7 +8605,7 @@ int skill_castfix(struct block_list *bl, int time_duration) {
 	struct status_change *sc_data;
 
 	nullpo_retr(0, bl);
-	
+
 	if(time_duration == 0)
 		return 0;
 
@@ -8611,7 +8630,7 @@ int skill_castfix(struct block_list *bl, int time_duration) {
 		if (sd->castrate != 100)
 			time_duration -= time_duration * (100 - sd->castrate) / 100;
 	}
-	
+
 	// Calculate casting time reduced by skill bonuses
 	sc_data = status_get_sc_data(bl);
 	if (sc_data) {
@@ -8650,7 +8669,7 @@ int skill_delayfix(struct block_list *bl, int time_duration, int skill_num) {
 		} else if (time_duration < 0)
 			time_duration = abs(time_duration) + status_get_adelay(bl) / 2; // If set to <0, the aspd delay will be added
 
-		if (battle_config.delay_dependon_dex && 
+		if (battle_config.delay_dependon_dex &&
 		    !skill_get_delaynodex(sd->skillid, sd->skilllv)) { // If skill casttime is allowed to be reduced by dex
 			int scale = battle_config.castrate_dex_scale - status_get_dex(bl);
 			if (scale < 0)
@@ -8680,7 +8699,7 @@ int skill_delayfix(struct block_list *bl, int time_duration, int skill_num) {
 	// If its not WoE, and player has Spirit of the Crusader active, delay for Shield Boomerang is cut in half
 	if (skill_num == CR_SHIELDBOOMERANG && sc_data && sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_CRUSADER && !map[bl->m].flag.gvg)
 		time_duration /= 2;
-		
+
 	return (time_duration > 0) ? time_duration : 0;
 }
 
@@ -8709,7 +8728,7 @@ int skill_use_id(struct map_session_data *sd, int target_id, int skill_num, int 
 
 	if (skillnotok(skill_num, sd))
 		return 0;
-		
+
 	if(bl->type == BL_PC)
 		dstsd = (struct map_session_data *) bl;
 
@@ -9153,7 +9172,7 @@ int skill_castcancel(struct block_list *bl, int type)
 	{
 		struct map_session_data *sd = (struct map_session_data *)bl;
 		nullpo_retr(0, sd);
-		
+
 		if(sd->skilltimer != -1)
 		{
 			/* pressure is uninterruptable */
@@ -9601,7 +9620,7 @@ static int skill_rest_in(struct block_list *bl,va_list ap)
 	if(sd && pc_issit(sd) && (pc_checkskill(sd,TK_HPTIME) > 0 || pc_checkskill(sd,TK_SPTIME) > 0 )){
 		sd->state.rest=1;
 		status_calc_pc(sd,0);
-	}		
+	}
 	return 0;
 }
 
@@ -10715,7 +10734,7 @@ int skill_can_produce_mix( struct map_session_data *sd, int nameid, int trigger,
 				return 0;
 		}
 	}
-	
+
 	if ((j = skill_produce_db[i].req_skill) > 0 && pc_checkskill(sd, j) <= 0)
 		return 0;
 
@@ -10838,7 +10857,7 @@ int skill_produce_mix( struct map_session_data *sd, int nameid, int slot1, int s
 				break;
 			case ASC_CDP:
 				make_per = (2000 + 40 * sd->paramc[4] + 20 * sd->paramc[5]);
-				break;	
+				break;
 			case AL_HOLYWATER:
 				make_per = 100000; // 100% success
 				break;
