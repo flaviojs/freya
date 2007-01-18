@@ -645,7 +645,7 @@ INSERT INTO `item_db` VALUES (1303, 'Axe__', 'Axe', 4, 500, 0, 800, 38, 0, 1, 0,
 INSERT INTO `item_db` VALUES (1304, 'Orcish_Axe', 'Orcish Axe', 4, 20, 0, 1500, 75, 0, 1, 0, 8803555, 2, 2, 3, 3, 6, NULL, NULL);
 INSERT INTO `item_db` VALUES (1305, 'Cleaver', 'Cleaver', 4, 20, 0, 1200, 140, 0, 1, 0, 279714, 2, 2, 4, 44, 6, NULL, 'bonus2 bAddRace,7,5; bonus3 bAddMonsterDropItem,517,2,3000;');
 INSERT INTO `item_db` VALUES (1306, 'War_Axe', 'War Axe', 4, 20, 0, 4200, 145, 0, 1, 1, 263168, 2, 2, 3, 76, 6, NULL, 'bonus bDex,2; bonus bLuk,2;');
-INSERT INTO `item_db` VALUES (1307, 'Windhawk', 'Windhawk', 4, 20, 0, 1500, 115, 0, 1, 0, 279714, 2, 2, 2, 14, 6, NULL, 'bonus bAspdRate,5; bonus bAddEle,4;');
+INSERT INTO `item_db` VALUES (1307, 'Windhawk', 'Windhawk', 4, 20, 0, 1500, 115, 0, 1, 0, 279714, 2, 2, 2, 14, 6, NULL, 'bonus bAspdRate,5; bonus bAtkEle,4;');
 INSERT INTO `item_db` VALUES (1308, 'Golden_Axe', 'Golden Axe', 4, 20, 0, 3000, 170, 0, 1, 0, 1071636478, 2, 2, 4, 45, 6, NULL, NULL);
 INSERT INTO `item_db` VALUES (1351, 'Battle_Axe', 'Battle Axe', 4, 5400, 0, 1500, 80, 0, 1, 3, 279714, 2, 34, 1, 3, 7, NULL, NULL);
 INSERT INTO `item_db` VALUES (1352, 'Battle_Axe_', 'Battle Axe', 4, 5400, 0, 1500, 80, 0, 1, 4, 279714, 2, 34, 1, 3, 7, NULL, NULL);
@@ -1197,7 +1197,7 @@ INSERT INTO `item_db` VALUES (2640, 'Kafra_Ring', 'Kafra Ring', 5, 20, 0, 200, 0
 INSERT INTO `item_db` VALUES (2641, 'Fashion_Hip_Sack', 'Fashion Hip Sack', 5, 20, 0, 700, 0, 0, 0, 0, 263200, 2, 136, 0, 50, 0, NULL, 'bonus bStr,2;');
 INSERT INTO `item_db` VALUES (2642, 'Serin\'s_Gold_Ring', 'Serin\'s Gold Ring', 5, 20, 0, 0, 0, 0, 0, 0, 1071636479, 2, 136, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (2643, 'Serin\'s_Gold_Ring_', 'Serin\'s Gold Ring', 5, 45000, 22500, 100, 0, 0, 0, 0, 1071636479, 2, 136, 0, 0, 0, NULL, NULL);
-INSERT INTO `item_db` VALUES (2644, 'The_Sign_', 'The Sign', 5, 1, 0, 0, 0, 0, 0, 0, 1071636479, 2, 136, 0, 0, 0, NULL, 'bonus bMatkRate,5;  bonus bAtkRate,5;');
+INSERT INTO `item_db` VALUES (2644, 'The_Sign_', 'The Sign', 5, 1, 0, 0, 0, 0, 0, 0, 1071636479, 2, 136, 0, 0, 0, NULL, 'bonus bMatkRate,5; bonus bAtkRate,5;');
 INSERT INTO `item_db` VALUES (2645, 'Moonlight_Ring', 'Moonlight Ring', 5, 40000, 0, 200, 0, 0, 0, 0, 268570688, 2, 136, 0, 60, 0, NULL, 'bonus bMdef,2;');
 INSERT INTO `item_db` VALUES (2646, 'Bunch_of_Carnation', 'Bunch of Carnation', 5, 2, 1, 100, 0, 0, 0, 0, 1071636479, 2, 136, 0, 0, 0, NULL, 'bonus bAllStats,3;');
 INSERT INTO `item_db` VALUES (2647, 'Nile_Rose', 'Nile Rose', 5, 2, 1, 100, 0, 0, 0, 0, 1071636479, 2, 136, 0, 0, 0, NULL, NULL);
@@ -1616,6 +1616,7 @@ INSERT INTO `item_db` VALUES (4359, 'Assassin_Cross_Eremes_Ca', 'Assassin Cross 
 INSERT INTO `item_db` VALUES (4360, 'Eremes_Guile_Card', 'Eremes Guile Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus2 bCriticalAddRace,10,6;');
 INSERT INTO `item_db` VALUES (4361, 'Mastersmith_Howard_Card', 'Mastersmith Howard Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus bBreakWeaponRate,1000; bonus bBreakArmorRate,700;');
 INSERT INTO `item_db` VALUES (4362, 'Howard_Alt-Eisen_Card', 'Howard Alt-Eisen Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus bAspdRate,-5; bonus bHit,30;');
+# 4363: Effect Undecided/Missing
 INSERT INTO `item_db` VALUES (4363, 'High_Priest_Margaretha_C', 'High Priest Margaretha C', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus4 bAutoSpellWhenHit,12,4,50,0;');
 # Cannot fully implement Margaretha Sorin Card (4364), no support for its effect:
 # Current kRO: Int +1, Add a 15% chance of auto casting Level 5 Lex Divina on the enemy when receiving Magical Damage
@@ -1662,6 +1663,7 @@ INSERT INTO `item_db` VALUES (4399, 'Thanatos_Phantom_Card', 'Thantos Phantom Ca
 INSERT INTO `item_db` VALUES (4400, 'Aliza_Card', 'Aliza Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'if(Basejob!=JOB_DANCER) goto L_next; bonus4 bAutoSpellWhenHit,1011,1,100,1; end; L_next: bonus4 bAutoSpellWhenHit,1011,1,50,1;');
 INSERT INTO `item_db` VALUES (4401, 'Alicel_Card', 'Alicel Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bFlee,10; bonus bDef,-5;');
 INSERT INTO `item_db` VALUES (4402, 'Aliot_Card', 'Aliot Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'if(GetPureJob==JOB_SWORDMAN || GetPureJob==JOB_MERCHANT || GetPureJob==JOB_THIEF) bonus bStr, 2; if(GetPureJob==JOB_SWORDMAN || GetPureJob==JOB_MERCHANT || GetPureJob==JOB_THIEF) bonus bMaxHPrate, 5; if(GetPureJob==JOB_MAGE || GetPureJob==JOB_ARCHER || GetPureJob==JOB_ACOLYTE) bonus bInt, 2; if(GetPureJob==JOB_MAGE || GetPureJob==JOB_ARCHER || GetPureJob==JOB_ACOLYTE) bonus bMaxSPrate, 5;');
+# 4403: Effect Undecided/Missing
 INSERT INTO `item_db` VALUES (4403, 'Kiel_D-01_Card', 'Kiel D-01 Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (4404, 'Skogul_Card', 'Skogul Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus2 bAddEffWhenHit,9,3000; bonus2 bAddEff,9,3000;');
 INSERT INTO `item_db` VALUES (4405, 'Thruth_Card', 'Thruth Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus bMagicDamageReturn,getequiprefinerycnt(5)*2; if(GetPureJob==JOB_MAGE) bonus bMdef,3;');
