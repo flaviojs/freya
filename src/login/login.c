@@ -80,7 +80,7 @@ static unsigned char new_account_flag;
 static uid_t exec_user = -1;
 static gid_t exec_group = -1;
 static mode_t permission_mask;
-static unsigned int detach;
+//static unsigned int detach;
 #endif
 #endif
 

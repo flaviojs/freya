@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/17/07
+	* Changed: Commented unused 'detach' variable in login.c and map.c that was causing compilation warnings [Tsuyuki]
 	* Improved: Map-server console loading display [Tsuyuki]
 	* Fixed: Windhawk's element [Tsuyuki]
 	* Updated: Dead Branch and Bloody Branch lists with Thor Dungeon monsters [Tsuyuki]
