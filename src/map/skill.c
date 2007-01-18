@@ -1409,13 +1409,13 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 		if(status_get_size(bl) == 1 && (rand() % 100 < sc_def_vit))
 			status_change_start(bl, SC_STUN, 0, 0, 0, 0, 2000, 0);
 		break;
-
 	case GS_BULLSEYE:
-		if(status_get_race(bl) == 2 || status_get_race(bl) == 7)
-			status_change_start(bl, SC_COMA, skilllv, 0, 0, 0, 100, 0);
+		// If enemy is Brute or Demi-Human, does not work on bosses (applied in status_change_start), and 0.1% chance, activate Coma status
+		if ((status_get_race(bl) == 2 || status_get_race(bl) == 7) && (rand() % 10000 <= 10))
+			status_change_start(bl, SC_COMA, skilllv, 0, 0, 0, 30000, 0);
 		break;
 	case GS_PIERCINGSHOT:
-			status_change_start(bl, SC_BLEEDING, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
+		status_change_start(bl, SC_BLEEDING, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
 		break;
 	case GS_FLING:
 		status_change_start(bl, SC_FLING, skilllv, sd?sd->spiritball_old:5, 0, 0, skill_get_time(skillid,skilllv), 0);
