@@ -5,8 +5,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/17/07
+	* Removed: Fully removed the so-called 'Project Diablo' [Tsuyuki]
+	 - Thrown out due to being pointless, and due to various warnings in different compilation environments/other bugs
 	* Fixed: Gunslinger skill Bulls Eye's coma chance [Tsuyuki]
-	* Changed: Commented unused 'detach' variable in login.c and map.c that was causing compilation warnings [Tsuyuki]
 	* Improved: Map-server console loading display [Tsuyuki]
 	* Fixed: Windhawk's element [Tsuyuki]
 	* Updated: Dead Branch and Bloody Branch lists with Thor Dungeon monsters [Tsuyuki]
@@ -46,7 +47,6 @@ Date	Added
 	* Fixed: Crash bug when monsters use Sonic Blow [Tsuyuki/Bison]
 	* Fixed: Enabled commented Adoption skills in the skill databases [Tsuyuki]
 	* Improved: Optmized script for the Sign Quest [Lex]
-	* Fixed: Fixed and readded Project Diablo changes [Oreo]
 	* Updated: job_db1.txt modifiers for the new classes [Tsuyuki]
 	 - Note: HP Multiplicator for Gunslinger/Ninja is semi-custom, need to code new system as per Aegis
 
