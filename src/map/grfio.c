@@ -465,7 +465,7 @@ char* grfio_resnametable(char* fname, char *lfname) {
 		if (*p == '\\')
 			*p = '/';
 	if ((fp = fopen(restable, "rb")) == NULL) {
-		printf("%s not found (grfio_resnametable).\n", restable);
+		printf(CL_YELLOW "Warning: " CL_RESET "%s not found (grfio_resnametable).\n", restable);
 		return NULL; // 1:not found error
 		//exit(1); // 1: not found error
 	}
@@ -517,7 +517,7 @@ int grfio_size(char *fname) {
 			lentry.gentry = 0; // 0:LocalFile
 			entry = filelist_modify(&lentry);
 		} else if (entry == NULL) {
-			printf("%s not found (grfio_size).\n", fname);
+			printf(CL_RED "Error: " CL_RESET "%s not found (grfio_size).\n", fname);
 			//exit(1);
 			return 0;
 		}
@@ -577,7 +577,7 @@ void* grfio_reads(char *fname, int *size) {
 			if (entry!=NULL && entry->gentry<0) {
 				entry->gentry = -entry->gentry; // local file checked
 			} else {
-				printf("%s not found. %24s\n", fname, "");
+				printf(CL_YELLOW "Warning: " CL_RESET "%s not found. %24s\n", fname, "");
 				//goto errret;
 				FREE(buf2);
 				return NULL;
@@ -593,7 +593,7 @@ void* grfio_reads(char *fname, int *size) {
 		gfname = gentry_table[entry->gentry-1];
 		in = fopen(gfname,"rb");
 		if (in == NULL) {
-			printf("%s not found (grfio_reads) %24s.\n", gfname, "");
+		printf(CL_YELLOW "Warning: " CL_RESET "%s not found (grfio_reads) %24s.\n", gfname, "");
 			//goto errret;
 			FREE(buf);
 			return NULL;
@@ -682,7 +682,7 @@ static int grfio_entryread(char *gfname, int gentry) {
 	unsigned char *grf_filelist;
 
 	if ((fp = fopen(gfname, "rb")) == NULL) {
-		printf("GRF Data File not found: '" CL_WHITE "%s" CL_RESET "'.\n", gfname);
+		printf(CL_YELLOW "Warning: " CL_RESET "GRF Data File not found: '" CL_WHITE "%s" CL_RESET "'.\n", gfname);
 		return 1; // 1:not found error
 	}
 
@@ -897,7 +897,7 @@ static void grfio_resourcecheck() {
 
 	buf=grfio_reads("data\\resnametable.txt",&size);
 	if (buf == NULL) {
-		printf("WARNING: Could not read data\\resnametable.txt !\n");
+		printf(CL_YELLOW "Warning: " CL_RESET "Failed to read data\\resnametable.txt !\n");
 		return;
 	}
 	buf[size] = 0;
@@ -947,7 +947,7 @@ int grfio_add(char *fname) {
 		exit(1);
 	}
 
-	printf("'" CL_WHITE "%s" CL_RESET "' file reading...\n", fname);
+	printf(CL_WHITE "Server: " CL_RESET "'" CL_WHITE "%s" CL_RESET "' file reading...\n", fname);
 
 	if (gentry_entrys>=gentry_maxentry) {
 		int lop;
@@ -1033,7 +1033,7 @@ void grfio_init(char *fname) {
 				}
 			}
 			fclose(data_conf);
-			printf("Reading GRF File '" CL_WHITE "%s" CL_RESET "' done.\n", fname);
+			printf(CL_GREEN "Loaded: " CL_RESET "Reading GRF File '" CL_WHITE "%s" CL_RESET "' done.\n", fname);
 		} // end of reading grf-files.txt
 	}
 
@@ -1052,19 +1052,19 @@ void grfio_init(char *fname) {
 	if (strcmp(data_file, "") != 0) { // If data directive exists in grf-files.txt
 		result = grfio_add(data_file); // Standard data file
 	} else {
-		printf("No file name in grf-files.txt for data directive.\n");
+		printf(CL_YELLOW "Warning: " CL_RESET "No file name in grf-files.txt for data directive.\n");
 	}
 
 	if (strcmp(sdata_file, "") != 0) { // If sdata directive exists in grf-files.txt
 		result2 = grfio_add(sdata_file); // Sakray addon data file
 	} else {
-		printf("No file name in grf-files.txt for sdata directive.\n");
+		printf(CL_YELLOW "Warning: " CL_RESET "No file name in grf-files.txt for sdata directive.\n");
 	}
 
 	if (strcmp(adata_file, "") != 0) { // If adata directive exists in grf-files.txt
 		result3 = grfio_add(adata_file); // alpha data file
 	} else {
-		printf("No file name in grf-files.txt for adata directive.\n");
+		printf(CL_YELLOW "Warning: " CL_RESET "No file name in grf-files.txt for adata directive.\n");
 	}
 
 	if (strcmp(data_dir, "") == 0) { // If data_dir doesn't exist

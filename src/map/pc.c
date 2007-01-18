@@ -8714,7 +8714,7 @@ void pc_readdb(void)
 	memset(&exp_table, 0, sizeof(exp_table));
 	fp = fopen("db/exp.txt", "r");
 	if (fp == NULL) {
-		printf("Can't read db/exp.txt.\n");
+		printf(CL_RED "Error:" CL_RESET " Failed to load db/exp.txt.\n");
 		return;
 	}
 
@@ -8745,12 +8745,12 @@ void pc_readdb(void)
 			break;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/exp.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", i, (i > 1) ? "s" : "");
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/exp.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", i, (i > 1) ? "s" : "");
 
 	memset(&skill_tree, 0, sizeof(skill_tree));
 	fp = fopen("db/skill_tree.txt", "r");
 	if (fp == NULL) {
-		printf("Can't read db/skill_tree.txt.\n");
+		printf(CL_RED "Error:" CL_RESET " Failed to load db/skill_tree.txt.\n");
 		return;
 	}
 	while(fgets(line, sizeof(line), fp)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
@@ -8791,7 +8791,7 @@ void pc_readdb(void)
 		}
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/skill_tree.txt" CL_RESET "' read.\n");
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/skill_tree.txt" CL_RESET "' read.\n");
 
 	for(i=0;i<4;i++)
 		for(j=0;j<10;j++)
@@ -8799,7 +8799,7 @@ void pc_readdb(void)
 				attr_fix_table[i][j][k]=100;
 	fp = fopen("db/attr_fix.txt", "r");
 	if (fp == NULL) {
-		printf("Can't read db/attr_fix.txt.\n");
+		printf(CL_RED "Error:" CL_RESET " Failed to load db/attr_fix.txt.\n");
 		return;
 	}
 	while(fgets(line, sizeof(line), fp)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
@@ -8838,19 +8838,19 @@ void pc_readdb(void)
 		}
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/attr_fix.txt" CL_RESET "' read.\n");
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/attr_fix.txt" CL_RESET "' read.\n");
 
 	// stat point
 	memset(&statp, 0, sizeof(statp));
 	if ((fp = fopen("db/statpoint.txt", "r")) == NULL) {
-		printf("Can't read db/statpoint.txt... Generating basic DB.\n");
+		printf(CL_RED "Error:" CL_RESET " Failed to load db/statpoint.txt... Generating basic DB.\n");
 		// generate the remaining parts of the db if necessary
 		j = 45; // base points
 		for(i = 0; i < MAX_LEVEL; i++) {
 			j += (i + 15) / 5;
 			statp[i] = j;
 		}
-		printf("DB '" CL_WHITE "db/statpoint.txt" CL_RESET "' generated (levels='" CL_WHITE "%d/%d" CL_RESET "').\n", i, MAX_LEVEL);
+		printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/statpoint.txt" CL_RESET "' generated (levels='" CL_WHITE "%d/%d" CL_RESET "').\n", i, MAX_LEVEL);
 	} else {
 		i = 0;
 		while(fgets(line, sizeof(line), fp)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
@@ -8865,7 +8865,7 @@ void pc_readdb(void)
 			i++;
 		}
 		fclose(fp);
-		printf("DB '" CL_WHITE "db/statpoint.txt" CL_RESET "' read (levels='" CL_WHITE "%d/%d" CL_RESET "').\n", i, MAX_LEVEL);
+		printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/statpoint.txt" CL_RESET "' read (levels='" CL_WHITE "%d/%d" CL_RESET "').\n", i, MAX_LEVEL);
 	}
 
 	return;

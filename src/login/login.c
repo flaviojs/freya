@@ -5188,11 +5188,11 @@ void do_init(const int argc, char **argv) {
 	/* server port open & binding */
 	login_fd = make_listen_port(login_port);
 	if (strcmp(listen_ip, "0.0.0.0") == 0) {
-		write_log("The login-server is ready (and is listening on the port %d - from any ip)." RETCODE, login_port);
-		printf("The login-server is " CL_GREEN "ready" CL_RESET " (and is listening on the port " CL_WHITE "%d" CL_RESET " - from any ip).\n", login_port);
+		write_log("The login-server is ready (listening on the port %d - from any ip)." RETCODE, login_port);
+		printf("The login-server is " CL_GREEN "ready" CL_RESET " (listening on the port " CL_WHITE "%d" CL_RESET " - from any ip).\n", login_port);
 	} else {
-		write_log("The login-server is ready (and is listening on %s:%d)." RETCODE, listen_ip, login_port);
-		printf("The login-server is " CL_GREEN "ready" CL_RESET " (and is listening on " CL_WHITE "%s:%d" CL_RESET ").\n", listen_ip, login_port);
+		write_log("The login-server is ready (listening on %s:%d)." RETCODE, listen_ip, login_port);
+		printf("The login-server is " CL_GREEN "ready" CL_RESET " (listening on " CL_WHITE "%s:%d" CL_RESET ").\n", listen_ip, login_port);
 	}
 
 	add_timer_func_list(char_anti_freeze_system, "char_anti_freeze_system");

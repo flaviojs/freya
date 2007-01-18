@@ -16,7 +16,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h> // for access function
+#include <unistd.h> // For access function
 
 #include "../common/db.h"
 #include "../common/utils.h"
@@ -49,7 +49,7 @@ void itemdb_read(void);
 static int itemdb_readdb(void);
 #ifndef TXT_ONLY
 static int itemdb_read_sqldb(void);
-#endif /* not TXT_ONLY */
+#endif /* Not TXT_ONLY */
 static int itemdb_read_itemgroup();
 static int itemdb_read_randomitem();
 static int itemdb_read_itemavail(void);
@@ -68,7 +68,7 @@ void itemdb_reload(void);
  * 名前で検索用
  *------------------------------------------
  */
-// name = item alias, so we should find items aliases first. if not found then look for "jname" (full name)
+// Name = Item alias, so we should find items aliases first. If not found then look for "jname" (full name)
 int itemdb_searchname_sub(void *key,void *data,va_list ap)
 {
 	struct item_data *item = (struct item_data *)data, **dst;
@@ -127,7 +127,7 @@ int itemdb_searchrandomid(int flags)
 		struct random_item_data *list;
 	} data[13];
 
-	// for BCC32 compile error
+	// For BCC32 compile error
 	data[0].nameid = 0;                    data[0].count = 0;                  data[0].list = NULL;
 	data[1].nameid = blue_box_default;     data[1].count = blue_box_count;     data[1].list = blue_box;
 	data[2].nameid = violet_box_default;   data[2].count = violet_box_count;   data[2].list = violet_box;
@@ -222,31 +222,31 @@ struct item_data* itemdb_search(int nameid)
 	id->elv=0;
 	id->class=0xffffffff;
 	id->flag.available=0;
-	id->flag.value_notdc=0;  //一応・・・
+	id->flag.value_notdc=0;
 	id->flag.value_notoc=0;
 	id->flag.no_equip=0;
 	id->view_id=0;
 
 	if (nameid > 500 && nameid < 600)
-		id->type = 0;   //heal item
+		id->type = 0;   // Usable Healing item
 	else if (nameid > 600 && nameid < 700)
-		id->type = 2;   //use item
+		id->type = 2;   // Usable item
 	else if ((nameid > 700 && nameid < 1100) ||
 	         (nameid > 7000 && nameid < 8000))
-		id->type = 3;   //correction
+		id->type = 3;   // Correction
 	else if (nameid >= 1750 && nameid < 1771)
-		id->type = 10;  //arrow
+		id->type = 10;  // Arrow
 	else if (nameid > 1100 && nameid < 2000)
-		id->type = 4;   //weapon
+		id->type = 4;   // Weapon
 	else if ((nameid > 2100 && nameid < 3000) ||
 	         (nameid > 5000 && nameid < 6000))
-		id->type = 5;   //armor
+		id->type = 5;   // Armor
 	else if (nameid > 4000 && nameid < 5000)
-		id->type = 6;   //card
+		id->type = 6;   // Card
 	else if (nameid > 9000 && nameid < 10000)
-		id->type = 7;   //egg
+		id->type = 7;   // Egg
 	else if (nameid > 10000)
-		id->type = 8;   //petequip
+		id->type = 8;   // Pet equip
 
 	return id;
 }
@@ -349,7 +349,7 @@ void itemdb_read(void) {
 	if (db_use_sqldbs)
 		itemdb_read_sqldb();
 	else
-#endif /* not TXT_ONLY */
+#endif /* Not TXT_ONLY */
 		itemdb_readdb();
 
 	itemdb_read_itemgroup();
@@ -385,17 +385,17 @@ static int itemdb_readdb(void)
 	int i = 0;
 	int buy_price, sell_price;
 	char *filename[] = { "db/item_db.txt", "db/item_db2.txt" };
-	FILE *item_db_fp = NULL; // need to be initialized to avoid 'false' warning
+	FILE *item_db_fp = NULL; // Need to be initialized to avoid 'false' warning
 	#define ITEM_DB_SQL_NAME "item_db_map.sql"
 
 //#ifndef TXT_ONLY
-	// code to create SQL item db
+	// Code to create SQL item database
 	if (create_item_db_script) {
-		// if file exists (doesn't exist, was renamed!... unnormal that continue to exist)
-		if (access(ITEM_DB_SQL_NAME, 0) == 0) // 0: file exist or not, 0 = success
-			remove(ITEM_DB_SQL_NAME); // delete the file. return value = 0 (success), return value = -1 (denied access or not found file)
+		// If file exists (doesn't exist, was renamed!... not normal that continue to exist)
+		if (access(ITEM_DB_SQL_NAME, 0) == 0) // 0: File exists or not, 0 = success
+			remove(ITEM_DB_SQL_NAME); // Delete the file. Return value = 0 (success), return value = -1 (access denied or file not found)
 		if ((item_db_fp = fopen(ITEM_DB_SQL_NAME, "a")) != NULL) {
-			printf("Generating the '" CL_WHITE ITEM_DB_SQL_NAME CL_RESET "' file.\n");
+			printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE ITEM_DB_SQL_NAME CL_RESET "' file generated.\n");
 			fprintf(item_db_fp, "# You can regenerate this file with an option in inter_athena.conf" RETCODE);
 			fprintf(item_db_fp, RETCODE);
 			fprintf(item_db_fp, "CREATE TABLE `%s` (" RETCODE, item_db_db);
@@ -409,11 +409,11 @@ static int itemdb_readdb(void)
 			fprintf(item_db_fp, "  `attack` mediumint(9) unsigned default NULL," RETCODE);
 			fprintf(item_db_fp, "  `defence` mediumint(9) unsigned default NULL," RETCODE);
 			fprintf(item_db_fp, "  `range` tinyint(2) unsigned default NULL," RETCODE);
-			fprintf(item_db_fp, "  `slots` tinyint(2) unsigned default NULL," RETCODE); // max 5, but set to tinyint(2) to avoid possible BOOL replacement
+			fprintf(item_db_fp, "  `slots` tinyint(2) unsigned default NULL," RETCODE); // Max 5, but set to tinyint(2) to avoid possible BOOL replacement
 			fprintf(item_db_fp, "  `equip_jobs` int(10) unsigned default NULL," RETCODE);
-			fprintf(item_db_fp, "  `equip_genders` tinyint(2) unsigned default NULL," RETCODE); // max 3 (1+2), but set to tinyint(2) to avoid possible BOOL replacement
+			fprintf(item_db_fp, "  `equip_genders` tinyint(2) unsigned default NULL," RETCODE); // Max 3 (1+2), but set to tinyint(2) to avoid possible BOOL replacement
 			fprintf(item_db_fp, "  `equip_locations` smallint(4) unsigned default NULL," RETCODE);
-			fprintf(item_db_fp, "  `weapon_level` tinyint(2) unsigned default NULL," RETCODE); // max 4, but set to tinyint(2) to avoid possible BOOL replacement
+			fprintf(item_db_fp, "  `weapon_level` tinyint(2) unsigned default NULL," RETCODE); // Max 4, but set to tinyint(2) to avoid possible BOOL replacement
 			fprintf(item_db_fp, "  `equip_level` tinyint(3) unsigned default NULL," RETCODE);
 			fprintf(item_db_fp, "  `view` tinyint(3) unsigned default NULL," RETCODE);
 			fprintf(item_db_fp, "  `script_use` text," RETCODE);
@@ -422,11 +422,11 @@ static int itemdb_readdb(void)
 			fprintf(item_db_fp, ") TYPE=MyISAM;" RETCODE);
 			fprintf(item_db_fp, RETCODE);
 		} else {
-			printf(CL_RED "Can not generate the '" ITEM_DB_SQL_NAME "' file." CL_RESET" \n");
-			create_item_db_script = 0; // not continue to try to create file after
+			printf(CL_RED "Error: " CL_RESET "Failed to generate the '" ITEM_DB_SQL_NAME "' file." CL_RESET" \n");
+			create_item_db_script = 0; // Not continue to try to create file after
 		}
 	}
-//#endif /* not TXT_ONLY */
+//#endif /* Not TXT_ONLY */
 
 	for(i = 0; i < 2; i++) {
 
@@ -435,12 +435,12 @@ static int itemdb_readdb(void)
 		if (fp == NULL) {
 			if (i > 0)
 				continue;
-			printf("can't read %s\n", filename[i]);
+			printf(CL_RED "Error:" CL_RESET " Failed to load %s\n", filename[i]);
 //#ifndef TXT_ONLY
 			if (create_item_db_script && item_db_fp != NULL) {
 				fclose(item_db_fp);
 			}
-//#endif /* not TXT_ONLY */
+//#endif /* Not TXT_ONLY */
 			exit(1);
 		}
 
@@ -449,23 +449,23 @@ static int itemdb_readdb(void)
 			lines++;
 			if ((line[0] == '/' && line[1] == '/') || line[0] == '\0' || line[0] == '\n' || line[0] == '\r') {
 //#ifndef TXT_ONLY
-				// code to create SQL item db
+				// Code to create SQL item db
 				if (create_item_db_script && item_db_fp != NULL) {
-					/* remove carriage return if exist */
+					/* Remove carriage return if exist */
 					while(line[0] != '\0' && (line[(j = strlen(line) - 1)] == '\n' || line[j] == '\r'))
 						line[j] = '\0';
-					// add comments in the sql script
+					// Add comments in the SQL script
 					if ((line[0] == '/' && line[1] == '/' && strlen(line) > 2)) {
 						fprintf(item_db_fp, "#%s" RETCODE, line + 2);
 					} else {
 						fprintf(item_db_fp, RETCODE);
 					}
 				}
-//#endif /* not TXT_ONLY */
+//#endif /* Not TXT_ONLY */
 				continue;
 			}
 
-			/* remove carriage return if exist */
+			/* Remove carriage return if exist */
 			while(line[0] != '\0' && (line[(j = strlen(line) - 1)] == '\n' || line[j] == '\r'))
 				line[j] = '\0';
 
@@ -484,9 +484,9 @@ static int itemdb_readdb(void)
 #ifdef __DEBUG
 			if (battle_config.etc_log) {
 				if (strlen(str[1]) > 24)
-					printf(CL_YELLOW "WARNING: Invalid item name" CL_RESET" (id: %d) - Name too long (> 24 char.) -> only 24 first characters are used.\n", nameid);
+					printf(CL_YELLOW "Warning: " CL_RESET "Invalid item name (id: %d) - Name too long (> 24 char.) -> only 24 first characters are used.\n", nameid);
 				if (strlen(str[2]) > 24)
-					printf(CL_YELLOW "WARNING: Invalid item jname" CL_RESET" (id: %d) - Name too long (> 24 char.) -> only 24 first characters are used.\n", nameid);
+					printf(CL_YELLOW "Warning: " CL_RESET "Invalid item jname (id: %d) - Name too long (> 24 char.) -> only 24 first characters are used.\n", nameid);
 			}
 #endif
 
@@ -496,7 +496,7 @@ static int itemdb_readdb(void)
 				fflush(stdout);
 			}
 
-			//ID,Name,Jname,Type,Price,Sell,Weight,ATK,DEF,Range,Slot,Job,Gender,Loc,wLV,eLV,View
+			// ID,Name,Jname,Type,Price,Sell,Weight,ATK,DEF,Range,Slot,Job,Gender,Loc,wLV,eLV,View
 			id = itemdb_search(nameid);
 			memset(id->name, 0, sizeof(id->name));
 			strncpy(id->name, str[1], 24);
@@ -506,7 +506,6 @@ static int itemdb_readdb(void)
 
 			buy_price = atoi(str[4]);
 			sell_price = atoi(str[5]);
-			// buy≠sell*2 は item_value_db.txt で指定してください。
 			// If price_buy is not 0 and price_sell is not 0...
 			if (buy_price > 0 && sell_price > 0) {
 				id->value_buy = buy_price;
@@ -524,7 +523,7 @@ static int itemdb_readdb(void)
 				id->value_buy = 0;
 				id->value_sell = 0;
 			}
-			// check for bad prices that can possibly cause exploits
+			// Check for bad prices that can possibly cause exploits
 			if (((double)id->value_buy * (double)75) / 100 < ((double)id->value_sell * (double)124) / 100) {
 				printf("Item %s [%d]: prices: buy %d / sell %d (" CL_YELLOW "WARNING" CL_RESET ").\n", id->name, id->nameid, id->value_buy, id->value_sell);
 				printf("for merchant: buying: %d < selling:%d (" CL_YELLOW "possible exploit OC/DC" CL_RESET ").\n", id->value_buy * 75 / 100, id->value_sell * 124 / 100);
@@ -539,7 +538,7 @@ static int itemdb_readdb(void)
 			id->slot = atoi(str[10]);
 			id->class = atoi(str[11]);
 			id->sex = atoi(str[12]);
-			id->sex = itemdb_check_gender(id); //Apply gender filtering
+			id->sex = itemdb_check_gender(id); // Apply gender filtering
 			if (id->equip != atoi(str[13])) {
 				id->equip = atoi(str[13]);
 			}
@@ -562,7 +561,7 @@ static int itemdb_readdb(void)
 			}
 
 //#ifndef TXT_ONLY
-			// code to create SQL item db
+			// Code to create SQL item database
 			if (create_item_db_script && item_db_fp != NULL) {
 				char item_name[49]; // 24 * 2 + NULL
 				char item_jname[49]; // 24 * 2 + NULL
@@ -571,12 +570,12 @@ static int itemdb_readdb(void)
 				struct item_data *actual_item;
 
 				actual_item = id;
-				// escape item names
+				// Escape item names
 				memset(item_name, 0, sizeof(item_name));
 				mysql_escape_string(item_name, actual_item->name, strlen(actual_item->name));
 				memset(item_jname, 0, sizeof(item_jname));
 				mysql_escape_string(item_jname, actual_item->jname, strlen(actual_item->jname));
-				// extract script 1 and 2
+				// Extract item database scripts #1 and #2
 				memset(script1, 0, sizeof(script1));
 				memset(script2, 0, sizeof(script2));
 				if ((p1 = strchr(np, '{')) != NULL && (p2 = strchr(p1, '}')) != NULL) {
@@ -592,7 +591,7 @@ static int itemdb_readdb(void)
 						mysql_escape_string(script1 + 1, temp_script, strlen(temp_script));
 						strcat(script1, "'");
 					}
-					// search second script
+					// Search second script
 					if ((p1 = strchr(p2, '{')) != NULL && (p2 = strchr(p1, '}')) != NULL) {
 						while(*p1 == ' ' || *p1 == '{')
 							p1++;
@@ -614,7 +613,7 @@ static int itemdb_readdb(void)
 					comment_script[1] = '#';
 					strcpy(comment_script + 2, p1 + 2);
 				}
-				// create request
+				// Create request
 				fprintf(item_db_fp, "INSERT INTO `%s` VALUES (%d, '%s', '%s', %d,"
 				                                             " %d, %d,"
 				                                             " %d, %d, %d, %d,"
@@ -622,24 +621,24 @@ static int itemdb_readdb(void)
 				                                             " %d, %d, %d,"
 				                                             " %s, %s);%s" RETCODE,
 				                    item_db_db, nameid, item_name, item_jname, actual_item->type,
-				                    atoi(str[4]), atoi(str[5]), // id->value_buy, id->value_sell: not modified
+				                    atoi(str[4]), atoi(str[5]), // id->value_buy, id->value_sell: Not modified
 				                    actual_item->weight, actual_item->atk, actual_item->def, actual_item->range,
 				                    actual_item->slot, actual_item->class, actual_item->sex, actual_item->equip,
 				                    actual_item->wlv, actual_item->elv, actual_item->look,
 				                    (script1[0] == 0) ? "NULL" : script1, (script2[0] == 0) ? "NULL" : script2, comment_script);
 			}
-//#endif /* not TXT_ONLY */
+//#endif /* Not TXT_ONLY */
 		}
 		fclose(fp);
-		printf("DB '" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", filename[i], ln, (ln > 1) ? "s" : "");
+		printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", filename[i], ln, (ln > 1) ? "s" : "");
 	}
 
 //#ifndef TXT_ONLY
-		// code to create SQL item db
+		// Code to create SQL item db
 		if (create_item_db_script && item_db_fp != NULL) {
 			fclose(item_db_fp);
 		}
-//#endif /* not TXT_ONLY */
+//#endif /* Not TXT_ONLY */
 
 	return 0;
 }
@@ -687,14 +686,14 @@ static int itemdb_read_randomitem()
 
 		*pdefault = 0;
 		if ((fp = fopen(fn, "r")) == NULL) {
-			printf("can't read %s\n", fn);
+			printf(CL_RED "Error:" CL_RESET " Failed to load %s\n", fn);
 			continue;
 		}
 
 		while(fgets(line, sizeof(line), fp)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
 			if ((line[0] == '/' && line[1] == '/') || line[0] == '\0' || line[0] == '\n' || line[0] == '\r')
 				continue;
-			// it's not necessary to remove 'carriage return ('\n' or '\r')
+			// It's not necessary to remove 'carriage return ('\n' or '\r')
 			memset(str, 0, sizeof(str));
 			for(j = 0,p = line; j < 3 && p; j++) {
 				str[j] = p;
@@ -724,7 +723,7 @@ static int itemdb_read_randomitem()
 			ln++;
 		}
 		fclose(fp);
-		printf("DB '" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", fn, *pc, (*pc > 1) ? "s" : "");
+		printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", fn, *pc, (*pc > 1) ? "s" : "");
 	}
 
 	return 0;
@@ -743,7 +742,7 @@ static int itemdb_read_itemavail(void)
 	char *str[10], *p;
 
 	if ((fp = fopen("db/item_avail.txt", "r")) == NULL) {
-		printf("can't read db/item_avail.txt.\n");
+		printf(CL_RED "Error:" CL_RESET " Failed to load db/item_avail.txt.\n");
 		return -1;
 	}
 
@@ -751,7 +750,7 @@ static int itemdb_read_itemavail(void)
 		struct item_data *id;
 		if ((line[0] == '/' && line[1] == '/') || line[0] == '\0' || line[0] == '\n' || line[0] == '\r')
 			continue;
-		// it's not necessary to remove 'carriage return ('\n' or '\r')
+		// It's not necessary to remove 'carriage return ('\n' or '\r')
 		memset(str,0,sizeof(str));
 		for(j = 0, p = line; j < 2 && p; j++) {
 			str[j] = p;
@@ -775,7 +774,7 @@ static int itemdb_read_itemavail(void)
 		ln++;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/item_avail.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/item_avail.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
 
 	return 0;
 }
@@ -793,7 +792,7 @@ static int itemdb_read_itemgroup(void)
 	char *str[MAX_GROUPITEMS], *p;
 
 	if ((fp = fopen("db/item_group_db.txt", "r")) == NULL) {
-		printf("can't read db/item_group_db.txt.\n");
+		printf(CL_RED "Error:" CL_RESET " Failed to load db/item_group_db.txt.\n");
 		return -1;
 	}
 
@@ -824,7 +823,7 @@ static int itemdb_read_itemgroup(void)
 			itemgroup_db[groupid].id[j-1] = itemid;
 			itemgroup_db[groupid].qty = j;
 		}
-		for (j = 1; j < MAX_GROUPITEMS && itemgroup_db[groupid].qty; j++) {	// if no item, shift trailing elements
+		for (j = 1; j < MAX_GROUPITEMS && itemgroup_db[groupid].qty; j++) {	// If no item, shift trailing elements
 			if (itemgroup_db[groupid].id[j-1] == 0 &&
 				itemgroup_db[groupid].id[j] != 0) 
 			{
@@ -836,7 +835,7 @@ static int itemdb_read_itemgroup(void)
 		ln++;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/item_group_db.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/item_group_db.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
 
 	return 0;
 }
@@ -881,7 +880,7 @@ static int itemdb_read_itemnametable(void)
 	}
 	FREE(buf);
 
-	printf("File '" CL_WHITE "data\\idnum2itemdisplaynametable.txt" CL_RESET "' read.\n");
+	printf(CL_GREEN "Loaded: " CL_RESET "File '" CL_WHITE "data\\idnum2itemdisplaynametable.txt" CL_RESET "' read.\n");
 
 	return 0;
 }
@@ -920,7 +919,7 @@ static int itemdb_read_cardillustnametable(void)
 	}
 	FREE(buf);
 
-	printf("File '" CL_WHITE "data\\num2cardillustnametable.txt" CL_RESET "' read.\n");
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "data\\num2cardillustnametable.txt" CL_RESET "' read.\n");
 
 	return 0;
 }
@@ -946,7 +945,7 @@ static int itemdb_read_itemslottable(void) {
 		int nameid, equip;
 		struct item_data* item;
 		sscanf(p, "%d#%d#", &nameid, &equip);
-		// fix unuseable cards
+		// Fix unuseable cards
 		item = itemdb_search(nameid);
 		if (item && itemdb_isequip2(item))
 			item->equip = equip;
@@ -961,7 +960,7 @@ static int itemdb_read_itemslottable(void) {
 	}
 	FREE(buf);
 
-	printf("File '" CL_WHITE "data\\itemslottable.txt" CL_RESET "' read.\n");
+	printf(CL_GREEN "Loaded: " CL_RESET "File '" CL_WHITE "data\\itemslottable.txt" CL_RESET "' read.\n");
 
 	return 0;
 }
@@ -995,7 +994,7 @@ static int itemdb_read_itemslotcounttable(void) {
 	}
 	FREE(buf);
 
-	printf("File '" CL_WHITE "data\\itemslotcounttable.txt" CL_RESET "' read.\n");
+	printf(CL_GREEN "Loaded: " CL_RESET "File '" CL_WHITE "data\\itemslotcounttable.txt" CL_RESET "' read.\n");
 
 	return 0;
 }
@@ -1014,14 +1013,14 @@ static int itemdb_read_noequip(void)
 	struct item_data *id;
 
 	if ((fp = fopen("db/item_noequip.txt", "r")) == NULL) {
-		printf("can't read db/item_noequip.txt\n");
+		printf(CL_RED "Error:" CL_RESET " Failed to load db/item_noequip.txt\n");
 		return -1;
 	}
 
 	while(fgets(line, sizeof(line), fp)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
 		if ((line[0] == '/' && line[1] == '/') || line[0] == '\0' || line[0] == '\n' || line[0] == '\r')
 			continue;
-		// it's not necessary to remove 'carriage return ('\n' or '\r')
+		// It's not necessary to remove 'carriage return ('\n' or '\r')
 		memset(str, 0, sizeof(str));
 		for(j = 0, p = line; j < 2 && p; j++) {
 			str[j] = p;
@@ -1036,13 +1035,13 @@ static int itemdb_read_noequip(void)
 		if (nameid <= 0 || nameid >= 20000 || !(id = itemdb_exists(nameid)))
 			continue;
 
-		id->flag.no_equip = atoi(str[1]); // mode = 1- not in PvP, 2- GvG restriction, 3- PvP and GvG which restriction
+		id->flag.no_equip = atoi(str[1]); // Mode = 1- not in PvP, 2- GvG restriction, 3- PvP and GvG which restriction
 
 		ln++;
 	}
 	fclose(fp);
 
-	printf("DB '" CL_WHITE "db/item_noequip.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/item_noequip.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
 
 	return 0;
 }
@@ -1059,14 +1058,14 @@ static int itemdb_read_norefine(void) {
 	FILE *db = fopen("db/item_norefine.txt", "r");
 
 	if(db == NULL) {
-		printf("Cannot read db/item_norefine.txt (missing file) \n");
-		exit(1); //It's obligatory
+		printf(CL_RED "Error: " CL_RESET "db/item_norefine.txt (missing file) \n");
+		exit(1); // It's obligatory
 	}
 
 	while(fgets(linebuffer, sizeof(linebuffer), db)) {
-		if(linebuffer[0] == '/' && linebuffer[1] == '/') //Skip commentaries
+		if(linebuffer[0] == '/' && linebuffer[1] == '/') // Skip commentaries
 			continue;
-		if(linebuffer[0] == '\0' || linebuffer[0] == '\n' || linebuffer[0] == '\r') //Skip empty lines
+		if(linebuffer[0] == '\0' || linebuffer[0] == '\n' || linebuffer[0] == '\r') // Skip empty lines
 			continue;
 
 		sscanf(linebuffer, "%d", &itemid);
@@ -1082,7 +1081,7 @@ static int itemdb_read_norefine(void) {
 		counter++;
 	}
 
-	printf("DB '" CL_WHITE "db/item_norefine.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entries).\n", counter);
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/item_norefine.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entries).\n", counter);
 	return 1;
 }
 
@@ -1098,7 +1097,7 @@ static int itemdb_read_itemtrade(void)
 	struct item_data *id;
 
 	if ((fp = fopen("db/item_bound.txt", "r")) == NULL) {
-		printf("Cannot read db/item_bound.txt\n");
+		printf(CL_RED "Error: " CL_RESET "db/item_bound.txt\n");
 		return -1;
 	}
 
@@ -1118,7 +1117,7 @@ static int itemdb_read_itemtrade(void)
 		flag = atoi(str[1]);
 		gmlv = atoi(str[2]);
 		
-		if (flag > 0 && flag < 128 && gmlv > 0) { // check range
+		if (flag > 0 && flag < 128 && gmlv > 0) { // Check range
 			id->flag.trade_restriction = flag;
 			id->gm_lv_trade_override = gmlv;
 			ln++;
@@ -1126,7 +1125,7 @@ static int itemdb_read_itemtrade(void)
 	}
 	fclose(fp);
 
-	printf("DB '" CL_WHITE "db/item_bound.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/item_bound.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
 
 	return 0;
 }
@@ -1143,7 +1142,7 @@ static int itemdb_read_upper(void) {
 	struct item_data *id;
 
 	if((fp = fopen("db/item_upper.txt","r")) == NULL){
-		printf("can't read db/item_upper.txt\n");
+		printf(CL_RED "Error:" CL_RESET " Failed to load db/item_upper.txt\n");
 		return -1;
 	}
 	
@@ -1176,7 +1175,7 @@ static int itemdb_read_upper(void) {
 	}
 	fclose(fp);
 	
-	printf("DB '" CL_WHITE "db/item_upper.txt" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/item_upper.txt" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
 
 	return 0;
 }
@@ -1189,16 +1188,16 @@ static int itemdb_read_upper(void) {
 static int itemdb_check_gender(struct item_data *id) {
 
 	switch(id->nameid) {
-		case 2338: //Wedding Dress
-		case WEDDING_RING_M: //Male Wedding Ring
-		case WEDDING_RING_F: //Female Wedding Ring
-		case 7170: //Tuxedo
+		case 2338: // Wedding Dress
+		case WEDDING_RING_M: // Male Wedding Ring
+		case WEDDING_RING_F: // Female Wedding Ring
+		case 7170: // Tuxedo
 			return id->sex;
 	}
 
-	if (id->look == 13 && id->type == 4) //Musical instruments are always male-only
+	if (id->look == 13 && id->type == 4) // Musical instruments are always Male-only
 		return id->sex;
-	if (id->look == 14 && id->type == 4) //Whips are always female-only
+	if (id->look == 14 && id->type == 4) // Whips are always Female-only
 		return id->sex;
 
 	return (battle_config.ignore_items_gender? 2 : id->sex);
@@ -1263,7 +1262,7 @@ static int itemdb_read_sqldb(void) {
 
 		id->type = sql_get_integer(3);
 
-		// fix NULL for buy/sell prices
+		// Fix NULL for buy/sell prices
 		if (sql_get_string(4) == NULL)
 			buy_price = 0;
 		else
@@ -1272,7 +1271,6 @@ static int itemdb_read_sqldb(void) {
 			sell_price = 0;
 		else
 			sell_price = sql_get_integer(5);
-		// buy≠sell*2 は item_value_db.txt で指定してください。
 		// If price_buy is not 0 and price_sell is not 0...
 		if (buy_price > 0 && sell_price > 0) {
 			id->value_buy = buy_price;
@@ -1290,7 +1288,7 @@ static int itemdb_read_sqldb(void) {
 			id->value_buy = 0;
 			id->value_sell = 0;
 		}
-		// check for bad prices that can possibly cause exploits
+		// Check for bad prices that can possibly cause exploits
 		if (((double)id->value_buy * (double)75) / 100 < ((double)id->value_sell * (double)124) / 100) {
 			printf("Item %s [%d]: prices: buy %d / sell %d (" CL_YELLOW "WARNING" CL_RESET ").\n", id->name, id->nameid, id->value_buy, id->value_sell);
 			printf("for merchant: buying: %d < selling:%d (" CL_YELLOW "possible exploit OC/DC" CL_RESET ").\n", id->value_buy * 75 / 100, id->value_sell * 124 / 100);
@@ -1306,7 +1304,7 @@ static int itemdb_read_sqldb(void) {
 		id->slot  = (sql_get_string(10) != NULL) ? sql_get_integer(10) : 0;
 		id->class = (sql_get_string(11) != NULL) ? sql_get_integer(11) : 0;
 		id->sex   = (sql_get_string(12) != NULL) ? sql_get_integer(12) : 0;
-		id->sex   = itemdb_check_gender(id); //Apply gender filtering
+		id->sex   = itemdb_check_gender(id); // Apply gender filtering
 		id->equip = (sql_get_string(13) != NULL) ? sql_get_integer(13) : 0;
 		id->wlv   = (sql_get_string(14) != NULL) ? sql_get_integer(14) : 0;
 		id->elv   = (sql_get_string(15) != NULL) ? sql_get_integer(15) : 0;
@@ -1346,7 +1344,7 @@ static int itemdb_read_sqldb(void) {
 		id->flag.upper = 0;
 	}
 
-	printf("DB '" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%ld" CL_RESET "' entrie%s).\n", item_db_db, ln, (ln > 1) ? "s" : "");
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%ld" CL_RESET "' entrie%s).\n", item_db_db, ln, (ln > 1) ? "s" : "");
 
 	return 0;
 }

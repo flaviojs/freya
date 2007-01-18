@@ -115,7 +115,7 @@ int guild_read_guildskill_tree_db(void)
 	memset(guild_skill_tree,0,sizeof(guild_skill_tree));
 	fp = fopen("db/guild_skill_tree.txt","r");
 	if(fp == NULL){
-		printf("can't read db/guild_skill_tree.txt\n");
+		printf(CL_RED "Error:" CL_RESET " Failed to load db/guild_skill_tree.txt\n");
 		return 1;
 	}
 	while(fgets(line, sizeof(line), fp)){
@@ -143,7 +143,7 @@ int guild_read_guildskill_tree_db(void)
 	ln++;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/guild_skill_tree.txt" CL_RESET "' read.\n");
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/guild_skill_tree.txt" CL_RESET "' read.\n");
 
 	return 0;
 }
@@ -181,7 +181,7 @@ static int guild_read_castledb(void)
 	struct guild_castle *gc;
 
 	if ((fp = fopen("db/castle_db.txt", "r")) == NULL) {
-		printf("can't read db/castle_db.txt\n");
+		printf(CL_RED "Error:" CL_RESET " Failed to load db/castle_db.txt\n");
 		return -1;
 	}
 
@@ -215,7 +215,7 @@ static int guild_read_castledb(void)
 		ln++;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/castle_db.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/castle_db.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
 
 	return 0;
 }

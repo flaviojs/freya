@@ -1199,7 +1199,7 @@ void read_constdb(void) {
 
 	fp = fopen("db/const.txt", "r");
 	if (fp == NULL) {
-		printf("can't read db/const.txt\n");
+		printf(CL_RED "Error:" CL_RESET " Failed to load db/const.txt\n");
 		return;
 	}
 	while(fgets(line, sizeof(line), fp)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
@@ -1221,7 +1221,7 @@ void read_constdb(void) {
 	}
 	fclose(fp);
 
-	printf("DB '" CL_WHITE "db/const.txt" CL_RESET "' read.\n");
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/const.txt" CL_RESET "' read.\n");
 }
 
 /*==========================================
@@ -8650,7 +8650,7 @@ int script_config_read(char *cfgName) {
 
 	fclose(fp);
 
-	printf("File '" CL_WHITE "%s" CL_RESET "' read.\n", cfgName);
+	printf(CL_GREEN "Loaded: " CL_RESET "File '" CL_WHITE "%s" CL_RESET "' read.\n", cfgName);
 
 	return 0;
 }

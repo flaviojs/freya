@@ -4476,7 +4476,7 @@ static int mob_readdb(void)
 		if (access(MOB_DB_SQL_NAME, 0) == 0) // 0: file exist or not, 0 = success
 			remove(MOB_DB_SQL_NAME); // delete the file. return value = 0 (success), return value = -1 (denied access or not found file)
 		if ((mob_db_fp = fopen(MOB_DB_SQL_NAME, "a")) != NULL) {
-			printf("Generating the '" CL_WHITE MOB_DB_SQL_NAME CL_RESET "' file.\n");
+			printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE MOB_DB_SQL_NAME CL_RESET "' file generated.\n");
 			fprintf(mob_db_fp, "# You can regenerate this file with an option in inter_athena.conf" RETCODE);
 			fprintf(mob_db_fp, RETCODE);
 			fprintf(mob_db_fp, "CREATE TABLE `%s` (" RETCODE, mob_db_db);
@@ -4540,7 +4540,7 @@ static int mob_readdb(void)
 			fprintf(mob_db_fp, ") TYPE = MyISAM;" RETCODE);
 			fprintf(mob_db_fp, RETCODE);
 		} else {
-			printf(CL_RED "Can not generate the '" MOB_DB_SQL_NAME "' file." CL_RESET"\n");
+			printf(CL_RED "Error: " CL_RESET "Failed to generate the '" MOB_DB_SQL_NAME "' file." CL_RESET"\n");
 			create_mob_db_script = 0; // not continue to try to create file after
 		}
 	}
@@ -4552,10 +4552,10 @@ static int mob_readdb(void)
 		fp = fopen(filename[i], "r");
 		if (fp == NULL){
 			if (i > 0) {
-//				printf("can't read %s.\n", filename[i]);
+//				printf(CL_RED "Error:" CL_RESET " Failed to load %s.\n", filename[i]);
 				continue;
 			} else {
-//				printf("can't read %s.\n", filename[i]);
+//				printf(CL_RED "Error:" CL_RESET " Failed to load %s.\n", filename[i]);
 //#ifndef TXT_ONLY
 				// code to create SQL mob db
 				if (create_mob_db_script && mob_db_fp != NULL) {
@@ -4597,12 +4597,12 @@ static int mob_readdb(void)
 					*np = 0;
 					p = np + 1;
 					if (j == 56) {
-						printf(CL_YELLOW "WARNING: Invalid monster line (more datas than necessary)" CL_RESET ": %s\n", line);
+						printf(CL_YELLOW "WARNING: Invalid monster line (more parameters than required)" CL_RESET ": %s\n", line);
 					}
 				} else {
 					str[j] = p;
 					if (j < 56) {
-						printf(CL_YELLOW "WARNING: Invalid monster line (less datas than necessary: %d instead of 56)" CL_RESET ": %s\n", j, line);
+						printf(CL_YELLOW "WARNING: Invalid mob_db.txt line (not enough parameters: %d instead of 56)" CL_RESET ": %s\n", j, line);
 					}
 				}
 			}
@@ -4784,7 +4784,7 @@ static int mob_readdb(void)
 			mob_db[class].clothes_color = 0; //Add for player monster dye - Valaris
 		}
 		fclose(fp);
-		printf("DB '" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", filename[i], ln, (ln > 1) ? "s" : "");
+		printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", filename[i], ln, (ln > 1) ? "s" : "");
 	}
 
 //#ifndef TXT_ONLY
@@ -4810,7 +4810,7 @@ static int mob_readdb_mobavail(void)
 	char *str[20],*p,*np;
 
 	if ((fp = fopen("db/mob_avail.txt", "r")) == NULL) {
-		printf("can't read db/mob_avail.txt.\n");
+		printf(CL_RED "Error:" CL_RESET " Failed to load db/mob_avail.txt.\n");
 		return -1;
 	}
 
@@ -4859,7 +4859,7 @@ static int mob_readdb_mobavail(void)
 		ln++;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/mob_avail.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/mob_avail.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
 
 	return 0;
 }
@@ -4884,7 +4884,7 @@ static int mob_read_randommonster(void)
 		mob_db[0].summonper[i] = 1002;	// Ý’è‚µ–Y‚ê‚½ê‡‚Íƒ|ƒŠƒ“‚ªo‚é‚æ‚¤‚É‚µ‚Ä‚¨‚­
 		fp = fopen(mobfile[i],"r");
 		if (fp== NULL){
-			printf("can't read %s\n",mobfile[i]);
+			printf(CL_RED "Error:" CL_RESET " Failed to load %s\n",mobfile[i]);
 			return -1;
 		}
 		while(fgets(line, sizeof(line), fp)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
@@ -4908,7 +4908,7 @@ static int mob_read_randommonster(void)
 				mob_db[class].summonper[i] = per;
 		}
 		fclose(fp);
-		printf("DB '" CL_WHITE "%s" CL_RESET "' read.\n", mobfile[i]);
+		printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "%s" CL_RESET "' read.\n", mobfile[i]);
 	}
 
 	return 0;
@@ -4992,7 +4992,7 @@ static void mob_readskilldb(void)
 		fp = fopen(filename[x], "r");
 		if (fp == NULL){
 			if (x == 0)
-				printf("can't read %s\n", filename[x]);
+				printf(CL_RED "Error:" CL_RESET " Failed to load %s\n", filename[x]);
 			continue;
 		}
 		memset(line, 0, sizeof(line));
@@ -5099,7 +5099,7 @@ static void mob_readskilldb(void)
 			memset(line, 0, sizeof(line));
 		}
 		fclose(fp);
-		printf("DB '" CL_WHITE "%s" CL_RESET "' read.\n", filename[x]);
+		printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "%s" CL_RESET "' read.\n", filename[x]);
 	}
 
 	return;
@@ -5116,7 +5116,7 @@ static void mob_readdb_race(void) {
 	char *str[20], *p, *np;
 
 	if ((fp = fopen("db/mob_race2_db.txt", "r")) == NULL) {
-		printf("can't read db/mob_race2_db.txt\n");
+		printf(CL_RED "Error:" CL_RESET " Failed to load db/mob_race2_db.txt\n");
 		return;
 	}
 
@@ -5151,7 +5151,7 @@ static void mob_readdb_race(void) {
 		}
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/mob_race2_db.txt" CL_RESET "' read.\n");
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/mob_race2_db.txt" CL_RESET "' read.\n");
 
 	return;
 }
@@ -5330,7 +5330,7 @@ static int mob_read_sqldb(void)
 		mob_db[class].head_mid = 0;
 		mob_db[class].head_buttom = 0;
 	}
-	printf("DB '" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", mob_db_db, ln, (ln > 1) ? "s" : "");
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", mob_db_db, ln, (ln > 1) ? "s" : "");
 
 	return 0;
 }

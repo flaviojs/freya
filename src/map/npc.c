@@ -449,7 +449,7 @@ int npc_event_do_clock(int tid, unsigned int tick, int id, int data) {
  */
 int npc_event_do_oninit(void)
 {
-	printf("npc: Event '" CL_WHITE "OnInit" CL_RESET "' executed with '" CL_WHITE "%d" CL_RESET "' NPCs.\n", npc_event_doall("OnInit"));
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "OnInit" CL_RESET "' NPC Event executed with '" CL_WHITE "%d" CL_RESET "' NPCs.\n\n", npc_event_doall("OnInit"));
 
 	add_timer_interval(gettick_cache + 100, npc_event_do_clock, 0, 0, 15000); // "ontimer" are coded for every min. so, check only every 15 sec (not every sec)
 
@@ -2548,7 +2548,7 @@ static int npc_read_indoors(void) {
 	}
 	FREE(buf);
 
-	printf("File '" CL_WHITE "data\\indoorrswtable.txt" CL_RESET "' read.\n");
+	printf(CL_GREEN "Loaded: " CL_RESET "File '" CL_WHITE "data\\indoorrswtable.txt" CL_RESET "' read.\n");
 
 	return 0;
 }
@@ -2655,7 +2655,7 @@ int do_init_npc(void) {
 		npc_read_indoors();
 	//npc_read_weather();
 
-	printf("Loading NPCs...\r");
+	printf("\nLoading NPCs...\r");
 
 	ev_db = strdb_init(24);
 	npcname_db = strdb_init(24);
@@ -2665,7 +2665,7 @@ int do_init_npc(void) {
 	memset(&ev_tm_b, -1, sizeof(ev_tm_b));
 
 	for(nsl = npc_src_first; nsl; nsl = nsl->next) {
-		current_file = nsl->name; // to display in error
+		current_file = nsl->name; // To display in error
 		if ((fp = fopen(nsl->name, "r")) == NULL) {
 			printf("File not found: '%s'.\n", nsl->name);
 			exit(1);
@@ -2813,11 +2813,11 @@ int do_init_npc(void) {
   }
 #endif // __DEBUG
 
-	printf(CL_WHITE "%d" CL_RESET " NPCs Loaded: %50s\n", npc_id - START_NPC_NUM, "");
-	printf("\t-" CL_WHITE "%d" CL_RESET " warps\n", npc_warp);
-	printf("\t-" CL_WHITE "%d" CL_RESET " shops\n", npc_shop);
-	printf("\t-" CL_WHITE "%d" CL_RESET " scripts\n", npc_script);
-	printf("\t-" CL_WHITE "%d" CL_RESET " mobs\n", npc_mob);
+	printf(CL_WHITE "Server: Freya NPC Scripts" CL_RESET " ('" CL_WHITE "%d" CL_RESET "'):%40s\n", npc_id - START_NPC_NUM, "");
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "%d" CL_RESET "' Warps.\n", npc_warp);
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "%d" CL_RESET "' Shops.\n", npc_shop);
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "%d" CL_RESET "' Scripts.\n", npc_script);
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "%d" CL_RESET "' Mobs.\n", npc_mob);
 
 	add_timer_func_list(npc_walktimer, "npc_walktimer"); // [Valaris]
 	add_timer_func_list(npc_event_timer, "npc_event_timer");

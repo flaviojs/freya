@@ -1881,7 +1881,7 @@ static void map_readwater(char *watertxt) {
 	}
 	fclose(fp);
 
-	printf("File '" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", watertxt, waterlist_num, (waterlist_num > 1) ? "s" : "");
+	printf(CL_GREEN "Loaded: " CL_RESET "File '" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", watertxt, waterlist_num, (waterlist_num > 1) ? "s" : "");
 }
 
 /*==========================================
@@ -2152,13 +2152,13 @@ static int map_readmap(int m, char *fn, char *alias, int *map_cache_count) {
 		// read & convert fn
 		gat = grfio_read(fn);
 		if (gat == NULL) {
-			printf("Map '%s' not found: " CL_WHITE "removed" CL_RESET " from maplist.\n", fn);
+			printf(CL_YELLOW "Warning: " CL_RESET "Map '%s' not found: " CL_WHITE "removed" CL_RESET " from maplist.\n", fn);
 			return -1;
 		}
 		xs = *(int*)(gat + 6);
 		ys = *(int*)(gat + 10);
 		if (xs == 0 || ys == 0) { // ?? but possible
-			printf(CL_YELLOW "Invalid size for map '%s'" CL_RESET " (xs,ys: %d,%d): " CL_WHITE "removed" CL_RESET " from maplist.\n", fn, xs, ys);
+			printf(CL_YELLOW "Warning: " CL_RESET "Invalid size for map '%s'" CL_RESET " (xs,ys: %d,%d): " CL_WHITE "removed" CL_RESET " from maplist.\n", fn, xs, ys);
 			return -1;
 		}
 		map[m].xs = xs;
@@ -2182,7 +2182,7 @@ static int map_readmap(int m, char *fn, char *alias, int *map_cache_count) {
 		FREE(gat);
 	}
 
-	printf("Loading Maps [%d/%d]: " CL_WHITE "%-30s  " CL_RESET "\r", m, map_num, fn);
+	printf(CL_WHITE "Server: " CL_RESET "Loading Maps [%d/%d]: " CL_WHITE "%-30s  " CL_RESET "\r", m, map_num, fn);
 	fflush(stdout);
 
 	map[m].m = m;
@@ -2260,7 +2260,7 @@ int map_readallmap(void) {
 	if (map_read_flag >= READ_FROM_BITMAP)
 		map_cache_open(map_cache_file);
 
-	printf("Loading Maps%s...\n",
+	printf(CL_WHITE "Server: " CL_RESET "Loading Maps%s...\n",
 	       (map_read_flag == CREATE_BITMAP_COMPRESSED ? " (Generating Compressed Map Cache)" :
 	        map_read_flag == CREATE_BITMAP ? " (Generating Map Cache)" :
 	        map_read_flag >= READ_FROM_BITMAP ? " (Reading Map Cache)" : ""));
@@ -2299,14 +2299,14 @@ int map_readallmap(void) {
 	FREE(waterlist);
 
 	if (maps_removed) {
-		printf("Successfully loaded " CL_WHITE "%d maps" CL_RESET " on %d %40s\n", map_num, map_num + maps_removed, "");
+		printf(CL_GREEN "Loaded: " CL_RESET "Successfully loaded " CL_WHITE "%d maps" CL_RESET " on %d %40s\n", map_num, map_num + maps_removed, "");
 		if (map_cache_count > 1)
 			printf("of which were " CL_WHITE "%d maps" CL_RESET " in cache file.\n", map_cache_count);
 		else
 			printf("of which was " CL_WHITE "%d map" CL_RESET " in cache file.\n", map_cache_count);
-		printf("Maps Removed: " CL_WHITE "%d" CL_RESET ".\n", maps_removed);
+		printf(CL_WHITE "Server: " CL_RESET "Maps Removed: " CL_WHITE "%d" CL_RESET ".\n", maps_removed);
 	} else {
-		printf("Successfully loaded " CL_WHITE "%d maps" CL_RESET "%40s\n", map_num, "");
+		printf(CL_GREEN "Loaded: " CL_RESET "Successfully loaded " CL_WHITE "%d maps" CL_RESET "%40s\n", map_num, "");
 		if (map_cache_count > 1)
 			printf("of which were " CL_WHITE "%d maps" CL_RESET " in cache file.\n", map_cache_count);
 		else
@@ -2373,14 +2373,14 @@ int parse_console(char *buf) {
 		    strcasecmp("h", command) == 0 ||
 		    strcasecmp("help", command) == 0 ||
 		    strcasecmp("aide", command) == 0) {
-			printf(CL_DARK_GREEN "Help of commands:" CL_RESET "\n");
-			printf("  '" CL_DARK_CYAN "?|h|help|aide" CL_RESET "': Display this help.\n");
-			printf("  '" CL_DARK_CYAN "<console password>" CL_RESET "': enable console mode.\n");
+			printf(CL_DARK_CYAN "Console: " CL_RESET  "Help commands:" CL_RESET "\n");
+			printf(CL_DARK_CYAN "Console: " CL_RESET "  '" CL_DARK_CYAN "?|h|help|aide" CL_RESET "': Display this help.\n");
+			printf(CL_DARK_CYAN "Console: " CL_RESET "  '" CL_DARK_CYAN "<console password>" CL_RESET "': enable console mode.\n");
 		} else if (strcmp(console_pass, command) == 0) {
-			printf(CL_DARK_CYAN "Console commands are now enabled." CL_RESET "\n");
+			printf(CL_DARK_CYAN "Console: " CL_RESET "Console commands are now enabled." CL_RESET "\n");
 			console_on = 1;
 		} else {
-			printf(CL_DARK_CYAN "Console commands are disabled. Please enter the password." CL_RESET "\n");
+			printf(CL_DARK_CYAN "Console: " CL_RESET "Console commands are disabled. Please enter the password." CL_RESET "\n");
 		}
 
 	} else {
@@ -2394,7 +2394,7 @@ int parse_console(char *buf) {
 		           strcasecmp("status", command) == 0 ||
 		           strcasecmp("uptime", command) == 0) {
 			int count;
-			printf(CL_DARK_CYAN "Console: " CL_RESET CL_BOLD "I'm Alive for %u seconds." CL_RESET "\n", (int)(time(NULL) - start_time));
+			printf(CL_DARK_CYAN "Console: " CL_RESET CL_BOLD "Uptime - %u seconds." CL_RESET "\n", (int)(time(NULL) - start_time));
 			if (map_is_alone) { // not in multi-servers
 				// calculation like @who (don't show hidden GM) and don't wait update from char-server (realtime calculation)
 				int i;
@@ -2412,17 +2412,17 @@ int parse_console(char *buf) {
 		           strcasecmp("help", command) == 0 ||
 		           strcasecmp("aide", command) == 0) {
 			printf(CL_DARK_GREEN "Help of commands:" CL_RESET "\n");
-			printf("  To use GM commands: ");
-			printf("  " CL_DARK_CYAN "<gm command>:<map_of_\"gm\"> <x> <y>" CL_RESET "\n");
-			printf("  You can use any GM command that doesn't require the GM.\n");
-			printf("  No using @item or @warp however you can use @charwarp.\n");
-			printf("  The <map_of_\"gm\"> <x> <y> is for commands that need coords of the GM.\n");
-			printf("  IE: @spawn\n");
-			printf("  '" CL_DARK_CYAN "shutdown|exit|qui|end" CL_RESET "': To shutdown the server.\n");
-			printf("  '" CL_DARK_CYAN "alive|status|uptime" CL_RESET "': To know if server is alive.\n");
-			printf("  '" CL_DARK_CYAN "consoleoff" CL_RESET "': To disable console commands.\n");
-			printf("  '" CL_DARK_CYAN "?|h|help|aide" CL_RESET "': To display help.\n");
-			printf("  '" CL_DARK_CYAN "version" CL_RESET "': To display version of the server.\n");
+			printf(CL_DARK_CYAN "Console: " CL_RESET "  To use GM commands: ");
+			printf(CL_DARK_CYAN "Console: " CL_RESET "  " CL_DARK_CYAN "<gm command>:<map_of_\"gm\"> <x> <y>" CL_RESET "\n");
+			printf(CL_DARK_CYAN "Console: " CL_RESET "  You can use any GM command that doesn't require the GM.\n");
+			printf(CL_DARK_CYAN "Console: " CL_RESET "  No using @item or @warp however you can use @charwarp.\n");
+			printf(CL_DARK_CYAN "Console: " CL_RESET "  The <map_of_\"gm\"> <x> <y> is for commands that need coords of the GM.\n");
+			printf(CL_DARK_CYAN "Console: " CL_RESET "  IE: @spawn\n");
+			printf(CL_DARK_CYAN "Console: " CL_RESET "  '" CL_DARK_CYAN "shutdown|exit|qui|end" CL_RESET "': To shutdown the server.\n");
+			printf(CL_DARK_CYAN "Console: " CL_RESET "  '" CL_DARK_CYAN "alive|status|uptime" CL_RESET "': To know if server is alive.\n");
+			printf(CL_DARK_CYAN "Console: " CL_RESET "  '" CL_DARK_CYAN "consoleoff" CL_RESET "': To disable console commands.\n");
+			printf(CL_DARK_CYAN "Console: " CL_RESET "  '" CL_DARK_CYAN "?|h|help|aide" CL_RESET "': To display help.\n");
+			printf(CL_DARK_CYAN "Console: " CL_RESET "  '" CL_DARK_CYAN "version" CL_RESET "': To display version of the server.\n");
 		} else if (strcasecmp("version", command) == 0) {
 			versionscreen();
 		} else if (strcasecmp("consoleoff", command) == 0 ||
@@ -2433,13 +2433,13 @@ int parse_console(char *buf) {
 			if (strcasecmp("console", command) == 0 && strcasecmp("off", param) != 0) {
 				printf(CL_RED "ERROR: Unknown parameter." CL_RESET "\n");
 			} else {
-				printf(CL_DARK_CYAN "Console commands are now disabled." CL_RESET "\n");
+				printf(CL_DARK_CYAN "Console: " CL_RESET "Console commands are now disabled." CL_RESET "\n");
 				console_on = 0;
 			}
 		} else {
 			n = sscanf(buf, "%[^:]:%99s %d %d[^\n]", command, mapname, &x, &y);
 
-//			printf("Command: %s || Map: %s Coords: %d %d\n", command, mapname, x, y);
+//			printf(CL_DARK_CYAN "Console: " CL_RESET "Command: %s || Map: %s Coords: %d %d\n", command, mapname, x, y);
 
 			m = 0;
 			if (n > 1) {
@@ -2538,7 +2538,7 @@ int map_config_read(char *cfgName) {
 				char_ip_set_ = 1;
 				h = gethostbyname(w2);
 				if (h != NULL) {
-					printf("Character server IP address: " CL_WHITE "%s" CL_RESET " -> " CL_WHITE "%d.%d.%d.%d" CL_RESET "\n", w2, (unsigned char)h->h_addr[0], (unsigned char)h->h_addr[1], (unsigned char)h->h_addr[2], (unsigned char)h->h_addr[3]);
+				printf(CL_WHITE "Server: " CL_RESET "Character server IP address: " CL_WHITE "%s" CL_RESET " -> " CL_WHITE "%d.%d.%d.%d" CL_RESET "\n", w2, (unsigned char)h->h_addr[0], (unsigned char)h->h_addr[1], (unsigned char)h->h_addr[2], (unsigned char)h->h_addr[3]);
 					sprintf(w2,"%d.%d.%d.%d", (unsigned char)h->h_addr[0], (unsigned char)h->h_addr[1], (unsigned char)h->h_addr[2], (unsigned char)h->h_addr[3]);
 				}
 				chrif_setip(w2);
@@ -2550,7 +2550,7 @@ int map_config_read(char *cfgName) {
 				map_ip_set_ = 1;
 				h = gethostbyname(w2);
 				if (h != NULL) {
-					printf("Map server IP address: " CL_WHITE "%s" CL_RESET " -> " CL_WHITE "%d.%d.%d.%d" CL_RESET "\n", w2, (unsigned char)h->h_addr[0], (unsigned char)h->h_addr[1], (unsigned char)h->h_addr[2], (unsigned char)h->h_addr[3]);
+				printf(CL_WHITE "Server: " CL_RESET "Map server IP address: " CL_WHITE "%s" CL_RESET " -> " CL_WHITE "%d.%d.%d.%d" CL_RESET "\n", w2, (unsigned char)h->h_addr[0], (unsigned char)h->h_addr[1], (unsigned char)h->h_addr[2], (unsigned char)h->h_addr[3]);
 					sprintf(w2, "%d.%d.%d.%d", (unsigned char)h->h_addr[0], (unsigned char)h->h_addr[1], (unsigned char)h->h_addr[2], (unsigned char)h->h_addr[3]);
 				}
 				clif_setip(w2);
@@ -2575,7 +2575,7 @@ int map_config_read(char *cfgName) {
 				map_addmap(w2);
 			} else if (strcasecmp(w1, "delmap") == 0) {
 				remove_ended_comments(w2); // remove ended comments
-				printf("Removing map [ %s ] from maplist.\n", w2);
+				printf(CL_WHITE "Server: " CL_RESET "Removing map [ %s ] from maplist.\n", w2);
 				map_delmap(w2);
 			} else if (strcasecmp(w1, "npc") == 0) {
 				remove_ended_comments(w2); // remove ended comments
@@ -2635,7 +2635,7 @@ int map_config_read(char *cfgName) {
 			} else if (strcasecmp(w1, "npc_language") == 0) {
 				remove_ended_comments(w2); // remove ended comments
 				if (strlen(w2) > 5) {
-					printf("NPC language not changed (bad value detected : len > 5).\n");
+					printf(CL_YELLOW "Warning: " CL_RESET "NPC language not changed (bad value detected : len > 5).\n");
 				} else {
 					memset(npc_language, 0, sizeof(npc_language));
 					strcpy(npc_language, w2);
@@ -2644,7 +2644,7 @@ int map_config_read(char *cfgName) {
 			} else if (strcasecmp(w1, "npc_charset") == 0) {
 				remove_ended_comments(w2); // remove ended comments
 				if (strlen(w2) > 19) {
-					printf("NPC charset not changed (bad value detected : len > 19)\n");
+					printf(CL_YELLOW "Warning: " CL_RESET "NPC charset not changed (bad value detected : len > 19)\n");
 				} else {
 					memset(npc_charset, 0, sizeof(npc_charset));
 					strcpy(npc_charset, w2);
@@ -2663,21 +2663,21 @@ int map_config_read(char *cfgName) {
         } else if (strcasecmp(w1, "exec_user") == 0 && strcmp(w2, "")) {
 			userInfo = getpwnam(w2);
 			if (userInfo == NULL)
-				printf("WARNING: Impossible to run as user '%s'. I will therefore run as '%s'\n", w2,
+				printf(CL_YELLOW "Warning: " CL_RESET "Impossible to run as user '%s'. I will therefore run as '%s'\n", w2,
 					getpwuid(getuid())->pw_name);
 			else
 				exec_user = userInfo->pw_uid;
 		} else if (strcasecmp(w1, "exec_group") == 0 && strcmp(w2, "")) {
 			groupInfo = getgrnam(w2);
 			if (groupInfo == NULL)
-				printf("WARNING: Impossible to run as group '%s'. I will therefore run as '%s'\n", w2,
+				printf(CL_YELLOW "Warning: " CL_RESET "Impossible to run as group '%s'. I will therefore run as '%s'\n", w2,
 					getgrgid(getgid())->gr_name);
 			else
 				exec_group = groupInfo->gr_gid;
 		} else if (strcasecmp(w1, "permission_mask") == 0) {
 			tmpUmask = atoi(w2);
 			if (tmpUmask < 0 || tmpUmask > 4095) {	// 4095 = octal 7777
-				printf("WARNING: The configured permission mask is incorrect. The default shall be used.\n");
+				printf(CL_YELLOW "Warning: " CL_RESET "The configured permission mask is incorrect. The default shall be used.\n");
 				permission_mask = 0;
 			} else
 				permission_mask = tmpUmask;
@@ -2687,7 +2687,7 @@ int map_config_read(char *cfgName) {
 				detach = 0;
 			else {
 				if (strcmp(w2, "yes"))
-					printf("WARNING: The option 'detach' is incorrect. The default shall be used.\n");
+				printf(CL_YELLOW "Warning: " CL_RESET "The option 'detach' is incorrect. The default shall be used.\n");
 				detach = 1;
 			}
 */
@@ -2702,7 +2702,7 @@ int map_config_read(char *cfgName) {
 				process_priority = -15;
 			else {
 				if (strcmp(w2, "normal"))
-					printf("WARNING: The option 'process_priority' is incorrect. The default shall be used.\n");
+				printf(CL_YELLOW "Warning: " CL_RESET "The option 'process_priority' is incorrect. The default shall be used.\n");
 
 				process_priority = 10;
 			}
@@ -2725,7 +2725,7 @@ int map_config_read(char *cfgName) {
 // import
 			} else if (strcasecmp(w1, "import") == 0) {
 				remove_ended_comments(w2); // remove ended comments
-				printf("map_config_read: Import file: %s.\n", w2);
+				printf(CL_GREEN "Loaded: " CL_RESET "map_config_read: Import file: %s.\n", w2);
 				map_config_read(w2);
 			}
 		}
@@ -2813,7 +2813,7 @@ int sql_config_read(char *cfgName) {
 	}
 	fclose(fp);
 
-	printf("File '" CL_WHITE "%s" CL_RESET "' read.\n", cfgName);
+	printf(CL_GREEN "Loaded: " CL_RESET "File '" CL_WHITE "%s" CL_RESET "' read.\n", cfgName);
 
 	return 0;
 }
@@ -3059,7 +3059,7 @@ void do_init(const int argc, char *argv[])
 
 	service = "map";	// {oreo} Project: Diablo
 
-	printf("The map-server is starting...\n");
+	printf(CL_WHITE "\nServer: " CL_RESET "The map-server is starting...\n");
 
 	memset(messages_filename, 0, sizeof(messages_filename));
 	strncpy(messages_filename, "conf/msg_athena.conf", sizeof(messages_filename) - 1);
@@ -3095,6 +3095,7 @@ void do_init(const int argc, char *argv[])
 			runflag = 0;
 	}
 
+	printf(CL_WHITE "\nServer: Freya Configuration Settings:\n" CL_RESET);
 	map_config_read(MAP_CONF_NAME);
 
 	if (map_ip_set_ == 0 || char_ip_set_ == 0) {
@@ -3163,8 +3164,12 @@ void do_init(const int argc, char *argv[])
 
 	do_init_chrif();
 	do_init_clif();
+
+	// Begin loading databases
+	printf(CL_WHITE "\nServer: Freya Databases:\n" CL_RESET);
+
 	do_init_itemdb();
-	do_init_mob(); // npcの初期化時内でmob_spawnして、mob_dbを参照するのでinit_npcより先
+	do_init_mob();
 	do_init_script();
 	do_init_pc();
 	do_init_status();
@@ -3173,9 +3178,11 @@ void do_init(const int argc, char *argv[])
 	do_init_storage();
 	do_init_skill();
 	do_init_pet();
+
+	// Begin loading scripts
 	do_init_npc();
 
-#ifdef USE_SQL /* mail system [Valaris] */
+#ifdef USE_SQL /* Mail system [Valaris] */
 	if (battle_config.mail_system)
 		do_init_mail();
 #endif /* USE_SQL */
@@ -3183,31 +3190,31 @@ void do_init(const int argc, char *argv[])
 	npc_event_do_oninit(); // npcのOnInitイベント実行
 
 	if (battle_config.pk_mode)
-		printf("The server is running in " CL_RED "PK Mode" CL_RESET ".\n");
+		printf(CL_WHITE "Server: " CL_RESET "The server is running in " CL_RED "PK Mode" CL_RESET ".\n");
 
 #ifdef __DEBUG
-	printf("The map-server is running in " CL_WHITE "Debug Mode" CL_RESET ".\n");
+	printf(CL_WHITE "Server: " CL_RESET "The map-server is running in " CL_WHITE "Debug Mode" CL_RESET ".\n");
 #endif
 
 	if (strcmp(listen_ip, "0.0.0.0") == 0) {
-		//map_log("The map-server is ready (and is listening on the port %d - from any ip)." RETCODE, map_port);
-		printf("The map-server is " CL_GREEN "ready" CL_RESET " (and is listening on the port " CL_WHITE "%d" CL_RESET " - from any ip).\n", map_port);
+		//map_log("The map-server is ready (listening on the port %d - from any ip)." RETCODE, map_port);
+		printf(CL_WHITE "Server: " CL_RESET "The map-server is " CL_GREEN "ready" CL_RESET " (listening on the port " CL_WHITE "%d" CL_RESET " - from any ip).\n", map_port);
 	} else {
-		//map_log("The map-server is ready (and is listening on %s:%d)." RETCODE, listen_ip, map_port);
-		printf("The map-server is " CL_GREEN "ready" CL_RESET " (and is listening on " CL_WHITE "%s:%d" CL_RESET ").\n", listen_ip, map_port);
+		//map_log("The map-server is ready (listening on %s:%d)." RETCODE, listen_ip, map_port);
+		printf(CL_WHITE "Server: " CL_RESET "The map-server is " CL_GREEN "ready" CL_RESET " (listening on " CL_WHITE "%s:%d" CL_RESET ").\n", listen_ip, map_port);
 	}
 
 	/* console */
 	if (console) {
 		start_console(parse_console);
 		if (term_input_status == 0) {
-			printf("Sorry, but console commands can not be initialized -> disabled.\n\n");
+			printf(CL_WHITE "Server: " CL_RESET "Sorry, but console commands can not be initialized -> disabled.\n\n");
 			console = 0;
 		} else {
-			printf("Console commands are enabled. Type " CL_BOLD "help" CL_RESET " to have a little help.\n\n");
+			printf(CL_WHITE "Server: " CL_RESET "Console commands are enabled. Type " CL_BOLD "help" CL_RESET " to have a little help.\n\n");
 		}
 	} else
-		printf(CL_DARK_CYAN "Console commands are OFF/disactivated. You can not enter any console commands." CL_RESET "\n\n");
+		printf(CL_DARK_CYAN "Console: Console commands are disabled. You cannot enter any console commands." CL_RESET "\n\n");
 
 // {oreo} Project: Diablo
 // <start>
@@ -3223,14 +3230,14 @@ void do_init(const int argc, char *argv[])
     if (exec_user != -1) {
         setuid(exec_user);
         if (errno)
-			printf("WARNING: Impossible to run as user '%s'. I will therefore run as '%s'\n",
+        printf(CL_YELLOW "Warning: " CL_RESET "Unable to run as user '%s'. Initialized instead as '%s'\n",
 				getpwuid(exec_user)->pw_name, getpwuid(getuid())->pw_name);
     }
 
     if (exec_user != -1) {
         setgid(exec_group);
         if (errno)
-			printf("WARNING: Impossible to run as user '%s'. I will therefore run as '%s'\n",
+        printf(CL_YELLOW "Warning: " CL_RESET "Unable to run as user '%s'. Initialized instead as '%s'\n",
 				getgrgid(exec_group)->gr_name, getgrgid(getgid())->gr_name);
     }
 
@@ -3240,7 +3247,7 @@ void do_init(const int argc, char *argv[])
 
     nice(process_priority);
     if (errno) {
-        printf("WARNING: Impossible to change process priority. I will therefore run with normal priority.\n");
+        printf(CL_YELLOW "Warning: " CL_RESET "Unable to change process priority. Normal priority initialized.\n\n");
         
         errno = 0;
 	}

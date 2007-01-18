@@ -210,7 +210,7 @@ void versionscreen() {
  */
 void display_title(void) {
 	printf(CL_CLS CL_DARK_WHITE CL_BG_BLUE "          (=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=)" CL_CLL CL_RESET "\n"); // white writing (37) on blue background (44)
-	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "            (c)2004-2006 Freya team presents:            " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n");
+	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "            (c)2004-2007 Freya team presents:            " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n");
 	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "         ___   ___    ___   _  _   __                    " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n"); // 1: bold char, 0: normal char
 	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "        (  _) (  ,)  (  _) ( \\/ ) (  )                   " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n"); // 1: bold char, 0: normal char
 	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "        (  _)  )  \\   ) _)  \\  /  /__\\  v%1d.%1d.%1d %3s %5s " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n", FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION, // 1: bold char, 0: normal char
@@ -297,39 +297,39 @@ int main(int argc, char **argv) {
 	// Ignored Signals
 #ifndef __WIN32
 	if (compat_signal(SIGUSR1, SIG_IGN) == SIG_ERR) // should be ignored as it's used by the Freya Daemon to check if freya is still running
-		printf("Could not install signal handler for SIGUSR1 (POSIX.1 signal).\n");
+		printf(CL_YELLOW "Warning: " CL_RESET "Could not install signal handler for SIGUSR1 (POSIX.1 signal).\n");
 #ifdef SIGPIPE // broken pipe. don't stop. socket code will manage this error.
 	if (compat_signal(SIGPIPE, SIG_IGN) == SIG_ERR) // broken pipe.
-		printf("Could not install signal handler for SIGPIPE (POSIX.1 signal).\n");
+		printf(CL_YELLOW "Warning: " CL_RESET "Could not install signal handler for SIGPIPE (POSIX.1 signal).\n");
 #else
-	printf("Warning: Your system doesn't recognize SIGPIPE (POSIX.1) signal.\n");
+	printf(CL_YELLOW "Warning: " CL_RESET "Warning: Your system doesn't recognize SIGPIPE (POSIX.1) signal.\n");
 #endif
 #endif
 
 	// Signals for termination (we must close and save all files)
 	if (compat_signal(SIGTERM, sig_proc) == SIG_ERR) // termination request
-		printf("Could not install signal handler for SIGTERM (POSIX.1 signal).\n");
+		printf(CL_YELLOW "Warning: " CL_RESET "Could not install signal handler for SIGTERM (POSIX.1 signal).\n");
 	if (compat_signal(SIGINT, sig_proc) == SIG_ERR) // program interrupt by interrupt key
-		printf("Could not install signal handler for SIGINT (POSIX.1 signal).\n");
+		printf(CL_YELLOW "Warning: " CL_RESET "Could not install signal handler for SIGINT (POSIX.1 signal).\n");
 #ifdef __WIN32
 	if (compat_signal(SIGBREAK, sig_proc) == SIG_ERR) // Control-break
-		printf("Could not install signal handler for SIGBREAK (WIN32 signal).\n");
+		printf(CL_YELLOW "Warning: " CL_RESET "Could not install signal handler for SIGBREAK (WIN32 signal).\n");
 #endif // __WIN32
 
 	// Signals to create coredumps by system when necessary (crash)
 	if (compat_signal(SIGFPE, SIG_DFL) == SIG_ERR) // Floating point error
-		printf("Could not install signal handler for SIGFPE (POSIX.1 signal).\n");
+		printf(CL_YELLOW "Warning: " CL_RESET "Could not install signal handler for SIGFPE (POSIX.1 signal).\n");
 	if (compat_signal(SIGSEGV, SIG_DFL) == SIG_ERR) // Segmentation violation/Invalid memory reference
-		printf("Could not install signal handler for SIGSEGV (POSIX.1 signal).\n");
+		printf(CL_YELLOW "Warning: " CL_RESET "Could not install signal handler for SIGSEGV (POSIX.1 signal).\n");
 	if (compat_signal(SIGILL, SIG_DFL) == SIG_ERR) // Illegal Instruction
-		printf("Could not install signal handler for SIGILL (POSIX.1 signal).\n");
+		printf(CL_YELLOW "Warning: " CL_RESET "Could not install signal handler for SIGILL (POSIX.1 signal).\n");
 	if (compat_signal(SIGABRT, SIG_DFL) == SIG_ERR) // Abort signal from abort(3)
-		printf("Could not install signal handler for SIGABRT (POSIX.1 signal).\n");
+		printf(CL_YELLOW "Warning: " CL_RESET "Could not install signal handler for SIGABRT (POSIX.1 signal).\n");
 #ifndef __WIN32
 	if (compat_signal(SIGBUS, SIG_DFL) == SIG_ERR) // Access to an undefined portion of a memory object.
-		printf("Could not install signal handler for SIGBUS (non-standard signal).\n");
+		printf(CL_YELLOW "Warning: " CL_RESET "Could not install signal handler for SIGBUS (non-standard signal).\n");
 	if (compat_signal(SIGTRAP, SIG_DFL) == SIG_ERR) // Trace/breakpoint trap
-		printf("Could not install signal handler for SIGTRAP (non-standard signal).\n");
+		printf(CL_YELLOW "Warning: " CL_RESET "Could not install signal handler for SIGTRAP (non-standard signal).\n");
 #endif // not __WIN32
 
 	do_init(argc, argv);

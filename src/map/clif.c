@@ -188,7 +188,7 @@ void read_manner() {
 
 	fp = fopen(MANNER_CONF_NAME, "r");
 	if (fp == NULL) {
-		printf("Can't read manner file: %s.\n", MANNER_CONF_NAME);
+		printf(CL_RED "Error:" CL_RESET " Failed to load manner file: %s.\n", MANNER_CONF_NAME);
 		return;
 	}
 
@@ -233,7 +233,7 @@ void read_manner() {
 		}
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", MANNER_CONF_NAME, manner_counter, (manner_counter > 1) ? "s" : "");
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", MANNER_CONF_NAME, manner_counter, (manner_counter > 1) ? "s" : "");
 
 	return;
 }

@@ -4780,7 +4780,7 @@ int battle_config_read(const char *cfgName) {
 #ifndef USE_SQL
 				if (strcasecmp(w1, "mail_system") != 0) // don't display error message if in TXT version and read mail_system configuration
 #endif /* USE_SQL */
-					printf("Unknown configuration value: '%s'.\n", w1);
+					printf(CL_YELLOW "Warning: " CL_RESET "Unknown configuration value: '%s'.\n", w1);
 			}
 		}
 	}
@@ -4791,7 +4791,7 @@ int battle_config_read(const char *cfgName) {
 		add_timer_func_list(battle_delay_damage_sub, "battle_delay_damage_sub");
 	}
 
-	printf("File '" CL_WHITE "%s" CL_RESET "' read.\n", cfgName);
+	printf(CL_GREEN "Loaded: " CL_RESET "File '" CL_WHITE "%s" CL_RESET "' read.\n", cfgName);
 
 	return 0;
 }

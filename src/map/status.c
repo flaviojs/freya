@@ -5678,7 +5678,7 @@ int status_readdb(void) {
 
 	fp = fopen("db/job_db1.txt","r");
 	if (fp == NULL) {
-		printf("can't read db/job_db1.txt\n");
+		printf(CL_RED "Error:" CL_RESET " Failed to load db/job_db1.txt\n");
 		return 1;
 	}
 	i = 0;
@@ -5705,12 +5705,12 @@ int status_readdb(void) {
 			break;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/job_db1.txt" CL_RESET "' read.\n");
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/job_db1.txt" CL_RESET "' read.\n");
 	
 	memset(&job_bonus, 0, sizeof(job_bonus));
 	fp = fopen("db/job_db2.txt", "r");
 	if (fp == NULL){
-		printf("can't read db/job_db2.txt\n");
+		printf(CL_RED "Error:" CL_RESET " Failed to load db/job_db2.txt\n");
 		return 1;
 	}
 	i = 0;
@@ -5732,11 +5732,11 @@ int status_readdb(void) {
 			break;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/job_db2.txt" CL_RESET "' read.\n");
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/job_db2.txt" CL_RESET "' read.\n");
 
 	fp = fopen("db/job_db2-2.txt","r");
 	if (fp == NULL) {
-		printf("can't read db/job_db2-2.txt\n");
+		printf(CL_RED "Error:" CL_RESET " Failed to load db/job_db2-2.txt\n");
 		return 1;
 	}
 	i=0;
@@ -5756,7 +5756,7 @@ int status_readdb(void) {
 			break;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/job_db2-2.txt" CL_RESET "' read.\n");
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/job_db2-2.txt" CL_RESET "' read.\n");
 
 	// サイズ補正テーブル
 	for(i=0;i<3;i++)
@@ -5764,7 +5764,7 @@ int status_readdb(void) {
 			atkmods[i][j] = 100;
 	fp=fopen("db/size_fix.txt","r");
 	if(fp==NULL){
-		printf("can't read db/size_fix.txt\n");
+		printf(CL_RED "Error:" CL_RESET " Failed to load db/size_fix.txt\n");
 		return 1;
 	}
 	i=0;
@@ -5786,7 +5786,7 @@ int status_readdb(void) {
 		i++;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/size_fix.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", i, (i > 1) ? "s" : "");
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/size_fix.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", i, (i > 1) ? "s" : "");
 
 	// 精錬データテーブル
 	for(i=0;i<5;i++){
@@ -5798,7 +5798,7 @@ int status_readdb(void) {
 	}
 	fp = fopen("db/refine_db.txt","r");
 	if (fp == NULL) {
-		printf("can't read db/refine_db.txt\n");
+		printf(CL_RED "Error:" CL_RESET " Failed to load db/refine_db.txt\n");
 		return 1;
 	}
 	i=0;
@@ -5823,7 +5823,7 @@ int status_readdb(void) {
 		i++;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/refine_db.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", i, (i > 1) ? "s" : "");
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/refine_db.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", i, (i > 1) ? "s" : "");
 
 	return 0;
 }

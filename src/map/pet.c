@@ -1626,7 +1626,7 @@ int read_petdb() {
 		if (fp == NULL) {
 			if (i > 0)
 				continue;
-			printf("can't read %s\n", filename[i]);
+			printf(CL_RED "Error:" CL_RESET " Failed to load %s\n", filename[i]);
 			return -1;
 		}
 		lines = 0;
@@ -1684,7 +1684,7 @@ int read_petdb() {
 			j++;
 		}
 		fclose(fp);
-		printf("DB '" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", filename[i], j, (j > 1) ? "s" : "");
+		printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", filename[i], j, (j > 1) ? "s" : "");
 	}
 
 	return 0;

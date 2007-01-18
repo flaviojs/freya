@@ -1177,14 +1177,14 @@ int atcommand_config_read(const char *cfgName) {
 	}
 	fclose(fp);
 
-	printf("File '" CL_WHITE "%s" CL_RESET "' read.\n", cfgName);
+	printf(CL_GREEN "Loaded: " CL_RESET "File '" CL_WHITE "%s" CL_RESET "' read.\n", cfgName);
 
 	read_counter--;
 	if (read_counter == 0) {
-		printf("Symbols:\n");
-		printf("\t- '" CL_WHITE "%c" CL_RESET "' for GM commands.\n", command_symbol);
-		printf("\t- '" CL_WHITE "%c" CL_RESET "' for char GM commands.\n", char_command_symbol);
-		printf("\t- '" CL_WHITE "%c" CL_RESET "' for main channel.\n", main_channel_symbol);
+		printf(CL_WHITE "Server: " CL_RESET "Atcommand Symbols:\n");
+		printf(CL_WHITE "Server: " CL_RESET "'" CL_WHITE "%c" CL_RESET "' for GM commands.\n", command_symbol);
+		printf(CL_WHITE "Server: " CL_RESET "'" CL_WHITE "%c" CL_RESET "' for char GM commands.\n", char_command_symbol);
+		printf(CL_WHITE "Server: " CL_RESET "'" CL_WHITE "%c" CL_RESET "' for main channel.\n", main_channel_symbol);
 	}
 
 	return 0;
@@ -1832,7 +1832,7 @@ int msg_config_read(const char *cfgName) {
 	for (i = 0; msg_table[607][i]; i++) // Please help me~ T.T
 		msg_table[607][i] = tolower((unsigned char)msg_table[607][i]); // tolower needs unsigned char
 
-	printf("File '" CL_WHITE "%s" CL_RESET "' read.\n", cfgName);
+	printf(CL_GREEN "Loaded: " CL_RESET "File '" CL_WHITE "%s" CL_RESET "' read.\n", cfgName);
 
 	return 0;
 }

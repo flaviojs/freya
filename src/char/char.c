@@ -6694,11 +6694,11 @@ void do_init(const int argc, char **argv) {
 #endif
 
 	if (strcmp(listen_ip, "0.0.0.0") == 0) {
-		char_log("The char-server is ready (and is listening on the port %d - from any ip)." RETCODE, char_port);
-		printf("The char-server is " CL_GREEN "ready" CL_RESET " (and is listening on the port " CL_WHITE "%d" CL_RESET " - from any ip).\n", char_port);
+		char_log("The char-server is ready (listening on the port %d - from any ip)." RETCODE, char_port);
+		printf("The char-server is " CL_GREEN "ready" CL_RESET " (listening on the port " CL_WHITE "%d" CL_RESET " - from any ip).\n", char_port);
 	} else {
-		char_log("The char-server is ready (and is listening on %s:%d)." RETCODE, listen_ip, char_port);
-		printf("The char-server is " CL_GREEN "ready" CL_RESET " (and is listening on " CL_WHITE "%s:%d" CL_RESET ").\n", listen_ip, char_port);
+		char_log("The char-server is ready (listening on %s:%d)." RETCODE, listen_ip, char_port);
+		printf("The char-server is " CL_GREEN "ready" CL_RESET " (listening on " CL_WHITE "%s:%d" CL_RESET ").\n", listen_ip, char_port);
 	}
 
 	/* console */
