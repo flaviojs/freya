@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+01/19/07
+	* Fixed: One of Aliza's drops [Tsuyuki]
+
 01/18/07
 	* Added: Partially implemented Spirit of the Bard/Dancer status bonuses: [Tsuyuki]
 	 - Walk speed bonus, and performance skills will affect caster
