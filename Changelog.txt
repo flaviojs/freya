@@ -5,6 +5,11 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/18/07
+	* Added: Partially implemented Spirit of the Bard/Dancer status bonuses: [Tsuyuki]
+	 - Walk speed bonus, and performance skills will affect caster
+	* Added: Fully implemented Spirit of the Sage skill buffs [Tsuyuki]
+	* Added: Full effect for Spirit of the Soul Linker [Haplo]
+	* Added: Spirit of the Rogue Flying Kick non-removal buff [Haplo]
 	* Updated: packet_db.txt (Credits to eAthena) [Tsuyuki]
 	* Fixed: Typo in Goat's drops [Tsuyuki]
 
@@ -18,7 +23,7 @@ Date	Added
 	* Added: New duplicate monsters [Tsuyuki]
 
 01/16/07
-	* Added: Partially implemented Spirit of the Wizard Soul Link [Dralthan]
+	* Added: Partially implemented Spirit of the Wizard Soul Link [Haplo]
 	* Improved: Rebirth quest skill system now removes garbage variables when it's done with them [Tsuyuki]
 	* Fixed: Fully fixed quest skill saving/returning through the rebirth process [Tsuyuki]
 	* Fixed: Problem where rebirth High Novice wasn't getting it's quest skills [Tsuyuki]

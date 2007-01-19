@@ -6884,9 +6884,10 @@ int skill_unit_onplace(struct skill_unit *src, struct block_list *bl, unsigned i
 	/* Future implementation of RICHMANKIM code that should only affect the monster, not the player.
 	case 0x9f:
 		//if (battle_check_target(&src->bl, bl, BCT_ENEMY) > 0) {
-			if (sg->src_id == bl->id)
-				break;
 			sc_data = status_get_sc_data(bl);
+			// The skills won't affect the caster
+			if(sg->src_id == bl->id && (sc_data[SC_SPIRIT].timer == -1 || sc_data[SC_SPIRIT].val2 != SL_BARDDANCER))
+				break;
 			type = SkillStatusChangeTable[sg->skill_id];
 			if (sc_data && sc_data[type].timer != -1)
 				break;
@@ -6910,13 +6911,13 @@ int skill_unit_onplace(struct skill_unit *src, struct block_list *bl, unsigned i
 	case 0xae:	/* DC_FORTUNEKISS */
 	case 0xaf:	/* DC_SERVICEFORYOU */
 	case 0xb9:	/* CG_HERMODE */
-		/* The skills won't effect the caster */
-		if(sg->src_id == bl->id)
+		sc_data = status_get_sc_data(bl);
+		/* The skills won't affect the caster */
+		if(sg->src_id == bl->id && (sc_data[SC_SPIRIT].timer == -1 || sc_data[SC_SPIRIT].val2 != SL_BARDDANCER))
 			break;
-		/* Wand of Hermode only effects friendly players */
+		/* Wand of Hermode only affects friendly players */
 		if(sg->unit_id == 0xb9 && battle_check_target(&src->bl, bl, BCT_NOENEMY) != 1)
 			break;
-		sc_data = status_get_sc_data(bl);
 		type = SkillStatusChangeTable[sg->skill_id];
 		if (sc_data && sc_data[type].timer == -1)
 			status_change_start(bl, type, sg->skill_lv, sg->val1, sg->val2, sg->group_id, skill_get_time2(sg->skill_id, sg->skill_lv), 0);
@@ -6924,9 +6925,10 @@ int skill_unit_onplace(struct skill_unit *src, struct block_list *bl, unsigned i
 
 	/* Dance Skills - affects all except caster and ensemble partner */
 	case 0xa0:	/* BD_ETERNALCHAOS */
-		if (sg->src_id == bl->id)
-			break;
 		sc_data = status_get_sc_data(bl);
+		/* The skills won't affect the caster */
+		if(sg->src_id == bl->id && (sc_data[SC_SPIRIT].timer == -1 || sc_data[SC_SPIRIT].val2 != SL_BARDDANCER))
+			break;
 		type = SkillStatusChangeTable[sg->skill_id];
 		if (sc_data && sg->src_id != sc_data[SC_DANCING].val4 && sc_data[type].timer == -1)
 				status_change_start(bl, type, sg->skill_lv, sg->val1, sg->val2, sg->group_id, skill_get_time2(sg->skill_id, sg->skill_lv), 0);
@@ -6954,8 +6956,6 @@ int skill_unit_onplace(struct skill_unit *src, struct block_list *bl, unsigned i
 		break;
 
 	case 0xb5:	/* CG_MOONLIT */
-		if (sg->src_id == bl->id)
-			break;
 		sc_data = status_get_sc_data(bl);
 		if(sc_data == NULL || sc_data[SC_DANCING].timer == -1 || sc_data[SC_DANCING].val2 != (int)sg)
 			skill_blown(&src->bl, bl, 2|0x30000);

@@ -3174,6 +3174,8 @@ int battle_weapon_attack(struct block_list *src, struct block_list *target, unsi
 		if(sc_data && sc_data[SC_AUTOSPELL].timer != -1 && rand()%100 < sc_data[SC_AUTOSPELL].val4) {
 			int skilllv=sc_data[SC_AUTOSPELL].val3,i,f=0;
 			i = rand()%100;
+			if (sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_SAGE)
+				i = 0; // Always does max chance in Soul Link mode
 			if (i >= 50) skilllv -= 2;
 			else if(i >= 15) skilllv--;
 			if (skilllv < 1) skilllv = 1;

@@ -1388,7 +1388,11 @@ int status_calc_pc(struct map_session_data* sd, int first)
 			int s_rate = 500 - 40 * pc_checkskill(sd, (sd->status.sex? BA_MUSICALLESSON : DC_DANCINGLESSON));
 			if (sd->sc_data[SC_LONGING].timer != -1)
 				s_rate -= 20 * sd->sc_data[SC_LONGING].val1;
-			sd->speed += sd->speed * s_rate / 100;
+			// Spirit of the Bard/Dancer speed bonus
+			if (sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_BARDDANCER)
+				sd->speed -= 40; // Custom rate
+			else
+				sd->speed += sd->speed * s_rate / 100;
 			sd->nhealsp = 0;
 			sd->nshealsp = 0;
 			sd->nsshealsp = 0;
@@ -1622,7 +1626,11 @@ void status_calc_speed(struct map_session_data *sd) {
 			int s_rate = 500 - 40 * pc_checkskill(sd, (sd->status.sex? BA_MUSICALLESSON: DC_DANCINGLESSON));
 			if (sd->sc_data[SC_LONGING].timer != -1)
 				s_rate -= 20 * sd->sc_data[SC_LONGING].val1;
-			sd->speed += sd->speed * s_rate / 100;
+			// Spirit of the Bard/Dancer speed bonus
+			if (sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_BARDDANCER)
+				sd->speed -= 40; // Custom rate
+			else
+				sd->speed += sd->speed * s_rate / 100;
 		}
 		if (sd->sc_data[SC_CURSE].timer != -1)
 			sd->speed += 450;
@@ -2708,7 +2716,9 @@ int status_get_speed(struct block_list *bl) {
 				else if (sc_data[SC_JOINTBEAT].val2 == 3)
 					speed = speed * 130 / 100;
 			}
-			if (sc_data[SC_DANCING].timer != -1)
+			if (sc_data[SC_DANCING].timer != -1 && sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_BARDDANCER)
+				speed -= 40; // Custom rate
+			else if (sc_data[SC_DANCING].timer != -1)
 				speed *= 6;
 			if(sc_data[SC_SWOO].timer != -1)
 				speed += 450;		// Same as Curse, correct value unknown
