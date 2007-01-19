@@ -4,6 +4,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+01/18/07
+	* Updated: packet_db.txt (Credits to eAthena) [Tsuyuki]
+	* Fixed: Typo in Goat's drops [Tsuyuki]
+
 01/17/07
 	* Removed: Fully removed the so-called 'Project Diablo' [Tsuyuki]
 	 - Thrown out due to being pointless, and due to various warnings in different compilation environments/other bugs
