@@ -3669,7 +3669,7 @@
 1715,Novus@NPC_PIERCINGATT,attack,158,2,500,0,5000,no,target,always,0,,,,,,
 1715,Novus@NPC_BLOODDRAIN,attack,199,1,500,0,5000,yes,target,always,0,,,,,,37
 1716,Acidus@NPC_WINDATTACK,attack,187,6,500,500,5000,no,target,always,0,,,,,,
-1716,A	cidus@NPC_STOP,attack,342,1,500,500,5000,no,target,always,0,,,,,,
+1716,Acidus@NPC_STOP,attack,342,1,500,500,5000,no,target,always,0,,,,,,
 1716,Acidus@MG_LIGHTNINGBOLT,idle,20,8,2000,1000,5000,yes,target,always,0,,,,,,
 1716,Acidus@MG_LIGHTNINGBOLT,chase,20,8,1000,1000,5000,yes,target,always,0,,,,,,32
 1716,Acidus@MG_LIGHTNINGBOLT,attack,20,8,1000,1000,5000,yes,target,always,0,,,,,,
