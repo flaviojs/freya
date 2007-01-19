@@ -9,7 +9,6 @@ Date	Added
 	 - Walk speed bonus, and performance skills will affect caster
 	* Added: Fully implemented Spirit of the Sage skill buffs [Tsuyuki]
 	* Added: Full effect for Spirit of the Soul Linker [Haplo]
-	* Added: Spirit of the Rogue Flying Kick non-removal buff [Haplo]
 	* Updated: packet_db.txt (Credits to eAthena) [Tsuyuki]
 	* Fixed: Typo in Goat's drops [Tsuyuki]
 

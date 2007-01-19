@@ -1373,7 +1373,7 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 					status_change_end(bl, SC_ASPDPOTION2, -1);
 				if (tsc_data[SC_ASPDPOTION3].timer != -1 && tsc_data[SC_ASPDPOTION3].val4)
 					status_change_end(bl, SC_ASPDPOTION3, -1);
-				if (tsc_data[SC_SPIRIT].timer != -1 && tsc_data[SC_SPIRIT].val2 != SL_ROGUE && dstsd && pc_checkskill(dstsd, ST_PRESERVE) > 0) // Dont dispel Rogue Link (Dralthan aka Haplo)
+				if (tsc_data[SC_SPIRIT].timer != -1)
 					status_change_end(bl, SC_SPIRIT, -1);
 				/*if (tsc_data[SC_ONEHAND].timer != -1)
 					status_change_end(bl, SC_ONEHAND, -1);
