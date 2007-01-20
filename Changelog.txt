@@ -4,6 +4,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+01/20/07
+	* Changed: Commented extra system configuration values as they aren't being recognized properly [Tsuyuki]
+	* Added: Imported official (ish) Bard job change quest from eAthena [Tsuyuki]
+
 01/19/07
 	* Fixed: One of Aliza's drops [Tsuyuki]
 
