@@ -2291,7 +2291,7 @@ int mmo_char_send006b(int fd, struct char_session_data *sd) {
 //		printf("(" CL_GREEN "%d" CL_RESET ")" CL_GREEN "%s" CL_RESET "\t[char]\n", sql_get_integer(0), sql_get_string(24));
 		sd->found_char[found_num] = sql_get_integer(0); // found_char = index in db (TXT), char_id (SQL), -1: void
 
-#ifdef PACKET8
+#if PACKETVER > 7
 		j = 24 + (found_num * 108); // increase speed of code
 		memset(WPACKETP(j), 0, 108);
 #else
@@ -4732,7 +4732,11 @@ int parse_char(int fd) {
 					if (sql_get_row()) {
 						printf("(" CL_GREEN "%d" CL_RESET ")" CL_GREEN "%s" CL_RESET "\t[char creation]\n", sql_get_integer(0), sql_get_string(24));
 
+#if PACKETVER > 7
+						memset(WPACKETP(0), 0, 110);
+#else
 						memset(WPACKETP(0), 0, 108);
+#endif
 						WPACKETW(0    ) = 0x6d;
 
 						WPACKETL(2    ) =  sql_get_integer( 0); // char_id
@@ -4784,10 +4788,11 @@ int parse_char(int fd) {
 #if PACKETVER > 7
 						WPACKETW(2+104) =  sql_get_integer(31); // char_num
 						WPACKETB(2+106) = 1; //Rename bit.
+						SENDPACKET(fd, 110);
 #else
 						WPACKETB(2+104) =  sql_get_integer(31); // char_num
+						SENDPACKET(fd, 108);
 #endif
-						SENDPACKET(fd, 110);
 					}
 				}
 			}

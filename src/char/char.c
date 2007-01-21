@@ -997,7 +997,7 @@ static inline int mmo_char_fromstr(char *str, struct mmo_charstatus *p, int idx)
 	}
 
 	if (str[next] == '\n' || str[next] == '\r')
-		return 1;	// V‹Kƒf[ƒ^
+		return 1;	// ï¿½Vï¿½Kï¿½fï¿½[ï¿½^
 
 	next++;
 
@@ -1094,7 +1094,7 @@ static inline int mmo_char_fromstr(char *str, struct mmo_charstatus *p, int idx)
 	next++;
 
 	i = 0;
-	while(str[next] && str[next] != '\t' && str[next] != '\n' && str[next] != '\r' && i < GLOBAL_REG_NUM) { // global_regÀ‘•ˆÈ‘O‚Ìathena.txtŒİŠ·‚Ì‚½‚ßˆê‰'\n'ƒ`ƒFƒbƒN
+	while(str[next] && str[next] != '\t' && str[next] != '\n' && str[next] != '\r' && i < GLOBAL_REG_NUM) { // global_regï¿½ï¿½ï¿½È‘Oï¿½ï¿½athena.txtï¿½İŠï¿½ï¿½Ì‚ï¿½ï¿½ßˆê‰'\n'ï¿½`ï¿½Fï¿½bï¿½N
 		memset(tmp_str, 0, sizeof(tmp_str));
 		if (sscanf(str + next, "%[^,],%d%n", tmp_str, &tmp_int[0], &len) != 2) {
 			// because some scripts are not correct, the str can be "". So, we must check that.
@@ -2790,8 +2790,13 @@ int mmo_char_send006b(int fd, struct char_session_data *sd) {
 //			printf("(" CL_GREEN "%d" CL_RESET ")" CL_GREEN "%s" CL_RESET "\t[char]\n", p->char_id, p->name);
 			sd->found_char[found_num] = i; // found_char = index in db (TXT), char_id (SQL), -1: void
 
+#if PACKETVER > 7
+			j = 24 + (found_num * 108); // increase speed of code
+			memset(WPACKETP(j), 0, 108);
+#else
 			j = 24 + (found_num * 106); // increase speed of code
 			memset(WPACKETP(j), 0, 106);
+#endif
 
 			WPACKETL(j    ) = p->char_id;
 			WPACKETL(j+  4) = p->base_exp;
@@ -2845,7 +2850,12 @@ int mmo_char_send006b(int fd, struct char_session_data *sd) {
 			WPACKETB(j+101) = (p->int_ > 255) ? 255 : p->int_;
 			WPACKETB(j+102) = (p->dex > 255) ? 255 : p->dex;
 			WPACKETB(j+103) = (p->luk > 255) ? 255 : p->luk;
+#if PACKETVER > 7
+			WPACKETW(j+104) = p->char_num;
+			WPACKETW(j+106) = 1;
+#else
 			WPACKETB(j+104) = p->char_num;
+#endif
 //			printf("char #%d: str %d, agi: %d, vit: %d, int_: %d, dex: %d, luk: %d, char_num: %d\n", found_num, WPACKETB(j+98), WPACKETB(j+99), WPACKETB(j+100), WPACKETB(j+101), WPACKETB(j+102), WPACKETB(j+103), WPACKETB(j+104));
 
 			found_num++;
@@ -2860,8 +2870,13 @@ int mmo_char_send006b(int fd, struct char_session_data *sd) {
 //		printf("(" CL_GREEN "%d" CL_RESET ")" CL_GREEN "%s" CL_RESET "\t[char]\n", sql_get_integer(0), sql_get_string(24));
 		sd->found_char[found_num] = sql_get_integer(0); // found_char = index in db (TXT), char_id (SQL), -1: void
 
+#if PACKETVER > 7
+		j = 24 + (found_num * 108); // increase speed of code
+		memset(WPACKETP(j), 0, 108);
+#else
 		j = 24 + (found_num * 106); // increase speed of code
 		memset(WPACKETP(j), 0, 106);
+#endif
 
 		WPACKETL(j    ) = sql_get_integer(0); // char_id
 		WPACKETL(j+  4) = sql_get_integer(1); // base_exp
@@ -2921,7 +2936,12 @@ int mmo_char_send006b(int fd, struct char_session_data *sd) {
 		WPACKETB(j+101) = (sql_get_integer(28) > 255) ? 255 : sql_get_integer(28); // int_
 		WPACKETB(j+102) = (sql_get_integer(29) > 255) ? 255 : sql_get_integer(29); // dex
 		WPACKETB(j+103) = (sql_get_integer(30) > 255) ? 255 : sql_get_integer(30); // luk
+#if PACKETVER > 7
+		WPACKETW(j+104) = sql_get_integer(31); // char_num
+		WPACKETW(j+106) = 1;
+#else
 		WPACKETB(j+104) = sql_get_integer(31); // char_num
+#endif
 //		printf("char #%d: str %d, agi: %d, vit: %d, int_: %d, dex: %d, luk: %d, char_num: %d\n", found_num, WPACKETB(j+98), WPACKETB(j+99), WPACKETB(j+100), WPACKETB(j+101), WPACKETB(j+102), WPACKETB(j+103), WPACKETB(j+104));
 
 		found_num++;
@@ -2933,7 +2953,12 @@ int mmo_char_send006b(int fd, struct char_session_data *sd) {
 
 	for(j = found_num; j < 9; j++)
 		sd->found_char[j] = -1; // found_char = index in db (TXT), char_id (SQL), -1: void
+
+#if PACKETVER > 7
+	WPACKETW(2) = 24 + found_num * 108;
+#else
 	WPACKETW(2) = 24 + found_num * 106;
+#endif
 	SENDPACKET(fd, WPACKETW(2));
 
 	return 0;
@@ -3012,7 +3037,7 @@ void send_account_reg2(int acc, int fd) { // only send when character is send to
 	return;
 }
 
-// —£¥(charíœ‚Ég—p)
+// ï¿½ï¿½ï¿½ï¿½(charï¿½íœï¿½ï¿½ï¿½Égï¿½p)
 int char_divorce(struct mmo_charstatus *cs) {
 	int i, j;
 
@@ -3071,11 +3096,11 @@ int disconnect_player(int account_id) {
 	return 0;
 }
 
-// ƒLƒƒƒ‰íœ‚É”º‚¤ƒf[ƒ^íœ
+// ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½íœï¿½É”ï¿½ï¿½ï¿½ï¿½fï¿½[ï¿½^ï¿½íœ
 static int char_delete(struct mmo_charstatus *cs) {
 	int j;
 
-	// ƒyƒbƒgíœ
+	// ï¿½yï¿½bï¿½gï¿½íœ
 	if (cs->pet_id)
 		inter_pet_delete(cs->pet_id);
 	for (j = 0; j < MAX_INVENTORY; j++)
@@ -3084,20 +3109,20 @@ static int char_delete(struct mmo_charstatus *cs) {
 	for (j = 0; j < MAX_CART; j++)
 		if (cs->cart[j].card[0] == (short)0xff00)
 			inter_pet_delete(*((long *)(&cs->cart[j].card[2])));
-	// ƒMƒ‹ƒh’E‘Ş
+	// ï¿½Mï¿½ï¿½ï¿½hï¿½Eï¿½ï¿½
 	if (cs->guild_id)
 		inter_guild_leave(cs->guild_id, cs->account_id, cs->char_id);
-	// ƒp[ƒeƒB[’E‘Ş
+	// ï¿½pï¿½[ï¿½eï¿½Bï¿½[ï¿½Eï¿½ï¿½
 	if (cs->party_id)
 		inter_party_leave(cs->party_id, cs->account_id);
-	// —£¥
+	// ï¿½ï¿½ï¿½ï¿½
 	if (cs->partner_id) {
-		// —£¥î•ñ‚ğmap‚É’Ê’m
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½mapï¿½É’Ê’m
 		WPACKETW(0) = 0x2b12;
 		WPACKETL(2) = cs->char_id;
 		WPACKETL(6) = cs->partner_id;
 		mapif_sendall(10);
-		// —£¥
+		// ï¿½ï¿½ï¿½ï¿½
 		char_divorce(cs);
 	}
 
@@ -4031,7 +4056,7 @@ int parse_frommap(int fd) {
 			RFIFOSKIP(fd,23);
 			break;
 
-		// MAPƒT[ƒo[ã‚Ìƒ†[ƒU[”óM
+		// MAPï¿½Tï¿½[ï¿½oï¿½[ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½Uï¿½[ï¿½ï¿½ï¿½ï¿½M
 		// Receive alive message (online players) from map-server (no answer)
 		case 0x2aff:
 			if (RFIFOREST(fd) < 9 || RFIFOREST(fd) < RFIFOW(fd,2))
@@ -4138,7 +4163,7 @@ int parse_frommap(int fd) {
 			RFIFOSKIP(fd,RFIFOW(fd,2));
 			break;
 
-		// ƒLƒƒƒ‰ƒf[ƒ^•Û‘¶
+		// ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½fï¿½[ï¿½^ï¿½Û‘ï¿½
 		// Receive character data from map-server (no answer)
 		case 0x2b01:
 			if (RFIFOREST(fd) < 12 || RFIFOREST(fd) < RFIFOW(fd,2))
@@ -4194,7 +4219,7 @@ int parse_frommap(int fd) {
 			RFIFOSKIP(fd,19);
 			break;
 
-		// ƒ}ƒbƒvƒT[ƒo[ŠÔˆÚ“®—v‹
+		// ï¿½}ï¿½bï¿½vï¿½Tï¿½[ï¿½oï¿½[ï¿½ÔˆÚ“ï¿½ï¿½vï¿½ï¿½
 		// request "change map server"
 		case 0x2b05:
 			if (RFIFOREST(fd) < 49)
@@ -4240,7 +4265,7 @@ int parse_frommap(int fd) {
 			RFIFOSKIP(fd,49);
 			break;
 
-		// char name check // ƒLƒƒƒ‰–¼ŒŸõ
+		// char name check // ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		case 0x2b08:
 			if (RFIFOREST(fd) < 6)
 				return 0;
@@ -5483,7 +5508,11 @@ int parse_char(int fd) {
 					}
 
 #ifdef TXT_ONLY
+#if PACKETVER > 7
+					memset(WPACKETP(0), 0, 110);
+#else
 					memset(WPACKETP(0), 0, 108);
+#endif
 					WPACKETW(0    ) = 0x6d;
 
 					WPACKETL(2    ) = char_dat[i].char_id; // char_id
@@ -5527,8 +5556,14 @@ int parse_char(int fd) {
 					WPACKETB(2+102) = (char_dat[i].dex > 255) ? 255 : char_dat[i].dex; // dex
 					WPACKETB(2+103) = (char_dat[i].luk > 255) ? 255 : char_dat[i].luk; // luk
 					WPACKETB(2+104) = char_dat[i].char_num; // char_num
-
+#if PACKETVER > 7
+					WPACKETW(2+104) = char_dat[i].char_num; // char_num
+					WPACKETB(2+106) = 1; //Rename bit.
+					SENDPACKET(fd, 110);
+#else
+					WPACKETB(2+104) = char_dat[i].char_num; // char_num
 					SENDPACKET(fd, 108);
+#endif
 #else // TXT_ONLY -> USE_SQL
 					sql_request("SELECT `char_id`,`base_exp`,`zeny`,`job_exp`,`job_level`,`option`,`karma`,`manner`,"
 					            "`status_point`,`hp`,`max_hp`,`sp`,`max_sp`,`class`,`hair`,`weapon`,`base_level`,`skill_point`,"
@@ -5537,7 +5572,11 @@ int parse_char(int fd) {
 					if (sql_get_row()) {
 						printf("(" CL_GREEN "%d" CL_RESET ")" CL_GREEN "%s" CL_RESET "\t[char creation]\n", sql_get_integer(0), sql_get_string(24));
 
+#if PACKETVER > 7
+						memset(WPACKETP(0), 0, 110);
+#else
 						memset(WPACKETP(0), 0, 108);
+#endif
 						WPACKETW(0    ) = 0x6d;
 
 						WPACKETL(2    ) =  sql_get_integer( 0); // char_id
@@ -5586,9 +5625,14 @@ int parse_char(int fd) {
 						WPACKETB(2+101) = (sql_get_integer(28) > 255) ? 255 : sql_get_integer(28); // int_
 						WPACKETB(2+102) = (sql_get_integer(29) > 255) ? 255 : sql_get_integer(29); // dex
 						WPACKETB(2+103) = (sql_get_integer(30) > 255) ? 255 : sql_get_integer(30); // luk
+#if PACKETVER > 7
+						WPACKETW(2+104) =  sql_get_integer(31); // char_num
+						WPACKETB(2+106) = 1; //Rename bit.
+						SENDPACKET(fd, 110);
+#else
 						WPACKETB(2+104) =  sql_get_integer(31); // char_num
-
 						SENDPACKET(fd, 108);
+#endif
 					}
 #endif // USE_SQL
 				}
@@ -5808,7 +5852,7 @@ int parse_char(int fd) {
 			}
 			break;
 
-		case 0x187:	// AliveM†H
+		case 0x187:	// Aliveï¿½Mï¿½ï¿½ï¿½H
 			if (RFIFOREST(fd) < 6)
 				return 0;
 			RFIFOSKIP(fd, 6);
