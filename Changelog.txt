@@ -4,6 +4,15 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+01/21/07
+	* Added: Support for new gravity packets [Oreo]
+	 - I am not certain if it works or not. This is what I got when tested it:
+	   -> Client 2006-12-18a did not bug out but did not display anything new
+	   -> Client 2006-10-17a would crash because of Palette errors
+	 - I welcome courageous users to test it. To activate support for new packets, do the following:
+	   -> Open src/include/mmo.h
+	   -> In #define PACKETVER 7, change 7 to 8.
+
 01/20/07
 	* Changed: Commented extra system configuration values as they aren't being recognized properly [Tsuyuki]
 	* Added: Imported official (ish) Bard job change quest from eAthena [Tsuyuki]

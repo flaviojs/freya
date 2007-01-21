@@ -17,11 +17,13 @@
 #include <time.h>
 #include "../common/utils.h" // LCCWIN32
 
+#define PACKETVER 7
+
 #if defined __CYGWIN || defined __WIN32
-// txt��log�Ȃǂ̏����o���t�@�C���̉��s�R�[�h
-#define RETCODE "\r\n" // (CR/LF�FWindows�n)
+// txt‚âlog‚È‚Ç‚Ì�‘‚«�o‚·ƒtƒ@ƒCƒ‹‚Ì‰ü�sƒR�[ƒh
+#define RETCODE "\r\n" // (CR/LF�FWindowsŒn)
 #else
-#define RETCODE "\n" // (LF�FUnix�n�j
+#define RETCODE "\n" // (LF�FUnixŒn�j
 #endif
 
 #define RFIFOSIZE_SERVER (64*1024) /* memo size is 60000 bytes */
@@ -326,13 +328,13 @@ struct Ranking_Data {
 };
 
 enum {
-	GBI_EXP        = 1, // �M���h��EXP
-	GBI_GUILDLV    = 2, // �M���h��Lv
-	GBI_SKILLPOINT = 3, // �M���h�̃X�L���|�C���g
-	GBI_SKILLLV    = 4, // �M���h�X�L��Lv
+	GBI_EXP        = 1, // ƒMƒ‹ƒh‚ÌEXP
+	GBI_GUILDLV    = 2, // ƒMƒ‹ƒh‚ÌLv
+	GBI_SKILLPOINT = 3, // ƒMƒ‹ƒh‚ÌƒXƒLƒ‹ƒ|ƒCƒ“ƒg
+	GBI_SKILLLV    = 4, // ƒMƒ‹ƒhƒXƒLƒ‹Lv
 
-	GMI_POSITION   = 0, // �����o�[�̖�E�ύX
-	GMI_EXP        = 1  // �����o�[��EXP
+	GMI_POSITION   = 0, // ƒ�ƒ“ƒo�[‚Ì–ð�E•Ï�X
+	GMI_EXP        = 1  // ƒ�ƒ“ƒo�[‚ÌEXP
 };
 
 enum {
