@@ -4066,9 +4066,15 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 	case SG_FUSION:
 		if (sc_data && sc_data[SC_FUSION].timer != -1)
 			status_change_end(src,SC_FUSION,-1);
-		if (sc_data && sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_STAR) {
+		if (sc_data && sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_STAR)
+			{
 			clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 			status_change_start(bl, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
+			if (sd)
+			{
+				sd->view_class = 4048;
+				clif_changelook(&sd->bl, LOOK_BASE, sd->view_class);
+			}
 		}
 		break;
 	case AC_CONCENTRATION:

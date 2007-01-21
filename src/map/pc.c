@@ -6491,7 +6491,7 @@ int pc_heal(struct map_session_data *sd,int hp,int sp)
 			sp = 0;
 	}
 
-	if (sd->sc_data[SC_BERSERK].timer != -1) //バーサーク中は回復させないらしい
+	if (sd->sc_data[SC_BERSERK].timer != -1)
 		return 0;
 
 	if (hp + sd->status.hp > sd->status.max_hp)
@@ -6570,9 +6570,9 @@ void pc_itemheal(struct map_session_data *sd, int hp, int sp)
 
 		bonus = 100 + (sd->paramc[2] << 1) + pc_checkskill(sd, SM_RECOVERY)*10	+ pc_checkskill(sd, AM_LEARNINGPOTION)*5;
 		if (use_nameditem && ranking_id2rank(use_nameditem, RK_ALCHEMIST))
-			bonus += 50; //A potion produced by an Alchemist in the Fame Top 10 gets +50% effect
+			bonus += 50; // A potion produced by an Alchemist in the Fame Top 10 gets +50% effect
 
-		if (use_itemtype > 0) //int itemhealrate[7];
+		if (use_itemtype > 0) // int itemhealrate[7];
 			bonus = bonus * (100 + sd->itemhealrate[use_itemtype - 1]) / 100;
 
 		if (bonus != 100)
@@ -6583,7 +6583,7 @@ void pc_itemheal(struct map_session_data *sd, int hp, int sp)
 		      + pc_checkskill(sd, AM_LEARNINGPOTION) * 5;
 
 		if (use_nameditem && ranking_id2rank(use_nameditem, RK_ALCHEMIST))
-			bonus += 50; //A potion produced by an Alchemist in the Fame Top 10 gets +50% effect
+			bonus += 50; // A potion produced by an Alchemist in the Fame Top 10 gets +50% effect
 
 		if (bonus != 100)
 			sp = sp * bonus / 100;

@@ -3324,7 +3324,7 @@ int battle_weapon_attack(struct block_list *src, struct block_list *target, unsi
 									}
 								skill_castend_nodamage_id(target, tbl, tsd->autospell2[n].id, skilllv, tick, flag);
 								break;
-							case 2:	// splash damage skill
+							case 2:	// Splash damage skill
 								skill_castend_damage_id(target, tbl, tsd->autospell2[n].id, skilllv, tick, flag);
 								break;
 						}
@@ -3335,7 +3335,7 @@ int battle_weapon_attack(struct block_list *src, struct block_list *target, unsi
 		/* End autospell from TARGET */
 		
 		if (rdamage > 0)
-			battle_delay_damage(tick + wd.amotion, target, src, BF_WEAPON, 0, 0, rdamage, 0, 0); // Reflected damages
+			battle_delay_damage(tick + wd.amotion, target, src, BF_WEAPON, 0, 0, rdamage, 0, 0); // Reflected damage
 		
 		if (t_sc_data) {
 			if (t_sc_data[SC_AUTOCOUNTER].timer != -1 && t_sc_data[SC_AUTOCOUNTER].val4 > 0) {
@@ -3355,39 +3355,43 @@ int battle_weapon_attack(struct block_list *src, struct block_list *target, unsi
 				if (t_sc_data[SC_POISONREACT].val2 <= 0)
 					status_change_end(target, SC_POISONREACT, -1);
 			}
-			if (t_sc_data[SC_BLADESTOP_WAIT].timer != -1 && !(status_get_mode(src)&0x20)) { // ボスには無効
+			if (t_sc_data[SC_BLADESTOP_WAIT].timer != -1 && !(status_get_mode(src)&0x20)) {
 				int skilllv = t_sc_data[SC_BLADESTOP_WAIT].val1;
 				int duration = skill_get_time2(MO_BLADESTOP, skilllv);
 				status_change_end(target, SC_BLADESTOP_WAIT, -1);
-				clif_damage(src, target, tick, status_get_amotion(src), 1, 0, 1, 0, 0); //Display MISS.
+				clif_damage(src, target, tick, status_get_amotion(src), 1, 0, 1, 0, 0); // Display MISS
 				status_change_start(target, SC_BLADESTOP, skilllv, 2, (int)target, (int)src, duration, 0);
 				skilllv = sd? pc_checkskill(sd, MO_BLADESTOP):1;
 				status_change_start(src, SC_BLADESTOP, skilllv, 1, (int)src, (int)target, duration, 0);
 			}
-			if(t_sc_data[SC_SPLASHER].timer!=-1)	//殴ったので対象のベナムスプラッシャー状態を解除
+			if(t_sc_data[SC_SPLASHER].timer!=-1)
 				status_change_end(target,SC_SPLASHER,-1);
 		}
 
 		map_freeblock_unlock();
 	}
 
-	/*
-	// To-Do: Incomplete due to missing sd structure support [Tsuyuki]
-	if (sc_data && sc_data[SC_FUSION].timer != -1) {
-		if (sd) {
-			hp = sd->status.max_hp;
+	/// Star Gladiator's Fusion self damage
+	if (sc_data && sc_data[SC_FUSION].timer != -1)
+	{
+		// Player usage only (assuming mobs/pets will never use Fusion)
+		if (sd)
+		{
+			hp = sd->status.hp;
 			if (100*sd->status.hp <= 20*sd->status.max_hp && target->type == BL_PC)
-				// Add kill player on this line (kills user or attacking person), not target)
+			{
+				sd->status.hp = 0;
+				pc_damage(NULL, sd, 1);
+				return wd.dmg_lv;
+			}
 			else if (target->type == BL_PC)
-				hp = hp*8/100;
+				hp -= hp*(8/100);
 			else
-				hp = hp*2/100;
-			// Make 'sd->status.hp' equal 'hp' on this line (this function doesn't support sd.. yet)
+				hp -= hp*(2/100);
+			sd->status.hp = hp;
+			clif_updatestatus(sd, SP_HP);
 		}
-		else if (md) {
-		// Finish mob version..
 	}
-		*/
 
 	return wd.dmg_lv;
 }

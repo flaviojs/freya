@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/21/07
+	* Fixed: Kavac Icarus Card not slotting into garments [Tsuyuki]
+	* Added: A little SG_FUSION code (Not yet functional) [Tsuyuki]
 	* Added: Support for new gravity packets [Oreo]
 	 - I am not certain if it works or not. This is what I got when tested it:
 	   -> Client 2006-12-18a did not bug out but did not display anything new
