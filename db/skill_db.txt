@@ -376,23 +376,23 @@
 
 // Server/NPC Skills
 337,9,6,1,0,0,1,1,no,0,0,0,weapon,0	//ITM_TOMAHAWK#Throw Tomahawk#
-//338,0,0,0,0,0,0,0,no,0,0,0,none,0	//NPC_DARKCROSS#Dark Cross#
+338,0,0,0,0,0,0,0,no,0,0,0,none,0	//NPC_DARKCROSS#Dark Cross#
 339,-1,6,4,7,0,10,1,no,33,256,0,magic,0		//NPC_DARKGRANDCROSS#Dark Grandcross#
 340,9,8,1,7,0,10,1:1:2:2:3:3:4:4:5:5,yes,0,2,0,magic,0	//NPC_DARKSOULSTRIKE#Dark Soulstrike#
 341,9,8,1,7,0,10,3:4:5:6:7:8:9:10:11:12,yes,0,2,0,magic,2:3:3:4:4:5:5:6:6:7	//NPC_DARKJUPITEL#Dark Jupitel Thunder#
-//342,9,6,1,0,1,1,0,no,0,2,0,none,0	//NPC_STOP#Stop#
+342,9,6,1,0,1,1,0,no,0,2,0,none,0	//NPC_STOP#Stop#
 343,9,6,1,0,0,5,1,no,0,2,0,weapon,0	//NPC_BREAKWEAPON#Break Weapon#
 344,9,6,1,0,0,5,1,no,0,2,0,weapon,0	//NPC_BREAKARMOR#Break Armor#
 345,9,6,1,0,0,5,1,no,0,2,0,weapon,0	//NPC_BREAKHELM#Break Helm#
 346,9,6,1,0,0,5,1,no,0,2,0,weapon,0	//NPC_BREAKSIELD#Break Shield#
 347,-1,6,1,9,0,10,1,no,0,2,0,weapon,0	//NPC_UNDEADATTACK#Undead Attack#
-//348,0,0,4,9,1,10,1,no,0,2,0,magic,0	//NPC_CHANGEUNDEAD#Change Undead Element#
+348,0,0,4,9,1,10,1,no,0,2,0,magic,0	//NPC_CHANGEUNDEAD#Change Undead Element#
 349,0,6,4,0,1,10,0,no,0,2,0,weapon,0	//NPC_POWERUP#Power Up#
 350,0,6,4,0,1,10,0,no,0,2,0,none,0	//NPC_AGIUP#Agi Up#
-//351,0,0,0,0,1,0,0,no,0,2,0,none,0	//NPC_SIEGEMODE#Siege Mode#
+351,0,0,0,0,1,0,0,no,0,2,0,none,0	//NPC_SIEGEMODE#Siege Mode#
 352,2,0,4,0,1,1,0,no,0,2,0,none,0 //NPC_CALLSLAVE#Call Slave#
-//353,0,0,0,0,1,0,0,no,0,2,0,none,0	//NPC_INVISIBLE#Invisible#
-//354,2,6,4,0,1,20,0,no,0,2,0,misc,0	//NPC_RUN#Running#
+353,0,0,0,0,1,0,0,no,0,2,0,none,0	//NPC_INVISIBLE#Invisible#
+354,2,6,4,0,1,20,0,no,0,2,0,misc,0	//NPC_RUN#Running#
 
 // Advanced Class Skills
 355,0,6,4,0,1,5,1,no,0,0,0,weapon,0	//LK_AURABLADE#Aura Blade#
@@ -600,81 +600,118 @@
 544,-5,6,1,0,0,10,1,no,0,0,0,weapon,0	//NJ_ISSEN#NJ_ISSEN#
 
 // Dark Collector Skills
-//545,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_FIGHTING#?t?@?C?e?B?“?O#
-//546,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_NEUTRAL#?j?…?[?g?‰?‹#
-//547,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_TAIMING_PUTI#?e?C?~?“?O?v?e?B#
-//548,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_WHITEPOTION#?z???C?g?|?[?V?‡?“#
-//549,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_CARDPITCHER#?J?[?h?s?b?`???[#
-//550,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_MENTAL#???“?^?‹#
-//551,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_PETPITCHER#?y?b?g?s?b?`???[#
-//552,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_BODYSTUDY#?{?f?B?X?^?f?B#
-//553,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_BODYALTER#?{?f?B?I?‹?^?[#
-//554,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_PETMEMORY#?y?b?g???‚???[#
-//555,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_M_TELEPORT#?e???|?[?g#
-//556,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_B_GAIN#?Q?C?“#
-//557,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_M_GAIN#?Q?C?“#
-//558,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_MISSION#?~?b?V?‡?“#
-//559,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_MUNAKKNOWLEDGE#???i?b?N?m?E???b?W#
-//560,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_MUNAKBALL#???i?b?N?{?[?‹#
-//561,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_SCROLL#?X?N???[?‹#
-//562,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_B_GATHERING#?M???U???“?O#
-//563,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_M_GATHERING#?M???U???“?O#
-//564,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_B_EXCLUDE#?G?N?X?N?‹?[?h#
-//565,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_B_DRIFT#?h???t?g#
-//566,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_B_WALLRUSH#?E?H?[?‹?‰?b?V?…#
-//567,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_M_WALLRUSH#?E?H?[?‹?‰?b?V?…#
-//568,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_B_WALLSHIFT#?E?H?[?‹?V?t?g#
-//569,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_M_WALLCRASH#?E?H?[?‹?N?‰?b?V?…#
-//570,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_M_REINCARNATION#???C?“?J?[?l?[?V?‡?“#
-//571,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_B_EQUIP#?C?N?C?b?v#
+545,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_FIGHTING##
+546,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_NEUTRAL##
+547,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_TAIMING_PUTI##
+548,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_WHITEPOTION##
+549,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_CARDPITCHER##
+550,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_MENTAL##
+551,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_PETPITCHER##
+552,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_BODYSTUDY##
+553,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_BODYALTER##
+554,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_PETMEMORY##
+555,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_M_TELEPORT##
+556,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_B_GAIN##
+557,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_M_GAIN##
+558,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_MISSION##
+559,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_MUNAKKNOWLEDGE##
+560,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_MUNAKBALL##
+561,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_SCROLL##
+562,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_B_GATHERING##
+563,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_M_GATHERING##
+564,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_B_EXCLUDE##
+565,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_B_DRIFT##
+566,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_B_WALLRUSH##
+567,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_M_WALLRUSH##
+568,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_B_WALLSHIFT##
+569,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_M_WALLCRASH##
+570,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_M_REINCARNATION##
+571,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_B_EQUIP##
 
 // Extra Soul Linker Skills
-//572,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_DEATHKNIGHT#Spirit of the Death Knight#
-//573,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_COLLECTOR#Spirit of the Dark Collector#
+572,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_DEATHKNIGHT#Spirit of the Death Knight#
+573,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_COLLECTOR#Spirit of the Dark Collector#
 574,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_NINJA#Spirit of the Ninja#
 575,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//SL_GUNNER#Spirit of the Gunslinger#
 576,0,6,4,0,1,1,0,no,0,0,0,none,0	//AM_TWILIGHT4#Twilight Alchemy 4#
 
 // Death Knight Skills
-//577,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_PASSIVE#?p?b?V?u#
-//578,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_PATTACK#?A?^?b?N#
-//579,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_PSPEED#?X?s?[?h #
-//580,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_PDEFENSE#?f?B?t?F?“?X #
-//581,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_PCRITICAL#?N???e?B?J?‹#
-//582,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_PHP#HP#
-//583,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_PSP#SP#
-//584,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_RESET#???Z?b?g#
-//585,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_RANKING#?‰?“?L?“?O#
-//586,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_PTRIPLE#?g???v?‹#
-//587,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_ENERGY#?G?i?W?[#
-//588,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_NIGHTMARE#?i?C?g???A#
-//589,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_SLASH#?X?‰?b?V?…#
-//590,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_COIL#?R?C?‹#
-//591,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_WAVE#?E?F?[?u#
-//592,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_REBIRTH#???o?[?X#
-//593,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_AURA#?I?[?‰#
-//594,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_FREEZER#?t???[?U?[#
-//595,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_CHANGEATTACK#?`?F?“?W?A?^?b?N#
-//596,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_PUNISH#?p?j?b?V?…#
-//597,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_POISON#?|?C?Y?“#
-//598,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_INSTANT#?C?“?X?^?“?g#
-//599,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_WARNING#???[?j?“?O#
-//600,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_RANKEDKNIFE#?‰?“?N?h?i?C?t#
-//601,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_RANKEDGRADIUS#?‰?“?N?h?O?‰?f?B?E?X#
-//602,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_GAUGE#?I?[?W?F#
-//603,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_GTIME#?^?C??#
-//604,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_GPAIN#?y?C?“#
-//605,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_GSKILL#?X?L?‹#
-//606,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_GKILL#?L?‹#
-//607,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_ACCEL#?A?N?Z?‹#
-//608,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_BLOCKDOUBLE#?_?u?‹?u???b?N#
-//609,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_BLOCKMELEE#???C???C?u???b?N#
-//610,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_BLOCKFAR#?t?@?[?u???b?N#
-//611,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_FRONTATTACK#?t???“?g?A?^?b?N#
-//612,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_DANGERATTACK#?f?“?W???[?A?^?b?N#
-//613,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_TWINATTACK#?c?C?“?A?^?b?N#
-//614,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_WINDATTACK#?E?B?“?h?A?^?b?N#
-//615,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_WATERATTACK#?E?H?[?^?[?A?^?b?N#
+577,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_PASSIVE##
+578,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_PATTACK##
+579,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_PSPEED##
+580,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_PDEFENSE##
+581,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_PCRITICAL##
+582,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_PHP##
+583,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_PSP##
+584,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_RESET##
+585,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_RANKING##
+586,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_PTRIPLE##
+587,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_ENERGY##
+588,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_NIGHTMARE##
+589,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_SLASH##
+590,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_COIL##
+591,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_WAVE##
+592,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_REBIRTH##
+593,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_AURA##
+594,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_FREEZER##
+595,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_CHANGEATTACK##
+596,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_PUNISH##
+597,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_POISON##
+598,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_INSTANT##
+599,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_WARNING##
+600,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_RANKEDKNIFE##
+601,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_RANKEDGRADIUS##
+602,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_GAUGE##
+603,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_GTIME##
+604,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_GPAIN##
+605,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_GSKILL##
+606,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_GKILL##
+607,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_ACCEL##
+608,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_BLOCKDOUBLE##
+609,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_BLOCKMELEE##
+610,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_BLOCKFAR##
+611,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_FRONTATTACK##
+612,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_DANGERATTACK##
+613,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_TWINATTACK##
+614,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_WINDATTACK##
+615,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_WATERATTACK##
+
+// New Monster Skills
+616,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_ENEGERY##
+617,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_CLOUD##
+618,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_FIRSTSLOT##
+619,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_HEADDEF##
+620,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_SPACE##
+621,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_TRANSFORM##
+622,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_EXPLOSION##
+623,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_REWARD##
+624,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_CRUSH##
+625,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_ITEMREBUILD##
+626,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_ILLUSION##
+627,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_NEUTRALIZE##
+628,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_RUNNER##
+629,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_TRANSFER##
+630,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_WALL##
+631,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_ZENY##
+632,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_REVENGE##
+633,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_EARPLUG##
+634,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_CONTRACT##
+635,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_BLACK##
+636,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_DREAM##
+637,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_MAGICCART##
+638,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_RESET##
+639,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_COPY##
+640,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_CRYSTAL##
+641,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_EXP##
+642,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_CREATE##
+643,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_REBUILD##
+644,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_JOBCHANGE##
+645,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_EDARKNESS##
+646,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_EGUARDIAN##
+647,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_TIMEOUT##
+648,0,0,0,0,0,10,0,no,0,0,0,none,0	//ALL_TIMEIN##
+649,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_ZENYRANK##
+650,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_ACCESSORYMIX##
 
 // Second Class Quest Skills
 1001,9,6,1,0,0,1,1,no,0,1,0,weapon,0	//KN_CHARGEATK#Charge Attack#
@@ -698,22 +735,22 @@
 1019,9,6,1,4,1,1,1,yes,0,1,0,magic,0	//SA_ELEMENTWIND#Elemental Change Wind#
 
 // Homunuclus Skills
-//8001,9,6,4,0,1,5,1,no,0,0,0,magic,0	//HLIF_HEAL#Healing hand#
-//8002,0,6,4,0,3,5,1,no,0,0,0,none,0	//HLIF_AVOID
-//8003,0,0,0,0,0,5,0,no,0,0,0,none,0	//HLIF_BRAIN
-//8004,0,6,4,0,1,3,0,no,0,0,0,none,0	//HLIF_CHANGE
-//8005,0,6,4,0,1,5,0,no,0,0,0,none,0	//HAMI_CASTLE
-//8006,0,6,4,0,1,5,0,no,0,0,0,none,0	//HAMI_DEFENCE
-//8007,0,0,0,0,1,5,0,no,0,0,0,none,0	//HAMI_SKIN
-//8008,0,6,4,0,1,3,0,no,0,0,0,none,0	//HAMI_BLOODLUST
-//8009,1,8,1,0,0,5,-1:-2:-2:-2:-3,no,0,0,0,weapon,0	//HFLI_MOON
-//8010,0,6,4,0,1,5,0,no,0,0,0,none,0	//HFLI_FLEET
-//8011,0,6,4,0,1,5,0,yes,0,0,0,misc,0	//HFLI_SPEED
-//8012,1,6,1,0,0,3,0,no,0,0,0,none,0	//HFLI_SBR44
-//8013,9,6,1,0,0,5,1:2:3:4:5,no,0,0,0,magic,0	//HVAN_CAPRICE
-//8014,0,6,4,0,1,5,0,no,0,0,0,none,0	//HVAN_CHAOTIC
-//8015,0,0,0,0,1,5,0,no,0,0,0,none,0	//HVAN_INSTRUCT
-//8016,0,6,4,-1,2,3,1,no,0,0,0,misc,0	//HVAN_EXPLOSION
+8001,9,6,4,0,1,5,1,no,0,0,0,magic,0	//HLIF_HEAL#Healing hand#
+8002,0,6,4,0,3,5,1,no,0,0,0,none,0	//HLIF_AVOID
+8003,0,0,0,0,0,5,0,no,0,0,0,none,0	//HLIF_BRAIN
+8004,0,6,4,0,1,3,0,no,0,0,0,none,0	//HLIF_CHANGE
+8005,0,6,4,0,1,5,0,no,0,0,0,none,0	//HAMI_CASTLE
+8006,0,6,4,0,1,5,0,no,0,0,0,none,0	//HAMI_DEFENCE
+8007,0,0,0,0,1,5,0,no,0,0,0,none,0	//HAMI_SKIN
+8008,0,6,4,0,1,3,0,no,0,0,0,none,0	//HAMI_BLOODLUST
+8009,1,8,1,0,0,5,-1:-2:-2:-2:-3,no,0,0,0,weapon,0	//HFLI_MOON
+8010,0,6,4,0,1,5,0,no,0,0,0,none,0	//HFLI_FLEET
+8011,0,6,4,0,1,5,0,yes,0,0,0,misc,0	//HFLI_SPEED
+8012,1,6,1,0,0,3,0,no,0,0,0,none,0	//HFLI_SBR44
+8013,9,6,1,0,0,5,1:2:3:4:5,no,0,0,0,magic,0	//HVAN_CAPRICE
+8014,0,6,4,0,1,5,0,no,0,0,0,none,0	//HVAN_CHAOTIC
+8015,0,0,0,0,1,5,0,no,0,0,0,none,0	//HVAN_INSTRUCT
+8016,0,6,4,-1,2,3,1,no,0,0,0,misc,0	//HVAN_EXPLOSION
 
 // Guild Skills
 //ID,Range,Hit,Target,Element,SkillInfo1,MaxLv,ListNum,CastCancel,CastDefRate,SkillInfo2,MaxCount,SkillType,BlowCount

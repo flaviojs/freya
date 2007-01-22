@@ -5,7 +5,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/21/07
+	* Updated: Skill databases with new monster/class skill placeholders [Tsuyuki]
 	* Added: Support for new gravity packets in CHAR-TXT [Oreo:29]
+	* Fixed: Uncommented some more Adoption skill entries.. [Tsuyuki]
 	* Fixed: Some fixes for the support of new gravity packets in CHAT-SQL [Oreo:29]
 	 - Use this link for discussion/updates on it: http://www.ro-freya.net/forum/index.php?showtopic=610
 	* Fixed: Kavac Icarus Card not slotting into garments [Tsuyuki]
