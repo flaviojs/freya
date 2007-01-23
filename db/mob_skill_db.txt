@@ -4574,7 +4574,7 @@
 1837,Imp@RG_STRIPARMOR,attack,217,5,500,0,30000,yes,target,always,0,,,,,,
 1837,Imp@MG_FIREBALL,attack,17,8,1000,500,10000,yes,target,always,0,,,,,,
 1837,Imp@MG_FIREBALL,chase,17,8,1000,500,10000,yes,target,always,0,,,,,,
-1837,Imp@MG_FIREBOLT,chase,19,8,1000,1000,5000,yes,target,always,0,,,,,0
+1837,Imp@MG_FIREBOLT,chase,19,8,1000,1000,5000,yes,target,always,0,,,,,,0
 1837,Imp@MG_FIREBOLT,chase,19,8,1000,1000,5000,yes,target,always,0,,,,,,0
 1838,Knocker@TF_THROWSTONE,attack,152,1,500,0,5000,yes,target,always,0,,,,,,6
 1838,Knocker@TF_THROWSTONE,chase,152,1,500,0,5000,yes,target,always,0,,,,,,6

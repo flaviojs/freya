@@ -5,15 +5,15 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/22/07
-	* Fixed: Typo in Changelog [Oreo]
-	* Changed: All Changelog entries before 2006/07 have been moved to Changelog_old.txt [Oreo]
-	 - Usefulness: less load time by the text editors since the file is much smaller
+	* Changed: Split Changelog into three files: pFreya Changelog, Old Freya Changelog, Main Changelog [oreo/Tsuyuki]
+	* Added: Script To-Do List: Freya/npc/to-do.txt [Tsuyuki]
+	* Fixed: Typo in one of Imp's Fire Bolt skills [Tsuyuki]
 
 01/21/07
 	* Updated: Skill databases with new monster/class skill placeholders [Tsuyuki]
 	* Added: Support for new gravity packets in CHAR-TXT [Oreo:29]
 	* Fixed: Uncommented some more Adoption skill entries.. [Tsuyuki]
-	* Fixed: Some fixes for the support of new gravity packets in CHAR-SQL [Oreo:29]
+	* Fixed: Some fixes for the support of new gravity packets in CHAT-SQL [Oreo:29]
 	 - Use this link for discussion/updates on it: http://www.ro-freya.net/forum/index.php?showtopic=610
 	* Fixed: Kavac Icarus Card not slotting into garments [Tsuyuki]
 	* Added: A little SG_FUSION code (Not yet functional) [Tsuyuki]
@@ -1480,189 +1480,6 @@ Date	Added
 	* Added: adoption skills to skill_cast_db [Harbin]
 	* Fixed: gryphon card was giving level 50 bowling bash autocast. should be level 5 [Harbin]
 
-08/12/2006
-	* Fixed: Lighthalzen warp in Warpra NPC
-	* Fixed: Case-sensitive variables in Lighthalzen quest
-
-08/05/2006
-	* Removed: Drops from Biolabs MVP slaves (Source: ROCards.de) [Thanks to Kastjodo] [Tsuyuki]
-	* Added: Effect for "Holy Egg" (Source: ROCards.de) [Tsuyuki]
-	* Fixed: Bow Thimble drop rate changed from 10% to 3% [Thanks to Kastjodo] [Tsuyuki]
-		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=61110&highlight=bow+thimble
-	* Added: Rachel/Ice Dungeon/Sanctuary warps from eAthena [Tsuyuki]
-	* Fixed: Cowardice blade price [Tsuyuki]
-	* Added: mobs for Rachel field, Ice Dungeon mobs [Tsuyuki]
-	* Added: Rachel NPCs [Harp & Tsuyuki]
-	* Added: Rachel mob skills [Tsuyuki]
-	* Added: Juperos quest-related maps to the no penalty mapflag list [Tsuyuki]
-	* Added: 7 missing items known as "Mystic Orb" [Tsuyuki]
-	* Added: Effect for Increase Speed Potion [Tsuyuki]
-	* Fixed: Valkyrie Randgris drops [Tsuyuki]
-		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=101517&postdays=0&postorder=asc&start=30
-	* Fixed: Increased rate of Detale Daerus dropping Pole Axe to 0.1% [Tsuyuki]
-	* Added: Old Blue Box now gives Bloody Branch at a 1% rate [Tsuyuki]
-		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=103884 
-	* Added: Missing Call Slave skill to the appropriate mobs [Tsuyuki]
-	* Fixed: Magnum Break no longer enchants your weapon with fire element [Harbin]
-	* Fixed: Venom Splasher counter now works properly [Harbin]
-	* Fixed: Emergency call no longer recalls jailed guild members [Harbin]
-	* Fixed: Brooch of Cursed Fortune critical damage [Harbin & Tsuyuki]
-	* Changed: Item names [Tsuyuki]
-		- Golden Bug Card -> Golden Thief Bug Card
-		- Black Blindfold -> Dark Blinker
-		- Apple o' Archer -> Apple of Archer
-		- Viking Helm -> Orc Helm
-	* Changed: Monster names [Tsuyuki]
-		- Monemus -> Monolith
-		- Detale -> Detale Daerus
-		- Hydro -> Hydrolancer
-		- Thanatos -> Recollection of Thanatos
-	* Fixed: Apocalypse is no longer aggro [Tsuyuki]
-	* Fixed: Harpy spawns in Yuno Field 07 [Tsuyuki]
-	* Fixed: Vesper mob skills and EXP [Tsuyuki]
-
-07/29/2006
-	* Fixed: Alice now drops Muffler[1] at a 0.02% rate [Tsuyuki]
-	* Changed: Inn NPCs no longer inflict the blind status and warp you to the upper floor immediately [Tsuyuki]
-	* Changed: Inn NPCs now charge 5000z regardless of level [Tsuyuki]
-	* Fixed: Biolabs MVP spawn times [Tsuyuki]
-	* Updated: Arrow Make DB to match Aegis 10.4. Database provided by Muad_Dib. [Harbin]
-	* Fixed: Range of 'Sharpshooting' skill to 14 [Harbin]
-	* Fixed: Vesper Core Def amount [Tsuyuki]
-	* Changed: Lord Knight Seyren and Assassin Cross Eremes MVPs from Demi-Human to Demon as per kRO [Tsuyuki]
-	* Changed: Howard Alt-Eisen element to Water as per kRO [Tsuyuki]
-	* Changed: RSX race from Demi-Human to Formless [Tsuyuki]
-	* Changed: Blood-Stained Leg Irons attack bonus equip combo from 100 to 50 as per kRO [Tsuyuki]
-	* Fixed: Einbroch mob skills, originally done by akrus [Tsuyuki]
-		- Reference: http://rocards.de/MonsterDatabase.rc
-	* Changed: MVPs and Mini-bosses to mode 181, as per kRO. This disginguishes them as proper "boss" monsters [Tsuyuki]
-	* Updated: New mob exp amounts as per kRO Main [Tsuyuki]
-		- References:
-		- http://www.ragnainfo.net/forums/viewtopic.php?t=101483&postdays=0&postorder=asc&start=30
-		- http://www.ragnainfo.net/forums/viewtopic.php?t=102122&postdays=0&postorder=asc&start=165
-	* Changed: mob name of "Chung E" to "Green Maiden" [Tsuyuki]
-	* Added: Fire Wall skill to Kathryne Keyron as per kRO [Tsuyuki]
-	* Removed: Penomena spawn from Byalan Dungeon Level 5 as per kRO [Tsuyuki]
-	* Changed: Strouf spawn rate in Byalan Dungeon Level 5 increased from 3 to 35 [Tsuyuki]
-	* Increased: Strouf's attack as per kRO [Tsuyuki]
-	* Changed: Mob spawns of pay_fild11 as per kRO [Tsuyuki]
-		- Removed Poison Spores
-		- Added 25 Nine-Tails
-
-07/28/2006
-	* Fixed: Metamorphosis can now transform to any specified mob (e.g. Azoth)
-	* Improved: Metamorphosis calculation is now more efficient
-
-07/27/2006
-	* Updated: Client translation files from Poki#3 [Tsuyuki]
-	* Added: Kafras for new cities [Tsuyuki]
-	* Switched: Alice/Zealotus Egg client descriptions to coincide with Freya Item IDs [Tsuyuki]
-	* Added: Pickpocket quest from eAthena [Tsuyuki]
-	* Added: Friendship quest [Harp & Tsuyuki]
-	* Added: Price values for Einbroch~Lighthalzen items [Tsuyuki]
-		- Reference: http://iro.ragnarokonline.com/game/libraryListItem.asp (Can anyone confirm for kRO?)
-
-07/26/2006
-	* Fixed: Name of 'soft apron' item [Harbin]
-	* Fixed: Demon Pungus should drop witched starsand item [Harbin]
-	* Fixed: Changed race of Seyren and Eremes to demon [Harbin]
-	* Fixed: Moonlight Ring should give +3 crit bonus and +3% aspd bonus [Harbin]
-	* Removed: Valkyrie slave skills as per kRO [Tsuyuki]
-	* Updated: Rachel mob skills for Atros, Ktullanux, and Gloomundernight as per kRO Sakray [Tsuyuki]
-	* Added: Amatsu, Ayothaya, Niflheim, and OBB quests from eAthena [Tsuyuki]
-	* Removed: Thanatos Tower entrance NPC as there is supposed to be a huge quest to get to it [Tsuyuki]
-	* Removed: Kiel D-01 auto-spawn as it is a quest summon [Tsuyuki]
-	* Replaced: potion drops from regular monsters with herbs as per kRO [Tsuyuki]
-	* Changed: Name of "Old_Violet_Box" to "Old_Purple_Box" [Tsuyuki]
-	* Added: Zombie Dragon and Hugeling dummy files to prevent client crashes [Tsuyuki]
-	* Added: Kiel D-01 exp and MVP flag [Tsuyuki]
-	* Removed: Zombie Dragon, Werewolf (mini-boss), Kiel (duplicate) from mob_boss [Tsuyuki]
-	* Added: some missing mob skills, imported from jAthena [Tsuyuki]
-	* Changed: Guild castle names to their official english names [Tsuyuki]
-	* Added: Flying Soul Linker to job_db2.txt [Tsuyuki]
-	* Changed: db file header descriptions [Tsuyuki]
-	* Changed: Some monster names and added some missing mobs to mob_db [Tsuyuki]
-	* Removed: eAthena custom mobs [Tsuyuki]
-	
-07/25/2006
-	* Fixed: Biolabs quest, lhz_dun warps adapted from eAthena [Tsuyuki]
-	* Added: Kiel_ mob to MVP list [Tsuyuki]
-	* Fixed: Excessive mob teleporting and slave summoning [Tsuyuki]
-	* Added: Missing skills for Umbala, Louyang, Nifleheim, Kiel, and Juperos mobs from jAthena [Tsuyuki]
-	* Updated: RSX 0806, Kiel, and Valkyrie Randgris MVPs and slave mobs [Tsuyuki]
-	* Added: New headgears from jAthena and kRO item descriptions [Harp]
-	* Fixed: Lighthalzen Dungeon mob spawns [Tsuyuki]
-	* Added: Lighthalzen to the Warpra [Tsuyuki]
-	* Fixed: Stormy Knight Card now casts Storm Gust on the target [Thanks to Kastjodo]
-	* Updated: Odin Temple Mobs [Tsuyuki]
-	* Fixed: Super Novice's should be able to ignore the 'exp rule' of Super Novice angel call after they achieve level 99 [Harbin]
-	* Improved: Super Novices special stat system [Harbin]
-		- Now saves SN_EXSTAT only when neccessary, instead of every time stat bonus is applied
-		- Now removes the stat bonus if the player is not level 99 or above
-	* Fixed: Critical rate bonus should be 50% (not 10%) when Super Novice angel gives critical explosion status [Harbin]
-	* Fixed: Super Novice angel no longer gives spirit spheres when Super Novice requests for help [Harbin]
-	* Improved: configure script [Harbin]
-		- Now generates SVN revision number in the absence of SVN as we are using Perforce
-		- Now generates makefile with sql-win32 support
-	* Added: Hugel/Rachel city NPCs [Tsuyuki]
-	* Changed: Mastela Fruit price [Tsuyuki]
-	* Updated: Merchant shops from eAthena [Tsuyuki]
-	* Added: Drops as per kRO (Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=103492) [Tsuyuki]
-		- Galapago Cap to Galapago
-		- Puppy Ear Hairband to Kobold Archer
-		- Infiltrator to Nightmare Terror
-		- Garm's Claw to Garm
-		- Frost Diver Scroll to Hatii Bebe
-		- Horse Crest to Sohee & Greatest General
-	* Fixed: Stone Buckler's damage reduction from large monsters as per kRO [Tsuyuki]
-		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=102793
-	* Disabled: Nightmare Mode mob spawn script as per kRO [Tsuyuki]
-	* Removed: Thanatos MVP spawn from Thanatos Tower due to the Thanatos Quest [Tsuyuki]
-	* Updated: mob spawns for Magma Dungeon, Yuno, Einbroch, Hugel, Lighthalzen, Odin, Abyss Lake Dungeon, and Thanatos Tower [Tsuyuki]
-	* Added: Jawaii mob spawns from eAthena [Tsuyuki]
-	* Translated: Japanese DB descriptions for various files [Tsuyuki]
-	* Translated: Japanese mob names in mob_skill_id and organized the file [Tsuyuki]
-	* Added: New cards (Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=100146&postdays=0&postorder=asc&start=51) [Zug & Tsuyuki]
-	* Added: New cards to Old Card Album list [Tsuyuki]
-
-07/24/2006
-	* Removed: gef_dun03 from nopenalty list [Thanks to galaxy]
-	* Added: Ayothaya Dungeon to nomemo list [Thanks to Kastjodo]
-	* Fixed: Land Protector cells are no longer negated when cast on top of other ground spells
-	* Fixed: Crash bug when an npc tries to warp a player that has logged off
-
-07/22/2006
-	* Fixed: Broken labels in the thief and sage job quests
-
-07/18/2006
-	* Added: Ice Dungeon warps from eAthena
-	* Fixed: syntax error in nobranch.txt
-
-07/12/2006
-	* Modified: default gm level for @password 0 -> 20 [Proximus]
-	* Added: @password atcommand (Usage: @password <old_password> <new_password>)
-	* Updated: mob info for Einbroch, Lighthalzen, Abyss Lake Dungeon, Thanatos Tower, Kiel [zug]
-	* Added: Rachel field mob spawns [Tsuyuki]
-	* Updated: mapflags for Rachel and Ice Dungeon [Tsuyuki]
-	* Removed: teleport mapflag in Lighthalzen due to friendship quest [Tsuyuki]
-	* Removed: removed nightmare mode maps [Tsuyuki]
-
-07/07/2006
-	* Improved: a bit clif_parse_LoadEndAck, about the previous implementation commited in Rev. 341 [Proximus]
-	* Improved: run_script, script_rid2sd functions by changing the use of map_id2sd to map_id2bl [Proximus]
-	* Fixed: PCLoadMapEvent will only trigger if the map location of the script matches the current map of the player [Proximus]
-
-07/06/2006
-	* Fixed: clif_parseloadendack will now warp a player to its next map if the map location was changed during the loading screen [Proximus]
-	* Fixed: buildin_maprespawnguildid not warping out players removed form the linked list [Proximus]
-		- Search is now done through active sockets by linear search.
-		- Should fix the warp portal bug, that was being abused in WoE.
-	* Improved: reduced usage of map_id2sd (linear search) in pc.c functions, switched to map_id2bl (db search) [Proximus]
-
-07/03/2006
-	* Fixed: disguise packet not being sent correctly [Proximus]
-	* Updated: clif_set0078, clif_set007b, clif_changeoption, clif_getareachar_skillunit, clif_skill_setunit with the new packets [Proximus]
-		- 0x22a, 0x22b, 0x22c, 0x229, 0x11f (Recorded from Aegis X.2)
-
-07/02/2006
-	* Fixed: Pet catching process, being resetted before the pet's egg is delivered to the player [Proximus]
+//=========================================================================================================
+//= Project Freya/Nezumi Remerge back into Freya! - 08/23/2006
+//=========================================================================================================

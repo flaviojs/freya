@@ -1,0 +1,1263 @@
+Project Freya Changelog:
+
+Date	Added
+
+08/12/2006
+	* Fixed: Lighthalzen warp in Warpra NPC
+	* Fixed: Case-sensitive variables in Lighthalzen quest
+
+08/05/2006
+	* Removed: Drops from Biolabs MVP slaves (Source: ROCards.de) [Thanks to Kastjodo] [Tsuyuki]
+	* Added: Effect for "Holy Egg" (Source: ROCards.de) [Tsuyuki]
+	* Fixed: Bow Thimble drop rate changed from 10% to 3% [Thanks to Kastjodo] [Tsuyuki]
+		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=61110&highlight=bow+thimble
+	* Added: Rachel/Ice Dungeon/Sanctuary warps from eAthena [Tsuyuki]
+	* Fixed: Cowardice blade price [Tsuyuki]
+	* Added: mobs for Rachel field, Ice Dungeon mobs [Tsuyuki]
+	* Added: Rachel NPCs [Harp & Tsuyuki]
+	* Added: Rachel mob skills [Tsuyuki]
+	* Added: Juperos quest-related maps to the no penalty mapflag list [Tsuyuki]
+	* Added: 7 missing items known as "Mystic Orb" [Tsuyuki]
+	* Added: Effect for Increase Speed Potion [Tsuyuki]
+	* Fixed: Valkyrie Randgris drops [Tsuyuki]
+		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=101517&postdays=0&postorder=asc&start=30
+	* Fixed: Increased rate of Detale Daerus dropping Pole Axe to 0.1% [Tsuyuki]
+	* Added: Old Blue Box now gives Bloody Branch at a 1% rate [Tsuyuki]
+		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=103884 
+	* Added: Missing Call Slave skill to the appropriate mobs [Tsuyuki]
+	* Fixed: Magnum Break no longer enchants your weapon with fire element [Harbin]
+	* Fixed: Venom Splasher counter now works properly [Harbin]
+	* Fixed: Emergency call no longer recalls jailed guild members [Harbin]
+	* Fixed: Brooch of Cursed Fortune critical damage [Harbin & Tsuyuki]
+	* Changed: Item names [Tsuyuki]
+		- Golden Bug Card -> Golden Thief Bug Card
+		- Black Blindfold -> Dark Blinker
+		- Apple o' Archer -> Apple of Archer
+		- Viking Helm -> Orc Helm
+	* Changed: Monster names [Tsuyuki]
+		- Monemus -> Monolith
+		- Detale -> Detale Daerus
+		- Hydro -> Hydrolancer
+		- Thanatos -> Recollection of Thanatos
+	* Fixed: Apocalypse is no longer aggro [Tsuyuki]
+	* Fixed: Harpy spawns in Yuno Field 07 [Tsuyuki]
+	* Fixed: Vesper mob skills and EXP [Tsuyuki]
+
+07/29/2006
+	* Fixed: Alice now drops Muffler[1] at a 0.02% rate [Tsuyuki]
+	* Changed: Inn NPCs no longer inflict the blind status and warp you to the upper floor immediately [Tsuyuki]
+	* Changed: Inn NPCs now charge 5000z regardless of level [Tsuyuki]
+	* Fixed: Biolabs MVP spawn times [Tsuyuki]
+	* Updated: Arrow Make DB to match Aegis 10.4. Database provided by Muad_Dib. [Harbin]
+	* Fixed: Range of 'Sharpshooting' skill to 14 [Harbin]
+	* Fixed: Vesper Core Def amount [Tsuyuki]
+	* Changed: Lord Knight Seyren and Assassin Cross Eremes MVPs from Demi-Human to Demon as per kRO [Tsuyuki]
+	* Changed: Howard Alt-Eisen element to Water as per kRO [Tsuyuki]
+	* Changed: RSX race from Demi-Human to Formless [Tsuyuki]
+	* Changed: Blood-Stained Leg Irons attack bonus equip combo from 100 to 50 as per kRO [Tsuyuki]
+	* Fixed: Einbroch mob skills, originally done by akrus [Tsuyuki]
+		- Reference: http://rocards.de/MonsterDatabase.rc
+	* Changed: MVPs and Mini-bosses to mode 181, as per kRO. This disginguishes them as proper "boss" monsters [Tsuyuki]
+	* Updated: New mob exp amounts as per kRO Main [Tsuyuki]
+		- References:
+		- http://www.ragnainfo.net/forums/viewtopic.php?t=101483&postdays=0&postorder=asc&start=30
+		- http://www.ragnainfo.net/forums/viewtopic.php?t=102122&postdays=0&postorder=asc&start=165
+	* Changed: mob name of "Chung E" to "Green Maiden" [Tsuyuki]
+	* Added: Fire Wall skill to Kathryne Keyron as per kRO [Tsuyuki]
+	* Removed: Penomena spawn from Byalan Dungeon Level 5 as per kRO [Tsuyuki]
+	* Changed: Strouf spawn rate in Byalan Dungeon Level 5 increased from 3 to 35 [Tsuyuki]
+	* Increased: Strouf's attack as per kRO [Tsuyuki]
+	* Changed: Mob spawns of pay_fild11 as per kRO [Tsuyuki]
+		- Removed Poison Spores
+		- Added 25 Nine-Tails
+
+07/28/2006
+	* Fixed: Metamorphosis can now transform to any specified mob (e.g. Azoth)
+	* Improved: Metamorphosis calculation is now more efficient
+
+07/27/2006
+	* Updated: Client translation files from Poki#3 [Tsuyuki]
+	* Added: Kafras for new cities [Tsuyuki]
+	* Switched: Alice/Zealotus Egg client descriptions to coincide with Freya Item IDs [Tsuyuki]
+	* Added: Pickpocket quest from eAthena [Tsuyuki]
+	* Added: Friendship quest [Harp & Tsuyuki]
+	* Added: Price values for Einbroch~Lighthalzen items [Tsuyuki]
+		- Reference: http://iro.ragnarokonline.com/game/libraryListItem.asp (Can anyone confirm for kRO?)
+
+07/26/2006
+	* Fixed: Name of 'soft apron' item [Harbin]
+	* Fixed: Demon Pungus should drop witched starsand item [Harbin]
+	* Fixed: Changed race of Seyren and Eremes to demon [Harbin]
+	* Fixed: Moonlight Ring should give +3 crit bonus and +3% aspd bonus [Harbin]
+	* Removed: Valkyrie slave skills as per kRO [Tsuyuki]
+	* Updated: Rachel mob skills for Atros, Ktullanux, and Gloomundernight as per kRO Sakray [Tsuyuki]
+	* Added: Amatsu, Ayothaya, Niflheim, and OBB quests from eAthena [Tsuyuki]
+	* Removed: Thanatos Tower entrance NPC as there is supposed to be a huge quest to get to it [Tsuyuki]
+	* Removed: Kiel D-01 auto-spawn as it is a quest summon [Tsuyuki]
+	* Replaced: potion drops from regular monsters with herbs as per kRO [Tsuyuki]
+	* Changed: Name of "Old_Violet_Box" to "Old_Purple_Box" [Tsuyuki]
+	* Added: Zombie Dragon and Hugeling dummy files to prevent client crashes [Tsuyuki]
+	* Added: Kiel D-01 exp and MVP flag [Tsuyuki]
+	* Removed: Zombie Dragon, Werewolf (mini-boss), Kiel (duplicate) from mob_boss [Tsuyuki]
+	* Added: some missing mob skills, imported from jAthena [Tsuyuki]
+	* Changed: Guild castle names to their official english names [Tsuyuki]
+	* Added: Flying Soul Linker to job_db2.txt [Tsuyuki]
+	* Changed: db file header descriptions [Tsuyuki]
+	* Changed: Some monster names and added some missing mobs to mob_db [Tsuyuki]
+	* Removed: eAthena custom mobs [Tsuyuki]
+	
+07/25/2006
+	* Fixed: Biolabs quest, lhz_dun warps adapted from eAthena [Tsuyuki]
+	* Added: Kiel_ mob to MVP list [Tsuyuki]
+	* Fixed: Excessive mob teleporting and slave summoning [Tsuyuki]
+	* Added: Missing skills for Umbala, Louyang, Nifleheim, Kiel, and Juperos mobs from jAthena [Tsuyuki]
+	* Updated: RSX 0806, Kiel, and Valkyrie Randgris MVPs and slave mobs [Tsuyuki]
+	* Added: New headgears from jAthena and kRO item descriptions [Harp]
+	* Fixed: Lighthalzen Dungeon mob spawns [Tsuyuki]
+	* Added: Lighthalzen to the Warpra [Tsuyuki]
+	* Fixed: Stormy Knight Card now casts Storm Gust on the target [Thanks to Kastjodo]
+	* Updated: Odin Temple Mobs [Tsuyuki]
+	* Fixed: Super Novice's should be able to ignore the 'exp rule' of Super Novice angel call after they achieve level 99 [Harbin]
+	* Improved: Super Novices special stat system [Harbin]
+		- Now saves SN_EXSTAT only when neccessary, instead of every time stat bonus is applied
+		- Now removes the stat bonus if the player is not level 99 or above
+	* Fixed: Critical rate bonus should be 50% (not 10%) when Super Novice angel gives critical explosion status [Harbin]
+	* Fixed: Super Novice angel no longer gives spirit spheres when Super Novice requests for help [Harbin]
+	* Improved: configure script [Harbin]
+		- Now generates SVN revision number in the absence of SVN as we are using Perforce
+		- Now generates makefile with sql-win32 support
+	* Added: Hugel/Rachel city NPCs [Tsuyuki]
+	* Changed: Mastela Fruit price [Tsuyuki]
+	* Updated: Merchant shops from eAthena [Tsuyuki]
+	* Added: Drops as per kRO (Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=103492) [Tsuyuki]
+		- Galapago Cap to Galapago
+		- Puppy Ear Hairband to Kobold Archer
+		- Infiltrator to Nightmare Terror
+		- Garm's Claw to Garm
+		- Frost Diver Scroll to Hatii Bebe
+		- Horse Crest to Sohee & Greatest General
+	* Fixed: Stone Buckler's damage reduction from large monsters as per kRO [Tsuyuki]
+		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=102793
+	* Disabled: Nightmare Mode mob spawn script as per kRO [Tsuyuki]
+	* Removed: Thanatos MVP spawn from Thanatos Tower due to the Thanatos Quest [Tsuyuki]
+	* Updated: mob spawns for Magma Dungeon, Yuno, Einbroch, Hugel, Lighthalzen, Odin, Abyss Lake Dungeon, and Thanatos Tower [Tsuyuki]
+	* Added: Jawaii mob spawns from eAthena [Tsuyuki]
+	* Translated: Japanese DB descriptions for various files [Tsuyuki]
+	* Translated: Japanese mob names in mob_skill_id and organized the file [Tsuyuki]
+	* Added: New cards (Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=100146&postdays=0&postorder=asc&start=51) [Zug & Tsuyuki]
+	* Added: New cards to Old Card Album list [Tsuyuki]
+
+07/24/2006
+	* Removed: gef_dun03 from nopenalty list [Thanks to galaxy]
+	* Added: Ayothaya Dungeon to nomemo list [Thanks to Kastjodo]
+	* Fixed: Land Protector cells are no longer negated when cast on top of other ground spells
+	* Fixed: Crash bug when an npc tries to warp a player that has logged off
+
+07/22/2006
+	* Fixed: Broken labels in the thief and sage job quests
+
+07/18/2006
+	* Added: Ice Dungeon warps from eAthena
+	* Fixed: syntax error in nobranch.txt
+
+07/12/2006
+	* Modified: default gm level for @password 0 -> 20 [Proximus]
+	* Added: @password atcommand (Usage: @password <old_password> <new_password>)
+	* Updated: mob info for Einbroch, Lighthalzen, Abyss Lake Dungeon, Thanatos Tower, Kiel [zug]
+	* Added: Rachel field mob spawns [Tsuyuki]
+	* Updated: mapflags for Rachel and Ice Dungeon [Tsuyuki]
+	* Removed: teleport mapflag in Lighthalzen due to friendship quest [Tsuyuki]
+	* Removed: removed nightmare mode maps [Tsuyuki]
+
+07/07/2006
+	* Improved: a bit clif_parse_LoadEndAck, about the previous implementation commited in Rev. 341 [Proximus]
+	* Improved: run_script, script_rid2sd functions by changing the use of map_id2sd to map_id2bl [Proximus]
+	* Fixed: PCLoadMapEvent will only trigger if the map location of the script matches the current map of the player [Proximus]
+
+07/06/2006
+	* Fixed: clif_parseloadendack will now warp a player to its next map if the map location was changed during the loading screen [Proximus]
+	* Fixed: buildin_maprespawnguildid not warping out players removed form the linked list [Proximus]
+		- Search is now done through active sockets by linear search.
+		- Should fix the warp portal bug, that was being abused in WoE.
+	* Improved: reduced usage of map_id2sd (linear search) in pc.c functions, switched to map_id2bl (db search) [Proximus]
+
+07/03/2006
+	* Fixed: disguise packet not being sent correctly [Proximus]
+	* Updated: clif_set0078, clif_set007b, clif_changeoption, clif_getareachar_skillunit, clif_skill_setunit with the new packets [Proximus]
+		- 0x22a, 0x22b, 0x22c, 0x229, 0x11f (Recorded from Aegis X.2)
+
+07/02/2006
+	* Fixed: Pet catching process, being resetted before the pet's egg is delivered to the player [Proximus]
+
+06/30/2006
+	* Reverted: Eremes/Seyren mode to Demi-Human. As the patch was applied in Sakray servers [Proximus]
+	* Fixed: Corrected a bunch of mob names, Zerthylsh > Zealotus, Whitesmith Harword > Mastersmith Howard, etc [Tsuyuki]
+		- Also added new MvP slaves and changed Eremes + Seyren race type to demon as per kRO.
+	* Fixed: 'JumpKick' not working if Tk Dodge auto-triggers it [Proximus]
+	* Added: PCLoadMapEvent
+		- Note: This executes everytime a player changes maps and only one instance of PCLoadMapEvent can exist for the entire server.
+
+06/29/2006
+	* Fixed: guild_member_leaved function will now force-close guild storage [Proximus]
+	* Updated: Mob_DB.txt with proper MvP names [Tsuyuki]
+	* Changed: APOCALYPSE_H to Vesper, its proper name in the Mob_db.txt file [Tsuyuki]
+	* Added: Vesper, Lady Tany, and new MvPs to the MvP list [Tsuyuki]
+	* Added: Newest MvP Boss Monsters [Tsuyuki]
+		- You need an updated hexed client to view them properly, however. 
+			The Juperos MvP is still missing, I'll throw it in later once the juperos mobs are in.
+	* Added: New mobs to the DB spawn list [Tsuyuki]
+		- Please note, you need an updated client from approximately 6-07-06, to see them properly without crashing
+	* Removed: Official nightmare pvp maps from map_athena.conf [Tsuyuki]
+		- Just commented them as someone can still make use of them [Proximus]
+
+06/28/2006
+	* Fixed: 'Marionette Control' casting range. As per Aegis [Proximus]
+	* Fixed: Fly/Buttlerfly Wings will no longer work while casting. kRO Patch 2/1/2006 [Proximus]
+		- Reference: http://ragnainfo.net/forums/viewtopic.php?t=95973
+	* Fixed: Marionette control didn't apply stat changes to the caster [Harbin]
+		- Fix by spader
+	* Fixed: Shockwave trap's sp damage to a victim [Harbin]
+		- Fix by spader
+	* Fixed: WE_MALE/WE_FEMALE wedding skills. As per Aegis [Proximus]
+		- "The Skill Loving Touch cost 10% of the users whole HP and should give the Partner 10% of THE PARTNERS OWN max HP 
+			not the HP that was taken by the user of the skill".
+		- "The same for the Skill Undying Love that will cost me by casting 10% of my sp and will Give my Partner ONLY 10% OF HIS OWN SP back.
+			And not the amount of 10% that i must pay fo it".
+	* Fixed: possible bug with trying to pick up something that isn't an item type [Proximus]
+	* Fixed: Sunflower hairpin should give 1 def and it should be not refineable [Harbin]
+		- Reference: http://ragnainfo.net/forums/viewtopic.php?t=95490
+	* Updated: Elements of blast mine and claymore traps [Harbin]
+		- Blast mine from fire to wind element
+		- Claymore from earth to fire element
+		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=11072
+	* Modified: the 'class' column data type from the 'ranking' table to be tinyint(1) [Proximus]
+		- Should fix the problem with loading the ranking points of a player. Sometimes failing, causing a reset of points because of
+			using ENUM type, which its somehow not well supported by the mysql header used in the emulator.
+		- In order to update the table, please run upgrade_Rev301.sql located in the 'sql' folder.
+	* Fixed: possible bug with catching a pet without a tame [Proximus]
+
+06/27/2006
+	* Fixed: Crusader npc quest skill to recognize Crusader (Peco) class [Proximus]
+
+06/25/2006
+	* Added: item_norefine text database. Contains the list of no refineable items [Harbin]
+	* Added: Support for 2006-04-04aSakexe clients
+	* Added: Rachel to @go command [Harp]
+	* Translated: Kunlun Arena Event NPCs [Harp]
+	* Fixed: TK can now use Concentration/Awakening Potions [Tsuyuki]
+	* Fixed: Male TKs can now equip Tuxedo [Tsuyuki]
+	* Changed: Mob drops as per kRO [Tsuyuki]
+		- Reference: http://ragnainfo.net/forums/viewtopic.php?t=98890
+		- Potions > Herbs (excluding MvPs & Alde Turbo Track)
+		- Awakening Potion > Grape
+		- Berserk Potion > Lemon
+		- Mastela Fruit removed from Enchanted Peach Tree
+	* Removed: PvP Nightmare Mode as per kRO [Tsuyuki]
+		- Reference: http://ragnainfo.net/forums/viewtopic.php?t=93469
+
+06/22/2006
+	* Corrected: Payon city upper castle warps [Proximus]
+	* Fixed: Statuses that shouldnt go off on death [Proximus]
+		- Taekwon Stances, Meltdown, EDP
+	* Fixed: Guild skills delay will no longer reset on map-quit (SQL) [Proximus]
+		- Added SC_GDSKILLDELAY status type. Time is saved in statuschange table. 
+		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?p=792954#792954
+	* Fixed: Guild skill casting times/delays. As per Aegis [Proximus]
+		- Regeneration: Instant Cast.
+		- Battle Orders: Instant Cast.
+		- Restore: 10 seconds, interruptable, reduceable by dex.
+		- Emergency Call: 5 seconds casttime, interruptable, not reduceable by dex/buffs.
+		- Guild skill will now share a delay of 5 minutes. 
+	* Fixed: Stun/Freeze status will no longer delete a walk timer. As per Aegis [Proximus]
+		- Target will still be able to reach his last "walk request position" while being frozen/stunned.
+	* Fixed: Exploit with casting an skill between maps (loading screen) [Proximus]
+	* Fixed: FrostJoke/Scream effect. Caster must remain in the same map for it to take effect. As per Aegis [Proximus]
+	* Improved: some status.c floating point calculations. Switched to fixed point/bitwise calculation [Proximus]
+	* Improved: pc_setpos function. Will no longer check if destination cell is walkable on certain calls [Proximus]
+	* Fixed: 'Urgent Call' guild skill random warping players if the nearest cells from the guild leader are forbidden [Proximus]
+		- Updated it is range to be 5x5, or 2 cells on every direction from the guild leader's position. As per Aegis
+		- Guild member will be recalled to the guild leader's position if destination cell is forbidden.
+		- Will no longer warp a guild member that isn't yet in a map (loading screen).
+		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?p=1068998#1068998
+		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=99710&highlight=guild+recall
+
+06/19/2006
+	* Fixed: possible bug in the way the ranking list is sorted. If the top10 list is full and a new player joins in it [Proximus]
+
+06/18/2006
+	* Added: Sanctuary/ME fix, forgot to submit in Rev 253 [Proximus]
+	* Fixed: Blue potions are no longer sold in Yuno Shop, as Official servers (never supposed to) [Proximus]
+	* Added: Rachel / Ice Cave monsters [Tsuyuki]
+	* Added: Rachel / Einbech warps [Tsuyuki]
+	* Added: mob spawns for Kiel dungeon and Yggdrasil, from eAthena [Tsuyuki]
+	* Updated: warps for Kiel, Rachel/Arunafeltz region, and Odin Temple, adapted from eAthena [Tsuyuki]
+	* Updated: custom warpra now warps to all the new dungeons and towns, included Rachel and Ice Cave [Tsuyuki]
+	* Fixed: Resurrection not working on dead players (non-ED users) [Proximus]
+	* Fixed: Normal player HP being displayed to anyone regardless of battle_config.display_hpmeter value [Proximus]
+	* Fixed: GM's HP bar being displayed to normal players, clif_hpmeter function [Proximus]
+	* Updated: main_char.sql with the latest 'ranking' table addition [Proximus]
+		- Added upgrade_Rev247.sql file, contains aswell the changes made in the database.
+		- Note: default name of the table is 'ranking'. If another name is chosen, should also be changed in inter_athena.conf
+	* Commented: a printf line in char.c (used to debug the loading of the top10 fame list) [Proximus]
+
+06/17/2006
+	* Fixed: a dangling pointer, clif_hpmeter function (introduced in Rev. 253) [Proximus]
+	* Added: Arunafeltz Republic maps (warps are not in yet)
+	* Fixed: TK stances can now be cancelled by using the skill when the stance status is already active
+	* Fixed: Status change data type in sql script [Thanks to DarkZ]
+
+06/16/2006
+	* Added: clif_adoption_invite function (commented for now) [Proximus]
+	* Added: a check before updating the "last time activity" variable. To avoid updating it in servers with anti-idle system turned off [Proximus]
+	* Changed: battle_config.display_delay_skill_fail default value to NO. As per Aegis [Proximus]
+		- Should also reduce bandwidth and cpu stress a bit.
+	* Changed: default value of battle_config.display_hpmeter switch to 0/no, since it is CPU intensive on large servers [Proximus]
+	* Removed: @displayplayerhp atcommand. Useless atcommand, feature already embedded in the client (Alt+End) [Proximus]
+	* Improved: Removed check of some statuses in skill_castend_* functions that are checked by skill_check_condition function [Proximus]
+	* Fixed: 'Gravitation' skill to fit Aegis X.2 mechanic [Proximus]
+		- Blocks the caster from moving to another location
+		- Blocks the caster from doing/casting anything
+	* Fixed: 'Land Protector' to remove a previous LP cell casted by another player. As per Aegis X.2 [Proximus]
+		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?p=1091636#1091636
+	* Fixed: 'Turn Undead' / 'Resurrection' skills, both will now have the ability to harm Evil Druid users (enemies) [Proximus]
+		- An offensive Resurrection is a neutral property attack, while Turn Undead is saint property.
+		- Resurrection on non-enemies ED users will neither harm nor resurrect them.
+		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=94608&highlight=evil+druid+card
+	* Fixed: 'Sanctuary' / 'Magnus Exorcism' will no longer harm non-enemies in any type of map. As per Aegis [Proximus]
+	* Improved: clif_parse_tick function. Commented the client tick check/calculation, speedhack protection (not finished?) [Proximus]
+		- In Aegis, request of server's tick by the client is used to avoid macros with packet editors using skills.
+		- Similar protection will be provided soon.
+	* Improved: itemdb_canguildstore, itemdb_canstore functions calls [Proximus]
+		- Will use GM level stored in session data structure instead of searching in GM database [Proximus]
+	* Improved: clif_parse_loadEndAck function [Proximus]
+		- Commented unused/unknow loop search of broken equips on every map change.
+		- Skill-tree, Experience, Skill Points and most of the basic stats are no longer sent on every map change, since the client
+			remembers them. Initially tested by eAhena.
+	* Fixed: Client crash when teleporting in pvp maps. Imported from eAthena [Proximus]
+
+06/13/2006
+	* Fixed: a compilation warning in skill_produce_mix [Proximus]
+
+06/12/2006
+	* Fixed: A mistake with mini-furnace stone crafting (introduced in Rev. 247) [Proximus]
+
+06/11/2006
+	* Improved: 'Acid Demonstration' damage calculation. To use fixed point rather than floating point arithmetic [Proximus]
+	* Added: Fame system (SQL). Imported from jA and modified to be based on sql table, rather than global registers [Proximus]
+		- SQL loading of Top10 fame list is done by the char-server and sent to the map-server when this request it.
+			The map-server only requests the Top10 list at start and its saved locally (cache), to avoid requesting
+			the char-server for a fresh list everytime the ranking list is modified. (map_is_alone)
+		- On multimap servers: the sorting and updating of fame list is done by the char-server, therefore map-server will have to
+			request a fresh top10 fame list to char-server everytime ranking list is modified.
+		- Alchemist fame system: An alchemist will earn points by making slim potions (condensed). From 1 to 50 points, 
+			according the number of potions made in a row without failing once. The success counter is resetted everytime it fails.
+			Alchemist potions from the top10 fame list will have +50% effectiveness.
+			Command to display the top10 alchemist: /alchemist.
+		- Blacksmith fame system: A blacksmith will earn points by forging weapons or refining them to +10. From 10 to 1000 points.
+			Blacksmith that has forged level 3 weapon with 3 ingredients will be rewarded with 10 points. 
+			As it can also be rewarded for refining forged weapon to +10: 1 point as a reward for refining a level 1 weapon, 
+			25 points reward for refining a level 2 weapon, 1000 points reward for refining a level 3 weapon.
+			Forged weapons from the top10 blacksmith will receive an additional absolute damage of 10 (pierces vit/armor def).
+			Command to display the top10 blacksmith: /blacksmith.
+	* Deleted: CR_ALCHEMY custom code written by Aalye. (Empty bottle/tube maker?)  [Proximus]
+	* Modified: parts of the potion making system, to fit Aegis way [Proximus]
+		- A medicine bowl is required and consumed everytime the 'Pharmacy' skill is casted
+		- The "can make potion" list is sent according the quest books a player has in its inventory
+		- A fail animation packet is sent once it fails at creating the potion (have not succeed, not enough materials)
+	* Improved: Holy Water, Deadly Poison creation is now handled by skill_produce_mix function (based on produce_db.txt) [Proximus]
+	* Fixed: 'Plagiarism' to be able to copy Taekwon Boy skills (forgot to commit, Rev date 05/25/2006) [Proximus]
+
+06/10/2006
+	* Added: Missing warp from pay_fild08 to Payon
+
+06/06/2006
+	* Fixed: inter.c compilation warning [Proximus]
+	* Fixed: pc_calc_base_job uninitialized variable that was causing a crash with super baby novices (introduced in Rev 237) [Proximus]
+
+06/04/2006
+	* Fixed: 'Soul Burn' skill requirements: Cast Cancel 5, Magic Rod 3, Dispell 3 [Proximus]
+	* Fixed: archer quest-skills npc locations, typos, exploits at item deletion [Proximus]
+		- Updated its map location from 
+	* Fixed: Carat card bonus [Proximus]
+	* Fixed: a little mistake in pc_attack function that was introduced in the clean up of the previous revision [Proximus]
+
+06/03/2006
+	* Fixed: possible crash in Spiral Pierce damage calculation done without a weapon [Proximus]
+	* Improved: some pc.c functions [Proximus]
+		- Removed unused return values. Made them void functions.
+		- Changed the use of pc_calc_base_job on some functions to its optimized version pc_calc_base_job2.
+		- Cleaned pc_natural_heal functions.
+
+06/02/2006
+	* Fixed: clif_parse_GMReqNoChat negative overflow with custom packets [Proximus]
+	* Improved: inter-server parsing of logs from map-server [Proximus]
+		- The new function creates a new file every 24 hours (according the system date). Each file created will have the date as filename.
+		- Fully customizable: Directory path, Filename prefix, File extension type, Logging filter level (inter_athena.conf).
+		- Made in purpose to optimize the admin's time when it comes to search something in the log files as it will no longer
+		  write logs in just one file that tends to grow rather quickly making log examination a burdernsome task.
+
+06/01/2006
+	* Added: 'ignore_items_gender' battle_athena config switch. Partially adapted from eAthena [Proximus]
+		- Wether a player can equip any item regardless of the gender restriction.
+		- Wedding items and Whips/Musical Instruments will check gender regardless of setting.
+		- Default value: YES (gender restriction isn't implemented on official servers).
+	* Cleaned up pc_break_equip function [Proximus]
+	* Fixed: Glowing effect from 'Assumptio' not being displayed sometimes [Proximus]
+
+05/30/2006
+	* Fixed: a memory leak in clif_parse_LGMmessage if the message size was less than 1 [Proximus]
+	* Fixed: 'Sonic Blow' range to not be affected by the weapon's range [Proximus]
+		- Auto-casting skill from cards do check for src-target skill range, this way autocast of SB from Injustice card
+		  will not trigger if the distance	between src and target isn't melee range.
+		- Reference: http://ragnainfo.net/forums/viewtopic.php?t=90717
+	* Fixed: Possible overflow with limit of people at chatbox creation [Proximus]
+
+05/29/2006
+	* Cleaned: skill_autospell function [Proximus]
+	 	- Fixed: a bug with selecting the skill for autospell, if player does not have learnt the selected skill (thanks to jA - YOR)
+
+05/28/2006
+	* Fixed: In PvP/WoE, Creator bombs and Wizard Quagmire will now affect everyone, regardless of enemy or allies. As per Aegis [Proximus]
+		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=471&highlight=quagmire
+		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=67883&highlight=quagmire
+		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=65918&highlight=bombs+woe
+	* Added: SC_CONCENTRATION to the list of statuses that shouldn't be saved on logging off. As per Aegis [Proximus]
+	* Fixed: LK_CONCENTRATION hit bonus to be absolute rather than a relative modifier (+50 instead of 50%). As per Aegis [Proximus]
+		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?p=650254#650254
+	* Fixed: typos and requirements in the thief quest-skill npc [Tsuyuki]
+	* Fixed: check_maximum_skill_points default value in battle_athena.conf. Default value: 0 (normal game) [Proximus]
+	* Fixed: battle_delay_damage_sub function reading a free'd block in the case where a mob without spawn time is killed [Proximus]
+	* Added: TK_MISSION entries to skill databases. Not yet done in source code (commented for now) [Proximus]
+	* Fixed: Matk relative modifiers from equipments not being displayed in the status window [Proximus]
+	* Fixed: 'Health_Conversion' code. As per Aegis [Proximus]
+		- The skill won't work if the current caster hp is lower than 10% of max hp, or if current sp value match the max sp value.
+	* Added: Re-trigger timer delay to 'Gospel', as a way to prevent abuse by spamming the skill to get all the buffs. Tested in Aegis [Proximus]
+
+05/26/2006
+	* Fixed: nullpo with Pang Voice skill casted on non mob/player [Proximus]
+	* Fixed: Item class restrictions for Peco classes [Proximus]
+	* Fixed: `equip_jobs` column data type from item_db_map.sql [Proximus]
+		- Changed to INT(10) as more room is needed for the new item class restrictions
+
+05/25/2006
+	* Fixed: 'Plagiarism' to be able to copy Taekwon Boy skills [Proximus]
+	* Fixed: Equipable items for Taekwon Boy [Proximus]
+		- Can not equip ANY weapons.
+		- Can equip: Any equipments that can be equipped by either by everybody, or everybody except Novice.
+		- Can aswell equip/use: Awakening/Concen/Berserk Potions, Majestic G., Spiky Band, Boots, Manteau.
+	* Fixed: 'Weapon Refine' skill not checking for no refineable weapons [Proximus]
+	* Fixed: Fogwall effect not instant ending when stepping out of the area [Proximus]
+
+05/24/2006
+	* Fixed: TK_HIGHJUMP always failing in the move_enable requirement check [Proximus]
+	* Added: pc_cant_move function, determines if a player can't move based on status changes (Ankle Snare, SpiderWeb, Root, etc) [Proximus]
+		- Used on Body Relocation, Charge Attack, High Jump, Jump Kick
+
+05/23/2006
+	* Fixed: 'TK_JUMPKICK' hitting players in non-pk maps [Proximus]
+	* Fixed: clif_slide packet [Proximus]
+	* Fixed: TK_HIGHJUMP, TK_SEVENWIND requirements [Proximus]
+
+05/22/2006
+	* Added: Taekwon skills adapted from eAthena (Reference: http://www.ro-guardians.com/forums/index.php?showtopic=52281)
+		- Flying Side Kick
+		- Peaceful Rest
+		- Enjoyable Rest
+		- Fighting Chant
+		- Warm Wind
+		- High Jump
+	* Added: Taekwon Job Changer NPC adapted from eAthena
+
+05/21/2006
+	* Added: a missing quest skill in map_athena.conf (assassin_skills.txt) [Proximus]
+	* Fixed: 'Advanced Katar Mastery' damage bonus. Missing code [Proximus]
+		- Increases damage done with a Katar by (10 + 2 * skill level)%
+
+05/20/2006
+	* Fixed: a minor bug when trying to dismount the peco (introduced in Rev. 214) [Proximus]
+	* Fixed: clif_parse_GetCharNameRequest not sending party name of a player that is in a guild [Proximus]
+	* Fixed: exploits with custom packets regarding guild actions that should be only done with the right permissions [Proximus]
+	* Fixed: possible crashes with custom packets (index out of bounds) in two pc.c functions [Proximus]
+	* Improved: Update of state.gmaster_flag pointer. Moved the code from status_calc_pc to a better place (non-often called function) [Proximus]
+	* Improved: clif_parse_sn_explosionspirits. Changed to use pc_calc_base_job2 rather than pc_calc_base_job. Only jobid is needed [Proximus]
+	* Added: SC_GUILDAURA to the list of statuses that should end on map quitting [Proximus]
+
+05/19/2006
+	* Fixed: 'Asura Strike' so it consumes SP, spheres and fury status when it fails after the path check [Proximus]
+		- Reference: http://hic1.kazserv.com/~thered/pfreya/AegisX2/GFfail.avi
+		- Reference: http://hic1.kazserv.com/~thered/pfreya/AegisX2/GFfail2.avi
+	* Improved: weapon damage on plants will skip calculation of vit/def, cards, size, race modifiers [Proximus]
+	* Changed: the way 'Wink of Charm' sets a timer to change the mob's state, to avoid possible errors when the mob is dead [Proximus]
+	* Fixed: Berserk animation effect going off on map-change [Proximus]
+
+05/18/2006
+	* Fixed: Sonic Acceleration bonus skillratio on Sonic Blow [Proximus]
+	* Fixed: the missing hitrate bonus from Sonic Acceleration on Sonic Blow [Proximus]
+	* Fixed: Skills that can be also used with bows (Investigate, Finger Offensive). As per Aegis [Proximus]
+		- Note: Range is always the fixed range of the skill itself. It does not take into consideration the fact that it is used with a bow
+	* Fixed: Mobs not being able to cast ground skills such as traps, bombs, etc [Proximus]
+		- Note: Disabled battle_config.monster_skill_nofootset check. Was preventing mobs from putting traps/bombs on the ground
+		- Mobs should be able to put bombs under the player's feet (Chepet, Explosion, Eddga). As per Aegis
+	* Fixed: ground targetted skills will no longer work while in Root status (Body Relocation, Pneuma, Warp Portal, etc) [Proximus]
+	* Updated: 'Plagiarism' to be able to copy 2nd class quest-based skills [Proximus]
+	* Fixed: 'Bash' stun effect will no longer works if the skill level is less than 6 [Proximus]
+	* Fixed: 'Hammerfall' range to be 14 cells on level > 5. Used by Mobs (1046, 1150, 1623, 1648)  [Proximus]
+	* Fixed: 'Soul Drain' will no longer works with AoE spells. Only on targetted-spells [Proximus]
+	* Modified: 'Wink of Charm' implementation to fit Aegis X.2 way [Proximus]
+		- Skill description from RI translation is totally different from the Aegis way (wrong translation by Lune?)
+		- Inflicted mob will "reset" his target (player) after 10 seconds, rather than "For that 10 seconds, the target monster will not attack you"
+		- An aggro monster will reset his target (player) but will re-scan the area for a target again, most likely the effect won't work at all
+			on this kind of monsters, as it will re-choose his target to attack again, unless there is another player near you (which is a new choice for the monster).
+	* Fixed: Skills that should be interruptable (PF_DOUBLECASTING, WZ_GANBANTEIN, CG_TAROTCARD, KN_CHARGEATK, DC_WINKCHARM, MO_KITRANSLATION) [Proximus]
+		- Forgot to make them interruptable when they were added
+	* Added: The rest of 2nd class quest-based skills [Proximus]
+		- Most of them were initially adapted from eAthena and jAthena with slight modifications according Aegis tests
+		(Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=85903)
+		- Assassin - Sonic Acceleration
+		- Assassin - Venom Knife (Damage is not affected by EDP)
+		- Bard - Pang Voice
+		- BlackSmith - Unfair Trick
+		- Crusader - Shrink
+		- Hunter - Phantasmic Arrow
+		- Wizard - Sight Blaster
+	* Re-wrote: Confusion status aliment implementation to fit Aegis way [Proximus]
+		- Inflicted mob/player will only random walk when this requests to walk
+		- Removed the custom emoticon when the player/mob gets inflicted by Confuse status aliment
+		- Added a missing client packet effect for confusion (most likely a sound effect)
+		- Will not longer works on Boss type monsters
+
+05/12/2006
+	* Updated: const.txt as per the new SC_ values in status.h [Proximus]
+	* Cleaned some parts of status_change_start [Proximus]
+	* Re-organized: SC_ enums in status.h [Proximus]
+		- Re-arranged SkillStatusChangeTable as well, replaced the old initialization method of the array 
+		  to a better and less prone to errors method. Please, report any missing client status icon.
+		- Changed: SC_STAN constant to SC_STUN, SPEEDPOTION to ASPDPOTION, SERVICE4U to SERVICEFORYOU
+		- MySQL users: Its highly recommended the total wipe of statuschange table, as most likely the values saved in there will be incorrect
+		  after the update to this Revision.
+	* Fixed: an incorrect memset of itemhealrate array. Wrong sizeof [Proximus]
+	* Fixed: an overflow with bCriticalAddRace script bonus. Goblin Rider/Archer card wrong params [Proximus]
+	* Fixed: some non-null terminated char arrays with strncpy (chat.c, itemdb.c, npc.c, guild.c) [Proximus]
+		- strncpy does not guarantee null-termination!
+	* Added: Peco knight support for Knight quests skills [Proximus]
+	* Some styling in clif_guild_basicinfo [Proximus]
+
+05/07/2006
+	* Cleaned: battle_delay_damage_sub function again [Proximus]
+	* Fixed: 'Cultivation' will no longer show an animation if it fails. As per Aegis [Proximus]
+	* Fixed: 'Providence' can not be casted on self/other crusader. As per Aegis [Proximus]
+		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?p=510453#510453
+	* Cleaned: clif_parse_GMReqNoChat function a bit [Proximus]
+	* Improved: changed pc_calc_base_job calls for pc_calc_base_job2 (quick calculating version) 
+		in skill.c functions where only the mask job id is needed [Proximus]
+	* Fixed: a possible crash with 'Blade Stop' status when a player logs in map-server [Proximus]
+	
+05/06/2006
+	* Reverted: the changes made in Rev. 194 regarding card fixes in source code [Proximus]
+	* Reverted: some changes in skill_additional_effect. Reorganized NPC skill ids [Proximus]
+	* Added: a missing line in skill_db for the newly implemented NPC_AGIUP skill [Proximus]
+
+05/04/2006
+	* Fixed: 'FrostNova' will no longer trigger if target is frozen. As per Aegis X.2 [Proximus]
+	* Fixed: Flasher trap. Missing additional effect [Proximus]
+	* Fixed: Freezing trap damage. Missing damage calculation [Proximus]
+	* Added: 'Charge Attack' knockback effect which is equal to the distance between caster and target Proximus]
+	* Updated: 'Soul Collect' will no longer fail when the caster has already 5 spheres. As per Aegis X.2 [Proximus]
+		- Reference: http://hic1.kazserv.com/~thered/pfreya/AegisX2/HSSnofail.avi
+	* Removed: 'Agi Up' visual effect from 'Berserk' Status. As per Aegis [Proximus]
+	* Added: NPC_AGIUP mob skill. Effect: Increases AGI by 10 * Skill Level [Proximus]
+	* Fixed: NPC_POWERUP/NPC_EXPLOSIONSPIRITS status effect, rather than just sending the client an animation effect [Proximus]
+		- The current effect: Increases Dex by 10 * Skill Level, Increase Atk Rate by 40 * Skill Level.
+		- Effects are somewhat closer to Official.
+	* Fixed: Players being able to mute others even if they don't have permission to @mute [Proximus]
+	* Fixed: Players being able to mute others with packet editing [Proximus]
+	* Improved: Small clean up on skill_additional_effect for normal attacks [Proximus]
+	* Added: 1 second cast time to 'ChaseWalk'. As per Aegis [Proximus]
+		- Reference: http://forum.project-freya.com/showpost.php?p=623&postcount=4
+	* Fixed: 'Redemptio' skill effect [Proximus]
+		- Should drop caster current HP/SP to 1 if success, otherwise 400 SP (SP requirement)
+		- Max range is an screen, or 14 cells away from the dead party member
+		- Implemented the exp penalty. Caster will lose EXP if map has death EXP penalty enabled
+		- Reference: http://forum.project-freya.com/showpost.php?p=622&postcount=3
+	* Fixed: Archer card combo script. Checking for wrong card ids [Proximus]
+	* Fixed: Moonlight Dagger. As per Aegis [Proximus]
+	* Added: bSPlossrate item_db bonus script. Adapted from eA and jA [Proximus]
+		- Required for Solar Sword item_db fix.
+	* Fixed: clif_use_card will only send packet if an equipment to compound has been found. As per Aegis [Proximus]
+	* Fixed: 'Spear Stab' to be long ranged. As per Aegis [Proximus]
+	
+04/29/2006
+	* Fixed: Wrong time durations of ASPD Potions (introduced in Rev. 192) [Proximus]
+	* Fixed: Ticks modifiers of some statuses in status_change_start [Proximus]
+		- Ground skill statuses will now end on map_quit, to prevent saving in status_change table
+		- Changed time duration of some items from item_db. They are set now in ms, instead of seconds
+		- Note: Update of item_db database is required
+	* Added: a check for run_func message error. The message wont be displayed if battle_config.error_log is disabled [Proximus]
+	* Fixed: 'Charge Attack' element to be 0 rather than -1 [Proximus]
+	
+04/27/2006
+	* Fixed: a crash in status_get_sc_def function (introduced in Rev 187) [Proximus]
+		- Sorry, forgot to check for null pointer before accessing to it
+	* Added: "--with-antibot" configure option. AntiBot system written by Yor in the past (experimental code) [Proximus]
+		- Disabled by default in configure
+		- Antibot system is obsolete with most of the current bots
+		- Will minimize bandwidth and cpu a bit by skipping some parts of the antibot system
+		- Lagged clients sometimes request name of fake mob/player sent by server resulting in a misban!
+	* Added: Second class quest skill NPCs, from eAthena
+	* Added: Second class quest skills, adapted from eAthena
+		(Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=86481)
+		- Knight - Charge Attack
+		- Rogue - Close Confine
+		- Dancer - Wink of Charm
+		- Blacksmith - Greed
+		- Priest - Redemptio
+		- Monk - Ki Translation
+		- Monk - Ki Explosion
+		- Sage - Create Converter
+		- Sage - Elemental Change :: Water
+		- Sage - Elemental Change :: Fire
+		- Sage - Elemental Change :: Earth
+		- Sage - Elemental Change :: Wind
+	* Updated: Freya links and copyright info on login & char windows
+	
+04/26/2006
+	* Added: Some returns code for status that shouldn't be loaded when logging in map-server [Proximus]
+	* Fixed: IceWall when casted under a target. Target will be able to move freely. As per Aegis [Proximus]
+	* Re-wrote: Gospel support and offensive effects [Proximus]
+		- Added the client packet messages for support effects. As per Aegis
+		- Fixed the duration of every Gospel effect. Exact 60 seconds.
+	* Fixed: Benedictio Sanctissimi Sacramenti code. As per Aegis [Proximus]
+		- Made to only bless the armor with holy property of non-undead users 
+		- Made to only deal damage on undead/demon race enemies
+		- Fixed its range from 1 to 9
+		- It's damage is now affected by 'Meditatio' passive skill
+	* Fixed: Syntax error in main_char.sql
+		
+04/25/2006
+	* Fixed: An incorrect calculation damage from monsters using skills like 'Arrow Shower', 'Double Strafe' (Bow skills) [Proximus]
+	
+04/24/2006
+	* Fixed: pc_setpos will now force close the vending shop (on warp) [Proximus]
+	
+04/23/2006
+	* Fixed: compilation warnings skill.c battle.c [Proximus]
+	* Added: a check to prevent taking items off cart when there isn't even one [Proximus]
+	* Added: a check to prevent players with packets from putting items in cart when there isn't even one as an extra storage [Proximus]
+	
+04/22/2006
+	* Improved: 'Emergency Call' code a bit [Proximus]
+	* Fixed: Castle economy investment overflow with 'Emsolute Develop' (guild skill) [Proximus]
+	* Fixed: Skill attacks that consume arrows not taking neither the arrow's element nor the additional effect [Proximus]
+	* Fixed: Star Crumbs bonus not being applied properly (only the left hand was being counted) [Proximus]
+	* Fixed: Critical attacks from monsters. They were never meant to do critical attacks from normal attacks [Proximus]
+		- Note: Monsters only do a critical hit if they have used the monster skills Critical Attack or 
+		        Counter Attack to make an attack (and then it is an automatic critical hit).
+		- Reference: http://rodatazone.simgaming.net/mechanics/attacks.php
+	* Fixed: a bug when checking the tick of sc_data received from char-server (thanks to MagicalTux for pointing it out) [Proximus]
+		- Should init data before checking
+		
+04/21/2006
+	* Fixed: Missing attacks on non-player/non-mob type targets (e.g. Icewall)
+	* Fixed: Spiral Pierce and Shield Chain damage improperly multiplied
+	* Fixed: 'Martyr's Reckoning' feedback damage (code was not there after Rev 162) [Proximus]
+	* Fixed: Miss attacks not skipping the base/weapon damage calculation [Proximus]
+	* Improved: Breeder NPC script [Harp]
+	* Added: Translated louyang city NPCs from jAthena [Harp]
+	* Removed: Viewing Station NPC because Emergency Exit NPC coordinates aren't real [Harp]
+	* Fixed: Damage miscalculation on plant-type monsters introduced in 04/18/06 revision
+	* Fixed: Monster and pet crit miscalculation introduced in 04/18/06 revision
+
+04/19/2006
+	* Added: Lighthalzen NPCs from eAthena [Thanks to Maverrick]
+	* Replaced: Hodes with Horongs in the Wizard Test's fire room [Thanks to Maverrick]
+	* Fixed: Guild flags should only warp guild members in from outside the castle, from eAthena [Thanks to Maverrick]
+	
+04/18/2006
+	* Fixed: Crash with Pneuma/SafetyWall (introduced in Rev 141) [Proximus]
+	* Added: Removal of status changes on character deletion (SQL) 
+	* Improved: Merged pc/mob/pet weapon attack functions and optimized the code
+	* Added: Failure chance to Provoke [Bison]
+	* Added: Custom success rate modifier for Provoke [Bison]
+		- Reference: http://guide.ragnarok.co.kr/jobsworskill.asp
+	* Fixed: Shield Chain/Boomerang to ignore the House Auger/Ice Pick [Bison]
+	* Fixed: Potential crash when a mob uses Provoke [Bison]
+	* Fixed: Quagmire from being able to be arrow showered [Bison]
+	* Added: Job IDs so that baby classes can get carts, falcons, and pecopecos [Harp]
+	* Revised: the Breeder NPC [Harp]
+	* Fixed: Awkward english and rewrote the four MVP room warpers [Harp]
+	* Improved: Cleaned up the bank NPC script [Harp]
+
+04/16/2006
+	* Updated: item_db_map.sql according the last changes of item_db.txt
+	* Fixed: a bug with Cloaking/Hide tick (bug introduced in Rev 141) [Proximus]
+	* Added: a check in sc_data functions to prevent loading/saving statuses with negative ticks [Proximus]
+	* Reverted: 'Lex Divina' as how it was before Rev 111. As per Aegis [Proximus]
+		- Reference: http://forum.project-freya.com/showpost.php?p=440&postcount=2
+	* Fixed: 'Head Crush' skill additional effect as per Aegis [Proximus]
+		- 50% chance to cause bleeding status on the target
+	* Fixed: Cards combo exploits [Proximus]
+		- Note: The combo bonuses should never be scripted on cards that compounds on weapons, to prevent stacking of bonus
+	* Added: a new script function named 'GetPureJob' to use instead of callfunc(Is_Holy/Merchant/Taekwon/etc/_class) [Proximus]
+		- Fixed: Card combos: Swordman, Mage, Acolyte, Archer, Merchant, Novice [Proximus]
+	* Added: bVanishRate script bonus for Immaterial sword, Dark Priest card and others, adapted from eAthena [Proximus]
+	* Updated: 'Martyr's Reckoning' to not itself cancel when map changing. As per Aegis [Proximus]
+		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?p=1050682#1050682
+	* Fixed: some things with the 'Gospel' implementation [Proximus]
+		- Made it to stop HP/SP regen while Gospeling. As per Aegis X.2
+		- Made it to not consume any SP when recasting it to turn off. As per Aegis X.2
+		- Just to make clear: It can be used with any weapon, as it can be used without one
+	* Re-Wrote: bSPDrainValue script. Rate is always 100% now. No need to specify the rate in item_db [Proximus]
+		- This way, rates of bSPDrainValue and bSPDrainRate will not stack anymore to prevent abuse
+	* Fixed: Enchanted Peach Tree card autospell bonus rate [Proximus]
+	* Fixed: Chemical Protection skills as per Aegis X.2 [Proximus]
+		- Made to only give Coating status depending on whether the target was wearing an equipment
+		- Should not override Strip status
+		- Corrected "Full Chemical Protection" casting time (1 sec), after cast delay (0.5 sec)
+		- Corrected single chemical protection skills casting time (2 secs), after cast delay (0.5 sec)
+		- Reference: http://forum.project-freya.com/showpost.php?p=439&postcount=1
+	* Fixed: "Full Strip" and its variants as per Aegis X.2 [Proximus]
+		- Should only give strip status depending on whether the target was wearing an equipment.
+		- Reference: http://forum.project-freya.com/showpost.php?p=439&postcount=1
+	* Added: lhz_cube.gat to noteleport list to avoid airship/biolabs entrance exploits
+
+04/15/2006
+	* Fixed: Status conditions are now maintained after relogging (SQL), adapted from eAthena [Proximus/Mikeyboy]
+	* Added: Lighthalzen Bio Lab Quest [Thanks to Maverrick]
+	* Fixed: A compilation error on FreeBSD platforms
+
+04/14/2006
+	* Fixed: Shield Chain's formula and cooldown as per kRO (http://guide.ragnarok.co.kr/Jobpaladinskill.asp) [Bison]
+	* Fixed: Provoke formula and reduction of def2 on players as per kRO [Bison]
+		- Reference: http://guide.ragnarok.co.kr/jobsworskill.asp
+	* Added: Airport system adapted from Nezumi [Bison]
+	* Added: Map announcement when the airship has arrives/leaves the city [Bison]
+
+04/13/2006
+	* Fixed: Spiral Pierce damage formula [Bison]
+		- Reference: http://home.kimo.com.tw/htorihpes.tw/calc.htm
+
+04/11/2006
+	* Added: db\item_bound.txt for item trading/binding restrictions adapted from eAthena's item_trade.txt
+
+04/10/2006
+	* Fixed: 'Shield Chain' to be always neutral element [Proximus] 
+	* Fixed: Weapon damage miscalculation taking into consideration only dex stat bonus (bug introduced in Rev 109) [Proximus]
+	* Fixed: 'Bowling Bash' and 'Brandish Spear' blewcounts [Proximus]
+	* Fixed: 'Absorb Spirits Spheres' animation [Proximus]
+	* Fixed: 'Grand Cross' weapon damage, as it was before Rev 109 [Proximus]
+	
+04/09/2006
+	* Fixed: Ranged damages not being reduced by Defender and Fogwall (introduced in Rev 109) [Proximus]
+		- Merged boths effects into battle_calc_damage
+	* Fixed: Hitrate calculation, mistake in var declaration (introduced in Rev 109) [Proximus]
+	
+04/08/2006
+	* Fixed: Skill attacks not taking their proper element attribute (introduced in Rev 109) [Proximus]
+	* Fixed: a minor bug with the new battle_calc_pc_weapon_attack function that was introduced in Rev 109 [Proximus]
+	
+04/07/2006
+	* Fixed: Martyr's Reckoning skill
+	* Fixed: Area spells are deactivated when its caster leaves the map
+	* Fixed: FreeBSD compilation error
+	* Fixed: Lex Divina now has a chance of failing adapted from eAthena
+	* Improved: Wanderer Card equip script
+	* Fixed: Dance area spells now disappear when the caster can no longer afford the SP upkeep
+	* Fixed: Skills used against Rogues will be plagiarized at that skill's level up to a maximum of Intimidate's skill level
+
+04/06/2006
+	* Fixed: a typo in autospell code from cards [Proximus]
+	* Fixed: Acolyte card combo [Proximus]
+	
+04/05/2006
+	* Improved: battle_calc_damage function (Part 2) [Proximus]
+	* Re-wrote: battle_calc_pc_weapon_attack function based on eathena's way to calculate weapon attacks damage [Proximus]
+		- Cleaned, optimized and partially documented
+		- Fixed: 'MaxOverthrust' bonus. Should stack with skillratios. 
+			Ie. CT + MPO: Should be (1333% + 100% = 1433%) and NOT (1333 * 200% = 2666%). The calculation was overpowered
+		- Fixed: 'Shield Chain' base damage calculation
+		- Fixed: Icepick affecting 'Grand Cross' skill when it should not
+		- Fixed: 'MaxOverthrust' critical damage
+	* Fixed: Autocast of offensive buffs/nodamage skills on target [Proximus]
+			
+04/03/2006
+	* Fixed: Ensemble skills will now check for the correct weapon of partner [Proximus]
+	* Fixed: 'Cultivation' items requirement [Proximus]
+	* Fixed: 'DoubleCast' animation to trigger after the initial cast of bolts. As per Aegis [Proximus]
+	* Improved: skill_attack function a little [Proximus]
+	* Fixed: 'Enchanted Peach Tree' Card bonus [Proximus]
+	* Fixed: Juperos Mobs [Thanks to DiM Report]
+	* Changed: Disabled Guild's Glory by default [Thanks to BLB]
+	* Added: Translated kRO client data files from eAthena forums (e.g. item/skill desc tables)
+	* Fixed: Eternal Chaos/Down Tempo now reduces def2 and affects all players/mobs except the caster and ensemble partner
+	* Fixed: Damage delay on hidden/teleported players
+	* Fixed: Incorrect autospell function call causing the skill to activate twice
+
+04/01/2006
+	* Updated: the list of no-refineable headgears [Proximus] 
+	
+03/30/2006
+	* Fixed: Cloaking/Hiding/ChaseWalk exploit on warp portals [Proximus]
+	* Fixed: Ensemble skills working even if the partner is dead or stunned, frozen, stoned, etc [Proximus]
+	* Fixed: Unequipping exploit with some status like Parry, 2HQ, etc [Proximus]
+	* Fixed: 'CartBoost' should end DecreaseAgi status [Proximus]
+		- As per Aegis: http://hic1.kazserv.com/~thered/pfreya/CBdecagi.avi
+	* Improved: Dispell code [Proximus]
+	* Fixed: Autospelled skills on target no longer consume SP [Proximus]
+	* Fixed: 'Marionette Control' denying the use of items when it should not [Proximus]
+	
+03/29/2006
+	* Added: Giant Whisper Card item/drop [Thanks to Harp]
+	* Fixed: Giant Whispers now drop Whisper Card at 0.05% rate according to ROEmpire [Thanks to Harp]
+	* Fixed: Acid Demonstration damage formula [Thanks to Pulse]
+	* Fixed: Autospelled skills no longer consume SP
+	* Fixed: Emergency Call can only be used on GvG maps
+	* Fixed: Spiral Pierce formula [Thanks to Bison]
+	* Fixed: Areas that do not allow Teleportation now allows usage of Butterfly's Wing (kRO Patch 4/26/05)
+	* Fixed: Can no longer leave/join guilds on GvG maps
+	* Changed: Pet skills are now disabled by default
+	* Fixed: Pet skills now check battleflag setting before activating
+
+03/28/2006
+	* Fixed: gvg_dungeon mapflag not working as it should [Bison]
+	* Fixed: 'Assumptio' client effect not being saved on session data [Proximus]
+	* Reverted: back the use of gettick_cache to gettick() as it cause problems in the timer system [Proximus]
+		- Note: Use of gettick_cache was committed in Yor's freya (SVN 433 - 17/10/05)
+		
+03/22/2006
+	* Fixed: Potential crash when checking if a player/monster is dead
+	* Updated: db\item_bonus.txt
+	* Changed: Umbala fields can now be saved as memo locations
+	* Fixed: Re-designed the skillatk feature to support multiple skill damage bonuses
+	* Added: OBB/OPB now has a chance of giving Violin[4]
+	* Added: Violy now drops Violin[4] at a 2% rate (according to http://www.emperium.org)
+	* Added: bonus2 bAddMonsterDropItem for race independant instances (see doc\item_bonus.txt for details)
+	* Fixed: Mimic/Myst Case cards now have the correct item drop rates
+	* Fixed: Should not be able to talk to NPCs when player is frozen, stone cursed, or sleeping [Thanks to BLB]
+	* Fixed: Autocasted spells (e.g. from cards) can now be triggered from skills as well
+	
+03/20/2006
+	* Fixed: WoE damage/flee reductions [Proximus]
+		- All active weapon/misc skills get -40% damage penalty in WoE. Magic get -50% damage penalty in WoE.
+		- All melee non-skill attacks do 100% (normal) damage.
+		- All ranged non-skill attacks get -25% damage penalty in WoE.
+		- There is a -20% flee penalty in WoE maps (not guild dungeons, just castles).
+		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=95892
+	* Improved: some code in clif.c [Proximus]
+	* Fixed: a memory leak in clif_parse_NpcStringInput [Proximus]
+	* Some styling in skill_castend_nodamage_id [Proximus]
+	* Fixed: 'Loki's Wail' blocking targetted magic attacks [Proximus]
+	* Fixed: Undead mob/players are now immune to Stone [Proximus]
+	* Fixed: 'Decrease Agi' not debuffing CartBoost status [Proximus]
+	
+03/18/2006
+	* Fixed: 'Magnum Break' re-cast delay [Proximus]
+	* Fixed: Golden Thief Bug card effect [Proximus]
+	* Re-wrote parts of skill_castfix function (optimized) [Proximus]
+		- Fixed: mobs having instant cast when casting something for the first time
+		- Fixed: bCastRate modifier calculation (thanks to zug for pointing it out)
+	* Fixed: Offensive heal/ress/aspersio does not works on non-enemies anymore [Proximus]
+	* Fixed: Mobs doing offensive heal [Proximus]
+	* Added: Permanent Development guild skill effect (thanks to DiM) [Proximus]
+		- 50% chance to get a free economy point everytime you invest in economy
+	* Fixed: 'Gravitation Field' code [Proximus]
+		- Now ignores target's card/equipment reductions
+		- Can hit the emperium (according reports it has a fixed damage of 400 to the emp.. formula(?))
+		- Can walk normally, but can not perform any skills, only normal attacks
+	* Added: Support for 'masterhpltmaxrate' mob skill condition [Proximus]
+		- Summoned geographers will be able to heal its alchemist master
+	* Fixed: Summoned plants not attacking mobs [Proximus]
+	
+03/16/2006	
+	* Some code cleanup on skill_castend_nodamage_id [Proximus]
+	* Fixed: Aspd Potions/Endow/Magnum Break client icons [Proximus]
+	* Fixed: Mutant Dragonoid, Zealotus drops [Proximus]
+	* Fixed: 'Dissonance' doing full damage to plants [Proximus]
+	* Fixed: some warning compilations in battle.c (thanks to DarkZ for pointing it out) [Proximus]
+	
+03/14/2006
+	* Added: Compile now displays your current revision number based on the changelog
+
+03/11/2006
+	* Fixed: another bug with dancing skills (reverted the way the songs should end in skill_unit_onout) [Proximus]
+	* Fixed: Taekwond to receive the same list of buff that a supernovice gets when levels up [Proximus]
+	* Fixed: a crash with 'Gravitation' implementation [Proximus]
+	* Fixed: Taekwon/StarGladiator exp table calculation [Proximus]
+	* Fixed: 'Auto Blitz-Beat' hitting neutral chars in non pk maps [Proximus]
+	* Fixed: Attack timer not ending when wearing a Tuxedo/Wedding Dress [Proximus]
+	* Fixed: 'TrueSight' not affecting critical damage (Thanks to BLB) [Proximus]
+	* Fixed: Corrected new card bonuses according Aegis 10.2 item database [Proximus]
+	* Added: countitemcart script command. Returns the number of an specific item located in cart [Proximus]
+	* Fixed: Some cards stacking after re-equipping [Proximus]
+	* Disabled: Woe Warper, Card Remover, Valhallen, Npcs from map_athena.conf as they are custom npcs (commented) [Proximus]
+	* Added: Official Grade A and Grade S Weapon quests (thanks to DiM Team) [Proximus]
+	* Added: Lookup table for status icons adapted from eAthena
+	* Added: cartboost state in db\skill_require_db.txt
+	* Added: New skills for transcendent classes adapted from eAthena
+			- Paladin skill - Shield Chain
+			- High Priest - Mana Recharge
+			- Professor - Double Casting
+			- High Wizard - Ganbantein
+			- High Wizard - Gravitation Field
+			- Whitesmith - Cart Termination
+			- Whitesmith - Max Overthrust
+			- Gypsy / Minstrel - Longing for Freedom
+			- Gypsy / Minstrel - Wand of Hermod
+			- Gypsy / Minstrel - Tarot Card of Fate
+			- Creator - Acid Demonstration
+			- Creator - Plant Cultivation
+	* Changed: GvG maps cannot be PvP in PK mode when WoE is activated - fix for WoE only skills (e.g. Wand of Hermod)
+	* Added: Various status effects (SC_INCATKRATE, SC_INCDEFRATE, SC_INCMATKRATE, SC_INCHITRATE, SC_INCFLEERATE, SC_STOP, SC_COMA)
+	
+03/09/2006
+	* Fixed: Price of Nun Hat (Coif) sold in the Prontera Church (25z -> 150000z)
+	* Note: Delete all existing Nun Hats (id: 5092) owned by players to avoid any zeny exploits.
+			For SQL, delete item #5092 from the following tables:
+			 - inventory
+			 - storage
+			 - cart_inventory
+			 - guild_storage
+	* Fixed: Glowing bug on night effect
+	* Fixed: Autoloot failing on certain luk based drops
+	* Fixed: MATK_RATE bonuses are now shown in the character's status screen
+	* Fixed: Cards and items using item bonus command bAddEffWhenHit now work correctly
+	* Fixed: Possible crash resulting from incorrect syntax of item bonus command bAddEffWhenHit
+	* Fixed: Re-designed the autospell feature to support multiple autospelled skills
+	* Changed: Syntax of bAutoSpell and bAutoSpellWhenHit to specify how the skill should be casted (see doc\item_bonus.txt for details)
+	* Fixed: Cards and items using bAutoSpell and bAutoSpellWhenHit commands
+	* Changed: Rate (%) format of bAutoSpell and bAutoSpellWhenHit to allow for decimal percentages (needed for some items)
+
+03/08/2006
+	* Fixed: Crash on friends' notification of online status [Proximus]
+	* Fixed: 'Berserk/Frenzy' skill requirement disappearing when mounting a peco (sorry for the mistake) [Proximus]
+	* Fixed: Position conflict between Ayothaya and Louyang NPC warpers
+	* Updated: Item bonus descriptions
+	* Added: Item bonuses - bAddMonsterDropItemGroup, bLoseSPWhenUnequip, bSPGainRace, bExpAddRace adapted from eAthena	
+	* Added: db\item_group_db.txt from eAthena
+	* Fixed: Cards - Poisonous Toad, Mysteltainn, Wanderer, Assaulter, Executioner, Tyrfing, Incantation Samurai,
+			Earth Deleter, Heater, Deviling, Lord of Death, Cramp, Increase Soil, Heirozoist, Myst Case, Blazer,
+			Tengu, Sage Worm, Marin, Mimic, High Orc, Tamruan, Shinobi, Giant Hornet, Leib Olmai, Leaf Cat,
+			Dryad, Zombie Master, Caterpillar, Gig, Phendark, Diabolic, Driller, Fake Angel, Neraid, Tri-Joint,
+			Beetle King, Zombie Prisoner, Gajomart, Skeleton General, Am Mut, Ancient Worm, Explosion,
+			Christmas Cookie, Mini Demon, Gullinbursti, Iron Fist, Gargoyle, Raydric Archer, Jing Guai,
+			Stem Worm, Sleeper, Taoist Hermit, Wraith, Orc Archer, Greatest General
+	* Added: Card Set Bonuses
+			- Loli Ruri, Miyabi Doll, Evil Nymph, Parasite, Harpy, Bloody Butterfly
+			- Assaulter, Perimeter, Solider, Freezer, Heater
+			- Wanderer, The Paper, Wild Rose, Shinobi, Dancing Dragon
+			- Geographer, Rideword, Enchanted Peach Tree, Cookie, Seal
+			- Cruiser, Anolian, Alligator, Merman, Dragon Tail
+			- Raggler, Zipper Bear, Heirozoist, Myst Case, Baby Leopard
+	* Improved: Structure of mob item drops
+	* Changed: Some card and monster names/IDs
+	* Changed: Syntax of bGetZenyNum and bAddGetZenyNum now requires zeny chance (see doc\item_bonus.txt for details)
+	* Changed: Cramp Card and Zeny knife equip scripts to conform to the new syntax
+	* Changed: Formula calculating zeny received from mobs
+	* Updated: sql\item_db_map.sql
+
+03/07/2006
+	* Improved: Equipment breaking code, fixed some things there like not breaking target's weapon/armor when he is wearing a bow (?) [Proximus]
+		- Note: Turned equipment breaking ON by default (in official servers)
+	* Some styling in battle_calc_pc_weapon_attack [Proximus]
+	* Fixed: Min/Max skill points calculation for Taekwon/Star Knight class [Proximus]
+	* Fixed: 'Magnum Break' re-casting delay is now 2 secs [Proximus]
+	* Fixed: 'Bleeding' status effect [Proximus]
+		- Normal HP/SP regen is disabled while that status is ON
+		- Base Attack and Aspd rate is reduced by 25%
+	* Fixed: Bosses can not be affected by 'Blind', 'Curse' and 'Loki's Wail' status anymore [Proximus]
+	* Fixed: 'Palm Push Strike' now pushes back even if it misses. Aegis 10.2 [Proximus]
+	* Fixed: 'CartBoost' status not restoring the previous speed when ending [Proximus]
+	* Fixed: 'Rich Man Kim's' bonus exp [Proximus]
+		- Note: Prepared the new implementation of RichManKim bonus exp where it's the monster who is in RMK status, not the player (commented for now)
+	* Added: Hidden/Cloaked characters can't use warps. As per Aegis [Proximus]
+	* Fixed: 'Acid Terror' is now long ranged. As per Aegis [Proximus]
+	* Improved: Damage checks regarding guardian/emp mob (battle_calc_damage, mob_gvmobcheck) with the current battle_check_target function [Proximus]
+	* Fixed: 'Slim Potion Pitcher' not healing guild members/allies [Proximus]
+	* Updated: BCT_* constants, re-wrote battle_check_target function based on the current eA's way (slightly modified) [Proximus]
+		- Note: Will provide support for more BCT_* variants as BCT_GUILD (used on some skills like Slim pitcher and others).
+		- Note: The only skills that can target traps are 'Remove Trap', 'Arrow Shower' and 'Heavens Drive'.
+	* Updated: 'Slim Potion Pitcher' range from 3 -> 9 as per Aegis 10.2 (http://hic1.kazserv.com/~thered/pfreya/SLIMrange9.avi) [Proximus] 
+	* Updated: 'Assumptio' SP requirement as per kRO site [Proximus]
+	
+03/03/2006
+	* Added: Night and Day script commands [Thanks to DiM Report]
+	* Added: Mobs can now recall their strayed slaves using NPC_CALLSLAVE
+	* Fixed: Prepare Potion (Pharmacy) formula
+	* Fixed: Prepare Potion now only consumes a medicine bowl when the potion creation is actually attempted
+
+02/28/2006
+	* Fixed: Guilds having more than 3 alliances [Proximus]
+	* Fixed: 'NPC_BREAK' Armor, Helm, Shield, Weapon skill [Proximus]
+	* Fixed: 'Loki's Wail' blocking AoE spells from outside of the area [Proximus]
+	* Fixed: Re-wrote parts of 'Gospel' skill. Hopefully it works as it should now [Proximus]
+	* Fixed: 'Dissonance' damage formula [Proximus]
+	* Fixed: a crash with 'Basillica' skill [Proximus]
+	
+02/27/2006
+	* Fixed: a null pointer crash in battle_damage, caused by 'NPC_DARKBLESSING' [Proximus]
+	* Fixed: Made 'Gloria Domini' to do full damage on plants [Proximus]
+	
+02/23/2006
+	* Improved: Memory usage of battle config options [Proximus]
+	* Fixed: Bright-blue chars during the night [Proximus]
+	* Fixed: Modified parts of the way ground skills works. Should fix some segfaults [Proximus]
+	* Changed: Reorganized guild skill tree and added db/guild_skill_tree.txt, not hardcoded anymore (imported from jA) [Proximus]
+	* Updated: job_db2, job_db2-2 (as per Aegis 10.2) [Proximus]
+	* Updated: Non-passive guild skills cast to be interruptable [Proximus]
+	* Fixed: 'Berserk/Frenzy' Skill requirement [Proximus]
+	* Changed: 'Soul Breaker' range back to 9 cells (Aegis 10.2: http://hic1.kazserv.com/~thered/pfreya/SBrange.avi) [Proximus]
+	
+02/16/2006
+	* Fixed: Additional status effects from Weapon based skills [Proximus]
+	* Fixed: Some skills delays/casttimes/requirements [Proximus]
+		- 'Meltdown' casting time: 0.5secs
+		- 'Magnun Break' after-cast delay: 0 sec, duration: 10 secs
+		- 'Chase Walk' SP requirement: 40 -> 10
+		- 'Mammonite' can be used with bows (as per Aegis)
+	* Fixed: a bug with itemhealrate and sea otter card [Proximus]
+	* Fixed: 'Aura Blade' ignoring battle_calc_damage (KE, Assumptio, SW, etc), flee, plants, etc. Should be applied before [Proximus]
+	* Fixed: 'SoulChange' to only work on guild/party members in non PK maps [Proximus]
+	
+//=========================================================================================================
+//= FREYA 3.0 RELEASE
+//=========================================================================================================
+
+02/14/2006
+	* Fixed: 'Sacrifice Ritual' not ignoring the target's defense [Proximus]
+	* Changed: 'Cloaking' restriction to allow use of 'Hide' skill during cloaking (as per Aegis) [Proximus]
+	* Fixed: loading of the new char txt structure [Proximus]
+	
+02/13/2006
+	* Fixed: Major bug with saving/loading global_reg_values for SQL
+	* Improved: Memory usage with global_reg_values
+	* Changed: check_maximum_skill_points enabled by default [Thanks to Maverrick]
+	* Changed: Transferred PC_DIE_COUNTER variable to `char` table to reduce `global_reg_value` SQL usage
+	* Added: Feature to automatically transfer existing PC_DIE_COUNTER values to `char` SQL table on char-server startup
+	* Added: saving/loading of die_counter for char TXT
+	* Fixed: Loading of friends list
+	* Removed: Unnecessary TXT code from char_sql\char.c and char_sql\inter.c
+	* Fixed: The attack animation of 'Palm Push Strike' [Proximus]
+	* Fixed: Additional speed from 'Increase Dodge' does not stack anymore with 'Cloaking' bonus speed [Proximus]
+	* Improved: 'Increase Dodge' flee/speed bonus calculation [Proximus]
+	* Improved: a bit the knockback code [Proximus]
+	* Fixed: some lines in mob_skill_db [Proximus]
+		- Commented out new unsupported mob skills for now (NPC_CALLSLAVE, NPC_AGIUP, etc)
+	* Removed: Every mvp from Dead Branch list as they were never supposed to be there [Proximus]
+		- Updated Dead Branch mob list (mob_branch.txt)
+	
+02/11/2006
+	* Fixed: 'Raging Triple Blow' missing the Emperium [Proximus]
+	* Fixed: Assumptio glow effect not showing after casted on player [Proximus]
+	* Fixed: Minor bug with the current position of the auth flag with pc_natural_heal timer [Proximus]
+		- Auth flag is now updated after the status vars are fully loaded, needed for pc_natural_heal timer
+		- Friends list can not be used inside PCLoginEvent yet. Friend List are recv from chara to map when player is finally auth.
+		Can't before authentication
+	* Added: a new map flag 'gvg_dungeon' (for guild dungeons) [Proximus]
+		- PK enabled, guild exception (prevent PK'ing guild members/allies)
+		- Pushback/knockback ON
+		- If you die you lose 1% (if exp penalty is ON)
+		- Teleport/Wings are allowed
+		- Player is not recalled automatically to its latest saved point if died, and can be resurrected
+	* Fixed: Changed back NPC_DARKBLESSING to only drop the target's HP (as per kRO) [Proximus]
+			
+02/06/2006
+	* Fixed: Notification of friends' online/offline status
+	* Fixed: Proper loading of global_reg variables and friends list [Special thanks to zug for the hint]
+	* Fixed: Mob version of Fury skill
+	
+02/05/2006
+	* Fixed: "Throw Stone" is now blocked by Pneuma and KE [Proximus]
+	* Fixed: Finger Offensive/TSS damage [Proximus]
+	* Fixed: Cart Revolution additional weight damage
+	* Added: NPCs for Ayothaya, Einbech, Einbroch, and Jawaii adapted from eAthena
+	* Added: Boss flag to Lighthalzen MVPs
+	* Fixed: Crazy Uproar STR bonus
+	* Fixed: Night effect conflict with skill effects
+	
+02/04/2006
+	* Fixed: Status aliments when the damage is rounded to 0 due to an skill modifier [Proximus]
+		- The status effect will trigger if the damage is greater than 0 OR the attack level is ATK_DEF
+		- Skills that provides protection from damage like Pneuma, SW, KE does not protect against statuses because the server translates 
+	  that you actually hit but does zero damage. But those skills do not protect you from statuses. 
+	  However, not having enought HIT to hit the enemy due to flee, statuses won't go through because the server 
+	  translates that you don't hit them (or otherwise called miss). http://www.ragnainfo.net/forums/viewtopic.php?p=957633#957633
+	* Fixed: Damage delay regarding status effects. Re-wrote a bit how the damage is dealt to the target [Proximus]
+		  
+02/01/2006
+	* Fixed: Pneuma no longer blocks long range status effects
+	* Added: Czech language to manner.txt [Thanks to AZ_Online]
+	* Fixed: Brandish Spear knockback as per kRO/iRO
+	* Fixed: Spiritual Cadence should restore SP during Fury status
+	* Fixed: Provoke reduces both def and def2 [Thanks to Alu]
+	* Fixed: Remover/Cleaner now cleans Graffiti
+	* Fixed: Endow Blaze, Tsunami, Tornado, and Quake can now only be used on party members [Thanks to  raversth]
+	* Fixed: Spear Dynamo/Concentration attack strengh increase
+	* Fixed: Players under the pk_min_level can now be hit on guild maps during WoE
+	* Fixed: Joint Beat/Vital Strike ailments
+	* Fixed: Job changing to alchemist at job level 50 receives Condensed Potion Book
+	* Improved: battle_calc_damage function [Proximus]
+	* Fixed: "Throw Stone" doing full damage to plants [Proximus]
+	* Fixed: Gloria Domini's code [Proximus]
+		- Will no longer be affected by Lex Aeterna, Assumptio, Kyrie, Safety Wall, etc
+		- Is not affected by GvG dmg reductions anymore. Can hit the emperium now
+		- Commented its stun/bleeding additional effect for now. Should only reduce the enemy's current sp
+	* Fixed: Moved Assumptio damage reduction to battle_calc_damage. Now it should reduce any kind of damage [Proximus]
+	* Fixed: Stone Curse animation to only show when success [Proximus]
+	* Updated: All fields / dungeons monster spawns (thanks to eathena) [Proximus]
+	* Updated: Lighthalzen monsters stats / skills [Proximus]
+	* Updated: indoors, nomemo, water map flags [Proximus]
+	* Updated: Magic attacks to be short ranged when the distance between the mob and the player is less than 3 cells [Proximus]
+		- Only applies when the mob is the src of the magic attack. Ex. http://rapidshare.de/files/11526012/sw_vs_mob_magic.avi.html
+	* Updated: Safety Wall to block all short ranged attacks regardless of attack type [Proximus]
+	
+01/30/2006
+	* Fixed: Cards: Assaulter, Taogunka, Dark Illusion, Dark Lord, Ancient Mummy, Owl Baron, Owl Duke, Garm Baby,
+			Grand Peco, Zealotus, Injustice, Tamruan, Turtle General, Freezer, Shinobi, Geographer,
+			Enchanted Peach Tree, Anolian, Dragon Tail, Wind Ghost, Antonio, Mutant Dragonoid, Violy,
+			Wraith Dead, Brilight, Giant Spider, Creamy Fear, Killer Mantis, Demon Pungus, Majoruros,
+			Sasquatch, Dark Frame, Stalactic Golem, Kapha, Gibbet, Megalith, Goat, Arclouse, Firelock Soldier,
+			Sting, Nine Tail, Apocalypse, Carat, Alarm, Clock, Clock Tower Manager, Punk, Kraben
+
+01/29/2006
+	* Fixed: Changed @unjail spawn point to a valid kafra spawn to prevent abuse [Proximus]
+	* Fixed: Waterball skill from monsters [Proximus]
+					
+01/28/2006
+	* Fixed: Code clean up in pc_steal_item function [Proximus]
+		- Fixed stealing from treasure box 1 (id: 1324, aldebaran 1)
+		- Fixed stealing from summoned slaves (from bosses)
+	* Fixed: Drop rates of all god-equipment items from Treasure Boxes 0.80% -> 0.08% [Proximus] 
+	* Updated: The element of all treasure boxes to 21 [Proximus] 
+	* Updated: Soul Breaker range 9 -> 5 [Proximus]
+	* Some styling in mob_spawn_guardian function [Proximus] 
+	
+01/27/2006
+	* Fixed: Changed Endure mDEF2 bonus to mDEF [Proximus]
+	* Fixed: Turned off the "cloaking !!" caption option (default value, as per kRO) [Proximus]
+	* Updated: Some translations in abra_db, attr_fix [Proximus]
+	* Fixed: Frenzy no longer has a HP requirement [iRO mistranslation]
+
+01/26/2006
+	* Fixed: Soul Breaker damage formula. The magic part ignores mDEF, %cards doesn't affect it [Proximus]
+	* Fixed: Items class restrictions "Every Job except Novice" according ROE [Proximus]
+	* Added: Is_Taekwon_Class (global_functions) [Proximus]
+	* Fixed: Supernovices now receive +10 stats permanently if they reach lv 99 without dying [Thanks to VincintZ]
+	* Fixed: Safety wall and Pneuma now protects monsters and the Emperium
+	* Fixed: Fire Pillars can no longer be casted on enemies, near traps, or near another fire pillar
+	* Added: Warps going in and out of Einbech
+	* Fixed: Aura blade now causes additional damage and is not affected by the target's defense
+	* Fixed: Berserk's Endure effect disabled on GvG maps [Proximus]
+	
+01/25/2006
+	* Fixed: some new item_db lines from kRO Patch 12/27/05 to be compatible with freya [Proximus]
+	* Fixed: HP/SP item modifiers should be applied after doing all the job class calculation [Proximus]
+	* Fixed: nullpo in skill_unit_onplace_timer [Proximus]
+	* Fixed: Frenzy can only be used when under 100 HP
+
+01/24/2006
+	* Fixed: Party share exploit
+	* Fixed: Party member online/offline status
+	* Fixed: Arrow Shower is now ground targetted as per kRO
+	* Fixed: Spider Web/Fiber Lock now freezes players in PvP/WoE [Thanks to akrus]
+
+01/23/2006
+	* Added: Common script errors now report the name of the bugged script
+	* Updated: conf/nopenalty.txt
+	* Updated: job_db2, job_db2-2. Some styling on them [Proximus]
+	* Fixed: NPC_DARKBLESSING not working when player is in berserk mode (pc_heal returning 0) [Proximus]
+		- Updated to drop SP/HP to 1
+	* Fixed: a minor bug in pc_walktoxy when player has a chatID [Proximus]
+	
+01/22/2006
+	* Improved: memory usage with static arrays
+	* Improved: optimized job_db1.txt [Proximus]
+	* Updated: Job name list for GM commands
+	* Updated: job_db1.txt + new job classes. Some styling [Proximus]
+	* Fixed: Pets can no longer attack the Emperium
+
+01/21/2006
+	* Fixed: Plagiarism skill code [Proximus]
+		- Can not copy avd class skills anymore, neither Wedding/NPC skills
+		- Added saving/loading of plagiarized skills (global reg) 
+	* Fixed: RTB overwriting previous cloned skill even with Preserve status ON [Proximus]
+		- Moved the autotrigger of RTB code to skill_attack
+		- Re-wrote a bit of monk/champ combos code (skill_attack)
+		- Fixed allowing asura without fury status in combo mode.. should be in fury first [Proximus]
+	* Updated: Tiger Knuckle Fist. Works only as a combo skill now [Proximus]
+	* Fixed: Code clean up for "Reject Sword", fixed doing double damage to the source of the attack [Proximus]
+	* Added: Taekwon Boy/Girl class partially adapted from jAthena (ID: 4046)
+	* Added: The first 10 TK skills (Sprint, Prepare Whirlwind Kick, Whirlwind Kick, Prepare Axe Kick, Axe Kick,
+		Prepare Round Kick, Round Kick, Prepare Counter Kick, Counter Kick, Break Fall).
+		Note: The jobchanger for TK has not been put in yet as the class is still in testing.
+
+01/19/2006
+	* Fixed: ASPD and Walk Speed reduction from Defending Aura (http://project-freya.net/bugs/view.php?id=82) [Proximus]
+	* Updated: Drooping Cat hat is now refineable/upgradeable [Proximus]
+	* Fixed: Enchant Deadly Poison now takes damage cards into consideration, as well as damage bonuses from weapons [Proximus]
+	* Fixed: Warp Portal bug [Proximus]
+	* Added: EDP, Meltdown and CartBoost to the inmune status list by dispell [Proximus]
+	* Removed: src/addons (does anyone use this?)
+	* Note: delete your 'configure' file and sync with perforce or else it won't be able to update the file
+	* Updated: mapflag/indoors.txt
+	* Updated: item_db and mob_db adapted from eAthena
+	* Added: Maps for Garden City Hugel / Kiehl / Auction Market
+	* Added: Mobs for Garden City Hugel / Kiehl adapted from eAthena
+	* Added: Warps for Garden City Hugel / Kiehl adapted from eAthena
+	* Added: Garden City Hugel to @go command
+	* Fixed: Frost Driver freeze calculation [Thanks to zugule]
+	* Fixed: Tribal solidarity xp range [Thanks to BLB]
+	* Updated: skill attributes (sample below) [Proximus]
+		- Stone curse now has a cast time of 1sec.
+		- PPS does not consume an sphere anymore.
+		- After cast delays: Falcon Assault (3 secs), ThrowStone (0.1 sec), Sonic Blow (2 secs), HP Conversion (1 sec),
+                             Soul Breaker (from 1sec to 2.8 secs, according skill lv), SharpShooting (2 sec).
+		- A 2 sec after cast delay on Magnun Break.
+		- a 0.5 sec after cast delay on Potion Pitcher, 1 sec on Slim Pitcher.
+		- Casting Times: Grandcross (2 secs), Summon Spirits (1 sec), Full Strip (no cast time), Preserve (1 sec), Guild skills (5 secs).
+		- Skill ranges
+		- Asura Strike range from 3 to 2 cells.
+		- Ruwach range to 2, Sight range to 3
+		- Spell effects do not overlap (Firewall, StormGust, Sanctuary, Magnus Exorcism, Vermilion).
+
+01/18/2006
+	* Added: Mobs for Einbroch, Lighthalzen, and Abyss Lake Dungeon adapted from eAthena [Thanks to xtreme698866]
+	* Added: Warps for Einbroch, Lighthalzen, and Abyss Lake Dungeon adapted from eAthena [Thanks to xtreme698866]
+	* Fixed: Peco player size [Thanks to Mike]
+	* Improved: Night effect code
+	* Improved: True Blue Night effect adapted from eAthena [Thanks to dynamix]
+	* Fixed: Linux/Unix compilation error with lib folder
+	* Fixed: Some bugs in clif.c [Proximus]
+		- Possible exploit with picking/dropping item functions 
+		- A player can not move while in trade session anymore 
+		- Added some checks to prevent custom packets from taking effect while the player is in trade, talking to npc [Thanks to Kinko, from freya's forum]
+	* Fixed: Double nick at chat creation [Proximus]
+	* Fixed: Npc bug with stackable items [Proximus]
+	* Fixed: Marduk Card as per kRO [Thanks to Spirit Death]
+	* Fixed: Dispel success rates [Thanks to raversth]
+	* Fixed: Poring kill in Dancer test [Thanks to General__]
+	* Fixed: Frost Joke/Scream freeze/stun dead people in PVP [Proximus]
+	* Fixed: Indulge/HP Conversion cooldown [Thanks to BLB]
+	* Updated: Assumptio Skill [Proximus]
+	* Fixed: Professor's "Soul Change" skill in pk server [Thanks to BeoWulf]
+		
+01/17/2006
+	* Fixed: Mobs not unlocking a target once its dead [Proximus]
+	* Fixed: Grimtooth Skill [Proximus]
+		- Now is considered as a long ranged attack, can be blocked only by Pneuma
+	* Fixed: A typo in battle_athena.conf. Changed default value of skill_delay_attack_enable to 'yes' [Proximus]
+	* Fixed: Reflected damages affecting the target instead of the attack source [Proximus]
+	* Fixed: Some item_db lines [Proximus]
+		- Phen card bonus (Increase 25% Casting time)
+		- Removed Golden Gear 10% resistance to neutral attacks 
+		- Made Bloody Butterfly Card not granting uninterruptable cast in GvG maps
+	* Fixed: Occult Impact Range [Thanks to SePhII2oTh]
+	* Fixed: PcLoginEvent bug [Thanks to NO-IP]
+	* Fixed: Berzebub card [Thanks to A_r_e_s]
+	* Fixed: True sight [Thanks to saxyphil]
+	* Fixed: Free Traps Exploit [Thanks to Proximus]
+	* Fixed: Amplification Magic Power effect on area spells
+
+//=========================================================================================================
+//= Project Freya Begins!
+//=		- Special thanks to Yor, MagicalTux, and all those involved for their efforts
+//=		- Thanks to Proximus and katz3 for migrating the bug reports to the new Mantis Bug Tracker
+//=========================================================================================================

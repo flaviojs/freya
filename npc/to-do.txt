@@ -1,0 +1,39 @@
+Script Folder To-Do List:
+
+eAthena Converts:
+- Novice Training Grounds: http://72.36.236.18:8080/svn/ea/trunk/npc/jobs/novice/novice.txt *
+- Blacksmith Job Change (Moved to Einbroch): http://72.36.236.18:8080/svn/ea/trunk/npc/jobs/2-1/blacksmith.txt *
+- Hunter Job Change (Moved to Hugel): http://72.36.236.18:8080/svn/ea/trunk/npc/jobs/2-1/hunter.txt *
+- First Class Storyline Quests: http://72.36.236.18:8080/svn/ea/trunk/npc/quests/first_class/
+- God Weapon Seal Quests: http://72.36.236.18:8080/svn/ea/trunk/npc/quests/seals/
+- Quest Revolution Part 1: http://72.36.236.18:8080/svn/ea/trunk/npc/quests/quiz/
+- Marriage Script (Rewritten): http://72.36.236.18:8080/svn/ea/trunk/npc/other/marriage.txt
+- Kunlun Power NPC: http://72.36.236.18:8080/svn/ea/trunk/npc/other/powernpc.txt
+- Comodo Gambling: http://72.36.236.18:8080/svn/ea/trunk/npc/other/comodo_gambling.txt
+- Cool Event Corp Main System: http://72.36.236.18:8080/svn/ea/trunk/npc/other/dts_warper.txt
+- Novice Exchange Merchant: http://72.36.236.18:8080/svn/ea/trunk/npc/merchants/novice_exchange.txt
+- Updated Kunlun NPCs: http://72.36.236.18:8080/svn/ea/trunk/npc/cities/gonryun.txt
+- Thanatos Tower Quest (Bit operators??): http://72.36.236.18:8080/svn/ea/trunk/npc/quests/thana_quest.txt *
+
+Aegis Converts:
+- Official 2nd Class Quest Skill Quests: Zone/npcdata/quest/2nd_quest/ *
+- Official Amatsu Sushi Quest: Zone/npcdata/town/amatsu/amatsu_sushi.sc
+- Official Gunslinger Job Change Quest: Zone/npcdata/job/expanded/job_gunner.sc *
+- Rip official dialogue (don't convert): Zone/npcdata/job/job_karma.sc
+- The rest of the Aegis script files (some already done / fully missing have priority): Zone/npcdata/
+
+Other Scripts:
+- Hugel Town NPCs (jAthena): http://svn.99nets.com/src/jasrc/script/npc/town/npc_town_hugel.txt [Assigned - Harp] *
+- Veins Town NPCs
+- Rachel/Veins Airship Expansion *
+- Kiel Hyre Quest
+- Ice Dungeon Ktullanux Quest
+- Rachel Sanctuary Quests #1 and #2
+- All other Hugel/Rachel/Veins Quests
+
+Bugged:
+- Re-convert: quests_ein.txt from: http://72.36.236.18:8080/svn/ea/trunk/npc/quests/quests_ein.txt *
+- Re-convert: quests_umbala.txt from: http://72.36.236.18:8080/svn/ea/trunk/npc/quests/quests_umbala.txt *
+- Unfinished: Juperos Quest [Assigned - Tsuyuki]
+
+Note: Entries with * by them have priority
