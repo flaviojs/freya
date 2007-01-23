@@ -5,6 +5,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/22/07
+	* Added: Cool Event Corp NPC to Rachel based on official info [Tsuyuki]
+	* Added: Novice Exchange script (Imported from eAthena) [Tsuyuki]
+	* Removed: Valkyrie.txt custom script [Tsuyuki]
 	* Added: Full support for Baby Classes in the scripts [Tsuyuki]
 	* Added: Pre-eAthena jAthena Changelog [Tsuyuki]
 	* Added: eAthena RC4 Changelog -> Freya/doc/oldchanges/eathena_rc4_changelog.txt [Tsuyuki]

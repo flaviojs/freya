@@ -1,15 +1,16 @@
 //===== Freya Script ======================================================
 //= Cool Event Corp NPCs
 //===== By: ===============================================================
-//= Aegis (Muad_Dib)
+//= Aegis (Muad_Dib), Freya
 //===== Current Version: ==================================================
-//= 1.0
+//= 1.1
 //===== Compatible With: ==================================================
 //= Freya
 //===== Description: ======================================================
 //= Cool Event Corp Kafra-Replacement NPCs for Swaltzvalt Republic
 //===== Additional Comments: ==============================================
 //= 1.0 Added first version converted from Aegis [Tsuyuki]
+//= 1.1 Added Rachel Cool Event Corp Employee based on official sources [Tsuyuki]
 //=========================================================================
 
 
@@ -152,6 +153,131 @@ lighthalzen.gat,94,248,4	script	Cool Event Employee	874,{
 
 	L_Save:
 		savepoint "hugel.gat",97,154;
+		mes "[Cool Event Employee]";
+		mes "Your Respawn Point has";
+		mes "been saved in the city";
+		mes "of Lighthalzen. Thank you for";
+		mes "using the Cool Event Service.";
+		close2;
+		cutin "",255;
+		end;
+
+	L_Storage:
+		if (Basejob == JOB_NOVICE && Joblevel < 6) goto L_End01;
+		if (Zeny < 40) goto L_End02;
+		set RESRVPTS,RESRVPTS+4;
+		set Zeny,Zeny-40;
+		mes "[Cool Event Employee]";
+		mes "Here, let me open";
+		mes "your Storage for you.";
+		mes "Thank you for supporting";
+		mes "Cool Event Corporation";
+		mes "by using our services.";
+		mes "Have a nice day~";
+		close2;
+		cutin "",255;
+		openstorage;
+		end;
+
+		L_End01:
+			mes "[Cool Event Employee]";
+			mes "I'm sorry, but you";
+			mes "need the Novice's";
+			mes "Basic Skill Level 6 to";
+			mes "use the Storage Service.";
+			close2;
+			cutin "",255;
+			end;
+
+		L_End02:
+			mes "[Cool Event Employee]";
+			mes "You don't have enough money.";
+			mes "The storage usage fee is 40 Zeny.";
+			close2;
+			cutin "",255;
+			end;
+
+	L_Cart:
+		if (callfunc("Is_Merc_Class") == 0) goto L_End03;
+		if (checkcart(0) == 1) goto L_End04;
+		if (getskilllv(39) == 0) goto L_End05;
+
+		mes "[Cool Event Employee]";
+		mes "The Cart Fee is 800 Zeny.";
+		mes "To rent a cart.";
+		next;
+		menu "Rent a Cart",L_Cont01,"Cancel",L_Cancel;
+
+		L_Cont01:
+			if (Zeny < 800) goto L_End06;
+			set RESRVPTS,RESRVPTS+8;
+			set Zeny,Zeny-800;
+			setcart;
+			close2;
+			cutin "",255;
+			end;
+
+			L_End06:
+				mes "[Cool Event Employee]";
+				mes "Sorry, you don't have enough Money.";
+				mes "The Cart Fee is 800 Zeny.";
+				close2;
+				cutin "",255;
+				end;
+
+		L_End03:
+			mes "[Cool Event Employee]";
+			mes "I'm sorry, but the";
+			mes "Pushcart rental service";
+			mes "is only available to Merchants,";
+			mes "Blacksmiths, Master Smiths";
+			mes "Alchemists and Biochemists.";
+			close2;
+			cutin "",255;
+			end;
+
+		L_End04:
+			mes "[Cool Event Employee]";
+			mes "Sorry you already have a cart.";
+			close2;
+			cutin "",255;
+			end;
+
+		L_End05:
+			mes "[Cool Event Employee]";
+			mes "You must learn the skill Pushcart to be able to rent a cart.";
+			close2;
+			cutin "",255;
+			end;
+
+	L_Cancel:
+		mes "[Cool Event Employee]";
+		mes "Cool Event Corporation is always";
+		mes "striving to provide the best";
+		mes "services for our customers.";
+		mes "Help us become the best by";
+		mes "providing us with your opinions";
+		mes "and honest feedback. Thank you.";
+		close2;
+		cutin "",255;
+		end;
+}
+
+// Rachel
+rachel.gat,109,138,5	script	Cool Event Employee	874,{
+
+	cutin "zonda_01.bmp",2;
+	mes "[Cool Event Employee]";
+	mes "Welcome to Cool Event Corporation.";
+	mes "Our Staff is always working";
+	mes "to surpass your expectations";
+	mes "for quality service. So how";
+	mes "may I assist you today?";
+	next;
+	menu "Save",L_Save,"Use Storage",L_Storage,"Rent a Pushcart",L_Cart,"Cancel",L_Cancel;
+
+	L_Save:
+		savepoint "rachel.gat",116,127; // Custom Coordinates
 		mes "[Cool Event Employee]";
 		mes "Your Respawn Point has";
 		mes "been saved in the city";

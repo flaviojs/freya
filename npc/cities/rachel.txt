@@ -1,16 +1,17 @@
 //===== Freya Script =======================================
 //= Rachel City NPCs
 //===== By: ==================================================
-//= Tsuyuki and Harp
+//= Freya (Tsuyuki/Harp)
 //===== Current Version: =====================================
-//= 0.5
+//= 0.6
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
 //= Arunafeltz NPCs
 //===== Additional Comments: =================================
 //= 0.5 Text translated from Korean > English, incomplete, 
-//= possibly missing some NPCs and missing all quests.
+//= possibly missing some NPCs and missing all quests [Harp/Tsuyuki]
+//= 0.6 Moved Cool Event Corp Employee to Cool event script [Tsuyuki]
 //============================================================
 
 
@@ -237,20 +238,6 @@ rachel.gat,124,132,1	script	Town Native	921,{
 	mes "Freya that I'd be able to hook up with woman as";
 	mes "beautiful as Freya?";
 	close;
-}
-
-rachel.gat,109,138,5	script	Cool Event Corp	874,{
-
-//	mes "[Cool Event Corp Employee]";
-//	mes "Welcome to Cool Event Corp. We always";
-//	mes "bring you the best service.";
-//	mes "What service do you need?";
-//	next;
-//	mes "Use Save Service",Z_end,"Use Storage Service",Z_end,"Use Cart //Service",Z_end,"End Conversation",Z_end;
-//	
-//	Z_end:
-//		close;
-	end;
 }
 
 ra_in01.gat,376,68,4	script	Hotel Employee	931,{
