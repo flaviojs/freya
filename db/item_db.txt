@@ -1813,15 +1813,15 @@
 5166,Sphinx_Helm_,Sphinx Helm,5,20,,3000,,5,,1,16514,2,769,,65,137,{},{ bonus bStr,2; }
 5167,Munak_Hat_,Munak Hat,5,20,10,300,,5,,1,1071636479,2,769,,0,51,{},{ bonus2 bSubRace,1,10; }
 5168,Bongun_Hat_,Bongun Hat,5,20,10,300,,5,,1,1071636479,2,769,,0,139,{},{}
-5169,Bride_Mask,Bride Mask,5,30000,15000,500,,4,,1,1071636479,2,768,,40,223,{},{if (GetPureJob!=JOB_TAEKWON) end; bonus bLuk,2; bonus bCritical,5; }
+5169,Bride_Mask,Bride Mask,5,30000,15000,500,,4,,1,1071636479,2,768,,40,223,{},{if (GetPureJob != JOB_TAEKWON) end; bonus bLuk,2; bonus bCritical,5; }
 5170,Feather_Beret,Feather Beret,5,30000,15000,600,,1,,0,1071636478,2,256,,0,224,{},{ bonus bMdef,1; bonus2 bSubRace,7,10; bonus2 bMagicSubRace,7,10; }
 5171,Valkyrie_Helm,Valkyrie Helm,5,100000,50000,1000,,5,,1,1071636478,2,256,,,225,{},{ bonus bMdef,5; }
 5172,Beret,Beret,5,30000,15000,700,,0,,0,1071636479,2,256,,0,226,{},{ bonus2 bSubRace,7,10; bonus2 bMagicSubRace,7,10; }
-5173,Hat_of_the_Judge,Judge's Hat,5,30000,15000,400,,3,,1,1071636479,2,256,,60,227,{},{if (Class!=4046 && Class!=4047 && Class!=4048 && Class!=4049) end; bonus bAgi,1; bonus bHPrecovRate,3; }
-5174,A-yam,A-yam,5,30000,15000,400,,3,,1,1071636479,2,256,,60,228,{},{if (GetPureJob!=JOB_TAEKWON) end; bonus bInt,1; bonus bSPrecovRate,3; }
+5173,Hat_of_the_Judge,Judge's Hat,5,30000,15000,400,,3,,1,1071636479,2,256,,60,227,{},{ if (GetPureJob != JOB_TAEKWON) end; bonus bAgi,1; bonus bHPrecovRate,3; }
+5174,A-yam,A-yam,5,30000,15000,400,,3,,1,1071636479,2,256,,60,228,{},{if (GetPureJob != JOB_TAEKWON) end; bonus bInt,1; bonus bSPrecovRate,3; }
 5175,Anonymous_Identity,Anonymous Identity,5,30000,15000,100,,0,,0,1071636479,2,512,,0,229,{},{ bonus bMdef,1; bonus bHit,-5; bonus2 bResEff,Eff_Curse,500; }
-5176,Smiling_Mask,Smiling Mask,5,30000,15000,100,,2,,0,1071636479,2,513,,30,230,{},{if (GetPureJob!=JOB_TAEKWON) end; bonus bLuk,1; bonus bFlee2,2; }
-5177,Lion_Masquerade,Lion Masquerade,5,30000,15000,500,,5,,1,1071636479,2,768,,40,231,{},{ if(GetPureJob!=JOB_TAEKWON)end; bonus bDex,2; bonus bBaseAtk,2*getequiprefinerycnt(1); bonus2 bAddEff,2,100; }
+5176,Smiling_Mask,Smiling Mask,5,30000,15000,100,,2,,0,1071636479,2,513,,30,230,{},{ if (GetPureJob != JOB_TAEKWON) end; bonus bLuk,1; bonus bFlee2,2; }
+5177,Lion_Masquerade,Lion Masquerade,5,30000,15000,500,,5,,1,1071636479,2,768,,40,231,{},{ if(GetPureJob != JOB_TAEKWON)end; bonus bDex,2; bonus bBaseAtk,2*getequiprefinerycnt(1); bonus2 bAddEff,2,100; }
 5178,Candle_,Candle,5,,,150,,0,,0,1071636479,2,256,,,113,{},{ bonus bStr,1; bonus bAgi,1; bonus bVit,1; bonus bInt,1; bonus bDex,1; bonus bLuk,1; }
 5179,Gold_Tiara,Gold_Tiara,5,,,100,,0,,,1071636479,2,256,,0,232,{},{ bonus bInt,2; }
 5180,Holiday_Hat,Holiday Hat,5,,,100,,1,,0,1071636479,2,256,,0,217,{},{ bonus bVIT,1; }

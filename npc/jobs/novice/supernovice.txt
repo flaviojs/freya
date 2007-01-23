@@ -17,8 +17,8 @@
 // -- jobchanger --
 aldeba_in.gat,223,167,3	script	Tozel	709,{
 	if (job_snovice == 1) goto L_Start2;
-	if (Class == 23) goto L_Twice;
-	if (Class != 0) goto L_Otherjob;
+	if (Basejob == 23) goto L_Twice;
+	if (Basejob != 0) goto L_Otherjob;
 	mes "[Tozel]";
 	mes "Hello, Novice!";
 	mes "Are you enjoying yourself as a novice, the preferred class of the common man?";
@@ -172,8 +172,8 @@ L_Otherjob:
 
 // -- Totaly Useless :) --
 aldeba_in.gat,216,169,5	script	Serei	86,{
-	if (Class == 23) goto L_Supernovice;
-	if (Class != 0) goto L_Otherjob;
+	if (Basejob == 23) goto L_Supernovice;
+	if (Basejob != 0) goto L_Otherjob;
 	mes "[Serei]";
 	mes "You're pretty common.";
 	mes "A common man should live a happy life.";
@@ -209,7 +209,7 @@ L_Otherjob:
 
 // -- Cart Rental --
 aldebaran.gat,54,238,5	script	Kafra	117,{
-	if (Class != 23) goto L_Otherjob;
+	if (Basejob != 23) goto L_Otherjob;
 	if (checkcart(0) == 1) goto L_GotCart;
 	mes "[Kafra]";
 	mes "Oh, a Super Novice!";
