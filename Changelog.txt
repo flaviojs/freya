@@ -4,6 +4,14 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+01/23/07
+	* Updated: Modifications to the rebirth script system: [Tsuyuki]
+	 - 3.3 Organized script, and added most of the official dialogue from Aegis
+	 - 3.4 Added official Transporter, converted from Aegis
+	 - 3.5 Novice quest skills are now automatically given for free upon rebirth
+	 - 3.6 Updated The Heart of Ymir's function (now warps to Valkyrie) as per Aegis
+	 - 3.7 You now get a Knife/Clothes when you rebirth, as per officials
+
 01/22/07
 	* Added: Cool Event Corp NPC to Rachel based on official info [Tsuyuki]
 	* Added: Novice Exchange script (Imported from eAthena) [Tsuyuki]

@@ -18,7 +18,6 @@ Aegis Converts:
 - Official 2nd Class Quest Skill Quests: Zone/npcdata/quest/2nd_quest/ *
 - Official Amatsu Sushi Quest: Zone/npcdata/town/amatsu/amatsu_sushi.sc
 - Official Gunslinger Job Change Quest: Zone/npcdata/job/expanded/job_gunner.sc *
-- Rip official dialogue (don't convert): Zone/npcdata/job/job_karma.sc
 - The rest of the Aegis script files (some already done / fully missing have priority): Zone/npcdata/
 
 Other Scripts:
