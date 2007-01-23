@@ -1437,7 +1437,7 @@
 // Baby Novice
 4023,1,9,0,0,0,0,0,0,0,0,0,0//NV_BASIC		#Basic Skills#
 4023,142,1,0,0,0,0,0,0,0,0,0,0//NV_FIRSTAID	#First Aid#
-4023,143,1,0,0,0,0,0,0,0,0,0,0//NV_TRICKDEAD	#Ž€‚ñ‚¾‚Ó‚è#
+4023,143,1,0,0,0,0,0,0,0,0,0,0//NV_TRICKDEAD	#Trick Dead#
 4023,408,1,0,0,0,0,0,0,0,0,0,0 //WE_BABY#Baby#
 4023,409,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLPARENT#Call Parent#
 

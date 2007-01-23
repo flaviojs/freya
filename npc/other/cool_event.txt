@@ -37,7 +37,7 @@ hugel.gat,88,168,4	script	Cool Event Employee	874,{
 		end;
 
 	L_Storage:
-		if (Class == JOB_NOVICE && Joblevel < 6) goto L_End01;
+		if (Basejob == JOB_NOVICE && Joblevel < 6) goto L_End01;
 		if (Zeny < 40) goto L_End02;
 		set RESRVPTS,RESRVPTS+4;
 		set Zeny,Zeny-40;
@@ -162,7 +162,7 @@ lighthalzen.gat,94,248,4	script	Cool Event Employee	874,{
 		end;
 
 	L_Storage:
-		if (Class == JOB_NOVICE && Joblevel < 6) goto L_End01;
+		if (Basejob == JOB_NOVICE && Joblevel < 6) goto L_End01;
 		if (Zeny < 40) goto L_End02;
 		set RESRVPTS,RESRVPTS+4;
 		set Zeny,Zeny-40;

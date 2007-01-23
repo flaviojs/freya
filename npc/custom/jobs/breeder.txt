@@ -23,11 +23,11 @@ prontera.gat,122,200,1	script	Rentals	905,{
 	mes "Hi there! I rent Carts, Falcons, and Pecos.";
 	next;
 
-	if (Class == 5 || Class == 10 || Class == 18 || Class == 4006 || Class == 4011 || Class == 4019 || Class == 4041 || Class == 4028 || Classes==4033) goto L_Cart;
+	if (BaseClass == JOB_MERCHANT) goto L_Cart;
 
-	if (Class == 11 || Class == 4012 || Class == 4034) goto L_Falcon;
+	if (BaseClass == JOB_ARCHER) goto L_Falcon;
 
-	if (Class == 7 || Class == 14 || Class == 4008 || Class == 4015 || Class == 4030 || Class == 4037) goto L_Peco;
+	if (Basejob == JOB_KNIGHT || Basejob == JOB_KNIGHT2 || Basejob == JOB_CRUSADER || Basejob == JOB_CRUSADER2) goto L_Peco;
 
 	mes "[Adelia]";
 	mes "Unfortunately, I can only rent them to certain classes. You don't qualify for my services..";

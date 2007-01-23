@@ -491,7 +491,7 @@ yuno_in01.gat,17,30,3	script	Wagan	85,{
 	next;
 	menu "Leave it to me.",-,"I wish your village luck in doing so.",M_End;
 
-		if (Class != JOB_NOVICE) goto L_Cont02;
+		if (Basejob != JOB_NOVICE) goto L_Cont02;
 
 		mes "[Wagan]";
 		mes "Hmm...";

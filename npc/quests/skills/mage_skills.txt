@@ -76,7 +76,7 @@ L_Start:
 		close;
 
 L_GetSkill:
-	if (Class == JOB_MAGE && joblevel < 35) goto L_JobLvl;
+	if (Basejob == JOB_MAGE && Joblevel < 35) goto L_JobLvl;
 	if (countitem(746)<3 || countitem(730)<1 || countitem(935)<5 || countitem(943)<1) goto L_Items;
 	mes "Ohh my, ohh my...... This is going to be swell.  Hand over the items... Thank you.";
 	next;

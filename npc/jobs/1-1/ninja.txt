@@ -20,6 +20,7 @@
 
 que_ng.gat,30,65,3	script	Cool Kid#nq	730,{
 
+	// Can't be Baby/High Novice, MUST be normal Novice
 	if (Class == JOB_NOVICE && JobLevel > 9) goto NJQ0;
 	if (Class == JOB_NOVICE && JobLevel < 10) goto NJQ9;
 	if (Class == JOB_NINJA) goto NJQ10;

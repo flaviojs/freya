@@ -1,7 +1,7 @@
 //1.1 label fixed [Lupus]
 
 yuno_in02.gat,93,207,0	script	Heaven's Door	111,{
-	if (Class < 7) goto L_Can;
+	if (Class <= JOB_THIEF) goto L_Can;
 		mes "[The writing on the paper]";
 		mes "You have found the entrance to the temple.";
 		mes "This path is only open to those who are born again.";
@@ -32,7 +32,7 @@ L_Can:
 }
 
 valkyrie.gat,48,86,6	script	Valkyrie	811,{
-	if (class > 7) goto L_Rest;
+	if (Class >= JOB_KNIGHT) goto L_Rest;
 	mes "[Valkyrie]";
 	mes "Welcome to Valhalla.";
 	mes "But, you have not been invited yet.";

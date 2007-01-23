@@ -272,7 +272,7 @@ L_SN:
 L_ALREADY:
 	mes "I can't help you anymore.";
 	if (Class == JOB_NOVICE_HIGH) mes "You have been reborn already.";
-	if (Class >= JOB_SWORDMAN_High && Class <= JOB_THIEF_HIGH) mes "Please go over there, to the person representing your class.";
+	if (Class >= JOB_SWORDMAN_HIGH && Class <= JOB_THIEF_HIGH) mes "Please go over there, to the person representing your class.";
 	next;
 	mes "[Valhallana]";
 
@@ -391,10 +391,10 @@ L_SKILLPNTS:
 
 function	script	F_ToHigh	{
 	if (Class == JOB_NOVICE) return;
-	if (Upper == 2) return; //Baby Class - skip it
+	if (Upper == 2) return; // Baby Class - skip it
 	if (ADVJOB == JOB_LORD_KNIGHT2) set ADVJOB,JOB_LORD_KNIGHT;
 	if (ADVJOB == JOB_PALADIN2) set ADVJOB,JOB_PALADIN;
-	set @fjob,ADVJOB; //alternative classes should pass, too
+	set @fjob,ADVJOB; // Alternative classes should pass, too
 	if (@fjob == JOB_STALKER) set @fjob,JOB_ASSASSIN_CROSS;
 	if (@fjob == JOB_CREATOR) set @fjob,JOB_WHITESMITH;
 	if (@fjob == JOB_CLOWN || @fjob == JOB_GYPSY) set @fjob,JOB_SNIPER;
@@ -403,10 +403,10 @@ function	script	F_ToHigh	{
 	if (@fjob == JOB_PROFESSOR) set @fjob,JOB_HIGH_WIZARD;
 
 	if (Class == getarg(0)) goto L_WELCOME; // 3rd Job
-	if (Class >= JOB_LORD_KNIGHT && Class <= JOB_PALADIN2) goto L_ALREADY; //already advanced class
-	if (Class == JOB_NOVICE_HIGH && @fjob == getarg(2)) goto L_GETHIGH; //High Novice -> High XXXX
+	if (Class >= JOB_LORD_KNIGHT && Class <= JOB_PALADIN2) goto L_ALREADY; // Already Advanced Class
+	if (Class == JOB_NOVICE_HIGH && @fjob == getarg(2)) goto L_GETHIGH; // High Novice -> High XXXX
 	if (Class == JOB_NOVICE_HIGH) goto L_EXTRA;
-	return; // This char doesn't want to get HIGH class
+	return; // This char doesn't want to get high class
 		
 		L_EXTRA:
 		mes "Hello, Novice High! If you are going to became a "+getarg(1)+", then go visit your very first job teacher.";
@@ -483,8 +483,8 @@ L_ALREADY:
 //getarg(3) - 3rd Job Name
 function	script	F_Rebirth	{
 	mes "["+getarg(3)+"]";
-	if (Upper == 2) goto L_BABY; //Baby Class - skip it
-	if (Class >= JOB_LORD_KNIGHT && Class <= JOB_PALADIN2) goto L_ALREADY; //already advanced class
+	if (Upper == 2) goto L_BABY; // Baby Class - skip it
+	if (Class >= JOB_LORD_KNIGHT && Class <= JOB_PALADIN2) goto L_ALREADY; // Already Advanced Class
 	if (Class == getarg(0) && ADVJOB == getarg(2)) goto L_GET3RD; //Hight XXXX -> 3rd Job
 	mes "Go talk to either Valhallana or one of my collegues...";
 	emotion e_sry;
@@ -543,8 +543,8 @@ L_BABY:
 	close;
 }
 
-// function GUIDE player to Valhalla for getting 3rd JOB
-// this function prevents passing 2nd JOB QUESTS by advanced classes also
+// Function GUIDE player to Valhalla for getting 3rd JOB
+// This function prevents passing 2nd JOB QUESTS by advanced classes also
 //getarg(0) - High Job ID
 //getarg(1) - High Job Name
 //getarg(2) - 3rd Job ID
@@ -555,10 +555,10 @@ function	script	F_BlockHigh	{
 	mes "["+getarg(4)+"]";
 	if (Class == getarg(0) && ADVJOB == getarg(2)) goto L_RIGHTHIGH;
 	if (Class == getarg(2)) goto L_RIGHT3RD;
-	if (Class >= JOB_LORD_KNIGHT && Class <= JOB_PALADIN2) goto L_ALREADY3RD; //already advanced class, but from wrong guild
-//this player is a High Novice
+	if (Class >= JOB_LORD_KNIGHT && Class <= JOB_PALADIN2) goto L_ALREADY3RD; // Already Advanced Class, but from wrong guild
+// This player is a High Novice
 	if (Class == JOB_NOVICE_HIGH) mes "Hello, Novice High! If you are going to became a "+getarg(1)+", then go visit your very first job teacher.";
-//this player has 1st advanced job, but from wrong guild
+// This player has first Advanced job, but from wrong guild
 	if (Class == getarg(0)) mes "A "+getarg(1)+"?";
 	if (Class != JOB_NOVICE_HIGH) mes "Rumors say only Valhallana knows your way...";
 	emotion e_sry;

@@ -32,6 +32,7 @@
 
 que_ng.gat,152,167,3	script	Armsmith	901,{
 
+	// Can't be Baby/High Novice, MUST be normal Novice
 	if (Class == JOB_NOVICE) goto GSQ1;
 	goto GSQ11;
 

@@ -112,11 +112,11 @@ L_MENU_1:
 			mes "Wow! You are a High Acolyte, aren't you?";
 			mes "I am sorry, but I can't let you become a Monk!";
 			mes "Please seek out the Champion, that is what you should be!";
-			set MONK_Q, 0;
+			set MONK_Q,0;
 			close;
 
 		L_GO:
-			if (Class == 4005) goto HighMonk;
+			if (Class == JOB_ACOLYTE_HIGH) goto HighMonk;
 			mes "[Tohobu]";
 			mes "Well... Seems you have the ability to be a Monk.";
 			mes "Very well then... Go to Wuhai the Elder, He will guide you.";
@@ -157,8 +157,8 @@ monk_in.gat,99,58,4	script	Elder Wuhai	60,{
 	if (MONK_Q >= 5 && JOB_MONK < 10) goto Part3;
 	if (MONK_Q >= 10 && countitem(506) > 0) goto Part4;//Items: Green_Potion,
 	if (MONK_Q >= 10 && countitem(506) == 0) goto Part5;//Items: Green_Potion, // fixed. check >= 10, not == 11, because green potion can be already drunk.
-	if (Class == 15 || Class == 4016) goto Part6;
-	if (Class == 4 || Class == 4005) goto Part7;
+	if (Basejob == JOB_MONK) goto Part6;
+	if (Basejob == JOB_ACOLYTE) goto Part7;
 		goto IsOther;
 IsOther:
 	mes "[Elder Wuhai]";

@@ -90,7 +90,7 @@ L_GotAid:
 //<-------------------------------------------------------------------------------------------------- Bulma: Play Dead -------------------------------------------------------------------------------------------->\\
 prt_in.gat,73,87,2	script	Bulma	98,{
 	mes "[Bulma]";
-	if (Class == JOB_NOVICE) goto L_Novice;
+	if (Basejob == JOB_NOVICE) goto L_Novice;
 
 L_Other:
 	mes "Yeah... I look great.... Afterall, I'm a Knight of the Prontera Chivalry.  Kuhahahaha!";
@@ -219,7 +219,7 @@ L_GotSkill:
 //Newbie Assistant------------------------------------------------------------------------------
 prt_castle.gat,174,147,2	script	Newbie Assistant	84,{
 	mes "[Newbie Assistant]";
-	if (Class == JOB_NOVICE) goto L_Start;
+	if (Basejob == JOB_NOVICE) goto L_Start;
 
 L_NonNov:
 	mes "What am I doing here?  I'm just trying to help out young newbies.  You remember how it was to be a newbie... confused.... lost.... heh heh.";

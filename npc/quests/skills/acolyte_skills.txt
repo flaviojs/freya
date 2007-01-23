@@ -82,8 +82,8 @@ L_Check:
 	mes "So, are you ready for the Holy Light training? Let me check....";
 	next;
 	mes "[Acolyte Klift]";
-	if (Class == JOB_ACOLYTE && joblevel<30) goto L_LowLvl;
-	if (countitem(727)<1 || countitem(991)<1 || countitem(2608)<1) goto L_NoItems;
+	if (Basejob == JOB_ACOLYTE && Joblevel < 30) goto L_LowLvl;
+	if (countitem(727) < 1 || countitem(991) < 1 || countitem(2608) < 1) goto L_NoItems;
 
 	mes "Oh! Very good.  You have brought back all of the items I asked for.";
 	next;

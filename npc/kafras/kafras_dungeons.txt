@@ -43,7 +43,7 @@ moc_fild15.gat,264,260,3	script	Kafra Employee	115,{
 izlu2dun.gat,106,58,8	script	Kafra Employee	115,{
 
 	cutin "kafra_03",2;
-	if (Class == JOB_NOVICE && JOB_MERCHANT_q3>0) callfunc "F_MercKafra";  //F_MercKafra found in merchant.txt
+	if (Basejob == JOB_NOVICE && JOB_MERCHANT_q3 > 0) callfunc "F_MercKafra";  // F_MercKafra found in merchant.txt
 	callfunc "F_Kafra",0,5,1;
 }
 

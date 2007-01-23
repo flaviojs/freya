@@ -15,7 +15,7 @@
 
 payon.gat,157,141,5	script	Phoenix#TKjobchange	753,{
 
-	if (Class == JOB_TAEKWON || Class == JOB_STAR_GLADIATOR || Class == JOB_STAR_GLADIATOR2 || Class == JOB_SOUL_LINKER) goto L_Complete;
+	if (BaseClass == JOB_TAEKWON) goto L_Complete;
 	if (TK_Q == 1) goto L_Activated2;
 	if (TK_Q == 2) goto L_jobchange;
 	if (TAEK_Q > 0) goto L_Activated1;
@@ -63,6 +63,7 @@ payon.gat,157,141,5	script	Phoenix#TKjobchange	753,{
 	menu "Okay, I will join you.",L_Join,"No, thank you.",L_NoThx;
 
 L_Join:
+	// Can't be Baby/High Novice, MUST be normal Novice
 	if (Class != JOB_NOVICE || JobLevel < 9) goto L_Failed1;
 	mes "[Phoenix]";
 	mes "Very well... I accept you";
@@ -101,6 +102,7 @@ L_NoThx:
 	close;
 
 L_Failed1:
+	// Can't be Baby/High Novice, MUST be normal Novice
 	if (Class != JOB_NOVICE) goto L_Failed2;
 	mes "[Phoenix]";
 	mes "How unfortunate!";

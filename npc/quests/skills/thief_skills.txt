@@ -25,7 +25,7 @@
 moc_prydb1.gat,154,128,4	script	Alcouskou	118,{
 	mes "[Alcouskou]";
 	if (callfunc("Is_Thief_Class")) goto L_Start;
-	if (Class == JOB_NOVICE) goto L_Novice;
+	if (Basejob == JOB_NOVICE) goto L_Novice;
 
 L_Other:
 	mes "Your kind isn't welcome here.";
@@ -74,7 +74,7 @@ M_Menu:
 		next;
 		mes "[Alcouskou]";
 		mes "In order to learn this skill you will need to gather ^5555FF5 Fine Grit^000000 and a ^FF3355'Leather Bag of Infinity'^000000.";
-		if (Class == JOB_THIEF) mes "You will also need a job level of at least ^5555FF25^000000.";
+		if (Basejob == JOB_THIEF) mes "You will also need a job level of at least ^5555FF25^000000.";
 		next;
 		mes "[Alcouskou]";
 		mes "You can find the Leather Bag of Infinity by talking to a merchant by the name of ^5533FFRuRumuni^000000.";
@@ -117,7 +117,7 @@ M_Menu:
 		next;
 		mes "[Alcouskou]";
 		mes "Think of it as the first part of your training.";
-		if (Class == JOB_THIEF) mes "If you are a Thief, you will also need to have a job level of at least ^5555FF35^000000.";
+		if (Basejob == JOB_THIEF) mes "If you are a Thief, you will also need to have a job level of at least ^5555FF35^000000.";
 		set BACKSLIDE, 1;
 		goto M_Menu;
 	M_Find:
@@ -173,7 +173,7 @@ M_Menu:
 
 L_Sand:
 	if (countitem(7041)<5 || countitem(7042)<1) goto L_NotRdy1;
-	if (Class == JOB_THIEF && joblevel<25) goto L_LowLvl1;
+	if (Bsaejob == JOB_THIEF && Joblevel < 25) goto L_LowLvl1;
 	mes "Alright, you've got all the items.  Now its time to learn.... the... ultimate.... attack.... Sand Attack!!!";
 	next;
 	mes "[Alcouskou]";
@@ -220,7 +220,7 @@ L_Sand:
 
 L_Back:
 	if (countitem(940)<20) goto L_NotRdy2;
-	if (Class == Thief && joblevel<35) goto L_LowLvl2;
+	if (Basejob == JOB_THIEF && Joblevel < 35) goto L_LowLvl2;
 	mes "Great, you have the grasshopper legs.  While you were collecting them I'm sure you picked up on many of the characteristics of grasshoppers.";
 	next;
 	mes "[Alcouskou]";

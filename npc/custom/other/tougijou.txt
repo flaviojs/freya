@@ -5,7 +5,7 @@
 // Script translated from japanese to english [harp]
 //===================================
 gonryun.gat,180,117,0	script	Song Mu Do	85,{
-	if (Class == 0) goto Lnovice;
+	if (Basejob == JOB_NOVICE) goto Lnovice;
 	if (event_tougijou == 1) goto LStart2;
 	mes "[Song Mu Do]";
 	mes "Sigh~ It'd be nice if someone interesting would come by.";
