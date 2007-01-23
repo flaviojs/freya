@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/22/07
+	* Added: Pre-eAthena jAthena Changelog [Tsuyuki]
+	* Added: eAthena RC4 Changelog -> Freya/doc/oldchanges/eathena_rc4_changelog.txt [Tsuyuki]
 	* Changed: Split Changelog into three files: pFreya Changelog, Old Freya Changelog, Main Changelog [oreo/Tsuyuki]
 	* Added: Script To-Do List: Freya/npc/to-do.txt [Tsuyuki]
 	* Fixed: Typo in one of Imp's Fire Bolt skills [Tsuyuki]

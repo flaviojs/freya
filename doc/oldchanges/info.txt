@@ -1,0 +1,5 @@
+This is a compilation of all the changes applied to what is now Freya, over the last 4 years:
+
+Athena (jAthena) 1162 -> eAthena RC4 -> Old Freya -> Project Freya -> Freya
+
+Initial release date: Athena Dev. v2.1.1       Released: Middle July, 2003
