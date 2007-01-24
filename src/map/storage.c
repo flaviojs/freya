@@ -173,7 +173,7 @@ int storage_additem(struct map_session_data *sd, struct storage *stor, struct it
 	nullpo_retr(1, data = itemdb_search(item_data->nameid));
 
 	if (!itemdb_canstore(item_data->nameid, sd->GM_level)) { // check if item can be stored in storage
-		clif_displaymessage (sd->fd, msg_txt(264));
+		clif_displaymessage (sd->fd, msg_txt(286));
 		return 1;
 	}
 
@@ -455,7 +455,7 @@ int guild_storage_additem(struct map_session_data *sd,struct guild_storage *stor
 	nullpo_retr(1, data = itemdb_search(item_data->nameid));
 
 	if (!itemdb_canguildstore(item_data->nameid, sd->GM_level)) { // check if item can be stored in guild storage
-		clif_displaymessage (sd->fd, msg_txt(264));
+		clif_displaymessage (sd->fd, msg_txt(286));
 		return 1;
 	}
 

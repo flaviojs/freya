@@ -3169,7 +3169,7 @@ void pc_dropitem(struct map_session_data *sd, int n, int amount) {
 	// The client does not likes being silently ignored, so we send it a del of 0 qty
 	if (!pc_candrop(sd, sd->status.inventory[n].nameid)) {
 		clif_delitem(sd,n,0);
-		clif_displaymessage (sd->fd, msg_txt(263));
+		clif_displaymessage (sd->fd, msg_txt(285));
 		return;
 	}
 
@@ -3366,7 +3366,7 @@ int pc_cart_additem(struct map_session_data *sd, struct item *item_data, int amo
 	data = itemdb_search(item_data->nameid);
 
 	if(!itemdb_cancartstore(item_data->nameid, sd->GM_level)) {	// Check item trade restrictions [Skotlex]
-		clif_displaymessage (sd->fd, msg_txt(264));
+		clif_displaymessage (sd->fd, msg_txt(286));
 		return 1;
 	}
 

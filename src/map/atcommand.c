@@ -1549,6 +1549,11 @@ void set_default_msg() {
 
 	add_msg(283, "Shuffle done!");
 
+	add_msg(284, "This item cannot be traded.");
+	add_msg(285, "This item cannot be dropped.");
+	add_msg(286, "This item cannot be stored.");
+	add_msg(287, "Some of your items cannot be vended and were removed from the shop.");
+
 	// Messages of others (not for GM commands)
 	add_msg(500, "It's night...");
 	add_msg(501, "Your account time limit is: %d-%m-%Y %H:%M:%S.");

@@ -309,7 +309,7 @@ void vending_openvending(struct map_session_data *sd, unsigned short len, char *
 				FREE(shop_title);
 				return;
 			}
-			clif_displaymessage (sd->fd, msg_txt(266));
+			clif_displaymessage (sd->fd, msg_txt(287));
 		}
 		sd->vender_id = sd->bl.id;
 		sd->vend_num = i;

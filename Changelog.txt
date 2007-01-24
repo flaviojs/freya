@@ -4,6 +4,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+01/24/07
+	* Fixed: Rogue card set now removes Intimidate skill if user is a Rogue [Tsuyuki]
+	* Fixed: Some mismatched message displays for item restrictions [Tsuyuki]
+
 01/23/07
 	* Updated: Modifications to the rebirth script system: [Tsuyuki]
 	 - 3.3 Organized script, and added most of the official dialogue from Aegis
