@@ -5206,26 +5206,57 @@ void clif_item_identified(struct map_session_data *sd, short idx, unsigned char 
 Û‚Ìƒpï¿½Pï¿½bï¿½gï¿½ï¿½ï¿½í‚©ï¿½ï¿½È‚ï¿½ï¿½Ì‚Å“ï¿½ï¿½ì‚µï¿½Ü‚ï¿½ï¿½ï¿½
  *------------------------------------------
  */
-void clif_item_repair_list(struct map_session_data *sd)
-{
-	//nullpo_retv(sd); //checked before to call function
+void clif_item_repair_list(struct map_session_data *sd,struct map_session_data *dstsd) {
 	int i, c;
 	c = 0;
+	int nameid;
+	
+	nullpo_retv(sd);
+	nullpo_retv(dstsd);
 
+	WPACKETW(0) = 0x1fc;
 	for(i = 0; i < MAX_INVENTORY; i++) {
-		if (sd->status.inventory[i].nameid > 0 && sd->status.inventory[i].attribute == 1) {
-			WPACKETW(c * 2 + 4) = i + 2;
+		if ((nameid = dstsd->status.inventory[i].nameid) > 0 && dstsd->status.inventory[i].attribute == 1) {
+			WPACKETW(2 + c * 13 + 2) = i;
+			WPACKETW(2 + c * 13 + 4) = nameid;
+			WPACKETW(2 + c * 13 + 6) = sd->status.char_id;
+			WPACKETW(2 + c * 13 + 10)= dstsd->status.char_id;
+			WPACKETW(2 + c * 13 + 14)= c;
 			c++;
 		}
 	}
 	if (c > 0) {
-		//WPACKETW(0) = 0x177; // temporarily use same packet as clif_item_identify
-		WPACKETW(0) = 0x1fc;
-		WPACKETW(2) = c * 2 + 4;
+		WPACKETW(2) = c * 13 + 4;
 		SENDPACKET(sd->fd, WPACKETW(2));
+		sd->state.produce_flag = 1;
+		sd->repair_target = dstsd;
+	} else {
+		clif_skill_fail(sd,BS_REPAIRWEAPON,0,0);
 	}
 
 	return;
+}
+
+int clif_item_repaireffect(struct map_session_data *sd, int nameid, int flag){
+	int view;
+
+	nullpo_retr(0, sd);
+
+	WPACKETW(0) = 0x1fe;
+	if((view = itemdb_viewid(nameid)) > 0)
+		WPACKETW(2) = view;
+	else
+		WPACKETW(2) = nameid;
+	WPACKETB(4) = flag;
+	SENDPACKET(sd->fd,packet_len_table[0x1fe]);
+	
+	if(sd->repair_target != NULL && sd != sd->repair_target && flag == 0) {	// ¬Œ÷‚µ‚½‚ç‘ŠŽè‚É‚à’Ê’m
+		if(sd->repair_target)
+			clif_item_repaireffect(sd->repair_target,nameid,flag);
+		sd->repair_target = NULL;
+	}
+
+	return 0;
 }
 
 /*==========================================
@@ -12462,6 +12493,28 @@ void clif_parse_Ranking(int fd) { //0x217, 0x218, 0x225, 0x237
 }
 
 /*==========================================
+ * 
+ *------------------------------------------
+ */
+void clif_parse_RepairItem(int fd, struct map_session_data *sd) {
+	int idx, itemid = 0;
+
+	nullpo_retv(sd);
+
+	idx = RFIFOW(fd,2);
+	if (idx != 0xFFFF && (idx < 0 || idx >= MAX_INVENTORY)) // invalid range
+		return;
+
+	sd->state.produce_flag = 0;
+	if (idx != 0xFFFF && (itemid = pc_item_repair(sd, idx)) > 0)
+		clif_item_repaireffect(sd,itemid,0);
+	else
+		clif_item_repaireffect(sd,itemid,1);
+
+	return;
+}
+
+/*==========================================
  * just to avoid disconnection of the player
  *------------------------------------------
  */
@@ -12591,7 +12644,7 @@ static void (*clif_parse_func_table[MAX_PACKET_VERSION][MAX_PACKET_DB])() = {
 	clif_parse_CreateParty2, NULL, NULL, NULL, NULL, clif_parse_sn_explosionspirits, NULL, NULL,
 	// 1f0
 	NULL, NULL, NULL, NULL, NULL, NULL, NULL, clif_parse_AdoptReply,
-	NULL, clif_parse_ReqAdopt, NULL, NULL, NULL, NULL, NULL, NULL,
+	NULL, clif_parse_ReqAdopt, NULL, NULL, NULL, clif_parse_RepairItem, NULL, NULL,
 
 	// 200
 	NULL, NULL, clif_parse_FriendAddRequest, clif_parse_FriendDeleteRequest, NULL, NULL, NULL, NULL,

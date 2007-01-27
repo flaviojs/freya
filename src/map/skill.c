@@ -4679,8 +4679,8 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		break;
 
 	case BS_REPAIRWEAPON:
-		if(sd)
-			clif_item_repair_list(sd);
+		if(sd && dstsd)
+			clif_item_repair_list(sd,dstsd);
 		break;
 
 	case MC_VENDING:

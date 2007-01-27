@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+01/27/07
+	* Fixed: BS_REPAIRWEAPON [Latios]
+
 01/24/07
 	* Fixed: Rogue card set now removes Intimidate skill if user is a Rogue [Tsuyuki]
 	* Fixed: Some mismatched message displays for item restrictions [Tsuyuki]

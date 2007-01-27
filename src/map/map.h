@@ -420,7 +420,7 @@ struct map_session_data {
 	char fakename[24]; // fakename by van84 took from Ea
 	short viewsize; // for tiny/large types
 
-	//struct map_session_data *repair_target;
+	struct map_session_data *repair_target;
 
 #ifdef USE_SQL
 	char mail_counter; // mail counter for mail system [Valaris] (from 0 to 5)
