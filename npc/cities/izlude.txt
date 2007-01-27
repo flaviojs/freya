@@ -857,7 +857,7 @@ izlude.gat,171,185,3	script	Honeymoon Helper#Izlude I	71,{
 			close;
 
 		s_Go:
-			if (getpartnerid != 0) goto MarriedHappily;
+			if (getpartnerid(0) != 0) goto MarriedHappily;
 				mes "[Marry Happy]";
 				mes "Uh oh, I'm sorry.";
 				mes "You can't go there if you're not married...";
