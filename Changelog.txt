@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/27/07
+	* Fixed: Grand Cross SP regen [Latios]
 	* Fixed: Guillotine SP regen [Latios]
 	* Fixed: a NPC in Izlude [Latios]
 	* Fixed: coma should not affect MVPs [Latios]
