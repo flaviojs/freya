@@ -2515,6 +2515,10 @@ void pc_bonus2(struct map_session_data *sd, int type, int type2, int val) {
 			sd->sp_drain_value_ += type2;
 		sd->sp_drain_type = val;
 		break;
+	case SP_SP_GAIN_VALUE_RACE:
+		if(sd->state.lr_flag != 2)
+			sd->sp_gain_value_race[type2] += val;
+		break;
 	case SP_WEAPON_COMA_ELE:
 		if(sd->state.lr_flag != 2)
 			sd->weapon_coma_ele[type2] += val;
@@ -2524,15 +2528,13 @@ void pc_bonus2(struct map_session_data *sd, int type, int type2, int val) {
 			sd->weapon_coma_race[type2] += val;
 		break;
 	case SP_GET_ZENY_NUM:
-		if(sd->state.lr_flag != 2 && sd->get_zeny_rate < val)
-		{
+		if(sd->state.lr_flag != 2 && sd->get_zeny_rate < val) {
 			sd->get_zeny_rate = val;
 			sd->get_zeny_num = type2;
 		}
 		break;
 	case SP_ADD_GET_ZENY_NUM:
-		if(sd->state.lr_flag != 2)
-		{
+		if(sd->state.lr_flag != 2) {
 			sd->get_zeny_rate += val;
 			sd->get_zeny_num += type2;
 		}

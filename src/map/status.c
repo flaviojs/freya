@@ -416,6 +416,7 @@ int status_calc_pc(struct map_session_data* sd, int first)
 	memset(sd->addeff2,0,sizeof(sd->addeff2));
 	memset(sd->reseff,0,sizeof(sd->reseff));
 	memset(sd->sp_gain_race,0,sizeof(sd->sp_gain_race));
+	memset(sd->sp_gain_value_race,0,sizeof(sd->sp_gain_value_race));
 	memset(sd->expaddrace,0,sizeof(sd->expaddrace));
 	memset(&sd->special_state,0,sizeof(sd->special_state));
 	memset(sd->weapon_coma_ele,0,sizeof(sd->weapon_coma_ele));

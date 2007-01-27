@@ -329,6 +329,7 @@ struct map_session_data {
 	short hp_drain_rate_, hp_drain_per_, sp_drain_rate_, sp_drain_per_;
 	short hp_drain_value, sp_drain_value, hp_drain_value_, sp_drain_value_;
 	short sp_gain_race[12];
+	short sp_gain_value_race[12];
 	int expaddrace[12];
 	int short_weapon_damage_return, long_weapon_damage_return;
 	int weapon_coma_ele[10], weapon_coma_race[12];
@@ -762,7 +763,7 @@ enum {
 	SP_SP_GAIN_RACE = 2031, SP_INTRAVISION, SP_NOKNOCKBACK,
 
 	SP_ADD_MONSTER_DROP_ITEMGROUP = 2039, SP_SP_LOSS_RATE = 2040,
-	SP_SP_VANISH_RATE = 2042
+	SP_SP_VANISH_RATE = 2042, SP_SP_GAIN_VALUE_RACE
 };
 
 enum {

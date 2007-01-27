@@ -3222,12 +3222,13 @@ int battle_weapon_attack(struct block_list *src, struct block_list *target, unsi
 		}
 		if (sd) {
 			if (wd.flag&BF_WEAPON && src != target && (wd.damage > 0 || wd.damage2 > 0)) {
-				if (!battle_config.left_cardfix_to_right) { // “ñ“—¬¶ŽèƒJ[ƒh‚Ì‹zŽûŒnŒø‰Ê‚ð‰EŽè‚É’Ç‰Á‚µ‚È‚¢ê‡
+				if (!battle_config.left_cardfix_to_right) {
 					hp += battle_calc_drain(wd.damage, sd->hp_drain_rate, sd->hp_drain_per, sd->hp_drain_value);
 					hp += battle_calc_drain(wd.damage2, sd->hp_drain_rate_, sd->hp_drain_per_, sd->hp_drain_value_);
 					sp += battle_calc_drain(wd.damage, sd->sp_drain_rate, sd->sp_drain_per, sd->sp_drain_value);
 					sp += battle_calc_drain(wd.damage2, sd->sp_drain_rate_, sd->sp_drain_per_, sd->sp_drain_value_);
-				} else { // “ñ“—¬¶ŽèƒJ[ƒh‚Ì‹zŽûŒnŒø‰Ê‚ð‰EŽè‚É’Ç‰Á‚·‚éê‡
+					sp += sd->sp_gain_value_race[race];
+				} else {
 					int hp_drain_rate = sd->hp_drain_rate + sd->hp_drain_rate_;
 					int hp_drain_per = sd->hp_drain_per + sd->hp_drain_per_;
 					int hp_drain_value = sd->hp_drain_value + sd->hp_drain_value_;
@@ -3236,6 +3237,7 @@ int battle_weapon_attack(struct block_list *src, struct block_list *target, unsi
 					int sp_drain_value = sd->sp_drain_value + sd->sp_drain_value_;
 					hp += battle_calc_drain(wd.damage, hp_drain_rate, hp_drain_per, hp_drain_value);
 					sp += battle_calc_drain(wd.damage, sp_drain_rate, sp_drain_per, sp_drain_value);
+					sp += sd->sp_gain_value_race[race];
 				}
 				if (hp || sp)
 					pc_heal(sd, hp, sp);

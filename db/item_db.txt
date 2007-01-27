@@ -640,7 +640,7 @@
 1366,Light_Epsilon,Light Epsilon,4,20,0,2300,180,,1,0,279714,2,34,4,44,7,{},{ bonus bAtkEle,6; skill 28,3; bonus2 bAddRace,6,3; }
 1367,Slaughter,Slaughter,4,20,0,2500,120,,1,0,279714,2,34,4,44,7,{},{ bonus bIgnoreDefRace,2; bonus2 bWeaponComaRace,2,50; }
 1368,Tomahawk,Tomahawk,4,20,0,2500,165,,1,0,279714,2,34,4,44,7,{},{ bonus bAtkEle,4; skill 337,1; }
-1369,Guillotine,Guillotine,4,20,0,3000,215,,1,0,279714,2,34,4,44,7,{},{ bonus2 bWeaponComaRace,7,30; bonus2 bSPDrainRate,5,2; }
+1369,Guillotine,Guillotine,4,20,0,3000,215,,1,0,279714,2,34,4,44,7,{},{ bonus2 bWeaponComaRace,7,30; bonus2 bSPGainRace,7,20; bonus2 bSPGainValueRace,7,2; }
 
 1370,Unknown_Item,Unknown Item,4,20,,6000,10,,1,0,279714,2,34,4,80,7,{},{ bonus bAspdAddRate,-40; bonus bUseSPrate,100; if(readparam(bStr)<95) end; bonus bAtk,340; bonus2 bAddEff,2,3000; bonus bBreakArmorRate,100; }
 1371,Unknown_Item,Unknown Item,4,20,,6000,10,,1,1,279714,2,34,4,80,7,{},{ bonus bAspdAddRate,-40; bonus bUseSPrate,100; if(readparam(bStr)<95) end; bonus bAtk,340; bonus2 bAddEff,2,3000; bonus bBreakArmorRate,100;}

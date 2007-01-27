@@ -296,6 +296,7 @@ bNoKnockBack	2033
 bAddMonsterDropItemGroup	2039
 bSPLossRate 2040
 bSPVanishRate	2042
+bSPGainValueRace	2043
 
 Eff_Stone	0
 Eff_Freeze	1
