@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/27/07
+	* Fixed: Corrected Strouf/Merman's job exp rewards [Tsuyuki]
 	* Fixed: Cart Termination / High Speed Cart Ram should ignore Auto Guard [Latios]
 	* Fixed: Lex Aeterna should reflect both part of Soul Breaker [Latios]
 	* Fixed: little fixes to Cart Termination and Cart Revolution formula [Latios]
