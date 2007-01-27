@@ -445,7 +445,7 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 				return 0;
 			}
 
-			if(tsc_data[SC_AUTOGUARD].timer != -1) {
+			if(tsc_data[SC_AUTOGUARD].timer != -1 && skill_num != WS_CARTTERMINATION) {
 				if(rand() % 100 < tsc_data[SC_AUTOGUARD].val2) {
 					clif_skill_nodamage(bl, bl, CR_AUTOGUARD, tsc_data[SC_AUTOGUARD].val1, 1);
 					// different delay depending on skill level [celest]
@@ -478,7 +478,10 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 		
 		if (tsc_data[SC_AETERNA].timer != -1) { // レックスエーテルナ
 			damage <<= 1; //double damage
-			status_change_end(bl, SC_AETERNA, -1);
+
+			// Lex Aeterna should reflect both part of Soul Breaker
+			if(skill_num != ASC_BREAKER || !(flag&BF_WEAPON))
+				status_change_end(bl, SC_AETERNA, -1);
 		}
 				
 		//属性場のダメージ増加
@@ -1133,11 +1136,12 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 				skillratio += 50;	// DAMAGE: 150% + 1% every 1% weight
 				s_ele = 0;
 				s_ele_ = 0;
-				if(sd && sd->cart_max_weight > 0 && sd->cart_weight > 0) {
+				if(sd && sd->cart_weight > 0) {
 					// Exploit Fix (Can't modify damage more than max cart weight) [Tsuyuki]
-					if(sd->cart_weight > sd->cart_max_weight)
-						sd->cart_weight = sd->cart_max_weight;
-					skillratio += 100 * sd->cart_weight / sd->cart_max_weight;
+					if(sd->cart_weight > battle_config.max_cart_weight)
+						skillratio += 100;	// * battle_config.max_cart_weight / battle_config.max_cart_weight => always 1
+					else
+						skillratio += 100 * sd->cart_weight / battle_config.max_cart_weight;
 				}
 				break;
 			case MC_MAMMONITE:
@@ -1595,13 +1599,15 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 			case WS_CARTTERMINATION:
 				flag.cardfix = 0;
 				// FORMULA: (damage * (cart_weight / (10 * (16 - skill_lv)))) / 100
-				if(sd && sd->cart_max_weight > 0 && sd->cart_weight > 0) {
+				if(sd && sd->cart_weight > 0) {
 					// Exploit Fix (Can't modify damage more than max cart weight) [Tsuyuki]
-					if(sd->cart_weight > sd->cart_max_weight)
-						sd->cart_weight = sd->cart_max_weight;
-					skillratio += sd->cart_weight / (10 * (16 - skill_lv)) - 100;
-				} else
-					skillratio += battle_config.max_cart_weight / (10 * (16 - skill_lv)) - 100;
+					if(sd->cart_weight > battle_config.max_cart_weight)
+						skillratio += battle_config.max_cart_weight / (10 * (16 - skill_lv)) - 100;
+					else
+						skillratio += sd->cart_weight / (10 * (16 - skill_lv)) - 100;
+				} else {
+					skillratio += - 100;
+				}
 				break;
 
 			/************ TRANSCENDENT CLASS SKILLS [2-2] ************/
