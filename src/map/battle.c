@@ -3158,9 +3158,9 @@ int battle_weapon_attack(struct block_list *src, struct block_list *target, unsi
 		if(target->prev != NULL &&
 			(target->type != BL_PC || (target->type == BL_PC && !pc_isdead((struct map_session_data *)target)))) {
 			if(sd && (wd.damage > 0 || wd.damage2 > 0)) {
-					if (sd->weapon_coma_ele[ele] > 0 && rand()%10000 < sd->weapon_coma_ele[ele])
+					if (sd->weapon_coma_ele[ele] > 0 && rand()%10000 < sd->weapon_coma_ele[ele] && !(status_get_mode(target) & 0x20))
 						battle_damage(src,target,status_get_max_hp(target),1);
-					if (sd->weapon_coma_race[race] > 0 && rand()%10000 < sd->weapon_coma_race[race])
+					if (sd->weapon_coma_race[race] > 0 && rand()%10000 < sd->weapon_coma_race[race] && !(status_get_mode(target) & 0x20))
 						battle_damage(src,target,status_get_max_hp(target),1);
 					if (status_get_mode(target) & 0x20) {
 						if(sd->weapon_coma_race[10] > 0 && rand()%10000 < sd->weapon_coma_race[10])

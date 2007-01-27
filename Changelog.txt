@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/27/07
+	* Fixed: coma should not affect MVPs [Latios]
 	* Fixed: BS_REPAIRWEAPON [Latios]
 
 01/24/07
