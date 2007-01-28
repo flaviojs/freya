@@ -3450,6 +3450,9 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 				val2 = 2;
 			else
 				val2 = 1;
+			// Kaite and Assumptio do not stack
+			if (sc_data[SC_ASSUMPTIO].timer != -1)
+				status_change_end(bl, SC_ASSUMPTIO, -1);
 			break;
 		case SC_SWOO:
 			if(mode&0x20 && !(flag&1))
@@ -4235,8 +4238,12 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			break;
 
 		case SC_ASSUMPTIO:
+			// Assumptio and Kyrie do not stack
 			if(sc_data[SC_KYRIE].timer != -1)
 				status_change_end(bl, SC_KYRIE, -1);
+			// Assumptio and Kaite do not stack
+			if (sc_data[SC_KAITE].timer != -1)
+				status_change_end(bl, SC_KAITE, -1);
 			*opt3 |= 2048;
 			break;
 

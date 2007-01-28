@@ -4838,20 +4838,15 @@ ATCOMMAND_FUNC(joblevelup) {
 
 	s_class = pc_calc_base_job(sd->status.class);
 
-	// Standard classes can go to job 50
-	up_level = 50;
 	// Novice can go to job 10
 	if (s_class.job == 0)
 		up_level -= 40;
 	// Super Novice can go to job 99
 	else if (s_class.job == 23)
 		up_level += 49;
-	// Gunslinger/Ninja can go to job 70
-	else if (sd->status.class == 24 || sd->status.class == 25)
-		up_level += 20;
-	// Advanced classes can go to job 70
-	else if (sd->status.class > 4007 && sd->status.class < 4023)
-		up_level += 20;
+	// Standard classes can go to job 50
+	else
+		up_level = 50;
 
 	if (level > 0) {
 		if (sd->status.job_level == up_level) {

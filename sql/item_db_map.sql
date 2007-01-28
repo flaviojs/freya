@@ -665,7 +665,7 @@ INSERT INTO `item_db` VALUES (1365, 'Sabbath', 'Sabbath', 4, 20, 0, 2300, 120, 0
 INSERT INTO `item_db` VALUES (1366, 'Light_Epsilon', 'Light Epsilon', 4, 20, 0, 2300, 180, 0, 1, 0, 279714, 2, 34, 4, 44, 7, NULL, 'bonus bAtkEle,6; skill 28,3; bonus2 bAddRace,6,3;');
 INSERT INTO `item_db` VALUES (1367, 'Slaughter', 'Slaughter', 4, 20, 0, 2500, 120, 0, 1, 0, 279714, 2, 34, 4, 44, 7, NULL, 'bonus bIgnoreDefRace,2; bonus2 bWeaponComaRace,2,50;');
 INSERT INTO `item_db` VALUES (1368, 'Tomahawk', 'Tomahawk', 4, 20, 0, 2500, 165, 0, 1, 0, 279714, 2, 34, 4, 44, 7, NULL, 'bonus bAtkEle,4; skill 337,1;');
-INSERT INTO `item_db` VALUES (1369, 'Guillotine', 'Guillotine', 4, 20, 0, 3000, 215, 0, 1, 0, 279714, 2, 34, 4, 44, 7, NULL, 'bonus2 bWeaponComaRace,7,30; bonus2 bSPDrainRate,5,2;');
+INSERT INTO `item_db` VALUES (1369, 'Guillotine', 'Guillotine', 4, 20, 0, 3000, 215, 0, 1, 0, 279714, 2, 34, 4, 44, 7, NULL, 'bonus2 bWeaponComaRace,7,30; bonus2 bSPGainRace,7,20; bonus2 bSPGainValueRace,7,2;');
 
 INSERT INTO `item_db` VALUES (1370, 'Unknown_Item', 'Unknown Item', 4, 20, 0, 6000, 10, 0, 1, 0, 279714, 2, 34, 4, 80, 7, NULL, 'bonus bAspdAddRate,-40; bonus bUseSPrate,100; if(readparam(bStr)<95) end; bonus bAtk,340; bonus2 bAddEff,2,3000; bonus bBreakArmorRate,100;');
 INSERT INTO `item_db` VALUES (1371, 'Unknown_Item', 'Unknown Item', 4, 20, 0, 6000, 10, 0, 1, 1, 279714, 2, 34, 4, 80, 7, NULL, 'bonus bAspdAddRate,-40; bonus bUseSPrate,100; if(readparam(bStr)<95) end; bonus bAtk,340; bonus2 bAddEff,2,3000; bonus bBreakArmorRate,100;');
@@ -747,7 +747,7 @@ INSERT INTO `item_db` VALUES (1524, 'Golden_Mace', 'Golden Mace', 4, 20, 0, 800,
 INSERT INTO `item_db` VALUES (1525, 'Long_Mace', 'Long Mace', 4, 20, 0, 800, 135, 0, 3, 0, 33040, 2, 2, 4, 40, 8, NULL, 'bonus bLongAtkDef,10;');
 INSERT INTO `item_db` VALUES (1526, 'Slash', 'Slash', 4, 20, 0, 1000, 145, 0, 1, 0, 33040, 2, 2, 4, 40, 8, NULL, 'bonus2 bAddRace,1,15; bonus2 bWeaponComaRace,1,50;');
 INSERT INTO `item_db` VALUES (1527, 'Quadrille', 'Quadrille', 4, 20, 0, 900, 165, 0, 1, 0, 33040, 2, 2, 4, 40, 8, NULL, 'bonus2 bAddRace,1,10; bonus2 bAddRace,7,10; bonus2 bAddEle,2,10;');
-INSERT INTO `item_db` VALUES (1528, 'Grand_Cross', 'Grand Cross', 4, 20, 0, 1500, 140, 0, 1, 0, 33040, 2, 2, 4, 40, 8, NULL, 'bonus bAtkEle,6; bonus4 bAutoSpell,77,3,2500,1; bonus2 bHPDrainRate,100,1;');
+INSERT INTO `item_db` VALUES (1528, 'Grand_Cross', 'Grand Cross', 4, 20, 0, 1500, 140, 0, 1, 0, 33040, 2, 2, 4, 40, 8, NULL, 'bonus bAtkEle,6; bonus4 bAutoSpell,77,3,2500,1; bonus2 bSPGainRace,1,3; bonus2 bSPGainValueRace,1,1;');
 INSERT INTO `item_db` VALUES (1529, 'Iron_Driver', 'Iron Driver', 4, 20, 0, 3000, 155, 0, 1, 0, 33024, 2, 2, 3, 78, 8, NULL, NULL);
 INSERT INTO `item_db` VALUES (1530, 'Mjolnir', 'Mjolnir', 4, 20, 0, 6000, 250, 0, 1, 0, 279714, 2, 2, 4, 95, 8, NULL, 'bonus bAtkEle,4; bonus bDex,40; bonus bStr,15; bonus bAspdRate,30;');
 INSERT INTO `item_db` VALUES (1531, 'Wrench', 'Wrench', 4, 20, 0, 2500, 115, 0, 1, 0, 33040, 2, 2, 3, 55, 8, NULL, 'bonus2 bAddEff,Eff_Blind,100; bonus2 bAddEff,Eff_Stan,100; bonus2 bAddEff,Eff_Poison,100; bonus2 bAddEff,Eff_Freeze,100;');
