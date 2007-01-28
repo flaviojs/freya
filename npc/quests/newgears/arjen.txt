@@ -14,12 +14,14 @@
 //= 1.3 Fixed possible exploit [Lupus]
 //============================================================
 
-//86
+// 86
 geffen.gat,128,148,6	script	Arjen	807,{
+
 	mes "[Arjen]";
 	mes "What item information do you require?";
 	next;
 	menu "X-Shaped Hairpin.",M_1,"Bandage",M_2,"Flower Hairpin.",M_3,"Quit.",M_EXIT;
+
 M_1:
 	mes "[Arjen]";
 	mes "Hyaaaaaaaa!";
@@ -34,7 +36,8 @@ M_1:
 	next;
 	menu "Make me the hairpin.",-,"What are the requirements?",M_REQ1,"No, thanks.",M_EXIT;
 
-	If ((countitem(10011) < 1) || (countitem(7220) < 400)) GOTO L_NOITEM1;//Items: Stellar Hairpin, Ectoplasm,
+	// Items: Stellar Hairpin, Ectoplasm
+	if ((countitem(10011) < 1) || (countitem(7220) < 400)) goto L_NOITEM1;
 	mes "[Arjen]";
 	mes "Yes, that's just what I require!";
 	mes "Nayayayaaaaaa!";
@@ -77,7 +80,8 @@ M_2:
 	next;
 	menu "Yes, please make me one!",-,"What are the requirements?",M_REQ2,"No, thanks.",M_EXIT;
 
-	If ((countitem(930) < 500) || (countitem(970) < 1)) GOTO L_NOITEM2;//Items: Rotten Bandage, Alcohol,
+	//Items: Rotten Bandage, Alcohol
+	if ((countitem(930) < 500) || (countitem(970) < 1)) goto L_NOITEM2;
 	mes "[Arjen]";
 	mes "Wow! You have the stuff I need! Thanks!";
 	mes "Lemme do a swap, your stuff for the bandage";
@@ -129,7 +133,8 @@ M_REQ3:
 	next;
 	menu "Yes.",-,"No.",M_EXIT;
 
-	If ((countitem(2269) < 1) || (countitem(999) < 10) || (Zeny < 20000)) GOTO L_NOITEM3;//Items: Romantic Flower, Steel,
+//Items: Romantic Flower, Steel
+	if ((countitem(2269) < 1) || (countitem(999) < 10) || (Zeny < 20000)) goto L_NOITEM3;
 	mes "[Arjen]";
 	mes "Thanks!";
 	delitem 2269,1;//Items: Romantic Flower,
