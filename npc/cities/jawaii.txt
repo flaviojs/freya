@@ -164,7 +164,7 @@ jawaii.gat,112,173,7	script	Attendant#Villa Suite	93,{
 	mes "What do you think?";
 	next;
 	menu "Use it",-,"Cancel",s_Cancel;
-			if (Zeny <= 999) L_LESS;
+			if (Zeny <= 999) goto L_LESS;
 				mes "[Lakers Lania]";
 				mes "Thanks and rest well.";
 				mes "I hope you'll enjoy your trip.";
@@ -172,6 +172,7 @@ jawaii.gat,112,173,7	script	Attendant#Villa Suite	93,{
 				set Zeny,Zeny - 1000;
 				warp "jawaii_in.gat",87,75;
 				end;
+
 			L_LESS:
 				mes "[Lakers Lania]";
 				mes "Oh, you don't have enough zeny for the stay...?";
