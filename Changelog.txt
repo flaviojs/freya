@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+01/28/07
+	* Removed: @happyhappyjoyjoy and @happyhappyjoyjoymap in atcommand.h [Latios]
+
 01/27/07
 	* Removed: @command happyhappyjoyjoy and happyhappyjoyjoymap [Tsuyuki]
 	* Updated: Blacksmith Job Quest -> Moved to Einbroch/New fixes (Thanks to keVn) [Tsuyuki]

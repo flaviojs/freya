@@ -275,8 +275,6 @@ enum AtCommandType {
 	AtCommand_WhoZenyMap,
 	AtCommand_WhoHas,
 	AtCommand_WhoHasMap,
-	AtCommand_HappyHappyJoyJoy,
-	AtCommand_HappyHappyJoyJoyMap,
 	AtCommand_Refresh,
 	AtCommand_PetId,
 	AtCommand_Identify,
