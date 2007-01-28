@@ -90,8 +90,6 @@ ATCOMMAND_FUNC(whozeny);
 ATCOMMAND_FUNC(whozenymap);
 ATCOMMAND_FUNC(whohas);
 ATCOMMAND_FUNC(whohasmap);
-ATCOMMAND_FUNC(happyhappyjoyjoy);
-ATCOMMAND_FUNC(happyhappyjoyjoymap);
 ATCOMMAND_FUNC(save);
 ATCOMMAND_FUNC(load);
 ATCOMMAND_FUNC(charload);
@@ -686,8 +684,6 @@ static struct AtCommandInfo {
 	{ AtCommand_WhoZenyMap,            "@whozenymap",           20, atcommand_whozenymap },
 	{ AtCommand_WhoHas,                "@whohas",               20, atcommand_whohas },
 	{ AtCommand_WhoHasMap,             "@whohasmap",            20, atcommand_whohasmap },
-	{ AtCommand_HappyHappyJoyJoy,      "@happyhappyjoyjoy",     40, atcommand_happyhappyjoyjoy },
-	{ AtCommand_HappyHappyJoyJoyMap,   "@happyhappyjoyjoymap",  40, atcommand_happyhappyjoyjoymap },
 	{ AtCommand_Refresh,               "@refresh",              40, atcommand_refresh }, /* It seems authorize to xp without die (exploit)*/
 	{ AtCommand_PetId,                 "@petid",                40, atcommand_petid },
 	{ AtCommand_Identify,              "@identify",             40, atcommand_identify },
@@ -2968,78 +2964,6 @@ ATCOMMAND_FUNC(whohasmap) {
 		sprintf(atcmd_output, "1 player has this item on map '%s'.", map[map_id].name);
 	else
 		sprintf(atcmd_output, "%d players have this item on map '%s'.", players, map[map_id].name);
-	clif_displaymessage(fd, atcmd_output);
-
-	return 0;
-}
-
-/*==========================================
- * @happyhappyjoyjoy - Cause random emote on all online players [Valaris]
- *------------------------------------------
- */
-ATCOMMAND_FUNC(happyhappyjoyjoy) {
-	struct map_session_data *pl_sd;
-	int i, e, count;
-
-	count = 0;
-	for (i = 0; i < fd_max; i++) {
-		if (session[i] && (pl_sd = session[i]->session_data) && pl_sd->state.auth) {
-			if (!(pl_sd->status.option & OPTION_HIDE)) { // if GM is hiden, don't display on it
-				while((e = rand() % 48) == 34);
-				clif_emotion(&pl_sd->bl, e);
-				count++;
-			}
-		}
-	}
-
-	if (count == 0)
-		clif_displaymessage(fd, "Emotion icons apply to no player.");
-	else if (count == 1)
-		clif_displaymessage(fd, "Emotion icons apply to 1 player.");
-	else {
-		sprintf(atcmd_output, "Emotion icons apply to %d players.", count);
-		clif_displaymessage(fd, atcmd_output);
-	}
-
-	return 0;
-}
-
-/*==========================================
- * @happyhappyjoyjoymap - Cause random emote on online players of a specifical map
- *------------------------------------------
- */
-ATCOMMAND_FUNC(happyhappyjoyjoymap) {
-	struct map_session_data *pl_sd;
-	int i, e, count;
-	int map_id;
-
-	if (!message || !*message || sscanf(message, "%s", atcmd_mapname) < 1)
-		map_id = sd->bl.m;
-	else {
-		if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
-			strcat(atcmd_mapname, ".gat");
-		if ((map_id = map_mapname2mapid(atcmd_mapname)) < 0) // only from actual map-server
-			map_id = sd->bl.m;
-	}
-
-	count = 0;
-	for (i = 0; i < fd_max; i++) {
-		if (session[i] && (pl_sd = session[i]->session_data) && pl_sd->state.auth &&
-		    pl_sd->bl.m == map_id) {
-			if (!(pl_sd->status.option & OPTION_HIDE)) { // if GM is hiden, don't display on it
-				while((e = rand() % 48) == 34);
-				clif_emotion(&pl_sd->bl, e);
-				count++;
-			}
-		}
-	}
-
-	if (count == 0)
-		sprintf(atcmd_output, "Emotion icons apply to no player on map '%s'.", map[map_id].name);
-	else if (count == 1)
-		sprintf(atcmd_output, "Emotion icons apply to 1 player on map '%s'.", map[map_id].name);
-	else
-		sprintf(atcmd_output, "Emotion icons apply to %d players on map '%s'.", count, map[map_id].name);
 	clif_displaymessage(fd, atcmd_output);
 
 	return 0;

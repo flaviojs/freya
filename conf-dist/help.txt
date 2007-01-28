@@ -381,8 +381,6 @@ key:remote,char,character,marriage
 key:remote,char,character,mass
                  40: 
                  40:--- MASS CONTROL CMD ---
-@joyjoymap         :@happyhappyjoyjoymap/@happyhappymap/@joyjoymap [map] - Makes everyone on a specified map do a random emote
-@joyjoy            :@happyhappyjoyjoy/@happyhappy/@joyjoy - Makes everyone on server do a random emote
 @charloadmap       :@charloadmap/@charreturnmap/@loadmap/@returnmap [map] - Warps all characters from a map to their respawn point.
 @loadall           :@charloadall/@charreturnall/@loadall/@returnall - Warps all characters of the server to their respawn point.
 @speedall          :@charspeedall/@speedall [speed] - Changes speed of all characters of the server. 0 to restore normal speed.

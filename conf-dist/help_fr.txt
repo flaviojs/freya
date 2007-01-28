@@ -386,8 +386,6 @@ key:remote,char,character,personnage,marriage,mariage
 key:remote,char,character,mass,masse,personnage
                  40: 
                  40:--- COMMANDES DE CONTROLE DE MASSE ---
-@joyjoymap         :@happyhappyjoyjoymap/@happyhappymap/@joyjoymap [carte] - Makes everyone on a specified map do a random emote
-@joyjoy            :@happyhappyjoyjoy/@happyhappy/@joyjoy - Makes everyone on server do a random emote
 @charloadmap       :@charloadmap/@charreturnmap/@loadmap/@returnmap [carte] - Warps all characters from a map to their respawn point.
 @loadall           :@charloadall/@charreturnall/@loadall/@returnall - Warps all characters of the server to their respawn point.
 @speedall          :@charspeedall/@speedall [vitesse] - Changes speed of all characters of the server. 0 to restore normal speed.

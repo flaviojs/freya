@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/27/07
+	* Removed: @command happyhappyjoyjoy and happyhappyjoyjoymap [Tsuyuki]
 	* Updated: Blacksmith Job Quest -> Moved to Einbroch/New fixes (Thanks to keVn) [Tsuyuki]
 	* Fixed: Assumptio and Kaite no longer stack [Tsuyuki]
 	* Fixed: Gunslinger/Ninja skill point calculation with @joblvup [Tsuyuki]
