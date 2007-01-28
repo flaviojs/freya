@@ -1,18 +1,19 @@
 //===== Freya Script =========================================
 //= Blacksmith Quest
 //===== By: ==================================================
-//= EREMES THE CANIVALIZER(Aegis)
-//= Translated by: yoshiki.
-//= Converted by: Komurka.
-//= Optimized and further edited by kobra_k88.
+//= EREMES THE CANIVALIZER (Aegis)
+//= Translated by: yoshiki
+//= Converted by: Komurka
+//= Optimized and further edited by kobra_k88
 //= Further bugfixed and tested by Lupus
 //= General__ (1.7)
+//= Converted by keVn moved to Einbroch
 //===== Current Version: =====================================
-//= 1.7
+//= 2.3
 //===== Compatible With: =====================================
-//= Freya (any)
+//= Freya
 //===== Description: =========================================
-//=
+//= Blacksmith Job Change Quest
 //===== Additional Comments: =================================
 //= Changed some npc names to the iRO names. Changed some variable
 //= names and labels. Edited some text.[kobra_k88]
@@ -25,15 +26,21 @@
 //=     to go. [Lupus]
 //= 1.7 fixed typo error on gladius id, and skel bone quantity
 //=     [General__] (from freya's bug report)
+//= 1.8 Converted from eAthena to Freya [keVn]
+//= 1.9 item quantity/ids typos fix
+//= 2.0 Moved the Quest to Einbroch [Poki#3]
+//= 2.1 Changed numbers to constants. [Vicious]
+//= 2.2 Removed Duplicates [Silent]
+//= 2.3 Merged Jfunc, changed job numbers to constants [Lupus]
 //============================================================
 
 
-
 //<=========================================== Blacksmith Altiregen (Job changer)===================================>\\
-geffen_in.gat,110,169,4	script	Guildsman	731,{
+ein_in01.gat,18,28,4	script	Guildsman Altiregen	731,{
+
 	callfunc "F_BlockHigh",JOB_MERCHANT_HIGH,"Merchant High",JOB_WHITESMITH,"White Smith","Blacksmith Altiregen";
 
-	if (BaseJob == 5) goto L_Merc;
+	if (BaseJob == JOB_MERCHANT) goto L_Merc;
 	mes "[Blacksmith Altiregen]";
 	mes "Welcome! We're the masters of the metal, blacksmiths!";
 	mes "Our skills in creating weapons, in a way, is almost a art form!.";
@@ -42,7 +49,50 @@ geffen_in.gat,110,169,4	script	Guildsman	731,{
 	mes "Those weapons, heh, can be sold for quite a profit as well.";
 	next;
 	mes "[Blacksmith Altiregen]";
-	callfunc "Bla_check";
+
+	if (BaseJob == JOB_NOVICE) goto L_Novice;
+	if (BaseJob == JOB_SWORDMAN) goto L_Sword;
+	if (BaseJob == JOB_ACOLYTE) goto L_Acolyte;
+	if (BaseJob == JOB_THIEF) goto L_Thief;
+	if (BaseJob == JOB_MAGE) goto L_Mage;
+	if (BaseJob == JOB_ARCHER) goto L_Archer;
+	if (BaseJob == JOB_BLACKSMITH) goto L_Black;
+
+	mes "Only Merchants can become Blacksmiths.";
+	close;
+
+L_Novice:
+	if(Sex == 0) goto L_FNovice;
+	mes "Hmm, you look like you wish to become a blacksmith! Sorry, but only merchants can be blacksmiths!";
+	close;
+
+L_FNovice:
+	mes "...Hello little lady! If you wish to be a blacksmith, you have to be a merchant first!";
+	close;
+
+L_Sword:
+	mes "Hello! Come here to order a sword? Sorry, but I have some paperwork to do, so I can't forge anything now.";
+	close;
+
+L_Acolyte:
+	mes "Oh! A Holy one...! Do me a favor and bless the sword I'm crafting!";
+	close;
+
+L_Thief:
+	mes "Sorry, but this is more of a office, so there's nothing worth money.  We CAN do knife forges though.";
+	close;
+
+L_Mage:
+	mes "Interested in training? Our guild cannot assist magic users is such matters.";
+	close;
+
+L_Archer:
+	mes "Hmmm, sorry, but we're not hiring anyone that isn't a merchent.";
+	close;
+
+L_Black:
+	mes "Hey! Been a while, running a errand for Christopher? I feel like my hammer is getting rusty after all this office work.";
+	close;
 
 L_Merc:
 	mes "[Blacksmith Altiregen]";
@@ -84,6 +134,7 @@ L_Merc:
 			mes "You need more training as a merchant.  We only accept job level 40+";
 			mes "As much as I want to accept you, we have regulations.  Sorry, but return later.";
 			close;
+
 		sL_HighLvl:
 			mes "[Blacksmith Altiregen]";
 			mes "Wow! I'm impressed! You've done a lot of training there.  You know what they say, with hard work comes great rewards.";
@@ -113,8 +164,8 @@ L_Merc:
 
 
 L_Test1:
-	mes "You didn't leave yet? I told you to go see Geshupenschte in Alberta.  See you then.";
-	emotion 1;
+	mes "You didn't leave yet? I told you to go see Geshupenschte in Einbech. See you then.";
+	emotion e_what;
 	close;
 
 L_Test2and3:
@@ -126,57 +177,56 @@ L_Test4:
 	next;
 	mes "[Blacksmith Altiregen]";
 	mes "Hmm? Heh, there is one last test you know.";
-	mes "The guildsman for the last test is in Morroc, go there now.";
+	mes "The guildsman for the last test is Mitmayer, go talk to her now.";
 	next;
 	menu "Cruel, but I'll go.",-,"......I don't wanna travel T_T",M_dontgo;
 
 		set BSMITH_Q2, 1;
 		mes "[Blacksmith Altiregen]";
-		mes "I know its far away, but it's not in my power.  Besides, you know the region well, right?";
 		mes "I hope you do, because the blacksmith's guild doesn't like shaming it's status by hiring idiots!";
 		next;
 		mes "[Blacksmith Altiregen]";
 		mes "If such a thing happened, I can see the guild crumbling down, sob T_T";
-		mes "Well..... Get to Morroc and find her!";
+		mes "Well..... Go find her!";
 		close;
 	M_dontgo:
 		mes "[Blacksmith Altiregen]";
 		mes "What!? You're giving up!?!.........";
-		emotion 1;
+		emotion e_what;
 		next;
 		mes "[Blacksmith Altiregen]";
 		mes "HOW DARE YOU INSULT OUR GUILD LIKE THAT!";
 		mes "Leave now! Don't you dare even DREAM about becoming a blacksmith!";
-		emotion 23;
+		emotion e_omg;
 		next;
 		mes "[Blacksmith Altiregen]";
 		mes "Can't endure ANYTHING can you!? How do you plan to become a blacksmith if you can't do these simple tasks!?";
-		emotion 6;
+		emotion e_an;
 		close;
 
-	L_NotDone:
-		mes "Hmmm? Didn't you say you're going to Morroc?";
-		mes "Sorry, but you gotta pass the test there.";
+	L_NotDone:	
+		mes "Hmmm? Didn't you say you're going?";
+		mes "Sorry, but you gotta pass the test.";	
 		close;
 
 L_Change:
-	if (countitem(1005) < 1) goto L_NoHam;
-	if (SkillPoint > 0) mes "You need to use up all of your skill points before I can make you a Blacksmith.";
-	if (SkillPoint > 0) close;
-	mes "Lo, I can see the fire in your eyes! You've passed!!";
+	if(countitem(1005) < 1) goto L_NoHam;
+	if(SkillPoint > 0) mes "You need to use up all of your skill points before I can make you a Blacksmith.";
+	if(SkillPoint > 0) close;
+	mes "Whoah, I can see the fire in your eyes! You've passed!!";
 	mes "I'll grant you the power to work metals!";
 	next;
 	delitem 1005,1;
-	callfunc "Job_Change",JOB_BLACKSMITH;
+	callfunc "Job_Change",Job_Blacksmith;
 	mes "[Blacksmith Altiregen]";
 	mes "Don't forget! We're the artists that put beauty into metal! Don't you dare forget that!";
 	next;
 	mes "[Blacksmith Altiregen]";
 	mes "Here's a present! Congrats on passing!";
-	if (JBLVL != 50) getitem 999,5;
-	if (JBLVL == 50) getitem 999,10;
+	if(JBLVL != 50) getitem 999,5;
+	if(JBLVL == 50) getitem 999,10;
 	callfunc "F_ClearJobVar";		// clears all job variables for the current player
-	emotion 21;
+	emotion e_no1;
 	close;
 
 	L_NoHam:
@@ -189,7 +239,7 @@ L_Change:
 
 			mes "[Blacksmith Altiregen]";
 			mes "....... grrrrrrr.......";
-			emotion 7;
+			emotion e_ag;
 			close;
 		sM_What:
 			mes "[Blacksmith Altiregen]";
@@ -199,15 +249,14 @@ L_Change:
 			mes "YOU GET TO START ALL OVER!!!!";
 			set BSMITH_Q, 0;
 			set BSMITH_Q2, 0;
-			emotion 32;
+			emotion e_pif;
 		close;
 }
 
-
 //<=============================================== Geshupenschte: 1st, 2nd, 3rd Test ===================================================>\\
-alberta_in.gat,174,22,4	script	Geshupenschte	63,{
+ein_in01.gat,201,27,4	script	Geshupenschte	63,{
 
-	if (BaseJob == 5) goto L_merchant;
+	if (BaseJob == Job_Merchant) goto L_merchant;
 	mes "[Geshupenschte]";
 	mes "Hello sir! I'm the blacksmith.  Geshupenschte! Nice to meet you!";
 	next;
@@ -898,6 +947,7 @@ L_GoChange:
 // Delivery Recipients ==================================================>\\
 // Baisulitst -----------------------------------------------------------
 geffen.gat,46,164,4	script	Baisulitst	69,{
+
 	if (BSMITH_Q==3) goto L_Start;
 
 	mes "[Baisulitst]";
@@ -954,6 +1004,7 @@ L_Start:
 
 // Wickebine --------------------------------------------------------------------
 morocc.gat,27,112,4	script	Wickebine	725,{
+
 	if (BSMITH_Q == 3) goto L_Start;
 
 	mes "[Wickebine]";
@@ -1014,6 +1065,7 @@ L_Start:
 
 // Gromgast ---------------------------------------------------------------------
 izlude.gat,69,181,4	script	Gromgast	734,{
+
 	if (BSMITH_Q == 3) goto L_Start;
 
 	mes "[Gromgast]";
@@ -1072,6 +1124,7 @@ L_Start:
 
 // Tilpitz --------------------------------------------------------------------
 payon.gat,214,79,4	script	Tilpitz	59,{
+
 	if (BSMITH_Q == 3) goto L_Start;
 
 	mes "[Tilpitz]";
@@ -1085,6 +1138,7 @@ payon.gat,214,79,4	script	Tilpitz	59,{
 	mes "[Tilpitz]";
 	mes " T_T ";
 	close;
+
 L_Start:
 	if (BSMITH_Q2 != 4) goto L_Wrong;
 	if (countitem(1073) == 1) goto L_Done;
@@ -1122,11 +1176,13 @@ L_Start:
 		mes "Don't play bad jokes on people!";
 		emotion 7;
 		close;
+
 	L_Wrong:
 		mes "[Tilpitz]";
 		mes "What's this? You have a delivery.... for someone else..... Then why not deliver it to that person instead???........";
 		emotion 4;
 		close;
+
 	L_Done:
 		mes "[Tilpitz]";
 		mes "More I look at it, more beautiful it gets!!! ";
@@ -1199,7 +1255,8 @@ L_Start:
 
 
 //<===================================================== Mitehmaeeuh: Last Test ===================================================>\\
-morocc.gat,95,133,4	script	BS Guildsman	726,{
+ein_in01.gat,24,41,4	script	Mitmayer	726,{
+
 	if (BSMITH_Q == 4) goto L_Start;
 	if (BSMITH_Q == 5) goto L_Done;
 	mes "[Mitmayer]";
@@ -1212,6 +1269,7 @@ morocc.gat,95,133,4	script	BS Guildsman	726,{
 	mes "[Mitmayer]";
 	mes "Getting nice and tan isn't so bad..... I think it gives you a healthy athletic look.";
 	close;
+
 L_Done:
 	mes "[Mitmayer]";
 	mes "I told you that you've passed.";
@@ -1225,6 +1283,7 @@ L_Done:
 	mes "[Mitmayer]";
 	mes "Don't forget to use the skill points too!";
 	close;
+
 L_Start:
 	mes "[Mitmayer]";
 	mes "Welcome! You want to be a smith?";
@@ -1239,6 +1298,7 @@ L_Start:
 		mes "[Mitmayer]";
 		mes "Okay, I'll see you then.";
 		close;
+
 	M_Test:
 		mes "[Mitmayer]";
 		mes "Okay, lets start You'll fail if you don't get enough right.";
