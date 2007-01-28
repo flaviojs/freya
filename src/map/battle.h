@@ -425,9 +425,6 @@ extern struct Battle_Config {
 
 	unsigned short extra_system_flag;
 
-#ifdef USE_SQL /* SQL-only options */
-	unsigned short mail_system; // [Valaris]
-#endif /* USE_SQL */
 } battle_config;
 
 int battle_config_read(const char *cfgName);

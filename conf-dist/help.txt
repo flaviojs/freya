@@ -40,18 +40,8 @@ key:message,messages,broadcast
 @request           :@request/@contactgm on|off - (for GM) Accept to receive or not requests from players.
 @motd              :@motd - Sends again to you the 'Message of the day'.
 @gmotd             :@gmotd/@globalmotd - Sends again to all players the 'Message of the day (motd.txt)'.
-                  0: 
-                  0:--- MAIL SYSTEM CMD (SQL only) ---
-@checkmail         :@checkmail - Check # of messages.
-@listmail          :@listmail - List all messages.
-@listnewmail       :@listnewmail - List only new mail.
-@readmail          :@readmail - Read a message.
-@sendmail          :@sendmail - Send mail.
-@deletemail        :@deletemail - Delete a message.
-@sendprioritymail  :@sendprioritymail - Send priority mail (tagged with Priority and cannot be deleted until read).
-key:information,guild,party,spy,time,hour
-                  0: 
-                  0:--- INFORMATION CMD ---
+
+                  1:--- INFORMATION CMD ---
 @users             :@users - Displays a listing of maps with (number of) players.
 @who               :@who/@whois [match_text] - Displays a listing of who is online and where.
 @who2              :@who2 [match_text] - Displays a listing of who is online and their job.

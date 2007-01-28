@@ -301,16 +301,6 @@ enum AtCommandType {
 	AtCommand_Version,
 	AtCommand_Version2,
 
-	// SQL-only commands start
-#ifdef USE_SQL
-	AtCommand_CheckMail,
-	AtCommand_ListMail,
-	AtCommand_ListNewMail,
-	AtCommand_ReadMail,
-	AtCommand_SendMail,
-	AtCommand_DeleteMail,
-	AtCommand_SendPriorityMail,
-#endif /* USE_SQL */
 	AtCommand_Unknown,
 	AtCommand_MAX
 };

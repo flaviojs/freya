@@ -422,11 +422,6 @@ struct map_session_data {
 	short viewsize; // for tiny/large types
 
 	struct map_session_data *repair_target;
-
-#ifdef USE_SQL
-	char mail_counter; // mail counter for mail system [Valaris] (from 0 to 5)
-	char new_message_flag; // to avoid to send twice: you have new messages [Yor]
-#endif /* USE_SQL */
 };
 
 struct npc_timerevent_list {
@@ -929,7 +924,7 @@ extern char create_mob_db_script; // generate a script file to create SQL mob_db
 
 extern int db_use_sqldbs;
 
-extern char char_db[32]; // need for mail.c
+extern char char_db[32];
 
 extern unsigned char optimize_table; // optimize mob/item SQL db
 

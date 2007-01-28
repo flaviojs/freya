@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/28/07
+	* Removed: Custom Mail System [Tsuyuki]
+	 - Note: Since theres an official mail system that will be in eventually
 	* Removed: @happyhappyjoyjoy and @happyhappyjoyjoymap in atcommand.h [Latios]
 
 01/27/07

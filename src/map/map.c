@@ -64,8 +64,6 @@
 
 #ifndef TXT_ONLY
 
-#include "mail.h" // mail system [Valaris]
-
 int db_use_sqldbs = 0;
 
 char char_db[32] = "char";
@@ -2876,7 +2874,7 @@ void do_final(void) {
 	term_input_disable();
 
 #ifndef TXT_ONLY
-	if (battle_config.mail_system || db_use_sqldbs)
+	if (db_use_sqldbs)
 		map_sql_close();
 #endif /* not TXT_ONLY */
 
@@ -3052,7 +3050,7 @@ void do_init(const int argc, char *argv[])
 //	nick_db = strdb_init(25); // 24 + NULL // not used
 	charid_db = numdb_init();
 #ifdef USE_SQL
-	if (battle_config.mail_system || db_use_sqldbs) {
+	if (db_use_sqldbs) {
 		map_sql_init();
 #ifdef USE_MYSQL
 		if (optimize_table) {
@@ -3062,7 +3060,7 @@ void do_init(const int argc, char *argv[])
 		}
 #endif /* USE_MYSQL */
 	} else
-		printf("Mysql connection not initialized (you don't use mob/item db or mail system).\n");
+		printf("Mysql connection not initialized (you don't use mob/item db system).\n");
 #endif /* USE_SQL */
 
 	grfio_init(GRF_PATH_FILENAME);
@@ -3097,11 +3095,6 @@ void do_init(const int argc, char *argv[])
 
 	// Begin loading scripts
 	do_init_npc();
-
-#ifdef USE_SQL /* Mail system [Valaris] */
-	if (battle_config.mail_system)
-		do_init_mail();
-#endif /* USE_SQL */
 
 	npc_event_do_oninit(); // npcのOnInitイベント実行
 

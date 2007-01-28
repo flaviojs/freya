@@ -133,7 +133,7 @@ Date	Added
 	* Change @spawn/@monster2... GM commands to spawn in close area [Yor]
 	* commented some printf in char.c to reduce (a little) lag [Yor]
 	* Put @timer messages in msg_athena.conf [Yor]
-	* Add a file for SQL developpers [Yor]
+	* Add a file for SQL developers [Yor]
 	* Changed name of newpacket variable of session (packet_ver) and add a message for nex client version [Yor]
 	* Added new client packet sizes and expanded packet acception. [Valaris]
 	* Added snow, fog, rain, leaves, petals, and sandstorm map flags. [Valaris]

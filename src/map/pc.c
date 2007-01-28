@@ -48,10 +48,6 @@
 #include "status.h"
 #include "ranking.h"
 
-#ifdef USE_SQL // Custom Mail System [Valaris]
-#include "mail.h"
-#endif /* USE_SQL */
-
 #ifdef MEMWATCH
 #include "memwatch.h"
 #endif
@@ -830,12 +826,6 @@ void pc_authok_final_step(int id, time_t connect_until_time) { // 0x2b26 <accoun
 	else
 		sd->status.option &= OPTION_MASK;
 
-//#ifdef USE_SQL // mail system [Valaris]
-//	if (battle_config.mail_system) {
-//		sd->mail_counter = 0;
-//		sd->new_message_flag = 0; // to avoid to send twice: you have new messages [Yor]
-//	}
-//#endif
 //	sd->spiritball = 0;
 	for(i = 0; i < MAX_SKILL_LEVEL; i++)
 		sd->spirit_timer[i] = -1;
@@ -1051,11 +1041,6 @@ void pc_authok_final_step(int id, time_t connect_until_time) { // 0x2b26 <accoun
 		sprintf(tmpstr, msg_txt(668), wisp_server_name); // (From %s) The War Of Emperium is running...
 		clif_disp_onlyself(sd, tmpstr); // (From %s) The War Of Emperium is running...
 	}
-
-#ifdef USE_SQL
-	if (battle_config.mail_system)
-		mail_check(sd, 1); // type: 1:checkmail, 2:listmail, 3:listnewmail
-#endif /* USE_SQL */
 
 	// message of the limited time of the account
 	if (connect_until_time != 0) { // don't display if it's unlimited or unknow value

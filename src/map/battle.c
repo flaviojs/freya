@@ -4003,11 +4003,6 @@ static const struct battle_config_short{
 
 	{ "extra_system_flag",                          &battle_config.extra_system_flag },
 
-//SQL-only options start
-#ifdef USE_SQL
-	{ "mail_system",                                &battle_config.mail_system }, // added by [Valaris]
-//SQL-only options end
-#endif /* USE_SQL */
 };
 
 static const struct battle_config_int {
@@ -4394,12 +4389,6 @@ void battle_set_defaults() {
 	battle_config.char_disconnect_mode = 2; // nobody is disconnected
 
 	battle_config.extra_system_flag = 1;
-
-//SQL-only options start
-#ifdef USE_SQL
-	battle_config.mail_system = 0;
-//SQL-only options end
-#endif /* USE_SQL */
 }
 
 void battle_validate_conf() {
@@ -4791,10 +4780,7 @@ int battle_config_read(const char *cfgName) {
 			battle_config_read(w2);
 		} else {
 			if (!battle_set_value(w1, w2)) {
-#ifndef USE_SQL
-				if (strcasecmp(w1, "mail_system") != 0) // don't display error message if in TXT version and read mail_system configuration
-#endif /* USE_SQL */
-					printf(CL_YELLOW "Warning: " CL_RESET "Unknown configuration value: '%s'.\n", w1);
+				printf(CL_YELLOW "Warning: " CL_RESET "Unknown configuration value: '%s'.\n", w1);
 			}
 		}
 	}

@@ -45,10 +45,6 @@
 #include "grfio.h"
 #include "status.h"
 
-#ifdef USE_SQL
-#include "mail.h"
-#endif /* USE_SQL */
-
 #define STATE_BLIND 0x10
 
 short log_gm_level = 40;
@@ -337,16 +333,6 @@ ATCOMMAND_FUNC(main);
 ATCOMMAND_FUNC(request);
 ATCOMMAND_FUNC(version);
 ATCOMMAND_FUNC(version2);
-
-#ifdef USE_SQL
-ATCOMMAND_FUNC(checkmail);
-ATCOMMAND_FUNC(listmail);
-ATCOMMAND_FUNC(listnewmail);
-ATCOMMAND_FUNC(readmail);
-ATCOMMAND_FUNC(sendmail);
-ATCOMMAND_FUNC(sendprioritymail);
-ATCOMMAND_FUNC(deletemail);
-#endif /* USE_SQL */
 
 /*==========================================
  *AtCommandInfo atcommand_info[]\‘¢‘Ì‚Ì’è‹`
@@ -709,25 +695,7 @@ static struct AtCommandInfo {
 	{ AtCommand_Version,               "@version",               0, atcommand_version },
 	{ AtCommand_Version2,              "@version2",              0, atcommand_version2 },
 
-#ifdef USE_SQL
-	{ AtCommand_CheckMail,             "@checkmail",             1, atcommand_listmail }, // type: 1:checkmail, 2:listmail, 3:listnewmail
-	{ AtCommand_ListMail,              "@listmail",              1, atcommand_listmail }, // type: 1:checkmail, 2:listmail, 3:listnewmail
-	{ AtCommand_ListNewMail,           "@listnewmail",           1, atcommand_listmail }, // type: 1:checkmail, 2:listmail, 3:listnewmail
-	{ AtCommand_ReadMail,              "@readmail",              1, atcommand_readmail },
-	{ AtCommand_DeleteMail,            "@deletemail",            1, atcommand_readmail },
-	{ AtCommand_SendMail,              "@sendmail",              1, atcommand_sendmail },
-	{ AtCommand_SendPriorityMail,      "@sendprioritymail",     80, atcommand_sendmail },
-#else /* USE_SQL -> not USE_SQL*/
-	// not display error message if commmand is not found when reading configuration
-	{ AtCommand_None,                  "@checkmail",             1, NULL },
-	{ AtCommand_None,                  "@listmail",              1, NULL },
-	{ AtCommand_None,                  "@listnewmail",           1, NULL },
-	{ AtCommand_None,                  "@readmail",              1, NULL },
-	{ AtCommand_None,                  "@deletemail",            1, NULL },
-	{ AtCommand_None,                  "@sendmail",              1, NULL },
-	{ AtCommand_None,                  "@sendprioritymail",     80, NULL },
-#endif /* USE_SQL */
-// add new commands before this line
+// Add new commands before this line
 	{ AtCommand_Unknown,               NULL,                     1, NULL }
 };
 
@@ -1626,7 +1594,7 @@ void set_default_msg() {
 	add_msg(572, "Your account has been banished until ");
 	add_msg(573, "%m-%d-%Y %H:%M:%S");
 
-	// mail system
+	// Mail System (Need to remove)
 	//----------------------
 	add_msg(574, "You have no message.");
 	add_msg(575, "%d - From : %s (New - Priority)");
@@ -15356,67 +15324,3 @@ ATCOMMAND_FUNC(version2) {
 
 	return 0;
 }
-
-#ifdef USE_SQL  /* Begin SQL-Only commands */
-
-/*==========================================
- * Mail System commands by [Valaris]
- *------------------------------------------
- */
-
-ATCOMMAND_FUNC(listmail) {
-	if (!battle_config.mail_system)
-		return 0;
-
-	if (strlen(command) == 12)
-		mail_check(sd, 3); // type: 1:checkmail, 2:listmail, 3:listnewmail
-	else if (strlen(command) == 9)
-		mail_check(sd, 2); // type: 1:checkmail, 2:listmail, 3:listnewmail
-	else
-		mail_check(sd, 1); // type: 1:checkmail, 2:listmail, 3:listnewmail
-
-	return 0;
-}
-
-ATCOMMAND_FUNC(readmail) {
-	if (!battle_config.mail_system)
-		return 0;
-
-	if (!message || !*message) {
-		clif_displaymessage(fd, "You must specify a message number.");
-		return 0;
-	}
-
-	if (strlen(command) == 11)
-		mail_delete(sd, atoi(message));
-	else
-		mail_read(sd, atoi(message));
-
-	return 0;
-}
-
-ATCOMMAND_FUNC(sendmail) {
-	char text[100];
-
-	if (!battle_config.mail_system)
-		return 0;
-
-	if (!message || !*message ||
-	    (sscanf(message, "\"%[^\"]\" %79[^\n]", atcmd_name, text) < 2 &&
-	     sscanf(message, "%s %79[^\n]", atcmd_name, text) < 2)) {
-		clif_displaymessage(fd, "You must specify a recipient and a message.");
-		return 0;
-	}
-
-	if (check_bad_word(text, strlen(text), sd))
-		return -1; // check_bad_word function display message if necessary
-
-	if (strlen(command) == 17)
-		mail_send(sd, atcmd_name, text, 1); // flag = 0: normal, 1: priority message
-	else
-		mail_send(sd, atcmd_name, text, 0); // flag = 0: normal, 1: priority message
-
-	return 0;
-}
-
-#endif /* end sql only */
