@@ -4,6 +4,7 @@
 //= EREMES THE CANIVALIZER (Aegis) Translated by yoshiki (Aegis)
 //= Converted by kobra_k88
 //= Further bugfixed and tested by Lupus
+//= Updated by keVn (Moved to Hugel)
 //===== Current Version: =====================================
 //= 1.6a
 //===== Compatible With: =====================================
@@ -27,35 +28,65 @@
 //= reported the bug) [Lupus]
 //============================================================
 
-
-
-// Please add this warp to your warp/s script/s if it is not already there, or you can enable it here
-//in_hunter.gat,100,13,0	warp	hnt_to_payfild10	1,2,pay_fild10,145,250
-
-
-//<================================ Guildsman: Warps you to guild =======================================>\\
-pay_fild10.gat,148,251,4	script	Hunter Guildsman	98,{
-	warp "in_hunter.gat",100,18;
-	end;
-}
-
-
 //<====================================== Job Changer ========================================>\\
-in_hunter.gat,99,99,4	script	Hunter Sharon	727,{
+hu_in01.gat,386,374,4	script	Hunter Sharon	727,{
 	callfunc "F_BlockHigh",JOB_ARCHER_HIGH,"High Archer",JOB_SNIPER,"Sniper","Hunter Sharon";
 
 	if (BaseJob == JOB_ARCHER) goto L_Start;
-	callfunc "Hun_check";
+	if (BaseJob == Job_Novice) goto L_Novice;
+	if (BaseJob == Job_Hunter) goto L_Hunter;
+	if (BaseJob == Job_Swordman) goto L_Sword;
+	if (BaseJob == Job_Mage) goto L_Mage;
+	if (BaseJob == Job_Thief) goto L_Thief;
+	if (BaseJob == Job_Acolyte) goto L_Acolyte;
+	if (BaseJob == Job_Merchant) goto L_Merchant;
+
+	mes "What are YOU doing here? Did you come to do a little song and dance... ke.. keke....kekekeHahahahhaha!!!";
+	emotion e_heh;
+	close;
+
+L_Novice:
+	mes "What's a novice like you doing here? Leave, we have nothing for you.";
+	emotion e_what;
+	close;
+
+L_Hunter:
+	mes "What up! "+strcharinfo(0)+" Why did you come back? Falcon run away or something? Te hehe.";
+	emotion e_heh;
+	next;
+	mes "[Hunter Sharon]";
+	mes "I hope you didn't think you could get free stuff from us just because your part of our guild now......";
+	close;
+
+L_Sword:
+		mes "A follower of the way of the blade! We have nothing for you here so please leave.";
+		close;
+
+L_Mage:
+		mes "Hello mage type person.  If you have no business here, please leave,";
+		close;
+
+L_Thief:
+		mes "Eeep! There's nothing to steal here!! Leave us alone..... go rob an old lady or something......";
+		emotion e_omg;
+		close;
+
+L_Acolyte:
+		mes "Good day, religious zealot! It's nice to meet you and all, but you have no buisiness here.";
+		close;
+
+L_Merchant:
+		mes "Hey, how's buisiness? Perhaps if you want to sell something, go back to town.";
+		close;
 
 L_Start:
-	mes "[Hunter Sharon]";
-	if (HNTR_Q == 1) goto L_Test2;
-	if (HNTR_Q == 2) goto L_Test3;
-	if (HNTR_Q == 3) goto L_Change;
-	if (HNTR_Q2 == 1) goto L_ReTest;
+	if(HNTR_Q == 1) goto L_Test2;
+	if(HNTR_Q == 2) goto L_Test3;
+	if(HNTR_Q == 3) goto L_Change;
+	if(HNTR_Q2 == 1) goto L_ReTest;
 	mes "Hey archer!! Hmmm....... You look like you've trained pretty hard.... I take it you're here to be a hunter!";
 	next;
-	menu "Of course!",M_0, "What are the requirements",M_1, "Not right now.",M_End;
+	menu "Of course!",M_0, "What are the requirements",M_1, "Not right now.",M_close;
 
 	M_0:
 		mes "[Hunter Sharon]";
@@ -64,8 +95,8 @@ L_Start:
 		mes "(you fill out the form and hand it back)";
 		next;
 		mes "[Hunter Sharon]";
-		if (JobLevel < 40) goto sL_LowLvl;
-		if (JobLevel == 50) goto sL_HighLvl;
+		if(JobLevel < 40) goto sL_LowLvl;
+		if(JobLevel == 50) goto sL_HighLvl;
 		set JBLVL, 40;
 		mes "Looks good.  Let me start off by introducing myself.  My name is Sharon, nice to meet you.";
 		next;
@@ -75,7 +106,7 @@ L_Start:
 		mes "[Hunter Sharon]";
 		mes "Do you want to do the interview now?";
 		next;
-		menu "Yeah, let's begin.",L_Test, "Nah, I'll come back in a bit.",M_End;
+		menu "Yeah, let's begin.",L_Test, "Nah, I'll come back in a bit.",M_close;
 
 		sL_LowLvl:
 			mes "Hmm... It looks like you'll need more training.  To become a Hunter, you will have to have a great amount of experience.";
@@ -85,7 +116,7 @@ L_Start:
 			close;
 		sL_HighLvl:
 			mes "Well, well now!  A high level archer.... very nice!  You must have trained really hard.";
-			emotion 5;
+			emotion e_ic;
 			next;
 			mes "[Hunter Sharon]";
 			mes "My name is Sharon, nice to meet you.  Before I explain the process of becoming a Hunter, I'd like to do a short interview with you.";
@@ -95,8 +126,8 @@ L_Start:
 	M_1:
 		mes "[Hunter Sharon]";
 		mes "The requirements?";
-		mes "1. Be a archer";
-		mes "2. Have a job level of at least 40";
+		mes "1. Be an Archer";
+		mes "2. Have a Job Level of at least 40";
 		mes "3. Pass all of the tests";
 		next;
 		mes "[Hunter Sharon]";
@@ -110,7 +141,6 @@ L_Start:
 
 
 	L_ReTest:
-		mes "[Hunter Sharon]";
 		mes "Hmm.. what's this? So you wanna do the interview again? Very well.  Hopefully you'll do better this time.";
 		next;
 		mes "[Hunter Sharon]";
@@ -140,7 +170,7 @@ L_Start:
 
 			set @score, @score + 10;
 		M_2b:
-
+	
 		mes "[Hunter Sharon]";
 		mes "There are no priests around, all your friends are busy, and you don't have enough money for a kafra warp.";
 		next;
@@ -230,17 +260,18 @@ L_Start:
 		mes "[Hunter Sharon]";
 		mes "Now we're done!!";
 		next;
-		if (@score < 90) goto sL_Failed;
-		if (@score < 100) goto sL_90;
+		if(@score < 90) goto sL_Failed;
+		if(@score < 100) goto sL_90;
 
 		sL_100:
 			mes "[Hunter Sharon]";
 			mes "Great! Based on the answers you gave, you seem to be just the type of person we're looking for.";
-			emotion 21;
+			emotion e_no1;
 			next;
 			mes "[Hunter Sharon]";
 			mes "With your kind of additude and values, you should have no problems becoming a Hunter.";
 			next;
+			mes "[Hunter Sharon]";
 			goto L_Test2;
 		sL_90:
 			mes "[Hunter Sharon]";
@@ -249,11 +280,12 @@ L_Start:
 			mes "[Hunter Sharon]";
 			mes "Work hard on the next test.  Make Sharon happy, okies?";
 			next;
+			mes "[Hunter Sharon]";
 			goto L_Test2;
 		sL_Failed:
 			mes "[Hunter Sharon]";
 			mes "I.......don't think I can pass you..... The way you live your life is...... well... unexecptable for a Hunter candidate.";
-			emotion 4;
+			emotion e_swt;
 			next;
 			mes "[Hunter Sharon]";
 			mes "Think carefully about my questions and your answers.  Working well with people is just as important as loving nature.";
@@ -261,7 +293,7 @@ L_Start:
 			close;
 
 L_Test2:
-	mes "What you have to do next is go see ^5533FFMr. Demon Hunter^000000 over there to my left.  He'll tell you about the second test.";
+	mes "What you have to do next is go see ^5533FFMr. Demon Hunter^000000 behind me.  He'll tell you about the second test.";
 	next;
 	mes "[Hunter Sharon]";
 	mes "Good luck!";
@@ -271,33 +303,34 @@ L_Test2:
 
 L_Test3:
 	mes "Hmmm? The guild master? Oh, he's out right now.";
-	emotion 20;
+	emotion e_hmm;
 	next;
 	mes "[Hunter Sharon]";
 	mes "If I remember correctly, he should be somewhere in Archer Village.  I think he had to talk with someone in the ^5533FFArcher Guild^000000.";
 	close;
 
 L_Change:
-	if (skillpoint > 0) goto sL_SkPoints;
-	if (countitem(1007) < 1) goto sL_NotRdy;
+	if(skillpoint > 0) goto sL_SkPoints;
+	if(countitem(1007) < 1) goto sL_NotRdy;
 	mes "Huh? Did you pass the test?";
 	next;
 	mes "[Hunter Sharon]";
 	mes "Congratulations!!";
-	emotion 21;
+	emotion e_no1;
 	next;
 	mes "[Hunter Sharon]";
 	mes "Now I can change you into a Hunter!";
 	next;
 	mes "[Hunter Sharon]";
 	mes "There you go! You look great in the hunter outfit";
-	callfunc "Job_Change",JOB_HUNTER;
-	emotion 21;
+
+	callfunc "Job_Change",Job_Hunter;
+	emotion e_no1;
 	next;
 	mes "[Hunter Sharon]";
 	mes "Now, for working so hard, the guild has a small reward for you.";
-	if (JBLVL == 50) getitem 1718, 1;
-	if (JBLVL != 50) getitem 1710, 1;
+	if(JBLVL == 50) getitem 1718, 1;
+	if(JBLVL != 50) getitem 1710, 1;
 	callfunc "F_ClearJobVar";		// clears all job variables for the current player
 	next;
 	mes "[Hunter Sharon]";
@@ -311,7 +344,7 @@ L_Change:
 	sL_NotRdy:
 		mes "[Hunter Sharon]";
 		mes "Hmmm, I received news of your success.... But you don't seem to have the ^5533FFNecklace of Wisdom^000000 as proof.";
-		emotion 20;
+		emotion e_hmm;
 		next;
 		mes "[Hunter Sharon]";
 		mes "You will need the Necklace of Wisdom to become a Hunter.  If you don't have it you will have to start the test over.";
@@ -320,12 +353,12 @@ L_Change:
 
 			mes "[Hunter Sharon]";
 			mes "Well then go get it!";
-			emotion 6;
+			emotion e_an;
 			close;
 		sM_ReStart:
 			mes "[Hunter Sharon]";
 			mes "..... That's just pathetic....... Have fun re-doing the ENTIRE TEST!";
-			emotion 32;
+			emotion e_pif;
 			set HNTR_Q, 0;
 			set HNTR_Q2, 0;
 			close;
@@ -333,9 +366,9 @@ L_Change:
 
 
 //<=========================== Demon Hunter: Second Test ===============================>\\
-in_hunter.gat,55,99,7	script	Demon Hunter	732,{
-	if (BaseJob == JOB_ARCHER) goto L_Arc;
-	if (BaseJob == JOB_HUNTER) goto L_Hnt;
+hu_in01.gat,382,382,5	script	Demon Hunter	732,{
+	if(BaseJob == Job_Archer) goto L_Arc;
+	if(BaseJob == Job_Hunter) goto L_Hnt;
 
 L_Other:
 	mes "[Demon Hunter]";
@@ -346,21 +379,21 @@ L_Other:
 	next;
 	mes "[Demon Hunter]";
 	mes "For your safety... it's best that you DON'T find out.....";
-	emotion 29;
+	emotion e_gg;
 	close;
 
 L_Hnt:
 	mes "[Demon Hunter]";
 	mes "Look at you! Nice and spiffy in that Hunter's outfit.  How does it feel?  Good I bet.  Well good luck to you.";
-	emotion 0;
+	emotion e_gasp;
 	close;
 
 L_Arc:
 	mes "[Demon Hunter]";
-	if (HNTR_Q == 1 && HNTR_Q2 > 0) goto L_Check; //Fixed [Lupus]
-	if (HNTR_Q == 1) goto L_Start;
-	if (HNTR_Q == 2) goto L_Test3;
-	if (HNTR_Q == 3) goto L_Done;
+	if(HNTR_Q == 1 && HNTR_Q2 > 0) goto L_Check; //Fixed [Lupus]
+	if(HNTR_Q == 1) goto L_Start;
+	if(HNTR_Q == 2) goto L_Test3;
+	if(HNTR_Q == 3) goto L_Done;
 	mes "You'll have to speak with ^5533FFHunter Sharon^000000 first, if you want to become a hunter.";
 	close;
 L_Start:
@@ -374,7 +407,7 @@ L_Start:
 		next;
 		mes "[Demon Hunter]";
 		mes "If you haven't noticed already, our guild is NOT as wealthy as some of the others.  I mean we're in the middle of the freaking forest for pete sake....";
-		emotion 7;
+		emotion e_ag;
 		next;
 		mes "[Demon Hunter]";
 		mes "Ehem... Like I was saying earlier we need certain materials to make our arrows.  That is where Hunter wanna be's like you come in handy.";
@@ -383,43 +416,67 @@ L_Start:
 		mes "[Demon Hunter]";
 		mes "Let's see... the items you need to gather are.....";
 		next;
-		set HNTR_Q2, rand(1,5);
+		set HNTR_Q2, rand(1,7);
+	L_Repeat:
+		mes "[Demon Hunter]";
+		if (sL == 1) goto sL_1;
+		if (sL == 2) goto sL_2;
+		if (sL == 3) goto sL_3;
+		if (sL == 4) goto sL_4;
+		if (sL == 5) goto sL_5;
+		if (sL == 6) goto sL_6;
+		if (sL == 7) goto sL_7;
+		set HNTR_Q2, rand(1,7);
+		if (HNTR_Q2 == 1) goto sL_1;
 		if (HNTR_Q2 == 2) goto sL_2;
 		if (HNTR_Q2 == 3) goto sL_3;
 		if (HNTR_Q2 == 4) goto sL_4;
 		if (HNTR_Q2 == 5) goto sL_5;
-
+		if (HNTR_Q2 == 6) goto sL_6;
+		if (HNTR_Q2 == 7) goto sL_7;
 		sL_1:
-			mes "[Demon Hunter]";
-			mes "^5533FF20 Bill of Birds^000000 for arrow heads.";
-			mes "^5533FF5 Skel-Bones^000000 used here and there.";
-			mes "and ^5533FF20 green herbs^000000.";
-			goto L_Cont;
+			mes "^5533FF3 Bill of Birds^000000 for arrow heads,";
+			mes "^5533FF5 Skel-Bones^000000 used here and there";
+			mes "and ^5533FF3 Green Herbs^000000.";
+			set sL,1;
+			close;
 		sL_2:
-			mes "[Demon Hunter]";
-			mes "^5533FF7 Venom Canine.";
-			mes "20 Animal Skins.";
-			mes "and 15 red herbs^000000.";
-			goto L_Cont;
+			mes "^5533FF3 Venom Canine,";
+			mes "3 Animal Skins";
+			mes "and 5 Red Herbs^000000.";
+			set sL,2;
+			close;
 		sL_3:
-			mes "[Demon Hunter]";
-			mes "^5533FF3 Dokaebi Horns";
-			mes "3 Pieces of Egg Shell.";
+			mes "^5533FF3 Dokebi Horns,";
+			mes "3 Pieces of Egg Shell";
 			mes "and 10 Feathers^000000.";
-			goto L_Cont;
+			set sL,3;
+			close;
 		sL_4:
-			mes "[Demon Hunter]";
-			mes "^5533FF20 Rainbow Shells";
-			mes "20 Chrysalis";
-			mes "9 Yellow Herbs^000000";
-			goto L_Cont;
+			mes "^5533FF9 Yellow Herbs,";
+			mes "9 Worm Peelings";
+			mes "and 9 Shells^000000.";
+			set sL,4;
+			close;
 		sL_5:
-			mes "[Demon Hunter]";
-			mes "^5533FF20 Tooths of Bat.";
-			mes "20 Sticky Mucus.";
-			mes "and 5 Bears foot skin^000000";
+			mes "^5533FF3 Tooths of Bat,";
+			mes "1 Sticky Mucus";
+			mes "and 1 Bears Foot Skin^000000.";
+			set sL,5;
+			close;
+		sL_6:
+			mes "^5533FF1 Yoyo Tail,";
+			mes "2 Porcupine Quills";
+			mes "and 1 Acorn^000000.";
+			set sL,6;
+			close;
+		sL_7:
+			mes "^5533FF3 White Herbs,";
+			mes "5 Trunks";
+			mes "and 5 Claws of Desert Wolf^000000.";
+			set sL,7;
+			close;
 
-		L_Cont:
 		next;
 		mes "[Demon Hunter]";
 		mes "When you get all of the items return!";
@@ -428,65 +485,88 @@ L_Start:
 	M_No:
 		mes "[Demon Hunter]";
 		mes "Stop playing around "+strcharinfo(0)+", that's your name, right?";
-		menu "Yes",M_Yes, "uhhh no",sM_End;
+		next;
+		menu "Yes",M_Yes, "Uhhh no",sM_close;
 
 		sM_End:
 			mes "[Demon Hunter]";
 			mes "DON'T you mess around with me! If you're gonna fool around then LEAVE!";
-			emotion 32;
-			warp "pay_fild10.gat", 133, 235;
-			end;
+			emotion e_pif;
+			close2;
+			warp "hugel.gat", 207, 222;
+			close;
 
 L_Check:
 	mes "Yes?";
 	next;
-	if (HNTR_Q2 == 1) goto L_1;
-	if (HNTR_Q2 == 2) goto L_2;
-	if (HNTR_Q2 == 3) goto L_3;
-	if (HNTR_Q2 == 4) goto L_4;
-	if (HNTR_Q2 == 5) goto L_5;
-
-	L_1:
-		if (countitem(925)<20 || countitem(932)<5 || countitem(511)<20) goto sL_1;
-		delitem 925, 20;
+	if (sL == 1) goto cL_1;
+	if (sL == 2) goto cL_2;
+	if (sL == 3) goto cL_3;
+	if (sL == 4) goto cL_4;
+	if (sL == 5) goto cL_5;
+	if (sL == 6) goto cL_6;
+	if (sL == 7) goto cL_7;
+	cL_1:
+		if(countitem(925)<3 || countitem(932)<5 || countitem(511)<3) goto L_Repeat;
+		delitem 925, 3;
 		delitem 932, 5;
-		delitem 511, 20;
-		goto L_End;
-	L_2:
-		if (countitem(937)<7 || countitem(919)<20 || countitem(507)<15) goto sL_2;
-		delitem 937, 7;
-		delitem 919, 20;
-		delitem 507, 15;
-		goto L_End;
-	L_3:
-		if (countitem(1021)<3 || countitem(7032)<3 || countitem(949)<10) goto sL_3;
+		delitem 511, 3;
+		goto L_Pass;
+		close;
+	cL_2:
+		if(countitem(937)<3 || countitem(919)<3 || countitem(507)<5) goto L_Repeat;
+		delitem 937, 3;
+		delitem 919, 3;
+		delitem 507, 5;
+		goto L_Pass;
+		close;
+	cL_3:
+		if(countitem(1021)<3 || countitem(7032)<3 || countitem(949)<10) goto L_Repeat;
 		delitem 1021, 3;
 		delitem 7032, 3;
 		delitem 949, 10;
-		goto L_End;
-	L_4:
-		if (countitem(1013)<20 || countitem(915)<20 || countitem(508)<9) goto sL_4;
-		delitem 1013, 20;
-		delitem 915, 20;
+		goto L_Pass;
+		close;
+	cL_4:
+		if(countitem(508)<9 || countitem(955)<9 || countitem(935)<9) goto L_Repeat;
 		delitem 508, 9;
-		goto L_End;
-	L_5:
-		if (countitem(913)<20 || countitem(938)<20 || countitem(948)<5) goto sL_5;
-		delitem 913, 20;
-		delitem 938, 20;
-		delitem 948, 5;
-
-	L_End:
-		mes "[Demon Hunter]";
-		mes "Good job.  You brought all the necesarry items.  Now go find the ^5533FFGuild Master^000000.";
-		mes "I think he's somewhere in the ^5533FFArcher Guild^000000.  He'll give you your final test.  Good luck.";
-		set HNTR_Q, 2;
-		set HNTR_Q2, 0;
+		delitem 955, 9;
+		delitem 935, 9;
+		goto L_Pass;
+		close;
+	cL_5:
+		if(countitem(913)<3 || countitem(938)<1 || countitem(948)<1) goto L_Repeat;
+		delitem 913, 3;
+		delitem 938, 1;
+		delitem 948, 1;
+		goto L_Pass;
+		close;
+	cL_6:
+		if(countitem(942)<1 || countitem(1027)<2 || countitem(1026)<1) goto L_Repeat;
+		delitem 942, 1;
+		delitem 1027, 2;
+		delitem 1026, 1;
+		goto L_Pass;
+		close;
+	cL_7:
+		if(countitem(509)<3 || countitem(1019)<5 || countitem(7030)<5) goto L_Repeat;
+		delitem 509, 3;
+		delitem 1019, 5;
+		delitem 7030, 5;
+		goto L_Pass;
 		close;
 
+L_Pass:
+	mes "[Demon Hunter]";
+	mes "Good job.  You brought all the necesarry items.  Now go find the ^5533FFGuild Master^000000.";
+	mes "I think he's somewhere in the ^5533FFArcher Guild^000000.  He'll give you your final test. Good luck.";
+	set HNTR_Q, 2;
+	set HNTR_Q2, 0;
+	close;
+
 L_Test3:
-	mes "Huh? Can't you find the guild master? He should be in the ^5533FFArcher Guild in Archer village^000000.  Go find him.";
-	emotion 20;
+	mes "Huh? Can't you find the guild master? He should be in the ^5533FFArcher Guild in Archer village^000000. Go find him.";
+	emotion e_hmm;
 	close;
 
 L_Done:
@@ -496,19 +576,19 @@ L_Done:
 
 
 //<=============================== Guild Master: Last Test =================================>\\
-payon_in02.gat,21,31,1	script	Guild Master	59,{
-	if (BaseJob == JOB_ARCHER) goto L_Archer;
-	if (BaseJob == JOB_HUNTER) goto L_Hnt;
+payon_in02.gat,21,31,1	script	Guild Master#03	59,{
+	if(BaseJob == Job_Archer) goto L_Archer;
+	if(BaseJob == Job_Hunter) goto L_Hnt;
 
 L_Other:
 	mes "[Hunter]";
 	mes "Is there something you want of me? I'm have some buisiness to take care of, so please be quiet.";
-	emotion 20;
+	emotion e_hmm;
 	close;
 
 L_Hnt:
 	mes "[Guild Master]";
-	mes "Ah, it's you again, "+strcharinfo+"! Good to see you're well.  Me?  I'm still busy as usual.";
+	mes "Ah, it's you again, "+strcharinfo(0)+"! Good to see you're well.  Me?  I'm still busy as usual.";
 	next;
 	mes "[Guild Master]";
 	mes "Well I've gota get back to work.  Stay safe.";
@@ -516,9 +596,9 @@ L_Hnt:
 
 L_Archer:
 	mes "[Guild Master]";
-	if (HNTR_Q == 1) goto L_Test2;
-	if (HNTR_Q == 2) goto L_Start;
-	if (HNTR_Q == 3) goto L_Done;
+	if(HNTR_Q == 1) goto L_Test2;
+	if(HNTR_Q == 2) goto L_Start;
+	if(HNTR_Q == 3) goto L_Done;
 	mes "You want to be a hunter bad, don't you? In my days, I worked for over a month to become a hunter, hehe.";
 	next;
 	mes "[Guild Master]";
@@ -526,8 +606,8 @@ L_Archer:
 	close;
 
 L_Start:
-	if (HNTR_Q2 == 1) goto L_ReTest;
-	if (HNTR_Q2 == 2) goto L_Passed;
+	if(HNTR_Q2 == 1) goto L_ReTest;
+	if(HNTR_Q2 == 2) goto L_Passed;
 	mes "So, you've come to take the test?  I see.... well then, do you have any questions before we get started?";
 	M_Menu:
 	next;
@@ -564,12 +644,12 @@ L_Start:
 		if (countitem(1751) <= 5 && @HNTR_QA==0) callsub sF_GetArrows;
 		mes "[Guild Master]";
 		mes "Good luck, I'll send you to the test room now.";
-		next;
+		close2;
 		set HNTR_Q2, 1;
 		set @HNTR_QA,0;
 		savepoint "payon_in02.gat", 16, 26;
 		warp "job_hunte.gat", 176, 22;
-		end;
+		close;
 
 		sF_GetArrows:
 			mes "[Guild Master]";
@@ -589,7 +669,7 @@ L_ReTest:
 
 L_Passed:
 	mes "I see you suceeded. Great job! Now I will give you the proof of your success, the ^5533FFNecklace of Wisdom^000000.";
-	emotion 21;
+	emotion e_no1;
 	next;
 	mes "[Guild Master]";
 	mes "Here you go.  Make sure you show this to Hunter Sharon or you WON'T be able to become a Hunter.";
@@ -608,6 +688,7 @@ L_Test2:
 L_Done:
 	mes "Hmm? What is it? Don't waste your time here, go on and become a Hunter already....";
 	close;
+
 }
 
 
@@ -618,7 +699,7 @@ L_Start:
 	mes "[Test Guide]";
 	mes "Welcome to the Hunter's testing arena.";
 	next;
-	menu "Take the test.",-, "I changed my mind.",M_End;
+	menu "Take the test.",-, "I changed my mind.",M_close;
 
 		mes "[Test Guide]";
 		mes "Please enter the waiting room after hearing my explaination.";
@@ -638,56 +719,61 @@ L_Start:
 	M_End:
 		mes "[Test Guide]";
 		mes "Alright, I'll send you back to Payon.  Hopefully I'll see you again later.  Don't forget to save!";
+		close2;
 		warp "payon_in02.gat", 16, 26;
-		end;
+		close;
 
 OnInit:
 	waitingroom "Hunter Test Waiting Room", 8,"HntTG::OnStart",1;
-	end;
+	close;
 
 OnStart:
 	set $@HntUsers, getareausers("job_hunte.gat", 50, 64, 123, 143);
-	if ($@HntUsers > 0) end;			// stops the rest of the script from running if there is somebody taking the test
+	if ($@HntUsers > 0) close;			// stops the rest of the script from running if there is somebody taking the test
 
-	if ((getwaitingroomstate(33)) == 0) end;			// stops the rest of the script from running if there is no one in the waiting room
+	if ((getwaitingroomstate(33)) == 0) close;			// stops the rest of the script from running if there is no one in the waiting room
 	killmonsterall "job_hunte.gat";
 	warpwaitingpc "job_hunte.gat", 90, 67;
-	donpcevent "Ev_HntRm";
-	end;
+	donpcevent "Ev_HntRm::OnStart";
+	close;
+
 }
 
 
 // Ev_HntRm: Test room --------------------------------------------------------
 job_hunte.gat,1,1,1	script	Ev_HntRm	-1,{
 
+OnStart:
 	disablenpc "SwitchHnt";
 	disablenpc "ExitHnt";
 	set $@HntMob, 4;
 	// Real Monsters
 	monster "job_hunte.gat",67,80,"Job Change Monster",1015,1,"Ev_HntRm::OnMyMobDead1";
-	monster "job_hunte.gat",114,78,"Job Change Monster",1015,1,"Ev_HntRm::OnMyMobDead1";
+	monster "job_hunte.gat",114,78,"Job Change Monster",1015,1,"Ev_HntRm::OnMyMobDead1"; 
 	monster "job_hunte.gat",89,127,"Job Change Monster",1002,1,"Ev_HntRm::OnMyMobDead1";
 	monster "job_hunte.gat",53,73,"Job Change Monster",1041,1,"Ev_HntRm::OnMyMobDead1";
 	monster "job_hunte.gat",125,70,"Job Change Monster",1016,1,"Ev_HntRm::OnMyMobDead1";
 	monster "job_hunte.gat",90,92,"Job Change Monster",1015,1,"Ev_HntRm::OnMyMobDead1";
-	donpcevent "Ev_HntRm2";
+	donpcevent "Ev_HntRm2::OnStart";
 	initnpctimer "TimerHnt";
-	end;
+	close;
 
 OnMyMobDead1:
 	set $@HntMob, $@HntMob - 1;
-	if ($@HntMob != 0) end;
+	if($@HntMob != 0) close;
 
 	stopnpctimer "TimerHnt";
 	killmonsterall "job_hunte.gat";
 	enablenpc "SwitchHnt";
-	areaannounce "job_hunte.gat", 50, 64, 123, 143, "[Test Guide]: Great job! Go use the switch now!",8;
-	end;
+	areaannounce "job_hunte.gat", 50, 64, 123, 143, "[Test Guide]: Great job! Go use the switch now!",8;	
+	close;
+
 }
 
 // Ev_HntRm2: Spawns the Decoy Monsters ----------------------------------------
 job_hunte.gat,1,1,1	script	Ev_HntRm2	-1,{
 
+OnStart:
 	// Decoy Monsters
 	monster "job_hunte.gat",85,100,"Test Monster",1016,1,"Ev_HntRm2::OnMyMobDead2";
 	monster "job_hunte.gat",72,102,"Test Monster",1041,1,"Ev_HntRm2::OnMyMobDead2";
@@ -719,12 +805,12 @@ job_hunte.gat,1,1,1	script	Ev_HntRm2	-1,{
 	monster "job_hunte.gat",77, 112,"SPARE ME~",1015,1,"Ev_HntRm2::OnMyMobDead2";
 	monster "job_hunte.gat",72, 102,"Don't hurt me!",1015,1,"Ev_HntRm2::OnMyMobDead2";
 	monster "job_hunte.gat",108, 103,"aspd 184",1015,1,"Ev_HntRm2::OnMyMobDead2";
-	end;
+	close;
 
 OnMyMobDead2:
 	areaannounce "job_hunte.gat", 50, 64, 123, 143, "[Test Guide]: You killed the wrong monster! You have failed the test!",8;
 	addtimer 3000, "TimerHnt::OnTimer196000";
-	end;
+	close;
 }
 
 // Test Timer -----------------------------------------------------------------
@@ -733,60 +819,60 @@ job_hunte.gat,1,1,1	script	TimerHnt	-1,{
 
 OnTimer500:
 	areaannounce "job_hunte.gat", 50, 64, 123, 143, "[Test Guide]: Remember, you need to kill the 'Job Change Monsters'!",8;
-	end;
+	close;
 OnTimer4000:
 	areaannounce "job_hunte.gat", 50, 64, 123, 143, "[Test Guide]: Don't forget to AVOID the TRAPS!!!",8;
-	end;
+	close;
 OnTimer10000:
 	areaannounce "job_hunte.gat", 50, 64, 123, 143, "[Test Guide]:  ******The clock will start now! 3 minutes left! ****** ",8;
 	donpcevent "HntTG::OnStart";
-	end;
+	close;
 OnTimer40000:
 	donpcevent "HntTG::OnStart";
-	end;
+	close;
 OnTimer70000:
 	areaannounce "job_hunte.gat", 50, 64, 123, 143, "[Test Guide]:  ****** 2 minutes left! ****** ",8;
 	donpcevent "HntTG::OnStart";
-	end;
+	close;
 OnTimer100000:
 	donpcevent "HntTG::OnStart";
-	end;
+	close;
 OnTimer130000:
 	areaannounce "job_hunte.gat", 50, 64, 123, 143, "[Test Guide]:  ****** 1 minute left! ****** ",8;
 	donpcevent "HntTG::OnStart";
-	end;
+	close;
 OnTimer160000:
 	areaannounce "job_hunte.gat", 50, 64, 123, 143, "[Test Guide]:  ****** 30 sec left! ****** ",8;
 	donpcevent "HntTG::OnStart";
-	end;
+	close;
 OnTimer185000:
 	areaannounce "job_hunte.gat", 50, 64, 123, 143, "[Test Guide]:  5 . . . .",8;
 	donpcevent "HntTG::OnStart";
-	end;
+	close;
 OnTimer186000:
 	areaannounce "job_hunte.gat", 50, 64, 123, 143, "[Test Guide]:  4. . . .",8;
-	end;
+	close;
 OnTimer187000:
 	areaannounce "job_hunte.gat", 50, 64, 123, 143, "[Test Guide]:  3. . .",8;
-	end;
+	close;
 OnTimer188000:
 	areaannounce "job_hunte.gat", 50, 64, 123, 143, "[Test Guide]:  2. .",8;
-	end;
+	close;
 OnTimer189000:
 	areaannounce "job_hunte.gat", 50, 64, 123, 143, "[Test Guide]:  1...",8;
-	end;
+	close;
 OnTimer190000:
 	areaannounce "job_hunte.gat", 50, 64, 123, 143, "[Test Guide]:  0! ",8;
-	end;
+	close;
 OnTimer193000:
 	areaannounce "job_hunte.gat", 50, 64, 123, 143, "[Test Guide]:  You ran out of time! You can challenge again later!.",8;
-	end;
+	close;
 OnTimer196000:
 	stopnpctimer;
 	areawarp "job_hunte.gat", 50, 64, 123, 143, "payon_in02.gat", 16, 26;
 	killmonsterall "job_hunte.gat";
 	donpcevent "HntTG::OnStart";
-	end;
+	close;
 }
 
 // SwitchHnt ------------------------------------------------------
@@ -805,7 +891,7 @@ job_hunte.gat,89,139,1	script	ExitHnt	45,2,2,{
 	warp "payon_in02.gat", 16, 26;
 	killmonsterall "job_hunte.gat";
 	donpcevent "HntTG::OnStart";
-	end;
+	close;
 }
 
 
@@ -816,7 +902,7 @@ job_hunte.gat,52,140,1	script	1-1::HntTrap	139,0,1,{
 	warp "payon_in02.gat", 16, 26;
 	killmonsterall "job_hunte.gat";
 	donpcevent "HntTG::OnStart";
-	end;
+	close;
 }
 
 job_hunte.gat,53,140,1	duplicate(HntTrap)	1-2	139,0,1
@@ -923,7 +1009,7 @@ job_hunte.gat,55,120,1	duplicate(HntTrap)	23-6	139,0,0
 job_hunte.gat,66,120,1	duplicate(HntTrap)	24-1	139,0,0
 job_hunte.gat,66,121,1	duplicate(HntTrap)	24-2	139,0,0
 job_hunte.gat,67,120,1	duplicate(HntTrap)	24-3	139,0,0
-job_hunte.gat,67,121,1	duplicate(HntTrap)	24-4	139,0,0
+job_hunte.gat,67,121,1	duplicate(HntTrap)	24-4	139,0,0	
 job_hunte.gat,114,118,1	duplicate(HntTrap)	25-1	139,0,0
 job_hunte.gat,114,119,1	duplicate(HntTrap)	25-2	139,0,0
 job_hunte.gat,115,118,1	duplicate(HntTrap)	25-3	139,0,0
@@ -1017,7 +1103,7 @@ job_hunte.gat,76,105,1	duplicate(HntTrap)	50-1	139,0,0
 job_hunte.gat,76,104,1	duplicate(HntTrap)	50-2	139,0,0
 job_hunte.gat,78,101,1	duplicate(HntTrap)	50-3	139,0,2
 job_hunte.gat,79,101,1	duplicate(HntTrap)	50-4	139,0,2
-job_hunte.gat,76,99,1	duplicate(HntTrap)	51-1	139,10
+job_hunte.gat,76,99,1	duplicate(HntTrap)	51-1	139,1,0
 job_hunte.gat,77,98,1	duplicate(HntTrap)	51-2	139,2,0
 job_hunte.gat,74,99,1	duplicate(HntTrap)	51-3	139,0,0
 job_hunte.gat,74,98,1	duplicate(HntTrap)	51-4	139,0,0
