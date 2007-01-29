@@ -6,11 +6,11 @@
 //= Further bugfixed and tested by Lupus
 //= Updated by keVn (Moved to Hugel)
 //===== Current Version: =====================================
-//= 1.6a
+//= 2.5
 //===== Compatible With: =====================================
-//= eAthena 1.0
+//= Freya
 //===== Description: =========================================
-//= Hunter Job Quest converted from aegis script
+//= Hunter Job Quest converted from Aegis script
 //===== Additional Comments: =================================
 //= 0.5 Fully working.
 //= 0.6 Changed global variable names to unique ones.
@@ -26,20 +26,31 @@
 //= to go. [Lupus]
 //= 1.6a Infinite Arrows exploit fix (thanx to Lorky, that
 //= reported the bug) [Lupus]
+//= 1.7 Moved the Job QUest to Hugel [Poki#3]
+//= 2.0 Changed numbers to constants. [Vicious]
+//= 2.1 Removed Duplicates [Silent]
+//= 2.2 Merged JFunc, fixed missing dialogues [Lupus]
+//= 2.2a Fixed Sharon resetting the test2 item set [Lupus]
+//= 2.3a 7 official sets of Demon Hunter,thx to Dr.Evil [Lupus]
+//= 2.4a Added missing next;, missing NPC names [Lupus]
+//= 2.5 "strcharinfo" -> "strcharinfo(0)" [FlavioJS]
+//= 2.6 Converted from eAthena to Freya [keVn]
+//============================================================ 
 //============================================================
 
 //<====================================== Job Changer ========================================>\\
 hu_in01.gat,386,374,4	script	Hunter Sharon	727,{
+
 	callfunc "F_BlockHigh",JOB_ARCHER_HIGH,"High Archer",JOB_SNIPER,"Sniper","Hunter Sharon";
 
 	if (BaseJob == JOB_ARCHER) goto L_Start;
-	if (BaseJob == Job_Novice) goto L_Novice;
-	if (BaseJob == Job_Hunter) goto L_Hunter;
-	if (BaseJob == Job_Swordman) goto L_Sword;
-	if (BaseJob == Job_Mage) goto L_Mage;
-	if (BaseJob == Job_Thief) goto L_Thief;
-	if (BaseJob == Job_Acolyte) goto L_Acolyte;
-	if (BaseJob == Job_Merchant) goto L_Merchant;
+	if (BaseJob == JOB_NOVICE) goto L_Novice;
+	if (BaseJob == JOB_HUNTER) goto L_Hunter;
+	if (BaseJob == JOB_SWORDMAN) goto L_Sword;
+	if (BaseJob == JOB_MAGE) goto L_Mage;
+	if (BaseJob == JOB_THIEF) goto L_Thief;
+	if (BaseJob == JOB_ACOLYTE) goto L_Acolyte;
+	if (BaseJob == JOB_MERCHANT) goto L_Merchant;
 
 	mes "What are YOU doing here? Did you come to do a little song and dance... ke.. keke....kekekeHahahahhaha!!!";
 	emotion e_heh;
@@ -324,7 +335,7 @@ L_Change:
 	mes "[Hunter Sharon]";
 	mes "There you go! You look great in the hunter outfit";
 
-	callfunc "Job_Change",Job_Hunter;
+	callfunc "Job_Change",JOB_HUNTER;
 	emotion e_no1;
 	next;
 	mes "[Hunter Sharon]";
@@ -367,8 +378,9 @@ L_Change:
 
 //<=========================== Demon Hunter: Second Test ===============================>\\
 hu_in01.gat,382,382,5	script	Demon Hunter	732,{
-	if(BaseJob == Job_Archer) goto L_Arc;
-	if(BaseJob == Job_Hunter) goto L_Hnt;
+
+	if(BaseJob == JOB_ARCHER) goto L_Arc;
+	if(BaseJob == JOB_HUNTER) goto L_Hnt;
 
 L_Other:
 	mes "[Demon Hunter]";
@@ -577,8 +589,9 @@ L_Done:
 
 //<=============================== Guild Master: Last Test =================================>\\
 payon_in02.gat,21,31,1	script	Guild Master#03	59,{
-	if(BaseJob == Job_Archer) goto L_Archer;
-	if(BaseJob == Job_Hunter) goto L_Hnt;
+
+	if(BaseJob == JOB_ARCHER) goto L_Archer;
+	if(BaseJob == JOB_HUNTER) goto L_Hnt;
 
 L_Other:
 	mes "[Hunter]";
