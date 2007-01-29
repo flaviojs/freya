@@ -469,6 +469,7 @@ int status_calc_pc(struct map_session_data* sd, int first)
 	memset(sd->monster_drop,0,sizeof(sd->monster_drop));
 	memset(sd->autospell,0,sizeof(sd->autospell));
 	memset(sd->autospell2,0,sizeof(sd->autospell2));
+	memset(sd->autospell3,0,sizeof(sd->autospell3));
 	sd->speed_add_rate = sd->aspd_add_rate = 100;
 	sd->double_add_rate = sd->perfect_hit_add = sd->get_zeny_add_num = 0;
 	sd->splash_range = sd->splash_add_range = 0;

@@ -293,6 +293,7 @@ bExpAddRace	2030
 bSPGainRace	2031
 bIntravision	2032
 bNoKnockBack	2033
+bAutoSpellWhenHitMagic	2034
 bAddMonsterDropItemGroup	2039
 bSPLossRate 2040
 bSPVanishRate	2042

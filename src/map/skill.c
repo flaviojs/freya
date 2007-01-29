@@ -1781,7 +1781,7 @@ int skill_attack(int attack_type, struct block_list* src, struct block_list *dsr
 
 	type = -1;
 	lv = (flag>>20)&0xf;
-	dmg = battle_calc_attack(attack_type, src, bl, sd, skillid, skilllv, flag&0xff);
+	dmg = battle_calc_attack(attack_type, src, bl, sd, tick, skillid, skilllv, flag&0xff);
 
 	if (src->type == BL_PET) { // [Valaris]
 		dmg.damage = battle_attr_fix(skilllv, skill_get_pl(skillid), status_get_element(bl));

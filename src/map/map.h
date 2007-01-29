@@ -324,7 +324,7 @@ struct map_session_data {
 	struct {
 		short id, lv, type;
 		int rate;
-	} autospell[MAX_PC_BONUS] /* autospell on attack*/ , autospell2[MAX_PC_BONUS]; /* autospell when being hit */
+	} autospell[MAX_PC_BONUS] /* Auto-spell on attack*/ , autospell2[MAX_PC_BONUS] /* Auto-spell when being hit */ , autospell3[MAX_PC_BONUS]; /* Auto-spell when being hit with magical damage */
 	short hp_drain_rate, hp_drain_per, sp_drain_rate, sp_drain_per;
 	short hp_drain_rate_, hp_drain_per_, sp_drain_rate_, sp_drain_per_;
 	short hp_drain_value, sp_drain_value, hp_drain_value_, sp_drain_value_;
@@ -755,7 +755,7 @@ enum {
 	SP_SKILL_ATK, SP_UNSTRIPABLE, SP_ADD_DAMAGE_BY_CLASS, // 2018-2020
 	SP_SP_GAIN_VALUE, SP_IGNORE_DEF_MOB, SP_HP_LOSS_RATE, SP_ADDRACE2, SP_HP_GAIN_VALUE, // 2021-2025
 	SP_SUBSIZE, SP_DAMAGE_WHEN_UNEQUIP, SP_ADD_ITEM_HEAL_RATE, SP_LOSESP_WHEN_UNEQUIP, SP_EXP_ADDRACE, // 2026-2030
-	SP_SP_GAIN_RACE = 2031, SP_INTRAVISION, SP_NOKNOCKBACK,
+	SP_SP_GAIN_RACE = 2031, SP_INTRAVISION, SP_NOKNOCKBACK, SP_AUTOSPELL_WHENHITMAGIC, // 2031-2034
 
 	SP_ADD_MONSTER_DROP_ITEMGROUP = 2039, SP_SP_LOSS_RATE = 2040,
 	SP_SP_VANISH_RATE = 2042, SP_SP_GAIN_VALUE_RACE

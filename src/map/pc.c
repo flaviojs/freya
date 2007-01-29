@@ -2752,6 +2752,21 @@ void pc_bonus4(struct map_session_data *sd, int type, int type2, int type3, int 
 			}
 		}
 		break;
+	case SP_AUTOSPELL_WHENHITMAGIC:
+		if(sd->state.lr_flag != 2) {
+			for (n = 0; n < MAX_PC_BONUS; n++) {
+				if (sd->autospell3[n].id == 0 || sd->autospell3[n].id == type2) {
+					if (sd->autospell3[n].lv > type3 || (sd->autospell3[n].lv == type3 && sd->autospell3[n].rate >= type4))
+						break;
+					sd->autospell3[n].id = type2;
+					sd->autospell3[n].lv = type3;
+					sd->autospell3[n].rate = type4;
+					sd->autospell3[n].type = val; // 0: Self, 1: Enemy
+					break;
+				}
+			}
+		}
+		break;
 	default:
 		if (battle_config.error_log)
 			printf("pc_bonus4: unknown type %d %d %d %d %d!\n", type, type2, type3, type4, val);

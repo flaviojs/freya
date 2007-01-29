@@ -1584,7 +1584,7 @@ INSERT INTO `item_db` VALUES (4330, 'Evil_Snake_Lord_Card', 'Evil Snake Lord Car
 INSERT INTO `item_db` VALUES (4331, 'Heater_Card', 'Heater Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus bCritical,3; if(GetPureJob==JOB_SWORDMAN) bonus bFlee2,3;');
 
 # New Cards 2006
-INSERT INTO `item_db` VALUES (4332, 'Waste_Stove_Card', 'Waste Stove Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bBaseAtk,5; bonus bInt,1; if(isequipped(4185,4293,4312)==0) end; bonus bStr,3; bonus bMaxSP,80; bonus bBaseAtk,25; bonus4 bAutoSpell,32,5,10,1; bonus2 bSkillAtk,271,10; if(Basejob==JOB_MONK) bonus bUseSPrate,-10; bonus bNoCastCancel,0;');
+INSERT INTO `item_db` VALUES (4332, 'Waste_Stove_Card', 'Waste Stove Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bBaseAtk,5; bonus bInt,1; if(isequipped(4185,4293,4312)==0) end; bonus bStr,3; bonus bMaxSP,80; bonus bBaseAtk,25; bonus4 bAutoSpell,32,5,100,1; bonus2 bSkillAtk,271,10; if(Basejob==JOB_MONK) bonus bUseSPrate,-10; bonus bNoCastCancel,0;');
 INSERT INTO `item_db` VALUES (4333, 'Venomous_Card', 'Venomous Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus2 bAddEffWhenHit,4,3000; bonus2 bAddEff,4,3000;');
 INSERT INTO `item_db` VALUES (4334, 'Noxious_Card', 'Noxious Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 4, 0, 0, 0, NULL, 'bonus bLongAtkDef,10; bonus2 bSubEle,0,10;');
 INSERT INTO `item_db` VALUES (4335, 'Pitman_Card', 'Pitman_Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus2 bSkillAtk,90,5; bonus2 bSkillAtk,91,5; bonus bLoseSPWhenUnequip,50;');
@@ -1600,7 +1600,7 @@ INSERT INTO `item_db` VALUES (4344, 'Anopheles_Card', 'Anopheles Card', 6, 0, 10
 INSERT INTO `item_db` VALUES (4345, 'Hill_Wind_Card', 'Hill Wind Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus2 bSkillAtk,21,5; bonus2 bSkillAtk,84,5; bonus2 bSkillAtk,85,5; bonus bLoseSPWhenUnequip,50;');
 INSERT INTO `item_db` VALUES (4346, 'Egnigem_Cenia_Card', 'Egnigem Cenia Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bStr,readparam(bInt)/18;');
 INSERT INTO `item_db` VALUES (4347, 'Armeyer_Dinze_Card', 'Armeyer Dinze Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus3 bAddMonsterDropItem,12053,5,100;');
-INSERT INTO `item_db` VALUES (4348, 'Wikebine_Tres_Card', 'Wikebine Tres Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus4 bAutoSpell,217,1,50,1; if(isequipped(4039,4210,4257,4230)==0) end; bonus bStr,6; bonus bAgi,4; bonus2 bSkillAtk,212,10; bonus4 bAutoSpell,217,5,50,1; if(Basejob==JOB_ROGUE) goto L_SetEnd; bonus4 bAutoSpell,219,1,200,1; L_SetEnd: bonus bUseSPrate,-20;');
+INSERT INTO `item_db` VALUES (4348, 'Wikebine_Tres_Card', 'Wikebine Tres Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus4 bAutoSpell,217,1,500,1; if(isequipped(4039,4210,4257,4230)==0) end; bonus bStr,6; bonus bAgi,4; bonus2 bSkillAtk,212,10; bonus4 bAutoSpell,217,5,500,1; if(Basejob==JOB_ROGUE) goto L_SetEnd; bonus4 bAutoSpell,219,1,200,1; L_SetEnd: bonus bUseSPrate,-20;');
 INSERT INTO `item_db` VALUES (4349, 'Errende_Ebecee_Card', 'Errende Ebecee Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus4 bAutoSpellWhenHit,25,1,500,0;');
 INSERT INTO `item_db` VALUES (4350, 'Laurell_Weinder_Card', 'Laurell Weinder Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus2 bSkillAtk,88,3; bonus2 bSkillAtk,89,3; bonus bLoseSPWhenUnequip,50;');
 INSERT INTO `item_db` VALUES (4351, 'Kavach_Icarus_Card', 'Kavach Icarus Card', 6, 20, 10, 10, 0, 0, 0, 0, 0, 2, 4, 0, 0, 0, NULL, 'bonus bFlee,10;if(getequiprefinerycnt(5)>4) end; bonus bFlee,20; bonus bFlee2,1;');
@@ -1617,11 +1617,8 @@ INSERT INTO `item_db` VALUES (4360, 'Eremes_Guile_Card', 'Eremes Guile Card', 6,
 INSERT INTO `item_db` VALUES (4361, 'Mastersmith_Howard_Card', 'Mastersmith Howard Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus bBreakWeaponRate,1000; bonus bBreakArmorRate,700;');
 INSERT INTO `item_db` VALUES (4362, 'Howard_Alt-Eisen_Card', 'Howard Alt-Eisen Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus bAspdRate,-5; bonus bHit,30;');
 # 4363: Effect Undecided/Missing
-INSERT INTO `item_db` VALUES (4363, 'High_Priest_Margaretha_C', 'High Priest Margaretha C', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus4 bAutoSpellWhenHit,12,4,50,0;');
-# Cannot fully implement Margaretha Sorin Card (4364), no support for its effect:
-# Current kRO: Int +1, Add a 15% chance of auto casting Level 5 Lex Divina on the enemy when receiving Magical Damage
-# 4364: Effect Undecided/Missing
-INSERT INTO `item_db` VALUES (4364, 'Margaretha_Sorin_Card', 'Margaretha Sorin Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 769, 0, 0, 0, NULL, 'bonus bInt,1;');
+INSERT INTO `item_db` VALUES (4363, 'High_Priest_Margaretha_C', 'High Priest Margaretha C', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus4 bAutoSpellWhenHit,12,4,500,0;');
+INSERT INTO `item_db` VALUES (4364, 'Margaretha_Sorin_Card', 'Margaretha Sorin Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 769, 0, 0, 0, NULL, 'bonus bInt,1; bonus4 bAutoSpellWhenHitMagic,76,5,1500,1;');
 # 4365: Effect Undecided/Missing
 INSERT INTO `item_db` VALUES (4365, 'High_Wizard_Kathryne_Car', 'High Wizard Kathryne Car', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 769, 0, 0, 0, NULL, 'bonus bInt,3; bonus bIgnoreMDefRace,10; bonus bCastrate,100; bonus bLoseSPWhenUnequip,2000;');
 INSERT INTO `item_db` VALUES (4366, 'Kathryne_Keyron_Card', 'Kathryne Keyron Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 769, 0, 0, 0, NULL, 'bonus bCastrate,getequiprefinerycnt(1)*-1; if(getequiprefinerycnt(1)>9) bonus bMatkRate,2;');
@@ -1641,7 +1638,7 @@ INSERT INTO `item_db` VALUES (4377, 'Grove_Card', 'Grove Card', 6, 0, 10, 10, 0,
 INSERT INTO `item_db` VALUES (4378, 'Gold_Acidus_Card', 'Gold Acidus Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 64, 0, 0, 0, NULL, 'bonus bMaxHPrate,4; bonus bMaxSPrate,4; if(getequiprefinerycnt(6)>4) end; bonus bMaxHPrate,4; bonus bMaxSPrate,4; bonus bHPrecovRate,5; bonus bSPrecovRate,5;');
 INSERT INTO `item_db` VALUES (4379, 'Blue_Acidus_Card', 'Blue Acidus Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 769, 0, 0, 0, NULL, 'bonus bMaxSP,40; if(getequiprefinerycnt(1)>4) end; bonus bSPrecovRate,5; bonus bMaxSP,40;');
 INSERT INTO `item_db` VALUES (4380, 'Red_Ferus_Card', 'Red Ferus Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 4, 0, 0, 0, NULL, 'bonus2 bSkillAtk,80,5; bonus2 bSkillAtk,83,5; bonus bLoseSPWhenUnequip,50;');
-INSERT INTO `item_db` VALUES (4381, 'Green_Ferus_Card', 'Green Ferus Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 64, 0, 0, 0, NULL, 'bonus bVit,1;  bonus bMaxHPrate,10; if(isequipped(4199,4234,4252,4178)==0) end; bonus bDex,5; bonus2 bSkillAtk,394,5; bonus2 bSkillAtk,324,10; bonus2 bSkillAtk,316,10; if(Basejob==JOB_BARD || Basejob==JOB_DANCER) bonus4 bAutoSpellWhenHit,489,2,50,1;');
+INSERT INTO `item_db` VALUES (4381, 'Green_Ferus_Card', 'Green Ferus Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 64, 0, 0, 0, NULL, 'bonus bVit,1;  bonus bMaxHPrate,10; if(isequipped(4199,4234,4252,4178)==0) end; bonus bDex,5; bonus2 bSkillAtk,394,5; bonus2 bSkillAtk,324,10; bonus2 bSkillAtk,316,10; if(Basejob==JOB_BARD || Basejob==JOB_DANCER) bonus4 bAutoSpellWhenHit,489,2,500,1;');
 INSERT INTO `item_db` VALUES (4382, 'Yellow_Novus_Card', 'Yellow Novus Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus2 bResEff,7,3000; bonus2 bAddEff,7,3000;');
 INSERT INTO `item_db` VALUES (4383, 'Red_Novus_Card', 'Red Novus Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bMaxHP,500; bonus bHPrecovRate,10; if(isequipped(4208,4258,4325,4327)==4) end; bonus bInt,3; bonus2 bSkillAtk,91,10; bonus2 bSkillAtk,21,10; if(Basejob!=JOB_SAGE) end; bonus bMagicDamageReturn,20; bonus2 bAddMonsterDropItem,716,100; bonus2 bAddMonsterDropItem,715,100; bonus bCastrate,-20;');
 INSERT INTO `item_db` VALUES (4384, 'Hydrolancer_Card', 'Hydrolancer Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus4 bAutoSpell,277,1,1000,1;');
@@ -1660,7 +1657,7 @@ INSERT INTO `item_db` VALUES (4396, 'Odium_of_Card', 'The Hatred of Thanatos C',
 INSERT INTO `item_db` VALUES (4397, 'Despero_of_Card', 'The Despair of Thanatos ', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 32, 0, 0, 0, NULL, 'bonus bInt,getequiprefinerycnt(4)-6;');
 INSERT INTO `item_db` VALUES (4398, 'Dolor_of_Thanatos_Card', 'The Anguish of Thanatos ', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus2 bMagicAddEle,7,30;');
 INSERT INTO `item_db` VALUES (4399, 'Thanatos_Phantom_Card', 'Thantos Phantom Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus bDefRatioAtkRace,11; bonus bDefRatioAtkRace,11; bonus bSPDrainValue,-1; bonus bDef,-30; bonus bFlee,-30;');
-INSERT INTO `item_db` VALUES (4400, 'Aliza_Card', 'Aliza Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'if(Basejob!=JOB_DANCER) goto L_next; bonus4 bAutoSpellWhenHit,1011,1,100,1; end; L_next: bonus4 bAutoSpellWhenHit,1011,1,50,1;');
+INSERT INTO `item_db` VALUES (4400, 'Aliza_Card', 'Aliza Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'if(Basejob!=JOB_DANCER) goto L_next; bonus4 bAutoSpellWhenHit,1011,1,1000,1; end; L_next: bonus4 bAutoSpellWhenHit,1011,1,500,1;');
 INSERT INTO `item_db` VALUES (4401, 'Alicel_Card', 'Alicel Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bFlee,10; bonus bDef,-5;');
 INSERT INTO `item_db` VALUES (4402, 'Aliot_Card', 'Aliot Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'if(GetPureJob==JOB_SWORDMAN || GetPureJob==JOB_MERCHANT || GetPureJob==JOB_THIEF) bonus bStr, 2; if(GetPureJob==JOB_SWORDMAN || GetPureJob==JOB_MERCHANT || GetPureJob==JOB_THIEF) bonus bMaxHPrate, 5; if(GetPureJob==JOB_MAGE || GetPureJob==JOB_ARCHER || GetPureJob==JOB_ACOLYTE) bonus bInt, 2; if(GetPureJob==JOB_MAGE || GetPureJob==JOB_ARCHER || GetPureJob==JOB_ACOLYTE) bonus bMaxSPrate, 5;');
 # 4403: Effect Undecided/Missing
@@ -2993,8 +2990,8 @@ INSERT INTO `item_db` VALUES (13010, 'Ashura', 'Ashura', 4, 32000, 0, 600, 50, 0
 INSERT INTO `item_db` VALUES (13011, 'Ashura_', 'Ashura', 4, 32000, 0, 600, 50, 0, 1, 3, 268435456, 2, 2, 1, 12, 1, NULL, 'bonus bMatkRate,10;');
 INSERT INTO `item_db` VALUES (13012, 'Murasame', 'Murasame', 4, 48000, 0, 700, 95, 0, 1, 1, 268435456, 2, 2, 2, 24, 1, NULL, 'bonus bAtkEle,1; bonus2 bCriticalAddRace,7,10;');
 INSERT INTO `item_db` VALUES (13013, 'Murasame_', 'Murasame', 4, 48000, 0, 700, 95, 0, 1, 2, 268435456, 2, 2, 2, 24, 1, NULL, 'bonus bAtkEle,1; bonus2 bCriticalAddRace,7,10;');
-INSERT INTO `item_db` VALUES (13014, 'Hakujin', 'Hakujin', 4, 120000, 0, 800, 120, 0, 1, 0, 268435456, 2, 2, 3, 42, 1, NULL, 'bonus4 bAutoSpell,28,1,20,0;');
-INSERT INTO `item_db` VALUES (13015, 'Hakujin_', 'Hakujin', 4, 120000, 0, 800, 120, 0, 1, 1, 268435456, 2, 2, 3, 42, 1, NULL, 'bonus4 bAutoSpell,28,1,20,0;');
+INSERT INTO `item_db` VALUES (13014, 'Hakujin', 'Hakujin', 4, 120000, 0, 800, 120, 0, 1, 0, 268435456, 2, 2, 3, 42, 1, NULL, 'bonus4 bAutoSpell,28,1,100,0;');
+INSERT INTO `item_db` VALUES (13015, 'Hakujin_', 'Hakujin', 4, 120000, 0, 800, 120, 0, 1, 1, 268435456, 2, 2, 3, 42, 1, NULL, 'bonus4 bAutoSpell,28,1,100,0;');
 INSERT INTO `item_db` VALUES (13016, 'Poison_Knife__', 'Poison Knife', 4, 0, 10, 800, 64, 0, 1, 2, 404709102, 2, 2, 3, 65, 1, NULL, 'bonus bAtkEle,5; bonus2 bAddEff,Eff_Poison,3000;');
 INSERT INTO `item_db` VALUES (13017, 'Ice_Pick_', 'Ice Pick', 4, 0, 10, 600, 70, 0, 1, 1, 404709102, 2, 2, 4, 36, 1, NULL, 'bonus bDefRatioAtkRace,10; bonus bDefRatioAtkRace,11;');
 INSERT INTO `item_db` VALUES (13018, 'Sucsamad_', 'Sucsamad', 4, 0, 10, 800, 140, 0, 1, 1, 404709102, 2, 2, 4, 36, 1, NULL, 'bonus2 bAddEle,2,10; bonus2 bAddEle,4,10; bonus bUnbreakableWeapon,0;');
@@ -3058,7 +3055,7 @@ INSERT INTO `item_db` VALUES (13259, 'Kunai_of_Deadly_Poison', 'Kunai of Deadly 
 INSERT INTO `item_db` VALUES (13300, 'Kazema_Beneki', 'Fuuma Shuriken Beneki', 4, 90000, 0, 3000, 150, 0, 1, 0, 268435456, 2, 34, 4, 65, 22, NULL, 'bonus bAtkEle,4; bonus bAgi,-1; bonus bDex,-2;');
 INSERT INTO `item_db` VALUES (13301, 'Kazema_Daisharin', 'Fuuma Shuriken Daisharin', 4, 40000, 0, 2500, 50, 0, 1, 3, 268435456, 2, 34, 4, 42, 22, NULL, 'bonus2 bAddEff,Eff_Bleeding,500;');
 INSERT INTO `item_db` VALUES (13302, 'Kazema_Daisharin_', 'Fuuma Shuriken Daisharin', 4, 40000, 0, 2500, 50, 0, 1, 4, 268435456, 2, 34, 4, 42, 22, NULL, 'bonus2 bAddEff,Eff_Bleeding,500;');
-INSERT INTO `item_db` VALUES (13303, 'Kazema_Rekka', 'Fuuma Shuriken Rekka', 4, 78000, 0, 1500, 185, 0, 1, 0, 268435456, 2, 34, 4, 55, 22, NULL, 'bonus bDex,-2; bonus bAtkEle,3; bonus4 bAutoSpell,17,5,20,1;');
+INSERT INTO `item_db` VALUES (13303, 'Kazema_Rekka', 'Fuuma Shuriken Rekka', 4, 78000, 0, 1500, 185, 0, 1, 0, 268435456, 2, 34, 4, 55, 22, NULL, 'bonus bDex,-2; bonus bAtkEle,3; bonus4 bAutoSpell,17,5,300,1;');
 
 # Extra One-Handed Swords
 INSERT INTO `item_db` VALUES (13400, 'Cutlus_', 'Cutlus', 4, 0, 10, 900, 150, 0, 1, 1, 414946, 2, 2, 4, 40, 2, NULL, 'skill 5,5; bonus bStr,2; bonus bDef,1;');

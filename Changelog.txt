@@ -5,6 +5,10 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/28/07
+	* Fixed: Some item auto-spell rates [Tsuyuki]
+	* Added: bAutoSpellWhenHitMagic for Margaretha Sorin Card's bonuses [Tsuyuki]
+	 - Note: Works just like bAutoSpellWhenHit, only for spells
+	 - Note: Also added the bonus to the card
 	* Fixed: Damage formula and never miss calculations for Venom Splasher [Tsuyuki]
 	* Updated: Hunter Job Quest -> Moved to Hugel [keVn]
 	* Removed: Custom Mail System [Tsuyuki]

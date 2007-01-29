@@ -2399,7 +2399,7 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
  *------------------------------------------
  */
 struct Damage battle_calc_magic_attack(
-	struct block_list *bl, struct block_list *target, int skill_num, int skill_lv, int flag)
+	struct block_list *bl, struct block_list *target, int tick, int skill_num, int skill_lv, int flag)
 {
 	int mdef1 = status_get_mdef(target);
 	int mdef2 = status_get_mdef2(target);
@@ -2742,9 +2742,46 @@ struct Damage battle_calc_magic_attack(
 			damage = 0;
 	}
 
+	// Gravitation Field Actual Damage
 	if(skill_num != HW_GRAVITATION)
 		damage = battle_calc_damage(bl, target, damage, div_, skill_num, skill_lv, aflag);
 
+	// Magical damage auto-spell (For Kathryne Keyron Card)
+	if(tsd && damage > 0) {
+		int n;
+		for (n = 0; n < MAX_PC_BONUS; n++) {
+			if (tsd->autospell3[n].id == 0)
+				break;
+			else if (rand() % 10000 < tsd->autospell3[n].rate) {
+				int skilllv = tsd->autospell3[n].lv, i;
+				struct block_list *tbl;
+				if (tsd->autospell3[n].type == 0)
+					tbl = target;
+				else
+					tbl = bl;
+				if ((i = skill_get_inf(tsd->autospell3[n].id) == 2) || i == 32)	// Area or trap
+					skill_castend_pos2(target, tbl->x, tbl->y, tsd->autospell3[n].id, skilllv, tick, flag);
+				else {
+					switch(skill_get_nk(tsd->autospell3[n].id)) {
+						case 0:	// Normal skill
+						case 1: // No damage skill
+							if (tsd->autospell3[n].type) {	// Target
+								if ((tsd->autospell3[n].id == AL_HEAL || (tsd->autospell3[n].id == ALL_RESURRECTION && tbl->type != BL_PC)) &&
+									!battle_check_undead(status_get_race(tbl), status_get_elem_type(tbl)))
+										break;
+								}
+							skill_castend_nodamage_id(target, tbl, tsd->autospell3[n].id, skilllv, tick, flag);
+							break;
+						case 2:	// Splash damage skill
+							skill_castend_damage_id(target, tbl, tsd->autospell3[n].id, skilllv, tick, flag);
+							break;
+					}
+				}
+			}
+		}
+	}
+
+	// Magic Damage Reflection (For Cat o' Nine Tails Card, Merchant Card Set, and Maya Card)
 	if(tsd && tsd->magic_damage_return > 0 && tsd->magic_damage_return > rand()%100)
 	{
 		short calc_rdamage = 0;
@@ -3020,7 +3057,7 @@ struct Damage  battle_calc_misc_attack(
  *------------------------------------------
  */
 struct Damage battle_calc_attack(int attack_type,
-	struct block_list *bl, struct block_list *target, struct map_session_data *sd, int skill_num, int skill_lv, int flag)
+	struct block_list *bl, struct block_list *target, struct map_session_data *sd, int tick, int skill_num, int skill_lv, int flag)
 {
 	struct Damage d;
 
@@ -3028,7 +3065,7 @@ struct Damage battle_calc_attack(int attack_type,
 	case BF_WEAPON:
 		return battle_calc_weapon_attack(bl, target, skill_num, skill_lv, flag);
 	case BF_MAGIC:
-		return battle_calc_magic_attack(bl, target, skill_num, skill_lv, flag);
+		return battle_calc_magic_attack(bl, target, tick, skill_num, skill_lv, flag);
 	case BF_MISC:
 		return battle_calc_misc_attack(bl, target, sd, skill_num, skill_lv, flag);
 	default:
