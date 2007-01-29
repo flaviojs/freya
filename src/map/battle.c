@@ -2472,7 +2472,7 @@ struct Damage battle_calc_magic_attack(
 			blewcount |= 0x10000;
 			break;
 		case ALL_RESURRECTION:
-		case PR_TURNUNDEAD:	// 攻撃リザレクションとターンアンデッド
+		case PR_TURNUNDEAD:
 			if(battle_check_undead(t_race, t_ele)) {
 				int hp, mhp, thres;
 				hp = status_get_hp(target);
@@ -2491,7 +2491,7 @@ struct Damage battle_calc_magic_attack(
 			normalmagic_flag = 0;
 			break;
 
-		case MG_NAPALMBEAT:	// ナパームビート（分散計算込み）
+		case MG_NAPALMBEAT:
 			MATK_FIX(70+ skill_lv*10,100);
 			if(flag>0){
 				MATK_FIX(1,flag);
@@ -2555,6 +2555,7 @@ struct Damage battle_calc_magic_attack(
 			flag_aoe = 1;
 			break;
 		case AL_HOLYLIGHT:
+			// Spirit of the Priest increases Holy Light damage x5
 			if (sd && sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_PRIEST) {
 				MATK_FIX(625, 100);
 			}	else {
@@ -2566,6 +2567,7 @@ struct Damage battle_calc_magic_attack(
 			break;
 		case HW_NAPALMVULCAN:
 			MATK_FIX(70 + skill_lv * 10, 100);
+			// Divides damage among targets
 			if(flag>0){
 				MATK_FIX(1, flag);
 			} else {
@@ -2579,16 +2581,13 @@ struct Damage battle_calc_magic_attack(
 				return md;
 			} else if (tsd) {
 				damage = tsd->status.sp * 2;
-				matk_flag = 0; // don't consider matk and matk2
+				matk_flag = 0; // Don't consider matk and matk2
 			}
 			break;
-// A lot of Corrections to BREAKER SKILL (pneuma included) (Posted on freya's bug report by Gawaine)
 		case ASC_BREAKER:
 			damage = rand() % 500 + 500 + skill_lv * status_get_int(bl) * 5;
-			normalmagic_flag = 0; //Damage is not affected by matk and ignores mdef
+			normalmagic_flag = 0; // Damage is not affected by matk and ignores mdef
 			break;
-// End ----------- A lot of Corrections to BREAKER SKILL (pneuma included) (Posted on freya's bug report by Gawaine)
-
 		case HW_GRAVITATION:
 			damage = 200 + 200 * skill_lv;
 			if(tmd && tmd->class == 1288) //According reports, it has a fixed damage of 400 on emp [Proximus]
@@ -2632,7 +2631,7 @@ struct Damage battle_calc_magic_attack(
 		}
 	}
 
-	if(normalmagic_flag){	// 一般魔法ダメージ計算
+	if(normalmagic_flag){ // For skills that aren't affected by target mdef/user matk
 		int imdef_flag = 0;
 		if (matk_flag) {
 			if(matk1 > matk2)
@@ -2732,7 +2731,9 @@ struct Damage battle_calc_magic_attack(
 	if(t_mode & 0x40 && damage > 0)
 		damage = 1;
 
-	if(tsd && status_isimmune(target))
+	// Soul Destroyer (ASC_BREAKER) is not affected by GTB/other magic damage reductions
+	// This block of code is only activated if target has a GTB card on, or is in range of Wand of Hermode (status_isimmune check)
+	if(tsd && status_isimmune(target) && skill_num != ASC_BREAKER)
 	{
 		if(battle_config.gtb_pvp_only != 0)
 		{
@@ -2742,7 +2743,7 @@ struct Damage battle_calc_magic_attack(
 			damage = 0;
 	}
 
-	// Gravitation Field Actual Damage
+	// Gravitation Field fixed damage (not affected by matk)
 	if(skill_num != HW_GRAVITATION)
 		damage = battle_calc_damage(bl, target, damage, div_, skill_num, skill_lv, aflag);
 
@@ -2782,7 +2783,8 @@ struct Damage battle_calc_magic_attack(
 	}
 
 	// Magic Damage Reflection (For Cat o' Nine Tails Card, Merchant Card Set, and Maya Card)
-	if(tsd && tsd->magic_damage_return > 0 && tsd->magic_damage_return > rand()%100)
+	// Soul Destroyer (ASC_BREAKER) is not affected by the cards that use this bonus (Magic Damage Return)
+	if(tsd && tsd->magic_damage_return > 0 && tsd->magic_damage_return > rand()%100 && skill_num != ASC_BREAKER)
 	{
 		short calc_rdamage = 0;
 		

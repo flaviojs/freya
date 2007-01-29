@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/28/07
+	* Fixed: Soul Destroyer (ASC_BREAKER) is no longer affected by GTB/Maya/other magical damage reductions [Tsuyuki]
+	 - Source: http://freya.dns.st/mantis/view.php?id=332
 	* Fixed: Some item auto-spell rates [Tsuyuki]
 	* Added: bAutoSpellWhenHitMagic for Margaretha Sorin Card's bonuses [Tsuyuki]
 	 - Note: Works just like bAutoSpellWhenHit, only for spells
