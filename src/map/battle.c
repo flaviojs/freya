@@ -1329,11 +1329,13 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 					hitrate += 50;
 				break;
 			case AS_SPLASHER:
-				skillratio += 100 + 20 * skill_lv;	// FORMULA: damage * (200 + 20 * skill_lv + 20 * pc_checkskill(sd, AS_POISONREACT)) / 100
+				skillratio += 400 + 50 * skill_lv; // Formula (from kRO/iRO homepages: damage * ((500+ (50 x skill_lv))/100) | OLD FORMULA: damage * (200 + 20 * skill_lv + 20 * pc_checkskill(sd, AS_POISONREACT)) / 100
 				if(sd)
 					skillratio += 20 * pc_checkskill(sd, AS_POISONREACT);
 				if(wflag > 1)
 					skillratio /= wflag;
+				if(!wflag) // Only if user is the one exploding
+					flag.hit = 1; // Always hits
 				break;
 			case AS_VENOMKNIFE:
 				flag.cardfix = 0;

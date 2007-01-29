@@ -5,6 +5,7 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 01/28/07
+	* Fixed: Damage formula and never miss calculations for Venom Splasher [Tsuyuki]
 	* Updated: Hunter Job Quest -> Moved to Hugel [keVn]
 	* Removed: Custom Mail System [Tsuyuki]
 	 - Note: Since theres an official mail system that will be in eventually
