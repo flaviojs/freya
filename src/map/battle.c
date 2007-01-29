@@ -1956,14 +1956,14 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 					skillratio += sd->skillatk[i].val;
 		}
 
-		ATK_ADD(bonus_damage);	// add fixed amount of additional damage
+		ATK_ADD(bonus_damage);	// Add fixed amount of additional damage
 		if(skillratio != 100)
-			ATK_SCALE(skillratio);	// apply damage modifier
+			ATK_SCALE(skillratio);	// Apply damage modifier
 
-		// Added Shield Chain/Boomerang  to ignore both the Ice Pick and Brocca effects. [Bison]
-		if(sd && skill_num != CR_GRANDCROSS && skill_num != AS_VENOMKNIFE && skill_num != CR_SHIELDBOOMERANG && skill_num != PA_SHIELDCHAIN)
+		// Added Shield Chain/Boomerang to ignore both the Ice Pick and Brocca effects. [Bison]
+		if (sd && skill_num != CR_GRANDCROSS && skill_num != AS_VENOMKNIFE && skill_num != CR_SHIELDBOOMERANG && skill_num != PA_SHIELDCHAIN)
 		{
-			if (skill_num != PA_SACRIFICE && skill_num != MO_INVESTIGATE && !flag.cri) { //Elemental/Racial adjustments
+			if (skill_num != PA_SACRIFICE && skill_num != MO_INVESTIGATE && !flag.cri) { // Elemental/Racial adjustments
 				char raceele_flag = 0, raceele_flag_ = 0;
 				if(sd->def_ratio_atk_ele & (1<<t_ele) || sd->def_ratio_atk_race & (1<<t_race) ||
 					sd->def_ratio_atk_race & (t_mode&0x20?1<<10:1<<11))
@@ -1981,14 +1981,14 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 				if (raceele_flag || raceele_flag_)
 					ATK_SCALE2(raceele_flag?(def1 + def2):100, raceele_flag_?(def1 + def2):100);
 			}
-	
+
 			if (!flag.idef && ((tmd && sd->ignore_def_mob_ & (t_mode&0x20?2:1)) || sd->ignore_def_ele & (1<<t_ele) ||
 				sd->ignore_def_race & (1<<t_race) || sd->ignore_def_race & (t_mode&0x20?1<<10:1<<11)))
 				flag.idef = 1;
 
 			if (!flag.idef2 && ((tmd && sd->ignore_def_mob_ & (t_mode&0x20?2:1)) || sd->ignore_def_ele_ & (1<<t_ele) ||
 				sd->ignore_def_race_ & (1<<t_race) || sd->ignore_def_race_ & (t_mode&0x20?1<<10:1<<11))) {
-				if(battle_config.left_cardfix_to_right && flag.righthand) // move effect to right hand
+				if(battle_config.left_cardfix_to_right && flag.righthand) // Move effect to right hand
 					flag.idef = 1;
 				else
 					flag.idef2 = 1;
