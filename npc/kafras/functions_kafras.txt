@@ -1,4 +1,4 @@
-//===== eAthena Script ======================================= 
+//===== Freya Script ========================================= 
 //= Kafra Functions
 //===== By: ================================================== 
 //= eAthena Dev Team
@@ -194,7 +194,7 @@ function	script	F_Kafra	{
 // Storage Function =======================================================
 function	script	F_KafStor	{
 	if(getarg(0) == 1){
-		if(guildopenstorage(0) == 1){
+		if(guildopenstorage() == 1){
 			mes "[Kafra]";
 			mes "I'm sorry but another guild member is using the guild storage";
 			mes "right now.  Please wait until that person is finished.";
@@ -205,7 +205,7 @@ function	script	F_KafStor	{
 		cutin "", 255;
 		close;
 	}
-	if(basicskillcheck(0) && getskilllv(1) < 6){
+	if(basicskillcheck() && getskilllv(1) < 6){
 		mes "[Kafra]";
 		mes "I am sorry but you have to be at least Novice level 6 if you want to use the storage.";
 		return;
@@ -316,7 +316,7 @@ function	script	F_KafCart	{
 		mes "I'm sorry but you need the skill ^0000FF'Pushcart'^000000 to rent a cart.";
 		return 1;
 	}
-	if(checkcart(0) == 1){
+	if(Cart){
 		mes "[Kafra]";
 		mes "Excuse me... but you already have a cart....";
 		emotion e_swt;
@@ -526,7 +526,7 @@ function	script	F_EntKafCode	{
 	set @kafcode_try,@kafcode_try+1;
 	if(@kafcode_try>10) {
 		set @kafcode_try,0;
-		logmes "Hack: Tried to fit storage password.";
+//		logmes "Hack: Tried to fit storage password.";
 	}
 	input @code_;
 	if(@code_<1000) {

@@ -1,132 +1,440 @@
-//===== Athena Script =====================================
-//= Juperos Dungeon Quests
+//===== Freya Script ======================================
+//= Ruins of Juperos Quest
 //===== By ================================================
-//= MasterOfMuppets
+//= Tsuyuki
 //===== Version ===========================================
-//= 1.0
+//= 0.6a
 //===== Compatible With ===================================
-//= eAthena 1.0
+//= Freya
 //===== Description =======================================
-//= 
+//= Only Jupe_Area2.gat part is scripted, JupeArea1 is disabled
+//= for the time being, and monsters won't spawn in Jupe_Area2.gat
+//= until I finish version 1.0. Will update very soon. Also missing
+//= cutins and the broadcasted messages past Juperos_02.gat.
 //===== Comments ==========================================
-//= 1.0 First version, partly implemented [MasterOfMuppets]
+//= 0.5 Added first version [Tsuyuki]
+//= 0.6 Replaced 'monster' with 'areamonster' on certain occasions [Tsuyuki]
+//= 0.6a Fixed Gate Switches not respawning [Galaxy & Tsuyuki]
 //=========================================================
 
-juperos_01.gat,79,91,1	script	Sculpture#Juperos1	111,{
 
-	mes "^3131FFIt's a sculpture that";
-	mes "looks familiar to you.";
-	close;
+juperos_01.gat,99,92,0	script	#JupeLv2Warp	139,3,3,{
 
+OnTouch:
+	mes "^666666[" + strcharinfo(0) + "]";
+	mes "^000000This light...";
+	mes "It feels like...";
+	mes "Its warmth is...";
+	mes "Wrapping all over me...";
+	next;
+	menu "Ah, it's so nice...",JupeLv2Warp,"No! This is wrong!",-;
+
+	mes "^666666[" + strcharinfo(0) + "]";
+	mes "^000000N-No! This is";
+	mes "wrong! Something";
+	mes "weird's happening!";
+	mes "I gotta get away!";
+	close2;
+	warp "juperos_01.gat",99,86;
+	end;
+
+JupeLv2Warp:
+	specialeffect 309;
+	mes "^666666[" + strcharinfo(0) + "]";
+	mes "^000000Ahhhh...";
+	mes "It feels like";
+	mes "I'm floating...";
+	close2;
+	warp "juperos_02.gat",128,278;
+	end;
 }
 
-juperos_01.gat,100,71,1	script	Bronze Statue#Juperos2	111,{
 
-	mes "^3131FFIt's an elaborate";
-	mes "bronze statue that";
-	mes "is twice the height of";
-	mes "a normal human being.";
-	close;
-
+juperos_02.gat,0,0,0	script	#JupeGateAccess	139,{
+OnSpawn:
+	monster "juperos_02.gat",24,275,"1st Gate Switch",1674,1,"#JupeGateAccess1::OnSwitchADead";
+	monster "juperos_02.gat",240,29,"2nd Gate Switch",1674,1,"#JupeGateAccess2::OnSwitchBDead";
+	monster "juperos_02.gat",282,183,"3rd Gate Switch",1674,1,"#JupeGateAccess3::OnSwitchCDead";
+	end;
 }
 
-juperos_01.gat,124,92,1	script	Stone Statue#Juperos3	111,{
 
-	mes "^3131FFIt's an old";
-	mes "statue sculpted";
-	mes "out of stone.";
-	close;
+juperos_02.gat,0,0,0	script	#JupeGateAccess1	139,{
 
-}
-
-//Quest related?
-//juperos_01.gat,x,y,1	script	Bronze Statue#Juperos4	111,{
-//
-//	mes "^3131FFThere's a peculiar";
-//	mes "engraving on the";
-//	mes "Bronze Statue's rod.";
-//	next;
-//	menu "Investigate",s_Invest,"Ignore it",-;
-//
-//	close;
-//
-//s_Invest:
-//
-//	mes "^3131FFIt's an inscription that's";
-//	mes "written in an old language";
-//	mes "that you can't understand,";
-//	mes "but have no problem reading";
-//	mes "and making out the sounds";
-//	mes "for some weird reason.";
-//	next;
-//	mes "[" + strcharinfo(0) + "]";
-//	mes "This is creepy!";
-//	mes "I know that I'm not";
-//	mes "supposed to be able";
-//	mes "to read this, but here";
-//	mes "I am. I know what sounds";
-//	mes "all of these letters make...";
-//	next;
-//	mes "[" + strcharinfo(0) + "]";
-//	mes "Huh. Only a scholar,";
-//	mes "maybe someone even in";
-//	mes "Juno, could make sense";
-//	mes "of what this stuff says.";
-//	close;
-//
-//}
-
-juperos_02.gat,1,1,1	script	JuperosLvl2QuestInit	-1,{
 OnInit:
-while(1)
-	{
-
-		monster "juperos_02.gat",24,276,"1st Gate Switch",1674,1,"JuperosLvl2QuestInit::OnGate1Dead";
-		monster "juperos_02.gat",240,29,"2nd Gate Switch",1674,1,"JuperosLvl2QuestInit::OnGate2Dead";
-		monster "juperos_02.gat",282,183,"3rd Gate Switch",1674,1,"JuperosLvl2QuestInit::OnGate3Dead";
-		end;
-
-OnGate1Dead:
-
-	mapannounce "juperos_02.gat","Have you come seeking Juperos?! It no longer exists...",1,0xFF0000;
-	set $JupeGate1,1;
-	if($JupeGate1 && $JupeGate2 && $JupeGate3)goto s_WarpOpen;
+	donpcevent "#JupeGateAccess::OnSpawn";
 	end;
 
-OnGate2Dead:
-
-	mapannounce "juperos_02.gat","Who are you to come here?",1,0xFF0000;
-	set $JupeGate2,1;
-	if($JupeGate1 && $JupeGate2 && $JupeGate3)goto s_WarpOpen;
+OnSwitchADead:
+	mapannounce "juperos_02.gat","Have you come seeking Juperos?! It no longer exists...",1;
+	set $@JupeSwitch1,1;
+	if ($@JupeSwitch1 == 1 && $@JupeSwitch2 == 1 && $@JupeSwitch3 == 1) goto JupeContA;
 	end;
 
-OnGate3Dead:
-
-	mapannounce "juperos_02.gat","Have you come to see me? Fine! Find me first!",1,0xFF0000;
-	set $JupeGate3,1;
-	if($JupeGate1 && $JupeGate2 && $JupeGate3)goto s_WarpOpen;
-	end;
-
-s_WarpOpen:
+JupeContA:
 	attachnpctimer;
 	initnpctimer;
 		end;
-	OnTimer3000:
-		mapannounce "juperos_02.gat","Vroom! Vroom!",1,0xBA55D3;
+
+OnTimer3000:
+	mapannounce "juperos_02.gat","Vroom! Vroom!",1;
 		end;
-	OnTimer6000:
-		mapannounce "juperos_02.gat","Attention, visitors.",1,0xBA55D3;
+
+OnTimer6000:
+	mapannounce "juperos_02.gat","Attention, visitors.",1;
 		end;
-	OnTimer9000:
-		mapannounce "juperos_02.gat","You are allowed to enter the next zone for a short period of time. Please use the portal in the center of the map.",1,0xBA55D3;
-		enablenpc "JupeWarp2";
-		end;
-	OnTimer309000:
-		mapannounce "juperos_02.gat","The portal has now closed.",1,0xBA55D3;
-		disablenpc "JupeWarp2";
-		set $JupeGate1,0;
-		set $JupeGate2,0;
-		set $JupeGate3,0;
+
+OnTimer9000:
+	mapannounce "juperos_02.gat","You are allowed to enter the next zone for a short period of time.",1;
+	mapannounce "juperos_02.gat","Please use the portal in the center of the map.",1;
+	enablenpc "JupeWarp2";
+	end;
+
+OnTimer600000:
+	mapannounce "juperos_02.gat","The portal has now closed.",1;
+	disablenpc "JupeWarp2";
+	set $@JupeSwitch1,0;
+	set $@JupeSwitch2,0;
+	set $@JupeSwitch3,0;
 	stopnpctimer;
-	}
+	donpcevent "#JupeGateAccess::OnSpawn";
+	end;
+}
+
+juperos_02.gat,0,0,0	script	#JupeGateAccess2	139,{
+
+OnInit:
+	end;
+
+OnSwitchBDead:
+	mapannounce "juperos_02.gat","Who are you to come here?",1;
+	set $@JupeSwitch2,1;
+	if ($@JupeSwitch1 == 1 && $@JupeSwitch2 == 1 && $@JupeSwitch3 == 1) goto JupeContB;
+	end;
+
+JupeContB:
+	attachnpctimer;
+	initnpctimer;
+
+OnTimer3000:
+	mapannounce "juperos_02.gat","Vroom! Vroom!",1;
+		end;
+
+OnTimer6000:
+	mapannounce "juperos_02.gat","Attention, visitors.",1;
+		end;
+
+OnTimer9000:
+	mapannounce "juperos_02.gat","You are allowed to enter the next zone for a short period of time.",1;
+	mapannounce "juperos_02.gat","Please use the portal in the center of the map.",1;
+	enablenpc "JupeWarp2";
+	end;
+
+OnTimer600000:
+	mapannounce "juperos_02.gat","The portal has now closed.",1;
+	disablenpc "JupeWarp2";
+	set $@JupeSwitch1,0;
+	set $@JupeSwitch2,0;
+	set $@JupeSwitch3,0;
+	stopnpctimer;
+	donpcevent "#JupeGateAccess::OnSpawn";
+	end;
+}
+
+juperos_02.gat,0,0,0	script	#JupeGateAccess3	139,{
+
+OnInit:
+	end;
+
+OnSwitchCDead:
+	mapannounce "juperos_02.gat","Have you come to see me? Fine! Find me first!",1;
+	set $@JupeSwitch3,1;
+	if ($@JupeSwitch1 == 1 && $@JupeSwitch2 == 1 && $@JupeSwitch3 == 1) goto JupeContC;
+	end;
+
+JupeContC:
+	attachnpctimer;
+	initnpctimer;
+
+OnTimer3000:
+	mapannounce "juperos_02.gat","Vroom! Vroom!",1;
+		end;
+
+OnTimer6000:
+	mapannounce "juperos_02.gat","Attention, visitors.",1;
+		end;
+
+OnTimer9000:
+	mapannounce "juperos_02.gat","You are allowed to enter the next zone for a short period of time.",1;
+	mapannounce "juperos_02.gat","Please use the portal in the center of the map.",1;
+	enablenpc "JupeWarp2";
+	end;
+
+OnTimer600000:
+	mapannounce "juperos_02.gat","The portal has now closed.",1;
+	disablenpc "JupeWarp2";
+	set $@JupeSwitch1,0;
+	set $@JupeSwitch2,0;
+	set $@JupeSwitch3,0;
+	stopnpctimer;
+	donpcevent "#JupeGateAccess::OnSpawn";
+	end;
+}
+
+jupe_area2.gat,0,0,0	script	#JupeWarpControl	139,{
+
+OnInit:
+	disablenpc "jupwrp14";
+	disablenpc "jupwrp31";
+	disablenpc "jupwrp33";
+	disablenpc "jupwrp35";
+	disablenpc "jupwrp37";
+	end;
+}
+
+jupe_area2.gat,74,224,0	script	Lever#Lever1	111,{
+
+	mes "It looks like you can fit something";
+	mes "into the lever.";
+	if (countitem(7356) >= 1) goto JupeLever1;
+	close;
+
+JupeLever1:
+	next;
+	mes "Insert Crest Piece?";
+	next;
+	menu "Insert",JupeInsert1,"Cancel",-;
+	close;
+
+JupeInsert1:
+	enablenpc "jupwrp31";
+	attachnpctimer;
+	initnpctimer;
+	close;
+	end;
+	OnTimer10000:
+		disablenpc "jupwrp31";
+		stopnpctimer;
+		end;
+}
+
+jupe_area2.gat,138,238,0	script	Lever#Lever2	111,{
+
+	mes "It looks like you can fit something";
+	mes "into the lever.";
+	if (countitem(7357) >= 1) goto JupeLever2;
+	close;
+
+JupeLever2:
+	next;
+	mes "Insert Crest Piece?";
+	next;
+	menu "Insert",JupeInsert2,"Cancel",-;
+	close;
+
+JupeInsert2:
+	enablenpc "jupwrp33";
+	attachnpctimer;
+	initnpctimer;
+	close;
+	end;
+	OnTimer10000:
+		disablenpc "jupwrp33";
+		stopnpctimer;
+		end;
+}
+
+jupe_area2.gat,127,146,0	script	Lever#Lever3	111,{
+
+	mes "It looks like you can fit something";
+	mes "into the lever.";
+	if (countitem(7358) >= 1) goto JupeLever3;
+	close;
+
+JupeLever3:
+	next;
+	mes "Insert Crest Piece?";
+	next;
+	menu "Insert",JupeInsert3,"Cancel",-;
+	close;
+
+JupeInsert3:
+	enablenpc "jupwrp35";
+	attachnpctimer;
+	initnpctimer;
+	close;
+	end;
+	OnTimer10000:
+		disablenpc "jupwrp35";
+		stopnpctimer;
+		end;
+}
+
+jupe_area2.gat,113,49,0	script	Lever#Lever4	111,{
+
+	mes "It looks like you can fit something";
+	mes "into the lever.";
+	if (countitem(7359) >= 1) goto JupeLever4;
+	close;
+
+JupeLever4:
+	next;
+	mes "Insert Crest Piece?";
+	next;
+	menu "Insert",JupeInsert4,"Cancel",-;
+	close;
+
+JupeInsert4:
+	enablenpc "jupwrp37";
+	attachnpctimer;
+	initnpctimer;
+	close;
+	end;
+	OnTimer10000:
+		disablenpc "jupwrp37";
+		stopnpctimer;
+		end;
+}
+
+jupe_area2.gat,51,162,0	script	Lever#Lever5	111,{
+
+	mes "You see a switch on the lever.";
+	if (countitem(7356) >= 1 && countitem(7357) >= 1 && countitem(7358) >= 1 && countitem(7359) >= 1) goto JupeActivate1;
+	close;
+
+JupeActivate1:
+	next;
+	mes "Activate switch?";
+	next;
+	menu "Activate",JupeActivate2,"Cancel",-;
+	close;
+
+JupeActivate2:
+	enablenpc "jupwrp14";
+	attachnpctimer;
+	initnpctimer;
+	close;
+	end;
+	OnTimer10000:
+		disablenpc "jupwrp14";
+		stopnpctimer;
+		end;
+}
+
+jupe_ele_r.gat,51,98,0	script	Lever#Lever6	111,{
+
+	if ($@JupeEleRoom == 1) goto JupeEleRoomEnd;
+	mes "You see a lever.";
+	if (countitem(7356) >= 1 && countitem(7357) >= 1 && countitem(7358) >= 1 && countitem(7359) >= 1) goto JupeCrestInsert;
+	close;
+
+JupeEleRoomEnd:
+	end;
+
+JupeCrestInsert:
+	next;
+	mes "Insert Crest Pieces?";
+	next;
+	menu "Insert",JupeEnterCore,"Cancel",-;
+	close;
+
+	JupeEnterCore:
+		set $@JupeEleRoom,1;
+		areamonster "jupe_ele_r.gat",42,82,57,97,"Dimik",1669,3,"Lever#Lever6::OnMobEleRoomDead";
+		areamonster "jupe_ele_r.gat",42,82,57,97,"Photon Cannon",1664,3,"Lever#Lever6::OnMobEleRoomDead";
+		areamonster "jupe_ele_r.gat",42,82,57,97,"Venatu",1675,2,"Lever#Lever6::OnMobEleRoomDead";
+
+
+		attachnpctimer;
+		initnpctimer;
+		close;
+		end;
+
+OnTimer300000:
+	killmonsterall "jupe_ele_r.gat";
+	set $@JupeEleRoom,0;
+	set $@JupeEleRoomPass,0;
+	stopnpctimer;
+	mapwarp "jupe_ele_r.gat","juperos_02.gat",130,143;
+	end;
+
+OnMobEleRoomDead:
+	set $@JupeEleRoomPass,$@JupeEleRoomPass  + 1;
+	if ($@JupeEleRoomPass == 8) goto JupeEleRoomWarp;
+	end;
+
+JupeEleRoomWarp:
+	set $@JupeEleRoom,0;
+	set $@JupeEleRoomPass,0;
+	stopnpctimer;
+	mapwarp "jupe_ele_r.gat","jupe_ele.gat",42,45;
+	end;
+}
+
+jupe_ele.gat,42,56,0	script	Lever#Lever7	111,{
+
+	if (JupeElevator == 1) goto JupeEleEnd;
+	mes "You see a switch on the lever.";
+	next;
+	mes "Activate switch?";
+	next;
+	menu "Activate",JupeActivate3,"Cancel",-;
+	close;
+
+JupeEleEnd:
+	end;
+
+JupeActivate3:
+	set $@JupeElevator,1;
+	areamonster "jupe_ele.gat",34,40,49,55,"Photon Cannon",1664,7,"Lever#Lever7::OnMobElevatorDead";
+	areamonster "jupe_ele.gat",34,40,49,55,"Archdam",1668,2,"Lever#Lever7::OnMobElevatorDead";
+	areamonster "jupe_ele.gat",34,40,49,55,"Dimik",1669,14,"Lever#Lever7::OnMobElevatorDead";
+	areamonster "jupe_ele.gat",34,40,49,55,"Venatu",1675,8,"Lever#Lever7::OnMobElevatorDead";
+	attachnpctimer;
+	initnpctimer;
+	close;
+	end;
+
+OnTimer300000:
+	killmonsterall "jupe_ele.gat";
+	set $@JupeElePass,0;
+	set $@JupeElevator,0;
+	stopnpctimer;
+	mapwarp "jupe_ele.gat","juperos_02.gat",130,143;
+	end;
+
+OnMobElevatorDead:
+	set $@JupeElePass,$@JupeElePass + 1;
+	if ($@JupeElePass == 31) goto JupeElevatorWarp;
+	end;
+
+JupeElevatorWarp:
+	set $@JupeElePass,0;
+	set $@JupeElevator,0;
+	mapwarp "jupe_ele.gat","jupe_core.gat",149,125;
+	end;
+}
+
+jupe_core.gat,150,17,0	script	Juperos Elevator#Elevator1	111,{
+
+	mes "Return to the second floor?";
+	next;
+	menu "Return",JupLeaveCore,"Cancel",-;
+	close;
+
+	JupLeaveCore:
+		warp "juperos_02.gat",130,143;
+		end;
+}
+
+jupe_core.gat,150,286,0	script	Juperos Elevator#Elevator2	111,{
+
+	mes "Return to the second floor?";
+	next;
+	menu "Return",JupLeaveCore,"Cancel",-;
+	close;
+
+	JupLeaveCore:
+		warp "juperos_02.gat",130,143;
+		end;
 }

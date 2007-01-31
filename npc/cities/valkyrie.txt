@@ -1,4 +1,4 @@
-//===== eAthena Script ======================================= 
+//===== Freya Script ========================================= 
 //= Valkyrie Realm
 //===== By: ==================================================
 //= Nana, fixes by Poki
@@ -271,11 +271,22 @@ L_CHANGE:
 	mes "[Valhallana]";
 	mes "Done...";
 	mes "Good luck.";
+
+	set BaseLevel,1;
+	resetstatus;
+	resetskill;
+	setoption 0x0000;
+	skill 143,1,0;
+	skill 142,1,0;
+	set SkillPoint,0;
+	set StatusPoint,100;
 	jobchange Job_Novice_High;
-	resetlvl(1);
 	callfunc "F_ClearJobVar";
-	set RES_SKILL,0; //we reset Reset Skills NPC counter
+	set RES_SKILL,0; // We reset Reset Skills NPC counter
+
 	next;
+	getitem 1202,1;
+	getitem 2302,1;
 	if(ADVJOB == Job_Lord_Knight || ADVJOB == Job_Paladin) goto L_Izl;
 	if(ADVJOB == Job_High_Priest || ADVJOB == Job_Champion) goto L_Pro;
 	if(ADVJOB == Job_High_Wizard || ADVJOB == Job_Professor) goto L_Gef;

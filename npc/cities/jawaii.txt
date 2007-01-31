@@ -1,4 +1,4 @@
-//===== eAthena script =======================================
+//===== Freya Script =========================================
 //= Jawaii (The Lovers Paradise) Town script
 //===== By: ==================================================
 //= jAthena (1.0)
@@ -435,7 +435,7 @@ jawaii_in.gat,28,124,0	script	Bartender#jaw	46,{
 					next;
 					mes "Adjust the direction you sip the drink and taste it slowly.";
 					percentheal -20,0;
-					specialeffect2 38;
+//					specialeffect2 38;
 					set @drinkcount,@drinkcount + 1;
 					next;
 					mes "[" + strcharinfo(0) + "]";
@@ -461,7 +461,7 @@ jawaii_in.gat,28,124,0	script	Bartender#jaw	46,{
 					next;
 					mes "- You feel the scent and drink it bits by bits. -";
 					percentheal -20,0;
-					specialeffect2 63; //Fire Ivy?
+//					specialeffect2 63; //Fire Ivy?
 					set @drinkcount,@drinkcount + 1;
 					next;
 					mes "[" + strcharinfo(0) + "]";
@@ -488,7 +488,7 @@ jawaii_in.gat,28,124,0	script	Bartender#jaw	46,{
 					mes "- You can imagine yourself wearing a Mexican Sombrero-";
 					mes "- and drinking this cocktail! -";
 					percentheal -20,0;
-					specialeffect2 17;
+//					specialeffect2 17;
 					set @drinkcount,@drinkcount + 1;
 					next;
 					mes "[" + strcharinfo(0) + "]";
@@ -514,7 +514,7 @@ jawaii_in.gat,28,124,0	script	Bartender#jaw	46,{
 					next;
 					mes "- You finish it in one sip. -";
 					percentheal -20,0;
-					specialeffect2 171;
+//					specialeffect2 171;
 					set @drinkcount,@drinkcount + 1;
 					next;
 					mes "[" + strcharinfo(0) + "]";
@@ -557,7 +557,7 @@ s_Nimi:
 				next;
 				mes "-And it makes me feel.... Bang !!' -";
 				percentheal -10,0;
-				specialeffect2 18;
+//				specialeffect2 18;
 				set @drinkcount,@drinkcount + 1;
 				next;
 				mes "[" + strcharinfo(0) + "]";
@@ -597,7 +597,7 @@ s_Refreshing:
 				mes "- Your mouth is filled with the sour yet sweet scent after you finish the drink in 3 sips-";
 				mes "- It's really a special blend... -";
 				percentheal -10,0;
-				specialeffect2 84; //Magnificat?
+//				specialeffect2 84; //Magnificat?
 				set @drinkcount,@drinkcount + 1;
 				next;
 				mes "[" + strcharinfo(0) + "]";
@@ -637,7 +637,7 @@ s_Misa:
 				mes "- Your mouth is filled with the sour yet sweet scent after you finish the drink in 3 sips-";
 				mes "- It's really a special blend... -";
 				percentheal -10,0;
-				specialeffect2 97;
+//				specialeffect2 97;
 				set @drinkcount,@drinkcount + 1;
 				next;
 				mes "[" + strcharinfo(0) + "]";
@@ -679,7 +679,7 @@ s_Magn:
 				next;
 				mes "- And it feels like you're hit by a canon.-";
 				percentheal -10,0;
-				specialeffect2 132;
+//				specialeffect2 132;
 				set @drinkcount,@drinkcount + 1;
 				next;
 				mes "[" + strcharinfo(0) + "]";

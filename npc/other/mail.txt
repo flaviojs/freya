@@ -1,0 +1,92 @@
+//===== Freya Script =========================================
+//= Mail Box NPCs
+//===== By: ==================================================
+//= Gravity/Aegis
+//===== Current Version: =====================================
+//= 1.1
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
+//= Mail Box NPCs
+//= Credits: Gravity's Files, phiber, peter
+//===== Additional Comments: =================================
+//= 1.0 Added first version to Aegis [muad_dib]
+//= 1.1 Converted to Freya and optimized [Tsuyuki]
+//============================================================
+
+prontera.gat,146,86,0	script	Mailbox#1::Mailbox	888,{
+
+	mes "[Mailbox]";
+	mes "In order to use the Mailing Service you will need 130z.";
+	mes "Do you want to use the Mailing Service?";
+	next;
+	menu "Yes, I do.",L_Yes,"Nevermind.",L_No;
+	
+	L_Yes:
+		if (Zeny >= 130) goto L_HaveZeny;
+		mes "[Mailbox]";
+		mes "Sorry, but you don't have enough zeny.";
+		mes "In order to use the Mailing Service you will need 130z.";
+		close;
+
+		L_HaveZeny:
+			mes "[Mailbox]";
+			mes "Thank you for using the Mailing Service.";
+			set Zeny,Zeny-130;
+			// Aegis command, not implemented in Freya yet
+			// OpenMailing;
+			close;
+
+	L_No:
+		mes "[Mailbox]";
+		mes "You have just canceled.";
+		close;
+}
+
+prontera.gat,275,213,0	duplicate(Mailbox)	Mailbox#2	888
+
+prontera.gat,34,212,0	duplicate(Mailbox)	Mailbox#3	888
+
+izlude.gat,136,94,0	duplicate(Mailbox)	Mailbox#4	888
+
+morroc.gat,166,110,0	duplicate(Mailbox)	Mailbox#5	888
+
+morroc.gat,168,262,0	duplicate(Mailbox)	Mailbox#6	888
+
+geffen.gat,115,67,0	duplicate(Mailbox)	Mailbox#7	888
+
+geffen.gat,199,125,0	duplicate(Mailbox)	Mailbox#8	888
+
+payon.gat,191,104,0	duplicate(Mailbox)	Mailbox#9	888
+
+payon.gat,171,226,0	duplicate(Mailbox)	Mailbox#10	888
+
+pay_arche.gat,55,127,0	duplicate(Mailbox)	Mailbox#11	888
+
+alberta.gat,90,60,0	duplicate(Mailbox)	Mailbox#12	888
+
+alberta.gat,30,240,0	duplicate(Mailbox)	Mailbox#13	888
+
+aldebaran.gat,135,122,0	duplicate(Mailbox)	Mailbox#14	888
+
+yuno.gat,148,187,0	duplicate(Mailbox)	Mailbox#15	888
+
+yuno.gat,332,108,0	duplicate(Mailbox)	Mailbox#16	888
+
+einbroch.gat,231,215,0	duplicate(Mailbox)	Mailbox#17	888
+
+einbroch.gat,77,202,0	duplicate(Mailbox)	Mailbox#18	888
+
+einbech.gat,182,124,0	duplicate(Mailbox)	Mailbox#19	888
+
+comodo.gat,200,150,0	duplicate(Mailbox)	Mailbox#20	888
+
+umbala.gat,104,155,0	duplicate(Mailbox)	Mailbox#21	888
+
+amatsu.gat,102,146,0	duplicate(Mailbox)	Mailbox#22	888
+
+gonryun.gat,152,117,0	duplicate(Mailbox)	Mailbox#23	888
+
+ayothaya.gat,205,169,0	duplicate(Mailbox)	Mailbox#24	888
+
+louyang.gat,204,100,0	duplicate(Mailbox)	Mailbox#25	888

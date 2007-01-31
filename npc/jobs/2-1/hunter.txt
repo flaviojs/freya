@@ -1,4 +1,4 @@
-//===== eAthena Script ======================================= 
+//===== Freya Script ========================================= 
 //= Hunter Job Quest
 //===== By: ================================================== 
 //= EREMES THE CANIVALIZER (Aegis)Translated by yoshiki (Aegis)

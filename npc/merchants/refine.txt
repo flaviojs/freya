@@ -173,7 +173,7 @@ geffen_in.gat,110,172,2	script	Christopher#1::Chris	63,{
 		close;
 }
 
-ein_in01,38,29,6	duplicate(Chris)	Christopher#2	63
+ein_in01.gat,38,29,6	duplicate(Chris)	Christopher#2	63
 
 //=====================================================================================
 // Weapon/Armor Refiners
@@ -784,23 +784,21 @@ lhz_in02.gat,284,14,3	script	Repairman#03	86,{
 //= Equipment Repair Function
 //============================================================
 function	script	repairmain	{
-	set @repairprice,5000;
 	mes "[" + @name$ + "]";
 	mes "I am the Repair Smith and I can repair any Arms you want.";
 	mes "Tell me which Equipment you want to repair.";
 	next;
-	if(getbrokenid(1)==NULL) {
+	set '@num,getrepairableitemcount();
+	if('@num==0) {
 		mes "[" + @name$ + "]";
 		mes "Looks like you don't need anything repaired today...";
 		close;
 	}
-	set @choice,select(getitemname(getbrokenid(1)),getitemname(getbrokenid(2)),
-		getitemname(getbrokenid(3)),getitemname(getbrokenid(4)),getitemname(getbrokenid(5)),
-		getitemname(getbrokenid(6)),getitemname(getbrokenid(7)),getitemname(getbrokenid(8)),
-		getitemname(getbrokenid(9)),getitemname(getbrokenid(10)));
+	set '@price,'@num*5000;
+
 	mes "[" + @name$ + "]";
-	mes "You're gonna repair " + getitemname(getbrokenid(@choice)) + ".";
-	mes "To repair this, I need " + @repairprice + " Zeny.";
+	mes "You're gonna repair " + '@num + ".";
+	mes "To repair this, I need " + '@price + " Zeny.";
 	mes "Continue?";
 	next;
 	if(select("Yes","No") == 2) {
@@ -808,14 +806,14 @@ function	script	repairmain	{
 		mes "Ok, but don't expect to be using that...";
 		close;
 	}
-	if (Zeny < @repairprice) {
+	if (Zeny < '@price) {
 		mes "[" + @name$ + "]";
 		mes "Is it all you got?";
 		mes "Unfortunately, I have kids to feed...";
 		close;
 	}
-	set Zeny,Zeny-@repairprice;
-	repair(@choice);
+	set Zeny,Zeny-'@price;
+	repairitem;
 	close;
 
 }

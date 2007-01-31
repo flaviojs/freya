@@ -1,7 +1,24 @@
+// Freya Main Changelog
 
 Date	Added
 
+01/16/07
+	* Moved: Mapflags to npc/other/mapflags.txt for the time being [Tsuyuki]
+	* Removed: Deleted old eAthena WoE system, and imported the translated jAthena system [Tsuyuki]
+	* Changed: Tested and fixed up Event scripts (they stay commented of course) [Tsuyuki]
+	* Changed: Enabled all City/Town NPCs (now compatible) [Tsuyuki]
+	* Changed: Enabled all npc/other scripts (now compatible) [Tsuyuki]
+	 - Marriage has been excluded, it will need a massive rewrites to become compatible
+
 01/15/07
+	* Changed: Enabled all Merchants (now compatible) [Tsuyuki]
+	* Changed: Enabled Kafras, Guides, and Aiports (now compatible) [Tsuyuki]
+	* Changed: Enabled all NPC Monster Spawns (compatible) [Tsuyuki]
+	* Changed: Enabled all NPC Warps (compatible) [Tsuyuki]
+	* Added: Freya Database Changelog [Tsuyuki]
+	* Changed: Commented all NPC scripts until they're compatible [Tsuyuki]
+	* Merged: Old Freya's NPC scripts [Tsuyuki]
+	* Added: Server launchers for easier development [Tsuyuki]
 	* Added: Newfreya files and SVN [Tsuyuki]
 
-FREYA BEGINS HERE, based off jAthena 23xx
+NEWFREYA BEGINS HERE, based off jAthena 2219
