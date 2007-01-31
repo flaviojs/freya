@@ -18,7 +18,7 @@
 
 #define MAX_SKILL_DB          1020
 #define MAX_SKILL_PRODUCE_DB   150
-#define MAX_PRODUCE_RESOURCE     7
+#define MAX_PRODUCE_RESOURCE     10
 // #define MAX_SKILL_ARROW_DB   150 -> dynamic now
 #define MAX_SKILL_ABRA_DB      350
 

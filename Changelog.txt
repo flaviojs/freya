@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+01/31/07
+	* Fixed: Produce bug -> Extended max number of resources (Thanks to galaxy) [Tsuyuki]
+
 01/30/07
 	* Fixed: Alligator Card now reduces magic damage as well as ranged damage [Tsuyuki]
 
