@@ -21,4 +21,4 @@ Date	Added
 	* Added: Server launchers for easier development [Tsuyuki]
 	* Added: Phaeton files and SVN [Tsuyuki]
 
-FREYA PHATEON BEGINS HERE, based off jAthena 2219
+FREYA PHAETON BEGINS HERE, based off jAthena 2219
