@@ -4,6 +4,9 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+01/30/07
+	* Fixed: Alligator Card now reduces magic damage as well as ranged damage [Tsuyuki]
+
 01/28/07
 	* Fixed: Soul Destroyer (ASC_BREAKER) is no longer affected by GTB/Maya/other magical damage reductions [Tsuyuki]
 	 - Source: http://freya.dns.st/mantis/view.php?id=332

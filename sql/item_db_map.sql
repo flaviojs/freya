@@ -1498,7 +1498,7 @@ INSERT INTO `item_db` VALUES (4248, 'Ancient_Mummy_Card', 'Ancient Mummy Card', 
 INSERT INTO `item_db` VALUES (4249, 'Ancient_Worm_Card', 'Ancient Worm Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 64, 0, 0, 0, NULL, 'bonus2 bSubRace,6,-20; bonus2 bExpAddRace,6,10;');
 INSERT INTO `item_db` VALUES (4250, 'Executioner_Card', 'Executioner Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 32, 0, 0, 0, NULL, 'bonus2 bSubSize,2,25; bonus bDef,1;');
 INSERT INTO `item_db` VALUES (4251, 'Elder_Card', 'Elder Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus2 bAddRace2,5,40;');
-INSERT INTO `item_db` VALUES (4252, 'Alligator_Card', 'Alligator Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus bLongAtkDef,5;');
+INSERT INTO `item_db` VALUES (4252, 'Alligator_Card', 'Alligator Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus bLongAtkDef,5; bonus bMagicAtkDef,5;');
 INSERT INTO `item_db` VALUES (4253, 'Alice_Card', 'Alice Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 32, 0, 0, 0, NULL, 'bonus2 bSubRace,10,40; bonus2 bSubRace,11,-40;');
 INSERT INTO `item_db` VALUES (4254, 'Ogretooth_Card', 'Ogretooth Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 32, 0, 0, 0, NULL, 'bonus2 bSubSize,1,25; bonus bDef,1;');
 INSERT INTO `item_db` VALUES (4255, 'Orc_Lady_Card', 'Orc Lady Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus2 bAddRace2,3,30;');
