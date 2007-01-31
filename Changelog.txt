@@ -19,6 +19,6 @@ Date	Added
 	* Changed: Commented all NPC scripts until they're compatible [Tsuyuki]
 	* Merged: Old Freya's NPC scripts [Tsuyuki]
 	* Added: Server launchers for easier development [Tsuyuki]
-	* Added: Newfreya files and SVN [Tsuyuki]
+	* Added: Phaeton files and SVN [Tsuyuki]
 
-NEWFREYA BEGINS HERE, based off jAthena 2219
+FREYA PHATEON BEGINS HERE, based off jAthena 2219
