@@ -5,6 +5,8 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 Date	Added
 
 02/01/07
+	* Fixed: A couple skills not initiating perfect hit correctly [Tsuyuki]
+	 - SG_SUN_WARM, SG_MOON_WARM, SG_STAR_WARM, GS_GROUNDDRIFT, NJ_SYURIKEN, NJ_KUNAI
 	* Updated: @charjoblvup command [Tsuyuki]
 	* Improved: Cleaned and highly documented the battle.c source code file [Tsuyuki]
 	 - Check inside the actual file for details

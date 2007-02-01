@@ -1374,6 +1374,13 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 				wd.blewcount = 0;
 				skillratio += 90 + 30 * skill_lv;	// FORMULA: damage * (190 + 30 * skill_lv) / 100
 				break;
+			
+			// Star Gladiator
+			case SG_SUN_WARM:
+			case SG_MOON_WARM:
+			case SG_STAR_WARM:
+				flag.hit = 1; // Never misses
+				break;
 
 			// Gunslinger
 			case GS_DESPERADO:
@@ -1397,6 +1404,7 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 				wd.blewcount = 0; // Knocks back enemies
 				s_ele = s_ele_ = wflag; // Element comes in flag
 				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG; // Long-Ranged
+				flag.hit = 1; // Never misses
 				break;
 			case GS_TRIPLEACTION:
 				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG; // Long-Ranged
@@ -1924,7 +1932,6 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 			case ITM_TOMAHAWK:
 				wd.flag = (wd.flag & ~BF_RANGEMASK) | BF_LONG;
 				break;
-
 		}
 	}
 
@@ -1945,19 +1952,6 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 	if (flag.cri)	{
 		wd.type = 0x0a; // The type of a critical attack (used to display the damage as a critical, client side)
 		flag.idef = flag.idef2 = flag.hit = 1; // Critical attacks ignore armor def, vit defense, and always hit
-
-		if (skill_num && !flag.hit)
-			switch(skill_num)
-			{
-				case SG_SUN_WARM:
-				case SG_MOON_WARM:
-				case SG_STAR_WARM:
-				case GS_GROUNDDRIFT:
-				case NJ_SYURIKEN:
-				case NJ_KUNAI:
-					flag.hit = 1;
-					break;
-			}
 	}
 	else if (!flag.hit) { // Check for Perfect Hit
 		if(sd && sd->perfect_hit && rand()%100 < sd->perfect_hit)
@@ -1979,7 +1973,7 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 			
 			if (t_sc_data && t_sc_data[SC_FOGWALL].timer != -1 && wd.flag & BF_LONG)
 				hitrate -= 50;
-		
+
 			if (!sd && hitrate > 95)
 				hitrate = 95;
 			hitrate = (hitrate < 5)? 5 : hitrate;
