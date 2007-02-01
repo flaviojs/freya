@@ -52,8 +52,7 @@ item->equip & EQP_WEAPON  // Weapon Slot
 item->equip & EQP_SHIELD  // Shield Slot
 item->equip & EQP_ARMOR   // Armor Slot
 
-// Definition of status.weapon: Equiped Weapon-Type
-// Compatible with sd, tsd, dstsd, and pl_sd
+// Definition of status.weapon: Equipped Weapon-Type
 sd->status.weapon == 0  // Bare Fist (No Weapon Equipped)
 sd->status.weapon == 1  // Dagger
 sd->status.weapon == 2  // One-Handed Sword
@@ -88,15 +87,16 @@ sd->status.weapon == 55 // Dual Weapon Combo: One-Handed Sword + One-Handed Axe
 
 // Definition of weapontype: Individual Weapon-Types for Equiped Weapons
 // These variables merge to become status.weapon
-// weapontype2 is only important if the user is dual-wielding weapons (Assassin Class/Gunslinger only)
+// weapontype2 is only important if the user is dual-wielding weapons (Assassin Class only)
 // Type values are the same as the above status.weapon list, excluding dual-wield values
-// Compatible with sd, tsd, dstsd, and pl_sd
+
 sd->weapontype1 // Left-Hand Weapon Type
 sd->weapontype2 // Right-Hand Weapon Type
 
 // ********************************
 // * Elemental Defense Resistance *
 // ********************************
+
 sd->subele[0] - Neutral Property
 sd->subele[1] - Water Property
 sd->subele[2] - Earth Property
@@ -124,3 +124,68 @@ sd->subrace[8] - Angel/Holy Type
 sd->subrace[9] - Dragon Type
 sd->subrace[10] - Boss Type #1?
 sd->subrace[11] - Boss Type #2?
+
+// ***************************************
+// * Special States: sd->special_state   *
+// ***************************************
+
+// Killer State
+// Activated by @killer/@charkiller commands
+// Able to kill other players outside of PvP
+sd->special_state.killer
+
+// Killable State
+// Activated by @killable/@charkillable commands
+// Makes player able to be attacked outside of PvP
+sd->special_state.killable
+
+// Restart Full Recovery State
+// Part of SA_FULLRECOVERY skill status
+sd->special_state.restart_full_recover
+
+// No Cast Cancel States
+// Bloody Butterfly/Phen Card effects
+sd->special_state.no_castcancel
+sd->special_state.no_castcancel2
+
+// No Size Fix State
+// Deal perfect damage on all enemies
+// regardless of size (for Drake Card)
+sd->special_state.no_sizefix
+
+// No Magic Damage State
+// Fully immune to magic damage
+// For Golden Thiefbug Card
+sd->special_state.no_magic_damage
+
+// No Weapon Damage State
+// Immune to all weapon damage
+// As well as NPC_LICK/BS_HAMMERFALL
+// status effects (wonder why?)
+// Currently not used for anything
+sd->special_state.no_weapon_damage
+
+// No Gemstone State
+// For Mistress Card and Thief Combo
+// Card Set - Don't consume gemstones
+// with gemstone-requiring skills
+sd->special_state.no_gemstone
+
+// Infinite Endure State
+// Used for Eddga Card, infinitely
+// active 'Endure' status effect
+sd->special_state.infinite_endure
+
+// Intravision State
+// Allows you to see hidden/cloaked
+// enemies with shadows
+// Used for Maya Purple Card, and
+// Box of Sunlight
+sd->special_state.intravision
+
+// No Knock Back State
+// No longer be affected by knockback
+// skills or any type of knockback in
+// general (like WoE)
+// Used for RSX-0806 Card
+sd->special_state.noknockback

@@ -14,24 +14,20 @@
 #ifndef _BATTLE_H_
 #define _BATTLE_H_
 
-// ダメージ
 struct Damage {
 	int damage,damage2;
 	int type,div_;
 	int amotion,dmotion;
 	int blewcount;
 	int flag;
-	int dmg_lv;	//囲まれ減算計算用　0:スキル攻撃 ATK_LUCKY,ATK_FLEE,ATK_DEF
+	int dmg_lv;
 };
 
-// 属性表（読み込みはpc.c、battle_attr_fixで使用）
 extern int attr_fix_table[4][10][10];
 
 struct map_session_data;
 struct mob_data;
 struct block_list;
-
-// ダメージ計算
 
 struct Damage battle_calc_attack(	int attack_type,
 	struct block_list *bl,struct block_list *target,struct map_session_data *sd,int tick,int skill_num,int skill_lv,int flag);
@@ -40,13 +36,12 @@ struct Damage battle_calc_magic_attack(
 struct Damage  battle_calc_misc_attack(
 	struct block_list *bl,struct block_list *target,struct map_session_data *sd,int skill_num,int skill_lv,int flag);
 
-// 属性修正計算
 int battle_attr_fix(int damage,int atk_elem,int def_elem);
 
-// ダメージ最終計算
+
 int battle_calc_damage(struct block_list *src,struct block_list *bl,int damage,int div_,int skill_num,int skill_lv,int flag);
 int battle_calc_drain(int damage, int rate, int per, int val);
-enum {	// 最終計算のフラグ
+enum {
 	BF_WEAPON    = 0x0001,
 	BF_MAGIC     = 0x0002,
 	BF_MISC      = 0x0004,
@@ -59,32 +54,28 @@ enum {	// 最終計算のフラグ
 	BF_SKILLMASK = 0x0f00
 };
 
-// 実際にHPを増減
-//int battle_delay_damage(unsigned int tick, struct block_list *src, struct block_list *target, int damage, int flag);
+// int battle_delay_damage(unsigned int tick, struct block_list *src, struct block_list *target, int damage, int flag);
 int battle_delay_damage (unsigned int tick, struct block_list *src, struct block_list *target, int attack_type, int skill_id, int skill_lv, int damage, int dmg_lv, int flag);
 int battle_damage(struct block_list *bl, struct block_list *target, int damage, int flag);
 int battle_heal(struct block_list *bl, struct block_list *target, int hp, int sp, int flag);
 
-// 攻撃や移動を止める
 void battle_stopattack(struct block_list *bl);
 void battle_stopwalking(struct block_list *bl, int type);
 
-// 通常攻撃処理まとめ
 int battle_weapon_attack(struct block_list *bl, struct block_list *target,
 	 unsigned int tick, int flag);
 
-// 各種パラメータを得る
 int battle_counttargeted(struct block_list *bl, struct block_list *src, int target_lv);
 int battle_getcurrentskill(struct block_list *bl);
 
 #define BCT_ENEMY 0x020000
-//This should be (~BCT_ENEMY&BCT_ALL)
+// This should be (~BCT_ENEMY&BCT_ALL)
 #define BCT_NOENEMY 0x1d0000
 #define BCT_PARTY	0x040000
-//This should be (~BCT_PARTY&BCT_ALL)
+// This should be (~BCT_PARTY&BCT_ALL)
 #define BCT_NOPARTY 0x1b0000
 #define BCT_GUILD	0x080000
-//This should be (~BCT_GUILD&BCT_ALL)
+// This should be (~BCT_GUILD&BCT_ALL)
 #define BCT_NOGUILD 0x170000
 #define BCT_ALL 0x1f0000
 #define BCT_NOONE 0x000000
@@ -102,12 +93,11 @@ enum {
 	BCT_SELF    = 0x60000
 };
 */
+
 int battle_check_undead(int race, int element);
 int battle_check_target(struct block_list *src, struct block_list *target, int flag);
 int battle_check_range(struct block_list *src, struct block_list *bl, int range);
 
-
-// 設定
 
 extern struct Battle_Config {
 	unsigned short warp_point_debug;
@@ -150,8 +140,8 @@ extern struct Battle_Config {
 	unsigned short death_penalty_job3_lvl, death_penalty_job3;
 	unsigned short death_penalty_job4_lvl, death_penalty_job4;
 	unsigned short death_penalty_job5_lvl, death_penalty_job5;
-	unsigned short pvp_exp; // [MouseJstr]
-	unsigned short gtb_pvp_only; // [MouseJstr]
+	unsigned short pvp_exp;
+	unsigned short gtb_pvp_only;
 	int zeny_penalty;
 	unsigned short zeny_penalty_percent;
 	unsigned short zeny_penalty_by_lvl;
@@ -187,8 +177,8 @@ extern struct Battle_Config {
 	unsigned short quest_skill_learn;
 	unsigned short quest_skill_reset;
 	unsigned short basic_skill_check;
-	unsigned short no_caption_cloaking; // remove the caption "cloaking !!" when skill is casted
-	unsigned short display_hallucination; // Enable or disable hallucination Skill.
+	unsigned short no_caption_cloaking;
+	unsigned short display_hallucination;
 	unsigned short no_guilds_glory;
 	unsigned short guild_emperium_check;
 	unsigned short guild_exp_limit;
@@ -214,15 +204,15 @@ extern struct Battle_Config {
 	unsigned short shop_exp;
 	unsigned short combo_delay_rate;
 	unsigned short item_check;
-	unsigned short item_use_interval; // [Skotlex]
+	unsigned short item_use_interval;
 	unsigned short wedding_modifydisplay;
 	int natural_healhp_interval;
 	int natural_healsp_interval;
 	int natural_heal_skill_interval;
 	unsigned short natural_heal_weight_rate;
 	unsigned short item_name_override_grffile;
-	unsigned short indoors_override_grffile; // [Celest]
-	unsigned short skill_sp_override_grffile; // [Celest]
+	unsigned short indoors_override_grffile;
+	unsigned short skill_sp_override_grffile;
 	unsigned short cardillust_read_grffile;
 	unsigned short item_equip_override_grffile;
 	unsigned short item_slots_override_grffile;
@@ -286,8 +276,8 @@ extern struct Battle_Config {
 	unsigned short mob_warpportal;
 	unsigned short dead_branch_active;
 	int vending_max_value;
-//	unsigned short pet_lootitem; // removed
-//	unsigned short pet_weight; // removed
+// unsigned short pet_lootitem; // Removed
+// unsigned short pet_weight; // Removed
 	unsigned short show_steal_in_same_party;
 	unsigned short enable_upper_class;
 	unsigned short pet_attack_attr_none;
@@ -302,9 +292,9 @@ extern struct Battle_Config {
 	unsigned short item_drop_heal_min, item_drop_heal_max;
 	unsigned short item_drop_use_min, item_drop_use_max;
 
-	unsigned short prevent_logout; // Added by RoVeRT
+	unsigned short prevent_logout;
 
-	unsigned short alchemist_summon_reward;	// [Valaris]
+	unsigned short alchemist_summon_reward;
 	unsigned short maximum_level;
 	unsigned short atcommand_max_job_level_novice;
 	unsigned short atcommand_max_job_level_job1;
@@ -317,6 +307,8 @@ extern struct Battle_Config {
 	unsigned short atcommand_max_job_level_babyjob1;
 	unsigned short atcommand_max_job_level_babyjob2;
 	unsigned short atcommand_max_job_level_superbaby;
+	unsigned short atcommand_max_job_level_gunslinger;
+	unsigned short atcommand_max_job_level_ninja;
 	unsigned short drops_by_luk;
 	unsigned short monsters_ignore_gm;
 	unsigned short equipment_breaking;
@@ -324,7 +316,7 @@ extern struct Battle_Config {
 	unsigned short pet_equip_required;
 	unsigned short multi_level_up;
 	unsigned short pk_mode;
-	unsigned short show_mob_hp;  // end additions [Valaris]
+	unsigned short show_mob_hp;
 
 	unsigned short agi_penalty_count_lv;
 	unsigned short vit_penalty_count_lv;
@@ -335,7 +327,7 @@ extern struct Battle_Config {
 	unsigned short gx_disptype;
 	unsigned short devotion_level_difference;
 	unsigned short player_skill_partner_check;
-	unsigned short hide_GM_session; // minimum level of hidden GMs
+	unsigned short hide_GM_session;
 	unsigned short unit_movement_type;
 	unsigned short invite_request_check;
 	unsigned short skill_removetrap_type;
@@ -344,73 +336,75 @@ extern struct Battle_Config {
 	unsigned short castle_defense_rate;
 	unsigned short riding_weight;
 	unsigned short backstab_bow_penalty;
+	unsigned short ka_skills_usage;
+	unsigned short es_skills_usage;
 	unsigned short hp_rate;
 	unsigned short sp_rate;
 	unsigned short gm_can_drop_lv;
 	unsigned short display_hpmeter;
 	unsigned short bone_drop;
 
-	unsigned short night_at_start; // added by [Yor]
-	int day_duration; // added by [Yor]
-	int night_duration; // added by [Yor]
-	unsigned short ban_spoof_namer; // added by [Yor]
-	int ban_hack_trade; // added by [Yor] // can be negative
-	int ban_bot; // added by [Yor]
-	unsigned short check_ban_bot; // added by [Yor]
-	unsigned short max_message_length; // added by [Yor]
-	unsigned short max_global_message_length; // added by [Yor]
-	unsigned short hack_info_GM_level; // added by [Yor]
-	unsigned short speed_hack_info_GM_level; // added by [Yor]
-	unsigned short any_warp_GM_min_level; // added by [Yor]
-	unsigned short packet_ver_flag; // added by [Yor]
-	unsigned short muting_players; // added by [PoW]
+	unsigned short night_at_start;
+	int day_duration;
+	int night_duration;
+	unsigned short ban_spoof_namer;
+	int ban_hack_trade;
+	int ban_bot;
+	unsigned short check_ban_bot;
+	unsigned short max_message_length;
+	unsigned short max_global_message_length;
+	unsigned short hack_info_GM_level;
+	unsigned short speed_hack_info_GM_level;
+	unsigned short any_warp_GM_min_level;
+	unsigned short packet_ver_flag;
+	unsigned short muting_players;
 
-	unsigned short min_hair_style; // added by [Yor]
-	unsigned short max_hair_style; // added by [Yor]
-	unsigned short min_hair_color; // added by [Yor]
-	unsigned short max_hair_color; // added by [Yor]
-	unsigned short min_cloth_color; // added by [Yor]
-	unsigned short max_cloth_color; // added by [Yor]
-	unsigned short clothes_color_for_assassin; // added by [Yor]
+	unsigned short min_hair_style;
+	unsigned short max_hair_style;
+	unsigned short min_hair_color;
+	unsigned short max_hair_color;
+	unsigned short min_cloth_color;
+	unsigned short max_cloth_color;
+	unsigned short clothes_color_for_assassin;
 
-	unsigned short castrate_dex_scale; // added by [Yor]
-	unsigned short area_size; // added by [Yor]
+	unsigned short castrate_dex_scale;
+	unsigned short area_size;
 
-	unsigned short zeny_from_mobs; // [Valaris]
-	unsigned short mobs_level_up; // [Valaris]
-	unsigned short pk_min_level; // [celest]
-	unsigned short skill_steal_type; // [celest]
-	unsigned short skill_steal_rate; // [celest]
-	//unsigned short night_darkness_level; // [celest]
-	unsigned short skill_range_leniency; // [celest]
-	unsigned short motd_type; // [celest]
-	unsigned short allow_atcommand_when_mute; // [celest]
-	unsigned short manner_action; // [Yor]
+	unsigned short zeny_from_mobs;
+	unsigned short mobs_level_up;
+	unsigned short pk_min_level;
+	unsigned short skill_steal_type;
+	unsigned short skill_steal_rate;
+// unsigned short night_darkness_level;
+	unsigned short skill_range_leniency;
+	unsigned short motd_type;
+	unsigned short allow_atcommand_when_mute;
+	unsigned short manner_action;
 	unsigned short finding_ore_rate;
 	unsigned short min_skill_delay_limit;
-	unsigned short idle_no_share; // exp share in party
-	int idle_delay_no_share; // exp share in party
-	unsigned short chat_no_share; // exp share in party
-	unsigned short npc_chat_no_share; // exp share in party
-	unsigned short shop_no_share; // exp share in party
-	unsigned short trade_no_share; // exp share in party
-	unsigned short idle_disconnect; // disconnection without sending information
-	unsigned short idle_disconnect_chat; // disconnection without sending information
-	unsigned short idle_disconnect_vender; // disconnection without sending information
-	unsigned short idle_disconnect_disable_for_restore; // disconnection without sending information
-	unsigned short idle_disconnect_ignore_GM; // disconnection without sending information
-	unsigned short jail_message; // Do we send message to ALL players when a player is put in jail?
-	unsigned short jail_discharge_message; // Do we send message to ALL players when a player is discharged?
-	unsigned short mingmlvl_message; // Which message do we send when a GM can use a command, but mingmlvl map flag block it?
-	unsigned short check_invalid_slot; // Do we check invalid slotted cards?
-	unsigned short ruwach_range; // Set the range (number of squares/tiles around you) of 'ruwach' skill to detect invisible.
-	unsigned short sight_range; // Set the range (number of squares/tiles around you) of 'sight' skill to detect invisible.
-	unsigned short max_icewall; // Set maximum number of ice walls active at the same time.
-	unsigned short ignore_items_gender; //Whether item_db gender restrictions will be ignored or not [Proximus]
-	unsigned short party_invite_same_account; //Whether its possible to invite 2 characters from the same account into a party [Proximus]
+	unsigned short idle_no_share;
+	int idle_delay_no_share;
+	unsigned short chat_no_share;
+	unsigned short npc_chat_no_share;
+	unsigned short shop_no_share;
+	unsigned short trade_no_share;
+	unsigned short idle_disconnect;
+	unsigned short idle_disconnect_chat;
+	unsigned short idle_disconnect_vender;
+	unsigned short idle_disconnect_disable_for_restore;
+	unsigned short idle_disconnect_ignore_GM;
+	unsigned short jail_message;
+	unsigned short jail_discharge_message;
+	unsigned short mingmlvl_message;
+	unsigned short check_invalid_slot;
+	unsigned short ruwach_range;
+	unsigned short sight_range;
+	unsigned short max_icewall;
+	unsigned short ignore_items_gender;
+	unsigned short party_invite_same_account;
 
 	unsigned short atcommand_main_channel_at_start;
-	int atcommand_main_channel_type; // how to send main channel
+	int atcommand_main_channel_type;
 	unsigned short atcommand_main_channel_on_gvg_map_woe;
 	unsigned short atcommand_main_channel_when_woe;
 	unsigned short atcommand_min_GM_level_for_request;
@@ -419,7 +413,7 @@ extern struct Battle_Config {
 	unsigned short atcommand_storage_on_pvp_map;
 	unsigned short atcommand_gstorage_on_pvp_map;
 
-	unsigned short pm_gm_not_ignored; // GM minimum level to be not ignored in private message. [BeoWulf] (from freya's bug report)
+	unsigned short pm_gm_not_ignored;
 
 	unsigned short char_disconnect_mode;
 

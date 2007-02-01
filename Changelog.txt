@@ -4,6 +4,18 @@ Note: Don't remove comments of old coders except if code is removed (respect of 
 
 Date	Added
 
+02/01/07
+	* Updated: @charjoblvup command [Tsuyuki]
+	* Improved: Cleaned and highly documented the battle.c source code file [Tsuyuki]
+	 - Check inside the actual file for details
+	* Added: Two new configuration options: Ka-Skills and Es-Skills usage [Tsuyuki]
+	 - Es-Skills: Can be set to work against other players
+	 - Ka-Skills: Can be set to work on anyone regardless of requirements
+	* Fixed: Ka-Skills can now be used on your children [Tsuyuki]
+	* Added: Full support for the new classes with @joblevelup along with new config options updates [Tsuyuki]
+	* Fixed: @joblevelup bugs (Thanks to KOSAI) [Tsuyuki]
+	* Updated: Some of the documentation files [Tsuyuki]
+
 01/31/07
 	* Fixed: Produce bug -> Extended max number of resources (Thanks to galaxy) [Tsuyuki]
 

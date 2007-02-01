@@ -259,6 +259,9 @@ bWeaponAtk	1081
 bWeaponAtkRate	1082
 bDelayrate	1083
 
+// Missing 1084 (bHPDrainRateRace)
+// Missing 1085 (bSPDrainRateRace)
+
 bRestartFullRecover	2000
 bNoCastCancel	2001
 bNoSizeFix	2002
@@ -291,13 +294,25 @@ bAddItemHealRate	2028
 bLoseSPWhenUnequip	2029
 bExpAddRace	2030
 bSPGainRace	2031
-bIntravision	2032
-bNoKnockBack	2033
-bAutoSpellWhenHitMagic	2034
+
+// Missing 2032 (bSPSubRace2)
+// Missing 2033 (AddEffWhenHitShort)
+// Missing 2034 (UnstripableWeapon)
+// Missing 2035 (UnstripableArmor)
+// Missing 2036 (bUnstripableHelm)
+// Missing 2037 (bUnstripableShield)
+
+bIntravision	2038
 bAddMonsterDropItemGroup	2039
 bSPLossRate 2040
+
+// Missing 2041 (bAddSkillBlow)
+
 bSPVanishRate	2042
 bSPGainValueRace	2043
+bNoKnockBack	2044
+bAutoSpellWhenHitMagic	2045
+
 
 Eff_Stone	0
 Eff_Freeze	1

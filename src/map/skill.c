@@ -3382,7 +3382,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case SL_STIN:
 	case SL_STUN:
 		// Es-type magic can only be used on monsters
-		if(sd && bl->type != BL_MOB) {
+		if(sd && bl->type != BL_MOB && !battle_config.es_skills_usage) {
 			status_change_start(src,SC_STUN,skilllv,0,0,0,500,10);
 			clif_skill_fail(sd,skillid,0,0);
 			break;
@@ -5889,14 +5889,14 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		break;
 
 	case SL_SWOO:
-		if((dstsd != NULL && dstsd->sc_data[SkillStatusChangeTable[skillid]].timer != -1) || (dstmd != NULL && dstmd->sc_data[SkillStatusChangeTable[skillid]].timer != -1)) {
-			status_change_start(src,SC_STUN,skilllv,0,0,0,10000,0);
-			break;
-		}
+			if((dstsd != NULL && dstsd->sc_data[SkillStatusChangeTable[skillid]].timer != -1) || (dstmd != NULL && dstmd->sc_data[SkillStatusChangeTable[skillid]].timer != -1)) {
+				status_change_start(src,SC_STUN,skilllv,0,0,0,10000,0);
+				break;
+			}
 	case SL_SKA:
 	case SL_SKE:
 		// Es-type magic can only be used on monsters
-		if(sd && bl->type != BL_MOB) {
+		if(sd && bl->type != BL_MOB && !battle_config.es_skills_usage) {
 			status_change_start(src,SC_STUN,skilllv,0,0,0,500,10);
 			clif_skill_fail(sd,skillid,0,0);
 			break;
@@ -5912,8 +5912,16 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 	case SL_KAAHI:
 	case SL_KAIZEL:
 	case SL_KAUPE:
+		// Config option allowing use on all targets
+		if(sd && battle_config.ka_skills_usage)
+		{
+			clif_skill_nodamage(src,bl,skillid,skilllv,1);
+			status_change_start(bl,SkillStatusChangeTable[skillid],skilllv,0,0,0,skill_get_time(skillid,skilllv),0);
+			break;
+		}
 		// Ka-type magic can only be used on yourself, your spouse, children or other Soul Linker (or on everyclass when soul linked (dralthan aka haplo))
-		if(dstsd && (dstsd->char_id == sd->char_id || dstsd->char_id == sd->status.partner_id /*|| dstsd->char_id == sd->status.child*/ || dstsd->status.class == JOB_SOUL_LINKER || (sd && sd->sc_data[SC_SPIRIT].timer!=-1 && sd->sc_data[SC_SPIRIT].val2 == SL_SOULLINKER))) {
+		if(dstsd && sd && (dstsd->char_id == sd->char_id || dstsd->char_id == sd->status.partner_id || dstsd->char_id == sd->status.child || dstsd->status.class == JOB_SOUL_LINKER || (sd->sc_data[SC_SPIRIT].timer!=-1 && sd->sc_data[SC_SPIRIT].val2 == SL_SOULLINKER)))
+		{
 			clif_skill_nodamage(src,bl,skillid,skilllv,1);
 			status_change_start(bl,SkillStatusChangeTable[skillid],skilllv,0,0,0,skill_get_time(skillid,skilllv),0);
 		} else if(dstsd) {

@@ -211,3 +211,14 @@ bonus3 bAddMonsterDropItemGroup,x,n,y;	y% chance to get an item of group type x 
 					- Item groups located in: db/item_group_db.txt
 					- 0:Formless, 1:Undead, 2:Brute, 3:Plant, 4:Insect, 5:Fish and Shellfish, 6:Demon, 7:Demi-Human, 8:Angel, 9:Dragon, 10:Boss monster, 11:Other than (normal monster) boss monster
 					- if 'y' is negative value, then it's a part of formula:  chance = -y*(killed_mob_level/10)+1
+
+
+bonus bSPGainValueRace 	- Need info
+bonus bSPVanishRate 	- Need info
+bonus bSPLossRate	- Need info
+
+// New Card bonuses
+
+bonus bNoKnockBack,0;			- Makes player immune to knockback (like no knock back in WoE)
+bonus4 bAutoSpellWhenHitmagic,x,y,n,i;	- n% chance to cast skill x of level y when being hit by magic damage (10000 = 100%)
+					- i: 0=cast on self (including area spells), 1=cast on enemy
