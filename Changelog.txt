@@ -11,6 +11,7 @@
 Date	Added
 
 02/01/2007
+	* Improved: Simplified /npc/jobs/ folder organization [Tsuyuki]
 	* Re-Added: Missing Gemstone Exchange NPC script (deleted on Payon Aegis script conversion) [Tsuyuki]
 	* Fixed: Samurai Specter card now properly ignores the defense of monsters [Tsuyuki]
 	* Fixed: Phantom Arrow no longer knocks back when it misses [Tsuyuki]
