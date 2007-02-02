@@ -1509,7 +1509,7 @@ INSERT INTO `item_db` VALUES (4259, 'Wooden_Golem_Card', 'Wooden Golem Card', 6,
 INSERT INTO `item_db` VALUES (4260, 'Wootan_Shooter_Card', 'Wootan Shooter Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 769, 0, 0, 0, NULL, 'bonus bDef,1; bonus2 bResEff, Eff_Confusion,2000;');
 INSERT INTO `item_db` VALUES (4261, 'Wootan_Fighter_Card', 'Wootan Fighter Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 769, 0, 0, 0, NULL, 'bonus bDef,1; bonus2 bResEff, Eff_Bleeding,2000;');
 INSERT INTO `item_db` VALUES (4262, 'Taoist_Hermit_Card', 'Taoist Hermit Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus3 bAddMonsterDropItem,12029,3,100;');
-INSERT INTO `item_db` VALUES (4263, 'Incarnation_Samurai_Card', 'Incarnation Samurai Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus bIgnoreDefMob,0; bonus bNoRegen,1; bonus2 bHPLossRate,666,10000; bonus bDamageWhenUnequip,999;');
+INSERT INTO `item_db` VALUES (4263, 'Samurai_Specter_Card', 'Incarnation Samurai Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus bIgnoreDefMob,0; bonus bNoRegen,1; bonus2 bHPLossRate,666,10000; bonus bDamageWhenUnequip,999;');
 INSERT INTO `item_db` VALUES (4264, 'Wind_Ghost_Card', 'Wind Ghost Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus4 bAutoSpell,84,3+7*(getskilllv(84)==10),200,1;');
 INSERT INTO `item_db` VALUES (4265, 'Jing_Guai_Card', 'Jing Guai Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus3 bAddMonsterDropItem,12033,8,100;');
 INSERT INTO `item_db` VALUES (4266, 'Eclipse_Card', 'Eclipse Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 4, 0, 0, 0, NULL, 'bonus bVit,1; if(isequipped(4006)==0)end; bonus bFlee,18;');

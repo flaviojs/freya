@@ -2205,7 +2205,7 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 					ATK_SCALE2(raceele_flag?(def1 + def2):100, raceele_flag_?(def1 + def2):100);
 			}
 
-			if (!flag.idef && ((tmd && sd->ignore_def_mob_ & (t_mode&0x20?2:1)) || sd->ignore_def_ele & (1<<t_ele) ||
+			if (!flag.idef && ((tmd && sd->ignore_def_mob & (t_mode&0x20?2:1)) || sd->ignore_def_ele & (1<<t_ele) ||
 				sd->ignore_def_race & (1<<t_race) || sd->ignore_def_race & (t_mode&0x20?1<<10:1<<11)))
 				flag.idef = 1;
 
