@@ -4954,26 +4954,36 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		}
 		break;
 	case SA_DISPELL:
-	  {
+	 {
 		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
-		if(tsc_data) {
-			if(dstsd && status_isimmune(bl))
-				break;
-			// If Spirit of the Rogue is present, Dispell does not work
-			if ((tsc_data[SC_SPIRIT].timer != -1 && tsc_data[SC_SPIRIT].val2 == SL_ROGUE)) {
+		i = status_get_sc_def_mdef(bl);
+		if (tsc_data)
+		{
+		// Dispell prevention checks
+			if (i >= 10000 || (tsc_data[SC_SPIRIT].timer != -1 && tsc_data[SC_SPIRIT].val2 == SL_ROGUE) || (rand()%10000 >= (10000-i)*(50+10*skilllv)/100)) {
 				if (sd)
 					clif_skill_fail(sd,skillid,0,0);
 				break;
 			}
-			if ((rand() % 10) <= (4 - skilllv))
+			short *tsc_count = status_get_sc_count(bl);
+			if (status_isimmune(bl) || !(tsc_count))
 				break;
-			for(i = SC_DISPELLMIN; i < SC_DISPELLMAX; i++) {
+			for(i = 0; i < SC_MAX; i++) {
 				if (tsc_data[i].timer == -1)
 						continue;
+				if (i==SC_HALLUCINATION || i==SC_WEIGHT50 || i==SC_WEIGHT90
+					|| i==SC_STRIPWEAPON || i==SC_STRIPSHIELD || i==SC_STRIPARMOR || i==SC_STRIPHELM
+					|| i==SC_CP_WEAPON || i==SC_CP_SHIELD || i==SC_CP_ARMOR || i==SC_CP_HELM
+					|| i==SC_COMBO || i==SC_DANCING || i==SC_GUILDAURA || i==SC_EDP
+					|| i==SC_AUTOBERSERK  || i==SC_CARTBOOST || i==SC_MELTDOWN
+					|| i==SC_SAFETYWALL || i==SC_SMA || i==SC_SPEEDUP0
+					|| i==SC_NOCHAT
+					)
+					continue;
 				status_change_end(bl, i, -1);
+				}
 			}
 		}
-	  }
 		break;
 
 	case TF_BACKSLIDING:

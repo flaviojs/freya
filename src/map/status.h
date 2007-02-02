@@ -27,8 +27,7 @@ enum {	// struct map_session_data‚ status_change function
 	SC_BLIND,
 	SC_BLEEDING,
 	SC_DPOISON, //10
-	
-	SC_DISPELLMIN           = 15,
+
 	SC_ASPDPOTION0          = 16,
 	SC_ASPDPOTION1          = 17,
 	SC_ASPDPOTION2          = 18,
@@ -97,7 +96,6 @@ enum {	// struct map_session_data‚ status_change function
 	SC_DOUBLECAST,
 	SC_MEMORIZE,
 	SC_BATTLEORDERS,
-	SC_DISPELLMAX, // End set of status that can be dispelled
 	
 	SC_EDP, //85
 	SC_CP_WEAPON,
