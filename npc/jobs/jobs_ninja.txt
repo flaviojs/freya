@@ -1,0 +1,819 @@
+//===== Freya Script =========================================
+//= Ninja Job Quest
+//===== By: ================================================== 
+//= Legionaire
+//===== Current Version: ===================================== 
+//= 1.2
+//===== Compatible With: ===================================== 
+//= Freya
+//===== Description: ========================================= 
+//= Semi-official Ninja Job Change script using dialogue from
+//= Mandarin Aegis Ninja script.
+//===== Additional Comments: ================================= 
+//= The dialouge isn't exactly the best available, but until
+//= The official dialouge in English comes out, this is the
+//= Best that I can do.
+//= 1.1 Optimized, updated, checked [Lupus]
+//= 1.2 Converted to Freya [Tsuyuki]
+//============================================================ 
+
+
+que_ng.gat,30,65,3	script	Cool Kid#nq	730,{
+
+	// Can't be Baby/High Novice, MUST be normal Novice
+	if (Class == JOB_NOVICE && JobLevel > 9) goto NJQ0;
+	if (Class == JOB_NOVICE && JobLevel < 10) goto NJQ9;
+	if (Class == JOB_NINJA) goto NJQ10;
+	goto NJQ11;
+
+	NJQ0:
+		if (NINJ_Q == 1) goto NJQ1;
+		if (NINJ_Q == 2) goto NJQ2;
+		if (NINJ_Q == 3) goto NJQ3;
+		if (NINJ_Q == 4) goto NJQ4;
+		goto NJQ5;
+
+		NJQ1:
+			mes "[Cool Kid]";
+			mes "Mmm... This isn't a pressing matter.";
+			mes "Though I hope you can do it soon.";
+			mes "Wildcat Zhao, he's over in";
+			mes "Einbroch";
+			close;
+
+		NJQ2:
+			mes "[Cool Kid]";
+			mes "Don't forget to get something from him.";
+			mes "Otherwise he'll forget.";
+			close;
+
+		NJQ3:
+			mes "[Cool Kid]";
+			mes "Did you bring it back?";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Yup, right here.";
+			next;
+			mes "[Cool Kid]";
+			mes "Ohh, not bad";
+			mes "Hand it over.";
+			mes "Let's see... Well.";
+			mes "- *letter opening sounds*... -";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "- He's intently reading -";
+			mes "- the letter I brought back. -";
+			next;
+			mes "[Cool Kid]";
+			mes "Ai YA~!! How can this be?!";
+			mes "He rejected my offer of a ceasefire!!!";
+			mes "Could it be... Could it be...!";
+			mes "That he's already made another sword?...";
+			next;
+			mes "[Cool Kid]";
+			mes "Ohhh, my head hurts now.";
+			mes "Hey, sorry to bother you again.";
+			mes "I need something to fight";
+			mes "Zhao with,";
+			mes "but I don't have the materials.";
+			next;
+			mes "[Cool Kid]";
+			mes "If you bring me the materials...";
+			mes "I'll acknowledge you...";
+			mes "And let you become a Ninja.";
+			mes "I need you to get me...";
+			mes "One piece of Phracon.";
+			mes "and five cyfar, quick, there's no time!";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Aahh!!";
+			mes "This is...";
+			next;
+			mes "[Cool Kid]";
+			mes "Hmm, what's the matter?";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "These items... Were the ones";
+			mes "I promised to Mr. Zhao...";
+			next;
+			mes "[Cool Kid]";
+			mes "WHAT?!!!";
+			mes "Then the person helping him...";
+			mes "IS!";
+			mes "Aaahhh...";
+			mes "Ai ya, you fool!!!!";
+			next;
+			mes "[Cool Kid]";
+			mes "Oh.. Oh... Calm.. Must be calm.";
+			mes "Haha...";
+			next;
+			mes "[Cool Kid]";
+			mes "Well, you've already promised to help me.";
+			mes "No point in arguing now...";
+			mes "We can do that later.";
+			mes "Quick, gather the items.";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Oh.. Oh.. Ok..";
+			next;
+			mes "[Cool Kid]";
+			mes "Quick~~!!";
+			mes "Aiii~";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "- I have to give him 1 Phracon... -";
+			mes "- and 5 Cyfars -";
+			set NINJ_Q,4;
+			close;
+
+		NJQ4:
+			mes "[Cool Kid]";
+			if (countitem(7053) < 5 || countitem(1010) < 1) goto NJQ6;
+			if (SkillPoint > 0) goto NJQ7;
+			goto NJQ8;
+
+			NJQ6:
+				mes "Bring me a Phracon";
+				mes "and five cyfar";
+				mes "Right now, you still don't have enough.";
+				mes "It's urgent.. So do it quickly.";
+				close;
+
+			NJQ7:
+				mes "Come back once you no longer have skill points left over...";
+				close;
+
+		NJQ8:
+			delitem 1010,1;
+			delitem 7053,5;
+			mes "Oh... you've brought it.";
+			mes "Let's see...";
+			mes "Mmm~ so you've brought it all";
+			mes "and followed my instructions.";
+			next;
+			mes "[Cool Kid]";
+			mes "Huu... This doesn't look too bad.";
+			mes "Better than I expected at least?";
+			next;
+			mes "[Cool Kid]";
+			mes "Ok.";
+			mes "I'll follow through with the ritual";
+			mes "and change you into a Ninja.";
+			next;
+			mes "[Cool Kid]";
+			mes "Well, I guess I can introduce myself to you now.";
+			mes "I am part of the Doga Ninja clan";
+			mes "the top Ninja head in the clan.";
+			mes "I'm the squad leader of the team...";
+			mes "trying to find our chief, Kazma";
+			mes "So here I am.";
+			next;
+			mes "[Cool Kid]";
+			mes "Actually, there's been a bit of a distrubance";
+			mes "amongst our ranks";
+			mes "so actually, I didn't want you";
+			mes "to join the clan";
+			mes "at first.";
+			next;
+			mes "[Cool Kid]";
+			mes "But Zhao, in the letter...";
+			mes "rate you pretty high, and you performed";
+			mes "orders rather well,";
+			mes "so I had a change of mind.";
+			next;
+			mes "[Cool Kid]";
+			mes "Being a Ninja is a solitary job.";
+			mes "We value our work above all";
+			mes "but not to the point of fanaticism.";
+			next;
+			mes "[Cool Kid]";
+			mes "Your path will be one of hardship.";
+			mes "Many of us live within villages...";
+			mes "Working away covertly.";
+			next;
+			mes "[Cool Kid]";
+			mes "Our techniques and our equipmnet...";
+			mes "How to handle and use them...";
+			mes "That is all done covertly";
+			mes "As well, buying and selling...";
+			mes "is also done via special means, so,";
+			mes "be especially careful.";
+			next;
+			mes "[Cool Kid]";
+			mes "Well, from now on";
+			mes "You're a member of the ...";
+			mes "Doga Ninja Clan.";
+			next;
+			mes "[Cool Kid]";
+			mes "Speed, as that of the western wind.";
+			mes "Movement, like the falling leaf in that wind";
+			mes "Soft!!!";
+			next;
+			mes "[Cool Kid]";
+			mes "Haaa!!!!";
+			next;
+			nude;
+			jobchange JOB_NINJA;
+			set NINJ_Q,0;
+			getitem 13010,1;
+			close;
+
+		NJQ5:
+			mes "["+strcharinfo(0)+"]";
+			mes "Hey.";
+			next;
+			mes "[Cool Kid]";
+			mes "Oh?...";
+			mes "That's impossible~!!";
+			mes "You can see me!";
+			next;
+			mes "[Cool Kid]";
+			mes "Aaaahhh~!";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "- Kick the man with the chopsticks. -";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "- Huu~! -";
+			mes "Ahh~!";
+			mes "Ahh~! What are you doing?!";
+			next;
+			mes "[Cool Kid]";
+			mes "Oh?...";
+			mes "You aren't an assassin trying to kill me.";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Oh jeez... What did I get myself into.";
+			mes "This guy is nuts.";
+			mes "Hasn't even seen me and is throwing stuff around...";
+			next;
+			mes "[Cool Kid]";
+			mes "ohohoh~! Anger, anger~~";
+			mes "My forever rival... Forever hated enemy!";
+			mes "Wildcat!";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "........";
+			next;
+			mes "[Cool Kid]";
+			mes "Ahah~~~!!!";
+			mes "E~E~";
+			mes "Pa! Pa! Pa~";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "- I'm right here... -";
+			next;
+			mes "[Cool Kid]";
+			mes "Mmm...";
+			mes "Oh! Who are you?!";
+			mes "When did you suddenly appear";
+			mes "beside me!";
+			mes "Here, TAKE THIS!";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Augh...~";
+			mes "Jeez, can't you stop...";
+			mes "What are you doing now..";
+			next;
+			mes "[Cool Kid]";
+			mes "Ohoho...";
+			mes "Not bad, not bad~";
+			mes "You managed to dodge my attacks...";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "- What.. Is wrong with him... -";
+			mes "- Not listening to me at all. -";
+			next;
+			mes "[Cool Kid]";
+			mes "mmm~ok~";
+			mes "Well, why did you come find me?";
+			mes "What do you need?";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes ".........";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Oh...mm...";
+			mes "Right.";
+			mes "I want to become a Ninja.";
+			next;
+			mes "[Cool Kid]";
+			mes "Ok, great, perfect...";
+			mes "BUT!";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes ".....";
+			next;
+			mes "[Cool Kid]";
+			mes "It's not that simple.";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "... What now~";
+			next;
+			mes "[Cool Kid]";
+			mes "I still have no trust in you.";
+			mes "In my opinion, you have no experience.";
+			mes "You'll have trouble becoming a Ninja.";
+			next;
+			mes "[Cool Kid]";
+			mes "So...";
+			mes "You should!!!Go home~!";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "...........";
+			next;
+			mes "[Cool Kid]";
+			mes "Mmm...";
+			mes "Right!";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "...........";
+			next;
+			mes "[Cool Kid]";
+			mes "Well, if you aren't deaf, leave.";
+			mes "You've seen it for yourself, I'm a busy fellow.";
+			mes "Aahh...";
+			next;
+			mes "[Cool Kid]";
+			mes "My opponents are everywhere...";
+			mes "I cannot afford to waste time!";
+			next;
+			mes "[Cool Kid]";
+			mes "Well now, I've got to run";
+			mes "You know, for practice and all.";
+			mes "*prepares to leave*";
+			next;
+			mes "[Cool Kid]";
+			mes "I shall win next time!";
+			mes "Wait for me.";
+			mes "Wildcat Zhao!";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Wildcat... Zhao?";
+			mes "You're fighting a cat?";
+			next;
+			mes "[Cool Kid]";
+			mes "Uhh..? Oh that, hahaha~";
+			mes "Wildcat Zhao is that fellow's...";
+			mes "title.";
+			next;
+			mes "[Cool Kid]";
+			mes "He's a vicious and barbaric fellow.";
+			mes "For victory...";
+			mes "He'll use any method.";
+			next;
+			mes "[Cool Kid]";
+			mes "His ninjutsu";
+			mes "is also a bit too strong...";
+			next;
+			mes "[Cool Kid]";
+			mes "Right now, both of our";
+			mes "shuriken and scrolls...";
+			mes "are still in repair, so,";
+			mes "we're temporarily calling it a break.";
+			next;
+			mes "[Cool Kid]";
+			mes "If you really...";
+			mes "Want to become a Ninja.";
+			mes "Wanna help me out?";
+			mes "If you help me...";
+			mes "I probably won't be able to make you a Ninja";
+			mes "But I'll teach you several skills?";
+			next;
+			menu "Sure.",NJQMenu1,"Reject.",NJQMenu2;
+
+			NJQMenu2:
+				mes "["+strcharinfo(0)+"]";
+				mes "I'm not here to help";
+				mes "Just looking for someone to teach me the skills.";
+				mes "Sorry.";
+				mes "Find somebody else.";
+				next;
+				mes "[Cool Kid]";
+				mes "Oh... I see...";
+				mes "Ok then.";
+				mes "Sorry if I offended you.";
+				mes "You may leave now.";
+				close;
+
+		NJQMenu1:
+			mes "["+strcharinfo(0)+"]";
+			mes "Mm... Ok then.";
+			next;
+			mes "[Cool Kid]";
+			mes "Ok..great.";
+			mes "Bring this letter";
+			mes "Over to Wildcat Zhao";
+			mes "Grr... That fellow.";
+			next;
+			mes "[Cool Kid]";
+			mes "It basically says...";
+			mes "Let's have a ceasefire";
+			mes "While our equipment is being fixed.";
+			mes "You must get a reply from him.";
+			next;
+			mes "[Cool Kid]";
+			mes "I heard he's somewhere...";
+			mes "in Einbroch...";
+			mes "Don't know.";
+			mes "What's he doing over there?";
+			mes "...";
+			next;
+			mes "[Cool Kid]";
+			mes "Zhao...";
+			mes "He changes his appearance...";
+			mes "So check everybody, since you won't know who he is.";
+			next;
+			mes "[Cool Kid]";
+			mes "Don't give up though.";
+			mes "He likes high places.";
+			mes "Search around.";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Ok~";
+			mes "Ok.";
+			set NINJ_Q,1;
+			close;
+
+	NJQ9:
+		mes "[Cool Kid]";
+		mes "Not enough training.";
+		mes "Come back later.";
+		close;
+
+	NJQ10:
+		mes "[Cool Kid]";
+		mes "Mm... How's it been?";
+		mes "Missions can happen at any moment";
+		mes "At any time";
+		mes "Don't slack off";
+		close;
+
+NJQ11:
+	mes "[Cool Kid]";
+	mes "Oh what, this smell!!";
+	mes "It's coming from you!.";
+	mes "It's been a long time since I've";
+	mes "smelled anybody so stinky.";
+	mes "Away with you!";
+	close;
+}
+
+einbroch.gat,184,194,3	script	Exceptional Man	881,{
+
+	if (NINJ_Q >= 3 || Class == JOB_NINJA) goto EMQ1;
+	goto EMQ2;
+
+	EMQ1:
+		set EMQName,1;
+		goto EMQ3;
+
+	EMQ2:
+		set EMQName,2;
+		goto EMQ3;
+
+EMQ3:
+	if (NINJ_Q == 0) goto EMQ4;
+	goto EMQ7;
+
+	EMQ4:
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		if (Class == JOB_NINJA) goto EMQ5;
+		goto EMQ6;
+
+		EMQ5:
+			mes "Oh, you're a Ninja now.";
+			mes "Stay true to the path, though there...";
+			mes "may be difficulties ahead, remember...";
+			mes "train hard.";
+			close;
+
+	EMQ6:
+		mes "Whoo... So happy.";
+		mes "I've been to many places.";
+		mes "But a building this tall...";
+		mes "First time I've seen it, and the scenery is beautiful too.";
+		mes "Really too sad that I don't have the time to admire it";
+		mes "*sighs*";
+		close;
+
+EMQ7:
+	if (NINJ_Q == 1) goto EMQ8;
+	if (NINJ_Q == 2) goto EMQ9;
+	if (NINJ_Q == 3) goto EMQ10;
+	if (NINJ_Q == 4) goto EMQ11;
+
+	close2;
+	end;
+
+	EMQ8:
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "The place I lived in...";
+		mes "was peaceful, the air was good, the houses were small";
+		mes "but warm.";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "Oh, it can't be!";
+		mes "Amatsu?!!!";
+		next;
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "Nope.";
+		mes "....";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "Mmm~";
+		mes "Wait...";
+		mes "You've lived in Izlude before?";
+		next;
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "Yes.";
+		mes "I come from Izlude.";
+		next;
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "Due to certain events though...";
+		mes "I've come here, to the mines.";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "Really...";
+		mes "Oh, do you know a person called.... Wildcat Zhao?";
+		mes "He's a Ninja from Amatsu";
+		next;
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "Hmm that's the first time I've heard that name.";
+		mes "You have some important reason..";
+		mes "to meet him?";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "Yes, I have a latter to give him";
+		mes "and I need a reply letter";
+		mes "before I can change class";
+		mes "and become a Ninja.";
+		next;
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "Mm.. So I see, you too, are a traveller.";
+		next;
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "Oh, I remember now";
+		mes "I think... I know";
+		mes "Who you're trying to find.";
+		next;
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "I saw him here";
+		mes "or at least... I think I did.";
+		next;
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "I'd really like to help you";
+		mes "but I still have...";
+		mes "some unfinished business.";
+		next;
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "If you can help me do something";
+		mes "I'll help you find him.";
+		next;
+		menu "I'll find him myself",EMQMenu1,"Ok, I'll help you.",EMQMenu2;
+
+		EMQMenu1:
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+			mes "Ahh ok.";
+			mes "I understand.";
+			mes "Well, good luck";
+			mes "if you ever are in";
+			mes "need of help.";
+			mes "Before I leave";
+			mes "tell me...";
+			close;
+
+		EMQMenu2:
+			if (EMQName == 1) mes "[Red Cougar Zhao]";
+			if (EMQName == 2) mes "[Exceptional Man]";
+			mes "Mm Ok.";
+			mes "I came here";
+			mes "to find some ores.";
+			mes "I have something that needs these ores";
+			mes "in order to work";
+			next;
+			if (EMQName == 1) mes "[Red Cougar Zhao]";
+			if (EMQName == 2) mes "[Exceptional Man]";
+			mes "I would come with you....";
+			mes "But I need to watch over this, so.";
+			mes "If you can get me five Cyfars, and";
+			mes "one Phracon...";
+			mes "I would really appreciated it.";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "- I need to bring, one Phracon and five Cyfars. -";
+			set NINJ_Q,2;
+			close;
+
+	EMQ9:
+		if (countitem(1010) < 1 || countitem(7053) < 5) goto EMQ12;
+		goto EMQ13;
+
+		EMQ12:
+			if (EMQName == 1) mes "[Red Cougar Zhao]";
+			if (EMQName == 2) mes "[Exceptional Man]";
+			mes "1 Phracon and 5 Cyfars.";
+			mes "Hmm the amount isn't enough.";
+			mes "Even though there's no hurry, still,";
+			mes "bring back the correct amount.";
+			close;
+
+	EMQ13:
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "Very good, very good..";
+		mes "Mmm.... Ok.";
+		mes "You've given me what I needed";
+		mes "now I need to help you in return";
+		mes "and find him. Mmm....";
+		next;
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "Let me see the letter.";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "?????!!";
+		next;
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "Oh? Can it be him...";
+		mes "that sent it?";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "Oh.... So you are";
+		mes "Wildcat~!";
+		next;
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "No.";
+		mes "My name is not Wildcat Zhao";
+		mes "It is Cougar Zhao.";
+		mes "Wildcat is the name that kid";
+		mes "uses in order";
+		mes "to aggravate me, haha.";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "Hahaha... ~~";
+		next;
+		set EMQName,1;
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "If you want to become a Ninja";
+		mes "then you must not trust";
+		mes "what you see.";
+		next;
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "The clothing and gear you see in books.";
+		mes "Is not used by real Ninjas";
+		mes "or rather, there are very few";
+		mes "who wear such things.";
+		next;
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "Do not forget.";
+		mes "Once the identity of a Ninja";
+		mes "has been revealed, his life is";
+		mes "forfeit.";
+		next;
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "Even right now";
+		mes "what I say and tell you";
+		mes "may not be the truth.";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "Ohh...";
+		mes "...........";
+		next;
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "Well, can I see it?";
+		mes "That letter.";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "Oh ok.";
+		mes "Hmm.";
+		mes "-*Takes out letter*-";
+		next;
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "Mmmm.. Let's see...";
+		mes "Oh, and here, I thought it would be";
+		mes "another declaration of battle.";
+		mes "He wants a ceasfire now.";
+		next;
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "What to do, what to do.";
+		mes "You've already helped me";
+		mes "make another sword.";
+		mes "Haha~";
+		next;
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "I'll write a reply I guess.";
+		mes "From my point of view though";
+		mes "based on the speed that you got what I asked for";
+		mes "if you want to become a Ninja";
+		mes "learn to become a bit faster";
+		mes "and more experienced";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes ".....";
+		next;
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "Wait.";
+		mes "I shall write a reply letter.";
+		mes "Let's see...";
+		mes "Mm...*slides letter in*......";
+		next;
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "Here you go.";
+		mes "Give it to him";
+		mes "and he'll understand.";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "- Good, got the letter -";
+		mes "- that Mr. Zhao wrote in a second. -";
+		next;
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "Well now, be on your way.";
+		mes "If you want to become a Ninja";
+		mes "learn to treasure what time you have.";
+		next;
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "When you do become a Ninja";
+		mes "Come have a chat with me";
+		mes "I will be waiting for you.";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "Mmm.... Then I'll....";
+		next;
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "Ohh.... It'll take awhile to get to Amatsu";
+		mes "definitely a long trip.";
+		mes "I'll take "+strcharinfo(0)+" to Amatasu.";
+		mes "Ok.";
+		delitem 1010,1;
+		delitem 7053,5;
+		set NINJ_Q,3;
+		close2;
+		warp "amatsu.gat",113,127;
+		end;
+
+	EMQ10:
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "Hmmm I wonder what happened";
+		mes "you haven't seen him yet";
+		mes "why are you here?";
+		next;
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "If you want";
+		mes "I'll take you back to Amatsu.";
+		next;
+		menu "No thanks",EMQMenu3,"Sure.",EMQMenu4;
+
+		EMQMenu3:
+			if (EMQName == 1) mes "[Red Cougar Zhao]";
+			if (EMQName == 2) mes "[Exceptional Man]";
+			mes "Mm, ok then.";
+			mes "The decision is yours to make.";
+			close;
+
+	EMQMenu4:
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "Ok. Then I'll take you to Amatsu.";
+		close2;
+		warp "amatsu.gat",113,127;
+		end;
+
+	EMQ11:
+		if (EMQName == 1) mes "[Red Cougar Zhao]";
+		if (EMQName == 2) mes "[Exceptional Man]";
+		mes "Haha, the kid seems to order you";
+		mes "to do lots of bothersome chores.";
+		mes "Work hard, all of these tasks";
+		mes "will help you become a Ninja.";
+		close;
+}
