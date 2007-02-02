@@ -3985,16 +3985,19 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 	  }
 		break;
 	case TK_MISSION:
-		if(sd) {
-			if (sd->tk_mission_target_id && (sd->tk_mission_count || rand()%100)) {
+		if(sd)
+		{
+			if(sd->tk_mission_target_id && (sd->tk_mission_count || rand()%100))
+			{
 				clif_mission_mob(sd, sd->tk_mission_target_id, sd->tk_mission_count);
 				clif_skill_fail(sd, skillid, 0, 0);
 				break;
 			}
 
-			do {
+			do
+			{
 				sd->tk_mission_target_id = rand() % MAX_MOB_DB;
-			} while(mob_db[sd->tk_mission_target_id].max_hp <= 0 || mob_db[sd->tk_mission_target_id].summonper[0]==0 || mob_db[sd->tk_mission_target_id].mode&0x20);
+			} while(sd->tk_mission_target_id == 1182 || sd->tk_mission_target_id == 1183 || sd->tk_mission_target_id == 1184 || mob_db[sd->tk_mission_target_id].max_hp <= 0 || mob_db[sd->tk_mission_target_id].summonper[0] == 0 || mob_db[sd->tk_mission_target_id].mode & 0x20);
 
 			sd->tk_mission_count = 0;
 

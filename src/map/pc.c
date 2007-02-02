@@ -965,8 +965,10 @@ void pc_authok_final_step(int id, time_t connect_until_time) { // 0x2b26 <accoun
 	}
 	
 	// TK_MISSION
-	sd->tk_mission_target_id = sd->tk_mission_count = 0;
-	if (pc_checkskill(sd, TK_MISSION)) {
+	sd->tk_mission_target_id = 0;
+	sd->tk_mission_count = 0;
+	if(pc_checkskill(sd, TK_MISSION))
+	{
 		sd->tk_mission_target_id = pc_readglobalreg(sd, "TK_MISSION_ID");
 		sd->tk_mission_count = pc_readglobalreg(sd, "TK_MISSION_COUNT");
 	}

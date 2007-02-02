@@ -105,44 +105,29 @@ void set_termfunc(void (*termfunc)(void)) {
 	puts("Could not allocate a term function! Please increase MAX_TERMFUNC in core.h !!");
 }
 
-/*======================================
- *	CORE : Signal Sub Function
- *--------------------------------------
- */
-static void sig_proc(int sn) {
-//	int i;
+//
+// --- signal handler
+//
+static void sig_proc(int sn)
+{
 	static int is_called = 0;
 
-	if (is_called++)
+	if(is_called++)
 		return;
 
-	switch(sn) {
-	case SIGINT:
-	case SIGTERM:
+	switch(sn)
+	{
 #ifdef __WIN32
-	case SIGBREAK:
+		case SIGBREAK:
 #endif
-/*		for (i = 0; i < MAX_TERMFUNC; i++) {
-			if (term_func[i]) (*term_func[i])();
-		}
-		for(i = 0; i < fd_max; i++) {
-			if (!session[i])
-				continue;
-#ifdef __WIN32
-			if (i > 0) { // not console
-				shutdown(i, SD_BOTH);
-				closesocket(i);
-			}
-#else
-			close(i);
-#endif
-			delete_session(i);
-		}
-		term_input_disable();*/
-		exit(0);
+		case SIGINT:
+		case SIGTERM:
+			exit(0);
 	}
 
 	is_called--;
+
+	return;
 }
 
 /*======================================================
@@ -209,45 +194,23 @@ void display_title(void)
 	printf(CL_DARK_WHITE CL_BG_BLUE "          (=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=)" CL_CLL CL_RESET "\n\n"); // reset color
 }
 
-// This is an implementation of signal() using sigaction() for portability.
-// (sigaction() is POSIX; signal() is not.)  Taken from Stevens' _Advanced
-// Programming in the UNIX Environment_.
-//
-#ifndef POSIX
-#define compat_signal(signo, func) signal(signo, func)
-#else
-sigfunc *compat_signal(int signo, sigfunc *func) {
-	struct sigaction sact, oact;
-
-	sact.sa_handler = func;
-	sigemptyset(&sact.sa_mask);
-	sact.sa_flags = 0;
-#ifdef SA_INTERRUPT
-	sact.sa_flags |= SA_INTERRUPT; // SunOS
-#endif
-	if (sigaction(signo, &sact, &oact) < 0) // The return value from sigaction is zero if it succeeds, and -1 on failure.
-		return (SIG_ERR);
-
-	return (oact.sa_handler);
-}
-#endif
-
-int get_version(char flag) {
-	switch(flag) {
-	case VERSION_FLAG_MAJOR:
-		return FREYA_MAJORVERSION;
-	case VERSION_FLAG_MINOR:
-		return FREYA_MINORVERSION;
-	case VERSION_FLAG_REVISION:
-		return FREYA_REVISION;
-	case VERSION_FLAG_RELEASE:
-		return FREYA_STATE;
-	case VERSION_FLAG_OFFICIAL:
-		return 0;
-	case VERSION_FLAG_MOD:
-		return 0;
+int get_version(char flag)
+{
+	switch(flag)
+	{
+		case VERSION_FLAG_MAJOR:
+			return FREYA_MAJORVERSION;
+		case VERSION_FLAG_MINOR:
+			return FREYA_MINORVERSION;
+		case VERSION_FLAG_REVISION:
+			return FREYA_REVISION;
+		case VERSION_FLAG_RELEASE:
+			return FREYA_STATE;
+		case VERSION_FLAG_OFFICIAL:
+			return 0;
+		case VERSION_FLAG_MOD:
+			return 0;
 	}
-
 	return 0;
 }
 
@@ -272,43 +235,24 @@ int main(int argc, char **argv)
 	Net_Init();
 	do_socket();
 
-	// Ignored Signals
+	/* signal handling */
 #ifndef __WIN32
-	if (compat_signal(SIGUSR1, SIG_IGN) == SIG_ERR) // should be ignored as it's used by the Freya Daemon to check if freya is still running
-		printf(CL_YELLOW "Warning: " CL_RESET "Could not install signal handler for SIGUSR1 (POSIX.1 signal).\n");
-#ifdef SIGPIPE // broken pipe. don't stop. socket code will manage this error.
-	if (compat_signal(SIGPIPE, SIG_IGN) == SIG_ERR) // broken pipe.
-		printf(CL_YELLOW "Warning: " CL_RESET "Could not install signal handler for SIGPIPE (POSIX.1 signal).\n");
-#else
-	printf(CL_YELLOW "Warning: " CL_RESET "Warning: Your system doesn't recognize SIGPIPE (POSIX.1) signal.\n");
-#endif
-#endif
-
-	// Signals for termination (we must close and save all files)
-	if (compat_signal(SIGTERM, sig_proc) == SIG_ERR) // termination request
-		printf(CL_YELLOW "Warning: " CL_RESET "Could not install signal handler for SIGTERM (POSIX.1 signal).\n");
-	if (compat_signal(SIGINT, sig_proc) == SIG_ERR) // program interrupt by interrupt key
-		printf(CL_YELLOW "Warning: " CL_RESET "Could not install signal handler for SIGINT (POSIX.1 signal).\n");
+	signal(SIGUSR1, SIG_IGN);		// Online Flag. No Action Required
+	signal(SIGPIPE, SIG_IGN);		// Network Error. No Action Required
+#endif /* !__WIN32 */
+	signal(SIGINT, sig_proc);		// Process Interrupted
+	signal(SIGTERM, sig_proc);		// Termination Request
 #ifdef __WIN32
-	if (compat_signal(SIGBREAK, sig_proc) == SIG_ERR) // Control-break
-		printf(CL_YELLOW "Warning: " CL_RESET "Could not install signal handler for SIGBREAK (WIN32 signal).\n");
-#endif // __WIN32
-
-	// Signals to create coredumps by system when necessary (crash)
-	if (compat_signal(SIGFPE, SIG_DFL) == SIG_ERR) // Floating point error
-		printf(CL_YELLOW "Warning: " CL_RESET "Could not install signal handler for SIGFPE (POSIX.1 signal).\n");
-	if (compat_signal(SIGSEGV, SIG_DFL) == SIG_ERR) // Segmentation violation/Invalid memory reference
-		printf(CL_YELLOW "Warning: " CL_RESET "Could not install signal handler for SIGSEGV (POSIX.1 signal).\n");
-	if (compat_signal(SIGILL, SIG_DFL) == SIG_ERR) // Illegal Instruction
-		printf(CL_YELLOW "Warning: " CL_RESET "Could not install signal handler for SIGILL (POSIX.1 signal).\n");
-	if (compat_signal(SIGABRT, SIG_DFL) == SIG_ERR) // Abort signal from abort(3)
-		printf(CL_YELLOW "Warning: " CL_RESET "Could not install signal handler for SIGABRT (POSIX.1 signal).\n");
+	signal(SIGBREAK, sig_proc);		// Termination Request (Windows)
+#endif /* _WIN32 */
+	signal(SIGFPE, SIG_DFL);		// Floating Point Error
+	signal(SIGILL, SIG_DFL);		// Illegal Instruction
+	signal(SIGSEGV, SIG_DFL);		// Segmentation Fault
+	signal(SIGABRT, SIG_DFL);		// Abort
 #ifndef __WIN32
-	if (compat_signal(SIGBUS, SIG_DFL) == SIG_ERR) // Access to an undefined portion of a memory object.
-		printf(CL_YELLOW "Warning: " CL_RESET "Could not install signal handler for SIGBUS (non-standard signal).\n");
-	if (compat_signal(SIGTRAP, SIG_DFL) == SIG_ERR) // Trace/breakpoint trap
-		printf(CL_YELLOW "Warning: " CL_RESET "Could not install signal handler for SIGTRAP (non-standard signal).\n");
-#endif // not __WIN32
+	signal(SIGBUS, SIG_DFL);		// Improper Memory Handling
+	signal(SIGTRAP, SIG_DFL);		// Trace/Breakpoint Trap
+#endif /* !__WIN32 */
 
 	do_init(argc, argv);
 	runflag = 1;

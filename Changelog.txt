@@ -11,6 +11,9 @@
 Date	Added
 
 02/02/2007
+	* Added: Hexadecimal reading on configuration files again [Harbin]
+	* Improved: Cleaned signal handling system. Some compatibility problems may arise [Harbin]
+	* Fixed: Thief Quest monsters can't be the target of Taekwon Mission anymore [Harbin]
 	* Removed: Path Standalone Test feature. Unused [Harbin]
 	* Improved: Reduced BLOCK_SIZE_EXT from 256 to 16. No more over-allocation [Harbin]
 	* Removed: cfg_files.c, cfg_files.h and tmp folder. They are unused [Harbin]

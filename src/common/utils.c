@@ -24,7 +24,7 @@
 #include "../common/timer.h" /* gettimeofday for win32 */
 
 //
-// --- convert boolean into integer
+// --- convert boolean/hexadecimal into integer
 //
 int config_switch(const char *str)
 {
@@ -32,6 +32,12 @@ int config_switch(const char *str)
 		return 0;
 	if(strcmp(str, "yes") == 0 || strcmp(str, "on") == 0)
 		return 1;
+	if(str[0] == '0' && (str[1] == 'x' || str[1] == 'X') && ((str[3] >= '0' && str[3] <= '9') || (str[3] >= 'a' && str[3] <= 'f') || (str[3] >= 'A' && str[3] <= 'F')))
+	{
+		int i;
+		if(sscanf(str, "%x", &i) == 1)
+			return i;
+	}
 	return atoi(str);
 }
 
