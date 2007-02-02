@@ -10,6 +10,9 @@
 
 Date	Added
 
+02/02/2007
+	* Fixed: Corrected Pumpkin-Head item's bonuses [Tsuyuki]
+
 02/01/2007
 	* Updated: Player/NPC speed calculation [Tsuyuki]
 	 - Speed calculation for players is now completely done in status_calc_speed in pc.c

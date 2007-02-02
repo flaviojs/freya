@@ -1801,7 +1801,7 @@ INSERT INTO `item_db` VALUES (5130, 'Lion_Mask', 'Lion Mask', 5, 20, 0, 700, 0, 
 INSERT INTO `item_db` VALUES (5131, 'Close_Helmet', 'Close Helmet', 5, 20, 10, 1200, 0, 8, 0, 0, 8405122, 2, 769, 0, 75, 203, NULL, 'bonus bVit,3; bonus bMaxHPrate,3;');
 INSERT INTO `item_db` VALUES (5132, 'Angeling_Hat', 'Angeling Hat', 5, 20, 10, 700, 0, 2, 0, 0, 1071636479, 2, 256, 0, 0, 204, NULL, 'bonus2 bSubRace,7,10;');
 INSERT INTO `item_db` VALUES (5133, 'Sheep_Hat', 'Sheep Hat', 5, 20, 10, 150, 0, 1, 0, 0, 33040, 2, 256, 0, 50, 205, NULL, 'bonus bShortWeaponDamageReturn,5;');
-INSERT INTO `item_db` VALUES (5134, 'Pumpkin-Head', 'Pumpkin-Head', 5, 20, 10, 200, 0, 2, 0, 0, 1071636479, 2, 256, 0, 0, 206, NULL, 'bonus2 bSubRace,6,5; bonus bAllStats,2;');
+INSERT INTO `item_db` VALUES (5134, 'Pumpkin-Head', 'Pumpkin-Head', 5, 20, 10, 200, 0, 2, 0, 0, 1071636479, 2, 256, 0, 0, 206, NULL, NULL);
 INSERT INTO `item_db` VALUES (5135, 'Cyclop\'s_Eye', 'Cyclop\'s Eye', 5, 20, 10, 200, 0, 0, 0, 0, 1071636478, 2, 512, 0, 75, 207, NULL, 'bonus bMaxSP,50;');
 INSERT INTO `item_db` VALUES (5136, 'Louise\'s_Santa_Hat', 'Louise\'s Santa Hat', 5, 20, 10, 100, 0, 1, 0, 0, 1071636479, 2, 256, 0, 0, 20, NULL, 'bonus bLuk,1; bonus bMdef,1; bonus3 bRevAutoSelfSpell,34,10,500; bonus3 bRevAutoSelfSpell,75,5,500;');
 INSERT INTO `item_db` VALUES (5137, 'Alice_Doll', 'Alice Doll', 5, 20, 10, 500, 0, 0, 0, 1, 1071636478, 2, 256, 0, 30, 208, NULL, 'bonus bStr,1; bonus2 bAddRace,7,10; bonus2 bAddEff2, Eff_Freeze,10;');
