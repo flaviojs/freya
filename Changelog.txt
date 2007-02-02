@@ -11,6 +11,11 @@
 Date	Added
 
 02/01/2007
+	* Updated: Player/NPC speed calculation [Tsuyuki]
+	 - Speed calculation for players is now completely done in status_calc_speed in pc.c
+	 - Fully updated speed calculation modifications for players
+	 - NPCs are no longer affected by speed-altering status effects
+	 - Player speed statuses stacking/not stacking now match official servers
 	* Fixed: You can now use items during SC_NOCHAT (Mute) Tsuyuki]
 	 - Mute now simply fully disables a person's ability to speak/make chat rooms
 	* Moved: File /cities/valkyrie.txt -> /jobs/jobs_transmigration.txt [Tsuyuki]

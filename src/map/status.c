@@ -304,7 +304,7 @@ int status_percentrefinery(struct map_session_data *sd, struct item *item) {
 
 int status_calc_pc(struct map_session_data* sd, int first)
 {
-	int b_speed, b_max_hp, b_max_sp, b_hp, b_sp, b_weight, b_max_weight, b_paramb[6], b_parame[6], b_hit, b_flee;
+	int b_max_hp, b_max_sp, b_hp, b_sp, b_weight, b_max_weight, b_paramb[6], b_parame[6], b_hit, b_flee;
 	int b_aspd, b_watk, b_def, b_watk2, b_def2, b_flee2, b_critical, b_attackrange, b_matk1, b_matk2, b_mdef, b_mdef2, b_class;
 	int b_base_atk;
 	struct skill b_skill[MAX_SKILL];
@@ -318,7 +318,6 @@ int status_calc_pc(struct map_session_data* sd, int first)
 
 	s_class = pc_calc_base_job(sd->status.class);
 
-	b_speed = sd->speed;
 	b_max_hp = sd->status.max_hp;
 	b_max_sp = sd->status.max_sp;
 	b_hp = sd->status.hp;
@@ -392,7 +391,6 @@ int status_calc_pc(struct map_session_data* sd, int first)
 	sd->overrefine = 0;
 	sd->matk1 = 0;
 	sd->matk2 = 0;
-	sd->speed = DEFAULT_WALK_SPEED;
 	sd->hprate = battle_config.hp_rate;
 	sd->sprate = battle_config.sp_rate;
 	sd->castrate = 100;
@@ -431,7 +429,6 @@ int status_calc_pc(struct map_session_data* sd, int first)
 	sd->overrefine_ = 0;
 
 	sd->aspd_rate = 100;
-	sd->speed_rate = 100;
 	sd->hprecov_rate = 100;
 	sd->sprecov_rate = 100;
 	sd->critical_def = 0;
@@ -677,8 +674,6 @@ int status_calc_pc(struct map_session_data* sd, int first)
 	sd->perfect_hit += sd->perfect_hit_add;
 	sd->get_zeny_num += sd->get_zeny_add_num;
 	sd->splash_range += sd->splash_add_range;
-	if(sd->speed_add_rate != 100)
-		sd->speed_rate += sd->speed_add_rate - 100;
 	if(sd->aspd_add_rate != 100)
 		sd->aspd_rate += sd->aspd_add_rate - 100;
 
@@ -728,30 +723,19 @@ int status_calc_pc(struct map_session_data* sd, int first)
 			sd->paramb[0] += sd->sc_data[SC_NEN].val1;
 			sd->paramb[3] += sd->sc_data[SC_NEN].val1;
 		}
-		if(sd->sc_data[SC_RUN].timer != -1) {
-			sd->speed -= (sd->speed * 50) / 100;
-		}
-		if (sd->sc_data[SC_SPEEDUP0].timer!=-1)
-			sd->speed -= sd->speed * 25 / 100;
-		if (sd->sc_data[SC_SLOWDOWN].timer!=-1)
-			sd->speed = sd->speed * 150 / 100;
-		if (sd->sc_data[SC_INCREASEAGI].timer != -1 && sd->sc_data[SC_QUAGMIRE].timer == -1 && sd->sc_data[SC_DONTFORGETME].timer == -1) {
+		if (sd->sc_data[SC_INCREASEAGI].timer != -1 && sd->sc_data[SC_QUAGMIRE].timer == -1 && sd->sc_data[SC_DONTFORGETME].timer == -1)
 			sd->paramb[1] += 2 + sd->sc_data[SC_INCREASEAGI].val1;
-			sd->speed -= sd->speed * 25 / 100;
-		}
-		if (sd->sc_data[SC_DECREASEAGI].timer != -1) {
-			sd->speed = sd->speed * 125 / 100;
+
+		if (sd->sc_data[SC_DECREASEAGI].timer != -1)
 			sd->paramb[1] -= 2 + sd->sc_data[SC_DECREASEAGI].val1; // Reduce AGI [celest]
-		}
+
 		if (sd->sc_data[SC_CLOAKING].timer != -1) {
 			sd->critical_rate += 100; // Crit increases
-			sd->speed = sd->speed * (sd->sc_data[SC_CLOAKING].val3 - sd->sc_data[SC_CLOAKING].val1 * 3) /100;
 		}
-		if (sd->sc_data[SC_CHASEWALK].timer != -1) {
-			sd->speed = sd->speed * sd->sc_data[SC_CHASEWALK].val3 / 100; // Slow down by Chasewalk
+		if (sd->sc_data[SC_CHASEWALK].timer != -1)
 			if (sd->sc_data[SC_CHASEWALK].val4)
 				sd->paramb[0] += (1 << (sd->sc_data[SC_CHASEWALK].val1 - 1)); // Increases STR after 10 seconds
-		}
+
 		if (sd->sc_data[SC_BLESSING].timer!=-1) {
 			sd->paramb[0] += sd->sc_data[SC_BLESSING].val1;
 			sd->paramb[3] += sd->sc_data[SC_BLESSING].val1;
@@ -771,7 +755,6 @@ int status_calc_pc(struct map_session_data* sd, int first)
 			// sd->paramb[4]-= dexb > 50 ? 50 : dexb;
 			sd->paramb[1]-= sd->sc_data[SC_QUAGMIRE].val1*5;
 			sd->paramb[4]-= sd->sc_data[SC_QUAGMIRE].val1*5;
-			sd->speed = sd->speed*3/2;
 		}
 		if(sd->sc_data[SC_TRUESIGHT].timer!=-1){
 			sd->paramb[0]+= 5;
@@ -1003,14 +986,9 @@ int status_calc_pc(struct map_session_data* sd, int first)
 
 	if((skill = pc_checkskill(sd, BS_WEAPONRESEARCH)) > 0)
 		sd->hit += skill << 1;
-	if(sd->status.option&2 && (skill = pc_checkskill(sd, RG_TUNNELDRIVE)) > 0 )
-		sd->speed += sd->speed * (100 - 16 * skill) / 100;
-	if (pc_iscarton(sd) && (skill = pc_checkskill(sd, MC_PUSHCART)) > 0)
-		sd->speed += sd->speed * (100 - 10 * skill) / 100;
-	else if (pc_isriding(sd) && pc_checkskill(sd, KN_RIDING) > 0) {
-		sd->speed -= sd->speed >> 2;
+	if (pc_isriding(sd) && pc_checkskill(sd, KN_RIDING) > 0)
 		sd->max_weight += 10000;
-	}
+
 
 	if ((skill = pc_checkskill(sd, BS_SKINTEMPER)) > 0) {
 		sd->subele[0] += skill;
@@ -1148,11 +1126,9 @@ int status_calc_pc(struct map_session_data* sd, int first)
 	}
 
 	//Flee上昇
-	if ((skill = pc_checkskill(sd, TF_MISS)) > 0) {
+	if ((skill = pc_checkskill(sd, TF_MISS)) > 0)
 		sd->flee += skill * ((s_class.job == JOB_ASSASSIN || s_class.job == JOB_ROGUE)? 4 : 3);
-		if (s_class.job == JOB_ASSASSIN && sd->sc_data[SC_CLOAKING].timer == -1)
-			sd->speed -= sd->speed * skill / 100;
-	}
+
 	if ((skill = pc_checkskill(sd, MO_DODGE)) > 0)
 		sd->flee += (skill * 3) >> 1;
 
@@ -1276,10 +1252,8 @@ int status_calc_pc(struct map_session_data* sd, int first)
 				aspd_rate -= 5+sd->sc_data[SC_ASSNCROS].val1+sd->sc_data[SC_ASSNCROS].val2+sd->sc_data[SC_ASSNCROS].val3;
 		if (sd->sc_data[SC_GRAVITATION].timer != -1)
 			aspd_rate += sd->sc_data[SC_GRAVITATION].val2;
-		if (sd->sc_data[SC_DONTFORGETME].timer!=-1){
+		if (sd->sc_data[SC_DONTFORGETME].timer!=-1)
 			aspd_rate += sd->sc_data[SC_DONTFORGETME].val1 * 3 + sd->sc_data[SC_DONTFORGETME].val2 + (sd->sc_data[SC_DONTFORGETME].val3 >> 16);
-			sd->speed = sd->speed * (100 + sd->sc_data[SC_DONTFORGETME].val1 * 2 + sd->sc_data[SC_DONTFORGETME].val2 + (sd->sc_data[SC_DONTFORGETME].val3 & 0xffff)) / 100;
-		}
 		if (sd->sc_data[SC_MADNESSCANCEL].timer != -1 && sd->sc_data[SC_BERSERK].timer == -1)
 			aspd_rate -= 20;
 		if (sd->sc_data[i=SC_ASPDPOTION3].timer != -1 ||
@@ -1287,16 +1261,6 @@ int status_calc_pc(struct map_session_data* sd, int first)
 		    sd->sc_data[i=SC_ASPDPOTION1].timer != -1 ||
 		    sd->sc_data[i=SC_ASPDPOTION0].timer != -1)
 			aspd_rate -= sd->sc_data[i].val2;
-		if (sd->sc_data[SC_WINDWALK].timer != -1 && sd->sc_data[SC_INCREASEAGI].timer == -1)
-			sd->speed -= sd->speed * (sd->sc_data[SC_WINDWALK].val1 * 2) / 100;
-		if (sd->sc_data[SC_CARTBOOST].timer != -1)
-			sd->speed -= (DEFAULT_WALK_SPEED * 20)/100;
-		if (sd->sc_data[SC_BERSERK].timer != -1)
-			sd->speed -= sd->speed * 25 / 100;
-		if (sd->sc_data[SC_WEDDING].timer != -1)
-			sd->speed = 2*DEFAULT_WALK_SPEED;
-		if (sd->sc_data[SC_FUSION].timer != -1)
-			sd->speed -= sd->speed * 25/100;
 
 		// HIT/FLEE変化系
 		if(sd->sc_data[SC_WHISTLE].timer!=-1){
@@ -1377,12 +1341,10 @@ int status_calc_pc(struct map_session_data* sd, int first)
 			sd->def = 90;
 			sd->mdef = 90;
 			aspd_rate += 25;
-			sd->speed = (sd->speed * 125) / 100;
 		}
-		if (sd->sc_data[SC_DEFENDER].timer != -1) {
+		if (sd->sc_data[SC_DEFENDER].timer != -1)
 			sd->aspd += (250 - sd->sc_data[SC_DEFENDER].val1 * 50); // Fixed formula by Raveux (from mantis bug reports)
-			sd->speed += sd->speed * (55 - 5 * sd->sc_data[SC_DEFENDER].val1) / 100;
-		}
+
 		if (sd->sc_data[SC_ENCPOISON].timer != -1)
 			sd->addeff[4] += sd->sc_data[SC_ENCPOISON].val2;
 
@@ -1390,18 +1352,10 @@ int status_calc_pc(struct map_session_data* sd, int first)
 			int s_rate = 500 - 40 * pc_checkskill(sd, (sd->status.sex? BA_MUSICALLESSON : DC_DANCINGLESSON));
 			if (sd->sc_data[SC_LONGING].timer != -1)
 				s_rate -= 20 * sd->sc_data[SC_LONGING].val1;
-			// Spirit of the Bard/Dancer speed bonus
-			if (sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_BARDDANCER)
-				sd->speed -= 40; // Custom rate
-			else
-				sd->speed += sd->speed * s_rate / 100;
 			sd->nhealsp = 0;
 			sd->nshealsp = 0;
 			sd->nsshealsp = 0;
 		}
-
-		if(sd->sc_data[SC_CURSE].timer != -1)
-			sd->speed += 450;
 
 		if(sd->sc_data[SC_TRUESIGHT].timer != -1)
 			sd->critical += 10 * (sd->sc_data[SC_TRUESIGHT].val1);
@@ -1421,13 +1375,11 @@ int status_calc_pc(struct map_session_data* sd, int first)
 		if (sd->sc_data[SC_JOINTBEAT].timer != -1) { // Random break [DracoRPG]
 			switch(sd->sc_data[SC_JOINTBEAT].val2) {
 			case 1: // Ankle break
-				sd->speed_rate += 50;
 				break;
 			case 2: // Wrist break
 				sd->aspd_rate += 25;
 				break;
 			case 3: // Knee break
-				sd->speed_rate += 30;
 				sd->aspd_rate += 10;
 				break;
 			case 4: // Shoulder break
@@ -1479,11 +1431,9 @@ int status_calc_pc(struct map_session_data* sd, int first)
 		sd->matk2 = sd->matk2 * sd->matk_rate / 100;
 	}
 
-	if (sd->speed_rate <= 0)
-		sd->speed_rate = 1;
-	if (sd->speed_rate != 100)
-		sd->speed = sd->speed * sd->speed_rate / 100;
-	if (sd->speed < 1) sd->speed = 1;
+	// Speed Calculation
+	status_calc_speed(sd);
+
 	if (aspd_rate != 100)
 		sd->aspd = sd->aspd*aspd_rate/100;
 	if (pc_isriding(sd))
@@ -1493,10 +1443,6 @@ int status_calc_pc(struct map_session_data* sd, int first)
 	sd->dmotion = 800-sd->paramc[1]*4;
 	if (sd->dmotion < 400)
 		sd->dmotion = 400;
-	if (sd->skilltimer != -1 && (skill = pc_checkskill(sd, SA_FREECAST)) > 0) {
-		sd->prev_speed = sd->speed;
-		sd->speed = sd->speed * (175 - skill * 5) / 100;
-	}
 
 	if(sd->status.hp>sd->status.max_hp)
 		sd->status.hp=sd->status.max_hp;
@@ -1506,7 +1452,6 @@ int status_calc_pc(struct map_session_data* sd, int first)
 	if (first & 4)
 		return 0;
 	if (first & 3) {
-		clif_updatestatus(sd, SP_SPEED);
 		clif_updatestatus(sd, SP_MAXHP);
 		clif_updatestatus(sd, SP_MAXSP);
 		if (first & 1) {
@@ -1524,8 +1469,6 @@ int status_calc_pc(struct map_session_data* sd, int first)
 	if (memcmp(b_skill, sd->status.skill,sizeof(sd->status.skill)) || b_attackrange != sd->attackrange)
 		clif_skillinfoblock(sd);
 
-	if(b_speed != sd->speed)
-		clif_updatestatus(sd,SP_SPEED);
 	if(b_weight != sd->weight)
 		clif_updatestatus(sd,SP_WEIGHT);
 	if(b_max_weight != sd->max_weight) {
@@ -1581,90 +1524,134 @@ int status_calc_pc(struct map_session_data* sd, int first)
 }
 
 /*==========================================
- * For quick calculating [Celest]
+ * Player Speed Calculation Function (Full Speed Calculation)
  *------------------------------------------
  */
 void status_calc_speed(struct map_session_data *sd) {
-	int b_speed, skill;
-	unsigned int s_class;
+
+	int speed, speed_rate, speed_add_rate, skill;
 
 	nullpo_retv(sd);
 
-	s_class = pc_calc_base_job2(sd->status.class);
+	speed = DEFAULT_WALK_SPEED; // Normally 150
+	speed_rate = 100;
+	speed_add_rate = 100;
 
-	b_speed = sd->speed;
-	sd->speed = DEFAULT_WALK_SPEED;
+	if (speed_add_rate != 100)
+		speed_rate += speed_add_rate - 100;
 
-	if (sd->sc_count) {
-		if(sd->sc_data[SC_INCREASEAGI].timer != -1 && sd->sc_data[SC_QUAGMIRE].timer == -1 && sd->sc_data[SC_DONTFORGETME].timer == -1)	// 速度?加
-			sd->speed -= sd->speed >> 2;
-		if(sd->sc_data[SC_DECREASEAGI].timer != -1)
-			sd->speed = sd->speed * 125 / 100;
-		if(sd->sc_data[SC_CLOAKING].timer != -1)
-			sd->speed = sd->speed * (sd->sc_data[SC_CLOAKING].val3-sd->sc_data[SC_CLOAKING].val1 * 3) / 100;
-		if(sd->sc_data[SC_CHASEWALK].timer != -1) {
-			sd->speed = sd->speed * sd->sc_data[SC_CHASEWALK].val3 / 100;
-			if (sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_ROGUE)
-				sd->speed -= sd->speed >> 2;
-			}
-		if(sd->sc_data[SC_QUAGMIRE].timer != -1)
-			sd->speed = sd->speed * 3 / 2;
-		if (sd->sc_data[SC_WINDWALK].timer != -1 && sd->sc_data[SC_INCREASEAGI].timer == -1)
-			sd->speed -= sd->speed *(sd->sc_data[SC_WINDWALK].val1*2)/100;
-		if(sd->sc_data[SC_CARTBOOST].timer != -1)
-			sd->speed -= (DEFAULT_WALK_SPEED * 20) / 100;
-		if(sd->sc_data[SC_BERSERK].timer != -1)
-			sd->speed -= sd->speed >> 2;
-		if(sd->sc_data[SC_WEDDING].timer != -1)
-			sd->speed = 2 * DEFAULT_WALK_SPEED;
-		if(sd->sc_data[SC_DONTFORGETME].timer != -1)
-			sd->speed = sd->speed * (100 + sd->sc_data[SC_DONTFORGETME].val1 * 2 +
-									sd->sc_data[SC_DONTFORGETME].val2 + (sd->sc_data[SC_DONTFORGETME].val3&0xffff)) / 100;
-		if(sd->sc_data[SC_STEELBODY].timer != -1)
-			sd->speed = (sd->speed * 125) / 100;
-		if(sd->sc_data[SC_DEFENDER].timer != -1)
-			sd->speed += sd->speed * (55 - 5 * sd->sc_data[SC_DEFENDER].val1) / 100;
-		if(sd->sc_data[SC_DANCING].timer != -1) {
+	if (sd->sc_count)
+	{
+		// Fixed reductions
+		if (sd->sc_data[SC_CURSE].timer != -1)	
+			speed += 450;
+		if (sd->sc_data[SC_SWOO].timer != -1)
+			speed += 450; // Official value unknown
+		if (sd->sc_data[SC_WEDDING].timer != -1)
+			speed += 300;
+
+		if (sd->sc_data[SC_GATLINGFEVER].timer == -1)
+		{	// Percent increases, most don't stack
+			if (sd->sc_data[SC_SPEEDUP1].timer != -1)
+				speed -= speed * 50/100;
+			else if (sd->sc_data[SC_AVOID].timer != -1)
+				speed -= speed * sd->sc_data[SC_AVOID].val2 / 100;
+
+			if (sd->sc_data[SC_RUN].timer != -1)
+				speed -= speed * 50/100;
+			else if (sd->sc_data[SC_SPEEDUP0].timer != -1)
+				speed -= speed * 25/100;
+			else if (sd->sc_data[SC_INCREASEAGI].timer != -1)
+				speed -= speed * 25/100;
+			else if (sd->sc_data[SC_FUSION].timer != -1)
+				speed -= speed * 25/100;
+			else if (sd->sc_data[SC_CARTBOOST].timer != -1)
+				speed -= speed * 20/100;
+			else if (sd->sc_data[SC_BERSERK].timer != -1)
+				speed -= speed * 20/100;
+			else if (sd->sc_data[SC_WINDWALK].timer != -1)
+				speed -= speed *(sd->sc_data[SC_WINDWALK].val1*2)/100;
+		}
+		// Stackable percent reductions
+		if (sd->sc_data[SC_DANCING].timer != -1)
+		{
 			int s_rate = 500 - 40 * pc_checkskill(sd, (sd->status.sex? BA_MUSICALLESSON: DC_DANCINGLESSON));
 			if (sd->sc_data[SC_LONGING].timer != -1)
 				s_rate -= 20 * sd->sc_data[SC_LONGING].val1;
-			// Spirit of the Bard/Dancer speed bonus
 			if (sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_BARDDANCER)
-				sd->speed -= 40; // Custom rate
+				speed -= 40; // Custom rate
 			else
-				sd->speed += sd->speed * s_rate / 100;
+				speed += speed * s_rate / 100;
 		}
-		if (sd->sc_data[SC_CURSE].timer != -1)
-			sd->speed += 450;
-		if (sd->sc_data[SC_SLOWDOWN].timer != -1)
-			sd->speed = sd->speed * 150 / 100;
-		if (sd->sc_data[SC_SPEEDUP0].timer != -1)
-			sd->speed -= sd->speed >> 2;
+		if (sd->sc_data[SC_DECREASEAGI].timer != -1)
+			speed = speed * 100/75;
+		if (sd->sc_data[SC_STEELBODY].timer != -1)
+			speed = speed * 100/75;
+		if (sd->sc_data[SC_QUAGMIRE].timer != -1)
+			speed = speed * 100/50;
+		if (sd->sc_data[SC_SUITON].timer != -1 && sd->sc_data[SC_SUITON].val3)
+			speed = speed * 100/sd->sc_data[SC_SUITON].val3;
+		if (sd->sc_data[SC_DONTFORGETME].timer != -1)
+			speed = speed * (100 + sd->sc_data[SC_DONTFORGETME].val1 * 2 + sd->sc_data[SC_DONTFORGETME].val2 + (sd->sc_data[SC_DONTFORGETME].val3 & 0xffff)) / 100;
+		if (sd->sc_data[SC_DEFENDER].timer != -1)
+			speed += speed * (55 - 5 * sd->sc_data[SC_DEFENDER].val1) / 100;
+		if (sd->sc_data[SC_GOSPEL].timer != -1 && sd->sc_data[SC_GOSPEL].val4 == BCT_ENEMY)
+			speed = speed * 100/75;
+		if (sd->sc_data[SC_JOINTBEAT].timer != -1)
+		{
+			if (sd->sc_data[SC_JOINTBEAT].val2 == 1)
+				speed = speed * 150 / 100;
+			else if (sd->sc_data[SC_JOINTBEAT].val2 == 3)
+				speed = speed * 130 / 100;
+		}
+		if (sd->sc_data[SC_CLOAKING].timer != -1)
+			speed = speed * (sd->sc_data[SC_CLOAKING].val3 - sd->sc_data[SC_CLOAKING].val1 * 3) /100;
+
+		if (sd->sc_data[SC_CHASEWALK].timer != -1)
+		{
+			speed = speed * sd->sc_data[SC_CHASEWALK].val3 / 100;
+			if (sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_ROGUE)
+				speed -= speed >> 2;
+		}
 		if (sd->sc_data[SC_GATLINGFEVER].timer != -1)
-			sd->speed = sd->speed * 100/75;
-	}
+			speed = speed * 100/75;
+		if (sd->sc_data[SC_SLOWDOWN].timer != -1)
+			speed = speed * 100/75;
+}
 
-	if(sd->status.option&2 && (skill = pc_checkskill(sd, RG_TUNNELDRIVE)) > 0 )
-		sd->speed += sd->speed * (100 - 16 * skill) / 100;
+	if (sd->status.option&2 && (skill = pc_checkskill(sd, RG_TUNNELDRIVE)) > 0)
+		speed += speed * (100 - 16 * skill) / 100;
+
 	if (pc_iscarton(sd) && (skill = pc_checkskill(sd, MC_PUSHCART)) > 0)
-		sd->speed += sd->speed * (100 - 10 * skill) / 100;
+		speed += speed * (100 - 10 * skill) / 100;
+
 	else if (pc_isriding(sd) && pc_checkskill(sd, KN_RIDING) > 0)
-		sd->speed -= sd->speed >> 2;
-	else
-	if(s_class == JOB_ASSASSIN && (skill = pc_checkskill(sd, TF_MISS)) > 0)
-			sd->speed -= sd->speed * skill / 100;
+		speed -= speed >> 2;
 
-	if(sd->speed_rate != 100)
-		sd->speed = sd->speed * sd->speed_rate / 100;
-	if(sd->speed < 1) sd->speed = 1;
+	else if ((sd->status.class == JOB_ASSASSIN || sd->status.class == JOB_BABY_ASSASSIN || sd->status.class == JOB_ASSASSIN_CROSS) && (skill = pc_checkskill(sd, TF_MISS)) > 0)
+		speed -= speed * skill / 100;
 
-	if (sd->skilltimer != -1 && (skill = pc_checkskill(sd, SA_FREECAST)) > 0) {
-		sd->prev_speed = sd->speed;
-		sd->speed = sd->speed * (175 - skill * 5) / 100;
+	if (speed_rate <= 0)
+		speed_rate = 1;
+
+	if (speed_rate != 100)
+		speed = speed * speed_rate / 100;
+
+	// Correct speed if it goes below 1
+	if (speed <= 0)
+		speed = 1;
+
+	if (sd->skilltimer != -1 && (skill = pc_checkskill(sd, SA_FREECAST)) > 0)
+	{
+		sd->prev_speed = speed;
+		speed = speed * (175 - skill * 5) / 100;
 	}
 
-	if (b_speed != sd->speed)
-		clif_updatestatus(sd, SP_SPEED);
+	// Apply speed changes
+	sd->speed_add_rate = speed_add_rate;
+	sd->speed_rate = speed_rate;
+	sd->speed = speed;
+	clif_updatestatus(sd, SP_SPEED);
 
 	return;
 }
@@ -2679,9 +2666,7 @@ int status_get_mdef2(struct block_list *bl) {
 }
 
 /*==========================================
- * 対象のSpeed(移動速度)を返す(汎用)
- * 戻りは整数で1以上
- * Speedは小さいほうが移動速度が速い
+ * Status Get Speed Function (Returns value for Players/Mobs/Pets)
  *------------------------------------------
  */
 int status_get_speed(struct block_list *bl) {
@@ -2690,7 +2675,6 @@ int status_get_speed(struct block_list *bl) {
 	if (bl->type == BL_PC)
 		return ((struct map_session_data *)bl)->speed;
 	else {
-		struct status_change *sc_data = status_get_sc_data(bl);
 		int speed = 1000;
 		if (bl->type == BL_MOB) {
 			speed = ((struct mob_data *)bl)->speed;
@@ -2699,40 +2683,6 @@ int status_get_speed(struct block_list *bl) {
 		} else if (bl->type == BL_PET)
 			speed = ((struct pet_data *)bl)->msd->petDB->speed;
 
-		if (sc_data) {
-			if (sc_data[SC_DECREASEAGI].timer != -1)
-				speed = speed * 125 / 100;
-			if (sc_data[SC_QUAGMIRE].timer != -1)
-				speed = speed * 3 / 2;
-			if (sc_data[SC_DONTFORGETME].timer != -1)
-				speed = speed * (100 + sc_data[SC_DONTFORGETME].val1 * 2 + sc_data[SC_DONTFORGETME].val2 + (sc_data[SC_DONTFORGETME].val3 & 0xffff)) / 100;
-			if (sc_data[SC_STEELBODY].timer != -1)
-				speed = speed * 125 / 100;
-			if (sc_data[SC_SLOWDOWN].timer != -1)
-				speed = speed * 150 / 100;
-			if (sc_data[SC_CURSE].timer != -1)
-				speed = speed + 450;
-			if (sc_data[SC_JOINTBEAT].timer != -1) {
-				if (sc_data[SC_JOINTBEAT].val2 == 1)
-					speed = speed * 150 / 100;
-				else if (sc_data[SC_JOINTBEAT].val2 == 3)
-					speed = speed * 130 / 100;
-			}
-			if (sc_data[SC_DANCING].timer != -1 && sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_BARDDANCER)
-				speed -= 40; // Custom rate
-			else if (sc_data[SC_DANCING].timer != -1)
-				speed *= 6;
-			if(sc_data[SC_SWOO].timer != -1)
-				speed += 450;		// Same as Curse, correct value unknown
-			if (sc_data[SC_INCREASEAGI].timer != -1 && sc_data[SC_DONTFORGETME].timer == -1)
-				speed -= speed >> 2;
-			if (sc_data[SC_WINDWALK].timer != -1 && sc_data[SC_INCREASEAGI].timer == -1)
-				speed -= (speed * (sc_data[SC_WINDWALK].val1 * 2)) / 100;
-			if (sc_data[SC_SPEEDUP0].timer != -1)
-				speed -= speed >> 2; // speed -= speed * 25 / 100
-			if (sc_data[SC_GATLINGFEVER].timer != -1)
-				speed = speed * 100/75;
-		}
 		if (speed < 1)
 			speed = 1;
 		return speed;
