@@ -11,6 +11,7 @@
 Date	Added
 
 02/01/2007
+	* Fixed: Phantom Arrow no longer knocks back when it misses [Tsuyuki]
 	* Fixed: Specific plant-type monsters (Red Plant, Black Mushroom, etc) can no longer be knocked back [Tsuyuki]
 	* Fixed: Those plants can also no longer attack you on any circumstances, or Emperium [Tsuyuki]
 	* Fixed: Cooking produce formulas, and corrected creation system [Tsuyuki]

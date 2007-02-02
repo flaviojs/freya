@@ -1830,7 +1830,7 @@ int skill_attack(int attack_type, struct block_list* src, struct block_list *dsr
 	if(flag&0xff00)
 		type = (flag&0xff00)>>8;
 
-	if((damage <= 0 || damage < dmg.div_) && skillid != CH_PALMSTRIKE 	&& skillid != HT_PHANTASMIC) //‚«”ò‚Î‚µ”»’èH¦
+	if((damage <= 0 || damage < dmg.div_) && skillid != CH_PALMSTRIKE) // Skills still knockback even if they miss
 		dmg.blewcount = 0;
 
 	if (skillid == CR_GRANDCROSS || skillid == NPC_GRANDDARKNESS) {
