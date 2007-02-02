@@ -11,6 +11,8 @@
 Date	Added
 
 02/02/2007
+	* Added: 2 Parameter version of AddMonsterDropItemGroup [Tsuyuki]
+	 - Fixes several dependent cards (Marin, Tengu, Sage Worm, etc)
 	* Fixed: Blood Drain and Energy Drain skill elements/other values [Tsuyuki]
 	* Fixed: Corrected Pumpkin-Head item's bonuses [Tsuyuki]
 

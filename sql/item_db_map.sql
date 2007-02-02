@@ -1440,7 +1440,7 @@ INSERT INTO `item_db` VALUES (4192, 'Rotar_Zairo_Card', 'Rotar Zairo Card', 6, 2
 INSERT INTO `item_db` VALUES (4193, 'Lude_Card', 'Lude Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'if(GetPureJob==JOB_NOVICE) bonus4 bAutoSpellWhenHit,8,1,2000,0;');
 INSERT INTO `item_db` VALUES (4194, 'Rybio_Card', 'Rybio Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus2 bAddEffWhenHit,Eff_Stan,1000; if(readparam(bDex)>76) bonus2 bAddEffWhenHit,Eff_Stan,2000;');
 INSERT INTO `item_db` VALUES (4195, 'Leaf_Cat_Card', 'Leaf Cat Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 769, 0, 0, 0, NULL, 'bonus2 bSubEle,1,10; bonus3 bAddMonsterDropItem,991,5,100;');
-INSERT INTO `item_db` VALUES (4196, 'Marin_Card', 'Marin Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus3 bAddMonsterDropItemGroup,10,11,500;');
+INSERT INTO `item_db` VALUES (4196, 'Marin_Card', 'Marin Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus2 bAddMonsterDropItemGroup,10,500;');
 INSERT INTO `item_db` VALUES (4197, 'Mastering_Card', 'Mastering Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 4, 0, 0, 0, NULL, 'bonus bLuk,1; if(isequipped(4001)==0)end; bonus bFlee,18;');
 INSERT INTO `item_db` VALUES (4198, 'Maya_Purple_Card', 'Maya Purple Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 769, 0, 0, 0, 'bonus bIntravision,0;', NULL);
 INSERT INTO `item_db` VALUES (4199, 'Merman_Card', 'Merman Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 64, 0, 0, 0, NULL, 'bonus bHPrecovRate,10; bonus bSPrecovRate,10; if(isequipped(4297,4234,4252,4178)==0) end; bonus bLongAtkRate,20; bonus bAgi,5; bonus bDex,3; bonus bPerfectHitAddRate,20; if(GetPureJob!=JOB_ARCHER) end; bonus2 bExpAddRace,2,5; bonus2 bWeaponComaRace,2,100;');
@@ -1460,12 +1460,12 @@ INSERT INTO `item_db` VALUES (4212, 'Bongun_Card', 'Bongun Card', 6, 20, 0, 10, 
 #Pushback effect missing
 INSERT INTO `item_db` VALUES (4213, 'Brilight_Card', 'Brilight Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus2 bAddEffWhenHit,Eff_Silence,2000;');
 INSERT INTO `item_db` VALUES (4214, 'Bloody_Murderer_Card', 'Bloody Murderer Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus bCritAtkRate,10; bonus2 bCriticalAddRace,4,70;');
-INSERT INTO `item_db` VALUES (4215, 'Blazer_Card', 'Blazer Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus3 bAddMonsterDropItemGroup,12,11,300;');
+INSERT INTO `item_db` VALUES (4215, 'Blazer_Card', 'Blazer Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus2 bAddMonsterDropItemGroup,12,300;');
 #Need correct drop rate, doesn't say in Aegis databases
 INSERT INTO `item_db` VALUES (4216, 'Sasquatch_Card', 'Sasquatch Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus2 bAddEffWhenHit,Eff_Freeze,2000;');
 INSERT INTO `item_db` VALUES (4217, 'Enchanted_Peach_Card', 'Enchanted Peach Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 32, 0, 0, 0, NULL, 'bonus4 bAutoSpell,28,1+9*(getskilllv(28)==10),200,0; if(isequipped(4280,4185,4293,4312)==0) end; bonus bVit,10; bonus bCastrate,-10; bonus bUseSPRate,-10; if(GetPureJob!=JOB_ACOLYTE) end; bonus2 bExpAddRace,1,5; bonus2 bExpAddRace,6,5; bonus2 bSubRace,6,30; bonus2 bSubRace,1,30;');
 INSERT INTO `item_db` VALUES (4218, 'Succubus_Card', 'Succubus Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bMaxHP,1000; bonus bVit,-3+4*isequipped(4269); bonus bHPrecovRate,-20+30*isequipped(4269);');
-INSERT INTO `item_db` VALUES (4219, 'Sage_Worm_Card', 'Sage Worm Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus3 bAddMonsterDropItemGroup,9,11,30;');
+INSERT INTO `item_db` VALUES (4219, 'Sage_Worm_Card', 'Sage Worm Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus2 bAddMonsterDropItemGroup,9,30;');
 INSERT INTO `item_db` VALUES (4220, 'Solider_Card', 'Solider Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bDef,2; bonus bMdef,2;');
 INSERT INTO `item_db` VALUES (4221, 'Skeleton_General_Card', 'Skeleton General Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 64, 0, 0, 0, NULL, 'bonus2 bSubRace,4,-20; bonus2 bExpAddRace,4,10;');
 INSERT INTO `item_db` VALUES (4222, 'Skeleton_Prisoner_Card', 'Skel Prisoner Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus2 bAddEffWhenHit,Eff_Sleep,1000; if(isequipped(4025)) bonus2 bAddEffWhenHit,Eff_Sleep,2000;');
@@ -1531,7 +1531,7 @@ INSERT INTO `item_db` VALUES (4279, 'Earth_Deleter_Card', 'Earth Deleter Card', 
 #bLoseSPWhenUnequip bonus is bugged, subtracts 100 sp everytime you unequip any piece of equipment
 INSERT INTO `item_db` VALUES (4280, 'Geographer_Card', 'Geographer Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus4 bAutoSpellWhenHit,34,2+8*(getskilllv(34)==10),300,0;');
 INSERT INTO `item_db` VALUES (4281, 'Zipper_Bear_Card', 'Zipper Bear Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus bAtk,30; bonus2 bSPDrainValue,-1,0; if(GetPureJob==JOB_MERCHANT) bonus bUnbreakableWeapon,0;');
-INSERT INTO `item_db` VALUES (4282, 'Tengu_Card', 'Tengu Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus3 bAddMonsterDropItemGroup,13,11,500;');
+INSERT INTO `item_db` VALUES (4282, 'Tengu_Card', 'Tengu Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus2 bAddMonsterDropItemGroup,13,500;');
 #Need correct drop rate, doesn't say in Aegis databases
 INSERT INTO `item_db` VALUES (4283, 'Greatest_General_Card', 'Greatest General Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus4 bAutoSpell,261,5,20+200*(GetPureJob==JOB_ACOLYTE),0;'); #Need to be checked: initial rate is 0,2
 INSERT INTO `item_db` VALUES (4284, 'Chepet_Card', 'Chepet Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus4 bAutoSpell,28,5,500,1;');

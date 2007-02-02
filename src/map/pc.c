@@ -2624,6 +2624,27 @@ void pc_bonus2(struct map_session_data *sd, int type, int type2, int val) {
 			}
 		}
 		break;
+	case SP_ADD_MONSTER_DROP_ITEMGROUP:
+		if (sd->state.lr_flag != 2) {
+			for(i = 0; i < sd->monster_drop_item_count && i < MAX_PC_BONUS; i++) {
+				if(sd->monster_drop[i].group == type2) {
+					sd->monster_drop[i].id = 0;
+					sd->monster_drop[i].race |= (1<<10)|(1<<11);
+					if(sd->monster_drop[i].rate < val)
+						sd->monster_drop[i].rate = val;
+					break;
+				}
+			}
+			if (i >= sd->monster_drop_item_count && sd->monster_drop_item_count < MAX_PC_BONUS) {
+				sd->monster_drop[sd->monster_drop_item_count].group = type2;
+				sd->monster_drop[sd->monster_drop_item_count].id = 0;
+				// All monsters, including boss and non boss monsters
+				sd->monster_drop[sd->monster_drop_item_count].race |= (1<<10)|(1<<11);
+				sd->monster_drop[sd->monster_drop_item_count].rate = val;
+				sd->monster_drop_item_count++;
+			}
+		}
+		break;
 /*	case SP_SP_LOSS_RATE:
 		if(sd->state.lr_flag != 2) {
 			sd->sp_loss_value = type2;
