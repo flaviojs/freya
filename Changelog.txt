@@ -11,6 +11,8 @@
 Date	Added
 
 02/01/2007
+	* Fixed: You can now use items during SC_NOCHAT (Mute) Tsuyuki]
+	 - Mute now simply fully disables a person's ability to speak/make chat rooms
 	* Moved: File /cities/valkyrie.txt -> /jobs/jobs_transmigration.txt [Tsuyuki]
 	* Improved: Simplified /npc/jobs/ folder organization [Tsuyuki]
 	* Re-Added: Missing Gemstone Exchange NPC script (deleted on Payon Aegis script conversion) [Tsuyuki]

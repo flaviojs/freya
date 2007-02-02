@@ -9623,8 +9623,7 @@ void clif_parse_UseItem(int fd, struct map_session_data *sd) { // S 0x00a7 <inde
 			sd->sc_data[SC_TRICKDEAD].timer != -1 || 
 	    sd->sc_data[SC_BLADESTOP].timer != -1 || 
 	    sd->sc_data[SC_BERSERK].timer != -1 || 
-			sd->sc_data[SC_GRAVITATION].timer !=- 1 || 
-	    sd->sc_data[SC_NOCHAT].timer != -1)
+			sd->sc_data[SC_GRAVITATION].timer !=- 1)
 		return;
 
 	pc_delinvincibletimer(sd);
