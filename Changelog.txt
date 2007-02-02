@@ -11,6 +11,8 @@
 Date	Added
 
 02/02/2007
+	* Reverted: Backsliding and other self-triggered knockback skills now work in WoE [Tsuyuki]
+	 - http://freya.dns.st/mantis/view.php?id=427
 	* Fixed: Dispell now works against many more skill status effects [Tsuyuki]
 	* Added: 2 Parameter version of AddMonsterDropItemGroup [Tsuyuki]
 	 - Fixes several dependent cards (Marin, Tengu, Sage Worm, etc)

@@ -1585,8 +1585,7 @@ int skill_blown(struct block_list *src, struct block_list *target, int count) {
 	nullpo_retr(0, target);
 
 	// No knockback in GvG maps
-	// If the source is the target, continue (Backsliding skill, etc)
-	if(src != target && map[target->m].flag.gvg)
+	if(map[target->m].flag.gvg)
 		return 0;
 
 	switch(target->type)
