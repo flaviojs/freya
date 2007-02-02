@@ -56,11 +56,11 @@
 #include "memwatch.h"
 #endif
 
-#define SCRIPT_BLOCK_SIZE 256
-#define SCRIPT_HASH_SIZE 512	/* optimal script hash size */
+#define BLOCK_SIZE_ORG 512	/* original size of block */
+#define BLOCK_SIZE_EXT 16	/* extend size of block */
 
 #define FETCH(n, t) \
-		if (st->end > st->start + (n)) \
+		if(st->end > st->start + (n)) \
 			(t) = conv_num(st, &(st->stack->stack_data[st->start+(n)]));
 
 enum { LABEL_NEXTLINE=1,LABEL_START };
@@ -79,7 +79,7 @@ static struct str_data {
 	int next;
 } *str_data;
 int str_num = LABEL_START, str_data_size;
-int str_hash[SCRIPT_HASH_SIZE];
+int str_hash[BLOCK_SIZE_ORG];
 
 static struct dbt *mapreg_db = NULL;
 static struct dbt *mapregstr_db = NULL;
@@ -631,7 +631,7 @@ static int calc_hash(const unsigned char *p)
 		h += *p++;
 	}
 
-	return h & (SCRIPT_HASH_SIZE - 1);
+	return h & (BLOCK_SIZE_ORG - 1);
 }
 
 static int search_str(const char *p)
@@ -718,9 +718,9 @@ static void check_script_buf(int size)
 {
 	if(script_pos + size >= script_size)
 	{
-		script_size += SCRIPT_BLOCK_SIZE;
+		script_size += BLOCK_SIZE_EXT;
 		REALLOC(script_buf, unsigned char, script_size);
-//		memset(script_buf + (script_size - SCRIPT_BLOCK_SIZE), 0, SCRIPT_BLOCK_SIZE);
+//		memset(script_buf + (script_size - BLOCK_SIZE_EXT), 0, BLOCK_SIZE_EXT);
 	}
 	return;
 }
@@ -1256,9 +1256,9 @@ unsigned char* parse_script(unsigned char *src, int line)
 		return NULL;
 	}
 
-	CALLOC(script_buf, unsigned char, SCRIPT_BLOCK_SIZE); // Not free script_buf, it's temp pointer saved in each script NPC (freed when NPC is released)
+	CALLOC(script_buf, unsigned char, BLOCK_SIZE_EXT);
 	script_pos = 0;
-	script_size = SCRIPT_BLOCK_SIZE;
+	script_size = BLOCK_SIZE_EXT;
 	str_data[LABEL_NEXTLINE].type=C_NOP;
 	str_data[LABEL_NEXTLINE].backpatch=-1;
 	str_data[LABEL_NEXTLINE].label=-1;
@@ -8720,7 +8720,7 @@ int do_final_script()
 /*	FILE *fp = fopen("log/hashdump.txt", "wt");
 	if(fp)
 	{
-		int i, h, count[SCRIPT_HASH_SIZE];
+		int i, h, count[BLOCK_SIZE_ORG];
 		int min = 0x7fffffff, max = 0, zero = 0;
 
 		memset(count, 0, sizeof(count));
@@ -8738,8 +8738,8 @@ int do_final_script()
 				h += *p++;
 			}
 
-			fprintf(fp, "%04d: %10d ->  %3d : %s\n", i, h, (h & (SCRIPT_HASH_SIZE - 1)), (str_buf + str_data[i].str));
-			count[h & (SCRIPT_HASH_SIZE - 1)]++;
+			fprintf(fp, "%04d: %10d ->  %3d : %s\n", i, h, (h & (BLOCK_SIZE_ORG - 1)), (str_buf + str_data[i].str));
+			count[h & (BLOCK_SIZE_ORG - 1)]++;
 		}
 
 		fprintf(fp, "------------------------------------ \n\n");

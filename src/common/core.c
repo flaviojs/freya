@@ -182,30 +182,30 @@ void versionscreen() {
 	return;
 }
 
-/*======================================
- *	CORE : Display title
- *--------------------------------------
- */
-void display_title(void) {
-	printf(CL_CLS CL_DARK_WHITE CL_BG_BLUE "          (=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=)" CL_CLL CL_RESET "\n"); // white writing (37) on blue background (44)
-	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "            (c)2004-2007 Freya team presents:            " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n");
-	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "         ___   ___    ___   _  _   __                    " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n"); // 1: bold char, 0: normal char
-	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "        (  _) (  ,)  (  _) ( \\/ ) (  )                   " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n"); // 1: bold char, 0: normal char
-	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "        (  _)  )  \\   ) _)  \\  /  /__\\  v%1d.%1d.%1d %3s %5s " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n", FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION, // 1: bold char, 0: normal char
+//
+// --- display freya title (move into main() maybe?)
+//
+void display_title(void)
+{
+	printf(CL_CLS CL_DARK_WHITE CL_BG_BLUE "          (=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=)" CL_CLL CL_RESET "\n");
+	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "        (c)2004-2007 Freya Team Presents:                " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n");
+	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "         ___   ___    ___   _  _   __                    " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n");
+	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "        (  _) (  ,)  (  _) ( \\/ ) (  )                   " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n");
+	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "        (  _)  )  \\   ) _)  \\  /  /__\\  v%1d.%1d.%1d %3s %5s " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n", FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION,
 #ifdef USE_SQL
-	"SQL", FREYA_STATE ? "development " : "final");
+	"SQL", FREYA_STATE ? "dev  " : "     ");
 #else
-	"TXT", FREYA_STATE ? "development " : "final");
+	"TXT", FREYA_STATE ? "dev  " : "     ");
 #endif /* USE_SQL */
 #ifdef SVN_REVISION
 	if (SVN_REVISION >= 1) // in case of .svn directories have been deleted
-			printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "        (_)   (_)\\_) (___) (__/  (_)(_) SVN rev. %-5d   " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n", (int)SVN_REVISION); // 1: bold char, 0: normal char
+			printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "        (_)   (_)\\_) (___) (__/  (_)(_) SVN rev. %-5d   " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n", (int)SVN_REVISION);
 	else
-			printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "        (_)   (_)\\_) (___) (__/  (_)(_)                  " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n"); // 1: bold char, 0: normal char
+			printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "        (_)   (_)\\_) (___) (__/  (_)(_)                  " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n");
 #else
-		printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "        (_)   (_)\\_) (___) (__/  (_)(_)                  " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n"); // 1: bold char, 0: normal char
+		printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "        (_)   (_)\\_) (___) (__/  (_)(_)                  " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n");
 #endif /* SVN_REVISION */
-	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "              http://www.ro-freya.net                    " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n");
+	printf(CL_DARK_WHITE CL_BG_BLUE "          (" CL_BOLD "        http://www.ro-freya.net                          " CL_DARK_WHITE CL_BG_BLUE ")" CL_CLL CL_RESET "\n");
 	printf(CL_DARK_WHITE CL_BG_BLUE "          (=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=)" CL_CLL CL_RESET "\n\n"); // reset color
 }
 
@@ -251,11 +251,11 @@ int get_version(char flag) {
 	return 0;
 }
 
-/*======================================
- *	CORE : MAINROUTINE
- *--------------------------------------
- */
-int main(int argc, char **argv) {
+//
+// --- the main function
+//
+int main(int argc, char **argv)
+{
 	int next;
 
 	start_time = time(NULL); // time of start for uptime

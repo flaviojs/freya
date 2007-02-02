@@ -25,8 +25,6 @@
 #include "memwatch.h"
 #endif
 
-//#define PATH_STANDALONETEST
-
 #define MAX_HEAP 150
 struct tmp_path { short x,y,dist,before,cost; char dir,flag;};
 #define calc_index(x,y) (((x)+(y)*MAX_WALKPATH) & (MAX_WALKPATH*MAX_WALKPATH-1))
@@ -424,50 +422,3 @@ int path_search(struct walkpath_data *wpd, int m, int x0, int y_0, int x1, int y
 
 	return -1;
 }
-
-#ifdef PATH_STANDALONETEST
-char gat[64][64]={
-	{0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,1,0,0,0,0,0},
-};
-struct map_data map[1];
-
-/*==========================================
- * 経路探索ルーチン単体テスト用main関数
- *------------------------------------------
- */
-void main(int argc, char *argv[])
-{
-	struct walkpath_data wpd;
-
-	map[0].gat = gat;
-	map[0].xs = 64;
-	map[0].ys = 64;
-
-	path_search(&wpd,0,3,4,5,4);
-	path_search(&wpd,0,5,4,3,4);
-	path_search(&wpd,0,6,4,3,4);
-	path_search(&wpd,0,7,4,3,4);
-	path_search(&wpd,0,4,3,4,5);
-	path_search(&wpd,0,4,2,4,5);
-	path_search(&wpd,0,4,1,4,5);
-	path_search(&wpd,0,4,5,4,3);
-	path_search(&wpd,0,4,6,4,3);
-	path_search(&wpd,0,4,7,4,3);
-	path_search(&wpd,0,7,4,3,4);
-	path_search(&wpd,0,8,4,3,4);
-	path_search(&wpd,0,9,4,3,4);
-	path_search(&wpd,0,10,4,3,4);
-	path_search(&wpd,0,11,4,3,4);
-	path_search(&wpd,0,12,4,3,4);
-	path_search(&wpd,0,13,4,3,4);
-	path_search(&wpd,0,14,4,3,4);
-	path_search(&wpd,0,15,4,3,4);
-	path_search(&wpd,0,16,4,3,4);
-	path_search(&wpd,0,17,4,3,4);
-	path_search(&wpd,0,18,4,3,4);
-}
-#endif

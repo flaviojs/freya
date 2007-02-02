@@ -11,6 +11,10 @@
 Date	Added
 
 02/02/2007
+	* Removed: Path Standalone Test feature. Unused [Harbin]
+	* Improved: Reduced BLOCK_SIZE_EXT from 256 to 16. No more over-allocation [Harbin]
+	* Removed: cfg_files.c, cfg_files.h and tmp folder. They are unused [Harbin]
+	* Improved: Simplified config_switch(1). It doesn't need to be multilingual/case sensitive [Harbin]
 	* Reverted: Backsliding and other self-triggered knockback skills now work in WoE [Tsuyuki]
 	 - http://freya.dns.st/mantis/view.php?id=427
 	* Fixed: Dispell now works against many more skill status effects [Tsuyuki]

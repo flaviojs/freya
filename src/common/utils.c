@@ -23,22 +23,15 @@
 #include "utils.h"
 #include "../common/timer.h" /* gettimeofday for win32 */
 
-//-------------------------------------------------
-// Return numerical value of a switch configuration
-// on/off, english, français, deutsch, español
-//-------------------------------------------------
-int config_switch(const char *str) {
-	if (strcasecmp(str, "on") == 0 || strcasecmp(str, "yes") == 0 || strcasecmp(str, "oui") == 0 || strcasecmp(str, "ja") == 0 || strcasecmp(str, "si") == 0)
-		return 1;
-	if (strcasecmp(str, "off") == 0 || strcasecmp(str, "no") == 0 || strcasecmp(str, "non") == 0 || strcasecmp(str, "nein") == 0)
+//
+// --- convert boolean into integer
+//
+int config_switch(const char *str)
+{
+	if(strcmp(str, "no") == 0 || strcmp(str, "off") == 0)
 		return 0;
-	if (str[0] == '0' && (str[1] == 'x' || str[1] == 'X') && 
-	    ((str[3] >= '0' && str[3] <= '9') || (str[3] >= 'a' && str[3] <= 'f') || (str[3] >= 'A' && str[3] <= 'F'))) {
-		int i;
-		if (sscanf(str, "%x", &i) == 1)
-			return i;
-	}
-
+	if(strcmp(str, "yes") == 0 || strcmp(str, "on") == 0)
+		return 1;
 	return atoi(str);
 }
 
