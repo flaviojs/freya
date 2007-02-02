@@ -11,6 +11,7 @@
 Date	Added
 
 02/02/2007
+	* Fixed: Blood Drain and Energy Drain skill elements/other values [Tsuyuki]
 	* Fixed: Corrected Pumpkin-Head item's bonuses [Tsuyuki]
 
 02/01/2007
