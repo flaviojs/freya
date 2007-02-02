@@ -1586,7 +1586,7 @@ INSERT INTO `item_db` VALUES (4331, 'Heater_Card', 'Heater Card', 6, 20, 0, 10, 
 # New Cards 2006
 INSERT INTO `item_db` VALUES (4332, 'Waste_Stove_Card', 'Waste Stove Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bBaseAtk,5; bonus bInt,1; if(isequipped(4185,4293,4312)==0) end; bonus bStr,3; bonus bMaxSP,80; bonus bBaseAtk,25; bonus4 bAutoSpell,32,5,100,1; bonus2 bSkillAtk,271,10; if(Basejob==JOB_MONK) bonus bUseSPrate,-10; bonus bNoCastCancel,0;');
 INSERT INTO `item_db` VALUES (4333, 'Venomous_Card', 'Venomous Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus2 bAddEffWhenHit,4,3000; bonus2 bAddEff,4,3000;');
-INSERT INTO `item_db` VALUES (4334, 'Noxious_Card', 'Noxious Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 4, 0, 0, 0, NULL, 'bonus bLongAtkDef,10; bonus2 bSubEle,0,10;');
+INSERT INTO `item_db` VALUES (4334, 'Noxious_Card', 'Noxious Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 4, 0, 0, 0, NULL, 'bonus bLongAtkDef,10; bonus bMagicAtkDef,10; bonus2 bSubEle,0,10;');
 INSERT INTO `item_db` VALUES (4335, 'Pitman_Card', 'Pitman_Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus2 bSkillAtk,90,5; bonus2 bSkillAtk,91,5; bonus bLoseSPWhenUnequip,50;');
 INSERT INTO `item_db` VALUES (4336, 'Ungoliant_Card', 'Ungoliant Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 769, 0, 0, 0, NULL, 'bonus bHPrecovRate,10; bonus2 bResEff,9,10000;');
 INSERT INTO `item_db` VALUES (4337, 'Porcellio_Card', 'Porcellio Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bBaseAtk,25; bonus bDef,-5;');
@@ -2813,11 +2813,11 @@ INSERT INTO `item_db` VALUES (12115, 'Elem_Converter_Water', 'Elemental Converte
 INSERT INTO `item_db` VALUES (12116, 'Elem_Converter_Earth', 'Elemental Converter', 2, 20, 10, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_EARTHWEAPON,180000,1;', NULL);
 INSERT INTO `item_db` VALUES (12117, 'Elem_Converter_Wind', 'Elemental Converter', 2, 20, 10, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_WINDWEAPON,180000,1;', NULL);
 
-# Elemental Resistance Potions - Incomplete (Missing Proper New SCs)
-INSERT INTO `item_db` VALUES (12118, 'Fireproof_Potion', 'Fireproof Potion', 2, 20, 10, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, NULL, NULL); # sc_start4 SC_ARMOR_ELEMENT,1200000,Ele_Fire,20,Ele_Water,-15; 
-INSERT INTO `item_db` VALUES (12119, 'Coldproof_Potion', 'Coldproof Potion', 2, 20, 10, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, NULL, NULL); # sc_start4 SC_ARMOR_ELEMENT,1200000,Ele_Water,20,Ele_Wind,-15; 
-INSERT INTO `item_db` VALUES (12120, 'Earthproof_Potion', 'Earthproof Potion', 2, 20, 10, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, NULL, NULL); # sc_start4 SC_ARMOR_ELEMENT,1200000,Ele_Earth,20,Ele_Fire,-15; 
-INSERT INTO `item_db` VALUES (12121, 'Thunderproof_Potion', 'Thunderproof Potion', 2, 20, 10, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, NULL, NULL); # sc_start4 SC_ARMOR_ELEMENT,1200000,Ele_Wind,20,Ele_Earth,-15; 
+# Elemental Resistance Potions
+INSERT INTO `item_db` VALUES (12118, 'Fireproof_Potion', 'Fireproof Potion', 2, 20, 10, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start4 SC_ARMOR_ELEMENT,1200000,Ele_Fire,20,Ele_Water,-15;', NULL);
+INSERT INTO `item_db` VALUES (12119, 'Coldproof_Potion', 'Coldproof Potion', 2, 20, 10, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start4 SC_ARMOR_ELEMENT,1200000,Ele_Water,20,Ele_Wind,-15;', NULL);
+INSERT INTO `item_db` VALUES (12120, 'Earthproof_Potion', 'Earthproof Potion', 2, 20, 10, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start4 SC_ARMOR_ELEMENT,1200000,Ele_Earth,20,Ele_Fire,-15;', NULL);
+INSERT INTO `item_db` VALUES (12121, 'Thunderproof_Potion', 'Thunderproof Potion', 2, 20, 10, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start4 SC_ARMOR_ELEMENT,1200000,Ele_Wind,20,Ele_Earth,-15;', NULL);
 
 # More Food Items
 INSERT INTO `item_db` VALUES (12122, 'Sesame_Pastry', 'Sesame Pastry', 0, 2, 1, 70, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_HitFood,1200000,30;', NULL);
@@ -2825,10 +2825,10 @@ INSERT INTO `item_db` VALUES (12123, 'Honey_Pastry', 'Honey Pastry', 0, 20, 10, 
 INSERT INTO `item_db` VALUES (12124, 'Rainbow_Cake', 'Rainbow Cake', 0, 20, 10, 70, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_BATKFood,1200000,10; sc_start SC_MATKFood,120000,10;', NULL);
 
 # Cooking Kits
-INSERT INTO `item_db` VALUES (12125, 'Outdoor_Cooking_Kit', 'Outdoor Cooking Kit', 2, 500, 250, 20, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'if(rand(100)<= 12) produce 11;', NULL);
-INSERT INTO `item_db` VALUES (12126, 'Home_Cooking_Kit', 'Home Cooking Kit', 2, 1000, 500, 30, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'if(rand(100)<= 24) produce 12;', NULL);
-INSERT INTO `item_db` VALUES (12127, 'Professional_Cooking_Kit', 'Professional Cooking Kit', 2, 2000, 1000, 30, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'if(rand(100)<= 36) produce 13;', NULL);
-INSERT INTO `item_db` VALUES (12128, 'Royal_Cooking_Kit', 'Royal Cooking Kit', 2, 5000, 2500, 70, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'if(rand(100)<= 48) produce 14;', NULL);
+INSERT INTO `item_db` VALUES (12125, 'Outdoor_Cooking_Kit', 'Outdoor Cooking Kit', 2, 500, 250, 20, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'produce 11;', NULL);
+INSERT INTO `item_db` VALUES (12126, 'Home_Cooking_Kit', 'Home Cooking Kit', 2, 1000, 500, 30, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'produce 12;', NULL);
+INSERT INTO `item_db` VALUES (12127, 'Professional_Cooking_Kit', 'Professional Cooking Kit', 2, 2000, 1000, 30, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'produce 13;', NULL);
+INSERT INTO `item_db` VALUES (12128, 'Royal_Cooking_Kit', 'Royal Cooking Kit', 2, 5000, 2500, 70, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'produce 14;', NULL);
 INSERT INTO `item_db` VALUES (12129, 'Fantastic_Cooking_Set', 'Fantastic Cooking Set', 2, 10000, 5000, 70, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'produce 15;', NULL);
 
 # More Misc Usable Items

@@ -264,12 +264,13 @@ enum {	// struct map_session_data‚ status_change function
 	SC_INCDEXRATE,
 	SC_JAILED,
 	SC_SPIRIT,
-	
+	SC_ARMOR_ELEMENT, // 248
+
 	SC_KAIZEL,
 	SC_KAAHI,
-	SC_KAUPE,
+	SC_KAUPE, // 251
 
-	SC_MAX
+	SC_MAX // 252
 };
 extern int SkillStatusChangeTable[MAX_SKILL];
 

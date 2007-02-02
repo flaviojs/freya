@@ -3292,6 +3292,9 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 	elem = status_get_elem_type(bl);
 	scflag.undead_bl = battle_check_undead(race, elem);
 
+	if (md && md->class == 1288 && type != SC_SAFETYWALL)
+		return 0;
+
 	switch(type) {
 		case SC_STONE:
 		case SC_FREEZE:
@@ -3341,8 +3344,8 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			battle_stopwalking(bl, 1);
 	}
 
-	/* status effects that won't effect boss monsters and emperium */
-	if((mode & 0x20 && !(flag & 1)) || (md && md->class == 1288))
+	// Status effects that won't affect bosses
+	if((mode & 0x20 && !(flag & 1)))
 	{
 		switch(type)
 		{
@@ -3416,6 +3419,16 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 	}
 
 	switch(type) {
+		/*case SC_ONEHAND:
+			if(sc_data[SC_ASPDPOTION0].timer != -1)
+				status_change_end(bl, SC_ASPDPOTION0, -1);
+			if(sc_data[SC_ASPDPOTION1].timer != -1)
+				status_change_end(bl,SC_ASPDPOTION1,-1);
+			if(sc_data[SC_ASPDPOTION2].timer != -1)
+				status_change_end(bl, SC_ASPDPOTION2, -1);
+			if(sc_data[SC_ASPDPOTION3].timer != -1)
+				status_change_end(bl, SC_ASPDPOTION3, -1);
+			break;*/
 		case SC_INCREASING:
 		case SC_GATLINGFEVER:
 			scflag.calc = 1;
@@ -3552,16 +3565,20 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 				tick >>= 1; // Half duration on players
 			scflag.calc = 1;
 			if(*sc_count > 0) {
-				if(sc_data[SC_INCREASEAGI].timer !=-1 )
+				if(sc_data[SC_INCREASEAGI].timer != -1 )
 					status_change_end(bl, SC_INCREASEAGI, -1);
-				if(sc_data[SC_ADRENALINE].timer !=-1 )
-					status_change_end(bl, SC_ADRENALINE,-1);
-				if(sc_data[SC_SPEARQUICKEN].timer !=-1 )
+				if(sc_data[SC_ADRENALINE].timer != -1 )
+					status_change_end(bl, SC_ADRENALINE, -1);
+				/*if(sc_data[SC_ADRENALINE2].timer !=-1 )
+					status_change_end(bl, SC_ADRENALINE2,-1);*/
+				if(sc_data[SC_SPEARQUICKEN].timer != -1 )
 					status_change_end(bl, SC_SPEARQUICKEN, -1);
-				if(sc_data[SC_TWOHANDQUICKEN].timer !=-1 )
+				if(sc_data[SC_TWOHANDQUICKEN].timer != -1 )
 					status_change_end(bl, SC_TWOHANDQUICKEN, -1);
 				if(sc_data[SC_CARTBOOST].timer !=-1 )
 					status_change_end(bl, SC_CARTBOOST, -1);
+				/*if(sc_data[SC_ONEHAND].timer !=-1 )
+					status_change_end(bl, SC_ONEHAND, -1);*/
 			}
 			break;
 		case SC_SIGNUMCRUCIS:
@@ -3618,7 +3635,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			skill_enchant_elemental_end(bl, SC_ENCPOISON);
 			break;
 		case SC_EDP:
-			val2 = val1 + 2;			/* Chance to poison enemies */
+			val2 = val1 + 2; // Chance to poison enemies
 			val3 = 50*(val1+1); // Increased damage taken from eA
 			scflag.calc = 1;
 			break;
@@ -3648,15 +3665,15 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			break;
 		case SC_KYRIE:
 			if(!(flag&4)) {
-				val2 = status_get_max_hp(bl) * (val1 * 2 + 10) / 100;/* 耐久度 */
-				val3 = (val1 / 2 + 5);	/* 回数 */
+				val2 = status_get_max_hp(bl) * (val1 * 2 + 10) / 100;
+				val3 = (val1 / 2 + 5);
 				if(sc_data[SC_ASSUMPTIO].timer!=-1 )
 					status_change_end(bl,SC_ASSUMPTIO,-1);
 			}
 			break;
 		case SC_MINDBREAKER:
 			scflag.calc = 1;
-			if(tick <= 0) tick = 1000;	/* (オートバーサーク) */
+			if(tick <= 0) tick = 1000;
 		case SC_GLORIA:
 			scflag.calc = 1;
 			break;
@@ -3680,6 +3697,8 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 					status_change_end(bl, SC_SPEARQUICKEN, -1);
 				if(sc_data[SC_ADRENALINE].timer != -1 )
 					status_change_end(bl, SC_ADRENALINE, -1);
+				/*if (sc_data[SC_ADRENALINE2].timer != -1 )
+					status_change_end(bl, SC_ADRENALINE2, -1);*/
 				if(sc_data[SC_LOUD].timer != -1 )
 					status_change_end(bl, SC_LOUD, -1);
 				if(sc_data[SC_TRUESIGHT].timer != -1 )

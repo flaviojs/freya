@@ -234,6 +234,7 @@ int buildin_hideoffnpc(struct script_state *st);
 int buildin_hideonnpc(struct script_state *st);
 int buildin_sc_start(struct script_state *st);
 int buildin_sc_start2(struct script_state *st);
+int buildin_sc_start4(struct script_state *st);
 int buildin_sc_end(struct script_state *st);
 int buildin_getscrate(struct script_state *st);
 int buildin_debugmes(struct script_state *st);
@@ -496,6 +497,7 @@ struct {
 	{buildin_hideonnpc,"hideonnpc","s"},
 	{buildin_sc_start,"sc_start","iii*"},
 	{buildin_sc_start2,"sc_start2","iiii*"},
+	{buildin_sc_start4,"sc_start4","iiiiii*"},
 	{buildin_sc_end,"sc_end","i"},
 	{buildin_getscrate,"getscrate","ii*"},
 	{buildin_debugmes,"debugmes","s"},
@@ -4825,7 +4827,7 @@ int buildin_hideonnpc(struct script_state *st)
 }
 
 /*==========================================
- * ó‘ÔˆÙí‚É‚©‚©‚é
+ * Status Change Start Command
  *------------------------------------------
  */
 int buildin_sc_start(struct script_state *st)
@@ -4850,7 +4852,7 @@ int buildin_sc_start(struct script_state *st)
 }
 
 /*==========================================
- * ó‘ÔˆÙí‚É‚©‚©‚é(Šm—¦w’è)
+ * Status Change Start 2 Command
  *------------------------------------------
  */
 int buildin_sc_start2(struct script_state *st)
@@ -4871,6 +4873,37 @@ int buildin_sc_start2(struct script_state *st)
 			bl = map_id2bl(((struct map_session_data *)bl)->skilltarget);
 		if (rand() % 10000 < per)
 			status_change_start(bl, type, val1, 0, 0, 0, tick, 0);
+	}
+
+	return 0;
+}
+
+/*==========================================
+ * Status Change Start 4 Command - Passes 4 SC values for use
+ *------------------------------------------
+ */
+int buildin_sc_start4(struct script_state *st)
+{
+	struct block_list *bl;
+	int type,tick,val1,val2,val3,val4;
+
+	type = conv_num(st, &(st->stack->stack_data[st->start+2]));
+	tick = conv_num(st, &(st->stack->stack_data[st->start+3]));
+	val1 = conv_num(st, &(st->stack->stack_data[st->start+4]));
+	val2 = conv_num(st, &(st->stack->stack_data[st->start+5]));
+	val3 = conv_num(st, &(st->stack->stack_data[st->start+6]));
+	val4 = conv_num(st, &(st->stack->stack_data[st->start+7]));
+
+	if (st->end>st->start + 8)
+		bl = map_id2bl(conv_num(st,& (st->stack->stack_data[st->start+8])));
+	else
+		bl = map_id2bl(st->rid);
+
+	if (bl) {
+		if (bl->type == BL_PC && ((struct map_session_data *)bl)->state.potionpitcher_flag)
+			bl = map_id2bl(((struct map_session_data *)bl)->skilltarget);
+
+		status_change_start(bl, type, val1, val2, val3, val4, tick, 0);
 	}
 
 	return 0;

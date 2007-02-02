@@ -1584,8 +1584,9 @@ int skill_blown(struct block_list *src, struct block_list *target, int count) {
 	nullpo_retr(0, src);
 	nullpo_retr(0, target);
 
-	/* no knockback in gvg maps */
-	if(map[target->m].flag.gvg)
+	// No knockback in GvG maps
+	// If the source is the target, continue (Backsliding skill, etc)
+	if(src != target && map[target->m].flag.gvg)
 		return 0;
 
 	switch(target->type)
@@ -1595,8 +1596,6 @@ int skill_blown(struct block_list *src, struct block_list *target, int count) {
 			break;
 		case BL_MOB:
 			md = (struct mob_data *)target;
-			if (md && (mob_db[md->class].mexp)) // Boss monsters will no longer be pushed away by knockback skills. [As per kRO Patch 5/11/05]
-				return 0;
 			break;
 		case BL_PET:
 			pd = (struct pet_data *)target;
@@ -1607,6 +1606,10 @@ int skill_blown(struct block_list *src, struct block_list *target, int count) {
 		default:
 			return 0;
 	}
+
+	// Boss monsters/Emperium/Certain Plants (Red Plant, Mushroom, etc) cannot be knocked back
+	if (md && ((mob_db[md->class].mexp) || (mob_db[md->class].mode&0x40) || (md->class == 1288)))
+		return 0;
 
 	// RSX 0806 card bonus
 	if(sd && sd->special_state.noknockback)
@@ -6320,7 +6323,6 @@ int skill_castend_pos2(struct block_list *src, int x, int y, int skillid, int sk
 	case NJ_HYOUSYOURAKU:
 	case NJ_RAIGEKISAI:
 	case NJ_KAMAITACHI:
-		flag|=1; // Set flag to 1 to prevent deleting ammo (it will be deleted on group-delete)
 	case GS_GROUNDDRIFT: // Ammo should be deleted right away
 		skill_unitsetting(src,skillid,skilllv,x,y,0);
 		break;
@@ -10953,6 +10955,27 @@ int skill_produce_mix( struct map_session_data *sd, int nameid, int slot1, int s
 		else if(pc_search_inventory(sd, 986) > 0) make_per+= 0; // Anvil: +0?
 		if(battle_config.wp_rate != 100)
 			make_per = make_per * battle_config.wp_rate / 100;
+	}
+
+	// Cooking Formulas
+	// Note: Missing success chance influences
+	switch(nameid)
+	{
+		case 12125: // Outdoor Cooking Kit
+			make_per = 1200; // 12% Chance
+			break;
+		case 12126: // Home Cooking Kit
+			make_per = 2400; // 24% Chance
+			break;
+		case 12127: // Professional Cooking Kit
+			make_per = 3600; // 36% Chance
+			break;
+		case 12128: // Royal Cooking Kit
+			make_per = 4800; // 48% Chance
+			break;
+		case 12129: // Fantastic Cooking Kit
+			make_per = 100000; // 100% Chance
+			break;
 	}
 
 	if (make_per < 1)

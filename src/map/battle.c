@@ -585,7 +585,18 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 				// Lex Aeterna is cancelled after one hit, with the exception of SD's dual hit
 				status_change_end(bl, SC_AETERNA, -1);
 		}
-				
+
+		// Alchemist Elemental Potion status effects
+		if (tsc_data[SC_ARMOR_ELEMENT].timer != -1)
+		{
+			int atk_elem = status_get_attack_element(bl);
+		
+			if (tsc_data[SC_ARMOR_ELEMENT].val1 == atk_elem)
+				damage -= damage * tsc_data[SC_ARMOR_ELEMENT].val2 / 100;
+			else if (tsc_data[SC_ARMOR_ELEMENT].val3 == atk_elem)
+				damage -= damage * tsc_data[SC_ARMOR_ELEMENT].val4 / 100;
+		}
+
 		// Volcano skill status elemental damage increases
 		if(tsc_data[SC_VOLCANO].timer != -1) {
 			if(flag&BF_SKILL) {
@@ -1349,165 +1360,6 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 				skillratio += 30;	// FORMULA?: damage * 130 / 100
 				break;
 
-			/************ EXPANDED CLASS SKILLS  ************/
-
-			// Taekwon Kid
-			case TK_COUNTER:
-				flag.hit = 1;
-				skillratio += 90 + 30 * skill_lv;	// FORMULA: damage * (190 + 30 * skill_lv) / 100
-				break;
-			case TK_DOWNKICK:
-				flag.hit = 1;
-				skillratio += 60 + 20 * skill_lv;	// FORMULA: damage * (160 + 20 * skill_lv) / 100
-				break;
-			case TK_JUMPKICK:
-				skillratio += -70 + 10 * skill_lv;
-				if (sc_data && sc_data[SC_COMBO].timer != -1 && sc_data[SC_COMBO].val1 == skill_num)
-					skillratio += 10 * status_get_lv(src) / 3;
-				break;
-			case TK_STORMKICK:
-				flag.hit = 1;
-				skillratio += 60 + 20 * skill_lv;	// FORMULA: damage * (160 + 20 * skill_lv) / 100
-				break;
-			case TK_TURNKICK:
-				flag.hit = 1;
-				wd.blewcount = 0;
-				skillratio += 90 + 30 * skill_lv;	// FORMULA: damage * (190 + 30 * skill_lv) / 100
-				break;
-			
-			// Star Gladiator
-			case SG_SUN_WARM:
-			case SG_MOON_WARM:
-			case SG_STAR_WARM:
-				flag.hit = 1; // Never misses
-				break;
-
-			// Gunslinger
-			case GS_DESPERADO:
-				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_SHORT; // Short-Ranged
-				skillratio += 50*(skill_lv-1);
-				flag.arrow = 1; // Requires ammunition
-				if (sd && sd->arrow_ele)
-					s_ele = sd->arrow_ele; // Inherits ammunition element
-				break;
-			case GS_DUST:
-				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_SHORT; // Short-Ranged
-				skillratio += 50*skill_lv;
-				flag.arrow = 1; // Requires ammunition
-				if (sd && sd->arrow_ele)
-					s_ele = sd->arrow_ele; // Inherits ammunition element
-				break;
-			case GS_CHAINACTION:
-				wd.type = 0x08; // Double Attack
-				break;
-			case GS_GROUNDDRIFT:
-				wd.blewcount = 0; // Knocks back enemies
-				s_ele = s_ele_ = wflag; // Element comes in flag
-				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG; // Long-Ranged
-				flag.hit = 1; // Never misses
-				break;
-			case GS_TRIPLEACTION:
-				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG; // Long-Ranged
-				skillratio += 50*skill_lv;
-				break;
-			case GS_BULLSEYE:
-				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG; // Long-Ranged
-				if((t_race == 2 || t_race == 7) && !(t_mode&0x20))
-				{	// Only adds damage on Brute/Demi-Human Non-Boss enemies
-					skillratio += 400;
-					flag.cardfix = 0; // Not affected by card damage modifiers
-				}
-				flag.arrow = 1; // Requires ammunition
-				if (sd && sd->arrow_ele)
-					s_ele = sd->arrow_ele; // Inherits ammunition element
-				break;
-			case GS_MAGICALBULLET:
-				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG; // Long-Ranged
-				// Bonus damage based on Matk
-				if(sd && (sd->matk2 > sd->matk1))
-				{
-						ATK_ADD(sd->matk1 + rand()% (sd->matk2 - sd->matk1));
-					} else {
-						ATK_ADD(sd->matk1);
-				}
-				break;
-			case GS_TRACKING:
-				skillratio += 100 *(skill_lv+1);
-				flag.arrow = 1; // Requires ammunition
-				if (sd && sd->arrow_ele)
-					s_ele = sd->arrow_ele; // Inherits ammunition element
-				break;
-			case GS_PIERCINGSHOT:
-				skillratio += 20*skill_lv;
-				flag.idef = flag.idef2 = 1;
-				flag.arrow = 1; // Requires ammunition
-				if (sd && sd->arrow_ele)
-					s_ele = sd->arrow_ele; // Inherits ammunition element
-				break;
-			case GS_RAPIDSHOWER:
-				skillratio += 100*skill_lv;
-				flag.arrow = 1; // Requires ammunition
-				if (sd && sd->arrow_ele)
-					s_ele = sd->arrow_ele; // Inherits ammunition element
-				break;
-			case GS_FULLBUSTER:
-				skillratio += 100*(skill_lv+2);
-				flag.arrow = 1; // Requires ammunition
-				if (sd && sd->arrow_ele)
-					s_ele = sd->arrow_ele; // Inherits ammunition element
-				break;
-			case GS_SPREADATTACK:
-				skillratio += 20*(skill_lv-1);
-				flag.arrow = 1; // Requires ammunition
-				if (sd && sd->arrow_ele)
-					s_ele = sd->arrow_ele; // Inherits ammunition element
-				break;
-
-			// Ninja
-			case NJ_SYURIKEN:
-				ATK_ADD(4*skill_lv);
-				if (sd && (skill = pc_checkskill(sd, NJ_TOBIDOUGU)) > 0)
-				ATK_ADD(3*skill);
-				flag.arrow = 1; // Requires ammunition
-				if (sd && sd->arrow_ele)
-					s_ele = sd->arrow_ele; // Inherits ammuntion element
-				flag.hit = 1; // Always perfect hit
-				break;
-			case NJ_KUNAI:
-				ATK_ADD(60);
-				flag.arrow = 1; // Requires ammunition
-				if (sd && sd->arrow_ele)
-					s_ele = sd->arrow_ele; // Inherits ammunition element
-				flag.hit = 1; // Always perfect hit
-				break;
-			case NJ_HUUMA:
-				skillratio += 150 + 150*skill_lv;
-				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG; // Long-Ranged
-				if (sd && (skill = pc_checkskill(sd, NJ_TOBIDOUGU)) > 0)
-					skillratio += 3*skill;
-				flag.arrow = 1; // Requires ammunition
-				if (sd && sd->arrow_ele)
-					s_ele = sd->arrow_ele; // Inherits ammunition element
-				break;
-			case NJ_TATAMIGAESHI:
-				skillratio += 10*skill_lv;
-				break;
-			case NJ_KASUMIKIRI:
-				skillratio += 10*skill_lv;
-				break;
-			case NJ_KIRIKAGE:
-				skillratio += 100*(skill_lv-1);
-				cri += 250 + 50*skill_lv;
-				break;
-			case NJ_ISSEN:
-				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG; // Long-Ranged
-				if (sd)
-					wd.damage = 40*sd->status.str + skill_lv*(sd->status.hp/10 + 35);
-				wd.damage2 = 0;
-				s_ele = s_ele_ = 0; // Always neutral element attack
-				flag.hit = 1; // Always perfect hit
-				break;
-
 			/************ 2-1 CLASS SKILLS ************/
 
 			// Hunter
@@ -1892,6 +1744,165 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 				// kRO patch 12/14/04 - The total damage will also include the bonus from the card as well as element of the arrow
 				if (sd && sd->arrow_ele > 0)
 					s_ele = s_ele_ = sd->arrow_ele;
+				break;
+
+			/************ EXPANDED CLASS SKILLS  ************/
+
+			// Taekwon Kid
+			case TK_COUNTER:
+				flag.hit = 1;
+				skillratio += 90 + 30 * skill_lv;	// FORMULA: damage * (190 + 30 * skill_lv) / 100
+				break;
+			case TK_DOWNKICK:
+				flag.hit = 1;
+				skillratio += 60 + 20 * skill_lv;	// FORMULA: damage * (160 + 20 * skill_lv) / 100
+				break;
+			case TK_JUMPKICK:
+				skillratio += -70 + 10 * skill_lv;
+				if (sc_data && sc_data[SC_COMBO].timer != -1 && sc_data[SC_COMBO].val1 == skill_num)
+					skillratio += 10 * status_get_lv(src) / 3;
+				break;
+			case TK_STORMKICK:
+				flag.hit = 1;
+				skillratio += 60 + 20 * skill_lv;	// FORMULA: damage * (160 + 20 * skill_lv) / 100
+				break;
+			case TK_TURNKICK:
+				flag.hit = 1;
+				wd.blewcount = 0;
+				skillratio += 90 + 30 * skill_lv;	// FORMULA: damage * (190 + 30 * skill_lv) / 100
+				break;
+
+			// Star Gladiator
+			case SG_SUN_WARM:
+			case SG_MOON_WARM:
+			case SG_STAR_WARM:
+				flag.hit = 1; // Never misses
+				break;
+
+			// Gunslinger
+			case GS_DESPERADO:
+				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_SHORT; // Short-Ranged
+				skillratio += 50*(skill_lv-1);
+				flag.arrow = 1; // Requires ammunition
+				if (sd && sd->arrow_ele)
+					s_ele = sd->arrow_ele; // Inherits ammunition element
+				break;
+			case GS_DUST:
+				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_SHORT; // Short-Ranged
+				skillratio += 50*skill_lv;
+				flag.arrow = 1; // Requires ammunition
+				if (sd && sd->arrow_ele)
+					s_ele = sd->arrow_ele; // Inherits ammunition element
+				break;
+			case GS_CHAINACTION:
+				wd.type = 0x08; // Double Attack
+				break;
+			case GS_GROUNDDRIFT:
+				wd.blewcount = 0; // Knocks back enemies
+				s_ele = s_ele_ = wflag; // Element comes in flag
+				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG; // Long-Ranged
+				flag.hit = 1; // Never misses
+				break;
+			case GS_TRIPLEACTION:
+				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG; // Long-Ranged
+				skillratio += 50*skill_lv;
+				break;
+			case GS_BULLSEYE:
+				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG; // Long-Ranged
+				if((t_race == 2 || t_race == 7) && !(t_mode&0x20))
+				{	// Only adds damage on Brute/Demi-Human Non-Boss enemies
+					skillratio += 400;
+					flag.cardfix = 0; // Not affected by card damage modifiers
+				}
+				flag.arrow = 1; // Requires ammunition
+				if (sd && sd->arrow_ele)
+					s_ele = sd->arrow_ele; // Inherits ammunition element
+				break;
+			case GS_MAGICALBULLET:
+				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG; // Long-Ranged
+				// Bonus damage based on Matk
+				if(sd && (sd->matk2 > sd->matk1))
+				{
+						ATK_ADD(sd->matk1 + rand()% (sd->matk2 - sd->matk1));
+					} else {
+						ATK_ADD(sd->matk1);
+				}
+				break;
+			case GS_TRACKING:
+				skillratio += 100 *(skill_lv+1);
+				flag.arrow = 1; // Requires ammunition
+				if (sd && sd->arrow_ele)
+					s_ele = sd->arrow_ele; // Inherits ammunition element
+				break;
+			case GS_PIERCINGSHOT:
+				skillratio += 20*skill_lv;
+				flag.idef = flag.idef2 = 1;
+				flag.arrow = 1; // Requires ammunition
+				if (sd && sd->arrow_ele)
+					s_ele = sd->arrow_ele; // Inherits ammunition element
+				break;
+			case GS_RAPIDSHOWER:
+				skillratio += 100*skill_lv;
+				flag.arrow = 1; // Requires ammunition
+				if (sd && sd->arrow_ele)
+					s_ele = sd->arrow_ele; // Inherits ammunition element
+				break;
+			case GS_FULLBUSTER:
+				skillratio += 100*(skill_lv+2);
+				flag.arrow = 1; // Requires ammunition
+				if (sd && sd->arrow_ele)
+					s_ele = sd->arrow_ele; // Inherits ammunition element
+				break;
+			case GS_SPREADATTACK:
+				skillratio += 20*(skill_lv-1);
+				flag.arrow = 1; // Requires ammunition
+				if (sd && sd->arrow_ele)
+					s_ele = sd->arrow_ele; // Inherits ammunition element
+				break;
+
+			// Ninja
+			case NJ_SYURIKEN:
+				ATK_ADD(4*skill_lv);
+				if (sd && (skill = pc_checkskill(sd, NJ_TOBIDOUGU)) > 0)
+				ATK_ADD(3*skill);
+				flag.arrow = 1; // Requires ammunition
+				if (sd && sd->arrow_ele)
+					s_ele = sd->arrow_ele; // Inherits ammuntion element
+				flag.hit = 1; // Always perfect hit
+				break;
+			case NJ_KUNAI:
+				ATK_ADD(60);
+				flag.arrow = 1; // Requires ammunition
+				if (sd && sd->arrow_ele)
+					s_ele = sd->arrow_ele; // Inherits ammunition element
+				flag.hit = 1; // Always perfect hit
+				break;
+			case NJ_HUUMA:
+				skillratio += 150 + 150*skill_lv;
+				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG; // Long-Ranged
+				if (sd && (skill = pc_checkskill(sd, NJ_TOBIDOUGU)) > 0)
+					skillratio += 3*skill;
+				flag.arrow = 1; // Requires ammunition
+				if (sd && sd->arrow_ele)
+					s_ele = sd->arrow_ele; // Inherits ammunition element
+				break;
+			case NJ_TATAMIGAESHI:
+				skillratio += 10*skill_lv;
+				break;
+			case NJ_KASUMIKIRI:
+				skillratio += 10*skill_lv;
+				break;
+			case NJ_KIRIKAGE:
+				skillratio += 100*(skill_lv-1);
+				cri += 250 + 50*skill_lv;
+				break;
+			case NJ_ISSEN:
+				wd.flag=(wd.flag&~BF_RANGEMASK)|BF_LONG; // Long-Ranged
+				if (sd)
+					wd.damage = 40*sd->status.str + skill_lv*(sd->status.hp/10 + 35);
+				wd.damage2 = 0;
+				s_ele = s_ele_ = 0; // Always neutral element attack
+				flag.hit = 1; // Always perfect hit
 				break;
 
 			/************ NPC SKILLS ************/
@@ -3391,6 +3402,11 @@ int battle_weapon_attack(struct block_list *src, struct block_list *target, unsi
 	// Source (Attacker) = Monster
 	else if (src->type == BL_MOB)
 		md = (struct mob_data *)src;
+
+	// Plants cannot attack on any circumstances (Red Plant, Black Mushroom, etc)
+	// Nor can Emperium (If attack calculation ever managed to find its way here)
+	if (md && (md->mode&0x40 || md->class == 1288))
+		return 0;
 
 	// Lost Source? Oops:
 	if (src->prev == NULL || target->prev == NULL)

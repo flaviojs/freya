@@ -1,10 +1,28 @@
-Note: Don't remove comments of old coders except if code is removed (respect of old coders work).
-      It is not because you can not understand the reason or the language that other coders can not.
-
+--------------------------------------------------------------
+               (c)2004-2007 Freya team presents:              
+                 ___   ___    ___   _  _   __                 
+                (  _) (  ,)  (  _) ( \/ ) (  )                
+                (  _)  )  \   ) _)  \  /  /__\                
+                (_)   (_)\_) (___) (__/  (_)(_)               
+                    http://www.ro-freya.net                   
+                      Freya SVN Changelog
+--------------------------------------------------------------
 
 Date	Added
 
-02/01/07
+02/01/2007
+	* Fixed: Specific plant-type monsters (Red Plant, Black Mushroom, etc) can no longer be knocked back [Tsuyuki]
+	* Fixed: Those plants can also no longer attack you on any circumstances, or Emperium [Tsuyuki]
+	* Fixed: Cooking produce formulas, and corrected creation system [Tsuyuki]
+	* Fixed: Backsliding and other self-triggered knockback skills now work in WoE [Tsuyuki]
+	* Fixed: Emperium is no longer affected by ANY status effect, except Safety Wall [Tsuyuki]
+	* Added: A check to make it impossible to knock back Emperium [Tsuyuki]
+	* Fixed: Noxious card now reduces Magic damage as well (Long-ranged) [Tsuyuki]
+	* Added: sc_start4 script command [Tsuyuki]
+	 - Pass up to 4 usable values to status_change_start function in status.c
+	* Added: SC_ARMOR_ELEMENT status [Tsuyuki]
+	 - Alchemist's Elemental Resistance Potions now work
+	* Added: New SC_DATA entries to the const_db.txt file [Tsuyuki]
 	* Fixed: A couple skills not initiating perfect hit correctly [Tsuyuki]
 	 - SG_SUN_WARM, SG_MOON_WARM, SG_STAR_WARM, GS_GROUNDDRIFT, NJ_SYURIKEN, NJ_KUNAI
 	* Updated: @charjoblvup command [Tsuyuki]
@@ -18,13 +36,13 @@ Date	Added
 	* Fixed: @joblevelup bugs (Thanks to KOSAI) [Tsuyuki]
 	* Updated: Some of the documentation files [Tsuyuki]
 
-01/31/07
+01/31/2007
 	* Fixed: Produce bug -> Extended max number of resources (Thanks to galaxy) [Tsuyuki]
 
-01/30/07
+01/30/2007
 	* Fixed: Alligator Card now reduces magic damage as well as ranged damage [Tsuyuki]
 
-01/28/07
+01/28/2007
 	* Fixed: Soul Destroyer (ASC_BREAKER) is no longer affected by GTB/Maya/other magical damage reductions [Tsuyuki]
 	 - Source: http://freya.dns.st/mantis/view.php?id=332
 	* Fixed: Some item auto-spell rates [Tsuyuki]
@@ -37,7 +55,7 @@ Date	Added
 	 - Note: Since theres an official mail system that will be in eventually
 	* Removed: @happyhappyjoyjoy and @happyhappyjoyjoymap in atcommand.h [Latios]
 
-01/27/07
+01/27/2007
 	* Removed: @command happyhappyjoyjoy and happyhappyjoyjoymap [Tsuyuki]
 	* Updated: Blacksmith Job Quest -> Moved to Einbroch/New fixes (Thanks to keVn) [Tsuyuki]
 	* Fixed: Assumptio and Kaite no longer stack [Tsuyuki]
@@ -56,11 +74,11 @@ Date	Added
 	* Fixed: coma should not affect MVPs [Latios]
 	* Fixed: BS_REPAIRWEAPON [Latios]
 
-01/24/07
+01/24/2007
 	* Fixed: Rogue card set now removes Intimidate skill if user is a Rogue [Tsuyuki]
 	* Fixed: Some mismatched message displays for item restrictions [Tsuyuki]
 
-01/23/07
+01/23/2007
 	* Updated: Modifications to the rebirth script system: [Tsuyuki]
 	 - 3.3 Organized script, and added most of the official dialogue from Aegis
 	 - 3.4 Added official Transporter, converted from Aegis
@@ -68,7 +86,7 @@ Date	Added
 	 - 3.6 Updated The Heart of Ymir's function (now warps to Valkyrie) as per Aegis
 	 - 3.7 You now get a Knife/Clothes when you rebirth, as per officials
 
-01/22/07
+01/22/2007
 	* Added: Cool Event Corp NPC to Rachel based on official info [Tsuyuki]
 	* Added: Novice Exchange script (Imported from eAthena) [Tsuyuki]
 	* Removed: Valkyrie.txt custom script [Tsuyuki]
@@ -79,7 +97,7 @@ Date	Added
 	* Added: Script To-Do List: Freya/npc/to-do.txt [Tsuyuki]
 	* Fixed: Typo in one of Imp's Fire Bolt skills [Tsuyuki]
 
-01/21/07
+01/21/2007
 	* Updated: Skill databases with new monster/class skill placeholders [Tsuyuki]
 	* Added: Support for new gravity packets in CHAR-TXT [Oreo:29]
 	* Fixed: Uncommented some more Adoption skill entries.. [Tsuyuki]
@@ -95,14 +113,14 @@ Date	Added
 	   -> Open src/include/mmo.h
 	   -> In #define PACKETVER 7, change 7 to 8.
 
-01/20/07
+01/20/2007
 	* Changed: Commented extra system configuration values as they aren't being recognized properly [Tsuyuki]
 	* Added: Imported official (ish) Bard job change quest from eAthena [Tsuyuki]
 
-01/19/07
+01/19/2007
 	* Fixed: One of Aliza's drops [Tsuyuki]
 
-01/18/07
+01/18/2007
 	* Added: Partially implemented Spirit of the Bard/Dancer status bonuses: [Tsuyuki]
 	 - Walk speed bonus, and performance skills will affect caster
 	* Added: Fully implemented Spirit of the Sage skill buffs [Tsuyuki]
@@ -110,7 +128,7 @@ Date	Added
 	* Updated: packet_db.txt (Credits to eAthena) [Tsuyuki]
 	* Fixed: Typo in Goat's drops [Tsuyuki]
 
-01/17/07
+01/17/2007
 	* Removed: Fully removed the so-called 'Project Diablo' [Tsuyuki]
 	 - Thrown out due to being pointless, and due to various warnings in different compilation environments/other bugs
 	* Fixed: Gunslinger skill Bulls Eye's coma chance [Tsuyuki]
@@ -119,7 +137,7 @@ Date	Added
 	* Updated: Dead Branch and Bloody Branch lists with Thor Dungeon monsters [Tsuyuki]
 	* Added: New duplicate monsters [Tsuyuki]
 
-01/16/07
+01/16/2007
 	* Added: Partially implemented Spirit of the Wizard Soul Link [Haplo]
 	* Improved: Rebirth quest skill system now removes garbage variables when it's done with them [Tsuyuki]
 	* Fixed: Fully fixed quest skill saving/returning through the rebirth process [Tsuyuki]
@@ -128,7 +146,7 @@ Date	Added
 	* Fixed: Valkyrie Shield item's bonuses [Tsuyuki]
 	* Removed: Some old scripts [Tsuyuki]
 
-01/15/07
+01/15/2007
 	* Added: Most of the Gunslinger class skills: [Tsuyuki]
 	 - GS_GLITTERING - Flip the Coin
 	 - GS_FLING - Fling
@@ -156,7 +174,7 @@ Date	Added
 	* Updated: job_db1.txt modifiers for the new classes [Tsuyuki]
 	 - Note: HP Multiplicator for Gunslinger/Ninja is semi-custom, need to code new system as per Aegis
 
-01/14/07
+01/14/2007
 	* Added: The rest of the Juperos History Quest (Fayruz NPC) [Tsuyuki]
 	* Fixed: The Devotion/Sacrifice status is now removed upon map change [Tsuyuki]
 	* Changed: Modified all @commands with the GM level 0 to GM level 1 [Tsuyuki]
@@ -182,7 +200,7 @@ Date	Added
 	* Improved: Did a bunch of work on the npc/custom folder [Tsuyuki]
 	 - Completely rewrote heal.txt file
 
-01/13/07
+01/13/2007
 	* Added: Latest kRO patch items (1/09/07), imported from jAthena [Tsuyuki]
 	* Fixed: The four main Taekwon kicks now never miss [Tsuyuki]
 	* Updated: Added official stats/drops for 11.1 Arunafeltz monsters (Credits: Aegis/eAthena) [Tsuyuki]
@@ -201,7 +219,7 @@ Date	Added
 	* Removed: break script command from all scripts and src [Tsuyuki]
 	 - It *worked* exactly like 'end' before, didn't want people to think it was for something else
 
-01/12/07
+01/12/2007
 	* Fixed: A bunch of broken cards [Tsuyuki]
 	* Fixed: NJ_BAKUENRYU's (Raging Fire Dragon) damage formula [Tsuyuki]
 	* Fixed: All 5 Taekwon Kicks now do 3 hits (damage formulas corrected as well) [Tsuyuki]
@@ -214,17 +232,17 @@ Date	Added
 	* Added: Two new script commands - 'dialog' and 'wait' [Tsuyuki]
 	 - Use 'mes' and 'next' code, added to make us more similar to Aegis
 
-01/10/07
+01/10/2007
 	* Updated: Beins/Thor Dungeon warps once again (Thanks to $ephiroth) [Tsuyuki]
 	* Corrected: Horn Card's bonuses [Tsuyuki]
 	* Updated: Redid the custom Quest Skills NPC (Platinum Skills): New class/skills support now working [Tsuyuki]
 	* Fixed: A usable item not working properly [Tsuyuki]
 	* Fixed: Remover Card's bonus [Tsuyuki]
 
-01/09/07
+01/09/2007
 	* Changed: Main channel's recognition character from '.' to '~' by default [Tsuyuki]
 
-01/07/07
+01/07/2007
 	* Fixed: Kafra script's saving system [Tsuyuki]
 	* Added: @go2 atcommand [Tsuyuki]
 	 - Works just like @go, only for dungeons!
@@ -240,7 +258,7 @@ Date	Added
 	 - item_drop_mvp_commonrate, item_drop_mvp_healingrate, item_drop_mvp_usablerate
 	 - item_drop_mvp_equiprate, item_drop_mvp_cardrate
 
-01/06/07
+01/06/2007
 	* Updated: Converted Juno Quests script from Aegis to Freya [Tsuyuki]
 	 - Note: Adds the missing Metto Quest to Freya
 	* Merged: Monster Museum script with the Juno NPCs script [Tsuyuki]
@@ -249,7 +267,7 @@ Date	Added
 	* Added: missing bonus bLoseSPWhenUnequip,50; in some cards [Latios]
 	* Added: Mail box NPCs converted from Aegis [Tsuyuki]
 
-01/05/07
+01/05/2007
 	* Added: GPL licence statements into all source files [Harbin]
 	* Fixed: Gunslinger, Ninja and Xmas classes counted as mob disguises [Harbin]
 	* Fixed: Mammonite deals neutral damage, but does not ignore weapon element and card bonuses [Harbin]
@@ -258,7 +276,7 @@ Date	Added
 	* Fixed: Maya Card's Magic reflect rate is now 50% instead of 30% [Tsuyuki]
 	* Fixed: Indian Filet's question stuck for The Sign Quest. [Lex]
 
-01/04/07
+01/04/2007
 	* Updated: Fully updated new card effects to match kRO 11.2 [Tsuyuki]
 	* Fixed: Phantasmic Arrow is now Ghost/Sense element [Tsuyuki]
 	* Fixed: Sage's Diary bonuses not working [Tsuyuki]
@@ -272,7 +290,7 @@ Date	Added
 	* Updated: Fully updated the item_db.txt with all the latest patch items/equipment (Credits to jAthena) [Tsuyuki]
 	 - Note: Need a translator for the new item names!
 
-01/03/07
+01/03/2007
 	* Fixed: Some checks with the Gunslinger/Ninja/Taekwon classes in scripts (Fixes Gunslinger/Ninja Quests) [Tsuyuki]
 	* Changed: Perfected some NPC/Script formatting in the /npc/ folder [Tsuyuki]
 	* Removed: Duplicate values for min_hair_style, max_hair_style, min_hair_color, max_hair_color [Tsuyuki]
@@ -299,7 +317,7 @@ Date	Added
 	* Added: Code to generate script hash dump. see do_final_script function [Harbin/Rayce]
 	 - Used to get optimal script hash size
 
-01/02/07
+01/02/2007
 	* Fixed: The Freya's url, configure script [GoodKat]
 	* Fixed: guild table structure on main_char.sql [GoodKat]
 	 - mes2 should be 120 bytes as the packet structure is: 0x016E <guildID>.L <mess1>.60B <mess2>.120B
@@ -307,7 +325,7 @@ Date	Added
 	* Fixed: Super Novice now receive their +10 bonus at job 70 and lose them if die anytime aftwewards. [Lex]
 	 - http://www.ragnainfo.net/wiki/index.php/Super_Novice
 
-01/01/07
+01/01/2007
 	* Note: Happy New Year! [Freya Dev Team]
 	* Fixed: A condition statement in inter_init regarding adoption implementation (inter.c) [GoodKat]
 	* Fixed: Calculation of max/min skill points for Ninja/Guns. Max jlevel 70, Max skpoints 69 [GoodKat]
@@ -315,7 +333,7 @@ Date	Added
 	* Fixed: Comma missing at main_char.sql. [Lex]
 	* Added: Bingo warps (Thanks to $ephiroth) [Tsuyuki]
 
-12/31/06
+12/31/2006
 	* Fixed: Cowardice Blade can now be equipped by the Thief-Class, and by Ninjas [Tsuyuki]
 	* Fixed: The number inputs for the barrel in Lighthalzen Cube room.  [Bison]
 	* Fixed: NPC_AGIUP/NPC_POWERUP (hitrate bonus) skill formula to be exact with Doddler's calc.  [Bison]
@@ -327,7 +345,7 @@ Date	Added
 	 - Use level 11 for 30 hit and normal knockback.
 	 - Use level 12 for 32 hit and 14 tile knockback, not 100% sure how many hits Mistress' JT does.
 	
-12/30/06
+12/30/2006
 	* Added: Missing clif_skill_poseffect to PA_GOSPEL code. A client packet to start the Gospel music [GoodKat]
 	* Added: Baby/Parent skills: WE_BABY, WE_CALLPARENT, WE_CALLBABY [GoodKat]
 	* Added: Initial structure for the adoption system: packets, mmo_char struct, sql rows, subroutines [GoodKat]
@@ -335,20 +353,20 @@ Date	Added
 	 - Baby skills coming soon.
 	* Updated: Thor Volcano mobs with all the info we currently have [Tsuyuki]
 
-12/29/06
+12/29/2006
 	* Added: Beins/Thor monsters (Poring stats, no drops) [Tsuyuki]
 	* Updated: doc/effect_list.txt (Thanks to Au{R}oN) [Tsuyuki]
 	* Fixed: Incorrect entries in item_db (thanks to galaxy) [Latios]
 	* Updated: Thor's Volcano Dungeon warp (thanks to $ephiroth) [Latios]
 
-12/25/06
+12/25/2006
 	* Fixed: guild skills [Latios]
 	* Fixed: rebirth system for Stalker [Latios]
 	* Fixed: Bio Lab 3 MVP spawn script timer (thanks to galaxy) [Latios]
 	* Fixed: possible client crash with Pressure/Gloria Domini [Latios]
 	* Fixed: @go [Latios]
 
-12/22/06
+12/22/2006
 	* Removed: Temp Dungeon Warpra NPC as its no longer necessary [Tsuyuki]
 	* Fixed: Updated/fixed up some Rachel/Sanctuary warps [Tsuyuki]
 	* Added: Temp warps to the upper levels of the Thanatos Tower so players can access the roof [Tsuyuki]
@@ -366,10 +384,10 @@ Date	Added
 	 - Assassin Cross: Meteor Assult
 	 - Whitesmith: Unknown/None
 
-12/21/06
+12/21/2006
 	* Fixed: Tweaked previous AI fix to differentiate between MVP/boss vs. non-MVP/boss mobs. [Bison]
 
-12/20/06
+12/20/2006
 	* Improved: The @job command: Has better class identification support now [Tsuyuki]
 	* Changed: The @go command: Removed dungeons from command [Tsuyuki]
 	 - Note: Nows supports all Towns, Valkyrie Realm, Jail, and Novice Grounds
@@ -377,20 +395,20 @@ Date	Added
 	* Fixed: Galapago AI mode so they will now assist in addition to looting. [Bison]
 	* Fixed: Extra damage being done when KE expires. [Bison]
 
-12/19/06
+12/19/2006
 	* Fixed: Elemental Converter Creation's required items [Tsuyuki]
 	* Added: New @go option: 27 - Beins [Tsuyuki]
 	* Added: Desert City Beins and Thor Volcano to the Custom warpra.txt [Tsuyuki]
 	* Added: Beins and Thor Volcano warps [Tsuyuki]
 	* Fixed: Mammonite now knocks target 5 cells back when Great Axe is equipped. [Lex]
 
-12/18/06	
+12/18/2006	
 	* Added: New kRO maps: The city of Beins, Beins fields, the Thor Volcano dungeon, and others.. [Tsuyuki]
 	* Fixed: Great Axe and Slaughter exchanged in Grade A and S Weapon Quests. [Lex]
 	* Fixed: mob skill overusage [Harbin]
 	* Fixed: Geographer AI mode that was causing them to bug. [Bison]
 
-12/17/06
+12/17/2006
 	* Fixed: SC_FUSION code [Tsuyuki/Harbin]
 	* Fixed: Refixed Awakening Potions job restrictions [Tsuyuki]
 	* Changed: Commented SC_Fusion code in battle.c as it caused a server crash (couldn't figure out why) [Tsuyuki]
@@ -401,7 +419,7 @@ Date	Added
 	* Added: A GM Menu to the Job Changer, along with several other optimizations [Tsuyuki]
 	* Fixed: Some bugs in the custom Job Changer [Tsuyuki]
 
-12/16/06
+12/16/2006
 	* Reverted: Items not being able to be used in EDP-mode (My bad) [Tsuyuki]
 	 - Source: http://ragnainfo.net/forums/viewtopic.php?p=1208353#1208353
 	* Improved: The custom Reset Girl NPC a little bit [Tsuyuki]
@@ -414,7 +432,7 @@ Date	Added
 	* Fixed: Manteau's Job Restrictions [Tsuyuki]
 	* Fixed: Emperium can't walk/attack anymore [Latios]
 
-12/15/06
+12/15/2006
 	* Fixed: Venom Knife not working at all [Tsuyuki]
 	* Updated: Massive rewrites/fixes to the Rebirth System to support the new job changes properly [Tsuyuki]
 	 - Note: Rebirth is now working properly once again
@@ -422,13 +440,13 @@ Date	Added
 	* Added: Partially implemented SG_DEVIL and SG_FUSION Taekwon Master skills [Tsuyuki]
 	 - Note: Missing negative effects, only the good stuff is in
 
-12/14/06
+12/14/2006
 	* Fixed: level < atcommand_max_player_gm_level check instead of <= in @gm command. [Lex]
 	* Fixed: Incarnation Samurai Card removing 1000 hp instead of 999 when unequiped. [Lex]
 	* Fixed: battle_config.atcommand_max_player_gm_level comparison for @gm command. [Lex]
 	* Fixed: The AI modes for Alice, Deviace, and Goat. [Bison]
 
-12/13/06
+12/13/2006
 	* Fixed: recalc walking speed right after defender effect ends [Harbin]
 	* Enabled: Ice Dungeon warps (oops) [Tsuyuki]
 	* Fixed: Missing break command missing for Estun/Estin [Tsuyuki]
@@ -437,12 +455,12 @@ Date	Added
 	* Fixed: Completely repaired Kyrie Eleison [Bison]
 	* Improved: the way kyrie eleison blocks and reduces received damage [Harbin]
 
-12/12/06
+12/12/2006
 	* Changed: Several more SQL variables from tinyint -> smallint to prevent any problems [Tsuyuki/Bison]
 	* Changed: Commented Harbin's unit skill chances due to some problems for now.. [Tsuyuki]
 	* Fixed: Max position-saving bug in Freya SQL [Tsuyuki/Bison]
 
-12/11/06
+12/11/2006
 	* Added: New jRO event maps to the map_athena.conf file [Tsuyuki]
 	* Updated: SQL Mob and Item databases [Tsuyuki]
 	* Fixed: Vesper Cores can now only be equiped if you're Second Advanced class [Tsuyuki]
@@ -457,7 +475,7 @@ Date	Added
 	* Fixed: Venom Knife skill should ignore race, size, element, cards, edp and icepick [Harbin]
 	* Fixed: Venom Knife also works only with dagger-type weapon [Harbin]
 
-12/10/06
+12/10/2006
 	* Fixed: Dual-Wield weapons sharing the same weapon type value as Gunslinger/Ninja weapons [Tsuyuki]
 	 - Note: Dual-Wield weapons (Specifically dual-dagger sins) no longer require ammo!
 	* Fixed: Char jobs above 4001 not saving correctly in SQL [Tsuyuki/Bison]
@@ -487,20 +505,20 @@ Date	Added
 	* Fixed: converted configure file back to use UNIX line endings [Harbin]
 	 - note: when you edit it, don't use windows line endings. it will cause problems
 
-12/09/06
+12/09/2006
 	* Added: Another hack to allow Ninja-Class to use all their available items/equipment [Tsuyuki]
 	 - Tested and fully working! Ninjas can now use all the items they should be able to use/equip
 	 - To-Do: The same for TKM/SL/GS.. (maybe tomorrow)
 	* Added: A hack to allow new classes to use/equip certain items [Tsuyuki]
 	 - Note: All jobs | All jobs except Novice/Super Novice | All jobs except Novice
 
-12/08/06
+12/08/2006
 	* Fixed: Ninja's Throw Fuuma Shuriken now does splash damage (AoE may be off though) [Tsuyuki]
 	* Fixed: Throw Fuuma Shuriken and Zeny Nage are no longer broken (Working!) [Tsuyuki]
 	 - Note: Fuuma still doesn't do splash Napalm Vulcan-like damage though
 	* Note: Dust and Full Buster Gunslinger Shotgun skills are now fully working [Tsuyuki]
 
-12/07/06
+12/07/2006
 	* Fixed: Shuriken/Kunai/Fuuma Shuriken skills now require ammo [Tsuyuki]
 	* Fixed: Gun-type attacks/skills now require ammo [Tsuyuki]
 	* Fixed: Gunslinger/Ninja should now be able to equip/use items that "all jobs" can use.. [Tsuyuki]
@@ -523,19 +541,19 @@ Date	Added
 	* Added: Some SC_XMAS-related code (doesn't work yet..) [Tsuyuki]
 	* Fixed: Gravitation Field immobilizing players other than the caster [Tsuyuki]
 
-12/06/06
+12/06/2006
 	* Fixed: CR/LF conflict in target files affecting dos/unix compatibility during compilation [Mikey]
 	* Fixed: The Xmas job now displays properly [Tsuyuki]
 	* Fixed: GD_LEADERSHIP, GD_GLORYWOUNDS, GD_SOULCOLD and GD_HAWKEYES now work out of GvG maps.. [Tsuyuki]
 	* Fixed: Tarot Card of Fate is now affected by the caster's DEX [Tsuyuki]
 
-12/03/06
+12/03/2006
 	* Fixed: You can once again no longer move during Gravitation Field [Tsuyuki]
 	* Fixed: Wrong items command [Van84]
 	* Fixed: possible crash in status.c [Latios]
 	* Fixed: GD_LEADERSHIP, GD_GLORYWOUNDS, GD_SOULCOLD and GD_HAWKEYES should works only on gvg maps [Latios]
 
-12/02/06
+12/02/2006
 	* Fixed: Changed the guild_checkskill back on status.c to avoid empty value returned [Van84]
 	* Fixed: Counter Dagger damaging user instead of target [Tsuyuki]
 	* Fixed: Kyrie Eleison when hit overflowing [Jetvictor]
@@ -550,7 +568,7 @@ Date	Added
 	* Updated: skills list in doc/miscnotes.txt [Latios]
 	* Fixed: bonus4 bAutospell rate [Latios]
 
-12/01/06
+12/01/2006
 	* Fixed: bonus3 Autospell -> bonus4 Autospell (Thanks to Galaxy) [Tsuyuki]
 	* Fixed: Test Warpra name fix [Tsuyuki]
 	* Fixed: getpartnerid (Thanks to Galaxy) [Tsuyuki]
@@ -561,7 +579,7 @@ Date	Added
 	 - Now increase stats by 1*SkillLevel instead of 2 (thanks to bajibbles)
 	* Fixed: Mind Breaker formula [Latios]
 	
-11/30/06
+11/30/2006
 	* Improved: clif_walkok for better walking method of characters [Jetvictor]
 	* Fixed: Wraith now drops the proper Slotted Manteau, not Skeleton Manteau (Also thanks to Zortch) [Tsuyuki]
 	* Added: Proper effect for Skeleton Manteau (Thanks to Zortch) [Tsuyuki]
@@ -579,7 +597,7 @@ Date	Added
 	* Fixed: Correct the knockback for TATAMIGAESHI skill [Van84]
 	* Updated: New HPConversion took from Eathena [Van84]
 
-11/29/06
+11/29/2006
 	* Fixed: Asura Strike aftercast SP regen restrictions [Tsuyuki]
 	* Fixed: Wedding sprites are now properly removed on Strip Armor [Tsuyuki]
 	* Added: The new Rice Cake pet [Tsuyuki]
@@ -598,7 +616,7 @@ Date	Added
 	* Fixed: Ninja KASUMIKIRI skill unhide if attack is miss [Van84]
 	* Fixed: compilation problems and a small bug for Ninja skills [Van84]
 
-11/28/06
+11/28/2006
 	* Added: The majority of the Ninja-class skills [Tsuyuki]
 	 - Assassination
 	 - Throw Shuriken
@@ -624,7 +642,7 @@ Date	Added
 	* Improved: added indexing on heavily used database tables and readjusted some data-field sizes [Harbin]
 	 - note: credits to jshcrtmcd
 
-11/27/06
+11/27/2006
 	* Fixed: Some fixes to JetVictor's changes.. [Tsuyuki]
 	* Updated: Enabled missing kafra at center of prontera as per Aegis [Jetvictor]
 	 - Renamed all Kafra to Kafra Employee
@@ -632,7 +650,7 @@ Date	Added
 	* Updated: Service for you should affect all players in range [Van84]
 	* Fixed: Heaven's drive shouldn't target traps [Van84]
 
-11/26/06
+11/26/2006
 	* Fixed: Ktullanux respawning instantly [Tsuyuki]
 	* Fixed: A few items (Thanks to galaxy) [Tsuyuki]
 	* Fixed: Bug in the custom job changer (Thanks to van84) [Tsuyuki]
@@ -645,7 +663,7 @@ Date	Added
 	* Added: Option to choose interval between each saving of mapreg file [Yor]
 	         (set default to 30 sec, instead of 10 sec)
 
-11/25/06
+11/25/2006
 	* Fixed: Supernovice can now wear Wedding Dress and Tuxedo items [Tsuyuki]
 	 - Note: In other words, Supernovice can now marry
 	* Fixed: Rebirth Spirit Soul Linker skill [Latios]
@@ -680,7 +698,7 @@ Date	Added
 	* Added: bonus bNoKnockBack for RSX 0806 Card [Latios]
 	* Fixed: Gunslinger and Ninja skill tree [Latios]
 
-11/24/06
+11/24/2006
 	* Fixed: Taekwon stance statuses are now removed on job change to soul linker [Latios]
 	* Added: item_upper for items equipable only by advanced characters (vesper core, ...) [Latios]
 	* Added: Estin, Estun, Eswoo, Esma, Eske & Eska (Soul Linker skills) [Latios]
@@ -706,7 +724,7 @@ Date	Added
 	* Added: Gunslinger/Ninja Merchant-Related NPCs [Tsuyuki]
 	 - Kunai Maker, Shuriken Maker, Ammo Boxes Dealer, Ammo Dealer
 
-11/23/06
+11/23/2006
 	* Added: Gunslinger and Ninja classes [Tsuyuki]
 	 - Skills are messed up.. GS has TK skills, NJ has Novice skills
 	 - Job stat bonuses are messed up for both classes
@@ -729,12 +747,12 @@ Date	Added
 	* Fixed: Gravitation Field now does 400 damage per hit to the Emperium during WoE [Tsuyuki]
 	* Fixed: Smite now properly refreshes the target's client position after knockback [Tsuyuki]
 
-11/22/06
+11/22/2006
 	* Added: English Kunlun and Ayothaya Guide NPCs, thanks to Harp [Tsuyuki]
 	* Improved: Cleaned up Harbin's AFM support removal and removed extra bits left over [Tsuyuki]
 	* Removed: AFM map format support [Harbin]
 
-11/21/06
+11/21/2006
 	* Fixed: While using Devotion skill, all Crusader's self buffs apply to devoted player [Damz Fish]
 	* Fixed: Cart Termination shouldn't be reflected by Shield Reflect [Harbin]
 	* Fixed: Cart Revolution damage is always neutral [Harbin]
@@ -747,7 +765,7 @@ Date	Added
 	 - Note: Incorrect damage/heal values, and Sohee should heal hp AND sp to 100% (only heals to 25% right now)
 	* Removed: Unnecessary /client folder files [Tsuyuki]
 
-11/20/06
+11/20/2006
 	* Fixed: Updated and disabled Novice WoE by default (No kRO proof it even exists) [Tsuyuki]
 	* Removed: Unnecessary and outdated old WoE scripts [Tsuyuki]
 	* Fixed: AoE offensive skills no longer affect party members in PvP, and supportive party skills now do [Tsuyuki]
@@ -757,7 +775,7 @@ Date	Added
 	* Fixed: Mobs now start random walking when target becomes non-targetable (WiP) [Harbin]
 	* Fixed: Players can no longer loot items while they are hiding/cloaking/chasewalking [Harbin]
 
-11/19/06
+11/19/2006
 	* Fixed: Super Novice now properly loses exp when it dies [Harbin]
 	* Changed: You can now pick up items / use @commands / use skills during SC_NOCHAT (Mute) [Tsuyuki]
 	 - Note: Muting is only applied automatically during chat floods, shouldn't have anything to do with actual gameplay
@@ -768,11 +786,11 @@ Date	Added
 	* Fixed: Gravitation Field can now hit the Emperium in WoE [Tsuyuki]
 	* Fixed: Gloria Domini and Gravitation Field now ignore WoE damage reductions [Tsuyuki]
 
-11/18/06
+11/18/2006
 	* Fixed: Wand of Hermode no longer removes the Frenzy status effect [Tsuyuki]
 	* Fixed: You can no longer cast Longing for Freedom when you are in the effect of Wand of Hermode [Tsuyuki]
 
-11/17/06
+11/17/2006
 	* Fixed: When you target a player and they cloak/chasewalk, you will no longer continue to follow them [Tsuyuki]
 	 - Note: Need to test, requires two people so I couldn't check it myself
 	* Added: Possibly fixed this bug report: http://freya.dns.st/mantis/view.php?id=301 [Tsuyuki]
@@ -793,19 +811,19 @@ Date	Added
 	 - Note: The mob database is now fully complete/official up to X.4 (Hugel/Odin's Temple/Kiel Hyre)
 	* Fixed: Kiel Hyre mob skill fixes [Tsuyuki]
 
-11/16/06
+11/16/2006
 	* Added: Enhanced .bat server launchers by Harbin in replacement of the eAthena ones [Tsuyuki]
 	* Added: Possibility to disable memory operation debugging (uses __DEBUG precompiler flag) [Harbin]
 	* Updated: Freya minor version number [Harbin]
 
-11/13/06
+11/13/2006
 	* Added: Some .bat server launchers for easier development, credits to Jbain/eAthena [Tsuyuki]
 	* Added: New items from the latest kRO updates [Tsuyuki]
 	* Fixed: Orc Baby Slave Spawn Bug (Thanks to Galaxy) [Tsuyuki]
 	* Changed: Kiel D-01 now has more slaves [Tsuyuki]
 	* Fixed: Constant and Icicle's Self Destruct not working correctly [Tsuyuki]
 
-11/10/06
+11/10/2006
 	* Updated: Official Episode X.4 drops in the mob database [Tsuyuki]
 	 - Note: May have missed some, but I'm pretty sure I got them all
 	* Updated: Official Monster Spawns for Aegis Episode 10.X (Credits to eAthena/Aegis) [Tsuyuki]
@@ -813,13 +831,13 @@ Date	Added
 	* Updated: Cooking Items are no longer dispelled upon map change (kRO Patch - 11/06/2006) [Tsuyuki]
 	* Added: Boiled Rice's official drops [Tsuyuki]
 
-10/28/06
+10/28/2006
 	* Updated: manner.txt for french people [Yorre]
 	* Fixed: You can no longer do the Friendship Quest if you are a Novice [Tsuyuki]
 	* Fixed: Added a temporary fix for Amon Ra respawning instantly [Tsuyuki]
 	 - It should work fine now, but we still don't know why the standard way of respawning Amon isn't working
 
-10/24/06
+10/24/2006
 	* Fixed: Small error in the Cooking Quest (Thanks to Kaypha) [Tsuyuki]
 	* Removed: Empty npc/quests/custom folder [Tsuyuki]
 	* Removed: Some duplicate scripts, and some unneccessary scripts in the custom script folder [Tsuyuki]
@@ -831,7 +849,7 @@ Date	Added
 	 - mantis: http://freya.dns.st/mantis/view.php?id=280
 	 - note: enabling charlog increases mysql server load
 
-10/23/06
+10/23/2006
 	* Added: New items from kRO client descriptions [Tsuyuki]
 	* Merged: Subdev branch to Trunk [Tsuyuki]
 	* Fixed: Falcon Assault's base Range should be 3 + Vulture's Eye's Range bonus [Harbin]
@@ -850,7 +868,7 @@ Date	Added
 	* Changed: charallowip and mapallowip to 'all' by default to help newbie users [Tsuyuki]
 	* Added: New headgears from the latest kRO patches [Tsuyuki]
 
-10/22/06
+10/22/2006
 	* Added: The Sign Quest to Freya [Tsuyuki]
 	 - Conversion: Damz Fish
 	 - Testing: galaxy
@@ -862,7 +880,7 @@ Date	Added
 	* Fixed: Valkyrie Randgrith using some of her skills incorrectly [Tsuyuki]
 	* Fixed: Some minor item database-related things [Tsuyuki]
 
-10/21/06
+10/21/2006
 	* Fixed: Assassin Daggers are now Dark element [Tsuyuki]
 	* Added: Missing Mdef bonus to Excorsist Ring [Tsuyuki]
 	* Fixed: Added missing effect for Morpheus' Hood [Tsuyuki]
@@ -870,7 +888,7 @@ Date	Added
 	* Added: A missing map to the map_athena.conf file (The Sign Quest related) [Tsuyuki]
 	* Fixed: The Taekwon Class's level-up buffs (L10 Blessing, L10 Increase Agi) [Tsuyuki]
 
-10/20/06
+10/20/2006
 	* Fixed: The city of Gonryun is now known as the city of Kunlun (as per correct english translations) [Tsuyuki]
 	* Updated: X.4 monster names with some more accurate translations [Tsuyuki]
 	* Fixed: Wretched Payon Training Grounds unmovable cell bug once and for all [Tsuyuki]
@@ -879,25 +897,27 @@ Date	Added
 	* Fixed: G_Gryphon instead of regular Gryphon spawning in a Rachel Field [Tsuyuki]
 	* Fixed: Possibly fixed the server crashing with OPB/GB/OCA items with a certain Linux Distro [Tsuyuki]
 
-10/19/06
+10/19/2006
 	* Fixed: Small Inn NPC bug [Tsuyuki]
 	* Changed: Disabled use of skills in the jail map (sec_pri.gat), to prevent exploits [Tsuyuki]
 	* Fixed: Both Priest and Assassin should now be able to equip Assassin's Mask [Tsuyuki]
 	* Reverted: Harbin's Bowling Bash changes (he broke the damage formula) [Tsuyuki]
 
-10/17/06
+10/17/2006
 	* Updated: Weapon 'Hatii Claw' (Thanks to slasherdade) [Tsuyuki]
 	* Changed: Commented all unfinished skills in the skill databases [Tsuyuki]
 	* Fixed: Soul Linker not being read correctly (Thanks to Lirathyl) [Tsuyuki]
 	* Fixed: Some things with my Juperos script [Tsuyuki]
 	* Fixed: Final fix on Armor Charm item set (Thanks to Galaxy) [Tsuyuki]
 	* Fixed: isdead script command: if no player, set like dead [Yor]
-	* Added: getmapnotgms2/getmapalivenotgms and getmapnotgms3/getmapdeadnotgms script commands to count number of not GMs on a map [Yor]
-	         example: getmapalivenotgms("prontera.gat", 20): get number of alive not GMs (level below of 20) on prontera.gat
-	         getmapalivenotgms + getmapalivegms = getmapaliveusers
+	* Added: getmapnotgms2/getmapalivenotgms and getmapnotgms3/getmapdeadnotgms
+	 - Script commands to count number of not GMs on a map [Yor]
+	 - Example: getmapalivenotgms("prontera.gat", 20):
+	 - Get number of alive not GMs (level below of 20) on prontera.gat
+	 - getmapalivenotgms + getmapalivegms = getmapaliveusers
 	* Added: isdead script command (to be used with script NPC) [Yor]
 
-10/16/06
+10/16/2006
 	* Added: Damz Fish's The Sign Quest eAthena conversion, still needs to be tested, so don't uncomment [Tsuyuki]
 	* Fixed: Novice Trick Dead (not being able to remove the status) (Thanks to Zippy) [Tsuyuki]
 	* Added: A couple new duplicate monsters, and 2 new event monsters; Rice Cake + Gourd (No Stats) [Tsuyuki]
@@ -906,7 +926,7 @@ Date	Added
 	* Fixed: Some misc mob spawn fixes [Tsuyuki]
 	* Updated: Some new mob spawns from jRO Aegis X.3 (Credits to eAthena..) [Tsuyuki]
 
-10/15/06
+10/15/2006
 	* Fixed: Corrected Orc Baby's slaves: Orc Warrior + Orc Lady (Was High Orc + Orc Lady) [Tsuyuki]
 	* Note: Cooking is finally 100% implemented and working
 	* Fixed: Cooking SC's not being dispelled on map change [Tsuyuki]
@@ -919,15 +939,15 @@ Date	Added
 	* Fixed: TK_RUN's bonus is only applied if you are not wearing a weapon [Tsuyuki]
 	* Added: TaeKwon Master & Soul Linker skill_tree_db entries (Credits to eAthena) [Tsuyuki]
 
-10/14/06
+10/14/2006
 	* Added: Some code corresponding with the cooking SC's [Tsuyuki]
 	 - Note: Gaining progress on cooking SC's, but not completely fixed yet
 	* Added: TK_Run's (Sprint) +10 Atk per skill level effect [Tsuyuki]
 
-10/13/06
+10/13/2006
 	* Fixed: Armor Charm equipment set not working correctly [Tsuyuki]
 
-10/12/06
+10/12/2006
 	* Moved: PvP.txt and Guildcastles.txt warps to the warps/other folder [Tsuyuki]
 	* Updated: Major warp updates (Credits to eAthena) [Tsuyuki]
 	 - Note: A lot of the updated warps had to be omitted due to conflictions..
@@ -937,12 +957,12 @@ Date	Added
 	* Fixed: Item 'Pumpkin' not doing anything [Tsuyuki]
 	 - Note: Please omit this on merge, but Yor, can you come on IRC sometime?
 
-10/10/06
+10/10/2006
 	* Added: The Sign Quest (35% converted from eAthena), do not enable it yet [Tsuyuki]
 	* Added: Some missing G_ duplicate mobs (WIP) [Tsuyuki]
 	* Fixed: Did some bug fixing on the npc/quests/quests_einbroch.txt file [Tsuyuki]
 
-10/09/06
+10/09/2006
 	* Fixed: More new card fixes [Tsuyuki]
 	* Fixed: Some new cards not working correctly [Tsuyuki]
 	* Fixed: Corrected Eremes Guile Card's effect [Tsuyuki]
@@ -959,7 +979,7 @@ Date	Added
 	* Fixed: You can no longer save in Archer's Village via Kafra [Tsuyuki]
 	* Fixed: Thanatos MvP Exp (15 mil as per Aegis) [Tsuyuki]
 
-10/08/06
+10/08/2006
 	* Fixed: Cooking Kits can now make L6-10 food items [Tsuyuki]
 	 - To-Do: Add graphical effects and failure messages (src)
 	 - To-Do: If you do not make anything when you use the kits, they should stay in your 
@@ -979,7 +999,7 @@ Date	Added
 	* Updated: The db/item_group_db.txt file [Tsuyuki]
 	* Updated: The db/monster_race2_db.txt file [Tsuyuki]
 
-10/07/06
+10/07/2006
 	* Fixed: BS_WEAPONREPAIR is now targetable [Tsuyuki]
 	* Fixed: More bugs in the Eye of Hellion Quest (Thanks to Galaxy) [Tsuyuki]
 	* Fixed: Bug in the Sight Blaster Quest allowing you to do it twice [Tsuyuki]
@@ -992,7 +1012,7 @@ Date	Added
 	* Fixed: Delays and such for Guild skills [Tsuyuki]
 	* Added: Correct effects for a few new items (Thanks to Muad_Dib) [Tsuyuki]
 
-10/06/06
+10/06/2006
 	* Updated: A couple mob speed/delay rates WIP [Tsuyuki]
 	* Fixed: Drake's slave summons [Tsuyuki]
 	* Updated: Big updates to the Lighthalzen NPC files, its almost 100% like official Lighthalzen now [Tsuyuki]
@@ -1011,7 +1031,7 @@ Date	Added
 	* Added: getmapgms2/getmapalivegms and getmapgms3/getmapdeadgms script commands to count number of GMs on a map [Yor]
 	         example: getmapalivegms("prontera.gat", 20): get number of alive GM (level 20 or more) on prontera.gat
 
-10/05/06
+10/05/2006
 	* Fixed: Sage's Elemental Converters now work once again [Tsuyuki]
 	* Fixed: My 7 new random items not working correctly, they now work [Tsuyuki]
 	* Fixed: Added Thanatos Tower to the dev temp warper [Tsuyuki]
@@ -1040,7 +1060,7 @@ Date	Added
 	* Fixed: Speed Potion/Authoritative Badge (Horse Crest) not working correctly [Tsuyuki]
 	* Added: Correct effect for Slow Potion [Tsuyuki]
 
-10/04/06
+10/04/2006
 	* Fixed: Problem with certain classes not being able to use cooking items [Tsuyuki]
 	* Added: Soul Linker + TaeKwon Master job quests, commented for now [Tsuyuki]
 	* Added: A missing Slot to Hatii Claw [Tsuyuki]
@@ -1048,7 +1068,7 @@ Date	Added
 	* Removed: Flying Soul Linker from job_db2.txt (wasn't supposed to be there?) [Tsuyuki]
 	* Fixed: Some job names in the job_dbx.txt files [Tsuyuki]
 
-10/03/06
+10/03/2006
 	* Fixed: Bugs in Eye of Hellion Quest (Thanks to galaxy) [Tsuyuki]
 	* Added: Missing Atros MvP to the Rachel field spawns [Tsuyuki]
 	* Fixed: Cowardice Blade is now only equipable by Assassin [Tsuyuki]
@@ -1056,14 +1076,14 @@ Date	Added
 	* Fixed: Geographer's / Parasite's modes restored (attack people again) [Tsuyuki]
 	* Fixed: Sight Blaster's range (now takes range of sight) [Tsuyuki]
 
-10/01/06
+10/01/2006
 	* Recommitted: Some lost commits from Proximus in Perforce: [Tsuyuki]
 		* Removed: 'Surrender' optin from Kafra guild manager, as it was 100% custom [Proximus]
 		- Not present in the leaked aegis npc scripts. eAthena removed it as well, a while ago.
 		- The only way to surrender a castle would be to break the guild.
 	* Recommitted: Also readded Proximus' adoption skill database changes [Tsuyuki]
 
-09/31/06
+09/31/2006
 	* Fixed: New Coppola Headgear View ID [Tsuyuki]
 	* Added: npc/server/Sapho/jobs/1-1/swordman.txt [Sapho Team]
 	* Fixed: Some major bugs with monsters that summon multiple, different slaves [Tsuyuki]
@@ -1071,7 +1091,7 @@ Date	Added
 	* Added: New duplicate mobs and skills [Tsuyuki]
 	* Fixed: Some biolabs monsters standing still after the skill update [Tsuyuki]
 
-09/30/06
+09/30/2006
 	* Changed: Arranged Ninja/Gunslinger items in a temp area until the classes are actually in [Tsuyuki]
 	* Added: Implemented Cookie Bag and its proper items from Aegis X.3 (Credits to eAthena) [Tsuyuki]
 	* Changed: Renamed item_violetbox.txt > item_purplebox.txt [Tsuyuki]
@@ -1097,7 +1117,7 @@ Date	Added
 	* Updated: npc/kafra/kafras_alde.txt [from nezumi, Lupus' work]
 	* Updated: Fully translated/fixed up all database files except db/skill_tree.txt [Tsuyuki]
 
-09/29/06
+09/29/2006
 	* Updated: Translated the skill_cast_db.txt 100% [Tsuyuki]
 	* Fixed: Cleaned up the abra_db.txt [Tsuyuki]
 	* Imported: Updated Kiel warps from eAthena [Tsuyuki]
@@ -1106,7 +1126,7 @@ Date	Added
 	* Updated: Translated the skill_db.txt 100% [Tsuyuki]
 	* Fixed: size_fix.txt database entry descriptions [Tsuyuki]
 
-09/28/06
+09/28/2006
 	* Fixed: Broken labels in Firecracker NPC (Hugel) [Tsuyuki]
 	* Added: MvP Exp for Detardeurus [Tsuyuki]
 	* Added: A few missing skills to skill_castnodex_db.txt [Tsuyuki]
@@ -1131,15 +1151,15 @@ Date	Added
 	* Fixed: Priest not being able to equip Assassin's Mask, as per kRO [Tsuyuki]
 	* Fixed: The effects of the three main Valkyrie items [Tsuyuki]
 
-09/27/06
+09/27/2006
 	* Added: Official drops for Ep 10.3 monsters [Tsuyuki]
 	* Imported: Converted and added Ayothaya, Louyang, and Kunlun Guide scripts from jAthena [Tsuyuki]
 	 - Note: They're currently in Japanese.. aha, anybody want to translate?
 
-09/26/06
+09/26/2006
 	* Added: npc/server/Sapho/other/dye.txt [Sapho Team]
 
-09/25/06
+09/25/2006
 	* Fixed: price of a skull (7420) [Yor]
 	* Improved: debug messaging of battle_attr_fix function [Harbin]
 	* Fixed: SC_MAGNUM bonus damage calculation [Harbin]
@@ -1157,17 +1177,17 @@ Date	Added
 	* Fixed: freya 'title' had wrong website url [Harbin]
 	* Fixed: custom/dye.txt: Remove hair color 9 to 20. They doesn't really exist. [Yor]
 
-09/23/06
+09/23/2006
 	* Updated: start-freya.sh script (from work of Magical Tux) [Yor]
 	* Fixed: server/sapho/informateur.txt [Sapho team]
 
-09/21/06
+09/21/2006
 	* Fixed: status changes packets and fame points packets for TCT version (char.c) [Yor]
 
-09/18/06
+09/18/2006
 	* Added: @shuffle (based on jAthena) [Yor]
 
-09/17/06
+09/17/2006
 	* Fixed: check options of max_hair_color and max_hair_style when reading a character [Yor]
 	* Added: Packet parsing of nProtect (login-server) [Yor]
 	* Added: New packet connection of client 0x27c (login-server) [Yor]
@@ -1189,7 +1209,7 @@ Date	Added
 	* Fixed: Ghostring's Teleport skill [Tsuyuki] (from subdev svn 142)
 	* Restored: All previously removed unofficial kRO scripts to a new directory (/npc/custom/...) [Mikey]
 
-09/12/06
+09/12/2006
 	* Updated: packet_db.txt [Yor]
 	* Fixed: Some things with OBB/DB related items [Tsuyuki] (from subdev svn 137)
 	* Fixed: Fixed all the broken new cards and fully implemented them, test and report please [Tsuyuki] (from subdev svn 136)
@@ -1215,7 +1235,7 @@ Date	Added
 	* Added: Rachel Sanctuary monsters [Tsuyuki] (from subdev svn 135)
 	* Fixed: Problem with the Thief Stone Fling quest [Tsuyuki] (from subdev svn 134)
 
-09/08/06
+09/08/2006
 	* Added: delete_account in class of ladmin (freya.php) [Yor]
 	* Fixed: All errors in mob_skill_db.txt [Tsuyuki] (from subdev svn 122, 127)
 	 - Note: Had to comment a couple things, "Angry", "Follow", and "Afterskill" since they aren't implemented yet..
@@ -1227,7 +1247,7 @@ Date	Added
 	* Added: Converted Eye of Hellion quest to Freya from eAthena [Tsuyuki] (from subdev svn 121, 125, 126)
 	* Fixed: Baphomet skill db [Tsuyuki] (from subdev svn 121)
 
-09/07/06
+09/07/2006
 	* Integrated: Subdev Branch up to Rev. 120 [Mikey]
 	* Updated: The Readme Folder a little bit [Tsuyuki
 	* Imported: Socket Enchant Script from eAthena [Tsuyuki]
@@ -1322,23 +1342,23 @@ Date	Added
 	 - checks for dark element
 	 - sanctuary has 50% change to reflect
 
-09/06/06
+09/06/2006
 	* Added: reading of hexadecimal numbers (0xffffff) in configuration files [Yor]
 	* Fixed: default of previous option in battle_athena.conf [Yor]
 	* Added: an option to choose how must be displayed main channel (atcommand_main_channel_type in battle_athena.conf) [Yor]
 
-09/05/06
+09/05/2006
 	* Improved: explanation of client_version_to_connect option in login_athena.conf [Yor]
 	* Fixed: set default ladmin allowed ip to 127.0.0.1 (security) [Yor]
 	* Added: a GM command to set the level that the player had when he changed job (job 1 -> job 2) [Yor]
 	* Fixed: information message about atcommand_send_usage_type (char.c) [Yor]
 
-09/04/06
+09/04/2006
 	* Added: an option to choose how must be displayed usage of GM commands (atcommand_send_usage_type in battle_athena.conf) [Yor]
 	* Fixed: possible overflow when reading SQL configuration in Char-server [Yor]
 	* Added: Security based on IP for all map-servers connections with the char-server -> not more possible to connect an unknown map-server (hacker) [Yor]
 
-09/03/06
+09/03/2006
 	* Fixed: some skills of some monsters in database [Yor]
 	* Added: A check display about mob_skill_db.txt to help coders of DataBases [Yor]
 	* Added: Security based on IP for all char-servers connections with the login-server [Yor]
@@ -1349,7 +1369,7 @@ Date	Added
 	* Fixed: send usage of a GM command with used command (including symbol of GM command, or if it's a synonym GM command) [Yor]
 	* Fixed: on error of a GM command, use used GM command [Yor]
 
-09/02/06
+09/02/2006
 	* Added: synonymous GM commands (read atcommand_athena.conf for more information) [Yor]
 	         -> clean up duplicated GM commands
 	* Merged subdev changes r39:40 into trunk [Proximus]
@@ -1363,7 +1383,7 @@ Date	Added
 		** Added: New @commands for @agitstart & @agitend [Tsuyuki]
 			- @woestart, @startwoe, @woeend, @endwoe
 
-09/01/06
+09/01/2006
 	* Improved: clif_vendinglist function [Proximus]
 	* Improved: replaced function call (gettick()) by the variable (gettick_cache) -> speeder [Yor]
 	            call a function is slower to simply access to a variable.
@@ -1371,7 +1391,7 @@ Date	Added
 	* Fixed: player who uses skills can gain xp in a party and is not more considered like idle member [Yor]
 	* Fixed: @kamic atcommand on multi map-servers [Yor]
 
-08/31/06
+08/31/2006
 	* Fixed: WS_CARTTERMINATION will no longer work with SC_MELTDOWN status, neither carry status aliments except from the skill itself [Proximus]
 	* Added: @kamic atcommand: kami with specified color (based on [LuzZza]'s and [akrus]'s code, based on jAthena) [Yor]
 	* Added: an option to disable @main GM command when it's WoE and player is member of a guild [Yor]
@@ -1380,7 +1400,7 @@ Date	Added
 		- Whether it is possible to invite 2 characters from the same account into a party or not
 		- Default value: NO (Aegis Software)
 
-08/30/06
+08/30/2006
 	* Added: @setgm[0-10] to manage easily player gm levels. [Yor]
 	         example: any gm team member can have an access to a command to change player level (0: without main channel, 1: with main channel with default configuration, etc.)
 	* Fixed: 'Immaterial Sword' item bonus. Added unbreakable bonus. As per Aegis special.sc file [Proximus]
@@ -1396,12 +1416,12 @@ Date	Added
 		- Fixed the "pink orb" sprite effect being visible only when casted in front of the player.
 		- It can not longer be casted near a wall. A check is performed in a 9*9 area around the caster.
 
-08/29/06
+08/29/2006
 	* Fixed: map name deletion [Yor]
 	* Improved: SQL account searching in some GM commands (@(un)block, @(un)ban, @changesex, @adjgmlvl2) [Yor]
 	* Added: @adjgmlvl2/@setgmlvl2/@adjgmlevel2/@setgmlevel2 - Permanently modify GM level of a player! [Yor]
 
-08/28/06
+08/28/2006
 	* Reverted: 'Loki's Wail/Classical Pluck' skill_nocast_db fix. Mainly designed for WoE/GvG maps [Proximus]
 		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=51467&highlight=classical+pluck
 		- Reference: http://www.ragnainfo.net/forums/viewtopic.php?t=80029&highlight=classical+pluck
