@@ -2407,20 +2407,20 @@ int npc_parse_mapflag(char *w1, char *w3, char *w4, int lines) {
 		map[m].flag.nomobdrop = 1;
 		map[m].flag.nomvpdrop = 1;
 		if (strcasecmp(w3, "noloot") == 0)
-			printf(CL_YELLOW "WARNING: Unknown map flag" CL_RESET ": noloot (file:%s:%d)! Freya uses 'nodrop' mapflag.\n", current_file, lines);
+			printf(CL_YELLOW "WARNING: Unknown map flag" CL_RESET ": noloot (file:%s:%d)! Server uses 'nodrop' mapflag.\n", current_file, lines);
 	} else if (strcasecmp(w3, "nomobdrop") == 0 || // 32
 	           strcasecmp(w3, "nomobloot") == 0) { // for compatibility with eAthena
 		map[m].flag.nomobdrop = 1;
 		if (strcasecmp(w3, "nomobloot") == 0) {
 			if (current_file != NULL) // if not a GM command, but a script
-				printf(CL_YELLOW "WARNING: Unknown map flag" CL_RESET ": nomobloot (file:%s:%d)! Freya uses 'nomobdrop' mapflag.\n", current_file, lines);
+				printf(CL_YELLOW "WARNING: Unknown map flag" CL_RESET ": nomobloot (file:%s:%d)! Server uses 'nomobdrop' mapflag.\n", current_file, lines);
 		}
 	} else if (strcasecmp(w3, "nomvpdrop") == 0 || // 33
 	           strcasecmp(w3, "nomvploot") == 0) { // for compatibility with eAthena
 		map[m].flag.nomvpdrop = 1;
 		if (strcasecmp(w3, "nomvploot") == 0) {
 			if (current_file != NULL) // if not a GM command, but a script
-				printf(CL_YELLOW "WARNING: Unknown map flag" CL_RESET ": nomvploot (file:%s:%d)! Freya uses 'nomvpdrop' mapflag.\n", current_file, lines);
+				printf(CL_YELLOW "WARNING: Unknown map flag" CL_RESET ": nomvploot (file:%s:%d)! Server uses 'nomvpdrop' mapflag.\n", current_file, lines);
 		}
 	} else if (strcasecmp(w3, "pvp_nightmaredrop") == 0) { // 34
 		if (sscanf(w4, "%[^,],%[^,],%d", drop_arg1, drop_arg2, &drop_per) == 3) {

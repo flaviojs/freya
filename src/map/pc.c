@@ -4839,7 +4839,6 @@ int pc_attack_timer(int tid, unsigned int tick, int id, int data)
 	if (bl->type == BL_PC) {
 		if (pc_isdead((struct map_session_data *)bl))
 			return 0;
-		// Fix found on Freya's forum (thanks to celest and Aalye) [Yor]
 		// General Hiding: People using auto-attack should not be able to follow/attack a hidden/cloaked target - [Aalye]
 		else if (pc_ishiding((struct map_session_data *)bl))
 			return 0;
@@ -5184,8 +5183,8 @@ void pc_gainexp(struct map_session_data *sd, int base_exp, int job_exp)
 		return; // no exp on pvp maps
 
 	if (sd->sc_data[SC_RICHMANKIM].timer != -1) { // added bounds checking [Valaris]
-		base_exp = base_exp * (125 + sd->sc_data[SC_RICHMANKIM].val1 * 11) / 100; // thanks to [Mr_KrzYch00] form freya's bug report
-		job_exp = job_exp * (125 + sd->sc_data[SC_RICHMANKIM].val1 * 11) / 100; // thanks to [Mr_KrzYch00] form freya's bug report
+		base_exp = base_exp * (125 + sd->sc_data[SC_RICHMANKIM].val1 * 11) / 100;
+		job_exp = job_exp * (125 + sd->sc_data[SC_RICHMANKIM].val1 * 11) / 100;
   }
 
 	if (sd->status.guild_id > 0) {

@@ -1117,12 +1117,12 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 		break;
 
 	case WZ_STORMGUST:
-	  {
+	 {
 		struct status_change *sc_data = status_get_sc_data(bl);
-		if(sc_data) {
+		if(sc_data)
+		{
 			sc_data[SC_FREEZE].val3++;
-//			if (sc_data[SC_FREEZE].val3 >= 3 && rand() % 1000 < skilllv * sc_def_mdef / 100) // previous
-			if (sc_data[SC_FREEZE].val3 >= 3) // better formula to calculate the freezing time - [Aalye] from freya' forum
+			if (sc_data[SC_FREEZE].val3 >= 3)
 				status_change_start(bl, SC_FREEZE, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
 		}
 	  }
@@ -1315,8 +1315,7 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 			status_change_start(bl, SC_AUTOCOUNTER, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
 		break;
 	case PF_FOGWALL:
-		//if (src != bl && rand() % 100 < 3 * skilllv * sc_def_int / 100) - previous formula
-		if (src != bl && rand() % 100 < sc_def_int) /* better formula from [Aalye] - freya' forum */
+		if (src != bl && rand() % 100 < sc_def_int)
 			status_change_start(bl, SC_BLIND, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
 		break;
 	case LK_HEADCRUSH:
@@ -1964,6 +1963,7 @@ int skill_attack(int attack_type, struct block_list* src, struct block_list *dsr
 	case SM_MAGNUM:
 	case AS_SPLASHER:
 	case ASC_METEORASSAULT:
+	case GS_DESPERADO:
 		clif_skill_damage(dsrc, bl, tick, dmg.amotion, dmg.dmotion, damage, dmg.div_, skillid, -1, 5);
 		break;
 	case PA_GOSPEL:
@@ -1996,7 +1996,8 @@ int skill_attack(int attack_type, struct block_list* src, struct block_list *dsr
 	}
 
 	map_freeblock_lock();
-	if ((skillid || flag) && !(skillid == ASC_BREAKER && attack_type&BF_WEAPON)) { // Do not really deal damage for ASC_BREAKER's 1st attack + A lot of Corrections to BREAKER SKILL (pneuma included) (Posted on freya's bug report by Gawaine)
+	if ((skillid || flag) && !(skillid == ASC_BREAKER && attack_type&BF_WEAPON))
+	{
 		if (attack_type&BF_WEAPON)
 			battle_delay_damage(tick + dmg.amotion, src, bl, attack_type, skillid, skilllv, damage, dmg.dmg_lv, 0);
 		else {
@@ -2226,7 +2227,7 @@ static int skill_check_unit_range2_sub(struct block_list *bl, va_list ap) {
 int skill_check_unit_range2(int m, int x, int y, int skillid, int skilllv) {
 	int c = 0, range;
 
-	switch (skillid) { // Fix by akrus (from freya's bug report)
+	switch (skillid) {
 	case WZ_ICEWALL:
 		range = 2;
 		break;
@@ -2684,7 +2685,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case CG_ARROWVULCAN:
 	case HW_MAGICCRASHER:
 	case ITM_TOMAHAWK:
-	case ASC_METEORASSAULT:	// Meteor Assault skill fix (thanks to [Mikey] from freya's bug report)
+	case ASC_METEORASSAULT:
 	case AC_SHOWER:
 	case GS_TRIPLEACTION:
 	case GS_MAGICALBULLET:
@@ -2692,6 +2693,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case GS_PIERCINGSHOT:
 	case GS_RAPIDSHOWER:
 	case GS_FULLBUSTER:
+	case GS_DESPERADO:
 	case NJ_SYURIKEN:
 	case NJ_KUNAI:
 		skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, flag);
@@ -2702,7 +2704,6 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		skill_blown(src,bl,skill_get_blewcount(skillid,skilllv));
 		break;
 
-// A lot of Corrections to BREAKER SKILL (pneuma included) (Posted on freya's bug report by Gawaine)
 	case ASC_BREAKER:
 		// Separate weapon and magic attacks
 		skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, flag);
@@ -2724,7 +2725,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		if (rand() % 100 < 50)
 			status_change_start(bl, SC_STUN, skilllv, 0, 0, 0, skill_get_time2(PA_PRESSURE, skilllv), 0);
 		else
-			if (rand() % 100 < (50 - (status_get_vit(bl) / 10))) // <-- % fixed by [SePhII2oTh] from freya's bug report
+			if (rand() % 100 < (50 - (status_get_vit(bl) / 10)))
 				status_change_start(bl, SC_BLEEDING, skilllv, 0, 0, 0, skill_get_time2(PA_PRESSURE, skilllv), 0);
 		if (bl->type == BL_PC) {
 			struct map_session_data *tsd = (struct map_session_data *)bl;
@@ -2986,10 +2987,9 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case AS_GRIMTOOTH:
 	case MC_CARTREVOLUTION:
 	case NPC_SPLASHATTACK:
-//	case ASC_METEORASSAULT: // Meteor Assault skill fix (thanks to [Mikey] from freya's bug report)
+//	case ASC_METEORASSAULT:
 	case AS_SPLASHER:
 	case NJ_HUUMA:
-	case GS_DESPERADO:
 	case GS_SPREADATTACK:
 		if (flag & 1)
 		{
@@ -3015,10 +3015,6 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 						ar = 7;
 					else // Level 10+
 						ar = 9;
-					break;
-				case GS_DESPERADO:
-					ar = 7;
-					clif_skill_nodamage(src, src, skillid, skilllv, 1);
 					break;
 				default:
 					ar = 1;
@@ -4320,14 +4316,17 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		break;
 
 	case RG_RAID:
-	case ASC_METEORASSAULT: // Meteor Assault skill fix (thanks to [Mikey] from freya's bug report)
+	case ASC_METEORASSAULT:
 	case GS_SPREADATTACK:
+	case GS_DESPERADO:
 		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 	  {
 		int x = bl->x, y = bl->y;
 		int ar = 1;
-		if (skillid == ASC_METEORASSAULT) // Meteor Assault skill fix (thanks to [Mikey] from freya's bug report)
+		if (skillid == ASC_METEORASSAULT)
 			ar = 2;
+		if (skillid == GS_DESPERADO)
+			ar = 7;
 		skill_area_temp[1] = bl->id;
 		skill_area_temp[2] = x;
 		skill_area_temp[3] = y;
@@ -4445,7 +4444,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		break;
 
 	case AS_CLOAKING:
-		if (skilllv >= 3 || !skill_check_cloaking(bl)) // <--- Correction of cloaking and walls found on Freya's bug report (thanks to [BeoWulf])
+		if (skilllv >= 3 || !skill_check_cloaking(bl))
 		{
 			int sc = SkillStatusChangeTable[skillid];
 			if (battle_config.no_caption_cloaking)
@@ -6483,7 +6482,8 @@ int skill_castend_pos2(struct block_list *src, int x, int y, int skillid, int sk
 		if (sd) {
 			int id;
 			struct mob_data *md;
-			int summons[5] = { 1020, 1068, 1118, 1500, 1368 }; // kRO 14/12/04 Patch - Bio Cannibalize: Monsters that are spawned are different based on the skill level [Aalye] from Freya' forum
+			// kRO 14/12/04 Patch - Bio Cannibalize: Monsters that are spawned are different based on the skill level
+			int summons[5] = { 1020, 1068, 1118, 1500, 1368 };
 
 			id = mob_once_spawn(sd, "this", x, y, sd->status.name, ((skilllv < 6) ? summons[skilllv-1] : 1368), 1, "");
 			if ((md = (struct mob_data *)map_id2bl(id)) !=NULL) {
@@ -7788,7 +7788,8 @@ int skill_castend_pos(int tid, unsigned int tick, int id, int data)
 	if ((!battle_config.pc_skill_reiteration &&
 	     skill_get_unit_flag(sd->skillid) & UF_NOREITERATION &&
 	     skill_check_unit_range(sd->bl.m, sd->skillx, sd->skilly, sd->skillid, sd->skilllv)) ||
-	    (map_getcell(sd->bl.m, sd->skillx, sd->skilly, CELL_CHKNOPASS))) { // Not "Wall trapping" fixed by [Mikey] from Freya's bug report
+	    (map_getcell(sd->bl.m, sd->skillx, sd->skilly, CELL_CHKNOPASS)))
+	{
 		clif_skill_fail(sd, sd->skillid, 0, 0);
 		sd->canact_tick = tick;
 		sd->canmove_tick = tick;
@@ -8252,7 +8253,7 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 		} else
 			sd->spiritball_old = lv;
 		break;
-	// kRO Patch 14/12/04 - Snap dont require a spiritball when under fury [Aalye] from Freya's forum
+	// kRO Patch 14/12/04 - Snap dont require a spiritball when under fury
 	case MO_BODYRELOCATION:
 		if (sd->sc_count && sd->sc_data[SC_EXPLOSIONSPIRITS].timer != -1)
 			spiritball = 0;
@@ -8351,7 +8352,8 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 	case AM_SPHEREMINE:
 		if (type & 1) {
 			int c = 0;
-			int summons[5] = { 1020, 1068, 1118, 1500, 1368 }; // kRO 14/12/04 Patch - Bio Cannibalize: Monsters that are spawned are different based on the skill level [Aalye] from Freya's forum
+			// kRO 14/12/04 Patch - Bio Cannibalize: Monsters that are spawned are different based on the skill level
+			int summons[5] = { 1020, 1068, 1118, 1500, 1368 };
 			int maxcount = (skill == AM_CANNIBALIZE) ? ((lv < 6) ? 6 - lv : 1) : skill_get_maxcount(skill);
 			int mob_class = (skill == AM_CANNIBALIZE) ? ((lv < 6) ? summons[lv-1] : 1368) : 1142;
 			if (battle_config.pc_land_skill_limit && maxcount > 0) {
@@ -9247,8 +9249,9 @@ int skill_use_pos(struct map_session_data *sd,
 
 //	if(sd->skillitem == skill_num)
 //		casttime = delay = 0;
-	if (sc_data && sc_data[SC_MEMORIZE].timer != -1 && casttime > 0){
-		casttime = casttime / 2; // Memorize is supposed to reduce the cast time of the next 5 spells by half (thanks to [Mikey] from Freya's bug report)
+	if (sc_data && sc_data[SC_MEMORIZE].timer != -1 && casttime > 0)
+	{
+		casttime = casttime / 2; // Memorize is supposed to reduce the cast time of the next 5 spells by half
 		if ((--sc_data[SC_MEMORIZE].val2) <= 0)
 			status_change_end(&sd->bl, SC_MEMORIZE, -1);
 	}

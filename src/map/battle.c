@@ -4370,7 +4370,7 @@ static const struct battle_config_short{
 	{ "atcommand_add_local_message_info",           &battle_config.atcommand_add_local_message_info },
 	{ "atcommand_storage_on_pvp_map",               &battle_config.atcommand_storage_on_pvp_map },
 	{ "atcommand_gstorage_on_pvp_map",              &battle_config.atcommand_gstorage_on_pvp_map },
-	{ "pm_gm_not_ignored",                          &battle_config.pm_gm_not_ignored }, // GM minimum level to be not ignored in private message. [BeoWulf] (from freya's bug report)
+	{ "pm_gm_not_ignored",                          &battle_config.pm_gm_not_ignored }, // GM minimum level to be not ignored in private message
 
 	{ "char_disconnect_mode",                       &battle_config.char_disconnect_mode },
 

@@ -209,7 +209,7 @@ struct skill_tree_entry {
 		unsigned id : 11; // max = 407(499) -> 9 bits (11 for security)
 		unsigned lv : 5; // max = 10 -> 4 bits (5 for security) (11 + 5 = 16, 2 bytes)
 	} need[5]; // 5 are used
-} skill_tree[3][MAX_SKILLTREE][MAX_SKILL_PER_TREE]; // from freya's forum (thanks to Celest) [Yor]
+} skill_tree[3][MAX_SKILLTREE][MAX_SKILL_PER_TREE];
 
 void pc_guardiansave(void);
 int pc_read_gm_account(int fd);

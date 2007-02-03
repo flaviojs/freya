@@ -12766,7 +12766,7 @@ static int clif_parse(int fd) {
 			session[fd]->eof = 1;
 			RFIFOSKIP(fd, 2);
 			return 0;
-		case 0x7535: // Request of the server version (freya version)
+		case 0x7535: // Request of the server version (Freya version)
 			WPACKETW(0) = 0x7536;
 			WPACKETB(2) = FREYA_MAJORVERSION;
 			WPACKETB(3) = FREYA_MINORVERSION;

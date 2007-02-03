@@ -226,7 +226,7 @@ int mob_once_spawn(struct map_session_data *sd, char *mapname,
 		if (real_class == 1288) { // emperium hp based on defense level [Valaris]
 			struct guild_castle *gc = guild_mapname2gc(map[md->bl.m].name);
 			if (gc) {
-				md->hp = mob_db[real_class].max_hp + 2000 * gc->defense; // fixed by [euph] from freya's bug report
+				md->hp = mob_db[real_class].max_hp + 2000 * gc->defense;
 			}
 		}
 	}

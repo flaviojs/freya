@@ -11,6 +11,7 @@
 Date	Added
 
 02/03/2007
+	* Fixed: GS_DESPERADO no longer damages the caster [Tsuyuki]
 	* Fixed: Job changing for babies (Thanks to Galaxy) [Tsuyuki]
 	 - Note: Super Baby job changing has also been fixed
 	* Fixed: Corrected new monster names to match iRO 10.4 [Tsuyuki]
