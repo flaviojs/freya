@@ -1137,11 +1137,11 @@ L_2:
 	next;
 	mes "^3355FF~ your body is overcome with a wave of heat ~";
 	mes "~ you feel the poison racing through your body ~^000000";
-	sc_start SC_Poison,900000,1;
+	sc_start SC_POISON,900000,1;
 	next;
 	mes "^5533FF. . . . . . . . . . . . . . .^000000"; 
 	next;
-	sc_end SC_Poison;
+	sc_end SC_POISON;
 	if (BaseLevel < 25) goto L_LowLvl;
 	set @TEMP, rand(3);
 	if (@TEMP == 2) goto R_2;
@@ -1169,11 +1169,11 @@ L_2:
 	R_1:
 		mes "^3355FF~ now you feel extremely cold and dizzy.... ~";
 		mes "~ your body feels weak and you are getting drowsy.... ~^000000";
-		sc_start SC_Sleep,900000,1;
+		sc_start SC_SLEEP,900000,1;
 		next;
 		mes "[Nigirboran]";
 		mes "Hmm.... well the good news is you didn't have any hallucinations.  Your body however, reacted poorly and you fell asleep.";
-		sc_end SC_Sleep;
+		sc_end SC_SLEEP;
 		next;
 		mes "[Nigirboran]";
 		mes "If you cannot handle a little piece of cheese, there is absolutely no way you will be able to handle the Stone of Awakening.";

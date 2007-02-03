@@ -672,6 +672,23 @@ const struct skill_name_db skill_names[] = {
  { WZ_STORMGUST, "STORMGUST", "Storm_Gust" } ,
  { WZ_VERMILION, "VERMILION", "Lord_of_Vermilion" } ,
  { WZ_WATERBALL, "WATERBALL", "Water_Ball" } ,
+ // Homunuclus Skills
+ { HLIF_HEAL, "HLIF_HEAL", "Healing_Touch" },
+ { HLIF_AVOID, "HLIF_AVOID", "Avoid" },
+ { HLIF_BRAIN, "HLIF_BRAIN", "Brain_Surgery" },
+ { HLIF_CHANGE, "HLIF_CHANGE", "Change" },
+ { HAMI_CASTLE, "HAMI_CASTLE", "Castling" },
+ { HAMI_DEFENCE, "HAMI_DEFENCE", "Defense" },
+ { HAMI_SKIN, "HAMI_SKIN", "Adamantium_Skin" },
+ { HAMI_BLOODLUST, "HAMI_BLOODLUST", "Bloodlust" },
+ { HFLI_MOON, "HFLI_MOON", "Moonlight" },
+ { HFLI_FLEET, "HFLI_FLEET", "Fleeting_Move" },
+ { HFLI_SPEED, "HFLI_SPEED", "Speed" },
+ { HFLI_SBR44, "HFLI_SBR44", "S.B.R.44" },
+ { HVAN_CAPRICE, "HVAN_CAPRICE", "Caprice" },
+ { HVAN_CHAOTIC, "HVAN_CHAOTIC", "Benediction_of_Chaos" },
+ { HVAN_INSTRUCT, "HVAN_INSTRUCT", "Instruct" },
+ { HVAN_EXPLOSION, "HVAN_EXPLOSION", "Bio_Explosion" },
  { 0, 0, 0 }
 };
 
@@ -4979,7 +4996,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 					|| i==SC_COMBO || i==SC_DANCING || i==SC_GUILDAURA || i==SC_EDP
 					|| i==SC_AUTOBERSERK  || i==SC_CARTBOOST || i==SC_MELTDOWN
 					|| i==SC_SAFETYWALL || i==SC_SMA || i==SC_SPEEDUP0
-					|| i==SC_NOCHAT
+					|| i==SC_NOCHAT || i== SC_RIDING || i==SC_FALCON
 					)
 					continue;
 				status_change_end(bl, i, -1);

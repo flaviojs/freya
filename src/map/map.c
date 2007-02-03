@@ -1195,10 +1195,10 @@ void map_quit(struct map_session_data *sd) {
 			status_change_end(&sd->bl, SC_WEIGHT50, -1);
 		if(sd->sc_data[SC_WEIGHT90].timer != -1)
 			status_change_end(&sd->bl, SC_WEIGHT90, -1);
-		if(sd->sc_data[SC_BROKNWEAPON].timer != -1)
-			status_change_end(&sd->bl, SC_BROKNWEAPON, -1);
-		if(sd->sc_data[SC_BROKNARMOR].timer != -1)
-			status_change_end(&sd->bl, SC_BROKNARMOR, -1);
+		if(sd->sc_data[SC_BROKENWEAPON].timer != -1)
+			status_change_end(&sd->bl, SC_BROKENWEAPON, -1);
+		if(sd->sc_data[SC_BROKENARMOR].timer != -1)
+			status_change_end(&sd->bl, SC_BROKENARMOR, -1);
 		if(sd->sc_data[SC_GUILDAURA].timer != -1)
 			status_change_end(&sd->bl, SC_GUILDAURA, -1);
 		if(sd->sc_data[SC_GOSPEL].timer != -1)

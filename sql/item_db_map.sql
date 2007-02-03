@@ -42,26 +42,26 @@ INSERT INTO `item_db` VALUES (502, 'Orange_Potion', 'Orange Potion', 0, 200, 100
 INSERT INTO `item_db` VALUES (503, 'Yellow_Potion', 'Yellow Potion', 0, 550, 275, 130, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(175,235),0;', NULL);
 INSERT INTO `item_db` VALUES (504, 'White_Potion', 'White Potion', 0, 1200, 600, 150, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(325,405),0;', NULL);
 INSERT INTO `item_db` VALUES (505, 'Blue_Potion', 'Blue Potion', 0, 5000, 2500, 150, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal 0,rand(40,60);', NULL);
-INSERT INTO `item_db` VALUES (506, 'Green_Potion', 'Green Potion', 0, 40, 20, 70, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_end SC_Poison; sc_end SC_Silence; sc_end SC_Blind; sc_end SC_Confusion;', NULL);
+INSERT INTO `item_db` VALUES (506, 'Green_Potion', 'Green Potion', 0, 40, 20, 70, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_end SC_POISON; sc_end SC_SILENCE; sc_end SC_BLIND; sc_end SC_CONFUSION;', NULL);
 INSERT INTO `item_db` VALUES (507, 'Red_Herb', 'Red Herb', 0, 18, 9, 30, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(18,28),0;', NULL);
 INSERT INTO `item_db` VALUES (508, 'Yellow_Herb', 'Yellow Herb', 0, 40, 20, 50, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(38,58),0;', NULL);
 INSERT INTO `item_db` VALUES (509, 'White_Herb', 'White Herb', 0, 120, 60, 70, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(75,115),0;', NULL);
 INSERT INTO `item_db` VALUES (510, 'Blue_Herb', 'Blue Herb', 0, 60, 30, 70, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal 0,rand(15,30);', NULL);
-INSERT INTO `item_db` VALUES (511, 'Green_Herb', 'Green Herb', 0, 10, 5, 30, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_end SC_Poison;', NULL);
+INSERT INTO `item_db` VALUES (511, 'Green_Herb', 'Green Herb', 0, 10, 5, 30, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_end SC_POISON;', NULL);
 INSERT INTO `item_db` VALUES (512, 'Apple', 'Apple', 0, 15, 7, 20, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(16,22),0;', NULL);
 INSERT INTO `item_db` VALUES (513, 'Banana', 'Banana', 0, 15, 7, 20, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(17,21),0;', NULL);
 INSERT INTO `item_db` VALUES (514, 'Grape', 'Grape', 0, 200, 100, 20, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal 0,rand(10,15);', NULL);
 INSERT INTO `item_db` VALUES (515, 'Carrot', 'Carrot', 0, 15, 7, 20, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(18,20),0;', NULL);
-INSERT INTO `item_db` VALUES (516, 'Potato', 'Potato', 0, 15, 7, 20, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(15,23),0; if(rand(100)<3) sc_start SC_Stan,10000,0;', NULL);
+INSERT INTO `item_db` VALUES (516, 'Potato', 'Potato', 0, 15, 7, 20, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(15,23),0; if(rand(100)<3) sc_start SC_STUN,10000,0;', NULL);
 INSERT INTO `item_db` VALUES (517, 'Meat', 'Meat', 0, 50, 25, 150, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(70,100),0;', NULL);
 INSERT INTO `item_db` VALUES (518, 'Honey', 'Honey', 0, 500, 250, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(70,100),rand(20,40);', NULL);
 INSERT INTO `item_db` VALUES (519, 'Milk', 'Milk', 0, 25, 12, 30, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(27,37),0;', NULL);
 INSERT INTO `item_db` VALUES (520, 'Hinalle_Leaflet', 'Hinalle Leaflet', 0, 150, 75, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(175,235),0;', NULL);
 INSERT INTO `item_db` VALUES (521, 'Aloe_Leaflet', 'Aloe Leaflet', 0, 360, 180, 20, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(325,405),0;', NULL);
 INSERT INTO `item_db` VALUES (522, 'Mastela_Fruit', 'Mastela Fruit', 0, 8500, 4250, 30, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(400,600),0;', NULL);
-INSERT INTO `item_db` VALUES (523, 'Holy_Water', 'Holy Water', 0, 20, 10, 30, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_end SC_Curse;', NULL);
-INSERT INTO `item_db` VALUES (525, 'Panacea', 'Panacea', 0, 500, 250, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_end SC_Poison; sc_end SC_Silence; sc_end SC_Blind; sc_end SC_Confusion; sc_end SC_Curse;', NULL);
-INSERT INTO `item_db` VALUES (526, 'Royal_Jelly', 'Royal Jelly', 0, 7000, 3500, 150, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(325,405),rand(40,60); sc_end SC_Poison; sc_end SC_Silence; sc_end SC_Blind; sc_end SC_Confusion; sc_end SC_Curse;', NULL);
+INSERT INTO `item_db` VALUES (523, 'Holy_Water', 'Holy Water', 0, 20, 10, 30, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_end SC_CURSE;', NULL);
+INSERT INTO `item_db` VALUES (525, 'Panacea', 'Panacea', 0, 500, 250, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_end SC_POISON; sc_end SC_SILENCE; sc_end SC_BLIND; sc_end SC_CONFUSION; sc_end SC_CURSE;', NULL);
+INSERT INTO `item_db` VALUES (526, 'Royal_Jelly', 'Royal Jelly', 0, 7000, 3500, 150, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(325,405),rand(40,60); sc_end SC_POISON; sc_end SC_SILENCE; sc_end SC_BLIND; sc_end SC_CONFUSION; sc_end SC_CURSE;', NULL);
 INSERT INTO `item_db` VALUES (528, 'Monster\'s_Feed', 'Monster Food', 0, 60, 30, 150, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(72,108),0;', NULL);
 INSERT INTO `item_db` VALUES (529, 'Candy', 'Candy', 0, 10, 5, 30, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(45,65),0;', NULL);
 INSERT INTO `item_db` VALUES (530, 'Candy_Cane', 'Candy Cane', 0, 20, 10, 40, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(105,145),0;', NULL);
@@ -70,7 +70,7 @@ INSERT INTO `item_db` VALUES (532, 'Banana_Juice', 'Banana Juice', 0, 20, 10, 40
 INSERT INTO `item_db` VALUES (533, 'Grape_Juice', 'Grape Juice', 0, 250, 150, 40, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal 0,rand(15,25);', NULL);
 INSERT INTO `item_db` VALUES (534, 'Carrot_Juice', 'Carrot Juice', 0, 20, 10, 40, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(27,33),0;', NULL);
 INSERT INTO `item_db` VALUES (535, 'Pumkin', 'Pumpkin', 0, 15, 7, 20, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(19,19),0;', NULL);
-INSERT INTO `item_db` VALUES (536, 'Ice_Cream', 'Ice Cream', 0, 150, 75, 80, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(105,145),0; if(rand(100)<24) sc_start SC_Freeze,10000,0;', NULL);
+INSERT INTO `item_db` VALUES (536, 'Ice_Cream', 'Ice Cream', 0, 150, 75, 80, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(105,145),0; if(rand(100)<24) sc_start SC_FREEZE,10000,0;', NULL);
 INSERT INTO `item_db` VALUES (537, 'Pet_Food', 'Pet Food', 0, 1000, 500, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(50,90),0;', NULL);
 INSERT INTO `item_db` VALUES (538, 'Well-baked_Cookie', 'Well-baked Cookie', 0, 1000, 500, 30, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(160,200),0;', NULL);
 INSERT INTO `item_db` VALUES (539, 'Piece_of_Cake', 'Piece of Cake', 0, 3000, 1500, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(270,330),0;', NULL);
@@ -88,7 +88,7 @@ INSERT INTO `item_db` VALUES (550, 'Rice_Cake', 'Rice Cake', 0, 100, 50, 10, 0, 
 INSERT INTO `item_db` VALUES (551, 'Sushi', 'Sushi', 0, 20, 10, 50, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(50,60),0;', NULL);
 INSERT INTO `item_db` VALUES (552, 'Ketupat', 'Ketupat', 0, 100, 50, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(100,200),0;', NULL);
 INSERT INTO `item_db` VALUES (553, 'Dumpling', 'Dumpling', 0, 2, 1, 50, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(35,70),0;', NULL);
-INSERT INTO `item_db` VALUES (554, 'Mochi', 'Mochi', 0, 100, 50, 80, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(105,145),0; if(rand(100)<3) sc_start SC_Stan,10000,0; if(rand(100)<3) sc_start SC_Blind,10000,0;', NULL);
+INSERT INTO `item_db` VALUES (554, 'Mochi', 'Mochi', 0, 100, 50, 80, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(105,145),0; if(rand(100)<3) sc_start SC_STUN,10000,0; if(rand(100)<3) sc_start SC_BLIND,10000,0;', NULL);
 INSERT INTO `item_db` VALUES (555, 'Traditional_Rice_Cake', 'Rice_Cake', 0, 20, 10, 20, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(105,145),0;', NULL);
 INSERT INTO `item_db` VALUES (556, 'Rolled_Rice', 'Rolled Rice', 0, 20, 0, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(20,25),0;', NULL);
 INSERT INTO `item_db` VALUES (557, 'Cut_Rice_Rolls', 'Cut Rice Rolls', 0, 20, 0, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 'itemheal rand(25,30),0;', NULL);
@@ -100,7 +100,7 @@ INSERT INTO `item_db` VALUES (562, 'Pizza', 'Pizza', 0, 20, 0, 150, 0, 0, 0, 0, 
 INSERT INTO `item_db` VALUES (563, 'Doublecrust_Swiss_Fondue', 'Doublecrust Swiss Fondue', 0, 20, 0, 150, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(375,445),0;', NULL);
 INSERT INTO `item_db` VALUES (564, 'Rice_Ball', 'Rice Ball', 0, 20, 10, 30, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal 200,0;', NULL);
 INSERT INTO `item_db` VALUES (565, 'Vita_500', 'Vita 500', 0, 2000, 0, 30, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(142,284),0;', NULL);
-INSERT INTO `item_db` VALUES (566, 'Tom_Yum_Goong', 'Tom Yum Goong', 0, 10000, 5000, 150, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(244,350),rand(10,30); sc_end SC_Poison; sc_end SC_Silence; sc_end SC_Blind; sc_end SC_Confusion; sc_end SC_Curse; sc_end SC_Hallucination;', NULL);
+INSERT INTO `item_db` VALUES (566, 'Tom_Yum_Goong', 'Tom Yum Goong', 0, 10000, 5000, 150, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(244,350),rand(10,30); sc_end SC_POISON; sc_end SC_SILENCE; sc_end SC_BLIND; sc_end SC_CONFUSION; sc_end SC_CURSE; sc_end SC_HALLUCINATION;', NULL);
 INSERT INTO `item_db` VALUES (567, 'Shrimp', 'Shrimp', 0, 500, 250, 40, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(117,192),0;', NULL);
 INSERT INTO `item_db` VALUES (568, 'Lemon', 'Lemon', 0, 60, 30, 40, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal 0,rand(10,20);', NULL);
 INSERT INTO `item_db` VALUES (569, 'Novice_Potion', 'Novice Potion', 0, 20, 0, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(22,33),0;', NULL);
@@ -109,7 +109,7 @@ INSERT INTO `item_db` VALUES (569, 'Novice_Potion', 'Novice Potion', 0, 20, 0, 1
 INSERT INTO `item_db` VALUES (570, 'Lucky_Candy', 'Lucky Candy', 0, 10, 5, 30, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(45,65),0;', NULL);
 INSERT INTO `item_db` VALUES (571, 'Lucky_Candy_Cane', 'Lucky Candy Cane', 0, 20, 10, 40, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(105,145),0;', NULL);
 INSERT INTO `item_db` VALUES (572, 'Lucky_Cookie', 'Lucky Cookie', 0, 15, 7, 30, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(160,200),0;', NULL);
-INSERT INTO `item_db` VALUES (573, 'Chocolate_Drink', 'Chocolate Drink', 0, 20, 10, 150, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(330,410),rand(45,65); sc_end SC_Poison; sc_end SC_Silence; sc_end SC_Blind; sc_end SC_Confusion; sc_end SC_Curse; sc_end SC_Hallucination;', NULL);
+INSERT INTO `item_db` VALUES (573, 'Chocolate_Drink', 'Chocolate Drink', 0, 20, 10, 150, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(330,410),rand(45,65); sc_end SC_POISON; sc_end SC_SILENCE; sc_end SC_BLIND; sc_end SC_CONFUSION; sc_end SC_CURSE; sc_end SC_HALLUCINATION;', NULL);
 
 # Cooking and Food Items Related
 INSERT INTO `item_db` VALUES (574, 'Egg', 'Egg', 0, 20, 10, 30, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(33,42),0;', NULL);
@@ -121,7 +121,7 @@ INSERT INTO `item_db` VALUES (579, 'Fresh_Fish', 'Fresh Fish', 0, 250, 125, 20, 
 INSERT INTO `item_db` VALUES (580, 'Bread', 'Bread', 0, 150, 75, 20, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(50,90),0;', NULL);
 INSERT INTO `item_db` VALUES (581, 'Edible_Mushroom', 'Edible Mushroom', 0, 40, 20, 20, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(20,30),0;', NULL);
 INSERT INTO `item_db` VALUES (582, 'Orange', 'Orange', 0, 300, 150, 20, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(10,20),rand(10,20);', NULL);
-INSERT INTO `item_db` VALUES (583, 'Ketupat_Sayur', 'Ketupat Sayur', 0, 7000, 3500, 150, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(325,405),rand(40,60); sc_end SC_Poison; sc_end SC_Silence; sc_end SC_Blind; sc_end SC_Confusion; sc_end SC_Curse; sc_end SC_Hallucination;', NULL);
+INSERT INTO `item_db` VALUES (583, 'Ketupat_Sayur', 'Ketupat Sayur', 0, 7000, 3500, 150, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(325,405),rand(40,60); sc_end SC_POISON; sc_end SC_SILENCE; sc_end SC_BLIND; sc_end SC_CONFUSION; sc_end SC_CURSE; sc_end SC_HALLUCINATION;', NULL);
 INSERT INTO `item_db` VALUES (584, 'Skewer_Soup', 'Skewer Soup', 0, 100, 50, 60, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(40,70),0;', NULL);
 INSERT INTO `item_db` VALUES (585, 'Brusti', 'Brusti', 0, 2, 1, 40, 0, 0, 0, 0, 16777215, 2, 0, 0, 0, 0, 'itemheal rand(15,20),0; itemskill 74,3,\"Magnificat\";', NULL);
 INSERT INTO `item_db` VALUES (586, 'Mother\'s_Cake', 'Mother\'s Cake', 0, 20, 10, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(325,405),0;', NULL);
@@ -186,16 +186,16 @@ INSERT INTO `item_db` VALUES (642, 'Book_of_Devil', 'Book of Devil', 2, 1800, 90
 # Random Items
 INSERT INTO `item_db` VALUES (643, 'Pet_Incubator', 'Pet Incubator', 2, 3000, 1500, 30, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'bpet;', NULL);
 INSERT INTO `item_db` VALUES (644, 'Gift_Box', 'Gift Box', 2, 2, 1, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem -4,1;', NULL);
-INSERT INTO `item_db` VALUES (645, 'Concentration_Potion', 'Concentration Potion', 2, 800, 400, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_SpeedPot0,1800000,0;', NULL);
-INSERT INTO `item_db` VALUES (656, 'Awakening_Potion', 'Awakening Potion', 2, 1500, 750, 150, 0, 0, 0, 0, 1070063343, 2, 0, 0, 40, 0, 'sc_end SC_Sleep; sc_start SC_SpeedPot1,1800000,0;', NULL);
-INSERT INTO `item_db` VALUES (657, 'Berserk_Potion', 'Berserk Potion', 2, 3000, 1500, 200, 0, 0, 0, 0, 260491191, 2, 0, 0, 85, 0, 'sc_start SC_SpeedPot2,1800000,0;', NULL);
+INSERT INTO `item_db` VALUES (645, 'Concentration_Potion', 'Concentration Potion', 2, 800, 400, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_SPEEDPOT0,1800000,0;', NULL);
+INSERT INTO `item_db` VALUES (656, 'Awakening_Potion', 'Awakening Potion', 2, 1500, 750, 150, 0, 0, 0, 0, 1070063343, 2, 0, 0, 40, 0, 'sc_end SC_SLEEP; sc_start SC_SPEEDPOT1,1800000,0;', NULL);
+INSERT INTO `item_db` VALUES (657, 'Berserk_Potion', 'Berserk Potion', 2, 3000, 1500, 200, 0, 0, 0, 0, 260491191, 2, 0, 0, 85, 0, 'sc_start SC_SPEEDPOT2,1800000,0;', NULL);
 INSERT INTO `item_db` VALUES (658, 'Tribal_Solidarity', 'Tribal Solidarity', 2, 1000, 500, 500, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'guildgetexp rand(600000,1200000);', NULL);
 INSERT INTO `item_db` VALUES (659, 'Her_Heart', 'Her Heart', 2, 500, 250, 50, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'pet 1188;', NULL);
 INSERT INTO `item_db` VALUES (660, 'Forbidden_Red_Candle', 'Red Candle', 2, 20000, 10000, 50, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'pet 1200;', NULL);
 INSERT INTO `item_db` VALUES (661, 'Soft_Apron', 'Soft Apron', 2, 20000, 10000, 50, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'pet 1275;', NULL);
 
 # More Random Items
-INSERT INTO `item_db` VALUES (662, 'Authoritative_Badge', 'Authoritative Badge', 2, 1450, 725, 30, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start 20,300000,0;', NULL);
+INSERT INTO `item_db` VALUES (662, 'Authoritative_Badge', 'Authoritative Badge', 2, 1450, 725, 30, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_SPEEDUP0,300000,0;', NULL);
 INSERT INTO `item_db` VALUES (663, 'Rice_Cake', 'Rice Cake', 0, 20, 10, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'percentheal 10,10;', NULL);
 INSERT INTO `item_db` VALUES (664, 'Gift_Box_', 'Gift Box', 2, 1000, 500, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem -4,1;', NULL);
 INSERT INTO `item_db` VALUES (665, 'Gift_Box__', 'Gift Box', 2, 1000, 500, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem -4,1;', NULL);
@@ -211,7 +211,7 @@ INSERT INTO `item_db` VALUES (674, 'Mysterious_Ore_Coin', 'Mysterious Ore Coin',
 INSERT INTO `item_db` VALUES (675, 'Silver_Coin', 'Silver Coin', 2, 20, 0, 40, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (676, 'Silver_Coin_Pouch', 'Silver Coin Pouch', 2, 20, 0, 400, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (677, 'Platinum_Coin', 'Platinum Coin', 2, 20, 0, 40, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
-INSERT INTO `item_db` VALUES (678, 'Poison_Bottle', 'Poison Bottle', 2, 5000, 2500, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'if(Class!=4013) goto Not_ASC; sc_start SC_Poison,600000,0; sc_start SC_SpeedPot3,30000,0; end; Not_ASC: percentheal -100,0;', NULL);
+INSERT INTO `item_db` VALUES (678, 'Poison_Bottle', 'Poison Bottle', 2, 5000, 2500, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'if(Class!=4013) goto Not_ASC; sc_start SC_POISON,600000,0; sc_start SC_SPEEDPOT3,30000,0; end; Not_ASC: percentheal -100,0;', NULL);
 INSERT INTO `item_db` VALUES (679, 'Pilule', 'Pilule', 2, 5000, 2500, 300, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal 50,50;', NULL);
 INSERT INTO `item_db` VALUES (680, 'Magic_Carnation', 'Magic Carnation', 2, 20, 0, 1000, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal 25,0;', NULL);
 INSERT INTO `item_db` VALUES (681, 'Sweet_Memory_of_Marriage', 'Sweet Memory of Marriage', 2, 50000, 25000, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
@@ -2696,7 +2696,7 @@ INSERT INTO `item_db` VALUES (12014, 'Immaterial_Arrow_Quiver', 'Immaterial Arro
 INSERT INTO `item_db` VALUES (12015, 'Rusty_Arrow_Quiver', 'Rusty Arrow Quiver', 2, 1500, 750, 250, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem 1762,500;', NULL);
 
 # New Usables
-INSERT INTO `item_db` VALUES (12016, 'Speed_Potion', 'Speed Potion', 2, 1000, 500, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'specialeffect 507; sc_start 20,300000,0;', NULL);
+INSERT INTO `item_db` VALUES (12016, 'Speed_Potion', 'Speed Potion', 2, 1000, 500, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'specialeffect 507; sc_start SC_SPEEDUP0,300000,0;', NULL);
 INSERT INTO `item_db` VALUES (12017, 'Slow_Potion', 'Slow Potion', 2, 1000, 500, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_SLOWDOWN,300000,10;', NULL);
 INSERT INTO `item_db` VALUES (12018, 'Firecracker', 'Firecracker', 2, 100, 1, 2, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'misceffect(256);', NULL);
 INSERT INTO `item_db` VALUES (12019, 'Holy_Egg', 'Holy Egg', 2, 20, 10, 150, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemskill 54,2,\"Resurrection\";', NULL);
@@ -2711,14 +2711,14 @@ INSERT INTO `item_db` VALUES (12025, 'Dano_Festival_Egg', 'Dano Festival Egg', 2
 INSERT INTO `item_db` VALUES (12026, 'Dano_Festival_Egg_', 'Dano Festival Egg', 2, 20, 10, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 
 # Effect Boxes
-INSERT INTO `item_db` VALUES (12027, 'Giggling_Box', 'Giggling Box', 2, 1000, 500, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'percentheal 9,0; if(rand(100)<30) sc_start SC_Curse,30000,0;', NULL);
-INSERT INTO `item_db` VALUES (12028, 'Box_of_Thunder', 'Box_of_Thunder', 2, 1000, 500, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start 20,20000,0;', NULL);
+INSERT INTO `item_db` VALUES (12027, 'Giggling_Box', 'Giggling Box', 2, 1000, 500, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'percentheal 9,0; if(rand(100)<30) sc_start SC_CURSE,30000,0;', NULL);
+INSERT INTO `item_db` VALUES (12028, 'Box_of_Thunder', 'Box_of_Thunder', 2, 1000, 500, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_SPEEDUP0,20000,0;', NULL);
 INSERT INTO `item_db` VALUES (12029, 'Box_of_Gloom', 'Box_of_Gloom', 2, 1000, 500, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemskill 45,1,\"Improve Concentration\";', NULL);
-INSERT INTO `item_db` VALUES (12030, 'Box_of_Resentment', 'Box of Resentment', 2, 1000, 500, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_ATKPot,60000,20;', NULL);
-INSERT INTO `item_db` VALUES (12031, 'Box_of_Drowsiness', 'Box of Drowsiness', 2, 1000, 500, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_MATKPot,60000,20;', NULL);
+INSERT INTO `item_db` VALUES (12030, 'Box_of_Resentment', 'Box of Resentment', 2, 1000, 500, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_ATKPOT,60000,20;', NULL);
+INSERT INTO `item_db` VALUES (12031, 'Box_of_Drowsiness', 'Box of Drowsiness', 2, 1000, 500, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_MATKPOT,60000,20;', NULL);
 INSERT INTO `item_db` VALUES (12032, 'Box_of_Storms', 'Box of Storms', 2, 1000, 500, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_WATERWEAPON,180000,1;', NULL);
 INSERT INTO `item_db` VALUES (12033, 'Box_of_Sunlight', 'Box of Sunlight', 2, 1000, 500, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, NULL, NULL); #Shows Cloaked/Hidden, Intravision
-INSERT INTO `item_db` VALUES (12034, 'Box_of_Panting', 'Box of Panting', 2, 1000, 500, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'percentheal 0,9; if(rand(100)<30) sc_start SC_Silence,30000,0;', NULL);
+INSERT INTO `item_db` VALUES (12034, 'Box_of_Panting', 'Box of Panting', 2, 1000, 500, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'percentheal 0,9; if(rand(100)<30) sc_start SC_SILENCE,30000,0;', NULL);
 
 # Lotto Boxes
 INSERT INTO `item_db` VALUES (12035, 'Lotto_Box', 'Lotto Box', 2, 20, 10, 20, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem rand(7361,7368),1;', NULL);
@@ -2804,8 +2804,8 @@ INSERT INTO `item_db` VALUES (12108, 'Scroll_Package', 'Scroll Package', 2, 1000
 INSERT INTO `item_db` VALUES (12109, 'Poring_Box', 'Poring Box', 2, 10000, 5000, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'monster \"this\",0,0,\"--ja--\",-2,1,\"\";  monster \"this\",0,0,\"--ja--\",-2,1,\"\";  monster \"this\",0,0,\"--ja--\",-2,1,\"\";', NULL);
 INSERT INTO `item_db` VALUES (12110, 'First_Aid_Kit', 'First Aid Kit', 2, 10000, 5000, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem -11,1;  getitem -11,1;  getitem -11,1; getitem -11,1;  getitem -11,1;', NULL);
 INSERT INTO `item_db` VALUES (12111, 'Bundle_of_Food', 'Bundle of Food', 2, 0, 0, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem -12,1;  getitem -12,1;  getitem -12,1;', NULL);
-INSERT INTO `item_db` VALUES (12112, 'Tropical_Sograt', 'Tropical Sograt', 2, 1000, 500, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_Curse,10000,1;', NULL);
-INSERT INTO `item_db` VALUES (12113, 'Vermilion_on_the_Beach', 'Vermilion on the Beach', 2, 1000, 500, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_Stan,10000,1;', NULL);
+INSERT INTO `item_db` VALUES (12112, 'Tropical_Sograt', 'Tropical Sograt', 2, 1000, 500, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_CURSE,10000,1;', NULL);
+INSERT INTO `item_db` VALUES (12113, 'Vermilion_on_the_Beach', 'Vermilion on the Beach', 2, 1000, 500, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_STUN,10000,1;', NULL);
 
 # Elemental Converters
 INSERT INTO `item_db` VALUES (12114, 'Elem_Converter_Fire', 'Elemental Converter', 2, 20, 10, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_FIREWEAPON,180000,1;', NULL);
@@ -2820,9 +2820,9 @@ INSERT INTO `item_db` VALUES (12120, 'Earthproof_Potion', 'Earthproof Potion', 2
 INSERT INTO `item_db` VALUES (12121, 'Thunderproof_Potion', 'Thunderproof Potion', 2, 20, 10, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start4 SC_ARMOR_ELEMENT,1200000,Ele_Wind,20,Ele_Earth,-15;', NULL);
 
 # More Food Items
-INSERT INTO `item_db` VALUES (12122, 'Sesame_Pastry', 'Sesame Pastry', 0, 2, 1, 70, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_HitFood,1200000,30;', NULL);
-INSERT INTO `item_db` VALUES (12123, 'Honey_Pastry', 'Honey Pastry', 0, 20, 10, 70, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_FleeFood,1200000,30;', NULL);
-INSERT INTO `item_db` VALUES (12124, 'Rainbow_Cake', 'Rainbow Cake', 0, 20, 10, 70, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_BATKFood,1200000,10; sc_start SC_MATKFood,120000,10;', NULL);
+INSERT INTO `item_db` VALUES (12122, 'Sesame_Pastry', 'Sesame Pastry', 0, 2, 1, 70, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_HITFOOD,1200000,30;', NULL);
+INSERT INTO `item_db` VALUES (12123, 'Honey_Pastry', 'Honey Pastry', 0, 20, 10, 70, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_FLEEFOOD,1200000,30;', NULL);
+INSERT INTO `item_db` VALUES (12124, 'Rainbow_Cake', 'Rainbow Cake', 0, 20, 10, 70, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_BATKFOOD,1200000,10; sc_start SC_MATKFOOD,120000,10;', NULL);
 
 # Cooking Kits
 INSERT INTO `item_db` VALUES (12125, 'Outdoor_Cooking_Kit', 'Outdoor Cooking Kit', 2, 500, 250, 20, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'produce 11;', NULL);
@@ -2833,11 +2833,11 @@ INSERT INTO `item_db` VALUES (12129, 'Fantastic_Cooking_Set', 'Fantastic Cooking
 
 # More Misc Usable Items
 INSERT INTO `item_db` VALUES (12130, 'Cookie_Bag', 'Cookie Bag', 2, 20, 10, 70, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem -5,1;  getitem -5,1;  getitem -5,1;', NULL);
-INSERT INTO `item_db` VALUES (12131, 'Lucky_Potion', 'Lucky Potion', 0, 20, 10, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_LUKFOOD,300000,15;', NULL);
+INSERT INTO `item_db` VALUES (12131, 'Lucky_Potion', 'Lucky Potion', 0, 20, 10, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_INCLUK,300000,15;', NULL);
 INSERT INTO `item_db` VALUES (12132, 'Santa\'s_Bag', 'Red Package', 2, 20, 10, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_XMAS,600000,0;', NULL);
 INSERT INTO `item_db` VALUES (12133, 'McDonald\'s_Ice_Cone', 'McDonald\'s Ice Cone', 0, 50, 25, 80, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(45,64),0;', NULL); # Incomplete
 INSERT INTO `item_db` VALUES (12134, 'Red_Envelope', 'Red Envelope', 2, 20, 10, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'set Zeny,Zeny+rand(1000,10000);', NULL);
-INSERT INTO `item_db` VALUES (12135, 'Green_Ale', 'Green Ale', 2, 20, 10, 30, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'percentheal 50,50; if(rand(100)>=90)sc_start SC_Confusion,10000,0;', NULL);
+INSERT INTO `item_db` VALUES (12135, 'Green_Ale', 'Green Ale', 2, 20, 10, 30, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'percentheal 50,50; if(rand(100)>=90)sc_start SC_CONFUSION,10000,0;', NULL);
 INSERT INTO `item_db` VALUES (12136, 'Women\'s_Bundle', 'Women\'s Bundle', 2, 20, 10, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'set WBun,rand(1,4); if(WBun==1)getitem 558,1; if(WBun==2)getitem 529,1; if(WBun==3)getitem 2668,1; if(WBun==4)getitem 7518,1;', NULL);
 INSERT INTO `item_db` VALUES (12137, 'First_Stage', 'First Stage', 2, 20, 10, 0, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (12138, 'Second_Stage', 'Second Stage', 2, 20, 10, 0, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, NULL, NULL);
@@ -2897,8 +2897,8 @@ INSERT INTO `item_db` VALUES (12187, 'Old_Green_Box', 'Old Green Box', 2, 20, 10
 INSERT INTO `item_db` VALUES (12188, 'Fantastic_Moon_Snack', 'Fantastic Moon Snack', 2, 20, 10, 300, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'percentheal 50,50;', NULL);
 INSERT INTO `item_db` VALUES (12189, 'Old_Red_Box_', 'Old Red Box', 2, 20, 10, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem -13,1;', NULL);
 
-INSERT INTO `item_db` VALUES (12190, 'Unknown_Item', 'Unknown Item', 2, 20, 10, 300, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start 20,300000,0;', NULL);
-INSERT INTO `item_db` VALUES (12191, 'Unknown_Item', 'Unknown Item', 2, 20, 10, 300, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start 20,300000,0; sc_start SC_INCASPDRATE,300000,0;', NULL);
+INSERT INTO `item_db` VALUES (12190, 'Unknown_Item', 'Unknown Item', 2, 20, 10, 300, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_SPEEDUP0,300000,0;', NULL);
+INSERT INTO `item_db` VALUES (12191, 'Unknown_Item', 'Unknown Item', 2, 20, 10, 300, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SPEEDUP0,300000,0; sc_start SC_INCASPDRATE,300000,0;', NULL);
 INSERT INTO `item_db` VALUES (12192, 'Unknown_Item', 'Unknown Item', 2, 20, 10, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'percentheal 10,10;', NULL);
 INSERT INTO `item_db` VALUES (12193, 'Unknown_Item', 'Unknown Item', 2, 20, 10, 20, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'percentheal 25,25;', NULL);
 INSERT INTO `item_db` VALUES (12194, 'Unknown_Item', 'Unknown Item', 2, 20, 10, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, NULL, NULL);

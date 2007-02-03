@@ -7627,12 +7627,12 @@ void pc_unequipitem(struct map_session_data *sd, int n, int flag) {
 			clif_changelook(&sd->bl,LOOK_SHOES,0);
 
 		/*if (sd->sc_count) {
-			if (sd->sc_data[SC_BROKNWEAPON].timer != -1 && sd->status.inventory[n].equip & 0x0002 &&
+			if (sd->sc_data[SC_BROKENWEAPON].timer != -1 && sd->status.inventory[n].equip & 0x0002 &&
 				sd->status.inventory[n].attribute == 1)
-				status_change_end(&sd->bl, SC_BROKNWEAPON, -1);
-			if (sd->sc_data[SC_BROKNARMOR].timer != -1 && sd->status.inventory[n].equip & 0x0010 &&
+				status_change_end(&sd->bl, SC_BROKENWEAPON, -1);
+			if (sd->sc_data[SC_BROKENARMOR].timer != -1 && sd->status.inventory[n].equip & 0x0010 &&
 				sd->status.inventory[n].attribute == 1)
-				status_change_end(&sd->bl, SC_BROKNARMOR, -1);
+				status_change_end(&sd->bl, SC_BROKENARMOR, -1);
 		}*/
 
 		clif_unequipitemack(sd, n, sd->status.inventory[n].equip, 1);

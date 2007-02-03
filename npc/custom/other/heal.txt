@@ -29,17 +29,17 @@ prontera.gat,151,186,5	script	Sitting Girl	882,{
 		percentheal 100,100; // Full heal
 
 		// Cures negative status effects
-		sc_end SC_Poison;
-		sc_end SC_Silence;
-		sc_end SC_Blind;
-		sc_end SC_Confusion;
-		sc_end SC_Curse;
-		sc_end SC_Hallucination;
+		sc_end SC_POISON;
+		sc_end SC_SILENCE;
+		sc_end SC_BLIND;
+		sc_end SC_CONFUSION;
+		sc_end SC_CURSE;
+		sc_end SC_HALLUCINATION;
 
 		specialeffect2 42; // Blessing Effect
-		sc_start 36,240000,10; // Blessing Status
+		sc_start SC_BLESSING,240000,10;
 		specialeffect2 37; // Increase AGI Effect
-		sc_start 38,240000,10; // Increase AGI Status
+		sc_start SC_INCREASEAGI,240000,10;
 
 		specialeffect2 6; // Blue Warping Effect
 		sit; // Makes you sit

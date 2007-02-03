@@ -8257,9 +8257,9 @@ void clif_parse_LoadEndAck(int fd, struct map_session_data *sd) { // S 0x007d
 	/*
 	for(i = 0; i < MAX_INVENTORY; i++) {
 		if (sd->status.inventory[i].equip && sd->status.inventory[i].equip & 0x0002 && sd->status.inventory[i].attribute == 1)
-			status_change_start(&sd->bl, SC_BROKNWEAPON, 0, 0, 0, 0, 0, 0);
+			status_change_start(&sd->bl, SC_BROKENWEAPON, 0, 0, 0, 0, 0, 0);
 		if (sd->status.inventory[i].equip && sd->status.inventory[i].equip & 0x0010 && sd->status.inventory[i].attribute == 1)
-			status_change_start(&sd->bl, SC_BROKNARMOR, 0, 0, 0, 0, 0, 0);
+			status_change_start(&sd->bl, SC_BROKENARMOR, 0, 0, 0, 0, 0, 0);
 	}*/
 
 	if ((npc = npc_name2id(script_config.loadmap_event_name))) {
@@ -9743,10 +9743,10 @@ void clif_parse_UnequipItem(int fd, struct map_session_data *sd) { // S 0x00ab <
 	if (sd->npc_id != 0 || sd->vender_id != 0 || sd->opt1 > 0)
 		return;
 
-/*	if (sd->status.inventory[idx].attribute == 1 && sd->sc_data[SC_BROKNWEAPON].timer != -1)
-		status_change_end(&sd->bl, SC_BROKNWEAPON, -1);
-	if (sd->status.inventory[idx].attribute == 1 && sd->sc_data[SC_BROKNARMOR].timer != -1)
-		status_change_end(&sd->bl, SC_BROKNARMOR, -1);
+/*	if (sd->status.inventory[idx].attribute == 1 && sd->sc_data[SC_BROKENWEAPON].timer != -1)
+		status_change_end(&sd->bl, SC_BROKENWEAPON, -1);
+	if (sd->status.inventory[idx].attribute == 1 && sd->sc_data[SC_BROKENARMOR].timer != -1)
+		status_change_end(&sd->bl, SC_BROKENARMOR, -1);
 	if (sd->sc_count && (sd->sc_data[SC_BLADESTOP].timer != -1 || sd->sc_data[SC_BERSERK].timer != -1))
 		return;*/
 

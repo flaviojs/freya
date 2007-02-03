@@ -11,6 +11,12 @@
 Date	Added
 
 02/02/2007
+	* Updated: Adapted scripts/databases to new changes [Tsuyuki]
+	* Updated: Adapted status_change_clear_buffs function to new changes [Tsuyuki]
+	* Updated: status_change_clear_debuffs function [Tsuyuki]
+	* Added: Base skill entries for some new skills [Tsuyuki]
+	* Added: New cooking status icons [Tsuyuki]
+	* Improved: status.h and const.txt enumeration for status changes/icons [Tsuyuki]
 	* Added: Hexadecimal reading on configuration files again [Harbin]
 	* Improved: Cleaned signal handling system. Some compatibility problems may arise [Harbin]
 	* Fixed: Thief Quest monsters can't be the target of Taekwon Mission anymore [Harbin]
