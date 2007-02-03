@@ -17,11 +17,10 @@ Date	Added
 	* Added: Partially implemented Gunslinger skill GS_DISARM [Tsuyuki]
 	 - The versus player part works, but the -25% monster attack does not yet
 	* Fixed: GS_DESPERADO/GS_SPEADATTACK's splash AoE [Tsuyuki]
-	 - Note: Desperado now works fine, though the damage isn't calculated correctly yet
+	 - Note: Desperado now works almost fine (still damaging source), though the damage isn't calculated correctly yet
 	 - Note: Desperado should be increased/decreased by the cell distance from the targets
 	* Fixed: GS_ADJUSTMENT not adding status bonuses for players [Tsuyuki]
 	* Fixed: GS_GATLINGFEVER not fully adding it's status bonuses for players [Tsuyuki]
-	* Fixed: GS_DESPERADO damaging source user, it now only damages enemies [Tsuyuki]
 	* Updated: OBB database to kRO 10.3, now all the /random/ databases are updated [Tsuyuki]
 	* Changed: Account ID 2000001 is now set by default to GM level 99[Tsuyuki]
 	 - Note: If you don't want it to be like this, you can simply edit GM_account.txt in your config folder
