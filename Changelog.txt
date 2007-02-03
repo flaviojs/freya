@@ -11,6 +11,8 @@
 Date	Added
 
 02/02/2007
+	* Cleaned: status.c file (No significant code changes, just cleaning + commenting) [Tsuyuki]
+	* Fixed: New weapons types (Guns/Shurikens), and Katars are now properly calculated with Base Attack [Tsuyuki]
 	* Improved: Fixed up old changelogs [Tsuyuki]
 	* Updated: Adapted scripts/databases to new changes [Tsuyuki]
 	* Updated: Adapted status_change_clear_buffs function to new changes [Tsuyuki]

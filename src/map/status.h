@@ -14,7 +14,8 @@
 #ifndef _STATUS_H_
 #define _STATUS_H_
 
-enum {	// struct map_session_data‚ status_change function
+// struct map_session_data‚ status_change function
+enum {
 
 	SC_STONE = 0,
 	SC_FREEZE,
@@ -277,7 +278,7 @@ enum {	// struct map_session_data‚ status_change function
 };
 extern int SkillStatusChangeTable[MAX_SKILL];
 
-//Numerates the Number for the status changes (client-dependent), imported from jA
+// Enumerates the number for the status changes (Client-dependent)
 enum {
 	ICO_BLANK		= -1,
 	ICO_PROVOKE		= 0,
@@ -425,13 +426,13 @@ enum {
 };
 extern int StatusIconTable[SC_MAX];
 
-extern int percentrefinery[5][10];	// ¸˜B¬Œ÷—¦(refine_db.txt)
+extern int percentrefinery[5][10]; // refine_db.txt
 
 int status_getrefinebonus(int lv, int type);
 int status_percentrefinery(struct map_session_data *sd, struct item *item);
 
 int status_calc_pc(struct map_session_data*, int);
-void status_calc_speed(struct map_session_data*); // [Celest]
+void status_calc_speed(struct map_session_data*);
 int status_get_class(struct block_list *bl);
 int status_get_dir(struct block_list *bl);
 int status_get_lv(struct block_list *bl);
@@ -465,7 +466,7 @@ int status_get_amotion(struct block_list *bl);
 int status_get_dmotion(struct block_list *bl);
 int status_get_element(struct block_list *bl);
 int status_get_attack_element(struct block_list *bl);
-int status_get_attack_element2(struct block_list *bl); //¶è•Ší‘®«æ“¾
+int status_get_attack_element2(struct block_list *bl);
 #define status_get_elem_type(bl) (status_get_element(bl) % 10)
 #define status_get_elem_level(bl) (status_get_element(bl) / 10 / 2)
 int status_get_party_id(struct block_list *bl);
@@ -473,7 +474,7 @@ int status_get_guild_id(struct block_list *bl);
 int status_get_race(struct block_list *bl);
 int status_get_size(struct block_list *bl);
 int status_get_mode(struct block_list *bl);
-//int status_get_mexp(struct block_list *bl);
+// int status_get_mexp(struct block_list *bl);
 int status_get_race2(struct block_list *bl);
 int status_isdead(struct block_list *bl);
 int status_isimmune(struct block_list *bl);
@@ -491,7 +492,6 @@ int status_get_sc_def(struct block_list *bl, int type);
 #define status_get_sc_def_int(bl) (status_get_sc_def(bl, SP_MDEF2))
 #define status_get_sc_def_luk(bl) (status_get_sc_def(bl, SP_LUK))
 
-// ó‘ÔˆÙíŠÖ˜A skill.c ‚æ‚èˆÚ“®
 int status_change_start(struct block_list *bl, int type, int val1, int val2, int val3, int val4, int tick, int flag);
 void status_change_clear(struct block_list *bl, int type);
 int status_change_end(struct block_list* bl, int type, int tid);
