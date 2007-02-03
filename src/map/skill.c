@@ -6940,6 +6940,11 @@ int skill_unit_onplace(struct skill_unit *src, struct block_list *bl, unsigned i
 		//}
 		break;*/
 
+	case 0xb9:	/* CG_HERMODE */
+		// Wand of Hermode only affects friendly players
+		if (battle_check_target(&src->bl, bl, BCT_NOENEMY) != 1)
+			break;
+		// Hermode keeps on going to down below ->
 	case 0x9f:	/* BD_RICHMANKIM */
 	case 0xa1:	/* BD_DRUMBATTLEFIELD */
 	case 0xa2:	/* BD_RINGNIBELUNGEN */
@@ -6955,13 +6960,9 @@ int skill_unit_onplace(struct skill_unit *src, struct block_list *bl, unsigned i
 	case 0xad:	/* DC_DONTFORGETME */
 	case 0xae:	/* DC_FORTUNEKISS */
 	case 0xaf:	/* DC_SERVICEFORYOU */
-	case 0xb9:	/* CG_HERMODE */
 		sc_data = status_get_sc_data(bl);
-		/* The skills won't affect the caster */
+		// Skills won't affect the caster
 		if(sg->src_id == bl->id && (sc_data[SC_SPIRIT].timer == -1 || sc_data[SC_SPIRIT].val2 != SL_BARDDANCER))
-			break;
-		/* Wand of Hermode only affects friendly players */
-		if(sg->unit_id == 0xb9 && battle_check_target(&src->bl, bl, BCT_NOENEMY) != 1)
 			break;
 		type = SkillStatusChangeTable[sg->skill_id];
 		if (sc_data && sc_data[type].timer == -1)
