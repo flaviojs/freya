@@ -11,6 +11,7 @@
 Date	Added
 
 02/03/2007
+	* Fixed: Corrected new monster names to match iRO 10.4 [Tsuyuki]
 	* Note: All Gunslinger skills are now implemented, though a few aren't fully working [Tsuyuki]
 	* Added: Some GS_GROUNDDRIFT skill code [Tsuyuki]
 	 - Note: Code is there, but skill isn't fully working yet

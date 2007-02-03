@@ -3945,8 +3945,8 @@ int pc_setpos(struct map_session_data *sd, char *mapname_org, int x, int y, int 
 			status_change_end(&sd->bl, SC_FLEEFOOD, -1);
 		if(sd->sc_data[SC_BATKFOOD].timer != -1)
 			status_change_end(&sd->bl, SC_BATKFOOD, -1);
-//		if(sd->sc_data[SC_WATKFOOD].timer != -1)
-//		status_change_end(&sd->bl, SC_WATKFOOD, -1);
+		if(sd->sc_data[SC_WATKFOOD].timer != -1)
+			status_change_end(&sd->bl, SC_WATKFOOD, -1);
 		if(sd->sc_data[SC_MATKFOOD].timer != -1)
 			status_change_end(&sd->bl, SC_MATKFOOD, -1);
 */

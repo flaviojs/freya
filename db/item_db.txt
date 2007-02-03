@@ -1638,9 +1638,9 @@
 // 4403: Effect Undecided/Missing
 4403,Kiel_D-01_Card,Kiel D-01 Card,6,,10,10,,,,,,,2,,,,{},{}
 4404,Skogul_Card,Skogul Card,6,,10,10,,,,,,,16,,,,{},{ bonus2 bAddEffWhenHit,9,3000; bonus2 bAddEff,9,3000; }
-4405,Thruth_Card,Thruth Card,6,,10,10,,,,,,,2,,,,{},{ bonus bMagicDamageReturn,getequiprefinerycnt(5)*2; if(GetPureJob==JOB_MAGE) bonus bMdef,3; }
-4406,Skeggjold_Card,Skeggjold Card,6,,10,10,,,,,,,2,,,,{},{ bonus2 bMagicAddEle,6,100; }
-4407,Valkyrie_Randgrith_Card,Valkyrie Randgrith Card,6,,10,10,,,,,,,2,,,,{},{ bonus4 bAutoSpell,289,1,1000,1; }
+4405,Frus_Card,Frus Card,6,,10,10,,,,,,,2,,,,{},{ bonus bMagicDamageReturn,getequiprefinerycnt(5)*2; if(GetPureJob==JOB_MAGE) bonus bMdef,3; }
+4406,Skeggiold_Card,Skeggiold Card,6,,10,10,,,,,,,2,,,,{},{ bonus2 bMagicAddEle,6,100; }
+4407,Valkyrie_Randgris_Card,Valkyrie Randgrith Card,6,,10,10,,,,,,,2,,,,{},{ bonus4 bAutoSpell,289,1,1000,1; }
 
 // Extra Headgears
 5001,Headset,Headset,5,20,0,200,,3,,0,1071636478,2,256,,1,87,{},{ bonus2 bResEff,5,1000; }

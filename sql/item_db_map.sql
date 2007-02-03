@@ -1230,7 +1230,7 @@ INSERT INTO `item_db` VALUES (2673, 'Warrior\'s_Shining_Ring', 'Warrior\'s Shini
 
 INSERT INTO `item_db` VALUES (2674, 'Unknown_Item', 'Unknown Item', 5, 20, 0, 0, 0, 0, 0, 1, 1071636479, 2, 136, 0, 0, 0, NULL, 'bonus bSpeedRate,10;');
 INSERT INTO `item_db` VALUES (2675, 'Lord_Ring', 'Lord Ring', 5, 20, 0, 10, 0, 0, 0, 1, 1071636479, 2, 136, 0, 0, 0, NULL, 'bonus bAllStats,3;');
-#INSERT INTO `item_db` VALUES (2676, 'Unknown_Item', 'Unknown Item', 5, 20, 0, 0, 0, 0, 0, 0, 1071636479, 2, 136, 0, 0, 0, NULL, NULL);
+#2676,Unknown_Item,Unknown Item,5,20,0,0,,0,,0,1071636479,2,136,,0,0,{},{}
 INSERT INTO `item_db` VALUES (2676, 'Unknown_Item', 'Unknown Item', 5, 0, 0, 300, 0, 0, 0, 0, 1071636479, 2, 136, 0, 0, 0, NULL, 'bonus2 bAddMonsterDropItem,7618,1000;');
 INSERT INTO `item_db` VALUES (2677, 'Unknown_Item', 'Unknown Item', 5, 20, 0, 100, 0, 0, 0, 0, 1071636479, 2, 136, 0, 0, 0, NULL, 'bonus bInt,2; bonus bDex,1; if(isequipped(1472) || isequipped(1473)) goto ExtraBonus01; goto BonusCheck02; ExtraBonus01: bonus bMatkRate,6; bonus bDex,2; bonus bCastrate,-getequiprefinerycnt(4); BonusCheck02: if(isequipped(2607) || isequipped(2608)) goto ExtraBonus02; end; ExtraBonus02: bonus2 bSkillAtk,28,50; bonus2 bSkillAtk,79,30; bonus bSPrecovRate,9;');
 INSERT INTO `item_db` VALUES (2678, 'Unknown_Item', 'Unknown Item', 5, 20, 0, 100, 0, 0, 0, 0, 2088832, 2, 136, 0, 0, 0, NULL, 'bonus bStr,2; bonus bVit,1; bonus bAtk,15; bonus2 bSubEle,3,10;');
@@ -1663,9 +1663,9 @@ INSERT INTO `item_db` VALUES (4402, 'Aliot_Card', 'Aliot Card', 6, 0, 10, 10, 0,
 # 4403: Effect Undecided/Missing
 INSERT INTO `item_db` VALUES (4403, 'Kiel_D-01_Card', 'Kiel D-01 Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (4404, 'Skogul_Card', 'Skogul Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus2 bAddEffWhenHit,9,3000; bonus2 bAddEff,9,3000;');
-INSERT INTO `item_db` VALUES (4405, 'Thruth_Card', 'Thruth Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus bMagicDamageReturn,getequiprefinerycnt(5)*2; if(GetPureJob==JOB_MAGE) bonus bMdef,3;');
-INSERT INTO `item_db` VALUES (4406, 'Skeggjold_Card', 'Skeggjold Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus2 bMagicAddEle,6,100;');
-INSERT INTO `item_db` VALUES (4407, 'Valkyrie_Randgrith_Card', 'Valkyrie Randgrith Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus4 bAutoSpell,289,1,1000,1;');
+INSERT INTO `item_db` VALUES (4405, 'Frus_Card', 'Frus Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus bMagicDamageReturn,getequiprefinerycnt(5)*2; if(GetPureJob==JOB_MAGE) bonus bMdef,3;');
+INSERT INTO `item_db` VALUES (4406, 'Skeggiold_Card', 'Skeggiold Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus2 bMagicAddEle,6,100;');
+INSERT INTO `item_db` VALUES (4407, 'Valkyrie_Randgris_Card', 'Valkyrie Randgrith Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus4 bAutoSpell,289,1,1000,1;');
 
 # Extra Headgears
 INSERT INTO `item_db` VALUES (5001, 'Headset', 'Headset', 5, 20, 0, 200, 0, 3, 0, 0, 1071636478, 2, 256, 0, 1, 87, NULL, 'bonus2 bResEff,5,1000;');

@@ -855,8 +855,9 @@ int status_calc_pc(struct map_session_data* sd, int first)
 			sd->flee -= sd->sc_data[SC_GATLINGFEVER].val4;
 		if(sd->sc_data[SC_BATKFOOD].timer != -1)
 			sd->base_atk += sd->sc_data[SC_BATKFOOD].val1;
-//		if(sd->sc_data[SC_WATKFOOD].timer != -1)
-//			sd->weapon_atk += sd->sc_data[SC_WATKFOOD].val1;
+		// To-Do: Fix me [Tsuyuki]
+		/*if(sd->sc_data[SC_WATKFOOD].timer != -1)
+			sd->weapon_atk += sd->sc_data[SC_WATKFOOD].val1;*/
 		if(sd->sc_data[SC_MATKFOOD].timer != -1)
 			sd->matk1 += sd->sc_data[SC_MATKFOOD].val1;
 
@@ -2590,8 +2591,8 @@ int status_get_atk(struct block_list *bl)
 				atk += atk * (5 * sc_data[SC_CONCENTRATION].val1) / 100;
 			if(sc_data[SC_INCATKRATE].timer != -1)
 				atk += atk * sc_data[SC_INCATKRATE].val1 / 100;
-			/*if(sc_data[SC_WATKFOOD].timer != -1)
-				atk += atk * sc_data[SC_WATKFOOD].val1 / 100;*/
+			if(sc_data[SC_WATKFOOD].timer != -1)
+				atk += atk * sc_data[SC_WATKFOOD].val1 / 100;
 			if(sc_data[SC_SKE].timer != -1)
 				atk *= 4;
 		}
@@ -2665,8 +2666,8 @@ int status_get_atk2(struct block_list *bl)
 				atk2 += atk2 * (5 * sc_data[SC_CONCENTRATION].val1) / 100;
 			if(sc_data[SC_INCATKRATE].timer!=-1)
 				atk2 += atk2 * sc_data[SC_INCATKRATE].val1 / 100;
-			/*if(sc_data[SC_WATKFOOD].timer != -1)
-				atk2 += atk2 * sc_data[SC_WATKFOOD].val1 / 100;*/
+			if(sc_data[SC_WATKFOOD].timer != -1)
+				atk2 += atk2 * sc_data[SC_WATKFOOD].val1 / 100;
 			if(sc_data[SC_SKE].timer != -1)
 				atk2 *= 4;
 		}

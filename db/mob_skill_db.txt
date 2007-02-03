@@ -3818,22 +3818,22 @@
 //1731,G_Doppelganger@NPC_SUMMONSLAVE,idle,196,3,10000,0,0,no,self,onspawn,0,1427,,,,,
 
 // Kiel Hyre - Episode 10.4
-1733,Kiel@SM_MAGNUM,chase,7,5,2500,0,3000,no,self,always,0,,,,,,
-1733,Kiel@SM_MAGNUM,attack,7,5,2500,0,3000,no,self,always,0,,,,,,
-1733,Kiel@MG_SAFETYWALL,idle,12,10,1000,0,5000,yes,self,always,0,,,,,,
-1733,Kiel@MG_SAFETYWALL,attack,12,10,1000,0,5000,yes,self,always,0,,,,,,
-1733,Kiel@MG_SAFETYWALL,attack,12,10,4000,0,5000,yes,self,myhpltmaxrate,30,,,,,,
-1733,Kiel@SM_BASH,attack,5,10,1000,0,5000,yes,target,always,0,,,,,,
-1733,Kiel@SM_ENDURE,chase,8,10,5000,0,5000,yes,self,always,0,,,,,,
-1733,Kiel@SM_ENDURE,attack,8,10,2000,0,5000,yes,self,always,0,,,,,,
-1733,Kiel@PR_LEXDIVINA,attack,76,5,1000,0,30000,yes,target,always,0,,,,,,
-1733,Kiel@PR_LEXDIVINA,attack,76,5,1000,0,30000,yes,target,casttargeted,,,,,,,
-1733,Kiel@PR_LEXAETERNA,attack,78,1,1000,0,5000,yes,target,always,0,,,,,,
-1733,Kiel@KN_BRANDISHSPEAR,chase,57,6,2000,0,3000,yes,target,always,0,,,,,,
-1733,Kiel@KN_BRANDISHSPEAR,attack,57,6,2000,0,3000,yes,target,always,0,,,,,,
-1733,Kiel@AL_PNEUMA,attack,25,1,10000,0,10000,yes,self,longrangeattacked,,,,,,,
-1733,Kiel@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
-1733,Kiel@AL_TELEPORT,walk,26,1,10000,0,5000,yes,self,rudeattacked,,,,,,,
+1733,Kiehl@SM_MAGNUM,chase,7,5,2500,0,3000,no,self,always,0,,,,,,
+1733,Kiehl@SM_MAGNUM,attack,7,5,2500,0,3000,no,self,always,0,,,,,,
+1733,Kiehl@MG_SAFETYWALL,idle,12,10,1000,0,5000,yes,self,always,0,,,,,,
+1733,Kiehl@MG_SAFETYWALL,attack,12,10,1000,0,5000,yes,self,always,0,,,,,,
+1733,Kiehl@MG_SAFETYWALL,attack,12,10,4000,0,5000,yes,self,myhpltmaxrate,30,,,,,,
+1733,Kiehl@SM_BASH,attack,5,10,1000,0,5000,yes,target,always,0,,,,,,
+1733,Kiehl@SM_ENDURE,chase,8,10,5000,0,5000,yes,self,always,0,,,,,,
+1733,Kiehl@SM_ENDURE,attack,8,10,2000,0,5000,yes,self,always,0,,,,,,
+1733,Kiehl@PR_LEXDIVINA,attack,76,5,1000,0,30000,yes,target,always,0,,,,,,
+1733,Kiehl@PR_LEXDIVINA,attack,76,5,1000,0,30000,yes,target,casttargeted,,,,,,,
+1733,Kiehl@PR_LEXAETERNA,attack,78,1,1000,0,5000,yes,target,always,0,,,,,,
+1733,Kiehl@KN_BRANDISHSPEAR,chase,57,6,2000,0,3000,yes,target,always,0,,,,,,
+1733,Kiehl@KN_BRANDISHSPEAR,attack,57,6,2000,0,3000,yes,target,always,0,,,,,,
+1733,Kiehl@AL_PNEUMA,attack,25,1,10000,0,10000,yes,self,longrangeattacked,,,,,,,
+1733,Kiehl@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
+1733,Kiehl@AL_TELEPORT,walk,26,1,10000,0,5000,yes,self,rudeattacked,,,,,,,
 1734,Kiel-D-01@NPC_CALLSLAVE,attack,352,1,10000,0,60000,yes,target,always,0,,,,,,
 1734,Kiel-D-01@NPC_CALLSLAVE,idle,352,1,10000,0,60000,yes,self,always,0,,,,,,
 1734,Kiel-D-01@NPC_SUMMONSLAVE,attack,196,3,10000,700,30000,no,self,slavele,0,1739,1740,,,,
@@ -3928,79 +3928,79 @@
 1749,G_Medusa@NPC_PETRIFYATTACK,chase,180,5,500,500,5000,no,target,always,0,,,,,,3
 
 // Odin Temple - Episode 10.4
-1751,Valkyrie Randgrith@NPC_SUMMONSLAVE,attack,196,3,10000,700,60000,no,self,slavele,2,1765,,,,,
-1751,Valkyrie Randgrith@NPC_SUMMONSLAVE,idle,196,3,10000,700,60000,no,self,slavele,2,1765,,,,,
-1751,Valkyrie Randgrith@NPC_SUMMONSLAVE,chase,196,3,10000,700,60000,no,self,slavele,2,1765,,,,,
-//1751,Valkyrie Randgrith@NPC_SUMMONSLAVE,idle,196,3,10000,0,0,no,self,onspawn,0,1765,,,,,
-1751,Valkyrie Randgrith@NPC_CALLSLAVE,attack,352,1,10000,0,30000,yes,target,always,0,,,,,,
-1751,Valkyrie Randgrith@NPC_CALLSLAVE,idle,352,1,10000,0,30000,yes,self,always,0,,,,,,
-1751,Valkyrie Randgrith@NPC_CALLSLAVE,chase,352,1,10000,0,30000,yes,target,always,0,,,,,,
-1751,Valkyrie Randgrith@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
-1751,Valkyrie Randgrith@NPC_POWERUP,attack,349,5,10000,0,30000,yes,self,myhpltmaxrate,30,,,,,,
-1751,Valkyrie Randgrith@NPC_POWERUP,chase,349,5,10000,0,30000,yes,self,myhpltmaxrate,30,,,,,,
-1751,Valkyrie Randgrith@NPC_AGIUP,attack,350,5,10000,0,30000,yes,self,myhpltmaxrate,30,,,,,,
-1751,Valkyrie Randgrith@NPC_AGIUP,chase,350,5,10000,0,30000,yes,self,myhpltmaxrate,30,,,,,,
-1751,Valkyrie Randgrith@KN_TWOHANDQUICKEN,attack,60,20,10000,0,90000,yes,self,myhpltmaxrate,30,,,,,,
-1751,Valkyrie Randgrith@AS_SONICBLOW,attack,136,10,2000,0,5000,yes,target,always,0,,,,,,
-1751,Valkyrie Randgrith@SA_DISPELL,attack,289,5,10000,0,30000,yes,target,always,0,,,,,,
-1751,Valkyrie Randgrith@SA_DISPELL,chase,289,5,10000,0,30000,yes,target,always,0,,,,,,
-1751,Valkyrie Randgrith@NPC_HOLYATTACK,attack,189,10,2000,500,5000,no,target,always,0,,,,,,
-1751,Valkyrie Randgrith@CR_HOLYCROSS,attack,253,10,2000,0,5000,yes,target,always,0,,,,,,
-1751,Valkyrie Randgrith@KN_BRANDISHSPEAR,attack,57,20,1000,0,5000,yes,target,always,0,,,,,,
-1751,Valkyrie Randgrith@MG_THUNDERSTORM,attack,21,20,1000,1500,5000,no,target,attackpcgt,2,,,,,,
-1751,Valkyrie Randgrith@WZ_VERMILION,attack,85,20,1000,1000,5000,no,target,always,0,,,,,,
-1751,Valkyrie Randgrith@WZ_VERMILION,chase,85,20,2000,1000,5000,no,target,always,0,,,,,,
+1751,Valkyrie RANDGRIS@NPC_SUMMONSLAVE,attack,196,3,10000,700,60000,no,self,slavele,2,1765,,,,,
+1751,Valkyrie RANDGRIS@NPC_SUMMONSLAVE,idle,196,3,10000,700,60000,no,self,slavele,2,1765,,,,,
+1751,Valkyrie RANDGRIS@NPC_SUMMONSLAVE,chase,196,3,10000,700,60000,no,self,slavele,2,1765,,,,,
+//1751,Valkyrie RANDGRIS@NPC_SUMMONSLAVE,idle,196,3,10000,0,0,no,self,onspawn,0,1765,,,,,
+1751,Valkyrie RANDGRIS@NPC_CALLSLAVE,attack,352,1,10000,0,30000,yes,target,always,0,,,,,,
+1751,Valkyrie RANDGRIS@NPC_CALLSLAVE,idle,352,1,10000,0,30000,yes,self,always,0,,,,,,
+1751,Valkyrie RANDGRIS@NPC_CALLSLAVE,chase,352,1,10000,0,30000,yes,target,always,0,,,,,,
+1751,Valkyrie RANDGRIS@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
+1751,Valkyrie RANDGRIS@NPC_POWERUP,attack,349,5,10000,0,30000,yes,self,myhpltmaxrate,30,,,,,,
+1751,Valkyrie RANDGRIS@NPC_POWERUP,chase,349,5,10000,0,30000,yes,self,myhpltmaxrate,30,,,,,,
+1751,Valkyrie RANDGRIS@NPC_AGIUP,attack,350,5,10000,0,30000,yes,self,myhpltmaxrate,30,,,,,,
+1751,Valkyrie RANDGRIS@NPC_AGIUP,chase,350,5,10000,0,30000,yes,self,myhpltmaxrate,30,,,,,,
+1751,Valkyrie RANDGRIS@KN_TWOHANDQUICKEN,attack,60,20,10000,0,90000,yes,self,myhpltmaxrate,30,,,,,,
+1751,Valkyrie RANDGRIS@AS_SONICBLOW,attack,136,10,2000,0,5000,yes,target,always,0,,,,,,
+1751,Valkyrie RANDGRIS@SA_DISPELL,attack,289,5,10000,0,30000,yes,target,always,0,,,,,,
+1751,Valkyrie RANDGRIS@SA_DISPELL,chase,289,5,10000,0,30000,yes,target,always,0,,,,,,
+1751,Valkyrie RANDGRIS@NPC_HOLYATTACK,attack,189,10,2000,500,5000,no,target,always,0,,,,,,
+1751,Valkyrie RANDGRIS@CR_HOLYCROSS,attack,253,10,2000,0,5000,yes,target,always,0,,,,,,
+1751,Valkyrie RANDGRIS@KN_BRANDISHSPEAR,attack,57,20,1000,0,5000,yes,target,always,0,,,,,,
+1751,Valkyrie RANDGRIS@MG_THUNDERSTORM,attack,21,20,1000,1500,5000,no,target,attackpcgt,2,,,,,,
+1751,Valkyrie RANDGRIS@WZ_VERMILION,attack,85,20,1000,1000,5000,no,target,always,0,,,,,,
+1751,Valkyrie RANDGRIS@WZ_VERMILION,chase,85,20,2000,1000,5000,no,target,always,0,,,,,,
 1752,Skogul@TF_HIDING,idle,51,1,2000,0,180000,no,self,always,0,,,,,,9
 1752,Skogul@MG_SOULSTRIKE,chase,13,5,2000,0,3000,yes,target,always,0,,,,,,
 1752,Skogul@AS_GRIMTOOTH,idle,137,5,10000,0,700,yes,target,mystatuson,hiding,,,,,,
 1752,Skogul@NPC_CURSEATTACK,attack,181,5,1000,0,5000,no,target,always,0,,,,,,
 1752,Skogul@NPC_DARKNESSATTACK,attack,190,5,1000,0,5000,no,target,always,0,,,,,,9
 1752,Skogul@NPC_SUMMONSLAVE,attack,196,1,100,0,3600000,no,self,slavele,0,1762,,,,,
-1753,Thruth@RG_STRIPARMOR,attack,217,5,1000,0,30000,yes,target,always,0,,,,,,2
-1753,Thruth@NPC_POISONATTACK,attack,188,5,1000,0,5000,yes,target,always,0,,,,,,
-1753,Thruth@NPC_DARKNESSATTACK,attack,190,5,1000,0,5000,yes,target,always,0,,,,,,2
-1753,Thruth@NPC_CHANGEUNDEAD,attack,348,2,1000,0,30000,yes,target,always,0,,,,,,2
-1753,Thruth@MG_FIREWALL,chase,18,5,2000,500,5000,yes,target,always,0,,,,,,2
-1753,Thruth@NPC_SUMMONSLAVE,attack,196,1,100,0,3600000,no,self,slavele,0,1761,,,,,
-1754,Skeggjold(Brown)@AL_HEAL,attack,28,9,5000,500,5000,no,friend,friendhpltmaxrate,30,,,,,,18
-1754,Skeggjold(Brown)@AL_HEAL,attack,28,9,5000,500,5000,no,self,myhpltmaxrate,30,,,,,,18
-1754,Skeggjold(Brown)@AL_HEAL,idle,28,9,5000,500,5000,no,friend,friendhpltmaxrate,30,,,,,,18
-1754,Skeggjold(Brown)@AL_HEAL,idle,28,9,5000,500,5000,no,self,myhpltmaxrate,30,,,,,,18
-1754,Skeggjold(Brown)@MG_THUNDERSTORM,attack,21,7,500,1500,10000,no,target,always,0,,,,,,
-1754,Skeggjold(Brown)@MG_THUNDERSTORM,chase,21,7,500,1500,10000,no,target,always,0,,,,,,
-1754,Skeggjold(Brown)@AL_DECAGI,attack,30,10,500,0,30000,no,target,always,0,,,,,,29
-1754,Skeggjold(Brown)@AL_DECAGI,chase,30,10,500,0,30000,no,target,always,0,,,,,,29
-1754,Skeggjold(Brown)@NPC_PETRIFYATTACK,attack,180,2,500,500,5000,no,target,always,0,,,,,,3
-1754,Skeggjold(Brown)@NPC_PETRIFYATTACK,chase,180,2,500,500,5000,no,target,always,0,,,,,,3
-1754,Skeggjold(Brown)@RG_STRIPARMOR,attack,217,3,500,0,5000,yes,target,always,0,,,,,,6
-1754,Skeggjold(Brown)@RG_STRIPARMOR,chase,217,3,500,0,5000,yes,target,always,0,,,,,,6
-1754,Skeggjold(Brown)@MG_SAFETYWALL,attack,12,10,1000,1000,10000,no,self,always,0,,,,,,18
-1754,Skeggjold(Brown)@NPC_HOLYATTACK,attack,189,3,500,500,5000,no,target,always,0,,,,,,18
-1754,Skeggjold(Brown)@NPC_HOLYATTACK,chase,189,3,500,500,5000,no,target,always,0,,,,,,18
-1754,Skeggjold(Brown)@SA_REVERSEORCISH,attack,294,1,500,0,30000,yes,target,always,0,,,,,,29
-1754,Skeggjold(Brown)@SA_REVERSEORCISH,chase,294,1,500,0,30000,yes,target,always,0,,,,,,29
-1754,Skeggjold(Brown)@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
-1754,Skeggjold(Brown)@AL_TELEPORT,walk,26,1,5000,0,5000,yes,self,rudeattacked,,,,,,,
-1754,Skeggjold(Brown)@NPC_CALLSLAVE,attack,352,1,10000,0,60000,yes,target,always,0,,,,,,
-1754,Skeggjold(Brown)@NPC_CALLSLAVE,idle,352,1,10000,0,60000,yes,self,always,0,,,,,,
-//1754,Skeggjold(Brown)@NPC_SUMMONSLAVE,any,196,2,10000,700,60000,no,self,onspawn,0,1763,,,,,
-1755,Skeggjold(Blue)@AL_HEAL,attack,28,9,5000,500,5000,no,friend,friendhpltmaxrate,30,,,,,,18
-1755,Skeggjold(Blue)@AL_HEAL,attack,28,9,5000,500,5000,no,self,myhpltmaxrate,30,,,,,,18
-1755,Skeggjold(Blue)@AL_HEAL,idle,28,9,5000,500,5000,no,friend,friendhpltmaxrate,30,,,,,,18
-1755,Skeggjold(Blue)@AL_HEAL,idle,28,9,5000,500,5000,no,self,myhpltmaxrate,30,,,,,,18
-1755,Skeggjold(Blue)@CR_HOLYCROSS,attack,253,3,1000,0,5000,yes,target,always,0,,,,,,
-1755,Skeggjold(Blue)@MG_SOULSTRIKE,chase,13,7,500,0,5000,yes,target,always,0,,,,,,
-1755,Skeggjold(Blue)@MG_SOULSTRIKE,attack,13,7,500,0,5000,yes,target,always,0,,,,,,
-1755,Skeggjold(Blue)@MG_SAFETYWALL,attack,12,10,1000,1000,10000,no,self,always,0,,,,,,18
-1755,Skeggjold(Blue)@NPC_HOLYATTACK,attack,189,3,500,500,5000,no,target,always,0,,,,,,18
-1755,Skeggjold(Blue)@NPC_HOLYATTACK,chase,189,3,500,500,5000,no,target,always,0,,,,,,18
-1755,Skeggjold(Blue)@SA_REVERSEORCISH,attack,294,1,500,0,30000,yes,target,always,0,,,,,,29
-1755,Skeggjold(Blue)@SA_REVERSEORCISH,chase,294,1,500,0,30000,yes,target,always,0,,,,,,29
-1755,Skeggjold(Blue)@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
-1755,Skeggjold(Blue)@AL_TELEPORT,walk,26,1,5000,0,5000,yes,self,rudeattacked,,,,,,,
-1755,Skeggjold(Blue)@NPC_CALLSLAVE,attack,352,1,10000,0,60000,yes,target,always,0,,,,,,
-1755,Skeggjold(Blue)@NPC_CALLSLAVE,idle,352,1,10000,0,60000,yes,self,always,0,,,,,,
-//1755,Skeggjold(Blue)@NPC_SUMMONSLAVE,any,196,2,10000,700,60000,no,self,onspawn,0,1764,,,,,
+1753,Frus@RG_STRIPARMOR,attack,217,5,1000,0,30000,yes,target,always,0,,,,,,2
+1753,Frus@NPC_POISONATTACK,attack,188,5,1000,0,5000,yes,target,always,0,,,,,,
+1753,Frus@NPC_DARKNESSATTACK,attack,190,5,1000,0,5000,yes,target,always,0,,,,,,2
+1753,Frus@NPC_CHANGEUNDEAD,attack,348,2,1000,0,30000,yes,target,always,0,,,,,,2
+1753,Frus@MG_FIREWALL,chase,18,5,2000,500,5000,yes,target,always,0,,,,,,2
+1753,Frus@NPC_SUMMONSLAVE,attack,196,1,100,0,3600000,no,self,slavele,0,1761,,,,,
+1754,Skeggiold(Brown)@AL_HEAL,attack,28,9,5000,500,5000,no,friend,friendhpltmaxrate,30,,,,,,18
+1754,Skeggiold(Brown)@AL_HEAL,attack,28,9,5000,500,5000,no,self,myhpltmaxrate,30,,,,,,18
+1754,Skeggiold(Brown)@AL_HEAL,idle,28,9,5000,500,5000,no,friend,friendhpltmaxrate,30,,,,,,18
+1754,Skeggiold(Brown)@AL_HEAL,idle,28,9,5000,500,5000,no,self,myhpltmaxrate,30,,,,,,18
+1754,Skeggiold(Brown)@MG_THUNDERSTORM,attack,21,7,500,1500,10000,no,target,always,0,,,,,,
+1754,Skeggiold(Brown)@MG_THUNDERSTORM,chase,21,7,500,1500,10000,no,target,always,0,,,,,,
+1754,Skeggiold(Brown)@AL_DECAGI,attack,30,10,500,0,30000,no,target,always,0,,,,,,29
+1754,Skeggiold(Brown)@AL_DECAGI,chase,30,10,500,0,30000,no,target,always,0,,,,,,29
+1754,Skeggiold(Brown)@NPC_PETRIFYATTACK,attack,180,2,500,500,5000,no,target,always,0,,,,,,3
+1754,Skeggiold(Brown)@NPC_PETRIFYATTACK,chase,180,2,500,500,5000,no,target,always,0,,,,,,3
+1754,Skeggiold(Brown)@RG_STRIPARMOR,attack,217,3,500,0,5000,yes,target,always,0,,,,,,6
+1754,Skeggiold(Brown)@RG_STRIPARMOR,chase,217,3,500,0,5000,yes,target,always,0,,,,,,6
+1754,Skeggiold(Brown)@MG_SAFETYWALL,attack,12,10,1000,1000,10000,no,self,always,0,,,,,,18
+1754,Skeggiold(Brown)@NPC_HOLYATTACK,attack,189,3,500,500,5000,no,target,always,0,,,,,,18
+1754,Skeggiold(Brown)@NPC_HOLYATTACK,chase,189,3,500,500,5000,no,target,always,0,,,,,,18
+1754,Skeggiold(Brown)@SA_REVERSEORCISH,attack,294,1,500,0,30000,yes,target,always,0,,,,,,29
+1754,Skeggiold(Brown)@SA_REVERSEORCISH,chase,294,1,500,0,30000,yes,target,always,0,,,,,,29
+1754,Skeggiold(Brown)@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
+1754,Skeggiold(Brown)@AL_TELEPORT,walk,26,1,5000,0,5000,yes,self,rudeattacked,,,,,,,
+1754,Skeggiold(Brown)@NPC_CALLSLAVE,attack,352,1,10000,0,60000,yes,target,always,0,,,,,,
+1754,Skeggiold(Brown)@NPC_CALLSLAVE,idle,352,1,10000,0,60000,yes,self,always,0,,,,,,
+//1754,Skeggiold(Brown)@NPC_SUMMONSLAVE,any,196,2,10000,700,60000,no,self,onspawn,0,1763,,,,,
+1755,Skeggiold(Blue)@AL_HEAL,attack,28,9,5000,500,5000,no,friend,friendhpltmaxrate,30,,,,,,18
+1755,Skeggiold(Blue)@AL_HEAL,attack,28,9,5000,500,5000,no,self,myhpltmaxrate,30,,,,,,18
+1755,Skeggiold(Blue)@AL_HEAL,idle,28,9,5000,500,5000,no,friend,friendhpltmaxrate,30,,,,,,18
+1755,Skeggiold(Blue)@AL_HEAL,idle,28,9,5000,500,5000,no,self,myhpltmaxrate,30,,,,,,18
+1755,Skeggiold(Blue)@CR_HOLYCROSS,attack,253,3,1000,0,5000,yes,target,always,0,,,,,,
+1755,Skeggiold(Blue)@MG_SOULSTRIKE,chase,13,7,500,0,5000,yes,target,always,0,,,,,,
+1755,Skeggiold(Blue)@MG_SOULSTRIKE,attack,13,7,500,0,5000,yes,target,always,0,,,,,,
+1755,Skeggiold(Blue)@MG_SAFETYWALL,attack,12,10,1000,1000,10000,no,self,always,0,,,,,,18
+1755,Skeggiold(Blue)@NPC_HOLYATTACK,attack,189,3,500,500,5000,no,target,always,0,,,,,,18
+1755,Skeggiold(Blue)@NPC_HOLYATTACK,chase,189,3,500,500,5000,no,target,always,0,,,,,,18
+1755,Skeggiold(Blue)@SA_REVERSEORCISH,attack,294,1,500,0,30000,yes,target,always,0,,,,,,29
+1755,Skeggiold(Blue)@SA_REVERSEORCISH,chase,294,1,500,0,30000,yes,target,always,0,,,,,,29
+1755,Skeggiold(Blue)@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
+1755,Skeggiold(Blue)@AL_TELEPORT,walk,26,1,5000,0,5000,yes,self,rudeattacked,,,,,,,
+1755,Skeggiold(Blue)@NPC_CALLSLAVE,attack,352,1,10000,0,60000,yes,target,always,0,,,,,,
+1755,Skeggiold(Blue)@NPC_CALLSLAVE,idle,352,1,10000,0,60000,yes,self,always,0,,,,,,
+//1755,Skeggiold(Blue)@NPC_SUMMONSLAVE,any,196,2,10000,700,60000,no,self,onspawn,0,1764,,,,,
 
 // MvP Slaves/Duplicates
 1756,G_Hydrolancer@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
@@ -4026,29 +4026,29 @@
 1761,G_Skogul@AS_GRIMTOOTH,idle,137,5,10000,0,700,yes,target,mystatuson,hiding,,,,,,
 1761,G_Skogul@NPC_CURSEATTACK,attack,181,5,1000,0,5000,no,target,always,0,,,,,,
 1761,G_Skogul@NPC_DARKNESSATTACK,attack,190,5,1000,0,5000,no,target,always,0,,,,,,9
-1762,G_Thruth@RG_STRIPARMOR,attack,217,5,1000,0,30000,yes,target,always,0,,,,,,2
-1762,G_Thruth@NPC_POISONATTACK,attack,188,5,1000,0,5000,yes,target,always,0,,,,,,
-1762,G_Thruth@NPC_DARKNESSATTACK,attack,190,5,1000,0,5000,yes,target,always,0,,,,,,2
-1762,G_Thruth@NPC_CHANGEUNDEAD,attack,348,2,1000,0,30000,yes,target,always,0,,,,,,2
-1762,G_Thruth@MG_FIREWALL,chase,18,5,2000,500,5000,yes,target,always,0,,,,,,2
-1763,G_Skeggjold(Brown)@MG_THUNDERSTORM,attack,21,4,500,1500,10000,no,target,always,0,,,,,,
-1763,G_Skeggjold(Brown)@MG_THUNDERSTORM,chase,21,4,500,1500,10000,no,target,always,0,,,,,,
-1763,G_Skeggjold(Brown)@AL_DECAGI,attack,30,5,500,0,30000,no,target,always,0,,,,,,29
-1763,G_Skeggjold(Brown)@AL_DECAGI,chase,30,5,500,0,30000,no,target,always,0,,,,,,29
-1763,G_Skeggjold(Brown)@NPC_PETRIFYATTACK,chase,180,2,500,500,5000,no,target,always,0,,,,,,3
-1763,G_Skeggjold(Brown)@MG_SAFETYWALL,attack,12,5,500,1000,10000,no,self,always,0,,,,,,18
-1763,G_Skeggjold(Brown)@NPC_HOLYATTACK,attack,189,2,500,500,5000,no,target,always,0,,,,,,18
-1763,G_Skeggjold(Brown)@NPC_HOLYATTACK,chase,189,2,500,500,5000,no,target,always,0,,,,,,18
-1763,G_Skeggjold(Brown)@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
-1763,G_Skeggjold(Brown)@AL_TELEPORT,walk,26,1,5000,0,5000,yes,self,rudeattacked,,,,,,,
-1764,G_Skeggjold(Blue)@CR_HOLYCROSS,attack,253,2,1000,0,5000,yes,target,always,0,,,,,,
-1764,G_Skeggjold(Blue)@MG_SOULSTRIKE,chase,13,5,500,0,5000,yes,target,always,0,,,,,,
-1764,G_Skeggjold(Blue)@MG_SOULSTRIKE,attack,13,5,500,0,5000,yes,target,always,0,,,,,,
-1764,G_Skeggjold(Blue)@MG_SAFETYWALL,attack,12,5,1000,1000,10000,no,self,always,0,,,,,,18
-1764,G_Skeggjold(Blue)@NPC_HOLYATTACK,attack,189,2,500,500,5000,no,target,always,0,,,,,,18
-1764,G_Skeggjold(Blue)@NPC_HOLYATTACK,chase,189,2,500,500,5000,no,target,always,0,,,,,,18
-1764,G_Skeggjold(Blue)@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
-1764,G_Skeggjold(Blue)@AL_TELEPORT,walk,26,1,5000,0,5000,yes,self,rudeattacked,,,,,,,
+1762,G_Frus@RG_STRIPARMOR,attack,217,5,1000,0,30000,yes,target,always,0,,,,,,2
+1762,G_Frus@NPC_POISONATTACK,attack,188,5,1000,0,5000,yes,target,always,0,,,,,,
+1762,G_Frus@NPC_DARKNESSATTACK,attack,190,5,1000,0,5000,yes,target,always,0,,,,,,2
+1762,G_Frus@NPC_CHANGEUNDEAD,attack,348,2,1000,0,30000,yes,target,always,0,,,,,,2
+1762,G_Frus@MG_FIREWALL,chase,18,5,2000,500,5000,yes,target,always,0,,,,,,2
+1763,G_Skeggiold(Brown)@MG_THUNDERSTORM,attack,21,4,500,1500,10000,no,target,always,0,,,,,,
+1763,G_Skeggiold(Brown)@MG_THUNDERSTORM,chase,21,4,500,1500,10000,no,target,always,0,,,,,,
+1763,G_Skeggiold(Brown)@AL_DECAGI,attack,30,5,500,0,30000,no,target,always,0,,,,,,29
+1763,G_Skeggiold(Brown)@AL_DECAGI,chase,30,5,500,0,30000,no,target,always,0,,,,,,29
+1763,G_Skeggiold(Brown)@NPC_PETRIFYATTACK,chase,180,2,500,500,5000,no,target,always,0,,,,,,3
+1763,G_Skeggiold(Brown)@MG_SAFETYWALL,attack,12,5,500,1000,10000,no,self,always,0,,,,,,18
+1763,G_Skeggiold(Brown)@NPC_HOLYATTACK,attack,189,2,500,500,5000,no,target,always,0,,,,,,18
+1763,G_Skeggiold(Brown)@NPC_HOLYATTACK,chase,189,2,500,500,5000,no,target,always,0,,,,,,18
+1763,G_Skeggiold(Brown)@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
+1763,G_Skeggiold(Brown)@AL_TELEPORT,walk,26,1,5000,0,5000,yes,self,rudeattacked,,,,,,,
+1764,G_Skeggiold(Blue)@CR_HOLYCROSS,attack,253,2,1000,0,5000,yes,target,always,0,,,,,,
+1764,G_Skeggiold(Blue)@MG_SOULSTRIKE,chase,13,5,500,0,5000,yes,target,always,0,,,,,,
+1764,G_Skeggiold(Blue)@MG_SOULSTRIKE,attack,13,5,500,0,5000,yes,target,always,0,,,,,,
+1764,G_Skeggiold(Blue)@MG_SAFETYWALL,attack,12,5,1000,1000,10000,no,self,always,0,,,,,,18
+1764,G_Skeggiold(Blue)@NPC_HOLYATTACK,attack,189,2,500,500,5000,no,target,always,0,,,,,,18
+1764,G_Skeggiold(Blue)@NPC_HOLYATTACK,chase,189,2,500,500,5000,no,target,always,0,,,,,,18
+1764,G_Skeggiold(Blue)@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
+1764,G_Skeggiold(Blue)@AL_TELEPORT,walk,26,1,5000,0,5000,yes,self,rudeattacked,,,,,,,
 1765,Valkyrie@AL_HEAL,idle,28,11,10000,500,5000,yes,friend,friendhpltmaxrate,60,,,,,,3
 1765,Valkyrie@AL_HEAL,attack,28,11,10000,500,10000,yes,friend,friendhpltmaxrate,60,,,,,,3
 1765,Valkyrie@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,

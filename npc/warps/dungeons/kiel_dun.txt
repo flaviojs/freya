@@ -18,7 +18,7 @@
 kh_dun01.gat,3,234,0	warp	khwarp01	1,1,yuno_fild08.gat,69,170
 
 //= Graveyard Switch =========================================
-yuno_fild08.gat,67,169,4	script	Switch#kh	111,1,1,{
+yuno_fild08.gat,67,169,4	script	Grave#kh	111,1,1,{
 
   mes "You examine the grave and find a switch!";
   mes "Do you want to press it?";
