@@ -11,6 +11,8 @@
 Date	Added
 
 02/03/2007
+	* Fixed: Job changing for babies (Thanks to Galaxy) [Tsuyuki]
+	 - Note: Super Baby job changing has also been fixed
 	* Fixed: Corrected new monster names to match iRO 10.4 [Tsuyuki]
 	* Note: All Gunslinger skills are now implemented, though a few aren't fully working [Tsuyuki]
 	* Added: Some GS_GROUNDDRIFT skill code [Tsuyuki]

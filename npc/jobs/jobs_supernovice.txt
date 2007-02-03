@@ -100,7 +100,8 @@ L_Start2:
 	mes "- Tozel's uncommon demeanor catches you off guard, -";
 	mes "- leaving you speechless! -";
 	next;
-	jobchange JOB_SUPER_NOVICE;
+	if (Upper == 0) jobchange JOB_SUPER_NOVICE;
+	if (Upper == 2) jobchange JOB_SUPER_BABY;
 	delitem 938,30;
 	delitem 907,30;
 	getitem 2339,1;
