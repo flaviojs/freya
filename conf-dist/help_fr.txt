@@ -131,7 +131,7 @@ key:gm,state,other,me,moi,autre
 @jobchange         :  4028 Baby Merchant  4035 Baby Assassin    4042 Baby Bard
 @jobchange         :  4029 Baby Thief     4036 Baby Peco-Knight 4043 Baby Dancer
 @jobchange         :  [upper]: -1 (défaut) pour déterminer automatiquement le 'niveau', 0 pour forcer un job normal, 1 pour forcer un job 'high'.
-@baselevelup       :@lvup/@lvlup/@levelup/@blvl/@blevel/@blvlup/@blevelup/@baselvlup/@baselevelup <nombre_de_niveaux> - Augmente ou diminue votre niveau de base du nombre de niveaux désirés. Le max est 99 (sauf modification dans battle_athena.conf).
+@baselevelup       :@lvup/@lvlup/@levelup/@blvl/@blevel/@blvlup/@blevelup/@baselvlup/@baselevelup <nombre_de_niveaux> - Augmente ou diminue votre niveau de base du nombre de niveaux désirés. Le max est 99 (sauf modification dans battle_freya.conf).
 @joblevelup        :@jlvl/@jlevel/@jlvlup/@jlevelup/@joblvl/@joblvup/@joblvlup/@joblevelup <nombre_de_niveaux> - Augmente ou diminue votre niveau de job du nombre de niveaux désirés. Le max est 10 pour les novices, 50 pour les classes 1 et 2, 70 pour les classes avancées.
 @skillall          :@allskill/@allskills/@skillall/@skillsall - Vous donne tous les skills.
 @option            :@option <param1> <param2> <param3> - Mets des effets visuels à votre personnage.
@@ -412,7 +412,7 @@ key:environement,mass,masse,npc
 key:admin,administration,administrateur
                  99: 
                  99:--- COMMANDES D'ADMINISTRATION ---
-@setbattleflag     :@setbattleflag/@adjbattleflag/@setbattleconf/@adjbattleconf <flag> <valeur> - Modifie la valeur d'une configuration 'battle' (paramétrée dans in battle_athena.conf).
+@setbattleflag     :@setbattleflag/@adjbattleflag/@setbattleconf/@adjbattleconf <flag> <valeur> - Modifie la valeur d'une configuration 'battle' (paramétrée dans in battle_freya.conf).
 @setmapflag        :@setmapflag/@adjmapflag <carte> <mapflag> [option|valeur] - Modifie/Fixe la configuration 'mapflag' d'une carte (les configurations avec le drapeau 'mapflag').
 @reloaditemdb      :@reloaditemdb - Reloads item database (commande d'administration).
 @reloadmobdb       :@reloadmobdb - Reloads monster database (commande d'administration).

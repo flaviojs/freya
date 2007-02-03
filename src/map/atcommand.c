@@ -1,15 +1,5 @@
-/*	This file is a part of Freya.
-		Freya is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	any later version.
-		Freya is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-	GNU General Public License for more details.
-		You should have received a copy of the GNU General Public License
-	along with Freya; if not, write to the Free Software
-	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA */
+// Copyright (c) Freya Development Team - Licensed under GNU GPL
+// For more information, see LICENCE in the main folder
 
 #include <config.h>
 
@@ -338,8 +328,8 @@ ATCOMMAND_FUNC(version2);
  *AtCommandInfo atcommand_info[]ç\ë¢ëÃÇÃíËã`
  *------------------------------------------
  */
-// First char of commands is configured in atcommand_athena.conf. Leave @ in this list for default value.
-// to set default level, read atcommand_athena.conf first please.
+// First char of commands is configured in atcommand_freya.conf. Leave @ in this list for default value.
+// to set default level, read atcommand_freya.conf first please.
 // Note: Be sure that all commands are in lower case in this structure
 static struct AtCommandInfo {
 	AtCommandType type;
@@ -1027,7 +1017,7 @@ int atcommand_config_read(const char *cfgName) {
 	last_spawn = time(NULL); /* # of seconds 1/1/1970 (timestamp): to limit number of spawn at 1 every 2 seconds (reduction of lag) */
 
 	if ((fp = fopen(cfgName, "r")) == NULL) {
-//		if ((fp = fopen("conf/atcommand_athena.conf", "r")) == NULL) { // not try default, possible infinite loop with import
+//		if ((fp = fopen("conf/atcommand_freya.conf", "r")) == NULL) { // not try default, possible infinite loop with import
 			printf("At commands configuration file not found: %s\n", cfgName);
 			return 1;
 //		}
@@ -1759,7 +1749,7 @@ int msg_config_read(const char *cfgName) {
 	}
 
 	if ((fp = fopen(cfgName, "r")) == NULL) {
-//		if ((fp = fopen("conf/msg_athena.conf", "r")) == NULL) { // not try default, possible infinite loop with import
+//		if ((fp = fopen("conf/msg_freya.conf", "r")) == NULL) { // not try default, possible infinite loop with import
 			printf("Messages file not found: %s.\n", cfgName);
 			// prepare check for supernovice angel
 			for (i = 0; msg_table[605][i]; i++) // Guardian Angel, can you hear my voice? ^^;
@@ -5721,7 +5711,7 @@ ATCOMMAND_FUNC(go) {
 }
 
 /*==========================================
- * @go2 Dungeon Warp Spots [Tsuyuki]
+ * @go2 Dungeon Warp Spots
  *------------------------------------------
 */
 ATCOMMAND_FUNC(go2) {

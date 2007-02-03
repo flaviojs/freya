@@ -1,4 +1,4 @@
-# You can regenerate this file with an option in inter_athena.conf
+# You can regenerate this file with an option in inter_freya.conf
 
 CREATE TABLE `item_db` (
   `id` smallint(5) unsigned NOT NULL default '0',
@@ -1790,7 +1790,7 @@ INSERT INTO `item_db` VALUES (5119, 'Super_Novice_Hat_', 'Super Novice Hat', 5, 
 INSERT INTO `item_db` VALUES (5120, 'Bucket_Hat_', 'Bucket Hat', 5, 6000, 0, 300, 0, 3, 0, 1, 1071636479, 2, 256, 0, 0, 195, NULL, NULL);
 INSERT INTO `item_db` VALUES (5121, 'Zealotus_Mask', 'Zealotus Mask', 5, 20, 10, 100, 0, 3, 0, 0, 1071636479, 2, 768, 0, 0, 200, NULL, 'bonus2 bAddRace,7,5; bonus2 bSubRace,7,5;');
 INSERT INTO `item_db` VALUES (5122, 'Magni\'s_Cap', 'Magni\'s Cap', 5, 30000, 15000, 1000, 0, 5, 0, 0, 1071636478, 2, 256, 0, 65, 250, NULL, 'bonus bStr,2; if(GetPureJob==JOB_SWORDMAN) bonus bDef,5; if(isequipped(2114,2353)==0) end; bonus bStr,2; bonus bDef,5; bonus bMdef,5;');
-INSERT INTO `item_db` VALUES (5123, 'Ulle\'s_Cap', 'Ulle\'s Cap', 5, 30000, 15000, 500, 0, 3, 0, 1, 1071636478, 2, 256, 0, 65, 254, NULL, 'bonus bDex,2; bonus bAgi,1;  if(isequipped(2353)==0 || bDex<70) end; bonus bUseSPrate,-10;');
+INSERT INTO `item_db` VALUES (5123, 'Ulle\'s_Cap', 'Ulle\'s Cap', 5, 30000, 15000, 500, 0, 3, 0, 1, 1071636478, 2, 256, 0, 65, 254, NULL, 'bonus bDex,2; bonus bAgi,1;  if(isequipped(2353)==0 || readparam(bDex)<70) end; bonus bUseSPrate,-10;');
 INSERT INTO `item_db` VALUES (5124, 'Fricca\'s_Circlet', 'Fricca\'s Circlet', 5, 30000, 15000, 300, 0, 3, 0, 0, 1071636478, 2, 256, 0, 65, 251, NULL, 'bonus bMdef,10; bonus bInt,2; bonus bMaxSP,50; if(isequipped(2115,2353)==0) end; bonus bDef,2; bonus bMdef,5;');
 INSERT INTO `item_db` VALUES (5125, 'Angel\'s_Kiss', 'Angel\'s Kiss', 5, 10000, 5000, 300, 0, 3, 0, 0, 8388609, 2, 256, 0, 50, 255, NULL, 'bonus bSPrecovRate,3;');
 INSERT INTO `item_db` VALUES (5126, 'Morpheus\'s_Hood', 'Morpheus\'s Hood', 5, 30000, 15000, 200, 0, 3, 0, 0, 1071636478, 2, 256, 0, 33, 256, NULL, 'bonus bInt,2; if(isequipped(2518,2648,2649)==0) end; bonus bInt,5; bonus bMdef,11; bonus bMaxSPrate,20; bonus bNoCastCancel,0; bonus bCastrate,25;');

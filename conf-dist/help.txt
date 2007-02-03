@@ -126,7 +126,7 @@ key:gm,state,other,me
 @jobchange         :  4028 Baby Merchant  4035 Baby Assassin    4042 Baby Bard
 @jobchange         :  4029 Baby Thief     4036 Baby Peco-Knight 4043 Baby Dancer
 @jobchange         :  [upper]: -1 (default) to automatically determine the 'level', 0 to force normal job, 1 to force high job.
-@baselevelup       :@lvup/@lvlup/@levelup/@blvl/@blevel/@blvlup/@blevelup/@baselvlup/@baselevelup <number_of_levels> - Raises/decreases your base level the desired number of levels. The max is 99 (unless it's changed in battle_athena.conf).
+@baselevelup       :@lvup/@lvlup/@levelup/@blvl/@blevel/@blvlup/@blevelup/@baselvlup/@baselevelup <number_of_levels> - Raises/decreases your base level the desired number of levels. The max is 99 (unless it's changed in battle_freya.conf).
 @joblevelup        :@jlvl/@jlevel/@jlvlup/@jlevelup/@joblvl/@joblvup/@joblvlup/@joblevelup <number_of_levels> - Raises/decreases your job level the desired number of levels. The max is 10 for novice, 50 for 1st and 2nd classes, and 70 for advanced classes.
 @skillall          :@allskill/@allskills/@skillall/@skillsall - Gives you all skills.
 @option            :@option <param1> <param2> <param3> - Sets different visual effects on your character.
@@ -407,7 +407,7 @@ key:environement,mass,npc
 key:admin,administration,administrator
                  99: 
                  99:--- ADMINISTRATION CMD ---
-@setbattleflag     :@setbattleflag/@adjbattleflag/@setbattleconf/@adjbattleconf <flag> <value> - Changes a battle value configuration (set in battle_athena.conf).
+@setbattleflag     :@setbattleflag/@adjbattleflag/@setbattleconf/@adjbattleconf <flag> <value> - Changes a battle value configuration (set in battle_freya.conf).
 @setmapflag        :@setmapflag/@adjmapflag <map> <mapflag> [option|value] - Changes/Sets a map flag configuration (configuration value with 'mapflag' flag).
 @reloaditemdb      :@reloaditemdb - Reloads item database (admin command).
 @reloadmobdb       :@reloadmobdb - Reloads monster database (admin command).

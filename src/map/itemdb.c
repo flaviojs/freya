@@ -1,15 +1,5 @@
-/*	This file is a part of Freya.
-		Freya is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	any later version.
-		Freya is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-	GNU General Public License for more details.
-		You should have received a copy of the GNU General Public License
-	along with Freya; if not, write to the Free Software
-	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA */
+// Copyright (c) Freya Development Team - Licensed under GNU GPL
+// For more information, see LICENCE in the main folder
 
 #include <config.h>
 
@@ -396,7 +386,7 @@ static int itemdb_readdb(void)
 			remove(ITEM_DB_SQL_NAME); // Delete the file. Return value = 0 (success), return value = -1 (access denied or file not found)
 		if ((item_db_fp = fopen(ITEM_DB_SQL_NAME, "a")) != NULL) {
 			printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE ITEM_DB_SQL_NAME CL_RESET "' file generated.\n");
-			fprintf(item_db_fp, "# You can regenerate this file with an option in inter_athena.conf" RETCODE);
+			fprintf(item_db_fp, "# You can regenerate this file with an option in inter_freya.conf" RETCODE);
 			fprintf(item_db_fp, RETCODE);
 			fprintf(item_db_fp, "CREATE TABLE `%s` (" RETCODE, item_db_db);
 			fprintf(item_db_fp, "  `id` smallint(5) unsigned NOT NULL default '0'," RETCODE);

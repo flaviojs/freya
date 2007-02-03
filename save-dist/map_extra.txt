@@ -3,7 +3,7 @@
 // To add a line in this file, use the file 'map_extra_add.txt':
 //
 // An external software can add changes of zenys or items of players using file 'map_extra_add.txt'.
-// You can change location and/or name of this file with appropriate option in 'conf/map_athena.conf'.
+// You can change location and/or name of this file with appropriate option in 'conf/map_freya.conf'.
 // To add a line in this file, prefer the append method.
 // The map-server will read this file periodically and automatically destroy it.
 // IMPORTANT: Be sure that the map-server can READ and DESTROY this file.

@@ -1,15 +1,5 @@
-/*	This file is a part of Freya.
-		Freya is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	any later version.
-		Freya is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-	GNU General Public License for more details.
-		You should have received a copy of the GNU General Public License
-	along with Freya; if not, write to the Free Software
-	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA */
+// Copyright (c) Freya Development Team - Licensed under GNU GPL
+// For more information, see LICENCE in the main folder
 
 #include <config.h>
 
@@ -689,7 +679,7 @@ static void inter_config_read(const char *cfgName) { // not inline, called too o
 	printf("start reading interserver configuration: %s.\n", cfgName);
 
 	if ((fp = fopen(cfgName, "r")) == NULL) {
-//		if ((fp = fopen("conf/inter_athena.conf", "r")) == NULL) { // not try default, possible infinite loop with import
+//		if ((fp = fopen("conf/inter_freya.conf", "r")) == NULL) { // not try default, possible infinite loop with import
 			printf("File not found: %s.\n", cfgName);
 			return;
 //		}
@@ -751,7 +741,7 @@ static void char_config_read(const char *cfgName) { // not inline, called too of
 	printf("start reading interserver configuration: %s.\n", cfgName);
 
 	if ((fp = fopen(cfgName, "r")) == NULL) {
-//		if ((fp = fopen("conf/char_athena.conf", "r")) == NULL) { // not try default, possible infinite loop with import
+//		if ((fp = fopen("conf/char_freya.conf", "r")) == NULL) { // not try default, possible infinite loop with import
 			printf("File not found: %s\n", cfgName);
 			return;
 //		}
@@ -783,8 +773,8 @@ static void char_config_read(const char *cfgName) { // not inline, called too of
 
 void do_init(const int argc, char **argv) {
 
-	char_config_read((argc > 1) ? argv[1] : "conf/char_athena.conf");
-	inter_config_read((argc > 2) ? argv[2] : "conf/inter_athena.conf");
+	char_config_read((argc > 1) ? argv[1] : "conf/char_freya.conf");
+	inter_config_read((argc > 2) ? argv[2] : "conf/inter_freya.conf");
 
 	mmo_char_init();
 	printf("all conversion success!\n");

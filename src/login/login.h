@@ -1,15 +1,5 @@
-/*	This file is a part of Freya.
-		Freya is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	any later version.
-		Freya is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-	GNU General Public License for more details.
-		You should have received a copy of the GNU General Public License
-	along with Freya; if not, write to the Free Software
-	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA */
+// Copyright (c) Freya Development Team - Licensed under GNU GPL
+// For more information, see LICENCE in the main folder
 
 #ifndef _LOGIN_H_
 #define _LOGIN_H_
@@ -18,7 +8,7 @@
 
 #define MAX_SERVERS 30 // max number of char-servers (and account_id values: 0 to max-1)
 
-#define LOGIN_CONF_NAME "conf/login_athena.conf"
+#define LOGIN_CONF_NAME "conf/login_freya.conf"
 
 #define START_ACCOUNT_NUM 2000001
 #define END_ACCOUNT_NUM 100000000

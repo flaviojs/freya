@@ -11,13 +11,13 @@ although it is not a HowTo, it not Those who cannot use Athena even if they see 
 
 < The list of conf >
 
- login_athena.conf	A setup of login-server
- char_athena.conf	A setup of char-server
- inter_athena.conf	A setup of inter-server
- map_athena.conf	A setup of map-server
- battle_athena.conf	A setup of map-server (setup of a special rule etc.)
- atcommand_athena.conf	A setup of map-server (setup of the GM command or @ command)
- ladmin_athena.conf	A setup of ladmin ('c' version)
+ login_freya.conf	A setup of login-server
+ char_freya.conf	A setup of char-server
+ inter_freya.conf	A setup of inter-server
+ map_freya.conf	A setup of map-server
+ battle_freya.conf	A setup of map-server (setup of a special rule etc.)
+ atcommand_freya.conf	A setup of map-server (setup of the GM command or @ command)
+ ladmin_freya.conf	A setup of ladmin ('c' version)
 
 
 < The fundamental setting method >
@@ -33,11 +33,11 @@ Head of the sentence   It will become a comment if it begins by //.
 < Two or more same items >
 
 Priority is given to what was written later unless it is written especially clearly that two or more same items are written.
-login_athena.conf   allow and deny -- and --   map_athena.conf   map, npc, etc.
+login_freya.conf   allow and deny -- and --   map_freya.conf   map, npc, etc.
 Another processing will be carried out if two or more lines are written.
 
 ==========================================================================
-1. conf/login_athena.conf
+1. conf/login_freya.conf
 --------------------------------------------------------------------------
 
 < What this file is. >
@@ -51,7 +51,7 @@ Another processing will be carried out if two or more lines are written.
 Read inside the file to have more information about each key.
 
 ==========================================================================
-2. conf/char_athena.conf
+2. conf/char_freya.conf
 --------------------------------------------------------------------------
 
 < What this file is. >
@@ -282,7 +282,7 @@ log_char: 1
 
 
 ==========================================================================
-3. conf/inter_athena.conf
+3. conf/inter_freya.conf
 --------------------------------------------------------------------------
 
 < What this file is. >
@@ -351,7 +351,7 @@ log_inter: 1
 
 
 ==========================================================================
-4. conf/map_athena.conf
+4. conf/map_freya.conf
 --------------------------------------------------------------------------
 
 < What this file is. >
@@ -473,7 +473,7 @@ delmap: prontera.gat
 delmap: all
 
 ==========================================================================
-5. conf/battle_athena.conf
+5. conf/battle_freya.conf
 --------------------------------------------------------------------------
 
 < What this file is. >
@@ -736,7 +736,7 @@ mob_skill_use
 	MOBがスキルを使ってくるかどうかです。デフォルトはyesです。
 
 mob_count_rate
-	map_athena.confで指定されたnpcデータを読み込む際、
+	map_freya.confで指定されたnpcデータを読み込む際、
 	monsterで定義された配置MOBの数を百分率で調整します。
 	例外として、配置数1として定義されたMOBの数は変わりません。(BOSS対策)
 	また、配置数を下方修正したとき、1未満になった場合は1として処理します。
@@ -1206,7 +1206,7 @@ hack_info_GM_level
 	Values are from 0 to 100.
 	100: disable information
 	0: send to any people, including normal players
-	default: 60, according to GM definition in atcommand_athena.conf
+	default: 60, according to GM definition in atcommand_freya.conf
 
 any_warp_GM_min_level
 	Set here the minimum GM level to disable the nowarp (from) and nowarpto (to) flags.
@@ -1415,7 +1415,7 @@ area_size: 20
 
 
 ==========================================================================
-6. atcommand_athena.conf
+6. atcommand_freya.conf
 --------------------------------------------------------------------------
 
 < What this file is. >
@@ -1432,7 +1432,7 @@ command_symbol
 
 Sets the level of the users that can use the GM commands.
 <command name>: level
-// When battle_athena.conf has atcommand_gm_only set to no,
+// When battle_freya.conf has atcommand_gm_only set to no,
 // normal players (gm level 0) can use GM commands if you set 0 to the command level.
 Max GM level is 99. If you want forbid a command to all people, set it with level 100.
 
@@ -1495,14 +1495,14 @@ joblvup
 help
 	@コマンド @help、@h
 gm
-	To become GM (need password; password is set in login_athena.conf).
+	To become GM (need password; password is set in login_freya.conf).
 	special!: only a non-GM (player with gm level 0) need to have this command.
 	          if you change the value, be sure of what you do!
 	To be able to create a gm with @gm, you must:
-	- give a level to level_new_gm (parameter of login_athena.conf) (not 0)
-	- enable to level 0 the @gm command (atcommand_athena.conf) (default 100) - Only level 0 can give access to this command
-	- enable gm commands to normal player (battle_athena.conf, atcommand_gm_only parameter)
-	- and normal player must give correct password when he use the @gm command (gm_pass paramter in login_athena.conf)
+	- give a level to level_new_gm (parameter of login_freya.conf) (not 0)
+	- enable to level 0 the @gm command (atcommand_freya.conf) (default 100) - Only level 0 can give access to this command
+	- enable gm commands to normal player (battle_freya.conf, atcommand_gm_only parameter)
+	- and normal player must give correct password when he use the @gm command (gm_pass paramter in login_freya.conf)
 pvpoff
 	@コマンド @pvpoff
 pvpon
@@ -1714,7 +1714,7 @@ charundisguise: 60
 email: 0
 
 ==========================================================================
-7. conf/ladmin_athena.conf
+7. conf/ladmin_freya.conf
 --------------------------------------------------------------------------
 
 < What this file is. >

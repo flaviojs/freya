@@ -1,15 +1,5 @@
-/*	This file is a part of Freya.
-		Freya is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	any later version.
-		Freya is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-	GNU General Public License for more details.
-		You should have received a copy of the GNU General Public License
-	along with Freya; if not, write to the Free Software
-	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA */
+// Copyright (c) Freya Development Team - Licensed under GNU GPL
+// For more information, see LICENCE in the main folder
 
 #include <config.h>
 
@@ -3935,7 +3925,7 @@ int pc_setpos(struct map_session_data *sd, char *mapname_org, int x, int y, int 
 		if (sd->sc_data[SC_DEVOTION].timer != -1)
 			status_change_end(&sd->bl, SC_DEVOTION, -1);
 
-// Cooking Items are no longer dispelled upon map change (kRO Patch - 11/06/2006) [Tsuyuki]
+// Cooking Items are no longer dispelled upon map change (kRO Patch - 11/06/2006)
 /*
 		if(sd->sc_data[SC_STRFOOD].timer != -1)
 			status_change_end(&sd->bl, SC_STRFOOD, -1);
@@ -3961,7 +3951,7 @@ int pc_setpos(struct map_session_data *sd, char *mapname_org, int x, int y, int 
 			status_change_end(&sd->bl, SC_MATKFOOD, -1);
 */
 
-// Remove following statuses when warped/changing maps [Tsuyuki]
+// Remove following statuses when warped/changing maps
 		if(sd->sc_data[SC_STONE].timer != -1)
 			status_change_end(&sd->bl, SC_STONE, -1);
 		if(sd->sc_data[SC_FREEZE].timer != -1)
@@ -3972,7 +3962,8 @@ int pc_setpos(struct map_session_data *sd, char *mapname_org, int x, int y, int 
 			status_change_end(&sd->bl, SC_SLEEP, -1);
 	}
 
-	// Commented for now due to some crash/loop-related problems.. [Tsuyuki]
+	// To-Do: Fix this [Tsuyuki]
+	// Commented for now due to some crash/loop-related problems..
 	/* clear AOE spells on the previous map */
 /*if(sd->bl.m != m)
 		skill_clear_unitgroup(&sd->bl);*/
@@ -5136,7 +5127,7 @@ int pc_checkbaselevelup(struct map_session_data *sd)
 			status_change_start(&sd->bl, SkillStatusChangeTable[PR_SUFFRAGIUM], 1, 0, 0, 0, skill_get_time(PR_SUFFRAGIUM, 1), 0);
 		}
 		
-		// Taekwon-Class Level Up Buffs (L10 Blessing, L10 Increase Agi) [Tsuyuki]
+		// Taekwon-Class Level Up Buffs (L10 Blessing, L10 Increase Agi)
 		if (s_class >= 24 && s_class <= 27) {
 			status_change_start(&sd->bl, SkillStatusChangeTable[AL_BLESSING], 10, 0, 0, 0, skill_get_time(AL_BLESSING, 10), 0);
 			status_change_start(&sd->bl, SkillStatusChangeTable[AL_INCAGI], 10, 0, 0, 0, skill_get_time(AL_INCAGI, 10), 0);
@@ -6226,14 +6217,14 @@ int pc_readparam(struct map_session_data *sd,int type)
 		val= sd->status.class;
 		break;
 	case SP_BASEJOB:
-		// Fixes for the new classes (Taekwon, Gunslinger, Ninja, Death Knight, Dark Collector) [Tsuyuki]
+		// Fixes for the new classes (Taekwon, Gunslinger, Ninja, Death Knight, Dark Collector)
 		if ((sd->status.class >= 24 && sd->status.class <= 25) || (sd->status.class >= 4046 && sd->status.class <= 4053))
 			val= sd->status.class;
 		else
 			val= s_class.job;
 		break;
 	case SP_BASECLASS:
-		// Fixes for the new classes (Taekwon, Gunslinger, Ninja, Death Knight, Dark Collector) [Tsuyuki]
+		// Fixes for the new classes (Taekwon, Gunslinger, Ninja, Death Knight, Dark Collector)
 		if ((sd->status.class >= 24 && sd->status.class <= 25) || (sd->status.class >= 4046 && sd->status.class <= 4053))
 			job = sd->status.class;
 		else
@@ -9140,7 +9131,7 @@ int pc_extra(int tid, unsigned int tick, int id, int data) {
 			            "// To add a line in this file, use the file '%s':" RETCODE
 			            "//" RETCODE, extra_add_file_txt);
 			fprintf(fp, "// An external software can add changes of zenys or items of players using file '%s'." RETCODE
-			            "// You can change location and/or name of this file with appropriate option in 'conf/map_athena.conf'." RETCODE
+			            "// You can change location and/or name of this file with appropriate option in 'conf/map_freya.conf'." RETCODE
 			            "// To add a line in this file, prefer the append method." RETCODE
 			            "// The map-server will read this file periodically and automatically destroy it." RETCODE
 			            "// IMPORTANT: Be sure that the map-server can READ and DESTROY this file." RETCODE

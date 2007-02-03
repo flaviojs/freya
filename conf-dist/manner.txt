@@ -11,7 +11,7 @@
 //--------------------------------------------------------------
 // 2 types of lines:
 // language: <npc_language>
-//           as defined is map_athena.conf.
+//           as defined is map_freya.conf.
 //           All lines (simple word or sentence) after this line
 //           until the next 'language' line are used to define
 //           forbidden word/sentence.

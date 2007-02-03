@@ -1,15 +1,5 @@
-/*	This file is a part of Freya.
-		Freya is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	any later version.
-		Freya is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-	GNU General Public License for more details.
-		You should have received a copy of the GNU General Public License
-	along with Freya; if not, write to the Free Software
-	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA */
+// Copyright (c) Freya Development Team - Licensed under GNU GPL
+// For more information, see LICENCE in the main folder
 
 #include <config.h>
 #include <stdio.h>
@@ -778,7 +768,7 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 				return damage;
 			}
 			// Skills can't hit Emperium, except for Raging Triple Blow and Gravitation Field
-			// Note: Gloria Domini/Pressure can no longer hit the Emperium, for future reference (kRO Patch) [Tsuyuki]
+			// Note: Gloria Domini/Pressure can no longer hit the Emperium, for future reference (kRO Patch)
 			if ((tmd->class == 1288 && (flag&BF_SKILL && skill_num != MO_TRIPLEATTACK)))
 				return 0; // No need to continue calculating.. return 0 damage
 
@@ -1334,7 +1324,7 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 				s_ele = 0;
 				s_ele_ = 0;
 				if(sd && sd->cart_weight > 0) {
-					// Exploit fix (Can't modify damage more than max cart weight) [Tsuyuki]
+					// Exploit fix (Can't modify damage more than max cart weight)
 					if(sd->cart_weight > battle_config.max_cart_weight)
 						skillratio += 100; // Max weight bonus damage
 					else
@@ -1669,7 +1659,7 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 				flag.cardfix = 0;
 				// FORMULA: (damage * (cart_weight / (10 * (16 - skill_lv)))) / 100
 				if(sd && sd->cart_weight > 0) {
-					// Exploit fix (Can't modify damage more than max cart weight) [Tsuyuki]
+					// Exploit fix (Can't modify damage more than max cart weight)
 					if(sd->cart_weight > battle_config.max_cart_weight)
 						skillratio += battle_config.max_cart_weight / (10 * (16 - skill_lv)) - 100;
 					else
@@ -2118,7 +2108,7 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 			// Add any bonuses that modify the base attack + weapon attack (pre-skills)
 			if (sd) {
 				int c = 0;
-				if (sd->status.weapon < 16 && (sd->atk_rate!= 100 || sd->weapon_atk_rate[sd->status.weapon] != 0))
+				if (sd->status.weapon <= 22 && (sd->atk_rate!= 100 || sd->weapon_atk_rate[sd->status.weapon] != 0))
 					ATK_SCALE(sd->atk_rate+ sd->weapon_atk_rate[sd->status.weapon]);
 				if (flag.cri && sd->crit_atk_rate)
 					ATK_ADDRATE(sd->crit_atk_rate);
@@ -2310,14 +2300,18 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 	// Elemental damage fix
 	if((sd && skill_num != AS_VENOMKNIFE && (skill_num || !battle_config.pc_attack_attr_none)) || (md && (skill_num || !battle_config.mob_attack_attr_none)) || (pd && (skill_num || !battle_config.pet_attack_attr_none)))
 	{
+		short t_element = status_get_element(target);
+
 		if(!(!sd && tsd && battle_config.mob_ghostring_fix && t_ele == 8))
 		{
-			short t_element = status_get_element(target);
 			if(wd.damage > 0)
 				wd.damage = battle_attr_fix(wd.damage, s_ele, t_element);
 			if(wd.damage2 > 0 && flag.lefthand)
 				wd.damage2 = battle_attr_fix(wd.damage2, s_ele, t_element);
 		}
+
+		if (s_ele != 0 && wd.damage > 0 && skill_num == GS_GROUNDDRIFT) // Additional 50*lv Neutral damage
+			wd.damage += battle_attr_fix(50*skill_lv, s_ele, t_element);
 	}
 
 	if ((!flag.righthand || wd.damage == 0) && (!flag.lefthand || wd.damage2 == 0))
@@ -2484,7 +2478,7 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 			ATK_SCALE(cardfix / 10);
 	}
 
-	// NJ_HUUMA Damage Division for multiple targets [Tsuyuki]
+	// NJ_HUUMA Damage Division for multiple targets
 	if(skill_num == NJ_HUUMA) {
 		if(wflag>0)
 			wd.damage = wd.damage / wflag;
@@ -4454,7 +4448,7 @@ int battle_set_value(char *w1, char *w2) {
 }
 
 /*==========================================
- * Set Default battle_athena.conf Values
+ * Set Default battle_freya.conf Values
  *------------------------------------------
 */
 void battle_set_defaults() {
@@ -5153,7 +5147,7 @@ void battle_validate_conf() {
 }
 
 /*==========================================
- * battle_athena.conf Parsing (For importing custom options)
+ * battle_freya.conf Parsing (For importing custom options)
  *------------------------------------------
  */
 int battle_config_read(const char *cfgName) {
@@ -5165,7 +5159,7 @@ int battle_config_read(const char *cfgName) {
 		battle_set_defaults();
 
 	if ((fp = fopen(cfgName, "r")) == NULL) {
-			// if ((fp = fopen("conf/battle_athena.conf", "r")) == NULL) { // Not try default, possible infinite loop with import
+			// if ((fp = fopen("conf/battle_freya.conf", "r")) == NULL) { // Not try default, possible infinite loop with import
 			printf("File not found: %s\n", cfgName);
 			return 1;
 			// }

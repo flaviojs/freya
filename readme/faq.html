@@ -19,8 +19,8 @@
 <br /><br />
 <a class="left" target="_top" href="index.html" >Introduction</a><br />
 <a class="left" target="_top" href="chngs.html" >Changes</a><br />
-<a class="left" target="_top" href="feats.html" >Features</a><br />
-<a class="left" target="_top" href="npcfeats.html" >NPC Features</a><br />
+<a class="left" target="_top" href="feats.html" >Code Features</a><br />
+<a class="left" target="_top" href="npcfeats.html" >Area Features</a><br />
 <a class="left" target="_top" href="setup.html" >Setup</a><br />
 <a class="left" target="_top" href="gmcmds.html" >GM Commands</a><br />
 <a class="left" target="_top" href="faq.html" style='font-weight:bold;color:#000000;background-color:transparent;'>FAQ</a><br />
@@ -47,7 +47,7 @@
 <br />
 
 <span style="font-weight: bold;">Q</span>: My map-server won't load! It appears to be loading things before it dissapeared suddenly! HELP!<br />
-<span style="font-weight: bold;">A</span>: Use command line to load map-server. It should tell you the error. If you're missing a map, update your kRO Sakray or comment the map from map_athena.conf. If you have an errornous NPC, fix it or comment it off. Anything other than that, feel free to ask around.<br />
+<span style="font-weight: bold;">A</span>: Use command line to load map-server. It should tell you the error. If you're missing a map, update your kRO Sakray or comment the map from map_freya.conf. If you have an errornous NPC, fix it or comment it off. Anything other than that, feel free to ask around.<br />
 <br />
 
 <span style="font-weight: bold;">Q</span>: My map-server failed to load 'adata.grf'! Where do I find this adata.grf? My map-server won't load without it!<br />
@@ -55,7 +55,7 @@
 <br />
 
 <span style="font-weight: bold;">Q</span>: All 3 of the servers are loaded, but I am still having problems accessing it! What do I do?<br />
-<span style="font-weight: bold;">A</span>: First, check the IPs in map_athena.conf and char_athena.conf. If those are correct, check the ports to make sure they match. If that's correct too, you probably cannot handle the server load. Lower the monster spawning rate using mob_count in battle_athena.conf and it should be fine.<br />
+<span style="font-weight: bold;">A</span>: First, check the IPs in map_freya.conf and char_freya.conf. If those are correct, check the ports to make sure they match. If that's correct too, you probably cannot handle the server load. Lower the monster spawning rate using mob_count in battle_freya.conf and it should be fine.<br />
 <br />
 
 <span style="font-weight: bold;">Q</span>: How do I start Guild Wars/War of Emperium??? HELP!!!<br />
@@ -128,7 +128,7 @@ The main thing it does, is provide a way for you to change your config settings 
 Say you want to change your job experience rate from the default (100)to 2x (200). Well then you would place this in your import/battle_conf.txt (folder and name of the 'import' file are mentionned in your 'import' line):<br />
 <span style='color:green'>job_exp_rate: 200</span><br />
 You don't need the comment (it's only a comment). You can add it for clarity sake.<br />
-Now this new setting takes place over the setting in battle_athena.conf.<br />
+Now this new setting takes place over the setting in battle_freya.conf.<br />
 How? Simple. When the server reads the 'import' line, it reads the mentioned file and all values inside this file replace previously readed values. The last readed setting of each option is the used setting.<br />
 But, if you add another 'import' file with this option or change this option after the 'import' line, your 'import' setting will not be used. The last value is always the value used by the server.<br />
 <br />

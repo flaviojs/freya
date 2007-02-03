@@ -1,15 +1,5 @@
-/*	This file is a part of Freya.
-		Freya is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	any later version.
-		Freya is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-	GNU General Public License for more details.
-		You should have received a copy of the GNU General Public License
-	along with Freya; if not, write to the Free Software
-	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA */
+// Copyright (c) Freya Development Team - Licensed under GNU GPL
+// For more information, see LICENCE in the main folder
 
 #include <config.h>
 
@@ -84,7 +74,7 @@ char friends_db[256] = "friends";
 char statuschange_db[256] = "statuschange";
 char rank_db[256] = "ranking";
 
-char *SQL_CONF_NAME = "conf/inter_athena.conf";
+char *SQL_CONF_NAME = "conf/inter_freya.conf";
 #endif /* USE_SQL */
 
 struct mmo_map_server server[MAX_MAP_SERVERS];
@@ -1697,8 +1687,8 @@ void found_server_char_id() {
 		// if server name is found, and name is not the server char_id, stop program and say why
 		printf(CL_RED "ERROR: wisp server name is name of a player." CL_RESET "\n");
 		printf(CL_RED "       Freya has been stopped." CL_RESET "\n");
-		printf(CL_RED "       Change wisp server name in char_athena.conf." CL_RESET "\n");
-		char_log("ERROR: wisp server name is name of a player. Freya has been stopped. Change wisp server name in char_athena.conf." RETCODE);
+		printf(CL_RED "       Change wisp server name in char_freya.conf." CL_RESET "\n");
+		char_log("ERROR: wisp server name is name of a player. Freya has been stopped. Change wisp server name in char_freya.conf." RETCODE);
 		exit(1);
 	}
 
@@ -3173,7 +3163,7 @@ int parse_tologin(int fd) {
 #ifdef USE_SQL
 				printf("Also, please make sure your accounts database (default: login) has those values present.\n");
 #endif /* USE_SQL */
-				printf("If you changed the communication passwords, change them back at map_athena.conf and char_athena.conf\n");
+				printf("If you changed the communication passwords, change them back at map_freya.conf and char_freya.conf\n");
 #ifdef __WIN32
 				Sleep(2000); // 2 seconds to display message
 #else
@@ -5793,7 +5783,7 @@ int parse_char(int fd) {
 			if (!check_mapip(session[fd]->client_addr.sin_addr.s_addr)) {
 				unsigned char *p = (unsigned char *) &session[fd]->client_addr.sin_addr;
 				printf("Connection of a map-server REFUSED (map_allow, ip: %d.%d.%d.%d).\n", p[0], p[1], p[2], p[3]);
-				printf("   Check your char_athena.conf (option: mapallowip)\n");
+				printf("   Check your char_freya.conf (option: mapallowip)\n");
 				printf("   if connection must be authorised.\n");
 				WPACKETW(0) = 0x2af9;
 				WPACKETB(2) = 3;
@@ -6102,7 +6092,7 @@ void sql_config_read(const char *cfgName) {
 	printf("Reading config file: %s\n", cfgName);
 
 	if ((fp = fopen(cfgName, "r")) == NULL) {
-//		if ((fp = fopen("conf/inter_athena.conf", "r")) == NULL) { // not try default, possible infinite loop with import
+//		if ((fp = fopen("conf/inter_freya.conf", "r")) == NULL) { // not try default, possible infinite loop with import
 			printf("File not found: %s\n", cfgName);
 			exit(1);
 //		}
@@ -6212,7 +6202,7 @@ static void char_config_read(const char *cfgName) { // not inline, called too of
 		subnetmask[j] = 255;
 
 	if ((fp = fopen(cfgName, "r")) == NULL) {
-//		if ((fp = fopen("conf/char_athena.conf", "r")) == NULL) { // not try default, possible infinite loop with import
+//		if ((fp = fopen("conf/char_freya.conf", "r")) == NULL) { // not try default, possible infinite loop with import
 			printf("Configuration file not found: %s.\n", cfgName);
 			exit(1);
 //		}
@@ -6652,7 +6642,7 @@ void do_init(const int argc, char **argv) {
 	char_log("The char-server is starting..." RETCODE);
 	printf("The char-server is starting...\n");
 
-	char_config_read((argc < 2) ? "conf/char_athena.conf" : argv[1]);
+	char_config_read((argc < 2) ? "conf/char_freya.conf" : argv[1]);
 #ifdef USE_SQL
 	sql_config_read(SQL_CONF_NAME);
 #endif /* USE_SQL */
@@ -6684,7 +6674,7 @@ void do_init(const int argc, char **argv) {
 		server_fd[i] = -1;
 	}
 
-	inter_init((argc > 2) ? argv[2] : "conf/inter_athena.conf"); // Inter server initialization
+	inter_init((argc > 2) ? argv[2] : "conf/inter_freya.conf"); // Inter server initialization
 
 #ifdef TXT_ONLY
 	friends_txt_flag = 0; // must we save friends file or not? (0: not, x: yes)

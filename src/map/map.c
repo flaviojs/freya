@@ -1,15 +1,5 @@
-/*	This file is a part of Freya.
-		Freya is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	any later version.
-		Freya is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-	GNU General Public License for more details.
-		You should have received a copy of the GNU General Public License
-	along with Freya; if not, write to the Free Software
-	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA */
+// Copyright (c) Freya Development Team - Licensed under GNU GPL
+// For more information, see LICENCE in the main folder
 
 #include <config.h>
 
@@ -2487,7 +2477,7 @@ int map_config_read(char *cfgName) {
 	struct hostent *h = NULL;
 
 	if ((fp = fopen(cfgName, "r")) == NULL) {
-//		if ((fp = fopen("conf/map_athena.conf", "r")) == NULL) { // not try default, possible infinite loop with import
+//		if ((fp = fopen("conf/map_freya.conf", "r")) == NULL) { // not try default, possible infinite loop with import
 			printf("Map configuration file not found at: %s\n", cfgName);
 			exit(1);
 //		}
@@ -2691,7 +2681,7 @@ int sql_config_read(char *cfgName) {
 	FILE *fp;
 
 	if ((fp = fopen(cfgName, "r")) == NULL) {
-//		if ((fp = fopen("conf/inter_athena.conf", "r")) == NULL) { // not try default, possible infinite loop with import
+//		if ((fp = fopen("conf/inter_freya.conf", "r")) == NULL) { // not try default, possible infinite loop with import
 			printf("File not found: %s.\n", cfgName);
 			return 1;
 //		}
@@ -2967,16 +2957,16 @@ void do_init(const int argc, char *argv[])
 	register int i;
 
 #ifndef TXT_ONLY
-	char *SQL_CONF_NAME = "conf/inter_athena.conf";
+	char *SQL_CONF_NAME = "conf/inter_freya.conf";
 #endif
-	char *MAP_CONF_NAME = "conf/map_athena.conf";
-	char *BATTLE_CONF_FILENAME = "conf/battle_athena.conf";
-	char *ATCOMMAND_CONF_FILENAME = "conf/atcommand_athena.conf";
-	char *SCRIPT_CONF_NAME = "conf/script_athena.conf";
+	char *MAP_CONF_NAME = "conf/map_freya.conf";
+	char *BATTLE_CONF_FILENAME = "conf/battle_freya.conf";
+	char *ATCOMMAND_CONF_FILENAME = "conf/atcommand_freya.conf";
+	char *SCRIPT_CONF_NAME = "conf/script_freya.conf";
 	char *GRF_PATH_FILENAME = "conf/grf-files.txt";
 
 	memset(messages_filename, 0, sizeof(messages_filename));
-	strncpy(messages_filename, "conf/msg_athena.conf", sizeof(messages_filename) - 1);
+	strncpy(messages_filename, "conf/msg_freya.conf", sizeof(messages_filename) - 1);
 
 	srand(gettick_cache);
 

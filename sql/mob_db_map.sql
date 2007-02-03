@@ -1,4 +1,4 @@
-# You can regenerate this file with an option in inter_athena.conf
+# You can regenerate this file with an option in inter_freya.conf
 
 CREATE TABLE `mob_db` (
   `ID` mediumint(9) NOT NULL default '0',

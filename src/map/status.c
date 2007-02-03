@@ -1,15 +1,5 @@
-/*	This file is a part of Freya.
-		Freya is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	any later version.
-		Freya is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-	GNU General Public License for more details.
-		You should have received a copy of the GNU General Public License
-	along with Freya; if not, write to the Free Software
-	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA */
+// Copyright (c) Freya Development Team - Licensed under GNU GPL
+// For more information, see LICENCE in the main folder
 
 #include <config.h>
 
@@ -856,6 +846,13 @@ int status_calc_pc(struct map_session_data* sd, int first)
 			sd->hit += sd->sc_data[SC_HITFOOD].val1;
 		if(sd->sc_data[SC_FLEEFOOD].timer != -1)
 			sd->flee += sd->sc_data[SC_FLEEFOOD].val1;
+		if (sd->sc_data[SC_ADJUSTMENT].timer != -1)
+		{
+			sd->flee += 30;
+			sd->hit -= 30;
+		}
+		if (sd->sc_data[SC_GATLINGFEVER].timer != -1)
+			sd->flee -= sd->sc_data[SC_GATLINGFEVER].val4;
 		if(sd->sc_data[SC_BATKFOOD].timer != -1)
 			sd->base_atk += sd->sc_data[SC_BATKFOOD].val1;
 //		if(sd->sc_data[SC_WATKFOOD].timer != -1)

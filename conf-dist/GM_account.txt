@@ -1,6 +1,15 @@
-// GM levels file
-// Setting the account ID which you recognize as GM
-//   Level: 0 (normal player), and from 1 to 99 maximum level.
+//               (c)2004-2007 Freya team presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//
+// GM Account Levels File
+
+// Setting the account ID which you recognize as a GM:
+//   Level: 0 (Normal player), and from 1 to 99 maximum level.
 //          Note here are only levels 1 to 99. Default level of an account is level 0.
 //          It's not necessary to set a level to 0, except if you want to cancel a GM level at start.
 //   Usage #1(Standard): <account id> <level>
@@ -9,7 +18,11 @@
 //   2000002 99
 //   2000003-2000005 99
 
-// after some commented GM accounts:
+
+//------------------------------------------------
+// After some commented GM accounts:
+//------------------------------------------------
+
 //704554 99
 //704555 1
 //704556 1
@@ -41,3 +54,9 @@
 //704582 1
 //704583 1
 //794584 1
+
+//------------------------------------------------
+// Enter your own GM accounts:
+//------------------------------------------------
+
+2000001	99

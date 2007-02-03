@@ -1,15 +1,5 @@
-/*	This file is a part of Freya.
-		Freya is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	any later version.
-		Freya is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-	GNU General Public License for more details.
-		You should have received a copy of the GNU General Public License
-	along with Freya; if not, write to the Free Software
-	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA */
+// Copyright (c) Freya Development Team - Licensed under GNU GPL
+// For more information, see LICENCE in the main folder
 
 #include <config.h>
 
@@ -54,11 +44,11 @@
 // Set the variables below:
 //   IP of the login server.
 //   Port where the login-server listens incoming packets.
-//   Password of administration (same of config_athena.conf).
+//   Password of administration (same of config_freya.conf).
 //   Displayed language of the sofware (if not correct, english is used).
 // IMPORTANT:
 //   Be sure that you authorize remote administration in login-server
-//   (see login_athena.conf, 'admin_state' parameter)
+//   (see login_freya.conf, 'admin_state' parameter)
 //-------------------------------------------------------------------------
 char loginserverip[16] = "127.0.0.1";        // IP of login-server
 int loginserverport = 6900;                  // Port of login-server
@@ -4503,7 +4493,7 @@ static void ladmin_config_read(const char *cfgName) { // not inline, called too 
 
 	fp = fopen(cfgName, "r");
 	if ((fp = fopen(cfgName, "r")) == NULL) {
-//		if ((fp = fopen("conf/ladmin_athena.conf", "r")) == NULL) { // not try default, possible infinite loop with import
+//		if ((fp = fopen("conf/ladmin_freya.conf", "r")) == NULL) { // not try default, possible infinite loop with import
 			if (defaultlanguage == 'F') {
 				printf(CL_RESET "Fichier de configuration (%s) non trouvé.\n", cfgName);
 			} else {

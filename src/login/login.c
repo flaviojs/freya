@@ -1,15 +1,5 @@
-/*	This file is a part of Freya.
-		Freya is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	any later version.
-		Freya is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-	GNU General Public License for more details.
-		You should have received a copy of the GNU General Public License
-	along with Freya; if not, write to the Free Software
-	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA */
+// Copyright (c) Freya Development Team - Licensed under GNU GPL
+// For more information, see LICENCE in the main folder
 
 // Include of configuration script
 #include <config.h>
@@ -2136,7 +2126,7 @@ int parse_login(int fd) {
 				return 0;
 			if (!check_charip(session[fd]->client_addr.sin_addr.s_addr)) {
 				printf("Connection of a char-server REFUSED (char_allow, ip: %s).\n", ip);
-				printf("   Check your login_athena.conf (option: charallowip)\n");
+				printf("   Check your login_freya.conf (option: charallowip)\n");
 				printf("   if connection must be authorised.\n");
 				write_log("Connection of a char-server REFUSED (char_allow, ip: %s)" RETCODE, ip);
 				/* send answer */
@@ -3830,7 +3820,7 @@ static void login_config_read(const char *cfgName) { // not inline, called too o
 	FILE *fp;
 
 	if ((fp = fopen(cfgName, "r")) == NULL) {
-//		if ((fp = fopen("conf/login_athena.conf", "r")) == NULL) { // not try default, possible infinite loop with import
+//		if ((fp = fopen("conf/login_freya.conf", "r")) == NULL) { // not try default, possible infinite loop with import
 			printf("Configuration file (%s) not found.\n", cfgName);
 			return;
 //		}

@@ -1,15 +1,5 @@
-/*	This file is a part of Freya.
-		Freya is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	any later version.
-		Freya is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-	GNU General Public License for more details.
-		You should have received a copy of the GNU General Public License
-	along with Freya; if not, write to the Free Software
-	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA */
+// Copyright (c) Freya Development Team - Licensed under GNU GPL
+// For more information, see LICENCE in the main folder
 
 #include <config.h>
 
@@ -1448,6 +1438,30 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 		if(rand() % 100 < 20 * sc_def_int / 100)
 			status_change_start(bl, SC_BLIND,2*skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
 		break;
+	case GS_GROUNDDRIFT:
+		if (sd)
+		{
+			switch(sd->arrow_ele)
+			{
+				case 4:
+					status_change_start(bl, SC_STUN, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
+					break;
+				case 7:
+					status_change_start(bl, SC_BLIND, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
+					break;
+				case 5:
+					status_change_start(bl, SC_POISON, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
+					break;
+				case 1:
+					status_change_start(bl, SC_FREEZE, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
+					break;
+				case 3:
+					skill_blown(src, bl, skill_get_blewcount(skillid, skilllv));
+					break;
+				default:
+					break;
+			}
+		}
 }
 
 	if (skillid != MC_CARTREVOLUTION && attack_type&BF_WEAPON) {
@@ -2977,18 +2991,39 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case NJ_HUUMA:
 	case GS_DESPERADO:
 	case GS_SPREADATTACK:
-		if (flag & 1) {
+		if (flag & 1)
+		{
 			if (bl->id != skill_area_temp[1])
 				skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, 0x0500);
-		} else {
-			int ar = 1;
+		} 
+		else
+		{
+			int ar;
 			int x = bl->x, y = bl->y;
 
-			if (skillid == NPC_SPLASHATTACK)
-				ar = 3;
-
-//			if (skillid == ASC_METEORASSAULT) // Meteor Assault skill fix (thanks to [Mikey] from freya's bug report)
-//				clif_skill_nodamage(src,bl,skillid,skilllv,1);
+			switch(skillid)
+			{
+				case NPC_SPLASHATTACK:
+					ar = 3;
+					break;
+				case GS_SPREADATTACK:
+					if (skilllv >= 1 && skilllv <= 3)
+						ar = 3;
+					else if (skilllv >= 4 && skilllv <= 6)
+						ar = 5;
+					else if (skilllv >= 7 && skilllv <= 9)
+						ar = 7;
+					else // Level 10+
+						ar = 9;
+					break;
+				case GS_DESPERADO:
+					ar = 7;
+					clif_skill_nodamage(src, src, skillid, skilllv, 1);
+					break;
+				default:
+					ar = 1;
+					break;
+			}
 
 			skill_area_temp[1] = bl->id;
 			skill_area_temp[2] = x;
@@ -4752,7 +4787,26 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 			}
 		}
 		break;
-
+	case GS_DISARM:
+		// Success chance check done here instead of down below
+		// Disarm's Strip Weapon only occurs with user being a player, and target being a player
+		if (sd && dstsd)
+		{
+			// Success chance increased by skill level
+			i = 3*skilllv;
+			if (sd->status.dex > dstsd->status.dex)
+				i += (sd->status.dex - dstsd->status.dex) / 5;
+			if (rand()%100 >= i)
+			{
+				clif_skill_fail(sd, skillid, 0, 0);
+				break;
+			}
+		}
+		else if (sd)
+		{
+			clif_skill_fail(sd, skillid, 0, 0);
+			break;
+		}
 	case RG_STRIPWEAPON:
 	case RG_STRIPSHIELD:
 	case RG_STRIPARMOR:
@@ -4763,6 +4817,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		int sclist[4] = {0, 0, 0, 0};
 
 		switch (skillid) {
+		case GS_DISARM:
 		case RG_STRIPWEAPON:
 			equip = EQP_WEAPON;
 			break;
@@ -4783,13 +4838,17 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 			return 1;
 		}
 
-		strip_fix = status_get_dex(src) - status_get_dex(bl);
-		if (strip_fix < 0)
-			strip_fix = 0;
-		if (rand() % 100 >= 5 + 2 * skilllv + strip_fix / 5) {
-			if(sd)
-				clif_skill_fail(sd, skillid, 0, 0);
-			break;
+		// Already did success chance check for GS_DISARM above
+		if (skillid != GS_DISARM)
+		{
+			strip_fix = status_get_dex(src) - status_get_dex(bl);
+			if (strip_fix < 0)
+				strip_fix = 0;
+			if (rand() % 100 >= 5 + 2 * skilllv + strip_fix / 5) {
+				if(sd)
+					clif_skill_fail(sd, skillid, 0, 0);
+				break;
+			}
 		}
 
 		if (dstsd) {
@@ -6352,7 +6411,7 @@ int skill_castend_pos2(struct block_list *src, int x, int y, int skillid, int sk
 	case NJ_HYOUSYOURAKU:
 	case NJ_RAIGEKISAI:
 	case NJ_KAMAITACHI:
-	case GS_GROUNDDRIFT: // Ammo should be deleted right away
+	case GS_GROUNDDRIFT:
 		skill_unitsetting(src,skillid,skilllv,x,y,0);
 		break;
 	case RG_GRAFFITI:
@@ -6644,6 +6703,7 @@ struct skill_unit_group *skill_unitsetting(struct block_list *src, int skillid, 
 	struct skill_unit_layout *layout;
 	struct status_change *sc_data;
 	int active_flag = 1;
+	int sub_unt = 0;
 
 	nullpo_retr(0, src);
 
@@ -6776,10 +6836,39 @@ struct skill_unit_group *skill_unitsetting(struct block_list *src, int skillid, 
 	case PF_FOGWALL:
 		if (sc_data && sc_data[SC_DELUGE].timer != -1) limit *= 2;
 		break;
+	case GS_GROUNDDRIFT:
+	{
+		int gdrift_ele[5]={2,6,5,3,4};
+
+		// To-Do: Add support for sd->arrow_ele [Tsuyuki]
+/*		if (sd)
+			val1 = sd->arrow_ele;
+		else*/
+			val1 = gdrift_ele[rand()%5];
+
+		switch (val1)
+		{
+			case 3:
+				sub_unt++;
+			case 1:
+				sub_unt++;
+			case 5:
+				sub_unt++;
+			case 7:
+				sub_unt++;
+			case 4:
+				break;
+			default:
+				sub_unt = rand()%5;
+				break;
+		}
+
+		break;
+		}
 	}
 
 	nullpo_retr(NULL, group = skill_initunitgroup(src, (count > 0 ? count : layout->count),
-	            skillid, skilllv, skill_get_unit_id(skillid, flag & 1)));
+	            skillid, skilllv, skill_get_unit_id(skillid, flag & 1) + sub_unt));
 	group->limit = limit;
 	group->val1 = val1;
 	group->val2 = val2;
@@ -7152,6 +7241,7 @@ int skill_unit_onplace_timer(struct skill_unit *src, struct block_list *bl, unsi
 		sg->limit=DIFF_TICK(tick,sg->tick)+1500;
 		break;
 
+	case 0xbe:	/* GS_GROUNDDRIFT */
 	case 0x8f:	/* HT_BLASTMINE */
 	case 0x94:	/* HT_SHOCKWAVE */
 	case 0x95:	/* HT_SANDMAN */
@@ -8066,7 +8156,7 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 	if(sd->dsprate != 100)
 		sp = sp * sd->dsprate / 100;
 
-	// Skill SP Usage Bonus Reductions [Tsuyuki]
+	// Skill SP Usage Bonus Reductions
 	switch(skill) {
 	case AL_HOLYLIGHT:
 			// To-Do: During Spirit Priest mode, SP cost is reduced for Holy Light
@@ -10042,6 +10132,9 @@ int skill_trap_splash(struct block_list *bl, va_list ap )
 			case 0x97:	/* HT_FREEZINGTRAP */
 					skill_attack(BF_WEAPON,	ss, src, bl, sg->skill_id, sg->skill_lv, tick, (sg->val2)?0x0500:0);
 				break;
+			case 0xbe:	/* GS_GROUNDDRIFT */
+				skill_additional_effect(ss, bl, sg->skill_id, sg->skill_lv, BF_MISC, tick);
+				break;
 			default:
 				break;
 		}
@@ -10540,6 +10633,7 @@ int skill_unit_timer_sub(struct block_list *bl, va_list ap)
 
 	if ((DIFF_TICK(tick,group->tick) >= group->limit || DIFF_TICK(tick, group->tick) >= unit->limit)) {
 		switch(group->unit_id) {
+			case 0xb3:	/* GS_GROUNDDRIFT */
 			case 0x8f:	/* HT_BLASTMINE */
 				group->unit_id = 0x8c;
 				clif_changelook(bl,LOOK_BASE,group->unit_id);

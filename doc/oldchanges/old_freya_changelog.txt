@@ -3732,7 +3732,7 @@ CODE
 	  on a lot of bytes to read, try to read a maximum of the packets to work on in the next pass/step instead of to wait next pass/step
 	  That reduce a lot of lag with important information between servers (example: don't wait so read all saved characters before to work on other packets)
 
-09/27
+09/27/2004
 	* Removed macros CREATE/RECREATE and use in all software aCalloc/aRealloc [Yor]
 	  no more confusion with CREATE of SQL and better function.
 	* Use malloc.c function instead of macros of utils.h [Yor]
