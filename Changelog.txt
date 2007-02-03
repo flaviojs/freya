@@ -10,6 +10,9 @@
 
 Date	Added
 
+02/03/2007
+	* Fixed: Double-entries in item_db. [Lex]
+
 02/02/2007
 	* Cleaned: status.c file (No significant code changes, just cleaning + commenting) [Tsuyuki]
 	* Fixed: New weapons types (Guns/Shurikens), and Katars are now properly calculated with Base Attack [Tsuyuki]

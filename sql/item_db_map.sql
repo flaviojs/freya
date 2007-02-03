@@ -1230,7 +1230,7 @@ INSERT INTO `item_db` VALUES (2673, 'Warrior\'s_Shining_Ring', 'Warrior\'s Shini
 
 INSERT INTO `item_db` VALUES (2674, 'Unknown_Item', 'Unknown Item', 5, 20, 0, 0, 0, 0, 0, 1, 1071636479, 2, 136, 0, 0, 0, NULL, 'bonus bSpeedRate,10;');
 INSERT INTO `item_db` VALUES (2675, 'Lord_Ring', 'Lord Ring', 5, 20, 0, 10, 0, 0, 0, 1, 1071636479, 2, 136, 0, 0, 0, NULL, 'bonus bAllStats,3;');
-INSERT INTO `item_db` VALUES (2676, 'Unknown_Item', 'Unknown Item', 5, 20, 0, 0, 0, 0, 0, 0, 1071636479, 2, 136, 0, 0, 0, NULL, NULL);
+#INSERT INTO `item_db` VALUES (2676, 'Unknown_Item', 'Unknown Item', 5, 20, 0, 0, 0, 0, 0, 0, 1071636479, 2, 136, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (2676, 'Unknown_Item', 'Unknown Item', 5, 0, 0, 300, 0, 0, 0, 0, 1071636479, 2, 136, 0, 0, 0, NULL, 'bonus2 bAddMonsterDropItem,7618,1000;');
 INSERT INTO `item_db` VALUES (2677, 'Unknown_Item', 'Unknown Item', 5, 20, 0, 100, 0, 0, 0, 0, 1071636479, 2, 136, 0, 0, 0, NULL, 'bonus bInt,2; bonus bDex,1; if(isequipped(1472) || isequipped(1473)) goto ExtraBonus01; goto BonusCheck02; ExtraBonus01: bonus bMatkRate,6; bonus bDex,2; bonus bCastrate,-getequiprefinerycnt(4); BonusCheck02: if(isequipped(2607) || isequipped(2608)) goto ExtraBonus02; end; ExtraBonus02: bonus2 bSkillAtk,28,50; bonus2 bSkillAtk,79,30; bonus bSPrecovRate,9;');
 INSERT INTO `item_db` VALUES (2678, 'Unknown_Item', 'Unknown Item', 5, 20, 0, 100, 0, 0, 0, 0, 2088832, 2, 136, 0, 0, 0, NULL, 'bonus bStr,2; bonus bVit,1; bonus bAtk,15; bonus2 bSubEle,3,10;');
