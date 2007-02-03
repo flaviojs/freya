@@ -1,11 +1,19 @@
-eAthena RC4 Changelog:
+--------------------------------------------------------------
+               (c)2004-2007 Freya team presents:              
+                 ___   ___    ___   _  _   __                 
+                (  _) (  ,)  (  _) ( \/ ) (  )                
+                (  _)  )  \   ) _)  \  /  /__\                
+                (_)   (_)\_) (___) (__/  (_)(_)               
+                    http://www.ro-freya.net                   
+                     eAthena RC4 Changelog                    
+--------------------------------------------------------------
 
 Date	Added
 
-09/26
+09/26/2004
 	(Dated On Aegis Website)
 	*--Released 1.0.0 RC4--*
-09/25
+09/25/2004
 	* Reorganized Npc folder for release
 	* Updated map_athena.conf
 	* Remove certain statuses when warping (Cloaking, Sitting, Gangster's Paradise) that would allow the effect to 
@@ -13,8 +21,8 @@ Date	Added
 	* Remove speed increase of theif and high thief from improve dodge (only assassins and assassin cross's are 
 	  supposed to get this bonus) [Valaris]
      	* removed more #ifdef's between TXT and SQL [MouseJstr]
-09/24
 
+09/24/2004
 	* Added @charkillable (to make players killable) [MouseJstr]
 	* Added @dropall (throws all items on ground) [MouseJstr]
 	* Added @chardropall (throws all players items on ground) [MouseJstr]
@@ -23,7 +31,7 @@ Date	Added
 	* Added @skillid (look up a skill by name) [MouseJstr]
 	* Added @useskill (use a skill by id) [MouseJstr]
 
-09/23
+09/23/2004
 	* Update Some Npc Stuff In Payon [Darkchild]
 	* Added Sage Quest [Darkchild]
 	* added @killable - all players can hit you, even out of pvp [MouseJstr]
@@ -36,7 +44,7 @@ Date	Added
 	 - Prevent spawn of emperium/monsters after castle is owned
 	 - In short, you can clear and conquer the castle any time even when it's not agitstart'ed if the castle is unowned, like in official servers
 
-09/22
+09/22/2004
 	* added @killer to let GM's hit players outside of pvp [MouseJstr]
 	* added @skilloff to turn off skills on a map [MouseJstr]
 	* added @skillon to turn on skills on a map [MouseJstr]
@@ -51,7 +59,7 @@ Date	Added
 	* made turning of skills on a map actually work [MouseJstr]
 	* Updated Makefiles/GNUMakefiles to include the compilation of /common/malloc.o [PoW]
 
-09/19
+09/19/2004
 	* Corrected @charstoragelist: [Yor]
 	  - because account2storage function create a void storage if it's not exist, somethimes a player could lost its storage.
 	  -> creation of account2storage2 to just ask pointer of storage if exist and use it in @charstoragelist.
@@ -59,7 +67,7 @@ Date	Added
 	* Client until 2004-09-06 (included) is now completely recognized [Yor]
 	* Fixed kafra storage request for all new clients [Yor]
 
-09/18
+09/18/2004
 	* Changed to Yor's code that doesn't try and read when it's already not found [Akaru]
 	* Removed check for resnametable in data folder exit -> the resnametable isn't even used if present and it should be optional and not compulsory to have a resnametable in the data folder! [Akaru]
 	* Added an option to choose which clients are accepted on the server (2nd part and finish: Check accepted versions) [Yor]
@@ -71,7 +79,7 @@ Date	Added
 	* Added items drop packet for all new clients [Yor]
 	* Fixed: in clif_send (global send, not individual send) don't send a packet that client doesn't recognize [Yor]
 
-09/17
+09/17/2004
 	* Added check to make sure mob is already moving before initiating random walk 
 	  when the item they are going to loot disappears. [Valaris]
 	* Client of 2004-07-13 is now completely recognized [Yor]
@@ -79,7 +87,7 @@ Date	Added
 	* Corrected packet sizes for each client version (not set packet size if packet doesn't exist) [Yor]
 	* Fixed direction position for all new clients [Yor]
 
-09/16
+09/16/2004
 	* Client of 2004-07-06 is now completely recognized [Yor]
 	* Fixed skills to position with all new clients [Yor]
 	* Fixed incomplete packet of authentification [Yor]
@@ -88,7 +96,7 @@ Date	Added
 	* Improved packet parsing of client (search packet version before to parse) [Yor]
 	* Added packets size of 0x20d and 0x20e [Yor]
 
-09/15
+09/15/2004
 	* Added "nude" script command, will strip player of all equipment. Syntax : nude; [Valaris]
 	* Removed sandstorm flag, since it does not work as intended (is not a constant effect like believed) [Valaris]
 	* Added specialeffect script command.  Syntax: specialeffect #; [Valaris]
@@ -103,33 +111,33 @@ Date	Added
 	* Speedup WantToConnect function [Yor]
 	* Call correct function with any clients packet - size is not correctly set actually [Yor]
 
-09/14
+09/14/2004
 	* Resetlvl will unequip items that require more than level 1. [Valaris]
 	* Added message about new clients (not actually supported) [Yor]
 	* Added correct call of clif_parse_WantToConnection function for all client types [Yor]
 	* Added size of packet 0x0214 [Yor]
 	* Fixed calls of 'clif_send' function [Yor]
 
-09/13
+09/13/2004
 	* Modified item_db to have more name consistency, added more translations for items [Akaru]
 	* Fixed in clif_sitting usage of a buffer [Yor]
 	* Fixed in clif_movechar usage of a buffer for clif_set007b [Yor]
 	* Fixed in clif_spawnpc usage of a buffer for clif_set0078 [Yor]
 	* Corrected a commented printf in packet 0x2b0e for debug [Yor]
 
-09/12
+09/12/2004
 	* Put (commented) parse printf in char.c at the right place (to have all informations) [Yor]
 	* Added Alchemist JobQuest [Darkchild]
 	* Added Inn Npcs [Darkchild]
 
-09/11
+09/11/2004
 	* Added @charitemlist/@charstoragelist/@charcartlist GM commands to display items of a player [Yor]
 
-09/10
+09/10/2004
 	* Added a better id control of monster id in @spawn/@monster... GM commands [Yor]
 	* Correction of an error at reading of 'wisp_server_name' option (char.c) [Yor]
 
-09/09
+09/09/2004
 	* Change @spawn/@monster2... GM commands to spawn in close area [Yor]
 	* commented some printf in char.c to reduce (a little) lag [Yor]
 	* Put @timer messages in msg_athena.conf [Yor]
@@ -138,14 +146,14 @@ Date	Added
 	* Added new client packet sizes and expanded packet acception. [Valaris]
 	* Added snow, fog, rain, leaves, petals, and sandstorm map flags. [Valaris]
 
-09/08
+09/08/2004
 	* added clif_specialeffect to clif.c, for displaying a wide variety of effects (information from rofx) [Valaris]
 	* Corrected in map: creation of new session before to delete previous session_data [Yor]
 	* Corrected in login/char/ladmin: creation of new session before to delete previous session_data [Yor]
 	* Prevented redeal dupe. Checks to make sure inventory index has not already been added (client prevents
 	  the possibility of stacking items, but server did not.) [Valaris]
 
-09/07
+09/07/2004
 	* Added an option to determinate at which GM level nowarp and nowarpto flags are not more used [Yor]
 	  - new option in battle.conf: any_warp_GM_min_level
 	  - new checks and message about 'from' (nowarp) and 'to' (nowarpto) in GM commands
@@ -154,7 +162,7 @@ Date	Added
 	* Second part of new authentification method (clif_parse_WantToConnection): Auth by char-server of new packets resolved [Yor]
 	* Improved check of new packet 0x7E to enter in WantToConnect Function [Yor]
 
-09/06
+09/06/2004
 	* First part of new authentification method (clif_parse_WantToConnection) [Yor]
 	  - accepted new 0x7E for wantto connect
 	  - begin to found first authentificaiton and answer to client, but not found
@@ -165,7 +173,7 @@ Date	Added
 	* Improved. In global message, use buffer to send to other (avoid possible overwriting). [Yor]
 	* Added Super Novice Job Quest [Darkchild]
 
-09/05
+09/05/2004
 	* Fixed noskill flag to actually stop all usable skills when used. [AppleGirl]
 	* Removed last lag on char-server causing by too much savings (on accreg) [Yor]
 	* Removed a lag on char-server with a lot of players (for party, like guild) [Yor]
@@ -191,7 +199,7 @@ Date	Added
 	    A gm can have the possibility to go anywhere, specialy to check/control player ==> no mapflag!
 	* Stopped client crashes when jobchanging into another class that doesn't support the weapon you are holding. [Valaris]
 
-09/04
+09/04/2004
 	* Added nowarp mapflag [PoW]
 	* Fixed nowarpto mapflag in atcommand.c [PoW]
 	* Improved: On hack about name in global message, GM of ALL map-server received hack messages. [Yor]
@@ -199,7 +207,7 @@ Date	Added
 	* Added @whogm GM command. [Yor]
 	* Added a warning when a character has same name than wisp server name. [Yor]
 
-09/03
+09/03/2004
 	* Added gm level display in all @who(map) GM command. [Yor]
 	* Correction: [Yor] - Thanks to [EvilEden]
 	  - Soul Strike mistake (according to http://iro.ragnarokonline.com/game/jobmagskill.asp) - corrected cast time
@@ -226,7 +234,7 @@ Date	Added
 	* Continue to add a (reserved) wisp name for server - part 2: in map-server, reception of the name [Yor]
 	* Begin to add a (reserved) wisp name for server - part 1: in char-server [Yor]
 
-09/02
+09/02/2004
 	* Added Meltdown's weapon breaking ability [AppleGirl]
 	* Added GM level in front of each line to display only enable GM command of the help.txt. [Yor]
 	* Removed message about limited time if your have unlimited account (that was for tests. sorry). [Yor]
@@ -249,7 +257,7 @@ Date	Added
 	  -> less memory usage, less tests
 	* Removed 'other_fd' not used [Yor]
 
-09/01
+09/01/2004
 	* Fixed Rainbow Egg quest in quests_lutie NPC [PoW]
 	* Added packet length for client server-side friend list, if they choose add the client will not disconnect. [Valaris]
 	  Need to figure out the rest of the packets, then can implement. 
@@ -264,12 +272,12 @@ Date	Added
 	* Fixed account length (WFIFOL(fd,2) instead of WFIFOW(fd,2)) when char-srv doesn't auth an account for map-srv (0x2afe packet) [Yor]
 	* Added @job and @charjobchange to be similar with @charjob and @jobchange [Yor]
 
-08/31
+08/31/2004
 	* Fixed messages of @(char)jobchange GM commands. [Yor]
 	* Fixed a return value of jobchange function (pc.c). [Yor]
 	* Added coredumps by system when crash. [Yor] - thanks MagicalTux
 
-08/30
+08/30/2004
 	* Added some comments on gravity commands. [Yor]
 	* Improved /mm, /monster and /item to have some answers. [Yor]
 	* Modified skill_cast_db and skill.c to allow for status effect chance of wizard skills
@@ -278,7 +286,7 @@ Date	Added
 	  skills Create Deadly Poison(407) and Soul Breaker(379) [moonsoul]
 	* Added damage calcs to battle.c for Assassin Cross skill Soul Breaker(379) [moonsoul]
 
-08/29
+08/29/2004
 	* Modified skill_require_db to reflect item requirements for assassin cross skills Create Deadly Poison(407)
 	  and Enchant Deadly Poison(378) [moonsoul]
 	* Added @charmountpeco/@charpetrename/@charquestskill/@charlostskill GM commands. [Yor]
@@ -301,7 +309,7 @@ Date	Added
 	  - Fixed number of spiritballs (@spiritball GM command)
 	* Fixed random PvP crash bug [Lupus]
 
-08/28
+08/28/2004
 	* Improved some GM commands [Yor]
 	  - Added memo points in @go GM commmand.
 	  - Added negativ value for @heal GM command.
@@ -309,7 +317,7 @@ Date	Added
 	  - Simplified @Statall GM commands.
 	  - Fixed @guildlvup GM commands.
 
-08/27
+08/27/2004
 	* Fixed @(char)zeny/stpoint/skpoint GM commands (no more overflow, etc...) [Yor]
 	* Improved @memo GM command: [Yor]
 	  You can memo anywhere (it's GM command, not /memo command like for any player).
@@ -318,7 +326,7 @@ Date	Added
 	* Fixed @broadcast GM command send broadcast to all Map-servers. [Yor]
 	* Fixed @(char)base/joblevelup command (any adjustement can be entered). [Yor]
 
-08/26
+08/26/2004
 	* In at_command.c: [Yor]
 	  Fixed: initialisation of all strings.
 	  Added: Usage of At command when failed (75%).
@@ -328,29 +336,29 @@ Date	Added
 	  level specifications (both since they share the same packet)
 	* Added my own extream mode map flags (disabled by default), makes players drop items at random everywhere (except towns). Full details in map_athena.conf. [Ancyker]
 
-08/25
+08/25/2004
 	* Added: display usage when GM command failed (some GM commands) [Yor]
 	* Added @email GM command to change your account e-mail [Yor]
 
-08/24
+08/24/2004
 	* Modified changesex script command use same function as @charchangesex now [Yor]
 	* Added @charchangesex GM command can be used on offline players [Yor]
 	* Added gm ladmin command to change GM level of an account [Yor]
 
-08/23
+08/23/2004
 	* Fixed some at_command messages: [yor]
 	  - remove all unused messages
 	  - create commented line of all messages in msg_athena.conf to have english, and under, translation if necessary
 	  - add some (arround 80, but not all) messages in msg_athena.conf
 
-08/22
+08/22/2004
 	* Fixed: In GM commands, add a 'standard' message when GM level is too low [Yor]
 	* Changed in battle_athena.conf [Yor]
 	  - atcommand_spawn_quantity_limit: 100 (20 is too short for mass spawnings.)
 	  - unknow: give translation of babelfish to help on the explanation (not writing: 'unknow' to not lost the information!)
 	  - day_duration: 7200000 & night_duration: 1800000 (set default to 30 min night, 2 hours day to show improvement of eathena by DEFAULT)
 
-08/21
+08/21/2004
 	* Updated battle_athena.conf to be in English (not Engrish) [Ancyker]
 	* Updated WZ_FIREPILLAR according 8-10 patch [AppleGirl]
 	* Updated skill_cast_db and skill_require_db according to 8-10 kRO patch [AppleGirl]
@@ -368,7 +376,7 @@ Date	Added
 	  - GM commands levels are now set by default with diffrent types of GM
 	* Added @inall/@exall GM command to block/unblock ALL wispers of a player [Yor]
 
-08/20
+08/20/2004
 	* Added unblock command (ladmin C) [Yor]
 	* Added unblock command (ladmin perl) [Yor]
 	* Fixed: when limited time is in past, add new duration starts from actual time [Yor]
@@ -381,7 +389,7 @@ Date	Added
 	* Added a check_ip_flag option in login-server [Yor]
 	* Added a display at start of login-server about IP checking configuration. [Yor]
 
-08/19
+08/19/2004
 	* Added unban/unbanish command (ladmin c) [Yor]
 	* Added unban/unbanish command (ladmin perl) [Yor]
 	* Added parameter to choose how works timeadd (ladmin command) with unlimited time accounts [Yor]
@@ -389,7 +397,7 @@ Date	Added
 	* Added: some information about TODO 19. [Yor]
 	* Added: possibility to use "" or '' to give an account name in ladmin (C) (no more problem with account name which have spaces). [Yor]
 
-08/18
+08/18/2004
 	* Guardians were immune to skills/spells, fixed. [Valaris]
 	* Added custom draculax.txt script to display npcskilleffect command. [Valaris]
 	* Added npc/events/custom folder. [Valaris]
@@ -410,7 +418,7 @@ Date	Added
 	* Changed: anti-freeze disconnection in login-server set from 1mn 15s to 30s [Yor]
 	* Improved pecopeco checks in @option/@charoption/@jobchange/@charjob [Yor]
 
-08/17
+08/17/2004
 	* Fixed pecopeco displayings in @option/@charoption/@jobchange/@charjob [Yor]
 	* Correction of @rura, @where, @rurap and some other things in GM commands. [Yor]
 	* Correction of a parameters' errors in GM commands. [Yor]
@@ -421,7 +429,7 @@ Date	Added
 	* Added level_new_gm parameter in login-server to disable or set level of all GM created by @gm [Yor]
 	* Fixed @GM GM command [Yor]
 
-08/16
+08/16/2004
 	* Translation of final message of @gm [Yor]
 	* Fixed on @GM: When login server is offline, char server sends impossible to create GM [Yor]
 	* Fixed: refuse @gm GM command to ... a GM :) [Yor]
@@ -433,7 +441,7 @@ Date	Added
 	* Speed up a little @ban GM command [Yor]
 	* Added ignore all for wisps (to same map-server). Sorry, before, I was added only for not same map-server [Yor]
 
-08/15
+08/15/2004
 	* Added a resume for 'email_creation' parameter [Yor]
 	* Fixed double messages when a player wisp/page itself [Yor]
 	* Added ignore all for wisps [Yor]
@@ -449,7 +457,7 @@ Date	Added
 	* Added banish in ladmin (c) to be like of GM commands [Yor]
 	* Fixed Angel Helm quest, fixed Spore Doll quest exploit, Fixed Morgenstein quest bug [Lupus]
 
-08/14
+08/14/2004
 	* Added banish in ladmin (perl) to be like of GM commands [Yor]
 	* Fixed some possible errors with maps management in char-server [Yor]
 	* Fixed bug of map searching when to few maps on map-servers [Yor]
@@ -468,7 +476,7 @@ Date	Added
 	* Fixed Niflheim&Umbala guides. Fixed Niflheim city. removed 2 NPC clones. [Lupus]
 	* Added Archer Skills quests, fixed Thief Skill Quest [kobra_k88]
 
-08/13
+08/13/2004
 	* Add an option to fix a ban for hacker that spoof name (to set minutes of ban) [Yor]
 	* Fixed incorrect mob IDs with Valaris's mob_db [Ancyker]
 	* Added possibility to execute GM commands when you wisp someone [Yor]
@@ -482,7 +490,7 @@ Date	Added
 	* Fixed muramasa curse rate, thanks to OxiMoron. [Valaris]
 	* Fixed Aldeabran&Comodo towns. Added Cheese quest to Comodo. Fixed Thief Job Quest [kobra_k88]
 
-08/12
+08/12/2004
 	* Begin to add 1040 in login/char/chrif about authentification. not finished [Yor]
 	* @mapmove, @broadcast, and @localbroadcast can now be used. [Valaris]
 	* Looting mobs will not continue to item if it disappears, instead will walk away. [Valaris]
@@ -492,7 +500,7 @@ Date	Added
 	* Added a function to obtain character name with index in auth structure (char.c). [Yor]
 	* Corrected check/test error in mapif_send. [Yor]
 
-08/11
+08/11/2004
 	* itemdb_searchname fixed (now firstly looks for item aliases 'name', if not found looks for item name 'jname'). [Lupus]
 	* Optimized getitem, delitem. getweight, fixed there possible scripts exploits [Lupus]
 	* Thief bug's long name in mob_db.txt was Thief Bug Larva, fixed. [Valaris]
@@ -508,7 +516,7 @@ Date	Added
 	* Improved: Don't ask inter-server for a whisp/page if player is on the same map-server. [Yor]
 	* Completed some printf and comments in char.c [Yor]
 
-08/10
+08/10/2004
 	* Improved map_nick2sd function. Now, sensitiv case is removed when it's possible [Yor]
 	* Corrected split of broadcast messages in char-server [Yor]
 	* Message to Valaris from Yor (special file)
@@ -520,7 +528,7 @@ Date	Added
 	* Correction of unknow_packet displaying (in log). Separate is done after 8th char [Yor]
 	* Give possibility to use account name with spaces in prompt commands finished by account name in ladmin (perl). [Yor]
 
-08/09
+08/09/2004
 	* Fixed char-server lag.  3 tests from 3 people appeared to function properly again. [Valaris]
 	* Basic Implementation of Basilica [AppleGirl]
 	* Added ban command (ladmin perl) [Yor]
@@ -534,7 +542,7 @@ Date	Added
 	* Corrected @jump GM command. [Yor]
 	* Reduced size of conf/help.txt (max 200 lines in chat window). [Yor]
 
-08/08
+08/08/2004
 	* Added NPCs to @disguise. [Valaris]
 	* Mob disguises will now show up to player using it as well.  Attack animation and sitting do show up to them yet. [Valaris]
 	* Added @disguise GM command in help files [Yor]
@@ -550,7 +558,7 @@ Date	Added
 	* Speed up some sortings of online creation (strings based sortings) [Yor]
 	* Fixed nullpointer crash with disguise in clif_changelook [Kalaspuff]
 
-08/07
+08/07/2004
 	* Fixed so spells will still be cast if target walks out of range. (please don't overwrite this again) [Valaris]
 	* Corrected a little error in online files creation (only 1 player was visible) [Yor]
 	* Optimized memory management of online list [Yor]
@@ -573,7 +581,7 @@ Date	Added
 	* Improved online management code and some others little codes (char.c). [Yor]
 	* Respawn points of prisoners set to the jail rooms. Jail.txt mapflag addeed. So imprisoned players can't escape. [Lupus]
 
-08/06
+08/06/2004
 	* Improved/Optimized some little code (char.c/login.c). [Yor]
 	* Improved 0x2afa and 0x2afb (map transmissions between char and map). [Yor]
 	* Optimized global message nick spoof fix. [Valaris]
@@ -582,7 +590,7 @@ Date	Added
 	* Set area size back to 20 for now, some things in path.c need to be fixed. [Valaris]
 	* Fixed crash in guardian search. [Valaris]
 
-08/05
+08/05/2004
 	* Added  @jail <char_name> GM command [Yor]
 	* Added explanation of @idsearch and @mapinfo in help.txt [Yor]
 	* Improved @idsearch GM command [Yor]
@@ -596,7 +604,7 @@ Date	Added
 	  added extra Rapairmen into refine.txt. In Inns added 4 different prices based on Base Lvl.[kobra_k88]
 
 ---------eAthena 1.0.0 RC3 TXT---------
-08/04
+08/04/2004
 	* Set battle_athena.conf to more accurate settings. [Valaris]
 	* Decreased default damage delay (stun after being hit) by 75%. [Valaris]
 	* Max walk path is now correct (17). [Valaris]
@@ -614,7 +622,7 @@ Date	Added
 	* Added some pointer checks to the mob ai. [Valaris]
 	* New (lag-free) fix for NPCs / mobs not showing up when chars walk around [Kalaspuff]
 
-08/03
+08/03/2004
 	* Made so if exp given is less than 0, 0 is given instead of 1 (plants were giving exp) [Valaris]
 	* Added console displaying to have complete informations when we expand Wdata session. [Yor]
 	* IMPORTANT: Add a TODO 31 for Guilds' coders. [Yor]
@@ -631,7 +639,7 @@ Date	Added
 	* Improvement: Character asking of map-server to char-server is not more case sensitive. [Yor]
 	* Added TODO 29 & 30. [Yor]
 
-08/02
+08/02/2004
 	* Re-added "player not attached" error reporting. [Valaris]
 	* Fixed errors in 32 hat quest that was causing player not attached errors. [Valaris]
 	* Fixed input number function: commented out negative input check by Valaris in script.c (all scripts have been revised and fixed),
@@ -654,7 +662,7 @@ Date	Added
 	* Removed Kalaspuff's fix for mob/npc data not always being recieved.  It was causing
 	  excessive amounts of lag. [Valaris]
 
-08/01
+08/01/2004
 	* Added ability to spawn character pets. [Valaris]
 	* Added show_mob_hp. [Valaris]
 	* @item/@item2 GM commands now work correctly with name begining by a number. [Yor]
@@ -677,7 +685,7 @@ Date	Added
 	* @day/@night: when already the desired cycle, display a message. [Yor]
 	* Fixed overlapping Ice-Cream Maker NPC, duplicated NPCs, restored duplicated Akaru's MrSmile [Lupus]
 
-07/31
+07/31/2004
 	* Terminated: night/day cycles. [Yor]
 	* When a state comes back to normal, player stay in night if it's night. [Yor]
 	* Started to add management of day/night: [Yor]
@@ -692,7 +700,7 @@ Date	Added
 	* Began adding developer mobs. [Valaris]
 	* Added dyes and fixed client crashes with player mobs. [Valaris]
 
-07/30
+07/30/2004
 	* Added temp fix for "nullpo player not attached" error message (script.c script_rid2sd) [Lupus]
 	* Added checks for major cities in afm format. [Valaris]
 	* Added preliminary AFM(Advanced Fusion Map) support.  Actual map-reading works, but rest of server needs to recognize them. 
@@ -713,7 +721,7 @@ Date	Added
 	  Updated map_athena.conf [Lupus]
 	* Fixed: battle_athena config's atcommand_gm_only; yes was no and vice versa [Kalaspuff]
 
-07/29
+07/29/2004
 	* Added 'language <language>' command in ladmin.c to change language of displaying. [Yor]
 	* Re-added guardians don't attack guild members, someone must have removed it by accident. [Valaris]
 	* Restore correct displaying (LAN/WAN) previous was good :) (sorry... prabably tiredness). [Yor]
@@ -725,7 +733,7 @@ Date	Added
 	* Added a note in TODO 14: encrypted password - problem with client versions [Yor]
 
 ---------eAthena 1.0.0 RC2 TXT---------
-07/28
+07/28/2004
 	* Added metaller to equipped mobs. [Valaris]
 	* Added a note in TODO 19 [Yor]
 	* REMOVED last changelog: cvs server: [14:29:29] waiting for cvs's lock in /usr/cvsroot/athena/src/char [Yor]
@@ -753,7 +761,7 @@ Date	Added
 	* Fixed Kafra functions_kafras.txt NPC (fixed Kafra Pass exploit) [Kobra_k88]
 	* Fixed Hunter.txt coords of the Guild entrance warp [Lupus]
 
-07/27
+07/27/2004
 	* Improved check command in ladmin.c [Yor]
 	* Added map_id check in map_foreachinarea, to prevent eventual crashes [Kalaspuff]
 	* Added @enablenpc and @disablenpc in help files [Yor]
@@ -778,7 +786,7 @@ Date	Added
 	* Placed all Sign Posts/Signs into a single file. [Lupus]
 	* Files arrangement, additional warps/scripts correction. Fixed several scripts (NPC overlapping, bad sprites, etc). [Lupus]
 
-07/26
+07/26/2004
 	* More accurate pvp point system.  It skips ranks, needs more work. [Valaris]
 	* Fixed crash in executioner card code. [Valaris]
 	* Fixed mob respawn after death bug. [Valaris]
@@ -794,7 +802,7 @@ Date	Added
 	* Added 2 living statues behind the NPC 'Monster Expert'. [Yor]
 	* Improved a little 1st course of novice training. [Yor]
 
-07/25
+07/25/2004
 	* Allow mobs to be equipped with pet armor. mob_avail and clone mobs need to be created. [Valaris]
 	* Removed [AppleGirl]'s armor breaking code. [Valaris]
 	* Commented out data_dir. [Valaris]
@@ -810,7 +818,7 @@ Date	Added
 	* Fixed backstab bow penalty option. [Syrus22]
 	* Fixed Alliance check in battle.c for emp/guardian damage. [Syrus22]
 
-07/24
+07/24/2004
 	* Added backstab bow penalty option [Akaru]
 	* Fixed OnGuardianDied events on prontera castles 3 to 5. [Valaris]
 	* Another vending fix. [Valaris]
@@ -818,7 +826,7 @@ Date	Added
 	* Fixed a vending bug. [Valaris]
 
 ---------eAthena 1.0.0 RC1 TXT---------
-07/22
+07/22/2004
 	* Fixed numerous startup errors in aldebaron castles and one geffen castle. [Valaris]
 	* Full Guild Wars Script Complete!!! [Akaru]
 	* Fixed rice ball item. [Valaris]
@@ -826,19 +834,19 @@ Date	Added
 	* Updated item_db with fix for Sleipnir and more translations. [Akaru]
 	* Translated item_violetbox, mob_poring, mob_branch, mob_boss. Fixed wizard.txt (wrong item id), headgeatquest.txt(added Zeny check) [Lupus]
 
-07/21
+07/21/2004
 	* Updated refine.txt. Added optional features and optimized the file. [Syrus22]
 	* Evened out the # of columns in mob_db, filled in some blanks. [Valaris]
 	* Undid compilation errors caused by Akaru's removal of nullpo.o from map-server compile [Valaris]
 
-07/20
+07/20/2004
 	* Removed Ghostring from gef_fild13.gat [rg]
 
-07/19
+07/19/2004
 	* Fixed Graffiti [Valaris]
 	* Zeny Bug In Vending Fixed [Darkchild]
 
-07/18
+07/18/2004
 	* Added a check about level of at_command when reading the file [Yor]
 	* Updated /help and conf/help.txt [Yor]
 	* Added @nuke command in conf/help.txt [Yor]
@@ -849,12 +857,12 @@ Date	Added
 	* Update features.html/changlog.html [Yor]
 	* Fixed compilationissue on FreeBSD [Kalaspuff]
 
-07/16
+07/16/2004
 	* Remove limit for kami/kamib ladmin command. [Yor]
 	* Fixed crash in weddingtxt.txt where it was checking an invalid equip index. [Valaris]
 	* Added some TODO for next version. [Yor]
 
-07/15
+07/15/2004
 	* Changed: login.txt->login.log in log directory [Yor]
 	* added system to choice authorised ip for remote administration [Yor]
 	* Added listBan/listOk commands in ladmin's. [Yor]
@@ -862,7 +870,7 @@ Date	Added
 	* Init map strings of each servers when map-server send informations. [Yor]
 	* Added some TODO for next version. [Yor]
 
-07/14
+07/14/2004
 	* Fixed another lockup with multi_level_up [Valaris]
 	* Added kami(yellow)/kamib(blue) commands in ladmin (terminated). [Yor]
 	* Fixed name of ladmin_athena.conf. [Yor]
@@ -880,7 +888,7 @@ Date	Added
 	* Added banadd command in ladmin.c [Yor]
 	* Removed duplicate check in chrif.c. [Yor]
 
-07/13
+07/13/2004
 	* Fixed GM_level code in map-server. [Yor]
 	  problem is in the hash system of the db -> use simple db until we found solution.
 	  note: for this db, it's not necessary to use a db system (little db, 2 values: key, value)
@@ -906,7 +914,7 @@ Date	Added
 	* Finished adding battle_athena options to command line. Every option in battle_athena.conf
 	  can now be passed directly through the command prompt. [Valaris]
 
-07/12
+07/12/2004
 	* Added many battle_athena options to command line arguments. [Valaris]
 	* Allow battle_config_switch to be used globally in map-server. [Valaris]
 	* Rewrote map-server command-line code.  Will now begin implemented nice commands for map-server. [Valaris]
@@ -924,7 +932,7 @@ Date	Added
 	* Added pet_equip_required option for pet skills. [Valaris]
 	* Changed: create a sub-function for help command in ladmin (perl). [Yor]
 
-07/11
+07/11/2004
 	* Added Petit pet skill. [Valaris]
 	* Added some code for Petite Heaven Drive, still does not work, but doesn't crash. [Valaris]
 	* Fixed dokebi and baby desert wolf pet skills. [Valaris]
@@ -937,10 +945,10 @@ Date	Added
 	* Added Isis pet skill. [Valaris]
 	* Added petmag script command for magnificat. [Valaris]
 
-07/10
+07/10/2004
 	* Added Banker NPC because alot of users wanted one. [Syrus22]
 
-07/09
+07/09/2004
 	* Added Sohee pet skill. [Valaris]
 	* Added petheal command. [Valaris]
 	* Added Smokie pet skill. [Valaris]
@@ -963,7 +971,7 @@ Date	Added
 	* Increase drop rates +25% if over level 20 on pk_mode. [Valaris]
 	* Changed +25% exp increase on pk_mode to 15%. [Valaris]
 
-07/08
+07/08/2004
 	* Disabled pvp rank and timer if pk_mode is on. [Valaris]
 	* All maps made pvp if pk_mode is on. [Valaris]
 	* pk_mode additional 25% exp given over level 20 [Valaris]
@@ -980,7 +988,7 @@ Date	Added
 	* Updated and Shrunk the Kafra Script. [Syrus22]
 	* Create @reloadgmdb gm command. [Yor]
 
-07/07
+07/07/2004
 	(Dated On Aegis Website)
 	*--Released 1.0.0 RC3--*
 	* Fixed crashed with prevent_multi_login. [Valaris]
@@ -1006,7 +1014,7 @@ Date	Added
 	* Added 'GM' display option for online files [Yor]
 	* Improved GM accounts file reading in login-server [Yor]
 
-07/06
+07/06/2004
 	* Changed heal dog in prontera to a poring. [Valaris]
 	* NPCs with mob sprites can now be used in scripts. [Valaris]
 	* Removed sd->brokencounter. Made getbrokenid more scripter friendly. Updated refine.txt getbrokenid commands. [Valaris]
@@ -1020,7 +1028,7 @@ Date	Added
 	* Added a check on start_point.map when configuration is readed. [Yor]
 	* Modified final message of login log at end of login-server. [Yor]
 
-07/05
+07/05/2004
 	* Flamelauncher,frostweapon,lightningloader,seismicweapon, and enchant poison now check to make sure target's weapon is not already enchanted. [Valaris]
 	* If sage breaks another person's weapon due to enchant failure, it will tell caster. [Valaris]
 	* Modified venom splasher to hopefully stop crashes caused by spamming. [Valaris]
@@ -1046,7 +1054,7 @@ Date	Added
 	* Speed up characters saving [Yor]
 	* Improved logs when a character isn't readed [Yor]
 
-07/04
+07/04/2004
 	* Completed Prontera guild castles [Akaru]
 	* break_weapon_chance now works, but broken weapon will not be displayed any differently than a normal weapon.
 	  Also does not yet affect a dual dagger assassin's 2nd weapon. No way to repair yet, and no skills/stats affect breaking chances. [Valaris]
@@ -1064,7 +1072,7 @@ Date	Added
 	* Make sure cart is on before vending. [Valaris]
 	* Cleaned up vending exploit fixes.  Now checks to make sure not vending more than max items per skill level. [Valaris]
 
-07/03
+07/03/2004
 	* Prevent use of potion pitcher on oneself, fixed potion pitcher so can be used on other targets. [Valaris]
 	* Fixed the damage code for Falcon Assault, so its not totally useless. [?]
 	* Update peco riders for people upgrading athena, fixed bug in unmounting pecos. [Valaris]
@@ -1080,7 +1088,7 @@ Date	Added
 	* Improved messages between servers about connections. [Yor]
 	* Improved pc_resetlvl, fixed the bug about options being left. [?]
 
-07/02
+07/02/2004
 	* Added optional match_test in @who/who2/who3 commands (no sensitive case) [Yor]
 	* If there is no map-server, send right message to client (char-server) [Yor]
 	* Improved counter of users (char-server) [Yor]
@@ -1088,7 +1096,7 @@ Date	Added
 	* Improved sorting of account before save (login-server) [Yor]
 	* Improved map search at selection of a character (char-server) [Yor]
 
-07/01
+07/01/2004
 	* Removed FD_SETSIZE definitions from socket.h, added -DFD_SETSIZE=4096 argument to makefiles. [Valaris]
 	* Changed exploit fix in chrif.c [Valaris]
 	* Added assassin mask view_id in item_db [Valaris]
@@ -1099,7 +1107,7 @@ Date	Added
 	* Improved save/load of REG2 strings and values (login) [Yor]
 	* When there is no char-server, login-server sends proper message instead of a void list of servers [Yor]
 
-06/30
+06/30/2004
 	* Fixed a crash when used @charmodel,@charstpoint,@charskpoint and
 	  @charzeny with the wrong name [Kalaspuff]
 	* Added possibilities for switchs in battle.conf (add some foreign language) [Yor]
@@ -1111,11 +1119,11 @@ Date	Added
 	* Correction of prtg_cas03.txt that crash server AT START! [Yor]
 	* Added functions of mapflag noskill [Kalaspuff]
 
-06/29
+06/29/2004
 	(Dated On Aegis Website)
 	*--Released 1.0.0 RC2--*
 
-06/28
+06/28/2004
 	* Added monsters_ignore_gm option.  Monster won't attack GMs if turned on unless attacked and within 1 cell. [Valaris]
 	* Added drops_by_luk option in battle_athena.conf. Anything higher than 0 will turn this option on, and act as a mutiplier.  
 	  Example : Setting of 10 with 50 luk would add 5 to the drop rate. So say a card has a drop rate of 2, it would become 7. [Valaris]
@@ -1124,7 +1132,7 @@ Date	Added
 	* Fixed problem where warp portals broke in npc.c [Valaris]
 	* Updated atcommand_heal so it works like it should [Kalaspuff]
 
-06/27
+06/27/2004
 	* Changed Venom Splasher so it will increase damage based on level of Poison React (had it set so the player had to be 
 	  using it, but it turns out it doesn't need to be) [Valaris]
 	* Venom Splasher now works except for the counter part.  Damage is instantly dealt if skill is successful. [Valaris]
@@ -1136,17 +1144,17 @@ Date	Added
 	* Added the mapflag nowarpto [Kalaspuff]
 	* Updated the function of nowarp [Kalaspuff]
 
-06/26
+06/26/2004
 	* When a player is banned (or with a state != 0), he is disconnected [Yor]
 	* When sex is changed, skills of other sex are reseted (and skill points increased of the same number) [Yor]
 	* To avoid problem with change sex and equipement, changed sex character is unequipped of all equipment [Yor]
 
-06/25
+06/25/2004
 	* Added @charchangesex GM command [Yor]
 	* Changed: Changesex is now done after that the login-server has confirmed the change [Yor].
 	           becuase sex is saved in account file.
 
-06/24
+06/24/2004
 	* Added new classes in change sex script command (buildin_changesex). [Yor]
 	* Translated pet_db.txt again [Valaris]
 	* Initial implementation of Venom Splasher. Runs checks on target poison status and whether or not hp is less then 2/3.
@@ -1157,14 +1165,14 @@ Date	Added
 	* Initial implementation for Chase Walk skill for Stalker Class [?]
 	* When an account is banned, message_error_7 is not more modified [Yor].
 
-06/23
+06/23/2004
 	(Dated On Aegis Website)
 	*--Released 1.0.0 RC1--*
 	* Added bRandomAttackIncrease for Executioner card.  Chance stacks, attack does not. [Valaris]
 	* Fixed magic_damage_return so it will actually work (for Maya card). [Valaris]
 	* Add a ban timestamp in the structure of the accounts. Management not yet make [Yor]
 
-06/22
+06/22/2004
 	* Don't send a message when it's void (packet 0x8e) - client doesn't display it [Yor].
 	* Add a refresh time parameter for the html online file (refresh time in the explorer) [Yor].
 	* Create a job_name function in atcommand to have the name of the job (suppress repeated code) [Yor].
@@ -1177,7 +1185,7 @@ Date	Added
 	* skill_out_range_consume - If it is set 'no' the skill will still be cast (like real servers).
 	  If it is set to yes, skill will fail and sp and items required will be lost. [Valaris]
 
-06/21
+06/21/2004
 	* Updated Sacrifice skill code to be more flexible for user usage [?]
 	* Changed SC_ATTACKPOTION and SC_MATTACKPOTION to SC_ATKPOT and SC_MATKPOT, also added it in item_db.txt [?]
 	* Guild Territory will now display the # of castles owned or "None Taken". [Valaris]
@@ -1195,7 +1203,7 @@ Date	Added
 	* Improve presentation of online.txt file. [Yor]
 	* In /npc/quests/magicalhatquest, corrected checking for and deletion of Mage Hat instead of Wizard Hat. [rg]
 
-06/20
+06/20/2004
 	* Fixed problem with guardian emblems disappearing [Valaris]
 	* If a GM use GM HIDE, he is not counted in the number of players [Yor]
 	* Setup prtg_cas01 to load guardians on server startup and to spawn them when purchased.  Also switched from GuardianDied 
@@ -1218,7 +1226,7 @@ Date	Added
 	* Added so guardian hp will change accordingly.  Moved the guardian defense increase to mob.c [Valaris]
 	* Implemented guardian and guardianinfo script commands [Valaris]
 
-06/19
+06/19/2004
 	* Added Ghp0-7 into castle database [Valaris]
 	* Added configuration parameters to choose online files filename [Yor]
 	* Added online files (txt and html) [Yor]
@@ -1229,13 +1237,13 @@ Date	Added
 	* Solve problem about the change of MAX_GUILDPOSITION by [Valaris] when we load an old guild.txt file. [Yor]
 	* Improve allow/deny configuration. Write warnings if necessary. [Yor]
 
-06/18
+06/18/2004
 	* Add heal_payment.txt as an alternative to heal.txt. [Yor]
 	* Sex change (char.C): Correct error in jobchange. Disconnect player if connected. [Yor]
 	* Sex change/account deletion: Change authentification to avoid that player comes back on char-server within the 5 secondes before disconnection. [Yor]
 	* Save configuration of login-server in log file at start. [Yor]
 
-06/17
+06/17/2004
 	* Added fritz's vending exploit fixes. [Valaris]
 	* Increased max guild castle size to accomodate for novice guild castles. [Valaris]
 	* Fixed investment in prontera castle 1. [Valaris]
@@ -1244,7 +1252,7 @@ Date	Added
 	  1=english name, 2=jap name, 3=level, 4=max_hp, 5=max_sp,6=base_exp,7=job_exp. [Valaris]
 	* Disable % and / for 1st symbol of commands (party chat symbol and standard ragnarok GM commands) [Yor]
 
-06/16
+06/16/2004
 	* Added fully functional economy for Prontera Castle 2 Guild Wars script [Akaru]
 	* added fix for cross-class ensemble skills. [?]
 	* Increased max guild member limit to accomodate for +2 member increase per extension level 
@@ -1260,17 +1268,17 @@ Date	Added
 	* Save deleted accounts (administration deletion) in log file [Yor]
 	* Add a message when login-server is terminated [Yor]
 
-06/15
+06/15/2004
 	* Added in fov's fixes for socket.c, atcommand.c, npc.c and skill.c [Valaris]
 	* Added a char_log function. Save unreadable characters in log instead of a specific file [Yor]
 	* Save invalid account lines in log file. Account will be never lost [Yor]
 	* Sort characters of same player with the slot number in the characters file [Yor]
 
-06/14
+06/14/2004
 	* Fix errors in prtg_cas01, prtg_cas05 and MrSmile scripts [Akaru]
 	* Added fully functional economy for Prontera Castle 1 Guild Wars script [Akaru]
 
-06/13
+06/13/2004
 	* If player is on map-server when the account is deleted, player is now disconnected [Yor]
 	* Correction of char deletion bug when account is deleted [Yor]
 	* Added Prontera Castle 5 guild wars script [Akaru]
@@ -1285,7 +1293,7 @@ Date	Added
 	* Do right initialization of char_dat [Yor]
 	* Add red color for ERROR displays in char.c [Yor]
 
-06/12
+06/12/2004
 	* Change 0 to '\0' for char in login.c. Add red color for ERROR displays [Yor]
 	* Optimised Mr. Smile NPC script [Akaru]
 	* Add a configuration in atcommand.conf to set the 1st character of ALL commands (Now, you can choose @, #, !..., any char that is not control character) [Yor]
@@ -1294,13 +1302,13 @@ Date	Added
 	* Changed Graffiti placement, will allow placement of one painting at a time (old one will be replaced). [Valaris]
 	* Graffiti displays to other plays and remains on map for set time period. [Valaris]
 
-06/11
+06/11/2004
 	* Initial implementation of graffiti (does not change directions yet (vertical/upsidedown) and doesn't dissappear [Valaris]
 	* Add config_switch (0/1, yes/no, ...) for char-server configuration [Yor]
 	* Add a display when a player does a connection [Yor]
 	* Add a display when a remote administration does a connection [Yor]
 
-06/10
+06/10/2004
 	* Improve compiling instructions for cygwin (socket.h) (depends of the cygwin version). [Yor] with help of [Lostsoul]
 	* Add parameters in login.conf to display or not parse information [Yor]
 	* Remove some repeated codes in ladmin / add example when error of command [Yor]
@@ -1310,7 +1318,7 @@ Date	Added
 	* Fixed Various Npc Bugs [Darkchild]
 	* Added green colour for READY displays in char-server, login-server and map-server [Akaru]
 
-06/09
+06/09/2004
 	* Add some comments in ladmin [Yor]
 	* Remove displaying of packet 0x2714 from login-server [Yor]
 	* Correct length of password send to login-server in char-server [Yor]
@@ -1322,18 +1330,18 @@ Date	Added
 	* Reverted training grounds back to new_1-?.gat maps. [Valaris]
 	* Added added more variety to sending packets to guild members (same map, same map w/out self, ect) [Valaris]
 
-06/08
+06/08/2004
 	* Put a HOWTO in lan_support.conf. [Yor]
 	* Removed extra semicolons in char.c, map.c, and pc.c. [Valaris]
 	* Added missing } to clif_storageitemlist in clif.c and found a couple lines ending with 2 semicolons, removed them. [Valaris]
 
-06/07
+06/07/2004
 	* Translated refine_db.txt. [Valaris]
 	* Negative vending fix. [Fritz]
 	* Correction of mktime parameters in ladmin + some translations [Yor].
 	* Add some checks on login-server configuration parameters [Yor].
 
-06/06
+06/06/2004
 	* Fixed error in skill_tree.txt that would crash some people's servers when changing to Professor. [Valaris]	
 	* Added admin_state directive for enabling and disabling remote administration, instead of testing whether admin_pass == "" [rg]
 	* Add title to the servers. [Yor]
@@ -1347,7 +1355,7 @@ Date	Added
 	* Complete Guild Wars for Prontera Castle 2 script done [Akaru]
 	* Fixed prevent_logout option. [Valaris]
 
-06/05
+06/05/2004
 	* Implemented guild castle regen.(Stackable 2x for castle owners) [Valaris]
 	* Fixed player logout display on map-server console. [Valaris]
 	* Added atcommand_spawn_quantity_limit directive to /conf/battle_athena.conf [rg]
@@ -1364,7 +1372,7 @@ Date	Added
 	* Will not default to prontera.gat if map-server is not connected. [Valaris]
 	* Warp players who are not in guild out of castles when WoE starts. [Valaris]
 
-06/04
+06/04/2004
 	* Allies now do no damage to guardians or emperium. [Valaris]
 	* Prevent allies from being attacked by guardians. [Valaris]
 	* Optimized guardian emblem code. [Valaris]
@@ -1372,7 +1380,7 @@ Date	Added
 	* Guardian emblems will change if castle is taken, but client needs to refresh map. [Valaris]
 	* Fixed problem where guild emblem would vanish from guild info screen. [Valaris]
 
-06/03
+06/03/2004
 	* Improve e-mails checks and LAN/WAN checks on char-server. [Yor].
 	* Add some explanations in front of accounts file. [Yor]
 	* Set a non LAN configuration for basic configuration in lan_support.conf. Explain parameters. [Yor]
@@ -1384,24 +1392,24 @@ Date	Added
 	* Finish translation of new login.c [Yor]
 	* Implemented Guardian Emblems [Valaris]
 
-06/02
+06/02/2004
 	* Added maximum_level option in battle_athena.conf [Valaris]
 	* Added maximum level cap to all the level up commands. [Valaris]
 	* Added "Deal has been cancelled" message to Fritz's input exploit fix. [Valaris]
 
-06/01
+06/01/2004
 	* Fixed training ground npcs and warps, removed depreceated maps, using new ones. [Valaris]
 
-05/30
+05/30/2004
 	* Small map-server crashing fix with Leo and Guide npcs in training ground [Valaris]
 
-05/29
+05/29/2004
 	* Removed item_value_db.txt and all references to it [Valaris]
 	* Removed unused class_equip_db.txt [Valaris]
 	* Fixed stat and level reset bug where needed status points wouldnt reset unless relogged [Valaris]
 	* @monster will summon monster without an amount specified [Valaris]
 
-05/28
+05/28/2004
 	* Added heal and usable item rate modifier [Valaris]
 	* Added pet equipment to equipment rate modifier [Valaris]
 	* Added option to turn alchemist summon experience and drops on and off [Valaris]
@@ -1409,136 +1417,167 @@ Date	Added
 	* Fixed bug where if certain items lowered max hp (4 mysteltain, and 1 eddga) below 0
 	  would loop to server max hp value. [Valaris]
 
-05/26
+05/26/2004
 	* Added New Hats [Darkchild]
 	* Added New Monsters [Darkchild]
-05/23
+
+05/23/2004
 	* Added @charstatsall, views all characters (easy for money bug scaning etc! [Fritz]
 	* Max to input npc command, 0 is lowest, 99999999 is max, this to prevent money bugs! [Fritz]
 
-05/21
+05/21/2004
 	(Dated On Aegis Website)
 	*--Released 0.5.2--*
 
-05/20	
+05/20/2004
 	(Dated On Aegis Website)
 	*--Released 0.5.1--*
 	* got dye working again [Darkchild/fritz]
 
-05/19
+05/19/2004
 	(Dated On Aegis Website)
 	*--Released 0.5.0--*
 
-05/09
+05/09/2004
 	* added Prontera Guild Castle 3 test guild wars test script [Akaru]
 	* modified Prontera Guild Castle 1 and 2 guild wars test script [Akaru]
 	* fixed several valkyrie jobchangers [Akaru]
-05/08
+
+05/08/2004
 	(Dated On Aegis Website)
 	*--Released 0.4.2--*
 	*--Released 0.4.1--*
 	* added Prontera Guild Castle 2 test guild wars test script [Akaru]
 
-05/07	(Dated On Aegis Website)
+05/07/2004	(Dated On Aegis Website)
 	*--Released 0.4.0--*
 
-05/06
+05/06/2004
 	* added Prontera Guild Castle 1 test guild wars test script [Akaru]
-05/04
+
+05/04/2004
 	* removed parses and added ENGLISH! [?]
 
-04/29	(Dated On Aegis Website)
+04/29/2004	(Dated On Aegis Website)
 	*--Released 953 Delta--*
 
 04/28	(Dated On Aegis Website) (Whose Ideas Were These?)
 	*--Released 953 Gamma--* 
-04/27
+
+04/27/2004
 	*--Released 951 Beta--*
 	* fixed @jobchange crash [credits to Mugendai, commited by Akaru]
 
-04/25	(Dated On Aegis Website)
+04/25/2004	(Dated On Aegis Website)
 	*--Released 947 Alpha--*
-04/23
+
+04/23/2004
 	* added more Professor Skills and added checks [?]
-04/10
+
+04/10/2004
 	* added more upper skills from moonsoul's works [?]
-02/12-04/10
+
+02/12/2004 - 04/10/2004
 	* CVS Down - Not Many changes could be made...*
 
-02/22	(Dated On Aegis Website)	
+02/22/2004	(Dated On Aegis Website)	
 	*--Released 817--*
 
-02/12
+02/12/2004
 	* added more mob skill conditions (friendstatuseq, mysyatuseq, friendhpltmaxrate) [RoVeRT]
-02/06
+
+02/06/2004
 	* dumped @skillall for @allskill [?]
-02/05
+
+02/05/2004
 	* fixed provoke so it doesnt work on undead [RoVeRT]
 	* added TyrNemesis^ card removal code and min/max settings [RoVeRT]
-02/04
+
+02/04/2004
 	* added start_zeny and party_level_range to char_athena.conf [RoVeRT]
-02/03
+
+02/03/2004
 	* Improved the prontera.gat map fallback. [Sara-chan]
 	* Improved the way guild emblems act when logging in. [Sara-chan]
 	* Undead-class armor, and Undead monster themselves will never be frozen [RoVeRT]
 	* fixed negative values for NPC to always be 0
-01/26
+
+01/26/2004
 	* mob_warpslave correction [RoVeRT]
-01/25
+
+01/25/2004
 	* added poison hp reduction [AppleGirl]
-01/20
+
+01/20/2004
 	* added intimidate [RoVeRT]
 	* added mvp checks for some skills
-01/17
+
+01/17/2004
 	* added skill check for empelium attack and removed drops from NULL kills [RoVeRT]
-01/16
+
+01/16/2004
 	* added secondary effects for when characters with appropriate elemental armor
 	  are within area of effect of sage spells SA_VOLCANO(atk up), SA_DELUGE(max hp up),
 	  SA_VIOLENTGALE(flee up) [moonsoul]
 	* removeal of @randmon as it isnt needed [RoVeRT]
-01/15
+
+01/15/2004
 	* fixed auto spell so it works the prober way [RoVeRT]
-01/12
+
+01/12/2004
 	* added mob_warpslave [RoVeRT]
 	* added mob_warp to check noteleport mapflag
-01/07
+
+01/07/2004
 	* added OnCommand for NPC [RoVeRT]
 	* added new on death method for NPC spawned mobs [RoVeRT]
 	* added mobcount [RoVeRT]
-01/06
+
+01/06/2004
 	* fixed icon status for spear quicken [AppleGirl]
 	* added quoted name support for @monster [RoVeRT]
-01/05
+
+01/05/2004
 	* added indivudal support for card and equip drop rates [RoVeRT]
-01/04
+
+01/04/2004
 	* added TF_PICKSTONE and skill check condition for TF_THROWSTONE [AppleGirl]
 	* added updated cast_db.txt and fixed SA_VOLCANO, SA_DELUGE,
 	  SA_VIOLENTGALE, and SA_LANDPROTECTOR GRAPHICS [AppleGirl]
 	* Fixed Effects of a few bard Skills. [AppleGirl]
 	* added option to stop logout for 10 seconds after taking a hit [RoVeRT]
-01/03
+
+01/03/2004
 	* added inet_ip support to char and map [RoVeRT]
 	* added checkcart, checkfalcon and checkriding npc commands
-01/02
+
+01/02/2004
 	* added new npc timer support that is independant of a player [RoVeRT]
-12/31
+
+12/31/2003
 	* Added @refineall [Mark]
-12/30
+
+12/30/2003
 	* added support for custom_item-db.txt with battle_athena.conf option [RoVeRT]
 	* fixed @charzeny bug
 	* translated help.txt to english anong with a few other files [RoVeRT]
-12/29
+
+12/29/2003
 	* added umbala maps to map_athena.conf [RoVeRT]
-12/26
+
+12/26/2003
 	* added Skill_range based on level, and partially working AutoGuard [Moonsoul]
 	* added Correction of Whip and Instrument Damage Again [Sara-Chan]
-12/25
+
+12/25/2003
 	* Spear Quicken Correct Graphics,Fixed Magnum Break (Which Fixes All Other 
 	  Splash skills), and Fixed Brandish Spear [AppleGirl]
 	* Updated Command For @SkillAll Added Atcommand_athena.conf [RoVeRT]
-12/24
+
+12/24/2003
 	* Added Side Effects for multiple skills for 2-2 classes [AppleGirl]
-12/23
+
+12/23/2003
 	* Added GM Command Called @Skillall [RoVeRT]
 	* @skillall to skill-up all your current skills [RoVeRT]
 	* @hide does hide you from all monsters [RoVeRT]
@@ -1553,5 +1592,8 @@ Date	Added
 	* Added Skill Grimtooth does splash damage [AppleGirl]
 	* Added Skill Steal Fixed and Snatcher [AppleGirl]
 	* Added Skill SonicBlow only works with Katars Now [AppleGirl]
-12/22
+
+12/22/2003
 	* Added Skills Shield Boomerang, Shield Charge, and Defender [AppleGirl]
+
+EATHENA BEGINS HERE, based on jAthena

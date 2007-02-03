@@ -5,12 +5,13 @@
                 (  _)  )  \   ) _)  \  /  /__\                
                 (_)   (_)\_) (___) (__/  (_)(_)               
                     http://www.ro-freya.net                   
-                      Freya SVN Changelog
+                      Freya SVN Changelog                     
 --------------------------------------------------------------
 
 Date	Added
 
 02/02/2007
+	* Improved: Fixed up old changelogs [Tsuyuki]
 	* Updated: Adapted scripts/databases to new changes [Tsuyuki]
 	* Updated: Adapted status_change_clear_buffs function to new changes [Tsuyuki]
 	* Updated: status_change_clear_debuffs function [Tsuyuki]

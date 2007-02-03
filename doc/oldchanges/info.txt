@@ -1,5 +1,24 @@
-This is a compilation of all the changes applied to what is now Freya, over the last 4 years:
+--------------------------------------------------------------
+               (c)2004-2007 Freya team presents:              
+                 ___   ___    ___   _  _   __                 
+                (  _) (  ,)  (  _) ( \/ ) (  )                
+                (  _)  )  \   ) _)  \  /  /__\                
+                (_)   (_)\_) (___) (__/  (_)(_)               
+                    http://www.ro-freya.net                   
+--------------------------------------------------------------
 
-Athena (jAthena) 1162 -> eAthena RC4 -> Old Freya -> Project Freya -> Freya
+This is a compilation of all the changes applied to what is now Freya, over the last 5 years:
 
-Initial release date: Athena Dev. v2.1.1       Released: Middle July, 2003
+------------------------------
+
+Athena (2002) -> jAthena 1162 (2003) ->
+
+AppleMod/AkaruMod (2004) -> eAthena RC4 (2004) -> Old Freya (2004)
+
+-> Project Freya (2006) -> Freya (2006)
+
+------------------------------
+
+Initial release date: Athena, early 2002
+
+------------------------------
