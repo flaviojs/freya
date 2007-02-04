@@ -1,8 +1,10 @@
 //===== Freya Script =========================================
 //= Map flags that disable warp
 //===== By: ==================================================
-//= eAthena Dev Team
+//= Original: eAthena
 //= Updated: Freya Development Team
+//===== Description: =========================================
+//= These maps cannot be warped to (Security purposes)
 //============================================================
 
 // Guild Castles =============

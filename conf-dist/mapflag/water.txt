@@ -1,8 +1,10 @@
 //===== Freya Script =========================================
 //= Map Flags for maps with water in/on them
 //===== By: ==================================================
-//= eAthena Dev Team
+//= Original: eAthena
 //= Updated: Freya Development Team
+//===== Description: =========================================
+//= Maps that have water should be set here (For Waterball, etc)
 //============================================================
 
 mjolnir_12.gat	mapflag	water

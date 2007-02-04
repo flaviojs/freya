@@ -1,8 +1,10 @@
 //===== Freya Script =========================================
 //= Map Flags for water height levels
 //===== By: ==================================================
-//= eAthena Dev Team
-//= Updated: Freya Development Team [Jetvictor]
+//= Original: eAthena
+//= Updated: Freya Development Team
+//===== Description: =========================================
+//= Set maps with water's water heights here
 //============================================================
 
 xmas.gat	3

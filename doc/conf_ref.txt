@@ -4,8 +4,8 @@ Freya dev 1.0.0 mod1004 Reference +alpha of the present conf
 
 < What this file is. >
 
- It is the reference of the setting method of an Athena setting file.
-although it is not a HowTo, it not Those who cannot use Athena even if they see this
+ It is the reference of the setting method of a Freya setting file.
+although it is not a HowTo, it not Those who cannot use Freya even if they see this
  To give up obediently is safer.
 
 
@@ -1164,16 +1164,16 @@ hide_GM_session
 	デフォルトはnoです
 unit_movement_type
 	ユニット移動処理方法を選択します。
-	0で本鯖仕様(回線負荷→重、鯖処理→軽)、1でAthena仕様(回線負荷→軽、鯖処理→重)
+	0で本鯖仕様(回線負荷→重、鯖処理→軽)、1でFreya仕様(回線負荷→軽、鯖処理→重)
 	デフォルトは0(本鯖仕様)です
 invite_request_check
 	プレイヤーが各種要請中(PT加入、Guild加入、取引)に他の要請を受け入れるかどうかです。
-	yesで本鯖仕様、noでAthena仕様(受け入れない)
+	yesで本鯖仕様、noでFreya仕様(受け入れない)
 	デフォルトはyes(受け入れる)です。
 skill_removetrap_type
 	リムーブトラップの仕様を選択します。
 	0:本鯖仕様で罠1個を取得する
-	1:Athena仕様で使ったアイテムを使った個数を取得する
+	1:Freya仕様で使ったアイテムを使った個数を取得する
 disp_experience
 	経験値を表示するかどうかです。
 	yesにすると、敵を倒した時など経験値が入った時に本人にのみ表示されます。
@@ -1742,7 +1742,7 @@ login_port
 
 admin_pass
 	It is the administrator password used to administrate the login-server.
-	You define it in login-athena.conf.
+	You define it in login_freya.conf.
 	Void password will not work.
 	NOTICE: You must change this or attackers can exploit your server.
 	Default value: admin. CHANGES this default value to avoid hack.

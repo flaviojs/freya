@@ -118,7 +118,6 @@ mf_nojobexp	30
 mf_nodrop	31
 mf_nomobdrop	32
 mf_nomvpdrop	33
-// for compatibility with eAthena
 //mf_noloot	31
 //mf_nomobloot	32
 //mf_nomvploot	33

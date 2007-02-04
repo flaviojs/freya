@@ -1,11 +1,12 @@
 //===== Freya Script =========================================
 //= Map flags that disable exp. penalty on death.
 //===== By: ==================================================
-//= eAthena Dev Team
-//= Modded by Freya
-//= Updated: Freya Development Team [Jetvictor]
+//= Original: eAthena
+//= Updated: Freya Development Team
+//===== Description: =========================================
+//= Players on maps with these mapflags will not lose
+//= base experience, or job experience when they die.
 //============================================================
-
 
 // Towns =====================================================
 ayo_in01.gat	mapflag	nopenalty

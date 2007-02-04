@@ -1,8 +1,8 @@
 //===== Freya Script =========================================
 //= Map flags that disables attacking a party member
 //===== By: ==================================================
-//= eAthena
-//= Updated: Freya Development Team [Jetvictor]
+//= Original: eAthena
+//= Updated: Freya Development Team
 //============================================================
 
 

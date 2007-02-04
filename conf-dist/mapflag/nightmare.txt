@@ -1,9 +1,9 @@
 //===== Freya Script =========================================
 //= Map flags that allow players to drop items/equips on death
 //===== By: ==================================================
-//= eAthena Dev Team
+//= Original: eAthena
 //= Updated: Freya Development Team
-//============================================================
+//===== Note: ================================================
 // Disabled nightmare mode flags as per kRO Patch 12/20/05
 // Due to the Content Rating Panel Representatives (just like ESRB in USA)'s 
 // recommendation, the "Nightmare Mode" has been removed from PvP.

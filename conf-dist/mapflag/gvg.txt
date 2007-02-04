@@ -1,11 +1,8 @@
 //===== Freya Script =========================================
 //= Guild Vs Guild Maps
 //===== By: ==================================================
-//= Original: English Athena Developer Team
+//= Original: eAthena
 //= Updated:  Freya Developer Team
-//===== Current Version: =====================================
-//= 1.0 First Version [Athena]
-//= 1.1 Added Novice Castles [Jetvictor]
 //===== Description: =========================================
 //= GvG: Turns on GvG mode
 //============================================================

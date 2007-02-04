@@ -2,7 +2,9 @@
 //= Map flags that disable warpto
 //===== By: ==================================================
 //= eAthena Dev Team
-//= Updated: Freya Development Team [Jetvictor]
+//= Updated: Freya Development Team
+//===== Description: =========================================
+//= Map flags that disable warpto
 //============================================================
 
 // Guild Castles ========================

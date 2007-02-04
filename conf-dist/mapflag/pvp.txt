@@ -1,11 +1,8 @@
 //===== Freya Script =========================================
 //= Map flags that enable pvp
 //===== By: ==================================================
-//= eAthena Dev Team
-//= Updated: Freya Development Team [Jetvictor]
-//===== Current Version: =====================================
-//= 1.0
-//= 1.1 [Jetvictor]
+//= Original: eAthena
+//= Updated: Freya Development Team
 //===== Description: =========================================
 //= PvP: Turns on PvP mode
 //============================================================

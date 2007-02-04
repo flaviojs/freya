@@ -1,10 +1,11 @@
 //===== Freya Script =========================================
+// No Dead Branch Mapflags
+//===== By: ==================================================
+//= Original: eAthena
+//= Updated: Freya Development Team
+//===== Description: =========================================
 //= Map flags that disable dead branching
 // forbid usage of Dead Branch (604), Bloody Branch (12103) and Poring Box (12109)
-//===== By: ==================================================
-//= eAthena Dev Team
-//===== Current Version: =====================================
-//= 1.0 Freya Development Team [Jetvictor]
 //============================================================
 
 // Cities ====================================================

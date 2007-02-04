@@ -1084,7 +1084,7 @@ static inline int mmo_char_fromstr(char *str, struct mmo_charstatus *p, int idx)
 	next++;
 
 	i = 0;
-	while(str[next] && str[next] != '\t' && str[next] != '\n' && str[next] != '\r' && i < GLOBAL_REG_NUM) { // global_reg���ȑO��athena.txt�݊��̂��߈ꉞ'\n'�`�F�b�N
+	while(str[next] && str[next] != '\t' && str[next] != '\n' && str[next] != '\r' && i < GLOBAL_REG_NUM) {
 		memset(tmp_str, 0, sizeof(tmp_str));
 		if (sscanf(str + next, "%[^,],%d%n", tmp_str, &tmp_int[0], &len) != 2) {
 			// because some scripts are not correct, the str can be "". So, we must check that.

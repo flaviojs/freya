@@ -1,8 +1,8 @@
 //===== Freya Script =========================================
 //= Map flags that disable auto saving
 //===== By: ==================================================
-//= eAthena Dev Team
-//= Updated: Freya Development Team [Jetvictor]
+//= Original: eAthena
+//= Updated: Freya Development Team
 //============================================================
 
 // Job Quests ====================

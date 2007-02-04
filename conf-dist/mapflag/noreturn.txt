@@ -1,9 +1,8 @@
-//===== eAthena Script =======================================
+//===== Freya Script =========================================
 //= Map flags that disable use of Butterfly wings (not for Fly wings)
 //===== By: ==================================================
-//= eAthena Dev Team
-//= 1.1 [Lupus]
-//= 1.2 [Jetvictor]
+//= Original: eAthena
+//= Updated: Freya
 //===== Notes: ===============================================
 //= For disabling Fly wings use noteleport
 //= example: ayo_in01.gat	mapflag	noreturn

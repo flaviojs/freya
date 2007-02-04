@@ -1,9 +1,12 @@
 //===== Freya Script =========================================
 //= Map flags that disable warp portal memory
 //===== By: ==================================================
-//= eAthena Dev Team
+//= Original: eAthena
+//= Updated: Freya Development Team
+//===== Description: =========================================
+//= Map flags that disable being memo'd by the /memo client
+//= command for use with Warp Portal.
 //============================================================
-
 
 // Towns =====================
 ayo_in01.gat	mapflag	nomemo
