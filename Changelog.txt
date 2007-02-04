@@ -10,6 +10,9 @@
 
 Date	Added
 
+02/04/2007
+	* Added: Partial updated Novice Training Ground script [Harbin]
+
 02/03/2007
 	* Fixed: GS_DESPERADO no longer damages the caster [Tsuyuki]
 	* Fixed: Job changing for babies (Thanks to Galaxy) [Tsuyuki]
