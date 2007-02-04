@@ -10,7 +10,8 @@
 #define MAX_ITEMGROUP	32		// Max item groups
 #define MAX_GROUPITEMS	50		// Max number of items per group
 
-struct item_data {
+struct item_data
+{
 	int nameid;
 	char name[25], jname[25]; // 24 + NULL
 	char cardillustname[64];
@@ -30,16 +31,18 @@ struct item_data {
 	char wlv; // weapon_level 0-4
 	unsigned char *use_script;	// ‰ñ•œ‚Æ‚©‚à‘S•”‚±‚Ì’†‚Å‚â‚ë‚¤‚©‚È‚Æ
 	unsigned char *equip_script;	// UŒ‚,–hŒä‚Ì‘®«İ’è‚à‚±‚Ì’†‚Å‰Â”\‚©‚È?
-	struct {
+	struct
+	{
 		unsigned available : 1;
 		unsigned value_notdc : 1;
 		unsigned value_notoc : 1;
 		unsigned no_equip : 3;
 		unsigned no_drop : 1;
 		unsigned no_use : 1;
-		unsigned no_refine : 1; // [celest]
-		unsigned trade_restriction : 7;	// item binding
+		unsigned no_refine : 1;
+		unsigned trade_restriction : 7;
 		unsigned upper : 4;			// 0 : all; 1 : base class; 2 : advanced class; 4 : baby class
+		unsigned ammotype : 1;
 	} flag;
 	short gm_lv_trade_override;	// GM level required to bypass trade_restriction
 	int view_id;

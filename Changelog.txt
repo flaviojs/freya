@@ -11,6 +11,9 @@
 Date	Added
 
 02/04/2007
+	* Added: Ammo Type Database [Harbin]
+	 - Note: Currently it just reads the db. Doesn't effect anything
+	* Changed: Disabled GetText support by default [Harbin]
 	* Added: NJ_BAKUENRYU's splash damage (Now does graphical effect too) [Tsuyuki]
 	* Fixed: A bunch of skills were effected by Water Ball:s 'watercheck' code [Harbin]
 	* Added: Partial updated Novice Training Ground script [Harbin]

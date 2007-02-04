@@ -8485,8 +8485,7 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 			break;
 		}
 
-	// Skills that require ammunition
-	case GS_GATLINGFEVER:
+	/* skills that use arrows */
 	case AC_DOUBLE:
 	case AC_SHOWER:
 	case AC_CHARGEARROW:
@@ -8494,7 +8493,16 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 	case DC_THROWARROW:
 	case SN_SHARPSHOOTING:
 	case CG_ARROWVULCAN:
-	case AS_VENOMKNIFE:
+		if(sd->equip_index[10] < 0)
+		{
+			clif_arrow_fail(sd, 0);
+			return 0;
+		}
+		arrow_flag = 1;
+		break;
+
+	/* skills that use ammo */
+	case GS_GATLINGFEVER:
 	case GS_CRACKER:
 	case GS_TRACKING:
 	case GS_DISARM:
@@ -8504,9 +8512,36 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 	case GS_DUST:
 	case GS_FULLBUSTER:
 	case GS_SPREADATTACK:
+		if(sd->equip_index[10] < 0)
+		{
+			clif_arrow_fail(sd, 0);
+			return 0;
+		}
+		arrow_flag = 1;
+		break;
+
+	/* skills that use kunais */
 	case NJ_KUNAI:
+		if(sd->equip_index[10] < 0)
+		{
+			clif_arrow_fail(sd, 0);
+			return 0;
+		}
+		arrow_flag = 1;
+		break;
+	/* skills that use shurikens */
 	case NJ_HUUMA:
 	case NJ_SYURIKEN:
+		if(sd->equip_index[10] < 0)
+		{
+			clif_arrow_fail(sd, 0);
+			return 0;
+		}
+		arrow_flag = 1;
+		break;
+
+	/* skills that use throwing knives */
+	case AS_VENOMKNIFE:
 		if(sd->equip_index[10] < 0)
 		{
 			clif_arrow_fail(sd, 0);

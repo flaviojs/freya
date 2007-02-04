@@ -48,6 +48,7 @@ static int itemdb_read_noequip(void);
 static int itemdb_read_norefine(void);
 static int itemdb_read_itemtrade(void);
 static int itemdb_read_upper(void);
+static int itemdb_read_ammo(void);
 static int itemdb_read_itemslottable(void);
 static int itemdb_read_itemslotcounttable(void);
 static int itemdb_read_cardillustnametable(void);
@@ -215,6 +216,8 @@ struct item_data* itemdb_search(int nameid)
 	id->flag.value_notdc=0;
 	id->flag.value_notoc=0;
 	id->flag.no_equip=0;
+	id->flag.no_refine=0;
+	id->flag.ammotype=0;
 	id->view_id=0;
 
 	if (nameid > 500 && nameid < 600)
@@ -330,17 +333,19 @@ int itemdb_canguildstore(int nameid, int gmlv)
 	return (item && (!(item->flag.trade_restriction&64) || gmlv >= item->gm_lv_trade_override));
 }
 
-/*====================================
- * Removed item_value_db, don't re-add
- *------------------------------------
- */
-void itemdb_read(void) {
-#ifndef TXT_ONLY
-	if (db_use_sqldbs)
+/* ------------------------------- *
+ * Load All Item Related Databases *
+ * ------------------------------- */
+void itemdb_read(void)
+{
+#ifdef TXT_ONLY
+	itemdb_readdb();
+#else
+	if(db_use_sqldbs)
 		itemdb_read_sqldb();
 	else
-#endif /* Not TXT_ONLY */
 		itemdb_readdb();
+#endif
 
 	itemdb_read_itemgroup();
 	itemdb_read_randomitem();
@@ -349,14 +354,15 @@ void itemdb_read(void) {
 	itemdb_read_norefine();
 	itemdb_read_itemtrade();
 	itemdb_read_upper();
+	itemdb_read_ammo();
 
-	if (battle_config.cardillust_read_grffile)
+	if(battle_config.cardillust_read_grffile)
 		itemdb_read_cardillustnametable();
-	if (battle_config.item_equip_override_grffile)
+	if(battle_config.item_equip_override_grffile)
 		itemdb_read_itemslottable();
-	if (battle_config.item_slots_override_grffile)
+	if(battle_config.item_slots_override_grffile)
 		itemdb_read_itemslotcounttable();
-	if (battle_config.item_name_override_grffile)
+	if(battle_config.item_name_override_grffile)
 		itemdb_read_itemnametable();
 }
 
@@ -1167,6 +1173,78 @@ static int itemdb_read_upper(void) {
 	
 	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/item_upper.txt" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
 
+	return 0;
+}
+
+/* ----------------------- *
+ * Read Ammo Type Database *
+ * ----------------------- */
+static int itemdb_read_ammo(void)
+{
+	FILE *db;
+	struct item_data *idat;
+	char line[1024];
+	int i, id, val, counter = 0;
+
+	db = fopen("db/item_ammo.txt", "r");
+
+	if(db == NULL)
+	{
+		printf(CL_RED "Error: " CL_RESET "Failed to load db/item_ammo.txt\n");
+		exit(1);
+	}
+
+	while(fgets(line, sizeof(line), db))
+	{
+		/* skip comments and empty lines */
+		if(line[0] == '/' && line[1] == '/')
+			continue;
+		if(line[0] == '\0' || line[0] == '\n' || line[0] == '\r')
+			continue;
+
+		/* get values */
+		if(sscanf(line, "%d,%d", &id, &val) != 2)
+		{
+			printf(CL_YELLOW "Warning: " CL_RESET "Invalid line (%d) on db/item_ammo.txt\n", counter);
+			continue;
+		}
+
+		/* validity checking */
+		if(id < 0 || id >= 20000 || !(idat = itemdb_exists(id)) || idat->type != 10)
+		{
+			printf(CL_YELLOW "Warning: " CL_RESET "Invalid itemid (%d) on db/item_ammo.txt\n", id);
+			continue;
+		}
+		if(val < 1 || val > 6)
+		{
+			printf(CL_YELLOW "Warning: " CL_RESET "Invalid ammo type for itemid %d on db/item_ammo.txt\n", id);
+			continue;
+		}
+
+		/* set ammotype and update counter */
+		idat->flag.ammotype = val;
+		counter++;
+	}
+
+	/* more validity checking */
+	for(i = 1; i <= 20000; i++)
+	{
+		if(!(idat = itemdb_exists(i)))
+			continue;
+		if(idat->type == 10 && idat->flag.ammotype == 0)
+		{
+			printf(CL_YELLOW "Warning: " CL_RESET "Item %d has no ammotype set\n", i);
+			continue;
+		}
+	}
+
+	/* display some information */
+	if(counter == 1)
+		printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/item_ammo.txt" CL_RESET "' readed ('" CL_WHITE "1" CL_RESET "' entry).\n");
+	else
+		printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/item_ammo.txt" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entries).\n", counter);
+
+	fclose(db);
 	return 0;
 }
 
