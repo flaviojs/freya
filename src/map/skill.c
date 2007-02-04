@@ -2991,10 +2991,16 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case AS_SPLASHER:
 	case NJ_HUUMA:
 	case GS_SPREADATTACK:
+	case NJ_BAKUENRYU:
 		if (flag & 1)
 		{
 			if (bl->id != skill_area_temp[1])
-				skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, 0x0500);
+			{
+				if (skillid != NJ_BAKUENRYU)
+					skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, 0x0500);
+				else
+					skill_attack(BF_MAGIC, src, src, bl, skillid, skilllv, tick, 0x0500);
+			}
 		} 
 		else
 		{
@@ -3016,11 +3022,15 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 					else // Level 10+
 						ar = 9;
 					break;
+				case NJ_BAKUENRYU:
+					ar = 5;
+					break;
 				default:
 					ar = 1;
 					break;
 			}
-
+			if (skillid == NJ_BAKUENRYU)
+				clif_skill_nodamage(src, src, skillid, skilllv, 1);
 			skill_area_temp[1] = bl->id;
 			skill_area_temp[2] = x;
 			skill_area_temp[3] = y;
@@ -3028,7 +3038,10 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 				bl->m,x-ar,y-ar,x+ar,y+ar,0,
 				src, skillid, skilllv, tick, flag|BCT_ENEMY|1,
 				skill_castend_damage_id);
-			skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, 0);
+			if (skillid != NJ_BAKUENRYU)
+				skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, 0);
+			else
+				skill_attack(BF_MAGIC, src, src, bl, skillid, skilllv, tick, 0);
 		}
 		break;
 	case SM_MAGNUM:
@@ -3122,7 +3135,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 //	case HW_NAPALMVULCAN:
 	case NJ_KOUENKA:
 	case NJ_HYOUSENSOU:
-	case NJ_BAKUENRYU:
+//	case NJ_BAKUENRYU:
 	case NJ_HUUJIN:
 		skill_attack(BF_MAGIC, src, src, bl, skillid, skilllv, tick, flag);
 		break;

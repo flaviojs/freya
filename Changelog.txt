@@ -11,6 +11,7 @@
 Date	Added
 
 02/04/2007
+	* Added: NJ_BAKUENRYU's splash damage (Now does graphical effect too) [Tsuyuki]
 	* Fixed: A bunch of skills were effected by Water Ball:s 'watercheck' code [Harbin]
 	* Added: Partial updated Novice Training Ground script [Harbin]
 
