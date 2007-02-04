@@ -3122,21 +3122,25 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 //	case HW_NAPALMVULCAN:
 	case NJ_KOUENKA:
 	case NJ_HYOUSENSOU:
-	case NJ_HUUJIN:
 	case NJ_BAKUENRYU:
+	case NJ_HUUJIN:
+		skill_attack(BF_MAGIC, src, src, bl, skillid, skilllv, tick, flag);
+		break;
 	case WZ_WATERBALL:
 		skill_attack(BF_MAGIC, src, src, bl, skillid, skilllv, tick, flag);
-		if (skilllv > 1) {
-			if (sd) { // From players, we check the range, the ground if its a water ground, etc.
-				int range = skilllv > 5 ? 2 : skilllv / 2;
-				int cnt = skill_count_water(src, range) - 1;
-				if (cnt > 0)
-					skill_addtimerskill(src, tick + 150, bl->id, 0, 0, skillid, skilllv, cnt, flag);
-			} else // From everything else (mob, etc), we dont check for water ground, nor range
-					skill_addtimerskill(src, tick + 150, bl->id, 0, 0, skillid, skilllv, skilllv * skilllv - 1, flag);
+		if(skilllv > 1)
+		{
+			/* 'watercheck' for players. mobs skip it */
+			if(sd)
+			{
+				int atkcount = skill_count_water(src, (skilllv > 5 ? 2 : (skilllv / 2))) - 1;
+				if(atkcount > 0)
+					skill_addtimerskill(src, tick + 150, bl->id, 0, 0, skillid, skilllv, atkcount, flag);
+			} else {
+				skill_addtimerskill(src, tick + 150, bl->id, 0, 0, skillid, skilllv, skilllv * skilllv - 1, flag);
+			}
 		}
 		break;
-
 	case MG_NAPALMBEAT:
 	case MG_FIREBALL:
 	case WZ_SIGHTRASHER:
@@ -6411,7 +6415,7 @@ int skill_castend_pos2(struct block_list *src, int x, int y, int skillid, int sk
 	case NJ_RAIGEKISAI:
 	case NJ_KAMAITACHI:
 	case GS_GROUNDDRIFT:
-		skill_unitsetting(src,skillid,skilllv,x,y,0);
+		skill_unitsetting(src, skillid, skilllv, x, y, 0);
 		break;
 	case RG_GRAFFITI:
 		skill_clear_unitgroup(src);
