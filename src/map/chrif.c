@@ -695,7 +695,7 @@ int chrif_changedsex(int fd) { // 0x2b0d <account_id>.L <sex>.B <account_id_of_G
 			// to avoid any problem with equipment and invalid sex, equipment is unequiped.
 			for (i = 0; i < MAX_INVENTORY; i++) {
 				if (sd->status.inventory[i].nameid && sd->status.inventory[i].equip)
-					pc_unequipitem((struct map_session_data*)sd, i, 3); // eAthena: pc_unequipitem((struct map_session_data*)sd, i, 3)
+					pc_unequipitem((struct map_session_data*)sd, i, 3);
 			}
 			// reset skill of some job
 			if (s_class.job == 19 || s_class.job == 4020 || s_class.job == 4042 ||

@@ -3635,7 +3635,8 @@ void pc_item_refine(struct map_session_data *sd, short idx) {
 					pc_equipitem(sd, idx, ep);
 				clif_misceffect(&sd->bl, 3);
 				if(item->refine == 10 && item->card[0] == 0x00ff &&
-					*((unsigned long *)(&sd->status.inventory[idx].card[2])) == sd->status.char_id) { // Fame point system for Blacksmith based on eAthena code [Proximus]
+					// Blacksmith Fame Point System
+					*((unsigned long *)(&sd->status.inventory[idx].card[2])) == sd->status.char_id) {
 					switch(ditem->wlv) {
 						case 1:
 							ranking_gain_point(sd, RK_BLACKSMITH, 1); // Success to refine to +10 a lv1 weapon you forged = +1 fame point

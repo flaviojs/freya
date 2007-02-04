@@ -1995,7 +1995,7 @@ static int mob_ai_sub_hard(struct block_list *bl, va_list ap) {
 								else if (dx > 0) dx--;
 								if (dy < 0) dy++;
 								else if (dy > 0) dy--;
-							} else { // ‚¾‚ß‚È‚çAthena®(ƒ‰ƒ“ƒ_ƒ€)
+							} else {
 								dx = tbl->x - md->bl.x + rand() % 3 - 1;
 								dy = tbl->y - md->bl.y + rand() % 3 - 1;
 							}

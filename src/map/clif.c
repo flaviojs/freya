@@ -1458,7 +1458,7 @@ int clif_spawnpc(struct map_session_data *sd) {
 	    (sd->status.class ==    7 || sd->status.class ==   14 ||
 	     sd->status.class == 4008 || sd->status.class == 4015 ||
 	     sd->status.class == 4030 || sd->status.class == 4037))
-		pc_setriding(sd); // update peco riders for people upgrading athena
+		pc_setriding(sd);
 
 	if (map[sd->bl.m].flag.snow)
 		clif_specialeffect(&sd->bl, 162, 1); // flag: 0: player see in the area (normal), 1: only player see only by player, 2: all players in a map that see only their (not see others), 3: all players that see only their (not see others)
@@ -12729,7 +12729,7 @@ static int clif_parse(int fd) {
 		switch(RFIFOW(fd,0)) {
 
 		// �Ǘ��p�p�P�b�g���� - administration packets
-		case 0x7530: // Athena��񏊓�
+		case 0x7530:
 			WPACKETW(0) = 0x7531;
 			WPACKETB(2) = FREYA_MAJORVERSION;
 			WPACKETB(3) = FREYA_MINORVERSION;

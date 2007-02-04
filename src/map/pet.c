@@ -1218,7 +1218,7 @@ static int pet_ai_sub_hard(struct pet_data *pd,unsigned int tick)
 							if (dy < 0) dy++;
 							else if (dy > 0) dy--;
 						}
-						else { // ‚¾‚ß‚È‚çAthena®(ƒ‰ƒ“ƒ_ƒ€)
+						else {
 							dx = md->bl.x - pd->bl.x + rand() % 3 - 1;
 							dy = md->bl.y - pd->bl.y + rand() % 3 - 1;
 						}

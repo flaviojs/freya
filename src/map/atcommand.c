@@ -10993,7 +10993,7 @@ ATCOMMAND_FUNC(mapinfo) {
 
 /*==========================================
 * @mobinfo - Show Monster DB Info   v 1.0
-* originally by [Lupus] eAthena
+* Originally by [Lupus]
 *------------------------------------------
 */
 ATCOMMAND_FUNC(mobinfo) {

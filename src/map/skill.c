@@ -5450,7 +5450,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 			if(hp >= sd->status.hp)
 				break;
 			// sp = hp * 10 * skilllv / 100; // Old conversion formula
-			sp = hp + (hp * 10 * skilllv) / 100; // New conversion formula taken from eAthena
+			sp = hp + (hp * 10 * skilllv) / 100;
 			pc_heal(sd, -hp, sp);
 		}
 		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
