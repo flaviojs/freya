@@ -42,7 +42,7 @@ struct item_data
 		unsigned no_refine : 1;
 		unsigned trade_restriction : 7;
 		unsigned upper : 4;			// 0 : all; 1 : base class; 2 : advanced class; 4 : baby class
-		unsigned ammotype : 1;
+		unsigned ammotype : 6;	/* 1:arrow 2:bullet, 3:sphere, 4:shuriken, 5:kunai, 6:venomknife */
 	} flag;
 	short gm_lv_trade_override;	// GM level required to bypass trade_restriction
 	int view_id;

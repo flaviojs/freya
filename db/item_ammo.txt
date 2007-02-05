@@ -3,7 +3,7 @@
 // Structure:
 // Itemid,Ammotype
 //
-// Ammotype: 1:arrowm 2:bullet, 3:sphere, 4:shuriken, 5:kunai, 6:venomknife
+// Ammotype: 1:arrow 2:bullet, 3:sphere, 4:shuriken, 5:kunai, 6:venomknife
 
 // Arrows
 1750,1

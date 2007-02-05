@@ -8531,7 +8531,7 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 	case DC_THROWARROW:
 	case SN_SHARPSHOOTING:
 	case CG_ARROWVULCAN:
-		if(sd->equip_index[10] < 0)
+		if(sd->equip_index[10] < 0 || sd->inventory_data[sd->equip_index[10]]->flag.ammotype != 1)
 		{
 			clif_arrow_fail(sd, 0);
 			return 0;
@@ -8550,7 +8550,18 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 	case GS_DUST:
 	case GS_FULLBUSTER:
 	case GS_SPREADATTACK:
-		if(sd->equip_index[10] < 0)
+		if(sd->equip_index[10] < 0 || sd->inventory_data[sd->equip_index[10]]->flag.ammotype != 2)
+		{
+			clif_arrow_fail(sd, 0);
+			return 0;
+		}
+		arrow_flag = 1;
+		break;
+
+	/* skills that use shurikens */
+	case NJ_HUUMA:
+	case NJ_SYURIKEN:
+		if(sd->equip_index[10] < 0 || sd->inventory_data[sd->equip_index[10]]->flag.ammotype != 4)
 		{
 			clif_arrow_fail(sd, 0);
 			return 0;
@@ -8560,17 +8571,7 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 
 	/* skills that use kunais */
 	case NJ_KUNAI:
-		if(sd->equip_index[10] < 0)
-		{
-			clif_arrow_fail(sd, 0);
-			return 0;
-		}
-		arrow_flag = 1;
-		break;
-	/* skills that use shurikens */
-	case NJ_HUUMA:
-	case NJ_SYURIKEN:
-		if(sd->equip_index[10] < 0)
+		if(sd->equip_index[10] < 0 || sd->inventory_data[sd->equip_index[10]]->flag.ammotype != 5)
 		{
 			clif_arrow_fail(sd, 0);
 			return 0;
@@ -8580,7 +8581,7 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 
 	/* skills that use throwing knives */
 	case AS_VENOMKNIFE:
-		if(sd->equip_index[10] < 0)
+		if(sd->equip_index[10] < 0 || sd->inventory_data[sd->equip_index[10]]->flag.ammotype != 6)
 		{
 			clif_arrow_fail(sd, 0);
 			return 0;
@@ -8589,8 +8590,10 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 		break;
 
 	case RG_BACKSTAP:
-		if (sd->status.weapon == 11) {
-			if (sd->equip_index[10] < 0) {
+		if(sd->status.weapon == 11)
+		{
+			if(sd->equip_index[10] < 0)
+			{
 				clif_arrow_fail(sd, 0);
 				return 0;
 			}

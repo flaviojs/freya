@@ -10,6 +10,10 @@
 
 Date	Added
 
+02/05/2007
+	* Fixed: Reading of Ammo Type Database [Harbin]
+	* Fixed: Shuriken skills now require shurikens and Kunai skills kunais [Harbin]
+
 02/04/2007
 	* Added: Ninja's NJ_KAENSIN unit skill [Tsuyuki]
 	* Added: Ammo Type Database [Harbin]
