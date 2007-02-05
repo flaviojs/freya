@@ -1171,7 +1171,7 @@ static int itemdb_read_upper(void) {
 	}
 	fclose(fp);
 	
-	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/item_upper.txt" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
+	printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/item_upper.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
 
 	return 0;
 }
@@ -1240,9 +1240,9 @@ static int itemdb_read_ammo(void)
 
 	/* display some information */
 	if(counter == 1)
-		printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/item_ammo.txt" CL_RESET "' readed ('" CL_WHITE "1" CL_RESET "' entry).\n");
+		printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/item_ammo.txt" CL_RESET "' read ('" CL_WHITE "1" CL_RESET "' entry).\n");
 	else
-		printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/item_ammo.txt" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entries).\n", counter);
+		printf(CL_GREEN "Loaded: " CL_RESET "'" CL_WHITE "db/item_ammo.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entries).\n", counter);
 
 	fclose(db);
 	return 0;

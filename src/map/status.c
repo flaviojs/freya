@@ -4079,7 +4079,6 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			scflag.calc = 1;
 			*opt3 |= 32768;
 			break;
-
 		case SC_KAITE:
 			if(val1 >= 5)
 				val2 = 2;
@@ -4089,35 +4088,29 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			if (sc_data[SC_ASSUMPTIO].timer != -1)
 				status_change_end(bl, SC_ASSUMPTIO, -1);
 			break;
-
 		case SC_SWOO:
 			if(mode&0x20 && !(flag&1))
 				tick /= 5;
 			scflag.calc = 1;
 			break;
-
 		case SC_SKE:
 			scflag.calc = 1;
 			break;
-
 		case SC_SKA:
 			val2 = tick/1000;  
 			val3 = rand()%100; // Def changes randomly every second...  
 			tick = 1000;  
 			scflag.calc = 1;
 			break;
-
 		case SC_PROVOKE:
 			scflag.calc = 1;
 			if (tick <= 0) tick = 1000;
 			break;
-
 		case SC_ENDURE:
 			if (tick <= 0)
 			tick = 1000 * 60;
 			scflag.calc = 1;
 			val2 = 7;
-
 			if (sd) {    
 				struct map_session_data *tsd;
 				int i;
@@ -4127,7 +4120,6 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 				}
 			}
 			break;
-
 		case SC_AUTOBERSERK:
 			if(!(flag&4))
 				tick = 60 * 1000;
@@ -4342,37 +4334,30 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 		case SC_DEVOTION:
 			if(!(flag&4))
 				scflag.calc = 1;
-
 			struct map_session_data *src;
 			if ((src = map_id2sd(val1)) && src->sc_count)
 			{    
 				int type2 = SC_AUTOGUARD;
 				if (src->sc_data[type2].timer != -1)
 					status_change_start(bl,type2,src->sc_data[type2].val1,0,0,0,tick,1);
-
 				type2 = SC_ENDURE;
 				if (src->sc_data[type2].timer != -1)
 					status_change_start(bl,type2,0,0,0,0,tick,1);
-                
 				type2 = SC_DEFENDER;
 				if (src->sc_data[type2].timer != -1)
 					status_change_start(bl,type2,src->sc_data[type2].val1,src->sc_data[type2].val2,0,0,tick,1);
-                        
 				type2 = SC_REFLECTSHIELD;
 				if (src->sc_data[type2].timer != -1)
 					status_change_start(bl,type2,src->sc_data[type2].val1,0,0,0,tick,1);  
-
 				type2 = SC_SHRINK;
 				if (src->sc_data[type2].timer != -1)
 					status_change_start(bl,type2,src->sc_data[type2].val1,0,0,0,tick,1);
 			}
 			break;
-
 		case SC_PROVIDENCE:
 			scflag.calc = 1;
 			val2=val1*5;
 			break;
-
 		case SC_REFLECTSHIELD:
 			val2=10+val1*3;
 			if (sd)
@@ -4386,19 +4371,15 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 				}
 			}
 			break;
-
 		case SC_STRIPWEAPON:
 			if (val2==0) val2=90;
 			break;
-
 		case SC_STRIPSHIELD:
 			if (val2==0) val2=85;
 			break;
-
 		case SC_AUTOSPELL:
 			val4 = 5 + val1*2;
 			break;
-
 		case SC_VOLCANO:
 			scflag.calc = 1;
 			val3 = val1*10;
@@ -4414,7 +4395,6 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			val3 = val1*3;
 			val4 = val1>=5?20: (val1==4?19: (val1==3?17: ( val1==2?14:10 ) ) );
 			break;
-
 		case SC_SPEARQUICKEN:
 			scflag.calc = 1;
 			val2 = 20+val1;
@@ -4449,7 +4429,6 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 				clif_bladestop((struct block_list *)val3, (struct block_list *)val4, 1);
 			*opt3 |= 32;
 			break;
-
 		case SC_LULLABY:
 			val2 = 11;
 			break;
@@ -4547,7 +4526,6 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 		case SC_AUTOCOUNTER:
 			val3 = val4 = 0;
 			break;
-
 		case SC_ASPDPOTION0:
 		case SC_ASPDPOTION1:
 		case SC_ASPDPOTION2:
@@ -4633,7 +4611,6 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 				tick = tick * sc_def / 100;
 			}
 			break;
-
 		case SC_DPOISON:
 		{
 			int mhp = status_get_max_hp(bl);
@@ -4698,7 +4675,6 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 				tick = tick * sc_def / 100;
 			}
 			break;
-
 		case SC_HIDING:
 			scflag.calc = 1;
 			if(bl->type == BL_PC && !(flag&4)) {
@@ -4730,14 +4706,12 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			val2 = tick/250;
 			tick = 10;
 			break;
-
 		case SC_SAFETYWALL:
 		case SC_PNEUMA:
 			if(flag&4)
 				break;
 			tick=((struct skill_unit *)val2)->group->limit;
 			break;
-
 		case SC_ANKLE:
 		case SC_STOP:
 		case SC_SCRESIST:
@@ -4754,12 +4728,10 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 				}
 			}
 			break;
-
 		case SC_RIDING:
 			scflag.calc = 1;
 			tick = 600*1000;
 			break;
-
 		case SC_FALCON:
 		case SC_WEIGHT50:
 		case SC_WEIGHT90:
@@ -4769,7 +4741,6 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 				break;
 			tick = 600 * 1000;
 			break;
-
 		case SC_AUTOGUARD:
 		{
 			int i, t;
@@ -4790,7 +4761,6 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			}
 		}
 		break;
-
 		case SC_DEFENDER:
       scflag.calc = 1;
 			if(!flag)
@@ -4806,7 +4776,6 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 				}
 			}
 			break;
-
 		case SC_KEEPING:
 		case SC_BARRIER:
 			scflag.calc = 1;
@@ -4822,30 +4791,25 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			if(bl->type == BL_PC)
 				tick = 10000;
 			break;
-
 		case SC_PARRYING:
 			val2 = 20 + val1 * 3;
 			break;
-
 		case SC_WINDWALK:
 			scflag.calc = 1;
 			val2 = (val1 / 2);
 			break;
-
 		case SC_JOINTBEAT: // Random break
 			scflag.calc = 1;
 			val2 = rand() % 6 + 1;
 			if (val2 == 6)
 				status_change_start(bl, SC_BLEEDING, val1, 0, 0, 0, skill_get_time2(type, val1), 0);
 			break;
-
 		case SC_BERSERK:
 			*opt3 |= 128;
 			if(!(flag&4))
 				tick = 10000;
 			scflag.calc = 1;
 			break;
-
 		case SC_ASSUMPTIO:
 			// Assumptio and Kyrie do not stack
 			if(sc_data[SC_KYRIE].timer != -1)
@@ -4855,7 +4819,6 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 				status_change_end(bl, SC_KAITE, -1);
 			*opt3 |= 2048;
 			break;
-
 		case SC_GOSPEL:
 			if(val4 == BCT_SELF) {
 				val2 = tick;
@@ -4864,7 +4827,6 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 				status_change_clear_debuffs(bl);
 			}
 			break;
-
 		case SC_MARIONETTE:
 		case SC_MARIONETTE2:
 			if(flag&4)
@@ -4876,7 +4838,6 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			scflag.calc = 1;
 			*opt3 |= 1024;
 			break;
-
 		case SC_MELTDOWN:
 			scflag.calc = 1;
 			break;
@@ -4889,34 +4850,27 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 		case SC_SPIDERWEB:
 			scflag.calc = 1;
 			break;
-
 		case SC_REJECTSWORD:
 			val2 = 3;
 			val3 = 0; // Damage reflect state - [Aalye]
 			break;
-
 		case SC_MEMORIZE:
 			val2 = 5; // Memorize is supposed to reduce the cast time of the next 5 spells by half
 			break;
-
 		case SC_GRAVITATION:
 			if (val3 != BCT_SELF)
 				scflag.calc = 1;
 			break;
-
 		case SC_HERMODE:
 			status_change_clear_buffs(bl);
 			break;
-
 		case SC_COMA: // Coma: Sends a char to 1HP/SP
 			battle_damage(NULL, bl, status_get_hp(bl)-1, 0);
 			return 0;
-
 		case SC_FOGWALL:
 			val2 = 75;
 			scflag.calc = 1;
 			break;
-
 		case SC_BLEEDING:
 			if(!(flag&2)) {
 				int sc_def = 100 - (status_get_lv(bl) / 5 + status_get_vit(bl));
@@ -4927,7 +4881,6 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			val4 = tick;
 			tick = 10000;
 			break;
-
 		case SC_SLOWDOWN:
 		case SC_SPEEDUP0:
 		case SC_INCSTR:
@@ -4946,7 +4899,6 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 		case SC_INCASPDRATE:
 			scflag.calc = 1;
 			break;
-
 		case SC_STRFOOD:
 		case SC_AGIFOOD:
 		case SC_VITFOOD:
@@ -4960,7 +4912,6 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 		case SC_MATKFOOD:
 			scflag.calc = 1;
 			break;
-
 		case SC_REGENERATION:
 			val1 = 2;
 		case SC_BATTLEORDERS:
@@ -4968,12 +4919,10 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 				tick = 60000;
 			scflag.calc = 1;
 			break;
-
 		case SC_GUILDAURA:
 			tick = 1000;
 			scflag.calc = 1;
 			break;
-
 		default:
 			break;
 	}
