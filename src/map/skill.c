@@ -3044,6 +3044,8 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 				skill_attack(BF_MAGIC, src, src, bl, skillid, skilllv, tick, 0);
 		}
 		break;
+	case NJ_KAENSIN:
+		break;
 	case SM_MAGNUM:
 		if(flag & 1)
 		{
@@ -3206,7 +3208,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		}
 		break;
 
-		case HW_NAPALMVULCAN: // Fixed By SteelViruZ
+		case HW_NAPALMVULCAN:
 			if(flag&1){
 				if(bl->id!=skill_area_temp[1]){
 					skill_attack(BF_MAGIC,src,src,bl,skillid,skilllv,tick,
@@ -3438,8 +3440,6 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		} else {
 			clif_skill_fail(sd,skillid,0,0);
 		}
-		break;
-	case NJ_KAENSIN:
 		break;
 	case GS_GROUNDDRIFT:
 		break;
@@ -6326,13 +6326,16 @@ int skill_castend_pos2(struct block_list *src, int x, int y, int skillid, int sk
 	struct map_session_data *sd = NULL;
 	int i, tmpx = 0, tmpy = 0, x1 = 0, y_1 = 0;
 
-	if (skillid > 0 && skilllv <= 0) return 0; // celest
+	if (skillid > 0 && skilllv <= 0)
+		return 0;
 
 	nullpo_retr(0, src);
 
-	if (src->type == BL_PC) {
+	if (src->type == BL_PC)
+	{
 		nullpo_retr(0, sd = (struct map_session_data *)src);
 	}
+
 	if (skillid != WZ_METEOR &&
 	    skillid != AM_CANNIBALIZE &&
 	    skillid != AM_SPHEREMINE &&
@@ -6351,7 +6354,6 @@ int skill_castend_pos2(struct block_list *src, int x, int y, int skillid, int sk
 			src, skillid, skilllv,tick, flag|BCT_ALL|1,
 			skill_castend_nodamage_id);
 		break;
-
 	case BS_HAMMERFALL:
 		skill_area_temp[1]=src->id;
 		skill_area_temp[2]=x;
@@ -6384,7 +6386,6 @@ int skill_castend_pos2(struct block_list *src, int x, int y, int skillid, int sk
 				src, SC_SIGHT, tick);
 		}
 		break;
-
 	case MG_SAFETYWALL:
 	case MG_FIREWALL:
 	case MG_THUNDERSTORM:
@@ -6414,21 +6415,24 @@ int skill_castend_pos2(struct block_list *src, int x, int y, int skillid, int sk
 	case PF_SPIDERWEB:
 	case PF_FOGWALL:
 	case HT_TALKIEBOX:
-		skill_unitsetting(src,skillid,skilllv,x,y,0);
-			break;
-
-	case RG_CLEANER:
-		skill_clear_unitgroup(src);
-		break;
 	case GS_DESPERADO:
-	case NJ_KAENSIN:
 	case NJ_BAKUENRYU:
 	case NJ_SUITON:
-	case NJ_HYOUSYOURAKU:
-	case NJ_RAIGEKISAI:
-	case NJ_KAMAITACHI:
 	case GS_GROUNDDRIFT:
-		skill_unitsetting(src, skillid, skilllv, x, y, 0);
+		skill_unitsetting(src,skillid,skilllv,x,y,0);
+		break;
+	case NJ_RAIGEKISAI:
+	case NJ_HYOUSYOURAKU:
+		skill_unitsetting(src,skillid,skilllv,x,y,0);
+		clif_skill_poseffect(src, skillid, skilllv, x, y, tick);
+		break;
+	case NJ_KAENSIN:
+		skill_clear_unitgroup(src);
+		skill_unitsetting(src,skillid,skilllv,x,y,0);
+		clif_skill_poseffect(src, skillid, skilllv, x, y, tick);
+		break;
+	case RG_CLEANER:
+		skill_clear_unitgroup(src);
 		break;
 	case RG_GRAFFITI:
 		skill_clear_unitgroup(src);
@@ -6851,7 +6855,23 @@ struct skill_unit_group *skill_unitsetting(struct block_list *src, int skillid, 
 		val2 = status_get_int(src) / 10;
 		break;
 	case PF_FOGWALL:
-		if (sc_data && sc_data[SC_DELUGE].timer != -1) limit *= 2;
+		if (sc_data && sc_data[SC_DELUGE].timer != -1)
+			limit *= 2;
+		break;
+	case NJ_KAENSIN:
+		val2 = (skilllv+1)/2 + 4;
+		break;
+	case GS_DESPERADO:
+		val1 = abs(layout->dx[i]);
+		val2 = abs(layout->dy[i]);
+		if (val1 < 2 || val2 < 2) {
+			if (val2 > val1) val1 = val2;
+			if (val1) val1--;
+			val1 = 36 -12*val1;
+		} else
+			val1 = 28 -4*val1 -4*val2;
+		if (val1 < 1) val1 = 1;
+		val2 = 0;
 		break;
 	case GS_GROUNDDRIFT:
 	{
@@ -6892,11 +6912,13 @@ struct skill_unit_group *skill_unitsetting(struct block_list *src, int skillid, 
 	group->val3 = val3;
 	group->target_flag = target;
 	group->interval = interval;
-	if (skillid == HT_TALKIEBOX || skillid == RG_GRAFFITI) {
+	if (skillid == HT_TALKIEBOX || skillid == RG_GRAFFITI)
+	{
 		CALLOC(group->valstr, char, 81); // 80 + NULL
 		strncpy(group->valstr, talkie_mes, 80); // 80 + NULL
 	}
-	for(i = 0; i < layout->count; i++) {
+	for(i = 0; i < layout->count; i++)
+	{
 		struct skill_unit *unit;
 		int ux, uy, val1 = skilllv, val2 = 0, limit = group->limit, alive = 1;
 		ux = x + layout->dx[i];
@@ -6904,6 +6926,7 @@ struct skill_unit_group *skill_unitsetting(struct block_list *src, int skillid, 
 
 		switch (skillid) {
 		case MG_FIREWALL:
+		case NJ_KAENSIN:
 			val2 = group->val2;
 			break;
 
@@ -6922,11 +6945,13 @@ struct skill_unit_group *skill_unitsetting(struct block_list *src, int skillid, 
 		if(range <= 0)
 			map_foreachinarea(skill_landprotector, src->m, ux, uy, ux, uy, BL_SKILL, skillid, &alive);
 
-		if (skillid == WZ_ICEWALL && alive) {
+		if (skillid == WZ_ICEWALL && alive)
+		{
 			val2 = map_getcell(src->m, ux, uy, CELL_GETTYPE);
 			if (val2 == 5 || val2 == 1)
 				alive = 0;
-			else {
+			else
+			{
 				map_setcell(src->m, ux, uy, 5);
 				clif_changemapcell(src->m, ux, uy, 5, 0);
 			}
@@ -7466,12 +7491,19 @@ int skill_unit_onplace_timer(struct skill_unit *src, struct block_list *bl, unsi
 			src->range = 0;
 		}
 		break;
-
+	case 0xba: /* GS_DESPERADO */
+		if (rand()%100 < src->val1)
+			skill_attack(BF_WEAPON, ss, &src->bl, bl, sg->skill_id, sg->skill_lv, tick, 0);
+		break;
 	case 0xb8:	/* HW_GRAVITATION */
 		if (skill_attack(BF_MAGIC, ss, &src->bl, bl, sg->skill_id, sg->skill_lv, tick, 0))
 			skill_additional_effect(ss, bl, sg->skill_id, sg->skill_lv, BF_MAGIC, tick);
 		break;
-
+	case 0xbd: /* NJ_KAENSIN */
+		skill_attack(BF_MAGIC, ss, &src->bl, bl, sg->skill_id, sg->skill_lv, tick, 0);
+		if (--src->val2 <= 0)
+			skill_delunit(src);
+		break;
 /*	default:
 		if(battle_config.error_log)
 			printf("skill_unit_onplace: Unknown skill unit id=%d block=%d\n",sg->unit_id,bl->id);
@@ -9202,7 +9234,7 @@ int skill_use_id(struct map_session_data *sd, int target_id, int skill_num, int 
 
 	if (sd->skilltimer != -1 && skill_num != SA_CASTCANCEL) { // SA_CASTCANCEL is cast immediatly // normally, we never entering in this test
 		int inf;
-		if ((inf = skill_get_inf(sd->skillid)) == 2 || inf == 32)
+		if ((inf = skill_get_inf(sd->skillid)) == 2 || inf == 32) // 2 = NPC skills / 32 = Traps
 			delete_timer(sd->skilltimer, skill_castend_pos);
 		else
 			delete_timer(sd->skilltimer, skill_castend_id);
@@ -9323,7 +9355,7 @@ int skill_use_pos(struct map_session_data *sd,
 
 	if (sd->skilltimer != -1) { // Normally, we never entering in this test
 		int inf;
-		if ((inf = skill_get_inf(sd->skillid)) == 2 || inf == 32)
+		if ((inf = skill_get_inf(sd->skillid)) == 2 || inf == 32) // 2 = NPC skills / 32 = Traps
 			delete_timer(sd->skilltimer, skill_castend_pos);
 		else
 			delete_timer(sd->skilltimer, skill_castend_id);
@@ -11471,6 +11503,15 @@ void skill_init_unit_layout()
 				skill_unit_layout[pos].count = 33;
 				memcpy(skill_unit_layout[pos].dx, dx, sizeof(dx));
 				memcpy(skill_unit_layout[pos].dy, dy, sizeof(dy));
+				break;
+			}
+			case NJ_KAENSIN:
+			{
+				static const int dx[] = {-2,-1, 0, 1, 2,-2,-1, 0, 1, 2,-2,-1, 1, 2,-2,-1, 0, 1, 2,-2,-1, 0, 1, 2};
+				static const int dy[] = { 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 0, 0, 0, 0,-1,-1,-1,-1,-1,-2,-2,-2,-2,-2};
+				skill_unit_layout[pos].count = 24;
+				memcpy(skill_unit_layout[pos].dx,dx,sizeof(dx));
+				memcpy(skill_unit_layout[pos].dy,dy,sizeof(dy));
 				break;
 			}
 			default:
