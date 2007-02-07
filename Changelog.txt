@@ -10,6 +10,9 @@
 
 Date	Added
 
+02/07/2007
+	* Fixed: converted configure file back to use UNIX line endings [Latios]
+
 02/06/2007
 	* Fixed: Status icons not loading in the TXT version [Tsuyuki]
 
