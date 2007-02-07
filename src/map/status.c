@@ -4929,14 +4929,14 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 	// End of main status calculation check
 
 // Freya SQL Only
-#ifdef USE_SQL
 	if (bl->type == BL_PC)
 	{
+#ifdef USE_SQL
 		if (flag&4)
-			clif_status_load(sd, StatusIconTable[type]); // Sending to owner since they aren't in the map yet [Skotlex]
+			clif_status_load(sd, StatusIconTable[type]); // Sending to owner since they aren't in the map yet
+#endif
 		clif_status_change(bl, StatusIconTable[type], 1);
 	}
-#endif
 
 	// Option calculation check
 	switch(type)
