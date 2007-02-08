@@ -11,6 +11,8 @@
 Date	Added
 
 02/08/2007
+	* Fixed: Some races and elements from Biolab 3 monsters. [Lex]
+	 - http://ro.doddlercon.com/db/monster/view.php
 	* Fixed: Disarm skill now reduces monster attack power by 25% [Harbin]
 	* Improved: Merged Disarm skill code with Strip skill code [Harbin]
 
