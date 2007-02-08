@@ -11,6 +11,7 @@
 Date	Added
 
 02/07/2007
+	* Fixed: Seyren Windsor's Bastard Sword drop (2s -> 3s) [Tsuyuki]
 	* Reverted: Plants/Mushrooms cannot be knocked back [Tsuyuki]
 	 - http://freya.dns.st/mantis/view.php?id=439
 	* Fixed: converted configure file back to use UNIX line endings [Latios]
