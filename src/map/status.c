@@ -3862,6 +3862,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 		unsigned calc : 1; // Re-calculate status_calc_pc
 		unsigned send_opt : 1; // Send new option clif_changeoption
 		unsigned undead_bl : 1; // Whether the object is undead race/ele or not
+		unsigned dye_fix : 1; // Dye reset crash fix for SC_BUNSINJYUTSU
 	} scflag;
 
 	nullpo_retr(0, bl);
@@ -4074,6 +4075,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			break;
 		case SC_BUNSINJYUTSU:
 			val2=(val1+1)/2;
+			scflag.dye_fix = 1;
 			break;
 		case SC_SPIRIT:
 			scflag.calc = 1;
@@ -5038,6 +5040,16 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 	if (scflag.send_opt)
 		clif_changeoption(bl);
 
+	if (scflag.dye_fix)
+	{
+		if (sd && sd->status.clothes_color)
+		{
+			val4 = sd->status.clothes_color;
+			clif_changelook(bl, LOOK_CLOTHES_COLOR, 0);
+			sd->status.clothes_color = 0;
+		}
+	}
+
 	(*sc_count)++;
 
 	// Place updated status change data values into sc_data structure
@@ -5155,7 +5167,7 @@ int status_change_end(struct block_list* bl, int type, int tid)
 {
 	// Retrieve necessary data
 	struct status_change* sc_data;
-	int opt_flag = 0, calc_flag = 0;
+	int opt_flag = 0, calc_flag = 0, dye_fix = 0;
 	short *sc_count, *option, *opt1, *opt2, *opt3;
 
 	nullpo_retr(0, bl);
@@ -5282,6 +5294,7 @@ int status_change_end(struct block_list* bl, int type, int tid)
 				break;
 			case SC_PROVOKE:
 			case SC_ENDURE:
+				if (bl->type == BL_PC)
 				{
 					struct map_session_data *sd=NULL;
 					sd = (struct map_session_data *)bl;
@@ -5295,14 +5308,15 @@ int status_change_end(struct block_list* bl, int type, int tid)
 							status_change_end(&tsd->bl,SC_ENDURE,-1);
 						}
 					}
-					break;
 				}
+				break;
 			case SC_AUTOGUARD:
+				if (bl->type == BL_PC)
 				{
 					struct map_session_data *sd=NULL;
 					sd = (struct map_session_data *)bl;
 					if (sd)
-					{    
+					{
 						struct map_session_data *tsd;
 						int i;
 						for (i = 0; i < 5; i++)
@@ -5311,9 +5325,10 @@ int status_change_end(struct block_list* bl, int type, int tid)
 							status_change_end(&tsd->bl,SC_AUTOGUARD,-1);
 						}
 					}
-					break;
 				}
+				break;
 			case SC_DEFENDER:
+				if (bl->type == BL_PC)
 				{
 					struct map_session_data *sd = NULL;
 					if((sd = (struct map_session_data *)bl))
@@ -5326,11 +5341,12 @@ int status_change_end(struct block_list* bl, int type, int tid)
 								status_change_end(&tsd->bl, SC_DEFENDER, -1);
 						}
 					}
-					// Update walking speed
-					calc_flag = 1;
-					break;
 				}
+				// Update walking speed
+				calc_flag = 1;
+				break;
 			case SC_REFLECTSHIELD:
+				if (bl->type == BL_PC)
 				{
 					struct map_session_data *sd=NULL;
 					sd = (struct map_session_data *)bl;
@@ -5344,14 +5360,15 @@ int status_change_end(struct block_list* bl, int type, int tid)
 								status_change_end(&tsd->bl,SC_REFLECTSHIELD,-1);
 						}
 					}
-					break;
 				}
+				break;
 			case SC_SHRINK:
+				if (bl->type == BL_PC)
 				{
 					struct map_session_data *sd=NULL;
 					sd = (struct map_session_data *)bl;
 					if (sd)
-					{    
+					{
 						struct map_session_data *tsd;
 						int i;
 						for (i = 0; i < 5; i++)
@@ -5360,8 +5377,8 @@ int status_change_end(struct block_list* bl, int type, int tid)
 							status_change_end(&tsd->bl,SC_SHRINK,-1);
 						}
 					}
-					break;
 				}
+				break;
 			case SC_RUN:
 				{
 					struct map_session_data *sd;
@@ -5380,8 +5397,8 @@ int status_change_end(struct block_list* bl, int type, int tid)
 			case SC_DEVOTION:
 				{
 					struct map_session_data *md = map_id2sd(sc_data[type].val1);
-					sc_data[type].val1=sc_data[type].val2=0;
 					skill_devotion(md,bl->id);
+					sc_data[type].val1=sc_data[type].val2=0;
 					calc_flag = 1;
 
 					int type2 = SC_AUTOGUARD;
@@ -5534,6 +5551,8 @@ int status_change_end(struct block_list* bl, int type, int tid)
 				else
 					calc_flag = 1;
 				break;
+			case SC_BUNSINJYUTSU:
+				dye_fix = 1;
 		}
 
 		// Remove status changes in the client
@@ -5661,6 +5680,15 @@ int status_change_end(struct block_list* bl, int type, int tid)
 		// Check and change option flag if necessary
 		if(opt_flag)
 			clif_changeoption(bl);
+
+		if (bl->type == BL_PC && dye_fix)
+		{
+			struct map_session_data *sd = NULL;
+			sd = (struct map_session_data *)bl;
+			if (sd && !sd->status.clothes_color && sc_data[type].val4)
+				clif_changelook(bl, LOOK_CLOTHES_COLOR, sc_data[type].val4);
+				sd->status.clothes_color = sc_data[type].val4;
+		}
 
 		// Recalculate player status
 		if (bl->type == BL_PC && calc_flag)
