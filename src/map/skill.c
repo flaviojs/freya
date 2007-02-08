@@ -4810,114 +4810,107 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		}
 		break;
 	case GS_DISARM:
-		// Success chance check done here instead of down below
-		// Disarm's Strip Weapon only occurs with user being a player, and target being a player
-		if (sd && dstsd)
-		{
-			// Success chance increased by skill level
-			i = 3*skilllv;
-			if (sd->status.dex > dstsd->status.dex)
-				i += (sd->status.dex - dstsd->status.dex) / 5;
-			if (rand()%100 >= i)
-			{
-				clif_skill_fail(sd, skillid, 0, 0);
-				break;
-			}
-		}
-		else if (sd)
-		{
-			clif_skill_fail(sd, skillid, 0, 0);
-			break;
-		}
 	case RG_STRIPWEAPON:
 	case RG_STRIPSHIELD:
 	case RG_STRIPARMOR:
 	case RG_STRIPHELM:
 	case ST_FULLSTRIP:
-	  {
+	{
 		int equip, strip_fix;
 		int sclist[4] = {0, 0, 0, 0};
 
-		switch (skillid) {
-		case GS_DISARM:
-		case RG_STRIPWEAPON:
-			equip = EQP_WEAPON;
-			break;
-		case RG_STRIPSHIELD:
-			equip = EQP_SHIELD;
-			break;
-		case RG_STRIPARMOR:
-			equip = EQP_ARMOR;
-			break;
-		case RG_STRIPHELM:
-			equip = EQP_HELM;
-			break;
-		case ST_FULLSTRIP:
-			equip = EQP_WEAPON | EQP_SHIELD | EQP_ARMOR | EQP_HELM;
-			break;
-		default:
-			map_freeblock_unlock();
-			return 1;
-		}
+		/* dex effects the success rate */
+		strip_fix = status_get_dex(src) - status_get_dex(bl);
+		if(strip_fix < 0)
+			strip_fix = 0;
 
-		// Already did success chance check for GS_DISARM above
-		if (skillid != GS_DISARM)
+		/* calculate success rate and set the target equip */
+		if(skillid == GS_DISARM)
 		{
-			strip_fix = status_get_dex(src) - status_get_dex(bl);
-			if (strip_fix < 0)
-				strip_fix = 0;
-			if (rand() % 100 >= 5 + 2 * skilllv + strip_fix / 5) {
-				if(sd)
-					clif_skill_fail(sd, skillid, 0, 0);
-				break;
+			i = (skilllv * 3) + (strip_fix / 5);
+			equip = EQP_WEAPON;
+		} else {
+			i = (5 + skilllv * 2) + (strip_fix / 5);
+			switch(skillid)
+			{
+				case RG_STRIPWEAPON:
+					equip = EQP_WEAPON;
+					break;
+				case RG_STRIPSHIELD:
+					equip = EQP_SHIELD;
+					break;
+				case RG_STRIPARMOR:
+					equip = EQP_ARMOR;
+					break;
+				case RG_STRIPHELM:
+					equip = EQP_HELM;
+					break;
+				case ST_FULLSTRIP:
+					equip = EQP_WEAPON | EQP_SHIELD | EQP_ARMOR | EQP_HELM;
+					break;
 			}
 		}
 
-		if (dstsd) {
-			for (i = 0; i < 11; i++) {
-				if (dstsd->equip_index[i] >= 0 && dstsd->inventory_data[dstsd->equip_index[i]]) {
-					if (equip & EQP_WEAPON && (i == 9 || (i == 8 && dstsd->inventory_data[dstsd->equip_index[8]]->type == 4)) && !(dstsd->unstripable_equip&EQP_WEAPON) && !(tsc_data && tsc_data[SC_CP_WEAPON].timer != -1)) {
+		/* cast or not */
+		if(i < rand()%100)
+		{
+			if(sd)
+				clif_skill_fail(sd, skillid, 0, 0);
+			break;
+		}
+
+		if(dstsd)
+		{
+			for(i = 0; i < 11; i++)
+			{
+				if(dstsd->equip_index[i] >= 0 && dstsd->inventory_data[dstsd->equip_index[i]]) {
+					if(equip & EQP_WEAPON && (i == 9 || (i == 8 && dstsd->inventory_data[dstsd->equip_index[8]]->type == 4)) && !(dstsd->unstripable_equip&EQP_WEAPON) && !(tsc_data && tsc_data[SC_CP_WEAPON].timer != -1)) {
 						sclist[0] = SC_STRIPWEAPON;
 						pc_unequipitem(dstsd, dstsd->equip_index[i], 3);
-					} else if (equip & EQP_SHIELD && i == 8 && dstsd->inventory_data[dstsd->equip_index[8]]->type == 5 && !(dstsd->unstripable_equip&EQP_SHIELD) && !(tsc_data && tsc_data[SC_CP_SHIELD].timer != -1)) {
+					} else if(equip & EQP_SHIELD && i == 8 && dstsd->inventory_data[dstsd->equip_index[8]]->type == 5 && !(dstsd->unstripable_equip&EQP_SHIELD) && !(tsc_data && tsc_data[SC_CP_SHIELD].timer != -1)) {
 						sclist[1] = SC_STRIPSHIELD;
 						pc_unequipitem(dstsd, dstsd->equip_index[i], 3);
-					} else if (equip & EQP_ARMOR && i == 7 && !(dstsd->unstripable_equip&EQP_ARMOR) && !(tsc_data && tsc_data[SC_CP_ARMOR].timer != -1)) {
+					} else if(equip & EQP_ARMOR && i == 7 && !(dstsd->unstripable_equip&EQP_ARMOR) && !(tsc_data && tsc_data[SC_CP_ARMOR].timer != -1)) {
 						sclist[2] = SC_STRIPARMOR;
 						pc_unequipitem(dstsd, dstsd->equip_index[i], 3);
-						if (tsc_data[SC_WEDDING].timer != -1)
+						if(tsc_data[SC_WEDDING].timer != -1)
 							status_change_end(bl,SC_WEDDING,-1);
-					} else if (equip & EQP_HELM && i == 6 && !(dstsd->unstripable_equip&EQP_HELM) && !(tsc_data && tsc_data[SC_CP_HELM].timer != -1)) {
+					} else if(equip & EQP_HELM && i == 6 && !(dstsd->unstripable_equip&EQP_HELM) && !(tsc_data && tsc_data[SC_CP_HELM].timer != -1)) {
 						sclist[3] = SC_STRIPHELM;
 						pc_unequipitem(dstsd, dstsd->equip_index[i], 3);
 					}
 				}
 			}
-		} else if (dstmd && !(dstmd->mode&0x20)) {
-			if (equip & EQP_WEAPON)
+		} else if (dstmd && !(dstmd->mode & 0x20)) {
+			if(equip & EQP_WEAPON)
 				sclist[0] = SC_STRIPWEAPON;
-			if (equip & EQP_SHIELD)
+			if(equip & EQP_SHIELD)
 				sclist[1] = SC_STRIPSHIELD;
-			if (equip & EQP_ARMOR)
+			if(equip & EQP_ARMOR)
 				sclist[2] = SC_STRIPARMOR;
-			if (equip & EQP_HELM)
+			if(equip & EQP_HELM)
 				sclist[3] = SC_STRIPHELM;
 		}
 
-			equip = 0; // Recycle "equip" since its useless now.
-			for (i = 0; i < 4; i++) {
-				if (sclist[i] != 0) {// Start the SC only if an equipment was stripped from this location
-					equip = 1;
-					status_change_start(bl, sclist[i], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv) + strip_fix / 2, 0);
-				}
-			}
+		equip = 0;	/* recycled variable */
 
-			if(equip)
-				clif_skill_nodamage(src, bl, skillid, skilllv, 1);
-			else if(sd)
-				clif_skill_fail(sd, skillid, 0, 0);
-	  }
+		for(i = 0; i < 4; i++)
+		{
+			if(sclist[i] != 0)
+			{
+				equip = 1;
+				status_change_start(bl, sclist[i], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv) + strip_fix / 2, 0);
+			}
+		}
+
+		if(equip)
+			clif_skill_nodamage(src, bl, skillid, skilllv, 1);
+		else if(sd)
+			clif_skill_fail(sd, skillid, 0, 0);
+
 		break;
+	}
+
 	case AM_POTIONPITCHER:
 	  {
 		struct block_list tbl;

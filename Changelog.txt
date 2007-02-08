@@ -10,6 +10,10 @@
 
 Date	Added
 
+02/08/2007
+	* Fixed: Disarm skill now reduces monster attack power by 25% [Harbin]
+	* Improved: Merged Disarm skill code with Strip skill code [Harbin]
+
 02/07/2007
 	* Cleaned: Commenting/formatting in guild.c (No actual code changes) [Tsuyuki]
 	* Fixed: SC_BUNSINJYUTSU crashing user and other players if user has a custom palette [Tsuyuki]
