@@ -1636,8 +1636,8 @@ int skill_blown(struct block_list *src, struct block_list *target, int count) {
 			return 0;
 	}
 
-	// Boss monsters/Emperium/Certain Plants (Red Plant, Mushroom, etc) cannot be knocked back
-	if (md && ((mob_db[md->class].mexp) || (mob_db[md->class].mode&0x40) || (md->class == 1288)))
+	// Boss monsters/Emperium cannot be knocked back
+	if (md && ((mob_db[md->class].mexp) || (md->class == 1288)))
 		return 0;
 
 	// RSX 0806 card bonus

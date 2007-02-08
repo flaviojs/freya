@@ -11,6 +11,8 @@
 Date	Added
 
 02/07/2007
+	* Reverted: Plants/Mushrooms cannot be knocked back [Tsuyuki]
+	 - http://freya.dns.st/mantis/view.php?id=439
 	* Fixed: converted configure file back to use UNIX line endings [Latios]
 
 02/06/2007
