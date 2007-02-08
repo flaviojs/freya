@@ -11,6 +11,7 @@
 Date	Added
 
 02/07/2007
+	* Cleaned: Commenting/formatting in guild.c (No actual code changes) [Tsuyuki]
 	* Fixed: SC_BUNSINJYUTSU crashing user and other players if user has a custom palette [Tsuyuki]
 	* Fixed: Seyren Windsor's Bastard Sword drop (2s -> 3s) [Tsuyuki]
 	* Reverted: Plants/Mushrooms cannot be knocked back [Tsuyuki]
