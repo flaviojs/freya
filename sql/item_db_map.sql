@@ -1123,7 +1123,7 @@ INSERT INTO `item_db` VALUES (2417, 'Fricco\'s_Shoes', 'Fricco\'s Shoes', 5, 300
 INSERT INTO `item_db` VALUES (2418, 'Vidar\'s_Boots', 'Vidar\'s Boots', 5, 30000, 15000, 650, 0, 4, 0, 0, 1071636478, 2, 64, 0, 65, 0, NULL, 'bonus bMaxHPrate,9; bonus bMaxSPrate,9; if(isequipped(2353,2517)==0) end; bonus bAgi,3; bonus bMaxHPrate,5; bonus bMaxSPrate,5;');
 INSERT INTO `item_db` VALUES (2419, 'Gobine\'s_Greaves', 'Goibne\'s Greaves', 5, 30000, 15000, 700, 0, 4, 0, 0, 1071636478, 2, 64, 0, 54, 0, NULL, 'bonus bMdef,3; bonus bMaxHPrate,5; bonus bMaxSPrate,5;');
 INSERT INTO `item_db` VALUES (2420, 'Angel\'s_Reincarnation', 'Angel\'s Reincarnation', 5, 10000, 5000, 300, 0, 2, 0, 1, 8388609, 2, 64, 0, 25, 0, NULL, 'bonus bMaxHP,100;');
-INSERT INTO `item_db` VALUES (2421, 'Valkyrie\'s_Shoes', 'Valkyrie\'s Shoes', 5, 0, 0, 500, 0, 4, 0, 1, 1071636478, 2, 64, 0, 0, 0, NULL, 'bonus bUnbreakableArmor,0; if(GetPureJob==JOB_MAGE || GetPureJob==JOB_ARCHER || GetPureJob==JOB_ACOLYTE) bonus bMaxHP,(BaseLevel*5); if(GetPureJob==JOB_SWORDMAN || GetPureJob==JOB_MERCHANT || GetPureJob==JOB_THIEF) bonus bMaxSP,(JobLevel*2);');
+INSERT INTO `item_db` VALUES (2421, 'Valkyrie\'s_Shoes', 'Valkyrie\'s Shoes', 5, 0, 0, 500, 0, 4, 0, 1, 1071636478, 2, 64, 0, 0, 0, NULL, 'if(GetPureJob==JOB_MAGE || GetPureJob==JOB_ARCHER || GetPureJob==JOB_ACOLYTE) bonus bMaxHP,(BaseLevel*5); if(GetPureJob==JOB_SWORDMAN || GetPureJob==JOB_MERCHANT || GetPureJob==JOB_THIEF) bonus bMaxSP,(JobLevel*2);');
 INSERT INTO `item_db` VALUES (2422, 'High_Quality_Sandals', 'High Quality Sandals', 5, 24000, 12000, 200, 0, 2, 0, 1, 142705429, 2, 64, 0, 40, 1, NULL, 'bonus bMdef,10;');
 
 # Garments
@@ -1150,7 +1150,7 @@ INSERT INTO `item_db` VALUES (2520, 'Goibne\'s_Spaulders', 'Goibne\'s Spaulders'
 INSERT INTO `item_db` VALUES (2521, 'Angelic_Cardigan', 'Angelic Cardigan', 5, 10000, 5000, 400, 0, 2, 0, 1, 8388609, 2, 4, 0, 20, 0, NULL, 'bonus bHPrecovRate,5;');
 INSERT INTO `item_db` VALUES (2522, 'Undershirt', 'Undershirt', 5, 20000, 10000, 150, 0, 2, 0, 0, 1071636479, 2, 4, 0, 1, 0, NULL, 'bonus bMdef,1; if(isequipped(2339)==0) end; bonus bAgi,5; bonus bFlee,10;');
 INSERT INTO `item_db` VALUES (2523, 'Undershirt_', 'Undershirt_', 5, 20000, 10000, 150, 0, 2, 0, 1, 1071636479, 2, 4, 0, 1, 0, NULL, 'bonus bMdef,1; if(isequipped(2339)==0) end; bonus bAgi,5; bonus bFlee,10;');
-INSERT INTO `item_db` VALUES (2524, 'Valkyrie\'s_Manteau', 'Valkyrie\'s Manteau', 5, 0, 0, 500, 0, 3, 0, 1, 1071636478, 2, 4, 0, 1, 1, NULL, 'bonus bUnbreakableArmor,0; if(GetPureJob==JOB_MAGE || GetPureJob==JOB_ARCHER || GetPureJob==JOB_ACOLYTE) bonus bFlee2,5+(getequiprefinerycnt(5)*2); if(GetPureJob==JOB_SWORDMAN || GetPureJob==JOB_MERCHANT || GetPureJob==JOB_THIEF) bonus bShortWeaponDamageReturn,5+(getequiprefinerycnt(5)*2);');
+INSERT INTO `item_db` VALUES (2524, 'Valkyrie\'s_Manteau', 'Valkyrie\'s Manteau', 5, 0, 0, 500, 0, 3, 0, 1, 1071636478, 2, 4, 0, 1, 1, NULL, 'if(GetPureJob==JOB_MAGE || GetPureJob==JOB_ARCHER || GetPureJob==JOB_ACOLYTE) bonus bFlee2,5+(getequiprefinerycnt(5)*2); if(GetPureJob==JOB_SWORDMAN || GetPureJob==JOB_MERCHANT || GetPureJob==JOB_THIEF) bonus bShortWeaponDamageReturn,5+(getequiprefinerycnt(5)*2);');
 INSERT INTO `item_db` VALUES (2525, 'Cape_of_Old_Marquess', 'Cape of Old Marquess', 5, 82000, 41000, 600, 0, 2, 0, 1, 1071636478, 2, 4, 0, 40, 0, NULL, 'bonus bAgi,1;');
 INSERT INTO `item_db` VALUES (2526, 'Unknown_Item', 'Unknown Item', 5, 20, 0, 10, 0, 4, 0, 0, 1071636479, 2, 4, 0, 50, 0, NULL, NULL);
 
@@ -1665,7 +1665,7 @@ INSERT INTO `item_db` VALUES (4403, 'Kiel_D-01_Card', 'Kiel D-01 Card', 6, 0, 10
 INSERT INTO `item_db` VALUES (4404, 'Skogul_Card', 'Skogul Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus2 bAddEffWhenHit,9,3000; bonus2 bAddEff,9,3000;');
 INSERT INTO `item_db` VALUES (4405, 'Frus_Card', 'Frus Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus bMagicDamageReturn,getequiprefinerycnt(5)*2; if(GetPureJob==JOB_MAGE) bonus bMdef,3;');
 INSERT INTO `item_db` VALUES (4406, 'Skeggiold_Card', 'Skeggiold Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus2 bMagicAddEle,6,100;');
-INSERT INTO `item_db` VALUES (4407, 'Valkyrie_Randgris_Card', 'Valkyrie Randgrith Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus4 bAutoSpell,289,1,1000,1;');
+INSERT INTO `item_db` VALUES (4407, 'Valkyrie_Randgris_Card', 'Valkyrie Randgris Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus4 bAutoSpell,289,1,1000,1;');
 
 # Extra Headgears
 INSERT INTO `item_db` VALUES (5001, 'Headset', 'Headset', 5, 20, 0, 200, 0, 3, 0, 0, 1071636478, 2, 256, 0, 1, 87, NULL, 'bonus2 bResEff,5,1000;');
