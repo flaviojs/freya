@@ -11,6 +11,7 @@
 Date	Added
 
 02/08/2007
+	* Fixed: SC_STONE dispelling on map change (Since you can walk around during it) [Tsuyuki]
 	* Fixed: Some races and elements from Biolab 3 monsters. [Lex]
 	 - http://ro.doddlercon.com/db/monster/view.php
 	* Fixed: Disarm skill now reduces monster attack power by 25% [Harbin]
