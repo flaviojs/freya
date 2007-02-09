@@ -1083,24 +1083,33 @@ int status_calc_pc(struct map_session_data* sd, int first)
 	sd->nhealsp = 1 + (sd->paramc[3]/6) + (sd->status.max_sp/100);
 	if (sd->paramc[3] >= 120)
 		sd->nhealsp += ((sd->paramc[3] - 120) >> 1) + 4;
-	if ((skill=pc_checkskill(sd,MG_SRECOVERY)) > 0) {
+	if ((skill=pc_checkskill(sd,MG_SRECOVERY)) > 0)
+	{
+		sd->nshealsp = skill*3 + (sd->status.max_sp*skill/500);
+		if (sd->nshealsp > 0x7fff) sd->nshealsp = 0x7fff;
+	}
+	if ((skill=pc_checkskill(sd,NJ_NINPOU)) > 0)
+	{
 		sd->nshealsp = skill*3 + (sd->status.max_sp*skill/500);
 		if (sd->nshealsp > 0x7fff) sd->nshealsp = 0x7fff;
 	}
 
-	if ((skill = pc_checkskill(sd,MO_SPIRITSRECOVERY)) > 0) {
+	if ((skill = pc_checkskill(sd,MO_SPIRITSRECOVERY)) > 0)
+	{
 		sd->nsshealhp += skill*4 + (sd->status.max_hp*skill/500);
 		sd->nsshealsp += skill*2 + (sd->status.max_sp*skill/500);
 		if (sd->nsshealhp > 0x7fff) sd->nsshealhp = 0x7fff;
 		if (sd->nsshealsp > 0x7fff) sd->nsshealsp = 0x7fff;
 	}
 
-	if ((skill=pc_checkskill(sd,TK_HPTIME)) > 0 && sd->state.rest) {
+	if ((skill=pc_checkskill(sd,TK_HPTIME)) > 0 && sd->state.rest)
+	{
 		sd->nsshealhp += skill*30 + (sd->status.max_hp*skill/500);
 		if(sd->nsshealhp > 0x7fff) sd->nsshealhp = 0x7fff;
 	}
 
-	if ((skill=pc_checkskill(sd,TK_SPTIME)) > 0 && sd->state.rest) {
+	if ((skill=pc_checkskill(sd,TK_SPTIME)) > 0 && sd->state.rest)
+	{
 		sd->nsshealsp += skill*3 + (sd->status.max_sp*skill/500);
 		if ((skill = pc_checkskill(sd,SL_KAINA)) > 0)
 			sd->nsshealsp += sd->nsshealsp * (30 + skill * 10) / 100;

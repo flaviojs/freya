@@ -11,6 +11,7 @@
 Date	Added
 
 02/08/2007
+	* Added: Ninja's NJ_NINPOU skill [Tsuyuki]
 	* Fixed: Kiel D-01's drops, now fully updated to 11.1 [Tsuyuki]
 	* Fixed: Valkyrie item set refinable bugs [Tsuyuki]
 	* Fixed: The classic STAN / STUN mixup once and for all [Tsuyuki]
