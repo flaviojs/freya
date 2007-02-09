@@ -1098,7 +1098,7 @@
 2418,Vidar's_Boots,Vidar's Boots,5,30000,15000,650,0,4,0,0,1071636478,2,64,0,65,0,{},{ bonus bMaxHPrate,9; bonus bMaxSPrate,9; if(isequipped(2353,2517)==0) end; bonus bAgi,3; bonus bMaxHPrate,5; bonus bMaxSPrate,5; } 
 2419,Gobine's_Greaves,Goibne's Greaves,5,30000,15000,700,0,4,0,0,1071636478,2,64,0,54,0,{},{ bonus bMdef,3; bonus bMaxHPrate,5; bonus bMaxSPrate,5; }
 2420,Angel's_Reincarnation,Angel's Reincarnation,5,10000,5000,300,0,2,0,1,8388609,2,64,0,25,0,{},{ bonus bMaxHP,100; }
-2421,Valkyrie's_Shoes,Valkyrie's Shoes,5,0,,500,,4,,1,1071636478,2,64,,0,0,{},{ bonus bUnbreakableArmor,0; if(GetPureJob==JOB_MAGE || GetPureJob==JOB_ARCHER || GetPureJob==JOB_ACOLYTE) bonus bMaxHP,(BaseLevel*5); if(GetPureJob==JOB_SWORDMAN || GetPureJob==JOB_MERCHANT || GetPureJob==JOB_THIEF) bonus bMaxSP,(JobLevel*2); }
+2421,Valkyrie's_Shoes,Valkyrie's Shoes,5,0,,500,,4,,1,1071636478,2,64,,0,0,{},{ if(GetPureJob==JOB_MAGE || GetPureJob==JOB_ARCHER || GetPureJob==JOB_ACOLYTE) bonus bMaxHP,(BaseLevel*5); if(GetPureJob==JOB_SWORDMAN || GetPureJob==JOB_MERCHANT || GetPureJob==JOB_THIEF) bonus bMaxSP,(JobLevel*2); }
 2422,High_Quality_Sandals,High Quality Sandals,5,24000,12000,200,,2,,1,142705429,2,64,,40,1,{},{ bonus bMdef,10; }
 
 // Garments
@@ -1125,7 +1125,7 @@
 2521,Angelic_Cardigan,Angelic Cardigan,5,10000,5000,400,0,2,0,1,8388609,2,4,0,20,0,{},{ bonus bHPrecovRate,5; }
 2522,Undershirt,Undershirt,5,20000,10000,150,0,2,0,0,1071636479,2,4,0,1,0,{},{ bonus bMdef,1; if(isequipped(2339)==0) end; bonus bAgi,5; bonus bFlee,10; }
 2523,Undershirt_,Undershirt_,5,20000,10000,150,0,2,0,1,1071636479,2,4,0,1,0,{},{ bonus bMdef,1; if(isequipped(2339)==0) end; bonus bAgi,5; bonus bFlee,10; }
-2524,Valkyrie's_Manteau,Valkyrie's Manteau,5,0,,500,,3,,1,1071636478,2,4,,1,1,{},{ bonus bUnbreakableArmor,0; if(GetPureJob==JOB_MAGE || GetPureJob==JOB_ARCHER || GetPureJob==JOB_ACOLYTE) bonus bFlee2,5+(getequiprefinerycnt(5)*2); if(GetPureJob==JOB_SWORDMAN || GetPureJob==JOB_MERCHANT || GetPureJob==JOB_THIEF) bonus bShortWeaponDamageReturn,5+(getequiprefinerycnt(5)*2); }
+2524,Valkyrie's_Manteau,Valkyrie's Manteau,5,0,,500,,3,,1,1071636478,2,4,,1,1,{},{ if(GetPureJob==JOB_MAGE || GetPureJob==JOB_ARCHER || GetPureJob==JOB_ACOLYTE) bonus bFlee2,5+(getequiprefinerycnt(5)*2); if(GetPureJob==JOB_SWORDMAN || GetPureJob==JOB_MERCHANT || GetPureJob==JOB_THIEF) bonus bShortWeaponDamageReturn,5+(getequiprefinerycnt(5)*2); }
 2525,Cape_of_Old_Marquess,Cape of Old Marquess,5,82000,41000,600,,2,,1,1071636478,2,4,,40,0,{},{ bonus bAgi,1; }
 2526,Unknown_Item,Unknown Item,5,20,0,10,,4,,0,1071636479,2,4,,50,0,{},{}
 
@@ -1640,7 +1640,7 @@
 4404,Skogul_Card,Skogul Card,6,,10,10,,,,,,,16,,,,{},{ bonus2 bAddEffWhenHit,9,3000; bonus2 bAddEff,9,3000; }
 4405,Frus_Card,Frus Card,6,,10,10,,,,,,,2,,,,{},{ bonus bMagicDamageReturn,getequiprefinerycnt(5)*2; if(GetPureJob==JOB_MAGE) bonus bMdef,3; }
 4406,Skeggiold_Card,Skeggiold Card,6,,10,10,,,,,,,2,,,,{},{ bonus2 bMagicAddEle,6,100; }
-4407,Valkyrie_Randgris_Card,Valkyrie Randgrith Card,6,,10,10,,,,,,,2,,,,{},{ bonus4 bAutoSpell,289,1,1000,1; }
+4407,Valkyrie_Randgris_Card,Valkyrie Randgris Card,6,,10,10,,,,,,,2,,,,{},{ bonus4 bAutoSpell,289,1,1000,1; }
 
 // Extra Headgears
 5001,Headset,Headset,5,20,0,200,,3,,0,1071636478,2,256,,1,87,{},{ bonus2 bResEff,5,1000; }
