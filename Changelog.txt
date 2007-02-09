@@ -11,6 +11,7 @@
 Date	Added
 
 02/08/2007
+	* Fixed: Kiel D-01's drops, now fully updated to 11.1 [Tsuyuki]
 	* Fixed: Valkyrie item set refinable bugs [Tsuyuki]
 	* Fixed: The classic STAN / STUN mixup once and for all [Tsuyuki]
 	* Fixed: SC_STONE dispelling on map change (Since you can walk around during it) [Tsuyuki]
