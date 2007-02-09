@@ -92,7 +92,7 @@ bonus2 bAddEff,Eff_Sleep,n;	With the establishment of n% sleep grant
 bonus2 bAddEff,Eff_Poison,n;	With the establishment of n% poison grant
 bonus2 bAddEff,Eff_Freeze,n;	With the establishment of n% freezing grant
 bonus2 bAddEff,Eff_Silence,n;	With the establishment of n% silence grant
-bonus2 bAddEff,Eff_Stan,n;	With the establishment of n% stun grant
+bonus2 bAddEff,Eff_Stun,n;	With the establishment of n% stun grant
 bonus2 bAddEff,Eff_Curse,n;	You curse with the establishment of n%, grant
 bonus2 bAddEff,Eff_Confusion,n;	With the establishment of n% confusion grant
 bonus2 bAddEff,Eff_Stone,n;	With the establishment of n% petrochemical grant
@@ -102,7 +102,7 @@ bonus2 bResEff,Eff_Sleep,n;	Sleep tolerance + n%
 bonus2 bResEff,Eff_Poison,n;	Poison tolerance + n%
 bonus2 bResEff,Eff_Freeze,n;	Freezing tolerance + n%
 bonus2 bResEff,Eff_Silence,n;	Silence tolerance + n%
-bonus2 bResEff,Eff_Stan,n;	Stun tolerance + 	n%
+bonus2 bResEff,Eff_Stun,n;	Stun tolerance + 	n%
 bonus2 bResEff,Eff_Curse,n;	Cursing tolerance + n%
 bonus2 bResEff,Eff_Confusion,n;	Confusion tolerance + n%
 bonus2 bResEff,Eff_Stone,n;	Petrochemical tolerance + n%
