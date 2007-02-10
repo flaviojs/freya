@@ -6,7 +6,6 @@
 
 // struct map_session_data‚ status_change function
 enum {
-
 	SC_STONE = 0,
 	SC_FREEZE,
 	SC_STUN,

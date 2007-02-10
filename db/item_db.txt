@@ -167,10 +167,10 @@
 // Random Items
 643,Pet_Incubator,Pet Incubator,2,3000,1500,30,,,,,1071636479,2,,,,,{ bpet; },{}
 644,Gift_Box,Gift Box,2,2,1,200,,,,,1071636479,2,,,,,{ getitem -4,1; },{}
-645,Concentration_Potion,Concentration Potion,2,800,400,100,,,,,1071636479,2,,,,,{ sc_start SC_SPEEDPOT0,1800000,0; },{}
+645,Concentration_Potion,Concentration Potion,2,800,400,100,,,,,1071636479,2,,,,,{ sc_start SC_ASPDPOTION0,1800000,0; },{}
 
-656,Awakening_Potion,Awakening Potion,2,1500,750,150,,,,,1070063343,2,,,40,,{ sc_end SC_SLEEP; sc_start SC_SPEEDPOT1,1800000,0; },{}
-657,Berserk_Potion,Berserk Potion,2,3000,1500,200,,,,,260491191,2,,,85,,{ sc_start SC_SPEEDPOT2,1800000,0; },{}
+656,Awakening_Potion,Awakening Potion,2,1500,750,150,,,,,1070063343,2,,,40,,{ sc_end SC_SLEEP; sc_start SC_ASPDPOTION1,1800000,0; },{}
+657,Berserk_Potion,Berserk Potion,2,3000,1500,200,,,,,260491191,2,,,85,,{ sc_start SC_ASPDPOTION2,1800000,0; },{}
 658,Tribal_Solidarity,Tribal Solidarity,2,1000,500,500,,,,,1071636479,2,,,,,{ guildgetexp rand(600000,1200000); },{}
 659,Her_Heart,Her Heart,2,500,250,50,,,,,1071636479,2,,,,,{ pet 1188; },{}
 660,Forbidden_Red_Candle,Red Candle,2,20000,10000,50,,,,,1071636479,2,,,,,{ pet 1200; },{}
@@ -193,7 +193,7 @@
 675,Silver_Coin,Silver Coin,2,20,0,40,,,,,0,3,,,,,{},{}
 676,Silver_Coin_Pouch,Silver Coin Pouch,2,20,0,400,,,,,0,3,,,,,{},{}
 677,Platinum_Coin,Platinum Coin,2,20,0,40,,,,,0,3,,,,,{},{}
-678,Poison_Bottle,Poison Bottle,2,5000,2500,100,,,,,1071636479,2,,,,,{ if(Class!=4013) goto Not_ASC; sc_start SC_POISON,600000,0; sc_start SC_SPEEDPOT3,30000,0; end; Not_ASC: percentheal -100,0; },{}
+678,Poison_Bottle,Poison Bottle,2,5000,2500,100,,,,,1071636479,2,,,,,{ if(Class!=4013) goto Not_ASC; sc_start SC_POISON,600000,0; sc_start SC_ASPDPOTION3,30000,0; end; Not_ASC: percentheal -100,0; },{}
 679,Pilule,Pilule,2,5000,2500,300,,,,,1071636479,3,,,,,{ itemheal 50,50; },{}
 680,Magic_Carnation,Magic Carnation,2,20,0,1000,,,,,1071636479,3,,,,,{ itemheal 25,0; },{}
 681,Sweet_Memory_of_Marriage,Sweet Memory of Marriage,2,50000,25000,10,,,,,0,3,,,,,{},{}
