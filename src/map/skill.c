@@ -1028,27 +1028,8 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 
 			if(sd->sc_count) {
 				// Enchant Deadly Poison
-				if(sd->sc_data[SC_EDP].timer != -1 && rand() % 10000 < sd->sc_data[SC_EDP].val2 * sc_def_vit) {
-					int mhp = status_get_max_hp(bl);
-					int hp = status_get_hp(bl);
-					int lvl = sd->sc_data[SC_EDP].val1;
-					int diff;
-					if (hp > mhp >> 2) {
-						if (dstsd) {
-							diff = mhp * 10 / 100;
-							if (hp - diff < mhp >> 2)
-								diff = hp - (mhp >> 2);
-							pc_heal(dstsd, -hp, 0);
-						} else if(dstmd) {
-							hp -= mhp * 15 / 100;
-							if (hp > mhp >> 2)
-								dstmd->hp = hp;
-							else
-								dstmd->hp = mhp >> 2;
-						}
-					}
-					status_change_start(bl, SC_DPOISON, lvl, 0, 0, 0, skill_get_time2(ASC_EDP, lvl), 0);
-				}
+				if(sd->sc_data[SC_EDP].timer != -1 && rand() % 10000 < sd->sc_data[SC_EDP].val2 * sc_def_vit)
+					status_change_start(bl, SC_DPOISON, sd->sc_data[SC_EDP].val1, 0, 0, 0, skill_get_time2(ASC_EDP, sd->sc_data[SC_EDP].val1), 0);
 
 				// Taekwon Stances
 				if(sd->sc_data[SC_COMBO].timer == -1) {

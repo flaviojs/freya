@@ -4630,8 +4630,8 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 				if(sd) {
 					int diff = mhp * 10 / 100;
 					if (hp - diff < mhp >> 2)
-						hp = hp - (mhp >> 2);
-					pc_heal((struct map_session_data *)bl, -hp, 0);
+						diff = hp - (mhp >> 2);
+					pc_heal(sd, -diff, 0);
 				} else if (bl->type == BL_MOB) {
 					struct mob_data *md = (struct mob_data *)bl;
 					hp -= mhp * 15 / 100;
@@ -4985,7 +4985,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			scflag.send_opt = 1;
 			break;
 		case SC_DPOISON:
-			*opt2 |= 1;
+			*opt2 |= 0x080;
 			scflag.send_opt = 1;
 			break;
 		case SC_SIGNUMCRUCIS:
@@ -5592,7 +5592,7 @@ int status_change_end(struct block_list* bl, int type, int tid)
 			case SC_DPOISON:
 				if (sc_data[SC_POISON].timer != -1)
 					break;
-				*opt2 &= ~1;
+				*opt2 &= ~0x080;
 				opt_flag = 1;
 				break;
 			case SC_SIGNUMCRUCIS:

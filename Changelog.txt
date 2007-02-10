@@ -11,6 +11,7 @@
 Date	Added
 
 02/10/2007
+	* Fixed: Deadly Poison status formula [Latios]
 	* Fixed: It's no longer possible to target someone who is in hide/cloak/chase walk state [Latios]
 	* Fixed: Night glowing bug on login [Latios]
 
