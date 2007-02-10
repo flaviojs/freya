@@ -10,6 +10,12 @@
 
 Date	Added
 
+02/09/2007
+	* Added: New items from the latest kRO patches (Thanks to jAthena) [Tsuyuki]
+	* Fixed: City name, Beins -> Veins as per better translations, as well as official confirmation [Tsuyuki]
+	* Updated: Veins monster stats/properties/drops (Info credits to jAthena) [Tsuyuki]
+	 - Magmaring and Knocker are now in and working properly
+
 02/08/2007
 	* Added: Ninja's NJ_NINPOU skill [Tsuyuki]
 	* Fixed: Kiel D-01's drops, now fully updated to 11.1 [Tsuyuki]

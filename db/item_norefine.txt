@@ -6,9 +6,12 @@
 //
 
 1243 // Novice Main Gauche
+
 1530 // Mjolnir
+
 2110 // Holy Guard
 2112 // Novice Guard
+
 2201 // Sunglasses
 2202 // Slotted Sunglasses
 2203 // Glasses
@@ -54,12 +57,16 @@
 2296 // Binoculars
 2297 // Goblini Mask
 2298 // Green Feeler
+
 2352 // Novice Ninja Suit
 2356 // Blessed Holy Robe
+
 2410 // Sleipnir
 2413 // Safety Shoes
 2414 // Novice Sandals
+
 2510 // Novice Hood
+
 2601 // Ring
 2602 // Earring
 2603 // Necklace
@@ -129,6 +136,33 @@
 2670 // Ring of Longing
 2672 // 3rd Anniversary Celebration Ring
 2673 // Warrior's Shining Ring
+2674 // Unknown Item
+2675 // Unknown Item
+2676 // Unknown Item
+2677 // Unknown Item
+2678 // Unknown Item
+2679 // Unknown Item
+2680 // Unknown Item
+2681 // Unknown Item
+2682 // Unknown Item
+2683 // Unknown Item
+2684 // Unknown Item
+2685 // Unknown Item
+2686 // Elven Ears_
+2687 // Romantic Flower_
+2688 // Critical Flower_
+2689 // Earring__
+2690 // Ring__
+2691 // Necklace__
+2692 // Glove__
+2693 // Brooch__
+2694 // Rosary__
+2695 // Safety Ring_
+2696 // Vesper Core 01_
+2697 // Vesper Core 02_
+2698 // Vesper Core 03_
+2699 // Vesper Core 04_
+
 5004 // Oxygen Mask
 5005 // Gas Mask
 5006 // Machoman's Glasses

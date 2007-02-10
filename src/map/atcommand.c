@@ -5537,7 +5537,7 @@ ATCOMMAND_FUNC(go) {
 	             { "lighthalzen.gat", 159,  93 },	//	22=Lighthalzen
                { "hugel.gat",        96, 145 },	//	23=Hugel
                { "rachel.gat",      130, 116 },	//	24=Rachel
-               { "veins.gat",				181,	84 }, //	25=Beins
+               { "veins.gat",				181,	84 }, //	25=Veins
 	};
 
 	if (map[sd->bl.m].flag.nogo && battle_config.any_warp_GM_min_level > sd->GM_level) {
@@ -5561,7 +5561,7 @@ ATCOMMAND_FUNC(go) {
 		send_usage(sd, " 2=Geffen          12=Umbala          22=Lighthalzen");
 		send_usage(sd, " 3=Payon           13=Niflheim        23=Hugel");
 		send_usage(sd, " 4=Alberta         14=Louyang      	  24=Rachel");
-		send_usage(sd, " 5=Izlude          15=Start Point     25=Beins");
+		send_usage(sd, " 5=Izlude          15=Start Point     25=Veins");
 		send_usage(sd, " 6=Al de Baran     16=Jail");
 		return -1;
 	} else {
@@ -5648,7 +5648,7 @@ ATCOMMAND_FUNC(go) {
 			send_usage(sd, " 2=Geffen          12=Umbala          22=Lighthalzen");
 			send_usage(sd, " 3=Payon           13=Niflheim        23=Hugel");
 			send_usage(sd, " 4=Alberta         14=Louyang      	  24=Rachel");
-			send_usage(sd, " 5=Izlude          15=Start Point     25=Beins");
+			send_usage(sd, " 5=Izlude          15=Start Point     25=Veins");
 			send_usage(sd, " 6=Al de Baran     16=Jail");
 			return -1;
 		}

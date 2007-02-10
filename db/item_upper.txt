@@ -9,11 +9,15 @@
 // Note: Does not work for cards
 //
 
-2357,2	// Valkyrie's Armor
-2421,2	// Valkyrie's Shoes
-2524,2	// Valkyrie's Manteau
-5171,2	// Valkyrie Helm
-2659,2	// Vesper Core 01
-2660,2	// Vesper Core 02
-2661,2	// Vesper Core 03
-2662,2	// Vesper Core 04
+2357,2 // Valkyrie's Armor
+2421,2 // Valkyrie's Shoes
+2524,2 // Valkyrie's Manteau
+5171,2 // Valkyrie Helm
+2659,2 // Vesper Core 01
+2660,2 // Vesper Core 02
+2661,2 // Vesper Core 03
+2662,2 // Vesper Core 04
+2696,2 // Vesper Core 01_
+2697,2 // Vesper Core 02_
+2698,2 // Vesper Core 03_
+2699.2 // Vesper Core 04_
