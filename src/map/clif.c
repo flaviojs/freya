@@ -1399,6 +1399,18 @@ static int clif_set0192(int fd, int m, int x, int y, int type) {
 	return 0;
 }
 
+static int clif_connect_new_night_timer(int tid, unsigned int tick, int id, int data) {
+	struct map_session_data *sd = NULL;
+
+	sd = map_id2sd(id);
+	if (sd == NULL)
+		return 0;
+
+	clif_status_change(&sd->bl, ICO_NIGHT, 1);
+	
+	return 0;
+}
+
 /*==========================================
  *
  *------------------------------------------
@@ -1470,16 +1482,17 @@ int clif_spawnpc(struct map_session_data *sd) {
 		clif_specialeffect(&sd->bl, 333, 1); // flag: 0: player see in the area (normal), 1: only player see only by player, 2: all players in a map that see only their (not see others), 3: all players that see only their (not see others)
 	if (map[sd->bl.m].flag.rain)
 		clif_specialeffect(&sd->bl, 161, 1); // flag: 0: player see in the area (normal), 1: only player see only by player, 2: all players in a map that see only their (not see others), 3: all players that see only their (not see others)
-	if (night_flag && !map[sd->bl.m].flag.indoors) {
-		if (!sd->state.night) {
-			sd->state.night = 1;
-		}
+
+	// Night effect
+	if (sd->state.connect_new && night_flag && !map[sd->bl.m].flag.indoors) {
+		add_timer(gettick_cache + 500, clif_connect_new_night_timer, sd->bl.id, 0);
+	} else if(night_flag && !map[sd->bl.m].flag.indoors) {
 		clif_status_change(&sd->bl, ICO_NIGHT, 0);
 		clif_status_change(&sd->bl, ICO_NIGHT, 1);
-	} else if (sd->state.night) {
-			clif_status_change(&sd->bl, ICO_NIGHT, 0);
-			sd->state.night = 0;
+	} else {
+		clif_status_change(&sd->bl, ICO_NIGHT, 0);
 	}
+
 	if(sd->viewsize==2) // tiny/big players [Valaris]
 		clif_specialeffect(&sd->bl,423,0);
 	else if(sd->viewsize==1)

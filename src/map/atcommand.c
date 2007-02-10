@@ -9156,7 +9156,7 @@ ATCOMMAND_FUNC(day) {
 		night_flag = 0; // 0=day, 1=night [Yor]
 		msglen = strlen(msg_txt(60)); // Day has arrived.
 		for(i = 0; i < fd_max; i++) {
-			if (session[i] && (pl_sd = session[i]->session_data) && pl_sd->state.auth && !map[pl_sd->bl.m].flag.indoors) {
+			if (session[i] && (pl_sd = session[i]->session_data) && pl_sd->state.auth) {
 				clif_status_change(&pl_sd->bl, ICO_NIGHT, 0);
 				clif_wis_message(pl_sd->fd, wisp_server_name, msg_txt(60), msglen + 1); // Day has arrived.
 			}

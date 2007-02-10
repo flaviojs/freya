@@ -10,6 +10,9 @@
 
 Date	Added
 
+02/10/2007
+	* Fixed: Night glowing bug on login [Latios]
+
 02/09/2007
 	* Added: New items from the latest kRO patches (Thanks to jAthena) [Tsuyuki]
 	* Fixed: City name, Beins -> Veins as per better translations, as well as official confirmation [Tsuyuki]

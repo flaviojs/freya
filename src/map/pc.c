@@ -8659,11 +8659,8 @@ int map_day_timer(int tid, unsigned int tick, int id, int data) { // by [yor]
 			night_flag = 0; // 0=day, 1=night [Yor]
 			for(i = 0; i < fd_max; i++) {
 				if (session[i] && (pl_sd = session[i]->session_data) && pl_sd->state.auth && !map[pl_sd->bl.m].flag.indoors) {
-					if (pl_sd->state.night) {
-						clif_status_change(&pl_sd->bl, ICO_NIGHT, 0);
-						clif_wis_message(pl_sd->fd, wisp_server_name, msg_txt(502), msg_len); // The day has arrived!
-						pl_sd->state.night = 0;
-					}
+					clif_status_change(&pl_sd->bl, ICO_NIGHT, 0);
+					clif_wis_message(pl_sd->fd, wisp_server_name, msg_txt(502), msg_len); // The day has arrived!
 				}
 			}
 		}
@@ -8687,11 +8684,8 @@ int map_night_timer(int tid, unsigned int tick, int id, int data) {
 			night_flag = 1; // 0=day, 1=night [Yor]
 			for(i = 0; i < fd_max; i++) {
 				if (session[i] && (pl_sd = session[i]->session_data) && pl_sd->state.auth && !map[pl_sd->bl.m].flag.indoors) {
-					if (!pl_sd->state.night) {
-						clif_status_change(&pl_sd->bl, ICO_NIGHT, 1);
-						clif_wis_message(pl_sd->fd, wisp_server_name, msg_txt(503), msg_len); // The night has fallen...
-						pl_sd->state.night = 1;
-					}
+					clif_status_change(&pl_sd->bl, ICO_NIGHT, 1);
+					clif_wis_message(pl_sd->fd, wisp_server_name, msg_txt(503), msg_len); // The night has fallen...
 				}
 			}
 		}

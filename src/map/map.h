@@ -166,7 +166,7 @@ struct map_session_data {
 		//unsigned display_player_hp : 1; // 0 no hp display, 1: hp display
 		unsigned main_flag : 1;
 		unsigned refuse_request_flag : 1;
-		unsigned night : 1; // 0 day, 1 night
+//		unsigned night : 1; // 0 day, 1 night
 		unsigned relocate : 1; //1: Re-warp a player
 	} state;
 	struct {
