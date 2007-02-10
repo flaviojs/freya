@@ -2278,19 +2278,25 @@ int skill_area_sub_count(struct block_list *src,struct block_list *target,int sk
 	return 0;
 }
 
-int skill_count_water(struct block_list *src, int range) {
+int skill_count_water(struct block_list *src, int range)
+{
 	int i, x, y, cnt = 0,size = range * 2 + 1;
 	struct skill_unit *unit;
 
-	for (i = 0; i < size * size; i++) {
+	for (i = 0; i < size * size; i++)
+	{
 		x = src->x + (i % size - range);
 		y = src->y + (i / size - range);
-		if (map_getcell(src->m, x, y, CELL_CHKWATER)) {
+		if (map_getcell(src->m, x, y, CELL_CHKWATER))
+		{
 			cnt++;
 			continue;
 		}
 		unit = map_find_skill_unit_oncell(src, x, y, SA_DELUGE, NULL);
-		if (unit) {
+		if (!unit)
+		 unit = map_find_skill_unit_oncell(src, x, y, NJ_SUITON, NULL);
+		if (unit)
+		{
 			cnt++;
 			skill_delunit(unit);
 		}
@@ -2303,7 +2309,8 @@ int skill_count_water(struct block_list *src, int range) {
  *
  *------------------------------------------
  */
-static int skill_timerskill(int tid, unsigned int tick, int id, int data) {
+static int skill_timerskill(int tid, unsigned int tick, int id, int data)
+{
 	struct map_session_data *sd = NULL;
 	struct mob_data *md = NULL;
 	struct pet_data *pd = NULL;
@@ -6397,7 +6404,6 @@ int skill_castend_pos2(struct block_list *src, int x, int y, int skillid, int sk
 	case HT_TALKIEBOX:
 	case GS_DESPERADO:
 	case NJ_BAKUENRYU:
-	case NJ_SUITON:
 	case GS_GROUNDDRIFT:
 		skill_unitsetting(src,skillid,skilllv,x,y,0);
 		break;
@@ -6422,6 +6428,7 @@ int skill_castend_pos2(struct block_list *src, int x, int y, int skillid, int sk
 	case SA_DELUGE:
 	case SA_VIOLENTGALE:
 	case SA_LANDPROTECTOR:
+	case NJ_SUITON:
 		skill_clear_element_field(src);
 		skill_unitsetting(src, skillid, skilllv, x, y, 0);
 		break;
@@ -6756,6 +6763,9 @@ struct skill_unit_group *skill_unitsetting(struct block_list *src, int skillid, 
 		if (src->type != BL_MOB && (map[src->m].flag.gvg || map[src->m].flag.pvp || map[src->m].flag.gvg_dungeon))
 			target = BCT_ALL;
 		break;
+	case NJ_SUITON:
+		skill_clear_unitgroup(src);
+		break;
 	case HT_SANDMAN:
 	case HT_CLAYMORETRAP:
 	case HT_SKIDTRAP:
@@ -7032,7 +7042,13 @@ int skill_unit_onplace(struct skill_unit *src, struct block_list *bl, unsigned i
 		type = SkillStatusChangeTable[sg->skill_id];
 		if (sc_data && sc_data[type].timer != -1 && sc_data[type].val2 == sg->group_id)
 			break;
-		status_change_start(bl,type, sg->skill_lv, sg->group_id, 0, 0, skill_get_time2(sg->skill_id, sg->skill_lv), 0);
+		status_change_start(bl, type, sg->skill_lv, sg->group_id, 0, 0, skill_get_time2(sg->skill_id, sg->skill_lv), 0);
+		break;
+	case 0xbb: /* NJ_SUITON */
+		sc_data = status_get_sc_data(bl);
+		type = SkillStatusChangeTable[sg->skill_id];
+		if (sc_data && sc_data[type].timer == -1)
+			status_change_start(bl, type, sg->skill_lv, BCT_ENEMY, 0, 0, sg->limit, 0);
 		break;
 
 	//case 0x9e:	/* BD_LULLABY */
@@ -7537,11 +7553,13 @@ int skill_unit_onout(struct skill_unit *src, struct block_list *bl, unsigned int
 	case 0x9a:	/* SA_VOLCANO */
 	case 0x9b:	/* SA_DELUGE */
 	case 0x9c:	/* SA_VIOLENTGALE */
+	case 0xbb:	/* NJ_SUITON */
 		sc_data = status_get_sc_data(bl);
 		type = SkillStatusChangeTable[sg->skill_id];
 		if (type == SC_QUAGMIRE && bl->type == BL_MOB)
 			break;
-		if (sc_data && sc_data[type].timer != -1 && sc_data[type].val2 == sg->group_id) {
+		if (sc_data && sc_data[type].timer != -1 && sc_data[type].val2 == sg->group_id)
+		{
 			status_change_end(bl, type, -1);
 		}
 		break;
@@ -8735,7 +8753,8 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 		}
 		break;
 	case ST_WATER:
-		if((!map_getcell(sd->bl.m, sd->bl.x, sd->bl.y, CELL_CHKWATER)) && (sd->sc_data[SC_DELUGE].timer == -1)) { //水場判定
+		if((!map_getcell(sd->bl.m, sd->bl.x, sd->bl.y, CELL_CHKWATER)) && (sd->sc_data[SC_DELUGE].timer == -1 || sd->sc_data[SC_SUITON].timer == -1))
+			{
 			clif_skill_fail(sd, skill, 0, 0);
 			return 0;
 		}
@@ -10046,11 +10065,11 @@ int skill_clear_element_field(struct block_list *bl)
 	for (i = 0; i < max; i++) {
 		if(sd){
 			skillid = sd->skillunit[i].skill_id;
-			if (skillid == SA_DELUGE || skillid == SA_VOLCANO || skillid == SA_VIOLENTGALE || skillid == SA_LANDPROTECTOR)
+			if (skillid == SA_DELUGE || skillid == SA_VOLCANO || skillid == SA_VIOLENTGALE || skillid == SA_LANDPROTECTOR || skillid == NJ_SUITON)
 				skill_delunitgroup(&sd->skillunit[i]);
 		}else if(md){
 			skillid = md->skillunit[i].skill_id;
-			if(skillid == SA_DELUGE || skillid == SA_VOLCANO || skillid == SA_VIOLENTGALE || skillid == SA_LANDPROTECTOR)
+			if (skillid == SA_DELUGE || skillid == SA_VOLCANO || skillid == SA_VIOLENTGALE || skillid == SA_LANDPROTECTOR || skillid == NJ_SUITON)
 				skill_delunitgroup(&md->skillunit[i]);
 		}
 	}
@@ -10555,7 +10574,7 @@ int skill_delunitgroup(struct skill_unit_group *group)
 }
 
 /*==========================================
- * スキルユニットグループ全削除
+ * skill_clear_unitgroup Function
  *------------------------------------------
  */
 int skill_clear_unitgroup(struct block_list *src)
@@ -10565,19 +10584,23 @@ int skill_clear_unitgroup(struct block_list *src)
 
 	nullpo_retr(0, src);
 
-	if(src->type == BL_PC){
+	if (src->type == BL_PC)
+	{
 		group =((struct map_session_data *)src)->skillunit;
 		maxsug = MAX_SKILLUNITGROUP;
-	}else if(src->type == BL_MOB){
+	} else if (src->type == BL_MOB)
+	{
 		group=((struct mob_data *)src)->skillunit;
 		maxsug = MAX_MOBSKILLUNITGROUP;
-	}else if(src->type == BL_PET){
+	} else if (src->type == BL_PET)
+	{
 		group = ((struct pet_data *)src)->skillunit;
 		maxsug = MAX_MOBSKILLUNITGROUP;
 	} else
 		return 0;
 
-	if(group){
+	if (group)
+	{
 		int i;
 		for(i = 0; i < maxsug; i++)
 			if(group[i].group_id > 0 && group[i].src_id == src->id)

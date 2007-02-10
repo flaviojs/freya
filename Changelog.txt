@@ -11,6 +11,8 @@
 Date	Added
 
 02/10/2007
+	* Note: All Ninja skills are now implemented, though NJ_SHADOWJUMP is broken [Tsuyuki]
+	* Added: Ninja's NJ_SUITON unit skill [Tsuyuki]
 	* Fixed: status change in const.txt [Latios]
 	* Fixed: Deadly Poison status formula [Latios]
 	* Fixed: It's no longer possible to target someone who is in hide/cloak/chase walk state [Latios]

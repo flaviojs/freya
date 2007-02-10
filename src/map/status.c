@@ -234,6 +234,7 @@ void initStatusIconTable(void) {
 	init_sc(NJ_UTSUSEMI,            SC_UTSUSEMI,         ICO_UTSUSEMI);
 	init_sc(NJ_BUNSINJYUTSU,        SC_BUNSINJYUTSU,     ICO_BUNSINJYUTSU);
 	init_sc(NJ_TATAMIGAESHI,        SC_TATAMIGAESHI,     ICO_BLANK);
+	init_sc(NJ_SUITON,              SC_SUITON,           ICO_BLANK);
 #undef init_sc
 
 	// Misc status icons - Non-Skills
@@ -755,6 +756,9 @@ int status_calc_pc(struct map_session_data* sd, int first)
 
 		if (sd->sc_data[SC_DECREASEAGI].timer != -1)
 			sd->paramb[1] -= 2 + sd->sc_data[SC_DECREASEAGI].val1;
+
+		if (sd->sc_data[SC_SUITON].timer != -1 && sd->sc_data[SC_SUITON].val3)
+			sd->paramb[1] -= sd->sc_data[SC_SUITON].val2;
 
 		if (sd->sc_data[SC_CLOAKING].timer != -1) {
 			sd->critical_rate += 100;
@@ -2041,13 +2045,10 @@ int status_get_agi(struct block_list *bl)
 		{
 			if (sc_data[SC_QUAGMIRE].timer != -1)
 				agi -= sc_data[SC_QUAGMIRE].val1 * 10;
-			else
-			{
-				if (sc_data[SC_INCREASEAGI].timer != -1 && sc_data[SC_DONTFORGETME].timer == -1)
-					agi += 2 + sc_data[SC_INCREASEAGI].val1;
-				if (sc_data[SC_CONCENTRATE].timer != -1)
-					agi += agi * (2 + sc_data[SC_CONCENTRATE].val1) / 100;
-			}
+			if (sc_data[SC_INCREASEAGI].timer != -1 && sc_data[SC_DONTFORGETME].timer == -1)
+				agi += 2 + sc_data[SC_INCREASEAGI].val1;
+			if (sc_data[SC_CONCENTRATE].timer != -1)
+				agi += agi * (2 + sc_data[SC_CONCENTRATE].val1) / 100;
 			if (sc_data[SC_DECREASEAGI].timer != -1)
 				agi -= 2 + sc_data[SC_DECREASEAGI].val1;
 			if (sc_data[SC_TRUESIGHT].timer != -1)
@@ -2062,6 +2063,8 @@ int status_get_agi(struct block_list *bl)
 				agi = 50;
 			if (sc_data[SC_INCREASING].timer != -1)
 				agi += 4;
+			if (sc_data[SC_SUITON].timer!=-1 && sc_data[SC_SUITON].val3)
+				agi -= sc_data[SC_SUITON].val2;
 		}
 
 		// If Agility value is invalid, set to 0
@@ -3790,6 +3793,37 @@ int status_get_sc_def(struct block_list *bl, int type)
 	int sc_def;
 	nullpo_retr(0, bl);
 
+	// The following statuses are blocked by Golden Thief Bug Card and Wand of Hermode
+	if (status_isimmune(bl))
+	{
+		switch (type)
+		{
+			case SC_DECREASEAGI:
+			case SC_SILENCE:
+			case SC_COMA:
+			case SC_INCREASEAGI:
+			case SC_BLESSING:
+			case SC_SLOWPOISON:
+			case SC_IMPOSITIO:
+			case SC_AETERNA:
+			case SC_SUFFRAGIUM:
+			case SC_BENEDICTIO:
+			case SC_PROVIDENCE:
+			case SC_KYRIE:
+			case SC_ASSUMPTIO:
+			case SC_ANGELUS:
+			case SC_MAGNIFICAT:
+			case SC_GLORIA:
+			case SC_WINDWALK:
+			case SC_MAGICROD:
+			case SC_HALLUCINATION:
+			case SC_STONE:
+			case SC_QUAGMIRE:
+			case SC_SUITON:
+				return 10000;
+		}
+	}
+
 	// Calculation
 	switch (type)
 	{
@@ -3999,6 +4033,12 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			case SC_PROVOKE:
 			case SC_ROKISWEIL:
 			case SC_COMA:
+			case SC_GRAVITATION:
+			case SC_SUITON:
+			case SC_STRIPWEAPON:
+			case SC_STRIPSHIELD:
+			case SC_STRIPARMOR:
+			case SC_STRIPHELM:
 				return 0;
 		}
 	}
@@ -4400,6 +4440,20 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			scflag.calc = 1;
 			val3 = val1>=5?15: (val1==4?14: (val1==3?12: ( val1==2?9:5 ) ) );
 			val4 = val1>=5?20: (val1==4?19: (val1==3?17: ( val1==2?14:10 ) ) );
+			break;
+		case SC_SUITON:
+			scflag.calc = 1;
+			// No penalties received if job is a Ninja
+			if (!val2 || (sd && sd->status.class == JOB_NINJA))
+			{
+				val2 = 0; // Agi
+				val3 = 0; // Walk speed
+				break;
+			}
+			val3 = 50;
+			val2 = 3 * ((val1 + 1) / 3);
+			if (val1 > 4)
+				val2--;
 			break;
 		case SC_VIOLENTGALE:
 			scflag.calc = 1;
@@ -5298,6 +5352,7 @@ int status_change_end(struct block_list* bl, int type, int tid)
 			case SC_INCREASING:
 			case SC_GATLINGFEVER:
 			case SC_BERSERK:
+			case SC_SUITON:
 				// Run status_calc_pc at end of function (Recalculate player's status)
 				calc_flag = 1;
 				break;
