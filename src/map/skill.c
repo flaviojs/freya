@@ -8938,6 +8938,7 @@ int skill_use_id(struct map_session_data *sd, int target_id, int skill_num, int 
 	int forcecast = 0, check_range_flag = 0;
 	struct block_list *bl;
 	struct status_change *sc_data;
+	struct status_change *dst_sc_data = NULL;
 	struct map_session_data *dstsd = NULL;
 
 	nullpo_retr(0, sd);
@@ -8957,10 +8958,14 @@ int skill_use_id(struct map_session_data *sd, int target_id, int skill_num, int 
 
 	if(bl->type == BL_PC)
 		dstsd = (struct map_session_data *) bl;
+	dst_sc_data = status_get_sc_data(bl);
 
 	sc_data = sd->sc_data;
 
 	if (sd->opt1 > 0)
+		return 0;
+
+	if((dstsd != NULL && pc_isdead(dstsd)) || (dst_sc_data != NULL && bl->id != sd->bl.id && (dst_sc_data[SC_HIDING].timer != -1 || dst_sc_data[SC_CLOAKING].timer != -1 || dst_sc_data[SC_CHASEWALK].timer != -1)))
 		return 0;
 
 	// Check of statuses
