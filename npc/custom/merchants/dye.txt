@@ -3,7 +3,7 @@
 //===== By: ==================================================
 //= eAthena/Freya
 //===== Current Version: =====================================
-//= 1.9
+//= 2.0
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -20,6 +20,7 @@
 //= 1.7 Added new hair styles [Yor]
 //= 1.8 Removed hair colors 9-20, they don't actually exist [Yor]
 //= 1.9 Redid a lot of the script [Tsuyuki]
+//= 2.0 Fixed minor exploit with Ninja's NJ_BUNSINJYUTSU skill [Tsuyuki]
 //============================================================
 
 
@@ -128,6 +129,9 @@ prontera.gat,149,189,1	script	Stylist	122,{
 		goto L_Stop;
 
 	L_Cloth:
+		// Would crash yourself and other players if your clothes palette is changed during Illusionary Shadow
+		// With effects off, you won't crash so it's exploitable, therefore we end the status here
+		sc_end SC_BUNSINJYUTSU;
 		mes "[^FF8000Stylist^000000]";
 		mes "Do you want to browse through the choices, or do you know what you want?";
 		next;

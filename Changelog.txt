@@ -11,6 +11,7 @@
 Date	Added
 
 02/10/2007
+	* Fixed: Minor exploit with the custom dye NPC regarding Illusionary Shadow [Tsuyuki]
 	* Cleaned: Comments in mob.c and mob.h [Tsuyuki]
 	* Fixed: ""pos 0,0" problem when changing mapserver with @warp or something" (Thanks to glw) [Tsuyuki]
 	* Updated: OPB database with better formatting [Tsuyuki]
