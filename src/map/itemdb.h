@@ -6,9 +6,9 @@
 
 #include "map.h"
 
-#define MAX_RANDITEM	2000
-#define MAX_ITEMGROUP	32		// Max item groups
-#define MAX_GROUPITEMS	50		// Max number of items per group
+#define MAX_RANDITEM	50000 // Max number of total random items in the /db/random/ databases
+#define MAX_ITEMGROUP	32 // Max item groups
+#define MAX_GROUPITEMS	50 // Max number of items per group
 
 struct item_data
 {
