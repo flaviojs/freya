@@ -1,230 +1,264 @@
-//===== Freya Script =======================================
-//= MVP arena NPC
+//===== Freya Script =========================================
+//= MvP Arena System
 //===== By: ==================================================
-//= Darkchild
+//= Darkchild/Freya
 //===== Current Version: =====================================
-//= 2
+//= 1.6
 //===== Compatible With: =====================================
-//= Any Freya.
+//= Freya
 //===== Description: =========================================
-//= v.2 Fixed awkward english grammar and removed server reference. [Harp]
-//= v.2 Spaced scripting to be easier to read. [Harp]
-//= v.2 Redid the scripts for the four room keeper NPCs.
-//= v.2 changed where the MVP warper warps players because of a change in quiz_00 map.
-//= v.1 ---- MVP ARENA!!!!!! By Darkchild with 16 diff MVP's inside
-//= v.1 --- NPC in prontera
+//= A custom MvP Arena system script
 //===== Additional Comments: =================================
-//= Moved MVP warper to a location that isn't hard to click.
+//= 1.0 MvP Arena! -> 16 different MVP's inside [Darkchild]
+//= 1.1 Added an NPC in Prontera [Darkchild]
+//= 1.2 Changed where the MvP warper warps players because of a change in quiz_oo.gat [Darkchild]
+//= 1.3 Redid the scripts for the four room keeper NPCs [Darkchild]
+//= 1.4 Spaced scripting to be easier to read [Harp]
+//= 1.5 Fixed awkward English grammar and removed server reference [Harp]
+//= 1.6 Improved formatting and added some missing labels [Tsuyuki]
 //============================================================
+
+
+// --- Entrance to the Arena in Prontera
 prontera.gat,158,192,4	script	MVP Warper	768,{
+
 	mes "[ ^0065DFMVP Warper^000000 ]";
 	mes "Would you like to go to the MVP Arena?";
 	menu "Yes!",-,"No thanks.",L_No;
+
 	warp "quiz_00",57,22;
+
 	L_No:
 		close;
 }
 
 // --- Inside the Arena: NPCs That explains things
 quiz_00.gat,53,31,4	script	MVP Arena Guide	778,{
-	menu "Intro",L_Intro,"I want to go back",L_Leave,"Heal me please",L_Heal,"Cancel",L_Cancel;
-	L_Intro:
-	mes "[ ^0065DFMVP Arena Guide^000000 ]";
-	mes "Welcome and behold this sacred place.";
-	mes "Here you will find out if you truly have what it takes to call yourself a warrior and a team mate.";
-	next;
-	mes "[ ^0065DFMVP Arena Guide^000000 ]";
-	mes "The MVP arena is meant to teach players to work in a team";
-	mes "You'll learn that you must help and assist one another if you want to survive, and you will learn the value of cooperation.";
-	next;
-	mes "[ ^0065DFMVP Arena Guide^000000 ]";
-	mes "There are plenty of rooms with MVPs, so don't fight over one room just because you think it's the only one: Just move to the next one instead.";
-	next;
-	mes "[ ^0065DFMVP Arena Guide^000000 ]";
-	mes "Each NPC leads to one of the four different arenas with varying MVP monsters.";
-	mes "I wont tell you which has which monsters, since it's a surprise. Hehe.";
-	next;
-	mes "[ ^0065DFMVP Arena Guide^000000 ]";
-	mes "Good luck, Live long and Prosper!.";
-	close;
 
-	L_Leave:	warp "prontera",156,179; close;
-	L_Heal:	Heal 32500,32500;
-	L_Cancel:Close;
+	menu "Intro",L_Intro,"I want to go back",L_Leave,"Heal me please",L_Heal,"Cancel",L_Cancel;
+
+	L_Intro:
+		mes "[ ^0065DFMVP Arena Guide^000000 ]";
+		mes "Welcome and behold this sacred place.";
+		mes "Here you will find out if you truly have what it takes to call yourself a warrior and a team mate.";
+		next;
+		mes "[ ^0065DFMVP Arena Guide^000000 ]";
+		mes "The MVP arena is meant to teach players to work in a team";
+		mes "You'll learn that you must help and assist one another if";
+		mes "you want to survive, and you will learn the value of cooperation.";
+		next;
+		mes "[ ^0065DFMVP Arena Guide^000000 ]";
+		mes "There are plenty of rooms with MVPs, so don't fight over one";
+		mes "room just because you think it's the only one: Just move to the next one instead.";
+		next;
+		mes "[ ^0065DFMVP Arena Guide^000000 ]";
+		mes "Each NPC leads to one of the four different arenas with varying MVP monsters.";
+		mes "I wont tell you which has which monsters, since it's a surprise. Hehe.";
+		next;
+		mes "[ ^0065DFMVP Arena Guide^000000 ]";
+		mes "Good luck, Live long and Prosper!.";
+		close;
+
+		L_Leave:
+			warp "prontera",156,179;
+			close;
+
+		L_Heal:
+			heal 32500,32500;
+
+		L_Cancel:
+			close;
 }
 
-// --- The first Alpha-MVP warper
+// --- The first Alpha-MvP warper
 quiz_00.gat,56,31,4	script	Alpha MVP	770,{
+
 	mes "[ ^0065DFAlpha MVP^000000 ]";
 	mes "Hello, I am the first keeper..";
 	mes "Which MVP arena would you like to enter?";
-	menu 	"Arena 1 [" + getmapusers("pvp_n_1-2.gat") + " / 50]",Larena1,
-		"Arena 2 [" + getmapusers("pvp_n_2-2.gat") + " / 50]",Larena2,
-		"Arena 3 [" + getmapusers("pvp_n_3-2.gat") + " / 15]",Larena3,
-		"Arena 4 [" + getmapusers("pvp_n_4-2.gat") + " / 15]",Larena4,
-		"Arena 5 [" + getmapusers("pvp_n_5-2.gat") + " / 15]",Larena5,
-		"Arena 6 [" + getmapusers("pvp_n_2-2.gat") + " / 15]",Larena6,
-		"Arena 7 [" + getmapusers("pvp_n_3-2.gat") + " / 15]",Larena7,
-		"Arena 8 [" + getmapusers("pvp_n_4-2.gat") + " / 15]",Larena8,
-		"Quit",Lcancel;
+	menu 	"Arena 1 [" + getmapusers("pvp_n_1-2.gat") + " / 50]",L_Arena01,
+		"Arena 2 [" + getmapusers("pvp_n_2-2.gat") + " / 50]",L_Arena02,
+		"Arena 3 [" + getmapusers("pvp_n_3-2.gat") + " / 15]",L_Arena03,
+		"Arena 4 [" + getmapusers("pvp_n_4-2.gat") + " / 15]",L_Arena04,
+		"Arena 5 [" + getmapusers("pvp_n_5-2.gat") + " / 15]",L_Arena05,
+		"Arena 6 [" + getmapusers("pvp_n_2-2.gat") + " / 15]",L_Arena06,
+		"Arena 7 [" + getmapusers("pvp_n_3-2.gat") + " / 15]",L_Arena07,
+		"Arena 8 [" + getmapusers("pvp_n_4-2.gat") + " / 15]",L_Arena08,
+		"Quit",L_Cancel;
 
-	// sets destination map.
-	Larena1: set @mvpmap$, "pvp_n_1-2.gat"; goto GoArena;
-	Larena2: set @mvpmap$, "pvp_n_2-2.gat"; goto GoArena;
-	Larena3: set @mvpmap$, "pvp_n_3-2.gat"; goto GoArena;
-	Larena4: set @mvpmap$, "pvp_n_4-2.gat"; goto GoArena;
-	Larena5: set @mvpmap$, "pvp_n_5-2.gat"; goto GoArena;
-	Larena6: set @mvpmap$, "pvp_n_6-2.gat"; goto GoArena;
-	Larena7: set @mvpmap$, "pvp_n_7-2.gat"; goto GoArena;
-	Larena8: set @mvpmap$, "pvp_n_8-2.gat";
+	// Sets destination map
+	L_Arena01: set @mvpmap$, "pvp_n_1-2.gat"; goto L_GoArena;
+	L_Arena02: set @mvpmap$, "pvp_n_2-2.gat"; goto L_GoArena;
+	L_Arena03: set @mvpmap$, "pvp_n_3-2.gat"; goto L_GoArena;
+	L_Arena04: set @mvpmap$, "pvp_n_4-2.gat"; goto L_GoArena;
+	L_Arena05: set @mvpmap$, "pvp_n_5-2.gat"; goto L_GoArena;
+	L_Arena06: set @mvpmap$, "pvp_n_6-2.gat"; goto L_GoArena;
+	L_Arena07: set @mvpmap$, "pvp_n_7-2.gat"; goto L_GoArena;
+	L_Arena08: set @mvpmap$, "pvp_n_8-2.gat";
 
-	// actual warping to the MVP arenas based on user choice.
-	GoArena:
-		set @maxusers, 14;							// Choices 3~8 allow 15 people MAX.
-		if (@mvpmap$=="pvp_n_1-2.gat"||@mvpmap$=="pvp_n_2-2.gat") set @maxusers, 49;	// Choices 1 and 2 get 50 people MAX.
-		if (getmapusers(@mvpmap$) > @maxusers) goto Lsorry;				// if there is too many people, then the player cannot join.
+	// Actual warping to the MVP arenas based on user choice
+	L_GoArena:
+		// Choices 3~8 allow 15 people MAX
+		set @maxusers, 14;
+		// Choices 1 and 2 get 50 people MAX
+		if (@mvpmap$=="pvp_n_1-2.gat"||@mvpmap$=="pvp_n_2-2.gat") set @maxusers, 49;
+		// If there is too many people, then the player cannot join.
+		if (getmapusers(@mvpmap$) > @maxusers) goto L_Sorry;
 		next;
 		mes "[ ^0065DFAlpha MVP^000000 ]";
 		mes "Here you go!";
 		warp @mvpmap$,102,102;
 		close;
 
-	Lsorry:
-	mes "[ ^0065DFAlpha MVP^000000 ]";
-	mes "Sorry, but this Arena is already full - Maybe you can try a different one!";
-	close;
+	L_Sorry:
+		mes "[ ^0065DFAlpha MVP^000000 ]";
+		mes "Sorry, but this Arena is already full - Maybe you can try a different one!";
+		close;
+
+	L_Cancel:
+		close;
 }
 
 // --- The first Beta-MVP warper
 quiz_00.gat,58,31,4	script	Beta MVP	773,{
+
 	mes "[ ^0065DFBeta MVP^000000 ]";
 	mes "Hello, I am the second keeper..";
 	mes "Which MVP arena would you like to enter?";
-	menu 	"Arena 1 [" + getmapusers("pvp_n_1-3.gat") + " / 50]",Larena1,
-		"Arena 2 [" + getmapusers("pvp_n_2-3.gat") + " / 15]",Larena2,
-		"Arena 3 [" + getmapusers("pvp_n_3-3.gat") + " / 15]",Larena3,
-		"Arena 4 [" + getmapusers("pvp_n_4-3.gat") + " / 15]",Larena4,
-		"Arena 5 [" + getmapusers("pvp_n_5-3.gat") + " / 15]",Larena5,
-		"Arena 6 [" + getmapusers("pvp_n_2-3.gat") + " / 15]",Larena6,
-		"Arena 7 [" + getmapusers("pvp_n_3-3.gat") + " / 15]",Larena7,
-		"Arena 8 [" + getmapusers("pvp_n_4-3.gat") + " / 15]",Larena8,
-		"Quit",Lcancel;
+	menu 	"Arena 1 [" + getmapusers("pvp_n_1-3.gat") + " / 50]",L_Arena01,
+		"Arena 2 [" + getmapusers("pvp_n_2-3.gat") + " / 15]",L_Arena02,
+		"Arena 3 [" + getmapusers("pvp_n_3-3.gat") + " / 15]",L_Arena03,
+		"Arena 4 [" + getmapusers("pvp_n_4-3.gat") + " / 15]",L_Arena04,
+		"Arena 5 [" + getmapusers("pvp_n_5-3.gat") + " / 15]",L_Arena05,
+		"Arena 6 [" + getmapusers("pvp_n_2-3.gat") + " / 15]",L_Arena06,
+		"Arena 7 [" + getmapusers("pvp_n_3-3.gat") + " / 15]",L_Arena07,
+		"Arena 8 [" + getmapusers("pvp_n_4-3.gat") + " / 15]",L_Arena08,
+		"Quit",L_Cancel;
 
-	// sets destination map.
-	Larena1: set @mvpmap$, "pvp_n_1-3.gat"; goto GoArena;
-	Larena2: set @mvpmap$, "pvp_n_2-3.gat"; goto GoArena;
-	Larena3: set @mvpmap$, "pvp_n_3-3.gat"; goto GoArena;
-	Larena4: set @mvpmap$, "pvp_n_4-3.gat"; goto GoArena;
-	Larena5: set @mvpmap$, "pvp_n_5-3.gat"; goto GoArena;
-	Larena6: set @mvpmap$, "pvp_n_6-3.gat"; goto GoArena;
-	Larena7: set @mvpmap$, "pvp_n_7-3.gat"; goto GoArena;
-	Larena8: set @mvpmap$, "pvp_n_8-3.gat";
+	// Sets destination map
+	L_Arena01: set @mvpmap$, "pvp_n_1-3.gat"; goto L_GoArena;
+	L_Arena02: set @mvpmap$, "pvp_n_2-3.gat"; goto L_GoArena;
+	L_Arena03: set @mvpmap$, "pvp_n_3-3.gat"; goto L_GoArena;
+	L_Arena04: set @mvpmap$, "pvp_n_4-3.gat"; goto L_GoArena;
+	L_Arena05: set @mvpmap$, "pvp_n_5-3.gat"; goto L_GoArena;
+	L_Arena06: set @mvpmap$, "pvp_n_6-3.gat"; goto L_GoArena;
+	L_Arena07: set @mvpmap$, "pvp_n_7-3.gat"; goto L_GoArena;
+	L_Arena08: set @mvpmap$, "pvp_n_8-3.gat";
 
-	// actual warping to the MVP arenas based on user choice.
-	GoArena:
+	// Actual warping to the MVP arenas based on user choice
+	L_GoArena:
 		set @maxusers, 14;
 		if (@mvpmap$=="pvp_n_1-3.gat") set @maxusers, 49;
-		if (getmapusers(@mvpmap$) > @maxusers) goto Lsorry;
+		if (getmapusers(@mvpmap$) > @maxusers) goto L_Sorry;
 		mes "[ ^0065DFBeta MVP^000000 ]";
 		mes "Here you go!";
 		warp @mvpmap$,102,102;
 		close;
 
-	Lsorry:
-	mes "[ ^0065DFBeta MVP^000000 ]";
-	mes "Sorry, but this Arena is already full - Maybe you can try a different one!";
-	close;
-	
+	L_Sorry:
+		mes "[ ^0065DFBeta MVP^000000 ]";
+		mes "Sorry, but this Arena is already full - Maybe you can try a different one!";
+		close;
+
+	L_Cancel:
+		close;
 }
 
 // --- The first Theta-MVP warper
 quiz_00.gat,60,31,4	script	Theta MVP	774,{
+
 	mes "[ ^0065DFTheta MVP^000000 ]";
 	mes "Hello, I am the third keeper..";
 	mes "Which MVP arena would you like to enter?";
-	menu 	"Arena 1 [" + getmapusers("pvp_n_1-4.gat") + " / 50]",Larena1,
-		"Arena 2 [" + getmapusers("pvp_n_2-4.gat") + " / 15]",Larena2,
-		"Arena 3 [" + getmapusers("pvp_n_3-4.gat") + " / 15]",Larena3,
-		"Arena 4 [" + getmapusers("pvp_n_4-4.gat") + " / 15]",Larena4,
-		"Arena 5 [" + getmapusers("pvp_n_5-4.gat") + " / 15]",Larena5,
-		"Arena 6 [" + getmapusers("pvp_n_2-4.gat") + " / 15]",Larena6,
-		"Arena 7 [" + getmapusers("pvp_n_3-4.gat") + " / 15]",Larena7,
-		"Arena 8 [" + getmapusers("pvp_n_4-4.gat") + " / 15]",Larena8,
+	menu 	"Arena 1 [" + getmapusers("pvp_n_1-4.gat") + " / 50]",L_Arena01,
+		"Arena 2 [" + getmapusers("pvp_n_2-4.gat") + " / 15]",L_Arena02,
+		"Arena 3 [" + getmapusers("pvp_n_3-4.gat") + " / 15]",L_Arena03,
+		"Arena 4 [" + getmapusers("pvp_n_4-4.gat") + " / 15]",L_Arena04,
+		"Arena 5 [" + getmapusers("pvp_n_5-4.gat") + " / 15]",L_Arena05,
+		"Arena 6 [" + getmapusers("pvp_n_2-4.gat") + " / 15]",L_Arena06,
+		"Arena 7 [" + getmapusers("pvp_n_3-4.gat") + " / 15]",L_Arena07,
+		"Arena 8 [" + getmapusers("pvp_n_4-4.gat") + " / 15]",L_Arena08,
 		"Quit",Lcancel;
 
-	// sets destination map.
-	Larena1: set @mvpmap$, "pvp_n_1-4.gat"; goto GoArena;
-	Larena2: set @mvpmap$, "pvp_n_2-4.gat"; goto GoArena;
-	Larena3: set @mvpmap$, "pvp_n_3-4.gat"; goto GoArena;
-	Larena4: set @mvpmap$, "pvp_n_4-4.gat"; goto GoArena;
-	Larena5: set @mvpmap$, "pvp_n_5-4.gat"; goto GoArena;
-	Larena6: set @mvpmap$, "pvp_n_6-4.gat"; goto GoArena;
-	Larena7: set @mvpmap$, "pvp_n_7-4.gat"; goto GoArena;
-	Larena8: set @mvpmap$, "pvp_n_8-4.gat"; 
+	// Sets destination map
+	L_Arena01: set @mvpmap$, "pvp_n_1-4.gat"; goto L_GoArena;
+	L_Arena02: set @mvpmap$, "pvp_n_2-4.gat"; goto L_GoArena;
+	L_Arena03: set @mvpmap$, "pvp_n_3-4.gat"; goto L_GoArena;
+	L_Arena04: set @mvpmap$, "pvp_n_4-4.gat"; goto L_GoArena;
+	L_Arena05: set @mvpmap$, "pvp_n_5-4.gat"; goto L_GoArena;
+	L_Arena06: set @mvpmap$, "pvp_n_6-4.gat"; goto L_GoArena;
+	L_Arena07: set @mvpmap$, "pvp_n_7-4.gat"; goto L_GoArena;
+	L_Arena08: set @mvpmap$, "pvp_n_8-4.gat"; 
 
-	// actual warping to the MVP arenas based on user choice.
-	GoArena:
+	// Actual warping to the MVP arenas based on user choice
+	L_GoArena:
 		set @maxusers, 14;	
 		if (@mvpmap$=="pvp_n_1-4.gat") set @maxusers, 49;
-		if (getmapusers(@mvpmap$) > @maxusers) goto Lsorry;
+		if (getmapusers(@mvpmap$) > @maxusers) goto L_Sorry;
 		mes "[ ^0065DFTheta MVP^000000 ]";
 		mes "Here you go!";
 		warp @mvpmap$,102,102;
 		close;
 
-	Lsorry:
-	mes "[ ^0065DFTheta MVP^000000 ]";
-	mes "Sorry, but this Arena is already full - Maybe you can try a different one!";
-	close;
-	
+	L_Sorry:
+		mes "[ ^0065DFTheta MVP^000000 ]";
+		mes "Sorry, but this Arena is already full - Maybe you can try a different one!";
+		close;
+
+	L_Cancel:
+		close;
 }
 
 // --- The first Epsilon-MVP warper
 quiz_00.gat,62,31,4	script	Epsilon MVP	776,{
+
 	mes "[ ^0065DFEpsilon MVP^000000 ]";
 	mes "Hello, I am the third keeper..";
 	mes "Which MVP arena would you like to enter?";
-	menu 	"Arena 1 [" + getmapusers("pvp_n_1-5.gat") + " / 50]",Larena1,
-		"Arena 2 [" + getmapusers("pvp_n_2-5.gat") + " / 15]",Larena2,
-		"Arena 3 [" + getmapusers("pvp_n_3-5.gat") + " / 15]",Larena3,
-		"Arena 4 [" + getmapusers("pvp_n_4-5.gat") + " / 15]",Larena4,
-		"Arena 5 [" + getmapusers("pvp_n_5-5.gat") + " / 15]",Larena5,
-		"Arena 6 [" + getmapusers("pvp_n_2-5.gat") + " / 15]",Larena6,
-		"Arena 7 [" + getmapusers("pvp_n_3-5.gat") + " / 15]",Larena7,
-		"Arena 8 [" + getmapusers("pvp_n_4-5.gat") + " / 15]",Larena8,
+	menu 	"Arena 1 [" + getmapusers("pvp_n_1-5.gat") + " / 50]",L_Arena01,
+		"Arena 2 [" + getmapusers("pvp_n_2-5.gat") + " / 15]",L_Arena02,
+		"Arena 3 [" + getmapusers("pvp_n_3-5.gat") + " / 15]",L_Arena03,
+		"Arena 4 [" + getmapusers("pvp_n_4-5.gat") + " / 15]",L_Arena04,
+		"Arena 5 [" + getmapusers("pvp_n_5-5.gat") + " / 15]",L_Arena05,
+		"Arena 6 [" + getmapusers("pvp_n_2-5.gat") + " / 15]",L_Arena06,
+		"Arena 7 [" + getmapusers("pvp_n_3-5.gat") + " / 15]",L_Arena07,
+		"Arena 8 [" + getmapusers("pvp_n_4-5.gat") + " / 15]",L_Arena08,
 		"Quit",Lcancel;
 
-	// sets destination map.
-	Larena1: set @mvpmap$, "pvp_n_1-5.gat"; goto GoArena;
-	Larena2: set @mvpmap$, "pvp_n_2-5.gat"; goto GoArena;
-	Larena3: set @mvpmap$, "pvp_n_3-5.gat"; goto GoArena;
-	Larena4: set @mvpmap$, "pvp_n_4-5.gat"; goto GoArena;
-	Larena5: set @mvpmap$, "pvp_n_5-5.gat"; goto GoArena;
-	Larena6: set @mvpmap$, "pvp_n_6-5.gat"; goto GoArena;
-	Larena7: set @mvpmap$, "pvp_n_7-5.gat"; goto GoArena;
-	Larena8: set @mvpmap$, "pvp_n_8-5.gat"; 
+	// Sets destination map
+	L_Arena01: set @mvpmap$, "pvp_n_1-5.gat"; goto L_GoArena;
+	L_Arena02: set @mvpmap$, "pvp_n_2-5.gat"; goto L_GoArena;
+	L_Arena03: set @mvpmap$, "pvp_n_3-5.gat"; goto L_GoArena;
+	L_Arena04: set @mvpmap$, "pvp_n_4-5.gat"; goto L_GoArena;
+	L_Arena05: set @mvpmap$, "pvp_n_5-5.gat"; goto L_GoArena;
+	L_Arena06: set @mvpmap$, "pvp_n_6-5.gat"; goto L_GoArena;
+	L_Arena07: set @mvpmap$, "pvp_n_7-5.gat"; goto L_GoArena;
+	L_Arena08: set @mvpmap$, "pvp_n_8-5.gat"; 
 
 	// actual warping to the MVP arenas based on user choice.
-	GoArena:
+	L_GoArena:
 		set @maxusers, 14;
 		if (@mvpmap$=="pvp_n_1-5.gat") set @maxusers, 49;
-		if (getmapusers(@mvpmap$) > @maxusers) goto Lsorry;
+		if (getmapusers(@mvpmap$) > @maxusers) goto L_Sorry;
 		mes "[ ^0065DFEpsilon MVP^000000 ]";
 		mes "Here you go!";
 		warp @mvpmap$,102,102;
 		close;
 
-	Lsorry:
-	mes "[ ^0065DFEpsilon MVP^000000 ]";
-	mes "Sorry, but this Arena is already full - Maybe you can try a different one!";
-	close;	
+	L_Sorry:
+		mes "[ ^0065DFEpsilon MVP^000000 ]";
+		mes "Sorry, but this Arena is already full - Maybe you can try a different one!";
+		close;
+
+	L_Cancel:
+		close;
 }
 
 // ---- Inside MVP-Arena NPC's
-// harp: I wish there were a way to use duplicate NPCs for this
-// instead of having to have them scripted individually...
+
 // --- Alpha-MVP #1
 pvp_n_1-2.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -236,6 +270,7 @@ pvp_n_1-2.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Alpha-MVP #2
 pvp_n_2-2.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -247,6 +282,7 @@ pvp_n_2-2.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Alpha-MVP #3
 pvp_n_3-2.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -258,6 +294,7 @@ pvp_n_3-2.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Alpha-MVP #4
 pvp_n_4-2.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -269,6 +306,7 @@ pvp_n_4-2.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Alpha-MVP #5
 pvp_n_5-2.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -280,6 +318,7 @@ pvp_n_5-2.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Alpha-MVP #6
 pvp_n_6-2.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -290,6 +329,7 @@ pvp_n_6-2.gat,100,100,4	script	MVP-Protector	727,{
 }
 // --- Alpha-MVP #7
 pvp_n_7-2.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -301,6 +341,7 @@ pvp_n_7-2.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Alpha-MVP #8
 pvp_n_8-2.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Heal Please",L_Heal,"Leave",L_Leave;
@@ -310,6 +351,7 @@ pvp_n_8-2.gat,100,100,4	script	MVP-Protector	727,{
 }
 // --- Beta-MVP #1
 pvp_n_1-3.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -321,6 +363,7 @@ pvp_n_1-3.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Beta-MVP #2
 pvp_n_2-3.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -331,6 +374,7 @@ pvp_n_2-3.gat,100,100,4	script	MVP-Protector	727,{
 }
 // --- Beta-MVP #3
 pvp_n_3-3.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -342,6 +386,7 @@ pvp_n_3-3.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Beta-MVP #4
 pvp_n_4-3.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -353,6 +398,7 @@ pvp_n_4-3.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Beta-MVP #5
 pvp_n_5-3.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -364,6 +410,7 @@ pvp_n_5-3.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Beta-MVP #6
 pvp_n_6-3.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -375,6 +422,7 @@ pvp_n_6-3.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Beta-MVP #7
 pvp_n_7-3.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -386,6 +434,7 @@ pvp_n_7-3.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Beta-MVP #8
 pvp_n_8-3.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Heal Please",L_Heal,"Leave",L_Leave;
@@ -395,6 +444,7 @@ pvp_n_8-3.gat,100,100,4	script	MVP-Protector	727,{
 }
 // --- Theta-MVP #1
 pvp_n_1-4.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -406,6 +456,7 @@ pvp_n_1-4.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Theta-MVP #2
 pvp_n_2-4.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -417,6 +468,7 @@ pvp_n_2-4.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Theta-MVP #3
 pvp_n_3-4.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -428,6 +480,7 @@ pvp_n_3-4.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Theta-MVP #4
 pvp_n_4-4.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -439,6 +492,7 @@ pvp_n_4-4.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Theta-MVP #5
 pvp_n_5-4.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -450,6 +504,7 @@ pvp_n_5-4.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Theta-MVP #6
 pvp_n_6-4.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -461,6 +516,7 @@ pvp_n_6-4.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Theta-MVP #7
 pvp_n_7-4.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -472,6 +528,7 @@ pvp_n_7-4.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Theta-MVP #8
 pvp_n_8-4.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Heal Please",L_Heal,"Leave",L_Leave;
@@ -482,6 +539,7 @@ pvp_n_8-4.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Epsilon-MVP #1
 pvp_n_1-5.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -493,6 +551,7 @@ pvp_n_1-5.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Epsilon-MVP #2
 pvp_n_2-5.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -504,6 +563,7 @@ pvp_n_2-5.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Epsilon-MVP #3
 pvp_n_3-5.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -515,6 +575,7 @@ pvp_n_3-5.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Epsilon-MVP #4
 pvp_n_4-5.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -526,6 +587,7 @@ pvp_n_4-5.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Epsilon-MVP #5
 pvp_n_5-5.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -537,6 +599,7 @@ pvp_n_5-5.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Epsilon-MVP #6
 pvp_n_6-5.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -548,6 +611,7 @@ pvp_n_6-5.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Epsilon-MVP #7
 pvp_n_7-5.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Harder Monsters",L_Next,"Heal Please",L_Heal,"Leave",L_Leave;
@@ -559,6 +623,7 @@ pvp_n_7-5.gat,100,100,4	script	MVP-Protector	727,{
 
 // --- Epsilon-MVP #8
 pvp_n_8-5.gat,100,100,4	script	MVP-Protector	727,{
+
 	mes "[ ^0065DFMVP-Protector^000000 ]";
 	mes "How may I help you?";
 	menu "Heal Please",L_Heal,"Leave",L_Leave;

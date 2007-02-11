@@ -50,7 +50,7 @@ prontera.gat,151,186,5	script	Sitting Girl	882,{
 
 	L_Cancel:
 		mes "[Misha]";
-		mes "Goodbye stranger..";
+		mes "Travel safely..";
 		close;
 }
 

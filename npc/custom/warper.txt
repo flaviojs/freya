@@ -1,13 +1,13 @@
 //===== Freya Script =======================================
 //= Warper Script
 //===== By: ==================================================
-//= eAthena/Freya
+//= Darkchild/Freya
 //===== Current Version: =====================================
-//= 2.0
+//= 2.1
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
-//= Warper that warps to all towns/dungeons at no charge.
+//= Warper that warps to all towns/dungeons at no charge
 //===== Additional Comments: =================================
 //= 1.0 Added first version [Darkchild]
 //= 1.1 Redone [jabs]
@@ -22,6 +22,7 @@
 //= 1.9a Fixed all duplicate positions/directions, and added a few new ones [Tsuyuki]
 //= 1.9b Fixed a few warp spawn locations, reorganized script [Tsuyuki]
 //= 2.0 Added two missing areas, Odin's Temple and Rachel Sanctuary [Tsuyuki]
+//= 2.1 Improved formatting [Tsuyuki]
 //============================================================
 
 
@@ -34,13 +35,58 @@
 	next;
 	menu "Towns",L_Town,"Dungeons",L_Dungeon;
 
-	// Towns Menu
 	L_Town:
-		menu "Prontera",W_Prontera,"Alberta",W_Alberta,"Aldebaran",W_Aldebaran,"Amatsu",W_Amatsu,"Archer's Village",W_Archer,"Ayothaya",W_Ayothaya,"Veins",W_Veins,"Comodo",W_Comodo,"Einbech",W_Einbech,"Einbroch",W_Einbroch,"Geffen",W_Geffen,"Hugel",W_Hugel,"Izlude",W_Izlude,"Juno",W_Juno,"Kunlun",W_Kunlun,"Lighthalzen",W_Lhtalzn,"Louyang",W_Louyang,"Lutie",W_Xmas,"Morroc",W_Morroc,"Niflheim",W_Niflheim,"Payon",W_Payon,"Rachel",W_Rachel,"Umbala",W_Umbala;
+		menu	"Prontera",W_Prontera,
+			"Alberta",W_Alberta,
+			"Aldebaran",W_Aldebaran,
+			"Amatsu",W_Amatsu,
+			"Archer's Village",W_Archer,
+			"Ayothaya",W_Ayothaya,
+			"Veins",W_Veins,
+			"Comodo",W_Comodo,
+			"Einbech",W_Einbech,
+			"Einbroch",W_Einbroch,
+			"Geffen",W_Geffen,
+			"Hugel",W_Hugel,
+			"Izlude",W_Izlude,
+			"Juno",W_Juno,
+			"Kunlun",W_Kunlun,
+			"Lighthalzen",W_Lhtalzn,
+			"Louyang",W_Louyang,
+			"Lutie",W_Xmas,
+			"Morroc",W_Morroc,
+			"Niflheim",W_Niflheim,
+			"Payon",W_Payon,
+			"Rachel",W_Rachel,
+			"Umbala",W_Umbala;
 
-	// Dungeons Menu
 	L_Dungeon:
-		menu "Abyss Lake Dungeon",D_Abyss,"Amatsu Dungeon",D_Amatsu,"Anthell",D_Ant,"Ayothaya Dungeon",D_Ayothaya,"Byalan Dungeon",D_Bybalan,"Biolabs",D_Light,"Coal Mine",D_Coal,"Culverts",D_Culvert,"Einbroch Dungeon",D_Eindun,"Hidden Temple",D_Hidden,"Glast Heim",D_Glast,"Juperos Ruins",D_Juperos,"Kunlun Dungeon",D_Kunlun,"Ice Dungeon",D_Icedun,"Kiel Hyre",D_Kielk,"Magma Dungeon",D_Magma,"Odin's Temple",D_Odin,"Orc Dungeon",D_Orc,"Payon Dungeon",D_Payon,"Pyramids",D_Pyramids,"Rachel Sanctuary",D_Sanc,"Sphinx",D_Sphinx,"Sunken Ship",D_Sunken,"Thanatos Tower",D_Thanatos,"Thor Volcano",D_Thor,"Turtle Dungeon",D_Turtle;
+		menu	"Abyss Lake Dungeon",D_Abyss,
+			"Amatsu Dungeon",D_Amatsu,
+			"Anthell",D_Ant,
+			"Ayothaya Dungeon",D_Ayothaya,
+			"Byalan Dungeon",D_Bybalan,
+			"Biolabs",D_Light,
+			"Coal Mine",D_Coal,
+			"Culverts",D_Culvert,
+			"Einbroch Dungeon",D_Eindun,
+			"Hidden Temple",D_Hidden,
+			"Glast Heim",D_Glast,
+			"Juperos Ruins",D_Juperos,
+			"Kunlun Dungeon",D_Kunlun,
+			"Ice Dungeon",D_Icedun,
+			"Kiel Hyre",D_Kielk,
+			"Magma Dungeon",D_Magma,
+			"Odin's Temple",D_Odin,
+			"Orc Dungeon",D_Orc,
+			"Payon Dungeon",D_Payon,
+			"Pyramids",D_Pyramids,
+			"Rachel Sanctuary",D_Sanc,
+			"Sphinx",D_Sphinx,
+			"Sunken Ship",D_Sunken,
+			"Thanatos Tower",D_Thanatos,
+			"Thor Volcano",D_Thor,
+			"Turtle Dungeon",D_Turtle;
 
 		// Towns
 		W_Alberta:	warp "alberta.gat",	27,	236;	close;

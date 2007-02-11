@@ -1,9 +1,26 @@
-// Card removal NPC by TyrNemesis^
+//===== Freya Script =========================================
+//= Card Remover NPC
+//===== By: ==================================================
+//= TyrNemesis^/Freya
+//===== Current Version: =====================================
+//= 1.1
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
+//= Card Removal Custom NPC
+//===== Additional Comments: =================================
+//= 1.0 First version [TyrNemesis^]
+//= 1.1 Improved formatting a little bit [Tsuyuki]
+//= To-Do: Improve script/dialogue, remove failure chance
+//============================================================
+
+
 prt_in.gat,28,73,4	script	Wise Old Woman	78,{
 
 UPGRADEROOT:
 	mes "[Wise Old Woman]";
-	mes "Good day, young one. I have the power to remove cards that you have compounded onto your equipment. Does this idea please you?";
+	mes "Good day, young one. I have the power to remove cards";
+	mes "that you have compounded onto your equipment. Does this idea please you?";
 	next;
 	menu "Yes, it does.",REMOVEMENU,
 	     "What do you charge?",REMOVEPRICE,
@@ -11,7 +28,8 @@ UPGRADEROOT:
 
 REMOVEPRICE:
 	mes "[Wise Old Woman]";
-	mes "I charge a flat fee of 200000 zeny, plus 25000 zeny for each card I remove from the item. In addition, I need a star crumb and a yellow gemstone to work my magic.";
+	mes "I charge a flat fee of 200000 zeny, plus 25000 zeny for each";
+	mes "card I remove from the item. In addition, I need a star crumb and a yellow gemstone to work my magic.";
 	next;
 	menu "Very well. Let's do it.",REMOVEMENU,
 	     "No thanks.",CLOSEOUT;
@@ -77,11 +95,17 @@ CARDNUMCHECK:
 	set @cardcount,getequipcardcnt(@part);
 	if (@cardcount > 1) goto CARDNUMMULTIMSG;
 	mes "[Wise Old Woman]";
-	mes "This item has " + @cardcount + " card compounded on it. To perform my magic, I will need 225000 zeny, a ^0000FFStar Crumb^000000, and a ^0000FFYellow Gemstone^000000.";
+	mes "This item has " + @cardcount + " card compounded on it.";
+	mes "To perform my magic, I will need 225000 zeny, a ^0000FFStar Crumb^000000, and a ^0000FFYellow Gemstone^000000.";
 	goto CARDNUMPOSTMSG;
+
 CARDNUMMULTIMSG:
 	mes "[Wise Old Woman]";
-	mes "This item has " + @cardcount + " cards compounded on it. To perform my magic, I will need " + (200000+(@cardcount * 25000)) + " zeny, a ^0000FFStar Crumb^000000, and a ^0000FFYellow Gemstone^000000.";
+	mes "This item has " + @cardcount + " cards compounded on it.";
+	mes "To perform my magic, I will need " + (200000+(@cardcount * 25000)) + " zeny,";
+	mes " a ^0000FFStar Crumb^000000, and a ^0000FFYellow Gemstone^000000.";
+	goto CARDNUMPOSTMSG;
+
 CARDNUMPOSTMSG:
 	next;
 	menu "Very well. Do it.",REMOVECARDWARNING,
@@ -89,7 +113,9 @@ CARDNUMPOSTMSG:
 
 REMOVECARDWARNING:
 	mes "[Wise Old Woman]";
-	mes "Before I begin, I must warn you--I may fail. If I do, I may destroy the cards, the item, or both. I do not give refunds. That being said, which is more important to you: The cards, or the item?";
+	mes "Before I begin, I must warn you--I may fail.";
+	mes "If I do, I may destroy the cards, the item, or both.";
+	mes "I do not give refunds. That being said, which is more important to you: The cards, or the item?";
 	next;
 	menu "I changed my mind about this.",CLOSEOUT,
 	     "The item.",PRIORITYITEM,
@@ -112,15 +138,15 @@ REMOVECARD:
 	delitem 1000,1;
 	delitem 715,1;
 
-// Replace the constants in the next 3 lines with failure chance values defined in refine_db.txt
-// First value = Total failure chance (item and cards destroyed)
-// Second value = Partial failure chance (one or the other is destroyed, player decides which one is safe)
-// Third value = Harmless failure chance (all that's lost is your investment)
+	// Replace the constants in the next 3 lines with failure chance values defined in refine_db.txt
+	// First value = Total failure chance (item and cards destroyed)
+	// Second value = Partial failure chance (one or the other is destroyed, player decides which one is safe)
+	// Third value = Harmless failure chance (all that's lost is your investment)
 
 	set @failchance,rand(100);
-//	if (@failchance < 2) goto FAILREMOVECARD0;
-//	if ((@failchance < 8) && (@failtype == 1)) goto FAILREMOVECARD1;
-//	if ((@failchance < 8) && (@failtype == 2)) goto FAILREMOVECARD2;
+	// if (@failchance < 2) goto FAILREMOVECARD0;
+	// if ((@failchance < 8) && (@failtype == 1)) goto FAILREMOVECARD1;
+	// if ((@failchance < 8) && (@failtype == 2)) goto FAILREMOVECARD2;
 	if (@failchance < 10) goto FAILREMOVECARD3;
 	successremovecards @part;
 	mes "[Wise Old Woman]";
@@ -135,7 +161,8 @@ FAILREMOVECARD0:
 
 FAILREMOVECARD1:
 	mes "[Wise Old Woman]";
-	mes "While I have managed to remove the cards from the item, they were destroyed in the process. The item, however, is okay.";
+	mes "While I have managed to remove the cards from the item,";
+	mes "they were destroyed in the process. The item, however, is okay.";
 	failedremovecards @part,1;
 	close;
 

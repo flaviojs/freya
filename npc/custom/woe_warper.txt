@@ -1,30 +1,56 @@
-//Custom WOE warper 1.1 [Lupus]
-//you can get to Novice Castles, too
+//===== Freya Script =========================================
+//= WoE Castle Warper
+//===== By: ==================================================
+//= Lupus/Freya
+//===== Current Version: =====================================
+//= 1.2
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
+//= Warps players to WoE/Novice castles during WoE server mode
+//===== Additional Comments: =================================
+//= 1.0 Added first version [Lupus]
+//= 1.1 Added Novice WoE support [Lupus]
+//= 1.2 Changed a couple minor things [Tsuyuki]
+//============================================================
+
 
 n_castle.gat,102,107,5	script	Vimta	757,{
+
 	mes "[Vimta]";
 	mes "Hello, "+ strcharinfo(0) +"! What would you like?";
 	next;
-	menu "Warp me to Prontera",-,"Cancel",LEnd;
+	menu "Warp me to Prontera",-,"Cancel",L_End;
 
 		warp "prontera.gat",155,177+rand(5);
 		close;
-	LEnd:
+
+	L_End:
 		mes "[Vimta]";
-		mes "Ok. I'll wait here.";
+		mes "Okay. I'll wait here.";
 		close;
 }
 
 prontera.gat,130,217,5	script	Vimta	757,{
+
 	mes "[Vimta]";
-	mes "Hello there! I'm a WOE representative, Vimta.";
+	mes "Hello there! I'm a WoE representative, Vimta.";
 	if (getcharid(2) < 1000) mes "You are not a guild member, "+ strcharinfo(0) +"? Naff off for now.";
 	if (getcharid(2) < 1000) close;
 	if (agitcheck(0) == 0) mes "When WOE is off I can warp you to Novice Castles only:";
 	if (agitcheck(0) != 0) mes "I can warp you to any Castle:";
 	next;
-	if (agitcheck(0) == 0) menu "Novice Castles",novice_cas,"Cancel",-;
-	if (agitcheck(0) != 0) menu "Prontera Castles",prtg_cas,"Payon Castles",payg_cas,"Geffen Castles",gefg_cas,"Aldebaran Castles",aldeg_cas,"Novice Castles",novice_cas,"Cancel",-;
+
+	if (agitcheck(0) == 0)
+		menu	"Novice Castles",novice_cas,
+			"Cancel",-;
+
+	if (agitcheck(0) != 0)
+		menu	"Prontera Castles",prtg_cas,
+			"Payon Castles",payg_cas,
+			"Geffen Castles",gefg_cas,
+			"Aldebaran Castles",aldeg_cas,
+			"Novice Castles",novice_cas,"Cancel",-;
 
 	mes "[Vimta]";
 	mes "Don't think too long, War of Emperium is such a cool thing.";

@@ -11,6 +11,7 @@
 Date	Added
 
 02/11/2007
+	* Improved: Did some work on the custom NPCs [Tsuyuki]
 	* Improved: Organization of the /npc/custom/ folder [Tsuyuki]
 	* Fixed: Ground Drift skill not consuming spheres [Harbin]
 	* Fixed: Guns using spheres and grenade launchers using bullets [Harbin]

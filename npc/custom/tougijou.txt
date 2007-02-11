@@ -1,10 +1,23 @@
-//===================================
-// ARENA EVENT
-//----------------------------------------------------
-// Summoner menu taken from eA.
-// Script translated from japanese to english [harp]
-//===================================
+//===== Freya Script =========================================
+//= Kunlun Arena Event
+//===== By: ==================================================
+//= jAthena/Freya
+//===== Current Version: =====================================
+//= 1.3
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
+//= Resets Stats, or Skills, or both for a small fee
+//===== Additional Comments: =================================
+//= 1.0 Added first version [jAthena]
+//= 1.1 Translated into English [Harp]
+//= 1.2 Added summoner menu from eAthena [Harp]
+//= 1.3 Improved formatting [Tsuyuki]
+//============================================================
+
+
 gonryun.gat,180,117,0	script	Song Mu Do	85,{
+
 	if (Basejob == JOB_NOVICE) goto Lnovice;
 	if (event_tougijou == 1) goto LStart2;
 	mes "[Song Mu Do]";
@@ -12,65 +25,82 @@ gonryun.gat,180,117,0	script	Song Mu Do	85,{
 	mes "Hey, you look like a strong one. There's something I want you to try.. Wanna try?";
 	next;
 	menu "Try it out",L1,"I'm not interested",L2,"Ignore him",L3;
+
 L1:
 	mes "[Song Mu Do]";
-	mes "Ah~ My eyes never prove to be wrong. Lift this,and I'll tell you something interesting.";
+	mes "Ah~ My eyes never prove to be wrong.";
+	mes "Lift this,and I'll tell you something interesting.";
 	mes "Get ready...";
 	next;
-//Priest & hunter-730 Acolyte-690 BS-770 (Decided by ATK?)
+	// Priest and Hunter-730 Acolyte-690 BS-770 (Decided by ATK?)
 	if (checkweight(7049,730)) goto Lweightok;
 		mes "^0000ffSong Mu Do points to a rather big stone and tells you to lift it.";
 		mes "But it was too heavy so you were not able to lift it.^000000";
 		next;
 		mes "[Song Mu Do]";
-		mes "Looks like you still have some training to do. Why don't you come back after more training?";
+		mes "Looks like you still have some training to do.";
+		mes "Why don't you come back after more training?";
 		close;
+
 Lweightok:
 	getitem 7049,730;
 	set event_tougijou,1;
-	mes "^0000ffSong Mu Do points to a rather large rock and tells you to try lifting it. You lift the stone with ease.^000000";
+	mes "^0000ffSong Mu Do points to a rather large";
+	mes "rock and tells you to try lifting it.";
+	mes "You lift the stone with ease.^000000";
 	next;
 	emotion 21;
 	mes "[Song Mu Do]";
-	mes "Haha, my eyes ever prove to be wrong. I'll tell you that cool place next time I see you. So long!";
+	mes "Haha, my eyes ever prove to be wrong.";
+	mes "I'll tell you that cool place next time I see you. So long!";
 	close;
+
 L2:
 	mes "[Song Mu Do]";
 	mes "I see..";
 	mes "But if you're strong, you could've experienced something interesting.";
 	mes "Heh, well if you ever get interested, come back for my challenge.";
 	close;
+
 L3:
 	emotion 32;
 	mes "[Song Mu Do]";
 	mes "Jeez.. I guess I mistook you as being someone else..";
 	close;
+
 LStart2:
 	mes "[Song Mu Do]";
 	mes "Oh, we meet again!";
 	mes "Wanna go to that cool place?";
 	next;
 	menu "Yeah, send me there!",-,"No thanks",Lno;
+
 		mes "[Song Mu Do]";
 		mes "Very well. Have fun!";
 		next;
 		warp "gon_test.gat",53,6;
 		end;
+
 	Lno:
 		mes "[Song Mu Do]";
 		mes "No thanks? I guess that's Ok too. See you again!";
 		close;
+
 Lnovice:
 	mes "[Song Mu Do]";
 	mes "Get lost, novice!";
 	close;
 }
+
 //===============================================================================
 gon_test.gat,50,14,4	script	Waiting Room Manager	780,{
+
 	close;
+
 OnInit:
 	waitingroom "See you again!!",1,"Waiting Room Manager::Onwarp";
 	end;
+
 Onwarp:
 	set @addmon,0;
 	set @kengaku,0;
@@ -80,13 +110,16 @@ Onwarp:
 	disablenpc "Waiting Room Manager";
 	end;
 }
+
 //===============================================================================
 gon_test.gat,46,14,4	script	Arena Guide	770,{
+
 	mes "[Song Hui Yon]";
 	mes "......";
 	mes "Ah......Welcome! This is the arena. How can I help you?";
 	next;
 	menu "What is the arena?",L1,"Miss, do you have some time?",L2,"I want to spectate.",L3,"Go back",L4,"End Conversation",L5;
+
 L1:	
 	mes "[Song Hui Yon]";
 	mes "The arena is a place where one fights monsters.";
@@ -97,11 +130,13 @@ L1:
 	mes "[Song Hui Yon]";
 	mes "Also, there is a 3 minute limit from entrance for each arena use. Please be aware of this.";
 	close;
+
 L2:
 	mes "[Song Hui Yon]";
 	mes "Huh.. Excuse me?";
 	mes "I'm working right now, so I don't think so...";
 	close;
+
 L3:
 	mes "[Song Hui Yon]";
 	mes "Very well, Thank you for your patronage, and have a fun time!";
@@ -109,19 +144,23 @@ L3:
 	set @kengaku,1;
 	warp "gon_test.gat",25,99;
 	end;
+
 L4:
 	mes "[Song Hui Yon]";
 	mes "Thank you for your patronage. Do come again!";
 	next;
 	warp "gonryun.gat",177,112;
 	end;
+
 L5:
 	mes "[Song Hui Yon]";
 	mes "..... Good bye";
 	close;
 }
+
 //===============================================================================
 gon_test.gat,42,89,4	script	Summoner	774,{
+
 	if (@kengaku == 1) goto LError;
 	if (@addmon == 1) goto Lalready;
 	mes "[Song Yon Wu]";
@@ -130,6 +169,7 @@ gon_test.gat,42,89,4	script	Summoner	774,{
 	next;
 	L0:
 	menu "Group 1",L1,"Group 2",L2,"Group 3",L3,"Group 4",L4,"Group 5",L5,"Group 6",L6,"Group 7",L7,"Group 8",L8,"Group 9",L9,"Group 10",L10,"Group 11",L11;
+
 	L1:
 		menu "Dizziness",L1_1,"The Poison Food",L1_2,"Anemia",L1_3,"The Bug",L1_4,"Incision",L1_5,"Rabies",L1_6,"back",L0;
 		L1_1:
@@ -144,6 +184,7 @@ gon_test.gat,42,89,4	script	Summoner	774,{
 			monster "gon_test.gat",58,87,"Incision",1457,1,"mobend";set @addmon,1;close;
 		L1_6:
 			monster "gon_test.gat",58,87,"Rabies",1432,1,"mobend";set @addmon,1;close;
+
 	L2:
 		menu "Samael",L2_1,"Toror",L2_2,"Kangeishi",L2_3,"Blackdock",L2_4,"Merou",L2_5,"Kyoushi",L2_6,"back",L0;
 		L2_1:
@@ -158,6 +199,7 @@ gon_test.gat,42,89,4	script	Summoner	774,{
 			monster "gon_test.gat",58,87,"Merou",1425,1,"mobend";set @addmon,1;close;
 		L2_6:
 			monster "gon_test.gat",58,87,"Kyoushi",1472,1,"mobend";set @addmon,1;close;
+
 	L3:
 		menu "Ashimoto",L3_1,"Mushibamu",L3_2,"Sorappo",L3_3,"Freezer",L3_4,"Heat",L3_5,"The Rotten",L3_6,"back",L0;
 		L3_1:
@@ -172,6 +214,7 @@ gon_test.gat,42,89,4	script	Summoner	774,{
 			monster "gon_test.gat",58,87,"Heat",1436,1,"mobend";set @addmon,1;close;
 		L3_6:
 			monster "gon_test.gat",58,87,"The Rotten",1423,1,"mobend";set @addmon,1;close;
+
 	L4:
 		menu "Priest",L4_1,"Onion",L4_2,"Big Centipede",L4_3,"Marionette",L4_4,"Matchstick Girl",L4_5,"Firefly",L4_6,"back",L0;
 		L4_1:
@@ -186,6 +229,7 @@ gon_test.gat,42,89,4	script	Summoner	774,{
 			monster "gon_test.gat",58,87,"Matchstick Girl",1444,1,"mobend";set @addmon,1;close;
 		L4_6:
 			monster "gon_test.gat",58,87,"Fly",1422,1,"mobend";set @addmon,1;close;
+
 	L5:
 		menu "Femal Curse",L5_1,"Ikitsuchi",L5_2,"Master Snake",L5_3,"Poison Dragon",L5_4,"Seiryuu, the Blue Dragon",L5_5,"Epidemic Devil",L5_6,"back",L0;
 		L5_1:
@@ -200,6 +244,7 @@ gon_test.gat,42,89,4	script	Summoner	774,{
 			monster "gon_test.gat",58,87,"Seiryuu, the Blue Dragon",1466,1,"mobend";set @addmon,1;close;
 		L5_6:
 			monster "gon_test.gat",58,87,"Epidemic Devil",1433,1,"mobend";set @addmon,1;close;
+
 	L6:
 		menu "Tapir",L6_1,"Moat Putter",L6_2,"God of Lightning",L6_3,"Revengeing Ghost",L6_4,"Fusoushin",L6_5,"Hanmou",L6_6,"back",L0;
 		L6_1:
@@ -214,6 +259,7 @@ gon_test.gat,42,89,4	script	Summoner	774,{
 			monster "gon_test.gat",58,87,"Fusoushin",1474,1,"mobend";set @addmon,1;close;
 		L6_6:
 			monster "gon_test.gat",58,87,"Hanmou",1471,1,"mobend";set @addmon,1;close;
+
 	L7:
 		menu "Cane",L7_1,"Axe",L7_2,"Big Hammer",L7_3,"Armor",L7_4,"Bow",L7_5,"Iron Bullet",L7_6,"back",L0;
 		L7_1:
@@ -228,6 +274,7 @@ gon_test.gat,42,89,4	script	Summoner	774,{
 			monster "gon_test.gat",58,87,"Bow",1453,1,"mobend";set @addmon,1;close;
 		L7_6:
 			monster "gon_test.gat",58,87,"Iron Bullet",1479,1,"mobend";set @addmon,1;close;
+
 	L8:
 		menu "Lips",L8_1,"Tooth",L8_2,"Hair",L8_3,"The Hand",L8_4,"Muscle",L8_5,"Bone",L8_6,"back",L0;
 		L8_1:
@@ -242,6 +289,7 @@ gon_test.gat,42,89,4	script	Summoner	774,{
 			monster "gon_test.gat",58,87,"Muscle",1476,1,"mobend";set @addmon,1;close;
 		L8_6:
 			monster "gon_test.gat",58,87,"Bone",1435,1,"mobend";set @addmon,1;close;
+
 	L9:
 		menu "Ball",L9_1,"Mirror",L9_2,"Book",L9_3,"Glove",L9_4,"Bag",L9_5,"Clothes",L9_6,"back",L0;
 		L9_1:
@@ -256,6 +304,7 @@ gon_test.gat,42,89,4	script	Summoner	774,{
 			monster "gon_test.gat",58,87,"Bag",1488,1,"mobend";set @addmon,1;close;
 		L9_6:
 			monster "gon_test.gat",58,87,"Clothes",1438,1,"mobend";set @addmon,1;close;
+
 	L10:
 		menu "The Queen",L10_1,"Hot-Blood-Man",L10_2,"Executioner",L10_3,"Mutant Dragon",L10_4,"Syntetic Beast",L10_5,"Satan",L10_6,"back",L0;
 		L10_1:
@@ -270,6 +319,7 @@ gon_test.gat,42,89,4	script	Summoner	774,{
 			monster "gon_test.gat",58,87,"Syntetic Beast",1456,1,"mobend";set @addmon,1;close;
 		L10_6:
 			monster "gon_test.gat",58,87,"Satan",1486,1,"mobend";set @addmon,1;close;
+
 	L11:
 		menu "Hunter",L11_1,"Assassin",L11_2,"Samurai",L11_3,"Budoka",L11_4,"Fencer",L11_5,"back",L0;
 		L11_1:
@@ -282,24 +332,32 @@ gon_test.gat,42,89,4	script	Summoner	774,{
 			monster "gon_test.gat",58,87,"Budoka",1484,1,"mobend";set @addmon,1;close;
 		L11_5:
 			monster "gon_test.gat",58,87,"Fencer",1485,1,"mobend";set @addmon,1;close;
+
 Lalready:
 	mes "[Song Yon Wu]";
 	mes "A monster is already summoned, and only one is allowed in the arena at a time.";
 	mes "If you would like to fight a different monster, please re-enter the arena.";
 	close;
+
 LError:
 	mes "[Song Yon Wu]";
-	mes "Excuse me, but you need to officially sign up to participate in the arena in order for me to summon you a monster.";
+	mes "Excuse me, but you need to officially sign up to";
+	mes "participate in the arena in order for me to summon you a monster.";
 	close;
 }
+
 //===============================================================================
 gon_test.gat,51,90,0	script	gontimer120000	-1,{
+
 	mapannounce "gon_test.gat",": One Minute Left!",0;
 	deltimer "gontimer120000";
 	addtimer 60000,"gontimer180000";
 	end;
 }
+
+//===============================================================================
 gon_test.gat,50,90,0	script	gontimer180000	-1,{
+
 Onend:
 	mapannounce "gon_test.gat",": Your time is up.",0;
 	areawarp "gon_test.gat",42,82,73,91,"gon_test.gat",44,4;
@@ -308,11 +366,14 @@ Onend:
 	killmonster "gon_test.gat","All";
 	end;
 }
+
 //===============================================================================
 gon_test.gat,58,87,0	script	mobend	-1,{
+
 	mapannounce "gon_test.gat","Summoner Congratulations! We hope you participate again!",0;
 	addtimer 3000,"mobend::OnReturn";
 	end;
+
 OnReturn:
 	warp "gon_test.gat",44,4;
 	deltimer "mobend";
@@ -321,18 +382,22 @@ OnReturn:
 	enablenpc "Waiting Room Manager";
 	end;
 }
+
 //===============================================================================
 gon_test.gat,70,103,4	script	Exit Guide	773,{
+
 	mes "[Che En En]";
 	mes "Would you like to return?";
 	next;
 	menu "Return",-,"Don't Return",Lno;
+
 		mes "[Che En En]";
 		mes "Thank you very much. Please come again!";
 		next;
 		warp "gon_test.gat",44,4;
 		set @kengaku,0;
 		end;
+
 	Lno:
 		mes "[Che En En]";
 		mes "Thank you very much!";

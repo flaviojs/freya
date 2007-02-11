@@ -1,7 +1,7 @@
 //===== Freya Script =========================================
 //= Stylist and Dye NPC
 //===== By: ==================================================
-//= eAthena/Freya
+//= Unknown/Freya
 //===== Current Version: =====================================
 //= 2.0
 //===== Compatible With: =====================================
@@ -10,7 +10,7 @@
 //= Revised dye NPC, split into two NPCs, one for hair color
 //= and style, the other for clothes color.
 //===== Additional Comments: =================================
-//= 1.0 Added first version [Athena]
+//= 1.0 Added first version [Unknown]
 //= 1.1 Split script into two NPCs [Unknown]
 //= 1.2 Revised script / different dialog [Unknown]
 //= 1.3 Changed palette and hair style select [Unknown]

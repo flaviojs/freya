@@ -1,13 +1,29 @@
+//===== Freya Script =========================================
+//= Arena System
+//===== By: ==================================================
+//= Unknown/Freya
+//===== Current Version: =====================================
+//= 1.1
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
+//= A custom Arena system script
+//===== Additional Comments: =================================
+//= 1.0 First version [Unknown]
+//= 1.1 Improved formatting a little bit [Tsuyuki]
+//============================================================
+
+
 // ------------------------------------------------------------------
 // Setup Of Arena
 // ------------------------------------------------------------------
 
-// The following maps are used
-//map: prontera.gat
-//map: prt_are_in.gat
-//map: force_1-1.gat
+// The following maps are used:
+// map: prontera.gat
+// map: prt_are_in.gat
+// map: force_1-1.gat
 
-// Disallow Teleport, etc.
+// Disable Teleport, etc
 force_1-1.gat	mapflag	pvp	dummy
 force_1-2.gat	mapflag	pvp	dummy
 force_1-3.gat	mapflag	pvp	dummy
@@ -24,27 +40,39 @@ force_1-1.gat	mapflag	nomemo	dummy
 force_1-1.gat	mapflag	noteleport	dummy
 force_1-1.gat	mapflag	nosave	prontera.gat,156,191
 
-// An entrance is placed in Prontera.
+
+// ------------------------------------------------------------------
+// Script part of the Arena
+// ------------------------------------------------------------------
+
+// An entrance is placed in Prontera
 prontera.gat,158,183,3	script	Arena Entrance	116,{
 
 	mes "[Arena Entrance]";
 	mes "Want to go to the arena?";
 	next;
 	menu "Let's go!",L_GOARENA,"Nah..",L_YAME;
+
 L_GOARENA:
 	warp "prt_are_in.gat",31,82;
 	close;
+
 L_YAME:
 	close;
 }
 
 // Teleport from waiting room to ready room
 prt_are_in.gat,29,79,0	script	Time Attack	116,{
+
 	if (getmapusers("force_1-1.gat")>0) goto L_WAIT;
 
 	mes "This is the Time Attack selection.";
 	mes "Please choose your challenge.";
-	menu "Level 1 - 5 Porings, 30 secs!",L_GOLV1,"Level 2 - 7 Roda Frogs, 60 secs!",L_GOLV2,"Level 3 - 9 PecoPecos, 100 secs!",L_GOLV3,"Never mind.",L_YAME;
+	menu	"Level 1 - 5 Porings, 30 secs!",L_GOLV1,
+		"Level 2 - 7 Roda Frogs, 60 secs!",L_GOLV2,
+		"Level 3 - 9 PecoPecos, 100 secs!",L_GOLV3,
+		"Never mind.",L_YAME;
+
 L_GOLV1:
 	if (getmapusers("force_1-1.gat")>0) goto L_WAIT;
 	disablenpc "fc103-1";
@@ -53,6 +81,7 @@ L_GOLV1:
 	addtimer 5000,"arenalv1st";
 	warp "force_1-1.gat",99,12;
 	end;
+
 L_GOLV2:
 	if (getmapusers("force_1-1.gat")>0) goto L_WAIT;
 	disablenpc "fc103-1";
@@ -61,6 +90,7 @@ L_GOLV2:
 	addtimer 5000,"arenalv2st";
 	warp "force_1-1.gat",99,12;
 	end;
+
 L_GOLV3:
 	if (getmapusers("force_1-1.gat")>0) goto L_WAIT;
 	disablenpc "fc103-1";
@@ -69,9 +99,12 @@ L_GOLV3:
 	addtimer 5000,"arenalv3st";
 	warp "force_1-1.gat",99,12;
 	end;
+
 L_WAIT:
 	mes "Since the arena is in use,";
 	mes "please wait for a while.";
+	close;
+
 L_YAME:
 	close;
 }
@@ -79,22 +112,28 @@ L_YAME:
 
 // Ready room (10-second preparation)
 force_1-1.gat,99,12,0	script	arenalv1st	-1,{
+
 	announce "It will begin in 10 seconds!",3;
 	addtimer 10000,"arenalv1fgt";
 }
+
 force_1-1.gat,99,12,0	script	arenalv2st	-1,{
+
 	announce "It will begin in 10 seconds!",3;
 	addtimer 10000,"arenalv2fgt";
 }
+
 force_1-1.gat,99,12,0	script	arenalv3st	-1,{
+
 	announce "It will begin in 10 seconds!",3;
 	addtimer 10000,"arenalv3fgt";
 }
 
 
 // Transmission to the room, and mob organization
-//Time Attack Level 1
+// Time Attack Level 1
 force_1-1.gat,99,12,0	script	arenalv1fgt	-1,{
+
 	killmonster "force_1-1.gat","arenalv1mon";
 	killmonster "force_1-1.gat","arenalv2mon";
 	killmonster "force_1-1.gat","arenalv3mon";
@@ -115,8 +154,9 @@ force_1-1.gat,99,12,0	script	arenalv1fgt	-1,{
 	addtimer 20000,"tensecsleft";
 }
 
-//Time Attack Level 2
+// Time Attack Level 2
 force_1-1.gat,99,12,0	script	arenalv2fgt	-1,{
+
 	killmonster "force_1-1.gat","arenalv1mon";
 	killmonster "force_1-1.gat","arenalv2mon";
 	killmonster "force_1-1.gat","arenalv3mon";
@@ -140,8 +180,9 @@ force_1-1.gat,99,12,0	script	arenalv2fgt	-1,{
 	addtimer 50000,"tensecsleft";
 }
 
-//Time Attack Level 3
+// Time Attack Level 3
 force_1-1.gat,99,12,0	script	arenalv3fgt	-1,{
+
 	killmonster "force_1-1.gat","arenalv1mon";
 	killmonster "force_1-1.gat","arenalv2mon";
 	killmonster "force_1-1.gat","arenalv3mon";
@@ -168,8 +209,9 @@ force_1-1.gat,99,12,0	script	arenalv3fgt	-1,{
 }
 
 // Pushed-down Processing
-//Time Attack Level 1
+// Time Attack Level 1
 force_1-1.gat,25,26,0	script	arenalv1mon	-1,{
+
 	set $arena00, $arena00 - 1;
 	if ($arena00 > 0) goto L_CONT;
 	deltimer "arenaev8000";
@@ -231,11 +273,13 @@ force_1-1.gat,25,26,0	script	arenalv1mon	-1,{
 	areaannounce "gonryun.gat",0,0,350,350,
 		strcharinfo(0) + " cleared Time Attack Level 1.",0;
 	addtimer 5000,"arenareturn";
+
 L_CONT:
 	end;
 }
 
 force_1-1.gat,25,26,0	script	arenalv2mon	-1,{
+
 	set $arena00, $arena00 - 1;
 	if ($arena00 > 0) goto L_CONT;
 	deltimer "arenaev8000";
@@ -297,12 +341,13 @@ force_1-1.gat,25,26,0	script	arenalv2mon	-1,{
 	areaannounce "gonryun.gat",0,0,350,350,
 		strcharinfo(0) + " cleared Time Attack Level 2.",0;
 	addtimer 5000,"arenareturn";
+
 L_CONT:
 	end;
 }
 
-
 force_1-1.gat,25,26,0	script	arenalv3mon	-1,{
+
 	set $arena00, $arena00 - 1;
 	if ($arena00 > 0) goto L_CONT;
 	deltimer "arenaev8000";
@@ -364,12 +409,14 @@ force_1-1.gat,25,26,0	script	arenalv3mon	-1,{
 	areaannounce "gonryun.gat",0,0,350,350,
 		strcharinfo(0) + " cleared Time Attack Level 3.",0;
 	addtimer 5000,"arenareturn";
+
 L_CONT:
 	end;
 }
 
 // Timeout
 force_1-1.gat,25,26,0	script	arenalv1fail	-1,{
+
 	set $arena00,99;
 	killmonster "force_1-1.gat","arenalv1mon";
 	killmonster "force_1-1.gat","arenalv2mon";
@@ -433,6 +480,7 @@ force_1-1.gat,25,26,0	script	arenalv1fail	-1,{
 }
 
 force_1-1.gat,25,26,0	script	arenalv2fail	-1,{
+
 	set $arena00,99;
 	killmonster "force_1-1.gat","arenalv1mon";
 	killmonster "force_1-1.gat","arenalv2mon";
@@ -496,6 +544,7 @@ force_1-1.gat,25,26,0	script	arenalv2fail	-1,{
 }
 
 force_1-1.gat,25,26,0	script	arenalv3fail	-1,{
+
 	set $arena00,99;
 	killmonster "force_1-1.gat","arenalv1mon";
 	killmonster "force_1-1.gat","arenalv2mon";
@@ -558,13 +607,15 @@ force_1-1.gat,25,26,0	script	arenalv3fail	-1,{
 	addtimer 5000,"arenareturn";
 }
 
-// Reminding the player of time constraints.
+// Reminding the player of time constraints
 force_1-1.gat,25,26,0	script	tensecsleft	-1,{
+
 	announce "Ten seconds remaining!",3;
 }
 
 
 // Return to Prontera
 force_1-1.gat,25,26,0	script	arenareturn	-1,{
+
 	warp "prontera.gat",156,191;
 }

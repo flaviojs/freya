@@ -1,16 +1,17 @@
 //===== Freya Script =========================================
 //= Valhallen Items Quests NPC
 //===== By: ==================================================
-//= Avaji
+//= Avaji/Freya
 //===== Current Version: =====================================
-//= 1.0
+//= 1.1
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
 //= All-in-one: Mjolnir,Sleipnir,Brisingamen,Gleipnir,Megingjard
 //= Temp Quest to get God Equipment: The Seal Quests are missing..
 //===== Additional Comments: =================================
-//= 1.0 Custom quest, ingredients were based on official RO FAQ
+//= 1.0 Custom quest, ingredients were based on official RO FAQ [Avaji]
+//= 1.1 Improved formatting [Tsuyuki]
 //============================================================
 
 

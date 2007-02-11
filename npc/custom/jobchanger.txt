@@ -1,7 +1,7 @@
 //===== Freya Script =========================================
 //= Job Changer Script
 //===== By: ==================================================
-//= eAthena/Freya
+//= Unknown/Freya
 //===== Current Version: =====================================
 //= 2.7
 //===== Compatible With: =====================================
@@ -13,6 +13,7 @@
 //= Death Knight/Dark Collector excluded because they're still
 //= in development.
 //===== Additional Comments: =================================
+//= 1.0 Added first version [Unknown]
 //= 1.x Added missing param into resetlevel [Lupus]
 //= 1.x Remade Adv. Classes Menu. [shadowlady]
 //= 1.x Fixed some bugs [midas]

@@ -1,7 +1,7 @@
 //===== Freya Script =========================================
 //= Quest Skill Girl
 //===== By: ==================================================
-//= eAthena/Freya
+//= Unknown/Freya
 //===== Current Version: =====================================
 //= 2.5
 //===== Compatible With: =====================================
@@ -9,7 +9,7 @@
 //===== Description: =========================================
 //= Single NPC that assigns quests skills for all classes.
 //===== Additional Comments: =================================
-//= 1.0 Added first version [eAthena]
+//= 1.0 Added first version [Unknown]
 //= x.x Edited script [DarkChild]
 //= x.x Added advanced classes [ShadowLady]
 //= x.x Added baby clases [Midas]
