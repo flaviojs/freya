@@ -29,14 +29,14 @@ struct mob_db {
 	int str, agi, vit, int_, dex, luk;
 	int range, range2, range3;
 	int size, race, element, mode;
-	short race2;	// celest
+	short race2;
 	int speed, adelay, amotion, dmotion;
 	int mexp, mexpper;
 	struct { int nameid; short p; } dropitem[10]; // p: 0-10000(100%)
 	struct { int nameid; short p; } mvpitem[3]; // p: 0-10000(100%)
 	int view_class, sex;
-	short hair, hair_color, weapon, shield, head_top, head_mid, head_buttom, option, clothes_color; // [Valaris]
-	int equip; // [Valaris]
+	short hair, hair_color, weapon, shield, head_top, head_mid, head_buttom, option, clothes_color;
+	int equip;
 	int summonper[MAX_RANDOMMONSTER];
 	int maxskill;
 	struct mob_skill skill[MAX_MOBSKILL];
@@ -45,7 +45,7 @@ extern struct mob_db mob_db[];
 
 enum {
 	MST_TARGET			=	0,
-	MST_SELF			=	1,
+	MST_SELF				=	1,
 	MST_FRIEND			=	2,
 	MST_AROUND5			=	3,
 	MST_AROUND6			=	4,
@@ -81,12 +81,12 @@ enum {
 };
 
 enum {
-	MSS_IDLE,	// ë“ã@
-	MSS_WALK,	// à⁄ìÆ
-	MSS_ATTACK,	// çUåÇ
-	MSS_DEAD,	// éÄñS
-	MSS_LOOT,	// ÉãÅ[Ég
-	MSS_CHASE	// ìÀåÇ
+	MSS_IDLE,
+	MSS_WALK,
+	MSS_ATTACK,
+	MSS_DEAD,
+	MSS_LOOT,
+	MSS_CHASE
 };
 
 int mobdb_searchname(const char *str);
@@ -97,13 +97,13 @@ int mob_once_spawn_area(struct map_session_data *sd,char *mapname,
 	int x0,int y_0,int x1,int y_1,
 	const char *mobname,int class,int amount,const char *event);
 
-int mob_spawn_guardian(struct map_session_data *sd, char *mapname,	// Spawning Guardians [Valaris]
-	int x, int y, const char *mobname, int class, int amount, const char *event, int guardian);	// Spawning Guardians [Valaris]
+int mob_spawn_guardian(struct map_session_data *sd, char *mapname,
+	int x, int y, const char *mobname, int class, int amount, const char *event, int guardian);
 
 
 int mob_walktoxy(struct mob_data *md, int x, int y, int easy);
-//int mob_randomwalk(struct mob_data *md, unsigned int tick);
-//int mob_can_move(struct mob_data *md);
+// int mob_randomwalk(struct mob_data *md, unsigned int tick);
+// int mob_can_move(struct mob_data *md);
 
 int mob_target(struct mob_data *md, struct block_list *bl, int dist);
 void mob_stop_walking(struct mob_data *md, int type);
@@ -123,8 +123,8 @@ short mob_get_shield(int);
 short mob_get_head_top(int);
 short mob_get_head_mid(int);
 short mob_get_head_buttom(int);
-short mob_get_clothes_color(int);	//player mob dye [Valaris]
-int mob_get_equip(int); // mob equip [Valaris]
+short mob_get_clothes_color(int);
+int mob_get_equip(int);
 int do_init_mob(void);
 
 int mob_delete(struct mob_data *md);

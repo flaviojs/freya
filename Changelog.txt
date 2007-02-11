@@ -11,6 +11,7 @@
 Date	Added
 
 02/10/2007
+	* Cleaned: Comments in mob.c and mob.h [Tsuyuki]
 	* Fixed: ""pos 0,0" problem when changing mapserver with @warp or something" (Thanks to glw) [Tsuyuki]
 	* Updated: OPB database with better formatting [Tsuyuki]
 	* Note: All Ninja skills are now implemented, though NJ_SHADOWJUMP is broken [Tsuyuki]
