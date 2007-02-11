@@ -3844,6 +3844,9 @@ int pc_setpos(struct map_session_data *sd, char *mapname_org, int x, int y, int 
 
 	nullpo_retr(0, sd);
 
+	if (!cellcheck && x <= 0 && y <= 0)
+		cellcheck = 1;
+
 	strncpy(mapname, mapname_org, 16); // 17 - NULL
 	mapname[16] = '\0';
 	if(strstr(mapname, ".gat") == NULL && strlen(mapname) < 13) { // 16 - 4 (.gat)
