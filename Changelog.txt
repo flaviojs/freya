@@ -11,6 +11,8 @@
 Date	Added
 
 02/11/2007
+	* Fixed: Ground Drift skill not consuming spheres [Harbin]
+	* Fixed: Guns using spheres and grenade launchers using bullets [Harbin]
 	* Fixed: /db/random databases not reading all their line entries [Tsuyuki]
 
 02/10/2007

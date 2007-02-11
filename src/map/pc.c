@@ -7408,18 +7408,16 @@ void pc_cleareventtimer(struct map_session_data *sd) {
 	return;
 }
 
-//
-// ‘• ”õ•¨
-//
-/*==========================================
- * ƒAƒCƒeƒ€‚ð‘•”õ‚·‚é
- *------------------------------------------
- */
-void pc_equipitem(struct map_session_data *sd, int n, int pos) {
+/* ---------- *
+ * Equip Item *
+ * ---------- */
+void pc_equipitem(struct map_session_data *sd, int n, int pos)
+{
 	int i, nameid, arrow;
 	struct item_data *id;
 
-//	nullpo_retv(sd); // Checked before to call function
+	/* checked already */
+//	nullpo_retv(sd);
 
 	nameid = sd->status.inventory[n].nameid;
 	id = sd->inventory_data[n];

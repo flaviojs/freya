@@ -92,11 +92,6 @@ int itemdb_canguildstore(int nameid, int gmlv);
 int itemdb_cancartstore(int nameid, int gmlv);
 int itemdb_canonlypartnertrade(int nameid, int gmlv, int gmlv2);
 
-// itemdb_equipマクロとitemdb_equippointとの違いは
-// 前者が鯖側dbで定義された値そのものを返すのに対し
-// 後者はsessiondataを考慮した鞍側での装備可能場所
-// すべての組み合わせを返す
-
 void itemdb_reload(void);
 
 void do_final_itemdb(void);

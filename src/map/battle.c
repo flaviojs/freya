@@ -3369,11 +3369,11 @@ struct Damage battle_calc_attack(int attack_type,
 	return d;
 }
 
-/*==========================================
- * battle_weapon_attack Function
- *------------------------------------------
- */
-int battle_weapon_attack(struct block_list *src, struct block_list *target, unsigned int tick, int flag) {
+/* ------------------------ *
+ * Initialize Weapon Attack *
+ * ------------------------ */
+int battle_weapon_attack(struct block_list *src, struct block_list *target, unsigned int tick, int flag)
+{
 	struct map_session_data *sd = NULL;
 	struct mob_data *md = NULL;
 	struct status_change *sc_data, *t_sc_data;
@@ -3429,24 +3429,52 @@ int battle_weapon_attack(struct block_list *src, struct block_list *target, unsi
 	}
 
 	// If target is out of range, fail
-	if (battle_check_target(src, target, BCT_ENEMY) <= 0) {
+	if(battle_check_target(src, target, BCT_ENEMY) <= 0)
+	{
 		if(!battle_check_range(src, target, 0))
 			return 0;
-	}
-	// Retreives target's race and element (If it's in range)
-	else if(battle_check_range(src, target, 0)) {
+	} else if(battle_check_range(src, target, 0)) {
 		race = status_get_race(target);
 		ele = status_get_elem_type(target);
 
-		// Weapons that consume ammuntion calculation
-		if (sd && (sd->status.weapon == 11 || sd->status.weapon == 17 || sd->status.weapon == 18 ||
-			 sd->status.weapon == 19 || sd->status.weapon == 20 || sd->status.weapon == 21)) {
-			if (sd->equip_index[10] >= 0) {
-				if (battle_config.arrow_decrement)
-					pc_delitem(sd, sd->equip_index[10], 1, 0);
-			} else {
-				clif_arrow_fail(sd, 0);
-				return 0;
+		/* Weapon specific ammunition check */
+		if(sd)
+		{
+			switch(sd->status.weapon)
+			{
+				case 11: /* bow */
+					if(sd->equip_index[10] >= 0 && sd->inventory_data[sd->equip_index[10]]->flag.ammotype == 1)
+					{
+						if(battle_config.arrow_decrement)
+							pc_delitem(sd, sd->equip_index[10], 1, 0);
+					} else {
+						clif_arrow_fail(sd, 0);
+						return 0;
+					}
+					break;
+				case 17: /* revolver */
+				case 18: /* rifle */
+				case 19: /* shotgun */
+				case 20: /* gatling gun */
+					if(sd->equip_index[10] >= 0 && sd->inventory_data[sd->equip_index[10]]->flag.ammotype == 2)
+					{
+						if(battle_config.arrow_decrement)
+							pc_delitem(sd, sd->equip_index[10], 1, 0);
+					} else {
+						clif_arrow_fail(sd, 0);
+						return 0;
+					}
+					break;
+				case 21: /* grenade launcher */
+					if(sd->equip_index[10] >= 0 && sd->inventory_data[sd->equip_index[10]]->flag.ammotype == 3)
+					{
+						if(battle_config.arrow_decrement)
+							pc_delitem(sd, sd->equip_index[10], 1, 0);
+					} else {
+						clif_arrow_fail(sd, 0);
+						return 0;
+					}
+					break;
 			}
 		}
 
