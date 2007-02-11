@@ -3251,11 +3251,7 @@ struct Damage  battle_calc_misc_attack(
 		break;
 
 	case GS_FLING:
-		// To-Do: Fix me [Tsuyuki]
-		// Currently incompatible
-		// damage = sd?sd->status.job_level:status_get_lv(sd);
-		// Temp fix
-		damage = 50;
+		damage = sd?sd->status.job_level:status_get_lv(bl);
 		damagefix = 0;
 		break;
 	}
