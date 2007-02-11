@@ -10,8 +10,10 @@
 
 Date	Added
 
-02/10/2007
+02/11/2007
 	* Fixed: /db/random databases not reading all their line entries [Tsuyuki]
+
+02/10/2007
 	* Fixed: Minor exploit with the custom dye NPC regarding Illusionary Shadow [Tsuyuki]
 	* Cleaned: Comments in mob.c and mob.h [Tsuyuki]
 	* Fixed: ""pos 0,0" problem when changing mapserver with @warp or something" (Thanks to glw) [Tsuyuki]
