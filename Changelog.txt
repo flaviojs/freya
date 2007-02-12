@@ -1406,7 +1406,7 @@ Date	Added
 	* Removed: Teleport from Ungoliant [Tsuyuki]
 	* Updated: All monster drops from Episode 2.5 ~ Episode 10.2 [Tsuyuki]
 	* Removed: Slotted Sunnies & Slotted Glasses from Old Purple Box [Tsuyuki]
-	  - http://www.ragnainfo.net/forums/viewtopic.php?t=105161&postdays=0&postorder=asc&highlight=glasses&start=15
+	 - http://www.ragnainfo.net/forums/viewtopic.php?t=105161&postdays=0&postorder=asc&highlight=glasses&start=15
 	* Added: 4x Gargoyle Slaves to Chimera miniboss [Tsuyuki]
 	* Enabled: The effect box dropping cards [Tsuyuki]
 	 - Orc Archer card, Raydric Archer card, Jing Guai card, Sleeper card, Stem Worm card, etc..
@@ -1437,17 +1437,17 @@ Date	Added
 	* Added: Implemented the Cooking System & Cooking Quest [Tsuyuki]
 	* Added: Cooking-related drops to monsters [Tsuyuki]
 	* Fixed: Alchemist Create Elemental Potion not working [Tsuyuki]
-		- Note: The potions this skill produces will not work until the new status effects for them are implemented
+	 - Note: The potions this skill produces will not work until the new status effects for them are implemented
 	* Updated: The const.txt database with new status effects [Tsuyuki]
 	* Updated: Item database with new Episode 10.3 info [Tsuyuki]
 	* Fixed: SC_BLESSING in the Lighthalzen Inn script [Tsuyuki]
 	* Improved: method of calculating magic damage reflection [Harbin]
 	* Added: SC for magnum break [Harbin]
 	* Fixed: magnum break should give +20% fire damage bonus for 10 seconds [Harbin]
-	 - source: http://ragnainfo.net/forums/viewtopic.php?t=104874
+	 - Source: http://ragnainfo.net/forums/viewtopic.php?t=104874
 	* Fixed: shockwave trap's sp damage should work in gvg maps too [Harbin]
 	* Fixed: vultures eye should effect the attack range of blitz beat [Harbin]
-	 - Source: http://www.rocards.de/Hunter.rc#blitz & http://opensvn.csie.org/EnglishTranslation/data/skilldesctable.txt
+	 - http://www.rocards.de/Hunter.rc#blitz & http://opensvn.csie.org/EnglishTranslation/data/skilldesctable.txt
 	* Fixed: some marionette control issues [Harbin]
 	 - base level difference between caster and target should be equal or less than 5
 	 - target can't be gypsy or clown
@@ -1526,7 +1526,7 @@ Date	Added
 08/31/2006
 	* Fixed: WS_CARTTERMINATION will no longer work with SC_MELTDOWN status [Proximus]
 	 - Either carry status aliments except from the skill itself
-	* Added: @kamic atcommand: kami with specified color (based on [LuzZza]'s and [akrus]'s code, based on jAthena) [Yor]
+	* Added: @kamic atcommand: kami with specified color (based on LuzZza and [akrus' code, based on jAthena) [Yor]
 	* Added: an option to disable @main GM command when it's WoE and player is member of a guild [Yor]
 	* Added: an option to disable @main GM command when it's WoE and player is member of a guild ON Gvg Maps [Yor]
 	* Added: party_invite_same_account battle_config switch (conf/battle_athena.conf) [Proximus]
