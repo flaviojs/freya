@@ -3897,7 +3897,7 @@ int pc_setpos(struct map_session_data *sd, char *mapname_org, int x, int y, int 
 		sd->pvp_timer = -1;
 	}
 
-	skill_castcancel(&sd->bl, 0);
+	skill_castcancel(&sd->bl, 0, 0);
 	pc_stop_walking(sd, 0);
 	pc_stopattack(sd);
 
@@ -5956,7 +5956,7 @@ int pc_damage(struct block_list *src, struct map_session_data *sd, int damage)
 	}
 
 	pc_stop_walking(sd, 0);
-	skill_castcancel(&sd->bl, 0); // ‰r¥‚Ì’†Ž~
+	skill_castcancel(&sd->bl, 0, 0); // ‰r¥‚Ì’†Ž~
 	clif_clearchar_area(&sd->bl, 1);
 	pc_setdead(sd);
 	skill_unit_move(&sd->bl, gettick_cache, 0);

@@ -6011,7 +6011,7 @@ int status_change_timer(int tid, unsigned int tick, int id, int data)
 			{
 				// Walking and casting effect is lost
 				battle_stopwalking (bl, 1);
-				skill_castcancel (bl, 0);
+				skill_castcancel (bl, 0, 0);
 				sc_data[type].timer = add_timer(10000 + tick, status_change_timer, bl->id, data);
 			}
 			return 0;

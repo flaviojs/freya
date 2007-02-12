@@ -260,7 +260,7 @@ int battle_damage(struct block_list *bl,struct block_list *target,int damage,int
 		struct mob_data *md = (struct mob_data *)target;
 		// Interrupt monster skill casting (If target monster was casting a skill)
 		if (md && md->skilltimer != -1 && md->state.skillcastcancel)
-			skill_castcancel(target, 0);
+			skill_castcancel(target, 0, 0);
 		return mob_damage(bl, md, damage, 0);
 	}
 	else if (target->type == BL_PC) { // Player
@@ -289,7 +289,7 @@ int battle_damage(struct block_list *bl,struct block_list *target,int damage,int
 			if (tsd->skilltimer != -1) {
 				if ((!tsd->special_state.no_castcancel || map[target->m].flag.gvg) && tsd->state.skillcastcancel &&
 				    !tsd->special_state.no_castcancel2)
-					skill_castcancel(target, 0);
+					skill_castcancel(target, 0, 0);
 			}
 		}
 		// Inflict actual damage to the target player

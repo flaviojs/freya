@@ -10,6 +10,9 @@
 
 Date	Added
 
+02/12/2007
+	* Fixed: Spell Breaker should be able to cancel Pressure [Latios]
+
 02/11/2007
 	* Updated: New item names in the item database [Tsuyuki]
 	* Added: The official Gunslinger job change quest, converted from Aegis [Tsuyuki]

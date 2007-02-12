@@ -4166,10 +4166,10 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 				break;
 			}
 			if(dstmd && dstmd->skilltimer != -1 && dstmd->state.skillcastcancel)
-				skill_castcancel(bl, 0);
+				skill_castcancel(bl, 0, 0);
 			if(dstsd && dstsd->skilltimer != -1 && (!dstsd->special_state.no_castcancel || map[bl->m].flag.gvg)
 				&& dstsd->state.skillcastcancel && !dstsd->special_state.no_castcancel2)
-				skill_castcancel(bl, 0);
+				skill_castcancel(bl, 0, 0);
 
 			if(tsc_data){
 				if(tsc_data[SC_FREEZE].timer != -1)
@@ -5096,7 +5096,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 
 	case SA_CASTCANCEL:
 		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
-		skill_castcancel(src, 1);
+		skill_castcancel(src, 1, 0);
 		if (sd) {
 			int sp = skill_get_sp(sd->skillid_old, sd->skilllv_old);
 			sp = sp * (90 - (skilllv-1) * 20) / 100;
@@ -5144,21 +5144,24 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 			}
 			if (bl_skillid > 0) {
 				clif_skill_nodamage(src, bl, skillid, skilllv, 1);
-				skill_castcancel(bl, 0);
+				skill_castcancel(bl, 0, 1);
 				sp = skill_get_sp(bl_skillid, bl_skilllv);
 				if(dstsd)
 					pc_heal(dstsd,0,-sp);
 				if(sd) {
-					sp = sp*(25*(skilllv-1))/100;
-					if (skilllv > 1 && sp < 1) sp = 1;
-					if (sp > 0x7fff) sp = 0x7fff;
-					else if (sp < 1) sp = 1;
+					sp = (sp * 25 * (skilllv-1)) / 100;
+					if (skilllv > 1 && sp < 1)
+						sp = 1;
+					if (sp > 0x7fff)
+						sp = 0x7fff;
+					else if (sp < 1)
+						sp = 1;
 					if (sd->status.sp + sp > sd->status.max_sp) {
 						sp = sd->status.max_sp - sd->status.sp;
 						sd->status.sp = sd->status.max_sp;
-					}
-					else
+					} else {
 						sd->status.sp += sp;
+					}
 					clif_heal(sd->fd, SP_SP, sp);
 				}
 			} else if (sd)
@@ -5556,10 +5559,10 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		status_change_start(bl,SkillStatusChangeTable[skillid],skilllv,100 - 12 * skilllv,100 + 20 * skilllv,0,skill_get_time(skillid,skilllv),0 );
 
 		if (dstmd && dstmd->skilltimer != -1 && dstmd->state.skillcastcancel)
-			skill_castcancel(bl,0);
+			skill_castcancel(bl, 0, 0);
 		if (dstsd && dstsd->skilltimer != -1 && (!dstsd->special_state.no_castcancel || map[bl->m].flag.gvg)
 			&& dstsd->state.skillcastcancel && !dstsd->special_state.no_castcancel2)
-			skill_castcancel(bl,0);
+			skill_castcancel(bl, 0, 0);
 
 		if(tsc_data){
 			if(tsc_data[SC_FREEZE].timer!=-1)
@@ -9395,10 +9398,11 @@ int skill_use_pos(struct map_session_data *sd,
 }
 
 /*==========================================
- * スキル詠唱キャンセル
+ * Skill Cast Cancel
+ * flag : 1 is for SA_SPELLBREAKER
  *------------------------------------------
  */
-int skill_castcancel(struct block_list *bl, int type)
+int skill_castcancel(struct block_list *bl, int type, int flag)
 {
 	int inf;
 	int ret = 0;
@@ -9413,7 +9417,7 @@ int skill_castcancel(struct block_list *bl, int type)
 		if(sd->skilltimer != -1)
 		{
 			/* pressure is uninterruptable */
-			if(sd->skillid == PA_PRESSURE)
+			if(sd->skillid == PA_PRESSURE && !(flag & 1))	// Spell Breaker should be able to cancel Pressure
 				return 1;
 
 			sd->canact_tick = gettick_cache;

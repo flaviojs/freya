@@ -823,7 +823,7 @@ void mob_changestate(struct mob_data *md, int state, int type)
 		md->timer = add_timer(gettick_cache + type, mob_timer, md->bl.id, 0);
 		break;
 	case MS_DEAD:
-		skill_castcancel(&md->bl, 0);
+		skill_castcancel(&md->bl, 0, 0);
 		// mobskill_deltimer(md); // Replaced by skill_castcancel
 		md->state.skillstate = MSS_DEAD;
 		md->last_deadtime = gettick_cache;
@@ -3233,7 +3233,7 @@ int mob_class_change(struct mob_data *md, int *value, int count)
 	md->def_ele = mob_db[md->class].element;
 
 	mob_changestate(md,MS_IDLE, 0);
-	skill_castcancel(&md->bl, 0);
+	skill_castcancel(&md->bl, 0, 0);
 	md->state.skillstate = MSS_IDLE;
 	md->last_thinktime = gettick_cache;
 	md->next_walktime = gettick_cache + rand() % 50 + 5000;

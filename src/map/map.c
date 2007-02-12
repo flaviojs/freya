@@ -1156,7 +1156,7 @@ void map_quit(struct map_session_data *sd) {
 	else
 		storage_storage_quit(sd); // ‘qŒÉ‚ğŠJ‚¢‚Ä‚é‚È‚ç•Û‘¶‚·‚é
 
-	skill_castcancel(&sd->bl, 0); // ‰r¥‚ğ’†’f‚·‚é
+	skill_castcancel(&sd->bl, 0, 0); // ‰r¥‚ğ’†’f‚·‚é
 	skill_stop_dancing(&sd->bl, 1);// ƒ_ƒ“ƒX/‰‰‘t’†’f
 
 	//Status that are not saved...

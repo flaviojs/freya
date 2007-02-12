@@ -150,7 +150,7 @@ void skill_stop_dancing(struct block_list *src, int flag);
 
 int skill_guildaura_sub(struct block_list *bl, va_list ap);
 
-int skill_castcancel(struct block_list *bl, int type);
+int skill_castcancel(struct block_list *bl, int type, int flag);
 
 int skill_gangsterparadise(struct map_session_data *sd, int type);
 int skill_rest(struct map_session_data *sd ,int type);
