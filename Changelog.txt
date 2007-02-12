@@ -11,6 +11,7 @@
 Date	Added
 
 02/12/2007
+	* Fixed: Zeny exploit [Latios]
 	* Added: Spirit of Knight (SL_KNIGHT) and One-Hand Quicken skills [Latios]
 	* Fixed: Soul Linkers are immune to the TaeKwon's Flying Kick dispelling effects [Latios]
 	* Added: Beast Strafing (HT_POWER) [Latios]

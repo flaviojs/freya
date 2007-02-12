@@ -169,7 +169,13 @@ void vending_purchasereq(struct map_session_data *sd, short len, int id, char *p
 	sin_addr = (unsigned char *)&session[sd->fd]->client_addr.sin_addr;
 	tmpstr_len += sprintf(tmpstr + tmpstr_len, "* %s: %s [%d(%s:%d)] (ip:%d.%d.%d.%d)." RETCODE, msg_txt(616), sd->status.name, sd->status.account_id, msg_txt(597), sd->GM_level, sin_addr[0], sin_addr[1], sin_addr[2], sin_addr[3]); // Buyer, lvl
 
-	pc_payzeny(sd, (int)z);
+	if(pc_payzeny(sd, (int)z) != 0) {
+		WPACKETW(0) = 0xca;
+		WPACKETB(2) = 1; // 0: The deal has successfully completed., 1: You dont have enough zeny., 2: you are overcharged!, 3: You are over your weight limit.
+		SENDPACKET(sd->fd, 3/*packet_len_table[0xca]*/);
+
+		return;
+	}
 	pc_getzeny(vsd, (int)z);
 	for(i = 0; 8 + 4 * i < len; i++) {
 		amount = *(unsigned short*)(p + 4 * i);

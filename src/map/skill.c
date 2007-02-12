@@ -8833,8 +8833,13 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 		sd->status.hp -= hp;
 		clif_updatestatus(sd, SP_HP);
 	}
-	if (zeny > 0)
-		pc_payzeny(sd, zeny);
+	if (zeny > 0) {
+		if(pc_payzeny(sd, zeny) != 0) {
+			clif_skill_fail(sd, skill, 0, 0);
+			return 0;
+		}
+	}
+
 	if (spiritball > 0)
 		pc_delspiritball(sd, spiritball, 0);
 

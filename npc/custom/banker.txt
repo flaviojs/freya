@@ -90,10 +90,10 @@ L_Withdrawl:
 	input @withdrawl;
 	if (@withdrawl < 1) goto L_RealAmount;
 	if (@withdrawl > #bankstorage) goto L_NeedZeny3;
+	if (Zeny + @withdrawl >= 1000000000) goto L_OverMaxZeny;
 	if ((@cost > Zeny) && ((Zeny + @withdrawl) > @cost)) goto L_CostAsk;
 	if (@cost > Zeny) goto L_NeedZeny2;
-	set Zeny,Zeny - @cost;
-	set Zeny,Zeny + @withdrawl;
+	set Zeny,Zeny + @withdrawl - @cost;
 	set #bankstorage,#bankstorage - @withdrawl;
 	mes "[Marcus]";
 	mes "There's your Zeny. Have a good day.";

@@ -3050,10 +3050,10 @@ int pc_payzeny(struct map_session_data *sd, int zeny) {
 	nullpo_retr(0, sd);
 
 	z = (double)sd->status.zeny;
-	if(sd->status.zeny<zeny || z - (double)zeny > MAX_ZENY)
+	if(sd->status.zeny < zeny || (z - (double)zeny) > MAX_ZENY)
 		return 1;
-	sd->status.zeny-=zeny;
-	clif_updatestatus(sd,SP_ZENY);
+	sd->status.zeny -= zeny;
+	clif_updatestatus(sd, SP_ZENY);
 
 	return 0;
 }
@@ -6436,6 +6436,8 @@ void pc_setparam(struct map_session_data *sd,int type,int val)
 		sd->status.status_point = val;
 		break;
 	case SP_ZENY:
+		if(val > MAX_ZENY)
+			val = MAX_ZENY;
 		sd->status.zeny = val;
 		break;
 	case SP_BASEEXP:

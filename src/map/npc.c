@@ -1068,17 +1068,15 @@ int npc_buylist(struct map_session_data *sd, int n, unsigned short *item_list) {
 			z += ((double)nd->u.shop_item[j].value * (double)amount);
 		else
 			z += ((double)pc_modifybuyvalue(sd, nd->u.shop_item[j].value) * (double)amount);
-		if (z < 0. || z > (double)sd->status.zeny)
-			return 1; // 0: The deal has successfully completed., 1: You dont have enough zeny., 2: you are overcharged!, 3: You are over your weight limit.
 
 		switch(pc_checkadditem(sd, nameid, amount)) {
-		case ADDITEM_EXIST:
-			break;
-		case ADDITEM_NEW:
-			new++;
-			break;
-		case ADDITEM_OVERAMOUNT:
-			return 2; // 0: The deal has successfully completed., 1: You dont have enough zeny., 2: you are overcharged!, 3: You are over your weight limit.
+			case ADDITEM_EXIST:
+				break;
+			case ADDITEM_NEW:
+				new++;
+				break;
+			case ADDITEM_OVERAMOUNT:
+				return 2; // 0: The deal has successfully completed., 1: You dont have enough zeny., 2: you are overcharged!, 3: You are over your weight limit.
 		}
 
 		w += item_data->weight * amount;
@@ -1091,9 +1089,13 @@ int npc_buylist(struct map_session_data *sd, int n, unsigned short *item_list) {
 	/* check for the inventory space limit */
 	if(pc_inventoryblank(sd) <= new)
 		return 3;
-	
+
+	if (z < 0. || z > (double)sd->status.zeny)
+		return 1; // 0: The deal has successfully completed., 1: You dont have enough zeny., 2: you are overcharged!, 3: You are over your weight limit.
+
 	/* get zenys from player */
-	pc_payzeny(sd, (int)z);
+	if(pc_payzeny(sd, (int)z) != 0)
+		return 1;
 
 	/* add items to player's inventory */
 	for(i = 0; i < n; i++)
