@@ -402,19 +402,19 @@ int battle_attr_fix(int damage, int atk_elem, int def_elem)
 	
 	if(atk_elem < 0 || atk_elem > 9)
 	{
-		printf("battle_attr_fix: invalid attack element '%i'. ignoring attribute fix \n", atk_elem);
+		printf("battle_attr_fix: invalid attack element '%i', ignoring attribute fix\n", atk_elem);
 		return damage;
 	}
 	
 	if(def_type < 0 || def_type > 9)
 	{
-		printf("battle_attr_fix: invalid defence element '%i'. ignoring attribute fix \n", def_elem);
+		printf("battle_attr_fix: invalid defence element '%i', ignoring attribute fix\n", def_elem);
 		return damage;
 	}
 	
 	if(def_lv < 1 || def_lv > 4)
 	{
-		printf("battle_attr_fix: invalid defence level '%i'. ignoring attribute fix \n", def_lv);
+		printf("battle_attr_fix: invalid defence level '%i', ignoring attribute fix\n", def_lv);
 		return damage;
 	}
 
@@ -3347,26 +3347,26 @@ struct Damage battle_calc_attack(int attack_type,
 	// Splits attack type between several different functions
 	// Basically this function is just a redirector
 
-	switch(attack_type) {
+	switch(attack_type)
+	{
+		// Weapon Attacks
+		case BF_WEAPON:
+			return battle_calc_weapon_attack(bl, target, skill_num, skill_lv, flag);
 
-	// Weapon Attacks
-	case BF_WEAPON:
-		return battle_calc_weapon_attack(bl, target, skill_num, skill_lv, flag);
+		// Magic Attacks
+		case BF_MAGIC:
+			return battle_calc_magic_attack(bl, target, tick, skill_num, skill_lv, flag);
 
-	// Magic Attacks
-	case BF_MAGIC:
-		return battle_calc_magic_attack(bl, target, tick, skill_num, skill_lv, flag);
+		// Misc Attacks
+		case BF_MISC:
+			return battle_calc_misc_attack(bl, target, sd, skill_num, skill_lv, flag);
 
-	// Misc Attacks
-	case BF_MISC:
-		return battle_calc_misc_attack(bl, target, sd, skill_num, skill_lv, flag);
-
-	// Unknown Attack (Should never happen)
-	default:
-		if (battle_config.error_log)
-			printf("battle_calc_attack: unknwon attack type ! %d\n", attack_type);
-		memset(&d, 0, sizeof(d));
-		break;
+		// Unknown Attacks (Should never happen)
+		default:
+			if (battle_config.error_log)
+				printf("battle_calc_attack: unknown attack type! %d\n", attack_type);
+			memset(&d, 0, sizeof(d));
+			break;
 	}
 
 	return d;

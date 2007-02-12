@@ -4816,7 +4816,10 @@ int pc_calc_upper(unsigned int b_class) {
  */
 short pc_get_upper_type(unsigned int b_class) {
 
-	if ((b_class >= JOB_NOVICE && b_class <= JOB_NINJA) || (b_class >= JOB_TAEKWON && b_class <= JOB_MUNAK)) // Normal Classes
+	// Original line -> if ((b_class >= JOB_NOVICE && b_class <= JOB_NINJA) || (b_class >= JOB_TAEKWON && b_class <= JOB_MUNAK))
+	// Minor fix: JOB_NOVICE is 0, b_class is unsigned [Tekglw]
+
+	if (b_class <= JOB_NINJA || (b_class >= JOB_TAEKWON && b_class <= JOB_MUNAK)) // Normal Classes
 		return 1;
 	else if (b_class >= JOB_NOVICE_HIGH && b_class < JOB_BABY)		// Advanced Classes
 		return 2;

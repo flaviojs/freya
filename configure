@@ -48,7 +48,7 @@ ZLIB_LAST_VERSION="1.2.3"
 # Initial values
 INCLUDES="-I../include"
 LIBS="-L../lib"
-CC_OPTIONS="-pipe -Wall"
+CC_OPTIONS="-pipe -Wall -Wextra -Wno-sign-compare -Wno-unused-parameter"
 COMP_OPTIONS=""
 LOADABLE_EXT=".so"
 
