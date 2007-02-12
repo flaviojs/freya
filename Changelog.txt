@@ -11,6 +11,7 @@
 Date	Added
 
 02/11/2007
+	* Added: The official Gunslinger job change quest, converted from Aegis [Tsuyuki]
 	* Fixed: GS_FLING's damage calculation [Tsuyuki]
 	* Improved: Did some work on the custom NPCs [Tsuyuki]
 	* Improved: Organization of the /npc/custom/ folder [Tsuyuki]
