@@ -649,7 +649,7 @@ Date	Added
 	 - Note: Along with All jobs except Novice/Super Novice
 	 - To-Do: Redo whole item_db.txt with new item class restrictions (TKM, SL, GS, etc)
 	 - Note: Job restriction priveledges still aren't working.. will investigate further later
-	 - Note: GS/NJ can only equip perfectly specific items towards themselves (Ex: GS/NJ-only weapons/armors/ammo, etc)
+	 - Note: GS/NJ can only equip specific items towards themselves (Ex: GS/NJ-only weapons/armors/ammo, etc)
 	* Fixed: Gunslinger/Ninja can now equip their specific weapons/equipment [Tsuyuki]
 	 - Note: Tested and working.. other items/equips aren't working though
 	* Fixed: Spirit of the Super Novice [Tsuyuki]
@@ -894,7 +894,7 @@ Date	Added
 	* Removed: Unnecessary and outdated old WoE scripts [Tsuyuki]
 	* Fixed: AoE offensive skills no longer affect party members in PvP, and supportive party skills now do [Tsuyuki]
 	* Changed: Enabled Pet skills by default [Tsuyuki]
-	* Fixed: Monsters will now wait 2.5 seconds before attacking instead of 5 seconds when you appear on a map [Tsuyuki]
+	* Fixed: Monsters will wait 2.5 seconds before attacking instead of 5 seconds when you appear on a map [Tsuyuki]
 	 - Note: 2.5 seconds may be slightly off.. more or less
 	* Fixed: Mobs now start random walking when target becomes non-targetable (WiP) [Harbin]
 	* Fixed: Players can no longer loot items while they are hiding/cloaking/chasewalking [Harbin]
@@ -902,7 +902,8 @@ Date	Added
 11/19/2006
 	* Fixed: Super Novice now properly loses exp when it dies [Harbin]
 	* Changed: You can now pick up items / use @commands / use skills during SC_NOCHAT (Mute) [Tsuyuki]
-	 - Note: Muting is only applied automatically during chat floods, shouldn't have anything to do with actual gameplay
+	 - Note: Muting is only applied automatically during chat floods
+	 - Note: Shouldn't have anything to do with actual gameplay
 	 - Note: Not to mention mute is really buggy, so this just makes it a little more convenient for people
 	* Fixed: Items can no longer be used in EDP-mode as per kRO [Tsuyuki]
 	* Fixed: Medusa's now give proper experience/drops [Tsuyuki]
@@ -978,7 +979,8 @@ Date	Added
 	* Merged: Subdev branch to Trunk [Tsuyuki]
 	* Fixed: Falcon Assault's base Range should be 3 + Vulture's Eye's Range bonus [Harbin]
 	 - Mantis: http://freya.dns.st/mantis/view.php?id=287
-	* Fixed: Safetywall should block only levels 1-2 Grimtooth and Pneuma should block only levels 3-5 Grimtooth [Harbin]
+	* Fixed: Grimtooth blockage [Harbin]
+	 - Safety Wall should block only levels 1-2 Grimtooth and Pneuma should block only levels 3-5 Grimtooth
 	 - Mantis: http://freya.dns.st/mantis/view.php?id=293
 	 - Note: We don't know if distance between caster and target effects this
 	* Fixed: Players w/ Undead Armor now take full damage and are not knocked back from Fire Wall [Harbin]
@@ -1152,8 +1154,9 @@ Date	Added
 	* Added: Two new items, Old Red Box + Old Green Box random item databases [Tsuyuki]
 	* Fixed: Typo in custom/warper.txt script [Tsuyuki]
 	* Removed: Some custom monsters from mob_db2.txt [Tsuyuki]
-	* Added: getmapgms2/getmapalivegms and getmapgms3/getmapdeadgms script commands to count number of GMs on a map [Yor]
-	         example: getmapalivegms("prontera.gat", 20): get number of alive GM (level 20 or more) on prontera.gat
+	* Added: getmapgms2/getmapalivegms and getmapgms3/getmapdeadgms script commands [Yor]
+	 - To count number of GMs on a map
+	 - Example: getmapalivegms("prontera.gat", 20): get number of alive GM (level 20 or more) on prontera.gat
 
 10/05/2006
 	* Fixed: Sage's Elemental Converters now work once again [Tsuyuki]
