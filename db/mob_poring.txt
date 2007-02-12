@@ -1,10 +1,15 @@
-// mob_branch.txt Poring listing
-// ---- Translation by Panda
+// mob_poring.txt‚ Poring Box Summon List
 // MobID, MobName(Dummy), Rate
-// Monster ID, Monster's Name (Dummy), the probability is (*10000) so if 500000 then it is 50% and if 1000000 then it is 100%.)
-// Monster ID‚ However if the the pobability fails, it will select the monster ID 0 (in case of multiple, only the last one will be selected)
-// A Gravity Error will occur if the sprite of the monster is not present client side
-// And, it is noted not to log in while the enemy is near the character.
+//
+// Rate Formula
+// 10000   = 1%
+// 500000  = 50%
+// 1000000 = 100%
+//
+// If the the pobability is not activated with one of the list entries, it will select the monster ID 0
+// In the case of multiple 0 IDs, only the last one will be selected
+// If at least one entry has a chance value of 100%, it's not possible for this to happen
+//
 
 0,Poring,1002
 1002,Poring,700000
@@ -12,9 +17,11 @@
 1113,Drops,500000
 1031,Poporing,400000
 1242,Marin,300000
-1613,Metaling,300000
+1613,Metaling,250000
 1090,Mastering,100000
 1120,Ghostring,50000
-1096,Angeling,50000
-1388,Archangeling,10000
-1582,Deviling,50000
+1096,Angeling,25000
+1582,Deviling,25000
+1388,Arc Angeling,10000
+// 1520,Boiled Rice,????
+// 1784,Stapo,????

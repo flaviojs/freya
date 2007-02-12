@@ -10,6 +10,9 @@
 
 Date	Added
 
+02/11/07
+	* Updated: Dead Branch/Bloody Branch/Poring Box random spawn lists [Tsuyuki]
+
 01/16/07
 	* Moved: Mapflags to npc/other/mapflags.txt for the time being [Tsuyuki]
 	* Removed: Deleted old eAthena WoE system, and imported the translated jAthena system [Tsuyuki]

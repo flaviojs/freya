@@ -1,10 +1,15 @@
-// mob_branch.txt‚MVP Boss listing
-// ---- Translation by Panda
+// mob_boss.txt‚ Bloody Branch MvP Summon List
 // MobID, MobName(Dummy), Rate
-// Monster ID, Monster's Name (Dummy), the probability is (*10000) so if 500000 then it is 50% and if 1000000 then it is 100%.)
-// Monster ID‚ However if the the pobability fails, it will select the monster ID 0 (in case of multiple, only the last one will be selected)
-// A Gravity Error will occur if the sprite of the monster is not present client side
-// And, it is noted not to log in while the enemy is near the character.
+//
+// Rate Formula
+// 10000   = 1%
+// 500000  = 50%
+// 1000000 = 100%
+//
+// If the the pobability is not activated with one of the list entries, it will select the monster ID 0
+// In the case of multiple 0 IDs, only the last one will be selected
+// If at least one entry has a chance value of 100%, it's not possible for this to happen
+//
 
 0,Baphomet,1039
 1038,Osiris,1000000
@@ -16,7 +21,7 @@
 1112,Drake,1000000
 1115,Eddga,1000000
 1147,Maya,1000000
-1150,Moonlight Flower,1000000
+1150,Moonlight,1000000
 1157,Pharaoh,1000000
 1159,Phreeoni,1000000
 1190,Orc Lord,1000000
@@ -26,25 +31,25 @@
 1312,Turtle General,1000000
 1373,Lord of Death,1000000
 1389,Dracula,1000000
-//1399,Event Baphomet,1000000
 1418,Evil Snake Lord,1000000
-1492,Samurai Specter,1000000
+1492,Incantation Samurai,1000000
 1511,Amon Ra,1000000
-//1518,Bacsojin,1000000
+1518,White Lady,1000000
 1583,Tao Gunka,1000000
 1623,RSX-0806,1000000
-1630,Bacsojin,1000000
-1646,Seyren Windsor,1000000
-1647,Eremes Guile,1000000
-1648,Howard Alt-Eisen,1000000
-1649,Margaretha Solin,1000000
-1650,Cecil Damon,1000000
-1651,Kathryne Keyron,1000000
+1646,Lord Knight Seyren,1000000
+1647,Assassin Cross Eremes,1000000
+1648,Mastersmith Howard,1000000
+1649,High Priest Margaretha,1000000
+1650,Sniper Cecil,1000000
+1651,High Wizard Kathryne,1000000
 1685,Vesper,1000000
 1688,Lady Tanee,1000000
-1708,Thanatos' Memory,1000000
-1719,Detale,1000000
-//1734,Kiel-D-01,1000000
-//1751,Valkyrie Randgris,1000000
-//1768,Gloom Under Night,1000000
-//1779,Ktullanux,1000000
+1708,Thanatos Phantom,1000000
+1719,Detardeurus,1000000
+1734,Kiel_D-01,1000000
+1751,Valkyrie Randgris,1000000
+1768,Gloom Undernight,1000000
+1779,Ktullanux,1000000
+1785,Atros,1000000
+1832,Ifrit,1000000
