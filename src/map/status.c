@@ -1265,10 +1265,10 @@ int status_calc_pc(struct map_session_data* sd, int first)
 		}
 
 		// ASPD Calculation
-		if (sd->sc_data[SC_TWOHANDQUICKEN].timer != -1 && sd->sc_data[SC_QUAGMIRE].timer == -1 && sd->sc_data[SC_DONTFORGETME].timer == -1)
+		if ((sd->sc_data[SC_TWOHANDQUICKEN].timer != -1 || sd->sc_data[SC_ONEHAND].timer != -1) && sd->sc_data[SC_QUAGMIRE].timer == -1 && sd->sc_data[SC_DONTFORGETME].timer == -1)
 			aspd_rate -= 30;
 
-		if (sd->sc_data[SC_ADRENALINE].timer != -1 && sd->sc_data[SC_TWOHANDQUICKEN].timer == -1 &&
+		if (sd->sc_data[SC_ADRENALINE].timer != -1 && sd->sc_data[SC_TWOHANDQUICKEN].timer == -1 && sd->sc_data[SC_ONEHAND].timer == -1 &&
 			sd->sc_data[SC_QUAGMIRE].timer == -1 && sd->sc_data[SC_DONTFORGETME].timer == -1)
 		{
 			if (sd->sc_data[SC_ADRENALINE].val2 || !battle_config.party_skill_penalty)
@@ -1278,11 +1278,12 @@ int status_calc_pc(struct map_session_data* sd, int first)
 		}
 
 		if (sd->sc_data[SC_SPEARQUICKEN].timer != -1 && sd->sc_data[SC_ADRENALINE].timer == -1 &&
-			sd->sc_data[SC_TWOHANDQUICKEN].timer == -1 && sd->sc_data[SC_QUAGMIRE].timer == -1 && sd->sc_data[SC_DONTFORGETME].timer == -1)
+			sd->sc_data[SC_TWOHANDQUICKEN].timer == -1 && sd->sc_data[SC_ONEHAND].timer == -1 && 
+			sd->sc_data[SC_QUAGMIRE].timer == -1 && sd->sc_data[SC_DONTFORGETME].timer == -1)
 			aspd_rate -= sd->sc_data[SC_SPEARQUICKEN].val2;
 
 		if (sd->sc_data[SC_ASSNCROS].timer!=-1 && 
-			sd->sc_data[SC_TWOHANDQUICKEN].timer == -1 && sd->sc_data[SC_ADRENALINE].timer == -1 && sd->sc_data[SC_SPEARQUICKEN].timer == -1 &&
+			sd->sc_data[SC_TWOHANDQUICKEN].timer == -1 && sd->sc_data[SC_ONEHAND].timer == -1 && sd->sc_data[SC_ADRENALINE].timer == -1 && sd->sc_data[SC_SPEARQUICKEN].timer == -1 &&
 			sd->sc_data[SC_DONTFORGETME].timer == -1)
 				aspd_rate -= 5+sd->sc_data[SC_ASSNCROS].val1+sd->sc_data[SC_ASSNCROS].val2+sd->sc_data[SC_ASSNCROS].val3;
 
@@ -3098,9 +3099,9 @@ int status_get_adelay(struct block_list *bl)
 		// Status change caculation
 		if (sc_data)
 		{
-			if(sc_data[SC_TWOHANDQUICKEN].timer != -1 && sc_data[SC_QUAGMIRE].timer == -1 && sc_data[SC_DONTFORGETME].timer == -1)
+			if((sc_data[SC_TWOHANDQUICKEN].timer != -1 || sc_data[SC_ONEHAND].timer != -1) && sc_data[SC_QUAGMIRE].timer == -1 && sc_data[SC_DONTFORGETME].timer == -1)
 				aspd_rate -= 30;
-			if(sc_data[SC_ADRENALINE].timer != -1 && sc_data[SC_TWOHANDQUICKEN].timer == -1 && sc_data[SC_QUAGMIRE].timer == -1 && sc_data[SC_DONTFORGETME].timer == -1)
+			if(sc_data[SC_ADRENALINE].timer != -1 && sc_data[SC_TWOHANDQUICKEN].timer == -1 && sc_data[SC_ONEHAND].timer == -1 && sc_data[SC_QUAGMIRE].timer == -1 && sc_data[SC_DONTFORGETME].timer == -1)
 			{
 				if(sc_data[SC_ADRENALINE].val2 || !battle_config.party_skill_penalty)
 					aspd_rate -= 30;
@@ -3109,10 +3110,10 @@ int status_get_adelay(struct block_list *bl)
 			}
 
 			if(sc_data[SC_SPEARQUICKEN].timer != -1 && sc_data[SC_ADRENALINE].timer == -1 &&
-				sc_data[SC_TWOHANDQUICKEN].timer == -1 && sc_data[SC_QUAGMIRE].timer == -1 && sc_data[SC_DONTFORGETME].timer == -1)
+				sc_data[SC_TWOHANDQUICKEN].timer == -1 && sc_data[SC_ONEHAND].timer == -1 && sc_data[SC_QUAGMIRE].timer == -1 && sc_data[SC_DONTFORGETME].timer == -1)
 				aspd_rate -= sc_data[SC_SPEARQUICKEN].val2;
 			if(sc_data[SC_ASSNCROS].timer!=-1 && 
-				sc_data[SC_TWOHANDQUICKEN].timer == -1 && sc_data[SC_ADRENALINE].timer == -1 && sc_data[SC_SPEARQUICKEN].timer == -1 &&
+				sc_data[SC_TWOHANDQUICKEN].timer == -1 && sc_data[SC_ONEHAND].timer == -1 && sc_data[SC_ADRENALINE].timer == -1 && sc_data[SC_SPEARQUICKEN].timer == -1 &&
 				sc_data[SC_DONTFORGETME].timer == -1)
 				aspd_rate -= 5+sc_data[SC_ASSNCROS].val1+sc_data[SC_ASSNCROS].val2+sc_data[SC_ASSNCROS].val3;
 			if(sc_data[SC_DONTFORGETME].timer!=-1)
@@ -3176,9 +3177,9 @@ int status_get_amotion(struct block_list *bl)
 		// Status change calculation
 		if(sc_data)
 		{
-			if(sc_data[SC_TWOHANDQUICKEN].timer != -1 && sc_data[SC_QUAGMIRE].timer == -1 && sc_data[SC_DONTFORGETME].timer == -1)
+			if((sc_data[SC_TWOHANDQUICKEN].timer != -1 || sc_data[SC_ONEHAND].timer != -1) && sc_data[SC_QUAGMIRE].timer == -1 && sc_data[SC_DONTFORGETME].timer == -1)
 				aspd_rate -= 30;
-			if(sc_data[SC_ADRENALINE].timer != -1 && sc_data[SC_TWOHANDQUICKEN].timer == -1 &&
+			if(sc_data[SC_ADRENALINE].timer != -1 && sc_data[SC_TWOHANDQUICKEN].timer == -1 && sc_data[SC_ONEHAND].timer == -1 &&
 				sc_data[SC_QUAGMIRE].timer == -1 && sc_data[SC_DONTFORGETME].timer == -1)
 			{
 				if(sc_data[SC_ADRENALINE].val2 || !battle_config.party_skill_penalty)
@@ -3187,10 +3188,10 @@ int status_get_amotion(struct block_list *bl)
 					aspd_rate -= 25;
 			}
 			if(sc_data[SC_SPEARQUICKEN].timer != -1 && sc_data[SC_ADRENALINE].timer == -1 &&
-				sc_data[SC_TWOHANDQUICKEN].timer == -1 && sc_data[SC_QUAGMIRE].timer == -1 && sc_data[SC_DONTFORGETME].timer == -1)
+				sc_data[SC_TWOHANDQUICKEN].timer == -1 && sc_data[SC_ONEHAND].timer == -1 && sc_data[SC_QUAGMIRE].timer == -1 && sc_data[SC_DONTFORGETME].timer == -1)
 				aspd_rate -= sc_data[SC_SPEARQUICKEN].val2;
 			if(sc_data[SC_ASSNCROS].timer!=-1 && 
-				sc_data[SC_TWOHANDQUICKEN].timer == -1 && sc_data[SC_ADRENALINE].timer == -1 && sc_data[SC_SPEARQUICKEN].timer == -1 &&
+				sc_data[SC_TWOHANDQUICKEN].timer == -1 && sc_data[SC_ONEHAND].timer == -1 && sc_data[SC_ADRENALINE].timer == -1 && sc_data[SC_SPEARQUICKEN].timer == -1 &&
 				sc_data[SC_DONTFORGETME].timer == -1)
 				aspd_rate -= 5+sc_data[SC_ASSNCROS].val1+sc_data[SC_ASSNCROS].val2+sc_data[SC_ASSNCROS].val3;
 			if(sc_data[SC_DONTFORGETME].timer!=-1)
@@ -4093,7 +4094,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 	// Main status change calculation check
 	// To-Do: Organize list
 	switch(type) {
-		/*case SC_ONEHAND:
+		case SC_ONEHAND:
 			if(sc_data[SC_ASPDPOTION0].timer != -1)
 				status_change_end(bl, SC_ASPDPOTION0, -1);
 			if(sc_data[SC_ASPDPOTION1].timer != -1)
@@ -4102,7 +4103,9 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 				status_change_end(bl, SC_ASPDPOTION2, -1);
 			if(sc_data[SC_ASPDPOTION3].timer != -1)
 				status_change_end(bl, SC_ASPDPOTION3, -1);
-			break;*/
+			scflag.calc = 1;
+			*opt3 |= 1;
+			break;
 		case SC_INCREASING:
 		case SC_GATLINGFEVER:
 			scflag.calc = 1;
@@ -4234,16 +4237,16 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 					status_change_end(bl, SC_INCREASEAGI, -1);
 				if(sc_data[SC_ADRENALINE].timer != -1 )
 					status_change_end(bl, SC_ADRENALINE, -1);
-				/*if(sc_data[SC_ADRENALINE2].timer !=-1 )
-					status_change_end(bl, SC_ADRENALINE2,-1);*/
+				if(sc_data[SC_ADRENALINE2].timer !=-1 )
+					status_change_end(bl, SC_ADRENALINE2,-1);
 				if(sc_data[SC_SPEARQUICKEN].timer != -1 )
 					status_change_end(bl, SC_SPEARQUICKEN, -1);
 				if(sc_data[SC_TWOHANDQUICKEN].timer != -1 )
 					status_change_end(bl, SC_TWOHANDQUICKEN, -1);
 				if(sc_data[SC_CARTBOOST].timer !=-1 )
 					status_change_end(bl, SC_CARTBOOST, -1);
-				/*if(sc_data[SC_ONEHAND].timer !=-1 )
-					status_change_end(bl, SC_ONEHAND, -1);*/
+				if(sc_data[SC_ONEHAND].timer !=-1 )
+					status_change_end(bl, SC_ONEHAND, -1);
 			}
 			break;
 		case SC_SIGNUMCRUCIS:
@@ -4354,8 +4357,8 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 					status_change_end(bl, SC_SPEARQUICKEN, -1);
 				if(sc_data[SC_ADRENALINE].timer != -1 )
 					status_change_end(bl, SC_ADRENALINE, -1);
-				/*if (sc_data[SC_ADRENALINE2].timer != -1 )
-					status_change_end(bl, SC_ADRENALINE2, -1);*/
+				if (sc_data[SC_ADRENALINE2].timer != -1 )
+					status_change_end(bl, SC_ADRENALINE2, -1);
 				if(sc_data[SC_LOUD].timer != -1 )
 					status_change_end(bl, SC_LOUD, -1);
 				if(sc_data[SC_TRUESIGHT].timer != -1 )
@@ -4544,6 +4547,8 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 					status_change_end(bl,SC_INCREASEAGI,-1);
 				if(sc_data[SC_TWOHANDQUICKEN].timer!=-1 )
 					status_change_end(bl,SC_TWOHANDQUICKEN,-1);
+				if(sc_data[SC_ONEHAND].timer!=-1 )
+					status_change_end(bl,SC_ONEHAND,-1);
 				if(sc_data[SC_SPEARQUICKEN].timer!=-1 )
 					status_change_end(bl,SC_SPEARQUICKEN,-1);
 				if(sc_data[SC_ADRENALINE].timer!=-1 )
@@ -5355,6 +5360,7 @@ int status_change_end(struct block_list* bl, int type, int tid)
 			case SC_GATLINGFEVER:
 			case SC_BERSERK:
 			case SC_SUITON:
+			case SC_ONEHAND:
 				// Run status_calc_pc at end of function (Recalculate player's status)
 				calc_flag = 1;
 				break;
@@ -5706,6 +5712,7 @@ int status_change_end(struct block_list* bl, int type, int tid)
 			case SC_TWOHANDQUICKEN:
 			case SC_SPEARQUICKEN:
 			case SC_CONCENTRATION:
+			case SC_ONEHAND:
 				*opt3 &= ~1;
 				break;
 			case SC_OVERTHRUST:

@@ -1738,6 +1738,12 @@ void pc_calc_skilltree(struct map_session_data *sd) {
 		sd->status.skill[HT_POWER].lv = 1;
 		sd->status.skill[HT_POWER].flag = 1;
 	}
+	
+	if(sd->sc_data && sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_KNIGHT && pc_checkskill(sd,KN_TWOHANDQUICKEN) == 10 && pc_checkskill(sd,KN_ONEHAND) == 0) {
+		sd->status.skill[KN_ONEHAND].id = KN_ONEHAND;
+		sd->status.skill[KN_ONEHAND].lv = 1;
+		sd->status.skill[KN_ONEHAND].flag = 1;
+	}
 
 //	if (battle_config.etc_log)
 //		printf("calc skill_tree\n");
@@ -4626,6 +4632,10 @@ void pc_checkallowskill(struct map_session_data *sd)
 	if(sd->sc_data[SC_TWOHANDQUICKEN].timer != -1 && !(skill_get_weapontype(KN_TWOHANDQUICKEN)&(1<<sd->status.weapon)))
 		status_change_end(&sd->bl, SC_TWOHANDQUICKEN, -1);
 
+	// Player must have a One-Handed weapon equipped to get bonuses
+	if(sd->sc_data[SC_ONEHAND].timer != -1 && !(skill_get_weapontype(KN_ONEHAND)&(1<<sd->status.weapon)))
+		status_change_end(&sd->bl, SC_ONEHAND, -1);
+		
 	// Player must have a Sword-Type weapon equipped to get bonuses
 	if(sd->sc_data[SC_AURABLADE].timer != -1 && !(skill_get_weapontype(LK_AURABLADE)&(1<<sd->status.weapon)))
 		status_change_end(&sd->bl, SC_AURABLADE, -1);

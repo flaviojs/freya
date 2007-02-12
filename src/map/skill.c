@@ -4026,6 +4026,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 	case ASC_EDP:			// [Celest]
 //case CG_MOONLIT:
 	case WZ_SIGHTBLASTER:
+	case KN_ONEHAND:
 		status_change_start(bl, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
 		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 		break;

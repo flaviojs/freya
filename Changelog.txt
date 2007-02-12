@@ -11,10 +11,11 @@
 Date	Added
 
 02/12/2007
+	* Added: Spirit of Knight (SL_KNIGHT) and One-Hand Quicken skills [Latios]
 	* Fixed: Soul Linkers are immune to the TaeKwon's Flying Kick dispelling effects [Latios]
 	* Added: Beast Strafing (HT_POWER) [Latios]
 	* Added: White Potion created by an Alchemist Ranker have +50% effectiveness during Spirit of Rogue effect [Latios]
-		- Note: SL_HUNTER and SL_ROGUE is now finished
+		- Note: Spirit of Hunter (SL_HUNTER) and Spirit of Rogue (SL_ROGUE) is now finished
 	* Fixed: an exploit in Umbala's NPC [Latios]
 	* Fixed: Spell Breaker should be able to cancel Pressure [Latios]
 
