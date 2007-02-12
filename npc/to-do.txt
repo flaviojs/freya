@@ -1,16 +1,16 @@
 Script Folder To-Do List:
 
 eAthena Converts:
-- Novice Training Grounds: http://72.36.236.18:8080/svn/ea/trunk/npc/jobs/novice/novice.txt *
-- First Class Storyline Quests: http://72.36.236.18:8080/svn/ea/trunk/npc/quests/first_class/
-- God Weapon Seal Quests: http://72.36.236.18:8080/svn/ea/trunk/npc/quests/seals/
-- Quest Revolution Part 1: http://72.36.236.18:8080/svn/ea/trunk/npc/quests/quiz/
-- Marriage Script (Rewritten): http://72.36.236.18:8080/svn/ea/trunk/npc/other/marriage.txt
-- Kunlun Power NPC: http://72.36.236.18:8080/svn/ea/trunk/npc/other/powernpc.txt
-- Comodo Gambling: http://72.36.236.18:8080/svn/ea/trunk/npc/other/comodo_gambling.txt
-- Cool Event Corp Main System: http://72.36.236.18:8080/svn/ea/trunk/npc/other/dts_warper.txt
-- Updated Kunlun NPCs: http://72.36.236.18:8080/svn/ea/trunk/npc/cities/gonryun.txt
-- Thanatos Tower Quest (Bit operators??): http://72.36.236.18:8080/svn/ea/trunk/npc/quests/thana_quest.txt *
+- Novice Training Grounds: http://svn.eathena.ws/svn/ea/trunk/npc/jobs/novice/novice.txt *
+- First Class Storyline Quests: http://svn.eathena.ws/svn/ea/trunk/npc/quests/first_class/
+- God Weapon Seal Quests: http://svn.eathena.ws/svn/ea/trunk/npc/quests/seals/
+- Quest Revolution Part 1: http://svn.eathena.ws/svn/ea/trunk/npc/quests/quiz/
+- Marriage Script (Rewritten): http://svn.eathena.ws/svn/ea/trunk/npc/other/marriage.txt [Assigned - keVn]
+- Kunlun Power NPC: http://svn.eathena.ws/svn/ea/trunk/npc/other/powernpc.txt
+- Comodo Gambling: http://svn.eathena.ws/svn/ea/trunk/npc/other/comodo_gambling.txt
+- Cool Event Corp Main System: http://svn.eathena.ws/svn/ea/trunk/npc/other/dts_warper.txt
+- Updated Kunlun NPCs: http://svn.eathena.ws/svn/ea/trunk/npc/cities/gonryun.txt *
+- Thanatos Tower Quest: http://svn.eathena.ws/svn/ea/trunk/npc/quests/thana_quest.txt *
 
 Aegis Converts:
 - Official 2nd Class Quest Skill Quests: Zone/npcdata/quest/2nd_quest/ *
@@ -19,7 +19,7 @@ Aegis Converts:
 - The rest of the Aegis script files (some already done / fully missing have priority): Zone/npcdata/
 
 Other Scripts:
-- Hugel Town NPCs (jAthena): http://svn.99nets.com/src/jasrc/script/npc/town/npc_town_hugel.txt [Assigned - Harp] *
+- Hugel Town NPCs (Chinese): http://svn.99nets.com/src/jasrc/script/npc/town/npc_town_hugel.txt *
 - Veins Town NPCs
 - Rachel/Veins Airship Expansion *
 - Kiel Hyre Quest
@@ -28,8 +28,8 @@ Other Scripts:
 - All other Hugel/Rachel/Veins Quests
 
 Bugged:
-- Re-convert: quests_ein.txt from: http://72.36.236.18:8080/svn/ea/trunk/npc/quests/quests_ein.txt *
-- Re-convert: quests_umbala.txt from: http://72.36.236.18:8080/svn/ea/trunk/npc/quests/quests_umbala.txt *
+- Re-convert: quests_ein.txt from: http://svn.eathena.ws/svn/ea/trunk/npc/quests/quests_ein.txt *
+- Re-convert: quests_umbala.txt from: http://svn.eathena.ws/svn/ea/trunk/npc/quests/quests_umbala.txt *
 - Assassin Quest Glitch: http://freya.dns.st/mantis/view.php?id=318
 - Unfinished: Juperos Quest [Assigned - Tsuyuki]
 
