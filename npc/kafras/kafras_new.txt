@@ -181,7 +181,6 @@ function	script	F_KafSwzTele	{
 	mes "use the Airship Service";
 	mes "instead, Thank you for your";
 	mes "understanding and cooperation.";
-	close2;
-	cutin "", 255;
+	callfunc "F_KafEnd",0,1;
 	end;
 }

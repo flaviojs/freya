@@ -38,6 +38,7 @@
 //= 2.9 Added special reserve points check [Tsuyuki]
 //= 3.0 Fixed Kafra Save System [Tsuyuki]
 //= 3.1 Function added to null out some variables used, and removed Warp Zeny safeguard that didn't let Kafra detach [GreenGoblin]
+//= 3.1b Fixed a few functions not going through new end function, also useless args going into F_KafTele and F_KafPass removed [GreenGoblin]
 //============================================================
 
 
@@ -116,13 +117,13 @@ L_Cont01:
 		callfunc "F_KafStor",3;
 
 	M_Teleport:
-		callfunc "F_KafTele",getarg(0);
+		callfunc "F_KafTele";
 
 	M_Cart:
 		callfunc "F_KafCart",getarg(0);
 
 	M_Pass:
-		callfunc "F_KafPass",getarg(0);
+		callfunc "F_KafPass";
 		goto M_Menu;
 
 	M_Info:
@@ -433,7 +434,7 @@ function	script	F_KafInfo	{
 
 // End Function =====================================================
 //  arg(0): used to determine what message to display.
-//  arg(1): used to determine if save message is diplayed.
+//  arg(1): used to determine which extra actions need to be made
 //===================================================================
 
 function	script	F_KafEnd	{
@@ -441,15 +442,10 @@ function	script	F_KafEnd	{
 	mes "[Kafra Employee]";
 	if (getarg(0) != 1) mes "We, here at Kafra Corporation, are always endeavoring to provide you with the best services. We hope that we meet your adventuring needs and standards of excellence.";
 	if (getarg(0) == 1) mes "We, Kafra Corporation.... Will be with you.... whenever.... wherever... therefore.... please don't forget us.....";
-	close2;
-	cutin "", 255;
-	end;
 
 F_KafSaveEnd:
 	close2;
 	cutin "", 255;
-	if (getarg(1) == 2) openstorage; // Kafra Storage Part
-	if (getarg(1) == 3) return; // Returns back to function calling place, and passes into the M_Save label
 	setarray @wrpP[0], 0, 0, 0, 0, 0, 0, 0;
 	setarray @wrpD$[0], "", "", "", "", "", "", "";
 	setarray @wrpC$[0], "", "", "", "", "", "", "";
@@ -457,5 +453,7 @@ F_KafSaveEnd:
 	setarray @viewpY[0], 0, 0, 0, 0;
 	set @fee,0;
 	set @kafPass,0;
+	if (getarg(1) == 2) openstorage; // Kafra Storage Part
+	if (getarg(1) == 3) return; // Returns back to function calling place, and passes into the M_Save label
 	end;
 }

@@ -19,6 +19,8 @@ Date	Added
 		- Note: Spirit of Hunter (SL_HUNTER) and Spirit of Rogue (SL_ROGUE) is now finished
 	* Fixed: an exploit in Umbala's NPC [Latios]
 	* Fixed: Spell Breaker should be able to cancel Pressure [Latios]
+	* Fixed: Some parts of Kafra not going through previously added end function [GreenGoblin]
+		-Also removed a couple arguments going into functions that don't need them
 
 02/11/2007
 	* Updated: New item names in the item database [Tsuyuki]
