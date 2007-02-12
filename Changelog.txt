@@ -18,6 +18,7 @@ Date	Added
 	* Fixed: Ground Drift skill not consuming spheres [Harbin]
 	* Fixed: Guns using spheres and grenade launchers using bullets [Harbin]
 	* Fixed: /db/random databases not reading all their line entries [Tsuyuki]
+	* Added: Function in Kafra to clear out variables at the end of the script [GreenGoblin]
 
 02/10/2007
 	* Fixed: Minor exploit with the custom dye NPC regarding Illusionary Shadow [Tsuyuki]

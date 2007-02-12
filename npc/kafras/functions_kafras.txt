@@ -37,6 +37,7 @@
 //= 2.8 Fixed several bugs as well as fixed the Kafra pass system entirely [Tsuyuki]
 //= 2.9 Added special reserve points check [Tsuyuki]
 //= 3.0 Fixed Kafra Save System [Tsuyuki]
+//= 3.1 Function added to null out some variables used, and removed Warp Zeny safeguard that didn't let Kafra detach [GreenGoblin]
 //============================================================
 
 
@@ -58,10 +59,10 @@ function	script	F_Kafra	{
 	mes "special reserved points";
 	mes "at the headquarters of Kafra Corporation";
 	mes "in Al De Baran before you attempt to use any of Kafra services in the future.";
-	close;
+	callfunc "F_KafEnd",0,1;
+	end;
 
 L_Cont01:
-	set @kafPass,0;
 	mes "[Kafra Employee]";
 	if (getarg(0)==0) mes "Welcome to the Kafra Corporation. The Kafra services are always on your side. How may I assist you?";
 	if (getarg(0)==1) mes "Welcome... Kafra Services.... Will be with you even if you die.....";
@@ -93,9 +94,9 @@ L_Cont01:
 		mes "Your Respawn Point";
 		mes "has been saved. Thank you";
 		mes "for using the Kafra Service.";
-		close2;
-		cutin "", 255;
-		return; // Returns back to function calling place, and passes into the M_Save label
+		callfunc "F_KafEnd",0,3;
+		return;
+		end;
 
 		// To-Do: Official iRO Dialogue for Saving:
 		// mes "[Kafra Employee]";
@@ -152,37 +153,31 @@ function	script	F_KafStor	{
 	mes "your Storage for you.";
 	mes "Thank you for using";
 	mes "the Kafra Service.";
-	close2;
-	openstorage;
-	cutin "", 255;
+	callfunc "F_KafEnd",0,2;
 	end;
 
 	sL_JbLvl:
 		mes "[Kafra Employee]";
 		mes "I am sorry but you have to be at least Novice job level 6 if you want to use the storage.";
-		close2;
-		cutin "", 255;
+		callfunc "F_KafEnd",0,1;
 		end;
 
 	sL_Zeny:
 		mes "[Kafra Employee]";
 		mes "Dear you don't have enough money. The Storage fee is "+@fee+" Zeny.";
-		close2;
-		cutin "", 255;
+		callfunc "F_KafEnd",0,1;
 		end;
 
 L_Guild:
 	if (guildopenstorage(0) == 1) goto L_InUse;
-	close2;
-	cutin "", 255;
+	callfunc "F_KafEnd",0,1;
 	end;
 
 	L_InUse:
 		mes "[Kafra Employee]";
 		mes "I'm sorry but another guild member is using the guild storage";
 		mes "right now.  Please wait until that person is finished.";
-		close2;
-		cutin "", 255;
+		callfunc "F_KafEnd",0,1;
 		end;
 }
 
@@ -240,22 +235,26 @@ function	script	F_KafTele	{
 		if (@wrpD$[@num] == "Comodo Pharos Lighthouse") warp "cmd_fild07.gat", 127, 134;
 		if (@wrpD$[@num] == "Orc Dungeon") warp "gef_fild10.gat", 52, 326;
 		if (@wrpD$[@num] == "Umbala") warp "umbala.gat", 130, 130;
-		close2;		// This part safegaurds against errors/typos
-		set Zeny, Zeny + @wrpP[@num];
+		setarray @wrpP[0], 0, 0, 0, 0, 0, 0, 0;
+		setarray @wrpD$[0], "", "", "", "", "", "", "";
+		setarray @wrpC$[0], "", "", "", "", "", "", "";
+		setarray @viewpX[0], 0, 0, 0, 0;
+		setarray @viewpY[0], 0, 0, 0, 0;
+		set @num,0;
+		set @kafPass,0;
 		cutin "", 255;
-		end;
+		close;
 
 		sL_CantTele:
 			mes "[Kafra Employee]";
 			mes "Dear you don't have enough money. Please check your funds again.";
-			close2;
-			cutin "", 255;
+			callfunc "F_KafEnd",0,1;
 			end;
+			
 
 		L_End:
-			close2;
-			cutin "", 255;
-			end;
+		callfunc "F_KafEnd",0,1;
+		end;
 }
 
 
@@ -281,8 +280,7 @@ function	script	F_KafCart	{
 		setcart;
 		mes "[Kafra Employee]";
 		mes "Here is your cart.";
-		close2;
-		cutin "", 255;
+		callfunc "F_KafEnd",0,1;
 		end;
 
 	sL_CantRent:
@@ -292,35 +290,30 @@ function	script	F_KafCart	{
 		mes "is only available to Merchants,";
 		mes "Blacksmiths, Alchemists, White";
 		mes "Smiths and Creators.";
-		close2;
-		cutin "", 255;
+		callfunc "F_KafEnd",0,1;
 		end;
 
 	sL_NeedSkill:
 		mes "[Kafra Employee]";
 		mes "I'm sorry but you need the skill ^0000FF'Pushcart'^000000 to rent a cart.";
-		close2;
-		cutin "", 255;
+		callfunc "F_KafEnd",0,1;
 		end;
 
 	sL_GotCart:
 		mes "[Kafra Employee]";
 		mes "Excuse me... but you already have a cart....";
 		emotion 4;
-		close2;
-		cutin "", 255;
+		callfunc "F_KafEnd",0,1;
 		end;
 
 	sL_CartFee:
 		mes "[Kafra Employee]";
 		mes "Dear, you don't have enough Money. You need 800 Zeny.";
-		close2;
-		cutin "", 255;
+		callfunc "F_KafEnd",0,1;
 		end;
 
 	M_End:
-		close2;
-		cutin "", 255;
+		callfunc "F_KafEnd",0,1;
 		end;
 }
 
@@ -358,8 +351,7 @@ function	script	F_KafPass	{
 		sL_NeedPass:
 			mes "[Kafra Employee]";
 			mes "I'm sorry but you don't have a kafra pass to use....";
-			close2;
-			cutin "", 255;
+			callfunc "F_KafEnd",0,1;
 			end;
 
 		sL_PassExpire:
@@ -393,13 +385,11 @@ function	script	F_KafPass	{
 		mes "[Kafra Employee]";
 		mes "Believe me when I say that the Kafra Pass is a great bargain!!";
 		mes "With the Kafra Pass, we hope to give players some incentive to use our great services.";
-		close2;
-		cutin "", 255;
+		callfunc "F_KafEnd",0,1;
 		end;
 
 	sM_End:
-		close2;
-		cutin "", 255;
+		callfunc "F_KafEnd",0,1;
 		end;
 }
 
@@ -424,8 +414,7 @@ function	script	F_KafInfo	{
 		mes "in Al De Baran. Please use our";
 		mes "convenient services to see the";
 		mes "benefits of our rewards program.";
-		close2;
-		cutin "", 255;
+		callfunc "F_KafEnd",0,1;
 		end;
 
 	sM_KafLoc:
@@ -433,13 +422,11 @@ function	script	F_KafInfo	{
 		viewpoint 1,@viewpX[1],@viewpY[1],2,0xFF00FF;
 		viewpoint 1,@viewpX[2],@viewpY[2],3,0xFF00FF;
 		viewpoint 1,@viewpX[3],@viewpY[3],4,0xFF00FF;
-		close2;
-		cutin "", 255;
+		callfunc "F_KafEnd",0,1;
 		end;
 
 	sM_End:
-		close2;
-		cutin "", 255;
+		callfunc "F_KafEnd",0,1;
 		end;
 }
 
@@ -450,7 +437,7 @@ function	script	F_KafInfo	{
 //===================================================================
 
 function	script	F_KafEnd	{
-	if (getarg(1) == 1) goto F_KafSaveEnd; // Player Saved Ending Function
+	if (getarg(1) > 0) goto F_KafSaveEnd;
 	mes "[Kafra Employee]";
 	if (getarg(0) != 1) mes "We, here at Kafra Corporation, are always endeavoring to provide you with the best services. We hope that we meet your adventuring needs and standards of excellence.";
 	if (getarg(0) == 1) mes "We, Kafra Corporation.... Will be with you.... whenever.... wherever... therefore.... please don't forget us.....";
@@ -461,5 +448,14 @@ function	script	F_KafEnd	{
 F_KafSaveEnd:
 	close2;
 	cutin "", 255;
+	if (getarg(1) == 2) openstorage; // Kafra Storage Part
+	if (getarg(1) == 3) return; // Returns back to function calling place, and passes into the M_Save label
+	setarray @wrpP[0], 0, 0, 0, 0, 0, 0, 0;
+	setarray @wrpD$[0], "", "", "", "", "", "", "";
+	setarray @wrpC$[0], "", "", "", "", "", "", "";
+	setarray @viewpX[0], 0, 0, 0, 0;
+	setarray @viewpY[0], 0, 0, 0, 0;
+	set @fee,0;
+	set @kafPass,0;
 	end;
 }
