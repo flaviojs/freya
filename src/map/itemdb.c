@@ -26,6 +26,7 @@
 
 static struct dbt* item_db;
 
+
 static struct random_item_data blue_box[MAX_RANDITEM],violet_box[MAX_RANDITEM],card_album[MAX_RANDITEM],
 				gift_box[MAX_RANDITEM],scroll[MAX_RANDITEM], finding_ore[MAX_RANDITEM],arrow_quiver[MAX_RANDITEM],
 				diamond_weapon[MAX_RANDITEM],diamond_armor[MAX_RANDITEM],diamond_hood[MAX_RANDITEM],diamond_helm[MAX_RANDITEM],
@@ -559,26 +560,26 @@ static int itemdb_read_randomitem(void)
 		struct random_item_data *pdata;
 		int *pcount,*pdefault;
 	} data[] = {
-		{"db/item_bluebox.txt",		blue_box,	&blue_box_count,	&blue_box_default	},
-		{"db/item_violetbox.txt",	violet_box,	&violet_box_count,	&violet_box_default	},
-		{"db/item_cardalbum.txt",	card_album,	&card_album_count,	&card_album_default	},
-		{"db/item_giftbox.txt",		gift_box,	&gift_box_count,	&gift_box_default	},
-		{"db/item_scroll.txt",		scroll,		&scroll_count,		&scroll_default		},
-		{"db/item_findingore.txt",	finding_ore,&finding_ore_count,	&finding_ore_default},
-		{"db/item_arrowquiver.txt",	arrow_quiver,&arrow_quiver_count,	&arrow_quiver_default},
-		{"db/item_diamond_weapon.txt",diamond_weapon	,&diamond_weapon_count,	&diamond_weapon_default},
-		{"db/item_diamond_armor.txt",diamond_armor	,&diamond_armor_count,	&diamond_armor_default},
-		{"db/item_diamond_hood.txt",	diamond_hood,&diamond_hood_count,	&diamond_hood_default},
-		{"db/item_diamond_helm.txt",diamond_helm	,&diamond_helm_count,	&diamond_helm_default},
-		{"db/item_diamond_shoes.txt",diamond_shoes,&diamond_shoes_count,	&diamond_shoes_default},
-		{"db/item_diamond_shield.txt",diamond_shield	,&diamond_shield_count,	&diamond_shield_default},
-		{"db/item_jewel_box.txt",jewel_box	,&jewel_box_count,	&jewel_box_default},
-		{"db/item_meiji_almond.txt",meiji_almond	,&meiji_almond_count,	&meiji_almond_default},
-		{"db/item_petbox.txt",pet_box	,&pet_box_count,	&pet_box_default},
-		{"db/item_mask.txt",mask	,&mask_count,	&mask_default},
-		{"db/item_fabox.txt",fabox	,&fabox_count,	&fabox_default},
-		{"db/item_food.txt",food	,&food_count,	&food_default},
-		{"db/item_rjc2006.txt",rjc2006	,&rjc2006_count,	&rjc2006_default},
+		{"db/random/item_bluebox.txt",		blue_box,	&blue_box_count,	&blue_box_default	},
+		{"db/random/item_violetbox.txt",	violet_box,	&violet_box_count,	&violet_box_default	},
+		{"db/random/item_cardalbum.txt",	card_album,	&card_album_count,	&card_album_default	},
+		{"db/random/item_giftbox.txt",		gift_box,	&gift_box_count,	&gift_box_default	},
+		{"db/random/item_scroll.txt",		scroll,		&scroll_count,		&scroll_default		},
+		{"db/random/item_findingore.txt",	finding_ore,&finding_ore_count,	&finding_ore_default},
+		{"db/random/item_arrowquiver.txt",	arrow_quiver,&arrow_quiver_count,	&arrow_quiver_default},
+		{"db/random/item_diamond_weapon.txt",diamond_weapon	,&diamond_weapon_count,	&diamond_weapon_default},
+		{"db/random/item_diamond_armor.txt",diamond_armor	,&diamond_armor_count,	&diamond_armor_default},
+		{"db/random/item_diamond_hood.txt",	diamond_hood,&diamond_hood_count,	&diamond_hood_default},
+		{"db/random/item_diamond_helm.txt",diamond_helm	,&diamond_helm_count,	&diamond_helm_default},
+		{"db/random/item_diamond_shoes.txt",diamond_shoes,&diamond_shoes_count,	&diamond_shoes_default},
+		{"db/random/item_diamond_shield.txt",diamond_shield	,&diamond_shield_count,	&diamond_shield_default},
+		{"db/random/item_jewel_box.txt",jewel_box	,&jewel_box_count,	&jewel_box_default},
+		{"db/random/item_meiji_almond.txt",meiji_almond	,&meiji_almond_count,	&meiji_almond_default},
+		{"db/random/item_petbox.txt",pet_box	,&pet_box_count,	&pet_box_default},
+		{"db/random/item_mask.txt",mask	,&mask_count,	&mask_default},
+		{"db/random/item_fabox.txt",fabox	,&fabox_count,	&fabox_default},
+		{"db/random/item_food.txt",food	,&food_count,	&food_default},
+		{"db/random/item_rjc2006.txt",rjc2006	,&rjc2006_count,	&rjc2006_default},
 	};
 
 	// ì«Ç›çûÇﬁìxÅAèâä˙âª

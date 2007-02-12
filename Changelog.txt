@@ -11,6 +11,7 @@
 Date	Added
 
 02/11/07
+	* Moved: Random item databases to /db/random/, corrected in source as well [Tsuyuki]
 	* Updated: Dead Branch/Bloody Branch/Poring Box random spawn lists [Tsuyuki]
 
 01/16/07
