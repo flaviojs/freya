@@ -670,7 +670,7 @@ INSERT INTO `item_db` VALUES (1359, 'Buster__', 'Buster', 4, 34000, 0, 2200, 155
 INSERT INTO `item_db` VALUES (1360, 'Two_handed_Axe', 'Two-handed Axe', 4, 55000, 0, 2500, 185, 0, 1, 1, 279714, 2, 34, 3, 30, 7, NULL, NULL);
 INSERT INTO `item_db` VALUES (1361, 'Two_handed_Axe_', 'Two-handed Axe', 4, 55000, 0, 2500, 185, 0, 1, 2, 279714, 2, 34, 3, 30, 7, NULL, NULL);
 INSERT INTO `item_db` VALUES (1362, 'Two_handed_Axe__', 'Two-handed Axe', 4, 55000, 0, 2500, 185, 0, 1, 0, 279714, 2, 34, 3, 30, 7, NULL, NULL);
-INSERT INTO `item_db` VALUES (1363, 'Blood_Axe', 'Bloody Axe', 4, 20, 0, 4000, 170, 0, 1, 0, 279714, 2, 34, 4, 44, 7, NULL, 'bonus bStr,10; bonus bSpeedRate,25;');
+INSERT INTO `item_db` VALUES (1363, 'Bloody_Axe', 'Bloody Axe', 4, 20, 0, 4000, 170, 0, 1, 0, 279714, 2, 34, 4, 44, 7, NULL, 'bonus bStr,10; bonus bSpeedRate,25;');
 INSERT INTO `item_db` VALUES (1364, 'Great_Axe', 'Great Axe', 4, 20, 0, 1800, 187, 0, 1, 0, 279714, 2, 34, 4, 44, 7, NULL, 'bonus2 bAddEff,2,1500;');
 INSERT INTO `item_db` VALUES (1365, 'Sabbath', 'Sabbath', 4, 20, 0, 2300, 120, 0, 1, 0, 279714, 2, 34, 4, 44, 7, NULL, 'bonus2 bWeaponComaRace,6,50; bonus bAtkEle,7; bonus2 bCriticalAddRace,1,50;');
 INSERT INTO `item_db` VALUES (1366, 'Light_Epsilon', 'Light Epsilon', 4, 20, 0, 2300, 180, 0, 1, 0, 279714, 2, 34, 4, 44, 7, NULL, 'bonus bAtkEle,6; skill 28,3; bonus2 bAddRace,6,3;');
