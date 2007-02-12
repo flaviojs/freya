@@ -1357,6 +1357,13 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 				skillratio += -50 + 10 * skill_lv;
 				flag.hit = 1;
 				break;
+			case HT_POWER:
+				flag.arrow = 1;
+				wd.flag = (wd.flag&~BF_RANGEMASK)|BF_LONG;
+				skillratio += 160 * status_get_str(src) / 10;		// need to find out the correct formula
+				if (sd && sd->arrow_ele > 0)
+					s_ele = s_ele_ = sd->arrow_ele;
+				break;
 
 			// Assassin
 			case HT_PHANTASMIC:
@@ -2805,7 +2812,7 @@ struct Damage battle_calc_magic_attack(
 			// Spirit of the Priest increases Holy Light damage x5
 			if (sd && sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_PRIEST) {
 				MATK_FIX(625, 100);
-			}	else {
+			} else {
 				MATK_FIX(125, 100);
 			}
 			break;

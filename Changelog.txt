@@ -11,6 +11,9 @@
 Date	Added
 
 02/12/2007
+	* Added: Beast Strafing (HT_POWER) [Latios]
+	* Added: White Potion created by an Alchemist Ranker have +50% effectiveness during Spirit of Rogue effect [Latios]
+		- Note: SL_HUNTER and SL_ROGUE is now finished
 	* Fixed: an exploit in Umbala's NPC [Latios]
 	* Fixed: Spell Breaker should be able to cancel Pressure [Latios]
 

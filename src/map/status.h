@@ -263,6 +263,8 @@ enum {
 	SC_GDSKILLDELAY,
 	SC_INCASPDRATE,
 
+	SC_DOUBLE,
+
 	SC_MAX, // 288
 };
 extern int SkillStatusChangeTable[MAX_SKILL];

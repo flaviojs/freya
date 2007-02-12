@@ -4988,6 +4988,8 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			tick = 1000;
 			scflag.calc = 1;
 			break;
+		case SC_DOUBLE:
+			break;
 		default:
 			break;
 	}

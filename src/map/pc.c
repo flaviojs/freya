@@ -1733,6 +1733,12 @@ void pc_calc_skilltree(struct map_session_data *sd) {
 		}
 	}
 
+	if(sd->sc_data && sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_HUNTER && pc_checkskill(sd,AC_DOUBLE) == 10 && pc_checkskill(sd,HT_POWER) == 0) {
+		sd->status.skill[HT_POWER].id = HT_POWER;
+		sd->status.skill[HT_POWER].lv = 1;
+		sd->status.skill[HT_POWER].flag = 1;
+	}
+
 //	if (battle_config.etc_log)
 //		printf("calc skill_tree\n");
 
@@ -6590,8 +6596,11 @@ void pc_itemheal(struct map_session_data *sd, int hp, int sp)
 		}
 
 		bonus = 100 + (sd->paramc[2] << 1) + pc_checkskill(sd, SM_RECOVERY)*10	+ pc_checkskill(sd, AM_LEARNINGPOTION)*5;
-		if (use_nameditem && ranking_id2rank(use_nameditem, RK_ALCHEMIST))
+		if (use_nameditem && ranking_id2rank(use_nameditem, RK_ALCHEMIST)) {
 			bonus += 50; // A potion produced by an Alchemist in the Fame Top 10 gets +50% effect
+			if(use_itemid == 504 && sd->sc_data && sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_ROGUE)
+				bonus += 50;
+		}
 
 		if (use_itemtype > 0) // int itemhealrate[7];
 			bonus = bonus * (100 + sd->itemhealrate[use_itemtype - 1]) / 100;
@@ -6604,7 +6613,7 @@ void pc_itemheal(struct map_session_data *sd, int hp, int sp)
 		      + pc_checkskill(sd, AM_LEARNINGPOTION) * 5;
 
 		if (use_nameditem && ranking_id2rank(use_nameditem, RK_ALCHEMIST))
-			bonus += 50; // A potion produced by an Alchemist in the Fame Top 10 gets +50% effect
+			bonus += 50; // A potion produced by an Alchemist in the Fame Top 10 gets +50% effect*
 
 		if (bonus != 100)
 			sp = sp * bonus / 100;

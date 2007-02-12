@@ -2615,7 +2615,6 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		if (sd && sd->inventory_data[sd->equip_index[9]] && sd->inventory_data[sd->equip_index[9]]->nameid == 1364) // Mammonite with Great Axe
 			skill_blown(src,bl,5);
 	case SM_BASH:
-	case AC_DOUBLE:
 	case AS_SONICBLOW:
 	case KN_PIERCE:
 	case KN_SPEARBOOMERANG:
@@ -2685,6 +2684,17 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case NJ_SYURIKEN:
 	case NJ_KUNAI:
 		skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, flag);
+		break;
+	case AC_DOUBLE:
+		if(sc_data && sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_HUNTER)
+			status_change_start(src, SC_DOUBLE, skilllv, 0, 0, 0, 1000, 0);
+		skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, flag);
+		break;
+	case HT_POWER:
+		if(sc_data && sc_data[SC_DOUBLE].timer != -1 && sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_HUNTER) {
+			status_change_end(src, SC_DOUBLE, -1);
+			skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, flag);
+		}
 		break;
 
 	case GS_DUST:
