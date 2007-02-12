@@ -1319,13 +1319,16 @@ Date	Added
 	* Added: extra system. What is it? [Yor]
 	  - it a system managed by map-server to add/remove zenys/items to/from characters.
 	  - map-server use save/map_extra.txt file and manage it alone.
-	  - to add a line in this file, use an other file (default: ./map_extra_add.txt; you can choose location and name of this file). map-server will check it every minute.
+	  - to add a line in this file, use an other file.
+	  - (default: ./map_extra_add.txt; you can choose location and name of this file).
+	  - map-server will check it every minute.
 	  - because map-server READ and DESTROY this file, be sure that map-server has all permissions.
 	  - When a character is online, map-serverwill do supposed actions (and check all: weigth, max values, etc...)
 	  - To have more informations, read save/map_extra.txt file after a start of the map-server.
 	  - you can disable this function by a option in map_athena.conf.
 	  - The name? Because it's extra bonus/malus.
-	  - Example of usages: on web site (bonus after an action), to remove easily some items from a character (sprite error?), exchange of items, etc...
+	  - Example of usages: on web site (bonus after an action),
+	  - to remove easily some items from a character (sprite error?), exchange of items, etc...
 	* Updated: /npc/custom/other/kafra_bank.txt - with new cities [Sensei]
 	* Added: nozenypenalty.txt mapflag file [Yor]
 	* Fixed: Some monster teleport rates/delays [Tsuyuki] (from subdev svn 144)
@@ -1336,7 +1339,7 @@ Date	Added
 09/12/2006
 	* Updated: packet_db.txt [Yor]
 	* Fixed: Some things with OBB/DB related items [Tsuyuki] (from subdev svn 137)
-	* Fixed: Fixed all the broken new cards and fully implemented them, test and report please [Tsuyuki] (from subdev svn 136)
+	* Fixed: Fixed all the broken new cards and fully implemented them, test and report please [Tsuyuki] (svn 136)
 	 - Margaretha Sorin Card (4364) could not be fully implemented, check buglist
 	* Updated: Client files to the latest SVN versions along with appropriate fixes [Tsuyuki] (from subdev svn 136)
 	* Updated: The Dead Branch list with new mobs [Tsuyuki] (from subdev svn 136)
@@ -1444,7 +1447,7 @@ Date	Added
 	 - source: http://ragnainfo.net/forums/viewtopic.php?t=104874
 	* Fixed: shockwave trap's sp damage should work in gvg maps too [Harbin]
 	* Fixed: vultures eye should effect the attack range of blitz beat [Harbin]
-	 - source: http://www.rocards.de/Hunter.rc#blitz & http://opensvn.csie.org/EnglishTranslation/data/skilldesctable.txt
+	 - Source: http://www.rocards.de/Hunter.rc#blitz & http://opensvn.csie.org/EnglishTranslation/data/skilldesctable.txt
 	* Fixed: some marionette control issues [Harbin]
 	 - base level difference between caster and target should be equal or less than 5
 	 - target can't be gypsy or clown
@@ -1478,9 +1481,11 @@ Date	Added
 	* Fixed: information message about atcommand_send_usage_type (char.c) [Yor]
 
 09/04/2006
-	* Added: an option to choose how must be displayed usage of GM commands (atcommand_send_usage_type in battle_athena.conf) [Yor]
+	* Added: an option to choose how must be displayed usage of GM commands [Yor]
+	 - atcommand_send_usage_type in battle_athena.conf
 	* Fixed: possible overflow when reading SQL configuration in Char-server [Yor]
-	* Added: Security based on IP for all map-servers connections with the char-server -> not more possible to connect an unknown map-server (hacker) [Yor]
+	* Added: Security based on IP for all map-servers connections with the char-server [Yor]
+	 - Not more possible to connect an unknown map-server (hacker)
 
 09/03/2006
 	* Fixed: some skills of some monsters in database [Yor]
@@ -1489,8 +1494,10 @@ Date	Added
 	* Fixed: help GM command: now symbol of GM command is correctly displayed [Yor]
 	* Fixed: don't use $ as symbol for GM command (guild chat) [Yor]
 	* Fixed: compilation warning with strcmpi (atcommand.c) [Yor]
-	* Added: an option to set idle delay before a party's member losts experience when idle option is set (battle_athena.conf) [Yor]
-	* Fixed: send usage of a GM command with used command (including symbol of GM command, or if it's a synonym GM command) [Yor]
+	* Added: an option to set idle delay before a party's member losts experience when idle option is set [Yor]
+	 - battle_athena.conf
+	* Fixed: send usage of a GM command with used command [Yor]
+	 - Including symbol of GM command, or if it's a synonym GM command
 	* Fixed: on error of a GM command, use used GM command [Yor]
 
 09/02/2006
@@ -1516,7 +1523,8 @@ Date	Added
 	* Fixed: @kamic atcommand on multi map-servers [Yor]
 
 08/31/2006
-	* Fixed: WS_CARTTERMINATION will no longer work with SC_MELTDOWN status, neither carry status aliments except from the skill itself [Proximus]
+	* Fixed: WS_CARTTERMINATION will no longer work with SC_MELTDOWN status [Proximus]
+	 - Either carry status aliments except from the skill itself
 	* Added: @kamic atcommand: kami with specified color (based on [LuzZza]'s and [akrus]'s code, based on jAthena) [Yor]
 	* Added: an option to disable @main GM command when it's WoE and player is member of a guild [Yor]
 	* Added: an option to disable @main GM command when it's WoE and player is member of a guild ON Gvg Maps [Yor]
@@ -1526,19 +1534,21 @@ Date	Added
 
 08/30/2006
 	* Added: @setgm[0-10] to manage easily player gm levels. [Yor]
-	         example: any gm team member can have an access to a command to change player level (0: without main channel, 1: with main channel with default configuration, etc.)
+	 - example: any gm team member can have an access to a command to change player level
+	 - (0: without main channel, 1: with main channel with default configuration, etc.)
 	* Fixed: 'Immaterial Sword' item bonus. Added unbreakable bonus. As per Aegis special.sc file [Proximus]
 		- Updated item_db_map.sql
 	* Added: Default gm level 20 for @password to atcommand_athena.conf [Proximus]
 		- Documented it in readme/gmcmds.html
 	* Fixed: teleporting to another map will no longer cancel an on-going delay [Proximus]
-	* Fixed: party_invite function, its no longer possible to invite 2 characters from the same account into the same party. As per Aegis [Proximus]
-		- "Character from the same account already joined" error message (packet) will be sent instead.
+	* Fixed: party_invite function [Proximus]
+	 - Its no longer possible to invite 2 characters from the same account into the same party. As per Aegis
+	 - "Character from the same account already joined" error message (packet) will be sent instead.
 	* Fixed: Rewritten CG_MOONLIT code implementation to fit Aegis mechanic [Proximus]
-		- Switched it's implementation to behave as a ground skill.
-		- Will no longer works on castle maps, as per Aegis (hardcoded for now, skillnotok function).
-		- Fixed the "pink orb" sprite effect being visible only when casted in front of the player.
-		- It can not longer be casted near a wall. A check is performed in a 9*9 area around the caster.
+	 - Switched it's implementation to behave as a ground skill.
+	 - Will no longer works on castle maps, as per Aegis (hardcoded for now, skillnotok function).
+	 - Fixed the "pink orb" sprite effect being visible only when casted in front of the player.
+	 - It can not longer be casted near a wall. A check is performed in a 9*9 area around the caster.
 
 08/29/2006
 	* Fixed: map name deletion [Yor]
@@ -1554,8 +1564,8 @@ Date	Added
 	* Fixed: fclose() in src/char_sql/char.c:244 trying to close NULL
 		pointer.
 	* Fixed: Packet_db.txt: [Yor]
-	         - re-add function definition previously removed (2006-04-04aSakexe: 0x0116, 0x0113) -- thanks to not do a simple copy of other emulator.
-	         - sort new packet by packet number
+	 - re-add function definition previously removed (2006-04-04aSakexe: 0x0116, 0x0113)
+	 - sort new packet by packet number
 	* Fixed: Map-server can now read customed GRF [Yor]
 	* Improved: Reduce number of memmove (a very slow function) when socket is parsed -> less CPU usage (-5%)! [Yor]
 	* Added: Hellion Revenant quest MvP's correct skills [Tsuyuki]
@@ -1651,11 +1661,14 @@ Date	Added
 08/27/2006
 	* Added: 'neutral' option in all @spawn GM commands to force non-agressiv monster [Yor]
 	          note: followers stay agressiv if they exist.
-	* Improved: GM level transmission: cancel temporarily GM level when player comes back from map-server to char-server [Yor]
-	* Added: special option (atcommand_max_player_gm_level) to know when a player is a 'normal' player or GM for some actions with GM commands: [Yor]
-	         for @whogm, @gm and answer with a wrong GM command.
-	         note: created because 'normal' players with level upper than 0 will have 'unknown command' instead of '(their sentence)' when they type a wrong GM command.
-	         read 'atcommand_max_player_gm_level' in battle_athena.conf for more informations.
+	* Improved: GM level transmission [Yor]
+	 - Cancel temporarily GM level when player comes back from map-server to char-server
+	* Added: special option to know when a player is a 'normal' player or GM for some actions with GM commands: [Yor]
+	 - atcommand_max_player_gm_level
+	 - for @whogm, @gm and answer with a wrong GM command.
+	 - note: created because 'normal' players with level upper than 0,
+	 - will have 'unknown command' instead of '(their sentence)' when they type a wrong GM command.
+	 - read 'atcommand_max_player_gm_level' in battle_athena.conf for more informations.
 	* Fixed: end lines in some created files [Yor]
 
 08/26/2006
