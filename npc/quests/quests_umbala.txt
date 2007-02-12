@@ -3,7 +3,7 @@
 //===== By: ================================================== 
 //= sabernet09 & eAthena Team
 //===== Current Version: ===================================== 
-//= 1.8
+//= 1.9
 //===== Compatible With: ===================================== 
 //= Freya
 //===== Description: ========================================= 
@@ -33,6 +33,7 @@
 //= 1.7 Moved Umbala Event, Create Essence/Dismantle Stone, and Skeletal Gate from npc/cities/umbala.txt [Evera]
 //= TODO: should I add a jRO Werewolf Quest? 8)
 //= 1.8 Converted to Freya format.. also commented two While(1)'s, needs to be checked [Tsuyuki]
+//= 1.9 Fixed an exploit [Latios]
 //============================================================ 
 
 
@@ -1001,7 +1002,7 @@ UtanSwitchCont1:
 		mes "If you don't want to create essence";
 		mes "after all, choose 0.";
 
-//		while(1) {
+L_UtanCreEss_asknum:
 			next;
 			input @num;
 			if (@num > 0) goto UtanOption2;
@@ -1011,18 +1012,15 @@ UtanSwitchCont1:
 				mes "by again.";
 				close;
 
-		UtanOption2:
-			if (@num>9) goto UtanOption3;
-			goto UtanSwitchHatred1;
+UtanOption2:
+			if (@num<=9) goto UtanSwitchHatred1;
 
-			UtanOption3:
 				mes "[Putsuchiritan]";
 				mes "You must choose a number between";
 				mes "1 and 9.  It is very important that";
 				mes "you choose the number most dear to";
 				mes "your heart.";
-				next;
-				goto UtanSwitchHatred1;
+				goto L_UtanCreEss_asknum;
 
 	UtanSwitchHatred1:
 		mes "[Putsuchiritan]";
@@ -1130,8 +1128,6 @@ UtanSwitchCont1:
 					set @gain,992;
 					goto UtanSwitchDeath1;
 
-
-
 	UtanSwitchDeath1:
 		next;
 		if (@need != 0) goto Putsuch2;
@@ -1170,26 +1166,24 @@ UtanSwitchCont1:
 		mes "If you don't want me to dismantle the";
 		mes "stone, choose 0.";
 
-//		while(1) {
+L_UtanDisEle_asknum:
 			next;
 			input @num;
-			if (@num<=0) goto PutsuchNum1;
-			if (@num>9) goto PutsuchNum9;
-
-			PutsuchNum1:
-				mes "[Putsuchiritan]";
-				mes "If you don't wish my help at the moment,";
-				mes "that's fine.  When you do, please come";
-				mes "by again.";
-				close;
-
-			PutsuchNum9:
-				mes "[Putsuchiritan]";
-				mes "You must choose a number between";
-				mes "1 and 9.  It is very important that";
-				mes "you choose the number most dear to";
-				mes "your heart.";
-				goto PutsuchCont1;
+			if (@num>0) goto PutsuchNum1;
+			mes "[Putsuchiritan]";
+			mes "If you don't wish my help at the moment,";
+			mes "that's fine.  When you do, please come";
+			mes "by again.";
+			close;
+PutsuchNum1:
+			if (@num<=9) goto PutsuchCont1;
+PutsuchNum9:
+			mes "[Putsuchiritan]";
+			mes "You must choose a number between";
+			mes "1 and 9. It is very important that";
+			mes "you choose the number most dear to";
+			mes "your heart.";
+			goto L_UtanDisEle_asknum;
 
 		PutsuchCont1:
 		set @num,@num+rand(5);

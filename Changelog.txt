@@ -11,6 +11,7 @@
 Date	Added
 
 02/12/2007
+	* Fixed: an exploit in Umbala's NPC [Latios]
 	* Fixed: Spell Breaker should be able to cancel Pressure [Latios]
 
 02/11/2007
