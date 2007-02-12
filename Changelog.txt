@@ -11,6 +11,7 @@
 Date	Added
 
 02/12/2007
+	* Fixed: Soul Linkers are immune to the TaeKwon's Flying Kick dispelling effects [Latios]
 	* Added: Beast Strafing (HT_POWER) [Latios]
 	* Added: White Potion created by an Alchemist Ranker have +50% effectiveness during Spirit of Rogue effect [Latios]
 		- Note: SL_HUNTER and SL_ROGUE is now finished

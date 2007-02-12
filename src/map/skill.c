@@ -1349,7 +1349,7 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 			short *tsc_count = status_get_sc_count(bl);
 			// Cancel out Soul Linker status of the target [Skotlex]
 			if (tsc_count && *tsc_count > 0) {
-				if (tsc_data[SC_PRESERVE].timer != -1) // Preserve blocks the cleaning
+				if (tsc_data[SC_PRESERVE].timer != -1 || (dstsd && pc_calc_base_job2(dstsd->status.class) == JOB_SOUL_LINKER)) // Preserve blocks the cleaning, Soul Linkers are immune to the dispelling effects
 					break;
 				// Remove pitched potions effect
 				if (tsc_data[SC_ASPDPOTION0].timer != -1 && tsc_data[SC_ASPDPOTION0].val4)
@@ -1362,10 +1362,10 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 					status_change_end(bl, SC_ASPDPOTION3, -1);
 				if (tsc_data[SC_SPIRIT].timer != -1)
 					status_change_end(bl, SC_SPIRIT, -1);
-				/*if (tsc_data[SC_ONEHAND].timer != -1)
+				if (tsc_data[SC_ONEHAND].timer != -1)
 					status_change_end(bl, SC_ONEHAND, -1);
 				if (tsc_data[SC_ADRENALINE2].timer != -1)
-					status_change_end(bl, SC_ADRENALINE2, -1);*/
+					status_change_end(bl, SC_ADRENALINE2, -1);
 			}
 		}
 		break;
