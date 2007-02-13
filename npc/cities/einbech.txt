@@ -1,36 +1,39 @@
 //===== Freya Script =========================================
 //= Einbech Town
 //===== By: ================================================== 
-//= Muad_dib
+//= Muad_dib/MasterOfMuppets/Freya
 //===== Current Version: ===================================== 
-//= 1.4
+//= 2.1
 //===== Compatible With: ===================================== 
 //= Freya
 //===== Description: ========================================= 
-//=
+//= Einbech Town NPCs
 //===== Additional Comments: ================================= 
-//= 0.1  Started writing Einbech npc's. [Muad_Dib]
-//= 0.1a Conversion to eA format [MasterOfMuppets]
-//= 0.1b Added missing tabs. [Mass Zero] 0.1c more missing tabs [Lupus]
-//= 0.2 Added reddozen's NPCs, fixedmissing '";' [Lupus]
-//= 0.2a Removed a few npcs never intended to be there [MasterOfMuppets]
-//= 0.3 Added some more npcs, thanks to Muad_Dib [MasterOfMuppets]
-//= 1.0 Added the last of the town npcs, [MasterOfMuppets]
+//= 1.0  Started writing Einbech npc's. [Muad_Dib]
+//= 1.1 Conversion to eA format [MasterOfMuppets]
+//= 1.2 Added missing tabs. [Mass Zero] 0.1c more missing tabs [Lupus]
+//= 1.3 Added reddozen's NPCs, fixedmissing '";' [Lupus]
+//= 1.4 Removed a few npcs never intended to be there [MasterOfMuppets]
+//= 1.5 Added some more npcs, thanks to Muad_Dib [MasterOfMuppets]
+//= 1.6 Added the last of the town npcs, [MasterOfMuppets]
 //=     all credits to muad_dib for scripting them.
-//= 1.1 Made some changes according to the Shinokas quest, [MasterOfMuppets]
+//= 1.7 Made some changes according to the Shinokas quest, [MasterOfMuppets]
 //=	thanks to Dj-Yhn for scripting them.
-//= 1.2 Removed Duplicates [Silent]
-//= 1.3 Implemented the Lover's quest. [MasterOfMuppets]
-//= 1.4 Moved quests to quests/quests_einbroch.txt [Evera]
+//= 1.8 Removed Duplicates [Silent]
+//= 1.9 Implemented the Lover's quest. [MasterOfMuppets]
+//= 2.0 Moved quests to quests/quests_einbroch.txt [Evera]
+//= 2.1 Updated script formatting [Tsuyuki]
 //============================================================
 
 
 einbech.gat,180,136,5	script	Notice Board	858,{
+
 	mes "[Tool Shop Entrance]";
 	close;
 }
 
 einbech.gat,46,107,6	script	Shena	846,{
+
 	mes "[Shena]";
 	mes "I think it's weird!";
 	mes "How do you youngsters";
@@ -53,6 +56,7 @@ einbech.gat,46,107,6	script	Shena	846,{
 	mes "a little something";
 	mes "about this world of ours~";
 	close;
+
 L_WHAT:
 	mes "[Shena]";
 	mes "Oh? Well, well";
@@ -99,6 +103,7 @@ L_WHAT:
 	mes "wich monster";
 	mes "would you like";
 	mes "to hear about?";
+
 L_MENU:
 	next;
 	menu "Metaling",L_METALING,"Mineral",L_MINERAL,"Pitman",L_PITMAN,"Waste Stove",L_WASTE,"Quit",-;
@@ -116,6 +121,7 @@ L_MENU:
 	mes "feel free to visit. Be safe";
 	mes "on your travels, adventurer~";
 	close;
+
 L_METALING:
 	mes "[Shena]";
 	mes "Well, the Metalings";
@@ -157,6 +163,7 @@ L_METALING:
 	mes "you'd like to";
 	mes "ask, dearie?";
 	goto L_MENU;
+
 L_MINERAL:
 	mes "[Shena]";
 	mes "Did you know that";
@@ -194,6 +201,7 @@ L_MINERAL:
 	mes "you'd want to learn";
 	mes "more about?";
 	goto L_MENU;
+
 L_PITMAN:
 	mes "[Shena]";
 	mes "Pitmen are the ghosts";
@@ -216,6 +224,7 @@ L_PITMAN:
 	mes "any other of the";
 	mes "local monsters?";
 	goto L_MENU;
+
 L_WASTE:
 	mes "[Shena]";
 	mes "It's just an evil,";
@@ -260,6 +269,7 @@ L_WASTE:
 	mes "you'd like me to";
 	mes "share with you?";
 	goto L_MENU;
+
 L_THAT:
 	mes "[Shena]";
 	mes "Now, you know the importance";
@@ -288,6 +298,7 @@ L_THAT:
 einbech.gat,48,107,4	duplicate(Shena)	Luda	850
 	
 einbech.gat,93,139,6	script	Raust	847,{
+
 	mes "[Raust]";
 	mes "I don't get it!";
 	mes "Einbroch gets bigger";
@@ -320,6 +331,7 @@ einbech.gat,93,139,6	script	Raust	847,{
 }
 	
 einbech.gat,97,167,6	script	Cavitar	847,{
+
 	mes "[Cavitar]";
 	mes "Recently, we had some";
 	mes "tunnel cave-ins that resulted";
@@ -354,6 +366,7 @@ einbech.gat,97,167,6	script	Cavitar	847,{
 }
 	
 einbech.gat,105,218,6	script	Gushenmu	848,{
+
 	mes "[Gushenmu]"; 
 	mes "I've lived here a long time";
 	mes "and, believe it or not, things";
@@ -387,6 +400,7 @@ einbech.gat,105,218,6	script	Gushenmu	848,{
 }
 	
 einbech.gat,39,215,6	script	Train Station Staff	852,{
+
 	mes "[Staff]";
 	mes "Welcome to";
 	mes "the Train Station.";
@@ -402,6 +416,7 @@ einbech.gat,39,215,6	script	Train Station Staff	852,{
 	mes "your stay here";
 	mes "in Einbech.";
 	close;
+
 L_YES:
 	if (Zeny < 200) goto L_ZENY;
 	mes "[Staff]";
@@ -412,6 +427,7 @@ L_YES:
 	set Zeny,Zeny - 200;
 	warp "einbroch.gat",226,276;
 	end;
+
 L_ZENY:
 	mes "[Staff]";
 	mes "I'm sorry,";
@@ -422,6 +438,7 @@ L_ZENY:
 }
 
 einbech.gat,157,215,4	script	Train Station Manager	852,{
+
 	mes "[Train Station Manager]";
 	mes "This train station";
 	mes "is strictly for trains";
@@ -433,6 +450,7 @@ einbech.gat,157,215,4	script	Train Station Manager	852,{
 }
 
 einbech.gat,129,234,6	script	Hander	848,{
+
 	mes "[Hander]";
 	mes "Those Einbroch bastards!";
 	mes "Living off the resources we";
@@ -457,6 +475,7 @@ einbech.gat,129,234,6	script	Hander	848,{
 }
 
 einbech.gat,128,238,6	script	Mogan	848,{
+
 	mes "[Mogan]";
 	mes "Recently, there were a few";
 	mes "cave-ins where many miners";
@@ -482,6 +501,7 @@ einbech.gat,128,238,6	script	Mogan	848,{
 }
 
 einbech.gat,130,253,2	script	Ekuri	848,{
+
 	mes "[Ekuri]";
 	mes "Yo-heave-ho!";
 	mes "Yo-heave-ho~!";
@@ -511,6 +531,7 @@ einbech.gat,130,253,2	script	Ekuri	848,{
 }
 
 einbech.gat,148,242,5	script	Jung	855,{
+
 	mes "[Jung]";
 	mes "I'm one of the few";
 	mes "people who's lived";
@@ -540,6 +561,7 @@ einbech.gat,148,242,5	script	Jung	855,{
 	mes "be safe on your";
 	mes "adventures, alright?";
 	close;
+
 L_TELL:
 	mes "[Jung]";
 	mes "Let's see. Ah, the monsters that";
@@ -593,6 +615,7 @@ L_TELL:
 	mes "about monsters in the Mine";
 	mes "Dungeon. Be safe, adventurer.";
 	close;
+
 L_PORCELLIO:
 	mes "[Jung]";
 	mes "Porcellio is an insect that";
@@ -617,6 +640,7 @@ L_PORCELLIO:
 	mes "about some monster in the";
 	mes "Mine Dungeon, feel free to ask.";
 	close;
+
 L_OBSIDIAN:
 	mes "[Jung]";
 	mes "Do you know about the";
@@ -651,6 +675,7 @@ L_OBSIDIAN:
 }
 
 einbech.gat,148,246,5	script	Franz	851,{
+
 	mes "[Franz]";
 	mes "So bored...";
 	mes "Starving for...";
@@ -679,6 +704,7 @@ einbech.gat,148,246,5	script	Franz	851,{
 	mes "I should be working";
 	mes "on. Yes. So very busy.";
 	close;
+
 L_OKAY:
 	mes "[Franz]";
 	mes "Ooh, have you heard";
@@ -750,6 +776,7 @@ L_OKAY:
 	mes "may be cute, but they're";
 	mes "known to be extremely vicious!";
 	close;
+
 L_CREATURE:
 	mes "[Franz]";
 	mes "The creature I'm talking about is";
@@ -802,6 +829,7 @@ L_CREATURE:
 }
 
 einbech.gat,151,168,4	script	Tollaf	854,{
+
 	mes "[Tollaf]";
 	mes "Ah...!";
 	mes "This is killing me!";
@@ -820,6 +848,7 @@ einbech.gat,151,168,4	script	Tollaf	854,{
 }
 
 einbech.gat,149,154,4	script	Mjunia	850,{
+
 	mes "[Mjunia]";
 	mes "It's hard being a woman";
 	mes "in this town, By being born";
@@ -860,6 +889,7 @@ einbech.gat,149,154,4	script	Mjunia	850,{
 }
 
 einbech.gat,176,125,4	script	Ellhenje	850,{
+
 	mes "[Ellhenje]";
 	mes "Things might be";
 	mes "bad in this town";
@@ -898,6 +928,7 @@ einbech.gat,176,125,4	script	Ellhenje	850,{
 }
 
 einbech.gat,172,113,4	script	Nemuk	855,{
+
 	mes "[Nemuk]";
 	mes "You seem to be an";
 	mes "outsider, so let me";
@@ -927,6 +958,7 @@ einbech.gat,172,113,4	script	Nemuk	855,{
 	mes "for a much better life. *Sigh*";
 	mes "Is it hopeless? What can I do?";
 	close;
+
 L_FINE:
 	mes "[Nemuk]";
 	mes "Huh...?";
@@ -953,6 +985,7 @@ L_FINE:
 }
 
 ein_in01.gat,281,85,2	script	Drunken Man#01	849,{
+
 	mes "[Drunken Man]";
 	mes "...*Hiccup*...";
 	mes "*Hiccup*...";
@@ -964,6 +997,7 @@ ein_in01.gat,281,85,2	script	Drunken Man#01	849,{
 }
 
 ein_in01.gat,277,95,8	script	Ryan Danger	855,{
+
 	mes "[R.D. kim]";
 	mes "Oooh...";
 	next;
@@ -1016,6 +1050,7 @@ ein_in01.gat,277,95,8	script	Ryan Danger	855,{
 }
 
 ein_in01.gat,279,92,2	script	Tavern Lady	854,{
+
 	mes "[Tavern Lady]";
 	mes "most Einbech men are";
 	mes "crude and primitive male";
@@ -1039,7 +1074,8 @@ ein_in01.gat,279,92,2	script	Tavern Lady	854,{
 	close;
 }
 
-einbech.gat,197,139,4	script	Young Man#05	855,{	
+einbech.gat,197,139,4	script	Young Man#05	855,{
+
 	mes "[Heinz]";
 	mes "Wow...";
 	mes "And adventurer from";
@@ -1079,8 +1115,8 @@ einbech.gat,197,139,4	script	Young Man#05	855,{
 	close;
 }
 
+ein_in01.gat,192,90,2	script	Supineque	849,{
 
-ein_in01.gat,192,90,2	script	Supineque	849,{	
 	mes "[Supineque]";
 	mes "Ugh...";
 	mes "I'm starving!";
@@ -1100,7 +1136,8 @@ ein_in01.gat,192,90,2	script	Supineque	849,{
 	close;
 }
 
-ein_in01.gat,208,86,3	script	Decii	855,{	
+ein_in01.gat,208,86,3	script	Decii	855,{
+
 	mes "[Decii]";
 	mes "This is so";
 	mes "frustating!";
@@ -1116,7 +1153,8 @@ ein_in01.gat,208,86,3	script	Decii	855,{
 	close;
 }
 
-einbech.gat,216,118,4	script	Catzllanpu	854,{	
+einbech.gat,216,118,4	script	Catzllanpu	854,{
+
 	mes "[Catzllanpu]";
 	mes "*Sigh...* ";
 	mes "Simple pleasures.";

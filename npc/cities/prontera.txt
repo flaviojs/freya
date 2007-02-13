@@ -1,24 +1,24 @@
 //===== Freya Script =========================================
 //= Prontera Town
 //===== By: ==================================================
-//= kobra_k88
+//= kobra_k88/Freya
 //===== Current Version: =====================================
-//= 1.3
+//= 1.4
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
-//=
+//= Prontera Town NPCs
 //===== Additional Comments: =================================
-//= Fully working
-//= +AntiNovice exploit fix [Lupus]
-//= 1.2 added baby novice check
+//= 1.0 Added first version [kobra_k88]
+//= 1.1 AntiNovice exploit fix [Lupus]
+//= 1.2 Added Baby Novice check [Unknown]
 //= 1.3 Spellchecked [massdriller]
+//= 1.4 Updated formatting [Tsuyuki]
 //============================================================
 
 
-
-// Tono ---------------------------------------------------------------
 prontera.gat,54,240,5	script	Tono	97,{
+
 	mes "[Tono]";
 	mes "Did you know the larva of a Creamy is a Fabre.";
 	mes "The pupa stage of a Fabre is simply called Pupa.";
@@ -31,8 +31,8 @@ prontera.gat,54,240,5	script	Tono	97,{
 	close;
 }
 
-// Dairene ----------------------------------------------------------------
 prontera.gat,78,150,3	script	Dairenne	90,{
+
 	mes "[Town girl Dairenne]";
 	mes "(Cough Cough)... Nowadays the streets are too crowded. (Cough Cough)...";
 	mes "Oh..So Dusty...So dirty here... Now I think the Capital City isn't all that good.";
@@ -60,8 +60,8 @@ prontera.gat,78,150,3	script	Dairenne	90,{
 		close;
 }
 
-// Merideth --------------------------------------------------------------
 prontera.gat,106,117,6	script	Merideth	91,{
+
 	mes "[Merideth]";
 	mes "The weather was nice on my day off, so my family and I decided to have a picnic.";
 	mes "We chose to go to a somewhat secluded area and were amazed at what we saw.";
@@ -77,8 +77,8 @@ prontera.gat,106,117,6	script	Merideth	91,{
 	close;
 }
 
-// YuNa ---------------------------------------------------------------------
 prontera.gat,146,204,2	script	YuNa	700,{
+
 	mes "[YuNa]";
 	mes "Odin is the god of wisdom and war.  He courageously removed one of his eyes in order to acquire ultimate wisdom. ";
 	next;
@@ -99,8 +99,8 @@ prontera.gat,146,204,2	script	YuNa	700,{
 	close;
 }
 
-// YuPi -----------------------------------------------------------------------
 prontera.gat,160,133,2	script	YuPi	102,{
+
 	mes "[YuPi]";
 	mes "Among monsters of the same species, there are some that are MORE FEROCIOUS than others";
 	mes "If you even TOUCH them by mistake, you'd better prepare yourself for what's gonna happen next.";
@@ -111,8 +111,8 @@ prontera.gat,160,133,2	script	YuPi	102,{
 	close;
 }
 
-// Shuger -------------------------------------------------------------
 prontera.gat,102,287,5	script	Shuger	98,{
+
 	mes "[Shuger]";
 	mes "In the fields outside of town, there are pink monsters called '^FF8888Porings^000000'.";
 	mes "Though they are cute and do not harm people, they are notorious looters.  They will absorb any item that they find on the ground.";
@@ -123,9 +123,8 @@ prontera.gat,102,287,5	script	Shuger	98,{
 	close;
 }
 
-//------------------------------------------------------------------------------------- Prontera Church -------------------------------------------------------------------------------\\
-// Henson ---------------------------------------------------------------
 prt_church.gat,103,71,2	script	Henson	120,{
+
 	mes "[Henson]";
 	mes "Our duty is not only to help others, but to also purify poor souls that have been turned into the Undead.";
 	mes "In order to successfully accomplish our duty, we have to learn special skills and practice them very diligently.";
@@ -146,6 +145,7 @@ qMenu:
 		mes "If you raise it to level 3, then a skill called 'Deamon Bane' will be available for you.  'Demon Bane' increases your attack against the Undead.";
 		mes "With 'Divine Protection' as a foundation, several high class skills such as 'Angelus' and 'Blessing' will be available to you.";
 		goto qMenu;
+
 	L1:
 		mes "[Henson]";
 		mes "'Demon Bane' improves your attack against the Undead.  You need 3 levels of 'Divine Protection' before you can learn Demon Bane.";
@@ -156,6 +156,7 @@ qMenu:
 		next;
 		goto qMenu;
 		close;
+
 	L2:
 		mes "[Henson]";
 		mes "When you use this skill, the movement speed, attack rate, and evasion rate of a targeted monster will be reduced.";
@@ -163,6 +164,7 @@ qMenu:
 		next;
 		goto qMenu;
 		close;
+
 	L3:
 		mes "[Henson]";
 		mes "You can lower the defence of Undead and Dark property monsters with this skill, and the range of attack is very wide.";
@@ -173,6 +175,7 @@ qMenu:
 		next;
 		goto qMenu;
 		close;
+
 	L4:
 		mes "[Henson]";
 		mes "Once you master 'Warp Portal', you can learn this skill.";
@@ -182,12 +185,14 @@ qMenu:
 		next;
 		goto qMenu;
 		close;
+
 	L5:
 		mes "[Henson]";
 		mes "Ruwach allows you to see hidden monsters or players.  You also need this skill to learn 'Teleport.";
 		next;
 		goto qMenu;
 		close;
+
 	L6:
 		mes "[Henson]";
 		mes "At level 1, it allows you teleport to a random spot on the map you are in.  At level2 it allows you to teleport to your last save point.";
@@ -195,14 +200,15 @@ qMenu:
 		next;
 		goto qMenu;
 		close;
+
 	LEnd:
 		mes "[Henson]";
 		mes "If you're still not certain about all of this, you are always welcome to speak with me later!";
 		close;
 }
 
-// Garnet --------------------------------------------------------------
 prt_church.gat,103,76,2	script	Garnet	67,{
+
 	mes "[Garnet]";
 	mes "Oh~ you want to find pleasure in helping other people, but you don't know how to do so?";
 	mes "Fortunately we have the abilities to help and support other people.";
@@ -229,18 +235,21 @@ prt_church.gat,103,76,2	script	Garnet	67,{
 		next;
 		goto qMenu;
 		close;
+
 	L1:
 		mes "[Garnet]";
 		mes "'Cure' can alleviate any abnormal status effects you may have.  You have to have level 2 'Heal' in order to learn Cure though.";
 		next;
 		goto qMenu;
 		close;
+
 	L2:
 		mes "[Garnet]";
 		mes "'Increase AGI' increases your movement speed, attack rate, and evade rate.  You can learn it after you've learned 3 levels of 'Heal'.";
 		next;
 		goto qMenu;
 		close;
+
 	L3:
 		mes "[Garnet]";
 		mes "You can use 'Angelus' in order to increase the Defence of either yourself or your party members.";
@@ -254,6 +263,7 @@ prt_church.gat,103,76,2	script	Garnet	67,{
 		next;
 		goto qMenu;
 		close;
+
 	L4:
 		mes "[Garnet]";
 		mes "'Blessing' temporarily increases STR, DEX and INT.  I am sure this skill will be of great advantage for your friends.";
@@ -263,6 +273,7 @@ prt_church.gat,103,76,2	script	Garnet	67,{
 		next;
 		goto qMenu;
 		close;
+
 	L5:
 		mes "[Garnet]";
 		mes "In order to open a 'Warp Portal' you first need to know how to 'Teleport', and in order to 'Teleport, you need 'Ruwach'.";
@@ -283,16 +294,15 @@ prt_church.gat,103,76,2	script	Garnet	67,{
 		next;
 		goto qMenu;
 		close;
+
 	LEnd:
 		mes "[Garnet]";
 		mes "Hehehe, hope I wasn't showing off too much.  Well, be Happy in whatever you do~~!";
 		close;
 }
 
-
-// ----------------------------------------------------------------------------------------------- PUB -----------------------------------------------------------------------------------------------------\\
-// Sir Michael (West End Pub)
 prt_in.gat,26,30,1	script	Sir Michael	54,{
+
 	mes "[Sir Michael]";
 	mes "I dunno if you'll ever believe me, but I saw the WEIRDEST thing down in the ^5555FFCulvert Sewers^000000.";
 	mes "I've been training in the 3rd level of the sewers for a long time now, so there's nothing about that area that I don't know.";
@@ -309,8 +319,8 @@ prt_in.gat,26,30,1	script	Sir Michael	54,{
 	close;
 }
 
-//Shevild ----------------------------------------------------
 prt_in.gat,173,24,2	script	Shevild	85,{
+
 	mes "[Shevild]";
 	mes "Hey~Hey~ Come on over and have a drink, man. I'll tell you some exciting stories.";
 	mes "Do not judge me by the way I look... I've been everywhere you can imagine around Prontera.";
@@ -386,8 +396,8 @@ prt_in.gat,173,24,2	script	Shevild	85,{
 		close;
 }
 
-// Bartender ---------------------------------------------------------
 prt_in.gat,181,21,2	script	Bartender	61,{
+
 	mes "[Bartender]";
 	mes "Phew~ more and more people a crawling in these days.";
 	mes "I am getting more and more tired everyday, though business has never been better...";
@@ -433,8 +443,8 @@ prt_in.gat,181,21,2	script	Bartender	61,{
 		close;
 }
 
-// Marvin -----------------------------------------------------------
 prt_in.gat,177,18,2	script	Marvin	80,{
+
 	mes "[Marvin]";
 	mes "....Usually skills are mastered at level 10. So some people get nervous about selecting which one they should learn.";
 	next;
@@ -453,8 +463,8 @@ prt_in.gat,177,18,2	script	Marvin	80,{
 	close;
 }
 
-// Tensue -----------------------------------------------------
 prt_in.gat,177,20,2	script	TenSue	97,{
+
 	mes "[TenSue]";
 	set @TEMP,0;
 	set @TEMP,rand(3);
@@ -495,11 +505,8 @@ prt_in.gat,177,20,2	script	TenSue	97,{
 		close;
 }
 
-
-//------------------------------------------------------------------------------------------------- Library ----------------------------------------------------------------------------------------\\
-
-// Library Girl Ellen ----------------------------------------------------
 prt_in.gat,175,50,2	script	Librarian Ellen	71,{
+
 	if (ttt_1==1) goto ttt;
 	mes "[Librarian Ellen]";
 	mes "Welcome. You can find books about monsters, organized by their properties here. There are also books about Merchant and Blacksmith skills.";
@@ -521,7 +528,6 @@ ttt:
 	close;
 }
 
-// Gurator Guiss -------------------------------------------------------
 prt_in.gat,178,92,2	script	Curator  Guiss	57,{
 	mes "[Curator Guiss]";
 	mes "Our library keeps records of monsters in various dungeons scattered around Rune-Midgard.";

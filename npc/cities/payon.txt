@@ -1,16 +1,20 @@
 //======= Freya Script =======================================
-//= Payon Town NPCs
+//= Payon Town
 //===== By: ================================================== 
-//= Muad_Dib & Tsuyuki
+//= Aegis/Freya
 //===== Current Version: ===================================== 
-//= 1.1
+//= 1.5
 //===== Compatible With: ===================================== 
 //= Freya
+//===== Description: =========================================
+//= Payon Town NPCs
 //===== Additional Comments: ================================= 
 //= 1.0 Added 1st Version [Muad_Dib]
-//= 1.0a Fixed typos [Danimoth]
-//= 1.0b Fixed color bugs [Danimoth]
-//= 1.1 Fixed more typos and converted script to Aegis to Freya [Tsuyuki]
+//= 1.1 Fixed typos [Danimoth]
+//= 1.2 Fixed color bugs [Danimoth]
+//= 1.3 Fixed more typos and converted script to Aegis to Freya [Tsuyuki]
+//= 1.4 Removed Inn NPC (It's already in /merchants/inn.txt [Tsuyuki]
+//= 1.5 Updated formatting [Tsuyuki]
 //============================================================ 
 
 
@@ -923,6 +927,7 @@ payon_in03.gat,99,190,4	script	Chief	107,2,2,{
 OnTouch:
 	if (BaseLevel < 30) goto PayCont1;
 	if (BaseLevel >= 30) goto PayElse1;
+
 	PayCont1:
 		mes "[Guard]";
 		mes "Hey...";
@@ -930,6 +935,7 @@ OnTouch:
 		mes "Show your respect";
 		mes "to our chief!";
 		close;
+
 	PayElse1:
 		set PayEldRand,rand(1,2);
 		if (PayEldRand == 1) goto PayEldCase1;
@@ -1016,51 +1022,17 @@ payon_in03.gat,102,185,5	script	Guard	708,{
 
 	if (BaseLevel < 30) goto PGuardWeak1;
 	if (BaseLevel >= 30) goto PGuardWeak2;
+
 	PGuardWeak1:
 		mes "[Guard]";
 		mes "Yo yo yo, you are not allowed to come in.";
 		mes "Go outside. ";
+		close;
+
 	PGuardWeak2:
 		mes "[Guard]";
 		mes "Sorry but you are not allowed to come in.";
 		mes "Please leave. ";
-		close;
-}
-
-payon_in01.gat,132,62,5	script	Inn Employee	53,{
-
-	mes "[Employee SunHee]";
-	mes "Welcome to 'Payon Inn'.";
-	mes "How may I help you?";
-	next;
-	menu "Save",Pay_Inn1,"Take a Rest -> 5000 zeny",Pay_Inn2,"Cancel",Pay_Inn3;
-	Pay_Inn1:
-		mes "[Employee SunHee]";
-		mes "Your respawn point";
-		mes "has been saved.";
-		mes "Thank you,";
-		mes "please come again.";
-		savepoint "payon_in01.gat",136,61;
-		close;
-	Pay_Inn2:
-		if (Zeny < 5000) goto InnPoor1;
-			emotion 15;
-			mes "[Employee SunHee]";
-			mes "Thank you.";
-			mes "I hope you";
-			mes "enjoy your rest~";
-			close;
-			set zeny,zeny-5000;
-			percentheal 100,100;
-			warp "payon_in01.gat",132,11;
-		InnPoor1:
-			mes "[Employee SunHee]";
-			mes "I'm sorry, but the service charge";
-			mes "is 5,000 zeny. Please make sure";
-			mes "that you have enough money to check";
-			mes "in next time, okay?";
-			close;
-	Pay_Inn3:
 		close;
 }
 
@@ -1110,6 +1082,7 @@ payon.gat,154,170,4	script	Hagin	78,{
 	mes "I'm gonna seduce him.";
 	next;
 	menu "Who are you talking about?",Ha_Case1,"You're freaking me out!",Ha_Case2;
+
 	Ha_Case1:
 		mes "[Hagin]";
 		mes "You don't know";
@@ -1125,6 +1098,7 @@ payon.gat,154,170,4	script	Hagin	78,{
 		mes "a fine specimen of a man...";
 		next;
 		menu "I'd like to meet this Daewoon.",-;
+
 			mes "[Hagin]";
 			mes "Oh, I see~";
 			mes "You plan to ask him";
@@ -1140,6 +1114,7 @@ payon.gat,154,170,4	script	Hagin	78,{
 			mes "want to see him for yourself,";
 			mes "why don't you go there?";
 			close;
+
 	Ha_Case2:
 		mes "[Hagin]";
 		mes "Freaking you out?";
@@ -1151,14 +1126,14 @@ payon.gat,154,170,4	script	Hagin	78,{
 		close;
 }
 
-payon_in03.gat,81,22,4	script	Maid	1170,{end;}
+payon_in03.gat,81,22,4	script	Maid	1170,{ end; }
 
-payon_in03.gat,79,22,4	script	Maid	1404,{end;}
+payon_in03.gat,79,22,4	script	Maid	1404,{ end; }
 
-payon_in03.gat,81,15,0	script	Maid	1170,{end;}
+payon_in03.gat,81,15,0	script	Maid	1170,{ end; }
 
-payon_in03.gat,79,15,0	script	Maid	1404,{end;}
+payon_in03.gat,79,15,0	script	Maid	1404,{ end; }
 
-payon_in03.gat,13,31,4	script	Maid	1416,{end;}
+payon_in03.gat,13,31,4	script	Maid	1416,{ end; }
 
-payon_in03.gat,8,31,4	script	Maid	1416,{end;}
+payon_in03.gat,8,31,4	script	Maid	1416,{ end; }

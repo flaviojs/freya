@@ -1,15 +1,15 @@
 //===== Freya Script =========================================
 //= Alberta Town
 //===== By: ================================================== 
-//= kobra_k88
+//= kobra_k88/Freya
 //===== Current Version: ===================================== 
 //= 2.1
 //===== Compatible With: ===================================== 
 //= Freya
 //===== Description: ========================================= 
-//=
+//= Alberta Town NPCs
 //===== Additional Comments: ================================= 
-//= Fully working
+//= 1.0 Added first version [Athena]
 //= 1.1 Negative input bug fixed [Lupus]
 //= 1.2 Fixed typos in script [massdriller]
 //= 1.3 Ran through spellcheck system [massdriller]
@@ -23,20 +23,20 @@
 //= 2.1 Fixed many typos, using information from Crono/Hollengrhen [Evera]
 //============================================================ 
 
-//NewsPaper(?)
-alberta.gat,148,53,1	script	Newspaper Girl	831,{end;}
-//???
-alberta.gat,148,60,3	script	Man#03	833,{end;}
 
-// Young Man -----------------------------------------------------------
+alberta.gat,148,53,1	script	Newspaper Girl	831,{ end; }
+
+alberta.gat,148,60,3	script	Man#03	833,{ end; }
+
 alberta_in.gat,20,183,6	script	Young Man	49,{
+
 	mes "[Merchant]";
 	mes "People say that ^0000ffGungnir^000000 is the legendary spear that never misses its target.  If that's true, then it's simply amazing.";
 	close;
 }
 
-// Merchant -------------------------------------------------
 alberta.gat,97,51,7	script	Merchant#01	84,{
+
 	mes "[Merchant]";
 	mes "When you travel to many places like I do, you often hear a lot of rumors.  There is one rumor I heard that is really interesting.";
 	next;
@@ -49,8 +49,8 @@ alberta.gat,97,51,7	script	Merchant#01	84,{
 	close;
 }
 
-// Merchant ---------------------------------------------------------
 alberta.gat,53,39,8	script	Merchant#02	74,{
+
 	mes "[Merchant]";
 	mes "Oh, you look like a stranger.  Welcome to Alberta.";
 	emotion e_gasp;
@@ -68,8 +68,8 @@ alberta.gat,53,39,8	script	Merchant#02	74,{
 	close;
 }
 
-// Merchant -------------------------------------------------
 alberta.gat,58,80,8	script	Merchant#03	99,{
+
 	mes "[Merchant]";
 	if (rand(2)) goto R_1;
 		mes "We merchants can open a roadside stand and do business.  With the ^0000ffDiscount skill^000000 we can buy goods from stores for low prices.";
@@ -86,8 +86,8 @@ alberta.gat,58,80,8	script	Merchant#03	99,{
 		close;
 }
 
-// Phina -------------------------------------------------------
 alberta.gat,62,156,2	script	Phina	102,{
+
 	set @TEMP,rand(3);
 	mes "[Phina]";
 	if (@TEMP == 1) goto R_1;
@@ -126,8 +126,8 @@ alberta.gat,62,156,2	script	Phina	102,{
 		close;
 }
 
-// Grandma -----------------------------------------------------
 alberta.gat,93,174,2	script	Grandma	103,{
+
 	mes "[Grandma]";
 	mes "Some time ago a derelict ship drifted into the Alberta harbor.  Some of the town's young people went into the ship to find survivors.";
 	next;
@@ -157,8 +157,8 @@ alberta.gat,93,174,2	script	Grandma	103,{
 	close;
 }
 
-// Drunken old man ----------------------------------------------------------------
 alberta.gat,131,139,4	script	Drunken old man	709,{
+
 	mes "[Drunken old man]";
 	mes "(~hiccup~)... Huh?... Wh-what are you staring at? Get lost!!";
 	next;
@@ -198,8 +198,8 @@ alberta.gat,131,139,4	script	Drunken old man	709,{
 		close;
 }
 
-// Soda Man ----------------------------------------------------
 alberta.gat,90,71,3	script	Soda Man	89,{
+
 	mes "[Soda Man]";
 	mes "Ummm.... delicious....";
 	emotion e_ok;
@@ -225,10 +225,8 @@ alberta.gat,90,71,3	script	Soda Man	89,{
 	close;
 }
 
-
-//<=================================================== Marina (Docks/Port) ===================================================>\\
-// Sailor Fisk ----------------------------------------------------------------
 alberta.gat,189,151,5	script	Sailor Fisk	100,{
+
 	mes "[Sailor Fisk]";
 	mes "Ahoy matey, where'd ya wanna go?";
 	next;
@@ -247,7 +245,6 @@ alberta.gat,189,151,5	script	Sailor Fisk	100,{
 		close;
 }
 
-// Phelix ------------------------------------------------------------------
 alberta.gat,190,173,4	script	Phelix	85,{
 
 	mes "[Phelix]";
@@ -312,9 +309,9 @@ alberta.gat,190,173,4	script	Phelix	85,{
 }
 
 
-//<=================================================== Sunken Ship ======================================================>\\
-// Paul ----------------------------------------------------------------
+// Alberta -> Sunken Ship Warper
 alberta.gat,195,151,3	script	Paul	86,{
+
 	mes "[Paul]";
 	mes "Good day.  Would you like be part of the Sunken Ship event, provided by Cool Event Corp.?";
 	next;
@@ -343,8 +340,9 @@ alberta.gat,195,151,3	script	Paul	86,{
 		close;
 }
 
-// Sailor --------------------------------------------------
+// Sunken Ship -> Alberta Warper
 alb2trea.gat,39,50,5	script	Sailor	100,{
+
 	mes "[Sailor]";
 	mes "Do you wanna return?";
 	next;

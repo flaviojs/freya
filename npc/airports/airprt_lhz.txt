@@ -1,13 +1,13 @@
 //===== Freya Script ======================================= 
 //= Lighthalzen Airport NPCs
 //===== By: ================================================== 
-//= Spirit Death
+//= Spirit Death/Freya
 //===== Current Version: ===================================== 
 //= 1.2
 //===== Compatible With: ===================================== 
-//= any Freya version
+//= Freya
 //===== Additional Comments: ================================= 
-//= 1.0 first release [Spirit Death]
+//= 1.0 First release [Spirit Death]
 //= 1.1 Changed the way the script works a little [Tsuyuki]
 //= 1.2 Fixed minor script problems [Tsuyuki]
 //============================================================ 

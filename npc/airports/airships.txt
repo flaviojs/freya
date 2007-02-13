@@ -1,11 +1,11 @@
 //===== Freya Script ======================================= 
 //= Airship System
 //===== By: ================================================== 
-//= Spirit Death
+//= Spirit Death/Freya
 //===== Current Version: ===================================== 
 //= 1.2
 //===== Compatible With: ===================================== 
-//= any Freya version
+//= Freya
 //===== Description: ========================================= 
 //= Airship System with 2 Routes (almost official)
 //=		1st Route: Yuno->Hugel->Einbroch->Lighthalzen->Yuno
@@ -18,9 +18,9 @@
 //= airprt_lhz.txt
 //= airprt_hug.txt
 //===== Additional Comments: ================================= 
-//= 1.0 first release [Spirit Death]
+//= 1.0 First release [Spirit Death]
 //= 1.1 Added some variables to manage when players may board the
-//= airplanes. [Bison]
+//=     airplanes [Bison]
 //= $at_izlude - A 0 means the airplane is not at Izlude, and a
 //= 1 means that it is at Izlude.
 //= jairp6 - The warp portal that goes from Yuno to the Route 2
@@ -42,9 +42,11 @@
 //============================================================ 
 
 airplane.gat,0,0,0	script	airplane	-1,{
+
 OnInit:
 	initnpctimer;
 	end;
+
 OnTimer1000:
 	set $route1,0;
 	disablenpc "#warp1";
@@ -134,15 +136,19 @@ OnTimer320000:
 	initnpctimer;
 	end;
 }
-airplane.gat,243,74,4	script	#warp1	45,2,2{
+
+airplane.gat,243,74,4	script	#warp1	45,2,2,{
+
 OnTouch:
 	if ($route1 == 0) warp "hugel.gat",178,149;
 	if ($route1 == 1) warp "einbroch.gat",90,275;
 	if ($route1 == 2) warp "lighthalzen.gat",302,75;
 	if ($route1 == 3) warp "yuno.gat",85,265;
 	close;
-}	
+}
+
 airplane.gat,243,29,4	script	#warp2	45,2,2{
+
 OnTouch:
 	if ($route1 == 0) warp "hugel.gat",178,149;
 	if ($route1 == 1) warp "einbroch.gat",90,275;
@@ -156,9 +162,11 @@ OnTouch:
 //============================================================ 
 
 airplane_01.gat,0,0,0	script	airplane_01	-1,{
+
 OnInit:
 	initnpctimer;
 	end;
+
 OnTimer1000:
 	set $route2,0;
 	disablenpc "#warp3";
@@ -205,16 +213,19 @@ OnTimer160000:
 	initnpctimer;
 	end;
 }
-airplane_01.gat,243,74,4	script	#warp3	45,2,2{
-OnTouch:
-	if ($route2 == 0) warp "izlude.gat",202,56;
-	if ($route2 == 1) warp "yuno.gat",20,265;
-	close;
-}	
-airplane_01.gat,243,29,4	script	#warp4	45,2,2{
-OnTouch:
-	if ($route2 == 0) warp "izlude.gat",202,56;
-	if ($route2 == 1) warp "yuno.gat",20,265;
-	close;
-}	
 
+airplane_01.gat,243,74,4	script	#warp3	45,2,2,{
+
+OnTouch:
+	if ($route2 == 0) warp "izlude.gat",202,56;
+	if ($route2 == 1) warp "yuno.gat",20,265;
+	close;
+}
+
+airplane_01.gat,243,29,4	script	#warp4	45,2,2,{
+
+OnTouch:
+	if ($route2 == 0) warp "izlude.gat",202,56;
+	if ($route2 == 1) warp "yuno.gat",20,265;
+	close;
+}

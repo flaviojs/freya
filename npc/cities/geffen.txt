@@ -1,26 +1,27 @@
 //===== Freya Script =========================================
 //= Geffen Town
 //===== By: ================================================== 
-//= kobra_k88
+//= kobra_k88/Freya
 //===== Current Version: ===================================== 
-//= 1.51
+//= 1.7
 //===== Compatible With: ===================================== 
 //= Freya
 //===== Description: ========================================= 
-//=
+//= Geffen Town NPCs
 //===== Additional Comments: ================================= 
-//= Fully working
-//= 1.1 - Spell Checked [massdriller]
-//= 1.2 Fixed more typo’s [Nexon]
-//= 1.3 added a Level 4 weapon quest related NPC [MasterOfMuppets]
+//= 1.0 Added first version [kobra_k88]
+//= 1.1 Spell Checked [massdriller]
+//= 1.2 Fixed more typos [Nexon]
+//= 1.3 Added a Level 4 weapon quest related NPC [MasterOfMuppets]
 //= 1.4 Removed Duplicates [Silent]
 //= 1.5 Fixed some typos and coordinates [Musashiden]
-//= 1.51 Fixed a small typo [Evera]
+//= 1.6 Fixed a small typo [Evera]
+//= 1.7 Updated script formatting [Tsuyuki]
 //============================================================
 
 
-// Lady -------------------------------------------------------
 geffen.gat,59,143,8	script	Lady#01	91,{
+
 	mes "[Lady]";
 	mes "Oh, you must be a Stranger here.";
 	next;
@@ -46,9 +47,8 @@ geffen.gat,59,143,8	script	Lady#01	91,{
 	close;
 }
 
-
-// Womankind ------------------------------------------------------------
 geffen.gat,111,48,2	script	Kind Woman	101,{
+
 	mes "[Kind Woman]";
 	mes "Good Day, adventurer.";
 	next;
@@ -63,9 +63,8 @@ geffen.gat,111,48,2	script	Kind Woman	101,{
 	close;
 }
 
-
-// Researcher ------------------------------------------------------------------------
 geffen.gat,156,190,8	script	Researcher	57,{
+
 	mes "[Researcher]";
 	mes "Hmm... Interesting.  Hmm... It is Very interesting....";
 	next;
@@ -84,8 +83,8 @@ geffen.gat,156,190,8	script	Researcher	57,{
 	close;
 }
 
-// Young Man --------------------------------------------------------------------------
 geffen.gat,147,26,0	script	Young man#06	97,{
+
 	mes "[Young Man]";
 	mes "I heard that somewhere in this world, there is a rare staff which transforms its owner's psychic power into physical powers, and endows with destructive force also...";
 	mes "With this, everybody could be as strong as Hercules, despite their lack of muscles. Haw haw...I will take it.";
@@ -97,8 +96,8 @@ geffen.gat,147,26,0	script	Young man#06	97,{
 	close;
 }
 
-// Young Man -----------------------------------------------------------------------
 geffen_in.gat,34,170,0	script	Young man#07	47,{
+
 	mes "[Young Man]";
 	mes "Hello? Isn't it wonderful, today? I am a promising young Mage. Ahem.";
 	mes "Nowadays, my mental anguish about magic things keeps me awake every night..sigh...Especially, about the weak point of magic, you know.";
@@ -112,10 +111,8 @@ geffen_in.gat,34,170,0	script	Young man#07	47,{
 	close;
 }
 
-
-//<============================================ Inn =====================================================>\\
-// Waitress ---------------------------------------------------------------------------
 geffen_in.gat,70,67,5	script	Waitress#01	80,{
+
 	mes "[Waitress]";
 	mes "Ugh!! SO annoying! Why would you drink here when you could drink at the pub!? This is an Inn, not a pub!!";
 	mes "That man!... every time he drinks... he gets like that! Ugh!!";
@@ -164,8 +161,8 @@ M_Menu:
 		close;
 }
 
-// Merchant Daven -------------------------------------------------------------------
 geffen_in.gat,79,75,2	script	Merchant Daven	61,{
+
 	mes "[Merchant Daven]";
 	mes "Back in the day when I first came to Geffen, the town was a very boring place to live in.";
 	next;
@@ -226,8 +223,8 @@ M_Menu:
 		close;
 }
 
-// Drunkard -------------------------------------------------------------------
 geffen_in.gat,59,62,2	script	Drunkard#01	120,{
+
 	mes "[Drunkard]";
 	mes "Hmm... You're Joshua's friend too??";
 	next;
@@ -260,8 +257,8 @@ geffen_in.gat,59,62,2	script	Drunkard#01	120,{
 		close;
 }
 
-// Schubaltzwald Merchant ----------------------------------------------------------------------
 geffen_in.gat,113,73,4	script	Schubaltzwald Merchant	709,{
+
 	mes "[Schubaltzwald Merchant]";
 	mes "How are you, Rune-Midgard young'un? I am Schubaltzwald's one and only Hans Hadenhiem.";
 	next;
@@ -285,10 +282,8 @@ geffen_in.gat,113,73,4	script	Schubaltzwald Merchant	709,{
 	close;
 }
 
-
-//<============================================== Pub ==================================================>\\
-// Waitress -----------------------------------------------------------------
 geffen_in.gat,28,134,4	script	Waitress#03	69,{
+
 	mes "[Waitress]";
 	mes "Meh! ALWAYS drinking and ALWAYS fighting..... HEY Mister! This is a place of BUSINESS!!";
 	emotion e_an;
@@ -327,17 +322,16 @@ M_Menu:
 		close;
 }
 
-// Drunkard ----------------------------------------------------------------------------
 geffen_in.gat,21,125,5	script	Drunkard#02	52,{
+
 	mes "[Drunkard]";
 	mes "You want to be an idiotic magician? Is that why you came here??";
 	emotion e_what;
 	close;
 }
 
-// Lvl 4 weapon quest related NPC ------------------------------------------------------
-
 geffen.gat,203,146,5	script	Citizen	97, {
+
 	mes "[Citizen]";
 	mes "There was a skillful weaponsmith";
 	mes "in Al De Baran who had 4 sons.";
@@ -358,8 +352,8 @@ geffen.gat,203,146,5	script	Citizen	97, {
 	close;
 }
 
-// Friend of Youth ---------------------------------------------------------------------
 geffen_in.gat,37,124,5	script	Friend of Youth	704,{
+
 	set @temp,0;
 	mes "[Friend of Youth]";
 	mes "Welcome young one! Are you worrying about something? Tell me all your troubles and I will tell you your fortune with my silver ball of mystery!";
@@ -649,9 +643,6 @@ M_Menu:
 		close;
 }
 
-			
-//<============================================ Mage Guild ===============================================>\\
-// Dark Wizard -------------------------------------------------------------------------
 geffen_in.gat,164,109,2	script	Dark Wizard	64,{
 
 	if (BaseJob == JOB_MAGE || BaseJob == JOB_WIZARD) goto L_Magic;
@@ -660,22 +651,22 @@ geffen_in.gat,164,109,2	script	Dark Wizard	64,{
 	mes "Hmf.  I only speak to those with magic abilities....";
 	close;
 
-L_Magic:
-	mes "[Dark Wizard]";
-	mes "Oh... I can feel the mighty spirits stirring around me.";
-	next;
-	mes "[Dark Wizard]";
-	mes "You there, I sense that you too use magic.";
-	next;
-	mes "[Dark Wizard]";
-	mes "Magic... a great power which is dictated by cause and effect.  If it is used for good then in turn positive reactions will occur.";
-	mes "However, if it is used for evil, then negative reactions will occur instead.  When using magic you truly reap what you sew.";
-	next;
-	mes "[Dark Wizard]";
-	mes "Have you ever heard of ^0000ddGemstones^000000? Some magic spells are so powerful that they require the use of a Gemstone.";
-	mes "These stones amplify a magic users power and allow them to cast high level spells.  They can be bought at the magic store in town.";
-	next;
-	mes "[Dark Wizard]";
-	mes "Always remember that magic should only be used for the benefit of people, not to do them harm.";
-	close;
+	L_Magic:
+		mes "[Dark Wizard]";
+		mes "Oh... I can feel the mighty spirits stirring around me.";
+		next;
+		mes "[Dark Wizard]";
+		mes "You there, I sense that you too use magic.";
+		next;
+		mes "[Dark Wizard]";
+		mes "Magic... a great power which is dictated by cause and effect.  If it is used for good then in turn positive reactions will occur.";
+		mes "However, if it is used for evil, then negative reactions will occur instead.  When using magic you truly reap what you sew.";
+		next;
+		mes "[Dark Wizard]";
+		mes "Have you ever heard of ^0000ddGemstones^000000? Some magic spells are so powerful that they require the use of a Gemstone.";
+		mes "These stones amplify a magic users power and allow them to cast high level spells.  They can be bought at the magic store in town.";
+		next;
+		mes "[Dark Wizard]";
+		mes "Always remember that magic should only be used for the benefit of people, not to do them harm.";
+		close;
 }

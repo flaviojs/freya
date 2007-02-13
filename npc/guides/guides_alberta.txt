@@ -1,24 +1,23 @@
 //===== Freya Script =========================================
 //= Alberta Guides
 //===== By: ==================================================
-//= kobra_k88
-//= General__ (1.2)
+//= kobra_k88/Freya
 //===== Current Version: =====================================
 //= 1.2
 //===== Compatible With: =====================================
-//= Freya (all version)
+//= Freya
 //===== Description: =========================================
-//=
+//= Alberta Guide NPCs
 //===== Additional Comments: =================================
-//= Fully working
-//= v1.1 Now using duplicate command.
-//= v1.2 fixed showpoint of armory [General__] from freya's bug report.
+//= 1.0 Added first version [kobra_k88]
+//= 1.1 Now using duplicate command [Unknown]
+//= 1.2 Fixed showpoint of armory [General__]
 //============================================================
-
 
 
 // North --------------------------------------------------------
 alberta.gat,23,238,4	script	Guide#1::Guide	105,{
+
 	cutin "prt_soldier",2;
 	mes "[Alberta Soldier]";
 	mes "Welcome to Alberta, the Port Town.";

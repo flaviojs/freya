@@ -1,14 +1,13 @@
 //===== Freya Script =========================================
-//= Juno City NPCs
+//= Juno Town
 //===== By: ==================================================
-//= Aegis/Tsuyuki
+//= Aegis/Freya
 //===== Current Version: =====================================
 //= 1.2
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
-//= Juno City NPCs
-//= To-Do: Finish officializing dialogue in the Monster Museum
+//= Juno Town NPCs
 //===== Additional Comments: =================================
 //= 1.0 Completely redid file now with official Aegis NPCs [Tsuyuki]
 //= 1.1 Merged Monster Museum script with this one [Tsuyuki]

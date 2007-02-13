@@ -1,32 +1,31 @@
 //===== Freya script =========================================
-//= Jawaii (The Lovers Paradise) Town script
+//= Jawaii Town
 //===== By: ==================================================
-//= jAthena (1.0)
-//= DNett123 (1.1 - 1.5)
+//= jAthena/DNett123/Freya
 //===== Current Version: =====================================
-//= 2.0
+//= 2.1
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
-//= Jawaii Town Npcs
+//= Jawaii Town NPCs
 //===== Additional Comments: =================================
-//= 1.0 - Done By jAthena
-//= 1.1 - Rough Translation [DNett123]
-//= 1.2 - Started Grammer Corrections [DNett123]
-//= 1.3 - Some Edits Thanks To Vidar & Fusion [DNett123]
-//= 1.4 - Edited Dancer, Thanks ceskil [DNett123]
-//= 1.5 - Fixed Script, and spelling errors, some thanks to Sparkles [DNett123]
-//= 1.6 - Final corrections (not complete), thanks to the public, and DNett123!
-//= 1.6c - added missing monsters. Still 1 type is missing [Lupus]
-//= 1.7 – Fixed a lot of typo’s [Nexon]
-//= 1.8 - Removed monster spawns, added aegis ep 8.5 spawns to npc/mobs/fields/jawaii.txt [MasterOfMuppets]
-//= 2.0 - Updated the npcs according to iRO [MasterOfMuppets]
+//= 1.0 Added first version [jAthena]
+//= 1.1 Rough Translation [DNett123]
+//= 1.2 Started Grammer Corrections [DNett123]
+//= 1.3 Some Edits Thanks To Vidar and Fusion [DNett123]
+//= 1.4 Edited Dancer, Thanks ceskil [DNett123]
+//= 1.5 Fixed Script, and spelling errors, some thanks to Sparkles [DNett123]
+//= 1.6 Final corrections (not complete), thanks to the public, and DNett123!
+//= 1.7 Added missing monsters. Still 1 type is missing [Lupus]
+//= 1.8 Fixed a lot of typo’s [Nexon]
+//= 1.9 Removed monster spawns, added aegis ep 8.5 spawns to npc/mobs/fields/jawaii.txt [MasterOfMuppets]
+//= 2.0 Updated the npcs according to iRO [MasterOfMuppets]
+//= 2.1 Updated script formatting [Tsuyuki]
 //============================================================
 
-//===== Shop: ================================================
+
 jawaii.gat,186,174,2	shop	Jawaii Dealer	85,536:150
 
-//===== Jawaii Scripts ===================================
 jawaii.gat,141,200,3	script	Attendant#Sweetness Suite	798,{
 	
 	mes "[Alowawu]";
@@ -48,29 +47,33 @@ jawaii.gat,141,200,3	script	Attendant#Sweetness Suite	798,{
 	mes "That really hurts.";
 	next;
 	menu "Use it",-,"Cancel",s_Cancel;
-			if (Zeny <= 999) goto L_LESS;
-				mes "[Alowawu]";
-				mes "Thank you.";
-				mes "I'll open a portal for you right now.";
-				mes "Have a nice stay";
-				close2;
-				set Zeny,Zeny - 1000;
-				warp "jawaii_in.gat",116,64;
-				end;
-			L_LESS:
-				mes "[Alowawu]";
-				mes "Ah. Dear customer,";
-				mes "you don't have enough zeny to pay for the room.";
-				mes "I can't let you in. Or else,";
-				mes "my boss with get angry and hit me with Triple Blows.";
-				close;
-s_Cancel:
+
+		if (Zeny <= 999) goto L_LESS;
+
+		mes "[Alowawu]";
+		mes "Thank you.";
+		mes "I'll open a portal for you right now.";
+		mes "Have a nice stay";
+		close2;
+		set Zeny,Zeny - 1000;
+		warp "jawaii_in.gat",116,64;
+		end;
+
+		L_LESS:
 			mes "[Alowawu]";
-			mes "Haha, this room is better than others.";
-			mes "Believe, it's nice and clean.";
-			mes "If you have any change of mind,";
-			mes "just come and find me.";
+			mes "Ah. Dear customer,";
+			mes "you don't have enough zeny to pay for the room.";
+			mes "I can't let you in. Or else,";
+			mes "my boss with get angry and hit me with Triple Blows.";
 			close;
+
+	s_Cancel:
+		mes "[Alowawu]";
+		mes "Haha, this room is better than others.";
+		mes "Believe, it's nice and clean.";
+		mes "If you have any change of mind,";
+		mes "just come and find me.";
+		close;
 }
 
 jawaii.gat,108,199,5	script	Attendant#Classic_Suite	74,{
@@ -94,25 +97,28 @@ jawaii.gat,108,199,5	script	Attendant#Classic_Suite	74,{
 	next;
 	menu "Use",-,"Cancel",s_Cancel;
 
-			if (Zeny <= 999) goto L_LESS;
-				mes "[Poyi Oland]";
-				mes "Thank you for using.";
-				mes "Please enjoy your stay.";
-				close2;
-				set Zeny,Zeny - 1000;
-				warp "jawaii_in.gat",132,107;
-				end;
-			L_LESS:
-				mes "[Poyi Oland]";
-				mes "I'm sorry!";
-				mes "You do not have enough zeny.";
-				mes "Please confirm your zeny and come again!";
-				close;
-s_Cancel:
+		if (Zeny <= 999) goto L_LESS;
+
+		mes "[Poyi Oland]";
+		mes "Thank you for using.";
+		mes "Please enjoy your stay.";
+		close2;
+		set Zeny,Zeny - 1000;
+		warp "jawaii_in.gat",132,107;
+		end;
+
+		L_LESS:
 			mes "[Poyi Oland]";
-			mes "So, please come again after you've confirmed it.";
-			mes "Presence of any guest is always welcomed.";
+			mes "I'm sorry!";
+			mes "You do not have enough zeny.";
+			mes "Please confirm your zeny and come again!";
 			close;
+
+	s_Cancel:
+		mes "[Poyi Oland]";
+		mes "So, please come again after you've confirmed it.";
+		mes "Presence of any guest is always welcomed.";
+		close;
 }
 
 jawaii.gat,107,189,5	script	Attendant#Honeymoon Suite	93,{
@@ -129,21 +135,24 @@ jawaii.gat,107,189,5	script	Attendant#Honeymoon Suite	93,{
 	next;
 	menu "Yes",-,"Cancel",s_Cancel;
 
-			if (Zeny <= 999) goto L_LESS;
-				mes "[Saroki Lania]";
-				mes "...Please come in.";
-				close2;
-				set Zeny,Zeny - 1000;
-				warp "jawaii_in.gat",86,117;
-				end;
-			L_LESS:
-				mes "[Saroki Lania]";
-				mes "...Not enough zeny?";
-				close;
-s_Cancel:
+		if (Zeny <= 999) goto L_LESS;
+
+		mes "[Saroki Lania]";
+		mes "...Please come in.";
+		close2;
+		set Zeny,Zeny - 1000;
+		warp "jawaii_in.gat",86,117;
+		end;
+
+		L_LESS:
 			mes "[Saroki Lania]";
-			mes "...Ok then.";
+			mes "...Not enough zeny?";
 			close;
+
+	s_Cancel:
+		mes "[Saroki Lania]";
+		mes "...Ok then.";
+		close;
 }
 
 jawaii.gat,112,173,7	script	Attendant#Villa Suite	93,{
@@ -164,28 +173,30 @@ jawaii.gat,112,173,7	script	Attendant#Villa Suite	93,{
 	mes "What do you think?";
 	next;
 	menu "Use it",-,"Cancel",s_Cancel;
-			if (Zeny <= 999) goto L_LESS;
-				mes "[Lakers Lania]";
-				mes "Thanks and rest well.";
-				mes "I hope you'll enjoy your trip.";
-				close2;
-				set Zeny,Zeny - 1000;
-				warp "jawaii_in.gat",87,75;
-				end;
 
-			L_LESS:
-				mes "[Lakers Lania]";
-				mes "Oh, you don't have enough zeny for the stay...?";
-				mes "Maybe you can ask from your partner.";
-				mes "Huhuhuhu-";
-				close;
+		if (Zeny <= 999) goto L_LESS;
 
-s_Cancel:
+		mes "[Lakers Lania]";
+		mes "Thanks and rest well.";
+		mes "I hope you'll enjoy your trip.";
+		close2;
+		set Zeny,Zeny - 1000;
+		warp "jawaii_in.gat",87,75;
+		end;
+
+		L_LESS:
 			mes "[Lakers Lania]";
-			mes "Hmm, maybe you can try the honeymoon suite beside us.";
-			mes "Although Saroki is not sociable,";
-			mes "the room is a true masterpiece!";
+			mes "Oh, you don't have enough zeny for the stay...?";
+			mes "Maybe you can ask from your partner.";
+			mes "Huhuhuhu-";
 			close;
+
+	s_Cancel:
+		mes "[Lakers Lania]";
+		mes "Hmm, maybe you can try the honeymoon suite beside us.";
+		mes "Although Saroki is not sociable,";
+		mes "the room is a true masterpiece!";
+		close;
 }
 
 jawaii.gat,122,263,5	script	Sailor#Alberta	100,{
@@ -201,17 +212,17 @@ jawaii.gat,122,263,5	script	Sailor#Alberta	100,{
 	next;
 	menu "Yes, I am",-,"Cancel",s_Cancel;
 
-			mes "[Sailor]";
-			mes "Anchors away! Next stop! Alberta!!";
-			close2;
-			warp "alberta.gat",192,157;
-			end;
+		mes "[Sailor]";
+		mes "Anchors away! Next stop! Alberta!!";
+		close2;
+		warp "alberta.gat",192,157;
+		end;
 
-s_Cancel:
-			mes "[Sailor]";
-			mes "Well then, spend a little more time before you leave!";
-			mes "It's not like you can come here everyday!";
-			close;
+	s_Cancel:
+		mes "[Sailor]";
+		mes "Well then, spend a little more time before you leave!";
+		mes "It's not like you can come here everyday!";
+		close;
 }
 
 jawaii.gat,239,112,7	script	Sailor#Jawaii2	100,{
@@ -227,17 +238,17 @@ jawaii.gat,239,112,7	script	Sailor#Jawaii2	100,{
 	next;
 	menu "Yes, I am",-,"Cancel",s_Cancel;
 
-			mes "[Sailor]";
-			mes "Anchors away! Next stop! Izlude Island!!";
-			close2;
-			warp "izlude",176,182;
-			end;
+		mes "[Sailor]";
+		mes "Anchors away! Next stop! Izlude Island!!";
+		close2;
+		warp "izlude",176,182;
+		end;
 		
-s_Cancel:
-			mes "[Sailor]";
-			mes "Well then, spend a little more time before you leave!";
-			mes "It's not like you can come here everyday!";
-			close;
+	s_Cancel:
+		mes "[Sailor]";
+		mes "Well then, spend a little more time before you leave!";
+		mes "It's not like you can come here everyday!";
+		close;
 }
 
 jawaii.gat,220,235,3	script	Jawaii Citizen#Love Bo	724,{
@@ -359,7 +370,8 @@ jawaii_in.gat,15,104,0	script	Field Attendant#jawaii	80,{
 		mes "[Attendant]";
 		mes "Or else, get married and come here for honeymoon. I'll be glad to serve you.";
 		close;
-s_Cong:
+
+	s_Cong:
 		mes "[Attendant]";
 		mes "....? What? You're here to celebrate?";
 		mes "Oh my god! I'm so sorry! How rude of me!";
@@ -374,6 +386,7 @@ jawaii_in.gat,28,124,0	script	Bartender#jaw	46,{
 	mes "Welcome, dear customer.";
 	mes "So, what's your order?";
 	next;
+
 	Loopback:
 		menu "Today's special",-,"Nimi",s_Nimi,"Refreshing",s_Refreshing,"Misa",s_Misa,"Magnificent Blue",s_Magn;
 
@@ -651,7 +664,7 @@ s_Magn:
 				mes "[" + strcharinfo(0) + "]";
 				mes "Boss...Give me another shot...";
 				next;
-goto Loopback;
+				goto Loopback;
 }
 
 jawaii_in.gat,25,94,5	script	Attendant#jaw1	724,{

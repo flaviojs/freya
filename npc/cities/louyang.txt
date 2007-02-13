@@ -1,44 +1,40 @@
 //===== Freya Script =========================================
-//= Louyang City NPC's 
+//= Louyang Town 
 //===== By: ================================================== 
-//= Vidar (1.0)
-//= Mass Zero (1.1)
-//= Dino9021, roughly translated by Celest (1.2)
-//= Mass Zero (1.3)
-//= MasterOfMuppets (2.0)
-//= eAthena Dev Team
+//= A Lot of People/Freya
 //===== Current Version: ===================================== 
-//= 2.8
+//= 3.3
 //===== Compatible With: ===================================== 
 //= Freya
 //===== Description: ========================================= 
-//= Official NPC's for Louyang City
+//= Louyang Town NPCs
 //===== Additional Comments: ================================= 
-//= Originally made for Vidar
-//= 1.2 - Added official warp NPC's
-//= 1.3 - Fixed gramatical errors. (Like wtf's with the weird
-//	  texts celest? xD)
-//= 2.0 - Completely rewrote the current scripts based on iRO.
-//        Added the 'Shouting Quest' and the 'Medicine Quest'
+//= 1.0 Originally scripted for Vidar [Unknown]
+//= 1.1 Converted to Athena format [Unknown]
+//= 1.2 Added official warp NPCs [Unknown]
+//= 1.3 Fixed gramatical errors (Like wtf's with the weird texts celest? xD) [Unknown]
+//= 2.0 Completely rewrote the current scripts based on iRO [Unknown]
+//  - Added the 'Shouting Quest' and the 'Medicine Quest'
 //= 2.1 Optimized, made quest vars unique [Lupus]
-//= 2.1a minor fix, 2.1b Fixed Typo’s [Nexon]
-
-//= 2.2 Fixed exploits [Lupus]
-//= 2.2a Updated the color codes a little and fixed the shouting quest
-//=	 to broadcast green text.
-//= 2.2b A small fix to the shout quest npc in louyang field not warping you
-//=	 back up to the tower if you died or teleported out of there. [MasterOfMuppets]
-//= 2.3 A small fix, the code is so messy I can't believe I scripted it >.< [MasterOfMuppets]
-//= 2.4 Implemented a few more npcs, thanks to Prometheus for them. [MasterOfMuppets]
-//= 2.5 Implemented the Poison King quest, beware of potential bugs. [MasterOfMuppets]
-//= 2.6 Removed Duplicates [Silent]
-//= 2.6a Updated a few names with new item_db.txt names [Evera]
-//= 2.7 Split quests to quests/quests_louyang.txt [Evera]
+//= 2.2 Minor fix + typo fixes [Nexon]
+//= 2.3 Fixed exploits [Lupus]
+//= 2.4 Updated the color codes a little and fixed the shouting quest to broadcast green text [Unknown]
+//= 2.5 A small fix to the shout quest npc in louyang field not warping you
+//=	 back up to the tower if you died or teleported out of there [MasterOfMuppets]
+//= 2.6 A small fix, the code is so messy I can't believe I scripted it >.< [MasterOfMuppets]
+//= 2.7 Implemented a few more npcs, thanks to Prometheus for them. [MasterOfMuppets]
+//= 2.8 Implemented the Poison King quest, beware of potential bugs. [MasterOfMuppets]
+//= 2.9 Removed Duplicates [Silent]
+//= 3.0 Updated a few names with new item_db.txt names [Evera]
+//= 3.1 Split quests to quests/quests_louyang.txt [Evera]
 //=	Replaced some instances of using global vars when not needed [Evera]
-//= 2.8 Minor text fix to the Louyang > Alberta warpra NPC [Tsuyuki]
+//= 3.2 Minor text fix to the Louyang -> Alberta warpra NPC [Tsuyuki]
+//= 3.3 Updated script formatting [Tsuyuki]
 //============================================================
 
+
 alberta.gat,245,45,4	script	Girl#02	815,{
+
 	mes "[Girl]";
 	mes "La la la la~";
 	mes "I feel so good today~";
@@ -116,6 +112,7 @@ M_CANCEL2:
 }
 
 lou_fild01.gat,190,100,1	script	Girl#03	815,{
+
 	mes "[Girl]";
 	mes "Would you";
 	mes "like to go back";
@@ -146,6 +143,7 @@ M_CANCEL:
 }
 
 louyang.gat,224,104,4	script	Representative#01	818,{
+
 	mes "[Representative]";
 	mes "Welcome to Louyang,";
 	mes "an ancient land with";
@@ -241,6 +239,7 @@ M_CANCEL:
 }
 
 louyang.gat,213,214,4	script	Soldier#10	825,{
+
 	mes "[Soldier]";
 	mes "Welcome to louyang, a city with a long and colorful history.";
 	next;
@@ -335,6 +334,7 @@ M_CANCEL:
 }
 
 louyang.gat,261,123,4	script	Chi Wu Ping	824,{
+
 	mes "[Chi Wu Ping]";
 	mes "I don't feel good...";
 	mes "So... Totally out of it...";
@@ -363,6 +363,7 @@ louyang.gat,261,123,4	script	Chi Wu Ping	824,{
 }
 
 lou_in02.gat,43,169,8	script	Jiang Rong	827,{
+
 	mes "[Jiang Rong]";
 	mes "Dragon Soup is known for its spicy";
 	mes "yea sweet and refreshing taste.";
@@ -388,6 +389,7 @@ lou_in02.gat,43,169,8	script	Jiang Rong	827,{
 }
 
 lou_in02.gat,76,181,2	script	Employee#03	822,{
+
 	mes "[Huang Jia Xian]";
 	mes "Ehhhh...";
 	mes "Forgive me...";
@@ -397,6 +399,7 @@ lou_in02.gat,76,181,2	script	Employee#03	822,{
 }
 
 lou_in02.gat,58,183,4	script	Chef Assistant	823,{
+
 	mes "[Jin Wei Ling]";
 	mes "I used to be";
 	mes "an enthusiastic";
@@ -447,12 +450,14 @@ lou_in02.gat,58,183,4	script	Chef Assistant	823,{
 }
 
 lou_in02.gat,58,181,2	script	Lounpc	139,{
+
 OnEffect:
 	misceffect 122;
 	end;
 }
 
 louyang.gat,274,136,4	script	Powerful-looking guy	819,{
+
 	mes "[Akiira]";
 	mes "I am practicing my 'Claw of";
 	mes "Dragon.' I not only need to use the";
@@ -484,6 +489,7 @@ louyang.gat,274,136,4	script	Powerful-looking guy	819,{
 }
 
 louyang.gat,276,136,4	script	Fist Master	819,{
+
 	mes "[Zhiang Xiau Ji]";
 	mes "Finally...";
 	mes "I have mastered";
@@ -526,6 +532,7 @@ louyang.gat,276,136,4	script	Fist Master	819,{
 }
 
 louyang.gat,272,133,0	script	Trainee::trainees	819,{
+
 	set @talk,rand(12);
 	if (@talk == 1) goto L_QUOT1;
 	if (@talk == 2) goto L_QUOT2;
@@ -538,72 +545,84 @@ louyang.gat,272,133,0	script	Trainee::trainees	819,{
 	if (@talk == 9) goto L_QUOT9;
 	if (@talk == 10) goto L_QUOT10;
 	if (@talk == 11) goto L_QUOT11;
+
 L_QUOT0:
 	mes "[Trainee]";
 	mes "Aha~!";
 	mes "Hai~!!";
 	mes "Huh...";
 	close;
+
 L_QUOT1:
 	mes "[Trainee]";
 	mes "Woh~!";
 	mes "Hai~!!";
 	mes "Huh huh...";
 	close;
+
 L_QUOT2:
 	mes "[Trainee]";
 	mes "Kyaa~";
 	mes "Yah~~!!";
 	mes ".......";
 	close;
+
 L_QUOT3:
 	mes "[Trainee]";
 	mes "Hu~!";
 	mes "Hu hu~~!!";
 	mes "Hu...";
 	close;
+
 L_QUOT4:
 	mes "[Trainee]";
 	mes "Wah?!";
 	mes "Ahchiu~~!!";
 	mes "Wah...";
 	close;
+
 L_QUOT5:
 	mes "[Trainee]";
 	mes "Yaah~";
 	mes "...!";
 	mes "........!!";
 	close;
+
 L_QUOT6:
 	mes "[Trainee]";
 	mes "Chongchiu!!";
 	mes "Hu~~!!";
 	mes "Hwooh~~";
 	close;
+
 L_QUOT7:
 	mes "[Trainee]";
 	mes "Zhua loh~!";
 	mes ".....";
 	mes "Hu";
 	close;
+
 L_QUOT8:
 	mes "[Trainee]";
 	mes "One hit~!";
 	mes "Hai~!!";
 	mes "Yah~!!";
 	close;
+
 L_QUOT9:
 	mes "[Trainee]";
 	mes "Ai yah..";
 	mes "Yaahah~~";
 	mes "(rolls around)......";
 	close;
+
 L_QUOT10:
 	mes "[Trainee]";
 	mes "Niu ah...";
 	mes "One~~!!";
 	mes "Two~~!!!";
 	close;
+
 L_QUOT11:
 	mes "[Trainee]";
 	mes "Yeeah~!";
@@ -624,9 +643,8 @@ louyang.gat,278,133,0	duplicate(trainees)	Trainee#10	819
 louyang.gat,278,131,0	duplicate(trainees)	Trainee#11	819
 louyang.gat,278,129,0	duplicate(trainees)	Trainee#12	819
 
-
-
 lou_in01.gat,111,151,4	script	Soldier#11	825,{
+
 	mes "[Soldier]";
 	mes "*Yawn* It's so boring here";
 	mes "nowadays. Although, I hear that";
@@ -643,6 +661,7 @@ lou_in01.gat,111,151,4	script	Soldier#11	825,{
 }
 
 lou_in01.gat,91,151,4	script	Soldier#12	825,{
+
 	mes "[Soldier]";
 	mes "....z..Z..z...";
 	next;
@@ -667,6 +686,7 @@ lou_in01.gat,91,151,4	script	Soldier#12	825,{
 }
 
 lou_in01.gat,82,139,6	script	Soldier#13	825,{
+
 	mes "[Soldier]";
 	mes "There is nothing much, but if you";
 	mes "wish to look around this room,";
@@ -675,6 +695,7 @@ lou_in01.gat,82,139,6	script	Soldier#13	825,{
 }
 
 lou_in01.gat,45,138,4	script	Soldier#14	825,{
+
 	mes "[Soldier]";
 	mes "It's strange to see outsiders in";
 	mes "this kind of place. We don't have";
@@ -684,6 +705,7 @@ lou_in01.gat,45,138,4	script	Soldier#14	825,{
 }
 
 lou_in01.gat,102,144,4	script	Soldier#15	825,{
+
 	mes "[Soldier]";
 	mes "People have been";
 	mes "saying that there's";
@@ -699,6 +721,7 @@ lou_in01.gat,102,144,4	script	Soldier#15	825,{
 }
 
 lou_in01.gat,99,144,4	script	Soldier#16	825,{
+
 	mes "[Soldier]";
 	mes "Ah, don't bother";
 	mes "to listen to this";
@@ -711,6 +734,7 @@ lou_in01.gat,99,144,4	script	Soldier#16	825,{
 }
 
 lou_in01.gat,25,23,4	script	Friendly Looking Lady	817,{
+
 	mes "[Hong Miao]";
 	mes "Welcome.";
 	next;
@@ -743,27 +767,30 @@ lou_in01.gat,25,23,4	script	Friendly Looking Lady	817,{
 	mes "transfer service for 500 zeny per";
 	mes "person.";
 	close;
-s_Yes:
-	if (zeny < 500) goto L_Zeny;
-	mes "[Hong Miao]";
-	mes "Thank for your patronage.";
-	mes "We are trying to provide you with";
-	mes "the best service, Please";
-	mes "come again.";
-	close2;
-	set Zeny,Zeny - 500;
-	warp "lou_in01.gat",16,19;
-	end;
-L_Zeny:
-	mes "[Hong Miao]";
-	mes "I am sorry, but you don't have enough money.";
-	close;
-s_Next_Time:
-	mes "[Hong Miao]";
-	mes "Please come";
-	mes "back later.";
-	mes "Have a good day.";
-	close;
+
+	s_Yes:
+		if (zeny < 500) goto L_Zeny;
+		mes "[Hong Miao]";
+		mes "Thank for your patronage.";
+		mes "We are trying to provide you with";
+		mes "the best service, Please";
+		mes "come again.";
+		close2;
+		set Zeny,Zeny - 500;
+		warp "lou_in01.gat",16,19;
+		end;
+
+	L_Zeny:
+		mes "[Hong Miao]";
+		mes "I am sorry, but you don't have enough money.";
+		close;
+
+	s_Next_Time:
+		mes "[Hong Miao]";
+		mes "Please come";
+		mes "back later.";
+		mes "Have a good day.";
+		close;
 }
 
 louyang.gat,84,253,0	script	Exit	111,{
@@ -775,8 +802,9 @@ louyang.gat,84,253,0	script	Exit	111,{
 	menu "Yes",-,"No",s_No;
 	warp "lou_in01.gat",10,18;
 	end;
-s_No:
-	close;
+
+	s_No:
+		close;
 }
 
 lou_in02.gat,272,55,1	script	Familiar-Looking Patient	86,{

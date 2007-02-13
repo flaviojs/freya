@@ -1,14 +1,14 @@
 //===== Freya Script =========================================
 //= Wedding Script
 //===== By: ==================================================
-//= AppleGirl & Evera
+//= AppleGirl/Evera/Freya
 //===== Current Version: =====================================
 //= 1.8
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
-//= Fully working for normal and same-sex marriages. The Divorce
-//= NPC is bugged however, and will be fixed very soon.
+//= Fully working for normal and same-sex marriages. Divorce
+//= is contained in a separate file.
 //===== Additional Comments: =================================
 //= 1.0 Added first version [AppleGirl/Evera]
 //= 1.1 Tested and debugged [whocares]
@@ -28,6 +28,7 @@
 //= 1.8 Removed the effect now that the proper Divorce script has been implemented [Tsuyuki]
 //= Note: The official divorce script charges 2.5 mil zeny
 //============================================================
+
 
 //============================================================
 //= Variable Notes

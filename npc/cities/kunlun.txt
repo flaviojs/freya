@@ -1,24 +1,25 @@
 //===== Freya Script =========================================
 //= Kunlun Town
 //===== By: ================================================== 
-//=  edited by x[tsk] 4/30/04
+//= x[tsk]/Freya
 //===== Current Version: ===================================== 
-//= 1.2
+//= 1.4
 //===== Compatible With: ===================================== 
 //= Freya
 //===== Description: ========================================= 
-//
+// Kunlun Town NPCs
 //===== Additional Comments: ================================= 
-// May be missing npc's and dialogue.
-//= 1.1 Fixed Typoís [Nexon]
+//= 1.0 Added first version [x[tsk]]
+//= 1.1 Fixed typos [Nexon]
 //= 1.2 Removed Duplicates [Silent]
 //= 1.3 Max NPC Name is 23 [Toms]
+//= 1.4 Updated script formatting [Tsuyuki]
+//= To-Do: Reconvert from Aegis, this one is terrible
 //============================================================
 
 
-//Eventñ¢í≤ç∏ÅI
-
 alberta.gat,245,69,4	script	Public Relations#01	776,{
+
 	mes "[Waba]";
 	mes "Hello there! I have traveled far from the Kingdom of Kunlun, my hometown.";
 	mes "I invite all to visit and celebrate the diversity of Kunlun! We welcome all sorts of visitors.";
@@ -56,9 +57,8 @@ alberta.gat,245,69,4	script	Public Relations#01	776,{
 
 }
 
-//===============================================================================
-
 gon_fild01.gat,255,79,6	script	Public Relations#02	776,{
+
 	mes "[Waba]";
 	mes "We are ready to head back as soon as the conditions are favorable.";
 	next;
@@ -66,24 +66,23 @@ gon_fild01.gat,255,79,6	script	Public Relations#02	776,{
 
 		warp "alberta.gat",243,68;
 		end;
+
 	M_End:
 		mes "[Waba]";
 		mes "Oh there's no rush! Enjoy yourself and take in all the sights!";
 		close;
 }
 
-//===============================================================================
-
 gon_fild01.gat,187,239,4	script	Public Relations#03	776,{
+
 	mes "[Choseryu]";
 	mes "The sacred pillar of light connects this island to Kunlun Kingdom. There's no time to idly chit chat now, be on your way.";
 	mes "I hope you will have many fond memories of Kunlun before you leave.";
 	close;
 }
 
-//===============================================================================
-
 gonryun.gat,153,64,0	script	Public Relations#04	776,{
+
 	mes "[Choseryu]";
 	mes "If you're ready to set sail I can send you back to the harbor.";
 	next;
@@ -100,11 +99,8 @@ gonryun.gat,153,64,0	script	Public Relations#04	776,{
 		close;
 }
 
-//===============================================================================
-//In èh
-//===============================================================================
-
 gon_in.gat,153,35,4	script	Hotel Manager	702,{
+
 	mes "[Mayouban]";
 	mes "Welcome! Your face is new around here. We've had many strangers from the outside coming into the village recently.";
 	mes "We've been quite short-handed here at the hotel.";
@@ -117,15 +113,15 @@ gon_in.gat,153,35,4	script	Hotel Manager	702,{
 		mes "[Mayouban]";
 		mes "Here you go.  There have been so many rowdy customers lately sometimes I'd just like to sit down and have a drink myself.";
 		close;
+
 	M_End:
 		mes "[Mayouban]";
 		mes "May you have a safe journey! Come back any time.";
 		close;
 }
 
-//===============================================================================
-
 gon_in.gat,173,27,2	script	Kuhau	774,{
+
 	mes "[Kuhau]";
 	mes "This hotel sells the best drinks! Not only is it potent, but it tastes great, too! Of course that's only for the adults.";
 	next;
@@ -134,9 +130,8 @@ gon_in.gat,173,27,2	script	Kuhau	774,{
 	close;
 }
 
-//===============================================================================
-
 gon_in.gat,165,16,4	script	Drunkard	748,{
+
 	mes "[Sorubun]";
 	mes "Oh my head! I had too much to drink yesterday and passed out right here on the table.";
 	mes "The manager told me that I shouldn't drink anymore and I should have listened.";
@@ -147,9 +142,8 @@ gon_in.gat,165,16,4	script	Drunkard	748,{
 	close;
 }
 
-//===============================================================================
-
 gonryun.gat,139,142,6	script	Girl#08	772,{
+
 	mes "[Sanfayon]";
 	mes "................";
 	mes "It's been great having new visitors come to the village, but........ ever since I was robbed by that Thief.......";
@@ -160,9 +154,8 @@ gonryun.gat,139,142,6	script	Girl#08	772,{
 	close;
 }
 
-//===============================================================================
-
 gonryun.gat,113,135,6	script	Guardsman#01	780,{
+
 	mes "[Guardsman]";
 	mes "Welcome to Kunlun. This is the home of our governor, Sayoumun.";
 	next;
@@ -173,8 +166,6 @@ gonryun.gat,113,135,6	script	Guardsman#01	780,{
 	mes "Such a thing rarely happens, but when it does.... we are always ready to deal with any problems!";
 	close;
 }
-
-//===============================================================================
 
 gonryun.gat,113,127,6	script	Guardsman#02	780,{
 	mes "[Guardsman]";
@@ -188,11 +179,8 @@ gonryun.gat,113,127,6	script	Guardsman#02	780,{
 	close;
 }
 
-//===============================================================================
-//ë∫í∑ëÓ
-//===============================================================================
-
 gon_in.gat,18,27,4	script	Elder's Wife	771,{
+
 	mes "[Sangufayon]";
 	mes "Oh my! You look like an important visitor from the outside. Aren't you?";
 	next;
@@ -201,16 +189,15 @@ gon_in.gat,18,27,4	script	Elder's Wife	771,{
 		mes "[Sangufayon]";
 		mes "We do not get many visitors from the outside to see my husband so it's so easy to spot them. Hohohohoho!";
 		close;
+
 	M_End:
-		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		mes "[Sangufayon]";
 		mes "The master of the house, hohohohoho? Why... he is upstairs on the second floor if you need to talk to him, hohohoho.";
 		close;
 }
 
-//===============================================================================
-
 gon_in.gat,17,93,4	script	Village Elder	775,{
+
 	mes "[Sayoumun]";
 	emotion e_yawn;
 	mes "Zzzzzzzzzzz.......";
@@ -229,9 +216,8 @@ gon_in.gat,17,93,4	script	Village Elder	775,{
 	close;
 }
 
-//===============================================================================
-
 gonryun.gat,119,111,4	script	Chen Wan Sok	89,{
+
 	mes "[Chen Wan Sok]";
 	mes "The village Elder here is truly a sociable fellow. Just because he is friendly does not mean he is lax on the rules! He can get riled up sometimes.";
 	next;
@@ -240,18 +226,16 @@ gonryun.gat,119,111,4	script	Chen Wan Sok	89,{
 	close;
 }
 
-//===============================================================================
-
 gonryun.gat,100,241,5	script	Unsociable Man	733,{
+
 	emotion e_dots;
 	mes "[Saunso]";
 	mes "I am too busy to talk, come back later!";
 	close;
 }
 
-//===============================================================================
-
 gonryun.gat,268,88,4	script	Ryan Chun Ho	776,{
+
 	mes "[Ryan Chun Ho]";
 	mes "We are an independent race, submitting to no aggressor! This is the blessed area which we will never give up.";
 	next;
@@ -260,9 +244,8 @@ gonryun.gat,268,88,4	script	Ryan Chun Ho	776,{
 	close;
 }
 
-//===============================================================================
-
 gonryun.gat,181,161,4	script	Chon Munjin	773,{
+
 	mes "[Chon Munjin]";
 	mes "The men of Kunlun must be powerful and bold! But being such a man, one just can not get married. Don't you think?";
 	next;
@@ -271,9 +254,8 @@ gonryun.gat,181,161,4	script	Chon Munjin	773,{
 	close;
 }
 
-//===============================================================================
-
 gonryun.gat,237,225,4	script	Hanyon Kyou	776,{
+
 	mes "[Hanyon Kyou]";
 	mes "How could I have done something like this?";
 	mes "..............";
@@ -282,8 +264,6 @@ gonryun.gat,237,225,4	script	Hanyon Kyou	776,{
 	mes "I've dropped my lucky knife! Now it's probably gone forever."; 
 	close;
 }
-
-//===============================================================================
 
 gonryun.gat,51,101,4	script	Gaiysonchoru	778,{
 	mes "[Gaiysonchoru]";
@@ -298,9 +278,8 @@ gonryun.gat,51,101,4	script	Gaiysonchoru	778,{
 	close;
 }
 
-//===============================================================================
-
 gonryun.gat,166,196,4	script	Soldier#17	780,{
+
 	mes "[Wagou]";
 	mes "Do you know what this is?";
 	next;

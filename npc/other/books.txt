@@ -1,9 +1,21 @@
-// $Id: books.txt 464 2005-10-30 22:27:54Z Yor $
-// Changed Mage Guild Book to the correct one (now located in mage.txt)
-//<--------------- NPCs BOOKS [Update: July. 27, 2004] --------------->\\
+//===== Freya Script =========================================
+//= Prontera Library
+//===== By: ==================================================
+//= Unknown/Freya
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
+//= Prontera Library
+//= Last Update: July 27th, 2004
+//===== Additional Comments: =================================
+//= 1.0 Added first version [Unknown]
+//============================================================
 
-//<=========== Library - Begin ==========>\\
+
 prt_in.gat,159,56,4	script	Monster Encyclopedia	111,{
+
 	mes "^FF0000[Monster Encyclopedia]^000000";
 	mes "This is a Monster Encyclopedia including information of Earth,Fire,Neutral Monsters!";
 	next;
@@ -302,6 +314,7 @@ prt_in.gat,159,56,4	script	Monster Encyclopedia	111,{
 }
 
 prt_in.gat,161,50,4	script	Monster Encyclopedia	111,{
+
 	mes "^FF0000[Monster Encyclopedia]^000000";
 	mes "This is a Monster Encyclopedia including Monsters of Dark,Poison and Undead Property!";
 	next;
@@ -533,6 +546,7 @@ prt_in.gat,161,50,4	script	Monster Encyclopedia	111,{
 }
 
 prt_in.gat,162,68,4	script	`Merchant Guideline' for Dummies	111,{
+
 	mes "^FF0000[`Merchant Guideline' for Dummies]^000000";
 	mes "Please go over the next page if you want to check `Vending'.";
 	next;
@@ -571,6 +585,7 @@ prt_in.gat,162,68,4	script	`Merchant Guideline' for Dummies	111,{
 }
 
 prt_in.gat,164,96,4	script	Monster Encyclopedia	111,{
+
 	mes "^FF0000[Dungeon Monster Encyclopedia]^000000";
 	mes "This is an Encyclopedia describing Monsters living in Dungeons.";
 	next;
@@ -933,6 +948,7 @@ prt_in.gat,164,96,4	script	Monster Encyclopedia	111,{
 }
 
 prt_in.gat,164,102,4	script	Monster Encyclopedia	111,{
+
 	mes "^FF0000[Dungeon Monster Encyclopedia]^000000";
 	mes "The is an Encyclopedia describing Monsters living in Dungeons.";
 	next;
@@ -1314,6 +1330,7 @@ prt_in.gat,164,102,4	script	Monster Encyclopedia	111,{
 }
 
 prt_in.gat,168,56,4	script	Monster Encyclopedia	111,{
+
 	mes "^FF0000[Monster Encyclopedia]^000000";
 	mes "I am a Monster Encyclopedia, you can check several types of Monster with me.";
 	next;
@@ -1559,6 +1576,7 @@ prt_in.gat,168,56,4	script	Monster Encyclopedia	111,{
 }
 
 prt_in.gat,168,68,4	script	`Merchant Guideline' for Dummies	111,{
+
 	mes "^FF0000[Blacksmith Guide for Dummies]^000000";
 	mes "You can get the information about how to refine Ores and about Weapon Craft Skills.";
 	next;
@@ -1618,6 +1636,7 @@ prt_in.gat,168,68,4	script	`Merchant Guideline' for Dummies	111,{
 }
 
 prt_in.gat,172,96,4	script	Monster Encyclopedia	111,{
+
 	mes "^FF0000[Dungeon Monster Encyclopedia]^000000";
 	mes "This is an Encyclopedia describing monsters living in Dungeons.";
 	next;
@@ -1942,6 +1961,7 @@ prt_in.gat,172,96,4	script	Monster Encyclopedia	111,{
 }
 
 prt_in.gat,172,102,4	script	Monster Encyclopedia	111,{
+
 	mes "^FF0000[Dungeon Monster Encyclopedia]^000000";
 	mes "The is an Encyclopedia describing Monsters living in Dungeons.";
 	next;
@@ -2286,4 +2306,3 @@ prt_in.gat,172,102,4	script	Monster Encyclopedia	111,{
 	Cancel:
 		close;
 }
-//<=========== Library - End ==========>\\

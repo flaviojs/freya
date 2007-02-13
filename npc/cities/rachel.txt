@@ -1,17 +1,18 @@
 //===== Freya Script =======================================
 //= Rachel City NPCs
 //===== By: ==================================================
-//= Freya (Tsuyuki/Harp)
+//= Freya
 //===== Current Version: =====================================
-//= 0.6
+//= 1.2
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
-//= Arunafeltz NPCs
+//= Rachel Town NPCs
 //===== Additional Comments: =================================
-//= 0.5 Text translated from Korean > English, incomplete, 
+//= 1.0 Text translated from Korean > English, incomplete, 
 //= possibly missing some NPCs and missing all quests [Harp/Tsuyuki]
-//= 0.6 Moved Cool Event Corp Employee to Cool event script [Tsuyuki]
+//= 1.1 Moved Cool Event Corp Employee to Cool Event script [Tsuyuki]
+//= 1.2 Updated formatting [Tsuyuki]
 //============================================================
 
 
@@ -20,7 +21,7 @@ ra_fild12.gat,45,230,3	script	Airport Guide	934,{
 	mes "[Airport Guide]";
 	mes "This international airline, which is run by Shubaltz, runs from Arunafeltz to Richelmanhole.";
 	mes "If you are looking for the airport, please follow the minimap to the indicated spot.";
-	//looks like there's blinking at the far edge of the map - middle right.
+	// Looks like there's blinking at the far edge of the map - Middle right.
 	close;
 }
 
@@ -186,16 +187,17 @@ rachel.gat,157,183,3	script	Follower Ustiala	916,{
 		mes " ... ";
 		next;
 		menu "Sorry, but I'd rather not get involved..",-,"OK, leave it up to me.",L_Helpout;
+
 			mes "[Ustialla]";
 			mes "Oh.. I see.. I guess even if we share the";
 			mes "same faith, we're just strangers in the end..";
 			close;
 
 		L_Menu2: // No Info
-		close;
+			close;
 
 		L_Helpout: // No Info
-		close;
+			close;
 
 }
 
@@ -372,8 +374,6 @@ rachel.gat,243,37,3	script	Kid	921,{
 	K_end: // No Info
 		close;
 }
-
-// bottom right, right bottom of pond.
 
 rachel.gat,266,35,3	script	Grandmother	918,{
 
@@ -568,7 +568,7 @@ ra_in01.gat,384,246,3	script	Vincent	47,{
 
 // Player didn't talk to the servants again, but I'd imagine
 // they'd say something different now that Vincent's quest has
-// been started.
+// been started [Harp]
 
 rachel.gat,48,237,5	script	Jenny	893,{
 

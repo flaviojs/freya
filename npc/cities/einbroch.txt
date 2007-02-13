@@ -1,41 +1,44 @@
 //===== Freya Script =========================================
 //= Einbroch Town
 //===== By: ================================================== 
-//= Nexon
+//= Nexon/MasterOfMupphets/Freya
 //===== Current Version: ===================================== 
-//= 1.3
+//= 2.6
 //===== Compatible With: ===================================== 
 //= Freya
 //===== Description: ========================================= 
-//=
+//= Einbroch Town NPCs
 //===== Additional Comments: ================================= 
-//= 0.2 Added some NPCs [MasterOfMuppets]
-//= 0.3 Added a few npcs by reddozen [MasterOfMuppets]
-//= 0.4 Added a crappy quest, have fun guys... [MasterOfMuppets]
-//= 0.4a Added exp bonus for the factory quest, borrowed from a Korean fansite.
-//= 0.4b Added missing close [Komurka]
-//= 0.5 Added Temporal Locations of Gunslinger Job Change map.
-//=	Info provided by RockmanEXE [erKURITA]
-//= 0.6 Implemented a crap quest [MasterOfMuppets]
-//= 0.7 Implemented an inn NPC [MasterOfMuppets]
-//= 0.8 Implemented the Shinokas quest, thanks to [MasterOfMuppets]
-//= 	Dj-Yhn for scripting it.
-//= 0.9 Removed Duplicates [Silent]
-//= 1.0 Implemented the Lover's quest. [MasterOfMuppets]
-//= 1.1	Split quests into quests/cities_einbroch.txt [Evera]
-//= 1.2 Split more quests into above file [Evera]
-//= 1.3 Added (finally) the Garrison quest npc [erKURITA]
-//= 1.4 Implemented the polution script. [MasterOfMuppets]
+//= 1.0 Added first version [Nexon]
+//= 1.1 Added a few npcs by reddozen/myself [MasterOfMuppets]
+//= 1.2 Added a crappy quest, have fun guys... [MasterOfMuppets]
+//= 1.3 Added exp bonus for the factory quest, borrowed from a Korean fansite.
+//= 1.4 Added missing close [Komurka]
+//= 1.5 Added Temporal Locations of Gunslinger Job Change map.
+//= - Info provided by RockmanEXE [erKURITA]
+//= 1.6 Implemented a crap quest [MasterOfMuppets]
+//= 1.7 Implemented an inn NPC [MasterOfMuppets]
+//= 1.8 Implemented the Shinokas quest, thanks to [MasterOfMuppets]
+//= - Dj-Yhn for scripting it.
+//= 1.9 Removed Duplicates [Silent]
+//= 2.0 Implemented the Lover's quest. [MasterOfMuppets]
+//= 2.1	Split quests into quests/cities_einbroch.txt [Evera]
+//= 2.2 Split more quests into above file [Evera]
+//= 2.3 Added (finally) the Garrison quest npc [erKURITA]
+//= 2.4 Implemented the polution script. [MasterOfMuppets]
+//= 2.5 Removed Einbroch Hotel Employee (Already in merchants/inn.txt) [Tsuyuki]
+//= 2.6 Updated script formatting [Tsuyuki]
 //============================================================
 
 
-//== some boards, signs ======================
 einbroch.gat,220,208,5	script	Notice Board#01	858,{
+
 	mes "[Weapon Shop Entrance]";
 	close;
 }
 
 einbroch.gat,183,174,5	script	Bulletin Board#01	858,{
+
 	mes "East - Weapon Shop, Hotel";
 	mes "South - Factory";
 	mes "Southwest - Airship Repair Shop,";
@@ -45,18 +48,21 @@ einbroch.gat,183,174,5	script	Bulletin Board#01	858,{
 }
 
 einbroch.gat,244,255,5	script	Bulletin Board#02	858,{
+
 	mes " ";
 	mes " Train Station";
 	close;
 }
 	
 einbroch.gat,68,206,5	script	Bulletin Board#03	858,{
+
 	mes " ";
 	mes " Airship Airport";
 	close;
 }
 	
 einbroch.gat,162,256,5	script	Bulletin Board#04	858,{
+
 	mes "East - Train Station";
 	mes "Southeast - Hotel";
 	mes "South - Weapon Shop, Factory";
@@ -66,6 +72,7 @@ einbroch.gat,162,256,5	script	Bulletin Board#04	858,{
 }
 
 einbroch.gat,235,141,5	script	Bulletin Board#05	858,{
+
 	mes "Southwest- Airship Repair Shop,";
 	mes "Laboratory";
 	mes "Northwest- Airport";
@@ -74,7 +81,6 @@ einbroch.gat,235,141,5	script	Bulletin Board#05	858,{
 	close;
 }
 
-//===== Town NPC ===========================================
 function	script	Ein_Tower	{
 	mes "["+ @Tower_Name$ +"]";
 	mes "Good day~";
@@ -144,6 +150,7 @@ s_NEnough:
 }
 	
 einbroch.gat,176,172,5	script	Khemko	855,{
+
 	set @Tower_Name$,"Khemko";
 	callfunc "Ein_Tower";
 	end;
@@ -160,6 +167,7 @@ OnUnhide:
 }
 	
 einbroch.gat,218,198,5	script	Mark	855,{
+
 	set @Tower_Name$,"Mark";
 	callfunc "Ein_Tower";
 	end;
@@ -176,6 +184,7 @@ OnUnhide:
 }
 	
 einbroch.gat,174,228,5	script	Oberu	855,{
+
 	set @Tower_Name$,"Oberu";
 	callfunc "Ein_Tower";
 	end;
@@ -192,6 +201,7 @@ OnUnhide:
 }
 	
 einbroch.gat,175,196,5	script	Morei	854,{
+
 	mes "[Morei]";
 	mes "Greetings,";
 	mes "I am Morei,";
@@ -213,6 +223,7 @@ einbroch.gat,175,196,5	script	Morei	854,{
 	mes "enjoy your time";
 	mes "in Einbroch Tower.";
 	close;
+
 s_Goback:
 	mes "[Morei]";
 	mes "I see.";
@@ -239,6 +250,7 @@ OnUnhide:
 }
 	
 einbroch.gat,208,208,3	script	Kesunboss	850,{
+
 	mes "[Kesunboss]";
 	mes "Lady Calla is the";
 	mes "epitome of elegance,";
@@ -282,6 +294,7 @@ OnUnhide:
 }
 
 einbroch.gat,232,255,5	script	Khowropher	847,{
+
 	mes "[Khowropher]";
 	mes "^6A6A6A*Cough cough*^000000";
 	mes "Jiminy! The air here";
@@ -314,11 +327,10 @@ OnHide:
 OnUnhide:
 	misceffect 215;
 	end;
-
-
 }
 
 einbroch.gat,259,327,5	script	Leslie	846,{
+
 	mes "[Leslie]";
 	mes "^6A6A6A*Cough cough*^000000";
 	mes "Laaaand sakes!";
@@ -348,10 +360,10 @@ OnHide:
 OnUnhide:
 	misceffect 215;
 	end;
-
 }
 
 einbroch.gat,232,272,3	script	Train Station Staff#01::EinbrochTrain	852,{
+
 	mes "[Staff]";
 	mes "Welcome to";
 	mes "the Train Station.";
@@ -373,6 +385,7 @@ einbroch.gat,232,272,3	script	Train Station Staff#01::EinbrochTrain	852,{
 	mes "Please enjoy your";
 	mes "stay in Einbroch.";
 	close;
+
 s_Yes:
 	if (Zeny < 200) goto s_NEnough;
 	mes "[Staff]";
@@ -384,12 +397,14 @@ s_Yes:
 	set Zeny,Zeny - 200;
 	warp "einbech.gat",43,215;
 	end;
+
 s_NEnough:
 	mes "[Staff]";
 	mes "I'm sorry but you";
 	mes "do not have enough";
 	mes "money to pay the fee.";
 	close;
+
 s_Enviroment:
 	mes "[Staff]";
 	mes "Einbroch is infamous for";
@@ -413,12 +428,12 @@ OnHide:
 OnUnhide:
 	misceffect 215;
 	end;
-
 }
 	
 einbroch.gat,252,301,3	duplicate(EinbrochTrain)	Train Station Staff#02	852
 
 einbroch.gat,228,121,5	script	Little Toby	855,{
+
 	mes "[Little Toby]";
 	mes "Excuse me...";
 	mes "But I'm lost!";
@@ -448,10 +463,10 @@ OnHide:
 OnUnhide:
 	misceffect 215;
 	end;
-
 }
 	
 einbroch.gat,229,149,3	script	Sleik	854,{
+
 	mes "[Sleik]";
 	mes "Surprisingly, we have";
 	mes "a Train Station that everyone";
@@ -476,10 +491,10 @@ OnHide:
 OnUnhide:
 	misceffect 215;
 	end;
-
 }
 
 einbroch.gat,236,191,3	script	Tan	855,{
+
 	mes "[Tan]";
 	mes "All the factories";
 	mes "here in Einbroch are";
@@ -510,7 +525,6 @@ OnHide:
 OnUnhide:
 	misceffect 215;
 	end;
-
 }
 
 ein_in01.gat,31,217,3	script	Cendadt	851,{
@@ -544,7 +558,6 @@ ein_in01.gat,31,217,3	script	Cendadt	851,{
 	mes "before I get";
 	mes "in trouble...";
 	close;
-
 }
 
 ein_in01.gat,36,204,3	script	Rombell	851,{
@@ -572,7 +585,6 @@ ein_in01.gat,36,204,3	script	Rombell	851,{
 	mes "worse. How can we";
 	mes "solve this problem?";
 	close;
-
 }
 
 ein_in01.gat,49,202,3	script	Dorf	851,{
@@ -597,7 +609,6 @@ ein_in01.gat,49,202,3	script	Dorf	851,{
 	mes "thing keeps working the";
 	mes "way I want it to!";
 	close;
-
 }
 
 ein_in01.gat,48,220,3	script	Lowe	851,{
@@ -629,7 +640,6 @@ ein_in01.gat,48,220,3	script	Lowe	851,{
 	mes "of reaction's an old";
 	mes "habit for me, adventurer.";
 	close;
-
 }
 
 ein_in01.gat,43,253,4	script	Canphotii	852,{
@@ -889,58 +899,6 @@ OnHide:
 OnUnhide:
 	misceffect 215;
 	end;
-
-}
-
-ein_in01.gat,206,224,2	script	Hotel Employee	855,{
-
-	mes "[Hotel Employee]";
-	mes "Good day, welcome to the";
-	mes "Einbroch Hotel. The staff is";
-	mes "always striving to accomodate";
-	mes "our guests with the highest";
-	mes "standards in cleanliness,";
-	mes "service and convenience~";
-	next;
-	menu "Save",s_Save,"Take Rest- 5,000 zeny",s_Rest,"Cancel",-;
-
-	mes "[Hotel Employee]";
-	mes "Thank you and";
-	mes "please come again~";
-	close;
-
-s_Save:
-	savepoint "ein_in01.gat",199,224;
-	mes "[Hotel Employee]";
-	mes "Your Respawn Point";
-	mes "has been saved here";
-	mes "in the Einbroch Hotel.";
-	mes "Thank you, and please";
-	mes "come again.";
-	next;
-	mes "[Hotel Employee]";
-	mes "Have a good day.";
-	close;
-
-s_Rest:
-	if (Zeny < 5000) goto s_NEnoughZeny;
-	mes "[Hotel Employee]";
-	mes "Thank you.";
-	mes "Please enjoy";
-	mes "your rest~";
-	close2;
-	set zeny,zeny - 5000;
-	warp "ein_in01.gat",272,167;
-	percentheal 100,100;
-	end;
-
-s_NEnoughZeny:
-	mes "[Hotel Employee]";
-	mes "I'm sorry but";
-	mes "you don't seem";
-	mes "to have enough zeny.";
-	close;
-
 }
 
 ein_in01.gat,21,147,4	script	Megass	853,3,3,{

@@ -1,31 +1,34 @@
 //===== Freya Script =========================================
 //= Amatsu Script 
 //===== By: ================================================== 
-//= Some people & eAthena Dev Team
+//= eAthena/Misc/Freya
 //===== Current Version: ===================================== 
-//= 1.3
+//= 2.2
 //===== Compatible With: ===================================== 
 //= Freya
 //===== Description: ========================================= 
-//= Amatsu Town NPCs : Revision 2 (Fox quest fix)
-//= Translated by Makenshi and dj
-//= Revisions and edits by Valaris and Darkchild
-//= 1.01 event_sushi -> ama_sushi fixed
+//= 1.0 Amatsu Town NPCs : Revision 2 (Fox quest fix)
+//= - Translated by Makenshi and dj
+//= - Revisions and edits by Valaris and Darkchild
+//= 1.1 event_sushi -> ama_sushi fixed
 //=      and other fixes, thanks to Shinomori
-//= 1.02 Fixed & Spell Checked [massdriller]
-//= 1.03 Fixed 2 NPC names, slight optimization [Lupus]
-//= 1.04 Fixed a few typo's [Nexon]
-//= 1.05 Changed all breaks to ends. [Skotlex]
-//= 1.06 The Captain now uses iRO dialog [MasterOfMuppets]
-//= 1.07 Implemented a missing NPC [MasterOfMuppets]
-//= 1.08 Removed Duplicates [Silent]
-//= 1.1 Split quests into quests/quests_amatsu.txt [Evera]
-//= 1.2	Fixed missing name [Evera]
-//= 1.3 Converted to Freya format [Tsuyuki]
+//= 1.2 Fixed & Spell Checked [massdriller]
+//= 1.3 Fixed 2 NPC names, slight optimization [Lupus]
+//= 1.4 Fixed a few typo's [Nexon]
+//= 1.5 Changed all breaks to ends. [Skotlex]
+//= 1.6 The Captain now uses iRO dialog [MasterOfMuppets]
+//= 1.7 Implemented a missing NPC [MasterOfMuppets]
+//= 1.8 Removed Duplicates [Silent]
+//= 1.9 Split quests into quests/quests_amatsu.txt [Evera]
+//= 2.0	Fixed missing name [Evera]
+//= 2.1 Converted to Freya format [Tsuyuki]
+//= 2.2 Updated script formatting [Tsuyuki]
 //=====================================================================
 
 
+// Alberta -> Amatsu Warper
 alberta.gat,245,93,4	script	Sea Captain#01	709,{
+
 	mes "[Walter Moers]";
 	mes "Hey, there.";
 	mes "Have you ever heard that there";
@@ -144,8 +147,10 @@ alberta.gat,245,93,4	script	Sea Captain#01	709,{
 			mes "and get enough zeny";
 			close;
 }
-//=====================================================================
+
+// Amatsu -> Alberta Warper
 amatsu.gat,194,79,4	script	Sea Captain#02	709,{
+
 	mes "[Walter Moers]";
 	mes "You came... Did you enjoy";
 	mes "your trip to Amatsu...?";
@@ -167,10 +172,9 @@ amatsu.gat,194,79,4	script	Sea Captain#02	709,{
 		warp "alberta",243,91;
 		end;
 }
-//=====================================================================
-// Amatsu Citizen
-//=====================================================================
+
 amatsu.gat,179,107,4	script	John	86,{
+
 	mes "[John]";
 	mes "Hey.";
 	mes "You seem like me,";
@@ -218,8 +222,9 @@ amatsu.gat,179,107,4	script	John	86,{
 	mes "Now it seems like it is about to end as well.";
 	close;
 }
-//=====================================================================
+
 amatsu.gat,185,116,4	script	Drunken Man	765,{
+
 	mes "[Ralph]";
 	mes "Cough. I'm old and useless.";
 	mes "Only brute strength. Cough.";
@@ -257,8 +262,9 @@ L1:
 	mes "........Cough..............";
 	close;
 }
-//=====================================================================
+
 amatsu.gat,217,179,0	script	Old Women	760,{
+
 	mes "[Hashey]";
 	mes "My husband is so into gambling, it worries me to death.";
 	mes "Went to that town that's really far away, lost a lot of zeny again.";
@@ -270,8 +276,9 @@ amatsu.gat,217,179,0	script	Old Women	760,{
 	mes "What a miser.. sobs.";
 	close;
 }
-//=====================================================================
+
 amatsu.gat,205,163,4	script	Mimi	759,{
+
 	mes "[Mimi]";
 	mes "Phew..";
 	mes "Did you see the Ms. Amatsu besides the dock?";
@@ -285,8 +292,9 @@ amatsu.gat,205,163,4	script	Mimi	759,{
 	mes "Women always need to watch their appearance, whoohoohoohooo.";
 	close;
 }
-//=====================================================================
+
 amatsu.gat,230,160,4	script	Lady	757,{
+
 	mes "[Yorukoc]";
 	mes "Although I come to the well for water everyday,";
 	mes "if it's misty or rainy,";
@@ -299,8 +307,9 @@ amatsu.gat,230,160,4	script	Lady	757,{
 	mes "It gives me goosebumps.";
 	close;
 }
-//=====================================================================
+
 amatsu.gat,119,164,4	script	Guard Soldier#03	767,{
+
 	mes "[Guard Soldier]";
 	mes "Are you from Rune-Midgard?";
 	mes "Welcome to the town of Amatsu.";
@@ -315,8 +324,9 @@ amatsu.gat,119,164,4	script	Guard Soldier#03	767,{
 	mes "He handles all sorts of things.";
 	close;
 }
-//=====================================================================
+
 amatsu.gat,112,164,4	script	Guard Soldier#04	767,{
+
 	mes "[Guard Soldier]";
 	mes "This is the best castle in Amatsu,";
 	mes "called the East Lake Castle.";
@@ -331,8 +341,8 @@ amatsu.gat,112,164,4	script	Guard Soldier#04	767,{
 	close;
 }
 
-//=====================================================================
 ama_in02.gat,207,40,6	script	Guard Soldier#05	767,{
+
 	mes "[Guard Soldier]";
 	mes "Welcome,";
 	mes "The Master specifically allowed";
@@ -343,8 +353,9 @@ ama_in02.gat,207,40,6	script	Guard Soldier#05	767,{
 	mes "before leaving.";
 	close;
 }
-//=====================================================================
+
 ama_in02.gat,207,49,6	script	Guard Soldier#06	767,{
+
 	mes "[Guard Soldier]";
 	mes "The master is really a great guy.";
 	mes "Who would have thought that anyone could";
@@ -358,8 +369,9 @@ ama_in02.gat,207,49,6	script	Guard Soldier#06	767,{
 	mes "look different from before.";
 	close;
 }
-//=====================================================================
+
 ama_in02.gat,187,57,2	script	Soldier#01	767,{
+
 	mes "[Ichiro]";
 	mes "Welcome, our master";
 	mes "has already prepared a place";
@@ -373,8 +385,9 @@ ama_in02.gat,187,57,2	script	Soldier#01	767,{
 	mes "were ordered by the Master.";
 	close;
 }
-//=====================================================================
+
 ama_in02.gat,37,157,4	script	Soldier#03	767,{
+
 	mes "[Sbarro]";
 	mes "This is our soldier's";
 	mes "training ground.";
@@ -401,8 +414,9 @@ ama_in02.gat,37,157,4	script	Soldier#03	767,{
 	mes "See you later...";
 	close;
 }
-//=====================================================================
+
 ama_in02.gat,32,51,6	script	Shiro	767,{
+
 	mes "[Shiro]";
 	mes "Cough cough, cough cough, what... leave me alone";
 	mes "Go visit another place...";
@@ -421,8 +435,9 @@ ama_in02.gat,32,51,6	script	Shiro	767,{
 	mes "Cough cough... cough cough...";
 	close;
 }
-//=====================================================================
+
 ama_in02.gat,40,167,3	script	Soldier#04	767,{
+
 	mes "[Kuro]";
 	mes "Shh... customer, please be quiet.";
 	mes "I will tell you a story";
@@ -451,8 +466,9 @@ ama_in02.gat,40,167,3	script	Soldier#04	767,{
 	mes "is a secret, ok?";
 	close;
 }
-//=====================================================================
+
 ama_in02.gat,32,167,5	script	Kukuro	767,{
+
 	mes "[Kukuro]";
 	mes "That guy is always rambling";
 	mes "some gibberish, saying that our master";
@@ -474,8 +490,9 @@ ama_in02.gat,32,167,5	script	Kukuro	767,{
 	mes "Doesn't seem to be much hope...";
 	close;
 }
-//=====================================================================
+
 ama_in02.gat,42,34,2	script	Soldier#05	767,{
+
 	mes "[Hakiro]";
 	mes "Rest for a while before leaving,";
 	mes "master has already prepared";
@@ -492,8 +509,8 @@ ama_in02.gat,42,34,2	script	Soldier#05	767,{
 	close;
 }
 
-//=====================================================================
 ama_in02.gat,203,156,4	script	Soldier#06	767,{
+
 	mes "[Hakiro]";
 	mes "Master is in there.";
 	mes "If you want to go greet him,";
@@ -507,8 +524,8 @@ ama_in02.gat,203,156,4	script	Soldier#06	767,{
 	close;
 }
 
-//=====================================================================
 ama_in02.gat,195,156,4	script	Soldier#07	767,{
+
 	mes "[Kuro]";
 	mes "Damn, maybe the master";
 	mes "is having a hard time right now.";
@@ -765,177 +782,169 @@ ama_in02.gat,61,27,6	script	Alchemist#amatsu	749,{
 	mes "Keekeekeekeekee...";
 	close;
 
-s_Help:
-	mes "[Laspuchin Gregory]";
-	mes "Help, eh?...";
-	mes "Now that I think about it..";
-	mes "I need some items right now...";
-	mes "Keeheeheekeehee...";
-	next;
-	mes "[Laspuchin Gregory]";
-	mes "Sir Laspuchin needs some";
-	mes "enchant stones for an experiment.";
-	mes "I will use it efficiently...";
-	mes "Do you have them now?";
-	next;
-	menu "Nope",-,"I got some",s_Got;
+	s_Help:
+		mes "[Laspuchin Gregory]";
+		mes "Help, eh?...";
+		mes "Now that I think about it..";
+		mes "I need some items right now...";
+		mes "Keeheeheekeehee...";
+		next;
+		mes "[Laspuchin Gregory]";
+		mes "Sir Laspuchin needs some";
+		mes "enchant stones for an experiment.";
+		mes "I will use it efficiently...";
+		mes "Do you have them now?";
+		next;
+		menu "Nope",-,"I got some",s_Got;
 
-	mes "[Laspuchin Gregory]";
-	mes "Then, find 8 stones of one kind.";
-	mes "If you bring 8 of one kind of";
-	mes "enchant stones, I will change it";
-	mes "to a better one...";
-	next;
-	mes "[Laspuchin Gregory]";
-	mes "Then, find 8 stones of one kind.";
-	mes "not the round gemstones but";
-	mes "the enchant stones. If you bring";
-	mes "the wrong stones, I will throw";
-	mes "a flame bottle at you!";
-	next;
-	mes "[Laspuchin Gregory]";
-	mes "Bring me stones, slave~!!";
-	mes "And keep your promise!";
-	mes "Kehehehkehkeh...";
-	close;
+			mes "[Laspuchin Gregory]";
+			mes "Then, find 8 stones of one kind.";
+			mes "If you bring 8 of one kind of";
+			mes "enchant stones, I will change it";
+			mes "to a better one...";
+			next;
+			mes "[Laspuchin Gregory]";
+			mes "Then, find 8 stones of one kind.";
+			mes "not the round gemstones but";
+			mes "the enchant stones. If you bring";
+			mes "the wrong stones, I will throw";
+			mes "a flame bottle at you!";
+			next;
+			mes "[Laspuchin Gregory]";
+			mes "Bring me stones, slave~!!";
+			mes "And keep your promise!";
+			mes "Kehehehkehkeh...";
+			close;
 
-s_Got:
-	mes "[Laspuchin Gregory]";
-	mes "Uh-uh, what did you bring?";
-	next;
-	menu "Mystic Frozen",Water,"Great Nature",Earth,"Flame Heart",Fire,"Rough Wind",Wind;
+		s_Got:
+			mes "[Laspuchin Gregory]";
+			mes "Uh-uh, what did you bring?";
+			next;
+			menu "Mystic Frozen",Water,"Great Nature",Earth,"Flame Heart",Fire,"Rough Wind",Wind;
 
-		Water:
-			set @stoneID,995;
-			set @stoneStr$,"Mystic Frozen";
-			goto ElementOreCont;
+			Water:
+				set @stoneID,995;
+				set @stoneStr$,"Mystic Frozen";
+				goto ElementOreCont;
 
-		Earth:
-			set @stoneID,997;
-			set @stoneStr$,"Great Nature";
-			goto ElementOreCont;
+			Earth:
+				set @stoneID,997;
+				set @stoneStr$,"Great Nature";
+				goto ElementOreCont;
 
-		Fire:
-			set @stoneID,994;
-			set @stoneStr$,"Flame Heart";
-			goto ElementOreCont;
+			Fire:
+				set @stoneID,994;
+				set @stoneStr$,"Flame Heart";
+				goto ElementOreCont;
 
-		Wind:
-			set @stoneID,996;
-			set @stoneStr$,"Rough Wind";
-			goto ElementOreCont;
+			Wind:
+				set @stoneID,996;
+				set @stoneStr$,"Rough Wind";
+				goto ElementOreCont;
 
-ElementOreCont:
-	if (countitem(@stoneID) < 8) goto s_NEnough;
-	mes "[Laspuchin Gregory]";
-	mes "Kehekeh. I see you brought";
-	mes "enough stones! What kind of";
-	mes "stone do you want me to change";
-	mes "them into? Kehehehe.";
-	next;
-	if (@stoneID == 995)menu "Great Nature",s_Great,"Flame Heart",s_Flame,"Rough Wind",s_Rough;
-	if (@stoneID == 996)menu "Great Nature",s_Great,"Flame Heart",s_Flame,"Mystic Frozen",s_Frozen;
-	if (@stoneID == 997)menu "Mystic Frozen",s_Frozen,"Flame Heart",s_Flame,"Rough Wind",s_Rough;
-	if (@stoneID == 994)menu "Great Nature",s_Great,"Mystic Frozen",s_Frozen,"Rough Wind",s_Rough;
+			ElementOreCont:
+				if (countitem(@stoneID) < 8) goto s_NEnough;
+				mes "[Laspuchin Gregory]";
+				mes "Kehekeh. I see you brought";
+				mes "enough stones! What kind of";
+				mes "stone do you want me to change";
+				mes "them into? Kehehehe.";
+				next;
+				if (@stoneID == 995)menu "Great Nature",s_Great,"Flame Heart",s_Flame,"Rough Wind",s_Rough;
+				if (@stoneID == 996)menu "Great Nature",s_Great,"Flame Heart",s_Flame,"Mystic Frozen",s_Frozen;
+				if (@stoneID == 997)menu "Mystic Frozen",s_Frozen,"Flame Heart",s_Flame,"Rough Wind",s_Rough;
+				if (@stoneID == 994)menu "Great Nature",s_Great,"Mystic Frozen",s_Frozen,"Rough Wind",s_Rough;
 
-s_Great:
-	mes "[Laspuchin Gregory]";
-	mes "Then I will now change";
-	mes "your " + @stoneStr$ + "s into";
-	mes "a Great Nature... Kehehe~";
-	mes "Any objections?";
-	next;
-	menu "No",-,"Yes",s_No;
-	delitem @stoneID,8;
-	getitem 997,1;
-	mes "[Laspuchin Gregory]";
-	mes "Kehehe... It was a success!";
-	mes "Come back anytime if you";
-	mes "want me to change your";
-	mes "enchanted stones into";
-	mes "another kind.. Keheh~";
-	close;
+			s_Great:
+				mes "[Laspuchin Gregory]";
+				mes "Then I will now change";
+				mes "your " + @stoneStr$ + "s into";
+				mes "a Great Nature... Kehehe~";
+				mes "Any objections?";
+				next;
+				menu "No",-,"Yes",s_No;
+				delitem @stoneID,8;
+				getitem 997,1;
+				mes "[Laspuchin Gregory]";
+				mes "Kehehe... It was a success!";
+				mes "Come back anytime if you";
+				mes "want me to change your";
+				mes "enchanted stones into";
+				mes "another kind.. Keheh~";
+				close;
 
-s_Flame:
-	mes "[Laspuchin Gregory]";
-	mes "Then I will now change";
-	mes "your " + @stoneStr$ + "s into";
-	mes "a Flame Heart... Kehehe~";
-	mes "Any objections?";
-	next;
-	menu "No",-,"Yes",s_No;
-	delitem @stoneID,8;
-	getitem 994,1;
-	mes "[Laspuchin Gregory]";
-	mes "Kehehe... It was a success!";
-	mes "Come back anytime if you";
-	mes "want me to change your";
-	mes "enchanted stones into";
-	mes "another kind.. Keheh~";
-	close;
+			s_Flame:
+				mes "[Laspuchin Gregory]";
+				mes "Then I will now change";
+				mes "your " + @stoneStr$ + "s into";
+				mes "a Flame Heart... Kehehe~";
+				mes "Any objections?";
+				next;
+				menu "No",-,"Yes",s_No;
+				delitem @stoneID,8;
+				getitem 994,1;
+				mes "[Laspuchin Gregory]";
+				mes "Kehehe... It was a success!";
+				mes "Come back anytime if you";
+				mes "want me to change your";
+				mes "enchanted stones into";
+				mes "another kind.. Keheh~";
+				close;
 
-s_Rough:
-	mes "[Laspuchin Gregory]";
-	mes "Then I will now change";
-	mes "your " + @stoneStr$ + "s into";
-	mes "a Rough Wind... Kehehe~";
-	mes "Any objections?";
-	next;
-	menu "No",-,"Yes",s_No;
-	delitem @stoneID,8;
-	getitem 996,1;
-	mes "[Laspuchin Gregory]";
-	mes "Kehehe... It was a success!";
-	mes "Come back anytime if you";
-	mes "want me to change your";
-	mes "enchanted stones into";
-	mes "another kind.. Keheh~";
-	close;
+			s_Rough:
+				mes "[Laspuchin Gregory]";
+				mes "Then I will now change";
+				mes "your " + @stoneStr$ + "s into";
+				mes "a Rough Wind... Kehehe~";
+				mes "Any objections?";
+				next;
+				menu "No",-,"Yes",s_No;
+				delitem @stoneID,8;
+				getitem 996,1;
+				mes "[Laspuchin Gregory]";
+				mes "Kehehe... It was a success!";
+				mes "Come back anytime if you";
+				mes "want me to change your";
+				mes "enchanted stones into";
+				mes "another kind.. Keheh~";
+				close;
 
-s_Frozen:
-	mes "[Laspuchin Gregory]";
-	mes "Then I will now change";
-	mes "your " + @stoneStr$ + "s into";
-	mes "a Mystic Frozen... Kehehe~";
-	mes "Any objections?";
-	next;
-	menu "No",-,"Yes",s_No;
-	delitem @stoneID,8;
-	getitem 995,1;
-	mes "[Laspuchin Gregory]";
-	mes "Kehehe... It was a success!";
-	mes "Come back anytime if you";
-	mes "want me to change your";
-	mes "enchanted stones into";
-	mes "another kind.. Keheh~";
-	close;
+			s_Frozen:
+				mes "[Laspuchin Gregory]";
+				mes "Then I will now change";
+				mes "your " + @stoneStr$ + "s into";
+				mes "a Mystic Frozen... Kehehe~";
+				mes "Any objections?";
+				next;
+				menu "No",-,"Yes",s_No;
+				delitem @stoneID,8;
+				getitem 995,1;
+				mes "[Laspuchin Gregory]";
+				mes "Kehehe... It was a success!";
+				mes "Come back anytime if you";
+				mes "want me to change your";
+				mes "enchanted stones into";
+				mes "another kind.. Keheh~";
+				close;
 
-s_No:
-	mes "[Laspuchin Gregory]";
-	mes "Keheh~ You make me want";
-	mes "to throw flame bottles";
-	mes "at you. Kehehehehe...";
-	mes "KEHEHEHEHEHEHE!";
-	close;
+	s_No:
+		mes "[Laspuchin Gregory]";
+		mes "Keheh~ You make me want";
+		mes "to throw flame bottles";
+		mes "at you. Kehehehehe...";
+		mes "KEHEHEHEHEHEHE!";
+		close;
 
-s_NEnough:
-	mes "[Laspuchin Gregory]";
-	mes "Keheheh~ Check your pockets";
-	mes "before you tell me";
-	mes "how foolish you are.....";
-	next;
-	mes "[Laspuchin Gregory]";
-	mes "Bring me stones! You said you";
-	mes "were going to help me!";
-	mes "Keep your promises!";
-	mes "Kehehehkehkeh...";
-	close;
-
+	s_NEnough:
+		mes "[Laspuchin Gregory]";
+		mes "Keheheh~ Check your pockets";
+		mes "before you tell me";
+		mes "how foolish you are.....";
+		next;
+		mes "[Laspuchin Gregory]";
+		mes "Bring me stones! You said you";
+		mes "were going to help me!";
+		mes "Keep your promises!";
+		mes "Kehehehkehkeh...";
+		close;
 }
-
-//| Ninja map portion dummy npcs, commented by default.
-//que_ng.gat,27,18,3	script	Seaman	709,{end;}
-//que_ng.gat,28,45,3	script	Man	86,{end;}
-//que_ng.gat,28,50,3	script	Seaman2	709,{end;}
-//que_ng.gat,22,62,3	script	Seaman2	709,{end;}
-//que_ng.gat,30,65,3	script	Ninja Sensei	730,{end;}

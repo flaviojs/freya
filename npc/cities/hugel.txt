@@ -1,5 +1,5 @@
 //===== Freya Script =========================================
-//= Hugel City NPCs
+//= Hugel Town
 //===== By: ==================================================
 //= Tsuyuki
 //===== Current Version: =====================================
@@ -7,7 +7,7 @@
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
-//= Hugel City NPCs - Completely official iRO dialogue except
+//= Hugel Town NPCs - Completely official iRO dialogue except
 //= in mentioned places where it says the dialogue isn't official.
 //= To-Do: Add Bingo-related NPCs + Finish up quests/misc things.
 //===== Additional Comments: =================================

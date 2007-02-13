@@ -1,26 +1,26 @@
 //===== Freya Script =========================================
 //= Lutie Town
-//===== By: ================================================== 
-//= eAthena
-//===== Current Version: ===================================== 
-//= 1.5
-//===== Compatible With: ===================================== 
+//===== By: ==================================================
+//= eAthena/Freya
+//===== Current Version: =====================================
+//= 1.6
+//===== Compatible With: =====================================
 //= Freya
-//===== Description: ========================================= 
-//=
-//===== Additional Comments: ================================= 
+//===== Description: =========================================
+//= Lutie Town NPCs
+//===== Additional Comments: =================================
+//= 1.0 Added first version [Unknown]
 //= 1.1 Edited some text and updated/enabled some triggers
-//= for the quest.[kobra_k88]
+//=     for the quest [kobra_k88]
 //= 1.2 Fixed exploit. Checked for Bard Job Quest compatibility [Lupus]
 //= 1.3 Fixed typo’s [Nexon] 1.4 Fixed exploit [Lupus]
 //= 1.5 Fixed a bug that could reset Lutie quest state [Lupus]
+//= 1.6 Updated formatting [Tsuyuki]
 //============================================================
 
 
-//=====================================================
-//		Getting To Lutie
-//=====================================================
 aldebaran.gat,168,168,4	script	Mr. Claus	718,{
+
 	mes "[Mr. Claus]";
 	mes "Merry Christmas!!";
 	mes "I wish you all happiness!";
@@ -42,6 +42,7 @@ aldebaran.gat,168,168,4	script	Mr. Claus	718,{
 		mes "you to Lutie right away! You might even meet the big boss Santa";
 		mes "Claus.";
 		close;
+
 	L1:
 		mes "[Mr. Claus]";
 		mes "So you're ready to go to the greatest place in the world?";
@@ -52,6 +53,7 @@ aldebaran.gat,168,168,4	script	Mr. Claus	718,{
 		close2;
 		warp "xmas_fild01.gat",78,68;
 		end;
+
 	LEnd:
 		mes "[Mr. Claus]";
 		mes "Well... if you want to visit Lutie, just let me know anytime.";
@@ -59,14 +61,8 @@ aldebaran.gat,168,168,4	script	Mr. Claus	718,{
 		close;
 }
 
-
-//=====================================================================
-//		NPCs inside
-//=====================================================================
-
-// Mima
-//============================================================
 xmas_in.gat,27,103,4	script	Mima	701,{
+
 	if (xmas_npc==5) goto Xmas5;
 	if (xmas_npc==6) goto Xmas6;
 	if (xmas_npc==7) goto Xmas7;
@@ -100,7 +96,7 @@ xmas_in.gat,27,103,4	script	Mima	701,{
 	mes "Between each slice of kimchi, I spread on a special chocolate which";
 	mes "melts rather easily.  The rest is a family secret.... hehe.";
 	close;
-	
+
 Xmas5:
 	mes "[Mima]";
 	mes "Hmmm? Hairy Uncle Ken told you about me, didn't he? Well well, I";
@@ -129,6 +125,7 @@ Xmas5:
 	mes "He will give you my salt.  Now dear, hurry up.  Return Quickly.";
 	set xmas_npc,6;
 	close;
+
 Xmas6:
 	mes "[Mima]";
 	mes "Hohohoho -";
@@ -142,6 +139,7 @@ Xmas6:
 	mes "I said BRING ME ^3355FF' THE ROUGHEST SALT IN THE WORLD '^000000";
 	mes "!!!!!!!! Leave now and hurry up!";
 	close;
+
 Xmas7:
 	mes "[Mima]";
 	mes "Hohohohoh hohohohoho !";
@@ -175,6 +173,8 @@ Xmas7:
 	mes "Jack Frost is very nice and innocent creature... We've never";
 	mes "worried about his unique ability...";
 	next;
+	goto Xmas8;
+
 Xmas8:
 	mes "[Mima]";
 	mes "Hohohoho . . Ah and, lately I've heard some surprising news from";
@@ -183,9 +183,8 @@ Xmas8:
 	close;
 }
 
-// Santa Claus
-//===================================================================
 xmas_in.gat,100,96,4	script	Father Christmas::Santa1	718,{
+
 	if (@talkedsanta == 1) goto L_Xmas1;
 	mes "[Santa Claus]";
 	mes "Ho Ho Ho~";
@@ -224,9 +223,11 @@ L_Xmas1:
 	
 		getitem 529,5;
 		goto L_End;
+
 L_1:
 		getitem 530,3;
 		goto L_End;
+
 L_2:
 		getitem 528,1;
 		if (xmas_npc==0) set xmas_npc, 1;
@@ -235,11 +236,14 @@ L_2:
 		mes "Hmm, you must not have been a very good";
 		mes "person this year.  Do better!";
 		close;
+
 L_3:
 		getitem 539,2;
 		goto L_End;
+
 L_4:
 		getitem 539,1;
+
 L_End:
 		if (xmas_npc==0) set xmas_npc, 1;
 		set @talkedsanta, 0;
@@ -249,9 +253,8 @@ L_End:
 		close;
 }
 
-// Debra
-//==================================================================
 xmas_in.gat,165,173,4	script	Debra	711,{
+
 	if (xmas_npc==1 || xmas_npc==2) goto Xmas1;
 	mes "[Debra]";
 	mes "Merry Christmas!";
@@ -320,14 +323,8 @@ xmas_in.gat,165,173,4	script	Debra	711,{
 		close;
 }
 
-
-//=======================================================================
-//		NPC's Outside
-//=======================================================================
-
-// Peterson
-//=========================================================
 xmas.gat,117,304,4	script	Peterson	713,{
+
 	if ((xmas_npc==3) || (xmas_npc==4)) goto Xmas34;
 	mes "[Peterson]";
 	mes "Merry Christmas!";
@@ -374,9 +371,8 @@ Xmas34:
 	close;
 }
 
-// Hairy Uncle Ken
-//==========================================================
 xmas.gat,176,236,4	script	Hairy Uncle Ken	712,{
+
 	if (xmas_npc==4) goto Xmas4;
 	if (xmas_npc==5) goto Xmas5;
 	mes "[Hairy Uncle Ken]";
@@ -497,6 +493,8 @@ Xmas4:
 		mes "special ability that Jack Frost has that creates unlimited";
 		mes "Christmas presents...";
 		next;
+		goto Xmas5;
+
 	Xmas5:
 		mes "[Hairy Uncle Ken]";
 		mes " ^3355FF' Mima '^000000 the excellent kimchi maker";
@@ -506,9 +504,8 @@ Xmas4:
 		close;
 }
 
-// Jack Frost
-//====================================================================
 xmas.gat,134,112,4	script	Jack Frost	710,{
+
 	mes "[Jack Frost]";
 	if (xmas_npc==2) goto Xmas2;
 	if (xmas_npc==3) goto Xmas3;
@@ -552,6 +549,7 @@ xmas.gat,134,112,4	script	Jack Frost	710,{
 		mes "But my friends were not...... I have lost all of my friends.......... I feel so lonely.......";
 		emotion e_sob;
 		close;
+
 	L1:
 		mes "[Jack Frost]";
 		mes "Somewhere in Lutie there is a place that looks just like a ^5533FFToy";
@@ -567,6 +565,7 @@ xmas.gat,134,112,4	script	Jack Frost	710,{
 		mes "just once..... But part of me is also a little frighten of the";
 		mes "possessed toys.....";
 		close;
+
 	LEnd:
 		mes "[Jack Frost]";
 		mes "So long! Come visit me any time.  Merry Christmas!";
@@ -597,12 +596,14 @@ Xmas2:
 	mes "^3355FF- He is looking at 'Peterson's' name card -^000000";
 	set xmas_npc,3;
 	close;
+
 Xmas3:
 	mes ". . . . . . . . . . . . . . .";
 	next;
 	mes "^3355FF- Jack Frost falls deep into his thoughts -^000000";
 	mes "^3355FF- He is looking at 'Peterson's' name card -^000000";
 	close;
+
 Xmas4:
 	mes "Did you meet 'Peterson'? He is a honest and diligent guy . .";
 	mes "And I know . . He fell in love with 'Debra'....";
@@ -613,6 +614,7 @@ Xmas4:
 	mes "everyone, except Peterson.  But I know... Debra likes Peterson";
 	mes "as much as he does here...";
 	close;
+
 Xmas5:
 	mes "You spoke with ^3355FF'Hairy Uncle Ken '^000000?";
 	mes "Hairy Uncle Ken has loud voice, and doesn't take showers.....";
@@ -624,6 +626,7 @@ Xmas5:
 	mes "They say it is a miracle that he doesn't have a stomachache.";
 	mes "Heh~ . .I love this guy too . .";
 	close;
+
 Xmas6:
 	mes "Hmmm you did you meet ^3355FF'Mima'^000000, the kimchi expert?";
 	mes "Yeah yeah.  I've been keeping this for here.  Here you go, It is";
@@ -637,21 +640,26 @@ Xmas6:
 	mes "Sometimes she offers me cups of ice flakes with grape syrup...";
 	next;
 	mes "[Jack Frost]";
+	goto Xmas7;
+
 Xmas7:
 	mes "^3355FF' The roughest salt in the world '^000000";
 	mes "hopefully you will deliver it safely to her . .";
 	close;
+
 Xmas8:
 	mes "Boring Clown 'Howie'... At first glance, he looks a dumb,";
 	mes "talent less clown..... But he has a pure heart and is always";
 	mes "taking care of the 2 orphans...";
 	close;
+
 Xmas9:
 	mes "'Charlie ' the boy of optimism.";
 	mes "He will become a big shot in future . .";
 	mes "Just like me ! -";
 	mes "Hahahaha . . . . .";
 	close;
+
 Xmas10:
 	mes ". . . . . Thank you for listening to me so far.";
 	mes "I very much appreciate you trying to understand me,";
@@ -689,6 +697,7 @@ Xmas10:
 		mes "See you soon -";
 		mes "Merry Christmas!!";
 		close;
+
 	L_Prize2:
 		getitem 529,10;
 		mes "[Jack Frost]";
@@ -699,6 +708,7 @@ Xmas10:
 		mes "See you soon -";
 		mes "Merry Christmas!!";
 		close;
+
 	L_Prize3:
 		getitem 530,5;
 		mes "[Jack Frost]";
@@ -709,6 +719,7 @@ Xmas10:
 		mes "See you soon -";
 		mes "Merry Christmas!!";
 		close;
+
 	L_Prize4:
 		getitem 530,10;
 		mes "[Jack Frost]";
@@ -719,6 +730,7 @@ Xmas10:
 		mes "See you soon -";
 		mes "Merry Christmas!!";
 		close;
+
 	L_Prize5:
 		getitem 539,1;
 		mes "[Jack Frost]";
@@ -729,6 +741,7 @@ Xmas10:
 		mes "See you soon -";
 		mes "Merry Christmas!!";
 		close;
+
 	L_Prize6:
 		getitem 539,2;
 		mes "[Jack Frost]";
@@ -739,6 +752,7 @@ Xmas10:
 		mes "See you soon -";
 		mes "Merry Christmas!!";
 		close;
+
 	L_Prize7:
 		getitem 538,5;
 		mes "[Jack Frost]";
@@ -749,6 +763,7 @@ Xmas10:
 		mes "See you soon -";
 		mes "Merry Christmas!!";
 		close;
+
 	L_Prize8:
 		getitem 538,10;
 		mes "[Jack Frost]";
@@ -759,6 +774,7 @@ Xmas10:
 		mes "See you soon -";
 		mes "Merry Christmas!!";
 		close;
+
 Xmas11:
 	mes "Welcome dear my friend -";
 	mes "You are always welcomed in this Christmas Town.";
@@ -767,9 +783,8 @@ Xmas11:
 	close;
 }
 
-// Howie the Clown
-//=====================================================================
 xmas.gat,146,136,4	script	Howie the Clown	715,{
+
 	mes "[Howie]";
 	mes "Meeee~RrrrrYYYY Christmas~!";
 	mes "La La La! La La La La!~";
@@ -797,6 +812,7 @@ xmas.gat,146,136,4	script	Howie the Clown	715,{
 		mes "[Howie]";
 		mes "HaHaHaHa! HeHeHeHeHe! HoHoHoHoHo! Merry Christmas!!"; 
 		close;
+
 	L1:
 		if (xmas_npc==8 || xmas_npc==9) goto Xmas8;
 		mes "[Howie]";
@@ -849,6 +865,7 @@ xmas.gat,146,136,4	script	Howie the Clown	715,{
 			mes "Ok then, good luck! Bye bye!";
 			set xmas_npc,9;
 			close;
+
 	LEnd:
 		mes "[Howie]";
 		mes "La La La... Dum di Dum di Dum";
@@ -856,9 +873,8 @@ xmas.gat,146,136,4	script	Howie the Clown	715,{
 		close;
 }
 
-// Charlie
-//================================================================
 xmas.gat,206,168,4	script	Charlie	706,{
+
 	if (xmas_npc==9) goto Xmas9;
 	mes "[Charlie]";
 	mes "Merry, Merry Christmas! Did you talk to that clown, ^5533FFHowie^000000 yet? Man that";
@@ -882,18 +898,17 @@ xmas.gat,206,168,4	script	Charlie	706,{
 	mes "Anyways, Merry Christmas! Enjoy your stay in Lutie!";
 	close;
 
-Xmas9:
-	mes "[Charlie]";
-	mes "Errr ? Jack Frost? Hmmm - Let me see....A nice snowman...";
-	mes "You want to know about Jack Frost.... Is this what you want? Ummm";
-	mes "let me see again... Argh - I am not that smart . . . . .";
-	mes "Better ask of Marsha though !";
-	close;
+	Xmas9:
+		mes "[Charlie]";
+		mes "Errr ? Jack Frost? Hmmm - Let me see....A nice snowman...";
+		mes "You want to know about Jack Frost.... Is this what you want? Ummm";
+		mes "let me see again... Argh - I am not that smart . . . . .";
+		mes "Better ask of Marsha though !";
+		close;
 }
 
-// Marsha
-//================================================================
 xmas.gat,208,168,4	script	Marsha	703,{
+
 	if (xmas_npc==10) goto Xmas10;
 	if (xmas_npc==9) goto Xmas9a;
 
@@ -947,6 +962,7 @@ Xmas9a:
 	mes "Jack Frost has a dark smudge on his tummy.... It makes me feel as";
 	mes "if we are somehow connected to each other...";
 	next;
+
 Xmas10:
 	mes "[Marsha]";
 	mes "Oh? Now I see.... You've come to know a lot about Jack Frost....";

@@ -1,30 +1,29 @@
 //===== Freya Script ========================================= 
 //= Morroc Town
 //===== By: ================================================== 
-//= kobra_k88
+//= kobra_k88/Freya
 //===== Current Version: ===================================== 
-//= 1.7
+//= 1.9
 //===== Compatible With: ===================================== 
-//= eAthena 7.15 +
+//= Freya
 //===== Description: ========================================= 
-//=
+//= Morroc Town NPCs
 //===== Additional Comments: ================================= 
-//= Fully working
-//= Fixed Lapidary sprite, Implemented ANTHELL trigger
-//= (in both NPC/Warps) [Lupus]. Removed it from NPC and put in Warp
+//= 1.0 Added first version [kobra_k88]
+//= 1.1 Fixed Lapidary sprite, Implemented ANTHELL trigger [Lupus]
+//= 1.2 Unknown changes [Unknown]
 //= 1.3 Removed some NPC due to Assassin Job Quest [kobra_k88]
-//= 1.3b mobs name corrected [Lupus], 1.3c - Adv classes support
-//= 1.4 Fixed typo’s [Nexon]
-//= 1.5 Added a lvl 4 weapon quest related NPC [MasterOfMuppets]
-//= 1.6 Added Bartender NPC, made by Persian69 [Vicious_Pucca]
-//= 1.7 Removed Duplicates [Silent]
+//= 1.4 mobs name corrected [Lupus], 1.3c - Adv classes support
+//= 1.5 Fixed typo’s [Nexon]
+//= 1.6 Added a lvl 4 weapon quest related NPC [MasterOfMuppets]
+//= 1.7 Added Bartender NPC, made by Persian69 [Vicious_Pucca]
+//= 1.8 Removed Duplicates [Silent]
+//= 1.9 Updated formatting [Tsuyuki]
 //============================================================
 
 
-//==================================================== Town of Morroc ====================================================\\
-
-// Old Scholar ===============================
 morocc_in.gat,112,122,2	script	Old Scholar	61,{
+
 	mes "[Old Scholar]";
 	mes "I've devoted my Life to researching the Pyramids.  Although I not found anything significant yet, I am confident that I will find the Tomb of Ancient King, Osiris!";
 	next;
@@ -33,8 +32,8 @@ morocc_in.gat,112,122,2	script	Old Scholar	61,{
 	close;
 }
 
-// Drunk Man =================================
 morocc.gat,44,180,8	script	Drunk Man	89,{
+
 	mes "[Drunk Man]";
 	mes "Heh Heh... (Hiccup)! Oh, Are you new here? Nice to meet ya, Buddy! So how was your trip?";
 	mes "This was predestined that you and I meet here, I tell you what (Hiccup). Let me tell you something I just heard from the pub....";
@@ -53,8 +52,8 @@ morocc.gat,44,180,8	script	Drunk Man	89,{
 	close;
 }
 
-// Towner =================================
 morocc.gat,68,260,8	script	Towner	99,{
+
 	mes "[Towner]";
 	mes "Those giant, Triangular Buildings North West of town are called Pyramids... They have been there for thousands and thousands of years.";
 	next;
@@ -66,8 +65,8 @@ morocc.gat,68,260,8	script	Towner	99,{
 	close;
 }
 
-// Ant Man Akira =============================
 morocc.gat,76,75,4	script	Ant Man Akira	47,{
+
 	mes "[Ant Man Akira]";
 	mes "About 1 map north and 3 maps east of Morroc, there lies the entrance to a cave known as ^ff0000ANTHELL^000000 ...";
 M_Menu:
@@ -86,6 +85,7 @@ M_Menu:
 		mes "Attack an ant by mistake, and you'll find yourself surrounded by a swarm of them before you can even use a fly wing!";
 		emotion e_gasp;
 		goto M_Menu;
+
 	M_Ants:
 		mes "[Ant Man Akira]";
 		mes "There are 3 different kinds of Ant, each with a unique color and name.  Each one has a different role in the colony.";
@@ -98,6 +98,7 @@ M_Menu:
 		mes "Be careful when your around them.  If you hit 1 Andre the other Andres in the area with swarm and attack you.";
 		mes "The same goes for Deniros and Pieres.  You should also know that ants are looters so watch out for your items.";
 		goto M_Menu;
+
 	M_End:
 		mes "[Ant Man Akira]";
 		mes "Before you go, let me tell you about Giearths.  They are not ants but they live in Anthell.  Don't underestimate them because of their small size.";
@@ -108,8 +109,8 @@ M_Menu:
 		close;
 }
 
-// Poring Lady Syvia ==================================
 morocc.gat,79,111,2	script	Poring Lady Syvia	700,{
+
 	mes "[Poring Lady Syvia]";
 	mes "All over Rune-Midgard you can see lots of cute monsters such as Spores, the mushroom type creature....";
 	next;
@@ -125,7 +126,7 @@ morocc.gat,79,111,2	script	Poring Lady Syvia	700,{
 M_Menu:
 	next;
 	menu "Angeling?",M_Angel,"Ghostring?",M_Ghost,"Quit Conversation",M_Quit;
-	
+
 	M_Angel:
 		mes "[Poring Lady Syvia]";
 		mes "The Angeling is a poring with angel wings.  It is rarely seen but it is quite a sight.  Don't not be fooled by it's angelic look however.";
@@ -164,8 +165,8 @@ M_Menu:
 		close;
 }
 
-// Slayer Kid ====================================
 morocc.gat,123,58,4	script	Slayer Kid	118,{
+
 	mes "[Slayer Kid]";
 	mes ".... An expert in hand to hand combat who polishes off enemies quickly and quietly....";
 	next;
@@ -182,6 +183,7 @@ M_Menu:
 		mes "[Slayer Kid]";
 		mes "It's been 3 months since I left home to search for the Assassin clan.... Just where are they??!!!";
 		goto M_Menu;
+
 	M_1:
 		mes "[Slayer Kid]";
 		mes "People say that if you go 2 maps on the east of Morroc, then 2 maps south, you'll be able to find the Assassin Clan.";
@@ -196,13 +198,14 @@ M_Menu:
 		mes "[Slayer Kid]";
 		mes "I've been searching for them for over 3 months now and nothing.  It seems almost impossible for me to become an Assassin now......";
 		goto M_Menu;
+
 	M_End:
 		close;
 
 }
 
-// Lapidary =======================================
 morocc.gat,150,50,8	script	Lapidary	99,{
+
 	mes "[Lapidary]";
 	mes "The Queen of Jewelry is the Diamond.  No one can deny its beautiful appearance.  That's why it cost so much to buy...";
 	next;
@@ -214,8 +217,8 @@ morocc.gat,150,50,8	script	Lapidary	99,{
 	close;
 }
 
-// Uncle Dimitrii ==========================================
 morocc.gat,180,155,4	script	Uncle Dimitri	49,{
+
 	mes "[Uncle Dimitrii]";
 	mes "The avarage temperature in the Morroc Desert is many times higher than anywhere else in the Rune-Midgard Kingdom.";
 	next;
@@ -239,6 +242,7 @@ M_Menu:
 		mes "[Uncle Dimitri]";
 		mes "So everybody can recover their HP and SP without fear of catching on fire.";
 		goto M_Menu;
+
 	M_2:
 		mes "[Uncle Dimitri]";
 		mes "Aaaaahhh!!!!";
@@ -249,14 +253,15 @@ M_Menu:
 		mes "[Uncle Dimitri]";
 		mes "They only recover a small amount of hp, but combined with a dip in a desert oasis, a couple ^ff0000Reds^000000 are all you need.";
 		goto M_Menu;
+
 	M_End:
 		mes "[Uncle Dimitri]";
 		mes "Did you know that you can get ^0000bb'Milk'^000000 from a 'PecoPeco's Egg'? I wonder how that works......?";
 		close;
 }
 
-// Trader Joe =====================================
 morocc.gat,208,85,7	script	Trader Joe	83,{
+
 	mes "[Trader Joe]";
 	mes "I earn a living as a Trader so I'm constantly traveling between Morroc and Prontera.";
 	mes "I can't even count how many times I've been across the Hot, Dry desert.";
@@ -280,8 +285,8 @@ morocc.gat,208,85,7	script	Trader Joe	83,{
 	close;
 }
 
-// Fly Man Armani ===============================
 morocc.gat,234,273,3	script	Fly Man Armani	54,{
+
 	mes "[Fly Man Armani]";
 	mes "I SAW IT!! I SAW IT!!!";
 	emotion e_ic;
@@ -308,6 +313,7 @@ morocc.gat,234,273,3	script	Fly Man Armani	54,{
 		mes "Say.... why don't YOU challenge the Dragon Fly?";
 		emotion e_hmm;
 		close;
+
 	M_1:
 		mes "[Fly Man Armani]";
 		mes "SO WHAT!!??";
@@ -325,8 +331,8 @@ morocc.gat,234,273,3	script	Fly Man Armani	54,{
 		close;
 }
 
-// Uncle Phlanette ================================
 morocc.gat,277,213,4	script	Uncle Phlanette	48,{
+
 	mes "[Uncle Phlanette]";
 	mes "Morroc is a highly dry region surrounded by desert.  There isn't a place as hot or dry as Morroc anywhere in Rune-Midgard.";
 M_Menu:
@@ -348,6 +354,7 @@ M_Menu:
 		mes "Unfortunately, for unknown reasons, some of the plants and animals in the desert have turned into dangerous monsters.";
 		mes "The ^00cc00'Mukas'^000000 are one of those monsters.  They were originally cactus plants.";
 		goto M_Menu;
+
 	M_End:
 		mes "[Uncle Phlanette]";
 		mes "Sand HERE! Sand THERE! Sand EVERYWHERE!!!!";
@@ -362,8 +369,8 @@ M_Menu:
 		close;
 }
 
-//Bartender
 morocc_in.gat,166,76,3	script	Bartender#02	46,{
+
 	mes "[Bartender]";
 	mes "What are you going to order?";
 	next;
@@ -373,36 +380,35 @@ morocc_in.gat,166,76,3	script	Bartender#02	46,{
 	mes "Hmm...";
 	close;
 
-L1:
-	if (zeny < 1000) goto Nomoney;
-	getitem 12112,1;
-	set zeny,zeny-1000;
-	mes "[Bartender]";
-	mes "Here you go.";
-	mes "Fruits are major ingredients,";
-	mes "but don't drink too much.";
-	close;
+	L1:
+		if (zeny < 1000) goto Nomoney;
+		getitem 12112,1;
+		set zeny,zeny-1000;
+		mes "[Bartender]";
+		mes "Here you go.";
+		mes "Fruits are major ingredients,";
+		mes "but don't drink too much.";
+		close;
 
-L2:
-	if (zeny < 1000) goto Nomoney;
-	getitem 12113,1;
-	set zeny,zeny-1000;
-	mes "[Bartender]";
-	mes "Here you go.";
-	mes "but don't drink too much.";
-	close;
+	L2:
+		if (zeny < 1000) goto Nomoney;
+		getitem 12113,1;
+		set zeny,zeny-1000;
+		mes "[Bartender]";
+		mes "Here you go.";
+		mes "but don't drink too much.";
+		close;
 
-Nomoney:
-	mes "[Bartender]";
-	mes "Are you asking me to give it for free?";
-	mes "You are one crazy person.";
-	mes "Don't even think about drinking if you don't have 1,000 zeny.";
-	close;
+	Nomoney:
+		mes "[Bartender]";
+		mes "Are you asking me to give it for free?";
+		mes "You are one crazy person.";
+		mes "Don't even think about drinking if you don't have 1,000 zeny.";
+		close;
 }
 
-// Lvl 4 weapon quest related NPC ================================
-
 morocc.gat,289,230,3	script	Citizen#06	92, {
+
 	mes "[Citizen]";
 	mes "Meeting a dead man is basically";
 	mes "impossible.";
@@ -418,10 +424,8 @@ morocc.gat,289,230,3	script	Citizen#06	92, {
 	close;
 }
 
-//<================================================== Assassin Guild ====================================================>\\
-
-// Hashisid ====================================
 moc_fild16.gat,199,212,4	script	Hashisid	48,{
+
 	mes "[Hashisid]";
 	mes "For Assassins, it is important not to look a target in the eye.  If a target is smart, he/she may be able to tell what you're up too.";
 	next;
@@ -439,27 +443,25 @@ moc_fild16.gat,199,212,4	script	Hashisid	48,{
 		mes "It's their job to go unnoticed.  Though an Assassin may seem like a cruel and heartless individual....";
 		mes "An Assassin will never do any harm to an innocent being.  The main purpose of the Assassin to seek out and destroy evil forces!";
 		close;
+
 	M_End:
 		close;
 }
 
-//==================================================
-// Assassin Guild Guards
-//===================================================
-
 moc_fild16.gat,195,281,4	script	Assassin Guardian#1::SinGuard	707,{
+
 	mes "[Assassin Guardian]";
 	if (BaseJob != JOB_ASSASSIN) goto AssGuild1;
 		mes "Welcome.";
 		close;
 
-AssGuild1:
-	set @temp, rand(1,4);
-	if (@temp == 1) mes "........";
-	if (@temp == 2) mes "Hmmm..........";
-	if (@temp == 3) mes "Hmmm... you shouldn't be here.....";
-	if (@temp == 4) mes "You're trespassing on forbidden grounds.......";
-	close;
+	AssGuild1:
+		set @temp, rand(1,4);
+		if (@temp == 1) mes "........";
+		if (@temp == 2) mes "Hmmm..........";
+		if (@temp == 3) mes "Hmmm... you shouldn't be here.....";
+		if (@temp == 4) mes "You're trespassing on forbidden grounds.......";
+		close;
 }
 
 moc_fild16.gat,204,281,4	duplicate(SinGuard)	Assassin Guardian#2	707
