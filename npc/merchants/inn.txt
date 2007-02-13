@@ -225,7 +225,7 @@ geffen_in.gat,70,64,5	script	Inn Employee::Cena	53,{
 //= Hugel Inn Employee - Some dialogue custom
 //============================================================
 
-hu_in.gat,246,107,5	script	Inn Staff::Hugel	53,{
+hu_in01.gat,246,107,5	script	Inn Staff::Hugel	53,{
 
 	mes "[Inn Staff]";
 	mes "Welcome to Hugel Inn.";

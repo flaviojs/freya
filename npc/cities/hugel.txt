@@ -1,9 +1,9 @@
 //===== Freya Script =========================================
 //= Hugel Town
 //===== By: ==================================================
-//= Tsuyuki
+//= Tsuyuki/Freya
 //===== Current Version: =====================================
-//= 1.0
+//= 1.2
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -12,6 +12,8 @@
 //= To-Do: Add Bingo-related NPCs + Finish up quests/misc things.
 //===== Additional Comments: =================================
 //= 1.0 Added redone script with new/missing NPCs and ripped iRO dialogue [Tsuyuki]
+//= 1.1 Fixed a couple bugs [Tsuyuki]
+//= 1.2 Added the beginnings of the Odin Excavation Quest (Missed yesterday) [Tsuyuki]
 //============================================================
 
 
@@ -131,6 +133,8 @@ hugel.gat,68,99,3	script	Booboo the Cow	889,{
 	close;
 }
 
+// Note: Should display a shadow (like Hide)
+// Isn't currently displaying the shadow [Tsuyuki]
 hugel.gat,72,101,0	script	Burupu's Instructions	111,{
 
 	mes "^3131FFYou've found a small";
@@ -155,17 +159,6 @@ OnTouch:
 	mes "doesn't come soon,";
 	mes "how will I get the milk";
 	mes "delivered by tomorrow?";
-	close;
-}
-
-hugel.gat,91,152,3	script	Sign	837,{
-
-	mes "**Recruitment Notice**";
-	mes "";
-	mes "We are now hiring recruits";
-	mes "for the Odin Shrine Expedition.";
-	mes "";
-	mes "- Shrine Expedition Dept.";
 	close;
 }
 
@@ -263,7 +256,7 @@ hugel.gat,196,164,5	script	El Schatt	50,{
 	close;
 }
 
-hugel.gat,198,171,0	script	#oldtree	139,2,2,{
+hugel.gat,198,171,0	script	#oldtree	139,1,1,{
 
 	end;
 
@@ -277,7 +270,7 @@ OnTouch:
 	close;
 }
 
-hugel.gat,191,172,5	script	Manainne	892,{
+hugel.gat,191,172,5	script	Manainne	893,{
 
 	mes "[Manainne]";
 	mes "You know, even though";
@@ -311,7 +304,7 @@ hugel.gat,168,183,5	script	Bismarc	118,{
 	close;
 }
 
-hugel.gat,169,112,5	script	Old Nikki	891,{
+hugel.gat,169,112,5	script	Old Nikki	892,{
 
 	mes "[Old Nikki]";
 	mes "You must not be from";
@@ -329,7 +322,7 @@ hugel.gat,169,112,5	script	Old Nikki	891,{
 	close;
 }
 
-hugel.gat,175,155,5	script	Marius	897,{
+hugel.gat,175,115,5	script	Marius	897,{
 
 	mes "[Marius]";
 	mes "Yes, I'm an old man, but";
@@ -353,7 +346,7 @@ hugel.gat,175,155,5	script	Marius	897,{
 // Hugel Indoor Town NPCs ->
 //============================================================
 
-hu_in01.gat,310,380,5	script	Girl	890,{
+hu_in01.gat,310,380,5	script	Girl	891,{
 
 	mes "[Girl]";
 	mes "Oh... I'm so bored!";
@@ -374,7 +367,7 @@ hu_in01.gat,326,307,3	script	Siria	90,{
 	close;
 }
 
-hu_in01.gat,370,253,0	script	Upper Drawer	111,2,2,{
+hu_in01.gat,370,254,0	script	Upper Drawer	111,2,2,{
 
 	end;
 
@@ -386,7 +379,7 @@ OnTouch:
 	close;
 }
 
-hu_in01.gat,386,245,5	script	Allen Schuwell	849,{
+hu_in01.gat,386,245,1	script	Allen Schuwell	849,{
 
 	mes "[Allen]";
 	mes "*Groooooan~*";
@@ -442,7 +435,7 @@ hu_in01.gat,365,170,5	script	Rachel	793,{
 	close;
 }
 
-hu_in01.gat,377,106,5	script	Shaomei	891,{
+hu_in01.gat,377,106,5	script	Shaomei	892,{
 
 	mes "[Shaomei]";
 	mes "We didn't use to get";
@@ -990,6 +983,7 @@ hugel.gat,70,137,5	script	Shede	879,{
 		mes "for you to bring it to me.";
 		close2;
 		set shedeclam,1;
+		set shedecount,0;
 		cutin "",255;
 		end;
 
@@ -1510,6 +1504,7 @@ hugel.gat,71,83,3	script	Wayne	900,{
 	mes "can donate them in Einbroch";
 	mes "to the Blacksmith Guild...";
 	next;
+	mes "[Wayne]";
 	mes "...Or you can exchange them";
 	mes "for items, right here and right";
 	mes "now, with me. As always, the";
@@ -1677,6 +1672,191 @@ hugel.gat,71,83,3	script	Wayne	900,{
 		mes "make your donations worth";
 		mes "all your effort, you know?";
 		close;
+}
+
+//============================================================
+// Odin Excavation Quest - Incomplete ->
+//============================================================
+
+hugel.gat,91,152,3	script	Sign	837,{
+
+	mes "**Recruitment Notice**";
+	mes "            "; // Line break
+	mes "We are now hiring recruits";
+	mes "for the Odin Shrine Expedition.";
+	mes "            "; // Line break
+	mes "- Shrine Expedition Dept.";
+	close;
+}
+
+hu_in01.gat,18,94,3	script	Part-Timer	49,{
+
+	mes "[Luda]";
+	mes "Welcome to the";
+	mes "Shrine Expedition Office.";
+	mes "I'm Luda, a part-time";
+	mes "assistant. My job is to";
+	mes "keep this office neat and";
+	mes "clean, but look at this place!";
+	next;
+	mes "[Luda]";
+	mes "Still, I think I can";
+	mes "handle this difficult task~";
+	mes "This room is the office for";
+	mes "the Schwaltzvalt Republic team,";
+	mes "and the other is for the Rune-";
+	mes "Midgarts Kingdom team.";
+	next;
+	mes "[Luda]";
+	mes "I have to clean both rooms,";
+	mes "so they keep me pretty busy.";
+	mes "Why don't you volunteer for";
+	mes "their expedition? I know they";
+	mes "can't really pay you, but it's";
+	mes "a great chance to explore~";
+	close;
+}
+
+hu_in01.gat,26,77,4	script	Part-Timer	50,{
+
+	mes "^3131FFThis part-timer is";
+	mes "completely engrossed";
+	mes "in his task of organizing";
+	mes "files and books.^000000";
+	close;
+}
+
+hu_in01.gat,18,167,5	script	Julian	86,{
+
+	mes "[Julian]";
+	mes "Say, are you here";
+	mes "for a job? We're looking";
+	mes "for someone that's passionate";
+	mes "about ancient history. If you";
+	mes "want to make money, then this";
+	// iRO dialogue fix
+	// mes "this the wrong place for you~";
+	// mes "is the wrong place for you~";
+	next;
+	mes "[Julian]";
+	mes "This is supposed to be";
+	mes "a collaborative excavation,";
+	mes "but the team leaders are too";
+	mes "stubborn, and refuse to make";
+	mes "any compromises. It's been";
+	mes "incredibly frustrating...";
+	next;
+	mes "[Julian]";
+	mes "Basically, each of our teams";
+	mes "is conducting its own research";
+	mes "for now. Now, we need your help";
+	mes "to find any relics from the odin";
+	mes "Shrine. We'd appreciate it if you";
+	// iRO dialogue fix
+	// mes "brought as many as you can!";
+	mes "bring as many as you can!";
+	close;
+}
+
+// I'm guessing if I wasn't a Novice, or I was higher-leveled
+// she would say something different? [Tsuyuki] ->
+hu_in01.gat,19,161,3	script	Alex	803,{
+
+	cutin "hu_alex01",2;
+	mes "[Alex]";
+	mes "Huh...?";
+	mes "What do you want?";
+	next;
+	menu	"Excuse me...",L_Alex01,
+		"I saw the recruitment notice and...",L_Alex02;
+
+	L_Alex01:
+		mes "[Alex]";
+		mes "Whatever you're";
+		mes "trying to sell me,";
+		mes "I'm not interested!";
+		mes "Now get out of here!";
+		close2;
+		cutin "",255;
+		end;
+
+	L_Alex02:
+		cutin "",255;
+		cutin "hu_alex02",2;
+		mes "[Alex]";
+		mes "Oh, so you saw the";
+		mes "recruitment notice for the";
+		mes "Odin Shrine Expedition, eh?";
+		mes "Well, I dunno. I think that";
+		mes "kind of expedition would";
+		mes "eat you alive. No offense...";
+		next;
+		mes "[Alex]";
+		mes "Look, I'll reconsider";
+		mes "whether you qualify after";
+		// iRO dialogue fix (My god..) [Tsuyuki]
+		// you get train a little more,";
+		mes "you train a little more,";
+		mes "develop your skills, you know,";
+		mes "get stronger. For now, though,";
+		mes "I do'nt think we can use you.";
+		close2;
+		cutin "",255;
+		end;
+}
+
+hu_in01.gat,16,20,5	script	Ashe	95,{
+
+	mes "[Ashe]";
+	// iRO dialogue fix
+	// mes "Oh, you've here in response";
+	mes "Oh, you're here in response";
+	mes "to the recruitment notice?";
+	mes "Well then, let me give you";
+	mes "a brief idea about the work.";
+	mes "First off, we can't pay you any";
+	mes "money, so you'd be a volunteer.";
+	next;
+	mes "[Ashe]";
+	mes "Instead, you're allowed to";
+	mes "keep whatever you excavate";
+	mes "in the Odin Shrine, so long";
+	mes "as we don't need it for our";
+	mes "research. This opportunity";
+	mes "might prove worthwhile to you.";
+	next;
+	mes "[Ashe]";
+	mes "Now, we should be working";
+	mes "together with the Schaltzvalt";
+	mes "Republic's Research Team, but";
+	mes "our leaders aren't getting along";
+	mes "at all. There's just a huge";
+	mes "clash of personalities...";
+	next;
+	mes "[Ashe]";
+	mes "In any case, if you'd";
+	mes "like to join us in our";
+	mes "efforts to uncover the";
+	mes "secrets of the past, then";
+	mes "please speak to Ms. Laurence.";
+	close;
+}
+
+// I'm guessing if I wasn't a Novice, or I was higher-leveled
+// she would say something different? [Tsuyuki] ->
+hu_in01.gat,14,11,4	script	Laura	70,{
+
+	cutin "hu_laura01",2;
+	mes "[Laura]";
+	mes "Hm? Oh, you must be";
+	mes "here in response to our";
+	mes "recruitment notice, yes?";
+	mes "Let me take a look at you...";
+	mes "Oh, you're all skin and bone!";
+	mes "I can't use someone like you.";
+	close2;
+	cutin "",255;
+	end;
 }
 
 //============================================================
