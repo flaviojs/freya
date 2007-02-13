@@ -3,17 +3,18 @@
 //===== By: ==================================================
 //= Tsuyuki
 //===== Current Version: =====================================
-//= 1.0
+//= 1.1
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
 //= Inn Employee NPCs for various Towns
-//= 100% Official Information - Date: 8/13/2006
-//= Inn NPCs not in iRO yet may have some custom parts:
+//= 100% Official Information - Date: 02/12/2007
+//= Inn NPCs that may have some custom parts:
 //= Al De Baran, Hugel, Rachel
 //===== Additional Comments: =================================
 //= 1.0 Redid script based on the leaked Aegis version,
 //= iRO screenshots, and Muad_Dib's ASB script [Tsuyuki]
+//= 1.1 Added official dialogue (iRO)/corrected save/warp coords for Hugel Inn [Tsuyuki]
 //============================================================
 
 
@@ -60,7 +61,7 @@ alberta_in.gat,32,142,5	script	Inn Employee::Jennie	53,{
 }
 
 //============================================================
-//= Al De Baran Inn Employee // NPC Temporary/Custom
+//= Al De Baran Inn Employee // Dialogue/Name may be custom (Doesn't exist in iRO)
 //============================================================
 
 aldeba_in.gat,92,58,2	script	Inn Employee::Moira	53,{
@@ -115,6 +116,9 @@ ein_in01.gat,206,224,3	script	Hotel Employee	855,{
 	mes "standards in cleanliness,";
 	mes "service and convenience~";
 	next;
+
+// Part of some unfinished Einbroch Quest?
+// ->
 //	if (EinQuest != xx) goto EinCont;
 //		mes "[Hotel Employee]";
 //		mes "Are you looking";
@@ -128,6 +132,8 @@ ein_in01.gat,206,224,3	script	Hotel Employee	855,{
 //		next;
 //		goto EinCont;
 //EinCont:
+// <-
+
 	menu "Save",Ein_Inn1,"Take Rest - 5,000 zeny",Ein_Inn2,"Cancel",Ein_Inn3;
 
 Ein_Inn1:
@@ -216,49 +222,64 @@ geffen_in.gat,70,64,5	script	Inn Employee::Cena	53,{
 }
 
 //============================================================
-//= Hugel Inn Employee // NPC Temporary/Custom
+//= Hugel Inn Employee - Some dialogue custom
 //============================================================
 
-hu_in.gat,246,107,5	script	Inn Employee::Betty	53,{
+hu_in.gat,246,107,5	script	Inn Staff::Hugel	53,{
 
-	mes "[Employee Betty]";
-	mes "Welcome to 'Payon Inn'.";
+	mes "[Inn Staff]";
+	mes "Welcome to Hugel Inn.";
 	mes "How may I help you?";
 	next;
-	menu "Save",Hug_Inn1,"Take a Rest -> 5000 zeny",Hug_Inn2,"Cancel",Hug_Inn3;
-	Hug_Inn1:
-		mes "[Employee Betty]";
+	menu "Save Point",L_Hug_Inn01,"Rest -> 5000 zeny",L_Hug_Inn02,"Quit",L_Hug_Inn03;
+
+	L_Hug_Inn01:
+		mes "[Inn Staff]";
 		mes "Your respawn point";
-		mes "has been saved.";
-		mes "Thank you,";
-		mes "please come again.";
-		savepoint "hu_in01.gat",264,96;
+		mes "has been saved inside.";
+		mes "Hugel Inn. Thank you,";
+		mes "for your patronage~";
+		savepoint "hu_in01.gat",262,96;
+		next;
+		mes "[Inn Staff]";
+		mes "I hope that your";
+		mes "stay here in Hugel is";
+		mes "relaxing and pleasant.";
 		close;
-	Hug_Inn2:
-		if (Zeny < 5000) goto InnPoorHug;
-			emotion 15;
-			mes "[Employee Betty]";
-			mes "Thank you.";
-			mes "I hope you";
-			mes "enjoy your rest~";
-			close2;
-			set zeny,zeny-5000;
-			percentheal 100,100;
-			warp "hu_in01.gat",264,96;
-			close;
+
+	L_Hug_Inn02:
+		if (Zeny < 5000) goto L_InnPoorHug;
+
+		// Possibly custom dialogue from here on ->
+		emotion 15;
+		mes "[Inn Staff]";
+		mes "Thank you.";
+		mes "I hope you";
+		mes "enjoy your rest~";
+		close2;
+		set zeny,zeny - 5000;
+		percentheal 100,100;
+		warp "hu_in01.gat",262,96;
+		close;
+		// <- End of custom dialogue
+
 		InnPoorHug:
-			mes "[Employee Betty]";
-			mes "I'm sorry, but the service charge";
-			mes "is 5,000 zeny. Please make sure";
-			mes "that you have enough money to check";
-			mes "in next time, okay?";
+			mes "[Inn Staff]";
+			mes "I'm sorry, but the";
+			mes "lodging fee is 5,000 zeny.";
+			mes "Please check your money before";
+			mes "you ask for accomodations.";
 			close;
-	Hug_Inn3:
+
+	L_Hug_Inn03:
+		mes "[Inn Staff]";
+		mes "Thank you, and";
+		mes "please come again~";
 		close;
 }
 
 //============================================================
-//= Morroc Inn Employee
+//= Morroc Inn Employee(s)
 //============================================================
 
 // Northern Inn
@@ -518,43 +539,48 @@ prt_in.gat,61,141,2	script	Inn Employee::Alma	53,{
 }
 
 //============================================================
-//= Rachel Inn Employee // NPC Temporary/Custom
+//= Rachel Inn Employee // Dialogue/Name are custom
 //============================================================
 
-ra_in01.gat,376,69,4	script	Inn Employee::Diego	931,{
+ra_in01.gat,376,69,4	script	Inn Staff::Rachel	931,{
 
-	mes "[Employee Diego]";
+	mes "[Inn Staff]";
 	mes "Welcome to 'Rachel Inn'.";
 	mes "How may I help you?";
 	next;
 	menu "Save",Ra_Inn1,"Take a Rest -> 5000 zeny",Ra_Inn2,"Cancel",Ra_Inn3;
+
 	Ra_Inn1:
-		mes "[Employee Diego]";
+		mes "[Inn Staff]";
 		mes "Your respawn point";
 		mes "has been saved.";
 		mes "Thank you,";
 		mes "please come again.";
 		savepoint "ra_in01.gat",384,128;
 		close;
+
 	Ra_Inn2:
 		if (Zeny < 5000) goto InnPoorRa;
-			emotion 15;
-			mes "[Employee Diego]";
-			mes "Thank you.";
-			mes "I hope you";
-			mes "enjoy your rest~";
-			close2;
-			set zeny,zeny-5000;
-			percentheal 100,100;
-			warp "ra_in01.gat",384,128;
-			close;
+
+		emotion 15;
+		mes "[Inn Staff]";
+		mes "Thank you.";
+		mes "I hope you";
+		mes "enjoy your rest~";
+		close2;
+		set zeny,zeny-5000;
+		percentheal 100,100;
+		warp "ra_in01.gat",384,128;
+		close;
+
 		InnPoorRa:
-			mes "[Employee Diego]";
+			mes "[Inn Staff]";
 			mes "I'm sorry, but the service charge";
 			mes "is 5,000 zeny. Please make sure";
 			mes "that you have enough money to check";
 			mes "in next time, okay?";
 			close;
+
 	Ra_Inn3:
 		close;
 }
