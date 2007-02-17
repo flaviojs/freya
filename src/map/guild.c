@@ -1550,12 +1550,12 @@ void guild_break(struct map_session_data *sd, char *name)
 
 //	nullpo_retv(sd); // checked before to call function
 
-	if ((g = guild_search(sd->status.guild_id)) == NULL)
-		return;
-	if (strcmp(g->name, name) != 0)
-		return;
-	if (strcmp(sd->status.name, g->master) != 0)
-		return;
+if ((g = guild_search(sd->status.guild_id)) == NULL)
+    return;
+if (strcasecmp(g->name, name) != 0)
+    return;
+if (strcasecmp(sd->status.name, g->master) != 0)
+    return;
 
 	for(i = 0; i < g->max_member; i++)
 	{
