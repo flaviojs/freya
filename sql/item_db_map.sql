@@ -1590,7 +1590,7 @@ INSERT INTO `item_db` VALUES (4298, 'Creamy_Fear_Card', 'Creamy Fear Card', 6, 2
 INSERT INTO `item_db` VALUES (4299, 'Clock_Card', 'Clock Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus4 bAutoSpellWhenHit,249,3+7*(getskilllv(249)==10),300,0;');
 INSERT INTO `item_db` VALUES (4300, 'Chimera_Card', 'Chimera Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus2 bAddEffWhenHit,Eff_Poison,1000; if(Basejob==JOB_ASSASSIN) bonus2 bAddEffWhenHit,Eff_Poison,2000;');
 INSERT INTO `item_db` VALUES (4301, 'Killer_Mantis_Card', 'Killer Mantis Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus2 bAddEffWhenHit,Eff_Bleeding,2000;');
-INSERT INTO `item_db` VALUES (4302, 'Tao_Gunka_Card', 'Tao Gunka Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bMaxHPrate,100; bonus bDefRate,-50; bonus bDef2Rate,-50;');
+INSERT INTO `item_db` VALUES (4302, 'Tao_Gunka_Card', 'Tao Gunka Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bMaxHPrate,100; bonus bDef,-50; bonus bMDef,-50;');
 INSERT INTO `item_db` VALUES (4303, 'Giant_Whisper_Card', 'Giant Whisper Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 4, 0, 0, 0, NULL, 'bonus bFlee,10; if(readparam(bStr)>=80) bonus bAtk,20; if(readparam(bVit)>=80) bonus bMaxHPrate,3; if(readparam(bLuk)>=80) bonus bCritical,3;');
 INSERT INTO `item_db` VALUES (4304, 'Tamruan_Card', 'Tamruan Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 32, 0, 0, 0, NULL, 'bonus bDef,2; bonus2 bSkillAtk,250,10; bonus2 bSkillAtk,251,10;');
 INSERT INTO `item_db` VALUES (4305, 'Turtle_General_Card', 'Turtle General Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus bAtkRate,20; if(GetPureJob==JOB_SWORDMAN) bonus4 bAutoSpell,7,10,300,1;');
@@ -2118,8 +2118,8 @@ INSERT INTO `item_db` VALUES (7136, 'Acid_Bottle', 'Acid Bottle', 3, 20, 0, 10, 
 INSERT INTO `item_db` VALUES (7137, 'Plant_Bottle', 'Plant Bottle', 3, 20, 0, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7138, 'Marine_Sphere_Bottle', 'Marine Sphere Bottle', 3, 20, 0, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7139, 'Glistening_Coat', 'Glistening', 3, 20, 0, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
-INSERT INTO `item_db` VALUES (7140, 'Seed_of_Life', 'Seed of Life', 3, 20, 0, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
-INSERT INTO `item_db` VALUES (7141, 'Morning_Dew_of_Yggdrasil', 'Morning Dew of Yggdrasil', 3, 20, 0, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
+INSERT INTO `item_db` VALUES (7140, 'Seed_of_Life', 'Seed of Life', 3, 60000, 30000, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
+INSERT INTO `item_db` VALUES (7141, 'Morning_Dew_of_Yggdrasil', 'Morning Dew of Yggdrasil', 3, 20000, 10000, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7142, 'Embryo', 'Embryo', 3, 20, 0, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7143, 'Glass_Tube', 'Glass Tube', 2, 50000, 0, 1000, 0, 0, 0, 0, 262144, 2, 0, 0, 0, 0, 'bpet;', NULL);
 INSERT INTO `item_db` VALUES (7144, 'Potion_Creation_Gude', 'Potion Creation Guide', 3, 100000, 0, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);

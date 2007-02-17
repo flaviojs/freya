@@ -2093,8 +2093,8 @@
 7137,Plant_Bottle,Plant Bottle,3,20,0,10,,,,,,,,,,,{},{}
 7138,Marine_Sphere_Bottle,Marine Sphere Bottle,3,20,0,10,,,,,,,,,,,{},{}
 7139,Glistening_Coat,Glistening,3,20,0,10,,,,,,,,,,,{},{}
-7140,Seed_of_Life,Seed of Life,3,20,0,10,,,,,,,,,,,{},{}
-7141,Morning_Dew_of_Yggdrasil,Morning Dew of Yggdrasil,3,20,0,10,,,,,,,,,,,{},{}
+7140,Seed_of_Life,Seed of Life,3,60000,30000,10,,,,,,,,,,,{},{}
+7141,Morning_Dew_of_Yggdrasil,Morning Dew of Yggdrasil,3,20000,10000,10,,,,,,,,,,,{},{}
 7142,Embryo,Embryo,3,20,0,10,,,,,,,,,,,{},{}
 7143,Glass_Tube,Glass Tube,2,50000,,1000,,,,,262144,2,,,,,{ bpet; },{}
 7144,Potion_Creation_Gude,Potion Creation Guide,3,100000,0,10,,,,,,,,,,,{},{}

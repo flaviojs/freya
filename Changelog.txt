@@ -11,6 +11,7 @@
 Date	Added
 
 02/17/2007
+	* Added: Some missing item prices [Tsuyuki]
 	* Added: Converted Prontera NPCs from Aegis to Freya [Tsuyuki]
 	* Changed: Slight modification to guild deletion (By Harbin) [Tsuyuki]
 	* Fixed: Biolabs barrel number code (Thanks to Esus) [Tsuyuki]
