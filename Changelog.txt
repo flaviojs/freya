@@ -11,6 +11,8 @@
 Date	Added
 
 02/17/2007
+	* Added: Official warps for Thanatos Tower [GreenGoblin]
+	* Added: All Thanatos keys and charms to the item_bound [GreenGoblin]
 	* Reverted: Windhawk's element change [Tsuyuki]
 	 - http://freya.dns.st/mantis/view.php?id=447
 	* Added: Some missing item prices [Tsuyuki]

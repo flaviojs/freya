@@ -25,3 +25,15 @@
 569,8,100		// Novice Red Potion
 
 7432,123,100	//Leather Pouch (Part of Cooking Quest)
+
+// Thanatos bound items
+7421,115,100	// Red Key
+7422,115,100	// Yellow Key
+7423,115,100	// Blue Key
+7424,115,100	// Green Key
+7425,115,100	// Black Key
+7426,115,100	// Red Charm Stone
+7427,115,100	// Yellow Charm Stone
+7428,115,100	// Blue Charm Stone
+7429,115,100	// Green Charm Stone
+7430,115,100	// Black Charm Stone
