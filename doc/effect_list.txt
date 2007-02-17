@@ -1,343 +1,390 @@
-Effect list - #'s I found while testing, lots of possible advanced class effects we missed
-(mixed old effect list of valaris and spira's new list...)
-A Complete and Accurate Effect list - #'s.
-Edit by Au{R}oN for: Add and Change all missing/wrong Effect (New and Old).
- 
-0-5.	Attack Display
-6.		Being Warped
-7.		Being Healed
-8.		Yellow Ripple Effect
-9.		Different Type of Heal
-10.		Mammomite
-11.		Endure
-12.		Yellow Cast Aura
-13.		Blue Box
-14.		Blue heal? Blue pot?
-15.		Soul Strike
-16.		Hide Animation
-17.		Magnum Break
-18.		Steal
-19.		Invalid
-20.		Envenom/Poison
-21.		Detoxify
-22.		Sight
-23.		Stone Curse
-24.		Fire Ball
-25.		Fire Wall
-26.		Only a Sound
-27.		Frost Driver Road
-28.		Frost Driver Hitting
-29.		Lightning Bolt
-30.		Thunder Storm
-31.		Bubbles Launchers
-32.		Explosion
-33.		Ruwach
-34.		Warp Out Aura (Blue)
-35.		Casting Warp Portal (Blue)
-36.		Warp Portal (Blue)
-37.		Agility Up
-38.		Agility Down
-39.		Something Being Made
-40.		Cross Thing (Paladin Skill?)
-41.		Angelus Bell
-42.		Blessing Angels
-43.		Dex + Agi Up
-44.		Little Fog Smoke.
-45.		Faint Little Ball Things.
-46.		Sand Wind
-47.		Torch
-48.		Small Piece of Glass
-49.		Firebolt/Wall Hits
-50.		Spinning Fire Thing
-51.		Icebolt Hit
-52.		Something LIKE Jupitel Thunder Hit
-53.		Puff of Purpulish Smoke?
-54-59.	Various Cast Animations
-60.		Cast target circle
-61.		Warp portal (for maps)
-62.		Sight Trasher
-63.		Moonlight Sphere
-64.		Something Like Puruple/Yellow Light Bullet
-65.		Something Like Absorb of Power
-66.		Cure
-67.		Provoke
-68.		MVP
-69.		Skid trap
-70.		Brandish Spear
-71.		Spiral White balls
-72.		Bigger Spiral White balls
-73.		Blue/White Small Aura
-74.		Icewall sicle
-75.		Gloria
-76.		Magnificant
-77.		Resurrection
-78.		Status recovery
-79.		Earth spike
-80.		Spear boomerang
-81.		Skill hit
-82.		Detect hidden
-83.		Sanctuary
-84.		Impositio Manus
-85.		Lex Aeterna
-86.		Aspersio
-87.		Lex Divina
-88.		Suffragium
-89.		Storm Gust
-90.		Lord Of Vermilion
-91.		B.S Sacramenti
-92.		Meteor Storm
-93.		Jupitel Thunder Ball
-94.		Jupitel Thunder Raffic Hit
-95.		Quagmire
-96.		Cool Fire Ball
-97.		Firepillar/Trap hit
-98.		Adrenaline Rush
-99.		Flasher Trap
-100.	Yellow ball fountain
-101.	Something Like Weapon Forge
-102.	Hammerfall
-103.	Weapon Perfection
-104.	Maximize Power
-105.	Nothing
-106.	Blast Mine Trap
-107.	Another Fire Ball explosion (The Ball of Effect #96)
-108.	Freezing Trap
-109.	Something like Quagmire (Used in Babilan Dungeon Maps)
-110.	Trap Used by Giearth
-111.	Spring Trap
-112.	Kirye Eleyson
-113.	Magnum Exorcism
-114.	Small Basilica
-115.	Blitz Beat
-116.	Fling Watersphere
-117.	Waterball
-118.	Fling Firesphere
-119.	Detect
-120.	Semi-Invisiblity
-121.	Over Thrust
-122.	Something Like Multiple Hit
-123.	Grimtooth Road
-124.	Venom Dust
-125.	Enchant Poison
-126.	Poison React
-127.	Small Posion React
-128.	Over Thrust (The same of 121 but with more sound)
-129.	Venom Plasher Explosion
-130.	Concentration
-131.	Auto-Counter Hit
-132.	Grimtooth Hit
-133.	O_O Its Look Like Freezeing Emperium inside Blue Circle
-134.	The same Emperium without the Blue Circle
-135.	The same Emperium with Explosion
-136.	Poison
-137.	Really Really Small Basilica
-138.	Fire pillar
-139.	Sandman Trap
-154.	Refine Success
-155.	Refine Fail
-156.	Nothing
-157.	Nothing
-158.	Job Level Up
-159.	PvP circle
-160.	PvP Party Circle
-161.	Nothing
-162.	Snow
-163.	Sakura Leaves
-164.	Nothing
-165.	Comodo Fireworks Ball (Different Colors)
-166.	Energy Coat (Sprite Effect)
-167.	Nothing
-168.	Nothing
-169.	Energy Coat (After Cast Effect)
-170.	Cart Revolution
-171.	Nothing
-172.	Black Column
-173.	Red Column
-174.	Blue Column
-175.	Yellow Column
-176.	Purple Column
-177.	Red Column
-178.	White Column
-179.	Fuxia Column
-180.	Need More Skill Test
-181.	Need More Skill Test
-182.	Need More Skill Test
-183.	Self Destruction (@nuke Effect) 
-184.	Nothing
-185.	Nothing
-186-190	Yellow Sphere 1-2-3-4-5
-191.	Target
-192.	purple cloud hit
-193.	Attack with Silence Effect
-194.	Attack with Stun Effect
-195.	Stone Curse and Attack with Stone Curse Effect
-196.	Attack with Curse Effect
-197.	Attack with Sleep Effect
-198.	Nothing
-199.	Small Bubble Explosion
-200.	Nothing
-201.	Nothing
-202.	Lv 99 Aura Bubble
-203.	Mental Strenght Lightning (Without Sound)
-204-211	Healing Items Effect
-212.	Damage Effect (Number from 0 to 9999)
-213.	Attack with Strip Shield Effect
-214.	Unamed Skill (Skill used by Gargoyle)
-215.	Hide/Unhide
-216.	Heal (HP) Absorb
-217.	Mana (SP) Abosrb
-218.	Concentration Potion
-219.	Awakening Potion
-220.	Berserk Potion
-221.	UFO Beam for fake the Cows :O
-222.	Defender
-223.	Effect Happen Before Land Protector Area
-224.	White Wisp Revolving Around You
-225.	Effect Happen Before Volcano Area
-226.	Grand Cross Effect
-227.	Snatch Sound
-228-230	Nothing
-231.	Yuno Effect (2 Sec before happen)
-232.	Nothing
-233.	Fog
-234.	Spell Breaker
-235.	Spell Braaker 2
-236.	Effect Happen Before Deluge Area
-237.	Effect Happen Before Wind Gage Area
-238.	Effect Happen Before Land Protector Area
-239.	2nd Volcano Area
-240.	2nd Deluge Area
-241.	2nd Wind Gage Area
-242.	2nd Land Protector Area
-243.	Nothing
-244.	Magic Rod
-245.	Holy Cross
-246.	Shield Charge
-247.	Yuno Large Effect (2 Sec before happen)
-248.	Providence
-249.	Shield Boomerang
-250.	Concentration 2
-251.	Devotion
-252.	Reflect Shield
-253.	Something Like SP Regenenration
-254.	Mental Strenght Lightning
-255.	Fire Effect
-256.	Ice Effect
-257.	Lightning Effect
-258.	Earth Effect
-259.	Green Abduction Beam
-260.	Orange Abduction Beam
-261.	Big Yellow Ground Area 
-262.	Yellow Things That Shoot Out
-263.	Yellow Ground Area.
-264.	Nothing
-265.	Throw Sphere
-266.	White Things That Shoot Out
-267.	Cannon Shot Sound
-268.	Money Bag
-269.	Strip Weapon
-270.	Strip Shield
-271.	Strip Armor
-272.	Strip Headgear
-273.	Outter Spinning White Balls.
-274.	Flying Money
-275.	Need More Test Skill (Probably BackStab)
-276.	Need More Test Skill (Probably the 2nd Part of Snatch Effect)
-277.	Something White
-278.	Need More Skill Test
-279.	Need More Skill Test
-280.	Need More Skill Test
-281.	Need More Skill Test
-282.	Need More Skill Test
-283.	Need More Skill Test
-284.	Need More Skill Test
-285.	Need More Skill Test
-286.	Need More Skill Test
-287.	Need More Skill Test
-288.	Need More Skill Test
-289.	Need More Skill Test
-290.	Need More Skill Test
-291.	Need More Skill Test
-292.	Need More Skill Test
-293.	Need More Skill Test
-294.	Need More Skill Test
-295.	Frost Joke
-296.	Scream
-298.	Fire Bottle Throwing
-300.	Chemical Protection
-301.	FireWorks Sound (3 Sec Before Happen, this effect have a sorta of LOOP... it continue until player warp)
-302.	Bomb
-303.	Probably an Old Effect of Monk Skill
-304.	Warp Effect
-305.	Pharmacy Success
-306.	Pharmacy Failed
-307.	Sunlight Through The Roof
-308.	Throw Stone
-309.	First Aid
-310.	Another Yellow Bubbles
-311.	Loud Exclamation
-312-313	Heal Effect
-314.	Warp Effect (Probably Used by Baby Class because is small)
-315.	Safety Wall
-316.	Warp Portal (Pre-Beam)
-317.	Warp Portal (Beam)
-318.	Something Like Big Square Beam
-319.	Another Small Basilica
-320.	Offensive Heal
-321.	Warp NPC °_°
-322.	Big Sunlight Through The Roof
-323.	Small Sunlight Through The Roof
-324.	Medium Sunlight Through The Roof
-325.	Another Heal Effect
-326.	Chase Walk Left Foot
-327.	Chse Walk Right Foot
-328.	Ashura Strike Word
-329.	Triple Strike
-330.	Combo Finish
-331.	Natural HP Regeneration
-332.	Natural SP Regeneration
-333.	Autumn Leaves
-334.	Blind
-335.	Poison
-336.	Kirye Eleison/Parring/Defender Shield
-337.	Class Change
-338.	Super Novice/Taekwon Level Up Angel
-339.	Spiral Pierce
-340.	Nothing
-341.	Wedding Warp Portal
-342.	Wedding Skill
-343.	Another Merry Skill
-344.	Login
-345.	Nothing
-346.	Like Moonlight But Blue
-347.	Wedding Cerimony
-348.	Like 1000 Blade trepassing
-349.	Waterfall (Horizonatal)
-350.	Waterfall (Vertical)
-351.	Small Waterfall (Horizonatal)
-352.	Small Waterfall (Vertical)
-353.	Dark Waterfall (Horizonatal)
-354.	Dark Waterfall (Vertical)
-355.	Dark Small Waterfall (Horizonatal)
-356.	Dark Small Waterfall (Vertical)
-358.	Niflheim Ghost
-359.	Niflheim Bat Slow
-360.	Niflheim Bat Fast
-361.	Soul Breaker
-362.	Another Level 99 Bubbles
-363.	Valentine Day Heart (With Wings)
-364.	Valentine Day Heart
-365.	Pressure
-368.	Berserk
-369.	Spear Quiken
-370.	Gospel Small Cross
-371.	Level Up
-372.	Death
-373.	House Smoke
-374.	Basilica
-375.	Assumptio Sprite Effect
-376.	Palm Strike
-377.	Shoot Out Yellow Beam
+// *********************************************************
+// * Freya Effect List Reference - By lots of people       *
+// *********************************************************
+
+ID	Description				Aegis Enumeration
+
+0.	Attack Display #1			EF_HIT1
+1.	Attack Display #2			EF_HIT2
+2.	Attack Display #3			EF_HIT3
+3.	Attack Display #4			EF_HIT4
+4.	Attack Display #5			EF_HIT5
+5.	Attack Display #6			EF_HIT6
+6.	Being Warped				EF_ENTRY
+7.	Being Healed				EF_EXIT
+8.	Yellow Ripple Effect			EF_WARP
+9.	Different Type of Heal			EF_ENHANCE
+10.	Mammomite				EF_COIN
+11.	Endure					EF_ENDURE
+12.	Yellow Cast Aura			EF_BEGINSPELL
+13.	Blue Box				EF_GLASSWALL
+14.	Blue heal? Blue pot?			EF_HEALSP
+15.	Soul Strike				EF_SOULSTRIKE
+16.	Hide Animation				EF_BASH
+17.	Magnum Break				EF_MAGNUMBREAK
+18.	Steal					EF_STEAL
+19.	Invalid					EF_HIDING
+20.	Envenom/Poison				EF_PATTACK
+21.	Detoxify				EF_DETOXICATION
+22.	Sight					EF_SIGHT
+23.	Stone Curse				EF_STONECURSE
+24.	Fire Ball				EF_FIREBALL
+25.	Fire Wall				EF_FIREWALL
+26.	Only a Sound				EF_ICEARROW
+27.	Frost Driver Road			EF_FROSTDIVER
+28.	Frost Driver Hitting			EF_FROSTDIVER2
+29.	Lightning Bolt				EF_LIGHTBOLT
+30.	Thunder Storm				EF_THUNDERSTORM
+31.	Bubbles Launchers			EF_FIREARROW
+32.	Explosion				EF_NAPALMBEAT
+33.	Ruwach					EF_RUWACH
+34.	Warp Out Aura (Blue)			EF_TELEPORTATION
+35.	Casting Warp Portal (Blue)		EF_READYPORTAL
+36.	Warp Portal (Blue)			EF_PORTAL
+37.	Agility Up				EF_INCAGILITY
+38.	Agility Down				EF_DECAGILITY
+39.	Something Being Made			EF_AQUA
+40.	Cross Thing (Paladin Skill?)		EF_SIGNUM
+41.	Angelus Bell				EF_ANGELUS
+42.	Blessing Angels				EF_BLESSING
+43.	Dex + Agi Up				EF_INCAGIDEX
+44.	Little Fog Smoke.			EF_SMOKE
+45.	Faint Little Ball Things.		EF_FIREFLY
+46.	Sand Wind				EF_SANDWIND
+47.	Torch					EF_TORCH
+48.	Small Piece of Glass			EF_SPRAYPOND
+49.	Firebolt/Wall Hits			EF_FIREHIT
+50.	Spinning Fire Thing			EF_FIRESPLASHHIT
+51.	Icebolt Hit				EF_COLDHIT
+52.	Like Jupitel Thunder?			EF_WINDHIT
+53.	Puff of Purpulish Smoke?		EF_POISONHIT
+54.	Cast Animation #1			EF_BEGINSPELL2
+55.	Cast Animation #2			EF_BEGINSPELL3
+56.	Cast Animation #3			EF_BEGINSPELL4
+57.	Cast Animation #4			EF_BEGINSPELL5
+58.	Cast Animation #5			EF_BEGINSPELL6
+59.	Cast Animation #6			EF_BEGINSPELL7
+60.	Cast target circle			EF_LOCKON
+61.	Warp portal (for maps)			EF_WARPZONE
+62.	Sight Trasher				EF_SIGHTHRASHER
+63.	Moonlight Sphere			EF_BARRIER
+64.	Purple/Yellow Light Bullet?		EF_ARROWSHOT
+65.	Something Like Absorb of Power		EF_INVENOM
+66.	Cure					EF_CURE
+67.	Provoke					EF_PROVOKE
+68.	MVP					EF_MVP
+69.	Skid trap				EF_SKIDTRAP
+70.	Brandish Spear				EF_BRANDISHSPEAR
+71.	Spiral White balls			EF_CONE
+72.	Bigger Spiral White balls		EF_SPHERE
+73.	Blue/White Small Aura			EF_BOWLINGBASH
+74.	Icewall sicle				EF_ICEWALL
+75.	Gloria					EF_GLORIA
+76.	Magnificant				EF_MAGNIFICAT
+77.	Resurrection				EF_RESURRECTION
+78.	Status recovery				EF_RECOVERY
+79.	Earth spike				EF_EARTHSPIKE
+80.	Spear boomerang				EF_SPEARBMR
+81.	Skill hit				EF_PIERCE
+82.	Detect hidden				EF_TURNUNDEAD
+83.	Sanctuary				EF_SANCTUARY
+84.	Impositio Manus				EF_IMPOSITIO
+85.	Lex Aeterna				EF_LEXAETERNA
+86.	Aspersio				EF_ASPERSIO
+87.	Lex Divina				EF_LEXDIVINA
+88.	Suffragium				EF_SUFFRAGRIUM
+89.	Storm Gust				EF_STORMGUST
+90.	Lord Of Vermilion			EF_LORD
+91.	B.S Sacramenti				EF_BENEDICTIO
+92.	Meteor Storm				EF_METEORSTORM
+93.	Jupitel Thunder Ball			EF_YUFITEL
+94.	Jupitel Thunder Raffic Hit		EF_YUFITELHIT
+95.	Quagmire				EF_QUAGMIRE
+96.	Cool Fire Ball				EF_FIREPILLAR
+97.	Firepillar/Trap hit			EF_FIREPILLARBOMB
+98.	Adrenaline Rush				EF_HASTEUP
+99.	Flasher Trap				EF_FLASHER
+100.	Yellow ball fountain			EF_REMOVETRAP
+101.	Something Like Weapon Forge		EF_REPAIRWEAPON
+102.	Hammerfall				EF_CRASHEARTH
+103.	Weapon Perfection			EF_PERFECTION
+104.	Maximize Power				EF_MAXPOWER
+105.	Nothing					EF_BLASTMINE
+106.	Blast Mine Trap				EF_BLASTMINEBOMB
+107.	Another Fire Ball (Same as #96)		EF_CLAYMORE
+108.	Freezing Trap				EF_FREEZING
+109.	Byalan Dungeon Bubbles			EF_BUBBLE
+110.	Trap Used by Giearth			EF_GASPUSH
+111.	Spring Trap				EF_SPRINGTRAP
+112.	Kyrie Eleison				EF_KYRIE
+113.	Magnum Exorcism				EF_MAGNUS
+114.	Small Basilica				EF_BOTTOM
+115.	Blitz Beat				EF_BLITZBEAT
+116.	Fling Watersphere			EF_WATERBALL
+117.	Waterball				EF_WATERBALL2
+118.	Fling Firesphere			EF_FIREIVY
+119.	Detect					EF_DETECTING
+120.	Semi-Invisiblity			EF_CLOAKING
+121.	Over Thrust				EF_SONICBLOW
+122.	Something Like Multiple Hit		EF_SONICBLOWHIT
+123.	Grimtooth Road				EF_GRIMTOOTH
+124.	Venom Dust				EF_VENOMDUST
+125.	Enchant Poison				EF_ENCHANTPOISON
+126.	Poison React				EF_POISONREACT
+127.	Small Posion React			EF_POISONREACT2
+128.	Over Thrust (Same #121 but with sound)	EF_OVERTHRUST
+129.	Venom Plasher Explosion			EF_SPLASHER
+130.	Concentration				EF_TWOHANDQUICKEN
+131.	Auto-Counter Hit			EF_AUTOCOUNTER
+132.	Grimtooth Hit				EF_GRIMTOOTHATK
+133.	Freezing Emperium in Blue Circle??	EF_FREEZE
+134.	The same Emperium w/o Blue Circle	EF_FREEZED
+135.	The same Emperium with Explosion	EF_ICECRASH
+136.	Poison					EF_SLOWPOISON
+137.	Really Really Small Basilica		EF_BOTTOM2
+138.	Fire pillar				EF_FIREPILLARON
+139.	Sandman Trap				EF_SANDMAN
+140.	Resurrection Effect			EF_REVIVE
+141.	Pneuma Effect				EF_PNEUMA
+142.	Heaven's Drive effect			EF_HEAVENSDRIVE
+143.	Sonic Blow #2?				EF_SONICBLOW2
+144.	Brand Spear #2?				EF_BRANDISH2
+145.	Shock Wave Trap Effect			EF_SHOCKWAVE
+146.	Shock Wave Hit Effect			EF_SHOCKWAVEHIT
+147.	Earth Spike(?) hit effect		EF_EARTHHIT
+148.	Piece Self Effect (Casting)		EF_PIERCESELF
+149.	Bowling Bash Self Effect (Casting)	EF_BOWLINGSELF
+150.	Spear Stab Self	Effect (Casting)	EF_SPEARSTABSELF
+151.	Spear Boomerang Self Effect (Casting)	EF_SPEARBMRSELF
+152.	Holy hit				EF_HOLYHIT
+153.	Concentration Effect			EF_CONCENTRATION
+154.	Refine Success				EF_REFINEOK
+155.	Refine Fail				EF_REFINEFAIL
+156.	Nothing					EF_JOBCHANGE
+157.	Nothing					EF_LVUP
+158.	Job Level Up				EF_JOBLVUP
+159.	PvP circle				EF_TOPRANK
+160.	PvP Party Circle			EF_PARTY
+161.	Nothing					EF_RAIN
+162.	Snow					EF_SNOW
+163.	Sakura Leaves				EF_SAKURA
+164.	Nothing					EF_STATUS_STATE
+165.	Comodo Fireworks Ball (Diff Colors)	EF_BANJJAKII
+166.	Energy Coat (Sprite Effect)		EF_MAKEBLUR
+167.	Nothing					EF_TAMINGSUCCESS
+168.	Nothing					EF_TAMINGFAILED
+169.	Energy Coat (After Cast Effect)		EF_ENERGYCOAT
+170.	Cart Revolution				EF_CARTREVOLUTION
+171.	Nothing					EF_VENOMDUST2
+172.	Black Column				EF_CHANGEDARK
+173.	Red Column				EF_CHANGEFIRE
+174.	Blue Column				EF_CHANGECOLD
+175.	Yellow Column				EF_CHANGEWIND
+176.	Purple Column				EF_CHANGEFLAME
+177.	Red Column				EF_CHANGEEARTH
+178.	White Column				EF_CHANGEHOLY
+179.	Fuxia Column				EF_CHANGEPOISON
+180.	Need More Skill Test			EF_HITDARK
+181.	Need More Skill Test			EF_MENTALBREAK
+182.	Need More Skill Test			EF_MAGICALATTHIT
+183.	Self Destruction (@nuke Effect) 	EF_SUI_EXPLOSION
+184.	Nothing					EF_DARKATTACK
+185.	Nothing					EF_SUICIDE
+186	Yellow Sphere #1			EF_COMBOATTACK1
+187.	Yellow Sphere #2			EF_COMBOATTACK2
+188.	Yellow Sphere #3			EF_COMBOATTACK3
+189.	Yellow Sphere #4			EF_COMBOATTACK4
+190.	Yellow Sphere #5			EF_COMBOATTAK5
+191.	Target					EF_GUIDEDATTACK
+192.	purple cloud hit			EF_POISONATTACK
+193.	Attack with Silence Effect		EF_SILENCEATTACK
+194.	Attack with Stun Effect			EF_STUNATTACK
+195.	Stone Curse Attack + Effect		EF_PETRIFYATTACK
+196.	Attack with Curse Effect		EF_CURSEATTACK
+197.	Attack with Sleep Effect		EF_SLEEPATTACK
+198.	Nothing					EF_TELEKHIT
+199.	Small Bubble Explosion			EF_PONG
+200.	Nothing					EF_LEVEL99
+201.	Nothing					EF_LEVEL99_2
+202.	Lv 99 Aura Bubble			EF_LEVEL99_3
+203.	Mental Strength Lightning (w/o Sound)	EF_GUMGANG
+204.	Potion effect #1			EF_POTION1
+205.	Potion effect #2			EF_POTION2
+206.	Potion effect #3			EF_POTION3
+207.	Potion effect #4			EF_POTION4
+208.	Potion effect #5			EF_POTION5
+209.	Potion effect #6			EF_POTION6
+210.	Potion effect #7			EF_POTION7
+211.	Potion effect #8			EF_POTION8
+212.	Damage Effect (Number from 0 to 9999)	EF_DARKBEATH
+213.	Attack with Strip Shield Effect		EF_DEFENDER
+214.	Unamed Skill (Skill used by Gargoyle)	EF_KEEPING
+215.	Hide/Unhide				EF_SUMMONSLAVE
+216.	Heal (HP) Absorb			EF_BLOODDRAIN
+217.	Mana (SP) Abosrb			EF_ENERGYDRAIN
+218.	Concentration Potion			EF_POTION_CON
+219.	Awakening Potion			EF_POTION_
+220.	Berserk Potion				EF_POTION_BERSERK
+221.	UFO Beam for fake the Cows :O		EF_POTIONPILLAR
+222.	Defender				EF_DEFENDER
+223.	Happens Before Land Protector Area	EF_SAINTCASTING
+224.	White Wisp Revolving Around You		EF_WIND
+225.	Effect Happen Before Volcano Area	EF_VOLCANO
+226.	Grand Cross Effect			EF_GRANDCROSS
+227.	Snatch Sound				EF_INTIMIDATE
+228	Nothing					EF_CHOOKGI
+229.	Nothing					EF_CLOUD
+230.	Nothing					EF_CLOUD2
+231.	Yuno Effect (2 Sec before happen)	EF_MAPPILLAR
+232.	Nothing					EF_LINELINK
+233.	Fog					EF_CLOUD3
+234.	Spell Breaker				EF_SPELLBREAKER
+235.	Spell Braaker 2				EF_DISPELL
+236.	Happen Before Deluge Area		EF_DELUGE
+237.	Happen Before Violent Gale Area		EF_VIOLENTGALE
+238.	Happen Before Land Protector Area	EF_LANDPROTECTOR
+239.	2nd Volcano Area			EF_BOTTOM_VO
+240.	2nd Deluge Area				EF_BOTTOM_DE
+241.	2nd Wind Gage Area			EF_BOTTOM_VI
+242.	2nd Land Protector Area			EF_BOTTOM_LA
+243.	Nothing					EF_FASTMOVE
+244.	Magic Rod				EF_MAGICROD
+245.	Holy Cross				EF_HOLYCROSS
+246.	Shield Charge				EF_SHIELDCHARGE
+247.	Yuno Large Effect (2 Sec before happen)	EF_MAPPILLAR2
+248.	Providence				EF_PROVIDENCE
+249.	Shield Boomerang			EF_SHIELDBOOMERANG
+250.	Concentration 2				EF_SPEARQUICKEN
+251.	Devotion				EF_DEVOTION
+252.	Reflect Shield				EF_REFLECTSHIELD
+253.	Something Like SP Regenenration		EF_ABSORBSPIRITS
+254.	Mental Strenght Lightning		EF_STEELBODY
+255.	Fire Effect				EF_FLAMELAUNCHER
+256.	Ice Effect				EF_FROSTWEAPON
+257.	Lightning Effect			EF_LIGHTNINGLOADER
+258.	Earth Effect				EF_SEISMICWEAPON
+259.	Green Abduction Beam			EF_MAPPILLAR3
+260.	Orange Abduction Beam			EF_MAPPILLAR4
+261.	Big Yellow Ground Area 			EF_GUMGANG2
+262.	Yellow Things That Shoot Out		EF_TEIHIT1
+263.	Yellow Ground Area.			EF_GUMGANG3
+264.	Nothing					EF_TEIHIT2
+265.	Throw Sphere				EF_TANJI
+266.	White Things That Shoot Out		EF_TEIHIT1X
+267.	Cannon Shot Sound			EF_CHIMTO
+268.	Money Bag				EF_STEALCOIN
+269.	Strip Weapon				EF_STRIPWEAPON
+270.	Strip Shield				EF_STRIPSHIELD
+271.	Strip Armor				EF_STRIPARMOR
+272.	Strip Headgear				EF_STRIPHELM
+273.	Outter Spinning White Balls.		EF_CHAINCOMBO
+274.	Flying Money				EF_RG_COIN
+275.	Backstab Effect?			EF_BACKSTAP
+276.	Snatch Effect?				EF_TEIHIT3
+277.	Something White				EF_BOTTOM_DISSONANCE
+278.	Need More Skill Test			EF_BOTTOM_LULLABY
+279.	Need More Skill Test			EF_BOTTOM_RICHMANKIM
+280.	Need More Skill Test			EF_BOTTOM_ETERNALCHAOS
+281.	Need More Skill Test			EF_BOTTOM_DRUMBATTLEFIELD
+282.	Need More Skill Test			EF_BOTTOM_RINGNIBELUNGEN
+283.	Need More Skill Test			EF_BOTTOM_ROKISWEIL
+284.	Need More Skill Test			EF_BOTTOM_INTOABYSS
+285.	Need More Skill Test			EF_BOTTOM_SIEGFRIED
+286.	Need More Skill Test			EF_BOTTOM_WHISTLE
+287.	Need More Skill Test			EF_BOTTOM_ASSASSINCROSS
+288.	Need More Skill Test			EF_BOTTOM_POEMBRAGI
+289.	Need More Skill Test			EF_BOTTOM_APPLEIDUN
+290.	Need More Skill Test			EF_BOTTOM_UGLYDANCE
+291.	Need More Skill Test			EF_BOTTOM_HUMMING
+292.	Need More Skill Test			EF_BOTTOM_DONTFORGETME
+293.	Need More Skill Test			EF_BOTTOM_FORTUNEKISS
+294.	Need More Skill Test			EF_BOTTOM_SERVICEFORYOU
+295.	Frost Joke				EF_TALK_FROSTJOKE
+296.	Scream					EF_TALK_SCREAM
+297.	Fire Works Effect			EF_POKJUK
+298.	Fire Bottle Throwing			EF_THROWITEM
+299.	Another Throwing Bottle			EF_THROWITEM2
+300.	Chemical Protection			EF_CHEMICALPROTECTION
+301.	FireWorks Sound (Loops til warp)	EF_POKJUK_SOUND
+302.	Bomb					EF_DEMONSTRATION
+303.	Probably an Old Effect of Monk Skill	EF_CHEMICAL2
+304.	Warp Effect				EF_TELEPORTATION2
+305.	Pharmacy Success			EF_PHARMACY_OK
+306.	Pharmacy Failed				EF_PHARMACY_FAIL
+307.	Sunlight Through The Roof		EF_FORESTLIGHT
+308.	Throw Stone				EF_THROWITEM3
+309.	First Aid				EF_FIRSTAID
+310.	Another Yellow Bubbles			EF_SPRINKLESAND
+311.	Loud Exclamation			EF_LOUD
+312.	Heal Effect #1				EF_HEAL
+313.	Heal Effect #2				EF_HEAL2
+314.	Warp Effect (Baby Class warping?)	EF_EXIT2
+315.	Safety Wall				EF_GLASSWALL2
+316.	Warp Portal (Pre-Beam)			EF_READYPORTAL2
+317.	Warp Portal (Beam)			EF_PORTAL2
+318.	Something Like Big Square Beam		EF_BOTTOM_MAG
+319.	Another Small Basilica			EF_BOTTOM_SANC
+320.	Offensive Heal				EF_HEAL3
+321.	Warp NPC °_°				EF_WARPZONE2
+322.	Big Sunlight Through The Roof		EF_FORESTLIGHT2
+323.	Small Sunlight Through The Roof		EF_FORESTLIGHT3
+324.	Medium Sunlight Through The Roof	EF_FORESTLIGHT4
+325.	Another Heal Effect			EF_HEAL4
+326.	Chase Walk Left Foot			EF_FOOT
+327.	Chse Walk Right Foot			EF_FOOT2
+328.	Ashura Strike Word			EF_BEGINASURA
+329.	Triple Strike				EF_TRIPLEATTACK
+330.	Combo Finish				EF_HITLINE
+331.	Natural HP Regeneration			EF_HPTIME
+332.	Natural SP Regeneration			EF_SPTIME
+333.	Autumn Leaves				EF_MAPLE
+334.	Blind					EF_BLIND
+335.	Poison					EF_POISON
+336.	Kirye Eleison/Parring/Defender Shield	EF_GUARD
+337.	Class Change				EF_JOBLVUP50
+338.	Super Novice/Taekwon Level Up Angel	EF_ANGEL2
+339.	Spiral Pierce				EF_MAGNUM2
+340.	Nothing					EF_CALLZONE
+341.	Wedding Warp Portal			EF_PORTAL3
+342.	Wedding Skill				EF_COUPLECASTING
+343.	Another Merry Skill			EF_HEARTCASTING
+344.	Login					EF_ENTRY2
+345.	Nothing					EF_SAINTWING
+346.	Like Moonlight But Blue			EF_SPHEREWIND
+347.	Wedding Cerimony			EF_COLORPAPER
+348.	Like 1000 Blade trepassing		EF_LIGHTSPHERE
+349.	Waterfall (Horizonatal)			EF_WATERFALL
+350.	Waterfall (Vertical)			EF_WATERFALL_90
+351.	Small Waterfall (Horizonatal)		EF_WATERFALL_SMALL
+352.	Small Waterfall (Vertical)		EF_WATERFALL_SMALL_90
+353.	Dark Waterfall (Horizonatal)		EF_WATERFALL_T2
+354.	Dark Waterfall (Vertical)		EF_WATERFALL_T2_90
+355.	Dark Small Waterfall (Horizonatal)	EF_WATERFALL_SMALL_T2
+356.	Dark Small Waterfall (Vertical)		EF_WATERFALL_SMALL_T2_90
+357.	Unknown					EF_MINI_TETRIS
+358.	Niflheim Ghost				EF_GHOST
+359.	Niflheim Bat Slow			EF_BAT
+360.	Niflheim Bat Fast			EF_BAT2
+361.	Soul Breaker				EF_SOULBREAKER
+362.	Another Level 99 Bubbles		EF_LEVEL99_4
+363.	Valentine Day Heart (With Wings)	EF_VALLENTINE
+364.	Valentine Day Heart			EF_vALLENTINE2
+365.	Pressure				EF_PRESSURE
+366.	Unknown					EF_BASH3D
+367.	Aura Blade				EF_AURABLADE
+368.	Berserk					EF_REDBODY
+369.	Spear Quicken				EF_LKCONCENTRATION
+370.	Gospel Small Cross			EF_BOTTOM_GOSPEL
+371.	Level Up				EF_ANGEL
+372.	Death					EF_DEVIL
+373.	House Smoke				EF_DRAGONSMOKE
+374.	Basilica				EF_BOTTOM_BASILICA
+375.	Assumptio Sprite Effect			EF_ASSUMPTIO
+376.	Palm Strike				EF_HITLINE2
+377.	Shoot Out Yellow Beam			EF_BASH3D2
+
+// No more Aegis enumerations after this point..
+
 378.	Soul Drain
 379.	Soul Drain (2nd Part)
 380.	Magic Crasher
@@ -427,7 +474,13 @@ Edit by Au{R}oN for: Add and Change all missing/wrong Effect (New and Old).
 464.	Warm Wind (Holy Element)
 465.	Warm Wind (Posion Element)
 466.	Another Round Kick
-467-473	Warm Wind Lv 1-7
+467.	Warm Wind #1
+468.	Warm Wind #2
+469.	Warm Wind #3
+470.	Warm Wind #4
+471.	Warm Wind #5
+472.	Warm Wind #6
+473.	Warm Wind #7
 474.	Nothing
 475-484	Demon of The Sun Moon And Stars
 485.	Lightning like Mental Strenght but White
@@ -584,4 +637,4 @@ Edit by Au{R}oN for: Add and Change all missing/wrong Effect (New and Old).
 653.	New Number Purple
 654.	Player become Green Slooooowli
 655.	Green Flash
-656+	NEED UPDATE SAKEEXE
+656+	More effects past this point

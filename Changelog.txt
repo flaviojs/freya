@@ -11,6 +11,7 @@
 Date	Added
 
 02/17/2007
+	* Updated: Freya's effect list [Tsuyuki]
 	* Added: Official warps for Thanatos Tower [GreenGoblin]
 	* Added: All Thanatos keys and charms to the item_bound [GreenGoblin]
 	* Reverted: Windhawk's element change [Tsuyuki]
