@@ -489,7 +489,7 @@ int status_calc_pc(struct map_session_data* sd, int first)
 	memset(sd->autospell,0,sizeof(sd->autospell));
 	memset(sd->autospell2,0,sizeof(sd->autospell2));
 	memset(sd->autospell3,0,sizeof(sd->autospell3));
-	sd->speed_add_rate = sd->aspd_add_rate = 100;
+	sd->speed_add_rate = sd->aspd_add_rate = sd->speed_rate = 100;
 	sd->double_add_rate = sd->perfect_hit_add = sd->get_zeny_add_num = 0;
 	sd->splash_range = sd->splash_add_range = 0;
 	sd->hp_drain_rate = sd->hp_drain_per = sd->sp_drain_rate = sd->sp_drain_per = 0;
@@ -535,7 +535,7 @@ int status_calc_pc(struct map_session_data* sd, int first)
 	sd->unequip_hpdamage = 0;
 	sd->unequip_spdamage = 0;
 	memset(sd->itemhealrate, 0, sizeof(sd->itemhealrate));
-	
+
 	if (!sd->disguiseflag && sd->disguise)
 	{
 		sd->disguise = 0;
@@ -1633,15 +1633,15 @@ int status_calc_pc(struct map_session_data* sd, int first)
  * Player Speed Calculation Function (Full Speed Calculation)
  *------------------------------------------
  */
-void status_calc_speed(struct map_session_data *sd) {
-
+void status_calc_speed(struct map_session_data *sd)
+{
 	int speed, speed_rate, speed_add_rate, skill;
 
 	nullpo_retv(sd);
 
 	speed = DEFAULT_WALK_SPEED; // Normally 150
-	speed_rate = 100;
-	speed_add_rate = 100;
+	speed_rate = sd->speed_rate; // Normally 100
+	speed_add_rate = sd->speed_add_rate; // Normally 100
 
 	if (speed_add_rate != 100)
 		speed_rate += speed_add_rate - 100;
