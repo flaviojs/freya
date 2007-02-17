@@ -656,7 +656,7 @@ INSERT INTO `item_db` VALUES (1303, 'Axe__', 'Axe', 4, 500, 0, 800, 38, 0, 1, 0,
 INSERT INTO `item_db` VALUES (1304, 'Orcish_Axe', 'Orcish Axe', 4, 20, 0, 1500, 75, 0, 1, 0, 8803555, 2, 2, 3, 3, 6, NULL, NULL);
 INSERT INTO `item_db` VALUES (1305, 'Cleaver', 'Cleaver', 4, 20, 0, 1200, 140, 0, 1, 0, 279714, 2, 2, 4, 44, 6, NULL, 'bonus2 bAddRace,7,5; bonus3 bAddMonsterDropItem,517,2,3000;');
 INSERT INTO `item_db` VALUES (1306, 'War_Axe', 'War Axe', 4, 20, 0, 4200, 145, 0, 1, 1, 263168, 2, 2, 3, 76, 6, NULL, 'bonus bDex,2; bonus bLuk,2;');
-INSERT INTO `item_db` VALUES (1307, 'Windhawk', 'Windhawk', 4, 20, 0, 1500, 115, 0, 1, 0, 279714, 2, 2, 2, 14, 6, NULL, 'bonus bAspdRate,5; bonus bAtkEle,4;');
+INSERT INTO `item_db` VALUES (1307, 'Windhawk', 'Windhawk', 4, 20, 0, 1500, 115, 0, 1, 0, 279714, 2, 2, 2, 14, 6, NULL, 'bonus bAspdRate,5;');
 INSERT INTO `item_db` VALUES (1308, 'Golden_Axe', 'Golden Axe', 4, 20, 0, 3000, 170, 0, 1, 0, 1071636478, 2, 2, 4, 45, 6, NULL, NULL);
 INSERT INTO `item_db` VALUES (1351, 'Battle_Axe', 'Battle Axe', 4, 5400, 0, 1500, 80, 0, 1, 3, 279714, 2, 34, 1, 3, 7, NULL, NULL);
 INSERT INTO `item_db` VALUES (1352, 'Battle_Axe_', 'Battle Axe', 4, 5400, 0, 1500, 80, 0, 1, 4, 279714, 2, 34, 1, 3, 7, NULL, NULL);
