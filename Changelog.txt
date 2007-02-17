@@ -11,6 +11,8 @@
 Date	Added
 
 02/17/2007
+	* Fixed: Biolabs barrel number code (Thanks to Esus) [Tsuyuki]
+	* Fixed: Tao Gunka's full card effect (Thanks to Esus) [Tsuyuki]
 	* Fixed: A bunch of new cards slotting into the wrong equipment (Thanks to Esus) [Tsuyuki]
 	* Fixed: Player speed calculation changes with cards/items [Tsuyuki]
 	* Fixed: Small exploit in the Bio Lab quest to get more than one Lab Pass [GreenGoblin]
