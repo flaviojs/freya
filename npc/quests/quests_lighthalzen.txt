@@ -27,6 +27,7 @@
 //= 1.8 Fixed a few bugs in the Friendship quest [Tsuyuki]
 //= 1.9 Rewrote most of the Pickpocket Quest w/ official text, chance rates, and effects [Tsuyuki]
 //= 1.9a Fixed the barrel part of the cube quest. [Bison]
+//= 1.9b Changed temporary Lab Pass variable to permanent to prevent relogging to get more than one [GreenGoblin]
 //= Note: Need proper cutins for the Friendship quest
 //============================================================ 
 
@@ -1095,7 +1096,7 @@ L_3:
 //--------------------------Box--------------------------
 
 lhz_cube.gat,248,193,0	script	Box	111,{
-	if (countitem(2657) > 0 || @gotKey || hzdun) goto L_5;
+	if (countitem(2657) > 0 || gotLabPerm > 0 || hzdun) goto L_5;
 	mes "There is a box with three holes.";
 	next;
 	if (Oval == 2 && Quadrangle == 2 && Polygon == 2) goto L_4;
@@ -1165,7 +1166,7 @@ L4_1:
 	mes "There is a small card inside of it.";
 	next;
 	mes "You acquired the 'Laboratory Permit'.";
-	set @gotKey,1;
+	set gotLabPerm,1;
 	getitem 2657,1;
 	close;
 
@@ -1223,6 +1224,7 @@ L4_1:
 	set Jackknife,0;	set RedKey,0;	set srod1,0;	set srod2,0;
 	set fKey,0;	set gKey,0;	set Polygon,0;	set machine,0;
 	set bKey,0;	set Oval,0;	set Quadrangle,0;	set rod,0;
+	set gotLabPerm,0;
 	set hzdun,1;
 	warp "lhz_cube.gat",177,13;
 	end;
