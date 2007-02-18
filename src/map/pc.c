@@ -1754,6 +1754,20 @@ void pc_calc_skilltree(struct map_session_data *sd) {
 		sd->status.skill[BS_ADRENALINE2].flag = 1;
 	}
 
+	if (sd->sc_data && sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_ALCHEMIST && pc_checkskill(sd,AM_BERSERKPITCHER) == 0)
+	{
+		sd->status.skill[AM_BERSERKPITCHER].id = AM_BERSERKPITCHER;
+		sd->status.skill[AM_BERSERKPITCHER].lv = 1;
+		sd->status.skill[AM_BERSERKPITCHER].flag = 1;
+		
+		if (pc_checkskill(sd,AM_PHARMACY) >= 10)
+		{
+			sd->status.skill[AM_TWILIGHT1].id = AM_TWILIGHT1;
+			sd->status.skill[AM_TWILIGHT1].lv = 1;
+			sd->status.skill[AM_TWILIGHT1].flag = 1;
+		}
+	}
+
 //	if (battle_config.etc_log)
 //		printf("calc skill_tree\n");
 

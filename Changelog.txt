@@ -11,6 +11,8 @@
 Date	Added
 
 02/18/2007
+	* Added: Twilight Alchemy #1, and Aid Berserk Potion to Spirit of the Alchemist [Tsuyuki]
+	 - Note that neither of the skills actually do anything, they just show up in your skill tree
 	* Added: Partially implemented Spirit of the Blacksmith [Tsuyuki]
 	 - Spirit of the Blacksmith is fully working, but Full Adrenaline Rush is only partially in
 	* Enabled: Gunslinger and Ninja by default in Freya [Tsuyuki]
