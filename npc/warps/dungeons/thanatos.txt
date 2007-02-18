@@ -33,6 +33,7 @@ end;
 
 OnInit:
 disablenpc "ThanaWarp3";
+end;
 
 OnTouch:
 if (ThanaQuest == 0) goto L_NoWarp;
