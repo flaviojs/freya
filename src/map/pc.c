@@ -1733,16 +1733,25 @@ void pc_calc_skilltree(struct map_session_data *sd) {
 		}
 	}
 
-	if(sd->sc_data && sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_HUNTER && pc_checkskill(sd,AC_DOUBLE) == 10 && pc_checkskill(sd,HT_POWER) == 0) {
+	if (sd->sc_data && sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_HUNTER && pc_checkskill(sd,AC_DOUBLE) == 10 && pc_checkskill(sd,HT_POWER) == 0)
+	{
 		sd->status.skill[HT_POWER].id = HT_POWER;
 		sd->status.skill[HT_POWER].lv = 1;
 		sd->status.skill[HT_POWER].flag = 1;
 	}
 	
-	if(sd->sc_data && sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_KNIGHT && pc_checkskill(sd,KN_TWOHANDQUICKEN) == 10 && pc_checkskill(sd,KN_ONEHAND) == 0) {
+	if (sd->sc_data && sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_KNIGHT && pc_checkskill(sd,KN_TWOHANDQUICKEN) == 10 && pc_checkskill(sd,KN_ONEHAND) == 0)
+	{
 		sd->status.skill[KN_ONEHAND].id = KN_ONEHAND;
 		sd->status.skill[KN_ONEHAND].lv = 1;
 		sd->status.skill[KN_ONEHAND].flag = 1;
+	}
+
+	if (sd->sc_data && sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_BLACKSMITH && pc_checkskill(sd,BS_ADRENALINE) >= 5 && pc_checkskill(sd,BS_ADRENALINE2) == 0)
+	{
+		sd->status.skill[BS_ADRENALINE2].id = BS_ADRENALINE2;
+		sd->status.skill[BS_ADRENALINE2].lv = 1;
+		sd->status.skill[BS_ADRENALINE2].flag = 1;
 	}
 
 //	if (battle_config.etc_log)

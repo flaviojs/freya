@@ -4424,6 +4424,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		}
 		break;
 	case BS_ADRENALINE:
+	case BS_ADRENALINE2:
 	case BS_WEAPONPERFECT:
 	case BS_OVERTHRUST:
 		if(sd == NULL || sd->status.party_id==0 || (flag&1) ){
