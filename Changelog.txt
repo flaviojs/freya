@@ -11,6 +11,7 @@
 Date	Added
 
 02/18/2007
+	* Added: L96+ Super Novice equip bonuses with Spirit of the Super Novice [Tsuyuki]
 	* Added: Twilight Alchemy #1, and Aid Berserk Potion to Spirit of the Alchemist [Tsuyuki]
 	 - Note that neither of the skills actually do anything, they just show up in your skill tree
 	* Added: Partially implemented Spirit of the Blacksmith [Tsuyuki]

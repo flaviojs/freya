@@ -641,7 +641,9 @@ int pc_isequip(struct map_session_data *sd, int n)
 		if (sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_SUPERNOVICE) {
 			// If Spirit of the Super Novice is active, and Super Novice Lv is over 90, can equip all upper headgears
 			if (item->equip & 0x0100 && sd->status.base_level >= 90)
-				return 1; // All upper headgears are equipable, regardless of item class restriction
+				return 1; // All upper Headgears are equipable, regardless of item class restriction
+			if (item->equip & 0x0002 && sd->status.base_level >= 96 && (item->look == 1 || item->look == 2 || (item->look >= 6 && item->look <= 10)))
+				return 1; // All Daggers, One-Handed Swords, Maces, Axes, and Staffs are equipable, regardless of item class restriction
 		}
 	}
 
