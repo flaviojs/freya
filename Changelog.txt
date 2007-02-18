@@ -10,6 +10,9 @@
 
 Date	Added
 
+02/18/2007
+	* Enabled: Gunslinger and Ninja by default in Freya [Tsuyuki]
+
 02/17/2007
 	* Added: A missing end; to one of the Thanatos warps [GreenGoblin]
 	* Updated: Freya's effect list [Tsuyuki]
