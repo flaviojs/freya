@@ -30,6 +30,7 @@
 //= 2.5 Changed temporary Lab Pass variable to permanent to prevent relogging to get more than one [GreenGoblin]
 //= 2.6 Fixed barrel code (Thanks to Esus) [Tsuyuki]
 //= 2.7 Converted a for statement allowing Mobster spawn/kill functioning [Tsuyuki]
+//= 2.8 Reverted the recent barrel code fix as it was an old fix and fixing it twice broke it again [GreenGoblin]
 //= Note: Need proper cutins for the Friendship quest
 //============================================================ 
 
@@ -1039,7 +1040,7 @@ L1_1:
 
 L_2:
 	mes "There is a number behind the picture.";
-	mes "" + num3 + "3 " + num6 + "6 " + num9 + "9 " + num4 + "4 " + num8 + "8 " + num1 + "1 " + num7 + "7 " + num2 + "2 " + num5 + "5";
+	mes "" + num1 + "3 " + num2 + "6 " + num3 + "9 " + num4 + "4 " + num5 + "8 " + num6 + "1 " + num7 + "7 " + num8 + "2 " + num9 + "5";
 	mes "Perhaps you should write this number down somewhere...";
 	close;
 }
