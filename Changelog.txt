@@ -11,6 +11,7 @@
 Date	Added
 
 02/18/2007
+	* Added: New items from the latest kRO patches (Credits to jAthena) [Tsuyuki]
 	* Fixed: Spirit of the Rebirth stat bonuses not working, they also won't from L70+ now [Tsuyuki]
 	* Added: Chance to reset death counter with Spirit of the Super Novice [Tsuyuki]
 	* Added: Some new equipment to the non-refinable database [Tsuyuki]
