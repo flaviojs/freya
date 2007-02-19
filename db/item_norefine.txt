@@ -202,3 +202,8 @@
 5139 // Hibiscus
 5135 // Cyclop's Eye
 5172 // Beret
+5220 // Smoking Pipe
+5221 // Small Ribbons
+5225 // Holy ???
+5264 // Australian Flag Hat
+5271 // Phoenix Crown
