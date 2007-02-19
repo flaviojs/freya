@@ -11,6 +11,8 @@
 Date	Added
 
 02/18/2007
+	* Fixed: Spirit of the Rebirth stat bonuses not working, they also won't from L70+ now [Tsuyuki]
+	* Added: Chance to reset death counter with Spirit of the Super Novice [Tsuyuki]
 	* Added: Some new equipment to the non-refinable database [Tsuyuki]
 	* Added: L96+ Super Novice equip bonuses with Spirit of the Super Novice [Tsuyuki]
 	* Added: Twilight Alchemy #1, and Aid Berserk Potion to Spirit of the Alchemist [Tsuyuki]

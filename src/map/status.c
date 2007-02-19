@@ -739,6 +739,23 @@ int status_calc_pc(struct map_session_data* sd, int first)
 			sd->base_atk += skill * 10;
 		}
 
+	// Spirit of the Rebirth Class Stat Buffs
+	if (sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_HIGH && sd->status.base_level <= 69)
+	{
+		if (sd->status.str < 50)
+			sd->paramb[0] = 50;
+		if (sd->status.agi < 50)
+			sd->paramb[1] = 50;
+		if (sd->status.vit < 50)
+			sd->paramb[2] = 50;
+		if (sd->status.int_ < 50)
+			sd->paramb[3] = 50;
+		if (sd->status.dex < 50)
+			sd->paramb[4] = 50;
+		if (sd->status.luk < 50)
+			sd->paramb[5] = 50;
+	}
+
 	if(sd->sc_count)
 	{
 		if (sd->sc_data[SC_INCSTR].timer != -1)
@@ -1993,12 +2010,10 @@ int status_get_str(struct block_list *bl)
 				str += 5;
 			if (sc_data[SC_INCSTR].timer != -1)
 				str += sc_data[SC_INCSTR].val1;
-			/*if (sc_data[SC_INCALLSTATUS].timer != -1)
-				str += sc_data[SC_INCALLSTATUS].val1;*/
+			if (sc_data[SC_INCALLSTATUS].timer != -1)
+				str += sc_data[SC_INCALLSTATUS].val1;
 			if (sc_data[SC_STRFOOD].timer != -1)
 				str += sc_data[SC_STRFOOD].val1;
-			if (sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_HIGH && str < 50)
-				str = 50;
 		}
 
 		// If Strength value is invalid, set to 0
@@ -2060,8 +2075,6 @@ int status_get_agi(struct block_list *bl)
 				agi += sc_data[SC_INCALLSTATUS].val1;
 			if (sc_data[SC_AGIFOOD].timer != -1)
 				agi += sc_data[SC_AGIFOOD].val1;
-			if (sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_HIGH && agi < 50)
-				agi = 50;
 			if (sc_data[SC_INCREASING].timer != -1)
 				agi += 4;
 			if (sc_data[SC_SUITON].timer!=-1 && sc_data[SC_SUITON].val3)
@@ -2115,12 +2128,10 @@ int status_get_vit(struct block_list *bl)
 				vit = vit * 60 / 100;
 			if (sc_data[SC_TRUESIGHT].timer != -1)
 				vit += 5;
-			/*if(sc_data[SC_INCALLSTATUS].timer != -1)
-				vit += sc_data[SC_INCALLSTATUS].val1;*/
+			if(sc_data[SC_INCALLSTATUS].timer != -1)
+				vit += sc_data[SC_INCALLSTATUS].val1;
 			if (sc_data[SC_VITFOOD].timer != -1)
 				vit += sc_data[SC_VITFOOD].val1;
-			if (sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_HIGH && vit < 50)
-				vit = 50;
 		}
 
 		// If Vitality value is invalid, set to 0
@@ -2180,12 +2191,10 @@ int status_get_int(struct block_list *bl)
 				int_ = int_ * 60 / 100;
 			if (sc_data[SC_TRUESIGHT].timer != -1)
 				int_ += 5;
-			/*if(sc_data[SC_INCALLSTATUS].timer != -1)
-				int_ += sc_data[SC_INCALLSTATUS].val1;*/
+			if(sc_data[SC_INCALLSTATUS].timer != -1)
+				int_ += sc_data[SC_INCALLSTATUS].val1;
 			if (sc_data[SC_INTFOOD].timer != -1)
 				int_ += sc_data[SC_INTFOOD].val1;
-			if (sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_HIGH && int_ < 50)
-				int_ = 50;
 		}
 
 		// If Intelligence value is invalid, set to 0
@@ -2247,12 +2256,10 @@ int status_get_dex(struct block_list *bl)
 				dex += 5;
 			if (sc_data[SC_INCDEX].timer != -1)
 				dex += sc_data[SC_INCDEX].val1;
-			/*if (sc_data[SC_INCALLSTATUS].timer != -1)
-				dex += sc_data[SC_INCALLSTATUS].val1;*/
+			if (sc_data[SC_INCALLSTATUS].timer != -1)
+				dex += sc_data[SC_INCALLSTATUS].val1;
 			if (sc_data[SC_DEXFOOD].timer != -1)
 				dex += sc_data[SC_DEXFOOD].val1;
-			if (sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_HIGH && dex < 50)
-				dex = 50;
 			if (sc_data[SC_INCREASING].timer != -1)
 				dex += 4;
 		}
@@ -2306,12 +2313,10 @@ int status_get_luk(struct block_list *bl)
 				luk += 5;
 			if (sc_data[SC_CURSE].timer != -1 )
 				luk = 0;
-			/*if (sc_data[SC_INCALLSTATUS].timer != -1)
-				luk += sc_data[SC_INCALLSTATUS].val1;*/
+			if (sc_data[SC_INCALLSTATUS].timer != -1)
+				luk += sc_data[SC_INCALLSTATUS].val1;
 			if (sc_data[SC_LUKFOOD].timer != -1)
 				luk += sc_data[SC_LUKFOOD].val1;
-			if (sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_HIGH && luk < 50)
-				luk = 50;
 		}
 
 		// If Luck value is invalid, set to 0
@@ -4132,6 +4137,12 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 		case SC_SPIRIT:
 			scflag.calc = 1;
 			*opt3 |= 32768;
+			// Chance to reset Super Novice die counter with Spirit of the Super Novice
+			if (sd && sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_SUPERNOVICE && sd->status.base_level >= 90)
+			{
+				if (rand()%100 <= 1)
+					sd->status.die_counter = 0;
+			}
 			break;
 		case SC_KAITE:
 			if(val1 >= 5)
