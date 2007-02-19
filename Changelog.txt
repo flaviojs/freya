@@ -11,7 +11,8 @@
 Date	Added
 
 02/19/2007
-	*Fixed: The Biolab barrel code, the last fix to it reversed a previous one that worked [GreenGoblin]
+	* Updated: Reconverted Assassin job change quest from eAthena [Tsuyuki]
+	* Fixed: The Biolab barrel code, the last fix to it reversed a previous one that worked [GreenGoblin]
 
 02/18/2007
 	* Added: New items from the latest kRO patches (Credits to jAthena) [Tsuyuki]
