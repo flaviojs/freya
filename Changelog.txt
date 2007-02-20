@@ -11,6 +11,7 @@
 Date	Added
 
 02/20/2007
+	* Fixed: Redemptio not working like Yggs/Resurrection [Tsuyuki]
 	* Fixed: Cleaned a bunch of code related to ensemble skills [Harbin]
 	* Fixed: A bunch of compiler warnings and errors [Harbin]
 	 - Missing end-of-comment at clif.c line 9617

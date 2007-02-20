@@ -925,7 +925,7 @@ struct skill_unit_layout *skill_get_unit_layout(int skillid, int skilllv, struct
 	return &skill_unit_layout[0];
 }
 
-//	0x89,0x8a,0x8b \
+//	0x89,0x8a,0x8b
 //	0x9a ?̉r݂ȃGtFNg
 //	0x9b ?̉r݂ȃGtFNg
 //	0x9c ?̉r݂ȃGtFNg
@@ -3018,14 +3018,14 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 						ar = 9;
 					break;
 				case NJ_BAKUENRYU:
-					clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 					ar = 5;
 					break;
 				default:
 					ar = 1;
 					break;
 			}
-				
+			if (skillid == NJ_BAKUENRYU)
+				clif_skill_nodamage(src, src, skillid, skilllv, 1);
 			skill_area_temp[1] = bl->id;
 			skill_area_temp[2] = x;
 			skill_area_temp[3] = y;
@@ -8989,7 +8989,7 @@ int skill_use_id(struct map_session_data *sd, int target_id, int skill_num, int 
 	if (sd->opt1 > 0)
 		return 0;
 
-	if((dstsd != NULL && pc_isdead(dstsd) && skill_num != ALL_RESURRECTION) || (dst_sc_data != NULL && bl->id != sd->bl.id && (dst_sc_data[SC_HIDING].timer != -1 || dst_sc_data[SC_CLOAKING].timer != -1 || dst_sc_data[SC_CHASEWALK].timer != -1)))
+	if((dstsd != NULL && pc_isdead(dstsd) && skill_num != ALL_RESURRECTION && skill_num != PR_REDEMPTIO) || (dst_sc_data != NULL && bl->id != sd->bl.id && (dst_sc_data[SC_HIDING].timer != -1 || dst_sc_data[SC_CLOAKING].timer != -1 || dst_sc_data[SC_CHASEWALK].timer != -1)))
 		return 0;
 
 	// Check of statuses
