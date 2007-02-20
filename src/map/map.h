@@ -194,7 +194,10 @@ struct map_session_data {
 	int weight, max_weight;
 	int cart_weight, cart_max_weight;
 	short cart_num; // , cart_max_num; it's always MAX_CART... removed
-	char mapname[17]; // 16 + NULL
+	
+	/* TODO: Use mapid, not mapname [Harbin] */
+	char mapname[17];
+
 	int fd;
 	short to_x, to_y;
 	short speed, prev_speed;

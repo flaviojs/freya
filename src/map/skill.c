@@ -862,7 +862,9 @@ int skillnotok(int skillid, struct map_session_data *sd) {
 	case WE_CALLPARTNER:
 	case WE_CALLPARENT:
 	case WE_CALLBABY:
-		if (map[sd->bl.m].flag.nomemo) {
+		/* skill doesn't work if caster or target is jailed */
+		if(map[mapname2mapid(sd->mapname)].flag.nomemo || map[sd->bl.m].flag.nomemo)
+		{
 			clif_skill_teleportmessage(sd, 1);
 			return 1;
 		}
