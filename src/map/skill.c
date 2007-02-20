@@ -8959,6 +8959,7 @@ int skill_delayfix(struct block_list *bl, int time_duration, int skill_num) {
  *------------------------------------------
  */
 int skill_use_id(struct map_session_data *sd, int target_id, int skill_num, int skill_lv) {
+
 	int casttime = 0, delay = 0, skill, range;
 	int forcecast = 0, check_range_flag = 0;
 	struct block_list *bl;
@@ -8990,7 +8991,7 @@ int skill_use_id(struct map_session_data *sd, int target_id, int skill_num, int 
 	if (sd->opt1 > 0)
 		return 0;
 
-	if((dstsd != NULL && pc_isdead(dstsd)) || (dst_sc_data != NULL && bl->id != sd->bl.id && (dst_sc_data[SC_HIDING].timer != -1 || dst_sc_data[SC_CLOAKING].timer != -1 || dst_sc_data[SC_CHASEWALK].timer != -1)))
+	if((dstsd != NULL && pc_isdead(dstsd) && skill_num != ALL_RESURRECTION) || (dst_sc_data != NULL && bl->id != sd->bl.id && (dst_sc_data[SC_HIDING].timer != -1 || dst_sc_data[SC_CLOAKING].timer != -1 || dst_sc_data[SC_CHASEWALK].timer != -1)))
 		return 0;
 
 	// Check of statuses

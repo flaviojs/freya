@@ -11,6 +11,7 @@
 Date	Added
 
 02/19/2007
+	* Fixed: Resurrection not working, introduced revision 1103 [Tsuyuki]
 	* Updated: Fully updated monster stats to Episode 11.1 (Everything but drops) [Tsuyuki]
 	* Updated: Drops/drop rates for monsters 1001 - 1187 [Tsuyuki]
 	* Updated: Heavily updated the mob database [Tsuyuki]
