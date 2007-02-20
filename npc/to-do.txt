@@ -28,7 +28,6 @@ Other Scripts:
 Bugged:
 - Re-convert: quests_ein.txt from: http://svn.eathena.ws/svn/ea/trunk/npc/quests/quests_ein.txt *
 - Re-convert: quests_umbala.txt from: http://svn.eathena.ws/svn/ea/trunk/npc/quests/quests_umbala.txt *
-- Assassin Quest Glitch: http://freya.dns.st/mantis/view.php?id=318
 - Partially unfinished: Juperos Quest [Assigned - Tsuyuki]
 
 Note: Entries with * by them have priority
