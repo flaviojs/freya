@@ -9615,18 +9615,16 @@ void clif_parse_DropItem(int fd, struct map_session_data *sd) { // S 0x00a2 <ind
 void clif_parse_UseItem(int fd, struct map_session_data *sd) { // S 0x00a7 <index>.w <ID>.l
 //	nullpo_retv(sd); // checked before to call function
 
-	if (pc_isdead(sd)) {
+	if(pc_isdead(sd))
+	{
 		clif_clearchar_area(&sd->bl, 1);
 		return;
 	}
-	
-// Cannot use items during the following statuses
-	if (sd->npc_id != 0 || sd->vender_id != 0 ||
-		 (sd->opt1 > 0 && sd->opt1 != 6) || 
-			sd->sc_data[SC_TRICKDEAD].timer != -1 || 
-	    sd->sc_data[SC_BLADESTOP].timer != -1 || 
-	    sd->sc_data[SC_BERSERK].timer != -1 || 
-			sd->sc_data[SC_GRAVITATION].timer !=- 1)
+
+	/* not while talking with npc, vending, trading or under some status effects */
+	if(sd->npc_id != 0 || sd->vender_id != 0 || sd->trade_partner != 0)
+		return;
+	if((sd->opt1 > 0 && sd->opt1 != 6) || sd->sc_data[SC_TRICKDEAD].timer != -1 || sd->sc_data[SC_BLADESTOP].timer != -1 || sd->sc_data[SC_BERSERK].timer != -1 || sd->sc_data[SC_GRAVITATION].timer != -1)
 		return;
 
 	pc_delinvincibletimer(sd);
@@ -9692,15 +9690,17 @@ void clif_parse_EquipItem(int fd, struct map_session_data *sd) { // S 0x00a9 <in
 	if (idx < 0 || idx >= MAX_INVENTORY)
 		return;
 
-	if (sd->npc_id != 0 || sd->vender_id != 0)
-		return;
-	if (sd->sc_data[SC_BLADESTOP].timer != -1 || sd->sc_data[SC_BERSERK].timer != -1)
-		return;
-
-	if (pc_isdead(sd)) {
+	if(pc_isdead(sd))
+	{
 		clif_clearchar_area(&sd->bl, 1);
 		return;
 	}
+
+	/* not while talking with npc, vending, trading or under some status effects */
+	if(sd->npc_id != 0 || sd->vender_id != 0 || sd->trade_partner != 0)
+		return;
+	if((sd->opt1 > 0 && sd->opt1 != 6) || sd->sc_data[SC_TRICKDEAD].timer != -1 || sd->sc_data[SC_BLADESTOP].timer != -1 || sd->sc_data[SC_BERSERK].timer != -1 || sd->sc_data[SC_GRAVITATION].timer != -1)
+		return;
 
 	if (sd->status.inventory[idx].identify != 1) { // ���Ӓ�
 		clif_equipitemack(sd, idx, 0, 0); // fail
@@ -10673,7 +10673,12 @@ void clif_parse_AutoSpell(int fd, struct map_session_data *sd) { // S 0x01ce <si
  *------------------------------------------
  */
 void clif_parse_UseCard(int fd, struct map_session_data *sd) { // S 0x017A <index>.w
-//	nullpo_retv(sd); // checked before to call function
+
+	/* not while talking with npc, vending, trading or under some status effects */
+	if(sd->npc_id != 0 || sd->vender_id != 0 || sd->trade_partner != 0)
+		return;
+	if((sd->opt1 > 0 && sd->opt1 != 6) || sd->sc_data[SC_TRICKDEAD].timer != -1 || sd->sc_data[SC_BLADESTOP].timer != -1 || sd->sc_data[SC_BERSERK].timer != -1 || sd->sc_data[SC_GRAVITATION].timer != -1)
+		return;
 
 	clif_use_card(sd, RFIFOW(fd,2) - 2);
 

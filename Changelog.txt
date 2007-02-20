@@ -12,6 +12,7 @@ Date	Added
 
 02/20/2007
 	* Fixed: Wedding recall skills should not work if caster or target is jailed [Harbin]
+	* Fixed: Disallowed item using during trading [Harbin]
 
 02/19/2007
 	* Fixed: Resurrection not working, introduced revision 1103 [Tsuyuki]
