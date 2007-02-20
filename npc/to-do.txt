@@ -10,12 +10,12 @@ eAthena Converts:
 - Comodo Gambling: http://svn.eathena.ws/svn/ea/trunk/npc/other/comodo_gambling.txt
 - Cool Event Corp Main System: http://svn.eathena.ws/svn/ea/trunk/npc/other/dts_warper.txt
 - Updated Kunlun NPCs: http://svn.eathena.ws/svn/ea/trunk/npc/cities/gonryun.txt *
-- Thanatos Tower Quest: http://svn.eathena.ws/svn/ea/trunk/npc/quests/thana_quest.txt *
+- Thanatos Tower Quest: http://svn.eathena.ws/svn/ea/trunk/npc/quests/thana_quest.txt [Assigned - Green Goblin] *
 
 Aegis Converts:
-- Official 2nd Class Quest Skill Quests: Zone/npcdata/quest/2nd_quest/ *
-- Official Amatsu Sushi Quest: Zone/npcdata/town/amatsu/amatsu_sushi.sc
-- The rest of the Aegis script files (some already done / fully missing have priority): Zone/npcdata/
+- Official 2nd Class Quest Skill Quests: http://tsuyuki.the-aria.net/software/Aegis/Aegis/npcdata/quest/2nd_quest/
+- Official Amatsu Sushi Quest: http://tsuyuki.the-aria.net/software/Aegis/Aegis/npcdata/town/amatsu/amatsu_sushi.sc
+- The rest of the Aegis script files: http://tsuyuki.the-aria.net/software/Aegis/Aegis/npcdata/
 
 Other Scripts:
 - Veins Town NPCs
@@ -27,7 +27,7 @@ Other Scripts:
 
 Bugged:
 - Re-convert: quests_ein.txt from: http://svn.eathena.ws/svn/ea/trunk/npc/quests/quests_ein.txt *
-- Re-convert: quests_umbala.txt from: http://svn.eathena.ws/svn/ea/trunk/npc/quests/quests_umbala.txt *
-- Partially unfinished: Juperos Quest [Assigned - Tsuyuki]
+- Re-convert: quests_umbala.txt from: http://svn.eathena.ws/svn/ea/trunk/npc/quests/quests_umbala.txt
+- Partially unfinished: Juperos Quest
 
 Note: Entries with * by them have priority
