@@ -2399,7 +2399,7 @@ int clif_guildstorageequiplist(struct map_session_data *sd, struct guild_storage
 }
 
 /*==========================================
- * ï¿½Xï¿½eï¿½[ï¿½^ï¿½Xï¿½ð‘—‚ï¿½Â‚ï¿½ï¿½ï¿½
+ * ï¿½Xï¿½eï¿½[ï¿½^ï¿½Xï¿½í …ï¿½Â‚ï¿½ï¿½ï¿½
  * ï¿½\ï¿½ï¿½ï¿½ï¿½pï¿½ï¿½ï¿½ï¿½ï¿½Í‚ï¿½ï¿½Ì’ï¿½ï¿½ÅŒvï¿½Zï¿½ï¿½ï¿½Ä‘ï¿½ï¿½ï¿½
  *------------------------------------------
  */
@@ -5253,7 +5253,7 @@ int clif_item_repaireffect(struct map_session_data *sd, int nameid, int flag){
 	WPACKETB(4) = flag;
 	SENDPACKET(sd->fd,packet_len_table[0x1fe]);
 	
-	if(sd->repair_target != NULL && sd != sd->repair_target && flag == 0) {	// ¬Œ÷‚µ‚½‚ç‘ŠŽè‚É‚à’Ê’m
+	if(sd->repair_target != NULL && sd != sd->repair_target && flag == 0) {	// í»‹íµ‚ç‘Šï¿½ï¿½m
 		if(sd->repair_target)
 			clif_item_repaireffect(sd->repair_target,nameid,flag);
 		sd->repair_target = NULL;
@@ -9608,12 +9608,14 @@ void clif_parse_DropItem(int fd, struct map_session_data *sd) { // S 0x00a2 <ind
 	return;
 }
 
-/*==========================================
- *
- *------------------------------------------
- */
-void clif_parse_UseItem(int fd, struct map_session_data *sd) { // S 0x00a7 <index>.w <ID>.l
-//	nullpo_retv(sd); // checked before to call function
+/* --------------------------------- *
+ * Player uses an item               *
+ * Packet: S 0x00a7 <index>.w <ID>.l *
+ * --------------------------------- *
+void clif_parse_UseItem(int fd, struct map_session_data *sd)
+{
+	/* already checked */
+//	nullpo_retv(sd);
 
 	if(pc_isdead(sd))
 	{
@@ -9677,14 +9679,16 @@ void clif_parse_UseItem(int fd, struct map_session_data *sd) { // S 0x00a7 <inde
 	return;
 }
 
-/*==========================================
- *
- *------------------------------------------
- */
-void clif_parse_EquipItem(int fd, struct map_session_data *sd) { // S 0x00a9 <index>.w <equip type>.w
+/* ----------------------------------------- *
+ * Player equips an item                     *
+ * Packet: S 0x00a9 <index>.w <equip type>.w *
+ * ----------------------------------------- */
+void clif_parse_EquipItem(int fd, struct map_session_data *sd)
+{
 	int idx;
 
-//	nullpo_retv(sd); // checked before to call function
+	/* already checked */
+//	nullpo_retv(sd);
 
 	idx = RFIFOW(fd, 2) - 2;
 	if (idx < 0 || idx >= MAX_INVENTORY)
@@ -10668,11 +10672,14 @@ void clif_parse_AutoSpell(int fd, struct map_session_data *sd) { // S 0x01ce <si
 	return;
 }
 
-/*==========================================
- * ï¿½Jï¿½[ï¿½hï¿½gï¿½p
- *------------------------------------------
- */
-void clif_parse_UseCard(int fd, struct map_session_data *sd) { // S 0x017A <index>.w
+/* -------------------------- *
+ * Player uses a card         *
+ * Packet: S 0x017A <index>.w *
+ * -------------------------- */
+void clif_parse_UseCard(int fd, struct map_session_data *sd)
+{
+	/* already checked */
+//	nullpo_retv(sd);
 
 	/* not while talking with npc, vending, trading or under some status effects */
 	if(sd->npc_id != 0 || sd->vender_id != 0 || sd->trade_partner != 0)
