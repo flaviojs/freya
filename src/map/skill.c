@@ -8051,42 +8051,43 @@ static int skill_check_condition_use_sub(struct block_list *bl,va_list ap)
 	if (skillid > 0 && skilllv <= 0)
 		return 0;
 
-	switch(skillid){
-	case PR_BENEDICTIO:
-		if(tsd != sd && (s_class == JOB_ACOLYTE || s_class == JOB_PRIEST || s_class == JOB_MONK) &&
-			(tsd->bl.x == sd->bl.x - 1 || tsd->bl.x == sd->bl.x + 1) && tsd->status.sp >= 10){
-			tsd->status.sp -= 10;
-			status_calc_pc(tsd,0);
-			(*c)++;
-		}
-		break;
-	case BD_LULLABY:
-	case BD_RICHMANKIM:
-	case BD_ETERNALCHAOS:
-	case BD_DRUMBATTLEFIELD:
-	case BD_RINGNIBELUNGEN:
-	case BD_ROKISWEIL:
-	case BD_INTOABYSS:
-	case BD_SIEGFRIED:
-	case BD_RAGNAROK:
-	case CG_MOONLIT:
-		if(tsd != sd && //{lȊO�		  ((t_class == JOB_DANCER && s_class == JOB_BARD) ||
-		   (t_class == JOB_BARD && s_class == JOB_DANCER)) &&
-		   pc_checkskill(tsd, skillid) > 0 &&
-		   (*c) == 0 && //ŏ̈��		   tsd->status.party_id == sd->status.party_id &&
-		   !pc_issit(tsd) &&
-		   tsd->sc_data[SC_DANCING].timer == -1
-		  ){
-			sd->sc_data[SC_DANCING].val4 = bl->id;
-			if(skillid != CG_MOONLIT)
-				clif_skill_nodamage(bl, src, skillid, skilllv, 1);
-			clif_skill_nodamage(bl, src, skillid, skilllv, 1);
-			status_change_start(bl, SC_DANCING, skillid, sd->sc_data[SC_DANCING].val2, 0, src->id, skill_get_time(skillid,skilllv)+1000, 0);
-			tsd->skillid_dance = tsd->skillid = skillid;
-			tsd->skilllv_dance = tsd->skilllv = skilllv;
-			(*c)++;
-		}
-		break;
+	switch(skillid)
+	{
+		case PR_BENEDICTIO:
+			if(tsd != sd && (s_class == JOB_ACOLYTE || s_class == JOB_PRIEST || s_class == JOB_MONK) && (tsd->bl.x == sd->bl.x - 1 || tsd->bl.x == sd->bl.x + 1) && tsd->status.sp >= 10)
+			{
+				tsd->status.sp -= 10;
+				status_calc_pc(tsd,0);
+				(*c)++;
+			}
+			break;
+		/* ensemble skills */
+		case BD_LULLABY:
+		case BD_RICHMANKIM:
+		case BD_ETERNALCHAOS:
+		case BD_DRUMBATTLEFIELD:
+		case BD_RINGNIBELUNGEN:
+		case BD_ROKISWEIL:
+		case BD_INTOABYSS:
+		case BD_SIEGFRIED:
+		case BD_RAGNAROK:
+		case CG_MOONLIT:
+			if(sd != tsd && ((t_class == JOB_BARD && s_class == JOB_DANCER) || (t_class == JOB_DANCER && s_class == JOB_BARD)))
+			{
+				if(pc_checkskill(tsd, skillid) > 0 && (*c) == 0 && !pc_issit(tsd) && tsd->sc_data[SC_DANCING].timer == -1)
+				{
+					sd->sc_data[SC_DANCING].val4 = bl->id;
+					if(skillid != CG_MOONLIT)
+						clif_skill_nodamage(bl, src, skillid, skilllv, 1);
+					/* two identical clif_skill_nodamage calls ? */
+//					clif_skill_nodamage(bl, src, skillid, skilllv, 1);
+					status_change_start(bl, SC_DANCING, skillid, sd->sc_data[SC_DANCING].val2, 0, src->id, skill_get_time(skillid, skilllv) + 1000, 0);
+					tsd->skillid_dance = tsd->skillid = skillid;
+					tsd->skilllv_dance = tsd->skilllv = skilllv;
+					(*c)++;
+				}
+			}
+			break;
 	}
 
 	return 0;

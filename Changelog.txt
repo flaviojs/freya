@@ -11,6 +11,11 @@
 Date	Added
 
 02/20/2007
+	* Fixed: Cleaned a bunch of code related to ensemble skills [Harbin]
+	* Fixed: A bunch of compiler warnings and errors [Harbin]
+	 - Missing end-of-comment at clif.c line 9617
+	 - Invalid multiline comment at skill.c line 928
+	 - Invalid function call caused by invalid comment at skills.c line 8075
 	* Fixed: NJ_BAKUENRYU doing the graphical effect on caster instead of target [Harbin]
 	* Fixed: Using items is no longer possible while trading [Harbin]
 	* Fixed: Wedding recall skills should not work if caster or target is jailed [Harbin]

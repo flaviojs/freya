@@ -9611,7 +9611,7 @@ void clif_parse_DropItem(int fd, struct map_session_data *sd) { // S 0x00a2 <ind
 /* --------------------------------- *
  * Player uses an item               *
  * Packet: S 0x00a7 <index>.w <ID>.l *
- * --------------------------------- *
+ * --------------------------------- */
 void clif_parse_UseItem(int fd, struct map_session_data *sd)
 {
 	/* already checked */
