@@ -11,6 +11,7 @@
 Date	Added
 
 02/20/2007
+	* Added: Thanatos Tower quest
 	* Fixed: Ridiculously broken compilation introduced revisions 1180, and 1181 [Tsuyuki]
 	* Fixed: Redemptio not working like Yggs/Resurrection [Tsuyuki]
 	* Fixed: NJ_BAKUENRYU doing the graphical effect on caster instead of target [Harbin]
