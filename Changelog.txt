@@ -10,6 +10,20 @@
 
 Date	Added
 
+02/21/2007
+	* Updated: Applied some of the Episode 11.2 MvP changes [Tsuyuki]
+	 - http://romirror.doddlercon.com/wiki/index.php?title=Monster_Changes
+	 - Baphomet, Kiel D-01, RSX-0806, Orc Lord, and Valkyrie Randgris all now have 30 VIT
+	 - Baphomet's Majestic Goat and Crescent Scythe drops replaced with Majestic Goat[1] and Crescent Scythe[1]
+	 - Dark Lord's Max HP boosted to 718,068, Ancient Cape drop replaced with Ancient Cape[1]
+	 - Lord of Death's Max HP boosted to 500,000
+	 - Thanatos Phantom's Max HP boosted to 3,000,000
+	 - RSX-0806's Max HP boosted to 560,733, Ice Pick drop replaced with Ice Pick[1]
+	 - Orc Hero's Max HP boosted to 585,700
+	 - Orc Lord's Max HP doubled, replaced Ancient Belt drop with Doom Slayer[1] drop, set to 0.01% chance for now
+	 - Vesper's Max HP boosted to 640,700
+	 - Enjoy the insane new changes
+
 02/20/2007
 	* Added: Thanatos Tower quest [GreenGoblin]
 	* Fixed: Ridiculously broken compilation introduced revisions 1180, and 1181 [Tsuyuki]
