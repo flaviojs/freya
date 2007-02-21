@@ -22,7 +22,6 @@ Date	Added
 	 - Orc Hero's Max HP boosted to 585,700
 	 - Orc Lord's Max HP doubled, replaced Ancient Belt drop with Doom Slayer[1] drop, set to 0.01% chance for now
 	 - Vesper's Max HP boosted to 640,700
-	 - Enjoy the insane new changes
 
 02/20/2007
 	* Added: Thanatos Tower quest [GreenGoblin]
