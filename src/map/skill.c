@@ -925,11 +925,11 @@ struct skill_unit_layout *skill_get_unit_layout(int skillid, int skilllv, struct
 	return &skill_unit_layout[0];
 }
 
-//	0x89,0x8a,0x8b
-//	0x9a ?Ì‰rİ‚ÈƒGtFNg
-//	0x9b ?Ì‰rİ‚ÈƒGtFNg
-//	0x9c ?Ì‰rİ‚ÈƒGtFNg
-//	0x9d ÈƒGtFNg
+//	0x89,0x8a,0x8b •\¦–³‚µ
+//	0x9a ‰Š?«‚Ì‰r¥‚İ‚½‚¢‚ÈƒGƒtƒFƒNƒg
+//	0x9b …?«‚Ì‰r¥‚İ‚½‚¢‚ÈƒGƒtƒFƒNƒg
+//	0x9c •—?«‚Ì‰r¥‚İ‚½‚¢‚ÈƒGƒtƒFƒNƒg
+//	0x9d ”’‚¢¬‚³‚ÈƒGƒtƒFƒNƒg
 //	0xb1 Alchemist Demonstration
 //	0xb2 = Pink Warp Portal
 //	0xb3 = Gospel For Paladin
@@ -941,7 +941,8 @@ struct skill_unit_layout *skill_get_unit_layout(int skillid, int skilllv, struct
 //	0xb9 = Hermode for Clown/Gipsy
 
 /*==========================================
- * XLÇ‰Lï¿½ *------------------------------------------
+ * ƒXƒLƒ‹’Ç‰ÁŒø‰Ê
+ *------------------------------------------
  */
 int skill_additional_effect(struct block_list* src, struct block_list *bl, int skillid, int skilllv, int attack_type, unsigned int tick)
 {
@@ -1168,7 +1169,7 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 	case NPC_GRANDDARKNESS:
 	  {
 		int race = status_get_race(bl);
-		if ((battle_check_undead(race, status_get_elem_type(bl)) || race == 6) && rand() % 100 < 100000 * sc_def_int / 100) //t^SÏÉ‚Í–
+		if ((battle_check_undead(race, status_get_elem_type(bl)) || race == 6) && rand() % 100 < 100000 * sc_def_int / 100) //‹­§•t—^‚¾‚ªŠ®‘S‘Ï«‚É‚Í–³Œø
 			status_change_start(bl, SC_BLIND, skilllv, 0, 0, 0, skill_get_time2(skillid, skilllv), 0);
 	  }
 		break;
@@ -1474,13 +1475,13 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 				if (!sd->state.arrow_atk) {
 					if (rand() % 10000 < (sd->addeff[i - SC_STONE]) * sc_def_card / 100) {
 						if (battle_config.battle_log)
-							printf("PC %d skill_addeff: cardÉ‚ï¿½Ùí”­ %d %d\n", sd->bl.id, i, sd->addeff[i - SC_STONE]);
+							printf("PC %d skill_addeff: card‚É‚æ‚éˆÙí”­“® %d %d\n", sd->bl.id, i, sd->addeff[i - SC_STONE]);
 						status_change_start(bl, i, 7, 0, 0, 0, (i == SC_CONFUSION) ? 10000 + 7000 : skill_get_time2(sc2[i - SC_STONE], 7), 0);
 					}
 				} else {
 					if (rand() % 10000 < (sd->addeff[i - SC_STONE] + sd->arrow_addeff[i - SC_STONE]) * sc_def_card / 100) {
 						if (battle_config.battle_log)
-							printf("PC %d skill_addeff: cardÉ‚ï¿½Ùí”­ %d %d\n", sd->bl.id, i, sd->addeff[i - SC_STONE]);
+							printf("PC %d skill_addeff: card‚É‚æ‚éˆÙí”­“® %d %d\n", sd->bl.id, i, sd->addeff[i - SC_STONE]);
 						status_change_start(bl, i, 7, 0, 0, 0, (i == SC_CONFUSION) ? 10000 + 7000 : skill_get_time2(sc2[i - SC_STONE], 7), 0);
 					}
 				}
@@ -1510,13 +1511,13 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 				if (!sd->state.arrow_atk) {
 					if (rand() % 10000 < (sd->addeff2[i - SC_STONE]) * sc_def_card / 100) {
 						if (battle_config.battle_log)
-							printf("PC %d skill_addeff: cardÉ‚ï¿½Ùí”­ %d %d\n", src->id, i, sd->addeff2[i - SC_STONE]);
+							printf("PC %d skill_addeff: card‚É‚æ‚éˆÙí”­“® %d %d\n", src->id, i, sd->addeff2[i - SC_STONE]);
 						status_change_start(src, i, 7, 0, 0, 0, (i == SC_CONFUSION) ? 10000 + 7000 : skill_get_time2(sc2[i - SC_STONE], 7), 0);
 					}
 				} else {
 					if (rand() % 10000 < (sd->addeff2[i - SC_STONE] + sd->arrow_addeff2[i - SC_STONE]) * sc_def_card / 100) {
 						if (battle_config.battle_log)
-							printf("PC %d skill_addeff: cardÉ‚ï¿½Ùí”­ %d %d\n", src->id, i, sd->addeff2[i - SC_STONE]);
+							printf("PC %d skill_addeff: card‚É‚æ‚éˆÙí”­“® %d %d\n", src->id, i, sd->addeff2[i - SC_STONE]);
 						status_change_start(src, i, 7, 0, 0, 0, (i == SC_CONFUSION) ? 10000 + 7000 : skill_get_time2(sc2[i - SC_STONE], 7), 0);
 					}
 				}
@@ -1524,7 +1525,7 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 			// Status applied on itself by the enemy [Proximus]
 			if (dstsd && rand() % 10000 < dstsd->addeff3[i - SC_STONE] * sc_def_card / 100) {
 				if (battle_config.battle_log)
-					printf("PC %d skill_addeff: card?ï¿½ï¿½ï¿½Ùï¿½? %d %d\n", src->id, i, dstsd->addeff3[i - SC_STONE]);
+					printf("PC %d skill_addeff: card?É?æ?é?Ùí??® %d %d\n", src->id, i, dstsd->addeff3[i - SC_STONE]);
 				status_change_start(src, i, 7, 0, 0, 0, (i == SC_CONFUSION) ? 10000 + 7000 : skill_get_time2(sc2[i - SC_STONE], 7), 0);
 			}
 		}
@@ -1581,7 +1582,7 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 }
 
 /*=========================================================================
- XLUï¿½
+ ƒXƒLƒ‹UŒ‚‚«”ò‚Î‚µˆ—
 -------------------------------------------------------------------------*/
 int skill_blown(struct block_list *src, struct block_list *target, int count) {
 	int dx = 0, dy = 0, nx, ny;
@@ -1719,12 +1720,13 @@ int skill_blown(struct block_list *src, struct block_list *target, int count) {
 
 /*
  * =========================================================================
- * XLUÊÜ‚Æ‚ï¿½ * flagÌÖ¾B16i}
+ * ƒXƒLƒ‹UŒ‚Œø‰Êˆ—‚Ü‚Æ‚ß
+ * flag‚Ìà–¾B16i}
  *	00XRTTff
- *  ff	= magicÅŒvZÉ“nï¿½j
- *	TT	= pPbgï¿½ype(0ÅƒftHgj
- *  X	= pPbgÌƒXLLv
- *  R	= \ï¿½skill_area_subÅgpï¿½
+ *  ff	= magic‚ÅŒvZ‚É“n‚³‚ê‚éj
+ *	TT	= ƒpƒPƒbƒg‚Ìtype•”•ª(0‚ÅƒfƒtƒHƒ‹ƒgj
+ *  X	= ƒpƒPƒbƒg‚ÌƒXƒLƒ‹Lv
+ *  R	= —\–ñiskill_area_sub‚Åg—p‚·‚éj
  *-------------------------------------------------------------------------
  */
 int skill_attack(int attack_type, struct block_list* src, struct block_list *dsrc,
@@ -2082,12 +2084,13 @@ int skill_attack(int attack_type, struct block_list* src, struct block_list *dsr
 }
 
 /*==========================================
- * XLÍˆÍUp(map_foreachinareaï¿½Î‚ï¿½)
- * flagÉ‚Â‚ÄF16i}ï¿½F
+ * ƒXƒLƒ‹”ÍˆÍUŒ‚—p(map_foreachinarea‚©‚çŒÄ‚Î‚ê‚é)
+ * flag‚É‚Â‚¢‚ÄF16i}‚ğŠm”F
  * MSB <- 00fTffff ->LSB
- *	T	=^[QbgIï¿½(BCT_*)
- *  ffff=RÉgpÂ”\
- *  0	=\ï¿½0ÉŒÅ’ï¿½ *------------------------------------------
+ *	T	=ƒ^[ƒQƒbƒg‘I‘ğ—p(BCT_*)
+ *  ffff=©—R‚Ég—p‰Â”\
+ *  0	=—\–ñB0‚ÉŒÅ’è
+ *------------------------------------------
  */
 static int skill_area_temp[8];
 typedef int (*SkillFunc)(struct block_list *,struct block_list *,int,int,unsigned int,int);
@@ -2266,7 +2269,8 @@ int skill_guildaura_sub(struct block_list *bl, va_list ap) {
 }
 
 /*=========================================================================
- * ÍˆÍƒXLgpï¿½ */
+ * ”ÍˆÍƒXƒLƒ‹g—pˆ—¬•ª‚¯‚±‚±‚©‚ç
+ */
 int skill_area_sub_count(struct block_list *src,struct block_list *target,int skillid,int skilllv,unsigned int tick,int flag)
 {
 	if (skillid > 0 && skilllv <= 0) return 0;
@@ -2565,13 +2569,14 @@ int skill_cleartimerskill(struct block_list *src)
 	return 0;
 }
 
-/* ÍˆÍƒXLgpÜ‚ï¿½ * -------------------------------------------------------------------------
+/* ”ÍˆÍƒXƒLƒ‹g—pˆ—¬•ª‚¯‚±‚±‚Ü‚Å
+ * -------------------------------------------------------------------------
  */
 
 
 /*==========================================
- * XLgpirAIDwï¿½nj
- * iXpQbeBÉŒÄ‚Pï¿½iI(_|)j
+ * ƒXƒLƒ‹g—pi‰r¥Š®—¹AIDw’èUŒ‚Œnj
+ * iƒXƒpƒQƒbƒeƒB‚ÉŒü‚¯‚Ä‚P•à‘OiI(ƒ_ƒƒ|)j
  *------------------------------------------
  */
 int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int skillid, int skilllv, unsigned int tick, int flag)
@@ -3033,8 +3038,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 				bl->m,x-ar,y-ar,x+ar,y+ar,0,
 				src, skillid, skilllv, tick, flag|BCT_ENEMY|1,
 				skill_castend_damage_id);
-
-			if(skillid != NJ_BAKUENRYU)
+			if (skillid != NJ_BAKUENRYU)
 				skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, 0);
 			else
 				skill_attack(BF_MAGIC, src, src, bl, skillid, skilllv, tick, 0);
@@ -3489,7 +3493,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 }
 
 /*==========================================
- * XLgpirAIDwï¿½nj
+ * ƒXƒLƒ‹g—pi‰r¥Š®—¹AIDw’èx‰‡Œnj
  *------------------------------------------
  */
 int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int skillid, int skilllv, unsigned int tick, int flag)
@@ -3743,7 +3747,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		clif_skill_nodamage(src,bl,skillid,skilllv,1);
 		sd->skillitem=abra_skillid;
 		sd->skillitemlv=abra_skilllv;
-		clif_item_skill(sd,abra_skillid,abra_skilllv,"AuJ_u");
+		clif_item_skill(sd,abra_skillid,abra_skilllv,"ƒAƒuƒ‰ƒJƒ_ƒuƒ‰");
 	}
 		break;
 	case SA_COMA:
@@ -4159,7 +4163,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		break;
 	case SM_PROVOKE:
 		{
-			if((dstmd && status_get_mode(bl) & 0x20) || battle_check_undead(status_get_race(bl), status_get_elem_type(bl))) //sÉ‚ÍŒÈ‚
+			if((dstmd && status_get_mode(bl) & 0x20) || battle_check_undead(status_get_race(bl), status_get_elem_type(bl))) //•s€‚É‚ÍŒø‚©‚È‚¢
 			{
 				map_freeblock_unlock();
 				return 1;
@@ -6171,7 +6175,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 }
 
 /*==========================================
- * XLgpirAIDwï¿½
+ * ƒXƒLƒ‹g—pi‰r¥Š®—¹AIDw’èj
  *------------------------------------------
  */
 int skill_castend_id(int tid, unsigned int tick, int id, int data)
@@ -6318,8 +6322,7 @@ int skill_castend_id(int tid, unsigned int tick, int id, int data)
 }
 
 /*==========================================
- * XLgpirAêŠwï¿½
-Û‚Ìj
+ * ƒXƒLƒ‹g—pi‰r¥Š®—¹AêŠw’è‚ÌÀÛ‚Ìˆ—j
  *------------------------------------------
  */
 int skill_castend_pos2(struct block_list *src, int x, int y, int skillid, int skilllv, unsigned int tick, int flag)
@@ -6608,7 +6611,7 @@ int skill_castend_pos2(struct block_list *src, int x, int y, int skillid, int sk
 }
 
 /*==========================================
- * XLgpirAmapwï¿½
+ * ƒXƒLƒ‹g—pi‰r¥Š®—¹Amapw’èj
  *------------------------------------------
  */
 void skill_castend_map(struct map_session_data *sd, int skill_num, const char *mapname) {
@@ -6713,7 +6716,7 @@ void skill_castend_map(struct map_session_data *sd, int skill_num, const char *m
 }
 
 /*==========================================
- * XLjbgİ’èˆ
+ * ƒXƒLƒ‹ƒ†ƒjƒbƒgİ’èˆ—
  *------------------------------------------
  */
 struct skill_unit_group *skill_unitsetting(struct block_list *src, int skillid, int skilllv, int x, int y, int flag)
@@ -6979,7 +6982,7 @@ struct skill_unit_group *skill_unitsetting(struct block_list *src, int skillid, 
 }
 
 /*==========================================
- * XLjbgÌ”Cxg
+ * ƒXƒLƒ‹ƒ†ƒjƒbƒg‚Ì”­“®ƒCƒxƒ“ƒg
  *------------------------------------------
  */
 int skill_unit_onplace(struct skill_unit *src, struct block_list *bl, unsigned int tick)
@@ -7175,7 +7178,7 @@ int skill_unit_onplace(struct skill_unit *src, struct block_list *bl, unsigned i
 }
 
 /*==========================================
- * XLjbgÌ”Cxg(^C}[)
+ * ƒXƒLƒ‹ƒ†ƒjƒbƒg‚Ì”­“®ƒCƒxƒ“ƒg(ƒ^ƒCƒ}[”­“®)
  *------------------------------------------
  */
 int skill_unit_onplace_timer(struct skill_unit *src, struct block_list *bl, unsigned int tick)
@@ -7372,7 +7375,8 @@ int skill_unit_onplace_timer(struct skill_unit *src, struct block_list *bl, unsi
 			sg->unit_id = 0x8c;
 			clif_changelook(&src->bl,LOOK_BASE,sg->unit_id);
 			sg->limit=DIFF_TICK(tick,sg->tick)+5000;
-			sg->val2=-1; //ï¿½		}
+			sg->val2=-1; //“¥‚ñ‚¾
+		}
 		break;
 
 	case 0xb3:	/* PA_GOSPEL */
@@ -7537,7 +7541,7 @@ int skill_unit_onplace_timer(struct skill_unit *src, struct block_list *bl, unsi
 }
 
 /*==========================================
- * XLjbgç—£Eï¿½ÂµÍ‚Ä‚ï¿½ê‡
+ * ƒXƒLƒ‹ƒ†ƒjƒbƒg‚©‚ç—£’E‚·‚é(‚à‚µ‚­‚Í‚µ‚Ä‚¢‚é)ê‡
  *------------------------------------------
  */
 int skill_unit_onout(struct skill_unit *src, struct block_list *bl, unsigned int tick) {
@@ -7681,8 +7685,8 @@ int skill_unit_onout(struct skill_unit *src, struct block_list *bl, unsigned int
 }
 
 /*==========================================
- * XLjbgÊ”/E(foreachinarea)
- *    bl: jbg(BL_PC/BL_MOB)
+ * ƒXƒLƒ‹ƒ†ƒjƒbƒgŒø‰Ê”­“®/—£’Eˆ—(foreachinarea)
+ *    bl: ƒ†ƒjƒbƒg(BL_PC/BL_MOB)
  *------------------------------------------
  */
 int skill_unit_effect(struct block_list *bl, va_list ap)
@@ -7719,8 +7723,7 @@ int skill_unit_effect(struct block_list *bl, va_list ap)
 }
 
 /*==========================================
- * XLjbgÌŒ
-ECxg
+ * ƒXƒLƒ‹ƒ†ƒjƒbƒg‚ÌŒÀŠEƒCƒxƒ“ƒg
  *------------------------------------------
  */
 int skill_unit_onlimit(struct skill_unit *src,unsigned int tick)
@@ -7767,7 +7770,7 @@ int skill_unit_onlimit(struct skill_unit *src,unsigned int tick)
 }
 
 /*==========================================
- * XLjbgÌƒ_[WCxg
+ * ƒXƒLƒ‹ƒ†ƒjƒbƒg‚Ìƒ_ƒ[ƒWƒCƒxƒ“ƒg
  *------------------------------------------
  */
 int skill_unit_ondamaged(struct skill_unit *src,struct block_list *bl,
@@ -7798,7 +7801,7 @@ int skill_unit_ondamaged(struct skill_unit *src,struct block_list *bl,
 /*---------------------------------------------------------------------------- */
 
 /*==========================================
- * XLgpirAêŠwï¿½
+ * ƒXƒLƒ‹g—pi‰r¥Š®—¹AêŠw’èj
  *------------------------------------------
  */
 int skill_castend_pos(int tid, unsigned int tick, int id, int data)
@@ -7942,7 +7945,7 @@ int skill_castend_pos(int tid, unsigned int tick, int id, int data)
 }
 
 /*==========================================
- * ÍˆÍ“ï¿½İŠmFèˆ(foreachinarea)
+ * ”ÍˆÍ“àƒLƒƒƒ‰‘¶İŠm”F”»’èˆ—(foreachinarea)
  *------------------------------------------
  */
 
@@ -8017,7 +8020,7 @@ static int skill_check_condition_char_sub(struct block_list *bl,va_list ap)
 }
 
 /*==========================================
- * ÍˆÍ“ï¿½İŠmFï¿½XLgp(foreachinarea)
+ * ”ÍˆÍ“àƒLƒƒƒ‰‘¶İŠm”F”»’èŒãƒXƒLƒ‹g—pˆ—(foreachinarea)
  *------------------------------------------
  */
 
@@ -8051,50 +8054,51 @@ static int skill_check_condition_use_sub(struct block_list *bl,va_list ap)
 	if (skillid > 0 && skilllv <= 0)
 		return 0;
 
-	switch(skillid)
-	{
-		case PR_BENEDICTIO:
-			if(tsd != sd && (s_class == JOB_ACOLYTE || s_class == JOB_PRIEST || s_class == JOB_MONK) && (tsd->bl.x == sd->bl.x - 1 || tsd->bl.x == sd->bl.x + 1) && tsd->status.sp >= 10)
-			{
-				tsd->status.sp -= 10;
-				status_calc_pc(tsd,0);
-				(*c)++;
-			}
-			break;
-		/* ensemble skills */
-		case BD_LULLABY:
-		case BD_RICHMANKIM:
-		case BD_ETERNALCHAOS:
-		case BD_DRUMBATTLEFIELD:
-		case BD_RINGNIBELUNGEN:
-		case BD_ROKISWEIL:
-		case BD_INTOABYSS:
-		case BD_SIEGFRIED:
-		case BD_RAGNAROK:
-		case CG_MOONLIT:
-			if(sd != tsd && ((t_class == JOB_BARD && s_class == JOB_DANCER) || (t_class == JOB_DANCER && s_class == JOB_BARD)))
-			{
-				if(pc_checkskill(tsd, skillid) > 0 && (*c) == 0 && !pc_issit(tsd) && tsd->sc_data[SC_DANCING].timer == -1)
-				{
-					sd->sc_data[SC_DANCING].val4 = bl->id;
-					if(skillid != CG_MOONLIT)
-						clif_skill_nodamage(bl, src, skillid, skilllv, 1);
-					/* two identical clif_skill_nodamage calls ? */
-//					clif_skill_nodamage(bl, src, skillid, skilllv, 1);
-					status_change_start(bl, SC_DANCING, skillid, sd->sc_data[SC_DANCING].val2, 0, src->id, skill_get_time(skillid, skilllv) + 1000, 0);
-					tsd->skillid_dance = tsd->skillid = skillid;
-					tsd->skilllv_dance = tsd->skilllv = skilllv;
-					(*c)++;
-				}
-			}
-			break;
+	switch(skillid){
+	case PR_BENEDICTIO:
+		if(tsd != sd && (s_class == JOB_ACOLYTE || s_class == JOB_PRIEST || s_class == JOB_MONK) &&
+			(tsd->bl.x == sd->bl.x - 1 || tsd->bl.x == sd->bl.x + 1) && tsd->status.sp >= 10){
+			tsd->status.sp -= 10;
+			status_calc_pc(tsd,0);
+			(*c)++;
+		}
+		break;
+	case BD_LULLABY:
+	case BD_RICHMANKIM:
+	case BD_ETERNALCHAOS:
+	case BD_DRUMBATTLEFIELD:
+	case BD_RINGNIBELUNGEN:
+	case BD_ROKISWEIL:
+	case BD_INTOABYSS:
+	case BD_SIEGFRIED:
+	case BD_RAGNAROK:
+	case CG_MOONLIT:
+		if(tsd != sd && //–{lˆÈŠO‚Å
+		  ((t_class == JOB_DANCER && s_class == JOB_BARD) ||
+		   (t_class == JOB_BARD && s_class == JOB_DANCER)) &&
+		   pc_checkskill(tsd, skillid) > 0 &&
+		   (*c) == 0 && //Å‰‚Ìˆêl‚Å
+		   tsd->status.party_id == sd->status.party_id &&
+		   !pc_issit(tsd) &&
+		   tsd->sc_data[SC_DANCING].timer == -1
+		  ){
+			sd->sc_data[SC_DANCING].val4 = bl->id;
+			if(skillid != CG_MOONLIT)
+				clif_skill_nodamage(bl, src, skillid, skilllv, 1);
+			clif_skill_nodamage(bl, src, skillid, skilllv, 1);
+			status_change_start(bl, SC_DANCING, skillid, sd->sc_data[SC_DANCING].val2, 0, src->id, skill_get_time(skillid,skilllv)+1000, 0);
+			tsd->skillid_dance = tsd->skillid = skillid;
+			tsd->skilllv_dance = tsd->skilllv = skilllv;
+			(*c)++;
+		}
+		break;
 	}
 
 	return 0;
 }
 
 /*==========================================
- * ÍˆÍ“ï¿½CIvgAXtBA}CpMobİŠmFèˆ(foreachinarea)
+ * ”ÍˆÍ“àƒoƒCƒIƒvƒ‰ƒ“ƒgAƒXƒtƒBƒAƒ}ƒCƒ“—pMob‘¶İŠm”F”»’èˆ—(foreachinarea)
  *------------------------------------------
  */
 
@@ -8132,7 +8136,7 @@ static int skill_check_condition_hermod_sub(struct block_list *bl,va_list ap)
 }
 
 /*==========================================
- * XLgpìiUÅgpsj
+ * ƒXƒLƒ‹g—pğŒi‹U‚Åg—p¸”sj
  *------------------------------------------
  */
 int skill_check_condition(struct map_session_data *sd, int type) {
@@ -8847,7 +8851,7 @@ int skill_check_condition(struct map_session_data *sd, int type) {
 }
 
 /*==========================================
- * rÔŒvZ
+ * ‰r¥ŠÔŒvZ
  *------------------------------------------
  */
 int skill_castfix(struct block_list *bl, int time_duration) {
@@ -8897,7 +8901,7 @@ int skill_castfix(struct block_list *bl, int time_duration) {
 }
 
 /*==========================================
- * fBCvZ
+ * ƒfƒBƒŒƒCŒvZ
  *------------------------------------------
  */
 int skill_delayfix(struct block_list *bl, int time_duration, int skill_num) {
@@ -8953,7 +8957,7 @@ int skill_delayfix(struct block_list *bl, int time_duration, int skill_num) {
 }
 
 /*==========================================
- * XLgpiIDwï¿½
+ * ƒXƒLƒ‹g—piIDw’èj
  *------------------------------------------
  */
 int skill_use_id(struct map_session_data *sd, int target_id, int skill_num, int skill_lv) {
@@ -9289,7 +9293,7 @@ int skill_use_id(struct map_session_data *sd, int target_id, int skill_num, int 
 }
 
 /*==========================================
- * XLgpiêŠwï¿½
+ * ƒXƒLƒ‹g—piêŠw’èj
  *------------------------------------------
  */
 int skill_use_pos(struct map_session_data *sd,
@@ -9491,7 +9495,8 @@ int skill_castcancel(struct block_list *bl, int type, int flag)
 }
 
 /*=========================================
- * ufBbVXsA ÍˆÍŒï¿½ *----------------------------------------
+ * ƒuƒ‰ƒ“ƒfƒBƒbƒVƒ…ƒXƒsƒA ‰Šú”ÍˆÍŒˆ’è
+ *----------------------------------------
  */
 void skill_brandishspear_first(struct square *tc,int dir,int x,int y){
 
@@ -9598,7 +9603,7 @@ void skill_brandishspear_first(struct square *tc,int dir,int x,int y){
 }
 
 /*=========================================
- * ufBbVXsA ï¿½ÍˆÍŠg
+ * ƒuƒ‰ƒ“ƒfƒBƒbƒVƒ…ƒXƒsƒA •ûŒü”»’è ”ÍˆÍŠg’£
  *-----------------------------------------
  */
 void skill_brandishspear_dir(struct square *tc,int dir,int are){
@@ -9629,12 +9634,12 @@ void skill_brandishspear_dir(struct square *tc,int dir,int are){
 }
 
 /*==========================================
- * fB{[V LmF
+ * ƒfƒBƒ{[ƒVƒ‡ƒ“ —LŒøŠm”F
  *------------------------------------------
  */
 void skill_devotion(struct map_session_data *md,int target)
 {
-	// mF
+	// ‘Šm”F
 	int n;
 
 	nullpo_retv(md);
@@ -9701,7 +9706,7 @@ void skill_devotion_end(struct map_session_data *md,struct map_session_data *sd,
 }
 
 /*==========================================
- * I[gXy
+ * ƒI[ƒgƒXƒyƒ‹
  *------------------------------------------
  */
 void skill_autospell(struct map_session_data *sd, int skillid) {
@@ -9758,7 +9763,7 @@ void skill_autospell(struct map_session_data *sd, int skillid) {
 }
 
 /*==========================================
- * MOX^[p_CXèˆ(foreachinarea)
+ * ƒMƒƒƒ“ƒOƒXƒ^[ƒpƒ‰ƒ_ƒCƒX”»’èˆ—(foreachinarea)
  *------------------------------------------
  */
 
@@ -9929,7 +9934,7 @@ int skill_rest(struct map_session_data *sd ,int type)
 }
 
 /*==========================================
- * W[NEXN[èˆ(foreachinarea)
+ * Š¦‚¢ƒWƒ‡[ƒNEƒXƒNƒŠ[ƒ€”»’èˆ—(foreachinarea)
  *------------------------------------------
  */
 int skill_frostjoke_scream(struct block_list *bl, va_list ap)
@@ -9996,7 +10001,7 @@ int skill_check_moonlit (struct block_list *bl, int dx, int dy)
 }*/
 
 /*==========================================
- *AuJ_uÌgpXLï¿½ï¿½L_È‚ï¿½ï¿½)
+ *ƒAƒuƒ‰ƒJƒ_ƒuƒ‰‚Ìg—pƒXƒLƒ‹Œˆ’è(Œˆ’èƒXƒLƒ‹‚ªƒ_ƒ‚È‚ç0‚ğ•Ô‚·)
  *------------------------------------------
  */
 int skill_abra_dataset(int skilllv)
@@ -10019,7 +10024,8 @@ int skill_abra_dataset(int skilllv)
 }
 
 /*==========================================
- * oWJÌƒZï¿½è‚·ï¿½ *------------------------------------------
+ * ƒoƒWƒŠƒJ‚ÌƒZƒ‹‚ğİ’è‚·‚é
+ *------------------------------------------
  */
 void skill_basilica_cell(struct skill_unit *unit, int flag) {
 	int i, x, y, range = skill_get_unit_range(HP_BASILICA);
@@ -10117,7 +10123,7 @@ int skill_greed(struct block_list *bl, va_list ap)
 }
 
 /*==========================================
- * hveN^[`FbN(foreachinarea)
+ * ƒ‰ƒ“ƒhƒvƒƒeƒNƒ^[ƒ`ƒFƒbƒN(foreachinarea)
  *------------------------------------------
  */
 int skill_landprotector(struct block_list *bl, va_list ap )
@@ -10164,7 +10170,7 @@ int skill_ganbatein(struct block_list *bl, va_list ap) {
 }
 
 /*==========================================
- * ChDÌ—ÑŒï¿½ñ•œ(foreachinarea)
+ * ƒCƒhƒDƒ“‚Ì—ÑŒç‚Ì‰ñ•œˆ—(foreachinarea)
  *------------------------------------------
  */
 int skill_idun_heal(struct block_list *bl, va_list ap )
@@ -10192,7 +10198,7 @@ int skill_idun_heal(struct block_list *bl, va_list ap )
 }
 
 /*==========================================
- * wï¿½Í“ï¿½srcÉ‘Î‚Ä—LÈƒ^[Qbgï¿½lÌğ”‚ï¿½foreachinarea)
+ * w’è”ÍˆÍ“à‚Åsrc‚É‘Î‚µ‚Ä—LŒø‚Èƒ^[ƒQƒbƒg‚Ìbl‚Ì”‚ğ”‚¦‚é(foreachinarea)
  *------------------------------------------
  */
 int skill_count_target(struct block_list *bl, va_list ap) {
@@ -10213,7 +10219,7 @@ int skill_count_target(struct block_list *bl, va_list ap) {
 }
 
 /*==========================================
- * gbvÍˆÍ(foreachinarea)
+ * ƒgƒ‰ƒbƒv”ÍˆÍˆ—(foreachinarea)
  *------------------------------------------
  */
 int skill_trap_splash(struct block_list *bl, va_list ap )
@@ -10263,11 +10269,12 @@ int skill_trap_splash(struct block_list *bl, va_list ap )
 }
 
 /*----------------------------------------------------------------------------
- * Xe[^XÙï¿½ *----------------------------------------------------------------------------
+ * ƒXƒe[ƒ^ƒXˆÙí
+ *----------------------------------------------------------------------------
  */
 
 /*==========================================
- * Xe[^XÙï¿½
+ * ƒXƒe[ƒ^ƒXˆÙíI—¹
  *------------------------------------------
  */
 int skill_enchant_elemental_end(struct block_list *bl, int type)
@@ -10343,12 +10350,14 @@ int skill_check_cloaking(struct block_list *bl)
 
 /*
  *----------------------------------------------------------------------------
- * XLjbg
+ * ƒXƒLƒ‹ƒ†ƒjƒbƒg
  *----------------------------------------------------------------------------
  */
 
 /*==========================================
- * t/_Xï¿½ß‚ï¿½ * flag 1ÅtÈ‚ç‘ŠÉƒjbgï¿½ï¿½ *
+ * ‰‰‘t/ƒ_ƒ“ƒX‚ğ‚â‚ß‚é
+ * flag 1‚Å‡‘t’†‚È‚ç‘Š•û‚Éƒ†ƒjƒbƒg‚ğ”C‚¹‚é
+ *
  *------------------------------------------
  */
 void skill_stop_dancing(struct block_list *src, int flag)
@@ -10401,7 +10410,7 @@ void skill_stop_dancing(struct block_list *src, int flag)
 }
 
 /*==========================================
- * XLjbg
+ * ƒXƒLƒ‹ƒ†ƒjƒbƒg‰Šú‰»
  *------------------------------------------
  */
 struct skill_unit *skill_initunit(struct skill_unit_group *group,int idx,int x,int y)
@@ -10433,7 +10442,7 @@ struct skill_unit *skill_initunit(struct skill_unit_group *group,int idx,int x,i
 }
 
 /*==========================================
- * XLjbgíœ
+ * ƒXƒLƒ‹ƒ†ƒjƒbƒgíœ
  *------------------------------------------
  */
 int skill_delunit(struct skill_unit *unit)
@@ -10468,7 +10477,7 @@ int skill_delunit(struct skill_unit *unit)
 }
 
 /*==========================================
- * XLjbgO[v
+ * ƒXƒLƒ‹ƒ†ƒjƒbƒgƒOƒ‹[ƒv‰Šú‰»
  *------------------------------------------
  */
 static int skill_unit_group_newid = MAX_SKILL_DB;
@@ -10555,7 +10564,7 @@ struct skill_unit_group *skill_initunitgroup(struct block_list *src,
 }
 
 /*==========================================
- * XLjbgO[víœ
+ * ƒXƒLƒ‹ƒ†ƒjƒbƒgƒOƒ‹[ƒvíœ
  *------------------------------------------
  */
 int skill_delunitgroup(struct skill_unit_group *group)
@@ -10631,7 +10640,8 @@ int skill_clear_unitgroup(struct block_list *src)
 }
 
 /*==========================================
- * XLjbgO[vÌ”ï¿½tickï¿½ *------------------------------------------
+ * ƒXƒLƒ‹ƒ†ƒjƒbƒgƒOƒ‹[ƒv‚Ì”í‰e‹¿tickŒŸõ
+ *------------------------------------------
  */
 struct skill_unit_group_tickset *skill_unitgrouptickset_search(struct block_list *bl, struct skill_unit_group *group, int tick)
 {
@@ -10677,7 +10687,7 @@ struct skill_unit_group_tickset *skill_unitgrouptickset_search(struct block_list
 }
 
 /*==========================================
- * XLjbg^C}[p(foreachinarea)
+ * ƒXƒLƒ‹ƒ†ƒjƒbƒgƒ^ƒCƒ}[”­“®ˆ——p(foreachinarea)
  *------------------------------------------
  */
 int skill_unit_timer_sub_onplace(struct block_list *bl, va_list ap)
@@ -10707,7 +10717,7 @@ int skill_unit_timer_sub_onplace(struct block_list *bl, va_list ap)
 }
 
 /*==========================================
- * XLjbg^C}[p(foreachobject)
+ * ƒXƒLƒ‹ƒ†ƒjƒbƒgƒ^ƒCƒ}[ˆ——p(foreachobject)
  *------------------------------------------
  */
 int skill_unit_timer_sub(struct block_list *bl, va_list ap)
@@ -10778,7 +10788,8 @@ int skill_unit_timer_sub(struct block_list *bl, va_list ap)
 							memset(&item_tmp, 0, sizeof(item_tmp));
 							item_tmp.nameid = 1065;
 							item_tmp.identify = 1;
-							map_addflooritem(&item_tmp, 1, bl->m, bl->x, bl->y, NULL, NULL, NULL, bl->id, 0);	// ?ÔŠï¿½						}
+							map_addflooritem(&item_tmp, 1, bl->m, bl->x, bl->y, NULL, NULL, NULL, bl->id, 0);	// ?•ÔŠÒ
+						}
 					}
 					skill_delunit(unit);
 				}
@@ -10810,7 +10821,7 @@ int skill_unit_timer_sub(struct block_list *bl, va_list ap)
 }
 
 /*==========================================
- * XLjbg^C}[
+ * ƒXƒLƒ‹ƒ†ƒjƒbƒgƒ^ƒCƒ}[ˆ—
  *------------------------------------------
  */
 int skill_unit_timer(int tid, unsigned int tick, int id, int data)
@@ -10821,7 +10832,7 @@ int skill_unit_timer(int tid, unsigned int tick, int id, int data)
 }
 
 /*==========================================
- * XLjbgÚ“p(foreachinarea)
+ * ƒXƒLƒ‹ƒ†ƒjƒbƒgˆÚ“®ˆ——p(foreachinarea)
  *------------------------------------------
  */
 int skill_unit_move_sub(struct block_list *bl, va_list ap)
@@ -10856,7 +10867,7 @@ int skill_unit_move_sub(struct block_list *bl, va_list ap)
 }
 
 /*==========================================
- * XLjbgÚ“
+ * ƒXƒLƒ‹ƒ†ƒjƒbƒgˆÚ“®ˆ—
  *------------------------------------------
  */
 int skill_unit_move(struct block_list *bl, unsigned int tick, int flag)
@@ -10873,8 +10884,9 @@ int skill_unit_move(struct block_list *bl, unsigned int tick, int flag)
 }
 
 /*==========================================
- * XLjbgÌ‚ÌˆÚ“
- * ÍƒO[vÆˆÚ“ï¿½ *------------------------------------------
+ * ƒXƒLƒ‹ƒ†ƒjƒbƒg©‘Ì‚ÌˆÚ“®ˆ—
+ * ˆø”‚ÍƒOƒ‹[ƒv‚ÆˆÚ“®—Ê
+ *------------------------------------------
  */
 int skill_unit_move_unit_group(struct skill_unit_group *group, int m, int dx, int dy)
 {
@@ -10957,12 +10969,13 @@ int skill_unit_move_unit_group(struct skill_unit_group *group, int m, int dx, in
 }
 
 /*----------------------------------------------------------------------------
- * ACe
+ * ƒAƒCƒeƒ€‡¬
  *----------------------------------------------------------------------------
  */
 
 /*==========================================
- * ACeÂ”\ï¿½ *------------------------------------------
+ * ƒAƒCƒeƒ€‡¬‰Â”\”»’è
+ *------------------------------------------
  */
 int skill_can_produce_mix( struct map_session_data *sd, int nameid, int trigger, unsigned int flag) {
 	int i, j;
@@ -11028,7 +11041,8 @@ int skill_can_produce_mix( struct map_session_data *sd, int nameid, int trigger,
 }
 
 /*==========================================
- * ACeÂ”\ï¿½ *------------------------------------------
+ * ƒAƒCƒeƒ€‡¬‰Â”\”»’è
+ *------------------------------------------
  */
 int skill_produce_mix( struct map_session_data *sd, int nameid, int slot1, int slot2, int slot3) {
 	int slot[3];
@@ -11385,12 +11399,12 @@ void skill_copy_skill(struct map_session_data *tsd, short skillid, short skilllv
 }
 
 /*----------------------------------------------------------------------------
- * n
+ * ‰Šú‰»Œn
  */
 
 /*
- * ñˆ—
- *        ',' Å‹ï¿½Bï¿½val É–ß‚
+ * •¶š—ñˆ—
+ *        ',' ‚Å‹æØ‚Á‚Ä val ‚É–ß‚·
  */
 int skill_split_str(char *str, char **val, int num)
 {
@@ -11407,8 +11421,8 @@ int skill_split_str(char *str, char **val, int num)
 }
 
 /*
- * ñˆ—
- *      ':' Å‹ï¿½Bï¿½toiï¿½alÉ–ß‚
+ * •¶š—ñˆ—
+ *      ':' ‚Å‹æØ‚Á‚Äatoi‚µ‚Äval‚É–ß‚·
  */
 int skill_split_atoi(char *str, int *val)
 {
@@ -11429,7 +11443,7 @@ int skill_split_atoi(char *str, int *val)
 }
 
 /*
- * XLjbgÌ”zuï¿½ì¬
+ * ƒXƒLƒ‹ƒ†ƒjƒbƒg‚Ì”z’uî•ñì¬
  */
 void skill_init_unit_layout()
 {
@@ -11616,11 +11630,12 @@ void skill_init_unit_layout()
 }
 
 /*==========================================
- * XLÖŒWt@CÇ‚İï¿½ * skill_db.txt XLf[^
- * skill_cast_db.txt XLÌ‰rÔ‚ÆƒfBCf[^
- * produce_db.txt ACeì¬XLpf[^
- * create_arrow_db.txt ï¿½XLpf[^
- * abra_db.txt AuJ_uXLf[^
+ * ƒXƒLƒ‹ŠÖŒWƒtƒ@ƒCƒ‹“Ç‚İ‚İ
+ * skill_db.txt ƒXƒLƒ‹ƒf[ƒ^
+ * skill_cast_db.txt ƒXƒLƒ‹‚Ì‰r¥ŠÔ‚ÆƒfƒBƒŒƒCƒf[ƒ^
+ * produce_db.txt ƒAƒCƒeƒ€ì¬ƒXƒLƒ‹—pƒf[ƒ^
+ * create_arrow_db.txt –îì¬ƒXƒLƒ‹—pƒf[ƒ^
+ * abra_db.txt ƒAƒuƒ‰ƒJƒ_ƒuƒ‰”­“®ƒXƒLƒ‹ƒf[ƒ^
  *------------------------------------------
  */
 int skill_readdb(void) {
@@ -12065,7 +12080,7 @@ void skill_reload(void) {
 }
 
 /*==========================================
- * XLÖŒW
+ * ƒXƒLƒ‹ŠÖŒW‰Šú‰»ˆ—
  *------------------------------------------
  */
 int do_init_skill(void) {
