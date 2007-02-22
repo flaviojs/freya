@@ -17,6 +17,7 @@
 //= 1.5 Fixed some typos and coordinates [Musashiden]
 //= 1.6 Fixed a small typo [Evera]
 //= 1.7 Updated script formatting [Tsuyuki]
+//= 1.8 Added Mastermind game NPC [GreenGoblin]
 //============================================================
 
 
@@ -669,4 +670,242 @@ geffen_in.gat,164,109,2	script	Dark Wizard	64,{
 		mes "[Dark Wizard]";
 		mes "Always remember that magic should only be used for the benefit of people, not to do them harm.";
 		close;
+}
+
+geffen.gat,122,77,4	script	Nia	700,{
+
+	mes "[Nia]";
+	mes "Hello, I'm Nia, the fifth";
+	mes "disciple of Mawong, the";
+	mes "gaming mastermind. Now,";
+	mes "how would you like to play a";
+	mes "Number Match game with me?";
+	next;
+	menu "Number Match Game?",-,"Practice Number Match",L_Practice,"Play Number Match",L_Match,"Record Holder",L_Record,"Cancel",L_Cancel;
+	mes "[Nia]";
+	mes "Ah, well, the objective of";
+	mes "the Number Match game is to";
+	mes "guess the number I'm thinking";
+	mes "of. Of course, there are a few";
+	mes "rules that limit the numbers";
+	mes "that I can choose from.";
+	next;
+	mes "[Nia]";
+	mes "All the numbers that I make";
+	mes "up must be 3 digits, I can't";
+	mes "use 0 for any of the digits,";
+	mes "and I can't use the same";
+	mes "number for any of the digits";
+	mes "more than once.";
+	next;
+	mes "[Nia]";
+	mes "So, for example, I can't";
+	mes "use the numbers 103, 112,";
+	mes "252, or 701. Those numbers";
+	mes "either have a 0, or they use";
+	mes "the same number in the digits";
+	mes "more than once. Got it now?";
+	next;
+	mes "[Nia]";
+	mes "Now, you only get 5 guesses,";
+	mes "and after each guess, I'll tell";
+	mes "you how many digits you guessed";
+	mes "correctly, followed by the number^FFFFFF ^000000 of correctly guessed digits in";
+	mes "the correct digit place.";
+	next;
+	mes "[Nia]";
+	mes "For example, let's say the";
+	mes "number I come up with is 168.";
+	mes "If your first guess is 678, then^FFFFFF ^000000 you guessed two of the digits,";
+	mes "6 and 8, correctly. However,";
+	mes "only 8 is in the correct place.";
+	next;
+	mes "[Nia]";
+	mes "You know, it'd be a good idea";
+	mes "if you try the Practice Mode";
+	mes "first. Then, when you're more";
+	mes "comfortable, play the actual";
+	mes "Number Match game. Don't forget^FFFFFF ^000000 that speed counts for your score!";
+	next;
+	mes "[Nia]";
+	mes "Ah, if you happen to";
+	mes "make a new record in the";
+	mes "Number Match game, you'll";
+	mes "have your name recorded,";
+	mes "so don't miss this chance for";
+	mes "fame and maybe even fortune~";
+	close;
+
+L_Practice:
+	mes "[Nia]";
+	mes "Great, let's do a practice";
+	mes "Number Match game. Please";
+	mes "try to guess my number, okay?";
+	mes "If you want to cancel, then please enter a number greater than 1,000.";
+	next;
+	callfunc "MasterMind",0;
+	end;
+
+L_Record:
+	mes "[Nia]";
+	mes "^ff0000"+$NameMasterMind$+"^000000 is the";
+	mes "record holder for the Number";
+	mes "Match game with a time of";
+	mes "^ff0000"+$MinMasterMind+" minutes, "+$SecMasterMind+" seconds^000000.";
+	close;
+
+L_Cancel:
+	mes "[Nia]";
+	mes "Take care of yourself,";
+	mes "adventurer. If you ever";
+	mes "feel like playing a Number";
+	mes "Match game, come and talk";
+	mes "to me, alright? See you~";
+	close;
+
+L_Match:
+	mes "[Nia]";
+	mes "Great, let's play Number Match!";
+	mes "You will have 5 chances to guess^FFFFFF ^000000 the number that I'm thinking of.";
+	mes "If you want to cancel, then please enter a number greater than 1,000.";
+	next;
+	set @timeMin,(gettime(3)*60 + gettime(2));
+	set @timeSec,gettime(1);
+	callfunc "MasterMind",1;
+	set @timeMinFinish,((gettime(3)*60 + gettime(2))-@timeMin);
+	set @timeSecFinish,(gettime(1)-@timeSec);
+	if ($NameMasterMind$ == "") goto L_GainRecord;
+	if (@timeMinFinish > $MinMasterMind) goto L_Beat;
+	if (@timeMinFinish == $MinMasterMind && @timeSecFinish > $SecMasterMind) goto L_Beat;
+
+L_GainRecord:
+	mes "[Nia]";
+	mes "Great! You guessed";
+	mes "my number, which was";
+	mes "^ff0000"+@number1+"^000000 ^ff0000"+@number2+"^000000 ^ff0000"+@number3+"^000000. You finished in";
+	mes "^ff0000"+@timeMinFinish+" minutes, "+@timeSecFinish+" seconds^000000,";
+	mes "breaking the previous record";
+	mes "of ^ff0000"+$MinMasterMind+" minutes, "+$SecMasterMind+" seconds^000000.";
+	next;
+	mes "[Nia]";
+	mes "^ff0000"+$NameMasterMind$+"^000000";
+	mes "set that old record,";
+	mes "but now you are the";
+	mes "new person to beat in the";
+	mes "Match Game. Congratulations";
+	mes "for setting a new record!";
+	set $MinMasterMind,@timeMinFinish;
+	set $SecMasterMind,@timeSecFinish;
+	set $NameMasterMind$, strcharinfo(0);
+	close;
+
+L_Beat:
+	mes "[Nia]";
+	mes "Nice work, you guessed";
+	mes "my number! The answer, of";
+	mes "course, was ^ff0000"+@number1+"^000000 ^ff0000"+@number2+"^000000 ^ff0000"+@number3+"^000000. You managed";
+	mes "to guess this number correctly";
+	mes "in ^ff0000"+@timeMinFinish+" minutes, "+@timeSecFinish+" seconds^000000.";
+	next;
+	mes "[Nia]";
+	mes "^ff0000"+$NameMasterMind$+"^000000 is";
+	mes "the current Number Match";
+	mes "record holder with a time";
+	mes "of ^ff0000"+$MinMasterMind+" minutes, "+$SecMasterMind+" seconds^000000";
+	mes "Good luck, and hopefully you";
+	mes "can break this record someday~";
+	close;
+
+}
+
+function	script	MasterMind	{
+	set @retry,0;
+	set @number1,rand(1,9);
+
+L_SecondNum:
+	set @number2,rand(1,9);
+	if (@number2 == @number1) goto L_SecondNum;
+
+L_ThirdNum:
+	set @number3,rand(1,9);
+	if (@number3 == @number1 || @number3 == @number2) goto L_ThirdNum;
+
+L_Retry:
+	input @answer;
+	if (@answer < 100 || @answer > 999) goto L_Error2;
+	set @answer1,@answer/100;
+	set @answer2,(@answer%100)/10;
+	set @answer3,@answer%10;
+	set @retry,@retry+1;
+	if (@answer1 == 0 || @answer2 == 0 || @answer3 == 0) goto L_Error;
+	if (@answer1 == @answer2 || @answer1 == @answer3 || @answer2 == @answer3) goto L_Error;
+	mes "[Nia]";
+	mes "^ff0000"+strcharinfo(0)+"^000000,";
+	mes "your guess is ^0000ff"+@answer1+"^000000 ^0000ff"+@answer2+"^000000 ^0000ff"+@answer3+"^000000.";
+	mes "Give me a moment to";
+	mes "come up with your results.";
+	next;
+	if (@answer1 == @number1 && @answer2 == @number2 && @answer3 == @number3) goto L_Correct;
+	set @strike,0;
+	set @ball,0;
+	if (@answer1 == @number1) set @strike,@strike + 1;
+	if (@answer2 == @number2) set @strike,@strike + 1;
+	if (@answer3 == @number3) set @strike,@strike + 1;
+	if (@answer1 == @number2 || @answer1 == @number3) set @ball,@ball + 1;
+	if (@answer2 == @number1 || @answer2 == @number3) set @ball,@ball + 1;
+	if (@answer3 == @number1 || @answer3 == @number2) set @ball,@ball + 1;
+	if (getarg(0) == 1) goto L_Fail;
+	mes "[Nia]";
+	mes "Your guess has ^ff0000"+@ball+"^000000 of the";
+	mes "correct numbers. ^ff0000"+@strike+"^000000 of the";
+	mes "digits in your guess have";
+	mes "the correct number in the";
+	mes "correct digit placement.";
+	mes "Alright, try it again~";
+	next;
+	goto L_Retry;
+
+L_Correct:
+	if (getarg(0) == 1) return;
+	mes "[Nia]";
+	mes "Yes, the number that";
+	mes "I guessed was ^ff0000"+@number1+"^000000 ^ff0000"+@number2+"^000000 ^ff0000"+@number3+"^000000!";
+	mes "Congratulations, you";
+	mes "just won this practice";
+	mes "game! Now you should be";
+	mes "ready for the real thing~";
+	close;
+
+L_Fail:
+	mes "[Nia]";
+	mes "Your last guess had ^ff0000"+@ball+"^000000";
+	mes "of the correct numbers,";
+	mes "and ^ff0000"+@strike+"^000000 digits in your guess";
+	mes "had the correct number in";
+	mes "the correct digit placement.";
+	if (@retry == 1) mes "You have four guesses left.";
+	if (@retry == 2) mes "You have three guesses left.";
+	if (@retry == 3) mes "You have two guesses left.";
+	if (@retry == 4) mes "You only have one guess left...";
+	if (@retry == 5) mes "The answer was ^ff0000"+@number1+"^000000 ^ff0000"+@number2+"^000000 ^ff0000"+@number3+"^000000.";
+	if (@retry == 5) close;
+	next;
+	goto L_Retry;
+
+L_Error2:
+	mes "[Nia]";
+	mes "You've canceled the";
+	mes "Number Match game.";
+	close;
+
+L_Error:
+	mes "[Nia]";
+	mes "You entered one of the";
+	mes "digits as 0, or input the";
+	mes "same numerical value in";
+	mes "the digits more than once.";
+	mes "Please enter another guess.";
+	next;
+	goto L_Retry;
+
 }

@@ -11,6 +11,7 @@
 Date	Added
 
 02/21/2007
+	* Added: Mastermind Game NPC to Geffen file [GreenGoblin]
 	* Updated: Applied some of the Episode 11.2 MvP changes [Tsuyuki]
 	 - http://romirror.doddlercon.com/wiki/index.php?title=Monster_Changes
 	 - Baphomet, Kiel D-01, RSX-0806, Orc Lord, and Valkyrie Randgris all now have 30 VIT
