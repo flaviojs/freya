@@ -19,10 +19,10 @@
 
 // == Monsters ==
 //Spawn is included in this file so make shure its not elsewhere to!
-JOB_THIEF1.gat,0,0,0,0	monster	Orange Mushroom	1182,180,0,0,0
-JOB_THIEF1.gat,0,0,0,0	monster	Fabre	1184,50,0,0,0
-JOB_THIEF1.gat,0,0,0,0	monster	Chonchon	1183,50,0,0,0
-JOB_THIEF1.gat,0,0,0,0	monster	Spore	1014,30,0,0,0
+job_thief1.gat,0,0,0,0	monster	Orange Mushroom	1182,180,0,0,0
+job_thief1.gat,0,0,0,0	monster	Fabre	1184,50,0,0,0
+job_thief1.gat,0,0,0,0	monster	Chonchon	1183,50,0,0,0
+job_thief1.gat,0,0,0,0	monster	Spore	1014,30,0,0,0
 
 
 // == NPCs ==
