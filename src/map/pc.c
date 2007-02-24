@@ -4764,7 +4764,7 @@ struct pc_base_job pc_calc_base_job(unsigned int b_class)
 	if (bj.job == JOB_NOVICE)
 		bj.type = 0;
 	// First Class Type Calculation
-	else if (bj.job < JOB_THIEF || bj.job == JOB_TAEKWON || bj.job == JOB_GUNSLINGER || bj.job == JOB_NINJA)
+	else if (bj.job <= JOB_THIEF || bj.job == JOB_TAEKWON || bj.job == JOB_GUNSLINGER || bj.job == JOB_NINJA)
 		bj.type = 1;
 	// Second Class Type Calculation
 	else
