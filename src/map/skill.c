@@ -3253,7 +3253,10 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		break;
 
 	case NJ_HYOUSYOURAKU:
+		skill_castend_pos2(src,bl->x,bl->y,skillid,skilllv,tick,0);
 		map_foreachinarea(skill_attack_area, src->m, src->x-7, bl->y-7, bl->x+7, bl->y+7, 0, BF_MAGIC, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
+		skill_castend_pos2(src,bl->x,bl->y,skillid,skilllv,tick,0);
+		clif_specialeffect(bl, 636, AREA);
 		break;
 
 	case NJ_RAIGEKISAI:
@@ -3262,6 +3265,8 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		else if(skilllv == 3 || skilllv == 4) ninjacalc = 7;
 		else if(skilllv >= 5) ninjacalc = 9;
 		map_foreachinarea(skill_attack_area, src->m, src->x-ninjacalc, bl->y-ninjacalc, bl->x+ninjacalc, bl->y+ninjacalc, 0, BF_MAGIC, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
+		skill_castend_pos2(src,bl->x,bl->y,skillid,skilllv,tick,0);
+		clif_specialeffect(bl, 622, AREA);
 		break;
 
 	case HT_BLITZBEAT:
@@ -6427,7 +6432,6 @@ int skill_castend_pos2(struct block_list *src, int x, int y, int skillid, int sk
 	case NJ_RAIGEKISAI:
 	case NJ_HYOUSYOURAKU:
 		skill_unitsetting(src,skillid,skilllv,x,y,0);
-		clif_skill_poseffect(src, skillid, skilllv, x, y, tick);
 		break;
 	case NJ_KAENSIN:
 		skill_clear_unitgroup(src);

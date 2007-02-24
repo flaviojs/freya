@@ -11,6 +11,7 @@
 Date	Added
 
 02/24/2007
+	* Fixed: NJ_RAIGEKISAI and NJ_HYOUSYOURAKU's skill effects not displaying [Tsuyuki]
 	* Updated: Effect list [Tsuyuki]
 	* Updated: Packet database with new entries (Credits to jAthena) [Tsuyuki]
 	* Updated: Default packetver from 7 to 8 [Tsuyuki]
