@@ -1,0 +1,61 @@
+//===== Freya Script =========================================
+//= Client Effect Testing Script
+//===== By: ================================================== 
+//= Freya
+//===== Current Version: ===================================== 
+//= 1.0
+//===== Compatible With: ===================================== 
+//= Freya
+//===== Description: ========================================= 
+//= Tests effects based on the user input. Effects take place
+//= on the invoking player character.
+//===== Additional Comments: ================================= 
+//= 1.0 Added first version [Tsuyuki]
+//============================================================
+
+
+prontera.gat,162,170,3	script	Effect Tester	831,{
+
+	mes "[Effect Tester]";
+	mes "Choose an effect type:";
+	next;
+	menu	"Normal Effect",L_NormalEffect,
+		"Skill Effect",L_SkillEffect,
+		"Emoticon Effect",L_EmoticonEffect,
+		"Cancel",L_Cancel;
+
+	L_NormalEffect:
+		mes "[Effect Tester]";
+		mes "Input an effect ID:";
+		next;
+		input @effectid;
+		close2;
+		specialeffect2 @effectid;
+		end;
+
+	L_SkillEffect:
+		mes "[Effect Tester]";
+		mes "Input a skill effect ID:";
+		next;
+		input @effectid;
+		next;
+		mes "[Effect Tester]";
+		mes "Input an extra parameter (Default: 0):";
+		next;
+		input @param01;
+		close2;
+		skilleffect @effectid,@param01;
+		end;
+
+	L_EmoticonEffect:
+		mes "[Effect Tester]";
+		mes "Input an emoticon effect ID:";
+		next;
+		input @effectid;
+		close2;
+		emotion @effectid;
+		end;
+
+	L_Cancel:
+		close;
+}

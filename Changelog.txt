@@ -10,6 +10,12 @@
 
 Date	Added
 
+02/24/2007
+	* Updated: Packet database with new entries (Credits to jAthena) [Tsuyuki]
+	* Updated: Default packetver from 7 to 8 [Tsuyuki]
+	 - Note: All clients from 2006-10-17 and older can no longer connect properly
+	* Added: Client effect testing sample script [Tsuyuki]
+
 02/23/2007
 	* Fixed: Comparison typo in pc_base_job [Tekglw]
 	* Updated: Sushi Quest for Amatsu (Sashimi is now obtainable) [GreenGoblin]
