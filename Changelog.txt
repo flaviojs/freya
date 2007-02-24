@@ -11,6 +11,7 @@
 Date	Added
 
 02/23/2007
+	* Updated: Sushi Quest for Amatsu (Sashimi is now obtainable) [GreenGoblin]
 	* Added: Comodo Gambling NPCs [GreenGoblin]
 	* Added: Payon Fortune Teller NPCs (custom coordinates in Payon Inn floor 2) [GreenGoblin]
 

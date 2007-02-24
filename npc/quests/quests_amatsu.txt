@@ -16,131 +16,527 @@
 //=	the current code I had.
 //= 1.1 Added Sushi Quest and Amatsu Event from cities/ [Evera]
 //= 1.2 Removed Momotaro Event for compatibility purposes [Tsuyuki]
+//= 1.3 Added Updated Sushi Quest (Sashimi is now obtainable) [GreenGoblin]
 //============================================================ 
 
 //============================================================
 //====================================================== Sushi
 //====================================================== Quest
-ama_in01.gat,162,17,0	script	Iron Chef	765,{
-	if (ama_sushi == 1) goto LStart2;
-	mes "[ShabuShabu]";
-	mes "*Sighs* This is getting worse..";
-	mes "Everyday more customers come,";
-	mes "but I can never get";
-	mes "enough material, even today.";
-	mes "A lot of customers surely will be hungry?";
-	next;
-	mes "[ShabuShabu]";
-	mes "*Sigh*, a customer. Welcome.";
-	mes "As always, my homemade sashimi";
-	mes "focuses on the freshness. What do you need?";
-	next;
-	menu "I want to buy shrimp sushi",L1,"I want to buy sashimi",L2,"Need some help!",L3,"Keep up the good work",-;
-		mes "[ShabuShabu]";
-		mes "Alright then, my sashimi";
-		mes "are famous throughout the world! Their taste relies on its freshness, and no one else can make them.";
-		mes "If you have a chance, come try a little sashimi!";
-		close;
-	L1:
-		mes "[ShabuShabu]";
-		mes "Alright! How much do you want?";
-		mes "Unit price 700 zeny, but if you only want a taste,";
-		mes "I'll give you a discount of 74 zeny,";
-		mes "If you like the taste come back and find me later.";
-		next;
-		menu "I want the 700 zeny piece!",L1_1,"I want the 74 zeny sample!",L1_2,"I'll come eat next time",-;
-			mes "[ShabuShabu]";
-			mes "Alright then, my shrimp sushi";
-			mes "are famous throughout the world! Their taste relies on its freshness, and no one else can make them.";
-			mes "If you have a chance, come try a little sashimi!";
-			close;
-		L1_1:
-			if (Zeny < 700) goto Lzeny;
-			set Zeny,Zeny-700;
-			getitem 551,10;
-			mes "[If you have a chance, come try a little sashimi!]";
-			mes "Thank you very much";
-			close;
-		L1_2:
-			if (Zeny < 74) goto Lzeny;
-			set Zeny,Zeny-74;
-			getitem 551,1;
-			mes "[If you have a chance, come try a little sashimi!]";
-			mes "Thank you very much";
-			close;
-	L2:
-		mes "[ShabuShabu]";
-		mes "Alright! How much do you want?";
-		mes "Unit price 350 zeny, but if you only want a taste,";
-		mes "I'll just give you a discount of 37 zeny.";
-		mes "If you like the taste come back and find me later";
-		next;
-		menu "I want the 350 zeny piece!",L2_1,"I want the 37 zeny sample",L2_2,"I'll come eat next time",-;
-			mes "[ShabuShabu]";
-			mes "Alright then, my sashimi";
-			mes "are famous throughout the world! Their taste relies on its freshness, and no one else can make them.";
-			mes "[If you have a chance, come try a little sashimi!]";
-			close;
-		L2_1:
-			if (Zeny < 350) goto Lzeny;
-			set Zeny,Zeny-350;
-			getitem 544,10;
-			mes "[ShabuShabu]";
-			mes "Thank you very much";
-			close;
-		L2_2:
-			if (Zeny < 37) goto Lzeny;
-			set Zeny,Zeny-37;
-			getitem 544,1;
-			mes "[ShabuShabu]";
-			mes "Thank you very much";
-			close;
-		Lzeny:
-			mes "[ShabuShabu]";
-			mes "You don't have enough zeny with you";
-			close;
-L3:
-		mes "[ShabuShabu]";
-		mes "Oh, any help is welcomed!!";
-		mes "I was just worrying about not having enough material everyday.";
-		mes "Do you want to hear my request?";
-		mes "Of course I will pay you to help me.";
-		next;
+ama_in01.gat,162,17,0	script	Sushi Master	765,{
 
-		set ama_sushi,1;
-		mes "[ShabuShabu]";
-		mes "Crab Shell.";
-		mes "They are all out. I need them right now.";
-		mes "So please find ^0000FF10Crab shells^000000.";
-		mes "I can never find it when I need it.";
-		mes "I'll be counting on you.";
-		next;
-		mes "[ShabuShabu]";
-		mes "Then, please hurry! I'll be here";
-		mes "waiting for you, please don't forget my request!";
-		close;
-LStart2:
-	if (countitem(964)>=10) goto Lok;
-	mes "[ShabuShabu]";
-	mes "Man, don't have my materials ready?";
-	mes "Oh no, you didn't forget it did you?";
+	if (Sushi2 == 4) goto L_Complete;
+	if (Sushi == 1) goto L_Sushi1;
+	if (Sushi == 2) goto L_Sushi2;
+	if (Sushi == 3) goto L_Sushi3;
+	if (Sushi == 4) goto L_Sushi4;
+	if (Sushi == 5) goto L_Sushi5;
+	if (Sushi == 6) goto L_Sushi6;
+	mes "[Magumagu]";
+	mes "Oh, this is horrible.";
+	mes "There're so many customer visiting everyday.";
+	mes "And you can't gather the items too today";
+	mes "Does that mean,";
+	mes "Some customers will not be able to eat again today?";
 	next;
-	mes "[ShabuShabu]";
-	mes "^0000FF10Crab shells^000000";
-	mes "Don't forget again.";
-	mes "You must help me find them!";
+	mes "[Magumagu]";
+	mes "Oh, a customer?";
+	mes "As usual, I would like to say that";
+	mes "my shop only serves the fresh Sashimi.";
+	mes "So what can I help you today?";
+	next;
+	menu "I want to buy Shrimp Sushi",-,"I want Sashimi",L_Sashimi,"Can I help you?",L_Help,"Thank you",L_Thank;
+	mes "[Magumagu]";
+	mes "Ok, how much do you want?";
+	mes "The price for the whole set is 700z.";
+	mes "But it only cost you 74z if you want a small piece.";
+	mes "You can always order for more after you've tried it.";
+	next;
+	menu "I want the 700z set!",-,"I want to try the small piece worth 74z!",L_Small,"I'll try it next time",L_Cancel;
+	if (Zeny < 700) goto L_NoZeny;
+	set Zeny,Zeny-700;
+	getitem 551,10;
+	mes "[Magumagu]";
+	mes "Here you are. Try it.";
+	mes "If you like it, do come again.";
 	close;
-Lok:
+
+L_NoZeny:
+	mes "[Magumagu]";
+	mes "Oh, you do not have enough zeny?";
+	mes "If you want to taste delicious Sashimi,";
+	mes "earn some more money.";
+	close;
+
+L_Small:
+	if (Zeny < 74) goto L_NoZeny;
+	set Zeny,Zeny-74;
+	getitem 551,1;
+	mes "[Magumagu]";
+	mes "Here you are. Try it.";
+	mes "DO come again if you like it.";
+	close;
+
+L_Cancel:
+	mes "[Magumagu]";
+	mes "As you like it.";
+	mes "But my shop serves the best food.";
+	mes "It has the freshness that none could imitate.";
+	mes "Feel free to come again";
+	mes "if you want to taste delicious food.";
+	close;
+
+L_Sashimi:
+	mes "[Magumagu]";
+	mes "So, how much do you like to have?";
+	mes "The whole set will cost you 350z.";
+	mes "But a small bite will only need 37z.";
+	mes "You can always order again if you like it.";
+	next;
+	menu "I'll have the 350z set meal!",-,"I want to try a 37z small bite!",L_SmallSashimi,"Maybe next time",L_Cancel2;
+	if (Zeny < 350) goto L_NoZeny2;
+	set Zeny,Zeny-350;
+	getitem 544,10;
+	mes "[Magumagu]";
+	mes "Here you are. Enjoy your meal.";
+	mes "Do come again if you like it.";
+	close;
+
+L_NoZeny2:
+	mes "[Magumagu]";
+	mes "Oh, looks like you don't have enough zeny.";
+	mes "If you want to eat great Sashimi,";
+	mes "please earn more zeny.";
+	close;
+
+L_SmallSashimi:
+	if (Zeny < 37) goto L_NoZeny2;
+	set Zeny,Zeny-37;
+	getitem 544,1;
+	mes "[Magumagu]";
+	mes "Here you are. Enjoy your meal.";
+	mes "DO come again if you like it.";
+	close;
+
+L_Cancel2:
+	mes "[Magumagu]";
+	mes "As you like it.";
+	mes "But my shop serves the best Sashimi.";
+	mes "It has the taste none could ever immitate.";
+	mes "Feel free to visit anytime,";
+	mes "if you feel like tasting great Sashimi.";
+	close;
+
+L_Help:
+	if (BaseJob == 0) goto L_Novice;
+	mes "[Magumagu]";
+	mes "Well, of course it's good that you offer to help!!";
+	mes "I'm worrying that the ingredients for my food";
+	mes "will not be enough.";
+	mes "You want to hear my assignment for you?";
+	mes "Of course I will pay you in return.";
+	next;
+	set @fish,rand(1,10);
+	if ((@fish == 1) || (@fish == 2)) goto L_Fish1Rand1;
+	if ((@fish == 3) || (@fish == 4)) goto L_Fish1Rand3;
+	if ((@fish == 5) || (@fish == 6)) goto L_Fish1Rand5;
+	if ((@fish == 7) || (@fish == 8)) goto L_Fish1Rand7;
+	if (@fish == 9) goto L_Fish1Rand9;
+	if (@fish == 10) goto L_Fish1Rand10;
+
+L_Fish1Rand1:
+	set Sushi,1;
+	mes "[Magumagu]";
+	mes "The candy for customer's dessert is running out.";
+	mes "Can you help me gather";
+	mes "10 ^0000FFCandy^000000 Thank you.";
+	mes "It's not a very hard task,";
+	mes "think you can handle it?";
+	goto L_HelpEnd;
+	
+L_Fish1Rand3:
+	set Sushi,2;
+	mes "[Magumagu]";
+	mes "I need the crab shell";
+	mes "to make the sauce for the meal...";
+	mes "If you bring me 10 ^0000FFCrab Shells^000000";
+	mes "I will pay you well.";
+	mes "Ok?";
+	goto L_HelpEnd;
+
+L_Fish1Rand5:
+	set Sushi,3;
+	mes "[Magumagu]";
+	mes "I have run out of Conch";
+	mes "to make the appetizer";
+	mes "I will be so grateful if you can collect 10 ^0000FFConch^000000";
+	mes "It's hard to find them around here...";
+	mes "So please help me.";
+	goto L_HelpEnd;
+
+L_Fish1Rand7:
+	set Sushi,4;
+	mes "[Magumagu]";
+	mes "There's no Fish Tail for decoration,";
+	mes "I need them urgently.";
+	mes "Can you gather 10 ^0000FFFish tail^000000 for me?";
+	mes "So, please help me. It's really irritating to find the";
+	mes "things you need missing.";
+	goto L_HelpEnd;
+
+L_Fish1Rand9:
+	set Sushi,5;
+	mes "[Magumagu]";
+	mes "What a disaster.";
+	mes "We're running out of plate to place the Sashimi.";
+	mes "Buy me 1 ^0000FFChina^000000 can you?";
+	mes "You can't simply place food like that,";
+	mes "so can you help me?";
+	goto L_HelpEnd;
+
+L_Fish1Rand10:
+	if (rand(1,10) == 1) goto L_Fish2Rand1;
+	set Sushi,5;
+	mes "[Magumagu]";
+	mes "What a disaster.";
+	mes "We are short of one palte to place the Sashimi.";
+	mes "Can you get me 1 ^0000FFChina^000000?";
+	mes "You can't just simply place food anywhere.";
+	mes "So, can you help me?";
+	goto L_HelpEnd;
+
+L_Fish2Rand1:
+	set Sushi,6;
+	mes "[Magumagu]";
+	mes "Don't ask me for reason,";
+	mes "just bring me something special...";
+	mes "100 ^0000FFHearts of Mermaid^000000.....";
+	mes "I know it's unreasonable";
+	mes "But it's important for me.";
+	next;
+	mes "[Magumagu]";
+	mes "And remember,";
+	mes "never tell anyone anywhere";
+	mes "about what I asked you to do.";
+	goto L_HelpEnd;
+	
+L_Novice:
+	mes "[Magumagu]";
+	mes "Haha. I think it sould be much better";
+	mes "if I help you first.";
+	mes "Before you could help anyone";
+	mes "Why don't you help yourself first?";
+	close;
+
+L_HelpEnd:
+	next;
+	mes "[Magumagu]";
+	mes "So, thanks for offering to help.";
+	mes "I will be expecting you.";
+	mes "Please remember what I've asked you to do.";
+	close;
+
+L_Thank:
+	mes "[Magumagu]";
+	mes "Hehehe. You will never forget it";
+	mes "after you've tasted my special Sashimi.";
+	mes "Feel free to come again";
+	mes "to taste my special Sashimi.";
+	close;
+
+L_Complete:
+	mes "[Magumagu]";
+	mes "You can only be a great chef";
+	mes "if you slice the fish yourself";
+	mes "and practice it everyday.";
+	mes "This is not a place you can fool around";
+	mes "stay focus and work hard!";
+	close;
+
+L_Sushi1:
+	if (countitem(529) < 10) goto L_NoItem1;
+	mes "[Magumagu]";
+	mes "Wow! Thank you.";
+	mes "It is about time you bring this here.";
+	mes "All the desserts had just finished.";
+	next;
+	mes "[Magumagu]";
+	mes "Thank you very much. Although I regret that";
+	mes "I couldn't give you more";
+	mes "But I've packed the best food in this shop as a gift from me for you.";
+	next;
+	delitem 529,10;
+	getitem 544,15;
+	set Sushi,0;
+	mes "[Magumagu]";
+	mes "Eat as much as you like,";
+	mes "And enjoy the taste of the food.";
+	mes "Do come here again when you're free.";
+	close;
+
+L_NoItem1:
+	mes "[Magumagu]";
+	mes "Oh my.";
+	mes "You still haven't prepared everything I wanted...";
+	mes "Remember to gather it for me.";
+	next;
+	mes "[Magumagu]";
+	mes "10 ^0000FFCandy^000000 You haven't forget yet, have you?";
+	mes "I'm waiting";
+	mes "So hurry. Collect them for me!";
+	close;
+
+L_Sushi2:
+	if (countitem(964) < 10) goto L_NoItem2;
+	mes "[Magumagu]";
+	mes "Wow! Thanks to you.";
+	mes "You ahve brought the things just in time";
+	mes "Because it's time to cook the sauce now.";
+	next;
+	mes "[Magumagu]";
+	mes "Thank you very much. Though I'm sorry that I couldn't give you more,";
+	mes "But I've packed two sets of";
+	mes "the special meal of my shop to you.";
+	next;
 	delitem 964,10;
 	getitem 551,20;
-	mes "[ShabuShabu]";
-	mes "Hmm! Thank you so much";
-	next;
-	mes "[ShabuShabu]";
-	mes "Here is my thanks, take it!";
-	set ama_sushi,0;
+	set Sushi,0;
+	mes "[Magumagu]";
+	mes "Share this with your friends and family.";
+	mes "Besides that,";
+	mes "remember to visit us when you're free.";
 	close;
 
+L_NoItem2:
+	mes "[Magumagu]";
+	mes "What?";
+	mes "You still haven't prepared the things I asked you to?";
+	mes "Do remember to bring it to me, will you?";
+	next;
+	mes "[Magumagu]";
+	mes "10 ^0000FFCrab Shell^000000...Don't forget that";
+	mes "I will be waiting";
+	mes "Now hurry and gather it for me.";
+	close;
+
+L_Sushi3:
+	if (countitem(961) < 10) goto L_NoItem3;
+	mes "[Magumagu]";
+	mes "Wow! Thank you.";
+	mes "You have brought it just in time";
+	mes "We're just starting to prepare the appetizer...";
+	next;
+	mes "[Magumagu]";
+	mes "Thank you! Although I feel sorry for not able to give you a bigger reward,";
+	mes "But I have packed some";
+	mes "special food from our shop for you.";
+	next;
+	delitem 961,10;
+	getitem 551,30;
+	set Sushi,0;
+	mes "[Magumagu]";
+	mes "It will be enough to serve a couple of person.";
+	mes "So share with them.";
+	mes "Come again when you're free.";
+	close;
+
+L_NoItem3:
+	mes "[Magumagu]";
+	mes "What?";
+	mes "You still haven't prepared the things I asked you to?";
+	mes "Do remember to bring it to me, will you?";
+	next;
+	mes "[Magumagu]";
+	mes "10 ^0000FFConch^000000 Don't forget that.";
+	mes "I will be waiting.";
+	mes "Now hurry. Collect them for me.";
+	close;
+
+L_Sushi4:
+	if (countitem(1023) < 10) goto L_NoItem4;
+	mes "[Magumagu]";
+	mes "Wow. Thank you.";
+	mes "You have brought it just in time,";
+	mes "We're just starting to decorate the plates.";
+	next;
+	mes "[Magumagu]";
+	mes "Thank you and sorry I couldn't afford more than this.";
+	mes "But I have packed some";
+	mes "special food of our shop for you.";
+	next;
+	delitem 1023,10;
+	getitem 544,20;
+	getitem 551,30;
+	set Sushi,0;
+	mes "[Magumagu]";
+	mes "Share this with your guild members.";
+	mes "I'm sure you will enjoy it.";
+	mes "Come again with your friend next time.";
+	close;
+
+L_Sushi5:
+	if (countitem(736) < 1) goto L_NoItem5;
+	mes "[Magumagu]";
+	mes "Wow. Thank you.";
+	mes "You've brought it just in time,";
+	mes "We have run out of plates to place the food.";
+	next;
+	mes "[Magumagu]";
+	mes "Thank you, although I'm sorry I couldn't afford something more valuable.";
+	mes "But I've prepared 2 sets of food";
+	mes "from our shop for you.";
+	next;
+	delitem 736,1;
+	getitem 551,20;
+	set Sushi,0;
+	mes "[Magumagu]";
+	mes "Share it";
+	mes "with your friends and family.";
+	mes "Do come again when you're free.";
+	close;
+
+L_NoItem5:
+	mes "[Magumagu]";
+	mes "Oh my.";
+	mes "You still haven't get the items I asked you to gather.";
+	mes "Remember to gather them for me.";
+	next;
+	mes "[Magumagu]";
+	mes "1 ^0000FFChina^000000 Please remember that!";
+	mes "I will be expecting you.";
+	mes "Now hurry. Gather them for me.";
+	close;
+
+L_Sushi6:
+if (countitem(950) < 100) goto L_NoItem6;
+if (Sushi2 == 2) goto L_Case2;
+	mes "[Magumagu]";
+	mes "Oh, so this is the Heart of Mermaid.";
+	mes "The heart that only exists in legends told.";
+	mes "So it's true.";
+	mes "And it's discovered on a foreign land.";
+	next;
+	mes "[Magumagu]";
+	mes "It must be tiring gathering all these things.";
+	mes "So I will use it and cook a meal for you today.";
+	mes "Please be patient.";
+	mes "It's been a while since I cook the best meal.";
+	next;
+	mes "[Magumagu]";
+	mes "It must be tiring to gather all these.";
+	mes "So, I'm going to use them to cook you a great meal today.";
+	mes "Please be patient.";
+	next;
+	delitem 950,20;
+	getitem 551,20;
+	mes "[Magumagu]";
+	mes "Now taste this.";
+	mes "Everything is made of frest ingredients.";
+	next;
+	delitem 950,20;
+	getitem 544,20;
+	mes "[Magumagu]";
+	mes "Don't just eat that. Try this one.";
+	mes "My shop serves the best Sasimi in the world!";
+	next;
+	delitem 950,20;
+	getitem 551,20;
+	mes "[Magumagu]";
+	mes "Make yourself at home. Have some more.";
+	mes "How's the taste? It's good, isn't it?";
+	next;
+	delitem 950,20;
+	getitem 544,20;
+	mes "[Magumagu]";
+	mes "Haha, there's still more left.";
+	mes "It's ok, have some more.";
+	next;
+	delitem 950,20;
+	getitem 544,10;
+	getitem 551,10;
+	mes "[Magumagu]";
+	mes "You can take what's left here home.";
+	mes "It seems you can't eat anymore.";
+	mes "Take this home and share with your friends and family.";
+	next;
+	set Sushi2,Sushi2 + 1;
+	set Sushi,0;
+	mes "[Magumagu]";
+	mes "Haha. I'm so grateful to you today.";
+	mes "Remember to visit me again when you're free.";
+	mes "Sayonora!";
+	close;
+
+L_Case2:
+	mes "[Magumagu]";
+	mes "..............................";
+	next;
+	mes "[Magumagu]";
+	mes "You're really a good person.";
+	mes "You've always been helpful";
+	mes "and fulfilled all my requests.";
+	next;
+	mes "[Magumagu]";
+	mes "It isn't the first time for me";
+	mes "to deal with a foreigner like you.";
+	mes "There're a lot of people here";
+	mes "who come from foreign land.";
+	mes "I just want to proof one thing.";
+	next;
+	mes "[Magumagu]";
+	mes "Although it is just a simple job.";
+	mes "It shows whether you put effort in your job...";
+	mes "whether you're dedicated to it";
+	mes "and whether you'll quit in between";
+	mes "or go on and complete it...";
+	next;
+	mes "[Magumagu]";
+	mes "If you're dedicated, and do not give up.";
+	mes "I feel relieved";
+	mes "to pass everything I've learned as a chef";
+	mes "to him.";
+	next;
+	mes "[Magumagu]";
+	mes "And.....";
+	mes "One more thing...";
+	mes "You're the one.";
+	next;
+	mes "[Magumagu]";
+	mes "I'm already an old man.";
+	mes "With the age of mine,";
+	mes "I'm not sure how long will I be able to work as a chef...";
+	mes "So it is necessary for me";
+	mes "to find someone to inherit my skills.";
+	next;
+	delitem 950,100;
+	getitem 1144,1;
+	set Sushi,0;
+	mes "[Magumagu]";
+	mes "Here, take it.";
+	mes "From now on,";
+	mes "Use it well";
+	mes "and learn the skills";
+	mes "to make good sasimi.";
+	next;
+	set Sushi2,4;
+	mes "[Magumagu]";
+	mes "There won't be any request to gather item for you.";
+	mes "There won't be any free Sasimi for you either...";
+	mes "Use this knife well and practice frequently.";
+	mes "Then let the people of your land realize";
+	mes "the joy of making a dish...";
+	close;
+
+L_NoItem6:
+	mes "[Magumagu]";
+	mes "Oh my.";
+	mes "So you still haven't gathered the items that I asked for?";
+	mes "Remember to bring them to me, ok?";
+	next;
+	mes "[Magumagu]";
+	mes "100 ^0000FF Hearts of Mermaid^000000 Do you get it?";
+	mes "I will be expecting you.";
+	mes "Now hurry. Gather these items for me.";
+	close;
 }
 
 //============================================================
