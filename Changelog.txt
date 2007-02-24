@@ -10,6 +10,9 @@
 
 Date	Added
 
+02/23/2007
+	* Added: Payon Fortune Teller NPCs (custom coordinates in Payon Inn floor 2) [GreenGoblin]
+
 02/22/2007
 	* Changed: Valentine's Day Event NPC to a fresh translated Aegis conversion [GreenGoblin]
 	- old version wasn't all english
