@@ -385,256 +385,295 @@ ID	Description				Aegis Enumeration
 
 // No more Aegis enumerations after this point..
 
-378.	Soul Drain
-379.	Soul Drain (2nd Part)
-380.	Magic Crasher
-381.	Like 1000 Blade trepassing
-382.	Nothing
-383.	Healt Conversion
-384.	Soul Change
-385.	Soul Change (2nd Part)
-386.	True Sight
-387.	Falcon Asccolut
-388.	Only a Sound
+378.	Spirit Absorb
+379.	Character turns Dark Blue
+380.	Stave Crasher
+381.	Spark-Type Aura
+382.	(Unused)
+383.	Indulge
+384.	Soul Exchange
+385.	Soul Exchange Target Effect
+386.	Falcon Eyes
+387.	Hit by Falcon Assult
+388.	Focus Arrow Strike
 389.	Wind Walk
-390.	Melt Down
+390.	Shattering Strike
 391.	Cart Boost
 392.	Reject Sword
-393.	Vulcan Arrow
-394.	The Real Moonlight
-395.	Soul Change (The same of 384)
+393.	Arrow Vulcan
+394.	Sheltering Bliss
+395.	Soul Exchange Caster Effect
 396.	Marionette Control
-397.	Nothing
-398.	Nothing
-399.	Head Crush
+397.	Part of 99 Aura
+398.	Part of 99 Aura
+399.	Traumatic Blow
 400.	Joint Beat
-401.	Napalm Vulcan Sound
-402.	Dangerous Soul Collect
+401.	Joint Beat Effect
+402.	Wind Walk Party Effect
 403.	Mind Breaker
-404.	Spider Web
-405.	Wall Of Fog
+404.	Fiber Lock
+405.	(Unused)
 406.	Soul Burn
-407.	Need More Test Skill
-408.	Orange Bubble Grows Around
-409.	Meteor Assoult
+407.	Soul Change
+408.	Cast Sheltering Bliss
+409.	Meteor Assault
 410.	Rainbow
-411.	High Jump
-412.	Like Throw Spirit Sphere
-413.	Axe Kick
-414.	Round Kick
-415.	Counter Kick
-416.	Whirlwind Kick (Probably)
-417.	Flash
-418.	Warmth Lightning
-419.	Kaite (Sprite Effect)
-420.	Eswoo (Sprite Effect)
-421.	Istant Eswoo (Sprite Effect)
-422.	Eswoo Back (Sprite Effect)
-423.	Eswoo Istant Back (Sprite Effect)
-424.	Spirit Link (Sprite Effect)
-425.	Nothing
-426.	Running Hit Effect
-427.	Nothing
-428.	Nothing
-429.	Taekwon Normal Kick
-430.	The Same of 429
-431.	The Same of 429 and 430
-432.	Star Gladiator Map Recognize
-433.	Something like 432
-434.	Like 429, 430 and 431
-435.	Whirlwind Kick
-436.	Like Kirye Shield but totally White (Old Sprite for Warmth Barrier)
-437.	White Flash Light (Like a Comet)
-438.	Kaite Barrier
-439.	Flying Side Kick
-440.	Probably Taekwon Angel (Its Like Assumptio.. but LIKE, not the same)
-441.	Comfort Skills Cast
-442.	Running Foots
-443.	Nothing
-444.	Running Stop
-445.	High Jump (Jump Only)
-446.	High Jump (Return Down Only)
-447.	Running Left Foot
-448.	Running Right Foot
-449.	KA-Spell (1st Part)
-450.	Darkcross (@doom Command)
-451.	Dark Strike
-452.	Something Like Jupitel Thunder
-453.	Paralized
-454.	Like Blind
-455.	Another Warmth Lightning
-456.	Power Up
-457.	Flying Side Kick (2nd Part)
-458.	Another Running Hit Effect
-459.	Warm Wind (Earth Element)
-460.	Warm Wind (Wind Element)
-461.	Warm Wind (General Element)
-462.	Kaupe Dodge Effect
-463.	The Same of 462
-464.	Warm Wind (Holy Element)
-465.	Warm Wind (Posion Element)
-466.	Another Round Kick
-467.	Warm Wind #1
-468.	Warm Wind #2
-469.	Warm Wind #3
-470.	Warm Wind #4
-471.	Warm Wind #5
-472.	Warm Wind #6
-473.	Warm Wind #7
-474.	Nothing
-475-484	Demon of The Sun Moon And Stars
-485.	Lightning like Mental Strenght but White
-486.	Like Mental Strenght but White
-487.	Demon of The Sun Moon And Stars Ground Effect
-488.	Comfort Skills
-489.	Nothing
-490.	Nothing
-491.	Element Potions
-492.	Cooking Foods
+411.	Leap
+412.	Shooting Particle Like Throw Spirits
+413.	Hit by Heel Drop Kick
+414.	Hit by Roundhouse Kick
+415.	Hit by Counter Kick
+416.	(Unused)
+417.	Character Flash
+418.	Power Up
+419.	Kaupe
+420.	Eswoo Shrinking Effect
+421.	Eswoo Effect
+422.	Eswoo Wearing Off
+423.	Giant Size
+424.	Soul Link Effet
+425.	Hit by Esma
+426.	Hit wall with running
+427.	(Unused)
+428.	(Unused)
+429.	Taekwon Hit Effect 1
+430.	Taekwon Hit Effect 2
+431.	Taekwon Hit Effect 3
+432.	Mark Map for TKM Designation
+433.	Mark Target for TKM Designation
+434.	Taekwon Hit Effect 4
+435.	Tornado Kick Effect
+436.	Shield Effect (Unused)
+437.	Shield Effect (Unused)
+438.	Kaite Effect
+439.	Flying Kick Effect
+440.	Aspersio
+441.	Soul Cast Aura
+442.	(Unused)
+443.	(Unused)
+444.	Stop Running
+445.	Leap Jump Up
+446.	Leap Come Down
+447.	(Unused)
+448.	(Unused)
+449.	Blue Pulse (Soullinker Effect)
+450.	Grand Darkness (Dark Grand Cross)
+451.	Darkness Strike (Dark Soul Strike)
+452.	Dark Thunder (Dark Jupitel Thunder)
+453.	Hold Web
+454.	Dark Cast Aura
+455.	Power Up
+456.	Agility Up
+457.	Esma Character Stance
+458.	Sprint Hit Wall
+459.	Brown Tornado Effect (Same as Tornado Kick, but unused)
+460.	Green Tornado Effect (Same as Tornado Kick, but unused)
+461.	Green Tornado Effect (Same as Tornado Kick, but unused)
+462.	Ninja Ciceda Skin Shed
+463.	Ninja Shadow Leap
+464.	White Tornado Effect (Same as Tornado Kick, but unused)
+465.	Pink Tornado Effect (Same as Tornado Kick, but unused)
+466.	Roundhouse Kick Hit Effect
+467.	Warm/Mild Wind (earth)
+468.	Warm/Mild Wind (wind)
+469.	Warm/Mild Wind (water)
+470.	Warm/Mild Wind (fire)
+471.	Warm/Mild Wind (undead)
+472.	Warm/Mild Wind (shadow)
+473.	Warm/Mild Wind (holy)
+474.	(Unused)
+475.	Demon of The Sun Moon And Stars (Level 1) (Progressively dimmer vision)
+476.	Demon of The Sun Moon And Stars (Level 2)
+477.	Demon of The Sun Moon And Stars (Level 3)
+478.	Demon of The Sun Moon And Stars (Level 4)
+479.	Demon of The Sun Moon And Stars (Level 5)
+480.	Demon of The Sun Moon And Stars (Level 6)
+481.	Demon of The Sun Moon And Stars (Level 7)
+482.	Demon of The Sun Moon And Stars (Level 8)
+483.	Demon of The Sun Moon And Stars (Level 9)
+484.	Demon of The Sun Moon And Stars (Level 10)
+485.	Green Power Up Effect
+486.	Blue Power Up Effect
+487.	Solar, Lunar and Stellar Shadow Effect Start
+488.	Taekwon Master Protection
+489.	(Unused)
+490.	(Unused)
+491.	Mochi Healing Effect
+492.	Item Effect
 493.	Enchant Deadly Poison
-494.	Throwing Tomahawk
-495.	Full Strip Sound
-496.	Preserve
-497.	Twilight Alchemy 1
-498.	Twilight Alchemy 2
-499.	Twilight Alchemy 3
-500.	Need More Test Skill
-501.	WTF?
-502.	Need More Test Skill
-503.	Soul Link Word
-504.	Nothing
-505.	Need More Test Skill
-506.	Nothing
+494.	Tomahawk Throw
+495.	Full Divest
+496.	Unknown
+497.	Aid Slim Red Potion
+498.	Aid Slim Yellow Potion
+499.	Aid Slim White Potion
+500.	Unknown
+501.	Character Spinning Cast Effect
+502.	Character Spinning Cast Effect (Yellow)
+503.	Soul Link Letters
+504.	(Unused)
+505.	Yellow Flash (Not sure what skill this is for)
+506.	(Unused)
 507.	Authoritative Badge
 508.	Fire Cracker
-509.	Valentine Day Hearth (Wings)
-510.	WOOH! Another Ashura Strike Word (Its the opposite of the original 328!!)
-511.	Nothing
-512.	Chain Crush COmbo
-513.	O_O Like Area Cast Target
-514.	O_O I Really don't know this
-515.	Einbroch Fog
-516.	Airship Cloud
-517.	Nothing
+509.	White Chocolate Heart Effect
+510.	Champion Version of Ashura Effect
+511.	(Unused)
+512.	Champion Combo Finisher
+513.	Strange Blue Cast Aura (Unused)
+514.	Odd energy gathering effect (Unused)
+515.	Einbroch Haze Effect
+516.	(Unused)
+517.	(Unused)
 518.	Cart Termination
-519.	Speed Down Potion
-520.	Shield Bumerang
-521.	O_O I Really don't know this
+519.	Speed Potion
+520.	Shield Chain
+521.	Double Casting
 522.	Gravitation Field
-523.	Tarot of Fate
-524.	Tarot of Fate
-525.	Tarot of Fate
-526.	Tarot of Fate
-527.	Tarot of Fate
-528.	Tarot of Fate
-529.	Tarot of Fate
-530.	Tarot of Fate
-531.	Tarot of Fate
-532.	Tarot of Fate
-533.	Tarot of Fate
-534.	Tarot of Fate
-535.	Tarot of Fate
-536.	Tarot of Fate
-537.	O_O I Really don't know this
-538.	O_O I Really don't know this
-539.	Throw Random Bottle
-540.	Instant Small->Normal
-541.	Nothing
-542.	KA-Spell (1st Part)
-543.	Kahii
-544.	Warmth Red Sprite
-545.	Sound and... PUFF Crash Client :P
-546.	Another HP/SP Regeneration
-547.	Estin
-548.	Istant Red Sprite
-549.	Istant Blue Sprite
-550.	Another Effect like Running Hit
-551.	O_O Effect Like Estun but with Circle
-552.	Nothing
-553.	Esma
-554.	Nothing
-555.	Estun
-556.	Nothing
-557.	Juperos Light Wall Slow (Horizonatal)
-558.	Juperos Light Wall Slow (Vertical)
-559.	Juperos Light Wall Fast (Horizonatal)
-560.	Juperos Light Wall Fast (Vertical)
-561-562	Juperos Warp
-563.	Earthquake Effect (Juperos Elevator)
+523.	Tarot Card of Fate (The Fool)
+524.	Tarot Card of Fate (The Magician)
+525.	Tarot Card of Fate (The High Priestess)
+526.	Tarot Card of Fate (The Chariot)
+527.	Tarot Card of Fate (Strength)
+528.	Tarot Card of Fate (The Lovers)
+529.	Tarot Card of Fate (The Wheel of Fortune)
+530.	Tarot Card of Fate (The Hanged Man)
+531.	Tarot Card of Fate (Death)
+532.	Tarot Card of Fate (Temperance)
+533.	Tarot Card of Fate (The Devil)
+534.	Tarot Card of Fate (The Tower)
+535.	Tarot Card of Fate (The Star)
+536.	Tarot Card of Fate (The Sun)
+537.	Unknown
+538.	Green Glow Temporary Flash Effect (Not sure what this skill is)
+539.	Acid Demonstration Cast Animation
+540.	Failed Eswoo
+541.	(Unused)
+542.	Use TKM designation on an already assigned map/target
+543.	TKM Blessings
+544.	TKM Heat Skills
+545.	(Broken Effect, crashes client)
+546.	Recovery-like effect
+547.	Esma Bolt
+548.	Red Character Flash
+549.	Blue Character Flash
+550.	Character Bump Effect
+551.	soul linker type bolt effect (Unused)
+552.	soul linker type effect (Unknown what skill this is for)
+553.	Esma Bolts
+554.	Blue puff of smoke (unknown what skill this is for)
+555.	Estin Bolt Effect
+556.	(Unused)
+557.	Juperos Energy Waterfall (Horizontal)
+558.	Juperos Energy Waterfall (Vertical)
+559.	Juperos Energy Waterfall Fast (Horizontal)
+560.	Juperos Energy Waterfall Fast (Vertical)
+561.	Juperos Quest Portal Effect
+562.	Juperos Quest Portal Effect
+563.	Juperos Quest Elevator Shake Effect
 564.	Wedding Cast
-565-567	Slash 1-2-3
-568.	Another Job Level Up
-569.	Homunculus Skill
-570.	Homunculus Skill
-571.	Homunculus Skill
-572.	Warmth Soul
+565.	Filir Moonlight Lvl 1
+566.	Filir Moonlight Lvl 2
+567.	Filir Moonlight Lvl 3
+568.	Homunculus Level Up
+569.	Amistr Bulwark
+570.	Amistr Castling
+571.	Amistr Bloodlust
+572.	Pink Recovery Effect
 573.	Twilight Alchemy 1
 574.	Twilight Alchemy 2
 575.	Twilight Alchemy 3
-576-581	Box Effect
-582.	Another Super Novice/Taekwon Angel
-583.	Warmth Hit
+576.	Box Effect (Thunder)
+577.	Box Effect (Cloud)
+578.	Box Effect (Curse)
+579.	Box Effect (Sleep)
+580.	Box Effect (Rain)
+581.	Box Effect (Sunlight)
+582.	Taekwon Class Level Up
+583.	TKM Heat Damage Effect
 584.	Full Buster
-585.	A Gunslinger Skill
-586.	Somatology Lab Mobs Aura
-587.	WTF?
-588.	WTF?
-589.	Eswoo
-590.	Running Stop
-591.	Nothing
-592.	Nothing
-593-598	Food Items Effect
-599.	O_O I Really don't know this
-600.	Something Happen Near Shadow Sprite
+585.	Giant Explosion Effect
+586.	Biolabs Monster Ghost Effect
+587.	Elder Death Effect
+588.	Small Explosion
+589.	TKM Heat Damage Effect
+590.	Angel of Sun Moon and Stars ground effect
+591.	(Unused)
+592.	(Unused)
+593.	Food Effect (STR)
+594.	Food Effect (INT)
+595.	Food Effect (VIT)
+596.	Food Effect (AGI)
+597.	Food Effect (DEX)
+598.	Food Effect (LUK)
+599.	Casting Effect with shimmer (Not sure what skill this is for)
+600.	Throw Venom Knife
 601.	Sight Blaster
-602.	Something About 2nd Class New Skills
-603.	Something About 2nd Class New Skills
+602.	Red hit and shake effect (Not sure what skill this is for)
+603.	Fire element hit
 604.	Close Confine
-605.	Nothing
-606.	Nothing
-607.	Nothing
+605.	Close Confine Ends
+606.	(Unused)
+607.	(Unused)
 608.	Cooking Success
-609.	Cooking Failed
-610.	Success
-611.	Failed
-612.	O_O I Really don't know this
-613.	Something Happen Near Shadow Sprite
-614.	Something Happen Near Shadow Sprite
-615.	Something Happen Near Shadow Sprite
-616.	Something Happen Near Shadow Sprite
-617.	Player Become Black
-618.	Crimson Fire Bolossom
-619.	Lightning Spear Of Ice
-620.	Water Escape Tecnique
-621.	Wind Blade
-622.	Lightning Crash
-623.	A Gunslinger Skill
-624.	North Wind
-625.	Illusionary Shadow
-626.	Red Pulse Flash
-627.	A Gunslinger Skill
-628.	A Gunslinger Skill
-629.	Nothing
-630.	Shadow Slash
-631.	A Gunslinger Skill
-632.	Mist Slash
-633.	Final Strike
-634.	Crimson Fire Formation
-635.	Dragon Fire Formation
-636.	Falling Ice Pillar
+609.	Cooking Failure
+610.	Success words appear
+611.	Failure words appear
+612.	Korean text effect
+613.	(Unused)
+614.	(Unused)
+615.	(Unused)
+616.	(Unused)
+617.	Ninja Mirror Image
+618.	Ninja Burning Pedals
+619.	Ninja Ice Spear
+620.	Ninja Watery Escape
+621.	Ninja Wind Blade
+622.	Ninja Lightning Jolt
+623.	Attack Lines? (Not sure what skill this is for)
+624.	Ninja North Wind
+625.	Ninja Lightning Jolt Flicker Effect
+626.	Red Flicker Effect
+627.	Gunslinger Shot? Sound Effect Only
+628.	Gunslinger Spread Shot
+629.	(Unused)
+630.	Ninja Shadow Slash
+631.	Ninja Flip Tatami
+632.	Ninja Mist Slasher
+633.	Ninja Killing Strike
+634.	Ninja Burning Shield Ground Effect
+635.	Ninja Dragon Fire
+636.	Ninja Snowflake Draft
 637.	Desperado
-638-642	Ground Drift Granade
-643.	A Gunslinger Skill
-644.	A Gunslinger Skill
-645.	A Gunslinger Skill
-646.	A Gunslinger Skill
-647.	A Gunslinger Skill
-648.	A Gunslinger Skill
-649.	A Gunslinger Skill
-650.	Ice Cave Level 4 Circle
-651.	Ice Cave Level 4 Big Circle
-652.	New Number Red with Punch Sound
-653.	New Number Purple
-654.	Player become Green Slooooowli
-655.	Green Flash
-656+	More effects past this point
+638.	Ground Drift Grenade
+639.	Ground Drift Grenade
+640.	Ground Drift Grenade
+641.	Ground Drift Grenade
+642.	Ground Drift Grenade
+643.	Rapid Shower
+644.	Magic Bullet
+645.	Spread Attack
+646.	Tracking (shown while casting)
+647.	Tracking
+648.	Triple Action
+649.	Bull's Eye
+650.	Ice Dungeon Aura
+651.	Ice Dungeon Aura (Large)
+652.	Red Number Effect (With Hit Sound)
+653.	Red Number Effect
+654.	Pink Number Effect
+655.	Change Undead effect start
+656.	Change Undead effect end
+657.	(Unused)
+658.	(Unused)
+659.	(Unused)
+660.	(Unused)
+661.	(Unused)
+662.	(Unused)
+663.	(Unused)
+664.	(Unused)
+665.	Water Drop Effect
+666.	Earthquake (New Monster Skill)
+667.	(Unused)
+668.	Echo/Scream (New Monster Skill)
+669.	Giant Slash (New Monster Skill)
