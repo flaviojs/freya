@@ -3248,8 +3248,8 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		if (skilllv == 2 || skilllv == 3) ninjacalc = 2;
 		if (skilllv >= 4) ninjacalc = 3;
 		map_foreachinarea(skill_attack_area, src->m, src->x-ninjacalc, bl->y-ninjacalc, bl->x+ninjacalc, bl->y+ninjacalc, 0, BF_WEAPON, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
-//		skill_blown(src,bl,skill_get_blewcount(skillid,skilllv));
 		status_change_start(bl, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
+		clif_specialeffect(bl, 631, AREA);
 		break;
 
 	case NJ_HYOUSYOURAKU:
