@@ -67,7 +67,7 @@ int fake_mob_list[] = { // set here mobs that do not sound when they don't move
 };
 #endif
 
-#define MAX_PACKET_DB   0x260
+#define MAX_PACKET_DB   0x300
 #define MAX_PACKET_VERSION 14
 #undef PACKETVER
 #define PACKETVER           6 //default protocol version
@@ -12993,7 +12993,6 @@ static int clif_parse(int fd) {
 
 			cmd = RFIFOW(fd,0);
 
-			// �Q�[���p�ȊO�p�P�b�g���A�F�؂�I����O��0072�ȊO��������A�ؒf����
 			if (cmd < 0 || cmd >= MAX_PACKET_DB || (packet_len = packet_size_table[packet_ver][cmd]) == 0) {
 				session[fd]->eof = 1;
 				printf("clif_parse: session #%d, packet 0x%x (%d bytes received) -> disconnected.\n", fd, cmd, RFIFOREST(fd));
