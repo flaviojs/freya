@@ -67,7 +67,7 @@ int fake_mob_list[] = { // set here mobs that do not sound when they don't move
 };
 #endif
 
-#define MAX_PACKET_DB   0x300
+#define MAX_PACKET_DB   0x325
 #define MAX_PACKET_VERSION 14
 #undef PACKETVER
 #define PACKETVER           6 //default protocol version
