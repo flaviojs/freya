@@ -11,6 +11,8 @@
 Date	Added
 
 02/24/2007
+	* Added: Partially converted Juperos quest from Aegis to the /npc/dev/ folder [Tsuyuki]
+	* Added: /npc/dev/ scripting progress folder [Tsuyuki]
 	* Updated: Extended max packet id global var to 0x0325 [Tsuyuki]
 	* Fixed: NJ_RAIGEKISAI and NJ_HYOUSYOURAKU's skill effects not displaying [Tsuyuki]
 	* Updated: Effect list [Tsuyuki]
