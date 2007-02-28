@@ -10,6 +10,9 @@
 
 Date	Added
 
+02/28/2007
+	* Fixed: Tamruan's Bastard Sword drop (Typo) [Tsuyuki]
+
 02/24/2007
 	* Added: magum_npc.txt partially converted from Aegis into /npc/dev/ [Tsuyuki]
 	* Added: Partially converted Juperos quest from Aegis to the /npc/dev/ folder [Tsuyuki]
