@@ -150,164 +150,149 @@ GetPureJob	120	1
 Karma		4	1
 Manner		5	1
 
-//--ITEM BONUSES--
-//Usage:
-//In the bonus section at the end of items, just add them like this:
-//
-//bonus *name*,*value*;
-//You can stack multiple bonuses after one another, just make sure they all have the final semicolon.
-//
-//Note:
-//Some have more than one value. See the description of each.
-//These multi-value bonuses use "bonus2" instead of "bonus".
-//
-//Bonuses that don't have a value, like bUnbreakable, just have a 0 as value.
-//
-// Elements: 0 Nothing, 1 Water, 2 Earth ,3 Fire, 4 Wind, 5 Poison, 6 Saint, 7 Darkness, 8 Sense, 9 Immortality/Holy
-
-bMaxHP		6// Adds to the maximum HP.
-bMaxSP		8// Same as above but with SP.
-bStr		13//-
-bAgi		14//|
-bVit		15//| Add to a certain stat.
-bInt		16//|
-bDex		17//|
-bLuk		18//-
-bAtk		41// Add atk.
+bMaxHP		6
+bMaxSP		8
+bStr		13
+bAgi		14
+bVit		15
+bInt		16
+bDex		17
+bLuk		18
+bAtk		41
 bAtk2		42
-bMatk1		43// Add Magic Atk.
+bMatk1		43
 bMatk2		44
-bDef		45// Add defense.
-bMdef		47// Add Magic defense.
+bDef		45
+bMdef		47
 bMdef2		48
-bHit		49// Adds hit rate.
-bFlee		50// Adds to the flee rate.
+bHit		49
+bFlee		50
 bFlee2		51
-bCritical	52// Add to the critical rate.
-bAspd		53// Adds to the attack speed.
-bFame		59// Unkown, never used.
-bUnbreakable	60// Makes it unbreakable.
+bCritical	52
+bAspd		53
+bFame		59
+bUnbreakable	60
 
-bAtkRange	1000// Adds to the attack rate.
-bAtkEle		1001// Sets the element for the attack. (See elements above).
-bDefEle		1002// Sets the element for the defense.
-bCastrate	1003// Subtracts from the cast time by a percentage.
-bMaxHPrate	1004// Adds to the maximum hp by a percentage.
-bMaxSPrate	1005// Adds to the maximum sp by a percentage.
-bUseSPrate	1006// Increases the sp usage of all skills.
-bAddEle		1007// Adds a certain elemental damage to the attack. Usage: bonus2 bAddEle,element,percentage.
-bAddRace	1008// Adds damage to a certain race. Usage: bonus2 bAddRace,race,percentage.
-bAddSize	1009// Adds damage to a certain monster size. Usage: bonus2 bAddSize,size,percentage (size is 0-3)
-bSubEle		1010// Increases resistance of a certain type. Usage: bonus2 bSubEle,element,percentage. The resistance element is the opposite to the element that gets blocked.
-bSubRace	1011// Same as above but with certain races.
-bAddEff		1012// Add an effect to the enemy when attacking. Usage: bonus2 bAddEff,effect,chance in hundredths of percents.
-bResEff		1013// Same as above but with resistance.
-bBaseAtk	1014// Adds to the base attack.
-bAspdRate	1015// Adds to the attack speed in percents.
-bHPrecovRate	1016// Increases the HP recovery amount by a percentage.
-bSPrecovRate	1017// Increases the SP recovery amount by a percentage.
-bSpeedRate	1018// Increases your speed by a percentage.
-bCriticalDef	1019// Increases restistance to criticals.
-bNearAtkDef	1020// Increases melee defense.
-bLongAtkDef	1021// Increases ranged defense.
-bDoubleRate	1022// Adds a percent chance to double attack. If the current rate is higher than the added rate, it's ignored.
-bDoubleAddRate	1023// Adds to the current double attack rate.
-bMatk		1024// Adds to the magic attack.
-bMatkRate	1025// Adds to the magic attack in a percentage.
-bIgnoreDefEle	1026// Ignores the defence of a certain element monster.
-bIgnoreDefRace	1027// Ignores the defence os a certain sized monsters.
-bAtkRate	1028// Adds to the Attack in percentage.
-bSpeedAddRate	1029// Adds to the current speed in percentage.
-bAspdAddRate	1030// Adds to the current aspd in percentage.
-bMagicAtkDef	1031// Adds to the defense to magical attacks.
-bMiscAtkDef	1032// Increases the Misc ATK Defense.
-bIgnoreMdefEle	1033// Ignores the Magic defense of a certain element.
-bIgnoreMdefRace	1034// Ignores the Magic defense of a certain race.
-bMagicAddEle	1035// Adds Magic to a certain element.
-bMagicAddRace	1036// Adds Magic to a certain race.
-bMagicSubRace	1037// Adds Magic Resistance from a certain race.
-bPerfectHitRate	1038// Increases Perfect hit by a percentage.
-bPerfectHitAddRate	1039// Adds to the perfect hit rate by a percentage.
-bCriticalRate	1040// Increases the Critical hit rate by a percentage.
-bGetZenyNum	1041// Get zeny by chance when attacking. Usage: bonus2 bGetZenyNum,amount,percentage;
-bAddGetZenyNum	1042// Adds to the percentage of getting zeny, same usage as above.
-bAddDamageClass	1043// Adds damage to a certain class.
-bAddMagicDamageClass	1044// Adds magic damage to a certain class
-bAddDefClass	1045// Add defense from a certain class
-bAddMdefClass	1046// Adds magic defense from a certain class.
-bAddMonsterDropItem	1047// Adds a chance of gaining an item when a monster is killed.
-bDefRatioAtkEle	1048// 
-bDefRatioAtkRace	1049//
-bAddSpeed	1050// Add to your speed.
-bHitRate	1051// Add to the hit rate in percentage.
-bFleeRate	1052// Add to the flee rate in percentage.
-bFlee2Rate	1053// No idea.
-bDefRate	1054// Adds to the defense in percentage.
-bDef2Rate	1055// No idea.
-bMdefRate	1056// Adds to the magic defense in percentage.
-bMdef2Rate	1057// No idea.
-bSplashRange	1058// Adds splash attack.
-bSplashAddRange	1059// Increases the current splash attack.
-bAutoSpell	1060// Autocast a spell.
-bHPDrainRate	1061// Drain your hp by a percentage.
-bSPDrainRate	1062// Drain your SP by a percentage.
-bShortWeaponDamageReturn	1063// REturns a certain percentage of melee attack's damage.
-bLongWeaponDamageReturn	1064// Same as above with ranged.
-bWeaponComaEle	1065// Adds a percentage to cast coma on a certain element.
-bWeaponComaRace	1066// Same as above with race.
-bAddEff2	1067// Add an additional effect.
-bBreakWeaponRate	1068// Add a chance to break the weapon.
-bBreakArmorRate	1069// Same with armor.
-bAddStealRate	1070// Add a steal rate in %.
-bMagicDamageReturn	1071// REturn a percentage of magical damage.
-bRandomAttackIncrease	1072// Unkown, never used.
-bAllStats		1073// Increases all stats.
-bAgiVit			1074// Increases Agi and Vit.
-bAgiDexStr		1075// Increases AGi, Dex and Str.
-bPerfectHide		1076// Adds to Perfect Hide.
-bDisguise		1077// Disguises yourself.
-bClassChange	1078// Changes your class.
-bHPDrainValue	1079// Drains an amount of hp.
-bSPDrainValue	1080// Drains an amount of sp.
-bWeaponAtk	1081// Adds to the weapon's attack.
-bWeaponAtkRate	1082// Adds to the weapon's attack in percentage.
-bDelayrate	1083// Adds to the Delay in percentage.
+bAtkRange	1000
+bAtkEle		1001
+bDefEle		1002
+bCastrate	1003
+bMaxHPrate	1004
+bMaxSPrate	1005
+bUseSPrate	1006
+bAddEle		1007
+bAddRace	1008
+bAddSize	1009
+bSubEle		1010
+bSubRace	1011
+bAddEff		1012
+bResEff		1013
+bBaseAtk	1014
+bAspdRate	1015
+bHPrecovRate	1016
+bSPrecovRate	1017
+bSpeedRate	1018
+bCriticalDef	1019
+bNearAtkDef	1020
+bLongAtkDef	1021
+bDoubleRate	1022
+bDoubleAddRate	1023
+bMatk		1024
+bMatkRate	1025
+bIgnoreDefEle	1026
+bIgnoreDefRace	1027
+bAtkRate	1028
+bSpeedAddRate	1029
+bAspdAddRate	1030
+bMagicAtkDef	1031
+bMiscAtkDef	1032
+bIgnoreMdefEle	1033
+bIgnoreMdefRace	1034
+bMagicAddEle	1035
+bMagicAddRace	1036
+bMagicSubRace	1037
+bPerfectHitRate	1038
+bPerfectHitAddRate	1039
+bCriticalRate	1040
+bGetZenyNum	1041
+bAddGetZenyNum	1042
+bAddDamageClass	1043
+bAddMagicDamageClass	1044
+bAddDefClass	1045
+bAddMdefClass	1046
+bAddMonsterDropItem	1047
+bDefRatioAtkEle	1048
+bDefRatioAtkRace	1049
+bAddSpeed	1050
+bHitRate	1051
+bFleeRate	1052
+bFlee2Rate	1053
+bDefRate	1054
+bDef2Rate	1055
+bMdefRate	1056
+bMdef2Rate	1057
+bSplashRange	1058
+bSplashAddRange	1059
+bAutoSpell	1060
+bHPDrainRate	1061
+bSPDrainRate	1062
+bShortWeaponDamageReturn	1063
+bLongWeaponDamageReturn	1064
+bWeaponComaEle	1065
+bWeaponComaRace	1066
+bAddEff2	1067
+bBreakWeaponRate	1068
+bBreakArmorRate	1069
+bAddStealRate	1070
+bMagicDamageReturn	1071
+bRandomAttackIncrease	1072
+bAllStats		1073
+bAgiVit			1074
+bAgiDexStr		1075
+bPerfectHide		1076
+bDisguise		1077
+bClassChange	1078
+bHPDrainValue	1079
+bSPDrainValue	1080
+bWeaponAtk	1081
+bWeaponAtkRate	1082
+bDelayrate	1083
 
 // Missing 1084 (bHPDrainRateRace)
 // Missing 1085 (bSPDrainRateRace)
 
-bRestartFullRecover	2000// Makes you ahve full hp when respawning.
-bNoCastCancel	2001// Makes your cast uncancelable.
-bNoSizeFix	2002// No idea.
-bNoMagicDamage	2003// No idea.
-bNoWeaponDamage	2004// No idea.
-bNoGemStone	2005// Makes spells free (without catalysts).
-bNoCastCancel2	2006// No idea.
-bInfiniteEndure	2007// Makes you always have the Endure skill on.
-bUnbreakableWeapon	2008//-
-bUnbreakableArmor	2009//- Makes the equip unbreakable.
-bUnbreakableHelm	2010//-
-bUnbreakableShield	2011//-
-bLongAtkRate	2012// Increases ranged atk by a percentage.
-bCritAtkRate	2013// Increases your critical attacks by a percentage.
-bCriticalAddRace	2014// Same as above to a certain rate.
-bNoRegen	2015// Stops regeneration.
-bAddEffWhenHit	2016// Add an effect tot he enemy when hit.
-bAutoSpellWhenHit	2017// Cast a spell when it.
-bSkillAtk	2018// Increases skill's attack.
-bUnstripable	2019// Makes you unstrippable.
-bAddDamageByClass	2020// No idea.
-bSPGainValue	2021// Gain an sp value.
-bIgnoreDefMob	2022// Ignore monster's defence,
-bHPLossRate	2023// Add a HP loss percentage.
-bAddRace2	2024// No idea.
-bHPGainValue	2025// Gain a HP value.
-bSubSize	2026// No idea.
-bDamageWhenUnequip	2027// Damage yourself when unequipped.
-bAddItemHealRate	2028// Add a heal rate.
-bLoseSPWhenUnequip	2029// Lose sp when unequipped.
-bExpAddRace	2030// Increase xp gotten from a certain race.
-bSPGainRace	2031// Gain sp when attacking a certain race.
+bRestartFullRecover	2000
+bNoCastCancel	2001
+bNoSizeFix	2002
+bNoMagicDamage	2003
+bNoWeaponDamage	2004
+bNoGemStone	2005
+bNoCastCancel2	2006
+bInfiniteEndure	2007
+bUnbreakableWeapon	2008
+bUnbreakableArmor	2009
+bUnbreakableHelm	2010
+bUnbreakableShield	2011
+bLongAtkRate	2012
+bCritAtkRate	2013
+bCriticalAddRace	2014
+bNoRegen	2015
+bAddEffWhenHit	2016
+bAutoSpellWhenHit	2017
+bSkillAtk	2018
+bUnstripable	2019
+bAddDamageByClass	2020
+bSPGainValue	2021
+bIgnoreDefMob	2022
+bHPLossRate	2023
+bAddRace2	2024
+bHPGainValue	2025
+bSubSize	2026
+bDamageWhenUnequip	2027
+bAddItemHealRate	2028
+bLoseSPWhenUnequip	2029
+bExpAddRace	2030
+bSPGainRace	2031
 
 // Missing 2032 (bSPSubRace2)
 // Missing 2033 (AddEffWhenHitShort)
@@ -316,16 +301,16 @@ bSPGainRace	2031// Gain sp when attacking a certain race.
 // Missing 2036 (bUnstripableHelm)
 // Missing 2037 (bUnstripableShield)
 
-bIntravision	2038// No idea.
-bAddMonsterDropItemGroup	2039// No idea.
-bSPLossRate 2040// Add an SP loss rate.
+bIntravision	2038
+bAddMonsterDropItemGroup	2039
+bSPLossRate 2040
 
 // Missing 2041 (bAddSkillBlow)
 
-bSPVanishRate	2042// Add an sp vanish rate..
-bSPGainValueRace	2043//Gain a certain sp value when attacking a certain race.
-bNoKnockBack	2044// Makes you not knock-able by skills such as Jupiter Thunder.
-bAutoSpellWhenHitMagic	2045// Makes you automatically cast a spell when hit by magic.
+bSPVanishRate	2042
+bSPGainValueRace	2043
+bNoKnockBack	2044
+bAutoSpellWhenHitMagic	2045
 
 
 Eff_Stone	0

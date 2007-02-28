@@ -10,9 +10,6 @@
 
 Date	Added
 
-02/27/2007
-        * Added comments to the bonuses in db/const.txt
-
 02/24/2007
 	* Added: magum_npc.txt partially converted from Aegis into /npc/dev/ [Tsuyuki]
 	* Added: Partially converted Juperos quest from Aegis to the /npc/dev/ folder [Tsuyuki]
