@@ -11,9 +11,10 @@
 Date	Added
 
 02/28/07
+	* Updated: /script/ and main folders [Tsuyuki]
 	* Removed: Duel @command system [Tsuyuki]
 	* Updated: Packet database to 02-22-07 Sakexe client (Credits to Huge/Athena) [Tsuyuki]
-	* Updated: Source code to Athena 2277 [Tsuyuki]
+	* Updated: Source code to Athena 2277 (Latest) [Tsuyuki]
 
 02/11/07
 	* Moved: Random item databases to /db/random/, corrected in source as well [Tsuyuki]

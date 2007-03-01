@@ -100,12 +100,18 @@ rem set __AC_MAIL__=/D "AC_MAIL"
 rem ステータス異常データの保存を無効にする場合コメントアウトをはずす
 rem set __NO_SCDATA_SAVING__=/D "NO_SCDATA_SAVING"
 
+rem Windows でサービスとして使う場合はコメントアウトをはずす
+rem set __WIN_SERVICE__=/D "WIN_SERVICE"
+
 rem ---------------------------
 rem コンパイルオプション設定
 
 @rem CPU最適化スイッチ(By Nameless)
 @rem 以下の例を参考にスイッチ名を記入してください。
 set _model_=x32
+
+@rem 最適化なし
+if "%_model_%"=="NOOPTIMIZE" set __cpu__=/c /W3 /Od /Zi
 
 @rem CPUアーキテクチャ32BitCPU/64BitCPU
 if "%_model_%"=="x32" set __cpu__=/c /W3 /O2 %__OPT_OP__% /GA /TC /Zi
@@ -146,7 +152,7 @@ if "%_model_%"=="mode09" set __cpu__=/c /W3 /Ox /Gr /GA /TC /Zi
 
 rem ----------------------------------------------------------------
 rem 最終的なビルドオプションを生成
-set __opt1__=/I "../common/zlib/" /I "../common/" /D "PACKETVER=7" /D "NEW_006b" /D "FD_SETSIZE=4096"  /D "LOCALZLIB" /D "NDEBUG" /D "_CONSOLE" /D "WIN32" /D "_WIN32" /D "_WIN32_WINDOWS" /D "_CRT_SECURE_NO_DEPRECATE" %__TXT_MODE__% %__CMP_AFL2__% %__CMP_AFIP__% %__NO_HTTPD__% %__NO_HTTPD_CGI__% %__NO_CSVDB__% %__NO_CSVDB_SCRIPT__% %__EXCLASS__% %__DYNAMIC_STATUS_CHANGE__% %__AC_MAIL__% %__NO_SCDATA_SAVING__%
+set __opt1__=/I "../common/zlib/" /I "../common/" /D "PACKETVER=8" /D "NEW_006b" /D "FD_SETSIZE=4096"  /D "LOCALZLIB" /D "NDEBUG" /D "_CONSOLE" /D "WIN32" /D "_WIN32" /D "_WIN32_WINDOWS" /D "_CRT_SECURE_NO_DEPRECATE" %__TXT_MODE__% %__CMP_AFL2__% %__CMP_AFIP__% %__NO_HTTPD__% %__NO_HTTPD_CGI__% %__NO_CSVDB__% %__NO_CSVDB_SCRIPT__% %__EXCLASS__% %__DYNAMIC_STATUS_CHANGE__% %__AC_MAIL__% %__NO_SCDATA_SAVING__% %__WIN_SERVICE__%
 set __opt2__=/DEBUG %__FIXOPT2__% user32.lib ../common/zlib/*.obj ../common/*.obj *.obj
 
 rem ----------------------------------------------------------------
