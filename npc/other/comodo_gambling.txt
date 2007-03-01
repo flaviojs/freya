@@ -77,57 +77,57 @@ L_Play:
 
 L_Rareweapon:
 	set @gamble_2,rand (1,51);
-		if (@gamble_2 == 1) getitem,1128,1; // Haedonggum[2]
-		if (@gamble_2 == 2) getitem,1120,1; // Tsurugi[2]
-		if (@gamble_2 == 3) getitem,1127,1; // Saber[3]
-		if (@gamble_2 == 4) getitem,1158,1; // Two-Handed Sword[2]
-		if (@gamble_2 == 5) getitem,1155,1; // Bastard Sword[3]
-		if (@gamble_2 == 6) getitem,1220,1; // Gladius[3]
-		if (@gamble_2 == 7) getitem,1222,1; // Damascus[1]
-		if (@gamble_2 == 8) getitem,1253,1; // Katar[2]
-		if (@gamble_2 == 9) getitem,1529,1; // Iron Driver
-		if (@gamble_2 == 10) getitem,1251,1; // Jur[3]
-		if (@gamble_2 == 11) getitem,1361,1; // Two-Handed Axe[2]
-		if (@gamble_2 == 12) getitem,1258,1; // Katar of Raging Blaze
-		if (@gamble_2 == 13) getitem,1257,1; // Katar of Quaking
-		if (@gamble_2 == 14) getitem,1256,1; // Katar o fFrozen Icicle
-		if (@gamble_2 == 15) getitem,1259,1; // Katar of Piercing Wind
-		if (@gamble_2 == 16) getitem,1260,1; // Sharpened Legbone of Ghoul
-		if (@gamble_2 == 17) getitem,1716,1; // Gakkung Bow[2]
-		if (@gamble_2 == 18) getitem,1715,1; // Arbalest[2]
-		if (@gamble_2 == 19) getitem,1711,1; // Crossbow[3]
-		if (@gamble_2 == 20) getitem,1702,1; // Bow[4]
-		if (@gamble_2 == 21) getitem,1520,1; // Chain[3]
-		if (@gamble_2 == 22) getitem,1610,1; // Arc Wand[1]
-		if (@gamble_2 == 23) getitem,1615,1; // Evil Bone Wand
-		if (@gamble_2 == 24) getitem,1602,1; // Rod[4]
-		if (@gamble_2 == 25) getitem,1461,1; // Trident[3]
-		if (@gamble_2 == 26) getitem,1402,1; // Javelin[4]
-		if (@gamble_2 == 27) getitem,1953,1; // Line[3]
-		if (@gamble_2 == 28) getitem,1957,1; // Rante Whip[1]
-		if (@gamble_2 == 29) getitem,1552,1; // Tablet[1]
-		if (@gamble_2 == 30) getitem,1551,1; // Bible[2]
-		if (@gamble_2 == 31) getitem,1553,1; // Book of Billows
-		if (@gamble_2 == 32) getitem,1554,1; // Book of Mother Earth
-		if (@gamble_2 == 33) getitem,1555,1; // Book of the Blazing Sun
-		if (@gamble_2 == 34) getitem,1556,1; // Book of Gust of Wind
-		if (@gamble_2 == 35) getitem,1951,1; // Rope[4]
-		if (@gamble_2 == 36) getitem,1959,1; // Tail Whip[2]
-		if (@gamble_2 == 37) getitem,1961,1; // Whip[2]
-		if (@gamble_2 == 38) getitem,1955,1; // Wire Whip[3]
-		if (@gamble_2 == 39) getitem,1810,1; // Claw[2]
-		if (@gamble_2 == 40) getitem,1910,1; // Harp[2]
-		if (@gamble_2 == 41) getitem,1906,1; // Lute[3]
-		if (@gamble_2 == 42) getitem,1902,1; // Violin[4]
-		if (@gamble_2 == 43) getitem,1904,1; // Mandolin[3]
-		if (@gamble_2 == 44) getitem,1912,1; // Gumoongoh[2]
-		if (@gamble_2 == 45) getitem,1908,1; // Guitar[1]
-		if (@gamble_2 == 46) getitem,1808,1; // Fist[1]
-		if (@gamble_2 == 47) getitem,1802,1; // Waghnak[4]
-		if (@gamble_2 == 48) getitem,1812,1; // Finger[2]
-		if (@gamble_2 == 49) getitem,1806,1; // Studded Knuckles[3]
-		if (@gamble_2 == 50) getitem,1804,1; // Knuckle Duster[3]
-		if (@gamble_2 == 51) getitem,1550,1; // Book[3]
+		if (@gamble_2 == 1) getitem 1128,1; // Haedonggum[2]
+		if (@gamble_2 == 2) getitem 1120,1; // Tsurugi[2]
+		if (@gamble_2 == 3) getitem 1127,1; // Saber[3]
+		if (@gamble_2 == 4) getitem 1158,1; // Two-Handed Sword[2]
+		if (@gamble_2 == 5) getitem 1155,1; // Bastard Sword[3]
+		if (@gamble_2 == 6) getitem 1220,1; // Gladius[3]
+		if (@gamble_2 == 7) getitem 1222,1; // Damascus[1]
+		if (@gamble_2 == 8) getitem 1253,1; // Katar[2]
+		if (@gamble_2 == 9) getitem 1529,1; // Iron Driver
+		if (@gamble_2 == 10) getitem 1251,1; // Jur[3]
+		if (@gamble_2 == 11) getitem 1361,1; // Two-Handed Axe[2]
+		if (@gamble_2 == 12) getitem 1258,1; // Katar of Raging Blaze
+		if (@gamble_2 == 13) getitem 1257,1; // Katar of Quaking
+		if (@gamble_2 == 14) getitem 1256,1; // Katar o fFrozen Icicle
+		if (@gamble_2 == 15) getitem 1259,1; // Katar of Piercing Wind
+		if (@gamble_2 == 16) getitem 1260,1; // Sharpened Legbone of Ghoul
+		if (@gamble_2 == 17) getitem 1716,1; // Gakkung Bow[2]
+		if (@gamble_2 == 18) getitem 1715,1; // Arbalest[2]
+		if (@gamble_2 == 19) getitem 1711,1; // Crossbow[3]
+		if (@gamble_2 == 20) getitem 1702,1; // Bow[4]
+		if (@gamble_2 == 21) getitem 1520,1; // Chain[3]
+		if (@gamble_2 == 22) getitem 1610,1; // Arc Wand[1]
+		if (@gamble_2 == 23) getitem 1615,1; // Evil Bone Wand
+		if (@gamble_2 == 24) getitem 1602,1; // Rod[4]
+		if (@gamble_2 == 25) getitem 1461,1; // Trident[3]
+		if (@gamble_2 == 26) getitem 1402,1; // Javelin[4]
+		if (@gamble_2 == 27) getitem 1953,1; // Line[3]
+		if (@gamble_2 == 28) getitem 1957,1; // Rante Whip[1]
+		if (@gamble_2 == 29) getitem 1552,1; // Tablet[1]
+		if (@gamble_2 == 30) getitem 1551,1; // Bible[2]
+		if (@gamble_2 == 31) getitem 1553,1; // Book of Billows
+		if (@gamble_2 == 32) getitem 1554,1; // Book of Mother Earth
+		if (@gamble_2 == 33) getitem 1555,1; // Book of the Blazing Sun
+		if (@gamble_2 == 34) getitem 1556,1; // Book of Gust of Wind
+		if (@gamble_2 == 35) getitem 1951,1; // Rope[4]
+		if (@gamble_2 == 36) getitem 1959,1; // Tail Whip[2]
+		if (@gamble_2 == 37) getitem 1961,1; // Whip[2]
+		if (@gamble_2 == 38) getitem 1955,1; // Wire Whip[3]
+		if (@gamble_2 == 39) getitem 1810,1; // Claw[2]
+		if (@gamble_2 == 40) getitem 1910,1; // Harp[2]
+		if (@gamble_2 == 41) getitem 1906,1; // Lute[3]
+		if (@gamble_2 == 42) getitem 1902,1; // Violin[4]
+		if (@gamble_2 == 43) getitem 1904,1; // Mandolin[3]
+		if (@gamble_2 == 44) getitem 1912,1; // Gumoongoh[2]
+		if (@gamble_2 == 45) getitem 1908,1; // Guitar[1]
+		if (@gamble_2 == 46) getitem 1808,1; // Fist[1]
+		if (@gamble_2 == 47) getitem 1802,1; // Waghnak[4]
+		if (@gamble_2 == 48) getitem 1812,1; // Finger[2]
+		if (@gamble_2 == 49) getitem 1806,1; // Studded Knuckles[3]
+		if (@gamble_2 == 50) getitem 1804,1; // Knuckle Duster[3]
+		if (@gamble_2 == 51) getitem 1550,1; // Book[3]
 	goto L_End;
 
 L_Armor:
@@ -165,21 +165,21 @@ L_Armor:
 
 L_RareArmor:
 	set @gamble_2,rand (1,30);
-		if ((@gamble_2 > 0) && (@gamble_2 < 3)) getitem 2315; // Chain Mail[1]
-		if ((@gamble_2 > 2) && (@gamble_2 < 5)) getitem 2336; // Thief Clothes[1]
-		if ((@gamble_2 > 4) && (@gamble_2 < 7)) getitem 2318; // Lord's Clothes[1]
-		if ((@gamble_2 > 6) && (@gamble_2 < 9)) getitem 2326; // Saint's Robe[1]
-		if ((@gamble_2 > 8) && (@gamble_2 < 11)) getitem 2327; // Holy Robe
-		if ((@gamble_2 > 10) && (@gamble_2 < 13)) getitem 2317; // Full Plate[1]
-		if ((@gamble_2 > 12) && (@gamble_2 < 15)) getitem 2331; // Tights[1]
-		if ((@gamble_2 > 14) && (@gamble_2 < 17)) getitem 2342; // Legion Plate Armor[1]
-		if ((@gamble_2 > 16) && (@gamble_2 < 19)) getitem 2311; // Mink Coat[1]
-		if ((@gamble_2 > 18) && (@gamble_2 < 21)) getitem 2320; // Formal Suit[1]
-		if ((@gamble_2 > 20) && (@gamble_2 < 23)) getitem 2319; // Glittering Jacket[1]
-		if ((@gamble_2 > 22) && (@gamble_2 < 25)) getitem 2344; // Lucius's Fierce Armor of Volcano
-		if ((@gamble_2 > 24) && (@gamble_2 < 27)) getitem 2346; // Saphien's Armor of Ocean
-		if ((@gamble_2 > 26) && (@gamble_2 < 29)) getitem 2348; // Aebeccee's Raging Typhoon Armor
-		if ((@gamble_2 > 28) && (@gamble_2 < 31)) getitem 2350; // Claytos Cracking Earth Armor
+		if ((@gamble_2 > 0) && (@gamble_2 < 3)) getitem 2315,1; // Chain Mail[1]
+		if ((@gamble_2 > 2) && (@gamble_2 < 5)) getitem 2336,1; // Thief Clothes[1]
+		if ((@gamble_2 > 4) && (@gamble_2 < 7)) getitem 2318,1; // Lord's Clothes[1]
+		if ((@gamble_2 > 6) && (@gamble_2 < 9)) getitem 2326,1; // Saint's Robe[1]
+		if ((@gamble_2 > 8) && (@gamble_2 < 11)) getitem 2327,1; // Holy Robe
+		if ((@gamble_2 > 10) && (@gamble_2 < 13)) getitem 2317,1; // Full Plate[1]
+		if ((@gamble_2 > 12) && (@gamble_2 < 15)) getitem 2331,1; // Tights[1]
+		if ((@gamble_2 > 14) && (@gamble_2 < 17)) getitem 2342,1; // Legion Plate Armor[1]
+		if ((@gamble_2 > 16) && (@gamble_2 < 19)) getitem 2311,1; // Mink Coat[1]
+		if ((@gamble_2 > 18) && (@gamble_2 < 21)) getitem 2320,1; // Formal Suit[1]
+		if ((@gamble_2 > 20) && (@gamble_2 < 23)) getitem 2319,1; // Glittering Jacket[1]
+		if ((@gamble_2 > 22) && (@gamble_2 < 25)) getitem 2344,1; // Lucius's Fierce Armor of Volcano
+		if ((@gamble_2 > 24) && (@gamble_2 < 27)) getitem 2346,1; // Saphien's Armor of Ocean
+		if ((@gamble_2 > 26) && (@gamble_2 < 29)) getitem 2348,1; // Aebeccee's Raging Typhoon Armor
+		if ((@gamble_2 > 28) && (@gamble_2 < 31)) getitem 2350,1; // Claytos Cracking Earth Armor
 	goto L_End;
 
 L_Garment:

@@ -10,6 +10,9 @@
 
 Date	Added
 
+03/01/2007
+	* Fixed: Some bugs in the Comodo Gambling script [Tsuyuki]
+
 02/28/2007
 	* Fixed: Some Odin Shrine drops [Tsuyuki]
 	* Added: Items from the latest kRO patches [Tsuyuki]
