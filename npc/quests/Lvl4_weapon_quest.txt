@@ -585,7 +585,7 @@ LV4_HACK:
 	mes "[Bazo]";
 	mes "Hmm. There seems to be a bit of problem.";
 	set lv4_weapon, 0;
-	logmes "[" +strcharinfo(0) + "] tried to hack LV4 quest.";
+	// logmes "[" +strcharinfo(0) + "] tried to hack LV4 quest.";
 	close;
 }
 
@@ -1139,7 +1139,7 @@ LV4_HACK:
 	mes "[Hibilaithan]";
 	mes "Hmm. There seems to be a bit of problem.";
 	set lv4_weapon, 0;
-	logmes "[" +strcharinfo(0) + "] tried to hack LV4 quest.";
+	// logmes "[" +strcharinfo(0) + "] tried to hack LV4 quest.";
 	close;
 }
 
@@ -1718,7 +1718,7 @@ LV4_HACK:
 	mes "[Tabezthan]";
 	mes "Hmm. There seems to be a bit of problem.";
 	set lv4_weapon, 0;
-	logmes "[" +strcharinfo(0) + "] tried to hack LV4 quest.";
+	// logmes "[" +strcharinfo(0) + "] tried to hack LV4 quest.";
 	close;
 }
 
@@ -2408,7 +2408,7 @@ LV4_HACK:
 	mes "[Kayron]";
 	mes "Hmm. There seems to be a bit of problem.";
 	set lv4_weapon, 0;
-	logmes "[" +strcharinfo(0) + "] tried to hack LV4 quest.";
+	// logmes "[" +strcharinfo(0) + "] tried to hack LV4 quest.";
 	close;
 }
 
@@ -2808,7 +2808,7 @@ LV4_HACK:
 	mes "[Reyghema]";
 	mes "Hmm. There seems to be a bit of problem.";
 	set lv4_weapon, 0;
-	logmes "[" +strcharinfo(0) + "] tried to hack LV4 quest.";
+	// logmes "[" +strcharinfo(0) + "] tried to hack LV4 quest.";
 	close;
 }
 
@@ -3213,7 +3213,7 @@ LV4_HACK:
 	mes "[Hein]";
 	mes "Hmm. There seems to be a bit of problem.";
 	set lv4_weapon, 0;
-	logmes "[" +strcharinfo(0) + "] tried to hack LV4 quest.";
+	// logmes "[" +strcharinfo(0) + "] tried to hack LV4 quest.";
 	close;
 }
 
@@ -3610,6 +3610,6 @@ LV4_HACK:
 	mes "[Waltboughst]";
 	mes "Hmm. There seems to be a bit of problem.";
 	set lv4_weapon, 0;
-	logmes "[" +strcharinfo(0) + "] tried to hack LV4 quest.";
+	// logmes "[" +strcharinfo(0) + "] tried to hack LV4 quest.";
 	close;
 }

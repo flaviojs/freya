@@ -417,8 +417,8 @@ gl_prison1.gat,137,138,5	script	Zealotus#LhzHat	1200,{
 				mes "in my power. Those that";
 				mes "bow to me must also bow";
 				mes "to " + strcharinfo(0) + ". It shall be done.";
-				specialeffect 196; //Curse? EF_DEVIL
-				specialeffect 192; //Poison attack? EF_POISONHIT
+				// specialeffect 196; //Curse? EF_DEVIL
+				// specialeffect 192; //Poison attack? EF_POISONHIT
 				next;
 				mes "[Zealotus]";
 				mes "Human, take this";
@@ -484,28 +484,28 @@ gl_prison1.gat,97,104,1	script	Phendark#LhzHat	1202,{
 		close;
 
 	PhenDark2:
-		if (countitem(1950) || isequipped(1950))set @whipcount,@whipcount+1;
-		if (countitem(1951) || isequipped(1951))set @whipcount,@whipcount+1;
-		if (countitem(1952) || isequipped(1952))set @whipcount,@whipcount+1;
-		if (countitem(1953) || isequipped(1953))set @whipcount,@whipcount+1;
-		if (countitem(1954) || isequipped(1954))set @whipcount,@whipcount+1;
-		if (countitem(1955) || isequipped(1955))set @whipcount,@whipcount+1;
-		if (countitem(1956) || isequipped(1956))set @whipcount,@whipcount+1;
-		if (countitem(1957) || isequipped(1957))set @whipcount,@whipcount+1;
-		if (countitem(1958) || isequipped(1958))set @whipcount,@whipcount+1;
-		if (countitem(1959) || isequipped(1959))set @whipcount,@whipcount+1;
-		if (countitem(1960) || isequipped(1960))set @whipcount,@whipcount+1;
-		if (countitem(1961) || isequipped(1961))set @whipcount,@whipcount+1;
-		if (countitem(1962) || isequipped(1962))set @whipcount,@whipcount+1;
-		if (countitem(1963) || isequipped(1963))set @whipcount,@whipcount+1;
-		if (countitem(1964) || isequipped(1964))set @whipcount,@whipcount+1;
-		if (countitem(1965) || isequipped(1965))set @whipcount,@whipcount+1;
-		if (countitem(1966) || isequipped(1966))set @whipcount,@whipcount+1;
-		if (countitem(1967) || isequipped(1967))set @whipcount,@whipcount+1;
-		if (countitem(1968) || isequipped(1968))set @whipcount,@whipcount+1;
-		if (countitem(1969) || isequipped(1969))set @whipcount,@whipcount+1;
-		if (countitem(1970) || isequipped(1970))set @whipcount,@whipcount+1;
-		if (countitem(1971) || isequipped(1971))set @whipcount,@whipcount+1;
+		if (countitem(1950) || equippeditem(1950))set @whipcount,@whipcount+1;
+		if (countitem(1951) || equippeditem(1951))set @whipcount,@whipcount+1;
+		if (countitem(1952) || equippeditem(1952))set @whipcount,@whipcount+1;
+		if (countitem(1953) || equippeditem(1953))set @whipcount,@whipcount+1;
+		if (countitem(1954) || equippeditem(1954))set @whipcount,@whipcount+1;
+		if (countitem(1955) || equippeditem(1955))set @whipcount,@whipcount+1;
+		if (countitem(1956) || equippeditem(1956))set @whipcount,@whipcount+1;
+		if (countitem(1957) || equippeditem(1957))set @whipcount,@whipcount+1;
+		if (countitem(1958) || equippeditem(1958))set @whipcount,@whipcount+1;
+		if (countitem(1959) || equippeditem(1959))set @whipcount,@whipcount+1;
+		if (countitem(1960) || equippeditem(1960))set @whipcount,@whipcount+1;
+		if (countitem(1961) || equippeditem(1961))set @whipcount,@whipcount+1;
+		if (countitem(1962) || equippeditem(1962))set @whipcount,@whipcount+1;
+		if (countitem(1963) || equippeditem(1963))set @whipcount,@whipcount+1;
+		if (countitem(1964) || equippeditem(1964))set @whipcount,@whipcount+1;
+		if (countitem(1965) || equippeditem(1965))set @whipcount,@whipcount+1;
+		if (countitem(1966) || equippeditem(1966))set @whipcount,@whipcount+1;
+		if (countitem(1967) || equippeditem(1967))set @whipcount,@whipcount+1;
+		if (countitem(1968) || equippeditem(1968))set @whipcount,@whipcount+1;
+		if (countitem(1969) || equippeditem(1969))set @whipcount,@whipcount+1;
+		if (countitem(1970) || equippeditem(1970))set @whipcount,@whipcount+1;
+		if (countitem(1971) || equippeditem(1971))set @whipcount,@whipcount+1;
 		mes "[Phendark]";
 		mes "Huh? Oh no!";
 		mes "Another h-human?!";

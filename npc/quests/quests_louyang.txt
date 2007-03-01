@@ -1540,7 +1540,7 @@ s_Pity:
 	next;
 	menu "I'm sorry for the last time",s_Sorry,"No matter what, revenge isn't good.",-;
 
-	specialeffect 11;
+	// specialeffect 11;
 	mes "[Song Zhi Du]";
 	mes "Oh, forget about it";
 	mes "I don't think I can ever";
@@ -1586,7 +1586,7 @@ s_Materials2:
 	mes "^111111*Sigh...*^000000";
 	mes "Go and get me...";
 	next;
-	specialeffect 11;
+	// specialeffect 11;
 	mes "[Song Zhi Du]";
 	mes "^0000FF4 Bee Sting^000000,";
 	mes "^0000FF10 Venom Canine^000000,";
@@ -1627,7 +1627,7 @@ s_NEnoughItems:
 	mes "Are you testing my";
 	mes "patience or what?";
 	next;
-	specialeffect 11;
+	// specialeffect 11;
 	mes "[Song Zhi Du]";
 	mes "You're still missing some of the";
 	mes "items I need. I must have them all";
@@ -1671,15 +1671,15 @@ s_Thanked:
 	mes "with a foreign liquid named";
 	mes "Karvodailnirol.";
 	next;
-	specialeffect 12;
+	// specialeffect 12;
 	mes "[Song Zhi Du]";
 	mes "Then, I add Green Herb extract,";
 	mes "poison extracted from Bee Sting and";
 	mes "a Large Jellopy into the liquid!";
 	mes "Finally, I must heat them all!";
 	next;
-	specialeffect 124;
-	specialeffect 20;
+	// specialeffect 124;
+	// specialeffect 20;
 	mes "[Song Zhi Du]";
 	mes "Finally, I have to carefully heat";
 	mes "the mixture and collect it all into";
@@ -1690,7 +1690,7 @@ s_Thanked:
 	mes "right. This is a very delicate";
 	mes "procedure...";
 	next;
-	specialeffect 17;
+	// specialeffect 17;
 	emotion 23;			
 	mes "[Song Zhi Du]";
 	mes "No!! I failed again! ^656565*Sigh...*^000000 And";
@@ -1766,15 +1766,15 @@ s_MaterialCheck:
 	mes "with a foreign liquid named";
 	mes "Karvodailnirol.";
 	next;
-	specialeffect 12;
+	// specialeffect 12;
 	mes "[Song Zhi Du]";
 	mes "Then, I add Green Herb extract,";
 	mes "poison extracted from Bee Sting and";
 	mes "a Large Jellopy into the liquid!";
 	mes "Finally, I must heat them all!";
 	next;
-	specialeffect 124;
-	specialeffect 20;
+	// specialeffect 124;
+	// specialeffect 20;
 	mes "[Song Zhi Du]";
 	mes "Finally, I have to carefully heat";
 	mes "the mixture and collect it all into";
@@ -1790,7 +1790,7 @@ s_MaterialCheck:
 	if(@PKSuccessRate > 700)
 	{
 	emotion 23;
-	specialeffect 20;
+	// specialeffect 20;
 	mes "[Song Zhi Du]";
 	mes "Hahaha~!";
 	mes "Success!";
@@ -1823,7 +1823,7 @@ s_MaterialCheck:
 	else
 	{
 	emotion 23;
-	specialeffect 17;
+	// specialeffect 17;
 	mes "[Song Zhi Du]";
 	mes "NO! I... I've failed again! And I";
 	mes "spent a long time getting";

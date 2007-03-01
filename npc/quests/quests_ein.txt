@@ -716,7 +716,7 @@ einbroch.gat,51,56,6	script	Laboratory Soldier#01	852,{
 	close;
 
 OnHide:
-	specialeffect 16;
+	// specialeffect 16;
 	disablenpc "Laboratory Soldier#01";
 	end;
 
@@ -733,7 +733,7 @@ einbroch.gat,51,47,6	script	Laboratory Soldier#02	852,{
 	close;
 
 OnHide:
-	specialeffect 16;
+	// specialeffect 16;
 	disablenpc "Laboratory Soldier#02";
 	end;
 
@@ -2108,7 +2108,7 @@ s_Switches:
 		mes "and stand still while";
 		mes "I give the massage. It";
 		mes "might hurt a bit at first...";
-		nude;
+		// nude;
 		next;
 		mes "^3151FF*Rub Rub Rub*";
 		mes "*Knead Knead Knead*";
@@ -2809,7 +2809,7 @@ OnPolution:
 	end;
 
 OnMobChk:
-	if(mobcount("einbroch.gat","#PolutionNPC::OnMobChk"))end;
+ //	if(mobcount("einbroch.gat","#PolutionNPC::OnMobChk"))end;
 
 OnTimer600000:
 	killmonster "einbroch.gat","#PolutionNPC::OnMobChk";
@@ -2969,7 +2969,7 @@ einbroch.gat,132,84,3	script	Liotzburg	853,{
 	close;
 
 OnHide:
-	specialeffect 16;
+	// specialeffect 16;
 	disablenpc "Liotzburg";
 	end;
 
@@ -4095,7 +4095,7 @@ s_Cooking:
 	goto s_Menu3;
 
 OnHide:
-	specialeffect 16;
+	// specialeffect 16;
 	disablenpc "Uwe Kleine";
 	end;
 

@@ -39,7 +39,7 @@ OnTouch:
 	end;
 
 JupeLv2Warp:
-	specialeffect 309;
+	// specialeffect 309;
 	mes "^666666[" + strcharinfo(0) + "]";
 	mes "^000000Ahhhh...";
 	mes "It feels like";
@@ -72,7 +72,6 @@ OnSwitchADead:
 	end;
 
 JupeContA:
-	attachnpctimer;
 	initnpctimer;
 		end;
 
@@ -113,7 +112,6 @@ OnSwitchBDead:
 	end;
 
 JupeContB:
-	attachnpctimer;
 	initnpctimer;
 
 OnTimer3000:
@@ -153,7 +151,6 @@ OnSwitchCDead:
 	end;
 
 JupeContC:
-	attachnpctimer;
 	initnpctimer;
 
 OnTimer3000:
@@ -208,7 +205,6 @@ JupeLever1:
 
 JupeInsert1:
 	enablenpc "jupwrp31";
-	attachnpctimer;
 	initnpctimer;
 	close;
 	end;
@@ -234,7 +230,6 @@ JupeLever2:
 
 JupeInsert2:
 	enablenpc "jupwrp33";
-	attachnpctimer;
 	initnpctimer;
 	close;
 	end;
@@ -260,7 +255,6 @@ JupeLever3:
 
 JupeInsert3:
 	enablenpc "jupwrp35";
-	attachnpctimer;
 	initnpctimer;
 	close;
 	end;
@@ -286,7 +280,6 @@ JupeLever4:
 
 JupeInsert4:
 	enablenpc "jupwrp37";
-	attachnpctimer;
 	initnpctimer;
 	close;
 	end;
@@ -311,7 +304,6 @@ JupeActivate1:
 
 JupeActivate2:
 	enablenpc "jupwrp14";
-	attachnpctimer;
 	initnpctimer;
 	close;
 	end;
@@ -345,7 +337,6 @@ JupeCrestInsert:
 		areamonster "jupe_ele_r.gat",42,82,57,97,"Venatu",1675,2,"Lever#Lever6::OnMobEleRoomDead";
 
 
-		attachnpctimer;
 		initnpctimer;
 		close;
 		end;
@@ -355,7 +346,7 @@ OnTimer300000:
 	set $@JupeEleRoom,0;
 	set $@JupeEleRoomPass,0;
 	stopnpctimer;
-	mapwarp "jupe_ele_r.gat","juperos_02.gat",130,143;
+	areawarp "jupe_ele_r.gat",0,0,400,400,"juperos_02.gat",130,143;
 	end;
 
 OnMobEleRoomDead:
@@ -367,7 +358,7 @@ JupeEleRoomWarp:
 	set $@JupeEleRoom,0;
 	set $@JupeEleRoomPass,0;
 	stopnpctimer;
-	mapwarp "jupe_ele_r.gat","jupe_ele.gat",42,45;
+	areawarp "jupe_ele_r.gat",0,0,400,400,"jupe_ele.gat",42,45;
 	end;
 }
 
@@ -390,7 +381,6 @@ JupeActivate3:
 	areamonster "jupe_ele.gat",34,40,49,55,"Archdam",1668,2,"Lever#Lever7::OnMobElevatorDead";
 	areamonster "jupe_ele.gat",34,40,49,55,"Dimik",1669,14,"Lever#Lever7::OnMobElevatorDead";
 	areamonster "jupe_ele.gat",34,40,49,55,"Venatu",1675,8,"Lever#Lever7::OnMobElevatorDead";
-	attachnpctimer;
 	initnpctimer;
 	close;
 	end;
@@ -400,7 +390,7 @@ OnTimer300000:
 	set $@JupeElePass,0;
 	set $@JupeElevator,0;
 	stopnpctimer;
-	mapwarp "jupe_ele.gat","juperos_02.gat",130,143;
+	areawarp "jupe_ele.gat",0,0,400,400,"juperos_02.gat",130,143;
 	end;
 
 OnMobElevatorDead:
@@ -411,7 +401,7 @@ OnMobElevatorDead:
 JupeElevatorWarp:
 	set $@JupeElePass,0;
 	set $@JupeElevator,0;
-	mapwarp "jupe_ele.gat","jupe_core.gat",149,125;
+	areawarp "jupe_ele.gat",0,0,400,400,"jupe_core.gat",149,125;
 	end;
 }
 

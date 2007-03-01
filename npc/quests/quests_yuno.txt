@@ -4205,7 +4205,7 @@ yuno_in04.gat,188,116,0	script	Paper#yuno07	111,{
 			mes "you can forgive me for us.";
 			mes "- Love, Fayruz^000000";
 			next;
-   			if (getpartnerid(0) == 0) goto L_Cont02;
+   			if (PartnerID == 0) goto L_Cont02;
 
 				mes "[" + strcharinfo(0) + "]";
 				mes "Ahhhhhh~";

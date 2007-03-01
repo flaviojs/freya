@@ -1253,7 +1253,7 @@ OnTouch:
 	if (Zeny>=10 && @pickrand2 == 1) set Zeny,zeny-10;
 	if (Zeny>=100 && @pickrand2 == 2) set Zeny,zeny-100;
 	if (Zeny>=200 && @pickrand2 == 3) set Zeny,zeny-200;
-//	specialeffect2 274;
+//	// specialeffect2 274;
 	mes "*SHHHHHHUK*!";
 	next;
 	set @pickrand1,rand(0,100);
@@ -1304,13 +1304,13 @@ L_Caught:
 	close;
 
 L_MoveA1:
-	specialeffect 16;
+	// specialeffect 16;
 	disablenpc "Suspicious Guy#1";
 	enablenpc "Suspicious Guy#2";
 	close;
 
 L_MoveB1:
-	specialeffect 16;
+	// specialeffect 16;
 	disablenpc "Suspicious Guy#1";
 	enablenpc "Suspicious Guy#3";
 	close;
@@ -1325,7 +1325,7 @@ OnTouch:
 	if (Zeny>=10 && @pickrand2 == 1) set Zeny,zeny-10;
 	if (Zeny>=100 && @pickrand2 == 2) set Zeny,zeny-100;
 	if (Zeny>=200 && @pickrand2 == 3) set Zeny,zeny-200;
-//	specialeffect2 274;
+//	// specialeffect2 274;
 	mes "*SHHHHHHUK*!";
 	next;
 	set @pickrand1,rand(0,100);
@@ -1376,13 +1376,13 @@ L_Caught:
 	close;
 
 L_MoveA2:
-	specialeffect 16;
+	// specialeffect 16;
 	disablenpc "Suspicious Guy#2";
 	enablenpc "Suspicious Guy#1";
 	close;
 
 L_MoveB2:
-	specialeffect 16;
+	// specialeffect 16;
 	disablenpc "Suspicious Guy#3";
 	enablenpc "Suspicious Guy#1";
 	close;
@@ -1397,7 +1397,7 @@ OnTouch:
 	if (Zeny>=10 && @pickrand2 == 1) set Zeny,zeny-10;
 	if (Zeny>=100 && @pickrand2 == 2) set Zeny,zeny-100;
 	if (Zeny>=200 && @pickrand2 == 3) set Zeny,zeny-200;
-//	specialeffect2 274;
+//	// specialeffect2 274;
 	mes "*SHHHHHHUK*!";
 	next;
 	set @pickrand1,rand(0,100);
@@ -1488,7 +1488,7 @@ L_Caught:
 		mes "get back to work.";
 		mes "Heh heh heh~";
 		if (rand(1,2)==1) goto L_Reset;
-		specialeffect 16;
+		// specialeffect 16;
 		disablenpc "Suspicious Guy#3";
 		enablenpc "Suspicious Guy#2";
 		close;
@@ -1505,7 +1505,7 @@ L_Caught:
 		mes "get back to work.";
 		mes "Heh heh heh~";
 		if (rand(1,2)==1) goto L_Reset;
-		specialeffect 16;
+		// specialeffect 16;
 		disablenpc "Suspicious Guy#3";
 		enablenpc "Suspicious Guy#2";
 		close;
@@ -1522,7 +1522,7 @@ L_Caught:
 		mes "get back to work.";
 		mes "Heh heh heh~";
 		if (rand(1,2)==1) goto L_Reset;
-		specialeffect 16;
+		// specialeffect 16;
 		disablenpc "Suspicious Guy#3";
 		enablenpc "Suspicious Guy#2";
 		close;
@@ -1540,13 +1540,13 @@ L_Caught:
 		mes "get back to work.";
 		mes "Heh heh heh~";
 		if (rand(1,2)==1) goto L_Reset;
-		specialeffect 16;
+		// specialeffect 16;
 		disablenpc "Suspicious Guy#3";
 		enablenpc "Suspicious Guy#2";
 		close;
 
 L_Reset:
-	specialeffect 16;
+	// specialeffect 16;
 	disablenpc "Suspicious Guy#3";
 	enablenpc "Suspicious Guy#1";
 	close;
@@ -1561,7 +1561,7 @@ L_Zeny:
 	mes "get back to work.";
 	mes "Heh heh heh~";
 	if (rand(1,2)==1) goto L_Reset;
-	specialeffect 16;
+	// specialeffect 16;
 	disablenpc "Suspicious Guy#3";
 	enablenpc "Suspicious Guy#2";
 	close;

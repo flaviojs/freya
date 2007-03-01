@@ -1,4 +1,4 @@
-//===== eAthena Script =======================================
+//===== Freya Script =========================================
 //= Bio-life Labs - Monster Spawn Locations
 //===== By: ==================================================
 // »» The Prometheus Project ««

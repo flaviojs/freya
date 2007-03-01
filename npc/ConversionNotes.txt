@@ -69,3 +69,17 @@ npc/other/jawaii.txt Line: Various Lines
 -> Same as above, only this time it's 'specialeffect2'. Commented for now. [Tsuyuki]
 
 -------------------------------------------
+
+npc/quests/
+
+-> All 'specialeffect' and 'specialeffect2' commands are commented [Tsuyuki]
+-> All 'logmes' commands are commented [Tsuyuki]
+
+-------------------------------------------
+
+npc/quests/quests_ein.txt
+
+-> 'mobcount' commented [Tsuyuki]
+-> 'nude' command commented [Tsuyuki]
+
+-------------------------------------------

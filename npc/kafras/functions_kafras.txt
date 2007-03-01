@@ -526,7 +526,7 @@ function	script	F_EntKafCode	{
 	set @kafcode_try,@kafcode_try+1;
 	if(@kafcode_try>10) {
 		set @kafcode_try,0;
-//		logmes "Hack: Tried to fit storage password.";
+//		// logmes "Hack: Tried to fit storage password.";
 	}
 	input @code_;
 	if(@code_<1000) {

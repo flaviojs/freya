@@ -93,7 +93,8 @@ L_nojob:
 //=====================Requires Bug Testing=====================
 lhz_in01.gat,46,125,6	script	Rekenber Guard	867,{
 	mes "[Rekenber Guard]";
-	if(isequipped(2241) && isequipped(2243)){
+	if(equippeditem(2241) && equippeditem(2243))
+	{
 		mes "......................";
 		next;
 		switch(select("Nice day, huh?","Cancel")){

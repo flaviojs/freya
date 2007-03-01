@@ -627,7 +627,7 @@ um_in.gat,44,71,2	script	Utan Tribe Shaman	782,{
 	
 	next;
 
-	set .@need,0;
+	set @need,0;
 
 	switch (select("Create Essence","Dismantle Elemental Stone","Nothing")) {
 	case 1:
@@ -646,9 +646,9 @@ um_in.gat,44,71,2	script	Utan Tribe Shaman	782,{
 					mes "^3377FF15x Horn^000000 for the ritual.";
 				}
 				else {
-					set .@need,947;
-					set .@amount,15;
-					set .@gain,993;
+					set @need,947;
+					set @amount,15;
+					set @gain,993;
 				}
 				break;
 			case 2:
@@ -660,9 +660,9 @@ um_in.gat,44,71,2	script	Utan Tribe Shaman	782,{
 					mes "^3377FF20x Snails Shell^000000 for the ritual.";
 				}
 				else {
-					set .@need,946;
-					set .@amount,20;
-					set .@gain,991;
+					set @need,946;
+					set @amount,20;
+					set @gain,991;
 				}
 				break;
 			case 3:
@@ -675,9 +675,9 @@ um_in.gat,44,71,2	script	Utan Tribe Shaman	782,{
 					mes "for the ritual.";
 				}
 				else {
-					set .@need,904;
-					set .@amount,20;
-					set .@gain,990;
+					set @need,904;
+					set @amount,20;
+					set @gain,990;
 				}
 				break;
 			case 4:
@@ -690,13 +690,13 @@ um_in.gat,44,71,2	script	Utan Tribe Shaman	782,{
 					mes "to complete the ritual.";
 				}
 				else {
-					set .@need,1013;
-					set .@amount,25;
-					set .@gain,992;
+					set @need,1013;
+					set @amount,25;
+					set @gain,992;
 				}
 				break;
 		}
-		if(.@need == 0) {
+		if(@need == 0) {
 			next;
 			mes "[Putsuchiritan]";
 			mes "Once you've prepared these";
@@ -712,15 +712,15 @@ um_in.gat,44,71,2	script	Utan Tribe Shaman	782,{
 		mes "after all, choose 0.";
 		while(1) {
 			next;
-			input .@num;
-			if(.@num<=0) {
+			input @num;
+			if(@num<=0) {
 				mes "[Putsuchiritan]";
 				mes "If you don't wish my help at the moment,";
 				mes "that's fine.  When you do, please come";
 				mes "by again.";
 				close;
 			}
-			if(.@num>9) {
+			if(@num>9) {
 				mes "[Putsuchiritan]";
 				mes "You must choose a number between";
 				mes "1 and 9.  It is very important that";
@@ -731,7 +731,7 @@ um_in.gat,44,71,2	script	Utan Tribe Shaman	782,{
 			break;
 		}
 		mes "[Putsuchiritan]";
-		switch(.@need) {
+		switch(@need) {
 			case 947: mes "The horn begins to vibrate."; break;
 			case 904: mes "The tail begins to vibrate."; break;
 			default: mes "The shell begins to vibrate."; break;
@@ -749,7 +749,7 @@ um_in.gat,44,71,2	script	Utan Tribe Shaman	782,{
 		mes "Sukatamba Aburumba! Umba! Shi!";
 		next;
 		mes "[Putsuchiritan]";
-		if(countitem(.@need)<.@amount){
+		if(countitem(@need)<@amount){
 			mes "You're An Amba HacK0R!";
 			mes "I'm clearing your mind!";
 			//we reset the whole quest for the hacker			
@@ -757,7 +757,7 @@ um_in.gat,44,71,2	script	Utan Tribe Shaman	782,{
 			emotion e_swt,1;
 			close;
 		}
-		delitem .@need,.@amount;
+		delitem @need,@amount;
 		if(!rand(10)){
 			getitem 910,1; //if failed get Garlet
 			mes "Your inner power has failed";
@@ -768,7 +768,7 @@ um_in.gat,44,71,2	script	Utan Tribe Shaman	782,{
 			mes "Purify your mind and try again.";
         		close;
 		}
-		getitem .@gain,1;
+		getitem @gain,1;
 		mes "There.  Your inner power has converted";
 		mes "these objects from nature into";
 		mes "elemental essence.  Put";
@@ -790,8 +790,8 @@ um_in.gat,44,71,2	script	Utan Tribe Shaman	782,{
 					mes "component essence.";
 				}
 				else {
-					set .@need,997;
-					set .@gain,993;
+					set @need,997;
+					set @gain,993;
 				}
 				break;
 			case 2:
@@ -803,8 +803,8 @@ um_in.gat,44,71,2	script	Utan Tribe Shaman	782,{
 					mes "component essence.";
 				}
 				else {
-					set .@need,995;
-					set .@gain,991;
+					set @need,995;
+					set @gain,991;
 				}
 				break;
 			case 3:
@@ -816,8 +816,8 @@ um_in.gat,44,71,2	script	Utan Tribe Shaman	782,{
 					mes "component essence.";
 				}
 				else {
-					set .@need,994;
-					set .@gain,990;
+					set @need,994;
+					set @gain,990;
 				}
 				break;
 			case 4:
@@ -829,13 +829,13 @@ um_in.gat,44,71,2	script	Utan Tribe Shaman	782,{
 					mes "component essence.";
 				}
 				else {
-					set .@need,996;
-					set .@gain,992;
+					set @need,996;
+					set @gain,992;
 				}
 				break;
 		}
 		next;
-		if(.@need == 0) {
+		if(@need == 0) {
 			mes "[Putsuchiritan]";
 			mes "Once you have the necessary stone,";
 			mes "please come back and visit me";
@@ -843,7 +843,7 @@ um_in.gat,44,71,2	script	Utan Tribe Shaman	782,{
 			close;
 		}
 		mes "[Putsuchiritan]";
-		switch(.@need) {
+		switch(@need) {
 			case 997: mes "I will dismantle your earth crystal";	break;
 			case 995: mes "I will dismantle your frozen crystal";	break;
 			case 994: mes "I will dismantle your heart of flame"; 	break;
@@ -855,15 +855,15 @@ um_in.gat,44,71,2	script	Utan Tribe Shaman	782,{
 		mes "stone, choose 0.";
 		while(1) {
 			next;
-			input .@num;
-			if(.@num<=0) {
+			input @num;
+			if(@num<=0) {
 				mes "[Putsuchiritan]";
 				mes "If you don't wish my help at the moment,";
 				mes "that's fine.  When you do, please come";
 				mes "by again.";
 				close;
 			}
-			if(.@num>9) {
+			if(@num>9) {
 				mes "[Putsuchiritan]";
 				mes "You must choose a number between";
 				mes "1 and 9.  It is very important that";
@@ -873,15 +873,15 @@ um_in.gat,44,71,2	script	Utan Tribe Shaman	782,{
 			}
 			break;
 		}
-		set .@num,rand(1,10);	//official amount chance
-		if(.@num == 1)
-			set .@num,10;
-		else if(.@num == 2 || .@num == 3)
-			set .@num,8;
-		else if(.@num < 7)
-			set .@num,7;
+		set @num,rand(1,10);	//official amount chance
+		if(@num == 1)
+			set @num,10;
+		else if(@num == 2 || @num == 3)
+			set @num,8;
+		else if(@num < 7)
+			set @num,7;
 		else
-			set .@num,6;
+			set @num,6;
 		mes "[Putsuchiritan]";
 		mes "Please place the elemental stone";
 		mes "inside this holy circle.  I will chant a";
@@ -896,7 +896,7 @@ um_in.gat,44,71,2	script	Utan Tribe Shaman	782,{
 		mes "Onbaruzu Zan Kata!  Unba Ka!";
 		next;
 		mes "[Putsuchiritan]";
-		if(countitem(.@need)<1){
+		if(countitem(@need)<1){
 			mes "You're An Amba HacK0R!";
 			mes "I'm clearing your mind!";
 			//we reset the whole quest for the hacker			
@@ -904,8 +904,8 @@ um_in.gat,44,71,2	script	Utan Tribe Shaman	782,{
 			emotion e_swt,1;
 			close;
 		}
-		delitem .@need,1;
-		getitem .@gain,.@num;
+		delitem @need,1;
+		getitem @gain,@num;
 		mes "The elemental stone has been";
 		mes "dismantled into its natural";
 		mes "essence.  Please put it to";
