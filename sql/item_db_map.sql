@@ -1950,6 +1950,12 @@ INSERT INTO `item_db` VALUES (5239, 'White_Wizardry_Hat', 'White Wizardry Hat', 
 INSERT INTO `item_db` VALUES (5240, 'Gray_Wizardry_Hat', 'Gray Wizardry Hat', 5, 20, 0, 300, 0, 1, 0, 0, 134283780, 2, 256, 0, 0, 284, NULL, 'bonus bInt,2; bonus bMaxSP,150;');
 INSERT INTO `item_db` VALUES (5241, 'Blue_Wizardry_Hat', 'Blue Wizardry Hat', 5, 20, 0, 300, 0, 1, 0, 0, 134283780, 2, 256, 0, 0, 285, NULL, 'bonus bInt,2; bonus bMaxSP,150;');
 INSERT INTO `item_db` VALUES (5242, 'Yellow_Wizardry_Hat', 'Yellow Wizardry Hat', 5, 20, 0, 300, 0, 1, 0, 0, 134283780, 2, 256, 0, 0, 286, NULL, 'bonus bInt,2; bonus bMaxSP,150;');
+
+INSERT INTO `item_db` VALUES (5243, 'Unknown_Item', 'Unknown Item', 5, 20, 0, 800, 0, 2, 0, 1, 1071636479, 2, 768, 0, 0, 287, NULL, 'bonus2 bResEff,Eff_Freeze,1000;');
+
+
+
+
 INSERT INTO `item_db` VALUES (5252, 'Drooping_Ninetail', 'Drooping Ninetail', 5, 20, 0, 300, 0, 1, 0, 0, 1071636479, 2, 256, 0, 20, 296, NULL, 'bonus bAgi,1; bonus bDex,1; bonus4 bAutoSpellWhenHit,75,1,500,0;');
 INSERT INTO `item_db` VALUES (5253, 'Drooping_Lif', 'Drooping Lif', 5, 20, 0, 200, 0, 1, 0, 1, 1071636479, 2, 256, 0, 20, 297, NULL, 'bonus bInt,1; bonus bMdef,getequiprefinerycnt(1);');
 INSERT INTO `item_db` VALUES (5254, 'Deviling_Hat', 'Deviling Hat', 5, 20, 0, 350, 0, 1, 0, 0, 1071636479, 2, 256, 0, 20, 298, NULL, 'bonus bStr,1; bonus bCritical,3; bonus2 bSubRace,8,-20; if(getequiprefinerycnt(1)>=6) bonus bCriticalRate,getequiprefinerycnt(1)-5;');
@@ -2676,6 +2682,7 @@ INSERT INTO `item_db` VALUES (7853, 'iPod_Nano', 'iPod Nano', 3, 0, 0, 10, 0, 0,
 INSERT INTO `item_db` VALUES (7855, 'Unknown_Item', 'Unknown Item', 3, 0, 0, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7856, 'Unknown_Item', 'Unknown Item', 3, 0, 0, 50, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7857, 'Unknown_Item', 'Unknown Item', 3, 0, 0, 30, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
+INSERT INTO `item_db` VALUES (7858, 'Unknown_Item', 'Unknown Item', 3, 0, 0, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 
 # End of Incomplete Misc Entries
 
@@ -3025,6 +3032,8 @@ INSERT INTO `item_db` VALUES (12240, 'Old_Yellow_Box', 'Old Yellow Box', 2, 0, 0
 
 INSERT INTO `item_db` VALUES (12244, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem rand(5270,5272),1;', NULL);
 INSERT INTO `item_db` VALUES (12245, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 500, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, NULL, NULL);
+
+INSERT INTO `item_db` VALUES (12246, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 50, 0, 0, 0, 0, 1000333311, 2, 0, 0, 0, 0, NULL, NULL);
 
 INSERT INTO `item_db` VALUES (12701, 'Unknown_Item', 'Unknown Item', 2, 0, 0, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem rand(7851,7853),1;', NULL);
 

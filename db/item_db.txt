@@ -1925,6 +1925,12 @@
 5240,Gray_Wizardry_Hat,Gray Wizardry Hat,5,20,,300,,1,,0,134283780,2,256,,0,284,{},{ bonus bInt,2; bonus bMaxSP,150; }
 5241,Blue_Wizardry_Hat,Blue Wizardry Hat,5,20,,300,,1,,0,134283780,2,256,,0,285,{},{ bonus bInt,2; bonus bMaxSP,150; }
 5242,Yellow_Wizardry_Hat,Yellow Wizardry Hat,5,20,,300,,1,,0,134283780,2,256,,0,286,{},{ bonus bInt,2; bonus bMaxSP,150; }
+
+5243,Unknown_Item,Unknown Item,5,20,,800,,2,,1,1071636479,2,768,,0,287,{},{ bonus2 bResEff,Eff_Freeze,1000; }
+
+
+
+
 5252,Drooping_Ninetail,Drooping Ninetail,5,20,,300,,1,,0,1071636479,2,256,,20,296,{},{ bonus bAgi,1; bonus bDex,1; bonus4 bAutoSpellWhenHit,75,1,500,0; }
 5253,Drooping_Lif,Drooping Lif,5,20,,200,,1,,1,1071636479,2,256,,20,297,{},{ bonus bInt,1; bonus bMdef,getequiprefinerycnt(1); }
 5254,Deviling_Hat,Deviling Hat,5,20,,350,,1,,0,1071636479,2,256,,20,298,{},{ bonus bStr,1; bonus bCritical,3; bonus2 bSubRace,8,-20; if(getequiprefinerycnt(1)>=6) bonus bCriticalRate,getequiprefinerycnt(1)-5; }
@@ -2651,6 +2657,7 @@
 7855,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
 7856,Unknown_Item,Unknown Item,3,,,50,,,,,,,,,,,{},{}
 7857,Unknown_Item,Unknown Item,3,,,30,,,,,,,,,,,{},{}
+7858,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
 
 // End of Incomplete Misc Entries
 
@@ -3000,6 +3007,8 @@
 
 12244,Unknown_Item,Unknown Item,2,,,200,,,,,1071636479,2,,,,,{ getitem rand(5270,5272),1; },{}
 12245,Unknown_Item,Unknown Item,2,,,500,,,,,1071636479,2,,,,,{},{}
+
+12246,Unknown_Item,Unknown Item,2,,,50,,,,,1000333311,2,,,,,{},{}
 
 12701,Unknown_Item,Unknown Item,2,,,200,,,,,1071636479,2,,,,,{ getitem rand(7851,7853),1; },{}
 
