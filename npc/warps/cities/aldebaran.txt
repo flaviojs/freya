@@ -1,12 +1,12 @@
-//===== Athena Script ========================================
-//= Al de Baran Warp Script
+//===== Freya Script =========================================
+//= Al De Baran Warp Script
 //===== By: ==================================================
 //= Athena (1.0)
 //= Nana (1.1)
 //===== Current Version: =====================================
 //= 1.2
 //===== Compatible With: =====================================
-//= Any Athena Version; RO Episode 2+
+//= Freya
 //===== Description: =========================================
 //= Warp Points for Al de Baran
 //===== Additional Comments: =================================

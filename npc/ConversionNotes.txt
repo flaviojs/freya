@@ -14,17 +14,14 @@ npc/custom/
 npc/events/
 npc/guides/
 npc/gvg/
+npc/jobs/
 npc/kafras/
 npc/merchants/
 npc/mobs/
 npc/other/
+npc/quests/
 npc/sample/
 npc/warps/
-
-To-Do:
-
-npc/jobs/
-npc/quests/
 
 ===========================================
 

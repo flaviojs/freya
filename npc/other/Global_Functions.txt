@@ -5,7 +5,7 @@
 //===== Current Version: ===================================== 
 //= 2.08
 //===== Compatible With: ===================================== 
-//= eAthena 1.0
+//= Freya Phaeton
 //===== Description: ========================================= 
 //= <Description>
 //===== Additional Comments: ================================= 
@@ -439,42 +439,150 @@ function	script	getJobName	{
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////////////
-// *** Function "F_SaveQuestSkills": Store learnt quest skills 
-//////////////////////////////////////////////////////////////////////////////////
-//function	script	F_SaveQuestSkills	{
-//	set ADV_QSK,0; set ADV_QSK2,0;
-//	//1st classes quest skills
-//	for(set @i, 0; @i < 14; set @i, @i + 1){
-//		if(getskilllv(144+@i)) set ADV_QSK,ADV_QSK|pow(2,@i);
-//	}
-//	//2nd classes quest skills
-//	for(set @i, 0; @i < 19; set @i, @i + 1){
-//		if(getskilllv(1001+@i)) set ADV_QSK2,ADV_QSK2|pow(2,@i);
-//	}
-//	return;
-//}
-//
-//////////////////////////////////////////////////////////////////////////////////
-// *** Function "F_Load1Skills": Restore learnt 1st class quest skills
-//////////////////////////////////////////////////////////////////////////////////
-//function	script	F_Load1Skills	{
-//	//1st classes quest skills
-//	for(set @i, 0; @i < 14; set @i, @i + 1){
-//		if(ADV_QSK|pow(2,@i) == ADV_QSK) skill 144+@i,1,0;
-//	}
-//	set ADV_QSK,0; //Clear var
-//	return;
-//}
-//
-//////////////////////////////////////////////////////////////////////////////////
-// *** Function "F_Load2Skills": Restore learnt 2nd class quest skills
-//////////////////////////////////////////////////////////////////////////////////
-//function	script	F_Load2Skills	{
-//	//2nd classes quest skills
-//	for(set @i, 0; @i < 19; set @i, @i + 1){
-//		if(ADV_QSK2|pow(2,@i) == ADV_QSK2) skill 1001+@i,1,0;
-//	}
-//	set ADV_QSK2,0; //Clear var
-//	return;
-//}
+//=============================================================
+// Function used to save quest skills before rebirth [Tsuyuki]
+//-------------------------------------------------------------
+
+function	script	F_SaveQuestSkills	{
+
+	// Save First-Class Quest Skills
+	if (getskilllv(142) > 0) set ADVQ1,1;
+	if (getskilllv(143) > 0) set ADVQ2,1;
+	if (getskilllv(144) > 0) set ADVQ3,1;
+	if (getskilllv(145) > 0) set ADVQ4,1;
+	if (getskilllv(146) > 0) set ADVQ5,1;
+	if (getskilllv(147) > 0) set ADVQ6,1;
+	if (getskilllv(148) > 0) set ADVQ7,1;
+	if (getskilllv(149) > 0) set ADVQ8,1;
+	if (getskilllv(150) > 0) set ADVQ9,1;
+	if (getskilllv(151) > 0) set ADVQ10,1;
+	if (getskilllv(152) > 0) set ADVQ11,1;
+	if (getskilllv(153) > 0) set ADVQ12,1;
+	if (getskilllv(154) > 0) set ADVQ13,1;
+	if (getskilllv(155) > 0) set ADVQ14,1;
+	if (getskilllv(156) > 0) set ADVQ15,1;
+	if (getskilllv(157) > 0) set ADVQ16,1;
+
+	// Save Second-Class Quest Skills
+	if (getskilllv(1001) > 0) set ADVQ17,1;
+	if (getskilllv(1002) > 0) set ADVQ18,1;
+	if (getskilllv(1003) > 0) set ADVQ19,1;
+	if (getskilllv(1004) > 0) set ADVQ20,1;
+	if (getskilllv(1005) > 0) set ADVQ21,1;
+	if (getskilllv(1006) > 0) set ADVQ22,1;
+	if (getskilllv(1007) > 0) set ADVQ23,1;
+	if (getskilllv(1008) > 0) set ADVQ24,1;
+	if (getskilllv(1009) > 0) set ADVQ25,1;
+	if (getskilllv(1010) > 0) set ADVQ26,1;
+	if (getskilllv(1011) > 0) set ADVQ27,1;
+	if (getskilllv(1012) > 0) set ADVQ28,1;
+	if (getskilllv(1013) > 0) set ADVQ29,1;
+	if (getskilllv(1014) > 0) set ADVQ30,1;
+	if (getskilllv(1015) > 0) set ADVQ31,1;
+	if (getskilllv(1016) > 0) set ADVQ32,1;
+	if (getskilllv(1017) > 0) set ADVQ33,1;
+	if (getskilllv(1018) > 0) set ADVQ34,1;
+	if (getskilllv(1019) > 0) set ADVQ35,1;
+
+	return;
+}
+
+//=============================================================
+// Function used to return quest skills after rebirth [Tsuyuki]
+//-------------------------------------------------------------
+
+function	script	F_ReturnQuestSkills	{
+
+	if (ADVQ1 == 1) skill 142,1,0;
+	if (Class == JOB_NOVICE_HIGH && ADVQ2 == 1) skill 143,1,0;
+
+	if (Class >= JOB_SWORDMAN_HIGH && Class <= JOB_PALADIN2) goto L_Return1stSkills;
+
+	return;
+
+	L_Return1stSkills:
+
+		if (ADVQ3 == 1) skill 144,1,0;
+		if (ADVQ4 == 1) skill 145,1,0;
+		if (ADVQ5 == 1) skill 146,1,0;
+		if (ADVQ6 == 1) skill 147,1,0;
+		if (ADVQ7 == 1) skill 148,1,0;
+		if (ADVQ8 == 1) skill 149,1,0;
+		if (ADVQ9 == 1) skill 150,1,0;
+		if (ADVQ10 == 1) skill 151,1,0;
+		if (ADVQ11 == 1) skill 152,1,0;
+		if (ADVQ12 == 1) skill 153,1,0;
+		if (ADVQ13 == 1) skill 154,1,0;
+		if (ADVQ14 == 1) skill 155,1,0;
+		if (ADVQ15 == 1) skill 156,1,0;
+		if (ADVQ16 == 1) skill 157,1,0;
+
+		goto L_ReturnCont01;
+
+	L_ReturnCont01:
+
+		if (Class >= JOB_LORD_KNIGHT && Class <= JOB_PALADIN2) goto L_Return2ndSkills;
+
+		return;
+
+		L_Return2ndSkills:
+
+			if (ADVQ17 == 1) skill 1001,1,0;
+			if (ADVQ18 == 1) skill 1002,1,0;
+			if (ADVQ19 == 1) skill 1003,1,0;
+			if (ADVQ20 == 1) skill 1004,1,0;
+			if (ADVQ21 == 1) skill 1005,1,0;
+			if (ADVQ22 == 1) skill 1006,1,0;
+			if (ADVQ23 == 1) skill 1007,1,0;
+			if (ADVQ24 == 1) skill 1008,1,0;
+			if (ADVQ25 == 1) skill 1009,1,0;
+			if (ADVQ26 == 1) skill 1010,1,0;
+			if (ADVQ27 == 1) skill 1011,1,0;
+			if (ADVQ28 == 1) skill 1012,1,0;
+			if (ADVQ29 == 1) skill 1013,1,0;
+			if (ADVQ30 == 1) skill 1014,1,0;
+			if (ADVQ31 == 1) skill 1015,1,0;
+			if (ADVQ32 == 1) skill 1016,1,0;
+			if (ADVQ33 == 1) skill 1017,1,0;
+			if (ADVQ34 == 1) skill 1018,1,0;
+			if (ADVQ35 == 1) skill 1019,1,0;
+
+			// Remove old variables not that we're done with them
+			set ADVQ1,0;
+			set ADVQ2,0;
+			set ADVQ3,0;
+			set ADVQ4,0;
+			set ADVQ5,0;
+			set ADVQ6,0;
+			set ADVQ7,0;
+			set ADVQ8,0;
+			set ADVQ9,0;
+			set ADVQ10,0;
+			set ADVQ11,0;
+			set ADVQ12,0;
+			set ADVQ13,0;
+			set ADVQ14,0;
+			set ADVQ15,0;
+			set ADVQ16,0;
+			set ADVQ17,0;
+			set ADVQ18,0;
+			set ADVQ19,0;
+			set ADVQ20,0;
+			set ADVQ21,0;
+			set ADVQ22,0;
+			set ADVQ23,0;
+			set ADVQ24,0;
+			set ADVQ25,0;
+			set ADVQ26,0;
+			set ADVQ27,0;
+			set ADVQ28,0;
+			set ADVQ29,0;
+			set ADVQ30,0;
+			set ADVQ31,0;
+			set ADVQ32,0;
+			set ADVQ33,0;
+			set ADVQ34,0;
+			set ADVQ35,0;
+
+			return;
+}

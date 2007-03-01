@@ -548,7 +548,6 @@ OnTouch:
 
 	warp "in_moc_16.gat",19,142;
 
-	attachnpctimer;
 	initnpctimer;
 		end;
 

@@ -1,9 +1,9 @@
-//===== Athena Script ========================================
+//===== Freya Script =========================================
 //= Job Quest Warp Script
 //===== By: ==================================================
-//= Athena (1.0)
+//= Freya (all)
 //===== Current Version: =====================================
-//= 1.5
+//= 1.4a
 //===== Compatible With: =====================================
 //= Any Athena Version; RO Version Ep4+
 //===== Description: =========================================
@@ -16,39 +16,62 @@
 //= Reorganized.  Added complete rogue quest warps.
 //= Removed unused, duplicate warps. [kobra_k88]
 //= 1.3b activated Dancer JQ warp [Lupus]
-//= 1.4 Imported damn noobie warps from jAthena (because it's broken since last year)
-//= 1.5 Replaced clone maps with the real ones [Lupus]
+//= 1.4 removed warp not more used by new novice maps [Yor]
+//= 1.4a fixed new16-1 warps [Yor]
+//= 1.4b removed monk warps (already in another file) [Yor]
 //============================================================
 
 
 //==============================================================================
 //Novice
 //==============================================================================
-new_zone01.gat,148,112,0	warp	newwarp6001	2,2,new_zone02.gat,100,9
-new_zone02.gat,100,6,0	warp	newwarp6002	2,2,new_zone01.gat,144,112
-new_zone02.gat,126,106,0	warp	newwarp6003	2,2,new_zone02.gat,160,171
-new_zone02.gat,156,171,0	warp	newwarp6004	2,2,new_zone02.gat,123,106
-new_zone02.gat,73,106,0	warp	newwarp6005	2,2,new_zone02.gat,41,172
-new_zone02.gat,46,172,0	warp	newwarp6006	2,2,new_zone02.gat,78,106
+new_1-1.gat,148,112,0	warp	new11	2,3,new_1-2.gat,100,9
+// with new 'new_1-2.gat', this warp not more exist
+//new_1-1.gat,166,112,0	warp	new12	2,2,new_1-2.gat,100,153
+//new_1-2.gat,100,150,0	warp	new12-1	2,1,new_1-1.gat,162,112
+// with new 'new_1-2.gat', this warp not more exist
+//new_1-1.gat,169,75,0	warp	new13	2,2,new_1-2.gat,182,163
+//new_1-2.gat,182,159,0	warp	new13-1	2,2,new_1-1.gat,166,75
+// with new 'new_1-2.gat', this warp not more exist
+//new_1-1.gat,169,147,0	warp	new14	2,2,new_1-2.gat,18,163
+//new_1-2.gat,18,159,0	warp	new14-1	2,2,new_1-1.gat,165,147
+// with new 'new_1-2.gat', this warp not more exist
+//new_1-2.gat,100,122,0	warp	new15	2,1,new_1-2.gat,100,162
+//new_1-2.gat,100,165,0	warp	new15-1	2,1,new_1-2.gat,100,119
+new_1-2.gat,126,106,0	warp	new16	2,2,new_1-2.gat,158,171
+new_1-2.gat,155,171,0	warp	new16-1	2,2,new_1-2.gat,123,106
+new_1-3.gat,96,175,0	warp	new17	3,2,new_1-4.gat,100,14
 
 //==============================================================================
 //Swordman
 //==============================================================================
-job_sword1.gat,192,244,0	warp	SwordWarp0	2,2,job_sword1.gat,215,244
-job_sword1.gat,223,243,0	warp	SwordWarp1	2,2,job_sword1.gat,12,206
-job_sword1.gat,192,206,0	warp	SwordWarp2	2,2,job_sword1.gat,215,205
-job_sword1.gat,223,205,0	warp	SwordWarp3	2,2,job_sword1.gat,12,168
-job_sword1.gat,192,168,0	warp	SwordWarp4	2,2,job_sword1.gat,215,167
+sword_1-1.gat,192,244,0	warp	SwordWarp0	2,2,sword_1-1.gat,215,244
+sword_1-1.gat,223,243,0	warp	SwordWarp1	2,2,sword_1-1.gat,12,206
+sword_1-1.gat,192,206,0	warp	SwordWarp2	2,2,sword_1-1.gat,215,205
+sword_1-1.gat,223,205,0	warp	SwordWarp3	2,2,sword_1-1.gat,12,168
+sword_1-1.gat,192,168,0	warp	SwordWarp4	2,2,sword_1-1.gat,215,167
+sword_2-1.gat,65,117,0	warp	swd201	1,1,sword_2-1.gat,10,245
+sword_2-1.gat,98,27,0	warp	swd202	1,1,sword_2-1.gat,11,207
+sword_2-1.gat,161,27,0	warp	swd203	1,1,sword_2-1.gat,11,207
+sword_2-1.gat,223,205,0	warp	swd204	1,1,sword_2-1.gat,11,168
+sword_2-1.gat,223,243,0	warp	swd205	1,1,sword_2-1.gat,11,206
+sword_2-1.gat,239,117,0	warp	swd206	1,1,sword_2-1.gat,11,169
+sword_3-1.gat,65,117,0	warp	swd301	1,1,sword_3-1.gat,10,245
+sword_3-1.gat,98,27,0	warp	swd302	1,1,sword_3-1.gat,11,207
+sword_3-1.gat,161,27,0	warp	swd303	1,1,sword_3-1.gat,11,207
+sword_3-1.gat,223,205,0	warp	swd304	1,1,sword_3-1.gat,11,168
+sword_3-1.gat,223,243,0	warp	swd305	1,1,sword_3-1.gat,11,206
+sword_3-1.gat,239,117,0	warp	swd306	1,1,sword_3-1.gat,11,169
 // Underground cave
-job_sword1.gat,65,117,0	warp	swd101	1,1,job_sword1.gat,10,245
-job_sword1.gat,98,27,0	warp	swd102	1,1,job_sword1.gat,11,207
-job_sword1.gat,161,27,0	warp	swd103	1,1,job_sword1.gat,11,207
-job_sword1.gat,239,117,0	warp	swd106	1,1,job_sword1.gat,11,169
+sword_1-1.gat,65,117,0	warp	swd101	1,1,sword_1-1.gat,10,245
+sword_1-1.gat,98,27,0	warp	swd102	1,1,sword_1-1.gat,11,207
+sword_1-1.gat,161,27,0	warp	swd103	1,1,sword_1-1.gat,11,207
+sword_1-1.gat,239,117,0	warp	swd106	1,1,sword_1-1.gat,11,169
 
 //==============================================================================
 //Thief
 //==============================================================================
-job_thief1.gat,180,15,0	warp	jthf	7,1,moc_ruins.gat,145,117
+JOB_THIEF1.gat,180,15,0	warp	jthf	7,1,moc_ruins.gat,145,117
 
 
 //==============================================================================
@@ -66,13 +89,15 @@ in_hunter.gat,100,15,0	warp	jhun01	0,0,pay_fild10.gat,143,250
 
 //==============================================================================
 // Monk (St. Capitolina Abbey)
+// Removed: in jobs/2-2/monk.txt file
 //==============================================================================
-prt_monk.gat,192,172,0	warp	monk15	1,1,monk_test.gat,329,50
-monk_test.gat,329,47,0	warp	monk16	1,1,prt_monk.gat,193,166
-monk_test.gat,329,76,0	warp	monk17	1,1,monk_test.gat,259,118
-monk_test.gat,259,115,0	warp	monk18	1,1,monk_test.gat,329,71
-monk_test.gat,272,125,0	warp	monk19	1,1,monk_test.gat,301,127
-monk_test.gat,298,127,0	warp	monk20	1,1,monk_test.gat,268,125
+//prt_monk.gat,192,172,0	warp	monk15	1,1,monk_test.gat,329,50
+//monk_test.gat,329,47,0	warp	monk16	1,1,prt_monk.gat,193,166
+//monk_test.gat,329,76,0	warp	monk17	1,1,monk_test.gat,259,118
+//monk_test.gat,259,115,0	warp	monk18	1,1,monk_test.gat,329,71
+// monk19/monk20 fixed by [Yor]
+//monk_test.gat,271,126,0	warp	monk19	1,1,monk_test.gat,301,127
+//monk_test.gat,298,127,0	warp	monk20	1,1,monk_test.gat,268,126
 
 //==============================================================================
 //Alchemist
@@ -118,5 +143,6 @@ in_rogue.gat,160,103,0	warp	rogue06-fild04	1,1,cmd_fild04.gat,301,177
 //==============================================================================
 //Dancer
 //==============================================================================
-//job_duncer.gat,69,43,0	warp 	duncer1	1,1,comodo.gat,185,156
+//job_duncer.gat,69,43,0	warp	duncer1	1,1,comodo.gat,185,156
 job_duncer.gat,70,45,0	warp	duncer1	2,2,comodo.gat,193,149
+

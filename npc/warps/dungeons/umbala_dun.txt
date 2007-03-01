@@ -1,4 +1,4 @@
-//===== Athena Script ========================================
+//===== Freya Script =========================================
 //= Umbala Dungeon (Yggdrasil Cave) Warp Script
 //===== By: ==================================================
 //= Darkchild (1.0vA); Athena (1.0vB)
@@ -28,6 +28,6 @@ um_dun02.gat,222,259,0	warp	umba0015	1,1,um_dun02.gat,234,255
 um_dun02.gat,231,255,0	warp	umba0016	1,1,um_dun02.gat,219,260
 um_dun02.gat,25,244,0	warp	umba0022	1,1,um_dun02.gat,35,251
 um_dun02.gat,33,249,0	warp	umba0021	1,1,um_dun02.gat,23,242
-um_dun02.gat,51,26,0	warp	umba0022	1,1,um_dun01.gat,153,201 
+um_dun02.gat,51,26,0	warp	umba0022	1,1,um_dun01.gat,153,201
 um_dun02.gat,60,88,0	warp	umba0023	1,1,um_dun02.gat,66,77
 um_dun02.gat,63,80,0	warp	umba0024	1,1,um_dun02.gat,59,92

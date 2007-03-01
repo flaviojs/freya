@@ -7,7 +7,7 @@
 //===== Compatible With: =====================================
 //= Any Athena Version
 //===== Additional Comments: =================================
-//= 1.1 added Garm Baby according to May 10 patch
+//= 1.1 added Hatii Bebe according to May 10 patch
 //= 1.2 Official kRO 10.1 spawns [Playtester]
 //============================================================
 
@@ -31,5 +31,5 @@ xmas_dun02.gat,0,0,0,0	monster	Cookie	1265,20,0,0,0
 xmas_dun02.gat,0,0,0,0	monster	Christmas Cookie	1246,20,0,0,0
 xmas_dun02.gat,0,0,0,0	monster	Cruiser	1248,35,0,0,0
 xmas_dun02.gat,0,0,0,0	monster	Myst Case	1249,50,0,0,0
-xmas_dun02.gat,0,0,0,0	monster	Garm Baby	1515,1,1800000,0,0
+xmas_dun02.gat,0,0,0,0	monster	Hatii Bebe	1515,1,1800000,0,0
 xmas_dun02.gat,0,0,0,0	monster	Stormy Knight	1251,1,3600000,7200000,0

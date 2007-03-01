@@ -1,15 +1,18 @@
-//==== Athena Script ========================================
+//==== Freya Script ==========================================
 //= Alberta Field's Script
 //===== By: ==================================================
 //= Nana (1.0)
+//= Yor (1.1/1.2)
 //===== Current Version: =====================================
-//= 1.0
+//= 1.2
 //===== Compatible With: =====================================
-//= Any Athena Version
+//= Any Freya Version
 //===== Description: =========================================
 //= Warp Points for Treasure Island & Turtle Island
 //===== Additional Comments: =================================
-//= Split of Alberta.txt
+//= 1.0 Split of Alberta.txt
+//= 1.1 Fixed tre10 warp [Yor]
+//= 1.2 Fixed tre05 warp [Yor]
 //============================================================
 
 //Treasure Island Warp's
@@ -19,15 +22,15 @@ treasure01.gat,142,161,0	warp	tre02-1	1,3,treasure01.gat,123,161
 treasure01.gat,164,114,0	warp	tre03	3,1,treasure01.gat,164,88
 treasure01.gat,164,91,0	warp	tre03-1	5,1,treasure01.gat,164,116
 treasure01.gat,99,164,0	warp	tre01-1	1,4,treasure01.gat,114,164
-treasure01.gat,76,111,0	warp	tre10	1,3,treasure01.gat,100,111
+treasure01.gat,75,111,0	warp	tre10	1,3,treasure01.gat,101,111
 treasure01.gat,38,164,0	warp	tre04-1	1,4,treasure01.gat,25,164
-treasure01.gat,40,111,0	warp	tre05	1,3,treasure01.gat,67,112
+treasure01.gat,41,111,0	warp	tre05	1,3,treasure01.gat,65,111
 treasure01.gat,62,111,0	warp	tre05-1	1,3,treasure01.gat,38,111
 treasure01.gat,27,164,0	warp	tre04	1,4,treasure01.gat,40,164
 treasure01.gat,69,75,0	warp	tre07	2,1,treasure01.gat,69,106
 treasure01.gat,69,125,0	warp	tre08	4,1,treasure01.gat,69,142
 treasure01.gat,69,140,0	warp	tre08-1	4,1,treasure01.gat,69,123
-treasure01.gat,98,111,0	warp	tre10-1	1,3,treasure01.gat,74,111
+treasure01.gat,99,111,0	warp	tre10-1	1,1,treasure01.gat,73,111
 treasure01.gat,69,177,0	warp	tre002	3,1,treasure02.gat,102,27
 treasure01.gat,41,37,0	warp	tre06	1,3,treasure01.gat,61,37
 treasure01.gat,58,37,0	warp	tre06-1	1,3,treasure01.gat,39,37

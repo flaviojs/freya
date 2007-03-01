@@ -1,17 +1,20 @@
-//===== Athena Script ========================================
+//===== Freya Script =========================================
 //= Prontera Warp Script
 //===== By: ==================================================
 //= Athena (1.0)
 //= Nana (1.2)
+//= shadow (1.3)
+//= Yor (1.4)
 //===== Current Version: =====================================
 //= 1.4
 //===== Compatible With: =====================================
-//= Any Athena Version
+//= Freya
 //===== Description: =========================================
 //= Warp Points for Prontera
 //===== Additional Comments: =================================
 //= 1.3 prt19 warp fix [shadow]
-//= 1.4 Added warps for the sign quest [MasterOfMuppets]
+//= 1.4 fix some warps positions [Yor]
+//= 1.5 Added some missing warps [Tsuyuki]
 //============================================================
 
 //= Prontera City ============================================
@@ -19,12 +22,12 @@ prontera.gat,107,215,0	warp	prt01	2,2,prt_in.gat,240,139
 prontera.gat,120,267,0	warp	prt02	2,2,prt_in.gat,180,97
 prontera.gat,133,183,0	warp	prt03	2,2,prt_in.gat,50,105
 prontera.gat,134,221,0	warp	prt04	1,1,prt_in.gat,131,71
-prontera.gat,156,22,0	warp	prt001	3,2,prt_fild08.gat,170,375
+prontera.gat,156,22,0	warp	prt001	3,2,prt_fild08.gat,170,374
 prontera.gat,156,360,0	warp	prt005	4,2,prt_castle.gat,102,20
 prontera.gat,177,221,0	warp	prt05	2,2,prt_in.gat,168,128
 prontera.gat,179,184,0	warp	prt06	2,2,prt_in.gat,60,73
 prontera.gat,192,267,0	warp	prt07	2,2,prt_in.gat,178,55
-prontera.gat,204,192,0	warp	prt08	2,2,prt_in.gat,68,134
+prontera.gat,204,191,0	warp	prt08	2,2,prt_in.gat,68,133
 prontera.gat,208,154,0	warp	prt09	2,2,prt_in.gat,172,29
 prontera.gat,22,203,0	warp	prt002	2,3,prt_fild05.gat,367,205
 prontera.gat,237,317,0	warp	prt004	2,2,prt_church.gat,100,60
@@ -49,9 +52,9 @@ prt_in.gat,254,113,0	warp	prt16	3,2,prt_in.gat,256,134
 prt_in.gat,256,131,0	warp	prt16-1	2,2,prt_in.gat,254,110
 prt_in.gat,263,163,0	warp	prt17	1,3,prt_in.gat,276,163
 prt_in.gat,274,163,0	warp	prt17-1	1,3,prt_in.gat,261,163
-prt_in.gat,280,68,0	warp	w472	6,6,prontera.gat,147,287
-prt_in.gat,281,36,0	warp	w473	6,6,prontera.gat,147,287
-prt_in.gat,282,100,0	warp	w471	6,6,prontera.gat,147,287
+//prt_in.gat,280,68,0	warp	w472	6,6,prontera.gat,147,287
+//prt_in.gat,281,36,0	warp	w473	6,6,prontera.gat,147,287
+//prt_in.gat,282,100,0	warp	w471	6,6,prontera.gat,147,287
 prt_in.gat,282,179,0	warp	prt14	3,1,prontera.gat,87,91
 prt_in.gat,285,130,0	warp	w470	6,6,prontera.gat,147,287
 prt_in.gat,37,65,0	warp	prt18	1,3,prt_in.gat,51,65

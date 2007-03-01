@@ -1,27 +1,28 @@
-//===== Freya Script ========================================= 
+//===== Freya Script =========================================
 //= Einbech Warps
 //===== By: ================================================== 
 //= Muad Dib (1.0), SSUNNY@YOUNG(1.1)
 //===== Current Version: ===================================== 
-//= 1.1
+//= 1.2
 //===== Compatible With: ===================================== 
-//= Any eAthena Version
+//= Freya
 //===== Description: ========================================= 
 //= Einbech Town warps
 //===== Additional Comments: ================================= 
 //= Made by Muad_Dib from Prometheus, all credit goes to him.
 //= 1.1 Updated Warps, work done by SSUNNY@YOUNG in Korean eA site [Vicious]
+//= 1.2 Fixed missing Warp to Ein_Fild09.rsw [Tsuyuki]
 //============================================================
 
 //==========================================================================
-//Einbech - Weapon shop
+//Einbech - Weapon Shop
 //==========================================================================
 einbech.gat,177,136,0	warp	eib_wp01	1,1,ein_in01.gat,190,35
 ein_in01.gat,190,38,0	warp	eib_wp01a	1,1,einbech.gat,177,133
 
 
 //==========================================================================
-//Einbech - buildings
+//Einbech - Buildings
 //==========================================================================
 einbech.gat,207,135,0	warp	eib_hu01	1,1,ein_in01.gat,190,99
 ein_in01.gat,187,99,0	warp	eib_hu01a	1,1,einbech.gat,204,135
@@ -39,9 +40,14 @@ ein_in01.gat,265,104,0	warp	eib_b02a	1,1,einbech.gat,141,112
 
 
 //=========================================================================
-//Einbech - Swordman guild
+//Einbech - Swordman Guild
 //=========================================================================
 einbech.gat,256,109,0	warp	eib_js01	1,1,ein_in01.gat,148,153
-ein_in01.gat,144,153,0	warp	eib_js01a	1,1,einbech.gat,253,109
+ein_in01.gat,148,150,0	warp	eib_js01a	1,1,einbech.gat,253,109
 
+//==========================================================================
+//Einbech - Field Related
+//==========================================================================
+einbech.gat,62,29,0	warp	ein_fd09	1,1,ein_fild09.gat,72,351
 
+//==========================================================================

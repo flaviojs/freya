@@ -1,7 +1,8 @@
-//===== Athena Script ========================================
+//===== Freya Script =========================================
 //= Prontera Field Warp Script
 //===== By: ==================================================
 //= Nana (1.0)
+//= Yor (1.1)
 //===== Current Version: =====================================
 //= 1.1
 //===== Compatible With: =====================================
@@ -9,7 +10,7 @@
 //===== Description: =========================================
 //= Warp Points for Prontera Field
 //===== Additional Comments: =================================
-//= 1.1 updating according to jA [Lupus]
+//= 1.1 - Fixed prtf004 source position [Yor]
 //============================================================
 
 //= Prontera Fields ==========================================
@@ -18,7 +19,7 @@ prt_fild00.gat,165,18,0	warp	prtf01	9,3,prt_fild04.gat,158,384
 prt_fild00.gat,18,129,0	warp	prtf015	2,6,gef_fild00.gat,376,140
 prt_fild00.gat,317,18,0	warp	prtf02	8,2,prt_fild04.gat,323,384
 prt_fild00.gat,383,249,0	warp	prtf008	2,4,mjolnir_09.gat,33,248
-prt_fild01.gat,136,373,0	warp	prtf030	1,1,prt_maze01.gat,99,31
+prt_fild01.gat,136,373,0	warp	prtf030	2,2,prt_maze01.gat,176,7
 prt_fild01.gat,199,24,0	warp	prtf001	3,2,prt_gld.gat,159,295
 prt_fild01.gat,20,292,0	warp	prtf009	2,3,mjolnir_09.gat,370,288
 prt_fild01.gat,261,373,0	warp	prtf010	6,2,mjolnir_10.gat,265,16
@@ -61,7 +62,7 @@ prt_fild07.gat,385,186,0	warp	prtf15	3,20,prt_fild08.gat,20,186
 prt_fild07.gat,84,13,0	warp	prtf16	4,2,prt_fild09.gat,87,377
 prt_fild08.gat,16,187,0	warp	prtf15-1	3,17,prt_fild07.gat,380,186
 prt_fild08.gat,16,239,0	warp	prtf14-1	3,15,prt_fild07.gat,379,239
-prt_fild08.gat,170,378,0	warp	prtf004	3,2,prontera.gat,156,26
+prt_fild08.gat,170,377,0	warp	prtf004	3,2,prontera.gat,156,26
 prt_fild08.gat,233,16,0	warp	prtf023	12,1,moc_fild01.gat,238,378
 prt_fild08.gat,371,212,0	warp	prtf005	3,3,izlude.gat,35,78
 prt_fild08.gat,55,21,0	warp	prtf024	4,2,moc_fild01.gat,56,380

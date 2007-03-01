@@ -1,11 +1,11 @@
-//===== Athena Script ========================================
+//===== Freya Script =========================================
 //= Lighthalzen Warp Script
 //===== By: ==================================================
-//= Sara-chan (1.0)
+//= Sara-chan
 //===== Current Version: =====================================
-//= 1.5
+//= 1.7
 //===== Compatible With: =====================================
-//= Any Athena Version; RO Episode 8+
+//= Freya
 //===== Description: =========================================
 //= Warp Points for Lighthalzen
 //===== Additional Comments: =================================
@@ -58,7 +58,7 @@ lhz_in02.gat,261,278,0	warp	lhz022	1,1,lhz_in02.gat,246,278
 lhz_in02.gat,250,278,0	warp	lhz022a	1,1,lhz_in02.gat,265,278
 
 lighthalzen.gat,238,220,0	warp	lhz023	1,1,lhz_in02.gat,28,270
-lhz_in02.gat,27,265,0	warp	lhz023a	1,1,lighthalzen.gat,238,216
+lhz_in02.gat,27,265,0	warp	lhz023a	1,1,lighthalzen.gat,238,213
 
 lhz_in02.gat,13,284,0	warp	lhz024	1,1,lhz_in02.gat,89,285
 lhz_in02.gat,95,285,0	warp	lhz024a	1,1,lhz_in02.gat,19,284
@@ -141,5 +141,5 @@ lhz_in01.gat,278,132,0	warp	lhz048a	1,1,lhz_in01.gat,43,117
 lighthalzen.gat,324,301,0	warp	lhz050	1,1,lhz_in03.gat,239,101
 lhz_in03.gat,237,101,0	warp	lhz050a	1,1,lighthalzen.gat,324,299
 
-lighthalzen.gat,323,322,0	warp	lhz051	1,1,lhz_in03.gat,15,162
-lhz_in03.gat,13,162,0	warp	lhz051a	1,1,lighthalzen.gat,321,322
+lighthalzen.gat,322,321,0	warp	lhz051	1,1,lhz_in03.gat,15,162
+lhz_in03.gat,13,162,0	warp	lhz051a	1,1,lighthalzen.gat,317,322

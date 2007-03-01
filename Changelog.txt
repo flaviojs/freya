@@ -11,6 +11,10 @@
 Date	Added
 
 03/01/07
+	* Note: All scripts are for the most part converted [Tsuyuki]
+	* Note: Now we'll need to fix the stuff in ConversionNotes.txt, and test [Tsuyuki]
+	* Changed: Enabled all Job quests (Now compatible) [Tsuyuki]
+	* Updated: Scripts to Freya [Tsuyuki]
 	* Removed: Database/Script changelogs [Tsuyuki]
 	* Updated: Airships folder to Freya [Tsuyuki]
 	* Updated: Jobs script folder organization [Tsuyuki]

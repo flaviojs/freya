@@ -1,17 +1,17 @@
-//==== Athena Script =====================================
+//==== Freya Script ==========================
 //= Rachel Sanctuary Dungeon Warp Script
-//==== By ================================================
+//==== By ====================================
 //= Playtester
-//==== Current Version :==================================
+//==== Current Version :======================
 //= 1.2
-//==== Compatible With :==================================
-//= Any Athena Version
-//==== Description :======================================
+//==== Compatible With :======================
+//= Freya
+//==== Description :==========================
 //= Warp Points For Rachel Sanctuary Dungeon
-//==== Additional Comment:================================
+//==== Additional Comment:====================
 //= 1.1 Added $ephiroth's warps [Playtester]
 //= 1.2 Replaced old versions with jAthena's [Playtester]
-//========================================================
+//============================================
 
 // Rachel Sanctuary Dungeon
 ra_san01.gat,140,6,0	warp	rachelwarp4000	1,1,ra_temin.gat,276,318

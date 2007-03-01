@@ -1,16 +1,17 @@
-//===== Athena Script ========================================
+//===== Freya Script =========================================
 //= Alberta Warp Script
 //===== By: ==================================================
 //= Athena (1.0)
 //= Nana (1.1)
+//= Yor (1.2)
 //===== Current Version: =====================================
-//= 1.1
+//= 1.2
 //===== Compatible With: =====================================
-//= Any Athena Version
+//= Freya
 //===== Description: =========================================
 //= Warp Points for Alberta, Treasure Island & Turtle Island
 //===== Additional Comments: =================================
-//= No comment!
+//= 1.2 - Fixed invalid warps (alb09/alb01-1) [Yor]
 //============================================================
 
 //Alberta City
@@ -23,7 +24,7 @@ alberta.gat,209,173,0	warp	alb05	1,2,alb_ship.gat,162,171
 alberta.gat,33,42,0	warp	alb06	2,2,alberta_in.gat,74,44
 alberta.gat,65,233,0	warp	alb07	2,2,alberta_in.gat,18,141
 alberta.gat,93,205,0	warp	alb08	2,2,alberta_in.gat,114,134
-alberta.gat,98,153,0	warp	alb09	2,2,alberta_in.gat,185,89
+alberta.gat,99,153,0	warp	alb09	2,2,alberta_in.gat,185,89
 alberta.gat,99,221,0	warp	alb10	2,2,alberta_in.gat,122,161
 alb_ship.gat,26,166,0	warp	alb03-1	4,1,alberta.gat,170,168
 alb_ship.gat,41,163,0	warp	alb04-1	1,3,alberta.gat,180,165
@@ -33,7 +34,7 @@ alb_ship.gat,68,99,0	warp	alb20-1	1,3,alb_ship.gat,35,173
 alberta_in.gat,189,89,0	warp	alb09-1	2,2,alberta.gat,102,153
 alberta_in.gat,114,130,0	warp	alb08-1	2,2,alberta.gat,93,201
 alberta_in.gat,14,141,0	warp	alb07-1	2,3,alberta.gat,61,233
-alberta_in.gat,180,34,0	warp	alb01-1	2,2,alberta.gat,117,42
+alberta_in.gat,180,33,0	warp	alb01-1	2,2,alberta.gat,117,42
 alberta_in.gat,73,141,0	warp	alb02-1	2,3,alberta.gat,137,37
 alberta_in.gat,78,44,0	warp	alb06-1	2,5,alberta.gat,37,41
 alberta_in.gat,125,161,0	warp	alb10-1	2,2,alberta.gat,102,222

@@ -1,4 +1,4 @@
-//===== Freya Script ========================================= 
+//===== Freya Script =========================================
 //= Payon Warps
 //===== By: ================================================== 
 //= Muad Dib (1.0)
@@ -7,7 +7,7 @@
 //===== Current Version: ===================================== 
 //= 1.5
 //===== Compatible With: ===================================== 
-//= Any eAthena Mod
+//= Freya
 //===== Description: ========================================= 
 //= Payon warps
 //===== Additional Comments: ================================= 
@@ -25,7 +25,7 @@ payon.gat,16,142,0		warp	payonwarp001	1,1,pay_gld.gat,370,149
 pay_gld.gat,374,149,0		warp	payonwarp002	1,1,payon.gat,20,142
 payon.gat,122,27,0		warp	payonwarp003	5,3,pay_fild01.gat,333,356
 pay_fild01.gat,333,360,0	warp	payonwarp004	5,3,payon.gat,122,31
-payon.gat,267,89,0		warp	payonwarp005	2,4,pay_fild08.gat,20,74
+payon.gat,267,90,0		warp	payonwarp005	2,4,pay_fild08.gat,20,74
 payon.gat,228,330,0		warp	payonwarp007	4,2,pay_arche.gat,81,22
 pay_arche.gat,81,18,0		warp	payonwarp008	5,2,payon.gat,228,326
 
@@ -58,8 +58,8 @@ payon.gat,151,127,0		warp	payonwarp028	2,2,payon_in01.gat,56,53
 payon_in01.gat,56,50,0		warp	payonwarp029	2,2,payon.gat,151,124
 
 // -- Middle Castle --
-payon.gat,155,248,0		warp	payonwarp030	4,1,payon_in03.gat,98,117
-payon_in03.gat,98,114,0		warp	payonwarp031	5,1,payon.gat,155,245
+payon.gat,156,247,0		warp	payonwarp030	4,1,payon_in03.gat,98,116
+payon_in03.gat,98,114,0		warp	payonwarp031	5,1,payon.gat,156,245
 payon_in03.gat,90,124,0		warp	payonwarp032	2,2,payon_in03.gat,80,124
 payon_in03.gat,83,124,0		warp	payonwarp033	2,2,payon_in03.gat,93,124
 payon_in03.gat,99,133,0		warp	payonwarp034	2,2,payon_in03.gat,99,151
@@ -116,20 +116,20 @@ payon_in03.gat,185,178,0	warp	payonwarp071	2,2,payon_in03.gat,185,149
 payon_in03.gat,185,153,0	warp	payonwarp072	2,2,payon_in03.gat,185,182
 
 // -- Upper Castle --
-payon.gat,107,327,0		warp	payonwarp073	2,2,payon_in03.gat,19,64
-payon_in03.gat,19,60,0		warp	payonwarp074	2,2,payon.gat,107,323
-payon_in03.gat,19,73,0		warp	payonwarp075	2,2,payon_in03.gat,19,90
-payon_in03.gat,19,86,0		warp	payonwarp076	2,2,payon_in03.gat,19,69
-payon_in03.gat,19,103,0		warp	payonwarp077	2,2,payon_in03.gat,19,122
-payon_in03.gat,19,118,0		warp	payonwarp078	2,2,payon_in03.gat,19,99
-payon_in03.gat,11,131,0		warp	payonwarp079	2,2,payon_in03.gat,11,146
-payon_in03.gat,11,142,0		warp	payonwarp080	2,2,payon_in03.gat,11,127
-payon_in03.gat,27,131,0		warp	payonwarp081	2,2,payon_in03.gat,27,146
-payon_in03.gat,27,142,0		warp	payonwarp082	2,2,payon_in03.gat,27,127
-payon_in03.gat,11,161,0		warp	payonwarp083	2,2,payon_in03.gat,11,176
-payon_in03.gat,11,172,0		warp	payonwarp084	2,2,payon_in03.gat,11,157
-payon_in03.gat,27,161,0		warp	payonwarp085	2,2,payon_in03.gat,27,176
-payon_in03.gat,27,172,0		warp	payonwarp086	2,2,payon_in03.gat,27,157
+payon.gat,107,326,0		warp	payonwarp073	2,2,payon_in03.gat,20,63
+payon_in03.gat,20,60,0		warp	payonwarp074	2,2,payon.gat,107,323
+payon_in03.gat,20,73,0		warp	payonwarp075	2,2,payon_in03.gat,20,89
+payon_in03.gat,20,86,0		warp	payonwarp076	2,2,payon_in03.gat,20,70
+payon_in03.gat,20,103,0		warp	payonwarp077	2,2,payon_in03.gat,20,121
+payon_in03.gat,20,118,0		warp	payonwarp078	2,2,payon_in03.gat,19,99
+payon_in03.gat,12,131,0		warp	payonwarp079	2,2,payon_in03.gat,12,145
+payon_in03.gat,12,142,0		warp	payonwarp080	2,2,payon_in03.gat,11,127
+payon_in03.gat,28,131,0		warp	payonwarp081	2,2,payon_in03.gat,28,145
+payon_in03.gat,28,142,0		warp	payonwarp082	2,2,payon_in03.gat,27,127
+payon_in03.gat,12,161,0		warp	payonwarp083	2,2,payon_in03.gat,12,175
+payon_in03.gat,12,172,0		warp	payonwarp084	2,2,payon_in03.gat,11,157
+payon_in03.gat,28,161,0		warp	payonwarp085	2,2,payon_in03.gat,28,175
+payon_in03.gat,28,172,0		warp	payonwarp086	2,2,payon_in03.gat,27,157
 
 // -- House --
 payon_in01.gat,86,9,0		warp	payonwarp087	2,2,payon.gat,266,152

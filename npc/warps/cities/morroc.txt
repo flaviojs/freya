@@ -1,16 +1,17 @@
-//===== Athena Script ========================================
+//===== Freya Script =========================================
 //= Morroc Warp Script
 //===== By: ==================================================
 //= Athena (1.0)
 //= Nana (1.2)
+//= Yor (1.3)
 //===== Current Version: =====================================
-//= 1.2
+//= 1.3
 //===== Compatible With: =====================================
-//= Any Athena Version
+//= Freya
 //===== Description: =========================================
 //= Warp Points for Morroc and Assassin Guild
 //===== Additional Comments: =================================
-//= No Comment
+//= 1.3 Fixed some warp position [Yor]
 //============================================================
 
 //= Morroc City ==============================================
@@ -28,8 +29,8 @@ morocc.gat,302,207,0	warp	moc005	2,2,moc_fild10.gat,22,207
 morocc.gat,46,46,0	warp	moc05	2,1,morocc_in.gat,68,72
 morocc.gat,52,259,0	warp	moc06	1,2,morocc_in.gat,180,65
 morocc.gat,85,55,0	warp	moc08	2,2,morocc_in.gat,44,149
-morocc.gat,98,68,0	warp	moc09	1,1,morocc_in.gat,44,175
-morocc_in.gat,105,95,0	warp	moc10-1	1,3,morocc_in.gat,90,95
+morocc.gat,98,68,0	warp	moc09	1,1,morocc_in.gat,44,174
+morocc_in.gat,106,95,0	warp	moc10-1	1,3,morocc_in.gat,90,95
 morocc_in.gat,106,123,0	warp	moc11-1	1,3,morocc_in.gat,90,123
 morocc_in.gat,108,179,0	warp	moc07-1	2,2,morocc.gat,283,173
 morocc_in.gat,134,77,0	warp	moc03-1	3,1,morocc.gat,251,59
@@ -50,19 +51,19 @@ morocc_in.gat,183,65,0	warp	moc06-1	2,3,morocc.gat,55,259
 morocc_in.gat,23,161,0	warp	moc17	1,2,morocc_in.gat,37,161
 morocc_in.gat,34,161,0	warp	moc17-1	1,2,morocc_in.gat,20,161
 morocc_in.gat,44,146,0	warp	moc08-1	3,2,morocc.gat,82,52
-morocc_in.gat,44,178,0	warp	moc09-1	2,2,morocc.gat,100,70
+morocc_in.gat,44,177,0	warp	moc09-1	2,2,morocc.gat,100,70
 morocc_in.gat,55,123,0	warp	moc18-1	1,3,morocc_in.gat,71,123
 morocc_in.gat,55,95,0	warp	moc19-1	1,3,morocc_in.gat,71,95
 morocc_in.gat,57,161,0	warp	moc20	1,3,morocc_in.gat,73,161
 morocc_in.gat,68,123,0	warp	moc18	1,3,morocc_in.gat,52,123
-morocc_in.gat,68,42,0	warp	moc21-1	2,1,morocc_in.gat,68,65
-morocc_in.gat,68,62,0	warp	moc21	2,1,morocc_in.gat,68,38
+morocc_in.gat,67,41,0	warp	moc21-1	2,1,morocc_in.gat,68,65
+morocc_in.gat,68,63,0	warp	moc21	2,1,morocc_in.gat,67,39
 morocc_in.gat,68,75,0	warp	moc05-1	2,1,morocc.gat,49,49
 morocc_in.gat,68,95,0	warp	moc19	1,3,morocc_in.gat,52,95
 morocc_in.gat,70,161,0	warp	moc20-1	1,3,morocc_in.gat,54,161
 morocc_in.gat,83,90,0	warp	moc01-1	4,1,morocc.gat,199,64
-morocc_in.gat,86,101,0	warp	moc23	2,1,morocc_in.gat,86,120
-morocc_in.gat,86,117,0	warp	moc23-1	3,1,morocc_in.gat,86,98
+morocc_in.gat,86,101,0	warp	moc23	2,1,morocc_in.gat,86,121
+morocc_in.gat,86,118,0	warp	moc23-1	2,1,morocc_in.gat,86,99
 morocc_in.gat,93,123,0	warp	moc11	1,3,morocc_in.gat,109,123
 morocc_in.gat,93,95,0	warp	moc10	1,3,morocc_in.gat,109,95
 
@@ -80,8 +81,8 @@ moc_castle.gat,120,75,0	warp	mocc02	2,3,moc_castle.gat,56,33
 moc_castle.gat,59,34,0	warp	mocc02-1	2,3,moc_castle.gat,124,75
 moc_castle.gat,134,101,0	warp	mocc03	1,1,moc_castle.gat,134,128
 moc_castle.gat,134,124,0	warp	mocc-03	2,2,moc_castle.gat,134,98
-moc_castle.gat,134,139,0	warp	mocc04	1,1,moc_castle.gat,134,160
-moc_castle.gat,134,156,0	warp	mocc04-1	2,2,moc_castle.gat,134,136
+moc_castle.gat,133,139,0	warp	mocc04	1,1,moc_castle.gat,134,159
+moc_castle.gat,134,157,0	warp	mocc04-1	2,2,moc_castle.gat,133,137
 moc_castle.gat,149,163,0	warp	mocc05	2,3,moc_castle.gat,162,163
 moc_castle.gat,158,163,0	warp	mocc05-1	2,3,moc_castle.gat,145,163
 moc_castle.gat,16,131,0	warp	mocc06	1,2,moc_castle.gat,16,164
@@ -92,8 +93,8 @@ moc_castle.gat,29,163,0	warp	mocc08	2,2,moc_castle.gat,44,163
 moc_castle.gat,40,163,0	warp	mocc08-1	2,2,moc_castle.gat,25,163
 moc_castle.gat,51,114,0	warp	mocc09	3,2,moc_castle.gat,54,65
 moc_castle.gat,54,69,0	warp	mocc09-1	3,2,moc_castle.gat,52,117
-moc_castle.gat,54,139,0	warp	mocc10	2,2,moc_castle.gat,54,160
-moc_castle.gat,54,156,0	warp	mocc10-1	2,2,moc_castle.gat,54,134
+moc_castle.gat,53,139,0	warp	mocc10	2,2,moc_castle.gat,54,159
+moc_castle.gat,54,157,0	warp	mocc10-1	2,2,moc_castle.gat,53,136
 moc_castle.gat,63,89,0	warp	mocc11	2,3,moc_castle.gat,83,89
 moc_castle.gat,80,89,0	warp	mocc11-1	2,3,moc_castle.gat,60,89
 moc_castle.gat,69,163,0	warp	mocc12	2,2,moc_castle.gat,86,163

@@ -283,7 +283,7 @@ L_Rebirth:
 	next;
 
 	// No Falcon, Peco, Cart, Zeny, or any items/weight
-	if (Zeny > 0 || Weight > 0 || checkcart(0) || checkfalcon(0) || checkriding(0)) goto L_ExtraFail;
+	if (Zeny > 0 || Weight > 0 || Cart || checkfalcon() != 0 || checkriding() != 0) goto L_ExtraFail;
 
 	mes "[Valkyrie]";
 	mes "You've have cleansed your body and soul.";
@@ -322,13 +322,15 @@ L_Rebirth:
 	callfunc "F_SaveQuestSkills";
 
 	// Change to High Novice
-	jobchange JOB_NOVICE_HIGH;
+	jobchange 0,1;
 
-	// Reset level down to 1/1
-	resetlvl(1);
-
-	// Reset Skills NPC counter
-	set RES_SKILL,0;
+	// Reset status/skills/etc
+	set BaseLevel,1;
+	resetstatus;
+	resetskill;
+	setoption 0x0000;
+	set SkillPoint,0;
+	set StatusPoint,100;
 
 	// Get free Novice Quest Skills
 	skill 142,1,0;
@@ -553,9 +555,9 @@ function	script	F_ToHigh	{
 L_GETHIGH:
 	mes "["+getarg(3)+"]";
 	if (JobLevel < 10) goto L_NOTREADY;
-	if (checkcart(0)) goto L_CART;
-	if (checkfalcon(0)) goto L_FALCON;
-	if (checkriding(0)) goto L_PECO;
+	if (Cart) goto L_CART;
+	if (checkfalcon() != 0) goto L_FALCON;
+	if (checkriding() != 0) goto L_PECO;
 	if (skillpoint > 0) goto L_SKILLPNTS;
 
 	mes "Hello there, "+strcharinfo(0)+"!";
@@ -634,10 +636,10 @@ function	script	F_Rebirth	{
 
 L_GET3RD:
 	if (JobLevel < 45) goto L_NOTREADY;
-	if (checkcart(0)) goto L_CART;
-	if (checkfalcon(0)) goto L_FALCON;
-	if (checkriding(0)) goto L_PECO;
-	if (skillpoint > 0) goto L_SKILLPNTS;
+	if (Cart) goto L_CART;
+	if (checkfalcon() != 0) goto L_FALCON;
+	if (checkriding() != 0) goto L_PECO;
+	if (Skillpoint > 0) goto L_SKILLPNTS;
 
 	mes "Congratulations!";
 	mes "You have trained well. Now stroll here as a "+getarg(3)+"!";

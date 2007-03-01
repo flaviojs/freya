@@ -1,14 +1,11 @@
-//===== Freya Script =========================================
-//= Bio-life Labs - Monster Spawn Locations
+//===== Freya Script =======================================
+//= Lighthalzen Somatology Lab Monster Spawns
 //===== By: ==================================================
-// »» The Prometheus Project ««
-// Copyright (c) 2004,2005
-// Licensed under GPL
-// http://prometheus.fnae.net/
+// The Prometheus Project
 //===== Current Version: =====================================
-//= 1.6
+//= 1.9
 //===== Compatible With: =====================================
-//= Any Athena
+//= Freya
 //===== Additional Comments: =================================
 //= 08/24/05 : Added 1st version. [Muad_Dib]
 //= 1.1: Some corrections to level 1, 2 as pointed out by
@@ -17,7 +14,10 @@
 //=	 I also made the place more Moby ^^
 //= 1.4: Adjusted spawns according to own info from iRO [MasterOfMuppets]
 //= 1.5: More accurate spawn numbers and iRO names thanks to Tharis [Playtester]
-//= 1.6: Official X.3 spawns [Playtester]
+//= 1.6: Fixed Biolabs MvP spawn times [Tsuyuki]
+//= 1.7: Fixed/Added some spawns [Tsuyuki]
+//= 1.8: Updated spawns to Aegis X.3 (Credits to eAthena) [Tsuyuki]
+//= 1.9: Fixed random MvP spawn system [galaxy]
 //============================================================
 
 
@@ -219,23 +219,48 @@ lhz_dun03.gat,139,117,20,11	monster	Sniper Cecil	1644,1,2700000,2500000,1
 lhz_dun03.gat,138,138,36,34	monster	High Priest Margaretha	1643,1,3300000,3000000,1
 lhz_dun03.gat,138,138,36,34	monster	High Wizard Kathryne	1645,1,2580000,2460000,1
 
-lhz_dun03.gat,1,1,0	script	Lhzdun03monster	-1,{
-OnInit:
-	while(1){	
-		set $@metaspawn,rand(1,6);
-		if($@metaspawn == 1)areamonster "lhz_dun03.gat",1,1,300,300,"Lord Knight Seyren",1646,1,"Lhzdun03monster::OnMonsterDead";
-		if($@metaspawn == 2)areamonster "lhz_dun03.gat",1,1,300,300,"Assassin Cross Eremes",1647,1,"Lhzdun03monster::OnMonsterDead";
-		if($@metaspawn == 3)areamonster "lhz_dun03.gat",1,1,300,300,"Whitesmith Horward",1648,1,"Lhzdun03monster::OnMonsterDead";
-		if($@metaspawn == 4)areamonster "lhz_dun03.gat",1,1,300,300,"High Priest Margaretha",1649,1,"Lhzdun03monster::OnMonsterDead";
-		if($@metaspawn == 5)areamonster "lhz_dun03.gat",1,1,300,300,"Sniper Cecil",1650,1,"Lhzdun03monster::OnMonsterDead";
-		if($@metaspawn == 6)areamonster "lhz_dun03.gat",1,1,300,300,"High Wizard Kathryne",1651,1,"Lhzdun03monster::OnMonsterDead";
-		end;
-	OnMonsterDead:
-		initnpctimer;
-		setnpctimer 0;
-		end;
-	OnTimer7200000:
-		stopnpctimer;
-	}
 
+lhz_dun03.gat,1,1,3 script BioPickMvP 139,{
+
+OnInit:
+    set $@BioMvP,rand(6);
+    if ($@BioMvP == 0) goto BioLordKnight;
+    if ($@BioMvP == 1) goto BioAssassinCross;
+    if ($@BioMvP == 2) goto BioMasterSmith;
+    if ($@BioMvP == 3) goto BioHighPriest;
+    if ($@BioMvP == 4) goto BioSniper;
+    if ($@BioMvP == 5) goto BioHighWizard;
+
+    BioLordKnight:
+        monster "lhz_dun03.gat",0,0,"Lord Knight Seyren",1646,1,"BioPickMvP::OnBioDeadMvP";
+        end;
+
+    BioAssassinCross:
+        monster "lhz_dun03.gat",0,0,"Assassin Cross Eremes",1647,1,"BioPickMvP::OnBioDeadMvP";
+        end;
+
+    BioMasterSmith:
+        monster "lhz_dun03.gat",0,0,"Mastersmith Howard",1648,1,"BioPickMvP::OnBioDeadMvP";
+        end;
+
+    BioHighPriest:
+        monster "lhz_dun03.gat",0,0,"High Priest Margaretha",1649,1,"BioPickMvP::OnBioDeadMvP";
+        end;
+
+    BioSniper:
+        monster "lhz_dun03.gat",0,0,"Sniper Cecil",1650,1,"BioPickMvP::OnBioDeadMvP";
+        end;
+
+    BioHighWizard:
+        monster "lhz_dun03.gat",0,0,"High Wizard Kathryne",1651,1,"BioPickMvP::OnBioDeadMvP";
+        end;
+
+    OnBioDeadMvP:
+        initnpctimer;
+        setnpctimer 0;
+        end;
+
+    OnTimer7200000:
+        stopnpctimer;
+        goto OnInit;
 }
