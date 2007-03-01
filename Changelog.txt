@@ -11,6 +11,10 @@
 Date	Added
 
 03/01/2007
+	* Imported; eAthena's skill_tree.txt database [Tsuyuki]
+	 - Might fix unknown typo loading crash on Unix (?)
+	 - Database is now fully translated, making all databases translated
+	 - Reapplied Freya modifications
 	* Fixed: Some bugs in the Comodo Gambling script [Tsuyuki]
 
 02/28/2007
