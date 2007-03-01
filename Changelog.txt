@@ -10,9 +10,13 @@
 
 Date	Added
 
-02/28/07
+03/01/07
+	* Removed: Database/Script changelogs [Tsuyuki]
+	* Updated: Airships folder to Freya [Tsuyuki]
 	* Updated: Jobs script folder organization [Tsuyuki]
 	* Changed: Enabled all Quests (Now compatible) [Tsuyuki]
+
+02/28/07
 	* Updated: Item database to Athena's (Latest) [Tsuyuki]
 	* Updated: Monster database to Freya's (Latest) [Tsuyuki]
 	* Updated: /script/ and main folders [Tsuyuki]

@@ -1,13 +1,13 @@
 //===== Freya Script ======================================= 
 //= Izlude Airport NPCs
 //===== By: ================================================== 
-//= Spirit Death
+//= Spirit Death/Freya
 //===== Current Version: ===================================== 
 //= 1.2
 //===== Compatible With: ===================================== 
-//= any Freya version
+//= Freya
 //===== Additional Comments: ================================= 
-//= 1.0 first release [Spirit Death]
+//= 1.0 First release [Spirit Death]
 //= 1.1 Modified so a player cannot purchase a ticket if the
 //= airship is not present. [Bison]
 //= 1.2 Fixed minor script problems [Tsuyuki]
@@ -15,6 +15,7 @@
 
 
 izlude.gat,201,54,3	script	Airship Staff	91,{
+
 	mes "[Airport Staff]";
 	if ($at_izlude == 0) goto L_Wait;
 	mes "Welcome to the Airport.";
@@ -65,4 +66,3 @@ izlude.gat,201,54,3	script	Airship Staff	91,{
 		mes "Have a nice day.";
 		close;
 }
-
