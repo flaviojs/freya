@@ -659,19 +659,6 @@ static int pc_check_prohibition(struct map_session_data *sd, int zone)
 	
 	if(map[m].flag.turbo && zone&16)
 		ban = 1;
-	
-	// duelling crap by daven {
-	else if(sd->duel_id!=0 && sd->duel_state!=3){
-		if(zone&64 || zone&32){
-			clif_disp_onlyself(sd, "You can not teleport while duelling...", strlen("You can not teleport while duelling..."));
-			return 1;
-		} else if (zone&128) {
-			clif_disp_onlyself(sd, "You can not crack dead branches wile duelling...", strlen("You can not crack dead branches wile duelling..."));
-			return 1;
-		}
-	}
-	// }	
-	
 	else if(map[m].flag.noteleport && zone&32)
 		ban = 1;
 	else if(map[m].flag.noreturn && zone&64)
@@ -858,6 +845,7 @@ int pc_authok(int id,struct mmo_charstatus *st,struct registry *reg)
 	if(sd==NULL)
 		return 1;
 	if(sd->new_fd){
+		// 2重login状態だったので、両方落す
 		clif_authfail_fd(sd->fd,2);	// same id
 		if(session[sd->new_fd] && ((struct block_list*)session[sd->new_fd])->id == id) {
 			clif_authfail_fd(sd->new_fd,2);	// same id
@@ -1216,6 +1204,7 @@ int pc_calc_skilltree(struct map_session_data *sd)
 		}
 	}
 	if (battle_config.gm_allskill > 0 && pc_isGM(sd) >= battle_config.gm_allskill){
+		// 全てのスキル
 		for(i=1;i<158;i++)
 			sd->status.skill[i].id=i;
 		for(i=210;i<291;i++)
@@ -1224,8 +1213,10 @@ int pc_calc_skilltree(struct map_session_data *sd)
 			for(i=291;i<304;i++)
 				sd->status.skill[i].id=i;
 		}
+		//結婚スキルとトマホーク除外
 		for(i=304;i<331;i++)
 			sd->status.skill[i].id=i;
+		//養子スキル除外
 		for(i=355;i<408;i++)
 			sd->status.skill[i].id=i;
 		for(i=411;i<545;i++)
@@ -1235,9 +1226,12 @@ int pc_calc_skilltree(struct map_session_data *sd)
 		for(i=546;i<615;i++)
 			sd->status.skill[i].id=i;
 #endif
+
 		for(i=1001;i<1020;i++)
 			sd->status.skill[i].id=i;
+
 	}else{
+		// 通常の計算
 		int flag, j, f;
 		do{
 			flag=0;
@@ -1285,6 +1279,9 @@ int pc_calc_skilltree(struct map_session_data *sd)
 		sd->status.skill[WE_CALLPARENT].lv=1;
 		sd->status.skill[WE_CALLPARENT].flag=1;
 	}
+	
+	//埋め込み
+	//アルケミストの魂
 	if(sd->sc_data && sd->sc_data[SC_ALCHEMIST].timer!=-1)
 	{
 		if(pc_checkskill(sd,AM_PHARMACY)==10)
@@ -1316,6 +1313,7 @@ int pc_calc_skilltree(struct map_session_data *sd)
 			}
 #endif
 		}
+
 		if(pc_checkskill(sd,AM_BERSERKPITCHER)==0)//カードスキル扱い
 		{
 			sd->status.skill[AM_BERSERKPITCHER].id=AM_BERSERKPITCHER;
@@ -1442,6 +1440,7 @@ int pc_calc_skilltree(struct map_session_data *sd)
 			}
 		}
 	}
+	
 //	if(battle_config.etc_log)
 //		printf("calc skill_tree\n");
 	return 0;
@@ -3410,12 +3409,6 @@ int pc_setpos(struct map_session_data *sd,char *mapname_org,int x,int y,int clrt
 		pc_setstand(sd);
 		skill_gangsterparadise(sd,0);
 	}
-	
-	//duel
-	if(sd->duel_state!=0){
-		cancel_request(sd, "Another player has changed their position - request canceled.");
-	}
-	
 	m=map_mapname2mapid(mapname);
 	if(m<0){
 		int ip,port;
@@ -4735,27 +4728,31 @@ int pc_damage(struct block_list *src,struct map_session_data *sd,int damage)
 	if(src && src->type==BL_PC)
 		ssd = (struct map_session_data *)src;
 
+	//転生や養子の場合の元の職業を算出する
 	s_class = pc_calc_base_job(sd->status.class);
-
+	// 既に死んでいたら無効
 	if(unit_isdead(&sd->bl))
 		return 0;
-
+	// 座ってたら立ち上がる
 	if(pc_issit(sd)) {
 		pc_setstand(sd);
 		skill_gangsterparadise(sd,0);
 	}
 
+	// 歩いていたら足を止める
 	if((sd->sc_data[SC_ENDURE].timer == -1 || map[sd->bl.m].flag.gvg) && sd->sc_data[SC_BERSERK].timer == -1 && !sd->special_state.infinite_endure && !unit_isrunning(&sd->bl))
 		unit_stop_walking(&sd->bl,battle_config.pc_hit_stop_type);
 
+	// 演奏/ダンスの中断
 	if(damage > sd->status.max_hp>>2)
 		skill_stop_dancing(&sd->bl,0);
 
 	if(damage>0)
 		skill_stop_gravitation(&sd->bl);
 
+	// 先制された場合ダメージ-1で戦闘参加者入り(0にするとリスト未登録のNULLとかぶって困る)
 	if(src && src->type == BL_MOB && linkdb_search( &((struct mob_data*)src)->dmglog, (void*)sd->bl.id ) == NULL)
-		linkdb_insert( &((struct mob_data*)src)->dmglog, (void*)sd->status.char_id, (void*)-1 );
+		linkdb_insert( &((struct mob_data*)src)->dmglog, (void*)sd->bl.id, (void*)-1 );
 
 	sd->status.hp-=damage;
 	if(sd->status.pet_id > 0 && sd->pd && sd->petDB && battle_config.pet_damage_support)
@@ -4768,6 +4765,7 @@ int pc_damage(struct block_list *src,struct map_session_data *sd,int damage)
 	if (pc_ischasewalk(sd))
 		status_change_end(&sd->bl, SC_CHASEWALK, -1);
 
+	//敵の攻撃を受けると一定確率で装備が壊れる
 	if(sd->loss_equip_flag&0x1000 && damage > 0) {	//魔法でも壊れる
 		for(i=0;i<11;i++) {
 			if(atn_rand()%10000 < sd->break_myequip_rate_when_hit[i])
@@ -4775,6 +4773,7 @@ int pc_damage(struct block_list *src,struct map_session_data *sd,int damage)
 		}
 	}
 
+	//敵の攻撃を受けると一定確率で装備が消滅
 	if(sd->loss_equip_flag&0x0020 && damage > 0) {
 		for(i=0;i<11;i++) {
 			if(atn_rand()%10000 < sd->loss_equip_rate_when_hit[i])
@@ -4783,14 +4782,17 @@ int pc_damage(struct block_list *src,struct map_session_data *sd,int damage)
 	}
 
 	if(sd->status.hp>0){
+		// まだ生きているならHP更新
 		clif_updatestatus(sd,SP_HP);
 
 		if(sd->status.hp<sd->status.max_hp>>2 && sd->sc_data && sd->sc_data[SC_AUTOBERSERK].timer!=-1 && pc_checkskill(sd,SM_AUTOBERSERK)>0 &&
 			(sd->sc_data[SC_PROVOKE].timer==-1 || sd->sc_data[SC_PROVOKE].val2==0 ))
+			// オートバーサーク発動
 			status_change_start(&sd->bl,SC_PROVOKE,10,1,0,0,0,0);
 
 		return 0;
 	}
+	//スパノビがExp99%でHPが0になるとHPが回復して金剛状態になる
 	if(s_class.job == 23 && pc_nextbaseexp(sd) && 100*sd->status.base_exp/pc_nextbaseexp(sd)>=99 && sd->sc_data && sd->sc_data[SC_STEELBODY].timer==-1){
 		clif_skill_nodamage(&sd->bl,&sd->bl,MO_STEELBODY,5,1);
 		status_change_start(&sd->bl,SkillStatusChangeTable[MO_STEELBODY],5,0,0,0,skill_get_time(MO_STEELBODY,5),0 );
@@ -4799,9 +4801,13 @@ int pc_damage(struct block_list *src,struct map_session_data *sd,int damage)
 		return 0;
 	}
 
+	//死亡前処理
+
+	//OnPCDieイベント
 	if(battle_config.pc_die_script)
 		npc_event_doall_id("OnPCDie",sd->bl.id,sd->bl.m);
 
+	//殺害者のID取得およびOnPCKillイベント
 	if(ssd && ssd != sd) {
 		if(battle_config.set_pckillerid)
 			pc_setglobalreg(sd,"PC_KILLER_ID",ssd->status.account_id);
@@ -4809,9 +4815,11 @@ int pc_damage(struct block_list *src,struct map_session_data *sd,int damage)
 			npc_event_doall_id("OnPCKill",sd->bl.id,sd->bl.m);
 	}
 
+	//カイゼル
 	if(sd->sc_data && sd->sc_data[SC_KAIZEL].timer!=-1)
-		kaizel_lv = sd->sc_data[SC_KAIZEL].val1;
+		kaizel_lv = sd->sc_data[SC_KAIZEL].val1;	// ステータス異常が解除される前にスキルLvを保存
 
+	//自動蘇生
 	if(atn_rand()%10000 < sd->autoraise.rate)
 	{
 		raise_flag = 1;
@@ -4819,6 +4827,7 @@ int pc_damage(struct block_list *src,struct map_session_data *sd,int damage)
 		raise_sp_per      = sd->autoraise.sp_per;
 		raise_sp_rec_flag = sd->autoraise.flag;
 	}
+	//アイテム消滅
 	if(sd->loss_equip_flag&0x0001) {
 		for(i=0;i<11;i++) {
 			if(atn_rand()%10000 < sd->loss_equip_rate_when_die[i])
@@ -4826,9 +4835,12 @@ int pc_damage(struct block_list *src,struct map_session_data *sd,int damage)
 		}
 	}
 
+	//蘇生
 	if(raise_flag)
 	{
+		//判りにくいのでリザのエフェクト
 		clif_skill_nodamage(&sd->bl,&sd->bl,ALL_RESURRECTION,4,1);
+		//HPSP回復
 		sd->status.hp = sd->status.max_hp*raise_hp_per/100;
 		if(sd->status.hp < 1)
 			sd->status.hp = 1;
@@ -4857,14 +4869,6 @@ int pc_damage(struct block_list *src,struct map_session_data *sd,int damage)
 		if(sd->pet.intimate < 0)
 			sd->pet.intimate = 0;
 		clif_send_petdata(sd,1,sd->pet.intimate);
-	}
-	
-	//duel
-	if(sd->duel_state!=0){
-		if(sd->duel_state==3 || (sd->duel_state==1 && sd->duel_count==0))
-			cancel_request(sd, "Another player has died - request canceled.");
-		else
-			break_duel(sd);
 	}
 
 	unit_stop_walking(&sd->bl,0);
@@ -5130,12 +5134,14 @@ int pc_damage(struct block_list *src,struct map_session_data *sd,int damage)
 		}
 		*/
 	}
+	// 強制送還
 	if((map[sd->bl.m].flag.pvp && sd->pvp_point < 0) || map[sd->bl.m].flag.gvg || map[sd->bl.m].flag.norevive){
 		sd->pvp_point=0;
 		pc_setstand(sd);
 		pc_setrestartvalue(sd,3);
 		pc_setpos(sd,sd->status.save_point.map,sd->status.save_point.x,sd->status.save_point.y,0);
 	}
+	// 全ての処理が完了してからカイゼルによる復活
 	else if(kaizel_lv > 0) {
 		pc_setstand(sd);
 		clif_skill_nodamage(&sd->bl,&sd->bl,ALL_RESURRECTION,4,1);

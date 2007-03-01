@@ -59,6 +59,7 @@
 // for VC.NET 2005
 #if _MSC_VER >= 1400
 #pragma warning(disable : 4996)
+#pragma warning(disable : 4819)
 #endif
 
 #define SCRIPT_BLOCK_SIZE 512
@@ -8629,7 +8630,8 @@ int buildin_arrayselect( struct script_state *st )
 			// int
 			else
 			{
-				len += log10( abs( ( int ) elem ) ) + 2;
+				// 符号を考慮して1byte余計に確保
+				len += ( size_t )log10( abs( ( int ) elem ) ) + 2;
 			}
 
 			// separator(:)
@@ -9571,8 +9573,8 @@ int buildin_csvwrite(struct script_state *st)
 	int  col   = conv_num(st,& (st->stack->stack_data[st->start+4]));
 	struct csvdb_data *csv;
 
-	if( !check_csvfilename_write( file, "buildin_csvwrite" ) )
-		return 0;
+	// ファイル名が妥当なものかチェックする
+	if( !check_csvfilename_write( file, "buildin_csvwrite" ) ) return 0;
 
 	csv = script_csvload( file );
 

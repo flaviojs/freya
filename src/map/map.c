@@ -1,5 +1,4 @@
 // $Id: map.c,v 1.3 2004/09/15 00:20:52 running_pinata Exp $
-// $Id: map.c,v 1.3 2004/09/15 00:20:52 running_pinata Exp $
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -86,6 +85,21 @@ char map_cache_file[256]="db/map.info"; // マップキャッシュファイル名
 char motd_txt[256]="conf/motd.txt";
 char help_txt[256]="conf/help.txt";
 char extra_add_file_txt[1024] = "map_extra_add.txt"; // to add items from external software (use append to add a line)
+
+#include "atnwinsvc.h"
+
+// ==========================================
+// Windows サービスにするときの設定
+// ------------------------------------------
+void do_pre_init(void)
+{
+	atnwinsvc_setname(
+		"atnmap", "Athena Map Server",
+		"Provides Map service of Ragnarok Online Emulation." 
+		);
+	atnwinsvc_setlogfile( "./log/map_svc_stdout.log", "" ); 
+}
+
 
 /*==========================================
  * 全map鯖総計での接続数設定
@@ -1127,12 +1141,6 @@ int map_quit(struct map_session_data *sd)
 			pet_lootitem_drop(sd->pd,sd);
 			unit_free( &sd->pd->bl, 0);
 		}
-
-		// duel {
-		if(sd->duel_state!=0)
-			break_duel(sd);
-		// }
-
 		if( sd->hd ) {
 			unit_free( &sd->hd->bl, 0);
 		}
@@ -1143,7 +1151,7 @@ int map_quit(struct map_session_data *sd)
 	if( sd->stack ) {
 		script_free_stack( sd->stack );
 	}
-	
+
 	// ２重ログイン時、後にログインしたキャラのid_dbは削除しない
 	if(sd->new_fd != -1)
 		numdb_erase(id_db,sd->bl.id);
@@ -1254,6 +1262,7 @@ struct skill_unit * map_id2su(int id)
 {
 	struct block_list *bl;
 
+	// スキルユニットは一時object
 	if(id > 0 && id < MAX_FLOORITEM) {
 		bl = object[id];
 		if(bl && bl->type == BL_SKILL) {
@@ -2067,6 +2076,8 @@ static int map_readmap(int m,char *fn,int *map_cache)
 	size = map[m].bxs*map[m].bys*sizeof(int);
 	strdb_insert(map_db,map[m].name,&map[m]);
 
+	atnwinsvc_notify_start();	// 起動処理中を通知
+	
 //	printf("%s read done\n", fn);
 
 	return 0;
@@ -2088,6 +2099,8 @@ static void map_readallmap(void)
 	if(map_read_flag) {
 		map_cache_open(map_cache_file);
 	}
+
+	atnwinsvc_notify_start();	// 起動処理中を通知
 
 	/*
 	// 先に全部のマップの存在を確認
@@ -2437,21 +2450,34 @@ void do_final(void)
 		}
 	}
 
+	atnwinsvc_notify_stop();	// 停止処理中を通知
+
 	do_final_chrif(); // この内部でキャラを全て切断する
 	do_final_npc();
 	do_final_script();
 	do_final_itemdb();
+
+	atnwinsvc_notify_stop();	// 停止処理中を通知
+	
 	do_final_storage();
 	do_final_guild();
 	do_final_clif();
+
+	atnwinsvc_notify_stop();	// 停止処理中を通知
+	
 	do_final_pc();
 	do_final_party();
 	do_final_pet();
 	do_final_homun();
+
+	atnwinsvc_notify_stop();	// 停止処理中を通知
+
 	do_final_friend();
 	do_final_unit();
 	do_final_mob();
 	do_final_atcommand();
+
+	atnwinsvc_notify_stop();	// 停止処理中を通知
 
 	for(i=0;i<map_num;i++){
 		if(map[i].gat) {
@@ -2513,6 +2539,8 @@ int do_init(int argc,char *argv[])
 	charid_db = numdb_init();
 	//address_db = numdb_init();
 
+	atnwinsvc_notify_start();	// 起動処理中を通知
+	
 	grfio_init( (!read_grf_files_txt)? NULL : (argc>6)? argv[6] : GRF_PATH_FILENAME );
 	map_readallmap();
 
@@ -2520,23 +2548,37 @@ int do_init(int argc,char *argv[])
 	add_timer_func_list(map_clearflooritem_timer,"map_clearflooritem_timer");
 	add_timer_interval(gettick()+1000,map_freeblock_timer,0,0,60*1000);
 
+	atnwinsvc_notify_start();	// 起動処理中を通知
+
 	do_init_chrif();
 	do_init_clif();
 	do_init_script(); // parse_script を呼び出す前にこれを呼ぶ
 	do_init_itemdb();
 	do_init_mob();	// npcの初期化時内でmob_spawnして、mob_dbを参照するのでinit_npcより先
+
+	atnwinsvc_notify_start();	// 起動処理中を通知
+
 	do_init_npc();
+	
+	atnwinsvc_notify_start();	// 起動処理中を通知
+
 	do_init_pc();
 	do_init_party();
 	do_init_guild();
 	do_init_storage();
 	do_init_skill();
+
+	atnwinsvc_notify_start();	// 起動処理中を通知
+
 	do_init_pet();
 	do_init_homun();
 	do_init_status();
 	do_init_friend();
 	do_init_ranking();
 	do_init_unit();
+
+	atnwinsvc_notify_start();	// 起動処理中を通知
+	
 	//
 	map_pk_server(map_pk_server_flag);
 	map_pk_nightmaredrop(map_pk_nightmaredrop_flag);
@@ -2554,114 +2596,3 @@ int do_init(int argc,char *argv[])
 
 	return 0;
 }
-
-/*==========================================
- * Break up a duel
- * By Daven
- *------------------------------------------
- */
-int break_duel(struct map_session_data* sd){
-	
-	struct map_session_data * pl_sd = NULL;
-	struct map_session_data * t_sd = NULL;
-	int duelid, i;
-	char msg1[120],msg2[120];
-
-	if (sd->duel_state==0 || sd->duel_id==0){
-		clif_displaymessage(sd->fd, "Unable to end a duel - you are not on a duel.");
-		return -1;
-	}
-
-	// initial definitions
-	pl_sd = map_charid2sd(sd->duel_id); // - duel host's session data
-	duelid = sd->duel_id;				// - duel id
-
-	// duellants counter [-1]
-	pl_sd->duel_count--;
-	
-	sprintf(msg1,"%s has left the duel.", sd->status.name);
-	sprintf(msg2,"Total number of players on your duel: %d", pl_sd->duel_count);
-
-	switch(sd->duel_state){
-		// host leaves
-		case 1:
-			for (i = 0; i < fd_max; i++){
-				if(session[i] && (t_sd = session[i]->session_data) && t_sd->state.auth && t_sd->duel_id==duelid) {
-					t_sd->duel_id=0;
-					t_sd->duel_state=0;
-					t_sd->duel_count=0;
-					clif_displaymessage(t_sd->fd,"The host has left the duel. Duel ended.");
-					clif_set0199(t_sd->fd, 0);
-				}
-			}
-			break;
-		// slave leaves
-		case 2:
-			sd->duel_id = 0;
-			sd->duel_state = 0;
-			sd->duel_count = 0;
-			clif_displaymessage(sd->fd,"You have left the duel.");
-			clif_set0199(sd->fd, 0);
-			
-			if(pl_sd->duel_count == 0){ // the last slave on the duel
-				pl_sd->duel_id=0;
-				pl_sd->duel_state=0;
-				pl_sd->duel_count=0;
-				clif_displaymessage(pl_sd->fd,"All players have left the duel. Duel ended.");
-				clif_set0199(pl_sd->fd, 0);
-				return 0; // - no nee to overload our system with unneeded messages
-			}	
-			
-			for (i = 0; i < fd_max; i++){ 
-				if(session[i] && (t_sd = session[i]->session_data) && t_sd->state.auth && t_sd->duel_id==duelid && t_sd->char_id!=sd->char_id) {
-					clif_disp_onlyself(t_sd, msg1, strlen(msg1));
-					clif_disp_onlyself(t_sd, msg2, strlen(msg2));
-				}
-			}
-			break;
-	}
-	
-	return 0;
-}
-
-/*==========================================
- * Duel request cancellation
- * By Daven
- *------------------------------------------
- */
- int cancel_request(struct map_session_data* sd, char* msg){
-	
-	int i;
-	
-	if (sd->duel_id!=0 && ((sd->duel_state==1 && sd->duel_count==0) || sd->duel_state==3)){
-
-		struct map_session_data * pl_sd = NULL;
-		pl_sd = map_charid2sd(sd->duel_id); // - duel host's session data
-		int duelid = sd->duel_id; // duel id
-		struct map_session_data *t_sd;
-
-		if (sd->duel_id!=0 && ((sd->duel_state==1 && sd->duel_count==0) || (sd->duel_state==3 && pl_sd->duel_count==0))){
-			for (i = 0; i < fd_max; i++){
-				if(session[i] && (t_sd = session[i]->session_data) && t_sd->state.auth && t_sd->duel_id==duelid) {
-					t_sd->duel_id=0;
-					t_sd->duel_state=0;
-					t_sd->duel_count=0;
-					clif_displaymessage(t_sd->fd, msg);
-				}
-			}
-			return 0;
-		}
-		
-		
-		if(sd->duel_state==3){
-			sd->duel_state=0;
-			sd->duel_id = 0;
-			sd->duel_count = 0;
-			clif_displaymessage(sd->fd, "Request cancelled.");
-			clif_displaymessage(pl_sd->fd, msg);
-			return 0;
-		}
-	}
-	
-	return 0;
- }

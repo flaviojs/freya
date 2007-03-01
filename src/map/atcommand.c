@@ -208,11 +208,6 @@ ATCOMMAND_FUNC(homrecalc);
 ATCOMMAND_FUNC(makehomun);
 ATCOMMAND_FUNC(homfriendly);
 ATCOMMAND_FUNC(autoloot);
-ATCOMMAND_FUNC(duel);
-ATCOMMAND_FUNC(dueloff);
-ATCOMMAND_FUNC(accept);
-ATCOMMAND_FUNC(reject);
-ATCOMMAND_FUNC(duelinfo);
 
 /*==========================================
  *AtCommandInfo atcommand_info[]ç\ë¢ëÃÇÃíËã`
@@ -380,11 +375,6 @@ static AtCommandInfo atcommand_info[] = {
 	{ AtCommand_MakeHomun,          "@makehomun",        0, atcommand_makehomun	},
 	{ AtCommand_HomFriendly,        "@homfriendly",      0, atcommand_homfriendly },
 	{ AtCommand_AutoLoot,           "@autoloot",         0, atcommand_autoloot	},
-	{ AtCommand_Duel,               "@duel",             0, atcommand_duel	},
-	{ AtCommand_DuelOff,            "@dueloff",          0, atcommand_dueloff	},
-	{ AtCommand_Accept,             "@accept",           0, atcommand_accept	},
-	{ AtCommand_Reject,             "@reject",           0, atcommand_reject	},
-	{ AtCommand_DuelInfo,           "@duelinfo",         0, atcommand_duelinfo	},
 		// add here
 	{ AtCommand_MapMove,            "@mapmove",          0, NULL },
 	{ AtCommand_Broadcast,          "@broadcast",        0, NULL },
@@ -4240,7 +4230,7 @@ int atcommand_mapinfo(
 			break;
 		case 2:
 			clif_displaymessage(fd, "----- NPCs in Map -----");
-			for (i = 0; i < map[m_id].npc_num;) {
+			for (i = 0; i < map[m_id].npc_num;) {	// map[].npcÇ…ÇÕê⁄êGå^ÇÃNPCÇµÇ©ï€ë∂Ç≥ÇÍÇƒÇ¢Ç»Ç¢ÅiéËî≤Ç´Åj
 				nd = map[m_id].npc[i];
 				switch(nd->dir) {
 				case 0:
@@ -5976,12 +5966,11 @@ atcommand_homevolution(
 
 	nullpo_retr(-1, sd);
 
-	if(sd->hd) {
+	if( sd->hd ) {
 		if(sscanf(message, "%d", &evo_class) < 1)
 			evo_class = 0;
-		homun_change_class(sd, evo_class);
+		homun_change_class( sd, evo_class );
 	}
-
 	return 0;
 }
 
@@ -6087,238 +6076,5 @@ atcommand_autoloot(
 		clif_displaymessage(fd, msg_txt(147));
 	}
 
-	return 0;
-}
-/*==========================================
- * Duel initiation command
- * By Daven
- *------------------------------------------
- */
-int
-atcommand_duel(
-	const int fd, struct map_session_data* sd,
-	const char* command, const char* message)
-{
-	nullpo_retr(-1, sd);
-
-	struct map_session_data * pl_sd = NULL;
-	char msg[120]; //, deb[120];
-	char player_name[120];
-	
-	if (sd->duel_id!=0){
-		
-		if(sd->duel_state==3){
-			clif_displaymessage(fd, "Unable to send request. You already have an unanswered duel request.");
-			return -1;
-		}
-
-		if(sd->duel_state==2){
-			clif_displaymessage(fd, "Unable to send request. You are already duelling...");
-			return -1;
-		}
-
-	}
-	
-	if (!message || !*message || sscanf(message, "%[^\n]", player_name) < 1) {
-		clif_displaymessage(fd, "Please, specify opponent's name (e.g.: @duel <player_name>)");
-		return -1;
-	}
-	
-	if ((pl_sd=map_nick2sd(player_name))==NULL || (pl_sd!=NULL && !pl_sd->state.auth)){
-		clif_displaymessage(fd, "Player is not logged in or does not exist.");
-		return -1;
-	}
-	
-	if(sd->char_id==pl_sd->char_id){
-		clif_displaymessage(fd, "You can not request a duel from yourself!");
-		return -1;
-	}
-	
-	if (sd->bl.m!=pl_sd->bl.m){
-		clif_displaymessage(fd, "Your oponent must be present on the same map as you.");
-		return -1;
-	}
-	
-	if (/* map[sd->bl.m].flag.nopvp || */ map[sd->bl.m].flag.pvp || map[sd->bl.m].flag.gvg){ // flag nopvp commented out due to unavailability
-		clif_displaymessage(fd, "Duelling is not allowed on this map.");
-		return -1;
-	}
-	
-	if(pl_sd->duel_state!=0){
-		if(pl_sd->duel_state==3)
-			sprintf(msg, "Unable to send a duel request: %s already has an unaswered duel request...", pl_sd->status.name);
-		else	
-			sprintf(msg, "Unable to send a duel request: %s is already duelling...", pl_sd->status.name);
-		clif_displaymessage(sd->fd, msg);
-		return -1;
-	}
-		
-	
-	// set the duel id for both players equal to the host's char id
-	sd->duel_id=sd->char_id;
-	pl_sd->duel_id=sd->char_id;
-	
-	// set the host(1) and request(3) state for both opponents
-	sd->duel_state=1;
-	pl_sd->duel_state=3;
-	
-//	sprintf(deb, "%d  --- %d", sd->duel_id, pl_sd->duel_id);
-//	clif_displaymessage(sd->fd, deb);
-
-	// message output
-	sprintf(msg,"Player %s [%d/%d] requests a duel!", sd->status.name,sd->status.base_level,sd->status.job_level);
-	clif_displaymessage(sd->fd, "Duel request sent. Awaiting reply...");
-	clif_displaymessage(pl_sd->fd, msg);
-	clif_disp_onlyself(pl_sd, "@accept - accept duel", strlen("@accept - accept duel"));
-	clif_disp_onlyself(pl_sd, "@reject - reject duel", strlen("@reject - reject duel"));
-	
-	return 0;
-}
-
-/*==========================================
- * Break up a duel @-command
- * By Daven
- *------------------------------------------
- */
-int
-atcommand_dueloff(
-	const int fd, struct map_session_data* sd,
-	const char* command, const char* message)
-{
-
-break_duel(sd);
-
-return 0;
-}
-
-/*==========================================
- * Accept a duel
- * By Daven
- *------------------------------------------
- */
-int
-atcommand_accept(
-	const int fd, struct map_session_data* sd,
-	const char* command, const char* message)
-{
-	struct map_session_data * pl_sd;
-	struct map_session_data * t_sd = NULL;
-	int duelid, i;
-	char msg1[120], msg2[120];
-	pl_sd=NULL;
-
-	if (sd->duel_state!=3 || sd->duel_id==0){
-		clif_displaymessage(fd, "Unable to accept a duel. You have no active requests.");
-		return -1;
-	}
-
-	// initial definitions
-	pl_sd = map_charid2sd(sd->duel_id); // - duel host's session data
-	duelid = sd->duel_id;				// - duel id
-	
-	// duellants counter [+1]
-	pl_sd->duel_count++;
-
-	// prepare messages
-	sprintf(msg1,"%s [%d/%d] has joined the duel!", sd->status.name,sd->status.base_level,sd->status.job_level);
-	sprintf(msg2,"Total number of players on your duel: %d", pl_sd->duel_count);
-
-	// message output
-	for (i = 0; i < fd_max; i++){
-		if(session[i] && (t_sd = session[i]->session_data) && t_sd->state.auth && t_sd->duel_id==duelid && t_sd!=sd) {
-			clif_disp_onlyself(t_sd, msg1, strlen(msg1));
-			clif_disp_onlyself(t_sd, msg2, strlen(msg2));
-		}
-	}
-	
-	sd->duel_state=2;
-	clif_displaymessage(sd->fd,"Duel accepted!");
-	clif_set0199(sd->fd, 1);
-	
-	if(pl_sd->duel_count==1){
-		clif_displaymessage(pl_sd->fd,"Duel accepted!");
-		clif_set0199(pl_sd->fd, 1);
-	}
-	
-	return 0;	
-}
-
-/*==========================================
- * Reject a duel
- * By Daven
- *------------------------------------------
- */
-int
-atcommand_reject(
-	const int fd, struct map_session_data* sd,
-	const char* command, const char* message)
-{
-	struct map_session_data * pl_sd = NULL;
-	int duelid;
-	char msg1[120];
-
-	if (sd->duel_state!=3 || sd->duel_id==0){
-		clif_displaymessage(fd, "Unable to reject a duel. You have no active requests.");
-		return -1;
-	}
-
-	// initial definitions
-	pl_sd = map_charid2sd(sd->duel_id); // - duel host's session data
-	duelid = sd->duel_id;				// - duel id
-	
-	sprintf(msg1,"%s has rejected your request.", sd->status.name);
-
-	// count players and output messages
-	sd->duel_state=0;
-	sd->duel_id=0;
-	if(pl_sd->duel_count==0){
-		pl_sd->duel_state=0;
-		pl_sd->duel_id=0;
-		clif_displaymessage(sd->fd,msg1);
-	}
-	
-	clif_displaymessage(sd->fd,"Duel rejected.");
-	return 0;	
-}
-
-/*==========================================
- * Duel information
- * By Daven
- *------------------------------------------
- */
-int
-atcommand_duelinfo(
-	const int fd, struct map_session_data* sd,
-	const char* command, const char* message)
-{
-	struct map_session_data * pl_sd = NULL;
-	struct map_session_data * t_sd = NULL;
-	int duelid, i;
-	char msg1[120], msg2[120];
-
-	if (sd->duel_state==0 || sd->duel_id==0){
-		clif_displaymessage(fd, "Unable to show duel info. You are not on a duel.");
-		return -1;
-	}
-
-	pl_sd=map_charid2sd(sd->duel_id); 	// duel host's session data
-	duelid=sd->duel_id;					 // duel id
-	
-	// Prepare messages
-	sprintf(msg2,"Total number of players: %d", pl_sd->duel_count);
-
-	// parse players output
-	clif_disp_onlyself(sd, "------------------------------------------", strlen("------------------------------------------"));
-	clif_disp_onlyself(sd, "             [ Duel information ]", strlen( "             [ Duel information ]"));
-	clif_disp_onlyself(sd, "------------------------------------------", strlen("------------------------------------------"));
-	clif_disp_onlyself(t_sd, msg2, strlen(msg2));
-	
-	// list duellants
-		for (i = 0; i < fd_max; i++){
-			if(session[i] && (t_sd = session[i]->session_data) && t_sd->state.auth && t_sd->duel_id==duelid && (t_sd->duel_state==1 || t_sd->duel_state==2)){
-			sprintf(msg1,"[ %s ]-[ %d/%d ]", t_sd->status.name,t_sd->status.base_level,t_sd->status.job_level);
-			clif_disp_onlyself(sd, msg1, strlen(msg1));
-		}
-	}
 	return 0;
 }

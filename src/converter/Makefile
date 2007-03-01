@@ -24,16 +24,16 @@ ifneq ($(findstring LOCALZLIB,$(CFLAGS)), LOCALZLIB)
 	LIBS += -lz
 endif
 
-txt-converter: converter.o login-converter.o char-converter.o inter-converter.c $(COMMON_OBJ)
-	$(CC) -o ../../$@ $> $(LIBS)
+txt-converter: converter.o login-converter.o char-converter.o inter-converter.o $(COMMON_OBJ)
+	$(CC) -o ../../bin/$@ $> $(LIBS)
 
 clean:
 	rm -f *.o
 	rm -f GNUmakefile
 
 ifeq ($(findstring CYGWIN,$(shell uname)), CYGWIN)
-		rm -f ../../txt-converter.exe
+		rm -f ../../bin/txt-converter.exe
 else
-		rm -f ../../txt-converter
+		rm -f ../../bin/txt-converter
 endif
 

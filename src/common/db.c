@@ -74,7 +74,7 @@ static unsigned int strdb_hash(struct dbt* table,void* a)
 
 struct dbt* strdb_init_(int maxlen,const char *file,int line)
 {
-	int i;
+	volatile int i;
 	struct dbt* table;
 
 	table = (struct dbt*)aCalloc(1,sizeof(struct dbt));
@@ -109,7 +109,7 @@ static unsigned int numdb_hash(struct dbt* table,void* a)
 
 struct dbt* numdb_init_(const char *file,int line)
 {
-	int i;
+	volatile int i;
 	struct dbt* table;
 
 	table = (struct dbt*)aCalloc(1,sizeof(struct dbt));
