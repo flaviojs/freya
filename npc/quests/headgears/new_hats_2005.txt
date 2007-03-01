@@ -325,7 +325,7 @@ gl_prison1.gat,137,138,5	script	Zealotus#LhzHat	1200,{
 
 	Zealotus2:
 		mes "[Zealotus]";
-		mes "Hm. If my beloved is";
+		mes "Hm. if my beloved is";
 		mes "acting stubborn or refuses";
 		mes "to listen, feel free to take";
 		mes "drastic measures. Just think";
@@ -954,7 +954,7 @@ gl_prison1.gat,100,48,5	script	Rybio#LhzHat	1201,{
 			mes "[Rybio]";
 			mes "That's right!";
 			mes "Run, get outta here!";
-			mes "If you're not fast enough,";
+			mes "if you're not fast enough,";
 			mes "I might eat you, human!";
 			mes "...Well... Probably not.";
 			close;

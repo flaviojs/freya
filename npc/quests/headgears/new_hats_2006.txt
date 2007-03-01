@@ -82,7 +82,7 @@ rachel.gat,135,121,4	script	Sakyul	933,{
 	mes "Wingmen, they called us..";
 	next;
 	mes "[Sakyul]";
-	mes "If you really want one, I can make a replica for you.";
+	mes "if you really want one, I can make a replica for you.";
 	next;
 
 	menu "Of course I do!",FeatBeret1,"No way man, you creep me out!",FeatBeret2;

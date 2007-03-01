@@ -28,7 +28,7 @@ xmas.gat,184,267,4	script	Pretty Rency	818,{
 	next;
 	menu "Yes.",-,"No.",M_EXIT;
 
-	if ((countitem(5084) < 1) || (countitem(5064) < 1)) GOTO L_NOITEM;//Items: Lazy Racoon Hat, Transformation Leaf,
+	if ((countitem(5084) < 1) || (countitem(5064) < 1)) goto L_NOITEM;//Items: Lazy Racoon Hat, Transformation Leaf,
 	mes "[Pretty Rency]";
 	mes "Congratulations!";
 	delitem 5084,1;//Items: Lazy Racoon Hat,

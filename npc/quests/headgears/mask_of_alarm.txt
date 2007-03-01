@@ -26,7 +26,7 @@ alde_alche.gat,88,180,3	script	Morseland	748,{
 	mes "Touch me and I will rip your arm off!";
 	next;
 	mes "[Morseland]";
-	mes "Anyways... If you want an Alarm Mask,";
+	mes "Anyways... if you want an Alarm Mask,";
 	mes "bring me 3,000 Needle of Alarm,";
 	mes "and 1 Mr. Scream.";
 	next;
@@ -35,7 +35,7 @@ alde_alche.gat,88,180,3	script	Morseland	748,{
 	next;
 	menu "Yep!",-,"Nope!",M_EXIT;
 
-	if (countitem(2288) < 1 || countitem(1095) < 3000) GOTO L_NOITEM; // Items: Mr. Scream, Needle of Alarm,
+	if (countitem(2288) < 1 || countitem(1095) < 3000) goto L_NOITEM; // Items: Mr. Scream, Needle of Alarm,
 	mes "[Morseland]";
 	mes "Great!";
 	next;

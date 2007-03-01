@@ -1996,7 +1996,7 @@ gon_dun03.gat,68,213,0	script	#getitem3-7	111,1,2,{
 		end;
 }
 
-gon_in,18,27,5	script	Madam#gnbs	771,{
+gon_in.gat,18,27,5	script	Madam#gnbs	771,{
 	mes "[SangHwaYeun]";
 	mes "hohohohoho~";
 	mes "Who might this be?";
@@ -2024,7 +2024,7 @@ gon_in,18,27,5	script	Madam#gnbs	771,{
 	close;
 }
 
-gon_dun03,62,222,0	script	Strange dead body#gnbs	111,{
+gon_dun03.gat,62,222,0	script	Strange dead body#gnbs	111,{
 	if (b_sword < 7) {
 		mes "Here's a rotten dead body.";
 		mes "Seemed to be eaten by monsters.";
@@ -2069,7 +2069,7 @@ gon_dun03,62,222,0	script	Strange dead body#gnbs	111,{
 	close;
 }
 
-gonryun,139,142,7	script	Girl##gnbs1	772,{
+gonryun.gat,139,142,7	script	Girl##gnbs1	772,{
 	mes "[SaEunSo]";
 	if (b_sword < 12) {
 		mes "..........";
@@ -3006,7 +3006,7 @@ prontera.gat,275,86,2	script	Young man#SaYumMoon"	97,{
 	close;
 }
 
-yuno,208,164,4	script	Active little girl#gnbs	101,{
+yuno.gat,208,164,4	script	Active little girl#gnbs	101,{
 	mes "[Hisa]";
 	if (b_sword < 21) {
 		mes "Ahhmm.....";
@@ -3046,7 +3046,7 @@ yuno,208,164,4	script	Active little girl#gnbs	101,{
 	close;
 }
 
-yuno_in01,99,101,4	script	Doctor#gnbs	744,{
+yuno_in01.gat,99,101,4	script	Doctor#gnbs	744,{
 	if (b_sword < 23) {
 		mes "[??????]";
 		mes "I have no idea who you are";
@@ -3208,28 +3208,28 @@ yuno_in01,99,101,4	script	Doctor#gnbs	744,{
 			mes "First, How was her body temperature?";
 			set @sick,0;
 			next;
-			setarray .sick1$[1],"Very hot.","Very cold.","Normal.","Turns hot and cold repeatedly.";
-			set @sick1,select(.sick1$[1],.sick1$[2],.sick1$[3],.sick1$[4]);
+			setarray sick1$[1],"Very hot.","Very cold.","Normal.","Turns hot and cold repeatedly.";
+			set @sick1,select(sick1$[1],sick1$[2],sick1$[3],sick1$[4]);
 			if (@sick1 == 4) set @sick,@sick+1;
 			mes "[Cylrnel]";
 			mes "Ok.";
 			mes "Now, about physiological condition.";
 			next;
-			setarray .sick2$[1],"No sweating at all.","Sweating all over the body.","Runny nose.","No tears, sweats at all.";
-			set @sick2,select(.sick2$[1],.sick2$[2],.sick2$[3],.sick2$[4]);
+			setarray sick2$[1],"No sweating at all.","Sweating all over the body.","Runny nose.","No tears, sweats at all.";
+			set @sick2,select(sick2$[1],sick2$[2],sick2$[3],sick2$[4]);
 			if (@sick2 == 1) set @sick,@sick+1;
 			mes "[Cylrnel]";
 			mes "Next, tell me about";
 			mes "her body condition.";
 			next;
-			setarray .sick3$[1],"Nothing particular.","Become paralyzed often.","Muscles became so soft.","Muscles became so hard.";
-			set @sick3,select(.sick3$[1],.sick3$[2],.sick3$[3],.sick3$[4]);
+			setarray sick3$[1],"Nothing particular.","Become paralyzed often.","Muscles became so soft.","Muscles became so hard.";
+			set @sick3,select(sick3$[1],sick3$[2],sick3$[3],sick3$[4]);
 			if (@sick3 == 2) set @sick,@sick+1;
 			mes "[Cylrnel]";
 			mes "How about an internal organs?";
 			next;
-			setarray .sick4$[1],"Stomach hurts like it's been stabbed by a knife.","Head hurts like it's been smashed by a hammer.","Heart beats irregularly.","Has difficulty in breathing.";
-			set @sick4,select(.sick4$[1],.sick4$[2],.sick4$[3],.sick4$[4]);
+			setarray sick4$[1],"Stomach hurts like it's been stabbed by a knife.","Head hurts like it's been smashed by a hammer.","Heart beats irregularly.","Has difficulty in breathing.";
+			set @sick4,select(sick4$[1],sick4$[2],sick4$[3],sick4$[4]);
 			if (@sick4 == 3) set @sick,@sick+1;
 			mes "[Cylrnel]";
 			mes "Hmm.. alright.";
@@ -3238,10 +3238,10 @@ yuno_in01,99,101,4	script	Doctor#gnbs	744,{
 			mes "..............";
 			next;
 			mes "[Cylrnel]";
-			mes "^FF0000"+.sick1$[@sick1]+"";
-			mes ""+.sick2$[@sick2]+"";
-			mes ""+.sick3$[@sick3]+"";
-			mes ""+.sick4$[@sick4]+"^000000";
+			mes "^FF0000"+sick1$[@sick1]+"";
+			mes ""+sick2$[@sick2]+"";
+			mes ""+sick3$[@sick3]+"";
+			mes ""+sick4$[@sick4]+"^000000";
 			mes "right?";
 			next;
 			if(select("No..not exactly..:Yes, I am sure.") == 1){
