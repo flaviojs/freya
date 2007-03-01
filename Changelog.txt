@@ -11,6 +11,8 @@
 Date	Added
 
 02/28/2007
+	* Replaced: Dark Lord's Bone Helm drop with the new Bone Helm as per 11.2 changes [Tsuyuki]
+	* Added: Two missing items -> Slotted Bone Helm, Unknown Headgear [Tsuyuki]
 	* Updated: Packet database with all the new 2-20-07 base packets [Tsuyuki]
 	* Fixed: Madness Canceller not giving bonuses correctly [Tsuyuki]
 	* Fixed: Tamruan's Bastard Sword drop (Typo) [Tsuyuki]

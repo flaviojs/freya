@@ -1865,6 +1865,9 @@ INSERT INTO `item_db` VALUES (5158, 'Monk_Hat_', 'Monk Hat', 5, 30000, 0, 100, 0
 INSERT INTO `item_db` VALUES (5159, 'Golden_Gear_', 'Golden Gear', 5, 20, 0, 900, 0, 5, 0, 1, 1071636478, 2, 256, 0, 40, 30, NULL, NULL);
 INSERT INTO `item_db` VALUES (5160, 'Majestic_Goat_', 'Majestic Goat', 5, 20, 0, 800, 0, 5, 0, 1, 117720226, 2, 256, 0, 0, 41, NULL, 'bonus bStr,1;');
 INSERT INTO `item_db` VALUES (5161, 'Spikey_Band_', 'Spikey Band', 5, 20, 0, 1000, 0, 6, 0, 1, 117888498, 2, 256, 0, 50, 43, NULL, NULL);
+
+INSERT INTO `item_db` VALUES (5162, 'Bone_Helm_', 'Bone Helm', 5, 20, 0, 800, 0, 7, 0, 1, 279714, 2, 256, 0, 70, 103, NULL, 'bonus2 bSubEle,7,-15;');
+
 INSERT INTO `item_db` VALUES (5163, 'Corsair_', 'Corsair', 5, 20, 0, 500, 0, 5, 0, 1, 1071636478, 2, 256, 0, 0, 105, NULL, 'bonus bVit,1;');
 INSERT INTO `item_db` VALUES (5164, 'Tiara_', 'Tiara', 5, 20, 0, 400, 0, 4, 0, 1, 1071636478, 2, 256, 0, 45, 19, NULL, 'bonus bInt,1;');
 INSERT INTO `item_db` VALUES (5165, 'Crown_', 'Crown', 5, 20, 0, 400, 0, 4, 0, 1, 1071636478, 2, 256, 0, 45, 45, NULL, 'bonus bInt,1;');
@@ -1911,6 +1914,8 @@ INSERT INTO `item_db` VALUES (5205, 'Caesar_Bandana', 'Caesar Bandana', 5, 0, 10
 INSERT INTO `item_db` VALUES (5206, 'Flower_Clip', 'Flower Clip', 5, 0, 10, 100, 0, 0, 0, 0, 1071636478, 2, 256, 0, 0, 259, NULL, 'bonus2 bSubRace,3,3; bonus2 bMagicSubRace,3,3;');
 INSERT INTO `item_db` VALUES (5207, 'Angel_Circlet', 'Angel Circlet', 5, 0, 10, 100, 0, 0, 0, 0, 1071636479, 2, 256, 0, 0, 260, NULL, 'bonus2 bSubEle,6,3; bonus bLuk,1;');
 INSERT INTO `item_db` VALUES (5208, 'Rideword_Hat', 'Rideword Hat', 5, 0, 10, 300, 0, 2, 0, 0, 1071636478, 2, 256, 0, 40, 262, NULL, 'bonus2 bHPDrainRate,5,8; bonus2 bSPDrainRate,1,4; bonus2 bHPLossRate,10,5000;');
+
+INSERT INTO `item_db` VALUES (5209, 'Unknown_Item', 'Unknown Item', 5, 20, 0, 300, 0, 2, 0, 0, 1071636479, 2, 256, 0, 0, 263, NULL, NULL);
 
 INSERT INTO `item_db` VALUES (5210, 'Flying_Angel', 'Flying Angel', 5, 20, 0, 300, 0, 1, 0, 0, 1071636479, 2, 256, 0, 10, 264, NULL, 'bonus bInt,1; bonus bAgi,1; bonus bCastrate,-3; bonus bAspdAddRate,3;');
 INSERT INTO `item_db` VALUES (5211, 'Ribbon_Hat', 'Ribbon Hat', 5, 20, 0, 200, 0, 2, 0, 1, 1071636479, 2, 256, 0, 20, 265, NULL, 'bonus bMdef,7;');
