@@ -1,6 +1,0 @@
-// Freya Database Changelog
-
-Date	Added
-
-01/15/07
-	* Added: Freya Database Changelog [Tsuyuki]
