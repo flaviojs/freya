@@ -873,7 +873,7 @@ int status_calc_pc(struct map_session_data* sd, int first)
 			sd->hit -= 30;
 		}
 		if (sd->sc_data[SC_GATLINGFEVER].timer != -1)
-			sd->flee -= sd->sc_data[SC_GATLINGFEVER].val4;
+			sd->flee -= 5*sd->sc_data[SC_GATLINGFEVER].val1;
 		if(sd->sc_data[SC_BATKFOOD].timer != -1)
 			sd->base_atk += sd->sc_data[SC_BATKFOOD].val1;
 		// To-Do: Fix me [Tsuyuki]
@@ -1195,7 +1195,10 @@ int status_calc_pc(struct map_session_data* sd, int first)
 		}
 
 		if (sd->sc_data[SC_GATLINGFEVER].timer != -1)
-			sd->base_atk += sd->sc_data[SC_GATLINGFEVER].val3;
+		{
+			sd->base_atk += 10*sd->sc_data[SC_GATLINGFEVER].val1 + 20;
+			aspd_rate -= 2*sd->sc_data[SC_GATLINGFEVER].val1;
+		}
 
 		if (sd->sc_data[SC_MADNESSCANCEL].timer != -1)
 			sd->base_atk += 100;

@@ -11,6 +11,7 @@
 Date	Added
 
 02/28/2007
+	* Fixed: Madness Canceller not giving bonuses correctly [Tsuyuki]
 	* Fixed: Tamruan's Bastard Sword drop (Typo) [Tsuyuki]
 
 02/24/2007
