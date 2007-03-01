@@ -11,6 +11,7 @@
 Date	Added
 
 02/28/07
+	* Updated: Monster database to Freya's [Tsuyuki]
 	* Updated: /script/ and main folders [Tsuyuki]
 	* Removed: Duel @command system [Tsuyuki]
 	* Updated: Packet database to 02-22-07 Sakexe client (Credits to Huge/Athena) [Tsuyuki]
