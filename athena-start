@@ -6,20 +6,20 @@ PATH=./:$PATH
 L_SRV=login-server
 C_SRV=char-server
 M_SRV=map-server
-L_SRV_C=./conf/login_athena.conf
-C_SRV_C=./conf/char_athena.conf
-C_SRV_C2=./conf/inter_athena.conf
-M_SRV_C=./conf/map_athena.conf
-M_SRV_C2=./conf/battle_athena.conf
-M_SRV_C3=./conf/atcommand_athena.conf
-M_SRV_C4=./conf/script_athena.conf
-M_SRV_C5=./conf/msg_athena.conf
+L_SRV_C=./conf/login_freya.conf
+C_SRV_C=./conf/char_freya.conf
+C_SRV_C2=./conf/inter_freya.conf
+M_SRV_C=./conf/map_freya.conf
+M_SRV_C2=./conf/battle_freya.conf
+M_SRV_C3=./conf/atcommand_freya.conf
+M_SRV_C4=./conf/script_freya.conf
+M_SRV_C5=./conf/msg_freya.conf
 M_SRV_C6=./conf/grf-files.txt
 
 print_start() {
 #	more << EOF
 echo "Freya is now starting..."
-echo "			(c) 2004-2006 Freya Project."
+echo "			(c) 2004-2007 Freya Project."
 echo "			URL:http://www.ro-freya.net/"
 echo ""
 echo "Debug information will appear,"

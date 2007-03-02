@@ -14,10 +14,6 @@ Freya SQL Installation and Upgrade Instructions
   1.1 Windows
   1.2 Linux
   1.3 FreeBSD
-2 Upgrading
-  2.1 Upgrading from version 817
-  2.2 Upgrading from version 0.5.2
-  2.3 Upgrading from version 1.0 RC 1
 
 1 Installation
 ==============
@@ -218,25 +214,3 @@ To convert existing accounts stored in a text file database, use login-converter
 7. Edit the configuration files in conf/ (except import/, mapflag/, help.txt, water.txt and water_height.txt) according to your computer configuration, network configuration, MySQL database server configuration and personal preferences.
 
 8. Compile with "gmake". Recompile with "gmake clean && gmake".
-
-2 Upgrading
-===========
-
-2.1 Upgrading from version 817
-------------------------------
-
-1. Execute the batch queries stored in sql/upgrade_817.sql and sql/upgrade_0.5.2_main.sql.
-
-2. If you want your item and monster databases stored in your MySQL database, execute the batch queries stored in sql/database.sql.
-
-2.2 Upgrading from version 0.5.2
---------------------------------
-
-1. Execute the batch queries stored in sql/upgrade_0.5.2_main.sql.
-
-2. If you created the item_db and mob_db tables, execute the batch queries stored in sql/upgrade_0.5.2_database.sql.
-
-2.3 Upgrading from version 1.0 RC 1
------------------------------------
-
-1. Execute the batch queries stored in sql/upgrade_1.0.0-rc1_main.sql.
