@@ -11,6 +11,7 @@
 Date	Added
 
 03/01/2007
+	* Fixed: Seyren Windsor card now applies STR bonus based on Garment's refinery rate [Tsuyuki]
 	* Updated Kunlun NPCs to Aegis version [GreenGoblin]
 	* Imported: eAthena's skill_tree.txt database [Tsuyuki]
 	 - Might fix unknown typo loading crash on Unix (?)

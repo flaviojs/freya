@@ -1647,7 +1647,7 @@ INSERT INTO `item_db` VALUES (4354, 'Gemini-S58_Card', 'Gemini-S58 Card', 6, 0, 
 INSERT INTO `item_db` VALUES (4355, 'Gremlin_Card', 'Gremlin Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus3 bAddMonsterDropItem,12043,2,100;');
 INSERT INTO `item_db` VALUES (4356, 'Beholder_Card', 'Beholder Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'skill 275,1;');
 INSERT INTO `item_db` VALUES (4357, 'Lord_Knight_Seyren_Card', 'Lord Knight Seyren Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 769, 0, 0, 0, NULL, 'skill 359,1; bonus bMaxHPrate,-50;');
-INSERT INTO `item_db` VALUES (4358, 'Seyren_Windsor_Card', 'Seyren Windsor Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 4, 0, 0, 0, NULL, 'bonus bStr,getequiprefinerycnt(1)-6;');
+INSERT INTO `item_db` VALUES (4358, 'Seyren_Windsor_Card', 'Seyren Windsor Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 4, 0, 0, 0, NULL, 'bonus bStr,getequiprefinerycnt(5)-6;');
 INSERT INTO `item_db` VALUES (4359, 'Assassin_Cross_Eremes_Ca', 'Assassin Cross Eremes Ca', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 4, 0, 0, 0, NULL, 'skill 135,3;');
 INSERT INTO `item_db` VALUES (4360, 'Eremes_Guile_Card', 'Eremes Guile Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus2 bCriticalAddRace,10,6;');
 INSERT INTO `item_db` VALUES (4361, 'Mastersmith_Howard_Card', 'Mastersmith Howard Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus bBreakWeaponRate,1000; bonus bBreakArmorRate,700;');

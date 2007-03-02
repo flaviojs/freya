@@ -1622,7 +1622,7 @@
 4355,Gremlin_Card,Gremlin Card,  6,,10,10,,,,,,,136,,,,{},{ bonus3 bAddMonsterDropItem,12043,2,100; }
 4356,Beholder_Card,Beholder Card,6,,10,10,,,,,,,136,,,,{},{ skill 275,1; }
 4357,Lord_Knight_Seyren_Card,Lord Knight Seyren Card,6,,10,10,,,,,,,769,,,,{},{ skill 359,1; bonus bMaxHPrate,-50; }
-4358,Seyren_Windsor_Card,Seyren Windsor Card,6,,10,10,,,,,,,4,,,,{},{ bonus bStr,getequiprefinerycnt(1)-6; }
+4358,Seyren_Windsor_Card,Seyren Windsor Card,6,,10,10,,,,,,,4,,,,{},{ bonus bStr,getequiprefinerycnt(5)-6; }
 4359,Assassin_Cross_Eremes_Card,Assassin Cross Eremes Card,6,,10,10,,,,,,,4,,,,{},{ skill 135,3; }
 4360,Eremes_Guile_Card,Eremes Guile Card,6,,10,10,,,,,,,2,,,,{},{ bonus2 bCriticalAddRace,10,6; }
 4361,Mastersmith_Howard_Card,Mastersmith Howard Card,6,,10,10,,,,,,,2,,,,{},{ bonus bBreakWeaponRate,1000; bonus bBreakArmorRate,700; }
