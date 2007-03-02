@@ -29,7 +29,6 @@ Date	Added
 	* Updated: Item database to Athena's (Latest) [Tsuyuki]
 	* Updated: Monster database to Freya's (Latest) [Tsuyuki]
 	* Updated: /script/ and main folders [Tsuyuki]
-	* Removed: Duel @command system [Tsuyuki]
 	* Updated: Packet database to 02-22-07 Sakexe client (Credits to Huge/Athena) [Tsuyuki]
 	* Updated: Source code to Athena 2277 (Latest) [Tsuyuki]
 
