@@ -11,6 +11,7 @@
 Date	Added
 
 03/02/2007
+	* Removed: Client folder [Tsuyuki]
 	* Added: Temp item restrictions fix for Death Knight/etc [Tsuyuki]
 	* Removed: Dutch from the manner system (90kb -> 22kb) [Tsuyuki]
 	 - Note: Maybe get a smaller word list?
@@ -29,7 +30,7 @@ Date	Added
 	* Fixed: Bloody Shackle Ball's job restrictions [Tsuyuki]
 	* Fixed: Holden card combo's SP gain bonus [Tsuyuki]
 	* Fixed: Seyren Windsor card now applies STR bonus based on Garment's refinery rate [Tsuyuki]
-	* Updated Kunlun NPCs to Aegis version [GreenGoblin]
+	* Updated: Kunlun NPCs to Aegis version [GreenGoblin]
 	* Imported: eAthena's skill_tree.txt database [Tsuyuki]
 	 - Might fix unknown typo loading crash on Unix (?)
 	 - Database is now fully translated, making all databases translated
@@ -59,13 +60,13 @@ Date	Added
 
 02/23/2007
 	* Fixed: Comparison typo in pc_base_job [Tekglw]
-	* Updated: Sushi Quest for Amatsu (Sashimi is now obtainable) [GreenGoblin]
-	* Added: Comodo Gambling NPCs [GreenGoblin]
-	* Added: Payon Fortune Teller NPCs (custom coordinates in Payon Inn floor 2) [GreenGoblin]
+	* Updated: Sushi Quest for Amatsu (Sashimi is now obtainable) converted from Aegis [GreenGoblin]
+	* Added: Comodo Gambling NPCs converted from Aegis [GreenGoblin]
+	* Added: Payon Fortune Teller NPCs converted from Aegis [GreenGoblin]
 
 02/22/2007
-	* Changed: Valentine's Day Event NPC to a fresh translated Aegis conversion [GreenGoblin]
-	- old version wasn't all english
+	* Replaced: Valentine's Day Event script to a fresh translated Aegis conversion [GreenGoblin]
+	- Note: Old version wasn't all english
 
 02/21/2007
 	* Added: Mastermind Game NPC to Geffen file [GreenGoblin]
@@ -100,7 +101,8 @@ Date	Added
 	* Updated: Reconverted Rogue job change quest from eAthena [Tsuyuki]
 	* Updated: Reconverted Monk job change quest from eAthena [Tsuyuki]
 	* Updated: Reconverted Assassin job change quest from eAthena [Tsuyuki]
-	* Fixed: The Biolab barrel code, the last fix to it reversed a previous one that worked [GreenGoblin]
+	* Fixed: The Biolab barrel code [GreenGoblin]
+	- Note: The last fix to it reversed a previous one that worked
 
 02/18/2007
 	* Added: New items from the latest kRO patches (Credits to jAthena) [Tsuyuki]
@@ -111,7 +113,7 @@ Date	Added
 	* Added: Twilight Alchemy #1, and Aid Berserk Potion to Spirit of the Alchemist [Tsuyuki]
 	 - Note that neither of the skills actually do anything, they just show up in your skill tree
 	* Added: Partially implemented Spirit of the Blacksmith [Tsuyuki]
-	 - Spirit of the Blacksmith is fully working, but Full Adrenaline Rush is only partially in
+	 - Note: Spirit of the Blacksmith is fully working, but Full Adrenaline Rush is only partially in
 	* Enabled: Gunslinger and Ninja by default in Freya [Tsuyuki]
 
 02/17/2007
@@ -120,7 +122,7 @@ Date	Added
 	* Added: Official warps for Thanatos Tower [GreenGoblin]
 	* Added: All Thanatos keys and charms to the item_bound [GreenGoblin]
 	* Reverted: Windhawk's element change [Tsuyuki]
-	 - http://freya.dns.st/mantis/view.php?id=447
+	 - Source: http://freya.dns.st/mantis/view.php?id=447
 	* Added: Some missing item prices [Tsuyuki]
 	* Added: Converted Prontera NPCs from Aegis to Freya [Tsuyuki]
 	* Changed: Slight modification to guild deletion (By Harbin) [Tsuyuki]
