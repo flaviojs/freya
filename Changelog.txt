@@ -11,6 +11,9 @@
 Date	Added
 
 03/02/2007
+	* Added: Temp item restrictions fix for Death Knight/etc [Tsuyuki]
+	* Removed: Dutch from the manner system (90kb -> 22kb) [Tsuyuki]
+	 - Note: Maybe get a smaller word list?
 	* Added: Temp job changer for Munak/Bon Gun/Death Knight/Dark Collector classes [Tsuyuki]
 	 - Note: Do NOT enable it yet
 	* Improved: Organization/formatting of the map_freya.conf file [Tsuyuki]

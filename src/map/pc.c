@@ -468,7 +468,9 @@ void pc_makesavestatus(struct map_session_data *sd)
 		sd->status.manner = 0;
 
 	for(i = 0; i < MAX_SKILL; i++) {
-		if (sd->status.skill[i].flag == 13) { // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
+		// flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
+		if (sd->status.skill[i].flag == 13)
+		{
 			sd->status.skill[i].id = 0;
 			sd->status.skill[i].lv = 0;
 			sd->status.skill[i].flag = 0;
@@ -623,10 +625,12 @@ int pc_isequip(struct map_session_data *sd, int n)
 
 	if (battle_config.gm_allequip > 0 && sd->GM_level >= battle_config.gm_allequip)
 		return 1;
-	
-	if (map[sd->bl.m].flag.pvp && (item->flag.no_equip&1)) // no_equip = 1- not in PvP, 2- GvG restriction, 3- PvP and GvG which restriction
+
+	// no_equip = 1- not in PvP, 2- GvG restriction, 3- PvP and GvG which restriction
+	if (map[sd->bl.m].flag.pvp && (item->flag.no_equip&1))
 		return 0;
-	else if (map[sd->bl.m].flag.gvg && (item->flag.no_equip&2)) // no_equip = 1- not in PvP, 2- GvG restriction, 3- PvP and GvG which restriction
+	// no_equip = 1- not in PvP, 2- GvG restriction, 3- PvP and GvG which restriction
+	else if (map[sd->bl.m].flag.gvg && (item->flag.no_equip&2))
 		return 0;
 
 	if(sd->sc_count) { // Item restriction based on status changes
@@ -638,7 +642,8 @@ int pc_isequip(struct map_session_data *sd, int n)
 			return 0;
 		if (item->equip & 0x0100 && sd->sc_data[SC_STRIPHELM].timer != -1)
 			return 0;
-		if (sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_SUPERNOVICE) {
+		if (sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_SUPERNOVICE)
+		{
 			// If Spirit of the Super Novice is active, and Super Novice Lv is over 90, can equip all upper headgears
 			if (item->equip & 0x0100 && sd->status.base_level >= 90)
 				return 1; // All upper Headgears are equipable, regardless of item class restriction
@@ -649,22 +654,27 @@ int pc_isequip(struct map_session_data *sd, int n)
 
 	if (item == NULL)
 		return 0;
-	if (item->sex != 2 && sd->status.sex != item->sex) // Item gender restriction
+	// Item gender restriction
+	if (item->sex != 2 && sd->status.sex != item->sex)
 		return 0;
-	if (item->elv > 0 && sd->status.base_level < item->elv) // Item base level restriction
+	// Item base level restriction
+	if (item->elv > 0 && sd->status.base_level < item->elv)
 		return 0;
 
 	// Upper job restriction
 	upper_type = pc_get_upper_type(sd->status.class);
 	if(upper_type == 0)
 		return 0;
-	if(item->flag.upper != 0) {		// 0 = 1 + 2 + 4 = 7 = all class
+	// 0 = 1 + 2 + 4 = 7 = All classes
+	if(item->flag.upper != 0) {
 		if(!(item->flag.upper & upper_type))
 			return 0;
 	}
 
 	s_class = pc_calc_base_job2(sd->status.class);
-	switch(s_class) { // Normalize special classes into their normal version
+	// Normalize special classes into their normal version
+	switch(s_class)
+	{
 		case JOB_KNIGHT2:
 			s_class = JOB_KNIGHT;
 			break;
@@ -675,13 +685,21 @@ int pc_isequip(struct map_session_data *sd, int n)
 			s_class = JOB_STAR_GLADIATOR;
 	}
 
-	if (((1<<s_class)&item->class) == 0) // Item class restriction
+	// Temp fix for new classes with the max variable problem
+	if ((sd->status.class == JOB_MUNAK || sd->status.class == JOB_BON_GUN ||
+		 sd->status.class == JOB_DARK_COLLECTOR || sd->status.class == JOB_DEATH_KNIGHT) &&
+		 (item->class == 1071636479 || item->class == 1071636478))
+		return 1;
+
+	// Item class restriction
+	if (((1<<s_class)&item->class) == 0)
 		return 0;
 
 	return 1;
 }
 
-int pc_break_equip(struct map_session_data *dstsd, unsigned int where) {
+int pc_break_equip(struct map_session_data *dstsd, unsigned int where)
+{
 	int i, j;
 	char output[255];
 
@@ -741,7 +759,9 @@ int pc_break_equip(struct map_session_data *dstsd, unsigned int where) {
  * We have receiving all parts of character -> chararter can enter on map-server
  *------------------------------------------
  */
-void pc_authok_final_step(int id, time_t connect_until_time) { // 0x2b26 <account_id>.L <connect_until_time>.L
+// 0x2b26 <account_id>.L <connect_until_time>.L
+void pc_authok_final_step(int id, time_t connect_until_time)
+{
 	struct map_session_data *sd = NULL;
 
 	struct party *p;

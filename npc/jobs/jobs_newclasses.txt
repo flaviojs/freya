@@ -57,14 +57,14 @@ prontera.gat,148,204,3	script	Mich	904,{
 			jobchange JOB_DARK_COLLECTOR;
 			close;
 
-	Job_Change02:
+	L_JobChange02:
 		if (Skillpoints != 0) goto L_SkillPoints;
 		if (Joblevel < 10) goto L_JobLevel02;
 
 		mes "[Mich]";
-		mes "Alright, would you like to become a";
-		if (Sex == 1) mes "Bon Gun?";
-		if (Sex == 0) mes "Munak?";
+		mes "Alright, would you like to become";
+		if (Sex == 1) mes "a Bon Gun?";
+		if (Sex == 0) mes "a Munak?";
 		next;
 		menu "Job Change",L_MunakBonGun,"Cancel",L_Cancel;
 
