@@ -1,572 +1,522 @@
-//===== Freya Script ========================================= 
-//= Gonryun Town
+//===== Freya Script =========================================
+//= Kunlun Town
 //===== By: ================================================== 
-//= x[tsk], KarLaeda
+//= x[tsk]/Freya
 //===== Current Version: ===================================== 
-//= 1.4
+//= 1.5
 //===== Compatible With: ===================================== 
-//= eAthena 1.0
+//= Freya
 //===== Description: ========================================= 
-//
+// Kunlun Town NPCs
 //===== Additional Comments: ================================= 
-// May be missing npc's and dialogue.
-//= 1.1 Fixed Typo’s [Nexon]
+//= 1.0 Added first version [x[tsk]]
+//= 1.1 Fixed typos [Nexon]
 //= 1.2 Removed Duplicates [Silent]
 //= 1.3 Max NPC Name is 23 [Toms]
-//= 1.3a Removed temp NPC plugs due Broken Sword quest [Lupus]
-//= 1.4 Added missing NPC [KarLaeda]
+//= 1.4 Updated script formatting [Tsuyuki]
+//= 1.5 Reconverted from Aegis [GreenGoblin]
 //============================================================
 
 
-alberta.gat,245,69,4	script	Public Relations#01	776,{
-	mes "[Waba]";
-	mes "Hello there! I have traveled far from the Kingdom of Gonryun, my hometown.";
-	mes "I invite all to visit and celebrate the diversity of Gonryun! We welcome all sorts of visitors.";
-	M_Menu:
+
+alberta.gat,245,69,3	script	Kunlun Envoy#1	776,{
+
+	mes "[Wa Bai Hu]";
+	mes "Good day~";
+	mes "Let me invite you all";
+	mes "to my homeland, Kunlun.";
+	mes "It is my honor to guide";
+	mes "such distinguished quests from";
+	mes "the Rune-Midgard kingdom.";
 	next;
-	menu "Gonryun? What is that?",M_1, "Travel to Gonryun.",M_2, "Nevermind.",M_End;
-
-	M_1:
-		mes "[Waba]";
-		mes "The Kingdom of Gonryun is a sight to behold! It floats high above the sky, beyond the pillar of light!";
-		next;
-		mes "[Waba]";
-		mes "You can certainly appreciate the sights of the floating mainland! If you go, be sure to try.";
-		mes "The steamed dumplings and peaches, they're a Gonryun specialty not to be missed!";
-		goto M_Menu;
-	M_2:
-		mes "[Waba]";
-		mes "The traveling expenses are ^0000ff10,000 zeny^000000.  The fee is a bit pricy but this is because of the dangerous nature of the trip.";
-		mes "The return trip is free, however. Are you prepared to go?";
-		next;
-		menu "Let's Go!",-, "Actually... I changed my mind, sorry.",M_End;
-		
-			if (Zeny < 10000){
-				mes "[Waba]";
-				mes "I am sorry if it seems like a lot, but the ^0000ff10,000 zeny^000000 we request is necessary in order to make the trip.";
-				close;
-			}
-			set Zeny,Zeny-10000;
-			warp "gon_fild01.gat",258,82;
-			end;
-	M_End:
-		mes "[Waba]";	
-		mes "Please see me again if you want to visit! I am pleased just to meet an honored guest from the Continent.";
-		close;
-
-}
-
-//===============================================================================
-
-gon_fild01.gat,255,79,6	script	Public Relations#02	776,{
-	mes "[Waba]";
-	mes "We are ready to head back as soon as the conditions are favorable.";
+	menu "About Kunlun...",-,"Visit Kunlun",L_Visit,"Cancel",L_Cancel;
+	mes "[Wa Bai Hu]";
+	mes "Kunlun is a beautiful place,";
+	mes "rich with history, and it's";
+	mes "own traditions. I also think";
+	mes "Kunlun is the best place for";
+	mes "sightseeing.";
 	next;
-	menu "ALBERTA.",-,"I'll stay a bit longer.",M_End;
+	mes "[Wa Bai Hu]";
+	mes "When you arrive at the harbor of";
+	mes "Kunlun, you'll be able to see";
+	mes "miniature replicas of";
+	mes "buildings found in Alberta";
+	mes "and Prontera.";
+	next;
+	mes "[Wa Bai Hu]";
+	mes "After enjoying a nice, leisurely";
+	mes "stroll, step into the beautiful";
+	mes "colomn of light that will take";
+	mes "you up into the clouds to";
+	mes "Kunlun Village.";
+	next;
+	mes "[Wa Bai Hu]";
+	mes "I've heard that on the";
+	mes "Rune-Midgarts continent,";
+	mes "there is another city that is";
+	mes "is kept aloft in the sky by";
+	mes "an ancient. mysterious power...";
+	next;
+	mes "[Wa Bai Hu]";
+	mes "Well, my kunlun also floats";
+	mes "in the air, but without any";
+	mes "so called technology or";
+	mes "power syupply. We considder";
+	mes "our land especially blessed...";
+	next;
+	mes "[Wa Bai Hu]";
+	mes "When you're in Kunlun, don't";
+	mes "forget to try our specialties";
+	mes "such as the giant dumpling ot the";
+	mes "heaven peach.";
+	next;
+	mes "[Wa Bai Hu]";
+	mes "You'd better prepare yourself";
+	mes "if you are planning to visit";
+	mes "the Kunlun dungeon. I must";
+	mes "say, that is not a safe place to go";
+	mes "for fun.";
+	next;
+	mes "[Wa Bai Hu]";
+	mes "If you are interested in visiting";
+	mes "Kunlun, do not hesitate to let";
+	mes "me know. It's my great pleasure";
+	mes "to serve you, honorable guest.";
+	close;
 
-		warp "alberta.gat",243,68;
-		end;
-	M_End:
-		mes "[Waba]";
-		mes "Oh there's no rush! Enjoy yourself and take in all the sights!";
-		close;
-}
+L_Visit:
+	mes "[Wa Bai Hu]";
+	mes "Excellent choice, I am glad";
+	mes "to have you as our guest~";
+	mes "However, s small fee is required";
+	mes "to board the ship to Kunlun.";
+	next;
+	mes "[Wa Bai Hu]";
+	mes "We ask that you pay 10,000 zeny";
+	mes "prior to departure. That fee also";
+	mes "covers the cost of returning";
+	mes "to Alberta. I am ready to guide";
+	mes "you to Kunlun at any time.";
+	next;
+	mes "[Wa Bai Hu]";
+	mes "Would you like to board?";
+	next;
+	menu "To Kunlun~!",-,"No.",L_Cancel;
+	if (Zeny < 10000) goto L_NoZeny;
+	mes "[Wa Bai Hu]";
+	mes "Thank you, let me guide you there";
+	mes "immediately.";
+	close2;
+	set Zeny,Zeny-10000;
+	warp "gon_fild01.gat",258,82;
+	end;
 
-//===============================================================================
+L_NoZeny:
+	mes "[Wa Bai Hu]";
+	mes "I am sorry, but you must have";
+	mes "10,000 zeny to travel to Kunlun.";
+	mes "Please make sure you have enough";
+	mes "zeny with you. Thank you, and";
+	mes "please come again.";
+	close;
 
-gon_fild01.gat,187,239,4	script	Public Relations#03	776,{
-	mes "[Choseryu]";
-	mes "The sacred pillar of light connects this island to Gonryun Kingdom. There's no time to idly chit chat now, be on your way.";
-	mes "I hope you will have many fond memories of Gonryun before you leave.";
+L_Cancel:
+	mes "[Wa Bai Hu]";
+	mes "I see. However, whenever you";
+	mes "change your mind, please let me";
+	mes "know. It would be a great pleasure";
+	mes "to serve you, most honorable";
+	mes "guest.";
 	close;
 }
 
-//===============================================================================
+gon_fild01.gat,255,79,7	script	Kunlun Envoy#2	776,{
 
-gonryun.gat,153,64,0	script	Public Relations#04	776,{
-	mes "[Choseryu]";
-	mes "If you're ready to set sail I can send you back to the harbor.";
+	mes "[Wa Bai Hu]";
+	mes "So, did you enjoy your trip?";
+	mes "I guess it's the time for you to";
+	mes "go home. The ship to Rune-Midgard";
+	mes "is ready to depart at any time.";
 	next;
-	menu "Send me to the harbor.",-,"I'd like to stay a bit longer.",M_End;
+	menu "Go back to Alberta",-,"Cancel",L_Cancel;
+	mes "[Wa Bai Hu]";
+	mes "Please come again.";
+	mes "I hope you will let your friends";
+	mes "know about Kunlun when you get";
+	mes "back. Now. let me guide you";
+	mes "back to Alberta.";
+	close2;
+	warp "alberta.gat",243,67;
+	end;
 
-		mes "[Choseryu]";
-		mes "Please come back to visit soon!";
-		next;
-		warp "gon_fild01.gat",258,82;
-		close;
-	M_End:
-		mes "[Choseryu]";
-		mes "Be sure to see all that Gonryun has to offer!";
-		close;
-}
-
-//===============================================================================
-//Inn
-//===============================================================================
-
-gon_in.gat,153,35,4	script	Hotel Manager	702,{
-	mes "[Mayouban]";
-	mes "Welcome! Your face is new around here. We've had many strangers from the outside coming into the village recently.";
-	mes "We've been quite short-handed here at the hotel.";
-	next;
-	mes "[Mayouban]";
-	mes "It always seems to be 'get me this' or 'get me that' with the customers! Never a tip or a compliment. I suppose I should really welcome all the extra business.";
-	next;
-	menu "I'd like something to drink.",-,"I'll be on my way.",M_End;
-
-		mes "[Mayouban]";
-		mes "Here you go.  There have been so many rowdy customers lately sometimes I'd just like to sit down and have a drink myself.";
-		close;
-	M_End:
-		mes "[Mayouban]";
-		mes "May you have a safe journey! Come back any time.";
-		close;
-}
-
-//===============================================================================
-
-gonryun.gat,139,142,6	script	Girl#08	772,{
-	mes "[Sanfayon]";
-	mes "................";
-	mes "It's been great having new visitors come to the village, but........ ever since I was robbed by that Thief.......";
-	next;
-	mes "[Sanfayon]";
-	mes "I have been so afraid of the foreigners.....";
-	emotion e_wah;
+L_Cancel:
+	mes "[Wa Bai Hu]";
+	mes "Take your time, my guest.";
+	mes "There should be many places";
+	mes "you may have missed.";
 	close;
 }
 
-//===============================================================================
+gon_fild01.gat,187,239,7	script	Kunlun Envoy#3	776,{
 
-gon_in.gat,18,27,4	script	Elder's Wife	771,{
-	mes "[Sangufayon]";
-	mes "Oh my! You look like an important visitor from the outside. Aren't you?";
-	next;
-	menu "Yes, I am.",-,"Where is the village Elder?",M_End;
-
-		mes "[Sangufayon]";
-		mes "We do not get many visitors from the outside to see my husband so it's so easy to spot them. Hohohohoho!";
-		close;
-	M_End:
-		mes "[Sangufayon]";
-		mes "The master of the house, hohohohoho? Why... he is upstairs on the second floor if you need to talk to him, hohohoho.";
-		close;
-}
-
-//===============================================================================
-
-gonryun.gat,119,111,4	script	Chen Wan Sok	89,{
-	mes "[Chen Wan Sok]";
-	mes "The village Elder here is truly a sociable fellow. Just because he is friendly does not mean he is lax on the rules! He can get riled up sometimes.";
-	next;
-	mes "[Chen Wan Sok]";
-	mes "When the Elder's blessing, you can get away with a lot of things in this town. Sometimes there are those that cause mischief, but they are always dealt with.";
+	mes "[Zhang Quing Long]";
+	mes "Please head north to enter Kunlun.";
+	mes "I hope you will have a great time";
+	mes "while staying in Kunlun.";
 	close;
 }
 
-//===============================================================================
+gonryun.gat,153,64,7	script	Kunlun Envoy#4	776,{
 
-gonryun.gat,237,225,4	script	Hanyon Kyou	776,{
-	mes "[Hanyon Kyou]";
-	mes "How could I have done something like this?";
-	mes "..............";
+	mes "[Zhang Quing Long]";
+	mes "Please make yourself comfortable.";
+	mes "If you want to go back, I will";
+	mes "be more then happy to guide you";
+	mes "to the ship to Alberta.";
 	next;
-	mes "[Hanyon Kyou]";
-	mes "I've dropped my lucky knife! Now it's probably gone forever."; 
+	menu "Go back to the harbor",-,"Cancel",L_Cancel;
+	mes "[Zhang Quing Long]";
+	mes "I hope you enjoyed your trip.";
+	mes "Now, let me guide you back";
+	mes "to the harbor.";
+	close2;
+	warp "gon_fild01.gat",258,82;
+	end;
+
+L_Cancel:
+	mes "[Zhang Quing Long]";
+	mes "Take your time, my guest.";
+	mes "There should be many places";
+	mes "you may have missed.";
 	close;
 }
 
-//===============================================================================
+gonryun.gat,237,64,3	script	YunKyoHam	776,{
 
-gonryun.gat,51,101,4	script	Gaiysonchoru	778,{
-	mes "[Gaiysonchoru]";
-	emotion e_swt;
-	mes "..............";
-	next;
-	mes "[Gaiysonchoru]";
-	mes "Well......... I'm worried.";
-	next;
-	mes "[Gaiysonchoru]";
-	mes "So very worried.";
-	close;
-}
-
-//===============================================================================
-
-gonryun.gat,237,226,3	script	YunKyoHam#gn	776,{
+	if (nakha == 3) goto L_Sword3;
+	if (nakha == 2 && countitem(1201) > 0) goto L_Sword2;
+	if (nakha == 2) goto L_Sword2;
 	mes "[YunKyoHam]";
-	if (nakha < 2) {
-		mes "Oh no~ Holy cow!";
-		mes "Can't believe I dropped";
-		mes "my valuable knife! ahhhhhh.";
-		if (baselevel >= 20) {
-			next;
-			if (nakha == 0) set nakha,1;
-			mes "[YunKyoHam]";
-			mes "I need to go down to get it";
-			mes "but...the monsters..";
-			mes "I am so scared..  What should I do!";
-		}
-	} else if (nakha == 2) {
-		mes "ehhhh.. what should I do..";
-		mes "got any business to";
-		mes "take care of?";
-		mes "hmm?";
-		if (countitem(1201) < 1) close;
-		next;
-		mes "[YunKyoHam]";
-		mes "uk! that...that knife";
-		mes "is my ancestor's knife that";
-		mes "I dropped from here.";
-		mes "Where did you get it?";
-		next;
-		mes "[YunKyoHam]";
-		mes "I dropped that knife from";
-		mes "here and it belongs to my";
-		mes "ancestor's property. It sure is";
-		mes "a cheap knife,";
-		mes "but really valuable to me";
-		mes "and my family.";
-		next; 
-		mes "[YunKyoHam]";
-		mes "Would you hand that";
-		mes "knife to me?";
-		next;
-		if (select("give.:ignore.") == 2 || countitem(1201) < 1) {
-			mes "[YunKyoHam]";
-			mes "Huk! my family heiloom!!";
-			mes "You Evil! Satan! Animal! Hode";
-			mes "My curse shall be on his head!!!";
-			close;
-		}
-		mes "[YunKyoHam]";
-		mes "ohoh! Thank you!";
-		mes "Take these potions.";
-		mes "They are not expensive";
-		mes "but my favorites.";
-		set nakha,3;
-		delitem 1201, 1; // Knife
-		getitem 505,2; // Blue_Potion
-		next;
-		mes "[YunKyoHam]";
-		mes "You kept my family";
-		mes "treasure safe. Thank you!!";
-		mes "hahaha";
-	} else {
-		mes "next.. I heard my neighbor";
-		mes "is worrying about something";
-		mes "these days.. well, I got my";
-		mes "own business to take care of.";
-	}
+	mes "Oh no! What should I do?";
+	mes "I have lost";
+	mes "the short sword that is important to me!";
+	if (BaseLevel >= 20) goto L_Level;
+	close;
+
+L_Level:
+	next;
+	if (nakha == 0) set nakha,1;
+	mes "[YunKyoHam]";
+	mes "I want to go down there,";
+	mes "but I'm afraid of the monsters.";
+	mes "It's so terrible..";
+	close;
+		
+L_Sword1:
+	mes "[YunKyoHam]";
+	mes "Oh no! What should I do?";
+	mes "I have lost";
+	mes "the short sword that is important to me!";
+	next;
+	mes "[YunKyoHam]";
+	mes "I want to go down there,";
+	mes "but I'm afraid of the monsters.";
+	mes "It's so terrible..";
+	close;
+
+L_Sword2:
+	mes "[YunKyoHam]";
+	mes "Sob....Sob...What should I do?";
+	mes "What?";
+	mes "What do you want from me?";
+	mes "Huh?";
+	next;
+	mes "[YunKyoHam]";
+	mes "...Ah.. That short sword";
+	mes "was passed down by my ancestors.";
+	mes "The short sword!";
+	mes "Where did you find it?";
+	next;
+	mes "[YunKyoHam]";
+	mes "Actually,";
+	mes "It is a family heirloom";
+	mes "that I dropped here accidentally.";
+	mes "Although,";
+	mes "it is a cheap sword that you can buy on street;";
+	mes "it is important to me.";
+	next; 
+	mes "[YunKyoHam]";
+	mes "Can you";
+	mes "give the short sword to me?";
+	next;
+	menu "Give it to him",-,"Don't give him",L_Deny;
+	set nakha,3;
+	delitem 1201,1;
+	mes "[YunKyoHam]";
+	mes "Oh! Oh! Thank you!";
+	mes "Please take this.";
+	mes "It might not be very precious";
+	mes "but it's a medicine that I have always used.";
+	getitem 505,2;
+	next;
+	mes "[YunKyoHam]";
+	mes "I really don't know how to thank you.";
+	mes "If it wasn't for you,";
+	mes "I will be scolded by my ancestors.";
+	close;
+
+L_Deny:
+	mes "[YunKyoHam]";
+	mes "How can you do this to my family heirloom...sob!";
+	mes "Demon! Satan! Beast! Worm!";
+	mes "I'll hate you!";
+	close;
+
+L_Sword3:
+	mes "[YunKyoHam]";
+	mes "Hmmm,";
+	mes "The neighbour is having problems too,";
+	mes "I wonder what's their problems?";
+	mes "But I don't think I should interfere.";
 	close;
 }
 
-gon_fild01.gat,245,257,0	script	lost knife#gn	139,1,1,{
-	if (nakha == 1) {
-		set nakha, 2;
-		mes "-something is hidden underneath the sand dunes-";
-		mes " ";
-		mes "-You have found an -";
-		mes "-undefined knife.-";
-		close2;
-		getitem 1201, 1; // Knife
-		end;
-	}
+gon_fild01.gat,245,257,0	script	Short Sword	139,3,3{
+end;
+
+OnTouch:
+	if (nakha == 1) goto L_Discover;
+	end;
+
+L_Discover:
+	set nakha, 2;
+	mes "-Something was buried underneath the sand-";
+	mes " ";
+	mes "-You have discovered-";
+	mes "-an unidentified short sword-";
+	getitem 1201,1;
+	close;
 }
 
-gonryun.gat,200,82,3	script	Sungson Gam#gn	774,{
+gonryun.gat,200,82,3	script	Sungson Gam	744,{
+
 	mes "[Sungson Gam]";
-	mes "Festival is always wonderful.";
-	mes "That's why I love this town.";
-	mes "This town make me feel that I am";
-	mes "in the middle of festival all the time. hehe.";
+	mes "What an enjoyable celebration party.";
+	mes "That's why I like it so much.";
+	mes "There's always a celebration party";
+	mes "in this village, hehe.";
 	close;
 }
 
-gonryun.gat,268,88,3	script	Joonpo Lyang#gn	776,{
+gonryun.gat,268,88,3	script	Joonpo Lyang	776,{
+
 	mes "[Joonpo Lyang]";
-	mes "We are proud in name of independent nation";
-	mes "We've been fighting againt the evil envaders";
-	mes "who wanted to take this blessed land.";
-	mes "And we did win the battles and kept our land until now.";
+	mes "We are an independent race.";
+	mes "We have never been defeated";
+	mes "by the enemies who are jealous of our blessed land.";
+	mes "As a matter of fact, we've always beaten them.";
 	next;
 	mes "[Joonpo Lyang]";
-	mes "We believe in Victory of Triumphal song!";
-	mes "That represents our sunrise!";
+	mes "I belive, the song of victory";
+	mes "is like a the sun of the dawn!";
 	close;
 }
 
-gonryun.gat,118,111,5	script	Wonsuk Chen#gn	89,{
+gonryun.gat,118,111,5	script	Wonsuk Chen	89,{
+
 	mes "[Wonsuk Chen]";
-	mes "A chieft of this town is";
-	mes "an open-hearted man.";
-	mes "But I heard that there are some";
-	mes "people who don't like his character. hmm..";
+	mes "The leader is an open-minded person.";
+	mes "However, some people don't like him";
+	mes "due to his open-minded thinking.";
+	mes "Hmm.......";
 	next;
 	mes "[Wonsuk Chen]";
-	mes "Well, I like my town. Chief's efforts";
-	mes "make our town way better. I just hope";
-	mes "I don't get to see some dummies";
-	mes "around the town anymore.";
+	mes "But because of him";
+	mes "the culture of our village become open minded too...";
+	mes "I just hope that";
+	mes "there won't be some crazy people around.";
 	close;
 }
 
-gonryun.gat,181,161,3	script	Moonjin Chung#gn	773,{
+gonryun.gat,181,161,3	script	Moonjin Chung	773,{
+
 	mes "[Moonjin Chung]";
-	mes "The men in our town, Gonryun are";
-	mes "all brave and energetic.";
-	mes "But, they are unable to get married";
-	mes "these days..";
+	mes "The man of Kunlun";
+	mes "are healthy and energetic.";
+	mes "But recently,";
+	mes "they cannot find a wife..." ;
 	next;
 	mes "[Moonjin Chung]";
-	mes "It's all because there are";
-	mes "way more men than women.";
-	mes "I am not even sure whether";
-	mes "my son could get married";
-	mes "or not. hmm..";
+	mes "That's because,";
+	mes "the number of men has increased,";
+	mes "while the girls become fewer.";
+	mes "I wonder";
+	mes "if my son will be able to find a wife...";
 	close;
 }
 
-gonryun.gat,113,135,6	script	Gatekeeper#gn1	780,{
+gonryun.gat,113,135,6	script	Gatekeeper#1	780,{
+ 
 	mes "[Gatekeeper]";
-	mes "Welcome. This is a resident";
-	mes "of SaYumMoon, a chief";
-	mes "of this town.";
+	mes "Welcome";
+	mes "This is the residence of SaYumMoon,";
+	mes "leader of Kunlun.";
 	next;
 	mes "[Gatekeeper]";
-	mes "It won't likely to happen";
-	mes "but, if we see anything suspicious,";
-	mes "we'll arrest you right away.";
+	mes "Don't do anything evil here.";
+	mes "If you do so,";
+	mes "we will stab you immediately.";
 	next;
 	mes "[Gatekeeper]";
-	mes "But do not worry that much.";
-	mes "Nothing will happen I believe.";
-	mes "Enjoy your visit.";
+	mes "But don't worry.";
+	mes "I don't think that will happen.";
+	mes "I hope you will have a pleasant visit.";
 	close;
 }
 
-gonryun.gat,113,127,6	script	Gatekeeper#gn2	780,{
+gonryun.gat,113,127,6	script	Gatekeeper#2	780,{
+
 	mes "[Gatekeeper]";
-	mes "Welcome. This is a resident";
-	mes "of SaYumMoon, a chief";
-	mes "of this town.";
+	mes "Welcome";
+	mes "This is the residence of SaYumMoon,";
+	mes "leader of Kunlun.";
 	next;
 	mes "[Gatekeeper]";
-	mes "It won't likely to happen";
-	mes "but, if we see anything suspicious,";
-	mes "we'll arrest you right away.";
+	mes "Don't do anything evil here.";
+	mes "If you do so,";
+	mes "we will stab you immediately.";
 	next;
 	mes "[Gatekeeper]";
-	mes "But do not worry that much.";
-	mes "Nothing will happen I believe.";
-	mes "Enjoy your visit.";
+	mes "But don't worry.";
+	mes "I don't think that will happen.";
+	mes "I hope you will have a pleasant visit.";
 	close;
 }
 
-gon_in.gat,73,82,5	script	SungChul Ki#gn	778,{
+gon_in.gat,73,82,5	script	SungChul Ki	778,{
+
+	if (nakha == 3) goto L_Sword3;
 	mes "[SungChul Ki]";
-	if (nakha != 3) {
-		mes "............";
-		next;
-		mes "[SungChul Ki]";
-		mes "puuuuu....This sure is";
-		mes "something to worry about.";
-		close;
-	}
-	set cha, 1;
-	mes "SungChul Ki is my name.";
-	mes "I am a great tea maker.";
-	mes "I give all my efforts";
-	mes "in making tasty tea";
-	mes "night and day.";
+	mes "............";
 	next;
 	mes "[SungChul Ki]";
-	mes "hu...but I haven't make any";
-	mes "great tea lately.";
-	mes "I need some special";
-	mes "ingredients...";
+	mes "Oh.....";
+	mes "It makes me worry, so worry.";
+	close;
+	 
+L_Sword3:	
+	set cha,1;
+	mes "[SungChul Ki]";
+	mes "My name is SungChul Ki,";
+	mes "I am a researcher in tea";
+	mes "who want to create tea of great taste.";
+	mes "I am doing research currently";
+	mes "to create a tea of great taste.";
 	next;
 	mes "[SungChul Ki]";
-	mes "There's a rumor says with snake,";
-	mes "it's possible to make great tea.";
-	mes "But where can I find and how can";
-	mes "I catch one? that's not possible.";
-	mes "hmm...";
+	mes "Oh...there's no progress";
+	mes "in my research recently.";
+	mes "That's because I am looking for";
+	mes "some special ingredients...";
+	next;
+	mes "[SungChul Ki]";
+	mes "There are rumors that,";
+	mes "you can make good tea using snakes.";
+	mes "But, how do I catch snakes,";
+	mes "and how am I going to use it to make good tea.";
+	mes "Oh... sigh";
 	close;
-
-//	no idea what should happen after you started the quest...
-//	if ((v[cha] == 1) & (v[°Ç°-È¯] > 0))
-//		mes "[SungChul Ki]"
-//		mes "...À_? ¹ìÀ> Àâ_Æ_- _ª¿Â"
-//		mes "¹°°ÇÀÌ¶ó°í? ÈåÀ_..."
-//		mes "¿ØÁö ¸ð¸_°Ô ÁÁ_Æº¸ÀÌ_Â°É."
-//		mes "ÀÌ¸R Áàº¸°Ô. ÇÑ¹ø Â÷¸¦"
-//		mes "¸¸÷é_îº¸°Ú_×!"
-//		next;
-//		mes "................................"
-//		next;
-//		mes "................................"
-//		next;
-//		mes "................................"
-//		next;
-//	endif
-//
-//
-//
 }
+	
+gon_in.gat,173,27,3	script	Kuha Woo	774,{
 
-//==============ÃàÁ¦ °ü¸RÀÎ================
-//npc "gon_in" "È_ÀÌ _º" 4_M_TWMIDMAN 101 21 3 5 5
-//OnClick:
-//	mes "[È_ÀÌ _º]"
-//	mes "ÈÞ¿ì... °ÆÁ¤ÀÌ+º."
-//	mes "____ ÀÌ¹ø¿¡÷÷ ÃàÁ¦¸¦ ¹úÀÏ"
-//	mes "Å¸ÀÌ¹ÖÀÌ ¿Ô_Â÷_ _îÂî÷È"
-//	mes "ÀÏÀÎÁö ÀüÇô ÃàÁ¦ÁØºñ°¡"
-//	mes "÷ÇÁö_Ê_Ò_î..."
-//	next;
-//	mes "[È_ÀÌ _º]"
-
-gon_in.gat,173,27,3	script	Kuha Woo#gn	774,{
 	mes "[Kuha Woo]";
-	mes "Like I expected, with my age,";
-	mes "they don't sell alcohol to me.";
-	mes "Adults seems enjoying drinks.";
-	mes "I wonder how it taste.";
+	mes "So,";
+	mes "They are not selling wine to customers of my age.";
+	mes "I wonder how it tastes";
+	mes "because the adults seems really enjoying it... Sigh";
 	next;
 	mes "[Kuha Woo]";
-	mes "However, they're making";
-	mes "some tasty tea that even kid";
-	mes "like me can enjoy.";
-	mes "It's such a heart beating";
-	mes "just even thinking about this new tea.";
+	mes "But I heard that they are producing tea";
+	mes "that is suitable for kids like me.";
+	mes "I wonder when";
+	mes "will I be able to drink this tea.";
+	mes "It just turns me on thinking about it.";
 	close;
 }
 
-gonryun.gat,163,60,4	script	Gonryun Guide	780,{
-	mes "[Wonchi Ha]";
-	mes "Come to Gonryun where passion";
-	mes "and energy overflows. You can feel liveliness";
-	mes "just by walking around!";
-	next;
-	mes "[Wonchi Ha]";
-	mes "I am responsible to help you";
-	mes "with any questions you may have.";
-	mes "so please feel free to ask any";
-	next;
-	switch(select("resident of Chief:Tool Dealer:Weapon Dealer:Armor Dealer:wine shop")){
-	case 1:
-		viewpoint 1,109,131,1,0xFF3355;
-		mes "[Wonchi Ha]";
-		mes "In your minimap";
-		mes "Head to ^FF3355+^000000";
-		mes "You'll get to a resident of chief.";
-		mes "Enjoy your trip in";
-		mes "lovely Gonryun!";
-		break;
-	case 2:
-		viewpoint 1,147,82,2,0xCE6300;
-		mes "[Wonchi Ha]";
-		mes "In your minimap";
-		mes "Head to ^CE6300+^000000";
-		mes "You'll get to a Tool Dealer.";
-		mes "Enjoy your trip in";
-		mes "lovely Gonryun!";
-		break;
-	case 3:
-		viewpoint 1,174,104,3,0x55FF33;
-		mes "[Wonchi Ha]";
-		mes "In your minimap";
-		mes "Head to ^55FF33+^000000";
-		mes "You'll get to a Weapon Dealer.";
-		mes "Enjoy your trip in";
-		mes "lovely Gonryun!";
-		break;
-	case 4:
-		viewpoint 1,173,84,4,0x3355FF;
-		mes "[Wonchi Ha]";
-		mes "In your minimap";
-		mes "Head to ^3355FF+^000000";
-		mes "You'll get to an Armor Dealer.";
-		mes "Enjoy your trip in";
-		mes "lovely Gonryun!";
-		break;
-	case 5:
-		viewpoint 1,215,114,5,0xFFFFFF;
-		mes "[Wonchi Ha]";
-		mes "In your minimap";
-		mes "Head to ^FFFFFF+^000000";
-		mes "You'll get to a wine shop.";
-		mes "Enjoy your trip in";
-		mes "lovely Gonryun!";
-		break;
-	}
-	close;
-}
+gonryun.gat,166,196,3	script	Soldier	780,{
 
-gonryun.gat,166,196,3	script	Soldier#gn	780,{
+	if (b_sword < 7) goto L_BSword1;
+	if (b_sword > 6 && b_sword < 10) goto L_BSword2;
 	mes "[Waguo]";
-	if (b_sword < 7) {
-		mes "You know what?";
-		mes "This place used to be a shrine.";
-		mes "From the certain period time,";
-		mes "the Taoist hermits who failed to";
-		mes "get to the kingdom in the sky began";
-		mes "to gather, it became a den of monsters.";
-	} else if (b_sword > 6 && b_sword < 10){
-		mes "It was pretty noisy last night huh?";
-		mes "Because of that theif, it was a mess.";
-		mes "Noisier than the festivals.";
-		mes "I couldn't sleep at all...";
-		next;
-		mes "[Waguo]";
-		mes "Ahh~~~~!";
-		mes "I was night working last night";
-		mes "and all of a sudden, I saw";
-		mes "something running straight";
-		mes "into a shrine.";
-		next;
-		mes "[Waguo]";
-		mes "It was moving so fast that";
-		mes "I couldn't even decide to chase it";
-		mes "at all.  It was a ponderous creature";
-		mes "looked like human.  I wonder";
-		mes "what it was...";
-	} else {
-		mes "You know what??";
-		mes "This place used to be a shrine.";
-		mes "From the certain period time,";
-		mes "the Taoist hermits who failed to";
-		mes "get to the kingdom in the sky began";
-		mes "to gather, it became a den of monsters.";
-		next;
-		mes "[Waguo]";
-		mes "Town is getting ready for the";
-		mes "Festival, But it's taking long time.";
-		mes "It never happended in the past.";
-	}
+	mes "Do you know?";
+	mes "This used to be a temple";
+	mes "and since some fake fairies";
+	mes "started to take over this place,";
+	mes "it becomes a nest of monsters";
+	mes "and the temple is abandoned..";
+	next;
+	mes "[Waguo]";
+	mes "The activing is beginning soon.";
+	mes "I wonder why was it delayed";
+	mes "This had never happened before.";
+	close;
+
+L_BSword1:
+	mes "[Waguo]";
+	mes "Do you know?";
+	mes "This used to be a temple";
+	mes "and since some fake fairies";
+	mes "started to take over this place,";
+	mes "it becomes a nest of monsters";
+	mes "and the temple is abandoned..";
+	close;
+
+L_BSword2:
+	mes "[Waguo]";
+	mes "Was it too noisy last night?";
+	mes "That's because of a burglar, the whole village become chaotic.";
+	mes "It is even noisier ";
+	mes "than the time we had a celebration party.";
+	next;
+	mes "[Waguo]";
+	mes "Argh~~~!";
+	mes "I was on duty last night.";
+	mes "When I was working,";
+	mes "something rushed";
+	mes "into the temple." ;
+	next;
+	mes "[Waguo]";
+	mes "It is huge and moved swiftly.";
+	mes "It looked like an injured man.";
+	mes "Althought it seemed to be cripple,";
+	mes "it moved very fast.";
+	mes "Therefore, I dare not go to take a closer look.";
 	close;
 }
 
-gonryun.gat,169,71,3	script	Guide#gn	770,{
+gonryun.gat,169,71,3	script	Soldier	770,{
+
 	mes "[Leeheemin]";
-	mes "Welcome~";
-	mes "Did you enjoy sightseeing";
-	mes "on the way?";
-	mes "Small buildings you saw are a structures";
-	mes "we made with hard working efforts.";
+	mes "Welcome";
+	mes "Before you enter the village,";
+	mes "have you pay a visit to the lower area of the village?";
+	mes "The buildings out there";
+	mes "is the best design we have ever created.";
 	next;
 	mes "[Leeheemin]";
-	mes "They are a miniatures of";
-	mes "Rune-Midgarts Kingdom.";
-	mes "You can have a view of";
-	mes "cities at a glance.";
-	mes "It was not easy to work on it.";
-	mes "Don't you think they're masterpiece?";
+	mes "In order to get a clear view of";
+	mes "the cities of Rune Midgard Kingdom";
+	mes "we made this small model...";
+	mes "However, it is a tiring job because";
+	mes "we have not communicated with the outside world for a long time.";
+	mes "Anyway, we're making it the best we can.";
 	next;
 	mes "[Leeheemin]";
-	mes "If you look around carefully,";
-	mes "You'll find a lots of beautiful";
-	mes "sights all over the town.";
+	mes "Have a look around,";
+	mes "and you'll discover";
+	mes "some tremendous view there.";
 	close;
 }
