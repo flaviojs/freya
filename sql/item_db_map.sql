@@ -52,7 +52,7 @@ INSERT INTO `item_db` VALUES (512, 'Apple', 'Apple', 0, 15, 7, 20, 0, 0, 0, 0, 1
 INSERT INTO `item_db` VALUES (513, 'Banana', 'Banana', 0, 15, 7, 20, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(17,21),0;', NULL);
 INSERT INTO `item_db` VALUES (514, 'Grape', 'Grape', 0, 200, 100, 20, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal 0,rand(10,15);', NULL);
 INSERT INTO `item_db` VALUES (515, 'Carrot', 'Carrot', 0, 15, 7, 20, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(18,20),0;', NULL);
-INSERT INTO `item_db` VALUES (516, 'Potato', 'Potato', 0, 15, 7, 20, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(15,23),0; if(rand(100)<3) sc_start SC_STUN,10000,0;', NULL);
+INSERT INTO `item_db` VALUES (516, 'Potato', 'Potato', 0, 15, 7, 20, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(15,23),0; if(rand(10000)<=150) sc_start SC_STUN,3000,0;', NULL);
 INSERT INTO `item_db` VALUES (517, 'Meat', 'Meat', 0, 50, 25, 150, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(70,100),0;', NULL);
 INSERT INTO `item_db` VALUES (518, 'Honey', 'Honey', 0, 500, 250, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(70,100),rand(20,40);', NULL);
 INSERT INTO `item_db` VALUES (519, 'Milk', 'Milk', 0, 25, 12, 30, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(27,37),0;', NULL);
@@ -88,7 +88,7 @@ INSERT INTO `item_db` VALUES (550, 'Rice_Cake', 'Rice Cake', 0, 100, 50, 10, 0, 
 INSERT INTO `item_db` VALUES (551, 'Sushi', 'Sushi', 0, 20, 10, 50, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(50,60),0;', NULL);
 INSERT INTO `item_db` VALUES (552, 'Ketupat', 'Ketupat', 0, 100, 50, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(100,200),0;', NULL);
 INSERT INTO `item_db` VALUES (553, 'Dumpling', 'Dumpling', 0, 2, 1, 50, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(35,70),0;', NULL);
-INSERT INTO `item_db` VALUES (554, 'Mochi', 'Mochi', 0, 100, 50, 80, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(105,145),0; if(rand(100)<3) sc_start SC_STUN,10000,0; if(rand(100)<3) sc_start SC_BLIND,10000,0;', NULL);
+INSERT INTO `item_db` VALUES (554, 'Mochi', 'Mochi', 0, 100, 50, 80, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(105,145),0; if(rand(10000)<=100) sc_start SC_STUN,3000,0; if(rand(10000)<=150) sc_start SC_BLIND,2000,0;', NULL);
 INSERT INTO `item_db` VALUES (555, 'Traditional_Rice_Cake', 'Rice_Cake', 0, 20, 10, 20, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(105,145),0;', NULL);
 INSERT INTO `item_db` VALUES (556, 'Rolled_Rice', 'Rolled Rice', 0, 20, 0, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'itemheal rand(20,25),0;', NULL);
 INSERT INTO `item_db` VALUES (557, 'Cut_Rice_Rolls', 'Cut Rice Rolls', 0, 20, 0, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 'itemheal rand(25,30),0;', NULL);
@@ -672,7 +672,7 @@ INSERT INTO `item_db` VALUES (1360, 'Two_handed_Axe', 'Two-handed Axe', 4, 55000
 INSERT INTO `item_db` VALUES (1361, 'Two_handed_Axe_', 'Two-handed Axe', 4, 55000, 0, 2500, 185, 0, 1, 2, 279714, 2, 34, 3, 30, 7, NULL, NULL);
 INSERT INTO `item_db` VALUES (1362, 'Two_handed_Axe__', 'Two-handed Axe', 4, 55000, 0, 2500, 185, 0, 1, 0, 279714, 2, 34, 3, 30, 7, NULL, NULL);
 INSERT INTO `item_db` VALUES (1363, 'Bloody_Axe', 'Bloody Axe', 4, 20, 0, 4000, 170, 0, 1, 0, 279714, 2, 34, 4, 44, 7, NULL, 'bonus bStr,10; bonus bSpeedRate,25;');
-INSERT INTO `item_db` VALUES (1364, 'Great_Axe', 'Great Axe', 4, 20, 0, 1800, 187, 0, 1, 0, 279714, 2, 34, 4, 44, 7, NULL, 'bonus2 bAddEff,2,1500;');
+INSERT INTO `item_db` VALUES (1364, 'Great_Axe', 'Great Axe', 4, 20, 0, 1800, 187, 0, 1, 0, 279714, 2, 34, 4, 44, 7, NULL, 'bonus2 bAddEff,EFF_STUN,1500;');
 INSERT INTO `item_db` VALUES (1365, 'Sabbath', 'Sabbath', 4, 20, 0, 2300, 120, 0, 1, 0, 279714, 2, 34, 4, 44, 7, NULL, 'bonus2 bWeaponComaRace,6,50; bonus bAtkEle,7; bonus2 bCriticalAddRace,1,50;');
 INSERT INTO `item_db` VALUES (1366, 'Light_Epsilon', 'Light Epsilon', 4, 20, 0, 2300, 180, 0, 1, 0, 279714, 2, 34, 4, 44, 7, NULL, 'bonus bAtkEle,6; skill 28,3; bonus2 bAddRace,6,3;');
 INSERT INTO `item_db` VALUES (1367, 'Slaughter', 'Slaughter', 4, 20, 0, 2500, 120, 0, 1, 0, 279714, 2, 34, 4, 44, 7, NULL, 'bonus bIgnoreDefRace,2; bonus2 bWeaponComaRace,2,50;');
@@ -758,7 +758,7 @@ INSERT INTO `item_db` VALUES (1518, 'Sword_Mace__', 'Sword Mace', 4, 50000, 0, 1
 INSERT INTO `item_db` VALUES (1519, 'Chain', 'Chain', 4, 23000, 0, 800, 84, 0, 1, 2, 312754, 2, 2, 2, 14, 8, NULL, NULL);
 INSERT INTO `item_db` VALUES (1520, 'Chain_', 'Chain', 4, 23000, 0, 800, 84, 0, 1, 3, 312754, 2, 2, 2, 14, 8, NULL, NULL);
 INSERT INTO `item_db` VALUES (1521, 'Chain__', 'Chain', 4, 23000, 0, 800, 84, 0, 1, 3, 312754, 2, 2, 2, 14, 8, NULL, NULL);
-INSERT INTO `item_db` VALUES (1522, 'Stunner', 'Stunner', 4, 60000, 0, 2000, 140, 0, 1, 0, 33040, 2, 2, 3, 27, 8, NULL, 'bonus2 bAddEff,Eff_Stun,1000;');
+INSERT INTO `item_db` VALUES (1522, 'Stunner', 'Stunner', 4, 60000, 0, 2000, 140, 0, 1, 0, 33040, 2, 2, 3, 27, 8, NULL, 'bonus2 bAddEff,Eff_Stun,100;');
 INSERT INTO `item_db` VALUES (1523, 'Spike', 'Spike', 4, 20, 0, 700, 85, 0, 1, 0, 33040, 2, 2, 4, 40, 8, NULL, 'bonus bCritical,40; bonus bDefRate,-67; bonus bDef2Rate,-67;');
 INSERT INTO `item_db` VALUES (1524, 'Golden_Mace', 'Golden Mace', 4, 20, 0, 800, 110, 0, 1, 1, 33040, 2, 2, 4, 40, 8, NULL, 'bonus2 bAddRace,1,10; bonus bUnbreakableWeapon,0;');
 INSERT INTO `item_db` VALUES (1525, 'Long_Mace', 'Long Mace', 4, 20, 0, 800, 135, 0, 3, 0, 33040, 2, 2, 4, 40, 8, NULL, 'bonus bLongAtkDef,10;');
@@ -768,7 +768,7 @@ INSERT INTO `item_db` VALUES (1528, 'Grand_Cross', 'Grand Cross', 4, 20, 0, 1500
 INSERT INTO `item_db` VALUES (1529, 'Iron_Driver', 'Iron Driver', 4, 20, 0, 3000, 155, 0, 1, 0, 33024, 2, 2, 3, 78, 8, NULL, NULL);
 INSERT INTO `item_db` VALUES (1530, 'Mjolnir', 'Mjolnir', 4, 20, 0, 6000, 250, 0, 1, 0, 279714, 2, 2, 4, 95, 8, NULL, 'bonus bAtkEle,4; bonus bDex,40; bonus bStr,15; bonus bAspdRate,30;');
 INSERT INTO `item_db` VALUES (1531, 'Wrench', 'Wrench', 4, 20, 0, 2500, 115, 0, 1, 0, 33040, 2, 2, 3, 55, 8, NULL, 'bonus2 bAddEff,Eff_Blind,100; bonus2 bAddEff,Eff_Stun,100; bonus2 bAddEff,Eff_Poison,100; bonus2 bAddEff,Eff_Freeze,100;');
-INSERT INTO `item_db` VALUES (1532, 'Stunner_', 'Stunner', 4, 60000, 0, 2000, 140, 0, 1, 1, 33040, 2, 2, 3, 27, 8, NULL, 'bonus2 bAddEff,Eff_Stun,1000;');
+INSERT INTO `item_db` VALUES (1532, 'Stunner_', 'Stunner', 4, 60000, 0, 2000, 140, 0, 1, 1, 33040, 2, 2, 3, 27, 8, NULL, 'bonus2 bAddEff,Eff_Stun,100;');
 INSERT INTO `item_db` VALUES (1533, 'Warrior\'s_Balmung', 'Warrior\'s Balmung', 4, 0, 10, 1000, 170, 0, 1, 0, 1071636479, 2, 2, 4, 48, 2, NULL, 'bonus bAllStats,5;');
 
 # Books
@@ -852,7 +852,7 @@ INSERT INTO `item_db` VALUES (1754, 'Crystal_Arrow', 'Crystal Arrow', 10, 3, 0, 
 INSERT INTO `item_db` VALUES (1755, 'Arrow_of_Wind', 'Arrow of Wind', 10, 3, 0, 2, 30, 0, 0, 0, 1706056, 2, 32768, 0, 1, 0, NULL, 'bonus bAtkEle,4;');
 INSERT INTO `item_db` VALUES (1756, 'Stone_Arrow', 'Stone Arrow', 10, 3, 0, 2, 30, 0, 0, 0, 1706056, 2, 32768, 0, 1, 0, NULL, 'bonus bAtkEle,2;');
 INSERT INTO `item_db` VALUES (1757, 'Immaterial_Arrow', 'Immaterial Arrow', 10, 3, 0, 1, 30, 0, 0, 0, 1706056, 2, 32768, 0, 1, 0, NULL, 'bonus bAtkEle,8;');
-INSERT INTO `item_db` VALUES (1758, 'Stun_Arrow', 'Stun Arrow', 10, 10, 0, 3, 1, 0, 0, 0, 1706056, 2, 32768, 0, 1, 0, NULL, 'bonus2 bAddEff,Eff_Stun,500;');
+INSERT INTO `item_db` VALUES (1758, 'Stun_Arrow', 'Stun Arrow', 10, 10, 0, 3, 1, 0, 0, 0, 1706056, 2, 32768, 0, 1, 0, NULL, 'bonus2 bAddEff,Eff_Stun,1000;');
 INSERT INTO `item_db` VALUES (1759, 'Freezing_Arrow', 'Freeze Arrow', 10, 10, 0, 3, 1, 0, 0, 0, 1706056, 2, 32768, 0, 1, 0, NULL, 'bonus bAtkEle,1; bonus2 bAddEff,Eff_Freeze,500;');
 INSERT INTO `item_db` VALUES (1760, 'Flash_Arrow', 'Flash Arrow', 10, 10, 0, 3, 1, 0, 0, 0, 1706056, 2, 32768, 0, 1, 0, NULL, 'bonus2 bAddEff,Eff_Blind,500;');
 INSERT INTO `item_db` VALUES (1761, 'Curse_Arrow', 'Curse Arrow', 10, 10, 0, 3, 1, 0, 0, 0, 1706056, 2, 32768, 0, 1, 0, NULL, 'bonus2 bAddEff,Eff_Curse,500;');
@@ -1558,7 +1558,7 @@ INSERT INTO `item_db` VALUES (4272, 'Dancing_Dragon_Card', 'Dancing Dragon Card'
 INSERT INTO `item_db` VALUES (4273, 'Shellfish_Card', 'Shellfish Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus bAtk,5; bonus2 bAddDamageClass,1073,30;');
 INSERT INTO `item_db` VALUES (4274, 'Zombie_Master_Card', 'Zombie Master Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus2 bSPGainRace,1,5; bonus bLoseSPWhenUnequip,5;');
 INSERT INTO `item_db` VALUES (4275, 'Zombie_Prisoner_Card', 'Zombie Prisoner Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 64, 0, 0, 0, NULL, 'bonus2 bSubRace,1,-20; bonus2 bExpAddRace,1,10;');
-INSERT INTO `item_db` VALUES (4276, 'Lord_of_Death_Card', 'Lord of Death Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus2 bAddEff,Eff_Stun,100; bonus2 bAddEff,Eff_Curse,100; bonus2 bAddEff,Eff_Poison,100; bonus2 bAddEff,Eff_Bleeding,100; bonus2 bAddEff,EFf_Silence,100; bonus2 bWeaponComaRace,11,30;');
+INSERT INTO `item_db` VALUES (4276, 'Lord_of_Death_Card', 'Lord of Death Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus2 bAddEff,Eff_Stun,500; bonus2 bAddEff,Eff_Curse,500; bonus2 bAddEff,Eff_Poison,500; bonus2 bAddEff,Eff_Bleeding,500; bonus2 bAddEff,EFf_Silence,500; bonus2 bWeaponComaRace,11,30;');
 INSERT INTO `item_db` VALUES (4277, 'Zealotus_Card', 'Zealotus Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 32, 0, 0, 0, NULL, 'bonus bLuk,2; bonus2 bSkillAtk,324,10; bonus2 bSkillAtk,316,10;');
 #4278,Gibbet_Card,Gibbet Card,6,20,0,10,,,,,,,769,,,,{},{ if(getequiprefinerycnt(1)<6) bonus bMdef,5; } // Client Desc
 INSERT INTO `item_db` VALUES (4278, 'Gibbet_Card', 'Gibbet Card', 6, 20, 0, 10, 0, 0, 0, 0, 0, 2, 769, 0, 0, 0, NULL, 'if(readparam(bInt)<21 ) bonus bMdef,5;'); # Aegis Database
@@ -1643,7 +1643,7 @@ INSERT INTO `item_db` VALUES (4351, 'Kavach_Icarus_Card', 'Kavach Icarus Card', 
 INSERT INTO `item_db` VALUES (4352, 'Egnigem_Cenia_(MvP)_Card', 'Egnigem Cenia (MvP) Card', 3, 0, 10, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 # 4352,Egnigem_Cenia_(MvP)_Card,Egnigem Cenia (MvP) Card,6,,10,10,,,,,,,0,,,,{},{}
 INSERT INTO `item_db` VALUES (4353, 'Remover_Card', 'Remover Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bMaxHP,(800+(80*getequiprefinerycnt(2))); bonus bHPrecovRate,10;');
-INSERT INTO `item_db` VALUES (4354, 'Gemini-S58_Card', 'Gemini-S58 Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 769, 0, 0, 0, NULL, 'if(readparam(bVit)<80) end; bonus2 bResEff,0,5000; bonus2 bResEff,3,5000; if(readparam(bAgi)<90) end; bonus2 bResEff,6,3000; bonus2 bResEff,2,3000;');
+INSERT INTO `item_db` VALUES (4354, 'Gemini-S58_Card', 'Gemini-S58 Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 769, 0, 0, 0, NULL, 'if(readparam(bVit)<80) goo L_Next; bonus2 bResEff,0,5000; bonus2 bResEff,3,5000; L_Next: if(readparam(bAgi)<90) end; bonus2 bResEff,6,3000; bonus2 bResEff,EFF_STUN,3000;');
 INSERT INTO `item_db` VALUES (4355, 'Gremlin_Card', 'Gremlin Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'bonus3 bAddMonsterDropItem,12043,2,100;');
 INSERT INTO `item_db` VALUES (4356, 'Beholder_Card', 'Beholder Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 136, 0, 0, 0, NULL, 'skill 275,1;');
 INSERT INTO `item_db` VALUES (4357, 'Lord_Knight_Seyren_Card', 'Lord Knight Seyren Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 769, 0, 0, 0, NULL, 'skill 359,1; bonus bMaxHPrate,-50;');
@@ -1880,9 +1880,9 @@ INSERT INTO `item_db` VALUES (5171, 'Valkyrie_Helm', 'Valkyrie Helm', 5, 100000,
 INSERT INTO `item_db` VALUES (5172, 'Beret', 'Beret', 5, 30000, 15000, 700, 0, 0, 0, 0, 1071636479, 2, 256, 0, 0, 226, NULL, 'bonus2 bSubRace,7,10; bonus2 bMagicSubRace,7,10;');
 INSERT INTO `item_db` VALUES (5173, 'Hat_of_the_Judge', 'Judge\'s Hat', 5, 30000, 15000, 400, 0, 3, 0, 1, 1071636479, 2, 256, 0, 60, 227, NULL, 'if (GetPureJob != JOB_TAEKWON) end; bonus bAgi,1; bonus bHPrecovRate,3;');
 INSERT INTO `item_db` VALUES (5174, 'A-yam', 'A-yam', 5, 30000, 15000, 400, 0, 3, 0, 1, 1071636479, 2, 256, 0, 60, 228, NULL, 'if (GetPureJob != JOB_TAEKWON) end; bonus bInt,1; bonus bSPrecovRate,3;');
-INSERT INTO `item_db` VALUES (5175, 'Anonymous_Identity', 'Anonymous Identity', 5, 30000, 15000, 100, 0, 0, 0, 0, 1071636479, 2, 512, 0, 0, 229, NULL, 'bonus bMdef,1; bonus bHit,-5; bonus2 bResEff,Eff_Curse,500;');
+INSERT INTO `item_db` VALUES (5175, 'Anonymous_Identity', 'Anonymous Identity', 5, 30000, 15000, 100, 0, 0, 0, 0, 1071636479, 2, 512, 0, 0, 229, NULL, 'bonus bMdef,1; bonus bHit,-5; bonus2 bResEff,EFF_STUN,500;');
 INSERT INTO `item_db` VALUES (5176, 'Smiling_Mask', 'Smiling Mask', 5, 30000, 15000, 100, 0, 2, 0, 0, 1071636479, 2, 513, 0, 30, 230, NULL, 'if (GetPureJob != JOB_TAEKWON) end; bonus bLuk,1; bonus bFlee2,2;');
-INSERT INTO `item_db` VALUES (5177, 'Lion_Masquerade', 'Lion Masquerade', 5, 30000, 15000, 500, 0, 5, 0, 1, 1071636479, 2, 768, 0, 40, 231, NULL, 'if(GetPureJob != JOB_TAEKWON)end; bonus bDex,2; bonus bBaseAtk,2*getequiprefinerycnt(1); bonus2 bAddEff,2,100;');
+INSERT INTO `item_db` VALUES (5177, 'Lion_Masquerade', 'Lion Masquerade', 5, 30000, 15000, 500, 0, 5, 0, 1, 1071636479, 2, 768, 0, 40, 231, NULL, 'if(GetPureJob != JOB_TAEKWON)end; bonus bDex,2; bonus bBaseAtk,2*getequiprefinerycnt(1); bonus2 bAddEff,EFF_STUN,2000;');
 INSERT INTO `item_db` VALUES (5178, 'Candle_', 'Candle', 5, 0, 0, 150, 0, 0, 0, 0, 1071636479, 2, 256, 0, 0, 113, NULL, 'bonus bStr,1; bonus bAgi,1; bonus bVit,1; bonus bInt,1; bonus bDex,1; bonus bLuk,1;');
 INSERT INTO `item_db` VALUES (5179, 'Gold_Tiara', 'Gold_Tiara', 5, 0, 0, 100, 0, 0, 0, 0, 1071636479, 2, 256, 0, 0, 232, NULL, 'bonus bInt,2;');
 INSERT INTO `item_db` VALUES (5180, 'Holiday_Hat', 'Holiday Hat', 5, 0, 0, 100, 0, 1, 0, 0, 1071636479, 2, 256, 0, 0, 217, NULL, 'bonus bVIT,1;');
@@ -2881,7 +2881,7 @@ INSERT INTO `item_db` VALUES (12109, 'Poring_Box', 'Poring Box', 2, 10000, 5000,
 INSERT INTO `item_db` VALUES (12110, 'First_Aid_Kit', 'First Aid Kit', 2, 10000, 5000, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem -11,1;  getitem -11,1;  getitem -11,1; getitem -11,1;  getitem -11,1;', NULL);
 INSERT INTO `item_db` VALUES (12111, 'Bundle_of_Food', 'Bundle of Food', 2, 0, 0, 200, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'getitem -12,1;  getitem -12,1;  getitem -12,1;', NULL);
 INSERT INTO `item_db` VALUES (12112, 'Tropical_Sograt', 'Tropical Sograt', 2, 1000, 500, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_CURSE,10000,1;', NULL);
-INSERT INTO `item_db` VALUES (12113, 'Vermilion_on_the_Beach', 'Vermilion on the Beach', 2, 1000, 500, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_STUN,10000,1;', NULL);
+INSERT INTO `item_db` VALUES (12113, 'Vermilion_on_the_Beach', 'Vermilion on the Beach', 2, 1000, 500, 100, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_STUN,rand(100,10000),1;', NULL);
 
 # Elemental Converters
 INSERT INTO `item_db` VALUES (12114, 'Elem_Converter_Fire', 'Elemental Converter', 2, 20, 10, 10, 0, 0, 0, 0, 1071636479, 2, 0, 0, 0, 0, 'sc_start SC_FIREWEAPON,180000,1;', NULL);

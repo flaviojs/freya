@@ -10,6 +10,12 @@
 
 Date	Added
 
+03/02/2007
+	* Fixed: Stun values for a bunch of items as per Aegis 10.4: [Tsuyuki]
+	 - Potato, Mochi, Stunner, Stunner [1], Stun Arrow, Lord of Death Card
+	 - Anonymous Identity, Lion Masquerade, Vermilion on the Beach
+	* Fixed: Small misc things with Lord of Death Card and Gemini-S58 Card bonuses [Tsuyuki]
+
 03/01/2007
 	* Fixed: Bloody Shackle Ball's job restrictions [Tsuyuki]
 	* Fixed: Holden card combo's SP gain bonus [Tsuyuki]
