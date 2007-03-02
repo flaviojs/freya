@@ -580,7 +580,7 @@
 1117,Evil Druid@WZ_HEAVENDRIVE,attack,91,5,500,1200,5000,yes,target,always,0,,,,,,
 1117,Evil Druid@WZ_HEAVENDRIVE,chase,91,5,500,1200,5000,yes,target,always,0,,,,,,
 1118,Flora@NPC_BLOODDRAIN,attack,199,1,500,0,5000,yes,target,always,0,,,,,,
-1118,Flora@NPC_REVENGE,idle,333,1,10000,0,0,yes,target,masterattacked,,,,,,,
+//1118,Flora@NPC_REVENGE,idle,333,1,10000,0,0,yes,target,masterattacked,,,,,,,
 1118,Flora@NPC_EMOTION,idle,197,1,2000,0,5000,yes,self,always,0,2,,,,,
 1118,Flora@NPC_GROUNDATTACK,attack,185,1,2000,0,5000,yes,target,always,0,,,,,,
 1119,Frilldora@AS_CLOAKING,attack,135,1,2000,200,5000,yes,self,always,0,,,,,,
@@ -1927,8 +1927,8 @@
 1418,Evil Snake Lord@NPC_CALLSLAVE,idle,352,1,10000,0,30000,yes,self,always,0,,,,,,
 1418,Evil Snake Lord@NPC_DARKBREATH,attack,202,5,2000,800,5000,no,target,always,0,,,,,,29
 1418,Evil Snake Lord@NPC_STOP,attack,342,1,10000,0,15000,yes,target,always,0,,,,,,2
-1418,Evil Snake Lord@NPC_SUMMONSLAVE,attack,196,2,10000,700,10000,no,self,slavele,2,1416,1412,1412,,, // 1531,1564
-1418,Evil Snake Lord@NPC_SUMMONSLAVE,idle,196,2,10000,700,10000,no,self,slavele,2,1416,1412,1412,,, // 1531,1564
+1418,Evil Snake Lord@NPC_SUMMONSLAVE,attack,196,2,10000,700,10000,no,self,slavele,2,1416,1412,1412,, // 1531,1564
+1418,Evil Snake Lord@NPC_SUMMONSLAVE,idle,196,2,10000,700,10000,no,self,slavele,2,1416,1412,1412,, // 1531,1564
 //1418,Evil Snake Lord@NPC_SUMMONSLAVE,idle,196,2,10000,0,0,no,self,onspawn,0,1412,1412,1416,,,
 1418,Evil Snake Lord@SM_MAGNUM,attack,7,10,2000,0,5000,yes,self,attackpcgt,2,,,,,,
 1418,Evil Snake Lord@MG_FROSTDIVER,chase,15,10,10000,0,0,yes,target,skillused,18,,,,,,
@@ -4091,7 +4091,7 @@
 1768,Gloom Undernight@NPC_FIREATTACK,attack,186,5,1000,0,5000,yes,target,always,0,,,,,,
 1768,Gloom Undernight@NPC_TELEKINESISATTACK,attack,191,5,1000,0,5000,yes,target,always,0,,,,,,
 1768,Gloom Undernight@WZ_FIREPILLAR,idle,80,10,1500,500,5000,no,around2,always,0,,,,,,
-1768,Gloom Undernight@AM_DEMONSTRATION,idle,229,5,1500,500,5000,no,around2,always,0,,,,,,,
+1768,Gloom Undernight@AM_DEMONSTRATION,idle,229,5,1500,500,5000,no,around2,always,0,,,,,,
 1768,Gloom Undernight@KN_PIERCE,attack,56,10,1000,1000,5000,no,target,always,0,,,,,,
 1768,Gloom Undernight@NPC_POWERUP,attack,349,5,2000,0,120000,no,self,myhpltmaxrate,30,,,,,,
 1768,Gloom Undernight@NPC_POWERUP,chase,349,5,2000,0,120000,no,self,myhpltmaxrate,30,,,,,,
@@ -4101,9 +4101,9 @@
 1768,Gloom Undernight@MG_FIREBALL,attack,10,10,1000,500,5000,no,target,always,0,,,,,,
 1768,Gloom Undernight@MG_FIREBALL,chase,10,10,1000,500,5000,no,target,always,0,,,,,,
 1768,Gloom Undernight@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
-1768,Gloom Undernight@NPC_SUMMONSLAVE,attack,196,2,5000,3000,360000,no,self,slavele,2,1786,1787,,,,,
-1768,Gloom Undernight@NPC_SUMMONSLAVE,chase,196,2,5000,3000,360000,no,self,slavele,2,1786,1787,,,,,
-1768,Gloom Undernight@NPC_SUMMONSLAVE,idle,196,2,5000,3000,360000,no,self,slavele,2,1786,1787,,,,,
+1768,Gloom Undernight@NPC_SUMMONSLAVE,attack,196,2,5000,3000,360000,no,self,slavele,2,1786,1787,,,,
+1768,Gloom Undernight@NPC_SUMMONSLAVE,chase,196,2,5000,3000,360000,no,self,slavele,2,1786,1787,,,,
+1768,Gloom Undernight@NPC_SUMMONSLAVE,idle,196,2,5000,3000,360000,no,self,slavele,2,1786,1787,,,,
 1768,Gloom Undernight@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1768,Gloom Undernight@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1768,Gloom Undernight@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -4180,19 +4180,19 @@
 1779,Ktullanux@NPC_RANDOMATTACK,attack,183,5,500,500,5000,no,target,always,0,,,,,,
 1779,Ktullanux@NPC_BREAKARMOR,attack,344,10,500,1000,120000,no,target,always,0,,,,,,
 1779,Ktullanux@MG_FROSTDIVER,chase,15,10,2000,1000,5000,yes,target,always,0,,,,,,
-1779,Ktullanux@WZ_STORMGUST,attack,89,10,1000,0,10000,no,target,always,0,,,,,,,
-1779,Ktullanux@WZ_STORMGUST,chase,89,10,1000,0,10000,no,target,always,0,,,,,,,
+1779,Ktullanux@WZ_STORMGUST,attack,89,10,1000,0,10000,no,target,always,0,,,,,,
+1779,Ktullanux@WZ_STORMGUST,chase,89,10,1000,0,10000,no,target,always,0,,,,,,
 1779,Ktullanux@WZ_WATERBALL,attack,86,5,500,500,5000,no,target,always,0,,,,,,
 1779,Ktullanux@WZ_WATERBALL,chase,86,5,500,500,5000,no,target,always,0,,,,,,
-1779,Ktullanux@WZ_FROSTNOVA,attack,89,10,1000,0,5000,no,target,always,0,,,,,,,
-1779,Ktullanux@WZ_FROSTNOVA,chase,89,10,1000,0,5000,no,target,always,0,,,,,,,
+1779,Ktullanux@WZ_FROSTNOVA,attack,89,10,1000,0,5000,no,target,always,0,,,,,,
+1779,Ktullanux@WZ_FROSTNOVA,chase,89,10,1000,0,5000,no,target,always,0,,,,,,
 1779,Ktullanux@NPC_POWERUP,attack,349,5,2000,0,120000,no,self,myhpltmaxrate,30,,,,,,
 1779,Ktullanux@NPC_POWERUP,chase,349,5,2000,0,120000,no,self,myhpltmaxrate,30,,,,,,
 1779,Ktullanux@NPC_AGIUP,chase,350,3,2000,0,120000,no,self,myhpltmaxrate,50,,,,,,
 1779,Ktullanux@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
-1779,Ktullanux@NPC_SUMMONSLAVE,attack,196,6,5000,3000,360000,no,self,slavele,2,1788,,,,,, // Ice Titan
-1779,Ktullanux@NPC_SUMMONSLAVE,chase,196,6,5000,3000,360000,no,self,slavele,2,1788,,,,,, // Ice Titan
-1779,Ktullanux@NPC_SUMMONSLAVE,idle,196,6,5000,3000,360000,no,self,slavele,2,1788,,,,,, // Ice Titan
+1779,Ktullanux@NPC_SUMMONSLAVE,attack,196,6,5000,3000,360000,no,self,slavele,2,1788,,,,, // Ice Titan
+1779,Ktullanux@NPC_SUMMONSLAVE,chase,196,6,5000,3000,360000,no,self,slavele,2,1788,,,,, // Ice Titan
+1779,Ktullanux@NPC_SUMMONSLAVE,idle,196,6,5000,3000,360000,no,self,slavele,2,1788,,,,, // Ice Titan
 1779,Ktullanux@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1779,Ktullanux@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1779,Ktullanux@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -4213,9 +4213,9 @@
 1782,Roween@NPC_WINDATTACK,attack,187,3,500,0,5000,yes,target,always,0,,,,,,
 1782,Roween@NPC_COMBOATTACK,attack,171,5,500,0,5000,yes,target,always,0,,,,,,
 1783,Galion@NPC_COMBOATTACK,attack,171,3,1000,0,5000,yes,target,always,0,,,,,,
-1783,Galion@NPC_SUMMONSLAVE,attack,196,3,5000,3000,180000,no,self,slavele,0,1794,,,,,, // Roween
-1783,Galion@NPC_SUMMONSLAVE,chase,196,3,5000,3000,180000,no,self,slavele,0,1794,,,,,, // Roween
-1783,Galion@NPC_SUMMONSLAVE,idle,196,3,5000,3000,180000,no,self,slavele,0,1794,,,,,, // Roween
+1783,Galion@NPC_SUMMONSLAVE,attack,196,3,5000,3000,180000,no,self,slavele,0,1794,,,,, // Roween
+1783,Galion@NPC_SUMMONSLAVE,chase,196,3,5000,3000,180000,no,self,slavele,0,1794,,,,, // Roween
+1783,Galion@NPC_SUMMONSLAVE,idle,196,3,5000,3000,180000,no,self,slavele,0,1794,,,,, // Roween
 1784,Stapo@SM_BASH,attack,5,3,500,0,5000,yes,target,always,0,,,,,,
 1784,Stapo@NPC_KEEPING,attack,10,3,500,0,5000,yes,self,myhpltmaxrate,30,,,,,,
 1784,Stapo@NPC_KEEPING,chase,10,3,500,0,5000,yes,self,myhpltmaxrate,30,,,,,,
@@ -4226,9 +4226,9 @@
 1785,Atros@NPC_POWERUP,attack,349,5,2000,0,120000,no,self,myhpltmaxrate,30,,,,,,
 1785,Atros@NPC_POWERUP,chase,349,5,2000,0,120000,no,self,myhpltmaxrate,30,,,,,,
 1785,Atros@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
-1785,Atros@NPC_SUMMONSLAVE,attack,196,4,5000,3000,360000,no,self,slavele,2,1791,,,,,, // Galion
-1785,Atros@NPC_SUMMONSLAVE,chase,196,4,5000,3000,360000,no,self,slavele,2,1791,,,,,, // Galion
-1785,Atros@NPC_SUMMONSLAVE,idle,196,4,5000,3000,360000,no,self,slavele,2,1791,,,,,, // Galion
+1785,Atros@NPC_SUMMONSLAVE,attack,196,4,5000,3000,360000,no,self,slavele,2,1791,,,,, // Galion
+1785,Atros@NPC_SUMMONSLAVE,chase,196,4,5000,3000,360000,no,self,slavele,2,1791,,,,, // Galion
+1785,Atros@NPC_SUMMONSLAVE,idle,196,4,5000,3000,360000,no,self,slavele,2,1791,,,,, // Galion
 1785,Atros@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1785,Atros@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1785,Atros@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
@@ -4545,9 +4545,9 @@
 1832,Ifrit@HW_GANBANTEIN,attack,483,1,3000,0,5000,yes,around2,skillused,288,,,,,,
 1832,Ifrit@HW_GANBANTEIN,chase,483,1,3000,0,5000,yes,around2,skillused,288,,,,,,
 1832,Ifrit@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
-1832,Ifrit@NPC_SUMMONSLAVE,attack,196,1,5000,3000,360000,no,self,slavele,1,1834,1835,,,,, // Kasa/Salamander
-1832,Ifrit@NPC_SUMMONSLAVE,chase,196,1,5000,3000,360000,no,self,slavele,1,1834,1835,,,,, // Kasa/Salamander
-1832,Ifrit@NPC_SUMMONSLAVE,idle,196,1,5000,3000,360000,no,self,slavele,1,1834,1835,,,,, // Kasa/Salamander
+1832,Ifrit@NPC_SUMMONSLAVE,attack,196,1,5000,3000,360000,no,self,slavele,1,1834,1835,,,, // Kasa/Salamander
+1832,Ifrit@NPC_SUMMONSLAVE,chase,196,1,5000,3000,360000,no,self,slavele,1,1834,1835,,,, // Kasa/Salamander
+1832,Ifrit@NPC_SUMMONSLAVE,idle,196,1,5000,3000,360000,no,self,slavele,1,1834,1835,,,, // Kasa/Salamander
 1832,Ifrit@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1832,Ifrit@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1832,Ifrit@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,

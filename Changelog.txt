@@ -11,6 +11,7 @@
 Date	Added
 
 03/01/07
+	* Fixed: Mob Skill Databases broken entries [Tsuyuki]
 	* Updated Kunlun NPCs to Aegis version [GreenGoblin]
 	* Reverted: Source code updates, broke compilation somewhow for Cygwin [Tsuyuki]
 	* Updated: MAX_MOBSKILL global variable (32 -> 50) [Tsuyuki]
