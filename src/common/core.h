@@ -7,7 +7,4 @@ int do_init(int,char**);
 void do_final(void);
 double uptime(void);
 
-void do_pre_init(void);
-void core_stop(void);
-
 #endif	// _CORE_H_

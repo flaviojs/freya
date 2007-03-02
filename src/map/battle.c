@@ -32,7 +32,6 @@ struct Battle_Config battle_config;
 
 //-------------------------------------------------------------------
 
-// ダメージの遅延
 struct battle_delay_damage_ {
 	struct block_list *src;
 	int target;
@@ -400,12 +399,10 @@ int battle_calc_damage(struct block_list *src,struct block_list *bl,int damage,i
 			if((--sc->val3)<=0 || (sc->val2<=0) || skill_num == AL_HOLYLIGHT)
 				status_change_end(bl, SC_KYRIE, -1);
 		}
-		/* インデュア */
 		if(sc_data[SC_ENDURE].timer != -1 && damage > 0 && flag&BF_WEAPON && src->type != BL_PC){
 			if((--sc_data[SC_ENDURE].val2)<=0)
 				status_change_end(bl, SC_ENDURE, -1);
 		}
-		/* オートガード */
 		if(sc_data[SC_AUTOGUARD].timer != -1 && damage > 0 && flag&BF_WEAPON) {
 			if(atn_rand()%100 < sc_data[SC_AUTOGUARD].val2) {
 				int delay;
@@ -428,7 +425,6 @@ int battle_calc_damage(struct block_list *src,struct block_list *bl,int damage,i
 					tmd->ud.canmove_tick = gettick() + delay;
 			}
 		}
-		/* パリイング */
 		if(sc_data[SC_PARRYING].timer != -1 && damage > 0 && flag&BF_WEAPON) {
 			if(atn_rand()%100 < sc_data[SC_PARRYING].val2) {
 				int dir = map_calc_dir(bl,src->x,src->y);
@@ -440,7 +436,6 @@ int battle_calc_damage(struct block_list *src,struct block_list *bl,int damage,i
 					ud->attackabletime = gettick() + 500;	// 値適当
 			}
 		}
-		// リジェクトソード
 		if(sc_data[SC_REJECTSWORD].timer!=-1 && damage > 0 && flag&BF_WEAPON && atn_rand()%100 < 15*sc_data[SC_REJECTSWORD].val1) {
 			short weapon = -1;
 			if(src->type == BL_PC)
@@ -711,7 +706,6 @@ int battle_addmastery(struct map_session_data *sd,struct block_list *target,int 
 		case WT_DAGGER:
 		case WT_1HSWORD:
 		{
-			// 剣修練(+4 ～ +40) 片手剣 短剣含む
 			if((skill = pc_checkskill(sd,SM_SWORD)) > 0) {
 				damage += (skill * 4);
 			}
@@ -719,7 +713,6 @@ int battle_addmastery(struct map_session_data *sd,struct block_list *target,int 
 		}
 		case WT_2HSWORD:
 		{
-			// 両手剣修練(+4 ～ +40) 両手剣
 			if((skill = pc_checkskill(sd,SM_TWOHAND)) > 0) {
 				damage += (skill * 4);
 			}
@@ -727,7 +720,6 @@ int battle_addmastery(struct map_session_data *sd,struct block_list *target,int 
 		}
 		case WT_1HSPEAR:
 		{
-			// 槍修練(+4 ～ +40,+5 ～ +50) 槍
 			if((skill = pc_checkskill(sd,KN_SPEARMASTERY)) > 0) {
 				if(!pc_isriding(sd))
 					damage += (skill * 4);	// ペコに乗ってない
@@ -738,7 +730,6 @@ int battle_addmastery(struct map_session_data *sd,struct block_list *target,int 
 		}
 		case WT_2HSPEAR:
 		{
-			// 槍修練(+4 ～ +40,+5 ～ +50) 槍
 			if((skill = pc_checkskill(sd,KN_SPEARMASTERY)) > 0) {
 				if(!pc_isriding(sd))
 					damage += (skill * 4);	// ペコに乗ってない
@@ -763,7 +754,6 @@ int battle_addmastery(struct map_session_data *sd,struct block_list *target,int 
 		}
 		case WT_MACE:
 		{
-			// メイス修練(+3 ～ +30) メイス
 			if((skill = pc_checkskill(sd,PR_MACEMASTERY)) > 0) {
 				damage += (skill * 3);
 			}
@@ -775,15 +765,12 @@ int battle_addmastery(struct map_session_data *sd,struct block_list *target,int 
 			break;
 		case WT_FIST:
 		{
-			// タイリギ(+10 ～ +100) 素手
 			if((skill = pc_checkskill(sd,TK_RUN)) > 0) {
 				damage += (skill * 10);
 			}
-			// fall through
 		}
 		case WT_KNUCKLE:
 		{
-			// 鉄拳(+3 ～ +30) 素手,ナックル
 			if((skill = pc_checkskill(sd,MO_IRONHAND)) > 0) {
 				damage += (skill * 3);
 			}
@@ -791,7 +778,6 @@ int battle_addmastery(struct map_session_data *sd,struct block_list *target,int 
 		}
 		case WT_MUSICAL:
 		{
-			// 楽器の練習(+3 ～ +30) 楽器
 			if((skill = pc_checkskill(sd,BA_MUSICALLESSON)) > 0) {
 				damage += (skill * 3);
 			}
@@ -799,7 +785,6 @@ int battle_addmastery(struct map_session_data *sd,struct block_list *target,int 
 		}
 		case WT_WHIP:
 		{
-			// ダンスの練習(+3 ～ +30) 鞭
 			if((skill = pc_checkskill(sd,DC_DANCINGLESSON)) > 0) {
 				damage += (skill * 3);
 			}
@@ -807,7 +792,6 @@ int battle_addmastery(struct map_session_data *sd,struct block_list *target,int 
 		}
 		case WT_BOOK:
 		{
-			// アドバンスドブック(+3 ～ +30) {
 			if((skill = pc_checkskill(sd,SA_ADVANCEDBOOK)) > 0) {
 				damage += (skill * 3);
 			}
@@ -815,9 +799,7 @@ int battle_addmastery(struct map_session_data *sd,struct block_list *target,int 
 		}
 		case WT_KATAR:
 		{
-			// カタール修練(+3 ～ +30) カタール
 			if((skill = pc_checkskill(sd,AS_KATAR)) > 0) {
-				//ソニックブロー時は別処理（1撃に付き1/8適応)
 				damage += (skill * 3);
 			}
 			break;
@@ -830,7 +812,6 @@ int battle_addmastery(struct map_session_data *sd,struct block_list *target,int 
 			break;
 		case WT_HUUMA:
 		{
-			//飛刀修練
 			if((skill = pc_checkskill(sd,NJ_TOBIDOUGU)) > 0) {
 				damage += (skill * 3);
 			}
@@ -1857,7 +1838,7 @@ struct Damage battle_calc_weapon_attack(
 					damage = damage*(100+30*skill_lv)/100;
 				}
 				damage2 = damage;
-				hitrate += 20;
+				hitrate = (hitrate*(100+5*skill_lv))/100;
 				calc_dist_on = 1;
 				s_ele = 0;
 				s_ele_ = 0;
@@ -1901,14 +1882,13 @@ struct Damage battle_calc_weapon_attack(
 				calc_dist_on = 1;
 				break;
 			case GS_TRIPLEACTION:	/* トリプルアクション */
-				damage = damage*(150*3)/100;
-				damage2 = damage2*(150*3)/100;
+				damage *= 3;
+				damage2 *= 3;
 				calc_dist_on = 1;
 				break;
 			case GS_BULLSEYE:		/* ブルズアイ */
 				damage *= 5;
 				damage2 *= 5;
-				no_cardfix = 1;
 				calc_dist_on = 1;
 				break;
 			case GS_MAGICALBULLET:	/* マジカルバレット */
@@ -1927,9 +1907,8 @@ struct Damage battle_calc_weapon_attack(
 					damage  += arr;
 					damage2 += arr;
 				}
-				damage  = damage *(200+100*skill_lv)/100;
-				damage2 = damage2*(200+100*skill_lv)/100;
-				hitrate = hitrate*4+5;//Wiki参考
+				damage  = damage *(120*skill_lv)/100;
+				damage2 = damage2*(120*skill_lv)/100;
 				calc_dist_on = 1;
 				if(src_sd)
 					src_sd->state.arrow_atk = 1;
@@ -2017,7 +1996,6 @@ struct Damage battle_calc_weapon_attack(
 				break;
 			case GS_GROUNDDRIFT:	/* グランドドリフト */
 				damage += skill_lv*50;
-				calc_dist_on = 1;
 				break;
 			case NJ_SYURIKEN:		/* 手裏剣投げ */
 				if(src_sd){
@@ -2120,7 +2098,7 @@ struct Damage battle_calc_weapon_attack(
 
 		//ここから距離による判定　この時のflagはBF_SHORT|BF_WEAPON|BF_NORMALで来てるはず…
 		if(calc_dist_on){				//距離によってレンジが変化するスキルか
-			if((battle_config.calc_dist_flag&1)&&(target->type!=BL_PC && src->type!=BL_PC)) {	//PC -> PC強制無効
+			if(battle_config.calc_dist_flag&1) {	//物理の時計算するか？ &1で計算
 				int target_dist = unit_distance2(src,target)-1;	//距離を取得
 				if(target_dist >= battle_config.allow_sw_dist){				//SWで防げる距離より多い＝遠距離からの攻撃
 					if(battle_config.sw_def_type & 1 && src->type==BL_PC)		//人間からのを判定するか　&1でする
@@ -2128,10 +2106,11 @@ struct Damage battle_calc_weapon_attack(
 					if(battle_config.sw_def_type & 2 && src->type==BL_MOB)		//モンスターからのを判定するか　&2でする
 						flag=(flag&~BF_RANGEMASK)|BF_LONG;			//遠距離に設定
 				}
-			} else {	//本来遠距離のスキルで使用者と許可フラグが全て一致しないから遠距離攻撃
-				flag=(flag&~BF_RANGEMASK)|BF_LONG;//遠距離に設定
+			} else {	//本来遠距離のスキルで使用者と許可フラグが全て一致しないから遠距離攻撃だ
+				//flag=(flag&~BF_RANGEMASK)|BF_LONG;//遠距離に設定
 			}
 		}
+		//距離によるフラグ処理にひっかかった場合はBF_LONG|BF_WEAPON|BF_NORMALで処理終了
 
 		//ファイティングの追加ダメージ
 		damage += tk_power_damage;
@@ -2815,7 +2794,6 @@ struct Damage battle_calc_weapon_attack(
 		pc_heal(src_sd,-hp,0);
 	}
 
-	//カアヒ
 	if(skill_num==0 && flag&BF_WEAPON && t_sc_data && t_sc_data[SC_KAAHI].timer!=-1)
 	{
 		int kaahi_lv = t_sc_data[SC_KAAHI].val1;
@@ -3651,7 +3629,6 @@ int battle_weapon_attack( struct block_list *src,struct block_list *target,unsig
 	else {
 		clif_damage(src,target,tick, wd.amotion, wd.dmotion,
 			wd.damage, wd.div_ , wd.type, wd.damage2);
-	//二刀流左手とカタール追撃のミス表示(無理やり～)
 		if(sd && (sd->status.weapon > WT_HUUMA || sd->status.weapon == WT_KATAR) && wd.damage2 == 0)
 			clif_damage(src,target,tick+10, wd.amotion, wd.dmotion,0, 1, 0, 0);
 	}
@@ -4125,7 +4102,6 @@ int battle_skill_attack(int attack_type,struct block_list* src,struct block_list
 			memset(&dmg,0,sizeof(dmg));
 		}
 	}
-	/* ダメージパケット送信 */
 	if(damage != -1) {
 		switch(skillid){
 		case AS_SPLASHER:
@@ -4142,12 +4118,11 @@ int battle_skill_attack(int attack_type,struct block_list* src,struct block_list
 		damage = 0;
 	}
 
-	/* 吹き飛ばし処理とそのパケット */
 	if (dmg.blewcount>0 && bl->type!=BL_SKILL && !map[src->m].flag.gvg)
 	{
 		skill_blown(dsrc,bl,dmg.blewcount);
 	}
-	/* 吹き飛ばし処理とそのパケット カード効果 */
+
 	if (dsrc->type == BL_PC && bl->type!=BL_SKILL && !map[src->m].flag.gvg)
 	{
 		skill_add_blown(dsrc,bl,skillid,SAB_REVERSEBLOW);
@@ -4537,6 +4512,16 @@ int battle_check_target( struct block_list *src, struct block_list *target,int f
 			if(map[ss->m].flag.pvp_noparty && s_p > 0 && t_p > 0 && s_p == t_p)
 				return 1;
 			else if(map[ss->m].flag.pvp_noguild && s_g > 0 && t_g > 0 && s_g == t_g)
+				return 1;
+			return 0;
+		}
+		
+		// DUELS BY DAVEN!!!! :D - at last i've reached this moment!!!
+		struct map_session_data* a_sd = (struct map_session_data*)ss; // attacker sd
+		struct map_session_data* t_sd = (struct map_session_data*)target; // target sd
+		
+		if(a_sd!=0 && t_sd->duel_id!=0 && a_sd->duel_id==t_sd->duel_id && a_sd->duel_state!=3 && t_sd->duel_state!=3){
+			if(a_sd->char_id==t_sd->char_id)
 				return 1;
 			return 0;
 		}

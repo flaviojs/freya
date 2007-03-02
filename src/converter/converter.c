@@ -41,10 +41,6 @@ char tmp_sql[65535];
 #pragma comment(lib,"libmysql.lib")
 #endif
 
-void do_pre_init(void)
-{
-}
-
 char* strecpy (char* pt,const char* spt) {
 	//copy from here
 	mysql_real_escape_string(&mysql_handle,pt,spt,strlen(spt));

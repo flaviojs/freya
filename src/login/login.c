@@ -76,20 +76,6 @@ static void read_gm_account(void);
 static int isGM(int account_id);
 static int gm_account_db_final(void *key, void *data, va_list ap);
 
-#include "atnwinsvc.h"
-
-// ==========================================
-// Windows サービスにするときの設定
-// ------------------------------------------
-void do_pre_init(void)
-{
-	atnwinsvc_setname(
-		"atnlogin", "Athena Login Server",
-		"Provides Login service of Ragnarok Online Emulation." 
-		);
-	atnwinsvc_setlogfile( "./log/login_svc_stdout.log", "" ); 
-}
-
 #ifdef TXT_ONLY
 
 static char account_filename[1024] = "save/account.txt";
@@ -103,7 +89,6 @@ static struct journal login_journal;
 static char login_journal_file[1024]="./save/account.journal";
 static int login_journal_cache = 1000;
 #endif
-
 
 #ifdef TXT_JOURNAL
 // ==========================================

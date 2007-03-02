@@ -1,4 +1,4 @@
-/* スキル関係 */
+/* skill */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -732,14 +732,12 @@ int skill_additional_effect( struct block_list* src, struct block_list *bl,int s
 
 	switch(skillid){
 	case 0:
-		/* 自動鷹 */
 		if(sd && pc_isfalcon(sd) && (skill=pc_checkskill(sd,HT_BLITZBEAT))>0 &&
 			(sd->status.weapon == WT_BOW || battle_config.allow_any_weapon_autoblitz) &&
 			atn_rand()%10000 < sd->paramc[5]*30+100 ) {
 			int lv=(sd->status.job_level+9)/10;
 			skill_castend_damage_id(src,bl,HT_BLITZBEAT,(skill<lv)?skill:lv,tick,0xf00000);
 		}
-		// スナッチャー
 		if(sd && sd->status.weapon != WT_BOW && (skill=pc_checkskill(sd,RG_SNATCHER)) > 0) {
 			int skill2;
 			if((skill*15 + 55) + (skill2 = pc_checkskill(sd,TF_STEAL))*10 > atn_rand()%1000) {
@@ -897,7 +895,7 @@ int skill_additional_effect( struct block_list* src, struct block_list *bl,int s
 
 	case RG_RAID:		/* サプライズアタック */
 		if( atn_rand()%100 < (10+3*skilllv)*sc_def_vit/100 )
-			status_change_start(bl,SC_STAN,skilllv,0,0,0,3000,0);
+			status_change_start(bl,SC_STAN,skilllv,0,0,0,skill_get_time2(skillid,skilllv),0);
 		if( atn_rand()%100 < (10+3*skilllv)*sc_def_int/100 )
 			status_change_start(bl,SC_BLIND,skilllv,0,0,0,skill_get_time2(skillid,skilllv),0);
 		break;
@@ -1665,7 +1663,6 @@ static int skill_timerskill(int tid, unsigned int tick, int id,int data )
 				break;
 			target = map_id2bl(skl->target_id);
 
-			// インティミデイトはtargetが存在しなくても良いのでここの判定は除外
 			if(skl->skill_id != RG_INTIMIDATE) {
 				if(target == NULL || src->m != target->m)
 					break;
@@ -1704,7 +1701,6 @@ static int skill_timerskill(int tid, unsigned int tick, int id,int data )
 						}
 					}
 					break;
-
 				case BA_FROSTJOKE:			/* 寒いジョーク */
 				case DC_SCREAM:				/* スクリーム */
 					range=AREA_SIZE;		//視界全体
@@ -1724,6 +1720,7 @@ static int skill_timerskill(int tid, unsigned int tick, int id,int data )
 					break;
 			}
 		}
+
 		else {
 			if(src->m != skl->map)
 				break;
@@ -1754,7 +1751,6 @@ static int skill_timerskill(int tid, unsigned int tick, int id,int data )
 			}
 		}
 	} while(0);
-
 	aFree( skl );
 	return 0;
 }
@@ -2620,7 +2616,7 @@ int skill_castend_damage_id( struct block_list* src, struct block_list *bl,int s
 					bl = src;
 					break;
 				case NJ_RAIGEKISAI:			/* 雷撃砕 */
-					ar = ((skilllv+1)/2)*2+3;
+					ar = (skilllv+1)/2+1;
 					skill_area_temp[2]=bl->x;
 					skill_area_temp[3]=bl->y;
 					bl = src;
@@ -2930,6 +2926,7 @@ int skill_castend_nodamage_id( struct block_list *src, struct block_list *bl,int
 					dstsd = sd;
 				}
 			}
+
 			clif_skill_nodamage(src,bl,skillid,heal,1);
 			heal_get_jobexp = battle_heal(NULL,bl,heal,0,0);
 
@@ -4005,8 +4002,7 @@ int skill_castend_nodamage_id( struct block_list *src, struct block_list *bl,int
 						continue;
 				if(i==136)
 					i=192;
-				else
-					status_change_end(bl,i,-1);
+				status_change_end(bl,i,-1);
 			}
 			clif_skill_poseffect(src,skillid,skilllv,src->x,src->y,tick);
 			status_change_start(bl,SC_GOSPEL,skilllv,bl->id,
@@ -4148,6 +4144,10 @@ int skill_castend_nodamage_id( struct block_list *src, struct block_list *bl,int
 		break;
 
 	case MC_VENDING:			/* 露店開設 */
+		if(sd->duel_id!=0 && sd->duel_state!=3){
+			clif_displaymessage(sd->fd,"You can not start vending while duelling...");
+			return 0;
+		}
 		if(sd && pc_iscarton(sd))
 			clif_openvendingreq(sd,2+sd->ud.skilllv);
 		break;
@@ -4157,6 +4157,10 @@ int skill_castend_nodamage_id( struct block_list *src, struct block_list *bl,int
 			int alive = 1;
 			map_foreachinarea(skill_landprotector,src->m,src->x,src->y,src->x,src->y,BL_SKILL,skillid,&alive);
 			if(sd && alive){
+				if(sd->duel_id!=0 && sd->duel_state!=3){
+					clif_displaymessage(sd->fd,"You can not teleport while duelling...");
+					break;
+				}
 				if(map[sd->bl.m].flag.noteleport){	/* テレポ禁止 */
 					clif_skill_teleportmessage(sd,0);
 					break;
@@ -5272,7 +5276,6 @@ int skill_castend_nodamage_id( struct block_list *src, struct block_list *bl,int
 		break;
 	case SG_HATE:
 		if(sd) {
-			// 既に登録済み
 			if(sd->hate_mob[skilllv-1] != -1) {
 				clif_hate_info(sd,skilllv,sd->hate_mob[skilllv-1]);
 				break;
@@ -5313,7 +5316,7 @@ int skill_castend_nodamage_id( struct block_list *src, struct block_list *bl,int
 						sd->hate_mob[2] = dstmd->class;
 						if(battle_config.save_hate_mob)
 							pc_setglobalreg(sd, "PC_HATE_MOB_STAR", sd->hate_mob[2]+1);
-						clif_skill_nodamage(src,src,skillid,skilllv,1);
+						clif_skill_nodamage(src,bl,skillid,skilllv,1);
 						clif_hate_mob(sd,skilllv,sd->hate_mob[2]);
 					} else {
 						clif_skill_fail(sd,skillid,0,0);
@@ -5836,7 +5839,10 @@ int skill_castend_pos2( struct block_list *src, int x,int y,int skillid,int skil
 		if(sd) {
 			int i=0;
 			char *p[3];
-
+			if(sd->duel_id!=0 && sd->duel_state!=3){
+				clif_displaymessage(sd->fd,"You can not summon warp portals while duelling...");
+				break;
+			}
 			if(battle_config.noportal_flag){
 				if(map[sd->bl.m].flag.noportal)	break;	/* noportalで禁止 */
 			}else{
@@ -5986,7 +5992,6 @@ void skill_castend_map( struct map_session_data *sd,int skill_num, const char *m
 
 	if( sd->opt1>0 || sd->status.option&2 )
 		return;
-	//スキルが使えない状態異常中
 	if(sd->sc_data){
 		if( sd->sc_data[SC_SILENCE].timer!=-1 ||
 			sd->sc_data[SC_ROKISWEIL].timer!=-1 ||
@@ -6031,7 +6036,7 @@ void skill_castend_map( struct map_session_data *sd,int skill_num, const char *m
 			struct skill_unit_group *group;
 			int i,x=0,y=0;
 			int maxcount=0;
-
+			
 			p[0] = &sd->status.save_point;
 			for(i=0; i<MAX_PORTAL_MEMO; i++) {
 				p[i+1] = &sd->status.memo_point[i];
@@ -6375,7 +6380,6 @@ int skill_unit_onplace(struct skill_unit *src,struct block_list *bl,unsigned int
 	if (battle_check_target(&src->bl,bl,sg->target_flag)<=0)
 		return 0;
 
-	// 対象がLP上に居る場合は無効
 	if (map_find_skill_unit_oncell(bl,bl->x,bl->y,SA_LANDPROTECTOR,NULL) &&
 	    (sg->unit_id < 0xa6 || sg->unit_id > 0xaf)) //独奏スキルはLP上でも有効
 		return 0;
@@ -6438,19 +6442,14 @@ int skill_unit_onplace(struct skill_unit *src,struct block_list *bl,unsigned int
 	case 0xa5:	// 不死身のジークフリード
 	case 0xa6:	// 不協和音
 	case 0xab:	// 自分勝手なダンス
-		//ダンス効果を自分にかける？
 		if (sg->src_id==bl->id && battle_config.allow_me_concert_effect==0)
 			break;
-
 		if (sg->unit_id==0xa3) {
-			// ロキを自分に適用しない
 			if(sg->src_id==bl->id && battle_config.allow_me_concert_effect==1 && battle_config.allow_me_rokisweil==1)
 				break;
-			// ロキはボス無効
 			if(status_get_mode(bl)&0x20)
 				break;
 		}
-		// 永遠の混沌はボス無効
 		if (sg->unit_id==0xa0) {
 			if(status_get_mode(bl)&0x20)
 				break;
@@ -6471,7 +6470,6 @@ int skill_unit_onplace(struct skill_unit *src,struct block_list *bl,unsigned int
 	case 0xad:	// 私を忘れないで…
 	case 0xae:	// 幸運のキス
 	case 0xaf:	// サービスフォーユー
-		//ダンス効果を自分にかける？
 		if(sg->src_id==bl->id && (!sc_data || sc_data[SC_BARDDANCER].timer==-1)
 							&& battle_config.allow_me_dance_effect==0)
 			break;
@@ -6488,7 +6486,6 @@ int skill_unit_onplace(struct skill_unit *src,struct block_list *bl,unsigned int
 	case 0xb6:				/* フォグウォール */
 		if(status_check_no_magic_damage(bl))
 			break;
-		//霧の中
 		if(map_check_normalmap(bl->m))//通常マップ
 		{
 			if(bl->type==BL_PC)
@@ -6521,17 +6518,13 @@ int skill_unit_onplace(struct skill_unit *src,struct block_list *bl,unsigned int
 	case 0xb9://ヘルモードの杖
 		{
 			int same_flag = 0;
-
-			//自分は除外
 			if(sg->src_id==bl->id)
 				break;
 
-			//ギルドとパーティーが同じなら支援スキル解除対象
 			if(status_get_guild_id(&src->bl)==status_get_guild_id(bl) ||
 			 		status_get_party_id(&src->bl)==status_get_guild_id(bl))
 			{
 				same_flag = 1;
-				//ソウルリンカー以外は支援スキル解除
 				if(status_get_class(bl) != PC_CLASS_SL)
 					status_support_magic_skill_end(bl);
 			}
@@ -6742,7 +6735,6 @@ int skill_unit_onplace_timer(struct skill_unit *src,struct block_list *bl,unsign
 			int splash_count = 0;
 			int i = src->range;
 
-			// サンドマンとクレイモアは効果範囲を1セル広げる
 			if(sg->unit_id == 0x95 || sg->unit_id == 0x98)
 				i++;
 			map_foreachinarea(skill_count_target,src->bl.m
@@ -6765,11 +6757,9 @@ int skill_unit_onplace_timer(struct skill_unit *src,struct block_list *bl,unsign
 			int sec = skill_get_time2(sg->skill_id,sg->skill_lv) - status_get_agi(bl)*100;
 			if(status_get_mode(bl)&0x20)
 				sec = sec/5;
-			// 最低拘束時間補償（式はeAのものをとりあえず採用）
 			if(sec < 3000 + 30*sg->skill_lv)
 				sec = 3000 + 30*sg->skill_lv;
 			status_change_start(bl,SC_ANKLE,sg->skill_lv,(int)sg,0,0,sec,0);
-			// 本来ならボス属性なら吸い寄せられないが、skill_delunitgroup() 等の処理と上手く折り合いが付かないので保留
 			unit_movepos(bl, src->bl.x, src->bl.y, 0);
 			clif_01ac(&src->bl);
 			sg->limit=DIFF_TICK(tick,sg->tick) + sec;
@@ -7564,7 +7554,6 @@ int skill_check_condition2(struct block_list *bl, struct skill_condition *sc, in
 
 	target = map_id2bl( sc->target );
 	if( target && target->type != BL_PC && target->type != BL_MOB && target->type != BL_HOM ) {
-		// スキル対象はPC,MOB,HOMのみ
 		target = NULL;
 	}
 
@@ -7573,13 +7562,10 @@ int skill_check_condition2(struct block_list *bl, struct skill_condition *sc, in
 
 	sc_data = status_get_sc_data( bl );
 
-	// GM特権 : High Priority
-	if( sd && battle_config.gm_skilluncond>0 && pc_isGM(sd)>= battle_config.gm_skilluncond )
+	// GM: High Priority
+	if(sd && battle_config.gm_skilluncond>0 && pc_isGM(sd)>= battle_config.gm_skilluncond)
 		return 1;
 
-	// PC, MOB, PET, HOM 共通の失敗はここに記述
-
-	// 状態異常関連
 	if(sc_data){
 		if(
 			sc_data[SC_SILENCE].timer!=-1 ||
@@ -7601,7 +7587,6 @@ int skill_check_condition2(struct block_list *bl, struct skill_condition *sc, in
 			if(lv==5 && sc->id!=MO_FINGEROFFENSIVE && sc->id!=MO_INVESTIGATE && sc->id!=MO_CHAINCOMBO && sc->id!=MO_EXTREMITYFIST) return 0;
 		}
 
-		/* 演奏/ダンス中 */
 		if (sc_data[SC_DANCING].timer != -1 && sc_data[SC_LONGINGFREEDOM].timer == -1)
 		{
 //			if(battle_config.pc_skill_log)
@@ -7945,11 +7930,9 @@ static int skill_check_condition2_pc(struct map_session_data *sd, struct skill_c
 	ud = unit_bl2ud( bl );
 	target_sd = map_id2sd( sc->target );
 
-	//GMハイド中で、コンフィグでハイド中攻撃不可 GMレベルが指定より大きい場合
 	if(sd->status.option&0x40 && battle_config.hide_attack == 0 && pc_isGM(sd)<battle_config.gm_hide_attack_lv)
 		return 0;	// 隠れてスキル使うなんて卑怯なGMﾃﾞｽﾈ
 
-	//チェイス、ハイド、クローキング時のスキル
 	if(sd->status.option&0x02 && sc->id!=TF_HIDING && sc->id!=AS_GRIMTOOTH && sc->id!=RG_BACKSTAP && sc->id!=RG_RAID && sc->id!=NJ_KIRIKAGE && sc->id!=NJ_SHADOWJUMP)
 		return 0;
 	if(pc_ischasewalk(sd) && sc->id != ST_CHASEWALK)//チェイスウォーク
@@ -8438,7 +8421,6 @@ static int skill_check_condition2_pc(struct map_session_data *sd, struct skill_c
 			itemid[0] = 0;
 	case PF_SPIDERWEB:		/* スパイダーウェッブ */
 	case MG_FIREWALL:		/* ファイアーウォール */
-		/* 数制限 */
 		if(battle_config.pc_land_skill_limit) {
 			int maxcount = skill_get_maxcount(sc->id,sc->lv);
 			if(maxcount > 0 && skill_count_unitgroup(ud,sc->id) >= maxcount) {
@@ -10754,7 +10736,6 @@ int skill_unit_move_unit_group( struct skill_unit_group *group, int m,int dx,int
 			}
 		}
 		if (!(m_flag[i]&0x2)) {
-			// 移動後の場所でスキルユニットを発動
 			map_foreachinarea(skill_unit_effect,unit1->bl.m,
 				unit1->bl.x,unit1->bl.y,unit1->bl.x,unit1->bl.y,0,
 				&unit1->bl,tick,1);
@@ -10799,7 +10780,8 @@ size_t skill_produce_get_db_index( int nameid )
 {
 	size_t i;
 
-	if( nameid <= 0 ) return -1;
+	if(nameid <= 0)
+		return -1;
 
 	for( i = 0; i < MAX_SKILL_PRODUCE_DB; ++i )
 	{
@@ -10822,18 +10804,16 @@ int skill_can_produce_mix( struct map_session_data *sd, int nameid )
 	size_t index;
 	int req_skill, i;
 
-	// チェック
 	nullpo_retr( 0, sd );
-	if( nameid <= 0 ) return 0;
+	if(nameid <= 0)
+		return 0;
 
 	index = skill_produce_get_db_index( nameid );
 	if( index == -1 ) return 0;
 
-	//スキルチェック skillid==0ならそのまま
 	req_skill = skill_produce_db[ index ].req_skill;
 
 	if( req_skill > 0 && pc_checkskill( sd, req_skill ) < skill_produce_db[ index ].req_skilllv ) return 0;
-	// ↓Lv1を持っていなくてLv2を持っているということがあるのか？
 #if 0
 	itemlv = skill_produce_db[ index ].itemlv;
 	{
@@ -10853,20 +10833,18 @@ int skill_can_produce_mix( struct map_session_data *sd, int nameid )
 	}
 #endif
 
-	// 材料チェック
 	for( i = 0; i < MAX_PRODUCE_RESOURCE; ++i )
 	{
 		int mat_id, amount, req_amount, j;
 		mat_id = skill_produce_db[ index ].mat_id[ i ];
 		req_amount = skill_produce_db[ index ].mat_amount[ i ] == 0 ? 1 : skill_produce_db[ index ].mat_amount[ i ];
 
-		/* これ以上は材料要らない */
-		if( mat_id <= 0 ) break;
+		if(mat_id <= 0)
+			break;
 
 		// search inventory
 		for( j = 0, amount = 0; j < MAX_INVENTORY; ++j )
 		{
-			// 足りた時点で検索打ち切り
 			if( amount >= req_amount ) break;
 
 			if( sd->status.inventory[ j ].nameid == mat_id )
@@ -10875,8 +10853,7 @@ int skill_can_produce_mix( struct map_session_data *sd, int nameid )
 			}
 		}
 
-		// 足りない
-		if( amount < req_amount )
+		if(amount < req_amount)
 		{
 			return 0;
 		}
@@ -10959,17 +10936,16 @@ int skill_calc_produce_success_rate( struct map_session_data *sd, int nameid, in
 {
 	int make_per = 0;
 	int idx = skill_produce_get_db_index( nameid );		// Produce DBのIndex
-	if( idx == -1 ) return 0;
+	if( idx == -1 ) return;
 
-	/* 確率判定 */
-	if( !itemdb_isequip(nameid) ) {
+	if(!itemdb_isequip(nameid)) {
 		if(skill_produce_db[idx].req_skill==AM_PHARMACY) {
 			make_per = pc_checkskill(sd,AM_LEARNINGPOTION)*100
 					+pc_checkskill(sd,AM_PHARMACY)*300+sd->status.job_level*20
 					+sd->paramc[4]*10+sd->paramc[3]*5+sd->paramc[5]*10;
 			if (nameid==501 || nameid==503 || nameid==504) // 普通ポーション
 				make_per += 2000;
-			else if (nameid==545 || nameid==505 ||  nameid==12118 || nameid==12119 || nameid==12120 || nameid==12121) // 赤スリム or 青ポーション or レジストポーション
+			else if (nameid==545 || nameid==505) // 赤スリム or 青ポーション
 				make_per -= 500;
 			else if (nameid==546) // 黄スリム
 				make_per -= 700;
@@ -10983,6 +10959,8 @@ int skill_calc_produce_success_rate( struct map_session_data *sd, int nameid, in
 				else
 					make_per = 0;
 			}
+			else	//レジストポーション(通常ポーション並にしておく?)
+				make_per += 2000;
 		} else if (skill_produce_db[idx].req_skill==ASC_CDP) {
 			make_per = 2000 + sd->paramc[4] * 40 + sd->paramc[5] * 20;
 		}else if(skill_produce_db[idx].req_skill == SA_CREATECON)
@@ -11025,7 +11003,6 @@ int skill_calc_produce_success_rate( struct map_session_data *sd, int nameid, in
 				make_per = 1000 + sd->status.base_level*30 + sd->paramc[4]*20 + sd->paramc[5]*10 + pc_checkskill(sd,skill_produce_db[idx].req_skill)*500;
 		}
 	} else {
-		/* 武器製造*/
 		int add_per, wlv;
 		if(pc_search_inventory(sd,989) >= 0) add_per = 1000; //エンペリウムの金敷
 		else if(pc_search_inventory(sd,988) >= 0) add_per = 500; //黄金の金敷
@@ -11070,7 +11047,6 @@ int skill_calc_produce_success_rate( struct map_session_data *sd, int nameid, in
 			make_per=make_per*battle_config.wp_rate/100;
 	}
 
-	//養子の成功率70%
 	if(pc_isbaby(sd))
 		make_per = make_per*70/100;
 
@@ -11092,13 +11068,12 @@ void skill_produce_mix(struct map_session_data *sd,
 	if( !skill_can_produce_mix( sd, nameid ) ) return;
 
 	idx = skill_produce_get_db_index( nameid );
-	if( idx == -1 ) return;
-	
+	if( idx == -1 ) return 0;
+
 	slot[0]=slot1;
 	slot[1]=slot2;
 	slot[2]=slot3;
 
-	/* 埋め込み処理 */
 	for(i=0,sc=0,ele=0;i<3;i++){
 		int j;
 		if( slot[i]<=0 )
@@ -11119,21 +11094,16 @@ void skill_produce_mix(struct map_session_data *sd,
 		}
 	}
 
-	/* 材料消費 */
 	for(i=0;i<MAX_PRODUCE_RESOURCE;i++)
 	{
 		int mat_id, req_cnt, inv_idx;
 		mat_id = skill_produce_db[idx].mat_id[i];
-
-		// これ以上はいらない
-		if( mat_id <= 0 ) break;
-
-		/* 必要な残り個数 */
+		if(mat_id <= 0)
+			break;
 		req_cnt = skill_produce_db[idx].mat_amount[i];
 
 		do
-		{	/* ２つ以上のインデックスにまたがっているかもしれない */
-			// ただのアルコールと名前入りアルコールなど
+		{
 			int consume_cnt = 0;
 			inv_idx = pc_search_inventory( sd, mat_id );
 
@@ -11141,7 +11111,6 @@ void skill_produce_mix(struct map_session_data *sd,
 			if( inv_idx >= 0 )
 			{
 				consume_cnt = sd->status.inventory[ inv_idx ].amount;
-				/* 足りている */
 				if( consume_cnt > req_cnt ) consume_cnt = req_cnt;
 				// Consume
 				pc_delitem( sd, inv_idx, consume_cnt, 0 );
@@ -11149,7 +11118,6 @@ void skill_produce_mix(struct map_session_data *sd,
 			else
 			{
 				// hacking? bug?
-				// 普通はここで中断(throw)では.
 				if( battle_config.error_log )
 					printf("skill_produce_mix: material item error\n");
 				return;
@@ -11157,7 +11125,7 @@ void skill_produce_mix(struct map_session_data *sd,
 
 			req_cnt -= consume_cnt;
 		}
-		while( req_cnt > 0 );	/* 材料を消費するまで繰り返す */
+		while( req_cnt > 0 );
 	}
 
 	wlv = itemdb_wlv( nameid );
@@ -11166,7 +11134,6 @@ void skill_produce_mix(struct map_session_data *sd,
 //		printf("make rate = %d\n",make_per);
 
 	if(atn_rand()%10000 < make_per){
-		/* 成功 */
 		struct item tmp_item;
 		memset(&tmp_item,0,sizeof(tmp_item));
 		tmp_item.nameid=nameid;
@@ -11241,13 +11208,11 @@ void skill_produce_mix(struct map_session_data *sd,
 			}
 			break;
 		}
-
 		if((flag = pc_additem(sd,&tmp_item,1))) {
 			clif_additem(sd,0,0,flag);
 			map_addflooritem(&tmp_item,1,sd->bl.m,sd->bl.x,sd->bl.y,NULL,NULL,NULL,0);
 		}
 	} else {
-		// 失敗
 		switch (skill_produce_db[idx].req_skill)
 		{
 		case AM_PHARMACY:
@@ -11346,7 +11311,6 @@ int skill_am_twilight_sub(struct map_session_data* sd,int nameid,int count)
 		clif_produceeffect(sd,3,nameid);	/* 製薬失敗エフェクト */
 		clif_misceffect(&sd->bl,6);			/* 他人にも失敗を通知 */
 	}
-
 	if( point )
 	{
 		ranking_gain_point(sd,RK_ALCHEMIST,point);
@@ -11359,24 +11323,21 @@ int skill_am_twilight_sub(struct map_session_data* sd,int nameid,int count)
 
 int skill_am_twilight1(struct map_session_data* sd)
 {
-	//白ポ
 	skill_am_twilight_sub( sd, 504, 200 );
 	return 1;
 }
-
 int skill_am_twilight2(struct map_session_data* sd)
 {
-	//白スリム
 	skill_am_twilight_sub( sd, 547, 200 );
+
 	return 1;
 }
-
 int skill_am_twilight3(struct map_session_data* sd)
 {
-	//アルコール, ファイヤーボトル, アシッドボトル
 	skill_am_twilight_sub( sd, 970, 100 );
 	skill_am_twilight_sub( sd, 7135, 50 );
 	skill_am_twilight_sub( sd, 7136, 50 );
+
 	return 1;
 }
 

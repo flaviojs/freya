@@ -39,7 +39,7 @@
 #define LOOTITEM_SIZE 10
 #define MAX_SKILL_ID MAX_SKILL
 #define MAX_SKILL_LEVEL 12
-#define MAX_MOBSKILL	32
+#define MAX_MOBSKILL	50
 #define MAX_EVENTQUEUE	2
 #define MAX_EVENTTIMER	32
 #define NATURAL_HEAL_INTERVAL 500
@@ -259,6 +259,13 @@ struct map_session_data {
 		unsigned fix_damage : 1;
 		unsigned no_knockback : 1;
 	} special_state;
+	
+	// Duel addon by Daven {
+	int duel_state;	 	// 0 - no duel | 1 - duel host | 2 - duel slave | 3 - request state
+	int duel_id;				// equal to duel host's char_id
+	int duel_count;		// No. of opponents on the duel. Host is not counted
+	// }
+	
 	int char_id,login_id1,login_id2,sex;
 	struct mmo_charstatus status;
 	struct registry save_reg;
@@ -978,6 +985,9 @@ void map_addnickdb(struct map_session_data *);
 struct map_session_data * map_nick2sd(char*);
 int map_field_setting(void);
 
+// duel addon by daven
+int break_duel(struct map_session_data *);
+int cancel_request(struct map_session_data*, char*);
 
 // ‚»‚Ì‘¼
 int map_check_dir(int s_dir,int t_dir);
@@ -1003,7 +1013,7 @@ int map_who(int fd);
 //     void hoge( struct block_list* bl) {
 //         struct map_session_data *sd;
 //         struct pet_data *pd;
-//         if( (sd = BL_DOWNCAST( BL_PC, bl )) ) {
+//         } else if( BL_CAST( BL_PC, bl, pd ) ) {
 //             // bl is PC
 //         } else if( pd = BL_DOWNCAST( BL_PET, bl )) ) {
 //             // bl is PET

@@ -112,28 +112,6 @@ static int start_zeny = 500;
 // 初期位置（confファイルから再設定可能）
 static struct point start_point = {"new_1-1.gat", 53, 111};
 
-#if PACKETVER >= 8
-#define CHARINFOSIZE 108
-#else
-#define CHARINFOSIZE 106
-#endif
-
-#include "atnwinsvc.h"
-
-// ==========================================
-// Windows サービスにするときの設定
-// ------------------------------------------
-void do_pre_init(void)
-{
-	atnwinsvc_setname(
-		"atnchar", "Athena Character Server",
-		"Provides Character and Inter service of Ragnarok Online Emulation." 
-		);
-	atnwinsvc_setlogfile( "./log/char_svc_stdout.log", "" ); 
-}
-
-
-
 #ifdef TXT_ONLY
 static struct mmo_chardata *char_dat;
 static int  char_num,char_max;
@@ -2036,61 +2014,58 @@ int mmo_char_send006b(int fd,struct char_session_data *sd)
 	sd->state = CHAR_STATE_AUTHOK;
 	found_num = char_load_all(sd,sd->account_id);
 
-	memset(WFIFOP(fd,0),0,offset+found_num*CHARINFOSIZE);
+	memset(WFIFOP(fd,0),0,offset+found_num*106);
 	WFIFOW(fd,0)=0x6b;
-	WFIFOW(fd,2)=offset+found_num*CHARINFOSIZE;
+	WFIFOW(fd,2)=offset+found_num*106;
 
 	for( i = 0; i < max_char_slot ; i++ ) {
 		if(sd->found_char[i] == NULL)
 			continue;
 		st = &sd->found_char[i]->st;
-		WFIFOL(fd,offset+(i*CHARINFOSIZE)    ) = st->char_id;
-		WFIFOL(fd,offset+(i*CHARINFOSIZE)+  4) = st->base_exp;
-		WFIFOL(fd,offset+(i*CHARINFOSIZE)+  8) = st->zeny;
-		WFIFOL(fd,offset+(i*CHARINFOSIZE)+ 12) = st->job_exp;
-		WFIFOL(fd,offset+(i*CHARINFOSIZE)+ 16) = st->job_level;
-		WFIFOL(fd,offset+(i*CHARINFOSIZE)+ 20) = 0;
-		WFIFOL(fd,offset+(i*CHARINFOSIZE)+ 24) = 0;
-		WFIFOL(fd,offset+(i*CHARINFOSIZE)+ 28) = st->option;
-		WFIFOL(fd,offset+(i*CHARINFOSIZE)+ 32) = st->karma;
-		WFIFOL(fd,offset+(i*CHARINFOSIZE)+ 36) = st->manner;
-		WFIFOW(fd,offset+(i*CHARINFOSIZE)+ 40) = st->status_point;
-		WFIFOW(fd,offset+(i*CHARINFOSIZE)+ 42) = (st->hp     > 0x7fff) ? 0x7fff : st->hp;
-		WFIFOW(fd,offset+(i*CHARINFOSIZE)+ 44) = (st->max_hp > 0x7fff) ? 0x7fff : st->max_hp;
-		WFIFOW(fd,offset+(i*CHARINFOSIZE)+ 46) = (st->sp     > 0x7fff) ? 0x7fff : st->sp;
-		WFIFOW(fd,offset+(i*CHARINFOSIZE)+ 48) = (st->max_sp > 0x7fff) ? 0x7fff : st->max_sp;
-		WFIFOW(fd,offset+(i*CHARINFOSIZE)+ 50) = DEFAULT_WALK_SPEED; // char_dat[j].st.speed;
+		WFIFOL(fd,offset+(i*106)    ) = st->char_id;
+		WFIFOL(fd,offset+(i*106)+  4) = st->base_exp;
+		WFIFOL(fd,offset+(i*106)+  8) = st->zeny;
+		WFIFOL(fd,offset+(i*106)+ 12) = st->job_exp;
+		WFIFOL(fd,offset+(i*106)+ 16) = st->job_level;
+		WFIFOL(fd,offset+(i*106)+ 20) = 0;
+		WFIFOL(fd,offset+(i*106)+ 24) = 0;
+		WFIFOL(fd,offset+(i*106)+ 28) = st->option;
+		WFIFOL(fd,offset+(i*106)+ 32) = st->karma;
+		WFIFOL(fd,offset+(i*106)+ 36) = st->manner;
+		WFIFOW(fd,offset+(i*106)+ 40) = st->status_point;
+		WFIFOW(fd,offset+(i*106)+ 42) = (st->hp     > 0x7fff) ? 0x7fff : st->hp;
+		WFIFOW(fd,offset+(i*106)+ 44) = (st->max_hp > 0x7fff) ? 0x7fff : st->max_hp;
+		WFIFOW(fd,offset+(i*106)+ 46) = (st->sp     > 0x7fff) ? 0x7fff : st->sp;
+		WFIFOW(fd,offset+(i*106)+ 48) = (st->max_sp > 0x7fff) ? 0x7fff : st->max_sp;
+		WFIFOW(fd,offset+(i*106)+ 50) = DEFAULT_WALK_SPEED; // char_dat[j].st.speed;
 		if(st->class==28 || st->class==29)
-			WFIFOW(fd,offset+(i*CHARINFOSIZE)+ 52) = st->class-4;
+			WFIFOW(fd,offset+(i*106)+ 52) = st->class-4;
 		else
-			WFIFOW(fd,offset+(i*CHARINFOSIZE)+ 52) = st->class;
-		WFIFOW(fd,offset+(i*CHARINFOSIZE)+ 54) = st->hair;
-		WFIFOW(fd,offset+(i*CHARINFOSIZE)+ 56) = st->weapon;
-		WFIFOW(fd,offset+(i*CHARINFOSIZE)+ 58) = st->base_level;
-		WFIFOW(fd,offset+(i*CHARINFOSIZE)+ 60) = st->skill_point;
-		WFIFOW(fd,offset+(i*CHARINFOSIZE)+ 62) = st->head_bottom;
-		WFIFOW(fd,offset+(i*CHARINFOSIZE)+ 64) = st->shield;
-		WFIFOW(fd,offset+(i*CHARINFOSIZE)+ 66) = st->head_top;
-		WFIFOW(fd,offset+(i*CHARINFOSIZE)+ 68) = st->head_mid;
-		WFIFOW(fd,offset+(i*CHARINFOSIZE)+ 70) = st->hair_color;
-		WFIFOW(fd,offset+(i*CHARINFOSIZE)+ 72) = st->clothes_color;
-		memcpy( WFIFOP(fd,offset+(i*CHARINFOSIZE)+74), st->name, 24 );
-		WFIFOB(fd,offset+(i*CHARINFOSIZE)+ 98) = (st->str > 255)?  255:st->str;
-		WFIFOB(fd,offset+(i*CHARINFOSIZE)+ 99) = (st->agi > 255)?  255:st->agi;
-		WFIFOB(fd,offset+(i*CHARINFOSIZE)+100) = (st->vit > 255)?  255:st->vit;
-		WFIFOB(fd,offset+(i*CHARINFOSIZE)+101) = (st->int_ > 255)? 255:st->int_;
-		WFIFOB(fd,offset+(i*CHARINFOSIZE)+102) = (st->dex > 255)?  255:st->dex;
-		WFIFOB(fd,offset+(i*CHARINFOSIZE)+103) = (st->luk > 255)?  255:st->luk;
-		WFIFOW(fd,offset+(i*CHARINFOSIZE)+104) = st->char_num;
-#if PACKETVER >= 8
-		WFIFOW(fd,offset+(i*CHARINFOSIZE)+106) = 1;
-#endif
+			WFIFOW(fd,offset+(i*106)+ 52) = st->class;
+		WFIFOW(fd,offset+(i*106)+ 54) = st->hair;
+		WFIFOW(fd,offset+(i*106)+ 56) = st->weapon;
+		WFIFOW(fd,offset+(i*106)+ 58) = st->base_level;
+		WFIFOW(fd,offset+(i*106)+ 60) = st->skill_point;
+		WFIFOW(fd,offset+(i*106)+ 62) = st->head_bottom;
+		WFIFOW(fd,offset+(i*106)+ 64) = st->shield;
+		WFIFOW(fd,offset+(i*106)+ 66) = st->head_top;
+		WFIFOW(fd,offset+(i*106)+ 68) = st->head_mid;
+		WFIFOW(fd,offset+(i*106)+ 70) = st->hair_color;
+		WFIFOW(fd,offset+(i*106)+ 72) = st->clothes_color;
+		memcpy( WFIFOP(fd,offset+(i*106)+74), st->name, 24 );
+		WFIFOB(fd,offset+(i*106)+ 98) = (st->str > 255)?  255:st->str;
+		WFIFOB(fd,offset+(i*106)+ 99) = (st->agi > 255)?  255:st->agi;
+		WFIFOB(fd,offset+(i*106)+100) = (st->vit > 255)?  255:st->vit;
+		WFIFOB(fd,offset+(i*106)+101) = (st->int_ > 255)? 255:st->int_;
+		WFIFOB(fd,offset+(i*106)+102) = (st->dex > 255)?  255:st->dex;
+		WFIFOB(fd,offset+(i*106)+103) = (st->luk > 255)?  255:st->luk;
+		WFIFOB(fd,offset+(i*106)+104) = st->char_num;
 
 		// ロードナイト/パラディンのログイン時のエラー対策
 		if (st->option == 32)
-			WFIFOL(fd,offset+(i*CHARINFOSIZE)+28) = 0;
+			WFIFOL(fd,offset+(i*106)+28) = 0;
 		else
-			WFIFOL(fd,offset+(i*CHARINFOSIZE)+28) = st->option;
+			WFIFOL(fd,offset+(i*106)+28) = st->option;
 	}
 
 	WFIFOSET(fd,WFIFOW(fd,2));
@@ -3382,7 +3357,7 @@ int parse_char(int fd)
 				}
 
 				st = &cd->st;
-				memset(WFIFOP(fd,2),0x00,CHARINFOSIZE);
+				memset(WFIFOP(fd,2),0x00,106);
 				WFIFOW(fd,0)   = 0x6d;
 				WFIFOL(fd,2    ) = st->char_id;
 				WFIFOL(fd,2+  4) = st->base_exp;
@@ -3412,11 +3387,8 @@ int parse_char(int fd)
 				WFIFOB(fd,2+101) = (st->int_ > 255) ? 255 : st->int_;
 				WFIFOB(fd,2+102) = (st->dex  > 255) ? 255 : st->dex;
 				WFIFOB(fd,2+103) = (st->luk  > 255) ? 255 : st->luk;
-				WFIFOW(fd,2+104) = st->char_num;
-#if PACKETVER >= 8
-				WFIFOW(fd,2+106) = 1;
-#endif
-				WFIFOSET(fd,CHARINFOSIZE+2);
+				WFIFOB(fd,2+104) = st->char_num;
+				WFIFOSET(fd,108);
 				RFIFOSKIP(fd,37);
 				for(ch=0;ch<max_char_slot;ch++) {
 					if(sd->found_char[ch] == NULL) {
