@@ -676,7 +676,7 @@
 614,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_WINDATTACK##
 615,0,0,0,0,0,10,0,no,0,0,0,none,0	//DE_WATERATTACK##
 
-// New Monster Skills
+// Unknown New Skills
 616,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_ENEGERY##
 617,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_CLOUD##
 618,0,0,0,0,0,10,0,no,0,0,0,none,0	//DA_FIRSTSLOT##

@@ -11,6 +11,7 @@
 Date	Added
 
 03/02/2007
+	* Added: Bases for the new unreleased DA skills [Tsuyuki]
 	* Updated: Bring It On's drops/rates [Tsuyuki]
 	* Fixed: Stun values for a bunch of items as per Aegis 10.4: [Tsuyuki]
 	 - Potato, Mochi, Stunner, Stunner [1], Stun Arrow, Lord of Death Card
