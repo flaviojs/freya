@@ -1,0 +1,105 @@
+//===== Freya Script =========================================
+//= Job quests for Death Knight, Dark Collector, Munak, and
+//= Bon Gun.
+//===== By: ==================================================
+//= Freya/Tsuyuki
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
+//= Job change temp quests for new unreleased job classes.
+//= Please note that this Job change NPC is completely
+//= unofficial, and may be totally wrong with the actual
+//= job change process.
+//===== Additional Comments: =================================
+//= 1.0 Added first version [Tsuyuki]
+//============================================================
+
+
+prontera.gat,148,204,3	script	Mich	904,{
+
+	mes "[Mich]";
+	mes "I'm the temporary job changer for Death Knight,";
+	mes "Dark Collector, Munak, and Bon Gun new classes.";
+	mes "What can I do for you today?";
+	next;
+	menu "Job Change",L_JobVerify,"Cancel",L_Cancel;
+
+	L_JobVerify:
+		if (Class == JOB_DEATH_KNIGHT || Class == JOB_DARK_COLLECTOR) goto L_AlreadyChanged;
+		if (Class == JOB_BON_GUN || Class == JOB_MUNAK) goto L_JobChange01;
+		if (Class == JOB_NOVICE) goto L_JobChange02;
+
+		mes "[Mich]";
+		mes "I'm sorry, but you've already chosen another class path.";
+		mes "I can only help Novices, Munaks, and Bon Guns.";
+		close;
+
+	L_JobChange01:
+		if (Skillpoints != 0) goto L_SkillPoints;
+		if (Joblevel < 40) goto L_JobLevel01;
+
+		mes "[Mich]";
+		mes "Alright, which class would you like to become?";
+		next;
+		menu "Death Knight",L_DeathKnight,"Dark Collector",L_DarkCollector,"Cancel",L_Cancel;
+
+		L_DeathKnight:
+			mes "[Mich]";
+			mes "Enjoy your new job.";
+			jobchange JOB_DEATH_KNIGHT;
+			close;
+
+		L_DarkCollector:
+			mes "[Mich]";
+			mes "Enjoy your new job.";
+			jobchange JOB_DARK_COLLECTOR;
+			close;
+
+	Job_Change02:
+		if (Skillpoints != 0) goto L_SkillPoints;
+		if (Joblevel < 10) goto L_JobLevel02;
+
+		mes "[Mich]";
+		mes "Alright, would you like to become a";
+		if (Sex == 1) mes "Bon Gun?";
+		if (Sex == 0) mes "Munak?";
+		next;
+		menu "Job Change",L_MunakBonGun,"Cancel",L_Cancel;
+
+		L_MunakBonGun:
+			mes "[Mich]";
+			mes "Enjoy your new job.";
+			if (Sex == 1) jobchange JOB_BON_GUN;
+			if (Sex == 0) jobchange JOB_MUNAK;
+			close;
+
+	L_JobLevel01:
+		mes "[Mich]";
+		mes "I'm sorry, but you must have a job level of at least 40";
+		mes "in order to change classes.";
+		close;
+
+	L_JobLevel02:
+		mes "[Mich]";
+		mes "I'm sorry, but you must have a job level of at least 10";
+		mes "in order to change classes.";
+		close;
+
+	L_AlreadyChanged:
+		mes "[Mich]";
+		mes "How are you enjoying your new class?";
+		close;
+
+	L_SkillPoints:
+		mes "[Mich]";
+		mes "Please get rid of all your excess skill";
+		mes "points before changing jobs.";
+		close;
+
+	L_Cancel:
+		mes "[Mich]";
+		mes "Have a nice day.";
+		close;
+}

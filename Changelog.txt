@@ -11,6 +11,9 @@
 Date	Added
 
 03/02/2007
+	* Added: Temp job changer for Munak/Bon Gun/Death Knight/Dark Collector classes [Tsuyuki]
+	 - Note: Do NOT enable it yet
+	* Improved: Organization/formatting of the map_freya.conf file [Tsuyuki]
 	* Removed: Some /sample/ old/untranslated scripts [Tsuyuki]
 	* Added: Bases for the new unreleased DA skills [Tsuyuki]
 	* Updated: Bring It On's drops/rates [Tsuyuki]
