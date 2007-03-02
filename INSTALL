@@ -1,14 +1,13 @@
-               (c)2004-2006 Freya team presents:              
-                 ___   ___    ___   _  _   __                 
-                (  _) (  ,)  (  _) ( \/ ) (  )                
-                (  _)  )  \   ) _)  \  /  /__\                
-                (_)   (_)\_) (___) (__/  (_)(_)               
-                   Ragnarok Online Emulator                   
-                  http://freya.dns.st/forum/                  
---------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
 
 
-Freya SQL Installation and Upgrade Instructions
+Freya SQL Installation Instructions
 
 1 Installation
   1.1 Windows
