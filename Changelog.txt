@@ -11,6 +11,7 @@
 Date	Added
 
 03/02/2007
+	* Changed: Moved /scripts/ folder to /tool/script/ [Tsuyuki]
 	* Removed: Client folder [Tsuyuki]
 	* Added: Temp item restrictions fix for Death Knight/etc [Tsuyuki]
 	* Removed: Dutch from the manner system (90kb -> 22kb) [Tsuyuki]
