@@ -292,7 +292,16 @@ LONG WINAPI core_ExceptionRoutine(struct _EXCEPTION_POINTERS *e) {
 int main(int argc,char **argv)
 {
 	int next;
-	
+
+	printf("          (=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=)\n");
+	printf("          (            (c)2004-2007 Freya Team Presents:            )\n");
+	printf("          (             ___   ___    ___   _  _   __                )\n");
+	printf("          (            (  _) (  ,)  (  _) ( \\/ ) (  )               )\n");
+	printf("          (            (  _)  )  \\   ) _)  \\  /  /__\\               )\n");
+	printf("          (            (_)   (_)\\_) (___) (__/  (_)(_)              )\n");
+	printf("          (                http://www.ro-freya.net                  )\n");
+	printf("          (=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=)\n\n");
+
 	do_pre_init();
 	
 #if defined(_WIN32) && defined(WIN_SERVICE)
