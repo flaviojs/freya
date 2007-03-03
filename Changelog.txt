@@ -11,6 +11,7 @@
 Date	Added
 
 03/03/07
+	* Fixed: Mail Box NPCs, they now work perfectly fine [Tsuyuki]
 	* Changed: All atcommands with a GM level requirement of 0 -> 1 [Tsuyuki]
 	* Updated: Source code to Athena 2269 [Tsuyuki]
 	* Removed: Duel system [Tsuyuki]

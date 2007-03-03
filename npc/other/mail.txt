@@ -12,6 +12,7 @@
 //===== Additional Comments: =================================
 //= 1.0 Added first version to Aegis [muad_dib]
 //= 1.1 Converted to Freya and optimized [Tsuyuki]
+//= 1.2 Enabled Mail Box opening command [Tsuyuki]
 //============================================================
 
 prontera.gat,146,86,0	script	Mailbox#1::Mailbox	888,{
@@ -33,8 +34,7 @@ prontera.gat,146,86,0	script	Mailbox#1::Mailbox	888,{
 			mes "[Mailbox]";
 			mes "Thank you for using the Mailing Service.";
 			set Zeny,Zeny-130;
-			// Aegis command, not implemented in Freya yet
-			// OpenMailing;
+			gmcommand "@mailbox";
 			close;
 
 	L_No:
