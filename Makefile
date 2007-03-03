@@ -1,7 +1,8 @@
 # $Id: Makefile,v 1.1 2003/06/20 05:30:43 lemit Exp $
 
 CC = gcc -pipe
-PACKETDEF = -DPACKETVER=7 -DNEW_006b
+PACKETDEF = -DPACKETVER=8 -DNEW_006b
+#PACKETDEF = -DPACKETVER=7 -DNEW_006b
 #PACKETDEF = -DPACKETVER=6 -DNEW_006b
 #PACKETDEF = -DPACKETVER=5 -DNEW_006b
 #PACKETDEF = -DPACKETVER=4 -DNEW_006b
@@ -11,8 +12,8 @@ PACKETDEF = -DPACKETVER=7 -DNEW_006b
 
 PLATFORM = $(shell uname)
 
-MYSQL_INCLUDE = /usr/include/mysql
-MYSQL_LIBS = /usr/lib/mysql
+MYSQL_INCLUDE = /usr/local/include/mysql
+MYSQL_LIBS = /usr/local/lib/mysql
 
 ifeq ($(findstring CYGWIN,$(PLATFORM)), CYGWIN)
 OS_TYPE = -DCYGWIN -DFD_SETSIZE=4096
@@ -35,18 +36,18 @@ else
 	CFLAGS += -DTXT_ONLY
 endif
 
-# Link Zlib(NOTrecommended)
+#Link Zlib(NOTrecommended)
 #CFLAGS += -DLOCALZLIB
 
-# debug(recommended)
+#debug(recommended)
 CFLAGS += -g
 
 #-------Low CPU-----
-# optimize(recommended)
+#optimize(recommended)
 #CFLAGS += -O2
 
 #-------High CPU----
-# optimize(recommended)
+#optimize(recommended)
 CFLAGS += -O3
 
 # change authfifo comparing data
@@ -65,7 +66,7 @@ CFLAGS += -DNO_HTTPD_CGI
 # disable csvdb via script
 #CFLAGS += -DNO_CSVDB_SCRIPT
 
-# enable Death Knight/Dark Collector classes
+# usable DKDC
 #CFLAGS += -DCLASS_DKDC
 
 # enable dynamic memory allocation of status change data

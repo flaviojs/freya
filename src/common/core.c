@@ -16,6 +16,7 @@
 #include "socket.h"
 #include "timer.h"
 #include "mmo.h"
+#include "atnwinsvc.h"
 
 #ifdef MEMWATCH
 #include "memwatch.h"
@@ -37,6 +38,11 @@ int packet_parse_time = 0;
  */
 
 static volatile int athena_is_running = 1;
+
+void core_stop(void)
+{
+	athena_is_running = 0;
+}
 
 #ifdef _WIN32
 BOOL WINAPI core_CtrlHandlerRoutine( DWORD dwCtrlType )
@@ -286,6 +292,17 @@ LONG WINAPI core_ExceptionRoutine(struct _EXCEPTION_POINTERS *e) {
 int main(int argc,char **argv)
 {
 	int next;
+	
+	do_pre_init();
+	
+#if defined(_WIN32) && defined(WIN_SERVICE)
+	if( argc>1 && *argv[1]=='/' )
+	{
+		if( atnwinsvc_main(argc, argv) )	// サービスの処理をする
+			return 0;
+	}
+#endif
+
 	pid_create(argv[0]);
 	do_init_memmgr(argv[0]); // 一番最初に実行する必要がある
 	do_socket();
@@ -303,6 +320,10 @@ int main(int argc,char **argv)
 
 	atexit(do_final);
 	do_init(argc,argv);
+	
+	atnwinsvc_notify_ready();
+	atnwinsvc_logflush();
+	
 	if (packet_parse_time > 0) {
 		add_timer_func_list(parsepacket_timer,"parsepacket_timer");
 		add_timer_interval(gettick()+packet_parse_time,parsepacket_timer,0,0,packet_parse_time);
@@ -310,15 +331,18 @@ int main(int argc,char **argv)
 		while(athena_is_running) {
 			next=do_timer(gettick_nocache());
 			do_sendrecv(next);
+			atnwinsvc_logflush();
 		}
 	} else {
 		while(athena_is_running) {
 			next=do_timer(gettick_nocache());
 			do_sendrecv(next);
 			do_parsepacket();
+			atnwinsvc_logflush();
 		}
 	}
 	
+	atnwinsvc_notify_stop();
 	exit(0);
 	return 0;
 }

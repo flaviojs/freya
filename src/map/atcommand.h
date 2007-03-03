@@ -170,15 +170,6 @@ enum AtCommandType {
 	AtCommand_MakeHomun,
 	AtCommand_HomFriendly,
 	AtCommand_AutoLoot,
-		
-	// Duels addon by daven {
-	AtCommand_Duel,
-	AtCommand_DuelOff,
-	AtCommand_Accept,
-	AtCommand_Reject,
-	AtCommand_DuelInfo,
-	// }
-	
 	AtCommand_Unknown,
 	AtCommand_MAX,
 };

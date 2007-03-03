@@ -23,6 +23,7 @@
 #include "skill.h"
 #include "unit.h"
 #include "status.h"
+#include "atnwinsvc.h"
 
 #ifdef MEMWATCH
 #include "memwatch.h"
@@ -81,6 +82,7 @@ int npc_enable_sub( struct block_list *bl, va_list ap )
 
 	if(bl->type == BL_PC && (sd=(struct map_session_data *)bl)) {
 		char name[50];
+
 		if(nd->flag&1)	// 無効化されている
 			return 1;
 		if(sd->areanpc_id==nd->bl.id)
@@ -285,12 +287,18 @@ int npc_event_doall_id(const char *name, int rid, int m)
 int npc_event_do_clock(int tid,unsigned int tick,int id,int data)
 {
 	time_t timer;
-	struct tm *t;
+	struct tm *t, tmp;
 	char buf[64];
 	int c=0;
 
 	time(&timer);
-	t=localtime(&timer);
+
+#ifndef _WIN32
+	localtime_r(&timer, &tmp);
+	t = &tmp;
+#else
+	t = localtime(&timer);
+#endif
 
 	if (t->tm_min != ev_tm_b.tm_min ) {
 		sprintf(buf,"OnMinute%02d",t->tm_min);
@@ -542,6 +550,7 @@ int npc_touch_areanpc(struct map_session_data *sd,int m,int x,int y)
 	}
 	switch(nd->bl.subtype) {
 	case WARP:
+		//隠れているとワープできない
 		if(pc_ishiding(sd))
 		 	break;
 		skill_stop_dancing(&sd->bl,0);
@@ -563,7 +572,6 @@ int npc_touch_areanpc(struct map_session_data *sd,int m,int x,int y)
 	return 0;
 }
 
-
 /*==========================================
  * 近くかどうかの判定
  *------------------------------------------
@@ -578,6 +586,7 @@ int npc_checknear(struct map_session_data *sd, struct npc_data *nd)
 	if (nd->class<0)	// イベント系は常にOK
 		return 0;
 
+	// エリア判定
 	if (nd->bl.m!=sd->bl.m ||
 	   nd->bl.x<sd->bl.x-AREA_SIZE-1 || nd->bl.x>sd->bl.x+AREA_SIZE+1 ||
 	   nd->bl.y<sd->bl.y-AREA_SIZE-1 || nd->bl.y>sd->bl.y+AREA_SIZE+1)
@@ -1395,7 +1404,7 @@ static int npc_parse_script(char *w1,char *w2,char *w3,char *w4,char *first_line
 	nd->u.scr.ys = 0;
 
 	if(m==-1){
-
+		// スクリプトコピー用のダミーNPC
 	}else if( sscanf(w4,"%d,%d,%d",&class,&xs,&ys)==3) {
 		// 接触型NPC
 		int i,j;
@@ -1404,7 +1413,6 @@ static int npc_parse_script(char *w1,char *w2,char *w3,char *w4,char *first_line
 		if (ys>=0)ys=ys*2+1;
 
 		if (class>=0) {
-
 			for(i=0;i<ys;i++) {
 				for(j=0;j<xs;j++) {
 					if(map_getcell(m,x-xs/2+j,y-ys/2+i,CELL_CHKNOPASS))
@@ -1413,7 +1421,6 @@ static int npc_parse_script(char *w1,char *w2,char *w3,char *w4,char *first_line
 				}
 			}
 		}
-
 		nd->u.scr.xs=xs;
 		nd->u.scr.ys=ys;
 	} else {	// クリック型NPC
@@ -2037,6 +2044,7 @@ int do_final_npc(void)
  */
 int do_init_npc(void)
 {
+	time_t timer;
 	struct npc_src_list *nsl;
 	FILE *fp;
 	char line[1024];
@@ -2045,7 +2053,12 @@ int do_init_npc(void)
 	ev_db=strdb_init(48);
 	npcname_db=strdb_init(24);
 
-	memset(&ev_tm_b,-1,sizeof(ev_tm_b));
+	time(&timer);
+#ifndef _WIN32
+	localtime_r(&timer, &ev_tm_b);
+#else
+	memset(&ev_tm_b, -1, sizeof(ev_tm_b));
+#endif
 
 	for(nsl=npc_src_first;nsl;nsl=nsl->next) {
 		int comment_flag = 0;
@@ -2156,6 +2169,9 @@ int do_init_npc(void)
 			free(nsl);
 			break;
 		}
+
+		atnwinsvc_notify_start();	// 起動処理中を通知
+
 	}
 	printf("\nread %d npcs done (%d warp, %d shop, %d script, %d mob)\n",
 		   npc_id-START_NPC_NUM,npc_warp,npc_shop,npc_script,npc_mob);

@@ -145,6 +145,7 @@ static int homun_hungry(int tid,unsigned int tick,int id,int data)
 	sd->homun_hungry_timer = -1;
 
 	sd->hd->status.hungry--;
+	//status.hungry-数字; とした場合、intervalで設定した時間になるとこの数字分減る。デフォルトはこのまま。
 
 	if(sd->hd->status.hungry==0) {
 		sd->hd->status.hungry=1;		// 0にはならない
@@ -172,6 +173,7 @@ static int homun_hungry(int tid,unsigned int tick,int id,int data)
 	clif_send_homstatus(sd,0);
 
 	interval = 60*1000;
+	//腹が減る時間を設定。デフォルトでは60*1000ﾐﾘ秒ごとにstatus.hungryで設定した分減る。
 
 	sd->homun_hungry_timer = add_timer(tick+interval,homun_hungry,sd->bl.id,0);
 
