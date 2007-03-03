@@ -1,7 +1,7 @@
 #!/bin/sh
-# Zeus Start Script
-# Starts Zeus, stops it, etc...
-# $Id: start-zeus.sh 630 2006-06-05 07:58:18Z MagicalTux $
+# Freya Start Script
+# Starts Freya, stops it, etc...
+# $Id: start-freya.sh 630 2006-06-05 07:58:18Z MagicalTux $
 #
 # This script uses itself as a daemon to make sure
 # no server stops. It will check every 10 secs that
@@ -9,29 +9,29 @@
 # the server.
 #
 
-# Change this value to reflect your installation path if the resident can't locate Zeus
-ZEUS_PATH=.
+# Change this value to reflect your installation path if the resident can't locate Freya
+FREYA_PATH=.
 
 # Check our directory
-if [ ! -f "$ZEUS_PATH/login-server" ]; then
+if [ ! -f "$FREYA_PATH/login-server" ]; then
 	# login-server isn't with us, try to locate it in the path found in $0
 	POSSIBLE_PATH=`dirname "$0"`
 	if [ ! -f "$POSSIBLE_PATH/login_server" ]; then
-		echo "Server not found, make sure that $0 is ran within Zeus directory."
+		echo "Server not found, make sure that $0 is ran within Freya directory."
 		exit 1
 	fi
-	ZEUS_PATH="$POSSIBLE_PATH"
+	FREYA_PATH="$POSSIBLE_PATH"
 fi
 
 # CONFIG
-ZEUS_BIN="login-server char-server map-server"
+FREYA_BIN="login-server char-server map-server"
 UPDATE_STATUS_TIMER=60
-PIDFILE_PATH="$ZEUS_PATH/save/agent.pid"
-STFILE_PATH="$ZEUS_PATH/save/agent_status.txt"
-LOGFILE_PATH="$ZEUS_PATH/log/agent.log"
+PIDFILE_PATH="$FREYA_PATH/save/agent.pid"
+STFILE_PATH="$FREYA_PATH/save/agent_status.txt"
+LOGFILE_PATH="$FREYA_PATH/log/agent.log"
 DAEMON_STOP_TIMEOUT="2s"
 
-zeus_start() {
+freya_start() {
 	if [ -f "$PIDFILE_PATH" ]; then
 		if kill -0 `cat "$PIDFILE_PATH"` 2>/dev/null; then
 			echo "Error: resident seems to be already running. Erase $PIDFILE_PATH if it's not the case."
@@ -40,14 +40,14 @@ zeus_start() {
 		# stale pidfile
 		rm -f "$PIDFILE_PATH"
 	fi
-	echo -n "Starting Zeus resident..."
-	zeus_resident &
+	echo -n "Starting Freya resident..."
+	freya_resident &
 	PID="$!"
 	echo "$PID" >"$PIDFILE_PATH"
 	echo " started (pid: $PID)"
 }
 
-zeus_check() {
+freya_check() {
 	if [ -f "$PIDFILE_PATH" ]; then
 		if kill -0 `cat "$PIDFILE_PATH"` 2>/dev/null; then
 			# already running, nothing to do
@@ -56,13 +56,13 @@ zeus_check() {
 		# stale pidfile
 		rm -f "$PIDFILE_PATH"
 	fi
-	# start Zeus resident...
-	zeus_resident &
+	# start Freya resident...
+	freya_resident &
 	PID="$!"
 	echo "$PID" >"$PIDFILE_PATH"
 }
 
-zeus_restart() {
+freya_restart() {
 	if [ -f "$PIDFILE_PATH" ]; then
 		if kill -USR2 `cat "$PIDFILE_PATH"` 2>/dev/null; then
 			echo "Restart signal sent. Server is restarting..."
@@ -73,11 +73,11 @@ zeus_restart() {
 	exit 1
 }
 
-zeus_stop() {
+freya_stop() {
 	if [ -f "$PIDFILE_PATH" ]; then
 		PID=`cat "$PIDFILE_PATH"`
 		if kill -TERM $PID 2>/dev/null; then
-			echo -n "Please wait while stopping Zeus..."
+			echo -n "Please wait while stopping Freya..."
 			TIMEOUT=15
 			while true; do
 				sleep 1s
@@ -85,7 +85,7 @@ zeus_stop() {
 					# still running -> wait
 					if [ $TIMEOUT -lt 1 ]; then
 						echo "FAILED"
-						echo "Stopping of Zeus timed out. Please check ps"
+						echo "Stopping of Freya timed out. Please check ps"
 						exit 1
 					fi
 				else
@@ -97,15 +97,15 @@ zeus_stop() {
 			exit
 		fi
 	fi
-	echo "Could not stop Zeus. It's most likely that Zeus isn't running currently."
+	echo "Could not stop Freya. It's most likely that Freya isn't running currently."
 	exit 1
 }
 
-zeus_res_log() {
+freya_res_log() {
 	echo "["`date`"] $@" >>"$LOGFILE_PATH"
 }
 
-zeus_status() {
+freya_status() {
 	DAEMON=`cat "$STFILE_PATH"`
 	NOW=`date +%s`
 	echo -e "Name\t\tState\tPID\tUptime"
@@ -123,8 +123,8 @@ zeus_status() {
 	done
 }
 
-zeus_res_stop() {
-	zeus_res_log "Ending signal received, stopping daemons..."
+freya_res_stop() {
+	freya_res_log "Ending signal received, stopping daemons..."
 	STOP_DAEMON=""
 	# reverse order to stop map first
 	for foo in $DAEMON; do STOP_DAEMON="$foo $STOP_DAEMON"; done
@@ -135,11 +135,11 @@ zeus_res_stop() {
 		D_PID=`echo "$foo" | cut -d'|' -f3`
 		if [ x$D_PID = x ]; then continue; fi
 		UPTIME=$[ $NOW - $D_START ]
-		zeus_res_log "Stopping $D_NAME after an uptime of $UPTIME secs"
+		freya_res_log "Stopping $D_NAME after an uptime of $UPTIME secs"
 		if kill -TERM $D_PID 2>/dev/null; then
 			sleep "$DAEMON_STOP_TIMEOUT"
 			if kill -KILL $D_PID 2>/dev/null; then
-				zeus_res_log "Daemon wasn't stopped - killed with SIGKILL"
+				freya_res_log "Daemon wasn't stopped - killed with SIGKILL"
 			fi
 		fi
 	done
@@ -147,8 +147,8 @@ zeus_res_stop() {
 	exit 0
 }
 
-zeus_res_restart() {
-	zeus_res_log "Restarting all Zeus servers..."
+freya_res_restart() {
+	freya_res_log "Restarting all Freya servers..."
 	STOP_DAEMON=""
 	# reverse order to stop map first
 	for foo in $DAEMON; do STOP_DAEMON="$foo $STOP_DAEMON"; done
@@ -159,35 +159,35 @@ zeus_res_restart() {
 		D_PID=`echo "$foo" | cut -d'|' -f3`
 		if [ x$D_PID = x ]; then continue; fi
 		UPTIME=$[ $NOW - $D_START ]
-		zeus_res_log "Stopping $D_NAME after an uptime of $UPTIME secs"
+		freya_res_log "Stopping $D_NAME after an uptime of $UPTIME secs"
 		if kill -TERM $D_PID 2>/dev/null; then
 			sleep "$DAEMON_STOP_TIMEOUT"
 			if kill -KILL $D_PID 2>/dev/null; then
-				zeus_res_log "Daemon wasn't stopped - killed with SIGKILL"
+				freya_res_log "Daemon wasn't stopped - killed with SIGKILL"
 			fi
 		fi
 	done
 	# reset DAEMON to avoid warning messages...
 	DAEMON=""
-	for foo in $ZEUS_BIN; do
+	for foo in $FREYA_BIN; do
 		DAEMON="$DAEMON ${foo}|0|"
 	done
 }
 
-zeus_resident() {
-	# Zeus Resident System
-	cd $ZEUS_PATH
+freya_resident() {
+	# Freya Resident System
+	cd $FREYA_PATH
 	DAEMON=""
 	# close stdin, stdout and stderr
 	exec 0</dev/null
 	exec 1>/dev/null
 	exec 2>/dev/null
-	zeus_res_log "Zeus Resident v1.0 by MagicalTux <MagicalTux@ooKoo.org>"
-	trap zeus_res_stop SIGINT
-	trap zeus_res_stop SIGTERM
-	trap zeus_res_restart SIGUSR2
+	freya_res_log "Freya Resident v1.0 by MagicalTux <MagicalTux@ooKoo.org>"
+	trap freya_res_stop SIGINT
+	trap freya_res_stop SIGTERM
+	trap freya_res_restart SIGUSR2
 	
-	for foo in $ZEUS_BIN; do
+	for foo in $FREYA_BIN; do
 		if [ -x $foo ]; then
 			DAEMON="$DAEMON ${foo}|0|"
 		else
@@ -216,7 +216,7 @@ zeus_resident() {
 			UPTIME=$[ $NOW - $D_START ]
 			if [ x$D_PID = x ]; then
 				# start daemon !
-				zeus_res_log "Starting $D_NAME ..."
+				freya_res_log "Starting $D_NAME ..."
 				./$D_NAME >/dev/null 2>&1 &
 				D_PID=$!
 				D_START=`date +%s`
@@ -228,7 +228,7 @@ zeus_resident() {
 					:
 				else
 					# argh !!
-					zeus_res_log "Warning: $D_NAME down after $UPTIME secs - restarting !"
+					freya_res_log "Warning: $D_NAME down after $UPTIME secs - restarting !"
 					./$D_NAME >/dev/null 2>&1 &
 					D_PID=$!
 					D_START=$NOW
@@ -249,22 +249,22 @@ zeus_resident() {
 
 case "$1" in
 start)
-	zeus_start
+	freya_start
 	;;
 restart)
-	zeus_restart
+	freya_restart
 	;;
 stop)
-	zeus_stop
+	freya_stop
 	;;
 status)
-	zeus_status
+	freya_status
 	;;
 resident)
-	zeus_resident
+	freya_resident
 	;;
 check)
-	zeus_check
+	freya_check
 	;;
 *)
 	echo "Usage: $0 ( start | stop | restart | status | check | resident )"
