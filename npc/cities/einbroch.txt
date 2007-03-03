@@ -149,7 +149,7 @@ einbroch.gat,176,172,5	script	Khemko	855,{
 	end;
 
 OnHide:
-//	specialeffect 16;
+	misceffect 16,"Khemko";
 	disablenpc "Khemko";
 	end;
 
@@ -165,7 +165,7 @@ einbroch.gat,218,198,5	script	Mark	855,{
 	end;
 
 OnHide:
-//	specialeffect 16;
+	misceffect 16,"Mark";
 	disablenpc "Mark";
 	end;
 
@@ -181,7 +181,7 @@ einbroch.gat,174,228,5	script	Oberu	855,{
 	end;
 
 OnHide:
-//	specialeffect 16;
+	misceffect 16,"Oberu";
 	disablenpc "Oberu";
 	end;
 
@@ -234,7 +234,7 @@ s_Goback:
 	}
 
 OnHide:
-//	specialeffect 16;
+	misceffect 16,"Morei";
 	disablenpc "Morei";
 	end;
 
@@ -276,7 +276,7 @@ einbroch.gat,208,208,3	script	Kesunboss	850,{
 	close;
 
 OnHide:
-//	specialeffect 16;
+	misceffect 16,"Kesunboss";
 	disablenpc "Kesunboss";
 	end;
 
@@ -312,7 +312,7 @@ einbroch.gat,232,255,5	script	Khowropher	847,{
 	close;
 
 OnHide:
-//	specialeffect 16;
+	misceffect 16,"Khowropher";
 	disablenpc "Khowropher";
 	end;
 
@@ -346,7 +346,7 @@ einbroch.gat,259,327,5	script	Leslie	846,{
 	close;
 
 OnHide:
-//	specialeffect 16;
+	misceffect 16,"Leslie";
 	disablenpc "Leslie";
 	end;
 
@@ -411,7 +411,7 @@ s_Enviroment:
 	close;
 
 OnHide:
-//	specialeffect 16;
+	misceffect 16,"Train Station Staff#01::EinbrochTrain";
 	end;
 
 OnUnhide:
@@ -445,7 +445,7 @@ einbroch.gat,228,121,5	script	Little Toby	855,{
 	close;
 
 OnHide:
-//	specialeffect 16;
+	misceffect 16,"Little Toby";
 	disablenpc "Little Toby";
 	end;
 
@@ -473,7 +473,7 @@ einbroch.gat,229,149,3	script	Sleik	854,{
 	close;
 
 OnHide:
-//	specialeffect 16;
+	misceffect 16,"Sleik";
 	disablenpc "Sleik";
 	end;
 
@@ -507,7 +507,7 @@ einbroch.gat,236,191,3	script	Tan	855,{
 	close;
 
 OnHide:
-//	specialeffect 16;
+	misceffect 16,"Tan";
 	disablenpc "Tan";
 	end;
 
@@ -886,7 +886,7 @@ einbroch.gat,188,72,3	script	Keneshiotz	855,{
 	close;
 
 OnHide:
-//	specialeffect 16;
+	misceffect 16,"Keneshiotz";
 	disablenpc "Keneshiotz";
 	end;
 

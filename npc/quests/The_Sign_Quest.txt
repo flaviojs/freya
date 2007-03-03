@@ -5580,7 +5580,7 @@ L_Success:
 	next;
 	getitem 7178,1;
 	set signquest,23;
-	// specialeffect2 94;
+	misceffect 94;
 	next;
 	mes "[Engel]";
 	mes "This was one of the most difficult";
@@ -6151,7 +6151,7 @@ L_FirstTouch:
 	mes "What the...?";
 	mes "What's happening?!";
 	next;
-	// specialeffect2 9;
+	misceffect 9;
 	mes "^3355FFFor some reason, in";
 	mes "this particular spot, the";
 	mes "Sobbing Starlight is reacting";
@@ -6160,7 +6160,7 @@ L_FirstTouch:
 	mes "holding. All the objects are";
 	mes "violently resonating";
 	next;
-	// specialeffect2 99;
+	misceffect 99;
 	mes "All of a sudden these";
 	mes "objects emit a bright flash";
 	mes "of light that envelops your";
@@ -9488,7 +9488,7 @@ geffen.gat,119,49,1	script	Fountain#SignFountain	111,{
 	close;
 
 L_Lament:
-	// specialeffect2 200;
+	misceffect 200;
 	mes "^3355FFAs you approach the fountain, a strange light begins to emit from the Lucifer's Lament in your pocket and from something deep within the fountain's water.";
 	next;
 	menu "Throw Lucifer's Lament into the fountain.",L_Throw,"Ignore the light.",-;

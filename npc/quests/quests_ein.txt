@@ -716,7 +716,7 @@ einbroch.gat,51,56,6	script	Laboratory Soldier#01	852,{
 	close;
 
 OnHide:
-	// specialeffect 16;
+	misceffect 16,"Laboratory Soldier#01";
 	disablenpc "Laboratory Soldier#01";
 	end;
 
@@ -733,7 +733,7 @@ einbroch.gat,51,47,6	script	Laboratory Soldier#02	852,{
 	close;
 
 OnHide:
-	// specialeffect 16;
+	misceffect 16,"Laboratory Soldier#02";
 	disablenpc "Laboratory Soldier#02";
 	end;
 
@@ -2969,7 +2969,7 @@ einbroch.gat,132,84,3	script	Liotzburg	853,{
 	close;
 
 OnHide:
-	// specialeffect 16;
+	misceffect 16,"Liotzburg";
 	disablenpc "Liotzburg";
 	end;
 
@@ -4095,7 +4095,7 @@ s_Cooking:
 	goto s_Menu3;
 
 OnHide:
-	// specialeffect 16;
+	misceffect 16,"Uwe Kleine";
 	disablenpc "Uwe Kleine";
 	end;
 

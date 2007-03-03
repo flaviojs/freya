@@ -11,6 +11,7 @@
 Date	Added
 
 03/03/07
+	* Adapted: A bunch of scripts to work correctly in certain places [Tsuyuki]
 	* Imported: Updated Novice Grounds from eAthena [Tsuyuki]
 	* Fixed: Mail Box NPCs, they now work perfectly fine [Tsuyuki]
 	* Changed: All atcommands with a GM level requirement of 0 -> 1 [Tsuyuki]

@@ -99,7 +99,7 @@ geffen.gat,178,72,7	script	Aki	726,{
 	skill 1012,1,0;
 	next;
 	
-	// specialeffect 183;
+	misceffect 183,"Aki";
 	mes "Wow, you're a fast learner.";
 	mes "Enjoy your new talents!";
 	close;

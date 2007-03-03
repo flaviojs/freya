@@ -51,7 +51,7 @@ npc/other/marriage.txt Line: Entire File
 
 npc/
 
--> All 'specialeffect' and 'specialeffect2' commands are commented [Tsuyuki]
+-> All 'specialeffect' commands in the Thanatos Quest are commented [Tsuyuki]
 -> All 'logmes' commands are commented [Tsuyuki]
 
 -------------------------------------------

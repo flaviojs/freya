@@ -39,7 +39,7 @@ OnTouch:
 	end;
 
 JupeLv2Warp:
-	// specialeffect 309;
+	misceffect 309,"#JupeLv2Warp";
 	mes "^666666[" + strcharinfo(0) + "]";
 	mes "^000000Ahhhh...";
 	mes "It feels like";

@@ -42,8 +42,8 @@ s_Switches:
 
 	case 19:
 		if(HELLIONQ3)goto s_Thirsty;
-		// specialeffect 313;
-		// specialeffect2 313;
+		misceffect 313,"Sage Welshyun";
+		misceffect 313;
 		mes "[Welshyun]";
 		mes "That...";
 		mes "That eerie glow...";
@@ -285,7 +285,7 @@ s_Switches:
 		mes "never really asked... In any";
 		mes "case, let me concentrate.";
 		next;
-		// specialeffect 54;
+		misceffect 54,"Sage Welshyun";
 		mes "[Welshyun]";
 		mes "Shadows remembered by time.";
 		mes "Help me retrieve the forgotten";
@@ -293,7 +293,7 @@ s_Switches:
 		mes "scattered in the wind.";
 		mes "Right here. Right now.";
 		next;
-		// specialeffect 72;
+		misceffect 72,"Sage Welshyun";
 		mes "[Welshyun]";
 		mes "...";
 		mes "Okay...";
@@ -365,8 +365,8 @@ s_Switches:
 
 OnTouch:
 	if(HELLIONQ != 19)end;
-	// specialeffect 313;
-	// specialeffect2 313;
+	misceffect 313,"Sage Welshyun";
+	misceffect 313;
 	mes "^3151FFThe piece of tablet";
 	mes "that you have is shining";
 	mes "with light as if in response";
@@ -1465,8 +1465,8 @@ s_Ask:
 
 OnTouch:
 	if(HELLIONQ != 17)end;
-	// specialeffect 313;
-	// specialeffect2 313;
+	misceffect 313,"Buddha Statue#HellionStat";
+	misceffect 313;
 	mes "^3151FFThe piece of tablet";
 	mes "that you have is shining";
 	mes "with light as if in repsonse";
@@ -1791,8 +1791,8 @@ s_Morroc:
 	mes "piece here in Morroc. But...";
 	next;
 	mes "[Sir Chilias'Tyus]";
-	// specialeffect 313;
-	// specialeffect2 313;
+	misceffect 313,"Old Scholar Tyus";
+	misceffect 313;
 	mes "Why are they glowing like";
 	mes "this? In any case, we have";
 	mes "this piece I found here in";
@@ -1876,7 +1876,7 @@ s_Tablet:
 	mes "its power forever...";
 	next;
 	if(countitem(7337))goto s_HellionEye;
-	// specialeffect 12;
+	misceffect 12,"Old Scholar Tyus";
 	mes "[Sir Chilias'Tyus]";
 	mes "Darkness that writhes,";
 	mes "souls lost in the inferno,";
@@ -1885,7 +1885,7 @@ s_Tablet:
 	mes "ones, to the shameless ones,";
 	mes "I give guidance to heaven...";
 	next;
-	// specialeffect 58;
+	misceffect 58,"Old Scholar Tyus";
 	mes "[Sir Chilias'Tyus]";
 	mes "Instead of sadness,";
 	mes "let there be joy. Instead";
@@ -1894,7 +1894,7 @@ s_Tablet:
 	mes "lost will now find";
 	mes "their way...";
 	next;
-	// specialeffect 83;
+	misceffect 83,"Old Scholar Tyus";
 	mes "[Sir Chilias'Tyus]";
 	mes "Light and hope...";
 	mes "Heaven and earth...";
@@ -1993,7 +1993,7 @@ s_HellionEye:
 	mes "I must seal the power of";
 	mes "the Hellion's gem now!";
 	next;
-	// specialeffect 12;
+	misceffect 12,"Old Scholar Tyus";
 	mes "[Sir Chilias'Tyus]";
 	mes "Darkness that writhes,";
 	mes "souls lost in the inferno,";
@@ -2002,7 +2002,7 @@ s_HellionEye:
 	mes "ones, to the shameless ones,";
 	mes "I give guidance to heaven...";
 	next;
-	// specialeffect 58;
+	misceffect 58,"Old Scholar Tyus";
 	mes "[Sir Chilias'Tyus]";
 	mes "Instead of sadness,";
 	mes "let there be joy. Instead";
@@ -2011,7 +2011,7 @@ s_HellionEye:
 	mes "lost will now find";
 	mes "their way...";
 	next;
-	// specialeffect 83;
+	misceffect 83,"Old Scholar Tyus";
 	mes "[Sir Chilias'Tyus]";
 	mes "Light and hope...";
 	mes "Heaven and earth...";
@@ -2064,8 +2064,8 @@ s_Last:
 
 OnTouch:
 	if(HELLIONQ != 18)end;
-	// specialeffect 313;
-	// specialeffect2 313;
+	misceffect 313,"Old Scholar Tyus";
+	misceffect 313;
 	mes "^3151FFOne of the Table Pieces";
 	mes "that you have is beginning to";
 	mes "shine with light, as if it were";
