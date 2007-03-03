@@ -62,3 +62,10 @@ npc/quests/quests_ein.txt
 -> 'nude' command commented [Tsuyuki]
 
 -------------------------------------------
+
+npc/jobs/jobs_novice.txt
+
+-> 'disable_items' command is commented [Tsuyuki]
+-> 'enable_items' command is commented [Tsuyuki]
+
+-------------------------------------------
