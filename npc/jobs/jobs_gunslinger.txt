@@ -197,7 +197,7 @@ que_ng.gat,152,167,3	script	Master Miller	901,{
 			mes "So here's to a nice time";
 			mes "working together.";
 			set hg_gun,6;
-			jobchange JOB_GUNSLINGER;
+			jobchange JOB_GUNSLINGER,0;
 			set gunex,rand(1,2);
 			if (gunex == 1) getitem 13100,1;
 			if (gunex == 2) getitem 13150,1;

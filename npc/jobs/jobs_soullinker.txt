@@ -22,7 +22,7 @@ morocc_in.gat,174,30,7	script	Little Boy#sltest	716,{
 	mes "[Little Boy]";
 	mes "*sniff sniff*";
 	next;
-	if (Class == JOB_TAEKWON && JobLevel >= 40) goto L_Taekwon;
+	if (Class == Job_TaeKwonBoy && JobLevel >= 40) goto L_Taekwon;
 	mes "The little boy is crying and";
 	mes "it doesn't look like you're";
 	mes "going to be able to stop him.";
@@ -297,7 +297,7 @@ L_jobchange:
 	sc_end SC_READYDOWN;
 	sc_end SC_READYTURN;
 	sc_end SC_READYCOUNTER;
-	jobchange JOB_SOUL_LINKER;
+	jobchange JOB_SOUL_LINKER,0;
 	misceffect 247;
 	next;
 	callfunc "F_ClearJobVar";

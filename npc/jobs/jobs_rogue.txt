@@ -363,7 +363,7 @@ L_Change:
 	mes "[Markie]";
 	mes "Tada! Congratulations on becoming a Rogue.  You showed a lot of effort and deserve a reward for it......";
 	setlook 7,0;
-	callfunc "Job_Change",Job_Rogue;
+	callfunc "Job_Change",JOB_ROGUE;
 	emotion e_grat;
 	next;
 	mes "[Markie]";

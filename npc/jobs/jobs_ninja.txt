@@ -212,7 +212,7 @@ que_ng.gat,30,65,3	script	Cool Kid#nq	730,{
 			mes "[Cool Kid]";
 			mes "Haaa!!!!";
 			next;
-			jobchange JOB_NINJA;
+			jobchange JOB_NINJA,0;
 			set NINJ_Q,0;
 			getitem 13010,1;
 			close;

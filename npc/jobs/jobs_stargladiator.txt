@@ -19,7 +19,7 @@
 
 payon.gat,215,102,2	script	MooHyun	828,{
 	mes "[MooHyun]";
-	if (Class == JOB_TAEKWON && JobLevel >= 40 && STGL_Q == 0) goto L_Taekwon;
+	if (Class == Job_TaeKwonBoy && JobLevel >= 40 && STGL_Q == 0) goto L_Taekwon;
 	if (STGL_Q > 0) goto L_Quest;
 	mes "Aaaah, it's such lovely weather today, don't you think?";
 	close;
@@ -126,7 +126,7 @@ L_Again:
 
 job_star.gat,29,33,4	script	Taekwon of the Sun	823,{
 	if (STGL_Q==3) goto L_Warpnow1;
-	if (Class == JOB_TAEKWON && JobLevel >= 40) goto L_Talk1;
+	if (Class == Job_TaeKwonBoy && JobLevel >= 40) goto L_Talk1;
 	mes "[Taekwon of the Sun]";
 	mes "How did you get in here!?";
 	mes "Get out at once!";
@@ -177,7 +177,7 @@ L_Warpnow1:
 
 job_star.gat,95,34,4	script	Taekwon of the Moon	758,{
 	if (STGL_Q==3) goto L_Warpnow2;
-	if (Class == JOB_TAEKWON && JobLevel >= 40) goto L_Talk2;
+	if (Class == Job_TaeKwonBoy && JobLevel >= 40) goto L_Talk2;
 	mes "[Taekwon of the Moon]";
 	mes "How did you get in here!?";
 	mes "Get out at once!";
@@ -226,7 +226,7 @@ L_Warpnow2:
 }
 
 job_star.gat,161,34,4	script	Taekwon of the Stars	77,{
-	if (Class == JOB_TAEKWON && JobLevel >= 40) goto L_Talk3;
+	if (Class == Job_TaeKwonBoy && JobLevel >= 40) goto L_Talk3;
 	if (STGL_Q==3) goto L_Itemcheck;
 	mes "[Taekwon of the Stars]";
 	mes "How did you get in here!?";
@@ -258,7 +258,7 @@ L_Itemcheck:
 	mes "^0000FFyour own, but like something^000000";
 	mes "^0000FFout there is giving you a hand.^000000";
 	next;
-	jobchange JOB_STAR_GLADIATOR;
+	jobchange JOB_STAR_GLADIATOR,0;
 	callfunc "F_ClearJobVar";
 	mes "[Taekwon of the Stars]";
 	mes "It seems that you are indeed";

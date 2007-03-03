@@ -11,6 +11,7 @@
 Date	Added
 
 03/03/07
+	* Fixed: Some issues with job changing [Tsuyuki]
 	* Adapted: A bunch of scripts to work correctly in certain places [Tsuyuki]
 	* Imported: Updated Novice Grounds from eAthena [Tsuyuki]
 	* Fixed: Mail Box NPCs, they now work perfectly fine [Tsuyuki]

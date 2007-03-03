@@ -579,7 +579,7 @@ L_MONK_Q_9:
 	mes "WowHoooo... It is done! You are now a Monk!";
 
 	setoption 0;
-	callfunc "Job_Change",Job_Monk;
+	callfunc "Job_Change",JOB_MONK;
 	next;
 	mes "[Elder Wuhai]";
 	mes "(Cough!) (Cough!)";

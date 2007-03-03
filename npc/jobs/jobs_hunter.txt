@@ -334,7 +334,7 @@ L_Change:
 	mes "[Hunter Sharon]";
 	mes "There you go! You look great in the hunter outfit";
 
-	callfunc "Job_Change",Job_Hunter;
+	callfunc "Job_Change",JOB_HUNTER;
 	emotion e_no1;
 	next;
 	mes "[Hunter Sharon]";

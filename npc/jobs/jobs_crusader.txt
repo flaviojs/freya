@@ -271,7 +271,7 @@ GOOD:
 	if (JBLVL != 50) getitem 1409,1;//Items: Pike__,
 	if (JBLVL == 50) getitem 1408,1;//Items: Pike_,
 
-	callfunc "Job_Change",Job_Crusader;
+	callfunc "Job_Change",JOB_CRUSADER;
 	callfunc "F_ClearJobVar";	// clears all job variables for the current player
 	close;
 NEXT0:

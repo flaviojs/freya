@@ -76,14 +76,14 @@ Job_Bard	19
 Job_Dancer	20
 Job_Crusader2	21
 Job_SuperNovice	23
-Job_TaeKwonBoy	24
-Job_StarGladiator	25
-Job_StarGladiator2	26
-Job_SoulLinker	27
+Job_Taekwon	24
+Job_Star_Gladiator	25
+Job_Star_Gladiator2	26
+Job_Soul_Linker	27
 Job_Gunslinger  28
 Job_Ninja	29
-Job_DeathKnight	30
-Job_DarkCollector	31
+Job_Death_Knight	30
+Job_Dark_Collector	31
 
 mf_nomemo	0
 mf_noteleport	1

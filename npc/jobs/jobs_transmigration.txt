@@ -322,7 +322,7 @@ L_Rebirth:
 	callfunc "F_SaveQuestSkills";
 
 	// Change to High Novice
-	jobchange 0,1;
+	jobchange JOB_NOVICE,1;
 
 	// Reset status/skills/etc
 	set BaseLevel,1;
@@ -567,7 +567,7 @@ L_GETHIGH:
 	mes "["+getarg(3)+"]";
 	mes "Open your eyes.";
 	mes "You have become a "+getarg(1)+".";
-	jobchange getarg(0); // High Class
+	jobchange getarg(0),1; // High Class
 	next;
 	// Return learned quest skills
 	callfunc "F_ReturnQuestSkills";
@@ -643,7 +643,7 @@ L_GET3RD:
 
 	mes "Congratulations!";
 	mes "You have trained well. Now stroll here as a "+getarg(3)+"!";
-	jobchange getarg(2); // Rebirth Class
+	jobchange getarg(2),1; // Rebirth Class
 	set ADVJOB,0;
 	// Return learned quest skills
 	callfunc "F_ReturnQuestSkills";

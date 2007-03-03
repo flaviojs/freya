@@ -368,7 +368,7 @@ L_jobchangeA:
 	mes "title. Mm. In that case, you";
 	mes "are now a ^ff0000Taekwon Boy^000000.";
 	mes "Yes, that sounds good.";
-	jobchange JOB_TAEKWON;
+	jobchange JOB_TAEKWON,0;
 	callfunc "F_ClearJobVar";
 	getitem 2101,1; // Guard[0]
 	next;

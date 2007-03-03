@@ -217,7 +217,7 @@ L_Change:
 	mes "I'll grant you the power to work metals!";
 	next;
 	delitem 1005,1;
-	callfunc "Job_Change",Job_Blacksmith;
+	callfunc "Job_Change",JOB_BLACKSMITH;
 	mes "[Blacksmith Altiregen]";
 	mes "Don't forget! We're the artists that put beauty into metal! Don't you dare forget that!";
 	next;

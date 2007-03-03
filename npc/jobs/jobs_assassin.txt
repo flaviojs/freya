@@ -183,7 +183,7 @@ in_moc_16.gat,19,33,4	script	Guildsman	55,{
 		mes "[Assassin Huey]";
 		mes "Very well done, you are now offically an Assassin.  Although you are free to visit us at anytime..............";
 		setlook 7,0;
-		callfunc "Job_Change",Job_Assassin;
+		callfunc "Job_Change",JOB_ASSASSIN;
 		callfunc "F_ClearJobVar";		// clears all job variables for the current player
 		set kaitrig, 0;
 		next;

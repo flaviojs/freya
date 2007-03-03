@@ -133,7 +133,7 @@ L_Menu3_2:
 	close;
 		
 	LCHANGE:
-	callfunc "Job_Change",Job_Sage;
+	callfunc "Job_Change",JOB_SAGE;
 	callfunc "F_ClearJobVar";
 	mes "[Keiron]";
 	mes "Congratulations!";

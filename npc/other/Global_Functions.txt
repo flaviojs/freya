@@ -110,9 +110,9 @@ function	script	F_ClearGarbage	{
 
 function	script	Job_Change	{
 	if (Upper<2) 
-		jobchange getarg(0); // Common jobchange
+		jobchange getarg(0),0; // Common jobchange
 	else 
-		jobchange getarg(0) + Job_Baby; //Change Job For Baby Class
+		jobchange getarg(0),2; //Change Job For Baby Class
 	return;
 }
 
@@ -190,7 +190,7 @@ function	script	Is_Sword_Class	{
 //////////////////////////////////////////////////////////////////////////////////
 
 function	script	Is_Taekwon_Class	{
-	return ( Class==Job_Taekwon || Class==Job_Star_Gladiator || Class==Job_Star_Gladiator2 || Class==Job_Soul_Linker );
+	return ( Class==JOB_TAEKWON || Class==Job_Star_Gladiator || Class==Job_Star_Gladiator2 || Class==Job_Soul_Linker );
 }
 
 
@@ -413,7 +413,7 @@ function	script	getJobName	{
 			return "Baby Dancer";
 		case Job_Super_Baby:
 			return "Super Baby";
-		case Job_Taekwon:
+		case JOB_TAEKWON:
 			if(Sex == 0)
 				return "Taekwon Girl";
 			else
