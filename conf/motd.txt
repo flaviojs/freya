@@ -1,1 +1,3 @@
+<Message of the Day>
 Welcome to Freya!
+<End of MOTD>

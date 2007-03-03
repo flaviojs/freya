@@ -11,6 +11,7 @@
 Date	Added
 
 03/03/07
+	* Updated: Configuration file formatting [Tsuyuki]
 	* Added: Freya startup display to all three servers [Tsuyuki]
 	* Fixed: Some issues with job changing [Tsuyuki]
 	* Adapted: A bunch of scripts to work correctly in certain places [Tsuyuki]
