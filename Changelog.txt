@@ -11,6 +11,7 @@
 Date	Added
 
 03/03/07
+	* Updated: Source code to Athena 2277 (Latest) [Tsuyuki]
 	* Added: /save/ files [Tsuyuki]
 	* Updated: Configuration file formatting [Tsuyuki]
 	* Added: Freya startup display to all three servers [Tsuyuki]
