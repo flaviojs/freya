@@ -11,6 +11,7 @@
 Date	Added
 
 03/03/2007
+	* Changed: 300 Bear Skin-> 500 Yarn and Slotted Cap->Cap for Fur Hat [GreenGoblin]
 	* Changed: Healthy Branches->Tough Vines for Straw Hat quest [GreenGoblin]
 	* Fixed: Removed extra 0 on a couple card bonuses [GreenGoblin]
 	 - Skeggiold Card and The Anguish of Thanatos Card were fixed
