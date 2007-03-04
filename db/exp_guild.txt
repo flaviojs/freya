@@ -1,5 +1,4 @@
 // Guild LvUp experience point table
-// ---- Translation by Panda.
 2000000
 4000000
 8000000

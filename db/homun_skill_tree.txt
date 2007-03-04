@@ -1,5 +1,5 @@
 // homun_skill_tree.txt
-// ---- Translation by Panda.
+//
 // Class,Skill-ID,MaxLV,Required Skill-ID-1,Required Skill-ID-1-Lv,up to 5 times in total,Required BaseLv,Degree of intimacy
 
 

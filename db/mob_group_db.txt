@@ -1,4 +1,3 @@
-// ---- Translation by Panda
 //ID,JName,GROUP_ID
 //0: no classification yet GROUP_ID:
 //1Goblin 2Orc (other than boss) 3Kobold 4Golem

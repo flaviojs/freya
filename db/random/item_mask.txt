@@ -1,6 +1,22 @@
-// mask.txt@Athena 2005/9/7 19:00:00 (JST)
-// ---- Translation by Panda and Lyly
-// Displayed item for Mask
-// nameid, item_name(dummy), rate
-// Item ID, Item's Name (Dummy), the probability is (*10000) so if 500000 then it is 50% and if 1000000 then it is 100%.)
-// Item ID, However if the pobability fails, it will select the monster ID 0 (in case of multiple, only the last one will be selected)
+// item_mask.txt, Wrapped Mask Database
+//
+// <Item_ID>,<Description (Dummy)>,<Rate>
+//
+// Rate Examples
+// 10000   = 1%
+// 500000  = 50%
+// 1000000 = 100%
+
+0,Mr. Smile,2278
+2278,Mr. Smile,500000
+2281,Opera Masque,500000
+2288,Mr. Scream,500000
+2292,Welding Mask,500000
+2297,Goblin Mask,500000
+5005,Gas Mask,500000
+5086,Alarm Mask,500000
+5087,Poker Face,500000
+5088,Surprised Mask,500000
+5089,Annoyed Mask,500000
+5090,Goblin Leader Mask,500000
+5121,Zealotus Mask,100000

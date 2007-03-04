@@ -1,5 +1,4 @@
 // Skill ID,MaxLV{,Prerequisite Skill ID 1,Level of prerequisite skill 1} * (up to) 5 times
-// ---- Translation by Panda.
 10000,1,0,0,0,0,0,0,0,0,0,0	//GD_APPROVAL#Approval#
 10001,1,10000,1,0,0,0,0,0,0,0,0	//GD_KAFRACONTRACT#Contract with Kafra#
 10002,1,10000,1,0,0,0,0,0,0,0,0	//GD_GUARDRESEARCH#Guardian Research#

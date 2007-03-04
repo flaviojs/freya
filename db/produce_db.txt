@@ -1,5 +1,5 @@
 // ID,ItemLV,RequireSkillid,Skilllv,MaterialID1,MaterialAmount1,MaterialID2,MaterialAmount2,MaterialID3,MaterialAmount3,MaterialID4,MaterialAmount4,MaterialID5,MaterialAmount5
-// ---- Translation by Panda and Lyly
+//
 // Only the group level is checked by itemlv
 // skill==0 -> No skill level check
 // Ore ItemLV=16

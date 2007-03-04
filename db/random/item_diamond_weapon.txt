@@ -1,9 +1,12 @@
-// diamond_armor.txt@Athena 2005/9/7 19:00:00 (JST)
-// ---- Translation by Panda and Lyly
-// Gaigned items with Diamond weapons.
-// nameid, item_name(dummy), rate
-// Item ID, Item's Name (Dummy), the probability is (*10000) so if 500000 then it is 50% and if 1000000 then it is 100%.)
-// Item ID, However if the pobability fails, it will select the monster ID 0 (in case of multiple, only the last one will be selected)
+// item_diamond_weapon.txt, Diamond Weapon Database
+//
+// <Item_ID>,<Description (Dummy)>,<Rate>
+//
+// Rate Examples
+// 10000   = 1%
+// 500000  = 50%
+// 1000000 = 100%
+
 0,Knife,1201
 1201,Knife,600000
 1101,Sword,500000
@@ -14,7 +17,6 @@
 1601,Rod,500000
 1701,Bow,500000
 1250,Jur,500000
-// Rare
 1108,Blade,50000
 1127,Saber,20000
 1128,Haedonggum,20000

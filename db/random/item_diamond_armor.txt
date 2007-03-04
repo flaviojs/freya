@@ -1,9 +1,12 @@
-// diamond_armor.txt@Athena 2005/9/7 19:00:00 (JST)
-// ---- Translation by Panda and Lyly
-// Gaigned items with Diamond armor.
-// nameid, item_name(dummy), rate
-// Item ID, Item's Name (Dummy), the probability is (*10000) so if 500000 then it is 50% and if 1000000 then it is 100%.)
-// Item ID, However if the pobability fails, it will select the monster ID 0 (in case of multiple, only the last one will be selected)
+// item_diamond_armor.txt, Diamond Armor Database
+//
+// <Item_ID>,<Description (Dummy)>,<Rate>
+//
+// Rate Examples
+// 10000   = 1%
+// 500000  = 50%
+// 1000000 = 100%
+
 0,Cotton Shirt,2301
 2301,Cotton Shirt,600000
 2305,Adventurer's Suit,500000
@@ -15,7 +18,6 @@
 2335,Thief Clothes,500000
 2323,Scapulare,500000
 2325,Saint's Robe,500000
-// Rare
 2302,Cotton Shirt,20000
 2304,Leather Jacket,20000
 2307,Mantle,20000

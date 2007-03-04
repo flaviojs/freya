@@ -1,5 +1,5 @@
-// Homunculus Database	LastUP 2006/04/08
-// ---- Translation by Panda.
+// Homunculus Database	LastUP
+//
 // Class,ViewClass,Name,JName,Lv,AcceID,FoodID,HP,SP,Str,Agi,Vit,Int,Dex,Luk,[Rate->]Base,HP_max,HP_min,SP_max,SP_min,Str,Agi,Vit,Int,Dex,Luk,aspd,Size,Race,Element,EvoClass,ExpTable{homun_script}
 
 6001,6001,LIF,Lif,1,0,537,150,40,17,20,15,35,24,15,2,110,40,12,2,56,69,70,60,73,39,630,1,0,80,6009,0,{}

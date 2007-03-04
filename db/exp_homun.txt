@@ -1,5 +1,4 @@
 // Homonculus experience points table
-// ---- Translation by Panda.
 // Experience table of basic Homunculus, Experience table of evolution, Reserved1, Reserved2, Reserved3, Reserved4
 50,50,0,0,0,0
 110,110,0,0,0,0

@@ -1,7 +1,12 @@
-// ---- Translation by Panda and Lyly
-// Items dropped with the skill Ore Discovery
-// item ID, Jname (dummy), the probability is *10000 (100% = 1000000)
-// 0 Default item
+// item_findingore.txt, Ore Discovery Skill Database
+//
+// <Item_ID>,<Description (Dummy)>,<Rate>
+//
+// Rate Examples
+// 10000   = 1%
+// 500000  = 50%
+// 1000000 = 100%
+
 0,Iron Ore,1000000
 714,Emperium,30000
 756,Rough Oridecon,200000
@@ -23,4 +28,3 @@
 1003,Coal,600000
 1010,Phracon,950000
 1011,Emveretarcon,550000
-

@@ -1,5 +1,4 @@
 // ID,Upper,Zone,Dropable,Storageable,Cartable,Delay
-// ---- Translation by Yor.
 
 506,0,16,0,0,0,0	//Green Potion
 525,0,16,0,0,0,0	//Panacea

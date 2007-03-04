@@ -1,8 +1,12 @@
-// RJC2006 Ragnarok Commemoration lag lottery getitem RJC2006,1;
-// ---- Translation by Darkraven.
-// item ID, Jname (dummy), Probability of 10,000 times (for 100%, set 1000000)
-// 0 is default item
-//0,Dead Branch,604
+// item_rjc2006.txt, RJC2006 Ragnarok Commemoration Database
+//
+// <Item_ID>,<Description (Dummy)>,<Rate>
+//
+// Rate Examples
+// 10000   = 1%
+// 500000  = 50%
+// 1000000 = 100%
+
 0,Jellopy,909
 4054,Angeling Card,1
 4047,Ghostring Card,1

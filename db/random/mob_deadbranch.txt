@@ -1,15 +1,10 @@
-// mob_branch.txt‚ Dead Branch Summon List
+// mob_deadbranch.txt‚ Dead Branch Summon List
 // MobID, MobName(Dummy), Rate
 //
 // Rate Formula
 // 10000   = 1%
 // 500000  = 50%
 // 1000000 = 100%
-//
-// If the the pobability is not activated with one of the list entries, it will select the monster ID 0
-// In the case of multiple 0 IDs, only the last one will be selected
-// If at least one entry has a chance value of 100%, it's not possible for this to happen
-//
 
 0,Poring,1002
 1001,Scorpion,1000000

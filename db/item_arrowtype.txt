@@ -1,7 +1,8 @@
-// ---- Translation by Panda and Lyly
-//1:Arrow,2:Throwing Knife (used for the Assassin skill),
-//4:Pistol Bullet,8:Riffle Bullet,16:Shootgun Bullet,
-//32:Gatling Gun Bullet,64:Grenade Launcher Bullet,128:Shuriken,256:Kunai
+// Arrow Type Database
+//
+// 1:Arrow,2:Throwing Knife (used for the Assassin skill),
+// 4:Pistol Bullet,8:Riffle Bullet,16:Shootgun Bullet,
+// 32:Gatling Gun Bullet,64:Grenade Launcher Bullet,128:Shuriken,256:Kunai
 1750,Arrow,Arrow,1
 1751,Silver_Arrow,Silver Arrow,1
 1752,Fire_Arrow,Fire Arrow,1

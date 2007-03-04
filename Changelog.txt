@@ -10,7 +10,10 @@
 
 Date	Added
 
-03/03/07
+03/04/2007
+	* Updated: Databases a little bit [Tsuyuki]
+
+03/03/2007
 	* Changed: 300 Bear Skin-> 500 Yarn and Slotted Cap->Cap for Fur Hat [GreenGoblin]
 	* Changed: Healthy Branches->Tough Vines for Straw Hat quest [GreenGoblin]
 	* Updated: Source code to Athena 2277 (Latest) [Tsuyuki]
@@ -25,7 +28,7 @@ Date	Added
 	* Updated: Source code to Athena 2269 [Tsuyuki]
 	* Removed: Duel system [Tsuyuki]
 
-03/01/07
+03/01/2007
 	* Fixed: Mob Skill Databases broken entries [Tsuyuki]
 	* Updated Kunlun NPCs to Aegis version [GreenGoblin]
 	* Reverted: Source code updates, broke compilation somewhow for Cygwin [Tsuyuki]
@@ -40,18 +43,18 @@ Date	Added
 	* Updated: Jobs script folder organization [Tsuyuki]
 	* Changed: Enabled all Quests (Now compatible) [Tsuyuki]
 
-02/28/07
+02/28/2007
 	* Updated: Item database to Athena's (Latest) [Tsuyuki]
 	* Updated: Monster database to Freya's (Latest) [Tsuyuki]
 	* Updated: /script/ and main folders [Tsuyuki]
 	* Updated: Packet database to 02-22-07 Sakexe client (Credits to Huge/Athena) [Tsuyuki]
 	* Updated: Source code to Athena 2277 (Latest) [Tsuyuki]
 
-02/11/07
+02/11/2007
 	* Moved: Random item databases to /db/random/, corrected in source as well [Tsuyuki]
 	* Updated: Dead Branch/Bloody Branch/Poring Box random spawn lists [Tsuyuki]
 
-01/16/07
+01/16/2007
 	* Moved: Mapflags to npc/other/mapflags.txt for the time being [Tsuyuki]
 	* Removed: Deleted old eAthena WoE system, and imported the translated jAthena system [Tsuyuki]
 	* Changed: Tested and fixed up Event scripts (they stay commented of course) [Tsuyuki]
@@ -59,7 +62,7 @@ Date	Added
 	* Changed: Enabled all npc/other scripts (now compatible) [Tsuyuki]
 	 - Marriage has been excluded, it will need a massive rewrites to become compatible
 
-01/15/07
+01/15/2007
 	* Changed: Enabled all Merchants (now compatible) [Tsuyuki]
 	* Changed: Enabled Kafras, Guides, and Aiports (now compatible) [Tsuyuki]
 	* Changed: Enabled all NPC Monster Spawns (compatible) [Tsuyuki]

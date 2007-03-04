@@ -1,5 +1,5 @@
 // skill_require_db2,txt@AthenaDB plan 2005/04/14 00:00:00 +0900 (JST)
-// ---- Translation by Panda.
+//
 // id,coin,arrow_type,arrow_cost,reserve1,reserve2
 //SkillID,Coin consumption, Arrow type, Arrow consumption, Reserve 1, Reserve 2
 1,0,0,0,0,0	//NV_BASIC#Basic Skill#

@@ -1,4 +1,3 @@
-// ---- Translation by Panda.
 // ID,Unit1,Unit2,Layout,Range,Interval,Target,Flag
 //
 // --- This text has been moved in doc/db_ref.txt

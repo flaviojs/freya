@@ -1,5 +1,4 @@
 // Hocus Pocus skill database result
-// ---- Translation by Panda.
 //
 // Format:<ID>,<DUMMY>,<REQ_LV>,<PER>
 //

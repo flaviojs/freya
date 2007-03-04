@@ -1,14 +1,16 @@
-// diamond_hood.txt@Athena 2005/9/7 19:00:00 (JST)
-// ---- Translation by Panda and Lyly
-// Gaigned items with Diamond hood.
-// nameid, item_name(dummy), rate
-// Item ID, Item's Name (Dummy), the probability is (*10000) so if 500000 then it is 50% and if 1000000 then it is 100%.)
-// Item ID, However if the pobability fails, it will select the monster ID 0 (in case of multiple, only the last one will be selected)
+// item_diamond_hood.txt, Diamond Hood Database
+//
+// <Item_ID>,<Description (Dummy)>,<Rate>
+//
+// Rate Examples
+// 10000   = 1%
+// 500000  = 50%
+// 1000000 = 100%
+
 0,Hood,2501
 2501,Hood,600000
 2503,Muffler,500000
 2505,Manteau,500000
-// Rare
 2502,Hood,20000
 2504,Muffler,20000
 2506,Manteau,20000

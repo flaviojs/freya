@@ -1,6 +1,4 @@
 // Guild castle data by sakage, shuto
-// AgitDB Modify by Michael_Huang at 2004-02/13.
-// --- Translation by Panda.
 // <Castle_ID>,<Map_Name>,<Castle_Name>,<Event_Name>
 0,aldeg_cas01.gat,Luina Guild 1,AgitExe#L1
 1,aldeg_cas02.gat,Luina Guild 2,AgitExe#L2

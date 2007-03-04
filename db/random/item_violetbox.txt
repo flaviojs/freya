@@ -1,9 +1,12 @@
-//item_violetbox.txt@Athena 2006/09/24 20:41:13 (JST)
-// ---- Translation by Panda and Lyly
-// Obtained items by using an Old Violet Box
-// nameid, item_name(dummy), rate
-// Item ID, Item's Name (Dummy), the probability is (*10000) so if 500000 then it is 50% and if 1000000 then it is 100%.)
-// Item ID, However if the pobability fails, it will select the monster ID 0 (in case of multiple, only the last one will be selected)
+// item_violetbox.txt, Old Violet/Purple Box Database
+//
+// <Item_ID>,<Description (Dummy)>,<Rate>
+//
+// Rate Examples
+// 10000   = 1%
+// 500000  = 50%
+// 1000000 = 100%
+
 0,Guard,2102
 607,Yggdrasil Berry,10000
 702,Animal Gore,10000

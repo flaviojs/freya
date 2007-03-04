@@ -1,5 +1,5 @@
 // skill_require_db2,txt@AthenaDB Plan 2005/04/14 00:00:00 +0900 (JST)
-// ---- Translation by Panda.
+//
 // id,cloable,misfire,zone,damage_rate,reserve1,reserve2,reserve3,reserve4
 // Skill ID,Clone(+1:Before Transcending +2:After Transcending +4:Adopted caracter,•misfired skill,
 // 	Skill limitation by place (+1:Fields +2:PVP +4:GVG +8:PK +16:Turbo Track),

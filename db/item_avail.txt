@@ -1,5 +1,4 @@
 // id,item availability (0 to disable the item)
-// ---- Translation by Panda and Lyly
 // Because every items are define in item_db.txt,
 // you only have to disable them by marking them with a 0.
 // If you specify another number, you will see that id sprite in game.

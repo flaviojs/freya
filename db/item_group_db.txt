@@ -1,5 +1,5 @@
 // item_db.txt@AthenaDBPlan 2004/08/30 20:38:16 +0900 (JST)
-// ---- Translation by Panda and Lyly
+//
 // ID,Name,Jname,Group
 // 1:Potion 2:Herb 3:Candy 4:Juice 5:Meat 6:Raw Fish
 501,Red_Potion,Red Potion,1

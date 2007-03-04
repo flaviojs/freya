@@ -1,5 +1,7 @@
 //item_db.txtÅóAthena 2007/03/01 14:34:10 (JST)
+//
 //ID,Name,Jname,Type,Price,Sell,Weight,ATK,DEF,Range,Slot,Job,Gender,Loc,wLV,eLV,View,Refine,{UseScript},{EquipScript}
+
 501,Red_Potion,Red Potion,0,50,,70,,,,,1000333311,2,,,,,,{ itemheal rand(45,65),0; },{}
 502,Orange_Potion,Orange Potion,0,200,,100,,,,,1000333311,2,,,,,,{ itemheal rand(105,145),0; },{}
 503,Yellow_Potion,Yellow Potion,0,550,,130,,,,,1000333311,2,,,,,,{ itemheal rand(175,235),0; },{}

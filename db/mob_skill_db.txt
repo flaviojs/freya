@@ -1,5 +1,5 @@
 //mob_skill_db.txt@athena 2006/09/24 20:41:32 (JST)
-// ---- Translation by Panda and Lyly.
+//
 // Abbreviation: Translator's Note -> TN
 //
 // TN -> this part was moved in doc/db_ref.txt ------------------

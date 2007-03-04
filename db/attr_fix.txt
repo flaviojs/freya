@@ -1,5 +1,4 @@
 // Element modifier
-// ---- Translation by Panda.
 // Horizontal:Monster's Element                      // Vertical:Element of attack
 1,10	// lv1 Element table
 // Normal  Water  Earth  Fire  Wind  Poison  Holy  Shadow  Ghost  Undead

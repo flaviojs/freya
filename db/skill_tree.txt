@@ -1,5 +1,5 @@
 // skill_tree.txt@AthenaDB plan 2005/04/14 00:00:00 +0900 (JST)
-// ---- Translation by Panda.
+//
 // Upper,JobNo,Skill-ID,MaxLV,Required Skill-ID-1,Required Skill-ID-1-Lv,up to 5 times in total,
 // 	Required BaseLv,Required JobLv,job class(Novice:0, First Class:1, Second Class:2, Transcendant Class:no correspondance)
 // You can't take higher ranked skill before beeing the corect job class.

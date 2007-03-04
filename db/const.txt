@@ -1,5 +1,4 @@
 // GvG Settings
-// ---- Translation by Panda.
 // GvG holding day during the week
 // None = 0, Sunday = +1, Monday = +2, Tuesday = +4, Wednesday = +8, Thursday = +16, Friday = +32, Saturday = +64
 // Add the day of the week when there is GvG. If no GvG put 0.
