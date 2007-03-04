@@ -11,6 +11,7 @@
 Date	Added
 
 03/04/2007
+	* Updated: Packetry once again [Tsuyuki]
 	* Updated: Item type default classifier in itemdb.c [Tsuyuki]
 
 03/03/2007
