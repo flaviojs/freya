@@ -4,7 +4,7 @@
 //= Halca (1.0)
 //= Mass Zero (1.1)
 //===== Current Version: =====================================
-//= 1.2
+//= 1.3
 //===== Compatible With: =====================================
 //= Any eAthena Version.
 //===== Description: =========================================
@@ -13,6 +13,8 @@
 //===== Additional Comments: =================================
 //= 1.2 Fixed wrong labels, added missing text
 //=	added missing delitem, fixed names, item amount [Lupus]
+//= 1.3 Changed Healthy Branches->Tough Vines for Straw Hat [GreenGoblin]
+//= 1.4 Changed 300 Bear Skin-> 500 Yarn and Slotted Cap->Cap for Fur Hat [GreenGoblin]
 //============================================================
 
 xmas_in.gat,36,25,4	script	Hat Seller	806,{
@@ -34,7 +36,7 @@ M_1:
 	next;
 	menu "Yes.",-,"No.",M_EXIT;
 
-	if ((countitem(2236) < 1) || (countitem(7111) < 100) || (countitem(7151) < 100)) goto L_NOITEM;//Items: Santa's Hat, Slick Paper, Oiled Paper,
+	if ((countitem(2236) < 1) || (countitem(7111) < 100) || (countitem(7151) < 100)) GOTO L_NOITEM;//Items: Santa's Hat, Slick Paper, Oiled Paper,
 	delitem 2236,1;//Items: Santa's Hat,
 	delitem 7111,100;//Items: Slick Paper,
 	delitem 7151,100;//Items: Oiled Paper,
@@ -57,7 +59,7 @@ M_2:
 	mes "[Hat Seller]";
 	mes "For this item I require:";
 	mes "1 Sakkat,";
-	mes "300 Healthy Branch,";
+	mes "300 Tough Vines,";
 	mes "300 Bamboo Trunk.";
 	next;
 	mes "[Hat Seller]";
@@ -66,9 +68,9 @@ M_2:
 	next;
 	menu "Yes.",-,"No.",M_EXIT;
 
-	if ((countitem(2280) < 1) || (countitem(7203) < 300) || (countitem(7150) < 300)) goto L_NOITEM;//Items: Sakkat, Healthy Branch, Bamboo Trunk,
+	if ((countitem(2280) < 1) || (countitem(7197) < 300) || (countitem(7150) < 300)) GOTO L_NOITEM;//Items: Sakkat, Tough Vines, Bamboo Trunk,
 	delitem 2280,1;//Items: Sakkat,
-	delitem 7203,300;//Items: Healthy Branch,
+	delitem 7197,300;//Items: Tough Vines,
 	delitem 7150,300;//Items: Bamboo Trunk,
 	getitem 5062,1;//Items: Straw Hat,
 	mes "[Hat Seller]";
@@ -89,7 +91,7 @@ M_3:
 	next;
 	menu "Yes.",-,"No.",M_EXIT;
 
-	if ((countitem(2248) < 1) || (countitem(7030) < 108) || (countitem(7194) < 108) || (countitem(7120) < 4)) goto L_NOITEM;//Items: Western Grace, Claw of Desert Wolf, Soft Grass Leaf, Burning Horseshoe,
+	if ((countitem(2248) < 1) || (countitem(7030) < 108) || (countitem(7194) < 108) || (countitem(7120) < 4)) GOTO L_NOITEM;//Items: Western Grace, Claw of Desert Wolf, Soft Grass Leaf, Burning Horseshoe,
 	delitem 2248,1;//Items: Western Grace,
 	delitem 7030,108;//Items: Claw of Desert Wolf,
 	delitem 7194,108;//Items: Soft Grass Leaf,
@@ -112,7 +114,7 @@ M_4:
 	next;
 	menu "Yes.",-,"No.",M_EXIT;
 
-	if ((countitem(5062) < 1) || (countitem(1907) < 1) || (countitem(952) < 50)) goto L_NOITEM;//Items: Straw Hat, Guitar, Cactus Needle,
+	if ((countitem(5062) < 1) || (countitem(1907) < 1) || (countitem(952) < 50)) GOTO L_NOITEM;//Items: Straw Hat, Guitar, Cactus Needle,
 	delitem 5062,1;//Items: Straw Hat,
 	delitem 1907,1;//Items: Guitar,
 	delitem 952,50;//Items: Cactus Needle,
@@ -124,8 +126,8 @@ M_4:
 M_5:
 	mes "[Hat Seller]";
 	mes "For this item I require:";
-	mes "1 Slotted Cap,";
-	mes "300 Skin of the Black Bear.";
+	mes "1 Cap,";
+	mes "500 Yarn.";
 	next;
 	mes "[Hat Seller]";
 	mes "Bring those, and we got a deal.";
@@ -133,9 +135,9 @@ M_5:
 	next;
 	menu "Yes.",-,"No.",M_EXIT;
 
-	if ((countitem(2227) < 1) || (countitem(7161) < 300)) goto L_NOITEM;//Items: Cap, Bear Skin,
-	delitem 2227,1;//Items: Cap,
-	delitem 7161,300;//Items: Bear Skin,
+	if ((countitem(2226) < 1) || (countitem(7038) < 500)) GOTO L_NOITEM;//Items: Cap, Yarn,
+	delitem 2226,1;//Items: Cap,
+	delitem 7038,500;//Items: Yarn,
 	getitem 5076,1;//Items: Wool Hat,
 	mes "[Hat Seller]";
 	mes "There you go... bye.";
