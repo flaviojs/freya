@@ -2722,7 +2722,7 @@ ATCOMMAND_FUNC(whohas) {
 	    (item_data = itemdb_exists(atoi(item_name))) != NULL)
 		item_id = item_data->nameid;
 
-	if (item_id >= 500) {
+	if (item_id >= 501) {
 		// Get number of online players, id of each online players
 		players = 0;
 		// sort online characters.
@@ -2841,7 +2841,7 @@ ATCOMMAND_FUNC(whohasmap) {
 	    (item_data = itemdb_exists(atoi(item_name))) != NULL)
 		item_id = item_data->nameid;
 
-	if (item_id >= 500) {
+	if (item_id >= 501) {
 		// Get number of online players, id of each online players
 		players = 0;
 		// sort online characters.
@@ -4244,7 +4244,7 @@ ATCOMMAND_FUNC(item) {
 	    (item_data = itemdb_exists(atoi(item_name))) != NULL)
 		item_id = item_data->nameid;
 
-	if (item_id >= 500) {
+	if (item_id >= 501) {
 		if (check_item_authorization(item_id, sd->GM_level)) {
 			get_count = number;
 			// check pet egg
@@ -4316,7 +4316,7 @@ ATCOMMAND_FUNC(charitem) {
 	    (item_data = itemdb_exists(atoi(item_name))) != NULL)
 		item_id = item_data->nameid;
 
-	if (item_id >= 500) {
+	if (item_id >= 501) {
 		if (check_item_authorization(item_id, sd->GM_level)) {
 			get_count = number;
 			// check pet egg
@@ -4394,7 +4394,7 @@ ATCOMMAND_FUNC(charitemall) {
 	    (item_data = itemdb_exists(atoi(item_name))) != NULL)
 		item_id = item_data->nameid;
 
-	if (item_id >= 500) {
+	if (item_id >= 501) {
 		if (check_item_authorization(item_id, sd->GM_level)) {
 			get_count = number;
 			// check pet egg
@@ -10139,7 +10139,7 @@ ATCOMMAND_FUNC(whodrops) {
 	    (item = itemdb_exists(atoi(item_name))) != NULL)
 		item_id = item->nameid;
 
-	if (item_id >= 500) {
+	if (item_id >= 501) {
 		count = 0;
 		for(mob_id = 1000; mob_id < MAX_MOB_DB; mob_id++) {
 			if (!mobdb_checkid(mob_id)) // mob doesn't exist
@@ -12611,7 +12611,7 @@ ATCOMMAND_FUNC(changelook) {
 	    (item_data = itemdb_exists(atoi(item_name))) != NULL)
 		item_id = item_data->nameid;
 
-	if (item_id >= 500) {
+	if (item_id >= 501) {
 		if (item_data->type == 4 || item_data->type == 5) { // 4 = weapons, 5 = armors
 			i = 0;
 			if (item_data->equip & 0x0100)
@@ -12669,7 +12669,7 @@ ATCOMMAND_FUNC(charchangelook) {
 			    (item_data = itemdb_exists(atoi(item_name))) != NULL)
 				item_id = item_data->nameid;
 
-			if (item_id >= 500) {
+			if (item_id >= 501) {
 				if (item_data->type == 4 || item_data->type == 5) { // 4 = weapons, 5 = armors
 					i = 0;
 					if (item_data->equip & 0x0100)
