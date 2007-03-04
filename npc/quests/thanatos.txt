@@ -12,6 +12,8 @@
 //= the top floor and summon him
 //===== Comments ==========================================
 //= 1.0 - Converted Aegis script to Freya [GreenGoblin]
+//= 1.1 - Did a small optimization on the item exchange NPC
+//= also added zeny check to avoid 1 billion zeny problems [GreenGoblin]
 //=========================================================
 
 //Entrance NPC
@@ -399,6 +401,8 @@ Than1:
 
 }
 
+
+// Item Exchanger
 tha_t01.gat,140,78,4	script	Guide#2	831,{
 
 if (ThanaQuest > 0) goto ThanReward;
@@ -427,7 +431,6 @@ L_Bye:
 	mes "here to Thanatos Tower.";
 	close;
 
-
 ThanReward:
 	mes "[Liei]";
 	mes "Ah, hello~";
@@ -443,11 +446,29 @@ ThanReward:
 	mes "of mission proof you brought?";
 	next;
 	menu "Golden Ornament",-,"Red Feather",L_Red,"Blue Feather",L_Blue,"Cursed Seal",L_Curse;
-	set @count,countitem(7435);
-	if(countitem(7435) < 1) goto L_NoGolden;
+
+L_Gold:
+	callsub ThanaItems,7435,"Golden Ornaments";
+	end;
+
+L_Red:
+	callsub ThanaItems,7440,"Red Feathers";
+	end;
+
+L_Blue:
+	callsub ThanaItems,7441,"Blue Feathers";
+	end;
+
+L_Curse:
+	callsub ThanaItems,7442,"Cursed Seals";
+	end;
+
+ThanaItems:
+	set @count,countitem(getarg(0));
+	if(@count < 1) goto L_NoItem;
 	mes "[Liei]";
 	mes "The reward for each";
-	mes "Golden Ornament is...";
+	mes ""+getarg(1)+" is...";
 	mes " ";
 	mes "1,000 zeny";
 	mes "2,000 EXP";
@@ -456,7 +477,7 @@ ThanReward:
 	set @exp,@count*2000;
 	mes "[Liei]";
 	mes "If you turn in your "+@count+"";
-	mes "Golden Ornaments, then";
+	mes ""+getarg(1)+", then";
 	mes "you will receive a total of...";
 	mes " ";
 	mes ""+@zeny+" zeny";
@@ -464,17 +485,18 @@ ThanReward:
 	next;
 	mes "[Liei]";
 	mes "So would you like to";
-	mes "exchange all of your Golden";
-	mes "Ornaments for your reward now?";
+	mes "exchange all of your "+getarg(1)+"";
+	mes "for your reward now?";
 	next;
 	menu "Yes",-,"No",L_Cancel;
+	if ((Zeny + @zeny) > 1000000000) goto L_TooMuch;
 	mes "[Liei]";
 	mes "Great! Here is your";
 	mes ""+@zeny+" zeny and";
 	mes ""+@exp+" EXP. Thank you,";
 	mes "and please keep up";
 	mes "the good work~";
-	delitem 7435,@count; // Golden Ornament
+	delitem getarg(0),@count;
 	set Zeny,Zeny+@zeny;
 	set BaseExp,BaseExp+@exp;
 	close;
@@ -488,153 +510,11 @@ L_Cancel:
 	mes "your reward, alright?";
 	close;
 
-L_NoGolden:
+L_NoItem:
 	mes "[Liei]";
 	mes "Oh, I'm sorry, but you";
-	mes "don't have any Golden";
-	mes "Ornaments. Please check";
-	mes "your inventory one more time...";
-	close;
-
-L_Red:
-	set @count,countitem(7440);
-	if(@count < 1) goto L_NoRed;
-	mes "[Liei]";
-	mes "The reward for";
-	mes "each Red Feather is...";
-	mes " ";
-	mes "1,000 zeny";
-	mes "2,000 EXP";
-	next;
-	set @zeny,@count*1000;
-	set @exp,@count*2000;
-	mes "[Liei]";
-	mes "If you turn in your";
-	mes ""+@count+" Red Feathers, then";
-	mes "you will receive a total of...";
-	mes " ";
-	mes ""+@zeny+" zeny";
-	mes ""+@exp+" EXP";
-	next;
-	mes "[Liei]";
-	mes "So would you like to exchange";
-	mes "all of your Red Feathers";
-	mes "for your reward now?";
-	next;
-	menu "Yes",-,"No",L_Cancel;
-	mes "[Liei]";
-	mes "Great! Here is your";
-	mes ""+@zeny+" zeny and";
-	mes ""+@exp+" EXP. Thank you,";
-	mes "and please keep up";
-	mes "the good work~";
-	delitem 7440,@count; // Red Feather
-	set Zeny,Zeny+@zeny;
-	set BaseExp,BaseExp+@exp;
-	close;
-
-L_NoRed:
-	mes "[Liei]";
-	mes "I'm sorry, but you are not";
-	mes "carrying any Red Feathers.";
-	mes "Please check your inventory";
-	mes "one more time, and then come";
-	mes "to me to redeem your items";
-	mes "for a reward later, alright?";
-	close;
-
-L_Blue:
-	set @count,countitem(7441);
-	if(@count < 1) goto L_NoBlue;
-	mes "[Liei]";
-	mes "The reward for";
-	mes "each Blue Feather is...";
-	mes " ";
-	mes "1,000 zeny";
-	mes "2,000 EXP";
-	next;
-	set @zeny,@count*1000;
-	set @exp,@count*2000;
-	mes "[Liei]";
-	mes "If you turn in your";
-	mes ""+@count+" Blue Feathers, then";
-	mes "you will receive a total of...";
-	mes " ";
-	mes ""+@zeny+" zeny";
-	mes ""+@exp+" EXP";
-	next;
-	mes "[Liei]";
-	mes "So would you like to exchange";
-	mes "all of your Blue Feathers";
-	mes "for your reward now?";
-	next;
-	menu "Yes",-,"No",L_Cancel;
-	mes "[Liei]";
-	mes "Great! Here is your";
-	mes ""+@zeny+" zeny and";
-	mes ""+@exp+" EXP. Thank you,";
-	mes "and please keep up";
-	mes "the good work~";
-	delitem 7441,@count; // Blue Feather
-	set Zeny,Zeny+@zeny;
-	set BaseExp,BaseExp+@exp;
-	close;
-
-L_NoBlue:
-	mes "[Liei]";
-	mes "I'm sorry, but you are not";
-	mes "carrying any Blue Feathers.";
-	mes "Please check your inventory";
-	mes "one more time, and then come";
-	mes "to me to redeem your items";
-	mes "for a reward later, alright?";
-	close;
-
-L_Curse:
-	set @count,countitem(7442);
-	if(@count < 1) goto L_NoCurse;
-	mes "[Liei]";
-	mes "The reward for";
-	mes "each Cursed Seal is...";
-	mes " ";
-	mes "1,000 zeny";
-	mes "2,000 EXP";
-	next;
-	set @zeny,@count*1000;
-	set @exp,@count*2000;
-	mes "[Liei]";
-	mes "If you turn in your";
-	mes ""+@count+" Cursed Seals, then";
-	mes "you will receive a total of...";
-	mes " ";
-	mes ""+@zeny+" zeny";
-	mes ""+@exp+" EXP";
-	next;
-	mes "[Liei]";
-	mes "So would you like to exchange";
-	mes "all of your Cursed Seals";
-	mes "for your reward now?";
-	next;
-	menu "Yes",-,"No",L_Cancel;
-	mes "[Liei]";
-	mes "Great! Here is your";
-	mes ""+@zeny+" zeny and";
-	mes ""+@exp+" EXP. Thank you,";
-	mes "and please keep up";
-	mes "the good work~";
-	delitem 7442,@count; // Cursed Seal
-	set Zeny,Zeny+@zeny;
-	set BaseExp,BaseExp+@exp;
-	close;
-
-L_NoCursed:
-	mes "[Liei]";
-	mes "I'm sorry, but you are not";
-	mes "carrying any Cursed Seals.";
-	mes "Please check your inventory";
-	mes "one more time, and then come";
-	mes "to me to redeem your items";
-	mes "for a reward later, alright?";
+	mes "don't have any "+getarg(1)+"";
+	mes "Please check your inventory one more time...";
 	close;
 
 L_End:
@@ -645,6 +525,12 @@ L_End:
 	mes "monsters that infest";
 	mes "the higher floors of";
 	mes "the Thanatos Tower~";
+	close;
+
+L_TooMuch:
+	mes "[Liei]";
+	mes "Oh my, you are carrying";
+	mes "too much zeny with you.";
 	close;
 
 }
