@@ -1691,7 +1691,7 @@ INSERT INTO `item_db` VALUES (4394, 'Lady_Solace_Card', 'Lady Solace Card', 6, 0
 INSERT INTO `item_db` VALUES (4395, 'Maero_of_Card', 'The Sorrow of Thanatos C', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus bBaseAtk,5; bonus4 bAutoSpell,30,3,500,1;');
 INSERT INTO `item_db` VALUES (4396, 'Odium_of_Card', 'The Hatred of Thanatos C', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 64, 0, 0, 0, NULL, 'bonus bAgi,getequiprefinerycnt(6)-5;');
 INSERT INTO `item_db` VALUES (4397, 'Despero_of_Card', 'The Despair of Thanatos ', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 32, 0, 0, 0, NULL, 'bonus bInt,getequiprefinerycnt(4)-6;');
-INSERT INTO `item_db` VALUES (4398, 'Dolor_of_Thanatos_Card', 'The Anguish of Thanatos ', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus2 bMagicAddEle,7,30;');
+INSERT INTO `item_db` VALUES (4398, 'Dolor_of_Thanatos_Card', 'The Anguish of Thanatos ', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus2 bMagicAddEle,7,3;');
 INSERT INTO `item_db` VALUES (4399, 'Thanatos_Phantom_Card', 'Thantos Phantom Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus bDefRatioAtkRace,11; bonus bDefRatioAtkRace,11; bonus bSPDrainValue,-1; bonus bDef,-30; bonus bFlee,-30;');
 INSERT INTO `item_db` VALUES (4400, 'Aliza_Card', 'Aliza Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'if(Basejob!=JOB_DANCER) goto L_next; bonus4 bAutoSpellWhenHit,1011,1,1000,1; end; L_next: bonus4 bAutoSpellWhenHit,1011,1,500,1;');
 INSERT INTO `item_db` VALUES (4401, 'Alicel_Card', 'Alicel Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bFlee,10; bonus bDef,-5;');
@@ -1700,7 +1700,7 @@ INSERT INTO `item_db` VALUES (4402, 'Aliot_Card', 'Aliot Card', 6, 0, 10, 10, 0,
 INSERT INTO `item_db` VALUES (4403, 'Kiel_D-01_Card', 'Kiel D-01 Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (4404, 'Skogul_Card', 'Skogul Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus2 bAddEffWhenHit,9,3000; bonus2 bAddEff,9,3000;');
 INSERT INTO `item_db` VALUES (4405, 'Frus_Card', 'Frus Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 16, 0, 0, 0, NULL, 'bonus bMagicDamageReturn,getequiprefinerycnt(5)*2; if(GetPureJob==JOB_MAGE) bonus bMdef,3;');
-INSERT INTO `item_db` VALUES (4406, 'Skeggiold_Card', 'Skeggiold Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus2 bMagicAddEle,6,100;');
+INSERT INTO `item_db` VALUES (4406, 'Skeggiold_Card', 'Skeggiold Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus2 bMagicAddEle,6,10;');
 INSERT INTO `item_db` VALUES (4407, 'Valkyrie_Randgris_Card', 'Valkyrie Randgris Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus4 bAutoSpell,289,1,1000,1;');
 
 # Extra Headgears

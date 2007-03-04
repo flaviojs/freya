@@ -10,6 +10,10 @@
 
 Date	Added
 
+03/03/2007
+	* Fixed: Removed extra 0 on a couple card bonuses [GreenGoblin]
+	 - Skeggiold Card and The Anguish of Thanatos Card were fixed
+
 03/02/2007
 	* Changed: Moved /scripts/ folder to /tool/script/ [Tsuyuki]
 	* Removed: Client folder [Tsuyuki]

@@ -1666,7 +1666,7 @@
 4395,Maero_of_Card,The Sorrow of Thanatos Card,6,,10,10,,,,,,,2,,,,{},{ bonus bBaseAtk,5; bonus4 bAutoSpell,30,3,500,1; }
 4396,Odium_of_Card,The Hatred of Thanatos Card,6,,10,10,,,,,,,64,,,,{},{ bonus bAgi,getequiprefinerycnt(6)-5; }
 4397,Despero_of_Card,The Despair of Thanatos Card,6,,10,10,,,,,,,32,,,,{},{ bonus bInt,getequiprefinerycnt(4)-6; }
-4398,Dolor_of_Thanatos_Card,The Anguish of Thanatos Card,6,,10,10,,,,,,,2,,,,{},{ bonus2 bMagicAddEle,7,30; }
+4398,Dolor_of_Thanatos_Card,The Anguish of Thanatos Card,6,,10,10,,,,,,,2,,,,{},{ bonus2 bMagicAddEle,7,3; }
 4399,Thanatos_Phantom_Card,Thantos Phantom Card,6,,10,10,,,,,,,2,,,,{},{ bonus bDefRatioAtkRace,11; bonus bDefRatioAtkRace,11; bonus bSPDrainValue,-1; bonus bDef,-30; bonus bFlee,-30; }
 4400,Aliza_Card,Aliza Card,6,,10,10,,,,,,,16,,,,{},{ if(Basejob!=JOB_DANCER) goto L_next; bonus4 bAutoSpellWhenHit,1011,1,1000,1; end; L_next: bonus4 bAutoSpellWhenHit,1011,1,500,1; }
 4401,Alicel_Card,Alicel Card,6,,10,10,,,,,,,16,,,,{},{ bonus bFlee,10; bonus bDef,-5; }
@@ -1675,7 +1675,7 @@
 4403,Kiel_D-01_Card,Kiel D-01 Card,6,,10,10,,,,,,,2,,,,{},{}
 4404,Skogul_Card,Skogul Card,6,,10,10,,,,,,,16,,,,{},{ bonus2 bAddEffWhenHit,9,3000; bonus2 bAddEff,9,3000; }
 4405,Frus_Card,Frus Card,6,,10,10,,,,,,,16,,,,{},{ bonus bMagicDamageReturn,getequiprefinerycnt(5)*2; if(GetPureJob==JOB_MAGE) bonus bMdef,3; }
-4406,Skeggiold_Card,Skeggiold Card,6,,10,10,,,,,,,2,,,,{},{ bonus2 bMagicAddEle,6,100; }
+4406,Skeggiold_Card,Skeggiold Card,6,,10,10,,,,,,,2,,,,{},{ bonus2 bMagicAddEle,6,10; }
 4407,Valkyrie_Randgris_Card,Valkyrie Randgris Card,6,,10,10,,,,,,,2,,,,{},{ bonus4 bAutoSpell,289,1,1000,1; }
 
 // Extra Headgears
