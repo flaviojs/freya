@@ -10,6 +10,9 @@
 
 Date	Added
 
+03/04/2007
+	* Updated: Item type default classifier in itemdb.c [Tsuyuki]
+
 03/03/2007
 	* Changed: Item exchange NPC in thanatos script [GreenGoblin]
 	 - optimized some parts

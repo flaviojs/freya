@@ -220,16 +220,22 @@ struct item_data* itemdb_search(int nameid)
 	id->flag.ammotype=0;
 	id->view_id=0;
 
+	// Last updated March 4th 2007 [Tsuyuki] -->
 	if (nameid > 500 && nameid < 600)
-		id->type = 0;   // Usable Healing item
-	else if (nameid > 600 && nameid < 700)
-		id->type = 2;   // Usable item
+		id->type = 0;   // Usable Healing Item
+	else if ((nameid > 600 && nameid < 700) ||
+						(nameid >= 12000 && nameid < 13000))
+		id->type = 2;   // Usable Item
 	else if ((nameid > 700 && nameid < 1100) ||
-	         (nameid > 7000 && nameid < 8000))
-		id->type = 3;   // Correction
-	else if (nameid >= 1750 && nameid < 1771)
-		id->type = 10;  // Arrow
-	else if (nameid > 1100 && nameid < 2000)
+	         (nameid > 7000 && nameid < 8000) ||
+	         (nameid >= 11000 && nameid < 12000))
+		id->type = 3;   // Collection
+	else if ((nameid >= 1750 && nameid < 1800) ||
+						(nameid >= 13200 && nameid < 13300))
+		id->type = 10;  // Ammunition
+	else if ((nameid > 1100 && nameid < 2000) ||
+						(nameid >= 13000 && nameid < 13200) ||
+						(nameid > 13300))
 		id->type = 4;   // Weapon
 	else if ((nameid > 2100 && nameid < 3000) ||
 	         (nameid > 5000 && nameid < 6000))
@@ -238,8 +244,9 @@ struct item_data* itemdb_search(int nameid)
 		id->type = 6;   // Card
 	else if (nameid > 9000 && nameid < 10000)
 		id->type = 7;   // Egg
-	else if (nameid > 10000)
-		id->type = 8;   // Pet equip
+	else if (nameid > 10000 && nameid < 11000)
+		id->type = 8;   // Pet Equip
+	// <--
 
 	return id;
 }
