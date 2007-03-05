@@ -2317,7 +2317,7 @@ int mmo_char_send006b(int fd, struct char_session_data *sd) {
 		if (sql_get_integer(14) > max_hair_style) {
 			WPACKETW(j+ 54) = max_hair_style; // hair
 		}
-		/* pecopeco knights/crusaders crash fix from freya's forum (thanks to [celest]) */
+		/* Peco crash fix*/
 		if (sql_get_integer(13) ==   13 || sql_get_integer(13) ==   21 ||
 		    sql_get_integer(13) == 4014 || sql_get_integer(13) == 4022 ||
 		    sql_get_integer(13) == 4036 || sql_get_integer(13) == 4044)

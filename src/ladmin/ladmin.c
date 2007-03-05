@@ -4657,10 +4657,10 @@ void do_init(const int argc, char **argv) {
 	set_defaultparse(parse_fromlogin);
 
 	if (defaultlanguage == 'F') {
-		printf("Outil d'administration à distance de Freya (créé par Yor).\n");
+		printf("Outil d'administration à distance de Freya.\n");
 		printf("(pour Freya version %d.%d.%d.).\n", FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION);
 	} else {
-		printf("Freya login-server administration tool (created by Yor).\n");
+		printf("Freya login-server administration tool.\n");
 		printf("(for Freya version %d.%d.%d.).\n", FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION);
 	}
 

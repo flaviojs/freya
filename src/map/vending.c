@@ -116,11 +116,11 @@ void vending_purchasereq(struct map_session_data *sd, short len, int id, char *p
 			return; // 売り切れ
 
 		z += ((double)vsd->vending[j].value * (double)amount);
-		if (z > (double)sd->status.zeny || z < 0. || z > (double)MAX_ZENY) { // fix positiv overflow (buyer)
+		if (z > (double)sd->status.zeny || z < 0. || z > (double)MAX_ZENY) { // Fix positive overflow (buyer)
 			clif_buyvending(sd, idx, amount, 1); // you don't have enough zenys
 			return; // zeny不足
 		}
-		if (z + (double)vsd->status.zeny > (double)MAX_ZENY) { // fix positiv overflow (merchand)
+		if (z + (double)vsd->status.zeny > (double)MAX_ZENY) { // Fix positive overflow (merchand)
 			clif_buyvending(sd, idx, vsd->vending[j].amount, 4); // not enough quantity
 			return; // zeny不足
 		}
@@ -277,13 +277,13 @@ void vending_openvending(struct map_session_data *sd, unsigned short len, char *
 			}
 		}
 		memset(&sd->vending[0], 0, sizeof(struct vending) * MAX_VENDING);
-//		for(i = 0; (8 * i) < len && i < MAX_VENDING; i++) { // check on MAX_VENDING not more necessary (check with 'len')
+//		for(i = 0; (8 * i) < len && i < MAX_VENDING; i++) { // Check on MAX_VENDING not more necessary (check with 'len')
 		for(i = 0, j = 0; (8 * j) < len; i++, j++) {
 			sd->vending[i].index = *(short*)(p + 8 * j) - 2;
 			if (sd->vending[i].index < 0 || sd->vending[i].index >= MAX_CART ||
 				(!itemdb_cantrade(sd->status.cart[sd->vending[i].index].nameid, sd->GM_level, sd->GM_level) ||
 				itemdb_canonlypartnertrade(sd->status.cart[sd->vending[i].index].nameid, sd->GM_level, sd->GM_level))) {
-				i--; //Preserve the vending index, skip to the next item.
+				i--; // Preserve the vending index, skip to the next item.
 				continue;
 			}
 			sd->vending[i].amount = *(unsigned short*)(p + 2 + 8 * j);
@@ -291,8 +291,7 @@ void vending_openvending(struct map_session_data *sd, unsigned short len, char *
 			if (sd->vending[i].value > (unsigned int)battle_config.vending_max_value)
 				sd->vending[i].value = (unsigned int)battle_config.vending_max_value;
 			else if (sd->vending[i].value == 0)
-				sd->vending[i].value = battle_config.vending_max_value; // auto set to max value [Yor]
-			// カート内のアイテム数と販売するアイテム数に相違があったら中止
+				sd->vending[i].value = battle_config.vending_max_value; // Auto set to max value
 			if (pc_cartitem_amount(sd, sd->vending[i].index, sd->vending[i].amount) < 0) { //  || sd->vending[i].value < 0: it's unsigned int value. never <0
 				clif_skill_fail(sd, MC_VENDING, 0, 0);
 				FREE(shop_title);
@@ -300,7 +299,7 @@ void vending_openvending(struct map_session_data *sd, unsigned short len, char *
 			}
 		}
 		if (i != j) {	
-			if (i == 0) { // all items were not allowed to be vended
+			if (i == 0) { // All items were not allowed to be vended
 				clif_skill_fail(sd, MC_VENDING, 0, 0);
 				FREE(shop_title);
 				return;

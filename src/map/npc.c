@@ -616,13 +616,13 @@ int npc_timerevent_start(struct npc_data *nd, int rid)
 		if (nd->u.scr.timer_event[j].timer > nd->u.scr.timer)
 			break;
 	}
-	if (j >= n) // check if there is a timer to use !!BEFORE!! you write stuff to the structures [Shinomori]
+	if (j >= n) // check if there is a timer to use !!BEFORE!! you write stuff to the structures
 		return 0;
 
 	nd->u.scr.nexttimer = j;
 	nd->u.scr.timertick = gettick_cache;
-	if (rid >= 0) // if rid is less than 0 leave it unchanged [celest]
-		nd->u.scr.rid = rid; // changed to: attaching to given rid by default [Shinomori]
+	if (rid >= 0) // if rid is less than 0 leave it unchanged
+		nd->u.scr.rid = rid; // changed to: attaching to given rid by default
 
 	next = nd->u.scr.timer_event[j].timer - nd->u.scr.timer;
 	nd->u.scr.timerid = add_timer(gettick_cache + next, npc_timerevent, nd->bl.id, next);
@@ -2369,23 +2369,23 @@ int npc_parse_mapflag(char *w1, char *w3, char *w4, int lines) {
 		map[m].flag.noskill = 1;
 	} else if (strcasecmp(w3, "nowarp") == 0) { // 13
 		map[m].flag.nowarp = 1;
-	} else if (strcasecmp(w3, "nopvp") == 0) { // nopvp for pk mode [Valaris] // 14
+	} else if (strcasecmp(w3, "nopvp") == 0) { // nopvp for pk mode // 14
 		map[m].flag.pvp = 0;
-	} else if (strcasecmp(w3, "noicewall") == 0) { // noicewall [Valaris] // 15
+	} else if (strcasecmp(w3, "noicewall") == 0) { // noicewall // 15
 		map[m].flag.noicewall = 1;
-	} else if (strcasecmp(w3, "snow") == 0) { // snow [Valaris] // 16
+	} else if (strcasecmp(w3, "snow") == 0) { // snow // 16
 		map[m].flag.snow = 1;
-	} else if (strcasecmp(w3, "fog") == 0) { // fog [Valaris] // 17
+	} else if (strcasecmp(w3, "fog") == 0) { // fog // 17
 		map[m].flag.fog = 1;
-	} else if (strcasecmp(w3, "sakura") == 0) { // sakura [Valaris] // 18
+	} else if (strcasecmp(w3, "sakura") == 0) { // sakura // 18
 		map[m].flag.sakura = 1;
-	} else if (strcasecmp(w3, "leaves") == 0) { // leaves [Valaris] // 19
+	} else if (strcasecmp(w3, "leaves") == 0) { // leaves // 19
 		map[m].flag.leaves = 1;
-	} else if (strcasecmp(w3, "rain") == 0) { // rain [Valaris] // 20
+	} else if (strcasecmp(w3, "rain") == 0) { // rain // 20
 		map[m].flag.rain = 1;
-	} else if (strcasecmp(w3, "indoors") == 0) { // celest // 21
+	} else if (strcasecmp(w3, "indoors") == 0) { // 21
 		map[m].flag.indoors = 1;
-	} else if (strcasecmp(w3, "nogo") == 0) { // celest // 22
+	} else if (strcasecmp(w3, "nogo") == 0) { // 22
 		map[m].flag.nogo = 1;
 	} else if (strcasecmp(w3, "nospell") == 0) { // 23
 		map[m].flag.nospell = 1;
@@ -2642,7 +2642,7 @@ int do_init_npc(void) {
 	char line[1024];
 	int m, lines;
 
-	// indoorrswtable.txt and etcinfo.txt [Celest]
+	// indoorrswtable.txt and etcinfo.txt
 	if (battle_config.indoors_override_grffile)
 		npc_read_indoors();
 	//npc_read_weather();

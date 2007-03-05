@@ -153,7 +153,6 @@ struct map_session_data {
 		unsigned modified_storage_flag : 2; // 0: not modified, 1: modified, 2: modified and sended to char-server for saving
 		unsigned snovice_flag : 2; // (0 to 3)
 		struct guild * gmaster_flag;
-		// originally by Qamera, adapted by celest
 		unsigned event_death : 1;
 		unsigned event_kill : 1;
 		unsigned event_disconnect : 1;
@@ -185,17 +184,16 @@ struct map_session_data {
 	} special_state;
 	int char_id, login_id1, login_id2;
 	unsigned char sex, GM_level;
-	unsigned char packet_ver; // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06 (by [Yor])
+	unsigned char packet_ver; // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06
 	struct mmo_charstatus status;
 	struct item_data *inventory_data[MAX_INVENTORY]; // just pointers on items of database
 	short equip_index[11];
 	unsigned short unbreakable_equip;
-	unsigned short unbreakable; // chance to prevent equipment breaking [celest]
+	unsigned short unbreakable;
 	int weight, max_weight;
 	int cart_weight, cart_max_weight;
 	short cart_num; // , cart_max_num; it's always MAX_CART... removed
-	
-	/* TODO: Use mapid, not mapname [Harbin] */
+
 	char mapname[17];
 
 	int fd;
@@ -262,7 +260,7 @@ struct map_session_data {
 	struct skill_unit_group skillunit[MAX_SKILLUNITGROUP];
 	struct skill_unit_group_tickset skillunittick[MAX_SKILLUNITGROUPTICKSET];
 	struct skill_timerskill skilltimerskill[MAX_SKILLTIMERSKILL];
-	char blockskill[MAX_SKILL];	// [celest]
+	char blockskill[MAX_SKILL];
 	short cloneskill_id;
 	int potion_hp, potion_sp, potion_per_hp, potion_per_sp;
 
@@ -330,12 +328,11 @@ struct map_session_data {
 	int weapon_coma_ele[10], weapon_coma_race[12];
 	int break_weapon_rate, break_armor_rate;
 	short add_steal_rate;
-	//--- 02/15's new card effects [celest]
 	int crit_atk_rate;
 	int critaddrace[12];
 	short no_regen;
 	int addeff3[10];
-	struct { //skillatk raises bonus dmg% of skills, skillblown increases bonus blewcount for some skills.
+	struct { // skillatk raises bonus dmg% of skills, skillblown increases bonus blewcount for some skills.
 		short id, val;
 	} skillatk[MAX_PC_BONUS];
 	unsigned short unstripable_equip;
@@ -407,13 +404,13 @@ struct map_session_data {
 	char eventqueue[MAX_EVENTQUEUE][50]; // 49 + NULL
 	int eventtimer[MAX_EVENTTIMER];
 
-	int last_skillid, last_skilllv; // Added by RoVeRT
+	int last_skillid, last_skilllv;
 
-	unsigned char change_level; // [celest]
+	unsigned char change_level;
 	
 	short tk_mission_target_id; // Stores the target mob_id for TK_MISSION
 	short tk_mission_count; // Stores the bounty kill count for TK_MISSION
-	char fakename[24]; // fakename by van84 took from Ea
+	char fakename[24];
 	short viewsize; // for tiny/large types
 
 	struct map_session_data *repair_target;
@@ -494,8 +491,8 @@ struct mob_data {
 		unsigned change_walk_target : 1;
 		unsigned walk_easy : 1;
 		unsigned special_mob_ai : 3; // 0: nothing, 1: cannibalize, 2-3: spheremine
-		unsigned soul_change_flag : 1; // Celest
-		int provoke_flag; // Celest
+		unsigned soul_change_flag : 1;
+		int provoke_flag;
 	} state;
 	int timer;
 	short to_x, to_y;
@@ -714,7 +711,7 @@ enum {
 	SP_UPPER,SP_PARTNER,SP_CART,SP_FAME,SP_UNBREAKABLE,	//56-60
 	SP_CARTINFO = 99,	// 99
 
-	SP_BASEJOB = 119,	// 100+19 - celest
+	SP_BASEJOB = 119,	// 100+19
 	SP_BASECLASS = 120, // GetPureJob
 	// original 1000-
 	SP_ATTACKRANGE = 1000,	SP_ATKELE,SP_DEFELE,	// 1000-1002
@@ -821,13 +818,12 @@ extern struct map_data *map;
 extern int map_num;
 extern int autosave_interval;
 extern unsigned char agit_flag; // 0: WoE not starting, Woe is running
-extern unsigned char night_flag; // 0=day, 1=night [Yor]
+extern unsigned char night_flag; // 0=Day, 1=Night
 
-// gat関連
 int map_getcell(int, int, int, cell_t);
 int map_getcellp(struct map_data*, int, int, cell_t);
 void map_setcell(int, int, int, int);
-//extern int map_read_flag; //セル情報のソース判定フラグ、0ならgrfファイル、1ならビットマップファイル
+//extern int map_read_flag;
 enum {
 	READ_FROM_GAT,
 	READ_FROM_BITMAP, CREATE_BITMAP,
@@ -836,7 +832,7 @@ enum {
 
 extern char motd_txt[];
 extern char help_txt[];
-extern char extra_add_file_txt[]; // to add items from external software (use append to add a line)
+extern char extra_add_file_txt[]; // To add items from external software (Use append to add a line)
 
 extern char talkie_mes[];
 
@@ -860,7 +856,7 @@ void map_foreachinarea(int (*)(struct block_list*, va_list), int, int, int, int,
 // -- moonsoul (added map_foreachincell)
 //void map_foreachincell(int (*)(struct block_list*, va_list), int, int, int, int, ...);
 void map_foreachinmovearea(int (*)(struct block_list*, va_list), int, int, int, int, int, int, int, int, ...);
-void map_foreachinpath(int (*)(struct block_list*, va_list), int, int, int, int, int, int, int, ...); // Celest
+void map_foreachinpath(int (*)(struct block_list*, va_list), int, int, int, int, int, int, int, ...);
 /*int map_countnearpc(int, int, int);*/
 //block関連に追加
 int map_count_oncell(int m, int x, int y);

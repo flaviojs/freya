@@ -9,7 +9,7 @@
 #define OPTION_MASK 0xd7b8
 #define CART_MASK 0x788
 
-#define MAX_SKILL_PER_TREE 51 // supernovice have 51 skills.
+#define MAX_SKILL_PER_TREE 51 // Super Novice has 51 skills
 
 #define MAX_SKILLTREE 34
 
@@ -35,7 +35,7 @@
 #define pc_is90overweight(sd) (sd->weight * 10 >= sd->max_weight * 9)
 
 int pc_isGM(struct map_session_data *sd);
-int pc_iskiller(struct map_session_data *src, struct map_session_data *target); // [MouseJstr]
+int pc_iskiller(struct map_session_data *src, struct map_session_data *target);
 
 void pc_setrestartvalue(struct map_session_data *sd, int type);
 int pc_cant_move(struct map_session_data *sd);
@@ -101,13 +101,13 @@ void pc_bonus3(struct map_session_data *sd, int, int, int, int);
 void pc_bonus4(struct map_session_data *sd, int, int, int, int, int);
 int pc_skill(struct map_session_data*, int, int, int);
 
-int pc_blockskill_start(struct map_session_data*, int, int);	// [celest]
+int pc_blockskill_start(struct map_session_data*, int, int);
 
 void pc_insert_card(struct map_session_data *sd, short idx_card, short idx_equip);
 
 void pc_item_identify(struct map_session_data *sd, short idx);
-int pc_item_repair(struct map_session_data *sd, short idx); // [Celest]
-void pc_item_refine(struct map_session_data *sd, short idx); // [Celest]
+int pc_item_repair(struct map_session_data *sd, short idx);
+void pc_item_refine(struct map_session_data *sd, short idx);
 int pc_steal_item(struct map_session_data *sd, struct block_list *bl);
 int pc_steal_coin(struct map_session_data *sd, struct block_list *bl);
 
@@ -118,15 +118,15 @@ int pc_attack(struct map_session_data*, int, int);
 void pc_stopattack(struct map_session_data*);
 
 int pc_follow_timer(int tid, unsigned int tick, int id, int data);
-int pc_follow(struct map_session_data*, int); // [MouseJstr]
+int pc_follow(struct map_session_data*, int);
 
 int pc_checkbaselevelup(struct map_session_data *sd);
 int pc_checkjoblevelup(struct map_session_data *sd);
 void pc_gainexp(struct map_session_data*, int, int);
 int pc_nextbaseexp(struct map_session_data *);
-int pc_nextbaseafter(struct map_session_data *); // [Valaris]
+int pc_nextbaseafter(struct map_session_data *);
 int pc_nextjobexp(struct map_session_data *);
-int pc_nextjobafter(struct map_session_data *); // [Valaris]
+int pc_nextjobafter(struct map_session_data *);
 int pc_need_status_point(struct map_session_data *, int);
 void pc_statusup(struct map_session_data*, int);
 void pc_statusup2(struct map_session_data*, int, int);
@@ -186,18 +186,18 @@ struct map_session_data *pc_get_child(struct map_session_data *sd);
 void pc_set_gm_level(int account_id, unsigned char level);
 void pc_set_gm_level_by_gm(int account_id, signed char level, int account_id_of_gm);
 void pc_setstand(struct map_session_data *sd);
-//int pc_break_equip(struct map_session_data *sd, unsigned short where);
+// int pc_break_equip(struct map_session_data *sd, unsigned short where);
 int pc_candrop(struct map_session_data *sd, int item_id);
 
 struct pc_base_job{
-	int job; //E‹ÆA‚½‚¾‚µ“]¶E‚â—{qE‚Ìê‡‚ÍŒ³‚ÌE‹Æ‚ğ•Ô‚·(”pƒvƒŠ¨ƒvƒŠ)
-	int type; //ƒmƒr 0, ˆêŸE 1, “ñŸE 2, ƒXƒpƒmƒr 3
-	int upper; //’Êí 0, “]¶ 1, —{q 2
+	int job;
+	int type;
+	int upper;
 };
 
-struct pc_base_job pc_calc_base_job(unsigned int b_class);//“]¶‚â—{qE‚ÌŒ³‚ÌE‹Æ‚ğ•Ô‚·
+struct pc_base_job pc_calc_base_job(unsigned int b_class);
 
-int pc_calc_base_job2(unsigned int b_class); // Celest
+int pc_calc_base_job2(unsigned int b_class);
 int pc_calc_upper(unsigned int b_class);
 short pc_get_upper_type(unsigned int class);
 
@@ -231,11 +231,11 @@ int do_init_pc(void);
 
 enum {ADDITEM_EXIST, ADDITEM_NEW, ADDITEM_OVERAMOUNT};
 
-// timer for night.day
+// Timer for night.day
 int day_timer_tid;
 int night_timer_tid;
-int map_day_timer(int, unsigned int, int, int); // by [yor]
-int map_night_timer(int, unsigned int, int, int); // by [yor]
+int map_day_timer(int, unsigned int, int, int);
+int map_night_timer(int, unsigned int, int, int);
 
 #endif // _PC_H_
 

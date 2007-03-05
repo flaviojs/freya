@@ -13,7 +13,6 @@
 
 #define LFNC_COUNT 0
 
-// common export table
+// Common export table
 
 // #define LFNC_xxx(_var) LOCAL_EX_SYMBOL(xxx,0,_var)
-

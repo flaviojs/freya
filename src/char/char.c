@@ -2813,7 +2813,7 @@ int mmo_char_send006b(int fd, struct char_session_data *sd) {
 //			printf("char #%d: status_point %d, hp: %d/%d, sp: %d/%d, speed: %d\n", found_num, WPACKETW(j+40), WPACKETW(j+42), WPACKETW(j+44), WPACKETW(j+46), WPACKETW(j+48), WPACKETW(j+50));
 			WPACKETW(j+ 52) = p->class;
 			WPACKETW(j+ 54) = p->hair;
-			/* pecopeco knights/crusaders crash fix from freya's forum (thanks to [celest]) */
+			/* Peco crash fix*/
 			if (p->class ==   13 || p->class ==   21 ||
 			    p->class == 4014 || p->class == 4022 ||
 			    p->class == 4036 || p->class == 4044)
@@ -2896,7 +2896,7 @@ int mmo_char_send006b(int fd, struct char_session_data *sd) {
 		if (sql_get_integer(14) > max_hair_style) {
 			WPACKETW(j+ 54) = max_hair_style; // hair
 		}
-		/* pecopeco knights/crusaders crash fix from freya's forum (thanks to [celest]) */
+		/* Peco crash fix*/
 		if (sql_get_integer(13) ==   13 || sql_get_integer(13) ==   21 ||
 		    sql_get_integer(13) == 4014 || sql_get_integer(13) == 4022 ||
 		    sql_get_integer(13) == 4036 || sql_get_integer(13) == 4044)

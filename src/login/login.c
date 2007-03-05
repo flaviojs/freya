@@ -998,7 +998,7 @@ int parse_fromchar(int fd) {
 
 		switch (RFIFOW(fd,0)) {
 
-		/* request from map-server to reload GM accounts. Transmission to login-server via char-server (by Yor) */
+		/* request from map-server to reload GM accounts. Transmission to login-server via char-server */
 		case 0x2709: // 0x2af7 (map->char) -> 0x2709 (char->login)
 			if (RFIFOREST(fd) < 6 || RFIFOREST(fd) < RFIFOW(fd,2))
 				return 0;
@@ -2836,7 +2836,7 @@ void account_to_str(char *str, struct auth_dat *p) {
 }
 
 /*--------------------------
-  quick sorting (by [Yor])
+  quick sorting
 --------------------------*/
 void accounts_speed_sorting(int tableau[], int premier, int dernier) {
 	int temp, vmin, vmax, separateur_de_listes;
@@ -3658,7 +3658,7 @@ int char_anti_freeze_system(int tid, unsigned int tick, int id, int data) {
 }
 
 /*----------------------------------
-  Console Commands Parser by [Yor]
+  Console Commands Parser
 ----------------------------------*/
 int parse_console(char *buf) {
 	static int console_on = 1;

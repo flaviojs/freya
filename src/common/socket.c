@@ -144,7 +144,7 @@ static int send_from_fifo(int fd) {
 #endif
 
 //	printf("send_from_fifo : %d\n", fd);
-//	if (s->eof) // if we close connection, we can not send last information (you're been disconnected, etc...) [Yor]
+//	if (s->eof) // if we close connection, we can not send last information (you're been disconnected, etc...)
 //		return -1;
 
 	// if client FIFO

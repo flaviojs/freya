@@ -1169,7 +1169,7 @@ int pc_authfail(int id) {
 	return 0;
 }
 
-int pc_doubble_connection(int id) { // by [Yor]
+int pc_doubble_connection(int id) {
 	struct map_session_data *sd;
 
 	sd = map_id2sd(id);
@@ -3611,7 +3611,7 @@ void pc_item_identify(struct map_session_data *sd, short idx) { // S 0178 <index
 }
 
 /*==========================================
- * Weapon Repair [Celest]
+ * Weapon Repair
  *------------------------------------------
  */
 int pc_item_repair(struct map_session_data *sd, short idx) {
@@ -3647,7 +3647,7 @@ int pc_item_repair(struct map_session_data *sd, short idx) {
 }
 
 /*==========================================
- * Weapon Refining [Celest]
+ * Weapon Refining
  *------------------------------------------
  */
 void pc_item_refine(struct map_session_data *sd, short idx) {
@@ -3787,7 +3787,7 @@ int pc_steal_item(struct map_session_data *sd,struct block_list *bl) {
 	       (sd->paramc[4] - mob_db[md->class].dex) / 2 + pc_checkskill(sd, TF_STEAL) * 6 + 4 : // kRO (new formula)
 	        sd->paramc[4] - mob_db[md->class].dex      + pc_checkskill(sd, TF_STEAL) * 3 + 10; // iRO (old formula)
 	
-	if ((rand() % 100) < skill) { // Fixed by [Yor]
+	if ((rand() % 100) < skill) {
 		for(count = 0; count < 10; count++) {
 			i = rand() % 10;
 			itemid = mob_db[md->class].dropitem[i].nameid;
@@ -5017,9 +5017,9 @@ int pc_attack(struct map_session_data *sd, int target_id, int type) {
 
 	sd->idletime = gettick_cache; // For party experience
 
-	if (bl->type == BL_NPC) { // Monster npcs [Valaris]
+	if (bl->type == BL_NPC) { // Monster NPCs
 		if (sd->npc_id == 0)
-			npc_click(sd, target_id); // Fixed by [Yor] - Thanks to leinsirk10
+			npc_click(sd, target_id);
 		return 0;
 	}
 
@@ -5620,7 +5620,7 @@ void pc_skillup(struct map_session_data *sd, short skill_num) {
 		
 	if (sd->status.skill_point > 0 &&
 	    sd->status.skill[skill_num].id != 0 &&
-	    //sd->status.skill[skill_num].lv < skill_get_max(skill_num)) - celest
+	    //sd->status.skill[skill_num].lv < skill_get_max(skill_num))
 	    sd->status.skill[skill_num].lv < skill_tree_get_max(skill_num, sd->status.class)) {
 		sd->status.skill[skill_num].lv++;
 		sd->status.skill_point--;
@@ -5695,7 +5695,7 @@ void pc_allskillup(struct map_session_data *sd)
 				if (sd->status.skill[id].flag != 13) { // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
 					if (!(skill_get_inf2(id) & 0x01) || battle_config.quest_skill_learn ||
 					    (s == 1 && (id == 142 || id == 143))) { // high novice free skills
-						sd->status.skill[id].id = id; // celest
+						sd->status.skill[id].id = id;
 						// sd->status.skill[id].lv = skill_get_max(id);
 						//sd->status.skill[id].lv = skill_tree_get_max(id, sd->status.class);
 						sd->status.skill[id].lv = skill_tree[s][c][i].max;
@@ -5748,7 +5748,7 @@ void pc_resetlvl(struct map_session_data* sd, int type)
 		sd->status.dex = 1;
 		sd->status.luk = 1;
 		if (sd->status.class == 4001)
-			sd->status.status_point = 100; // not 88 [celest]
+			sd->status.status_point = 100; // not 88
 			// give platinum skills upon changing
 			pc_skill(sd, 142, 1, 0);
 			pc_skill(sd, 143, 1, 0);
@@ -6798,7 +6798,7 @@ int pc_jobchange(struct map_session_data *sd, int job, int upper)
 		return 1;
 	}
 
-	job = pc_calc_base_job2(b_class); // Check base class [celest]
+	job = pc_calc_base_job2(b_class); // Check base class
 
 	// Normalizes Taekwon Class compatibility for this part of the function
 	if (job >= 24 && job <= 27) {
@@ -6952,7 +6952,7 @@ void pc_setcart(struct map_session_data *sd, unsigned short type) {
 			clif_cart_itemlist(sd);
 			clif_cart_equiplist(sd);
 			clif_updatestatus(sd, SP_CARTINFO);
-			clif_status_change(&sd->bl, 0x0c, 0); // ?????????? why send this code ???? [Yor] ????
+			clif_status_change(&sd->bl, 0x0c, 0); // ?????????? why send this code ????
 		} else {
 			sd->status.option &= ~((short)CART_MASK); /* suppress actual cart */
 			pc_setoption(sd, sd->status.option | cart[type]);
@@ -7019,7 +7019,7 @@ void pc_setriding(struct map_session_data *sd)
  *------------------------------------------
  */
 int pc_candrop(struct map_session_data *sd, int item_id) {
-	if (sd->GM_level > 0 && sd->GM_level < battle_config.gm_can_drop_lv) // Search only once [Celest]
+	if (sd->GM_level > 0 && sd->GM_level < battle_config.gm_can_drop_lv) // Search only once
 		return 1;
 
 	return (itemdb_isdropable(item_id, sd->GM_level));
@@ -8521,7 +8521,7 @@ int pc_setsavepoint(struct map_session_data *sd,char *mapname,int x,int y)
  * timer to disconnect idle players
  *------------------------------------------
  */
-int pc_idle_timer(int tid, unsigned int tick, int id, int data) { // by [yor]
+int pc_idle_timer(int tid, unsigned int tick, int id, int data) {
 	struct map_session_data *pl_sd = NULL;
 	int i, flag;
 	time_t time_for_idle;
@@ -8591,7 +8591,7 @@ int pc_idle_timer(int tid, unsigned int tick, int id, int data) { // by [yor]
 	return 0;
 }
 
-static int Ghp[MAX_GUILDCASTLE][8]; // So save only if HP are changed // experimental code [Yor]
+static int Ghp[MAX_GUILDCASTLE][8]; // So save only if HP are changed // experimental code
 void pc_guardiansave(void) {
 	struct guild_castle *gc;
 	int i;
@@ -8718,7 +8718,7 @@ int pc_read_gm_account(int fd) {
  * timer to do the day
  *------------------------------------------
  */
-int map_day_timer(int tid, unsigned int tick, int id, int data) { // by [yor]
+int map_day_timer(int tid, unsigned int tick, int id, int data) {
 	struct map_session_data *pl_sd = NULL;
 	int i;
 	int msg_len;
@@ -8726,7 +8726,7 @@ int map_day_timer(int tid, unsigned int tick, int id, int data) { // by [yor]
 	if (battle_config.day_duration > 0) { // if we want a day
 		if (night_flag != 0) {
 			msg_len = strlen(msg_txt(502)) + 1;
-			night_flag = 0; // 0=day, 1=night [Yor]
+			night_flag = 0; // 0=day, 1=night
 			for(i = 0; i < fd_max; i++) {
 				if (session[i] && (pl_sd = session[i]->session_data) && pl_sd->state.auth && !map[pl_sd->bl.m].flag.indoors) {
 					clif_status_change(&pl_sd->bl, ICO_NIGHT, 0);
@@ -8740,7 +8740,7 @@ int map_day_timer(int tid, unsigned int tick, int id, int data) { // by [yor]
 }
 
 /*==========================================
- * timer to do the night (by [yor])
+ * timer to do the night
  *------------------------------------------
  */
 int map_night_timer(int tid, unsigned int tick, int id, int data) {
@@ -8751,7 +8751,7 @@ int map_night_timer(int tid, unsigned int tick, int id, int data) {
 	if (battle_config.night_duration > 0) { // if we want a night
 		if (night_flag == 0) {
 			msg_len = strlen(msg_txt(503)) + 1;
-			night_flag = 1; // 0=day, 1=night [Yor]
+			night_flag = 1; // 0=day, 1=night
 			for(i = 0; i < fd_max; i++) {
 				if (session[i] && (pl_sd = session[i]->session_data) && pl_sd->state.auth && !map[pl_sd->bl.m].flag.indoors) {
 					clif_status_change(&pl_sd->bl, ICO_NIGHT, 1);
@@ -8855,7 +8855,7 @@ void pc_readdb(void)
 		i = s_class.job;
 		u = s_class.upper;
 
-		// check for bounds [celest]
+		// Check for bounds
 		if (i >= MAX_SKILLTREE || u >= 3)
 			continue;
 		for(j = 0; j < MAX_SKILL_PER_TREE && skill_tree[u][i][j].id; j++)
@@ -9256,7 +9256,7 @@ int do_init_pc(void) {
 	add_timer_interval(gettick_cache + 30000, pc_idle_timer, 0, 0, 30000); // check every 30 secs
 	add_timer_interval(gettick_cache + 10000, pc_extra, 0, 0, 60000);
 
-	// add night/day timer (by [yor])
+	// add night/day timer
 	add_timer_func_list(map_day_timer, "map_day_timer");
 	add_timer_func_list(map_night_timer, "map_night_timer");
   {
@@ -9267,11 +9267,11 @@ int do_init_pc(void) {
 	if (night_duration < 60000)
 		night_duration = 60000;
 	if (battle_config.night_at_start == 0) {
-		night_flag = 0; // 0=day, 1=night [Yor]
+		night_flag = 0; // 0=day, 1=night
 		day_timer_tid = add_timer_interval(gettick_cache + day_duration + night_duration, map_day_timer, 0, 0, day_duration + night_duration);
 		night_timer_tid = add_timer_interval(gettick_cache + day_duration, map_night_timer, 0, 0, day_duration + night_duration);
 	} else {
-		night_flag = 1; // 0=day, 1=night [Yor]
+		night_flag = 1; // 0=day, 1=night
 		day_timer_tid = add_timer_interval(gettick_cache + night_duration, map_day_timer, 0, 0, day_duration + night_duration);
 		night_timer_tid = add_timer_interval(gettick_cache + day_duration + night_duration, map_night_timer, 0, 0, day_duration + night_duration);
 	}

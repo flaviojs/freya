@@ -2941,7 +2941,7 @@ int mob_damage(struct block_list *src, struct mob_data *md, int damage, int type
 					add_timer(gettick_cache + 500 + i, mob_delay_item_drop, (int)ditem, drop_rate); // data = drop rate (loot = 1000000000)
 				}
 
-				// Ore Discovery [Celest]
+				// Ore Discovery
 				if (sd == mvp_sd && pc_checkskill(sd, BS_FINDINGORE) > 0 && battle_config.finding_ore_rate >= rand() % 10000) { // battle_config.finding_ore_rate / 100 >= rand() % 100
 					struct delay_item_drop *ditem;
 					int itemid[17] = { 714, 756, 757, 969, 984, 985, 990, 991, 992, 993, 994, 995, 996, 997, 998, 999, 1002 };

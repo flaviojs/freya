@@ -419,7 +419,7 @@ void trade_tradeadditem(struct map_session_data *sd, int idx, int amount) { // S
 	if (idx < 2 || idx >= MAX_INVENTORY + 2) {
 		if (idx == 0) {
 			if (amount > 0 && amount <= MAX_ZENY && amount <= sd->status.zeny && // check amount
-				(target_sd->status.zeny + amount) <= MAX_ZENY) { // fix positiv overflow
+				(target_sd->status.zeny + amount) <= MAX_ZENY) { // Fix positive overflow
 				sd->deal_zeny = amount;
 				clif_tradeadditem(sd, target_sd, 0, amount);
 			} else {
@@ -580,9 +580,9 @@ void trade_tradecommit(struct map_session_data *sd) {
 				}
 				// check zenys value against hackers
 				if (sd->deal_zeny >= 0 && sd->deal_zeny <= MAX_ZENY && sd->deal_zeny <= sd->status.zeny && // check amount
-				    (target_sd->status.zeny + sd->deal_zeny) <= MAX_ZENY && // fix positiv overflow
+				    (target_sd->status.zeny + sd->deal_zeny) <= MAX_ZENY && // Fix positive overflow
 				    target_sd->deal_zeny >= 0 && target_sd->deal_zeny <= MAX_ZENY && target_sd->deal_zeny <= target_sd->status.zeny && // check amount
-				    (sd->status.zeny + target_sd->deal_zeny) <= MAX_ZENY) { // fix positiv overflow
+				    (sd->status.zeny + target_sd->deal_zeny) <= MAX_ZENY) { // Fix positive overflow
 
 					// check for full inventory (can not add traded items)
 					if (!trade_check(sd)) { // check the both players

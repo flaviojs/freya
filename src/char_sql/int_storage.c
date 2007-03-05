@@ -402,7 +402,7 @@ void inter_storage_init() {
 
 #ifdef TXT_ONLY
 /*--------------------------
-  quick sorting (by [Yor])
+  quick sorting
 --------------------------*/
 void storage_speed_sorting(int tableau[], const int premier, const int dernier) {
 	int temp, vmin, vmax, separateur_de_listes;
@@ -470,7 +470,7 @@ void inter_storage_save() {
 }
 
 /*--------------------------
-  quick sorting (by [Yor])
+  quick sorting
 --------------------------*/
 void guild_storage_speed_sorting(int tableau[], const int premier, const int dernier) {
 	int temp, vmin, vmax, separateur_de_listes;

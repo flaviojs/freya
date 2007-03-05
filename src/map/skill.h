@@ -111,7 +111,7 @@ int skill_get_inf2( int id );
 int skill_get_maxcount( int id );
 int skill_get_blewcount( int id, int lv );
 int skill_get_unit_flag( int id );
-int skill_tree_get_max( int id, int b_class ); // Celest
+int skill_tree_get_max( int id, int b_class );
 
 int skill_use_id(struct map_session_data *sd, int target_id, int skill_num, int skill_lv);
 int skill_use_pos(struct map_session_data *sd, int skill_x, int skill_y, int skill_num, int skill_lv);

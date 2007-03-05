@@ -747,7 +747,7 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 			((struct map_session_data *)src)->status.weapon == 3)))) {
 			if (rand() % 100 < (15 * tsc_data[SC_REJECTSWORD].val1)) {
 				damage = damage * 50 / 100;
-				clif_damage(bl, src, gettick_cache, 0, 0, damage, 0, 0, 0); // So to display the damage add this [Celest]
+				clif_damage(bl, src, gettick_cache, 0, 0, damage, 0, 0, 0); // So to display the damage add this
 				battle_damage(bl, src, damage, 0);
 				clif_skill_nodamage(bl, bl, ST_REJECTSWORD, tsc_data[SC_REJECTSWORD].val1, 1);
 				// tsc_data[SC_REJECTSWORD].val3 = 1; // Reject Sword: Turn the damage reflect state on [Aalye]
@@ -2566,7 +2566,7 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 	// Equipment Breaking
 	if (sd && battle_config.equipment_breaking && (wd.damage > 0 || wd.damage2 > 0)) {
 		int breakrate = 1; // 0.01% default self weapon breaking chance [DracoRPG]
-		int breakrate_[2] = {0,0}; // Enemy breaking chance, Weapon = 0, Armor = 1 [celest]
+		int breakrate_[2] = {0,0}; // Enemy breaking chance, Weapon = 0, Armor = 1
 
 		// Import extra breaking rates
 		breakrate_[0] += sd->break_weapon_rate;
@@ -3743,7 +3743,7 @@ int battle_weapon_attack(struct block_list *src, struct block_list *target, unsi
 					battle_weapon_attack(target, src, tick, 0x8000 | t_sc_data[SC_AUTOCOUNTER].val1);
 				status_change_end(target, SC_AUTOCOUNTER, -1);
 			}
-			if (t_sc_data[SC_POISONREACT].timer != -1 && t_sc_data[SC_POISONREACT].val4 > 0 && t_sc_data[SC_POISONREACT].val3 == src->id) {   // Poison React [Celest]
+			if (t_sc_data[SC_POISONREACT].timer != -1 && t_sc_data[SC_POISONREACT].val4 > 0 && t_sc_data[SC_POISONREACT].val3 == src->id) {   // Poison React
 				struct map_session_data *tsd = (struct map_session_data *)target;
 				if (status_get_elem_type(src) == 5) {
 					t_sc_data[SC_POISONREACT].val2 = 0;
@@ -4216,11 +4216,11 @@ static const struct battle_config_short{
 	{ "wedding_modifydisplay",                      &battle_config.wedding_modifydisplay },
 	{ "natural_heal_weight_rate",                   &battle_config.natural_heal_weight_rate },
 	{ "item_name_override_grffile",                 &battle_config.item_name_override_grffile},
-	{ "item_equip_override_grffile",                &battle_config.item_equip_override_grffile},	// [Celest]
-	{ "item_slots_override_grffile",                &battle_config.item_slots_override_grffile},	// [Celest]
-	{ "indoors_override_grffile",                   &battle_config.indoors_override_grffile},	// [Celest]
-	{ "skill_sp_override_grffile",                  &battle_config.skill_sp_override_grffile},	// [Celest]
-	{ "cardillust_read_grffile",                    &battle_config.cardillust_read_grffile},	// [Celest]
+	{ "item_equip_override_grffile",                &battle_config.item_equip_override_grffile},
+	{ "item_slots_override_grffile",                &battle_config.item_slots_override_grffile},
+	{ "indoors_override_grffile",                   &battle_config.indoors_override_grffile},
+	{ "skill_sp_override_grffile",                  &battle_config.skill_sp_override_grffile},
+	{ "cardillust_read_grffile",                    &battle_config.cardillust_read_grffile},
 	{ "arrow_decrement",                            &battle_config.arrow_decrement },
 	{ "max_aspd",                                   &battle_config.max_aspd },
 	{ "max_lv",                                     &battle_config.max_lv },
@@ -4318,9 +4318,9 @@ static const struct battle_config_short{
 	{ "item_drop_heal_max",                         &battle_config.item_drop_heal_max },
 	{ "item_drop_use_min",                          &battle_config.item_drop_use_min },
 	{ "item_drop_use_max",                          &battle_config.item_drop_use_max },
-	{ "prevent_logout",                             &battle_config.prevent_logout }, // Added by RoVeRT
-	{ "alchemist_summon_reward",                    &battle_config.alchemist_summon_reward }, // [Valaris]
-	{ "maximum_level",                              &battle_config.maximum_level }, // [Valaris]
+	{ "prevent_logout",                             &battle_config.prevent_logout },
+	{ "alchemist_summon_reward",                    &battle_config.alchemist_summon_reward },
+	{ "maximum_level",                              &battle_config.maximum_level },
 	{ "atcommand_max_job_level_novice",             &battle_config.atcommand_max_job_level_novice },
 	{ "atcommand_max_job_level_job1",               &battle_config.atcommand_max_job_level_job1 },
 	{ "atcommand_max_job_level_job2",               &battle_config.atcommand_max_job_level_job2 },
@@ -4334,65 +4334,65 @@ static const struct battle_config_short{
 	{ "atcommand_max_job_level_superbaby",          &battle_config.atcommand_max_job_level_superbaby },
 	{ "atcommand_max_job_level_gunslinger",					&battle_config.atcommand_max_job_level_gunslinger },
 	{ "atcommand_max_job_level_ninja",							&battle_config.atcommand_max_job_level_ninja },
-	{ "drops_by_luk",                               &battle_config.drops_by_luk }, // [Valaris]
-	{ "monsters_ignore_gm",                         &battle_config.monsters_ignore_gm }, // [Valaris]
-	{ "equipment_breaking",                         &battle_config.equipment_breaking }, // [Valaris]
-	{ "equipment_break_rate",                       &battle_config.equipment_break_rate }, // [Valaris]
-	{ "pk_mode",                                    &battle_config.pk_mode }, // [Valaris]
-	{ "pet_equip_required",                         &battle_config.pet_equip_required }, // [Valaris]
-	{ "multi_level_up",                             &battle_config.multi_level_up }, // [Valaris]
+	{ "drops_by_luk",                               &battle_config.drops_by_luk },
+	{ "monsters_ignore_gm",                         &battle_config.monsters_ignore_gm },
+	{ "equipment_breaking",                         &battle_config.equipment_breaking },
+	{ "equipment_break_rate",                       &battle_config.equipment_break_rate },
+	{ "pk_mode",                                    &battle_config.pk_mode },
+	{ "pet_equip_required",                         &battle_config.pet_equip_required },
+	{ "multi_level_up",                             &battle_config.multi_level_up },
 	{ "backstab_bow_penalty",                       &battle_config.backstab_bow_penalty },
-	{ "night_at_start",                             &battle_config.night_at_start }, // Added by [Yor]
-	{ "show_mob_hp",                                &battle_config.show_mob_hp }, // [Valaris]
-	{ "ban_spoof_namer",                            &battle_config.ban_spoof_namer }, // Added by [Yor]
-	{ "check_ban_bot",                              &battle_config.check_ban_bot }, // Added by [Yor]
-	{ "max_message_length",                         &battle_config.max_message_length }, // Added by [Yor]
-	{ "max_global_message_length",                  &battle_config.max_global_message_length }, // Added by [Yor]
-	{ "hack_info_GM_level",                         &battle_config.hack_info_GM_level }, // Added by [Yor]
-	{ "speed_hack_info_GM_level",                   &battle_config.speed_hack_info_GM_level }, // Added by [Yor]
-	{ "any_warp_GM_min_level",                      &battle_config.any_warp_GM_min_level }, // Added by [Yor]
-	{ "packet_ver_flag",                            &battle_config.packet_ver_flag }, // Added by [Yor]
-	{ "min_hair_style",                             &battle_config.min_hair_style }, // Added by [Yor]
-	{ "max_hair_style",                             &battle_config.max_hair_style }, // Added by [Yor]
-	{ "min_hair_color",                             &battle_config.min_hair_color }, // Added by [Yor]
-	{ "max_hair_color",                             &battle_config.max_hair_color }, // Added by [Yor]
-	{ "min_cloth_color",                            &battle_config.min_cloth_color }, // Added by [Yor]
-	{ "max_cloth_color",                            &battle_config.max_cloth_color }, // Added by [Yor]
-	{ "clothes_color_for_assassin",                 &battle_config.clothes_color_for_assassin }, // Added by [Yor]
-	{ "castrate_dex_scale",                         &battle_config.castrate_dex_scale }, // Added by [Yor]
-	{ "area_size",                                  &battle_config.area_size }, // Added by [Yor]
-	{ "muting_players",                             &battle_config.muting_players }, // Added by [Apple]
-	{ "zeny_from_mobs",                             &battle_config.zeny_from_mobs }, // [Valaris]
-	{ "mobs_level_up",                              &battle_config.mobs_level_up }, // [Valaris]
-	{ "pk_min_level",                               &battle_config.pk_min_level }, // [celest]
-	{ "skill_steal_type",                           &battle_config.skill_steal_type }, // [celest]
-	{ "skill_steal_rate",                           &battle_config.skill_steal_rate }, // [celest]
-//	{ "night_darkness_level",                       &battle_config.night_darkness_level}, // [celest] // ************** This option is not used! : we don't know how to remove effect (night -> day)
-	{ "skill_range_leniency",                       &battle_config.skill_range_leniency }, // [celest]
-	{ "motd_type",                                  &battle_config.motd_type }, // [celest]
-	{ "allow_atcommand_when_mute",                  &battle_config.allow_atcommand_when_mute }, // [celest]
-	{ "manner_action",                              &battle_config.manner_action }, // [Yor]
-	{ "finding_ore_rate",                           &battle_config.finding_ore_rate }, // [celest]
-	{ "min_skill_delay_limit",                      &battle_config.min_skill_delay_limit }, // [celest]
-	{ "idle_no_share",                              &battle_config.idle_no_share }, // [celest] For a feature by [MouseJstr]
-	{ "chat_no_share",                              &battle_config.chat_no_share }, // [Yor]
-	{ "npc_chat_no_share",                          &battle_config.npc_chat_no_share }, // [Yor]
-	{ "shop_no_share",                              &battle_config.shop_no_share }, // [Yor]
-	{ "trade_no_share",                             &battle_config.trade_no_share }, // [Yor]
-	{ "idle_before_disconnect",                     &battle_config.idle_disconnect }, // [Yor]
-	{ "idle_before_disconnect_chat",                &battle_config.idle_disconnect_chat }, // [Yor]
-	{ "idle_before_disconnect_vender",              &battle_config.idle_disconnect_vender }, // [Yor]
-	{ "idle_before_disconnect_disable_for_restore", &battle_config.idle_disconnect_disable_for_restore }, // [Yor]
-	{ "idle_before_disconnect_ignore_GM",           &battle_config.idle_disconnect_ignore_GM}, // [Yor]
-	{ "jail_message",                               &battle_config.jail_message }, // [Yor] Do we send message to ALL players when a player is put in jail?
-	{ "jail_discharge_message",                     &battle_config.jail_discharge_message }, // [Yor] Do we send message to ALL players when a player is discharged?
-	{ "mingmlvl_message",                           &battle_config.mingmlvl_message }, // [Yor] Which message do we send when a GM can use a command, but mingmlvl map flag block it?
-	{ "check_invalid_slot",                         &battle_config.check_invalid_slot }, // [Yor] Do we check invalid slotted cards?
-	{ "ruwach_range",                               &battle_config.ruwach_range }, // [Yor] Set the range (number of squares/tiles around you) of 'ruwach' skill to detect invisible.
-	{ "sight_range",                                &battle_config.sight_range }, // [Yor] Set the range (number of squares/tiles around you) of 'sight' skill to detect invisible.
-	{ "max_icewall",                                &battle_config.max_icewall }, // [Yor] Set maximum number of ice walls active at the same time.
-	{ "ignore_items_gender",                        &battle_config.ignore_items_gender }, //[Proximus] Whether item_db gender restrictions will be ignored or not
-	{ "party_invite_same_account",                  &battle_config.party_invite_same_account }, //[Proximus] Whether its possible to invite 2 characters from the same account into a party
+	{ "night_at_start",                             &battle_config.night_at_start },
+	{ "show_mob_hp",                                &battle_config.show_mob_hp },
+	{ "ban_spoof_namer",                            &battle_config.ban_spoof_namer },
+	{ "check_ban_bot",                              &battle_config.check_ban_bot },
+	{ "max_message_length",                         &battle_config.max_message_length },
+	{ "max_global_message_length",                  &battle_config.max_global_message_length },
+	{ "hack_info_GM_level",                         &battle_config.hack_info_GM_level },
+	{ "speed_hack_info_GM_level",                   &battle_config.speed_hack_info_GM_level },
+	{ "any_warp_GM_min_level",                      &battle_config.any_warp_GM_min_level },
+	{ "packet_ver_flag",                            &battle_config.packet_ver_flag },
+	{ "min_hair_style",                             &battle_config.min_hair_style },
+	{ "max_hair_style",                             &battle_config.max_hair_style },
+	{ "min_hair_color",                             &battle_config.min_hair_color },
+	{ "max_hair_color",                             &battle_config.max_hair_color },
+	{ "min_cloth_color",                            &battle_config.min_cloth_color },
+	{ "max_cloth_color",                            &battle_config.max_cloth_color },
+	{ "clothes_color_for_assassin",                 &battle_config.clothes_color_for_assassin },
+	{ "castrate_dex_scale",                         &battle_config.castrate_dex_scale },
+	{ "area_size",                                  &battle_config.area_size },
+	{ "muting_players",                             &battle_config.muting_players },
+	{ "zeny_from_mobs",                             &battle_config.zeny_from_mobs },
+	{ "mobs_level_up",                              &battle_config.mobs_level_up },
+	{ "pk_min_level",                               &battle_config.pk_min_level },
+	{ "skill_steal_type",                           &battle_config.skill_steal_type },
+	{ "skill_steal_rate",                           &battle_config.skill_steal_rate },
+//	{ "night_darkness_level",                       &battle_config.night_darkness_level}, // ************** This option is not used! : we don't know how to remove effect (night -> day)
+	{ "skill_range_leniency",                       &battle_config.skill_range_leniency },
+	{ "motd_type",                                  &battle_config.motd_type },
+	{ "allow_atcommand_when_mute",                  &battle_config.allow_atcommand_when_mute },
+	{ "manner_action",                              &battle_config.manner_action },
+	{ "finding_ore_rate",                           &battle_config.finding_ore_rate },
+	{ "min_skill_delay_limit",                      &battle_config.min_skill_delay_limit },
+	{ "idle_no_share",                              &battle_config.idle_no_share },
+	{ "chat_no_share",                              &battle_config.chat_no_share },
+	{ "npc_chat_no_share",                          &battle_config.npc_chat_no_share },
+	{ "shop_no_share",                              &battle_config.shop_no_share },
+	{ "trade_no_share",                             &battle_config.trade_no_share },
+	{ "idle_before_disconnect",                     &battle_config.idle_disconnect },
+	{ "idle_before_disconnect_chat",                &battle_config.idle_disconnect_chat },
+	{ "idle_before_disconnect_vender",              &battle_config.idle_disconnect_vender },
+	{ "idle_before_disconnect_disable_for_restore", &battle_config.idle_disconnect_disable_for_restore },
+	{ "idle_before_disconnect_ignore_GM",           &battle_config.idle_disconnect_ignore_GM},
+	{ "jail_message",                               &battle_config.jail_message },
+	{ "jail_discharge_message",                     &battle_config.jail_discharge_message },
+	{ "mingmlvl_message",                           &battle_config.mingmlvl_message },
+	{ "check_invalid_slot",                         &battle_config.check_invalid_slot },
+	{ "ruwach_range",                               &battle_config.ruwach_range },
+	{ "sight_range",                                &battle_config.sight_range },
+	{ "max_icewall",                                &battle_config.max_icewall },
+	{ "ignore_items_gender",                        &battle_config.ignore_items_gender },
+	{ "party_invite_same_account",                  &battle_config.party_invite_same_account },
 
 	{ "atcommand_main_channel_at_start",            &battle_config.atcommand_main_channel_at_start },
 	{ "atcommand_main_channel_on_gvg_map_woe",      &battle_config.atcommand_main_channel_on_gvg_map_woe},
@@ -4402,7 +4402,7 @@ static const struct battle_config_short{
 	{ "atcommand_add_local_message_info",           &battle_config.atcommand_add_local_message_info },
 	{ "atcommand_storage_on_pvp_map",               &battle_config.atcommand_storage_on_pvp_map },
 	{ "atcommand_gstorage_on_pvp_map",              &battle_config.atcommand_gstorage_on_pvp_map },
-	{ "pm_gm_not_ignored",                          &battle_config.pm_gm_not_ignored }, // GM minimum level to be not ignored in private message
+	{ "pm_gm_not_ignored",                          &battle_config.pm_gm_not_ignored },
 
 	{ "char_disconnect_mode",                       &battle_config.char_disconnect_mode },
 
@@ -4447,14 +4447,14 @@ static const struct battle_config_int {
 	{ "item_rate_card",                             &battle_config.item_rate_card },
 	{ "item_rate_heal",                             &battle_config.item_rate_heal },
 	{ "item_rate_use",                              &battle_config.item_rate_use },
-	{ "day_duration",                               &battle_config.day_duration }, // Added by [Yor]
-	{ "night_duration",                             &battle_config.night_duration }, // Added by [Yor]
+	{ "day_duration",                               &battle_config.day_duration },
+	{ "night_duration",                             &battle_config.night_duration },
 	{ "check_maximum_skill_points",                 &battle_config.check_maximum_skill_points },
-	{ "idle_delay_no_share",                        &battle_config.idle_delay_no_share}, // [Yor]
-	{ "ban_hack_trade",                             &battle_config.ban_hack_trade }, // Added by [Yor]
-	{ "ban_bot",                                    &battle_config.ban_bot }, // Added by [Yor]
-	{ "atcommand_send_usage_type",                  &battle_config.atcommand_send_usage_type }, // Added by [Yor]
-	{ "atcommand_main_channel_type",                &battle_config.atcommand_main_channel_type }, // Added by [Yor]
+	{ "idle_delay_no_share",                        &battle_config.idle_delay_no_share},
+	{ "ban_hack_trade",                             &battle_config.ban_hack_trade },
+	{ "ban_bot",                                    &battle_config.ban_bot },
+	{ "atcommand_send_usage_type",                  &battle_config.atcommand_send_usage_type },
+	{ "atcommand_main_channel_type",                &battle_config.atcommand_main_channel_type },
 };
 
 /*==========================================
@@ -4602,11 +4602,11 @@ void battle_set_defaults() {
 	battle_config.natural_heal_skill_interval=10000;
 	battle_config.natural_heal_weight_rate=50;
 	battle_config.item_name_override_grffile = 0;
-	battle_config.item_equip_override_grffile = 0; // [Celest]
-	battle_config.item_slots_override_grffile = 0; // [Celest]
-	battle_config.indoors_override_grffile = 0; // [Celest]
-	battle_config.skill_sp_override_grffile = 0; // [Celest]
-	battle_config.cardillust_read_grffile = 1; // [Celest]
+	battle_config.item_equip_override_grffile = 0;
+	battle_config.item_slots_override_grffile = 0;
+	battle_config.indoors_override_grffile = 0;
+	battle_config.skill_sp_override_grffile = 0;
+	battle_config.cardillust_read_grffile = 1;
 	battle_config.arrow_decrement = 1;
 	battle_config.max_aspd = 190;
 	battle_config.max_hp = 32500;
@@ -4620,7 +4620,7 @@ void battle_set_defaults() {
 	battle_config.save_log = 0;
 	battle_config.error_log = 0;
 	battle_config.etc_log = 0;
-	battle_config.save_clothcolor = 1; // Save clothes color by default [Yor]
+	battle_config.save_clothcolor = 1; // Save clothes color by default
 	battle_config.undead_detect_type = 0;
 	battle_config.pc_auto_counter_type = 0;
 	battle_config.monster_auto_counter_type = 0;
@@ -4727,28 +4727,28 @@ void battle_set_defaults() {
 	battle_config.atcommand_max_job_level_superbaby = 99;
 	battle_config.atcommand_max_job_level_gunslinger = 70;
 	battle_config.atcommand_max_job_level_ninja = 70;
-	battle_config.drops_by_luk = 0;	// [Valaris]
+	battle_config.drops_by_luk = 0;
 	battle_config.monsters_ignore_gm = 60;
-	battle_config.equipment_breaking = 1; // [Valaris]
-	battle_config.equipment_break_rate = 100; // [Valaris]
-	battle_config.pk_mode = 0; // [Valaris]
-	battle_config.pet_equip_required = 1; // [Valaris]
-	battle_config.multi_level_up = 0; // [Valaris]
-	battle_config.backstab_bow_penalty = 1; // Akaru
-	battle_config.night_at_start = 0; // Added by [Yor]
-	battle_config.day_duration = 2*60*60*1000; // Added by [Yor] (2 hours)
-	battle_config.night_duration = 20*60*1000; // Added by [Yor] (20 minutes)
-	battle_config.show_mob_hp = 0; // [Valaris]
-	battle_config.ban_spoof_namer = 5; // Added by [Yor] (default: 5 minutes)
-	battle_config.ban_hack_trade = -1; // Added by [Yor] (default: negative, permanent ban)
-	battle_config.ban_bot = -1; // Added by [Yor] (default: negativ, permanent ban)
-	battle_config.check_ban_bot = 80; // Added by [Yor] (default: 80, experimental code)
-	battle_config.max_message_length = 100; // Added by [Yor] (default: max message length sended by a player: 100 char, except global message)
-	battle_config.max_global_message_length = 150; // Added by [Yor] (default: max global message length sended by a player: 150 char)
-	battle_config.hack_info_GM_level = 20; // Added by [Yor] (default: 20, GM team member)
-	battle_config.speed_hack_info_GM_level = 99; // Added by [Yor] (default: 99, experimental code)
-	battle_config.any_warp_GM_min_level = 20; // Added by [Yor]
-	battle_config.packet_ver_flag = 6655; // Added by [Yor]
+	battle_config.equipment_breaking = 1;
+	battle_config.equipment_break_rate = 100;
+	battle_config.pk_mode = 0;
+	battle_config.pet_equip_required = 1;
+	battle_config.multi_level_up = 0;
+	battle_config.backstab_bow_penalty = 1;
+	battle_config.night_at_start = 0;
+	battle_config.day_duration = 2*60*60*1000;
+	battle_config.night_duration = 20*60*1000;
+	battle_config.show_mob_hp = 0;
+	battle_config.ban_spoof_namer = 5;
+	battle_config.ban_hack_trade = -1;
+	battle_config.ban_bot = -1;
+	battle_config.check_ban_bot = 80;
+	battle_config.max_message_length = 100;
+	battle_config.max_global_message_length = 150;
+	battle_config.hack_info_GM_level = 20;
+	battle_config.speed_hack_info_GM_level = 99;
+	battle_config.any_warp_GM_min_level = 20;
+	battle_config.packet_ver_flag = 6655;
 	battle_config.muting_players = 0;
 	battle_config.min_hair_style = 0;
 	battle_config.max_hair_style = 24;
@@ -4756,7 +4756,7 @@ void battle_set_defaults() {
 	battle_config.max_hair_color = 8;
 	battle_config.min_cloth_color = 0;
 	battle_config.max_cloth_color = 4;
-	battle_config.clothes_color_for_assassin = 0; // No
+	battle_config.clothes_color_for_assassin = 0;
 	battle_config.zeny_from_mobs = 0;
 	battle_config.mobs_level_up = 0;
 	battle_config.pk_min_level = 55;
@@ -4766,27 +4766,27 @@ void battle_set_defaults() {
 	battle_config.skill_range_leniency = 1;
 	battle_config.motd_type = 1;
 	battle_config.allow_atcommand_when_mute = 0;
-	battle_config.manner_action = 3; // [Yor]
+	battle_config.manner_action = 3;
 	battle_config.finding_ore_rate = 100;
 	battle_config.min_skill_delay_limit = 150;
-	battle_config.idle_no_share = 0; // [Yor]
-	battle_config.idle_delay_no_share = 120000; // [Yor] (2 minutes)
-	battle_config.chat_no_share = 0; // [Yor]
-	battle_config.npc_chat_no_share = 1; // [Yor]
-	battle_config.shop_no_share = 1; // [Yor]
-	battle_config.trade_no_share = 1; // [Yor]
-	battle_config.idle_disconnect = 0; // (5 minutes) [Yor]
-	battle_config.idle_disconnect_chat = 1800; // (30 minutes) [Yor]
-	battle_config.idle_disconnect_vender = 0; // (No limit) [Yor]
-	battle_config.idle_disconnect_disable_for_restore = 1; // 1 = Yes [Yor]
-	battle_config.idle_disconnect_ignore_GM = 99; // (Admin) [Yor]
-	battle_config.jail_message = 1; // 1 = Yes [Yor] Do we send message to ALL players when a player is put in jail?
-	battle_config.jail_discharge_message = 3; // (In all cases)[Yor] Do we send message to ALL players when a player is discharged?
-	battle_config.mingmlvl_message = 2; // (You're not authorized...) [Yor] Which message do we send when a GM can use a command, but mingmlvl map flag block it?
-	battle_config.check_invalid_slot = 0; // 0 : No [Yor] Do we check invalid slotted cards?
-	battle_config.ruwach_range = 2; // (2 Squares in all directions -> a square of 5x5) [Yor] Set the range (number of squares/tiles around you) of 'ruwach' skill to detect invisible.
-	battle_config.sight_range = 3; // (3 Squares in all directions -> a square of 7x7) [Yor] Set the range (number of squares/tiles around you) of 'sight' skill to detect invisible.
-	battle_config.max_icewall = 5 ; // Set maximum number of Ice Walls active at the same time [Yor]
+	battle_config.idle_no_share = 0;
+	battle_config.idle_delay_no_share = 120000;
+	battle_config.chat_no_share = 0;
+	battle_config.npc_chat_no_share = 1;
+	battle_config.shop_no_share = 1;
+	battle_config.trade_no_share = 1;
+	battle_config.idle_disconnect = 0; // (5 minutes)
+	battle_config.idle_disconnect_chat = 1800; // (30 minutes)
+	battle_config.idle_disconnect_vender = 0; // (No limit)
+	battle_config.idle_disconnect_disable_for_restore = 1; // 1 = Yes
+	battle_config.idle_disconnect_ignore_GM = 99; // (Admin)
+	battle_config.jail_message = 1; // 1 = Yes Do we send message to ALL players when a player is put in jail?
+	battle_config.jail_discharge_message = 3; // (In all cases) Do we send message to ALL players when a player is discharged?
+	battle_config.mingmlvl_message = 2; // (You're not authorized...) Which message do we send when a GM can use a command, but mingmlvl map flag block it?
+	battle_config.check_invalid_slot = 0; // 0 : No Do we check invalid slotted cards?
+	battle_config.ruwach_range = 2; // (2 Squares in all directions -> a square of 5x5) Set the range (number of squares/tiles around you) of 'ruwach' skill to detect invisible.
+	battle_config.sight_range = 3; // (3 Squares in all directions -> a square of 7x7) Set the range (number of squares/tiles around you) of 'sight' skill to detect invisible.
+	battle_config.max_icewall = 5 ; // Set maximum number of Ice Walls active at the same time
 	battle_config.ignore_items_gender = 1; // Wether item_db gender restrictions will be ignored or not [Proximus]
 	battle_config.party_invite_same_account = 0; // Whether its possible to invite 2 characters of the same account into a party [Proximus]
 	
@@ -4992,42 +4992,42 @@ void battle_validate_conf() {
 	if (battle_config.pk_min_level < 1)
 		battle_config.pk_min_level = 55;
 
-	if (battle_config.night_at_start < 1) // Added by [Yor]
+	if (battle_config.night_at_start < 1)
 		battle_config.night_at_start = 0;
-	else if (battle_config.night_at_start > 1) // Added by [Yor]
+	else if (battle_config.night_at_start > 1)
 		battle_config.night_at_start = 1;
-	if (battle_config.day_duration < 0) // Added by [Yor]
+	if (battle_config.day_duration < 0)
 		battle_config.day_duration = 0;
-	if (battle_config.night_duration < 0) // Added by [Yor]
+	if (battle_config.night_duration < 0)
 		battle_config.night_duration = 0;
 
-	if (battle_config.check_ban_bot < 1) // Added by [Yor]
+	if (battle_config.check_ban_bot < 1)
 		battle_config.check_ban_bot = 0;
 	else if (battle_config.check_ban_bot > 100)
 		battle_config.check_ban_bot = 100;
 
-	if (battle_config.max_message_length < 80) // Added by [Yor]
+	if (battle_config.max_message_length < 80)
 		battle_config.max_message_length = 80; // Maximum that a normal client can send is: 70, but we give security -> 80
-	if (battle_config.max_global_message_length < 130) // Added by [Yor]
+	if (battle_config.max_global_message_length < 130)
 		battle_config.max_global_message_length = 130; // Maximum that a normal iRO client can send is: 130
 
-	if (battle_config.hack_info_GM_level < 1) // Added by [Yor]
+	if (battle_config.hack_info_GM_level < 1)
 		battle_config.hack_info_GM_level = 0;
 	else if (battle_config.hack_info_GM_level > 100)
 		battle_config.hack_info_GM_level = 100;
 
-	if (battle_config.speed_hack_info_GM_level < 1) // Added by [Yor]
+	if (battle_config.speed_hack_info_GM_level < 1)
 		battle_config.speed_hack_info_GM_level = 0;
 	else if (battle_config.speed_hack_info_GM_level > 100)
 		battle_config.speed_hack_info_GM_level = 100;
 
-	if (battle_config.any_warp_GM_min_level < 1) // Added by [Yor]
+	if (battle_config.any_warp_GM_min_level < 1)
 		battle_config.any_warp_GM_min_level = 0;
 	else if (battle_config.any_warp_GM_min_level > 100)
 		battle_config.any_warp_GM_min_level = 100;
 
 	// At least one client must be accepted
-	if ((battle_config.packet_ver_flag & 8191) == 0) // Added by [Yor] (we must avoid to set 256 and 512 together)
+	if ((battle_config.packet_ver_flag & 8191) == 0)
 		battle_config.packet_ver_flag = 6655; // Accept all clients (except 2004-12-06aSakexe client (-512) and 2005-01-10bSakexe client (-1024), similar to 2004-10-25aSakexe client and 2005-06-28aSakexe client)
 	else {
 		if ((battle_config.packet_ver_flag & (256 + 512)) == (256 + 512)) {
@@ -5042,7 +5042,7 @@ void battle_validate_conf() {
 		}
 	}
 	// New blue night effect, battle_config option not needed
-	/*if (battle_config.night_darkness_level > 10) // Celest
+	/*if (battle_config.night_darkness_level > 10)
 		battle_config.night_darkness_level = 10; */
 
 	if (battle_config.finding_ore_rate < 1)
@@ -5050,7 +5050,7 @@ void battle_validate_conf() {
 	else if (battle_config.finding_ore_rate > 10000)
 		battle_config.finding_ore_rate = 10000;
 
-	if (battle_config.skill_range_leniency < 1) // Celest
+	if (battle_config.skill_range_leniency < 1)
 		battle_config.skill_range_leniency = 0;
 
 	if (battle_config.motd_type < 1)
@@ -5058,7 +5058,7 @@ void battle_validate_conf() {
 	else if (battle_config.motd_type > 1)
 		battle_config.motd_type = 1;
 
-	if (battle_config.manner_action < 1) // Added by [Yor]
+	if (battle_config.manner_action < 1)
 		battle_config.manner_action = 0;
 	else if (battle_config.manner_action > 3)
 		battle_config.manner_action = 3;
@@ -5140,7 +5140,7 @@ void battle_validate_conf() {
 	else if (battle_config.sight_range > 100) // We can not see more than 100 squares
 		battle_config.sight_range = 100;
 
-	if (battle_config.max_icewall < 1) // [Yor] Set maximum number of ice walls active at the same time.
+	if (battle_config.max_icewall < 1)
 		battle_config.max_icewall = 0; // No limit
 
 	if (battle_config.atcommand_main_channel_at_start < 1)

@@ -449,7 +449,7 @@ void chrif_updatefame(int char_id, unsigned char rank_id, int points) {
 }
 
 /*==========================================
- * Send message to char-server with a character name to do some operations (by Yor)
+ * Send message to char-server with a character name to do some operations
  * Used to ask Char-server about a character name to have the account number to modify account file in login-server.
  * type of operation:
  *   1: block
@@ -510,7 +510,7 @@ int chrif_char_ask_name(int id, char * character_name, short operation_type, int
 }
 
 /*==========================================
- * Answer after a request about a character name to do some operations (by Yor)
+ * Answer after a request about a character name to do some operations
  * Used to answer of chrif_char_ask_name.
  * type of operation:
  *   1: block
@@ -640,7 +640,7 @@ int chrif_char_ask_name_answer(int fd) {
 }
 
 /*==========================================
- * End of GM change (@GM) (modified by Yor)
+ * End of GM change (@GM)
  *------------------------------------------
  */
 int chrif_changedgm(int fd) {
@@ -665,7 +665,7 @@ int chrif_changedgm(int fd) {
 }
 
 /*==========================================
- * ê´ï ïœâªèIóπ (modified by Yor)
+ chrif_changedsex Function
  *------------------------------------------
  */
 int chrif_changedsex(int fd) { // 0x2b0d <account_id>.L <sex>.B <account_id_of_GM>.L (sex = -1 -> failed; account_id_of_GM = -1 -> ladmin)
@@ -909,7 +909,7 @@ int chrif_divorce(int char_id, int partner_id) {
 }
 
 /*==========================================
- * Disconnection of a player (account has been deleted in login-server) by [Yor]
+ * Disconnection of a player (account has been deleted in login-server)
  *------------------------------------------
  */
 int chrif_accountdeletion(int fd) {
@@ -933,7 +933,7 @@ int chrif_accountdeletion(int fd) {
 }
 
 /*==========================================
- * Disconnection of a player (account has been banned of has a status, from login-server) by [Yor]
+ * Disconnection of a player (account has been banned of has a status, from login-server)
  *------------------------------------------
  */
 int chrif_accountban(int fd) {
@@ -1002,7 +1002,7 @@ int chrif_accountban(int fd) {
 }
 
 /*==========================================
- * Receiving GM accounts and their levels from char-server by [Yor]
+ * Receiving GM accounts and their levels from char-server
  *------------------------------------------
  */
 int chrif_recvgmaccounts(int fd) {
@@ -1012,7 +1012,7 @@ int chrif_recvgmaccounts(int fd) {
 }
 
 /*==========================================
- * Receiving map_is_alone flag from char-server by [Yor]
+ * Receiving map_is_alone flag from char-server
  *------------------------------------------
  */
 int chrif_recv_alone_map_server_flag(int fd) {
@@ -1026,7 +1026,7 @@ int chrif_recv_alone_map_server_flag(int fd) {
 }
 
 /*==========================================
- * Request to reload GM accounts and their levels: send to char-server by [Yor]
+ * Request to reload GM accounts and their levels: send to char-server
  *------------------------------------------
  */
 int chrif_reloadGMdb(void) {
@@ -1051,7 +1051,7 @@ int chrif_reloadGMdb(void) {
 }
 
 /*==========================================
- * Receiving email change answer from login-server (via char-login) by [Yor]
+ * Receiving email change answer from login-server (via char-login)
  *------------------------------------------
  */
 int chrif_recv_email_change_answer(int fd) { // 0x272b/0x2b18 <account_id>.L <new_e-mail>.40B
@@ -1158,7 +1158,7 @@ int chrif_ragsrvinfo(int base_rate, int job_rate, int drop_rate) {
 }
 
 /*==========================================
- * Send added friends in list to char-server (to save them) [Yor]
+ * Send added friends in list to char-server (To save them)
  *------------------------------------------
  */
 void chrif_send_friends(int friend_char_id1, int friend_char_id2) { // 0x2b24 <friend_char_id1>.L <friend_char_id2>.L
@@ -1173,7 +1173,7 @@ void chrif_send_friends(int friend_char_id1, int friend_char_id2) { // 0x2b24 <f
 }
 
 /*==========================================
- * Receive friends list from char-server [Yor]
+ * Receive friends list from char-server
  * Only receive when char is loading
  *------------------------------------------
  */
@@ -1299,7 +1299,7 @@ int chrif_save_scdata(struct map_session_data *sd) {
 #endif
 
 /*==========================================
- * Receive deletion of a friend from other map-server [Yor]
+ * Receive deletion of a friend from other map-server
  *------------------------------------------
  */
 int chrif_parse_friend_delete(int fd) { // 0x2b22 <owner_char_id_list>.L <deleted_char_id>.L
@@ -1476,7 +1476,7 @@ int send_users_tochar(int tid, unsigned int tick, int id, int data) {
 	struct map_session_data *sd;
 
 	if (!chrif_isconnect())
-		return 0; // Check to see if char-server is connected and initialisation is finished (by Yor, commited by [PoW])
+		return 0; // Check to see if char-server is connected and initialisation is finished
 
 	// set online not hidden players
 	users = 0;

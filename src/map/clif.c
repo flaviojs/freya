@@ -151,21 +151,21 @@ char talkie_mes[81]; // 80 + 1 NULL
 unsigned char display_unknown_packet = 0;
 
 /*==========================================
- * manner system (by [Yor])
+ * Manner system
  *------------------------------------------
  */
-// manner system - variables definition
+// Manner system - variables definition
 //------------------------------------------
-#define MANNER_SIZE 80 // fix max size of sentence/word in manner
+#define MANNER_SIZE 80 // Fix max size of sentence/word in manner
 char *MANNER_CONF_NAME = "conf/manner.txt";
 char *manner_db = NULL;
 unsigned int manner_counter = 0;
 long creation_time_manner_file = -1;
 
-// manner system - remove manner table from memory
+// Manner system - remove manner table from memory
 //------------------------------------------
 void delete_manner() {
-	// clean up manner table
+	// Clean up manner table
 	FREE(manner_db);
 	manner_counter = 0;
 
@@ -449,7 +449,7 @@ int clif_send_sub(struct block_list *bl, va_list ap) {
 		break;
 	case AREA_PET: // to send pet information (hair style) with packet 0x0078 and 0x007b
 		if (!(WPACKETW(14) < 24 || WPACKETW(14) > 4000)) {
-			if (sd->packet_ver < 12) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06 (by [Yor])
+			if (sd->packet_ver < 12) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06
 				WPACKETW(16) = 0x14; // pet_hair_style
 			} else {
 				// note: version of 0614 is not used in freya (value = 24)
@@ -1705,11 +1705,11 @@ static int clif_waitclose(int tid, unsigned int tick, int id, int data) {
 	struct map_session_data *sd;
 
 	if (session[id]) {
-		// check if the session is always the same [Yor]
+		// check if the session is always the same
 		if (((sd = session[id]->session_data) == NULL && data == 0) ||
 		    (sd != NULL && sd->bl.id == data))
 			session[id]->eof = 1;
-		// else session was closed and an other player have connected [Yor]
+		// else session was closed and an other player have connected
 	}
 
 	return 0;
@@ -1722,7 +1722,7 @@ static int clif_waitclose(int tid, unsigned int tick, int id, int data) {
 void clif_setwaitclose(int fd) {
 	struct map_session_data *sd;
 
-	// if player is not already in the game (double connection probably) [yor]
+	// if player is not already in the game (double connection probably)
 	if ((sd = session[fd]->session_data) == NULL) {
 		// limited timer, just to send information.
 		add_timer(gettick_cache + 1000, clif_waitclose, fd, 0);
@@ -3096,7 +3096,7 @@ int clif_dispchat(struct chat_data *cd, int fd)
 		return 1;
 
 	WPACKETW( 0) = 0xd7;
-	WPACKETW( 2) = strlen(cd->title) + 18; // add NULL [Yor]
+	WPACKETW( 2) = strlen(cd->title) + 18; // add NULL
 	WPACKETL( 4) = (*cd->owner)->id;
 	WPACKETL( 8) = cd->bl.id;
 	WPACKETW(12) = cd->limit;
@@ -3122,7 +3122,7 @@ int clif_changechatstatus(struct chat_data *cd)
 		return 1;
 
 	WPACKETW( 0) = 0xdf;
-	WPACKETW( 2) = strlen(cd->title) + 18; // add NULL [Yor]
+	WPACKETW( 2) = strlen(cd->title) + 18; // add NULL
 	WPACKETL( 4) = cd->usersd[0]->bl.id;
 	WPACKETL( 8) = cd->bl.id;
 	WPACKETW(12) = cd->limit;
@@ -3847,7 +3847,7 @@ void clif_getareachar_pet(struct map_session_data* sd, struct pet_data* pd) {
 	if (pd->state.state == MS_WALK) {
 		len = clif_pet007b(pd);
 		if (!(WPACKETW(14) < 24 || WPACKETW(14) > 4000)) {
-			if (sd->packet_ver < 12) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06 (by [Yor])
+			if (sd->packet_ver < 12) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06
 				WPACKETW(16) = 0x14; // pet_hair_style
 			} else {
 				// note: version of 0614 is not used in freya (value = 24)
@@ -3858,7 +3858,7 @@ void clif_getareachar_pet(struct map_session_data* sd, struct pet_data* pd) {
 	} else {
 		len = clif_pet0078(pd);
 		if (!(WPACKETW(14) < 24 || WPACKETW(14) > 4000)) {
-			if (sd->packet_ver < 12) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06 (by [Yor])
+			if (sd->packet_ver < 12) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06
 				WPACKETW(16) = 0x14; // pet_hair_style
 			} else {
 				// note: version of 0614 is not used in freya (value = 24)
@@ -4835,7 +4835,7 @@ int clif_status_change(struct block_list *bl, int type, int flag)
 }
 
 /*==========================================
- * Send message (modified by [Yor])
+ * Send message
  *------------------------------------------
  */
 int clif_displaymessage(const int fd, char* mes)
@@ -5274,7 +5274,7 @@ int clif_item_repaireffect(struct map_session_data *sd, int nameid, int flag){
 }
 
 /*==========================================
- * Weapon Refining [Celest]
+ * Weapon Refining
  *------------------------------------------
  */
 int clif_item_refine_list(struct map_session_data *sd)
@@ -6118,7 +6118,7 @@ int clif_send_petdata(struct map_session_data *sd, int type, int param)
 		WPACKETW(0) = 0x1a4;
 		WPACKETB(2) = type;
 		WPACKETL(3) = sd->pd->bl.id;
-		if (sd->packet_ver < 12) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06 (by [Yor])
+		if (sd->packet_ver < 12) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06
 			WPACKETL(7) = 20; // pet_hair_style
 		} else {
 			// note: version of 0614 is not used in freya (value = 24)
@@ -6439,8 +6439,7 @@ void clif_hpmeter(struct map_session_data *sd, struct map_session_data *dstsd) {
 }
 
 /*==================================================
- * Update monster hp view if it has changed [Celest]
- * Implemented in Freya from peterxxl & Sirius_Black comments by MagicalTux
+ * Update monster hp view if it has changed
  *--------------------------------------------------
  */
 
@@ -7259,7 +7258,7 @@ void clif_callpartner(struct map_session_data *sd)
 }*/
 
 /*==========================================
- * Adopt baby [Celest]
+ * Adopt baby
  *------------------------------------------
  */
 void clif_adopt_process(struct map_session_data *sd) {
@@ -7537,7 +7536,7 @@ int clif_specialeffect(struct block_list *bl, int type, int flag) { // flag: 0: 
 int clif_waitauth(int tid, unsigned int tick, int id, int data) { // id = sd->fd, data = sd->bl.id
 	struct map_session_data *sd;
 
-	// check if the session is always the same [Yor]
+	// check if the session is always the same
 	if (session[id] != NULL && (sd = session[id]->session_data) != NULL && sd->fd == id && sd->bl.id == data) {
 		// if player is not authentified (and we have not received answer of char-server)
 		if (!sd->state.auth) {
@@ -7752,7 +7751,7 @@ void clif_parse_WantToConnection(int fd, struct map_session_data *sd) { // S 0x0
 		return;
 	}*/
 
-	switch(RFIFOW(fd,0)) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06 (by [Yor])
+	switch(RFIFOW(fd,0)) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06
 	case 0x72:
 		//printf("Received bytes %d with packet 0x72.\n", RFIFOREST(fd));
 		if (RFIFOREST(fd) >= 39 && (RFIFOB(fd,38) == 0 || RFIFOB(fd,38) == 1)) { // 00 = Female, 01 = Male
@@ -7858,9 +7857,9 @@ void clif_parse_WantToConnection(int fd, struct map_session_data *sd) { // S 0x0
 
 		sd = session[fd]->session_data;
 		sd->fd = fd;
-		sd->packet_ver = packet_ver; // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06 (by [Yor])
+		sd->packet_ver = packet_ver; // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06
 
-		switch(packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06 (by [Yor])
+		switch(packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06
 		case 13:
 			pc_setnewpc(sd, account_id, RFIFOL(fd,21), RFIFOL(fd,28), RFIFOL(fd,32), RFIFOB(fd,36), fd);
 			break;
@@ -8301,7 +8300,7 @@ void clif_parse_LoadEndAck(int fd, struct map_session_data *sd) { // S 0x007d
 void clif_parse_TickSend(int fd, struct map_session_data *sd) { // S 0x007e <client tick>.l
 //	nullpo_retv(sd); // checked before to call function
 
-	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06 (by [Yor])
+	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06
 	case 13:
 		sd->client_tick = RFIFOL(fd,7);
 		break;
@@ -8429,7 +8428,7 @@ void clif_parse_WalkToXY(int fd, struct map_session_data *sd) { // S 0x0085 <X_Y
 
 	pc_stopattack(sd);
 
-	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06 (by [Yor])
+	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06
 	case 13:
 		x = RFIFOB(fd,12) * 4 + (RFIFOB(fd,13) >> 6);
 		y = ((RFIFOB(fd,13) & 0x3f) << 4) + (RFIFOB(fd,14) >> 4);
@@ -8626,7 +8625,7 @@ void clif_parse_GetCharNameRequest(int fd, struct map_session_data *sd) { // S 0
 
 //	nullpo_retv(sd); // checked before to call function
 
-	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06 (by [Yor])
+	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06
 	case 13:
 		account_id = RFIFOL(fd,8);
 		break;
@@ -9005,7 +9004,7 @@ void clif_parse_MapMove(int fd, struct map_session_data *sd) { // S 0x140 <map_n
 void clif_parse_ChangeDir(int fd, struct map_session_data *sd) { // S 0x009b <head dir>.w <dir>.B
 //	nullpo_retv(sd); // checked before to call function
 
-	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06 (by [Yor])
+	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06
 	case 13:
 		sd->head_dir = RFIFOW(fd,7);
 		sd->dir = RFIFOB(fd,11);
@@ -9113,7 +9112,7 @@ void clif_parse_HowManyConnections(int fd, struct map_session_data *sd) { // S 0
 		count = 0;
 		for (i = 0; i < fd_max; i++)
 			if (session[i] && (pl_sd = session[i]->session_data) && pl_sd->state.auth)
-				if (!((pl_sd->GM_level >= battle_config.hide_GM_session || (pl_sd->status.option & OPTION_HIDE)) && (pl_sd->GM_level > sd->GM_level))) // only lower or same level
+				if (!((pl_sd->GM_level >= battle_config.hide_GM_session || (pl_sd->status.option & OPTION_HIDE)) && (pl_sd->GM_level > sd->GM_level))) // Only lower or same level
 					count++;
 		WPACKETW(0) = 0xc2;
 		WPACKETL(2) = count;
@@ -9153,7 +9152,7 @@ void clif_parse_ActionRequest(int fd, struct map_session_data *sd) { // S 0x0089
 	pc_stop_walking(sd, 0);
 	pc_stopattack(sd);
 
-	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06 (by [Yor])
+	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06
 	case 13:
 		target_id = RFIFOL(fd,7);
 		action_type = RFIFOB(fd,17);
@@ -9259,7 +9258,7 @@ void clif_parse_Restart(int fd, struct map_session_data *sd) { // S 00b2 <type>.
 			pc_setstand(sd);
 			pc_setrestartvalue(sd, 3);
 			pc_setpos(sd, sd->status.save_point.map, sd->status.save_point.x, sd->status.save_point.y, 2, 0);
-		// in case the player's status somehow wasn't updated yet [Celest]
+		// in case the player's status somehow wasn't updated yet
 		} else if (sd->status.hp <= 0)
 			pc_setdead(sd);
 		break;
@@ -9489,7 +9488,7 @@ void clif_parse_TakeItem(int fd, struct map_session_data *sd) { // S 0x009f <ID>
 	    sd->sc_data[SC_BERSERK].timer != -1) //�o�[�T�[�N
 		return;
 
-	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06 (by [Yor])
+	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06
 	case 13:
 		map_object_id = RFIFOL(fd,9);
 		break;
@@ -9539,7 +9538,7 @@ void clif_parse_TakeItem(int fd, struct map_session_data *sd) { // S 0x009f <ID>
 	if (fitem->owner != sd->bl.id && // if player is not owner of the item, he can not get it AND
 	    fitem->first_get_id != sd->bl.id) { // if it's not 'get' first of the item (not check get 'get' second/third, because he can get before the first)
 		if (//pc_iscloaking(sd) || //Disable cloaking characters from looting [Skotlex] // incorrect check. use timer (sd->sc_data[SC_CLOAKING].timer != -1)
-		    sd->sc_data[SC_CLOAKING].timer != -1 || // Cloaking [Yor]
+		    sd->sc_data[SC_CLOAKING].timer != -1 || // Cloaking
 		    sd->sc_data[SC_CHASEWALK].timer != -1) { // Chasewalk [Aru]
 			clif_additem(sd, 0, 0, 6); // 6: you cannot get the item.
 			return;
@@ -9566,7 +9565,7 @@ void clif_parse_DropItem(int fd, struct map_session_data *sd) { // S 0x00a2 <ind
 	    sd->sc_data[SC_BERSERK].timer != -1) //�o�[�T�[�N
 		return;
 
-	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06 (by [Yor])
+	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06
 	case 13:
 		pc_dropitem(sd, RFIFOW(fd,8) - 2, RFIFOW(fd,15)); // item_index, item_amount
 		break;
@@ -9642,7 +9641,7 @@ void clif_parse_UseItem(int fd, struct map_session_data *sd)
 
 	pc_delinvincibletimer(sd);
 
-	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06 (by [Yor])
+	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06
 	case 13:
 		pc_useitem(sd, RFIFOW(fd,9) - 2);
 		break;
@@ -10183,7 +10182,7 @@ void clif_parse_UseSkillToId(int fd, struct map_session_data *sd) { // S 0x0113 
 	if (pc_issit(sd)) // client can not send useskill packet if player is sit down. But with hacker and latency... do a check
 		return; // to avoid: have regeneration of a sitting man, but not be sit down.
 
-	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06 (by [Yor])
+	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06
 		case 13:
 			skilllv = RFIFOW(fd,11);
 			skillnum = RFIFOW(fd,18);
@@ -10263,7 +10262,7 @@ void clif_parse_UseSkillToId(int fd, struct map_session_data *sd) { // S 0x0113 
 		if (skillnum != SA_CASTCANCEL)
 			return;
 	} else if (DIFF_TICK(gettick_cache, sd->canact_tick) < 0 &&
-	           // allow monk combos to ignore this delay [celest]
+	           // Allow monk combos to ignore this delay
 	           !(sd->sc_count && sd->sc_data[SC_COMBO].timer != -1 &&
 	            (skillnum == MO_EXTREMITYFIST ||
 	             skillnum == MO_CHAINCOMBO ||
@@ -10347,7 +10346,7 @@ void clif_parse_UseSkillToPos(int fd, struct map_session_data *sd) { // S 0x0116
 		return; // to avoid: have regeneration of a sitting man, but not be sit down.
 
 	skillmoreinfo = -1;
-	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06 (by [Yor])
+	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06
 	case 13:
 		skilllv = RFIFOW(fd,5);
 		skillnum = RFIFOW(fd,15);
@@ -10477,7 +10476,7 @@ void clif_parse_UseSkillToPos(int fd, struct map_session_data *sd) { // S 0x0116
 	if (sd->skilltimer != -1)
 		return;
 	else if (DIFF_TICK(gettick_cache, sd->canact_tick) < 0 &&
-	         // allow monk combos to ignore this delay [celest]
+	         // Allow monk combos to ignore this delay
 	         !(sd->sc_count && sd->sc_data[SC_COMBO].timer!=-1 &&
 	          (skillnum == MO_EXTREMITYFIST ||
 	           skillnum == MO_CHAINCOMBO ||
@@ -10722,7 +10721,7 @@ void clif_parse_InsertCard(int fd, struct map_session_data *sd) { // S 0x017C <S
 void clif_parse_SolveCharName(int fd, struct map_session_data *sd) { // S 0x0193 <ID>.l
 //	nullpo_retv(sd); // checked before to call function
 
-	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06 (by [Yor])
+	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06
 	case 13:
 		clif_solved_charname(sd, RFIFOL(fd,7));
 		break;
@@ -10885,7 +10884,7 @@ void clif_parse_MoveToKafra(int fd, struct map_session_data *sd) { // S 0x00f3 <
 	if (sd->npc_id != 0 || sd->vender_id != 0)
 		return;
 
-	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06 (by [Yor])
+	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06
 	case 13:
 		item_index = RFIFOW(fd,5) - 2;
 		item_amount = RFIFOL(fd,19);
@@ -10962,7 +10961,7 @@ void clif_parse_MoveFromKafra(int fd, struct map_session_data *sd) { // S 0x00f5
 	if (sd->npc_id != 0 || sd->vender_id != 0)
 		return;
 
-	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06 (by [Yor])
+	switch (sd->packet_ver) { // 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06
 	case 13:
 		item_index = RFIFOW(fd,11) - 1;
 		item_amount = RFIFOL(fd,22);
@@ -12727,7 +12726,7 @@ static int clif_parse(int fd) {
 						else
 							printf("Char-server disconnected: Player [" CL_WHITE "%s" CL_RESET "] has been disconnected.\n", sd->status.name); // Player logout display [Valaris]
 //					} else
-//						printf("Char-server disconnected: Player with account [" CL_WHITE "%d" CL_RESET "] has been disconnected.\n", sd->bl.id); // Player logout display [Yor]
+//						printf("Char-server disconnected: Player with account [" CL_WHITE "%d" CL_RESET "] has been disconnected.\n", sd->bl.id); // Player logout display
 				} else {
 //					if (sd->status.name != NULL) {
 						if (sd->GM_level)
@@ -12735,13 +12734,13 @@ static int clif_parse(int fd) {
 						else
 							printf("Player [" CL_WHITE "%s" CL_RESET "] has logged off your server.\n", sd->status.name); // Player logout display [Valaris]
 //					} else
-//						printf("Player with account [" CL_WHITE "%d" CL_RESET "] has logged off your server.\n", sd->bl.id); // Player logout display [Yor]
+//						printf("Player with account [" CL_WHITE "%d" CL_RESET "] has logged off your server.\n", sd->bl.id); // Player logout display
 				}
 			} else { // not authentified! (refused by char-server or disconnect before to be authentified)
 				if (!chrif_isconnect())
-					printf("Char-server disconnected: Player with account [" CL_WHITE "%d" CL_RESET "] has been disconnected (before to be authentified by char-server).\n", sd->bl.id); // Player logout display [Yor]
+					printf("Char-server disconnected: Player with account [" CL_WHITE "%d" CL_RESET "] has been disconnected (before to be authentified by char-server).\n", sd->bl.id); // Player logout display
 				else
-					printf("Player with account [" CL_WHITE "%d" CL_RESET "] has logged off your server (before to be authentified by char-server).\n", sd->bl.id); // Player logout display [Yor]
+					printf("Player with account [" CL_WHITE "%d" CL_RESET "] has logged off your server (before to be authentified by char-server).\n", sd->bl.id); // Player logout display
 				map_deliddb(&sd->bl); // account_id has been included in the DB before auth answer
 			}
 			map_quit2(sd); // to free memory of dynamic allocation in session (even if player is auth or not)
@@ -12830,7 +12829,7 @@ static int clif_parse(int fd) {
 			return 0;
 
 		// Authentification packets
-		// 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06 (by [Yor])
+		// 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06
 		case 0x72:
 			// packet_ver = 2
 			if (RFIFOREST(fd) >= 39 && (RFIFOB(fd,38) == 0 || RFIFOB(fd,38) == 1)) { // 00 = Female, 01 = Male
@@ -13265,12 +13264,12 @@ int do_init_clif(void) {
 	clif_parse_func_table[12][0x237] = clif_parse_Ranking;
 
 	// init packet function calls for packet ver 13 (same function of packet version 12, but size are different)
-	memcpy(&clif_parse_func_table[13], &clif_parse_func_table[12], sizeof(clif_parse_func_table[0]));	// 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06 (by [Yor])
+	memcpy(&clif_parse_func_table[13], &clif_parse_func_table[12], sizeof(clif_parse_func_table[0]));	// 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06
 
 	// size of packet version 0
 	memcpy(&packet_size_table[0], &packet_len_table, sizeof(packet_len_table));
 
-	// 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06 (by [Yor])
+	// 0: old, 1: 7july04, 2: 13july04, 3: 26july04, 4: 9aug04/16aug04/17aug04, 5: 6sept04, 6: 21sept04, 7: 18oct04, 8: 25oct04/08nov04, 9: 6dec04, 10: 10jan05, 11: 9may05, 12: 28jun05, 13: 4april06
 	// size of packet version 1
 	memcpy(&packet_size_table[1], &packet_size_table[0], sizeof(packet_len_table));
 	packet_size_table[1][0x072] = 22;

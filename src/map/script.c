@@ -171,12 +171,12 @@ int buildin_end(struct script_state *st);
 int buildin_checkoption(struct script_state *st);
 int buildin_setoption(struct script_state *st);
 int buildin_setcart(struct script_state *st);
-int buildin_checkcart(struct script_state *st); // check cart [Valaris]
+int buildin_checkcart(struct script_state *st); // Check cart
 int buildin_setfalcon(struct script_state *st);
-int buildin_checkfalcon(struct script_state *st); // check falcon [Valaris]
+int buildin_checkfalcon(struct script_state *st); // Check falcon
 int buildin_setriding(struct script_state *st);
-int buildin_checkriding(struct script_state *st); // check for pecopeco [Valaris]
-int buildin_isdead(struct script_state *st); // to know if a player is dead. For script NPC [Yor]
+int buildin_checkriding(struct script_state *st); // Check for Peco
+int buildin_isdead(struct script_state *st); // To know if a player is dead. For script NPC
 int buildin_savepoint(struct script_state *st);
 int buildin_gettimetick(struct script_state *st);
 int buildin_gettime(struct script_state *st);
@@ -186,7 +186,7 @@ int buildin_guildopenstorage(struct script_state *st);
 int buildin_itemskill(struct script_state *st);
 int buildin_produce(struct script_state *st);
 int buildin_monster(struct script_state *st);
-int buildin_monsteragro(struct script_state *st); // as monster, but all monster are agressiv
+int buildin_monsteragro(struct script_state *st); // As monster, but all monster are agressive
 int buildin_areamonster(struct script_state *st);
 int buildin_areamonsteragro(struct script_state *st); // as areamonster, but all monster are agressiv
 int buildin_killmonster(struct script_state *st);
@@ -431,7 +431,7 @@ struct {
 	{buildin_checkfalcon,"checkfalcon","*"},	// Fixed by Lupus (fixed wrong pointer, added '*')
 	{buildin_setriding,"setriding",""},
 	{buildin_checkriding,"checkriding","*"},	// Fixed by Lupus (fixed wrong pointer, added '*')
-	{buildin_isdead,"isdead","*"},	// Checks if the player is dead [Yor]
+	{buildin_isdead,"isdead","*"},	// Checks if the player is dead
 	{buildin_savepoint,"save","sii"},
 	{buildin_savepoint,"savepoint","sii"},
 	{buildin_gettimetick,"gettimetick","i"},
@@ -2019,14 +2019,14 @@ int buildin_input(struct script_state *st)
 			}
 		}else{
 
-			// Commented by Lupus (check Value Number Input fix in clif.c)
-			// Readded by Yor: Set ammount to 0 instead of cancel trade
+			// Commented (Check Value Number Input fix in clif.c)
+			// Set ammount to 0 instead of cancel trade
 			// ** Fix by fritz :X keeps people from abusing old input bugs
 			if (sd->npc_amount < 0) { //** If input amount is less then 0
 //				clif_tradecancelled(sd); // Added "Deal has been cancelled" message by Valaris
 //				buildin_close(st); // ** Close
 				sd->npc_amount = 0;
-			} else if (sd->npc_amount > battle_config.vending_max_value) // New fix by Yor
+			} else if (sd->npc_amount > battle_config.vending_max_value)
 				sd->npc_amount = battle_config.vending_max_value;
 
 			// ”’l
@@ -3699,7 +3699,7 @@ int buildin_checkriding(struct script_state *st)
 }
 
 /*==========================================
- * isdead [Yor]
+ * isdead
  *------------------------------------------
  */
 int buildin_isdead(struct script_state *st)
@@ -4474,7 +4474,7 @@ int buildin_getusersname(struct script_state *st)
 		disp_num = 1;
 		for (i = 0; i < fd_max; i++)
 			if (session[i] && (pl_sd = session[i]->session_data) && pl_sd->state.auth) {
-				if (!((pl_sd->GM_level >= battle_config.hide_GM_session || (pl_sd->status.option & OPTION_HIDE)) && (pl_sd->GM_level > sd->GM_level))) { // only lower or same level
+				if (!((pl_sd->GM_level >= battle_config.hide_GM_session || (pl_sd->status.option & OPTION_HIDE)) && (pl_sd->GM_level > sd->GM_level))) { // Only lower or same level
 					if ((disp_num++) % 10 == 0)
 						clif_scriptnext(script_rid2sd(st), st->oid);
 					clif_scriptmes(script_rid2sd(st), st->oid, pl_sd->status.name);
@@ -6824,7 +6824,7 @@ int buildin_nude(struct script_state *st)
 }
 
 /*==========================================
- * GM command [Yor]
+ * GM command
  *------------------------------------------
  */
 int buildin_gmcommand(struct script_state *st)

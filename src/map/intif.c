@@ -779,7 +779,7 @@ int intif_displaymessage(int account_id, char* mes)
 // Packets receive from inter server
 
 // Wisp/Page reception
-int intif_parse_WisMessage(int fd) { // rewritten by [Yor] // 0x3001/0x3801 <packet_len>.w (<w_id_0x3801>.L) <sender_GM_level>.B <sender_name>.24B <nick_name>.24B <message>.?B
+int intif_parse_WisMessage(int fd) { // 0x3001/0x3801 <packet_len>.w (<w_id_0x3801>.L) <sender_GM_level>.B <sender_name>.24B <nick_name>.24B <message>.?B
 	struct map_session_data* sd;
 	char wisp_source[25];
 	char nick_name[25];

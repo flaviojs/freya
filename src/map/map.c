@@ -94,17 +94,15 @@ int map_port;
 
 int autosave_interval = DEFAULT_AUTOSAVE_INTERVAL;
 unsigned char agit_flag = 0; // 0: WoE not starting, Woe is running
-unsigned char night_flag = 0; // 0=day, 1=night [Yor]
+unsigned char night_flag = 0; // 0=day, 1=night
 
 struct charid2nick {
 	char nick[25]; // 24 + NULL
 	int req_id;
 };
 
-// マップキャッシュ利用フラグ,どっちを使うかはmap_athana.conf内のread_map_from_bitmapで指定
-// 0ならば利用しない、1だと非圧縮保存、2だと圧縮して保存
 int map_read_flag = READ_FROM_BITMAP_COMPRESSED;
-char map_cache_file[1024] = "db/mapinfo.txt"; //ビットマップファイルのデフォルトパス
+char map_cache_file[1024] = "db/mapinfo.txt";
 
 char motd_txt[1024] = "conf/motd.txt";
 char help_txt[1024] = "conf/help.txt";
@@ -2200,7 +2198,7 @@ void map_delmap(char *mapname) {
 	for(i = 0; i < map_num; i++) {
 		if (strcmp(map[i].name, mapname) == 0) {
 			//printf("Removing map#%d/%d [ %s ] from maplist.\n", i, map_num, map[i].name);
-			FREE(map[i].alias); // [Yor]
+			FREE(map[i].alias);
 			if (i < map_num - 1)
 				memmove(map + i, map + (i + 1), sizeof(struct map_data) * (map_num - i - 1));
 			map_num--;
@@ -2318,7 +2316,7 @@ void map_addmap(char *mapname) {
 }
 
 /*================================
- * Console Command Parser by [Yor]
+ * Console Command Parser
  *--------------------------------
  */
 int parse_console(char *buf) {
@@ -2995,7 +2993,7 @@ void do_init(const int argc, char *argv[])
 		else if (strcmp(argv[i], "--sql_config") == 0 || strcmp(argv[i],"--sql-config") == 0)
 			SQL_CONF_NAME = argv[i + 1];
 #endif /* not TXT_ONLY */
-		else if (strcmp(argv[i], "--run_once") == 0) // close the map-server as soon as its done.. for testing [Celest]
+		else if (strcmp(argv[i], "--run_once") == 0) // close the map-server as soon as its done.. for testing
 			runflag = 0;
 	}
 

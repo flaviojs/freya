@@ -3624,7 +3624,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 			heal = 0;
 		if(sd){
 			if((skill = pc_checkskill(sd, HP_MEDITATIO)) > 0)
-				heal += heal * skill * 2/100; // Calculation fixed by Yor
+				heal += heal * skill * 2/100;
 			if(dstsd && sd->status.partner_id == dstsd->status.char_id && pc_calc_base_job2(sd->status.class) == JOB_SUPER_NOVICE && sd->status.sex == 0)
 				heal = heal * 2;
 		}
@@ -9790,7 +9790,7 @@ void skill_autospell(struct map_session_data *sd, int skillid) {
 
 	lv = pc_checkskill(sd, skillid);
 	if(lv <= 0)
-		return; // Player that doesn't have the skill. Hacker? [Yor]
+		return; // Player that doesn't have the skill. Hacker?
 
 	if (maxlv > lv)
 		maxlv = lv;

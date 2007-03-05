@@ -1,4 +1,3 @@
-// $Id: party.c 498 2005-11-09 11:28:13Z Yor $
 #include <config.h>
 
 #include <stdio.h>
@@ -105,7 +104,7 @@ void party_create(struct map_session_data *sd, char *name, short item, short ite
 		}
 		// check bad word
 		if (check_bad_word(party_name, strlen(party_name), sd))
-			return; // check_bad_word function display message if necessary
+			return; // Check_bad_word function display message if necessary
 		intif_create_party(sd, party_name, item, item2);
 	} else
 		clif_party_created(sd, 2); // 0xfa <flag>.B: 0: Party has successfully been organized, 1: That Party Name already exists., 2: The Character is already in a party.
