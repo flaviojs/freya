@@ -25,22 +25,12 @@
 //==============================================================================
 //Novice
 //==============================================================================
-new_1-1.gat,148,112,0	warp	new11	2,3,new_1-2.gat,100,9
-// with new 'new_1-2.gat', this warp not more exist
-//new_1-1.gat,166,112,0	warp	new12	2,2,new_1-2.gat,100,153
-//new_1-2.gat,100,150,0	warp	new12-1	2,1,new_1-1.gat,162,112
-// with new 'new_1-2.gat', this warp not more exist
-//new_1-1.gat,169,75,0	warp	new13	2,2,new_1-2.gat,182,163
-//new_1-2.gat,182,159,0	warp	new13-1	2,2,new_1-1.gat,166,75
-// with new 'new_1-2.gat', this warp not more exist
-//new_1-1.gat,169,147,0	warp	new14	2,2,new_1-2.gat,18,163
-//new_1-2.gat,18,159,0	warp	new14-1	2,2,new_1-1.gat,165,147
-// with new 'new_1-2.gat', this warp not more exist
-//new_1-2.gat,100,122,0	warp	new15	2,1,new_1-2.gat,100,162
-//new_1-2.gat,100,165,0	warp	new15-1	2,1,new_1-2.gat,100,119
-new_1-2.gat,126,106,0	warp	new16	2,2,new_1-2.gat,158,171
-new_1-2.gat,155,171,0	warp	new16-1	2,2,new_1-2.gat,123,106
-new_1-3.gat,96,175,0	warp	new17	3,2,new_1-4.gat,100,14
+new_zone01.gat,148,112,0	warp	newwarp6001	2,2,new_zone02.gat,100,9
+new_zone02.gat,100,6,0	warp	newwarp6002	2,2,new_zone01.gat,144,112
+new_zone02.gat,126,106,0	warp	newwarp6003	2,2,new_zone02.gat,160,171
+new_zone02.gat,156,171,0	warp	newwarp6004	2,2,new_zone02.gat,123,106
+new_zone02.gat,73,106,0	warp	newwarp6005	2,2,new_zone02.gat,41,172
+new_zone02.gat,46,172,0	warp	newwarp6006	2,2,new_zone02.gat,78,106
 
 //==============================================================================
 //Swordman
