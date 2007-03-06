@@ -69,3 +69,9 @@ npc/jobs/jobs_novice.txt
 -> 'enable_items' command is commented [Tsuyuki]
 
 -------------------------------------------
+
+All of the following command occurences are commented: [Tsuyuki]
+unitskilluseid
+soundeffectall
+
+-------------------------------------------
