@@ -11,6 +11,7 @@
 Date	Added
 
 03/04/2007
+	* Imported: Cool Event Corp vs Kafra Corp DTS Warper from eAthena [Tsuyuki]
 	* Imported: Aegis Valentine's Day script from Freya [Tsuyuki]
 	* Imported: Quiz Revolution quest script from eAthena [Tsuyuki]
 	* Added: Enum entries for script emoticons [Tsuyuki]
