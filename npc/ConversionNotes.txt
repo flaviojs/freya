@@ -6,33 +6,6 @@ This file will be used to take notes on things that are not converted yet, and a
 
 ===========================================
 
-Completely Converted Folders:
-
-npc/airports/
-npc/cities/
-npc/custom/
-npc/events/
-npc/guides/
-npc/gvg/
-npc/jobs/
-npc/kafras/
-npc/merchants/
-npc/mobs/
-npc/other/
-npc/quests/
-npc/sample/
-npc/warps/
-
-===========================================
-
-Format:
-
-npc/folder/filename.txt Line: xxx
-
--> Details
-
-===========================================
-
 // Begin Notes Here
 
 -------------------------------------------
@@ -70,7 +43,7 @@ npc/jobs/jobs_novice.txt
 
 -------------------------------------------
 
-All of the following command occurences are commented: [Tsuyuki]
+All of the following command occurences are commented (In God Seals quests): [Tsuyuki]
 
 - unitskilluseid
 - soundeffectall
@@ -79,5 +52,12 @@ All of the following command occurences are commented: [Tsuyuki]
 - enable_items
 - disable_items
 - skilleffect
+
+-------------------------------------------
+
+To-Do Mini List:
+- Import + convert Kunlun Power NPC from either Aegis or eAthena (an Aegis-convert)
+- Import + convert Marriage script from either Aegis or eAthena
+- Import custom scripts from Freya
 
 -------------------------------------------
