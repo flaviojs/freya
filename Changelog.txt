@@ -11,6 +11,7 @@
 Date	Added
 
 03/05/2007
+	* Imported: Airship monster spawns from eAthena [Tsuyuki]
 	* Fixed: Bug in the Taekwon job change quest [Tsuyuki]
 
 03/04/2007
