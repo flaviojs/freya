@@ -216,6 +216,8 @@ ATCOMMAND_FUNC(autoloot);
 static AtCommandInfo atcommand_info[] = {
 	{ AtCommand_RuraP,              "@rura+",            0, atcommand_rurap },
 	{ AtCommand_Rura,               "@rura",             0, atcommand_rura },
+	// Added @warp because I can't stand accidentily typing it instead of @rura constantly [Tsuyuki]
+	{ AtCommand_Rura,               "@warp",             0, atcommand_rura },
 	{ AtCommand_Where,              "@where",            0, atcommand_where },
 	{ AtCommand_JumpTo,             "@jumpto",           0, atcommand_jumpto },
 	{ AtCommand_Jump,               "@jump",             0, atcommand_jump },
@@ -907,8 +909,12 @@ atcommand_jump(
 
 	nullpo_retr(-1, sd);
 
+	// Simplified @jump [Tsuyuki]
 	if (sscanf(message, "%d %d", &x, &y) < 2)
-		return -1;
+	{
+		x = 0;
+		y = 0;
+	}
 
 	if (x >= 0 && x < map[sd->bl.m].xs && y >= 0 && y < map[sd->bl.m].ys) {
 		char output[200];

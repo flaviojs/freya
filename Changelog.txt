@@ -11,6 +11,8 @@
 Date	Added
 
 03/05/2007
+	* Improved: Simplified @jump 0 0 to just @jump for random teleporting [Tsuyuki]
+	* Added: @warp duplicate of @rura [Tsuyuki]
 	* Added: Missing Thor/Veins maps [Tsuyuki]
 	* Imported: Seal god quests from eAthena [Tsuyuki]
 	* Imported: First class tutorial quests from eAthena, originally from Aegis [Tsuyuki]
