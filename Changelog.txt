@@ -10,6 +10,9 @@
 
 Date	Added
 
+03/05/2007
+	* Fixed: Bug in the Taekwon job change quest [Tsuyuki]
+
 03/04/2007
 	* Updated: Packetry once again [Tsuyuki]
 	* Updated: Item type default classifier in itemdb.c [Tsuyuki]

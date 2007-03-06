@@ -1,16 +1,17 @@
-//===== Freya Script ======================================= 
-//= Taekwon Job Quest
-//===== By: ================================================== 
+//===== Freya Script =========================================
+//= Taekwon Job Change Quest
+//===== By: ==================================================
 //= Tsuyuki
-//===== Current Version: ===================================== 
-//= 1.0
-//===== Compatible With: ===================================== 
+//===== Current Version: =====================================
+//= 1.1
+//===== Compatible With: =====================================
 //= Freya
-//===== Description: ========================================= 
+//===== Description: =========================================
 //= Official iRO Taekwon Job Change Quest
-//===== Additional Comments: ================================= 
+//===== Additional Comments: =================================
 //= 1.0 Replaced previous TK Job Quest with this one [Tsuyuki]
-//============================================================ 
+//= 1.1 Fixed quest for level 99 and above Novices [Tsuyuki]
+//============================================================
 
 
 payon.gat,157,141,5	script	Phoenix#TKjobchange	753,{
@@ -120,7 +121,7 @@ L_Failed2: // CUSTOM MESSAGE
 	close;
 
 L_Activated1:
-	if (TAEK_Q < BaseLevel) goto L_Finish;
+	if (TAEK_Q < BaseLevel || TAEK_Q >= 99) goto L_Finish;
 	mes "[Phoenix]";
 	mes "You must gain ^ff00001 more";
 	mes "Base Level^000000 to prove that";
