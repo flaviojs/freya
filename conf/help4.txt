@@ -1,3 +1,16 @@
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//
+// help4.txt
+// @command Help File #4
+// (c) Freya Project. 2007
+//
+
 To use one command, type it inside the message window where you usually type to chat. Then press Enter.
 
 @night            ---- Creates the night (Uses @option +0 +16 +0 on all characters. All characters are in darkness.).

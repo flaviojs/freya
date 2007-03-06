@@ -11,6 +11,7 @@
 Date	Added
 
 03/04/2007
+	* Updated: Configuration files [Tsuyuki/Harp]
 	* Fixed: Bug in the Taekwon job change quest [Tsuyuki]
 	* Fixed: Swordsman quest problems, and added missing warps [Tsuyuki]
 	* Added: Missing Novice Grounds warps [Tsuyuki]

@@ -1,3 +1,16 @@
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//
+// help.txt
+// Main @command Help File
+// (c) Freya Project. 2007
+//
+
 To use one command, type it inside the message window where you usually type to chat. Then press Enter.
 @help  ---- Display the list of @ commands.
 @h     ---- Ditto.
@@ -240,16 +253,17 @@ resetstate
 @mailbox --- Opens your mailbox.
 
 @readvars <variable_name> <name> ---- Displays specified variable.
-                              あらかじめスクリプトに記載された変数に対してのみ読み取り可能
-                              キャラ一時/永続およびアカウント変数の場合、名前を省略時は自分、入力時はそのキャラクターが対象
-                              マップ一時/永続変数の場合、名前は不要
-                              スクリプト依存変数の場合、名前にはNPC名を入力する（必須）
-                              関数依存変数は指定不可。配列を指定することもできます
+                              Can only read variable previously displayed in a script.
+                              If a character / if the variable is an account or continual variable, if you do not use a name, your character name will be used. Otherwise, the inputted name will be used.
+                              If a map / if it is a continual variable｡｢name is unneccesary
+                              If it is a script dependant variable, enter the NPC's name in the name (required)
+                              It is impossible to designate a variable reliant on a function.
+
 @writevars <variable_name> <Value> <name> --- Set specified variable with the value.
                               以下同上
                               また、値を"で囲むと"で囲まれた部分を文字列として認識します
                               これにより半角スペースを含む文字列も書き込むことが可能です
-                              ただしこの場合 "記号は \"、\記号は \\として表記します（doc/script_ref.txt参照）
+                              ただしこの場合 "記号は \"、\記号は \\として表記します (refer to doc/script_ref.txt)
 
 	Example: @readvars @val -> 自分の持つキャラ一時変数@valの値を表示する
 	         @readvars 'count$[3] Test -> TestというNPCが持つスクリプト依存変数'count$の要素番号3の文字列を表示する

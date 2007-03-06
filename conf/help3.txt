@@ -1,3 +1,16 @@
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//
+// help3.txt
+// @command Help File #3
+// (c) Freya Project. 2007
+//
+
 To use one command, type it inside the message window where you usually type to chat. Then press Enter.
 
 @jobchange <id_of_the_job> [transmigration=-1] ---- Changes your job to 0-29.
