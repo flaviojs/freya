@@ -1,5 +1,17 @@
-//v 1.1
-//Temporary spawns until Airship quest is finished
+//===== Freya Script =========================================
+//= Airship Spawns
+//===== By: ==================================================
+//= eAthena
+//===== Current Version: =====================================
+//= 1.1
+//===== Compatible With: =====================================
+//= Freya
+//===== Additional Comments: =================================
+//= Temporary spawns until Airship quest is finished
+//= 1.0 Added first version [eAthena]
+//= 1.1 Unknown changes [eAthena]
+//============================================================
+
 
 airplane_01.gat,225,52,25,10	monster	Gremlin	1632,9,7200000,3600000,1
 airplane_01.gat,225,52,25,10	monster	Beholder	1633,6,7200000,3600000,1
