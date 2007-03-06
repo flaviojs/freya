@@ -11,6 +11,8 @@
 Date	Added
 
 03/04/2007
+	* Imported: Aegis Valentine's Day script from Freya [Tsuyuki]
+	* Imported: Quiz Revolution quest script from eAthena [Tsuyuki]
 	* Added: Enum entries for script emoticons [Tsuyuki]
 	* Imported: Several Aegis event scripts from eAthena [Tsuyuki]
 	* Updated: Configuration files [Tsuyuki/Harp]

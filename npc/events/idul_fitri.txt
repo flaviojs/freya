@@ -1,11 +1,11 @@
-//===== eAthena Script ======================================= 
+//===== Freya Script =========================================
 //= Feast Day Of Ramadan Idul Fitri Event
 //===== By: ================================================== 
 //= $ephiroth
 //===== Current Version: ===================================== 
 //= 1.0a
 //===== Compatible With: ===================================== 
-//= eAthena Version
+//= Freya
 //===== Description: ========================================= 
 //= Info : Official idRO
 //= 2006/10/16: 1.0 Release and fully working. [$ephiroth]
