@@ -11,6 +11,7 @@
 Date	Added
 
 03/04/2007
+	* Imported: Seal god quests from eAthena [Tsuyuki]
 	* Imported: First class tutorial quests from eAthena, originally from Aegis [Tsuyuki]
 	* Imported: Cool Event Corp vs Kafra Corp DTS Warper from eAthena [Tsuyuki]
 	* Imported: Aegis Valentine's Day script from Freya [Tsuyuki]

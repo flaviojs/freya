@@ -71,7 +71,13 @@ npc/jobs/jobs_novice.txt
 -------------------------------------------
 
 All of the following command occurences are commented: [Tsuyuki]
-unitskilluseid
-soundeffectall
+
+- unitskilluseid
+- soundeffectall
+- specialeffect
+- specialeffect2
+- enable_items
+- disable_items
+- skilleffect
 
 -------------------------------------------
