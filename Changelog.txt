@@ -11,7 +11,8 @@
 Date	Added
 
 03/04/2007
-	* Added: New Novice Grounds warps [Tsuyuki]
+	* Fixed: Swordsman quest problems, and added missing warps [Tsuyuki]
+	* Added: Missing Novice Grounds warps [Tsuyuki]
 	* Updated: Packet database (Will now work with the 02-20-2007 client and above) [Tsuyuki]
 	* Updated: Databases a little bit [Tsuyuki]
 
