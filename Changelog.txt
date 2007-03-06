@@ -10,7 +10,8 @@
 
 Date	Added
 
-03/04/2007
+03/05/2007
+	* Added: Missing Thor/Veins maps [Tsuyuki]
 	* Imported: Seal god quests from eAthena [Tsuyuki]
 	* Imported: First class tutorial quests from eAthena, originally from Aegis [Tsuyuki]
 	* Imported: Cool Event Corp vs Kafra Corp DTS Warper from eAthena [Tsuyuki]
@@ -22,6 +23,8 @@ Date	Added
 	* Fixed: Bug in the Taekwon job change quest [Tsuyuki]
 	* Fixed: Swordsman quest problems, and added missing warps [Tsuyuki]
 	* Added: Missing Novice Grounds warps [Tsuyuki]
+
+03/04/2007
 	* Updated: Packet database (Will now work with the 02-20-2007 client and above) [Tsuyuki]
 	* Updated: Databases a little bit [Tsuyuki]
 
