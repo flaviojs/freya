@@ -10,6 +10,9 @@
 
 Date	Added
 
+03/07/2007
+	* Fixed: Several CriticalAddRace values in the item database (Including Sabbath) [Tsuyuki]
+
 03/05/2007
 	* Imported: Airship monster spawns from eAthena [Tsuyuki]
 	* Fixed: Bug in the Taekwon job change quest [Tsuyuki]

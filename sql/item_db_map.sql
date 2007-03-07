@@ -673,7 +673,7 @@ INSERT INTO `item_db` VALUES (1361, 'Two_handed_Axe_', 'Two-handed Axe', 4, 5500
 INSERT INTO `item_db` VALUES (1362, 'Two_handed_Axe__', 'Two-handed Axe', 4, 55000, 0, 2500, 185, 0, 1, 0, 279714, 2, 34, 3, 30, 7, NULL, NULL);
 INSERT INTO `item_db` VALUES (1363, 'Bloody_Axe', 'Bloody Axe', 4, 20, 0, 4000, 170, 0, 1, 0, 279714, 2, 34, 4, 44, 7, NULL, 'bonus bStr,10; bonus bSpeedRate,25;');
 INSERT INTO `item_db` VALUES (1364, 'Great_Axe', 'Great Axe', 4, 20, 0, 1800, 187, 0, 1, 0, 279714, 2, 34, 4, 44, 7, NULL, 'bonus2 bAddEff,EFF_STUN,1500;');
-INSERT INTO `item_db` VALUES (1365, 'Sabbath', 'Sabbath', 4, 20, 0, 2300, 120, 0, 1, 0, 279714, 2, 34, 4, 44, 7, NULL, 'bonus2 bWeaponComaRace,6,50; bonus bAtkEle,7; bonus2 bCriticalAddRace,1,50;');
+INSERT INTO `item_db` VALUES (1365, 'Sabbath', 'Sabbath', 4, 20, 0, 2300, 120, 0, 1, 0, 279714, 2, 34, 4, 44, 7, NULL, 'bonus2 bWeaponComaRace,6,50; bonus bAtkEle,7; bonus2 bCriticalAddRace,1,500;');
 INSERT INTO `item_db` VALUES (1366, 'Light_Epsilon', 'Light Epsilon', 4, 20, 0, 2300, 180, 0, 1, 0, 279714, 2, 34, 4, 44, 7, NULL, 'bonus bAtkEle,6; skill 28,3; bonus2 bAddRace,6,3;');
 INSERT INTO `item_db` VALUES (1367, 'Slaughter', 'Slaughter', 4, 20, 0, 2500, 120, 0, 1, 0, 279714, 2, 34, 4, 44, 7, NULL, 'bonus bIgnoreDefRace,2; bonus2 bWeaponComaRace,2,50;');
 INSERT INTO `item_db` VALUES (1368, 'Tomahawk', 'Tomahawk', 4, 20, 0, 2500, 165, 0, 1, 0, 279714, 2, 34, 4, 44, 7, NULL, 'bonus bAtkEle,4; skill 337,1;');
@@ -1649,7 +1649,7 @@ INSERT INTO `item_db` VALUES (4356, 'Beholder_Card', 'Beholder Card', 6, 0, 10, 
 INSERT INTO `item_db` VALUES (4357, 'Lord_Knight_Seyren_Card', 'Lord Knight Seyren Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 769, 0, 0, 0, NULL, 'skill 359,1; bonus bMaxHPrate,-50;');
 INSERT INTO `item_db` VALUES (4358, 'Seyren_Windsor_Card', 'Seyren Windsor Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 4, 0, 0, 0, NULL, 'bonus bStr,getequiprefinerycnt(5)-6;');
 INSERT INTO `item_db` VALUES (4359, 'Assassin_Cross_Eremes_Ca', 'Assassin Cross Eremes Ca', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 4, 0, 0, 0, NULL, 'skill 135,3;');
-INSERT INTO `item_db` VALUES (4360, 'Eremes_Guile_Card', 'Eremes Guile Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus2 bCriticalAddRace,10,6;');
+INSERT INTO `item_db` VALUES (4360, 'Eremes_Guile_Card', 'Eremes Guile Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus2 bCriticalAddRace,6,10;');
 INSERT INTO `item_db` VALUES (4361, 'Mastersmith_Howard_Card', 'Mastersmith Howard Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus bBreakWeaponRate,1000; bonus bBreakArmorRate,700;');
 INSERT INTO `item_db` VALUES (4362, 'Howard_Alt-Eisen_Card', 'Howard Alt-Eisen Card', 6, 0, 10, 10, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, NULL, 'bonus bAspdRate,-5; bonus bHit,30;');
 # 4363: Effect Undecided/Missing
@@ -3185,8 +3185,8 @@ INSERT INTO `item_db` VALUES (13154, 'Rolling_Stone', 'Rolling Stone', 4, 12000,
 INSERT INTO `item_db` VALUES (13155, 'Black_Rose', 'Black Rose', 4, 32000, 0, 900, 180, 0, 9, 1, 536870912, 2, 34, 2, 35, 19, NULL, 'bonus bSplashRange,1;');
 INSERT INTO `item_db` VALUES (13156, 'Gate_Keeper', 'Gate Keeper', 4, 56000, 0, 1000, 210, 0, 9, 0, 536870912, 2, 34, 2, 55, 19, NULL, 'bonus bSplashRange,1;');
 INSERT INTO `item_db` VALUES (13157, 'Drifter', 'Drifter', 4, 80000, 0, 2300, 50, 0, 7, 1, 536870912, 2, 34, 2, 55, 20, NULL, NULL);
-INSERT INTO `item_db` VALUES (13158, 'Butcher', 'Butcher', 4, 130000, 0, 2500, 75, 0, 7, 0, 536870912, 2, 34, 3, 68, 20, NULL, 'bonus2 bCriticalAddRace,2,5;');
-INSERT INTO `item_db` VALUES (13159, 'Butcher_', 'Butcher', 4, 130000, 0, 2500, 75, 0, 7, 1, 536870912, 2, 34, 3, 68, 20, NULL, 'bonus2 bCriticalAddRace,2,5;');
+INSERT INTO `item_db` VALUES (13158, 'Butcher', 'Butcher', 4, 130000, 0, 2500, 75, 0, 7, 0, 536870912, 2, 34, 3, 68, 20, NULL, 'bonus2 bCriticalAddRace,2,10;');
+INSERT INTO `item_db` VALUES (13159, 'Butcher_', 'Butcher', 4, 130000, 0, 2500, 75, 0, 7, 1, 536870912, 2, 34, 3, 68, 20, NULL, 'bonus2 bCriticalAddRace,2,10;');
 INSERT INTO `item_db` VALUES (13160, 'Destroyer', 'Destroyer', 4, 110000, 0, 1200, 220, 0, 7, 0, 536870912, 2, 34, 2, 52, 21, NULL, 'bonus bBreakArmorRate,100;');
 INSERT INTO `item_db` VALUES (13161, 'Destroyer_', 'Destroyer', 4, 110000, 0, 1200, 220, 0, 7, 1, 536870912, 2, 34, 2, 52, 21, NULL, 'bonus bBreakArmorRate,100;');
 INSERT INTO `item_db` VALUES (13162, 'Inferno', 'Inferno', 4, 230000, 0, 1250, 280, 0, 7, 1, 536870912, 2, 34, 2, 65, 21, NULL, NULL);

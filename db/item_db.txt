@@ -648,7 +648,7 @@
 1362,Two_handed_Axe__,Two-handed Axe,4,55000,0,2500,185,,1,0,279714,2,34,3,30,7,{},{}
 1363,Bloody_Axe,Bloody Axe,4,20,0,4000,170,,1,0,279714,2,34,4,44,7,{},{ bonus bStr,10; bonus bSpeedRate,25; }
 1364,Great_Axe,Great Axe,4,20,0,1800,187,,1,0,279714,2,34,4,44,7,{},{ bonus2 bAddEff,EFF_STUN,1500; }
-1365,Sabbath,Sabbath,4,20,0,2300,120,,1,0,279714,2,34,4,44,7,{},{ bonus2 bWeaponComaRace,6,50; bonus bAtkEle,7; bonus2 bCriticalAddRace,1,50; }
+1365,Sabbath,Sabbath,4,20,0,2300,120,,1,0,279714,2,34,4,44,7,{},{ bonus2 bWeaponComaRace,6,50; bonus bAtkEle,7; bonus2 bCriticalAddRace,1,500; }
 1366,Light_Epsilon,Light Epsilon,4,20,0,2300,180,,1,0,279714,2,34,4,44,7,{},{ bonus bAtkEle,6; skill 28,3; bonus2 bAddRace,6,3; }
 1367,Slaughter,Slaughter,4,20,0,2500,120,,1,0,279714,2,34,4,44,7,{},{ bonus bIgnoreDefRace,2; bonus2 bWeaponComaRace,2,50; }
 1368,Tomahawk,Tomahawk,4,20,0,2500,165,,1,0,279714,2,34,4,44,7,{},{ bonus bAtkEle,4; skill 337,1; }
@@ -1624,7 +1624,7 @@
 4357,Lord_Knight_Seyren_Card,Lord Knight Seyren Card,6,,10,10,,,,,,,769,,,,{},{ skill 359,1; bonus bMaxHPrate,-50; }
 4358,Seyren_Windsor_Card,Seyren Windsor Card,6,,10,10,,,,,,,4,,,,{},{ bonus bStr,getequiprefinerycnt(5)-6; }
 4359,Assassin_Cross_Eremes_Card,Assassin Cross Eremes Card,6,,10,10,,,,,,,4,,,,{},{ skill 135,3; }
-4360,Eremes_Guile_Card,Eremes Guile Card,6,,10,10,,,,,,,2,,,,{},{ bonus2 bCriticalAddRace,10,6; }
+4360,Eremes_Guile_Card,Eremes Guile Card,6,,10,10,,,,,,,2,,,,{},{ bonus2 bCriticalAddRace,6,10; }
 4361,Mastersmith_Howard_Card,Mastersmith Howard Card,6,,10,10,,,,,,,2,,,,{},{ bonus bBreakWeaponRate,1000; bonus bBreakArmorRate,700; }
 4362,Howard_Alt-Eisen_Card,Howard Alt-Eisen Card,6,,10,10,,,,,,,2,,,,{},{ bonus bAspdRate,-5; bonus bHit,30; }
 // 4363: Effect Undecided/Missing
@@ -3160,8 +3160,8 @@
 13155,Black_Rose,Black Rose,4,32000,,900,180,,9,1,536870912,2,34,2,35,19,{},{ bonus bSplashRange,1; }
 13156,Gate_Keeper,Gate Keeper,4,56000,,1000,210,,9,0,536870912,2,34,2,55,19,{},{ bonus bSplashRange,1; }
 13157,Drifter,Drifter,4,80000,,2300,50,,7,1,536870912,2,34,2,55,20,{},{}
-13158,Butcher,Butcher,4,130000,,2500,75,,7,0,536870912,2,34,3,68,20,{},{ bonus2 bCriticalAddRace,2,5; }
-13159,Butcher_,Butcher,4,130000,,2500,75,,7,1,536870912,2,34,3,68,20,{},{ bonus2 bCriticalAddRace,2,5; }
+13158,Butcher,Butcher,4,130000,,2500,75,,7,0,536870912,2,34,3,68,20,{},{ bonus2 bCriticalAddRace,2,10; }
+13159,Butcher_,Butcher,4,130000,,2500,75,,7,1,536870912,2,34,3,68,20,{},{ bonus2 bCriticalAddRace,2,10; }
 13160,Destroyer,Destroyer,4,110000,,1200,220,,7,0,536870912,2,34,2,52,21,{},{ bonus bBreakArmorRate,100; }
 13161,Destroyer_,Destroyer,4,110000,,1200,220,,7,1,536870912,2,34,2,52,21,{},{ bonus bBreakArmorRate,100; }
 13162,Inferno,Inferno,4,230000,,1250,280,,7,1,536870912,2,34,2,65,21,{},{}
