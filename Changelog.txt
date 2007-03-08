@@ -10,6 +10,9 @@
 
 Date	Added
 
+03/07/2007
+	* Translated: A bunch of battle_athena.conf [Tsuyuki]
+
 03/05/2007
 	* Improved: Simplified @jump 0 0 to just @jump for random teleporting [Tsuyuki]
 	* Added: @warp duplicate of @rura [Tsuyuki]
