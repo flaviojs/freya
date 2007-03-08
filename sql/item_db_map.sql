@@ -1950,11 +1950,7 @@ INSERT INTO `item_db` VALUES (5239, 'White_Wizardry_Hat', 'White Wizardry Hat', 
 INSERT INTO `item_db` VALUES (5240, 'Gray_Wizardry_Hat', 'Gray Wizardry Hat', 5, 20, 0, 300, 0, 1, 0, 0, 134283780, 2, 256, 0, 0, 284, NULL, 'bonus bInt,2; bonus bMaxSP,150;');
 INSERT INTO `item_db` VALUES (5241, 'Blue_Wizardry_Hat', 'Blue Wizardry Hat', 5, 20, 0, 300, 0, 1, 0, 0, 134283780, 2, 256, 0, 0, 285, NULL, 'bonus bInt,2; bonus bMaxSP,150;');
 INSERT INTO `item_db` VALUES (5242, 'Yellow_Wizardry_Hat', 'Yellow Wizardry Hat', 5, 20, 0, 300, 0, 1, 0, 0, 134283780, 2, 256, 0, 0, 286, NULL, 'bonus bInt,2; bonus bMaxSP,150;');
-
-INSERT INTO `item_db` VALUES (5243, 'Unknown_Item', 'Unknown Item', 5, 20, 0, 800, 0, 2, 0, 1, 1071636479, 2, 768, 0, 0, 287, NULL, 'bonus2 bResEff,Eff_Freeze,1000;');
-
-
-
+INSERT INTO `item_db` VALUES (5243, 'Ear_Muffs_Hat', 'Ear Muffs Hat', 5, 20, 0, 800, 0, 2, 0, 1, 1071636479, 2, 768, 0, 0, 287, NULL, 'bonus2 bResEff,Eff_Freeze,1000;');
 
 INSERT INTO `item_db` VALUES (5252, 'Drooping_Ninetail', 'Drooping Ninetail', 5, 20, 0, 300, 0, 1, 0, 0, 1071636479, 2, 256, 0, 20, 296, NULL, 'bonus bAgi,1; bonus bDex,1; bonus4 bAutoSpellWhenHit,75,1,500,0;');
 INSERT INTO `item_db` VALUES (5253, 'Drooping_Lif', 'Drooping Lif', 5, 20, 0, 200, 0, 1, 0, 1, 1071636479, 2, 256, 0, 20, 297, NULL, 'bonus bInt,1; bonus bMdef,getequiprefinerycnt(1);');
@@ -1974,8 +1970,7 @@ INSERT INTO `item_db` VALUES (5266, 'Bunny_Band_', 'Bunny Band', 5, 0, 0, 100, 0
 INSERT INTO `item_db` VALUES (5267, 'Sakkat_', 'Sakkat_', 5, 0, 0, 300, 0, 10, 0, 0, 1071636479, 2, 256, 0, 0, 67, NULL, 'bonus bAgi,3;');
 INSERT INTO `item_db` VALUES (5268, 'Lord_Circlet_', 'Lord Circlet_', 5, 0, 0, 200, 0, 10, 0, 0, 991944702, 2, 256, 0, 1, 93, NULL, 'bonus bMdef,4; bonus bStr,3; bonus bInt,3; bonus bLuk,3;');
 
-INSERT INTO `item_db` VALUES (5269, 'Unknown_Item', 'Unknown Item', 5, 0, 0, 300, 0, 1, 0, 0, 1071636479, 2, 256, 0, 10, 264, NULL, 'bonus bAspdAddRate,3; bonus bSpeedAddRate,3;');
-
+INSERT INTO `item_db` VALUES (5269, 'Flying_Angel_', 'Flying Angel', 5, 0, 0, 300, 0, 1, 0, 0, 1071636479, 2, 256, 0, 10, 264, NULL, 'bonus bAspdAddRate,3; bonus bSpeedAddRate,3;');
 INSERT INTO `item_db` VALUES (5270, 'Autumn_Leaves', 'Autumn Leaves', 5, 0, 0, 100, 0, 1, 0, 1, 1071636479, 2, 256, 0, 0, 241, NULL, 'bonus bFlee2,5;');
 INSERT INTO `item_db` VALUES (5271, 'Phoenix_Crown', 'Phoenix Crown', 5, 0, 0, 500, 0, 4, 0, 1, 1071636479, 2, 768, 0, 0, 221, NULL, 'bonus bMdef,3; bonus2 bSubRace,10,getequiprefinerycnt(1);');
 INSERT INTO `item_db` VALUES (5272, 'Tongue_Mask', 'Tongue Mask', 5, 0, 0, 100, 0, 2, 0, 0, 1071636479, 2, 513, 0, 0, 253, NULL, 'bonus4 bAutoSpell,6,5,300,1;');
@@ -1983,9 +1978,8 @@ INSERT INTO `item_db` VALUES (5273, 'Happy_Wig', 'Happy Wig', 5, 0, 0, 100, 0, 1
 INSERT INTO `item_db` VALUES (5274, 'Shinny_Wig', 'Shinny Wig', 5, 0, 0, 100, 0, 1, 0, 0, 1071636479, 2, 768, 0, 0, 306, NULL, 'bonus bSpeedAddRate,5; bonus bDef,4; skill 51,1;');
 INSERT INTO `item_db` VALUES (5275, 'Marvelous_Wig', 'Marvelous Wig', 5, 0, 0, 100, 0, 1, 0, 0, 1071636479, 2, 768, 0, 0, 307, NULL, 'bonus bSpeedAddRate,5; bonus bDef,4; skill 51,1;');
 INSERT INTO `item_db` VALUES (5276, 'Fantastic_Wig', 'Fantastic Wig', 5, 0, 0, 100, 0, 1, 0, 0, 1071636479, 2, 768, 0, 0, 308, NULL, 'bonus bSpeedAddRate,5; bonus bDef,4; skill 51,1;');
-
-INSERT INTO `item_db` VALUES (5277, 'Unknown_Item', 'Unknown Item', 5, 0, 0, 100, 0, 1, 0, 0, 991944702, 2, 256, 0, 20, 309, NULL, 'bonus bLuk,2; bonus bVit,2; bonus bLongAtkDef,10;');
-INSERT INTO `item_db` VALUES (5278, 'Unknown_Item', 'Unknown Item', 5, 0, 0, 100, 0, 1, 0, 0, 991944702, 2, 256, 0, 20, 310, NULL, 'bonus bLuk,2; bonus bVit,2; bonus bLongAtkDef,10;');
+INSERT INTO `item_db` VALUES (5277, 'Yellow_Bandana', 'Yellow Bandana', 5, 0, 0, 100, 0, 1, 0, 0, 991944702, 2, 256, 0, 20, 309, NULL, 'bonus bLuk,2; bonus bVit,2; bonus bLongAtkDef,10;');
+INSERT INTO `item_db` VALUES (5278, 'Yellow_Ribbon', 'Yellow Ribbon', 5, 0, 0, 100, 0, 1, 0, 0, 991944702, 2, 256, 0, 20, 310, NULL, 'bonus bLuk,2; bonus bVit,2; bonus bLongAtkDef,10;');
 
 INSERT INTO `item_db` VALUES (5800, 'Unknown_Item', 'Unknown Item', 5, 0, 0, 50, 0, 0, 0, 0, 1071636479, 2, 512, 0, 0, 125, NULL, 'bonus2 bSubRace,7,3;');
 INSERT INTO `item_db` VALUES (5801, 'Unknown_Item', 'Unknown Item', 5, 0, 0, 100, 0, 0, 0, 0, 1071636479, 2, 256, 0, 0, 167, NULL, 'bonus bStr,2; bonus bAgi,2; bonus bVit,2; bonus bInt,2; bonus bDex,2; bonus bLuk,2; bonus2 bSubRace,7,10; bonus4 bAutoSpell,28,500,3,0;');
