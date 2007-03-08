@@ -4543,7 +4543,7 @@
 1832,Ifrit@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
 1832,Ifrit@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
 1832,Ifrit@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
-// Missing Ifrit Skills 'Status Attack', and 'Earthquake' (not implemented yet)
+// Missing several Ifrit skills
 1833,Kasa@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,
 1833,Kasa@WZ_FIREPILLAR,idle,80,10,1000,500,5000,yes,around2,always,0,,,,,,
 1833,Kasa@WZ_METEOR,attack,83,11,1500,1000,5000,yes,target,always,0,,,,,,
@@ -4570,7 +4570,7 @@
 1835,G_Kasa@LK_SPIRALPIERCE,attack,397,5,500,0,10000,no,target,always,0,,,,,,
 1835,G_Kasa@HW_GANBANTEIN,attack,483,1,2500,500,5000,yes,around2,skillused,288,,,,,,
 1835,G_Kasa@HW_GANBANTEIN,chase,483,1,2500,500,5000,yes,around2,skillused,288,,,,,,
-// Missing Magmaring [1836] Monster Skills
+1836,Magmaring@SM_MAGNUM,attack,7,5,500,500,5000,no,target,always,0,,,,,,
 1837,Imp@RG_STRIPARMOR,attack,217,5,500,0,30000,yes,target,always,0,,,,,,
 1837,Imp@MG_FIREBALL,attack,17,8,1000,500,10000,yes,target,always,0,,,,,,
 1837,Imp@MG_FIREBALL,chase,17,8,1000,500,10000,yes,target,always,0,,,,,,
