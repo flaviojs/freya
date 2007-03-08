@@ -5457,7 +5457,7 @@ static void char_config_read(const char *cfgName) { // not inline, called too of
 				printf(CL_YELLOW "WARNING: Invalid start point in configuration file (invalid number of parameters):" CL_RESET " %s.\n", w2);
 				continue;
 			}
-			if ((strstr(map, ".gat") != NULL || strlen(map) > 16)) { // Verify at least if '.gat' or '.afm' is in the map name
+			if ((strstr(map, ".gat") != NULL || strlen(map) > 16)) { // Verify at least if '.gat' is in the map name
 				if (x > 0 && x < 32767 && y > 0 && y < 32767) { // verify at least a minimum for the coordinates
 					memset(start_point.map, 0, sizeof(start_point.map));
 					strncpy(start_point.map, map, 16); // 17 - NULL
