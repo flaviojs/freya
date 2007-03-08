@@ -11,6 +11,7 @@
 Date	Added
 
 03/07/2007
+	* Updated: A bunch of item prices from Aegis [Tsuyuki]
 	* Fixed: Several CriticalAddRace values in the item database (Including Sabbath) [Tsuyuki]
 
 03/05/2007
