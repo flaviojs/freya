@@ -31,17 +31,17 @@
 4,0,0,0,0,0,10,0,no,0,0,0,none,0	//SM_RECOVERY#Increase HP Recovery#
 5,1,6,1,0,0,10,1,no,0,0,0,weapon,0	//SM_BASH#Bash#
 6,9,6,1,0,1,10,1,no,0,0,0,none,0	//SM_PROVOKE#Provoke#
-7,0,6,4,3,2,10,1,no,0,0,0,weapon,2	//SM_MAGNUM#Magnum Break# 
+7,0,6,4,3,2,10,1,no,0,0,0,weapon,2	//SM_MAGNUM#Magnum Break#
 8,0,6,4,0,1,10,1,no,0,0,0,weapon,0	//SM_ENDURE#Endure#
 9,0,0,0,0,0,10,0,no,0,0,0,none,0	//MG_SRECOVERY#Increase SP Recovery#
-10,3,6,4,3,1,1,1,yes,0,0,0,magic,0	//MG_SIGHT#Sight# 
-11,9,6,1,8,0,10,1,yes,0,0,0,magic,0	//MG_NAPALMBEAT#Napalm Beat# 
+10,3,6,4,3,1,1,1,yes,0,0,0,magic,0	//MG_SIGHT#Sight#
+11,9,6,1,8,0,10,1,yes,0,0,0,magic,0	//MG_NAPALMBEAT#Napalm Beat#
 12,9,8,2,8,0,10,1,yes,0,0,0,magic,0	//MG_SAFETYWALL#Safety Wall#
-13,9,8,1,8,0,10,1:1:2:2:3:3:4:4:5:5,yes,0,0,0,magic,0	//MG_SOULSTRIKE#Soul Strike# 
-14,9,8,1,1,0,10,1:2:3:4:5:6:7:8:9:10,yes,0,0,0,magic,0	//MG_COLDBOLT#Cold Bolt# 
+13,9,8,1,8,0,10,1:1:2:2:3:3:4:4:5:5,yes,0,0,0,magic,0	//MG_SOULSTRIKE#Soul Strike#
+14,9,8,1,1,0,10,1:2:3:4:5:6:7:8:9:10,yes,0,0,0,magic,0	//MG_COLDBOLT#Cold Bolt#
 15,9,6,1,1,0,10,1,yes,0,0,0,magic,0	//MG_FROSTDIVER#Frost Driver#
 16,2,6,1,2,1,10,1,yes,0,0,0,magic,0	//MG_STONECURSE#Stone Curse#
-17,9,6,1,3,0,10,1,yes,0,0,0,magic,0	//MG_FIREBALL#Fire Ball# 
+17,9,6,1,3,0,10,1,yes,0,0,0,magic,0	//MG_FIREBALL#Fire Ball#
 18,9,6,2,3,0,10,1,yes,0,0,3,magic,2	//MG_FIREWALL#Fire Wall#
 19,9,8,1,3,0,10,1:2:3:4:5:6:7:8:9:10,yes,0,0,0,magic,0	//MG_FIREBOLT#Fire Bolt#
 20,9,8,1,4,0,10,1:2:3:4:5:6:7:8:9:10,yes,0,0,0,magic,0	//MG_LIGHTNINGBOLT#Lightning Bolt#
@@ -82,17 +82,17 @@
 
 // Second Class Skills
 55,0,0,0,0,0,10,0,no,0,0,0,weapon,0	//KN_SPEARMASTERY#Spear Mastery#
-56,-2,8,1,0,0,10,3,no,0,0,0,weapon,0	//KN_PIERCE#Pierce# 
-57,2,6,1,0,1,10,1,no,33,0,0,weapon,2	//KN_BRANDISHSPEAR#Brandish Spear# 
+56,-2,8,1,0,0,10,3,no,0,0,0,weapon,0	//KN_PIERCE#Pierce#
+57,2,6,1,0,1,10,1,no,33,0,0,weapon,2	//KN_BRANDISHSPEAR#Brandish Spear#
 58,4,6,1,0,2,10,1,no,0,0,0,weapon,6	//KN_SPEARSTAB#Spear Stab#
-59,3:5:7:9:11,6,1,0,0,5,1,no,0,0,0,weapon,0	//KN_SPEARBOOMERANG#Spear Boomerang# 
+59,3:5:7:9:11,6,1,0,0,5,1,no,0,0,0,weapon,0	//KN_SPEARBOOMERANG#Spear Boomerang#
 60,0,6,4,0,1,10,1,no,0,0,0,weapon,0	//KN_TWOHANDQUICKEN#Two-Handed Quicken#
 61,0,6,4,0,1,5,1,no,0,0,0,weapon,0	//KN_AUTOCOUNTER#Counter Attack#
 62,2,6,1,0,2,10,1,no,33,0,0,weapon,1:1:2:2:3:3:4:4:5:6 //KN_BOWLINGBASH#Bowling Bash#
 63,0,0,0,0,0,1,0,no,0,0,0,weapon,0	//KN_RIDING#Peco Peco Riding#
 64,0,0,0,0,0,5,0,no,0,0,0,weapon,0	//KN_CAVALIERMASTERY#Cavalier Mastery#
 65,0,0,0,0,0,10,0,no,0,0,0,weapon,0	//PR_MACEMASTERY#Mace Mastery#
-66,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//PR_IMPOSITIO#Impositio Manus#	
+66,9,6,16,0,1,5,1,yes,0,0,0,magic,0	//PR_IMPOSITIO#Impositio Manus#
 67,9,6,16,0,1,3,1,yes,0,512,0,magic,0	//PR_SUFFRAGIUM#Suffragrium#
 68,9,6,16,6,1,5,1,yes,0,0,0,magic,0	//PR_ASPERSIO#Aspersio#
 69,9,6,2,0,1,5,1,yes,0,0,0,magic,0	//PR_BENEDICTIO#B.S Sacramenti#
@@ -422,7 +422,7 @@
 379,9,6,1,0,0,10,1,no,0,0,0,weapon,0	//ASC_BREAKER#Soul Destroyer#
 380,0,6,4,0,1,10,1,no,0,0,0,weapon,0	//SN_SIGHT#Falcon Eyes#
 381,3,8,1,0,0,5,1:2:3:4:5,yes,0,0,0,misc,0	//SN_FALCONASSAULT#Falcon Assault#
-382,14,8,1,0,0,5,1,no,0,0,0,weapon,0	//SN_SHARPSHOOTING#Focused Arrow STrike#
+382,14,8,1,0,0,5,1,no,0,0,0,weapon,0	//SN_SHARPSHOOTING#Focused Arrow Strike#
 383,0,6,4,0,1,10,1,yes,0,0,0,magic,0	//SN_WINDWALK#Wind Walker#
 384,0,0,4,0,1,10,1,yes,0,0,0,magic,0	//WS_MELTDOWN#Shattering Strike#
 //385,0,0,4,0,1,1,1,yes,0,0,0,magic,0	//WS_CREATECOIN#Create Coins#
@@ -751,6 +751,45 @@
 8014,0,6,4,0,1,5,0,no,0,0,0,none,0	//HVAN_CHAOTIC
 8015,0,0,0,0,1,5,0,no,0,0,0,none,0	//HVAN_INSTRUCT
 8016,0,6,4,-1,2,3,1,no,0,0,0,misc,0	//HVAN_EXPLOSION
+
+// Mercenary Skills
+8017,1,6,1,0,0,10,1,no,0,0,0,weapon,0	//MS_BASH#Bash#
+8018,0,6,4,3,2,10,1,no,0,0,0,weapon,2	//MS_MAGNUM#Magnum Break#
+8019,2,6,1,0,2,10,1,no,33,0,0,weapon,1:1:2:2:3:3:4:4:5:6 //KN_BOWLINGBASH#Bowling Bash#
+8020,0,6,4,0,1,10,1,no,0,0,0,weapon,0	//MS_PARRYING#Parrying#
+8021,0,6,4,0,1,10,1,no,0,0,0,weapon,0	//MS_REFLECTSHIELD#Reflect Shield#
+8022,0,6,4,0,1,1,1,no,0,0,0,misc,0	//MS_BERSERK#Berserk#
+8023,-3,8,1,0,0,10,2,no,0,0,0,weapon,0	//MA_DOUBLE#Double Strafe#
+8024,-3,6,2,0,2,10,1,no,0,0,0,weapon,2	//MA_SHOWER#Arrow Shower#
+8025,3,6,2,0,1,5,1,no,0,128,0,misc,6:7:8:9:10	//MA_SKIDTRAP#Skid Trap#
+8026,3,6,2,2,1,5,1,no,0,128,0,misc,0	//MA_LANDMINE#Land Mine#
+8027,3,6,2,0,1,5,1,no,0,128,0,misc,0	//MA_SANDMAN#Sandman#
+8028,3,6,2,1,1,5,1,no,0,128,0,misc,0	//MA_FREEZINGTRAP#Freezing Trap#
+8029,2,6,32,0,1,1,1,no,0,0,0,misc,0	//MA_REMOVETRAP#Remove Trap#
+8030,-9,6,1,-1,2,1,1,no,0,1,0,weapon,6	//MA_CHARGEARROW#Arrow Repel#
+8031,14,8,1,0,0,5,1,no,0,0,0,weapon,0	//MA_SHARPSHOOTING#Focused Arrow Strike#
+8032,-2,8,1,0,0,10,3,no,0,0,0,weapon,0	//ML_PIERCE#Pierce#
+8033,2,6,1,0,1,10,1,no,33,0,0,weapon,2	//ML_BRANDISHSPEAR#Brandish Spear#
+8034,5,8,1,0,0,5,5,no,0,0,0,weapon,0	//ML_SPIRALPIERCE#Spiral Pierce#
+8035,0,6,4,0,1,5,1,no,0,0,0,weapon,0	//ML_DEFENDER#Defending Aura#
+8036,0,6,4,0,1,10,1,no,0,0,0,weapon,0	//ML_AUTOGUARD#Guard#
+8037,7:8:9:10:11,6,16,0,1,5,1,yes,0,0,0,magic,0	//ML_DEVOTION#Sacrifice#
+8038,0,6,4,0,1,5,1,yes,0,0,0,magic,0	//MER_MAGNIFICAT#Magnificat#
+8039,0,0,0,0,0,10,0,no,0,0,0,none,0	//MER_QUICKEN#Quicken#
+8040,3,6,4,3,1,1,1,yes,0,0,0,magic,0	//MER_SIGHT#Sight#
+8041,0,0,0,0,0,10,0,no,0,0,0,none,0	//MER_CRASH#Crash#
+8042,0,0,0,0,0,10,0,no,0,0,0,none,0	//MER_REGAIN#Regain#
+8043,0,0,0,0,0,10,0,no,0,0,0,none,0	//MER_TENDER#Tender#
+8044,0,0,0,0,0,10,0,no,0,0,0,none,0	//MER_BENEDICTION#Benediction#
+8045,0,0,0,0,0,10,0,no,0,0,0,none,0	//MER_RECUPERATE#Recuperate#
+8046,0,0,0,0,0,10,0,no,0,0,0,none,0	//MER_MENTALCURE#Mental Cure#
+8047,0,0,0,0,0,10,0,no,0,0,0,none,0	//MER_COMPRESS#Compress#
+8048,9,6,1,0,1,10,1,no,0,0,0,none,0	//MER_PROVOKE#Provoke#
+8049,0,6,4,0,1,1,1,no,0,1,0,weapon,0	//MER_AUTOBERSERK#Auto-Berserk#
+8050,9,6,1,0,1,10,1,yes,0,0,0,magic,0		//MER_DECAGI#Decrease AGI#
+8051,0,0,0,0,0,10,0,no,0,0,0,none,0	//MER_SCAPEGOAT#Scapegoat#
+8052,5,6,1,0,1,10,0,yes,0,0,0,magic,0	//MER_LEXDIVINA#Lex Divina#
+8053,9,6,1,0,1,1,1,yes,0,0,0,magic,0	//MER_ESTIMATION#Estimation#
 
 // Guild Skills
 //ID,Range,Hit,Target,Element,SkillInfo1,MaxLv,ListNum,CastCancel,CastDefRate,SkillInfo2,MaxCount,SkillType,BlowCount

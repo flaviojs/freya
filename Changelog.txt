@@ -11,6 +11,7 @@
 Date	Added
 
 03/07/2007
+	* Added: Skill database entries and base source code entries for Mercenary skills [Tsuyuki]
 	* Added: Magmaring's monster skills [Tsuyuki]
 	* Added: Byorgue's monster skills (Credits to $ephiroth) [Tsuyuki]
 	* Updated: Some headgear names [Tsuyuki]
