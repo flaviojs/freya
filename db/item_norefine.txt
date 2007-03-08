@@ -9,6 +9,8 @@
 
 1530 // Mjolnir
 
+1562 // Battlefield Textbook
+
 2110 // Holy Guard
 2112 // Novice Guard
 
