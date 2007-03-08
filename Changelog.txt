@@ -11,6 +11,7 @@
 Date	Added
 
 03/07/2007
+	* Added: Magmaring's monster skills [Tsuyuki]
 	* Removed: Homunuclus entries from Phaeton's monster database [Tsuyuki]
 	* Added: Byorgue's monster skills (Credits to $ephiroth) [Tsuyuki]
 	* Translated: A bunch of battle_athena.conf [Tsuyuki]
