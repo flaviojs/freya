@@ -11,6 +11,7 @@
 Date	Added
 
 03/07/2007
+	* Added: Byorgue's monster skills (Credits to $ephiroth) [Tsuyuki]
 	* Updated: Some headgear names [Tsuyuki]
 	* Updated: Some weapons as per Aegis [Tsuyuki]
 	* Updated: A bunch of item prices from Aegis [Tsuyuki]
