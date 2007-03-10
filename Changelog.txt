@@ -10,6 +10,10 @@
 
 Date	Added
 
+03/09/2007
+	* Imported: 'gmcommand' script command from jAthena [Tsuyuki]
+	* Removed: Old 'gmcommand' script command [Tsuyuki]
+
 03/07/2007
 	* Added: Skill database entries and base source code entries for Mercenary skills [Tsuyuki]
 	* Added: Magmaring's monster skills [Tsuyuki]

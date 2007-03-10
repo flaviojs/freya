@@ -142,8 +142,8 @@ int buildin_getguildmasterid(struct script_state *st);
 int buildin_strcharinfo(struct script_state *st);
 int buildin_getequipid(struct script_state *st);
 int buildin_getequipname(struct script_state *st);
-int buildin_getbrokenid(struct script_state *st); // [Valaris]
-int buildin_repair(struct script_state *st); // [Valaris]
+int buildin_getbrokenid(struct script_state *st);
+int buildin_repair(struct script_state *st);
 int buildin_getequipisequiped(struct script_state *st);
 int buildin_getequipisenableref(struct script_state *st);
 int buildin_getequipisidentify(struct script_state *st);
@@ -161,7 +161,7 @@ int buildin_bonus2(struct script_state *st);
 int buildin_bonus3(struct script_state *st);
 int buildin_bonus4(struct script_state *st);
 int buildin_skill(struct script_state *st);
-int buildin_addtoskill(struct script_state *st); // [Valaris]
+int buildin_addtoskill(struct script_state *st);
 int buildin_guildskill(struct script_state *st);
 int buildin_getskilllv(struct script_state *st);
 int buildin_getgdskilllv(struct script_state *st);
@@ -171,12 +171,12 @@ int buildin_end(struct script_state *st);
 int buildin_checkoption(struct script_state *st);
 int buildin_setoption(struct script_state *st);
 int buildin_setcart(struct script_state *st);
-int buildin_checkcart(struct script_state *st); // Check cart
+int buildin_checkcart(struct script_state *st);
 int buildin_setfalcon(struct script_state *st);
-int buildin_checkfalcon(struct script_state *st); // Check falcon
+int buildin_checkfalcon(struct script_state *st);
 int buildin_setriding(struct script_state *st);
-int buildin_checkriding(struct script_state *st); // Check for Peco
-int buildin_isdead(struct script_state *st); // To know if a player is dead. For script NPC
+int buildin_checkriding(struct script_state *st);
+int buildin_isdead(struct script_state *st);
 int buildin_savepoint(struct script_state *st);
 int buildin_gettimetick(struct script_state *st);
 int buildin_gettime(struct script_state *st);
@@ -186,9 +186,9 @@ int buildin_guildopenstorage(struct script_state *st);
 int buildin_itemskill(struct script_state *st);
 int buildin_produce(struct script_state *st);
 int buildin_monster(struct script_state *st);
-int buildin_monsteragro(struct script_state *st); // As monster, but all monster are agressive
+int buildin_monsteragro(struct script_state *st);
 int buildin_areamonster(struct script_state *st);
-int buildin_areamonsteragro(struct script_state *st); // as areamonster, but all monster are agressiv
+int buildin_areamonsteragro(struct script_state *st);
 int buildin_killmonster(struct script_state *st);
 int buildin_killmonsterall(struct script_state *st);
 int buildin_doevent(struct script_state *st);
@@ -201,25 +201,25 @@ int buildin_stopnpctimer(struct script_state *st);
 int buildin_startnpctimer(struct script_state *st);
 int buildin_setnpctimer(struct script_state *st);
 int buildin_getnpctimer(struct script_state *st);
-int buildin_attachnpctimer(struct script_state *st);	// [celest]
-int buildin_detachnpctimer(struct script_state *st);	// [celest]
+int buildin_attachnpctimer(struct script_state *st);
+int buildin_detachnpctimer(struct script_state *st);
 int buildin_announce(struct script_state *st);
 int buildin_mapannounce(struct script_state *st);
 int buildin_areaannounce(struct script_state *st);
 int buildin_getusers(struct script_state *st);
 int buildin_getmapusers(struct script_state *st);
-int buildin_getmapusers2(struct script_state *st); // Return number of ALIVE players on a map
-int buildin_getmapusers3(struct script_state *st); // Return number of DEAD players on a map
-int buildin_getmapgms2(struct script_state *st); // as getmapusers2, return number of ALIVE GMs on a map (with minimum level of concerned GMs)
-int buildin_getmapgms3(struct script_state *st); // as getmapusers3, return number of DEAD GMs on a map (with minimum level of concerned GMs)
-int buildin_getmapnotgms2(struct script_state *st); // as getmapusers2, return number of ALIVE not GMs on a map (with a lower GM level than specified) getmapgms2 + getmapnotgms2 = getmapusers2
-int buildin_getmapnotgms3(struct script_state *st); // as getmapusers3, return number of DEAD not GMs on a map (with a lower GM level than specified) getmapgms3 + getmapnotgms3 = getmapusers3
+int buildin_getmapusers2(struct script_state *st);
+int buildin_getmapusers3(struct script_state *st);
+int buildin_getmapgms2(struct script_state *st);
+int buildin_getmapgms3(struct script_state *st);
+int buildin_getmapnotgms2(struct script_state *st);
+int buildin_getmapnotgms3(struct script_state *st);
 int buildin_getareausers(struct script_state *st);
 int buildin_getareadropitem(struct script_state *st);
 int buildin_enablenpc(struct script_state *st);
 int buildin_disablenpc(struct script_state *st);
-int buildin_enablearena(struct script_state *st);	// [ RoVeRT]
-int buildin_disablearena(struct script_state *st);	// [ RoVeRT]
+int buildin_enablearena(struct script_state *st);
+int buildin_disablearena(struct script_state *st);
 int buildin_hideoffnpc(struct script_state *st);
 int buildin_hideonnpc(struct script_state *st);
 int buildin_sc_start(struct script_state *st);
@@ -253,10 +253,10 @@ int buildin_gvgon(struct script_state *st);
 int buildin_gvgoff(struct script_state *st);
 int buildin_emotion(struct script_state *st);
 int buildin_maprespawnguildid(struct script_state *st);
-int buildin_agitstart(struct script_state *st);		// <Agit>
+int buildin_agitstart(struct script_state *st);
 int buildin_agitend(struct script_state *st);
-int buildin_agitcheck(struct script_state *st);  // <Agitcheck>
-int buildin_flagemblem(struct script_state *st);		// Flag Emblem
+int buildin_agitcheck(struct script_state *st);
+int buildin_flagemblem(struct script_state *st);
 int buildin_getcastlename(struct script_state *st);
 int buildin_getcastledata(struct script_state *st);
 int buildin_setcastledata(struct script_state *st);
@@ -267,9 +267,9 @@ int buildin_failedremovecards(struct script_state *st);
 int buildin_marriage(struct script_state *st);
 int buildin_wedding_effect(struct script_state *st);
 int buildin_divorce(struct script_state *st);
-int buildin_ispartneron(struct script_state *st); // MouseJstr
-int buildin_getpartnerid(struct script_state *st); // MouseJstr
-int buildin_warppartner(struct script_state *st); // MouseJstr
+int buildin_ispartneron(struct script_state *st);
+int buildin_getpartnerid(struct script_state *st);
+int buildin_warppartner(struct script_state *st);
 int buildin_getitemname(struct script_state *st);
 int buildin_makepet(struct script_state *st);
 int buildin_getexp(struct script_state *st);
@@ -286,44 +286,44 @@ int buildin_inittimer(struct script_state *st);
 int buildin_stoptimer(struct script_state *st);
 int buildin_cmdothernpc(struct script_state *st);
 int buildin_mobcount(struct script_state *st);
-int buildin_strmobinfo(struct script_state *st); // Script for displaying mob info [Valaris]
-int buildin_guardian(struct script_state *st); // Script for displaying mob info [Valaris]
-int buildin_guardianinfo(struct script_state *st); // Script for displaying mob info [Valaris]
-int buildin_petskillbonus(struct script_state *st); // petskillbonus [Valaris]
-int buildin_petrecovery(struct script_state *st); // pet skill for curing status [Valaris]
-int buildin_petloot(struct script_state *st); // pet looting [Valaris]
-int buildin_petheal(struct script_state *st); // pet healing [Valaris]
-int buildin_petmag(struct script_state *st); // pet magnificat [Valaris]
-int buildin_petskillattack(struct script_state *st); // pet skill attacks [Valaris]
-int buildin_skilleffect(struct script_state *st); // skill effects [Celest]
-int buildin_npcskilleffect(struct script_state *st); // skill effects for npcs [Valaris]
-int buildin_specialeffect(struct script_state *st); // special effect script [Valaris]
-int buildin_specialeffect2(struct script_state *st); // special effect script [Valaris]
-int buildin_nude(struct script_state *st); // nude [Valaris]
-int buildin_gmcommand(struct script_state *st); // [MouseJstr]
-int buildin_movenpc(struct script_state *st); // [MouseJstr]
-int buildin_message(struct script_state *st); // [MouseJstr]
-int buildin_npctalk(struct script_state *st); // [Valaris]
-int buildin_hasitems(struct script_state *st); // [Valaris]
-int buildin_getlook(struct script_state *st);	//Lorky [Lupus]
-int buildin_getsavepoint(struct script_state *st);	//Lorky [Lupus]
-int buildin_npcspeed(struct script_state *st); // [Valaris]
-int buildin_npcwalkto(struct script_state *st); // [Valaris]
-int buildin_npcstop(struct script_state *st); // [Valaris]
-int buildin_getmapxy(struct script_state *st);  //get map position for player/npc/pet/mob by Lorky [Lupus]
-int buildin_checkoption1(struct script_state *st); // [celest]
-int buildin_checkoption2(struct script_state *st); // [celest]
-int buildin_guildgetexp(struct script_state *st); // [celest]
-int buildin_skilluseid(struct script_state *st); // originally by Qamera [celest]
-int buildin_skillusepos(struct script_state *st); // originally by Qamera [celest]
-int buildin_logmes(struct script_state *st); // [Lupus]
-int buildin_summon(struct script_state *st); // [celest]
+int buildin_strmobinfo(struct script_state *st);
+int buildin_guardian(struct script_state *st);
+int buildin_guardianinfo(struct script_state *st);
+int buildin_petskillbonus(struct script_state *st);
+int buildin_petrecovery(struct script_state *st);
+int buildin_petloot(struct script_state *st);
+int buildin_petheal(struct script_state *st);
+int buildin_petmag(struct script_state *st);
+int buildin_petskillattack(struct script_state *st);
+int buildin_skilleffect(struct script_state *st);
+int buildin_npcskilleffect(struct script_state *st);
+int buildin_specialeffect(struct script_state *st);
+int buildin_specialeffect2(struct script_state *st);
+int buildin_nude(struct script_state *st);
+// int buildin_gmcommand(struct script_state *st);
+int buildin_movenpc(struct script_state *st);
+int buildin_message(struct script_state *st);
+int buildin_npctalk(struct script_state *st);
+int buildin_hasitems(struct script_state *st);
+int buildin_getlook(struct script_state *st);
+int buildin_getsavepoint(struct script_state *st);
+int buildin_npcspeed(struct script_state *st);
+int buildin_npcwalkto(struct script_state *st);
+int buildin_npcstop(struct script_state *st);
+int buildin_getmapxy(struct script_state *st);
+int buildin_checkoption1(struct script_state *st);
+int buildin_checkoption2(struct script_state *st);
+int buildin_guildgetexp(struct script_state *st);
+int buildin_skilluseid(struct script_state *st);
+int buildin_skillusepos(struct script_state *st);
+int buildin_logmes(struct script_state *st);
+int buildin_summon(struct script_state *st);
 int buildin_night(struct script_state *st);
 int buildin_day(struct script_state *st);
-int buildin_isnight(struct script_state *st); // [celest]
-int buildin_isday(struct script_state *st); // [celest]
-int buildin_isequipped(struct script_state *st); // [celest]
-int buildin_isequippedcnt(struct script_state *st); // [celest]
+int buildin_isnight(struct script_state *st);
+int buildin_isday(struct script_state *st);
+int buildin_isequipped(struct script_state *st);
+int buildin_isequippedcnt(struct script_state *st);
 int buildin_getusersname(struct script_state *st);
 int buildin_dispbottom(struct script_state *st);
 int buildin_recovery(struct script_state *st);
@@ -333,9 +333,10 @@ int buildin_globalmes(struct script_state *st);
 int buildin_jump_zero(struct script_state *st);
 int buildin_select(struct script_state *st);
 int buildin_getmapmobs(struct script_state *st);
-int buildin_getiteminfo(struct script_state *st); // Returns Items Buy / sell Price, etc info
-int buildin_sit(struct script_state *st); // Makes a person sit
-int buildin_stand(struct script_state *st); // Makes a person stand
+int buildin_getiteminfo(struct script_state *st);
+int buildin_sit(struct script_state *st);
+int buildin_stand(struct script_state *st);
+int buildin_gmcommand(struct script_state *st);
 
 int run_func(struct script_state *st);
 
@@ -399,8 +400,8 @@ struct {
 	{buildin_strcharinfo,"pcname","i"},
 	{buildin_getequipid,"getequipid","i"},
 	{buildin_getequipname,"getequipname","i"},
-	{buildin_getbrokenid,"getbrokenid","i"}, // [Valaris]
-	{buildin_repair,"repair","i"}, // [Valaris]
+	{buildin_getbrokenid,"getbrokenid","i"},
+	{buildin_repair,"repair","i"},
 	{buildin_getequipisequiped,"getequipisequiped","i"},
 	{buildin_getequipisenableref,"getequipisenableref","i"},
 	{buildin_getequipisidentify,"getequipisidentify","i"},
@@ -416,7 +417,7 @@ struct {
 	{buildin_bonus3,"bonus3","iiii"},
 	{buildin_bonus4,"bonus4","iiiii"},
 	{buildin_skill,"skill","ii*"},
-	{buildin_addtoskill,"addtoskill","ii*"}, // [Valaris]
+	{buildin_addtoskill,"addtoskill","ii*"},
 	{buildin_guildskill,"guildskill","ii"},
 	{buildin_getskilllv,"getskilllv","i"},
 	{buildin_getgdskilllv,"getgdskilllv","ii"},
@@ -426,12 +427,12 @@ struct {
 	{buildin_checkoption,"checkoption","i"},
 	{buildin_setoption,"setoption","i"},
 	{buildin_setcart,"setcart",""},
-	{buildin_checkcart,"checkcart","*"},		// Fixed by Lupus (added '*')
+	{buildin_checkcart,"checkcart","*"},
 	{buildin_setfalcon,"setfalcon",""},
-	{buildin_checkfalcon,"checkfalcon","*"},	// Fixed by Lupus (fixed wrong pointer, added '*')
+	{buildin_checkfalcon,"checkfalcon","*"},
 	{buildin_setriding,"setriding",""},
-	{buildin_checkriding,"checkriding","*"},	// Fixed by Lupus (fixed wrong pointer, added '*')
-	{buildin_isdead,"isdead","*"},	// Checks if the player is dead
+	{buildin_checkriding,"checkriding","*"},
+	{buildin_isdead,"isdead","*"},
 	{buildin_savepoint,"save","sii"},
 	{buildin_savepoint,"savepoint","sii"},
 	{buildin_gettimetick,"gettimetick","i"},
@@ -442,9 +443,9 @@ struct {
 	{buildin_itemskill,"itemskill","iis"},
 	{buildin_produce,"produce","i"},
 	{buildin_monster,"monster","siisii*"},
-	{buildin_monsteragro,"monsteragro","siisii*"}, // Spawns agressive monsters
+	{buildin_monsteragro,"monsteragro","siisii*"},
 	{buildin_areamonster,"areamonster","siiiisii*"},
-	{buildin_areamonsteragro,"areamonsteragro","siiiisii*"}, // Area spawns agressive monsters
+	{buildin_areamonsteragro,"areamonsteragro","siiiisii*"},
 	{buildin_killmonster,"killmonster","ss"},
 	{buildin_killmonsterall,"killmonsterall","s"},
 	{buildin_doevent,"doevent","s"},
@@ -457,32 +458,32 @@ struct {
 	{buildin_startnpctimer,"startnpctimer","*"},
 	{buildin_setnpctimer,"setnpctimer","*"},
 	{buildin_getnpctimer,"getnpctimer","i*"},
-	{buildin_attachnpctimer,"attachnpctimer","*"}, // Attaches the player ID to the NPC timer [Celest]
-	{buildin_detachnpctimer,"detachnpctimer","*"}, // Removes the player ID from the NPC timer [Celest]
+	{buildin_attachnpctimer,"attachnpctimer","*"},
+	{buildin_detachnpctimer,"detachnpctimer","*"},
 	{buildin_announce,"announce","si"},
 	{buildin_mapannounce,"mapannounce","ssi"},
 	{buildin_areaannounce,"areaannounce","siiiisi"},
 	{buildin_getusers,"getusers","i"},
 	{buildin_getmapusers,"getmapusers","s"},
 	{buildin_getmapusers,"getmapallusers","s"},
-	{buildin_getmapusers2,"getmapusers2","s"}, // Returns the number of live players on a map
-	{buildin_getmapusers2,"getmapaliveusers","s"}, // Returns the number of live players on a map
-	{buildin_getmapusers3,"getmapusers3","s"}, // Returns the number of dead players on a map
-	{buildin_getmapusers3,"getmapdeadusers","s"}, // Returns the number of dead players on a map
-	{buildin_getmapgms2,"getmapgms2","si"}, // As getmapusers2, returns the number of live GMs on a map (with minimum level of concerned GMs)
-	{buildin_getmapgms2,"getmapalivegms","si"}, // As getmapaliveusers, returns the number of live GMs on a map (with minimum level of concerned GMs)
-	{buildin_getmapgms3,"getmapgms3","si"}, // As getmapusers3, returns the number of dead GMs on a map (with minimum level of concerned GMs)
-	{buildin_getmapgms3,"getmapdeadgms","si"}, // As getmapdeadusers, returns the number of dead GMs on a map (with minimum level of concerned GMs)
-	{buildin_getmapnotgms2,"getmapnotgms2","si"}, // As getmapusers2, returns the number of live not GMs on a map (with a lower GM level than specified) getmapgms2 + getmapnotgms2 = getmapusers2
-	{buildin_getmapnotgms2,"getmapalivenotgms","si"}, // As getmapaliveusers, returns the number of live not GMs on a map (with a lower GM level than specified) getmapalivegms + getmapalivenotgms = getmapaliveusers
-	{buildin_getmapnotgms3,"getmapnotgms3","si"}, // As getmapusers3, returns the number of dead not GMs on a map (with a lower GM level than specified) getmapgms3 + getmapnotgms3 = getmapusers3
-	{buildin_getmapnotgms3,"getmapdeadnotgms","si"}, // As getmapdeadusers, returns the number of dead not GMs on a map (with a lower GM level than specified) getmapdeadgms + getmapdeadnotgms = getmapdeadusers
+	{buildin_getmapusers2,"getmapusers2","s"},
+	{buildin_getmapusers2,"getmapaliveusers","s"},
+	{buildin_getmapusers3,"getmapusers3","s"},
+	{buildin_getmapusers3,"getmapdeadusers","s"},
+	{buildin_getmapgms2,"getmapgms2","si"},
+	{buildin_getmapgms2,"getmapalivegms","si"},
+	{buildin_getmapgms3,"getmapgms3","si"},
+	{buildin_getmapgms3,"getmapdeadgms","si"},
+	{buildin_getmapnotgms2,"getmapnotgms2","si"},
+	{buildin_getmapnotgms2,"getmapalivenotgms","si"},
+	{buildin_getmapnotgms3,"getmapnotgms3","si"},
+	{buildin_getmapnotgms3,"getmapdeadnotgms","si"},
 	{buildin_getareausers,"getareausers","siiii"},
 	{buildin_getareadropitem,"getareadropitem","siiiii"},
 	{buildin_enablenpc,"enablenpc","s"},
 	{buildin_disablenpc,"disablenpc","s"},
-	{buildin_enablearena,"enablearena",""},		// [RoVeRT]
-	{buildin_disablearena,"disablearena",""},	// [RoVeRT]
+	{buildin_enablearena,"enablearena",""},
+	{buildin_disablearena,"disablearena",""},
 	{buildin_hideoffnpc,"hideoffnpc","s"},
 	{buildin_hideonnpc,"hideonnpc","s"},
 	{buildin_sc_start,"sc_start","iii*"},
@@ -543,51 +544,51 @@ struct {
 	{buildin_classchange,"classchange","ii"},
 	{buildin_misceffect,"misceffect","i"},
 	{buildin_soundeffect,"soundeffect","si"},
-	{buildin_soundeffectall,"soundeffectall","si"},	// [Codemaster]
-	{buildin_strmobinfo,"strmobinfo","ii"},	// Displays monster data [Valaris]
-	{buildin_guardian,"guardian","siisii*i"},	// Summons castle guardians
-	{buildin_guardianinfo,"guardianinfo","i"},	// Displays guardian data [Valaris]
-	{buildin_petskillbonus,"petskillbonus","iiii"}, // [Valaris]
-	{buildin_petrecovery,"petrecovery","ii"}, // [Valaris]
-	{buildin_petloot,"petloot","i"}, // [Valaris]
-	{buildin_petheal,"petheal","iii"}, // [Valaris]
-	{buildin_petmag,"petmag","iiii"}, // [Valaris]
-	{buildin_petskillattack,"petskillattack","iiii"}, // [Valaris]
-	{buildin_skilleffect,"skilleffect","ii"}, // [Celest]
-	{buildin_npcskilleffect,"npcskilleffect","iiii"}, // [Valaris]
-	{buildin_specialeffect,"specialeffect","i"}, // [Valaris]
-	{buildin_specialeffect2,"specialeffect2","i"}, // Skill effect on a player [Valaris]
-	{buildin_nude,"nude",""}, // [Valaris]
-	{buildin_mapwarp,"mapwarp","ssii"},	// [RoVeRT]
+	{buildin_soundeffectall,"soundeffectall","si"},
+	{buildin_strmobinfo,"strmobinfo","ii"},
+	{buildin_guardian,"guardian","siisii*i"},
+	{buildin_guardianinfo,"guardianinfo","i"},
+	{buildin_petskillbonus,"petskillbonus","iiii"},
+	{buildin_petrecovery,"petrecovery","ii"},
+	{buildin_petloot,"petloot","i"},
+	{buildin_petheal,"petheal","iii"},
+	{buildin_petmag,"petmag","iiii"},
+	{buildin_petskillattack,"petskillattack","iiii"},
+	{buildin_skilleffect,"skilleffect","ii"},
+	{buildin_npcskilleffect,"npcskilleffect","iiii"},
+	{buildin_specialeffect,"specialeffect","i"},
+	{buildin_specialeffect2,"specialeffect2","i"},
+	{buildin_nude,"nude",""},
+	{buildin_mapwarp,"mapwarp","ssii"},
 	{buildin_inittimer,"inittimer",""},
 	{buildin_stoptimer,"stoptimer",""},
 	{buildin_cmdothernpc,"cmdothernpc","ss"},
-	{buildin_gmcommand,"gmcommand","*"}, // [MouseJstr]
-//	{buildin_movenpc,"movenpc","siis"}, // [MouseJstr]
-	{buildin_message,"message","s*"}, // [MouseJstr]
-	{buildin_npctalk,"npctalk","*"}, // [Valaris]
-	{buildin_hasitems,"hasitems","*"}, // [Valaris]
+//	{buildin_gmcommand,"gmcommand","*"},
+//	{buildin_movenpc,"movenpc","siis"},
+	{buildin_message,"message","s*"},
+	{buildin_npctalk,"npctalk","*"},
+	{buildin_hasitems,"hasitems","*"},
 	{buildin_mobcount,"mobcount","ss"},
 	{buildin_getlook,"getlook","i"},
 	{buildin_getsavepoint,"getsavepoint","i"},
-	{buildin_npcspeed,"npcspeed","i"}, // [Valaris]
-	{buildin_npcwalkto,"npcwalkto","ii"}, // [Valaris]
-	{buildin_npcstop,"npcstop",""}, // [Valaris]
-	{buildin_getmapxy,"getmapxy","siii*"}, //by Lorky [Lupus]
+	{buildin_npcspeed,"npcspeed","i"},
+	{buildin_npcwalkto,"npcwalkto","ii"},
+	{buildin_npcstop,"npcstop",""},
+	{buildin_getmapxy,"getmapxy","siii*"},
 	{buildin_checkoption1,"checkoption1","i"},
 	{buildin_checkoption2,"checkoption2","i"},
 	{buildin_guildgetexp,"guildgetexp","i"},
-	{buildin_skilluseid,"skilluseid","ii"}, // Originally by Qamera [Celest]
+	{buildin_skilluseid,"skilluseid","ii"},
 	{buildin_skilluseid,"doskill","ii"},
-	{buildin_skillusepos,"skillusepos","iiii"}, // [Celest]
-	{buildin_logmes,"logmes","s"}, // Command acts as 'mes', but prints info into a log file [Lupus]
-	{buildin_summon,"summon","si*"}, // Summons a slave monster [Celest]
+	{buildin_skillusepos,"skillusepos","iiii"},
+	{buildin_logmes,"logmes","s"},
+	{buildin_summon,"summon","si*"},
 	{buildin_night,"night",""},
 	{buildin_day,"day",""},
-	{buildin_isnight,"isnight",""}, // Checks if it is night mode [Celest]
-	{buildin_isday,"isday",""}, // Checks if it is day mode [Celest]
-	{buildin_isequipped,"isequipped","i*"}, // Checks whether an item/card has been equipped [Celest]
-	{buildin_isequippedcnt,"isequippedcnt","i*"}, // Checks how many items/cards are equipped [Celest]
+	{buildin_isnight,"isnight",""},
+	{buildin_isday,"isday",""},
+	{buildin_isequipped,"isequipped","i*"},
+	{buildin_isequippedcnt,"isequippedcnt","i*"},
 	{buildin_dispbottom,"dispbottom","s"},
 	{buildin_getusersname,"getusersname","*"},
 	{buildin_recovery,"recovery",""},
@@ -597,9 +598,10 @@ struct {
 	{buildin_select,"select","*"},
 	{buildin_globalmes,"globalmes","s*"},
 	{buildin_getmapmobs,"getmapmobs","s"},
-	{buildin_getiteminfo,"getiteminfo","ii"}, // Returns an item's buy / sell price, etc
-	{buildin_sit,"sit",""}, // Makes a player sit
-	{buildin_stand,"stand",""}, // Makes a player stand
+	{buildin_getiteminfo,"getiteminfo","ii"},
+	{buildin_sit,"sit",""},
+	{buildin_stand,"stand",""},
+	{buildin_gmcommand,"gmcommand","s"},
 	{NULL,NULL,NULL},
 };
 
@@ -6827,7 +6829,7 @@ int buildin_nude(struct script_state *st)
  * GM command
  *------------------------------------------
  */
-int buildin_gmcommand(struct script_state *st)
+/*int buildin_gmcommand(struct script_state *st)
 {
 	struct map_session_data *sd;
 	char *cmd;
@@ -6907,7 +6909,7 @@ int buildin_gmcommand(struct script_state *st)
 	is_atcommand(sd->fd, sd, output, 99);
 
 	return 0;
-}
+}*/
 
 /*==========================================
  * Displays a message for the player only (like system messages like "you got an apple" )
@@ -7874,6 +7876,48 @@ int buildin_stand(struct script_state *st)
 		pc_setstand(sd);
 		clif_standing(sd);
 	}
+	return 0;
+}
+
+/*==========================================
+ * GM Command
+ *------------------------------------------
+ */
+int buildin_gmcommand(struct script_state *st)
+{
+	char *str, cmd[100];
+
+	str = conv_str(st, &(st->stack->stack_data[st->start+2]));
+
+	if(st->rid) {
+		struct map_session_data *sd = map_id2sd(st->rid);
+		if(sd) {
+			snprintf(cmd, sizeof(cmd), "%s : %s", sd->status.name, str);
+			is_atcommand(sd->fd, sd, cmd, 99);
+			return 0;
+		}
+	}
+	if(st->oid) {
+		struct map_session_data dummy_sd;
+		struct block_list *bl = map_id2bl(st->oid);
+
+		if(bl) {
+			memset(&dummy_sd, 0, sizeof(struct map_session_data));
+			memcpy(&dummy_sd.bl, bl, sizeof(struct block_list));
+			dummy_sd.fd = 0;
+			dummy_sd.bl.prev = NULL;
+			dummy_sd.bl.next = NULL;
+			if(bl->type == BL_NPC)
+				strncpy(dummy_sd.status.name, ((struct npc_data *)bl)->name, 24);
+			else
+				strncpy(dummy_sd.status.name, "dummy", 24);
+
+			snprintf(cmd, sizeof(cmd), "%s : %s", dummy_sd.status.name, str);
+			is_atcommand(dummy_sd.fd, &dummy_sd, cmd, 99);
+			return 0;
+		}
+	}
+
 	return 0;
 }
 
