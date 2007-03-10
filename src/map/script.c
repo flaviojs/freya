@@ -300,7 +300,6 @@ int buildin_npcskilleffect(struct script_state *st);
 int buildin_specialeffect(struct script_state *st);
 int buildin_specialeffect2(struct script_state *st);
 int buildin_nude(struct script_state *st);
-// int buildin_gmcommand(struct script_state *st);
 int buildin_movenpc(struct script_state *st);
 int buildin_message(struct script_state *st);
 int buildin_npctalk(struct script_state *st);
@@ -563,7 +562,6 @@ struct {
 	{buildin_inittimer,"inittimer",""},
 	{buildin_stoptimer,"stoptimer",""},
 	{buildin_cmdothernpc,"cmdothernpc","ss"},
-//	{buildin_gmcommand,"gmcommand","*"},
 //	{buildin_movenpc,"movenpc","siis"},
 	{buildin_message,"message","s*"},
 	{buildin_npctalk,"npctalk","*"},
@@ -6824,92 +6822,6 @@ int buildin_nude(struct script_state *st)
 
 	return 0;
 }
-
-/*==========================================
- * GM command
- *------------------------------------------
- */
-/*int buildin_gmcommand(struct script_state *st)
-{
-	struct map_session_data *sd;
-	char *cmd;
-	char output[128]; // char name (24) + " : " (3) + gm command (100) + NULL (1)
-	int len_output, len_charname, i;
-
-	sd = script_rid2sd(st);
-	if (!sd)
-		return 0;
-	cmd = conv_str(st, &(st->stack->stack_data[st->start+2]));
-
-	// Void command?
-	if (cmd == NULL) {
-		printf("gmcommand in script with no message.\n");
-		return 0;
-	}
-
-	// Only spaces?
-	i = 0;
-	while (cmd[i] != '\0' && isspace(cmd[i]))
-		i++;
-	if (cmd[i] == '\0') {
-		printf("gmcommand in script with no command (only spaces).\n");
-		return 0;
-	}
-
-	memset(output, 0, sizeof(output));
-	strncpy(output, sd->status.name, 24);
-	strcat(output, " : ");
-	len_output = strlen(output);
-	len_charname = strlen(sd->status.name);
-	// If script doesn't have character name + " : ", add it
-	if (strncmp(cmd, output, len_output) != 0) {
-		// If script begin by " : "
-		if (strncmp(cmd, " : ", 3) == 0) // strlen(" : ") = 3
-			strncpy(output + len_output, cmd + 3, 100); // Just add the name before
-		// If script begin by ": "
-		else if (strncmp(cmd, ": ", 2) == 0) // strlen(": ") = 2
-			strncpy(output + len_output, cmd + 2, 100); // Just add the name before
-		// If script begin by ":"
-		else if (strncmp(cmd, ":", 1) == 0) // strlen(":") = 1
-			strncpy(output + len_output, cmd + 1, 100); // Just add the name before
-		// If script begin by " :"
-		else if (strncmp(cmd, " :", 2) == 0) // strlen(" :") = 2
-			strncpy(output + len_output, cmd + 2, 100); // Just add the name before
-		// If script begin by the character name
-		else if (strncmp(cmd, sd->status.name, len_charname) == 0) {
-			// Check for following symbols
-			if (strncmp(cmd + len_charname, ": ", 2) == 0) // strlen(": ") = 2
-				strncpy(output + len_output, cmd + len_charname + 2, 100); // Just add correct syntax
-			else if (strncmp(cmd + len_charname, ":", 1) == 0) // strlen(":") = 1
-				strncpy(output + len_output, cmd + len_charname + 1, 100); // Just add correct syntax
-			else if (strncmp(cmd + len_charname, " :", 2) == 0) // strlen(" :") = 2
-				strncpy(output + len_output, cmd + len_charname + 2, 100); // Just add correct syntax
-			else
-				strncpy(output + len_output, cmd + len_charname, 100); // Add the " : " add the name before
-		// if no character name and no " : "
-		} else
-			strncpy(output + len_output, cmd, 100); // Then add complete command
-	// If command if already complete
-	} else
-		strncpy(output, cmd, 127);
-
-	// Replace '@' by correct symbol
-	i = len_charname + 3; // " : " (3)
-	while (output[i] != '\0' && isspace(output[i]))
-		i++;
-	if (output[i] == '@')
-		output[i] = GM_Symbol();
-	else if (output[i] != GM_Symbol()) {
-		printf("'gmcommand' in script with no valid command (not begining by '@' or %c).\n", GM_Symbol());
-		// Don't stop, its possible its Main_symbol or @char_symbol
-		printf("If you use special symbol for 'main' channel or to replace '@char'\n");
-		printf("please use '@main ' or complete GM command.\n");
-	}
-
-	is_atcommand(sd->fd, sd, output, 99);
-
-	return 0;
-}*/
 
 /*==========================================
  * Displays a message for the player only (like system messages like "you got an apple" )
