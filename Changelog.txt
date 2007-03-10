@@ -11,6 +11,9 @@
 Date	Added
 
 03/09/2007
+	* Changed: Portions of Thanatos script to be more optimized / safe [GreenGoblin]
+	* Changed: Thanatos warp names and 1 var check [GreenGoblin]
+	 - This one will cause trouble if you update Thanatos and not the warp 
 	* Imported: 'gmcommand' script command from jAthena [Tsuyuki]
 	* Removed: Old 'gmcommand' script command [Tsuyuki]
 

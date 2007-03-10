@@ -12,8 +12,9 @@
 //= the top floor and summon him
 //===== Comments ==========================================
 //= 1.0 - Converted Aegis script to Freya [GreenGoblin]
-//= 1.1 - Did a small optimization on the item exchange NPC
+//= 1.1 - Did a small optimization on the item exchnage NPC
 //= also added zeny check to avoid 1 billion zeny problems [GreenGoblin]
+//= 1.2 - More optimizations and changing some safeguards to work better against exploit [GreenGoblin]
 //=========================================================
 
 //Entrance NPC
@@ -1809,8 +1810,8 @@ L_NoBreak:
 // Stone Statue - Red Magical Stone
 tha_t12.gat,96,58,0	script	Stone Statue#1	111,{
 
-	if ($Thanaboss == 0) goto L_Stones;
-	if ($Thanaboss == 6) goto L_Glow;
+	if ($@Thanaboss == 0) goto L_Stones;
+	if ($@Thanaboss == 6) goto L_Glow;
 	mes "^3355FFThis statue is glowing";
 	mes "with a mysterious light.";
 	mes "Some strange force keeps";
@@ -1848,7 +1849,7 @@ L_Continue:
 	specialeffect 55;
 	enablenpc "tteffect2";
 	donpcevent "tteffect2::OnGlow";
-	set $Thanaboss,1;
+	set $@Thanaboss,1;
 	close;
 
 L_Continue2:
@@ -1871,8 +1872,8 @@ L_Cancel:
 // Stone Statue - Yellow Magical Stone
 tha_t12.gat,161,58,0	script	Stone Statue#2	111,{
 
-	if ($Thanaboss == 1) goto L_Stones;
-	if ($Thanaboss == 6) goto L_Glow;
+	if ($@Thanaboss == 1) goto L_Stones;
+	if ($@Thanaboss == 6) goto L_Glow;
 	mes "^3355FFThis statue is glowing";
 	mes "with a mysterious light.";
 	mes "Some strange force keeps";
@@ -1910,7 +1911,7 @@ L_YellowStone:
 	specialeffect 57;
 	enablenpc "tteffect3";
 	donpcevent "tteffect3::OnGlow";
-	set $Thanaboss,2;
+	set $@Thanaboss,2;
 	close;
 
 L_Cancel:
@@ -1926,8 +1927,8 @@ L_Cancel:
 // Stone Statue - Blue Magical Stone
 tha_t12.gat,104,18,0	script	Stone Statue#3	111,{
 
-	if ($Thanaboss == 2) goto L_Stones;
-	if ($Thanaboss == 6) goto L_Glow;
+	if ($@Thanaboss == 2) goto L_Stones;
+	if ($@Thanaboss == 6) goto L_Glow;
 	mes "^3355FFThis statue is glowing";
 	mes "with a mysterious light.";
 	mes "Some strange force keeps";
@@ -1965,7 +1966,7 @@ L_BlueStone:
 	specialeffect 54;
 	enablenpc "tteffect5";
 	donpcevent "tteffect5::OnGlow";
-	set $Thanaboss,3;
+	set $@Thanaboss,3;
 	close;
 
 L_Cancel:
@@ -1981,8 +1982,8 @@ L_Cancel:
 // Stone Statue - Black Magical Stone
 tha_t12.gat,128,86,0	script	Stone Statue#4	111,{
 
-	if ($Thanaboss == 3) goto L_Stones;
-	if ($Thanaboss == 6) goto L_Glow;
+	if ($@Thanaboss == 3) goto L_Stones;
+	if ($@Thanaboss == 6) goto L_Glow;
 	mes "^3355FFThis statue is glowing";
 	mes "with a mysterious light.";
 	mes "Some strange force keeps";
@@ -2019,7 +2020,7 @@ L_BlackStone:
 	specialeffect 59;
 	enablenpc "tteffect1";
 	donpcevent "tteffect1::OnGlow";
-	set $Thanaboss,4;
+	set $@Thanaboss,4;
 	close;
 
 L_Cancel:
@@ -2035,8 +2036,8 @@ L_Cancel:
 // Stone Statue - Green Magical Stone
 tha_t12.gat,154,18,0	script	Stone Statue#5	111,{
 
-	if ($Thanaboss == 4) goto L_Stones;
-	if ($Thanaboss == 6) goto L_Glow;
+	if ($@Thanaboss == 4) goto L_Stones;
+	if ($@Thanaboss == 6) goto L_Glow;
 	mes "^3355FFThis statue is glowing";
 	mes "with a mysterious light.";
 	mes "Some strange force keeps";
@@ -2074,8 +2075,8 @@ L_GreenStone:
 	mes "activated, and is emitting";
 	mes "a fearsome, powerful energy.^000000";
 	delitem 7429,1; // Green Magical Stone
-	set $Thanaboss2,0;
-	set $Thanaboss,5;
+	set $@Thanaboss2,0;
+	set $@Thanaboss,5;
 	enablenpc "WarpToBoss";
 	close;
 
@@ -2110,21 +2111,9 @@ OnGlow:
 	end;
 
 OnTimer500:
-	specialeffect 59;
-	end;
-
 OnTimer1000:
-	specialeffect 59;
-	end;
-
 OnTimer1500:
-	specialeffect 59;
-	end;
-
 OnTimer2000:
-	specialeffect 59;
-	end;
-
 OnTimer2500:
 	specialeffect 59;
 	end;
@@ -2132,7 +2121,7 @@ OnTimer2500:
 OnTimer3000:
 	specialeffect 59;
 	stopnpctimer;
-	if ($Thanaboss != 6) goto OnGlow;
+	if ($@Thanaboss != 6) goto OnGlow;
 	end;
 
 }
@@ -2153,21 +2142,9 @@ OnGlow:
 	end;
 
 OnTimer500:
-	specialeffect 55;
-	end;
-
 OnTimer1000:
-	specialeffect 55;
-	end;
-
 OnTimer1500:
-	specialeffect 55;
-	end;
-
 OnTimer2000:
-	specialeffect 55;
-	end;
-
 OnTimer2500:
 	specialeffect 55;
 	end;
@@ -2175,7 +2152,7 @@ OnTimer2500:
 OnTimer3000:
 	specialeffect 55;
 	stopnpctimer;
-	if ($Thanaboss != 6) goto OnGlow;
+	if ($@Thanaboss != 6) goto OnGlow;
 	end;
 
 }
@@ -2196,21 +2173,9 @@ OnGlow:
 	end;
 
 OnTimer500:
-	specialeffect 57;
-	end;
-
 OnTimer1000:
-	specialeffect 57;
-	end;
-
 OnTimer1500:
-	specialeffect 57;
-	end;
-
 OnTimer2000:
-	specialeffect 57;
-	end;
-
 OnTimer2500:
 	specialeffect 57;
 	end;
@@ -2218,7 +2183,7 @@ OnTimer2500:
 OnTimer3000:
 	specialeffect 57;
 	stopnpctimer;
-	if ($Thanaboss != 6) goto OnGlow;
+	if ($@Thanaboss != 6) goto OnGlow;
 	end;
 
 }
@@ -2239,21 +2204,9 @@ OnGlow:
 	end;
 
 OnTimer500:
-	specialeffect 56;
-	end;
-
 OnTimer1000:
-	specialeffect 56;
-	end;
-
 OnTimer1500:
-	specialeffect 56;
-	end;
-
 OnTimer2000:
-	specialeffect 56;
-	end;
-
 OnTimer2500:
 	specialeffect 56;
 	end;
@@ -2261,7 +2214,7 @@ OnTimer2500:
 OnTimer3000:
 	specialeffect 56;
 	stopnpctimer;
-	if ($Thanaboss != 6) goto OnGlow;
+	if ($@Thanaboss != 6) goto OnGlow;
 	end;
 
 }
@@ -2282,21 +2235,9 @@ OnGlow:
 	end;
 
 OnTimer500:
-	specialeffect 54;
-	end;
-
 OnTimer1000:
-	specialeffect 54;
-	end;
-
 OnTimer1500:
-	specialeffect 54;
-	end;
-
 OnTimer2000:
-	specialeffect 54;
-	end;
-
 OnTimer2500:
 	specialeffect 54;
 	end;
@@ -2304,7 +2245,7 @@ OnTimer2500:
 OnTimer3000:
 	specialeffect 54;
 	stopnpctimer;
-	if ($Thanaboss != 6) goto OnGlow;
+	if ($@Thanaboss != 6) goto OnGlow;
 	end;
 
 }
@@ -2315,7 +2256,7 @@ thana_boss.gat,217,167,0	script	Carvings#1	139,3,3,{
 end;
 
 OnTouch:
-	if ($Thanaboss2 == 10) goto L_Heat;
+	if ($@Thanaboss2 >= 10) goto L_Heat;
 	mes "^3355FFThere is a strangely";
 	mes "shaped hole in the";
 	mes "middle of this purple crest.^000000";
@@ -2349,7 +2290,7 @@ L_Glow:
 	mes "its glow to intensify.^000000";
 	delitem 7437,1; // Fragment of Sorrow
 	monster "thana_boss.gat",217,167,"Sorrow",1711,1;
-	set $Thanaboss2,$Thanaboss2+1;
+	set $@Thanaboss2,$@Thanaboss2+1;
 	disablenpc "Carvings#1";
 	close;
 
@@ -2361,7 +2302,7 @@ thana_boss.gat,202,75,0	script	Carvings#2	139,3,3,{
 end;
 
 OnTouch:
-	if ($Thanaboss2 == 10) goto L_Heat;
+	if ($@Thanaboss2 >= 10) goto L_Heat;
 	mes "^3355FFThere is a strangely";
 	mes "shaped hole in the";
 	mes "middle of this green crest.^000000";
@@ -2395,7 +2336,7 @@ L_Glow:
 	mes "its glow to intensify.^000000";
 	delitem 7436,1; // Fragment of Agony
 	monster "thana_boss.gat",202,75,"Agony",1712,1;
-	set $Thanaboss2,$Thanaboss2+1;
+	set $@Thanaboss2,$@Thanaboss2+1;
 	disablenpc "Carvings#2";
 	close;
 
@@ -2407,7 +2348,7 @@ thana_boss.gat,80,76,0	script	Carvings#3	139,3,3,{
 end;
 
 OnTouch:
-	if ($Thanaboss2 == 10) goto L_Heat;
+	if ($@Thanaboss2 >= 10) goto L_Heat;
 	mes "^3355FFThere is a strangely";
 	mes "shaped hole in the";
 	mes "middle of this blue crest.^000000";
@@ -2441,7 +2382,7 @@ L_Glow:
 	mes "its glow to intensify.^000000";
 	delitem 7438,1; // Fragment of Hatred
 	monster "thana_boss.gat",80,76,"Hatred",1709,1;
-	set $Thanaboss2,$Thanaboss2+1;
+	set $@Thanaboss2,$@Thanaboss2+1;
 	disablenpc "Carvings#3";
 	close;
 
@@ -2453,7 +2394,7 @@ thana_boss.gat,62,171,0	script	Carvings#4	139,3,3,{
 end;
 
 OnTouch:
-	if ($Thanaboss2 == 10) goto L_Heat;
+	if ($@Thanaboss2 >= 10) goto L_Heat;
 	mes "^3355FFThere is a strangely";
 	mes "shaped hole in the";
 	mes "middle of this red crest.^000000";
@@ -2487,7 +2428,7 @@ L_Glow:
 	mes "its glow to intensify.^000000";
 	delitem 7439,1; // Fragment of Despair
 	monster "thana_boss.gat",62,171,"Despair",1710,1;
-	set $Thanaboss2,$Thanaboss2+1;
+	set $@Thanaboss2,$@Thanaboss2+1;
 	disablenpc "Carvings#4";
 	close;
 
@@ -2499,7 +2440,7 @@ thana_boss.gat,141,217,0	script	Carvings#5	139,3,3,{
 end;
 
 OnTouch:
-	if ($Thanaboss2 > 3 && getmapmobs("thana_boss.gat")==0) goto Carving6;
+	if (($@Thanaboss2 == 4) && (getmapmobs("thana_boss.gat")==0)) goto Carving6;
 	mes "^3355FFYou find a strange";
 	mes "crest engraved";
 	mes "on the floor.^000000";
@@ -2518,7 +2459,7 @@ Carving6:
 	monster "thana_boss.gat",140,216,"Hatred",1709,1,"#Death1::OnWaveDead1";
 	monster "thana_boss.gat",141,217,"Sorrow",1711,1,"#Death1::OnWaveDead1";
 	monster "thana_boss.gat",141,216,"Agony",1712,1,"#Death1::OnWaveDead1";
-	set $Thanaboss2,5;
+	set $@Thanaboss2,5;
 	disablenpc "Carvings#5";
 	close;
 
@@ -2530,11 +2471,11 @@ thana_boss.gat,0,0,0	script	#Death1	-1,{
 end;
 
 OnWaveDead1:
-	set $Thanaboss2,$Thanaboss2 + 1;
-	if ($Thanaboss2 != 9) end;
+	set $@Thanaboss2,$@Thanaboss2 + 1;
+	if ($@Thanaboss2 != 9) end;
 	monster "thana_boss.gat",136,129,"Thanatos",1708,1,"#Death2::OnThanaDead";
-	set $Thanaboss,6;
-	set $Thanaboss2,10;
+	set $@Thanaboss,6;
+	set $@Thanaboss2,10;
 	end;
 }
 
@@ -2579,12 +2520,7 @@ OnTimer60000:
 	end;
 
 OnTimer7200000:
-	set $Thanaboss,0;
+	set $@Thanaboss,0;
 	stopnpctimer;
-	end;
-
-OnInit:
-	set $Thanaboss,0;
-	set $Thanaboss2,0;
 	end;
 }
