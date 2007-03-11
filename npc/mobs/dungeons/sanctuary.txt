@@ -1,53 +1,54 @@
 //===== Freya Script =========================================
-//= Rachel Sanctuary Monster Spawns
+//= Rachel Santuary	monster	Spawn Script
 //===== By: ==================================================
-//= Tsuyuki
+//= Athena
 //===== Current Version: =====================================
-//= 1.0
+//= 1.1
 //===== Compatible With: =====================================
 //= Freya
 //===== Additional Comments: =================================
-// 1.0 Added first version (Temp Spawns - Guessed) [Tsuyuki]
+//= 1.0 Added first version (Temp Spawns - Guessed) [Tsuyuki]
+//= 1.1 Updated spawn mobs from jAthena [$ephiroth]
 //============================================================
 
-//============================================================
-// ra_san01 - Rachel Sanctuary
-//============================================================
+//==================================================
+// ra_san01
+//==================================================
 ra_san01.gat,0,0,0,0	monster	Gremlin	1632,20,0,0,0
 ra_san01.gat,0,0,0,0	monster	Beholder	1633,20,0,0,0
-ra_san01.gat,0,0,0,0	monster	Vanberk	1771,40,0,0,0
-ra_san01.gat,0,0,0,0	monster	Isilla	1772,40,0,0,0
+ra_san01.gat,0,0,0,0	monster	Vanberk	1771,20,0,0,0
+ra_san01.gat,0,0,0,0	monster	Isilla	1772,10,0,0,0
 
-//============================================================
-// ra_san02 - Rachel Sanctuary
-//============================================================
-ra_san02.gat,0,0,0,0	monster	Gremlin	1632,30,0,0,0
-ra_san02.gat,0,0,0,0	monster	Beholder	1633,30,0,0,0
+//==================================================
+// ra_san02
+//==================================================
+ra_san02.gat,0,0,0,0	monster	Gremlin	1632,20,0,0,0
+ra_san02.gat,0,0,0,0	monster	Beholder	1633,20,0,0,0
 ra_san02.gat,0,0,0,0	monster	Vanberk	1771,40,0,0,0
-ra_san02.gat,0,0,0,0	monster	Isilla	1772,40,0,0,0
+ra_san02.gat,0,0,0,0	monster	Isilla	1772,30,0,0,0
 
-//============================================================
-// ra_san03 - Rachel Sanctuary
-//============================================================
-ra_san03.gat,0,0,0,0	monster	Gremlin	1632,30,0,0,0
-ra_san03.gat,0,0,0,0	monster	Beholder	1633,30,0,0,0
-ra_san03.gat,0,0,0,0	monster	Seeker	1774,40,0,0,0
-ra_san03.gat,0,0,0,0	monster	Hondremlin	1773,40,0,0,0
+//==================================================
+// ra_san03
+//==================================================
+ra_san03.gat,0,0,0,0	monster	Gremlin	1632,20,0,0,0
+ra_san03.gat,0,0,0,0	monster	Beholder	1633,20,0,0,0
+ra_san03.gat,0,0,0,0	monster	Hodremlin	1773,30,0,0,0
+ra_san03.gat,0,0,0,0	monster	Seeker	1774,30,0,0,0
 
-//============================================================
-// ra_san04 - Rachel Sanctuary
-//============================================================
-ra_san04.gat,0,0,0,0	monster	Seeker	1774,30,0,0,0
-ra_san04.gat,0,0,0,0	monster	Hondremlin	1773,30,0,0,0
-ra_san04.gat,0,0,0,0	monster	Agav	1769,40,0,0,0
-ra_san04.gat,0,0,0,0	monster	Echio	1770,40,0,0,0
+//==================================================
+// ra_san04
+//==================================================
+ra_san04.gat,0,0,0,0	monster	Agav	1769,30,0,0,0
+ra_san04.gat,0,0,0,0	monster	Echio	1770,30,0,0,0
+ra_san04.gat,0,0,0,0	monster	Hodremlin	1773,20,0,0,0
+ra_san04.gat,0,0,0,0	monster	Seeker	1774,20,0,0,0
 
-//============================================================
-// ra_san05 - Rachel Sanctuary
-//============================================================
-ra_san05.gat,0,0,0,0	monster	Seeker	1774,40,0,0,0
-ra_san05.gat,0,0,0,0	monster	Hondremlin	1773,40,0,0,0
-ra_san05.gat,0,0,0,0	monster	Agav	1769,40,0,0,0
-ra_san05.gat,0,0,0,0	monster	Echio	1770,40,0,0,0
-ra_san05.gat,0,0,0,0	monster	Isilla	1772,30,0,0,0
-ra_san05.gat,0,0,0,0	monster	Gloom Undernight	1768,1,7200000,3600000,0
+//==================================================
+// ra_san05
+//==================================================
+ra_san05.gat,0,0,0,0	monster	Agav	1769,20,0,0,0
+ra_san05.gat,0,0,0,0	monster	Echio	1770,20,0,0,0
+ra_san05.gat,0,0,0,0	monster	Isilla	1772,20,0,0,0
+ra_san05.gat,0,0,0,0	monster	Hodremlin	1773,20,0,0,0
+ra_san05.gat,0,0,0,0	monster	Seeker	1774,20,0,0,0
+ra_san05.gat,0,0,0,0	monster	Gloom Under Night	1768,1,7200000,3600000,1

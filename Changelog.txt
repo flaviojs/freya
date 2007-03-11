@@ -10,6 +10,10 @@
 
 Date	Added
 
+03/11/2007
+	* Updated: Some monster spawns [Tsuyuki]
+	* Fixed: Some Veins monster skills [Tsuyuki]
+
 03/10/2007
 	* Fixed Zweihander ID and incorrect check in socket enchant [GreenGoblin]
 	* Fixed: The Despair of Thanatos Card reading the wrong equipment refine count (Thanks to Esus) [GreenGoblin]

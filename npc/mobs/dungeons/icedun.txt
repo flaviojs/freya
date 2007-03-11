@@ -1,44 +1,44 @@
 //===== Freya Script =========================================
-//= Rachel Fields Monster Spawns
+//= Ice Dungeon	monster	Spawn Script
 //===== By: ==================================================
-//= Tsuyuki
+//= Athena (1.0)
 //===== Current Version: =====================================
-//= 1.2
+//= 1.1
 //===== Compatible With: =====================================
-//= Freya
+//= Any Athena Version
 //===== Additional Comments: =================================
-//= 1.0 Written 7/04/06, Based on jAthena Information
-//= 1.1 Updated with new jAthena information
-//= 1.2 Fixed Ktullanux's spawn time [Tsuyuki]
+//= 1.0 First version from jAthena [Playtester]
+//= 1.1 Updated amount spawn mobs from jAthena [$ephiroth]
 //============================================================
 
 //==================================================
 // ice_dun01 - Ice Cave
 //==================================================
-ice_dun01.gat,0,0,0,0	monster	Gazeti	1778,10,0,0,0
+ice_dun01.gat,0,0,0,0	monster	Siroma	1776,60,0,0,0
 ice_dun01.gat,0,0,0,0	monster	Roween	1782,40,0,0,0
 ice_dun01.gat,0,0,0,0	monster	Muscipular	1780,20,0,0,0
-ice_dun01.gat,0,0,0,0	monster	Shiroma	1776,60,0,0,0
+ice_dun01.gat,0,0,0,0	monster	Gazeti	1778,1,0,0,0
 
 //==================================================
 // ice_dun02 - Ice Cave
 //==================================================
-ice_dun02.gat,0,0,0,0	monster	Gazeti	1778,30,0,0,0
-ice_dun02.gat,0,0,0,0	monster	Icicle	1789,10,0,0,0
-ice_dun02.gat,0,0,0,0	monster	Snowier	1775,30,0,0,0
-ice_dun02.gat,0,0,0,0	monster	Shiroma	1776,20,0,0,0
+ice_dun02.gat,0,0,0,0	monster	Snowier	1775,60,0,0,0
+ice_dun02.gat,0,0,0,0	monster	Gazeti	1778,20,0,0,0
+ice_dun02.gat,0,0,0,0	monster	Siroma	1776,40,0,0,0
 ice_dun02.gat,0,0,0,0	monster	Ice Titan	1777,10,0,0,0
+ice_dun02.gat,0,0,0,0	monster	Iceicle	1789,10,0,0,0
 
 //==================================================
 // ice_dun03 - Ice Cave
 //==================================================
-ice_dun03.gat,0,0,0,0	monster	Gazeti	1778,30,0,0,0
-ice_dun03.gat,0,0,0,0	monster	Icicle	1789,10,0,0,0
-ice_dun03.gat,0,0,0,0	monster	Snowier	1775,30,0,0,0
 ice_dun03.gat,0,0,0,0	monster	Ice Titan	1777,50,0,0,0
-ice_dun03.gat,0,0,0,0	monster	Ktullanux	1779,1,7200000,3600000,0 // Temp Spawn for Players
+ice_dun03.gat,0,0,0,0	monster	Snowier	1775,20,0,0,0
+ice_dun03.gat,0,0,0,0	monster	Snowier	1776,20,0,0,0
+ice_dun03.gat,0,0,0,0	monster	Gazeti	1778,30,0,0,0
+ice_dun03.gat,0,0,0,0	monster	Iceicle	1789,10,0,0,0
+ice_dun03.gat,0,0,0,0	monster	Ktullanux	1779,1,39600000,19800000,1
 
 //==================================================
 // ice_dun04 - Ice Cave
 //==================================================
-//ice_dun04.gat,0,0,0,0	monster	Ktullanux	1779,1,0,0,0 // Quest Summon Only
+// ice_dun04.gat,0,0,0,0	monster	Ktullanux	1779,1,0,0,0 // Quest Summon Only
