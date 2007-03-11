@@ -11,6 +11,7 @@
 Date	Added
 
 03/10/2007
+	* Fixed Zweihander ID and incorrect check in socket enchant [GreenGoblin]
 	* Fixed: The Despair of Thanatos Card reading the wrong equipment refine count (Thanks to Esus) [GreenGoblin]
 
 03/09/2007

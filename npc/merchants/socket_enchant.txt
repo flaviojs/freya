@@ -3,9 +3,9 @@
 //===== By: ==================================================
 //= Sousuke_PL
 //===== Current Version: =====================================
-//= 0.2
+//= 1.0
 //===== Compatible With: =====================================
-//= FReya
+//= Freya
 //===== Description: =========================================
 //= Item loses all element refinement and upgrades but
 //= cards too?
@@ -13,6 +13,7 @@
 //= 0.1a added missing L_No: to 2 funcs [Lupus]
 //= 0.1b Removed duplicates [Toms]
 //= 0.2	Added missing next;'s [Evera]
+//= 1.0 Fixed Zweihander ID and incorrect check [GreenGoblin]
 //============================================================
 
 
@@ -162,7 +163,7 @@ lhz_in02.gat,281,35,5	script	Socket Enchant	84,{
 
       Zweihander:
            set @olditem,1168;
-           set @newitem,1716;
+           set @newitem,1171;
            callfunc "f_weapon_a3";
 
       Flamberge:
@@ -613,7 +614,7 @@ function	script	addslot2	{
 
            if (countitem(@olditem)<1) goto L_NoItem;
            if (Zeny<@addprice) goto L_NoZeny;
-           if ((countitem(@itemup1)<@itemupiece1) && (countitem(@itemup2)<@itemupiece2)) goto L_NoItemUp;
+           if ((countitem(@itemup1)<@itemupiece1) || (countitem(@itemup2)<@itemupiece2)) goto L_NoItemUp;
 
            delitem @itemup1,@itemupiece1;
            delitem @itemup2,@itemupiece2;
