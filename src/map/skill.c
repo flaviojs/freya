@@ -8923,14 +8923,14 @@ static int skill_check_condition2_pc(struct map_session_data *sd, struct skill_c
 			pc_delitem(sd,index[idx],amount[idx],0);	// アイテム消費
 	}else{
 		if(sc->id != AM_POTIONPITCHER && sc->id != CR_SLIMPITCHER) {
-			if(sc->id == AL_WARP && !(type&2))
-				return 1;
+			if(sc->id != AL_WARP || type&2){
 			for(i=0;i<10;i++) {
 				if(index[i] >= 0)
 					pc_delitem(sd,index[i],amount[i],0);		// アイテム消費
 			}
 		}
 	}
+}
 
 ITEM_NOCOST:
 

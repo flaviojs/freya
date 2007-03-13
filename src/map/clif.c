@@ -7365,7 +7365,11 @@ void clif_guild_memberlist(struct map_session_data *sd, struct guild *g)
 		WFIFOW(fd,c*104+12)=m->hair;
 		WFIFOW(fd,c*104+14)=m->hair_color;
 		WFIFOW(fd,c*104+16)=m->gender;
-		WFIFOW(fd,c*104+18)=m->class;
+		if(m->class==PC_CLASS_GS || m->class==PC_CLASS_NJ){
+                WFIFOW(fd,c*104+18)=m->class-4;
+                }else{
+                WFIFOW(fd,c*104+18)=m->class;
+                }
 		WFIFOW(fd,c*104+20)=m->lv;
 		WFIFOL(fd,c*104+22)=m->exp;
 		WFIFOL(fd,c*104+26)=(int)m->online;

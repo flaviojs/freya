@@ -10,6 +10,9 @@
 
 Date	Added
 
+03/12/2007
+	* Updated: Phaeton to Athena 2278 (Latest) [Tsuyuki]
+
 03/11/2007
 	* Updated: Some monster spawns [Tsuyuki]
 	* Fixed: Some Veins monster skills [Tsuyuki]
