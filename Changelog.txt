@@ -11,6 +11,7 @@
 Date	Added
 
 03/17/2007
+	* Fixed: Typo with Aliza's drops [Tsuyuki]
 	* Changed: Applied Galaxy's position lag fix ideas [Tsuyuki]
 	* Fixed: Typo in Ice Dungeon spawns [Tsuyuki]
 	* Updated: Changed Thor Guardian monster modes to 181 (As suggested by theultramage) [Tsuyuki]
