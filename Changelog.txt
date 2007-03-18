@@ -10,6 +10,15 @@
 
 Date	Added
 
+03/17/2007
+	* Fixed: Issue with script command 'BaseClass' not working [Tsuyuki]
+	* Fixed: Some problems with the custom rental NPC [Tsuyuki]
+	* Imported: Momotaro Event from eAthena [Tsuyuki]
+	* Removed: Some more old custom scripts [Tsuyuki]
+	* Removed: Center Kafra from Prontera, it's unofficial [Tsuyuki]
+	* Fixed: Some stuff with the Kafra system [Tsuyuki]
+	* Fixed: Some issues with GS_INCREASING not properly displaying/calculating stats [Tsuyuki]
+
 03/11/2007
 	* Updated: Some monster spawns [Tsuyuki]
 	* Fixed: Some Veins monster skills [Tsuyuki]

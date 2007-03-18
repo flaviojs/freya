@@ -847,8 +847,8 @@ int status_calc_pc(struct map_session_data* sd, int first)
 		}
 
 		if (sd->sc_data[SC_INCREASING].timer != -1) {
-			sd->paramb[1] += sd->sc_data[SC_INCREASING].val1;
-			sd->paramb[4] += sd->sc_data[SC_INCREASING].val1;
+			sd->paramb[1] += 4;
+			sd->paramb[4] += 4;
 		}
 
 		if(sd->sc_data[SC_STRFOOD].timer != -1)
@@ -872,6 +872,8 @@ int status_calc_pc(struct map_session_data* sd, int first)
 			sd->flee += 30;
 			sd->hit -= 30;
 		}
+		if (sd->sc_data[SC_INCREASING].timer!=-1)
+			sd->hit += 20;
 		if (sd->sc_data[SC_GATLINGFEVER].timer != -1)
 			sd->flee -= 5*sd->sc_data[SC_GATLINGFEVER].val1;
 		if(sd->sc_data[SC_BATKFOOD].timer != -1)

@@ -1,9 +1,9 @@
 //===== Freya Script ==================================================
 //= Prontera Kafras
 //===== By: ===========================================================
-//= eAthena
+//= eAthena/Freya
 //===== Current Version: ==============================================
-//= 2.5
+//= 2.6
 //===== Compatible With: ==============================================
 //= Freya
 //===== Description: ==================================================
@@ -14,15 +14,16 @@
 //=  arg(1): Set to 1 to disable teleport menu option. Otherwise set to 0.
 //=  arg(2): Set to 1 to disable info menu.  Otherwise set to 0.
 //===== Additional Comments: ==========================================
-//= v1.1 Now using functions :)
-//= v2.1b Minor changes to function calls. Using arguments.
-//= This version uses arrays .[kobra_k88]
-//= 2.2 North Kafra allows you save your position
-//= 2.3 New Teleport list, new prices, 2.3a fixed Alberta Teleport [Lupus]
-//= 2.3b One Kafra's been moved to Prontera, thx to Vicious_Pucca [Lupus]
-//= 2.4 Updated Kafras locations for the mini-map [Lupus]
-//= 2.41 New prices [Evera]
-//= 2.5 Can't save outside city [Evera]
+//= 1.0 Now using functions :) [Unknown]
+//= 1.1 Minor changes to function calls. Using arguments.
+//= 	This version uses arrays .[kobra_k88]
+//= 1.2 North Kafra allows you save your position [Unknown]
+//= 1.3 New Teleport list, new prices, 2.3a fixed Alberta Teleport [Lupus]
+//= 1.4 One Kafra's been moved to Prontera, thx to Vicious_Pucca [Lupus]
+//= 1.5 Updated Kafras locations for the mini-map [Lupus]
+//= 1.6 New prices [Evera]
+//= 1.7 Can't save outside city [Evera]
+//= 1.8 Removed center Prontera Kafra (Unofficial) [Tsuyuki]
 //=====================================================================
 
 
@@ -67,18 +68,6 @@ prontera.gat,282,200,4	script	Kafra Employee	115,{
 	M_Save:
 			savepoint "prontera.gat",281,203;
 			end;
-}
-
-
-// Center ==========================================
-prontera.gat,146,86,6	script	Kafra Employee	117,{
-	cutin "kafra_01",2;
-	callfunc "F_KafSetPront";
-	callfunc "F_Kafra",0,0,0;
-
-	M_Save:
-		savepoint "prontera.gat",116,73;
-		end;
 }
 
 // Function: Sets variables for Prontera Kafras ----------------------------

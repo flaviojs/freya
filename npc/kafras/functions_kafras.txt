@@ -443,9 +443,11 @@ function	script	F_KafEnd	{
 	if (getarg(0) != 1) mes "We, here at Kafra Corporation, are always endeavoring to provide you with the best services. We hope that we meet your adventuring needs and standards of excellence.";
 	if (getarg(0) == 1) mes "We, Kafra Corporation.... Will be with you.... whenever.... wherever... therefore.... please don't forget us.....";
 
+	callfunc "F_KafSaveEnd",0,3;
+
 F_KafSaveEnd:
 	close2;
-	cutin "", 255;
+	cutin "",255;
 	setarray @wrpP[0], 0, 0, 0, 0, 0, 0, 0;
 	setarray @wrpD$[0], "", "", "", "", "", "", "";
 	setarray @wrpC$[0], "", "", "", "", "", "", "";

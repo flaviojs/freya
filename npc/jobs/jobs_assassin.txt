@@ -38,18 +38,18 @@
 
 in_moc_16.gat,19,33,4	script	Guildsman	55,{
 
-	callfunc "F_BlockHigh",Job_Thief_High,"Thief High",Job_Assassin_Cross,"Assassin Cross","Assassin Huey";
+	callfunc "F_BlockHigh",JOB_THIEF_HIGH,"Thief High",JOB_ASSASSIN_CROSS,"Assassin Cross","Assassin Huey";
 
-	if (BaseJob == Job_Assassin) goto L_Assassin;
+	if (BaseJob == JOB_ASSASSIN) goto L_Assassin;
 
 	mes "[Angry looking man]";
-	if (BaseClass == Job_Novice) goto L_Novice;
-	if (BaseClass == Job_Swordman) goto L_Swordsman;
-	if (BaseClass == Job_Mage) goto L_Mage;
-	if (BaseClass == Job_Archer) goto L_Archer;
-	if (BaseClass == Job_Acolyte) goto L_Acolyte;
-	if (BaseClass == Job_Merchant) goto L_Merchant;
-	if (BaseClass != Job_Thief || BaseJob == Job_Rogue) goto L_OtherClass;
+	if (BaseClass == JOB_NOVICE) goto L_Novice;
+	if (BaseClass == JOB_SWORDMAN) goto L_Swordsman;
+	if (BaseClass == JOB_MAGE) goto L_Mage;
+	if (BaseClass == JOB_ARCHER) goto L_Archer;
+	if (BaseClass == JOB_ACOLYTE) goto L_Acolyte;
+	if (BaseClass == JOB_MERCHANT) goto L_Merchant;
+	if (BaseClass != JOB_THIEF || BaseJob == JOB_ROGUE) goto L_OtherClass;
 	if (JobLevel < 40) goto L_JobLevel;
 	goto L_JobContinue;
 
@@ -183,7 +183,7 @@ in_moc_16.gat,19,33,4	script	Guildsman	55,{
 		mes "[Assassin Huey]";
 		mes "Very well done, you are now offically an Assassin.  Although you are free to visit us at anytime..............";
 		setlook 7,0;
-		callfunc "Job_Change",Job_Assassin;
+		callfunc "Job_Change",JOB_ASSASSIN;
 		callfunc "F_ClearJobVar";		// clears all job variables for the current player
 		set kaitrig, 0;
 		next;

@@ -17,7 +17,7 @@
 //============================================================
 
 
-prontera.gat,122,200,1	script	Rentals	905,{
+prontera.gat,182,214,3	script	Rentals	906,{
 
 	mes "[Adelia]";
 	mes "Hi there! I rent Carts, Falcons, and Pecos.";
@@ -35,21 +35,21 @@ prontera.gat,122,200,1	script	Rentals	905,{
 
 // Rent a Cart
 L_Cart:
-	set @rentem$, "Cart";
+	set @rentitem$, "Cart";
 	if (checkcart(0) > 0) goto L_Already_Have;
 	set @skillid, 39;
 	goto RentItem;
 
 // Rent a Falcon
 L_Falcon:
-	set @rentem$, "Falcon";
+	set @rentitem$, "Falcon";
 	if (checkfalcon(0) > 0) goto L_Already_Have;
 	set @skillid, 127;
 	goto RentItem;
 
 // Rent a Peco
 L_Peco:
-	set @rentem$, "PecoPeco";
+	set @rentitem$, "Peco";
 	if (checkriding(0)>0) goto L_Already_Have;
 	set @skillid, 63;
 	goto RentItem;
@@ -59,13 +59,13 @@ L_Peco:
 RentItem:
 	if (getskilllv(@skillid)<1) goto L_Need_Skill;
 	mes "[Adelia]";	
-	mes strcharinfo(0) + ", Would you like to rent a " + @rentem$ + "?";
+	mes strcharinfo(0) + ", Would you like to rent a " + @rentitem$ + "?";
 	next;
-	menu "- Rent a " + @rentem$,-,"- No thanks",L_Quit;
+	menu "- Rent a " + @rentitem$,-,"- No thanks",L_Quit;
 
-	if (@rentem$=="Cart") setcart;
-	if (@rentem$=="Falcon") setfalcon;
-	if (@rentem$=="Peco") setriding;
+	if (@rentitem$=="Cart") setcart;
+	if (@rentitem$=="Falcon") setfalcon;
+	if (@rentitem$=="Peco") setriding;
 
 	L_Quit2:
 		mes "[Adelia]";
@@ -74,17 +74,17 @@ RentItem:
 
 	L_Quit:
 		mes "[Adelia]";
-		mes "Please come back when you are ready to rent a " + @rentem$ + "!";
+		mes "Please come back when you are ready to rent a " + @rentitem$ + "!";
 		close;
 
 	L_Need_Skill:
 		mes "[Adelia]";
-		mes "I'm sorry, but you don't have the required skill to handle a " + @rentem$ + ".";
+		mes "I'm sorry, but you don't have the required skill to handle a " + @rentitem$ + ".";
 		close;
 
 	L_Already_Have:
 		mes "[Adelia]";
-		mes "Erm.. it seems you already have a ^996633" + @rentem$ +"^000000.";
+		mes "Erm.. it seems you already have a ^996633" + @rentitem$ +"^000000.";
 		mes "Come back when you actually need my services...";
 		close;
 }
