@@ -10,6 +10,9 @@
 
 Date	Added
 
+03/18/2007
+	* Fixed: Single Action's ASPD increase (Thanks to galaxy) [Tsuyuki]
+
 03/17/2007
 	* Fixed: Typo with Aliza's drops [Tsuyuki]
 	* Changed: Applied Galaxy's position lag fix ideas [Tsuyuki]

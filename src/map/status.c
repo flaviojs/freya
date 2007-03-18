@@ -994,10 +994,12 @@ int status_calc_pc(struct map_session_data* sd, int first)
 	aspd_rate = sd->aspd_rate;
 
 	if (sd->status.weapon >= 17 && sd->status.weapon <= 21)
-  	{
+  {
 		if ((skill = pc_checkskill(sd, GS_SINGLEACTION)) > 0)
+		{
 			sd->hit += 2*skill;
-			aspd_rate -= ((skill + 1) / 2) * 10;
+			aspd_rate -= (skill + 1)*10/20;
+		}
 		if ((skill = pc_checkskill(sd, GS_SNAKEEYE)) > 0) {
 			sd->hit += skill;
 			sd->attackrange += skill;
