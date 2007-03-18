@@ -3803,6 +3803,9 @@ int clif_damage(struct block_list *src, struct block_list *dst, unsigned int tic
 	WPACKETW(27) = damage2;
 	clif_send(packet_len_table[0x8a], src, AREA);
 
+	clif_fixpos(src);
+	clif_fixpos(dst);
+
 	return 0;
 }
 
@@ -4494,6 +4497,9 @@ int clif_skill_damage(struct block_list *src, struct block_list *dst,
 	WPACKETB(32) = (type > 0) ? type : skill_get_hit(skill_id);
 	clif_send(packet_len_table[0x1de], src, AREA);
 
+	clif_fixpos(src);
+	clif_fixpos(dst);
+
 	return 0;
 }
 
@@ -4536,6 +4542,9 @@ int clif_skill_damage2(struct block_list *src, struct block_list *dst,
 	WPACKETB(34) = (type > 0) ? type : skill_get_hit(skill_id);
 	clif_send(packet_len_table[0x115], src, AREA);
 
+	clif_fixpos(src);
+	clif_fixpos(dst);
+
 	return 0;
 }
 
@@ -4556,6 +4565,9 @@ int clif_skill_nodamage(struct block_list *src, struct block_list *dst,
 	WPACKETL(10) = src->id;
 	WPACKETB(14) = fail;
 	clif_send(packet_len_table[0x11a], src, AREA);
+
+	clif_fixpos(src);
+	clif_fixpos(dst);
 
 	return 0;
 }
