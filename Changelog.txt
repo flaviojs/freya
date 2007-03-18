@@ -11,6 +11,7 @@
 Date	Added
 
 03/17/2007
+	* Fixed: Isis not giving exp [Tsuyuki]
 	* Fixed: Issue with script command 'BaseClass' not working [Tsuyuki]
 	* Fixed: Some problems with the custom rental NPC [Tsuyuki]
 	* Imported: Momotaro Event from eAthena [Tsuyuki]
