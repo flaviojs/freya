@@ -10,6 +10,9 @@
 
 Date	Added
 
+03/17/2007
+	* Imported: Momotaro Event from eAthena [Tsuyuki]
+
 03/12/2007
 	* Updated: Phaeton to Athena 2278 (Latest) [Tsuyuki]
 
