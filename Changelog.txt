@@ -11,6 +11,7 @@
 Date	Added
 
 03/17/2007
+	* Updated: Changed Thor Guardian monster modes to 181 (As suggested by theultramage) [Tsuyuki]
 	* Fixed: Isis not giving exp [Tsuyuki]
 	* Fixed: Issue with script command 'BaseClass' not working [Tsuyuki]
 	* Fixed: Some problems with the custom rental NPC [Tsuyuki]
