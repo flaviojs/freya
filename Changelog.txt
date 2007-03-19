@@ -10,6 +10,9 @@
 
 Date	Added
 
+03/19/2007
+	* Fixed: overflow with @item [Latios]
+
 03/18/2007
 	* Fixed: Single Action's ASPD increase (Thanks to galaxy) [Tsuyuki]
 

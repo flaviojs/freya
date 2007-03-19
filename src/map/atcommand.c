@@ -4239,6 +4239,9 @@ ATCOMMAND_FUNC(item) {
 	if (number <= 0)
 		number = 1;
 
+	if(number > MAX_AMOUNT)
+		number = MAX_AMOUNT;
+
 	item_id = 0;
 	if ((item_data = itemdb_searchname(item_name)) != NULL ||
 	    (item_data = itemdb_exists(atoi(item_name))) != NULL)
@@ -4310,6 +4313,9 @@ ATCOMMAND_FUNC(charitem) {
 
 	if (number <= 0)
 		number = 1;
+
+	if(number > MAX_AMOUNT)
+		number = MAX_AMOUNT;
 
 	item_id = 0;
 	if ((item_data = itemdb_searchname(item_name)) != NULL ||
@@ -4388,6 +4394,9 @@ ATCOMMAND_FUNC(charitemall) {
 
 	if (number <= 0)
 		number = 1;
+
+	if(number > MAX_AMOUNT)
+		number = MAX_AMOUNT;
 
 	item_id = 0;
 	if ((item_data = itemdb_searchname(item_name)) != NULL ||
@@ -4472,6 +4481,9 @@ ATCOMMAND_FUNC(item2) {
 
 	if (number <= 0)
 		number = 1;
+
+	if(number > MAX_AMOUNT)
+		number = MAX_AMOUNT;
 
 	item_id = 0;
 	if ((item_data = itemdb_searchname(item_name)) != NULL ||
