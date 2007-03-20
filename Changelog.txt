@@ -10,6 +10,9 @@
 
 Date	Added
 
+03/20/2007
+	* Added: Some new items from jAthena [Tsuyuki]
+
 03/19/2007
 	* Fixed: overflow with @item [Latios]
 

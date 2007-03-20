@@ -113,6 +113,9 @@
 596,Cute_Strawberry-Choco,Cute Strawberry-Choco,0,,,100,,,,,1071636479,2,,,,,{},{}
 597,Lovely_Choco-Tart,Lovely Choco-Tart,0,,,100,,,,,1071636479,2,,,,,{},{}
 
+598,Unknown_Item,Unknown Item,0,,,10,,,,,1071636479,2,,,,,{ itemheal rand(45,65),0; },{}
+599,Unknown_Item,Œy‚Unknown Item,0,,,10,,,,,1071636479,2,,,,,{ itemheal rand(105,145),0; },{}
+
 // Usable Items
 601,Fly_Wing,Fly Wing,2,60,30,50,,,,,1071636479,2,,,,,{ warp "Random",0,0; },{}
 602,Butterfly_Wing,Butterfly Wing,2,300,150,50,,,,,1071636479,2,,,,,{ warp "SavePoint",0,0; },{}
@@ -931,6 +934,9 @@
 2119,Superior_Gauntlet,Superior Gauntlet,5,40000,,150,,4,,0,268435456,2,32,,50,,{},{ bonus bMdef,5; }
 2120,Superior_Gauntlet_,Superior Gauntlet,5,40000,,150,,4,,1,268435456,2,32,,50,,{},{ bonus bMdef,5; }
 2121,Memory_Book_,Memory Book,5,20,0,1000,,3,,1,134283780,2,32,,0,,{},{ bonus bInt,1; bonus bMdef,2; }
+
+2122,Unknown_Item,Unknown Item,5,,,1200,,5,,0,991944702,2,32,,,,{},{ bonus bMdef,5; bonus2 bSubSize,1,15; bonus2 bSubSize,2,15; bonus2 bSubRace,1,15; }
+2123,Unknown_Item,Unknown Item,5,,,1000,,5,,1,991944702,2,32,,55,,{},{ bonus bMdef,2; }
 
 2199,Ahura_Mazda,Ahura Mazda,5,1,,10,,100,,0,1071636479,2,32,,0,1,{},{ bonus bShortWeaponDamageReturn,100; bonus2 bSubRace,7,95; bonus bAllStats,50; bonus bMdef,99; skill 479,5; }
 
@@ -1958,6 +1964,7 @@
 
 5800,Unknown_Item,Unknown Item,5,,,50,,0,,0,1071636479,2,512,,,125,{},{ bonus2 bSubRace,7,3; }
 5801,Unknown_Item,Unknown Item,5,,,100,,,,,1071636479,2,256,,,167,{},{ bonus bStr,2; bonus bAgi,2; bonus bVit,2; bonus bInt,2; bonus bDex,2; bonus bLuk,2; bonus2 bSubRace,7,10; bonus4 bAutoSpell,28,500,3,0; }
+5802,Unknown_Item,Unknown Item,5,,,500,,3,,1,1071636479,2,256,,,215,{},{}
 
 // Misc/Collection Items
 7001,Mold_Powder,Mold Powder,3,680,0,10,,,,,,,,,,,{},{}
@@ -2642,6 +2649,42 @@
 
 7721,Treasure_Box,Treasure Box,3,,10,500,,,,,0,,,,,,{},{}
 
+7722,Unknown_Item,Unknown Item,3,,,0,,,,,,,,,,,{},{}
+7723,Unknown_Item,Unknown Item,3,,,0,,,,,,,,,,,{},{}
+7724,Unknown_Item,Unknown Item,3,,,0,,,,,,,,,,,{},{}
+7725,Unknown_Item,Unknown Item,3,,,0,,,,,,,,,,,{},{}
+7726,Unknown_Item,Unknown Item,3,,,0,,,,,,,,,,,{},{}
+7727,Unknown_Item,HP DOCTOR TICKET,3,,,0,,,,,,,,,,,{},{}
+7728,Unknown_Item,SP DOCTOR TICKET,3,,,0,,,,,,,,,,,{},{}
+7729,Unknown_Item,Unknown Item,3,,,100,,,,,,,,,,,{},{}
+7730,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+7731,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+7732,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+7733,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+7734,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+7735,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+7736,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+7737,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+7738,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+7739,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+7740,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+7741,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+7742,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+7743,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+7744,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+7745,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+7746,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+7747,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+7748,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+7749,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+7750,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+7751,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+7752,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+7753,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+7754,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+7755,Unknown_Item,Unknown Item,3,,,0,,,,,,,,,,,{},{}
+7756,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+
 7850,Unknown_Item,Unknown Item,3,,10,10,,,,,0,,,,,,{},{}
 
 7851,Nintendo_Wii,Nintendo Wii,3,,,10,,,,,,,,,,,{},{}
@@ -2652,6 +2695,10 @@
 7856,Unknown_Item,Unknown Item,3,,,50,,,,,,,,,,,{},{}
 7857,Unknown_Item,Unknown Item,3,,,30,,,,,,,,,,,{},{}
 7858,Unknown_Item,Unknown Item,3,,,10,,,,,,,,,,,{},{}
+
+7860,Unknown_Item,Unknown Item,3,,,50,,,,,,,,,,,{},{}
+7861,Unknown_Item,Unknown Item,3,,,50,,,,,,,,,,,{},{}
+7862,Unknown_Item,Unknown Item,3,,,50,,,,,,,,,,,{},{}
 
 // End of Incomplete Misc Entries
 
@@ -2999,12 +3046,17 @@
 12239,New_Year_Rice_Cake_,New Year Rice Cake_,2,,,100,,,,,1071636479,2,,,,,{},{}
 12240,Old_Yellow_Box,Old Yellow Box,2,,,200,,,,,1071636479,2,,,,,{ getitem rand(5259,5262),1; },{}
 
+12241,Unknown_Item,Unknown Item,2,,,100,,,,,1071636479,2,,,,,{ sc_start SC_ASPDPOTION0,1800000,0; },{}
+12242,Unknown_Item,Unknown Item,2,,,100,,,,,1071636479,2,,,,,{ sc_start SC_ASPDPOTION1,1800000,0; },{}
+12243,Unknown_Item,Unknown Item,2,,,100,,,,,1071636479,2,,,,,{ sc_start SC_ASPDPOTION2,1800000,0; },{}
 12244,Unknown_Item,Unknown Item,2,,,200,,,,,1071636479,2,,,,,{ getitem rand(5270,5272),1; },{}
 12245,Unknown_Item,Unknown Item,2,,,500,,,,,1071636479,2,,,,,{},{}
-
-12246,Unknown_Item,Unknown Item,2,,,50,,,,,1000333311,2,,,,,{},{}
+12246,Unknown_Item,Unknown Item,2,,,50,,,,,1071636479,2,,,,,{},{}
+12247,Unknown_Item,Unknown Item,2,,,100,,,,,1071636479,2,,,20,,,{ sc_start SC_STRFOOD,600000,3; sc_start SC_AGIFOOD,600000,3; sc_start SC_VITFOOD,600000,3; sc_start SC_INTFOOD,600000,3; sc_start SC_DEXFOOD,600000,3; sc_start SC_LUKFOOD,600000,3; },{}
 
 12701,Unknown_Item,Unknown Item,2,,,200,,,,,1071636479,2,,,,,{ getitem rand(7851,7853),1; },{}
+12702,Unknown_Item,Unknown Item,2,,,200,,,,,1071636479,2,,,,,{},{}
+12703,Unknown_Item,Unknown Item,2,,,50,,,,,1071636479,2,,,,,{},{}
 
 12900,Field_Manual_Box,Field Manual Box,2,,,10,,,,,1071636479,2,,,,,{ getitem 12208,10; },{}
 12901,Life_Insurance_Box,Life Insurrance Box,2,,,10,,,,,1071636479,2,,,,,{ getitem 12209,10; },{}
@@ -3199,3 +3251,30 @@
 // Extra One-Handed Swords
 13400,Cutlus_,Cutlus,4,,10,900,150,,1,1,414946,2,2,4,40,2,{},{ skill 5,5; bonus bStr,2; bonus bDef,1; }
 13401,Excalibur_,Excalibur,4,,,1200,199,,1,0,414946,2,2,4,40,2,{},{ bonus bInt,10; bonus bLuk,10; bonus bAtkEle,6; }
+
+// New Items
+13500,Unknown_Item,Unknown Item,2,,,10,,,,,1071636479,2,,,,,{ getitem 14500,10; },{}
+13501,Unknown_Item,Unknown Item,2,,,10,,,,,1071636479,2,,,,,{ getitem 12215,15; getitem 12216,15; getitem 12218,10; getitem 12219,10; },{}
+
+13515,Unknown_Item,Unknown Item,2,,,10,,,,,1071636479,2,,,,,{ getitem 514,10; },{}
+13516,Unknown_Item,Unknown Item,2,,,10,,,,,1071636479,2,,,,,{ getitem 526,5; },{}
+13517,Unknown_Item,Unknown Item,2,,,10,,,,,1071636479,2,,,,,{ getitem 607,3; },{}
+
+13526,Unknown_Item,Unknown Item,2,,,10,,,,,1071636479,2,,,,,{},{}
+13527,Unknown_Item,Unknown Item,2,,,10,,,,,1071636479,2,,,,,{},{}
+13528,Unknown_Item,Unknown Item,2,,,10,,,,,1071636479,2,,,,,{},{}
+13529,Unknown_Item,Unknown Item,2,,,10,,,,,1071636479,2,,,,,{},{}
+13530,Unknown_Item,Unknown Item,2,,,10,,,,,1071636479,2,,,,,{},{}
+13531,Unknown_Item,Unknown Item,2,,,10,,,,,1071636479,2,,,,,{ getitem 598,50; },{}
+13532,Unknown_Item,Unknown Item,2,,,10,,,,,1071636479,2,,,,,{ getitem 599,50; },{}
+13533,Unknown_Item,Unknown Item,2,,,10,,,,,1071636479,2,,,,,{ getitem 11500,50; },{}
+13534,Unknown_Item,Unknown Item,2,,,10,,,,,1071636479,2,,,,,{ getitem 11501,50; },{}
+13535,Unknown_Item,Unknown Item,2,,,10,,,,,1071636479,2,,,,,{ getitem 14509,20; },{}
+13536,Unknown_Item,Unknown Item,2,,,10,,,,,1071636479,2,,,,,{ getitem 14510,20; },{}
+13537,Unknown_Item,Unknown Item,2,,,10,,,,,1071636479,2,,,,,{ getitem 14511,20; },{}
+
+14500,Unknown_Item,Unknown Item,2,,,10,,,,,1071636479,2,,,,,{},{}
+
+14509,Unknown_Item,Unknown Item,2,,,20,,,,,1071636479,2,,,,,{ sc_start SC_ASPDPOTION0,1800000,0; },{}
+14510,Unknown_Item,Unknown Item,2,,,20,,,,,998760175,2,,,40,,{ sc_start SC_ASPDPOTION1,1800000,0; },{}
+14511,Unknown_Item,Unknown Item,2,,,20,,,,,148102,2,,,85,,{ sc_start SC_ASPDPOTION2,1800000,0; },{}
