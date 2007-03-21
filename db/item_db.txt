@@ -1124,7 +1124,7 @@
 2415,Bunny_Slippers,Bunny Slippers,5,20,0,300,,,,,1071636478,0,64,,,0,{},{ bonus bLuk,3; }
 2416,Novice_Shoes,Novice Shoes,5,35000,17500,500,0,2,0,1,8388609,2,64,0,40,0,{},{ bonus bMaxHPrate,5; }
 2417,Fricco's_Shoes,Fricco's Shoes,5,30000,15000,500,0,3,0,0,1071636478,2,64,0,65,0,{},{ bonus bAgi,2; if(isequipped(2353,2516)==0) end; bonus bAgi,3; bonus bMaxHPrate,5; bonus bMaxSPrate,5; } // Missing +20% Heal-Rate bonus for potions
-2418,Vidar's_Boots,Vidar's Boots,5,30000,15000,650,0,4,0,0,1071636478,2,64,0,65,0,{},{ bonus bMaxHPrate,9; bonus bMaxSPrate,9; if(isequipped(2353,2517)==0) end; bonus bAgi,3; bonus bMaxHPrate,5; bonus bMaxSPrate,5; } 
+2418,Vidar's_Boots,Vidar's Boots,5,30000,15000,650,0,4,0,0,1071636478,2,64,0,65,0,{},{ bonus bMaxHPrate,9; bonus bMaxSPrate,9; if(isequipped(2353,2517)==0) end; bonus bVit,5; bonus bHPrecovRate,10; bonus bSPrecovRate,10; }
 2419,Gobine's_Greaves,Goibne's Greaves,5,30000,15000,700,0,4,0,0,1071636478,2,64,0,54,0,{},{ bonus bMdef,3; bonus bMaxHPrate,5; bonus bMaxSPrate,5; }
 2420,Angel's_Reincarnation,Angel's Reincarnation,5,10000,5000,300,0,2,0,1,8388609,2,64,0,25,0,{},{ bonus bMaxHP,100; }
 2421,Valkyrie's_Shoes,Valkyrie's Shoes,5,0,,500,,4,,1,1071636478,2,64,,0,0,{},{ if(GetPureJob==JOB_MAGE || GetPureJob==JOB_ARCHER || GetPureJob==JOB_ACOLYTE) bonus bMaxHP,(BaseLevel*5); if(GetPureJob==JOB_SWORDMAN || GetPureJob==JOB_MERCHANT || GetPureJob==JOB_THIEF) bonus bMaxSP,(JobLevel*2); }
