@@ -11,6 +11,7 @@
 Date	Added
 
 03/17/2007
+	* Added: Two missing source files [Tsuyuki]
 	* Fixed: Typo in Ice Dungeon spawns [Tsuyuki]
 	* Imported: Momotaro Event from eAthena [Tsuyuki]
 
