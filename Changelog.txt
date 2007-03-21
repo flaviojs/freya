@@ -11,6 +11,7 @@
 Date	Added
 
 03/20/2007
+	* Removed: Soul Linker skills from class skill trees [Tsuyuki]
 	* Fixed: Novus card drops [Tsuyuki]
 	* Fixed: Added a missing bonus to Mysteltainn [Tsuyuki]
 	* Fixed: Bug with Vidar's Boots equipment set [Tsuyuki]
