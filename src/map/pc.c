@@ -46,7 +46,7 @@
 
 #define STATE_BLIND 0x10
 
-static int exp_table[14][MAX_LEVEL];
+static int exp_table[15][MAX_LEVEL];
 static short statp[MAX_LEVEL];
 
 static int dirx[8] = {0,-1,-1,-1,0,1,1,1};
@@ -5321,11 +5321,11 @@ int pc_nextbaseexp(struct map_session_data *sd)
 
 	if (sd->status.class == 0 || sd->status.class == 4023) i = 0; // Novice & Baby Novice
 	else if (sd->status.class <= 6 || (sd->status.class >= 4024 && sd->status.class <= 4029) ||
-					(sd->status.class >= JOB_TAEKWON && sd->status.class <= JOB_SOUL_LINKER)) i = 1; // 1st Job & Baby 1st Job
+					(sd->status.class >= 4046 && sd->status.class <= 4049)) i = 1; // 1st Job & Baby 1st Job
 	else if (sd->status.class <= 21 || (sd->status.class >= 4030 && sd->status.class <= 4044)) i = 2; // 2nd Job & Baby 2nd Job
 	else if (sd->status.class == 23 || sd->status.class == 4045) i = 3; // Super Novice & Super Baby
 	else if (sd->status.class == 4001) i = 4; // High Novice
-	else if (sd->status.class <= 4007) i = 5; // High 1st Job
+	else if (sd->status.class >= 4002 && sd->status.class <= 4007) i = 5; // High 1st Job
 	else if (sd->status.class == 24 || sd->status.class == 25) i = 1; // Gunslinger/Ninja 1st Job
 	else if (sd->status.class >= 4050 && sd->status.class <= 4053) i = 1; // Death Knight/Dark Collector/Munak/Bon Gun Temp Values
 	else i = 6; // 3rd Job
@@ -5346,14 +5346,14 @@ int pc_nextjobexp(struct map_session_data *sd)
 	if (sd->status.job_level >= MAX_LEVEL || sd->status.job_level <= 0)
 		return 0;
 
-	if (sd->status.class == 0 || sd->status.class == 4023) i = 7; // Novice & Baby Novice [Lupus]
+	if (sd->status.class == 0 || sd->status.class == 4023) i = 7; // Novice & Baby Novice
 	else if (sd->status.class <= 6 || (sd->status.class >= 4024 && sd->status.class <= 4029) ||
-					(sd->status.class >= JOB_TAEKWON && sd->status.class <= JOB_SOUL_LINKER)) i = 8; // 1st Job & Baby 1st Job
-	else if (sd->status.class <= 22 || (sd->status.class >= 4030 && sd->status.class <= 4044)) i = 9; // 2nd Job & Baby 2nd Job
+					(sd->status.class >= 4046 && sd->status.class <= 4049)) i = 8; // 1st Job & Baby 1st Job
+	else if (sd->status.class <= 21 || (sd->status.class >= 4030 && sd->status.class <= 4044)) i = 9; // 2nd Job & Baby 2nd Job
 	else if (sd->status.class == 23 || sd->status.class == 4045) i=10; // Super Novice & Super Baby
 	else if (sd->status.class == 4001) i = 11; // High Novice
-	else if (sd->status.class <= 4007) i = 12; // High 1st Job
-	else if (sd->status.class == 24 || sd->status.class == 25) i = 8; // Gunslinger/Ninja 1st Job
+	else if (sd->status.class >= 4002 && sd->status.class <= 4007) i = 12; // High 1st Job
+	else if (sd->status.class == 24 || sd->status.class == 25) i = 14; // Gunslinger/Ninja
 	else if (sd->status.class >= 4050 && sd->status.class <= 4053) i = 8; // Death Knight/Dark Collector/Munak/Bon Gun Temp Values
 	else i = 13; // 3rd Job
 
@@ -5373,13 +5373,13 @@ int pc_nextbaseafter(struct map_session_data *sd)
 	if (sd->status.base_level >= MAX_LEVEL || sd->status.base_level <= 0)
 		return 0;
 
-	if (sd->status.class == 0 || sd->status.class ==4023) i = 0; // Novice & Baby Novice [Lupus]
+	if (sd->status.class == 0 || sd->status.class ==4023) i = 0; // Novice & Baby Novice
 	else if (sd->status.class <= 6 || (sd->status.class >= 4024 && sd->status.class <= 4029) ||
-					(sd->status.class >= JOB_TAEKWON && sd->status.class <= JOB_SOUL_LINKER)) i = 1; // 1st Job & Baby 1st Job
-	else if (sd->status.class <= 22 || (sd->status.class >= 4030 && sd->status.class <= 4044)) i = 2; // 2nd Job & Baby 2nd Job
+					(sd->status.class >= 4046 && sd->status.class <= 4049)) i = 1; // 1st Job & Baby 1st Job
+	else if (sd->status.class <= 21 || (sd->status.class >= 4030 && sd->status.class <= 4044)) i = 2; // 2nd Job & Baby 2nd Job
 	else if (sd->status.class == 23 || sd->status.class == 4045) i = 3; // Super Novice & Super Baby
 	else if (sd->status.class == 4001) i = 4; // High Novice
-	else if (sd->status.class <= 4007) i = 5; // High 1st Job
+	else if (sd->status.class >= 4002 && sd->status.class <= 4007) i = 5; // High 1st Job
 	else if (sd->status.class == 24 || sd->status.class == 25) i = 1; // Gunslinger/Ninja 1st Job
 	else if (sd->status.class >= 4050 && sd->status.class <= 4053) i = 1; // Death Knight/Dark Collector/Munak/Bon Gun Temp Values
 	else i = 6; //3rd Job
@@ -5400,14 +5400,14 @@ int pc_nextjobafter(struct map_session_data *sd)
 	if(sd->status.job_level>=MAX_LEVEL || sd->status.job_level<=0)
 		return 0;
 
-	if (sd->status.class == 0 || sd->status.class == 4023) i = 7; // Novice & Baby Novice [Lupus]
+	if (sd->status.class == 0 || sd->status.class == 4023) i = 7; // Novice & Baby Novice
 	else if (sd->status.class <= 6 || (sd->status.class >= 4024 && sd->status.class <= 4029) ||
-					(sd->status.class >= JOB_TAEKWON && sd->status.class <= JOB_SOUL_LINKER)) i = 8; // 1st Job & Baby 1st Job
-	else if (sd->status.class <= 27 || (sd->status.class >= 4030 && sd->status.class <= 4044)) i = 9; // 2nd Job & Baby 2nd Job
+					(sd->status.class >= 4046 && sd->status.class <= 4049)) i = 8; // 1st Job & Baby 1st Job
+	else if (sd->status.class <= 21 || (sd->status.class >= 4030 && sd->status.class <= 4044)) i = 9; // 2nd Job & Baby 2nd Job
 	else if (sd->status.class == 23 || sd->status.class == 4045) i = 10; // Super Novice & Super Baby
 	else if (sd->status.class == 4001) i = 11; // High Novice
-	else if (sd->status.class <= 4007) i = 12; // High 1st Job
-	else if (sd->status.class == 24 || sd->status.class == 25) i = 8; // Gunslinger/Ninja 1st Job
+	else if (sd->status.class >= 4002 && sd->status.class <= 4007) i = 12; // High 1st Job
+	else if (sd->status.class == 24 || sd->status.class == 25) i = 14; // Gunslinger/Ninja
 	else if (sd->status.class >= 4050 && sd->status.class <= 4053) i = 8; // Death Knight/Dark Collector/Munak/Bon Gun Temp Values
 	else i = 13; // 3rd Job
 
@@ -8802,11 +8802,11 @@ void pc_readdb(void)
 
 	i = 0;
 	while(fgets(line, sizeof(line), fp)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
-		int bn,b1,b2,b3,b4,b5,b6,jn,j1,j2,j3,j4,j5,j6;
+		int bn,b1,b2,b3,b4,b5,b6,jn,j1,j2,j3,j4,j5,j6,j7;
 		if ((line[0] == '/' && line[1] == '/') || line[0] == '\0' || line[0] == '\n' || line[0] == '\r')
 			continue;
 		// it's not necessary to remove 'carriage return ('\n' or '\r')
-		if (sscanf(line,"%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d",&bn,&b1,&b2,&b3,&b4,&b5,&b6,&jn,&j1,&j2,&j3,&j4,&j5,&j6) != 14)
+		if (sscanf(line,"%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d",&bn,&b1,&b2,&b3,&b4,&b5,&b6,&jn,&j1,&j2,&j3,&j4,&j5,&j6,&j7) != 15)
 			continue;
 		exp_table[ 0][i] = bn;
 		exp_table[ 1][i] = b1;
@@ -8822,6 +8822,7 @@ void pc_readdb(void)
 		exp_table[11][i] = j4;
 		exp_table[12][i] = j5;
 		exp_table[13][i] = j6;
+		exp_table[14][i] = j7;
 		i++;
 		if (i >= battle_config.maximum_level)
 			break;

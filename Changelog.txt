@@ -11,6 +11,8 @@
 Date	Added
 
 03/20/2007
+	* Updated: Added proper job experience rates for Gunslinger/Ninja [Tsuyuki]
+	 - Fixes: Gunslinger/Ninja not going up to job 70 (Thanks to Flumens)
 	* Removed: Soul Linker skills from class skill trees [Tsuyuki]
 	* Fixed: Novus card drops [Tsuyuki]
 	* Fixed: Added a missing bonus to Mysteltainn [Tsuyuki]
