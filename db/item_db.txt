@@ -1471,7 +1471,7 @@
 4207,Mysteltainn_Card,Mysteltainn Card,6,20,0,10,,,,,,,32,,,,{},{ bonus2 bSubSize,0,25; bonus bDef,1; }
 4208,Miyabi_Ningyo_Card,Miyabi Ningyo Card,6,20,0,10,,,,,,,64,,,,{},{ bonus bMaxSPrate,10; bonus2 bSkillAtk,15,5; }
 4209,Violy_Card,Violy Card,6,20,0,10,,,,,,,136,,,,{},{ bonus4 bAutoSpell,318,1+4*(getskilllv(318)==5),200,1; }
-4210,Wanderer_Card,Wanderer Card,6,20,0,10,,,,,,,4,,,,{},{ if(GetPureJob==JOB_THIEF) bonus bFlee,20; if(isequipped(4172,4257,4230,4272)==1) goto THIEF_SET; bonus4 bAutoSpell,219,1,200,1; end; THIEF_SET: bonus bAgi,5; bonus bStr,5; bonus bAspdRate,5; bonus bSpeedRate,5; bonus2 bSPDrainValue,1,0; if(GetPureJob==JOB_THIEF) bonus bNoGemStone,0; }
+4210,Wanderer_Card,Wanderer Card,6,20,0,10,,,,,,,4,,,,{},{ if(GetPureJob==JOB_THIEF) bonus bFlee,20; if(isequipped(4172,4257,4230,4272)==1) goto THIEF_SET; if(isequipped(4039,4348,4257,4230)==1) end; bonus4 bAutoSpell,219,1,200,1; end; THIEF_SET: bonus bAgi,5; bonus bStr,5; bonus bAspdRate,5; bonus bSpeedRate,5; bonus2 bSPDrainValue,1,0; if(GetPureJob==JOB_THIEF) bonus bNoGemStone,0; }
 4211,Vocal_Card,Vocal Card,6,20,0,10,,,,,,,4,,,,{},{ bonus bMdef,3; if(isequipped(4021)==0)end; bonus bFlee,18; }
 4212,Bongun_Card,Bongun Card,6,20,0,10,,,,,,,136,,,,{},{ bonus4 bAutoSpell,5,1,200,1; bonus2 bAddDamageByClass,1026,100; }
 //Pushback effect missing
