@@ -11,6 +11,7 @@
 Date	Added
 
 03/20/2007
+	* Fixed: A bug in the Assassin job change quest (Thanks to galaxy) [Tsuyuki]
 	* Added: Some new items from jAthena [Tsuyuki]
 
 03/19/2007

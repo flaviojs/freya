@@ -540,32 +540,29 @@ sF_Quiz:
 		return;
 }
 
-// Namelss One ====================================================
-in_moc_16.gat,19,150,1	script	Nameless One	139,8,6,{
+// ----------------------------------------------------------------
+// Keeps the player from moving to far into the room.
+// This is to avoid cheaters who might try to take Bakardi's test first.
 
-OnTouch:
-	if(ASSIN_Q > 1) end;
+in_moc_16.gat,19,144,1	script	asq_getbacker	139,8,0,{
 
+	if (ASSIN_Q > 1) end;
 	warp "in_moc_16.gat",19,142;
+	addtimer 700, "Nameless One::OnTimer700";
+	end;
+}
 
-	attachnpctimer;
-	initnpctimer;
-		end;
+// Namelss One ====================================================
+
+in_moc_16.gat,19,150,1	script	Nameless One	139,{
 
 OnTimer700:
-	stopnpctimer;
-	if(ASSIN_Q == 1) goto L_ReTest;
+	if (ASSIN_Q == 1) goto L_ReTest;
 	set @LISTEN, 0;
 
 	mes "[Nameless One]";
-	mes "Welcome, my guest.  Muhahaha!!!...... There is no use in trying to find me for I am perfectly hidden!";
+	mes "Welcome, my guest. Muhahaha!!!...... There is no use in trying to find me for I am perfectly hidden!";
 	mes "The ability to become totaly hidden is the TRADEMARK of a GREAT Assassin!!";
-	next;
-	mes "[Nameless One]";
-	mes "Huh? Why don't I have a name? Muhahahahaha!!!... The better question to ask is why am I hidden.....";
-	next;
-	mes "[Nameless One]";
-	mes "Afterall I may be trying to assassinate you!!........ Does this scare you?";
 	next;
 	menu "Eeek! Uh... I think I wet my pants.....",-, "Bleh! Your all talk! Come on, challenge me!",M_1;
 
