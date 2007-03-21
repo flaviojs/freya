@@ -11,6 +11,7 @@
 Date	Added
 
 03/20/2007
+	* Fixed: Added a missing bonus to Mysteltainn [Tsuyuki]
 	* Fixed: Bug with Vidar's Boots equipment set [Tsuyuki]
 	* Fixed: Snatch bug with the Thief card set (Thanks to galaxy) [Tsuyuki]
 	* Fixed: A bug in the Assassin job change quest (Thanks to galaxy) [Tsuyuki]

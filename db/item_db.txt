@@ -517,7 +517,7 @@
 1135,Cutlus,Cutlus,4,20,0,900,150,,1,0,414946,2,2,4,40,2,{},{ skill 5,5; bonus bStr,2; bonus bDef,1; }
 1136,Solar_Sword,Solar Sword,4,20,0,1200,85,,1,0,414946,2,2,4,40,2,{},{ bonus bAtkEle,3; bonus2 bHPDrainRate,100,1; bonus2 bSPLossRate,15,10000; }
 1137,Excalibur,Excalibur,4,20,0,1200,150,,1,0,414946,2,2,4,40,2,{},{ bonus bInt,5; bonus bLuk,10; bonus bDex,-1; bonus bAtkEle,6; }
-1138,Mysteltainn,Mysteltainn,4,20,0,1000,170,,1,0,414946,2,2,4,40,2,{},{ bonus bAtkEle,7; bonus2 bAddEle,8,15; bonus2 bAddEff,Eff_Stone,100; bonus bDex,3; }
+1138,Mysteltainn,Mysteltainn,4,20,0,1000,170,,1,0,414946,2,2,4,40,2,{},{ bonus bAtkEle,7; bonus2 bAddEle,8,15; bonus4 bAutoSpell,16,3,100,1; bonus2 bAddEff,Eff_Stone,100; bonus bDex,3; }
 1139,Tyrfing,Tyrfing,4,20,0,1000,200,,1,0,414946,2,2,4,40,2,{},{ bonus bAtkEle,7; bonus2 bHPLossRate,35,10000; }
 1140,Byeollungum,Byeollungum,4,20,0,900,150,,1,0,414946,2,2,4,40,2,{},{ bonus2 bSubRace,11,-10; bonus2 bAddRace,10,50; bonus bAllStats,2; }
 1141,Immaterial_Sword,Immaterial Sword,4,20,0,900,140,,1,0,414946,2,2,4,40,2,{},{ bonus bAtkEle,8; bonus2 bSPVanishRate,30,30; bonus2 bSPDrainValue,-1,0; bonus bUnbreakableWeapon,0; }
