@@ -10,6 +10,10 @@
 
 Date	Added
 
+03/24/2007
+	* Updated: Mob database to Freya's latest [Tsuyuki]
+	* Updated: Item database to jAthena's latest [Tsuyuki]
+
 03/17/2007
 	* Added: Two missing source files [Tsuyuki]
 	* Fixed: Typo in Ice Dungeon spawns [Tsuyuki]
