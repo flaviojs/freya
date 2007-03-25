@@ -10,6 +10,9 @@
 
 Date	Added
 
+03/24/2007
+	* Added: Some non-existant monster place-holders [Tsuyuki]
+
 03/20/2007
 	* Updated: Added proper job experience rates for Gunslinger/Ninja [Tsuyuki]
 	 - Fixes: Gunslinger/Ninja not going up to job 70 (Thanks to Flumens)
