@@ -1,12 +1,12 @@
 //===== Freya Script =========================================
 //= Mjolnir seal unlocking NPCs.
-//===== By: ================================================== 
+//===== By: ==================================================
 //= SinSloth
-//===== Current Version: ===================================== 
+//===== Current Version: =====================================
 //= 1.1
-//===== Compatible With: ===================================== 
-//= Freya Phaeton
-//===== Description: ========================================= 
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
 //= Quest for breaking the seal of Mjolnir.
 //===== Additional Comments: =================================
 // 1.0 First version. Thanks to SinSloth for scripting it. [MasterOfMuppets]

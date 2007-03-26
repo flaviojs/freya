@@ -22,7 +22,7 @@
 //= 1.9 Merged back JFunc, CHANGED NUMBERS TO CONSTANTS [Lupus]
 //= 2.0 changed location from its clone to the original [Lupus]
 //= 2.1 Fixed warp on timeout [KarLaeda]
-//============================================================ 
+//============================================================
 
 
 // == Npcs ==

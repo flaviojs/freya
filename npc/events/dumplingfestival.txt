@@ -5,14 +5,15 @@
 //===== Version ===========================================
 //= 1.01
 //===== Compatible With ===================================
-//= Freya Phaeton
+//= Freya
 //===== Description =======================================
 //= A complete redering of the Dumpling Festival.
 //===== Comments ==========================================
 //= Ver 1.0- Duplicate of MRO's Dumpling Event
 //= 1.01 fixed bugs [Lupus]
 //=========================================================
-  
+
+
 payon.gat,93,81,4	script	Exorcist Master Fahae	834,{
 
 	mes "[Exorcist Master Fahae]";

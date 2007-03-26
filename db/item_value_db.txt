@@ -1,2 +1,7 @@
-// Item price data (It replace item_db.txt prices)
-//ID,Name,Jname,Price,Sell,Not_DC,Not_OC
+// item_value_db.txt, Item Value Database
+//
+// Structure of Database:
+//
+// ItemID,Name,Jname,Price,Sell,Not_DC,Not_OC
+//
+// Item Price Data (Rreplaces item_db.txt prices)

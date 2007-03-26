@@ -5,7 +5,7 @@
 //===== Current Version: =====================================
 //= 2.3b
 //===== Compatible With: =====================================
-//= Freya Phaeton
+//= Freya
 //===== Description: =========================================
 //= Cool Event Corp NPCs vs. Kafra Dungeon Teleport Service and voting system.
 //= This is a special event on official servers where there's a
@@ -69,7 +69,7 @@
 //=	New $dtsday system and bug fix[Evera]
 //= 2.3a fixed 2 bugs with comparision [Lupus]
 //= 2.3b corrected Glast warp coords [Lupus] 2.3c Bailand -> Bayalan
-//============================================================ 
+//============================================================
 
 //Yuno
 yuno.gat,153,191,4	script	Cool Event Voting Staff::CoolEventVotingStaff01	874,{

@@ -5,12 +5,12 @@
 //===== Current Version: =====================================
 //= 1.1
 //===== Compatible With: =====================================
-//= eAthena 1.0+
+//= Freya
 //===== Description: =========================================
 //= Turns arrows into Arrow Quivers.
 //===== Additional Comments: =================================
 //= 07/06/05 : Added 1st Version. [Muad_Dib]
-//= Converted to eAthena format by Dr.Evil
+//= Converted to Athena format by Dr.Evil
 //= added prize to quest - 500 Zeny
 //= Fixed a few spelling errors. [Nexon]
 //= 1.1 Added Holy Arrow Quivers [Playtester]

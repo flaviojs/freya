@@ -1,7 +1,11 @@
-// skill_require_db2,txt@AthenaDB plan 2005/04/14 00:00:00 +0900 (JST)
+// skill_require_db2.txt, Skill Requirements Database #2
 //
-// id,coin,arrow_type,arrow_cost,reserve1,reserve2
-//SkillID,Coin consumption, Arrow type, Arrow consumption, Reserve 1, Reserve 2
+// Structure of Database:
+//
+// SkillID,Coin,Arrow_Type,Arrow_Cost,Reserve1,Reserve2
+//
+// Skill ID, Coin Consumption, Arrow Type, Arrow Consumption, Reserve 1, Reserve 2
+
 1,0,0,0,0,0	//NV_BASIC#Basic Skill#
 2,0,0,0,0,0	//SM_SWORD#Sword Mastery#
 3,0,0,0,0,0	//SM_TWOHAND#Two-Handed Sword Mastery#
@@ -559,7 +563,7 @@
 552,0,0,0,0,0	//MB_BODYSTUDY#ボディスタディ#
 553,0,0,0,0,0	//MB_BODYALTER#ボディオルター#
 554,0,0,0,0,0	//MB_PETMEMORY#ペットメモリー#
-555,0,0,0,0,0	//MB_M_TELEPORT#テレポート#
+555,0,0,0,0,0	//MB_M_TELEPORT#Teleportation#
 556,0,0,0,0,0	//MB_B_GAIN#ゲイン#
 557,0,0,0,0,0	//MB_M_GAIN#ゲイン#
 558,0,0,0,0,0	//MB_MISSION#ミッション#
@@ -577,11 +581,11 @@
 570,0,0,0,0,0	//MB_M_REINCARNATION#リインカーネーション#
 571,0,0,0,0,0	//MB_B_EQUIP#イクイップ#
 
-572,0,0,0,0,0	//SL_DEATHKNIGHT#デスナイトの魂#
-573,0,0,0,0,0	//SL_COLLECTOR#ダークコレクターの魂#
-574,0,0,0,0,0	//SL_NINJA#忍者の魂#
-575,0,0,0,0,0	//SL_GUNNER#ガンスリンガーの魂#
-576,0,0,0,0,0	//AM_TWILIGHT4#トワイライトファーマシー4#
+572,0,0,0,0,0	//SL_DEATHKNIGHT#Spirit of the Death Knight#
+573,0,0,0,0,0	//SL_COLLECTOR#Spirit of the Dark Collector#
+574,0,0,0,0,0	//SL_NINJA#Spirit of the Ninja#
+575,0,0,0,0,0	//SL_GUNNER#Spirit of the Gunslinger#
+576,0,0,0,0,0	//AM_TWILIGHT4#Twilight Pharmacy4#
 
 577,0,0,0,0,0	//DE_PASSIVE#パッシブ#
 578,0,0,0,0,0	//DE_PATTACK#Pアタック#
@@ -598,7 +602,7 @@
 589,0,0,0,0,0	//DE_SLASH#スラッシュ#
 590,0,0,0,0,0	//DE_COIL#コイル#
 591,0,0,0,0,0	//DE_WAVE#ウェーブ#
-592,0,0,0,0,0	//DE_REBIRTH#リバース#
+592,0,0,0,0,0	//DE_REBIRTH#Reverse#
 593,0,0,0,0,0	//DE_AURA#オーラ#
 594,0,0,0,0,0	//DE_FREEZER#フリーザー#
 595,0,0,0,0,0	//DE_CHANGEATTACK#チェンジアタック#

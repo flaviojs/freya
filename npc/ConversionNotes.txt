@@ -59,5 +59,12 @@ To-Do Mini List:
 - Import + convert Kunlun Power NPC from either Aegis or eAthena (an Aegis-convert)
 - Import + convert Marriage script from either Aegis or eAthena
 - Import custom scripts from Freya
+- Add RO Alpha warps and disable them
+
+- Rename /npc/ -> /script/
+- Rename /npc/events/ -> /npc/event/, and add 'event_' file prexifes
+- Add prefixes and rename other stuff, etc
+- Merge /npc/quests/ and /npc/town/
+- Maybe imitate the Aegis 'npcdata' folder structure
 
 -------------------------------------------

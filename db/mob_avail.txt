@@ -1,29 +1,41 @@
-// id,appareance id substitution (0 don't remove the substitution. 0 do nothing)
-// When value is set from 1001 to 2000, the monster will be displayed as the indicated monster ID.
-// Then, client can be displayed same sprite for user, but server knows that monsters are different kind.
-// With ID from 1+ (PC) or 46+ (NPC), monster will be displayed like a player character or a existing NPC.
-// 
-//1002,1039	// (example) Poring,Baphomet: Make Porings look like Baphomets.
+// mob_avail.txt, Monster ID Disguise Database
 //
-// How to make PC displaying.
-// MOB-ID,SpriteID,Size(-1:small,0:normal,1:large),Sex(0=female,1=male),Hair_Type,Hair_Color,Clothes_color,Weapon,Shield,Head_Top,Head_Middle,Head_Bottom,Option,trans
+// Structure of Database:
 //
-// SpriteID of job
-//    0:Novice       23:Super Novice     22:Wedding design
+// Mob_ID,Appearance_ID
+//
+// Disguises a monster with a different sprite.
+// 1001-2000 must be used for now as any other ID is invalid.
+// Monster must have an equipment its pet counterpart can use or it will cause problems. If no equip use 0.
+// With ID from 1+ (PC) or 46+ (NPC), monster will be displayed like a player character or an existing NPC.
+//
+// Example:
+// 1002,1039,0	//Poring,Baphomet (Make Poring(1002) look like Baphomet(1039))
+//
+// The following format is used if a class sprite is used:
+//
+// Mob_ID,Appearance_ID,Size(-1:Small,0:Normal,1:Large),Sex(0:Female,1:Male),Hair_Type,Hair_Color,Clothes_Color,Weapon,Shield,Head_Top,Head_Middle,Head_Bottom,Option,Upper
+//
+// Sprite_ID for class ID selection:
+//
+//    0:Novice       23:Super Novice     22:Wedding
 //    1:Swordman      7:Knight           14:Crusader
 //    2:Mage          9:Wizard           16:Sage
 //    3:Archer       11:Hunter           19:Bard             20:Dancer
 //    4:Acolyte       8:Priest           15:Monk
 //    5:Merchant     10:Blacksmith       18:Alchemist
 //    6:Thief        12:Assassin         17:Rogue
-//   24:taekwon      25:Star Gladiator   27:Soul linker
+//   24:Taekwon Kid  25:Star Gladiator   27:Soul Linker
 //   28:Gunslinger
 //   29:Ninja
+//   30:Death Knight
+//   31:Dark Collector
 //
-// For the weapon and the shield, set item_id like it is defined inside item_db.txt.
-// For the head equipment, set item_id like it is defined inside item_db.txt.
+// For the weapon and the shield, set the Item_ID as it is defined in item_db.txt.
+// For the headgear equip, also set the Item_ID as it is defined in item_db.txt.
 //
-// option
+// Option parameter:
+//
 //     1:Sight                2:Hide               4:Cloak
 //     8:Level 1 Cart        16:Falcon            32:Peco Peco riding
 //    64:GM Perfect Hide    128:Level 2 Cart     256:Level 3 Cart
@@ -31,10 +43,9 @@
 //  4096:Wedding Sprites   8192:Ruwach         16384:Footprints walking
 // 32768:Santa clothes
 //
-// trans
-//    0:nomal job      1:advanced job      2:adopted child
-//
+// Upper:
+//    0:Nomal job      1:Advanced Job      2:Adopted Child
 
 // Easter Event
-1920,1047,0
-1921,1093,0
+1920,1047
+1921,1093

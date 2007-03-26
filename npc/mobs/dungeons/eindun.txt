@@ -1,11 +1,11 @@
 //===== Freya Script =========================================
 //= Einbroch Dungeon (Mine) Monster Spawn Script
 //===== By: ==================================================
-//= Athena (1.0)
+//= Athena
 //===== Current Version: =====================================
 //= 1.3
 //===== Compatible With: =====================================
-//= Any Athena Version
+//= Freya
 //===== Additional Comments: =================================
 //= 1.0 spawn N and spawn delays aren't yet correct, so I set
 //=     respawn delays quite big for now [Lupus]

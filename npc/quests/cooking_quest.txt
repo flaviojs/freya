@@ -1,14 +1,14 @@
 //===== Freya Script ========================================= 
 //= Cooking Quest
-//===== By: ================================================== 
+//===== By: ==================================================
 //= Reddozen
-//===== Current Version: ===================================== 
+//===== Current Version: =====================================
 //= 1.5a
-//===== Compatible With: ===================================== 
-//= eAthena 1.0+
-//===== Description: ========================================= 
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
 //= Official Cooking Quest
-//===== Additional Comments: ================================= 
+//===== Additional Comments: =================================
 //= 1.1 Fixed wrong item ID, added missing ";, optimized [Lupus]
 //= 1.1a minor bugfix, thx 2 Irmin [Lupus]
 //= 1.2 Fixed exploit, some typos [Lupus]
@@ -18,7 +18,7 @@
 //= 1.4 Fixed spelling, added some dialoguesm optimized
 //= fixed bugs. Tested, fully working [Lupus]
 //= 1.5 More fixes [Lupus]
-//============================================================ 
+//============================================================
 
 prt_castle.gat,43,30,6	script	Chef Apprentice	878,{
 

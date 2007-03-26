@@ -1,0 +1,91 @@
+===========================================================================
+===========================================================================
+			Phaeton and jAthena Differences
+---------------------------------------------------------------------------
+
+===========================================================================
+	Source Code (./src)
+---------------------------------------------------------------------------
+
+-> Atcommand Changes:
+- Added @warp duplicate of @rura.
+- Added @charwarp duplicate of @rura+.
+- Changed @jump from forced '@jump x y', to optional x and y parameters. Without x, y, a random location will be used.
+- Removed forced 'name' parameter from @monster/@monstermap commands.
+
+-> Database File Changes:
+- Databases such as OCA and OBB are located inside ./db/random/ instead of ./db/.
+- Renamed: mob_boss.txt -> mob_bloodybranch.txt, mob_branch.txt -> mob_deadbranch.txt, mob_poring.txt -> mob_poringbox.txt.
+
+-> Startup Changes:
+- In all three servers, the 'Freya' logo was added as the first thing printed at application startup.
+
+-> Compilation Changes:
+- Server executables are placed in the main directory, whereas in jAthena, they are placed in ./bin.
+- The ./tool folder is placed in the main directory, whereas in jAthena, it's placed in ./bin.
+
+- Source code comments are NOT translated. This would make updating the code far too messy and difficult.
+- Other than code comments, there really isn't anything that needs translating in the source.
+
+===========================================================================
+	Databases (./db)
+---------------------------------------------------------------------------
+
+- All databases generally follow jAthena's, except for the following:
+
+	- ./db/mob_db.txt
+	- ./db/mob_skill_db.txt
+	- ./db/mob_group_db.txt
+	- ./db/random/mob_bloodybranch.txt
+	- ./db/random/mob_deadbranch.txt
+	- ./db/random/mob_poringbox.txt
+	- ./db/random/item_cardalbum.txt
+
+-> As listed above:
+- Databases such as OCA and OBB are located inside ./db/random/ instead of ./db/.
+- Renamed: mob_boss.txt -> mob_bloodybranch.txt, mob_branch.txt -> mob_deadbranch.txt, mob_poring.txt -> mob_poringbox.txt.
+
+===========================================================================
+	NPC Scripts (./npc)
+---------------------------------------------------------------------------
+
+- Almost every script has been imported from Freya/eAthena with the exception of the following:
+
+	- ./npc/other/mapflag.txt [Translated]
+	- ./npc/gvg/ (Entire folder) [Translated]
+
+- Scripts are located in ./npc instead of ./script.
+
+===========================================================================
+	Configuration (./conf)
+---------------------------------------------------------------------------
+
+- ./conf/help.txt files contain @command changes.
+- In ./conf/GM_account.txt, account ID 2000001 is set to GM level 99 by default.
+- ./conf/atcommand_athena.conf has a lot of changes.. not entirely sure on the details.
+- In ./conf/map_athena.conf, read_map_from_cache is set to active at '2'. Normal jAthena is set to '0', inactive.
+- In ./conf/map_athena.conf, the map_cache_file option is set to ./db/mapinfo.txt instead of ./db/map.info.
+
+===========================================================================
+	Saved Data (./save)
+---------------------------------------------------------------------------
+
+- This folder is included by default instead of being generated on the first server launch to prevent user errors.
+- The account ID 2000001 is created by default with the username 'Test', password 'Test' and GM level 99.
+
+===========================================================================
+	Misc Changes
+---------------------------------------------------------------------------
+
+- There is no LICENCE_JA file in Phaeton, instead there is just LICENSE.
+- The 'Readme' changelog is stored in ./doc as 'Readme.txt' instead of in the main folder.
+- This documentation file, './doc/phaeton_diff.txt' does not exist in jAthena.
+- The Changelog.txt file in the main folder does not exist in jAthena, they use the 'Readme' file as their Changelog.
+- The faq.html file in the main folder does not exist in jAthena.
+- The runserver.bat, login-server.bat, char-server.bat, and map-server.bat launchers do not exist in jAthena.
+- MagicalTux's start-freya.sh file in the main folder does not exist in jAthena.
+- jAthena's 'start' and 'athena-start' scripts do not exist in Phaeton. They were replaced by 'start-freya.sh'.
+- Phaeton's 'vc07_make.bat' and 'vc07_clean.bat' scripts do not exist in jAthena.
+- The ./tool/translate folder is a translation system for Phaeton that does not exist in jAthena.
+- The ./sql-files/drop_table.sql file does not exist in Phaeton.
+- Any other differences that were missed..

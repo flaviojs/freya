@@ -12,6 +12,7 @@
 //= 0.5 Added first version, guides are incomplete [Tsuyuki]
 //============================================================
 
+
 rachel.gat,138,146,5	script	Rachel Guide Agent	934,{
 
 	mes "[Rachel Guide Agent]";

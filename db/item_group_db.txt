@@ -1,7 +1,11 @@
-// item_db.txt@AthenaDBPlan 2004/08/30 20:38:16 +0900 (JST)
+// item_group_db.txt
 //
-// ID,Name,Jname,Group
-// 1:Potion 2:Herb 3:Candy 4:Juice 5:Meat 6:Raw Fish
+// Structure of Database:
+//
+// ItemID,Name,Jname,Group
+//
+// Group: 1: Potion 2: Herb 3: Candy 4: Juice 5: Meat 6: Raw Fish
+//
 501,Red_Potion,Red Potion,1
 502,Orange_Potion,Orange Potion,0
 503,Yellow_Potion,Yellow Potion,1
@@ -12,7 +16,7 @@
 508,Yellow_Herb,Yellow Herb,2
 509,White_Herb,White Herb,2
 510,Blue_Herb,Blue Herb,0
-511,Green_Herb,Green herb,0
+511,Green_Herb,Green Herb,0
 512,Apple,Apple,0
 513,Banana,Banana,0
 514,Grape,Grape,0
@@ -27,20 +31,20 @@
 523,Holy_Water,Holy Water,0
 525,Panacea,Panacea,0
 526,Royal_Jelly,Royal Jelly,0
-528,Monster's_Feed,Monster's Feed,5
+528,Monster's_Feed,Monster Food,5
 529,Candy,Candy,3
 530,Candy_Cane,Candy Cane,3
 531,Apple_Juice,Apple Juice,4
 532,Banana_Juice,Banana Juice,4
 533,Grape_Juice,Grape Juice,4
 534,Carrot_Juice,Carrot Juice,4
-535,Pumkin,Pumkin,0
+535,Pumkin,Pumpkin,0
 536,Ice_Cream,Ice Cream,0
 537,Pet_Food,Pet Food,5
 538,Well-baked_Cookie,Well-baked Cookie,0
 539,Piece_of_Cake,Piece of Cake,0
-540,Falcon_food,Falcon Food,0
-541,Pecopeco_food,Pecopeco Food,0
+540,Falcon_food,Falcon food,0
+541,Pecopeco_food,Pecopeco food,0
 542,Festive_Cookie,Festive Cookie,0
 543,Festive_Rainbow_Cake,Festive Rainbow Cake,0
 544,Raw_Fish,Raw Fish,6
@@ -51,21 +55,21 @@
 550,Rice_Cake,Rice Cake,0
 551,Sushi,Sushi,6
 552,KETUPAT,KETUPAT,0
-553,Unknown_Item,Bao,0
+553,Unknown_Item,Dumpling,0
 554,Unknown_Item,Mochi,0
-555,Unknown_Item,Traditional Rice Cake,0
-556,Unknown_Item,Rice Cake Stick,0
-557,Unknown_Item,Neastly Sliced Rice Cake,0
+555,Unknown_Item,Rice_Cake,0
+556,Unknown_Item,Rolled Rice,0
+557,Unknown_Item,Cut Rice Rolls,0
 558,Chocolate,Chocolate,0
 559,Hand-made_Chocolate,Hand-made Chocolate,0
-560,Unknown_Item,Hand-made White Chocolate,0
-561,Unknown_Item,White Chocolate,0
+560,Unknown_Item,White Chocolate,0
+561,Unknown_Item,Milk Chocolate,0
 562,Pizza,Pizza,0
 563,Unknown_Item,Deluxe Pizza,0
 564,Unknown_Item,Rice Ball,0
 565,Unknown_Item,Vita 500,0
 566,Unknown_Item,Tom Yum Goong,0
-567,Unknown_Item,Prawn,0
+567,Unknown_Item,Shrimp,0
 568,Unknown_Item,Lemon,0
 569,Unknown_Item,Novice Potion,0
 570,Unknown_Item,Lucky Candy,0

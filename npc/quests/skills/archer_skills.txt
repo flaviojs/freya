@@ -1,11 +1,11 @@
 //===== Freya Script =========================================
 //= Archer Skill Quest
 //===== By: ==================================================
-//= eAthena dev team
+//= eAthena
 //===== Current Version: =====================================
 //= 1.4b
 //===== Compatible With: =====================================
-//= eAthena 7.15 +
+//= Freya
 //===== Description: =========================================
 //= Arrow crafting, Arrow Repel skills
 //===== Additional Comments: =================================

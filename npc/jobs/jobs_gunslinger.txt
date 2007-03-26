@@ -1,19 +1,19 @@
 //===== Freya Script =========================================
 //= Gunslinger Job Quest
-//===== By: ================================================== 
+//===== By: ==================================================
 //= Aegis/Freya
-//===== Current Version: ===================================== 
+//===== Current Version: =====================================
 //= 1.3
-//===== Compatible With: ===================================== 
+//===== Compatible With: =====================================
 //= Freya
-//===== Description: ========================================= 
+//===== Description: =========================================
 //= Official Gunslinger Job Quest converted from Aegis
-//===== Additional Comments: ================================= 
+//===== Additional Comments: =================================
 //= 1.0 Added first version [Muad_Dib]
 //= 1.1 Translated into English [Harp]
 //= 1.2 Updated file [Muad_Dib]
 //= 1.3 Converted to Freya script format [Tsuyuki]
-//============================================================ 
+//============================================================
 
 
 // Master Miller

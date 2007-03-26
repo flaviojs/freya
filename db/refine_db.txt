@@ -1,11 +1,16 @@
-//Refinement success probability table
+// refine_db.txt, Refine Chances Database
 //
-//   Refinement bonus value, excessive refinement bonus value, safety refinement limit, lv1, lv2, …, Lv10
-//   (The safety refinement limit may be different from the actual success rate, but only the excessive refinement bonus will be taken into account)
- 70, 4,4, 100,100,100,100, 60, 40, 40, 20, 20, 10,	// Equipement
-  2, 3,7, 100,100,100,100,100,100,100, 60, 40, 20,	// WeaponLv.1
-  3, 5,6, 100,100,100,100,100,100, 60, 40, 20, 20,	// WeaponLv.2
-  5, 8,5, 100,100,100,100,100, 60, 50, 20, 20, 20,	// WeaponLv.3
-  7,14,4, 100,100,100,100, 60, 40, 40, 20, 20, 10,	// WeaponLv.4
-
-
+// Structure of Database:
+//
+// StatsPerLvForSafeUpgrade,StatsPerLvlAfterSafeLimit,SafeLvlLimit,Lv1%,Lv2%,Lv3%, Ect..
+//
+// Armor Defense Is Done In Percentage (ex: 70 = .7 def)
+// Weapons Are Whole Numbers (ex: 3 = 3 atk)
+//
+// (The SafeLvlLimit may be different from the actual success rate, but only the StatsPerLvlAfterSafeLimit will be taken into account)
+//
+ 70, 4,4, 100,100,100,100, 60, 40, 40, 20, 20, 10,	// Armor
+  2, 3,7, 100,100,100,100,100,100,100, 60, 40, 20,	// Lv1 Weapons
+  3, 5,6, 100,100,100,100,100,100, 60, 40, 20, 20,	// Lv2 Weapons
+  5, 8,5, 100,100,100,100,100, 60, 50, 20, 20, 20,	// Lv3 Weapons
+  7,14,4, 100,100,100,100, 60, 40, 40, 20, 20, 10,	// Lv4 Weapons

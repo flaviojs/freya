@@ -1,18 +1,19 @@
-// skill_tree.txt@AthenaDB plan 2005/04/14 00:00:00 +0900 (JST)
+// skill_tree.txt, Skill Tree Database
 //
-// Upper,JobNo,Skill-ID,MaxLV,Required Skill-ID-1,Required Skill-ID-1-Lv,up to 5 times in total,
-// 	Required BaseLv,Required JobLv,job class(Novice:0, First Class:1, Second Class:2, Transcendant Class:no correspondance)
-// You can't take higher ranked skill before beeing the corect job class.
-// Moreover Transcendant Class don't have any correspondance,
-// 	because First Class change Job Level is unreliable.
-// Novice is calculated as having been raised to Job Level 10
+// Structure of Database:
+//
+// Upper,JobNo,SkillID,MaxLV,Prerequisite SkillID1,Prerequisite SkillID1Lv,PrereqSkill-ID2,PrereqSkillID2Lv,PrereqSkillID3,PrereqSkillID3Lv,PrereqSkillID4,PrereqSkillID4Lv,PrereqSkillID5,PrereqSkillID5Lv,Required BaseLV,Required JobLV,Job Class(Novice:0, First Class:1, Second Class:2, Transcendant Class:No Correspondance)//CLASS_SKILLNAME#Skill Name#
+//
+// You can't obtain certain skills unless you are the correct class.
+// Transcendant Class doesn't have any correspondance, because the First Class job change level is unreliable.
+// Novice is calculated as having been raised to Job Level 10.
 
 // Novice
 0,0,1,9,0,0,0,0,0,0,0,0,0,0,0,0,0//NV_BASIC	#Basic Skill#
 0,0,142,1,0,0,0,0,0,0,0,0,0,0,0,0,0//NV_FIRSTAID	#First Aid#
 0,0,143,1,0,0,0,0,0,0,0,0,0,0,0,0,0//NV_TRICKDEAD	#Play Dead#
 
-// Swordman
+// Swordsman
 0,1,1,9,0,0,0,0,0,0,0,0,0,0,0,0,0//NV_BASIC	#Basic Skill#
 0,1,2,10,0,0,0,0,0,0,0,0,0,0,0,0,1//SM_SWORD	#Sword Mastery#
 0,1,3,10,2,1,0,0,0,0,0,0,0,0,0,0,1//SM_TWOHAND	#Two-Handed Sword Mastery#
@@ -26,7 +27,7 @@
 0,1,145,1,0,0,0,0,0,0,0,0,0,0,0,0,1//SM_FATALBLOW	#Fatal Blow#
 0,1,146,1,0,0,0,0,0,0,0,0,0,0,0,0,1//SM_AUTOBERSERK	#Berserk#
 
-// Magican
+// Mage
 0,2,1,9,0,0,0,0,0,0,0,0,0,0,0,0,0//NV_BASIC	#Basic Skill#
 0,2,9,10,0,0,0,0,0,0,0,0,0,0,0,0,1//MG_SRECOVERY	#Increase SP Recovery#
 0,2,10,1,0,0,0,0,0,0,0,0,0,0,0,0,1//MG_SIGHT	#Sight#
@@ -197,7 +198,7 @@
 0,9,157,1,0,0,0,0,0,0,0,0,0,0,0,0,1//MG_ENERGYCOAT	#Energy Coat#
 0,9,1006,1,0,0,0,0,0,0,0,0,0,0,0,0,2//WZ_SIGHTBLASTER#Sight Blaster#
 
-// Black Smith
+// Blacksmith
 0,10,1,9,0,0,0,0,0,0,0,0,0,0,0,0,0//NV_BASIC	#Basic Skill#
 0,10,36,10,0,0,0,0,0,0,0,0,0,0,0,0,1//MC_INCCARRY	#Enlarge Weight Limit#
 0,10,37,10,36,3,0,0,0,0,0,0,0,0,0,0,1//MC_DISCOUNT	#Discount#
@@ -1172,7 +1173,7 @@
 1,20,488,5,45,10,323,10,0,0,0,0,0,0,0,0,2//CG_HERMODE	#Wand of Hermod#
 1,20,1011,1,0,0,0,0,0,0,0,0,0,0,0,0,2//DC_WINKCHARM#Wink of Charm#
 
-// TaeKwon Boy
+// Taekwon Kid
 0,24,1,9,0,0,0,0,0,0,0,0,0,0,0,0,0//NV_BASIC	#Basic Skill#
 0,24,142,1,0,0,0,0,0,0,0,0,0,0,0,0,0//NV_FIRSTAID	#First Aid#
 0,24,411,10,0,0,0,0,0,0,0,0,0,0,0,0,1//TK_RUN	#Running#
@@ -1279,10 +1280,10 @@
 0,27,470,7,454,1,0,0,0,0,0,0,0,0,0,0,2//SL_SWOO	#Esu#
 0,27,471,3,452,1,0,0,0,0,0,0,0,0,0,0,2//SL_SKE	#Esk#
 0,27,472,3,447,1,0,0,0,0,0,0,0,0,0,0,2//SL_SKA	#Eska#
-//0,27,572,5,0,0,0,0,0,0,0,0,0,0,0,0,2//SL_DEATHKNIGHT#デスナイトの魂#
-//0,27,573,5,0,0,0,0,0,0,0,0,0,0,0,0,2//SL_COLLECTOR#ダークコレクターの魂#
-//0,27,574,5,0,0,0,0,0,0,0,0,0,0,0,0,2//SL_NINJA#忍者の魂#
-//0,27,575,5,0,0,0,0,0,0,0,0,0,0,0,0,2//SL_GUNNER#ガンスリンガーの魂#
+//0,27,572,5,0,0,0,0,0,0,0,0,0,0,0,0,2//SL_DEATHKNIGHT#Spirit of the Death Knight#
+//0,27,573,5,0,0,0,0,0,0,0,0,0,0,0,0,2//SL_COLLECTOR#Spirit of the Dark Collector#
+//0,27,574,5,0,0,0,0,0,0,0,0,0,0,0,0,2//SL_NINJA#Spirit of the Ninja#
+//0,27,575,5,0,0,0,0,0,0,0,0,0,0,0,0,2//SL_GUNNER#Spirit of the Gunslinger#
 
 // Gunslinger
 0,28,1,9,0,0,0,0,0,0,0,0,0,0,0,0,0	//NV_BASIC	#Basic Skill#
@@ -1340,73 +1341,73 @@
 // Death Knight
 0,30,1,9,0,0,0,0,0,0,0,0,0,0,0,0,0	//NV_BASIC	#Basic Skill#
 0,30,142,1,0,0,0,0,0,0,0,0,0,0,0,0,0	//NV_FIRSTAID#First Aid#
-0,30,577,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_PASSIVE#パッシブ#
-0,30,578,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_PATTACK#アタック#
-0,30,579,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_PSPEED#スピード #
-0,30,580,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_PDEFENSE#ディフェンス #
-0,30,581,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_PCRITICAL#クリティカル#
-0,30,582,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_PHP#HP#
-0,30,583,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_PSP#SP#
-0,30,584,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_RESET#リセット#
-0,30,585,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_RANKING#ランキング#
-0,30,586,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_PTRIPLE#トリプル#
-0,30,587,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_ENERGY#エナジー#
-0,30,588,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_NIGHTMARE#ナイトメア#
-0,30,589,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_SLASH#スラッシュ#
-0,30,590,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_COIL#コイル#
-0,30,591,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_WAVE#ウェーブ#
-0,30,592,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_REBIRTH#リバース#
-0,30,593,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_AURA#オーラ#
-0,30,594,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_FREEZER#フリーザー#
-0,30,595,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_CHANGEATTACK#チェンジアタック#
-0,30,596,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_PUNISH#パニッシュ#
-0,30,597,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_POISON#ポイズン#
-0,30,598,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_INSTANT#インスタント#
-0,30,599,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_WARNING#ワーニング#
-0,30,600,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_RANKEDKNIFE#ランクドナイフ#
-0,30,601,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_RANKEDGRADIUS#ランクドグラディウス#
-0,30,602,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_GAUGE#オージェ#
-0,30,603,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_GTIME#タイム#
-0,30,604,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_GPAIN#ペイン#
-0,30,605,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_GSKILL#スキル#
-0,30,606,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_GKILL#キル#
-0,30,607,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_ACCEL#アクセル#
-0,30,608,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_BLOCKDOUBLE#ダブルブロック#
-0,30,609,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_BLOCKMELEE#メイレイブロック#
-0,30,610,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_BLOCKFAR#ファーブロック#
-0,30,611,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_FRONTATTACK#フロントアタック#
-0,30,612,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_DANGERATTACK#デンジャーアタック#
-0,30,613,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_TWINATTACK#ツインアタック#
-0,30,614,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_WINDATTACK#ウィンドアタック#
-0,30,615,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_WATERATTACK#ウォーターアタック#
+0,30,577,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_PASSIVE#Passive#
+0,30,578,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_PATTACK#Pattack#
+0,30,579,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_PSPEED#Pspeed#
+0,30,580,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_PDEFENSE#Pdefense#
+0,30,581,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_PCRITICAL#Pcritical#
+0,30,582,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_PHP#PHP#
+0,30,583,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_PSP#PSP#
+0,30,584,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_RESET#Reset#
+0,30,585,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_RANKING#Ranking#
+0,30,586,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_PTRIPLE#Ptriple#
+0,30,587,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_ENERGY#Energy#
+0,30,588,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_NIGHTMARE#Nightmare#
+0,30,589,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_SLASH#Slash#
+0,30,590,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_COIL#Coil#
+0,30,591,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_WAVE#Wave#
+0,30,592,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_REBIRTH#Rebirth#
+0,30,593,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_AURA#Aura#
+0,30,594,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_FREEZER#Freezer#
+0,30,595,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_CHANGEATTACK#Change Attack#
+0,30,596,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_PUNISH#Punish#
+0,30,597,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_POISON#Poison#
+0,30,598,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_INSTANT#Instant#
+0,30,599,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_WARNING#Warning#
+0,30,600,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_RANKEDKNIFE#Ranked Knife#
+0,30,601,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_RANKEDGRADIUS#Ranked Gradius#
+0,30,602,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_GAUGE#Guage#
+0,30,603,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_GTIME#Gtime#
+0,30,604,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_GPAIN#Gpain#
+0,30,605,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_GSKILL#Gskill#
+0,30,606,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_GKILL#Gkill#
+0,30,607,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_ACCEL#Accel#
+0,30,608,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_BLOCKDOUBLE#Block Double#
+0,30,609,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_BLOCKMELEE#Block Melee#
+0,30,610,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_BLOCKFAR#Block Far#
+0,30,611,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_FRONTATTACK#Front Attack#
+0,30,612,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_DANGERATTACK#Danger Attack#
+0,30,613,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_TWINATTACK#Twin Attack#
+0,30,614,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_WINDATTACK#Wind Attack#
+0,30,615,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//DE_WATERATTACK#Water Attack#
 
 // Dark Collector
-0,31,1,9,0,0,0,0,0,0,0,0,0,0,0,0,0		//NV_BASIC#Basic Skill#
+0,31,1,9,0,0,0,0,0,0,0,0,0,0,0,0,0	//NV_BASIC#Basic Skill#
 0,31,142,1,0,0,0,0,0,0,0,0,0,0,0,0,0	//NV_FIRSTAID#First Aid#
-0,31,545,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_FIGHTING#ファイティング#
-0,31,546,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_NEUTRAL#ニュートラル#
-0,31,547,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_TAIMING_PUTI#テイミングプティ#
-0,31,548,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_WHITEPOTION#ホワイトポーション#
-0,31,549,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_CARDPITCHER#カードピッチャー#
-0,31,550,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_MENTAL#メンタル#
-0,31,551,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_PETPITCHER#ペットピッチャー#
-0,31,552,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_BODYSTUDY#ボディスタディ#
-0,31,553,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_BODYALTER#ボディオルター#
-0,31,554,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_PETMEMORY#ペットメモリー#
-0,31,555,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_M_TELEPORT#テレポート#
-0,31,556,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_B_GAIN#ゲイン#
-0,31,557,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_M_GAIN#ゲイン#
-0,31,558,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_MISSION#ミッション#
-0,31,559,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_MUNAKKNOWLEDGE#ムナックノウリッジ#
-0,31,560,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_MUNAKBALL#ムナックボール#
-0,31,561,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_SCROLL#スクロール#
-0,31,562,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_B_GATHERING#ギャザリング#
-0,31,563,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_M_GATHERING#ギャザリング#
-0,31,564,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_B_EXCLUDE#エクスクルード#
-0,31,565,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_B_DRIFT#ドリフト#
-0,31,566,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_B_WALLRUSH#ウォールラッシュ#
-0,31,567,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_M_WALLRUSH#ウォールラッシュ#
-0,31,568,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_B_WALLSHIFT#ウォールシフト#
-0,31,569,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_M_WALLCRASH#ウォールクラッシュ#
-0,31,570,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_M_REINCARNATION#リインカーネーション#
-0,31,571,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_B_EQUIP#イクイップ#
+0,31,545,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_FIGHTING#Fighting#
+0,31,546,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_NEUTRAL#Neutral#
+0,31,547,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_TAIMING_PUTI#Taming Puti#
+0,31,548,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_WHITEPOTION#White Potion#
+0,31,549,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_CARDPITCHER#Card Pitcher#
+0,31,550,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_MENTAL#Mental#
+0,31,551,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_PETPITCHER#Pet Pitcher#
+0,31,552,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_BODYSTUDY#Body Study#
+0,31,553,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_BODYALTER#Body Alter#
+0,31,554,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_PETMEMORY#Pet Memory#
+0,31,555,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_M_TELEPORT#Teleport#
+0,31,556,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_B_GAIN#Gain#
+0,31,557,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_M_GAIN#Gain#
+0,31,558,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_MISSION#Mission#
+0,31,559,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_MUNAKKNOWLEDGE#Munak Knowledge#
+0,31,560,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_MUNAKBALL#Munak Ball#
+0,31,561,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_SCROLL#Scroll#
+0,31,562,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_B_GATHERING#Gathering#
+0,31,563,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_M_GATHERING#Gathering#
+0,31,564,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_B_EXCLUDE#Exclude#
+0,31,565,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_B_DRIFT#Drift#
+0,31,566,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_B_WALLRUSH#Wall Rush#
+0,31,567,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_M_WALLRUSH#Wall Rush#
+0,31,568,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_B_WALLSHIFT#Wall Shift#
+0,31,569,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_M_WALLCRASH#Wall Crash#
+0,31,570,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_M_REINCARNATION#Reincarnation#
+0,31,571,1,0,0,0,0,0,0,0,0,0,0,0,0,1	//MB_B_EQUIP#Equip#

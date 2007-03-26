@@ -1,5 +1,5 @@
-// mapflag.txt: AthenaDB file 2006/09/11 22:28:39 (JST)
-// ---- Translation by DarkRaven.
+// mapflag.txt
+
 abyss_01.gat	mapflag	nomemo	dummy
 abyss_02.gat	mapflag	nomemo	dummy
 abyss_03.gat	mapflag	nomemo	dummy
@@ -299,8 +299,10 @@ gon_test.gat	mapflag	nopenalty	dummy
 gonryun.gat	mapflag	nopenalty	dummy
 hu_fild01.gat	mapflag	nomemo	dummy
 hu_fild02.gat	mapflag	nomemo	dummy
+hu_fild03.gat	mapflag	nomemo	dummy
 hu_fild04.gat	mapflag	nomemo	dummy
 hu_fild05.gat	mapflag	nomemo	dummy
+hu_fild06.gat	mapflag	nomemo	dummy
 hu_fild07.gat	mapflag	nomemo	dummy
 hu_in01.gat	mapflag	nomemo	dummy
 hu_in01.gat	mapflag	noteleport	dummy
@@ -1227,6 +1229,16 @@ que_bingo.gat	mapflag	noteleport	dummy
 que_bingo.gat	mapflag	nosave	SavePoint
 que_bingo.gat	mapflag	nobranch	dummy
 que_bingo.gat	mapflag	nopenalty	dummy
+que_god01.gat	mapflag	nomemo	dummy
+que_god01.gat	mapflag	noteleport	dummy
+que_god01.gat	mapflag	nosave	SavePoint
+que_god01.gat	mapflag	nobranch	dummy
+que_god01.gat	mapflag	nopenalty	dummy
+que_god02.gat	mapflag	nomemo	dummy
+que_god02.gat	mapflag	noteleport	dummy
+que_god02.gat	mapflag	nosave	SavePoint
+que_god02.gat	mapflag	nobranch	dummy
+que_god02.gat	mapflag	nopenalty	dummy
 que_hugel.gat	mapflag	nomemo	dummy
 que_hugel.gat	mapflag	noteleport	dummy
 que_hugel.gat	mapflag	nosave	SavePoint
@@ -1243,6 +1255,16 @@ que_ng.gat	mapflag	nomemo	dummy
 que_ng.gat	mapflag	noteleport	dummy
 que_ng.gat	mapflag	nobranch	dummy
 que_ng.gat	mapflag	nopenalty	dummy
+que_sign01.gat	mapflag	nomemo	dummy
+que_sign01.gat	mapflag	noteleport	dummy
+que_sign01.gat	mapflag	nosave	SavePoint
+que_sign01.gat	mapflag	nobranch	dummy
+que_sign01.gat	mapflag	nopenalty	dummy
+que_sign02.gat	mapflag	nomemo	dummy
+que_sign02.gat	mapflag	noteleport	dummy
+que_sign02.gat	mapflag	nosave	SavePoint
+que_sign02.gat	mapflag	nobranch	dummy
+que_sign02.gat	mapflag	nopenalty	dummy
 ra_fild01.gat	mapflag	nomemo	dummy
 ra_fild05.gat	mapflag	nomemo	dummy
 ra_fild06.gat	mapflag	nomemo	dummy
@@ -1289,6 +1311,7 @@ tha_t11.gat	mapflag	noteleport	dummy
 tha_t12.gat	mapflag	nomemo	dummy
 tha_t12.gat	mapflag	noteleport	dummy
 thana_boss.gat	mapflag	nomemo	dummy
+thana_boss.gat	mapflag	nosave	SavePoint
 thana_scene01.gat	mapflag	nomemo	dummy
 thana_step.gat	mapflag	nomemo	dummy
 thana_step.gat	mapflag	noteleport	dummy

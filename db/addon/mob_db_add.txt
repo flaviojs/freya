@@ -1,6 +1,20 @@
-//mob_db.txt - your custumed database (overwrite official db)
-// ---- Translation by Darkraven.
-//ID,Name,JName,LV,HP,SP,EXP,JEXP,Range1,ATK1,ATK2,DEF,MDEF,STR,AGI,VIT,INT,DEX,LUK,Range2,Range3,Scale,Race,Element,Mode,Speed,ADelay,aMotion,dMotion,Drop1id,Drop1per,Drop2id,Drop2per,Drop3id,Drop3per,Drop4id,Drop4per,Drop5id,Drop5per,Drop6id,Drop6per,Drop7id,Drop7per,Drop8id,Drop8per,Drop9id,Drop9per,DropCardid,DropCardper,MEXP,ExpPer,MVP1id,MVP1per,MVP2id,MVP2per,MVP3id,MVP3per
+// mob_db_add.txt, Custom Monster Database (Overwrites Normal Database)
+//
+// Structure of Database:
+// ID,DatabaseName,DisplayName,Level,HP,SP,EXP,JEXP,Range1,ATK1,ATK2,DEF,MDEF,STR,AGI,VIT,INT,DEX,LUK,Range2,Range3,Size,Race,Element,Mode,Speed,aDelay,aMotion,dMotion,Drop1id,Drop1per,Drop2id,Drop2per,Drop3id,Drop3per,Drop4id,Drop4per,Drop5id,Drop5per,Drop6id,Drop6per,Drop7id,Drop7per,Drop8id,Drop8per,Drop9id,Drop9per,DropCardid,DropCardper,MEXP,ExpPer,MVP1id,MVP1per,MVP2id,MVP2per,MVP3id,MVP3per
+//
+// Size/Scale:
+// 0-Small, 1-Medium, 2-Large
+//
+// Race: 
+// 0-Formless, 1-Undead, 2-Beast, 3-Plant, 4-Insect, 5-Fish, 6-Demon, 7-Demi-Human, 8-Angel, 9-Dragon, 10-Boss, 11-Non-Boss
+//
+// Element: 0-None, 1-Neutral, 2-Water, 3-Earth, 4-Fire, 5-Wind, 6-Poison, 7-Holy, 8-Dark, 9-Ghost, 10-Undead
+//
+// Mode:
+// 1: Can Move, 2: Loots, 4: Aggressive, 8: Assists Race (Ex: Wolf), 16: Spell-Detector, 32: Can Spawn Minions, 64: Plant/Mushroom, 128: Is Not a Plant/Mushroom
+// Add These Up to Get Your Result
+// Main Combinations: 64: Plants/Mushrooms, 128: Passive & Immobile, 129: Normal Monster, 131: Looter, 132: Immobile Aggressive, 133: Aggressive, 137: Assists Race (Ex: Wolf), 139: Assists & Loots (Thief Bugs), 141: Aggressive & Assists, 145: Detector, 149: Aggressive & Detector, 171: Boss, Summons Minions, Assists & Loots (Golden Thief Bug), 181: Boss, Summons, Detector & Aggressive (MvP)
 
 // Easter Events Monsters
 1920,EASTER_EGG,Easter Egg,3,300,0,4,4,0,1,2,20,20,1,1,1,1,1,20,10,12,0,0,60,128,1000,1001,1,1,1010,250,935,500,558,300,501,200,501,200,713,800,558,300,558,300,0,0,0,0,0,0,0,0,0,0,0,0

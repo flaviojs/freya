@@ -9,17 +9,17 @@
 
 4047,Ghostring Card,1
 4054,Angeling Card,1
-5022,Hat of the Sun God,1
+5022,Solar God Helm,1
 2234,Tiara,3
 2235,Crown,3
-2254,Angel Wing,2
-5058,Drooping Cat,4
-603,Old Blue Box,15
+2254,Angelic Chain,2
+5058,Resting Cat,4
+603,Unknown Item,15
 616,Old Card Album,10
 617,Old Purple Box,10
-607,Yggdrasil Berry,20
+607,Yggdrasilberry,20
 608,Yggdrasil Seed,20
-660,Forbidden Red Candle,20
+660,Red Candle,20
 661,Soft Apron,20
 529,Candy,500
 530,Candy Cane,500

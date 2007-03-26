@@ -1,15 +1,15 @@
 //===== Freya Script ========================================= 
 //= Quest NPCs related to Einbroch and Einbech
-//===== By: ================================================== 
-//= Evera and The eAthena Dev Team
-//===== Current Version: ===================================== 
+//===== By: ==================================================
+//= Evera
+//===== Current Version: =====================================
 //= 1.5
-//===== Compatible With: ===================================== 
-//= eAthena 7.15 +
-//===== Description: ========================================= 
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
 //= Shinokas Quest, Einbroch Lover Quest, Factory Quest,
 //= Uwe Quest.
-//===== Additional Comments: ================================= 
+//===== Additional Comments: =================================
 //= 1.0 Initial Release [Evera]
 //= 1.1 Added more quests [Evera]
 //= 1.2 Added quest bits from Einbech and renamed file to
@@ -19,7 +19,7 @@
 //= 1.4.2 Fixed Khowropher bug [Lupus]
 //= 1.5 Fixed double levelup bug [Lupus]
 //= 1.5.1 Fixed exploit [KarLaeda]
-//============================================================ 
+//============================================================
 
 
 //============================================================

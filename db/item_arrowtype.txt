@@ -12,10 +12,10 @@
 1756,Stone_Arrow,Stone Arrow,1
 1757,Immaterial_Arrow,Immaterial Arrow,1
 1758,Stun_Arrow,Stun Arrow,1
-1759,Freezing_Arrow,Frozen Arrow,1
+1759,Freezing_Arrow,Freeze Arrow,1
 1760,Flash_Arrow,Flash Arrow,1
-1761,Curse_Arrow,Cursed Arrow,1
-1762,Rusty_Arrow,Rusty Arrow,1
+1761,Curse_Arrow,Curse Arrow,1
+1762,Rusty_Arrow,Rusted Arrow,1
 1763,Poison_Arrow,Poison Arrow,1
 1764,Incisive_Arrow,Sharp Arrow,1
 1765,Oridecon_Arrow,Oridecon Arrow,1
@@ -25,21 +25,22 @@
 1769,Silence_Arrow,Mute Arrow,1
 1770,Iron_Arrow,Iron Arrow,1
 1771,Venom_Knife,Venom Knife,2
+1772,Unknown_Item,ê_êπÇ»ñÓÇÃñÓ,1
 13200,Bullet,Bullet,124
 13201,Silver_Bullet,Silver Bullet,124
-13202,Cell_of_Blood,Cell of Blood,124
+13202,Cell_of_Blood,Shell of Blood,124
 13203,Flare_Sphere,Flare Sphere,64
 13204,Lightning_Sphere,Lightning Sphere,64
 13205,Poison_Sphere,Poison Sphere,64
-13206,Blind_Sphere,Blinding Sphere,64
+13206,Blind_Sphere,Blind Sphere,64
 13207,Freezing_Sphere,Freezing Sphere,64
 13250,Syuriken,Shuriken,128
-13251,Unknown_Item,Raincloud Shuriken,128
-13252,Unknown_Item,Flash Shuriken,128
-13253,Unknown_Item,Pointed Leaf Shuriken,128
-13254,Unknown_Item,Piercing Thorn Shuriken,128
-13255,Unknown_Item,Kunai of Frozen Icicle,256
-13256,Unknown_Item,Kunai of Black Earth,256
-13257,Unknown_Item,Kunai of Violent Winds,256
-13258,Unknown_Item,Kunai of Fierce Heat,256
-13259,Unknown_Item,Kunai of Fierce Poison,256
+13251,Raincloud_Shuriken,Raincloud Shuriken,128
+13252,Flash_Shuriken,Flash Shuriken,128
+13253,Pointed_Leaf_Shuriken,Pointed Leaf Shuriken,128
+13254,Piercing_Thorn_Shuriken,Piercing Thorn Shuriken,128
+13255,Kunai_of_Frozen_Icicle,Kunai of Frozen Icicle,256
+13256,Kunai_of_Black_Earth,Kunai of Black Earth,256
+13257,Kunai_of_Violent_Winds,Kunai of Violent Winds,256
+13258,Kunai_of_Fierce_Heat,Kunai of Fierce Heat,256
+13259,Kunai_of_Deadly_Poison,Kunai of Deadly Poison,256

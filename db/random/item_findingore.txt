@@ -28,3 +28,4 @@
 1003,Coal,600000
 1010,Phracon,950000
 1011,Emveretarcon,550000
+

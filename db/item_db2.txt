@@ -1,20 +1,24 @@
-// ID,Upper,Zone,Dropable,Storageable,Cartable,Delay
+// item_db2.txt, Item Database #2
+//
+// Structure of Database:
+//
+// ItemID,Upper,Zone,Dropable,Storageable,Cartable,Delay
 
 506,0,16,0,0,0,0	//Green Potion
 525,0,16,0,0,0,0	//Panacea
 601,0,36,0,0,0,0	//Fly Wing
 602,0,64,0,0,0,0	//Butterfly Wing
 604,0,132,0,0,0,0	//Dead Branch
-605,0,4,0,0,0,0		//Anodine
+605,0,4,0,0,0,0		//Anodyne
 2357,2,0,0,0,0,0	//Valkyrie's Armor
 2421,2,0,0,0,0,0	//Valkyrie's Shoes
 2524,2,0,0,0,0,0	//Valkyrie's Manteau
 2634,0,0,1,1,1,0	//Wedding Ring
 2635,0,0,1,1,1,0	//Wedding Ring
-2659,2,0,0,0,0,0	//Vesper Core 1
-2660,2,0,0,0,0,0	//Vesper Core 2
-2661,2,0,0,0,0,0	//Vesper Core 3
-2662,2,0,0,0,0,0	//Vesper Core 4
+2659,2,0,0,0,0,0	//Vesper Core 01
+2660,2,0,0,0,0,0	//Vesper Core 02
+2661,2,0,0,0,0,0	//Vesper Core 03
+2662,2,0,0,0,0,0	//Vesper Core 04
 2644,0,0,1,0,1,0	//The Sign
 7025,0,0,1,0,1,0	//Lucifer's Lament
 7177,0,0,1,0,1,0	//Crumb of Sobbing Starlight
@@ -32,42 +36,42 @@
 7307,0,0,1,0,1,0	//Spiritual Whispers
 7309,0,0,1,0,1,0	//Crow Wing
 7314,0,0,1,0,1,0	//The Sign
-7416,0,0,1,1,1,0	//Letter of Recommendation
-7417,0,0,1,1,1,0	//Written Request A
-7418,0,0,1,1,1,0	//Written Request B
+7416,0,0,1,1,1,0	//Letter of Recommentation
+7417,0,0,1,1,1,0	//Written Request(A)
+7418,0,0,1,1,1,0	//Written Request(B)
 7421,0,0,1,1,1,0	//Red Key
 7422,0,0,1,1,1,0	//Yellow Key
 7423,0,0,1,1,1,0	//Blue Key
 7424,0,0,1,1,1,0	//Green Key
 7425,0,0,1,1,1,0	//Black Key
-7426,0,0,1,1,1,0	//Red Magic Stone
-7427,0,0,1,1,1,0	//Yellow Magic Stone
-7428,0,0,1,1,1,0	//Blue Magic Stone
-7429,0,0,1,1,1,0	//Green Magic Stone
-7430,0,0,1,1,1,0	//Black Magic Stone
+7426,0,0,1,1,1,0	//Red Charm Stone
+7427,0,0,1,1,1,0	//Yellow Charm Stone
+7428,0,0,1,1,1,0	//Blue Charm Stone
+7429,0,0,1,1,1,0	//Green Charm Stone
+7430,0,0,1,1,1,0	//Black Charm Stone
 7431,0,0,1,1,1,0	//Hardcover Book
 7432,0,0,1,1,1,0	//Leather Pouch
-7487,0,0,1,1,1,0	//Premium Sake
+7487,0,0,1,1,1,0	//Pub Liquor
 7488,0,0,1,1,1,0	//Delivery Box
-7489,0,0,1,1,1,0	//Spare Key
-7490,0,0,1,1,1,0	//Letter to Elly
-7491,0,0,1,1,1,0	//Metal Box
+7489,0,0,1,1,1,0	//Spare Key to the Outhouse
+7490,0,0,1,1,1,0	//Letter to Elie
+7491,0,0,1,1,1,0	//Iron_Box
 7492,0,0,1,1,1,0	//Yellow Keycard
-7493,0,0,1,1,1,0	//Golden Colored Key
-7494,0,0,1,1,1,0	//Equisite Button
+7493,0,0,1,1,1,0	//Golden Key
+7494,0,0,1,1,1,0	//Exquisite Button
 7495,0,0,1,1,1,0	//Blue Keycard
-7496,0,0,1,1,1,0	//Red Keycard
-7497,0,0,1,1,1,0	//Metal Fragment
-7498,0,0,1,1,1,0	//Roshmiel's Keychain
-7499,0,0,1,1,1,0	//Family Portrait
-7500,0,0,1,1,1,0	//Woman's Portrait
+7496,0,0,1,1,1,0	//Red_Keycard
+7497,0,0,1,1,1,0	//Piece of Metal
+7498,0,0,1,1,1,0	//Key to Losimier's_House
+7499,0,0,1,1,1,0	//Portrait of a Family
+7500,0,0,1,1,1,0	//Portrait of a Lady
 7501,0,0,1,1,1,0	//K.H's Letter
-7502,0,0,1,1,1,0	//Jame's Memo
-7503,0,0,1,1,1,0	//Man's Portrait
-7504,0,0,1,1,1,0	//Motive Power Device
+7502,0,0,1,1,1,0	//James's Memo
+7503,0,0,1,1,1,0	//Portrait of a Guy
+7504,0,0,1,1,1,0	//Power Source
 7505,0,0,1,1,1,0	//Toy Key
 7506,0,0,1,1,1,0	//Black Keycard
 7508,0,0,1,1,1,0	//Elisia's Ring
-7509,0,0,1,1,1,0	//Flashy Keycard
+7509,0,0,1,1,1,0	//Gorgeous Keycard
 12103,0,132,0,0,0,0	//Bloody Branch
 12109,0,132,0,0,0,0	//Poring Box

@@ -32,10 +32,10 @@ To use one command, type it inside the message window where you usually type to 
 
 @heal [HP=0 [SP=0]] ---- Heals the desired amount of HP and SP. No value specified will do a full heal.
 
-@monster <desired_name> <monster_name|monster_ID> [quantity=1 [x_coord:random [y_coord:random]]] ---- Spawns the desired monster with any desired name and quantity.
-@monster "desired_name" <monster_name|monster_ID> [quantity=1 [x_coord:random [y_coord:random]]] ---- Spawns the desired monster with any desired name and quantity.
-@monstermap <desired_name> <monster_name|monster_ID> [quantity=1] ---- Spawns the desired monster with any desired name and quantity (on all the map).
-@monstermap "desired_name" <monster_name|monster_ID> [quantity=1] ---- Spawns the desired monster with any desired name and quantity (on all the map).
+@monster <monster_name|monster_ID> [quantity=1 [x_coord:random [y_coord:random]]] ---- Spawns the desired monster with any quantity.
+@monster <monster_name|monster_ID> [quantity=1 [x_coord:random [y_coord:random]]] ---- Spawns the desired monster with any quantity.
+@monstermap <monster_name|monster_ID> [quantity=1] ---- Spawns the desired monster with any desired quantity (on all the map).
+@monstermap <monster_name|monster_ID> [quantity=1] ---- Spawns the desired monster with any desired quantity (on all the map).
 @killmonster [map_name=your_map]  ---- Kills all monsters of the map (with drops).
 @killmonster2 [map_name=your_map] ---- Kills all monsters of the map (without drops).
 

@@ -5,14 +5,14 @@
 //===== Current Version: =====================================
 //= 1.4
 //===== Compatible With: =====================================
-//= eAthena 1.0 +
+//= Freya
 //===== Description: =========================================
 //= <Description>
 //===== Additional Comments: =================================
 //= Fully working
 //= v1.1 Added instant job change for High Novice [Lupus]
 //= v1.3 Added Baby Class support [Lupus]
-//= v1.4 Optimised and moved first checker to Jfunc1-1 [massdriller]
+//= v1.4 Optimized and moved first checker to Jfunc1-1 [massdriller]
 //============================================================
 
 

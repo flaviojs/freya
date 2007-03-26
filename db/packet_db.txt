@@ -1,4 +1,10 @@
-// packet_db.txt file. Because some packets use same number for a different function, the last read number overwites previously read same number.
+// packet_db.txt, Server/Client Packet Database
+//
+// Structure of Database
+//
+// Packet_ID,Length (In Bytes),Function,Extra_Params
+//
+// Because some packets use same number for a different function, the last read number overwites previously read same number.
 // You must choose the packet that you want to use. Then, after numbers common to all packets, comment or remove packets that you don't use.
 
 0x0064,55
@@ -576,7 +582,19 @@
 0x02a0,0
 0x02a1,0
 0x02a2,8
-
+0x02a3,0
+0x02a4,0
+0x02a5,8
+0x02a6,0
+0x02a7,0
+0x02a8,0
+0x02a9,0
+0x02aa,4
+0x02ab,36
+0x02ac,6
+0x02ad,0
+0x02ae,0
+0x02af,0
 
 // 2005-04-12‚æ‚èŒÃ‚¢ jRO ‚Í‚±‚±‚Ü‚Å
 

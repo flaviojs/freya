@@ -8,11 +8,10 @@
 // 1000000 = 100%
 
 0,Guard,2102
-607,Yggdrasil Berry,10000
 702,Animal Gore,10000
 703,Hinalle,10000
 704,Aloe,10000
-706,Four Leaf Clover,10000
+706,Four-Leaf Clover,10000
 707,Singing Plant,10000
 708,Ment,10000
 714,Emperium,10000
@@ -46,9 +45,9 @@
 747,Crystal Mirror,10000
 748,Witherless Rose,10000
 749,Frozen Rose,10000
-752,Rocker Doll,10000
+752,Grasshopper Doll,10000
 753,Yoyo Doll,10000
-754,Racoon Doll,10000
+754,Raccoon Doll,10000
 756,Rough Oridecon,10000
 757,Rough Elunium,10000
 909,Jellopy,10000
@@ -67,12 +66,12 @@
 974,Mixture,10000
 975,Scarlet Dyestuffs,10000
 976,Lemon Dyestuffs,10000
-978,Cobaltblue Dyestuffs,10000
-979,Darkgreen Dyestuffs,10000
-980,Orange Dyestuffs,10000
-981,Violet Dyestuffs,10000
-982,White Dyestuffs,10000
-983,Black Dyestuffs,10000
+978,Cobaltblue Dyestuff,10000
+979,Darkgreen Dyestuff,10000
+980,Orange Dyestuff,10000
+981,Violet Dyestuff,10000
+982,White Dyestuff,10000
+983,Black Dyestuff,10000
 984,Oridecon,10000
 985,Elunium,10000
 986,Anvil,10000
@@ -94,7 +93,7 @@
 1003,Coal,10000
 1004,Chivalry Emblem,10000
 1005,Hammer of Blacksmith,10000
-1006,Old Magicbook,10000
+1006,Old Magic Book,10000
 1007,Necklace of Wisdom,10000
 1008,Necklace of Oblivion,10000
 1009,Hand of God,10000
@@ -114,7 +113,7 @@
 1129,Flamberge,10000
 1152,Slayer,10000
 1155,Bastard Sword,10000
-1158,Two-Handed Sword,10000
+1158,Two-handed Sword,10000
 1162,Broad Sword,10000
 1163,Claymore,10000
 1164,Muramasa,10000
@@ -126,6 +125,7 @@
 1217,Stiletto,10000
 1220,Gladius,10000
 1226,Damascus,10000
+1234,Walgwanggum,10000
 1237,Grimtooth,10000
 1239,Poison Knife,10000
 1251,Jur,10000
@@ -137,7 +137,7 @@
 1352,Battle Axe,10000
 1355,Hammer,10000
 1358,Buster,10000
-1361,Two Handed Axe,10000
+1361,Two-handed Axe,10000
 1402,Javelin,10000
 1405,Spear,10000
 1408,Pike,10000
@@ -152,7 +152,7 @@
 1508,Smasher,10000
 1511,Flail,10000
 1514,Morning Star,10000
-1517,SwordMace,10000
+1517,Sword Mace,10000
 1520,Chain,10000
 1522,Stunner,10000
 1550,Book,10000
@@ -165,9 +165,9 @@
 1613,Mighty Staff,10000
 1702,Bow,10000
 1705,Composite Bow,10000
-1711,Crossbow,10000
+1711,Cross Bow,10000
 1713,Arbalest,10000
-1714,Gakkung Bow,10000
+1714,Gakkung,10000
 1718,Hunter Bow,10000
 1719,Roguemaster's Bow,10000
 1721,Repeating Crossbow,10000
@@ -180,10 +180,10 @@
 1756,Stone Arrow,10000
 1757,Immaterial Arrow,10000
 1758,Stun Arrow,10000
-1759,Frozen Arrow,10000
+1759,Freeze Arrow,10000
 1760,Flash Arrow,10000
-1761,Cursed Arrow,10000
-1762,Rusty Arrow,10000
+1761,Curse Arrow,10000
+1762,Rusted Arrow,10000
 1763,Poison Arrow,10000
 1764,Sharp Arrow,10000
 1765,Oridecon Arrow,10000
@@ -191,7 +191,7 @@
 1768,Sleep Arrow,10000
 1769,Mute Arrow,10000
 1770,Iron Arrow,10000
-1806,Studded Knuckles,10000
+1806,Hora,10000
 1810,Claw,10000
 1902,Violin,10000
 1904,Mandolin,10000
@@ -200,11 +200,11 @@
 1910,Harp,10000
 1951,Rope,10000
 1953,Line,10000
-1955,Wire Whip,10000
+1955,Wire,10000
 1957,Rante Whip,10000
-1959,Tail Whip,10000
+1959,Tail,10000
 1961,Whip,10000
-1962,Lariat Whip,10000
+1962,Lariat,10000
 2102,Guard,10000
 2104,Buckler,10000
 2106,Shield,10000
@@ -223,7 +223,7 @@
 2229,Helm,10000
 2231,Gemmed Sallet,10000
 2233,Circlet,10000
-2236,Santa Hat,10000
+2236,Santa's Hat,10000
 2242,Purple Glasses,10000
 2243,Geek Glasses,10000
 2244,Big Ribbon,10000
@@ -231,24 +231,24 @@
 2250,Cute Ribbon,10000
 2251,Monk Hat,10000
 2256,Majestic Goat,10000
-2257,Unicorn Horn,10000
-2258,Spiky Band,10000
+2257,Snow Horn,10000
+2258,Spikey Band,10000
 2261,Army Cap,10000
-2262,Clown Nose,10000
+2262,Pierrot Nose,10000
 2263,Zorro Masque,10000
 2264,Munak Hat,10000
 2265,Gangster Mask,10000
 2266,Iron Cain,10000
 2269,Romantic Flower,10000
 2270,Romantic Leaf,10000
-2271,Jack be Dandy,10000
+2271,Jack a Dandy,10000
 2272,Stop Post,10000
 2273,Doctor Band,10000
 2275,Red Bandana,10000
-2276,Angled Glasses,10000
+2276,Eagle Eyes,10000
 2277,Nurse Cap,500
 2279,Bomb Wick,10000
-2284,Antlers,10000
+2284,Antler,10000
 2287,Pirate Bandana,10000
 2289,Poo Poo Hat,10000
 2290,Funeral Hat,10000
@@ -285,17 +285,17 @@
 2404,Shoes,10000
 2407,Crystal Pumps,10000
 2408,Shackles,10000
-2409,High Heels,10000
+2409,Spiky Heel,10000
 2411,Greaves,10000
 2502,Hood,10000
 2504,Muffler,10000
 2506,Manteau,10000
-2507,Ancient Cape,10000
+2507,Cape of Old Marquess,10000
 2508,Ragamuffin Manteau,10000
 2601,Ring,10000
 2602,Earring,10000
-2603,Necklace,10000
-2604,Glove,10000
+2603,Ancient Necklace,10000
+2604,Ancient Glove,10000
 2605,Brooch,10000
 2607,Clip,10000
 2608,Rosary,10000
@@ -307,16 +307,18 @@
 2617,Celebrant's Mitten,1000
 2621,Ring,100
 2622,Earring,100
-2623,Necklace,100
-2624,Glove,10000
+2623,Ancient Necklace,100
+2624,Ancient Glove,10000
 2625,Brooch,100
-2626,Rosary,100
+2626,Ancient Rosary,100
 5006,Machoman's Glasses,100
 5008,Puppy Love,10000
 5009,Safety Helmet,10000
 5010,Indian Fillet,10000
+5011,Aerial,10000
+5012,Ph.D Hat,10000
 5014,Fin Helm,10000
 5015,Egg Shell,10000
 5019,Corsair,10000
-5020,Kafra Band,100
+5020,Kafra's Band,10
 5046,Bongun Hat,10000

@@ -1,5 +1,9 @@
-// Homonculus experience points table
-// Experience table of basic Homunculus, Experience table of evolution, Reserved1, Reserved2, Reserved3, Reserved4
+// exp_humun.txt, Homonculus Experience Database
+//
+// Structure of Database:
+//
+// <Basic_Homun_Exp>,<Evolved_Homun_Exp>,<Reserved1>,<Reserved2>,<Reserved3>,<Reserved4>
+//
 50,50,0,0,0,0
 110,110,0,0,0,0
 180,180,0,0,0,0

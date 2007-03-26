@@ -1,16 +1,16 @@
-//===== Freya Script ========================================= 
+//===== Freya Script =========================================
 //= Morroc Guides
-//===== By: ================================================== 
+//===== By: ==================================================
 //= kobra_k88
-//===== Current Version: ===================================== 
+//===== Current Version: =====================================
 //= 1.3
-//===== Compatible With: ===================================== 
-//= eAthena  0.5.2 +
-//===== Description: ========================================= 
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
 //=
-//===== Additional Comments: ================================= 
-//= Fully working.  Added a guide at every exit.
-//= v1.1 Now using duplicate command.
+//===== Additional Comments: =================================
+//= 1.0 Fully working.  Added a guide at every exit. [kobra_k88]
+//= 1.1 Now using duplicate command.
 //= 1.2 Optimized, updated common guide names [Lupus]
 //= 1.3 Removed Duplicates [Silent]
 //============================================================

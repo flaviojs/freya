@@ -1,14 +1,14 @@
 //===== Freya Script ========================================= 
 //= Renters
-//===== By: ================================================== 
+//===== By: ==================================================
 //= kobra_k88, mod by Lupus
-//===== Current Version: ===================================== 
+//===== Current Version: =====================================
 //= 1.6a
-//===== Compatible With: ===================================== 
-//= eAthena 7.15 +
-//===== Description: ========================================= 
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
 //= PecoPeco Breeder, Grand PecoPeco Breeder, Falcon tamer scripts
-//===== Additional Comments: ================================= 
+//===== Additional Comments: =================================
 //= Fully working
 //= Added another Falcon Master into the Hunters Guild [Lupus]
 //= 1.2: replaced checkoption(x) with checkriding,checkfalcon [Lupus]
@@ -18,7 +18,8 @@
 //= 1.5: Fixed spelling mistakes [Nexon]
 //= 1.5a: Small fix (Falcon Taming -> Falcon Mastery) [Komurka]
 //= 1.6: Moved the Falcon Master to Hugel [Poki#3]
-//============================================================ 
+//============================================================
+
 
 // PecoPeco Breeder (for Knights)-------------------------------------------
 prontera.gat,61,338,3	script	PecoPeco Breeder	86,{

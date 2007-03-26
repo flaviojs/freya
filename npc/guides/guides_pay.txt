@@ -1,16 +1,16 @@
-//===== Freya Script ========================================= 
+//===== Freya Script =========================================
 //= Payon Guides
-//===== By: ================================================== 
+//===== By: ==================================================
 //= kobra_k88
-//===== Current Version: ===================================== 
+//===== Current Version: =====================================
 //= 1.5
-//===== Compatible With: ===================================== 
-//= eAthena  0.5.2 +
-//===== Description: ========================================= 
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
 //=
-//===== Additional Comments: ================================= 
-//= Fully working
-//= v1.1 Now using duplicate command.New Payon Locations [Darkchild]
+//===== Additional Comments: =================================
+//= 1.0 Added first version [kobra_k88]
+//= 1.1 Now using duplicate command.New Payon Locations [Darkchild]
 //= 1.2 Optimized, updated common guide names [Lupus]
 //= 1.3 Updated the guide according to how it is on iRO, thanks [MasterOfMuppets]
 //=     to Muad_Dib

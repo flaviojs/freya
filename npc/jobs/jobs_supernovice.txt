@@ -5,7 +5,7 @@
 //===== Current Version: =====================================
 //= 1.1
 //===== Compatible With: =====================================
-//= Any eAthena
+//= Freya
 //===== Description: =========================================
 //= Super Novice Job Change Npc
 //= Super Novice Cart Rental Npc
@@ -13,6 +13,7 @@
 //===== Additional Comments: =================================
 //= Dialogs From Some Other Scripts (Most Of It)
 //============================================================
+
 
 // -- jobchanger --
 aldeba_in.gat,223,167,3	script	Tozel	709,{

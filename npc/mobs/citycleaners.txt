@@ -5,7 +5,7 @@
 //===== Current Version: =====================================
 //= 1.0
 //===== Compatible With: =====================================
-//= Any Athena Version
+//= Freya
 //===== Description: =========================================
 //= Spawns monsters to clean up city. Apparently spawning
 //= occured in iRO and kRO. Enable this if you want. 
@@ -14,6 +14,7 @@
 //= 1.0 Removed unofficial city cleaners [Playtester]
 //= 1.0 Added other city spawns [Playtester]
 //============================================================
+
 
 prontera.gat,0,0,0,0	monster	Wild Rose	1261,1,7200000,3600000,0
 morocc.gat,0,0,0,0	monster	Wild Rose	1261,1,7200000,3600000,0

@@ -1,7 +1,13 @@
-// Unusual status database
-// ID,Name,SaveFlag
-// Unusual status ID, Name (dummy), Save propriety (0: not saved, 1: saved, -1: undefined, but should be 1 (not saved))
-// * Note: Do not modify the '-1' SaveFlag, otherwise the server would crash.
+// sc_data_db.txt, Status Change Database
+//
+// Structure of Database:
+//
+// ID,Dummy_Name,SaveFlag	// Description
+//
+// SaveFlag: (0: Not saved, 1: Saved, -1: Undefined, but should be 1 (Not saved))
+//
+// * Note: Do not modify the '-1' SaveFlag or the server will crash.
+//
 0,SC_PROVOKE,1			// Provoke
 1,SC_ENDURE,1			// Endure
 2,SC_TWOHANDQUICKEN,1		// Two-Hand Quicken

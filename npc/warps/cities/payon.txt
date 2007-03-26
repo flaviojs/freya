@@ -1,16 +1,16 @@
 //===== Freya Script =========================================
 //= Payon Warps
-//===== By: ================================================== 
+//===== By: ==================================================
 //= Muad Dib (1.0)
 //= Darkchild (1.1)
 //= Nana (1.3)
-//===== Current Version: ===================================== 
+//===== Current Version: =====================================
 //= 1.5
-//===== Compatible With: ===================================== 
+//===== Compatible With: =====================================
 //= Freya
-//===== Description: ========================================= 
+//===== Description: =========================================
 //= Payon warps
-//===== Additional Comments: ================================= 
+//===== Additional Comments: =================================
 //= Warps Done By Muad Dib, All Credits To Him
 //= 1.2 Removed Duplicated Warp
 //= 1.3 Separated and reorganized field and dungeons

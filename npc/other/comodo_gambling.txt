@@ -1,7 +1,7 @@
 //===== Freya Script ======================================
 //= Comodo Gambling NPC
 //===== By ================================================
-//= Aegis (and some item IDs taken from eAthenas version)
+//= Aegis
 //= Coverted by GreenGoblin
 //===== Version ===========================================
 //= 1.0

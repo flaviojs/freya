@@ -215,12 +215,12 @@ ATCOMMAND_FUNC(autoloot);
  */
 static AtCommandInfo atcommand_info[] = {
 	{ AtCommand_RuraP,              "@rura+",            0, atcommand_rurap },
+	{ AtCommand_RuraP,              "@charwarp",         0, atcommand_rurap }, // [Custom]
 	{ AtCommand_Rura,               "@rura",             0, atcommand_rura },
-	// Added @warp because I can't stand accidentily typing it instead of @rura constantly [Tsuyuki]
-	{ AtCommand_Rura,               "@warp",             0, atcommand_rura },
+	{ AtCommand_Rura,               "@warp",             0, atcommand_rura }, // [Custom]
 	{ AtCommand_Where,              "@where",            0, atcommand_where },
 	{ AtCommand_JumpTo,             "@jumpto",           0, atcommand_jumpto },
-	{ AtCommand_Jump,               "@jump",             0, atcommand_jump },
+	{ AtCommand_Jump,               "@jump",             0, atcommand_jump }, // [Custom]
 	{ AtCommand_Who,                "@who",              0, atcommand_who },
 	{ AtCommand_Save,               "@save",             0, atcommand_save },
 	{ AtCommand_Load,               "@load",             0, atcommand_load },
@@ -255,8 +255,8 @@ static AtCommandInfo atcommand_info[] = {
 	{ AtCommand_GvGOn,              "@gvgon",            0, atcommand_gvgon },
 	{ AtCommand_Model,              "@model",            0, atcommand_model },
 	{ AtCommand_Go,                 "@go",               0, atcommand_go },
-	{ AtCommand_Monster,            "@monster",          0, atcommand_monster },
-	{ AtCommand_MonsterMap,         "@monstermap",       0, atcommand_monster },
+	{ AtCommand_Monster,            "@monster",          0, atcommand_monster }, // [Custom]
+	{ AtCommand_MonsterMap,         "@monstermap",       0, atcommand_monster }, // [Custom]
 	{ AtCommand_KillMonster,        "@killmonster",      0, atcommand_killmonster },
 	{ AtCommand_KillMonster2,       "@killmonster2",     0, atcommand_killmonster2 },
 	{ AtCommand_Refine,             "@refine",           0, atcommand_refine },
@@ -2079,7 +2079,6 @@ atcommand_monster(
 	const int fd, struct map_session_data* sd,
 	const char* command, const char* message)
 {
-	char name[100];
 	char monster[100];
 	int mob_id = 0;
 	int number = 0;
@@ -2094,9 +2093,9 @@ atcommand_monster(
 	if (!message || !*message)
 		return -1;
 
-	if (sscanf(message, "\"%[^\"]\" %s %d %d %d", name, monster, &number, &x, &y) < 2 &&
-	    sscanf(message, "%s \"%[^\"]\" %d %d %d", monster, name, &number, &x, &y) < 2 &&
-	    sscanf(message, "%99s %99s %d %d %d", name, monster, &number, &x, &y) < 2)
+	if (sscanf(message, "%s %d %d %d", monster, &number, &x, &y) < 1 &&
+	    sscanf(message, "%s %d %d %d", monster, &number, &x, &y) < 1 &&
+	    sscanf(message, "%99s %d %d %d", monster, &number, &x, &y) < 1)
 		return -1;
 
 	if ((mob_id = atoi(monster)) == 0)
@@ -2109,11 +2108,11 @@ atcommand_monster(
 
 	if (battle_config.etc_log) {
 		if (on_map)
-			printf("%s monster=%s name=%s id=%d count=%d (on entire map)\n",
-				command, monster, name, mob_id, number);
+			printf("%s monster=%s id=%d count=%d (on entire map)\n",
+				command, monster, mob_id, number);
 		else
-			printf("%s monster=%s name=%s id=%d count=%d (%d,%d)\n",
-				command, monster, name, mob_id, number, x, y);
+			printf("%s monster=%s id=%d count=%d (%d,%d)\n",
+				command, monster, mob_id, number, x, y);
 	}
 
 	for (i = 0; i < number; i++) {
@@ -2131,7 +2130,7 @@ atcommand_monster(
 			else
 				my = y;
 		}
-		count += (mob_once_spawn(sd, "this", mx, my, name, mob_id, 1, "") != 0) ? 1 : 0;
+		count += (mob_once_spawn(sd, "this", mx, my, monster, mob_id, 1, "") != 0) ? 1 : 0;
 	}
 	if (count != 0)
 		clif_displaymessage(fd, msg_txt(39));

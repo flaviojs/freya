@@ -1,4 +1,4 @@
-//===== Freya Script ========================================
+//===== Freya Script =========================================
 //= White Day Event Script
 //===== By: ==================================================
 //= 1.0a Muad_Dib (Prometheus Project)
@@ -10,11 +10,12 @@
 //= Sells candy, candy cane and well baked cookie.
 //===== Additional Comments: =================================
 //= 07/06/05 : Added 1st Version. [Muad_Dib]
-//= Converted to eAthena format by Dr.Evil
+//= Converted to Athena format by Dr.Evil
 //============================================================
 
 
 alberta.gat,188,64,4	script	Sugar	91,{
+
 	set @maplenum,0;
 	set @mapleItemID,0;
 	set @maplePrice,0;

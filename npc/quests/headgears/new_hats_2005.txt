@@ -5,7 +5,7 @@
 //===== Current Version: ====================================
 //= 1.0
 //===== Compatible With: ====================================
-//= eAthena 1.0
+//= Freya
 //===== Description: ========================================
 //Hats lists:
 //	Hat of the Investigator
@@ -28,11 +28,6 @@
 // 0.5a Updated detective hat to ask for the correct items [Kayla]
 // 0.6 Fixed possible exploits. Update yuor servers! [Lupus]
 //============================================================
-
-//Links (some info related to these headgears)
-//http://translate.google.com/translate?hl=en&sl=ja&u=http://www11.big.or.jp/~top/2005/0625/head.htm
-//http://eathena.deltaanime.net/board/index.php?showtopic=34214
-//http://www.ragnainfo.net/forums/viewtopic.php?t=79677&start=0&postdays=0&postorder=asc&highlight=
 
 
 //Quest Hats

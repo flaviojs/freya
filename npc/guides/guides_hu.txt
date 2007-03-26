@@ -5,7 +5,7 @@
 //===== Current Version: =====================================
 //= 1.1
 //===== Compatible With: =====================================
-//= eAthena 1.0
+//= Freya
 //===== Description: =========================================
 //= Guard/Guide NPC of City of Hugel.
 //===== Additional Comments: =================================

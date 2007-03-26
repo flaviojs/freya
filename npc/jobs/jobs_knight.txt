@@ -7,7 +7,7 @@
 //===== Current Version: =====================================
 //= 1.6
 //===== Compatible With: =====================================
-//= eAthena 1.0
+//= Freya
 //===== Description: =========================================
 //= Official RO Knight job quest converted from aegis script, and my own
 //= RO screenies and play experience
@@ -25,7 +25,6 @@
 //= 2nd Job Quests again. It also guides adv classes where
 //= to go. [Lupus]
 //============================================================
-
 
 
 //<------------------------------------------------------------------------------------ Chivalry Captain Herman------------------------------------------------------------------------------------------>\\

@@ -5,7 +5,7 @@
 //===== Current Version: =====================================
 //= 2.9
 //===== Compatible With: =====================================
-//= New Freya
+//= Freya
 //===== Description: =========================================
 //= Fully working for normal and same-sex marriages.
 //===== Additional Comments: =================================

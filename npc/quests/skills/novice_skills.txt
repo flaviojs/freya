@@ -1,21 +1,21 @@
 //===== Freya Script ========================================= 
 //= Novice Skills Quests
-//===== By: ================================================== 
+//===== By: ==================================================
 //= kobra_k88
-//===== Current Version: ===================================== 
+//===== Current Version: =====================================
 //= 1.4b
-//===== Compatible With: ===================================== 
-//= eAthena 7.15 +
-//===== Description: ========================================= 
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
 //= Customized novice skills quest
-//===== Additional Comments: ================================= 
+//===== Additional Comments: =================================
 //= Fully working
 //= 1.2 Added Baby Class Support [Lupus]
 //= 1.3 Fixed a Zeny exploit, made more variables clear
 //= on finishing quests. [Lupus]
 //= 1.4 Fixed exploits [Lupus]
 //= 1.4a Fixed some typos [IVBela]
-//============================================================ 
+//============================================================
 
 
 

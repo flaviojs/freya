@@ -5,10 +5,10 @@
 //===== Current Version: =====================================
 //= 1.2
 //===== Compatible With: =====================================
-//= eAthena 7.15 +
+//= Freya
 //===== Description: =========================================
 //= Trade in items for potions
-//===============================
+//============================================================
 //= Breakdown of arguments used
 //= arg(0): first item id#
 //= arg(1): 2nd item id# if needed, or else use 0

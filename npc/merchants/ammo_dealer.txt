@@ -5,12 +5,13 @@
 //===== Current Version: =====================================
 //= 1.0
 //===== Compatible With: =====================================
-//= eAthena
+//= Freya
 //===== Description: =========================================
-//= trades items for spheres
+//= Trades items for spheres
 //===== Additional Comments: =================================
 //= 1.0 first version [Playtester]
 //============================================================
+
 
 // Ammo Dealer Tony
 que_ng.gat,187,156,3	script	Tony	86,{

@@ -1,26 +1,26 @@
-//===== eAthena Script ===============
+//===== Freya Script =========================================
 //= Comodo Kafras
-//===== By: ============================
-//= eAthena Dev Team
-//===== Current Version: =======================
+//===== By: ==================================================
+//= eAthena
+//===== Current Version: =====================================
 //= 2.21
-//===== Compatible With: ============================
-//= eAthena 1.0
-//===== Description: ============================================
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
 //= Description of argument settings for callfunc "F_Kafra".
 //=  arg(0): When set at 0 the default Kafra message is displayed.
 //=  When set to 1 the Niflhiem Kafra message is displayed.
 //=  When set to 2 the Guild Kafra message is displayed. 
 //=  arg(1): Set to 1 to disable teleport menu option. Otherwise set to 0.
 //=  arg(2): Set to 1 to disable info menu.  Otherwise set to 0.
-//===== Additional Comments: ==========================================
+//===== Additional Comments: =================================
 //= v1.1 Now using functions :)
 //= v2.1b Minor changes to function calls. Using arguments.
 //= This version uses arrays .[kobra_k88]
 //= Corrected savepoint for in town kafra.[kobra_k88]
 //= 2.2 New teleport destinations, prices [Lupus]
 //= 2.21 from Pharos, both warps are now 1200z [Evera]
-//=====================================================================
+//============================================================
 
 
 // In Town ==============================================>\\

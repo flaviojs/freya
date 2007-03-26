@@ -8,7 +8,7 @@
 //===== Current Version: =====================================
 //= 1.5
 //===== Compatible With: =====================================
-//= Any eAthena Version.
+//= Freya
 //===== Description: =========================================
 //= Seperate Alarm Mask quest.
 //===== Additional Comments: =================================

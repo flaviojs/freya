@@ -12,11 +12,12 @@
 1113,Drops,500000
 1031,Poporing,400000
 1242,Marin,300000
-1613,Metaling,250000
+1613,Metaling,300000
 1090,Mastering,100000
+1096,Angeling,50000
+1582,Deviling,50000
 1120,Ghostring,50000
-1096,Angeling,25000
-1582,Deviling,25000
 1388,Arc Angeling,10000
-// 1520,Boiled Rice,????
-// 1784,Stapo,????
+
+//1520,Boiled Rice,????
+//1784,Stapo,????

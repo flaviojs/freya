@@ -1,19 +1,19 @@
 //===== Freya Script ========================================= 
 //= Quest NPCs related to Comodo
-//===== By: ================================================== 
+//===== By: ==================================================
 //= kobra_k88
-//===== Current Version: ===================================== 
+//===== Current Version: =====================================
 //= 1.2
-//===== Compatible With: ===================================== 
-//= eAthena 7.15 +
-//===== Description: ========================================= 
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
 //= 'Cross Hat', 'Bulb Hairband', 'Striped Hairband', 'Blue Hairband' Quests.
 //= 'Mine Helmet', 'Parcel Hat', 'Money Loser's Grief',
 //= 'Phantom of the Opera Mask', 'Doomed Sword' (parts 1,2,3), Quests.
-//===== Additional Comments: ================================= 
+//===== Additional Comments: =================================
 //= 1.1 Fixed exploits [Lupus]
 //= 1.2 Added more quest from cities/comodo.txt [Evera]
-//============================================================ 
+//============================================================
 
 
 

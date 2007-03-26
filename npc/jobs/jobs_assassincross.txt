@@ -6,13 +6,14 @@
 //===== Current Version: =====================================
 //= 1.1
 //===== Compatible With: =====================================
-//= eAthena 1.0 +
+//= Freya
 //===== Description: =========================================
 //= Advance Class jobchanger after kRO Normals.
 //===== Additional Comments: =================================
-//= v1.01 Fixed the error in jobchange by Chacina
-//= v1.1 Made all into functions, additional checks, etc. [Lupus]
+//= 1.01 Fixed the error in jobchange by Chacina
+//= 1.1 Made all into functions, additional checks, etc. [Lupus]
 //============================================================
+
 
 // -== Assassin Cross ==-
 valkyrie.gat,44,58,6	script	Assassin Cross	725,{

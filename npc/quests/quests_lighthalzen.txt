@@ -32,7 +32,7 @@
 //= 2.7 Converted a for statement allowing Mobster spawn/kill functioning [Tsuyuki]
 //= 2.8 Reverted the recent barrel code fix as it was an old fix and fixing it twice broke it again [GreenGoblin]
 //= Note: Need proper cutins for the Friendship quest
-//============================================================ 
+//============================================================
 
 lighthalzen.gat,1,1,7	script	sneakAddSuber	-1,{
 OnInit:

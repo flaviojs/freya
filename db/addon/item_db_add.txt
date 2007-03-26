@@ -1,3 +1,12 @@
-//item_db.txt - your custumed database (overwrite official db)
-// ---- Translation by Darkraven.
-//ID,Name,Jname,Type,Price,Sell,Weight,ATK,DEF,Range,Slot,Job,Gender,Loc,wLV,eLV,View,Refine,{UseScript},{EquipScript}
+// item_db_add.txt, Custom Item Database (Overwrites Normal Database)
+//
+// Structure of Database:
+//
+//ID,DatabaseName,DisplayName,Type,Price,Sell,Weight,ATK,DEF,Range,Slot,Job,Gender,Loc,wLV,eLV,View,Refinable,{UseScript},{EquipScript}
+//
+// Type: 0: Healing, 2: Usable, 3: Misc, 4: Weapon, 5: Armor, 6: Card, 7: Pet Egg,
+//       8: Pet Equip, 10: Arrow
+//
+// Elements: 0: Nothing, 1: Water, 2: Earth , 3: Fire, 4: Wind, 5: Poison, 6: Holy, 7: Dark, 8: Sense, 9: Immortality
+//
+// Loc/Location (Cards): 2: Weapon, 4: Garment, 16: Armor, 32: Shield, 64: Shoes, 136: Accessory, 769: Headgear

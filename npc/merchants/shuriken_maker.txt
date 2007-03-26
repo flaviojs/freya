@@ -3,9 +3,9 @@
 //===== By: ==================================================
 //= Au{R}oN
 //===== Current Version: =====================================
-//= 1.2c
+//= 1.4
 //===== Compatible With: =====================================
-//= eAthena 1.0+
+//= Freya
 //===== Description: =========================================
 //= Shuriken Weapon Maker.
 //===== Additional Comments: =================================
@@ -13,9 +13,10 @@
 //= 1.0 Added the 4 Shuriken. [Au{R}oN]
 //= 1.1 Fix getitem bugs and add if ninja job check. [Au{R}oN]
 //= 1.2 more bugs fixed,wrong labels, missing stuf, etc[Lupus]
-//= 1.2a added missing next;
-//= 1.2b Thanks to $ephiroth, fixed wrong ingredient lists
+//= 1.3 added missing next;
+//= 1.4 Thanks to $ephiroth, fixed wrong ingredient lists
 //============================================================
+
 
 que_ng.gat,22,62,3	script	Taitsu	709,{
 

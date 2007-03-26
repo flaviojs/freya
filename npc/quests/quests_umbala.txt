@@ -1,12 +1,12 @@
 //===== Freya Script =========================================
 //= Quest NPCs related to Umbala
-//===== By: ================================================== 
-//= sabernet09 & eAthena Team
-//===== Current Version: ===================================== 
+//===== By: ==================================================
+//= sabernet09
+//===== Current Version: =====================================
 //= 1.9
-//===== Compatible With: ===================================== 
+//===== Compatible With: =====================================
 //= Freya
-//===== Description: ========================================= 
+//===== Description: =========================================
 //= Umbalian Language Quest, Umbala Skeletal Gate Quest, Umbala Event,
 //= Create Essence/Dismantle Stone
 //
@@ -20,7 +20,7 @@
 //5	(Elder)Ask about conditions needed to be fulfilled to get permission
 //6	(Elder)Get permission
 //7	(Shaman)Use the shaman to create essences and dismantle elemental stones.
-//===== Additional Comments: ================================= 
+//===== Additional Comments: =================================
 //= fixed by x[tsk], Lupus, PoW
 //= Quest completion is now registered
 //= 1.1 fixed Poporing Egg ID -> Poring Egg, fixed condition
@@ -34,7 +34,7 @@
 //= TODO: should I add a jRO Werewolf Quest? 8)
 //= 1.8 Converted to Freya format.. also commented two While(1)'s, needs to be checked [Tsuyuki]
 //= 1.9 Fixed an exploit [Latios]
-//============================================================ 
+//============================================================
 
 
 //===========================================================================

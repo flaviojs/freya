@@ -1,18 +1,18 @@
 //===== Freya Script ========================================= 
 //= Munak and Bongun accessory / Taming items Quest
-//===== By: ================================================== 
-//= eAthena Team
-//===== Current Version: ===================================== 
+//===== By: ==================================================
+//= eAthena
+//===== Current Version: =====================================
 //= 1.2
-//===== Compatible With: ===================================== 
-//= eAthena 1.0
-//===== Description: ========================================= 
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
 //= Quest itms:Sword o'Chinese Exorcist,No Recipient,Her Heart
-//===== Additional Comments: ================================= 
+//===== Additional Comments: =================================
 //= 1.0. merged 3 sep. files, fixed exploits [Lupus]
 //= 1.1	Added missing next;'s [Evera]
 //= 1.2 Added another missing next; [Evera]
-//============================================================ 
+//============================================================
 
 
 comodo.gat,135,227,5	script	Sherri	93,{

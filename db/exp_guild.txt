@@ -1,4 +1,6 @@
-// Guild LvUp experience point table
+// exp_guild.txt, Guild Level Experience Database
+// Levels 1-49 are in the database
+//
 2000000
 4000000
 8000000

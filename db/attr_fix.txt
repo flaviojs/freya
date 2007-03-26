@@ -1,3 +1,5 @@
+// attr_fix.txt, Element Damage Database
+//
 // Element modifier
 // Horizontal:Monster's Element                      // Vertical:Element of attack
 1,10	// lv1 Element table

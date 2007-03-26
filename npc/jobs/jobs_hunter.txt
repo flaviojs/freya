@@ -6,15 +6,15 @@
 //= Further bugfixed and tested by Lupus
 //= Updated by keVn (Moved to Hugel)
 //===== Current Version: =====================================
-//= 1.6a
+//= 2.6a
 //===== Compatible With: =====================================
-//= eAthena 1.0
+//= Freya
 //===== Description: =========================================
 //= Hunter Job Quest converted from aegis script
 //===== Additional Comments: =================================
 //= 0.5 Fully working.
 //= 0.6 Changed global variable names to unique ones.
-//= 0.7 - 0.8 Updates for eAthena +Knight2,Crusader2 fix
+//= 0.7 - 0.8 Updates +Knight2,Crusader2 fix
 //= 0.9 Fixed items quest fork bug [Lupus]
 //= 1.0 Fixed items quest bug: added extra condition [Lupus]
 //= 1.1 Fixed skillpoints check bug [Lupus]
@@ -37,6 +37,7 @@
 //= 2.6 Converted from eAthena to Freya [keVn]
 //= 2.6a Fixed a script error [keVn]
 //============================================================
+
 
 //<====================================== Job Changer ========================================>\\
 hu_in01.gat,386,374,4	script	Hunter Sharon	727,{

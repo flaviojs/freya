@@ -6,7 +6,7 @@
 //===== Current Version: =====================================
 //= 1.1
 //===== Compatible With: =====================================
-//= Any Athena Version
+//= Freya
 //===== Description: =========================================
 //= Warp Points for Prontera Field
 //===== Additional Comments: =================================

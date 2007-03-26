@@ -6,7 +6,7 @@
 //===== Current Version: =====================================
 //= 1.3
 //===== Compatible With: =====================================
-//= Any eAthena Version.
+//= Freya
 //===== Description: =========================================
 //= Seperate New Hat quests.
 //===== Additional Comments: =================================

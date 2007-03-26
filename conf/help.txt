@@ -28,6 +28,7 @@ To use one command, type it inside the message window where you usually type to 
 @save  ---- Sets respawn point to current spot and save your character.
 @load  ---- Warps you to your respawn point.
 @rura <map_name> [x=0 [y=0]]               ---- Warps you to the selected position and map.
+@warp <map_name> [x=0 [y=0]]               ---- Duplicate of @rura
 @rura+ <map_name> <x> <y> <character name> ---- Warps the specified character to the selected position.
 @jump <x> <y>            ---- Warps you to the selected position.
 @jumpto <character name> ---- Warps you to the specified character.
@@ -108,10 +109,10 @@ To use one command, type it inside the message window where you usually type to 
 @refine <equip_position> <amount> ---- Upgrades equipment at the specified position (all equipement=0, otherwise: lower/top/mid head=1/256/512, right hand=2, robe/garment=4, left accessory=8, body/armor=16, left hand=32, feet=64, right accessory=128, stackable).
 @produce <equip_name|equip_ID> [element=0 [Number_of_stars=0]] ---- Creates an equipement (Element: 0=None 1=Ice 2=Earth 3=Fire 4=Wind).
 @repair ---- Repairs all items of your inventory.
-@monster <desired_name> <monster_name|monster_ID> [quantity=1 [x_coord:random [y_coord:random]]] ---- Spawns the desired monster with any desired name and quantity.
-@monster "desired_name" <monster_name|monster_ID> [quantity=1 [x_coord:random [y_coord:random]]] ---- Spawns the desired monster with any desired name and quantity.
-@monstermap <desired_name> <monster_name|monster_ID> [quantity=1] ---- Spawns the desired monster with any desired name and quantity (on all the map).
-@monstermap "desired_name" <monster_name|monster_ID> [quantity=1] ---- Spawns the desired monster with any desired name and quantity (on all the map).
+@monster <monster_name|monster_ID> [quantity=1 [x_coord:random [y_coord:random]]] ---- Spawns the desired monster with any quantity.
+@monster <monster_name|monster_ID> [quantity=1 [x_coord:random [y_coord:random]]] ---- Spawns the desired monster with any quantity.
+@monstermap <monster_name|monster_ID> [quantity=1] ---- Spawns the desired monster with any desired quantity (on all the map).
+@monstermap <monster_name|monster_ID> [quantity=1] ---- Spawns the desired monster with any desired quantity (on all the map).
 @killmonster [map_name=your_map]  ---- Kills all monsters of the map (with drops).
 @killmonster2 [map_name=your_map] ---- Kills all monsters of the map (without drops).
 @guildlvup <number_of_levels>     ---- Raises Guild level by desired number of levels.

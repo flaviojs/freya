@@ -1,21 +1,21 @@
 //===== Freya Script ========================================= 
 //= Grade A and Grade S weapon quests
-//===== By: ================================================== 
+//===== By: ==================================================
 //= Vicious_Pucca, Reddozen & MasterOfMuppets
-//===== Current Version: ===================================== 
+//===== Current Version: =====================================
 //= 1.21
-//===== Compatible With: ===================================== 
-//= eAthena SVN 3422+(Requires jA Script System)
-//===== Description: ========================================= 
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
 //= Grade A and Grade S weapon quests
-//===== Additional Comments: ================================= 
+//===== Additional Comments: =================================
 //= 1.0 First Version, Credits goes to Vicious_Pucca for converting [MasterOfMuppets]
 //=     the quest from aegis format to eA format. Also thanks to 
 //=	reddozen for fixing bugs.
 //= 1.1 Many fixes to spelling, grammar, and sentence order. [Silent]
 //= 1.2 A small fix, thanks to vicious_pucca [MasterOfMuppets]
 //= 1.21 Fixing MoM's typos (Citrin -> Citrine) [erKURITA]
-//============================================================ 
+//============================================================
 
 //---------------------------------------------------------------
 // Initialize the basic materials for easier reading/conversion 

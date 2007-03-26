@@ -1,17 +1,17 @@
-//===== Freya Script ======================================= 
+//===== Freya Script =========================================
 //= Hugel Airport NPCs
-//===== By: ================================================== 
+//===== By: ==================================================
 //= Spirit Death/Freya
-//===== Current Version: ===================================== 
+//===== Current Version: =====================================
 //= 1.2
-//===== Compatible With: ===================================== 
+//===== Compatible With: =====================================
 //= Freya
-//===== Additional Comments: ================================= 
+//===== Additional Comments: =================================
 //= 1.0 First release [Spirit Death]
 //= 1.1 Modified so a player cannot purchase a ticket if the
 //= airship is not present. [Bison]
 //= 1.2 Fixed minor script problems [Tsuyuki]
-//============================================================ 
+//============================================================
 
 
 // Note: This NPC doesn't actually exist.. need to figure

@@ -1,3 +1,12 @@
+// exp.txt, Level Experience Database
+// Max levels for Base/Job are in the database (Nothing past L99)
+//
+// Structure of Database:
+//
+// Novice-BaseExp,FirstClass-BaseExp,SecondClass-BaseExp,SuperNovice-BaseExp,HighNovice-BaseExp,HighFirstClass-BaseExp,HighSecondClass-BaseExp,Novice-JobExp,FirstClass-JobExp,SecondClass-JobExp,SuperNovice-JobExp,HighNovice-JobExp,HighFirstClass-JobExp,HighSecondClass-JobExp,StarGladiator-JobExp,GS/NJ-JobExp
+//
+// Note: Normal/Baby classes share the same experience values
+
 9,9,9,9,10,10,10,10,30,144,30,11,60,288,27434,72
 16,16,16,16,18,18,18,18,43,184,43,20,86,368,27434,92
 25,25,25,25,28,28,28,28,58,284,58,31,116,568,27434,142

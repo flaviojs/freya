@@ -12,6 +12,7 @@
 //= 1.0 Readded (deleted on accident) from eAthena [Tsuyuki]
 //============================================================
 
+
 payon.gat,173,238,5	script	Jade#01	754,{
 	mes "[Jade]";
 	mes "Bring me two";

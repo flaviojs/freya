@@ -1,16 +1,16 @@
-//===== Freya Script ======================================= 
+//===== Freya Script =========================================
 //= Einbroch Airport NPCs
-//===== By: ================================================== 
+//===== By: ==================================================
 //= Spirit Death/Freya
-//===== Current Version: ===================================== 
+//===== Current Version: =====================================
 //= 1.2
-//===== Compatible With: ===================================== 
+//===== Compatible With: =====================================
 //= Freya
-//===== Additional Comments: ================================= 
+//===== Additional Comments: =================================
 //= 1.0 First release [Spirit Death]
 //= 1.1 Changed the way the script works a little [Tsuyuki]
 //= 1.2 Fixed minor script problems [Tsuyuki]
-//============================================================ 
+//============================================================
 
 
 airport.gat,126,43,5	script	Airport Staff::einairportin	90,{

@@ -1,7 +1,7 @@
 //===== Freya Script =========================================
 //= Christmas Event
 //===== By: ==================================================
-//= eAthena
+//= Unknown
 //===== Current Version: =====================================
 //= 1.4
 //===== Compatible With: =====================================
@@ -12,7 +12,8 @@
 //= Includes X-mas mobs.
 //= This npc will disable, the current Santa Claus npc.
 //===== Additional Comments: =================================
-//= Fixed the spawns [shadowlady]
+//= 1.0 Added first version [Unknown]
+//= 1.x Fixed the spawns [shadowlady]
 //= 1.1 Added Xmas Jakk, fixed 2 exploits, fixed reward Box ID [Lupus]
 //= 1.2 Added monsters to the newer fields, thanks to Muad_Dib [MasterOfMuppets]
 //= 1.2a Fixed a major problem with the monster spawns, thanks to Playtester [MasterOfMuppets]

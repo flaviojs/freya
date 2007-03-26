@@ -15,6 +15,7 @@
 //= the untranslated version previously there [GreenGoblin]
 //============================================================
 
+
 // Chocolate Selling NPC
 alberta.gat,26,243,3	script	Trader	58,{
 

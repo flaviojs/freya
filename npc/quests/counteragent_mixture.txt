@@ -1,15 +1,15 @@
 //===== Freya Script ========================================= 
 //= Counteragent and Mixture Quest(Morgenstein)
-//===== By: ================================================== 
+//===== By: ==================================================
 //= kobra_k88
 //= added some dialogs for Morgenstein by Komurka
-//===== Current Version: ===================================== 
+//===== Current Version: =====================================
 //= 2.1
-//===== Compatible With: ===================================== 
-//= eAthena 7.15 +
-//===== Description: ========================================= 
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
 //= Counteragent and Mixtures for making dyes & Alchemist Job Quest
-//===== Additional Comments: ================================= 
+//===== Additional Comments: =================================
 //= Fully working
 //= Update for Alchemist Quest.
 //= 1.2 added check for Empty Bottle [Lupus]
@@ -19,7 +19,7 @@
 //= 1.6 Fixed some bugs, also related to Alch Job quest [Lupus]
 //= 1,7 Fixed exploit 1.8 Got rid of 'al_morgen' var [Lupus]
 //= 2.1 now uses (MISC_QUEST & 4) bit instead of al_morgen [Lupus]
-//============================================================ 
+//============================================================
 
 
 // Merchant Louitz -----------------------------------------------------------

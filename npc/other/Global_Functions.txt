@@ -1,14 +1,14 @@
 //===== Freya Script ========================================= 
 //= Global Functions
-//===== By: ================================================== 
+//===== By: ==================================================
 //= Lupus, kobra_k88
-//===== Current Version: ===================================== 
+//===== Current Version: =====================================
 //= 2.08
-//===== Compatible With: ===================================== 
-//= Freya Phaeton
-//===== Description: ========================================= 
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
 //= <Description>
-//===== Additional Comments: ================================= 
+//===== Additional Comments: =================================
 //= Added F_ClearJobVar - on getting a new job it clears all Job Quest variables
 //= Removed individual job check functions as they were redundant [kobra_k88]
 //= 1.3 Added Job Change Function for Baby/Normal Classes
@@ -31,7 +31,7 @@
 //= 2.06 Pass to Bio-Lab -> MISC_QUEST|512 [Lupus]
 //= 2.07 Added TK_Q variable clear [Lupus]
 //- 2.08 Added NINJ_Q variable clear [Lupus]
-//============================================================ 
+//============================================================
 
 
 //////////////////////////////////////////////////////////////////////////////////

@@ -1,3 +1,65 @@
-//mob_skill_db.txt - your custumed database (overwrite official db)
-// ---- Translation by Darkraven.
+// mob_skill_db_add.txt, Custom Monster Skill Database (Overwrites Normal Database)
+//
 // MOB_ID,Dummy skill and monster name,STATE,SKILL_ID,SKILL_LV,rate,casttime,delay,can stop the target,Condition,Condition value,Value 1,Value 2,Value 3,Value 4,Value 5,Emotion associate with the skill
+// Dummy skill and monster name : when you can see the skill and mob name isn't it good?
+//
+// STATE: any At any time / idle Idle/standing / walk Walking / attack Attacking /
+//        dead Dead / loot Loot / chase Following or pursuiting / Attacking back(?)
+//        command
+//
+// Target: target Attacking PC / self Self / friend Friend
+//	  around  surrounding (81 surrounding tails = around4)
+//	  around1  9 surrounding tails of the caster (3*3)
+//	  around2 25 surrounding tails of the caster (5*5)
+//	  around3 49 surrounding tails of the caster (7*7)
+//	  around4 81 surrounding tails of the caster (9*9)
+//	  around5  9 surrounding tails of the target (3*3)
+//	  around6 25 surrounding tails of the target (5*5)
+//	  around7 49 surrounding tails of the target (7*7)
+//	  around8 81 surrounding tails of the target (9*9)
+//	  master / command / modechange
+//	You can only use around for area of effect skills. You can only use friend if there is friends nearby.
+//
+// Condition: (Condition type)		(Specified condition value)
+//	always             No condition
+//	myhpltmaxrate      When caster max HP is under the specified %
+//	mystatuson         When caster has an abnormal status (condition value)
+//	mystatusoff        When caster has an abnormal status (condition value)
+//	friendhpltmaxrate  When friend max HP is under the specified %
+//	friendstatuson     When friend has an abnormal status (condition value)
+//	friendstatusoff    When friend has an abnormal status (condition value)
+//	attackpcgt         When attacking PC become more than the specified number
+//	attackpcge         When attacking PC become equal or more than the specified number
+//	slavelt            When the number of slave become less than the specified number
+//	slavele            When the number of slave become equal or less than the specified number
+//	closedattacked     When it is attacked in close range
+//	longrangeattacked  When it is attacked by long range attacks
+//	skillused          When it is attacked by a specified skill
+//	casttargeted       When it is attacked by a skill with an area of effect
+//	targethpgtmaxrate  When target max HP is over the specified %
+//	targethpltmaxrate  When target max HP is under the specified %
+//	targetstatuson     When target has an abnormal status (condition value)
+//	targetstatusoff    When target has an abnormal status (condition value)
+//	targethpgt         When target max HP is over the specified value
+//	targethplt         When target max HP is under the specified value
+//	masterhpgtmaxrate  When master max HP is over the specified value
+//	masterhpltmaxrate  When master max HP is under the specified value
+//	masterstatuson     When master has an abnormal status (condition value)
+//	masterstatusoff    When master has an abnormal status (condition value)
+//	rudeattacked       
+//
+//	The caracter status can be specified with the statuson/statusoff system
+//	anybad     Which one of the 9 following abnormal status is it?
+//	stone      Stone Cursed»	<- anybad correspondence
+//	freeze     Frozen
+//	stan       Stuned
+//	sleep      Asleep
+//	poison     Poisoned
+//	curse      Cursed
+//	silence    Silenced
+//	confusion  Chaosed
+//	blind      Blind	<- anybad correspondence
+//	hiding     Hidden
+//	sight      Using Sight
+//	stone      Stone Cursed»(beeing completly stone cursed/pertified)
+//	lexaeterna State of LA

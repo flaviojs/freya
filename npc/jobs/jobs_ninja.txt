@@ -1,21 +1,21 @@
 //===== Freya Script =========================================
 //= Ninja Job Quest
-//===== By: ================================================== 
+//===== By: ==================================================
 //= Legionaire
-//===== Current Version: ===================================== 
+//===== Current Version: =====================================
 //= 1.2
-//===== Compatible With: ===================================== 
+//===== Compatible With: =====================================
 //= Freya
-//===== Description: ========================================= 
+//===== Description: =========================================
 //= Semi-official Ninja Job Change script using dialogue from
 //= Mandarin Aegis Ninja script.
-//===== Additional Comments: ================================= 
-//= The dialouge isn't exactly the best available, but until
+//===== Additional Comments: =================================
+//= The dialogue isn't exactly the best available, but until
 //= The official dialouge in English comes out, this is the
 //= Best that I can do.
 //= 1.1 Optimized, updated, checked [Lupus]
 //= 1.2 Converted to Freya [Tsuyuki]
-//============================================================ 
+//============================================================
 
 
 que_ng.gat,30,65,3	script	Cool Kid#nq	730,{

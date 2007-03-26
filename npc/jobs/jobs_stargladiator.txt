@@ -1,20 +1,20 @@
 //===== Freya Script =========================================
 //= Taekwon Master Job Quest
-//===== By: ================================================== 
+//===== By: ==================================================
 //= Celestria
-//===== Current Version: ===================================== 
+//===== Current Version: =====================================
 //= 1.1
-//===== Compatible With: ===================================== 
+//===== Compatible With: =====================================
 //= Freya
-//===== Description: ========================================= 
+//===== Description: =========================================
 //= 
-//===== Additional Comments: ================================= 
+//===== Additional Comments: =================================
 //= A temp Taekwon Master (Taekwon Master/Knight) Job Changer based on 
 //= the kRO quest. Quest info from RagnaInfo.
 //= Sprites from kRO screenshots, bar two which I just had to guess at.
 //= 1.0 Optimized, updated [Lupus]
 //= 1.1 Added to Freya [Tsuyuki]
-//============================================================ 
+//============================================================
 
 
 payon.gat,215,102,2	script	MooHyun	828,{

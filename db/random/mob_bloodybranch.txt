@@ -16,7 +16,7 @@
 1112,Drake,1000000
 1115,Eddga,1000000
 1147,Maya,1000000
-1150,Moonlight,1000000
+1150,Moonlight Flower,1000000
 1157,Pharaoh,1000000
 1159,Phreeoni,1000000
 1190,Orc Lord,1000000
@@ -26,18 +26,19 @@
 1312,Turtle General,1000000
 1373,Lord of Death,1000000
 1389,Dracula,1000000
+//1399,Baphomet,1000000
 1418,Evil Snake Lord,1000000
-1492,Incantation Samurai,1000000
+1492,Samurai Specter,1000000
 1511,Amon Ra,1000000
 1518,White Lady,1000000
 1583,Tao Gunka,1000000
 1623,RSX-0806,1000000
-1646,Lord Knight Seyren,1000000
-1647,Assassin Cross Eremes,1000000
-1648,Mastersmith Howard,1000000
-1649,High Priest Margaretha,1000000
-1650,Sniper Cecil,1000000
-1651,High Wizard Kathryne,1000000
+//1646,Lord Knight Seyren,1000000
+//1647,Assassin Cross Eremes,1000000
+//1648,Mastersmith Howard,1000000
+//1649,High Priest Margaretha,1000000
+//1650,Sniper Cecil,1000000
+//1651,High Wizard Kathryne,1000000
 1685,Vesper,1000000
 1688,Lady Tanee,1000000
 1708,Thanatos Phantom,1000000

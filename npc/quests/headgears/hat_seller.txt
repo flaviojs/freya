@@ -6,7 +6,7 @@
 //===== Current Version: =====================================
 //= 1.4
 //===== Compatible With: =====================================
-//= Any eAthena Version.
+//= Freya
 //===== Description: =========================================
 //= New Hat quests:
 //=	Pointy Cap,Straw Hat,Cowboy Hat,Sombrero,Furry Hat

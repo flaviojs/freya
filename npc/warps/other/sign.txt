@@ -1,11 +1,11 @@
-//===== Athena Script ========================================
+//===== Freya Script =========================================
 //= Sign Quest Warps
 //===== By: ==================================================
 //= MasterOfMuppets
 //===== Current Version: =====================================
 //= 1.1
 //===== Compatible With: =====================================
-//= Any Athena Version; RO Episode 8+
+//= Freya
 //===== Description: =========================================
 //= Warp Points related to the Sign Quest will be put here
 //===== Additional Comments: =================================

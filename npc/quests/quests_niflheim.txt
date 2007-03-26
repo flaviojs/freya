@@ -1,20 +1,20 @@
 //===== Freya Script ========================================= 
 //= Quest NPCs related to Niflheim
-//===== By: ================================================== 
-//= The eAthena Dev Team
-//===== Current Version: ===================================== 
+//===== By: ==================================================
+//= eAthena
+//===== Current Version: =====================================
 //= 1.1
-//===== Compatible With: ===================================== 
-//= eAthena 7.15 +
-//===== Description: ========================================= 
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
 //= Book of Devil		(MISC_QUEST | 256)
 //= Piano Key Ouest		(MISC_QUEST | 32)
-//===== Additional Comments: ================================= 
+//===== Additional Comments: =================================
 //= 1.0 Initial release, moved Book of Devil and Piano quest
 //=	from npc/cities/niflheim.txt [Evera]
 //= 1.1 Optimized Book of Devil quest. used bit-wise var,
 //=	Optimized Piano Quest - now uses 1 variable [Lupus]
-//============================================================ 
+//============================================================
 
 //=============================================================
 //Quest for Book of Devil

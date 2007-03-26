@@ -17,6 +17,7 @@ To use one command, type it inside the message window where you usually type to 
 @save  ---- Sets respawn point to current spot and save your character.
 @load  ---- Warps you to your respawn point.
 @rura <map_name> [x=0 [y=0]]               ---- Warps you to the selected position and map.
+@warp <map_name> [x=0 [y=0]]               ---- Duplicate of @rura
 @rura+ <map_name> <x> <y> <character name> ---- Warps the specified character to the selected position.
 @jump <x> <y>            ---- Warps you to the selected position.
 @jumpto <character name> ---- Warps you to the specified character.

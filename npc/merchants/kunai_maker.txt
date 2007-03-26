@@ -5,7 +5,7 @@
 //===== Current Version: =====================================
 //= 1.0
 //===== Compatible With: =====================================
-//= eAthena 1.0
+//= Freya
 //===== Description: =========================================
 //= NPC that trades you a few shurikens + ninja stones for 
 //= elemental kunais.
@@ -14,7 +14,10 @@
 //=	  id of the 2 required items plus the amount. Can trade
 //= 	  up to 500 units (5,000 kunais) at once. [erKURITA]
 //============================================================
+
+
 que_ng.gat,72,29,3	script	Kunai Seller	83,{
+
 mes "[Jin]";
 mes "Hi, I sell elemental enchanted kunais. I'll trade you some elemental stones and one kind of shuriken for a determined elemental Kunai";
 next;

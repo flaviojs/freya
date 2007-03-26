@@ -1,11 +1,11 @@
 //===== Freya Script =========================================
 //= Ayothaya Dungeon Warp Script
 //===== By: ==================================================
-//= eAthena Team (1.0)
+//= eAthena
 //===== Current Version: =====================================
 //= 1.0
 //===== Compatible With: =====================================
-//= Any Athena Version; RO Episode 10+
+//= Freya
 //===== Description: =========================================
 //= Warp Points for Ayothaya Dungeon
 //===== Additional Comments: =================================

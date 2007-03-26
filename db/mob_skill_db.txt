@@ -1,8 +1,5 @@
-//mob_skill_db.txt@athena 2006/09/24 20:41:32 (JST)
+// mob_skill_db.txt, Monster Skill Database
 //
-// Abbreviation: Translator's Note -> TN
-//
-// TN -> this part was moved in doc/db_ref.txt ------------------
 // MOB_ID,Dummy skill and monster name,STATE,SKILL_ID,SKILL_LV,rate,casttime,delay,can stop the target,Condition,Condition value,Value 1,Value 2,Value 3,Value 4,Value 5,Emotion associate with the skill
 // Dummy skill and monster name : when you can see the skill and mob name isn't it good?
 //
@@ -66,8 +63,6 @@
 //	sight      Using Sight
 //	stone      Stone Cursed»(beeing completly stone cursed/pertified)
 //	lexaeterna State of LA
-// end of TN -----------------------------------------------------
-
 
 // Ragnarok Online - Alpha 1 Episode 0.1
 1001,Scorpion@NPC_FIREATTACK,attack,186,1,2000,0,5000,yes,target,always,0,,,,,,
@@ -4554,10 +4549,10 @@
 // Missing several Ifrit skills
 1833,Kasa@AL_TELEPORT,idle,26,1,10000,0,0,no,self,rudeattacked,,,,,,,
 1833,Kasa@WZ_FIREPILLAR,idle,80,10,1000,500,5000,no,around2,always,0,,,,,,
-1833,Kasa@WZ_METEOR,attack,83,11,1500,1000,5000,no,target,always,0,,,,,,
-1833,Kasa@WZ_METEOR,chase,83,11,1500,1000,5000,no,target,always,0,,,,,,
-1833,Kasa@MG_FIREBALL,attack,17,11,1000,500,10000,no,target,always,0,,,,,,
-1833,Kasa@MG_FIREBALL,chase,17,11,1000,500,10000,no,target,always,0,,,,,,
+1833,Kasa@WZ_METEOR,attack,83,10,1500,1000,5000,no,target,always,0,,,,,,
+1833,Kasa@WZ_METEOR,chase,83,10,1500,1000,5000,no,target,always,0,,,,,,
+1833,Kasa@MG_FIREBALL,attack,17,10,1000,500,10000,no,target,always,0,,,,,,
+1833,Kasa@MG_FIREBALL,chase,17,10,1000,500,10000,no,target,always,0,,,,,,
 1833,Kasa@LK_SPIRALPIERCE,attack,397,5,500,0,10000,no,target,always,0,,,,,,
 1833,Kasa@HW_GANBANTEIN,attack,483,1,2500,500,5000,no,around2,skillused,288,,,,,,
 1833,Kasa@HW_GANBANTEIN,chase,483,1,2500,500,5000,no,around2,skillused,288,,,,,,
@@ -4571,10 +4566,10 @@
 1834,G_Salamander@KN_TWOHANDQUICKEN,chase,60,10,2000,0,120000,no,self,myhpltmaxrate,30,,,,,,
 1835,G_Kasa@AL_TELEPORT,idle,26,1,10000,0,0,no,self,rudeattacked,,,,,,,
 1835,G_Kasa@WZ_FIREPILLAR,idle,80,10,1000,500,5000,no,around2,always,0,,,,,,
-1835,G_Kasa@WZ_METEOR,attack,83,11,1500,1000,5000,no,target,always,0,,,,,,
-1835,G_Kasa@WZ_METEOR,chase,83,11,1500,1000,5000,no,target,always,0,,,,,,
-1835,G_Kasa@MG_FIREBALL,attack,17,11,1000,500,10000,no,target,always,0,,,,,,
-1835,G_Kasa@MG_FIREBALL,chase,17,11,1000,500,10000,no,target,always,0,,,,,,
+1835,G_Kasa@WZ_METEOR,attack,83,10,1500,1000,5000,no,target,always,0,,,,,,
+1835,G_Kasa@WZ_METEOR,chase,83,10,1500,1000,5000,no,target,always,0,,,,,,
+1835,G_Kasa@MG_FIREBALL,attack,17,10,1000,500,10000,no,target,always,0,,,,,,
+1835,G_Kasa@MG_FIREBALL,chase,17,10,1000,500,10000,no,target,always,0,,,,,,
 1835,G_Kasa@LK_SPIRALPIERCE,attack,397,5,500,0,10000,no,target,always,0,,,,,,
 1835,G_Kasa@HW_GANBANTEIN,attack,483,1,2500,500,5000,no,around2,skillused,288,,,,,,
 1835,G_Kasa@HW_GANBANTEIN,chase,483,1,2500,500,5000,no,around2,skillused,288,,,,,,

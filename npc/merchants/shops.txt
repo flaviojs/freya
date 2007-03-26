@@ -1,14 +1,14 @@
 //===== Freya Script =========================================
 //= Shops
-//===== By: ================================================== 
+//===== By: ==================================================
 //= eAthena
-//===== Current Version: ===================================== 
+//===== Current Version: =====================================
 //= 2.2
-//===== Compatible With: ===================================== 
+//===== Compatible With: =====================================
 //= Freya
-//===== Description: ========================================= 
+//===== Description: =========================================
 //= Shops across Rune Midgard
-//===== Additional Comments: ================================= 
+//===== Additional Comments: =================================
 //= Swapped shop titles in KUNLUN, thanks to Kashy
 //= 1.3a Fixed Louyang map name. Added additional shops in Yuno. [kobra_k88]
 //= 1.4 Added Niflheim Shops
@@ -50,6 +50,7 @@
 //= 2.1 Fixed NPC-Type Name: Food Seller > Chef Assistant & Comodo Chef Assistant Items [Tsuyuki]
 //= 2.2 Added a missing pet merchant in Lighthalzen [Tsuyuki]
 //============================================================
+
 
 //=======================================================
 //ALBERTA

@@ -1,19 +1,19 @@
-//===== eAthena Script ===========
+//===== Freya Script =========================================
 //= New Kafras
-//===== By: =========================
-//= eAthena Dev Team
-//===== Current Version: ===================
-//= 2.8
-//===== Compatible With: =====================
-//= eAthena 1.0
-//===== Description: ============================================
+//===== By: ==================================================
+//= eAthena
+//===== Current Version: =====================================
+//= 2.9
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
 //= Description of argument settings for callfunc "F_Kafra".
 //=  arg(0): When set at 0 the default Kafra message is displayed.
 //=    When set to 1 the Niflhiem Kafra message is displayed.
 //=    When set to 2 the Guild Kafra message is displayed. 
 //=  arg(1): Set to 1 to disable teleport menu option.  Otherwise set to 0.
 //=  arg(2): Set to 1 to disable info menu.  Otherwise set to 0.
-//===== Additional Comments: ==============================================
+//===== Additional Comments: =================================
 //= v1.1 Now using functions
 //= v2.1 Added Niflheim Kafra by Dizzy
 //= v2.1b Minor changes to function calls.  Using arguments.
@@ -28,8 +28,8 @@
 //= 2.7c Added missing kafra in Lighthalzen, thanks to Muad_Dib [Vicious]
 //= 2.8 Removed warps from Umbala and Gonryun, thanks Drakee [Evera]
 //= 2.9 Fixed an incorrect savepoint (inside the hotel) the map was wrong.
+//============================================================
 
-//==========================================================================
 
 // Amatsu ------------------------------------------------------------------
 amatsu.gat,102,149,4	script	Kafra::kaf_amatsu	116,{

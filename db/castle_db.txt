@@ -1,5 +1,9 @@
-// Guild castle data by sakage, shuto
+// castle_db.txt, Guild Castles Database
+//
+// Structure of Database:
+//
 // <Castle_ID>,<Map_Name>,<Castle_Name>,<Event_Name>
+//
 0,aldeg_cas01.gat,Luina Guild 1,AgitExe#L1
 1,aldeg_cas02.gat,Luina Guild 2,AgitExe#L2
 2,aldeg_cas03.gat,Luina Guild 3,AgitExe#L3

@@ -1,12 +1,12 @@
-//===== eAthena Script ================
+//===== Freya Script =========================================
 //= Kafras in Dungeons and Fields
-//===== By: ============================
-//= eAthena Dev Team
-//===== Current Version: =======================
+//===== By: ==================================================
+//= eAthena
+//===== Current Version: =====================================
 //= 2.5
-//===== Compatible With: ============================
-//= eAthena 1.0
-//===== Description: ============================================
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
 //= Description of argument settings for callfunc "F_Kafra".
 //=  arg(0): When set at 0 the default Kafra message is displayed.
 //=    When set to 1 the Niflhiem Kafra message is displayed.
@@ -24,7 +24,7 @@
 //= 2.4 Now Baby Merchant can pass Merch Job Quest w/o probs [Lupus]
 //= 2.41 Removed useless warp points, already nullified by func call [Evera]
 //= 2.5 Allowed Culvert save point [Evera]
-//===============================================================
+//============================================================
 
 
 //<============================= Ant Hell ==============================>\\

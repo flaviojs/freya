@@ -1,7 +1,19 @@
-// id,item availability (0 to disable the item)
-// Because every items are define in item_db.txt,
-// you only have to disable them by marking them with a 0.
-// If you specify another number, you will see that id sprite in game.
-// By this way you can change an item display server side without having to make a change client side.
+// item_avail.txt, Item Disguise Database
+//
+// Structure of Database:
+//
+// ItemID,ReplacementSpriteItemID
+//
+// Client will use "ReplacementSpriteItemID" to display the particular item
+// Use '0' for the ReplacementID to disable the item
+
 2237,0	//Weird_Goatee,Bandit Beard
 5054,0	//Assassin_Mask,Assassin Mask
+
+2240,2241 // Beard - Grampa Beard
+
+// Treasure Hunters Quest Items
+7500,7021 // THG Membership - Foolishness of the Blind
+7501,7042 // Token Bag - Leather Bag of Infinity
+1998,1250 // Jeramiah's Jur - Jur
+1999,1472 // Zed's Staff - Soul Staff

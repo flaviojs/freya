@@ -2,11 +2,10 @@
 //= Easter Egg Event
 //===== By: ==================================================
 //= kobra_k88
-//= fixed by Yoshimo
 //===== Current Version: =====================================
 //= 1.0a
 //===== Compatible With: =====================================
-//=
+//= Freya
 //===== Description: =========================================
 //= Break easter eggs in towns an cities to find chocolates.
 //= Exchange the chocolates for prizes.

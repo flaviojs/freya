@@ -5,13 +5,14 @@
 //===== Current Version: =====================================
 //= 1.2
 //===== Compatible With: =====================================
-//= eAthena 1.0
+//= Freya
 //===== Description: =========================================
 //= A man makes you ice-cream
 //===== Additional Comments: =================================
 //= 1.1 Optimized, changed overlapping coords in Alberta [Lupus]
 //= 1.2 According to the patch, IceCream seller has been removed from Morocc [Lupus]
 //============================================================
+
 
 //ALBERTA
 alberta.gat,120,45,2	script	Ice Cream Maker::IceCreamer	85,{

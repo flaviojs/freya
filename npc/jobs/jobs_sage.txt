@@ -1628,7 +1628,7 @@ L_Menu1_2:
 			mes "8. Who isn't involved in the Blacksmith class change?";
 			next;
 // =========================
-// Acording To mRO Site And eAthena Blacksmith Script the following ppl looking like ppl listed here are:
+// Acording To mRO Site And Blacksmith Script the following ppl looking like ppl listed here are:
 // - Baisulitst - looks like some1 listed by mRO
 // - Wickebine - mRO has him as option listed
 // - Gromgast - mRO has him as option listed
@@ -1742,7 +1742,7 @@ L_Menu1_2:
 			mes "8. Which isn't involved in the Knight class change?";
 			next;
 // =========================
-// Acording To mRO Site And eAthena Knight Script the following ppl looking like ppl listed here
+// Acording To mRO Site And Knight Script the following ppl looking like ppl listed here
 // =========================
 			menu "James Syracuse",L_Test3_9,"Thomas Bishop",-,"Amy Veattris",L_Test3_9,"Edmond Groster",L_Test3_9;
 			set @sage_test2,@sage_test2+5;

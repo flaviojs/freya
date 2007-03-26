@@ -5,7 +5,7 @@
 //===== Current Version: =====================================
 //= 2.1
 //===== Compatible With: =====================================
-//= Any Freya Version
+//= Freya
 //===== Description: =========================================
 //= Refining NPCs and Metal Salesmen.
 //===== Additional Comments: =================================

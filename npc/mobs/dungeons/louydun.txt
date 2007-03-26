@@ -1,11 +1,11 @@
 //===== Freya Script =========================================
 //= Louyang Dungeon Monster Spawn Script
 //===== By: ==================================================
-//= Athena (1.0)
+//= Athena
 //===== Current Version: =====================================
 //= 1.2
 //===== Compatible With: =====================================
-//= Any Athena Version
+//= Freya
 //===== Additional Comments: =================================
 //= 1.1 Updated by MasterOfMuppets
 //= 1.2 Added White Lady and Green Maiden [MasterOfMuppets]

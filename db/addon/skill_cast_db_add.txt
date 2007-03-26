@@ -1,3 +1,5 @@
-//skill_cast_db.txt - your custumed database (overwrite official db)
-// ---- Translation by Darkraven.
-// id,cast_list,fixed_cast_list,delay_list,upkeep_time,upkeep_time2
+// skill_cast_db_add.txt, Custom Skill Duration Database (Overwrites Normal Database)
+//
+// Structure of Database:
+//
+// SkillID,CastingTime,FixedCastingTime,AfterCastDelay,Duration1,Duration2

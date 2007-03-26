@@ -1,13 +1,15 @@
-// Hocus Pocus skill database result
+// abra,db.txt, Hocus-Pocus Castable Skills Database
 //
-// Format:<ID>,<DUMMY>,<REQ_LV>,<PER>
+// Structure of Database:
 //
-// ID:Applicable skill ID.
-// DUMMY:Dummy, Comprehensible name.
-// REQ_LV:Required level of Hocus Pocus to obtain this skill.
-// PER:Chance rate. The rate is *10000. However, a 100% rate will not result in this skill always beeing choosen.
+// <Skill_ID>,<Dummy_Name>,<Required_HocusPocus_Level>,<Rate>
 //
-// If PER is made very low, skill selection processing may take more time and beeing heavy for the server.
+// Skill_ID: Applicable skill ID.
+// Dummy_Name: Dummy, comprehensible name.
+// Required_HocusPocus_Level: Required level of Hocus Pocus to obtain this skill.
+// Rate: Chance rate. The rate is *10000. However, a 100% rate will not result in this skill always beeing choosen.
+//
+// If Rate is made very low, skill selection processing may take more time and will be heavy on CPU with the server.
 
 1,Basic Skill,1,5000
 
@@ -181,8 +183,8 @@
 156,Holy Light,1,5000
 157,Energy Coat,1,5000
 
-// Monster (NPC) Skill
-// Npc Skill can't be used with Hocus Pocus.
+// Monster (NPC) Skills
+// NPC Skills can't be used with Hocus Pocus.
 //158,Thrust Attack
 //159,Mental Breaker
 //160,Ranged Attack

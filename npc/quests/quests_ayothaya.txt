@@ -1,11 +1,11 @@
-//===== Athena Script =======================================
+//===== Freya Script ======================================
 //= Quest NPCs related to Ayothaya
 //===== By ================================================
 //= Fredzilla
 //===== Version ===========================================
 //= 1.6
 //===== Compatible With ===================================
-//= eAthena 1.0
+//= Freya
 //===== Description =======================================
 //= Ayothaya Clue Quest, Ayothaya Shrimp Quest, Ayothaya
 //= Dungeon Quest, Tom Yum Goong Quest,

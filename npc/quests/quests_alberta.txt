@@ -1,19 +1,19 @@
 //===== Freya Script ========================================= 
 //= Quest NPCs related to Alberta
-//===== By: ================================================== 
+//===== By: ==================================================
 //= kobra_k88
-//===== Current Version: ===================================== 
+//===== Current Version: =====================================
 //= 1.7
-//===== Compatible With: ===================================== 
-//= eAthena 1.0
-//===== Description: ========================================= 
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
 //= Dolls Quest
 //= Boy's Cap Quest
 //= Antlers Quest
 //= Bao Bao, Cresent Hairpin, Fashionbale Glasses, Heart Hairpin Quests
 //= Hat of Sun God, Sunday Hat, Mage Hat, Magician Hat Quests
 //= Turtle Island Quests
-//===== Additional Comments: ================================= 
+//===== Additional Comments: =================================
 //= Fully working
 //= 1.1 Fixed Spore Doll exploit, Gramp's Tiger skin label bug
 //= 1.3 Fixed item ID 7031 -> 7013
@@ -21,7 +21,7 @@
 //= 1.6 TEMPESTRA quest uses common quests variable MISC_QUEST 
 //=	Condition if done: (MISC_QUEST & 2) [Lupus]
 //= 1.7 Moved quest from cities/albera.txt [Evera]
-//============================================================ 
+//============================================================
 
 
 

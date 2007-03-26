@@ -1,7 +1,11 @@
-// Homunculus that can be created.
+// embryo_db.txt, Homunculus Creation Database
+//
+// Structure of Database:
 //
 // HomunID, HomunName(Dummy), Rate
+//
 // Homun ID, Homun's Name (Dummy), the probability is (*10000) so if 500000 then it is 50% and if 1000000 then it is 100%.
+//
 0,Lif,6001
 6001,Lif,200000
 6002,Amistr,200000
