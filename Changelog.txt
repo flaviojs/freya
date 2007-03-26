@@ -10,6 +10,11 @@
 
 Date	Added
 
+03/25/2007
+	* Updated: Thor Dungeon monsters a little bit [Tsuyuki]
+	 - Increased move speed and ASPD of some monsters
+	 - Lowered Kasa's skills with a level of 11 to 10
+
 03/24/2007
 	* Added: Some non-existant monster place-holders [Tsuyuki]
 
