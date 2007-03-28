@@ -22,7 +22,7 @@ const char *our_dlerror(void);
 
 #include <fcntl.h>
 
-#include "../common/malloc.h"
+#include "debug.h"
 #include "../common/timer.h"
 
 #include "addons.h"

@@ -17,7 +17,7 @@
 #endif
 
 #include "timer.h"
-#include "malloc.h"
+#include "debug.h"
 #include "console.h"
 
 #ifdef MEMWATCH

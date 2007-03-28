@@ -11,6 +11,8 @@
 Date	Added
 
 03/28/2007
+	* Improved: Replaced nullpo checks with assert [Harbin]
+	* Improved: Merged malloc.h and nullpo.h [Harbin]
 	* Improved: Moved swap macro to utils.h [Harbin]
 
 03/25/2007

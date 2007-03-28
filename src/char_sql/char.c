@@ -29,7 +29,7 @@
 #include <sys/stat.h> // for stat/lstat/fstat
 
 #include "char.h"
-#include "../common/malloc.h"
+#include "../common/debug.h"
 #include "../common/utils.h"
 #include "../common/addons.h"
 #include "../common/console.h"

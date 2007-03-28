@@ -8,7 +8,7 @@
 #include <string.h>
 
 #include "char.h"
-#include "../common/malloc.h"
+#include "../common/debug.h"
 
 #ifdef TXT_ONLY
 char pet_txt[1024] = "save/pet.txt";

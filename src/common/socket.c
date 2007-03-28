@@ -35,7 +35,7 @@
 
 #include "mmo.h"
 #include "socket.h"
-#include "malloc.h"
+#include "debug.h"
 #include "console.h"
 
 #ifdef MEMWATCH
