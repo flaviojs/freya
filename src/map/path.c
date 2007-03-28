@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "../common/utils.h"
 #include "map.h"
 #include "battle.h"
 #include "nullpo.h"
@@ -19,17 +20,17 @@
 struct tmp_path { short x,y,dist,before,cost; char dir,flag;};
 #define calc_index(x,y) (((x)+(y)*MAX_WALKPATH) & (MAX_WALKPATH*MAX_WALKPATH-1))
 
-/*==========================================
- * åoòHíTçıï‚èïheap push
- *------------------------------------------
- */
-static inline void push_heap_path(int *heap, struct tmp_path *tp, int idx) {
+static inline void push_heap_path(int *heap, struct tmp_path *tp, int idx)
+{
 	int i, h;
 
-//	if (heap == NULL || tp == NULL) { // checked before to call function
-//		printf("push_heap_path nullpo\n");
-//		return;
-//	}
+/*
+	if(heap == NULL || tp == NULL)
+	{ 
+		printf("push_heap_path nullpo \n");
+		return;
+	}
+*/
 
 	heap[0]++;
 
@@ -248,11 +249,6 @@ int path_blownpos(int m, int x0, int y_0, int dx, int dy, int count)
 	return (x0 << 16) | y_0;
 }
 
-/*==========================================
- *  Í¿ÀÂ◊ÓÕÙ?™¨ ¶“ˆ™´™…™¶™´™Ú⁄˜™π
- *------------------------------------------
- */
-#define swap(x,y) { int t; t = x; x = y; y = t; }
 int path_search_long(int m, int x0, int y_0, int x1, int y_1)
 {
 	int dx, dy;

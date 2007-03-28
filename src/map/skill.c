@@ -37,7 +37,6 @@
 
 #define SKILLUNITTIMER_INVERVAL 100
 #define STATE_BLIND 0x10
-#define swap(x,y) { int t; t = x; x = y; y = t; }
 
 const struct skill_name_db skill_names[] = {
  { AC_CHARGEARROW, "CHARGEARROW", "Charge_Arrow" } ,

@@ -17,6 +17,7 @@ extern inline int lint2string(char *buffer, long int val);
 unsigned long mysql_escape_string(char * to, const char * from, unsigned long length);
 #endif /* not USE_MYSQL */
 
+#define swap(x, y) { register int t; t = x; x = y; y = t; }
 
 // for help with the console colors look here:
 // http://www.edoceo.com/liberum/?l=console-output-in-color

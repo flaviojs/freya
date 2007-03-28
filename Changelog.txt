@@ -10,6 +10,9 @@
 
 Date	Added
 
+03/28/2007
+	* Improved: Moved swap macro to utils.h [Harbin]
+
 03/25/2007
 	* Updated: Thor Dungeon monsters a little bit [Tsuyuki]
 	 - Increased move speed and ASPD of some monsters
