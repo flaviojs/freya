@@ -12,6 +12,14 @@
 
 Date	Added
 
+03/28/2007
+	* Fixed: Some Thor Dungeon mob skills [Tsuyuki]
+	* Added: Modified Bow Master and Sword Master Thor Dungeon mob skills (Credits to $ephiroth) [Tsuyuki]
+	* Updated: Dead Branch list a little bit [Tsuyuki]
+	* Added: Two new pets to the pet database (Xmas Goblin and Rice Cake) [Tsuyuki]
+	* Updated: Some packet lengths for the latest clients [Tsuyuki]
+	 - Note: 02-20-2007 and 03-26-2007 clients are currently compatible [Tsuyuki]
+
 03/25/2007
 	* Removed: Job functions (No longer necessary) [Tsuyuki]
 	* Renamed: /npc/cities/ -> /npc/town/ [Tsuyuki]

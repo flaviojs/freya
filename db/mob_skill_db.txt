@@ -4516,10 +4516,24 @@
 1814,G_Moonlight Flower@BS_HAMMERFALL,chase,110,11,2000,0,5000,no,target,always,0,,,,,,0
 1814,G_Moonlight Flower@BS_HAMMERFALL,attack,110,11,2000,0,5000,no,target,always,0,,,,,,0
 
-// To-Do: Missing mob_skill_db.txt entries for 1815-1830
+// To-Do: Missing mob_skill_db.txt entries for 1815-1828
 
-// Thor Volcano - Episode 11.2 - 1831-1839 [Tsuyuki]
-// If you take these entries for yourself, GIVE PROPER CREDIT
+// Thor Volcano - Episode 11.2 - 1829-1839
+1829,Sword Master@KN_SPEARBOOMERANG,chase,59,5,10000,0,0,yes,target,skillused,18,,,,,,6
+1829,Sword Master@KN_SPEARBOOMERANG,chase,59,5,500,0,5000,yes,target,always,0,,,,,,
+1829,Sword Master@KN_TWOHANDQUICKEN,attack,60,20,10000,0,120000,yes,self,myhpltmaxrate,30,,,,,,6
+1829,Sword Master@KN_TWOHANDQUICKEN,attack,60,10,10000,0,300000,yes,self,always,0,,,,,,2
+1829,Sword Master@KN_TWOHANDQUICKEN,attack,60,10,10000,0,120000,yes,self,myhpltmaxrate,30,,,,,,6
+1829,Sword Master@CR_REFLECTSHIELD,chase,252,5,10000,0,30000,yes,self,always,0,,,,,,
+1829,Sword Master@CR_REFLECTSHIELD,attack,252,5,10000,0,300000,yes,self,always,0,,,,,,
+1829,Sword Master@CR_REFLECTSHIELD,chase,252,5,10000,0,3000,yes,self,always,0,,,,,,
+1829,Sword Master@CR_REFLECTSHIELD,attack,252,2,1000,1000,5000,no,self,always,0,,,,,,
+1830,Bow Master@AC_DOUBLE,attack,46,1,500,1000,5000,yes,target,always,0,,,,,,
+//1830,Bow Master@AC_DOUBLE,angry,46,1,500,1000,5000,no,target,always,0,,,,,,
+1830,Bow Master@AC_DOUBLE,attack,46,10,2000,0,3000,yes,target,always,0,,,,,,6
+1830,Bow Master@AC_SHOWER,attack,47,10,2000,0,3000,yes,target,always,0,,,,,,6
+1830,Bow Master@AC_SHOWER,attack,47,5,2000,1000,5000,no,target,attackpcgt,2,,,,,,
+1830,Bow Master@AC_SHOWER,attack,47,5,2000,1000,5000,yes,target,attackpcgt,2,,,,,,
 1831,Salamander@AL_TELEPORT,idle,26,1,10000,0,0,no,self,rudeattacked,,,,,,,
 1831,Salamander@MG_FIREBALL,attack,17,8,1000,500,10000,no,target,always,0,,,,,,
 1831,Salamander@MG_FIREBALL,chase,17,8,1000,500,10000,no,target,always,0,,,,,,
@@ -4583,15 +4597,15 @@
 1838,Knocker@TF_THROWSTONE,chase,152,1,500,0,5000,no,target,always,0,,,,,,6
 1838,Knocker@TF_SPRINKLESAND,attack,149,1,500,0,5000,no,target,always,0,,,,,,7
 1838,Knocker@TF_SPRINKLESAND,attack,149,1,500,0,5000,no,target,always,0,,,,,,7
-1839,Byorgue@NPC_SUMMONSLAVE,attack,196,2,100,0,3600000,no,self,slavele,1,1829,1830,,,,
-1839,Byorgue@NPC_SUMMONSLAVE,idle,196,2,10000,700,10000,no,self,slavele,1,1829,1830,,,,
+1839,Byorgue@NPC_SUMMONSLAVE,attack,196,2,100,0,3600000,no,self,slavele,1,1829,1830,,,, // Sword Master/Bow Master
+1839,Byorgue@NPC_SUMMONSLAVE,chase,196,2,100,0,3600000,no,self,slavele,1,1829,1830,,,, // Sword Master/Bow Master
+1839,Byorgue@NPC_SUMMONSLAVE,idle,196,2,10000,700,10000,no,self,slavele,1,1829,1830,,,, // Sword Master/Bow Master
 1839,Byorgue@NPC_AGIUP,attack,350,5,10000,0,30000,no,self,myhpltmaxrate,30,,,,,,6
 1839,Byorgue@NPC_AGIUP,attack,350,5,10000,0,120000,no,self,myhpltmaxrate,30,,,,,,6
-1839,Byorgue@ASC_METEOR,chase,406,10,2000,1000,20000,no,target,always,0,,,,,,
 1839,Byorgue@ASC_METEOR,attack,406,10,2000,1000,20000,no,target,always,0,,,,,,
+1839,Byorgue@ASC_METEOR,chase,406,10,2000,1000,20000,no,target,always,0,,,,,,
 1839,Byorgue@AS_SONICBLOW,attack,136,5,1000,0,5000,no,target,always,0,,,,,,
-1839,Byorgue@AS_SONICBLOW,chase,136,5,1000,0,5000,no,target,always,0,,,,,,
-1839,Byorgue@AS_VENOMDUST,idle,140,1,2000,0,10000,no,target,always,0,,,,,,29
 1839,Byorgue@AS_VENOMDUST,attack,140,1,2000,0,10000,no,target,always,0,,,,,,29
+1839,Byorgue@AS_VENOMDUST,idle,140,1,2000,0,10000,no,target,always,0,,,,,,29
 
 // End of database
