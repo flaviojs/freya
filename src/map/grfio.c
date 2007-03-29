@@ -18,7 +18,7 @@
 #include "../common/utils.h"
 #include "grfio.h"
 #include <mmo.h>
-#include "../common/malloc.h"
+#include "../common/debug.h"
 
 #ifdef MEMWATCH
 #include "memwatch.h"

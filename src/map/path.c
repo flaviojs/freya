@@ -7,10 +7,10 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "../common/debug.h"
 #include "../common/utils.h"
 #include "map.h"
 #include "battle.h"
-#include "nullpo.h"
 
 #ifdef MEMWATCH
 #include "memwatch.h"
@@ -41,17 +41,12 @@ static inline void push_heap_path(int *heap, struct tmp_path *tp, int idx)
 	heap[h+1] = idx;
 }
 
-/*==========================================
- * Œo˜H’Tõ•â•heap update
- * cost‚ªŒ¸‚Á‚½‚Ì‚Åª‚Ì•û‚ÖˆÚ“®
- *------------------------------------------
- */
-static inline void update_heap_path(int *heap,struct tmp_path *tp,int idx)
+static inline void update_heap_path(int *heap,struct tmp_path *tp, int idx)
 {
-	int i,h;
+	int i, h;
 
-	nullpo_retv(heap);
-	nullpo_retv(tp);
+	ASSERTV(tp);
+	ASSERTV(heap);
 
 	for(h=0;h<heap[0];h++)
 		if(heap[h+1]==idx)
@@ -67,19 +62,11 @@ static inline void update_heap_path(int *heap,struct tmp_path *tp,int idx)
 	heap[h+1]=idx;
 }
 
-/*==========================================
- * Œo˜H’Tõ•â•heap pop
- *------------------------------------------
- */
-static inline int pop_heap_path(int *heap, struct tmp_path *tp) {
+static inline int pop_heap_path(int *heap, struct tmp_path *tp)
+{
 	int i, h, k;
 	int ret, last;
 
-//	nullpo_retr(-1, heap); // checked before to call function
-//	nullpo_retr(-1, tp); // checked before to call function
-
-//	if (heap[0] <= 0) // checked before to call function
-//		return -1;
 	ret = heap[1];
 	last = heap[heap[0]];
 	heap[0]--;
@@ -101,15 +88,11 @@ static inline int pop_heap_path(int *heap, struct tmp_path *tp) {
 	return ret;
 }
 
-/*==========================================
- * Œ»İ‚Ì“_‚ÌcostŒvZ
- *------------------------------------------
- */
 static inline int calc_cost(struct tmp_path *p, int x1, int y_1)
 {
 	int xd, yd;
 
-	nullpo_retr(0, p);
+	ASSERT(p, 0);
 
 	xd = x1  - p->x;
 	if (xd < 0) xd = -xd;
@@ -119,15 +102,9 @@ static inline int calc_cost(struct tmp_path *p, int x1, int y_1)
 	return (xd + yd) * 10 + p->dist;
 }
 
-/*==========================================
- * •K—v‚È‚çpath‚ğ’Ç‰Á/C³‚·‚é
- *------------------------------------------
- */
-static int add_path(int *heap, struct tmp_path *tp, int x, int y, int dist, int dir, int before, int x1, int y_1) {
+static int add_path(int *heap, struct tmp_path *tp, int x, int y, int dist, int dir, int before, int x1, int y_1)
+{
 	int i;
-
-//	nullpo_retr(0, heap); // checked before to call function
-//	nullpo_retr(0, tp); // checked before to call function
 
 	i = calc_index(x, y);
 
@@ -161,17 +138,11 @@ static int add_path(int *heap, struct tmp_path *tp, int x, int y, int dist, int 
 	return 0;
 }
 
-
-/*==========================================
- * (x,y)‚ªˆÚ“®•s‰Â”\’n‘Ñ‚©‚Ç‚¤‚©
- * flag 0x10000 ‰“‹——£UŒ‚”»’è
- *------------------------------------------
- */
 static inline int can_place(struct map_data *m, int x, int y, int flag)
 {
 	int c;
 
-	nullpo_retr(0, m);
+	ASSERT(m, 0);
 
 	c = map_getcellp(m, x, y, CELL_GETTYPE);
 
@@ -183,12 +154,9 @@ static inline int can_place(struct map_data *m, int x, int y, int flag)
 	return 1;
 }
 
-/*==========================================
- * (x0,y0)‚©‚ç(x1,y1)‚Ö1•à‚ÅˆÚ“®‰Â”\‚©ŒvZ
- *------------------------------------------
- */
-static inline int can_move(struct map_data *m, int x0, int y_0, int x1, int y_1, int flag) {
-	nullpo_retr(0, m);
+static inline int can_move(struct map_data *m, int x0, int y_0, int x1, int y_1, int flag)
+{
+	ASSERT(m, 0);
 
 	if (x0 - x1 < -1 || x0 - x1 > 1 || y_0 - y_1 < -1 || y_0 - y_1 > 1)
 		return 0;
@@ -297,18 +265,15 @@ int path_search_long(int m, int x0, int y_0, int x1, int y_1)
 	return 1;
 }
 
-/*==========================================
- * path’Tõ (x0,y0)->(x1,y1)
- *------------------------------------------
- */
-int path_search(struct walkpath_data *wpd, int m, int x0, int y_0, int x1, int y_1, int flag) {
+int path_search(struct walkpath_data *wpd, int m, int x0, int y_0, int x1, int y_1, int flag)
+{
 	int heap[MAX_HEAP + 1];
 	struct tmp_path tp[MAX_WALKPATH * MAX_WALKPATH];
 	int i, rp, x, y;
 	struct map_data *md;
 	int dx, dy;
 
-	nullpo_retr(0, wpd);
+	ASSERT(wpd, 0);
 
 	if (!map[m].gat)
 		return -1;

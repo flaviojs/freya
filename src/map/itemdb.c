@@ -9,10 +9,9 @@
 #include <unistd.h> // For access function
 
 #include "../common/db.h"
+#include "../common/debug.h"
 #include "../common/utils.h"
-#include "../common/malloc.h"
 #include "grfio.h"
-#include "nullpo.h"
 #include "map.h"
 #include "battle.h"
 #include "itemdb.h"
@@ -1425,14 +1424,11 @@ static int itemdb_read_sqldb(void) {
 }
 #endif /* not TXT_ONLY */
 
-/*==========================================
- *
- *------------------------------------------
- */
-static int itemdb_final(void *key,void *data, va_list ap) {
+static int itemdb_final(void *key,void *data, va_list ap)
+{
 	struct item_data *id;
 
-	nullpo_retr(0, id = data);
+	ASSERT((id = data), 0);
 
 	FREE(id->use_script);
 	FREE(id->equip_script);

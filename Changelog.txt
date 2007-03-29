@@ -10,6 +10,10 @@
 
 Date	Added
 
+03/29/2007
+	* Removed: malloc.h [Harbin]
+	* Fixed: All compilation errors [Harbin]
+
 03/28/2007
 	* Improved: Replaced nullpo checks with assert [Harbin]
 	* Improved: Merged malloc.h and nullpo.h [Harbin]

@@ -12,8 +12,7 @@
 
 #include "../common/db.h"
 #include "../common/timer.h"
-#include "nullpo.h"
-#include "../common/malloc.h"
+#include "../common/debug.h"
 #include "map.h"
 #include "npc.h"
 #include "clif.h"
@@ -62,29 +61,23 @@ static struct tm ev_tm_b;	// 時計イベント用
 static int npc_walktimer(int, unsigned int, int, int); // [Valaris]
 static int npc_walktoxy_sub(struct npc_data *nd); // [Valaris]
 
-
-/*==========================================
- * NPCの無効化/有効化
- * npc_enable
- * npc_enable_sub 有効時にOnTouchイベントを実行
- *------------------------------------------
- */
-int npc_enable_sub(struct block_list *bl, va_list ap) {
+int npc_enable_sub(struct block_list *bl, va_list ap)
+{
 	struct map_session_data *sd;
 	struct npc_data *nd;
 	char name[50];
 
-	nullpo_retr(0, bl);
-	nullpo_retr(0, ap);
-	nullpo_retr(0, nd = va_arg(ap, struct npc_data *));
+	ASSERT(bl, 0);
+	ASSERT(ap, 0);
+	ASSERT((nd = va_arg(ap, struct npc_data *)), 0);
 
-	if (bl->type == BL_PC && (sd = (struct map_session_data *)bl)) {
-
-		if (nd->flag & 1) // 無効化されている
+	if(bl->type == BL_PC && (sd = (struct map_session_data *)bl))
+	{
+		if(nd->flag & 1)
+			return 1;
+		if(sd->areanpc_id == nd->bl.id)
 			return 1;
 
-		if (sd->areanpc_id == nd->bl.id)
-			return 1;
 		strncpy(name, nd->name, 49);
 		name[49] = '\0';
 		sd->areanpc_id = nd->bl.id;
@@ -139,7 +132,7 @@ int npc_event_dequeue(struct map_session_data *sd) {
 	char *name;
 	int i;
 
-	nullpo_retr(0, sd);
+	ASSERT(sd, 0);
 
 	sd->npc_id = 0;
 	if (sd->eventqueue[0][0]) { // キューのイベント処理
@@ -170,7 +163,7 @@ int npc_event_dequeue(struct map_session_data *sd) {
 
 int npc_delete(struct npc_data *nd)
 {
-	nullpo_retr(1, nd);
+	ASSERT(nd, 1);
 
 	if(nd->bl.prev == NULL)
 		return 1;
@@ -318,22 +311,18 @@ int npc_event_export(void *key, void *data, va_list ap) {
 	return 0;
 }
 
-/*==========================================
- * 全てのNPCのOn*イベント実行
- *------------------------------------------
- */
 int npc_event_doall_sub(void *key,void *data,va_list ap)
 {
 	char *p=(char *)key;
 	struct event_data *ev;
 	int *c;
 	const char *name;
+	
+	ASSERT(ap, 0);
+	ASSERT((c = va_arg(ap, int *)), 0);
+	ASSERT((ev = (struct event_data *)data), 0);
 
-	nullpo_retr(0, ev=(struct event_data *)data);
-	nullpo_retr(0, ap);
-	nullpo_retr(0, c=va_arg(ap,int *));
-
-	name=va_arg(ap,const char *);
+	name = va_arg(ap,const char *);
 
 	if ((p = strchr(p, ':')) && p && strcasecmp(name, p) == 0) {
 		run_script(ev->nd->u.scr.script, ev->pos, 0, ev->nd->bl.id);
@@ -361,14 +350,15 @@ int npc_event_do_sub(void *key,void *data,va_list ap)
 	int *c;
 	const char *name;
 
-	nullpo_retr(0, ev=(struct event_data *)data);
-	nullpo_retr(0, ap);
-	nullpo_retr(0, c=va_arg(ap,int *));
+	ASSERT(ap, 0);
+	ASSERT((c = va_arg(ap, int *)), 0);
+	ASSERT((ev = (struct event_data *)data), 0);
 
-	name=va_arg(ap,const char *);
+	name = va_arg(ap,const char *);
 
-	if (p && strcasecmp(name, p) == 0) {
-		run_script(ev->nd->u.scr.script,ev->pos,0,ev->nd->bl.id);
+	if(p && strcasecmp(name, p) == 0)
+	{
+		run_script(ev->nd->u.scr.script, ev->pos, 0, ev->nd->bl.id);
 		(*c)++;
 	}
 
@@ -598,15 +588,11 @@ int npc_timerevent(int tid, unsigned int tick, int id, int data)
 	return 0;
 }
 
-/*==========================================
- * タイマーイベント開始
- *------------------------------------------
- */
 int npc_timerevent_start(struct npc_data *nd, int rid)
 {
 	int j, n, next;
 
-	nullpo_retr(0, nd);
+	ASSERT(nd, 0);
 
 	n = nd->u.scr.timeramount;
 	if (nd->u.scr.nexttimer >= 0 || n == 0)
@@ -630,13 +616,9 @@ int npc_timerevent_start(struct npc_data *nd, int rid)
 	return 0;
 }
 
-/*==========================================
- * タイマーイベント終了
- *------------------------------------------
- */
 int npc_timerevent_stop(struct npc_data *nd)
 {
-	nullpo_retr(0, nd);
+	ASSERT(nd, 0);
 
 	if (nd->u.scr.nexttimer >= 0) {
 		nd->u.scr.nexttimer = -1;
@@ -651,15 +633,11 @@ int npc_timerevent_stop(struct npc_data *nd)
 	return 0;
 }
 
-/*==========================================
- * タイマー値の所得
- *------------------------------------------
- */
 int npc_gettimerevent_tick(struct npc_data *nd)
 {
 	int tick;
 
-	nullpo_retr(0, nd);
+	ASSERT(nd, 0);
 
 	tick = nd->u.scr.timer;
 
@@ -669,15 +647,11 @@ int npc_gettimerevent_tick(struct npc_data *nd)
 	return tick;
 }
 
-/*==========================================
- * タイマー値の設定
- *------------------------------------------
- */
 int npc_settimerevent_tick(struct npc_data *nd, int newtimer)
 {
 	int flag;
 
-	nullpo_retr(0, nd);
+	ASSERT(nd, 0);
 
 	flag = nd->u.scr.nexttimer;
 
@@ -689,10 +663,6 @@ int npc_settimerevent_tick(struct npc_data *nd, int newtimer)
 	return 0;
 }
 
-/*==========================================
- * イベント型のNPC処理
- *------------------------------------------
- */
 int npc_event(struct map_session_data *sd, const char *eventname, int mob_kill)
 {
 	struct event_data *ev = strdb_search(ev_db, eventname);
@@ -700,9 +670,8 @@ int npc_event(struct map_session_data *sd, const char *eventname, int mob_kill)
 	int xs, ys;
 	char mobevent[100];
 
-	if (sd == NULL) {
+	if(sd == NULL)
 		printf("npc_event nullpo?\n");
-	}
 
 	if (ev == NULL && eventname && strcmp(((eventname) + strlen(eventname) - 9), "::OnTouch") == 0)
 		return 1;
@@ -800,7 +769,7 @@ int npc_touch_areanpc(struct map_session_data *sd,int m,int x,int y)
 	int i, f = 1;
 	int xs, ys;
 
-	nullpo_retr(1, sd);
+	ASSERT(sd, 1);
 
 	if (sd->npc_id != 0)
 		return 1;
@@ -865,7 +834,7 @@ int npc_touch_areanpc(struct map_session_data *sd,int m,int x,int y)
  *------------------------------------------
  */
 int npc_checknear(struct map_session_data *sd, struct npc_data *nd) {
-//	nullpo_retr(0, sd); // checked before to call function
+//	ASSERT(sd, 0); // checked before to call function
 
 	if (nd == NULL || nd->bl.type != BL_NPC)
 		return 1;
@@ -908,7 +877,7 @@ int npc_globalmessage(const char *name, char *mes) {
 void npc_click(struct map_session_data *sd, int id) {
 	struct npc_data *nd;
 
-//	nullpo_retr(1, sd); // checked before to call function
+//	ASSERT(bl, 1); // checked before to call function
 
 /*	if (sd->npc_id != 0) { // checked before to call function
 		if (battle_config.error_log)
@@ -949,14 +918,11 @@ void npc_click(struct map_session_data *sd, int id) {
 	return;
 }
 
-/*==========================================
- *
- *------------------------------------------
- */
-void npc_scriptcont(struct map_session_data *sd, int id) {
+void npc_scriptcont(struct map_session_data *sd, int id)
+{
 	struct npc_data *nd;
 
-	nullpo_retv(sd);
+	ASSERTV(sd);
 
 	if (id != sd->npc_id)
 		return;
@@ -977,7 +943,7 @@ void npc_scriptcont(struct map_session_data *sd, int id) {
 void npc_buysellsel(struct map_session_data *sd, int id, int type) {
 	struct npc_data *nd;
 
-//	nullpo_retr(1, sd); // checked before to call function
+//	ASSERT(bl, 1); // checked before to call function
 
 	nd = (struct npc_data *)map_id2bl(id);
 	if (npc_checknear(sd, nd)) // check if npc exists too and is a NPC
@@ -1000,18 +966,12 @@ void npc_buysellsel(struct map_session_data *sd, int id, int type) {
 	return;
 }
 
-/*==========================================
- *
- *------------------------------------------
- */
-int npc_buylist(struct map_session_data *sd, int n, unsigned short *item_list) {
+int npc_buylist(struct map_session_data *sd, int n, unsigned short *item_list)
+{
 	struct npc_data *nd;
 	double z;
 	int i, j, w, skill, new = 0;
 	struct item_data *item_data;
-
-//	nullpo_retr(3, sd); // checked before to call function
-//	nullpo_retr(3, item_list); // checked before to call function
 
 	nd = (struct npc_data*)map_id2bl(sd->npc_shopid);
 	if (npc_checknear(sd, nd)) // check if npc exists too and is a NPC
@@ -1125,19 +1085,13 @@ int npc_buylist(struct map_session_data *sd, int n, unsigned short *item_list) {
 	return 0; // 0: The deal has successfully completed., 1: You dont have enough zeny., 2: you are overcharged!, 3: You are over your weight limit.
 }
 
-/*==========================================
- *
- *------------------------------------------
- */
-int npc_selllist(struct map_session_data *sd, int n, unsigned short *item_list) {
+int npc_selllist(struct map_session_data *sd, int n, unsigned short *item_list)
+{
 	struct npc_data *nd;
 	double z;
 	int i, skill, idx;
 	struct item_data *item_data;
 	struct item inventory[MAX_INVENTORY]; // too fix cumulativ selling (hack)
-
-//	nullpo_retr(1, sd); // checked before to call function
-//	nullpo_retr(1, item_list); // checked before to call function
 
 	nd = (struct npc_data*)map_id2bl(sd->npc_shopid);
 	if (npc_checknear(sd, nd)) // check if npc exists too and is a NPC
@@ -1201,14 +1155,9 @@ int npc_selllist(struct map_session_data *sd, int n, unsigned short *item_list) 
 	return 0;
 }
 
-// [Valaris] NPC Walking
-
-/*==========================================
- * Time calculation concerning one step next to npc
- *------------------------------------------
- */
-static int calc_next_walk_step(struct npc_data *nd) {
-	nullpo_retr(0, nd);
+static int calc_next_walk_step(struct npc_data *nd)
+{
+	ASSERT(nd, 0);
 
 	if (nd->walkpath.path_pos >= nd->walkpath.path_len)
 		return -1;
@@ -1231,7 +1180,7 @@ static int npc_walk(struct npc_data *nd, unsigned int tick, int data)
 	static int diry[8] = {1,  1,  0, -1, -1, -1, 0, 1};
 	int x, y, dx, dy;
 
-	nullpo_retr(0, nd);
+	ASSERT(nd, 0);
 
 	nd->state.state = MS_IDLE;
 	if (nd->walkpath.path_pos >= nd->walkpath.path_len || nd->walkpath.path_pos != data)
@@ -1297,7 +1246,7 @@ int npc_changestate(struct npc_data *nd, int state, int type)
 {
 	int i;
 
-	nullpo_retr(0, nd);
+	ASSERT(nd, 0);
 
 	if (nd->walktimer != -1)
 		delete_timer(nd->walktimer, npc_walktimer);
@@ -1358,7 +1307,7 @@ static int npc_walktoxy_sub(struct npc_data *nd)
 {
 	struct walkpath_data wpd;
 
-	nullpo_retr(0, nd);
+	ASSERT(nd, 0);
 
 	if (path_search(&wpd, nd->bl.m, nd->bl.x, nd->bl.y, nd->to_x, nd->to_y, nd->state.walk_easy))
 		return 1;
@@ -1376,7 +1325,7 @@ int npc_walktoxy(struct npc_data *nd,int x,int y,int easy)
 {
 	struct walkpath_data wpd;
 
-	nullpo_retr(0, nd);
+	ASSERT(nd, 0);
 
 	if(nd->state.state == MS_WALK && path_search(&wpd,nd->bl.m,nd->bl.x,nd->bl.y,x,y,0) )
 		return 1;
@@ -1395,7 +1344,7 @@ int npc_walktoxy(struct npc_data *nd,int x,int y,int easy)
 
 int npc_stop_walking(struct npc_data *nd, int type)
 {
-	nullpo_retr(0, nd);
+	ASSERT(nd, 0);
 
 	if (nd->state.state == MS_WALK || nd->state.state == MS_IDLE) {
 		int dx = 0, dy = 0;
@@ -1837,8 +1786,8 @@ int npc_convertlabel_db(void *key, void *data, va_list ap)
 	int num;
 	char *p = strchr(lname, ':');
 
-	nullpo_retr(0, ap);
-	nullpo_retr(0, nd = va_arg(ap, struct npc_data *));
+	ASSERT(ap, 0);
+	ASSERT((nd = va_arg(ap, struct npc_data *)), 0);
 
 	lst = nd->u.scr.label_list;
 	num = nd->u.scr.label_list_num;

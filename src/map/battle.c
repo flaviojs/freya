@@ -10,9 +10,8 @@
 #include "battle.h"
 
 #include "../common/timer.h"
-#include "../common/malloc.h"
+#include "../common/debug.h"
 
-#include "nullpo.h"
 #include "map.h"
 #include "pc.h"
 #include "skill.h"
@@ -55,11 +54,13 @@ static int battle_counttargeted_sub(struct block_list *bl, va_list ap)
 	int id, *c, target_lv;
 	struct block_list *src;
 
-	nullpo_retr(0, bl);
-	nullpo_retr(0, ap);
+	ASSERT(bl, 0);
+	ASSERT(ap, 0);
 
 	id = va_arg(ap, int);
-	nullpo_retr(0, c = va_arg(ap, int *));
+
+	ASSERT((c = va_arg(ap, int *)), 0);
+
 	src = va_arg(ap, struct block_list *);
 	target_lv = va_arg(ap, int);
 
@@ -123,7 +124,7 @@ int battle_counttargeted(struct block_list *bl, struct block_list *src, int targ
 {
 	int c;
 
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	c = 0;
 	map_foreachinarea(battle_counttargeted_sub, bl->m,
@@ -181,8 +182,8 @@ int battle_delay_damage(unsigned int tick, struct block_list *src, struct block_
 {
 	struct battle_delay_damage_ *dat;
 
-	nullpo_retr(0, src);
-	nullpo_retr(0, target);
+	ASSERT(src, 0);
+	ASSERT(target, 0);
 
 	/*if (!battle_config.delay_battle_damage) {
 		battle_damage(src, target, damage, flag);
@@ -218,7 +219,7 @@ int battle_damage(struct block_list *bl,struct block_list *target,int damage,int
 	short *sc_count;
 	int i;
 
-	nullpo_retr(0, target);
+	ASSERT(target, 0);
 
 	// Can't damage pets, or if damage is 0, return
 	if(damage == 0 || target->type == BL_PET)
@@ -310,7 +311,7 @@ int battle_damage(struct block_list *bl,struct block_list *target,int damage,int
  */
 int battle_heal(struct block_list *bl, struct block_list *target, int hp, int sp, int flag)
 {
-	nullpo_retr(0, target);
+	ASSERT(target, 0);
 
 	// Note: Hp = To-be-restored HP, Sp = To-be-restored SP
 
@@ -348,7 +349,7 @@ int battle_heal(struct block_list *bl, struct block_list *target, int hp, int sp
  */
 void battle_stopattack(struct block_list *bl)
 {
-	nullpo_retv(bl);
+	ASSERTV(bl);
 
 	// Function splits into other functions depending on bl type
 
@@ -373,7 +374,7 @@ void battle_stopattack(struct block_list *bl)
  */
 void battle_stopwalking(struct block_list *bl,int type)
 {
-	nullpo_retv(bl);
+	ASSERTV(bl);
 
 	// Function splits into other functions depending on bl type
 
@@ -431,8 +432,8 @@ int battle_calc_damage(struct block_list *src, struct block_list *bl, int damage
 	struct status_change *sc_data, *tsc_data;
 	short *sc_count;
 
-	nullpo_retr(0, src);
-	nullpo_retr(0, bl);
+	ASSERT(src, 0);
+	ASSERT(bl, 0);
 
 	// Checks to see if damage is valid
 	if (damage <= 0)
@@ -914,7 +915,7 @@ int battle_addmastery(struct map_session_data *sd, struct block_list *target, in
 	int weapon;
 	damage = 0;
 
-	nullpo_retr(0, sd);
+	ASSERT(sd, 0);
 
 	if ((skill = pc_checkskill(sd, AL_DEMONBANE)) > 0 && (battle_check_undead(race, status_get_elem_type(target)) || race == 6))
 		damage += (skill * (3 + (sd->status.base_level + 1) / 20));
@@ -3386,8 +3387,8 @@ int battle_weapon_attack(struct block_list *src, struct block_list *target, unsi
 	struct Damage wd;
 	int hp = 0, sp = 0;
 
-	nullpo_retr(0, src);
-	nullpo_retr(0, target);
+	ASSERT(src, 0);
+	ASSERT(target, 0);
 
 	// Retrieve source and target skill status data
 	sc_data = status_get_sc_data(src);
@@ -3839,8 +3840,8 @@ int battle_check_target(struct block_list *src, struct block_list *target, int f
 	struct status_change *sc_data; // Source sc_data
 	struct status_change *tsc_data; // Target sc_data
 
-	nullpo_retr(0, src);
-	nullpo_retr(0, target);
+	ASSERT(src, 0);
+	ASSERT(target, 0);
 
 	if (flag&BCT_ENEMY && !map[src->m].flag.gvg && !(status_get_mode(src)&0x20)) {
 		sc_data = status_get_sc_data(src); // Source sc_data
@@ -4060,13 +4061,14 @@ int battle_check_target(struct block_list *src, struct block_list *target, int f
  * battle_check_range Function
  *------------------------------------------
  */
-int battle_check_range(struct block_list *src, struct block_list *bl, int range) {
+int battle_check_range(struct block_list *src, struct block_list *bl, int range)
+{
 	int dx, dy;
 //	struct walkpath_data wpd;
 	int arange;
 
-	nullpo_retr(0, src);
-	nullpo_retr(0, bl);
+	ASSERT(src, 0);
+	ASSERT(bl, 0);
 
 	dx = abs(bl->x - src->x);
 	dy = abs(bl->y - src->y);

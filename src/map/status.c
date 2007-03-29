@@ -8,10 +8,10 @@
 
 #include "../common/socket.h"
 #include "../common/timer.h"
+#include "../common/debug.h"
 #include "../common/utils.h"
 
 #include "map.h"
-#include "nullpo.h"
 #include "itemdb.h"
 #include "pc.h"
 #include "skill.h"
@@ -304,7 +304,8 @@ int status_percentrefinery(struct map_session_data *sd, struct item *item)
 {
 	int percent;
 
-	nullpo_retr(0, item);
+	ASSERT(item, 0);
+
 	percent = percentrefinery[(int)itemdb_wlv(item->nameid)][(int)item->refine];
 
 	percent += pc_checkskill(sd, BS_WEAPONRESEARCH);
@@ -336,7 +337,7 @@ int status_calc_pc(struct map_session_data* sd, int first)
 	int str, dstr, dex;
 	struct pc_base_job s_class;
 
-	nullpo_retr(0, sd);
+	ASSERT(sd, 0);
 
 	s_class = pc_calc_base_job(sd->status.class);
 
@@ -1661,7 +1662,7 @@ void status_calc_speed(struct map_session_data *sd)
 {
 	int speed, speed_rate, speed_add_rate, skill;
 
-	nullpo_retv(sd);
+	ASSERTV(sd);
 
 	speed = DEFAULT_WALK_SPEED; // Normally 150
 	speed_rate = sd->speed_rate; // Normally 100
@@ -1792,7 +1793,7 @@ void status_calc_speed(struct map_session_data *sd)
  */
 int status_get_class(struct block_list *bl)
 {
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Return monster ID for monsters as the class
 	if (bl->type == BL_MOB)
@@ -1815,7 +1816,7 @@ int status_get_class(struct block_list *bl)
  */
 int status_get_dir(struct block_list *bl)
 {
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Monsters
 	if (bl->type == BL_MOB)
@@ -1838,7 +1839,7 @@ int status_get_dir(struct block_list *bl)
  */
 int status_get_lv(struct block_list *bl)
 {
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Monsters
 	if (bl->type == BL_MOB)
@@ -1861,7 +1862,7 @@ int status_get_lv(struct block_list *bl)
  */
 int status_get_range(struct block_list *bl)
 {
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Monsters
 	if (bl->type == BL_MOB)
@@ -1884,7 +1885,7 @@ int status_get_range(struct block_list *bl)
  */
 int status_get_hp(struct block_list *bl)
 {
-	nullpo_retr(1, bl);
+	ASSERT(bl, 1);
 
 	// Monsters
 	if (bl->type == BL_MOB)
@@ -1903,7 +1904,7 @@ int status_get_hp(struct block_list *bl)
  */
 int status_get_max_hp(struct block_list *bl)
 {
-	nullpo_retr(1, bl);
+	ASSERT(bl, 1);
 
 	// Players
 	if (bl->type == BL_PC)
@@ -1919,7 +1920,9 @@ int status_get_max_hp(struct block_list *bl)
 		if (bl->type == BL_MOB)
 		{
 			struct mob_data *md;
-			nullpo_retr(1, md = (struct mob_data *)bl);
+
+			ASSERT((md = (struct mob_data *)bl), 1);
+
 			max_hp = mob_db[md->class].max_hp;
 			if (battle_config.mobs_level_up) // Mobs leveling up increase [Valaris]
 				max_hp += (md->level - mob_db[md->class].lv) * status_get_vit(bl);
@@ -1931,13 +1934,9 @@ int status_get_max_hp(struct block_list *bl)
 					max_hp = max_hp * battle_config.monster_hp_rate / 100;
 			}
 
-		}
-
-		// Pets
-		else if (bl->type == BL_PET)
-		{
+		} else if(bl->type == BL_PET) {
 			struct pet_data *pd;
-			nullpo_retr(1, pd = (struct pet_data*)bl);
+			ASSERT((pd = (struct pet_data*)bl), 1);
 			max_hp = mob_db[pd->class].max_hp;
 			if (mob_db[pd->class].mexp > 0) {
 				if (battle_config.mvp_hp_rate != 100)
@@ -1975,7 +1974,7 @@ int status_get_str(struct block_list *bl)
 {
 	int str = 0;
 
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Players
 	if (bl->type == BL_PC)
@@ -2039,7 +2038,7 @@ int status_get_agi(struct block_list *bl)
 {
 	int agi = 0;
 
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Players
 	if (bl->type == BL_PC)
@@ -2104,7 +2103,7 @@ int status_get_vit(struct block_list *bl)
 {
 	int vit = 0;
 
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Players
 	if (bl->type == BL_PC)
@@ -2158,7 +2157,7 @@ int status_get_int(struct block_list *bl)
 	// We use 'int_', since 'int' is a C langauge key syntax term..
 	int int_ = 0;
 
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Players
 	if (bl->type == BL_PC)
@@ -2220,7 +2219,7 @@ int status_get_dex(struct block_list *bl)
 {
 	int dex = 0;
 
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Players
 	if (bl->type == BL_PC)
@@ -2287,7 +2286,7 @@ int status_get_luk(struct block_list *bl)
 {
 	int luk = 0;
 
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Players
 	if (bl->type == BL_PC)
@@ -2342,7 +2341,7 @@ int status_get_flee(struct block_list *bl)
 {
 	int flee = 1;
 
-	nullpo_retr(1, bl);
+	ASSERT(bl, 1);
 
 	// Players
 	if (bl->type == BL_PC)
@@ -2397,7 +2396,7 @@ int status_get_hit(struct block_list *bl)
 {
 	int hit = 1;
 
-	nullpo_retr(1, bl);
+	ASSERT(bl, 1);
 
 	// Players
 	if (bl->type == BL_PC)
@@ -2448,7 +2447,7 @@ int status_get_flee2(struct block_list *bl)
 {
 	int flee2 = 1;
 
-	nullpo_retr(1, bl);
+	ASSERT(bl, 1);
 
 	// Players
 	if (bl->type == BL_PC)
@@ -2485,7 +2484,7 @@ int status_get_critical(struct block_list *bl)
 {
 	int critical = 1;
 
-	nullpo_retr(1, bl);
+	ASSERT(bl, 1);
 
 	// Players
 	if (bl->type==BL_PC)
@@ -2528,7 +2527,7 @@ int status_get_baseatk(struct block_list *bl)
 {
 	int batk = 1;
 
-	nullpo_retr(1, bl);
+	ASSERT(bl, 1);
 
 	// Players
 	if (bl->type == BL_PC)
@@ -2585,7 +2584,7 @@ int status_get_atk(struct block_list *bl)
 {
 	int atk = 0;
 
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Players
 	if (bl->type == BL_PC)
@@ -2636,7 +2635,7 @@ int status_get_atk(struct block_list *bl)
  */
 int status_get_atk_(struct block_list *bl)
 {
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Only works with Players
 	if (bl->type == BL_PC)
@@ -2652,7 +2651,7 @@ int status_get_atk_(struct block_list *bl)
  */
 int status_get_atk2(struct block_list *bl)
 {
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Players
 	if (bl->type == BL_PC)
@@ -2712,7 +2711,7 @@ int status_get_atk2(struct block_list *bl)
  */
 int status_get_atk_2(struct block_list *bl)
 {
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Only works with Players
 	if (bl->type == BL_PC)
@@ -2730,7 +2729,7 @@ int status_get_matk1(struct block_list *bl)
 {
 	int matk = 0;
 
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Players
 	if (bl->type == BL_PC)
@@ -2772,7 +2771,7 @@ int status_get_matk2(struct block_list *bl)
 {
 	int matk = 0;
 
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Players
 	if (bl->type == BL_PC)
@@ -2808,7 +2807,7 @@ int status_get_def(struct block_list *bl)
 	struct status_change *sc_data;
 	int def = 0,skilltimer = -1, skillid = 0;
 
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Retrieve status change data
 	sc_data = status_get_sc_data(bl);
@@ -2905,7 +2904,7 @@ int status_get_mdef(struct block_list *bl)
 	struct status_change *sc_data;
 	int mdef = 0;
 
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Retreive status change data
 	sc_data = status_get_sc_data(bl);
@@ -2952,7 +2951,7 @@ int status_get_def2(struct block_list *bl)
 {
 	int def2 = 1;
 
-	nullpo_retr(1, bl);
+	ASSERT(bl, 1);
 
 	// Players
 	if (bl->type == BL_PC)
@@ -3007,7 +3006,7 @@ int status_get_mdef2(struct block_list *bl)
 {
 	int mdef2 = 0;
 
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Players
 	if (bl->type == BL_PC)
@@ -3046,8 +3045,9 @@ int status_get_mdef2(struct block_list *bl)
  * Status Get Speed Function
  *------------------------------------------
  */
-int status_get_speed(struct block_list *bl) {
-	nullpo_retr(1000, bl);
+int status_get_speed(struct block_list *bl)
+{
+	ASSERT(bl, 1000);
 
 	// Players
 	if (bl->type == BL_PC)
@@ -3088,7 +3088,7 @@ int status_get_speed(struct block_list *bl) {
 */
 int status_get_adelay(struct block_list *bl)
 {
-	nullpo_retr(4000, bl);
+	ASSERT(bl, 4000);
 
 	// Players
 	if(bl->type==BL_PC)
@@ -3164,7 +3164,7 @@ int status_get_adelay(struct block_list *bl)
 */
 int status_get_amotion(struct block_list *bl)
 {
-	nullpo_retr(2000, bl);
+	ASSERT(bl, 2000);
 
 	// Players
 	if(bl->type == BL_PC)
@@ -3237,7 +3237,7 @@ int status_get_dmotion(struct block_list *bl)
 	int ret;
 	struct status_change *sc_data;
 
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Retrieve status change data
 	sc_data = status_get_sc_data(bl);
@@ -3283,7 +3283,7 @@ int status_get_element(struct block_list *bl)
 	int ret = 20;
 	struct status_change *sc_data;
 
-	nullpo_retr(ret, bl);
+	ASSERT(bl, ret);
 
 	// Retreive status change data
 	sc_data = status_get_sc_data(bl);
@@ -3323,7 +3323,7 @@ int status_get_attack_element(struct block_list *bl)
 	int ret = 0;
 	struct status_change *sc_data;
 
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Retreive status change data
 	sc_data = status_get_sc_data(bl);
@@ -3378,7 +3378,7 @@ int status_get_attack_element(struct block_list *bl)
 */
 int status_get_attack_element2(struct block_list *bl)
 {
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Players
 	if(bl->type==BL_PC)
@@ -3422,7 +3422,7 @@ int status_get_attack_element2(struct block_list *bl)
 */
 int status_get_party_id(struct block_list *bl)
 {
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Players
 	if(bl->type == BL_PC)
@@ -3452,7 +3452,7 @@ int status_get_party_id(struct block_list *bl)
 */
 int status_get_guild_id(struct block_list *bl)
 {
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	switch(bl->type)
 	{
@@ -3490,7 +3490,7 @@ int status_get_guild_id(struct block_list *bl)
 */
 int status_get_race(struct block_list *bl)
 {
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	switch(bl->type)
 	{
@@ -3519,7 +3519,7 @@ int status_get_size(struct block_list *bl)
 	int retval;
 	struct map_session_data *sd = (struct map_session_data *)bl;
 
-	nullpo_retr(1, bl);
+	ASSERT(bl, 1);
 
 	switch (bl->type)
 	{
@@ -3556,7 +3556,7 @@ int status_get_size(struct block_list *bl)
 */
 int status_get_mode(struct block_list *bl)
 {
-	nullpo_retr(0x01, bl);
+	ASSERT(bl, 0x01);
 
 	// Monsters
 	if (bl->type == BL_MOB)
@@ -3578,7 +3578,7 @@ int status_get_mode(struct block_list *bl)
 */
 /*int status_get_mexp(struct block_list *bl)
 {
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Monsters
 	if (bl->type == BL_MOB)
@@ -3599,7 +3599,7 @@ int status_get_mode(struct block_list *bl)
 */
 int status_get_race2(struct block_list *bl)
 {
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Monsters
 	if (bl->type == BL_MOB)
@@ -3619,7 +3619,7 @@ int status_get_race2(struct block_list *bl)
 */
 int status_isdead(struct block_list *bl)
 {
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Monsters
 	if (bl->type == BL_MOB)
@@ -3643,7 +3643,7 @@ int status_isimmune(struct block_list *bl)
 	// Retreive Player Map Session data
 	struct map_session_data *sd = (struct map_session_data *)bl;
 	
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Players
 	if (bl->type == BL_PC)
@@ -3667,7 +3667,7 @@ int status_isimmune(struct block_list *bl)
 */
 struct status_change *status_get_sc_data(struct block_list *bl)
 {
-	nullpo_retr(NULL, bl);
+	ASSERT(bl, NULL);
 
 	// Monsters
 	if(bl->type==BL_MOB)
@@ -3687,7 +3687,7 @@ struct status_change *status_get_sc_data(struct block_list *bl)
 */
 short *status_get_sc_count(struct block_list *bl)
 {
-	nullpo_retr(NULL, bl);
+	ASSERT(bl, NULL);
 
 	// Monsters
 	if(bl->type==BL_MOB)
@@ -3707,7 +3707,7 @@ short *status_get_sc_count(struct block_list *bl)
 */
 short *status_get_opt1(struct block_list *bl)
 {
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Monsters
 	if (bl->type == BL_MOB)
@@ -3731,7 +3731,7 @@ short *status_get_opt1(struct block_list *bl)
 */
 short *status_get_opt2(struct block_list *bl)
 {
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Monsters
 	if(bl->type==BL_MOB)
@@ -3755,7 +3755,7 @@ short *status_get_opt2(struct block_list *bl)
 */
 short *status_get_opt3(struct block_list *bl)
 {
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Monsters
 	if(bl->type==BL_MOB)
@@ -3779,7 +3779,7 @@ short *status_get_opt3(struct block_list *bl)
 */
 short *status_get_option(struct block_list *bl)
 {
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// Monsters
 	if(bl->type==BL_MOB)
@@ -3804,7 +3804,7 @@ short *status_get_option(struct block_list *bl)
 int status_get_sc_def(struct block_list *bl, int type)
 {
 	int sc_def;
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// The following statuses are blocked by Golden Thief Bug Card and Wand of Hermode
 	if (status_isimmune(bl))
@@ -3921,7 +3921,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 		unsigned dye_fix : 1; // Dye reset crash fix for SC_BUNSINJYUTSU
 	} scflag;
 
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	switch(bl->type)
 	{
@@ -3954,12 +3954,12 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 		return 0;
 	}
 
-	nullpo_retr(0, sc_data = status_get_sc_data(bl));
-	nullpo_retr(0, sc_count = status_get_sc_count(bl));
-	nullpo_retr(0, option = status_get_option(bl));
-	nullpo_retr(0, opt1 = status_get_opt1(bl));
-	nullpo_retr(0, opt2 = status_get_opt2(bl));
-	nullpo_retr(0, opt3 = status_get_opt3(bl));
+	ASSERT((sc_data = status_get_sc_data(bl)), 0);
+	ASSERT((sc_count = status_get_sc_count(bl)), 0);
+	ASSERT((option = status_get_option(bl)), 0);
+	ASSERT((opt1 = status_get_opt1(bl)), 0);
+	ASSERT((opt2 = status_get_opt2(bl)), 0);
+	ASSERT((opt3 = status_get_opt3(bl)), 0);
 
 	race = status_get_race(bl);
 	mode = status_get_mode(bl);
@@ -5173,13 +5173,13 @@ void status_change_clear(struct block_list *bl, int type)
 	short *sc_count, *option, *opt1, *opt2, *opt3;
 	int i;
 
-	nullpo_retv(bl);
-	nullpo_retv(sc_data = status_get_sc_data(bl));
-	nullpo_retv(sc_count = status_get_sc_count(bl));
-	nullpo_retv(option = status_get_option(bl));
-	nullpo_retv(opt1 = status_get_opt1(bl));
-	nullpo_retv(opt2 = status_get_opt2(bl));
-	nullpo_retv(opt3 = status_get_opt3(bl));
+	ASSERTV(bl);
+	ASSERTV((sc_data = status_get_sc_data(bl)));
+	ASSERTV((sc_count = status_get_sc_count(bl)));
+	ASSERTV((option = status_get_option(bl)));
+	ASSERTV((opt1 = status_get_opt1(bl)));
+	ASSERTV((opt2 = status_get_opt2(bl)));
+	ASSERTV((opt3 = status_get_opt3(bl)));
 
 	// If no status changes are in effect, return
 	if(*sc_count == 0)
@@ -5258,7 +5258,7 @@ int status_change_end(struct block_list* bl, int type, int tid)
 	int opt_flag = 0, calc_flag = 0, dye_fix = 0;
 	short *sc_count, *option, *opt1, *opt2, *opt3;
 
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	// If not a Monster or Player, return
 	if(bl->type != BL_PC && bl->type != BL_MOB)
@@ -5268,12 +5268,12 @@ int status_change_end(struct block_list* bl, int type, int tid)
 	if(type < 0 || type >= SC_MAX)
 		return 0;
 
-	nullpo_retr(0, sc_data = status_get_sc_data(bl));
-	nullpo_retr(0, sc_count = status_get_sc_count(bl));
-	nullpo_retr(0, option = status_get_option(bl));
-	nullpo_retr(0, opt1 = status_get_opt1(bl));
-	nullpo_retr(0, opt2 = status_get_opt2(bl));
-	nullpo_retr(0, opt3 = status_get_opt3(bl));
+	ASSERT((sc_data = status_get_sc_data(bl)), 0);
+	ASSERT((sc_count = status_get_sc_count(bl)), 0);
+	ASSERT((option = status_get_option(bl)), 0);
+	ASSERT((opt1 = status_get_opt1(bl)), 0);
+	ASSERT((opt2 = status_get_opt2(bl)), 0);
+	ASSERT((opt3 = status_get_opt3(bl)), 0);
 
 	if ((*sc_count) > 0 && sc_data[type].timer != -1 && (sc_data[type].timer == tid || tid == -1))
 	{
@@ -5802,11 +5802,13 @@ int status_change_timer(int tid, unsigned int tick, int id, int data)
 	struct status_change *sc_data;
 	// short *sc_count;
 
-	nullpo_retr(0, bl = map_id2bl(id));
-	nullpo_retr(0, sc_data = status_get_sc_data(bl));
+	ASSERT((bl = map_id2bl(id)), 0);
+	ASSERT((sc_data = status_get_sc_data(bl)), 0);
 
-	if (bl->type == BL_PC)
-		nullpo_retr(0, sd = (struct map_session_data *)bl);
+	if(bl->type == BL_PC)
+	{
+		ASSERT((sd = (struct map_session_data *)bl), 0);
+	}
 
 	// sc_count = status_get_sc_count(bl);
 
@@ -6263,9 +6265,10 @@ int status_change_timer_sub(struct block_list *bl, va_list ap)
 	int type;
 	unsigned int tick;
 
-	nullpo_retr(0, bl);
-	nullpo_retr(0, ap);
-	nullpo_retr(0, src = va_arg(ap, struct block_list*));
+	ASSERT(bl, 0);
+	ASSERT(ap, 0);
+	ASSERT((src = va_arg(ap, struct block_list *)), 0);
+
 	type=va_arg(ap, int);
 	tick=va_arg(ap, unsigned int);
 

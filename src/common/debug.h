@@ -10,7 +10,8 @@
 #define CALLOC(result, type, number) if(!((result) = (type *)calloc((number), sizeof(type)))) { printf("calloc failure at %s:%d \n", __FILE__, __LINE__); abort(); }
 #define REALLOC(result, type, number) if(!((result) = (type *)realloc((result), sizeof(type) * (number)))) { printf("realloc failure at %s:%d \n", __FILE__, __LINE__); abort(); }
 #define FREE(result) if(result) { free(result); result = NULL; }
-#define ASSERT(var, ret) if(!var) { printf("assertion check failed at %s:%d \n", __FILE__, __LINE__); if(ret == NULL) { return; } else { return ret; } }
+#define ASSERT(var, ret) if(!var) { printf("assertion check failed at %s:%d \n", __FILE__, __LINE__); return ret; }
+#define ASSERTV(var) if(!var) { printf("assertion check failed at %s:%d \n", __FILE__, __LINE__); return; }
 
 #else /* __DEBUG -> !__DEBUG */
 
@@ -19,6 +20,8 @@
 #define REALLOC(result, type, number) (result) = (type *)realloc((result), sizeof(type) * (number))
 #define FREE(result) if(result) { free(result); result = NULL; }
 #define ASSERT(var, ret) /* this is a dummy comment */
+#define ASSERTV(var) /* this is a dummy comment */
+
 
 #endif /* !__DEBUG */
 #endif /* DEBUG_H_ */

@@ -11,10 +11,9 @@
 
 #include "../common/socket.h"
 #include "../common/timer.h"
-#include "../common/malloc.h"
+#include "../common/debug.h"
 #include "../common/core.h"
 #include "../common/version.h"
-#include "nullpo.h"
 
 #include "clif.h"
 #include "chrif.h"
@@ -844,7 +843,7 @@ AtCommandType is_atcommand(const int fd, struct map_session_data* sd, const char
 	char command[100];
 	char received_command[100]; // to display on error
 
-	nullpo_retr(AtCommand_None, sd);
+	ASSERT(sd, AtCommand_None);
 
 /* 	if muted, don't use GM command, commented for now */
 /*	if (!battle_config.allow_atcommand_when_mute && sd->sc_count && sd->sc_data[SC_NOCHAT].timer != -1)
@@ -1821,19 +1820,11 @@ void do_final_atcommand(void) {
 	return;
 }
 
-/*==========================================
-// @ command processing functions
- *------------------------------------------
- */
-
-/*==========================================
- *
- *------------------------------------------
- */
-static int atkillmonster_sub(struct block_list *bl, va_list ap) {
+static int atkillmonster_sub(struct block_list *bl, va_list ap)
+{
 	int flag = va_arg(ap, int);
 
-	nullpo_retr(0, bl);
+	ASSERT(bl, 0);
 
 	if (flag)
 		mob_damage(NULL, (struct mob_data *)bl, ((struct mob_data *)bl)->hp, 2);
@@ -10752,8 +10743,9 @@ ATCOMMAND_FUNC(reloadskilldb) {
 	return 0;
 }
 
-int atkillnpc_sub(struct block_list *bl, va_list ap) {
-	nullpo_retr(0, bl);
+int atkillnpc_sub(struct block_list *bl, va_list ap)
+{
+	ASSERT(bl, 0);
 
 	npc_delete((struct npc_data *)bl);
 
@@ -14408,18 +14400,20 @@ ATCOMMAND_FUNC(mobsearch) {
  * @cleanmap - Clears all drops on a map
  *------------------------------------------
  */
-static int atcommand_cleanmap_sub(struct block_list *bl, va_list ap) {
-	nullpo_retr(0, bl);
+static int atcommand_cleanmap_sub(struct block_list *bl, va_list ap)
+{
+	ASSERT(bl, 0);
 
 	map_clearflooritem(bl->id);
 
 	return 0;
 }
 
-ATCOMMAND_FUNC(cleanmap) {
+ATCOMMAND_FUNC(cleanmap)
+{
 	struct map_data *m;
-	
-	nullpo_retr(1, m = &map[sd->bl.m]);
+
+	ASSERT((m = &map[sd->bl.m]), 1);
 		
 	map_foreachinarea(atcommand_cleanmap_sub, sd->bl.m, 0, 0, m->xs, m->ys, BL_ITEM);
 	clif_displaymessage(fd, "All dropped items have been cleaned up.");
@@ -14453,8 +14447,9 @@ ATCOMMAND_FUNC(cleanarea) {
  * @shuffle - Randomly repositions players/mobs on a map
  *------------------------------------------
  */
-static int atshuffle_sub(struct block_list *bl, va_list ap) {
-	nullpo_retr(0, bl);
+static int atshuffle_sub(struct block_list *bl, va_list ap)
+{
+	ASSERT(bl, 0);
 
 	mob_warp((struct mob_data *)bl, bl->m, -1, -1, 3);
 

@@ -4,10 +4,11 @@
 #include <config.h>
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "../common/socket.h"
-#include "../common/malloc.h"
+#include "../common/debug.h"
 
 #include "clif.h"
 #include "itemdb.h"
@@ -16,20 +17,14 @@
 #include "pc.h"
 #include "skill.h"
 #include "battle.h"
-#include "nullpo.h"
 #include "chrif.h"
 #include "intif.h"
 #include "atcommand.h"
 
 unsigned char log_vending_level = 0;
 
-/*==========================================
- * ˜I“X•Â½
- *------------------------------------------
-*/
-void vending_closevending(struct map_session_data *sd) {
-//	nullpo_retv(sd); // checked before to call function
-
+void vending_closevending(struct map_session_data *sd)
+{
 	sd->vender_id = 0;
 
 	// if player close shop (damage, auto-close, all items sold), reset disconnection timer to not disconnect the player just after last selled item
@@ -40,14 +35,9 @@ void vending_closevending(struct map_session_data *sd) {
 	return;
 }
 
-/*==========================================
- * ˜I“XƒAƒCƒeƒ€ƒŠƒXƒg—v‹
- *------------------------------------------
- */
-void vending_vendinglistreq(struct map_session_data *sd, int id) {
+void vending_vendinglistreq(struct map_session_data *sd, int id)
+{
 	struct map_session_data *vsd;
-
-//	nullpo_retv(sd); // checked before to call function
 
 	if ((vsd = map_id2sd(id)) == NULL || !vsd->state.auth)
 		return;
@@ -59,19 +49,14 @@ void vending_vendinglistreq(struct map_session_data *sd, int id) {
 	return;
 }
 
-/*==========================================
- * ˜I“XƒAƒCƒeƒ€w“ü
- *------------------------------------------
- */
-void vending_purchasereq(struct map_session_data *sd, short len, int id, char *p) {
+void vending_purchasereq(struct map_session_data *sd, short len, int id, char *p)
+{
 	int i, j, w, new = 0, blank, vend_list[MAX_VENDING];
 	double z;
 	unsigned short amount;
 	short idx;
 	struct map_session_data *vsd;
 	struct vending vending[MAX_VENDING]; // against duplicate packets
-
-//	nullpo_retv(sd); // checked before to call function
 
 	vsd = map_id2sd(id);
 	if (vsd == NULL)
@@ -229,25 +214,22 @@ void vending_purchasereq(struct map_session_data *sd, short len, int id, char *p
 	return;
 }
 
-/*==========================================
- * ˜I“XŠJİ
- *------------------------------------------
- */
-void vending_openvending(struct map_session_data *sd, unsigned short len, char *message, unsigned char flag, char *p) { // S 01b2 <len>.w <message>.80B <flag>.B {<index>.w <amount>.w <value>.l}.8B*
+void vending_openvending(struct map_session_data *sd, unsigned short len, char *message, unsigned char flag, char *p)
+{ // S 01b2 <len>.w <message>.80B <flag>.B {<index>.w <amount>.w <value>.l}.8B*
 	char *shop_title;
 	int shop_title_len;
 	int vending_skill_lvl;
 	int i, j;
 
-//	nullpo_retv(sd); // checked before to call function
-
 	vending_skill_lvl = pc_checkskill(sd, MC_VENDING);
-	if (vending_skill_lvl < 1 || !pc_iscarton(sd)) { // cart skill and cart check [Valaris]
+
+	if(vending_skill_lvl < 1 || !pc_iscarton(sd))
+	{
 		clif_skill_fail(sd, MC_VENDING, 0, 0);
 		return;
 	}
 
-	CALLOC(shop_title, char, 80 + 1); // (title) + NULL
+	CALLOC(shop_title, char, (80 + 1));
 	strncpy(shop_title, message, 80);
 	shop_title_len = strlen(shop_title);
 	// check bad words and shopname len

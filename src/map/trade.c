@@ -7,6 +7,7 @@
 #include <string.h>
 
 #include "../common/socket.h"
+#include "../common/debug.h"
 
 #include "clif.h"
 #include "itemdb.h"
@@ -18,8 +19,6 @@
 #include "chrif.h"
 #include "intif.h"
 #include "atcommand.h"
-
-#include "nullpo.h"
 
 unsigned char log_trade_level = 0;
 
@@ -148,14 +147,9 @@ void log_trade(struct map_session_data *sd, struct map_session_data *target_sd) 
 	return;
 }
 
-/*==========================================
- * 取引要請を相手に送る
- *------------------------------------------
- */
-void trade_traderequest(struct map_session_data *sd, int target_id, int near_check) { // 1: check if near the other player, 0: doesnt check
+void trade_traderequest(struct map_session_data *sd, int target_id, int near_check)
+{ // 1: check if near the other player, 0: doesnt check
 	struct map_session_data *target_sd;
-
-//	nullpo_retv(sd); // checked before to call function
 
 	if ((target_sd = map_id2sd(target_id)) != NULL) {
 		if (!battle_config.invite_request_check) { // Are other requests accepted during a request or not?
@@ -191,14 +185,9 @@ void trade_traderequest(struct map_session_data *sd, int target_id, int near_che
 	return;
 }
 
-/*==========================================
- * 取引要請
- *------------------------------------------
- */
-void trade_tradeack(struct map_session_data *sd, unsigned char type) { // 0x00e6 <type>.B: 3: trade ok., 4: trade canceled. (no other reception with this packet)
+void trade_tradeack(struct map_session_data *sd, unsigned char type)
+{ // 0x00e6 <type>.B: 3: trade ok., 4: trade canceled. (no other reception with this packet)
 	struct map_session_data *target_sd;
-
-//	nullpo_retv(sd); // checked before to call function
 
 	// check type
 	if (type != 3 && type != 4)
@@ -229,11 +218,12 @@ void trade_tradeack(struct map_session_data *sd, unsigned char type) { // 0x00e6
  * normal client authorize only no equiped item and only from inventory
  *------------------------------------------
  */
-int impossible_trade_check(struct map_session_data *sd) {
+int impossible_trade_check(struct map_session_data *sd)
+{
 	struct item inventory[MAX_INVENTORY];
 	int i, idx;
 
-	nullpo_retr(0, sd);
+	ASSERT(sd, 0);
 
 	// get inventory of player
 	memcpy(&inventory, &sd->status.inventory, sizeof(struct item) * MAX_INVENTORY);
@@ -402,17 +392,13 @@ int trade_check(struct map_session_data *sd) {
 	return 1;
 }
 
-/*==========================================
- * アイテム追加
- *------------------------------------------
- */
-void trade_tradeadditem(struct map_session_data *sd, int idx, int amount) { // S 0x00e8 <index>.w <amount>.l
+void trade_tradeadditem(struct map_session_data *sd, int idx, int amount)
+{ // S 0x00e8 <index>.w <amount>.l
 	struct map_session_data *target_sd;
 	int trade_i;
 	int trade_weight = 0;
 	int c, nameid;
 
-//	nullpo_retv(sd); // checked before to call function
 	if ((target_sd = map_id2sd(sd->trade_partner)) == NULL || sd->deal_locked > 1)
 		return; //Can't add stuff.
 
@@ -469,15 +455,10 @@ void trade_tradeadditem(struct map_session_data *sd, int idx, int amount) { // S
 	return;
 }
 
-/*==========================================
- * アイテム追加完了(ok押し)
- *------------------------------------------
- */
-void trade_tradeok(struct map_session_data *sd) {
+void trade_tradeok(struct map_session_data *sd)
+{
 	struct map_session_data *target_sd;
 	int trade_i, idx;
-
-//	nullpo_retv(sd); // checked before to call function
 
 	// check items
 	for(trade_i = 0; trade_i < 10; trade_i++) {
@@ -511,15 +492,10 @@ void trade_tradeok(struct map_session_data *sd) {
 	return;
 }
 
-/*==========================================
- * 取引キャンセル
- *------------------------------------------
- */
-void trade_tradecancel(struct map_session_data *sd) {
+void trade_tradecancel(struct map_session_data *sd)
+{
 	struct map_session_data *target_sd;
 	int trade_i;
-
-//	nullpo_retv(sd); // checked before to call function
 
 	if ((target_sd = map_id2sd(sd->trade_partner)) != NULL) {
 		for(trade_i = 0; trade_i < 10; trade_i++) { // give items back (only virtual)
@@ -553,16 +529,11 @@ void trade_tradecancel(struct map_session_data *sd) {
 	return;
 }
 
-/*==========================================
- * 取引許諾(trade押し)
- *------------------------------------------
- */
-void trade_tradecommit(struct map_session_data *sd) {
+void trade_tradecommit(struct map_session_data *sd)
+{
 	struct map_session_data *target_sd;
 	int trade_i;
 	int flag;
-
-//	nullpo_retv(sd); // checked before to call function
 
 	if ((target_sd = map_id2sd(sd->trade_partner)) != NULL) {
 		if (sd->deal_locked > 1 && target_sd->deal_locked > 1) { // 0: no trade, 1: Deal request accepted, 2: Trade accepted, 3: Trade valided (button 'Ok' pressed)
