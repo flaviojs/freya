@@ -10,6 +10,10 @@
 
 Date	Added
 
+03/30/2007
+	* Reverted: client version to 7 [Latios]
+		that cause some problem : http://www.ro-freya.net/forum/index.php?showtopic=790
+
 03/29/2007
 	* Removed: malloc.h [Harbin]
 	* Fixed: All compilation errors [Harbin]
