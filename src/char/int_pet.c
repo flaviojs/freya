@@ -14,7 +14,7 @@
 #include "../common/socket.h"
 #include "../common/db.h"
 #include "../common/lock.h"
-#include "../common/debug.h"
+#include "../common/malloc.h"
 
 #ifdef TXT_ONLY
 char pet_txt[1024] = "save/pet.txt";

@@ -7,10 +7,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../common/debug.h"
-#include "../common/utils.h"
 #include "map.h"
 #include "battle.h"
+#include "nullpo.h"
 
 #ifdef MEMWATCH
 #include "memwatch.h"
@@ -20,17 +19,17 @@
 struct tmp_path { short x,y,dist,before,cost; char dir,flag;};
 #define calc_index(x,y) (((x)+(y)*MAX_WALKPATH) & (MAX_WALKPATH*MAX_WALKPATH-1))
 
-static inline void push_heap_path(int *heap, struct tmp_path *tp, int idx)
-{
+/*==========================================
+ * Œo˜H’Tõ•â•heap push
+ *------------------------------------------
+ */
+static inline void push_heap_path(int *heap, struct tmp_path *tp, int idx) {
 	int i, h;
 
-/*
-	if(heap == NULL || tp == NULL)
-	{ 
-		printf("push_heap_path nullpo \n");
-		return;
-	}
-*/
+//	if (heap == NULL || tp == NULL) { // checked before to call function
+//		printf("push_heap_path nullpo\n");
+//		return;
+//	}
 
 	heap[0]++;
 
@@ -41,12 +40,17 @@ static inline void push_heap_path(int *heap, struct tmp_path *tp, int idx)
 	heap[h+1] = idx;
 }
 
-static inline void update_heap_path(int *heap,struct tmp_path *tp, int idx)
+/*==========================================
+ * Œo˜H’Tõ•â•heap update
+ * cost‚ªŒ¸‚Á‚½‚Ì‚Åª‚Ì•û‚ÖˆÚ“®
+ *------------------------------------------
+ */
+static inline void update_heap_path(int *heap,struct tmp_path *tp,int idx)
 {
-	int i, h;
+	int i,h;
 
-	ASSERTV(tp);
-	ASSERTV(heap);
+	nullpo_retv(heap);
+	nullpo_retv(tp);
 
 	for(h=0;h<heap[0];h++)
 		if(heap[h+1]==idx)
@@ -62,11 +66,19 @@ static inline void update_heap_path(int *heap,struct tmp_path *tp, int idx)
 	heap[h+1]=idx;
 }
 
-static inline int pop_heap_path(int *heap, struct tmp_path *tp)
-{
+/*==========================================
+ * Œo˜H’Tõ•â•heap pop
+ *------------------------------------------
+ */
+static inline int pop_heap_path(int *heap, struct tmp_path *tp) {
 	int i, h, k;
 	int ret, last;
 
+//	nullpo_retr(-1, heap); // checked before to call function
+//	nullpo_retr(-1, tp); // checked before to call function
+
+//	if (heap[0] <= 0) // checked before to call function
+//		return -1;
 	ret = heap[1];
 	last = heap[heap[0]];
 	heap[0]--;
@@ -88,11 +100,15 @@ static inline int pop_heap_path(int *heap, struct tmp_path *tp)
 	return ret;
 }
 
+/*==========================================
+ * Œ»İ‚Ì“_‚ÌcostŒvZ
+ *------------------------------------------
+ */
 static inline int calc_cost(struct tmp_path *p, int x1, int y_1)
 {
 	int xd, yd;
 
-	ASSERT(p, 0);
+	nullpo_retr(0, p);
 
 	xd = x1  - p->x;
 	if (xd < 0) xd = -xd;
@@ -102,9 +118,15 @@ static inline int calc_cost(struct tmp_path *p, int x1, int y_1)
 	return (xd + yd) * 10 + p->dist;
 }
 
-static int add_path(int *heap, struct tmp_path *tp, int x, int y, int dist, int dir, int before, int x1, int y_1)
-{
+/*==========================================
+ * •K—v‚È‚çpath‚ğ’Ç‰Á/C³‚·‚é
+ *------------------------------------------
+ */
+static int add_path(int *heap, struct tmp_path *tp, int x, int y, int dist, int dir, int before, int x1, int y_1) {
 	int i;
+
+//	nullpo_retr(0, heap); // checked before to call function
+//	nullpo_retr(0, tp); // checked before to call function
 
 	i = calc_index(x, y);
 
@@ -138,11 +160,17 @@ static int add_path(int *heap, struct tmp_path *tp, int x, int y, int dist, int 
 	return 0;
 }
 
+
+/*==========================================
+ * (x,y)‚ªˆÚ“®•s‰Â”\’n‘Ñ‚©‚Ç‚¤‚©
+ * flag 0x10000 ‰“‹——£UŒ‚”»’è
+ *------------------------------------------
+ */
 static inline int can_place(struct map_data *m, int x, int y, int flag)
 {
 	int c;
 
-	ASSERT(m, 0);
+	nullpo_retr(0, m);
 
 	c = map_getcellp(m, x, y, CELL_GETTYPE);
 
@@ -154,9 +182,12 @@ static inline int can_place(struct map_data *m, int x, int y, int flag)
 	return 1;
 }
 
-static inline int can_move(struct map_data *m, int x0, int y_0, int x1, int y_1, int flag)
-{
-	ASSERT(m, 0);
+/*==========================================
+ * (x0,y0)‚©‚ç(x1,y1)‚Ö1•à‚ÅˆÚ“®‰Â”\‚©ŒvZ
+ *------------------------------------------
+ */
+static inline int can_move(struct map_data *m, int x0, int y_0, int x1, int y_1, int flag) {
+	nullpo_retr(0, m);
 
 	if (x0 - x1 < -1 || x0 - x1 > 1 || y_0 - y_1 < -1 || y_0 - y_1 > 1)
 		return 0;
@@ -217,6 +248,11 @@ int path_blownpos(int m, int x0, int y_0, int dx, int dy, int count)
 	return (x0 << 16) | y_0;
 }
 
+/*==========================================
+ *  êÀËå×îÍô?ª¬Ê¦Òöª«ªÉª¦ª«ªòÚ÷ª¹
+ *------------------------------------------
+ */
+#define swap(x,y) { int t; t = x; x = y; y = t; }
 int path_search_long(int m, int x0, int y_0, int x1, int y_1)
 {
 	int dx, dy;
@@ -265,15 +301,18 @@ int path_search_long(int m, int x0, int y_0, int x1, int y_1)
 	return 1;
 }
 
-int path_search(struct walkpath_data *wpd, int m, int x0, int y_0, int x1, int y_1, int flag)
-{
+/*==========================================
+ * path’Tõ (x0,y0)->(x1,y1)
+ *------------------------------------------
+ */
+int path_search(struct walkpath_data *wpd, int m, int x0, int y_0, int x1, int y_1, int flag) {
 	int heap[MAX_HEAP + 1];
 	struct tmp_path tp[MAX_WALKPATH * MAX_WALKPATH];
 	int i, rp, x, y;
 	struct map_data *md;
 	int dx, dy;
 
-	ASSERT(wpd, 0);
+	nullpo_retr(0, wpd);
 
 	if (!map[m].gat)
 		return -1;

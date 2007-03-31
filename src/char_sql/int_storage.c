@@ -13,7 +13,7 @@
 #include "char.h"
 #include "../common/socket.h"
 #include "../common/lock.h"
-#include "../common/debug.h"
+#include "../common/malloc.h"
 
 // ファイル名のデフォルト
 #ifdef TXT_ONLY

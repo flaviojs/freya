@@ -35,7 +35,7 @@
 #include "../common/version.h"
 #include "../common/lock.h"
 #include "char.h"
-#include "../common/debug.h"
+#include "../common/malloc.h"
 #include "../common/utils.h"
 #include "../common/addons.h"
 #include "../common/console.h"

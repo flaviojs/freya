@@ -20,7 +20,7 @@
 
 #include "../common/socket.h"
 #include "../common/timer.h"
-#include "../common/debug.h"
+#include "../common/malloc.h"
 #include "map.h"
 #include "battle.h"
 #include "chrif.h"
@@ -28,6 +28,7 @@
 #include "intif.h"
 #include "npc.h"
 #include "pc.h"
+#include "nullpo.h"
 #include "atcommand.h"
 #include "script.h"
 #include "status.h"
@@ -110,7 +111,7 @@ void chrif_save(struct map_session_data *sd) {
 	int manner, clothes_color; // values are modified by pc_makesavestatus
 	struct skill skill_cpy[MAX_SKILL]; // values are modified by pc_makesavestatus (cloneskill flag)
 
-	ASSERTV(sd);
+	nullpo_retv(sd);
 
 	// save value before modification by pc_makesavestatus
 	clothes_color = sd->status.clothes_color;
@@ -882,23 +883,25 @@ void chrif_globalregAck(int fd) { // 0x2b1c <char_id>.L
 	return;
 }
 
-int chrif_divorce(int char_id, int partner_id)
-{
+/*==========================================
+ * —£¥î•ñ“¯Šú—v‹
+ *------------------------------------------
+ */
+int chrif_divorce(int char_id, int partner_id) {
 	struct map_session_data *sd = NULL;
 
-	if(!char_id || !partner_id)
+	if (!char_id || !partner_id)
 		return 0;
 
-	ASSERT((sd = map_nick2sd(map_charid2nick(partner_id))), 0);
-
-	if(sd->status.partner_id == char_id)
-	{
+	nullpo_retr(0, sd = map_nick2sd(map_charid2nick(partner_id)));
+	if (sd->status.partner_id == char_id) {
 		int i;
-
+		//—£¥(‘Š•û‚ÍŠù‚ÉƒLƒƒƒ‰‚ªÁ‚¦‚Ä‚¢‚é”¤‚È‚Ì‚Å)
 		sd->status.partner_id = 0;
 
+		//‘Š•û‚ÌŒ‹¥w—Ö‚ğ”’D
 		for(i = 0; i < MAX_INVENTORY; i++)
-			if(sd->status.inventory[i].nameid == WEDDING_RING_M || sd->status.inventory[i].nameid == WEDDING_RING_F)
+			if (sd->status.inventory[i].nameid == WEDDING_RING_M || sd->status.inventory[i].nameid == WEDDING_RING_F)
 				pc_delitem(sd, i, 1, 0);
 	}
 

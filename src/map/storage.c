@@ -17,7 +17,8 @@
 #include "storage.h"
 #include "guild.h"
 #include "atcommand.h"
-#include "../common/debug.h"
+#include "nullpo.h"
+#include "../common/malloc.h"
 
 #ifdef MEMWATCH
 #include "memwatch.h"
@@ -26,8 +27,11 @@
 static struct dbt *storage_db;
 static struct dbt *guild_storage_db;
 
-int storage_comp_item(const void *_i1, const void *_i2)
-{
+/*==========================================
+ * 倉庫内アイテムソート
+ *------------------------------------------
+ */
+int storage_comp_item(const void *_i1, const void *_i2) {
 	struct item *i1 = (struct item *)_i1;
 	struct item *i2 = (struct item *)_i2;
 
@@ -42,22 +46,16 @@ int storage_comp_item(const void *_i1, const void *_i2)
 	}
 }
 
-void sortage_sortitem(struct storage *stor)
-{
-	ASSERTV(stor);
+void sortage_sortitem(struct storage* stor) {
+	nullpo_retv(stor);
 
 	qsort(stor->storage, MAX_STORAGE, sizeof(struct item), storage_comp_item);
-
-	return;
 }
 
-void sortage_gsortitem(struct guild_storage* gstor)
-{
-	ASSERTV(gstor);
+void sortage_gsortitem(struct guild_storage* gstor) {
+	nullpo_retv(gstor);
 
 	qsort(gstor->storage, MAX_GUILD_STORAGE, sizeof(struct item), storage_comp_item);
-
-	return;
 }
 
 /*==========================================
@@ -122,11 +120,15 @@ void storage_delete(int account_id) {
 	return;
 }
 
+/*==========================================
+ * カプラ倉庫を開く
+ *------------------------------------------
+ */
 int storage_storageopen(struct map_session_data *sd)
 {
 	struct storage *stor;
 
-	ASSERT(sd, 0);
+	nullpo_retr(0, sd);
 
 	if((stor = numdb_search(storage_db,sd->status.account_id)) != NULL) {
 		if (stor->storage_status == 0) { // not already opened
@@ -143,23 +145,25 @@ int storage_storageopen(struct map_session_data *sd)
 	return 1;
 }
 
+/*==========================================
+ * カプラ倉庫へアイテム追加
+ *------------------------------------------
+ */
 int storage_additem(struct map_session_data *sd, struct storage *stor, struct item *item_data, int amount)
 {
 	struct item_data *data;
 	int i;
 
-	ASSERT(sd, 1);
-	ASSERT(stor, 1);
-	ASSERT(item_data, 1);
+	nullpo_retr(1, sd);
+	nullpo_retr(1, stor);
+	nullpo_retr(1, item_data);
 
 	if (item_data->nameid <= 0 || amount <= 0)
 		return 1;
+	nullpo_retr(1, data = itemdb_search(item_data->nameid));
 
-	ASSERT((data = itemdb_search(item_data->nameid)), 1);
-
-	if(!itemdb_canstore(item_data->nameid, sd->GM_level))
-	{
-		clif_displaymessage(sd->fd, msg_txt(286));
+	if (!itemdb_canstore(item_data->nameid, sd->GM_level)) { // check if item can be stored in storage
+		clif_displaymessage (sd->fd, msg_txt(286));
 		return 1;
 	}
 
@@ -202,18 +206,20 @@ int storage_additem(struct map_session_data *sd, struct storage *stor, struct it
 	return 0;
 }
 
+/*==========================================
+ * カプラ倉庫アイテムを減らす
+ *------------------------------------------
+ */
 int storage_delitem(struct map_session_data *sd, struct storage *stor, int n, int amount)
 {
-	ASSERT(sd, 1);
-	ASSERT(stor, 1);
+	nullpo_retr(1, sd);
+	nullpo_retr(1, stor);
 
 	if (stor->storage[n].nameid == 0 || stor->storage[n].amount < amount)
 		return 1;
 
 	stor->storage[n].amount -= amount;
-
-	if(stor->storage[n].amount == 0)
-	{
+	if (stor->storage[n].amount == 0) {
 		memset(&stor->storage[n], 0, sizeof(stor->storage[0]));
 		stor->storage_amount--;
 		clif_updatestorageamount(sd, stor);
@@ -225,9 +231,14 @@ int storage_delitem(struct map_session_data *sd, struct storage *stor, int n, in
 	return 0;
 }
 
-void storage_storageadd(struct map_session_data *sd, short idx, int amount)
-{
+/*==========================================
+ * カプラ倉庫へ入れる
+ *------------------------------------------
+ */
+void storage_storageadd(struct map_session_data *sd, short idx, int amount) {
 	struct storage *stor;
+
+//	nullpo_retv(sd); // checked before to call function
 
 	if ((stor = account2storage(sd->status.account_id)) != NULL) {
 		if (stor->storage_amount <= MAX_STORAGE && stor->storage_status == 1) { // storage not full & storage open
@@ -244,13 +255,17 @@ void storage_storageadd(struct map_session_data *sd, short idx, int amount)
 	return;
 }
 
-void storage_storageget(struct map_session_data *sd, short idx, int amount)
-{
+/*==========================================
+ * カプラ倉庫から出す
+ *------------------------------------------
+ */
+void storage_storageget(struct map_session_data *sd, short idx, int amount) {
 	struct storage *stor;
 	int flag;
 
-	if((stor = account2storage(sd->status.account_id)) != NULL)
-	{
+//	nullpo_retv(sd); // checked before to call function
+
+	if ((stor = account2storage(sd->status.account_id)) != NULL) {
 		if (stor->storage_status == 1) { // storage open
 //			if (idx >= 0 && idx < MAX_STORAGE) { // valid index // checked before to call function
 //				if ((amount > 0) { // valid amount // checked before to call function
@@ -267,14 +282,17 @@ void storage_storageget(struct map_session_data *sd, short idx, int amount)
 	return;
 }
 
-void storage_storageaddfromcart(struct map_session_data *sd, short idx, int amount)
-{
+/*==========================================
+ * カプラ倉庫へカートから入れる
+ *------------------------------------------
+ */
+void storage_storageaddfromcart(struct map_session_data *sd, short idx, int amount) {
 	struct storage *stor;
 
-	ASSERTV((stor = account2storage(sd->status.account_id)));
+//	nullpo_retv(sd); // checked before to call function
+	nullpo_retv(stor = account2storage(sd->status.account_id));
 
-	if(stor->storage_amount <= MAX_STORAGE && stor->storage_status == 1)
-	{ // storage not full & storage open
+	if (stor->storage_amount <= MAX_STORAGE && stor->storage_status == 1) { // storage not full & storage open
 		if (idx >= 0 && idx < MAX_CART) { // valid index
 			if (amount <= sd->status.cart[idx].amount && amount > 0) { //valid amount
 				if (storage_additem(sd, stor, &sd->status.cart[idx], amount) == 0)
@@ -286,14 +304,17 @@ void storage_storageaddfromcart(struct map_session_data *sd, short idx, int amou
 	return;
 }
 
-void storage_storagegettocart(struct map_session_data *sd, short idx, int amount)
-{
+/*==========================================
+ * カプラ倉庫からカートへ出す
+ *------------------------------------------
+ */
+void storage_storagegettocart(struct map_session_data *sd, short idx, int amount) {
 	struct storage *stor;
 
-	ASSERTV((stor = account2storage(sd->status.account_id)));
+//	nullpo_retv(sd); // checked before to call function
+	nullpo_retv(stor = account2storage(sd->status.account_id));
 
-	if(stor->storage_status == 1)
-	{ // storage open
+	if (stor->storage_status == 1) { // storage open
 		if (idx >= 0 && idx < MAX_STORAGE) { // valid index
 			if (amount <= stor->storage[idx].amount && amount > 0) { //valid amount
 				if (pc_cart_additem(sd, &stor->storage[idx], amount) == 0) {
@@ -306,11 +327,15 @@ void storage_storagegettocart(struct map_session_data *sd, short idx, int amount
 	return;
 }
 
-void storage_storageclose(struct map_session_data *sd)
-{
+/*==========================================
+ * カプラ倉庫を閉じる
+ *------------------------------------------
+ */
+void storage_storageclose(struct map_session_data *sd) {
 	struct storage *stor;
 
-	ASSERTV((stor = account2storage(sd->status.account_id)));
+//	nullpo_retv(sd); // checked before to call function
+	nullpo_retv(stor = account2storage(sd->status.account_id));
 
 	stor->storage_status = 0;
 	sd->state.storage_flag = 0;
@@ -323,15 +348,18 @@ void storage_storageclose(struct map_session_data *sd)
 	return;
 }
 
+/*==========================================
+ * ログアウト時開いているカプラ倉庫の保存
+ *------------------------------------------
+ */
 int storage_storage_quit(struct map_session_data *sd)
 {
 	struct storage *stor;
 
-	ASSERT(sd, 0);
+	nullpo_retr(0, sd);
 
 	stor = numdb_search(storage_db, sd->status.account_id);
-
-	if(stor)
+	if (stor)
 		stor->storage_status = 0;
 
 	return 0;
@@ -341,12 +369,10 @@ int storage_storage_save(struct map_session_data *sd)
 {
 	struct storage *stor;
 
-	ASSERT(sd, 0);
+	nullpo_retr(0, sd);
 
 	stor = numdb_search(storage_db,sd->status.account_id);
-
-	if(stor)
-		intif_send_storage(stor);
+	if (stor) intif_send_storage(stor);
 
 	return 0;
 }
@@ -381,7 +407,7 @@ int storage_guild_storageopen(struct map_session_data *sd)
 {
 	struct guild_storage *gstor;
 
-	ASSERT(sd, 0);
+	nullpo_retr(0, sd);
 
 	if (sd->status.guild_id <= 0)
 		return 2;
@@ -410,14 +436,13 @@ int guild_storage_additem(struct map_session_data *sd,struct guild_storage *stor
 	struct item_data *data;
 	int i;
 
-	ASSERT(sd, 1);
-	ASSERT(stor, 1);
-	ASSERT(item_data, 1);
+	nullpo_retr(1, sd);
+	nullpo_retr(1, stor);
+	nullpo_retr(1, item_data);
 
-	if(item_data->nameid <= 0 || amount <= 0)
+	if (item_data->nameid <= 0 || amount <= 0)
 		return 1;
-
-	ASSERT((data = itemdb_search(item_data->nameid)), 1);
+	nullpo_retr(1, data = itemdb_search(item_data->nameid));
 
 	if (!itemdb_canguildstore(item_data->nameid, sd->GM_level)) { // check if item can be stored in guild storage
 		clif_displaymessage (sd->fd, msg_txt(286));
@@ -465,8 +490,8 @@ int guild_storage_additem(struct map_session_data *sd,struct guild_storage *stor
 
 int guild_storage_delitem(struct map_session_data *sd, struct guild_storage *stor, int n, int amount)
 {
-	ASSERT(sd, 1);
-	ASSERT(stor, 1);
+	nullpo_retr(1, sd);
+	nullpo_retr(1, stor);
 
 	if (stor->storage[n].nameid == 0 || stor->storage[n].amount < amount)
 		return 1;
@@ -484,9 +509,10 @@ int guild_storage_delitem(struct map_session_data *sd, struct guild_storage *sto
 	return 0;
 }
 
-void storage_guild_storageadd(struct map_session_data *sd, short idx, int amount)
-{
+void storage_guild_storageadd(struct map_session_data *sd, short idx, int amount) {
 	struct guild_storage *stor;
+
+//	nullpo_retv(sd); // checked before to call function
 
 	if ((stor = guild2storage(sd->status.guild_id)) != NULL) {
 		if (stor->storage_amount <= MAX_GUILD_STORAGE && stor->storage_status == 1) { // storage not full & storage open
@@ -503,10 +529,11 @@ void storage_guild_storageadd(struct map_session_data *sd, short idx, int amount
 	return;
 }
 
-void storage_guild_storageget(struct map_session_data *sd, short idx, int amount)
-{
+void storage_guild_storageget(struct map_session_data *sd, short idx, int amount) {
 	struct guild_storage *stor;
 	int flag;
+
+//	nullpo_retv(sd); // checked before to call function
 
 	if ((stor = guild2storage(sd->status.guild_id)) != NULL) {
 		if (stor->storage_status == 1) { // storage open
@@ -525,9 +552,10 @@ void storage_guild_storageget(struct map_session_data *sd, short idx, int amount
 	return;
 }
 
-void storage_guild_storageaddfromcart(struct map_session_data *sd, short idx, int amount)
-{
+void storage_guild_storageaddfromcart(struct map_session_data *sd, short idx, int amount) {
 	struct guild_storage *stor;
+
+//	nullpo_retv(sd); // checked before to call function
 
 	if ((stor = guild2storage(sd->status.guild_id)) != NULL) {
 		if (stor->storage_amount <= MAX_GUILD_STORAGE && stor->storage_status == 1) { // storage not full & storage open
@@ -543,9 +571,10 @@ void storage_guild_storageaddfromcart(struct map_session_data *sd, short idx, in
 	return;
 }
 
-void storage_guild_storagegettocart(struct map_session_data *sd, short idx, int amount)
-{
+void storage_guild_storagegettocart(struct map_session_data *sd, short idx, int amount) {
 	struct guild_storage *stor;
+
+//	nullpo_retv(sd); // checked before to call function
 
 	if ((stor = guild2storage(sd->status.guild_id)) != NULL) {
 		if (stor->storage_status == 1) { // storage open
@@ -562,12 +591,12 @@ void storage_guild_storagegettocart(struct map_session_data *sd, short idx, int 
 	return;
 }
 
-void storage_guild_storageclose(struct map_session_data *sd)
-{
+void storage_guild_storageclose(struct map_session_data *sd) {
 	struct guild_storage *stor;
 
-	if((stor = guild2storage(sd->status.guild_id)) != NULL)
-	{
+//	nullpo_retv(sd); // checked before to call function
+
+	if ((stor = guild2storage(sd->status.guild_id)) != NULL) {
 		if (stor->modified_storage_flag) {
 			intif_send_guild_storage(sd->status.account_id, stor);
 			//stor->modified_storage_flag = 0; // because char-server can crash, once modified, guild storage is always saved --> don't change flag
@@ -586,7 +615,7 @@ int storage_guild_storage_quit(struct map_session_data *sd)
 {
 	struct guild_storage *stor;
 
-	ASSERT(sd, 0);
+	nullpo_retr(0, sd);
 
 	stor = numdb_search(guild_storage_db, sd->status.guild_id);
 	if (stor) {
@@ -608,7 +637,7 @@ int storage_guild_storagesave(struct map_session_data *sd)
 {
 	struct guild_storage *stor;
 
-	ASSERT(sd, 0);
+	nullpo_retr(0, sd);
 
 	if ((stor = guild2storage(sd->status.guild_id)) != NULL) {
 		if (stor->modified_storage_flag) {

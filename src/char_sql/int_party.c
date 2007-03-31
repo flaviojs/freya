@@ -9,7 +9,7 @@
 
 #include "char.h"
 #include "../common/socket.h"
-#include "../common/debug.h"
+#include "../common/malloc.h"
 
 static struct party *partys;
 static int party_num, party_max;

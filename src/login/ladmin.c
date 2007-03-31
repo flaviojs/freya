@@ -22,7 +22,7 @@
 #include <mmo.h>
 #include "../common/version.h"
 #include "../common/lock.h"
-#include "../common/debug.h"
+#include "../common/malloc.h"
 #include "../common/md5calc.h"
 #include "login.h"
 #include "lutils.h"

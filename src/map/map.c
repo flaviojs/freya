@@ -20,7 +20,7 @@
 #include "../common/core.h"
 #include "../common/timer.h"
 #include "../common/db.h"
-#include "../common/debug.h"
+#include "../common/malloc.h"
 #include "../common/socket.h"
 #include "../common/addons.h"
 #include "../common/console.h"
@@ -44,6 +44,7 @@
 #include "guild.h"
 #include "pet.h"
 #include "atcommand.h"
+#include "nullpo.h"
 #include "status.h"
 #include <gettext.h>
 
@@ -212,7 +213,7 @@ int map_addblock(struct block_list *bl) {
 	int m, x, y;
 	int b;
 
-	ASSERT(bl, 0);
+	nullpo_retr(0, bl);
 
 	if (bl->prev != NULL) {
 		if (battle_config.error_log)
@@ -253,10 +254,9 @@ int map_addblock(struct block_list *bl) {
  * prevがNULLの場合listに繋がってない
  *------------------------------------------
  */
-int map_delblock(struct block_list *bl)
-{
+int map_delblock(struct block_list *bl) {
 
-	ASSERT(bl, 0);
+	nullpo_retr(0, bl);
 
 	// 既にblocklistから抜けている
 	if (bl->prev == NULL) {
@@ -969,7 +969,7 @@ int map_addflooritem(struct item *item_data, int amount, int m, int x, int y, st
 	int xy, r;
 	struct flooritem_data *fitem;
 
-	ASSERT(item_data, 0);
+	nullpo_retr(0, item_data);
 
 	if ((xy = map_searchrandfreecell(m, x, y, 1)) < 0)
 		return 0;
@@ -1065,7 +1065,7 @@ void map_addchariddb(int charid, char *name) {
 int map_reqchariddb(struct map_session_data * sd,int charid) {
 	struct charid2nick *p;
 
-	ASSERT(sd, 0);
+	nullpo_retr(0, sd);
 
 	p = numdb_search(charid_db, charid);
 	if(p!=NULL) // データベースにすでにある
@@ -1081,9 +1081,8 @@ int map_reqchariddb(struct map_session_data * sd,int charid) {
  * id_dbへblを追加
  *------------------------------------------
  */
-void map_addiddb(struct block_list *bl)
-{
-	ASSERTV(bl);
+void map_addiddb(struct block_list *bl) {
+	nullpo_retv(bl);
 
 	numdb_insert(id_db, bl->id, bl);
 }
@@ -1093,7 +1092,7 @@ void map_addiddb(struct block_list *bl)
  *------------------------------------------
  */
 void map_deliddb(struct block_list *bl) {
-	ASSERTV(bl);
+	nullpo_retv(bl);
 
 	numdb_erase(id_db, bl->id);
 }
@@ -1114,9 +1113,8 @@ void map_deliddb(struct block_list *bl) {
  * quit処理の主体が違うような気もしてきた
  *------------------------------------------
  */
-void map_quit(struct map_session_data *sd)
-{
-	ASSERTV(sd);
+void map_quit(struct map_session_data *sd) {
+	nullpo_retv(sd);
 
 	if (sd->state.event_disconnect) {
 		struct npc_data *npc;
@@ -1278,9 +1276,8 @@ void map_quit(struct map_session_data *sd)
  * to free memory of dynamic allocation in session (even if player is auth or not)
  *------------------------------------------
  */
-void map_quit2(struct map_session_data *sd)
-{
-	ASSERTV(sd);
+void map_quit2(struct map_session_data *sd) {
+	nullpo_retv(sd);
 
 	storage_delete(sd->bl.id);
 
@@ -1439,7 +1436,7 @@ int map_addnpc(int m, struct npc_data *nd) {
 	if (i == map[m].npc_num)
 		map[m].npc_num++;
 
-	ASSERT(nd, 0);
+	nullpo_retr(0, nd);
 
 	map[m].npc[i] = nd;
 	nd->n = i;
@@ -1580,7 +1577,7 @@ int map_calc_dir(struct block_list *src, int x, int y) {
 	int dir = 0;
 	int dx, dy;
 
-	ASSERT(src, 0);
+	nullpo_retr(0, src);
 
 	dx = x - src->x;
 	dy = y - src->y;
@@ -1622,7 +1619,7 @@ int map_getcell(int m, int x, int y, cell_t cellchk) {
 int map_getcellp(struct map_data* m, int x, int y, cell_t cellchk) {
 	int type;
 
-	ASSERT(m, 0);
+	nullpo_ret(m);
 
 	if (x < 0 || x >= m->xs - 1 || y < 0 || y >= m->ys - 1) {
 		if (cellchk == CELL_CHKNOPASS || cellchk == CELL_CHKNOPASS_NPC)
@@ -2749,9 +2746,8 @@ int charid_db_final(void *k, void *d, va_list ap) {
 	return 0;
 }
 
-static int cleanup_sub(struct block_list *bl, va_list ap)
-{
-	ASSERT(bl, 0);
+static int cleanup_sub(struct block_list *bl, va_list ap) {
+	nullpo_retr(0, bl);
 
 	switch(bl->type) {
 	case BL_PC:

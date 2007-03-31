@@ -18,7 +18,7 @@
 
 #include "../common/socket.h"
 #include "../common/timer.h"
-#include "../common/debug.h"
+#include "../common/malloc.h"
 #include "../common/lock.h"
 #include "../common/db.h"
 

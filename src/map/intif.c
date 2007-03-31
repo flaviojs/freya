@@ -25,7 +25,6 @@
 
 #include "../common/socket.h"
 #include "../common/timer.h"
-#include "../common/debug.h"
 #include "map.h"
 #include "battle.h"
 #include "chrif.h"
@@ -36,7 +35,9 @@
 #include "party.h"
 #include "guild.h"
 #include "pet.h"
+#include "nullpo.h"
 #include "atcommand.h"
+#include "../common/malloc.h"
 
 #ifdef MEMWATCH
 #include "memwatch.h"
@@ -162,9 +163,8 @@ void intif_announce(char* mes, unsigned int color, unsigned int flag) {
 }
 
 // The transmission of Wisp/Page to inter-server (player not found on this server)
-int intif_wis_message(struct map_session_data *sd, char *nick, char *mes, int mes_len)
-{
-	ASSERT(sd, 0);
+int intif_wis_message(struct map_session_data *sd, char *nick, char *mes, int mes_len) {
+	nullpo_retr(0, sd);
 
 	WPACKETW(0) = 0x3001; // 0x3001/0x3801 <packet_len>.w (<w_id_0x3801>.L) <sender_GM_level>.B <sender_name>.24B <nick_name>.24B <message>.?B
 	WPACKETW(2) = mes_len + 53 + 1; // + NULL
@@ -280,9 +280,12 @@ void intif_send_log(unsigned char log_type, char *log_msg) {
 	return;
 }
 
-void intif_saveaccountreg(struct map_session_data *sd)
-{
+
+// アカウント変数送信
+void intif_saveaccountreg(struct map_session_data *sd) {
 	int size;
+
+//	nullpo_retv(sd); // checked before to call function
 
 	//printf("intif_saveaccountreg: account %d, num of account_reg: %d.\n", sd->bl.id, sd->account_reg_num);
 	if (sd->account_reg_num > 0) {
@@ -302,6 +305,7 @@ void intif_saveaccountreg(struct map_session_data *sd)
 	return;
 }
 
+// アカウント変数要求
 /*int intif_request_accountreg(struct map_session_data *sd) // now send at same moment of character (synchronized)
 {
 	nullpo_retr(0, sd);
@@ -313,6 +317,7 @@ void intif_saveaccountreg(struct map_session_data *sd)
 	return 0;
 }*/
 
+// 倉庫データ要求
 int intif_request_storage(int account_id)
 {
 	WPACKETW(0) = 0x3010;
@@ -322,9 +327,10 @@ int intif_request_storage(int account_id)
 	return 0;
 }
 
+// 倉庫データ送信
 int intif_send_storage(struct storage *stor)
 {
-	ASSERT(stor, 0);
+	nullpo_retr(0, stor);
 
 	WPACKETW(0) = 0x3011;
 	WPACKETW(2) = sizeof(struct storage) + 8;
@@ -357,8 +363,10 @@ int intif_send_guild_storage(int account_id, struct guild_storage *gstor)
 	return 0;
 }
 
-void intif_create_party(struct map_session_data *sd, char *party_name, short item, short item2)
-{
+// パーティ作成要求
+void intif_create_party(struct map_session_data *sd, char *party_name, short item, short item2) {
+//	nullpo_retv(sd); // checked before to call function
+
 	WPACKETW( 0) = 0x3020;
 	WPACKETL( 2) = sd->status.account_id;
 	strncpy(WPACKETP( 6), party_name, 24);
@@ -372,6 +380,7 @@ void intif_create_party(struct map_session_data *sd, char *party_name, short ite
 	return;
 }
 
+// パーティ情報要求
 int intif_request_partyinfo(int party_id) {
 	WPACKETW(0) = 0x3021; // 0x3021 <party_id>.L - ask for party
 	WPACKETL(2) = party_id;
@@ -382,8 +391,10 @@ int intif_request_partyinfo(int party_id) {
 	return 0;
 }
 
-void intif_party_addmember(int party_id, struct map_session_data *sd)
-{
+// パーティ追加要求
+void intif_party_addmember(int party_id, struct map_session_data *sd) {
+//	nullpo_retv(sd); // checked before to call function
+
 	WPACKETW( 0) = 0x3022;
 	WPACKETL( 2) = party_id;
 	WPACKETL( 6) = sd->status.account_id;
@@ -445,8 +456,8 @@ int intif_break_party(int party_id)
 	return 0;
 }
 
-void intif_party_message(int party_id, int account_id, char *mes, int len)
-{
+// パーティ会話送信
+void intif_party_message(int party_id, int account_id, char *mes, int len) {
 	WPACKETW(0) = 0x3027;
 	WPACKETW(2) = len + 12;
 	WPACKETL(4) = party_id;
@@ -457,8 +468,8 @@ void intif_party_message(int party_id, int account_id, char *mes, int len)
 	return;
 }
 
-int intif_party_checkconflict(int party_id, int account_id, char *nick)
-{
+// パーティ競合チェック要求
+int intif_party_checkconflict(int party_id, int account_id, char *nick) {
 	WPACKETW(0) = 0x3028;
 	WPACKETL(2) = party_id;
 	WPACKETL(6) = account_id;
@@ -468,8 +479,10 @@ int intif_party_checkconflict(int party_id, int account_id, char *nick)
 	return 0;
 }
 
-void intif_guild_create(const char *name, const struct guild_member *master)
-{
+// ギルド作成要求
+void intif_guild_create(const char *name, const struct guild_member *master) {
+//	nullpo_retv(sd); // checked before to call function
+
 	WPACKETW(0) = 0x3030;
 	WPACKETW(2) = sizeof(struct guild_member) + 32;
 	WPACKETL(4) = master->account_id;
@@ -694,14 +707,23 @@ int intif_charposreq(int account_id, char *name, int flag) {
 	return 0;
 }
 
-int intif_jumpto(int account_id, char *name)
-{
+/*==========================================
+ * 指定した名前のキャラの場所に移動する
+ * @jumpto
+ *------------------------------------------
+ */
+int intif_jumpto(int account_id, char *name) {
 	intif_charposreq(account_id, name, 1);
 	//printf("intif_jumpto: %d %s\n", account_id,name);
 
 	return 0;
 }
 
+/*==========================================
+ * 指定した名前のキャラの場所表示する
+ * @where
+ *------------------------------------------
+ */
 int intif_where(int account_id, char *name)
 {
 	intif_charposreq(account_id, name, 0);
@@ -710,11 +732,18 @@ int intif_where(int account_id, char *name)
 	return 0;
 }
 
+/*==========================================
+ * 指定した名前のキャラを呼び寄せる
+ * flag=0 あなたに逢いたい
+ * flag=1 @recall
+ *------------------------------------------
+ */
 int intif_charmovereq(struct map_session_data *sd, char *name, int flag)
 {
-	ASSERT(sd, 0);
+	nullpo_retr(0, sd);
 
-	if(name == NULL)
+	//printf("intif_charmovereq: %d %s\n", sd->status.account_id, name);
+	if (name == NULL)
 		return -1;
 
 	WPACKETW( 0) = 0x3092;

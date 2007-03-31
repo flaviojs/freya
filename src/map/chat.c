@@ -8,7 +8,8 @@
 #include <string.h>
 
 #include "../common/db.h"
-#include "../common/debug.h"
+#include "nullpo.h"
+#include "../common/malloc.h"
 #include "map.h"
 #include "clif.h"
 #include "pc.h"
@@ -22,12 +23,17 @@
 
 int chat_triggerevent(struct chat_data *cd);
 
-void chat_createchat(struct map_session_data *sd, unsigned short limit, int pub, char* pass, char* title, int titlelen)
-{
+
+/*==========================================
+ * チャットルーム作成
+ *------------------------------------------
+ */
+void chat_createchat(struct map_session_data *sd, unsigned short limit, int pub, char* pass, char* title, int titlelen) {
 	struct chat_data *cd;
+
+//	nullpo_retv(sd); // checked before to call function
 		
-	if(sd->chatID)
-	{
+	if(sd->chatID) {
 			clif_wis_message(sd->fd, wisp_server_name, msg_txt(670), strlen(msg_txt(670)) + 1); // You can not create chat when you are in one [Proximus]
 			return;
 	}
@@ -66,9 +72,14 @@ void chat_createchat(struct map_session_data *sd, unsigned short limit, int pub,
 	return;
 }
 
-void chat_joinchat(struct map_session_data *sd, int chatid, char* pass)
-{
+/*==========================================
+ * 既存チャットルームに参加
+ *------------------------------------------
+ */
+void chat_joinchat(struct map_session_data *sd, int chatid, char* pass) {
 	struct chat_data *cd;
+
+//	nullpo_retv(sd); // checked before to call function
 
 	cd = (struct chat_data*)map_id2bl(chatid);
 	if (cd == NULL || cd->bl.type != BL_CHAT) // player can send any id (hack), so check if it's a chat.
@@ -112,12 +123,15 @@ void chat_joinchat(struct map_session_data *sd, int chatid, char* pass)
 	return;
 }
 
-void chat_leavechat(struct map_session_data *sd)
-{
+/*==========================================
+ * チャットルームから抜ける
+ *------------------------------------------
+ */
+void chat_leavechat(struct map_session_data *sd) {
 	struct chat_data *cd;
 	int i, leavechar;
 
-	ASSERTV(sd);
+	nullpo_retv(sd);
 
 	cd = (struct chat_data*)map_id2bl(sd->chatID);
 	if (cd == NULL || cd->bl.type != BL_CHAT) // player can send any id (hack), so check if it's a chat.
@@ -163,11 +177,16 @@ void chat_leavechat(struct map_session_data *sd)
 	return;
 }
 
-void chat_changechatowner(struct map_session_data *sd, char *nextownername)
-{
+/*==========================================
+ * チャットルームの持ち主を譲る
+ *------------------------------------------
+ */
+void chat_changechatowner(struct map_session_data *sd, char *nextownername) {
 	struct chat_data *cd;
 	struct map_session_data *tmp_sd;
 	int i, nextowner;
+
+//	nullpo_retv(sd); // checked before to call function
 
 	cd = (struct chat_data*)map_id2bl(sd->chatID);
 	if (cd == NULL || cd->bl.type != BL_CHAT || (struct block_list *)sd != (*cd->owner))
@@ -203,10 +222,15 @@ void chat_changechatowner(struct map_session_data *sd, char *nextownername)
 	return;
 }
 
-void chat_changechatstatus(struct map_session_data *sd, unsigned short limit, int pub, char* pass, char* title, int titlelen)
-{
+/*==========================================
+ * チャットの状態(タイトル等)を変更
+ *------------------------------------------
+ */
+void chat_changechatstatus(struct map_session_data *sd, unsigned short limit, int pub, char* pass, char* title, int titlelen) {
 	char *chat_title;
 	struct chat_data *cd;
+
+//	nullpo_retv(sd); // checked before to call function
 
 	cd = (struct chat_data*)map_id2bl(sd->chatID);
 	if (cd == NULL || cd->bl.type != BL_CHAT || (struct block_list *)sd != (*cd->owner))
@@ -241,10 +265,15 @@ void chat_changechatstatus(struct map_session_data *sd, unsigned short limit, in
 	return;
 }
 
-void chat_kickchat(struct map_session_data *sd, char *kickusername)
-{
+/*==========================================
+ * チャットルームから蹴り出す
+ *------------------------------------------
+ */
+void chat_kickchat(struct map_session_data *sd, char *kickusername) {
 	struct chat_data *cd;
 	int i;
+
+//	nullpo_retv(sd); // checked before to call function
 
 	cd = (struct chat_data*)map_id2bl(sd->chatID);
 	if (cd == NULL || cd->bl.type != BL_CHAT || (struct block_list *)sd != (*cd->owner))
@@ -259,11 +288,14 @@ void chat_kickchat(struct map_session_data *sd, char *kickusername)
 	return;
 }
 
-int chat_createnpcchat(struct npc_data *nd, unsigned short limit, int pub, int trigger, char* title, int titlelen, const char *ev)
-{
+/*==========================================
+ * npcチャットルーム作成
+ *------------------------------------------
+ */
+int chat_createnpcchat(struct npc_data *nd, unsigned short limit, int pub, int trigger, char* title, int titlelen, const char *ev) {
 	struct chat_data *cd;
 
-	ASSERT(nd, 1);
+	nullpo_retr(1, nd);
 
 	if(!limit || limit > MAX_CHATTERS)
 		limit = MAX_CHATTERS; //Incorrect limit
@@ -301,24 +333,30 @@ int chat_createnpcchat(struct npc_data *nd, unsigned short limit, int pub, int t
 	return 0;
 }
 
-int chat_deletenpcchat(struct npc_data *nd)
-{
+/*==========================================
+ * npcチャットルーム削除
+ *------------------------------------------
+ */
+int chat_deletenpcchat(struct npc_data *nd) {
 	struct chat_data *cd;
 
-	ASSERT(nd, 0);
-	ASSERT((cd = (struct chat_data*)map_id2bl(nd->chat_id)), 0);
+	nullpo_retr(0, nd);
+	nullpo_retr(0, cd = (struct chat_data*)map_id2bl(nd->chat_id));
 
 	chat_npckickall(cd);
 	clif_clearchat(cd, 0);
-	map_delobject(cd->bl.id);
+	map_delobject(cd->bl.id); // freeまでしてくれる
 	nd->chat_id = 0;
 
 	return 0;
 }
 
-int chat_triggerevent(struct chat_data *cd)
-{
-	ASSERT(cd, 0);
+/*==========================================
+ * 規定人数以上でイベントが定義されてるなら実行
+ *------------------------------------------
+ */
+int chat_triggerevent(struct chat_data *cd) {
+	nullpo_retr(0, cd);
 
 	if(cd->users>=cd->trigger && cd->npc_event[0])
 		npc_event_do(cd->npc_event);
@@ -326,9 +364,12 @@ int chat_triggerevent(struct chat_data *cd)
 	return 0;
 }
 
-int chat_enableevent(struct chat_data *cd)
-{
-	ASSERT(cd, 0);
+/*==========================================
+ * イベントの有効化
+ *------------------------------------------
+ */
+int chat_enableevent(struct chat_data *cd) {
+	nullpo_retr(0, cd);
 
 	cd->trigger&=0x7f;
 	chat_triggerevent(cd);
@@ -336,26 +377,36 @@ int chat_enableevent(struct chat_data *cd)
 	return 0;
 }
 
-int chat_disableevent(struct chat_data *cd)
-{
-	ASSERT(cd, 0);
+/*==========================================
+ * イベントの無効化
+ *------------------------------------------
+ */
+int chat_disableevent(struct chat_data *cd) {
+	nullpo_retr(0, cd);
 
-	cd->trigger |= 0x80;
-
-	return 0;
-}
-
-int chat_npckickall(struct chat_data *cd)
-{
-	ASSERT(cd, 0);
-
-	while(cd->users > 0)
-		chat_leavechat(cd->usersd[cd->users - 1]);
+	cd->trigger|=0x80;
 
 	return 0;
 }
 
-int do_final_chat(void)
-{
+/*==========================================
+ * チャットルームから全員蹴り出す
+ *------------------------------------------
+ */
+int chat_npckickall(struct chat_data *cd) {
+	nullpo_retr(0, cd);
+
+	while(cd->users > 0) {
+		chat_leavechat(cd->usersd[cd->users-1]);
+	}
+
+	return 0;
+}
+
+/*==========================================
+ * 終了
+ *------------------------------------------
+ */
+int do_final_chat(void) {
 	return 0;
 }

@@ -12,8 +12,9 @@
 #include "../common/timer.h"
 #include "../common/socket.h"
 #include "../common/db.h"
-#include "../common/debug.h"
+#include "../common/malloc.h"
 #include "../common/utils.h"
+#include "nullpo.h"
 #include "map.h"
 #include "clif.h"
 #include "intif.h"
@@ -90,6 +91,8 @@ int mobdb_checkid(const int id)
  */
 void mob_spawn_dataset(struct mob_data *md, const char *mobname, int class)
 {
+	// nullpo_retv(md); // checked before to call function
+
 	// md->bl.prev = NULL; // already NULL
 	// md->bl.next = NULL; // already NULL
 	if (strcmp(mobname, "--en--") == 0)
@@ -420,7 +423,7 @@ int mob_spawn_guardian(struct map_session_data *sd,char *mapname,
  */
 int mob_exclusion_add(struct mob_data *md,int type,int id)
 {
-	ASSERT(md, 0);
+	nullpo_retr(0, md);
 
 	if(type == 1)
 		md->exclusion_src=id;
@@ -438,8 +441,8 @@ int mob_exclusion_add(struct mob_data *md,int type,int id)
  */
 int mob_exclusion_check(struct mob_data *md,struct map_session_data *sd)
 {
-	ASSERT(sd, 0);
-	ASSERT(md, 0);
+	nullpo_retr(0, sd);
+	nullpo_retr(0, md);
 
 	if(sd->bl.type == BL_PC){
 		if(md->exclusion_src && md->exclusion_src==sd->bl.id)
@@ -518,9 +521,9 @@ int mob_get_equip(int class)
  */
 int mob_can_move(struct mob_data *md)
 {
+	// nullpo_retr(0, md); // Checked before to call function
 	int mode;
-
-	if(!md->mode)
+	if (!md->mode)
 		mode = mob_db[md->class].mode;
 	else
 		mode = md->mode;
@@ -546,7 +549,7 @@ int mob_can_move(struct mob_data *md)
  */
 static int calc_next_walk_step(struct mob_data *md)
 {
-	ASSERT(md, 0);
+	nullpo_retr(0, md);
 
 	if (md->walkpath.path_pos >= md->walkpath.path_len)
 		return -1;
@@ -569,6 +572,8 @@ static void mob_walk(struct mob_data *md, unsigned int tick, int data)
 	static int dirx[8] = {0, -1, -1, -1,  0,  1, 1, 1};
 	static int diry[8] = {1,  1,  0, -1, -1, -1, 0, 1};
 	int x,y,dx,dy;
+
+	// nullpo_retv(md); // Checked before to call function
 
 	md->state.state = MS_IDLE;
 	if (md->walkpath.path_pos >= md->walkpath.path_len || md->walkpath.path_pos != data)
@@ -661,6 +666,8 @@ static void mob_attack(struct mob_data *md, unsigned int tick, int data)
 	struct mob_data *tmd = NULL;
 
 	int mode, race, range, unlock_target = 0;
+
+	// nullpo_retv(md); // Checked before to call function
 
 	md->min_chase = 13;
 	md->state.state = MS_IDLE;
@@ -764,7 +771,8 @@ int mob_stopattacked(struct map_session_data *sd, va_list ap)
 {
 	int id;
 
-	ASSERT(ap, 0);
+	// nullpo_retr(0, sd); // Checked before to call function
+	nullpo_retr(0, ap);
 
 	id = va_arg(ap, int);
 	if (sd->attacktarget == id)
@@ -781,7 +789,7 @@ void mob_changestate(struct mob_data *md, int state, int type)
 {
 	int i;
 
-	ASSERTV(md);
+	nullpo_retv(md);
 
 	if (md->timer != -1) {
 		delete_timer(md->timer, mob_timer);
@@ -899,7 +907,7 @@ static int mob_walktoxy_sub(struct mob_data *md)
 	static int dirx[8] = {0,-1,-1,-1,0,1,1,1};
 	static int diry[8] = {1,1,0,-1,-1,-1,0,1};
 
-	ASSERT(md, 0);
+	nullpo_retr(0, md);
 
 	if (path_search(&wpd,md->bl.m,md->bl.x,md->bl.y,md->to_x,md->to_y,md->state.walk_easy))
 		return 1;
@@ -951,7 +959,7 @@ int mob_walktoxy(struct mob_data *md,int x,int y,int easy)
 {
 	struct walkpath_data wpd;
 
-	ASSERT(md, 0);
+	nullpo_retr(0, md);
 
 	if(md->state.state == MS_WALK && path_search(&wpd,md->bl.m,md->bl.x,md->bl.y,x,y,easy) )
 		return 1;
@@ -1001,7 +1009,7 @@ int mob_setdelayspawn(int id)
 	if (!bl || !bl->type || bl->type != BL_MOB)
 		return -1;
 
-	ASSERT((md = (struct mob_data*)bl), -1);
+	nullpo_retr(-1, md = (struct mob_data*)bl);
 
 	if (!md || md->bl.type != BL_MOB)
 		return -1;
@@ -1043,12 +1051,12 @@ int mob_spawn(int id)
 	struct mob_data *md;
 	struct block_list *bl;
 
-	ASSERT((bl = map_id2bl(id)), -1);
+	nullpo_retr(-1, bl = map_id2bl(id));
 
 	if (!bl || !bl->type || bl->type != BL_MOB)
 		return -1;
 
-	ASSERT((md = (struct mob_data*)bl), -1);
+	nullpo_retr(-1, md = (struct mob_data*)bl);
 
 	if (!md || !md->bl.type || md->bl.type != BL_MOB)
 		return -1;
@@ -1209,7 +1217,7 @@ void mob_stopattack(struct mob_data *md) {
  */
 void mob_stop_walking(struct mob_data *md, int type)
 {
-	ASSERTV(md);
+	nullpo_retv(md);
 
 	if(md->state.state == MS_WALK || md->state.state == MS_IDLE) {
 		int dx = 0, dy = 0;
@@ -1255,8 +1263,8 @@ int mob_can_reach(struct mob_data *md,struct block_list *bl,int range)
 	struct walkpath_data wpd;
 	int i;
 
-	ASSERT(md, 0);
-	ASSERT(bl, 0);
+	nullpo_retr(0, md);
+	nullpo_retr(0, bl);
 
 	dx = abs(bl->x - md->bl.x);
 	dy = abs(bl->y - md->bl.y);
@@ -1340,8 +1348,8 @@ int mob_target(struct mob_data *md,struct block_list *bl,int dist)
 	short *option;
 	int mode,race;
 
-	ASSERT(md, 0);
-	ASSERT(bl, 0);
+	nullpo_retr(0, md);
+	nullpo_retr(0, bl);
 
 	sc_data	= status_get_sc_data(bl);
 	option	= status_get_option(bl);
@@ -1364,10 +1372,8 @@ int mob_target(struct mob_data *md,struct block_list *bl,int dist)
 	if (mode & 0x20 || // Coercion is exerted if it is a Boss monster
 	    (sc_data && sc_data[SC_TRICKDEAD].timer == -1 && sc_data[SC_BASILICA].timer == -1 &&
 	     ((option && !(*option & 0x06)) || race == 4 || race == 6 || mode & 0x100))) {
-		if(bl->type == BL_PC)
-		{
-			ASSERT((sd = (struct map_session_data *)bl), 0);
-
+		if (bl->type == BL_PC) {
+			nullpo_retr(0, sd = (struct map_session_data *)bl);
 			if (sd->invincible_timer != -1 || pc_isinvisible(sd))
 				return 0;
 			if (!(mode & 0x20) && race != 4 && race != 6 && !(mode & 0x100) && sd->state.gangsterparadise)
@@ -1400,8 +1406,8 @@ static int mob_special_ai_sub_hard_activesearch(struct block_list *bl, va_list a
 	struct block_list *tbl;
 	int mode, race, dist, dist2, *pcc;
 
-	ASSERT(bl, 0);
-	ASSERT(ap, 0);
+	nullpo_retr(0, bl);
+	nullpo_retr(0, ap);
 
 	smd = va_arg(ap, struct mob_data *);
 	pcc = va_arg(ap, int *);
@@ -1509,8 +1515,8 @@ static int mob_ai_sub_hard_activesearch(struct block_list *bl, va_list ap)
 	struct block_list *tbl;
 	int mode, race, dist, dist2, *pcc;
 
-	ASSERT(bl, 0);
-	ASSERT(ap, 0);
+	nullpo_retr(0, bl);
+	nullpo_retr(0, ap);
 
 	smd = va_arg(ap, struct mob_data *);
 	pcc = va_arg(ap, int *);
@@ -1580,8 +1586,8 @@ static int mob_ai_sub_hard_lootsearch(struct block_list *bl, va_list ap)
 	struct block_list *tbl;
 	int dist, dist2, *itc;
 
-	ASSERT(bl, 0);
-	ASSERT(ap, 0);
+	nullpo_retr(0, bl);
+	nullpo_retr(0, ap);
 
 	md = va_arg(ap, struct mob_data *);
 	itc = va_arg(ap, int *);
@@ -1627,12 +1633,11 @@ static int mob_ai_sub_hard_linksearch(struct block_list *bl, va_list ap)
 	struct mob_data* md;
 	struct block_list *target;
 
-	ASSERT(bl, 0);
-	ASSERT(ap, 0);
-	ASSERT((md = va_arg(ap, struct mob_data *)), 0);
-	ASSERT((target = va_arg(ap, struct block_list *)), 0);
-
+	nullpo_retr(0, bl);
+	nullpo_retr(0, ap);
 	tmd = (struct mob_data *)bl;
+	nullpo_retr(0, md = va_arg(ap, struct mob_data *));
+	nullpo_retr(0, target = va_arg(ap, struct block_list *));
 
 	// Same family free in a range at a link monster -- It will be made to lock if MOB is
 	if (tmd->class == md->class && tmd->bl.m == md->bl.m && (!tmd->target_id || md->state.targettype == NONE_ATTACKABLE)) {
@@ -1656,7 +1661,7 @@ static int mob_ai_sub_hard_slavemob(struct mob_data *md, unsigned int tick)
 	struct block_list *bl;
 	int mode,race,old_dist;
 
-	ASSERT(md, 0);
+	nullpo_retr(0, md);
 
 	if ((bl = map_id2bl(md->master_id)) == NULL)
 		return 0;
@@ -1776,7 +1781,7 @@ static int mob_ai_sub_hard_slavemob(struct mob_data *md, unsigned int tick)
  */
 static int mob_unlocktarget(struct mob_data *md, unsigned int tick)
 {
-	ASSERT(md, 0);
+	nullpo_retr(0, md);
 
 	md->target_id = 0;
 	md->state.targettype = NONE_ATTACKABLE;
@@ -1795,7 +1800,7 @@ static int mob_randomwalk(struct mob_data *md, unsigned int tick)
 	const int retrycount=20;
 	int speed;
 
-	ASSERT(md, 0);
+	nullpo_retr(0, md);
 
 	speed = status_get_speed(&md->bl);
 	if(DIFF_TICK(md->next_walktime,tick)<0){
@@ -1859,9 +1864,9 @@ static int mob_ai_sub_hard(struct block_list *bl, va_list ap)
 	int attack_type = 0;
 	int mode, race;
 
-	ASSERT(bl, 0);
-	ASSERT(ap, 0);
-	md = (struct mob_data *)bl;
+	nullpo_retr(0, bl);
+	nullpo_retr(0, ap);
+	md = (struct mob_data*)bl;
 
 	tick = va_arg(ap, unsigned int);
 
@@ -2121,7 +2126,8 @@ static int mob_ai_sub_foreachclient(struct map_session_data *sd, va_list ap)
 {
 	unsigned int tick;
 
-	ASSERT(ap, 0);
+	// nullpo_retr(0, sd); // Checked before to call function
+	nullpo_retr(0, ap);
 
 	tick = va_arg(ap, unsigned int);
 	map_foreachinarea(mob_ai_sub_hard, sd->bl.m,
@@ -2147,15 +2153,16 @@ static int mob_ai_hard(int tid, unsigned int tick, int id, int data)
  * Negligent mode MOB AI (PC is not in near)
  *------------------------------------------
  */
-static int mob_ai_sub_lazy(void *key, void *data, va_list app)
+static int mob_ai_sub_lazy(void * key, void * data, va_list app)
 {
 	struct mob_data *md = data;
 	unsigned int tick;
 	va_list ap;
 	
-	ASSERT(md, 0);
-	ASSERT(app, 0);
-	ASSERT((ap = va_arg(app, va_list)), 0);
+	nullpo_retr(0, md);
+	nullpo_retr(0, app);
+	ap = va_arg(app, va_list);
+	nullpo_retr(0, ap);
 
 	if (md->bl.type != BL_MOB)
 		return 0;
@@ -2242,7 +2249,7 @@ static int mob_delay_item_drop(int tid, unsigned int tick, int id, int data) { /
 	struct item temp_item;
 	int flag, drop_flag = 1;
 
-	ASSERT((ditem = (struct delay_item_drop *)id), 0);
+	nullpo_retr(0, ditem = (struct delay_item_drop *)id);
 
 	memset(&temp_item, 0, sizeof(temp_item));
 	temp_item.nameid = ditem->nameid;
@@ -2284,7 +2291,7 @@ static int mob_delay_item_drop2(int tid, unsigned int tick, int id, int data) { 
 	struct delay_item_drop2 *ditem;
 	int flag, drop_flag = 1;
 
-	ASSERT((ditem = (struct delay_item_drop2 *)id), 0);
+	nullpo_retr(0, ditem = (struct delay_item_drop2 *)id);
 
 	if (ditem->first_sd){
 		if (ditem->first_sd->state.autolootloot_flag && // 0: No autoloot, 1: Autoloot (For looted items)
@@ -2319,7 +2326,7 @@ static int mob_delay_item_drop2(int tid, unsigned int tick, int id, int data) { 
  */
 int mob_delete(struct mob_data *md)
 {
-	ASSERT(md, 1);
+	nullpo_retr(1, md);
 
 	if (md->bl.prev == NULL)
 		return 1;
@@ -2339,7 +2346,9 @@ int mob_delete(struct mob_data *md)
 
 void mob_catch_delete(struct mob_data *md, int type)
 {
-	if(md->bl.prev == NULL)
+	// nullpo_retv(md); // checked before to call function
+
+	if (md->bl.prev == NULL)
 		return;
 
 	mob_changestate(md, MS_DEAD, 0);
@@ -2355,7 +2364,7 @@ int mob_timer_delete(int tid, unsigned int tick, int id, int data)
 	struct block_list *bl = map_id2bl(id);
 	struct mob_data *md;
 
-	ASSERT(bl, 0);
+	nullpo_retr(0, bl);
 
 	md = (struct mob_data *)bl;
 
@@ -2375,12 +2384,12 @@ int mob_deleteslave_sub(struct block_list *bl,va_list ap)
 	struct mob_data *md;
 	int id;
 
-	ASSERT(bl, 0);
-	ASSERT(ap, 0);
-	ASSERT((md = (struct mob_data *)bl), 0);
+	nullpo_retr(0, bl);
+	nullpo_retr(0, ap);
+	nullpo_retr(0, md = (struct mob_data *)bl);
 
 	id = va_arg(ap,int);
-	if(md->master_id > 0 && md->master_id == id)
+	if (md->master_id > 0 && md->master_id == id)
 		mob_damage(NULL, md, md->hp, 1);
 
 	return 0;
@@ -2392,7 +2401,7 @@ int mob_deleteslave_sub(struct block_list *bl,va_list ap)
  */
 int mob_deleteslave(struct mob_data *md)
 {
-	ASSERT(md, 0);
+	nullpo_retr(0, md);
 
 	map_foreachinarea(mob_deleteslave_sub, md->bl.m,
 	                  0, 0, map[md->bl.m].xs, map[md->bl.m].ys,
@@ -2424,7 +2433,7 @@ int mob_damage(struct block_list *src, struct mob_data *md, int damage, int type
 	int drop_rate;
 	int race;
 
-	ASSERT(md, 0);
+	nullpo_retr(0, md);
 
 	max_hp = status_get_max_hp(&md->bl);
 
@@ -2493,7 +2502,7 @@ int mob_damage(struct block_list *src, struct mob_data *md, int damage, int type
 		}
 		if (src && src->type == BL_PET && battle_config.pet_attack_exp_to_master == 1) {
 			struct pet_data *pd = (struct pet_data *)src;
-			ASSERT(pd, 0);
+			nullpo_retr(0, pd);
 			for(i = 0, minpos = 0, mindmg = 0x7fffffff; i < DAMAGELOG_SIZE; i++) {
 				if (md->dmglog[i].id == pd->msd->status.char_id) // char_id
 					break;
@@ -2515,7 +2524,7 @@ int mob_damage(struct block_list *src, struct mob_data *md, int damage, int type
 		if (src && src->type == BL_MOB && ((struct mob_data*)src)->state.special_mob_ai) { // 0: Nothing, 1: Cannibalize, 2-3: Spheremine
 			struct mob_data *md2 = (struct mob_data *)src;
 			struct map_session_data *sdmaster;
-			ASSERT(md2, 0);
+			nullpo_retr(0, md2);
 			sdmaster = map_id2sd(md2->master_id);
 			if (sdmaster && sdmaster->state.auth) {
 				for(i = 0, minpos = 0, mindmg = 0x7fffffff; i < DAMAGELOG_SIZE; i++) {
@@ -3175,13 +3184,17 @@ int mob_damage(struct block_list *src, struct mob_data *md, int damage, int type
 	return 0;
 }
 
+/*==========================================
+ *
+ *------------------------------------------
+ */
 int mob_class_change(struct mob_data *md, int *value, int count)
 {
 	unsigned int skill_delay;
 	int i, hp_rate, max_hp, class;
 
-	ASSERT(md, 0);
-	ASSERT(value, 0);
+	nullpo_retr(0, md);
+	nullpo_retr(0, value);
 
 	if (md->bl.prev == NULL) return 0;
 	if (count < 1) return 0;
@@ -3254,7 +3267,7 @@ int mob_heal(struct mob_data *md, int heal)
 {
 	int max_hp;
 
-	ASSERT(md, 0);
+	nullpo_retr(0, md);
 
 	max_hp = status_get_max_hp(&md->bl);
 
@@ -3358,7 +3371,7 @@ int mob_warp(struct mob_data *md, int m, int x, int y, int type)
 {
 	int i, xs = 0, ys = 0, bx = x, by = y;
 
-	ASSERT(md, 0);
+	nullpo_retr(0, md);
 
 	if (md->bl.prev == NULL)
 		return 0;
@@ -3425,19 +3438,19 @@ int mob_warp(struct mob_data *md, int m, int x, int y, int type)
  * mob_countslave_sub Function
  *------------------------------------------
  */
-int mob_countslave_sub(struct block_list *bl, va_list ap)
+int mob_countslave_sub(struct block_list *bl,va_list ap)
 {
 	int id,*c;
 	struct mob_data *md;
 
-	id = va_arg(ap, int);
+	id=va_arg(ap,int);
 
-	ASSERT(bl, 0);
-	ASSERT(ap, 0);
-	ASSERT((c = va_arg(ap, int *)), 0);
-	ASSERT((md = (struct mob_data *)bl), 0);
+	nullpo_retr(0, bl);
+	nullpo_retr(0, ap);
+	nullpo_retr(0, c=va_arg(ap,int *));
+	nullpo_retr(0, md = (struct mob_data *)bl);
 
-	if(md->master_id == id)
+	if (md->master_id == id)
 		(*c)++;
 
 	return 0;
@@ -3451,7 +3464,7 @@ int mob_countslave(struct mob_data *md)
 {
 	int c = 0;
 
-	ASSERT(md, 0);
+	nullpo_retr(0, md);
 
 	map_foreachinarea(mob_countslave_sub, md->bl.m,
 	                  0, 0, map[md->bl.m].xs - 1, map[md->bl.m].ys - 1,
@@ -3471,8 +3484,8 @@ int mob_summonslave(struct mob_data *md2, int *value, int amount, int flag)
 	char monster_name[25];
 	char * name_pos;
 
-	ASSERT(md2, 0);
-	ASSERT(value, 0);
+	nullpo_retr(0, md2);
+	nullpo_retr(0, value);
 
 	bx = md2->bl.x;
 	by = md2->bl.y;
@@ -3559,20 +3572,18 @@ int mob_summonslave(struct mob_data *md2, int *value, int amount, int flag)
  * mob_counttargeted_sub Function
  *------------------------------------------
  */
-static int mob_counttargeted_sub(struct block_list *bl, va_list ap)
+static int mob_counttargeted_sub(struct block_list *bl,va_list ap)
 {
-	int id, *c, target_lv;
+	int id,*c,target_lv;
 	struct block_list *src;
 
-	id = va_arg(ap, int);
+	id=va_arg(ap,int);
+	nullpo_retr(0, bl);
+	nullpo_retr(0, ap);
+	nullpo_retr(0, c=va_arg(ap,int *));
 
-	ASSERT(bl, 0);
-	ASSERT(ap, 0);
-	ASSERT((c = va_arg(ap, int *)), 0);
-
-	src = va_arg(ap, struct block_list *);
-	target_lv = va_arg(ap, int);
-
+	src=va_arg(ap,struct block_list *);
+	target_lv=va_arg(ap,int);
 	if (id == bl->id || (src && id == src->id)) return 0;
 	if (bl->type == BL_PC) {
 		struct map_session_data *sd = (struct map_session_data *)bl;
@@ -3601,7 +3612,7 @@ int mob_counttargeted(struct mob_data *md, struct block_list *src, int target_lv
 {
 	int c = 0;
 
-	// ASSERT(md, 0); // Checked before to call function
+	// nullpo_retr(0, md); // Checked before to call function
 
 	map_foreachinarea(mob_counttargeted_sub, md->bl.m,
 	                  md->bl.x - AREA_SIZE, md->bl.y - AREA_SIZE,
@@ -3734,7 +3745,7 @@ int mobskill_castend_pos(int tid, unsigned int tick, int id, int data)
 	if ((bl = map_id2bl(id)) == NULL)
 		return 0;
 
-	ASSERT((md = (struct mob_data *)bl), 0);
+	nullpo_retr(0, md = (struct mob_data *)bl);
 
 	if (md->bl.type != BL_MOB || md->bl.prev == NULL)
 		return 0;
@@ -3807,8 +3818,8 @@ int mobskill_use_id(struct mob_data *md, struct block_list *target, int skill_id
 	struct mob_skill *ms;
 	int skill_id, skill_lv, forcecast = 0;
 
-	ASSERT(md, 0);
-	ASSERT((ms = &mob_db[md->class].skill[skill_idx]), 0);
+	nullpo_retr(0, md);
+	nullpo_retr(0, ms = &mob_db[md->class].skill[skill_idx]);
 
 	if(target == NULL && (target = map_id2bl(md->target_id)) == NULL)
 		return 0;
@@ -3818,6 +3829,9 @@ int mobskill_use_id(struct mob_data *md, struct block_list *target, int skill_id
 
 	skill_id = ms->skill_id;
 	skill_lv = ms->skill_lv;
+
+	if (md->hp <= 0)
+		return 0;
 
 	if (md->sc_count)
 	{
@@ -3937,8 +3951,8 @@ int mobskill_use_pos( struct mob_data *md,
 	struct block_list bl;
 	int skill_id, skill_lv;
 
-	ASSERT(md, 0);
-	ASSERT((ms = &mob_db[md->class].skill[skill_idx]), 0);
+	nullpo_retr(0, md);
+	nullpo_retr(0, ms = &mob_db[md->class].skill[skill_idx]);
 
 	if (md->bl.prev == NULL)
 		return 0;
@@ -3946,11 +3960,16 @@ int mobskill_use_pos( struct mob_data *md,
 	skill_id = ms->skill_id;
 	skill_lv = ms->skill_lv;
 
+	if (md->hp <= 0)
+		return 0;
+
 	if (md->sc_count)
 	{
 		if (md->opt1 > 0 || md->sc_data[SC_SILENCE].timer != -1 ||
 		    (!(mob_db[md->class].mode & 0x20) && md->sc_data[SC_ROKISWEIL].timer != -1) ||
 		    md->sc_data[SC_STEELBODY].timer != -1)
+			return 0;
+		if (md->sc_data[SC_LANDPROTECTOR].timer != -1 && (md->skillid == AL_TELEPORT || md->skillid == AL_WARP))
 			return 0;
 		if (md->sc_data[SC_AUTOCOUNTER].timer != -1 && md->skillid != KN_AUTOCOUNTER)
 			return 0;
@@ -4029,9 +4048,9 @@ int mob_getfriendhpltmaxrate_sub(struct block_list *bl,va_list ap)
 	int rate;
 	struct mob_data **fr, *md, *mmd;
 
-	ASSERT(bl, 0);
-	ASSERT(ap, 0);
-	ASSERT((mmd = va_arg(ap,struct mob_data *)), 0);
+	nullpo_retr(0, bl);
+	nullpo_retr(0, ap);
+	nullpo_retr(0, mmd = va_arg(ap,struct mob_data *));
 
 	md = (struct mob_data *)bl;
 
@@ -4057,7 +4076,7 @@ struct mob_data *mob_getfriendhpltmaxrate(struct mob_data *md,int rate)
 	struct mob_data *fr = NULL;
 	const int r = 8;
 
-	ASSERT(md, NULL);
+	nullpo_retr(NULL, md);
 
 	map_foreachinarea(mob_getfriendhpltmaxrate_sub, md->bl.m,
 	                  md->bl.x - r ,md->bl.y - r, md->bl.x + r, md->bl.y + r,
@@ -4091,10 +4110,10 @@ int mob_getfriendstatus_sub(struct block_list *bl,va_list ap)
 	struct mob_data **fr, *md, *mmd;
 	int flag=0;
 
-	ASSERT(bl, 0);
-	ASSERT(ap, 0);
-	ASSERT((md = (struct mob_data *)bl), 0);
-	ASSERT((mmd = va_arg(ap, struct mob_data *)), 0);
+	nullpo_retr(0, bl);
+	nullpo_retr(0, ap);
+	nullpo_retr(0, md=(struct mob_data *)bl);
+	nullpo_retr(0, mmd=va_arg(ap,struct mob_data *));
 
 	if(mmd->bl.id == bl->id)
 		return 0;
@@ -4126,7 +4145,7 @@ struct mob_data *mob_getfriendstatus(struct mob_data *md, int cond1, int cond2)
 	struct mob_data *fr = NULL;
 	const int r = 8;
 
-	ASSERT(md, 0);
+	nullpo_retr(0, md);
 
 	map_foreachinarea(mob_getfriendstatus_sub, md->bl.m,
 	                  md->bl.x - r ,md->bl.y - r, md->bl.x + r, md->bl.y + r,
@@ -4145,8 +4164,8 @@ int mobskill_use(struct mob_data *md,unsigned int tick,int event)
 	// struct block_list *target=NULL;
 	int i;
 
-	ASSERT(md, 0);
-	ASSERT((ms = mob_db[md->class].skill), 0);
+	nullpo_retr(0, md);
+	nullpo_retr(0, ms = mob_db[md->class].skill);
 
 	if (battle_config.mob_skill_use == 0 || md->skilltimer != -1)
 		return 0;
@@ -4339,7 +4358,7 @@ int mobskill_use(struct mob_data *md,unsigned int tick,int event)
  */
 int mobskill_event(struct mob_data *md, int flag)
 {
-	ASSERT(md, 0);
+	nullpo_retr(0, md);
 
 	if (flag == -1 && mobskill_use(md, gettick_cache, MSC_CASTTARGETED))
 		return 1;
@@ -4359,8 +4378,8 @@ int mob_gvmobcheck(struct map_session_data *sd, struct block_list *bl)
 {
 	struct mob_data *md = NULL;
 
-	ASSERT(sd, 0);
-	ASSERT(bl, 0);
+	nullpo_retr(0, sd);
+	nullpo_retr(0, bl);
 
 	if (bl->type == BL_MOB && (md = (struct mob_data *)bl) && (md->class <= 1288 && md->class >= 1285)) {
 		// 1288 = Emperium, 1287 = guardian, 1286 = guardian, 1285 = guardian
@@ -4388,7 +4407,7 @@ int mob_gvmobcheck(struct map_session_data *sd, struct block_list *bl)
 {
 	int inf;
 
-	ASSERT(md, 0);
+	nullpo_retr(0, md);
 
 	if (md->skilltimer != -1) {
 		if ((inf = skill_get_inf(md->skillid)) == 2 || inf == 32)

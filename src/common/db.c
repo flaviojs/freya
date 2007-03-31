@@ -9,7 +9,7 @@
 #include <string.h>
 
 #include "db.h"
-#include "debug.h"
+#include "malloc.h"
 
 #ifdef MEMWATCH
 #include "memwatch.h"

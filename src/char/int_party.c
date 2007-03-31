@@ -14,7 +14,7 @@
 #include "../common/socket.h"
 #include "../common/db.h"
 #include "../common/lock.h"
-#include "../common/debug.h"
+#include "../common/malloc.h"
 
 char party_txt[1024] = "save/party.txt";
 

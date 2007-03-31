@@ -10,10 +10,11 @@
 #include "../common/db.h"
 #include "../common/timer.h"
 #include "../common/socket.h"
-#include "../common/debug.h"
+#include "../common/malloc.h"
 #include "../common/utils.h"
 #include "guild.h"
 #include "storage.h"
+#include "nullpo.h"
 #include "battle.h"
 #include "npc.h"
 #include "pc.h"
@@ -276,7 +277,7 @@ struct map_session_data *guild_getavailablesd(struct guild *g)
 {
 	int i;
 
-	ASSERT(g, NULL);
+	nullpo_retr(NULL, g);
 
 	for(i = 0; i < g->max_member; i++)
 		if (g->member[i].sd != NULL)
@@ -304,7 +305,7 @@ int guild_getposition(struct map_session_data *sd, struct guild *g)
 {
 	int i;
 
-	ASSERT(sd, -1);
+	nullpo_retr(-1, sd);
 
 	if (g == NULL && (g = guild_search(sd->status.guild_id)) == NULL)
 		return -1;
@@ -319,6 +320,8 @@ int guild_getposition(struct map_session_data *sd, struct guild *g)
 
 void guild_makemember(struct guild_member *m, struct map_session_data *sd)
 {
+//	nullpo_retv(sd); // checked before to call function
+
 	memset(m, 0, sizeof(struct guild_member));
 	m->account_id = sd->status.account_id;
 	m->char_id    = sd->status.char_id;
@@ -338,7 +341,7 @@ void guild_makemember(struct guild_member *m, struct map_session_data *sd)
 
 int guild_check_conflict(struct map_session_data *sd)
 {
-	ASSERT(sd, 0);
+	nullpo_retr(0, sd);
 
 	intif_guild_checkconflict(sd->status.guild_id, sd->status.account_id, sd->status.char_id);
 
@@ -351,10 +354,10 @@ int guild_payexp_timer_sub(void *key, void *data, va_list ap)
 	struct guild_expcache *c;
 	struct guild *g;
 
-	ASSERT(ap, 0);
-	ASSERT((c = (struct guild_expcache *)data), 0);
-	ASSERT((dellist = va_arg(ap, int *)), 0);
-	ASSERT((delp = va_arg(ap, int *)), 0);
+	nullpo_retr(0, ap);
+	nullpo_retr(0, c = (struct guild_expcache *)data);
+	nullpo_retr(0, dellist = va_arg(ap, int *));
+	nullpo_retr(0, delp = va_arg(ap, int *));
 
 	if (*delp >= GUILD_PAYEXP_LIST || (g = guild_search(c->guild_id)) == NULL)
 		return 0;
@@ -387,9 +390,13 @@ int guild_payexp_timer(int tid,unsigned int tick,int id,int data)
 	return 0;
 }
 
+//------------------------------------------------------------------------
+
 void guild_create(struct map_session_data *sd, char *guildname)
 {
 	char guild_name[25]; // 24 + NULL
+
+//	nullpo_retv(sd); // checked before to call function
 
 	if (sd->status.guild_id == 0)
 	{
@@ -486,7 +493,7 @@ int guild_check_member(const struct guild *g)
 	int i;
 	struct map_session_data *sd;
 
-	ASSERT(g, 0);
+	nullpo_retr(0, g);
 
 	for(i = 0; i < fd_max; i++)
 	{
@@ -538,7 +545,7 @@ int guild_recv_info(struct guild *sg) // 0x3831 <size>.W (<guild_id>.L | <struct
 	int i, bm, m;
 	struct eventlist *ev,*ev2;
 
-	ASSERT(sg, 0);
+	nullpo_retr(0, sg);
 
 	if ((g = numdb_search(guild_db, sg->guild_id)) == NULL)
 	{
@@ -616,6 +623,8 @@ void guild_invite(struct map_session_data *sd, int account_id)
 	struct guild *g;
 	int i;
 
+//	nullpo_retv(sd); // Checked before to call function
+
 	if (map[sd->bl.m].flag.gvg) {	// Cannot leave/join guild on GvG maps
 		clif_guild_inviteack(sd, 1); // R 0169 <type>.B (Types: 0: in an other guild, 1: it was denied, 2: join, 3: guild has no more available place)
 		return;
@@ -669,7 +678,8 @@ void guild_reply_invite(struct map_session_data *sd, int guild_id, int flag)
 {
 	struct map_session_data *tsd;
 
-	ASSERTV((tsd = map_id2sd(sd->guild_invite_account)));
+//	nullpo_retv(sd); // checked before to call function
+	nullpo_retv(tsd = map_id2sd(sd->guild_invite_account));
 
 	if (sd->guild_invite != guild_id)
 		return;
@@ -757,6 +767,8 @@ void guild_leave(struct map_session_data *sd, const char *mes) // S 0159 <guildI
 	struct guild *g;
 	int i;
 
+//	nullpo_retv(sd); // checked before to call function
+
 	if (map[sd->bl.m].flag.gvg)	// cannot leave/join guild on GvG maps
 		return;
 
@@ -782,6 +794,8 @@ void guild_explusion(struct map_session_data *sd, int guild_id, int account_id, 
 {
 	struct guild *g;
 	int i, ps;
+
+//	nullpo_retv(sd); // checked before to call function
 
 	if (sd->status.guild_id != guild_id)
 		return;
@@ -857,7 +871,7 @@ int guild_send_memberinfoshort(struct map_session_data *sd,int online)
 {
 	struct guild *g;
 
-	ASSERT(sd, 0);
+	nullpo_retr(0, sd);
 
 	if(sd->status.guild_id<=0)
 		return 0;
@@ -949,6 +963,11 @@ int guild_recv_memberinfoshort(int guild_id,int account_id,int char_id,int onlin
 
 void guild_send_message(struct map_session_data *sd, char *mes, int len)
 {
+//	nullpo_retv(sd); // checked before to call function
+
+//	if (sd->status.guild_id == 0) // checked before to call function
+//		return;
+
 	// Send message (if multi-servers)
 	if (!map_is_alone)
 		intif_guild_message(sd->status.guild_id, sd->status.account_id, mes, len);
@@ -979,7 +998,7 @@ void guild_change_memberposition(int guild_id, int account_id, int char_id, int 
 
 int guild_memberposition_changed(struct guild *g,int idx,int pos)
 {
-	ASSERT(g, 0);
+	nullpo_retr(0, g);
 
 	g->member[idx].position=pos;
 	clif_guild_memberpositionchanged(g,idx);
@@ -990,6 +1009,8 @@ int guild_memberposition_changed(struct guild *g,int idx,int pos)
 void guild_change_position(struct map_session_data *sd, int idx, int mode, int exp_mode, const char *name)
 {
 	struct guild_position p;
+
+//	nullpo_retv(sd); // checked before to call function
 
 	memset(&p, 0, sizeof(struct guild_position));
 
@@ -1022,6 +1043,8 @@ int guild_position_changed(int guild_id, int idx, struct guild_position *p)
 
 void guild_change_notice(struct map_session_data *sd, int guild_id, const char *mes1, const char *mes2)
 {
+//	nullpo_retv(sd); // checked before to call function
+
 	if (guild_id != sd->status.guild_id)
 		return;
 
@@ -1056,6 +1079,8 @@ int guild_notice_changed(int guild_id,const char *mes1,const char *mes2)
 void guild_change_emblem(struct map_session_data *sd, unsigned short len, const char *data)
 {
 	struct guild *g;
+
+//	nullpo_retv(sd); // checked before to call function
 
 //	if (len < 0 || len > 2000) // unsigned short (cannot be negative)
 	if (len > 2000)
@@ -1104,7 +1129,7 @@ int guild_payexp(struct map_session_data *sd, int guild_exp)
 	struct guild_expcache *c;
 	int per, exp2;
 
-	ASSERT(sd, 0);
+	nullpo_retr(0, sd);
 
 	if (sd->status.guild_id == 0 || (g = guild_search(sd->status.guild_id)) == NULL)
 		return 0;
@@ -1137,7 +1162,7 @@ int guild_getexp(struct map_session_data *sd, int guild_exp)
 	struct guild *g;
 	struct guild_expcache *c;
 
-	ASSERT(sd, 0);
+	nullpo_retr(0, sd);
 
 	if (sd->status.guild_id == 0 || (g = guild_search(sd->status.guild_id)) == NULL)
 		return 0;
@@ -1164,7 +1189,7 @@ void guild_skillup(struct map_session_data *sd, short skill_num, int flag)
 	struct guild *g;
 	short idx = skill_num - GD_SKILLBASE;
 
-	ASSERTV(sd);
+	nullpo_retv(sd);
 
 	if (idx < 0 || idx >= MAX_GUILDSKILL)
 		return;
@@ -1208,7 +1233,7 @@ int guild_get_alliance_count(struct guild *g,int flag)
 {
 	int i,c;
 
-	ASSERT(g, 0);
+	nullpo_retr(0, g);
 
 	for(i=c=0;i<MAX_GUILDALLIANCE;i++)
 	{
@@ -1225,6 +1250,8 @@ void guild_reqalliance(struct map_session_data *sd, int account_id)
 	struct map_session_data *tsd;
 	struct guild *g[2];
 	int i;
+
+//	nullpo_retv(sd); // checked before to call function
 
 	if (sd->status.guild_id <= 0)
 		return;
@@ -1276,7 +1303,8 @@ void guild_reply_reqalliance(struct map_session_data *sd, int account_id, int fl
 {
 	struct map_session_data *tsd;
 
-	ASSERTV((tsd = map_id2sd(account_id)));
+//	nullpo_retv(sd); // checked before to call function
+	nullpo_retv(tsd = map_id2sd(account_id));
 
 	if (sd->guild_alliance != tsd->status.guild_id)
 		return;
@@ -1322,8 +1350,9 @@ void guild_reply_reqalliance(struct map_session_data *sd, int account_id, int fl
 	return;
 }
 
-void guild_delalliance(struct map_session_data *sd, int guild_id, int flag)
-{
+void guild_delalliance(struct map_session_data *sd, int guild_id, int flag) {
+//	nullpo_retv(sd); // checked before to call function
+
 	if (agit_flag)
 	{
 		clif_displaymessage(sd->fd, msg_txt(536)); // Alliances cannot be broken during Guild Wars!
@@ -1340,6 +1369,8 @@ void guild_opposition(struct map_session_data *sd, int char_id)
 	struct map_session_data *tsd;
 	struct guild *g;
 	int i;
+
+//	nullpo_retv(sd); // checked before to call function
 
 	g = guild_search(sd->status.guild_id);
 	if (g == NULL)
@@ -1466,7 +1497,7 @@ int guild_broken_sub(void *key,void *data,va_list ap)
 	int i,j;
 	struct map_session_data *sd=NULL;
 
-	ASSERT(g, 0);
+	nullpo_retr(0, g);
 
 	for(i=0;i<MAX_GUILDALLIANCE;i++)
 	{
@@ -1516,6 +1547,8 @@ void guild_break(struct map_session_data *sd, char *name)
 {
 	struct guild *g;
 	int i;
+
+//	nullpo_retv(sd); // checked before to call function
 
 if ((g = guild_search(sd->status.guild_id)) == NULL)
     return;
@@ -1668,7 +1701,7 @@ int guild_castlealldataload(int len,struct guild_castle *gc)
 	int i;
 	int n = (len - 4) / sizeof(struct guild_castle), ev = -1;
 
-	ASSERT(gc, 0);
+	nullpo_retr(0, gc);
 
 //	// if first loading
 //	/* char_init_done was removed as no longer used [MagicalTux] */
@@ -1760,7 +1793,7 @@ int guild_agit_break(struct mob_data *md) // Run One NPC_Event[OnAgitBreak]
 {
 	char *evname;
 
-	ASSERT(md, 0);
+	nullpo_retr(0, md);
 
 	CALLOC(evname, char, strlen(md->npc_event) + 1); // + NULL
 
@@ -1801,7 +1834,7 @@ int guild_isallied(struct guild *g, struct guild_castle *gc)
 {
 	int i;
 
-	ASSERT(g, 0);
+	nullpo_retr(0, g);
 
 	if(g->guild_id == gc->guild_id)
 		return 1;

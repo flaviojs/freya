@@ -24,7 +24,7 @@
 #include "int_storage.h"
 #include "int_pet.h"
 #include "../common/lock.h"
-#include "../common/debug.h"
+#include "../common/malloc.h"
 
 
 #define WISDATA_TTL (45*1000) // Existence time of Wisp/page data (45 seconds) // Wisƒf[ƒ^‚Ì¶‘¶ŠÔ(60•b)
