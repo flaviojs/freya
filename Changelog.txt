@@ -11,6 +11,7 @@
 Date	Added
 
 03/30/2007
+	* Improved: Further improved status change system, down to 255 status changes (-35 mb of RAM) [Tsuyuki]
 	* Changed: Lowered max status change from 350 to 300 (-40 mb of RAM) [Tsuyuki]
 	* Changed: Lowered max monster skill from 50 to 35 (-10 mb of RAM) [Tsuyuki]
 	* Changed: Lowered max level to 99 from 255 (Official value) [Tsuyuki]
