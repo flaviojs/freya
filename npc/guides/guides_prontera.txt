@@ -3,20 +3,21 @@
 //===== By: ==================================================
 //= kobra_k88
 //===== Current Version: =====================================
-//= 1.1
+//= 1.2
 //===== Compatible With: =====================================
-//= eAthena  0.5.2 +
+//= Freya
 //===== Description: =========================================
 //=
 //===== Additional Comments: =================================
 //= Fully working
-//= v1.1 Now using duplicate command.
+//= 1.1 Now using duplicate command.
+//= 1.2 Removed some duplicates [Tsuyuki]
 //============================================================
 
 
-
-// Center ---------------------------------------------------------
+// Center
 prontera.gat,154,187,4	script	Guide#1::Guide	105,{
+
 	cutin "prt_soldier",2;
 	mes "[Prontera Soldier]";
 	mes "Welcome to Prontera, the capital city of Rune-Midgard Kingdom.";
@@ -166,39 +167,14 @@ M_Menu:
 		close;
 }
 
-// East ----------------------------------------------------
+// East
 prontera.gat,282,208,2	duplicate(Guide)	Guide#2	105
-//West --------------------------------------------------
+
+// West
 prontera.gat,29,200,6	duplicate(Guide)	Guide#3	105
-// South -----------------------------------------------------
+
+// South
 prontera.gat,160,29,0	duplicate(Guide)	Guide#4	105
-// North -----------------------------------------------
+
+// North
 prontera.gat,151,330,4	duplicate(Guide)	Guide#5	105
-
-
-// Guard -----------------------------------------------------
-prontera.gat,160,330,4	script	Guard#1::Guard	105,{
-	mes "Welcome to Prontera.";
-	close;
-}
-
-prontera.gat,223,99,1	duplicate(Guard)	Guard#2	105
-prontera.gat,229,104,1	duplicate(Guard)	Guard#3	105
-prontera.gat,47,339,5	duplicate(Guard)	Guard#4	105
-prontera.gat,52,344,5	duplicate(Guard)	Guard#5	105
-
-
-//---------------------------------------------------------------------------------------- Prontera Maze ----------------------------------------------------------------------------------\\
-prt_maze02.gat,100,69,4	script	Soldier	105,{
-	mes "[Soldier]";
-	mes "Yo yo, you'd be better not to go in there. It has rumored there is a Demon living in the forest.";
-	mes "Of course it is just a rumor because no one see the people turning back from the palce.";
-	mes "hmmm... it's up to you to go in or leave.";
-	close;
-}
-prt_maze02.gat,110,69,4	script	Soldier	105,{
-	mes "[Soldier]";
-	mes "Sigh... the last guy entered this place haven't come back either. He didn't listen to me and went in to gather herbs or something like that...";
-	mes "He was a really stupid, if I were him, I wouldn't give up my life just for those lame herbs or something.";
-	close;
-}

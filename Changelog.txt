@@ -11,6 +11,7 @@
 Date	Added
 
 03/30/2007
+	* Removed: Some duplicate Prontera NPCs [Tsuyuki]
 	* Fixed: Added a missing slot to Angel's Kiss [Tsuyuki]
 	* Fixed: Added the Valkyrie equipment set's secret bonus [Tsuyuki]
 	* Fixed: Typo 'Iceicle' -> 'Icicle' [Tsuyuki]
