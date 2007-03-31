@@ -20,7 +20,7 @@
 #define LIFETIME_FLOORITEM 60
 #define DAMAGELOG_SIZE 30
 #define LOOTITEM_SIZE 10
-#define MAX_SKILL_LEVEL 100
+#define MAX_SKILL_LEVEL 11
 #define MAX_STATUSCHANGE 350
 #define SC_COMMON_MIN 0
 #define SC_COMMON_MAX 10
@@ -29,12 +29,12 @@
 #define MAX_SKILLUNITGROUPTICKSET 32
 #define MAX_SKILLTIMERSKILL 32
 #define MAX_MOBSKILLTIMERSKILL 10
-#define MAX_MOBSKILL 50
+#define MAX_MOBSKILL 35
 #define MAX_EVENTQUEUE 2
 #define MAX_EVENTTIMER 32
 #define NATURAL_HEAL_INTERVAL 500
 #define MAX_FLOORITEM 500000
-#define MAX_LEVEL 255
+#define MAX_LEVEL 99
 #define MAX_WALKPATH 32 // previously 48
 //#define MAX_DROP_PER_MAP 48 // -> now, dynamic
 #define MAX_IGNORE_LIST 1000 // now it's used in dynamic, but maximum is to send all names in 1 packet -> (32768/24) = 1365 ->1000

@@ -11,6 +11,9 @@
 Date	Added
 
 03/30/2007
+	* Changed: Lowered max monster skill from 50 to 35 (-10 mb of RAM) [Tsuyuki]
+	* Changed: Lowered max level to 99 from 255 (Official value) [Tsuyuki]
+	* Changed: Lowered max skill level to 11 from 99 [Tsuyuki]
 	* Removed: Some duplicate Prontera NPCs [Tsuyuki]
 	* Fixed: Added a missing slot to Angel's Kiss [Tsuyuki]
 	* Fixed: Added the Valkyrie equipment set's secret bonus [Tsuyuki]
