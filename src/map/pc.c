@@ -3368,6 +3368,7 @@ int pc_isUseitem(struct map_session_data *sd, int n)
 			break;
 		case JOB_CRUSADER2:
 			s_class = JOB_CRUSADER;
+			break;
 		case JOB_STAR_GLADIATOR2:
 			s_class = JOB_STAR_GLADIATOR;
 			break;

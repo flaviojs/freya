@@ -11,6 +11,7 @@
 Date	Added
 
 03/30/2007
+	* Fixed: Issue with Peco Paladin and item restrictions (Thanks to galaxy) [Tsuyuki]
 	* Reverted: All of Harbin's recent memory management changes (Fixes memory corruption) [Tsuyuki]
 	* Fixed: Mobs will not activate any skills if they die now (Fixes teleporting drops) [Tsuyuki]
 	* Fixed: Mobs will not level up if they die now (Fixes insane Constants in Kiel Hyre [Tsuyuki]
