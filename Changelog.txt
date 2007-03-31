@@ -11,8 +11,11 @@
 Date	Added
 
 03/30/2007
+	* Fixed: Added a missing slot to Angel's Kiss [Tsuyuki]
+	* Fixed: Added the Valkyrie equipment set's secret bonus [Tsuyuki]
+	* Fixed: Typo 'Iceicle' -> 'Icicle' [Tsuyuki]
 	* Reverted: packet version to 7 [Latios]
-		packet version 8 cause some problems : http://www.ro-freya.net/forum/index.php?showtopic=790
+	 - packet version 8 cause some problems : http://www.ro-freya.net/forum/index.php?showtopic=790
 
 03/29/2007
 	* Removed: malloc.h [Harbin]

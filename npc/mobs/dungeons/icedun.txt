@@ -26,7 +26,7 @@ ice_dun02.gat,0,0,0,0	monster	Snowier	1775,60,0,0,0
 ice_dun02.gat,0,0,0,0	monster	Gazeti	1778,20,0,0,0
 ice_dun02.gat,0,0,0,0	monster	Shiroma	1776,40,0,0,0
 ice_dun02.gat,0,0,0,0	monster	Ice Titan	1777,10,0,0,0
-ice_dun02.gat,0,0,0,0	monster	Iceicle	1789,10,0,0,0
+ice_dun02.gat,0,0,0,0	monster	Icicle	1789,10,0,0,0
 
 //==================================================
 // ice_dun03 - Ice Cave
@@ -35,7 +35,7 @@ ice_dun03.gat,0,0,0,0	monster	Ice Titan	1777,50,0,0,0
 ice_dun03.gat,0,0,0,0	monster	Snowier	1775,20,0,0,0
 ice_dun03.gat,0,0,0,0	monster	Shiroma	1776,20,0,0,0
 ice_dun03.gat,0,0,0,0	monster	Gazeti	1778,30,0,0,0
-ice_dun03.gat,0,0,0,0	monster	Iceicle	1789,10,0,0,0
+ice_dun03.gat,0,0,0,0	monster	Icicle	1789,10,0,0,0
 ice_dun03.gat,0,0,0,0	monster	Ktullanux	1779,1,39600000,19800000,1
 
 //==================================================
