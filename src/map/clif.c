@@ -58,16 +58,16 @@
 #define STATE_BLIND 0x10
 
 #ifdef ANTIBOT_SYSTEM
-int fake_mob_list[] = { // set here mobs that do not sound when they don't move
-	1001, // scorpion
-	1002, // poring
-	1007, // fabre
-	1031, // poporing
-	1022  // werewolf
+int fake_mob_list[] = { // Set here mobs that do not sound when they don't move
+	1001, // Scorpion
+	1002, // Poring
+	1007, // Fabre
+	1031, // Poporing
+	1022  // Werewolf
 };
 #endif
 
-#define MAX_PACKET_DB   0x325
+#define MAX_PACKET_DB   0x300
 #define MAX_PACKET_VERSION 16
 #undef PACKETVER
 #define PACKETVER           6 //default protocol version
@@ -114,27 +114,25 @@ static const int packet_len_table[MAX_PACKET_DB] = {
    -1, -1, 20, 10, 32,  9, 34, 14,   2,  6, 48, 56, -1,  4,  5, 10,
 //#0x200
    26, -1, 26, 10, 18, 26, 11, 34,  14, 36, 10,  0,  0, -1, 32,  10,
-    0,  0,  0,  0,  0,  0,  0,  0,   0,282,282,  0,  0,  0,  0,  0,
-    0,  0,  0,  0,  0,  0,282,  0,   0, 15, 58, 57, 64,  0,  0,  0,
-    0,  0,  0,  0,  0,  0,  0,  0, 282,  0,  0,  0,  0,  0,  0,  0,
+   22,  0, 26, 26, 42,  6,  6,  2,   2,282,282, 10, 10,  6,  6,  66,
+//#0x220
+   10, -1,  6,  8, 10,  2,282, 18,  18, 15, 58, 57, 64,  5, 71,  5,
+   12, 26,  9, 11,  6, -1, 10,  2, 282, 11,  4, 36,  6,  6,  8,  2,
 //#0x240
-    0,  0,  0,  0,  0,  0,  0,  0,   0,  0,  0,  0,  0,  0,  0,  0,
-    0,  0,  0,  0,  0,  0,  0,  0,   0,  0,  0,  0,  0,  0,  0,  0,
+   -1,  6, -1,  6,  6,  3,  4,  8,  -1,  3, 70,  4,  8, 12,  6, 10,
+    3, 34, -1,  3,  3,  5,  5,  8,   2,  3, -1,  6,  4,  6,  4,  6,
 //#0x260
-    0,  0,  0,  0,  0,  0,  0,  0,   0,  0,  0,  0,  0,  0,  0,  0,
-    0,  0,  0,  0,  0,  0,  0,  0,   0,  0,  0,  0,  0,  0,  0,  0,
+    6, 11, 11, 11, 20, 20, 30,  4,   4,  4,  4,  4,  4,  4,  0,  2,
+    2, 40, 44, 30,  8,  0,  0, 84,   2,  2, -1, 14, 60, 62, -1,  8,
 //#0x280
-    0,  0,  0,  0,  0,  0,  0,  0,   0,  0,  0,  0,  0,  0,  0,  0,
-    0,  0,  0,  0,  0,  0,  0,  0,   0,  0,  0,  0,  0,  0,  0,  0,
-//#0x300
-    0,  0,  0,  0,  0,  0,  0,  0,   0,  0,  0,  0,  0,  0,  0,  0,
-    0,  0,  0,  0,  0,  0,  0,  0,   0,  0,  0,  0,  0,  0,  0,  0,
-//#0x320
-    0,  0,  0,  0,  0,  0,  0,  0,   0,  0,  0,  0,  0,  0,  0,  0,
+   12,  4,284,  6, 14,  6,  4, -1,   6,  8, 18, -1, 46, 34,  4,  6,
+    4,  4,  2, 70, 10, -1, -1, -1,   8,  6, 27, 72, 66, -1, 11,  3,
+//#0x2A0
+    0,  0,  8,  0,  0,  8,  0,  0,   0,  0,  4, 36,  6,  8,  0,  0,
     0,  0,  0,  0,  0,  0,  0,  0,   0,  0,  0,  0,  0,  0,  0,  0,
 };
 
-// size list for each packet version after packet version 4.
+// Size list for each packet version after packet version 4.
 static int packet_size_table[MAX_PACKET_VERSION][MAX_PACKET_DB];
 
 #define WBUFPOS(p,pos,x,y) { unsigned char *__p = (unsigned char *)(p); __p += (pos); __p[0] = (x) >> 2; __p[1] = ((x) << 6) | (((y) >> 4) & 0x3f); __p[2] = (y) << 4; }
@@ -12691,11 +12689,21 @@ static void (*clif_parse_func_table[MAX_PACKET_VERSION][MAX_PACKET_DB])() = {
 	NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
 	// 230
 	NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-
 	// 240
 	NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
 	// 250
 	NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+	// 260
+	NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+	// 270
+	NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+	// 280
+	NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+	// 290
+	NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+	// 2a0
+	NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+
 #if 0
 	case 0x0157: ???? (size 6, 0x157, Account_id of the player.4L) - give information of a player in guild windows (answer 0x0158)
 	case 0x01c0: ???? (size 2, 0x1c0)

@@ -10,6 +10,10 @@
 
 Date	Added
 
+03/31/2007
+	* Updated: Added new hardcoded packet entries [Tsuyuki]
+	 - Note: Should fix 0x02a5 disconnection with the new clients
+
 03/30/2007
 	* Changed: Packet version back to 8 [Tsuyuki]
 	* Fixed: Issue with Peco Paladin and item restrictions (Thanks to galaxy) [Tsuyuki]
