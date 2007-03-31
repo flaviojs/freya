@@ -12,6 +12,9 @@
 
 Date	Added
 
+03/31/2007
+	* Added: Akagi to the Ninja job quest [Tsuyuki]
+
 03/28/2007
 	* Fixed: Some Thor Dungeon mob skills [Tsuyuki]
 	* Added: Modified Bow Master and Sword Master Thor Dungeon mob skills (Credits to $ephiroth) [Tsuyuki]
