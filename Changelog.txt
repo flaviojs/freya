@@ -11,6 +11,8 @@
 Date	Added
 
 03/31/2007
+	* Removed: Script to-do list, better one in the forums [Tsuyuki]
+	* Removed: Duplicate Milk Trader Prontera NPC [Tsuyuki]
 	* Added: Akagi to the Ninja job quest [Tsuyuki]
 	* Updated: Added new hardcoded packet entries [Tsuyuki]
 	 - Note: Should fix 0x02a5 disconnection with the new clients
@@ -20,7 +22,7 @@ Date	Added
 	* Fixed: Issue with Peco Paladin and item restrictions (Thanks to galaxy) [Tsuyuki]
 	* Reverted: All of Harbin's recent memory management changes (Fixes memory corruption) [Tsuyuki]
 	* Fixed: Mobs will not activate any skills if they die now (Fixes teleporting drops) [Tsuyuki]
-	* Fixed: Mobs will not level up if they die now (Fixes insane Constants in Kiel Hyre [Tsuyuki]
+	* Fixed: Mobs will not level up if they die now (Fixes insane Constants in Kiel Hyre) [Tsuyuki]
 	* Improved: Further improved status change system, down to 255 status changes (-35 mb of RAM) [Tsuyuki]
 	* Changed: Lowered max status change from 350 to 300 (-40 mb of RAM) [Tsuyuki]
 	* Changed: Lowered max monster skill from 50 to 35 (-10 mb of RAM) [Tsuyuki]
