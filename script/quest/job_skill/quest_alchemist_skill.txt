@@ -1,0 +1,454 @@
+//===== Freya Script ========================================= 
+//= Alchemist Skills Quests
+//===== By: ==================================================
+//= Lupus, Reddozen
+//===== Current Version: =====================================
+//= 1.5a
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
+//= Temp quests for new skills for 2nd classes
+//===== Additional Comments: =================================
+//= 1.0 for fully working skills only [Lupus]
+//= 1.1 Added more new skill quests for more classes [Lupus]
+//= Somehow eA engine doesn't let you keep learn't skill V_V'
+//= 1.2 Added to correct locations, correct NPC's, fixed
+//= some of the items required and made them into real
+//= quests. [Reddozen] 
+//= 1.3 Fixed bugs and minor typos. Optimized [Lupus]
+//= 1.3a fixed an item ID typo, thx 2Spiritual Kid
+//= 1.3b Splitted into different files [DracoRPG]
+//= 1.4 Added Creators + Baby Alchemists can pass Bio Ethics
+//= 	Quest too [Lupus]
+//= 1.5 Removed duplicates [Toms] 1.5a fixed typo [Lupus]
+//============================================================
+
+
+//============================================================
+// ALCHEMIST - ELEMENTAL POTION CREATION
+//============================================================
+yuno_in04.gat,33,108,5	script	Pislik	750,{
+	mes "[Pislik]";
+	if(BaseJob != Job_Alchemist) goto L_noalche;
+	if(countitem(7434)) goto L_alreadyhave;//Items: Elemental_Potion_Creation_Guide,
+	if(JobLevel<40) goto L_nojob;
+
+	mes "I'll teach you all I know, but";
+	mes "you have to bring me some things";
+	mes "first.";
+	mes "5 Yellow Gemstones,";
+	mes "4 Empty Potion Bottles,";
+	mes "10 Hearts of Mermaid,";
+	mes "10 Moth Dust,";
+	mes "20 Maneater Blossoms and";
+	mes "1 Geek Glasses";
+	next;
+	
+	mes "[Pislik]";
+	mes "Let me check your items.";
+	next;
+	
+	if(countitem(715)<5 || countitem(1093)<4 || countitem(950)<10 || countitem(1057)<10 || countitem(1032)<20 || countitem(2243)<1) goto L_noitems;//Items: Yellow_Gemstone, Empty_Potion_Bottle, Heart_of_Mermaid, Moth_Dust, Maneater_Blossom, Geek_Glasses,
+	delitem 715, 5;//Items: Yellow_Gemstone,
+	delitem 1093, 4;//Items: Empty_Potion_Bottle,
+	delitem 950, 10;//Items: Heart_of_Mermaid,
+	delitem 1057, 10;//Items: Moth_Dust,
+	delitem 1032, 20;//Items: Maneater_Blossom,
+	delitem 2243, 1;//Items: Geek_Glasses,
+	getitem 7434, 1;//Items: Elemental_Potion_Creation_Guide,
+
+	mes "[Pislik]";
+	mes "I see you have what you need,";
+	mes "so I'll give you my manual.";
+	close;
+	
+L_noitems:
+	mes "[Pislik]";
+	mes "You don't have enough items.";
+	mes "Come back when you have all";
+	mes "the required items for me.";
+	close;
+	
+L_noalche:
+	mes "Sorry, but my knowledge is only about alchemy.";
+	mes "I can't help you.";
+	emotion e_gasp;
+	close;
+
+L_alreadyhave:
+	mes "I've already given you";
+	mes "my Elemental Potion Creation Guide...";
+	close;
+
+L_nojob:
+	mes "Come back when you've learned";
+	mes "more about being an Alchemist.";
+	close;
+}
+
+//============================================================
+// ALCHEMIST - Bio Ethics Quest (Homunculi Skill Branch)
+//============================================================
+
+//=====================Requires Bug Testing=====================
+lhz_in01.gat,46,125,6	script	Rekenber Guard	867,{
+	mes "[Rekenber Guard]";
+	if(equippeditem(2241) && equippeditem(2243))
+	{
+		mes "......................";
+		next;
+		switch(select("Nice day, huh?","Cancel")){
+			case 1:
+				mes "[Rekenber Guard]";
+				mes "...";
+				close2;
+				warp "lhz_in01.gat",282,172;
+				end;
+				break;
+			case 2:
+				close;
+				break;
+		}
+	}
+	else{
+		mes "...";
+		close;
+	}
+}
+lhz_in01.gat,282,172,0	script	BioEthTrg1::BETrg1	-1,1,1{
+	OnTouch:
+		mes "[Researcher]";
+		mes "This is a restricted";
+		mes "area. Please leave";
+		mes "immediately.";
+		close2;
+		warp "lhz_in01.gat",199,131;
+		end;
+}
+		
+lhz_in01.gat,285,169,7	script	Researcher#2	865,{
+//Unknown Text
+	mes "[Researcher]";
+	mes "Hmm... I wonder...";
+	close;
+}
+lhz_in01.gat,199,137,8	script	Scientist#2	865,{
+	mes "[Scientist]";
+	mes "Whoa whoa~!";
+	mes "Please! Don't";
+	mes "touch anything!";
+	mes "I'm dealing with highly";
+	mes "volatile chemicals here!";
+	close;
+}
+lhz_in01.gat,204,138,6	script	Keshibien	750,{
+	if(bioeth >= 2){
+		//Unofficial text
+		mes "[Keshibien]";
+		mes "Hello there~";
+		mes "Are you looking for";
+		mes "more information about";
+		mes "homunculus?";
+		next;
+		mes "[Keshibien]";
+		mes "I shouldn't say";
+		mes "anything, but look";
+		mes "for someone named";
+		mes "Bringel in Lighthalzen.";
+		if(bioeth == 2) set bioeth,3;
+		close;
+		//Unofficial text end
+	}
+	mes "[Keshibien]";
+	mes "Hello there~";
+	mes "You must be from";
+	mes "Rune-Midgarts, right?";
+	mes "It's nice to meet you.";
+	next;
+	mes "[Keshibien]";
+	mes "I hear that the";
+	mes "Alchemists from";
+	mes "over there are pretty";
+	mes "skilled. I wonder if I'll";
+	mes "ever get the change to";
+	mes "collaborate with any of them...";
+	close;
+}
+lhz_in01.gat,203,123,8	script	Scientist#3	750,{
+	mes "[Scientist]";
+	mes "Alright. Pull one test";
+	mes "tube out of the machine,";
+	mes "replace the other test";
+	mes "tube over here and then";
+	mes "clean the first test tube?";
+	next;
+	mes "[Scientist]";
+	mes "Or do I clean the test tube,";
+	mes "put it into the machine and";
+	mes "then replace the other one?";
+	mes "I'm so confused with this";
+	mes "procedure! If only I didn't";
+	mes "lose the instructions...";
+	close;
+}
+lhz_in01.gat,221,131,3	script	Scientist#4	865,{
+	mes "[Scientist]";
+	mes "It takes so long for";
+	mes "this device to process";
+	mes "all the data and give me";
+	mes "the results. Still, the wait";
+	mes "heightens my anticipation...";
+	close;
+}
+lhz_in01.gat,218,141,0	script	Alchemist#2	98,{
+	mes "[Alchemist]";
+	mes "Out of all humans,";
+	mes "I believe Kellasus is";
+	mes "the one who has come";
+	mes "closest to discovering";
+	mes "the secrets of life. He";
+	mes "never fails to amaze me...";
+	next;
+	mes "[Alchemist]";
+	mes "I'm also impressed by the";
+	mes "fact that he doesn't let his";
+	mes "work keep him from being the";
+	mes "best father and husband that";
+	mes "he can for his family. He's";
+	mes "an example for all of us.";
+	next;
+	mes "[Alchemist]";
+	mes "Kellasus really is";
+	mes "an amazing person.";
+	mes "There isn't one Alchemist";
+	mes "that I know who doesn't look";
+	mes "up to him in the realms of";
+	mes "both science and personal life.";
+	close;
+}
+lhz_in01.gat,224,140,8	script	Kellasus	57,{
+	if(MISC_QUEST&64){
+		mes "[Kellasus]";
+		mes "I already taught you";
+		mes "skills of the homunculus...";
+		if(getskilllv(238) == 0 && BaseJob == Job_Alchemist) skill 238,1,0;
+		close;
+	}
+	switch(bioeth){
+	case 4:
+		mes "[Kellasus]";
+		mes "...You're really hard to handle.";
+		mes "I don't think I should";
+		mes "teach you biotechnology.";
+		mes "Besides that, you know";
+		mes "nothing about homunculus!";
+		next;
+		menu "I've learned that",-;
+		mes "[Kellasus]";
+		mes "Oh really?";
+		mes "I will have to test you";
+		mes "on your knowledge of";
+		mes "homunculus then.";
+		next;
+		mes "[Kellasus]";
+		mes "First question.";
+		mes "What is the skill that lets the";
+		mes "homunculus stay in peace?";
+		input @kelques$;
+		next;
+		mes "[Kellasus]";
+		if(@kelques$ != "Vaporize"){
+			mes "Hmpf. I knew you had";
+			mes "no knowledge on";
+			mes "homunculus.";
+			close;
+		}
+		mes "That's right. Second question.";
+		mes "What is the item";
+		mes "that is required to";
+		mes "summon or create";
+		mes "a homunculus?";
+		input @kelques$;
+		next;
+		mes "[Kellasus]";
+		if(@kelques$ != "Embryo"){
+			mes "Hmpf. I knew you had";
+			mes "no knowledge on";
+			mes "homunculus.";
+			close;
+		}
+		mes "Correct. But this is not the end yet.";
+		mes "What is the name";
+		mes "of a skill";
+		mes "that could let you";
+		mes "revive a homunculus?";
+		input @kelques$;
+		next;
+		mes "[Kellasus]";
+		if(@kelques$ != "Homunculus Resurrection"){
+			mes "Hmpf. I knew you had";
+			mes "no knowledge on";
+			mes "homunculus.";
+			close;
+		}
+		mes "After all these discussions,";
+		mes "I won't teach anyone";
+		mes "the skills of homunculus.";
+		mes "The decision is final";
+		mes "and that's it!";
+		set bioeth,5;
+		close;
+		break;
+	case 5:
+		mes "[Kellasus]";
+		mes "After all these discussions,";
+		mes "I won't teach anyone";
+		mes "the skills of homunculus.";
+		mes "The decision is final";
+		mes "and that's it!";
+		close;
+		break;
+	case 6:
+	//Unofficial text and story -.-;
+		mes "[Kellasus]";
+		mes "Oh it's you again? You're really determined.";
+		mes "Well most of the Alchemist";
+		mes "are people who never";
+		mes "let go of their dreams";
+		next;
+		menu "Let's talk about others",-;
+		mes "[Kellasus]";
+		mes "You've spoke to my son?";
+		mes "What did he say?";
+		next;
+		mes "[Kellasus]";
+		mes "...";
+		next;
+		mes "[Kellasus]";
+		mes "He wants me to get back? Okay, well...";
+		mes "I guess you've deserved it.";
+		mes "Here you are, secrets of homunculus are yours now~";
+		if(BaseJob == Job_Alchemist) skill 238,1,0;
+		set MISC_QUEST,MISC_QUEST|64;
+		set bioeth,0;
+		close;
+	default:
+		break;
+	}
+	switch(@keltalk){
+	case 1:
+	//No official text to put here, so I just repeated first text
+		mes "[Kellasus]";
+		mes "Hmm. Who decides what";
+		mes "is right and wrong? What is";
+		mes "meant to be known and what";
+		mes "secrets were never intended";
+		mes "for mankind to understand?";
+		set @keltalk,2;
+		close;
+		break;
+	case 2:
+		mes "[Kellasus]";
+		mes "Haven't I told you not to come back again?";
+		mes "Please leave now!";
+		mes "No matter what you do.";
+		mes "I won't teach you anything about homunculus";
+		set @keltalk,3;
+		set bioeth,1;
+		close;
+		break;
+	case 3:
+		mes "[Kellasus]";
+		mes "Haven't I told you not to come back again?";
+		mes "Please leave now!";
+		mes "No matter what you do.";
+		mes "I won't teach you anything about homunculus";
+		close;
+		break;
+	default:
+		mes "[Kellasus]";
+		mes "Hmm. Who decides what";
+		mes "is right and wrong? What is";
+		mes "meant to be known and what";
+		mes "secrets were never intended";
+		mes "for mankind to understand?";
+		if(BaseJob == Job_Alchemist) set @keltalk,1;
+		close;
+		break;
+	}
+}
+lhz_in01.gat,217,121,6	script	Repairman	851,{
+	mes "[Repairman]";
+	mes "No wonder these things";
+	mes "break all the time! These";
+	mes "machines have been totally";
+	mes "abused! Ugh, there's no";
+	mes "appreciation for all of this";
+	mes "convenient technology...";
+	next;
+	mes "[Repairman]";
+	mes "Yeah, all of this lab";
+	mes "equipment is really sensitive,";
+	mes "not to mention expensive. If";
+	mes "you ever handle this stuff, you";
+	mes "need to be extra cautious.";
+	close;
+}
+lhz_in01.gat,225,122,4	script	Skrajiad	754,{
+	mes "[Skrajiad]";
+	mes "Alchemy is wondrous...";
+	mes "It incorporates every";
+	mes "science and many other";
+	mes "fields of knowledge that";
+	mes "it's not enough to be jack";
+	mes "of all trades... No...";
+	next;
+	mes "[Skrajiad]";
+	mes "In a sense, you must";
+	mes "be a master of all trades";
+	mes "to be proficient in Alchemy";
+	mes "But it's incredibly rewarding to";
+	mes "those of us who never stop asking";
+	mes "how and why our world works.";
+	if(bioeth == 1) set bioeth,2;
+	close;
+}
+lhz_in02.gat,269,273,4	script	Bringel	709,{
+//Unofficial Text
+	if(bioeth == 3){
+		mes "[Bringel]";
+		mes "Oh, you're here to learn about Homunculus?";
+		mes "Well, I can't really help you...";
+		next;
+		mes "[Bringel]";
+		mes "However, I've heard about a skill named";
+		mes "Homunculus Resurrection.";
+		mes "It seems it is a very important thing";
+		mes "for people working on them.";
+		set bioeth,4;
+		close;
+	}
+	mes "[Bringel]";
+	mes "Isn't this hotel great?";
+	mes "I can relax on the couch";
+	mes "And not care about what I";
+	mes "did in the past...";
+	close;
+}
+lhz_in03.gat,106,34,4	script	Golin	706,{
+//Unofficial text
+	if(bioeth == 5){
+		mes "[Golin]";
+		mes "Did you see my";
+		mes "daddy at the lab?";
+		mes "Tell him I said hi!";
+		set bioeth,6;
+		close;
+	}
+	mes "[Golin]";
+	mes "Where's daddy?";
+	mes "I really want";
+	mes "daddy to come back";
+	mes "from the lab.";
+	close;
+}

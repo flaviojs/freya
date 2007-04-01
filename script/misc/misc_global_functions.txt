@@ -1,0 +1,289 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Script Global Functions	Author: N/A
+//--------------------------------------------------------------
+// Additional Notes:
+//--------------------------------------------------------------
+//	-> F_ClearJobVariables: Clears quest variables after job change
+//	-> F_ClearGarbageVariables: Clears garbage script variables
+//	-> F_JobChange: Changes job in certain job quests
+//	-> F_SaveQuestSkills: Saves quest skills before rebirth
+//	-> F_ReturnQuestSkills: Returns quest skills after rebirth
+//	-> F_TownAnnounce: Broadcasts a message in all towns
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// F_ClearJobVariables -> Clears job change quest variables
+//--------------------------------------------------------------
+
+function	script	F_ClearJobVariables	{
+
+	// Misc
+	set JBLVL,0;
+	set FIRSTAID,0;
+	set PLAYDEAD,0;
+	set got_bandage,0;
+	set got_novnametag,0;
+	// First Class Jobs
+	set job_acolyte_q,0; set job_acolyte_q2,0;
+	set job_archer_q,0;
+	set job_magician_q,0;
+	set job_merchant_q,0; set job_merchant_q2,0; set job_merchant_q3,0;
+	set job_sword_q,0; set SWTEST, 0;
+	set job_thief_q,0;
+	// Super Novice
+	set SUPNOV_Q,0;
+	// 2-1 Jobs
+	set ASSIN_Q,0; set ASSIN_Q2,0;
+	set BSMITH_Q,0; set BSMITH_Q2,0;
+	set HNTR_Q,0; set HNTR_Q2,0;
+	set KNIGHT_Q,0; set KNIGHT_Q2,0;
+	set PRIEST_Q,0; set PRIEST_Q2,0; set PRIEST_Q3,0;
+	set WIZ_Q,0; set WIZ_Q2,0;
+	// 2-2 Jobs
+	set ROGUE_Q,0; set ROGUE_Q2,0;
+	set ALCH_Q,0; set ALCH_Q2,0;
+	set CRUS_Q,0;
+	set MONK_Q,0; set JOB_MONK_C,0;
+	set SAGE_Q,0; set SAGE_Q2,0;
+	set DANC_Q,0;
+	set BARD_Q,0;
+	// Expanded Classes
+	set TAEK_Q,0; set TK_Q,0;
+	set STGL_Q,0;
+	set SOUL_Q,0;
+	set GUNS_Q,0;
+	set NINJ_Q,0;
+	return;
+}
+
+
+//--------------------------------------------------------------
+// F_ClearGarbageVariables -> Clears misc garbage variables
+//--------------------------------------------------------------
+
+function	script	F_ClearGarbageVariables	{
+
+	// Clear outdated global VARS
+	// DTS Vote System
+	if ($dtsglobalelig) set $dtsglobalelig,0;
+	if ($dts&(1<<6)) set $dts,$dts&~(1<<6);
+	// Cube Room
+	if (hzdun) {
+		set MISC_QUEST,MISC_QUEST|512;
+		set num1,0;	set num2,0;	set num3,0;	set num4,0;	set num5,0;
+		set num6,0;	set num7,0;	set num8,0;	set num9,0;
+		set hzdun,0; set cubekey,0; set piciburn,0;
+	}
+	// Airship
+	if ($lengths) {
+		cleararray $textstringsa$[0],"",getarraysize($textstringsa$);
+		cleararray $textstringsb$[0],"",getarraysize($textstringsb$);
+		cleararray $textstringsc$[0],"",getarraysize($textstringsc$);
+		cleararray $compstring$[0],"",getarraysize($compstring$);
+		cleararray $lengths[0],0,getarraysize($lengths);
+	}
+	return;
+}
+
+
+//--------------------------------------------------------------
+// F_JobChange -> Job change function for Normal/Baby classes
+//--------------------------------------------------------------
+
+function	script	F_JobChange	{
+
+	if (Upper < 2) 
+		jobchange getarg(0),0; // Common jobchange
+	else 
+		jobchange getarg(0),2; // Change Job For Baby Class
+	return;
+}
+
+
+//--------------------------------------------------------------
+// F_SaveQuestSKills -> Function used to save quest skills before rebirth
+//-------------------------------------------------------------
+
+function	script	F_SaveQuestSkills	{
+
+	// Save First-Class Quest Skills
+	if (getskilllv(142) > 0) set ADVQ1,1;
+	if (getskilllv(143) > 0) set ADVQ2,1;
+	if (getskilllv(144) > 0) set ADVQ3,1;
+	if (getskilllv(145) > 0) set ADVQ4,1;
+	if (getskilllv(146) > 0) set ADVQ5,1;
+	if (getskilllv(147) > 0) set ADVQ6,1;
+	if (getskilllv(148) > 0) set ADVQ7,1;
+	if (getskilllv(149) > 0) set ADVQ8,1;
+	if (getskilllv(150) > 0) set ADVQ9,1;
+	if (getskilllv(151) > 0) set ADVQ10,1;
+	if (getskilllv(152) > 0) set ADVQ11,1;
+	if (getskilllv(153) > 0) set ADVQ12,1;
+	if (getskilllv(154) > 0) set ADVQ13,1;
+	if (getskilllv(155) > 0) set ADVQ14,1;
+	if (getskilllv(156) > 0) set ADVQ15,1;
+	if (getskilllv(157) > 0) set ADVQ16,1;
+
+	// Save Second-Class Quest Skills
+	if (getskilllv(1001) > 0) set ADVQ17,1;
+	if (getskilllv(1002) > 0) set ADVQ18,1;
+	if (getskilllv(1003) > 0) set ADVQ19,1;
+	if (getskilllv(1004) > 0) set ADVQ20,1;
+	if (getskilllv(1005) > 0) set ADVQ21,1;
+	if (getskilllv(1006) > 0) set ADVQ22,1;
+	if (getskilllv(1007) > 0) set ADVQ23,1;
+	if (getskilllv(1008) > 0) set ADVQ24,1;
+	if (getskilllv(1009) > 0) set ADVQ25,1;
+	if (getskilllv(1010) > 0) set ADVQ26,1;
+	if (getskilllv(1011) > 0) set ADVQ27,1;
+	if (getskilllv(1012) > 0) set ADVQ28,1;
+	if (getskilllv(1013) > 0) set ADVQ29,1;
+	if (getskilllv(1014) > 0) set ADVQ30,1;
+	if (getskilllv(1015) > 0) set ADVQ31,1;
+	if (getskilllv(1016) > 0) set ADVQ32,1;
+	if (getskilllv(1017) > 0) set ADVQ33,1;
+	if (getskilllv(1018) > 0) set ADVQ34,1;
+	if (getskilllv(1019) > 0) set ADVQ35,1;
+
+	return;
+}
+
+
+//--------------------------------------------------------------
+// F_ReturnQuestSkills -> Function used to return quest skills after rebirth
+//-------------------------------------------------------------
+
+function	script	F_ReturnQuestSkills	{
+
+	if (ADVQ1 == 1) skill 142,1,0;
+	if (Class == Job_Novice && Upper == 1 && ADVQ2 == 1) skill 143,1,0;
+
+	if (Class >= Job_Swordsman && Upper == 1 && Class <= Job_Crusader2) goto L_Return1stSkills;
+
+	return;
+
+	L_Return1stSkills:
+
+		if (ADVQ3 == 1) skill 144,1,0;
+		if (ADVQ4 == 1) skill 145,1,0;
+		if (ADVQ5 == 1) skill 146,1,0;
+		if (ADVQ6 == 1) skill 147,1,0;
+		if (ADVQ7 == 1) skill 148,1,0;
+		if (ADVQ8 == 1) skill 149,1,0;
+		if (ADVQ9 == 1) skill 150,1,0;
+		if (ADVQ10 == 1) skill 151,1,0;
+		if (ADVQ11 == 1) skill 152,1,0;
+		if (ADVQ12 == 1) skill 153,1,0;
+		if (ADVQ13 == 1) skill 154,1,0;
+		if (ADVQ14 == 1) skill 155,1,0;
+		if (ADVQ15 == 1) skill 156,1,0;
+		if (ADVQ16 == 1) skill 157,1,0;
+
+		goto L_ReturnCont01;
+
+	L_ReturnCont01:
+
+		if (Class >= Job_Knight && Class <= Job_Crusader2 && Upper == 1) goto L_Return2ndSkills;
+
+		return;
+
+		L_Return2ndSkills:
+
+			if (ADVQ17 == 1) skill 1001,1,0;
+			if (ADVQ18 == 1) skill 1002,1,0;
+			if (ADVQ19 == 1) skill 1003,1,0;
+			if (ADVQ20 == 1) skill 1004,1,0;
+			if (ADVQ21 == 1) skill 1005,1,0;
+			if (ADVQ22 == 1) skill 1006,1,0;
+			if (ADVQ23 == 1) skill 1007,1,0;
+			if (ADVQ24 == 1) skill 1008,1,0;
+			if (ADVQ25 == 1) skill 1009,1,0;
+			if (ADVQ26 == 1) skill 1010,1,0;
+			if (ADVQ27 == 1) skill 1011,1,0;
+			if (ADVQ28 == 1) skill 1012,1,0;
+			if (ADVQ29 == 1) skill 1013,1,0;
+			if (ADVQ30 == 1) skill 1014,1,0;
+			if (ADVQ31 == 1) skill 1015,1,0;
+			if (ADVQ32 == 1) skill 1016,1,0;
+			if (ADVQ33 == 1) skill 1017,1,0;
+			if (ADVQ34 == 1) skill 1018,1,0;
+			if (ADVQ35 == 1) skill 1019,1,0;
+
+			// Remove old variables not that we're done with them
+			set ADVQ1,0;
+			set ADVQ2,0;
+			set ADVQ3,0;
+			set ADVQ4,0;
+			set ADVQ5,0;
+			set ADVQ6,0;
+			set ADVQ7,0;
+			set ADVQ8,0;
+			set ADVQ9,0;
+			set ADVQ10,0;
+			set ADVQ11,0;
+			set ADVQ12,0;
+			set ADVQ13,0;
+			set ADVQ14,0;
+			set ADVQ15,0;
+			set ADVQ16,0;
+			set ADVQ17,0;
+			set ADVQ18,0;
+			set ADVQ19,0;
+			set ADVQ20,0;
+			set ADVQ21,0;
+			set ADVQ22,0;
+			set ADVQ23,0;
+			set ADVQ24,0;
+			set ADVQ25,0;
+			set ADVQ26,0;
+			set ADVQ27,0;
+			set ADVQ28,0;
+			set ADVQ29,0;
+			set ADVQ30,0;
+			set ADVQ31,0;
+			set ADVQ32,0;
+			set ADVQ33,0;
+			set ADVQ34,0;
+			set ADVQ35,0;
+
+			return;
+}
+
+
+//--------------------------------------------------------------
+// F_TownAnnounce -> Broadcasts a message in all towns
+//-------------------------------------------------------------
+
+function	script	F_TownAnnounce	{
+
+	mapannounce "prontera.gat",getarg(0),getarg(1);
+	mapannounce "payon.gat",getarg(0),getarg(1);
+	mapannounce "alberta.gat",getarg(0),getarg(1);
+	mapannounce "geffen.gat",getarg(0),getarg(1);
+	mapannounce "morocc.gat",getarg(0),getarg(1);
+	mapannounce "aldebaran.gat",getarg(0),getarg(1);
+	mapannounce "izlude.gat",getarg(0),getarg(1);
+	mapannounce "yuno.gat",getarg(0),getarg(1);
+	mapannounce "comodo.gat",getarg(0),getarg(1);
+	mapannounce "amatsu.gat",getarg(0),getarg(1);
+	mapannounce "gonryun.gat",getarg(0),getarg(1);
+	mapannounce "umbala.gat",getarg(0),getarg(1);
+	mapannounce "niflheim.gat",getarg(0),getarg(1);
+	mapannounce "louyang.gat",getarg(0),getarg(1);
+	mapannounce "jawaii.gat",getarg(0),getarg(1);
+	mapannounce "einbech.gat",getarg(0),getarg(1);
+	mapannounce "einbroch.gat",getarg(0),getarg(1);
+	mapannounce "lighthalzen.gat",getarg(0),getarg(1);
+	mapannounce "hugel.gat",getarg(0),getarg(1);
+	mapannounce "rachel.gat",getarg(0),getarg(1);
+	mapannounce "veins.gat",getarg(0),getarg(1);
+	return;
+}

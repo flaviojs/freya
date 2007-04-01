@@ -1,0 +1,26 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: God Seal Quest Warps	Author: MasterOfMuppets/SinSloth
+//--------------------------------------------------------------
+// Revision History: v1.1
+//--------------------------------------------------------------
+//	1.0 First version [SinSloth]
+//	1.1 Made fully compatible with Freya Phaeton [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: N/A
+//--------------------------------------------------------------
+
+
+yuno.gat,218,180,0	warp	yuno_god01	1,1,que_god01.gat,99,84				
+que_god01.gat,99,81,0	warp	god01_yuno	1,1,yuno.gat,218,177
+que_god01.gat,63,88,0	warp	god_sl_w0-1	1,1,que_god01.gat,87,92	
+que_god01.gat,62,116,0	warp	god_sl_w1-1	1,1,que_god01.gat,46,94	
+que_god01.gat,12,116,0	warp	god_sl_w2-1	1,1,que_god01.gat,16,94	
+que_god01.gat,12,55,0	warp	god_sl_w3-1	1,1,que_god01.gat,17,83	
+que_god01.gat,50,55,0	warp	god_sl_w4-1	1,1,que_god01.gat,47,83	

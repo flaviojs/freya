@@ -1,0 +1,2956 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Guide NPCs	Author: A Lot of People
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 Merged all guide NPC scripts into this file [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: Rachel/Veins Guides are incomplete.
+// Louyang Guide NPCs are * Official-certified *. Juno Guide NPCs
+// are * Aegis-certified *.
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Alberta Guides - [kobra_k88]
+//--------------------------------------------------------------
+
+// North
+alberta.gat,23,238,4	script	Guide::Alb_Guide	105,{
+
+	cutin "prt_soldier",2;
+	mes "[Alberta Guide]";
+	mes "Welcome to Alberta, the Port City.";
+	mes "Feel free to ask me if you're having trouble finding anything in town,";
+	mes "or if you just need guidance around the city.";
+	goto L_MENU;
+
+L_MENU:
+	next;
+	menu "City Guide",L_CITY,"Remove Marks from Mini-Map",L_REMOVE,"Notice",L_NOTICE,"Cancel",L_END;
+
+L_CITY:
+	mes "[Alberta Guide]";
+  	mes "Please select a location from the following menu.";
+  	mes "Would you like me to mark locations on your Mini-Map?";
+  	next;
+  	menu "Yes.",L_YES,"No.",L_NO;
+
+L_NO:
+  		set @COMPASS_CHECK,0;
+		goto L_CONT;
+
+L_YES:
+  		set @COMPASS_CHECK,1;
+		goto L_CONT;
+
+L_CONT:
+L_MENU_2:
+	menu	"^FF0000Merchant Guild^000000",L_MERCHANT,
+		"Weapon Shop",L_WEAPON,
+		"Tool Shop",L_TOOL,
+		"Inn",L_INN,
+		"Forge",L_FORGE,
+		"Cancel",-;
+
+	mes "[Alberta Guide]";
+ 	mes "Please ask me to Remove marks from Mini-Map";
+	mes "if you no longer wish to have the location marks displayed on your Mini-Map.";
+ 	goto L_MENU;
+
+L_MERCHANT:
+	mes "[Alberta Guide]";
+	mes "The Merchant Guild, handles Job Changes to the Merchant Class,";
+	mes "and is located in the southwest corner of Alberta.";
+	viewpoint 1,33,41,1,0xFF0000;
+	next; 
+	goto L_WIPE;
+
+L_WEAPON:
+	mes "[Alberta Guide]";
+	mes "The Weapon Shop can be found in the southern end of Alberta.";
+	viewpoint 1,117,37,2,0xFF00FF;
+	next; 
+	goto L_WIPE;
+
+L_TOOL:
+	mes "[Alberta Guide]";
+	mes "The Tool Shop is kind of close to the center of Alberta. It shouldn't be too hard to find.";
+	viewpoint 1,98,154,3,0xFF00FF;
+	next; 
+	goto L_WIPE;
+
+L_INN:
+	mes "[Alberta Guide]";
+	mes "There's and Inn at the northern end of Alberta where you can rest.";
+	viewpoint 1,65,233,4,0xFF00FF;
+	next; 
+	goto L_WIPE;
+
+L_FORGE:
+	mes "[Alberta Guide]";
+	mes "The Forge in Alberta is in the same building as the Merchant Guild. It's to the southwest.";
+	viewpoint 1,33,41,5,0xFF00FF;
+	next; 
+	goto L_WIPE;
+
+L_WIPE:
+ 		if(@COMPASS_CHECK == 1)goto L_MENU_2;
+		viewpoint 2,33,41,1,0xFF0000;
+		viewpoint 2,117,37,2,0xFF00FF;
+		viewpoint 2,98,154,3,0xFF00FF;
+		viewpoint 2,65,233,4,0xFF00FF;
+		viewpoint 2,33,41,5,0xFF00FF;
+		goto L_MENU_2;
+
+L_REMOVE:
+		viewpoint 2,33,41,1,0xFF0000;
+		viewpoint 2,117,37,2,0xFF00FF;
+		viewpoint 2,98,154,3,0xFF00FF;
+		viewpoint 2,65,233,4,0xFF00FF;
+		viewpoint 2,33,41,5,0xFF00FF;
+  		goto L_MENU;
+
+L_NOTICE:
+ 	mes "[Alberta Guide]";
+ 	mes "Advances in sorcery and technology have allowed us to update our information system,";
+	mes "enabling up to mark locations on your Mini-Map for easier navigation.";
+  	next;
+  	mes "[Alberta Guide]";
+  	mes "Your Mini-Map is located in the upper right corner of the screen.";
+	mes "If you can't see it, press the Ctrl + Tab keys or click the 'Map' button in your Basic Information Window.";
+  	next;
+  	mes "[Alberta Guide]";
+ 	mes "On your Mini-Map, click on the '+' and '-' symbols to zoom in and out of your Mini-Map.";
+	mes "We hope you enjoy your travels here in the city of Alberta.";
+ 	goto L_MENU;
+
+L_END:
+ 	mes "[Alberta Guide]";
+ 	mes "Be safe when you travel and don't hesitate to ask me if you have any questions about Alberta.";
+	cutin "prt_soldier",255; 
+ 	close;
+}
+
+// South
+alberta.gat,120,60,3	duplicate(Alb_Guide)	Guide#2	105
+
+
+//--------------------------------------------------------------
+// Aldebaran Guides - [kobra_k88]
+//--------------------------------------------------------------
+
+aldebaran.gat,139,63,4	script	Soldier::Alde_Guide	105,{
+
+	cutin "prt_soldier",2;
+	mes "[Al De Baran Guard]";
+	mes "I'm just an ordinary guard that you could find in any other city.";
+	mes "I don't think I even have a name...";
+	next;
+	mes "[Al De Baran Guard]";
+	mes "I am in charge of the Service Guides from the Al De Baran Garrison.";
+	mes "Let me guide you through our town!";
+	next;
+	menu	"Get location Guide.",-,
+		"End conversation.",L_End;
+
+		viewpoint 1,57,222,1,0xFF6633;
+		viewpoint 1,73,196,2,0x0000FF;
+		viewpoint 1,224,224,3,0x00FFFF;
+		viewpoint 1,233,106,4,0x515151;
+		viewpoint 1,197,71,5,0x3355FF;
+		viewpoint 1,60,60,6,0xFF5555;
+		mes "^FF6633+^000000 -> Kafra Main Office";
+		mes "^0000FF+^000000 -> Weapon Shop";
+		mes "^00FFFF+^000000 -> Sorcerer Guild (Closed)";
+		mes "^515151+^000000 -> Pub";
+		mes "^3355FF+^000000 -> Item Shop";
+		mes "^FF5555+^000000 -> Chemical Academy";
+		cutin "prt_soldier",255;
+		close;
+
+L_End:
+	mes "[Al De Baran Guard]";
+	mes "We are sworn to protect Al De Baran! May the forces of evil always be crushed by the righteous fist of good!";
+	cutin "prt_soldier",255;
+	close;
+}
+
+aldebaran.gat,241,136,4	duplicate(Alde_Guide)	Soldier#Alde02	105
+
+
+//--------------------------------------------------------------
+// Amatsu Guides - [MasterOfMuppets]
+//--------------------------------------------------------------
+
+amatsu.gat,207,89,3	script	Amatsu Guide#01	758,{
+
+	mes "[Amachang]";
+	mes "Welcome to Amatsu,";
+	mes "the town of kind towners";
+	mes "and beatiful cherry blossoms.";
+	next;
+	mes "[Amachang]";
+	mes "I'm Amachang,";
+	mes "the 13th Miss Amatsu.";
+	mes "I will guide you about town";
+	mes "as Miss Amatsu.";
+	mes "Please tell me";
+	mes "if you want to know something.";
+	next;
+	menu	"Palace",-,
+		"Tool Shop",s_Tool,
+		"Weapon Shop",s_Weap,
+		"Bar",s_Bar;
+
+	viewpoint 1,85,235,1,0xFF0044;
+	mes "[Amachang]";
+	mes "On the mini-map,";
+	mes "go to ^FF0044+^000000";
+	mes "to find the Palace.";
+	mes "Have a good time";
+	mes "in Amatsu.";
+	close;
+
+s_Tool:
+	viewpoint 1,96,117,2,0xFF9200;
+	mes "[Amachang]";
+	mes "On the mini-map,";
+	mes "go to ^FF9200+^000000";
+	mes "to find the Tool Shop.";
+	mes "Have a good time";
+	mes "in Amatsu.";
+	close;
+
+s_Weap:
+	viewpoint 1,132,117,3,0x85FF00;
+	mes "[Amachang]";
+	mes "On the mini-map,";
+	mes "go to ^85FF00+^000000";
+	mes "to find the Weapon Shop.";
+	mes "Have a good time";
+	mes "in Amatsu.";
+	close;
+
+
+s_Bar:
+	viewpoint 1,216,116,4,0x3366FF;
+	mes "[Amachang]";
+	mes "On the mini-map,";
+	mes "go to ^3366FF+^000000";
+	mes "to find the Bar.";
+	mes "Have a good time";
+	mes "in Amatsu.";
+	close;
+
+}
+
+amatsu.gat,251,283,4	script	Amatsu Guide#02	767,{
+
+	mes "[Guide Man]";
+	mes "Welcome, tourist from";
+	mes "Rune-Midgard.";
+	mes "I'm the guide of";
+	mes "out beautiful town, Amatsu.";
+	next;
+	mes "[Guide Man]";
+	mes "What are you looking for?";
+	next;
+	menu	"Palace",-,
+		"Tool Shop",s_Tool,
+		"Weapon Shop",s_Weap,
+		"Bar",s_Bar;
+
+	viewpoint 1,85,235,1,0xFF0044;
+	mes "[Guide Man]";
+	mes "On the mini-map,";
+	mes "go to ^FF0044+^000000";
+	mes "to find the Palace.";
+	mes "Have a good time";
+	mes "in Amatsu.";
+	close;
+
+s_Tool:
+	viewpoint 1,96,117,2,0xFF9200;
+	mes "[Guide Man]";
+	mes "On the mini-map,";
+	mes "go to ^FF9200+^000000";
+	mes "to find the Tool Shop.";
+	mes "Have a good time";
+	mes "in Amatsu.";
+	close;
+
+s_Weap:
+	viewpoint 1,132,117,3,0x85FF00;
+	mes "[Guide Man]";
+	mes "On the mini-map,";
+	mes "go to ^85FF00+^000000";
+	mes "to find the Weapon Shop.";
+	mes "Have a good time";
+	mes "in Amatsu.";
+	close;
+
+
+s_Bar:
+	viewpoint 1,216,116,4,0x3366FF;
+	mes "[Guide Man]";
+	mes "On the mini-map,";
+	mes "go to ^3366FF+^000000";
+	mes "to find the Bar.";
+	mes "Have a good time";
+	mes "in Amatsu.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Ayothaya Guides - [jAthena/Harp]
+//--------------------------------------------------------------
+
+ayothaya.gat,203,169,4	script	Noy	839,{
+
+	mes "[Noy]";
+	mes "Good Afternoon.";
+	mes "Welcome to Ayothaya";
+	mes "A river flows through Ayothaya and is surrounded by a deep forest. Ayothaya is very quiet and close to nature.";
+	next;
+	mes "[Noy]";
+	mes "Ayothaya is also close to the sea, so there is a fish market featuring fresh catches from the sea.";
+	mes "Don't forget to enjoy viewing the unique buildings only found in Ayothaya too. Take your time looking around.";
+	next;
+	menu	"Receive a guide of the Village",AyoCase1A,
+		"Remove marks from the Mini-map",AyoCase2A,
+		"End Conversation",AyoCase3A;
+
+	AyoCase1A:
+		mes "[Noy]";
+		mes "Where would you like me to guide you?";
+		next;
+		menu	"Weapons Shop",AyoCase1B,
+			"Tool Shop",AyoCase2B,
+			"Pub",AyoCase3B,
+			"Temple",AyoCase4B,
+			"Fishing Place",AyoCase5B,
+			"Erase all marks from Mini-map",AyoCase6B;
+
+			AyoCase1B:
+				mes "[Noy]";
+				mes "The location of the Weapons Shop has been marked on your mini-map by the ^55FF33+^000000 mark.";
+				mes "The sea men of Ayothaya are very orderly about their weapons.";
+				viewpoint 1,182,59,2,0x00FF00;
+				close;
+
+			AyoCase2B:
+				mes "[Noy]";
+				mes "The location of the Tool Shop has been marked on your mini-map by the ^3355FF+^000000 mark.";
+				mes "When us residents of Ayothaya are about to go somewhere, we make sure we are ready for the trip.";
+				mes "Being prepared for anything is important,isn't it?";
+				viewpoint 1,129,86,2,0x55FF33;
+				close;
+
+			AyoCase3B:
+				mes "[Noy]";
+				mes "It's a good idea to visit the Pub at least once.";
+				mes "The location of the Pub has been marked on your mini-map by the ^55FF33+^000000 mark.";
+				mes "One of the basics of adventuring is knowing where to learn useful information.  Since many travellers gather in the Pub, it's probably an ideal place to learn some new information.";
+				viewpoint 1,229,69,2,0x00FF00;
+				close;
+
+			AyoCase4B:
+				mes "[Noy]";
+				mes "If you would like to offer a prayer in the temple, it is located near the ^55FF33+^000000 mark on your mini-map.";
+				viewpoint 1,208,283,2,0x00FF00;
+				close;
+
+			AyoCase5B:
+				mes "[Noy]";
+				mes "Here in Ayothaya, many people enjoy fishing because of it's closeness to the sea. ";
+				mes "the fishing place near the ^55FF33+^000000 is particularly popular. You should visit there sometime.";
+				viewpoint 1,253,99,2,0x00FF00;
+				close;
+
+			AyoCase6B:
+				mes "[Noy]";
+				mes "If you would like to have all the marks removed, please select ''Remove marks from the Mini-map''.";
+				close;
+
+	AyoCase2A:
+		mes "[Noy]";
+		mes "All marks have beem erased from your Mini-map";
+		mes "If you would ever like marks on your mini-map again, don't hesistate to ask.";
+		viewpoint 2,182,59,2,0x00FF00;
+		viewpoint 2,129,86,2,0x55FF33;
+		viewpoint 2,229,69,2,0x00FF00;
+		viewpoint 2,208,283,2,0x00FF00;
+		viewpoint 2,253,99,2,0x00FF00;
+		close;
+
+	AyoCase3A:
+		mes "[Noy]";
+		mes "I hope you have a good trip.";
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Comodo Guides - [kobra_k88]
+//--------------------------------------------------------------
+
+comodo.gat,322,178,4	script	Comodo Guide#1	700,{
+
+	set @name$,"Native Kokomo";
+	callfunc "comodo_guide";
+	end;
+}
+
+comodo.gat,176,350,4	script	Comodo Guide#2	700,{
+
+	set @name$,"Native Cocomo";
+	callfunc "comodo_guide";
+	end;
+}
+
+comodo.gat,37,219,4	script	Comodo Guide#3	700,{
+
+	set @name$,"Native Papaya";
+	callfunc "comodo_guide";
+	end;
+}
+
+function	script	comodo_guide	{
+
+	mes "[" + @name$ + "]";
+	mes "The night of pleasure continues for 24 hours";
+	mes "Welcome to Comodo, the gambling city.";
+	mes "I can help you to find buildings easily, feel free to ask me anytime.";
+	mes "Please choose the building you're searching:";
+	next;
+	menu	"Casino",L_MENU_1,
+		"Hula dancing Stage^3355FF(Dancer Job Change)^000000",L_MENU_2,
+		"Weapon and Armor Shop",L_MENU_3,
+		"Tool Shop",L_MENU_4,
+		"Tourist Shop",L_MENU_5,
+		"Kapra Corp. Western Branch",L_MENU_6,
+		"Chief's House",L_MENU_7,
+		"Pub",L_MENU_8,
+		"Camp Ground",L_MENU_9,
+		"End conversation",L_MENU_10;
+
+L_MENU_1:
+	mes "[" + @name$ + "]";
+	viewpoint 1,140,98,1,0xFF6633;
+	mes "^FF6633+^000000 -> Casino";
+	mes "The casino is an important part of Comodo.";
+	mes "The Comodo Casino provides endless entertainment for travelers from all over the world";
+	close;
+
+L_MENU_2:
+	mes "[" + @name$ + "]";
+	viewpoint 1,188,168,2,0x0000FF;
+	mes "^0000FF+^000000 -> Hula dancing Stage";
+	mes "Check out the stage located center of town.";
+	mes "If you really enjoy the atmosphere of the stage, you should consider about becoming a dancer.";
+	mes "^3355FF(Dancer Job Change)^000000";
+	close;
+
+L_MENU_3:
+	mes "[" + @name$ + "]";
+	viewpoint 1,266,70,3,0x00FFFF;
+	mes "^00FFFF+^000000 -> Weapon and Armor Shop";
+	mes "The Weapon and Armor Shop is located south-east edge of town.";
+	close;
+
+L_MENU_4:
+	mes "[" + @name$ + "]";
+	viewpoint 1,86,128,4,0x515151;
+	mes "^515151+^000000 -> Tool Shop";
+	mes "The Kit shop is located south-west of town.";
+	close;
+
+L_MENU_5:
+	mes "[" + @name$ + "]";
+	viewpoint 1,298,124,5,0x3355FF;
+	mes "^3355FF+^000000 -> Tourist Shop";
+	mes "You should visit the Tourist shop for some rare seashell found only at the shores of Comodo.";
+	close;
+
+L_MENU_6:
+	mes "[" + @name$ + "]";
+	viewpoint 1,136,202,6,0xFF5555;
+	mes "^FF5555+^000000 -> Kapra Corp. Western Branch";
+	mes "Yep, the Kapra's Corp will stay with you wherever you go, even here in Comodo!";
+	mes "You could find the Kapras near the center of town.";
+	close;
+
+L_MENU_7:
+	mes "[" + @name$ + "]";
+	viewpoint 1,114,294,7,0xFF5555;
+	mes "^FF5555+^000000 -> Chief's House";
+	mes "Well, that's obviously where the chief resides.";
+	mes "You should pay a visit to him once in a while, he's a great man when you get to know him.";
+	close;
+
+L_MENU_8:
+	mes "[" + @name$ + "]";
+	viewpoint 1,166,298,8,0xFF5555;
+	mes "^FF5555+^000000 -> Pub";
+	mes "The pub is the place for all sort of information.";
+	mes "The pub is also a place filled with great cultural values for Comodo.";
+	close;
+
+L_MENU_9:
+	mes "[" + @name$ + "]";
+	viewpoint 1,210,308,9,0xFF5555;
+	mes "^FF5555+^000000 -> Camp Ground";
+	mes "The Camp Ground is simply a great place to hang out with your familty or companions.";
+	mes "Sit around the camp fire and enjoy the wonderful tropical weather and surroundings of Comodo!";
+	close;
+
+L_MENU_10:
+	mes "[" + @name$ + "]";
+	mes "Well, I guess I will be seeing you around then.";
+	mes "Take care, and enjoy your stay.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Einbech Guides - [Muad_dib/MasterOfMuppets]
+//--------------------------------------------------------------
+
+einbech.gat,67,37,4	script	Guide#1::Einbech_Guide	852,{
+
+	cutin "ein_soldier",2;
+	mes "[Einbech Guide]";
+	mes "Welcome to Einbech, the Mining Town.";
+	mes "We're here to assist tourists, so if you have any questions, please feel free to ask us.";
+	goto L_MENU;
+
+L_MENU:
+	next;
+	menu	"City Guide",-,
+		"Remove Marks from Mini-Map",L_REMOVE,
+		"Notice",L_NOTICE,
+		"Cancel",L_END;
+
+	mes "[Einbech Guide]";
+	mes "Please select a location from the following menu.";
+	mes "Would you like me to mark locations on your Mini-Map?";
+	next;
+	menu "Yes.",L_YES,"No.",-;
+
+	set @COMPASS_CHECK,0;
+	goto L_CONT;
+
+L_YES:
+	set @COMPASS_CHECK,1;
+	goto L_CONT;
+
+L_CONT:
+L_MENU_2:
+	menu	"Train Station",L_TRAIN,
+		"Tavern",L_TAVERN,
+		"Tool Shop",L_TOOL,
+		"Swordman Guild",L_SWORD,
+		"Mine",L_MINE,
+		"Cancel",-;
+
+	mes "[Einbech Guide]";
+	mes "Please ask me to Remove marks from Mini-Map";
+	mes "if you no longer wish to have the location marks displayed on your Mini-Map.";
+	goto L_MENU;
+
+L_TRAIN:
+	mes "[Einbech Guide]";
+	mes "The Train Stations are located in the nortwest and northeast parts of Einbech.";
+	mes "There, you can take a train to Einbroch. They are running between here and Einbroch all day long, everyday.";
+	viewpoint 1,44,216,1,0xFF0000;
+	next;
+	goto L_WIPE;
+
+L_TAVERN:
+	mes "[Einbech Guide]";
+	mes "The Tavern is located in the southern part of Einbech.";
+	mes "It's a nice place to relax after a long day.";
+	viewpoint 1,145,112,2,0xFF00FF;
+	next; 
+	goto L_WIPE;
+
+L_TOOL:
+	mes "[Einbech Guide]";
+	mes "You can find the Tool Shop in the center of Einbech.";
+	mes "There, you can purchase any tools you might need for your travels.";
+	viewpoint 1,177,135,3,0xFF00FF;
+	next; 
+	goto L_WIPE;
+
+L_SWORD:
+	mes "[Einbech Guide]";
+	mes "The Swordman Guild is located in the eastern outskirts of Einbech. ";
+	mes "It's under construction and they haven't started accepting applications.";
+	viewpoint 1,253,109,4,0xFF00FF;
+	next; 
+	goto L_WIPE;
+
+L_MINE:
+	mes "[Einbech Guide]";
+	mes "The Mine, which is Einbech's major industry, is located in the northern part of this town.";
+	mes "It's where we get all of our ores, although monsters get in the mines way.";
+	viewpoint 1,138,250,5,0x00FF00;
+	next;
+	goto L_WIPE;
+
+L_WIPE:
+	if(@COMPASS_CHECK == 1)goto L_MENU_2;
+	viewpoint 2,44,216,1,0xFF0000;
+	viewpoint 2,145,112,2,0xFF00FF;
+	viewpoint 2,177,135,3,0xFF00FF;
+	viewpoint 2,253,109,4,0xFF00FF;
+	viewpoint 2,138,250,5,0x00FF00;
+	goto L_MENU_2;
+
+L_REMOVE:
+	viewpoint 2,44,216,1,0xFF0000;
+	viewpoint 2,145,112,2,0xFF00FF;
+	viewpoint 2,177,135,3,0xFF00FF;
+	viewpoint 2,253,109,4,0xFF00FF;
+	viewpoint 2,138,250,5,0x00FF00;
+	mes "[Einbech Guide]";
+	mes "Okay, the marks from your Mini-Map have been removed.";
+	mes "If you need any guidance around Einbroch please let me or one of the other Einbech Guides know.";
+	goto L_MENU;
+
+L_NOTICE:
+	mes "[Einbech Guide]";
+	mes "Through the technology of the Schwartzwalt Republic,";
+	mes "we've upgraded to a digital information system that allows us to mark locations on your Mini-Map";
+	mes "for easier navigation.";
+	next;
+  	mes "[Einbech Guide]";
+  	mes "Your Mini-Map is located in the upper right corner of the screen.";
+	mes "If you can't see it, press the Ctrl + Tab keys or click the 'Map' button in your Basic Information Window.";
+  	next;
+  	mes "[Einbech Guide]";
+ 	mes "On your Mini-Map, click on the '+' and '-' symbols to zoom in and out of your Mini-Map.";
+	mes "We hope you enjoy your travels here in the city of Einbech.";
+ 	goto L_MENU;
+
+L_END:
+	mes "[Einbech Guide]";
+	mes "We hope that you";
+	mes "enjoy your travels";
+	mes "here in Einbech.";
+	cutin "ein_soldier",255; 
+	close;
+}
+
+einbech.gat,48,214,4	duplicate(Einbech_Guide)	Guide#Ein2	852
+
+
+//--------------------------------------------------------------
+// Einbroch Guides - [Reddozen]
+//--------------------------------------------------------------
+
+einbroch.gat,72,202,4	script	Guide#1::Einbroch_Guide	852,{
+
+	cutin "ein_soldier",2;
+	mes "[Einbroch Guide]";
+	mes "Welcome to Einbroch, the City of Steel.";
+	mes "Please ask me if you have any questions";
+	goto M_Menu;
+
+M_Menu:
+	next;
+	menu	"City Guide",-,
+		"Remove Marks from Mini-Map",M_2,
+		"Notice",L_NOTICE,
+		"Cancel",M_End;
+
+	mes "[Einbroch Guide]";
+	mes "Please select a location from the following menu.";
+	mes "Would you like me to mark locations on your Mini-Map";
+	next;
+	menu	"No Thanks",-,
+		"Yes Please",sM_1b;
+	
+	set @COMPASS_CHECK,0;
+	goto L_Cont;
+
+sM_1b:
+	set @COMPASS_CHECK,1;
+
+L_Cont:
+sM_Menu:
+	menu	"^FF0000Airport^000000",-,
+		"Train Station",sM_2b,
+		"Factory",sM_2c,
+		"Plaza",sM_2d,
+		"Hotel",sM_2e,
+		"Weapon Shop",sM_2f,
+		"Laboratory",sM_2g,
+		"Blacksmith Guild",sM_2h,
+		"Einbroch Tower",sM_2i,
+		"Cancel",SM_2j;
+
+	mes "[Einbroch Guide]";
+	mes "The ^FF0000Airport^000000 is is located in the northwestern part of the city.";
+	mes "There you can see our city's pride and joy, the Airship.";
+	mes "Remember that you must pay admission to board the Airship.";
+	viewpoint 1,63,208,1,0xFF0000;
+	next;
+	goto sL_Wipe;
+	sM_2b:
+	mes "[Einbroch Guide]";
+	mes "The Train Station is located in the northeast part of Einbroch.";
+	mes "Trains are running between here and Einbech all day long, everyday.";
+	viewpoint 1,238,272,2,0x0000FF;
+	next;
+	goto sL_Wipe;
+
+sM_2c:
+	mes "[Einbroch Guide]";
+	mes "The Factory, perhaps the most important facility in Einbroch, is located in the southern part of the city.";
+	viewpoint 1,149,80,3,0x00FF00;
+	next;
+	goto sL_Wipe;
+
+sM_2d:
+	mes "[Einbroch Guide]";
+	mes "The Plaza, our biggest shopping district, can be found just east from the center of Einbroch";
+	viewpoint 1,231,189,4,0xFF00FF;
+	next;
+	goto sL_Wipe;
+
+sM_2e:
+	mes "[Einbroch Guide]";
+	mes "The Hotel is east of the Plaza and offers top caliber accomodations.";
+	mes "There, you can enjoy your stay in Einbroch in comfort~";
+	viewpoint 1,257,200,5,0x00AAFF;
+	next;
+	goto sL_Wipe;
+
+sM_2f:
+	mes "[Einbroch Guide]";
+	mes "The Weapon Shop is located north from the Plaza.";
+	mes "There you can purchase weapons for your personal use.";
+	viewpoint 1,217,212,6,0xDDAA00;
+	next;
+	goto sL_Wipe;
+
+sM_2g:
+	mes "[Einbroch Guide]";
+	mes "The Laboratory is an annex of the factory and is located in the southwest sector of Einbech";
+	viewpoint 1,43,45,7,0xDDAA00;
+	next;
+	goto sL_Wipe;
+
+sM_2h:
+	mes "[Einbroch Guide]";
+	mes "The Blacksmith Guild is located in the southeast part of Einbroch.";
+	mes "You can upgrade your equipment by using their services.";
+	viewpoint 1,255,105,8,0xDDAA00;
+	next;
+	goto sL_Wipe;
+
+sM_2i:
+	mes "[Einbroch Guide]";
+	mes "The Einbroch Tower is located in the center of the city.";
+	mes "From the top of the tower, you can view all of Einbroch.";
+	viewpoint 1,173,195,9,0xDDAA00;
+	next;
+	goto sL_Wipe;
+
+SM_2j:
+	mes "[Einbroch Guide]";
+	mes "Please ask me to Remove";
+	mes "Marks from Mini-Map if you";
+	mes "no longer wish to have the";
+	mes "location marks displayed";
+	mes "on your Mini-Map.";
+	goto M_Menu;
+
+sL_Wipe:
+	if(@COMPASS_CHECK == 1) goto sM_Menu;
+	viewpoint 2,63,208,1,0xFF0000;
+	viewpoint 2,238,272,2,0x0000FF;
+	viewpoint 2,149,80,3,0x00FF00;
+	viewpoint 2,231,189,4,0xFF00FF;
+	viewpoint 2,257,200,5,0x00AAFF;
+	viewpoint 2,217,212,6,0xDDAA00;
+	viewpoint 2,43,45,7,0xDDAA00;
+	viewpoint 2,255,105,8,0xDDAA00;
+	viewpoint 2,173,195,9,0xDDAA00;
+	if (@COMPASS_CHECK == 0) goto sM_Menu;
+
+M_2:
+	viewpoint 2,63,208,1,0xFF0000;
+	viewpoint 2,238,272,2,0x0000FF;
+	viewpoint 2,149,80,3,0x00FF00;
+	viewpoint 2,231,189,4,0xFF00FF;
+	viewpoint 2,257,200,5,0x00AAFF;
+	viewpoint 2,217,212,6,0xDDAA00;
+	viewpoint 2,43,45,7,0xDDAA00;
+	viewpoint 2,255,105,8,0xDDAA00;
+	viewpoint 2,173,195,9,0xDDAA00;
+	mes "[Einbroch Guide]";
+	mes "Okay, the marks from your Mini-Map have been removed.";
+	mes "If you need any guidance around Einbroch, please let me or one of the other Einbroch Guides know.";
+	cutin "ein_soldier",255;
+	goto M_Menu;
+
+L_NOTICE:
+	mes "[Einbroch Guide]";
+	mes "Through the technology of the Schwartzwalt Republic,";
+	mes "we've upgraded to a digital information system that allows us to mark locations on your Mini-Map";
+	mes "for easier navigation.";
+	next;
+  	mes "[Einbroch Guide]";
+  	mes "Your Mini-Map is located in the upper right corner of the screen.";
+	mes "If you can't see it, press the Ctrl + Tab keys or click the 'Map' button in your Basic Information Window.";
+  	next;
+  	mes "[Einbroch Guide]";
+ 	mes "On your Mini-Map, click on the '+' and '-' symbols to zoom in and out of your Mini-Map.";
+	mes "We hope you enjoy your travels here in the city of Einbroch.";
+ 	goto M_Menu;
+
+M_End:
+	mes "[Einbroch Guide]";
+	mes "We hope that you enjoy your travels here in Einbroch. Oh, and please be aware of the Smog Alerts";
+	cutin "ein_soldier",255;
+	close;
+}
+
+einbroch.gat,155,43,4	duplicate(Einbroch_Guide)	Guide#Einb2	852
+einbroch.gat,162,317,4	duplicate(Einbroch_Guide)	Guide#Einb3	852
+
+
+//--------------------------------------------------------------
+// Geffen Guides - [kobra_k88]
+//--------------------------------------------------------------
+
+// North
+geffen.gat,123,202,5	script	Guide#1::Gef_Guide	705,{
+
+	cutin "gef_soldier",2;
+	mes "[Geffen Soldier]";
+	mes "Welcome to Geffen, the City of Magic.";
+	next;
+	mes "[Geffen Soldier]";
+	mes "We are here to help you find your way.  Please feel free to speak to us anytime you need help.";
+	goto M_Menu;
+
+M_Menu:
+	next;
+	menu	"View Buildings",-,
+		"Notice",M_2,
+		"Cancel",M_End;
+
+		mes "[Geffen Soldier]";
+		mes "Do you want me to leave indications on the Mini-Map?";
+		next;
+		menu	"No Thanks",-,
+			"Yes Please",sM_1b;
+
+			set @COMPASS_CHECK,0;
+			goto L_Cont;
+
+		sM_1b:
+			set @COMPASS_CHECK,1;
+			goto L_Cont;
+
+	L_Cont:
+		mes "[Geffen Soldier]";
+		mes "Please choose a building to view.";
+		next;
+		goto sM_Menu;
+
+	sM_Menu:
+		menu	"^FF0000Magic Acadamy^000000",-,
+			"^00A500Blacksmith Workshop^000000",M_1_2,
+			"^4444FFGeffen Tower^000000",M_1_3,
+			"Armory",M_1_4,
+			"Item Shop",M_1_5,
+			"Pub",M_1_6,
+			"Inn",M_1_7,
+			"Wipe all indications from mini-map",M_1_8,
+			"Cancel", M_End;
+
+			mes "[Geffen Soldier]";
+			mes "'The 'Magic Acadamy' is the home of magical theorists, and the place for would be Mages.";
+			viewpoint 1,61,180,1,0xFF5555;
+			goto sL_Wipe;
+
+		M_1_2:
+			mes "[Geffen Soldier]";
+			mes "The 'Blacksmith Workshop' is SouthEast of Geffen Tower.";
+			mes "Please note that the Blacksmith training has bean moved to Einbroch.";
+			viewpoint 1,182,59,2,0x44FF44;
+			goto sL_Wipe;
+
+		M_1_3:
+			mes "[Geffen Soldier]";
+			mes "The lower levels of 'Geffen Tower' are spawning grounds for monsters.";
+			mes "People go there to train.";
+			mes "The top floor of the Tower is home to the ^0000FF'Wizard's Guild'^000000.";
+			mes "Mages can go there to become Wizards.";
+			viewpoint 1,120,120,3,0x5555FF;
+			goto sL_Wipe;
+
+		M_1_4:
+			mes "[Geffen Soldier]";
+			mes "Head over to the 'Armory' to equip yourself with a variety of weapons and armor.";
+			viewpoint 1,99,140,4,0xFF00FF;
+			goto sL_Wipe;
+
+		M_1_5:
+			mes "[Geffen Soldier]";
+			mes "The 'Item Shop' is the place to go when you need to stock up";
+			mes "on things like potions and fly-wings.";
+			viewpoint 1,44,86,5,0xFF00FF;
+			goto sL_Wipe;
+
+		M_1_6:
+			mes "[Geffen Soldier]";
+			mes "The 'Pub' is a great place to meet people and have fun.";
+			viewpoint 1,138,138,6,0xF0C40F;
+			goto sL_Wipe;
+
+		M_1_7:
+			mes "[Geffen Soldier]";
+			mes "The 'Inn' is a good place to rest and replenish your hp and sp.";
+			viewpoint 1,172,174,7,0xFF8000;
+			goto sL_Wipe;
+
+		M_1_8:
+			set @COMPASS_CHECK, 2;
+			goto sL_Wipe;
+
+		sL_Wipe:
+			if (@COMPASS_CHECK != 2) next;	// Avoids a double 'next' when 'wipe indications' is chosen
+			if (@COMPASS_CHECK == 1) goto sM_Menu;
+			viewpoint 2,61,180,1,0xFF5555;
+			viewpoint 2,182,59,2,0x44FF44;
+			viewpoint 2,120,120,3,0x5555FF;
+			viewpoint 2,99,140,4,0xFF00FF;
+			viewpoint 2,44,86,5,0xFF00FF;
+			viewpoint 2,138,138,6,0xF0C40F;
+			viewpoint 2,172,174,7,0xFF8000;
+			if (@COMPASS_CHECK == 0) goto sM_Menu;
+			mes "[Geffen Soldier]";
+			mes "All indications have been removed";
+			cutin "gef_soldier",255;
+			close;
+
+	M_2:
+		mes "[Geffen Soldier]";
+		mes "We upgraded the Location Guide to the Newest Digital Style.";
+		mes "We hope you like this gorgeous new system.";
+		next;
+		mes "[Geffen Soldier]";
+		mes "Don't forget to refer to the Mini-Map on the Upper-Right corner of your screen.";
+		next;
+		mes "[Geffen Soldier]";
+		mes "If you can't see the Mini-Map, just hit ^0000ff'ctrl+tab'^000000";
+		mes "or Click the ^0000ff'map'^000000 button in the Basic Information Window";
+		mes "Remeber to use the ^ff0000+,-^000000 buttons to adjust the map to your liking.";
+		goto M_Menu;
+
+	M_End:
+		mes "[Geffen Soldier]";
+		mes "Have a nice day.";
+		cutin "gef_soldier",255;
+		close;
+}
+
+// South
+geffen.gat,118,62,0	duplicate(Gef_Guide)	Guide#Gef2	705
+
+// East
+geffen.gat,203,116,2	duplicate(Gef_Guide)	Guide#Gef3	705
+
+// West
+geffen.gat,37,123,5	duplicate(Gef_Guide)	Guide#Gef4	705
+
+
+//--------------------------------------------------------------
+// Hugel Guides - [kobra_k88/erKURITA]
+//--------------------------------------------------------------
+
+hugel.gat,98,57,3	script	Old Lady#hu1	863,{
+
+	mes "[Old Lady]";
+	mes "Welcome to Hugel, the Power Source City.";
+	next;
+	mes "[Old Lady]";
+	mes "I am here to help you find your way. Please feel free to speak to me anytime you need help.";
+
+M_Menu:
+	next;
+	menu	"View Buildings",-,
+		"Notice",M_2,
+		"Cancel",M_End;
+
+		mes "[Old Lady]";
+		mes "Do you want me to leave indications on the Mini-Map?";
+		next;
+		menu	"No Thanks",-,
+			"Yes Please",sM_1b;
+		
+			set @COMPASS_CHECK,0;
+			goto L_Cont;
+
+		sM_1b:
+			set @COMPASS_CHECK,1;
+
+	L_Cont:
+		mes "[Old Lady]";
+		mes "Please choose a building to view.";
+		next;
+	sM_Menu:
+		menu	"Church",-,
+			"Hotel",M_1_2,
+			"Pub",M_1_3,
+			"Airship",M_1_4,
+			"Weapon/Armor Shop",M_1_5,
+			"Grocery/Tool shop",M_1_6,
+			"Firecrackers Shop",M_1_7,
+			"Hunter Guild",M_1_8a,
+			"^000066Poring Track 1^000000",M_1_9,
+			"^000066Poring Track 2^000000",M_1_10,
+			"^000066Bingo House^000000",M_1_11,
+			"Wipe all indications from mini-map",M_1_8,
+			"Cancel", M_End;
+
+			mes "[Old Lady]";
+			mes "'The 'Church' here in Hugel will grant your wedding's day a lot of happiness.";
+			mes "It's located at the east of Hugel, south of the Airship";
+			viewpoint 1,157,112,1,0xFF5555;
+			goto sL_Wipe;
+
+		M_1_2:
+			mes "[Old Lady]";
+			mes "The 'Hotel' is a few steps close here. Just go north through this road.";
+			mes "It is a good place to rest and replenish your hp and sp.";
+			viewpoint 1,101,78,2,0x44FF44;
+			goto sL_Wipe;
+
+		M_1_3:
+			mes "[Old Lady]";
+			mes "The 'Pub' is east of here, go and pass by for some rest! It is a great place to meet people and have fun.";
+			viewpoint 1,126,65,3,0x5555FF;
+			goto sL_Wipe;
+
+		M_1_4:
+			mes "[Old Lady]";
+			mes "Head over to the 'Airship' to fly to other cities.";
+			viewpoint 1,189,166,4,0xFF00FF;
+			goto sL_Wipe;
+
+		M_1_5:
+			mes "[Old Lady]";
+			mes "The 'Weapon/Armor shop' is the place to go when you need something to defend yourself from the other monsters";
+			viewpoint 1,72,155,5,0xFF00FF;
+			goto sL_Wipe;
+
+		M_1_6:
+			mes "[Old Lady]";
+			mes "The 'Grocery/Tool shop' is the place to go when you need to stock up on things like potions and fly-wings.";
+			viewpoint 1,92,164,6,0xF0C40F;
+			goto sL_Wipe;
+
+		M_1_7:
+			mes "[Old Lady]";
+			mes "The 'Firecracker shop' will provide you with some flashy fireworks to lit up your night";
+			viewpoint 1,94,104,7,0xFF8000;
+			goto sL_Wipe;
+
+		M_1_8a:
+			mes "[Old Lady]";
+			mes "The 'Hunter Guild' is located at the northeast of Hugel. Sharpen your eyes!";
+			viewpoint 1,208,225,7,0xFF8000;
+			goto sL_Wipe;
+
+		M_1_9:
+			mes "[Old Lady]";
+			mes "The '^000066Poring Track Nº1^000000' is new and exciting entertaintment, make sure to check it!";
+			viewpoint 1,58,72,7,0xFF8000;
+			goto sL_Wipe;
+
+		M_1_10:
+			mes "[Old Lady]";
+			mes "The '^000066Poring Track Nº2^000000' is new and exciting entertaintment, make sure to check it!";
+			viewpoint 1,62,68,7,0xFF8000;
+			goto sL_Wipe;
+
+		M_1_11:
+			mes "[Old Lady]";
+			mes "The 'Bingo House' is located at the northwest of Hugel. Lay your bet ladies and gentlements!";
+			viewpoint 1,57,207,7,0xFF8000;
+			goto sL_Wipe;
+
+		M_1_8:
+			set @COMPASS_CHECK, 2;
+
+		sL_Wipe:
+			if(@COMPASS_CHECK != 2) next;	// avoids a double 'next' when 'wipe indications' is chosen
+			if(@COMPASS_CHECK == 1) goto sM_Menu;
+			viewpoint 2,157,112,1,0xFF5555;
+			viewpoint 2,101,78,2,0x44FF44;
+			viewpoint 2,126,65,3,0x5555FF;
+			viewpoint 2,189,166,4,0xFF00FF;
+			viewpoint 2,72,155,5,0xFF00FF;
+			viewpoint 2,92,164,6,0xF0C40F;
+			viewpoint 2,94,104,7,0xFF8000;
+			viewpoint 2,208,225,7,0xFF8000;
+			viewpoint 2,58,72,7,0xFF8000;
+			viewpoint 2,62,68,7,0xFF8000;
+			viewpoint 2,57,207,7,0xFF8000;
+			if (@COMPASS_CHECK == 0) goto sM_Menu;
+			mes "[Old Lady]";
+			mes "All indications have been removed";
+			close;
+
+	M_2:
+		mes "[Old Lady]";
+		mes "We upgraded the Location Guide to the Newest Digital Style.";
+		mes "We hope you like this gorgeous new system.";
+		next;
+		mes "[Old Lady]";
+		mes "Don't forget to refer to the Mini-Map on the Upper-Right corner of your screen.";
+		next;
+		mes "[Old Lady]";
+		mes "If you can't see the Mini-Map, just hit ^0000ff'ctrl+tab'^000000";
+		mes "or Click the ^0000ff'map'^000000 button in the Basic Information Window";
+		mes "Remeber to use the ^ff0000+,-^000000 buttons to adjust the map to your liking.";
+		goto M_Menu;
+
+	M_End:
+		mes "[Old Lady]";
+		mes "Have a nice day, deary~";
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Izlude Guides - [kobra_k88]
+//--------------------------------------------------------------
+
+izlude.gat,121,87,6	script	Guide	105,{
+
+	cutin "prt_soldier",2;
+	mes "[Izlude Guide]";
+	mes "Welcome to Izlude, Prontera's satellite city.";
+	mes "If you need any guidance around Izlude, feel free to ask me at anytime.";
+	goto L_MENU;
+
+L_MENU:
+	next;
+	menu	"City Guide",L_CITY,
+		"Remove Marks from Mini-Map",L_REMOVE,
+		"Notice",L_NOTICE,
+		"Cancel",L_END;
+
+L_CITY:
+	mes "[Izlude Guide]";
+  	mes "Please select a location from the following menu.";
+  	mes "Would you like me to mark locations on your Mini-Map?";
+  	next;
+  	menu	"Yes.",L_YES,
+		"No.",L_NO;
+
+L_NO:
+  		set @COMPASS_CHECK,0;
+		goto L_CONT;
+
+L_YES:
+  		set @COMPASS_CHECK,1;
+L_CONT:
+L_MENU_2:
+	menu	"^FF0000Swordman Association^000000",L_SWORD,
+		"Swordman Hall",L_HALL,
+		"Arena",L_ARENA,
+		"Izlude Marina",L_MARINA,
+		"Weapon Shop",L_WEAPON,
+		"Tool Shop",L_TOOL,
+		"Cancel",-;
+
+	mes "[Izlude Guide]";
+ 	mes "Please ask me to remove marks from then Mini-Map if you no";
+	mes "longer wish to have the location marks displayed on your Mini-Map.";
+ 	goto L_MENU;
+
+L_SWORD:
+	mes "[Izlude Guide]";
+	mes "The Swordman Association is located on an island that is in west Izlude.";
+	mes "If you're thinking of changing jobs to Swordman, you should check it out.";
+	viewpoint 1,52,140,1,0xFF0000;
+	next;
+	goto L_WIPE;
+
+L_HALL:
+	mes "[Izlude Guide]";
+	mes "The Swordman Hall is located on the eastern island connected to Izlude.";
+	viewpoint 1,214,130,2,0x00FF00;
+	next;
+	goto L_WIPE;
+
+L_ARENA:
+	mes "[Izlude Guide]";
+	mes "Izlude's famous Arena is located at the northern end of Izlude.";
+	viewpoint 1,128,225,3,0x00FF00;
+	next;
+	goto L_WIPE;
+
+L_MARINA:
+	mes "[Izlude Guide]";
+	mes "You can find the Marina in the northeast part of Izlude.";
+	mes "There, you can ride a ship which will take you to Alberta or Byalan Island.";
+	viewpoint 1,200,180,4,0xFF0000;
+	next;
+	goto L_WIPE;
+
+L_WEAPON:
+	mes "[Izlude Guide]";
+	mes "You can easily find the Weapon Shop in northwest Izlude.";
+	viewpoint 1,111,149,5,0xFF00FF;
+	next;
+	goto L_WIPE;
+
+L_TOOL:
+	mes "[Izlude Guide]";
+	mes "The Tool Shop shouldn't be too hard to find in the northeast part of Izlude.";
+	viewpoint 1,148,148,6,0xFF00FF;
+	next;
+	goto L_WIPE;
+
+L_WIPE:
+ 	if(@COMPASS_CHECK == 1)goto L_MENU_2;
+	viewpoint 2,52,140,1,0xFF0000;
+	viewpoint 2,214,130,2,0x00FF00;
+	viewpoint 2,128,225,3,0x00FF00;
+	viewpoint 2,200,180,4,0xFF0000;
+	viewpoint 2,111,149,5,0xFF00FF;
+	viewpoint 2,148,148,6,0xFF00FF;
+	goto L_MENU_2;
+
+L_REMOVE:
+	viewpoint 2,52,140,1,0xFF0000;
+	viewpoint 2,214,130,2,0x00FF00;
+	viewpoint 2,128,225,3,0x00FF00;
+	viewpoint 2,200,180,4,0xFF0000;
+	viewpoint 2,111,149,5,0xFF00FF;
+	viewpoint 2,148,148,6,0xFF00FF;
+  	goto L_MENU;
+
+L_NOTICE:
+ 	mes "[Izlude Guide]";
+ 	mes "Advances in sorcery and technology have allowed us to update our information system,";
+	mes "enabling up to mark locations on your Mini-Map for easier navigation.";
+  	next;
+  	mes "[Izlude Guide]";
+  	mes "Your Mini-Map is located in the upper right corner of the screen.";
+	mes "If you can't see it, press the Ctrl + Tab keys or click the 'Map' button in your Basic Information Window.";
+  	next;
+  	mes "[Izlude Guide]";
+ 	mes "On your Mini-Map, click on the '+' and '-' symbols to zoom in and out of your Mini-Map.";
+	mes "We hope you enjoy your travels here in the city of Izlude.";
+ 	goto L_MENU;
+
+L_END:
+ 	mes "[Izlude Guide]";
+ 	mes "Okay then, feel free to come to me if you ever feel lost around Izlude, alright?";
+	cutin "prt_soldier",255; 
+ 	close;
+}
+
+
+//--------------------------------------------------------------
+// Juno Guides - [Tsuyuki]
+//--------------------------------------------------------------
+
+yuno.gat,153,47,4	script	Juno Guide	700,{
+
+	mes "[Miss Yoon]";
+	mes "A place that understands the present and envisions the future............";
+	mes "This is Yuno, the city of Sages.  Welcome to Yuno.";
+	next;
+	menu	"Weapon Shop",L_Yoon01,
+		"Tool Shop",L_Yoon02,
+		"Sage Castle (Sage Job Change Place)",L_Yoon03,
+		"Street of Book Stores",L_Yoon04,
+		"Juphero Plaza",L_Yoon05,
+		"Library of the Republic",L_Yoon06,
+		"Schwheicherbil Magic Academy",L_Yoon07,
+		"Monster Museum",L_Yoon08,
+		"End Conversation",L_End;
+
+	L_Yoon01:
+		viewpoint 1,120,138,1,0xFF3355;
+		mes "[Miss Yoon]";
+		mes "Please look at the mini map.";
+		mes "^FF3355+^000000 -> Weapon Shop";
+		mes "Thank you, have a good day.";
+		close;
+
+	L_Yoon02:
+		viewpoint 1,193,142,2,0x3355FF;
+		mes "[Miss Yoon]";
+		mes "Please look at the mini map.";
+		mes "^3355FF+^000000 -> Tool Shop";
+		mes "Thank you, have a good day.";
+		close;
+
+	L_Yoon03:
+		viewpoint 1,90,318,3,0x33FF55;
+		mes "[Miss Yoon]";
+		mes "Please look at the mini map.";
+		mes "^33FF55+^000000 -> Sage Castle";
+		mes "(Sage Job Change Place)";
+		mes "Thank you, have a good day.";
+		close;
+
+	L_Yoon04:
+		viewpoint 1,257,102,4,0xFF3355;
+		mes "[Miss Yoon]";
+		mes "Please look at the mini map.";
+		mes "^FF3355+^000000 -> Street of Book Stores";
+		mes "Thank you, have a good day.";
+		close;
+
+	L_Yoon05:
+		viewpoint 1,157,170,5,0x3355FF;
+		mes "[Miss Yoon]";
+		mes "Please look at the mini map.";
+		mes "^3355FF+^000000 -> Juphero Plaza";
+		mes "Thank you, have a good day.";
+		close;
+
+	L_Yoon06:
+		viewpoint 1,336,204,6,0x33FF55;
+		mes "[Miss Yoon]";
+		mes "Please look at the mini map.";
+		mes "^33FF55+^000000 -> Library of the Republic";
+		mes "Thank you, have a good day.";
+		close;
+
+	L_Yoon07:
+		viewpoint 1,323,281,7,0xFF3355;
+		mes "[Miss Yoon]";
+		mes "Please look at the mini map.";
+		mes "^FF3355+^000000 -> Schweicherbil Magic Academy";
+		mes "Thank you, have a good day.";
+		close;
+
+	L_Yoon08:
+		viewpoint 1,278,288,8,0x3355FF;
+		mes "[Miss Yoon]";
+		mes "Please look at the mini map.";
+		mes "^3355FF+^000000 -> Monster Museum";
+		mes "Thank you, have a good day.";
+		close;
+
+	L_End:
+		mes "[Miss Yoon]";
+		mes "A great city of wise men.";
+		mes "A city of Knowledge!";
+		mes "Welcome to Juno.";
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Kunlun Guides - [jAthena/Harp]
+//--------------------------------------------------------------
+
+gonryun.gat,163,60,4	script	Kunlun Guide	780,{
+
+	mes "[Ha Won Chi]";
+	mes "It's always booming with activity around here.";
+	mes "Everyday, people are feverishly trading goods.";
+	mes "Welcome to Kunlun.";
+	next;
+	mes "[Ha Won Chi]";
+	mes "This is a guide service offered by the Kunlun businesses.";
+	mes "If there's anything you'd like to know, pelase don't hesitate to ask.";
+	next;
+	menu	"House of the Village Elder",KunCase1,
+		"Tool Shop",KunCase2,
+		"Weapon Shop",KunCase3,
+		"Armor Dealer",KunCase4,
+		"Traveller's Inn",KunCase5,
+		"Remove + Marks",KunCase6;
+
+	KunCase1:
+		viewpoint 1,109,131,0,0xff3355;
+		mes "[Ha Won Chi]";
+		mes "The house of the Village Elder is where the ^ff3355+^000000 mark is on the mini-map.";
+		goto KunEnd;
+
+	KunCase2:
+		viewpoint 1,147,84,1,0xce6300;
+		mes "[Ha Won Chi]";
+		mes "The Tool Shop is where the ^ce6300+^000000 is on the mini-map.";
+		goto KunEnd;
+
+	KunCase3:
+		viewpoint 1,174,101,2,0x55ff33;
+		mes "[Ha Won Chi]";
+		mes "The Weapons Shop is where the ^55ff33+^000000 is on the mini-map.";
+		goto KunEnd;
+
+	KunCase4:
+		viewpoint 1,173,84,3,0x3355ff;
+		mes "[Ha Won Chi]";
+		mes "The Armor Shop is where the ^3355ff+^000000 is on the mini-map.";
+		goto KunEnd;
+
+	KunCase5:
+		viewpoint 1,215,114,4,0xffffff;
+		mes "[Ha Won Chi]";
+		mes "The Traveller's Inn is where the ^ffffff+^000000 is on the mini-map.";
+		goto KunEnd;
+
+	KunCase6:
+		mes "[Ha Won Chi]";
+		mes "All of the + Marks have been erased!";
+		viewpoint 2,109,131,0,0xff3355;
+		viewpoint 2,147,84,1,0xce6300;
+		viewpoint 2,174,101,2,0x55ff33;
+		viewpoint 2,173,84,3,0x3355ff;
+		viewpoint 2,215,114,4,0xffffff;
+		goto KunEnd;
+
+	KunEnd:
+		mes "Have an entertaining in the most entertaining town of tehm all, Kunlun!";
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Lighthalzen Guides - [MasterOfMuppets]
+//--------------------------------------------------------------
+
+lighthalzen.gat,220,311,3	script	Guide::LhzSlum	852,{
+
+	mes "[Lighthalzen Guide]";
+	mes "welcome to Lighthalzen,";
+	mes "the Coropration City-State.";
+	mes "If you need any guidance";
+	mes "around the city, feel free.";
+	mes "to ask me and I'll do my";
+	mes "very best to help you.";
+	next;
+
+loopback:
+	menu	"City Guide",s_Guide,
+		"Remove Marks from Mini-Map",s_Remove,
+		"Notice.",s_Notice,
+		"Cancel",-;
+
+	mes "[Lighthalzen Guide]";
+	mes "Lighthalzen is divided";
+	mes "into the East and West";
+	mes "districts by a railroad that";
+	mes "runs right through the middle.";
+	mes "There are always guards on";
+	mes "watch to protect the peace.";
+	next;
+	mes "[Lighthalzen Guide]";
+	mes "Please don't hesitate";
+	mes "to report and suspicious";
+	mes "activity or persons to us.";
+	mes "We hope that you enjoy";
+	mes "our fair city, adventurer.";
+	close;
+
+s_Guide:
+	mes "[Lighthalzen Guide]";
+	mes "Please be aware that I'm";
+	mes "in charge of providing info";
+	mes "regarding the East District,";
+	mes "more commonly known as the";
+	mes "Slums. Select the location that";
+	mes "you'd like know more about.";
+	next;
+	mes "[Lighthalzen Guide]";
+	mes "But before that,";
+	mes "would you like me";
+	mes "to mark locations";
+	mes "on your Mini-Map?";
+	next;
+	menu	"Yes",s_Yes,
+		"No",-;
+
+	goto s_Cont;
+
+s_Yes:
+	set @tempguide,1;
+
+s_Cont:
+	menu	"Tool Shop",s_Tool,
+		"Mill",s_Mill,
+		"Pub",s_Pub,
+		"Cancel",-;
+
+	mes "[Lighthalzen Guide]";
+	mes "Please ask me to \"Remove";
+	mes "Marks from Mini-Map\" if you";
+	mes "no longer wish to have the";
+	mes "location marks displayed";
+	mes "on your Mini-Map.";
+	next;
+	goto loopback;
+
+s_Tool:
+	mes "[Lighthalzen Guide]";
+	mes "The Tool Shop is";
+	mes "located in the 11 o' clock";
+	mes "direction from the center";
+	mes "of the East District.";
+	if (@tempguide)viewpoint 1,324,301,1,0xFF0000;
+	next;
+	goto s_Cont;
+
+s_Mill:
+	mes "[Lighthalzen Guide]";
+	mes "On your Mini-Map,";
+	mes "the Mill can be found in";
+	mes "the 1 o'clock direction";
+	mes "in the East District.";
+	if (@tempguide)viewpoint 1,365,301,2,0xFF00FF;
+	next;
+	goto s_Cont;
+
+s_Pub:
+	mes "[Lighthalzen Guide]";
+	mes "The Pub is located";
+	mes "in the southern part";
+	mes "of the East District.";
+	if (@tempguide)viewpoint 1,346,232,3,0xCCFFFF;
+	next;
+	goto s_Cont;
+
+s_Remove:
+	viewpoint 2,324,301,1,0xFF0000;
+	viewpoint 2,365,301,2,0xFF00FF;
+	viewpoint 2,346,232,3,0xCCFFFF;
+	mes "[Lighthalzen Guide]";
+	mes "Okay, the marks from your Mini-Map have been removed.";
+	mes "If you need any guidance around Lighthalzen, please let me or one of the other Lighthalzen Guides know.";
+	next;
+	goto loopback;
+
+s_Notice:
+	mes "[Lighthalzen Guide]";
+	mes "Advances in sorcery and";
+	mes "techonlogy have allowed";
+	mes "us to update our information";
+	mes "system, enabling up to mark";
+	mes "locations on your Mini-Map";
+	mes "for easier navigation.";
+	next;
+	mes "[Lighthalzen Guide]";
+	mes "Your Mini-Map is located";
+	mes "in the upper right cornern";
+	mes "of the screen. If you can't";
+	mes "see it, press the Ctrl + Tab";
+	mes "keys or click the \"Map\" button";
+	mes "in your Basic Info Window.";
+	next;
+	mes "[Lighthalzen Guide]";
+	mes "On your Mini-Map,";
+	mes "click on the \"+\" and \"-\"";
+	mes "symbols to zoom in and";
+	mes "out of your Mini-Map. We";
+	mes "hope you enjoy your travels";
+	mes "here in Lighthalzen.";
+	next;
+	goto loopback;
+
+}
+
+lighthalzen.gat,207,311,3	script	Guide::LhzWest	852,{
+
+	mes "[Lighthalzen Guide]";
+	mes "welcome to Lighthalzen,";
+	mes "the Coropration City-State.";
+	mes "If you need any guidance";
+	mes "around the city, feel free.";
+	mes "to ask me and I'll do my";
+	mes "very best to help you.";
+	next;
+
+loopback:
+	menu	"City Guide",s_Guide,
+		"Remove Marks from Mini-Map",s_Remove,
+		"Notice.",s_Notice,
+		"Cancel",-;
+
+	mes "[Lighthalzen Guide]";
+	mes "Lighthalzen is divided";
+	mes "into the East and West";
+	mes "districts by a railroad that";
+	mes "runs right through the middle.";
+	mes "There are always guards on";
+	mes "watch to protect the peace.";
+	next;
+	mes "[Lighthalzen Guide]";
+	mes "Please don't hesitate";
+	mes "to report and suspicious";
+	mes "activity or persons to us.";
+	mes "We hope that you enjoy";
+	mes "our fair city, adventurer.";
+	close;
+
+s_Guide:
+	mes "[Lighthalzen Guide]";
+	mes "Please be aware that I'm";
+	mes "in charge of providing info";
+	mes "regarding the West District,";
+	mes "of Lighthalzen. Now, please";
+	mes "select the location that you'd";
+	mes "like to learn more about.";
+	next;
+	mes "[Lighthalzen Guide]";
+	mes "But before that,";
+	mes "would you like me";
+	mes "to mark locations";
+	mes "on your Mini-Map?";
+	next;
+	menu	"Yes",s_Yes,
+		"No",-;
+
+	goto s_Cont;
+
+s_Yes:
+	set @tempguide,1;
+
+s_Cont:
+	menu	"^FF0000Rekenber Corporation",s_Rekenber,
+		"^000000Train Station",s_Train,
+		"Police Station",s_Police,
+		"Bank",s_Bank,
+		"Hotel",s_Hotel,
+		"Airport",s_Airport,
+		"Merchant Guild",s_Merchant,
+		"Jewel Shop",s_Jewel,
+		"Weapon Shop",s_Weap,
+		"Department Store",s_Store,
+		"Cancel",-;
+
+	mes "[Lighthalzen Guide]";
+	mes "Please ask me to \"Remove";
+	mes "Marks from Mini-Map\" if you";
+	mes "no longer wish to have the";
+	mes "location marks displayed";
+	mes "on your Mini-Map.";
+	next;
+	goto loopback;
+
+s_Rekenber:
+	mes "[Lighthalzen Guide]";
+	mes "Rekenber Corporation,";
+	mes "the largest company in";
+	mes "the Schwartzwald Republic,";
+	mes "is located in the northwestern";
+	mes "Lighthalzen. You can't miss";
+	mes "the headquarters building.";
+	if (@tempguide)viewpoint 1,103,244,1,0xFF0000;
+	next;
+	goto s_Cont;
+
+s_Train:
+	mes "[Lighthalzen Guide]";
+	mes "The Train Station is";
+	mes "located in the center of";
+	mes "the city, where we have";
+	mes "a direct railroad to Einbroch.";
+	if (@tempguide)viewpoint 1,240,163,2,0xFF00FF;
+	next;
+	goto s_Cont;
+
+s_Police:
+	mes "[Lighthalzen Guide]";
+	mes "Our Police Station is just";
+	mes "north of the city's center.";
+	mes "Please don't hesitate to report";
+	mes "any suspicious persons and";
+	mes "activity, or if you have any";
+	mes "problems whatsoever.";
+	if (@tempguide)viewpoint 1,236,276,3,0xCCFFFF;
+	next;
+	goto s_Cont;
+
+s_Bank:
+	mes "[Lighthalzen Guide]";
+	mes "The Bank is located";
+	mes "just opposite to the";
+	mes "Lighthalzen Police Station,";
+	mes "which is a pretety good idea";
+	mes "when I think about it, actually.";
+	if (@tempguide)viewpoint 1,199,257,4,0x0000FF;
+	next;
+	goto s_Cont;
+
+s_Hotel:
+	mes "[Lighthalzen Guide]";
+	mes "Our Hotel is located in";
+	mes "the middle of the South Plaza.";
+	mes "Due to its quality of services and";
+	mes "luxurious accomodations, this";
+	mes "hotel is extremely popular.";
+	if (@tempguide)viewpoint 1,159,133,5,0x0FFF00;
+	next;
+	goto s_Cont;
+
+s_Airport:
+	mes "[Lighthalzen Guide]";
+	mes "The Airport is to the far";
+	mes "west of the Central Promenade";
+	mes "You can travel anywhere within";
+	mes "the Schwartzwald Republic by";
+	mes "riding one of the Airships.";
+	if (@tempguide)viewpoint 1,266,76,6,0x00FF00;
+	next;
+	goto s_Cont;
+
+s_Merchant:
+	mes "[Lighthalzen Guide]";
+	mes "The Merchant Guild can be";
+	mes "found in the southwestern";
+	mes "part of Lighthalzen.";
+	if (@tempguide)viewpoint 1,74,52,7,0xEFAEBD;
+	next;
+	goto s_Cont;
+
+s_Jewel:
+	mes "[Lighthalzen Guide]";
+	mes "The Jewelry Shop is";
+	mes "located just west of";
+	mes "the South Plaza.";
+	if (@tempguide)viewpoint 1,92,110,8,0xFF9500;
+	next;
+	goto s_Cont;
+
+s_Weap:
+	mes "[Lighthalzen Guide]";
+	mes "The Weapon Shop is";
+	mes "located at the end of";
+	mes "the Central Promenade.";
+	mes "It's at least worth a look";
+	mes "if you're serious about";
+	mes "adventuring around here.";
+	if (@tempguide)viewpoint 1,196,46,9,0x330033;
+	next;
+	goto s_Cont;
+
+s_Store:
+	mes "[Lighthalzen Guide]";
+	mes "The Department Store is";
+	mes "located in the middle of";
+	mes "Lighthalzen and is the biggest";
+	mes "and most convenient place for";
+	mes "shopping for almost everything.";
+	if (@tempguide)viewpoint 1,199,163,10,0xFFFF00;
+	next;
+	goto s_Cont;
+
+s_Remove:
+	viewpoint 2,103,244,1,0xFF0000;
+	viewpoint 2,240,163,2,0xFF00FF;
+	viewpoint 2,236,276,3,0xCCFFFF;
+	viewpoint 2,199,257,4,0x0000FF;
+	viewpoint 2,159,133,5,0x0FFF00;
+	viewpoint 2,266,76,6,0x00FF00;
+	viewpoint 2,74,52,7,0xEFAEBD;
+	viewpoint 2,92,110,8,0xFF9500;
+	viewpoint 2,196,46,9,0x330033;
+	viewpoint 2,199,163,10,0xFFFF00;
+	mes "[Lighthalzen Guide]";
+	mes "Okay, the marks from your Mini-Map have been removed.";
+	mes "If you need any guidance around Lighthalzen, please let me or one of the other Lighthalzen Guides know.";
+	next;
+	goto loopback;
+
+s_Notice:
+	mes "[Lighthalzen Guide]";
+	mes "Advances in sorcery and";
+	mes "techonlogy have allowed";
+	mes "us to update our information";
+	mes "system, enabling up to mark";
+	mes "locations on your Mini-Map";
+	mes "for easier navigation.";
+	next;
+	mes "[Lighthalzen Guide]";
+	mes "Your Mini-Map is located";
+	mes "in the upper right cornern";
+	mes "of the screen. If you can't";
+	mes "see it, press the Ctrl + Tab";
+	mes "keys or click the \"Map\" button";
+	mes "in your Basic Info Window.";
+	next;
+	mes "[Lighthalzen Guide]";
+	mes "On your Mini-Map,";
+	mes "click on the \"+\" and \"-\"";
+	mes "symbols to zoom in and";
+	mes "out of your Mini-Map. We";
+	mes "hope you enjoy your travels";
+	mes "here in Lighthalzen.";
+	next;
+	goto loopback;
+}
+
+lighthalzen.gat,154,100,5	duplicate(LhzWest)	Guide#lhz1	852
+lighthalzen.gat,319,243,5	duplicate(LhzSlum)	Guide#lhz2	852
+
+
+//--------------------------------------------------------------
+// Louyang Guides - [jAthena/Tsuyuki]
+//--------------------------------------------------------------
+
+louyang.gat,224,104,4	script	Representative#Lou	818,{
+
+	mes "[Representative]";
+	mes "Welcome to Louyang,";
+	mes "an ancient land with";
+	mes "a history full of tales";
+	mes "of bravery.";
+	next;
+	mes "[Representative]";
+	mes "We now provide an ocean lane to";
+	mes "accomodate foreign travelers and";
+	mes "intercultural exchange from which";
+	mes "all can benefit.";
+	next;
+	mes "[Representative]";
+	mes "Louyang is famous for";
+	mes "its elaborate history, as well as";
+	mes "specialties that are unique to this";
+	mes "nation. Please take your time and";
+	mes "enjoy your stay.";
+	next;
+	menu	"Ask Building Locations.",LouCase1A,
+		"Remove all marks from mini-map.",LouCase2A,
+		"Cancel.",LouCase3A;
+
+	LouCase1A:
+		mes "[Representative]";
+		mes "Where would you like to go?";
+		next;
+		menu	"Dragon Castle",LouCase1B,
+			"Doctor's Office",LouCase2B,
+			"City Hall",LouCase3B,
+			"Weapon Shop",LouCase4B,
+			"Tool Shop",LouCase5B,
+			"Tavern",LouCase6B,
+			"Cancel",LouCase7B;
+
+			LouCase1B:
+				mes "[Representative]";
+				mes "The Dragon Castle is located at ^ff0000+^000000.";
+				mes "It is where all the nobles reside,";
+				mes "including our lord.";
+				next;
+				mes "[Representative]";
+				mes "Since you're an outsider, I guess";
+				mes "it would be appropriate for you to";
+				mes "visit our lord first.";
+				viewpoint 1,218,255,1,0xff0000;
+				close;
+
+			LouCase2B:
+				mes "[Representative]";
+				mes "We have a very skillful doctor.";
+				mes "You can find her office at ^8a0000+^000000.";
+				next;
+				mes "[Representative]";
+				mes "It is said that there";
+				mes "is no disease she cannot cure.";
+				mes "Well, I can't guarantee if that's";
+				mes "true or not.";
+				viewpoint 1,263,93,2,0x8a0000;
+				close;
+
+			LouCase3B:
+				mes "[Representative]";
+				mes "We have a City Hall where the";
+				mes "federal government operates.";
+				mes "It is located at ^777777+^000000.";
+				next;
+				mes "[Representative]";
+				mes "If you have any problems,";
+				mes "you should talk with the";
+				mes "employees in City Hall.";
+				viewpoint 1,309,80,3,0x00ff00;
+				close;
+
+			LouCase4B:
+				mes "[Representative]";
+				mes "The Weapon Shop is located at ^00ff00+^000000.";
+				next;
+				mes "[Representative]";
+				mes "You will see";
+				mes "marvelous weapons forged";
+				mes "by the well-experienced";
+				mes "blacksmiths of Louyang.";
+				viewpoint 1,145,174,4,0x00ff00;
+				close;
+
+			LouCase5B:
+				mes "[Representative]";
+				mes "The Tool Shop is located at ^0000ff+^000000.";
+				next;
+				mes "[Representative]";
+				mes "Knowing your enemy";
+				mes "is half the battle!";
+				mes "It's also safer to prepare yourself";
+				mes "than to be sorry later. Why don't";
+				mes "you go check their supplies?";
+				viewpoint 1,136,97,5,0x0000ff;
+				close;
+
+			LouCase6B:
+				mes "[Representative]";
+				mes "When you get tired during your";
+				mes "trip, I suggest that you visit the";
+				mes "Tavern. It's located at ^00ff00+^000000.";
+				viewpoint 1,280,167,6,0x00ff00;
+				next;
+				mes "[Representative]";
+				mes "The Tavern is a good place";
+				mes "to meet other tourists, as well as";
+				mes "to hear of any news that may be";
+				mes "helpful to know.";
+				close;
+
+			LouCase7B:
+				mes "[Representative]";
+				mes "If you wish to remove all marks";
+				mes "on your mini-map, please choose";
+				mes "'Remove all marks from mini-map.'";
+				mes "from the menu.";
+				close;
+
+	LouCase2A:
+		mes "[Representative]";
+		mes "Done! All the marks on your";
+		mes "mini-map are erased. Feel free to";
+		mes "ask me about building locations";
+		mes "whenever you need to.";
+		viewpoint 2,218,255,1,0xff0000;
+		viewpoint 2,263,93,2,0x8a0000;
+		viewpoint 2,309,80,3,0x00ff00;
+		viewpoint 2,145,174,4,0x00ff00;
+		viewpoint 2,136,97,5,0x0000ff;
+		viewpoint 2,280,167,6,0x00ff00;
+		close;
+
+	LouCase3A:
+		mes "[Representative]";
+		mes "I understand that you want to";
+		mes "explore Louyang and see the";
+		mes "sights for yourself. Alright then,";
+		mes "take care!";
+		close;
+}
+
+louyang.gat,160,175,4	script	Soldier#Lou1	825,{
+
+	mes "[Soldier]";
+	mes "Welcome to Louyang,";
+	mes "a city with a long";
+	mes "and colorful history.";
+	next;
+	mes "[Soldier]";
+	mes "Recently we've developed";
+	mes "an ocean lane to accomodate";
+	mes "positive exchange with";
+	mes "foreign nations.";
+	next;
+	mes "[Soldier]";
+	mes "Louyang is well-known for various";
+	mes "specialties in addition to its rich";
+	mes "history. Here you can find many";
+	mes "things unique to our land.";
+	next;
+	mes "[Soldier]";
+	mes "Please take your time";
+	mes "and we invite you to enjoy";
+	mes "your trip here in Louyang.";
+	next;
+	menu	"Ask Building Locations.",LouCase1A,
+		"Remove all marks from mini-map.",LouCase2A,
+		"Cancel.",LouCase3A;
+
+	LouCase1A:
+		mes "[Soldier]";
+		mes "Where would you like to go?";
+		next;
+		menu	"Dragon Castle",LouCase1B,
+			"Doctor's Office",LouCase2B,
+			"City Hall",LouCase3B,
+			"Weapon Shop",LouCase4B,
+			"Tool Shop",LouCase5B,
+			"Tavern",LouCase6B,
+			"Cancel",LouCase7B;
+
+			LouCase1B:
+				mes "[Soldier]";
+				mes "The Dragon Castle is located at ^ff0000+^000000.";
+				mes "It is where all the nobles reside,";
+				mes "including our lord.";
+				next;
+				mes "[Soldier]";
+				mes "Since you're an outsider, I guess";
+				mes "it would be appropriate for you to";
+				mes "visit our lord first.";
+				viewpoint 1,218,255,1,0xff0000;
+				close;
+
+			LouCase2B:
+				mes "[Soldier]";
+				mes "We have a very skillful doctor.";
+				mes "You can find her office at ^8a0000+^000000.";
+				next;
+				mes "[Soldier]";
+				mes "It is said that there";
+				mes "is no disease she cannot cure.";
+				mes "Well, I can't guarantee if that's";
+				mes "true or not.";
+				viewpoint 1,263,93,2,0x8a0000;
+				close;
+
+			LouCase3B:
+				mes "[Soldier]";
+				mes "We have a City Hall where the";
+				mes "federal government operates.";
+				mes "It is located at ^777777+^000000.";
+				next;
+				mes "[Soldier]";
+				mes "If you have any problems,";
+				mes "you should talk with the";
+				mes "employees in City Hall.";
+				viewpoint 1,309,80,3,0x00ff00;
+				close;
+
+			LouCase4B:
+				mes "[Soldier]";
+				mes "The Weapon Shop is located at ^00ff00+^000000.";
+				next;
+				mes "[Soldier]";
+				mes "You will see";
+				mes "marvelous weapons forged";
+				mes "by the well-experienced";
+				mes "blacksmiths of Louyang.";
+				viewpoint 1,145,174,4,0x00ff00;
+				close;
+
+			LouCase5B:
+				mes "[Soldier]";
+				mes "The Tool Shop is located at ^0000ff+^000000.";
+				next;
+				mes "[Soldier]";
+				mes "Knowing your enemy";
+				mes "is half the battle!";
+				mes "It's also safer to prepare yourself";
+				mes "than to be sorry later. Why don't";
+				mes "you go check their supplies?";
+				viewpoint 1,136,97,5,0x0000ff;
+				close;
+
+			LouCase6B:
+				mes "[Soldier]";
+				mes "When you get tired during your";
+				mes "trip, I suggest that you visit the";
+				mes "Tavern. It's located at ^00ff00+^000000.";
+				viewpoint 1,280,167,6,0x00ff00;
+				next;
+				mes "[Soldier]";
+				mes "The Tavern is a good place";
+				mes "to meet other tourists, as well as";
+				mes "to hear of any news that may be";
+				mes "helpful to know.";
+				close;
+
+			LouCase7B:
+				mes "[Soldier]";
+				mes "If you wish to remove all marks";
+				mes "on your mini-map, please choose";
+				mes "'Remove all marks from mini-map.'";
+				mes "from the menu.";
+				close;
+
+	LouCase2A:
+		mes "[Soldier]";
+		mes "There, I've erased all the marks on";
+		mes "your mini-map. Feel free to ask me";
+		mes "about building locations whenever";
+		mes "you need to.";
+		viewpoint 2,218,255,1,0xff0000;
+		viewpoint 2,263,93,2,0x8a0000;
+		viewpoint 2,309,80,3,0x00ff00;
+		viewpoint 2,145,174,4,0x00ff00;
+		viewpoint 2,136,97,5,0x0000ff;
+		viewpoint 2,280,167,6,0x00ff00;
+		close;
+
+	LouCase3A:
+		mes "[Soldier]";
+		mes "I guess it's fun";
+		mes "sometimes to go exploring";
+		mes "on your own. Take care.";
+		close;
+}
+
+louyang.gat,213,213,4	duplicate(Soldier#Lou1)	Soldier#Lou2	825
+
+
+//--------------------------------------------------------------
+// Morroc Guides - [kobra_k88]
+//--------------------------------------------------------------
+
+// North
+morocc.gat,153,286,6	script	Guide#1::Mor_Guide	707,{
+
+	cutin "moc_soldier",2;
+	mes "[Morroc Soldier]";
+	mes "Welcome to Morroc, the Desert Frontier!";
+	next;
+	mes "[Morroc Soldier]";
+	mes "We are here to help you find your way. Please feel free to speak to us anytime you need help.";
+
+M_Menu:
+	next;
+	menu	"View Buildings",-,
+		"Notice",M_2,
+		"Cancel",M_End;
+
+		mes "[Morroc Soldier]";
+		mes "Do you want me to leave indications on the Mini-Map?";
+		next;
+		menu	"No Thanks",-,
+			"Yes Please",sM_1b;
+		
+			set @COMPASS_CHECK,0;
+			goto L_Cont;
+
+		sM_1b:
+			set @COMPASS_CHECK,1;
+
+	L_Cont:
+		mes "[Morroc Soldier]";
+		mes "Please choose a building to view.";
+		next;
+
+	sM_Menu:
+		menu	"^FF0000Thief Guild^000000",-,
+			"Armory",M_1_2,
+			"Inn",M_1_3,
+			"Pub",M_1_4,
+			"Mercenary Guild",M_1_5,
+			"Wipe all indications from mini-map.",M_1_6,
+			"Cancel",M_End;
+
+			mes "[Morocc Soldier]";
+			mes "The 'Thief Guild'.... I hear that it's the place to go if you want to be a Thief.....";
+			viewpoint 1,24,297,1,0xFF0000;
+			goto sL_Wipe;
+
+		M_1_2:
+			mes "[Morocc Soldier]";
+			mes "Head over to the 'Armory' to equip yourself with a variety of weapons and armor.";
+			viewpoint 1,253,56,2,0xFF00FF;
+			goto sL_Wipe;
+
+		M_1_3:
+			mes "[Morocc Soldier]";
+			mes "In Morroc there are 2 'Inn's' located in the South and NorthEastern parts of town.";
+			viewpoint 1,274,269,3,0xFF00FF;
+			viewpoint 1,197,66,4,0xFF00FF;
+			goto sL_Wipe;
+
+		M_1_4:
+			mes "[Morocc Soldier]";
+			mes "The 'Pub' is located to the NorthWest of town.";
+			viewpoint 1,52,259,5,0xFF00FF;
+			goto sL_Wipe;
+
+		M_1_5:
+			mes "[Morocc Soldier]";
+			mes "The 'Mercenary Guild' is in the Eastern corner of town.";
+			viewpoint 1,284,171,6,0x00FF00;
+			goto sL_Wipe;
+
+		M_1_6:
+			set @COMPASS_CHECK, 2;
+
+		sL_Wipe:
+			if (@COMPASS_CHECK != 2) next;	// Avoids a double 'next' when 'wipe indications' is chosen
+			if (@COMPASS_CHECK == 1) goto sM_Menu;
+			viewpoint 2,24,297,1,0xFF0000;
+			viewpoint 2,253,56,2,0xFF00FF;
+			viewpoint 2,274,269,3,0xFF00FF;
+			viewpoint 2,197,66,4,0xFF00FF;
+			viewpoint 2,52,259,5,0xFF00FF;
+			viewpoint 2,284,171,6,0x00FF00;
+			if (@COMPASS_CHECK == 0) goto sM_Menu;
+			mes "[Morroc Soldier]";
+			mes "All indications have been removed";
+			cutin "moc_soldier",255;
+			close;
+
+	M_2:
+		mes "[Morroc Soldier]";
+		mes "We upgraded the Location Guide to the Newest Digital Style.";
+		mes "We hope you like this gorgeous new system.";
+		next;
+		mes "[Morroc Soldier]";
+		mes "Don't forget to refer to the Mini-Map on the Upper-Right corner of your screen.";
+		next;
+		mes "[Morroc Soldier]";
+		mes "If you can't see the Mini-Map, just hit ^0000ff'ctrl+tab'^000000";
+		mes "or Click the ^0000ff'map'^000000 button in the Basic Information Window";
+		mes "Remeber to use the ^ff0000+,-^000000 buttons to adjust the map to your liking.";
+		goto M_Menu;
+
+	M_End:
+		mes "[Morocc Soldier]";
+		mes "Good by for now.";
+		cutin "moc_soldier",255;
+		close;
+}
+
+// South
+morocc.gat,162,97,6	duplicate(Mor_Guide)	Guide#Mor2	707
+
+// West
+morocc.gat,28,161,6	duplicate(Mor_Guide)	Guide#Mor3	707
+
+// East
+morocc.gat,294,203,9	duplicate(Mor_Guide)	Guide#Mor4	707
+
+
+//--------------------------------------------------------------
+// Niflheim Guides - [Unknown]
+//--------------------------------------------------------------
+
+niflheim.gat,186,190,5	script	Wandering Man	798,{
+
+	mes "[Wandering Man]";
+	mes "Why are you in this scary city? I guess you lost your way too, heh.";
+	mes "I was attracted here by the tall trees, but still can't find my way out after so long...";
+	next;
+	mes "[Wandering Man]";
+	mes "But instead i have become familiar with the village surroundings,";
+	mes "perhaps it may be useful for escaping sometimes.";
+	next;
+	menu	"Inquire locations",-,
+		"Wipe indications",L_MENU_2,
+		"Cancel",L_end;
+
+		mes "[Wandering Man]";
+		mes "Where do you want to know about?";
+		next;
+		menu	"Witch's Hut",-,
+			"Equipment Shop",M_item,
+			"Weapon Shop",M_weapon,
+			"Inn",M_hotel,
+			"Cancel",L_cancel;
+
+		viewpoint 1,255,194,1,0xFF3366;
+		mes "[Wandering Man]";
+		mes "In Niflheim lives a terrible witch,";
+		mes "you'll see her house right ^FF3366there^000000,";
+		mes "it was so scary i fled right after going in!";
+		close;
+
+	M_item:  
+		viewpoint 1,219,198,2,0xCC6600;
+		mes "[Wandering Man]";
+		mes "The equipment shop should be over ^CC6600here^000000";
+		mes "they sell several items not available to the outside world.";
+		close;
+
+	M_weapon:
+		viewpoint 1,219,170,3,0x66FF33;
+		mes "[Wandering Man]";
+		mes "The weapon shop should be over ^66FF33here^000000";
+		mes "they sell several items not available to the outside world.";
+		close;
+
+	M_hotel:
+		viewpoint 1,189,210,4,0x3366FF;
+		mes "[Wandering Man]";
+		mes "^3366FFThat^000000 would be the inn,";
+		mes "occasionally the spirits throw a party in there.";
+		close;
+
+	L_cancel:
+		mes "[Wandering Man]";
+		mes "To remove all indications of the minimap";
+		mes "come back and talk to me again.";
+		close;
+  
+L_MENU_2:
+	viewpoint 2,255,194,1,0xFF3366;
+	viewpoint 2,219,198,2,0xCC6600;
+	viewpoint 2,219,170,3,0x66FF33;
+	viewpoint 2,189,210,4,0x3366FF;
+	mes "[Wandering  Man]";
+	mes "I removed all the indications,";
+	mes "If you still need any directions, come back and talk to me again.";
+	close;
+
+L_end: 
+	mes "[Wandering Man]";
+	mes "Wandering around by yourself is dangerous...";
+	mes "please take care.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Payon Guides - [kobra_k88/MasterOfMuppets]
+//--------------------------------------------------------------
+
+payon.gat,162,67,4	script	Guide#pay1	708,{
+
+	cutin "pay_soldier",2;
+	mes "[Payon Guide]";
+	mes "Welcome to the mountain city of Payon.";
+	mes "If you're unfammiliar with this area, I can help you find what you're looking for around here.";
+
+L_MENU:
+	next;
+	menu "City Guide",-,"Remove Marks from Mini-Map",L_REMOVE,"Notice",L_NOTICE,"Cancel",L_END;
+
+	mes "[Payon Guide]";
+  	mes "Please select a location from the following menu.";
+  	mes "Would you like me to mark locations on your Mini-Map?";
+  	next;
+  	menu "Yes.",L_YES,"No.",L_NO;
+
+L_NO:
+  	set @COMPASS_CHECK,0;
+	goto L_CONT;
+
+L_YES:
+  	set @COMPASS_CHECK,1;
+
+L_CONT:
+L_MENU_2:
+	menu	"^FF0000Archer Guild^000000",L_ARCHER,
+		"Weapon Shop",L_WEAPON,
+		"Tool Shop",L_TOOL,
+		"Pub",L_PUB,
+		"Central Palace",L_PALACE,
+		"The Empress",L_EMPRESS,
+		"Palace Annex",L_ANNEX,
+		"Royal Kitchen",L_KITCHEN,
+		"Forge",L_FORGE,"Cancel",-;
+
+	mes "[Payon Guide]";
+ 	mes "Please ask me to remove marks from Mini-Map";
+	mes "if you no longer wish to have the location marks displayed on your Mini-Map.";
+ 	goto L_MENU;
+
+L_ARCHER:
+	mes "[Payon Guide]";
+	mes "The Archer Guild handles Job Changes to the Archer Class.";
+	mes "You'll need to enter the Archer Village wich is to the northeast of Payon.";
+	viewpoint 1,228,326,1,0xFF0000;
+	next;
+	goto L_WIPE;
+
+L_WEAPON:
+	mes "[Payon Guide]";
+	mes "The Weapon Shop can be found in the northwest corner of the city of Payon.";
+	viewpoint 1,139,158,2,0xFF00FF;
+	next;
+	goto L_WIPE;
+
+L_TOOL:
+	mes "[Payon Guide]";
+	mes "The Tool Shop is located near the northwest corner of Payon.";
+	viewpoint 1,144,85,3,0xFF00FF;
+	next;
+	goto L_WIPE;
+
+L_PUB:
+	mes "[Payon Guide]";
+	mes "The Pub can be found in the northeast part of Payon.";
+	mes "It's the best place to relax after a long day of hunting.";
+	viewpoint 1,220,117,4,0xFF00FF;
+	next;
+	goto L_WIPE;
+
+L_PALACE:
+	mes "[Payon Guide]";
+	mes "The Central Palace is located to the north within the city of Payon.";
+	viewpoint 1,156,245,5,0x00FF00;
+	next;
+	goto L_WIPE;
+
+L_EMPRESS:
+	mes "[Payon Guide]";
+	mes "The Empress can be found to the northwest in Payon.";
+	viewpoint 1,107,327,6,0x00FF00;
+	next;
+	goto L_WIPE;
+
+L_ANNEX:
+	mes "[Payon Guide]";
+	mes "The Palace Annex can be found in the western part of Payon.";
+	viewpoint 1,127,204,7,0x00FF00;
+	next;
+	goto L_WIPE;
+
+L_KITCHEN:
+	mes "[Payon Guide]";
+	mes "The Royal Kitchen is located near the northern end of Payon.";
+	viewpoint 1,155,327,8,0x00FF00;
+	next;
+	goto L_WIPE;
+
+L_FORGE:
+	mes "[Payon Guide]";
+	mes "The Forge is situaded near the center of Payon.";
+	viewpoint 1,142,172,9,0xFFFF00;
+	next;
+	goto L_WIPE;
+
+L_WIPE:
+ 	if(@COMPASS_CHECK == 1)goto L_MENU_2;
+	viewpoint 2,228,326,1,0xFF0000;
+	viewpoint 2,139,158,2,0xFF00FF;
+	viewpoint 2,144,85,3,0xFF00FF;
+	viewpoint 2,220,117,4,0xFF00FF;
+	viewpoint 2,156,245,5,0x00FF00;
+	viewpoint 2,107,327,6,0x00FF00;
+	viewpoint 2,127,204,7,0x00FF00;
+	viewpoint 2,155,327,8,0x00FF00;
+	viewpoint 2,142,172,9,0xFFFF00;
+	goto L_MENU_2;
+
+L_REMOVE:
+	viewpoint 2,228,326,1,0xFF0000;
+	viewpoint 2,139,158,2,0xFF00FF;
+	viewpoint 2,144,85,3,0xFF00FF;
+	viewpoint 2,220,117,4,0xFF00FF;
+	viewpoint 2,156,245,5,0x00FF00;
+	viewpoint 2,107,327,6,0x00FF00;
+	viewpoint 2,127,204,7,0x00FF00;
+	viewpoint 2,155,327,8,0x00FF00;
+	viewpoint 2,142,172,9,0xFFFF00;
+  	goto L_MENU;
+
+L_NOTICE:
+ 	mes "[Payon Guide]";
+ 	mes "Advances in sorcery and technology have allowed us to update our information system,";
+	mes "enabling up to mark locations on your Mini-Map for easier navigation.";
+  	next;
+  	mes "[Payon Guide]";
+  	mes "Your Mini-Map is located in the upper right corner of the screen.";
+	mes "If you can't see it, press the Ctrl + Tab keys or click the 'Map' button in your Basic Information Window.";
+  	next;
+  	mes "[Payon Guide]";
+ 	mes "On your Mini-Map, click on the '+' and '-' symbols to zoom in and out of your Mini-Map.";
+	mes "We hope you enjoy your travels here in the city of Payon.";
+ 	goto L_MENU;
+
+L_END:
+ 	mes "[Payon Guide]";
+ 	mes "Be safe in your travels, brave adventurer.";
+	cutin "pay_soldier",255; 
+ 	close;
+}
+
+pay_arche.gat,85,30,2	script	Guide#pay2	708,{
+
+	cutin "pay_soldier",2;
+	mes "[Payon Guide]";
+	mes "Welcome to the Archer Village.";
+	mes "If you're unfammiliar with this area, I can help you find what you're looking for around here.";
+
+L_MENU:
+	next;
+	menu	"Village Guide",-,
+		"Remove Marks from Mini-Map",L_REMOVE,
+		"Notice",L_NOTICE,
+		"Cancel",L_END;
+
+	mes "[Payon Guide]";
+  	mes "Please select a location from the following menu.";
+  	mes "Would you like me to mark locations on your Mini-Map?";
+  	next;
+  	menu	"Yes.",L_YES,
+		"No.",L_NO;
+
+L_NO:
+  	set @COMPASS_CHECK,0;
+	goto L_CONT;
+
+L_YES:
+  	set @COMPASS_CHECK,1;
+
+L_CONT:
+L_MENU_2:
+	menu	"^FF0000Archer Guild^000000",L_ARCHER,
+		"Tool Shop",L_TOOL,
+		"Payon Dungeon",L_DUNGEON,
+		"Cancel",-;
+
+	mes "[Payon Guide]";
+ 	mes "Please ask me to remove marks from Mini-Map";
+	mes "if you no longer wish to have the location marks displayed on your Mini-Map.";
+ 	goto L_MENU;
+
+L_ARCHER:
+	mes "[Payon Guide]";
+	mes "The Archer Guild, found northeast in the Archer Village, handles Job Changes to the Archer Class.";
+	viewpoint 1,144,164,1,0xFF0000;
+	next;
+	goto L_WIPE;
+
+L_TOOL:
+	mes "[Payon Guide]";
+	mes "The Tool Shop is located near the northwest corner of the village.";
+	viewpoint 1,71,156,2,0xFF00FF;
+	next;
+	goto L_WIPE;
+
+L_DUNGEON:
+	mes "[Payon Guide]";
+	mes "The entrance to the Payon Dungeon is located at the west end of the village.";
+	viewpoint 1,34,132,3,0xFFFFFF;
+	next;
+	goto L_WIPE;
+
+L_WIPE:
+ 	if (@COMPASS_CHECK == 1)goto L_MENU_2;
+	viewpoint 2,144,164,1,0xFF0000;
+	viewpoint 2,71,156,2,0xFF00FF;
+	viewpoint 2,34,132,3,0xFFFFFF;
+	goto L_MENU_2;
+
+L_REMOVE:
+	viewpoint 2,144,164,1,0xFF0000;
+	viewpoint 2,71,156,2,0xFF00FF;
+	viewpoint 2,34,132,3,0xFFFFFF;
+  	goto L_MENU;
+
+L_NOTICE:
+ 	mes "[Payon Guide]";
+ 	mes "Advances in sorcery and technology have allowed us to update our information system,";
+	mes "enabling up to mark locations on your Mini-Map for easier navigation.";
+  	next;
+  	mes "[Payon Guide]";
+  	mes "Your Mini-Map is located in the upper right corner of the screen.";
+	mes "If you can't see it, press the Ctrl + Tab keys or click the 'Map' button in your Basic Information Window.";
+  	next;
+  	mes "[Payon Guide]";
+ 	mes "On your Mini-Map, click on the '+' and '-' symbols to zoom in and out of your Mini-Map.";
+	mes "We hope you enjoy your travels here in the city of Payon.";
+ 	goto L_MENU;
+
+L_END:
+ 	mes "[Payon Guide]";
+ 	mes "Be safe in your travels, brave adventurer.";
+	cutin "pay_soldier",255; 
+ 	close;
+}
+
+
+//--------------------------------------------------------------
+// Prontera Guides - [kobra_k88/MasterOfMuppets]
+//--------------------------------------------------------------
+
+prontera.gat,154,187,4	script	Guide::Prt_Guide	105,{
+
+	cutin "prt_soldier",2;
+	mes "[Prontera Guide]";
+	mes "Welcome to Prontera, the beautiful capital of the Run-Midgard Kingdom.";
+	mes " If you have questions or need help find something in the city, don't hesitate to ask.";
+
+L_MENU:
+	next;
+	menu	"City Guide",L_CITY,
+		"Remove Marks from Mini-Map",L_REMOVE,
+		"Notice",L_NOTICE,
+		"Cancel",L_END;
+
+L_CITY:
+	mes "[Prontera Guide]";
+  	mes "Please select a location from the following menu.";
+  	mes "Would you like me to mark locations on your Mini-Map?";
+  	next;
+  	menu	"Yes.",L_YES,
+		"No.",L_NO;
+
+L_NO:
+  		set @COMPASS_CHECK,0;
+		goto L_CONT;
+
+L_YES:
+  		set @COMPASS_CHECK,1;
+
+L_CONT:
+L_MENU_2:
+	menu	"Swordman Association",L_SWORD,
+		"^0000FFSanctuary^000000",L_SANCTUARY,
+		"Prontera Chivalry",L_CHIVALRY,
+		"Weapon Shop",L_WEAPON,
+		"Tool Shop",L_TOOL,
+		"Inn",L_INN,
+		"Trading Post",L_TRADING,
+		"Pub",L_PUB,
+		"Library",L_LIBRARY,
+		"Job Agency",L_JOB,
+		"Prontera Castle",L_CASTLE,
+		"City Hall",L_HALL,
+		"Cancel",-;
+
+	mes "[Prontera Guide]";
+ 	mes "Pleas ask me to Remove marks from Mini-Map";
+	mes "if you no longer wish to have the location marks displayed on your Mini-Map.";
+ 	goto L_MENU;
+
+L_SWORD:
+	mes "[Prontera Guide]";
+	mes "The Swordman Association, which handles Job Changes to the Swordman class, has moved to Izlude.";
+	mes "This facility is just an empty building now.";
+	viewpoint 1,237,41,1,0x00FF00;
+	next;
+	goto L_WIPE;
+
+L_SANCTUARY:
+	mes "[Prontera Guide]";
+	mes "The Prontera Sanctuary handles Job Changes to the Acolyte class,";
+	mes "and can be found in the northeast corner of Prontera.";
+	viewpoint 1,236,316,2,0xFF0000;
+	next;
+	goto L_WIPE;
+
+L_CHIVALRY:
+	mes "[Prontera Guide]";
+	mes "The Prontera Chivalry, which is responsible for the safety of our capital, is in Prontera's northwest corner.";
+	viewpoint 1,46,345,3,0x00FF00;
+	next;
+	goto L_WIPE;
+
+L_WEAPON:
+	mes "[Prontera Guide]";
+	mes "The Weapon Shop is located northeast of the central fountain.";
+	viewpoint 1,175,220,4,0xFF00FF;
+	next;
+	goto L_WIPE;
+
+L_TOOL:
+	mes "[Prontera Guide]";
+	mes "The Tool Shop is located northwest of the central fountain.";
+	viewpoint 1,134,221,5,0xFF00FF;
+	next;
+	goto L_WIPE;
+
+L_INN:
+	mes "[Prontera Guide]";
+	mes "The Inns in Prontera are located both to the east and west of Prontera's central fountain area.";
+	viewpoint 1,204,214,6,0xFF00FF;
+	viewpoint 1,107,192,7,0xFF00FF;
+	next;
+	goto L_WIPE;
+
+L_TRADING:
+	mes "[Prontera Guide]";
+	mes "The Trading Post can be found southeast from the central fountain.";
+	viewpoint 1,179,184,8,0x00FF00;
+	next;
+	goto L_WIPE;
+
+L_PUB:
+	mes "[Prontera Guide]";
+	mes "The Pub is located southeast of the fountain, behind the Trading Post.";
+	viewpoint 1,208,154,9,0x00FF00;
+	next;
+	goto L_WIPE;
+
+L_LIBRARY:
+	mes "[Prontera Guide]";
+	mes "If you head north from the central fountain,";
+	mes "you'll find an empty area in which both branches of the Prontera Library";
+	mes "can be accessed if you head towards the east or west.";
+	viewpoint 1,120,267,10,0x00FF00;
+	viewpoint 1,192,267,11,0x00FF00;
+	next;
+	goto L_WIPE;
+
+L_JOB:
+	mes "[Prontera Guide]";
+	mes "The Job Agency is just southwest of the central fountain area.";
+	viewpoint 1,133,183,12,0x00FF00;
+	next;
+	goto L_WIPE;
+
+L_CASTLE:
+	mes "[Prontera Guide]";
+	mes "The Prontera Castle is located at the northern sector of this city.";
+	mes " You can go to fields that are north of Prontera by going through the castle's rear exit.";
+	viewpoint 1,156,360,13,0x00FF00;
+	next; 
+	goto L_WIPE;
+
+L_HALL:
+	mes "[Prontera Guide]";
+	mes "The City Hall is located in the southwest corner in our city of Prontera.";
+	viewpoint 1,75,91,14,0x00FF00;
+	next; 
+	goto L_WIPE;
+
+L_WIPE:
+ 		if (@COMPASS_CHECK == 1) goto L_MENU_2;
+		viewpoint 2,237,41,1,0x00FF00;
+		viewpoint 2,236,316,2,0xFF0000;
+		viewpoint 2,46,345,3,0x00FF00;
+		viewpoint 2,175,220,4,0xFF00FF;
+		viewpoint 2,8,134,5,0xFF00FF;
+		viewpoint 2,204,214,6,0xFF00FF;
+		viewpoint 2,107,192,7,0xFF00FF;
+		viewpoint 2,179,184,8,0x00FF00;
+		viewpoint 2,208,154,9,0x00FF00;
+		viewpoint 2,120,267,10,0x00FF00;
+		viewpoint 2,192,267,11,0x00FF00;
+		viewpoint 2,133,183,12,0x00FF00;
+		viewpoint 2,156,360,13,0x00FF00;
+		viewpoint 2,75,91,14,0x00FF00;
+		goto L_MENU_2;
+
+L_REMOVE:
+		viewpoint 2,237,41,1,0x00FF00;
+		viewpoint 2,236,316,2,0xFF0000;
+		viewpoint 2,46,345,3,0x00FF00;
+		viewpoint 2,175,220,4,0xFF00FF;
+		viewpoint 2,8,134,5,0xFF00FF;
+		viewpoint 2,204,214,6,0xFF00FF;
+		viewpoint 2,107,192,7,0xFF00FF;
+		viewpoint 2,179,184,8,0x00FF00;
+		viewpoint 2,208,154,9,0x00FF00;
+		viewpoint 2,120,267,10,0x00FF00;
+		viewpoint 2,192,267,11,0x00FF00;
+		viewpoint 2,133,183,12,0x00FF00;
+		viewpoint 2,156,360,13,0x00FF00;
+		viewpoint 2,75,91,14,0x00FF00;
+  		goto L_MENU;
+
+L_NOTICE:
+ 	mes "[Prontera Guide]";
+ 	mes "Advances in sorcery and technology have allowed us to update our information system,";
+	mes "enabling up to mark locations on your Mini-Map for easier navigation.";
+  	next;
+  	mes "[Prontera Guide]";
+  	mes "Your Mini-Map is located in the upper right corner of the screen.";
+	mes "If you can't see it, press the Ctrl + Tab keys or click the 'Map' button in your Basic Information Window.";
+  	next;
+  	mes "[Prontera Guide]";
+ 	mes "On your Mini-Map, click on the '+' and '-' symbols to zoom in and out of your Mini-Map.";
+	mes "We hope you enjoy your travels here in the city of Prontera.";
+ 	goto L_MENU;
+
+L_END:
+ 	mes "[Prontera Guide]";
+ 	mes "Well, adventurer... I hope your journeys through Rune-Midgard are both fun and safe.";
+	cutin "prt_soldier",255; 
+ 	close;
+}
+
+// East
+prontera.gat,282,208,2	duplicate(Prt_Guide)	Guide#prt2	105
+
+// West
+prontera.gat,29,200,6	duplicate(Prt_Guide)	Guide#prt3	105
+
+// South
+prontera.gat,160,29,0	duplicate(Prt_Guide)	Guide#prt4	105
+
+// North
+prontera.gat,151,330,4	duplicate(Prt_Guide)	Guide#prt5	105
+
+
+//--------------------------------------------------------------
+// Rachel Guides (Incomplete -> Missing blinkies) - [Tsuyuki/Harp]
+//--------------------------------------------------------------
+
+rachel.gat,138,146,5	script	Rachel Guide Agent	934,{
+
+	mes "[Rachel Guide Agent]";
+	mes "Welcome to Rachel, the capitol of Arunafeltz";
+	mes "where you can almost feel the breath of our goddess Freya.";
+	mes "If this is your time at Rachel, please check out";
+	mes "our 'General Announcements'.";
+	next;
+	goto L_menu2;
+
+L_menu2:
+	menu	"Get town info",-,
+		"Erase all minimap indications",L_menu2,
+		"General Announcements",L_menu2,
+		"End Conversation",L_end;
+
+	mes "[Rachel Guide Agent]";
+	mes "Which location do you want to know?";
+	mes "Do you want an indication on the minimap?";
+	next;
+	
+	menu	"Yes",L_menu1,
+		"No",L_menu1;
+
+	L_menu1:
+		menu	"Sanctuary",-,
+			"Inn",L_inn,
+			"Weapon Shop",L_weap,
+			"Tool Shop",L_tools,
+			"Airport",L_airp,
+			"Cancel",L_end2;
+
+		mes "[Rachel Guide Agent]";
+		mes "Sanctuary is the Holy Temple at which the Pope,";
+		mes "who is the embodiment of Freya, resides.";
+		mes "Follow the road north to reach the Sanctuary";
+		next;
+		goto L_menu1;
+	
+	L_inn:
+		mes "[Rachel Guide Agent]";
+		mes "The comfortable Inn is a great place to rest";
+		mes "and relax. The building just to the left is the Rachel Inn.";
+		next;
+		goto L_menu1;
+	
+	L_weap:
+		mes "[Rachel Guide Agent]";
+		mes "Would you like to see the strong weapons being sold";
+		mes "in Rachel? The weapon shop is near the Western gate.";
+		next;
+		goto L_menu1;
+		
+	L_tools:
+		mes "[Rachel Guide Agent]";
+		mes "Our selective tool shop which only deals the finest";
+		mes "high-quality potions is near the Western gate.";
+		next;
+		goto L_menu1;
+	
+	L_airp:
+		mes "[Rachel Guide Agent]";
+		mes "The airport is located outside the Eastern gate of rachel.";
+		next;
+		goto L_menu1;
+
+	L_end:
+		close;
+
+	L_end2:
+		mes "[Rachel Guide Agent]";
+		mes "If you ever want the indicators removed from the";
+		mes "minimap, pick 'Erase minimap inidcations'.";
+		goto L_menu2;
+}
+
+
+//--------------------------------------------------------------
+// Umbala Guides - [jAthena(Dizzy)/Celest]
+//--------------------------------------------------------------
+
+umbala.gat,128,94,3	script	Ricard	702,{
+
+	mes "[Ricard]";
+	mes "This sure is an odd place, perhaps due to the fact that it hasn't been developed,";
+	mes "and the roads here can be very perilous.";
+	next;
+	mes "[Ricard]";
+	mes "Good thing I've already been here for quite some time, so i know the details of the village quite well.";
+	mes "You may ask me for directions if you want.";
+	next;
+	menu	"View buildings",-,
+		"Clear indications",L_MENU_2,
+		"Cancel",L_end1;
+
+	mes "[Ricard]";
+	mes "Where would you want to know about?";
+	next;
+	menu	"Village Chieftain's house",-,
+		"Village Shaman's house",L_room2,
+		"Weapon shop",L_room3,
+		"Equipment shop",L_room4,
+		"Bungee Jumping Spot",L_room5,
+		"Cancel",L_end2;
+
+		mes "[Ricard]";
+		mes "The chieftain lives ^FF0000here^000000, only he understands the languages of outsiders,";
+		mes "perhaps you should see him first.";
+		viewpoint 1,68,251,1,0xFF0000;
+		close;
+
+	L_room2:
+		mes "[Ricard]";
+		mes "The shaman is known to possess mysterious powers, his house would be right ^996600here^000000,";
+		mes "it is said that he can manipulate the elements of the Earth easily!";
+		viewpoint 1,218,187,2,0x996600;
+		close;
+
+	L_room3:
+		mes "[Ricard]";
+		mes "The weapon shop is ^009933over there^000000, because of threats from the outside world,";
+		mes "they have been stocking up on all kinds of weapons.";
+		viewpoint 1,125,155,3,0x009933;
+		close;
+
+	L_room4:
+		mes "[Ricard]";
+		mes "^3333FFThat^000000 would be the equipment shop, they sell all types of useful equipment.";
+		mes "You should have a look there before continueing your travels.";
+		viewpoint 1,136,127,4,0x3333FF;
+		close;
+
+	L_room5:
+		mes "[Ricard]";
+		mes "In Umbala there is a 'Bungee Jumping Spot' not seen";
+		mes "anywhere else in the world as you can see ^66CC33over here^000000,";
+		mes "You can try it out if you're feeling brave enough.";
+		viewpoint 1,138,198,5,0x66CC33;
+		close;
+
+	L_end2:
+		mes "[Ricard]";
+		mes "To remove all indications of the minimap come back and talk to me again.";
+		close;
+
+L_MENU_2:
+		viewpoint 2,68,251,1,0xFF0000;
+		viewpoint 2,218,187,2,0x996600;
+		viewpoint 2,125,155,3,0x009933;
+		viewpoint 2,136,127,4,0x3333FF;
+		viewpoint 2,138,198,5,0x66CC33;
+		mes "[Ricard]";
+		mes "I have removed all the indications.";
+		mes "If you still need any directions, come back and talk to me again.";
+		close;
+
+L_end1:
+		mes "[Ricard]";
+		mes "Exploring around to know the paths better is fun, but do be careful.";
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Veins Guides (Not yet started)
+//--------------------------------------------------------------
+
+// To-Do

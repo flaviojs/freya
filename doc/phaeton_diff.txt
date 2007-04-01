@@ -80,6 +80,7 @@
 - There is no LICENCE_JA file in Phaeton, instead there is just LICENSE.
 - The 'Readme' changelog is stored in ./doc as 'Readme.txt' instead of in the main folder.
 - This documentation file, './doc/phaeton_diff.txt' does not exist in jAthena.
+- The './doc/script_conv_notes.txt' does not exist in jAthena.
 - The Changelog.txt file in the main folder does not exist in jAthena, they use the 'Readme' file as their Changelog.
 - The faq.html file in the main folder does not exist in jAthena.
 - The runserver.bat, login-server.bat, char-server.bat, and map-server.bat launchers do not exist in jAthena.

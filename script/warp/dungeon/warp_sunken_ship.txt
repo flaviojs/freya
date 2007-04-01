@@ -1,0 +1,79 @@
+alb2trea.gat,88,111,0	warp	alb002	1,1,treasure01.gat,69,24
+
+treasure01.gat,112,164,0	warp	tre01	1,4,treasure01.gat,97,164
+treasure01.gat,125,161,0	warp	tre02	1,3,treasure01.gat,144,161
+treasure01.gat,142,161,0	warp	tre02-1	1,3,treasure01.gat,123,161
+treasure01.gat,164,114,0	warp	tre03	3,1,treasure01.gat,164,88
+treasure01.gat,164,91,0	warp	tre03-1	5,1,treasure01.gat,164,116
+treasure01.gat,99,164,0	warp	tre01-1	1,4,treasure01.gat,114,164
+treasure01.gat,75,111,0	warp	tre10	1,3,treasure01.gat,101,111
+treasure01.gat,38,164,0	warp	tre04-1	1,4,treasure01.gat,25,164
+treasure01.gat,41,111,0	warp	tre05	1,3,treasure01.gat,65,111
+treasure01.gat,62,111,0	warp	tre05-1	1,3,treasure01.gat,38,111
+treasure01.gat,27,164,0	warp	tre04	1,4,treasure01.gat,40,164
+treasure01.gat,69,75,0	warp	tre07	2,1,treasure01.gat,69,106
+treasure01.gat,69,125,0	warp	tre08	4,1,treasure01.gat,69,142
+treasure01.gat,69,140,0	warp	tre08-1	4,1,treasure01.gat,69,123
+treasure01.gat,99,111,0	warp	tre10-1	1,1,treasure01.gat,73,111
+treasure01.gat,69,177,0	warp	tre002	3,1,treasure02.gat,102,27
+treasure01.gat,41,37,0	warp	tre06	1,3,treasure01.gat,61,37
+treasure01.gat,58,37,0	warp	tre06-1	1,3,treasure01.gat,39,37
+treasure01.gat,69,102,0	warp	tre07-1	2,1,treasure01.gat,69,77
+treasure01.gat,79,37,0	warp	tre09	1,3,treasure01.gat,98,37
+treasure01.gat,96,37,0	warp	tre09-1	1,3,treasure01.gat,77,37
+treasure01.gat,69,22,0	warp	tre001	4,1,alb2trea.gat,85,107
+treasure02.gat,102,103,0	warp	tre11	5,1,treasure02.gat,102,120
+treasure02.gat,102,118,0	warp	tre11-1	5,1,treasure02.gat,102,101
+treasure02.gat,155,128,0	warp	tre13-1	1,1,treasure02.gat,155,97
+treasure02.gat,155,99,0	warp	tre13	1,1,treasure02.gat,155,130
+treasure02.gat,49,99,0	warp	tre14-1	1,1,treasure02.gat,49,130
+treasure02.gat,102,24,0	warp	tre003	3,1,treasure01.gat,69,179
+treasure02.gat,123,72,0	warp	tre12	1,4,treasure02.gat,140,72
+treasure02.gat,138,72,0	warp	tre12-1	1,4,treasure02.gat,121,72
+treasure02.gat,49,128,0	warp	tre14	1,1,treasure02.gat,49,97
+treasure02.gat,65,72,0	warp	tre15	1,4,treasure02.gat,82,72
+treasure02.gat,80,72,0	warp	tre15-1	1,4,treasure02.gat,63,72
+
+// Sailor (Alberta -> Sunken Ship)
+alberta.gat,195,151,3	script	Paul	86,{
+
+	mes "[Paul]";
+	mes "Good day.  Would you like be part of the Sunken Ship event, provided by Cool Event Corp.?";
+	next;
+	mes "[Paul]";
+	mes "Oh! I better warn you, this event is only suitable for HIGH LEVEL warriors.";
+	emotion e_gasp;
+	next;
+	mes "[Paul]";
+	mes "So what do you say?  It only cost 200 zeny to participate and you'll get a ton of experience, guaranteed.";
+	next;
+	menu "Enter",-,"Quit",M_End;
+	
+		if(Zeny < 200) goto L_NoZeny;
+		set Zeny, Zeny - 200;
+		warp "alb2trea.gat",62,69;
+		close;
+	M_End:
+		mes "[Paul]";
+		mes "Come back anytime.";
+		close;
+
+	L_NoZeny:
+		mes "[Paul]";
+		mes "I'm sorry, but I told you I would need 200 Zeny, and it looks like you don't have it.";
+		mes "Please come back later when you have enough.";
+		close;
+}
+
+// Sailor (Sunken Ship -> Alberta)
+alb2trea.gat,39,50,5	script	Sailor	100,{
+
+	mes "[Sailor]";
+	mes "Do you wanna return?";
+	next;
+	menu "Return to Alberta",-,"Quit",MEnd;
+
+	warp "alberta.gat",192,169;
+MEnd:
+	close;
+}

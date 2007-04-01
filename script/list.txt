@@ -1,0 +1,366 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//			Freya Scripts List
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Custom Scripts
+//--------------------------------------------------------------
+
+// N/A
+
+
+//--------------------------------------------------------------
+// Event Scripts
+//--------------------------------------------------------------
+
+// npc: script/event/event_alchemist.txt
+// npc: script/event/event_crystal.txt
+// npc: script/event/event_dumpling_festival.txt
+// npc: script/event/event_easter.txt
+// npc: script/event/event_ice_cream.txt
+// npc: script/event/event_idul_fitri.txt
+// npc: script/event/event_skill_reset.txt
+// npc: script/event/event_twin_towers.txt
+// npc: script/event/event_valentines_day.txt
+// npc: script/event/event_white_day.txt
+// npc: script/event/event_xmas.txt
+
+
+//--------------------------------------------------------------
+// Guild vs Guild (The War of Emperium) Scripts
+//--------------------------------------------------------------
+
+npc: script/gvg/gvg_adswitch.txt
+npc: script/gvg/gvg_config.txt
+npc: script/gvg/gvg_exe.txt
+npc: script/gvg/gvg_flag.txt
+npc: script/gvg/gvg_kafra.txt
+npc: script/gvg/gvg_monster.txt
+npc: script/gvg/gvg_roomswitch.txt
+npc: script/gvg/gvg_steward.txt
+npc: script/gvg/gvg_tbox.txt
+
+
+//--------------------------------------------------------------
+// Job Quest Scripts (Transcendence disabled for now)
+//--------------------------------------------------------------
+
+npc: script/job/job_acolyte.txt
+npc: script/job/job_alchemist.txt
+npc: script/job/job_archer.txt
+npc: script/job/job_assassin.txt
+// npc: script/job/job_assassin_cross.txt
+npc: script/job/job_bard.txt
+npc: script/job/job_blacksmith.txt
+// npc: script/job/job_champion.txt
+// npc: script/job/job_clown.txt
+// npc: script/job/job_creator.txt
+npc: script/job/job_crusader.txt
+npc: script/job/job_dancer.txt
+npc: script/job/job_gunslinger.txt
+// npc: script/job/job_gypsy.txt
+// npc: script/job/job_high_priest.txt
+// npc: script/job/job_high_wizard.txt
+npc: script/job/job_hunter.txt
+npc: script/job/job_knight.txt
+// npc: script/job/job_lord_knight.txt
+npc: script/job/job_mage.txt
+npc: script/job/job_merchant.txt
+npc: script/job/job_monk.txt
+npc: script/job/job_ninja.txt
+npc: script/job/job_novice.txt
+// npc: script/job/job_paladin.txt
+npc: script/job/job_priest.txt
+// npc: script/job/job_professor.txt
+npc: script/job/job_rogue.txt
+npc: script/job/job_sage.txt
+// npc: script/job/job_sniper.txt
+npc: script/job/job_soul_linker.txt
+// npc: script/job/job_stalker.txt
+npc: script/job/job_star_gladiator.txt
+npc: script/job/job_super_novice.txt
+npc: script/job/job_swordsman.txt
+npc: script/job/job_taekwon.txt
+npc: script/job/job_thief.txt
+// npc: script/job/job_transcendence.txt
+// npc: script/job/job_whitesmith.txt
+npc: script/job/job_wizard.txt
+
+
+//--------------------------------------------------------------
+// Miscellaneous Scripts
+//--------------------------------------------------------------
+
+npc: script/misc/misc_auction.txt
+npc: script/misc/misc_divorce.txt
+npc: script/misc/misc_dts_warper.txt
+npc: script/misc/misc_global_functions.txt
+npc: script/misc/misc_mapflag.txt
+npc: script/misc/misc_marriage.txt
+npc: script/misc/misc_novice_exchange.txt
+npc: script/misc/misc_rentals.txt
+npc: script/misc/misc_socket_enchant.txt
+npc: script/misc/misc_stylists.txt
+
+
+//--------------------------------------------------------------
+// Monster Spawn Scripts
+//--------------------------------------------------------------
+
+npc: script/mob/dungeon/mob_abyss_lake.txt
+npc: script/mob/dungeon/mob_amatsu_dungeon.txt
+npc: script/mob/dungeon/mob_ant_hell.txt
+npc: script/mob/dungeon/mob_ayothaya_dungeon.txt
+npc: script/mob/dungeon/mob_beach_dungeon.txt
+npc: script/mob/dungeon/mob_biolabs.txt
+npc: script/mob/dungeon/mob_byalan.txt
+npc: script/mob/dungeon/mob_clock_tower.txt
+npc: script/mob/dungeon/mob_coal_mine.txt
+npc: script/mob/dungeon/mob_culvert.txt
+npc: script/mob/dungeon/mob_einbroch_dungeon.txt
+npc: script/mob/dungeon/mob_gefenia.txt
+npc: script/mob/dungeon/mob_geffen_dungeon.txt
+npc: script/mob/dungeon/mob_glast_heim.txt
+npc: script/mob/dungeon/mob_hidden_temple.txt
+npc: script/mob/dungeon/mob_ice_cave.txt
+npc: script/mob/dungeon/mob_juperos.txt
+npc: script/mob/dungeon/mob_kiel_hyre.txt
+npc: script/mob/dungeon/mob_kunlun_dungeon.txt
+npc: script/mob/dungeon/mob_louyang_dungeon.txt
+npc: script/mob/dungeon/mob_magma_dungeon.txt
+npc: script/mob/dungeon/mob_odin_temple.txt
+npc: script/mob/dungeon/mob_orc_dungeon.txt
+npc: script/mob/dungeon/mob_payon_dungeon.txt
+npc: script/mob/dungeon/mob_pyramid.txt
+npc: script/mob/dungeon/mob_sanctuary.txt
+npc: script/mob/dungeon/mob_sphinx.txt
+npc: script/mob/dungeon/mob_sunken_ship.txt
+npc: script/mob/dungeon/mob_thanatos_tower.txt
+npc: script/mob/dungeon/mob_thor_volcano.txt
+npc: script/mob/dungeon/mob_toy_factory.txt
+npc: script/mob/dungeon/mob_turtle_island.txt
+npc: script/mob/dungeon/mob_umbala_dungeon.txt
+
+npc: script/mob/field/mob_amatsu_field.txt
+npc: script/mob/field/mob_ayothaya_field.txt
+npc: script/mob/field/mob_comodo_field.txt
+npc: script/mob/field/mob_einbroch_field.txt
+npc: script/mob/field/mob_geffen_field.txt
+npc: script/mob/field/mob_hugel_field.txt
+npc: script/mob/field/mob_juno_field.txt
+npc: script/mob/field/mob_kunlun_field.txt
+npc: script/mob/field/mob_lighthalzen_field.txt
+npc: script/mob/field/mob_louyang_field.txt
+npc: script/mob/field/mob_lutie_field.txt
+npc: script/mob/field/mob_morroc_field.txt
+npc: script/mob/field/mob_mt_mjolnir.txt
+npc: script/mob/field/mob_niflheim_field.txt
+npc: script/mob/field/mob_payon_field.txt
+npc: script/mob/field/mob_prontera_field.txt
+npc: script/mob/field/mob_rachel_field.txt
+npc: script/mob/field/mob_umbala_field.txt
+npc: script/mob/field/mob_veins_field.txt
+npc: script/mob/field/mob_yggdrasil.txt
+
+npc: script/mob/misc/mob_airship.txt
+npc: script/mob/misc/mob_gvg.txt
+npc: script/mob/misc/mob_job_quests.txt
+npc: script/mob/misc/mob_pvp.txt
+npc: script/mob/misc/mob_sign_quest.txt
+npc: script/mob/misc/mob_town.txt
+
+
+//--------------------------------------------------------------
+// Quest Scripts
+//--------------------------------------------------------------
+
+npc: script/quest/quest_cooking.txt
+npc: script/quest/quest_doomed_sword.txt
+npc: script/quest/quest_eye_of_hellion.txt
+npc: script/quest/quest_headgear.txt
+npc: script/quest/quest_juperos.txt
+npc: script/quest/quest_lv4_weapon.txt
+// Old Blue Box quest is present in iRO, but not in kRO
+// npc: script/quest/quest_old_blue_box.txt
+npc: script/quest/quest_pet_taming.txt
+npc: script/quest/quest_quiz_revolution.txt
+npc: script/quest/quest_thanatos.txt
+npc: script/quest/quest_the_sign.txt
+
+npc: script/quest/god_seal/quest_brisingamen_seal.txt
+npc: script/quest/god_seal/quest_god_equip_creation.txt
+npc: script/quest/god_seal/quest_god_global.txt
+npc: script/quest/god_seal/quest_megingjard_seal.txt
+npc: script/quest/god_seal/quest_mjolnir_seal.txt
+npc: script/quest/god_seal/quest_sleipnir_seal.txt
+
+npc: script/quest/job_skill/quest_acolyte_skill.txt
+npc: script/quest/job_skill/quest_alchemist_skill.txt
+npc: script/quest/job_skill/quest_archer_skill.txt
+npc: script/quest/job_skill/quest_assassin_skill.txt
+npc: script/quest/job_skill/quest_bard_skill.txt
+npc: script/quest/job_skill/quest_blacksmith_skill.txt
+npc: script/quest/job_skill/quest_crusader_skill.txt
+npc: script/quest/job_skill/quest_dancer_skill.txt
+npc: script/quest/job_skill/quest_hunter_skill.txt
+npc: script/quest/job_skill/quest_knight_skill.txt
+npc: script/quest/job_skill/quest_mage_skill.txt
+npc: script/quest/job_skill/quest_merchant_skill.txt
+npc: script/quest/job_skill/quest_monk_skill.txt
+npc: script/quest/job_skill/quest_novice_skill.txt
+npc: script/quest/job_skill/quest_priest_skill.txt
+npc: script/quest/job_skill/quest_rogue_skill.txt
+npc: script/quest/job_skill/quest_sage_skill.txt
+npc: script/quest/job_skill/quest_swordsman_skill.txt
+npc: script/quest/job_skill/quest_thief_skill.txt
+npc: script/quest/job_skill/quest_wizard_skill.txt
+
+npc: script/quest/job_tutorial/quest_acolyte_tutorial.txt
+npc: script/quest/job_tutorial/quest_archer_tutorial.txt
+npc: script/quest/job_tutorial/quest_dual_tutorial.txt
+npc: script/quest/job_tutorial/quest_mage_tutorial.txt
+npc: script/quest/job_tutorial/quest_merchant_tutorial.txt
+npc: script/quest/job_tutorial/quest_swordsman_tutorial.txt
+npc: script/quest/job_tutorial/quest_thief_tutorial.txt
+
+
+//--------------------------------------------------------------
+// Town Scripts
+//--------------------------------------------------------------
+
+npc: script/town/town_alberta.txt
+npc: script/town/town_aldebaran.txt
+npc: script/town/town_amatsu.txt
+npc: script/town/town_ayothaya.txt
+npc: script/town/town_comodo.txt
+npc: script/town/town_einbech.txt
+npc: script/town/town_einbroch.txt
+npc: script/town/town_geffen.txt
+npc: script/town/town_hugel.txt
+npc: script/town/town_izlude.txt
+npc: script/town/town_jawaii.txt
+npc: script/town/town_juno.txt
+npc: script/town/town_kunlun.txt
+npc: script/town/town_lighthalzen.txt
+npc: script/town/town_louyang.txt
+npc: script/town/town_lutie.txt
+npc: script/town/town_morroc.txt
+npc: script/town/town_niflheim.txt
+npc: script/town/town_payon.txt
+npc: script/town/town_prontera.txt
+npc: script/town/town_rachel.txt
+npc: script/town/town_umbala.txt
+npc: script/town/town_veins.txt
+
+npc: script/town/extra/town_airship.txt
+npc: script/town/extra/town_bulletin_board.txt
+npc: script/town/extra/town_cool_event.txt
+npc: script/town/extra/town_guide.txt
+npc: script/town/extra/town_inn.txt
+npc: script/town/extra/town_kafra.txt
+npc: script/town/extra/town_mail_box.txt
+npc: script/town/extra/town_pvp.txt
+npc: script/town/extra/town_refine.txt
+npc: script/town/extra/town_shop.txt
+
+
+//--------------------------------------------------------------
+// Warp Scripts
+//--------------------------------------------------------------
+
+npc: script/warp/dungeon/warp_abyss_lake.txt
+npc: script/warp/dungeon/warp_amatsu_dungeon.txt
+npc: script/warp/dungeon/warp_ant_hell.txt
+npc: script/warp/dungeon/warp_ayothaya_dungeon.txt
+npc: script/warp/dungeon/warp_beach_dungeon.txt
+npc: script/warp/dungeon/warp_biolabs.txt
+npc: script/warp/dungeon/warp_byalan.txt
+npc: script/warp/dungeon/warp_clock_tower.txt
+npc: script/warp/dungeon/warp_coal_mine.txt
+npc: script/warp/dungeon/warp_culvert.txt
+npc: script/warp/dungeon/warp_einbroch_dungeon.txt
+npc: script/warp/dungeon/warp_gefenia.txt
+npc: script/warp/dungeon/warp_geffen_dungeon.txt
+npc: script/warp/dungeon/warp_glast_heim.txt
+npc: script/warp/dungeon/warp_hidden_temple.txt
+npc: script/warp/dungeon/warp_ice_cave.txt
+npc: script/warp/dungeon/warp_juperos.txt
+npc: script/warp/dungeon/warp_kiel_hyre.txt
+npc: script/warp/dungeon/warp_kunlun_dungeon.txt
+npc: script/warp/dungeon/warp_louyang_dungeon.txt
+npc: script/warp/dungeon/warp_magma_dungeon.txt
+npc: script/warp/dungeon/warp_odin_temple.txt
+npc: script/warp/dungeon/warp_orc_dungeon.txt
+npc: script/warp/dungeon/warp_payon_dungeon.txt
+npc: script/warp/dungeon/warp_pyramid.txt
+npc: script/warp/dungeon/warp_sanctuary.txt
+npc: script/warp/dungeon/warp_sphinx.txt
+npc: script/warp/dungeon/warp_sunken_ship.txt
+npc: script/warp/dungeon/warp_thanatos_tower.txt
+npc: script/warp/dungeon/warp_thor_volcano.txt
+npc: script/warp/dungeon/warp_toy_factory.txt
+npc: script/warp/dungeon/warp_turtle_island.txt
+npc: script/warp/dungeon/warp_umbala_dungeon.txt
+
+npc: script/warp/field/warp_amatsu_field.txt
+npc: script/warp/field/warp_ayothaya_field.txt
+npc: script/warp/field/warp_comodo_field.txt
+npc: script/warp/field/warp_einbroch_field.txt
+npc: script/warp/field/warp_geffen_field.txt
+npc: script/warp/field/warp_hugel_field.txt
+npc: script/warp/field/warp_juno_field.txt
+npc: script/warp/field/warp_kunlun_field.txt
+npc: script/warp/field/warp_lighthalzen_field.txt
+npc: script/warp/field/warp_louyang_field.txt
+npc: script/warp/field/warp_lutie_field.txt
+npc: script/warp/field/warp_morroc_field.txt
+npc: script/warp/field/warp_mt_mjolnir.txt
+npc: script/warp/field/warp_niflheim_field.txt
+npc: script/warp/field/warp_payon_field.txt
+npc: script/warp/field/warp_prontera_field.txt
+npc: script/warp/field/warp_rachel_field.txt
+npc: script/warp/field/warp_umbala_field.txt
+npc: script/warp/field/warp_veins_field.txt
+npc: script/warp/field/warp_yggdrasil.txt
+
+npc: script/warp/misc/warp_airship.txt
+// npc: script/warp/misc/warp_alpha.txt
+npc: script/warp/misc/warp_disabled.txt
+npc: script/warp/misc/warp_god_seal.txt
+npc: script/warp/misc/warp_gvg.txt
+npc: script/warp/misc/warp_job_quests.txt
+npc: script/warp/misc/warp_kiel_hyre.txt
+npc: script/warp/misc/warp_pvp.txt
+npc: script/warp/misc/warp_sign_quest.txt
+
+npc: script/warp/town/warp_alberta.txt
+npc: script/warp/town/warp_aldebaran.txt
+npc: script/warp/town/warp_amatsu.txt
+npc: script/warp/town/warp_ayothaya.txt
+npc: script/warp/town/warp_comodo.txt
+npc: script/warp/town/warp_einbech.txt
+npc: script/warp/town/warp_einbroch.txt
+npc: script/warp/town/warp_geffen.txt
+npc: script/warp/town/warp_hugel.txt
+npc: script/warp/town/warp_izlude.txt
+npc: script/warp/town/warp_jawaii.txt
+npc: script/warp/town/warp_juno.txt
+npc: script/warp/town/warp_kunlun.txt
+npc: script/warp/town/warp_lighthalzen.txt
+npc: script/warp/town/warp_louyang.txt
+npc: script/warp/town/warp_lutie.txt
+npc: script/warp/town/warp_morroc.txt
+npc: script/warp/town/warp_niflheim.txt
+npc: script/warp/town/warp_payon.txt
+npc: script/warp/town/warp_prontera.txt
+npc: script/warp/town/warp_rachel.txt
+npc: script/warp/town/warp_umbala.txt
+npc: script/warp/town/warp_veins.txt

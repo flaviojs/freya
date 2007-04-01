@@ -1,0 +1,977 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Comodo Town NPCs	Author: A Lot of People
+//--------------------------------------------------------------
+// Revision History: v2.2
+//--------------------------------------------------------------
+//	1.0 First version [Unknown]
+//	1.1 Rolled back from the wrong Kashy's fix [kobra_k88]
+//	1.2 Implemented the 'Cheese'/Stone of Awakening quest [kobra_k88]
+//	1.3 Re-organized stuff [kobra_k88]
+//	1.4 Added Baby Class support [Lupus]
+//	1.5 Spell Checked and Fixed [massdriller]
+//	1.6 Fixed typo’s [Nexon]
+//	1.7 Removed Duplicates [Silent]
+//	1.8 Split doomed sword quest to quests/quests_comodo.txt [Evera]
+//	1.9 Merged Comodo Gambling script, converted from Aegis by GreenGoblin [Tsuyuki]
+//	2.0 Merged in Comodo Quests script, includes Doomed Swords-related NPCs [Tsuyuki]
+//	2.1 Moved Doomed Swords NPCs to the Doomed Swords quest script [Tsuyuki]
+//	2.2 Changed some Job IDs to constants [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: Also contains Pharos Lighthouse and
+// Kokomo Beach NPCs
+//--------------------------------------------------------------
+
+
+comodo.gat,216,310,4	script	BBQ Papa	85,{
+
+OnStart:
+	mes "[BBQ Son]";
+	mes "Daddy! Daddy!... Is it true that an ^FF4444Evil Witch^000000 once lived in our village?? Does she still live here???";
+	next;
+	mes "[BBQ Mama]";
+	mes "Son, where did you hear about that?";
+	next;
+	mes "[BBQ Papa]";
+	mes "Ha ha... are you scared of the Evil Witch? It's just an old story......";
+	next;
+	mes "[BBQ Son]";
+	mes "No daddy! If the Witch really lived on our island, her home must be around here still.... She had to have a place to sleep in... Right??";
+	next;
+	mes "[BBQ Mama]";
+	mes "Ho ho ho... now if all of this were true don't you think the ^5555FFChief^000000 would know about it?";
+	mes "Anyway, we better start eating before the meat gets overcooked.";
+	next;
+	mes "[BBQ Son]";
+	mes "Okay.... (~crunch~chew~) Yum Yum!!. I'm... I'm...... (~chomp~chomp~).... going to find out the truth!! (~crunch~chomp~) Mmmmm......";
+	close;
+}
+
+comodo.gat,215,307,4	script	BBQ Mama	66,{
+
+	doevent "BBQ Papa::OnStart";
+	end;
+}
+
+comodo.gat,213,310,4	script	BBQ Son	706,{
+
+	doevent "BBQ Papa::OnStart";
+	end;
+}
+
+comodo.gat,221,310,4	script	Rinta	89,{
+
+	mes "[Rinta]";
+	mes "I was 'accidentally' eavesdropping on those people having the BBQ over there.";
+	mes "It seems that they are long time friends of Comodo's ^5555FFChief^000000.";
+	next;
+	mes "[Rinta]";
+	mes "If this is true, then this means that they can have as much meat and seasoning as they want......";
+	emotion e_ic;
+	close;
+}
+
+comodo.gat,218,309,4	script	Razy	69,{
+
+	mes "[Razy]";
+	mes "I really dislike people who constantly reminisce about the past.  Like that group of people over there.  They're really starting to bug me.";
+	next;
+	mes "[Razy]";
+	mes "However, the lady in that group looks really beautiful.... her skin is so light and her complexion is wonderful.";
+	mes "If only she didn't have that scar on her face.... she would be perfect...........";
+	close;
+}
+
+cmd_in02.gat,172,105,4	script	G . J	86,{
+
+	mes "[G . J]";
+	mes "The more I think about it, the more I realize that it is easier and quicker to get rich by working a steady job and saving my money";
+	mes "than it is to gamble it away on false hopes of hitting the jackpot. ";
+	next;
+	mes "[G . J]";
+	mes "It just seems like a smarter choice.  I can still earn a good living even after paying my bills and taxes.";
+	mes "I feel that it is much more respectable to earn your living through hard work than it is to try to make a living on easy money.";
+	next;
+	mes "[G . J]";
+	mes "Wouldn't you agree? Think about it in this way: You and your friend have been gambling and your friend hits the jackpot.";
+	mes "You would want your friend to buy you dinner or even lend you some of the prize money right?";
+	next;
+	mes "[G . J]";
+	mes "After all it's not like your friend EARNED the money.... he/she just got lucky that’s all.";
+	mes "Your friend shouldn't mind sharing money that really isn't his/hers.";
+	next;
+	mes "[G . J]";
+	mes "On the other hand, if that same friend had a steady job and worked hard for every penny he/she earned......";
+	mes "would you be comfortable asking your friend for some of that hard earned money?";
+	next;
+	mes "[G . J]";
+	mes "You wouldn't dare would you! That money was well earned and represents your friends hard work.";
+	mes "You have respect for you friend because of that, and value his/her money more than some prize money.";
+	close;
+}
+
+cmd_in02.gat,178,92,4	script	Shalone	101,{
+
+	mes "[Shalone]";
+	mes "Ok, ok............ A-4!! Looks like you've lost again sir.... Hoo hoo, if you'd like a little advice, you shouldn't play when your luck's this bad.";
+	next;
+	mes "[Shalone]";
+	mes "( This costumer just can't seem to win! I feel so sorry for him... ~sigh~)";
+	close;
+}
+
+cmd_in02.gat,178,86,4	script	Stonae	98,{
+
+	mes "[Stonae]";
+	mes "WHAT!! Dang it!! AGAIN!! Arghhhhhhh!!!............";
+	emotion e_omg;
+	next;
+	mes "[Stonae]";
+	mes "Sheesh! I can't quit after losing this badly! I won't quit until I win!";
+	emotion e_ag;
+	next;
+	mes "[Stonae]";
+	mes "Let's go!!";
+	emotion e_go;
+	close;
+}
+
+cmd_in02.gat,174,126,4	script	Loyar	83,{
+
+	set @TEMP,0;
+	mes "[Loyar]";
+	mes "The Comodo Casino has a very pleasing decor... It's quite clean and simple!";
+	mes "The atmosphere is perfect and makes you really want to play more!";
+	emotion e_ok;
+	next;
+	mes "[Loyar]";
+	mes "Atmosphere is everything when it comes to gaming.";
+	next;
+	mes "[Loyar]";
+	mes "No matter how much fun a game is, no one would be willing to play for a long time if the environment was dirty.";
+	mes "A shabby interior and bad odors can wreck a good casino!";
+	next;
+	mes "[Loyar]";
+	mes "The Comodo Casino is the best... NOTHING can beat it! The interior design might even change the mood of a sensitive player.";
+	mes "Isn't it great?!";
+	close;
+}
+
+cmd_in02.gat,73,81,4	script	Martine	48,{
+
+	set @temp, 2;
+	mes "[Martine]";
+	mes "Gambling? Oh no, it's NOT gambling! Don't say that the Comodo 'CASINO' houses gambling.....";
+	emotion e_gasp;
+	next;
+	mes "[Martine]";
+	mes "We provide some of the greatest 'GAMES' in the world. It's much more of a sophisticated form of 'GAMING' than it is 'GAMBLING'.....";
+	mes "You know what I mean?? (~wink~)";
+	next;
+	mes "[Martine]";
+	mes "What?......... Don't look at me like that!...";
+	emotion e_gasp;
+	next;
+	mes "[Martine]";
+	mes "..... Ok, FINE! I see how it is.  I don't care what you think.  I've lost all my zeny playing in this casino and I have NO regrets whatsoever!";
+	emotion e_ag;
+	next;
+	mes "[Martine]";
+	mes "Today's competition is over! I'll have to go to the ^5555FFComodo Dungeon^000000 and kill some monsters to earn back the zeny I lost.";
+	mes "But no worries here cause after I've made some zeny, I'll be right back were I left off!!";
+	next;
+	mes "[Martine]";
+	mes "WOO HOO!! I'm going to have a blast!! HAHAHA!";
+	emotion e_gg;
+	close;
+}
+
+cmd_in02.gat,64,43,4	script	Roberto#01	709,{
+
+	mes "[Roberto]";
+	mes "Muhahaha... What a stupid man! Now that's easy money! (~counts his money~)";
+	emotion e_gg;
+	next;
+	mes "[Roberto]";
+	mes "Hey you! What are you looking at!? Get out of here!! What... you've never seen someone count money before??";
+	emotion e_what;
+	close;
+}
+
+cmd_in02.gat,89,72,4	script	Deniroz	89,{
+
+	mes "[Deniroz]";
+	mes "If the bead falls in this time, I'll hit the JACKPOT!! All I have to do is put this small bead into that little hole.";
+	emotion e_gasp;
+	next;
+	mes "[Deniroz]";
+	mes "Most people give up after a few tries, but not me..... *whispers*(the can of beer in my hand is actually a powerful magnet)...";
+	next;
+	mes "[Deniroz]";
+	mes "Keee hee hee hee!! I'm going to get rich with my secret plan!!";
+	emotion e_gg;
+	close;
+}
+
+cmd_in02.gat,57,62,4	script	Casino Manager Moo	109,{
+
+	mes "[Casino Manager Moo]";
+	mes "I am the manager of Comodo Casino.  My name is ^3355FF'Moo'^000000.";
+	next;
+	mes "[Casino Manager Moo]";
+	mes "Here at the Comodo Casino, we strive to serve our customers and accommodate their needs as best we can.";
+	mes "Please let us know if you need anything.";
+	next;
+	mes "[Casino Manager Moo]";
+	mes "This area is for the VIP guest at our Casino.  Our VIP program facilitates a more sophisticated level of gaming.";
+	mes "If you're interested in a more easy going gaming environment, I recommend choosing a more general gaming area.";
+	next;
+	mes "[Casino Manager Moo]";
+	mes "We are continually expanding and trying to develop a more enjoyable environment for our guests here so check back with us often.";
+	close;
+}
+
+cmd_in02.gat,48,55,4	script	Scoursege	51,{
+
+	mes "[Scoursege]";
+	mes "Darn it, where is that guy who borrowed my zeny? He better not be hiding from me, he told me he would double my money!";
+	emotion e_swt2;
+	next;
+	mes "[Scoursege]";
+	mes "He was positive that he could double my money and make a little for himself! Where is he!...";
+	next;
+	mes "[Scoursege]";
+	mes "Have I been scammed!?? On no! What should I do?? My zeny..... (~sob~sob~)";
+	emotion e_sob;
+	close;
+}
+
+cmd_fild07.gat,192,58,4	script	Light House Guard#01	100,{
+
+	mes "[Rahasu]";
+	mes "Good morning, I am Rahasu, your guide to the";
+	mes "^3355FF`lighthouses'^000000";
+	mes "Do you wish to learn more about these lighthouses?";
+	next;
+	menu "Learn more about these Lighthouses..",M0,"Cancel",MEnd;
+
+	M0:
+		mes "[Rahasu]";
+		mes "As you probably have noticed, there are two huge lighthouses located in this area.";
+		mes "Both of these lighthouses were used to signal nearby fortresses of incoming invasions many years ago.";
+		next;
+		mes "[Rahasu]";
+		mes "Too bad tourists can not enter these lighthouses yet, because they are still under heavy restrictions.";
+		mes "There are many, many beautiful paintings inside.";
+		close;
+	MEnd:
+		mes "[Rahasu]";
+		mes "That's too bad, hope you could find some time to learn more about these ancient structures.";
+		close;
+}
+
+cmd_fild07.gat,52,280,4	script	Light House Guard#02	100,{
+
+	mes "[Hallosu]";
+	mes "That's correct, this is one of the two lighthouses in this area.";
+	mes "However, I can not let anyone go in yet because the lighthouse's interior is still under reconstruction.";
+	next;
+	mes "[Hallosu]";
+	mes "We hope to have a grand opening soon, thank you for your time!";
+	mes "^3355FF(The guard is very nervous)^000000";
+	close;
+}
+
+cmd_fild07.gat,299,83,4	script	Sailor#01	100,{
+
+	mes "[Zain]";
+	mes "Hello my friend, where do you wish to go?";
+	next;
+	menu "Alberta = 600 Zeny",M0,"Izlude = 800 Zeny",M1,"Cancel",MEnd;
+
+	M0:
+		if(Zeny < 600) goto NoZeny;
+		set Zeny, Zeny - 600;
+		warp "alberta.gat",192,169;
+		close;
+	M1:
+		if(Zeny < 800) goto NoZeny;
+		set Zeny, Zeny - 800;
+		warp "izlude.gat",176,182;
+		close;
+
+		NoZeny:
+			mes "[Zain]";
+			mes "Umm, you do not have enough zeny.";
+			close;
+	MEnd:
+		mes "[Zain]";
+		mes "Thank you, come again";
+		close;
+}
+
+cmd_fild07.gat,94,134,4	script	Sailor#02	100,{
+
+	mes "[Sarumane]";
+	mes "Hello my friend, where do you wish to go?";
+	next;
+	menu "Alberta = 600 Zeny",M0,"Izlude = 800 Zeny",M1,"Cancel",MEnd;
+
+	M0:
+		if(Zeny < 600) goto NoZeny;
+		set Zeny, Zeny - 600;
+		warp "alberta.gat",192,169;
+		close;
+	M1:
+		if(Zeny < 800) goto NoZeny;
+		set Zeny, Zeny - 800;
+		warp "izlude.gat",176,182;
+		close;
+
+		NoZeny:
+			mes "[Sarumane]";
+			mes "Umm, you do not have enough zeny.";
+			close;
+	MEnd:
+		mes "[Sarumane]";
+		mes "Thank you, come again.";
+		close;
+}
+
+cmd_fild04.gat,188,74,4	script	Zyosegirl	93,{
+
+	mes "[Zyosegirl]";
+	mes "Hello, I am Zyosegirl, I gather seashells in the sea all day and sell them to make a living.";
+	next;
+	mes "[Zyosegirl]";
+	mes "Even though it seems to be a simple lifestyle, I absolutely love it here.";
+	close;
+}
+
+cmd_fild04.gat,248,86,4	script	Ziyaol	709,{
+
+	mes "[Ziyaol]";
+	mes "I don't care what you think of me, I am a fisherman, and it is a very tough profession.";
+	next;
+	mes "[Ziyaol]";
+	mes "I am just taking a short break right now, then I will resume fishing again in a few minutes...";
+	close;
+}
+
+cmd_fild04.gat,267,137,4	script	Kid	703,{
+
+	mes "[Daeguro]";
+	mes "The sand here are so gentle and the smell of the ocean is great.";
+	mes "I hope one day I could get on one of those boats and head to Alberta.";
+	close;
+}
+
+moc_fild12.gat,35,303,4	script	Saint Darmain Gatekeeper	59,{
+
+	mes "[Serutero]";
+	mes "Good day, my name is Sertutero and I am the Gatekeeper for the road to Saint Darmain.";
+	mes "Do wish to proceed to Saint Darmain?";
+	next;
+	menu "Proceed to Saint Darmain",M0,"Learn more about Saint Darmain",M1,"Cancel",MEnd;
+	
+	M0:
+		mes "[Serutero]";
+		mes "Good luck out there, things could get rough, so be extra careful.";
+		mes ". . . . .";
+		warp "cmd_fild08.gat",331,319;
+		close;
+	M1:
+		mes "[Serutero]";
+		mes "Long time ago, due to many waves of invasion by monsters in Saint Darmain, many defensive structures were constructed to keep the peace.";
+		mes "And slowly, Saint Darmain became a natural fortress.";
+		mes "During an invasion, the southern edge of Saint Darmain's lighthouse also sends warning signals to surrounding cities.";
+		next;
+		mes "[Serutero]";
+		mes "Because of the vastness of all the defensive structures, Saint Darmain is also commonly known as";
+		mes "^3355FF` Fortress Saint Darmain '^000000.";
+		next;
+		mes "[Serutero]";
+		mes "If you are looking for the lighthouse, proceed in the direction of south-west.";
+		close;
+	MEnd:
+		mes "[Serutero]";
+		mes "If you ever become exhausted on your journey, you should stop by the nearby island of";
+		mes "^3355FF`Comodo'^000000 City.";
+		mes "The tropical weather over there is a brand new experience for most people.";
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Comodo Gambling
+//--------------------------------------------------------------
+
+comodo.gat,219,158,6	script	Kachua	91,{
+
+	cutin "katsua01",2;
+	mes "[Kachua]";
+	mes "Diamonds...!";
+	mes "I simply can't get my mind off";
+	mes "them! Ever since that man showed me";
+	mes "that diamond, it's been all I think";
+	mes "about!";
+	next;
+	menu "Would you like to have mine?",-,"Ah, what a shame...",L_Cancel;
+	if (countitem(732) > 0) goto L_Play;
+	cutin "katsua01",255;
+	cutin "katsua03",2;
+	mes "[Kachua]";
+	mes "*piff*";
+	mes "You don't have any";
+	mes "diamonds! Don't even";
+	mes "try to fool me!";
+	close2;
+	cutin "katsua03",255;
+	end;
+
+L_Play:
+	mes "[Kachua]";
+	mes "Are you sure you don't mind";
+	mes "giving this to me? Thank you";
+	mes "so much! I don't have much in";
+	mes "the way of money, but I can give";
+	mes "you something from one of my";
+	mes "collections~";
+	next;
+	if (Weight >= MaxWeight/2) goto L_Weight;
+	if (countitem(732) == 0) close;
+	delitem 732,1;
+	mes "[Kachua]";
+	mes "So what would";
+	mes "you like to have?";
+	next;
+	menu "Weapon",-,"Armor",L_Armor,"Garment",L_Garment,"Helmet",L_Helmet,"Shoes",L_Shoes,"Shield",L_Shield;
+	set @gamble_1,rand (1,1000);
+	if ((@gamble_1 > 920) && (@gamble_1 < 931)) goto L_RareWeapon;
+		if ((@gamble_1 > 0) && (@gamble_1 < 201)) getitem 1201,1; // Knife[3]
+		if ((@gamble_1 > 200) && (@gamble_1 < 301)) getitem 1101,1; // Sword[3]
+		if ((@gamble_1 > 300) && (@gamble_1 < 401)) getitem 1601,1; // Rod[3]
+		if ((@gamble_1 > 400) && (@gamble_1 < 501)) getitem 1116,1; // Katana[3]
+		if ((@gamble_1 > 500) && (@gamble_1 < 601)) getitem 1250,1; // Jur[2]
+		if ((@gamble_1 > 600) && (@gamble_1 < 701)) getitem 1301,1; // Axe[3]
+		if ((@gamble_1 > 700) && (@gamble_1 < 801)) getitem 1701,1; // Bow[3]
+		if ((@gamble_1 > 800) && (@gamble_1 < 851)) getitem 1504,1; // Mace[3]
+		if ((@gamble_1 > 850) && (@gamble_1 < 901)) getitem 1604,1; // Wand[2]
+		if ((@gamble_1 > 900) && (@gamble_1 < 911)) getitem 1108,1; // Blade[4]
+		if ((@gamble_1 > 910) && (@gamble_1 < 921)) getitem 1163,1; // Claymore
+		if ((@gamble_1 > 930) && (@gamble_1 < 961)) getitem 1522,1; // Stunner
+		if ((@gamble_1 > 960) && (@gamble_1 < 971)) getitem 1608,1; // Staff[3]
+		if ((@gamble_1 > 970) && (@gamble_1 < 981)) getitem 1408,1; // Pike[4] 
+		if ((@gamble_1 > 980) && (@gamble_1 < 991)) getitem 1452,1; // Guisarme[3] 
+		if ((@gamble_1 > 990) && (@gamble_1 < 1001)) getitem 1208,1; // Main Gauche[4]
+	goto L_End;
+
+L_Rareweapon:
+	set @gamble_2,rand (1,51);
+		if (@gamble_2 == 1) getitem 1128,1; // Haedonggum[2]
+		if (@gamble_2 == 2) getitem 1120,1; // Tsurugi[2]
+		if (@gamble_2 == 3) getitem 1127,1; // Saber[3]
+		if (@gamble_2 == 4) getitem 1158,1; // Two-Handed Sword[2]
+		if (@gamble_2 == 5) getitem 1155,1; // Bastard Sword[3]
+		if (@gamble_2 == 6) getitem 1220,1; // Gladius[3]
+		if (@gamble_2 == 7) getitem 1222,1; // Damascus[1]
+		if (@gamble_2 == 8) getitem 1253,1; // Katar[2]
+		if (@gamble_2 == 9) getitem 1529,1; // Iron Driver
+		if (@gamble_2 == 10) getitem 1251,1; // Jur[3]
+		if (@gamble_2 == 11) getitem 1361,1; // Two-Handed Axe[2]
+		if (@gamble_2 == 12) getitem 1258,1; // Katar of Raging Blaze
+		if (@gamble_2 == 13) getitem 1257,1; // Katar of Quaking
+		if (@gamble_2 == 14) getitem 1256,1; // Katar o fFrozen Icicle
+		if (@gamble_2 == 15) getitem 1259,1; // Katar of Piercing Wind
+		if (@gamble_2 == 16) getitem 1260,1; // Sharpened Legbone of Ghoul
+		if (@gamble_2 == 17) getitem 1716,1; // Gakkung Bow[2]
+		if (@gamble_2 == 18) getitem 1715,1; // Arbalest[2]
+		if (@gamble_2 == 19) getitem 1711,1; // Crossbow[3]
+		if (@gamble_2 == 20) getitem 1702,1; // Bow[4]
+		if (@gamble_2 == 21) getitem 1520,1; // Chain[3]
+		if (@gamble_2 == 22) getitem 1610,1; // Arc Wand[1]
+		if (@gamble_2 == 23) getitem 1615,1; // Evil Bone Wand
+		if (@gamble_2 == 24) getitem 1602,1; // Rod[4]
+		if (@gamble_2 == 25) getitem 1461,1; // Trident[3]
+		if (@gamble_2 == 26) getitem 1402,1; // Javelin[4]
+		if (@gamble_2 == 27) getitem 1953,1; // Line[3]
+		if (@gamble_2 == 28) getitem 1957,1; // Rante Whip[1]
+		if (@gamble_2 == 29) getitem 1552,1; // Tablet[1]
+		if (@gamble_2 == 30) getitem 1551,1; // Bible[2]
+		if (@gamble_2 == 31) getitem 1553,1; // Book of Billows
+		if (@gamble_2 == 32) getitem 1554,1; // Book of Mother Earth
+		if (@gamble_2 == 33) getitem 1555,1; // Book of the Blazing Sun
+		if (@gamble_2 == 34) getitem 1556,1; // Book of Gust of Wind
+		if (@gamble_2 == 35) getitem 1951,1; // Rope[4]
+		if (@gamble_2 == 36) getitem 1959,1; // Tail Whip[2]
+		if (@gamble_2 == 37) getitem 1961,1; // Whip[2]
+		if (@gamble_2 == 38) getitem 1955,1; // Wire Whip[3]
+		if (@gamble_2 == 39) getitem 1810,1; // Claw[2]
+		if (@gamble_2 == 40) getitem 1910,1; // Harp[2]
+		if (@gamble_2 == 41) getitem 1906,1; // Lute[3]
+		if (@gamble_2 == 42) getitem 1902,1; // Violin[4]
+		if (@gamble_2 == 43) getitem 1904,1; // Mandolin[3]
+		if (@gamble_2 == 44) getitem 1912,1; // Gumoongoh[2]
+		if (@gamble_2 == 45) getitem 1908,1; // Guitar[1]
+		if (@gamble_2 == 46) getitem 1808,1; // Fist[1]
+		if (@gamble_2 == 47) getitem 1802,1; // Waghnak[4]
+		if (@gamble_2 == 48) getitem 1812,1; // Finger[2]
+		if (@gamble_2 == 49) getitem 1806,1; // Studded Knuckles[3]
+		if (@gamble_2 == 50) getitem 1804,1; // Knuckle Duster[3]
+		if (@gamble_2 == 51) getitem 1550,1; // Book[3]
+	goto L_End;
+
+L_Armor:
+	set @gamble_1, rand(1,500);
+		if ((@gamble_1 > 299) && (@gamble_1 < 302)) goto L_RareArmor;
+		if ((@gamble_1 > 0) && (@gamble_1 < 51)) getitem 2301,1; // Cotton Shirt
+		if ((@gamble_1 > 50) && (@gamble_1 < 101)) getitem 2302,1; // Cotton Shirt[1]
+		if ((@gamble_1 > 100) && (@gamble_1 < 151)) getitem 2303,1; // Jacket
+		if ((@gamble_1 > 150) && (@gamble_1 < 201)) getitem 2304,1; // Jacket[1]
+		if ((@gamble_1 > 200) && (@gamble_1 < 251)) getitem 2305,1; // Adventurer's Suit
+		if ((@gamble_1 > 250) && (@gamble_1 < 300)) getitem 2301,1; // Cotton Shirt
+		if ((@gamble_1 > 301) && (@gamble_1 < 351)) getitem 2307,1; // Mantle
+		if ((@gamble_1 > 350) && (@gamble_1 < 401)) getitem 2309,1; // Coat
+		if ((@gamble_1 > 400) && (@gamble_1 < 402)) getitem 2322,1; // Silk Robe[1]
+		if ((@gamble_1 > 401) && (@gamble_1 < 403)) getitem 2310,1; // Coat[1]
+		if ((@gamble_1 > 402) && (@gamble_1 < 411)) getitem 2306,1; // Adventurer's Suit[1]
+		if ((@gamble_1 > 410) && (@gamble_1 < 416)) getitem 2308,1; // Mantle[1]
+		if ((@gamble_1 > 415) && (@gamble_1 < 421)) getitem 2313,1; // Padded Armor[1]
+		if ((@gamble_1 > 420) && (@gamble_1 < 426)) getitem 2337,1; // Ninja Suit
+		if ((@gamble_1 > 425) && (@gamble_1 < 431)) getitem 2316,1; // Full Plate
+		if ((@gamble_1 > 430) && (@gamble_1 < 436)) getitem 2325,1; // Saint's Robe
+		if ((@gamble_1 > 435) && (@gamble_1 < 441)) getitem 2341,1; // Legion Plate Armor
+		if ((@gamble_1 > 440) && (@gamble_1 < 446)) getitem 2330,1; // Tights
+		if ((@gamble_1 > 445) && (@gamble_1 < 451)) getitem 2314,1; // Chain Mail
+		if ((@gamble_1 > 450) && (@gamble_1 < 456)) getitem 2335,1; // Thief Clothes
+		if ((@gamble_1 > 455) && (@gamble_1 < 461)) getitem 2324,1; // Scapulare[1]
+		if ((@gamble_1 > 460) && (@gamble_1 < 466)) getitem 2329,1; // Wooden Mail[1]
+		if ((@gamble_1 > 465) && (@gamble_1 < 471)) getitem 2340,1; // Novice Breastplate[1]
+		if ((@gamble_1 > 470) && (@gamble_1 < 476)) getitem 2312,1; // Padded Armor
+		if ((@gamble_1 > 475) && (@gamble_1 < 481)) getitem 2339,1; // Pantie
+		if ((@gamble_1 > 480) && (@gamble_1 < 486)) getitem 2328,1; // Wooden Mail
+		if ((@gamble_1 > 485) && (@gamble_1 < 491)) getitem 2321,1; // Silk Robe
+		if ((@gamble_1 > 490) && (@gamble_1 < 501)) getitem 2323,1; // Scapulare
+	goto L_End;
+
+L_RareArmor:
+	set @gamble_2,rand (1,30);
+		if ((@gamble_2 > 0) && (@gamble_2 < 3)) getitem 2315,1; // Chain Mail[1]
+		if ((@gamble_2 > 2) && (@gamble_2 < 5)) getitem 2336,1; // Thief Clothes[1]
+		if ((@gamble_2 > 4) && (@gamble_2 < 7)) getitem 2318,1; // Lord's Clothes[1]
+		if ((@gamble_2 > 6) && (@gamble_2 < 9)) getitem 2326,1; // Saint's Robe[1]
+		if ((@gamble_2 > 8) && (@gamble_2 < 11)) getitem 2327,1; // Holy Robe
+		if ((@gamble_2 > 10) && (@gamble_2 < 13)) getitem 2317,1; // Full Plate[1]
+		if ((@gamble_2 > 12) && (@gamble_2 < 15)) getitem 2331,1; // Tights[1]
+		if ((@gamble_2 > 14) && (@gamble_2 < 17)) getitem 2342,1; // Legion Plate Armor[1]
+		if ((@gamble_2 > 16) && (@gamble_2 < 19)) getitem 2311,1; // Mink Coat[1]
+		if ((@gamble_2 > 18) && (@gamble_2 < 21)) getitem 2320,1; // Formal Suit[1]
+		if ((@gamble_2 > 20) && (@gamble_2 < 23)) getitem 2319,1; // Glittering Jacket[1]
+		if ((@gamble_2 > 22) && (@gamble_2 < 25)) getitem 2344,1; // Lucius's Fierce Armor of Volcano
+		if ((@gamble_2 > 24) && (@gamble_2 < 27)) getitem 2346,1; // Saphien's Armor of Ocean
+		if ((@gamble_2 > 26) && (@gamble_2 < 29)) getitem 2348,1; // Aebeccee's Raging Typhoon Armor
+		if ((@gamble_2 > 28) && (@gamble_2 < 31)) getitem 2350,1; // Claytos Cracking Earth Armor
+	goto L_End;
+
+L_Garment:
+	set @gamble_1, rand(1,500);
+		if ((@gamble_1 > 200) && (@gamble_1 < 204)) goto L_RareGarment;
+		if ((@gamble_1 > 0) && (@gamble_1 < 101)) getitem 2503,1; // Muffler
+		if ((@gamble_1 > 100) && (@gamble_1 < 201)) getitem 2505,1; // Manteau
+		if ((@gamble_1 > 203) && (@gamble_1 < 451)) getitem 2501,1; // Hood
+		if ((@gamble_1 > 450) && (@gamble_1 < 501)) getitem 2502,1; // Hood[1]
+	goto L_End;
+
+L_RareGarment:
+	set @gamble_2, rand(1,10);
+		if ((@gamble_2 > 0) && (@gamble_2 < 3)) getitem 2506,1; // Manteau[1]
+		if ((@gamble_2 > 2) && (@gamble_2 < 5)) getitem 2504,1; // Muffler[1]
+		if ((@gamble_2 > 4) && (@gamble_2 < 8)) getitem 2508,1; // Ragamuffin Manteau
+		if ((@gamble_2 > 7) && (@gamble_2 < 11)) getitem 2507,1; // Ancient Cape
+	goto L_End;
+
+L_Helmet:
+	set @gamble_1, rand(1,1000);
+		if ((@gamble_1 > 299) && (@gamble_1 < 304)) goto L_RareHelmet;
+		if ((@gamble_1 > 0) && (@gamble_1 < 101)) getitem 2226,1; // Cap
+		if ((@gamble_1 > 100) && (@gamble_1 < 201)) getitem 2211,1; // Bandana
+		if ((@gamble_1 > 200) && (@gamble_1 < 300)) getitem 2209,1; // Ribbon[1]
+		if ((@gamble_1 > 303) && (@gamble_1 < 401)) getitem 2220,1; // Hat
+		if ((@gamble_1 > 400) && (@gamble_1 < 501)) getitem 2232,1; // Circlet
+		if ((@gamble_1 > 500) && (@gamble_1 < 601)) getitem 2216,1; // Biretta
+		if ((@gamble_1 > 600) && (@gamble_1 < 701)) getitem 2230,1; // Gemmed Sallet
+		if ((@gamble_1 > 700) && (@gamble_1 < 801)) getitem 2224,1; // Goggles
+		if ((@gamble_1 > 800) && (@gamble_1 < 901)) getitem 2222,1; // Turban
+		if ((@gamble_1 > 900) && (@gamble_1 < 906)) getitem 2228,1; // Helm
+		if ((@gamble_1 > 905) && (@gamble_1 < 911)) getitem 2252,1; // Wizard Hat
+		if ((@gamble_1 > 910) && (@gamble_1 < 916)) getitem 2227,1; // Cap[1]
+		if ((@gamble_1 > 915) && (@gamble_1 < 921)) getitem 2221,1; // Hat[1]
+		if ((@gamble_1 > 920) && (@gamble_1 < 926)) getitem 2299,1; // Orc Helm
+		if ((@gamble_1 > 925) && (@gamble_1 < 931)) getitem 2236,1; // Santa Hat
+		if ((@gamble_1 > 930) && (@gamble_1 < 936)) getitem 2275,1; // Red Bandana
+		if ((@gamble_1 > 935) && (@gamble_1 < 941)) getitem 5015,1; // Egg Shell
+		if ((@gamble_1 > 940) && (@gamble_1 < 946)) getitem 5061,1; // Flower Hairpin
+		if ((@gamble_1 > 945) && (@gamble_1 < 951)) getitem 5092,1; // Coif
+		if ((@gamble_1 > 950) && (@gamble_1 < 1001)) getitem 2226,1; // Cap
+	goto L_End;
+
+L_RareHelmet:
+	set @gamble_2, rand(1,76);
+		if ((@gamble_2 > 0) && (@gamble_2 < 3)) getitem 5109,1; // Red Bonnet
+		if ((@gamble_2 > 2) && (@gamble_2 < 5)) getitem 2285,1; // Apple of Archer
+		if ((@gamble_2 > 4) && (@gamble_2 < 7)) getitem 2255,1; // Evil Wing
+		if ((@gamble_2 > 6) && (@gamble_2 < 9)) getitem 5045,1; // Magician Hat
+		if ((@gamble_2 > 8) && (@gamble_2 < 11)) getitem 2233,1; // Circlet[1]
+		if ((@gamble_2 > 10) && (@gamble_2 < 13)) getitem 2231,1; // Gemmed Sallet[1]
+		if ((@gamble_2 > 12) && (@gamble_2 < 15)) getitem 2217,1; // Biretta[1]
+		if ((@gamble_2 > 14) && (@gamble_2 < 17)) getitem 2206,1; // Wedding Veil
+		if ((@gamble_2 > 16) && (@gamble_2 < 19)) getitem 2246,1; // Golden Gear
+		if ((@gamble_2 > 18) && (@gamble_2 < 21)) getitem 2261,1; // Army Cap
+		if ((@gamble_2 > 20) && (@gamble_2 < 23)) getitem 2287,1; // Pirate Bandana
+		if ((@gamble_2 > 22) && (@gamble_2 < 25)) getitem 5012,1; // Ph.D Hat
+		if ((@gamble_2 > 24) && (@gamble_2 < 27)) getitem 2244,1; // Big Ribbon
+		if ((@gamble_2 > 26) && (@gamble_2 < 29)) getitem 5057,1; // Black Cat Ears
+		if ((@gamble_2 > 28) && (@gamble_2 < 31)) getitem 2248,1; // Western Grace
+		if ((@gamble_2 > 30) && (@gamble_2 < 33)) getitem 2223,1; // Turban[1]
+		if ((@gamble_2 > 32) && (@gamble_2 < 35)) getitem 2247,1; // Romantic Gent
+		if ((@gamble_2 > 34) && (@gamble_2 < 37)) getitem 2245,1; // Sweet Gent
+		if ((@gamble_2 > 36) && (@gamble_2 < 39)) getitem 5003,1; // Joker Jester
+		if ((@gamble_2 > 38) && (@gamble_2 < 41)) getitem 2225,1; // Goggles[1]
+		if ((@gamble_2 > 40) && (@gamble_2 < 43)) getitem 5017,1; // Bone Helm
+		if ((@gamble_2 > 42) && (@gamble_2 < 45)) getitem 5030,1; // Panda Hat
+		if ((@gamble_2 > 44) && (@gamble_2 < 47)) getitem 5035,1; // Poring Hat
+		if ((@gamble_2 > 46) && (@gamble_2 < 49)) getitem 2250,1; // Cute Ribbon
+		if ((@gamble_2 > 48) && (@gamble_2 < 51)) getitem 2277,1; // Nurse Cap
+		if ((@gamble_2 > 50) && (@gamble_2 < 53)) getitem 5011,1; // Aerial
+		if ((@gamble_2 > 52) && (@gamble_2 < 55)) getitem 2290,1; // Funeral Hat
+		if ((@gamble_2 > 54) && (@gamble_2 < 57)) getitem 5010,1; // Indian Fillet
+		if ((@gamble_2 > 56) && (@gamble_2 < 60)) getitem 2259,1; // Mini Propeller
+		if ((@gamble_2 > 59) && (@gamble_2 < 62)) getitem 5008,1; // Puppy Love
+		if ((@gamble_2 > 61) && (@gamble_2 < 63)) getitem 2249,1; // Coronet
+		if ((@gamble_2 > 62) && (@gamble_2 < 65)) getitem 2229,1; // Helm[1]
+		if (@gamble_2 == 65) getitem 2258,1; // Spiky Band
+		if (@gamble_2 == 66) getitem 2274,1; // Ghost Bandana
+		if (@gamble_2 == 67) getitem 5019,1; // Corsair
+		if (@gamble_2 == 68) getitem 2254,1; // Angel Wing
+		if (@gamble_2 == 69) getitem 5007,1; // Grand Circlet
+		if (@gamble_2 == 70) getitem 5066,1; // Succubus Horn
+		if (@gamble_2 == 71) getitem 2235,1; // Crown
+		if (@gamble_2 == 72) getitem 2234,1; // Tiara
+		if (@gamble_2 == 73) getitem 2256,1; // Majestic Goat
+		if (@gamble_2 == 74) getitem 5093,1; // Coif[1]
+		if (@gamble_2 == 75) getitem 5072,1; // Incubus Horn
+		if (@gamble_2 == 76) getitem 2231,1; // Gemmed Sallet[1]
+	goto L_End;
+
+L_Shoes:
+	set @gamble_1,rand(1,500);
+		if ((@gamble_1 > 299) && (@gamble_1 < 303)) goto L_RareShoes;
+		if ((@gamble_1 > 0) && (@gamble_1 < 201)) getitem 2401,1; // Sandals
+		if ((@gamble_1 > 200) && (@gamble_1 < 300)) getitem 2408,1; // Shackles
+		if ((@gamble_1 > 302) && (@gamble_1 < 351)) getitem 2411,1; // Greaves
+		if ((@gamble_1 > 350) && (@gamble_1 < 401)) getitem 2403,1; // Shoes
+		if ((@gamble_1 > 400) && (@gamble_1 < 451)) getitem 2405,1; // Boots
+		if ((@gamble_1 > 450) && (@gamble_1 < 476)) getitem 2409,1; // High Heels
+		if ((@gamble_1 > 475) && (@gamble_1 < 501)) getitem 2402,1; // Sandals[1]
+	goto L_End;
+
+L_RareShoes:
+	set @gamble_1,rand(1,10);
+		if ((@gamble_2 > 0) && (@gamble_2 < 3)) getitem 2406,1; // Boots[1]
+		if ((@gamble_2 > 2) && (@gamble_2 < 5)) getitem 2412,1; // Greaves[1]
+		if ((@gamble_2 > 4) && (@gamble_2 < 8)) getitem 2404,1; // Shoes[1]
+		if ((@gamble_2 > 7) && (@gamble_2 < 11)) getitem 2407,1; // Crystal Pumps
+	goto L_End;
+
+L_Shield:
+	set @gamble_1,rand(1,500);
+		if ((@gamble_1 > 200) && (@gamble_1 < 205)) goto L_RareShield;
+		if ((@gamble_1 > 0) && (@gamble_1 < 201)) getitem 2101,1; // Guard
+		if ((@gamble_1 > 204) && (@gamble_1 < 301)) getitem 2103,1; // Buckler
+		if ((@gamble_1 > 300) && (@gamble_1 < 401)) getitem 2107,1; // Mirror Shield
+		if ((@gamble_1 > 401) && (@gamble_1 < 481)) getitem 2105,1; // Shield
+		if ((@gamble_1 > 480) && (@gamble_1 < 501)) getitem 2108,1; // Mirror Shield[1]
+	goto L_End;
+
+L_RareShield:
+	set @gamble_1,rand(1,10);
+		if ((@gamble_2 > 0) && (@gamble_2 < 3)) getitem 2104,1; // Buckler[1]
+		if ((@gamble_2 > 2) && (@gamble_2 < 5)) getitem 2106,1; // Shield[1]
+		if ((@gamble_2 > 4) && (@gamble_2 < 7)) getitem 2102,1; // Guard[1]
+		if ((@gamble_2 > 6) && (@gamble_2 < 9)) getitem 2111,1; // Sacred Mission
+		if ((@gamble_2 > 8) && (@gamble_2 < 11)) getitem 2109,1; // Memory Book
+	goto L_End;
+
+L_Weight:
+	cutin "katsua01",255;
+	cutin "katsua03",2;
+	mes "[Kachua]";
+	mes "Errr... You brought too many things.";
+	mes "You can't receive this item at this time.";
+	mes "You better reorganise your inventory and try again.";
+	close2;
+	cutin "katsua03",255;
+	end;
+
+L_End:
+	cutin "katsua01",255;
+	cutin "katsua02",2;
+	mes "[Kachua]";
+	mes "Ah~ that Diamond is so beautiful.";
+	mes "I wish I could repay you better.";
+	close2;
+	cutin "katsua02",255;
+	end;
+
+L_Cancel:
+	mes "[Kachua]";
+	mes "Yes, I know...";
+	mes "Even among everything";
+	mes "in my collections, nothing";
+	mes "compares to diamonds...";
+	close2;
+	cutin "katsua01",255;
+	end;
+}
+
+
+mjolnir_02.gat,85,362,3	script	Blacksmith Miner	726,{
+
+	mes "[Dwayne]";
+	mes "Wahahahaha~";
+	mes "I've dug up a fortune!";
+	next;
+	mes "[Dwayne]";
+	mes "Diamonds! Hundreds and";
+	mes "thousands of Diamonds,";
+	mes "all of them mine!";
+	mes "I'm rich!";
+	emotion e_heh;
+	next;
+	menu "I want to buy some.",-,"Congratulations.",L_Grats;
+	mes "[Dwayne]";
+	mes "Ah, you have an";
+	mes "eye for valuables!";
+	mes "Sure, sure why not!";
+	mes "I'll give you a discount, too!";
+	mes "55,000 Zeny for a diamond,";
+	mes "how does that sound?";
+	next;
+	mes "[Dwayne]";
+	mes "How many";
+	mes "diamonds do you need?";
+	mes "If you change your mind";
+	mes "please enter '0' to cancel.";
+
+L_Input:
+	next;
+	input @input;
+	if (@input <= 0) goto L_NoBuy;
+	if (@input > 500) goto L_TooMany;
+	if (Zeny < (@input*55000)) goto L_NoZeny;
+	if (checkweight(732, @input) == 0) goto L_OverWeight;
+	set Zeny,Zeny-(@input*55000);
+	getitem 732, @input;
+	mes "[Dwayne]";
+	mes "Thank you for";
+	mes "buying my diamonds!";
+	mes "You're welcome to";
+	mes "come back anytime.";
+	close;
+
+L_NoBuy:
+	mes "[Dwayne]";
+	mes "Alright, you've";
+	mes "canceled the trade.";
+	mes "Take care!";
+	close;
+
+L_TooMany:
+	mes "[Dwayne]";
+	mes "The maximum number you can enter is 500.";
+	mes "Please enter no more then 500.";
+	goto L_Input;
+
+L_NoZeny:
+	mes "[Dwayne]";
+	mes "Hahahaha~";
+	mes "You can't fool me!";
+	mes "You dont have enough";
+	mes "Zeny for that many!";
+	close;
+
+L_OverWeight: 
+	mes "[Dwayne]";
+	mes "Errr... You brought too many things.";
+	mes "You can't receive this item at this time.";
+	mes "You better reorganise your inventory and try again.";
+	close;
+
+L_Grats:
+	mes "[Dwayne]";
+	mes "Haha, thank you~";
+	mes "If by any chance";
+	mes "you need a diamond,";
+	mes "please drop by.";
+	mes "I'll sell them to";
+	mes "you at a cheap price.";
+	close;
+}
+
+
+comodo.gat,204,148,7	script	Devellin	90,{
+
+	mes "[Devellin]";
+	mes "It seems some traveller showed";
+	mes "a huge diamong to Kachua a while";
+	mes "ago. Ever since then, all she's";
+	mes "been talking about is diamonds and";
+	mes "how much she wants them.";
+	next;
+	mes "[Devellin]";
+	mes "She's been getting pretty obsessive";
+	mes "about it, which scares me. It seems";
+	mes "she's more than willing to";
+	mes "sacrifice anything she owns for a";
+	mes "diamond.";
+	next;
+	mes "[Devellin]";
+	mes "She's the type of person who'll do";
+	mes "anything to get what she wants. I'm";
+	mes "worried that she might give away";
+	mes "something far more valuable than a";
+	mes "diamond in exchange...";
+	close;
+}
+
+
+comodo.gat,210,154,2	script	Suspicious Guy	118,{
+
+	if (BaseClass == JOB_THIEF) goto L_IsThief;
+	mes "[Cain]";
+	mes "Hey...";
+	mes "I got a hot tip for you.";
+	mes "It'll cost you 500 zeny";
+	mes "and trust me, it's worth it.";
+	mes "So whaddya say... ?";
+	next;
+	menu "Alright.",-,"No, thanks.",L_No;
+	if (Zeny < 500) goto L_NoZeny;
+	set Zeny, Zeny-500;
+	mes "[Cain]";
+	mes "You see that lady over there?";
+	mes "She's just totally in love with";
+	mes "diamonds. And from what my sources";
+	mes "tell me, she's loaded. Tons and";
+	mes "tons of valuables.";
+	next;
+	mes "[Cain]";
+	mes "I'm talking' rare items.";
+	mes "I took the liberty of sneaking a";
+	mes "peek at what she owns, and saw";
+	mes "she's got a helmet with goat horns";
+	mes "and even a crown! She's so rich";
+	mes "it's ridiculous!";
+	next;
+	mes "[Cain]";
+	mes "There's a chance that rare";
+	mes "equipment and weapons might be";
+	mes "yours! She'll give anything for a 3";
+	mes "carat diamond. So if you have any";
+	mes "of those, you might as well see";
+	mes "her.";
+	goto L_Tip;
+
+L_NoZeny:
+	mes "[Cain]";
+	mes "What the hell?!";
+	mes "Don't you even have any money? Didn't I";
+	mes "say 500 zeny? Hey man, Info like";
+	mes "this doesn't come cheap!";
+	close;
+
+L_No:
+	mes "[Cain]";
+	mes "Hey hey!";
+	mes "What are you, a cheapskate? You";
+	mes "understand that everything has its";
+	mes "price and this information is so";
+	mes "worth it. C'mon, you can't pass";
+	mes "this up, can you?";
+	close;
+
+L_IsThief:
+	mes "[Cain]";
+	mes "Heeeey...";
+	mes "It seems we share the same line of";
+	mes "work, you and me, Heh heh, lemme";
+	mes "give  you a hot tip.";
+	next;
+	mes "[Cain]";
+	mes "I've been charging other people for";
+	mes "this information, but since, shall";
+	mes "we say, we work in the same";
+	mes "professional field, I don't have";
+	mes "the heart to take your zeny.";
+	next;
+	mes "[Cain]";
+	mes "You see that lady over there?";
+	mes "She's just totally in love with";
+	mes "diamonds. And from what my sources";
+	mes "tell me, she's loaded. Tons and";
+	mes "tons of valuables.";
+	next;
+	mes "[Cain]";
+	mes "I'm talking' rare items.";
+	mes "I took the liberty of sneaking a";
+	mes "peek at what she owns, and saw";
+	mes "she's got a helmet with goat horns";
+	mes "and even a crown! She's so rich";
+	mes "it's ridiculous!";
+	next;
+	mes "[Cain]";
+	mes "The buzz that's been going around";
+	mes "is that she's got a cache of rare";
+	mes "equipment and weapons too! So";
+	mes "whaddya say? Wanna be partners in";
+	mes "crime and rob her house?";
+	next;
+	menu "No, thanks.",-,"Sweet, I'm in.",L_Yes;
+	mes "[Cain]";
+	mes "Wha... ?";
+	mes "C'mon I thought pilfering was";
+	mes "something you do! Aw well, I'm";
+	mes "gonna do it, but stay hushed on";
+	mes "this, got it?";
+	close;
+
+L_Yes:
+	mes "[Cain]";
+	mes "Ha ha ha!";
+	mes "... Dork!";
+	mes "I'm just jivin'";
+	mes "so fuggedabout it!";
+
+L_Tip:
+	next;
+	mes "[Cain]";
+	mes "Ah right. Supposedly, there's a";
+	mes "mountain where tons of diamonds are";
+	mes "burried. A pal o'mine says there's";
+	mes "a mine near the mountain too, so I";
+	mes "guess if you went to the mine,";
+	mes "you'd find Diamonds.";
+	next;
+	mes "[Cain]";
+	mes "I guess it can't hurt to gather";
+	mes "some Diamonds there and try to";
+	mes "exchange them for whatever the old";
+	mes "lady's got. Take care, pal~";
+	close;
+}

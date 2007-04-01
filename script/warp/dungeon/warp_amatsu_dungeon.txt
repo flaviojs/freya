@@ -1,0 +1,26 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Amatsu Dungeon Warps	Author: Nana
+//--------------------------------------------------------------
+// Revision History: v1.1
+//--------------------------------------------------------------
+//	1.0 First version [Nana]
+//	1.1 Made fully compatible with Freya Phaeton [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: N/A
+//--------------------------------------------------------------
+
+
+ama_dun01.gat,234,143,0	warp	warp8008	1,1,ama_dun02.gat,31,41
+ama_dun02.gat,196,124,0	warp	warp8010	1,1,ama_dun03.gat,119,14
+ama_dun02.gat,29,41,0	warp	warp8009	1,1,ama_dun01.gat,231,143
+ama_dun03.gat,119,9,0	warp	warp8011	1,1,ama_dun02.gat,196,121
+
+// Disabled due to Amatsu Dungeon quest
+// ama_dun01.gat,228,6,0	warp	warp8007	1,1,ama_test.gat,50,87

@@ -13,6 +13,16 @@
 Date	Added
 
 03/31/2007
+	* Fixed: Converted Marriage script to jAthena format + tested/debugged/enabled, should work fine now [Tsuyuki]
+	* Changed: Script list is now contained in script/list.txt, instead of conf/map_athena.conf [Tsuyuki]
+	* Added: New script folder [Tsuyuki]
+	 - New script headers (Still WIP)
+	 - Lots of bug fixes/etc
+	 - Complete folder reorganization
+	 - A lot of other things
+	 - Disabled Transcendence for now (Incompatible)
+	* Changed: Some db/const.txt job enumeration entries [Tsuyuki]
+	* Removed: Old script folder entirely [Tsuyuki]
 	* Added: Akagi to the Ninja job quest [Tsuyuki]
 
 03/28/2007
