@@ -10,9 +10,11 @@
 
 Date	Added
 
-03/31/2007
+04/01/2007
 	* Removed: Script to-do list, better one in the forums [Tsuyuki]
 	* Removed: Duplicate Milk Trader Prontera NPC [Tsuyuki]
+
+03/31/2007
 	* Added: Akagi to the Ninja job quest [Tsuyuki]
 	* Updated: Added new hardcoded packet entries [Tsuyuki]
 	 - Note: Should fix 0x02a5 disconnection with the new clients
