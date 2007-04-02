@@ -3,7 +3,7 @@
 //===== By: ==================================================
 //= LightFighter/Freya
 //===== Current Version: =====================================
-//= 1.4
+//= 1.5
 //===== Compatible With: =====================================
 //= Freya
 //===== Description: =========================================
@@ -12,12 +12,13 @@
 //= 1.0 Added first version [LightFighter]
 //= 1.1 Converted script for Freya compatibility [Tsuyuki]
 //= 1.2 Fixed getpartnerid (Thanks to Galaxy) [Tsuyuki]
-//= 1.3 Another fix thanks to galaxy [Tsuyuki]
+//= 1.3 Another fix (Thanks to Galaxy) [Tsuyuki]
 //= 1.4 Updated formatting [Tsuyuki]
+//= 1.5 Modified name fixing a bug (Thanks to Galaxy) [Tsuyuki]
 //============================================================
 
 
-nif_in.gat,190,112,5	script	Deviruchi	738,{
+nif_in.gat,190,112,5	script	Deviruchi#Divorce	738,{
 
 	if (getpartnerid(0) >= 1) goto L_DivorceMe;
 
