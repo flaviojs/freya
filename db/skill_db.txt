@@ -525,7 +525,7 @@
 498,0,6,4,0,1,1,0,no,0,0,0,none,0	//AM_TWILIGHT3#Twilight Pharmacy3#
 499,-3,8,1,0,0,1,2,no,0,0,0,weapon,0	//HT_POWER#Beast Strafing#
 500,0,6,4,0,1,5,0,no,0,0,0,none,0	//GS_GLITTERING#Flip the Coin#
-501,-3,6,1,0,0,1,1,no,0,0,0,weapon,0	//GS_FLING#Fling#
+501,9,6,1,0,0,1,1,no,0,0,0,weapon,0	//GS_FLING#Fling#
 502,-3,8,1,0,0,1,3,no,0,0,0,weapon,0	//GS_TRIPLEACTION#Triple Action#
 503,-3,6,1,0,0,1,1,no,0,0,0,weapon,0	//GS_BULLSEYE#Bull's Eye#
 504,0,6,4,0,1,1,0,no,0,0,0,weapon,0	//GS_MADNESSCANCEL#Madness Canceller#
@@ -542,24 +542,25 @@
 515,-3,8,1,0,0,10,5,no,0,0,0,weapon,0	//GS_RAPIDSHOWER#Rapid Shower#
 516,0,8,4,0,0,10,10,no,0,0,0,weapon,0	//GS_DESPERADO#Desperado#
 517,0,6,4,0,1,10,1,no,0,0,0,weapon,0	//GS_GATLINGFEVER#Gatling Fever#
-518,-3,6,1,0,0,10,1,no,0,0,0,weapon,2	//GS_DUST#Dust#
+518,2,6,1,0,0,10,1,no,0,0,0,weapon,2	//GS_DUST#Dust#
 519,-3,6,1,0,0,10,1,no,0,0,0,weapon,0	//GS_FULLBUSTER#Full Buster#
 520,-3,6,1,0,0,10,1,no,0,0,0,weapon,0	//GS_SPREADATTACK#Spread Attack#
 521,-3,6,2,0,0,10,1,no,0,0,0,weapon,0	//GS_GROUNDDRIFT#Ground Drift#
+
 522,0,0,0,0,0,10,0,no,0,0,0,none,0	//NJ_TOBIDOUGU#Assassination Training#
 523,9,6,1,0,0,10,1,no,0,0,0,weapon,0	//NJ_SYURIKEN#Shuriken Throw#
 524,9,8,1,0,0,5,3,no,0,0,0,weapon,0	//NJ_KUNAI#Throw Kunai#
-525,9,8,1,0,0,5,2:3:4:5:6,no,0,0,0,weapon,0	//NJ_HUUMA#Throw Wind Shuriken#
+525,9,8,1,0,0,5,3:3:4:4:5,no,0,0,0,weapon,0	//NJ_HUUMA#Throw Wind Shuriken#
 526,9,6,1,0,0,10,1,no,0,0,0,weapon,0	//NJ_ZENYNAGE#Throw Money#
 527,0,6,4,0,0,5,1,no,0,0,0,weapon,3	//NJ_TATAMIGAESHI#Reverse Tatami#
 528,-1,6,1,0,0,10,1,no,0,0,0,weapon,0	//NJ_KASUMIKIRI#Vanishing Slash#
-529,5:6:7:8:9,6,2,0,1,5,1,no,0,0,0,none,0	//NJ_SHADOWJUMP#Shadow Teleportation#
-530,9,6,1,0,0,5,1,no,0,0,0,weapon,0	//NJ_KIRIKAGE#Shadow Slash#
+529,7:9:11:13:15,6,2,0,1,5,1,no,0,0,0,none,0	//NJ_SHADOWJUMP#Shadow Teleportation#
+530,7:9:11:13:15,6,1,0,0,5,1,no,0,0,0,weapon,0	//NJ_KIRIKAGE#Shadow Slash#
 531,0,6,4,0,1,5,0,yes,0,0,0,weapon,7	//NJ_UTSUSEMI#Cicada Skin Shedding#
 532,0,6,4,0,1,10,0,yes,0,0,0,weapon,0	//NJ_BUNSINJYUTSU#Illusionary Shadow#
 533,0,0,0,0,0,10,0,no,0,0,0,none,0	//NJ_NINPOU#Ways of the Blade Training#
 534,9,8,1,3,4,10,1:2:3:4:5:6:7:8:9:10,yes,0,0,0,magic,0	//NJ_KOUENKA#Bright Crimson Fire#
-535,0,8,4,3,0,10,5:5:6:6:7:7:8:8:9:9,yes,0,0,0,magic,0	//NJ_KAENSIN#Crimson Fire Formation#
+535,0,6,4,3,0,10,1,yes,0,0,0,magic,0	//NJ_KAENSIN#Crimson Fire Formation#
 536,9,8,1,3,0,5,3,yes,0,0,0,magic,0			//NJ_BAKUENRYU#Raging Dragon of Fire#
 537,9,8,1,1,4,10,3:4:5:6:7:8:9:10:11:12,yes,0,0,0,magic,0	//NJ_HYOUSENSOU#Lightning Spear of Ice#
 538,2,6,2,1,1,10,0,yes,0,0,0,magic,0			//NJ_SUITON#Hidden Water#
@@ -568,7 +569,7 @@
 541,0,6,4,4,0,5,1,yes,0,0,0,magic,0			//NJ_RAIGEKISAI#Lightning Strike of Destruction#
 542,5:6:7:8:9,6,1,4,0,5,1,yes,0,0,0,magic,0		//NJ_KAMAITACHI#Wind of the Morning Dawn : Kamaitachi#
 543,0,6,4,0,1,5,0,yes,0,0,0,weapon,0	//NJ_NEN#Soul#
-544,0,6,1,0,0,10,1,yes,0,0,0,weapon,0	//NJ_ISSEN#Final Strike#
+544,-5,6,1,0,0,10,1,yes,0,0,0,weapon,0	//NJ_ISSEN#Final Strike#
 
 545,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_FIGHTING#ファイティング#
 546,0,0,0,0,0,10,0,no,0,0,0,none,0	//MB_NEUTRAL#ニュートラル#

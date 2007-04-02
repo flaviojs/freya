@@ -7,12 +7,13 @@
                     http://www.ro-freya.net                   
                   Freya Phaeton SVN Changelog
 --------------------------------------------------------------
-                Current Revision: jAthena 2278
+                Current Revision: jAthena 2281
 --------------------------------------------------------------
 
 Date	Added
 
 04/02/2007
+	* Updated: Databases/source code to jAthena 2281 [Tsuyuki]
 	* Updated: Item database to jAthena's latest [Tsuyuki]
 	* Updated: Documentation files from jAthena [Tsuyuki]
 	* Added: Job script name enumerations from several other emulators to db/const.txt [Tsuyuki]

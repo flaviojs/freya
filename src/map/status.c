@@ -3933,9 +3933,6 @@ int status_change_start(struct block_list *bl,int type,int val1,int val2,int val
 	mode=status_get_mode(bl);
 	elem=status_get_elem_type(bl);
 
-	if(sc_data[SC_STATUS_UNCHANGE].timer != -1)
-		return 0;
-
 	if(type == SC_AETERNA && (sc_data[SC_STONE].timer != -1 || sc_data[SC_FREEZE].timer != -1) )
 		return 0;
 
@@ -3997,6 +3994,10 @@ int status_change_start(struct block_list *bl,int type,int val1,int val2,int val
 		default:
 			scdef=0;
 	}
+	if(scdef && sc_data[SC_STATUS_UNCHANGE].timer != -1)	//状態異常耐性中は計算しない
+		return 0;
+	if(scdef && sc_data[SC_SIEGFRIED].timer != -1)		//ジークフリードの状態異常耐性
+		scdef += 50;
 	if(!(flag&8) && scdef>=100)	//flagが+8なら完全耐性計算しない
 		return 0;
 
@@ -4986,6 +4987,7 @@ int status_change_start(struct block_list *bl,int type,int val1,int val2,int val
 		case SC_POISON:
 		case SC_CURSE:
 		case SC_SILENCE:
+		case SC_CONFUSION:
 			*opt2 |= 1<<(type-SC_POISON);
 			break;
 		case SC_FOGWALLPENALTY:
@@ -5852,6 +5854,7 @@ int status_change_end( struct block_list* bl , int type,int tid)
 			break;
 		case SC_CURSE:
 		case SC_SILENCE:
+		case SC_CONFUSION:
 			*opt2 &= ~(1<<(type-SC_POISON));
 			break;
 		case SC_FOGWALLPENALTY:

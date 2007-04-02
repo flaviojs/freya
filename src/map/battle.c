@@ -827,15 +827,8 @@ int battle_addmastery(struct map_session_data *sd,struct block_list *target,int 
 		case WT_SHOTGUN:
 		case WT_GATLING:
 		case WT_GRENADE:
-			break;
 		case WT_HUUMA:
-		{
-			//飛刀修練
-			if((skill = pc_checkskill(sd,NJ_TOBIDOUGU)) > 0) {
-				damage += (skill * 3);
-			}
 			break;
-		}
 	}
 	return dmg+damage;
 }
@@ -1934,7 +1927,7 @@ struct Damage battle_calc_weapon_attack(
 				if(src_sd)
 					src_sd->state.arrow_atk = 1;
 				break;
-			case GS_DISARM:			/* ディザーム */
+			case GS_DISARM:			/* ディスアーム */
 				if(src_sd && !src_sd->state.arrow_atk && src_sd->arrow_atk > 0) {
 					int arr = atn_rand()%(src_sd->arrow_atk+1);
 					damage  += arr;
@@ -1944,7 +1937,7 @@ struct Damage battle_calc_weapon_attack(
 				if(src_sd)
 					src_sd->state.arrow_atk = 1;
 				break;
-			case GS_PIERCINGSHOT:	/* ピアシングショット */
+			case GS_PIERCINGSHOT:	/* ピアーシングショット */
 				if(src_sd && !src_sd->state.arrow_atk && src_sd->arrow_atk > 0) {
 					int arr = atn_rand()%(src_sd->arrow_atk+1);
 					damage  += arr;
@@ -2030,11 +2023,11 @@ struct Damage battle_calc_weapon_attack(
 						s_ele = src_sd->arrow_ele;
 					src_sd->state.arrow_atk = 1;
 				}
-				damage += (skill_lv*4);
-				damage2 += (skill_lv*4);
+				damage += (skill_lv*3);
+				damage2 += (skill_lv*3);
 				calc_dist_on = 1;
 				break;
-			case NJ_KUNAI:			/* クナイ投げ */
+			case NJ_KUNAI:			/* 苦無投げ */
 				if(src_sd){
 					if(!src_sd->state.arrow_atk && src_sd->arrow_atk > 0) {
 						int arr = atn_rand()%(src_sd->arrow_atk+1);
@@ -2085,11 +2078,11 @@ struct Damage battle_calc_weapon_attack(
 				damage = damage*(100+skill_lv*10)/100;
 				damage2 = damage2*(100+skill_lv*10)/100;
 				break;
-			case NJ_KIRIKAGE:		/* 斬影 */
+			case NJ_KIRIKAGE:		/* 影斬り */
 				damage *= skill_lv;
 				damage2 *= skill_lv;
 				break;
-			case NJ_ISSEN://一閃
+			case NJ_ISSEN:		/* 一閃 */
 				{
 					int hp = status_get_hp(src);
 					damage  = (s_str*40)+(skill_lv*(hp-1)*8)/100;
@@ -2341,7 +2334,6 @@ struct Damage battle_calc_weapon_attack(
 			}
 			break;
 		case NJ_SYURIKEN:		/* 手裏剣投げ */
-		case NJ_KUNAI:			/* クナイ投げ */
 			damage += pc_checkskill(src_sd,NJ_TOBIDOUGU) * 3;
 			break;
 		}
@@ -3077,25 +3069,31 @@ struct Damage battle_calc_magic_attack(
 			MATK_FIX( 90,100 );
 			break;
 		case NJ_KAENSIN:	// 火炎陣
-		case NJ_HUUJIN:		// 風刃
+			MATK_FIX( 50,100 );
+			break;
+		case NJ_BAKUENRYU:	// 龍炎陣
+			MATK_FIX(150+ skill_lv*150,100);
 			break;
 		case NJ_HYOUSENSOU:	// 氷閃槍
 			if(t_sc_data && t_sc_data[SC_SUITON].timer!=-1)
 			{
-				MATK_FIX(100+t_sc_data[SC_SUITON].val1*2,100 );
+				MATK_FIX(70+t_sc_data[SC_SUITON].val1*2,100 );
+			}
+			else
+			{
+				MATK_FIX( 70,100 );
 			}
 			break;
-		case NJ_BAKUENRYU:	// 爆炎龍
-			MATK_FIX(250+ skill_lv*150,300);
+		case NJ_HYOUSYOURAKU:	// 氷柱落とし
+			MATK_FIX(100+ skill_lv*50,100);
 			break;
-		case NJ_HYOUSYOURAKU:	// 氷晶落
-			MATK_FIX(200+ skill_lv*50,100);
+		case NJ_HUUJIN:		// 風刃
 			break;
-		case NJ_RAIGEKISAI:		// 雷撃砕
+		case NJ_RAIGEKISAI:	// 雷撃砕
 			MATK_FIX(160+ skill_lv*40,100);
 			break;
-		case NJ_KAMAITACHI:		// カマイタチ
-			MATK_FIX(300+ skill_lv*100,100);
+		case NJ_KAMAITACHI:	// 朔風
+			MATK_FIX(100+ skill_lv*100,100);
 			break;
 	}
 
