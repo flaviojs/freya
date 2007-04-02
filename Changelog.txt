@@ -13,6 +13,7 @@
 Date	Added
 
 04/02/2007
+	* Added: New maps for Nameless Island and Abbey Dungeon [Tsuyuki]
 	* Updated: Databases/source code to jAthena 2281 [Tsuyuki]
 	* Updated: Item database to jAthena's latest [Tsuyuki]
 	* Updated: Documentation files from jAthena [Tsuyuki]
