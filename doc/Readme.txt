@@ -1,4 +1,153 @@
 ----------------------------------------
+//2281 by 暇人
+
+・スキル「マグヌスエクソシズム」のFlag値をエラーが出ない様に修正 (db/skill_uniti_db.txt)
+・飛行船NPCの一部修正 (npc_town_airport.txt)
+・db等の更新 thanks to huge cgi
+
+	(db)
+		item_db.txt
+		mob_db.txt
+	(script/mapflag)
+		mapflag.txt
+	(script/mob)
+		npc_monster.txt
+		npc_monster_future.txt
+
+----------------------------------------
+//2280 by Blaze
+
+・スキル「火炎陣」のHIT数を修正 (db/skill_db.txt)
+・アサシン転職クエストのJob50時の処理を修正 (script/npc/job/npc_job_12assassin.txt)
+・2274のスクリプトの一部修正 (npc_town_airport.txt、npc_town_lighthalzen.txt)
+・混乱発動時の挙動を修正 (src/map/status.c)
+・ゴスペル効果「全状態異常耐性」を耐性計算している状態異常のみに対して発動するように (src/map/status.c)
+・ジークフリードの状態異常耐性実装 (src/map/status.c)
+
+----------------------------------------
+//2279 by Blaze
+
+・スキル「火炎陣」の仕様を修正 (src/map/skill.c)
+・スキル「一閃」の仕様を修正 (src/map/skill.c)
+・ファイアーボールが多段HITしていたのを修正 (src/map/skill.c)
+・スキル「投擲修練」の効果が風魔手裏剣などに適用されていたのを修正 (src/map/battle.c)
+・スキル「影分身」が影宝珠を消費せずに使用できたのを修正 (db/skill_require_db.txt)
+・忍者スキル・ガンスリンガースキルの攻撃力・詠唱時間などを修正 (src/map/battle.c、db/skill_db.txt、db/skill_cast_db.txt)
+・スキル「ハンマーフォール」のスタン効果が及ばなかったのを修正 (db/skill_cast_db.txt)
+・ガンスリンガーのスキルで装備制限の相違を修正 (db/skill_db.txt)
+・忍者スキル・ガンスリンガースキルで装備制限の相違を修正 (db/skill_db.txt)
+・NPC状態異常スキルがLv関係なしに100%の基本成功確率だったのを修正 (src/map/skill.c)
+
+----------------------------------------
+//2278 by KIA
+
+・ギルド一覧で、忍者とガンスリンガーが正常に表示されない問題を修正
+　(src/map/clif.c)
+・ワープポータルがSP消費無しで使用できてしまう不具合を修正
+　(src/map/skill.c)
+　※huge氏ブログ内から修正箇所を参照させて頂きました。
+・2007-02-12aSakexeのパケットに対応
+
+----------------------------------------
+//2277 by Yas
+
+・gcc4.xで最適化したときの不具合対応
+　->ハッシュテーブル初期化用ループ変数iが最適化で消去されることがあったためvolatile修飾
+　 (strdb_init_()@db.c, numdb_init_()@db.c)
+・非WIN32環境のMT対応
+　->localtime()→localtime_r()に変更(npc_event_do_clock()@npc.c)
+　->ev_tm_bの初期化をmemset()からlocaltime_r()を使うように変更(do_init_npc()@npc.c)
+・コンパイルが通るように修正
+　->inter-converter.cをinter-converter.oに修正(converter/Makefile)
+　->ダミーのpre_init()を追加(converter.c)
+
+----------------------------------------
+//2275 by Katayama
+
+・ホムンクルスの腹減り時間設定の説明を追加
+・設定時間に経る量の説明を追加
+
+	(map/homun.c)
+
+----------------------------------------
+//2274 by Blaze
+
+・飛行船クエスト第2部実装
+・スロットエンチャント実装
+・新春イベント2007年版実装
+・クリスマスイベント2006年版実装
+・2次職クエストスキル習得クエスト一部実装
+・アマツ属性石交換修正
+・アマツ通行手形クエスト修正
+・アマツモモタロ体験クエスト修正
+・ジュノー錬金術修正
+・リヒタルゼン友情クエスト修正
+・ナイト転職クエスト修正
+・ブラックスミス転職クエスト修正
+・ハンター転職クエスト修正
+・アルケミスト転職クエスト修正
+・衝突している変数名を一部変更
+・全ての街スクリプトの手直し
+・jawaiiのモンスターをnpc_monster.txtに移動
+
+----------------------------------------
+//2273 by KIA
+
+・キャラクター名の末尾が・と文字化けしてしまう不具合、
+　及び＠コマンドが正常動作しない問題を修正(src/char/char.c)
+　※Mizuki氏がお忙しいようですので勝手ですがFIXしました。
+
+----------------------------------------
+//2272 by Mizuki
+
+・2006-10-23aSakexeのキャラセレパケットに対応。
+　PACKETVERが8になっているので古いクライアントの場合は修正してください。
+	(db/packet_db.txt)
+	(src/char/char.c)
+	(src/char/char.dsp)
+	(src/char/char_sql.dsp)
+	(src/converter/converter.dsp)
+	(src/login/login.dsp)
+	(src/login/login_sql.dsp)
+	(src/map/map.dsp
+	(athena.dsp)
+	(athena_sql.dsp)
+	(bcc32_consqlmake.bat)
+	(bcc32_make.bat)
+	(Makefile)
+	(vc_make.bat)
+・2007-01-08aSakexeのパケットに対応。
+	(db/packet_db.txt)
+
+----------------------------------------
+//2271 by 名無し＠
+
+・スタン状態の時間が異常に長いスキルを修正(db/skill_cast_db.txt)
+・スキルユニットを本鯖に合わせて修正(db/skill_unit_db.txt)
+	変更されたスキル
+		マグヌスエクソシズムを重ね置き禁止
+		グラウンドドリフトを重ね置き、足下置き許可
+・以前追加した遠距離フラグの修正と本鯖に合わせた修正(src/map/battle.c)
+・サプライズアタックのスタン時間だけ強制3秒になるように修正(src/map/skill.c)
+	暗闇の時間だけをskill_cast_db.txtから読み込みます。
+
+----------------------------------------
+//2270 by Cocoa
+
+・ガンスリンガー、忍者のJob補正修正(db/job_db2.txt)
+・マグナムブレイクの表示ダメージが5分の1になっていたのを修正(skill_db.txt)
+・聖体降福の属性を聖属性に修正(skill_db.txt)
+・ハリネズミの針から岩石の矢が作成されなかったのを修正(create_arrow_db.txt)
+
+----------------------------------------
+//2269 by ID:7QLFJSM
+
+・サーバースナップショット
+・version.hの更新
+	(src/common)
+		version.h		- mod version 2269
+
+----------------------------------------
 //2268 by achacco
 
 ・サーバースナップショット
