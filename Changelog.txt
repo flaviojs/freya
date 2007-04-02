@@ -13,6 +13,7 @@
 Date	Added
 
 04/02/2007
+	* Updated: Item database to jAthena's latest [Tsuyuki]
 	* Updated: Documentation files from jAthena [Tsuyuki]
 	* Added: Job script name enumerations from several other emulators to db/const.txt [Tsuyuki]
 	 - Example: 'Job_TaekwonBoy' from jAthena
