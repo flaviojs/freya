@@ -13,6 +13,23 @@
 Date	Added
 
 04/01/2007
+	* Improved: Revised the Knight job change quest [Tsuyuki]
+	* Imported: 'Bard' quest from Freya (Not the job change quest, it's different) [Tsuyuki]
+	* Fixed: Some script map name typos (morroc.gat -> morocc.gat) [Tsuyuki]
+	* Converted: All 'soundeffectall' script commands to 'areasoundeffect' [Tsuyuki]
+	* Replaced: Einbroch Pollution script with a translated/modified version of jAthena's [Tsuyuki]
+	 - Removes the last incompatible 'mobcount' script command
+	* Fixed: Converted all remaining 'specialeffect' and specialeffect2' script commands to 'misceffect' [Tsuyuki]
+	* Fixed: Spawn typo, 'Dessert Wolf' -> 'Desert Wolf' [Tsuyuki]
+	* Removed: Alchemist event script (It was in Japanese) [Tsuyuki]
+	* Removed: Several now unused global script functions [Tsuyuki]
+	* Added: Translated rebirth script system from jAthena with some modifications [Tsuyuki]
+	 - Transcendence is now enabled and should be fully working
+	* Improved: @job/@jobchange @command to use constants [Tsuyuki]
+	* Changed: Rewrote Class/BaseClass/BaseJob script commands to work like Freya's versions [Tsuyuki]
+	 - Previously were just duplicates of the 'Class' script command
+	 - Fixes a lot of script bugs
+	 - Modified a few NPC scripts/item bonus scripts to work with the new changes
 	* Fixed: Converted Marriage script to jAthena format + tested/debugged/enabled, should work fine now [Tsuyuki]
 	* Changed: Script list is now contained in script/list.txt, instead of conf/map_athena.conf [Tsuyuki]
 	* Added: New script folder [Tsuyuki]
@@ -36,7 +53,7 @@ Date	Added
 	 - Note: 02-20-2007 and 03-26-2007 clients are currently compatible [Tsuyuki]
 
 03/25/2007
-	* Removed: Job functions (No longer necessary) [Tsuyuki]
+	* Removed: Job script functions (No longer necessary) [Tsuyuki]
 	* Renamed: /npc/cities/ -> /npc/town/ [Tsuyuki]
 	* Improved: Cleaned and improved headers and formatting of all the databases [Tsuyuki]
 	* Added: jAthena changelog in doc folder as 'Readme.txt' [Tsuyuki]

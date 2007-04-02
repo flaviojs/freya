@@ -205,7 +205,7 @@ payon_in02.gat,47,13,3	script	Master Kavaruk	55,{
 			mes "a few things about the profession? I'm sure you'll be able to hear plenty of stories around here.";
 			close;
 
-		} else if(Class == Job_Archer){
+		} else if(Basejob == Job_Archer){
 			mes "Since you're an Archer, you might";
 			mes "benefit from going around and listening to everyone else's battle experiences. Becoming familiar with different fight scenarios will help you in the future.";
 			close;
@@ -1745,7 +1745,7 @@ prontera.gat,126,335,5	script	Arthail	51,{
 		next;
 		mes "[???]";
 		mes "...";
-		// soundeffectall "se_littlewaves02.wav",0;
+		areasoundeffect "prontera.gat",112,321,140,349,"se_littlewaves02.wav",0;
 		next;
 		mes "["+strcharinfo(0)+"]";
 		mes "Huh?";
@@ -1755,7 +1755,7 @@ prontera.gat,126,335,5	script	Arthail	51,{
 		mes "[????]";
 		mes "AAAAAAAAAAAAAAAHHHHHHHHHHH!!!!!";
 		emotion e_omg;
-		// soundeffectall "se_scream_w01.wav",0;
+		areasoundeffect "prontera.gat",112,321,140,349,"se_scream_w01.wav",0;
 		next;
 		mes "["+strcharinfo(0)+"]";
 		mes "What the--?!";

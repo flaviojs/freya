@@ -27,7 +27,9 @@
 //============================================ Father Thomas: Job changer, Test 1 =============================================\\
 //*****************************************************************************************************************************\\
 prt_church.gat,16,41,4	script	Father Thomas	60,{
-	callfunc "F_BlockHigh",JOB_ACOLYTE_HIGH,"Acolyte High",JOB_HIGH_PRIEST,"High Priest","Father Thomas";
+
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
+	if (Upper == 1)	close;
 
 	mes "[Father Thomas]";
 	if (BaseJob == JOB_ACOLYTE) goto L_Start;

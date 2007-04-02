@@ -19,7 +19,8 @@
 
 // -- Expert Mage --
 geffen_in.gat,164,124,4	script	Expert Mage	123,{
-	callfunc "F_ToHigh",JOB_MAGE_HIGH,"High Mage",JOB_HIGH_WIZARD,"High Wizard",0,0,0,0,"Expert Mage";
+
+	callfunc "F_HighFirstClass",Job_Mage,"Mage",Job_Wizard,Job_Sage,0,"Expert Mage";
 	if (BaseJob == JOB_NOVICE && job_magician_q >= 1) goto L_BeMage;
 
 	mes "[Expert Mage]";

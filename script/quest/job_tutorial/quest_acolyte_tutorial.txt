@@ -356,7 +356,7 @@ prt_monk.gat,230,106,3	script	Asthe#tu	79,{
 				emotion e_heh;
 				set tu_acolyte01, 5;
 				delitem 1504, 1;
-				if(Class == Job_Acolyte && Upper == 1){
+				if(Basejob == Job_Acolyte && Upper == 1){
 					set JobExp,JobExp+1000; 
 					set BaseExp, BaseExp + 2000;
 					//misceffect EF_CONE;
@@ -1016,7 +1016,7 @@ prt_monk.gat,226,257,6	script	Ill Girl#tu	93,{
 		mes "Are you alright?";
 		next;
 		//misceffect EF_CURSEATTACK ;
-		// soundeffectall "_curse.wav",0;
+		areasoundeffect "prt_monk.gat",212,243,240,271,"_curse.wav",0;
 		emotion e_omg;
 		mes "["+strcharinfo(0)+"]";
 		mes "This is....!";

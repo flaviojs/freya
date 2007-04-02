@@ -20,7 +20,8 @@
 
 // -- Father Mareusis --
 prt_church.gat,184,41,4	script	Father Mareusis	60,{
-	callfunc "F_ToHigh",JOB_ACOLYTE_HIGH,"Acolyte High",JOB_HIGH_PRIEST,"High Priest",0,0,0,0,"Father Mareusis";
+
+	callfunc "F_HighFirstClass",Job_Acolyte,"Acolyte",Job_Priest,Job_Monk,0,"Father Mareusis";
 	mes "[Father Mareusis]";
 	if (BaseJob == JOB_NOVICE && JOB_ACOLYTE_q > 0) goto L_Check;
 	mes "What is it you are looking for?";

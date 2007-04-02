@@ -33,7 +33,8 @@
 
 prt_castle.gat,45,169,4	script	Senior Crusader	752,{
 
-	callfunc "F_BlockHigh",Job_Swordsman_High,"Swordman High",Job_Paladin,"Paladin","^000080Michael Halig^000000";
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
+	if (Upper == 1)	close;
 
 	mes "[^000080Michael Halig^000000]";
 	if (BaseJob > Job_Swordsman) goto NEXT0;

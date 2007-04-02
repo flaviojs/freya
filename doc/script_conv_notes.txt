@@ -10,40 +10,18 @@ This file will be used to take notes on things that are not converted yet, and a
  Begin Notes Here
 -------------------------------------------
 
-npc/merchants/refine.txt Line: 783
-
--> Weapon repair NPC script is a little messy.. needs to be tested and possibly modified/officialized
-
--------------------------------------------
-
-npc/jobs/jobs_transmigration.txt Line: Entire File
-
--> The rebirth system is highly incompatible with jAthena because of the different enumeration system. Example: JOB_PALADIN does not exist, only JOB_CRUSADER exists. The script runs fine though, but it'll be totally bugged if anyone tries to rebirth. Might be best to translate jAthena's and use it. That'll guarantee that it'll be bugless and such.
-
--------------------------------------------
-
--> BaseClass/BaseJob/Class all have the same function in jAthena. They obviously have a completely different function in the imported scripts from Freya/eAthena. Need to either make a source mod for them or convert them.
-
--------------------------------------------
-
 All of the following command occurences are commented:
 
+- skilleffect
 - unitskilluseid
-- soundeffectall
-- specialeffect -> (Convert to 'misceffect')
-- specialeffect2 -> (Convert to 'misceffect')
 - enable_items
 - disable_items
-- skilleffect
-- mobcount
 
 -------------------------------------------
 
 To-Do Mini List:
 - Import + convert Kunlun Power NPC from either Aegis or eAthena (an Aegis-convert)
 - Import Bard quest from normal Freya + debug it
-- Get the Rebirth system working correctly
 - Import custom scripts from Freya
-- Add RO Alpha warps and disable them
 
 -------------------------------------------

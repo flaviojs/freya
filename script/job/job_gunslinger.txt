@@ -8,10 +8,11 @@
 //--------------------------------------------------------------
 // Script Title: Gunslinger Job Quests/Merchants	Author: Tsuyuki/Playtester
 //--------------------------------------------------------------
-// Revision History: v1.0
+// Revision History: v1.2
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis [Tsuyuki]
 //	1.1 Merged in Gunslinger merchants and quests by Playtester [Tsuyuki]
+//	1.2 Added F_ClearJobVariables function after job change [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Aegis-certified * on the job change quest.
 // Contents:
@@ -207,7 +208,8 @@ que_ng.gat,152,167,3	script	Master Miller	901,{
 			mes "So here's to a nice time";
 			mes "working together.";
 			set hg_gun,6;
-			jobchange JOB_GUNSLINGER,0;
+			callfunc "F_JobChange",Job_Gunslinger;
+			callfunc "F_ClearJobVariables";
 			set gunex,rand(1,2);
 			if (gunex == 1) getitem 13100,1;
 			if (gunex == 2) getitem 13150,1;

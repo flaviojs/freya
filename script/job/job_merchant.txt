@@ -19,8 +19,9 @@
 // == Guild NPCs ==
 // -- Mahnsoo --
 alberta_in.gat,53,43,6	script	Chief Mahnsoo	86,{
+
 	if (countitem(9001)>1) goto illuminaRO;
-	callfunc "F_ToHigh",JOB_MERCHANT_HIGH,"Merchant High",JOB_WHITESMITH,"White Smith",0,0,0,0,"Chief Mahnsoo";
+	callfunc "F_HighFirstClass",Job_Merchant,"Merchant",Job_Blacksmith,Job_Alchemist,0,"Chief Mahnsoo";
 	mes "[Chief Mahnsoo]";
 	if (BaseJob == JOB_NOVICE && JOB_MERCHANT_q3 == 4) goto L_MakeMerc;
 	if (BaseJob == JOB_NOVICE && JOB_MERCHANT_q3 == 3) goto L_GiveRecpt;

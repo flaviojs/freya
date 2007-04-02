@@ -1135,24 +1135,77 @@ atcommand_hide(
 /*==========================================
  * ì]êEÇ∑ÇÈ upperÇéwíËÇ∑ÇÈÇ∆ì]ê∂Ç‚ó{éqÇ…Ç‡Ç»ÇÍÇÈ
  *------------------------------------------
+ * Improved to use string constants as well as IDs [Tsuyuki]
+ *------------------------------------------
  */
 int
 atcommand_jobchange(
 	const int fd, struct map_session_data* sd,
 	const char* command, const char* message)
 {
-	int job, upper = -1;
-	if (!message || !*message)
-		return -1;
-	if (sscanf(message, "%d %d", &job, &upper) < 1)
-		return -1;
+	int job = 0, upper = -1, i = 0;
+	char jobname[100];
 
-	if ((job >= 0 && job < MAX_VALID_PC_CLASS)) {
-		if (job >= 24)
-			upper = 0;
-		if (pc_jobchange(sd, job, upper) == 0)
-			clif_displaymessage(fd, msg_txt(12));
+	const struct {
+		char name[20]; 
+		int id; 
+	} jobs[] = {
+		{ "novice",                    0 },
+		{ "swordsman",                 1 },
+		{ "mage",                      2 },
+		{ "archer",                    3 },
+		{ "acolyte",                   4 },
+		{ "merchant",                  5 },
+		{ "thief",                     6 },
+		{ "knight",                    7 },
+		{ "priest",                    8 },
+		{ "wizard",                    9 },
+		{ "blacksmith",               10 },
+		{ "hunter",                   11 },
+		{ "assassin",                 12 },
+		{ "crusader",                 14 },
+		{ "monk",                     15 },
+		{ "sage",                     16 },
+		{ "rogue",                    17 },
+		{ "alchemist",                18 },
+		{ "bard",                     19 },
+		{ "dancer",                   20 },
+		{ "super novice",             23 },
+		{ "supernovice",              23 },
+		{ "taekwon",                  24 },
+		{ "taekwon kid",              24 },
+		{ "taekwon boy",              24 },
+		{ "taekwon girl",             24 },
+		{ "star gladiator",           25 },
+		{ "taekwon master",           25 },
+		{ "soul linker",              27 },
+		{ "gunslinger",               28 },
+		{ "ninja",                    29 },
+		{ "death knight",             30 },
+		{ "dark collector",           31 },
+	};
+
+	if (!message || !*message || sscanf(message, "%u %u", &job, &upper) < 1 || job < 0 || job >= MAX_VALID_PC_CLASS) {
+		i = (int)(sizeof(jobs) / sizeof(jobs[0]));
+		if (sscanf(message, "\"%[^\"]\" %d", jobname, &upper) >= 1 ||
+		    sscanf(message, "%s %d", jobname, &upper) >= 1) {
+			for (i = 0; i < (int)(sizeof(jobs) / sizeof(jobs[0])); i++) {
+				if (strcasecmp(jobname, jobs[i].name) == 0 || strcasecmp(message, jobs[i].name) == 0) {
+					job = jobs[i].id;
+					break;
+				}
+			}
+		}
 	}
+
+	if ((i == (int)(sizeof(jobs) / sizeof(jobs[0])))) {
+		return -1;
+	}
+
+	if (job >= 24)
+		upper = 0;
+	if (pc_jobchange(sd, job, upper) == 0)
+		clif_displaymessage(fd, msg_txt(12));
 
 	return 0;
 }

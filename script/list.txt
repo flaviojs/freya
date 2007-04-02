@@ -14,14 +14,14 @@
 // Custom Scripts
 //--------------------------------------------------------------
 
-// N/A
+// Add your custom scripts here
 
 
 //--------------------------------------------------------------
 // Event Scripts
 //--------------------------------------------------------------
 
-// npc: script/event/event_alchemist.txt
+// Event scripts are disabled by default
 // npc: script/event/event_crystal.txt
 // npc: script/event/event_dumpling_festival.txt
 // npc: script/event/event_easter.txt
@@ -50,48 +50,35 @@ npc: script/gvg/gvg_tbox.txt
 
 
 //--------------------------------------------------------------
-// Job Quest Scripts (Transcendence disabled for now)
+// Job Quest Scripts
 //--------------------------------------------------------------
 
 npc: script/job/job_acolyte.txt
 npc: script/job/job_alchemist.txt
 npc: script/job/job_archer.txt
 npc: script/job/job_assassin.txt
-// npc: script/job/job_assassin_cross.txt
 npc: script/job/job_bard.txt
 npc: script/job/job_blacksmith.txt
-// npc: script/job/job_champion.txt
-// npc: script/job/job_clown.txt
-// npc: script/job/job_creator.txt
 npc: script/job/job_crusader.txt
 npc: script/job/job_dancer.txt
 npc: script/job/job_gunslinger.txt
-// npc: script/job/job_gypsy.txt
-// npc: script/job/job_high_priest.txt
-// npc: script/job/job_high_wizard.txt
 npc: script/job/job_hunter.txt
 npc: script/job/job_knight.txt
-// npc: script/job/job_lord_knight.txt
 npc: script/job/job_mage.txt
 npc: script/job/job_merchant.txt
 npc: script/job/job_monk.txt
 npc: script/job/job_ninja.txt
 npc: script/job/job_novice.txt
-// npc: script/job/job_paladin.txt
 npc: script/job/job_priest.txt
-// npc: script/job/job_professor.txt
 npc: script/job/job_rogue.txt
 npc: script/job/job_sage.txt
-// npc: script/job/job_sniper.txt
 npc: script/job/job_soul_linker.txt
-// npc: script/job/job_stalker.txt
 npc: script/job/job_star_gladiator.txt
 npc: script/job/job_super_novice.txt
 npc: script/job/job_swordsman.txt
 npc: script/job/job_taekwon.txt
 npc: script/job/job_thief.txt
-// npc: script/job/job_transcendence.txt
-// npc: script/job/job_whitesmith.txt
+npc: script/job/job_transcendence.txt
 npc: script/job/job_wizard.txt
 
 
@@ -182,6 +169,7 @@ npc: script/mob/misc/mob_town.txt
 // Quest Scripts
 //--------------------------------------------------------------
 
+npc: script/quest/quest_bard.txt
 npc: script/quest/quest_cooking.txt
 npc: script/quest/quest_doomed_sword.txt
 npc: script/quest/quest_eye_of_hellion.txt
@@ -332,6 +320,7 @@ npc: script/warp/field/warp_veins_field.txt
 npc: script/warp/field/warp_yggdrasil.txt
 
 npc: script/warp/misc/warp_airship.txt
+// Ragnarok Online Alpha warps
 // npc: script/warp/misc/warp_alpha.txt
 npc: script/warp/misc/warp_disabled.txt
 npc: script/warp/misc/warp_god_seal.txt

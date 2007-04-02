@@ -38,7 +38,9 @@ prt_monk.gat,55,249,4	script	Tohobu the Guarding Monk	139,0,5,{
 	close;
 }
 prt_monk.gat,59,247,4	script	Master	120,{
-	callfunc "F_BlockHigh",Job_Acolyte_High,"Acolyte High",Job_Champion,"Champion","Tohobu";
+
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
+	if (Upper == 1)	close;
 
 	if(MONK_Q == 1 ) goto Part1;
 	if(MONK_Q == 2 ) goto Part2;

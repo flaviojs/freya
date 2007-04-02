@@ -5191,7 +5191,51 @@ int pc_readparam(struct map_session_data *sd,int type)
 		val= sd->status.job_level;
 		break;
 	case SP_CLASS:
-		val= s_class.job;
+		val = sd->status.class;
+		break;
+	case SP_BASEJOB:
+		val = s_class.job;
+		break;
+	case SP_BASECLASS:
+		switch(s_class.job) {
+			case 23:
+				val = 0;
+				break;
+			case 7:
+			case 13:
+			case 14:
+			case 21:
+				val = 1;
+				break;
+			case 9:
+			case 16:
+				val = 2;
+				break;
+			case 11:
+			case 19:
+			case 20:
+				val = 3;
+				break;
+			case 8:
+			case 15:
+				val = 4;
+				break;
+			case 10:
+			case 18:
+				val = 5;
+				break;
+			case 12:
+			case 17:
+				val = 6;
+				break;
+			case 25:
+			case 26:
+			case 27:
+				val = 24;
+				break;
+			default:
+				val = s_class.job;
+		}
 		break;
 	case SP_UPPER:
 		val= s_class.upper;

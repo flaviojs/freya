@@ -38,7 +38,9 @@ L_Can:
 
 //= Warp man, takes you to the quest map (Comodo Theater)
 comodo.gat,193,151,4	script	Bor Robin	86,{
-	callfunc "F_BlockHigh",JOB_ARCHER_HIGH,"High Archer",JOB_GYPSY,"Gypsy","Bor Robin";
+
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
+	if (Upper == 1)	close;
 
 	mes "[Bor Robin]";
 	mes "Well...... alot of people seem to be coming here lately.";
@@ -370,7 +372,7 @@ LArcher:
 	if (DANC_Q == 5) goto Ltest1;
 	if (DANC_Q == 6) goto Ltest2;
 	if ((DANC_Q == 7) || (DANC_Q == 8)) goto LStart2;
-	if (DANC_Q == 10) goto Ljobchange;
+	if (DANC_Q == 10) goto L_job_change;
 	mes "[Bijou]";
 	mes "So you want to become a dancer, eh?";
 	next;
@@ -689,7 +691,7 @@ LStart2:
 		warp "job_duncer.gat",104,109;
 		end;
 
-Ljobchange:
+L_job_change:
 	mes "[Bijou]";
 	mes "You have done great, you have passed all the tests we have set out for you.";
 	next;

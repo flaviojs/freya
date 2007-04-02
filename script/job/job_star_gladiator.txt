@@ -258,7 +258,7 @@ L_Itemcheck:
 	mes "^0000FFyour own, but like something^000000";
 	mes "^0000FFout there is giving you a hand.^000000";
 	next;
-	jobchange JOB_STAR_GLADIATOR,0;
+	callfunc "F_JobChange",Job_Star_Gladiator;
 	callfunc "F_ClearJobVariables";
 	mes "[Taekwon of the Stars]";
 	mes "It seems that you are indeed";

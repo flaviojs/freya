@@ -38,7 +38,8 @@
 //<=========================================== Blacksmith Altiregen (Job changer)===================================>\\
 ein_in01.gat,18,28,4	script	Guildsman Altiregen	731,{
 
-	callfunc "F_BlockHigh",JOB_MERCHANT_HIGH,"Merchant High",JOB_WHITESMITH,"White Smith","Blacksmith Altiregen";
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
+	if (Upper == 1)	close;
 
 	if (BaseJob == JOB_MERCHANT) goto L_Merc;
 	mes "[Blacksmith Altiregen]";

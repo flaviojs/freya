@@ -1,63 +1,121 @@
-//===== Freya Script =========================================
-//= Knight Job Quest
-//===== By: ==================================================
-//= PGRO TEAM (Aegis).
-//= Converted by kobra_k88
-//= Further bugfixed and tested by Lupus
-//===== Current Version: =====================================
-//= 1.6
-//===== Compatible With: =====================================
-//= Freya
-//===== Description: =========================================
-//= Official RO Knight job quest converted from aegis script, and my own
-//= RO screenies and play experience
-//===== Additional Comments: =================================
-//= 1.0 Fully working. Please comment out any pre-existing warps for the
-//= test rooms in any other files so that the ones specified here can work.
-//= 1.1 Fixed a major bug. Now using the initnpctimer command,
-//= donpcevent, and new waitingroom event commands. No more addtimer
-//= spamming.  No longer have to talk to the npc to take the test. Just enter the chat room.
-//= 1.2 More bug fixes.  Changed global variable names to unique ones.
-//= Added second set of items to first test. Added Awake pots award for job change.
-//= 1.3 Added Baby Class support [Lupus]
-//= 1.5 Fixed possible EXP abuse [Lupus]
-//= 1.6 Added a func which prevent advanced classes passing
-//= 2nd Job Quests again. It also guides adv classes where
-//= to go. [Lupus]
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Knight Job Change Quest	Author: A Lot of People
+//--------------------------------------------------------------
+// Revision History: v2.0
+//--------------------------------------------------------------
+//	1.0 First version [PGRO TEAM]
+//	1.1 Converted to Athena script format from Aegis [kobra_k88]
+//	1.2 Fixed a major bug [Unknown]
+//	1.3 More bug fixes. Changed global variable names to unique ones [Lupus]
+//	1.4 Added second set of items to first test, added Awakening Pots award for job change [Lupus]
+//	1.5 Added Baby Class support [Lupus]
+//	1.6 Fixed possible EXP abuse [Lupus]
+//	1.7 Added a function to properly direct Transcendent job changing [Lupus]
+//	1.8 Reformatted [Tsuyuki]
+//	1.9 Merged in job functions [Tsuyuki]
+//	2.0 Completely typo/grammar fixed [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: * Aegis-certified *
+//--------------------------------------------------------------
 
 
-//<------------------------------------------------------------------------------------ Chivalry Captain Herman------------------------------------------------------------------------------------------>\\
+//--------------------------------------------------------------
+// Chivalry Captain Herman//--------------------------------------------------------------
+
 prt_in.gat,88,101,3	script	Chivalry Captain Herman	56,{
-	callfunc "F_BlockHigh",Job_Swordsman_High,"Swordman High",JOB_LORD_KNIGHT,"Lord Knight","Chivalry Captain Herman";
 
-	if (BaseJob == Job_Swordsman && KNIGHT_Q > 0) goto L_Check;
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
+	if (Upper == 1)	close;
+
+	else if (BaseJob == Job_Swordsman && KNIGHT_Q > 0) goto L_Check;
 
 	mes "[Chivalry Captain Herman]";
-	mes "Good Day.  This is the Prontera Chivarly, home of the famous Prontera Knights.";
+	mes "Good day. This is the Prontera Chivarly, home of the famous Prontera Knights.";
+	goto M_Menu;
+
 M_Menu:
 	next;
-	menu "I am ready for Knighthood.",M_0,"The Requirements.",M_1,"Quit.",M_End;
+	menu "I am ready for Knighthood.",M_0,"The requirements.",M_1,"Quit.",M_End;
 
 	M_0:
 		mes "[Chivalry Captain Herman]";
-		callfunc "Kni_check";
-		mes "[Chivalry Captain Herman]";
-		mes "In order to become a Knight one must posses great strength, courage, determination, and strong desire to help others.";
+		if (BaseJob != Job_Swordsman) goto L_NotSwo;
+		mes "Well then, first fill out this application form....";
+		next;
+		mes "...(you fill out the form and hand it back)...";
 		next;
 		mes "[Chivalry Captain Herman]";
-		mes "You will have to show me that you have these attributes before I can make you a knight.";
+		if (JobLevel < 40) goto L_NotLvl;
+		mes "Impressive.";
+		mes "You have the job qualifications to become a Knight...,";
+		mes "however you will need much more than that to actually become one.";
+		next;
+		goto L_ContinueQuest;
+
+		L_NotLvl:
+			mes "Hmm... it looks like you have not reached Job Level 40 yet.";
+			mes "Please come back when you do.";
+			mes "I shall be waiting here.";
+			close;
+
+		L_NotSwo:
+			if (BaseJob == Job_Knight) goto sL_JobKni;
+			else if (BaseJob == Job_Novice) goto sL_JobNov;
+			goto sL_JobOther;
+
+			sL_JobOther:
+				mes "I'm sorry but only Swordsman can become Knights.";
+				close;
+
+			sL_JobKni:
+				mes "...(sighs)...what are you doing here WASTING my time??";
+				mes "GO FORTH!! And continue protecting Rune Midgard my young Knight.";
+				emotion 32;
+				close;
+
+			sL_JobNov:
+				mes "Hahahaha!! You have no job experience what so";
+				mes "ever and yet you stumble in here asking to be a Knight. Hahahaha!!";
+				emotion 18;
+				next;
+				mes "[Chivalry Captain Herman]";
+				mes "You must first become a Swordsman before even";
+				mes "thinking about becoming a Knight.";
+				mes "Now scurry along little Novice. Hahahahaha!!!";
+				close;
+
+	L_ContinueQuest:
+		mes "[Chivalry Captain Herman]";
+		mes "In order to become a Knight one must posses";
+		mes "great strength, courage, determination, and";
+		mes "strong desire to help others.";
 		next;
 		mes "[Chivalry Captain Herman]";
-		mes "The 6 Knights you see around the room have each prepapred a unique test for would be Knights to take.";
+		mes "You will have to show me that you have these";
+		mes "attributes before I can make you a Knight.";
 		next;
 		mes "[Chivalry Captain Herman]";
-		mes "You must complete each one of their test and prove to me that you are truly committed to becomming a knight!";
+		mes "The 6 Knights you see around the room have each";
+		mes "prepared a unique test for would be Knights to take.";
 		next;
 		mes "[Chivalry Captain Herman]";
-		mes "Speak with ^0000ffSir Andrew Syloc^000000.  He will give you your first test.  Good luck!!  I expect to see you again soon!";
-		set KNIGHT_Q, 1;
-		set JBLVL, 40;
+		mes "You must complete each one of their test and";
+		mes "prove to me that you are truly committed to";
+		mes "becoming a Knight!";
+		next;
+		mes "[Chivalry Captain Herman]";
+		mes "Speak with ^0000ffSir Andrew Syloc^000000.";
+		mes "He will give you your first test.";
+		mes "Good luck!! I expect to see you again soon!";
+		set KNIGHT_Q,1;
+		set JBLVL,40;
 		close;
 
 	M_1:
@@ -68,10 +126,12 @@ M_Menu:
 		mes "The second requirement is that you must have at least a Job Level of 40.";
 		next;
 		mes "[Chivalry Captain Herman]";
-		mes "The last requirement is that you will need to pass 6 tests that will determine whether or not you are worthy enough to become a Knight.";
+		mes "The last requirement is that you will need to pass 6 tests that will";
+		mes "determine whether or not you are worthy enough to become a Knight.";
 		next;
 		mes "[Chivalry Captain Herman]";
-		mes "These requirements may seem difficult, but the Knight class is an elite and noble job class and only the best candidates may join.";
+		mes "These requirements may seem difficult, but the Knight class is an elite";
+		mes "and noble job class and only the best candidates may join.";
 		goto M_Menu;
 
 	M_End:
@@ -79,13 +139,31 @@ M_Menu:
 
 L_Check:
 	mes "[Chivalry Captain Herman]";
-	if (KNIGHT_Q == 1) mes "Please speak with ^0000ffSir Andrew Syloc^000000.  He will give you your first test.";
-	if (KNIGHT_Q == 2) mes "Congratulations on finishing your first test.  ^0000ffSir James Syracuse^000000 will administer your ^ff0000second test^000000.";
-	if (KNIGHT_Q == 3) mes "Congratulations on finishing the second test.  ^0000ffSir Windsor^000000 will administer your ^ff0000third test^000000.";
-	if (KNIGHT_Q == 4) mes "Congratulations on finishing the third test.  ^0000ffLady Amy Beatris^000000 will administer your ^ff0000fourth test^000000.";
-	if (KNIGHT_Q == 5) mes "Congratulations on finishing the fourth test.  ^0000ffSir Edmund^000000 will administer your ^ff0000fifth test^000000.";
-	if (KNIGHT_Q == 6) mes "Congratulations on finishing the fifth test.  ^0000ffSir Grey^000000 will administer your ^ff0000sixth test^000000.";
-	if (KNIGHT_Q == 7) goto L_MakeKnight;
+	if (KNIGHT_Q == 1) {
+		mes "Please speak with ^0000ffSir Andrew Syloc^000000.";
+		mes "He will give you your first test.";
+	}
+	else if (KNIGHT_Q == 2) {
+		mes "Congratulations on finishing your first test.";
+		mes "^0000ffSir James Syracuse^000000 will administer your ^ff0000second test^000000.";
+	}
+	else if (KNIGHT_Q == 3) {
+		mes "Congratulations on finishing the second test.";
+		mes "^0000ffSir Windsor^000000 will administer your ^ff0000third test^000000.";
+	}
+	else if (KNIGHT_Q == 4) {
+		mes "Congratulations on finishing the third test.";
+		mes "^0000ffLady Amy Beatris^000000 will administer your ^ff0000fourth test^000000.";
+	}
+	else if (KNIGHT_Q == 5) {
+		mes "Congratulations on finishing the fourth test.";
+		mes "^0000ffSir Edmund^000000 will administer your ^ff0000fifth test^000000.";
+	}
+	else if (KNIGHT_Q == 6) {
+		mes "Congratulations on finishing the fifth test.";
+		mes "^0000ffSir Grey^000000 will administer your ^ff0000sixth test^000000.";
+	}
+	else if (KNIGHT_Q == 7) goto L_MakeKnight;
 	next;
 	mes "[Chivalry Captain Herman]";
 	mes "Good luck!";
@@ -93,43 +171,46 @@ L_Check:
 
 	L_MakeKnight:
 		if (SkillPoint > 0) goto sL_SKpoint;
-
-		mes "Oh, ^ff0000"+strcharinfo(0)+"^000000.  So you've passed Sir Grey's test?";
+		mes "Oh, ^ff0000"+strcharinfo(0)+"^000000. So you've passed Sir Grey's test?";
 		mes "Let me just say that I applaud all of your hard work and your determination.";
 		next;
 		mes "[Chivalry Captain Herman]";
-		mes "The final step to become a Knight is to recieve a recomondation from all six of the Knights who tested you.";
+		mes "The final step to become a Knight is to recieve a recommendation from all";
+		mes "six of the Knights who tested you.";
 		next;
 		mes "[Chivalry Captain Herman]";
-		mes "Let's start with Sir Andrew Syloc.  Sir Syloc, what is your opinion of Knight candidate, ^ff0000"+strcharinfo(0)+"^000000.";
+		mes "Lets start with Sir Andrew Syloc.";
+		mes "Sir Syloc, what is your opinion of Knight candidate, ^ff0000"+strcharinfo(0)+"^000000.";
 		next;
 		mes "[Sir Andrew Syloc]";
-		mes "Patience is a quality all Knights must have.  By passing my test, ^ff0000"+strcharinfo(0)+"^000000 showed great patience and determination.";
+		mes "Patience is a quality all Knights must have.";
+		mes "By passing my test, ^ff0000"+strcharinfo(0)+"^000000 showed great patience and determination.";
 		next;
 		mes "[Sir Andrew Syloc]";
 		mes "In my opinion ^ff0000"+strcharinfo(0)+"^000000 is deserving of becoming a Knight!";
 		next;
 		mes "[Chivalry Captain Herman]";
-		mes "Very good Sir Syloc.  Sir James Syracuse, what say you?";
+		mes "Very good Sir Syloc. Sir James Syracuse, what say you?";
 		next;
 		mes "[Sir James Syracuse]";
-		mes "^ff0000"+strcharinfo(0)+"^000000 was albe to answer everyone of my questions correctly.";
+		mes "^ff0000"+strcharinfo(0)+"^000000 was able to answer everyone of my questions correctly.";
 		mes "This displays a mastery of the basic concepts of the Knight class.";
 		next;
 		mes "[Sir James Syracuse]";
-		mes "^ff0000"+strcharinfo(0)+"^000000 has my recomendation for Knighthood!";
+		mes "^ff0000"+strcharinfo(0)+"^000000 has my recommendation for Knighthood!";
 		next;
 		mes "[Chivalry Captain Herman]";
-		mes "I see Sir Syracuse.  Sir Winsor what do you have to say?";
+		mes "I see Sir Syracuse. Sir Windsor what do you have to say?";
 		next;
-		mes "[Sir Winsor]";
-		mes "..............................";
+		mes "[Sir Windsor]";
+		mes "..........";
 		next;
-		mes "[Sir Winsor]";
-		mes "Hmphf.  I have no objections.";
+		mes "[Sir Windsor]";
+		mes "Hmph. I have no objections.";
 		next;
 		mes "[Chivalry Captain Herman]";
-		mes "Hahaha! You never waste words do you Sir Winsor.  What are your thoughts Lady Amy Beatris?";
+		mes "Hahaha! You never waste words do you Sir Windsor.";
+		mes "What are your thoughts Lady Amy Beatris?";
 		next;
 		mes "[Lady Amy Beatris]";
 		mes "A Knight will be involved in many different kinds of situations on his/her journey.";
@@ -137,53 +218,65 @@ L_Check:
 		next;
 		mes "[Lady Amy Beatris]";
 		mes "^ff0000"+strcharinfo(0)+"^000000 showed good decision making in answering my questions.";
-		mes "I too recomend that this candidate be Knighted!";
+		mes "I too recommend that this candidate be Knighted!";
 		next;
 		mes "[Chivalry Captain Herman]";
-		mes "Thank you Lady Beatris.  How about you Sir Edmund?";
+		mes "Thank you Lady Beatris. How about you, Sir Edmund?";
 		next;
 		mes "[Sir Edmund]";
 		mes "A rock is an unchanging figure that never wavers in the face of adversity.";
 		next;
 		mes "[Sir Edmund]";
-		mes "Though mighty winds may try to knock it down and crashing waves may try to wash it away, a rock will stand solid and firm.";
+		mes "Though mighty winds may try to knock it down and crashing waves may try";
+		mes "to wash it away, a rock will stand solid and firm.";
 		next;
 		mes "[Sir Edmund]";
-		mes "^ff0000"+strcharinfo(0)+"^000000 showed the strength of a rock and was ever calm durring my test.";
+		mes "^ff0000"+strcharinfo(0)+"^000000 showed the strength of a rock and was ever calm during my test.";
 		mes "It is my honest belief that ^ff0000"+strcharinfo(0)+"^000000 should be bestowed with Knighthood.";
 		next;
 		mes "[Chivalry Captain Herman]";
-		mes "As always Sir Edmund, a very profound observation.  Well we're down to the last tester.  Sir Grey, please give us your final desicion.";
+		mes "As always Sir Edmund, a very profound observation.";
+		mes "Well we're down to the last tester.";
+		mes "Sir Grey, please give us your final desicion.";
 		next;
 		mes "[Sir Grey]";
-		mes "What can I say.  ^ff0000"+strcharinfo(0)+"^000000 answered my questions thoughtfully and truthfully.";
+		mes "What can I say.";
+		mes "^ff0000"+strcharinfo(0)+"^000000 answered my questions thoughtfully and truthfully.";
 		next;
 		mes "[Sir Grey]";
-		mes "Though others may think that a Knight's strength lies within his/her sword, we Knights know that true strength lies within ones mind and heart.";
+		mes "Though others may think that a Knight's strength lies within his/her sword,";
+		mes "we Knights know that true strength lies within ones mind and heart.";
 		next;
 		mes "[Sir Grey]";
-		if (sex==1) mes "After speaking to ^ff0000"+strcharinfo(0)+"^000000, I felt that he had this strength within him.";
-		if (sex==0) mes "After speaking to ^ff0000"+strcharinfo(0)+"^000000, I felt that she had this strength within her.";
-		mes "I would be happy to give ^ff0000"+strcharinfo(0)+"^000000 my recomendation to become a Knight!";
+		mes "After speaking to ^ff0000"+strcharinfo(0)+"^000000,";
+		if (Sex == 1) mes "I felt that he had this strength within him.";
+		else if (Sex == 0) mes "I felt that she had this strength within her.";
+		mes "I would be happy to give ^ff0000"+strcharinfo(0)+"^000000 my recommendation to become a Knight!";
 		next;
 		mes "[Chivalry Captain Herman]";
-		mes "Many thanks Sir Grey, and many thanks to all of you for your time.  Well it looks like it was a unanimous decision.";
+		mes "Many thanks Sir Grey, and many thanks to all of you for your time.";
+		mes "Well it looks like it was a unanimous decision.";
 		next;
 		mes "[Chivalry Captain Herman]";
-		mes "The process to become a Knight is very rigorous and difficult and yet you were able to successfully make it through.";
+		mes "The process to become a Knight is very rigorous and difficult and yet";
+		mes "you were able to successfully make it through.";
 		next;
 		mes "[Chivalry Captain Herman]";
-		mes "You have done extremely well and therefore are deserving of the honor of being called a Knight.";
+		mes "You have done extremely well and therefore are deserving of the honor";
+		mes "of being called a Knight.";
 		next;
 		mes "[Chivalry Captain Herman]";
-		mes "^ff0000"+strcharinfo(0)+"^000000, in the name of King Tristin the 3rd, ruler of the kingdom of Run-Midgard, I hereby bestow upon thee the title of Knight!";
+		mes "^ff0000"+strcharinfo(0)+"^000000, in the name of King Tristan III,";
+		mes "ruler of the kingdom of Rune Midgard, I hereby bestow upon thee the title of Knight!";
 		next;
-		callfunc "F_JobChange",JOB_KNIGHT;
+		callfunc "F_JobChange",Job_Knight;
 		if (JBLVL != 50) getitem 656, 3;
 		if (JBLVL == 50) getitem 656, 7;
-		callfunc "F_ClearJobVariables";		// clears all job variables for the current player
+		callfunc "F_ClearJobVariables";
 		mes "[Chivalry Captain Herman]";
-		mes "Congratulations!! You are now a fellow Knight and protector of Rune-Midgard! Now go forth and make Rune-Midgard a better place to live!";
+		mes "Congratulations!!";
+		mes "You are now a fellow Knight and protector of Rune-Midgard!";
+		mes "Now go forth and make Rune Midgard a better place to live!";
 		emotion 21;
 		close;
 
@@ -194,51 +287,70 @@ L_Check:
 }
 
 
-//<--------------------------------------------------------------------------------- Sir Andrew Syloc (1st test) ------------------------------------------------------------------------------------------>\\
+//--------------------------------------------------------------
+// Sir Andrew Syloc -> First Test//--------------------------------------------------------------
+
 prt_in.gat,75,107,4	script	Sir Andrew Syloc	65,{
+
 	mes "[Sir Andrew Syloc]";
-	if (BaseJob == JOB_KNIGHT) goto L_Knight;
-	if (BaseJob == JOB_NOVICE) goto L_Novice;
-	if (BaseJob == Job_Swordsman && KNIGHT_Q == 1) goto L_Test;
-	if (BaseJob == Job_Swordsman && KNIGHT_Q == 2) goto L_Done;
+	if (BaseJob == Job_Knight) goto L_Knight;
+	else if (BaseJob == Job_Novice) goto L_Novice;
+	else if (BaseJob == Job_Swordsman && KNIGHT_Q == 1) goto L_Test;
+	else if (BaseJob == Job_Swordsman && KNIGHT_Q == 2) goto L_Done;
+	else goto L_Other;
+
 L_Other:
-	mes "We Knights of Prontera battle for peace and freedom!  We fight to ensure a prosperous future for the people of Rune-Midgard!";
+	mes "We Knights of Prontera battle for peace and freedom!";
+	mes "We fight to ensure a prosperous future for the";
+	mes "people of Rune Midgard!";
 	close;
+
 L_Novice:
-	mes "Oh, its a novice.  Welcome to the Prontera Chivalry!";
+	mes "Oh, it's a Novice.";
+	mes "Welcome to the Prontera Chivalry!";
 	next;
 	mes "[Sir Andrew Syloc]";
-	mes "Even though you feel weak now, I assure you that once you get your first job, you will feel confident and strong.";
+	mes "Even though you feel weak now,";
+	mes "I assure you that once you get your first job,";
+	mes "you will feel confident and strong.";
 	next;
 	mes "[Sir Andrew Syloc]";
 	mes "Just stay safe and keep out of trouble.";
 	close;
-L_Knight:
-	mes "Oh, your one of us, how are you doing?";
-	next;
-	mes "[Sir Andrew Syloc]";
-	mes "It's important that you get the right equipment.  It will allow you fight a lot of monsters and inturn get a lot of zeny.";
-	next;
-	mes "[Sir Andrew Syloc]";
-	mes "You should remember though, that being a Knight isn't about amassing wealth.";
-	close;
 
+L_Knight:
+	mes "Oh, you're one of us, how are you doing?";
+	next;
+	mes "[Sir Andrew Syloc]";
+	mes "It's important that you get the right equipment.";
+	mes "It will allow you fight a lot of monsters and in";
+	mes "turn get a lot of zeny.";
+	next;
+	mes "[Sir Andrew Syloc]";
+	mes "You should remember though, that being a Knight";
+	mes "isn't about amassing wealth.";
+	close;
 
 L_Test:
 	if (KNIGHT_Q2 > 0) goto L_Check;
-	mes "Oh so you've come to join the Prontera Chivalry have you.  Let's see, you're ^ff0000" + strcharinfo(0) + "^000000 right?";
+	mes "Oh, so you've come to join the Prontera Chivalry have you?";
+	mes "Lets see, you're ^ff0000" + strcharinfo(0) + "^000000 right?";
 	next;
 	mes "[Sir Andrew Syloc]";
-	mes "My name is Andrew Syloc and I am one of the knights in the Prontera Knight Guild.";
+	mes "My name is Andrew Syloc and I am one of the Knights in the";
+	mes "Prontera Knight Guild.";
 	next;
 	mes "[Sir Andrew Syloc]";
-	mes "I will be giving you the first of many tests that will determine if you have what it takes to become a Knight.";
+	mes "I will be giving you the first of many tests that will determine";
+	mes "if you have what it takes to become a Knight.";
 	next;
 	mes "[Sir Andrew Syloc]";
-	mes "This first test is like a scavenger hunt and will test your knowledge of monsters and their locations.";
+	mes "This first test is like a scavenger hunt and will test your";
+	mes "knowledge of monsters and their locations.";
 	next;
 	mes "[Sir Andrew Syloc]";
-	mes "This infrormation is vital for a Knight's ability to properly defend the many different towns in Rune-Midgard.";
+	mes "This infrormation is vital for a Knight's ability to properly";
+	mes "defend the many different towns in Rune-Midgard.";
 	next;
 	menu "I'm ready.",M_1, "Give me time.",M_End;
 
@@ -246,62 +358,76 @@ L_Test:
 		mes "[Sir Andrew Syloc]";
 		if (joblevel == 50) goto sL_Skip;
 		mes "To pass this test you will need to gather:";
-		set KNIGHT_Q2, rand(1,2);
+		set KNIGHT_Q2,rand(1,2);
 		if (KNIGHT_Q2 == 1) callsub sF_R1;
-		if (KNIGHT_Q2 == 2) callsub sF_R2;
+		else if (KNIGHT_Q2 == 2) callsub sF_R2;
 		next;
 		mes "[Sir Andrew Syloc]";
-		mes "When you have all of those items, return here and give them to me.";
+		mes "When you have all of those items,";
+		mes "return here and give them to me.";
 		next;
 		mes "[Sir Andrew Syloc]";
-		mes "Good luck and be carefull!  I shall await your return.";
+		mes "Good luck and be carefull!";
+		mes "I shall await your return.";
 		close;
 
 		sF_R1:
-			mes "^5533FF5 Elder Pixie's Mustache,";	//1040
-			mes "5 Wings of Red Bat";	//7006
-			mes "5 Orcish Vouchers";	//931
-			mes "5 Moth Dust";		//1057
-			mes "5 Reptile Tongues^000000";	//903
-			mes "and ^5533FF5 Manes^000000.";		//1028
+			mes "^5533FF5 Elder Pixie's Mustache,";		// 1040
+			mes "5 Wings of Red Bat";			// 7006
+			mes "5 Orcish Vouchers";			// 931
+			mes "5 Moth Dust";				// 1057
+			mes "5 Reptile Tongues^000000";			// 903
+			mes "and ^5533FF5 Manes^000000.";		// 1028
 			return;
+
 		sF_R2:
-			mes "^5533FF5 Bug Legs";
-			mes "5 Heart of Mermaid";
-			mes "5 Snail's Shells";
-			mes "5 Clam Flesh";
-			mes "5 Old Frying Pans^000000";
-			mes "and ^5533FF5 Maneater Blossoms^000000.";
+			mes "^5533FF5 Bug Legs";			// 1042
+			mes "5 Heart of Mermaid";			// 950
+			mes "5 Snail's Shells";				// 946
+			mes "5 Clam Flesh";				// 966
+			mes "5 Old Frying Pans^000000";			// 7031
+			mes "and ^5533FF5 Maneater Blossoms^000000.";	// 1032
 			return;
 
 		sL_Skip:
-			mes "Wait..... what's this?";
+			mes "Wait... what's this?";
 			next;
 			mes "[Sir Andrew]";
-			mes "You seem to be an increadibly strong swordsman.  Yes, your strength and skill are amazing.";
+			mes "You seem to be an increadibly strong Swordsman.";
+			mes "Yes, your strength and skill are amazing.";
 			next;
 			mes "[Sir Andrew]";
-			mes "Hahaha! There's no need for you to take my test.  Why don't you go onto the next one ok.";
+			mes "Hahaha! There's no need for you to take my test.";
+			mes "Why don't you go on to the next one ok.";
 			next;
 			mes "[Sir Andrew]";
-			mes "Speak to ^5533FFSir James Syracuse^000000.  The tests you will be taking will teach you valuable life lessons, so please try hard.";
-			set KNIGHT_Q, 2;
-			set KNIGHT_Q2, 0;
-			set JBLVL, 50;
+			mes "Speak to ^5533FFSir James Syracuse^000000.";
+			mes "The tests you will be taking will teach you";
+			mes "valuable life lessons, so please try hard.";
+			set KNIGHT_Q,2;
+			set KNIGHT_Q2,0;
+			set JBLVL,50;
 			close;
 
 	M_End:
 		mes "[Sir Andrew Syloc]";
-		mes "Take as much time as you need.  Come back when you're ready.";
+		mes "Take as much time as you need.";
+		mes "Come back when you're ready.";
 		close;
 
 L_Check:
-	mes "You've come back ^ff0000"+strcharinfo(0)+"^000000.  Did you get all of the items I asked for?";
+	mes "You've come back ^ff0000"+strcharinfo(0)+"^000000.";
+	mes "Did you get all of the items I asked for?";
 	next;
 	if (KNIGHT_Q2 == 2) goto L_2;
 
 	L_1:
-		if (countitem(1040)<5 || countitem(7006)<5 || countitem(931)<5 || countitem(1057)<5 || countitem(903)<5 || countitem(1028)<5) goto L_NotDone;
+		if (countitem(1040) < 5 || 
+		countitem(7006) < 5 || 
+		countitem(931) < 5 || 
+		countitem(1057) < 5 || 
+		countitem(903) < 5 || 		countitem(1028) < 5) goto L_NotDone;
+
 		delitem 1040,5;
 		delitem 7006,5;
 		delitem 931,5;
@@ -311,27 +437,39 @@ L_Check:
 		goto L_Cont;
 
 	L_2:
-		if (countitem(1042)<5 || countitem(950)<5 || countitem(946)<5 || countitem(966)<5 || countitem(7031)<5 || countitem(1032)<5) goto L_NotDone;
+		if (countitem(1042) < 5 ||
+		countitem(950) < 5 || 
+		countitem(946) < 5 || 
+		countitem(966) < 5 || 
+		countitem(7031) < 5 || 		countitem(1032) < 5) goto L_NotDone;
+
 		delitem 1042,5;
 		delitem 950,5;
 		delitem 946,5;
 		delitem 966,5;
 		delitem 7031,5;
 		delitem 1032,5;
+		goto L_Cont;
 
-	L_Cont:
+L_Cont:
 	mes "[Sir Andrew Syloc]";
-	mes "Lets see here..... 5 of this.... 5 of that.... Great! You got everything I asked for.";
+	mes "Lets see here... 5 of this... 5 of that... great!";
+	mes "You got everything I asked for.";
 	next;
 	mes "[Sir Andrew Syloc]";
-	mes "You have done well and have past your first test! However you shouldn't get too excited.";
-	mes "There are still more challenges that you will have to overcome before you can become a knight.";
+	mes "You have done well and have passed your first test!";
+	mes "However, you shouldn't get too excited.";
+	mes "There are still more challenges that you will have";
+	mes "to overcome before you can become a Knight.";
 	next;
 	mes "[Sir Andrew Syloc]";
+	goto L_Done;
 
-	L_Done:
-	mes "Speak to the Chivalry Captain Herman and he will inform you about your next test.";
-	mes "Stay focused and give it your all ^0000ff"+strcharinfo(0)+"^000000.  I know you will do well.";
+L_Done:
+	mes "Speak to the Chivalry Captain Herman and he will";
+	mes "inform you about your next test.";
+	mes "Stay focused and give it your all ^0000ff"+strcharinfo(0)+"^000000.";
+	mes "I know you will do well.";
 	set KNIGHT_Q, 2;
 	set KNIGHT_Q2, 0;
 	close;
@@ -342,7 +480,7 @@ L_Check:
 		emotion 4;
 		next;
 		mes "[Sir Andrew Syloc]";
-		mes "This is what you were SUPPOSED to collect....";
+		mes "This is what you were SUPPOSED to collect...";
 		if (KNIGHT_Q2 == 1) callsub sF_R1;
 		if (KNIGHT_Q2 == 2) callsub sF_R2;
 		next;
@@ -352,34 +490,48 @@ L_Check:
 }
 
 
-//<------------------------------------------------------------------------------ Sir James Syracuse (2nd Test) ----------------------------------------------------------------------------------------->\\
+//--------------------------------------------------------------
+// Sir James Syracuse -> Second Test//--------------------------------------------------------------
+
 prt_in.gat,71,91,6	script	Sir James Syracuse	65,{
+
 	mes "[Sir James Syracuse]";
-	if (BaseJob == JOB_KNIGHT) goto L_Knight;
-	if (BaseJob == JOB_NOVICE) goto L_Novice;
-	if (BaseJob == Job_Swordsman && KNIGHT_Q == 2) goto L_Test;
-	if (BaseJob == Job_Swordsman && KNIGHT_Q == 3) goto L_Done;
+	if (BaseJob == Job_Knight) goto L_Knight;
+	else if (BaseJob == Job_Novice) goto L_Novice;
+	else if (BaseJob == Job_Swordsman && KNIGHT_Q == 2) goto L_Test;
+	else if (BaseJob == Job_Swordsman && KNIGHT_Q == 3) goto L_Done;
+	else goto L_Other;
+
 L_Other:
-	mes "Attacking and defending..... is there a way to do both at the same time?";
-	mes "With a 'two-handed' weapon you have a great attack but no defense.  Is there anything that can compensate for this weakness?";
+	mes "Attacking and defending...";
+	mes "is there a way to do both at the same time?";
+	mes "With a 'two-handed' weapon you have a great attack but no defense.";
+	mes "Is there anything that can compensate for this weakness?";
 	next;
 	mes "[Sir James Syracuse]";
-	mes "A weapon that could be used to both attack and defend would be invaluable to a Knight...... Darn!..... Where can I get such a thing??!! ";
+	mes "A weapon that could be used to both attack and defend would be";
+	mes "invaluable to a Knight... darn! Where can I get such a thing??!!";
 	close;
+
 L_Novice:
-	mes "What are you doing here novice?";
+	mes "What are you doing here Novice?";
 	next;
 	mes "[Sir James Syracuse]";
-	mes "Do you want to become a Knight? Well too bad novices can't become knights.";
+	mes "Do you want to become a Knight?";
+	mes "Well too bad, Novices can't become Knights.";
 	next;
 	mes "[Sir James Syracuse]";
-	mes "You have to be an experienced swordman in order to become a knight.";
+	mes "You have to be an experienced Swordsman in order";
+	mes "to become a Knight.";
 	close;
+
 L_Knight:
 	mes "Hey, how are you doing... the guild is fine.";
 	next;
 	mes "[Sir James Syracuse]";
-	mes "We are still recruiting knights.  I hear there's a bad knight out there ruining the good name of the Prontera Chivalry...";
+	mes "We are still recruiting Knights.";
+	mes "I hear there's a bad Knight out there ruining";
+	mes "the good name of the Prontera Chivalry...";
 	next;
 	mes "[Sir James Syracuse]";
 	mes "If you see him, teach him a lesson.";
@@ -389,31 +541,35 @@ L_Test:
 	mes "Oh, so you passed the first test ^ff0000"+strcharinfo(0)+"^000000.";
 	next;
 	mes "[Sir James Syracuse]";
-	mes "First let me introduce myself, my name is James Syracuse.  I am of course a Knight here at the Prontera Chivalry.";
+	mes "First let me introduce myself, my name is James Syracuse.";
+	mes "I am of course a Knight here at the Prontera Chivalry.";
 	next;
 	mes "[Sir James Syracuse]";
-	mes "This test will be on your knowledge of Knights.  You will also be asked about your opinions of Knights...";
+	mes "This test will be on your knowledge of Knights.";
+	mes "You will also be asked about your opinions of Knights...";
 	next;
 	mes "[Sir James Syracuse]";
-	mes "Dont' be nervous, I'll only be asking a few simple questions.";
+	mes "Don't be nervous, I'll only be asking a few simple questions.";
 	next;
-	menu "Let's go",M_0,"I'm not ready yet.",M_End;
+	menu "Lets go.",M_0,"I'm not ready yet.",M_End;
 
 	M_0:
 		mes "[Sir James Syracuse]";
-		mes "Okay lets start, please answer the questions as quickly as you can.  If you get an answer wrong you will have to start the test all over again.";
+		mes "Okay lets start, please answer the questions as quickly as you can.";
+		mes "If you get an answer wrong you will have to start the test all over again.";
 		next;
 
 		mes "[Sir James Syracuse]";
-		//mes "Knights excel in both attack strength and defensive prowess.";
-		mes "Can you tell me which of these swords is NOT a two handed sword?";
+		// mes "Knights excel in both attack strength and defensive prowess.";
+		mes "Can you tell me which of these swords is NOT a two-handed sword?";
 		next;
 		menu "Katzbalger",sM_0a,"Bastard Sword",sM_0b,"Claymore",sM_0c,"Flamberge",sM_0d;
 
 		sM_0a:
 			mes "[Sir James Syracuse]";
-			mes "^ff0000Wrong^000000. Katzbalger IS a two-handed sword";
-			mes "How will you manage to become a knight if you don't know about the swords that Knight's use?";
+			mes "^ff0000Wrong^000000. Katzbalger IS a two-handed sword!";
+			mes "How will you manage to become a Knight if you";
+			mes "don't know about the swords that Knights use?";
 			next;
 			mes "[Sir James Syracuse]";
 			mes "You need to know the basics BEFORE you take this test!";
@@ -422,7 +578,8 @@ L_Test:
 		sM_0b:
 			mes "[Sir James Syracuse]";
 			mes "^ff0000Wrong^000000. Bastard Sword IS a two-handed sword!";
-			mes "How will you manage to become a knight if you don't know about the swords that knight's use?";
+			mes "How will you manage to become a Knight if you";
+			mes "don't know about the swords that Knights use?";
 			next;
 			mes "[Sir James Syracuse]";
 			mes "You need to know the basics BEFORE you take this test!";
@@ -430,200 +587,143 @@ L_Test:
 
 		sM_0c:
 			mes "[Sir James Syracuse]";
-			mes "^ff0000Wrong^000000. Claymore IS a two-handed sword";
-			mes "How will you manage to become a knight if you don't know about the swords that knight's use?";
+			mes "^ff0000Wrong^000000. Claymore IS a two-handed sword!";
+			mes "How will you manage to become a Knight if you";
+			mes "don't know about the swords that Knights use?";
 			next;
 			mes "[Sir James Syracuse]";
 			mes "You need to know the basics BEFORE you take this test!";
 			close;
 
-		sM_0d:
-
+	sM_0d:
 		mes "[Sir James Syracuse]";
 		mes "Okay, let me ask you a question about Knight skills.";
 		mes "What skill listed below is NOT used for attacking an opponent?";
 		next;
-		menu "Two-Hand Mastery Lv.5",sM_1a,"Berserk Lv.3",sM_1b,"Endure Lv.10",sM_1c,"Bash Lv.10",sM_1d;
+		menu "Two-Hand Mastery Lv5",-,"Berserk Lv3",-,"Endure Lv10",L_Cont1,"Bash Lv10",-;
 
-		sM_1a:
 			mes "[Sir James Syracuse]";
-			mes "^ff0000Wrong^000000.  If you don't know this then you will never master the art of combat!";
-			mes "If you want to become a knight, you have to know what each skill does.";
+			mes "^ff0000Wrong^000000. If you don't know this then you will never master the art of combat!";
+			mes "If you want to become a Knight, you have to know what each skill does.";
 			next;
 			mes "[Sir James Syracuse]";
 			mes "You need to know the basics BEFORE you take this test!";
 			close;
 
-		sM_1b:
-			mes "[Sir James Syracuse]";
-			mes "^ff0000Wrong^000000.  If you don't know this then you will never master the art of combat!";
-			mes "If you want to become a knight, you have to know what each skill does.";
-			next;
-			mes "[Sir James Syracuse]";
-			mes "You need to know the basics BEFORE you take this test!";
-			close;
-
-		sM_1c:
-			goto L_Cont1;
-
-		sM_1d:
-			mes "[Sir James Syracuse]";
-			mes "^ff0000Wrong^000000.  If you don't know this then you will never master the art of combat!";
-			mes "If you want to become a knight, you have to know what each skill does.";
-			next;
-			mes "[Sir James Syracuse]";
-			mes "You need to know the basics BEFORE you take this test!";
-			close;
-
-		L_Cont1:
+	L_Cont1:
 		mes "[Sir James Syracuse]";
-		mes "Knights are different from other classes in that Knights can use spears and have special spear skills.";
-		mes "What spear skill below uses the MOST sp?";
+		mes "Knights are different from other classes in that";
+		mes "Knights can use spears and have special spear skills.";
+		mes "What spear skill below uses the MOST SP?";
 		next;
-		menu "Pierce",sM_2a,"Spear Boomarang",sM_2b,"Spear Stab",sM_2c,"Riding",sM_2d;
+		menu "Pierce",-,"Spear Boomerang",-,"Spear Stab",L_Cont2,"Peco Peco Riding",-;
 
-		sM_2a:
 			mes "[Sir James Syracuse]";
 			mes "^ff0000Wrong^000000. If you don't know this, it'll be hard for you to master the Spear!";
-			mes "How can you not know about this if you're trying to become a Knight? Thats just not tolerable!";
+			mes "How can you not know about this if you're trying to become a Knight?";
+			mes "Thats just not tolerable!";
 			next;
 			mes "[Sir James Syracuse]";
 			mes "You need to know the basics BEFORE you take this test!";
 			close;
 
-		sM_2b:
-			mes "[Sir James Syracuse]";
-			mes "^ff0000Wrong^000000. If you don't know this, it'll be hard for you to master the Spear!";
-			mes "How can you not know about this if you're trying to become a Knight? Thats just not tolerable!";
-			next;
-			mes "[Sir James Syracuse]";
-			mes "You need to know the basics BEFORE you take this test!";
-			close;
-
-		sM_2c:
-			goto L_Cont2;
-
-		sM_2d:
-			mes "[Sir James Syracuse]";
-			mes "^ff0000Wrong^000000. If you don't know this, it'll be hard for you to master the Spear!";
-			mes "How can you not know about this if you're trying to become a Knight? Thats just not tolerable!";
-			next;
-			mes "[Sir James Syracuse]";
-			mes "You need to know the basics BEFORE you take this test!";
-			close;
-
-		L_Cont2:
+	L_Cont2:
 		mes "[Sir James Syracuse]";
-		mes "Spears can also have elemental properites.";
+		mes "Spears can also have elemental properties.";
 		mes "Which of the elements below is strongest against Dark/Undead monsters?";
 		next;
-		menu "Holy",sM_3a, "Wind",sM_3b, "Poison",sM_3c, "Earth",sM_3d;
-
-		sM_3a:
-			goto L_Cont3;
+		menu "Holy",L_Cont3,"Wind",sM_3b,"Poison",sM_3c,"Earth",sM_3d;
 
 		sM_3b:
 			mes "[Sir James Syracuse]";
-			mes "^ff0000Wrong^000000.  Wind is NOT that strong against undead!";
-			mes "These are basic stuff and you don't it how funny?";
-			next;
-			mes "[Sir James Syracuse]";
-			mes "You need to know the basics BEFORE you take this test!";
-			close;
+			mes "^ff0000Wrong^000000. Wind is NOT that strong against undead!";
+			goto sM_3e;
 
 		sM_3c:
 			mes "[Sir James Syracuse]";
 			mes "^ff0000Wrong^000000. Poion is NOT strong against undead";
-			mes "These are basic stuff and you don't it how funny";
-			next;
-			mes "[Sir James Syracuse]";
-			mes "You need to know the basics BEFORE you take this test!";
-			close;
+			goto sM_3e;
 
 		sM_3d:
 			mes "[Sir James Syracuse]";
 			mes "^ff0000Wrong^000000. Earth is NOT strong against undead";
+			goto sM_3e;
+
+		sM_3e:
 			next;
 			mes "[Sir James Syracuse]";
 			mes "You need to know the basics BEFORE you take this test!";
 			close;
 
-		L_Cont3:
+	L_Cont3:
 		mes "[Sir James Syracuse]";
-		mes "When you become a Knight you can ride a pecopeco.  However your attack speed drops significantly.";
-		mes "But if you learn the skill, Cavalry Mastery, your attack speed will increase again.";
+		mes "When you become a Knight you can ride a Peco Peco.";
+		mes "However your attack speed drops significantly.";
+		mes "But, if you learn the skill Cavalry Mastery,";
+		mes "your attack speed will increase again.";
 		next;
 		mes "[Sir James Syracuse]";
-		mes "What percentage of your attack speed is regained by learning level 3 cavalry mastery?";
+		mes "What percentage of your attack speed is regained by";
+		mes "learning level 3 Cavalry Mastery?";
 		next;
-		menu "70%",sM_4a, "80%",sM_4b, "90%",sM_4c, "100%",sM_4d;
+		menu "70%",-,"80%",L_Cont4,"90%",-,"100%",-;
 
-		sM_4a:
 			mes "[Sir James Syracuse]";
-			mes "^ff0000Wrong^000000.  If you don't know this I recommend that you do not ride a peco";
+			mes "^ff0000Wrong^000000. If you don't know this I recommend that you do not ride a Peco";
 			next;
 			mes "[Sir James Syracuse]";
 			mes "You need to know the basics BEFORE you take this test!";
 			close;
 
-		sM_4b:
-			goto L_Cont4;
-
-		sM_4c:
-			mes "[Sir James Syracuse]";
-			mes "^ff0000Wrong^000000.  If you don't know this I recommend that you do not ride a peco";
-			next;
-			mes "[Sir James Syracuse]";
-			mes "You need to know the basics BEFORE you take this test!";
-			close;
-
-		sM_4d:
-			mes "[Sir James Syracuse]";
-			mes "^ff0000Wrong^000000.  If you don't know this I recommend that you do not ride a peco";
-			next;
-			mes "[Sir James Syracuse]";
-			mes "You need to know the basics BEFORE you take this test!";
-			close;
-
-		L_Cont4:
+	L_Cont4:
 		mes "[Sir James Syracuse]";
-		mes "Good, looks like you know a lot about knights";
-		mes "Ok.  Let me ask you some more questions";
+		mes "Good, looks like you know a lot about Knights";
+		mes "Okay. Let me ask you some more questions.";
 		next;
 		mes "[Sir James Syracuse]";
-		mes "If you run into a novice and he asks you to tank for him because he's to lazy to fight on his own, you should....";
+		mes "If you run into a Novice and he asks you to tank";
+		mes "for him because he's to lazy to fight on his own,";
+		mes "you should....";
 		next;
-		menu "Tell the novice a good place to train",sM_5a, "Give him some zeny",sM_5b, "Give him some weapons",sM_5c;
+		menu	"Tell the Novice a good place to train.",L_Cont5,
+			"Give him some zeny.",sM_5a,
+			"Give him some weapons.",sM_5b;
 
 		sM_5a:
 			mes "[Sir James Syracuse]";
-			mes "Yes! That's a good answer.  Novice's need to be independent and work hard on their own.";
-			mes "This builds good character and helps them become stronger.";
-			next;
-			goto L_Cont5;
+			mes "WHAT?? Are you Nuts?";
+			mes "Do you think that money is everything?";
+			mes "LEAVE NOW!";
+			close;
 
 		sM_5b:
 			mes "[Sir James Syracuse]";
-			mes "WHAT?? Are you Nuts? Do you think that money is everything? LEAVE NOW!";
+			mes "Do you think you're helping someone when";
+			mes "you give them good weapons?";
+			mes "You are basically KILLING them not helping them.";
+			mes "LEAVE NOW!";
 			close;
 
-		sM_5c:
-			mes "[Sir James Syracuse]";
-			mes "Do you think you're helping someone when you give them good weapons?";
-			mes "You are basically KILLING them not helping them.  LEAVE NOW!";
-			close;
-
-		L_Cont5:
+	L_Cont5:
 		mes "[Sir James Syracuse]";
-		mes "If you're in a party and your party gets attacked, what would you do?";
+		mes "Yes! That's a good answer.";
+		mes "Novices need to be independent and work hard on their own.";
+		mes "This builds good character and helps them become stronger.";
 		next;
-		menu "Stay in front and protect everyone.",sM_6a, "Wait until the others attack first then leech.",sM_6b,
+		mes "[Sir James Syracuse]";
+		mes "If you're in a party and your party gets attacked,";
+		mes "what would you do?";
+		next;
+		menu	"Stay in front and protect everyone.",sM_6a,
+			"Wait until the others attack first then leech.",sM_6b,
 			"Who cares, I just want the drops.",sM_6c;
 
 		sM_6a:
 			mes "[Sir James Syracuse]";
-			mes "Yes! We Knights are important in most battles because of our strong attack and defensive skills.";
-			mes "We should try our best to take the brunt of any attack and allow our party members to provide support.";
+			mes "Yes! We Knights are important in most battles because";
+			mes "of our strong attack and defensive skills.";
+			mes "We should try our best to take the brunt of any attack";
+			mes "and allow our party members to provide support.";
 			next;
 			goto L_Cont6;
 
@@ -632,7 +732,7 @@ L_Test:
 			mes "...WHAT? If you do that you're going to get EVERYONE KILLED!!";
 			next;
 			mes "[Sir James Syracuse]";
-			mes "You....LEAVE NOW! You don't have what it takes to become a Knight!";
+			mes "You... LEAVE NOW! You don't have what it takes to become a Knight!";
 			close;
 
 		sM_6c:
@@ -640,18 +740,20 @@ L_Test:
 			mes "YOU THINK DROPS ARE MORE IMPORTANT THAN YOUR PARTY MEMBERS??";
 			next;
 			mes "[Sir James Syracuse]";
-			mes "You don't have what it takes to become a knight... LEAVE NOW!!";
+			mes "You don't have what it takes to become a Knight... LEAVE NOW!!";
 			close;
 
-		L_Cont6:
+	L_Cont6:
 		mes "[Sir James Syracuse]";
-		mes "And finally, the last question.  What do you think is most important to a Knight?";
+		mes "And finally, the last question.";
+		mes "What do you think is most important to a Knight?";
 		next;
-		menu "Honor",sM_7a, "Money",sM_7b, "The Fame",sM_7c;
+		menu "Honor",sM_7a,"Money",sM_7b,"The Fame",sM_7c;
 
 		sM_7a:
 			mes "[Sir James Syracuse]";
-			mes "Yes! Absolutely correct! A Knight's pride and honor come before all else.";
+			mes "Yes! Absolutely correct!";
+			mes "A Knight's pride and honor come before all else.";
 			mes "You have to always remember that!";
 			next;
 			mes "[Sir James Syracuse]";
@@ -667,125 +769,137 @@ L_Test:
 
 		sM_7c:
 			mes "[Sir James Syracuse]";
-			mes "Did you want to a become a knight because you desired to become FAMOUS?";
+			mes "Did you want to a become a Knight because";
+			mes "you desired to become FAMOUS?";
 			next;
 			mes "[Sir James Syracuse]";
 			mes "Leave now!! We DON'T need your kind here!";
 			close;
 
-		L_Done:
-		mes "Good job on passing the second test.  Please speak with the Captain about your next test.";
+	L_Done:
+		mes "Good job on passing the second test.";
+		mes "Please speak with the Captain about your next test.";
 		next;
 		mes "[Sir James Syracuse]";
-		mes "There is more to a Knight than raw strength.  Duty and honor are of the utmost importance to a Knight";
-		mes "Remember this and you will have no problems with the rest of the tests.";
+		mes "There is more to a Knight than raw strength.";
+		mes "Duty and honor are of the utmost importance to a Knight";
+		mes "Remember this and you will have no problems with";
+		mes "the rest of the tests.";
 		set KNIGHT_Q, 3;
 		close;
 
 	M_End:
 		mes "[Sir James Syracuse]";
-		mes "I see.  Take your time.";
+		mes "I see. Take your time.";
 		close;
 }
 
 
-//<--------------------------------------------------------------------------------- Sir Windsor (3rd Test) -------------------------------------------------------------------------------------------------->\\
-// Sir Windsor ---------------------------------------------------------
+//--------------------------------------------------------------
+// Sir Windsor -> Third Test//--------------------------------------------------------------
+
 prt_in.gat,79,94,3	script	Sir Windsor#1	733,{
+
 	mes "[Sir Windsor]";
-	if (BaseJob == JOB_KNIGHT) goto L_Knight;
-	if (BaseJob == JOB_NOVICE) goto L_Novice;
-	if (BaseJob == Job_Swordsman && KNIGHT_Q == 3) goto L_Test;
-	if (BaseJob == Job_Swordsman && KNIGHT_Q == 4) goto L_Done;
+	if (BaseJob == Job_Knight) goto L_Knight;
+	else if (BaseJob == Job_Novice) goto L_Novice;
+	else if (BaseJob == Job_Swordsman && KNIGHT_Q == 3) goto L_Test;
+	else if (BaseJob == Job_Swordsman && KNIGHT_Q == 4) goto L_Done;
+	else goto L_Other;
+
 L_Other:
 	mes "..........";
 	next;
 	mes "[Sir Windsor]";
-	mes "What're you looking at.....?";
+	mes "What're you looking at...?";
 	close;
+
 L_Novice:
 	mes "..........";
 	next;
 	mes "[Sir Windsor]";
-	mes "Go play somewhere else......";
-	close;
-L_Knight:
-	mes "Don't talk to me......";
-	emotion 9;
+	mes "Go play somewhere else...";
 	close;
 
+L_Knight:
+	mes "Don't talk to me...";
+	emotion 9;
+	close;
 
 L_Test:
 	if (KNIGHT_Q2 == 2) goto L_Done;
 	if (KNIGHT_Q2 == 1) goto sL_ReTest;
-	mes ".............";
+	mes "..........";
 	next;
 	mes "[Sir Windsor]";
-	mes "... so you're here to take the test?";
+	mes "So you're here to take the test?";
 	next;
 	mes "[Sir Windsor]";
-	mes "Follow me.....";
+	mes "Follow me...";
 	next;
 	set KNIGHT_Q2,1;
 	savepoint "prt_in.gat",77,96;
-	warp "job_knt",89,106;
+	warp "job_knt.gat",89,106;
 	end;
 
 	sL_ReTest:
-		mes ".............";
+		mes "..........";
 		next;
 		mes "[Sir Windsor]";
-		mes "Hmf... your previous attempt was pathetic....";
+		mes "Hmph... your previous attempt was pathetic...";
 		next;
 		mes "[Sir Windsor]";
-		mes "Lets go......";
+		mes "Lets go...";
 		next;
 		savepoint "prt_in.gat",77,96;
-		warp "job_knt",89,106;
+		warp "job_knt.gat",89,106;
 		end;
 
 L_Done:
-	mes "Hmf.......";
+	mes "Hmph...";
 	next;
 	mes "[Sir Windsor]";
-	mes ".... You passed my test.";
+	mes "You passed my test.";
 	next;
 	mes "[Sir Windsor]";
-	mes ".... Go talk to the Chivalry Captain Herman.";
+	mes "Go talk to the Chivalry Captain Herman...";
 	set KNIGHT_Q2,0;
 	set KNIGHT_Q,4;
 	close;
 }
 
 
-// Waiting Room ---------------------------------------------------------------------------
+//--------------------------------------------------------------
+// Waiting Room
+
 job_knt.gat,89,110,4,	script	Sir Windsor#2::SW2	733,{
+
 	mes "[Sir Windsor]";
 	mes "..........";
 	next;
 	mes "[Sir Windsor]";
-	mes ".....You have a problem?";
+	mes "...You have a problem?";
 	next;
-	menu "What is this test about?",M_0, "I wanna kick some moster butt!.",M_1, "I want to leave.",M_2, "Nothing.",M_End;
+	menu "What is this test about?",M_0,"I wanna kick some monster butt!",M_1,"I want to leave.",M_2,"Nothing.",M_End;
 
 	M_0:
 		mes "[Sir Windsor]";
 		mes "..........";
 		next;
 		mes "[Sir Windsor]";
-		mes ".....You are going to fight monsters.";
+		mes "...You are going to fight monsters.";
 		next;
 		mes "[Sir Windsor]";
-		mes ".....You must kill every single monster in the arena.";
+		mes "...You must kill every single monster in the arena.";
 		next;
 		mes "[Sir Windsor]";
 		mes "..........";
 		next;
 		mes "[Sir Windsor]";
-		mes ".....You have to survive three levels of viscous monsters.";
+		mes "...You have to survive three levels of vicious monsters.";
 		next;
 		mes "[Sir Windsor]";
-		mes ".....I will give you 3 minutes for each level.";
+		mes "...I will give you 3 minutes for each level.";
 		next;
 		mes "[Sir Windsor]";
 		mes "..........";
@@ -796,19 +910,19 @@ job_knt.gat,89,110,4,	script	Sir Windsor#2::SW2	733,{
 		mes "..........";
 		next;
 		mes "[Sir Windsor]";
-		mes ".....Go to the waiting room first.";
+		mes "...Go to the waiting room first.";
 		next;
 		mes "[Sir Windsor]";
-		mes ".....The test will start soon.";
+		mes "...The test will start soon.";
 		next;
 		mes "[Sir Windsor]";
 		mes "..........";
 		next;
 		mes "[Sir Windsor]";
-		mes ".....If someones in there, you have to wait until they are done or fail.";
+		mes "...If someone is in there, you have to wait until they are done or they fail.";
 		next;
 		mes "[Sir Windsor]";
-		mes ".....Once that happens, you will be automatically warped to the test room..";
+		mes "...Once that happens, you will be automatically warped to the test room.";
 		next;
 		mes "[Sir Windsor]";
 		mes "..........";
@@ -819,7 +933,7 @@ job_knt.gat,89,110,4,	script	Sir Windsor#2::SW2	733,{
 		mes "..........";
 		next;
 		mes "[Sir Windsor]";
-		mes ".....Leave then.";
+		mes "...Leave then.";
 		next;
 		warp "prt_in.gat",80,100;
 		close;
@@ -834,13 +948,18 @@ OnInit:
 	end;
 
 OnStart:
-	set $@KntUsers, getareausers("job_knt.gat", 24, 126, 63, 165);			// get user count for first lvl
-	set $@KntUsers, $@KntUsers + getareausers("job_knt.gat", 24, 32, 63, 71);		// get user count for second lvl + first lvl
-	set $@KntUsers, $@KntUsers + getareausers("job_knt.gat", 124, 132, 163, 171);		// get user count for third lvl + second lvl + first lvl
+	// Get user count for 1st level
+	set $@KntUsers, getareausers("job_knt.gat", 24, 126, 63, 165);
+	// Get user count for 1st, and 2nd levels
+	set $@KntUsers, $@KntUsers + getareausers("job_knt.gat", 24, 32, 63, 71);
+	// Get user count for 1st, 2nd, and 3rd levels
+	set $@KntUsers, $@KntUsers + getareausers("job_knt.gat", 124, 132, 163, 171);
 	if ($@KntUsers > 0) end;
 
-	if ((getwaitingroomstate(33)) == 0) end;			// stops the rest of the script from running if there is no one in the waiting room;
-	//kills off any left over monsters from other testers
+	// Stops the rest of the script from running if there is no one in the waiting room
+	if ((getwaitingroomstate(33)) == 0) end;
+
+	// Kills off any left over monsters from other testers
 	killmonster "job_knt.gat", "KntLvl1::OnMyMobDead";
 	killmonster "job_knt.gat", "KntLvl2::OnMyMobDead";
 	killmonster "job_knt.gat", "KntLvl3::OnMyMobDead";
@@ -849,8 +968,11 @@ OnStart:
 	end;
 }
 
-// First Level ---------------------------------------------------------
+//--------------------------------------------------------------
+// 1st Level
+
 job_knt.gat,1,1,1	script	KntLvl1	-1,{
+
 	set $@KntRm, 1;
 	set $@KntMob,12;
 	monster "job_knt.gat",39,150,"Dustiness",1114,1,"KntLvl1::OnMyMobDead";
@@ -869,19 +991,21 @@ job_knt.gat,1,1,1	script	KntLvl1	-1,{
 	end;
 
 OnMyMobDead:
-	set $@KntMob, $@KntMob - 1;
+	set $@KntMob,$@KntMob - 1;
 	if ($@KntMob > 0) end;
 
 	stopnpctimer "TimerKnt";
-	areaannounce "job_knt.gat", 24, 126, 63, 165, "[Sir Windsor]: Get ready for the second level....",8;
+	areaannounce "job_knt.gat", 24, 126, 63, 165, "[Sir Windsor]: Get ready for the second level...",8;
 	set $@KntMob, 0;
 	addtimer 5000, "KntLvl2";
 	end;
 }
 
+//--------------------------------------------------------------
+// 2nd Level
 
-// Second Level ---------------------------------------------------------
 job_knt.gat,1,1,1	script	KntLvl2	-1,{
+
 	set $@KntRm, 2;
 	set $@KntMob,12;
 	monster "job_knt.gat",53,52,"Frilldora",1119,1,"KntLvl2::OnMyMobDead";
@@ -905,22 +1029,25 @@ OnMyMobDead:
 	if ($@KntMob > 0) end;
 
 	stopnpctimer "TimerKnt";
-	areaannounce "job_knt.gat", 24, 32, 63, 71, "[Sir Windsor]: Get ready for the third level....",8;
+	areaannounce "job_knt.gat", 24, 32, 63, 71, "[Sir Windsor]: Get ready for the third level...",8;
 	set $@KntMob, 0;
 	addtimer 5000, "KntLvl3";
 	end;
 }
 
-// Third Level ---------------------------------------------------------------
+//--------------------------------------------------------------
+// 3rd Level
+
 job_knt.gat,1,1,1	script	KntLvl3	-1,{
+
 	set $@KntRm, 3;
 	set $@KntMob,7;
-	monster "job_knt.gat",136,152,"Knife Goblin Bro",1122,1,"KntLvl3::OnMyMobDead";
-	monster "job_knt.gat",150,152,"Mace Goblin Bro",1123,1,"KntLvl3::OnMyMobDead";
-	monster "job_knt.gat",143,145,"Axe Goblin Bro",1124,1,"KntLvl3::OnMyMobDead";
-	monster "job_knt.gat",143,167,"Hammer Goblin Bro",1125,1,"KntLvl3::OnMyMobDead";
-	monster "job_knt.gat",139,167,"Club Goblin Bro",1126,1,"KntLvl3::OnMyMobDead";
-	monster "job_knt.gat",147,167,"Goblin Archer",1258,1,"KntLvl3::OnMyMobDead";
+	monster "job_knt.gat",136,152,"Dagger Goblin",1122,1,"KntLvl3::OnMyMobDead";
+	monster "job_knt.gat",150,152,"Mace Goblin",1123,1,"KntLvl3::OnMyMobDead";
+	monster "job_knt.gat",143,145,"Axe Goblin",1124,1,"KntLvl3::OnMyMobDead";
+	monster "job_knt.gat",143,167,"Hammer Goblin",1125,1,"KntLvl3::OnMyMobDead";
+	monster "job_knt.gat",139,167,"Club Goblin",1126,1,"KntLvl3::OnMyMobDead";
+	monster "job_knt.gat",147,167,"Archer Goblin",1258,1,"KntLvl3::OnMyMobDead";
 	monster "job_knt.gat",136,158,"Steam Goblin",1280,1,"KntLvl3::OnMyMobDead";
 	warp "job_knt.gat",143,152;
 	initnpctimer "TimerKnt";
@@ -932,49 +1059,59 @@ OnMyMobDead:
 
 	stopnpctimer "TimerKnt";
 	set KNIGHT_Q2, 2;
-	areaannounce "job_knt.gat", 124, 132, 163, 171, "[Sir Windsor]: ....... test completed.",8;
+	areaannounce "job_knt.gat", 124, 132, 163, 171, "[Sir Windsor]: Test completed...",8;
 	set $@KntMob, 0;
 	addtimer 7000, "TimerKnt::OnTimer184000";
 	end;
 }
 
-// Timer --------------------------------------------------------------------------------
+//--------------------------------------------------------------
+// Timer
+
 job_knt.gat,1,1,1	script	TimerKnt	-1,{
 
 OnTimer2000:
 	set $@KntTime$, "You have 3 minutes...";
-	donpcevent "SW2::OnStart";		//checks to see if anyone is still in the room, in case of logout or KO
+	donpcevent "SW2::OnStart"; // Checks to see if anyone is still in the room, in case of logout or death
 	callsub AnnounceKnt;
+
 OnTimer32000:
 	donpcevent "SW2::OnStart";
 	end;
+
 OnTimer62000:
 	set $@KntTime$, "You have 2 minutes left...";
 	donpcevent "SW2::OnStart";
 	callsub AnnounceKnt;
+
 OnTimer92000:
 	donpcevent "SW2::OnStart";
 	end;
+
 OnTimer122000:
 	set $@KntTime$, "You have 1 minute left...";
 	donpcevent "SW2::OnStart";
 	callsub AnnounceKnt;
+
 OnTimer152000:
 	set $@KntTime$, "You have 30 seconds left...";
 	donpcevent "SW2::OnStart";
 	callsub AnnounceKnt;
+
 OnTimer162000:
 	set $@KntTime$, "You have 10 seconds left...";
 	callsub AnnounceKnt;
+
 OnTimer182000:
 	set $@KntTime$, "Times up! You failed!!";
 	donpcevent "SW2::OnStart";
 	callsub AnnounceKnt;
+
 OnTimer184000:
 	stopnpctimer;
 	if ($@KntRm==1) areawarp "job_knt.gat", 24, 126, 63, 165, "prt_in.gat",77,96;
-	if ($@KntRm==2) areawarp "job_knt.gat", 24, 32, 63, 71, "prt_in.gat",77,96;
-	if ($@KntRm==3) areawarp "job_knt.gat", 124, 132, 163, 171, "prt_in.gat",77,96;
+	else if ($@KntRm==2) areawarp "job_knt.gat", 24, 32, 63, 71, "prt_in.gat",77,96;
+	else if ($@KntRm==3) areawarp "job_knt.gat", 124, 132, 163, 171, "prt_in.gat",77,96;
 	areaannounce "job_knt.gat", 82, 98, 97, 113, "[Sir Windsor]: The testing rooms are now open.....",8;
 	killmonster "job_knt.gat", "KntLvl1::OnMyMobDead";
 	killmonster "job_knt.gat", "KntLvl2::OnMyMobDead";
@@ -984,59 +1121,73 @@ OnTimer184000:
 
 AnnounceKnt:
 	if ($@KntRm==1) areaannounce "job_knt.gat", 24, 126, 63, 165, "[Sir Windsor]: "+$@KntTime$+".",8;
-	if ($@KntRm==2) areaannounce "job_knt.gat", 24, 32, 63, 71, "[Sir Windsor]: "+$@KntTime$+".",8;
-	if ($@KntRm==3) areaannounce "job_knt.gat", 124, 132, 163, 171, "[Sir Windsor]: "+$@KntTime$+".",8;
+	else if ($@KntRm==2) areaannounce "job_knt.gat", 24, 32, 63, 71, "[Sir Windsor]: "+$@KntTime$+".",8;
+	else if ($@KntRm==3) areaannounce "job_knt.gat", 124, 132, 163, 171, "[Sir Windsor]: "+$@KntTime$+".",8;
 	end;
 }
 
 
-//<------------------------------------------------------------------------------------ Lady Amy Beatris (4th Test) ---------------------------------------------------------------------------------------------->\\
+//--------------------------------------------------------------
+// Lady Amy Beatris -> Fourth Test
+//--------------------------------------------------------------
+
 prt_in.gat,69,107,5	script	Lady Amy Beatris	728,{
+
 	mes "[Lady Amy Beatris]";
-	if (BaseJob == JOB_KNIGHT) goto L_Knight;
-	if (BaseJob == JOB_NOVICE) goto L_Novice;
-	if (BaseJob == Job_Swordsman && KNIGHT_Q == 4) goto L_Test;
-	if (BaseJob == Job_Swordsman && KNIGHT_Q == 5) mes "Speak to the Chivalry Captain Herman about your next test.";
-	if (BaseJob == Job_Swordsman && KNIGHT_Q == 5) close;
+	if (BaseJob == Job_Knight) goto L_Knight;
+	else if (BaseJob == Job_Novice) goto L_Novice;
+	else if (BaseJob == Job_Swordsman && KNIGHT_Q == 4) goto L_Test;
+	else if (BaseJob == Job_Swordsman && KNIGHT_Q == 5) {
+		mes "Speak to the Chivalry Captain Herman about your next test.";
+		close;
+	}
+	else goto L_Other;
+
 L_Other:
 	mes "Welcome to the Prontera Chivalry.";
 	next;
 	mes "[Lady Amy Beatris]";
 	mes "There are only Knights here so just relax.";
 	close;
+
 L_Novice:
-	mes "Wow... A cute novice... soooo cute...";
+	mes "Wow... A cute Novice... soooo cute...";
 	emotion 14;
 	next;
 	mes "[Lady Amy Beatris]";
 	mes "Do you want to become a Knight?";
-	if (sex==0) mes "I bet you'll be lovely as a Knight.";
-	if (sex==1) mes "I bet you'll be really handsome as a Knight.";
+	if (Sex == 0) mes "I bet you'll be lovely as a Knight.";
+	if (Sex == 1) mes "I bet you'll be really handsome as a Knight.";
 	next;
 	mes "[Lady Amy Beatris]";
-	if (sex==0) mes "If you become a Knight, come back and see me.  We Lady Knights should stick together.";
-	if (sex==1) mes "If you become a knight, come back and see me okay?(*winks*)";
+	if (Sex == 0) mes "If you become a Knight, come back and see me. We Lady Knights should stick together.";
+	if (Sex == 1) mes "If you become a Knight, come back and see me okay? (*winks*)";
 	close;
+
 L_Knight:
-	if (sex==1) goto L_Male;
+	if (Sex == 1) goto L_Male;
 
 	L_Female:
-		mes "Oh my! Aren't you just the prettiest Knight.  I love how your sword matches with your shoes.";
+		mes "Oh my! Aren't you just the prettiest Knight.";
+		mes "I love how your sword matches with your shoes.";
 		emotion 14;
 		next;
 		mes "[Lady Amy Beatris]";
-		mes "Anyway, I'm glad you came back to see me.  I'm always curious about how a Knight turns out.";
-		mes "You look like you're doing fine so continue the good work okay? Lady Knights rule!";
+		mes "Anyway, I'm glad you came back to see me.";
+		mes "I'm always curious about how a Knight turns out.";
+		mes "You look like you're doing fine so continue the good work okay?";
+		mes "Lady Knights rule!";
 		close;
 
 	L_Male:
-		mes "Well hello handsome.  There's just something about men in armor....";
+		mes "Well hello handsome.";
+		mes "There's just something about men in armor...";
 		emotion 3;
 		next;
 		mes "[Lady Amy Beatris]";
 		mes "So, did you come back for some fun...?";
 		next;
-		menu "YOU BET!!!",M_Yes, "... um... well... err...",M_No;
+		menu "YOU BET!!!",M_Yes, "Um... well... err...",M_No;
 
 		M_Yes:
 			mes "^FF0000(SLAPP!! SMACK!! BASH!!)^000000";
@@ -1047,47 +1198,56 @@ L_Knight:
 			mes "How dare you!! Just what kind of girl do you take me for?";
 			next;
 			mes "[Lady Amy Beatris]";
-			mes "Allways remember that a Knight's a Knight, no matter what gender they are.";
-			mes "Also remember to be respectfull to women at all times!";
+			mes "Allways remember that a Knight's a Knight,";
+			mes "no matter what gender they are.";
+			mes "Also remember to be respectful to women at all times!";
 			emotion 32;
 			close;
 
 		M_No:
 			mes "[Lady Amy Beatris]";
-			mes "Teh he he.  Silly, I'm just playing with you.  You may be good looking, but I'm NOT that kind of girl.";
+			mes "Tee hee hee. Silly, I'm just playing with you.";
+			mes "You may be good looking, but I'm NOT that kind of girl.";
 			emotion 18;
 			next;
 			mes "[Lady Amy Beatris]";
-			mes "Anyway, I'm glad you came back to see me.  I'm always curious about how a Knight turns out.";
+			mes "Anyway, I'm glad you came back to see me.";
+			mes "I'm always curious about how a Knight turns out.";
 			mes "You look like you're doing fine so continue the good work okay?";
 			emotion 21;
 			close;
 
-
 L_Test:
-	if (KNIGHT_Q2 == 1) mes "Are you ready to take the test over?";	//for when someone retakes the test
-	if (KNIGHT_Q2 == 1) goto M_Menu;
-	mes "Hello.  Your ^ff0000"+strcharinfo(0)+"^000000, right?";
+	if (KNIGHT_Q2 == 1) {
+		mes "Are you ready to take the test over?";
+		goto M_Menu;
+	}
+	mes "Hello. You're ^ff0000"+strcharinfo(0)+"^000000, right?";
 	next;
 	mes "[Lady Amy Beatris]";
 	mes "My name is Amy Beatris, a Knight of the Prontera Chivalry.";
 	next;
 	mes "[Lady Amy Beatris]";
-	mes "For your test I will be asking you some questions";
+	mes "For your test I will be asking you some questions.";
 	next;
 	mes "[Lady Amy Beatris]";
 	mes "Please listen carefully and pick the correct answer.";
+	goto M_Menu;
+
 M_Menu:
 	next;
-	menu "Ok.  I'm ready.",M_0, "Please give me some time.",M_End;
+	menu "Okay. I'm ready.",M_0, "Please give me some time.",M_End;
 
 	M_0:
 		set @score,0;
 
 		mes "[Lady Amy Beatris]";
-		mes "Let's say your in Morroc and you want to recruit a party member.  What would you do?";
+		mes "Lets say you're in Morroc and you want to recruit a party member.";
+		mes "What would you do?";
 		next;
-		menu "Randomly follow someone around",sM_0a, "Make a chatroom and wait.",sM_0b, "Ask if anyone wants to party with a Knight..",sM_0c;
+		menu	"Randomly follow someone around.",sM_0a,
+			"Make a chat room and wait.",sM_0b,
+			"Ask if anyone wants to party with a Knight...",sM_0c;
 
 		sM_0a:
 			goto L_Cont1;
@@ -1098,31 +1258,44 @@ M_Menu:
 
 		sM_0c:
 			set @score, @score + 10;
+			goto L_Cont1;
 
-		L_Cont1:
+	L_Cont1:
 		mes "[Lady Amy Beatris]";
-		mes "You're in a party with a hunter, a priest, a wizard, a blacksmith, and an assassin.";
-		mes "The six of you decide to train in the Pyramids.";
+		mes "You're in a party with a Hunter, a";
+		mes "Priest, a Wizard, a Blacksmith,";
+		mes "and an Assassin. The six of you";
+		mes "decide to train in the Pyramids.";
 		next;
 		mes "[Lady Amy Beatris]";
-		mes "Your party makes it to the fourth floor of the pyramid, what will you do now?";
+		mes "Your party makes it to the fourth";
+		mes "floor of the Pyramid. What will";
+		mes "you do now?";
 		next;
-		menu "Scout ahead and make sure it's safe for all",sM_1a, "Go fight by yourself",sM_1b, "Stay in front of the party and move slowly",sM_1c;
+		menu	"Scout ahead and make sure it's safe for all.",sM_1a,
+			"Go fight by yourself.",sM_1b,
+			"Stay in front of the party and move slowly.",sM_1c;
 
 		sM_1a:
 			set @score, @score + 10;
+			goto L_Cont2;
 
 		sM_1b:
 			goto L_Cont2;
 
 		sM_1c:
 			set @score, @score + 10;
+			goto L_Cont2;
 
-		L_Cont2:
+	L_Cont2:
 		mes "[Lady Amy Beatris]";
-		mes "A lame-o guy creates a mob right in front of your party and disappears.  What would you do?";
+		mes "A lame-o guy creates a mob right";
+		mes "in front of your party and ";
+		mes "disappears. What would you do?";
 		next;
-		menu "Look after your partners",sM_2a, "Fight hard and help when needed",sM_2b, "Take your PecoPeco and RIDE like the WIND!",sM_2c;
+		menu	"Look after your partners",sM_2a,
+			"Fight hard and help when needed",sM_2b,
+			"Take your Peco Peco and RIDE like the WIND!",sM_2c;
 
 		sM_2a:
 			set @score, @score + 10;
@@ -1133,50 +1306,73 @@ M_Menu:
 			goto L_Cont3;
 
 		sM_2c:
+			goto L_Cont3;
 
-		L_Cont3:
+	L_Cont3:
 		mes "[Lady Amy Beatris]";
-		mes "Somehow you beat the mob.  Your party then journeys on and you stumble upon someone who has fainted.";
+		mes "Somehow you beat the mob.";
+		mes "Your party then journeys on and";
+		mes "you stumble upon someone who has";
+		mes "fainted.";
 		next;
 		mes "[Lady Amy Beatris]";
-		mes "This guy begs you to help him, what will you do?";
+		mes "This guy begs you to help him,";
+		mes "what will you do?";
 		next;
-		menu "Ask the priest in your party to help.",sM_3a, "Ask him how much he'll pay you if you help",sM_3b, "Ignore him.",sM_3c;
+		menu	"Ask the priest in your party to help.",sM_3a,
+			"Ask him how much he'll pay you if you help.",sM_3b,
+			"Ignore him.",sM_3c;
 
 		sM_3a:
 			set @score, @score + 10;
+			goto L_Cont4;
 
 		sM_3b:
+			goto L_Cont4;
 
 		sM_3c:
+			goto L_Cont4;
 
-		L_Cont4:
+	L_Cont4:
 		mes "[Lady Amy Beatris]";
-		mes "You guys have to go to different places so you guys seperate yourselves into smaller groups.";
+		mes "You guys have to go to different";
+		mes "places so you guys seperate";
+		mes "yourselves into smaller groups.";
 		next;
 		mes "[Lady Amy Beatris]";
-		mes "During your previous battles, a monster dropped a very valuable item that you picked up.  What do you do with it?";
+		mes "During your previous battles, a";
+		mes "monster dropped a very valuable";
+		mes "item that you picked up. What do";
+		mes "you do with it?";
 		next;
-		menu "Give it to the person that deserves it the most.",sM_4a, "Pretend you don't know about it.",sM_4b, "Discuss it with the others.",sM_4c;
+		menu	"Give it to the person that deserves it the most.",sM_4a,
+			"Pretend you don't know about it.",sM_4b,
+			"Discuss it with the others.",sM_4c;
 
 		sM_4a:
 			set @score, @score + 10;
+			goto L_Cont5;
 
 		sM_4b:
 			goto L_Cont5;
 
 		sM_4c:
 			set @score, @score + 10;
+			goto L_Cont5;
 
-		L_Cont5:
+	L_Cont5:
 		mes "[Lady Amy Beatris]";
-		mes "You decide to go back to Prontera and sell some of the valuble items you picked up.";
-		mes "On the road, you see a lot of chatrooms.";
+		mes "You decide to go back to Prontera";
+		mes "and sell some of the valuable";
+		mes "items you picked up. On the road,";
+		mes "you see a lot of chat rooms.";
 		next;
 		mes "[Lady Amy Beatris]";
 		mes "What would be the best way to sell them?";
 		next;
-		menu "Sell them to an NPC.",sM_5a, "Create a chatroom to advertise the items.",sM_5b, "Go around looking for someone that needs them.",sM_5c;
+		menu	"Sell them to an NPC.",sM_5a,
+			"Create a chat room to advertise the items.",sM_5b,
+			"Go around looking for someone that needs them.",sM_5c;
 
 		sM_5a:
 			goto L_Cont6;
@@ -1187,64 +1383,86 @@ M_Menu:
 
 		sM_5c:
 			set @score, @score + 10;
+			goto L_Cont6;
 
-		L_Cont6:
+	L_Cont6:
 		mes "[Lady Amy Beatris]";
-		mes "Someone comes up to you and begs you for money.  What would you do?";
+		mes "Someone comes up to you and begs";
+		mes "you for money. What would you do?";
 		next;
-		menu "Give him some money and items.",sM_6a, "Ignore him.",sM_6b, "Tell him a place where its suitable for him to earn money.",sM_6c;
+		menu	"Give him some money and items.",sM_6a,
+			"Ignore him.",sM_6b,
+			"Tell them about a place where they can earn money.",sM_6c;
 
 		sM_6a:
+			goto L_Cont7;
 
 		sM_6b:
 			goto L_Cont7;
+
 		sM_6c:
 			set @score, @score + 10;
+			goto L_Cont7;
 
-		L_Cont7:
+	L_Cont7:
 		mes "[Lady Amy Beatris]";
-		mes "Now your alone and training in a forest.  You are happily riding a pecopeco.";
+		mes "Now you're alone and training in a";
+		mes "forest. You are happily riding a";
+		mes "Peco Peco.";
 		next;
 		mes "[Lady Amy Beatris]";
-		mes "You run into somone who's lost.  What do you do?";
+		mes "You run into somone who's lost.";
+		mes "What do you do?";
 		next;
-		menu "Tell her where the exit is.",sM_7a, "Bring her to the exit.",sM_7b, "Give her a butterfly wing.",sM_7c;
+		menu	"Tell her where the exit is.",sM_7a,
+			"Bring her to the exit.",sM_7b,
+			"Give her a butterfly wing.",sM_7c;
 
 		sM_7a:
-			set @score, @score + 10;
+			set @score,@score + 10;
 			goto L_Cont8;
 
 		sM_7b:
 			set @score, @score + 10;
+			goto L_Cont8;
 
 		sM_7c:
+			goto L_Cont8;
 
-		L_Cont8:
+	L_Cont8:
 		mes "[Lady Amy Beatris]";
-		mes "You're still in the forest but now your busy fighting monsters.";
+		mes "You're still in the forest but now you're busy fighting monsters.";
 		mes "You realize that you've run out of healing items and your health is very low.";
 		next;
 		mes "[Lady Amy Beatris]";
-		mes "Suddenly a priest appears! What would you do?";
+		mes "Suddenly a priest appears!";
+		mes "What would you do?";
 		next;
-		menu "'Give me a heal'",sM_8a, "'Would you please heal me.  I'll share the drops with you.'",sM_8b, "'Dude! I need healz plz.'",sM_8c;
+		menu	"Give me a heal.",sM_8a,
+			"Would you heal me please? I'll share my drops with you.",sM_8b,
+			"Dude! I need healz plz.",sM_8c;
 
 		sM_8a:
 			goto L_Cont9;
 
 		sM_8b:
 			set @score, @score + 10;
+			goto L_Cont9;
 
 		sM_8c:
+			goto L_COnt9;
 
-		L_Cont9:
+	L_Cont9:
 		mes "[Lady Amy Beatris]";
-		mes "Your getting tired so you decide to head back to town.";
+		mes "You're getting tired so you decide to head back to town.";
 		next;
 		mes "[Lady Amy Beatris]";
-		mes "On the road back to town, you see a very valuable object.  What will you do?";
+		mes "On the road back to town, you see a";
+		mes "very valuable object. What will you do?";
 		next;
-		menu "Pick it up and keep it.",sM_9a, "Ask around to see if anyone dropped it.",sM_9b, "Leave it there.",sM_9c;
+		menu	"Pick it up and keep it.",sM_9a,
+			"Ask around to see if anyone dropped it.",sM_9b,
+			"Leave it there.",sM_9c;
 
 		sM_9a:
 			goto L_Cont10;
@@ -1255,13 +1473,16 @@ M_Menu:
 
 		sM_9c:
 			set @score, @score + 10;
+			goto L_Cont10;
 
-		L_Cont10:
+	L_Cont10:
 		mes "[Lady Amy Beatris]";
-		mes "Alright.  I'm finished with my questions.  Now that wasn't so bad was it?";
+		mes "Alright. I'm finished with my";
+		mes "questions. Now that wasn't so";
+		mes "bad was it?";
 		next;
 		mes "[Lady Amy Beatris]";
-		mes "Okay, let me just quickly add up your score....";
+		mes "Okay, let me just quickly add up your score...";
 		next;
 		mes "[Lady Amy Beatris]";
 		mes "You got a score of ^ff0000"+@score+"^000000 out of ^0000ff100^000000.";
@@ -1271,66 +1492,80 @@ M_Menu:
 		if (@score >= 80) goto L_80;
 
 		L_Failed:
-			mes "I am sorry but you failed the test.  I hope you will try again and do better next time.";
+			mes "I'm sorry but you failed";
+			mes "the test. I hope you will";
+			mes "try again and do better next time.";
 			next;
 			mes "[Lady Amy Beatris]";
 			mes "When I ask you a question please think hard about it.";
-			set KNIGHT_Q2, 1;	//flag for re-taking the test
+			set KNIGHT_Q2, 1;	// Flag for re-taking the test
 			close;
 
 		L_100:
-			mes "Great job! You got a perfect score.  If you keep this up, you'll become one of the best knights around.";
-			mes "Speak to the Chivalry Captain Herman about your next test.";
+			mes "Great job! You got a perfect";
+			mes "score. If you keep this up,";
+			mes "you'll become one of the best";
+			mes "Knights around. Speak to the";
+			mes "Chivalry Captain Herman about";
+			mes "your next test.";
 			next;
 			mes "[Lady Amy Beatris]";
 			mes "Keep up the good work and pass all the tests okay?";
 			set KNIGHT_Q, 5;
 			set KNIGHT_Q2, 0;
 			close;
+
 		L_80:
-			mes "Not bad.  Not as good as had I hoped, but you did well enough to pass.";
-			mes "Speak to the Chivalry Captain Herman about your next test.";
+			mes "Not bad. Not as good as had";
+			mes "I hoped, but you did well";
+			mes "enough to pass. Speak to the";
+			mes "Chivalry Captain Herman about";
+			mes "your next test.";
 			next;
 			mes "[Lady Amy Beatris]";
-			mes "Good luck on the next test.  I hope you'll pass and become a knight soon.";
+			mes "Good luck on the next test.";
+			mes "I hope you'll pass and become a Knight soon.";
 			set KNIGHT_Q, 5;
 			set KNIGHT_Q2, 0;
 			close;
 
 	M_End:
 		mes "[Lady Amy Beatris]";
-		mes "Sure thing.  See me when you're ready.";
+		mes "Sure thing. See me when you're ready.";
 		close;
 }
 
 
-//<------------------------------------------------------------------------------------------- Sir Edmund (5th Test) --------------------------------------------------------------------------------------------->\\
+//--------------------------------------------------------------
+// Sir Edmund -> Fifth Test
+//--------------------------------------------------------------
+
 prt_in.gat,70,99,5	script	Sir Edmund	734,{
+
 	mes "[Sir Edmund]";
-	if (BaseJob == JOB_KNIGHT) goto L_Knight;
-	if (BaseJob == Job_Swordsman) goto L_Sword;
-	if (BaseJob == JOB_NOVICE) goto L_Novice;
+	if (BaseJob == Job_Knight) goto L_Knight;
+	else if (BaseJob == Job_Swordsman) goto L_Sword;
+	else if (BaseJob == Job_Novice) goto L_Novice;
+	else goto L_Other;
+
 L_Other:
 	mes "Everything in this world exists in harmony.";
 	next;
 	mes "[Sir Edmund]";
-	mes "Living without disrupting this harmony is the only true way to live your life....";
+	mes "Living without disrupting this harmony";
+	mes "is the only true way to live your life...";
 	close;
+
 L_Novice:
 	mes "A tree with deep roots will not be swayed by the wind.";
 	next;
 	mes "[Sir Edmund]";
-	mes "Skills rooted in a strong foundation will one day shine their light...";
+	mes "Skills rooted in a strong foundation";
+	mes "will one day shine their light...";
 	next;
 	mes "[Sir Edmund]";
-	mes "You future will be decided by what you do now.... so strengthen those roots.";
-	close;
-
-	mes "[Sir Edmund]";
-	mes "People who wants to be on the dark side will always have nightmares";
-	next;
-	mes "[Sir Edmund]";
-	mes "If a person gets a nightmare everyday, all his dreams will be crushed...";
+	mes "You future will be decided by what you do now...";
+	mes "So strengthen those roots.";
 	close;
 
 L_Knight:
@@ -1340,56 +1575,65 @@ L_Knight:
 	mes "A river will wash out everything in its path...";
 	next;
 	mes "[Sir Edmund]";
-	mes "As a knight you must walk your path like a flowing river.";
+	mes "As a Knight you must walk your path like a flowing river.";
 	close;
 
 L_Sword:
 	if (KNIGHT_Q == 5) goto L_Test;
 	if (KNIGHT_Q == 6) goto L_Done;
-	mes "Those with ominous thoughts will only dream ominous dreams.";
+	mes "Those with ominous thoughts will";
+	mes "only dream ominous dreams.";
 	next;
 	mes "[Sir Edmund]";
-	mes "Having ominous dreams will result in no dreams at all....";
+	mes "Having ominous dreams will result";
+	mes "in no dreams at all...";
 	close;
+
 L_Test:
 	if (KNIGHT_Q2 == 1) goto L_ReTest;
 	if (KNIGHT_Q2 == 2) goto L_Done;
-	mes "Oh so its your turn to take my test.";
-	mes "I hope you can pass it";
+	mes "Oh so its your turn to take my";
+	mes "test. I hope you can pass it";
 	next;
 	mes "[Sir Edmund]";
-	mes "My name is Edmund.";
-	mes "And iam a knight in the prontera Knight Guild.";
+	mes "My name is Edmund. And I am a Knight in the Prontera Knight Guild.";
 	next;
 	mes "[Sir Edmund]";
-	mes "Knights are like the people that keeps justice and peace in this world...";
-	mes "If you can help people and be nice, you'll be one of the best knights in this world.";
+	mes "Knights are like the people that";
+	mes "keep justice and peace in this";
+	mes "world... If you can help people";
+	mes "and be nice, you'll be one of the";
+	mes "best Knights in this world.";
 	next;
 	mes "[Sir Edmund]";
 	mes "Your actions can't be slow, if you decide on something, you got to do it.";
-	mes "Sometimes you can be the water, Weak , but most time you got to be the wind, HARD.";
+	mes "Sometimes you can be the water, weak, but most time you have to be the wind, STRONG.";
 	next;
 	mes "[Sir Edmund]";
-	mes "You can't kill monsters because its fun.";
-	mes "And sometimes you'll need time to calm down...";
+	mes "You can't kill monsters because its fun. And sometimes you'll need time to calm down...";
 	next;
 	mes "[Sir Edmund]";
-	mes "Okay lets start the test now.";
+	mes "Okay, lets start the test now.";
 	next;
 	warp "job_knt.gat",143,57;
 	doevent "ev_Test";
 	end;
 
 	L_ReTest:
-		mes "Last time when you did the test you didn't try hard enough.";
-		mes "A knights weapon should only be used to protect, not to bully weak monsters.";
+		mes "Last time when you did the test";
+		mes "you didn't try hard enough.";
+		mes "A Knight's weapon should only be used";
+		mes "to protect, not to bully weak monsters.";
 		next;
 		mes "[Sir Edmund]";
-		mes "Everything in this world is equal, there shouldn't be any exceptions.";
-		mes "This point shouldn't be kept just when you have tests, it should be kept when you're training in real life...";
+		mes "Everything in this world is equal,";
+		mes "there shouldn't be any exceptions.";
+		mes "This point shouldn't be kept just";
+		mes "when you have tests, it should be";
+		mes "kept when you're training in real life...";
 		next;
 		mes "[Sir Edmund]";
-		mes "OKay now, try again.";
+		mes "Okay now, try again.";
 		next;
 		warp "job_knt.gat",143,57;
 		doevent "ev_Test";
@@ -1399,20 +1643,26 @@ L_Test:
 		mes "You have done very well to pass my test.";
 		next;
 		mes "[Sir Edmund]";
-		mes "Remember that true strength comes from patience and understanding.";
+		mes "Remember that true strength comes from";
+		mes "patience and understanding.";
 		next;
 		mes "[Sir Edmund]";
-		mes "When you understand the world around you, you will be able to overcome any obstacle in life.";
+		mes "When you understand the world around you,";
+		mes "you will be able to overcome any obstacle in life.";
 		next;
 		mes "[Sir Edmund]";
-		mes "Go to the Chivalry Captain Herman and find out about your next challenge.  Good luck.";
+		mes "Go to the Chivalry Captain Herman and find";
+		mes "out about your next challenge. Good luck.";
 		set KNIGHT_Q2,0;
 		set KNIGHT_Q,6;
 		close;
 }
 
-// Test -----------------------------
+//--------------------------------------------------------------
+// Test
+
 job_knt.gat,1,1,1	script	ev_Test	-1,{
+
 	killmonster "job_knt.gat","ev_Test::OnMyMobDead";
 	monster "job_knt.gat",141,57,"Poring",1002,1,"ev_Test::OnMyMobDead";
 	monster "job_knt.gat",145,57,"Poring",1002,1,"ev_Test::OnMyMobDead";
@@ -1440,78 +1690,106 @@ job_knt.gat,1,1,1	script	ev_Test	-1,{
 
 OnTimerPass:
 	set KNIGHT_Q2, 2;
-	areaannounce "job_knt.gat", 124, 36, 163, 75, "[Sir Edmund]: Well done.",0;
+	areaannounce "job_knt.gat",124,36,163,75,"[Sir Edmund]: Well done.",0;
 	addtimer 4000, "ev_Test::OnTimerWarp";
 	end;
 
 OnMyMobDead:
 	set KNIGHT_Q2, 1;
-	areaannounce "job_knt.gat", 124, 36, 163, 75, "[Sir Edmund]: You are not at peace and therfore have failed my test.",0;
+	areaannounce "job_knt.gat",124,36,163,75,"[Sir Edmund]: You are not at peace and therefore have failed my test.",0;
 	deltimer "ev_Test::OnTimerPass";
 	addtimer 4000, "ev_Test::OnTimerWarp";
 	end;
 
 OnTimerWarp:
 	if (KNIGHT_Q2 == 2) warp "prt_in.gat",80,100;
-	if (KNIGHT_Q2 == 1) warp "prt_fild05.gat",353,251;
+	else if (KNIGHT_Q2 == 1) warp "prt_fild05.gat",353,251;
 	end;
 }
 
 
-//<------------------------------------------------------------------------------------------ Sir Grey (Final Test) ------------------------------------------------------------------------------------------------------>\\
+//--------------------------------------------------------------
+// Sir Grey -> Final Test
+//--------------------------------------------------------------
+
 prt_in.gat,87,90,3	script	Sir Grey	119,{
+
 	mes "[Sir Grey]";
-	if (BaseJob == JOB_KNIGHT) goto L_Knight;
-	if (BaseJob == JOB_NOVICE) goto L_Novice;
-	if (BaseJob == Job_Swordsman && KNIGHT_Q == 6) goto L_Test;
-	if (BaseJob == Job_Swordsman && KNIGHT_Q == 7) mes "Go to Chivalry Captain Herman and allow him to bestow upon you the great honor of Knighthood.";
-	if (BaseJob == Job_Swordsman && KNIGHT_Q == 7) close;
+	if (BaseJob == Job_Knight) goto L_Knight;
+	else if (BaseJob == Job_Novice) goto L_Novice;
+	else if (BaseJob == Job_Swordsman && KNIGHT_Q == 6) goto L_Test;
+	else if (BaseJob == Job_Swordsman && KNIGHT_Q == 7) {
+		mes "Go to Chivalry Captain Herman and allow him";
+		mes "to bestow upon you the great honor of Knighthood.";
+		close;
+	}
+	else goto L_Other;
+
 L_Other:
-	mes "Use your time wisely young one......";
+	mes "Use your time wisely young one...";
 	next;
 	mes "[Sir Grey]";
-	mes "You don't want to end up regreting missed opportunities.";
+	mes "You don't want to end up regretting";
+	mes "missed opportunities.";
 	close;
+
 L_Novice:
 	mes "Believe it or not, I was once a Novice as well.";
 	next;
 	mes "[Sir Grey]";
-	mes "Back then, I never dreamed about being a knight.... I just wanted to become a strong person.....";
+	mes "Back then, I never dreamed about being a Knight...";
+	mes "I just wanted to become a strong person...";
 	next;
 	mes "[Sir Grey]";
-	mes "And somehow after all these years, I ended up becoming one.  Imagine that.... Hahaha.";
+	mes "And somehow after all these years,";
+	mes "I ended up becoming one.";
+	mes "Imagine that... Hahaha.";
 	emotion 18;
 	close;
+
 L_Knight:
-	mes "I don't know if I can even properly describe the ^00aa00Claymore^000000, but I know this... it's the greatest weapon a Knight can wield!!";
+	mes "I don't know if I can even properly";
+	mes "describe the ^00aa00Claymore^000000, but I know this...";
+	mes "it's the greatest weapon a Knight can wield!!";
 	next;
 	mes "[Sir Grey]";
-	mes "Yes! The ^00aa00'Claymore'^000000!! Every knight should have one!";
+	mes "Yes! The ^00aa00'Claymore'^000000!!";
+	mes "Every Knight should have one!";
 	next;
-	menu "Info about the Claymore ",M_Info, "Buy the Claymore",M_Buy, "End talk",M_Cancel;
+	menu "Info about the Claymore ",M_Info,"Buy the Claymore",M_Buy,"End talk",M_Cancel;
 
 	M_Info:
 		mes "[Sir Grey]";
-		mes "The Claymore is the best 2 handed sword a knight can get.  Its like a knight's bestfriend.";
+		mes "The Claymore is the best two-handed sword";
+		mes "a Knight can get. It's like a Knight's best friend.";
 		next;
 		mes "[Sir Grey]";
-		mes "Our guild works very hard to make these beautiful Claymore swords and therefore deserves some compensation for their work.";
+		mes "Our guild works very hard to make these";
+		mes "beautiful Claymore swords and therefore";
+		mes "deserves some compensation for their work.";
 		next;
 		mes "[Sir Grey]";
-		mes "For the small fee of ^0000ff'74000 zeny'^000000  and ^0000ff'1 Steel '^000000, any Knight can get their hands on a Claymore.";
+		mes "For the small fee of ^0000ff'74000 zeny'^000000";
+		mes "and ^0000ff'1 Steel '^000000, any Knight can get";
+		mes "their hands on a Claymore.";
 		next;
 		mes "[Sir Grey]";
-		mes "I'm in charge of selling them so if you would like one let me know.";
+		mes "I'm in charge of selling them so if you";
+		mes "would like one let me know.";
 		close;
 
 	M_Buy:
 		if (countitem(999) < 1 || Zeny < 74000) goto L_NotEnough;
 
 		mes "[Sir Grey]";
-		mes "Good, you brought me the steel and have enough to cover the labor fee.";
+		mes "Good, you brought me the steel and";
+		mes "have enough to cover the labor fee.";
 		next;
 		mes "[Sir Grey]";
-		mes "Here you are! A magnificant weapon that is un-matched in quality and strength! I know you will use it well.";
+		mes "Here you are!";
+		mes "A magnificent weapon that is unmatched";
+		mes "in quality and strength!";
+		mes "I know you will use it well.";
 		delitem 999, 1;
 		set Zeny, Zeny - 74000;
 		getitem 1163, 1;
@@ -1519,20 +1797,25 @@ L_Knight:
 
 		L_NotEnough:
 			mes "[Sir Grey]";
-			mes "I know you want a claymore but you need to bring me ^0000ff'74000 zeny'^000000  and ^0000ff'1 Steel '^000000.";
+			mes "I know you want a claymore but you";
+			mes "need to bring me ^0000ff'74000 zeny'^000000";
+			mes "and ^0000ff'1 Steel '^000000.";
 			next;
 			mes "[Sir Grey]";
-			mes "When you get the steel and the money, come back and see me.";
+			mes "When you get the steel and the money,";
+			mes "come back and see me.";
 			close;
 
 	M_Cancel:
 		mes "[Sir Grey]";
-		mes "If your going to be a good knight, you'll need a claymore..";
+		mes "If you're going to be a good Knight,";
+		mes "you'll need a Claymore...";
 		mes "I'll be glad to see you after your training...";
 		close;
 
 L_ReTest:
-	mes "I see you're back.  Have you spent enough time reflecting on Knighthood?";
+	mes "I see you're back. Have you spent";
+	mes "enough time reflecting on Knighthood?";
 	mes "I hope that you are now ready for this test.";
 	goto M_Menu;
 
@@ -1541,167 +1824,213 @@ L_Test:
 	mes "Haha, so you already finished all the other tests eh?";
 	next;
 	mes "[Sir Grey]";
-	mes "Okay then, lets start my test.  Its not any different from the other ones.";
+	mes "Okay then, lets start my test.";
+	mes "Its not any different from the other ones.";
+	goto M_Menu;
+
 M_Menu:
 	next;
-	menu "Bring it on!",M_0, "Maybe a little later.",M_End;
+	menu "Bring it on!",M_0,"Maybe a little later.",M_End;
 
 	M_0:
 		set @score,0;
 		mes "[Sir Grey]";
 		mes "Let me ask you a few questions.";
 		next;
-
 		mes "[Sir Grey]";
-		mes "First, why are you so determined to become a knight?";
+		mes "First, why are you so determined to become a Knight?";
 		next;
-		menu "I want to be stronger.",sM_0, "I want to help the town.",sM_1, "Being a Swordsman sucks.",sM_2;
+		menu "I want to be stronger.",sM_0,"I want to help the town.",sM_1,"Being a Swordsman sucks.",sM_2;
 
 		sM_0:
 			mes "[Sir Grey]";
-			mes "To become stronger huh.... It's true that becoming a knight does make you stronger but....";
+			mes "To become stronger huh...";
+			mes "It's true that becoming a Knight does";
+			mes "make you stronger but....";
 			next;
 			mes "[Sir Grey]";
-			mes "What would you do with that strength? Use it to help a town? Show it off to people? Or is there another reason?";
+			mes "What would you do with that strength?";
+			mes "Use it to help a town?";
+			mes "Show it off to people?";
+			mes "Or is there another reason?";
 			next;
-			menu "Use it to make me rich$$.",sM_0a, "Use it to protect myself.",sM_0b, "Use it to protect other people.",sM_0c;
+			menu	"Use it to make me rich $$.",sM_0a,
+				"Use it to protect myself.",sM_0b,
+				"Use it to protect other people.",sM_0c;
 
 			sM_0a:
 				set @score, @score + 10;
 				mes "[Sir Grey]";
-				mes "Money is important for a comfortable living, but a Knights strength can be used for more important things.";
+				mes "Money is important for a comfortable living,";
+				mes "but a Knight's strength can be used for more";
+				mes "important things.";
 				goto L_Cont1;
 
 			sM_0b:
 				mes "[Sir Grey]";
-				mes "This is a very good idea.  By first learning how to protect yourself, you will then be able to protect others.";
+				mes "This is a very good idea.";
+				mes "By first learning how to protect yourself,";
+				mes "you will then be able to protect others.";
 				mes "I admire your thought very much.";
 				goto L_Cont1;
 
 			sM_0c:
 				mes "[Sir Grey]";
-				mes "It is a great idea to help others.  We Knights pride ourselves on serving the public in anyway we can.";
+				mes "It is a great idea to help others.";
+				mes "We Knights pride ourselves on serving the";
+				mes "public in anyway we can.";
 				goto L_Cont1;
 
 		sM_1:
 			mes "[Sir Grey]";
-			mes "I see.  You have a very strong sense of community.";
+			mes "I see. You have a very strong sense of community.";
 			next;
 			mes "[Sir Grey]";
-			mes "With the power that comes with becoming Knight, what would you do to help the town?";
+			mes "With the power that comes with becoming Knight,";
+			mes "what would you do to help the town?";
 			next;
-			menu "Whatever the town needs me to do.",sM_1a, "I will help the town get rich.",sM_1b, "I will protect the citizens of the town.",sM_1c;
+			menu	"Whatever the town needs me to do.",sM_1a,
+				"I will help the town get rich.",sM_1b,
+				"I will protect the citizens of the town.",sM_1c;
 
 			sM_1a:
 				mes "[Sir Grey]";
-				mes "Good.  A Knight should always strive to help whatever the task.";
+				mes "Good. A Knight should always strive to help whatever the task.";
 				goto L_Cont1;
 
 			sM_1b:
 				set @score, @score + 10;
 				mes "[Sir Grey]";
-				mes "A town does need money to be prosperous, but that is not the most important thing a town needs.";
-				mes "As a Knight you can provide the town with protection and other valuable services.";
+				mes "A town does need money to be prosperous,";
+				mes "but that is not the most important thing a town needs.";
+				mes "As a Knight you can provide the town";
+				mes "with protection and other valuable services.";
 				goto L_Cont1;
 
 			sM_1c:
 				mes "[Sir Grey]";
-				mes "A very noble idea indeed.  Towns people are often ill equiped to protect themselves from monsters.";
-				mes "By providing them with protection, you can allow the towns people to live their lives peacefully.";
+				mes "A very noble idea indeed.";
+				mes "Towns people are often ill equiped";
+				mes "to protect themselves from monsters.";
+				mes "By providing them with protection,";
+				mes "you can allow the towns people to";
+				mes "live their lives peacefully.";
 				goto L_Cont1;
 
 		sM_2:
 			set @score, @score + 5;
 			mes "[Sir Grey]";
-			mes "Hmm... that's very interesting.  Most people enjoy being a Swordsman.";
+			mes "Hmm... that's very interesting.";
+			mes "Most people enjoy being a Swordsman.";
 			next;
 			mes "[Sir Grey]";
 			mes "Well, what exactly don't you like about being a Swordsman?";
 			next;
-			menu "The skills.",sM_2a, "Swordsman are weak.",sM_2b, "The hard work.",sM_2c;
+			menu "The skills.",sM_2a,"Swordsman are weak.",sM_2b,"The hard work.",sM_2c;
 
 			sM_2a:
 				set @score, @score + 5;
 				mes "[Sir Grey]";
-				mes "A skill is only as good as the person who uses it.  Different skills are used for different situations.";
+				mes "A skill is only as good as the person who uses it.";
+				mes "Different skills are used for different situations.";
 				next;
 				mes "[Sir Grey]";
-				mes "If you have not figured out how to effectively use the Swordsman's skills by now, how do you expect to be able to use a Knight's skills?";
+				mes "If you have not figured out how to";
+				mes "effectively use the Swordsman's skills by now,";
+				mes "how do you expect to be able to use a";
+				mes "Knight's skills?";
 				goto L_Cont1;
 
 			sM_2b:
 				set @score, @score - 5;
 				mes "[Sir Grey]";
-				mes "What? Swordsman are the strongest of the 1st job classes.  A Knight's strength is the progression of a Swordsman's strength.";
+				mes "What? Swordsman are the strongest of the";
+				mes "first job classes. A Knight's strength";
+				mes "is the progression of a Swordsman's strength.";
 				next;
 				mes "[Sir Grey]";
-				mes "If you are a weak Swordsman, I can garauntee that you will be a weak Knight.";
+				mes "If you are a weak Swordsman,";
+				mes "I can guarantee that you will be a weak Knight.";
 				goto L_Cont1;
 
 			sM_2c:
 				set @score, @score + 5;
 				mes "[Sir Grey]";
-				mes "Hahaha!.  If you think it gets any easier as a Knight you're sadly mistaken my friend.";
-				mes "With the added skills and strength a Knight gets, comes added challenges.";
+				mes "Hahaha! If you think it gets any";
+				mes "easier as a Knight you're sadly";
+				mes "mistaken my friend.";
+				mes "With the added skills and strength";
+				mes "a Knight gets comes added challenges.";
 				goto L_Cont1;
 
-		L_Cont1:
+	L_Cont1:
 		next;
 		mes "[Sir Grey]";
-		mes "Just a reminder, when you become a Knight you will NOT be able to change back into a Swordsman.";
+		mes "Just a reminder, when you become a Knight";
+		mes "you will NOT be able to change back into a Swordsman.";
 		next;
 		mes "[Sir Grey]";
-		mes "If you were to become a Knight right now, what would be the first thing you would do?";
+		mes "If you were to become a Knight right now,";
+		mes "what would be the first thing you would do?";
 		next;
-		menu "I would go into battle.",sM_3, "Go back to the person who's waiting for me.",sM_4, "Learn more about Knights.",sM_5;
+		menu	"I would go into battle.",sM_3,
+			"Go back to the person who's waiting for me.",sM_4,
+			"Learn more about Knights.",sM_5;
 
 		sM_3:
 			mes "[Sir Grey]";
-			mes "Okay... so you would battle and in doing so you would.....";
+			mes "Okay... so you would battle and in doing so you would...";
 			next;
-			menu "... become the strongest warrior.",sM_3a, "... find out how good I am.",sM_3b, "... go places where Swordsmen can't.",sM_3c;
+			menu	"Become the strongest warrior.",sM_3a,
+				"Find out how good I am.",sM_3b,
+				"Go places where Swordsman can't.",sM_3c;
 
 			sM_3a:
 				set @score, @score + 10;
 				mes "[Sir Grey]";
-				mes "Hold on there tiger.  Don't get too eager now.  You have to get the basics of Knighthood down first.";
+				mes "Hold on there tiger. Don't get too eager now.";
+				mes "You have to get the basics of Knighthood down first.";
 				mes "Without it you may become the weakest warrior around.";
 				goto L_Cont2;
 
 			sM_3b:
 				mes "[Sir Grey]";
-				mes "Yes! Understanding your strengths and weaknesses is a very important aspect of being a Knight.";
+				mes "Yes! Understanding your strengths and";
+				mes "weaknesses is a very important aspect";
+				mes "of being a Knight.";
 				goto L_Cont2;
 
 			sM_3c:
 				mes "[Sir Grey]";
 				mes "As a Knight you will be able to train in places you couldn't as a Swordsman.";
-				mes "But becarefull.  If you move to fast you may find yourself in a world of trouble.";
+				mes "But becareful. If you move to fast you may find yourself in a world of trouble.";
 				goto L_Cont2;
 
 		sM_4:
 			mes "[Sir Grey]";
 			mes "Who's waiting for you?";
 			next;
-			menu "A friend.",sM_4a, "A Villager.",sM_4b, "My girlfriend/boyfriend.",sM_4c;
+			menu "A friend.",sM_4a,"A villager.",sM_4b,"My girlfriend/boyfriend.",sM_4c;
 
 			sM_4a:
 				mes "[Sir Grey]";
-				mes "Yes, he/she will be happy to see you.  Now you will be able to protect your freind when he/she is in danger.";
+				mes "Yes, he/she will be happy to see you.";
+				mes "Now you will be able to protect your";
+				mes "friend when he/she is in danger.";
 				goto L_Cont2;
 
 			sM_4b:
 				mes "[Sir Grey]";
-				mes "A villager...... oh... ";
+				mes "A villager... Oh...";
 				goto L_Cont2;
 
 			sM_4c:
 				mes "[Sir Grey]";
-				mes "Oh I see! Did you become a knight because of your this person?";
+				mes "Oh I see! Did you become a Knight because of your this person?";
 				next;
 				mes "[Sir Grey]";
-				if (sex == 1) mes "I hope you will be able to protect her anytime and anywhere!";
-				if (sex == 0) mes "I hope you will be able to protect him anytime and anywhere!";
+				if (Sex == 1) mes "I hope you will be able to protect her anytime and anywhere!";
+				else if (Sex == 0) mes "I hope you will be able to protect him anytime and anywhere!";
 				next;
 				mes "[Sir Grey]";
 				mes "Good luck to you and your loved one.";
@@ -1711,99 +2040,124 @@ M_Menu:
 			mes "[Sir Grey]";
 			mes "What else do you want to know?";
 			next;
-			menu "The safest place for a Knight to be.",sM_5a, "A place where a knight can train.",sM_5b, "A place where a knight can earn a lot of cash.",sM_5c;
+			menu	"The safest place for a Knight to be.",sM_5a,
+				"A place where a Knight can train.",sM_5b,
+				"A place where a Knight can earn a lot of cash.",sM_5c;
 
 			sM_5a:
 				set @score, @score + 5;
 				mes "[Sir Grey]";
-				mes "There's no place in this world thats truly safe.  Especially for a Knight.";
+				mes "There's no place in this world thats truly safe. Especially for a Knight.";
 				mes "A Knight is always expected to fight the strongest and most fearsome monsters";
 				goto L_Cont2;
 
 			sM_5b:
 				mes "[Sir Grey]";
-				mes "Ask other Knights around Rune-Midgard for advice.  You're sure to get some good tips.";
+				mes "Ask other Knights around Rune Midgard for advice.";
+				mes "You're sure to get some good tips.";
 				goto L_Cont2;
 
 			sM_5c:
 				set @score, @score + 15;
 				mes "[Sir Grey]";
-				mes "The role of a Knight is NOT to make lots and lots of money! A Knight has the duty to serve and protect the citizens of Rune-Midgard.";
+				mes "The role of a Knight is NOT to make lots and lots of money!";
+				mes "A Knight has the duty to serve and protect the citizens of Rune-Midgard.";
+				goto L_Cont2;
 
-		L_Cont2:
+	L_Cont2:
 		next;
 		mes "[Sir Grey]";
-		mes "Well that's it.  This is the end of my test and the final test in your quest to become a Knight.";
-		mes "Let me now give you my decision.....";
+		mes "Well that's it. This is the end of my";
+		mes "test and the final test in your";
+		mes "quest to become a Knight.";
+		mes "Let me now give you my decision...";
 		next;
 
 		if (@score == 0) goto L_1;
-		if (@score == 5) goto L_2;
-		if (@score == 10) goto L_3;
+		else if (@score == 5) goto L_2;
+		else if (@score == 10) goto L_3;
+		else goto L_0;
 
 		L_0:
 			set KNIGHT_Q2, 1;
 			mes "[Sir Grey]";
-			mes "Although I enjoyed speaking with you today.....";
+			mes "Although I enjoyed speaking with you today...";
 			next;
 			mes "[Sir Grey]";
 			mes "I'm afraid that you are not ready for Knighthood.";
-			mes "I think it would be best for you to stay a Swordman for the time being.";
+			mes "I think it would be best for you to stay a Swordsman for the time being.";
 			next;
 			mes "[Sir Grey]";
-			mes "Being a Knight requires not only strength, but discipline and ethical values as well.";
-			mes "A Knight has the duty to protect and help others therefore he/she must be of sound mind and body.";
+			mes "Being a Knight requires not only strength,";
+			mes "but discipline and ethical values as well.";
+			mes "A Knight has the duty to protect and help";
+			mes "others therefore he/she must be of sound mind and body.";
 			next;
 			mes "[Sir Grey]";
-			mes "Your answers did not seem to represent the type of attributes we look for in a Knight candidate.";
+			mes "Your answers did not seem to represent the";
+			mes "type of attributes we look for in a Knight candidate.";
 			next;
 			mes "[Sir Grey]";
-			mes "If you really want to become a Knight, I suggest you spend some more time contemplating the idea then come back to me.";
+			mes "If you really want to become a Knight,";
+			mes "I suggest you spend some more time";
+			mes "contemplating the idea then come back to me.";
 			close;
 
 		L_1:
 			set KNIGHT_Q, 7;
 			set KNIGHT_Q2, 0;
 			mes "[Sir Grey]";
-			mes "I am glad that I got a chance to speak with someone such as yourself.  You remind me of myself when i was young. Heh heh heh.";
+			mes "I am glad that I got a chance to speak with someone such as yourself.";
+			mes "You remind me of myself when i was young. Heh heh heh.";
 			next;
 			mes "[Sir Grey]";
-			mes "More importantly...., CONGRATULATIONS!";
+			mes "More importantly... CONGRATULATIONS!";
 			next;
 			mes "[Sir Grey]";
-			mes "You have done an exellent job to make it this far and your answers proved that you are worthy of Knighthood.";
+			mes "You have done an exellent job to make it";
+			mes "this far and your answers proved that you are worthy of Knighthood.";
 			next;
 			mes "[Sir Grey]";
-			mes "You will make a fine Knight! Go to the Chivalry Captain Herman and allow him to bestow upon you the great honor of Knighthood.";
+			mes "You will make a fine Knight!";
+			mes "Go to the Chivalry Captain Herman and";
+			mes "allow him to bestow upon you the great honor of Knighthood.";
 			close;
 
 		L_2:
 			set KNIGHT_Q, 7;
 			set KNIGHT_Q2, 0;
 			mes "[Sir Grey]";
-			mes "It was nice to talk to you.  As a Knight, I expect that you will expand your mind and fullfill your potential.";
+			mes "It was nice to talk to you.";
+			mes "As a Knight, I expect that you will expand";
+			mes "your mind and fullfill your potential.";
 			next;
 			mes "[Sir Grey]";
-			mes "That's right.  You have passed my test and are now ready to be Knighted.  Congratulations!";
+			mes "That's right. You have passed my test and";
+			mes "are now ready to be Knighted. Congratulations!";
 			next;
 			mes "[Sir Grey]";
-			mes "Now go to Chivalry Captain Herman and allow him to bestow upon you the great honor of Knighthood.";
+			mes "Now go to Chivalry Captain Herman and";
+			mes "allow him to bestow upon you the great honor of Knighthood.";
 			close;
 
 		L_3:
 			set KNIGHT_Q, 7;
 			set KNIGHT_Q2, 0;
 			mes "[Sir Grey]";
-			mes "Although I appreciate your candir in answering my questions, to be honest, I am a bit worried about what I heard.";
+			mes "Although I appreciate your candor in answering my questions,";
+			mes "to be honest, I am a bit worried about what I heard.";
 			next;
 			mes "[Sir Grey]";
-			mes "Still, you seem to have enough attributes that are consistent with what we are looking for in a Knight candidate.";
+			mes "Still, you seem to have enough attributes that are consistent with";
+			mes "what we are looking for in a Knight candidate.";
 			next;
 			mes "[Sir Grey]";
-			mes "I'm sure with hard work and dedication you will make a fine Knight.  Congratulations! You have passed my test.";
+			mes "I'm sure with hard work and dedication you will make a fine Knight.";
+			mes "Congratulations! You have passed my test.";
 			next;
 			mes "[Sir Grey]";
-			mes "Now go to Chivalry Captain Herman and allow him to bestow upon you the great honor of Knighthood.";
+			mes "Now go to Chivalry Captain Herman and allow him to bestow upon you the";
+			mes "great honor of Knighthood.";
 			close;
 
 	M_End:

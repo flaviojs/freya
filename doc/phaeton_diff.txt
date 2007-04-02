@@ -12,10 +12,14 @@
 - Added @charwarp duplicate of @rura+.
 - Changed @jump from forced '@jump x y', to optional x and y parameters. Without x, y, a random location will be used.
 - Removed forced 'name' parameter from @monster/@monstermap commands.
+- @job/@jobchange command uses constants as well as IDs.
 
 -> Database File Changes:
 - Databases such as OCA and OBB are located inside ./db/random/ instead of ./db/.
 - Renamed: mob_boss.txt -> mob_bloodybranch.txt, mob_branch.txt -> mob_deadbranch.txt, mob_poring.txt -> mob_poringbox.txt.
+
+-> Script Engine Changes:
+- 'Class', 'BaseClass', and 'BaseJob' script commands have been modified to work like Freya's versions.
 
 -> Startup Changes:
 - In all three servers, the 'Freya' logo was added as the first thing printed at application startup.
@@ -41,20 +45,23 @@
 	- ./db/random/mob_poringbox.txt
 	- ./db/random/item_cardalbum.txt
 
+- The item_db.txt follows jAthena, but the 'Class' script command has been replaced with 'BaseJob' in all occurrences to support the imported scripts properly. Every time the item_db.txt is updated to jAthena's, the 'Class' command will have to be re-replaced with 'BaseJob'.
+
 -> As listed above:
 - Databases such as OCA and OBB are located inside ./db/random/ instead of ./db/.
 - Renamed: mob_boss.txt -> mob_bloodybranch.txt, mob_branch.txt -> mob_deadbranch.txt, mob_poring.txt -> mob_poringbox.txt.
+
 
 ===========================================================================
 	NPC Scripts (./npc)
 ---------------------------------------------------------------------------
 
-- Almost every script has been imported from Freya/eAthena with the exception of the following:
+- Almost all scripts have been imported from English emulators, with the exception of the following from jAthena:
 
-	- ./npc/other/mapflag.txt [Translated]
-	- ./npc/gvg/ (Entire folder) [Translated]
-
-- Scripts are located in ./npc instead of ./script.
+	- ./script/misc/misc_mapflag.txt [Translated]
+	- ./script/gvg/ (Entire folder) [Translated]
+	- ./script/town/extra/town_kafra.txt [Translated]
+	- ./script/job/job_transcendence [Translated/Modified]
 
 ===========================================================================
 	Configuration (./conf)

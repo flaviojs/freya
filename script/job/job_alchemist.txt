@@ -28,7 +28,9 @@
 //					Registration and First Test
 //==================================================================================================//
 alde_alche.gat,27,185,4	script	Parmry Gianino	744,{
-	callfunc "F_BlockHigh",JOB_MERCHANT_HIGH,"Merchant High",42,"Creator","Parmry Gianino";
+
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
+	if (Upper == 1)	close;
 
 	mes "[Parmry Gianino]";
 	if (BaseJob == 5) goto L_Merc;

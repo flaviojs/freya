@@ -195,7 +195,7 @@ function	script	KafraMain	{
 
 	// Cart service
 	function KafraCart {
-		if(Class!=5 && Class!=10 && Class!=18) {
+		if (BaseClass != Job_Merchant) {
 			mes "[Kafra]";
 			mes "I'm sorry dear.";
 			mes "The Cart service is only provided for the Merchants and its higher jobs.";

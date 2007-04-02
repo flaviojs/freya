@@ -29,7 +29,10 @@
 
 //<=================== Some dog =========================>
 gef_tower.gat,107,35,5	script	Some Dog	81,{
-	callfunc "F_BlockHigh",JOB_MAGE_HIGH,"High Mage",JOB_HIGH_WIZARD,"High Wizard","Dog";
+
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
+	if (Upper == 1)	close;
+
 	if (BaseJob == JOB_MAGE) goto L_JobMage;
 	callfunc "Wiz1_check";
 
@@ -135,7 +138,9 @@ L_JobMage:
 
 //<=========================================== Registrar and Examiner Catherine Medichi ==============================================>\\
 gef_tower.gat,111,37,4	script	Catherine Medichi	68,{
-	callfunc "F_BlockHigh",JOB_MAGE_HIGH,"High Mage",JOB_HIGH_WIZARD,"High Wizard","Catherine Medichi";
+
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
+	if (Upper == 1)	close;
 
 	mes "[Catherine Medichi]";
 	if (BaseJob == JOB_MAGE) goto L_Mage;

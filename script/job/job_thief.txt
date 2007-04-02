@@ -192,7 +192,7 @@ M_Menu:
 
 // -- Test Grader --
 moc_prydb1.gat,42,133,2	script	Comrade Brad	118,{
-	callfunc "F_ToHigh",JOB_THIEF_HIGH,"Thief High",JOB_ASSASSIN_CROSS,"Assassin Cross",0,0,0,0,"Brad";
+	callfunc "F_HighFirstClass",Job_Thief,"Thief",Job_Assassin,Job_Rogue,0,"Comrade Brad";
 	if (BaseJob == 0) goto L_Novice;
 	if (BaseJob == 6) goto L_Thief;
 

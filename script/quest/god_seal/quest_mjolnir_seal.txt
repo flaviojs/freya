@@ -1246,7 +1246,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 				else mes "" + strcharinfo(0) + "'s weak point revealed!";
 					if(@player_atk == @sudri_def)
 				{
-					// specialeffect 336;
+						misceffect "Dwarf Blacksmith#south",336;
 						if(@sudri_def == 1)
 					{
 						mes "--------------------";
@@ -1284,7 +1284,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 				}
 					else if(@player_atk == 1)
 				{
-					// specialeffect 5;
+					misceffect "Dwarf Blacksmith#south",5;
 					set @sudri_vit,@sudri_vit - @damage;
 					mes "--------------------";
 					mes "You successfully hit";
@@ -1294,7 +1294,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 				}
 					else if(@player_atk == 2)
 				{
-					// specialeffect 2;
+					misceffect "Dwarf Blacksmith#south",2;
 					set @sudri_vit,@sudri_vit - @damage;
 					mes "--------------------";
 					mes "You successfully hit";
@@ -1304,7 +1304,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 				}
 					else if(@player_atk == 3)
 				{
-					// specialeffect 3;
+					misceffect "Dwarf Blacksmith#south",3;
 					set @sudri_vit,@sudri_vit - @damage;
 					mes "--------------------";
 					mes "You successfully hit";
@@ -1314,7 +1314,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 				}
 					else if(@player_atk == 0)
 				{
-					// specialeffect2 5;
+					misceffect 5;
 					set @player_vit,@player_vit - 10;
 					mes "--------------------";
 					mes "You were hit by";
@@ -1370,7 +1370,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 				else mes "Sudri attacks the legs!";
 					if(@sudri_atk == @player_def)
 				{
-					// specialeffect2 336;
+					misceffect 336;
 						if(@player_def == 1)
 					{
 						mes "--------------------";
@@ -1403,8 +1403,8 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 					mes "" + strcharinfo(0) + " countered back!";
 						if(@counter == 1)
 					{
-						// specialeffect2 131;
-						// specialeffect 17;
+						misceffect 131;
+						misceffect "Dwarf Blacksmith#south",17;
 						set @sudri_vit,@sudri_vit - 20;
 						mes "You successfully countered back!";
 						mes "--------------------";
@@ -1418,7 +1418,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 					}
 						else
 					{
-						// specialeffect2 1;
+						misceffect 1;
 						set @player_vit,@player_vit - 30;
 						mes "You were taken a great damage on your weak spot!";
 						mes "--------------------";
@@ -1427,7 +1427,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 				}
 					else if(@sudri_atk == 1)
 				{
-					// specialeffect2 5;
+					misceffect 5;
 					set @player_vit,@player_vit - @damage;
 					mes "--------------------";
 					mes "Sudri successfully";
@@ -1438,7 +1438,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 				}
 					else if(@sudri_atk == 2)
 				{
-					// specialeffect2 3;
+					misceffect 3;
 					set @player_vit,@player_vit - @damage;
 					mes "--------------------";
 					mes "Sudri successfully";
@@ -1449,7 +1449,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 				}
 					else if(@sudri_atk == 3)
 				{
-					// specialeffect2 4;
+					misceffect 4;
 					set @player_vit,@player_vit - @damage;
 					mes "--------------------";
 					mes "Sudri successfully";
@@ -1460,7 +1460,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 				}
 					else if(@sudri_atk == 0)
 				{
-					// specialeffect2 5;
+					misceffect 5;
 					set @player_vit,@player_vit - @damage;
 					mes "--------------------";
 					mes "Sudri successfully";
@@ -1675,7 +1675,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 				else mes "" + strcharinfo(0) + "'s weak point revealed!";
 					if(@player_atk == @sudri_def)
 				{
-					// specialeffect 336;
+						misceffect "Dwarf Blacksmith#south",336;
 						if(@sudri_def == 1)
 					{
 						mes "--------------------";
@@ -1713,7 +1713,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 				}
 					else if(@player_atk == 1)
 				{
-					// specialeffect 5;
+					misceffect "Dwarf Blacksmith#south",5;
 					set @sudri_vit,@sudri_vit - @damage;
 					mes "--------------------";
 					mes "You successfully hit";
@@ -1723,7 +1723,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 				}
 					else if(@player_atk == 2)
 				{
-					// specialeffect 2;
+					misceffect "Dwarf Blacksmith#south",2;
 					set @sudri_vit,@sudri_vit - @damage;
 					mes "--------------------";
 					mes "You successfully hit";
@@ -1733,7 +1733,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 				}
 					else if(@player_atk == 3)
 				{
-					// specialeffect 3;
+					misceffect "Dwarf Blacksmith#south",3;
 					set @sudri_vit,@sudri_vit - @damage;
 					mes "--------------------";
 					mes "You successfully hit";
@@ -1743,7 +1743,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 				}
 					else if(@player_atk == 0)
 				{
-					// specialeffect2 5;
+					misceffect 5;
 					set @player_vit,@player_vit - 10;
 					mes "--------------------";
 					mes "You were hit by";
@@ -1799,7 +1799,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 				else mes "Sudri attacks the legs!";
 					if(@sudri_atk == @player_def)
 				{
-					// specialeffect2 336;
+					misceffect 336;
 						if(@player_def == 1)
 					{
 						mes "--------------------";
@@ -1832,8 +1832,8 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 					mes "" + strcharinfo(0) + " countered back!";
 						if(@counter == 1)
 					{
-						// specialeffect2 131;
-						// specialeffect 17;
+						misceffect 131;
+						misceffect "Dwarf Blacksmith#south",17;
 						set @sudri_vit,@sudri_vit - 20;
 						mes "You successfully countered back!";
 						mes "--------------------";
@@ -1847,7 +1847,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 					}
 						else
 					{
-						// specialeffect2 1;
+						misceffect 1;
 						set @player_vit,@player_vit - 30;
 						mes "You were taken a great damage on your weak spot!";
 						mes "--------------------";
@@ -1856,7 +1856,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 				}
 					else if(@sudri_atk == 1)
 				{
-					// specialeffect2 5;
+					misceffect 5;
 					set @player_vit,@player_vit - @damage;
 					mes "--------------------";
 					mes "Sudri successfully";
@@ -1867,7 +1867,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 				}
 					else if(@sudri_atk == 2)
 				{
-					// specialeffect2 3;
+					misceffect 3;
 					set @player_vit,@player_vit - @damage;
 					mes "--------------------";
 					mes "Sudri successfully";
@@ -1878,7 +1878,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 				}
 					else if(@sudri_atk == 3)
 				{
-					// specialeffect2 4;
+					misceffect 4;
 					set @player_vit,@player_vit - @damage;
 					mes "--------------------";
 					mes "Sudri successfully";
@@ -1889,7 +1889,7 @@ mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
 				}
 					else if(@sudri_atk == 0)
 				{
-					// specialeffect2 5;
+					misceffect 5;
 					set @player_vit,@player_vit - @damage;
 					mes "--------------------";
 					mes "Sudri successfully";

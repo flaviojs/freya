@@ -29,7 +29,10 @@
 //Sage Castle
 //==================================
 yuno_in02.gat,38,61,4	script	Magic Academy Headmaster 	743,{
-	callfunc "F_BlockHigh",Job_Mage_High,"High Mage",Job_Professor,"Professor","Keiron";
+
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
+	if (Upper == 1)	close;
+
 	if(BaseJob == Job_Sage) goto L_Menu3_3;
 	if(BaseJob != Job_Mage) goto L_Menu2_1;
 	if(SAGE_Q == 11) goto L_Menu3_1;
@@ -127,7 +130,7 @@ L_Menu3_2:
 	next;
 	if(SkillPoint == 0) goto LCHANGE;
 	mes "[Keiron]";
-	mes "Well you are all set for the jobchange except for 1 thing!";
+	mes "Well you are all set for the job change except for 1 thing!";
 	mes "You have unused Skill Points!!!";
 	mes "Please use those first!";
 	close;
@@ -940,7 +943,9 @@ L_Menu5_4:
 //=================================
 
 yuno_in03.gat,154,35,4	script	Academy Staff	742,{
-	callfunc "F_BlockHigh",26,"High Mage",40,"Professor","Mathias";
+
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
+	if (Upper == 1)	close;
 
 	if(BaseJob == Job_Sage) goto L_Menu6_4;
 	if(BaseJob != Job_Mage) goto L_Menu1_1;

@@ -20,7 +20,7 @@
 moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 
 	mes "[Yierhan]";
-	if(Class == Job_Novice){
+	if(Basejob == Job_Novice){
 		mes "Eh...?";
 		mes "A Novice?";
 		mes "Still thinking";
@@ -34,7 +34,7 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 		close;
 
 	} else if(BaseClass == Job_Thief){
-		if((Class == Job_Thief && Upper == 1) || Class == Job_Assassin || Class == Job_Rogue){
+		if((Basejob == Job_Thief && Upper == 1) || Basejob == Job_Assassin || Basejob == Job_Rogue){
 			if(tu_thief01 < 8){
 				mes "Whaaaat are you";
 				mes "doin' here? There's";

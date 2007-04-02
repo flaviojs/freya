@@ -3914,7 +3914,7 @@ OnEmoGasp:
 que_god02.gat,175,55,4	script	#doppelganger2	739,{
 
 OnCast:
-	// specialeffect 59;
+	misceffect "#doppelganger2",59;
 	end;
 }
 
@@ -3925,7 +3925,7 @@ OnEmoGasp:
 	end;
 
 OnCast:
-	// specialeffect 59;
+	misceffect "#lowen",59;
 	end;
 }
 
@@ -4154,7 +4154,7 @@ que_god02.gat,178,127,3	script	Valkyrie#1	811,{
 			next;
 			mes "[Valkyrie]";
 			mes "Your soul and spirit will be reborn in Valhalla as a holy warrior preparing for the holy war.";
-			// specialeffect2 42;
+			misceffect 42;
 			next;
 			mes "[Valkyrie]";
 			mes "And...";
@@ -4232,7 +4232,7 @@ que_god02.gat,178,127,3	script	Valkyrie#1	811,{
 			next;
 			mes "[Valkyrie]";
 			mes "Your soul and spirit will be reborn in Valhalla as a holy warrior preparing for the holy war.";
-			// specialeffect2 42;
+			misceffect 42;
 			next;
 			mes "[Valkyrie]";
 			mes "And...";
@@ -5079,7 +5079,7 @@ mjolnir_09.gat,85,129,0	script	#brisindwarf3	111,3,3,{
 }
 	if (god_brising > 42 && god_brising < 50)
 {
-	// specialeffect 109;
+	misceffect "#brisindwarf3",109;
 	mes "[Echoing Voice]";
 	mes "Alfrik: confirmed.";
 	mes "Dvalin: confirmed.";
@@ -5095,28 +5095,28 @@ mjolnir_09.gat,85,129,0	script	#brisindwarf3	111,3,3,{
 	switch( select( "20!","How should I know?!","40!","42!" ))
 	{
 		case 1:
-			// specialeffect 109;
+			misceffect "#brisindwarf3",109;
 			mes "[Echoing Voice]";
 			mes "Failed.";
 			mes "Failed...";
 			close;
 		break;
 		case 2:
-			// specialeffect 109;
+			misceffect "#brisindwarf3",109;
 			mes "[Echoing Voice]";
 			mes "Failed.";
 			mes "Failed...";
 			close;
 		break;
 		case 3:
-			// specialeffect 109;
+			misceffect "#brisindwarf3",109;
 			mes "[Echoing Voice]";
 			mes "Failed.";
 			mes "Failed...";
 			close;
 		break;
 		case 4:
-			// specialeffect 109;
+			misceffect "#brisindwarf3",109;
 			mes "[Echoing Voice]";
 			mes "...Confirmed.";
 			mes "Shutting down barrier. Initiating summoning.";
@@ -5233,7 +5233,7 @@ mjolnir_09.gat,87,129,3	script	Berling#1	826,{
 					next;
 					mes "[Berling]";
 					mes "Memorize all five lines of this song exactly. Now take this golden teardrop and please seek out Grer.";
-					// specialeffect2 84;
+					misceffect 84;
 					set god_brising,44;
 					close2;
 					donpcevent "#brisindwarf3::OnBerlingOff";

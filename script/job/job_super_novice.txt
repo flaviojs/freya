@@ -15,7 +15,7 @@
 //============================================================
 
 
-// -- jobchanger --
+// -- Job Changer --
 aldeba_in.gat,223,167,3	script	Tozel	709,{
 	if (job_snovice == 1) goto L_Start2;
 	if (Basejob == 23) goto L_Twice;
@@ -102,7 +102,7 @@ L_Start2:
 	mes "- leaving you speechless! -";
 	next;
 	if (Upper == 0) jobchange Job_Super_Novice,0;
-	if (Upper == 2) jobchange Job_Super_Novice,2;
+	else if (Upper == 2) jobchange Job_Super_Novice,2;
 	delitem 938,30;
 	delitem 907,30;
 	getitem 2339,1;

@@ -24,7 +24,9 @@
 
 
 comodo.gat,226,123,5	script	Wandering Bard	741,{
-	callfunc "F_BlockHigh",JOB_ARCHER_HIGH,"High Archer",Job_CLOWN,"Clown","Wandering Bard";
+
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
+	if (Upper == 1)	close;
 
 	if (BARD_Q == 1) goto L_BQ1;
 	if (BARD_Q == 2) goto L_BQ2;

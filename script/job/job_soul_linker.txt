@@ -288,9 +288,9 @@ job_soul.gat,35,30,3	script	Little Boy#4	716,{
 	mes "You seem to have a gift with people, so with your permisson,";
 	mes "I would like to make you a Soul Linker.";
 	next;
-	menu "Yes",L_jobchange,"No",L_Warpout;
+	menu "Yes",L_job_change,"No",L_Warpout;
 
-L_jobchange:
+L_job_change:
 	mes "[Little Boy]";
 	mes "Very well then.";
 	mes "You are now a Soul Linker.";
@@ -298,10 +298,10 @@ L_jobchange:
 	sc_end SC_READYDOWN;
 	sc_end SC_READYTURN;
 	sc_end SC_READYCOUNTER;
-	jobchange JOB_SOUL_LINKER,0;
+	callfunc "F_JobChange",Job_Soul_Linker;
+	callfunc "F_ClearJobVariables";
 	misceffect 247;
 	next;
-	callfunc "F_ClearJobVariables";
 	mes "[Little Boy]";
 	mes "Please try to help others.";
 	next;

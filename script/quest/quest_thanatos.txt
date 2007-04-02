@@ -1961,7 +1961,7 @@ L_Continue:
 	mes "statue glows even brighter";
 	mes "with a mysterious light.^000000";
 	delitem 7426,1; // Red Magical Stone
-	// specialeffect 55;
+	misceffect "Stone Statue#1",55;
 	enablenpc "tteffect2";
 	donpcevent "tteffect2::OnGlow";
 	set $Thanaboss,1;
@@ -2023,7 +2023,7 @@ L_YellowStone:
 	mes "statue glows even brighter";
 	mes "with a mysterious light.^000000";
 	delitem 7427,1; // Yellow Magical Stone
-	// specialeffect 57;
+	misceffect "Stone Statue#2",57;
 	enablenpc "tteffect3";
 	donpcevent "tteffect3::OnGlow";
 	set $Thanaboss,2;
@@ -2078,7 +2078,7 @@ L_BlueStone:
 	mes "statue glows even brighter";
 	mes "with a mysterious light.^000000";
 	delitem 7428,1; // Blue Magical Stone
-	// specialeffect 54;
+	misceffect "Stone Statue#3",54;
 	enablenpc "tteffect5";
 	donpcevent "tteffect5::OnGlow";
 	set $Thanaboss,3;
@@ -2132,7 +2132,7 @@ L_BlackStone:
 	mes "statue glows even brighter";
 	mes "with a mysterious light.^000000";
 	delitem 7430,1; // Black Magical Stone
-	// specialeffect 59;
+	misceffect "Stone Statue#4",59;
 	enablenpc "tteffect1";
 	donpcevent "tteffect1::OnGlow";
 	set $Thanaboss,4;
@@ -2180,7 +2180,7 @@ L_GreenStone:
 	mes "Green Charm Stone, the";
 	mes "statue glows even brighter";
 	mes "with a mysterious light.^000000";
-	// specialeffect 56;
+	misceffect "Stone Statue#5",56;
 	enablenpc "tteffect4";
 	donpcevent "tteffect4::OnGlow";
 	next;
@@ -2225,27 +2225,27 @@ OnGlow:
 	end;
 
 OnTimer500:
-	// specialeffect 59;
+	misceffect "tteffect1",59;
 	end;
 
 OnTimer1000:
-	// specialeffect 59;
+	misceffect "tteffect1",59;
 	end;
 
 OnTimer1500:
-	// specialeffect 59;
+	misceffect "tteffect1",59;
 	end;
 
 OnTimer2000:
-	// specialeffect 59;
+	misceffect "tteffect1",59;
 	end;
 
 OnTimer2500:
-	// specialeffect 59;
+	misceffect "tteffect1",59;
 	end;
 
 OnTimer3000:
-	// specialeffect 59;
+	misceffect "tteffect1",59;
 	stopnpctimer;
 	if ($Thanaboss != 6) goto OnGlow;
 	end;
@@ -2267,27 +2267,27 @@ OnGlow:
 	end;
 
 OnTimer500:
-	// specialeffect 55;
+	misceffect "tteffect2",55;
 	end;
 
 OnTimer1000:
-	// specialeffect 55;
+	misceffect "tteffect2",55;
 	end;
 
 OnTimer1500:
-	// specialeffect 55;
+	misceffect "tteffect2",55;
 	end;
 
 OnTimer2000:
-	// specialeffect 55;
+	misceffect "tteffect2",55;
 	end;
 
 OnTimer2500:
-	// specialeffect 55;
+	misceffect "tteffect2",55;
 	end;
 
 OnTimer3000:
-	// specialeffect 55;
+	misceffect "tteffect2",55;
 	stopnpctimer;
 	if ($Thanaboss != 6) goto OnGlow;
 	end;
@@ -2309,27 +2309,27 @@ OnGlow:
 	end;
 
 OnTimer500:
-	// specialeffect 57;
+	misceffect "tteffect3",57;
 	end;
 
 OnTimer1000:
-	// specialeffect 57;
+	misceffect "tteffect3",57;
 	end;
 
 OnTimer1500:
-	// specialeffect 57;
+	misceffect "tteffect3",57;
 	end;
 
 OnTimer2000:
-	// specialeffect 57;
+	misceffect "tteffect3",57;
 	end;
 
 OnTimer2500:
-	// specialeffect 57;
+	misceffect "tteffect3",57;
 	end;
 
 OnTimer3000:
-	// specialeffect 57;
+	misceffect "tteffect3",57;
 	stopnpctimer;
 	if ($Thanaboss != 6) goto OnGlow;
 	end;
@@ -2351,27 +2351,27 @@ OnGlow:
 	end;
 
 OnTimer500:
-	// specialeffect 56;
+	misceffect "tteffect4",56;
 	end;
 
 OnTimer1000:
-	// specialeffect 56;
+	misceffect "tteffect4",56;
 	end;
 
 OnTimer1500:
-	// specialeffect 56;
+	misceffect "tteffect4",56;
 	end;
 
 OnTimer2000:
-	// specialeffect 56;
+	misceffect "tteffect4",56;
 	end;
 
 OnTimer2500:
-	// specialeffect 56;
+	misceffect "tteffect4",56;
 	end;
 
 OnTimer3000:
-	// specialeffect 56;
+	misceffect "tteffect4",56;
 	stopnpctimer;
 	if ($Thanaboss != 6) goto OnGlow;
 	end;
@@ -2393,27 +2393,27 @@ OnGlow:
 	end;
 
 OnTimer500:
-	// specialeffect 54;
+	misceffect "tteffect5",54;
 	end;
 
 OnTimer1000:
-	// specialeffect 54;
+	misceffect "tteffect5",54;
 	end;
 
 OnTimer1500:
-	// specialeffect 54;
+	misceffect "tteffect5",54;
 	end;
 
 OnTimer2000:
-	// specialeffect 54;
+	misceffect "tteffect5",54;
 	end;
 
 OnTimer2500:
-	// specialeffect 54;
+	misceffect "tteffect5",54;
 	end;
 
 OnTimer3000:
-	// specialeffect 54;
+	misceffect "tteffect5",54;
 	stopnpctimer;
 	if ($Thanaboss != 6) goto OnGlow;
 	end;

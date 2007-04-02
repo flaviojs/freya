@@ -41,7 +41,9 @@
 
 //<====================================== Job Changer ========================================>\\
 hu_in01.gat,386,374,4	script	Hunter Sharon	727,{
-	callfunc "F_BlockHigh",JOB_ARCHER_HIGH,"High Archer",JOB_SNIPER,"Sniper","Hunter Sharon";
+
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
+	if (Upper == 1)	close;
 
 	if (BaseJob == JOB_ARCHER) goto L_Start;
 	if (BaseJob == Job_Novice) goto L_Novice;

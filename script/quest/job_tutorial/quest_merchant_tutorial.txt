@@ -21,7 +21,7 @@
 alberta_in.gat,70,51,5	script	Guarnien	98,{
 
 	mes "[Guarnien]";
-	if(Class == Job_Merchant && Upper != 1) goto L_JobFix;
+	if(Basejob == Job_Merchant && Upper != 1) goto L_JobFix;
 		mes "Hello stranger.";
 		mes "I wish I could";
 		mes "offer you help";
@@ -29,7 +29,7 @@ alberta_in.gat,70,51,5	script	Guarnien	98,{
 		next;
 		mes "[Guarnien]";
 		mes "However, what I have to teach would only benefit Merchants. Trading and monkey making are my areas of expertise. If you have any Merchant friends, send them to me.";
-		if(Class == Job_Merchant && Upper == 1){
+		if(Basejob == Job_Merchant && Upper == 1){
 			next;
 			mes "[Guarnien]";
 			mes "Technically, yes, you're a Merchant, but I know an expert when I see one. You've been through the Merchant life before, I can tell!";

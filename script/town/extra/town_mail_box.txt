@@ -50,9 +50,9 @@ prontera.gat,34,212,0	duplicate(Mailbox)	Mailbox#3	888
 
 izlude.gat,136,94,0	duplicate(Mailbox)	Mailbox#4	888
 
-morroc.gat,166,110,0	duplicate(Mailbox)	Mailbox#5	888
+morocc.gat,166,110,0	duplicate(Mailbox)	Mailbox#5	888
 
-morroc.gat,168,262,0	duplicate(Mailbox)	Mailbox#6	888
+morocc.gat,168,262,0	duplicate(Mailbox)	Mailbox#6	888
 
 geffen.gat,115,67,0	duplicate(Mailbox)	Mailbox#7	888
 
