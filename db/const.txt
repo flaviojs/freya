@@ -59,6 +59,7 @@ GvGTime6ED	2400
 
 Job_Novice	0
 Job_Swordsman	1
+Job_Swordman	1
 Job_Mage	2
 Job_Archer	3
 Job_Acolyte	4
@@ -76,19 +77,27 @@ Job_Monk	15
 Job_Sage	16
 Job_Rogue	17
 Job_Alchemist	18
+Job_Alchem	18
 Job_Bard	19
 Job_Dancer	20
 Job_Crusader2	21
 Job_Wedding	22
 Job_Super_Novice	23
+Job_SuperNovice	23
 Job_Taekwon	24
+Job_TaeKwonBoy	24
 Job_Star_Gladiator	25
+Job_StarGladiator	25
 Job_Star_Gladiator2	26
+Job_StarGladiator2	26
 Job_Soul_Linker	27
+Job_SoulLinker	27
 Job_Gunslinger  28
 Job_Ninja	29
 Job_Death_Knight	30
+Job_DeathKnight	30
 Job_Dark_Collector	31
+Job_DarkCollector	31
 
 mf_nomemo	0
 mf_noteleport	1

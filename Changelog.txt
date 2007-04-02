@@ -12,6 +12,11 @@
 
 Date	Added
 
+04/02/2007
+	* Updated: Documentation files from jAthena [Tsuyuki]
+	* Added: Job script name enumerations from several other emulators to db/const.txt [Tsuyuki]
+	 - Example: 'Job_TaekwonBoy' from jAthena
+
 04/01/2007
 	* Improved: Revised the Knight job change quest [Tsuyuki]
 	* Imported: 'Bard' quest from Freya (Not the job change quest, it's different) [Tsuyuki]
