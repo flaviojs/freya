@@ -4,14 +4,15 @@
 //= Aegis
 //= Coverted by GreenGoblin
 //===== Version ===========================================
-//= 1.0
+//= 1.1
 //===== Compatible With ===================================
 //= Freya
 //===== Description =======================================
 //= Quest required to enter Thantos Tower as well as reach
 //= the top floor and summon him
 //===== Comments ==========================================
-//= 1.0 - Converted Aegis script to Freya (un-tested, use at your own risk) [GreenGoblin]
+//= 1.0 Converted Aegis script to Freya (un-tested, use at your own risk) [GreenGoblin]
+//= 1.1 Fixed typos [Tsuyuki]
 //=========================================================
 
 geffen.gat,132,38,3	script	Bard#2	51,{
@@ -970,7 +971,7 @@ L_Bard29:
 }
 
 
-morroc.gat,134,111,3	script	Bard#3	741,{
+morocc.gat,134,111,3	script	Bard#3	741,{
 
 	if (Bard == 10) goto L_Bard10;
 	if (Bard == 11) goto L_Bard11;
@@ -1228,7 +1229,7 @@ morroc.gat,134,111,3	script	Bard#3	741,{
 				mes "[Kino Kitty]";
 				mes "I wonder how Errende knows the original words...";
 				mes "Any new Eddas issued nowadays introduce";
-				mes "my version of the song..."
+				mes "my version of the song...";
 				mes "Hahahaha...it's no use to sing a love song..";
 				mes "*cough**cough*.";
 				next;
@@ -1397,8 +1398,8 @@ L_Bard13:
 	close;
 
 L_Bard20:
-	mes "[Kino Kitty]"
-	mes "What business do you have with me, my friend?"
+	mes "[Kino Kitty]";
+	mes "What business do you have with me, my friend?";
 	next;
 	if (Bard == 24) goto L_Kitty;
 	menu "Tell me a story.",-,"Sing a song.",L_Song,"Nothing.",L_Cancel;
@@ -1676,7 +1677,7 @@ L_Bard30:
 }
 
 
-morroc.gat,132,111,5	script	LittleGirl#Jorti	703,{
+morocc.gat,132,111,5	script	LittleGirl#Jorti	703,{
 
 	if ((Bard > 9) && (Bard < 30)) goto L_Bard10;
 	if (Bard == 30) goto L_Bard30;

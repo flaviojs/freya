@@ -11,6 +11,7 @@
 Date	Added
 
 04/01/2007
+	* Fixed: Some script map name typos (morroc.gat -> morocc.gat) [Tsuyuki]
 	* Removed: Script to-do list, better one in the forums [Tsuyuki]
 	* Removed: Duplicate Milk Trader Prontera NPC [Tsuyuki]
 
