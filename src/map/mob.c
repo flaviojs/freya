@@ -2466,14 +2466,18 @@ int mob_skillid2skillidx(int class,int skillid)
 int mobskill_use_id(struct mob_data *md,struct block_list *target,int skill_idx)
 {
 	struct mob_skill *ms;
-	int casttime;
+	struct mob_skill *mds=mob_db[md->class].skill;
+	int casttime , i;
 
 	nullpo_retr(0, md);
 	nullpo_retr(0, ms=&mob_db[md->class].skill[skill_idx]);
 
 	casttime                  = skill_castfix(&md->bl, ms->casttime);
-	md->skillidx              = skill_idx;
-	md->skilldelay[skill_idx] = gettick() + casttime;
+	md->skillidx = skill_idx;
+	for(i=0;i<mob_db[md->class].maxskill;i++){		//同種のスキルはディレイを共有
+		if(mds[i].skill_id == ms->skill_id)
+			md->skilldelay[i] = gettick() + casttime;
+	}
 	return unit_skilluse_id2(
 		&md->bl, target ? target->id : md->target_id, ms->skill_id,
 		ms->skill_lv, casttime, ms->cancel
@@ -2816,15 +2820,19 @@ static int mobskill_anothertarget(struct block_list *bl, va_list ap)
  */
 int mobskill_use_pos( struct mob_data *md, int skill_x, int skill_y, int skill_idx)
 {
-	int casttime=0;
+	int casttime=0 , i;
 	struct mob_skill *ms;
+	struct mob_skill *mds=mob_db[md->class].skill;
 
 	nullpo_retr(0, md);
 	nullpo_retr(0, ms=&mob_db[md->class].skill[skill_idx]);
 
 	casttime                  = skill_castfix(&md->bl, ms->casttime);
-	md->skillidx              = skill_idx;
-	md->skilldelay[skill_idx] = gettick() + casttime;
+	md->skillidx = skill_idx;
+	for(i=0;i<mob_db[md->class].maxskill;i++){		//同種のスキルはディレイを共有
+		if(mds[i].skill_id == ms->skill_id)
+			md->skilldelay[i] = gettick() + casttime;
+	}
 
 	return unit_skilluse_pos2( &md->bl, skill_x, skill_y, ms->skill_id, ms->skill_lv, casttime, ms->cancel);
 }

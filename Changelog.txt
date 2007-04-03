@@ -7,10 +7,13 @@
                     http://www.ro-freya.net                   
                   Freya Phaeton SVN Changelog
 --------------------------------------------------------------
-                Current Revision: jAthena 2281
+                Current Revision: jAthena 2284
 --------------------------------------------------------------
 
 Date	Added
+
+04/03/2007
+	* Updated: Project to jAthena 2284 (Latest) [Tsuyuki]
 
 04/02/2007
 	* Changed: Lowered max mob skill global to 32 [Tsuyuki]

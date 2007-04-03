@@ -1,4 +1,49 @@
 ----------------------------------------
+//2284 by Blaze
+
+・Mobスキル「エモーション」によるモードチェンジ実装（skill.c)
+	mob_skill_db.txt、エモーションの値2にmodeを入れるとその値へモードチェンジします。
+	例）アルギオペ追跡時にノンアクティブ化（移動1+攻撃128=129）
+	1099,エモーション＠アルギオペ,chase,197,1,100,0,5000,no,self,always,0,19,129,,,,
+・Mobの複数の同じスキルは使用後ディレイを共有するように修正（mob.c)
+
+----------------------------------------
+//2283 by Para
+
+・zlibのソースを全て最新に更新（zlib ver1.2.3)
+	(src/common/zlib/)
+		Makefileを除く全ファイル
+
+----------------------------------------
+//2282 by Para
+
+・2276の修正を取り込み
+	(src/char/char.dsp)
+	(src/char/char_sql.dsp)
+	(src/login/login.dsp)
+	(src/login/login_sql.dsp)
+	(src/map/map.dsp)
+・return命令でダングリングポインタが発生するバグを修正(src/map/script.c) BTS報告Rayceさんのソース thx
+・MySQLでアルケミランキングが見れないバグ修正(sql-files/main.sql)
+・追加された2種類のペット「クリスマスゴブリン」「餅」を実装（db/pet_db.txt）
+
+----------------------------------------
+//2281 by 暇人
+
+・スキル「マグヌスエクソシズム」のFlag値をエラーが出ない様に修正 (db/skill_uniti_db.txt)
+・飛行船NPCの一部修正 (npc_town_airport.txt)
+・db等の更新 thanks to huge cgi
+
+	(db)
+		item_db.txt
+		mob_db.txt
+	(script/mapflag)
+		mapflag.txt
+	(script/mob)
+		npc_monster.txt
+		npc_monster_future.txt
+
+----------------------------------------
 //2281 by 暇人
 
 ・スキル「マグヌスエクソシズム」のFlag値をエラーが出ない様に修正 (db/skill_uniti_db.txt)
