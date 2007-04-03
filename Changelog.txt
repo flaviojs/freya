@@ -10,6 +10,11 @@
 
 Date	Added
 
+04/02/2007
+	* Fixed: Some mob skill database bugs [Tsuyuki]
+	* Added: New monsters with Poring stats and no drops/exp [Tsuyuki]
+	* Added: New maps for Nameless Island and Abbey Dungeon [Tsuyuki]
+
 04/01/2007
 	* Fixed: Bug with the Divorce script getting disabled (Thanks to Galaxy) [Tsuyuki]
 	* Fixed: Some script map name typos (morroc.gat -> morocc.gat) [Tsuyuki]
