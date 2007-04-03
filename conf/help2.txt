@@ -1,3 +1,4 @@
+//--------------------------------------------------------------
 //               (c)2004-2007 Freya Team Presents:              
 //                 ___   ___    ___   _  _   __                 
 //                (  _) (  ,)  (  _) ( \/ ) (  )                
@@ -8,8 +9,9 @@
 //
 // help2.txt
 // @command Help File #2
-// (c) Freya Project. 2007
-//
+
+
+//--------------------------------------------------------------
 
 To use one command, type it inside the message window where you usually type to chat. Then press Enter.
 

@@ -104,13 +104,12 @@ goto end
 
 :boot
 if not exist %2 goto end
-echo Athena 自動再起動スクリプト for WIN32
+echo Phaeton Launcher Script for Win32
 echo.
-echo %2 の異常終了を監視中です。
-echo サーバーを終了するには、最初にこのウィンドウを閉じてください。
+echo %2 initialized.
 start /wait %2
 cls
-echo %2 が終了しました。再起動します。
+echo %2 restarted.
 echo. | date /T
 echo. | time /T
 goto boot

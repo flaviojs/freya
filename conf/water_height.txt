@@ -1,3 +1,4 @@
+//--------------------------------------------------------------
 //               (c)2004-2007 Freya Team Presents:              
 //                 ___   ___    ___   _  _   __                 
 //                (  _) (  ,)  (  _) ( \/ ) (  )                
@@ -6,10 +7,11 @@
 //                    http://www.ro-freya.net                   
 //--------------------------------------------------------------
 //
-// water_height.txt - Athena DB 2004/08/22 11:58:40 +0900 (JST)
-// Height setting of the water for maps.
-// (c) Freya Project. 2007
-//
+// water_height.txt
+// Water Height Configuration File
+
+
+//--------------------------------------------------------------
 
 mjolnir_02.gat	-19
 mjolnir_12.gat	15

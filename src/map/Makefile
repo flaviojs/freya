@@ -17,14 +17,14 @@ LIBS = -lm -lwsock32 -limagehlp
 endif
 
 map-server: map.o chrif.o clif.o pc.o npc.o chat.o path.o itemdb.o mob.o script.o storage.o skill.o atcommand.o battle.o intif.o trade.o party.o vending.o guild.o pet.o status.o friend.o date.o ranking.o unit.o mail.o homun.o $(COMMON_OBJ)
-	$(CC) -o ../../$@ $> $(LIBS)
+	$(CC) -o ../../bin/$@ $> $(LIBS)
 
 clean:
 	rm -f *.o
 	rm -f GNUmakefile
 
 ifeq ($(findstring CYGWIN,$(shell uname)), CYGWIN)
-		rm -f ../../map-server.exe
+		rm -f ../../bin/map-server.exe
 else
-		rm -f ../../map-server
+		rm -f ../../bin/map-server
 endif

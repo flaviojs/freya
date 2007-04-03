@@ -13,12 +13,23 @@
 Date	Added
 
 04/02/2007
-	* Added: New maps for Nameless Island and Abbey Dungeon [Tsuyuki]
-	* Updated: Databases/source code to jAthena 2281 [Tsuyuki]
-	* Updated: Item database to jAthena's latest [Tsuyuki]
-	* Updated: Documentation files from jAthena [Tsuyuki]
+	* Added: ladmin gui and ladmin plus to the ./bin/tool/ folder [Tsuyuki]
+	* Added: Two missing ./bin/tool/ files and an SQL script file [Tsuyuki]
+	* Changed: Moved the ./tool/ folder into ./bin/ [Tsuyuki]
+	* Changed: Executables now compile into ./bin/ instead of the main folder [Tsuyuki]
+	* Removed: faq.html guide [Tsuyuki]
+	* Added: athena-start and start Linux scripts in replacement of start-freya.sh from jAthena [Tsuyuki]
+	* Removed: start-freya.sh [Tsuyuki]
+	* Improved: Formatting of the configuration files [Tsuyuki]
+	* Fixed: All mismatched status change enumerations in the scripts [Tsuyuki]
+	* Added: SC_Stun duplicate enumeration of SC_Stan in db/const.txt [Tsuyuki]
+	* Added: New 11.2 monsters with Poring stats and no drops/exp [Tsuyuki]
+	* Added: New 11.2 maps for Nameless Island and Abbey Dungeon [Tsuyuki]
+	* Updated: Databases/source code to jAthena 2281 (Latest) [Tsuyuki]
+	* Updated: Documentation files from jAthena (Latest) [Tsuyuki]
 	* Added: Job script name enumerations from several other emulators to db/const.txt [Tsuyuki]
 	 - Example: 'Job_TaekwonBoy' from jAthena
+	 - This helps for universal script compatibility
 
 04/01/2007
 	* Improved: Revised the Knight job change quest [Tsuyuki]
@@ -54,7 +65,7 @@ Date	Added
 
 03/28/2007
 	* Fixed: Some Thor Dungeon mob skills [Tsuyuki]
-	* Added: Modified Bow Master and Sword Master Thor Dungeon mob skills (Credits to $ephiroth) [Tsuyuki]
+	* Added: Modified Bow Master and Sword Master Thor Dungeon mob skills [Tsuyuki]
 	* Updated: Dead Branch list a little bit [Tsuyuki]
 	* Added: Two new pets to the pet database (Xmas Goblin and Rice Cake) [Tsuyuki]
 	* Updated: Some packet lengths for the latest clients [Tsuyuki]
@@ -66,7 +77,7 @@ Date	Added
 	* Improved: Cleaned and improved headers and formatting of all the databases [Tsuyuki]
 	* Added: jAthena changelog in doc folder as 'Readme.txt' [Tsuyuki]
 	* Removed: Japanese 'script' folder and configuration entries related to it [Tsuyuki]
-	* Added: Database translation devel tool imported and optimized from fAthena (Author -> Yor) [Tsuyuki]
+	* Added: Database translation devel tool imported and optimized from fAthena [Tsuyuki]
 	* Added: doc/phaeton_diff.txt documentation file [Tsuyuki]
 	* Added: @command changes to the help configuration files [Tsuyuki]
 	* Improved: Simplified @monster/@monstermap commands (Removed the forced 'name' parameter) [Tsuyuki]
@@ -86,12 +97,12 @@ Date	Added
 	* Updated: Item database to jAthena's latest [Tsuyuki]
 
 03/17/2007
-	* Added: Two missing source files [Tsuyuki]
+	* Added: Two missing source files (Fixes compilation issues) [Tsuyuki]
 	* Fixed: Typo in Ice Dungeon spawns [Tsuyuki]
-	* Imported: Momotaro Event from eAthena [Tsuyuki]
+	* Imported: Momotaro Event script [Tsuyuki]
 
 03/12/2007
-	* Updated: Phaeton to jAthena 2278 (Latest) [Tsuyuki]
+	* Updated: Project to jAthena 2278 (Latest) [Tsuyuki]
 
 03/11/2007
 	* Updated: Some monster spawns [Tsuyuki]
@@ -100,20 +111,19 @@ Date	Added
 03/07/2007
 	* Added: Magmaring's monster skills [Tsuyuki]
 	* Removed: Homunuclus entries from Phaeton's monster database [Tsuyuki]
-	* Added: Byorgue's monster skills (Credits to $ephiroth) [Tsuyuki]
+	* Added: Byorgue's monster skills [Tsuyuki]
 	* Translated: A bunch of battle_athena.conf [Tsuyuki]
 
 03/05/2007
 	* Improved: Simplified @jump 0 0 to just @jump for random teleporting [Tsuyuki]
 	* Added: @warp duplicate of @rura [Tsuyuki]
 	* Added: Missing Thor/Veins maps [Tsuyuki]
-	* Imported: Seal god quests from eAthena [Tsuyuki]
-	* Imported: First class tutorial quests from eAthena, originally from Aegis [Tsuyuki]
-	* Imported: Cool Event Corp vs Kafra Corp DTS Warper from eAthena [Tsuyuki]
-	* Imported: Aegis Valentine's Day script from Freya [Tsuyuki]
-	* Imported: Quiz Revolution quest script from eAthena [Tsuyuki]
-	* Added: Enum entries for script emoticons [Tsuyuki]
-	* Imported: Several Aegis event scripts from eAthena [Tsuyuki]
+	* Imported: Seal god quests [Tsuyuki]
+	* Imported: First class tutorial quests [Tsuyuki]
+	* Imported: Cool Event Corp vs Kafra Corp DTS Warper [Tsuyuki]
+	* Imported: Quiz Revolution quest script [Tsuyuki]
+	* Added: Enumeration entries for script emoticons [Tsuyuki]
+	* Imported: Several official event scripts [Tsuyuki]
 	* Updated: Configuration files [Tsuyuki/Harp]
 	* Fixed: Bug in the Taekwon job change quest [Tsuyuki]
 	* Fixed: Swordsman quest problems, and added missing warps [Tsuyuki]
@@ -132,18 +142,18 @@ Date	Added
 	* Added: Freya startup display to all three servers [Tsuyuki]
 	* Fixed: Some issues with job changing [Tsuyuki]
 	* Adapted: A bunch of scripts to work correctly in certain places [Tsuyuki]
-	* Imported: Updated Novice Grounds from eAthena [Tsuyuki]
+	* Imported: Updated Novice Grounds script [Tsuyuki]
 	* Fixed: Mail Box NPCs, they now work perfectly fine [Tsuyuki]
-	* Changed: All atcommands with a GM level requirement of 0 -> 1 [Tsuyuki]
-	* Updated: Source code to jAthena 2269 [Tsuyuki]
+	* Changed: All @commands with a GM level requirement of 0 -> 1 [Tsuyuki]
+	* Re-Updated: Source code to jAthena 2269 [Tsuyuki]
 	* Removed: Duel system [Tsuyuki]
 
 03/01/2007
 	* Fixed: Mob Skill Databases broken entries [Tsuyuki]
-	* Updated Kunlun NPCs to Aegis version [GreenGoblin]
+	* Updated: Kunlun NPCs to Aegis version [GreenGoblin]
 	* Reverted: Source code updates, broke compilation somewhow for Cygwin [Tsuyuki]
 	* Updated: MAX_MOBSKILL global variable (32 -> 50) [Tsuyuki]
-	* Imported: Freya's mob_skill_db.txt to Phaeton [Tsuyuki]
+	* Imported: Freya's mob_skill_db.txt in replacement of the current one [Tsuyuki]
 	* Note: All scripts are for the most part converted [Tsuyuki]
 	* Note: Now we'll need to fix the stuff in ConversionNotes.txt, and test [Tsuyuki]
 	* Changed: Enabled all Job quests (Now compatible) [Tsuyuki]
@@ -151,13 +161,13 @@ Date	Added
 	* Removed: Database/Script changelogs [Tsuyuki]
 	* Updated: Airships folder to Freya [Tsuyuki]
 	* Updated: Jobs script folder organization [Tsuyuki]
-	* Changed: Enabled all Quests (Now compatible) [Tsuyuki]
+	* Changed: Enabled all quests (Now compatible) [Tsuyuki]
 
 02/28/2007
 	* Updated: Item database to jAthena's (Latest) [Tsuyuki]
 	* Updated: Monster database to Freya's (Latest) [Tsuyuki]
 	* Updated: /script/ and main folders [Tsuyuki]
-	* Updated: Packet database to 02-22-07 Sakexe client (Credits to Huge/Athena) [Tsuyuki]
+	* Updated: Packet database to 02-22-07 Sakexe client [Tsuyuki]
 	* Updated: Source code to jAthena 2277 (Latest) [Tsuyuki]
 
 02/11/2007
@@ -166,21 +176,21 @@ Date	Added
 
 01/16/2007
 	* Moved: Mapflags to npc/other/mapflags.txt for the time being [Tsuyuki]
-	* Removed: Deleted old eAthena WoE system, and imported the translated jAthena system [Tsuyuki]
-	* Changed: Tested and fixed up Event scripts (they stay commented of course) [Tsuyuki]
-	* Changed: Enabled all City/Town NPCs (now compatible) [Tsuyuki]
-	* Changed: Enabled all npc/other scripts (now compatible) [Tsuyuki]
+	* Removed: Deleted old WoE system, and imported the jAthena system translated [Tsuyuki]
+	* Changed: Tested and fixed up Event scripts (They stay commented of course) [Tsuyuki]
+	* Changed: Enabled all City/Town NPCs (Now compatible) [Tsuyuki]
+	* Changed: Enabled all npc/other scripts (Now compatible) [Tsuyuki]
 	 - Marriage has been excluded, it will need a massive rewrites to become compatible
 
 01/15/2007
-	* Changed: Enabled all Merchants (now compatible) [Tsuyuki]
-	* Changed: Enabled Kafras, Guides, and Aiports (now compatible) [Tsuyuki]
-	* Changed: Enabled all NPC Monster Spawns (compatible) [Tsuyuki]
-	* Changed: Enabled all NPC Warps (compatible) [Tsuyuki]
+	* Changed: Enabled all Merchants (Now compatible) [Tsuyuki]
+	* Changed: Enabled Kafras, Guides, and Airports (Now compatible) [Tsuyuki]
+	* Changed: Enabled all NPC Monster Spawns (Compatible) [Tsuyuki]
+	* Changed: Enabled all NPC Warps (Compatible) [Tsuyuki]
 	* Added: Freya Database Changelog [Tsuyuki]
 	* Changed: Commented all NPC scripts until they're compatible [Tsuyuki]
-	* Merged: Old Freya's NPC scripts [Tsuyuki]
+	* Merged: Freya's NPC scripts [Tsuyuki]
 	* Added: Server launchers for easier development [Tsuyuki]
 	* Added: Phaeton files and SVN [Tsuyuki]
 
-FREYA PHAETON BEGINS HERE, based off jAthena 2219
+FREYA PHAETON BEGINS HERE, based off jAthena 2269

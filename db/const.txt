@@ -337,6 +337,7 @@ bNoKnockback	2010
 Eff_Stone	0
 Eff_Freeze	1
 Eff_Stan	2
+Eff_Stun	2
 Eff_Sleep	3
 Eff_Poison	4
 Eff_Curse	5
@@ -422,6 +423,7 @@ SC_RaceAngel	335
 SC_RaceDragon	336
 SC_Tigereye	337
 SC_REDEMPTIO	342
+SC_BLESSING	10
 SC_INCREASEAGI	12
 SC_DECREASEAGI	13
 
