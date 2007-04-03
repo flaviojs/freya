@@ -13,6 +13,7 @@
 Date	Added
 
 04/02/2007
+	* Changed: Lowered max mob skill global to 32 [Tsuyuki]
 	* Added: ladmin gui and ladmin plus to the ./bin/tool/ folder [Tsuyuki]
 	* Added: Two missing ./bin/tool/ files and an SQL script file [Tsuyuki]
 	* Changed: Moved the ./tool/ folder into ./bin/ [Tsuyuki]
