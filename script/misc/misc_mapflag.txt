@@ -16,6 +16,10 @@
 //--------------------------------------------------------------
 
 
+//--------------------------------------------------------------
+// jAthena Mapflags
+//--------------------------------------------------------------
+
 abyss_01.gat	mapflag	nomemo	dummy
 abyss_02.gat	mapflag	nomemo	dummy
 abyss_03.gat	mapflag	nomemo	dummy
@@ -1398,3 +1402,29 @@ yuno_pre.gat	mapflag	nomemo	dummy
 yuno_pre.gat	mapflag	noteleport	dummy
 yuno_pre.gat	mapflag	nobranch	dummy
 yuno_pre.gat	mapflag	nopenalty	dummy
+
+
+//--------------------------------------------------------------
+// Non-jAthena New Mapflags
+//--------------------------------------------------------------
+
+abbey01.gat	mapflag	nomemo	dummy
+abbey02.gat	mapflag	nomemo	dummy
+abbey03.gat	mapflag	nomemo	dummy
+nameless_i.gat	mapflag	nopenalty	dummy
+nameless_in.gat	mapflag	nopenalty	dummy
+nameless_in.gat	mapflag	noteleport	dummy
+nameless_in.gat	mapflag	nobranch	dummy
+nameless_n.gat	mapflag	nomemo	dummy
+thor_v01.gat	mapflag	nomemo	dummy
+thor_v02.gat	mapflag	nomemo	dummy
+thor_v03.gat	mapflag	nomemo	dummy
+ve_in.gat	mapflag	nopenalty	dummy
+ve_in.gat	mapflag	noteleport	dummy
+ve_in.gat	mapflag	nobranch	dummy
+ve_in.gat	mapflag	nomemo	dummy
+ve_in02.gat	mapflag	nopenalty	dummy
+ve_in02.gat	mapflag	noteleport	dummy
+ve_in02.gat	mapflag	nobranch	dummy
+ve_in02.gat	mapflag	nomemo	dummy
+veins.gat	mapflag	nopenalty	dummy

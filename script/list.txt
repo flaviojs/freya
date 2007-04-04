@@ -241,6 +241,7 @@ npc: script/town/town_lighthalzen.txt
 npc: script/town/town_louyang.txt
 npc: script/town/town_lutie.txt
 npc: script/town/town_morroc.txt
+npc: script/town/town_nameless.txt
 npc: script/town/town_niflheim.txt
 npc: script/town/town_payon.txt
 npc: script/town/town_prontera.txt

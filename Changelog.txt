@@ -12,6 +12,11 @@
 
 Date	Added
 
+04/04/2007
+	* Updated: Mapflags [Tsuyuki]
+	* Added: A temp warper from Veins -> Nameless Island [Tsuyuki]
+	* Added: Nameless Island town script (Not started) [Tsuyuki]
+
 04/03/2007
 	* Updated: Project to jAthena 2284 (Latest) [Tsuyuki]
 
