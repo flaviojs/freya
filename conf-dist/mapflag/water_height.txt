@@ -83,5 +83,6 @@ lhz_dun03.gat	30
 abyss_01.gat	20
 abyss_03.gat	-20
 nguild_alde.gat	40
-//hugel.gat	??
-//rachel.gat	??
+hu_fild02.gat	10
+hu_fild06.gat	3
+kh_dun02.gat	25

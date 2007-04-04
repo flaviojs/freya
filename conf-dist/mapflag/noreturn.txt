@@ -58,6 +58,9 @@ airplane_01.gat	mapflag	noreturn
 ra_in01.gat	mapflag	noreturn
 ra_temin.gat	mapflag	noreturn
 que_rachel.gat	mapflag	noreturn
+ve_in.gat	mapflag	noreturn
+ve_in02.gat	mapflag	noreturn
+nameless_in.gat	mapflag	noreturn
 
 // New areas
 yuno_pre.gat	mapflag	noreturn

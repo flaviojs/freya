@@ -92,6 +92,11 @@ kh_mansion.gat	mapflag	noicewall
 kh_rossi.gat	mapflag	noicewall
 kh_school.gat	mapflag	noicewall
 kh_vila.gat	mapflag	noicewall
+veins.gat	mapflag	noicewall
+ve_in.gat	mapflag	noicewall
+ve_in02.gat	mapflag	noicewall
+nameless_i.gat	mapflag	noicewall
+nameless_in.gat	mapflag	noicewall
 
 // Guild Castles ==========
 aldeg_cas01.gat	mapflag	noicewall

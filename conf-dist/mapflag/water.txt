@@ -81,5 +81,6 @@ lhz_dun03.gat	mapflag	water
 abyss_01.gat	mapflag	water
 abyss_03.gat	mapflag	water
 nguild_alde.gat	mapflag	water
-//hugel.gat	mapflag	water
-//rachel.gat	mapflag	water
+hu_fild02.gat	mapflag	water
+hu_fild06.gat	mapflag	water
+kh_dun02.gat	mapflag	water

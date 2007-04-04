@@ -44,6 +44,8 @@ lou_in02.gat	mapflag	nopenalty
 morocc.gat	mapflag	nopenalty
 moc_castle.gat	mapflag	nopenalty
 morocc_in.gat	mapflag	nopenalty
+nameless_i.gat	mapflag	nopenalty
+nameless_in.gat	mapflag	nopenalty
 new_zone01.gat	mapflag	nopenalty
 new_zone02.gat	mapflag	nopenalty
 new_zone03.gat	mapflag	nopenalty
@@ -62,6 +64,9 @@ prt_church.gat	mapflag	nopenalty
 prt_in.gat	mapflag	nopenalty
 umbala.gat	mapflag	nopenalty
 um_in.gat	mapflag	nopenalty
+veins.gat	mapflag	nopenalty
+ve_in.gat	mapflag	nopenalty
+ve_in02.gat	mapflag	nopenalty
 xmas.gat	mapflag	nopenalty
 xmas_in.gat	mapflag	nopenalty
 yuno.gat	mapflag	nopenalty

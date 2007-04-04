@@ -47,6 +47,7 @@ morocc_in.gat	mapflag	nomemo
 mjolnir_01.gat	mapflag	nomemo
 mjolnir_07.gat	mapflag	nomemo
 mjolnir_10.gat	mapflag	nomemo
+nameless_in.gat	mapflag	nomemo
 niflheim.gat	mapflag	nomemo
 nif_in.gat	mapflag	nomemo
 new_1-1.gat	mapflag	nomemo
@@ -67,6 +68,8 @@ ra_in01.gat	mapflag	nomemo
 um_in.gat	mapflag	nomemo
 xmas_in.gat	mapflag	nomemo
 valkyrie.gat	mapflag	nomemo
+ve_in.gat	mapflag	nomemo
+ve_in02.gat	mapflag	nomemo
 yuno.gat	mapflag	nomemo
 yuno_fild02.gat	mapflag	nomemo
 yuno_in01.gat	mapflag	nomemo
@@ -338,6 +341,11 @@ ice_dun01.gat	mapflag	nomemo
 ice_dun02.gat	mapflag	nomemo
 ice_dun03.gat	mapflag	nomemo
 ice_dun04.gat	mapflag	nomemo
+
+// Thor Volcano --------------
+thor_v01.gat	mapflag	nomemo
+thor_v02.gat	mapflag	nomemo
+thor_v03.gat	mapflag	nomemo
 
 // Guild Castles =============
 //alde_gld.gat	mapflag	nomemo

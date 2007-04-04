@@ -41,6 +41,8 @@ moc_castle.gat	mapflag	nopvp
 monk_in.gat	mapflag	nopvp
 morocc_in.gat	mapflag	nopvp
 morocc.gat	mapflag	nopvp
+nameless_i.gat	mapflag	nopvp
+nameless_in.gat	mapflag	nopvp
 nif_in.gat	mapflag	nopvp
 payon_in01.gat	mapflag	nopvp
 payon_in02.gat	mapflag	nopvp
@@ -61,6 +63,9 @@ sword_2-1.gat	mapflag	nopvp
 sword_3-1.gat	mapflag	nopvp
 um_in.gat	mapflag	nopvp
 umbala.gat	mapflag	nopvp
+veins.gat	mapflag	nopvp
+ve_in.gat	mapflag	nopvp
+ve_in02.gat	mapflag	nopvp
 xmas_in.gat	mapflag	nopvp
 xmas.gat	mapflag	nopvp
 yuno_in01.gat	mapflag	nopvp

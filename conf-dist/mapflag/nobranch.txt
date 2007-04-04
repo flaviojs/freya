@@ -54,6 +54,9 @@ airport.gat	mapflag	nobranch
 airplane.gat	mapflag	nobranch
 airplane_01.gat	mapflag	nobranch
 ra_in01.gat	mapflag	nobranch
+ve_in.gat	mapflag	nobranch
+ve_in02.gat	mapflag	nobranch
+nameless_in.gat	mapflag	nobranch
 
 // New Areas
 yuno_pre.gat	mapflag	nobranch
@@ -282,6 +285,7 @@ pvp_2vs2.gat	mapflag	nobranch
 //lighthalzen.gat	mapflag	nobranch
 //louyang.gat	mapflag	nobranch
 //morocc.gat	mapflag	nobranch
+//nameless_in.gat	mapflag	nobranch
 //niflheim.gat	mapflag	nobranch
 //prontera.gat	mapflag	nobranch
 //payon.gat	mapflag	nobranch
@@ -289,4 +293,5 @@ pvp_2vs2.gat	mapflag	nobranch
 //rachel.gat	mapflag	nobranch
 //umbala.gat	mapflag	nobranch
 //xmas.gat	mapflag	nobranch
+//veins.gat	mapflag	nobranch
 //yuno.gat	mapflag	nobranch

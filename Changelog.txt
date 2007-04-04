@@ -10,6 +10,12 @@
 
 Date	Added
 
+04/04/2007
+	* Added: A temp warper from Veins -> Nameless Island [Tsuyuki]
+	* Added: Veins and Nameless Island town scripts (Not started) [Tsuyuki]
+	* Updated: Mapflags [Tsuyuki]
+	* Changed: Disabled all sample NPC scripts by default [Tsuyuki]
+
 04/02/2007
 	* Fixed: Some mob skill database bugs [Tsuyuki]
 	* Added: New monsters with Poring stats and no drops/exp [Tsuyuki]

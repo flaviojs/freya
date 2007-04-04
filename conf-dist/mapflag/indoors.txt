@@ -81,3 +81,6 @@ kh_school.gat	mapflag indoors
 kh_vila.gat	mapflag indoors
 que_bingo.gat	mapflag indoors
 que_ng.gat	mapflag indoors
+ve_in.gat	mapflag	indoors
+ve_in02.gat	mapflag	indoors
+nameless_in.gat	mapflag	indoors

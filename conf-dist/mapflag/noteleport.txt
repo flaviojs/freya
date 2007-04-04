@@ -95,6 +95,9 @@ kh_mansion.gat	mapflag	noteleport
 kh_rossi.gat	mapflag	noteleport
 kh_school.gat	mapflag	noteleport
 kh_vila.gat	mapflag	noteleport
+ve_in.gat	mapflag	noteleport
+ve_in02.gat	mapflag	noteleport
+nameless_in.gat	mapflag	noteleport
 
 // Job Quests ====================
 job_sword1.gat	mapflag	noteleport
