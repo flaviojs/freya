@@ -13,6 +13,7 @@
 Date	Added
 
 04/05/2007
+	* Updated: Project to jAthena 2285 (Latest) [Tsuyuki]
 	* Fixed: Some The Sign Quest bugs (Thanks to Galaxy) [Tsuyuki]
 
 04/04/2007

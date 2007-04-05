@@ -286,17 +286,19 @@ int npc_event_doall_id(const char *name, int rid, int m)
  */
 int npc_event_do_clock(int tid,unsigned int tick,int id,int data)
 {
+	struct tm *t;
 	time_t timer;
-	struct tm *t, tmp;
 	char buf[64];
 	int c=0;
 
 	time(&timer);
 
 #ifndef _WIN32
+	struct tmp;
 	localtime_r(&timer, &tmp);
 	t = &tmp;
 #else
+
 	t = localtime(&timer);
 #endif
 

@@ -51,7 +51,7 @@ void test_sync          OF((Byte *compr, uLong comprLen,
 void test_dict_deflate  OF((Byte *compr, uLong comprLen));
 void test_dict_inflate  OF((Byte *compr, uLong comprLen,
                             Byte *uncompr, uLong uncomprLen));
-int  main               OF((int argc, char *argv[]));
+int  example_main               OF((int argc, char *argv[]));
 
 /* ===========================================================================
  * Test compress() and uncompress()
@@ -511,7 +511,7 @@ void test_dict_inflate(compr, comprLen, uncompr, uncomprLen)
  * Usage:  example [output.gz  [input.gz]]
  */
 
-int main(argc, argv)
+int example_main(argc, argv)
     int argc;
     char *argv[];
 {

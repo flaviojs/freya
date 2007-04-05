@@ -79,7 +79,7 @@ int  gz_compress_mmap OF((FILE   *in, gzFile out));
 void gz_uncompress    OF((gzFile in, FILE   *out));
 void file_compress    OF((char  *file, char *mode));
 void file_uncompress  OF((char  *file));
-int  main             OF((int argc, char *argv[]));
+int  minizip_main             OF((int argc, char *argv[]));
 
 /* ===========================================================================
  * Display error message and exit
@@ -213,7 +213,8 @@ void file_compress(file, mode)
     }
     gz_compress(in, out);
 
-    unlink(file);
+//    unlink(file);
+    _unlink(file);
 }
 
 
@@ -253,7 +254,8 @@ void file_uncompress(file)
 
     gz_uncompress(in, out);
 
-    unlink(infile);
+//    unlink(infile);
+    _unlink(file);
 }
 
 
@@ -266,7 +268,7 @@ void file_uncompress(file)
  *   -1 to -9 : compression level
  */
 
-int main(argc, argv)
+int minizip_main(argc, argv)
     int argc;
     char *argv[];
 {
@@ -298,14 +300,19 @@ int main(argc, argv)
     if (outmode[3] == ' ')
         outmode[3] = 0;
     if (argc == 0) {
-        SET_BINARY_MODE(stdin);
-        SET_BINARY_MODE(stdout);
+//        SET_BINARY_MODE(stdin);
+//        SET_BINARY_MODE(stdout);
+        _setmode( _fileno( stdin ), _O_BINARY );
+        _setmode( _fileno( stdout ), _O_BINARY ); 
         if (uncompr) {
-            file = gzdopen(fileno(stdin), "rb");
+//            file = gzdopen(fileno(stdin), "rb");
+            file = gzdopen(_fileno(stdin), "rb");
             if (file == NULL) error("can't gzdopen stdin");
             gz_uncompress(file, stdout);
         } else {
-            file = gzdopen(fileno(stdout), outmode);
+//            file = gzdopen(fileno(stdout), outmode);
+            file = gzdopen(_fileno(stdout), outmode);
+
             if (file == NULL) error("can't gzdopen stdout");
             gz_compress(stdin, file);
         }

@@ -1,3 +1,11 @@
+//2285-fix by 暇人
+
+・VCコンパイル時にWarning C4101が1個出ていたのを修正 (npc.c)
+・2283のzlibのエラーを修正
+	(src/common/zlib/)
+		minigzip.c
+		example.c
+
 ----------------------------------------
 //2284 by Blaze
 
