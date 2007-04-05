@@ -78,7 +78,6 @@ CREATE TABLE `mob_db` (
 # Add These Up to Get Your Result
 # Main Combinations: 64: Plants/Mushrooms, 128: Passive & Immobile, 129: Normal Monster, 131: Looter, 132: Immobile Aggressive, 133: Aggressive, 137: Assists Race (Ex: Wolf), 139: Assists & Loots (Thief Bugs), 141: Aggressive & Assists, 145: Detector, 149: Aggressive & Detector, 171: Boss, Summons Minions, Assists & Loots (Golden Thief Bug), 181: Boss, Summons, Detector & Aggressive (MvP)
 
-
 # Ragnarok Online - Alpha 1 Episode 0.1
 INSERT INTO `mob_db` VALUES (1001, 'SCORPION', 'Scorpion', 24, 1109, 0, 287, 176, 1, 80, 135, 30, 0, 1, 24, 24, 5, 52, 5, 10, 12, 0, 4, 23, 149, 200, 1564, 864, 576, 990, 70, 904, 5500, 757, 57, 943, 210, 7041, 100, 508, 200, 625, 20, 0, 0, 0, 0, 4068, 1, 0, 0, 0, 0, 0, 0, 0, 0);
 INSERT INTO `mob_db` VALUES (1002, 'PORING', 'Poring', 1, 50, 0, 2, 1, 1, 7, 10, 0, 5, 1, 1, 1, 0, 6, 30, 10, 12, 1, 3, 21, 131, 400, 1872, 672, 480, 909, 7000, 1202, 100, 938, 400, 512, 1000, 713, 1500, 512, 150, 619, 20, 0, 0, 0, 0, 4001, 1, 0, 0, 0, 0, 0, 0, 0, 0);
@@ -1021,8 +1020,8 @@ INSERT INTO `mob_db` VALUES (1827, 'G_SASQUATCH_', 'Sasquatch', 30, 3163, 0, 0, 
 INSERT INTO `mob_db` VALUES (1828, 'G_GULLINBURSTI', 'Gullinbursti', 62, 21331, 0, 0, 0, 1, 699, 1431, 10, 15, 1, 25, 60, 5, 70, 45, 10, 12, 2, 2, 42, 149, 150, 1960, 960, 384, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 # Some values incomplete, also missing mob_skill_db.txt entries
-INSERT INTO `mob_db` VALUES (1829, 'SWORD_GUARDIAN', 'Knight Guardian', 86, 152533, 0, 155013, 122604, 1, 7590, 9140, 60, 33, 86, 86, 86, 86, 176, 86, 10, 12, 2, 7, 80, 181, 200, 1600, 600, 600, 7069, 3000, 1370, 1, 1163, 5, 1168, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-INSERT INTO `mob_db` VALUES (1830, 'BOW_GUARDIAN', 'Soldier Guardian', 80, 80404, 0, 50149, 2306, 10, 1840, 2520, 40, 62, 80, 80, 80, 80, 160, 80, 10, 12, 2, 7, 80, 181, 200, 1600, 600, 600, 7069, 3000, 1723, 1, 1702, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `mob_db` VALUES (1829, 'SWORD_MASTER', 'Sword Master', 86, 152533, 0, 155013, 122604, 1, 7590, 9140, 60, 33, 86, 86, 86, 86, 176, 86, 10, 12, 2, 7, 80, 181, 200, 1600, 600, 600, 7069, 3000, 1370, 1, 1163, 5, 1168, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `mob_db` VALUES (1830, 'BOW_MASTER', 'Bow Master', 80, 80404, 0, 50149, 2306, 10, 1840, 2520, 40, 62, 80, 80, 80, 80, 160, 80, 10, 12, 2, 7, 80, 181, 200, 1600, 600, 600, 7069, 3000, 1723, 1, 1702, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 # Thor Volcano - Episode 11.2 - Some values incomplete
 INSERT INTO `mob_db` VALUES (1831, 'SALAMANDER', 'Salamander', 91, 97934, 0, 72000, 55000, 1, 7590, 10860, 65, 50, 91, 91, 46, 44, 182, 91, 10, 12, 2, 0, 63, 181, 150, 1600, 600, 600, 1370, 1, 2680, 1, 7097, 4000, 994, 100, 716, 500, 2621, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
@@ -1040,11 +1039,47 @@ INSERT INTO `mob_db` VALUES (1838, 'KNOCKER', 'Kocker', 50, 7755, 0, 2202, 4023,
 INSERT INTO `mob_db` VALUES (1839, 'BYORGUE', 'Byorgue', 86, 38133, 0, 0, 0, 1, 7, 10, 0, 5, 1, 1, 1, 1, 12, 30, 10, 12, 1, 7, 20, 133, 150, 1600, 600, 600, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 INSERT INTO `mob_db` VALUES (1840, 'GOLDEN_SAVAGE', 'Golden Savage', 99, 5000, 0, 0, 0, 1, 7, 10, 0, 0, 1, 1, 1, 50, 1, 1, 10, 12, 2, 2, 42, 181, 150, 1960, 960, 384, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
+# To-Do Monsters:
+# 1841 -> Boa Sprite
+# 1842 -> Anacondaq Sprite
+# 1843 -> Sidewinder Sprite
+# 1844 -> Isis Sprite
+# 1845 -> Treasure Chest Sprite
+# 1846 -> Emperium Sprite
+# 1847 -> Poring Sprite
+# 1848 -> Baphomet Sprite
+# 1849 -> Osiris Sprite
+# 1850 -> Orc Hero Sprite
+# 1851 -> Mobster Sprite
+# 1852 -> Angeling Sprite
+# 1853 -> Deviling Sprite
+# 1854 -> Muka Sprite
+# 1855 -> Poison Spore Sprite
+# 1856 -> Magnolia Sprite
+# 1857 -> Marin Sprite
+# 1858 -> Plankton Sprite
+# 1859 -> Mandragora Sprite
+# 1860 -> Coco Sprite
+# 1861 -> Choco Sprite
+# 1862 -> Martin Sprite
+# 1863 -> Spring Rabbit Sprite
+
+INSERT INTO `mob_db` VALUES (1864, 'ZOMBIE_SLAUGHTER', 'Zombie Slaughter', 77, 43000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 52, 0, 0, 0, 0, 0, 1, 1, 69, 133, 200, 1600, 600, 600, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `mob_db` VALUES (1865, 'RAGGED_ZOMBIE', 'Ragged Zombie', 75, 25000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 10, 0, 0, 0, 0, 1, 1, 69, 133, 200, 1600, 600, 600, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `mob_db` VALUES (1866, 'HELL_POODLE', 'Hell Poodle', 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 133, 200, 1600, 600, 600, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `mob_db` VALUES (1867, 'BANSHEE', 'Banshee', 81, 35111, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 120, 0, 0, 0, 0, 1, 6, 47, 133, 200, 1600, 600, 600, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `mob_db` VALUES (1868, 'G_BANSHEE', 'Banshee', 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 133, 200, 1600, 600, 600, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `mob_db` VALUES (1869, 'FLAME_SKULL', 'Flame Skull', 60, 10800, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30, 40, 0, 0, 0, 0, 0, 6, 68, 133, 200, 1600, 600, 600, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `mob_db` VALUES (1870, 'NECROMANCER', 'Necromancer', 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 133, 200, 1600, 600, 600, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `mob_db` VALUES (1871, 'FALLINGBISHOP', 'Falling Bishop', 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 133, 200, 1600, 600, 600, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `mob_db` VALUES (1872, 'HELL_FLY', 'Hell Fly', 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 133, 200, 1600, 600, 600, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `mob_db` VALUES (1873, 'BEELZEBUB', 'Beelzebub', 98, 6666666, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 238, 231, 0, 0, 0, 0, 0, 6, 88, 133, 200, 1600, 600, 600, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `mob_db` VALUES (1874, 'BEELZEBUB_', 'Beelzebub', 98, 6666666, 0, 0, 0, 0, 0, 0, 238, 350, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 88, 133, 200, 1600, 600, 600, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `mob_db` VALUES (1875, 'TRISTAN_III', 'Tristan III', 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 133, 200, 1600, 600, 600, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
 # End of incomplete monsters
 
 #***********************************************
-
-# Homunuclus
 
 # End of database
 # mob_db.txt, Custom/Extra Monster Database
