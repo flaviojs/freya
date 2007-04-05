@@ -12,6 +12,9 @@
 
 Date	Added
 
+04/05/2007
+	* Fixed: Some The Sign Quest bugs (Thanks to Galaxy) [Tsuyuki]
+
 04/04/2007
 	* Updated: Mapflags [Tsuyuki]
 	* Added: A temp warper from Veins -> Nameless Island [Tsuyuki]
