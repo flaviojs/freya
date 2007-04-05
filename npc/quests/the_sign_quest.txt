@@ -4048,7 +4048,7 @@ OnPlayerLogout:
 
 OnTimer3000:
 	enablewaitingroomevent "SignDance";
-	stoptimer;
+	stopnpctimer;
 	end;
 
 OnInit:
@@ -9367,7 +9367,7 @@ function	script	Sign_Party	{
 
 L_Check:
 	set @i,@i+1;
-	if (getcharid(0) == $@partymembercid[@i]) goto L_Party;
+	if (strcharinfo(0) == $@partymembername$[@i]) goto L_Party;
 	if (@i < $@partymembercount -1) goto L_Check;
 	return;
 

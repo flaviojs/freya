@@ -11,6 +11,7 @@
 Date	Added
 
 04/05/2007
+	* Fixed: Some The Sign Quest bugs (Thanks to Galaxy) [Tsuyuki]
 	* Note: The exp table is now fully compatible with jAthena/Phaeton's format [Tsuyuki]
 	* Fixed: Star Gladiator now has it's proper Aegis job exp [Tsuyuki]
 	* Fixed: Soul Linker now uses the proper exp array parameters [Tsuyuki]
