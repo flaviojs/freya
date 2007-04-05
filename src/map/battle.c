@@ -4708,12 +4708,12 @@ void battle_set_defaults() {
 	battle_config.item_drop_card_max = 10000;
 	battle_config.item_drop_mvp_min = 1;
 	battle_config.item_drop_mvp_max = 10000;
-	battle_config.item_drop_heal_min = 1;		// Added by Valaris
+	battle_config.item_drop_heal_min = 1;
 	battle_config.item_drop_heal_max = 10000;
 	battle_config.item_drop_use_min = 1;
-	battle_config.item_drop_use_max = 10000;	// End
-	battle_config.prevent_logout = 1;	// Added by RoVeRT
-	battle_config.maximum_level = 255;	// Added by Valaris
+	battle_config.item_drop_use_max = 10000;
+	battle_config.prevent_logout = 1;
+	battle_config.maximum_level = 99;
 	battle_config.atcommand_max_job_level_novice = 10;
 	battle_config.atcommand_max_job_level_job1 = 50; // Includes Taekwon Kid
 	battle_config.atcommand_max_job_level_job2 = 50; // Includes Star Gladiator/Soul Linker
@@ -4962,7 +4962,7 @@ void battle_validate_conf() {
 		battle_config.item_drop_mvp_max = 10000;
 
 	if (battle_config.maximum_level < 1)
-		battle_config.maximum_level = 255;
+		battle_config.maximum_level = 99;
 	if (battle_config.atcommand_max_job_level_novice < 1)
 		battle_config.atcommand_max_job_level_novice = 10;
 	if (battle_config.atcommand_max_job_level_job1 < 1) // Includes Taekwon Kid
