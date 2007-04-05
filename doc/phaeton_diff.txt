@@ -37,9 +37,7 @@
 
 - All databases generally follow jAthena's, except for the following:
 
-	- ./db/mob_db.txt
 	- ./db/mob_skill_db.txt
-	- ./db/mob_group_db.txt
 	- ./db/random/mob_bloodybranch.txt
 	- ./db/random/mob_deadbranch.txt
 	- ./db/random/mob_poringbox.txt

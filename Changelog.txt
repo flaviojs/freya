@@ -13,6 +13,8 @@
 Date	Added
 
 04/05/2007
+	* Updated: Mob database to the latest Huge CGI revision [Tsuyuki]
+	* Changed: The mob database now follows jAthena's instead of Freya's [Tsuyuki]
 	* Updated: Project to jAthena 2285 (Latest) [Tsuyuki]
 	* Fixed: Some The Sign Quest bugs (Thanks to Galaxy) [Tsuyuki]
 
