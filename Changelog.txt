@@ -10,6 +10,11 @@
 
 Date	Added
 
+04/05/2007
+	* Note: The exp table is now fully compatible with jAthena/Phaeton's format [Tsuyuki]
+	* Fixed: Star Gladiator now has it's proper Aegis job exp [Tsuyuki]
+	* Fixed: Soul Linker now uses the proper exp array parameters [Tsuyuki]
+
 04/04/2007
 	* Added: A temp warper from Veins -> Nameless Island [Tsuyuki]
 	* Added: Veins and Nameless Island town scripts (Not started) [Tsuyuki]
