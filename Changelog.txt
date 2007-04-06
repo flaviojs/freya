@@ -11,6 +11,10 @@
 Date	Added
 
 2007-04-06
+	* Note: Clients from 12-18-2006 and above will now work just fine with Nezumi [Tsuyuki]
+	* Added: New hardcoded packet entries + updated /db/packet_db.txt [Tsuyuki]
+	* Updated: Nezumi is now compatible with the modern kRO client executables [Tsuyuki]
+	 - (Implemented support for packetver 8 for TXT/SQL)
 	* Removed: Database and NPC script changelogs [Tsuyuki]
 	* Added: A lot of base elements for the Taekwon/Star Gladiator/Soul Linker/Gunslinger/Ninja classes [Tsuyuki]
 	* Disabled: Gunslinger/Ninja/Taekwon/Soul Linker/Star Gladiator job quests [Tsuyuki]
