@@ -37,10 +37,11 @@ prtg_cas04.gat	mapflag	gvg
 prtg_cas05.gat	mapflag	gvg
 
 // Guild Dungeons ==========
-gld_dun01.gat	mapflag	gvg_dungeon
-gld_dun02.gat	mapflag	gvg_dungeon
-gld_dun03.gat	mapflag	gvg_dungeon
-gld_dun04.gat	mapflag	gvg_dungeon
+// Disabled for compatibility reasons
+// gld_dun01.gat	mapflag	gvg_dungeon
+// gld_dun02.gat	mapflag	gvg_dungeon
+// gld_dun03.gat	mapflag	gvg_dungeon
+// gld_dun04.gat	mapflag	gvg_dungeon
 
 // Novice Castles =========
 nguild_alde.gat mapflag gvg
