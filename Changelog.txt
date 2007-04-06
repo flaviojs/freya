@@ -13,6 +13,7 @@
 Date	Added
 
 04/06/2007
+	* Fixed: Minor SQL typo (Thanks to Nicko) [Tsuyuki]
 	* Updated: Did some work on the /job/ script folder [Tsuyuki]
 	* Updated: Nameless Island warper to warp a character to different maps based on day/night [Tsuyuki]
 	* Reverted: npc.c changes from jA 2285 (Breaks compilation) [Tsuyuki]
