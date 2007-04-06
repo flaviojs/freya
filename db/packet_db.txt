@@ -1,5 +1,6 @@
 // packet_db.txt, Server/Client Packet Database
-// (translation from japanese: not used in Freya -> removed)
+//
+// Currently is not loaded or used by the server, just here for reference
 
 packet_ver: 0
 0x0064,55
