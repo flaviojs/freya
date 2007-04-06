@@ -25,8 +25,8 @@
 
 yuno_in02.gat,88,164,5	script	Metavis Seith	742,{
 
-	if(TRANSMIGRATE == 0) {
-		if(BaseLevel < 99 || JobLevel < 50 || Basejob < 7 || Basejob > 20 || Upper != 0) {
+	if (TRANSMIGRATE == 0) {
+		if (BaseLevel < 99 || JobLevel < 50 || Basejob < 7 || Basejob > 20 || Upper != 0) {
 			mes "[Metavis Seith]";
 			mes "Welcome, this is the Suychervile Magic Academy.";
 			mes "Enjoy your visit.";
@@ -53,13 +53,13 @@ yuno_in02.gat,88,164,5	script	Metavis Seith	742,{
 		mes "If you are willing to pay it, you can enter the venue now.";
 		mes "Do you want to pay it?";
 		next;
-		if(select("Yes","Cancel")==2) {
+		if (select("Yes","Cancel")==2) {
 			mes "[Metavis Seith]";
 			mes "You may proceed.";
 			mes "Have a nice visit.";
 			close;
 		}
-		if(Zeny < 1285000) {
+		if (Zeny < 1285000) {
 			mes "[Metavis Seith]";
 			mes "Looks like you do not have enough zeny.";
 			mes "If you want to pay and go in,";
@@ -83,7 +83,7 @@ yuno_in02.gat,88,164,5	script	Metavis Seith	742,{
 
 yuno_in02.gat,93,207,0	script	Book of Ymir	111,{
 
-	if(Upper == 1) {
+	if (Upper == 1) {
 		mes "[Book of Ymir]";
 		mes "...The entrance to the Hall of Fame,";
 		mes "has opened to those who have reborn.";
@@ -96,7 +96,7 @@ yuno_in02.gat,93,207,0	script	Book of Ymir	111,{
 		mes "According to the rumors,";
 		mes "anything can possibly happen in the Hall.";
 		next;
-		if(select("Stop reading","Continue")==1) {
+		if (select("Stop reading","Continue")==1) {
 			mes "[Book of Ymir]";
 			mes ". . . . .";
 			close;
@@ -109,7 +109,7 @@ yuno_in02.gat,93,207,0	script	Book of Ymir	111,{
 		warp "valkyrie.gat",48,8;
 		end;
 	}
-	if(TRANSMIGRATE == 0) {
+	if (TRANSMIGRATE == 0) {
 		mes "[Book of Ymir]";
 		mes ". . . . .";
 		close;
@@ -170,7 +170,7 @@ yuno_in02.gat,93,207,0	script	Book of Ymir	111,{
 
 yuno_in05.gat,49,43,0	script	Heart of Ymir	111,{
 
-	if(TRANSMIGRATE == 2)
+	if (TRANSMIGRATE == 2)
 		warp "valkyrie.gat",48,8;
 	end;
 }
@@ -181,7 +181,7 @@ yuno_in05.gat,49,43,0	script	Heart of Ymir	111,{
 
 valkyrie.gat,48,86,4	script	Valkyrie	811,{
 
-	if(Upper != 0) {
+	if (Upper != 0) {
 		mes "[Valkyrie]";
 		mes "Welcome to the great Valhalla.";
 		mes "Alas, it is still not your time.";
@@ -195,7 +195,7 @@ valkyrie.gat,48,86,4	script	Valkyrie	811,{
 	mes "You shall be given another new path!";
 	mes "May the honor be with the warriors!";
 	next;
-	if(Weight || Zeny || SkillPoint || checkcart() || checkfalcon() || checkriding()) {
+	if (Weight || Zeny || SkillPoint || checkcart() || checkfalcon() || checkriding()) {
 		mes "[Valkyrie]";
 		mes "Good..You need to prepare a few items now.";
 		mes "First, cleanse your body and soul.";
@@ -295,8 +295,8 @@ valkyrie.gat,48,86,4	script	Valkyrie	811,{
 
 valkyrie.gat,44,33,5	script	Transporter	124,{
 
-	if(Upper != 1) {
-		if(rand(3)) {
+	if (Upper != 1) {
+		if (rand(3)) {
 			mes "[Transporter]";
 			mes "Congratulations on the success of your reincarnation.";
 			mes "May the honor be with the warriors!!";
@@ -334,8 +334,8 @@ valkyrie.gat,44,33,5	script	Transporter	124,{
 
 valkyrie.gat,44,39,5	script	Lord Knight	56,{
 
-	if(Upper != 1) {
-		if(rand(3)) {
+	if (Upper != 1) {
+		if (rand(3)) {
 			mes "[Lord Knight]";
 			mes "Congratulations on the success of your reincarnation.";
 			mes "May the honor be with the warriors!!";
@@ -366,8 +366,8 @@ valkyrie.gat,44,39,5	script	Lord Knight	56,{
 
 valkyrie.gat,44,42,5	script	High Priest	60,{
 
-	if(Upper != 1) {
-		if(rand(3)) {
+	if (Upper != 1) {
+		if (rand(3)) {
 			mes "[High Priest]";
 			mes "Congratulations on the success of your reincarnation.";
 			mes "May the honor be with the warriors!!";
@@ -395,8 +395,8 @@ valkyrie.gat,44,42,5	script	High Priest	60,{
 
 valkyrie.gat,44,47,5	script	High Wizard	735,{
 
-	if(Upper != 1) {
-		if(rand(3)) {
+	if (Upper != 1) {
+		if (rand(3)) {
 			mes "[High Wizard]";
 			mes "Congratulations on the success of your reincarnation.";
 			mes "May the honor be with the warriors!!";
@@ -424,8 +424,8 @@ valkyrie.gat,44,47,5	script	High Wizard	735,{
 
 valkyrie.gat,44,50,5	script	Whitesmith	731,{
 
-	if(Upper != 1) {
-		if(rand(3)) {
+	if (Upper != 1) {
+		if (rand(3)) {
 			mes "[Whitesmith]";
 			mes "Congratulations on the success of your reincarnation.";
 			mes "May the honor be with the warriors!!";
@@ -453,8 +453,8 @@ valkyrie.gat,44,50,5	script	Whitesmith	731,{
 
 valkyrie.gat,44,55,5	script	Sniper	727,{
 
-	if(Upper != 1) {
-		if(rand(3)) {
+	if (Upper != 1) {
+		if (rand(3)) {
 			mes "[Sniper]";
 			mes "Congratulations on the success of your reincarnation.";
 			mes "May the honor be with the warriors!!";
@@ -483,8 +483,8 @@ valkyrie.gat,44,55,5	script	Sniper	727,{
 
 valkyrie.gat,44,58,5	script	Assassin Cross	725,{
 
-	if(Upper != 1) {
-		if(rand(3)) {
+	if (Upper != 1) {
+		if (rand(3)) {
 			mes "[Assassin Cross]";
 			mes "Congratulations on the success of your reincarnation.";
 			mes "May the honor be with the warriors!!";
@@ -511,8 +511,8 @@ valkyrie.gat,44,58,5	script	Assassin Cross	725,{
 
 valkyrie.gat,53,39,3	script	Paladin	752,{
 
-	if(Upper != 1) {
-		if(rand(3)) {
+	if (Upper != 1) {
+		if (rand(3)) {
 			mes "[Paladin]";
 			mes "Congratulations on the success of your reincarnation.";
 			mes "May the honor be with the warriors!!";
@@ -540,8 +540,8 @@ valkyrie.gat,53,39,3	script	Paladin	752,{
 
 valkyrie.gat,53,42,3	script	Champion	52,{
 
-	if(Upper != 1) {
-		if(rand(3)) {
+	if (Upper != 1) {
+		if (rand(3)) {
 			mes "[Champion]";
 			mes "Congratulations on the success of your reincarnation.";
 			mes "May the honor be with the warriors!!";
@@ -571,8 +571,8 @@ valkyrie.gat,53,42,3	script	Champion	52,{
 
 valkyrie.gat,53,47,3	script	Professor	743,{
 
-	if(Upper != 1) {
-		if(rand(3)) {
+	if (Upper != 1) {
+		if (rand(3)) {
 			mes "[Professor]";
 			mes "Congratulations on the success of your reincarnation.";
 			mes "May the honor be with the warriors!!";
@@ -600,8 +600,8 @@ valkyrie.gat,53,47,3	script	Professor	743,{
 
 valkyrie.gat,53,58,3	script	Stalker	747,{
 
-	if(Upper != 1) {
-		if(rand(3)) {
+	if (Upper != 1) {
+		if (rand(3)) {
 			mes "[Stalker]";
 			mes "Congratulations on the success of your reincarnation.";
 			mes "May the honor be with the warriors!!";
@@ -628,8 +628,8 @@ valkyrie.gat,53,58,3	script	Stalker	747,{
 
 valkyrie.gat,53,50,3	script	Creator	122,{
 
-	if(Upper != 1) {
-		if(rand(3)) {
+	if (Upper != 1) {
+		if (rand(3)) {
 			mes "[Creator]";
 			mes "Congratulations on the success of your reincarnation.";
 			mes "May the honor be with the warriors!!";
@@ -658,8 +658,8 @@ valkyrie.gat,53,50,3	script	Creator	122,{
 
 valkyrie.gat,53,54,3	script	Clown	741,{
 
-	if(Upper != 1) {
-		if(rand(3)) {
+	if (Upper != 1) {
+		if (rand(3)) {
 			mes "[Clown]";
 			mes "Congratulations on the success of your reincarnation.";
 			mes "May the honor be with the warriors!!";
@@ -687,8 +687,8 @@ valkyrie.gat,53,54,3	script	Clown	741,{
 
 valkyrie.gat,53,56,3	script	Gypsy	101,{
 
-	if(Upper != 1) {
-		if(rand(3)) {
+	if (Upper != 1) {
+		if (rand(3)) {
 			mes "[Gypsy]";
 			mes "Congratulations on the success of your reincarnation.";
 			mes "May the honor be with the warriors!!";
@@ -716,7 +716,7 @@ valkyrie.gat,53,56,3	script	Gypsy	101,{
 
 function	script	JobChanger	{
 
-	if(JobLevel < 40 || Basejob != getarg(1) || OLD_CLASS != getarg(2))
+	if (JobLevel < 40 || Basejob != getarg(1) || OLD_CLASS != getarg(2))
 		return;
 	mes "["+getarg(0)+"]";
 	mes "Look for your glory,";
@@ -727,13 +727,13 @@ function	script	JobChanger	{
 	mes "["+getarg(0)+"]";
 	mes "Do you want to perform the job upgrade to "+getarg(0)+"?";
 	next;
-	if(select("No","Yes")==1) {
+	if (select("No","Yes")==1) {
 		mes "["+getarg(0)+"]";
 		mes "Then find me when you're fully prepared!";
 		mes "May the honor be with the warriors!";
 		close;
 	}
-	if(SkillPoint) {
+	if (SkillPoint) {
 		mes "["+getarg(0)+"]";
 		mes "You haven't learned enough.";
 		mes "Come back after you've learned all the skills.";
@@ -741,7 +741,7 @@ function	script	JobChanger	{
 	}
 	unequip;
 	jobchange getarg(2),1;
-	if(Basejob==18 && SKILL_BIOETHICS==13) {
+	if (Basejob==18 && SKILL_BIOETHICS==13) {
 		skill 238,1,0;
 		set SKILL_BIOETHICS,0;
 	}

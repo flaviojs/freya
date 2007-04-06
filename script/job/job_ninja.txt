@@ -1003,8 +1003,8 @@ M_BENEKI:
 	mes "[Taitsu]";
 	mes "So let me check for your items...";
 	set @z,90000;
-	if(Zeny < @z) goto L_NOZENY;
-	if(countitem(999)<50 || countitem(7115)<20 || countitem(984)<5) goto L_NOITEMS;
+	if (Zeny < @z) goto L_NOZENY;
+	if (countitem(999)<50 || countitem(7115)<20 || countitem(984)<5) goto L_NOITEMS;
 	set Zeny,Zeny-@z;
 	delitem 999,50;
 	delitem 7115,20;
@@ -1027,8 +1027,8 @@ M_DAIS:
 	mes "[Taitsu]";
 	mes "So let me check for your items...";
 	set @z,40000;
-	if(Zeny < @z) goto L_NOZENY;
-	if(countitem(999)<30 || countitem(7301)<100 || countitem(984)<2) goto L_NOITEMS;
+	if (Zeny < @z) goto L_NOZENY;
+	if (countitem(999)<30 || countitem(7301)<100 || countitem(984)<2) goto L_NOITEMS;
 	set Zeny,Zeny-@z;
 	delitem 999,30;
 	delitem 7301,100;
@@ -1051,8 +1051,8 @@ M_DAIS4:
 	mes "[Taitsu]";
 	mes "So let me check for your items...";
 	set @z,40000;
-	if(Zeny < @z) goto L_NOZENY;
-	if(countitem(733)<20 || countitem(13301)<1 || countitem(984)<3) goto L_NOITEMS;
+	if (Zeny < @z) goto L_NOZENY;
+	if (countitem(733)<20 || countitem(13301)<1 || countitem(984)<3) goto L_NOITEMS;
 	set Zeny,Zeny-@z;
 	delitem 733,20;
 	delitem 13301,1;
@@ -1075,8 +1075,8 @@ M_REKKA:
 	mes "[Taitsu]";
 	mes "So let me check for your items...";
 	set @z,78000;
-	if(Zeny < @z) goto L_NOZENY;
-	if(countitem(999)<50 || countitem(7098)<100 || countitem(7097)<100 || countitem(7521)<50) goto L_NOITEMS;
+	if (Zeny < @z) goto L_NOZENY;
+	if (countitem(999)<50 || countitem(7098)<100 || countitem(7097)<100 || countitem(7521)<50) goto L_NOITEMS;
 	set Zeny,Zeny-@z;
 	delitem 999,50;
 	delitem 7098,100;

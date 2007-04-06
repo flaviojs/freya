@@ -1,22 +1,25 @@
-//===== Freya Script =========================================
-//= Taekwon Job Change Quest
-//===== By: ==================================================
-//= Tsuyuki
-//===== Current Version: =====================================
-//= 1.1
-//===== Compatible With: =====================================
-//= Freya
-//===== Description: =========================================
-//= Official iRO Taekwon Job Change Quest
-//===== Additional Comments: =================================
-//= 1.0 Replaced previous TK Job Quest with this one [Tsuyuki]
-//= 1.1 Fixed quest for level 99 and above Novices [Tsuyuki]
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Taekwon Job Change Quest	Author: Tsuyuki
+//--------------------------------------------------------------
+// Revision History: v1.1
+//--------------------------------------------------------------
+//	1.0 First version [Tsuyuki]
+//	1.1 Fixed quest for level 99 and above Novices [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: * Official-certified *
+//--------------------------------------------------------------
 
 
 payon.gat,157,141,5	script	Phoenix#TKjob_change	753,{
 
-	if (BaseClass == JOB_TAEKWON) goto L_Complete;
+	if (BaseClass == Job_Taekwon) goto L_Complete;
 	if (TK_Q == 1) goto L_Activated2;
 	if (TK_Q == 2) goto L_job_change;
 	if (TAEK_Q > 0) goto L_Activated1;
@@ -65,7 +68,7 @@ payon.gat,157,141,5	script	Phoenix#TKjob_change	753,{
 
 L_Join:
 	// Can't be Baby/High Novice, MUST be normal Novice
-	if (Class != JOB_NOVICE || JobLevel < 9) goto L_Failed1;
+	if (Class != Job_Novice || JobLevel < 9) goto L_Failed1;
 	mes "[Phoenix]";
 	mes "Very well... I accept you";
 	mes "as my student. In beginning";
@@ -104,7 +107,7 @@ L_NoThx:
 
 L_Failed1:
 	// Can't be Baby/High Novice, MUST be normal Novice
-	if (Class != JOB_NOVICE) goto L_Failed2;
+	if (Class != Job_Novice) goto L_Failed2;
 	mes "[Phoenix]";
 	mes "How unfortunate!";
 	mes "You're not yet ready to";
@@ -369,9 +372,11 @@ L_job_changeA:
 	mes "title. Mm. In that case, you";
 	mes "are now a ^ff0000Taekwon Boy^000000.";
 	mes "Yes, that sounds good.";
+
 	callfunc "F_JobChange",Job_Taekwon;
 	callfunc "F_ClearJobVariables";
 	getitem 2101,1; // Guard[0]
+
 	next;
 	mes "[Phoenix]";
 	mes "Please, take this training";

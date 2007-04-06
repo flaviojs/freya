@@ -1,25 +1,27 @@
-//===== Freya Script =========================================
-//= Taekwon Master Job Quest
-//===== By: ==================================================
-//= Celestria
-//===== Current Version: =====================================
-//= 1.1
-//===== Compatible With: =====================================
-//= Freya
-//===== Description: =========================================
-//= 
-//===== Additional Comments: =================================
-//= A temp Taekwon Master (Taekwon Master/Knight) Job Changer based on 
-//= the kRO quest. Quest info from RagnaInfo.
-//= Sprites from kRO screenshots, bar two which I just had to guess at.
-//= 1.0 Optimized, updated [Lupus]
-//= 1.1 Added to Freya [Tsuyuki]
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Star Gladiator Job Change Quest	Author: Celestria
+//--------------------------------------------------------------
+// Revision History: v1.2
+//--------------------------------------------------------------
+//	1.0 First version [Celestria]
+//	1.1 Optimized and updated [Lupus]
+//	1.2 Improved formatting [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: Temp quest, highly unofficial.
+//--------------------------------------------------------------
 
 
 payon.gat,215,102,2	script	MooHyun	828,{
+
 	mes "[MooHyun]";
-	if (Class == Job_TaeKwonBoy && JobLevel >= 40 && STGL_Q == 0) goto L_Taekwon;
+	if (Class == Job_Taekwon && JobLevel >= 40 && STGL_Q == 0) goto L_Taekwon;
 	if (STGL_Q > 0) goto L_Quest;
 	mes "Aaaah, it's such lovely weather today, don't you think?";
 	close;
@@ -33,11 +35,11 @@ L_Taekwon:
 
 	mes "[MooHyun]";
 	mes "Well, there are these dedicated";
-	mes "fighters who are known as Taekwon Master.";
+	mes "fighters who are known as Star Gladiator.";
 	mes "I just so happen to know someone who";
 	mes "can warp to their meditation spot.";
 	next;
-	menu "Oooo.. I wanna be a Taekwon Master.",-,"So?",L_No;
+	menu "Oooo.. I wanna be a Star Gladiator.",-,"So?",L_No;
 	mes "[MooHyun]";
 	mes "What a coincidence!";
 	mes "However he does need some rare";
@@ -45,6 +47,8 @@ L_Taekwon:
 	set STGL_Q,1;
 	next;
 	mes "[MooHyun]";
+	goto L_Quest;
+
 L_Quest:
 	mes "You will need to bring him:";
 	mes "^0000FF- 1 Flame Heart^000000";
@@ -56,8 +60,9 @@ L_Quest:
 	mes "You can find him in Comodo.";
 	mes "He normally like to hang out at";
 	mes "the top of the mountain there.";
-	//mes "Write this down, because I won't tell you again.";
+	// mes "Write this down, because I won't tell you again.";
 	close;
+
 L_No:
 	mes "[MooHyun]";
 	mes "I see. Well, if that's how you feel...";
@@ -65,6 +70,7 @@ L_No:
 }
 
 comodo.gat,172,231,2	script	Man#SKTest	730,{
+
 	if (STGL_Q==1) goto L_Talk;
 	if (STGL_Q>=2) goto L_Needwarp;
 	mes "[Man]";
@@ -125,8 +131,9 @@ L_Again:
 }
 
 job_star.gat,29,33,4	script	Taekwon of the Sun	823,{
-	if (STGL_Q==3) goto L_Warpnow1;
-	if (Class == Job_TaeKwonBoy && JobLevel >= 40) goto L_Talk1;
+
+	if (STGL_Q == 3) goto L_Warpnow1;
+	if (Class == Job_Taekwon && JobLevel >= 40) goto L_Talk1;
 	mes "[Taekwon of the Sun]";
 	mes "How did you get in here!?";
 	mes "Get out at once!";
@@ -140,13 +147,13 @@ L_Talk1:
 	mes "It is always good to see a follower of a disciplined art.";
 	next;
 	mes "[Taekwon of the Sun]";
-	mes "I assume you came here to become a Taekwon Master.";
+	mes "I assume you came here to become a Star Gladiator.";
 	mes "So allow me to explain...";
 	next;
 	mes "[Taekwon of the Sun]";
 	mes "The Sun, the Moon, and the Stars.";
 	mes "All have their own subtle";
-	mes "energies. We Taekwon Masters use";
+	mes "energies. We Star Gladiators use";
 	mes "these energies in addition";
 	mes "to our own strength to aid us";
 	mes "in combat.";
@@ -176,8 +183,8 @@ L_Warpnow1:
 }
 
 job_star.gat,95,34,4	script	Taekwon of the Moon	758,{
-	if (STGL_Q==3) goto L_Warpnow2;
-	if (Class == Job_TaeKwonBoy && JobLevel >= 40) goto L_Talk2;
+	if (STGL_Q == 3) goto L_Warpnow2;
+	if (Class == Job_Taekwon && JobLevel >= 40) goto L_Talk2;
 	mes "[Taekwon of the Moon]";
 	mes "How did you get in here!?";
 	mes "Get out at once!";
@@ -226,8 +233,9 @@ L_Warpnow2:
 }
 
 job_star.gat,161,34,4	script	Taekwon of the Stars	77,{
-	if (Class == Job_TaeKwonBoy && JobLevel >= 40) goto L_Talk3;
-	if (STGL_Q==3) goto L_Itemcheck;
+
+	if (Class == Job_Taekwon && JobLevel >= 40) goto L_Talk3;
+	if (STGL_Q == 3) goto L_Itemcheck;
 	mes "[Taekwon of the Stars]";
 	mes "How did you get in here!?";
 	mes "Get out at once!";

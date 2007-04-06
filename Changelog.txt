@@ -7,14 +7,20 @@
                     http://www.ro-freya.net                   
                   Freya Phaeton SVN Changelog
 --------------------------------------------------------------
-                Current Revision: jAthena 2284
+                Current Revision: jAthena 2285
 --------------------------------------------------------------
 
 Date	Added
 
-04/05/2007
+04/06/2007
+	* Updated: Did some work on the /job/ script folder [Tsuyuki]
+	* Updated: Nameless Island warper to warp a character to different maps based on day/night [Tsuyuki]
+	* Reverted: npc.c changes from jA 2285 (Breaks compilation) [Tsuyuki]
+	* Updated: Monster modes for Nameless Island monsters [Tsuyuki]
 	* Updated: Mob database to the latest Huge CGI revision [Tsuyuki]
 	* Changed: The mob database now follows jAthena's instead of Freya's [Tsuyuki]
+
+04/05/2007
 	* Updated: Project to jAthena 2285 (Latest) [Tsuyuki]
 	* Fixed: Some The Sign Quest bugs (Thanks to Galaxy) [Tsuyuki]
 

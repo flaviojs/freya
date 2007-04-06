@@ -514,26 +514,26 @@ Q8:
 
 sF_Make:
 	set @ammonum,500;
-	if(countitem(getarg(0)) < @ammonum) goto L_NdAmmo;
-	if(Zeny < getarg(1)) goto L_NdZeny;
+	if (countitem(getarg(0)) < @ammonum) goto L_NdAmmo;
+	if (Zeny < getarg(1)) goto L_NdZeny;
 	mes "[Kenny]";
 	mes "What do you want me to do?";
 	next;
 	menu "Give me as many as you can.",-, "I want to set the amount.",sM_0b, "Nevermind",M_End;
 
 		set @amount,50;
-		if(zeny/getarg(1) < @amount) set @amount, zeny/getarg(1);
-		if(countitem(getarg(0))/@ammonum < @amount) set @amount, countitem(getarg(0))/@ammonum;
-		if(@amount > 0) goto L_End;
+		if (zeny/getarg(1) < @amount) set @amount, zeny/getarg(1);
+		if (countitem(getarg(0))/@ammonum < @amount) set @amount, countitem(getarg(0))/@ammonum;
+		if (@amount > 0) goto L_End;
 		mes "[Kenny]";
 		mes "Dude, you don't even have the right items...";
 		close;
 		
 	sM_0b:
 		input @amount;
-		if(@amount<1 || @amount>50) goto L_BadAmnt;
-		if(countitem(getarg(0))/@ammonum < @amount) goto L_NdAmmo;
-		if(Zeny < (getarg(1)*@amount)) goto L_NdZeny;
+		if (@amount<1 || @amount>50) goto L_BadAmnt;
+		if (countitem(getarg(0))/@ammonum < @amount) goto L_NdAmmo;
+		if (Zeny < (getarg(1)*@amount)) goto L_NdZeny;
 
 	L_End:
 		set Zeny, Zeny - (getarg(1)*@amount);
@@ -622,7 +622,7 @@ S5:
 // Subfunction, getarg(0):created sphere, getarg(1):special material, getarg(2):number needed
 
 sF_Make:
-	if( (countitem(1010)<1) || (countitem(1011)<1) || (countitem(getarg(1))<getarg(2)) ) goto L_NoMat;
+	if ( (countitem(1010)<1) || (countitem(1011)<1) || (countitem(getarg(1))<getarg(2)) ) goto L_NoMat;
 	mes "[Tony]";
 	mes "So how many ^0000FF30x packages^000000 do";
 	mes "you want me to make?";
@@ -631,20 +631,20 @@ sF_Make:
 
 	M_0:
 		set @amount, 500;
-		if(countitem(1010) < @amount) set @amount,countitem(1010);
-		if(countitem(1011) < @amount) set @amount,countitem(1011);
-		if(countitem(getarg(1))/getarg(2) < @amount) set @amount,countitem(getarg(1))/getarg(2);
-		if(@amount > 0) goto L_Make;
+		if (countitem(1010) < @amount) set @amount,countitem(1010);
+		if (countitem(1011) < @amount) set @amount,countitem(1011);
+		if (countitem(getarg(1))/getarg(2) < @amount) set @amount,countitem(getarg(1))/getarg(2);
+		if (@amount > 0) goto L_Make;
 		mes "[Tony]";
 		mes "Are you trying to make a fool of me...?";
 		close;
 
 	M_1:
 		input @amount;
-		if(@amount < 1 || @amount > 500) goto M_End;
-		if(countitem(1010) < @amount) goto L_NoMat;
-		if(countitem(1011) < @amount) goto L_NoMat;
-		if(countitem(getarg(1))/getarg(2) < @amount) goto L_NoMat;
+		if (@amount < 1 || @amount > 500) goto M_End;
+		if (countitem(1010) < @amount) goto L_NoMat;
+		if (countitem(1011) < @amount) goto L_NoMat;
+		if (countitem(getarg(1))/getarg(2) < @amount) goto L_NoMat;
 
 	L_Make:
 		delitem 1010,@amount;
@@ -675,15 +675,15 @@ que_ng.gat,182,85,3	script	Mr.Garrison	109,{
 	set @npcname$,"[Mr.Garrison]";
 
 	mes @npcname$;
-	if(countitem(13105)>0) goto L_Already;
-	if(countitem(13104)>0) goto L_Slot;
+	if (countitem(13105)>0) goto L_Already;
+	if (countitem(13104)>0) goto L_Slot;
 	mes "I have invented a new Revolver!";
 	mes "I think I call it... Garrison.";
 	next;
 	mes "[" +strcharinfo(0) + "]";
 	mes "Very innovative name really.";
 	next;
-	if(BaseJob != Job_Gunslinger || BaseLevel < 55){
+	if (BaseJob != Job_Gunslinger || BaseLevel < 55){
 		mes @npcname$;
 		mes "I don't think you have enough";
 		mes "knowledge of guns to see its";
@@ -836,7 +836,7 @@ que_ng.gat,187,163,3	script	Ingrid	744,{
 	mes "grenade launcher.";
 	mes "It's called ^0000FFInferno^000000.";
 	next;
-	if(BaseJob != Job_Gunslinger || BaseLevel < 65){
+	if (BaseJob != Job_Gunslinger || BaseLevel < 65){
 		mes @npcname$;
 		mes "But I don't think you are";
 		mes "experienced enough to use it.";
@@ -916,7 +916,7 @@ que_ng.gat,185,180,3	script	Vanessa	726,{
 	mes "that can destroy armors.";
 	mes "It's called ^0000FFDestroyer^000000.";
 	next;
-	if(BaseJob != Job_Gunslinger || BaseLevel < 52){
+	if (BaseJob != Job_Gunslinger || BaseLevel < 52){
 		mes @npcname$;
 		mes "But I don't think you are";
 		mes "experienced enough to use it.";
@@ -992,7 +992,7 @@ que_ng.gat,149,178,5	script	N.A	744,{
 	mes "right person to talk to.";
 	mes "I can make a ^0000FFDrifter^000000.";
 	next;
-	if(BaseJob != Job_Gunslinger || BaseLevel < 55){
+	if (BaseJob != Job_Gunslinger || BaseLevel < 55){
 		mes @npcname$;
 		mes "But I don't think you are";
 		mes "experienced enough to use it.";
