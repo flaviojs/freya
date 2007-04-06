@@ -42,7 +42,7 @@ prontera.gat,151,186,5	script	Sitting Girl	882,{
 		sc_start SC_INCREASEAGI,240000,10;
 
 		specialeffect2 6; // Blue Warping Effect
-		sit; // Makes you sit
+		// sit; // Makes you sit
 
 		mes "[Misha]";
 		mes "Have you enjoyed our rest?";
