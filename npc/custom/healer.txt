@@ -1,0 +1,72 @@
+//===== Freya Script =========================================
+//= Resting/Heal NPC
+//===== By: ==================================================
+//= Freya (Tsuyuki)
+//===== Current Version: =====================================
+//= 0.5
+//===== Compatible With: =====================================
+//= Freya
+//===== Description: =========================================
+//= Resting Girl which fully heals HP/SP and gives you
+//= Increase AGI/Blessing L10, as well as ends a few negative
+//= status ailments.
+//===== Additional Comments: =================================
+//= 0.5 Added first version by me [Tsuyuki]
+//= To-Do:
+//= - Make Niflheim version evil
+//= - Add duplicates for the rest of the towns
+//============================================================
+
+
+prontera.gat,151,186,5	script	Sitting Girl	882,{
+
+	mes "[Misha]";
+	mes "Sit with me and rest..";
+	next;
+	menu "Join her",L_Rest,"Cancel",L_Cancel;
+
+	L_Rest:
+		percentheal 100,100; // Full heal
+
+		// Cures negative status effects
+		sc_end SC_POISON;
+		sc_end SC_SILENCE;
+		sc_end SC_BLIND;
+		sc_end SC_CONFUSION;
+		sc_end SC_CURSE;
+		sc_end SC_HALLUCINATION;
+
+		specialeffect2 42; // Blessing Effect
+		sc_start SC_BLESSING,240000,10;
+		specialeffect2 37; // Increase AGI Effect
+		sc_start SC_INCREASEAGI,240000,10;
+
+		specialeffect2 6; // Blue Warping Effect
+		sit; // Makes you sit
+
+		mes "[Misha]";
+		mes "Have you enjoyed our rest?";
+		close;
+
+	L_Cancel:
+		mes "[Misha]";
+		mes "Travel safely..";
+		close;
+}
+
+alberta.gat,185,144,5	duplicate(Sitting Girl)	Sitting Girl#1	882
+aldebaran.gat,137,119,5	duplicate(Sitting Girl)	Sitting Girl#2	882
+amatsu.gat,200,86,3	duplicate(Sitting Girl)	Sitting Girl#3	882
+ayothaya.gat,146,110,5	duplicate(Sitting Girl)	Sitting Girl#4	882
+comodo.gat,187,162,5	duplicate(Sitting Girl)	Sitting Girl#5	882
+geffen.gat,119,57,5	duplicate(Sitting Girl)	Sitting Girl#6	882
+gonryun.gat,164,128,5	duplicate(Sitting Girl)	Sitting Girl#7	882
+izlude.gat,125,118,5	duplicate(Sitting Girl)	Sitting Girl#8	882
+louyang.gat,221,100,3	duplicate(Sitting Girl)	Sitting Girl#9	882
+morocc.gat,160,97,5	duplicate(Sitting Girl)	Sitting Girl#10	882
+// To-Do: Make Niflheim version evil
+niflheim.gat,198,183,5	duplicate(Sitting Girl)	Sitting Girl#11	882
+payon.gat,186,105,5	duplicate(Sitting Girl)	Sitting Girl#12	882
+umbala.gat,94,162,5	duplicate(Sitting Girl)	Sitting Girl#13	882
+xmas.gat,148,135,5	duplicate(Sitting Girl)	Sitting Girl#14	882
+yuno.gat,160,191,3	duplicate(Sitting Girl)	Sitting Girl#15	882

@@ -1,0 +1,128 @@
+//===== Freya Script ======================================= 
+//= Juno Airport NPCs
+//===== By: ================================================== 
+//= Spirit Death/Freya
+//===== Current Version: ===================================== 
+//= 1.2
+//===== Compatible With: ===================================== 
+//= Freya
+//===== Additional Comments: ================================= 
+//= 1.0 First release [Spirit Death]
+//= 1.1 Changed the way the script works a little [Tsuyuki]
+//= 1.2 Fixed minor script problems [Tsuyuki]
+//============================================================ 
+
+
+y_airport.gat,126,43,5	script	Airport Staff::yunairportin	90,{
+
+	mes "[Airport Staff]";
+	mes "Welcome to the Airport.";
+	mes "How may I help you?";
+	next;
+	menu "Board the Airship",-,"Cancel",L_Cancel;
+
+		mes "[Airport Staff]";
+		mes "The Airship boarding fee";
+		mes "is 1200 zeny or 1 Free Airship Ticket";
+		mes "How would you like to pay?";
+		next;
+		menu "I will pay with pure Zeny.",-,"I got a Ticket",L_Ticket,"Cancel",L_Cancel;
+		
+			if (zeny < 1200) goto L_NoZeny;
+			set Zeny,zeny-1200;
+			mes "[Airport Staff]";
+			mes "Have a nice trip.";
+			close2;
+			warp "y_airport.gat",148,51;
+			close;
+
+		L_Ticket:
+			if (countitem(7311) < 1) goto L_NoTicket;
+			delitem 7311,1;
+			mes "[Airport Staff]";
+			mes "Have a nice trip.";
+			close2;
+			warp "y_airport.gat",148,51;
+			close;
+
+		L_NoZeny:
+			mes "[Airport Staff]";
+			mes "You don't have 1200 zeny.";
+			close;
+			
+		L_NoTicket:
+			mes "[Airport Staff]";
+			mes "You don't have a Ticket.";
+			close;			
+
+	L_Cancel:
+		mes "[Airport Staff]";
+		mes "Have a nice day.";
+		close;
+}
+
+y_airport.gat,126,51,3	script	Airport Staff::yunairportout	90,{
+
+	mes "[Airport Staff]";
+	mes "Welcome";
+	mes "Please head this";
+	mes "way to board the Airship.";
+	next;
+	menu "Exit to Main Terminal",-,"Cancel",L_Cancel;
+
+		mes "[Airport Staff]";
+		mes "If you leave this";
+		mes "terminal, you'll have ";
+		mes "to pay the fee again";
+		next;
+		mes "[Airport Staff]";
+		mes "Are you sure you want to exit?";
+		next;
+		menu "Yes",-,"No",L_Cancel;
+
+			mes "[Airport Staff]";
+			mes "As you wish...";
+			mes "Have a nice day.";
+			close2;
+			warp "y_airport.gat",142,40;
+			close;
+
+	L_Cancel:
+		close;
+}
+
+y_airport.gat,143,43,5	duplicate(yunairportin)	Airport Staff	90
+y_airport.gat,158,43,5	duplicate(yunairportin)	Airport Staff	90
+y_airport.gat,143,49,3	duplicate(yunairportout)	Airport Staff	90
+y_airport.gat,158,50,3	duplicate(yunairportout)	Airport Staff	90
+
+y_airport.gat,143,63,4	script	Airport Staff	91,{
+
+	mes "[Airship Staff]";
+	mes "Hello!";
+	mes "Where would you like to go?";
+	next;
+	menu "Einbroch",L_Route1,"Hugel",L_Route1,"Izlude",L_Route2,"Lighthalzen",L_Route1,"Cancel",-;
+
+	mes "[Airship Staff]";
+	mes "As you wish...";
+	mes "Have a nice day.";
+	close;
+
+L_Route1:
+	mes "[Airship Staff]";
+	mes "Alright.";
+	mes "This way please.";
+	close2;
+	warp "yuno.gat",57,240;
+	end;
+
+L_Route2:
+	mes "[Airship Staff]";
+	mes "Alright.";
+	mes "This way please.";
+	close2;
+	warp "yuno.gat",50,240;
+	end;
+
+}

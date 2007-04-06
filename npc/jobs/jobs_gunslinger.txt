@@ -1,0 +1,452 @@
+//===== Freya Script =========================================
+//= Gunslinger Job Quest
+//===== By: ================================================== 
+//= Aegis/Freya
+//===== Current Version: ===================================== 
+//= 1.3
+//===== Compatible With: ===================================== 
+//= Freya
+//===== Description: ========================================= 
+//= Official Gunslinger Job Quest converted from Aegis
+//===== Additional Comments: ================================= 
+//= 1.0 Added first version [Muad_Dib]
+//= 1.1 Translated into English [Harp]
+//= 1.2 Updated file [Muad_Dib]
+//= 1.3 Converted to Freya script format [Tsuyuki]
+//============================================================ 
+
+
+// Master Miller
+que_ng.gat,152,167,3	script	Master Miller	901,{
+
+	if (Class == JOB_NOVICE) goto L_StartQuest;
+	if (Class == JOB_GUNSLINGER) goto L_Gunslinger;
+	if (Upper == 2) goto L_Baby;
+	goto L_OtherClass;
+
+	L_StartQuest:
+		if (Joblevel < 10) goto L_NotReady;
+		if (hg_gun == 0) goto L_GSQ05;
+		if (hg_gun == 1) goto L_GSQ06;
+		if (hg_gun == 2) goto L_GSQ07;
+		if (hg_gun == 3) goto L_GSQ08;
+		if (hg_gun == 4) goto L_GSQ09;
+		if (hg_gun == 5) goto L_GSQ10;
+
+		L_NotReady:
+			mes "[Master Miller]";
+			mes "Hmm, I think you";
+			mes "have the potential";
+			mes "but you're not yet strong enough.";
+			mes "Keep getting stronger and";
+			mes "come back later.";
+			close;
+
+		L_GSQ05:
+			mes "[Master Miller]";
+			mes "I'm a Security Chief and also";
+			mes "a Gunslinger Instructor, you may call me";
+			mes "Master Miller.";
+			next;
+			mes "[Master Miller]";
+			mes "I can't be distracted from my duty";
+			mes "at this moment.";
+			mes "What is it that you want?";
+			next;
+			menu "Nothing much.",L_GSQ01,"I want to become a Gunslinger.",L_GSQ02;
+
+			L_GSQ01:
+				mes "[Master Miller]";
+				mes "Wasting my time is like,";
+				mes "wasting gold.";
+				mes "Get out of my sight immediately.";
+				close;
+
+			L_GSQ02:
+				mes "[Master Miller]";
+				mes "Hmm.";
+				mes "You still look young";
+				mes "but the look in your eyes...";
+				mes "I can sense a powerful force.";
+				next;
+				mes "[Master Miller]";
+				mes "Hmm...Okay.";
+				mes "First, if you have the will to become a Gunslinger";
+				mes "you will need to go through some tests";
+				mes "and also interview and Training Sessions.";
+				next;
+				mes "[Master Miller]";
+				mes "Do you wish to proceed?";
+				next;
+				menu "No, I need time to think.",L_GSQ03,"Sure.",L_GSQ04;
+
+				L_GSQ03:
+					mes "[Master Miller]";
+					mes "Hmm..Is that so.";
+					mes "Well, it is important...";
+					mes "Think carefully and if you have the spirit,";
+					mes "please, come back later.";
+					close;
+
+				L_GSQ04:
+					mes "[Master Miller]";
+					mes "Hmm. Okay.";
+					mes "First";
+					mes "deliver this letter I am giving to you";
+					mes "to Payon's Alchemist,";
+					mes "'The Wise Bull Horn'";
+					mes "and hand the letter to him.";
+					next;
+					mes "[Master Miller]";
+					mes "He will judge you and";
+					mes "will report back to us if ";
+					mes "you are up to our standards.";
+					next;
+					mes "[" +strcharinfo(0) + "]";
+					mes "Alright, I'll do that.";
+					set hg_gun,1;
+					close;
+
+		L_GSQ06:
+			mes "[Master Miller]";
+			mes "Hurry up and get moving.";
+			mes "'The Wise Bull Horn' is";
+			mes "currently in Payon.";
+			close;
+
+		L_GSQ07:
+			mes "[Master Miller]";
+			mes "I guess he gave you";
+			mes "some errands to run.";
+			next;
+			mes "[Master Miller]";
+			mes "I think he saw potential in you.";
+			mes "Good luck.";
+			close;
+
+		L_GSQ08:
+			mes "[Master Miller]";
+			mes "That's a lot of errands";
+			mes "I already told you, the";
+			mes "old man is pretty serious.";
+			mes "Perform your task well.";
+			close;
+
+		L_GSQ09:
+			mes "[Master Miller]";
+			mes "Mm~ I'll be waiting for your news.";
+			mes "I hope you'll become one of us.";
+			mes "We'll be practically family..";
+			close;
+
+		L_GSQ10:
+			if (Skillpoint != 0) goto L_Skillpoints;
+			mes "[Master Miller]";
+			mes "Ohh, I see you got something from the old man";
+			mes "This is rare.";
+			mes "Under normal circumstances...";
+			mes "this would not be allowed...";
+			mes "Nice, nice.";
+			next;
+			mes "[Master Miller]";
+			mes "Mm..Okay.";
+			mes "The old man gave his";
+			mes "blessings, so I do not have any";
+			mes "reason to reject your application.";
+			next;
+			mes "[Master Miller]";
+			mes "Okay, from now on you'll be a Gunslinger.";
+			mes "From now on, you are a Gunslinger";
+			mes "After this, for every moment that you live,";
+			mes "remember can never leave your side";
+			mes "is your gun. We must remember the gun";
+			mes "and even every one of its bullets";
+			mes "has its own product number,";
+			mes "and can be checked up by us.";
+			next;
+			mes "[Master Miller]";
+			mes "For purchasing guns and ammo";
+			mes "the only place you can buy them";
+			mes "is from our special gunslinger";
+			mes "guild stores in various places.";
+			next;
+			mes "[Master Miller]";
+			mes "Of course, this is tedious.";
+			mes "But this is all to...";
+			mes "not let these guns";
+			mes "fall in the wrong hands, so";
+			mes "please forgive us for any inconvenience.";
+			next;
+			mes "[Master Miller]";
+			mes "There are also";
+			mes "other reasons.";
+			mes "You'll no doubt find some of them";
+			mes "later.";
+			mes "These are all the instructions";
+			mes "from Lady Celena, our";
+			mes "guild leader.";
+			next;
+			mes "[Master Miller]";
+			mes "After a bit of time";
+			mes "we will give you missions.";
+			mes "You will understand more";
+			mes "later.";
+			next;
+			mes "[Master Miller]";
+			mes "I'm sure we'll see each other again.";
+			mes "So here's to a nice time";
+			mes "working together.";
+			set hg_gun,6;
+			jobchange JOB_GUNSLINGER;
+			set gunex,rand(1,2);
+			if (gunex == 1) getitem 13100,1;
+			if (gunex == 2) getitem 13150,1;
+			close;
+
+	L_Gunslinger:
+		mes "[Master Miller]";
+		mes "Oh~ It's been a long time~";
+		mes "So, how have your travels been?";
+		mes "Remember, always take care";
+		mes "of your gun.";
+		close;
+
+	L_Baby:
+		mes "[Master Miller]";
+		mes "Ouch~";
+		mes "How did a baby come here~";
+		mes "Peekaboo~";
+		next;
+		mes "[Master Miller]";
+		mes "Where's your mommy~";
+		mes "Haha~";
+		mes "It's a dangerous place here.";
+		mes "Go play somewhere else.";
+		close;
+
+	L_OtherClass:
+		mes "[Master Miller]";
+		mes "Don't get distracted with me.";
+		mes "Get on with your traveling.";
+		close;
+
+	L_Skillpoints:
+		mes "[Master Miller]";
+		mes "Learn all your Basic Skills first!!";
+		close;
+}
+
+// The Wise Bull Horn
+payon.gat,184,65,3	script	The Wise Bull Horn	866,{
+
+	if (hg_gun == 1) goto L_WBH01;
+	if (hg_gun == 2) goto L_WBH02;
+	if (hg_gun == 3) goto L_WBH03;
+	if (hg_gun == 4) goto L_WBH04;
+	if (hg_gun == 5) goto L_WBH05;
+	if (hg_gun == 6) goto L_WBH06;
+	goto L_WBH07;
+
+	L_WBH01:
+		mes "[The Wise Bull Horn]";
+		mes "...Hmm... Young one";
+		mes "What is it that you want.";
+		next;
+		mes "[" +strcharinfo(0) + "]";
+		mes "Mr. Miller sent me here.";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "Miller...";
+		mes "Mm...Hmm. So Dark Fox";
+		mes "sent you here...";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "He is wise and cunning...";
+		mes "that is willing to sacrifice himself for his teammates.";
+		mes "mm...If he sent you..";
+		mes "Then you should be rather capable...";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "Wait...come closer...";
+		next;
+		mes "[" +strcharinfo(0) + "]";
+		mes "....";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "mmm...";
+		mes "mmmmm....";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "mmm...Bright eyes and...";
+		mes "a serious face...also...";
+		mes "a very good attitude...a good sense of...";
+		mes "responsibility...";
+		mes "But still not enough.";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "Lack of experience...";
+		mes "And you still don't have the blessing of the land...";
+		mes "You'll get injured at this rate...";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "Very well, I shall craft you a gift...";
+		mes "If you wish to follow this path...";
+		mes "Gather 3 Rainbow Shells";
+		mes "10 Shells, 3 Feathers";
+		mes "1 Trunk, 3 Zargons, and 3 Green Herbs,";
+		mes "then bring them to me.";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "If you show the gif that you just received";
+		mes "to Dark Fox. Then he will definitely...";
+		mes "accept you.";
+		next;
+		mes "[" +strcharinfo(0) + "]";
+		mes "-I'll need-";
+		mes "-3 Rainbow Shells-";
+		mes "-10 Shells, 3 Feathers-";
+		mes "-1 Trunk, 3 Zargons,-";
+		mes "-and 3 Green Herbs.-";
+		set hg_gun,2;
+		close;
+
+	L_WBH02:
+		if (countitem(949) < 3 || countitem(912) < 3 || countitem(1019) < 1 || countitem(935) < 10 || countitem(1013) < 3 || countitem(511) < 3) goto L_NotEnoughItems;
+
+		delitem 949,3;
+		delitem 912,3;
+		delitem 1013,3;
+		delitem 935,10;
+		delitem 511,3;
+		delitem 1019,1;
+		set hg_gun,3;
+		mes "[The Wise Bull Horn]";
+		mes "Oh...give them to me.";
+		mes "There is time to be consumed to";
+		mes "make the gift, Wait for a while.";
+		close;
+
+		L_NotEnoughItems:
+			mes "[" +strcharinfo(0) + "]";
+			mes "-I'll need-";
+			mes "-3 Rainbow Shells-";
+			mes "-10 Shells";
+			mes "-3 Feathers-";
+			mes "-1 Trunk, 3 Zargons,-";
+			mes "-and 3 Green Herbs-";
+			close;
+
+	L_WBH03:
+		mes "[The Wise Bull Horn]";
+		mes "Mm...You came right on time.";
+		mes "The preparation finished just now.";
+		mes "It is a rather simple gift.";
+		mes "But that's because I haven't worked in so long.";
+		mes "Ahh...I feel tired now...";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "The last time I crafted this...";
+		mes "Was well over ten years ago.";
+		mes "I also followed this path once...";
+		mes "and I once battled...";
+		mes "with such an item.";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "Meeting Celena's father";
+		mes "feels just like yesterday,";
+		mes "time really flies.";
+		mes "Like the smooth western wind.";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "Though there would always be painful";
+		mes "memories...but my followers...";
+		mes "especially people like...";
+		mes "Celena and Dark Fox.";
+		mes "Ahh, young people, and my followers...";
+		mes "I thank you...";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "Though now, I am already old...";
+		mes "In a short while...";
+		mes "I will return...to the land";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "I feel so tired...";
+		mes "I'm so sorry...but if you could...";
+		mes "Promise me something...";
+		mes "Promise to do...something for me.";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "I suddenly feel like...";
+		mes "drinking a glass of milk.";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "Take it as a request...from an old man.";
+		next;
+		mes "[" +strcharinfo(0) + "]";
+		mes "-Let's get a glass of Milk-";
+		mes "For 'The Wise Bull Horn'.-";
+		set hg_gun,4;
+		close;
+
+	L_WBH04:
+		if (countitem(519) < 1) goto L_NotEnoughMilk;
+
+		delitem 519,1;
+		set hg_gun,5;
+		mes "[The Wise Bull Horn]";
+		mes "Thank you.";
+		mes "You are truly a kind young man.";
+		mes "Now get on the road.";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "Take this Gift made bye me";
+		mes "and show it to Dark Fox.";
+		mes "You have my blessings";
+		mes "to become a Gunslinger.";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "Ee~~Ye~Ee~~ Hooma~ Raa~~Nae~Eee~~";
+		mes "Ee~~Ye~Ee~~ Hooma~ Raa~~Nae~Eee~~";
+		next;
+		mes "[" +strcharinfo(0) + "]";
+		mes "-Singing a weird-";
+		mes "-song-";
+		mes "-'The Wise Bull Horn'. I feel strange.-";
+		mes "-Let's take the Gift-";
+		mes "-to Mr.Miller now.-";
+		close;
+
+		L_NotEnoughMilk:
+			mes "[" +strcharinfo(0) + "]";
+			mes "-Let's get a glass of Milk-";
+			mes "-for 'The Wise Bull Horn'.-";
+			close;
+
+	L_WBH05:
+		mes "[The Wise Bull Horn]";
+		mes "Ee~~Ye~Ee~~ Hooma~ Raa~~Nae~Eee~~";
+		mes "Ee~~Ye~Ee~~ Hooma~ Raa~~Nae~Eee~~";
+		next;
+		mes "[" +strcharinfo(0) + "]";
+		mes "-Singing a weird-";
+		mes "-song-";
+		mes "-'The Wise Bull Horn'.-";
+		next;
+		mes "[" +strcharinfo(0) + "]";
+		mes "-I feel strange.-";
+		mes "-Let's take the Gift-";
+		mes "-to Mr.Miller now.-";
+		close;
+
+	L_WBH06:
+		mes "[The Wise Bull Horn]";
+		mes "Mm...It's been a while.";
+		mes "Hopefully you'll become a strong Gunslinger.";
+		close;
+
+	L_WBH07:
+		mes "[The Wise Bull Horn]";
+		mes "Zzz...Zzz";
+		close;
+}

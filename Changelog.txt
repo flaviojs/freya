@@ -11,6 +11,9 @@
 Date	Added
 
 2007-04-06
+	* Imported: Freya's NPC script folder [Tsuyuki]
+	* Changed: Organization/etc in conf-dist/npcs.conf and conf-dist/maps.conf [Tsuyuki]
+	* Removed: Old Nezumi NPC scripts [Tsuyuki]
 	* Note: Expect a nice revival for Nezumi!
 	* Added: Nezumi 737 (Final) Trunk to the modern Freya SVN [Tsuyuki]
 

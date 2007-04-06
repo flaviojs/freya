@@ -1,0 +1,26 @@
+//===== Freya Script =========================================
+//= Odin Temple Warp Script
+//===== By: ==================================================
+//= birkiczd/Freya
+//===== Current Version: =====================================
+//= 1.3
+//===== Compatible With: =====================================
+//= Any Athena Version
+//===== Description: =========================================
+//= Warp Points for Odin Temple
+//===== Additional Comments: =================================
+//= 1.0 Added first version [birkiczd]
+//= 1.1 Move the Saylor from Hugel.txt here. [Poki#3]
+//=	Hako's Sprite, cords and price is official. The text is not.
+//= 1.2 Removed Duplicates [Silent]
+//= 1.3 Removed Boatman and added official version to the Hugel cities script [Tsuyuki]
+//============================================================
+
+odin_tem01.gat,378,181,0	warp	odin01	1,1,odin_tem02.gat,22,181
+odin_tem02.gat,20,181,0	warp	odin02	1,1,odin_tem01.gat,376,181
+odin_tem01.gat,384,334,0	warp	odin03	1,1,odin_tem02.gat,23,334
+odin_tem02.gat,20,334,0	warp	odin04	1,1,odin_tem01.gat,381,334
+odin_tem02.gat,152,350,0	warp	odin05	1,1,odin_tem03.gat,121,51
+odin_tem03.gat,122,48,0	warp	odin06	1,1,odin_tem02.gat,153,347
+odin_tem02.gat,259,374,0	warp	odin07	1,1,odin_tem03.gat,249,35
+odin_tem03.gat,249,33,0	warp	odin08	1,1,odin_tem02.gat,262,371
