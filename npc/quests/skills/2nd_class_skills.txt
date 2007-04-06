@@ -1,0 +1,237 @@
+//===== Nezumi Script ======================================= 
+//= Second Class Skills Quests
+//===== By: ================================================== 
+//= akrus (thanks to Lupus)
+//===== Current Version: ===================================== 
+//= 1.0
+//===== Compatible With: ===================================== 
+//= Nezumi
+//===== Description: ========================================= 
+//= Quests for new skills
+//===== Additional Comments: ================================= 
+//= 1.0 Added quest for Sonic Acceleration [akrus]
+//============================================================
+
+
+//============================================================
+// ASSASSIN - SONIC ACCELERATION
+//============================================================
+in_moc_16.gat,14,21,3	script	Kiltin	884,{
+	mes "[Kiltin]";
+	if(BaseJob != Job_Assassin) goto L_nosin;
+	if(getskilllv(1003)) goto L_alreadyhave;
+
+	mes "I'll teach you all I know, but";
+	mes "you need to steal some things";
+	mes "for me:";
+	mes "3 Sapphires";
+	mes "1 Ruby";
+	next;
+	
+	mes "[Kiltin]";
+	mes "Let me check your items.";
+	next;
+	
+	if(countitem(726)<3 || countitem(723)<1) goto L_noitems;//Items: Sapphire, Ruby,
+	delitem 726, 3;//Items: Sapphire,
+	delitem 723, 1;//Items: Ruby,
+
+	mes "[Kiltin]";
+	mes "I see you have what you need,";
+	mes "so I'll teach you my talent.";
+	skill 1003,1,0;
+	close;
+	
+L_noitems:
+	mes "[Kiltin]";
+	mes "You dont have enough items.";
+	mes "Come back when you have all";
+	mes "the required items for me.";
+	close;
+		
+L_nosin:
+	mes "Sorry, but I'm on service of Shadowmen.";
+	emotion e_gasp;
+	close;
+
+L_alreadyhave:
+	mes "I've already tought you";
+	mes "everything I know...";
+	close;
+}
+
+//============================================================
+// HUNTER - PHANTASMIC ARROW
+//============================================================
+payon_in02.gat,54,13,7	script	Master Kabac	55,{
+	mes "[Master Kabac]";
+	if(BaseJob!=Job_Hunter) goto L_hunterno;
+	if(getskilllv(1009)) goto L_alreadyhave;
+	if(JobLevel<40) goto L_nojob;
+
+	mes "I can teach you a secret";
+	mes "technique pased down through";
+	mes "my family for generation. My";
+	mes "family has guarded this secret";
+	mes "for years, but I could teach";
+	mes "for a few supplies.";
+	next;
+	mes "[Master Kabac]";
+	mes "I am running low on on a few";
+	mes "things. Here is my list:";
+	mes "5 Cursed Rubys";
+	mes "5 Harpy's Feathers";
+	mes "30 Pet Food";
+	next;
+	
+	mes "[Master Kabac]";
+	mes "Let me check your items.";
+	next;
+	
+	if(countitem(724)<5 || countitem(7115)<5 || countitem(537)<30) goto L_noitems;//Items: Cursed_Ruby, Harpy_Feather, Pet_Food,
+	delitem 724, 5;//Items: Cursed_Ruby,
+	delitem 7115, 5;//Items: Harpy_Feather,
+	delitem 537, 30;//Items: Pet_Food,
+	
+	mes "[Master Kabac]";
+	mes "I see you have what you need,";
+	mes "so I'll teach you my talent.";
+	skill 1009,1,0;
+	close;
+
+L_noitems:
+	mes "[Master Kabac]";
+	mes "You don't have enough items.";
+	mes "Come back when you have all";
+	mes "the required items for me.";
+	close;
+		
+L_nojob:
+	mes "Come back when you've Learned";
+	mes "more about being a Hunter.";
+	mes "You need to have at least 40";
+	mes "levels as a hunter first.";
+	close;
+
+L_alreadyhave:
+	mes "Ahh, my apprentence, you";
+	mes "came to visit me...";
+	close;
+	
+L_hunterno:
+	mes "Is there something I can";
+	mes "help you with? I believe";
+	mes "you have the wrong old man.";
+	close;
+}
+
+//============================================================
+// KNIGHT - CHARGE ATTACK
+//============================================================
+prt_in.gat,84,98,3	script	Esope	734,{
+	mes "[Esope]";
+	if(BaseJob!=Job_Knight) goto L_noknight;
+	if(getskilllv(1001)) goto L_alreadyhave;
+
+	mes "I'll teach you all I know for:";
+	mes "5 Candy canes";
+	mes "3 Witherless Roses";
+	next;
+	
+	mes "[Esope]";
+	mes "Let me check your items.";
+	next;
+	
+	if(countitem(530)<5 || countitem(748)<3)goto L_noitems;//Items: Candy_Cane, Witherless_Rose,
+	delitem 530, 5;//Items: Candy_Cane,
+	delitem 748, 3;//Items: Witherless_Rose,
+	
+	mes "[Esope]";
+	mes "I see you have what you need,";
+	mes "so I'll teach you my talent.";
+	skill 1001,1,0;
+	close;
+
+L_noitems:
+	mes "[Esope]";
+	mes "You don't have enough items.";
+	mes "Come back when you have all";
+	mes "the required items for me.";
+	close;
+		
+L_noknight:
+	mes "Looking for your master?";
+	emotion e_gasp;
+	close;
+
+L_alreadyhave:
+	mes "I've already taught you";
+	mes "everything I know...";
+	close;
+}
+
+//============================================================
+// PRIEST - REDEMPTIO
+//============================================================
+prt_church.gat,111,112,3	script	Nun Linus	79,{
+	mes "[Nun Linus]";
+	if(BaseJob!=Job_Priest) goto L_nopriest;
+	if(getskilllv(1014)) goto L_alreadyhave;
+	if(getskilllv(54)<1) goto L_norez;
+
+	mes "I can teach you the mercy of God";
+	mes "if you bring me a couple things,";
+	mes "and if God finds you worthy!";
+	mes "1 Blue Gemstone";
+	mes "1 Holy Water";
+	next;
+	
+	mes "[Nun Linus]";
+	mes "Let me check your items.";
+	next;
+	
+	if(countitem(717)<1 || countitem(523)<1) goto L_noitems;//Items: Blue_Gemstone, Holy_Water,
+	delitem 717, 1;//Items: Blue_Gemstone,
+	delitem 523, 1;//Items: Holy_Water,
+	
+	mes "[Nun Linus]";
+	mes "I see you have what you need,";
+	mes "so we shall see if God finds";
+	mes "you worthy yet!";
+	next;
+	if(rand(100)<JobLevel+25) goto L_bless;
+	mes "[Nun Linus]";
+	mes "Sorry, but God has not";
+	mes "shined on you as of yet.";
+	mes "Try again when you are a";
+	mes "stronger Priest.";
+	close;
+	
+L_bless:
+	mes "[Nun Linus]";
+	mes "Hum... I see God has shined on you this time";
+	skill 1014,1,0;
+	close;
+	
+L_noitems:
+	mes "[Nun Linus]";
+	mes "You don't have enough items.";
+	mes "Come back when you have all";
+	mes "the required items for me.";
+	close;
+		
+L_nopriest:
+	mes "Sorry, you need to have some faith in God.";
+	emotion e_gasp;
+	close;
+
+L_alreadyhave:
+	mes "I've already taught you";
+	mes "everything I know...";
+	close;
+
+L_norez:
+	mes "Come back when you've learned";
+	mes "more about priest and God.";
+	close;
+}

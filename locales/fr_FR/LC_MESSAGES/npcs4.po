@@ -1,0 +1,356 @@
+msgid "[Young Man]"
+msgstr "[Jeune Homme]"
+
+#: npc/cities/geffen.txt:84
+msgid ""
+"I heard that somewhere in this world, there is a rare staff which transforms "
+"its owner's psychic power into phisycal powers, and endows with destructive "
+"force also..."
+msgstr ""
+"J'ai entendu dire que quelque part dans ce monde, il y a un personnel rare qui transforme""
+"son propre pouvoir psychique en pouvoirs physiques, et également doté d'une"
+"force destructrice..."
+
+#: npc/cities/geffen.txt:85
+msgid ""
+"With this, everybody could be as strong as Hercules, despite their lack of "
+"muscles. Haw haw...I will take it."
+msgstr ""
+"Avec cela, chacun pourrait être aussi fort qu'Hercule, malfré leur manque de"
+"muscles. Haw haw...je l'aurais."
+
+#: npc/cities/geffen.txt:88
+msgid "Good heavens! You, since when were you behind me?"
+msgstr "Mon Dieu ! Vous, depuis quand êtes-vous derrière moi ?"
+
+#: npc/cities/geffen.txt:89
+msgid ""
+"Did you happen to hear what I said? Ha ma...Muhaha. I didn't say anything. "
+"If you heard anything from me, just forget~Forget about it~"
+msgstr ""
+"Avez-vous entendu ce que j'ai dit ? Ha ma...Muhaha. Je n'ai rien dit."
+"Si vous avez entendu quoi que ce soit, oubliez ~Oubliez ça~"
+
+#: npc/cities/geffen.txt:90
+msgid "Yay~ veggie is cheap today~come on!!"
+msgstr "Yay~ Les végétaux sont bon marché aujourd'hui~approchez!!"
+
+#: npc/cities/geffen.txt:97
+msgid "Hello? Isn't it wonderful, today? I am a promising young Mage. Ahem."
+msgstr "Salut ! N'est-ce pas un jour merveilleux ? Je suis un jeune Mage prometteur. Ahem."
+
+#: npc/cities/geffen.txt:98
+msgid ""
+"Nowadays, my mental anguish about magic things keeps me awake every night.."
+"sigh...Especially, about the weak point of magic, you know."
+msgstr ""
+"De nos jours, mon angoisse mentale à propos des choses magiques me tient évéillée chaque nuit.."
+"*soupir*...Particulièrement, sur le point faible de la magie, vous savez."
+
+#: npc/cities/geffen.txt:101
+msgid ""
+"Darn! It was really annoying when I encountered that long-ranged enemy last "
+"time. It disrupted magic casting."
+msgstr ""
+"Mince ! C'était vraiment ennuyeux quand j'ai rencontré cet ennemi à longue distance la dernière"
+"fois. Il perturbait le cast magique."
+
+#: npc/cities/geffen.txt:102
+msgid ""
+"After all I realised I need a weapon to counter Such a long-ranged attack "
+"from an enemy....But geez..It is not easy to make such a weapon I wish."
+msgstr ""
+"Après tout je me suis rendu compte que j'avais besoin d'une arme pour résister à une attaque de longue portée"
+"d'un ennemi....Mais bon..Il n'est pas si facile de faire une telle arme."
+
+#: npc/cities/geffen.txt:104
+msgid "There should be another way.....Should be....."
+msgstr "Il devrait y avoir une autre façon.....Il devrait y avoir....."
+
+#: npc/cities/geffen.txt:105
+msgid "Any ideas for me?"
+msgstr "Quelques idées pour moi ?"
+
+#: npc/cities/geffen.txt:114 npc/cities/geffen.txt:119
+#: npc/cities/geffen.txt:123 npc/cities/geffen.txt:127
+#: npc/cities/geffen.txt:131 npc/cities/geffen.txt:138
+#: npc/cities/geffen.txt:142 npc/cities/geffen.txt:146
+#: npc/cities/geffen.txt:150 npc/cities/geffen.txt:153
+#: npc/cities/geffen.txt:157 npc/cities/geffen.txt:255
+#: npc/cities/geffen.txt:291 npc/cities/geffen.txt:295
+#: npc/cities/geffen.txt:299 npc/cities/geffen.txt:307
+#: npc/cities/geffen.txt:311 npc/cities/geffen.txt:315
+#: npc/cities/geffen.txt:319 npc/cities/geffen.txt:324 npc/cities/payon.txt:74
+#: npc/cities/payon.txt:79 npc/cities/payon.txt:83 npc/cities/payon.txt:86
+#: npc/cities/payon.txt:89 npc/cities/payon.txt:92 npc/cities/payon.txt:98
+#: npc/cities/payon.txt:103 npc/cities/payon.txt:107 npc/cities/payon.txt:111
+#: npc/cities/payon.txt:115 npc/cities/payon.txt:118 npc/cities/payon.txt:122
+#: npc/cities/payon.txt:126 npc/cities/payon.txt:131 npc/cities/payon.txt:135
+#: npc/cities/payon.txt:138 npc/cities/payon.txt:143
+msgid "[Waitress]"
+msgstr "[Serveuse]"
+
+#: npc/cities/geffen.txt:115
+msgid ""
+"Ugh!! SO annoying! Why would you drink here when you could drink at the "
+"pub!? This is an Inn, not a pub!!"
+msgstr ""
+"Hein !! Tellement ennuyeux ! Pourquoi voulez-vous boire ivi quand vous pourriez boire au"
+"pub !? C'est une auberge, pas un pub !!" 
+
+#: npc/cities/geffen.txt:116
+msgid "That man!... everytime he drinks... he gets like that! Ugh!!"
+msgstr "Cet homme !... chaque fois qu'il boit... il fini comme ca ! Berk !!"
+
+#: npc/cities/geffen.txt:120
+msgid ""
+"(~yells to the man~)'Hey mister! I TOLD you... THIS.. IS.. AN INN, NOT A "
+"BAR!!'"
+msgstr ""
+"*hurle à l'homme*'Hé monsieur ! JE VOUS AI DIT... C'EST... UNE... AUBERGE, PAS UN"
+"BAR !!'"
+
+#: npc/cities/geffen.txt:124
+msgid "(~sighs~) That old man in the front corner there gives me a headache."
+msgstr "*soupire* Ce vieil homme dans le coin de devant me donne le mal de tête."
+
+#: npc/cities/geffen.txt:125
+msgid ""
+"My younger sister, who works at the pub, told me that there is someone just "
+"like him at the Pub."
+msgstr ""
+"Ma jeune sœur, qui travaille au pub, m'a dit qu'il y a quelqu'un"
+"comme lui au pub."
+
+#: npc/cities/geffen.txt:128
+msgid "To think that there are 2 of them in one city... It's JUST ABSURD!!"
+msgstr "Penser qu'il y en a deux comme ca dans une seule ville... C'EST JUSTE ABSURDE !!"
+
+#: npc/cities/geffen.txt:132
+msgid ""
+"(~mumbles~)... I wish they would both just leave this town and be forgotten "
+"forever... that would be nice...."
+msgstr ""
+"*Marmonne*... Je souhaite simplement qu'ils quittent la ville tout les deux et qu'ils"
+"soient oubliés pour toujours... cela serait mieux...."
+
+#: npc/cities/geffen.txt:135
+msgid "Has there been anything interesting lately?"
+msgstr "Y a-t-il eu quelque chose d'intéressant récemment ?"
+
+#: npc/cities/geffen.txt:135
+msgid "May I have a drink?"
+msgstr "Puis-je avoir une boisson ?"
+
+#: npc/cities/geffen.txt:139
+msgid ""
+"Oh my, I'm sorry but that DRUNKARD swallowed up every last drop of liquior "
+"we have."
+msgstr ""
+"Oh mon dieu, je suis désolé mais cet IVROGNE a bu jusqu'à la derière goutte de liqueur"
+"que nous avions."
+
+#: npc/cities/geffen.txt:140
+msgid ""
+"Everyday it's the same thing... as soon as the Inn opens he comes in and "
+"gulps down drink after drink."
+msgstr ""
+"Chaque jour c'est la même chose... aussitôt que l'auberge s'ouvre il entre et"
+"engloutit boisson après boisson."
+
+#: npc/cities/geffen.txt:143
+msgid ""
+"It's amazing he hasn't died yet.  Maybe if you came by some other time we'll "
+"be restocked... oh who am I kidding...."
+msgstr ""
+"C'est étonnant qu'il ne soit pas encore mort. Peut-être que si vous revenez une autre fois nous serons"
+"réapprovisionnés...oh à qui vais-je faire croire cela...."
+
+#: npc/cities/geffen.txt:147
+msgid ""
+"Well... of all of the people who have stopped by latelty, there are a group "
+"of merchants that have caught my attention."
+msgstr ""
+"Bien... de tous les gens qui se sont arrêtés ici récemment, il y a un group"
+"de marchands qui ont attiré mon attention."
+
+#: npc/cities/geffen.txt:148
+msgid ""
+"I could tell right away that they were from out of town.  My younger sister "
+"tells me they are from Schubaltzwald..."
+msgstr ""
+"Je pouvais dire au premier coup d'oeil qu'ils n'étaient pas de la ville. Ma jeune sœur"
+"m'a dit qu'ils viennent de Schubaltzwald..."
+
+#: npc/cities/geffen.txt:151
+msgid ""
+"It really doesn't matter who they are or where they're from, afterall "
+"business is business.  They could be from Schuschu Chocolate Land for all I "
+"care...."
+msgstr ""
+"Ca n'a pas vraiment d'importance qui ils sont ni d'ou ils viennent, après tout"
+"les affaires sont les affaires. Ils pourraient être de Shushcu le pays du chocolat que je"
+"ne m'en soucierai pas...."
+
+#: npc/cities/geffen.txt:154
+msgid ""
+"I just wish the amount of local customers would start increasing again, "
+"since they are the bulk of my customers."
+msgstr ""
+"Je souhaite seulement que la quantité de clients locaux recommence à augmenter,"
+"puisqu'ils sont la plus grosse part de mes clients."
+
+#: npc/cities/geffen.txt:158
+msgid "Have a nice day!"
+msgstr "Bonne journée !"
+
+#: npc/cities/geffen.txt:165 npc/cities/geffen.txt:168
+#: npc/cities/geffen.txt:171 npc/cities/geffen.txt:178
+#: npc/cities/geffen.txt:181 npc/cities/geffen.txt:184
+#: npc/cities/geffen.txt:189 npc/cities/geffen.txt:193
+#: npc/cities/geffen.txt:197 npc/cities/geffen.txt:203
+#: npc/cities/geffen.txt:210 npc/cities/geffen.txt:217
+msgid "[Merchant Daven]"
+msgstr "[Daven le Marchand]"
+
+#: npc/cities/geffen.txt:166
+msgid ""
+"Back in the day when I frist came to Geffen, the town was a very boring "
+"place to live in."
+msgstr ""
+"Dans le passé quand je suis venu à Geffen pour la première fois, la vie dans la ville"
+"était très ennuyeuse."
+
+#: npc/cities/geffen.txt:169
+msgid ""
+"But now there are noble Mages and a flourishing community of Blacksmiths, "
+"that make Geffen......."
+msgstr ""
+"Mais maintenant il y a les nobles Mages et un prospère communauté de Blacksmiths,"
+"qui font de Geffen......"
+
+#: npc/cities/geffen.txt:172
+msgid ""
+".... still.... a very BORING place to be.... Bleh! I'm really bored here!!!"
+msgstr ""
+".... toujours.... une ville très ENNUYEUSE... Bleh! Je m'ennuis vraiment ici en réalité !!!
+
+#: npc/cities/geffen.txt:175
+msgid "-Blacksmiths?"
+msgstr "•Blacksmiths ?"
+
+#: npc/cities/geffen.txt:175
+msgid "Mages?"
+msgstr "•Mages ?"
+
+#: npc/cities/geffen.txt:175
+msgid "Who are you?"
+msgstr "•Qui êtes-vous ?"
+
+#: npc/cities/geffen.txt:179
+msgid ""
+"Mages and Wizards love to carry books around with them wherever they go.  "
+"That's just how they are."
+msgstr ""
+"Les Mages et les Wizards aiment emmener des livres avec eux partout où ils vont."
+"C'est juste leur façon d'être."
+
+#: npc/cities/geffen.txt:182
+msgid ""
+"Mages like to gather at the ^5555FFMagic Academey^000000 where they study "
+"the basics of magic use."
+msgstr ""
+"Les Mages aiment se réunir à ^5555FFl'Academie de Magie^000000 où ils étudient"
+"l'essentiel de l'utilisation de la magie."
+
+#: npc/cities/geffen.txt:185
+msgid ""
+"After much study and with enough experience, Mages can become Wizards.  "
+"Wizards can use much more powerfull magical spells."
+msgstr ""
+"Après beaucoup d'études et avec assez d'expérience, les Mages peuvent devenir des Wizards."
+"Les Wizards peuvent utiliser des sorts beaucoup plus puissants."
+
+#: npc/cities/geffen.txt:186
+msgid "You can find them at the top floor of the ^5555FFGeffen Tower^000000."
+msgstr "Vous pouvez les trouver au dernier étage de la ^5555FFTour de Geffen^000000."
+
+#: npc/cities/geffen.txt:190
+msgid ""
+"Blaksmiths are difficult people.  They are also a dirty bunch, whose faces "
+"are often covered with black soot."
+msgstr ""
+"Les Blacksmiths sont des gens compliqués. Ils sont également une sale bande, dont les visages"
+"sont souvent couverts de suie noire."
+
+#: npc/cities/geffen.txt:191
+msgid ""
+"No matter where they are or what they do, they always smell of iron and soot."
+msgstr ""
+"Peu importe où ils sont ou ce qu'ils font, ils ont toujours une odeur de fer et de suie."
+
+#: npc/cities/geffen.txt:194
+msgid ""
+"However, that is something that can't be helped.  Blacksmiths are always "
+"hard at work, refining ores, and tempering equipment."
+msgstr ""
+"Cependant, c'est quelque chose que l'on ne peut pas changer. Les Blacksmiths travaillent toujours"
+"durement, raffinant des minerais et tempérant l'équipement."
+
+#: npc/cities/geffen.txt:195
+msgid ""
+"It's just not possible to be a Blacksmith and not be dirty and smelly.  "
+"Unfortunately it's part of the job."
+msgstr ""
+"Il est simplement impossible d'être un Blacksmith et de ne pas être sale et malodorant."
+"Malheureusement cela fait partie du travail."
+
+#: npc/cities/geffen.txt:198
+msgid ""
+"Weapons forged by Blacksmiths can be much more unique then those sold in "
+"Armories."
+msgstr ""
+"Les armes forgées par des Blacksmiths peuvent être beaucoup plus précieuses que celles vendus au"
+"magasin d'arme."
+
+#: npc/cities/geffen.txt:199
+msgid ""
+"The actual ores and stones used by the Blacksmiths are of a much higher "
+"quality and are often scarce."
+msgstr ""
+"Les minerais et les pierres utilisées par les Blacksmith sont d'une grande"
+"qualité et sont souvent rares."
+
+#: npc/cities/geffen.txt:200
+msgid ""
+"This can give their weapons special qualities that are very benificial to a "
+"character."
+msgstr ""
+"Cela peut peut donner à leurs armes des qualités spéciales qui sont très bénéfiques à"
+"un personnage."
+
+#: npc/cities/geffen.txt:204
+msgid ""
+"Me?.... Oh I'm the world's PRETTIEST street merchant!!..... teh he he..."
+msgstr ""
+"Moi ?.... Oh je suis le marchand de rue le PLUS JOLI du monde !!..... teh he he..."
+
+#: npc/cities/geffen.txt:207
+msgid ".... SLAPP him upside his head!!!"
+msgstr ".... DONNE LUI UNE TAPE sur le haut de sa tête !!!"
+
+#: npc/cities/geffen.txt:207
+msgid "..... I'm gonna puke...."
+msgstr "..... Je vais vomir...."
+
+#: npc/cities/geffen.txt:211
+msgid "Hehehe.... it was a joke.... a joke ok..... hehehe...."
+msgstr "Hehehe.... c'était une plaisanterie.... une plaisanterie ok.... hehehe...."
+
+#: npc/cities/geffen.txt:215
+msgid "~^FF8000!!!^FF0000THWAAACCCKKK^FF8000!!!^000000~"
+msgstr "*^FF8000!!! ^FF0000GRAND COUP^FF8000 !!!^000000*"
+
+#: npc/cities/geffen.txt:218
+msgid "OW!! Ok! Ok! I was just kidding.... sheesh...."
+msgstr "AÏE !! Ok ! Ok ! Je rigolais simplement.... ouuuuuch...."

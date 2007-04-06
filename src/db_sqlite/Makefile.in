@@ -1,0 +1,71 @@
+#!__MAKE__
+
+# SQLite 3.3.1 makefile for Nezumi
+
+LIBOBJ = alter.lo analyze.lo attach.lo auth.lo btree.lo build.lo \
+         callback.lo complete.lo date.lo \
+         delete.lo expr.lo func.lo hash.lo insert.lo \
+         main.lo opcodes.lo os.lo os_win.lo \
+         pager.lo parse.lo pragma.lo prepare.lo printf.lo random.lo \
+         select.lo table.lo tokenize.lo trigger.lo update.lo \
+         util.lo vacuum.lo \
+         vdbe.lo vdbeapi.lo vdbeaux.lo vdbefifo.lo vdbemem.lo \
+         where.lo utf.lo legacy.lo db_sqlite.lo
+
+OBJECTS=$(patsubst %.y,%.c,$(wildcard *.y)) opcodes.h opcodes.c keywordhash.h $(patsubst %.lo,%.o,$(LIBOBJ))
+
+CFLAGS:=$(subst --std=c99,--std=gnu99,$(CFLAGS))
+ifeq ($(BUILD_TO),WIN32)
+CFLAGS+=-DOS_WIN=1 -DHAVE_USLEEP=0 -DHAVE_FDATASYNC=0 -DNDEBUG -DTHREADSAFE=0 -DSQLITE_OMIT_CURSOR
+LIBOBJ+=os_win.lo
+SQLITE3_BIN=sqlite3.exe
+else
+CFLAGS+=-DOS_UNIX=1 -DHAVE_USLEEP=1 -DHAVE_FDATASYNC=1 -DNDEBUG -DTHREADSAFE=0 -DSQLITE_OMIT_CURSOR 
+LIBOBJ+=os_unix.lo
+SQLITE3_BIN=sqlite3
+endif
+
+all:
+	@echo Please run make in the top directory
+
+%.c: %.y lemon
+	@echo -en " LEMON\t$<         \015"
+	@cd tool; ../lemon -DSQLITE_OMIT_CURSOR ../$<
+	@echo -en "   AWK\tparse.h       \015"
+	@mv parse.h parse.h.temp
+	@awk -f ./addopcodes.awk parse.h.temp >parse.h
+	@rm -f parse.h.temp
+
+%.o: %.c
+	@echo -en "    CC\t$<         \015"
+	@$(CC) 2>/dev/null $(CFLAGS) -c -o $@ $<
+
+__TARGET__: $(OBJECTS)
+	@echo -e "    AR\t$@         "
+	@$(AR) rcs $@ $^
+	@echo -e " CC LD\t$(SQLITE3_BIN)        "
+	@$(CC) $(CFLAGS) -c -o shell.o shell.c
+	@$(CC) $(LDFLAGS) -o $(SQLITE3_BIN) shell.c $@
+	@cp $@ ../lib/
+	@cp $(SQLITE3_BIN) ../../
+
+lemon: ./tool/lemon.c
+	@echo -e " CC LD\t$<           "
+	@gcc -g -O2 -o $@ $^
+
+opcodes.c:      opcodes.h mkopcodec.awk
+	@echo -en "   AWK\t$@          \015"
+	@sort -n -b +2 opcodes.h | awk -f mkopcodec.awk >opcodes.c
+
+opcodes.h:      parse.h vdbe.c mkopcodeh.awk
+	@echo -en "   AWK\t$@          \015"
+	@cat parse.h vdbe.c | awk -f mkopcodeh.awk >opcodes.h
+
+keywordhash.h: tool/mkkeywordhash.c
+	@echo -e " CC LD\t$<         "
+	@gcc -g -O2 -o mkkeywordhash $<
+	@./mkkeywordhash >$@
+
+clean:
+	rm -f lemon *.o parse.c parse.h parse.out opcodes.* mkkeywordhash keywordhash.h __TARGET__ ../lib/__TARGET__ $(SQLITE3_BIN) ../../$(SQLITE3_BIN)
+

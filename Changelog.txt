@@ -1,0 +1,839 @@
+// $Id: Changelog.txt 738 2007-04-02 02:19:33Z $
+
+2006-08-06
+	* Added: delete_account in class of ladmin (nezumi.php) [Yor]
+	* Fixed: Lullaby crashing map-server [akrus]
+	* Fixed: Basilica crashing map-server [akrus]
+
+2006-07-26
+	* Updated: mob_db and item_db SQL files, now up-to-date [akrus]
+
+2006-07-25
+	* Fixed: Provoke skill formulas [akrus]
+
+2006-07-22
+	* Added: bonus bSpDrainRate (for Moonlight Dagger and some others) [akrus]
+
+2006-07-19
+	* Fixed: check options of max_hair_color and max_hair_style when reading a character [DarkRaven]
+
+2006-07-13
+	* Improved: check on full read buffer of socket [DarkRaven]
+	* Fixed: possible disconnection on some players [DarkRaven]
+	* Improved: reduce lag on socket [DarkRaven]
+	* Added: new packet of client login connection [DarkRaven]
+
+2006-07-12
+	* Fixed: Frenzy skill should work during WoE (according to skill description: Can be used during Guild Siege.) [akrus]
+
+2006-07-12
+	* Updated: packet_db.txt [Darkraven]
+
+2006-07-07:
+	* Fixed: item_db and mob_db parsing (no more unecessary warnings) [Zug]
+	* Fixed: an error in item_db with Gemini-S58 Card and Tropical Sograt [Zug]
+	* Fixed: Tarot Card of Fate cast time not affected by Dex [Zug]
+
+2006-07-04:
+	* Fixed: Frenzy skill disabled in WoE maps [zug]
+	
+2006-06-28
+	* Improved: reduce lag on socket a little [DarkRaven]
+
+2006-06-27
+	* Fixed: Mini Furnace [DarkRaven]
+	         please, don't just copy eA if you don't adjust other files.
+	         example: modify mob_db.txt and don't modify reading of this file.
+	         other example: modify value of produce in Mini Furnace without modify produce_db.txt
+
+2006-06-26
+	* Updated: potion & weapon creation [akrus]
+
+2006-06-23
+	* Fixed: Dispell skill rate & status list [akrus]
+
+2006-06-18
+	* Fixed: compilation error in atcommand.c [DarkRaven]
+
+2006-06-17
+	* Added: bonus2 get zeny with rate bonuses [akrus]
+
+2006-06-16
+	* Fixed: server crashing when using Dissonance on plants [akrus]
+
+2006-06-15
+	* Added: extra system. What is it? [DarkRaven]
+	  - it a system managed by map-server to add/remove zenys/items to/from characters.
+	  - map-server use save/map_extra.txt file and manage it alone.
+	  - to add a line in this file, use an other file (default: ./map_extra_add.txt; you can choose location and name of this file). map-server will check it every minute.
+	  - because map-server READ and DESTROY this file, be sure that map-server has all permissions.
+	  - When a character is online, map-serverwill do supposed actions (and check all: weigth, max values, etc...)
+	  - To have more informations, read save/map_extra.txt file after a start of the map-server.
+	  - you can disable this function by a option in map_athena.conf.
+	  - The name? Because it's extra bonus/malus.
+	  - Example of usages: on web site (bonus after an action), to remove easily some items from a character (sprite error?), exchange of items, etc...
+
+2006-06-13
+	* Fixed: upper classes character size [akrus]
+
+2006-06-09
+	* Added: duel commands in at_command.conf [DarkRaven]
+	* Fixed: some fixes to new item_db structure [akrus]
+	* Fixed: an exploit in change cart [zug]
+	* Improved: added MAPIDs for internal map-server usage, for compatibility with eAthena [akrus]
+	* Updated: item_db structure, eAthena-compatible [akrus]
+	- SQL Creation script & SQL databases are missing, please avoid using them for a while
+	* Fixed: a bug with HP_BASILICA causing server to crash [akrus]
+	* Fixed: a possible crash in pc.c [zug]
+
+2006-06-08
+	* Fixed: a bug with Cloaking and SC_COMA leaving Cloaking even after death [akrus]
+
+2006-06-07
+	* Fixed: Wand of Hermode should work right now [akrus]
+
+2006-06-06
+	* Added: Dueling system atcommands in atcommand.c and atcommand.h and duels support [Daven]
+	* Fixed: finished the duelling system, fixed all related bugs. Everything is fine now! [Daven]
+
+2006-06-05
+	* Added: start-nezumi.sh now tries to autodetect Nezumi installation path [MagicalTux]
+	* Added: ./start-nezumi.sh check : check if Nezumi is started, and start it if required [MagicalTux]
+
+2006-06-04
+	* Added: Japanese language to createaccount.php and chgpasswd.php [DarkRaven].
+
+2006-06-01
+	* Fixed: a little bug in grfio.c [DarkRaven].
+
+2006-05-27
+	* Fixed: reading of some custumed GRF [DarkRaven].
+
+2006-05-25
+	* Added: nozenypenalty.txt mapflag file [DarkRaven]
+
+2006-05-21
+	* Fixed: AoE skills not affecting cloaked players [akrus]
+
+2006-05-18
+	* Fixed: a problem in pc_jail_timer causing server to crash [akrus]
+	- (server crashes when some certain char names are automatically unjailed
+	  and only in case GM message is displayed)
+	* Added: 'IF NOT EXISTS' when we create tables in main_login.sqlite and main_char.sqlite files [DarkRaven]
+	* Added: comments in main_login.sqlite file [DarkRaven]
+
+2006-05-14
+	* Added: Knight - Charge Attack and Priest - Redemptio quest skills [akrus]
+
+2006-05-12
+	* Updated: Add battle configuration of 2006-04-04aSakexe packet [DarkRaven]
+	* Updated: Add auto-detection of 2006-04-04aSakexe packet [DarkRaven]
+	           to do now: battle configuration.
+	* Updated: Add parse of 2006-04-04aSakexe packet [DarkRaven]
+	           to do now: auto-recognising and battle configuration.
+	* Added: NPC_CALLSLAVE skill [disabuzug]
+	* Updated: Add size definition of 2006-04-04aSakexe packet (just definition, not read of the packet) [DarkRaven]
+	           note: packet fonctions are same of previous packet.
+	* Improved: Add a #define to set number of packet versions [DarkRaven]
+	* Updated: packet_db.txt [DarkRaven]
+
+2006-05-11
+	* Fixed: blackmith repair weapon skill [zug]
+
+2006-05-10
+	* Fixed: SQL monsters database, db creation script, changed drop to 10 [akrus]
+	* Added: bIntravision for [zug]
+	* cleaned: some japanese comments [zug]
+	
+2006-05-07
+	* Fixed: critical bug with Pressure & Ice Wall causing server crash [akrus]
+
+2006-05-06
+	* Added: scripts/char_converter.php : TXT->MySQL converter written in
+		PHP. Read comments in the file for more details [MagicalTux]
+	* Added: Usage of CLIENT_INTERACTIVE flag with MySQL [MagicalTux]
+	* Updated: SQL databases [akrus]
+	* Updated: mob_db structure (up to 16 mob drops) - eAthena-compatible [akrus]
+	* Fixed: Now output from common is sent to stderr [MagicalTux]
+	* Fixed: Error in sql/main_char.sql fixed [MagicalTux]
+
+2006-05-04
+	* Fixed: status icons are now displayed after login right! [akrus]
+	* Improved: sql files for tables [Zug]  
+	* Fixed: Double Cast professor skill duration [Zug]
+	* Added: Cards for Odin temple, Ligthalzen [Zug]
+
+2006-05-03
+	* Fixed: getitem2 can produce named items [Zug]
+	* Disabled: a faulty routine in nezumirc [Zug]
+	* Fixed: Shield chain damages & cast time [Zug]
+
+2006-04-24
+	* Fixed: configure: Now supports Gentoo's way of installing mingw32,
+		allowing to build WIN32 binaries from a Gentoo box [MagicalTux]
+
+2006-04-21
+	* Fixed: Warning in src/char_sql/inter.c when compiling for SQLite [MagicalTux]
+
+2006-04-20
+	* Fixed: src/map/skill.c: Fixed crash when using AMD64 [MagicalTux]
+	* Fixed: src/map/chrif.c: Now copying data *before* checking it [MagicalTux]
+
+2006-04-19
+	* Added: script commands 'night' and 'day' [Harbin]
+	* Fixed: pressure should always hit target's sp. issue 403, 414 [Harbin]
+	* Added: character status saving & loading (eA & Project-Freya based) [akrus]
+
+2006-04-18
+	* Added: wand of hermode skill [Harbin]
+	* Added: longing for freedom skill (still on beta phase but should work) [Harbin]
+
+2006-04-17
+	* Updated: some mapflags (mainly added novice castles). by Lycade [Harbin]
+	* Fixed: trade_restriction function. now it should work properly. issue 392 [Harbin]
+	* Fixed: pressure should dehide/cloak target. issue 394 [Harbin]
+	* Fixed: status data is now cleared when player dies. issue 406 [Harbin]
+	* Fixed: compilation error [akrus]
+
+2006-04-16
+	* Improved: pc_setrestartvalue [NPOV]
+
+2006-04-12
+	* Fixed: NPC_BREAKWEAPON NPC_BREAKARMOR NPC_BREAKHELM skills (1.5% per skill level, same as eathena) [Zug]
+	* Added: added Taekwon skills in skill_db.txt [Zug]
+
+2006-04-11
+	* Fixed: hopefully fixed weapon rdamage reflecting 32000+ [akrus]
+	* Fixed: Hylozoist card now use dead branch summon tables and probability [zug]
+	* Fixed: order of /memo for warps [Zug]
+
+2006-04-10
+	* Fixed: compilation error on battle.c [Harbin]
+	* Fixed: cart termination damage should be non-reflectable [Harbin]
+	* Improved: now all functions use battle_calc_rdamage instead of own reflection code [Harbin]
+	* Added: Phantasmic Arrow Quest [akrus]
+	* Fixed: Cart Termination skill is no longer passive [akrus]
+
+2006-04-09
+	* Added: phantasmic arrow skill for hunters [Harbin]
+	* Updated: all mapflags. by Jetvictor [Harbin]
+	* Added: gunslinger questmaps into maplist [Harbin]
+	* Improved: rewrote whole item norefine reading function [Harbin]
+	* Added: makefile to make compiling easier and faster [Harbin]
+	* Added: support for sqlite on configure's makefile generator [Harbin]
+	* Added: support for item notrade database [Harbin]
+	* Added: Gravity Field skill (High Wizard) -- eAthena-based -- [akrus]
+
+2006-04-08
+	* Fixed: compiler error on linux (mmo.h) [Harbin]
+	* Fixed: Arrow Shower formula [akrus]
+	- no more testing needed, it's okay now
+	* Added: Tarot Card of Fate (based on eAthena) [akrus]
+	* Updated: Arrow Shower should be ground-targeted [akrus]
+	- please check it
+	* Fixed: likely fixed compilation errors with gcc 3.x under Linux [akrus]
+	* Added: Mana Recharge skill (High Priest) [akrus]
+	* Updated: NPC and databases [akrus]
+
+***** RELEASE 1.0.1
+
+2006-04-07
+	* Fixed: area skills should be removed when caster changes map. from Project-Freya(Mikey) [Harbin]
+	* Updated: weapon produce rate modifiers. credits to SuzakuX [Harbin]
+	* Added: some database documents [Harbin]
+	* Fixed: parrying should not reduce damage of pressure. issue 378 [Harbin]
+	* Fixed: compilation error with gcc 4.x [akrus]
+	* Improved: (sql) character server console messaging just like with login server's [Harbin]
+	     - remember to report every typo and missing message. thanks
+
+2006-04-06
+	* Fixed: cast delay of soul burn skill. issue 366 [Harbin]
+	* Fixed: safety wall should not block pressure. issue 376 [Harbin]
+	* Fixed: energy coat should not reduce damage of pressure. issue 375 [Harbin]
+	* Fixed: plagiarise should not copy advanced skills. issue 374 [Harbin]
+	* Fixed: plagiarise should limit skill level of copied skill. from Project-Freya's mantis [Harbin]
+	     - Example: if wizard cast's level 10 jupitel thunder on you and your got plagiarise level is 6 -> you get level 6 jupitel thunder 
+
+2006-04-05
+	* Fixed: weapon check to prevent ensemble skill casting with incorrect weapon. from Project-Freya(Proximus) [Harbin]
+	* Fixed: enchanced deadly poison should not effect damage of breaker and soul destroyer. issue 363 [Harbin]
+	     - damage with edp + breaker is insane
+	     - multiple sources of information like forums of roempire, ragnainfo and emperium.org and many, many people on nezumi board
+	     - it doesn't effect damage on latest aegis
+	       (final note: don't touch this before you got water proof evidences)
+	* Fixed: venom splasher's target doesn't need 1/3 hp anymore. kRO uptate. issue 363 [Harbin]
+	* Improved: (text) character server console messaging just like with login server's [Harbin]
+	* Fixed: sp loss from Gloria Domini when hiding, issue 0000370 [Zug]
+	* Fixed: Raging palm strike doesn't requires pirit sphere [Zug]
+	
+2006-04-04
+	* Fixed: compilation warning [akrus]
+
+2006-04-03
+	* Fixed: Frenzy requirement for mounted lord Knight [Zug]
+	* Fixed: Matk bonus from equip [Zug]
+	* Fixed: Mystcase & Mimic cards [Zug]
+
+2006-04-02
+	* Improved: some functions on guild.c [Harbin]
+	* Added: moved non refineable items from source to text database [Harbin]
+	* Fixed: atcommand die. you should be not able to kill yourself 'again' if you are already dead. from Project-Freya [Harbin]
+	* Fixed: pets using skills even if status support is disabled. from Project-Freya [Harbin]
+	* Fixed: inviting player to guild is not allowed on woe maps (same thing with leaving) . from Project-Freya [Harbin]
+	* Fixed: spear mastery should not effect damage of spiral pierce. from Project-Freya [Harbin]
+	* Improved: transmogrify and polymorphic clip change classes to all defined targets [Zug]
+
+2006-03-28
+	* Re-added Fix: EDP affecting Soul Breaker and Meteor Assault - Thanks JetVictor for telling me [AppleGirl]
+	* Fixed: Undead immunity to Stone effect [Zug]
+	* Fixed: A bug in Max Overthust and Power Overthrust [Zug]
+	* Removed: nomemo in some fields [Lycade/Zug]
+	* Fixed: CartBoost is now cancelled by Decrease Agi [zug]
+	* Added: Implemented function NOW() in SQLite [MagicalTux]
+
+2006-03-27
+	* Fixed: a bug in hit chance [Zug]
+	* Fixed: configure now saves zlib as libz.a when cross-compiling it for mingw32 [MagicalTux]
+	* Fixed: isGM field with online_gm_display_min_level option in online.php [DarkRaven]
+	* Added: gmlevel field in online.php [DarkRaven]
+	* Fixed: Sonic blow, Aura Blade damage bonus [Zug]
+	* Improved: Damage formula for Players attacks. ~ 0.7% faster. Please Check [zug]
+	* Fixed: Cart Termination damage with Max Overthust and Power Overthrust [Zug]
+	* Fixed: Magnum break apparent damage [Zug]
+	* Improved: comments in login_athena.conf about client_version_to_connect [DarkRaven]
+	* Fixed: cart boost skill. cart boost should not work while decrease agility status. issue 343 [Harbin]
+	* Fixed: ritual sacrifice damage bonus. now skill level effects damage. issue 341 [Harbin]
+
+2006-03-26
+	* Fixed: rdamage function. was reflecting everything again {Harbin]
+	* Fixed: dispell should not effect enchanced deadly poison status. issue 336 [Harbin]
+	* Fixed: enchance deadly poison should not effect damage of breaker and soul destroyer [Harbin]
+	* Fixed: damage bonus of enchance deadly poison skill. issue 336 [Harbin]
+	* Fixed: pressure skill damage shouldn't be reflectable. issue 337 [Harbin]
+	* Fixed: pressure skill should be able to 'hit' hiding players. issue 337 [Harbin]
+	* Added: support for skill id checking to new reflect damage function [Harbin]
+
+2006-03-25
+	* Added: Meltdown. issue 317 [zug]
+	* Fixed: bBreakWeaponRate and bBreakArmorRate bonus [zug]
+	* Fixed: Brandish Spear range is now 3hex, same as spears [zug]
+	* Fixed: gettimetick(0) return seconds since epoch (thanks to Simon for reporting) [zug]
+	* Improved: magic attacks should use 'new' rdamage function instead of own reflection code [Harbin]
+	* Fixed: damage formula of cart termination. thanks to Yuno and Jetvictor for helping with damage formula [Harbin]
+	* Added: flamelauncher, frostweapon, lightningloader and seismicweapon into statuschangetable. by Jetvictor. issue 333 [Harbin]
+	* Fixed: Grimtooth now ranged and blockable by pneuma [zug / proximus]
+	* Fixed: acid demonstration- and throw tomahawk skills. should be ranged and blockable by pneuma. issue 326 [Harbin]
+	* Added: damage formula for acid demonstration [Harbin]
+	* Fixed: typos in battle_calc_weapon_attack -> no more warnings [akrus]
+	* Fixed: changed bAspdRate back {Harbin]
+	* Fixed: removed nomemo mapflags of umbala fields. Project-Freya fix [Harbin]
+	* Fixed: bAspdRate item bonus. should give % instead of fixed value. issue 252 [Harbin]
+	* Fixed: stun change of cart termination skill. targets vitality should reduce change of stun [Harbin]
+	* Fixed: cart termination skill. cart boost needs to be enabled and meltdown disabled in order to cast termination. issue 327 [Harbin]
+
+2006-03-23
+	* Fixed: stun change of cart termination. issue 308 [Harbin]
+	* Fixed: players should not be allowed to use npc:s when frozen, stoned, sleeping or stunned. from project-freya. issue 324 [Harbin]
+	* Fixed: equipment breaking code. rewritten mostly. issue 313 [Harbin]
+	* Fixed: pressure skill. should ignore autoguard skill. mantis issue 314 [Harbin]
+	* Fixed: pet_equip_required option. was not functioning. issue 320 [Harbin]
+	* Fixed: Frost Joke should not freeze dead players [akrus]
+
+2006-03-20
+	* Fixed: Strip skill should not allow to equip anything to a slot [zug]
+	* Fixed: pet should not attack monster when you're dead [akrus]
+
+2006-03-19
+	* Fixed: EDP affecting Soul Breaker and Meteor Assault - Thanks Simon for testing [AppleGirl]
+	* Updated: SQL databases [akrus]
+	* Fixed: Magnum Break icon and other element-related statuses [akrus]
+	* Fixed: bCastRate calculating the value twice [zug]
+	* Fixed: potions with sc_start duration [akrus]
+	- TODO: rewrite status_change_start
+	* Fixed: a plenty of warnings during map-server startup and a bit spell checked ^^ [akrus]
+	- thanks to [Jetvictor] / IRC for reporting
+	* Fixed: Bug 301, regarding Marine Sphere Mob Skill Error thanks to JetVictor [AppleGirl]
+
+2006-03-18	
+	* Fixed: some monster skills problem (fix by [Victor] / forums) [akrus]
+
+2006-03-16
+	* Fixed: a ton of typos and grammar 'errors'. fix by dacayed.cell [Harbin]
+	* Fixed: information about possible bot usage is sent to GMs even if auto_muting is turned off [akrus]
+
+2006-03-15
+	* Fixed: Indulge skill formula [akrus]
+
+2006-03-14
+	* Fixed: some typos on configuration files. reported by decayed.cell {Harbin]
+
+2006-03-13
+	* Improved: some cleanup [akrus]
+	- TODO: complete all incomplete card effects
+	* Fixed: bonus2 bAddItemDropRate [akrus]
+	- now it's compatible to Athena & works right
+	* Reverted: last party fix that completely broke parties [akrus]
+	- please re-check the code and commit it after complete test!
+
+2006-03-12
+	* Fixed: double party "exploit". fix by Spader [Harbin]
+	* Fixed: Unknown skill 352 error and readded SC_SILENCE instead of SC_DIVINA [AppleGirl]
+	* Fixed: kyrie eleison skill. when damage is greater than val2, damage should be 'negative val2' instead of 'damage - val2'. fixes damage bug. issue 241 [Harbin]
+	* Fixed: skill level not affecting ATK [zug]
+	* Improved: replaced SC_DIVINA with SC_SILENCE [akrus]
+	- SC_DIVINA does not really exist -> may cause problems
+	* Fixed: defender skill should reduce aspd/walking speed. issue 244 [Harbin]
+	* Fixed: jobchange level storing method. also did some improving. issue 269 [Harbin]
+	* Fixed: spiritual cadence skill. recovery interval should be doubled instead of no recevory when character is overweight. issue 266 [Harbin]
+
+2006-03-11
+	* Fixed: Shield Chain skill [akrus]
+	* Added: mob skill state based on work of eA - must be tested more [DarkRaven]
+	* Fixed: @changelevel gm command: now save right player (not the GM) [DarkRaven]
+	* Improved: Shield Chain formula [akrus]
+	* Improved: some code reorganization [akrus]
+	* Fixed: Sharp Shooting formula [akrus]
+	* Fixed: reverted back Double Strafe formula [akrus]
+	- some code reorganization needed to make it work right
+
+2006-03-10
+	* Added: a GM command to set the level that the player had when he changed job (job 1 -> job 2) [DarkRaven]
+	* Added: an option to manage quantity of slaves summoned by mob leaders [DarkRaven]
+	* Fixed: leaktracer crash. function should store 'next' before freeing whole 'tmp1'. fix by Blue Rose. mantis issue 267 [Harbin]
+	* Added: item_sex_check battle option [akrus]
+	- there's no sex check on kRO so set to 0 by default
+	* Fixed: Double Strafe formula [akrus]
+
+2006-03-09
+	* Fixed: atcommand_main_channel_when_woe option to authorise GM to use @main when it's WoE [DarkRaven]
+	* Fixed: Overthrust skill [akrus]
+	* Updated: some code cleanup & reorganization [akrus]
+	* Added: Max Overthrust skill [akrus]
+	- no more new features till release
+	* Added: implemented StatusIconChangeTable[]; [akrus]
+	- TODO: some cleanup
+	- now we're able to continue adding new skills ^^
+
+2006-03-08
+	* Added: mob skill condition "onspawn", but do nothing actually. just recognized [DarkRaven]
+	* Added: mob skill condition "alchemist" [DarkRaven]
+	* Added: mob skill condition "masterattacked" [DarkRaven]
+	* Fixed: condition "masterhpltmaxrate" [DarkRaven]
+
+***** RELEASE MODE *****
+** No more new features for the next 10 days
+** Release date: 2006-03-20
+*****
+
+2006-03-08
+	* Improved: way how to prevent itemhealrate stacking. by Blue Rose. mantis issue 243 [Harbin]
+	* Fixed: safety wall skill. should block extremity fist. mantis isssue 257 [Harbin]
+	* Fixed: blade stop skill. should require 4 spirit spheres and explosionspirit status at level 5. mantis issue 256 [Harbin]
+	* Fixed: damage formula of dissonance. reported on project-freya's mantis [Harbin]
+
+2006-03-06
+	* Fixed: extremety fist skill. should fail if player is not on fury state and s/he does not have 4 spirit spheres. mantis issue 256 [Harbin]
+	* Added: doublecasting skill. based on Rose's code [Harbin]
+	     TODO: Add support for status icon
+	* Added: some part of mob skill condition "masterhpltmaxrate" [DarkRaven]
+	* Added: mob skill condition "rudeattacked" [DarkRaven] (based on [Blue Rose] 'rudeattacked.diff' file found on mantis bug report)
+
+2006-03-05
+	* Added: mob skill condition "afterskill" [DarkRaven]
+	* Added: little check owhen read state, cond1, cond2 and target type in mod_skill.db.txt -> display unknown values [DarkRaven]
+
+2006-03-04
+	* Improved: 'help' GM command displays custumed GM symbol [DarkRaven]
+	* Fixed: usage displaying of GM commands: use right symbol and command name (if synonym are used) [DarkRaven]
+
+2006-03-03
+	* Fixed: TXT version: counter of accounts (no line return) - thanks for my 40000 accounts. [DarkRaven]
+	* Fixed: use right atcommand symbol and gm command names in usage explanations (I will finish to change all usages in a futur commit) [DarkRaven]
+	* Fixed: duplicate gonryun nomemo mapflags. fix by Maverrick [Harbin]
+	* Improved: login server messaging [Harbin]
+	     - Character server will be converted soon
+	* Fixed: character standing up after creating a chat [akrus]
+
+2006-03-02
+	* Updated: nomemo and noteleport mapflags. update by Maverrick. mantis issue 236 [Harbin]
+	* Fixed: players should not gain base exp after reaching maximum base level (default 255). reported on eathena [Harbin]
+	* Added: new and updated function to get class of player [Harbin]
+	 - ToDo: delete old 'duplicate' functions and use new one instead of old ones
+
+2006-03-01
+	* Improved: display some usages of GM command with command that the player has entered [DarkRaven]
+	* Fixed: custom GM commands file: reading error when line is too long in conf file [DarkRaven]
+	* Improved: with a GM command: if failed or unknown, display what the player has entered, and not more the restructured GM command [DarkRaven]
+	* Fixed: player size on peco [akrus]
+	* Fixed: memory free of synonyms for GM command. [DarkRaven]
+	* Improved: some oversized mysql and sqlite keys. decreased their memory usage a lot. mantis issue 229 [Harbin]
+
+2006-02-28
+	* Added: configuration file to create synonyms for GM command. Useful to: [DarkRaven]
+	         - custom GM command names
+	         - change GM command names from english to an other language
+	* Added: @setgm[0-9] to change only player (not super-player) gm level. [DarkRaven]
+	         example: any gm can have an access to a command to change player level (0: without main channel, 1: with main channel with default configuration)
+	* Fixed: likely fixed itemhealrate always adding more and more after re-wearing an item [akrus]
+	* Fixed: global_reg_value should not have problems anymore [akrus]
+	* Added: an option to set idle delay before a party's member losts experience when idle option is set (battle_athena.conf) [DarkRaven]
+
+2006-02-27
+	* Fixed: player who uses skills can gain xp in a party and is not more considered like idle member [DarkRaven]
+	* Fixed: edp skill should not increase damage of meteor assault and soul breaker [Harbin]
+	* Fixed: compilation error with color < 0 (@kamic) always false [DarkRaven]
+	         unnecessary conversion -> unsigned long to unsigned int of color (WPACKETL is unsigned int)
+	         add command in help.txt file
+	* Updated: some code cleanup and some code reorganization [akrus]
+	* Added: two new battle config options [akrus]
+	- mob_skill_success_chance: success chance of monster skill usage
+	- mob_skill_delay: delay between monster skill usage
+	* Added: @kamic atcommand: kami with specified color (based on [LuzZza]'s code) [akrus]
+	* Added: russian language in createaccount.php and chgpasswd.php [akrus]
+	* Added: new strings in msg_athena_ru.conf [akrus]
+	* Fixed: some typos in msg_athena.conf [akrus]
+
+2006-02-26
+	* Added: name of created account in createaccount.php [DarkRaven]
+	* Improved: When char-server is asked for some GM commands, check only account id if the string is a number [DarkRaven]
+	* Added: an option to disable @main GM command when it's WoE and player is member of a guild [DarkRaven]
+	* Improved: SQL account searching in some GM commands (@(un)block, @(un)ban, @chargesex, @adjgmlvl2) [DarkRaven]
+	* Removed: duplicated operations done with @adjgmlvl2/@setgmlvl2 [DarkRaven]
+
+2006-02-25
+	* Added: messages in msg_athena for @adjgmlvl2/@setgmlvl2 [DarkRaven]
+	* Added: @adjgmlvl2/@setgmlvl2 (final step: answer to GM who ask) [DarkRaven]
+	* Fixed: ritual sacrifice skill. should pierce targets defense and display returned 'selfdamage'. mantis issue 191 [Harbin]
+	* Fixed: enchant deadly poison skill. should increase damage of meteor assault and soul breaker skills. mantis issue 200 [Harbin]
+	* Added: @adjgmlvl2/@setgmlvl2 (step 3: GM level change in login-server, to do: answer to GM who ask) [DarkRaven]
+	* Added: @adjgmlvl2/@setgmlvl2 (step 2: communications between map-server and char-server) [DarkRaven]
+	* Added: @adjgmlvl2/@setgmlvl2 to change DEFINITIVELY a GM level [DarkRaven]
+	         Step 1: you can type Gm command.
+	* Added: 'neutral' option in all @spawn GM commands to force non-agressiv monster [DarkRaven]
+	         note: followers stay agressiv if they exist.
+	* Improved: GM level transmission: cancel temporarily GM level when player comes back from map-server to char-server [DarkRaven]
+	* Fixed: some end lines to create file (windows/unix end lines) [DarkRaven]
+
+2006-02-24
+	* Added: special option to know when a player is a 'normal' player or GM for some actions with GM commands [DarkRaven]
+	         note: created because 'normal' players with level upper than 0 will have 'unknown command' instead of '(their sentence)'.
+	         read 'atcommand_max_player_gm_level' in battle_athena.conf for more informations.
+	* Updated: some code cleanup [akrus]
+	* Added: guild_dungeon mapflag (again inspired by Project-Freya) [akrus]
+	* Fixed: ritual sacrifice skill. should not damage emperium [Harbin]
+	* Fixed: bug when joining or creating chatroom. player should stop walking immediately when succesfully joined or created chatroom. this also fixes vending skill. report from eathena forum [Harbin]
+
+2006-02-23
+	* Improved: login.log to support date (see options inside login_athena.conf) [DarkRaven]
+	* Added: mob_deny.txt file like item_deny.txt, but for spawn/summon of monsters [DarkRaven]
+	* Improved: gm levels sending (values must be sended anyway to update them after char-server crash or stop) - sorry for segmentation fault [DarkRaven]
+	  note: don't remove { } around a macro (like CALLOC, MALLOC, REALLOC, etc...).
+	* Fixed: character server segmentation fault. was related to DarkRaven's gm level handling update [Harbin]
+	* Added: some options in login configuration to reduction the log file [DarkRaven]
+	* Improved: transmission of GM_level between servers [DarkRaven]
+	* Added: bonus2 bAddMonsterDropItem effect [akrus]
+
+2006-02-22
+	* Added: Explanations of modes in mod_db.txt [DarkRaven]
+	* Improved: 'Beautiful Night' [DarkRaven]
+	* Fixed: compilation errors of npc.c [DarkRaven]
+	* Fixed: new 'beautiful night' effect, should not display `aura` anymore [akrus]
+	* Improved: simplified Sonic Acceleration formula [akrus]
+	* Fixed: Shield Chain damage formula [akrus]
+	- please do not guess, just open ragnarok.co.kr and look at the formula
+	* Improved: some styling [akrus]
+	* Updated: some code cleanup [akrus]
+	* Added: 'beautiful night' effect (inspired by Project-Freya Team) [akrus]
+
+2006-02-21
+	* Updated: some code cleanup [akrus]
+	* Fixed: monsters summoned by another monster should give exp [akrus]
+
+2006-02-20
+	* Fixed: no more limit between char and map server to transmit GM level of all accounts [DarkRaven]
+	* Fixed: partially reverted back SVN 274 -> 273 (SP Regeneration now works) [akrus]
+	* Fixed: likely fixed global regs [akrus]
+	* Updated: some code cleanup [akrus]
+	* Fixed: likely fixed natural SP regen [akrus]
+	* Fixed: battle_calc_rdamage should not hit player anymore without the reason [akrus]
+
+2006-02-19
+	* Fixed: stat sharing of marionette control. fix by spader [Harbin]
+	* Fixed: fury skill. should disable natural sp regen for 5 minutes after casting [Oli255]
+	* Fixed: shockwave trap. was not effecting to target's sp. fix by spader [Harbin]
+	* Fixed: missing idef_flag_ on ritual sacrifice skill [Harbin]
+	* Fixed: spiral pierce skill. aurablade should not increase damage of it [Harbin]
+	* Added: createaccount.php : a PHP script to create accounts [DarkRaven]
+	* Changed: chgpasswd.php : [DarkRaven]
+		- Security: don't send back any password in form (when error)
+		- Style: Added an option to add a css style
+
+2006-02-18
+	* Changed: chgpasswd.php : Simplify and improve code [DarkRaven]
+	* Fixed: chgpasswd.php : Multi-language usage in same web page [DarkRaven]
+	* Added: chgpasswd.php : russian language [akrus]
+	* Added: chgpasswd.php : a PHP script to change password (in 2 languages) [DarkRaven]
+		- Need account name and old password (security: you can force to ask about email too).
+		- Need only nezumi.php.
+	* Added: nezumi.php : new functions for accounts manipulation [MagicalTux]
+
+2006-02-16
+	* Updated: some code cleanup [akrus]
+	* Fixed: Kyrie Eleison skill [akrus]
+	* Fixed: Sonic Acceleration skill should appear in the list now [akrus]
+	* Fixed: little fix in Extremity Fist effect [akrus]
+	* Fixed: another fix in new reflect system [akrus]
+	* Fixed: Bash skill [akrus]
+	* Fixed: new reflect battle_calc_rdamage [akrus]
+
+2006-02-15
+	* Fixed: kyrie eleison skill. mantis issue 184 [Harbin]
+		- moved kyrie eleison to end of battle_calc_damage. this makes skills like lex aeterna, spider web and sage's aoe skills to effect damage.
+		- throw stone skill should be effected by kyrie eleison
+	* Fixed: check config flag before breaking equip in skill acid demonstration. mantis issue 168 [Oli255]
+	* Fixed: stun effect of fatal blow skill. mantis issue 186 [Harbin]
+	* Fixed: bleeding status. should reduce damage and attack speed [Harbin]
+	* Fixed: natural hp regen. should not regen if player is using 'trick dead' skill or player is bleeding [Harbin]
+	* Added: own function to calculate reflected damage. made some improvements too. idea from eA [Harbin]
+
+2006-02-14
+	* Fixed: monk's triple blow skill. should be able to hit emperium. fix by proximus [Harbin]
+	* Fixed: monsters explosionspirits skill. fix by mikey [Harbin]
+	* Fixed: cart weight damage bonus of cart revolution skill. fix by mikey [Harbin]
+	* Added: battle config option to use 3-symbols or full castle name [akrus]
+	* Fixed: friends list [akrus]
+	* Fixed: max skill value to work right with new quest skills [akrus]
+	* Added: Ganbantein skill [akrus]
+	* Changed: maximum amount of 'MAX_SKILLS' in 'mmo.h' [Harbin]
+	* Fixed: a bit reorganized the code [akrus]
+
+2006-02-13
+	* Fixed: bug when check_maximum_skill_points is set to 0. now it should check jobchange_level correctly. mantis issue 172 [Harbin]
+	* Fixed: success change formula of create potion skill [Harbin]
+	* Fixed: problem with Marina (and others) Cards effects, based on [Proximus]'s fix) [akrus]
+	* Added: default GM level of a new account [DarkRaven]
+	* Changed: default levels of some GM commands for players [DarkRaven]
+	           - @main 0 -> 1 (most of biggest servers disable this command)
+	           - creation of a 'good player' (level 2) with : @help/@h, @die/@killme/@suicide, @petrename and @party
+	           - creation of a 'Super player' (level 3) with : @storage and @where
+
+2006-02-12
+	* Fixed: endure and berserk skills. should not give endure on gvg maps [Harbin]
+
+2006-02-11
+	* Fixed: Sonic Blow damage and hit rate formulas [akrus]
+	* Added: Sonic Acceleration quest skill for Assassin [akrus]
+
+2006-02-09
+	* Fixed: Bug with char registers now fixed, thanks to Project Freya for the hint [MagicalTux]
+	* Added: New 0x8008-0x8009 packets for NezumiRC [MagicalTux]
+	* Fixed: another fix in wedding skills, now should work right [akrus]
+	* Fixed: Wedding skills now display the actual healed value [akrus]
+
+2006-02-08
+	* Added: ARES support for proxy detection (still has a bug on the first connection) [MagicalTux]
+	* Added: NezumiRC protocol functions in login [MagicalTux]
+	* Fixed: damage formula of finger offensive skill. mantis issue 157 [Harbin]
+	* Fixed: spiritual cadence skill should not give sp regen bonus if explosion spirit skill is activated. mantis issue 165 [Harbin]
+	* Fixed: pgsql marked as EXPERIMENTAL [MagicalTux]
+	* Added: NezumiRC (Nezumi Remote Control) directory for close-source project [MagicalTux]
+
+2006-02-06
+	* Fixed: exp 'exploit' when using rich man kim song. mantis issue 156 [Harbin]
+	* Added: pgsql support [MagicalTux]
+	* Fixed: warning in skill.c [akrus]
+
+2006-02-05
+	* Fixed: eternal chaos skill should reduce vit defence to 0 instead of equip defence. mantis issue 149 [Harbin]
+
+2006-02-04
+	* Fixed: tiger knuckle fist should inflict immobilize status to target instead of stun. mantis issue 122 [Harbin]
+	* Fixed: aoe of land protector skill. mantis issue 110 [Harbin]
+	* Fixed: function to check damage when attacking to emperiums or guards. mantis issue 140 [Harbin}
+
+2006-02-03
+	* Changed: New logo when starting login/char/map servers !! [MagicalTux]
+	* Changed: login-converter behaves like a standard GNU converter. Read http://nezumi.dns.st/wiki/Using_login-converter for details [MagicalTux]
+	* Added: Option --with-leaktrace=fast added to configure. Will use up to 1MB of memory on each server, but FREE() and REALLOC() gets really fast [MagicalTux]
+	* Fixed: No more warning when compiling battle.c, thanks to tony's report [MagicalTux]
+	* Fixed: Removed calls to calloc()/free() from grfio.c [MagicalTux]
+	* Fixed: Improved speed of calls to FREE() when running Leak Tracer [MagicalTux]
+	* Fixed: damage formula of shield chain again [Harbin]
+	* Improved: rewrote whole battle_calc_damage. faster and ten times cleaner [Harbin]
+		NOTE: This might include few new bugs. If you want stable server, use nezumi 1.0.0 or another svn revision
+	* Added: Memory leak trace system [MagicalTux]
+	* Removed: CPU_INT no more needed, so removed [MagicalTux]
+	* Fixed: Acid Demonstration (source disappearing?) [akrus]
+
+2006-02-02
+	* Fixed: damage when using throw stone skill to plants or mushrooms. fix by proximus [Harbin]
+
+2006-02-01
+	* Fixed: emperium and guardians cannot be transformed into another monsters [zug]
+
+***** RELEASE 1.0.0
+
+2006-02-01
+	* Fixed: Changed comment in skill_nocast_db, and added MC_VENDING as a
+		skill which can be casted in nocast maps. This solves report
+		ID #91 [MagicalTux]
+
+2006-01-31
+	* Added: more philippine curses and bad words to manner list [Harbin]
+	* Fixed: memory leak on global_reg. It's dynamic allocation usage (FREE) not simple reset (memset(,0,)) [DarkRaven]
+	* Changed: Some "Freya" -> "Nezumi" [DarkRaven]
+	* Fixed: bClassChange effect (now does not affect Guardians/Emperium) [akrus]
+	* Fixed: Changed addons pointer size to match sizeof(void *) [MagicalTux]
+	* Changed: Switched back to C99 [MagicalTux]
+	* Fixed: Memory allocation for npcsell log is now dynamic [MagicalTux]
+	* Added: Rule "all" for db_sqlite [MagicalTux]
+	* Fixed: ranged damage adjustment on woe [Harbin]
+	* Fixed: damage formula of shield chain. lets hope its not too insane now [Harbin]
+
+2006-01-30
+	* Changed: day cycle should be disabled by default according to Spirit Death [Harbin]
+	* Fixed: some lil fixes in Berserk skill [akrus]
+
+2006-01-29
+	* Added: support for sqlite and made some styling on release.sh [Harbin] 
+	* Fixed: AMD64 warnings in npc.c [MagicalTux]
+	* Changed: NPCs and maps now have their own config files [MagicalTux]
+	* Fixed: skill.c : you should able to vend in towns even if noskill mode is enabled [Harbin]
+	* Fixed: log.c : C99 compliance (stdint.h) [MagicalTux]
+	* Fixed: log.c : Crash exploit [MagicalTux]
+	* Fixed: log.c : various warning on AMD64 [MagicalTux]
+	* Improved: check guardian hp changes only when its really needed [Harbin]
+
+2006-01-28
+	* Fixed: dupe hack (slotted items + cards) [akrus]
+	* Added: logs for refine, npc sale and items drop/pick [zug]
+	* Updated: no more nightmare mode on pvp maps. Information from ragnainfo [Harbin]
+	* Fixed: magic defence bonus of endure. From project-freya mantis [Harbin]
+
+2006-01-27
+	* Fixed: funny bug in bAutoSpell, now skills are casted on right target [akrus]
+	* Changed: autospell/autospell2 structure to be compatible with eAthena [akrus]
+	* Added: bonus4 bAutoSpell support [akrus]
+	* Fixed: bonus3 bAutoSpell / bonus3/4 bAutoSpellWhenHit [akrus]
+	- now more than one autospell may be used
+	* Fixed: @memo atcommand (wrong mapflag) [akrus]
+
+2006-01-25
+	* Fixed: Spider Web with PvP/GvG mode (fix for Mantis Issue ID 77) [akrus]
+	* Added: friends login/logout notifications [zug]
+	* Fixed: problems with friends list receiving [zug]
+
+2006-01-24
+	* Added: BaseClass support (more simple, compatible with Athena) [akrus]
+	* Updated: russian manner (by akrus), philippines manner (by jshcrtmcd) [akrus]
+
+2006-01-23
+	* Updated: lots of NPCs, thanks to eAthena Development Team [akrus]
+	  NOTE: Read npc/Changelog.txt for more information
+	* Updated: some values in map.h and version.h [akrus]
+	* Fixed: Safety Wall skill (please check now :) [akrus]
+	* Added: russian messages (msg_athena_ru.conf) [akrus]
+	* Fixed: problem with muting finishing too fast [MagicalTux]
+
+2006-01-22
+	* Added: Now configure generates a random ladmin password for you when
+		you first configure Nezumi. You still have to edit
+		login_athena.conf to enable ladmin [MagicalTux]
+	* Fixed: turned off some NPCs that actually should not be there (according to kRO) [akrus]
+	* Fixed: pets cannot attack Emperium anymore [akrus] (info by [Damz] / Mantis Issue ID 55)
+	* Fixed: True Sight critical formula [akrus]
+	* Fixed: Guild Glory skill is not implemented on official servers, turned off (battleconf option) [akrus]
+
+2006-01-21
+	* Added: auto_muting battle config option ('fix' for Mantis Issue ID 43) [akrus]
+	* Updated: monsters and items SQL databases (with latest updates) [akrus]
+	* Undo: Undone Harbin's fix to LK_AURABLADE in skill.c [MagicalTux]
+	* Fixed: Various skill fixed by moving LK_AURABLADE around [MagicalTux]
+	* Fixed: reverted back Breaker skill fix (so now all the skills work right) [akrus]
+	* Changed: Disabled all warnings when compiling SQLite to prevent
+		people from reporting bugs on SQLite lib. SQLite was not made by me, I
+		can't do much to fix those bugs... [MagicalTux]
+
+2006-01-20
+	* Fixed: Damage bonus of aura blade skill. It should also ignore def. Reported by katz3 [Harbin]
+	* Fixed: Preserve skill didn't work [Harbin]
+	* Fixed and optimized: autospell/autospell2 [akrus]
+	* Fixed: Warning in skill.c (bug #35) [MagicalTux]
+	* Added: Now sqlite3 shell is built with Nezumi [MagicalTux]
+	* Undo: Undone Harbin's protection code in clif.c [MagicalTux]
+
+2006-01-19
+	* Fixed: Pneuma and safety wall SHOULD effect to emperium [Harbin]
+	* Fixed: Autocast (from card / equipment) should not consume SP [Harbin]
+	* Fixed: Assumptio does not give damage reduction on WoE maps anymore [Harbin]
+	* Fixed: Character's size with peco [Harbin]
+	* Fixed: Endure should not give immunity to flinch on GvG maps [Harbin]
+	* Fixed: Dispell doesn't effect to enchant deadly poison status [Harbin]
+	* Fixed: Pressure deals damage to emperium's now [Harbin]
+	* Fixed: Pneuma and safety wall should not effect to emperium [Harbin]
+	* Fixed: SQLite now saving skills correctly [MagicalTux]
+	* Fixed: SQLite fixes for user registrations [MagicalTux]
+	* Added: Debug log-file for SQLite [MagicalTux]
+	* Fixed: gm_skill_unconditional with Dancer/Bard skills now do not require a partner [akrus]
+	* Fixed: Breakers physical damage was counted twice [Harbin]
+	* Fixed: Fixed some queries for SQLite [MagicalTux]
+	* Fixed: SQLite now works [MagicalTux]
+	* Fixed: SQLite now support NULL field type [MagicalTux]
+	* Fixed: SQLite now understand multiple insert in 1 query [MagicalTux]
+	* Added: SQLite database for inter/map [MagicalTux]
+	* Fixed: Various crashes happening on AMD64 systems [MagicalTux]
+
+2006-01-18
+	* Fixed: Supernovice's permanent stat bonus (+15 to all stats but only if player's deathcount is 0) (fix by VincintZ) [Harbin]
+	* Fixed: Attack and movement speed reduction of defender [Harbin]
+	* Fixed: Multiple chatroom exploit. Adopted from Project-Freya (originally by Proximus) [Harbin]
+	* Fixed: Berserk doesn't give endure status on gvg maps anymore [Harbin]
+	* Fixed: Damage reduction of assumptio [Harbin]
+	* Fixed: Shield reflect should return some damage to attacker [Harbin]
+	* Fixed: gm_skill_unconditional setting now effects to adracadabra (hocus pocus) [Harbin]
+	* Fixed: Sacrificial ritual should ignore defence [Harbin]
+	* Updated: items and monsters SQL databases [akrus]
+	* Added: Shield Chain, Acid Demonstration and Cart Termination skills [akrus]
+	* Fixed: bAddEffWhenHit (could someone test it now?) [akrus]
+	* Fixed: PK Mode + GvG Mode compatibility problem (blocking some things) [NO-IP]
+	* Fixed: Melt Down skill (typo?) [akrus]
+	* Added: clif_display_globalchat, displays a global chat message [akrus]
+	* Updated: bLoseSPWhenUnequip (missed some things) [akrus]
+	* Added: bSPGainRace effect [akrus]
+	* Added: bExpAddRace effect [akrus]
+	* Fixed: bDamageWhenUnequip effect (now your HP cannot be set to 0) [akrus]
+	* Added: bLoseSPWhenUnequip effect [akrus]
+	* Added: Some (untested) protection's against ro-proxy and packet editors. Original code by Kinko [Harbin]
+	* Fixed: bCriticalRate now returns the right value [akrus]
+	* Updated: Stat bonuses of true sight skill (partially by saxyphil) [Harbin]
+	* Improved: Way to set decrease agility for players [Harbin] 
+	* Fixed: Free trap exploit when using remove trap skill (fix by Proximus) [Harbin]
+	* Fixed: Attack speed bonus with peco and cavalier mastery [Harbin]
+	* Fixed: Item Heal Rate card effect [zug]
+
+2006-01-17
+	* Added: Einbech and Hugel to @GO [Harbin]
+	* Fixed: LoginEvent and LogoutEvent. LoginEvent was LogoutEvent and vice versa (fix by NO-IP) [Harbin]
+	* Fixed: Dispell's change to fail (fix by raversth) [Harbin]
+	* Fixed: Land protector's (magnetic earth) area of effect [Harbin]
+	* Completed: start-nezumi.sh now works totally [MagicalTux]
+	* Added: scripts/merge_conf.sh: first step to get updates done better,
+		having new config options and old values. [MagicalTux]
+	* Fixed: global_reg delete reg function [akrus]
+	* Fixed: char_sql/map : Fixed USE_SQL/USE_MYSQL usage [MagicalTux]
+	* Added: db_sqlite.c based on db_mysql.c [MagicalTux]
+	* Added: db_sqlite, containing SQLite code. Still need the interface [MagicalTux]
+	* Fixed: Decrease Agility skill should last 1/2 time when used on players [akrus]
+	* Fixed: skill_attack_delay_enable in battle configuration should be turned off (as per kRO) [akrus]
+	* Fixed: db.c: va_list wasn't restarted in loop [MagicalTux]
+	* Fix: Lots of modifications to the code, should make it more
+		compatible with AMD64/EM64T computers. Still need to be
+		tested... [MagicalTux]
+	* Changed: Names of MySQL functions renamed to SQL_* [MagicalTux]
+	* Changed: Moved MySQL to its own static lib [MagicalTux]
+	* Added: getrefine() script command [akrus]
+
+2006-01-14
+	* NEW: The project Nezumi, which was abandonned a long time ago, is
+	now back to life. Instead of a PHP-based RO emulator, this will be a
+	fork of the Freya emulator, since Yor stopped his work. [MagicalTux]

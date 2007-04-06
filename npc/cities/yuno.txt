@@ -1,0 +1,391 @@
+//===== eAthena Script ======================================= 
+//= Yuno City
+//===== By: ================================================== 
+//= KitsuneStarwind, kobra_k88
+//===== Current Version: ===================================== 
+//= 1.3.2
+//===== Compatible With: ===================================== 
+//= eAthena 7.15 +
+//===== Description: ========================================= 
+//=
+//===== Additional Comments: ================================= 
+//= Added additional npcs.  Added Metto quest. [kobra_k88]
+//= Moved item quest to quest folder. Re-edited a majority of the npcs. [kobra_k88]
+//= Removed duplicate npcs already found in the sage quest.
+//= Fixed & Spellchecked [massdriller]
+//= 1.3 Started updating Juno NPCs based on iRO. 10% complete.
+//= 1.3.2 Started updating Juno NPCs based on iRO. 30% complete.
+//============================================================ 
+
+
+yuno.gat,330,100,4	script	Knight	734,{
+	mes "[Leibech]";
+	mes "I have a great";
+	mes "interest in collecting";
+	mes "unique and uncommon";
+	mes "goods. You know, things";
+	mes "that most people see just";
+	mes "once in their lifetimes.";
+	next;
+	mes "[Leibech]";
+	mes "I usually use the";
+	mes "Alchesh Trading Company.";
+	mes "to help add to my collection.";
+	mes "Their prices aren't the cheapest,";
+	mes "but their service is very";
+	mes "reliable.";
+	close;
+}
+
+//======================================================================================
+yuno.gat,208,164,4	script	Active little girl	101,{
+	mes "[Hisa]";
+	mes ".....";
+	mes "This town is so boring.";
+	mes "No events, no festivals...";
+	mes "All people do all day is stay";
+	mes "at home and study. How dull!";
+	close;
+}
+
+//======================================================================================
+yuno.gat,164,200,4	script	Noyee	101,{
+	mes "[Noyee]";
+	mes "Did you know that there's a";
+	mes "difference between the armor you";
+	mes "can buy from NPC shops and the";
+	mes "kinds you obtain from hunting";
+	mes "monsters?";
+	next;
+	mes "[Noyee]";
+	mes "The difference, my friend, is in";
+	mes "the number of ^5533FFslots^000000 in your armor.";
+	next;
+	mes "[Noyee]";
+	mes "The same kind of Armor will have";
+	mes "the same Defense. However, if an";
+	mes "Armor has a slot, you can insert a";
+	mes "Monster Card which will add an";
+	mes "enhancement to that armor.";
+	next;
+	mes "[Noyee]";
+	mes "Both Monster Cards and Slotted";
+	mes "Armors are rarely dropped by";
+	mes "monsters, and are thus valuable";
+	mes "commodies.";
+	close;
+}
+
+//======================================================================================
+yuno.gat,184,173,4	script	Freidrich	729,{
+	mes "[Freidrich]";
+	mes "The city of Sages,";
+	mes "^5533FFJuno^000000, is made of";
+	mes "three isnlands.";
+	next;
+	mes "[Freidrich]";
+	mes "These are Solomon, the islands of";
+	mes "honor, Mineta, the islands of";
+	mes "prosperity, and Snotora, the island";
+	mes "of knowledge.";
+	next;
+	mes "[Freidrich]";
+	mes "The location of each island is";
+	mes "North-west : Solomon";
+	mes "North-east : Snotora";
+	mes "South : Mineta.";
+	close;
+}
+
+//======================================================================================
+yuno.gat,157,87,4	script	A Citizen of Yuno	102,{
+	mes "[Shalima]";
+	mes "When you go north from Al De Baran,";
+	mes "you will arrive at 'Elmeth";
+	mes "Plateau', a place covered with";
+	mes "molten rock.";
+	next;
+	mes "[Shalima]";
+	mes "On the top of a mountain connected";
+	mes "to the plateau, you can find a";
+	mes "bridge which leads you this";
+	mes "place!,^5533FFJuno^000000, the city of Sages.";
+	next;
+	mes "[Shalima]";
+	mes "In Juno, you can visit places such";
+	mes " as the 'Juphero Plaza', 'Juno";
+	mes "Conference Hall', 'Schweicherbil";
+	mes "Magic Academy', or the 'Monster";
+	mes "'Museum'. These places are famous";
+	mes "around the world!";
+	next;
+	mes "[Shalima]";
+	mes "You may also wish to drop by the";
+	mes "'Sage Castle', where people can";
+	mes "change their jobs into 'Sage', one";
+	mes "of the more unique classes.";
+	next;
+	mes "[Shalima]";
+	mes "If you're interested in the Sage";
+	mes "class, why don't you go look around";
+	mes "the castle?";
+	close;
+}
+
+//=======================================================================================
+yuno.gat,157,205,4	script	Juno Artisan	54,{
+	mes "[Artisan]";
+	mes "*Mumble mumble...*";
+	next;
+	mes "[Artisan]";
+	mes "Oh, hello there. Let me introduce";
+	mes "myself. I am an artisan who tries";
+	mes "to succeed the rights and duties of";
+	mes "item makers in Juno.";
+	next;
+	menu "About Powerful Equipment.",M_1,"About Unique Items",M_2,"About Authentic Food",M_3,"End Conversation",M_End;
+	
+	M_1: 
+		mes "[Artisan]";
+		mes "Let me suggest the ^5533FFHoly Guard^000000 and";
+		mes "^5533FFHoly Avenger^000000 which are";
+		mes "special items for Crusaders.";
+		next;
+		mes "[Artisan]";
+		mes "These pieces of equipment are very";
+		mes "light and have sufficient";
+		mes "abilities. They also happen to";
+		mes "possess holy power.";
+		next;
+		mes "[Artisan]";
+		mes "Therefore, this equipment is more";
+		mes "powerful over some kinds of";
+		mes "monsters such as Ghosts or the";
+		mes "Undead.";
+		next;
+		mes "[Artisan]";
+		mes "However it is rumored that only a";
+		mes "few chosen Crusaders are able to";
+		mes "obtain those items due of their";
+		mes "rarity.";
+		close;
+		
+	M_2:
+		mes "[Artisan]";
+		mes "It looks like a simple scroll";
+		mes "marked with concentric circles and";
+		mes "a star. Although the ^5533FFWorn-Out Magic^000000";
+		mes "^5533FFScroll^000000 is very old, it's wanted by";
+		mes "many Sages for research purposes.";
+		next; 
+		mes "[Artisan]";
+		mes "It seems you can use that item when";
+		mes "you chant a high-level magic";
+		mes "spell.";
+		close;
+	
+	M_3:
+		mes "[Artisan]";
+		mes "^5533FFRice Cake^000000! Yes, it's a traditional";
+		mes "food that's favored by a lot of";
+		mes "people. There's a lot of nostalgic";
+		mes "memories of old fashioned markets";
+		mes "that are connected to the Rice";
+		mes "Cake.";
+		next;
+		mes "[Artisan]";
+		mes "Ahhh~";
+		mes "I wish i could eat a bit of Rice";
+		mes "Cake right now.";
+		close;		
+
+	M_End:
+		mes "[Artisan]";
+		mes "Although Yuno is known as the city of";
+		mes "Sages, I hope you understand that";
+		mes "ordinary people live and prosper";
+		mes "here as well. Please enjoy the";
+		mes "unique atmosphere that Juno has to";
+		mes "offer.";
+		close;
+}
+
+//======================================================================================
+yuno.gat,336,227,4	script	Juno Granny	103,{
+	mes "[Granny]";
+	mes "I am an old Sage granny who";
+	mes "foresees everything...";
+	next;
+	mes "[Granny]";
+	mes "Have you heard of a boss monster";
+	mes "that has been around Juno for a";
+	mes "long time? it's known only as the";
+	mes "^FF3355Lord of the Dead^000000.";
+	next;
+	mes "[Granny]";
+	mes "It is rumored to be from the realm";
+	mes "of the dead. It brings many undead";
+	mes "monsters with it, intending to lead";
+	mes "living creatures to its cold and";
+	mes "icy realm.";
+	next;
+	mes "[Granny]";
+	mes "You have already chosen whether or";
+	mes "not you will challenge the Lord of";
+	mes "the Dead. All you need to do right";
+	mes "now is understand why you made the";
+	mes "decision.";
+	close;
+}
+
+//========================================================================================
+yuno.gat,328,239,4	script	Juno Fighter	732,{
+	mes "[Sergiof]";
+	mes "My name is Sergiof,";
+	mes "the fighter who";
+	mes "serves Granny.";
+	next;
+	mes "[Sergiof]";
+	mes "I will tell you about ^5533FF'Grand Peco'^000000";
+	mes "which is a high level Peco Peco.";
+	mes "Grand Peco is faster than Peco Peco";
+	mes "and is quite aggressive";
+	next;
+	mes "[Sergiof]";
+	mes "It attacks using its strong bill";
+	mes "and many Peco Pecos follow it.";
+	mes "There's quite a difference in power";
+	mes "between Peco Peco and the Grand";
+	mes "Peco.";
+	close;
+}
+
+//========================================================================================
+yuno.gat,343,68,4	script	Juno Despot	730,{
+	mes "[Ninno]";
+	mes "Have you ever heard of an Egyptian";
+	mes "king who was once believed to be a";
+	mes "son of a god? his name is ^5533FFPharaoh^000000.";
+	next;
+	mes "[Ninno]";
+	mes "He was rumored to be a high";
+	mes "sorcerer that used his power to";
+	mes "curse innocents. It is said that he";
+	mes "is still around, placing his curses";
+	mes "on people.";
+	next;
+	mes "[Ninno]";
+	mes "As an adventurer, it's possible";
+	mes "that you may see him in your";
+	mes "travels. Be careful...";
+	close;
+}
+	
+//=======================================================================================
+yuno.gat,261,99,4	script	Sage Yklah	735,{
+	mes "[Yklah]";
+	mes "^5533FFJuphero^000000...";
+	mes "That was the name of the city that";
+	mes "once existed in ancient times.";
+	next;
+	mes "[Yklah]";
+	mes "The most intelligent and talented";
+	mes "people of that time lived there,";
+	mes "harnessing the pieces of Ymir's";
+	mes "heart to power their civilization.";
+	next;
+	mes "[Yklah]";
+	mes "Unfortunately, they happened to";
+	mes "abuse that great power and somehow";
+	mes "destroyed themselves.";
+	next;
+	mes "[Yklah]";
+	mes "If you long to acquire God's";
+	mes "knowledge, you must first be";
+	mes "humble. Otherwise...";
+	close;
+}
+
+//=========================================================================================
+yuno.gat,305,207,6	script	Sage Syklah	735,{
+		mes "[Syklah]";
+		mes "The people here keep talking of";
+		mes "some suspicious man living in";
+		mes "Juno.";
+		next;
+		mes "[Syklah]";
+		mes "Supposedly, he's pretty dangerous,";
+		mes "and is always immersing himself in";
+		mes "some kind of research.";
+		next;
+		mes "[Syklah]";
+		mes "People already consider him a 'Mad";
+		mes "Scientist', wasting his time";
+		mes "studying impractical things beyond";
+		mes "the understanding of normal";
+		mes "people.";
+		next;
+		mes "[Syklah]";
+		mes "It's rumored that this scientist is";
+		mes "responsible for creating 'Blazer',";
+		mes "a monster made of magic flame.";
+		next;
+		mes "[Syklah]";
+		mes "It's a dangerous and fearsome";
+		mes "monster that casts spells like Fire";
+		mes "Bolt and Fire Ball that lives";
+		mes "outside of Juno.";	
+		close;
+}
+
+//==========================================================================================
+yuno.gat,213,298,4	script	Sage Esklah	735,{
+	mes "[Esklah]";
+	mes "I remember watching a harmless";
+	mes "piece of paper floating";
+	mes "trough the air...";
+	next;
+	mes "[Esklah]";
+	mes "As i was thinking of how";
+	mes "wonderfully poetic that image was,";
+	mes "that paper suddenly attacked me!";
+	mes "Me, one of Juno's greatest Sages!";
+	next;
+	mes "[Esklah]";
+	mes "I tried defending myself with my";
+	mes "trusty sword, but being paper-thin,";
+	mes "that monster managed to dodge all";
+	mes "of my blows. I had to cast magic in";
+	mes "order to destroy it.";
+	next;
+	mes "[Esklah]";
+	mes "Later, I learned that monster is";
+	mes "known as ^FF5533The Paper^000000.";
+	next;
+	mes "[Esklah]";
+	mes "It used to be a part of an old book";
+	mes "that contained a lot of ancient";
+	mes "knowledge about Juno, but somehow,";
+	mes "became a monster. Isn't that";
+	mes "peculiar?";
+	close;
+}
+
+
+
+//======================================================================================
+yuno.gat,165,111,4	script	Juno Sage	123,{
+	mes "[Le Morpheous]";
+	mes "^FF5533Apocalypse...^000000";
+	mes "It is the name of an android that";
+	mes "used to guard Juno long ago.";
+	next;
+	mes "[Le Morpheus]";
+	mes "Because its artificial intelligence";
+	mes "has corrupted over the years, it";
+	mes "can no longer distinguish comrades";
+	mes "from enemies. Sadly, that android";
+	mes "is nothing but a mindless monster";
+	mes "now.";
+	close;
+}

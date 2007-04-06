@@ -1,0 +1,160 @@
+//===== Nezumi Script ========================================
+//= Einbroch Guides
+//===== By: ==================================================
+//= Original:	English Athena Developer Team
+//= Updated:	Nezumi Developer Team
+//===== Current Version: =====================================
+//= 1.0.0
+//===== Compatible With: =====================================
+//= Nezumi 1.0.0 or newer
+//============================================================
+
+einbroch.gat,72,202,4	script	Guide#1::Einbroch_Guide	852,{
+	cutin "ein_soldier",2;
+	mes "[Einbroch Guide]";
+	mes "Welcome to Einbroch, the City of Steel.";
+	mes "Please ask me if you have any questions";
+
+M_Menu:
+	next;
+	menu "City Guide",-, "Remove Marks from Mini-Map",M_2, "Notice",L_NOTICE, "Cancel",M_End;
+
+	mes "[Einbroch Guide]";
+	mes "Please select a location from the following menu.";
+	mes "Would you like me to mark locations on your Mini-Map";
+	next;
+	menu "No Thanks",-,"Yes Please",sM_1b;
+	
+	set @COMPASS_CHECK,0;
+	goto L_Cont;
+
+	sM_1b:
+	set @COMPASS_CHECK,1;
+
+	L_Cont:
+sM_Menu:
+	menu "^FF0000Airport^000000",-,"Train Station",sM_2b,"Factory",sM_2c,"Plaza",sM_2d,
+	"Hotel",sM_2e,"Weapon Shop",sM_2f,"Laboratory",sM_2g,"Blacksmith Guild",sM_2h,
+	"Einbroch Tower",sM_2i,"Cancel",SM_2j;
+
+	mes "[Einbroch Guide]";
+	mes "The ^FF0000Airport^000000 is is located in the northwestern part of the city.";
+	mes "There you can see our city's pride and joy, the Airship.";
+	mes "Remember that you must pay admission to board the Airship.";
+	viewpoint 1,63,208,1,0xFF0000;
+	next;
+	goto sL_Wipe;
+	sM_2b:
+	mes "[Einbroch Guide]";
+	mes "The Train Station is located in the northeast part of Einbroch.";
+	mes "Trains are running between here and Einbech all day long, everyday.";
+	viewpoint 1,238,272,2,0x0000FF;
+	next;
+	goto sL_Wipe;
+sM_2c:
+	mes "[Einbroch Guide]";
+	mes "The Factory, perhaps the most important facility in Einbroch, is located in the southern part of the city.";
+	viewpoint 1,149,80,3,0x00FF00;
+	next;
+	goto sL_Wipe;
+sM_2d:
+	mes "[Einbroch Guide]";
+	mes "The Plaza, our biggest shopping district, can be found just east from the center of Einbroch";
+	viewpoint 1,231,189,4,0xFF00FF;
+	next;
+	goto sL_Wipe;
+sM_2e:
+	mes "[Einbroch Guide]";
+	mes "The Hotel is east of the Plaza and offers top caliber accomodations.";
+	mes "There, you can enjoy your stay in Einbroch in comfort~";
+	viewpoint 1,257,200,5,0x00AAFF;
+	next;
+	goto sL_Wipe;
+sM_2f:
+	mes "[Einbroch Guide]";
+	mes "The Weapon Shop is located north from the Plaza.";
+	mes "There you can purchase weapons for your personal use.";
+	viewpoint 1,217,212,6,0xDDAA00;
+	next;
+	goto sL_Wipe;
+sM_2g:
+	mes "[Einbroch Guide]";
+	mes "The Laboratory is an annex of the factory and is located in the southwest sector of Einbech";
+	viewpoint 1,43,45,7,0xDDAA00;
+	next;
+	goto sL_Wipe;
+sM_2h:
+	mes "[Einbroch Guide]";
+	mes "The Blacksmith Guild is located in the southeast part of Einbroch.";
+	mes "You can upgrade your equipment by using their services.";
+	viewpoint 1,255,105,8,0xDDAA00;
+	next;
+	goto sL_Wipe;
+sM_2i:
+	mes "[Einbroch Guide]";
+	mes "The Einbroch Tower is located in the center of the city.";
+	mes "From the top of the tower, you can view all of Einbroch.";
+	viewpoint 1,173,195,9,0xDDAA00;
+	next;
+	goto sL_Wipe;
+
+SM_2j:
+	mes "[Einbroch Guide]";
+	mes "Please ask me to Remove";
+	mes "Marks from Mini-Map if you";
+	mes "no longer wish to have the";
+	mes "location marks displayed";
+	mes "on your Mini-Map.";
+	goto M_Menu;
+
+sL_Wipe:
+	if(@COMPASS_CHECK == 1) goto sM_Menu;
+	viewpoint 2,63,208,1,0xFF0000;
+	viewpoint 2,238,272,2,0x0000FF;
+	viewpoint 2,149,80,3,0x00FF00;
+	viewpoint 2,231,189,4,0xFF00FF;
+	viewpoint 2,257,200,5,0x00AAFF;
+	viewpoint 2,217,212,6,0xDDAA00;
+	viewpoint 2,43,45,7,0xDDAA00;
+	viewpoint 2,255,105,8,0xDDAA00;
+	viewpoint 2,173,195,9,0xDDAA00;
+	if (@COMPASS_CHECK == 0) goto sM_Menu;
+
+M_2:
+	viewpoint 2,63,208,1,0xFF0000;
+	viewpoint 2,238,272,2,0x0000FF;
+	viewpoint 2,149,80,3,0x00FF00;
+	viewpoint 2,231,189,4,0xFF00FF;
+	viewpoint 2,257,200,5,0x00AAFF;
+	viewpoint 2,217,212,6,0xDDAA00;
+	viewpoint 2,43,45,7,0xDDAA00;
+	viewpoint 2,255,105,8,0xDDAA00;
+	viewpoint 2,173,195,9,0xDDAA00;
+	mes "[Einbroch Guide]";
+	mes "Okay, the marks from your Mini-Map have been removed.";
+	mes "If you need any guidance around Einbroch, please let me or one of the other Einbroch Guides know.";
+	cutin "ein_soldier",255;
+	goto M_Menu;
+
+L_NOTICE:
+	mes "[Einbroch Guide]";
+	mes "Through the technology of the Schwartzwalt Republic, we've upgraded to a digital information system that allows us to mark locations on your Mini-Map for easier navigation.";
+	next;
+  	mes "[Einbroch Guide]";
+  	mes "Your Mini-Map is located in the upper right corner of the screen.";
+	mes "If you can't see it, press the Ctrl + Tab keys or click the 'Map' button in your Basic Information Window.";
+  	next;
+  	mes "[Einbroch Guide]";
+ 	mes "On your Mini-Map, click on the '+' and '-' symbols to zoom in and out of your Mini-Map.";
+	mes "We hope you enjoy your travels here in the city of Einbroch.";
+ 	goto L_MENU;
+
+M_End:
+	mes "[Einbroch Guide]";
+	mes "We hope that you enjoy your travels here in Einbroch. Oh, and please be aware of the Smog Alerts";
+	cutin "ein_soldier",255;
+	close;
+}
+
+einbroch.gat,155,43,4	duplicate(Einbroch_Guide)	Guide#2	852
+einbroch.gat,162,317,4	duplicate(Einbroch_Guide)	Guide#3	852

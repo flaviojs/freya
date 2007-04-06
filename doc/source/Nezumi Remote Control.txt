@@ -1,0 +1,31 @@
+*****
+** NezumiRC protocol
+*****
+PROTOCOL VERSION: 1
+
+This document etablish communication standards between:
+* NezumiRC software, called "client"
+* Nezumi login-server, called "login-server"
+
+Packets allocation
+------------------
+Packets in the range 0x8000/8 will be allocated to NezumiRC.
+Client packet numbers are even
+
+Login step
+----------
+C: 0x8000(6) version.l: Client Handshake
+S: 0x8001(6) version.l: Server Handshake answer
+C: 0x8002(-1) length.b password.s: Client sending plaintext password
+S: 0x80ff(-1) errcode.l length.w message.s: Error message
+S: 0x8003(2): Authentification OK
+
+Information commands
+--------------------
+C: 0x7535(2): Asking server "ATHENA VERSION"
+S: 0x7536(13) major.b minor.b rev.b releaseflag.b official.b login.b modversion.l svnrev.l dbsystem.b
+C: 0x8004: Asking servers enumeration
+C: 0x8006 intid.l(6): Asking server info update for "intid"
+S: 0x8007 intid.l ip.l port.w name.20s users.w maint.w new.w(38): Server info (name="" -> remove)
+C: 0x8008(2): Asking for "COMPILATION DETAILS"
+S: 0x8009(-1) type.b len.w string.s: Compilation details. type: 0=platform 1=prefix 2=confdate 3=confline 4=inc 5=libs

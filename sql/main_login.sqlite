@@ -1,0 +1,64 @@
+-- -------------------------------------------------------
+
+BEGIN TRANSACTION;
+
+-- Database: Ragnarok
+-- Table: 'login'
+-- 
+CREATE TABLE IF NOT EXISTS `login` (
+  `account_id` INTEGER AUTO_INCREMENT PRIMARY KEY,
+  `userid` varchar(24) NOT NULL default '',
+  `user_pass` varchar(32) NOT NULL default '',
+  `lastlogin` datetime NOT NULL default '0000-00-00 00:00:00',
+  `sex` char(1) NOT NULL default 'M',
+  `logincount` mediumint(9) NOT NULL default '0',
+  `email` varchar(40) NOT NULL default 'a@a.com',
+  `level` smallint(3) NOT NULL default '0',
+  `error_message` varchar(40) NOT NULL default '',
+  `connect_until` int(11) NOT NULL default '0',
+  `last_ip` varchar(16) NOT NULL default '',
+  `memo` TEXT NOT NULL default '',
+  `ban_until` int(11) NOT NULL default '0',
+  `state` smallint(3) NOT NULL default '0'
+);
+CREATE INDEX `userid` ON `login` (`userid`);
+
+-- added standard accounts for servers, VERY INSECURE!!!
+-- inserted into the table called login which is above
+
+INSERT INTO "login" VALUES(1, 's1', 'p1', '0000-00-00 00:00:00', 'S', 0, 'a@a.com', 0, '', 0, '', '', 0, 0);
+INSERT INTO "login" VALUES(2, 's2', 'p2', '0000-00-00 00:00:00', 'S', 0, 'a@a.com', 0, '', 0, '', '', 0, 0);
+INSERT INTO "login" VALUES(3, 's3', 'p3', '0000-00-00 00:00:00', 'S', 0, 'a@a.com', 0, '', 0, '', '', 0, 0);
+INSERT INTO "login" VALUES(4, 's4', 'p4', '0000-00-00 00:00:00', 'S', 0, 'a@a.com', 0, '', 0, '', '', 0, 0);
+INSERT INTO "login" VALUES(5, 's5', 'p5', '0000-00-00 00:00:00', 'S', 0, 'a@a.com', 0, '', 0, '', '', 0, 0);
+INSERT INTO "login" VALUES(6, 's6', 'p6', '0000-00-00 00:00:00', 'S', 0, 'a@a.com', 0, '', 0, '', '', 0, 0);
+INSERT INTO "login" VALUES(7, 's7', 'p7', '0000-00-00 00:00:00', 'S', 0, 'a@a.com', 0, '', 0, '', '', 0, 0);
+INSERT INTO "login" VALUES(8, 's8', 'p8', '0000-00-00 00:00:00', 'S', 0, 'a@a.com', 0, '', 0, '', '', 0, 0);
+INSERT INTO "login" VALUES(9, 's9', 'p9', '0000-00-00 00:00:00', 'S', 0, 'a@a.com', 0, '', 0, '', '', 0, 0);
+INSERT INTO "login" VALUES(10, 's10', 'p10', '0000-00-00 00:00:00', 'S', 0, 'a@a.com', 0, '', 0, '', '', 0, 0);
+INSERT INTO "login" VALUES(11, 's11', 'p11', '0000-00-00 00:00:00', 'S', 0, 'a@a.com', 0, '', 0, '', '', 0, 0);
+INSERT INTO "login" VALUES(12, 's12', 'p12', '0000-00-00 00:00:00', 'S', 0, 'a@a.com', 0, '', 0, '', '', 0, 0);
+INSERT INTO "login" VALUES(13, 's13', 'p13', '0000-00-00 00:00:00', 'S', 0, 'a@a.com', 0, '', 0, '', '', 0, 0);
+INSERT INTO "login" VALUES(14, 's14', 'p14', '0000-00-00 00:00:00', 'S', 0, 'a@a.com', 0, '', 0, '', '', 0, 0);
+INSERT INTO "login" VALUES(15, 's15', 'p15', '0000-00-00 00:00:00', 'S', 0, 'a@a.com', 0, '', 0, '', '', 0, 0);
+INSERT INTO "login" VALUES(2000001, 'test', 'test', '0000-00-00 00:00:00', 'M', 0, 'a@a.com', 0, '', 0, '', '', 0, 0);
+
+-- Database: Ragnarok
+-- Table: 'account_reg2_db'
+-- 
+CREATE TABLE IF NOT EXISTS `account_reg2_db` (
+  `account_id` int(11) NOT NULL default '0',
+  `str` varchar(32) NOT NULL default '',
+  `value` int(11) NOT NULL default '0',
+  PRIMARY KEY (`account_id`, `str`)
+);
+
+-- Database: Ragnarok
+-- Table: 'sstatus'
+-- 
+CREATE TABLE IF NOT EXISTS `sstatus` (
+  `index` tinyint(4) NOT NULL default '0',
+  `name` varchar(20) NOT NULL default '',
+  `user` int(11) NOT NULL default '0'
+);
+COMMIT;

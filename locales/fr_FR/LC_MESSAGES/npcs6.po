@@ -1,0 +1,93 @@
+#: npc/cities/geffen.txt:607
+msgid ""
+"But wear a pair of Red Sandals with it.... and that becomes just TOOOO much "
+"to bear!!"
+msgstr ""
+"Mais une paire usée de Sandals avec ça.... et cela devient simplement TROOOOP compliqué"
+"pour se diriger !!"
+
+#: npc/cities/geffen.txt:613
+msgid ""
+"It's nice to wear expensive headgear.  It's nice to wear fancy clothing too!"
+msgstr "Il est agréable de porter un couvre-chef de valeur. Il est également agréable de porter des habits fantaisistes !"
+
+#: npc/cities/geffen.txt:614
+msgid "But remember to make everything match or you'll look like a fool!"
+msgstr "Mais rappelez-vous que si vous faite correspondre tout vos habits, vous ressemblerez à un imbécile !"
+
+#: npc/cities/geffen.txt:615
+msgid "You can't just wear everything that you think is fancy."
+msgstr "Vous ne pouvez pas portez tout ce qui vous semble fantaisiste."
+
+#: npc/cities/geffen.txt:618
+msgid ""
+"Make sure the things you wear go with each other and compliment one another."
+msgstr ""
+""Assurez-vous que les choses que vous portez sont assortis et de complimenter les autres.
+
+#: npc/cities/geffen.txt:623
+msgid ""
+"Hmm... this has nothing to do with fortune telling... but still... I like "
+"talking about fashion."
+msgstr ""
+"Hmm... cela n'a rien à voir avec la voyance... mais bon... j'aime parler"
+"de la mode."
+
+#: npc/cities/geffen.txt:637 npc/cities/geffen.txt:642
+#: npc/cities/geffen.txt:645 npc/cities/geffen.txt:648
+#: npc/cities/geffen.txt:652 npc/cities/geffen.txt:656
+msgid "[Dark Wizard]"
+msgstr "[Magicien Sombre]"
+
+#: npc/cities/geffen.txt:638
+msgid "Hmf.  I only speak to those with magic abilities...."
+msgstr "Hmf. Je ne parle qu'avec ceux possédant des capacités magiques...."
+
+#: npc/cities/geffen.txt:643
+msgid "Oh... I can feel the mighty spirits stirring around me."
+msgstr "Oh... Je peux sentir les esprits s'exaltant autour de moi."
+
+#: npc/cities/geffen.txt:646
+msgid "You there, I sense that you too use magic."
+msgstr "Vous là, je sens que vous utilisez la magie également."
+
+#: npc/cities/geffen.txt:649
+msgid ""
+"Magic... a great power which is dictated by cause and effect.  If it is used "
+"for good then in turn positive reactions will occur."
+msgstr ""
+"La magie... un grand pouvoir dicté de cause à effet."
+"Si elle est utilisée pour le bien, des réactions positives apparaitront."
+
+#: npc/cities/geffen.txt:650
+msgid ""
+"However, if it is used for evil, then negative reactions will occur "
+"instead.  When using magic you truly reap what you sew."
+msgstr ""
+"Cependant, il elle est utilisé pour le mal, alors des réactions négatives apparaitront"
+"dans ce cas. Quand vous utilisez la magie vous récoltez vraiment ce que vous semez."
+
+#: npc/cities/geffen.txt:653
+msgid ""
+"Have you ever heard of ^0000ddGemstones^000000? Some magic spells are so "
+"powerfull that they require the use of a Gemstone."
+msgstr ""
+"Avez-vous déjà entendu parler des ^000ddGemstones^000000 ? Quelques sorts sont si"
+"puissant qu'ils exigent l'utilisation d'une Gemstone."
+
+#: npc/cities/geffen.txt:654
+msgid ""
+"These stones amplify a magic users power and allow them to cast high level "
+"spells.  They can be bought at the magic store in town."
+msgstr ""
+"Ces pierres amplifient le pouvoir magique de l'utilisateur et leur permettent de caster "
+"des sorts de haut niveau. La Blue Gemstone peut être achetée au magasin de cette ville."
+
+#: npc/cities/geffen.txt:657
+msgid ""
+"Always remeber that magic should only be used for the bennefit of people, "
+"not to do them harm."
+msgstr ""
+"Souvenez-vous toujours que la magie devrait seulement être utilisée pour le bien des gens,"
+"non pas pour leur faire du mal."
+

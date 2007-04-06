@@ -1,0 +1,2 @@
+npc_php.o: CFLAGS:=$(subst --std=c99,--std=gnu99,$(CFLAGS))
+

@@ -1,0 +1,177 @@
+//===== Nezumi Script ======================================= 
+//= Airship System
+//===== By: ================================================== 
+//= Spirit Death
+//===== Current Version: ===================================== 
+//= 1.0
+//===== Compatible With: ===================================== 
+//= any Nezumi version
+//===== Description: ========================================= 
+//= Airship System with 2 Routes (almost official)
+//=		1st Route: Yuno->Hugel->Einbroch->Lighthalzen->Yuno
+//= 	2nd Route: Yuno->Izlude->Yuno
+//===== Includes: ============================================ 
+//= airships.txt 
+//= airprt_yun.txt
+//= airprt_izl.txt
+//= airprt_ein.txt
+//= airprt_lhz.txt
+//= airprt_hug.txt
+//===== Additional Comments: ================================= 
+//= 1.0 first release [Spirit Death]
+//============================================================ 
+
+
+//============================================================ 
+//= Route 1 (Yuno->Hugel->Einbroch->Lighthalzen->Yuno)
+//============================================================ 
+
+airplane.gat,0,0,0	script	airplane	-1,{
+OnInit:
+	initnpctimer;
+	end;
+OnTimer1000:
+	set $route1,0;
+	disablenpc "#warp1";
+	disablenpc "#warp2";
+	mapannounce "airplane.gat","Captain: Takeoff. Next stop is the Garden City, Hugel.",0x10;
+	end;
+OnTimer51000:
+	mapannounce "airplane.gat","Captain: We will arrive Hugel in a few seconds.",0x10;
+	end;
+OnTimer61000:
+	enablenpc "#warp1";
+	enablenpc "#warp2";
+	mapannounce "airplane.gat","Captain: Welcome to Hugel. We hope you enjoyed your trip.",0x10;
+	end;
+OnTimer71000:
+	mapannounce "airplane.gat","Captain: We are in leaving Hugel soon. Prepare to take off.",0x10;
+	end;
+OnTimer81000:
+	set $route1,1;
+	disablenpc "#warp1";
+	disablenpc "#warp2";
+	mapannounce "airplane.gat","Captain: Takeoff. Next stop is the Metall City, Einbroch.",0x10;
+	end;
+OnTimer131000:
+	mapannounce "airplane.gat","Captain: We will arrive Einbroch in a few seconds.",0x10;
+	end;
+OnTimer141000:
+	enablenpc "#warp1";
+	enablenpc "#warp2";
+	mapannounce "airplane.gat","Captain: Welcome to Einbroch. We hope you enjoyed your trip.",0x10;
+	end;
+OnTimer151000:
+	mapannounce "airplane.gat","Captain: We are in leaving Einbroch soon. Prepare to take off.",0x10;
+	end;
+	
+OnTimer161000:
+	set $route1,2;
+	disablenpc "#warp1";
+	disablenpc "#warp2";
+	mapannounce "airplane.gat","Captain: Takeoff. Next stop is the City of A.I., Lighthalzen.",0x10;
+	end;	
+OnTimer211000:
+	mapannounce "airplane.gat","Captain: We will arrive Lighthalzen in a few seconds.",0x10;
+	end;
+OnTimer221000:
+	enablenpc "#warp1";
+	enablenpc "#warp2";
+	mapannounce "airplane.gat","Captain: Welcome to Lighthalzen. We hope you enjoyed your trip.",0x10;
+	end;
+OnTimer231000:
+	mapannounce "airplane.gat","Captain: We are in leaving Lighthalzen soon. Prepare to take off.",0x10;
+	end;
+OnTimer241000:
+	set $route1,3;
+	disablenpc "#warp1";
+	disablenpc "#warp2";
+	mapannounce "airplane.gat","Captain: Takeoff. Next stop is the Capital of Schwarzwald Republic, Yuno.",0x10;
+	end;	
+OnTimer291000:
+	mapannounce "airplane.gat","Captain: We will arrive in Yuno in a few seconds.",0x10;
+	end;
+OnTimer301000:
+	enablenpc "#warp1";
+	enablenpc "#warp2";
+	mapannounce "airplane.gat","Captain: Welcome to Yuno. We hope you enjoyed your trip.",0x10;
+	end;
+OnTimer311000:
+	mapannounce "airplane.gat","Captain: We are in leaving Yuno soon. Prepare to take off.",0x10;
+	end;	
+OnTimer320000:
+	initnpctimer;
+	end;
+}
+airplane.gat,243,74,4	script	#warp1	45,2,2{
+OnTouch:
+	if($route1 == 0) warp "hugel.gat",178,149;
+	if($route1 == 1) warp "einbroch.gat",90,275;
+	if($route1 == 2) warp "lighthalzen.gat",302,75;
+	if($route1 == 3) warp "yuno.gat",85,265;
+	close;
+}	
+airplane.gat,243,29,4	script	#warp2	45,2,2{
+OnTouch:
+	if($route1 == 0) warp "hugel.gat",178,149;
+	if($route1 == 1) warp "einbroch.gat",90,275;
+	if($route1 == 2) warp "lighthalzen.gat",302,75;
+	if($route1 == 3) warp "yuno.gat",85,265;
+	close;
+}	
+
+//============================================================ 
+//= Route 2 (Yuno->Izlude->Yuno)
+//============================================================ 
+
+airplane_01.gat,0,0,0	script	airplane_01	-1,{
+OnInit:
+	initnpctimer;
+	end;
+OnTimer1000:
+	set $route2,0;
+	disablenpc "#warp3";
+	disablenpc "#warp4";
+	mapannounce "airplane_01.gat","Captain: Takeoff. Next stop is Pronteras Satelite, Izlude.",0x10;
+	end;
+OnTimer51000:
+	mapannounce "airplane_01.gat","Captain: We will arrive Izlude in a few seconds.",0x10;
+	end;
+OnTimer61000:
+	enablenpc "#warp3";
+	enablenpc "#warp4";
+	mapannounce "airplane_01.gat","Captain: Welcome to Izlude. We hope you enjoyed your trip.",0x10;
+	end;
+OnTimer71000:
+	mapannounce "airplane_01.gat","Captain: We are in leaving Izlude soon. Prepare to take off.",0x10;
+	end;
+OnTimer81000:
+	set $route2,1;
+	disablenpc "#warp3";
+	disablenpc "#warp4";
+	mapannounce "airplane_01.gat","Captain: Takeoff. Next stop is the Capitol of Schwarzwald Republic, Yuno.",0x10;
+	end;
+OnTimer131000:
+	mapannounce "airplane_01.gat","Captain: We will arrive Yuno in a few seconds.",0x10;
+	end;
+OnTimer141000:
+	enablenpc "#warp3";
+	enablenpc "#warp4";
+	mapannounce "airplane_01.gat","Captain: Welcome to Yuno. We hope you enjoyed your trip.",0x10;
+	end;
+OnTimer150000:
+	initnpctimer;
+	end;
+}
+airplane_01.gat,243,74,4	script	#warp3	45,2,2{
+OnTouch:
+	if($route2 == 0) warp "izlude.gat",202,56;
+	if($route2 == 1) warp "yuno.gat",20,265;
+	close;
+}	
+airplane_01.gat,243,29,4	script	#warp4	45,2,2{
+OnTouch:
+	if($route2 == 0) warp "izlude.gat",202,56;
+	if($route2 == 1) warp "yuno.gat",20,265;
+	close;
+}	

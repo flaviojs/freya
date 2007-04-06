@@ -1,0 +1,727 @@
+//===== Nezumi Script ========================================
+//= Wandering poet NPC
+//===== By: ==================================================
+//= MouseJstr
+//= DarkRaven [1.1]
+//===== Current Version: =====================================
+//= 1.1 [DarkRaven]
+//===== Compatible With: =====================================
+//= Nezumi 1.0+
+//===== Description: =========================================
+//===== Additional Comments: =================================
+//= 1.1 Changed all npctalk to globalmes. [DarkRaven]
+
+ayothaya.gat,58,134,5	script	Louise Gluck	763,{
+	mes "[Louise Gluck]";
+	mes "What is the next line? ";
+	close;
+
+	OnTimer5000:
+		npcwalkto 65,129;
+		globalmes "Twas brillig, and the slithy toves Did gyre and gimble in the wabe: ";
+		end;
+
+	OnTimer10000:
+		npcwalkto 71,131;
+		globalmes " All mimsy were the bogoroves, And the mome raths outgrabe.  ";
+		end;
+
+	OnTimer15000:
+		npcwalkto 75,127;
+		globalmes "Beware the Jabberwock, my son!  The jaws that bite, theh claws that catch!";
+		end;
+
+	OnTimer20000:
+		npcwalkto 80,122;
+		globalmes " Beware the Jubjub bird and shun The frumious Bandersnatch!";
+		end;
+
+	OnTimer25000:
+		npcwalkto 82,118;
+		globalmes " He took his vorpal sword in hand: Long time the manxome foe he sought- ";
+		end;
+
+	OnTimer30000:
+		npcwalkto 93,115;
+		globalmes " So rested he by the Tumtum tree, And stood a while in thought.  ";
+		end;
+
+	OnTimer35000:
+		npcwalkto 94,112;
+		globalmes " And, as in uffish thought he stood, The Jabberwock, with eyes of flame, ";
+		end;
+
+	OnTimer40000:
+		npcwalkto 88,124;
+		globalmes " Came whiffling through the tulgey wood, And burbled as it came!  ";
+		end;
+
+	OnTimer45000:
+		npcwalkto 81,129;
+		globalmes " One, two! One, two! And through and through The vorpal blade went snicker-snack!  ";
+		end;
+
+	OnTimer50000:
+		npcwalkto 76,139;
+		globalmes " He left it dead, and with its head He went galumphing back.  ";
+		end;
+
+	OnTimer55000:
+		npcwalkto 67,138;
+		globalmes "And hast though slain the Jabberwock?  Come to my arms beamish boy!  ";
+		end;
+
+	OnTimer60000:
+		npcwalkto 59,144;
+		globalmes " O frabjous day! Callooh! Callay! He chortled in his joy.  ";
+		end;
+
+	OnTimer65000:
+		npcwalkto 55,124;
+		globalmes " Twas brillig, and the slithy toves Did gyre and gimble in the wabe: ";
+		end;
+
+	OnTimer70000:
+		npcwalkto 58,134;
+		globalmes " All mimsy were the bogoroves, And the mome raths outgrabe.  ";
+		setnpctimer 0;
+		end;
+
+	OnInit:
+		npcspeed 150;
+		initnpctimer;
+		end;
+}
+
+
+ayothaya.gat,212,276,0	script	Romeo	50,{
+	mes "[Romeo]";
+	mes "What is the next line? ";
+	close;
+	OnTimer0:
+		globalmes "He jests at scars that never felt a wound.";
+		end;
+	OnTimer6000:
+		globalmes "But, soft! what light through yonder window breaks?";
+		end;
+	OnTimer8000:
+		globalmes "It is the east, and Juliet is the sun.";
+		end;
+	OnTimer10000:
+		globalmes "Arise, fair sun, and kill the envious moon,";
+		end;
+	OnTimer12000:
+		globalmes "Who is already sick and pale with grief,";
+		end;
+	OnTimer14000:
+		globalmes "That thou her maid art far more fair than she:";
+		end;
+	OnTimer16000:
+		globalmes "Be not her maid, since she is envious;";
+		end;
+	OnTimer18000:
+		globalmes "Her vestal livery is but sick and green";
+		end;
+	OnTimer20000:
+		globalmes "And none but fools do wear it; cast it off.";
+		end;
+	OnTimer22000:
+		globalmes "It is my lady, O, it is my love!";
+		end;
+	OnTimer24000:
+		globalmes "O, that she knew she were!";
+		end;
+	OnTimer26000:
+		globalmes "She speaks yet she says nothing: what of that?";
+		end;
+	OnTimer28000:
+		globalmes "Her eye discourses; I will answer it.";
+		end;
+	OnTimer30000:
+		globalmes "I am too bold, tis not to me she speaks:";
+		end;
+	OnTimer32000:
+		globalmes "Two of the fairest stars in all the heaven,";
+		end;
+	OnTimer34000:
+		globalmes "Having some business, do entreat her eyes";
+		end;
+	OnTimer36000:
+		globalmes "To twinkle in their spheres till they return.";
+		end;
+	OnTimer38000:
+		globalmes "What if her eyes were there, they in her head?";
+		end;
+	OnTimer40000:
+		globalmes "The brightness of her cheek would shame those stars,";
+		end;
+	OnTimer42000:
+		globalmes "As daylight doth a lamp; her eyes in heaven";
+		end;
+	OnTimer44000:
+		globalmes "Would through the airy region stream so bright";
+		end;
+	OnTimer46000:
+		globalmes "That birds would sing and think it were not night.";
+		end;
+	OnTimer48000:
+		globalmes "See, how she leans her cheek upon her hand!";
+		end;
+	OnTimer50000:
+		globalmes "O, that I were a glove upon that hand,";
+		end;
+	OnTimer52000:
+		globalmes "That I might touch that cheek!";
+		end;
+	OnTimer56000:
+		globalmes "She speaks:";
+		end;
+	OnTimer58000:
+		globalmes "O, speak again, bright angel! for thou art";
+		end;
+	OnTimer60000:
+		globalmes "As glorious to this night, being oer my head";
+		end;
+	OnTimer62000:
+		globalmes "As is a winged messenger of heaven";
+		end;
+	OnTimer64000:
+		globalmes "Unto the white-upturned wondering eyes";
+		end;
+	OnTimer66000:
+		globalmes "Of mortals that fall back to gaze on him";
+		end;
+	OnTimer68000:
+		globalmes "When he bestrides the lazy-pacing clouds";
+		end;
+	OnTimer70000:
+		globalmes "And sails upon the bosom of the air.";
+		end;
+	OnTimer80000:
+		globalmes "Shall I hear more, or shall I speak at this?";
+		end;
+	OnTimer106000:
+		globalmes "I take thee at thy word:";
+		end;
+	OnTimer108000:
+		globalmes "Call me but love, and Ill be new baptized;";
+		end;
+	OnTimer110000:
+		globalmes "Henceforth I never will be Romeo.";
+		end;
+	OnTimer116000:
+		globalmes "By a name";
+		end;
+	OnTimer118000:
+		globalmes "I know not how to tell thee who I am:";
+		end;
+	OnTimer120000:
+		globalmes "My name, dear saint, is hateful to myself,";
+		end;
+	OnTimer122000:
+		globalmes "Because it is an enemy to thee;";
+		end;
+	OnTimer124000:
+		globalmes "Had I it written, I would tear the word.";
+		end;
+	OnTimer132000:
+		globalmes "Neither, fair saint, if either thee dislike.";
+		end;
+	OnTimer142000:
+		globalmes "With loves light wings did I oer-perch these walls;";
+		end;
+	OnTimer144000:
+		globalmes "For stony limits cannot hold love out,";
+		end;
+	OnTimer146000:
+		globalmes "And what love can do that dares love attempt;";
+		end;
+	OnTimer148000:
+		globalmes "Therefore thy kinsmen are no let to me.";
+		end;
+	OnTimer152000:
+		globalmes "Alack, there lies more peril in thine eye";
+		end;
+	OnTimer154000:
+		globalmes "Than twenty of their swords: look thou but sweet,";
+		end;
+	OnTimer156000:
+		globalmes "And I am proof against their enmity.";
+		end;
+	OnTimer160000:
+		globalmes "I have nights cloak to hide me from their sight;";
+		end;
+	OnTimer162000:
+		globalmes "And but thou love me, let them find me here:";
+		end;
+	OnTimer164000:
+		globalmes "My life were better ended by their hate,";
+		end;
+	OnTimer166000:
+		globalmes "Than death prorogued, wanting of thy love.";
+		end;
+	OnTimer170000:
+		globalmes "By love, who first did prompt me to inquire;";
+		end;
+	OnTimer172000:
+		globalmes "He lent me counsel and I lent him eyes.";
+		end;
+	OnTimer174000:
+		globalmes "I am no pilot; yet, wert thou as far";
+		end;
+	OnTimer176000:
+		globalmes "As that vast shore washd with the farthest sea,";
+		end;
+	OnTimer178000:
+		globalmes "I would adventure for such merchandise.";
+		end;
+	OnTimer224000:
+		globalmes "Lady, by yonder blessed moon I swear";
+		end;
+	OnTimer226000:
+		globalmes "That tips with silver all these fruit-tree tops--";
+		end;
+	OnTimer234000:
+		globalmes "What shall I swear by?";
+		end;
+	OnTimer244000:
+		globalmes "If my hearts dear love--";
+		end;
+	OnTimer264000:
+		globalmes "O, wilt thou leave me so unsatisfied?";
+		end;
+	OnTimer268000:
+		globalmes "The exchange of thy loves faithful vow for mine.";
+		end;
+	OnTimer274000:
+		globalmes "Wouldst thou withdraw it? for what purpose, love?";
+		end;
+	OnTimer294000:
+		globalmes "O blessed, blessed night! I am afeard.";
+		end;
+	OnTimer296000:
+		globalmes "Being in night, all this is but a dream,";
+		end;
+	OnTimer298000:
+		globalmes "Too flattering-sweet to be substantial.";
+		end;
+	OnTimer330000:
+		globalmes "So thrive my soul--";
+		end;
+	OnTimer334000:
+		globalmes "A thousand times the worse, to want thy light.";
+		end;
+	OnTimer336000:
+		globalmes "Love goes toward love, as schoolboys from";
+		end;
+	OnTimer338000:
+		globalmes "their books,";
+		end;
+	OnTimer340000:
+		globalmes "But love from love, toward school with heavy looks.";
+		end;
+	OnTimer356000:
+		globalmes "It is my soul that calls upon my name:";
+		end;
+	OnTimer358000:
+		globalmes "How silver-sweet sound lovers tongues by night,";
+		end;
+	OnTimer360000:
+		globalmes "Like softest music to attending ears!";
+		end;
+	OnTimer364000:
+		globalmes "My dear?";
+		end;
+	OnTimer370000:
+		globalmes "At the hour of nine.";
+		end;
+	OnTimer376000:
+		globalmes "Let me stand here till thou remember it.";
+		end;
+	OnTimer382000:
+		globalmes "And Ill still stay, to have thee still forget,";
+		end;
+	OnTimer384000:
+		globalmes "Forgetting any other home but this.";
+		end;
+	OnTimer398000:
+		globalmes "I would I were thy bird.";
+		end;
+	OnTimer410000:
+		globalmes "Sleep dwell upon thine eyes, peace in thy breast!";
+		end;
+	OnTimer412000:
+		globalmes "Would I were sleep and peace, so sweet to rest!";
+		end;
+	OnTimer414000:
+		globalmes "Hence will I to my ghostly fathers cell,";
+		end;
+	OnTimer416000:
+		globalmes "His help to crave, and my dear hap to tell.";
+		end;
+	OnTimer538000:
+		setnpctimer 0;
+		end;
+	OnInit:
+		npcspeed 150;
+		initnpctimer;
+		end;
+}
+
+ayothaya.gat,214,279,3	script	Juliet	53,{
+	mes "[Juliet]";
+	mes "What is the next line? ";
+	close;
+	OnTimer54000:
+		globalmes "Ay me!";
+		end;
+	OnTimer72000:
+		globalmes "O Romeo, Romeo! wherefore art thou Romeo?";
+		end;
+	OnTimer74000:
+		globalmes "Deny thy father and refuse thy name;";
+		end;
+	OnTimer76000:
+		globalmes "Or, if thou wilt not, be but sworn my love,";
+		end;
+	OnTimer78000:
+		globalmes "And Ill no longer be a Capulet.";
+		end;
+	OnTimer82000:
+		globalmes "Tis but thy name that is my enemy;";
+		end;
+	OnTimer84000:
+		globalmes "Thou art thyself, though not a Montague.";
+		end;
+	OnTimer86000:
+		globalmes "Whats Montague? it is nor hand, nor foot,";
+		end;
+	OnTimer88000:
+		globalmes "Nor arm, nor face, nor any other part";
+		end;
+	OnTimer90000:
+		globalmes "Belonging to a man. O, be some other name!";
+		end;
+	OnTimer92000:
+		globalmes "Whats in a name? that which we call a rose";
+		end;
+	OnTimer94000:
+		globalmes "By any other name would smell as sweet;";
+		end;
+	OnTimer96000:
+		globalmes "So Romeo would, were he not Romeo calld,";
+		end;
+	OnTimer98000:
+		globalmes "Retain that dear perfection which he owes";
+		end;
+	OnTimer100000:
+		globalmes "Without that title. Romeo, doff thy name,";
+		end;
+	OnTimer102000:
+		globalmes "And for that name which is no part of thee";
+		end;
+	OnTimer104000:
+		globalmes "Take all myself.";
+		end;
+	OnTimer112000:
+		globalmes "What man art thou that thus bescreend in night";
+		end;
+	OnTimer114000:
+		globalmes "So stumblest on my counsel?";
+		end;
+	OnTimer126000:
+		globalmes "My ears have not yet drunk a hundred words";
+		end;
+	OnTimer128000:
+		globalmes "Of that tongues utterance, yet I know the sound:";
+		end;
+	OnTimer130000:
+		globalmes "Art thou not Romeo and a Montague?";
+		end;
+	OnTimer134000:
+		globalmes "How camest thou hither, tell me, and wherefore?";
+		end;
+	OnTimer136000:
+		globalmes "The orchard walls are high and hard to climb,";
+		end;
+	OnTimer138000:
+		globalmes "And the place death, considering who thou art,";
+		end;
+	OnTimer140000:
+		globalmes "If any of my kinsmen find thee here.";
+		end;
+	OnTimer150000:
+		globalmes "If they do see thee, they will murder thee.";
+		end;
+	OnTimer158000:
+		globalmes "I would not for the world they saw thee here.";
+		end;
+	OnTimer168000:
+		globalmes "By whose direction foundst thou out this place?";
+		end;
+	OnTimer180000:
+		globalmes "Thou knowst the mask of night is on my face,";
+		end;
+	OnTimer182000:
+		globalmes "Else would a maiden blush bepaint my cheek";
+		end;
+	OnTimer184000:
+		globalmes "For that which thou hast heard me speak to-night";
+		end;
+	OnTimer186000:
+		globalmes "Fain would I dwell on form, fain, fain deny";
+		end;
+	OnTimer188000:
+		globalmes "What I have spoke: but farewell compliment!";
+		end;
+	OnTimer190000:
+		globalmes "Dost thou love me? I know thou wilt say Ay,";
+		end;
+	OnTimer192000:
+		globalmes "And I will take thy word: yet if thou swearst,";
+		end;
+	OnTimer194000:
+		globalmes "Thou mayst prove false; at lovers perjuries";
+		end;
+	OnTimer196000:
+		globalmes "Then say, Jove laughs. O gentle Romeo,";
+		end;
+	OnTimer198000:
+		globalmes "If thou dost love, pronounce it faithfully:";
+		end;
+	OnTimer200000:
+		globalmes "Or if thou thinkst I am too quickly won,";
+		end;
+	OnTimer202000:
+		globalmes "Ill frown and be perverse an say thee nay,";
+		end;
+	OnTimer204000:
+		globalmes "So thou wilt woo; but else, not for the world.";
+		end;
+	OnTimer206000:
+		globalmes "In truth, fair Montague, I am too fond,";
+		end;
+	OnTimer208000:
+		globalmes "And therefore thou mayst think my havior light:";
+		end;
+	OnTimer210000:
+		globalmes "But trust me, gentleman, Ill prove more true";
+		end;
+	OnTimer212000:
+		globalmes "Than those that have more cunning to be strange.";
+		end;
+	OnTimer214000:
+		globalmes "I should have been more strange, I must confess,";
+		end;
+	OnTimer216000:
+		globalmes "But that thou overheardst, ere I was ware,";
+		end;
+	OnTimer218000:
+		globalmes "My true loves passion: therefore pardon me,";
+		end;
+	OnTimer220000:
+		globalmes "And not impute this yielding to light love,";
+		end;
+	OnTimer222000:
+		globalmes "Which the dark night hath so discovered.";
+		end;
+	OnTimer228000:
+		globalmes "O, swear not by the moon, the inconstant moon,";
+		end;
+	OnTimer230000:
+		globalmes "That monthly changes in her circled orb,";
+		end;
+	OnTimer232000:
+		globalmes "Lest that thy love prove likewise variable.";
+		end;
+	OnTimer236000:
+		globalmes "Do not swear at all;";
+		end;
+	OnTimer238000:
+		globalmes "Or, if thou wilt, swear by thy gracious self,";
+		end;
+	OnTimer240000:
+		globalmes "Which is the god of my idolatry,";
+		end;
+	OnTimer242000:
+		globalmes "And Ill believe thee.";
+		end;
+	OnTimer246000:
+		globalmes "Well, do not swear: although I joy in thee,";
+		end;
+	OnTimer248000:
+		globalmes "I have no joy of this contract to-night:";
+		end;
+	OnTimer250000:
+		globalmes "It is too rash, too unadvised, too sudden;";
+		end;
+	OnTimer252000:
+		globalmes "Too like the lightning, which doth cease to be";
+		end;
+	OnTimer254000:
+		globalmes "Ere one can say It lightens. Sweet, good night!";
+		end;
+	OnTimer256000:
+		globalmes "This bud of love, by summers ripening breath,";
+		end;
+	OnTimer258000:
+		globalmes "May prove a beauteous flower when next we meet.";
+		end;
+	OnTimer260000:
+		globalmes "Good night, good night! as sweet repose and rest";
+		end;
+	OnTimer262000:
+		globalmes "Come to thy heart as that within my breast!";
+		end;
+	OnTimer266000:
+		globalmes "What satisfaction canst thou have to-night?";
+		end;
+	OnTimer270000:
+		globalmes "I gave thee mine before thou didst request it:";
+		end;
+	OnTimer272000:
+		globalmes "And yet I would it were to give again.";
+		end;
+	OnTimer276000:
+		globalmes "But to be frank, and give it thee again.";
+		end;
+	OnTimer278000:
+		globalmes "And yet I wish but for the thing I have:";
+		end;
+	OnTimer280000:
+		globalmes "My bounty is as boundless as the sea,";
+		end;
+	OnTimer282000:
+		globalmes "My love as deep; the more I give to thee,";
+		end;
+	OnTimer284000:
+		globalmes "The more I have, for both are infinite.";
+		end;
+	OnTimer288000:
+		globalmes "I hear some noise within; dear love, adieu!";
+		end;
+	OnTimer290000:
+		globalmes "Anon, good nurse! Sweet Montague, be true.";
+		end;
+	OnTimer292000:
+		globalmes "Stay but a little, I will come again.";
+		end;
+	OnTimer302000:
+		globalmes "Three words, dear Romeo, and good night indeed.";
+		end;
+	OnTimer304000:
+		globalmes "If that thy bent of love be honourable,";
+		end;
+	OnTimer306000:
+		globalmes "Thy purpose marriage, send me word to-morrow,";
+		end;
+	OnTimer308000:
+		globalmes "By one that Ill procure to come to thee,";
+		end;
+	OnTimer310000:
+		globalmes "Where and what time thou wilt perform the rite;";
+		end;
+	OnTimer312000:
+		globalmes "And all my fortunes at thy foot Ill lay";
+		end;
+	OnTimer314000:
+		globalmes "And follow thee my lord throughout the world.";
+		end;
+	OnTimer318000:
+		globalmes "I come, anon.--But if thou meanst not well,";
+		end;
+	OnTimer320000:
+		globalmes "I do beseech thee--";
+		end;
+	OnTimer324000:
+		globalmes "By and by, I come:--";
+		end;
+	OnTimer326000:
+		globalmes "To cease thy suit, and leave me to my grief:";
+		end;
+	OnTimer328000:
+		globalmes "To-morrow will I send.";
+		end;
+	OnTimer332000:
+		globalmes "A thousand times good night!";
+		end;
+	OnTimer344000:
+		globalmes "Hist! Romeo, hist! O, for a falconers voice,";
+		end;
+	OnTimer346000:
+		globalmes "To lure this tassel-gentle back again!";
+		end;
+	OnTimer348000:
+		globalmes "Bondage is hoarse, and may not speak aloud;";
+		end;
+	OnTimer350000:
+		globalmes "Else would I tear the cave where Echo lies,";
+		end;
+	OnTimer352000:
+		globalmes "And make her airy tongue more hoarse than mine,";
+		end;
+	OnTimer354000:
+		globalmes "With repetition of my Romeos name.";
+		end;
+	OnTimer362000:
+		globalmes "Romeo!";
+		end;
+	OnTimer366000:
+		globalmes "At what oclock to-morrow";
+		end;
+	OnTimer368000:
+		globalmes "Shall I send to thee?";
+		end;
+	OnTimer372000:
+		globalmes "I will not fail: tis twenty years till then.";
+		end;
+	OnTimer374000:
+		globalmes "I have forgot why I did call thee back.";
+		end;
+	OnTimer378000:
+		globalmes "I shall forget, to have thee still stand there,";
+		end;
+	OnTimer380000:
+		globalmes "Remembering how I love thy company.";
+		end;
+	OnTimer386000:
+		globalmes "Tis almost morning; I would have thee gone:";
+		end;
+	OnTimer388000:
+		globalmes "And yet no further than a wantons bird;";
+		end;
+	OnTimer390000:
+		globalmes "Who lets it hop a little from her hand,";
+		end;
+	OnTimer392000:
+		globalmes "Like a poor prisoner in his twisted gyves,";
+		end;
+	OnTimer394000:
+		globalmes "And with a silk thread plucks it back again,";
+		end;
+	OnTimer396000:
+		globalmes "So loving-jealous of his liberty.";
+		end;
+	OnTimer400000:
+		globalmes "Sweet, so would I:";
+		end;
+	OnTimer402000:
+		globalmes "Yet I should kill thee with much cherishing.";
+		end;
+	OnTimer404000:
+		globalmes "Good night, good night! parting is such";
+		end;
+	OnTimer406000:
+		globalmes "sweet sorrow,";
+		end;
+	OnTimer408000:
+		globalmes "That I shall say good night till it be morrow.";
+		end;
+	OnTimer538000:
+		setnpctimer 0;
+		end;
+	OnInit:
+		npcspeed 150;
+		initnpctimer;
+		end;
+}

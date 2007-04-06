@@ -1,0 +1,56 @@
+//===== Nezumi Script ======================================= 
+//= Hugel Airport NPCs
+//===== By: ================================================== 
+//= Spirit Death
+//===== Current Version: ===================================== 
+//= 1.0
+//===== Compatible With: ===================================== 
+//= any Nezumi version
+//===== Additional Comments: ================================= 
+//= 1.0 first release [Spirit Death]
+//============================================================ 
+
+hugel.gat,177,156,6	script	Airship Staff	91,{
+	mes "[Airport Staff]";
+	mes "Welcome to the Airport.";
+	mes "How may I help you?";
+	next;
+	menu "Board the Airship",-,"Cancel",L_Cancel;
+
+		mes "[Airport Staff]";
+		mes "The Airship boarding fee";
+		mes "is 1.200 zeny or 1 Free Airship Ticket";
+		mes "How would you like to pay?";
+		next;
+		menu "I will pay with pure Zeny.",-,"I got a Ticket",L_Ticket,"Cancel",L_Cancel;
+		
+			if(zeny < 1200) goto L_NoZeny;
+			set Zeny,zeny-1200;
+			mes "Have a nice trip.";
+			close2;
+			warp "airplane.gat",224,64;
+			close;
+
+		L_Ticket:
+			if(countitem(7311) < 1) goto L_NoTicket;
+			delitem 7311,1;
+			mes "Have a nice trip.";
+			close2;
+			warp "airplane.gat",224,64;
+			close;
+
+		L_NoZeny:
+			mes "[Airport Staff]";
+			mes "You don't have 1.200 zeny.";
+			close;
+			
+		L_NoTicket:
+			mes "[Airport Staff]";
+			mes "You don't have a Ticket.";
+			close;			
+
+	L_Cancel:
+		mes "[Airport Staff]";
+		mes "Have a nice day.";
+		close;
+}

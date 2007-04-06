@@ -1,0 +1,249 @@
+// $Id: Changelog.txt akrus $
+
+06/27/2006
+	* Updated: some newest mobs updated [akrus]
+
+06/11/2006
+	* Updated: new cards are now dropped by monsters [akrus]
+
+06/09/2006
+	* Updated: items database [akrus]
+
+06/08/2006
+	* Updated: added some new items [akrus]
+
+06/07/2006
+	* Updated: mob_db and mob_skill_db [akrus]
+	* Fixed: item type 11 is now usable [akrus]
+
+05/17/2006
+	* Updated: mob_db and mob_skill_db [akrus]
+
+05/06/2006
+	* Added: card effects for new cards [akrus]
+
+04/20/2006
+	* Changed: moved custom items into item_db2 [Harbin]
+	* Fixed: tiara should be only wearable by women. issue 413 [Harbin]
+
+04/17/2006
+	* Fixed: drop rate of few dullahan items. fix by Flop. issue 386 [Harbin]
+	* Fixed: heirozoist card's item type. fix by Flop. issue 402 [Harbin]
+
+04/09/2006
+	* Added: item notrade database [Harbin]
+
+04/05/2006
+	* Fixed: eternal chaos should effect all players except caster(s). from Project-Freya (Mikey) [Harbin]
+
+03/25/2006
+	* Added: item norefine list [Harbin]
+	* Fixed: emergency call should be castable only on gvg maps. from Project-Freya [Harbin]
+
+03/25/2006
+	* Fixed: cast time / delay of magnum break. fix by Jetvictor [Harbin]
+	* Fixed: sp usage of preserve skill. should be 30 instead of 40. fix by Jetvictor [Harbin]
+	* Added: violin to blue/violet box drops. from Project-Freya [Harbin]
+
+03/21/2006
+	* Fixed: sanctuary skill. should not overlap. fix by Zug/Jetvictor [Harbin]
+	* Fixed: firepillar skill. should be not castable right under players or monsters. fix by Zug/Jetvictor [Harbin]
+
+03/14/2006
+	* Fixed: buy/sell price of some daggers [Harbin]
+
+03/10/2006
+	* Fixed: HP_BASILICA's unit settings in db. fix by Jetvictor. Issue 285 [AppleGirl]
+	* Fixed: items 'infiltrator' and 'grimtooth'. should increase flee, not fleerate. fix by Damz. issue 250 [Harbin]
+	* Fixed: some pet eggs on item and pet databases. mantis issue 233 [Harbin]
+
+03/08/2006
+	* Fixed: typo on pumpkin item [Harbin]
+	* Fixed: sandman card. should enchant armor with earth property instead of fire property. fix by Blue Rose. mantis issue 242 [Harbin]
+	* Fixed: effect interval of gospel skill. information from Athena [Harbin]
+	* Fixed: heirozoist card. should compound on accessory. mantis issue 254 [Harbin]
+
+03/06/2006
+	* Added: remaining items from http://nezumi.dns.st/ipb/index.php?showtopic=187&pid=1273&st=0&#entry1273. information provided by decayed.cell [Harbin]
+
+03/02/2006
+	* Updated: monsters database & skill_unit_db [akrus]
+
+03/01/2006
+	* Fixed: Assassin Dagger [akrus]
+	* Added: custom monsters skills database [akrus]
+	- a bit simplified (based on players' requests), just rename mob_skill_db_custom.txt to mob_skill_db.txt and use
+	* Updated: monsters skills database [akrus]
+	* Updated: a lot of item names. also fixed some typoes and name conflicts. reported by decayed.cell. information by eathena [Harbin]
+
+02/27/2006
+	* Updated: Magnum Break Cool Down Delay [akrus]
+
+02/25/2006
+	* Added: cooking sets into item database [Harbin]
+
+02/23/2006
+	* Fixed: Stormy Knight Card (thanks to [SuzakuX] / IRC) [akrus]
+	* Fixed: bAddEffWhenHit to right format [akrus]
+	- PS> someone changed it long time ago 'to be compatible with Freya', are you sure? ;)
+	* Fixed: heater card. now its attachable again. fix by alpheios. mantis issue 208 [Harbin]
+	* Updated: item_cardalbum.txt [akrus]
+	   - Tao Gunka Card was there, could you check the list before adding next time?
+	* Updated: monsters and items database [akrus]
+	- please test new monsters database, it may be buggy
+	* Fixed: violy should drop 'Violin' item by 2% change. fix by WiKouK. mantis issue 205 [Harbin]
+	* Fixed: grimtooth, should give +10% dodge rate and +5% perfect dodge rate. fix by Maverrick. mantis issue 216 [Harbin]
+	* Fixed: infiltrator. should give +5% flee bonus, not +5 flee bonus. fix by Maverrick. mantis issue 216 [Harbin]
+
+02/23/2006
+	* Updated: whole mob_skill_db. should be pretty updated now. now skill names are also translated. original author unknown, some fixes made by Maverrick and his friends [Harbin]
+	* Fixed: sp usage of spiral pierce skill. fix by Azimuth [Harbin]
+	* Fixed: sp usage of aura blade skill. fix by Azimuth [Harbin]
+	* Fixed: sp usage of steel body skill. should consume 50% of total sp instead of 200 sp. fix by Azimuth [Harbin]
+	* Fixed: sp usage of teleport skill. fix by Azimuth [Harbin]
+	* Fixed: sp usage of stone curse skill. fix by Azimuth [Harbin]
+	* Fixed: magnum break skill. should consume 30 sp instead of 15. fix by Azimuth [Harbin]
+	* Fixed: ruwach skill. should deal holy damage instead of normal damage. fix by Azimuth [Harbin]
+	* Fixed: magnum break skill. should be 'self' skill instead of 'target' skill. fix by Azimuth [Harbin]
+
+02/22/2006
+	* Updated: lighthalzen monsters [akrus]
+
+02/21/2006
+	* Fixed: zero delay of falcon assault [Harbin]
+	* Updated: added drops for Banana Lady Tanee [akrus]
+	* Updated: monsters database [akrus]
+	* Fixed: Violy Card [akrus]
+
+02/14/2006
+	* Fixed: critical bonus of 'Brooch of Cursed Fortune'. mantis issue 181 [Harbin]
+
+02/08/2006
+	* Fixed: Kawaii Ribbon should have one slot [akrus]
+	* Updated: new hats & some items [akrus]
+
+02/07/2006
+	* Fixed: weight of vita 500 bottle. mantis issue 158 [Harbin]
+	* Fixed: Nile Rose should be with 1 slot (according to item slot table) [akrus]
+
+02/05/2006
+	* Updated: some monsters [akrus]
+	* Fixed: the paper card. invalid 'if' format. fix by apwwn. mantis issue 145 [Harbin]
+	* Fixed: poisonous toad card. should be compound with accessory. fix bt Damz. mantis issue 147 [Harbin]
+	* Fixed: Arrow Shower skill (reverted back last change) [akrus]
+	- yeah, it should be ground skill, but you also have to change the source ;)
+
+02/04/2006
+	* Fixed: bonuses of the paper card again. information provided by SuzakuX [Harbin]
+
+02/03/2006
+	* Fixed: missing bonuses of the paper card. information provided by Ourson. mantis issue 125 [Harbin]
+	* Fixed: maya card should compound to accessory instead of headgear. fix by Spirit Death [Harbin]
+	* Fixed: player should have change to get random amount of zeny when killing monster with cramp card. reported by SuzakuX [Harbin]
+
+02/02/2006
+	* Added: all missing 'new cards'. information from nezumi board [Harbin]
+	* Fixed: sage's enchanting skills to only work with party members. from project freya [Harbin]
+	* Fixed: knockback of brandish spear skill. from project freya [Harbin]
+	* Fixed: arrow shower should be ground targeted instead of enemy targeted. mantis issue 66 [Harbin]
+	* Fixed: counter dagger should not autocast auto counter. mantis issue 116 [Harbin]
+	* Fixed: many items with too high change to use autospell. mantis issue 116 [Harbin]
+
+02/01/2006
+	* Fixed: tiny typo. monster 'see otter' to 'sea otter'. mantis issue 117 [Harbin]
+
+01/31/2006
+	* Added: Azoth, Heirozoist Card [akrus]
+	* Updated: prices for items 7285-7329 [zug]
+	* Fixed: Soul Breaker cool down delay (according to ragnarok.co.kr) [akrus]
+
+01/29/2006
+	* Added: few new cards. information verified from Poki#3's translation. mantis issue 84. update by Azimuth [Harbin]
+	* Updated: Thanatos Tower monsters (by [MasterOfPuppets]) [akrus]
+	* Fixed: giant whisper should drop giant whisper card instead of whisper card. mantis issue 93. fix by Damz [Harbin]
+
+01/28/2006
+	* Updated: Sunflower Pin should give +1 to defence [Harbin]
+	* Updated: mob_branch database [akrus]
+
+01/27/2006
+	* Added: Kiel monster stats (partially, by [MasterOfPuppets]) [akrus]
+	* Fixed: reverted back item_db changes. Please check _everything_ before adding! [akrus]
+	   - left some right things from last update: Killer Mantis Card, Wanderer Card, (partially) The Paper Card
+	* Fixed: Various items (mainly new cards). Fixes by Azimuth. Mantis issue 84 [Harbin]
+	* Added: New cards into card album list. Update by Damz. Mantis issue 90 [Harbin]
+	* Added: Enchanted Peach Tree Card, Greatest General Card [akrus]
+	* Fixed: many items with autospell [akrus]
+
+01/24/2006
+	* Added: Gargoyle Card, Dryad Card, Raydric Archer Card,
+	  Leib Olmai Card, Wraith Card, Leaf Cat Card, Mimic Card,
+	  Mystcase Card, Stem Worm Card, Spring Rabbit Card, Sleeper Card,
+	  Orc Archer Card, Taoist Hermit Card, Li Me Mang Ryang Card,
+	  Giant Hornet Card, Sea Otter Card [akrus]
+	* Updated: items database [akrus]
+	- Stone Buckler, Gryphon Card, Rideword Card, Raggler Card,
+	  Merman Card, Wanderer Card, Baby Leopard Card, Wild Rose Card,
+	  Zipper Bear Card, Turtle General Card, Seal Card, Mobster Card,
+	  Harpy Card, Megin Cap
+	* Added: new items in items database [akrus]
+	- Wandering Bard's Bow, 7484-7499, 7504-7515, 
+	* Fixed: missing "," in new head gears (5135-5143)
+	* Fixed: Hard covered book should have 1 slot. Mantis issue 54 [Harbin]
+
+01/22/2006
+	* Fixed: Chase Walk should consume 10 SP, not 40 SP [akrus] (Mantis Issue ID 61, info by [Jetvictor])
+
+01/20/2006
+	* Fixed: Storm Gust [akrus]
+	* Fixed: SP usage of aura blade skill [Harbin]
+	* Fixed: Tribal solidarity. Amount of given guild exp. Pretty random value but closer to 'real'. Reported by Damz [Harbin]
+	* Fixed: Akrus's card fix. Fix by Spirit Death [Harbin]
+	* Fixed: another fix in Executioner Card, Tirfing Card and Mysteltainn Card (thanks to [Ourson] / IRC) [akrus]
+	* Fixed: Executioner Card, Tirfing Card and Mysteltainn Card (thanks to [Ourson] / IRC) [akrus]
+	* Updated: Lighthalzen monster stats [akrus]
+	* Fixed: Effects of new cards. Fix by Spirit Death [Harbin]
+	* Fixed: turned off Azoth's effect, will be fixed soon [akrus]
+	* Added: Grand Peco Card, Dark Lord Card, Dark Illusion Card, Dark Frame Card,
+	  Demon Pungus Card, Deviling Card, Dragon Tail Card, Wraith Dead Card, Majoruros Card,
+	  Skeleton General Card, Stalactic Golem Card, Clock Tower Manager Card, Shinobi Card,
+	  Cookie Xmas Card, Owl Duke Card, Owl Baron Card, Iron Fist Card, Antonio Card,
+	  Alarm Card, Am Mut Card, Assulter Card, Ancient Mummy Card, Ancient Worm Card,
+	  Explosion Card, Injustice Card, Giant Spider Card, Zombie Prisoner Card,
+	  Zealotus (Zherlthsh) Card, Creamy Fear Card, Killer Mantis Card, Tao Gunka Card,
+	  Giant Whisper Card, Tamruan Card, Turtle General Card, Garm Baby Card [akrus]
+	PLEASE TEST THESE CARDS AND REPORT IF THERE'RE ANY PROBLEMS.
+	THANKS FOR YOUR SUPPORT!
+
+01/19/2006
+	* Updated: A lot of skills. Fully by Damz [Harbin]
+	* Fixed  : Marionette Control skill (1 SP -> 100 SP) (thanks to [remanten] / Mantis) [akrus]
+	* Fixed  : Maya Card should reflect 50% instead of 30% (thanks to [Spirit Death] / Mantis) [akrus]
+
+01/18/2006
+	* Updated: Cast delay of indulge (by katz3) [Harbin]
+	* Added  : New kro headgears (by Spirit Death) [Harbin]
+	* Updated: Golden Gear. Doesn't have element anymore [Harbin]
+	* Fixed  : Phen Card, Succubus Card and Incubus Card (thanks to [Spirit Death] / Mantis) [akrus]
+	* Updated: Sharp Shooting skill (thanks to [email2me] for the info) [akrus]
+	* Updated: skill_castnodex_db.txt and skill_nocast_db.txt (according to kRO) [akrus]
+	* Added  : 3 new skills (read the main changelog) [akrus]
+	* Updated: const.txt, now new effects are implemented [akrus]
+	* Added  : Gajomart Card, Gullinbursti Card, Mini Demon Card, Gig Card,
+	           Neraid Card, Driller Card, Diabolic Card, Zombie Master Card,
+	           Caterpillar Card, Beetle King Card, Tri Joint Card, False Angel Card
+	           Phendark Card [akrus]
+	* Updated: Slash, Ring of Exorcism
+	* Added  : Gloves of Archer [akrus]
+	* Updated: Bonuses of marduk card [Harbin]
+	* Updated: Earth Deleter Card now works properly [akrus]
+	* Fixed  : Immaterial sword's change to drain sp [Harbin]
+	* Fixed  : Name of picky egg card [Harbin]
+	* Updated: Bonuses of Berzebub Card [Harbin]
+	* Updated: monsters database [akrus]
+
+01/17/2006
+	* Fixed  : Skill duration of land protector (magnetic earth) [Harbin]
+	* Fixed  : Range of investigate (occult impaction) from 8 to 2 [Harbin]
+	* Updated: Berserk Skill needs only 50 job level and 100 HP (according to kRO) [akrus]
+	* Updated: items database [akrus]

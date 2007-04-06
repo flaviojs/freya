@@ -1,0 +1,16 @@
+//===== Nezumi Script ========================================
+//= Disable Partying on Specific Map
+//===== By: ==================================================
+//= Original:	eAthena Developer Team
+//= Updated:	Nezumi Developer Team
+//===== Current Version: =====================================
+//= 1.0.0
+//===== Compatible With: =====================================
+//= Nezumi 1.0.0 or newer
+//============================================================
+
+guild_vs1.gat	mapflag	pvp_noparty
+guild_vs2.gat	mapflag	pvp_noparty
+guild_vs3.gat	mapflag	pvp_noparty
+guild_vs4.gat	mapflag	pvp_noparty
+guild_vs5.gat	mapflag	pvp_noparty

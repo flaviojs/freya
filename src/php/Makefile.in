@@ -1,0 +1,38 @@
+#!__MAKE__
+PHP_VERSION=5.1.2
+CFLAGS:=$(subst --std=c99,--std=gnu99,$(CFLAGS))
+
+all:
+	@echo Please run make in the top directory
+
+__TARGET__: ../lib/__TARGET__
+
+../lib/__TARGET__: php-$(PHP_VERSION).tar.bz2 php-$(PHP_VERSION) php-$(PHP_VERSION)/sapi/nezumi php-$(PHP_VERSION)/config.status
+	@make -C php-$(PHP_VERSION) 2>make_log.txt | while read line; do \
+		foo=`echo "$$line" | sed -e 's/^.* //'`; \
+		foo=`basename "$$foo"`; \
+		echo -en "    CC\t$$foo         \015"; \
+	done
+	@. php-$(PHP_VERSION)/libphp5.la; cp "$$libdir/$$old_library" $@; echo "$$dependency_libs" >$@.dep
+
+php-$(PHP_VERSION).tar.bz2:
+	@echo -e "  WGET\tphp-$(PHP_VERSION).tar.bz2          "
+	@wget -q http://php.net/get/php-$(PHP_VERSION).tar.bz2/from/this/mirror
+
+php-$(PHP_VERSION):
+	@echo -e " UNTAR\tphp-$(PHP_VERSION)        "
+	@tar xjf php-$(PHP_VERSION).tar.bz2
+	@rm -f php; ln -s php-$(PHP_VERSION) php
+
+php-$(PHP_VERSION)/sapi/nezumi: sapi
+	@rm -fr php-$(PHP_VERSION)/sapi/nezumi; cp -r sapi/ php-$(PHP_VERSION)/sapi/nezumi
+	@cd php-$(PHP_VERSION); ./buildconf --force >/dev/null 2>&1
+
+php-$(PHP_VERSION)/config.status:
+	@echo -e "  EXEC\t./configure [options]        "
+	@cd php-$(PHP_VERSION); CPPFLAGS="$(CFLAGS)" ./configure >configure.log --disable-cli --disable-cgi --disable-all --enable-nezumi --with-pcre --with-zlib --with-sqlite --enable-mbstring --enable-calendar
+
+clean:
+	rm -f __TARGET__ ../lib/__TARGET__ ../lib/__TARGET__.dep
+	if [ -f php-$(PHP_VERSION)/Makefile ]; then make -C php-$(PHP_VERSION) clean; fi
+
