@@ -864,7 +864,7 @@ static int clif_set0078(struct map_session_data *sd) {
 
 	nullpo_retr(0, sd);
 
-	if (sd->disguise > 23 && sd->disguise < 4001) { // mob disguises
+	if (sd->disguise > 26 && sd->disguise < 4001) { // mob disguises
 
 		WPACKETW( 0) = 0x78;
 		WPACKETL( 2) = sd->bl.id;
@@ -938,7 +938,7 @@ static int clif_set007b(struct map_session_data *sd) {
 
 	nullpo_retr(0, sd);
 
-	if (sd->disguise > 23 && sd->disguise < 4001) { // mob disguises
+	if (sd->disguise > 26 && sd->disguise < 4001) { // mob disguises
 
 		WPACKETW( 0) = 0x7b;
 		WPACKETL( 2) = sd->bl.id;
@@ -1075,7 +1075,7 @@ static int clif_mob0078(struct mob_data *md) {
 	WPACKETW(10) = md->opt2;
 	WPACKETW(12) = md->option;
 	WPACKETW(14) = mob_get_viewclass(md->class);
-	if ((mob_get_viewclass(md->class) <= 23) || (mob_get_viewclass(md->class) == 812) || (mob_get_viewclass(md->class) >= 4001)) {
+	if ((mob_get_viewclass(md->class) <= 26) || (mob_get_viewclass(md->class) == 812) || (mob_get_viewclass(md->class) >= 4001)) {
 		WPACKETW(12) |= mob_db[md->class].option;
 		WPACKETW(16) = mob_get_hair(md->class);
 		WPACKETW(18) = mob_get_weapon(md->class);
@@ -1334,7 +1334,7 @@ int clif_spawnpc(struct map_session_data *sd) {
 	WPACKETW(51) = (sd->status.base_level > battle_config.max_lv) ? battle_config.max_lv : sd->status.base_level;
 	clif_send(packet_len_table[0x1d9], &sd->bl, AREA_WOS);
 
-	if (sd->disguise > 23 && sd->disguise < 4001) { // mob disguises
+	if (sd->disguise > 26 && sd->disguise < 4001) { // mob disguises
 		clif_clearchar(&sd->bl, 9);
 
 		memset(WPACKETP(0), 0, packet_len_table[0x119]);
@@ -1565,7 +1565,7 @@ int clif_movechar(struct map_session_data *sd) {
 
 	len = clif_set007b(sd);
 
-	if (sd->disguise > 23 && sd->disguise < 4001) {
+	if (sd->disguise > 26 && sd->disguise < 4001) {
 		clif_send(len, &sd->bl, AREA);
 		return 0;
 	} else
@@ -1623,7 +1623,7 @@ int clif_changemap(struct map_session_data *sd, char *mapname, int x, int y) {
 	WPACKETW(20) = y;
 	SENDPACKET(sd->fd, packet_len_table[0x91]);
 
-	if (sd->disguise > 23 && sd->disguise < 4001) // mob disguises [Valaris]
+	if (sd->disguise > 26 && sd->disguise < 4001) // mob disguises [Valaris]
 		clif_spawnpc(sd);
 
 	return 0;
@@ -2607,7 +2607,7 @@ int clif_changelook(struct block_list *bl, int type, int val)
 	if (bl->type == BL_PC)
 		sd = (struct map_session_data *)bl;
 
-	if (sd && sd->disguise > 23 && sd->disguise < 4001) // mob disguises
+	if (sd && sd->disguise > 26 && sd->disguise < 4001) // mob disguises
 		return 0;
 
 	if (sd && (type == LOOK_WEAPON || type == LOOK_SHIELD || type == LOOK_SHOES)) {
@@ -2883,7 +2883,7 @@ int clif_changeoption(struct block_list* bl) {
 
 	if (bl->type == BL_PC) { // disguises
 		struct map_session_data *sd = ((struct map_session_data *)bl);
-		if (sd && sd->disguise > 23 && sd->disguise < 4001) {
+		if (sd && sd->disguise > 26 && sd->disguise < 4001) {
 			clif_send(packet_len_table[0x119], bl, AREA_WOS);
 			clif_spawnpc(sd);
 		} else
@@ -4758,7 +4758,7 @@ int clif_resurrection(struct block_list *bl, int type)
 
 	if (bl->type == BL_PC) { // disguises
 		struct map_session_data *sd = ((struct map_session_data *)bl);
-		if (sd && sd->disguise > 23 && sd->disguise < 4001)
+		if (sd && sd->disguise > 26 && sd->disguise < 4001)
 			clif_spawnpc(sd);
 	}
 
@@ -7401,7 +7401,7 @@ void clif_changed_dir(struct block_list *bl) {
 		WPACKETL(2) = bl->id;
 		WPACKETW(6) = sd->head_dir;
 		WPACKETB(8) = status_get_dir(bl);
-		if (sd->disguise > 23 && sd->disguise < 4001) // mob disguises [Valaris]
+		if (sd->disguise > 26 && sd->disguise < 4001) // mob disguises [Valaris]
 			clif_send(packet_len_table[0x9c], bl, AREA);
 		else
 			clif_send(packet_len_table[0x9c], bl, AREA_WOS);

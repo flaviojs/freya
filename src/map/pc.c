@@ -190,6 +190,7 @@ int pc_jobid2mapid(unsigned short b_class)
 		class_|= JOBL_2_1;
 	else if (b_class >= JOB_CRUSADER && b_class <= JOB_CRUSADER2)
 		class_|= JOBL_2_2;
+
 	switch (b_class)
 	{
 		case JOB_NOVICE:
@@ -228,7 +229,7 @@ int pc_jobid2mapid(unsigned short b_class)
 		case JOB_ROGUE:
 			class_ |= MAPID_THIEF;
 			break;
-			
+
 		case JOB_STAR_GLADIATOR:
 		case JOB_STAR_GLADIATOR2:
 			class_ |= JOBL_2_1;
@@ -244,6 +245,12 @@ int pc_jobid2mapid(unsigned short b_class)
 			break;
 		case JOB_SUPER_NOVICE: //Super Novices are considered 2-1 novices. [Skotlex]
 			class_ |= JOBL_2_1;
+			break;
+		case JOB_GUNSLINGER:
+			class_ |= MAPID_GUNSLINGER;
+			break;
+		case JOB_NINJA:
+			class_ |= MAPID_NINJA;
 			break;
 		default:
 			return -1;
@@ -270,6 +277,10 @@ int pc_mapid2jobid(unsigned short class_, int sex) {
 			return JOB_THIEF;
 		case MAPID_TAEKWON:
 			return JOB_TAEKWON;
+		case MAPID_GUNSLINGER:
+			return JOB_GUNSLINGER;
+		case MAPID_NINJA:
+			return JOB_NINJA;
 		case MAPID_WEDDING:
 			return JOB_WEDDING;
 	//2_1 classes
@@ -4605,23 +4616,24 @@ struct pc_base_job pc_calc_base_job(int b_class)
 	if (b_class < 4001) {
 		bj.job = b_class;
 		bj.upper = 0;
-	} else if (b_class >= 4001 && b_class < 4023) { //“]¶E
+	} else if (b_class >= 4001 && b_class < 4023) {
 		// Athena almost never uses this... well, used this. :3
 		bj.job = b_class - 4001;
 		bj.upper = 1;
-	//}else if (b_class == 23 + 4023 -1) { //—{ŽqƒXƒpƒmƒr
-	} else if (b_class == 4045) { // super baby
-		//bj.job = b_class - (4023 - 1);
+	} else if (b_class == 4045) { // Super Baby
 		bj.job = 23;
 		bj.upper = 2;
-	} else { //—{ŽqƒXƒpƒmƒrˆÈŠO‚Ì—{Žq
+	} else if (b_class >= 4046 && b_class <= 4049) { // SG/SG2/SL
+		bj.job = 4046;
+		bj.upper = 0;
+	} else {
 		bj.job = b_class - 4023;
 		bj.upper = 2;
 	}
 
 	if (bj.job == 0) {
 		bj.type = 0;
-	} else if (bj.job < 7) {
+	} else if (bj.job < 7 || (bj.job >= 24 && bj.job <= 25) || bj.job == 4046) {
 		bj.type = 1;
 	} else {
 		bj.type = 2;
@@ -4642,6 +4654,8 @@ int pc_calc_base_job2(int b_class)
 		return b_class - 4001;
 	else if(b_class == 4045)
 		return 23;
+	else if(b_class >= 4046 && b_class <= 4049)
+		return 4046;
 
 	return b_class - 4023;
 }
@@ -6118,7 +6132,7 @@ int pc_readparam(struct map_session_data *sd,int type)
 		val= sd->status.job_level;
 		break;
 	case SP_CLASS:
-		if (val >= 24 && val < 45)
+		if (val >= 27 && val < 48)
 			val += 3978;
 		else
 		val= sd->status.class;
@@ -6146,6 +6160,9 @@ int pc_readparam(struct map_session_data *sd,int type)
 		sd->status.class == 4010 || sd->status.class == 4017 || sd->status.class == 4025 || sd->status.class == 4032 || sd->status.class == 4039) val= JOB_MAGE;
 		else if (sd->status.class == 6 || sd->status.class == 12 || sd->status.class == 17 || sd->status.class == 4007 ||
 		sd->status.class == 4013 || sd->status.class == 4018 || sd->status.class == 4029 || sd->status.class == 4035 || sd->status.class == 4040) val= JOB_THIEF;
+		else if (sd->status.class >= 4046 && sd->status.class <= 4049) val= JOB_TAEKWON;
+		else if (sd->status.class == 24) val= JOB_GUNSLINGER;
+		else if (sd->status.class == 25) val= JOB_NINJA;
 		else val= 0;
 		break;
 	case SP_SEX:

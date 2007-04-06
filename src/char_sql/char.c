@@ -2149,10 +2149,14 @@ char * job_name(int class) {
 	case 4043: return "Baby Dancer";
 	case 4044: return "Baby Peco Crusader";
 	case 4045: return "Super Baby";
-	case 4046: return "Taekwon Boy/Girl";
-	case 4047: /* Star Knight */
-	case 4048: return "Star Knight";
+	case 4046: return "Taekwon Kid";
+	case 4047: return "Taekwon Master";
+	case 4048: return "Taekwon Master";
 	case 4049: return "Soul Linker";
+	case 4050: return "Bon Gun";
+	case 4051: return "Death Knight";
+	case 4052: return "Dark Collector";
+	case 4053: return "Munak";
 	}
 
 	return "Unknown Job";
