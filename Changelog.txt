@@ -1,4 +1,18 @@
-// $Id: Changelog.txt 738 2007-04-02 02:19:33Z $
+--------------------------------------------------------------
+               (c)2004-2007 Freya Team Presents:              
+                   __                         _        
+                /\ \ \___ _____   _ _ __ ___ (_)       
+               /  \/ / _ \_  / | | | '_ ` _ \| |       
+              / /\  /  __// /| |_| | | | | | | |       
+              \_\ \/ \___/___|\__,_|_| |_| |_|_|       
+                    http://www.ro-freya.net                   
+--------------------------------------------------------------
+
+Date	Added
+
+2007-04-06
+	* Note: Expect a nice revival for Nezumi!
+	* Added: Nezumi 737 (Final) Trunk to the modern Freya SVN [Tsuyuki]
 
 2006-08-06
 	* Added: delete_account in class of ladmin (nezumi.php) [Yor]
