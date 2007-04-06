@@ -11,6 +11,7 @@
 Date	Added
 
 2007-04-06
+	* Fixed: isday()/isnight()/day()/night() NPC script commands [Tsuyuki]
 	* Removed: /conf-dist/mapflag/ folder (Moved to /npc/ folder) [Tsuyuki]
 	* Updated: /db/const.txt to support the new script changes [Tsuyuki]
 	* Imported: Freya's NPC script folder [Tsuyuki]
