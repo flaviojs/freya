@@ -11,6 +11,9 @@
 Date	Added
 
 2007-04-06
+	* Updated: New classes now have their proper Aegis exp formulas [Tsuyuki]
+	* Updated: Structure of the /db/exp.txt database to match Freya/jAthena/etc's [Tsuyuki]
+	* Added: More base element support for new classes [Tsuyuki]
 	* Note: Clients from 12-18-2006 and above will now work just fine with Nezumi [Tsuyuki]
 	* Added: New hardcoded packet entries + updated /db/packet_db.txt [Tsuyuki]
 	* Updated: Nezumi is now compatible with the modern kRO client executables [Tsuyuki]

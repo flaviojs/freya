@@ -4318,7 +4318,7 @@ ATCOMMAND_FUNC(jobchange) {
 		{ "munak",                  4053 },
 	};
 
-	if (!message || !*message || sscanf(message, "%d %d", &job, &upper) < 1 || job < 0 || job >= MAX_PC_CLASS || (job > 23 && job < 4001)) {
+	if (!message || !*message || sscanf(message, "%d %d", &job, &upper) < 1 || job < 0 || job >= MAX_PC_CLASS || (job > 26 && job < 4001)) {
 		/* search class name */
 		i = (int)(sizeof(jobs) / sizeof(jobs[0]));
 		if (sscanf(message, "\"%[^\"]\" %d", jobname, &upper) >= 1 ||
@@ -8384,9 +8384,9 @@ ATCOMMAND_FUNC(character_job) {
 		{ "munak",                  4053 },
 	};
 
-	if (!message || !*message || sscanf(message, "%d %d %[^\n]", &job, &upper, atcmd_name) < 3 || job < 0 || job >= MAX_PC_CLASS || (job > 23 && job < 4001)) { //upper指定してある
+	if (!message || !*message || sscanf(message, "%d %d %[^\n]", &job, &upper, atcmd_name) < 3 || job < 0 || job >= MAX_PC_CLASS || (job > 26 && job < 4001)) { //upper指定してある
 		upper = -1;
-		if (!message || !*message || sscanf(message, "%d %[^\n]", &job, atcmd_name) < 2 || job < 0 || job >= MAX_PC_CLASS || (job > 23 && job < 4001)) { //upper指定してない上に何か足りない
+		if (!message || !*message || sscanf(message, "%d %[^\n]", &job, atcmd_name) < 2 || job < 0 || job >= MAX_PC_CLASS || (job > 26 && job < 4001)) { //upper指定してない上に何か足りない
 			/* search class name */
 			i = (int)(sizeof(jobs) / sizeof(jobs[0]));
 			if (sscanf(message, "\"%[^\"]\" %d %[^\n]", jobname, &upper, atcmd_name) == 3 ||

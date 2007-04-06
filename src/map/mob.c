@@ -4655,8 +4655,6 @@ static int mob_readdb_mobavail(void)
 		if (class <= 1000 || class >= MAX_MOB_DB) // ’l‚ªˆÙí‚È‚çˆ—‚µ‚È‚¢B
 			continue;
 		k = atoi(str[1]);
-		if (j > 3 && k > 23 && k < 69)
-			k += 3977; // advanced job/baby class
 		if (k >= 0)
 			mob_db[class].view_class = k;
 
