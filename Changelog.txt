@@ -11,6 +11,8 @@
 Date	Added
 
 04/06/2007
+	* Changed: Script list is now contained in the /npc/ folder, and not map_freya.conf [Tsuyuki]
+	* Changed: Moved mapflags to the /npc/ folder [Tsuyuki]
 	* Updated: Nameless Island warper to warp a character to different maps based on day/night [Tsuyuki]
 	* Fixed: isday()/isnight()/day()/night() script commands not working at all [Tsuyuki]
 	* Fixed: NJ_KAENSIN now casts on the caster and is no longer user-positional [Tsuyuki]

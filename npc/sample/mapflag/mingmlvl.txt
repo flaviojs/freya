@@ -1,0 +1,170 @@
+//===== Freya Script =========================================
+//= Map flags that disable some GM to use GM commands
+//===== By: ==================================================
+//= YOR (inspired from GARTZ mingmlvl file)
+//===== Current Version: =====================================
+//= 1.0
+//===== Description: =========================================
+//= mingmlvl: disable a GM to use GM commands on map
+//= <mapname> mapflag mingmlvl <minimum_GM_level_to_use_GM_commands>
+//= Disabled all GM commands for GM lowers then lv 20
+//= PvP areas
+//= GvG Areas
+//= Guild Castles
+//= Guild Dungeons (default: enabled)
+//= Job Quests
+//= Special Quests Places
+//= Arenas
+//===== Additional Comments: =================================
+//=
+//============================================================
+
+// PvP ====================
+pvp_y_1-1.gat	mapflag	mingmlvl	20
+pvp_y_1-2.gat	mapflag	mingmlvl	20
+pvp_y_1-3.gat	mapflag	mingmlvl	20
+pvp_y_1-4.gat	mapflag	mingmlvl	20
+pvp_y_1-5.gat	mapflag	mingmlvl	20
+pvp_y_2-1.gat	mapflag	mingmlvl	20
+pvp_y_2-2.gat	mapflag	mingmlvl	20
+pvp_y_2-3.gat	mapflag	mingmlvl	20
+pvp_y_2-4.gat	mapflag	mingmlvl	20
+pvp_y_2-5.gat	mapflag	mingmlvl	20
+pvp_y_3-1.gat	mapflag	mingmlvl	20
+pvp_y_3-2.gat	mapflag	mingmlvl	20
+pvp_y_3-3.gat	mapflag	mingmlvl	20
+pvp_y_3-4.gat	mapflag	mingmlvl	20
+pvp_y_3-5.gat	mapflag	mingmlvl	20
+pvp_y_4-1.gat	mapflag	mingmlvl	20
+pvp_y_4-2.gat	mapflag	mingmlvl	20
+pvp_y_4-3.gat	mapflag	mingmlvl	20
+pvp_y_4-4.gat	mapflag	mingmlvl	20
+pvp_y_4-5.gat	mapflag	mingmlvl	20
+pvp_y_5-1.gat	mapflag	mingmlvl	20
+pvp_y_5-2.gat	mapflag	mingmlvl	20
+pvp_y_5-3.gat	mapflag	mingmlvl	20
+pvp_y_5-4.gat	mapflag	mingmlvl	20
+pvp_y_5-5.gat	mapflag	mingmlvl	20
+pvp_y_6-1.gat	mapflag	mingmlvl	20
+pvp_y_6-2.gat	mapflag	mingmlvl	20
+pvp_y_6-3.gat	mapflag	mingmlvl	20
+pvp_y_6-4.gat	mapflag	mingmlvl	20
+pvp_y_6-5.gat	mapflag	mingmlvl	20
+pvp_y_7-1.gat	mapflag	mingmlvl	20
+pvp_y_7-2.gat	mapflag	mingmlvl	20
+pvp_y_7-3.gat	mapflag	mingmlvl	20
+pvp_y_7-4.gat	mapflag	mingmlvl	20
+pvp_y_7-5.gat	mapflag	mingmlvl	20
+pvp_y_8-1.gat	mapflag	mingmlvl	20
+pvp_y_8-2.gat	mapflag	mingmlvl	20
+pvp_y_8-3.gat	mapflag	mingmlvl	20
+pvp_y_8-4.gat	mapflag	mingmlvl	20
+pvp_y_8-5.gat	mapflag	mingmlvl	20
+//pvp_n_1-1.gat	mapflag	mingmlvl	20
+//pvp_n_1-2.gat	mapflag	mingmlvl	20
+//pvp_n_1-3.gat	mapflag	mingmlvl	20
+//pvp_n_1-4.gat	mapflag	mingmlvl	20
+//pvp_n_1-5.gat	mapflag	mingmlvl	20
+//pvp_n_2-1.gat	mapflag	mingmlvl	20
+//pvp_n_2-2.gat	mapflag	mingmlvl	20
+//pvp_n_2-3.gat	mapflag	mingmlvl	20
+//pvp_n_2-4.gat	mapflag	mingmlvl	20
+//pvp_n_2-5.gat	mapflag	mingmlvl	20
+//pvp_n_3-1.gat	mapflag	mingmlvl	20
+//pvp_n_3-2.gat	mapflag	mingmlvl	20
+//pvp_n_3-3.gat	mapflag	mingmlvl	20
+//pvp_n_3-4.gat	mapflag	mingmlvl	20
+//pvp_n_3-5.gat	mapflag	mingmlvl	20
+//pvp_n_4-1.gat	mapflag	mingmlvl	20
+//pvp_n_4-2.gat	mapflag	mingmlvl	20
+//pvp_n_4-3.gat	mapflag	mingmlvl	20
+//pvp_n_4-4.gat	mapflag	mingmlvl	20
+//pvp_n_4-5.gat	mapflag	mingmlvl	20
+//pvp_n_5-1.gat	mapflag	mingmlvl	20
+//pvp_n_5-2.gat	mapflag	mingmlvl	20
+//pvp_n_5-3.gat	mapflag	mingmlvl	20
+//pvp_n_5-4.gat	mapflag	mingmlvl	20
+//pvp_n_5-5.gat	mapflag	mingmlvl	20
+//pvp_n_6-1.gat	mapflag	mingmlvl	20
+//pvp_n_6-2.gat	mapflag	mingmlvl	20
+//pvp_n_6-3.gat	mapflag	mingmlvl	20
+//pvp_n_6-4.gat	mapflag	mingmlvl	20
+//pvp_n_6-5.gat	mapflag	mingmlvl	20
+//pvp_n_7-1.gat	mapflag	mingmlvl	20
+//pvp_n_7-2.gat	mapflag	mingmlvl	20
+//pvp_n_7-3.gat	mapflag	mingmlvl	20
+//pvp_n_7-4.gat	mapflag	mingmlvl	20
+//pvp_n_7-5.gat	mapflag	mingmlvl	20
+//pvp_n_8-1.gat	mapflag	mingmlvl	20
+//pvp_n_8-2.gat	mapflag	mingmlvl	20
+//pvp_n_8-3.gat	mapflag	mingmlvl	20
+//pvp_n_8-4.gat	mapflag	mingmlvl	20
+//pvp_n_8-5.gat	mapflag	mingmlvl	20
+pvp_2vs2.gat	mapflag	mingmlvl	20
+
+// GvG Arenas =============
+guild_vs1.gat	mapflag	mingmlvl	20
+guild_vs2.gat	mapflag	mingmlvl	20
+guild_vs3.gat	mapflag	mingmlvl	20
+guild_vs4.gat	mapflag	mingmlvl	20
+guild_vs5.gat	mapflag	mingmlvl	20
+
+// Guild Castles ==========
+aldeg_cas01.gat	mapflag	mingmlvl	20
+aldeg_cas02.gat	mapflag	mingmlvl	20
+aldeg_cas03.gat	mapflag	mingmlvl	20
+aldeg_cas04.gat	mapflag	mingmlvl	20
+aldeg_cas05.gat	mapflag	mingmlvl	20
+gefg_cas01.gat	mapflag	mingmlvl	20
+gefg_cas02.gat	mapflag	mingmlvl	20
+gefg_cas03.gat	mapflag	mingmlvl	20
+gefg_cas04.gat	mapflag	mingmlvl	20
+gefg_cas05.gat	mapflag	mingmlvl	20
+payg_cas01.gat	mapflag	mingmlvl	20
+payg_cas02.gat	mapflag	mingmlvl	20
+payg_cas03.gat	mapflag	mingmlvl	20
+payg_cas04.gat	mapflag	mingmlvl	20
+payg_cas05.gat	mapflag	mingmlvl	20
+prtg_cas01.gat	mapflag	mingmlvl	20
+prtg_cas02.gat	mapflag	mingmlvl	20
+prtg_cas03.gat	mapflag	mingmlvl	20
+prtg_cas04.gat	mapflag	mingmlvl	20
+prtg_cas05.gat	mapflag	mingmlvl	20
+
+// Guild Dungeons ==========
+//gld_dun01.gat	mapflag	mingmlvl	20
+//gld_dun02.gat	mapflag	mingmlvl	20
+//gld_dun03.gat	mapflag	mingmlvl	20
+//gld_dun04.gat	mapflag	mingmlvl	20
+
+// Job Quests ===========================
+sword_1-1.gat	mapflag	mingmlvl	20
+sword_2-1.gat	mapflag	mingmlvl	20
+sword_3-1.gat	mapflag	mingmlvl	20
+job_thief1.gat	mapflag	mingmlvl	20
+// 2-1
+job_hunte.gat	mapflag	mingmlvl	20
+job_knt.gat	mapflag	mingmlvl	20
+job_prist.gat	mapflag	mingmlvl	20
+job_wiz.gat	mapflag	mingmlvl	20
+in_moc_16.gat	mapflag	mingmlvl	20
+in_hunter.gat	mapflag	mingmlvl	20
+// 2-2
+alde_alche.gat	mapflag	mingmlvl	20
+job_cru.gat	mapflag	mingmlvl	20
+job_duncer.gat	mapflag	mingmlvl	20
+job_monk.gat	mapflag	mingmlvl	20
+monk_test.gat	mapflag	mingmlvl	20
+monk_in.gat	mapflag	mingmlvl	20
+in_rogue.gat	mapflag	mingmlvl	20
+job_sage.gat	mapflag	mingmlvl	20
+
+// Special Quests Places ================
+que_god01.gat	mapflag	mingmlvl	20
+que_god02.gat	mapflag	mingmlvl	20
+que_sign01.gat	mapflag	mingmlvl	20
+
+// Arenas ========================
+arena_room.gat	mapflag	mingmlvl	20
+sec_in01.gat	mapflag	mingmlvl	20
+sec_in02.gat	mapflag	mingmlvl	20
