@@ -10,8 +10,14 @@
 
 Date	Added
 
-04/05/2007
+04/06/2007
+	* Updated: Nameless Island warper to warp a character to different maps based on day/night [Tsuyuki]
+	* Fixed: isday()/isnight()/day()/night() script commands not working at all [Tsuyuki]
+	* Fixed: NJ_KAENSIN now casts on the caster and is no longer user-positional [Tsuyuki]
+	* Updated: Nameless Island MvP monster modes [Tsuyuki]
 	* Updated: Nameless Island and Abbey Dungeon monsters with all the information we have so far [Tsuyuki]
+
+04/05/2007
 	* Fixed: Some The Sign Quest bugs (Thanks to Galaxy) [Tsuyuki]
 	* Note: The exp table is now fully compatible with jAthena/Phaeton's format [Tsuyuki]
 	* Fixed: Star Gladiator now has it's proper Aegis job exp [Tsuyuki]

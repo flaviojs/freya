@@ -3117,8 +3117,6 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 				skill_attack(BF_MAGIC, src, src, bl, skillid, skilllv, tick, 0);
 		}
 		break;
-	case NJ_KAENSIN:
-		break;
 	case SM_MAGNUM:
 		if(flag & 1)
 		{
@@ -3326,7 +3324,6 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		break;
 
 	case NJ_HYOUSYOURAKU:
-		skill_castend_pos2(src,bl->x,bl->y,skillid,skilllv,tick,0);
 		map_foreachinarea(skill_attack_area, src->m, src->x-7, bl->y-7, bl->x+7, bl->y+7, 0, BF_MAGIC, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
 		skill_castend_pos2(src,bl->x,bl->y,skillid,skilllv,tick,0);
 		clif_specialeffect(bl, 636, AREA);
@@ -6147,6 +6144,10 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		}
 		else if (sd)
 			clif_skill_fail(sd,skillid,0,0);
+		break;
+
+	case NJ_KAENSIN:
+		skill_castend_pos2(src,bl->x,bl->y,skillid,skilllv,tick,0);
 		break;
 
 	// New guild skills [Celest]
