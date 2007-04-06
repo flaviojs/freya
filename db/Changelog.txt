@@ -1,0 +1,13 @@
+->	* FreyaCE Database Changes Log *
+->	* www.ro-freya.net *
+
+01/10/2006
+	* Updated: Assumptio (High Priest) skill duration [Proximus]
+
+01/09/2006
+	* Updated: turned off Basilica during WoE, should be turned off as far as I know [akrus]
+	* Fixed: monsters database / sorry :x / [akrus]
+
+01/08/2006
+	* Updated: castles database (names of the castles updated according to iRO) [akrus]
+	* Updated: monsters database (Lighthalzen monsters, based on eAthena) [akrus]

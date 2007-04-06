@@ -1,0 +1,64 @@
+//===== Freya Script =========================================
+//= Map flags that disable spells
+//===== By: ==================================================
+//= Freya Dev Team
+//= found on freya's forum (thanks to BeoWulf)
+//===== Current Version: =====================================
+// Note: by default, all maps are disabled. add maps as you want.
+
+// cities
+//prontera.gat	mapflag	nospell
+//alberta.gat	mapflag	nospell
+//aldebaran.gat	mapflag	nospell
+//amatsu.gat	mapflag	nospell
+//comodo.gat	mapflag	nospell
+//geffen.gat	mapflag	nospell
+//gonryun.gat	mapflag	nospell
+//izlude.gat	mapflag	nospell
+//louyang.gat	mapflag	nospell
+//xmas.gat	mapflag	nospell
+//morocc.gat	mapflag	nospell
+//payon.gat	mapflag	nospell
+//umbala.gat	mapflag	nospell
+//yuno.gat	mapflag	nospell
+//sec_in02.gat	mapflag	nospell
+//sec_in01.gat	mapflag	nospell
+
+// inside buildings
+//ayo_in01.gat	mapflag	nospell
+//ayo_in02.gat	mapflag	nospell
+//alb_ship.gat	mapflag	nospell
+//alberta_in.gat	mapflag	nospell
+//aldeba_in.gat	mapflag	nospell
+//ama_in01.gat	mapflag	nospell
+//ama_in02.gat	mapflag	nospell
+//cmd_in01.gat	mapflag	nospell
+//cmd_in02.gat	mapflag	nospell
+//gef_tower.gat	mapflag	nospell
+//geffen_in.gat	mapflag	nospell
+//gon_in.gat	mapflag	nospell
+//gon_test.gat	mapflag	nospell
+//in_orcs01.gat	mapflag	nospell
+//izlude_in.gat	mapflag	nospell
+//jawaii_in.gat	mapflag	nospell
+//lou_in01.gat	mapflag	nospell
+//lou_in02.gat	mapflag	nospell
+//moc_castle.gat	mapflag	nospell
+//morocc_in.gat	mapflag	nospell
+//new_1-1.gat	mapflag	nospell
+//new_1-2.gat	mapflag	nospell
+//new_1-3.gat	mapflag	nospell
+//new_1-4.gat	mapflag	nospell
+//nif_in.gat	mapflag	nospell
+//payon_in01.gat	mapflag	nospell
+//payon_in02.gat	mapflag	nospell
+//payon_in03.gat	mapflag	nospell
+//prt_castle.gat	mapflag	nospell
+//prt_church.gat	mapflag	nospell
+//prt_in.gat	mapflag	nospell
+//um_in.gat	mapflag	nospell
+//xmas_in.gat	mapflag	nospell
+//yuno_in01.gat	mapflag	nospell
+//yuno_in03.gat	mapflag	nospell
+//yuno_in04.gat	mapflag	nospell
+//yuno_in05.gat	mapflag	nospell

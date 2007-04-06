@@ -1,0 +1,97 @@
+// $Id: Changelog.txt akrus $
+Date	Added
+
+** Nezumi Project: http://nezumi.dns.st/ **
+*** SVN: http://ookoo.org/svn/nezumi/ ***
+
+01/10/2006
+	* Added: Czech manner [akrus] (thanks to [AZ_Online] / Freya Forums)
+	* Fixed: likely fixed the bug with global_reg [akrus]
+
+01/08/2006
+	* Updated: Plagiarize skill now saves the skills in global_reg, doesn't work with Adv classes skills anymore [Proximus]
+	* Fixed: Decrease Agility skill should last 1/2 time when used on players [akrus]
+	* Updated: SQL databases [akrus]
+
+01/07/2006
+	* Fixed: start-freya.sh script [akrus]
+	* Fixed: Berserk skill now doesn't have Endure effect on GvG maps [Proximus]
+	* Fixed: Shield Reflect skill [Proximus]
+	* Added: Goat Card, Nine Tail Card, Firelock Soldier Card, Megalith Card, Sting Card
+	  Arclouze Card, Apocalipse Card, Gibbet Card, Kapha Card, Carat Card, Freezer Card [akrus]
+	  NOTE: there will be db/Changelog.txt for database changes log
+	* Updated: skills databases [Proximus]
+	* Added: Lunar Bow now works, many item database updates coming soon! [akrus]
+	* Added: getrefine(); script command (finally :)) [akrus]
+	* Fixed: autospell/autospell2 skill level calculation [Proximus] && [akrus]
+	* Added: battle config option to disable sp consumption when Autospell is used [Proximus] && [akrus]
+
+01/06/2006
+	* Added: @online/@displayonline, @mc/@mobcount/@monstercount atcommands [akrus]
+	  NOTE: these atcommands were requested by my friends, by default they are set to
+	  GM level 1. It's safe to use these commands (they are very simple), but make sure
+	  you need them, they might break the "official" status of your server.
+
+01/04/2006
+	* Fixed: Linux compilation problems [akrus]
+
+01/03/2006
+	* Fixed: dupe hack (slotted items + cards) found on Koaxia [Proximus]
+
+12/30/2005
+	* Updated: @go atcommand (added Hugel city) [akrus]
+	* Fixed: Stone Curse Skill [Proximus] (based on Mantis Issue ID 572)
+	* Fixed: Assumptio Skill [Proximus] (based on Mantis Issue ID 597)
+
+12/27/2005
+	* Fixed: Frost Joke skill doesn't frost dead players anymore [Proximus]
+
+12/26/2005
+	* Added: @say, @heart, @emotion atcommands [akrus]
+	* Changed: @me GM level 0 -> GM level 1 [akrus]
+	* Updated: @version/@version2 [akrus]
+
+12/22/2005
+	* Fixed: Cart Termination skill now checks for Cart Boost [Proximus]
+
+12/21/2005
+	* Fixed: Magnum Break skill (Hit Rate) [akrus] (thanks to [SePhII2oTh])
+	* Updated: skill_castnodex_db.txt [akrus]
+	* Fixed: Land Protector (Magnetic Earth) skill [dasknave] (thanks to [bajibbles] for the info)
+
+12/20/2005
+	* Added: @me atcommand (based on eA's code) [akrus]
+	* Updated: manner.txt [akrus]
+	* Fixed: Ayothaya & Izlude warps [akrus]
+	* Updated: NPCs to work with Freya right [akrus]
+	* Updated: lots of new NPCs (thanks to eAthena) [akrus]
+
+12/19/2005
+	* Added: Schwarzwald Republic Maps (kRO Patch 12-20) [akrus]
+	* Added: Cart Termination skill [akrus] (based on Freya's Mantis Issue ID 496 & [SePhII2oTh]'s code)
+	* Added: Shield Chain skill [akrus] (based on Freya's Mantis Issue ID 496 & [SePhII2oTh]'s code)
+	* Updated: monsters database [akrus]
+	* Added: Acid Demonstration skill [akrus] (based on [Proximus]'s code taken from eAthena)
+	* Fixed: compilation errors (sorry) [akrus]
+
+12/18/2005
+	* Fixed: some strings in msg_athena.conf [akrus]
+	* Updated: russian bad words in manner.txt [akrus]
+	* Removed: turned off citycleaners.txt (iRO), do we follow kRO or iRO? [akrus]
+	* Added: auction maps [akrus]
+	* Fixed: @memo atcommand, now can be used by players (nowarpto -> nomemo) [akrus]
+	* Fixed: Juice Maker NPC position, now up-to-date [akrus] (script by eAthena Dev Team)
+	* Fixed: Dispel Skill casting chance [raversth]
+	* Fixed: Magnetic Earth skill [akrus]
+	* Fixed: Bloody Butterfly Card [akrus] (thanks to [Proximus])
+	* Removed: 5013 from item_deny.txt [akrus]
+	  I think it's better to allow admins to turn it off if they need :)
+	* Fixed: temporarily turned off Azoth in item_db, bClassChange is buggy [akrus]
+
+	* Starting Freya Community Edition [akrus]
+	  Freya wasn't updated for 10 (!) days,
+	  Mantis has lots of bugs that are still not fixed. As I said once:
+	  "Freya will never die, community will always support Freya"
+	  Well, I'm not a great dev, but anyway I'll try to do my best.
+	  Feel free to post all the bugs & fixes to Freya's Mantis.
+	  Thanks!

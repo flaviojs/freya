@@ -1,0 +1,55 @@
+//===== Freya Script =========================================
+//= Abyss Lake Dungeon Monster Spawns
+//===== By: ==================================================
+//= 1.0 [Muad_Dib]
+//= 1.1 [Akrus]
+//===== Current Version: =====================================
+//= 1.1
+//===== Compatible With: =====================================
+//= Freya/Athena
+//===== Description: =========================================
+//= Abyss Lake Dungeon Monster Spawns
+//===== Additional Comments: =================================
+//= 1.1 Converted to Freya format [akrus]
+//============================================================
+
+//========================================================================================
+// - Abyss Lake Dungeon 1F
+//========================================================================================
+
+abyss_01.gat,0,0,0,0	monster	Mimic		1191,10,0,0,0
+abyss_01.gat,0,0,0,0	monster	Penomena	1216,15,0,0,0
+abyss_01.gat,0,0,0,0	monster	Ancient Mimic	1699,5,0,0,0
+abyss_01.gat,0,0,0,0	monster	Ferus		1714,20,0,0,0
+abyss_01.gat,0,0,0,0	monster	Novus		1715,20,0,0,0
+abyss_01.gat,0,0,0,0	monster	Ferus		1717,15,0,0,0
+abyss_01.gat,0,0,0,0	monster	Novus		1718,20,0,0,0
+abyss_01.gat,0,0,0,0	monster	Dragon Egg	1721,15,0,0,0
+
+//========================================================================================
+// - Abyss Lake Dungeon 2F
+//========================================================================================
+
+abyss_02.gat,0,0,0,0	monster	Mimic		1191,10,0,0,0
+abyss_02.gat,0,0,0,0	monster	Ancient Mimic	1699,10,0,0,0
+abyss_02.gat,0,0,0,0	monster	Acidus		1713,20,0,0,0
+abyss_02.gat,0,0,0,0	monster	Ferus		1714,15,0,0,0
+abyss_02.gat,0,0,0,0	monster	Novus		1715,10,0,0,0
+abyss_02.gat,0,0,0,0	monster	Ferus		1717,15,0,0,0
+abyss_02.gat,0,0,0,0	monster	Novus		1718,15,0,0,0
+abyss_02.gat,0,0,0,0	monster	Dragon Egg	1721,20,0,0,0
+
+//========================================================================================
+// - Abyss Lake Dungeon 3F
+//========================================================================================
+
+abyss_03.gat,0,0,0,0	monster	Mimic		1191,10,0,0,0
+abyss_03.gat,0,0,0,0	monster	Spring Rabbit	1690,5,0,0,0
+abyss_03.gat,0,0,0,0	monster	Ancient Mimic	1699,5,0,0,0
+abyss_03.gat,0,0,0,0	monster	Acidus		1713,15,0,0,0
+abyss_03.gat,0,0,0,0	monster	Ferus		1714,15,0,0,0
+abyss_03.gat,0,0,0,0	monster	Acidus		1716,15,0,0,0
+abyss_03.gat,0,0,0,0	monster	Ferus		1717,10,0,0,0
+abyss_03.gat,0,0,0,0	monster	Dragon Egg	1721,15,0,0,0
+abyss_03.gat,0,0,0,0	monster	Detale		1719,1,3600000,7200000,0
+abyss_03.gat,0,0,0,0	monster	Hydro		1720,1,1800000,3600000,0

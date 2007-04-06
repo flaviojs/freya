@@ -1,0 +1,17 @@
+//<Skill id>,<Cast: 1 or 0>,<Delay (Optional): 1 or 0>
+// Cast: With 1, dex does not affect the skill's cast rate
+// Cast: With 0, dex affects the skill's cast rate
+// Delay: With 1, dex does not affect the skill's delay rate
+// Delay: With 0, dex affects the skill's delay rate
+// Example - 46,1,1 = Double Strafe's casting time and delay is not affected by dex.
+
+255,1	//CR_DEVOTION
+336,1	//WE_CALLPARTNER
+366,1	//HW_MAGICPOWER
+370,1	//CH_PALMSTRIKE
+403,1	//PF_MEMORIZE
+482,1	//PF_DOUBLECASTING
+10010,1	//GD_BATTLEORDER
+10011,1	//GD_REGENERATION
+10012,1	//GD_RESTORE
+10013,1	//GD_EMERGENCYCALL

@@ -1,0 +1,1417 @@
+#!/bin/sh
+# Configure file made by MagicalTux
+# I took many parts of this code from "standard" configure scripts made by autoconf, but also
+# written a big part of it :)
+VERSION='$Id: configure 570 2005-12-01 23:15:33Z Yor $'
+
+# nice line found in standard-like configure script
+export PATH || (echo "OOPS, this isn't sh.  Desperation time.  I will feed myself to sh."; sh $0 $argv; kill $$)
+
+case `uname` in
+	CYGWIN*)
+		if [ x"$BASH" = x ]; then
+			echo "Cygwin has a poor sh, switching to bash !"
+			/bin/bash $0 $*
+			kill $$
+		fi
+	;;
+esac
+
+# Default values :
+WITH_MYSQL="no"
+WITH_MYSQL_PATH="/usr/local/mysql:/usr/local:/usr:/"
+WITH_LIBM="/usr/local"
+WITH_ZLIB="yes"
+WITH_GETTEXT="yes"
+WITH_DEBUG="yes"
+WITH_OPTIMIZE="std"
+WITH_WIN32="no"
+WITH_PRO="no"
+WITH_FDS=1024
+WITH_C99="no"
+WITH_MAKE="no"
+PREFIX=~
+PLATFORM=auto
+srcdir=src/
+
+# Specific config
+OBJECTS="common"
+CONFIGFILE="src/include/config.h"
+MAKEFILE="Makefile"
+LAST_LIBS="-lmysql -lmysqlclient -lws2_32 -ldl -lz -lm -lstdc++"
+FREYA_VERSION="2.0.2"
+
+# Autoinstall values...
+ZLIB_LAST_VERSION="1.2.3"
+
+# Initial values
+INCLUDES="-I../include"
+LIBS="-L../lib"
+CC_OPTIONS="-pipe -Wall"
+COMP_OPTIONS=""
+LOADABLE_EXT=".so"
+
+# Release specific value
+# Set this value when releasing a SVN without giving out the .svn directories
+# it will allow to have non-broken builds.
+#RELEASED_SVN=x
+
+CONFIGURE_LINE="'"`echo $0 | cut -d"'" -f- --output-delimiter='"'"'"'"'`"'"
+# arguments loop
+while :
+do
+	case $# in
+		0)
+			break
+			;;
+		#
+	esac
+	
+	option=$1
+	shift
+
+	CONFIGURE_LINE="$CONFIGURE_LINE '"`echo $option | cut -d"'" -f- --output-delimiter='"'"'"'"'`"'"
+
+# Make all options have two hyphens
+	orig_option=$option	# Save original for error messages
+	case $option in
+	--*) ;;
+	-*) option=-$option ;;
+	esac
+
+# Split out the argument for options that take them
+	case $option in
+	--*=*)
+		optarg=`echo $option | sed -e 's/^[^=]*=//'`
+		;;
+	esac
+
+	case $option in
+	--prefix=*)
+		PREFIX="$optarg"
+	;;
+	
+	--platform=*)
+		PLATFORM="$optarg"
+	;;
+	
+	--with-*)
+		case "$option" in
+		*=*)	;;
+		*)	optarg=yes ;;
+		esac
+		withopt=`echo ${option} | sed 's:^--::;s:=.*$::;s:-:_:g' | sed -e 'y/abcdefghijklmnopqrstuvwxyz/ABCDEFGHIJKLMNOPQRSTUVWXYZ/'`
+		eval $withopt="\$optarg"
+	;;
+	
+	--without-*)
+		withopt=`echo ${option} | sed 's:^--::;s:out::;s:-:_:g' | sed -e 'y/abcdefghijklmnopqrstuvwxyz/ABCDEFGHIJKLMNOPQRSTUVWXYZ/'`
+		eval $withopt=no
+	;;
+
+	--choosesql)
+		# special function to offer the user to choose : MySQL or not ?
+		WITH_MYSQL=""
+		echo -n "What version do you want to compile ? [T]xt/[S]ql/[C]ancel"
+		while [ x$WITH_MYSQL = x ]; do
+			ANSWER="xx"
+			read -n1 -r -s ANSWER 2>/dev/null
+			if [ x"$ANSWER" = xxx ]; then
+				echo
+				echo -n "Type first letter and press [Return] : "
+				read ANSWER
+			fi
+			if [ x"$ANSWER" = x"C" ]; then ANSWER="c"; fi
+			if [ x"$ANSWER" = x"S" ]; then ANSWER="s"; fi
+			if [ x"$ANSWER" = x"T" ]; then ANSWER="t"; fi
+			if [ x"$ANSWER" = x"c" ]; then
+				echo
+				echo "Installation cancelled by user request."
+				exit 1
+			fi
+			if [ x"$ANSWER" = x"t" ]; then
+				echo
+				echo "Configuring installation for TEXT mode."
+				WITH_MYSQL="no"
+			fi
+			if [ x"$ANSWER" = x"s" ]; then
+				echo
+				echo "Configuring installation for SQL mode."
+				WITH_MYSQL="yes"
+			fi
+		done
+	;;
+	
+	--help)
+		exec 1>&2
+		echo "Freya Configure Script"
+		echo "Written by MagicalTux <MagicalTux@FF.st>"
+		echo
+		echo "Usage : $0 [OPTIONS]"
+		echo
+		echo "Options: [defaults in brackets]"
+		echo ' --prefix=MYDIR           install into MYDIR [~]'
+		echo ' --help                   print this message'
+		echo " --platform=PLATFORM      set compile platform [$(uname)]"
+		echo
+		echo ' --with-mysql=PATH        Enable MySQL support [autodetect]'
+		echo ' --with-libm=PATH         set path to libm [autodetect]'
+		echo ' --with-zlib=PATH         set path to libz [autodetect]'
+		echo ' --with-fds=n             set maximum number of connections [1024]'
+		echo ' --with-optimize=LEVEL    set compiler optimization level (read below) [std]'
+		echo ' --with-c99               enable C99 standard for compiling'
+		echo ' --without-gettext        disable GetText support'
+		echo ' --with-debug             enable debugging'
+		echo ' --with-debug=gprof       enable debugging and profiling'
+		echo ' --without-debug          disable debugging (and profiling)'
+		echo ' --with-win32             cross-compile for Win32'
+		echo
+		echo 'You can pass parameters to --with-mysql to say where you have'
+		echo 'MySQL installed. For example : --with-mysql=/usr/local/mysql'
+		echo
+		echo 'Valid optimization levels are :'
+		echo ' - no : No optimization of the code'
+		echo ' - low : Standard optimization of the code'
+		echo ' - std : Optimize even more (all safe optimizations - default)'
+		echo ' - high : Optimize yet more (all optimization options enabled)'
+		echo ' - size : Optimize for smaller binaries'
+		exit 0
+	;;
+	
+	*)
+		echo "configure: Unrecognized option: \"$option\"; use --help for usage." >&2
+		exit 1
+	;;
+	esac
+
+done
+
+##### EXPAND PREFIX
+TEMP=`pwd`
+# sh on cygwin does not expand ~ to $HOME
+PREFIX=`echo $PREFIX | sed 's:~:'"$HOME:"`
+cd $PREFIX
+PREFIX=`pwd`
+cd $TEMP
+
+##### OPTIMIZATION LEVEL
+
+# first : lowercase it
+WITH_OPTIMIZE=`echo $WITH_OPTIMIZE | sed -e 'y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/'`
+if [ "$WITH_DEBUG" != "no" ]; then
+	WITH_OPTIMIZE="none"
+fi
+# then test the value
+if [ "$WITH_OPTIMIZE" = "low" ]; then
+	CC_OPTIONS="$CC_OPTIONS -O1"
+fi
+if [ "$WITH_OPTIMIZE" = "std" ]; then
+	CC_OPTIONS="$CC_OPTIONS -O2"
+fi
+if [ "$WITH_OPTIMIZE" = "high" ]; then
+	CC_OPTIONS="$CC_OPTIONS -O3"
+	echo "Warning: Maximal optimization enabled - do not complain if it crashes."
+fi
+if [ "$WITH_OPTIMIZE" = "size" ]; then
+	CC_OPTIONS="$CC_OPTIONS -Os"
+fi
+
+##### ENABLE -g GCC FLAG ?
+
+if [ x"$WITH_DEBUG" != x"no" ]; then
+	CC_OPTIONS="$CC_OPTIONS -g -ggdb"
+	if [ x"$WITH_DEBUG" = x"gprof" ]; then
+		CC_OPTIONS="$CC_OPTIONS -pg"
+		COMP_OPTIONS="-pg"
+	fi
+fi
+
+##### C99 ?
+
+if [ x"$WITH_C99" = x"yes" ]; then
+	CC_OPTIONS="$CC_OPTIONS -std=c99"
+fi
+
+##### PLATFORM DETECTION
+
+echo -n "Checking for platform... "
+if [ "$PLATFORM" = "auto" ]; then
+	PLATFORM=`uname`
+	echo $PLATFORM
+else
+	echo "$PLATFORM (forced)"
+fi
+
+##### IS CYGWIN ?
+TEST=`echo $PLATFORM | grep -i CYGWIN`
+if [ x$TEST = x ]; then
+	# not cygwin
+	IS_CYGWIN=no
+else
+	# cygwin !
+	IS_CYGWIN=yes
+fi
+
+##### MAKE OR GMAKE DETECTION
+
+# detect : make or gmake ?
+TEST=`echo $PLATFORM | grep FreeBSD`
+if [ x$TEST = x ]; then
+	# not FreeBSD -> make
+	MAKE=make
+else
+	MAKE=gmake
+fi
+
+##### SANE BUILD ENVIRONMENT ?
+
+echo "checking whether build environment is sane... "
+sleep 1
+echo timestamp > conftestfile
+# Do this in a subshell so we don't clobber the current shell's
+# arguments.  FIXME: maybe try `-L' hack like GETLOADAVG test?
+if (set X `ls -t configure conftestfile`; test "$2" = conftestfile)
+then
+	# Ok.
+	rm -f conftestfile
+else
+	rm -f conftestfile
+	echo "error: newly created file is older than distributed files!"
+	echo "Check your system clock"
+	exit 1
+fi
+
+##### FIND OUT PATH_SEPARATOR
+
+# The user is always right.
+if test "${PATH_SEPARATOR+set}" != set; then
+  echo "#! /bin/sh" >conf$$.sh
+  echo  "exit 0"   >>conf$$.sh
+  chmod +x conf$$.sh
+  if (PATH="/nonexistent;."; conf$$.sh) >/dev/null 2>&1; then
+    PATH_SEPARATOR=';'
+  else
+    PATH_SEPARATOR=:
+  fi
+  rm -f conf$$.sh
+fi
+
+##### $(MAKE) SET BY MAKE/GMAKE ?
+
+echo -n "Checking whether $MAKE sets \$(MAKE) ... "
+echo "all:" >.config.tmp
+echo '	@echo '"'"'ac_maketemp="$(MAKE)"'"'" >>.config.tmp
+eval `$MAKE -f .config.tmp 2>/dev/null | grep temp=`
+rm -f .config.tmp
+if test -n "$ac_maketemp"; then
+	echo yes
+	MAKEFILE_MUST_SET_MAKE=""
+else
+	echo no
+	MAKEFILE_MUST_SET_MAKE="MAKE = $MAKE"
+fi
+
+# Use test -z because SunOS4 sh mishandles braces in ${var-val}.
+# It thinks the first close brace ends the variable substitution.
+test -z "$INSTALL_PROGRAM" && INSTALL_PROGRAM='${INSTALL}'
+
+test -z "$INSTALL_SCRIPT" && INSTALL_SCRIPT='${INSTALL}'
+
+test -z "$INSTALL_DATA" && INSTALL_DATA='${INSTALL} -m 644'
+
+
+##### DETECT GCC
+
+echo -n "Checking for gcc... "
+CCLIST="gcc cc gcc-3.3 gcc-3.2 gcc-3.4 gcc-2.95"
+if [ "$WITH_WIN32" != "no" ]; then
+	if [ "$IS_CYGWIN" = "no" ]; then
+		CCLIST="/usr/bin/*mingw*gcc /usr/bin/*mingw*cc /usr/bin/*mingw*gcc-3.3 /usr/bin/*mingw*gcc-3.2 /usr/bin/*mingw*gcc-3.4 /usr/bin/*mingw*gcc-2.95 $CCLIST"
+		if [ x$CC != x ]; then
+			# check if $CC is Ming
+			TEST=`$CC -v 2>&1 | grep ^Thread | grep win32`
+			# Thread model: win32
+			if [ x$TEST = x ]; then
+				# thread model is not win32
+				CC=""
+			fi
+		fi
+	else
+		# Cygwin's special way to do win32 applications
+		CC_OPTIONS="$CC_OPTIONS -mno-cygwin"
+		COMP_OPTIONS="$COMP_OPTIONS -mno-cygwin"
+	fi
+fi
+if [ x$CC != x ]; then
+	CCLIST="$CC $CCLIST"
+fi
+CC=""
+for foo in $CCLIST; do
+	XCC=`which $foo`
+	if [ x$XCC = x ]; then
+		:
+	else
+		CC="$XCC"
+		echo $CC
+		break 2
+	fi
+done
+if [ x$CC = x ]; then
+	echo "not found" >&2
+	exit 1
+fi
+
+##### DETECT AR
+
+echo -n "Checking for ar... "
+ARLIST="ar"
+if [ "$WITH_WIN32" != "no" ]; then
+	if [ "$IS_CYGWIN" = "no" ]; then
+		ARLIST="/usr/bin/*mingw*ar $ARLIST"
+	fi
+fi
+if [ x$AR != x ]; then
+	ARLIST="$AR $ARLIST"
+fi
+AR=""
+for foo in $ARLIST; do
+	XAR=`which $foo`
+	if [ x$XAR = x ]; then
+		:
+	else
+		AR="$XAR"
+		echo $AR
+		break 2
+	fi
+done
+if [ x$AR = x ]; then
+	echo "not found" >&2
+	exit 1
+fi
+
+##### DETECT DEFAULT OUTPUT OF THE C COMPILER
+
+echo -n "Checking for C compiler default output... "
+echo "int main() { ; return 0; }" >.config.tmp.c
+$CC $CC_OPTIONS .config.tmp.c
+BINARY_EXT=""
+FOUND=""
+for foo in a_out.exe a.exe .config.tmp.exe .config.exe a.out .config.tmp a.* .config.tmp.* b.out; do
+	test -f "$foo" || continue
+	case $foo in
+		*.c | *.xcoff | *.tds | *.d | *.pdb | *.xSYM | *.bb | *.bbg | *.o | *.obj )
+			;;
+		[ab].out )
+			FOUND=y
+			break;;
+		*.* )
+			FOUND=y
+			BINARY_EXT=`expr "$foo" : '[^.]*\(\..*\)'`
+			break;;
+		* )
+			FOUND=y
+			break;;
+		#
+	esac
+done
+if [ x$FOUND = x ]; then
+	echo "not found"
+	echo "The binary output of gcc on your system was not found."
+	exit 1
+fi
+echo $foo
+rm -f $foo .config.tmp.c
+CC_DEFAULT_OUTPUT=$foo
+if [ x$BINARY_EXT != x ]; then
+	echo "Default executable files extention : $BINARY_EXT"
+	if [ x"$BINARY_EXT" = "x.exe" ]; then
+		LOADABLE_EXT=".dll"
+	fi
+fi
+
+if [ "$WITH_WIN32" != "no" ]; then
+	echo -n "Checking wether $CC is able to compile windows applications... "
+	echo "#include <windows.h>" >.config.tmp.c
+	echo 'int main() { return 0; }' >>.config.tmp.c
+	$CC $CC_OPTIONS .config.tmp.c 2>/dev/null
+	if [ "$?" != "0" ]; then
+		echo "no"
+		rm -f $CC_DEFAULT_OUTPUT .config.tmp.c
+		echo "It seems that $CC is not able to build windows applications."
+		echo "Please look at the configure help"
+		exit 1
+	fi
+	rm -f $CC_DEFAULT_OUTPUT .config.tmp.c
+	echo yes
+	if [ "$WITH_GETTEXT" != "no" ]; then
+		echo "Win32 Freya does not support GetText - disabling !"
+		WITH_GETTEXT="no"
+	fi
+fi
+
+##### SEARCH FOR BSD-COMPATIBLE INSTALL
+
+echo -n "checking for a BSD-compatible install... "
+as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH; do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+  # Account for people who put trailing slashes in PATH elements.
+case $as_dir/ in
+  ./ | .// | /cC/* | \
+  /etc/* | /usr/sbin/* | /usr/etc/* | /sbin/* | /usr/afsws/bin/* | \
+  /usr/ucb/* ) ;;
+  *)
+    # OSF1 and SCO ODT 3.0 have their own names for install.
+    # Don't use installbsd from OSF since it installs stuff as root
+    # by default.
+    for ac_prog in ginstall scoinst install; do
+      for ac_exec_ext in '' $BINARY_EXT; do
+        if test -f "$as_dir/$ac_prog$ac_exec_ext"; then
+          if test $ac_prog = install &&
+            grep dspmsg "$as_dir/$ac_prog$ac_exec_ext" >/dev/null 2>&1; then
+            # AIX install.  It has an incompatible calling convention.
+            :
+          elif test $ac_prog = install &&
+            grep pwplus "$as_dir/$ac_prog$ac_exec_ext" >/dev/null 2>&1; then
+            # program-specific install script used by HP pwplus--don't use.
+            :
+          else
+            ac_cv_path_install="$as_dir/$ac_prog$ac_exec_ext -c"
+            break 3
+          fi
+        fi
+      done
+    done
+    ;;
+esac
+done
+if test "${ac_cv_path_install+set}" = set; then
+  INSTALL=$ac_cv_path_install
+else
+	# TODO: Add X11R5's install-sh script in that case
+  echo "not found"
+  echo "Please check that you have the core utils installed"
+  exit 1
+fi
+echo "$INSTALL"
+
+##### CHECK FOR LIBM
+
+if [ "$WITH_LIBM" = no ]; then
+	echo "Can't compile Freya without libm !"
+	exit 1
+fi
+echo -n "Checking for libm... "
+echo "#include <stdlib.h>" >.config.tmp.c
+echo "#include <math.h>" >>.config.tmp.c
+echo 'int main() { printf("%d",cos(0)); return 0; }' >>.config.tmp.c
+# try default even if a path is present in $WITH_LIBM
+$CC $CC_OPTIONS .config.tmp.c -lm 2>/dev/null
+if [ "$?" != "0" ]; then
+	# test with the path
+	$CC .config.tmp.c -L{$WITH_LIBM}/lib -lz 2>/dev/null
+	if [ "$?" != "0" ]; then
+		# try to set also for the include
+		$CC .config.tmp.c -L{$WITH_LIBM}/lib -I{$WITH_LIBM}/include -lz 2>/dev/null
+		if [ "$?" != "0" ]; then
+			echo "not found"
+			echo "libm support seems not available on your system."
+			echo "You need libm in order to compile freya."
+			exit 1
+		fi
+		# ok !
+		INCLUDES="$INCLUDES -I{$WITH_LIBM}/include"
+		LIBS="$LIBS -L{$WITH_LIBM}/lib -lm"
+	else
+		LIBS="$LIBS -L{$WITH_LIBM}/lib -lm"
+	fi
+	# compile succeded - need -lintl to compile gettext
+else
+	LIBS="$LIBS -lm"
+fi
+echo yes
+rm -f $CC_DEFAULT_OUTPUT .config.tmp.c
+
+##### CHECK FOR ZLIB
+
+if [ "$WITH_ZLIB" = no ]; then
+	echo "Can't compile Freya without ZLib !"
+	exit 1
+fi
+echo -n "Checking for zlib... "
+if [ x"$WITH_ZLIB" = x"yes" ]; then
+	if [ x"$WITH_WIN32" != x"no" ]; then
+		WITH_ZLIB="${PWD}/zlib"
+	else
+		WITH_ZLIB="/usr/local"
+	fi
+fi
+echo "#include <stdlib.h>" >.config.tmp.c
+echo "#include <stdio.h>" >>.config.tmp.c
+echo "#include <zlib.h>" >>.config.tmp.c
+echo 'int main() { printf("%s",zlib_version); return 0; }' >>.config.tmp.c
+# try default even if a path is present in $WITH_ZLIB
+$CC $CC_OPTIONS .config.tmp.c -lz 2>/dev/null
+if [ "$?" != "0" ]; then
+	# test with the path
+	$CC $CC_OPTIONS .config.tmp.c -L${WITH_ZLIB}/lib -lz 2>/dev/null
+	if [ "$?" != "0" ]; then
+		# try to set also for the include
+		$CC $CC_OPTIONS .config.tmp.c -L${WITH_ZLIB}/lib -I${WITH_ZLIB}/include -lz 2>/dev/null
+		if [ "$?" != "0" ]; then
+			echo "not found"
+			echo "ZLib support seems not available on your system."
+			echo "You need ZLib in order to compile freya."
+			if [ x"$WITH_WIN32" = x"no" ]; then
+				if [ -w /usr ]; then
+					echo "I can download and install ZLib $ZLIB_LAST_VERSION for you."
+					echo -n "Do you want me to do that ? [y/N]"
+					read ANSWER
+					if [ x"$ANSWER" = x"Y" ]; then ANSWER="y"; fi
+					if [ x"$ANSWER" != x"y" ]; then exit 1; fi
+					ZLIB="zlib-$ZLIB_LAST_VERSION"
+					# try to wget zlib...
+					echo "Downloading zlib..."
+					wget -q http://www.gzip.org/zlib/${ZLIB}.tar.gz
+					if [ ! -f ${ZLIB}.tar.gz ]; then
+						wget -q http://www.zlib.net/${ZLIB}.tar.gz
+						if [ ! -f ${ZLIB}.tar.gz ]; then
+							echo "I couldn't download $ZLIB ."
+							echo "Maybe this is not the last version or the two webistes are down."
+							echo "Or maybe ou didn't install wget !"
+							exit 1
+						fi
+					fi
+					tar xzf ${ZLIB}.tar.gz
+					if [ ! -d ${ZLIB} ]; then
+						rm -f ${ZLIB}.tar.gz
+						echo "Couldn't extract zlib... Please check that tar works !"
+						exit 1
+					fi
+					cd $ZLIB
+					echo "Configuring zlib..."
+					./configure --prefix=/usr >/dev/null
+					if [ "$?" != "0" ]; then
+						cd ..
+						rm -fr ${ZLIB} ${ZLIB}.tar.gz
+						echo "Couldn't configure zlib... Please check the error message !"
+						exit 1
+					fi
+					echo "Compiling zlib..."
+					make >/dev/null
+					if [ "$?" != "0" ]; then
+						cd ..
+						rm -fr ${ZLIB} ${ZLIB}.tar.gz
+						echo "Couldn't build zlib. Please check the error message !"
+						exit 1
+					fi
+					echo "Installing zlib..."
+					make install
+					if [ "$?" != "0" ]; then
+						cd ..
+						rm -fr ${ZLIB} ${ZLIB}.tar.gz
+						echo "Couldn't install zlib. Please check that you are root !"
+						exit 1
+					fi
+					cd ..
+					rm -fr ${ZLIB} ${ZLIB}.tar.gz
+					echo "ZLIB successfully built and installed. Please re-run configure !"
+					exit 1
+				fi
+			else
+				echo "You need to cross-compile ZLib in order to get it running !"
+				echo -n "Do you want me to do that ? [y/N]"
+				read ANSWER
+				if [ x"$ANSWER" = x"Y" ]; then ANSWER="y"; fi
+				if [ x"$ANSWER" != x"y" ]; then exit 1; fi
+				ZLIB="zlib-$ZLIB_LAST_VERSION"
+				# try to wget zlib...
+				echo "Downloading zlib..."
+				wget -q http://www.gzip.org/zlib/${ZLIB}.tar.gz
+				if [ ! -f ${ZLIB}.tar.gz ]; then
+					wget -q http://www.zlib.net/${ZLIB}.tar.gz
+					if [ ! -f ${ZLIB}.tar.gz ]; then
+						echo "I couldn't download $ZLIB ."
+						echo "Maybe this is not the last version or the two webistes are down."
+						echo "Or maybe ou didn't install wget !"
+						exit 1
+					fi
+				fi
+				tar xzf ${ZLIB}.tar.gz
+				if [ ! -d ${ZLIB} ]; then
+					rm -f ${ZLIB}.tar.gz
+					echo "Couldn't extract zlib... Please check that tar works !"
+					exit 1
+				fi
+				cd $ZLIB
+				echo "Cross-compiling ZLib..."
+				ZLIB_CC_OPT="-O3"
+				if [ x"$IS_CYGWIN" != x"no" ]; then
+					ZLIB_CC_OPT="$ZLIB_CC_OPT -mno-cygwin"
+				fi
+				ZLIB_OBJ="adler32 compress crc32 gzio uncompr deflate trees zutil inflate infback inftrees inffast"
+				ZLIB_OBJ2=""
+				for foo in $ZLIB_OBJ; do
+					$CC $ZLIB_CC_OPT -c -o ${foo}.o ${foo}.c
+					if [ "$?" != "0" ]; then
+						echo "Failed to compile ${foo}.c !"
+						exit 1
+					fi
+					ZLIB_OBJ2="$ZLIB_OBJ2 ${foo}.o"
+				done
+				# link the objects
+				$AR rcs zlib.a $ZLIB_OBJ2
+				if [ "$?" != "0" ]; then
+					echo "Failed to link objects for zlib.a !"
+					exit 1
+				fi
+				echo "Installing..."
+				cd ..
+				mkdir zlib zlib/lib zlib/include 2>/dev/null
+				cp ${ZLIB}/zlib.a zlib/lib
+				cp ${ZLIB}/zlib.h ${ZLIB}/zconf.h zlib/include
+				echo "Cleaning..."
+				rm -fr $ZLIB ${ZLIB}.tar.gz
+				WITH_ZLIB="${PWD}/zlib"
+			fi
+		fi
+		# ok !
+		INCLUDES="$INCLUDES -I${WITH_ZLIB}/include"
+		LIBS="$LIBS -L${WITH_ZLIB}/lib -lz"
+	else
+		LIBS="$LIBS -L${WITH_ZLIB}/lib -lz"
+	fi
+else
+	LIBS="$LIBS -lz"
+fi
+if [ "$WITH_WIN32" = "no" ]; then
+	ZLIB_VERSION=`./$CC_DEFAULT_OUTPUT`
+	echo $ZLIB_VERSION
+else
+	# cannot run compiled files when cross-compiling
+	echo "yes"
+fi
+rm -f $CC_DEFAULT_OUTPUT .config.tmp.c
+
+##### CHECK FOR -ldl (non-Win32 only)
+
+if [ x"$WITH_WIN32" = x"no" ]; then
+	echo -n "Checking for libdl... "
+	echo "#include <dlfcn.h>" >.config.tmp.c
+	echo 'int main() { dlclose(0); return 0; }' >>.config.tmp.c
+	$CC $CC_OPTIONS .config.tmp.c 2>/dev/null
+	if [ "$?" != "0" ]; then
+		$CC $CC_OPTIONS .config.tmp.c -ldl 2>/dev/null
+		if [ "$?" != "0" ]; then
+			echo "no"
+			rm -f $CC_DEFAULT_OUTPUT .config.tmp.c
+			echo "Could not find libdl."
+			echo "Please check that you are using an UNIX distribution."
+			exit 1
+		else
+			# -ldl required for libdl
+			LIBS="$LIBS -ldl"
+		fi
+	fi
+	echo yes
+	rm -f $CC_DEFAULT_OUTPUT .config.tmp.c
+fi
+
+##### CHECK FOR SIZE OF void*
+
+echo -n "Checking for size of system pointers... "
+
+if [ x"$WITH_WIN32" = x"no" ]; then
+	echo "#include <stdio.h>" >.config.tmp.c
+	echo 'int main() { printf("%d",sizeof(void *)); return 0; }' >>.config.tmp.c
+	$CC $CC_OPTIONS .config.tmp.c 2>/dev/null
+	if [ "$?" != "0" ]; then
+		echo "failed"
+		echo "Somehow, your system didn't accept to show the value of sizeof(void *)"
+		echo "Please report your OS and system details to the bugreport"
+		rm -f $CC_DEFAULT_OUTPUT .config.tmp.c
+		exit 1
+	fi
+	INT_SIZE=`"./$CC_DEFAULT_OUTPUT"`
+	rm -f $CC_DEFAULT_OUTPUT .config.tmp.c
+	if [ $INT_SIZE -le 0 ]; then
+		echo "failed"
+		echo "The system returned '$INT_SIZE', which is obviously wrong."
+		exit 1
+	fi
+	echo $INT_SIZE
+	echo -n "Checking for CPU int... "
+	echo "#include <stdio.h>" >.config.tmp.c
+	echo 'int main() {' >>.config.tmp.c
+	for foo in int long_int long_long_int short_int; do
+		foo2=`echo "$foo" | sed -e 's/_/ /g'`
+		echo 'if (sizeof('"$foo2"') == sizeof(void *)) { puts("'"$foo2"'"); return 0; }' >>.config.tmp.c
+	done
+	echo 'return 0; }' >>.config.tmp.c
+	$CC $CC_OPTIONS .config.tmp.c 2>/dev/null
+	if [ "$?" != "0" ]; then
+		echo "failed"
+		echo "Please report your OS and system details to the bugreport"
+		rm -f $CC_DEFAULT_OUTPUT .config.tmp.c
+		exit 1
+	fi
+	CPU_INT=`"./$CC_DEFAULT_OUTPUT"`
+	rm -f $CC_DEFAULT_OUTPUT .config.tmp.c
+	CPU_INT=`echo $CPU_INT` # strip newline
+	if [ x"$CPU_INT" = x ]; then
+		echo "failed"
+		echo "Please report your OS and system details to the bugreport"
+		exit 1
+	fi
+	echo $CPU_INT
+else
+	# Win32 is 32 bits, so that's 4 bytes
+	echo "4"
+	CPU_INT="int"
+fi
+
+##### CHECK FOR FDS
+
+# First, make sure WITH_FDS is an integer
+WITH_FDS=$[ $WITH_FDS ]
+
+if [ $WITH_FDS -lt 64 ]; then
+	echo "Error: --with-fds should have a value higher than or equal to 64"
+	exit 1
+fi
+
+# Test program
+echo -n "Checking if FD_SETSIZE can be set to $WITH_FDS... "
+echo "#define FD_SETSIZE $WITH_FDS" >.config.tmp.c
+if [ "$WITH_WIN32" != "no" ]; then
+	# on win32 compiles, winsock support is important
+	echo "#define __USE_W32_SOCKETS" >>.config.tmp.c
+	echo "#include <windows.h>" >>.config.tmp.c
+fi
+echo "#include <sys/types.h>" >>.config.tmp.c
+echo "#if FD_SETSIZE != $WITH_FDS" >>.config.tmp.c
+echo "# error THATS BAD" >>.config.tmp.c
+echo "#endif" >>.config.tmp.c
+echo 'int main() { return 0; }' >>.config.tmp.c
+$CC $CC_OPTIONS .config.tmp.c 2>/dev/null
+if [ "$?" != "0" ]; then
+	echo "no"
+	rm -f $CC_DEFAULT_OUTPUT .config.tmp.c
+	echo "If you are running Linux, please edit /usr/include/bits/typesizes.h"
+	echo "and modify the value of __FD_SETSIZE to $WITH_FDS"
+	exit 1
+fi
+rm -f $CC_DEFAULT_OUTPUT .config.tmp.c
+echo "ok"
+
+##### CHECK FOR WINSOCKS2 (Win32 only)
+
+if [ x"$WITH_WIN32" != x"no" ]; then
+	echo -n "Checking for winsock2... "
+	echo "#define __USE_W32_SOCKETS" >.config.tmp.c
+	echo "#include <windows.h>" >>.config.tmp.c
+	echo 'int main() { return 0; }' >>.config.tmp.c
+	$CC $CC_OPTIONS .config.tmp.c -lws2_32 2>/dev/null
+	if [ "$?" != "0" ]; then
+		echo "no"
+		rm -f $CC_DEFAULT_OUTPUT .config.tmp.c
+		echo "Your cross compiling environement seems incomplete."
+		echo "Please check that you have the MS Visual Studio includes in the default include path."
+		exit 1
+	fi
+	echo yes
+	LIBS="$LIBS -lws2_32"
+	rm -f $CC_DEFAULT_OUTPUT .config.tmp.c
+fi
+
+##### CHECK FOR MYSQL
+
+if [ x"$WITH_MYSQL" != x"no" ]; then
+	echo -n "Checking for mysql... "
+	if [ x"$WITH_WIN32" != x"no" ]; then
+		echo -e "#define USE_W32_SOCKETS\n#include <windows.h>\n#include <mysql/mysql.h>\nint main() { mysql_get_client_version(); return 0; }" >.config.tmp.c
+		$CC $CC_OPTIONS .config.tmp.c -lmysql $LIBS -lstdc++ 2>/dev/null
+		if [ "$?" != "0" ]; then
+			echo "not found"
+			echo "Please make sure you have libmysql.a & mysql includes from MagicalTux in your mingw dir !"
+			exit 1
+		fi
+		echo "yes"
+		rm -f $CC_DEFAULT_OUTPUT .config.tmp.c
+		LIBS="$LIBS -lmysql -lstdc++"
+		OBJECTS="$OBJECTS login char_sql login_txt-converter char_txt-converter ladmin"
+	else
+		if [ "$WITH_MYSQL" = "yes" ]; then
+			WITH_MYSQL="$WITH_MYSQL_PATH"
+		fi
+		# search for mysql-config in $WITH_MYSQL_PATH, then in $PATH
+		WITH_MYSQL_CONFIG=""
+		IFS_OLD="$IFS"
+		IFS=$PATH_SEPARATOR
+		for foo in $WITH_MYSQL; do
+			if [ -x ${foo}/bin/mysql_config ]; then
+				WITH_MYSQL=$foo
+				WITH_MYSQL_CONFIG=${foo}/bin/mysql_config
+				break 2
+			fi
+		done
+		if [ x$WITH_MYSQL_CONFIG = x ]; then
+			for foo in $PATH; do
+				if [ -x ${foo}/mysql_config ]; then
+					WITH_MYSQL=`dirname "$foo"`
+					WITH_MYSQL_CONFIG=${foo}/mysql_config
+					break 2
+				fi
+			done
+		fi
+		IFS="$IFS_OLD"
+		if [ x$WITH_MYSQL_CONFIG = x ]; then
+			echo "not found"
+			echo "Try to configure with --with-mysql=/path/to/mysql"
+			echo "or disable mysql support with --without-mysql"
+			exit
+		else
+			MYSQL_VERSION=`$WITH_MYSQL_CONFIG --version`
+			MYSQL_VERSION_MAJOR=`echo $MYSQL_VERSION | cut -d. -f1`
+			if [ "$MYSQL_VERSION_MAJOR" -le 3 ]; then
+				CC_OPTIONS="$CC_OPTIONS "`$WITH_MYSQL_CONFIG --cflags`
+			else
+				INCLUDES="$INCLUDES "`$WITH_MYSQL_CONFIG --include`
+			fi
+			SQL_LIBS=`$WITH_MYSQL_CONFIG --libs`
+			LIBS="$LIBS $SQL_LIBS"
+			echo "$MYSQL_VERSION in $WITH_MYSQL"
+			OBJECTS="$OBJECTS login char_sql login_txt-converter char_txt-converter ladmin"
+		fi
+	fi
+else
+	OBJECTS="$OBJECTS login char ladmin tool"
+fi
+
+# add common objects that needs to be at the end (map)
+OBJECTS="$OBJECTS map addons"
+
+##### GETTEXT CHECKS...
+
+if [ "$WITH_GETTEXT" != no ]; then
+	echo -n "Checking for gettext... "
+	echo "#include <stdlib.h>" >.config.tmp.c
+	echo "#include <libintl.h>" >>.config.tmp.c
+	echo 'int main() { printf(gettext("gettext")); return 0; }' >>.config.tmp.c
+	$CC $CC_OPTIONS .config.tmp.c 2>/dev/null
+	if [ "$?" != "0" ]; then
+		# test with -lintl
+		$CC $CC_OPTIONS .config.tmp.c -lintl 2>/dev/null
+		if [ "$?" != "0" ]; then
+			echo "not found"
+			echo "GetText support seems not available on your system."
+			echo "Please rerun $0 with option --without-gettext"
+			exit 1
+		fi
+		# compile succeded - need -lintl to compile gettext
+		LIBS="$LIBS -lintl"
+	fi
+	echo yes
+	rm -f $CC_DEFAULT_OUTPUT .config.tmp.c
+fi
+
+##### CLEANUP $LIBS AND $INCLUDES A BIT (to make them look better)
+
+LIBS=`echo $LIBS | sed 's/ +/ /'`
+INCLUDES=`echo $INCLUDES | sed 's/ +/ /'`
+# find out dups
+NEWLIBS=""
+set dummy $LIBS
+while true; do
+	LIB="$2"
+	if [ x$LIB = x ]; then
+		break
+	fi
+	case $LIB in
+		-L*)
+			shift
+			continue
+			;;
+		-l*)
+			# nothing to do
+			:
+			;;
+		*)
+			echo "Bad value $LIB found in LIBS !"
+			echo "LIBS=$LIBS"
+			echo "Please send that to the bug report !"
+			exit 1
+		;;
+	esac
+	LIBDIR=""
+	case $1 in
+		-L*)
+			LIBDIR="$1 "
+		;;
+	esac
+	# check if LIB is already in $NEWLIBS
+	TEST=`echo "$NEWLIBS" | grep -- "$LIB"`
+	if [ "x$TEST" = x ]; then
+		# add lib to NEWLIBS
+		NEWLIBS="$NEWLIBS ${LIBDIR}$LIB"
+	fi
+	shift
+done
+LIBS=`echo $NEWLIBS`
+# reorder libs : some libs must be at the end
+for foo in $LAST_LIBS; do
+	foo2=`echo "$LIBS " | sed "s/$foo //;"`
+	if [ x"$LIBS " != x"$foo2" ]; then
+		LIBS="$foo2 $foo"
+	fi
+done
+LIBS=`echo $LIBS`
+
+##### CLEANUP $srcdir FOR MAKEFILES
+echo -n "Cleaning up source dir (removing Makefiles)..."
+(
+	find $srcdir -name Makefile
+	find $srcdir -name GNUmakefile
+	find $srcdir -name makefile
+)|(
+	while read foo; do
+		rm -f $foo
+	done
+)
+echo "done"
+
+##### GENERATE CONF AND SAVE DIRECTORIES
+
+echo -n "Generating conf and save directories..."
+for dir in conf save; do
+	if [ -d ${dir}/ ]; then
+		# ok
+		:
+	else
+		mkdir "${dir}"
+	fi
+	if [ -d "${dir}-dist/" ]; then
+		# ok
+		:
+	else
+		echo "Missing ${dir}-dist !"
+		exit 1
+	fi
+	find "${dir}-dist/" -type f | while read foo; do
+		foo=`echo "$foo" | sed -e "s/${dir}-dist\///"`
+		foo2=`echo "$foo" | sed -e 's/\/.svn//' -e 's/^.svn//'`
+		if [ x"$foo" != x"$foo2" ]; then
+			# skip .svn dirs
+			continue
+		fi
+		if [ -f "${dir}/${foo}" ]; then
+			# already exists
+			:
+		else
+			mkdir -p `dirname ${dir}/${foo}` 2>/dev/null
+			cp -f "${dir}-dist/${foo}" "${dir}/${foo}"
+		fi
+	done
+done
+echo "done"
+
+##### GENERATE config.h
+
+echo "Generating $CONFIGFILE ..."
+cat >$CONFIGFILE <<EOF
+/* Configuration file for Freya
+ * $VERSION
+ *
+ * This file is generated. Do not edit it.
+ */
+
+#ifndef __FREYA_CONFIG_H_
+#define __FREYA_CONFIG_H_
+
+EOF
+
+if [ "$WITH_MYSQL" != no ]; then
+	echo "/* MySQL support enabled */" >>$CONFIGFILE
+	echo "#undef TXT_ONLY" >>$CONFIGFILE
+	echo "#define USE_SQL" >>$CONFIGFILE
+	echo "#define USE_MYSQL" >>$CONFIGFILE
+	echo "#undef USE_SQLITE" >>$CONFIGFILE
+	echo >>$CONFIGFILE
+else
+	echo "/* MySQL support disabled */" >>$CONFIGFILE
+	echo "#define TXT_ONLY" >>$CONFIGFILE
+	echo "#undef USE_SQL" >>$CONFIGFILE
+	echo "#undef USE_MYSQL" >>$CONFIGFILE
+	echo "#undef USE_SQLITE" >>$CONFIGFILE
+	echo >>$CONFIGFILE
+fi
+
+if [ "$WITH_GETTEXT" != no ]; then
+	echo "/* GetText support enabled */" >>$CONFIGFILE
+	echo "#define ENABLE_NLS 1" >>$CONFIGFILE
+	echo >>$CONFIGFILE
+else
+	echo "/* GetText support disabled */" >>$CONFIGFILE
+	echo "#undef ENABLE_NLS" >>$CONFIGFILE
+	echo >>$CONFIGFILE
+fi
+
+if [ x"$WITH_PRO" != x"no" ]; then
+	echo "/* FreyaPro enabled */" >>$CONFIGFILE
+	echo "#define FREYA_PRO" >>$CONFIGFILE
+	echo >>$CONFIGFILE
+else
+	echo "/* FreyaPro disabled */" >>$CONFIGFILE
+	echo "#undef FREYA_PRO" >>$CONFIGFILE
+	echo >>$CONFIGFILE
+fi
+
+if [ "$IS_CYGWIN" != no ]; then
+	echo "/* Cygwin environement */" >>$CONFIGFILE
+	echo "#define __CYGWIN" >>$CONFIGFILE
+	echo >>$CONFIGFILE
+else
+	echo "/* Standard unix environement */" >>$CONFIGFILE
+	echo "#undef __CYGWIN" >>$CONFIGFILE
+	echo >>$CONFIGFILE
+fi
+
+if [ x"$IS_CYGWIN" != x"no" ]; then
+	echo "/* CYGWIN need that */" >>$CONFIGFILE
+	echo "#ifdef FD_SETSIZE" >>$CONFIGFILE
+	echo "#undef FD_SETSIZE" >>$CONFIGFILE
+	echo "#endif" >>$CONFIGFILE
+	echo "#define FD_SETSIZE $WITH_FDS" >>$CONFIGFILE
+	echo >>$CONFIGFILE
+fi
+
+if [ x"$WITH_WIN32" != x"no" ]; then
+	# win32 support...
+	echo "/* Win32 support enabled */" >>$CONFIGFILE
+	echo "#ifndef __WIN32" >>$CONFIGFILE
+	echo "#define __WIN32" >>$CONFIGFILE
+	echo "#warning Your Win32 compiler is broken, it should define __WIN32 by himself !" >>$CONFIGFILE
+	echo "#endif" >>$CONFIGFILE
+	echo "#ifdef FD_SETSIZE" >>$CONFIGFILE
+	echo "#undef FD_SETSIZE" >>$CONFIGFILE
+	echo "#endif" >>$CONFIGFILE
+	echo "#define FD_SETSIZE $WITH_FDS" >>$CONFIGFILE
+	echo >>$CONFIGFILE
+else
+	echo "/* Win32 support disabled */" >>$CONFIGFILE
+	echo "#undef __WIN32" >>$CONFIGFILE
+	echo >>$CONFIGFILE
+	# debian linux need that (default 1024 set on __FD_SETSIZE passed to FD_SETSIZE)...
+	echo "/* debian linux (and some other linux) need that */" >>$CONFIGFILE
+	echo "#ifdef FD_SETSIZE" >>$CONFIGFILE
+	echo "#undef FD_SETSIZE" >>$CONFIGFILE
+	echo "#endif" >>$CONFIGFILE
+	echo "#define FD_SETSIZE $WITH_FDS" >>$CONFIGFILE
+	echo >>$CONFIGFILE
+fi
+
+echo "/* Dynamic linking enabled anyway */" >>$CONFIGFILE
+echo "#define DYNAMIC_LINKING" >>$CONFIGFILE
+echo >>$CONFIGFILE
+
+if [ "$WITH_DEBUG" != "no" ]; then
+	echo "/* Debug mode enabled */" >>$CONFIGFILE
+	echo "#define __DEBUG" >>$CONFIGFILE
+	echo >>$CONFIGFILE
+else
+	echo "/* Debug mode disabled */" >>$CONFIGFILE
+	echo "#undef __DEBUG" >>$CONFIGFILE
+	echo >>$CONFIGFILE
+fi
+
+# usage of standard ISO/IEC 9899:1999
+if [ x"$WITH_C99" = x"yes" ]; then
+	echo "#ifdef __STDC_VERSION__" >>$CONFIGFILE
+	echo "#  if __STDC_VERSION__ >= 199901L" >>$CONFIGFILE
+	echo "#    ifndef WITH_C99" >>$CONFIGFILE
+	echo "#      define WITH_C99" >>$CONFIGFILE
+	echo "#    endif" >>$CONFIGFILE
+	echo "#  endif" >>$CONFIGFILE
+	echo "#endif" >>$CONFIGFILE
+	echo >>$CONFIGFILE
+fi
+
+# CPU int for AMD64 support
+echo "/* CPU INT detected. This int is equal in term of size to the void * pointer size */" >>$CONFIGFILE
+echo "#define CPU_INT $CPU_INT" >>$CONFIGFILE
+echo >>$CONFIGFILE
+# loadable modules extention
+echo '#define ADDONS_EXT "'`echo $LOADABLE_EXT | cut -d'"' -f- --output-delimiter='\"'`'"' >>$CONFIGFILE
+# few things...
+echo "/* configure misc */" >>$CONFIGFILE
+echo '#define CONF_PLATFORM "'`echo $PLATFORM | cut -d'"' -f- --output-delimiter='\"'`'"' >>$CONFIGFILE
+echo '#define CONF_PREFIX "'`echo $PREFIX | cut -d'"' -f- --output-delimiter='\"'`'"' >>$CONFIGFILE
+echo '#define CONF_DATE "'`date -R | cut -d'"' -f- --output-delimiter='\"'`'"' >>$CONFIGFILE
+echo '#define CONF_CONFIGURE "'`echo $CONFIGURE_LINE | cut -d'"' -f- --output-delimiter='\"'`'"' >>$CONFIGFILE
+echo '#define CONF_INCLUDES "'`echo $INCLUDES | cut -d'"' -f- --output-delimiter='\"'`'"' >>$CONFIGFILE
+echo '#define CONF_LIBS "'`echo $LIBS | cut -d'"' -f- --output-delimiter='\"'`'"' >>$CONFIGFILE
+echo >>$CONFIGFILE
+echo '#endif' >>$CONFIGFILE
+echo >>$CONFIGFILE
+
+##### GENERATE Makefile
+
+# Make sure $CONFIGFILE exists
+touch $CONFIGFILE
+
+MAKE_RULES=""
+MAKE_CLEAN_RULES=""
+
+BUILD_LINE="Compiling Freya v${FREYA_VERSION} (SVN#\$(SVN))"
+BUILD_OPT=""
+if [ x"$WITH_MYSQL" != x"no" ]; then
+	BUILD_OPT="$BUILD_OPT MySQL"
+fi
+if [ x"$WITH_GETTEXT" != x"no" ]; then
+	BUILD_OPT="$BUILD_OPT GetText"
+fi
+if [ x"$WITH_WIN32" != x"no" ]; then
+	BUILD_OPT="$BUILD_OPT Win32"
+fi
+
+if [ x"$BUILD_OPT" != x ]; then
+	BUILD_LINE="$BUILD_LINE ("`echo -n $BUILD_OPT`")"
+fi
+
+echo "Generating ${MAKEFILE}..."
+if [ "$WITH_GETTEXT" != no ]; then
+	MAKE_RULES="$MAKE_RULES locales"
+	MAKE_CLEAN_RULES="$MAKE_CLEAN_RULES locales_clean"
+	GETTEXT_RULES=$(cat <<EOF
+locales:
+	@echo -e " - DIR\\tlocales"
+	@for foo in locales/*/; do \\
+		echo -e "   LOC\t"\`basename \$\${foo}\`; \\
+		msgfmt -c -o \$\${foo}/LC_MESSAGES/npcs.mo \$\${foo}/LC_MESSAGES/npcs.po; \\
+	done
+
+locales_clean:
+	find locales/ -name '*.mo' -exec rm -f {} \;
+EOF
+)
+else
+	GETTEXT_RULES=""
+fi
+
+if [ x$RELEASED_SVN = x ]; then
+	RELEASED_SVN='$(shell cat .svn/entries 2>/dev/null | grep revision | head -n 1 | sed -e '"'"'s/^[^"]*"//;s/"[^"]*$$//'"'"')'
+fi
+
+cat >$MAKEFILE <<EOF
+#!${MAKE}
+# Makefile for Freya
+# $VERSION
+# This file is automatically generated. There's no point trying to modify it !
+
+# Following values are master values. Any change will have effect on the whole compilation process.
+SVN = $RELEASED_SVN
+CC = $CC
+AR = $AR
+CFLAGS = $CC_OPTIONS $INCLUDES -DSVN_REVISION=\$(SVN).0
+LDFLAGS = 
+LIBS = $LIBS
+$MAKEFILE_MUST_SET_MAKE
+export MAKE CC AR CFLAGS LIBS SVN LDFLAGS
+
+all: title $MAKE_RULES $OBJECTS
+
+.PHONY: $OBJECTS $MAKE_RULES $MAKE_CLEAN_RULES txt txt-win32 sql title
+
+title:
+	@echo -e "\033[37;44m          (=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=)\033[K\033[0m"
+	@echo -e "\033[0;44m          (\033[1m         (c)2004-2005 Free Yor team presents :           \033[0;44m)\033[K\033[0m"
+	@echo -e "\033[0;44m          (\033[1m         ___   ___    ___   _  _   __                    \033[0;44m)\033[K\033[0m"
+	@echo -e "\033[0;44m          (\033[1m        (  _) (  ,)  (  _) ( \\/ ) (  )                   \033[0;44m)\033[K\033[0m"
+	@echo -e "\033[0;44m          (\033[1m        (  _)  )  \\   ) _)  \\  /  /__\\                   \033[0;44m)\033[K\033[0m"
+	@echo -e "\033[0;44m          (\033[1m        (_)   (_)\\_) (___) (__/  (_)(_) v${FREYA_VERSION}           \033[0;44m)\033[K\033[0m"
+	@echo -e "\033[0;44m          (\033[1m          Free Ragnarok Emulator, Yor Adopted.           \033[0;44m)\033[K\033[0m"
+	@echo -e "\033[0;44m          (\033[1m                http://www.ro-freya.net                  \033[0;44m)\033[K\033[0m"
+	@echo -e "\033[37;44m          (=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=)\033[K\033[0m"
+	@echo
+	@echo "$BUILD_LINE"
+	@echo
+
+EOF
+
+STATIC_LIBS=""
+STATIC_DEPS=""
+for obj in $OBJECTS; do
+	MFILE="${srcdir}${obj}/Makefile"
+	echo "Generating ${MFILE}..."
+	obj_ext="${BINARY_EXT}"
+	LOCALCFLAGS=""
+	LOCALCOMPILEFLAGS=""
+	CLEANEXTRA=""
+	# read objects list
+	if [ -f "${srcdir}${obj}/objects" ]; then
+		obj_list=`cat ${srcdir}${obj}/objects | xargs echo`
+	else
+		obj_list_tmp=`find $srcdir$obj -name '*.c' | xargs echo`
+		obj_list=""
+		for foo in $obj_list_tmp; do
+			obj_list="$obj_list "`basename $foo .c`
+		done
+	fi
+	gen_lib="no"
+	obj_prefix=""
+	if [ -f "${srcdir}${obj}/lib" ]; then
+		gen_lib=`cat ${srcdir}${obj}/lib`
+		if [ x$gen_lib = xshared ]; then
+			obj_prefix=""
+			obj_ext=$LOADABLE_EXT
+			LOCALCFLAGS="-DPIC"
+			LOCALCOMPILEFLAGS=""
+			if [ x$WITH_WIN32 = xno ]; then
+				if [ x$IS_CYGWIN = xno ]; then
+					LOCALCOMPILEFLAGS="-fPIC "
+				fi
+			fi
+			LOCALCOMPILEFLAGS="${LOCALCOMPILEFLAGS}-shared"
+			gen_lib="no"
+		else
+			obj_prefix="lib"
+			obj_ext=".a"
+		fi
+	fi
+	obj_name=""
+	if [ -f "${srcdir}${obj}/target" ]; then
+		obj_name=`cat ${srcdir}${obj}/target`
+		target="${obj_prefix}${obj_name}${obj_ext}"
+		if [ -d "${srcdir}${obj}/${obj_name}" ]; then
+			target=""
+		fi
+	else
+		obj_name="$obj";
+		target="${obj_prefix}${obj_name}${obj_ext}"
+	fi
+
+	obj_list2=""
+	if [ x$target = x ]; then
+		for foo in $obj_list; do
+			obj_list2="$obj_list2 ${obj_prefix}${foo}${obj_ext}";
+		done
+	else
+		for foo in $obj_list; do
+			obj_list2="$obj_list2 ${foo}.o";
+		done
+	fi
+
+	echo "$obj: $STATIC_DEPS" >>$MAKEFILE
+	echo -e '\t@echo -e " - DIR\\t'${srcdir}${obj}'"' >>$MAKEFILE
+	echo -e "\t@\$(MAKE) --no-print-directory -C ${srcdir}${obj}/ $target" >>$MAKEFILE
+	echo >>$MAKEFILE
+
+	echo "#!${MAKE}" >$MFILE
+	echo "# $VERSION" >>$MFILE
+	echo >>$MFILE
+	echo "%.o: %.c" >>$MFILE
+	echo -e '\t@echo -e "    CC\\t$<"' >>$MFILE
+	echo -e '\t@$(CC) $(CFLAGS) -c -o $@ $<' >>$MFILE
+	echo >>$MFILE
+	if [ x$target = x ]; then
+		echo "all: $obj_list2" >>$MFILE
+	else
+		echo "all:" >>$MFILE
+		echo -e "\t@echo Please run make in the top directory" >>$MFILE
+		echo >>$MFILE
+		echo "${target}: $obj_list2 $STATIC_LIBS" >>$MFILE
+		if [ "$gen_lib" != "no" ]; then
+			echo -e '\t@echo -e "    AR\\t$@"' >>$MFILE
+			echo -e "\t@\$(AR) rcs \$@ $obj_list2" >>$MFILE
+			echo -e "\t@cp \$@ ../lib" >>$MFILE
+		else
+			echo -e '\t@echo -e "    LD\\t$@"' >>$MFILE
+			echo -e "\t@\$(CC) $COMP_OPTIONS $LOCALCOMPILEFLAGS \$(LDFLAGS) -o \$@ $obj_list2 $STATIC_LIBS \$(LIBS)" >>$MFILE
+		fi
+	fi
+	echo >>$MFILE
+	if [ x$target != x ]; then
+		obj_list3=""
+	fi
+	for foo in $obj_list; do
+		# read headers for each object
+		if [ x$target = x ]; then
+			(cd ${srcdir}${obj}; ${CC} ${CC_OPTIONS} $INCLUDES -MM -MT ${obj_prefix}${foo}${obj_ext} ${foo}.c) >>$MFILE
+			if [ "$gen_lib" != "no" ]; then
+				echo -e '\t@echo -e "    CC\\t'${foo}'.c"' >>$MFILE
+				echo -e "\t@\$(CC) \$(CFLAGS) -o ${foo}.o ${foo}.c" >>$MFILE
+				echo -e '\t@echo -e "    AR\\t'${obj_prefix}${foo}${obj_ext}'"' >>$MFILE
+				echo -e "\t@\$(AR) rcs ../lib/${obj_prefix}${foo}${obj_ext} ${foo}.o" >>$MFILE
+				echo -e "\t@touch ${obj_prefix}${foo}${obj_ext}" >>$MFILE
+			else
+				echo -e '\t@echo -e " CC LD\\t'${foo}'.c '${obj_name}/${obj_prefix}${foo}${obj_ext}'"' >>$MFILE
+				echo -e "\t@\$(CC) \$(CFLAGS) \$(LDFLAGS) $COMP_OPTIONS $LOCALCOMPILEFLAGS -o ${obj_name}/${obj_prefix}${foo}${obj_ext} ${foo}.c \$(LIBS)" >>$MFILE
+				echo -e "\t@touch ${obj_prefix}${foo}${obj_ext}" >>$MFILE
+				CLEANEXTRA="$CLEANEXTRA ${obj_name}/${obj_prefix}${foo}${obj_ext}"
+			fi
+		else
+			obj_list3="$obj_list3 ${foo}.c"
+		fi
+	done
+	if [ x$target != x ]; then
+		(cd ${srcdir}${obj}; ${CC} ${CC_OPTIONS} $INCLUDES -MM $obj_list3) >>$MFILE
+	fi
+	echo >>$MFILE
+	echo "clean:" >>$MFILE
+	echo -e "\trm -f *.o" $obj_list2 $CLEANEXTRA $target >>$MFILE
+	if [ "$gen_lib" != "no" ]; then
+		echo -e "\trm -f ../lib/${target}" >>$MFILE
+		STATIC_LIBS="$STATIC_LIBS ../lib/${target}"
+		STATIC_DEPS="$STATIC_DEPS $obj"
+		LIBS="$LIBS -l${obj}"
+		# reorder libs : some libs must be at the end
+		for foo in $LAST_LIBS; do
+			foo2=`echo "$LIBS " | sed "s/$foo //;"`
+			if [ x"$LIBS " != x"$foo2" ]; then
+				LIBS="$foo2 $foo"
+			fi
+		done
+		LIBS=`echo $LIBS`
+		echo "Generating ${srcdir}include/freya/${obj}.h..."
+		cat ${srcdir}${obj}/*.h >${srcdir}include/freya/${obj}.h
+	fi
+	echo >>$MFILE
+done
+
+echo "clean: $MAKE_CLEAN_RULES" >>$MAKEFILE
+for obj in $OBJECTS; do
+	echo -e "\t@\$(MAKE) -C ${srcdir}${obj}/ clean" >>$MAKEFILE
+done
+echo >>$MAKEFILE
+echo "$GETTEXT_RULES" >>$MAKEFILE
+echo >>$MAKEFILE
+
+# to make Yor happy with his "make sql" and "make txt"
+echo "txt:" >>$MAKEFILE
+echo -e "\t./configure --with-make" >>$MAKEFILE
+echo >>$MAKEFILE
+echo "txt-win32:" >>$MAKEFILE
+echo -e "\t./configure --with-win32 --with-make" >>$MAKEFILE
+echo >>$MAKEFILE
+echo "sql:" >>$MAKEFILE
+echo -e "\t./configure --with-mysql --with-make" >>$MAKEFILE
+echo >>$MAKEFILE
+
+
+echo
+echo "Configured Freya with options :"
+echo "Installation Prefix : $PREFIX"
+echo "MySQL Support       : $WITH_MYSQL"
+echo "GetText Support     : $WITH_GETTEXT"
+echo "Libs                : $LIBS"
+echo "Static libs         : $STATIC_LIBS"
+echo "Includes            : $INCLUDES"
+echo "Compiler (GCC)      : $CC $CC_OPTIONS"
+echo "FD_SETSIZE          : $WITH_FDS"
+
+if [ x"$WITH_MAKE" != x"no" ]; then
+	$MAKE
+	exit "$?"
+fi
+

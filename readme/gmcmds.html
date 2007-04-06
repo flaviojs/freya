@@ -1,0 +1,1622 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+   <title>Freya RO Emulator</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=charset=UTF-8" />
+   <meta http-equiv="content-style-type" content="text/css">
+   <meta name="Author" content="Freya Team">
+   <meta name="Publisher" content="Freya Team">
+   <meta name="Copyright" content="COPYRIGHT Freya under GPL licence">
+   <meta name="OWNER" content="Freya">
+   <link rel="stylesheet" type="text/css" href="include/style.css" />
+</head>
+<body>
+<table border="0" cellpadding="0" cellspacing="3">
+<tr>
+<td width="100" class="content" valign="top"><br />
+<a class="left" href="http://www.ro-freya.net" target="_top">
+<b>HOME</b></a>
+<br /><br />
+<a class="left" target="_top" href="index.html" >Introduction</a><br />
+<a class="left" target="_top" href="chngs.html" >Changes</a><br />
+<a class="left" target="_top" href="feats.html" >Features</a><br />
+<a class="left" target="_top" href="npcfeats.html" >NPC Features</a><br />
+<a class="left" target="_top" href="setup.html" >Setup</a><br />
+<a class="left" target="_top" href="gmcmds.html" style='font-weight:bold;color:#000000;background-color:transparent;'>GM Commands</a><br />
+<a class="left" target="_top" href="faq.html" >FAQ</a><br />
+<a class="left" target="_top" href="support.html" >Support</a><br />
+<a class="left" target="_top" href="router.html" >Router guide</a><br />
+<a class="left" target="_top" href="creategrf.html" >Create GRFs</a><br />
+<a class="left" target="_top" href="patchsrv.html" >Patch server guide</a><br />
+<img src="include/pixel.gif" width="137" height="1" alt="" />
+</td>
+<td width="700" valign="top">
+<table width="100%" bgcolor="#FFFFFF" border="1" cellpadding="5" cellspacing="0">
+<tr>
+<td>
+
+<h1>GM Commands</h1>
+<a href="setup.html">Previous</a>
+<a href="faq.html">Next</a>
+<hr />
+<h2 class="header">Explanation</h2>
+<p>GM Commands are commands that can be typed in by players and give a certain effect. The commands a player can use depend on their user level (not their base or job level, but a level set by the administrator of the server). The higher a player's user level, the more commands he or she may use. The default level for each command can be changed by the administrator.<br /><br />
+All GM commands begin with a certain character, which is set by the administrator. By default, this character is @.<br />
+Administrator sets special character to replace the begining of remote GM commands (begining by @char). By default, this character is #.<br />
+Example: #rura geffen 75 75 &lt;char name|account_id&gt; is same @charrura geffen 75 75 &lt;char name|account_id&gt;.<br /><br />
+The following is the syntax for GM commands:<br />
+@command [ &lt; param_type_choice1 | param_type_choice2 &gt; ]
+</p>
+
+<h2 class="header">Command Explanations</h2>
+
+<p>
+
+<h4>Help:</h4>
+<span class="cmd">
+@h/@help [&lt;page_number&gt;|&lt;keyword&gt;]</span><br />
+Displays the help.txt file, a short help of GM commands.<br />
+If a keyword is given:<br />
+	this command display only help of this keyword (if key word is found).<br />
+	this command display all keywords (if keyword is not found).<br />
+	special keywords: 'key' or 'keyword' to display all keywords too.<br />
+If a page is given:<br />
+	1 page of 50 lines id displayed, depends of the page number you want.<br />
+If nothing is given, hall help file is displayed.<br /><br />
+
+<br />
+
+<h4>Announcement:</h4>
+
+<span class="cmd">@main &lt;message&gt;</span><br />
+Speak on 'Main' channel with other players.<br />
+<span class="cmd">@main on|off</span> - Enables or disables the 'Main' channel.<br /><br />
+
+<span class="cmd">/b &lt;message&gt;<br />
+@broadcast &lt;message&gt;</span><br />
+Broadcasts a GM message with your name (in yellow).<br /><br />
+
+<span class="cmd">/nb &lt;message&gt;<br />
+@nb &lt;message&gt;<br />
+@kami &lt;message&gt;</span><br />
+Broadcasts a GM message without your name (in yellow).<br /><br />
+
+<span class="cmd">/bb &lt;message&gt;<br />
+@kamib &lt;message&gt;<br /></span>
+Broadcasts a GM message without your name (in blue).<br /><br />
+
+<span class="cmd">/lb &lt;message&gt;<br />
+@lb &lt;message&gt;<br />
+@localbroadcast &lt;message&gt;<br />
+@local_broadcast &lt;message&gt;</span><br />
+Broadcasts a GM message with your name (in yellow) ONLY on your map.<br /><br />
+
+<span class="cmd">/nlb &lt;message&gt;<br />
+/mb &lt;message&gt;<br />
+@nlb &lt;message&gt;<br />
+@mb &lt;message&gt;</span><br />
+Broadcasts a GM message without your name (in yellow) ONLY on your map.<br /><br />
+
+<span class="cmd">@kamigm &lt;min_lvl_gm&gt; &lt;message&gt;</span><br />
+Sends a message to GM with a level upper or egal to &lt;min_lvl_gm&gt;.<br /><br />
+
+<span class="cmd">@request &lt;message&gt;<br />
+@contactgm &lt;message&gt;<br />
+</span>Sends a message to GMs.<br />
+<span class="cmd">@request on|off</span> - (for GM) Accept to receive or not requests from players.<br />
+<span class="cmd">@contactgm on|off</span> - (for GM) Accept to receive or not requests from players.<br /><br />
+
+<span class="cmd">@motd<br />
+</span>Sends again to you the 'Message of the day'<br /><br />
+
+<span class="cmd">@gmotd<br />
+@globalmotd<br />
+</span>Sends again to all players the 'Message of the day (motd.txt)'<br /><br />
+
+<br />
+
+<h4>Information:</h4>
+<span class="cmd">@users</span><br />
+Displays a listing of maps with (number of) players.<br /><br />
+
+<span class="cmd">@who [match_text]</span><br />
+Lists who is currently online in your server and their location.<br />
+With a match_text, list display only characters that have 'match_text' is their name.<br /><br />
+
+<span class="cmd">@who2 [match_text]</span><br />
+Lists who is currently online in your server and their job.<br />
+With a match_text, list display only characters that have 'match_text' is their name.<br /><br />
+
+<span class="cmd">@who3 [match_text]</span><br />
+Lists who is currently online in your server and their party/guild.<br />
+With a match_text, list display only characters that have 'match_text' is their name.<br /><br />
+
+<span class="cmd">@whomap [map]</span><br />
+Displays a listing of who is online and where in a specifical map<br />
+With no map, list display characters of your map.<br /><br />
+
+<span class="cmd">@whomap2 [map]</span><br />
+Displays a listing of who is online and their job in a specifical map<br />
+With no map, list display characters of your map.<br /><br />
+
+<span class="cmd">@whomap3 [map]</span><br />
+Displays a listing of who is online and their party/guild in a specifical map<br />
+With no map, list display characters of your map.<br /><br />
+
+<span class="cmd">@whogm [match_text]</span><br />
+Like @who+@who2+who3, but only for GM.<br />
+With a match_text, list display only characters that have 'match_text' is their name.<br /><br />
+
+<span class="cmd">@whozeny [match_text]</span><br />
+Displays a listing of top 50 richest online characters sorted from lowest amount to highest.<br />
+With a match_text, list display only 50 richest characters that have 'match_text' is their name.<br /><br />
+
+<span class="cmd">@whozenymap [map]</span><br />
+Displays a listing of top 50 richest online characters sorted from lowest amount to highest in a specified map.<br />
+With no map, list display characters of your map.<br /><br />
+
+<span class="cmd">@whohas &lt;item_name|item_ID&gt;</span><br />
+Displays a listing of online characters that have the item in their inventory.<br /><br />
+
+<span class="cmd">@whohasmap &lt;item_name|item_ID&gt; [map]</span><br />
+Displays a listing of online characters that have the item in their inventory in a specified map.<br />
+With no map, list display characters of your map.<br /><br />
+
+<span class="cmd">@where &lt;char name|account_id&gt;</span><br />
+Tells you the location of a character.<br />
+With no 'char name', tell you your location (like /where).<br /><br />
+
+<span class="cmd">@mapinfo [&lt;1-3&gt; [map]]</span><br />
+Gives information about a map (general info +: 0: no more, 1: players, 2: NPC, 3: shops/chat).<br /><br />
+
+<span class="cmd">@mobinfo &lt;monster_name|monster_ID&gt;<br />
+@monsterinfo &lt;monster_name|monster_ID&gt;<br />
+@mi &lt;monster_name|monster_ID&gt;<br />
+@infomob &lt;monster_name|monster_ID&gt;<br />
+@infomonster &lt;monster_name|monster_ID&gt;</span><br />
+Gives information about a monster.<br /><br />
+
+<span class="cmd">@mobsearch [monster_name|monster_ID]<br />
+@monstersearch [monster_name|monster_ID]<br />
+@searchmob [monster_name|monster_ID]<br />
+@searchmonster [monster_name|monster_ID]</span><br />
+Gives position of monsters on the map.<br /><br />
+
+<span class="cmd">@charstats &lt;char name|account_id&gt;</span><br />
+Displays the character&#39;s stats.<br /><br />
+
+<span class="cmd">@charstatsall</span><br />
+Displays stats of all characters.<br /><br />
+
+<span class="cmd">@charitemlist &lt;char name|account_id&gt;<br />
+@charinventorylist &lt;char name|account_id&gt;</span><br />
+Displays all items of a player's inventory.<br /><br />
+
+<span class="cmd">@charstoragelist &lt;char name|account_id&gt;</span><br />
+Displays all items of a player's storage.<br /><br />
+
+<span class="cmd">@charcartlist &lt;char name|account_id&gt;</span><br />
+Displays all items of a player's cart.<br /><br />
+
+<span class="cmd">@ignorelist</span><br />
+Displays your ignore list<br /><br />
+
+<span class="cmd">@time<br />
+@date<br />
+@server_date<br />
+@serverdate<br />
+@server_time<br />
+@servertime</span><br />
+Displays the date/time of the server and the time of the game.<br /><br />
+
+<span class="cmd">@uptime</span><br />
+Displays how long the map-server has been running.<br /><br />
+
+<span class="cmd">@clock</span><br />
+Displays server time and how long the map-server has been running.<br /><br />
+
+<span class="cmd">@version</span><br />
+Displays version of Freya.<br /><br />
+
+<span class="cmd">@version2</span><br />
+Displays version of Freya (with additional informations).<br /><br />
+
+<span class="cmd">@jailtime<br />
+@jail_time<br />
+@prisontime<br />
+@prison_time</span><br />
+Displays your remaining jail time.<br /><br />
+
+<span class="cmd">@charjailtime &lt;char name|account_id&gt;<br />
+@charjail_time &lt;char name|account_id&gt;<br />
+@charprisontime &lt;char name|account_id&gt;<br />
+@charprison_time &lt;char name|account_id&gt;</span><br />
+Displays the remaining jail time of a player.<br /><br />
+
+<span class="cmd">@displayexp</span><br />
+Displays or not gained experience when you kill a monster.<br /><br />
+
+<span class="cmd">@displaydrop &lt;max_drop_rate&gt;</span><br />
+Displays items dropped by a monster when you kill it (when rate is from 0% to &lt;max_drop_rate&gt;%).<br /><br />
+
+<span class="cmd">@displaylootdrop</span><br />
+Displays or not items (of loot) dropped by a monster when you kill it.<br /><br />
+
+<span class="cmd">@displayplayerhp<br />
+@display_player_hp</span><br />
+Displays or not hp of players around of you.<br /><br />
+
+<span class="cmd">@skilltree &lt;skillnum&gt; &lt;char name|account_id&gt;</span><br />
+Prints the skill tree for a player required to get to a skill.<br /><br />
+
+
+<span class="cmd">@guildspy &lt;guild_name|guild_id&gt;</span><br />
+You will receive all messages of the specified guild channel.<br /><br />
+
+<span class="cmd">@partyspy &lt;party_name|party_id&gt;</span><br />
+You will receive all messages of the specified party channel.<br /><br />
+
+<br />
+
+<h4>Position:</h4>
+<span class="cmd">@refresh</span><br />
+Jump on yourself to refresh display.<br /><br />
+
+<span class="cmd">/hide<br />
+@hide</span><br />
+Perfect hide that&#39;s totally invisible (GM invisibility). Type @hide again become visible.<br /><br />
+
+<span class="cmd">@save</span><br />
+Sets save/respawn point to your current location.<br /><br />
+
+<span class="cmd">@load</span><br />
+<span class="cmd">@return</span><br />
+Warps you to your save point (like butterfly wing).<br /><br />
+
+<span class="cmd">@warp &lt;map_name&gt; &lt;x&gt; &lt;y&gt;<br />
+@rura &lt;map_name&gt; &lt;x&gt; &lt;y&gt;<br />
+@mapmove &lt;map_name&gt; &lt;x&gt; &lt;y&gt;<br />
+/mm &lt;map_name&gt; &lt;x&gt; &lt;y&gt;<br />
+/mapmove &lt;map_name&gt; &lt;x&gt; &lt;y&gt;</span><br />
+Warps you to the selected position<br />
+Example:<br />
+	@warp morocc 150 160 -&gt; Warps you to Morroc (X:150, Y:160)<br />
+	@rura prontera 50 80 -&gt; Warps you to Prontera (X:50, Y:80)<br /><br />
+
+<span class="cmd">@jump [x [y]]</span><br />
+Teleports you randomly in the map (like a fly wing), or to the specified location with x and y.<br /><br />
+
+<span class="cmd">/shift &lt;char name|account_id&gt;<br />
+/remove &lt;char name|account_id&gt;<br />
+@jumpto &lt;char name|account_id&gt;<br />
+@warpto &lt;char name|account_id&gt;<br />
+@shift &lt;char name|account_id&gt;<br />
+@goto &lt;char name|account_id&gt;</span><br />
+Warps you to selected character.<br /><br />
+
+<span class="cmd">@follow &lt;char name|account_id&gt;</span><br />
+Follows a player (to unfollow, type '@follow off' or '@follow &lt;YOUR name&gt;').<br /><br />
+
+<span class="cmd">@go &lt;number/city_name&gt;</span><br />
+Warps you to a set city:</pre><br /><br />
+	<table border="1" width="600" id="table1">
+		<tr>
+			<td width="25%"><font face="Verdana" size="2">-3: (Memo Point 2)</td>
+			<td width="25%"><font face="Verdana" size="2">4: Alberta</td>
+			<td width="25%"><font face="Verdana" size="2">11: Gon Ryun</td>
+			<td width="25%"><font face="Verdana" size="2">18: Orc dungeon</td>
+		</tr>
+		<tr>
+			<td width="25%"><font face="Verdana" size="2">-2: (Memo Point 1)</td>
+			<td width="25%"><font face="Verdana" size="2">5: Izlude</td>
+			<td width="25%"><font face="Verdana" size="2">12: Umbala</td>
+			<td width="25%"><font face="Verdana" size="2">19: Village (Payon)</td>
+		</tr>
+		<tr>
+			<td width="25%"><font face="Verdana" size="2">-1: (Memo Point 0)</td>
+			<td width="25%"><font face="Verdana" size="2">6: Al de Baran</td>
+			<td width="25%"><font face="Verdana" size="2">13: Niflheim</td>
+			<td width="25%"><font face="Verdana" size="2">20: Glast Heim</td>
+		</tr>
+		<tr>
+			<td width="25%"><font face="Verdana" size="2">0: Prontera</td>
+			<td width="25%"><font face="Verdana" size="2">7: Lutie</td>
+			<td width="25%"><font face="Verdana" size="2">14: Louyang</td>
+			<td width="25%"><font face="Verdana" size="2">21: Jawaii</td>
+		</tr>
+		<tr>
+			<td width="25%"><font face="Verdana" size="2">1: Morroc</td>
+			<td width="25%"><font face="Verdana" size="2">8: Comodo</td>
+			<td width="25%"><font face="Verdana" size="2">15: Start Point</td>
+			<td width="25%"><font face="Verdana" size="2">22: Ayothaya</td>
+		</tr>
+		<tr>
+			<td width="25%"><font face="Verdana" size="2">2: Geffen</td>
+			<td width="25%"><font face="Verdana" size="2">9: Yuno</td>
+			<td width="25%"><font face="Verdana" size="2">16: Prison/Jail</td>
+			<td width="25%"><font face="Verdana" size="2">23: Einbroch</td>
+		</tr>
+		<tr>
+			<td width="25%"><font face="Verdana" size="2">3: Payon</td>
+			<td width="25%"><font face="Verdana" size="2">10: Amatsu</td>
+			<td width="25%"><font face="Verdana" size="2">17: Valkyrie</td>
+			<td width="25%"><font face="Verdana" size="2">24: Lighthalzen</td>
+		</tr>
+		<tr>
+		</tr>
+	</table><br /><br />
+
+<span class="cmd">@memo [memo_position]</span><br />
+Sets/changes a memo location (no position: display memo points).<br /><br />
+
+<br />
+
+<h4>Health:</h4>
+<span class="cmd">@die<br />
+@killme<br />
+@suicide</span><br />
+Kill yourself :) (suicide).<br /><br />
+
+<span class="cmd">@alive<br />
+@revive<br />
+@resurrect</span><br />
+Revive yourself from death.<br /><br />
+
+<span class="cmd">@heal [&lt;HP&gt; [&lt;SP&gt;]]<br />
+@restore [&lt;HP&gt; [&lt;SP&gt;]]</span><br />
+Heals the desired amount of HP and SP (but don't resurrect). No value specified will do a full heal.<br /><br />
+
+<br />
+
+<h4>Self-Modifying:</h4>
+<span class="cmd">/resetstate<br />
+@resetstate</span><br />
+Resets all status points for you to reuse.<br /><br />
+
+<span class="cmd">/resetskill<br />
+@resetskill</span><br />
+Resets all skill points for you to reuse.<br /><br />
+
+<span class="cmd">@job &lt;job_ID|job_name|"job_name"&gt; [upper]<br />
+@jchange &lt;job_ID|job_name|"job_name"&gt; [upper]<br />
+@jobchange &lt;job_ID|job_name|"job_name"&gt; [upper]</span><br />
+Changes your job to the job assigned by the ID or the name</pre><br />
+<table border="1" width="800" id="table2">
+	<tr>
+		<td width="25%">0: Novice</td>
+		<td width="25%">6: Thief</td>
+		<td width="25%">12: Assassin</td>
+		<td width="25%">18: Alchemist</td>
+	</tr>
+	<tr>
+		<td width="25%">1: Swordsman</td>
+		<td width="25%">7: Knight</td>
+		<td width="25%">13: Knight w/ Peco</td>
+		<td width="25%">19: Bard</td>
+	</tr>
+	<tr>
+		<td width="25%">2: Mage</td>
+		<td width="25%">8: Priest</td>
+		<td width="25%">14: Crusader</td>
+		<td width="25%">20: Dancer</td>
+	</tr>
+	<tr>
+		<td width="25%">3: Archer</td>
+		<td width="25%">9: Wizard</td>
+		<td width="25%">15: Monk</td>
+		<td width="25%">21: Crusader w/ Peco</td>
+	</tr>
+	<tr>
+		<td width="25%">4: Acolyte</td>
+		<td width="25%">10: Blacksmith</td>
+		<td width="25%">16: Sage</td>
+		<td width="25%">22: Wedding</td>
+	</tr>
+	<tr>
+		<td width="25%">5: Merchant</td>
+		<td width="25%">11: Hunter</td>
+		<td width="25%">17: Rogue</td>
+		<td width="25%">23: Super Novice</td>
+	</tr>
+</table>
+<table border="1" width="800" id="table3">
+	<tr>
+		<td width="25%">4001: Novice High</td>
+		<td width="25%">4007: Thief High</td>
+		<td width="25%">4013: Assassin Cross</td>
+		<td width="25%">4019: Creator</td>
+	</tr>
+	<tr>
+		<td width="25%">4002: Swordsman High</td>
+		<td width="25%">4008: Lord Knight</td>
+		<td width="25%">4014: Lord Knight w/ Peco</td>
+		<td width="25%">4020: Clown</td>
+	</tr>
+	<tr>
+		<td width="25%">4003: Mage High</td>
+		<td width="25%">4009: High Priest</td>
+		<td width="25%">4015: Paladin</td>
+		<td width="25%">4021: Gypsy</td>
+	</tr>
+	<tr>
+		<td width="25%">4004: Archer High</td>
+		<td width="25%">4010: High Wizard</td>
+		<td width="25%">4016: Champion</td>
+		<td width="25%">4022: Paladin w/ Peco</td>
+	</tr>
+	<tr>
+		<td width="25%">4005: Acolyte High</td>
+		<td width="25%">4011: Whitesmith</td>
+		<td width="25%">4017: Professor</td>
+		<td width="25%">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="25%">4006: Merchant High</td>
+		<td width="25%">4012: Sniper</td>
+		<td width="25%">4018: Stalker</td>
+		<td width="25%">&nbsp;</td>
+	</tr>
+</table>
+<table border="1" width="800" id="table4">
+	<tr>
+		<td width="25%">4023 Baby Novice</td>
+		<td width="25%">4029 Baby Thief</td>
+		<td width="25%">4035 Baby Assassin</td>
+		<td width="25%">4041 Baby Alchemist</td>
+	</tr>
+	<tr>
+		<td width="25%">4024 Baby Swordsman</td>
+		<td width="25%">4030 Baby Knight</td>
+		<td width="25%">4036 Baby Peco-Knight</td>
+		<td width="25%">4042 Baby Bard</td>
+	</tr>
+	<tr>
+		<td width="25%">4025 Baby Mage</td>
+		<td width="25%">4031 Baby Priest</td>
+		<td width="25%">4037 Baby Crusader</td>
+		<td width="25%">4043 Baby Dancer</td>
+	</tr>
+	<tr>
+		<td width="25%">4026 Baby Archer</td>
+		<td width="25%">4032 Baby Wizard</td>
+		<td width="25%">4038 Baby Monk</td>
+		<td width="25%">4044 Baby Peco-Crusader</td>
+	</tr>
+	<tr>
+		<td width="25%">4027 Baby Acolyte</td>
+		<td width="25%">4033 Baby Blacksmith</td>
+		<td width="25%">4039 Baby Sage</td>
+		<td width="25%">4045 Super Baby</td>
+	</tr>
+	<tr>
+		<td width="25%">4028 Baby Merchant</td>
+		<td width="25%">4034 Baby Hunter</td>
+		<td width="25%">4040 Baby Rogue</td>
+		<td width="25%">&nbsp;</td>
+	</tr>
+</table><br />
+[upper]: when it's -1 (default) it'll automatically determine which 'level' to change you to based on your current one.
+So if you were a normal knight, @job 0 will make you a normal novice, and when you are a lord knight, a high novice, and baby knight to baby novice, and so on.<br />
+If you'd want to change, from lord knight to novice for example, use @job 0 0, and @job 7 1 from novice to lord knight.<br /><br />
+
+<span class="cmd">@lvup &lt;number_of_levels&gt;<br />
+@lvlup &lt;number_of_levels&gt;<br />
+@levelup &lt;number_of_levels&gt;<br />
+@blvl &lt;number_of_levels&gt;<br />
+@blevel &lt;number_of_levels&gt;<br />
+@blvlup &lt;number_of_levels&gt;<br />
+@blevelup &lt;number_of_levels&gt;<br />
+@baselvlup &lt;number_of_levels&gt;<br />
+@baselevelup &lt;number_of_levels&gt;</span><br />
+Raises your base level the desired number of levels. The max is 99 (unless it's changed in battle_athena.conf).<br /><br />
+
+<span class="cmd">@jlvl &lt;number_of_levels&gt;<br />
+@jlevel &lt;number_of_levels&gt;<br />
+@jlvlup &lt;number_of_levels&gt;<br />
+@jlevelup &lt;number_of_levels&gt;<br />
+@joblvup &lt;number_of_levels&gt;<br />
+@joblvlup &lt;number_of_levels&gt;<br />
+@joblevelup &lt;number_of_levels&gt;</span><br />
+Raises your job level the desired number of levels. The max is 10 for novice, 50 for 1st and 2nd classes, and 70 for advanced classes.<br /><br />
+
+<span class="cmd">@allskill<br />
+@allskills<br />
+@skillall<br />
+@skillsall</span><br />
+Gives you all skills.<br /><br />
+
+<span class="cmd">@option &lt;param1&gt; &lt;param2&gt; &lt;param3&gt;</span><br />
+Sets options for your character<br />
+<table border="1" width="600">
+	<tr>
+		<td width="33%">&lt;param1&gt;</span></td>
+		<td width="33%">&lt;param2&gt; (Stackable)</span></td>
+		<td width="33%">&lt;param3&gt; (Stackable)</span></td>
+	</tr>
+	<tr>
+		<td>1 Petrified</span></td>
+		<td>1 Poison</span></td>
+		<td>1 Sight</span></td>
+	</tr>
+	<tr>
+		<td>2 Frozen</span></td>
+		<td>2 Cursed</span></td>
+		<td>2 Hide</span></td>
+	</tr>
+	<tr>
+		<td>3 Stunned</span></td>
+		<td>4 Silenced</span></td>
+		<td>4 Cloak</span></td>
+	</tr>
+	<tr>
+		<td>4 Sleeping</span></td>
+		<td>8 ???</span></td>
+		<td>8 Level 1 Cart</span></td>
+	</tr>
+	<tr>
+		<td>6 Darkness (no move) </span></td>
+		<td>16 Darkness</span></td>
+		<td>16 Falcon</span></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>32 Peco Peco riding (Depreciated)</span></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>64 GM Perfect Hide</span></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>128 Level 2 Cart</span></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>256 Level 3 Cart</span></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>512 Level 4 Cart</span></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>1024 Level 5 Cart</span></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>2048 Orc Head</span></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>4096 Wedding Sprites</span></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>8192 Ruwach</span></td>
+	</tr>
+</table>
+Example: @option 0 0 16 - would give falcon<br /><br />
+
+<span class="cmd">@optionadd &lt;param1&gt; &lt;param2&gt; &lt;param3&gt;</span><br />
+Adds options for your character<br /><br />
+
+<span class="cmd">@optionremove &lt;param1&gt; &lt;param2&gt; &lt;param3&gt;</span><br />
+Removes options for your character<br /><br />
+
+<span class="cmd">@peco<br />
+@mountpeco</span><br />
+Give/remove you a peco (Class is required, but not skill).<br /><br />
+
+<span class="cmd">@falcon</span><br />
+Give/remove you a falcon (skill is not required).<br /><br />
+
+<span class="cmd">@cart &lt;cart_type:0-5&gt;<br />
+@cart0<br />
+@cart1<br />
+@cart2<br />
+@cart3<br />
+@cart4<br />
+@cart5</span><br />
+Remove(0)/Give you a cart (skill is not required).<br /><br />
+
+<span class="cmd">@removecart</span><br />
+Remove you a cart.<br /><br />
+
+<span class="cmd">@disguise &lt;monster_name|monster_ID|NPC_ID&gt;</span><br />
+Changes your appearence to a monster/NPC.
+If using NPC ID 104 Will become an effect.<br />
+	Speed of player will determine effect.
+	Be very careful with this ID.<br />
+	It can create client crashes with improper ids and can easily lag players off of the server.<br /><br />
+
+<span class="cmd">@undisguise</span><br />
+Restore your normal appearance.<br /><br />
+
+<span class="cmd">@changelook &lt;Equipment_name|ID&gt;</span><br />
+Changes accessories appareance (only visual) of your character with an equipment.<br />
+	Changing of Weapons, Shields and Shoes is probably not visible.<br /><br />
+
+<span class="cmd">@changesex</span><br />
+Changes your sex (all characters of your account).<br /><br />
+
+<span class="cmd">@model &lt;hair_ID: 0-17&gt; &lt;hair_color: 0-8&gt; &lt;clothes_color: 0-4&gt;</span><br />
+Changes your characters appearance (Hair type, Hair Colour and/or Clothes Colour)<br />
+<table width="600" border="1">
+	<tr>
+		<td width="33%">Hair ID (0-17)</span></td>
+		<td width="33%">Hair Colour (0-8)</span></td>
+		<td width="33%">Clothes Colour (0-4)</span></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>0 Default</span></td>
+		<td>0 Default</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>1 Blonde</span></td>
+		<td>1 Red</span></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>2 Purple </span></td>
+		<td>2 Green</span></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>3 Brown</span></td>
+		<td>3 White</span></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>4 Green</span></td>
+		<td>4 Brown</span></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>5 Blue</span></td>
+		<td></span></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>6 White</span></td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>7 Black</span></td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>8 Red</span></td>
+		<td>&nbsp;</td>
+	</tr>
+</table><br /><br />
+
+<span class="cmd">@dye/@ccolor/@clothescolor &lt;clothes_color: 0-4&gt;</span><br />
+Changes your characters appearence (only clothes color).<br /><br />
+
+<span class="cmd">@hairstyle/@hstyle &lt;hair_ID: 0-17&gt;</span><br />
+Changes your characters appearence (only hair style).<br /><br />
+
+<span class="cmd">@haircolor/@hcolor &lt;hair_color: 0-8&gt;</span><br />
+Changes your characters appearence (only hair color).<br /><br />
+
+<span class="cmd">@speed [0-1000]</span><br />
+Changes you walking speed.<br />
+1(Fastest)&lt;---140(Default)-----------------&gt;1000(Slowest)<br />
+Use 0 to restore the normal speed.<br /><br />
+
+<span class="cmd">@effect &lt;effect_id&gt; [flag]</span><br />
+Gives an efect to your character.<br />
+flag:<br />
+	0(default): yourself visible by yourself,<br />
+	positiv: anybody in area visible by anybody<br />
+	negativ: yourself visible in area.<br /><br />
+
+<span class="cmd">@stpoint &lt;number_of_points&gt;</span><br />
+Gives you the desired number of stat points.<br /><br />
+
+<span class="cmd">@skpoint &lt;number_of_points&gt;</span><br />
+Gives you the desired number of skill points.<br /><br />
+
+<span class="cmd">@zeny &lt;amount&gt;</span><br />
+Gives you desired amount of Zeny.<br /><br />
+
+<span class="cmd">@str &lt;amount&gt;<br />
+@agi &lt;amount&gt;<br />
+@vit &lt;amount&gt;<br />
+@int &lt;amount&gt;<br />
+@dex &lt;amount&gt;<br />
+@luk &lt;amount&gt;</span><br />
+Adds desired amount to any stat. For example &quot;@str 10&quot; raises your str by 10.<br /><br />
+
+<span class="cmd">@statall [value]<br />
+@statsall [value]<br />
+@allstats [value]<br />
+@allstat [value]</span><br />
+Adds value in all stats (maximum if no value).<br /><br />
+
+<span class="cmd">@spiritball &lt;number: 1-500&gt;</span><br />
+Gives you monk &quot;spirit spheres&quot; like from the skill &quot;Call Spirits&quot;.<br />
+(If the number you use is &gt; 400, your client may become instable or crash).<br /><br />
+
+<span class="cmd">@questskill &lt;quest_skill_id&gt;</span><br />
+Gives you the specified quest skill.<br /><br />
+
+<span class="cmd">@lostskill &lt;quest_skill_id&gt;<br />
+@lostquest &lt;quest_skill_id&gt;</span><br />
+Takes away the specified quest skill from you.<br />
+<table width="600" border="1">
+	<caption>
+		<strong>Quest Skill ID</strong>
+	</caption>
+	<tr>
+		<td width="25%" rowspan="2">Novice</span></td>
+		<td width="10%"><div align="center">142</span></div></td>
+		<td width="65%">Emergency Care</span></td>
+	</tr>
+	<tr>
+		<td><div align="center">143</span></div></td>
+		<td>Act dead</span></td>
+	</tr>
+	<tr>
+		<td rowspan="3">Swordsman</span></td>
+		<td><div align="center">144</span></div></td>
+		<td>Moving HP Recovery</span></td>
+	</tr>
+	<tr>
+		<td><div align="center">145</span></div></td>
+		<td>Attack Weak Point</span></td>
+	</tr>
+	<tr>
+		<td><div align="center">146</span></div></td>
+		<td>Auto Berserk</span></td>
+	</tr>
+	<tr>
+		<td rowspan="2">Archer</span></td>
+		<td><div align="center">147</span></div></td>
+		<td>Arrow Creation</span></td>
+	</tr>
+	<tr>
+		<td><div align="center">148</span></div></td>
+		<td>Charge Arrows</span></td>
+	</tr>
+	<tr>
+		<td rowspan="4">Thief</span></td>
+		<td><div align="center">149</span></div></td>
+		<td>Throw Sand</span></td>
+	</tr>
+	<tr>
+		<td><div align="center">150</span></div></td>
+		<td>Back Sliding</span></td>
+	</tr>
+	<tr>
+		<td><div align="center">151</span></div></td>
+		<td>Take Stone</span></td>
+	</tr>
+	<tr>
+		<td><div align="center">152</span></div></td>
+		<td>Stone Throw</span></td>
+	</tr>
+	<tr>
+		<td rowspan="3">Merchant</span></td>
+		<td><div align="center">153</span></div></td>
+		<td>Cart Revolution</span></td>
+	</tr>
+	<tr>
+		<td><div align="center">154</span></div></td>
+		<td>Change Cart</span></td>
+	</tr>
+	<tr>
+		<td><div align="center">155</span></div></td>
+		<td>Crazy Uproar/Loud Voice</span></td>
+	</tr>
+	<tr>
+		<td>Acolyte</span></td>
+		<td><div align="center">156</span></div></td>
+	<td>Holy Light</span></td>
+	</tr>
+	<tr>
+		<td>Magician</span></td>
+		<td><div align="center">157</span></div></td>
+		<td>Energy Coat</span></td>
+	</tr>
+</table><br /><br />
+
+	
+<span class="cmd">@skillid &lt;skill_name&gt;</span><br />
+Looks up a skill by name.<br /><br />
+
+<span class="cmd">@email &lt;actual@email&gt; &lt;new@email&gt;</span><br />
+Changes your e-mail (characters deletion protection).<br /><br />
+
+<br />
+
+<h4>Item:</h4>
+<span class="cmd">@autoloot &lt;max_drop_rate&gt;</span><br />
+If a NO-LOOTED item is droped, does it go stright into the users inventory (when rate is from 0% to &lt;max_drop_rate&gt;%).<br /><br />
+
+<span class="cmd">@autolootloot</span><br />
+If a LOOTED item is droped, does it go stright into the users inventory.<br /><br />
+
+<span class="cmd">@storage </span><br />
+Opens storage anywhere.<br /><br />
+
+<span class="cmd">@gstorage </span><br />
+Opens guild storage anywhere.<br /><br />
+
+<span class="cmd">@dropall</span><br />
+Throws all your possession on the ground.<br /><br />
+
+<span class="cmd">@storeall</span><br />
+Puts all your possessions in your storage.<br /><br />
+
+<span class="cmd">/item &lt;item_name&gt;</span><br />
+Gives you 1 of the desired monster.<br /><br />
+
+<span class="cmd">@item &lt;item name|item_ID&gt; &lt;quantity&gt;</span><br />
+Gives you the desired item with the desired quantity.<br /><br />
+
+<span class="cmd">@item2 &lt;item name|item_ID&gt; &lt;quantity&gt; &lt;Identify_flag&gt; &lt;refine&gt; &lt;attribut&gt; &lt;Card1&gt; &lt;Card2&gt; &lt;Card3&gt; &lt;Card4&gt;</span><br />
+Gives you the desired item.<br /><br />
+
+<span class="cmd">@cleanmap [distance]</span><br />
+Removes items from the map within the distance.<br /><br />
+
+<span class="cmd">@itemreset<br />
+@inventoryreset</span><br />
+Removes all your items.<br /><br />
+
+<span class="cmd">@itemcheck</span><br />
+Checks your items with authorized items.<br /><br />
+
+<span class="cmd">@idsearch &lt;part_of_item_name&gt;<br />
+@itemsearch &lt;part_of_item_name&gt;<br />
+@searchid &lt;part_of_item_name&gt;<br />
+@searchitem &lt;part_of_item_name&gt;</span><br />
+Searchs all items that name have 'part_of_item_name'.<br /><br />
+
+<span class="cmd">@whodrop &lt;item name|item_ID&gt;<br />
+@whodrops &lt;item name|item_ID&gt;</span><br />
+Gives list of monsters that drop specified item.<br /><br />
+
+<span class="cmd">@refine [position [+/-amount]]</span><br />
+Upgrades equipment at the position specified (Stackable).<br /><br />
+<table border="1">
+	<tr>
+		<td>0</span></td>
+		<td>All</span></td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>Lower Head</span></td>
+	</tr>
+	<tr>
+		<td>2</td>
+		<td>Right Hand</span></td>
+	</tr>
+	<tr>
+		<td>4</td>
+		<td>Robe/Garment</span></td>
+	</tr>
+	<tr>
+		<td>8</td>
+		<td>Left Accessory</span></td>
+	</tr>
+	<tr>
+		<td>16</td>
+		<td>Body/Armor</span></td>
+	</tr>
+	<tr>
+		<td>32</td>
+		<td>Left Hand</span></td>
+	</tr>
+	<tr>
+		<td>64</td>
+		<td>Feet</span></td>
+	</tr>
+	<tr>
+		<td>128</span></td>
+		<td>Right Accessory</span></td>
+	</tr>
+	<tr>
+		<td>256</span></td>
+		<td>Top Head</span></td>
+	</tr>
+	<tr>
+		<td>512</span></td>
+		<td>Mid Head</span></td>
+	</tr>
+</table><br /><br />
+	Examples:<br />
+	@refine 34 10 - Refines a 2 handed weapon to +10.<br />
+	@refine 16 4 - Refines the body/armor to +4.<br /><br />
+
+<span class="cmd">@refineall [+/-amount]</span><br />
+Upgrades all equipments.<br /><br />
+
+<span class="cmd">@produce &lt;equip_name|equip_ID&gt; &lt;element&gt; &lt;#_of_very&#39;s&gt;</span><br />
+Create an equipement.<br />
+Element:<br />
+	0 None<br />
+	1 Ice<br />
+	2 Earth<br />
+	3 Fire<br />
+	4 Wind<br />
+It has separately with fragment 3 of the attribute + stars, you can apply.<br># of very&#39;s:<br />
+	0 None<br />
+	1 Very Strong<br />
+	2 Very Very Strong<br />
+	3 Very Very Very Strong<br />
+
+Example:<br />
+	@produce 1163 3 3 - Produces a Very Very Very Strong (Your Nick)&#39;s Fire Claymore.<br /><br />
+
+<span class="cmd">@repairall</span><br />
+Repair all items of your inventory<br /><br />
+
+<br />
+
+<h4>Monster:</h4>
+<span class="cmd">/monster &lt;monster_name&gt;</span><br />
+Spawns 1 of the desired monster.<br /><br />
+
+<span class="cmd">@spawn &lt;monster_name|monster_ID&gt; [&lt;quantity&gt; [&lt;desired_monster_name&gt; [&lt;x coord&gt; [&lt;y coord&gt;]]]]<br />
+@monster &lt;monster_name|monster_ID&gt; [&lt;quantity&gt; [&lt;desired_monster_name&gt; [&lt;x coord&gt; [&lt;y coord&gt;]]]]</span><br />
+or<br />
+<span class="cmd">@spawn "desired monster name" &lt;monster_name|monster_ID&gt; [&lt;quantity&gt; [&lt;x coord&gt; [&lt;y coord&gt;]]]<br />
+@monster "desired monster name" &lt;monster_name|monster_ID&gt; [&lt;quantity&gt; [&lt;x coord&gt; [&lt;y coord&gt;]]]</span><br />
+or<br />
+<span class="cmd">@spawn &lt;monster_name|monster_ID&gt; "desired monster name" [&lt;quantity&gt; [&lt;x coord&gt; [&lt;y coord&gt;]]]<br />
+@monster &lt;monster_name|monster_ID&gt; "desired monster name" [&lt;quantity&gt; [&lt;x coord&gt; [&lt;y coord&gt;]]]</span><br />
+or<br />
+<span class="cmd">@spawn &lt;monster_name|monster_ID&gt; &lt;quantity&gt; "desired monster name" [&lt;x coord&gt; [&lt;y coord&gt;]]<br />
+@monster &lt;monster_name|monster_ID&gt; &lt;quantity&gt; "desired monster name" [&lt;x coord&gt; [&lt;y coord&gt;]]</span><br />
+Spawns the desired monster with any desired name, quantity and x and y location (if specified) on a limited area.
+There 2 last forms can use spaces for desired names (between the &quot;&quot;).<br />
+You can use <span class="cmd">@spawnbig</span> to spawn monsters with big sprites (can cause lags).<br />
+You can use <span class="cmd">@spawnsmall</span> to spawn monsters with small sprites (can cause lags).<br />
+If you add '<span class="cmd">agro</span>' to the command, monsters are agressiv (like dead branch).<br /><br />
+
+<span class="cmd">@spawnmap &lt;monster_name|monster_ID&gt; [&lt;quantity&gt; [&lt;desired_monster_name&gt;]]<br />
+@monstermap &lt;monster_name|monster_ID&gt; [&lt;quantity&gt; [&lt;desired_monster_name&gt;]]</span><br />
+or<br />
+<span class="cmd">@spawnmap "desired monster name" &lt;monster_name|monster_ID&gt; [&lt;quantity&gt;]<br />
+@monstermap "desired monster name" &lt;monster_name|monster_ID&gt; [&lt;quantity&gt;]</span><br />
+or<br />
+<span class="cmd">@spawnmap &lt;monster_name|monster_ID&gt; "desired monster name" [&lt;quantity&gt;]<br />
+@monstermap &lt;monster_name|monster_ID&gt; "desired monster name" [&lt;quantity&gt;]</span><br />
+or<br />
+<span class="cmd">@spawnmap &lt;monster_name|monster_ID&gt; &lt;quantity&gt; "desired monster name"<br />
+@monstermap &lt;monster_name|monster_ID&gt; &lt;quantity&gt; "desired monster name"</span><br />
+Spawns the desired monster with any desired name and quantity (if specified) on entire map.
+There 2 last forms can use spaces for desired names (between the &quot;&quot;).<br />
+If you add '<span class="cmd">big</span>' to the command, you spawn monsters on entire map with big sprites (can cause lags).<br />
+If you add '<span class="cmd">small</span>' to the command, you spawn monsters on entire map with small sprites (can cause lags).<br />
+If you add '<span class="cmd">agro</span>' to the command, monsters are agressiv (like dead branch).<br /><br />
+
+<span class="cmd">@spawnall &lt;monster_name|monster_ID&gt; [&lt;quantity&gt; [&lt;desired_monster_name&gt;]]<br />
+@monsterall &lt;monster_name|monster_ID&gt; [&lt;quantity&gt; [&lt;desired_monster_name&gt;]]</span><br />
+or<br />
+<span class="cmd">@spawnall "desired monster name" &lt;monster_name|monster_ID&gt; [&lt;quantity&gt;]<br />
+@monsterall "desired monster name" &lt;monster_name|monster_ID&gt; [&lt;quantity&gt;]</span><br />
+or<br />
+<span class="cmd">@spawnall &lt;monster_name|monster_ID&gt; "desired monster name" [&lt;quantity&gt;]<br />
+@monsterall &lt;monster_name|monster_ID&gt; "desired monster name" [&lt;quantity&gt;]</span><br />
+or<br />
+<span class="cmd">@spawnall &lt;monster_name|monster_ID&gt; &lt;quantity&gt; "desired monster name"<br />
+@monsterall &lt;monster_name|monster_ID&gt; &lt;quantity&gt; "desired monster name"</span><br />
+Spawns the desired monster with any desired name and quantity (if specified) around each online player.
+There 2 last forms can use spaces for desired names (between the &quot;&quot;).<br />
+If you add '<span class="cmd">big</span>' to the command, you spawn monsters with big sprites (can cause lags).<br />
+If you add '<span class="cmd">small</span>' to the command, you spawn monsters with small sprites (can cause lags).<br />
+If you add '<span class="cmd">agro</span>' to the command, monsters are agressiv (like dead branch).<br /><br />
+
+<span class="cmd">@summon &lt;monster_name|monster_ID&gt; [&lt;quantity&gt; [&lt;desired_monster_name&gt; [&lt;x coord&gt; [&lt;y coord&gt;]]]]</span><br />
+or<br />
+<span class="cmd">@summon "desired monster name" &lt;monster_name|monster_ID&gt; [&lt;quantity&gt; [&lt;x coord&gt; [&lt;y coord&gt;]]]</span><br />
+or<br />
+<span class="cmd">@summon &lt;monster_name|monster_ID&gt; "desired monster name" [&lt;quantity&gt; [&lt;x coord&gt; [&lt;y coord&gt;]]]</span><br />
+or<br />
+<span class="cmd">@summon &lt;monster_name|monster_ID&gt; &lt;quantity&gt; "desired monster name" [&lt;x coord&gt; [&lt;y coord&gt;]]</span><br />
+Spawns one or more homonculus.<br />
+You can use <span class="cmd">@summonsmall</span> to spawn homonculus with small sprites (can cause lags).<br />
+You can use <span class="cmd">@summonbig</span> to spawn homonculus with big sprites (can cause lags).<br /><br />
+
+<span class="cmd">@deadbranch [&lt;quantity&gt;]</span><br />
+<span class="cmd">@dead_branch [&lt;quantity&gt;]</span><br />
+Spawns one or more monsters like a dead branch.<br />
+You can use <span class="cmd">@deadbranchsmall/@dead_branchsmall</span> to spawn monsters with small sprites (can cause lags).<br />
+You can use <span class="cmd">@deadbranchbig/@dead_branchbig</span> to spawn monsters with big sprites (can cause lags).<br /><br />
+
+<span class="cmd">@chardeadbranch [&lt;quantity&gt;] &lt;char name|account_id&gt;</span><br />
+<span class="cmd">@chardead_branch [&lt;quantity&gt;] &lt;char name|account_id&gt;</span><br />
+Spawns one or more monsters like a dead branch on a player.<br />
+You can use <span class="cmd">@chardeadbranchsmall/@chardead_branchsmall</span> to spawn monsters with small sprites (can cause lags).<br />
+You can use <span class="cmd">@chardeadbranchbig/@chardead_branchbig</span> to spawn monsters with big sprites (can cause lags).<br /><br />
+
+<span class="cmd">@deadbranchmap [&lt;quantity&gt;] [&lt;map_name&gt;]</span><br />
+<span class="cmd">@dead_branchmap [&lt;quantity&gt;] [&lt;map_name&gt;]</span><br />
+Spawns one or more monsters like a dead branch on each player on the entire map.<br />
+If you add '<span class="cmd">big</span>' to the command, you spawn monsters with big sprites (can cause lags).<br />
+If you add '<span class="cmd">small</span>' to the command, you spawn monsters with small sprites (can cause lags).<br /><br />
+
+<span class="cmd">@deadbranchall [&lt;quantity&gt;]</span><br />
+<span class="cmd">@dead_branchall [&lt;quantity&gt;]</span><br />
+Spawns one or more monsters like a dead branch on each online player.<br />
+If you add '<span class="cmd">big</span>' to the command, you spawn monsters with big sprites (can cause lags).<br />
+If you add '<span class="cmd">small</span>' to the command, you spawn monsters with small sprites (can cause lags).<br /><br />
+
+<span class="cmd">@killmonster [map]</span><br />
+Kills all monsters of the map (they drop).<br />
+Default map is your actual map.<br /><br />
+
+<span class="cmd">@killmonster2 [map]</span><br />
+Kills all monsters of your map (without drops).<br />
+Default map is your actual map.<br /><br />
+
+<span class="cmd">@killmonsterarea [distance]</span><br />
+Kills all monsters around of you within the distance (they drop).<br /><br />
+
+<span class="cmd">@killmonster2area [distance]<br />
+@killmonsterarea2 [distance]</span><br />
+Kills all monsters around of you within the distance (without drops).<br /><br />
+
+<br />
+
+<h4>PVP:</h4>
+<span class="cmd">@pvpon</span><br />
+Turns pvp on on the current map.<br /><br />
+
+<span class="cmd">@pvpoff</span><br />
+Turns pvp off on the current map.<br /><br />
+
+<span class="cmd">@gvgon<br />
+@gpvpon</span><br />
+Turns gvg on on the current map. This does NOT enable War of Emperium.<br /><br />
+
+<span class="cmd">@gvgoff<br />
+@gpvpoff</span><br />
+Turns gvg off on the current map. This does NOT disable War of Emperium.<br /><br />
+
+<span class="cmd">@agitstart</span><br />
+Starts Guild Wars (War of Emperium).<br /><br />
+
+<span class="cmd">@agitend</span><br />
+Ends Guild Wars (War of Emperium).<br /><br />
+
+<span class="cmd">@killer</span><br />
+Enable hitting a player even when not in pvp.<br /><br />
+
+<span class="cmd">@charkiller &lt;char name|account_id&gt;</span><br />
+Enable a player hitting any player even when not in pvp.<br /><br />
+
+<span class="cmd">@killable</span><br />
+Makes your character killable.<br /><br />
+
+<span class="cmd">@charkillable &lt;char name|account_id&gt;</span><br />
+Makes another character killable.<br /><br />
+
+<br />
+
+<h4>Group:</h4>
+<span class="cmd">@party "party_name"<br />
+@party &lt;party_name&gt;</span><br />
+Create a party.<br /><br />
+
+<span class="cmd">@guild "Desired guild name"<br />
+@guild &lt;Desired guild name&gt;</span><br />
+Creates a guild with the desired name (Spaces are allowed)<br /><br />
+
+<span class="cmd">@guildlvup &lt;#_of_levels&gt;<br />
+@guildlvlup &lt;#_of_levels&gt;<br />
+@guildlevelup &lt;#_of_levels&gt;</span><br />
+Raises Guild by desired number of levels.<br /><br />
+
+<span class="cmd">@guildrecall &lt;guild_name|guild_id&gt;</span><br />
+Warps all online character of a guild to you.<br /><br />
+
+<span class="cmd">@partyrecall &lt;party_name|party_id&gt;</span><br />
+Warps all online character of a party to you.<br /><br />
+
+<br />
+
+<h4>Pet:</h4>
+<span class="cmd">@makeegg &lt;pet_id&gt;<br />
+@createegg &lt;pet_id&gt;</span><br />
+Gives pet egg for monster ID in pet DB<br /><br />
+
+<span class="cmd">@hatch<br />
+@incubate<br />
+@incubator<br />
+@pet_incubator<br />
+@petincubator<br />
+@petbirth<br />
+@pet_birth</span><br />
+Brings up the hatch pet menu<br /><br />
+
+<span class="cmd">@petfriendly &lt;#&gt;</span><br />
+Sets pet friendly amount (0-1000); 0: Min, 1000: Max.<br /><br />
+
+<span class="cmd">@pethungry &lt;#&gt;</span><br />
+Sets pet hungry amount (0-100); 0: Min, 100: Max.<br /><br />
+
+<span class="cmd">@petrename</span><br />
+Re-enables pet rename.<br /><br />
+
+<span class="cmd">@pettalk &lt;message&gt;<br />
+@petmessage &lt;message&gt;<br />
+@petmes &lt;message&gt;</span><br />
+Command what the player's pet will say.<br /><br />
+
+<br />
+
+<h4>Remote Character:</h4>
+<span class="cmd">@charstorage &lt;char name|account_id&gt;</span><br />
+Opens a player storage anywhere (for the player).<br /><br />
+
+<span class="cmd">@chargstorage &lt;char name|account_id&gt;<br />
+@charguildstorage &lt;char name|account_id&gt;</span><br />
+Opens a player guild storage anywhere (for the player).<br /><br />
+
+<span class="cmd">@kill &lt;char name|account_id&gt;<br />
+@charkill &lt;char name|account_id&gt;<br />
+@chardie &lt;char name|account_id&gt;</span><br />
+Kills specified character.<br /><br />
+
+<span class="cmd">@nuke &lt;char name|account_id&gt;</span><br />
+Kills specified character (nuclear effect).<br /><br />
+
+<span class="cmd">@chardropall &lt;char name|account_id&gt;</span><br />
+Throws all a character possession on the ground.<br /><br />
+
+<span class="cmd">@charstoreall &lt;char name|account_id&gt;</span><br />
+Puts all the character possessions in storage.<br /><br />
+
+<span class="cmd">/recall &lt;char name|account_id&gt;<br />
+/summon &lt;char name|account_id&gt;<br />
+@recall &lt;char name|account_id&gt;</span><br />
+Warps target character to you.<br /><br />
+
+<span class="cmd">@rura+ &lt;map name&gt; &lt;x&gt; &lt;y&gt; &lt;char name|account_id&gt;<br />
+@charwarp &lt;map name&gt; &lt;x&gt; &lt;y&gt; &lt;char name|account_id&gt;<br />
+@charrura &lt;map name&gt; &lt;x&gt; &lt;y&gt; &lt;char name|account_id&gt;<br />
+@charmapmove &lt;map name&gt; &lt;x&gt; &lt;y&gt; &lt;char name|account_id&gt;<br />
+</span>Warps the selected character to the selected position.<br />
+Example:<br />
+	@charwarp morocc 150 160 Sora -&gt; Warps the character &#39;Sora&#39; to Morroc (X:150, Y:160)<br />
+	@rura+ prontera 50 80 Haley -&gt; Warps the character &#39;Haley&#39; to Prontera (X:50, Y:80)<br /><br />
+
+<span class="cmd">@charalive &lt;char name|account_id&gt;<br />
+@charrevive &lt;char name|account_id&gt;<br />
+@charresurrect &lt;char name|account_id&gt;</span><br />
+Revives target character.<br /><br />
+
+<span class="cmd">@charheal [&lt;HP&gt; [&lt;SP&gt;]] &lt;char name|account_id&gt;<br />
+@charrestore [&lt;HP&gt; [&lt;SP&gt;]] &lt;char name|account_id&gt;</span><br />
+Heals target character the desired amount of HP and SP (but don't resurrect). '0' specified will do a full heal.<br /><br />
+
+<span class="cmd">@charignorelist &lt;char name|account_id&gt;</span><br />
+Displays ignore list of the player.<br /><br />
+
+<span class="cmd">@inall &lt;char name|account_id&gt;</span><br />
+Allows all wispers for the player.<br /><br />
+
+<span class="cmd">@exall &lt;char name|account_id&gt;</span><br />
+Blocks all wispers for the player.<br /><br />
+
+<span class="cmd">@charoption &lt;param1&gt; &lt;param2&gt; &lt;param3&gt; &lt;char name|account_id&gt;</span><br />
+Does the same as the @option command to target character.<br /><br />
+
+<span class="cmd">@charoptionadd &lt;param1&gt; &lt;param2&gt; &lt;param3&gt; &lt;char name|account_id&gt;</span><br />
+Does the same as the @optionadd command to target character.<br /><br />
+
+<span class="cmd">@charoptionremove &lt;param1&gt; &lt;param2&gt; &lt;param3&gt; &lt;char name|account_id&gt;</span><br />
+Does the same as the @optionremove command to target character.<br /><br />
+
+<span class="cmd">@charpeco &lt;char name|account_id&gt;<br />
+@charmountpeco &lt;char name|account_id&gt;</span><br />
+Gives/removes to a player a peco (Class is required, but not skill).<br /><br />
+
+<span class="cmd">@charfalcon &lt;char name|account_id&gt;</span><br />
+Gives/removes to a player a falcon (skill is not required).<br /><br />
+
+<span class="cmd">@charcart &lt;cart_type:0-5&gt; &lt;char name|account_id&gt;<br />
+@charcart0; &lt;char name|account_id&gt;<br />
+@charcart1; &lt;char name|account_id&gt;<br />
+@charcart2 &lt;char name|account_id&gt;<br />
+@charcart3 &lt;char name|account_id&gt;<br />
+@charcart4 &lt;char name|account_id&gt;<br />
+@charcart5 &lt;char name|account_id&gt;</span><br />
+Remove(0)/Gives to a player a cart (skill is not required).<br /><br />
+
+<span class="cmd">@charremovecart &lt;char name|account_id&gt;</span><br />
+Removes to a player a cart.<br /><br />
+
+<span class="cmd">@charpetrename &lt;char name|account_id&gt;</span><br />
+Re-enables pet rename to a player.<br /><br />
+
+<span class="cmd">@charsave &lt;map&gt; &lt;x&gt; &lt;y&gt; &lt;char name|account_id&gt;</span><br />
+Changes the target player&#39;s respawn point.<br /><br />
+
+<span class="cmd">@charload &lt;char name|account_id&gt;<br />
+@charreturn &lt;char name|account_id&gt;</span><br />
+Warps the target to its respawn point.<br /><br />
+
+<span class="cmd">@charlvup &lt;#&gt; &lt;char name|account_id&gt;<br />
+@charlvlup &lt;#&gt; &lt;char name|account_id&gt;<br />
+@charlevelup &lt;#&gt; &lt;char name|account_id&gt;<br />
+@charblvl &lt;#&gt; &lt;char name|account_id&gt;<br />
+@charblevel &lt;#&gt; &lt;char name|account_id&gt;<br />
+@charblvlup &lt;#&gt; &lt;char name|account_id&gt;<br />
+@charblevelup &lt;#&gt; &lt;char name|account_id&gt;<br />
+@charbaselvlup &lt;#&gt; &lt;char name|account_id&gt;<br />
+@charbaselevelup &lt;#&gt; &lt;char name|account_id&gt;</span><br />
+Changes a character&#39;s base level.<br /><br />
+
+<span class="cmd">@charjlvl &lt;#&gt; &lt;char name|account_id&gt;<br />
+@charjlevel &lt;#&gt; &lt;char name|account_id&gt;<br />
+@charjlvlup &lt;#&gt; &lt;char name|account_id&gt;<br />
+@charjlevelup &lt;#&gt; &lt;char name|account_id&gt;<br />
+@charjoblvup &lt;#&gt; &lt;char name|account_id&gt;<br />
+@charjoblvlup &lt;#&gt; &lt;char name|account_id&gt;<br />
+@charjoblevelup &lt;#&gt; &lt;char name|account_id&gt;</span><br />
+Change a character&#39;s job level.<br /><br />
+
+<span class="cmd">@charjob &lt;job_ID|job_name|"job_name"&gt; [upper] &lt;char name|account_id&gt;<br />
+@charjchange &lt;job_ID|job_name|"job_name"&gt; [upper] &lt;char name|account_id&gt;<br />
+@charjobchange &lt;job_ID|job_name|"job_name"&gt; [upper] &lt;char name|account_id&gt;</span><br />
+Changes target character&#39;s job.<br /><br />
+
+<span class="cmd">@charspeed &lt;speed&gt; &lt;char name|account_id&gt;</span><br />
+Changes a player&#39;s speed.<br />
+Use 0 to restore the normal speed.<br /><br />
+
+<span class="cmd">@charspeedmap [speed [map]]<br />
+@speedmap &lt;speed&gt; [map]</span><br />
+Changes speed of all characters on the specified map.<br />
+Use 0 to restore the normal speed.<br /><br />
+
+<span class="cmd">@charspiritball &lt;number: 1-500&gt; &lt;char name|account_id&gt;</span><br />
+Gives to a player monk &quot;spirit spheres&quot; like from the skill &quot;Call Spirits&quot;.<br /><br />
+
+<span class="cmd">@charzeny &lt;amount&gt; &lt;char name|account_id&gt;</span><br />
+Gives/takes a player&#39;s Zeny<br /><br />
+
+<span class="cmd">@charstpoint &lt;amount&gt; &lt;char name|account_id&gt;</span><br />
+Gives/takes a player&#39;s stat points.<br /><br />
+
+<span class="cmd">@charskpoint &lt;amount&gt; &lt;char name|account_id&gt;</span><br />
+gives/takes a player&#39;s skill points.<br /><br />
+
+<span class="cmd">@charskreset &lt;char name|account_id&gt;<br />
+@charresetskill &lt;char name|account_id&gt;</span><br />
+Resets skills of a character.<br /><br />
+
+<span class="cmd">@charstreset &lt;char name|account_id&gt;<br />
+@charresetstate &lt;char name|account_id&gt;</span><br />
+Resets stats of a character.<br /><br />
+
+<span class="cmd">@charreset &lt;char name|account_id&gt;</span><br />
+Resets stats AND skills of a character.<br /><br />
+
+<span class="cmd">@charguildlvup &lt;#_of_levels&gt; &lt;char name|account_id&gt;<br />
+@charguildlvlup &lt;#_of_levels&gt; &lt;char name|account_id&gt;<br />
+@charguildlevelup &lt;#_of_levels&gt; &lt;char name|account_id&gt;</span><br />
+Raises character Guild by desired number of levels.<br /><br />
+
+<span class="cmd">@charquestskill &lt;#&gt; &lt;char name|account_id&gt;</span><br />
+Gives to a player the specified quest skill.<br /><br />
+
+<span class="cmd">@charlostskill &lt;#&gt; &lt;char name|account_id&gt;<br />
+@charlostquest &lt;#&gt; &lt;char name|account_id&gt;</span><br />
+Takes away the specified quest skill from the player.<br /><br />
+
+<span class="cmd">@charitemreset<br />
+@charinventoryreset</span><br />
+Removes all items of a character.<br /><br />
+
+<span class="cmd">@charitem &lt;item_name|item_ID&gt; &lt;quantity&gt; &lt;char name|account_id&gt;<br />
+@giveitem &lt;item_name|item_ID&gt; &lt;quantity&gt; &lt;char name|account_id&gt;</span><br />
+Adds items to a character.<br /><br />
+
+<span class="cmd">@charitemcheck &lt;char name|account_id&gt;</span><br />
+Checks items of a character with authorized items.<br /><br />
+
+<span class="cmd">@chardelitem &lt;item_name|item_ID&gt; &lt;quantity&gt; &lt;char name|account_id&gt;</span><br />
+Removes items from a character.<br /><br />
+
+<span class="cmd">@charmodel &lt;hair type&gt; &lt;hair color&gt; &lt;clothes color&gt; &lt;char name|account_id&gt;</span><br />
+Changes a player&#39;s model.<br /><br />
+
+<span class="cmd">@chardye/@charccolor/@charclothescolor &lt;clothes_color: 0-4&gt; &lt;char name|account_id&gt;</span><br />
+Changes a player&#39;s appearence (only clothes color).<br /><br />
+
+<span class="cmd">@charhairstyle/@charhstyle &lt;hair_ID: 0-17&gt; &lt;char name|account_id&gt;</span><br />
+Changes a player&#39;s appearence (only hair style).<br /><br />
+
+<span class="cmd">@charhaircolor/@charhcolor &lt;hair_color: 0-8&gt; &lt;char name|account_id&gt;</span><br />
+Changes a player&#39;s appearence (only hair color).<br /><br />
+
+<span class="cmd">@chardisguise &lt;monster_name|monster_ID|NPC_ID&gt; &lt;char name|account_id&gt;</span><br />
+Changes disguise of a player.<br /><br />
+
+<span class="cmd">@charundisguise &lt;char name|account_id&gt;</span><br />
+Cancels disguise of a player.<br /><br />
+
+<span class="cmd">@disguisemap &lt;monster_name|monster_ID|NPC_ID&gt; [map]<br />
+@chardisguisemap &lt;monster_name|monster_ID|NPC_ID&gt; [map]</span><br />
+Changes disguise of all players on a map.<br /><br />
+
+<span class="cmd">@undisguisemap [map]<br />
+@charundisguisemap [map]</span><br />
+Cancels disguise of all players on a map.<br /><br />
+
+<span class="cmd">@disguiseall &lt;monster_name|monster_ID|NPC_ID&gt;<br />
+@chardisguiseall &lt;monster_name|monster_ID|NPC_ID&gt;</span><br />
+Changes disguise of all players.<br /><br />
+
+<span class="cmd">@undisguiseall<br />
+@charundisguiseall</span><br />
+Cancels disguise of all players.<br /><br />
+
+<span class="cmd">@charchangelook &lt;Equipment_name|ID&gt; &lt;char name|account_id&gt;</span><br />
+Changes accessories appareance (only visual) of a character with an equipment.<br /><br />
+
+<span class="cmd">@charchangesex &lt;char name|account_id&gt;</span><br />
+Changes sex of a player (all characters of the account).<br /><br />
+
+<span class="cmd">@charblock &lt;char name|account_id&gt;</span><br />
+Blocks definitively an account.<br /><br />
+
+<span class="cmd">@charunblock &lt;char name|account_id&gt;</span><br />
+<span class="cmd">@unblock &lt;char name|account_id&gt;</span><br />
+Unblocks an account.<br /><br />
+
+<span class="cmd">@charban &lt;time&gt; &lt;char name|account_id&gt;</span><br />
+Bans temporarily an account.<br />
+ time usage: adjustement (+/- value) and element (y/a, m, d/j, h, mn, s)<br />
+ Example: @ban +1m-2mn1s-6y testplayer<br /><br />
+
+<span class="cmd">@charunban &lt;char name|account_id&gt;<br />
+@unban &lt;char name|account_id&gt;<br />
+@unbanish &lt;char name|account_id&gt;<br />
+@uncharbanish &lt;char name|account_id&gt;</span><br />
+Unbans an account.<br /><br />
+
+<span class="cmd">@jail &lt;time&gt; &lt;char name|account_id&gt;<br />
+@prison &lt;time&gt; &lt;char name|account_id&gt;</span><br />
+Sends specified character in jails for a limited time<br />
+(or adjust jail time of the specified character).<br />
+ time usage: adjustement (+/- value) and element (y/a, m, d/j, h, mn, s)<br />
+ Example: @jail +1m-2mn1s-6y testplayer<br /><br />
+
+<span class="cmd">@unjail &lt;char name|account_id&gt;<br />
+@discharge &lt;char name|account_id&gt;</span><br />
+Discharges specified character/prisoner.<br /><br />
+
+<span class="cmd">@kick &lt;char name|account_id&gt;</span><br />
+Kicks specified character off the server.<br /><br />
+
+<span class="cmd">@useskill &lt;skill_id&gt; &lt;skillv&gt; &lt;char name|account_id&gt;</span><br />
+Uses a skill on target.<br /><br />
+
+<span class="cmd">@grind &lt;char name|account_id&gt;<br />
+@grindskill &lt;char name|account_id&gt;<br />
+@grindskills &lt;char name|account_id&gt;<br /></span>
+Does all skills on the target (on test GM command).<br /><br />
+
+<span class="cmd">@grind2 [char name|account_id]<br />
+@grindmob [char name|account_id]<br />
+@grindmonster [char name|account_id]<br />
+@grindmobs [char name|account_id]<br />
+@grindmonsters [char name|account_id]<br /></span>
+Spawns different monsters at random around of the target (quantity = base level of the targer x 2; max 100).<br /><br />
+
+<br />
+
+<h4>Marriage:</h4>
+<span class="cmd">@rings</span><br />
+Gives you the two wedding rings.<br /><br />
+
+<span class="cmd">@marry "&lt;char name1|account_id1&gt;","&lt;char name2|account_id2&gt;"<br />
+@marry &lt;char name1|account_id1&gt;,&lt;char name2|account_id2&gt;</span><br />
+Marry two players.<br /><br />
+
+<span class="cmd">@divorce &lt;char name|account_id&gt;</span><br />
+Divorces the two players.<br /><br />
+
+<br />
+
+<h4>Mass Control:</h4>
+<span class="cmd">@happyhappyjoyjoymap [map]<br />
+@happyhappymap [map]<br />
+joyjoymap [map]</span><br />
+Makes everyone on a specified map do a random emote.<br /><br />
+
+<span class="cmd">@happyhappyjoyjoy<br />
+@happyhappy<br />
+joyjoy</span><br />
+Makes everyone on server do a random emote.<br /><br />
+
+<span class="cmd">@charloadmap [map]<br />
+@charreturnmap [map]<br />
+@loadmap [map]<br />
+@returnmap [map]</span><br />
+Warps all characters from a map to their respawn point.<br /><br />
+
+<span class="cmd">@charloadall<br />
+@charreturnall<br />
+@loadall<br />
+@returnall</span><br />
+Warps all characters of the server to their respawn point.<br /><br />
+
+<span class="cmd">@charspeedall [speed]<br />
+@speedall &lt;speed&gt;</span><br />
+Changes speed of all characters of the server.<br />
+Use 0 to restore the normal speed.<br /><br />
+
+<span class="cmd">@itemall &lt;item_name|item_ID&gt; [quantity]<br />
+@charitemall &lt;item_name|item_ID&gt; [quantity]<br />
+@giveitemall &lt;item_name|item_ID&gt; [quantity]</span><br />
+Adds items to everyone.<br /><br />
+
+<span class="cmd">@recallall</span><br />
+Recalls everyone on the server to you.<br /><br />
+
+<span class="cmd">@kickmap [map]</span><br />
+Kicks all characters on a map off the server.<br /><br />
+
+<span class="cmd">@kickall</span><br />
+Kicks all characters off the server.<br /><br />
+
+<span class="cmd">@mapexit</span><br />
+Kicks all players and shut down map-server.<br /><br />
+
+<span class="cmd">@doommap [map]</span><br />
+Kills all non GM characters on a map.<br /><br />
+
+<span class="cmd">@doom</span><br />
+Kills all NON GM chars on the server.<br /><br />
+
+<span class="cmd">@raisemap [map]</span><br />
+Resurrects all characters on a map.<br /><br />
+
+<span class="cmd">@raise</span><br />
+Resurrects all characters on the server.<br /><br />
+
+<br />
+
+<h4>Environmental:</h4><br />
+<span class="cmd">@night</span><br />
+Uses @option xx 16 xx on all characters. All characters are in darkness.<br /><br />
+
+<span class="cmd">@day</span><br />
+@option xx 00 xx are used on all characters.<br /><br />
+
+<span class="cmd">@rain</span><br />
+It is made to rain on your map (or removes rain).<br /><br />
+
+<span class="cmd">@snow</span><br />
+It is made to snow on your map (or removes snow).<br /><br />
+
+<span class="cmd">@fog</span><br />
+Fog hangs over on your map (or removes fog).<br /><br />
+
+<span class="cmd">@sakura</span><br />
+Cherry tree snowstorm (Sakura) is made to fall on your map (or removes sakura).<br /><br />
+
+<span class="cmd">@leaves</span><br />
+Fallen leaves fall on your map (or removes leaves).<br /><br />
+
+<span class="cmd">@rainbow</span><br />
+Add a temporary rainbow on your map (only when it's rain).<br /><br />
+
+<span class="cmd">@clsweather/@clearweather</span><br />
+Clear all special weathers on a map.<br /><br />
+
+<span class="cmd">@sound &lt;sound.file.in.RO/data/wav&gt;</span><br />
+Plays a sound for everyone.<br />
+Example: @sound welcome.wav<br />
+Example: @sound complete.wav<br />
+Example (file in effect sub-directory): @sound wedding.wav<br /><br />
+
+<span class="cmd">@skillon [map]</span><br />
+Turns skills on for a map.<br /><br />
+
+<span class="cmd">@skilloff [map]</span><br />
+Turns skills off for a map.<br /><br />
+
+<span class="cmd">@nospell [map]</span><br />
+Turns on/off the nospell flag of a map.<br /><br />
+
+<span class="cmd">@addwarp &lt;map name&gt; &lt;x coord&gt; &lt;y coord&gt;</span><br />
+Creates a static warp portal that lasts until the next reboot.<br /><br />
+
+<span class="cmd">@enablenpc &lt;NPC_name&gt;<br />
+@npcon &lt;NPC_name&gt;</span><br />
+Enables a NPC.<br /><br />
+
+<span class="cmd">@disablenpc &lt;NPC_name&gt;<br />
+@npcoff &lt;NPC_name&gt;</span><br />
+Disables a NPC.<br /><br />
+
+<span class="cmd">@npcmove &lt;x coord&gt; &lt;y coord&gt; &lt;NPC_name&gt;<br />
+@movenpc &lt;x coord&gt; &lt;y coord&gt; &lt;NPC_name&gt;</span><br />
+Moves a NPC (on the same map).<br /><br />
+
+<span class="cmd">@npctalk "NPC_name"|&lt;NPC_name&gt; &lt;message&gt;<br />
+@npcmessage &lt;NPC_name&gt; &lt;message&gt;<br />
+@npcmes &lt;NPC_name&gt; &lt;message&gt;</span><br />
+Can command what other npcs can say.<br /><br />
+
+<br />
+
+<h4>Administration:</h4>
+
+<span class="cmd">@setbattleflag &lt;flag&gt; &lt;value&gt;<br />
+@adjbattleflag &lt;flag&gt; &lt;value&gt;<br />
+@setbattleconf &lt;flag&gt; &lt;value&gt;<br />
+@adjbattleconf &lt;flag&gt; &lt;value&gt;</span><br />
+Changes a battle value configuration (set in battle_athena.conf).<br /><br />
+
+<span class="cmd">@setmapflag &lt;map&gt; &lt;mapflag&gt; [option|value]<br />
+@adjmapflag &lt;map&gt; &lt;mapflag&gt; [option|value]</span><br />
+Changes/Sets a map flag configuration (configuration value with 'mapflag' flag).<br /><br />
+
+<span class="cmd">@reloaditemdb</span><br />
+Reloads the item database.<br /><br />
+
+<span class="cmd">@reloadmobdb</span><br />
+Reloads monster database.<br /><br />
+
+<span class="cmd">@reloadskilldb</span><br />
+Reloads skills definition database.<br /><br />
+
+<span class="cmd">@reloadscript|@rehash<br /></span>
+Reloads all the scripts for the server.<br />
+note: It's better to restart map-server.<br /><br />
+
+<!--<span class="cmd">@reloadgmdb</span><br />
+Reloads GM levels.<br /><br /> // removed, it's automatic now -->
+
+<span class="cmd">@adjgmlvl &lt;lvl&gt; &lt;char name|account_id&gt;<br />
+@setgmlvl &lt;lvl&gt; &lt;char name|account_id&gt;</span><br />
+Temporatly modify GM level of an online player.<br /><br />
+
+<span class="cmd">@adjcmdlvl &lt;lvl&gt; &lt;command&gt;<br />
+@setcmdlvl &lt;lvl&gt; &lt;command&gt;</span><br />
+Modify level of a command for the actual session of the software.<br /><br />
+
+
+<span class="cmd">@gat</span><br />
+For debugging (you inspect around gat).<br /><br />
+
+<span class="cmd">@packet</span><br />
+For debugging (packet variety, depends of the source code).<br /><br />
+
+
+<span class="cmd">@GM &lt;password&gt;</span><br />
+You become a  GM.
+</p>
+
+<h2 class="header"></h2>
+<p></p>
+
+</td>
+</tr>
+</table>
+</td>
+</body>
+</html>

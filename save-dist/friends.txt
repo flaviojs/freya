@@ -1,0 +1,7 @@
+// Friends file
+// Structure:
+// char_id<tab>friend1_id,friend2_id...
+
+// Set if check of 'a friend must be friend of its friend' is already done
+friend_of_friend_checked: 1
+

@@ -1,0 +1,18 @@
+//===== Athena Script ========================================
+//= Lutie Field Warp Script
+//===== By: ==================================================
+//= Nana (1.0)
+//= Yor (1.1/1.1a)
+//===== Current Version: =====================================
+//= 1.1a
+//===== Compatible With: =====================================
+//= Any Athena Version; RO Episode 2+
+//===== Description: =========================================
+//= Warp Points for Lutie Field
+//===== Additional Comments: =================================
+//= 1.1a - Fixed xmas2 destination position [Yor]
+//============================================================
+
+//= Lutie Field ==============================================
+xmas_fild01.gat,80,252,0	warp	xmas2	10,1,xmas.gat,150,44
+xmas_fild01.gat,85,49,0	warp	xmas001	10,3,aldebaran.gat,140,240

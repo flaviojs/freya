@@ -1,0 +1,5 @@
+#!/bin/bash
+
+while true;
+do /home/freya/tool/checkuptime 127.0.0.1:5121 > /var/www/uptime.html && sleep 60;
+done

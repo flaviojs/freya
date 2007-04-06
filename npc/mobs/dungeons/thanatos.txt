@@ -1,0 +1,169 @@
+//===== Freya Script =========================================
+//= Thanatos Tower Monster Spawns
+//===== By: ==================================================
+//= 1.0 [Muad_Dib]
+//= 1.1 [akrus]
+//===== Current Version: =====================================
+//= 1.1
+//===== Compatible With: =====================================
+//= Freya/Athena
+//===== Description: =========================================
+//= Thanatos Tower Monster Spawns
+//===== Additional Comments: =================================
+//= 1.1 Converted to Freya format [akrus]
+//============================================================
+
+//========================================================================================
+// - Thanatos Tower 1F
+//========================================================================================
+
+tha_t01.gat,0,0,0,0	monster	Mimic		1191,15,0,0,0
+tha_t01.gat,0,0,0,0	monster	Rideword	1195,30,0,0,0
+tha_t01.gat,0,0,0,0	monster	Alice		1275,2,0,0,0
+tha_t01.gat,0,0,0,0	monster	Plasma Green	1695,10,0,0,0
+tha_t01.gat,0,0,0,0	monster	Solace		1703,10,0,0,0
+
+//========================================================================================
+// - Thanatos Tower 2F
+//========================================================================================
+
+tha_t02.gat,0,0,0,0	monster	Mimic		1191,10,0,0,0
+tha_t02.gat,0,0,0,0	monster	Rideword	1195,25,0,0,0
+tha_t02.gat,0,0,0,0	monster	Alice		1275,2,0,0,0
+tha_t02.gat,0,0,0,0	monster	Elder		1377,3,0,0,0
+tha_t02.gat,0,0,0,0	monster	Plasma Blue	1697,20,0,0,0
+tha_t02.gat,0,0,0,0	monster	Death Word	1698,15,0,0,0
+tha_t02.gat,0,0,0,0	monster	Retribution	1702,15,0,0,0
+
+//========================================================================================
+// - Thanatos Tower 3F
+//========================================================================================
+
+tha_t03.gat,0,0,0,0	monster	Rideword	1195,20,0,0,0
+tha_t03.gat,0,0,0,0	monster	Mimic		1191,25,0,0,0
+tha_t03.gat,0,0,0,0	monster	Elder		1377,3,0,0,0
+tha_t03.gat,0,0,0,0	monster	Plasma Purple	1696,10,0,0,0
+tha_t03.gat,0,0,0,0	monster	Death Word	1698,15,0,0,0
+tha_t03.gat,0,0,0,0	monster	Ancient Mimic	1699,20,0,0,0
+tha_t03.gat,0,0,0,0	monster	Shelter		1701,10,0,0,0
+
+//========================================================================================
+// - Thanatos Tower 4F
+//========================================================================================
+
+tha_t04.gat,0,0,0,0	monster	Mimic		1191,20,0,0,0
+tha_t04.gat,0,0,0,0	monster	Rideword	1195,10,0,0,0
+tha_t04.gat,0,0,0,0	monster	Owl Baron 	1295,1,0,0,0
+tha_t04.gat,0,0,0,0	monster	Owl Duke	1320,1,0,0,0
+tha_t04.gat,0,0,0,0	monster	Elder		1377,3,0,0,0
+tha_t04.gat,0,0,0,0	monster	Plasma Red	1694,20,0,0,0
+tha_t04.gat,0,0,0,0	monster	Death Word	1698,15,0,0,0
+tha_t04.gat,0,0,0,0	monster	Ancient Mimic	1699,10,0,0,0
+tha_t04.gat,0,0,0,0	monster	Observation	1700,10,0,0,0
+
+//========================================================================================
+// - Thanatos Tower 5F
+//========================================================================================
+
+tha_t05.gat,0,0,0,0	monster	Rideword	1195,25,0,0,0
+tha_t05.gat,0,0,0,0	monster	Owl Baron	1295,1,0,0,0
+tha_t05.gat,0,0,0,0	monster	Owl Duke	1320,1,0,0,0
+tha_t05.gat,0,0,0,0	monster	Plasma Red	1694,10,0,0,0
+tha_t05.gat,0,0,0,0	monster	Plasma Green	1695,10,0,0,0
+tha_t05.gat,0,0,0,0	monster	Plasma Purple	1696,10,0,0,0
+tha_t05.gat,0,0,0,0	monster	Plasma Blue	1697,10,0,0,0
+tha_t05.gat,0,0,0,0	monster	Death Word	1698,30,0,0,0
+tha_t05.gat,0,0,0,0	monster	Ancient Mimic	1699,20,0,0,0
+tha_t05.gat,0,0,0,0	monster	Thanatos Dolor	1707,5,0,0,0
+
+//========================================================================================
+// - Thanatos Tower 6F
+//========================================================================================
+
+tha_t06.gat,0,0,0,0	monster	Rideword	1195,35,0,0,0
+tha_t06.gat,0,0,0,0	monster	Owl Baron 	1295,1,0,0,0
+tha_t06.gat,0,0,0,0	monster	Owl Duke	1320,1,0,0,0
+tha_t06.gat,0,0,0,0	monster	Plasma Red	1694,10,0,0,0
+tha_t06.gat,0,0,0,0	monster	Plasma Green	1695,15,0,0,0
+tha_t06.gat,0,0,0,0	monster	Plasma Purple	1696,10,0,0,0
+tha_t06.gat,0,0,0,0	monster	Plasma Blue	1697,15,0,0,0
+tha_t06.gat,0,0,0,0	monster	Death Word	1698,20,0,0,0
+tha_t06.gat,0,0,0,0	monster	Ancient Mimic	1699,25,0,0,0
+tha_t06.gat,0,0,0,0	monster	Thanatos Dolor	1707,5,0,0,0
+
+//========================================================================================
+// - Thanatos Tower 7F
+//========================================================================================
+
+tha_t07.gat,0,0,0,0	monster	Death Word	1698,25,0,0,0
+tha_t07.gat,0,0,0,0	monster	Ancient Mimic	1699,20,0,0,0
+tha_t07.gat,0,0,0,0	monster	Observation	1700,10,0,0,0
+tha_t07.gat,0,0,0,0	monster	Shelter		1701,10,0,0,0
+tha_t07.gat,0,0,0,0	monster	Retribution	1702,10,0,0,0
+tha_t01.gat,0,0,0,0	monster	Solace		1703,10,0,0,0
+tha_t07.gat,0,0,0,0	monster	Thanatos Odium	1704,3,1800000,0,0
+
+//========================================================================================
+// - Thanatos Tower 8F
+//========================================================================================
+
+tha_t08.gat,0,0,0,0	monster	Death Word	1698,35,0,0,0
+tha_t08.gat,0,0,0,0	monster	Ancient Mimic	1699,15,0,0,0
+tha_t08.gat,0,0,0,0	monster	Observation	1700,10,0,0,0
+tha_t08.gat,0,0,0,0	monster	Shelter		1701,10,0,0,0
+tha_t08.gat,0,0,0,0	monster	Retribution	1702,15,0,0,0
+tha_t08.gat,0,0,0,0	monster	Solace		1703,10,0,0,0
+tha_t08.gat,0,0,0,0	monster	Thanatos Odium	1704,3,1800000,0,0
+
+//========================================================================================
+// - Thanatos Tower 9F
+//========================================================================================
+
+tha_t09.gat,0,0,0,0	monster	Plasma Red	1694,25,0,0,0
+tha_t09.gat,0,0,0,0	monster	Observation	1700,15,0,0,0
+tha_t09.gat,0,0,0,0	monster	Shelter		1701,15,0,0,0
+tha_t09.gat,0,0,0,0	monster	Retribution	1702,20,0,0,0
+tha_t09.gat,0,0,0,0	monster	Solace		1703,10,0,0,0
+tha_t09.gat,0,0,0,0	monster	Thanatos Dolor	1707,5,0,0,0
+tha_t09.gat,0,0,0,0	monster	Thanatos Dolor	1712,10,0,0,0
+
+//========================================================================================
+// - Thanatos Tower 10F
+//========================================================================================
+
+tha_t10.gat,0,0,0,0	monster	Plasma Blue	1697,15,0,0,0
+tha_t10.gat,0,0,0,0	monster	Observation	1700,15,0,0,0
+tha_t10.gat,0,0,0,0	monster	Shelter		1701,15,0,0,0
+tha_t10.gat,0,0,0,0	monster	Retribution	1702,20,0,0,0
+tha_t10.gat,0,0,0,0	monster	Solace		1703,10,0,0,0
+tha_t10.gat,0,0,0,0	monster	Thanatos Dolor	1707,5,0,0,0
+tha_t10.gat,0,0,0,0	monster	Thanatos Dolor	1712,5,0,0,0
+
+//========================================================================================
+// - Thanatos Tower 11F
+//========================================================================================
+
+tha_t11.gat,0,0,0,0	monster	Plasma Green	1695,15,0,0,0
+tha_t11.gat,0,0,0,0	monster	Observation	1700,20,0,0,0
+tha_t11.gat,0,0,0,0	monster	Shelter		1701,20,0,0,0
+tha_t11.gat,0,0,0,0	monster	Retribution	1702,25,0,0,0
+tha_t11.gat,0,0,0,0	monster	Solace		1703,10,0,0,0
+tha_t11.gat,0,0,0,0	monster	Thanatos Odium	1704,5,0,0,0
+tha_t11.gat,0,0,0,0	monster	Thanatos Odium	1709,5,0,0,0
+
+//========================================================================================
+// - Thanatos Tower 12F
+//========================================================================================
+
+tha_t12.gat,0,0,0,0	monster	Plasma Yellow	1693,20,0,0,0
+tha_t12.gat,0,0,0,0	monster	Observation	1700,20,0,0,0
+tha_t12.gat,0,0,0,0	monster	Shelter		1701,20,0,0,0
+tha_t12.gat,0,0,0,0	monster	Retribution	1702,25,0,0,0
+tha_t12.gat,0,0,0,0	monster	Solace		1703,10,0,0,0
+tha_t12.gat,0,0,0,0	monster	Thanatos Odium	1709,5,0,0,0
+
+//========================================================================================
+// - Thanatos Boss Room
+//========================================================================================
+
+thana_boss.gat,0,0,0,0	monster	Thanatos	1708,1,3600000,7200000,0

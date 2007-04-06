@@ -1,0 +1,19 @@
+//<Skill ID> <Mode>
+//
+// Mode:
+// 1 - Cannot be used in normal maps
+// 2 - Cannot be used in PvP maps
+// 4 - Cannot be used in GvG maps
+// 8 - Cannot be used when WoE is on
+// 16 - Cannot be used in PK Mode maps
+// 32 - CAN be used with nospell on
+// Example: 26,36 = Teleport cannot be used if nospell is on and in GvG maps (32 + 4)
+
+26,4	//AL_TELEPORT
+27,4	//AL_WARP
+87,4	//WZ_ICEWALL
+150,4	//TF_BACKSLIDING
+361,4	//HP_ASSUMPTIO
+362,4	//HP_BASILICA
+//488,19	//CG_HERMODE // Not Added Yet
+//491,4	//CR_CULTIVATION // Not Added Yet

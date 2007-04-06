@@ -1,0 +1,24 @@
+//===== eAthena Script ======================================= 
+//= Lighthalzen (CURRENTLY TURNED OFF)
+//===== By: ================================================== 
+//= Persian, Vicious_Pucca, Completed by aoa00
+//===== Current Version: ===================================== 
+//= 1.1
+//===== Compatible With: ===================================== 
+//= eAthena SVN
+//===== Description: ========================================= 
+//= Event for the Mobster respawn
+//===== Additional Comments: ================================= 
+//= Grammar/script check please. This was a quick job.
+//= Things to add: Look at the thread "Lighthalzen Guard" in SVN script
+//= 0.3 Initial Release
+//= 0.5 Added mobsters spawn and Einbroch pollution. Alert lasts either 10 minutes or all mob killed.
+//= 0.6 small bug fixes
+//= 0.9 fix small bug. Added Bio-lab entrance Quest. Added Getting security-card Quest.
+//= 1.0 Patched "mobsters spawn & Alert" like Real-RO.
+//= 1.0a fixed rand(1,10) + comparision. There just can't be 'X < 1' [Lupus]
+//============================================================ 
+//= aoa's comment
+//= In future, Need for new monsters. No-Drop, No-Exp, Weak "Mobster","VENOMOUS","NOXIOUS"
+//= In future, Teleport skill is impossible in Lighthalzen.
+//============================================================ 
