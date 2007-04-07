@@ -12,6 +12,9 @@
 
 Date	Added
 
+04/07/2007
+	* Improved: New motd.txt =P [Tsuyuki]
+
 04/06/2007
 	* Fixed: Minor SQL typo (Thanks to Nicko) [Tsuyuki]
 	* Updated: Did some work on the /job/ script folder [Tsuyuki]
