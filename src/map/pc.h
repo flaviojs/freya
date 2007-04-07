@@ -11,7 +11,7 @@
 
 #define MAX_SKILL_PER_TREE 51 // Super Novice has 51 skills
 
-#define MAX_SKILLTREE 34
+#define MAX_SKILL_TREE 34
 
 // dead_sit -> 0: standup, 1: dead, 2: sit
 // previously_sit_hp -> 0: not sit when is was previously HP regen, 1: sit... (to avoid people that sit down and stand up between 2 timers)
@@ -209,7 +209,7 @@ struct skill_tree_entry {
 		unsigned id : 11; // max = 407(499) -> 9 bits (11 for security)
 		unsigned lv : 5; // max = 10 -> 4 bits (5 for security) (11 + 5 = 16, 2 bytes)
 	} need[5]; // 5 are used
-} skill_tree[3][MAX_SKILLTREE][MAX_SKILL_PER_TREE];
+} skill_tree[3][MAX_SKILL_TREE][MAX_SKILL_PER_TREE];
 
 void pc_guardiansave(void);
 int pc_read_gm_account(int fd);

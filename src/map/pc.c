@@ -1189,7 +1189,7 @@ static int pc_calc_skillpoint(struct map_session_data* sd) {
 	for(i = 1; i < MAX_SKILL; i++) {
 		if ((skill = pc_checkskill(sd, i)) > 0) {
 			if (!(skill_get_inf2(i) & 0x01) || battle_config.quest_skill_learn) {
-				if ((i == 142 || i == 143) && sd->status.class >= 4001 && sd->status.class < 4023) // if platinum skills were given for free
+				if ((i == 142 || i == 143) && sd->status.class >= 4001 && sd->status.class <= 4022) // if platinum skills were given for free
 					continue;
 				if (!sd->status.skill[i].flag) // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
 					skill_point += skill;
@@ -1584,7 +1584,7 @@ int pc_checkmaxskill(struct map_session_data* sd) {
 }
 
 /*==========================================
- * 覚えられるスキルの計算
+ * Calculate Skill Tree
  *------------------------------------------
  */
 void pc_calc_skilltree(struct map_session_data *sd) {
@@ -1612,9 +1612,9 @@ void pc_calc_skilltree(struct map_session_data *sd) {
 	// GM all skills (any jobs)
 	if (sd->GM_level >= battle_config.gm_allskill) {
 		for(s = 0; s < 3; s++)
-			for(c = 0; c < MAX_SKILLTREE; c++)
+			for(c = 0; c < MAX_SKILL_TREE; c++)
 				for(i = 0; i < MAX_SKILL_PER_TREE && (id = skill_tree[s][c][i].id) > 0; i++)
-				if (sd->status.skill[id].flag != 13) { // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
+					if (sd->status.skill[id].flag != 13) { // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
 						if (sd->GM_level >= battle_config.gm_all_skill_platinum || !(skill_get_inf2(id) & 0x01) ||
 						    (s_class.job == 1 && (id == 142 || id == 143))) { // High Novice free skills
 							sd->status.skill[id].id = id;
@@ -1626,15 +1626,15 @@ void pc_calc_skilltree(struct map_session_data *sd) {
 
 		// Remove skill points
 		if (sd->status.skill_point > 0) {
-			sd->status.skill_point = 0; // 0 Skill points
+			sd->status.skill_point = 0; // 0 Skill Points
 			clif_updatestatus(sd, SP_SKILLPOINT); // Update
 		}
 
-	// Other players
+	// Other Players
 	} else {
-		// GM all skills (only actual job)
+		// GM All Skills (Only actual job)
 		if (sd->GM_level >= battle_config.gm_all_skill_job) {
-			// Remove invalid skills (not for the actual job)
+			// Remove invalid skills (Not for the actual job)
 			if (!battle_config.skillfree) {
 				// Remove skills that are not in correct job
 				for(i = 0; i < MAX_SKILL; i++)
@@ -1731,9 +1731,9 @@ void pc_calc_skilltree(struct map_session_data *sd) {
 						}
 						// Check quest skills
 						if (f == 1 && // If can be known
-						    !battle_config.quest_skill_learn && // 	Quest must be learn by quest (not by skill points)
+						    !battle_config.quest_skill_learn && // Quest must be learn by quest (not by skill points)
 						    sd->status.skill[id].lv == 0 && // If skill is not known
-						    skill_get_inf2(id) & 0x01) // Its a quest skill
+						    skill_get_inf2(id) & 0x01) // It's a quest skill
 							f = 0;
 						// Analyze result
 						if (f) {
@@ -1811,7 +1811,7 @@ int pc_calc_skilltree_normalize_job(int c, int s, struct map_session_data *sd) {
 			return 0;
 
 		// Check second classes and first class skills
-		if ((c >= 7 && c < 23) || (c >= 4046 && c <= 4049)) {
+		if ((c >= 7 && c <= 21) || (c >= 4046 && c <= 4049)) {
 			int c1 = c, previous_class_level;
 			// Which class to check
 			switch(c) {
@@ -1842,6 +1842,7 @@ int pc_calc_skilltree_normalize_job(int c, int s, struct map_session_data *sd) {
 			case 17:
 				c1 = 6;
 				break;
+			case 4046:
 			case 4047:
 			case 4048:
 			case 4049:
@@ -2847,7 +2848,7 @@ void pc_bonus4(struct map_session_data *sd, int type, int type2, int type3, int 
 }
 
 /*==========================================
- * スクリプトによるスキル所得
+ * Player Character Skill
  *------------------------------------------
  */
 int pc_skill(struct map_session_data *sd, int id, int level, int flag) {
@@ -2859,8 +2860,8 @@ int pc_skill(struct map_session_data *sd, int id, int level, int flag) {
 		return 0;
 	}
 
-//	Set (normal) value
-//	if (!flag && (sd->status.skill[id].id == id || level == 0)) {
+	// Set (normal) value
+	//	if (!flag && (sd->status.skill[id].id == id || level == 0)) {
 	if (!flag) {
 		// Check card
 		if (sd->status.skill[id].flag == 1) { // Not known before
@@ -2959,7 +2960,7 @@ int pc_blockskill_start(struct map_session_data *sd, int skillid, int tick) {
 }
 
 /*==========================================
- * カード挿入
+ * Insert Card
  *------------------------------------------
  */
 void pc_insert_card(struct map_session_data *sd, short idx_card, short idx_equip) {
@@ -5329,7 +5330,7 @@ int pc_nextbaseexp(struct map_session_data *sd)
 	else if (sd->status.class >= 4002 && sd->status.class <= 4007) i = 5; // High 1st Job
 	else if (sd->status.class == 4047 || sd->status.class == 4048) i = 2; // Star Gladiator
 	else if (sd->status.class == 24 || sd->status.class == 25) i = 1; // Gunslinger/Ninja
-	else if (sd->status.class >= 4050 && sd->status.class <= 4053) i = 1; // Death Knight/Dark Collector/Munak/Bon Gun Temp Values
+	else if (sd->status.class >= 4050 && sd->status.class <= 4053) i = 2; // Death Knight/Dark Collector/Munak/Bon Gun Temp Values
 	else i = 6; // 3rd Job
 
 	return exp_table[i][sd->status.base_level-1];
@@ -5357,7 +5358,7 @@ int pc_nextjobexp(struct map_session_data *sd)
 	else if (sd->status.class >= 4002 && sd->status.class <= 4007) i = 12; // High 1st Job
 	else if (sd->status.class == 4047 || sd->status.class == 4048) i = 14; // Star Gladiator
 	else if (sd->status.class == 24 || sd->status.class == 25) i = 15; // Gunslinger/Ninja
-	else if (sd->status.class >= 4050 && sd->status.class <= 4053) i = 8; // Death Knight/Dark Collector/Munak/Bon Gun Temp Values
+	else if (sd->status.class >= 4050 && sd->status.class <= 4053) i = 9; // Death Knight/Dark Collector/Munak/Bon Gun Temp Values
 	else i = 13; // 3rd Job
 
 	return exp_table[i][sd->status.job_level-1];
@@ -5385,7 +5386,7 @@ int pc_nextbaseafter(struct map_session_data *sd)
 	else if (sd->status.class >= 4002 && sd->status.class <= 4007) i = 5; // High 1st Job
 	else if (sd->status.class == 4047 || sd->status.class == 4048) i = 2; // Star Gladiator
 	else if (sd->status.class == 24 || sd->status.class == 25) i = 1; // Gunslinger/Ninja
-	else if (sd->status.class >= 4050 && sd->status.class <= 4053) i = 1; // Death Knight/Dark Collector/Munak/Bon Gun Temp Values
+	else if (sd->status.class >= 4050 && sd->status.class <= 4053) i = 2; // Death Knight/Dark Collector/Munak/Bon Gun Temp Values
 	else i = 6; // 3rd Job
 
 	return exp_table[i][sd->status.base_level];
@@ -5413,7 +5414,7 @@ int pc_nextjobafter(struct map_session_data *sd)
 	else if (sd->status.class >= 4002 && sd->status.class <= 4007) i = 12; // High 1st Job
 	else if (sd->status.class == 4047 || sd->status.class == 4048) i = 14; // Star Gladiator
 	else if (sd->status.class == 24 || sd->status.class == 25) i = 15; // Gunslinger/Ninja
-	else if (sd->status.class >= 4050 && sd->status.class <= 4053) i = 8; // Death Knight/Dark Collector/Munak/Bon Gun Temp Values
+	else if (sd->status.class >= 4050 && sd->status.class <= 4053) i = 9; // Death Knight/Dark Collector/Munak/Bon Gun Temp Values
 	else i = 13; // 3rd Job
 
 	return exp_table[i][sd->status.job_level];
@@ -5646,7 +5647,6 @@ void pc_allskillup(struct map_session_data *sd)
 {
 	int i, id;
 	int c = 0, s = 0;
-	//転生や養子の場合の元の職業を算出する
 	struct pc_base_job s_class;
 
 	nullpo_retv(sd);
@@ -5654,20 +5654,20 @@ void pc_allskillup(struct map_session_data *sd)
 	for(i = 0; i < MAX_SKILL; i++) {
 		sd->status.skill[i].id = 0;
 		// flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
-		if (sd->status.skill[i].flag && sd->status.skill[i].flag != 13) { // cardスキルなら、
+		if (sd->status.skill[i].flag && sd->status.skill[i].flag != 13) {
 			sd->status.skill[i].lv = (sd->status.skill[i].flag == 1) ? 0 : sd->status.skill[i].flag - 2; // 本当のlvに
-			sd->status.skill[i].flag = 0; // flagは0にしておく
+			sd->status.skill[i].flag = 0;
 		}
 	}
+
 	s_class = pc_calc_base_job(sd->status.class);
 	c = s_class.job;
 	s = s_class.upper;
 
 	// GM with all skills (any jobs)
 	if (sd->GM_level >= battle_config.gm_allskill) {
-		// 全てのスキル
 		for(s = 0; s < 3; s++)
-			for(c = 0; c < MAX_SKILLTREE; c++)
+			for(c = 0; c < MAX_SKILL_TREE; c++)
 				for(i = 0; i < MAX_SKILL_PER_TREE && (id = skill_tree[s][c][i].id) > 0; i++)
 					if (sd->status.skill[id].flag != 13) { // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
 						if (sd->GM_level >= battle_config.gm_all_skill_platinum || !(skill_get_inf2(id) & 0x01) ||
@@ -8859,7 +8859,7 @@ void pc_readdb(void)
 		u = s_class.upper;
 
 		// Check for bounds
-		if (i >= MAX_SKILLTREE || u >= 3)
+		if (i >= MAX_SKILL_TREE || u >= 3)
 			continue;
 		for(j = 0; j < MAX_SKILL_PER_TREE && skill_tree[u][i][j].id; j++)
 			;

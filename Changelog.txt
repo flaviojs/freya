@@ -10,8 +10,15 @@
 
 Date	Added
 
-04/06/2007
+04/07/2007
+	* Removed: athena-start and start scripts (Use start-freya.sh) [Tsuyuki]
+	* Replaced: .bat win32 server launchers with a new single one [Tsuyuki]
+	* Removed: /readme/ folder (Too much upkeep) [Tsuyuki]
+	* Improved: New motd.txt =P [Tsuyuki]
+	* Removed: help_fr.txt (OUtdated/etc) [Tsuyuki]
 	* Removed: msg_freya_fr.conf (Outdated/etc) [Tsuyuki]
+
+04/06/2007
 	* Changed: Script list is now contained in the /npc/ folder, and not map_freya.conf [Tsuyuki]
 	* Changed: Moved mapflags to the /npc/ folder [Tsuyuki]
 	* Updated: Nameless Island warper to warp a character to different maps based on day/night [Tsuyuki]
