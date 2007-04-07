@@ -11,6 +11,7 @@
 Date	Added
 
 04/07/2007
+	* Removed: gettext.h and locales folder (Last of gettext stuff) [Tsuyuki]
 	* Removed: GetText support [Harbin]
 	* Fixed: Job restrictions for elemental armors [Tsuyuki]
 	* Fixed: Samurai Specter card now works against other players as well as mobs [Tsuyuki]
