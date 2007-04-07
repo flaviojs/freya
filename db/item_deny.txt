@@ -1,18 +1,17 @@
-// Deny some items to be created with some GM commands.
-// (@item/@charitem/@giveitem/@itemall/@charitemall/@giveitemall/@item2/@produce)
-// (@rings is not concerned by this database)
-// Note: if item already exists in game, it is not checked.
+// item_deny.txt, Item GM Creation Deny Database
 //
-// Format 1 (nobody can create the item):
-// [item_code]
-// Format 2 (GM with a minimum level can create the item):
-// [item_code],[minimum_level_to_create]
+// Structure of Database:
 //
-// Example 1: 1720 - Rudra's Bow can be created by GM with level 80 or more
-//1720,80 // Rudra's Bow
-// Example 2: 2610 - Sleipnir can be created by GM with level 60 or more
-//2410,60 // Sleipnir
-// Example 3: 2614 - Eye of Dullahan can be created by GM with level 80 or more
-//2614,80 // Eye of Dullahan
-// Example 4: 5013 - Lord Kaho's Horn can't be created (used by default)
-//5013 // Lord Kaho's Horn
+// ItemID,MinimumGMLevel
+//
+// or just ItemID For Completely Denied GM Creation
+//
+// Denys items to be created with the following GM commands:
+// @item/@charitem/@giveitem/@itemall/@charitemall/@giveitemall/@item2/@produce
+//
+// @rings is not denied
+//
+// Note: If Item Already Exists In-game, It Is Not Checked
+//
+
+5013 // Lord Kaho's Horn

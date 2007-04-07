@@ -23,15 +23,15 @@
 #include "memwatch.h"
 #endif
 
-#define MAX_RANDITEM	2000
+#define MAX_RANDITEM	50000
 
 // #define ITEMDB_OVERRIDE_NAME_VERBOSE	1
 
 static struct dbt* item_db;
 
-static struct random_item_data blue_box[MAX_RANDITEM], violet_box[MAX_RANDITEM], card_album[MAX_RANDITEM], gift_box[MAX_RANDITEM], scroll[MAX_RANDITEM];
-static int blue_box_count=0,violet_box_count=0,card_album_count=0,gift_box_count=0,scroll_count=0;
-static int blue_box_default=0,violet_box_default=0,card_album_default=0,gift_box_default=0,scroll_default=0;
+static struct random_item_data blue_box[MAX_RANDITEM], violet_box[MAX_RANDITEM], card_album[MAX_RANDITEM], gift_box[MAX_RANDITEM], cookie[MAX_RANDITEM], rand_quiver[MAX_RANDITEM], tame_gift[MAX_RANDITEM], jewel_box[MAX_RANDITEM], wrap_mask[MAX_RANDITEM], scroll_pack[MAX_RANDITEM], aid_kit[MAX_RANDITEM], food_bundle[MAX_RANDITEM], red_box[MAX_RANDITEM], green_box[MAX_RANDITEM];
+static int blue_box_count=0,violet_box_count=0,card_album_count=0,gift_box_count=0,cookie_count=0,rand_quiver_count=0,tame_gift_count=0,jewel_box_count=0,wrap_mask_count=0,scroll_pack_count=0,aid_kit_count=0,food_bundle_count=0,red_box_count=0,green_box_count=0;
+static int blue_box_default=0,violet_box_default=0,card_album_default=0,gift_box_default=0,cookie_default=0,rand_quiver_default=0,tame_gift_default=0,jewel_box_default=0,wrap_mask_default=0,scroll_pack_default=0,aid_kit_default=0,food_bundle_default=0,red_box_default=0,green_box_default=0;
 
 // Function declarations
 
@@ -112,18 +112,29 @@ int itemdb_searchrandomid(int flags)
 	struct {
 		int nameid, count;
 		struct random_item_data *list;
-	} data[6];
+	} data[13];
 
-	// for BCC32 compile error
-	data[0].nameid = 0;                   data[0].count = 0;                 data[0].list = NULL;
-	data[1].nameid = blue_box_default;    data[1].count = blue_box_count;    data[1].list = blue_box;
-	data[2].nameid = violet_box_default;  data[2].count = violet_box_count;  data[2].list = violet_box;
-	data[3].nameid = card_album_default;  data[3].count = card_album_count;  data[3].list = card_album;
-	data[4].nameid = gift_box_default;    data[4].count = gift_box_count;    data[4].list = gift_box;
-	data[5].nameid = scroll_default;      data[5].count = scroll_count;      data[5].list = scroll;
-//	data[6].nameid = finding_ore_default; data[6].count = finding_ore_count; data[6].list = finding_ore;
+	// For BCC32 compile error
+	data[0].nameid = 0;                    data[0].count = 0;                  data[0].list = NULL;
+	data[1].nameid = blue_box_default;     data[1].count = blue_box_count;     data[1].list = blue_box;
+	data[2].nameid = violet_box_default;   data[2].count = violet_box_count;   data[2].list = violet_box;
+	data[3].nameid = card_album_default;   data[3].count = card_album_count;   data[3].list = card_album;
+	data[4].nameid = gift_box_default;     data[4].count = gift_box_count;     data[4].list = gift_box;
+	data[5].nameid = cookie_default;       data[5].count = cookie_count;       data[5].list = cookie;
 
-	if (flags >= 1 && flags <= 5) {
+//	data[6].nameid = finding_ore_default;  data[6].count = finding_ore_count;  data[6].list = finding_ore;
+
+	data[6].nameid = rand_quiver_default;  data[6].count = rand_quiver_count;  data[6].list = rand_quiver;
+	data[7].nameid = tame_gift_default;    data[7].count = tame_gift_count;    data[7].list = tame_gift;
+	data[8].nameid = jewel_box_default;    data[8].count = jewel_box_count;    data[8].list = jewel_box;
+	data[9].nameid = wrap_mask_default;    data[9].count = wrap_mask_count;    data[9].list = wrap_mask;
+	data[10].nameid = scroll_pack_default; data[10].count = scroll_pack_count; data[10].list = scroll_pack;
+	data[11].nameid = aid_kit_default;     data[11].count = aid_kit_count;     data[11].list = aid_kit;
+	data[12].nameid = food_bundle_default; data[12].count = food_bundle_count; data[12].list = food_bundle;
+	data[13].nameid = red_box_default;     data[13].count = red_box_count;     data[13].list = red_box;
+	data[14].nameid = green_box_default;   data[14].count = green_box_count;   data[14].list = green_box;
+
+	if (flags >= 1 && flags <= 14) {
 		nameid = data[flags].nameid;
 		count = data[flags].count;
 		list = data[flags].list;
@@ -239,26 +250,33 @@ struct item_data* itemdb_search(intptr_t nameid)
 	id->flag.no_equip=0;
 	id->view_id=0;
 
+	// Last updated March 4th 2007 [Tsuyuki] -->
 	if (nameid > 500 && nameid < 600)
-		id->type = 0;   //heal item
-	else if (nameid > 600 && nameid < 700)
-		id->type = 2;   //use item
+		id->type = 0;   // Usable Healing Item
+	else if ((nameid > 600 && nameid < 700) ||
+						(nameid >= 12000 && nameid < 13000))
+		id->type = 2;   // Usable Item
 	else if ((nameid > 700 && nameid < 1100) ||
-	         (nameid > 7000 && nameid < 8000))
-		id->type = 3;   //correction
-	else if (nameid >= 1750 && nameid < 1771)
-		id->type = 10;  //arrow
-	else if (nameid > 1100 && nameid < 2000)
-		id->type = 4;   //weapon
+	         (nameid > 7000 && nameid < 8000) ||
+	         (nameid >= 11000 && nameid < 12000))
+		id->type = 3;   // Collection
+	else if ((nameid >= 1750 && nameid < 1800) ||
+						(nameid >= 13200 && nameid < 13300))
+		id->type = 10;  // Ammunition
+	else if ((nameid > 1100 && nameid < 2000) ||
+						(nameid >= 13000 && nameid < 13200) ||
+						(nameid > 13300))
+		id->type = 4;   // Weapon
 	else if ((nameid > 2100 && nameid < 3000) ||
 	         (nameid > 5000 && nameid < 6000))
-		id->type = 5;   //armor
+		id->type = 5;   // Armor
 	else if (nameid > 4000 && nameid < 5000)
-		id->type = 6;   //card
+		id->type = 6;   // Card
 	else if (nameid > 9000 && nameid < 10000)
-		id->type = 7;   //egg
-	else if (nameid > 10000)
-		id->type = 8;   //petequip
+		id->type = 7;   // Egg
+	else if (nameid > 10000 && nameid < 11000)
+		id->type = 8;   // Pet Equip
+	// <--
 
 	return id;
 }
@@ -671,11 +689,20 @@ static int itemdb_read_randomitem()
 		struct random_item_data *pdata;
 		int *pcount,*pdefault;
 	} data[] = {
-		{"db/item_bluebox.txt",   blue_box,   &blue_box_count,   &blue_box_default },
-		{"db/item_violetbox.txt", violet_box, &violet_box_count, &violet_box_default },
-		{"db/item_cardalbum.txt", card_album, &card_album_count, &card_album_default },
-		{"db/item_giftbox.txt",   gift_box,   &gift_box_count,   &gift_box_default },
-		{"db/item_scroll.txt",    scroll,     &scroll_count,     &scroll_default },
+		{"db/random/item_bluebox.txt",     blue_box,    &blue_box_count,    &blue_box_default },
+		{"db/random/item_purplebox.txt",   violet_box,  &violet_box_count,  &violet_box_default },
+		{"db/random/item_cardalbum.txt",   card_album,  &card_album_count,  &card_album_default },
+		{"db/random/item_giftbox.txt",     gift_box,    &gift_box_count,    &gift_box_default },
+		{"db/random/item_cookiebag.txt",   cookie,      &cookie_count,      &cookie_default },
+		{"db/random/item_randquiver.txt",  rand_quiver, &rand_quiver_count, &rand_quiver_default },
+		{"db/random/item_taminggift.txt",  tame_gift,   &tame_gift_count,   &tame_gift_default },
+		{"db/random/item_jewelrybox.txt",  jewel_box,   &jewel_box_count,   &jewel_box_default },
+		{"db/random/item_wrappedmask.txt", wrap_mask,   &wrap_mask_count,   &wrap_mask_default },
+		{"db/random/item_scrollpack.txt",  scroll_pack, &scroll_pack_count, &scroll_pack_default },
+		{"db/random/item_firstaidkit.txt", aid_kit,     &aid_kit_count,     &aid_kit_default },
+		{"db/random/item_foodbundle.txt",  food_bundle, &food_bundle_count, &food_bundle_default },
+		{"db/random/item_redbox.txt",      red_box,     &red_box_count,     &red_box_default },
+		{"db/random/item_greenbox.txt",    green_box,   &green_box_count,   &green_box_default },
 	};
 
 	for(i = 0; i < sizeof(data) / sizeof(data[0]); i++) {

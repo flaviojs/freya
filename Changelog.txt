@@ -11,6 +11,16 @@
 Date	Added
 
 2007-04-06
+	* Added: Simple Win32 .bat launcher script [Tsuyuki]
+	* Moved: Scripts (Non-NPC) to the /tool/ folder [Tsuyuki]
+	* Updated: /doc/ folder [Tsuyuki]
+	* Removed: /readme/ folder (Outdated/etc) [Tsuyuki]
+	* Updated: All random mob/item databases [Tsuyuki]
+	* Changed: OBB/DB/BB/OPB/etc databases are now stored in /db/random/ [Tsuyuki]
+	* Removed: Custom mob skill database [Tsuyuki]
+	* Reverted: Mob database structure back to Freya's format and imported Freya's /db/mob_db.txt [Tsuyuki]
+	* Updated: Databases [Tsuyuki]
+	* Added: New skill source code base entries [Tsuyuki]
 	* Updated: New classes now have their proper Aegis exp formulas [Tsuyuki]
 	* Updated: Structure of the /db/exp.txt database to match Freya/jAthena/etc's [Tsuyuki]
 	* Added: More base element support for new classes [Tsuyuki]

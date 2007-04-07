@@ -1,0 +1,88 @@
+// item_giftbox.txt, Gift Box Database
+//
+// <Item_ID>,<Description (Dummy)>,<Rate>
+//
+// Rate Examples
+// 10000   = 1%
+// 500000  = 50%
+// 1000000 = 100%
+//
+// Accurate to Aegis X.3
+
+0,DEFAULT,644	// Gift Box
+756,DummyName,50000	// Rough Oridecon
+757,DummyName,20000	// Rough Elunium
+984,DummyName,20000	// Oridecon
+985,DummyName,10000	// Elunium
+714,DummyName,10000	// Emperium
+999,DummyName,10000	// Steel
+1000,DummyName,10000	// Star Crumb
+994,DummyName,10000	// Flame Heart
+995,DummyName,10000	// Mystic Frozen
+996,DummyName,10000	// Rough Wind
+997,DummyName,10000	// Great Nature
+975,DummyName,10000	// Scarlet Dyestuff
+976,DummyName,10000	// Lemon Dyestuff
+978,DummyName,10000	// Cobaltblue Dyestuff
+979,DummyName,10000	// Darkgreen Dyestuff
+980,DummyName,10000	// Orange Dyestuff
+981,DummyName,10000	// Violet Dyestuff
+982,DummyName,10000	// White Dyestuff
+983,DummyName,10000	// Black Dyestuff
+969,DummyName,10000	// Gold
+718,DummyName,10000	// Garnet
+719,DummyName,10000	// Amethyst
+720,DummyName,10000	// Aquamarine
+721,DummyName,10000	// Emerald
+722,DummyName,10000	// Pearl
+723,DummyName,10000	// Ruby
+724,DummyName,10000	// Cursed Ruby
+725,DummyName,10000	// Sardonyx
+726,DummyName,10000	// Sapphire
+727,DummyName,10000	// Opal
+728,DummyName,10000	// Topaz
+729,DummyName,10000	// Zircon
+730,DummyName,10000	// 1carat Diamond
+731,DummyName,10000	// 2carat Diamond
+732,DummyName,10000	// 3carat Diamond
+733,DummyName,10000	// Cracked Diamond
+734,DummyName,10000	// Red Frame
+735,DummyName,10000	// Chung Jah
+736,DummyName,10000	// China
+737,DummyName,10000	// Black Ladle
+738,DummyName,10000	// Pencil Case
+739,DummyName,10000	// Rouge
+740,DummyName,10000	// Puppet
+741,DummyName,10000	// Poring Doll
+742,DummyName,10000	// Chonchon Doll
+743,DummyName,10000	// Spore Doll
+744,DummyName,10000	// Bouquet
+745,DummyName,10000	// Wedding Bouquet
+746,DummyName,10000	// Glass Bead
+747,DummyName,10000	// Crystal Mirror
+748,DummyName,10000	// Witherless Rose
+749,DummyName,10000	// Frozen Rose
+750,DummyName,10000	// Baphomet Doll
+751,DummyName,10000	// Osiris Doll
+752,DummyName,10000	// Grasshopper Doll
+753,DummyName,10000	// Yoyo Doll
+754,DummyName,10000	// Raccoon Doll
+706,DummyName,10000	// Four Leaf Clover
+4005,DummyName,10000	// Santa Poring Card
+7034,DummyName,10000	// Red Stocking
+501,DummyName,10000	// Red Potion
+502,DummyName,10000	// Orange Potion
+503,DummyName,10000	// Yellow Potion
+504,DummyName,10000	// White Potion
+505,DummyName,10000	// Blue Potion
+506,DummyName,10000	// Green Potion
+526,DummyName,10000	// Royal Jelly
+529,DummyName,10000	// Candy
+530,DummyName,10000	// Candy Cane
+537,DummyName,10000	// Pet Food
+538,DummyName,10000	// Well-baked Cookie
+539,DummyName,10000	// Piece of Cake
+603,DummyName,10000	// Old Blue Box
+617,DummyName,10000	// Old Purple Box
+644,DummyName,190000	// Gift Box
+1558,DummyName,10000	// Girl's Diary

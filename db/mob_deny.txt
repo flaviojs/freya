@@ -1,6 +1,6 @@
-// Spawn/Summon limitation file (mob_deny.txt) - A Nezumi file.
+// Spawn/Summon/grind2/deadbranch limitation file (mob_deny.txt) - A Freya file created by Yor.
 //
-// This file is used to limit spawn and summon GM commands (deadbranch gm commands are not concerned).
+// This file is used to limit spawn and summon with GM commands.
 //
 // Format 1 (nobody can spawn the mob):
 // [mob_id]

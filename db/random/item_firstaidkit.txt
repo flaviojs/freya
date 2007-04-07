@@ -1,0 +1,28 @@
+// item_firstaidkit.txt, First Aid Kit Database
+//
+// <Item_ID>,<Description (Dummy)>,<Rate>
+//
+// Rate Examples
+// 10000   = 1%
+// 500000  = 50%
+// 1000000 = 100%
+
+0,Red Potion,501
+501,Red Potion,500000
+502,Orange Potion,500000
+503,Yellow Potion,500000
+12017,Slow Potion,500000
+504,White Potion,500000
+505,Blue Potion,500000
+506,Green Potion,500000
+545,Condensed Red Potion,500000
+546,Condensed Yellow Potion,500000
+547,Condensed White Potion,500000
+12020,Cursed_Water,500000
+645,Concentration Potion,500000
+656,Awakening Potion,500000
+657,Berserk Potion,500000
+569,Novice Potion,500000
+605,Anodyne,500000
+678,Poison Bottle,500000
+12016,Speed Potion,500000

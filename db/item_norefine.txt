@@ -1,131 +1,211 @@
-// list of items that are not refineable
-// -------------------------------------
-1243
-1530
-2110
-2112
-2201
-2202
-2203
-2204
-2205
-2210
-2212
-2218
-2219
-2237
-2238
-2239
-2240
-2241
-2242
-2243
-2250
-2253
-2260
-2262
-2263
-2264
-2265
-2266
-2267
-2268
-2269
-2270
-2271
-2276
-2278
-2279
-2281
-2282
-2286
-2288
-2289
-2290
-2291
-2292
-2293
-2295
-2296
-2297
-2298
-2352
-2410
-2413
-2414
-2509
-2510
-2601
-2602
-2603
-2604
-2605
-2607
-2608
-2609
-2610
-2611
-2612
-2613
-2614
-2615
-2616
-2617
-2618
-2619
-2620
-2621
-2622
-2623
-2624
-2625
-2626
-2627
-2628
-2629
-2630
-2631
-2634
-2635
-2636
-2637
-2638
-2639
-2640
-5004
-5005
-5006
-5008
-5014
-5015
-5037
-5039
-5040
-5043
-5046
-5049
-5050
-5051
-5053
-5054
-5055
-5068
-5074
-5085
-5086
-5087
-5088
-5089
-5090
-5096
-5098
-5101
-5102
-5104
-5107
-5110
-5113
-5134
-5135
-5137
-5139
+// item_norefine.txt, Non-Refinable Equipment Database
+//
+// Structure of Database:
+//
+// ItemID // ItemName
+//
+
+1243 // Novice Main Gauche
+
+1530 // Mjolnir
+
+1562 // Battlefield Textbook
+
+2110 // Holy Guard
+2112 // Novice Guard
+
+2201 // Sunglasses
+2202 // Slotted Sunglasses
+2203 // Glasses
+2204 // Slotted Glasses
+2205 // Diver Goggles
+2210 // Hair Band
+2212 // Eye Patch
+2218 // Flu Mask
+2219 // Slotted Flu Mask
+2237 // Bandit Beard
+2238 // Moustache
+2239 // Single Glass
+2240 // Beard
+2241 // Granpa Beard
+2242 // Purple Glasses
+2243 // Geek Glasses
+2250 // Cute Ribbon
+2253 // Sunflower
+2260 // Mini Glasses
+2262 // Pierrot Nose
+2263 // Zorro Masque
+2264 // Munak Hat
+2265 // Gangster Mask
+2266 // Iron Cain
+2267 // Cigar
+2268 // Pipe
+2269 // Romantic Flower
+2270 // Romantic Leaf
+2271 // Jack a Dandy
+2276 // Eagle Eyes
+2278 // Mr. Smile
+2279 // Bomb Wick
+2281 // Opera Masque
+2282 // Heaven Ring
+2286 // Elven Ears
+2288 // Mr. Scream
+2289 // Poo Poo Hat
+2290 // Funeral Hat
+2291 // Masquerade
+2292 // Welding Mask
+2293 // Pretend Murdered
+2295 // Blinker
+2296 // Binoculars
+2297 // Goblini Mask
+2298 // Green Feeler
+
+2352 // Novice Ninja Suit
+2356 // Blessed Holy Robe
+
+2410 // Sleipnir
+2413 // Safety Shoes
+2414 // Novice Sandals
+
+2510 // Novice Hood
+
+2601 // Ring
+2602 // Earring
+2603 // Necklace
+2604 // Glove
+2605 // Brooch
+2607 // Clip
+2608 // Rosary
+2609 // Skull Ring
+2610 // Gold Ring
+2611 // Silver Ring
+2612 // Flower Ring
+2613 // Diamond Ring
+2614 // Eye of Dullahan
+2615 // Safety Ring
+2616 // Critical Ring
+2617 // Celebrant's Mitten
+2618 // Matyr's Leash
+2619 // Bow Thimble
+2620 // Rogue's Treasure
+2621 // Ancient Ring
+2622 // Ancient Earring
+2623 // Ancient Necklace
+2624 // Ancient Glove
+2625 // Ancient Brooch
+2626 // Ancient Rosary
+2627 // Ancient Belt
+2628 // Novice Armlet
+2629 // Megingjard
+2630 // Brisingamen
+2631 // Celebration Ring
+2634 // Wedding Ring
+2635 // Wedding Ring
+2636 // Gold Xmas Ring
+2637 // Silver Xmas Ring
+2638 // Sacred Incense
+2639 // Occult Incense
+2640 // Kafra Ring
+2641 // Fashion Hip Sack
+2642 // Serin's Gold Ring
+2643 // Serin's Gold Ring
+2644 // The Sign
+2645 // Moonlight Ring
+2646 // Bunch of Carnation
+2647 // Nile Rose
+2648 // Morpheus's Ring
+2649 // Morpheus's Bracelet
+2650 // Morrigane's Belt
+2651 // Morrigane's Pendant
+2652 // Goddess of Fortune's Cursed Brooch
+2653 // Sacrifice Ring
+2654 // Shinobi Sash
+2655 // Bloodied Shackle Ball
+2656 // Armor Charm
+2657 // Laboratory Passport
+2658 // Nile Rose
+2659 // Vesper Core 01
+2660 // Vesper Core 02
+2661 // Vesper Core 03
+2662 // Vesper Core 04
+2663 // Guantlet of Hit
+2664 // Belcarf
+2665 // Excorsicing Ring
+2666 // Lantern of Hope
+2667 // Renoun Archer's Gloves
+2668 // Women's Glory
+2669 // RJC Necklace
+2670 // Ring of Longing
+2672 // 3rd Anniversary Celebration Ring
+2673 // Warrior's Shining Ring
+2674 // Unknown Item
+2675 // Unknown Item
+2676 // Unknown Item
+2677 // Unknown Item
+2678 // Unknown Item
+2679 // Unknown Item
+2680 // Unknown Item
+2681 // Unknown Item
+2682 // Unknown Item
+2683 // Unknown Item
+2684 // Unknown Item
+2685 // Unknown Item
+2686 // Elven Ears_
+2687 // Romantic Flower_
+2688 // Critical Flower_
+2689 // Earring__
+2690 // Ring__
+2691 // Necklace__
+2692 // Glove__
+2693 // Brooch__
+2694 // Rosary__
+2695 // Safety Ring_
+2696 // Vesper Core 01_
+2697 // Vesper Core 02_
+2698 // Vesper Core 03_
+2699 // Vesper Core 04_
+
+5004 // Oxygen Mask
+5005 // Gas Mask
+5006 // Machoman's Glasses
+5008 // Puppy Love
+5014 // Fin Helm
+5015 // Egg Shell
+5037 // Bone Helm
+5039 // Rainbow Eggshell
+5040 // Blush
+5043 // Opera Ghost Mask
+5046 // Bongun Hat
+5049 // Striped Bandana
+5050 // Mysterious Fruit Shell
+5051 // Bell of Pussycat
+5053 // Sphinx Hat
+5054 // Assassin Mask
+5055 // Novice Eggshell
+5068 // Ears Of Demon
+5074 // Ears of Angel
+5085 // Small Twin Ribbons
+5086 // Alarm Mask
+5087 // Expressionless Mask
+5088 // Surprised Mask
+5089 // Annoyed Mask
+5090 // Goblin Leader Mask
+5096 // Assassin Mask
+5098 // Tiger Mask
+5101 // Takius' Blindfold
+5102 // Round Eyes
+5103 // Sunflower Hairpin
+5104 // Black Blindfold
+5107 // Slice of Toast
+5110 // Baby Rubber Nipple
+5113 // Angry Teeth
+5134 // Pumpkin Hat
+5137 // Alice Doll
+5139 // Hibiscus
+5135 // Cyclop's Eye
+5172 // Beret
+5220 // Smoking Pipe
+5221 // Small Ribbons
+5225 // Holy ???
+5264 // Australian Flag Hat
+5271 // Phoenix Crown

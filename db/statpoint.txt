@@ -1,3 +1,6 @@
+// statpoint.txt, Level Statpoint Database
+// Levels 1-255 are in the database
+
 48
 51
 54

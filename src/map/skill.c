@@ -99,16 +99,17 @@ const struct skill_name_db skill_names[] = {
  { AS_LEFT, "LEFT", "Lefthand_Mastery" } ,
  { AS_POISONREACT, "POISONREACT", "Poison_React" } ,
  { AS_RIGHT, "RIGHT", "Righthand_Mastery" } ,
- { AS_SONICACCEL, "SONICACCEL", "Sonic_Acceleration" } ,
  { AS_SONICBLOW, "SONICBLOW", "Sonic_Blow" } ,
  { AS_SPLASHER, "SPLASHER", "Venom_Splasher" } ,
  { AS_VENOMDUST, "VENOMDUST", "Venom_Dust" } ,
+ { AS_VENOMKNIFE, "AS_VENOMKNIFE", "Throw_Venom_Knife" } ,
  { BA_APPLEIDUN, "APPLEIDUN", "Apple_of_Idun" } ,
  { BA_ASSASSINCROSS, "ASSASSINCROSS", "Assassin_Cross" } ,
  { BA_DISSONANCE, "DISSONANCE", "Dissonance" } ,
  { BA_FROSTJOKE, "FROSTJOKE", "Dumb_Joke" } ,
  { BA_MUSICALLESSON, "MUSICALLESSON", "Musical_Lesson" } ,
  { BA_MUSICALSTRIKE, "MUSICALSTRIKE", "Musical_Strike" } ,
+ { BA_PANGVOICE, "BA_PANGVOICE", "Pang_Voice" } ,
  { BA_POEMBRAGI, "POEMBRAGI", "Poem_of_Bragi" } ,
  { BA_WHISTLE, "WHISTLE", "Whistle" } ,
  { BD_ADAPTATION, "ADAPTATION", "Adaption" } ,
@@ -128,6 +129,7 @@ const struct skill_name_db skill_names[] = {
  { BS_DAGGER, "DAGGER", "Smith_Dagger" } ,
  { BS_ENCHANTEDSTONE, "ENCHANTEDSTONE", "Enchantedstone_Craft" } ,
  { BS_FINDINGORE, "FINDINGORE", "Ore_Discovery" } ,
+ { BS_GREED, "BS_GREED", "Greed" } ,
  { BS_HAMMERFALL, "HAMMERFALL", "Hammer_Fall" } ,
  { BS_HILTBINDING, "HILTBINDING", "Hilt_Binding" } ,
  { BS_IRON, "IRON", "Iron_Tempering" } ,
@@ -142,20 +144,22 @@ const struct skill_name_db skill_names[] = {
  { BS_STEEL, "STEEL", "Steel_Tempering" } ,
  { BS_SWORD, "SWORD", "Smith_Sword" } ,
  { BS_TWOHANDSWORD, "TWOHANDSWORD", "Smith_Two-handed_Sword" } ,
+ { BS_UNFAIRLYTRICK, "BS_UNFAIRLYTRICK", "Unfair_Trick" } ,
  { BS_WEAPONPERFECT, "WEAPONPERFECT", "Weapon_Perfection" } ,
  { BS_WEAPONRESEARCH, "WEAPONRESEARCH", "Weaponry_Research" } ,
  { CG_ARROWVULCAN, "ARROWVULCAN", "Vulcan_Arrow" } ,
- { CG_HERMODE, "HERMODE", "Wand of Hermode" } ,
- { CG_LONGINGFREEDOM, "LONGINGFREEDOM", "Longing_for_Freedom" } ,
+ { CG_HERMODE, "CG_HERMODE", "Wand_of_Hermode" } ,
+ { CG_LONGINGFREEDOM, "CG_LONGINGFREEDOM", "Longing_for_Freedom" } ,
  { CG_MARIONETTE, "MARIONETTE", "Marionette_Control" } ,
  { CG_MOONLIT, "MOONLIT", "Moonlight_Petals" } ,
- { CG_TAROTCARD, "TAROTCARD", "Tarot_Card_of_Fate" } ,
+ { CG_TAROTCARD, "CG_TAROTCARD", "Tarot_Card_of_Fate" } ,
  { CH_CHAINCRUSH, "CHAINCRUSH", "Chain_Crush_Combo" } ,
  { CH_PALMSTRIKE, "PALMSTRIKE", "Palm_Push_Strike" } ,
  { CH_SOULCOLLECT, "SOULCOLLECT", "Collect_Soul" } ,
  { CH_TIGERFIST, "TIGERFIST", "Tiger_Knuckle_Fist" } ,
  { CR_ACIDDEMONSTRATION, "CR_ACIDDEMONSTRATION", "Acid_Demonstration" } ,
  { CR_ALCHEMY, "ALCHEMY", "Alchemy" } ,
+ { CR_CULTIVATION, "CR_CULTIVATION", "Plant_Cultivation" } ,
  { CR_SLIMPITCHER, "SLIMPITCHER", "Slim_Pitcher" } ,
  { CR_FULLPROTECTION, "FULLPROTECTION", "Full_Chemical_Protection" } ,
  { CR_AUTOGUARD, "AUTOGUARD", "Guard" } ,
@@ -167,6 +171,7 @@ const struct skill_name_db skill_names[] = {
  { CR_REFLECTSHIELD, "REFLECTSHIELD", "Shield_Reflect" } ,
  { CR_SHIELDBOOMERANG, "SHIELDBOOMERANG", "Shield_Boomerang" } ,
  { CR_SHIELDCHARGE, "SHIELDCHARGE", "Shield_Charge" } ,
+ { CR_SHRINK, "CR_SHRINK", "Shrink" } ,
  { CR_SPEARQUICKEN, "SPEARQUICKEN", "Spear_Quicken" } ,
  { CR_SYNTHESISPOTION, "SYNTHESISPOTION", "Potion_Synthesis" } ,
  { CR_TRUST, "TRUST", "Faith" } ,
@@ -178,13 +183,109 @@ const struct skill_name_db skill_names[] = {
  { DC_SERVICEFORYOU, "SERVICEFORYOU", "Prostitute" } ,
  { DC_THROWARROW, "THROWARROW", "Throw_Arrow" } ,
  { DC_UGLYDANCE, "UGLYDANCE", "Ugly_Dance" } ,
+ { DC_WINKCHARM, "DC_WINKCHARM", "Sexy_Wink" } ,
+ { DA_ENEGERY, "DA_ENERGY", "Energy" } ,
+ { DA_CLOUD, "DA_CLOUD", "Cloud" } ,
+ { DA_FIRSTSLOT, "DA_FIRSTSLOT", "First Slot" } ,
+ { DA_HEADDEF, "DA_HEADDEF", "Head Def" } ,
+ { DA_SPACE, "DA_SPACE", "Space" } ,
+ { DA_TRANSFORM, "DA_TRANSFORM", "Transform" } ,
+ { DA_EXPLOSION, "DA_EXPLOSION", "Explosion" } ,
+ { DA_REWARD, "DA_REWARD", "Reward" } ,
+ { DA_CRUSH, "DA_CRUSH", "Crush" } ,
+ { DA_ITEMREBUILD, "DA_ITEMREBUILD", "Item Rebuild" } ,
+ { DA_ILLUSION, "DA_ILLUSION", "Illusion" } ,
+ { DA_NEUTRALIZE, "DA_NEUTRALIZE", "Neutralize" } ,
+ { DA_RUNNER, "DA_RUNNER", "Runner" } ,
+ { DA_TRANSFER, "DA_TRANSFER", "Transfer" } ,
+ { DA_WALL, "DA_WALL", "Wall" } ,
+ { DA_ZENY, "DA_ZENY", "Zeny" } ,
+ { DA_REVENGE, "DA_REVENGE", "Revenge" } ,
+ { DA_EARPLUG, "DA_EARPLUG", "Ear Plug" } ,
+ { DA_CONTRACT, "DA_CONTRACT", "Contract" } ,
+ { DA_BLACK, "DA_BLACK", "Black" } ,
+ { DA_DREAM, "DA_DREAM", "Dream" } ,
+ { DA_MAGICCART, "DA_MAGICCART", "Magic Cart" } ,
+ { DA_RESET, "DA_RESET", "Reset" } ,
+ { DA_COPY, "DA_COPY", "Copy" } ,
+ { DA_CRYSTAL, "DA_CRYSTAL", "Crystal" } ,
+ { DA_EXP, "DA_EXP", "Exp" } ,
+ { DA_CREATE, "DA_CREATE", "Create" } ,
+ { DA_REBUILD, "DA_REBUILD", "Rebuild" } ,
+ { DA_JOBCHANGE, "DA_JOBCHANGE", "Job Change" } ,
+ { DA_EDARKNESS, "DA_EDARKNESS", "E Darkness" } ,
+ { DA_EGUARDIAN, "DA_EGUARDIAN", "E Guardian" } ,
+ { DA_TIMEOUT, "DA_TIMEOUT", "Time Out" } ,
+ { ALL_TIMEIN, "ALL_TIMEIN", "Time In" } ,
+ { DA_ZENYRANK, "DA_ZENYRANK", "Zeny Rank" } ,
+ { DA_ACCESSORYMIX, "DA_ACCESSORYMIX", "Accessory Mix" } ,
+ { DE_WATERATTACK, "DE_WATERATTACK", "Water_Attack" } ,
+ { DE_WINDATTACK, "DE_WINDATTACK", "Wind_Attack" } ,
+ { DE_TWINATTACK, "DE_TWINATTACK", "Twin_Attack" } ,
+ { DE_DANGERATTACK, "DE_DANGERATTACK", "Danger_Attack" } ,
+ { DE_FRONTATTACK, "DE_FRONTATTACK", "Front_Attack" } ,
+ { DE_BLOCKFAR, "DE_BLOCKFAR", "Block_Far" } ,
+ { DE_BLOCKMELEE, "DE_BLOCKMELEE", "Block_Melee" } ,
+ { DE_BLOCKDOUBLE, "DE_BLOCKDOUBLE", "Block_Double" } ,
+ { DE_ACCEL, "DE_ACCEL", "Accel" } ,
+ { DE_GSKILL, "DE_GSKILL", "G_Skill" } ,
+ { DE_GPAIN, "DE_GPAIN", "G_Pain" } ,
+ { DE_GTIME, "DE_GTIME", "G_Time" } ,
+ { DE_GAUGE, "DE_GAUGE", "Gauge" } ,
+ { DE_RANKEDGRADIUS, "DE_RANKEDGRADIUS", "Ranked_Gradius" } ,
+ { DE_RANKEDKNIFE, "DE_RANKEDKNIFE", "Ranked_Knife" } ,
+ { DE_WARNING, "DE_WARNING", "Warning" } ,
+ { DE_INSTANT, "DE_INSTANT", "Instant" } ,
+ { DE_POISON, "DE_POISON", "Poison" } ,
+ { DE_PUNISH, "DE_PUNISH", "Punish" } ,
+ { DE_CHANGEATTACK, "DE_CHANGEATTACK", "Change_Attack" } ,
+ { DE_FREEZER, "DE_FREEZER", "Freezer" } ,
+ { DE_AURA, "DE_AURA", "Aura" } ,
+ { DE_REBIRTH, "DE_REBIRTH", "Rebirth" } ,
+ { DE_WAVE, "DE_WAVE", "Wave" } ,
+ { DE_COIL, "DE_COIL", "Coil" } ,
+ { DE_SLASH, "DE_SLASH", "Slash" } ,
+ { DE_NIGHTMARE, "DE_NIGHTMARE", "Nightmare" } ,
+ { DE_ENERGY, "DE_ENERGY", "Energy" } ,
+ { DE_PTRIPLE, "DE_PTRIPLE", "P_Triple" } ,
+ { DE_RANKING, "DE_RANKING", "Ranking" } ,
+ { DE_RESET, "DE_RESET", "Reset" } ,
+ { DE_PSP, "DE_PSP", "P_SP" } ,
+ { DE_PHP, "DE_PHP", "P_HP" } ,
+ { DE_PCRITICAL, "DE_PCRITICAL", "P_Critical" } ,
+ { DE_PDEFENSE, "DE_PDEFENSE", "P_Defense" } ,
+ { DE_PSPEED, "DE_PSPEED", "P_Speed" } ,
+ { DE_PATTACK, "DE_PATTACK", "P_Attack" } ,
+ { DE_PASSIVE, "DE_PASSIVE", "Passive" } ,
  { GD_BATTLEORDER, "BATTLEORDER", "Battle_Orders" } ,
  { GD_REGENERATION, "REGENERATION", "Regeneration" } ,
  { GD_RESTORE, "RESTORE", "Restore" } ,
  { GD_EMERGENCYCALL, "EMERGENCYCALL", "Emergency_Call" } ,
+ { GS_ADJUSTMENT, "GS_ADJUSTMENT", "Adjustment" } ,
+ { GS_BULLSEYE, "GS_BULLSEYE", "Bulls_Eye" } ,
+ { GS_CHAINACTION, "GS_CHAINACTION", "Chain_Action" } ,
+ { GS_CRACKER, "GS_CRACKER", "Cracker" } ,
+ { GS_DESPERADO, "GS_DESPERADO", "Desperado" } ,
+ { GS_DISARM, "GS_DISARM", "Disarm" } ,
+ { GS_DUST, "GS_DUST", "Dust" } ,
+ { GS_FLING, "GS_FLING", "Fling" } ,
+ { GS_FULLBUSTER, "GS_FULLBUSTER", "Full_Buster" } ,
+ { GS_GATLINGFEVER, "GS_GATLINGFEVER", "Gatling_Fever" } ,
+ { GS_GLITTERING, "GS_GLITTERING", "Flip_the_Coin" } ,
+ { GS_GROUNDDRIFT, "GS_GROUNDDRIFT", "Ground_Drift" } ,
+ { GS_INCREASING, "GS_INCREASING", "Increasing_Accuracy" } ,
+ { GS_MADNESSCANCEL, "GS_MADNESSCANCEL", "Madness_Canceler" } ,
+ { GS_MAGICALBULLET, "GS_MAGICALBULLET", "Magical_Bullet" } ,
+ { GS_PIERCINGSHOT, "GS_PIERCINGSHOT", "Piercing_Shot" } ,
+ { GS_RAPIDSHOWER, "GS_RAPIDSHOWER", "Rapid_Shower" } ,
+ { GS_SINGLEACTION, "GS_SINGLEACTION", "Single_Action" } ,
+ { GS_SNAKEEYE, "GS_SNAKEEYE", "Snake_Eye" } ,
+ { GS_SPREADATTACK, "GS_SPREADATTACK", "Spread_Attack" } ,
+ { GS_TRACKING, "GS_TRACKING", "Tracking" } ,
+ { GS_TRIPLEACTION, "GS_TRIPLEACTION", "Triple_Action" } ,
  { HP_ASSUMPTIO, "ASSUMPTIO", "Assumptio" } ,
  { HP_BASILICA, "BASILICA", "Basilica" } ,
- { HP_MANARECHARGE, "MANARECHARGE", "Mana_Recharge" } ,
+ { HP_MANARECHARGE, "HP_MANARECHARGE", "Mana_Recharge" } ,
  { HP_MEDITATIO, "MEDITATIO", "Meditation" } ,
  { HT_ANKLESNARE, "ANKLESNARE", "Ankle_Snare" } ,
  { HT_BEASTBANE, "BEASTBANE", "Beast_Bane" } ,
@@ -196,6 +297,7 @@ const struct skill_name_db skill_names[] = {
  { HT_FLASHER, "FLASHER", "Flasher" } ,
  { HT_FREEZINGTRAP, "FREEZINGTRAP", "Freezing_Trap" } ,
  { HT_LANDMINE, "LANDMINE", "Land_Mine" } ,
+ { HT_PHANTASMIC, "HT_PHANTASMIC", "Phantasmic_Arrow" } ,
  { HT_REMOVETRAP, "REMOVETRAP", "Remove_Trap" } ,
  { HT_SANDMAN, "SANDMAN", "Sandman" } ,
  { HT_SHOCKWAVE, "SHOCKWAVE", "Shockwave_Trap" } ,
@@ -203,9 +305,8 @@ const struct skill_name_db skill_names[] = {
  { HT_SPRINGTRAP, "SPRINGTRAP", "Spring_Trap" } ,
  { HT_STEELCROW, "STEELCROW", "Steel_Crow" } ,
  { HT_TALKIEBOX, "TALKIEBOX", "Talkie_Box" } ,
- { HT_PHANTASMIC, "PHANTASMIC", "Phantasmic_Arrow" } ,
- { HW_GANBANTEIN, "GANBANTEIN", "Ganbantein" } ,
- { HW_GRAVITATION, "GRAVITATION", "Gravitation_Field" } ,
+ { HW_GANBANTEIN, "HW_GANBANTEIN", "Ganbantein" } ,
+ { HW_GRAVITATION, "HW_GRAVITATION", "Gravitation_Field" } ,
  { HW_MAGICCRASHER, "MAGICCRASHER", "Magic_Crasher" } ,
  { HW_MAGICPOWER, "MAGICPOWER", "Magic_Power" } ,
  { HW_NAPALMVULCAN, "NAPALMVULCAN", "Napalm_Vulcan" } ,
@@ -215,7 +316,7 @@ const struct skill_name_db skill_names[] = {
  { KN_BOWLINGBASH, "BOWLINGBASH", "Bowling_Bash" } ,
  { KN_BRANDISHSPEAR, "BRANDISHSPEAR", "Brandish_Spear" } ,
  { KN_CAVALIERMASTERY, "CAVALIERMASTERY", "Cavalier_Mastery" } ,
- { KN_CHARGEATK, "CHARGEATK", "Charge_Attack" } ,
+ { KN_CHARGEATK, "KN_CHARGEATK", "Charge_Attack" } ,
  { KN_PIERCE, "PIERCE", "Pierce" } ,
  { KN_RIDING, "RIDING", "Peco_Peco_Ride" } ,
  { KN_SPEARBOOMERANG, "SPEARBOOMERANG", "Spear_Boomerang" } ,
@@ -231,6 +332,51 @@ const struct skill_name_db skill_names[] = {
  { LK_PARRYING, "PARRYING", "Parrying" } ,
  { LK_SPIRALPIERCE, "SPIRALPIERCE", "Spiral_Pierce" } ,
  { LK_TENSIONRELAX, "TENSIONRELAX", "Tension_Relax" } ,
+ { MA_DOUBLE, "MA_DOUBLE", "MA_DOUBLE" } ,
+ { MA_SHOWER, "MA_SHOWER", "MA_SHOWER" } ,
+ { MA_SKIDTRAP, "MA_SKIDTRAP", "MA_SKIDTRAP" } ,
+ { MA_LANDMINE, "MA_LANDMINE", "MA_LANDMINE" } ,
+ { MA_SANDMAN, "MA_SANDMAN", "MA_SANDMAN" } ,
+ { MA_FREEZINGTRAP, "MA_FREEZINGTRAP", "MA_FREEZINGTRAP" } ,
+ { MA_REMOVETRAP, "MA_REMOVETRAP", "MA_REMOVETRAP" } ,
+ { MA_CHARGEARROW, "MA_CHARGEARROW", "MA_CHARGEARROW" } ,
+ { MA_SHARPSHOOTING, "MA_SHARPSHOOTING", "MA_SHARPSHOOTING" } ,
+// { MB_M_POTIONBLAST, "M_POTIONBLAST", "Munak_Potion_Blast" } ,
+ { MB_B_EQUIP, "B_EQUIP", "Bon_Gun_Equip" } ,
+// { MB_M_SUMMONING, "M_SUMMONING", "Munak_Summoning" } ,
+ { MB_M_REINCARNATION, "M_REINCARNATION", "Munak_Reincarnation" } ,
+ { MB_M_WALLCRASH, "M_WALLCRASH", "Munak_Wall_Crash" } ,
+ { MB_B_WALLSHIFT, "B_WALLSHIFT", "Bon_Gun_Wall_Shift" } ,
+ { MB_M_WALLRUSH, "M_WALLRUSH", "Munak_Wall_Rush" } ,
+ { MB_B_WALLRUSH, "B_WALLRUSH", "Bon_Gun_Wall_Rush" } ,
+ { MB_M_DRIFT, "M_DRIFT", "Munak_Drift" } ,
+ { MB_B_DRIFT, "B_DRIFT", "Bon_Gun_Drift" } ,
+// { MB_M_EXCLUDE, "M_EXCLUDE", "Munak_Exclude" } ,
+ { MB_B_EXCLUDE, "B_EXCLUDE", "Bon_Gun_Exclude" } ,
+// { MB_M_GATHERING, "M_GATHERING", "Munak_Gathering" } ,
+ { MB_B_GATHERING, "B_GATHERING", "Bon_Gun_Gathering" } ,
+ { MB_SCROLL, "SCROLL", "Scroll" } ,
+ { MB_MUNAKBALL, "MUNAKBALL", "Munak_Ball" } ,
+ { MB_MUNAKKNOWLEDGE, "MUNAKKNOWLEDGE", "Munak_Knowledge" } ,
+ { MB_MISSION, "MISSION", "Mission" } ,
+ { MB_M_GAIN, "M_GAIN", "Munak_Gain" } ,
+ { MB_B_GAIN, "B_GAIN", "Bon_Gun_Gain" } ,
+ { MB_PETMEMORY, "PETMEMORY", "Pet_Memory" } ,
+ { MB_BODYALTER, "BODYALTER", "Body_Alter" } ,
+ { MB_BODYSTUDY, "BODYSTUDY", "Body_Study" } ,
+ { MB_PETPITCHER, "PETPITCHER", "Pet_Pitcher" } ,
+ { MB_MENTAL, "MENTAL", "Mental" } ,
+ { MB_CARDPITCHER, "CARDPITCHER", "Card_Pitcher" } ,
+ { MB_WHITEPOTION, "WHITEPOTION", "White_Potion" } ,
+// { MB_TAIMING_ALICE, "TAIMING_ALICE", "Alice_Taming" } ,
+// { MB_TAIMING_BAPHO, "TAIMING_BAPHO", "Baphomet_Jr_Taming" } ,
+// { MB_TAIMING_DEVI, "TAIMING_DEVI", "Deviruchi_Taming" } ,
+// { MB_TAIMING_ORC, "TAIMING_ORC", "Orc_Warrior_Taming" } ,
+// { MB_TAIMING_SOHEE, "TAIMING_SOHEE", "Sohee_Taming" } ,
+// { MB_TAIMING_ZIRTAS, "TAIMING_ZIRTAS", "Zealotus_Taming" } ,
+ { MB_TAIMING_PUTI, "TAIMING_PUTI", "Petite_Taming" } ,
+ { MB_NEUTRAL, "NEUTRAL", "Neutral" } ,
+ { MB_FIGHTING, "FIGHTING", "Fighting" } ,
  { MC_CARTREVOLUTION, "CARTREVOLUTION", "Cart_Revolution" } ,
  { MC_CHANGECART, "CHANGECART", "Change_Cart" } ,
  { MC_DISCOUNT, "DISCOUNT", "Discount" } ,
@@ -241,6 +387,23 @@ const struct skill_name_db skill_names[] = {
  { MC_OVERCHARGE, "OVERCHARGE", "Overcharge" } ,
  { MC_PUSHCART, "PUSHCART", "Pushcart" } ,
  { MC_VENDING, "VENDING", "Vending" } ,
+
+ { MER_MAGNIFICAT, "MER_MAGNIFICAT", "MER_MAGNIFICAT" } ,
+ { MER_QUICKEN, "MER_QUICKEN", "MER_QUICKEN" } ,
+ { MER_SIGHT, "MER_SIGHT", "MER_SIGHT" } ,
+ { MER_CRASH, "MER_CRASH", "MER_CRASH" } ,
+ { MER_REGAIN, "MER_REGAIN", "MER_REGAIN" } ,
+ { MER_TENDER, "MER_TENDER", "MER_TENDER" } ,
+ { MER_BENEDICTION, "MER_BENEDICTION", "MER_BENEDICTION" } ,
+ { MER_RECUPERATE, "MER_RECUPERATE", "MER_RECUPERATE" } ,
+ { MER_MENTALCURE, "MER_MENTALCURE", "MER_MENTALCURE" } ,
+ { MER_COMPRESS, "MER_COMPRESS", "MER_COMPRESS" } ,
+ { MER_PROVOKE, "MER_PROVOKE", "MER_PROVOKE" } ,
+ { MER_AUTOBERSERK, "MER_AUTOBERSERK", "MER_AUTOBERSERK" } ,
+ { MER_DECAGI, "MER_DECAGI", "MER_DECAGI" } ,
+ { MER_SCAPEGOAT, "MER_SCAPEGOAT", "MER_SCAPEGOAT" } ,
+ { MER_LEXDIVINA, "MER_LEXDIVINA", "MER_LEXDIVINA" } ,
+ { MER_ESTIMATION, "MER_ESTIMATION", "MER_ESTIMATION" } ,
  { MG_COLDBOLT, "COLDBOLT", "Cold_Bolt" } ,
  { MG_ENERGYCOAT, "ENERGYCOAT", "Energy_Coat" } ,
  { MG_FIREBALL, "FIREBALL", "Fire_Ball" } ,
@@ -255,7 +418,14 @@ const struct skill_name_db skill_names[] = {
  { MG_SRECOVERY, "SRECOVERY", "Increase_SP_Recovery" } ,
  { MG_STONECURSE, "STONECURSE", "Stone_Curse" } ,
  { MG_THUNDERSTORM, "THUNDERSTORM", "Thunderstorm" } ,
+ { ML_PIERCE, "ML_PIERCE", "ML_PIERCE" } ,
+ { ML_BRANDISH, "ML_BRANDISH", "ML_BRANDISH" } ,
+ { ML_SPIRALPIERCE, "ML_SPIRALPIERCE", "ML_SPIRALPIERCE" } ,
+ { ML_DEFENDER, "ML_DEFENDER", "ML_DEFENDER" } ,
+ { ML_AUTOGUARD, "ML_AUTOGUARD", "ML_AUTOGUARD" } ,
+ { ML_DEVOTION, "ML_DEVOTION", "ML_DEVOTION" } ,
  { MO_ABSORBSPIRITS, "ABSORBSPIRITS", "Absorb_Spirits" } ,
+ { MO_BALKYOUNG, "MO_BALKYOUNG", "Ki_Explosion" } ,
  { MO_BLADESTOP, "BLADESTOP", "Blade_Stop" } ,
  { MO_BODYRELOCATION, "BODYRELOCATION", "Body_Relocation" } ,
  { MO_CALLSPIRITS, "CALLSPIRITS", "Call_Spirits" } ,
@@ -267,13 +437,48 @@ const struct skill_name_db skill_names[] = {
  { MO_FINGEROFFENSIVE, "FINGEROFFENSIVE", "Finger_Offensive" } ,
  { MO_INVESTIGATE, "INVESTIGATE", "Investigate" } ,
  { MO_IRONHAND, "IRONHAND", "Iron_Hand" } ,
+ { MO_KITRANSLATION, "MO_KITRANSLATION", "Ki_Translation" } ,
  { MO_SPIRITSRECOVERY, "SPIRITSRECOVERY", "Spirit_Recovery" } ,
  { MO_STEELBODY, "STEELBODY", "Steel_Body" } ,
  { MO_TRIPLEATTACK, "TRIPLEATTACK", "Triple_Blows" } ,
+ { MS_BASH, "MS_BASH", "MS_BASH" } ,
+ { MS_MAGNUM, "MS_MAGNUM", "MS_MAGNUM" } ,
+ { MS_BOWLINGBASH, "MS_BOWLINGBASH", "MS_BOWLINGBASH" } ,
+ { MS_PARRYING, "MS_PARRYING", "MS_PARRYING" } ,
+ { MS_REFLECTSHIELD, "MS_REFLECTSHIELD", "MS_REFLECTSHIELD" } ,
+ { MS_BERSERK, "MS_BERSERK", "MS_BERSERK" } ,
+ { NJ_BAKUENRYU, "NJ_BAKUENRYU", "NJ_BAKUENRYU" } ,
+ { NJ_BUNSINJYUTSU, "NJ_BUNSINJYUTSU", "NJ_BUNSINJYUTSU" } ,
+ { NJ_HUUJIN, "NJ_HUUJIN", "NJ_HUUJIN" } ,
+ { NJ_HUUMA, "NJ_HUUMA", "NJ_HUUMA" } ,
+ { NJ_HYOUSENSOU, "NJ_HYOUSENSOU", "NJ_HYOUSENSOU" } ,
+ { NJ_HYOUSYOURAKU, "NJ_HYOUSYOURAKU", "NJ_HYOUSYOURAKU" } ,
+ { NJ_ISSEN, "NJ_ISSEN", "NJ_ISSEN" } ,
+ { NJ_KAENSIN, "NJ_KAENSIN", "NJ_KAENSIN" } ,
+ { NJ_KAMAITACHI, "NJ_KAMAITACHI", "NJ_KAMAITACHI" } ,
+ { NJ_KASUMIKIRI, "NJ_KASUMIKIRI", "NJ_KASUMIKIRI" } ,
+ { NJ_KIRIKAGE, "NJ_KIRIKAGE", "NJ_KIRIKAGE" } ,
+ { NJ_KOUENKA, "NJ_KOUENKA", "NJ_KOUENKA" } ,
+ { NJ_KUNAI, "NJ_KUNAI", "NJ_KUNAI" } ,
+ { NJ_NEN, "NJ_NEN", "NJ_NEN" } ,
+ { NJ_NINPOU, "NJ_NINPOU", "NJ_NINPOU" } ,
+ { NJ_RAIGEKISAI, "NJ_RAIGEKISAI", "NJ_RAIGEKISAI" } ,
+ { NJ_SHADOWJUMP, "NJ_SHADOWJUMP", "NJ_SHADOWJUMP" } ,
+ { NJ_SUITON, "NJ_SUITON", "NJ_SUITON" } ,
+ { NJ_SYURIKEN, "NJ_SYURIKEN", "NJ_SYURIKEN" } ,
+ { NJ_TATAMIGAESHI, "NJ_TATAMIGAESHI", "NJ_TATAMIGAESHI" } ,
+ { NJ_TOBIDOUGU, "NJ_TOBIDOUGU", "NJ_TOBIDOUGU" } ,
+ { NJ_UTSUSEMI, "NJ_UTSUSEMI", "NJ_UTSUSEMI" } ,
+ { NJ_ZENYNAGE, "NJ_ZENYNAGE", "NJ_ZENYNAGE" } ,
  { NPC_ATTRICHANGE, "ATTRICHANGE", "NPC_ATTRICHANGE" } ,
  { NPC_BARRIER, "BARRIER", "NPC_BARRIER" } ,
  { NPC_BLINDATTACK, "BLINDATTACK", "NPC_BLINDATTACK" } ,
  { NPC_BLOODDRAIN, "BLOODDRAIN", "NPC_BLOODDRAIN" } ,
+ { NPC_BREAKARMOR, "NPC_BREAKARMOR", "NPC_BREAKARMOR" } ,
+ { NPC_BREAKHELM, "NPC_BREAKHELM", "NPC_BREAKHELM" } ,
+ { NPC_BREAKSHIELD, "NPC_BREAKSHIELD", "NPC_BREAKSHIELD" } ,
+ { NPC_BREAKWEAPON, "NPC_BREAKWEAPON", "NPC_BREAKWEAPON" } ,
+ { NPC_CALLSLAVE, "NPC_CALLSLAVE", "NPC_CALLSLAVE" } ,
  { NPC_CHANGEDARKNESS, "CHANGEDARKNESS", "NPC_CHANGEDARKNESS" } ,
  { NPC_CHANGEFIRE, "CHANGEFIRE", "NPC_CHANGEFIRE" } ,
  { NPC_CHANGEGROUND, "CHANGEGROUND", "NPC_CHANGEGROUND" } ,
@@ -304,7 +509,6 @@ const struct skill_name_db skill_names[] = {
  { NPC_METAMORPHOSIS, "METAMORPHOSIS", "NPC_METAMORPHOSIS" } ,
  { NPC_PETRIFYATTACK, "PETRIFYATTACK", "NPC_PETRIFYATTACK" } ,
  { NPC_PIERCINGATT, "PIERCINGATT", "NPC_PIERCINGATT" } ,
- { NPC_CALLSLAVE, "CALLSLAVE", "NPC_CALLSLAVE" },
  { NPC_POISON, "POISON", "NPC_POISON" } ,
  { NPC_POISONATTACK, "POISONATTACK", "NPC_POISONATTACK" } ,
  { NPC_PROVOCATION, "PROVOCATION", "NPC_PROVOCATION" } ,
@@ -312,6 +516,7 @@ const struct skill_name_db skill_names[] = {
  { NPC_RANGEATTACK, "RANGEATTACK", "NPC_RANGEATTACK" } ,
  { NPC_REBIRTH, "REBIRTH", "NPC_REBIRTH" } ,
  { NPC_SELFDESTRUCTION, "SELFDESTRUCTION", "Kabooooom!" } ,
+ { NPC_SELFDESTRUCTION2, "SELFDESTRUCTION2", "NPC_SELFDESTRUCTION2" } ,
  { NPC_SILENCEATTACK, "SILENCEATTACK", "NPC_SILENCEATTACK" } ,
  { NPC_SLEEPATTACK, "SLEEPATTACK", "NPC_SLEEPATTACK" } ,
  { NPC_SMOKING, "SMOKING", "NPC_SMOKING" } ,
@@ -331,6 +536,7 @@ const struct skill_name_db skill_names[] = {
  { PA_PRESSURE, "PRESSURE", "Pressure" } ,
  { PA_SACRIFICE, "SACRIFICE", "Sacrificial_Ritual" } ,
  { PA_SHIELDCHAIN, "PA_SHIELDCHAIN", "Shield_Chain" } ,
+ { PF_DOUBLECASTING, "PF_DOUBLECASTING", "Double_Casting" } ,
  { PF_FOGWALL, "FOGWALL", "Wall_of_Fog" } ,
  { PF_HPCONVERSION, "HPCONVERSION", "Health_Conversion" } ,
  { PF_MEMORIZE, "MEMORIZE", "Memorize" } ,
@@ -338,7 +544,6 @@ const struct skill_name_db skill_names[] = {
  { PF_SOULBURN, "SOULBURN", "Soul_Burn" } ,
  { PF_SOULCHANGE, "SOULCHANGE", "Soul_Change" } ,
  { PF_SPIDERWEB, "SPIDERWEB", "Spider_Web" } ,
- { PF_DOUBLECASTING, "DOUBLECASTING", "Double_Casting" } ,
  { PR_ASPERSIO, "ASPERSIO", "Aspersio" } ,
  { PR_BENEDICTIO, "BENEDICTIO", "B.S_Sacramenti" } ,
  { PR_GLORIA, "GLORIA", "Gloria" } ,
@@ -349,7 +554,7 @@ const struct skill_name_db skill_names[] = {
  { PR_MACEMASTERY, "MACEMASTERY", "Mace_Mastery" } ,
  { PR_MAGNIFICAT, "MAGNIFICAT", "Magnificat" } ,
  { PR_MAGNUS, "MAGNUS", "Magnus_Exorcismus" } ,
- { PR_REDEMPTIO, "REDEMPTIO", "Redemptio" } ,
+ { PR_REDEMPTIO, "PR_REDEMPTIO", "Redemptio" } ,
  { PR_SANCTUARY, "SANCTUARY", "Santuary" } ,
  { PR_SLOWPOISON, "SLOWPOISON", "Slow_Poison" } ,
  { PR_STRECOVERY, "STRECOVERY", "Status_Recovery" } ,
@@ -357,6 +562,7 @@ const struct skill_name_db skill_names[] = {
  { PR_TURNUNDEAD, "TURNUNDEAD", "Turn_Undead" } ,
  { RG_BACKSTAP, "BACKSTAP", "Back_Stab" } ,
  { RG_CLEANER, "CLEANER", "Remover" } ,
+ { RG_CLOSECONFINE, "RG_CLOSECONFINE", "Close_Confine"} ,
  { RG_COMPULSION, "COMPULSION", "Compulsion_Discount" } ,
  { RG_FLAGGRAFFITI, "FLAGGRAFFITI", "Flag_Graffity" } ,
  { RG_GANGSTER, "GANGSTER", "Gangster's_Paradise" } ,
@@ -381,6 +587,11 @@ const struct skill_name_db skill_names[] = {
  { SA_DELUGE, "DELUGE", "Deluge" } ,
  { SA_DISPELL, "DISPELL", "Dispel" } ,
  { SA_DRAGONOLOGY, "DRAGONOLOGY", "Dragonology" } ,
+ { SA_CREATECON, "SA_CREATECON", "Create_Elemental_Converter" } ,
+ { SA_ELEMENTFIRE, "SA_ELEMENTFIRE", "Elemental_Change_Fire" } ,
+ { SA_ELEMENTGROUND, "SA_ELEMENTGROUND", "Elemental_Change_Earth" } ,
+ { SA_ELEMENTWATER, "SA_ELEMENTWATER", "Elemental_Change_Water" } ,
+ { SA_ELEMENTWIND, "SA_ELEMENTWIND", "Elemental_Change_Wind" } ,
  { SA_FLAMELAUNCHER, "FLAMELAUNCHER", "Flame_Launcher" } ,
  { SA_FORTUNE, "FORTUNE", "Fortune" } ,
  { SA_FREECAST, "FREECAST", "Cast_Freedom" } ,
@@ -421,9 +632,12 @@ const struct skill_name_db skill_names[] = {
  { SG_SUN_WARM, "WARM", "Sun Warm" } ,
  { SL_ALCHEMIST, "ALCHEMIST", "Alchemist" } ,
  { SL_ASSASIN, "ASSASIN", "Assasin" } ,
- { SL_BARDDANCER, "BARDDANCER", "Bard Dancer" } ,
- { SL_BLACKSMITH, "BLACKSMITH", "Black Smith" } ,
+ { SL_BARDDANCER, "BARDDANCER", "Bard_Dancer" } ,
+ { SL_BLACKSMITH, "BLACKSMITH", "Black_Smith" } ,
+ { SL_COLLECTOR, "COLLECTOR", "Dark_Collector" } ,
  { SL_CRUSADER, "CRUSADER", "Crusader" } ,
+ { SL_DEATHKNIGHT, "DEATHKNIGHT", "Death_Knight" } ,
+ { SL_GUNNER, "GUNNER", "Gunslinger" } ,
  { SL_HUNTER, "HUNTER", "Hunter" } ,
  { SL_KAAHI, "KAAHI", "Kaahi" } ,
  { SL_KAINA, "KAINA", "Kaina" } ,
@@ -432,18 +646,19 @@ const struct skill_name_db skill_names[] = {
  { SL_KAUPE, "KAUPE", "Kaupe" } ,
  { SL_KNIGHT, "KNIGHT", "Knight" } ,
  { SL_MONK, "MONK", "Monk" } ,
+ { SL_NINJA, "NINJA", "Ninja" } ,
  { SL_PRIEST, "PRIEST", "Priest" } ,
  { SL_ROGUE, "ROGUE", "Rogue" } ,
  { SL_SAGE, "SAGE", "Sage" } ,
- { SL_SKA, "SKA", "SKA" } ,
- { SL_SKE, "SKE", "SKE" } ,
- { SL_SMA, "SMA", "SMA" } ,
- { SL_SOULLINKER, "SOULLINKER", "Soul Linker" } ,
+ { SL_SKA, "SKA", "Eska" } ,
+ { SL_SKE, "SKE", "Eske" } ,
+ { SL_SMA, "SL_SMA", "Esma" } ,
+ { SL_SOULLINKER, "SOULLINKER", "Soul_Linker" } ,
  { SL_STAR, "STAR", "Star" } ,
- { SL_STIN, "STIN", "Stin" } ,
- { SL_STUN, "STUN", "Stun" } ,
- { SL_SUPERNOVICE, "SUPERNOVICE", "Super Novice" } ,
- { SL_SWOO, "SWOO", "Swoo" } ,
+ { SL_STIN, "STIN", "Estin" } ,
+ { SL_STUN, "STUN", "Estun" } ,
+ { SL_SUPERNOVICE, "SUPERNOVICE", "Super_Novice" } ,
+ { SL_SWOO, "SWOO", "Eswoo" } ,
  { SL_WIZARD, "WIZARD", "Wizard" } ,
  { SM_AUTOBERSERK, "AUTOBERSERK", "Auto_Berserk" } ,
  { SM_BASH, "BASH", "Bash" } ,
@@ -477,19 +692,20 @@ const struct skill_name_db skill_names[] = {
  { TK_COUNTER, "COUNTER", "Counter" } ,
  { TK_DODGE, "DODGE", "Dodge" } ,
  { TK_DOWNKICK, "DOWNKICK", "Down Kick" } ,
- { TK_HIGHJUMP, "HIGHJUMP", "High Jump" } ,
- { TK_HPTIME, "HPTIME", "HP Time" } ,
- { TK_JUMPKICK, "JUMPKICK", "Jump Kick" } ,
- { TK_POWER, "POWER", "Power" } ,
+ { TK_HIGHJUMP, "TK_HIGHJUMP", "Taekwon_Jump" } ,
+ { TK_HPTIME, "TK_HPTIME", "Peaceful_Break" } ,
+ { TK_JUMPKICK, "TK_JUMPKICK", "Flying_Kick" } ,
+ { TK_POWER, "TK_POWER", "Kihop" } ,
  { TK_READYCOUNTER, "READYCOUNTER", "Ready Counter" } ,
  { TK_READYDOWN, "READYDOWN", "Ready Down" } ,
  { TK_READYSTORM, "READYSTORM", "Ready Storm" } ,
  { TK_READYTURN, "READYTURN", "Ready Turn" } ,
  { TK_RUN, "RUN", "TK_RUN" } ,
- { TK_SEVENWIND, "SEVENWIND", "Seven Wind" } ,
- { TK_SPTIME, "SPTIME", "SP Time" } ,
+ { TK_SEVENWIND, "TK_SEVENWIND", "Warm Wind" } ,
+ { TK_SPTIME, "TK_SPTIME", "Enjoyable Rest" } ,
  { TK_STORMKICK, "STORMKICK", "Storm Kick" } ,
  { TK_TURNKICK, "TURNKICK", "Turn Kick" } ,
+ { TK_MISSION, "MISSION", "TaeKwon Mission" } ,
  { WE_BABY, "BABY", "Adopt_Baby" } ,
  { WE_CALLBABY, "CALLBABY", "Call_Baby" } ,
  { WE_CALLPARENT, "CALLPARENT", "Call_Parent" } ,
@@ -501,7 +717,7 @@ const struct skill_name_db skill_names[] = {
  { WS_CREATECOIN, "CREATECOIN", "Create_Coins" } ,
  { WS_CREATENUGGET, "CREATENUGGET", "Create_Nuggets" } ,
  { WS_MELTDOWN, "MELTDOWN", "Meltdown" } ,
- { WS_MAXOVERTHRUST, "MAXOVERTHRUST", "Max_Overthrust" } ,
+ { WS_MAXOVERTHRUST, "WS_MAXOVERTHRUST", "Max_Power-Thust" } ,
  { WS_SYSTEMCREATE, "SYSTEMCREATE", "Create_System_tower" } ,
  { WS_WEAPONREFINE, "WEAPONREFINE", "Weapon_Refine" } ,
  { WZ_EARTHSPIKE, "EARTHSPIKE", "Earth_Spike" } ,
@@ -514,10 +730,28 @@ const struct skill_name_db skill_names[] = {
  { WZ_JUPITEL, "JUPITEL", "Jupitel_Thunder" } ,
  { WZ_METEOR, "METEOR", "Meteor_Storm" } ,
  { WZ_QUAGMIRE, "QUAGMIRE", "Quagmire" } ,
+ { WZ_SIGHTBLASTER, "WZ_SIGHTBLASTER", "Sight_Blaster" } ,
  { WZ_SIGHTRASHER, "SIGHTRASHER", "Sightrasher" } ,
  { WZ_STORMGUST, "STORMGUST", "Storm_Gust" } ,
  { WZ_VERMILION, "VERMILION", "Lord_of_Vermilion" } ,
  { WZ_WATERBALL, "WATERBALL", "Water_Ball" } ,
+ // Homunuclus Skills
+ { HLIF_HEAL, "HLIF_HEAL", "Healing_Touch" },
+ { HLIF_AVOID, "HLIF_AVOID", "Avoid" },
+ { HLIF_BRAIN, "HLIF_BRAIN", "Brain_Surgery" },
+ { HLIF_CHANGE, "HLIF_CHANGE", "Change" },
+ { HAMI_CASTLE, "HAMI_CASTLE", "Castling" },
+ { HAMI_DEFENCE, "HAMI_DEFENCE", "Defense" },
+ { HAMI_SKIN, "HAMI_SKIN", "Adamantium_Skin" },
+ { HAMI_BLOODLUST, "HAMI_BLOODLUST", "Bloodlust" },
+ { HFLI_MOON, "HFLI_MOON", "Moonlight" },
+ { HFLI_FLEET, "HFLI_FLEET", "Fleeting_Move" },
+ { HFLI_SPEED, "HFLI_SPEED", "Speed" },
+ { HFLI_SBR44, "HFLI_SBR44", "S.B.R.44" },
+ { HVAN_CAPRICE, "HVAN_CAPRICE", "Caprice" },
+ { HVAN_CHAOTIC, "HVAN_CHAOTIC", "Benediction_of_Chaos" },
+ { HVAN_INSTRUCT, "HVAN_INSTRUCT", "Instruct" },
+ { HVAN_EXPLOSION, "HVAN_EXPLOSION", "Bio_Explosion" },
  { 0, 0, 0 }
 };
 
@@ -880,7 +1114,7 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 		break;
 
 	case CR_GRANDCROSS:
-	case NPC_DARKGRANDCROSS:
+	case NPC_DARKCROSS:
 	  {
 		int race = status_get_race(bl);
 		if ((battle_check_undead(race, status_get_elem_type(bl)) || race == 6) && rand() % 100 < 100000 * sc_def_int / 100) //強制付与だが完全耐性には無効
@@ -1342,7 +1576,7 @@ int skill_attack(int attack_type, struct block_list* src, struct block_list *dsr
 	if(damage <= 0 || damage < dmg.div_)
 		dmg.blewcount = 0;
 
-	if (skillid == CR_GRANDCROSS || skillid == NPC_DARKGRANDCROSS) {
+	if (skillid == CR_GRANDCROSS || skillid == NPC_DARKCROSS) {
 		if (battle_config.gx_disptype) dsrc = src;
 		if (src == bl) type = 4;
 	}
@@ -2048,7 +2282,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	if(sd && pc_isdead(sd))
 		return 1;
 
-	if ((skillid == CR_GRANDCROSS || skillid == NPC_DARKGRANDCROSS) && src != bl)
+	if ((skillid == CR_GRANDCROSS || skillid == NPC_DARKCROSS) && src != bl)
 		bl = src;
 	if (bl->prev == NULL)
 		return 1;
@@ -2410,7 +2644,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		break;
 
 	case MG_SOULSTRIKE:			/* ソウルストライク */
-	case NPC_DARKSOULSTRIKE:		/*闇ソウルストライク*/
+	case NPC_DARKSTRIKE:		/*闇ソウルストライク*/
 	case MG_COLDBOLT:			/* コールドボルト */
 	case MG_FIREBOLT:			/* ファイアーボルト */
 	case MG_LIGHTNINGBOLT:		/* ライトニングボルト */
@@ -2418,7 +2652,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	case AL_HEAL:				/* ヒール */
 	case AL_HOLYLIGHT:			/* ホーリーライト */
 	case WZ_JUPITEL:			/* ユピテルサンダー */
-	case NPC_DARKJUPITEL:			/*闇ユピテル*/
+	case NPC_DARKTHUNDER:			/*闇ユピテル*/
 	case NPC_MAGICALATTACK:		/* MOB:魔法打?攻? */
 	case PR_ASPERSIO:			/* アスペルシオ */
 		skill_attack(BF_MAGIC,src,src,bl,skillid,skilllv,tick,flag);
@@ -2569,7 +2803,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		break;
 
 	case CR_GRANDCROSS:			/* グランドクロス */
-	case NPC_DARKGRANDCROSS:		/*闇グランドクロス*/
+	case NPC_DARKCROSS:		/*闇グランドクロス*/
 		skill_castend_pos2(src,bl->x,bl->y,skillid,skilllv,tick,0);
 		if(sd)
 			sd->canmove_tick = tick + 1000;
@@ -2641,9 +2875,9 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		}
 		break;
 
-	case NPC_BIND:
-	case NPC_EXPLOSIONSPIRITS:
-	case NPC_INCAGI:
+	case NPC_STOP:
+	case NPC_POWERUP:
+	case NPC_AGIUP:
         clif_skill_nodamage(src,bl,skillid,skilllv,1);
         break;
 
@@ -4060,7 +4294,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		}
 		break;
 
-	case NPC_EXPLOSIONSPIRITS:
+	case NPC_POWERUP:
 		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 		break;
 
@@ -4883,7 +5117,7 @@ int skill_castend_pos2(struct block_list *src, int x, int y, int skillid, int sk
 	case PR_SANCTUARY:			/* サンクチュアリ */
 	case PR_MAGNUS:				/* マグヌスエクソシズム */
 	case CR_GRANDCROSS:			/* グランドクロス */
-	case NPC_DARKGRANDCROSS:	/*闇グランドクロス*/
+	case NPC_DARKCROSS:	/*闇グランドクロス*/
 	case HT_SKIDTRAP:			/* スキッドトラップ */
 	case HT_LANDMINE:			/* ランドマイン */
 	case HT_ANKLESNARE:			/* アンクルスネア */
@@ -9178,7 +9412,7 @@ void skill_init_unit_layout()
 				break;
 			}
 			case CR_GRANDCROSS:
-			case NPC_DARKGRANDCROSS:
+			case NPC_DARKCROSS:
 			{
 				static const int dx[] = {
 					 0, 0,-1, 0, 1,-2,-1, 0, 1, 2,

@@ -5159,14 +5159,14 @@ ATCOMMAND_FUNC(joblevelup) {
 	}
 
 	up_level = 50;
-	if ((sd->class_&MAPID_UPPERMASK) == MAPID_NOVICE) // Novice
+	if (sd->status.class == 0 || sd->status.class == 4001 || sd->status.class == 4023) // Novice
 		up_level = 10;
-	else if ((sd->class_&MAPID_BASEMASK) == MAPID_NOVICE) // S. Novice
+	else if (sd->status.class == 23 || sd->status.class == 4045) // Super Novice
 		up_level = 99;
-	else if (sd->class_&JOBL_UPPER && sd->class_&JOBL_2)
-		up_level = 70; // 2nd Adv Class
-	else if(sd->status.class == 24 || sd->status.class == 25)
-		up_level = 70; // Gunslinger and Ninja
+	else if (sd->status.class >= 4008 && sd->status.class <= 4022) // 2nd Job Advanced Class
+		up_level = 70;
+	else if(sd->status.class == 24 || sd->status.class == 25) // Gunslinger/Ninja
+		up_level = 70;
 
 	if (level > 0) {
 		if (sd->status.job_level == up_level) {
@@ -5182,13 +5182,13 @@ ATCOMMAND_FUNC(joblevelup) {
 				return -1;
 			} else if (sd->status.job_level + level >= battle_config.atcommand_max_job_level_novice)
 				level = battle_config.atcommand_max_job_level_novice - sd->status.job_level;
-		} else if (sd->status.class <= 6) { // 1st Job
+		} else if (sd->status.class <= 6 || sd->status.class == 4046) { // 1st Job
 			if (sd->status.job_level >= battle_config.atcommand_max_job_level_job1) {
 				clif_displaymessage(fd, "You're not authorized to increase more your job level.");
 				return -1;
 			} else if (sd->status.job_level + level >= battle_config.atcommand_max_job_level_job1)
 				level = battle_config.atcommand_max_job_level_job1 - sd->status.job_level;
-		} else if (sd->status.class <= 22) { // 2nd Job
+		} else if (sd->status.class <= 22 || (sd->status.class >= 4047 && sd->status.class <= 4049)) { // Second Job/Star Gladiator/Soul Linker
 			if (sd->status.job_level >= battle_config.atcommand_max_job_level_job2) {
 				clif_displaymessage(fd, "You're not authorized to increase more your job level.");
 				return -1;
@@ -5200,6 +5200,12 @@ ATCOMMAND_FUNC(joblevelup) {
 				return -1;
 			} else if (sd->status.job_level + level >= battle_config.atcommand_max_job_level_supernovice)
 				level = battle_config.atcommand_max_job_level_supernovice - sd->status.job_level;
+		} else if (sd->status.class == 24) { // Gunslinger
+			if (sd->status.job_level + level >= 70)
+				level = 70 - sd->status.job_level;
+		} else if (sd->status.class == 25) { // Ninja
+			if (sd->status.job_level + level >= 70)
+				level = 70 - sd->status.job_level;
 		} else if (sd->status.class == 4001) { // High Novice
 			if (sd->status.job_level >= battle_config.atcommand_max_job_level_highnovice) {
 				clif_displaymessage(fd, "You're not authorized to increase more your job level.");
@@ -9628,16 +9634,16 @@ ATCOMMAND_FUNC(character_joblevel) {
 	if ((pl_sd = map_nick2sd(atcmd_name)) != NULL || ((pl_sd = map_id2sd(atoi(atcmd_name))) != NULL && pl_sd->state.auth)) {
 		if (sd->GM_level >= pl_sd->GM_level) { // only lower or same gm level
 			pl_s_class = pc_calc_base_job(pl_sd->status.class);
+
 			max_level = 50;
-			if (pl_s_class.job == 0) // novice
-				max_level -= 40;
-			// super novices can go up to 99 [celest]
-			else if (pl_s_class.job == 23)
-				max_level += 49;
-			else if(pl_sd->status.class == 24 || pl_sd->status.class == 25)
-				max_level += 20; // Gunslinger and Ninja
-			else if (pl_sd->status.class > 4007 && pl_sd->status.class < 4023) //ƒXƒpƒmƒr‚Æ“]¶E‚ÍJobƒŒƒxƒ‹‚ÌÅ‚‚ª70
-				max_level += 20;
+			if (pl_sd->status.class == 0 || pl_sd->status.class == 4001 || pl_sd->status.class == 4023) // Novice
+				max_level = 10;
+			else if (pl_sd->status.class == 23 || pl_sd->status.class == 4045) // Super Novice
+				max_level = 99;
+			else if (pl_sd->status.class >= 4008 && pl_sd->status.class <= 4022) // 2nd Job Advanced Class
+				max_level = 70;
+			else if(pl_sd->status.class == 24 || pl_sd->status.class == 25) // Gunslinger/Ninja
+				max_level = 70;
 
 			if (level > 0) {
 				if (pl_sd->status.job_level == max_level) {
@@ -9653,13 +9659,13 @@ ATCOMMAND_FUNC(character_joblevel) {
 						return -1;
 					} else if (pl_sd->status.job_level + level >= battle_config.atcommand_max_job_level_novice)
 						level = battle_config.atcommand_max_job_level_novice - pl_sd->status.job_level;
-				} else if (pl_sd->status.class <= 6) { // 1st Job
+				} else if (pl_sd->status.class <= 6 || pl_sd->status.class == 4046) { // 1st Job
 					if (pl_sd->status.job_level >= battle_config.atcommand_max_job_level_job1) {
 						clif_displaymessage(fd, "You're not authorized to increase more the job level of this player.");
 						return -1;
 					} else if (pl_sd->status.job_level + level >= battle_config.atcommand_max_job_level_job1)
 						level = battle_config.atcommand_max_job_level_job1 - pl_sd->status.job_level;
-				} else if (pl_sd->status.class <= 22) { // 2nd Job
+				} else if (pl_sd->status.class <= 22 || (sd->status.class >= 4047 && sd->status.class <= 4049)) { // Second Job/Star Gladiator/Soul Linker
 					if (pl_sd->status.job_level >= battle_config.atcommand_max_job_level_job2) {
 						clif_displaymessage(fd, "You're not authorized to increase more the job level of this player.");
 						return -1;
@@ -9671,6 +9677,12 @@ ATCOMMAND_FUNC(character_joblevel) {
 						return -1;
 					} else if (pl_sd->status.job_level + level >= battle_config.atcommand_max_job_level_supernovice)
 						level = battle_config.atcommand_max_job_level_supernovice - pl_sd->status.job_level;
+				} else if (pl_sd->status.class == 24) { // Gunslinger
+					if (pl_sd->status.job_level + level >= 70)
+						level = 70 - pl_sd->status.job_level;
+				} else if (pl_sd->status.class == 25) { // Ninja
+					if (pl_sd->status.job_level + level >= 70)
+						level = 70 - pl_sd->status.job_level;
 				} else if (pl_sd->status.class == 4001) { // High Novice
 					if (pl_sd->status.job_level >= battle_config.atcommand_max_job_level_highnovice) {
 						clif_displaymessage(fd, "You're not authorized to increase more the job level of this player.");
