@@ -377,7 +377,7 @@ struct threadTestData {
 /*
 ** Print out information about all locking operations.
 **
-** This routine is used for troubleshooting locks on multithreaded
+** This routine is used for troubleshooting locks on multithread
 ** platforms.  Enable by compiling with the -DSQLITE_LOCK_TRACE
 ** command-line option on the compiler.  This code is normally
 ** turned off.
@@ -648,7 +648,7 @@ static int transferOwnership(unixFile *pFile){
   return rc;
 }
 #else
-  /* On single-threaded builds, ownership transfer is a no-op */
+  /* On single-thread builds, ownership transfer is a no-op */
 # define transferOwnership(X) SQLITE_OK
 #endif
 
@@ -1672,7 +1672,7 @@ static pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 /*
 ** The following pair of routine implement mutual exclusion for
-** multi-threaded processes.  Only a single thread is allowed to
+** multi-thread processes.  Only a single thread is allowed to
 ** executed code that is surrounded by EnterMutex() and LeaveMutex().
 **
 ** SQLite uses only a single Mutex.  There is not much critical

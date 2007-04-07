@@ -4607,7 +4607,7 @@ void do_init(const int argc, char **argv) {
 	if (defaultlanguage == 'F') {
 		ladmin_log("Fichier de configuration lu." RETCODE);
 	} else {
-		ladmin_log("Configuration file readed." RETCODE);
+		ladmin_log("Configuration file read." RETCODE);
 	}
 
 	srand(time(NULL));

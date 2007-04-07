@@ -144,7 +144,7 @@ int parse_nezumirc_1(int fd) {
 		close(fd);
 #endif
 		delete_session(fd);
-		printf(CL_WHITE "status: " CL_RESET "remote control client has disconnected '%d' \n", fd);
+		printf(CL_WHITE "Status: " CL_RESET "remote control client has disconnected '%d' \n", fd);
 		write_log("'NezumiRC': Disconnection (session #%d, ip: %s)." RETCODE, fd, ip);
 		return 0;
 	}
@@ -217,7 +217,7 @@ static int parse_nezumirc(int fd) {
 		close(fd);
 #endif
 		delete_session(fd);
-		printf(CL_WHITE "status: " CL_RESET "remote control client has disconnected '%d' \n", fd);
+		printf(CL_WHITE "Status: " CL_RESET "remote control client has disconnected '%d' \n", fd);
 		write_log("'ladmin': Disconnection (session #%d, ip: %s)." RETCODE, fd, ip);
 		return 0;
 	}

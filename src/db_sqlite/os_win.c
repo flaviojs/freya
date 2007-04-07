@@ -1073,7 +1073,7 @@ static int inMutex = 0;
 
 /*
 ** The following pair of routine implement mutual exclusion for
-** multi-threaded processes.  Only a single thread is allowed to
+** multi-thread processes.  Only a single thread is allowed to
 ** executed code that is surrounded by EnterMutex() and LeaveMutex().
 **
 ** SQLite uses only a single Mutex.  There is not much critical

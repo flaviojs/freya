@@ -1121,7 +1121,7 @@ void read_constdb(void) {
 	}
 	fclose(fp);
 
-	printf("DB '" CL_WHITE "db/const.txt" CL_RESET "' readed.\n");
+	printf(CL_WHITE "Status: " CL_RESET " '" CL_WHITE "db/const.txt" CL_RESET "' read.\n");
 }
 
 unsigned char* parse_script(unsigned char *src, int line)
@@ -4916,7 +4916,7 @@ int buildin_setmapflag(struct script_state *st) {
 			break;
 		case MF_NOSAVE: // 2
 //			map[m].flag.nosave = 1; // use setmapflagnosave function
-			printf(CL_YELLOW "WARNING: Don't use setmapflag function to set 'nosave' map flag." CL_RESET " Use setmapflagnosave function.\n");
+			printf(CL_YELLOW "Warning: " CL_RESET "Don't use setmapflag function to set 'nosave' map flag." CL_RESET " Use setmapflagnosave function.\n");
 			break;
 		case MF_NOBRANCH: // 3
 			map[m].flag.nobranch = 1; // forbid usage of Dead Branch (604), Bloody Branch (12103) and Poring Box (12109)
@@ -5015,15 +5015,15 @@ int buildin_setmapflag(struct script_state *st) {
 			break;
 		case MF_PVP_NIGHTMAREDROP: // 34
 //			map[m].flag.pvp_nightmaredrop = 1; // need parameter to be activated
-			printf(CL_YELLOW "WARNING: Don't use setmapflag function to set 'pvp_nightmaredrop' map flag." CL_RESET " You can only use mapflag in script files.\n");
+			printf(CL_YELLOW "Warning: " CL_RESET "Don't use setmapflag function to set 'pvp_nightmaredrop' map flag." CL_RESET " You can only use mapflag in script files.\n");
 			break;
 		case MT_NOGMCMD: // 35
 //			map[m].flag.nogmcmd = 1; // need parameter to be activated
-			printf(CL_YELLOW "WARNING: Don't use setmapflag function to set 'nogmcmd' map flag." CL_RESET " You can only use mapflag in script files.\n");
+			printf(CL_YELLOW "Warning: " CL_RESET "Don't use setmapflag function to set 'nogmcmd' map flag." CL_RESET " You can only use mapflag in script files.\n");
 			break;
 		case MT_MINGMLVL: // 36
 //			map[m].flag.mingmlvl = 1; // need parameter to be activated
-			printf(CL_YELLOW "WARNING: Don't use setmapflag function to set 'mingmlvl' map flag." CL_RESET " You can only use mapflag in script files.\n");
+			printf(CL_YELLOW "Warning: " CL_RESET "Don't use setmapflag function to set 'mingmlvl' map flag." CL_RESET " You can only use mapflag in script files.\n");
 			break;
 		case MF_GUILD_DUNGEON: // 37
 			map[m].flag.guild_dungeon = 1;
@@ -7574,7 +7574,7 @@ void op_2num(struct script_state *st, int op, int i1, int i2)
 		break;
 	case C_DIV:
 		if (i2 == 0) {
-			printf(CL_RED "ERROR: script error, trying to divide by 0 (division operator). POSSIBLE ABUSE !" CL_RESET "\n");
+			printf(CL_RED "Error: " CL_RESET "script error, trying to divide by 0 (division operator). POSSIBLE ABUSE !" CL_RESET "\n");
 			// TODO: Find a less goofy way to alert System operators
 			clif_scriptmes(script_rid2sd(st), st->oid, "Sorry, I am feeling sick. Please call me a Game Master !");
 			clif_scriptclose(script_rid2sd(st), st->oid);
@@ -7584,7 +7584,7 @@ void op_2num(struct script_state *st, int op, int i1, int i2)
 		break;
 	case C_MOD:
 		if (i2 == 0) {
-			printf(CL_RED "ERROR: script error, trying to divide by 0 (modulo operator). POSSIBLE ABUSE !" CL_RESET "\n");
+			printf(CL_RED "Error: " CL_RESET "script error, trying to divide by 0 (modulo operator). POSSIBLE ABUSE !" CL_RESET "\n");
 			// TODO: Find a less goofy way to alert System operators
 			clif_scriptmes(script_rid2sd(st), st->oid, "Sorry, I am feeling sick. Please call me a Game Master !");
 			clif_scriptclose(script_rid2sd(st), st->oid);
@@ -8180,7 +8180,7 @@ int script_config_read(char *cfgName) {
 
 	fclose(fp);
 
-	printf("File '" CL_WHITE "%s" CL_RESET "' readed.\n", cfgName);
+	printf("File '" CL_WHITE "%s" CL_RESET "' read.\n", cfgName);
 
 	return 0;
 }

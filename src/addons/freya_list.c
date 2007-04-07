@@ -1,4 +1,4 @@
-// $Id: freya_list.c 162 2006-01-31 19:37:17Z DarkRaven $
+// $Id: freya_list.c 162 2006-01-31 19:37:17Z Yor $
 // Freya List Addon
 //
 // This addon will allow your server to be listed on the "Freya Servers List"
@@ -168,7 +168,7 @@ int inet_aton(const char *cp, struct in_addr *addr) {
 
 DLLFUNC ModuleHeader MOD_HEADER(freya_list) = {
 	"FreyaList",
-	"$Id: freya_list.c 162 2006-01-31 19:37:17Z DarkRaven $",
+	"$Id: freya_list.c 162 2006-01-31 19:37:17Z Yor $",
 	"This addon will allow your server to be listed on the \"Nezumi Servers Yellow Pages\" which is on the website.",
 	MOD_VERSION,
 	ADDONS_LOGIN

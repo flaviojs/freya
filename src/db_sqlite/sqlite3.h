@@ -1252,7 +1252,7 @@ extern char *sqlite3_temp_directory;
 ** database, SQLITE_ERROR is returned. In either of these cases, the 
 ** library is not reset and remains unusable.
 **
-** This function is *not* threadsafe. Calling this from within a threaded
+** This function is *not* threadsafe. Calling this from within a thread
 ** application when threads other than the caller have used SQLite is
 ** dangerous and will almost certainly result in malfunctions.
 **

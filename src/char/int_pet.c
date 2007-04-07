@@ -108,7 +108,7 @@ void inter_pet_init() {
 				pet_newid = p->pet_id + 1;
 			numdb_insert(pet_db, (intptr_t)p->pet_id, p);
 		} else {
-			printf(CL_WHITE "warning: " CL_RESET "corrupted line on pet database (line %d)' \n", c);
+			printf(CL_YELLOW "Warning: " CL_RESET "corrupted line on pet database (line %d)' \n", c);
 			FREE(p);
 		}
 		c++;
@@ -136,7 +136,7 @@ void inter_pet_save() {
 
 	if((fp = lock_fopen(pet_txt, &lock)) == NULL)
 	{
-		printf(CL_WHITE "error: " CL_RESET "failed to save pet data. data lost \n");
+		printf(CL_WHITE "Error: " CL_RESET "failed to save pet data. data lost \n");
 		return;
 	}
 
@@ -287,7 +287,7 @@ int mapif_save_pet(int fd, int account_id, struct s_pet *data)
 
 	if (sizeof(struct s_pet) != len - 8)
 	{
-		printf(CL_WHITE "error: " CL_RESET "failed to save pet data. data size mismatch \n");
+		printf(CL_WHITE "Error: " CL_RESET "failed to save pet data. data size mismatch \n");
 	} else {
 		pet_id = data->pet_id;
 		p = numdb_search(pet_db, (intptr_t)pet_id);

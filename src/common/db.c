@@ -369,7 +369,7 @@ struct dbn* db_insert(struct dbt *table, void* key, void* data) {
 				}
 				if (i == table->free_count || table->free_count <= 0)
 				{
-					printf(CL_WHITE "warning: " CL_RESET "cannot find deleted database node \n");
+					printf(CL_YELLOW "Warning: " CL_RESET "cannot find deleted database node \n");
 				} else {
 					table->free_count--;
 					if (table->cmp == strdb_cmp) {
@@ -396,7 +396,7 @@ struct dbn* db_insert(struct dbt *table, void* key, void* data) {
 #endif
 	if (p == NULL)
 	{
-		printf(CL_WHITE "error: " CL_RESET "unable to insert database values. system is out of memory \n");
+		printf(CL_WHITE "Error: " CL_RESET "unable to insert database values. system is out of memory \n");
 		return NULL;
 	}
 	p->parent= NULL;
@@ -518,7 +518,7 @@ void db_foreach(struct dbt *table, int (*func)(void*, void*, va_list), ...) {
 	db_free_unlock(table);
 
 	if(count)
-		printf(CL_WHITE "warning: " CL_RESET "memory corrupted. lost %d item(s). allocated at '%s' line '%d' \n", count, table->alloc_file, table->alloc_line);
+		printf(CL_YELLOW "Warning: " CL_RESET "memory corrupted. lost %d item(s). allocated at '%s' line '%d' \n", count, table->alloc_file, table->alloc_line);
 }
 
 void db_final(struct dbt *table, int (*func)(void*, void*, va_list), ...) {

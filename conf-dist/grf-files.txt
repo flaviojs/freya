@@ -1,5 +1,25 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                   __                         _               
+//                /\ \ \___ _____   _ _ __ ___ (_)              
+//               /  \/ / _ \_  / | | | '_ ` _ \| |              
+//              / /\  /  __// /| |_| | | | | | | |              
+//              \_\ \/ \___/___|\__,_|_| |_| |_|_|              
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//
+// Client Data Loading Configuration
+
+//------------------------------------------------
+// GRF Files
+//------------------------------------------------
+
 data: C:\Program Files\Gravity\RO\data.grf
 sdata: C:\Program Files\Gravity\RO\sdata.grf
 //adata: C:\Program Files\Gravity\RO\adata.grf
+
+//------------------------------------------------
+// Client Data Directory
+//------------------------------------------------
+
 //data_dir: C:\Program Files\Gravity\RO\
-//afm_dir:

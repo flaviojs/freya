@@ -1,4 +1,4 @@
-// $Id: login-converter.c 316 2006-02-25 08:40:19Z DarkRaven $
+// $Id: login-converter.c 316 2006-02-25 08:40:19Z Yor $
 // original : login2.c 2003/01/28 02:29:17 Rev.1.1.1.1
 // login data file to mysql conversion utility.
 
@@ -212,11 +212,11 @@ static inline void init_db(void) {
 			/* Some checks */
 			if (account_id > END_ACCOUNT_NUM) {
 				printf(CL_RED "init_db: ******Error: an account has an id higher than %d\n", END_ACCOUNT_NUM);
-				printf(       "         account id #%d -> account not readed (saved in log file)." CL_RESET "\n", account_id);
+				printf(       "         account id #%d -> account not read (saved in log file)." CL_RESET "\n", account_id);
 				continue;
 			} else if (account_id < 0) {
 				printf(CL_RED "init_db: ******Error: an account has an invalid id (%d)\n", account_id);
-				printf(       "         account id #%d -> account not readed (saved in log file)." CL_RESET "\n", account_id);
+				printf(       "         account id #%d -> account not read (saved in log file)." CL_RESET "\n", account_id);
 				continue;
 			}
 			userid[24] = '\0';
@@ -224,11 +224,11 @@ static inline void init_db(void) {
 			for(j = 0; j < auth_num; j++) {
 				if (auth_dat[j].account_id == account_id) {
 					printf(CL_RED "init_db: ******Error: an account has an identical id to another.\n");
-					printf(       "         account id #%d -> new account not readed (saved in log file)." CL_RESET "\n", account_id);
+					printf(       "         account id #%d -> new account not read (saved in log file)." CL_RESET "\n", account_id);
 					break;
 				} else if (strcmp(auth_dat[j].userid, userid) == 0) {
 					printf(CL_RED "init_db: ******Error: account name already exists.\n");
-					printf(       "         account name '%s' -> new account not readed.\n", userid); /* 2 lines, account name can be long. */
+					printf(       "         account name '%s' -> new account not read.\n", userid); /* 2 lines, account name can be long. */
 					printf(       "         Account saved in log file." CL_RESET "\n");
 					break;
 				}

@@ -1592,7 +1592,7 @@ int parse_admin(int fd) {
 		close(fd);
 #endif
 		delete_session(fd);
-		printf(CL_WHITE "status: " CL_RESET "ladmin session '%d' has disconnected \n", fd);
+		printf(CL_WHITE "Status: " CL_RESET "ladmin session '%d' has disconnected \n", fd);
 		write_log("'ladmin': Disconnection (session #%d, ip: %s)." RETCODE, fd, ip);
 		return 0;
 	}
@@ -1600,7 +1600,7 @@ int parse_admin(int fd) {
 	while(RFIFOREST(fd) >= 2 && !session[fd]->eof)
 	{
 		if(display_parse_admin)
-			printf(CL_WHITE "status: " CL_RESET "session '%d', packet '0x%x' (total to read '%d') \n", fd, RFIFOW(fd, 0), RFIFOREST(fd));
+			printf(CL_WHITE "Status: " CL_RESET "session '%d', packet '0x%x' (total to read '%d') \n", fd, RFIFOW(fd, 0), RFIFOREST(fd));
 
 		i = 0;
 		while(parse_func_table[i].packet != 0) {
@@ -1671,7 +1671,7 @@ int parse_admin(int fd) {
 			}
 			write_log("'ladmin': End of connection, unknown packet (ip: %s)" RETCODE, ip);
 			session[fd]->eof = 1;
-			printf(CL_WHITE "status: " CL_RESET "ladmin session '%d' has disconnected. unknown packet from '%s' \n", fd, ip);
+			printf(CL_WHITE "Status: " CL_RESET "ladmin session '%d' has disconnected. unknown packet from '%s' \n", fd, ip);
 			return 0;
 		}
 

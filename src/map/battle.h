@@ -1,4 +1,4 @@
-// $Id: battle.h 659 2006-06-15 20:25:42Z DarkRaven $
+// $Id: battle.h 659 2006-06-15 20:25:42Z Yor $
 #ifndef _BATTLE_H_
 #define _BATTLE_H_
 

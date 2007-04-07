@@ -1,4 +1,4 @@
-// $Id: login.c 699 2006-07-12 22:37:46Z DarkRaven $
+// $Id: login.c 699 2006-07-12 22:37:46Z Yor $
 
 #include <config.h>
 
@@ -200,7 +200,7 @@ static int check_ipmask(unsigned int ip, const char *str) { // not inline, calle
 		for(i = 0; i < m; i++)
 			mask = (mask >> 1) | 0x80000000;
 	} else {
-		printf(CL_WHITE "warning: " CL_RESET "invalid ip mask (%s) \n", str);
+		printf(CL_YELLOW "Warning: " CL_RESET "invalid ip mask (%s) \n", str);
 		return 0;
 	}
 	return ((ntohl(ip) & mask) == (ntohl(ip2) & mask));
@@ -906,7 +906,7 @@ int parse_fromchar(int fd) {
 	{
 		if(id < MAX_SERVERS)
 		{
-			printf(CL_WHITE "status: " CL_RESET "character server '%s' has disconnected \n", server[id].name);
+			printf(CL_WHITE "Status: " CL_RESET "character server '%s' has disconnected \n", server[id].name);
 			write_log("Char-server '%s' has disconnected (ip: %s)." RETCODE, server[id].name, ip);
 			server_fd[id] = -1;
 			memset(&server[id], 0, sizeof(struct mmo_char_server));
@@ -940,7 +940,7 @@ int parse_fromchar(int fd) {
 	while (RFIFOREST(fd) >= 2 && !session[fd]->eof)
 	{
 		if(display_parse_fromchar == 2 || (display_parse_fromchar == 1 && RFIFOW(fd,0) != 0x2714))
-			printf(CL_WHITE "info: " CL_RESET "connection #%d, packet:0x%x (with being read: %d bytes) \n", fd, RFIFOW(fd, 0), RFIFOREST(fd));
+			printf(CL_WHITE "Info: " CL_RESET "connection #%d, packet:0x%x (with being read: %d bytes) \n", fd, RFIFOW(fd, 0), RFIFOREST(fd));
 
 		switch (RFIFOW(fd,0))
 		{
@@ -1666,9 +1666,9 @@ int parse_fromchar(int fd) {
 				fclose(logfp);
 			}
 		  }
-			printf(CL_WHITE "error: " CL_RESET "unknown packet received from character server (0x%x) \n", RFIFOW(fd, 0));
+			printf(CL_WHITE "Error: " CL_RESET "unknown packet received from character server (0x%x) \n", RFIFOW(fd, 0));
 			session[fd]->eof = 1;
-			printf(CL_WHITE "status: " CL_RESET "disconnected from character server \n");
+			printf(CL_WHITE "Status: " CL_RESET "disconnected from character server \n");
 			return 0;
 		}
 	}
@@ -1740,12 +1740,12 @@ int parse_login(int fd) {
 		if (display_parse_login == 1) {
 			if (RFIFOW(fd,0) == 0x64 || RFIFOW(fd,0) == 0x01dd || RFIFOW(fd,0) == 0x027c) {
 				if (RFIFOREST(fd) >= ((RFIFOW(fd,0) == 0x64) ? 55 : ((RFIFOW(fd,0) == 0x01dd) ? 47 : 60)))
-					printf(CL_WHITE "info: " CL_RESET "connection #%d, packet 0x%x (with being read: %d), account %s \n", fd, RFIFOW(fd, 0), RFIFOREST(fd), RFIFOP(fd, 6));
+					printf(CL_WHITE "Info: " CL_RESET "connection #%d, packet 0x%x (with being read: %d), account %s \n", fd, RFIFOW(fd, 0), RFIFOREST(fd), RFIFOP(fd, 6));
 			} else if (RFIFOW(fd,0) == 0x2710) {
 				if (RFIFOREST(fd) >= 86)
-					printf(CL_WHITE "info: " CL_RESET "connection #%d, packet 0x%x (with being read: %d), server %s \n", fd, RFIFOW(fd, 0), RFIFOREST(fd), RFIFOP(fd, 60));
+					printf(CL_WHITE "Info: " CL_RESET "connection #%d, packet 0x%x (with being read: %d), server %s \n", fd, RFIFOW(fd, 0), RFIFOREST(fd), RFIFOP(fd, 60));
 			} else
-				printf(CL_WHITE "info: " CL_RESET "connection #%d, packet 0x%x (with being read: %d) \n", fd, RFIFOW(fd, 0), RFIFOREST(fd));
+				printf(CL_WHITE "Info: " CL_RESET "connection #%d, packet 0x%x (with being read: %d) \n", fd, RFIFOW(fd, 0), RFIFOREST(fd));
 		}
 
 		switch(RFIFOW(fd,0)) {
@@ -1835,9 +1835,9 @@ int parse_login(int fd) {
 					} else {
 						int k;
 						if(auth_dat[i].level)
-							printf(CL_WHITE "info: " CL_RESET "gamemaster '%s' has connected (account level %d) \n", account.userid, auth_dat[i].level);
+							printf(CL_WHITE "Info: " CL_RESET "gamemaster '%s' has connected (account level %d) \n", account.userid, auth_dat[i].level);
 						else
-							printf(CL_WHITE "info: " CL_RESET "player '%s' has connected \n", account.userid);
+							printf(CL_WHITE "Info: " CL_RESET "player '%s' has connected \n", account.userid);
 						j = 47;
 						for(k = 0; k < MAX_SERVERS; k++) { // max number of char-servers (and account_id values: 0 to max-1)
 							if (server_fd[k] >= 0) {
@@ -1951,7 +1951,7 @@ int parse_login(int fd) {
 		case 0x791a:
 			if(session[fd]->session_data)
 			{
-				printf(CL_WHITE "warning: " CL_RESET "duplicate MD5 key \n");
+				printf(CL_YELLOW "Warning: " CL_RESET "duplicate MD5 key \n");
 				session[fd]->eof = 1;
 			} else {
 				struct login_session_data *ld;
@@ -2004,7 +2004,7 @@ int parse_login(int fd) {
 			if (result == -1 && account.sex == 2 && account.account_id >= 0 && account.account_id < MAX_SERVERS && server_fd[account.account_id] == -1) {
 				write_log("Connection of the char-server '%s' accepted (account: %s, ip: %s)" RETCODE,
 				          server_name, account.userid, ip);
-				printf(CL_WHITE "status: " CL_RESET "character server '%s' has connected (from %d.%d.%d.%d:%d) \n", server_name, RFIFOB(fd,54), RFIFOB(fd,55), RFIFOB(fd,56), RFIFOB(fd,57), RFIFOW(fd,58));
+				printf(CL_WHITE "Status: " CL_RESET "character server '%s' has connected (from %d.%d.%d.%d:%d) \n", server_name, RFIFOB(fd,54), RFIFOB(fd,55), RFIFOB(fd,56), RFIFOB(fd,57), RFIFOW(fd,58));
 				memset(&server[account.account_id], 0, sizeof(struct mmo_char_server));
 				server[account.account_id].ip          = RFIFOL(fd,54);
 				server[account.account_id].port        = RFIFOW(fd,58);
@@ -2029,10 +2029,10 @@ int parse_login(int fd) {
 			} else {
 				if(server_fd[account.account_id] != -1)
 				{
-					printf(CL_WHITE "warning: " CL_RESET "character server '%s' has already connected \n", server_name);
+					printf(CL_YELLOW "Warning: " CL_RESET "character server '%s' has already connected \n", server_name);
 					write_log("Connection of the char-server '%s' REFUSED - already connected (account: %d-%s, ip: %s)" RETCODE, server_name, account.account_id, account.userid, ip);
 				} else {
-					printf(CL_WHITE "warning: " CL_RESET "connection with character server '%s' is refused \n", server_name);
+					printf(CL_YELLOW "Warning: " CL_RESET "connection with character server '%s' is refused \n", server_name);
 					write_log("Connection of the char-server '%s' REFUSED (account: %s, ip: %s)" RETCODE, server_name, account.userid, ip);
 				}
 				WPACKETW(0) = 0x2711;
@@ -2162,7 +2162,7 @@ int parse_login(int fd) {
 					/* If remote administration is enabled and password sent by client matches */
 					if (admin_state != 0 && password_check(admin_pass, password, "")) {
 						write_log("'ladmin'-login: Connection in administration mode accepted (non encrypted password, ip: %s)" RETCODE, ip);
-						printf(CL_WHITE "status: " CL_RESET "remote administration client has succesfully connected \n");
+						printf(CL_WHITE "Status: " CL_RESET "remote administration client has succesfully connected \n");
 						session[fd]->func_parse = parse_admin;
 						realloc_fifo(fd, RFIFOSIZE_SERVER, WFIFOSIZE_SERVER);
 						/* send answer */
@@ -2185,7 +2185,7 @@ int parse_login(int fd) {
 					struct login_session_data *ld = session[fd]->session_data;
 					if(!ld)
 					{
-						printf(CL_WHITE "warning: " CL_RESET "missing required MD5 key for ladmin connection \n");
+						printf(CL_YELLOW "Warning: " CL_RESET "missing required MD5 key for ladmin connection \n");
 						session[fd]->eof = 1;
 						WPACKETW(0) = 0x7919;
 						WPACKETB(2) = 1;
@@ -2194,7 +2194,7 @@ int parse_login(int fd) {
 						memcpy(password, RFIFOP(fd,4), 16);
 						if (admin_state != 0 && password_check(admin_pass, password, ld->md5key))
 						{
-							printf(CL_WHITE "status: " CL_RESET "connected to ladmin with encrypted password \n");
+							printf(CL_WHITE "Status: " CL_RESET "connected to ladmin with encrypted password \n");
 							write_log("'ladmin'-login: Connection in administration mode accepted (encrypted password, ip: %s)" RETCODE, ip);
 							session[fd]->func_parse = parse_admin;
 							realloc_fifo(fd, RFIFOSIZE_SERVER, WFIFOSIZE_SERVER);
@@ -3187,7 +3187,7 @@ static inline void init_db(void)
 
 	if((fp = fopen(account_filename, "r")) == NULL)
 	{
-		printf(CL_WHITE "error: " CL_RESET "unable to open account database \n");
+		printf(CL_WHITE "Error: " CL_RESET "unable to open account database \n");
 		FREE(line);
 		FREE(str);
 		return;
@@ -3234,12 +3234,12 @@ static inline void init_db(void)
 
 			if (account_id > END_ACCOUNT_NUM)
 			{
-				printf(CL_WHITE "warning: " CL_RESET "account %d has exceeded maximum account id limit (limit is %d) \n", account_id, END_ACCOUNT_NUM);
+				printf(CL_YELLOW "Warning: " CL_RESET "account %d has exceeded maximum account id limit (limit is %d) \n", account_id, END_ACCOUNT_NUM);
 				write_log("init_db: ******Error: an account has an id (%d) higher than %d -> account not read (saved in next line):" RETCODE, account_id, END_ACCOUNT_NUM);
 				write_log("%s", line);
 				continue;
 			} else if (account_id < 0) {
-				printf(CL_WHITE "warning: " CL_RESET "account %d is invalid \n", account_id);
+				printf(CL_YELLOW "Warning: " CL_RESET "account %d is invalid \n", account_id);
 				write_log("init_db: ******Error: an account has an invalid id (%d) -> account not read (saved in next line):" RETCODE, account_id);
 				write_log("%s", line);
 				continue;
@@ -3248,13 +3248,13 @@ static inline void init_db(void)
 			remove_control_chars(userid);
 			for(j = 0; j < auth_num; j++) {
 				if (auth_dat[j].account_id == account_id) {
-					printf(CL_WHITE "warning: " CL_RESET "account %d has one or more duplicate(s) \n", account_id);
-					write_log("init_db: ******Error: an account has an identical id (%d) to another -> new account not readed (saved in next line):" RETCODE, account_id);
+					printf(CL_YELLOW "Warning: " CL_RESET "account %d has one or more duplicate(s) \n", account_id);
+					write_log("init_db: ******Error: an account has an identical id (%d) to another -> new account not read (saved in next line):" RETCODE, account_id);
 					write_log("%s", line);
 					break;
 				} else if (strcmp(auth_dat[j].userid, userid) == 0) {
-					printf(CL_WHITE "warning: " CL_RESET "duplicate accountname (%d - %s) \n", account_id, userid);
-					write_log("init_db: ******Error: an account has an identical name ('%s') to another -> new account not readed (saved in next line):" RETCODE, userid);
+					printf(CL_YELLOW "Warning: " CL_RESET "duplicate accountname (%d - %s) \n", account_id, userid);
+					write_log("init_db: ******Error: an account has an identical name ('%s') to another -> new account not read (saved in next line):" RETCODE, userid);
 					write_log("%s", line);
 					break;
 				}
@@ -3265,7 +3265,7 @@ static inline void init_db(void)
 
 			if(auth_num % 20 == 19)
 			{
-				printf(CL_WHITE "status: " CL_RESET "reading account #%d \r", auth_num + 1);
+				printf(CL_WHITE "Status: " CL_RESET "reading account #%d \r", auth_num + 1);
 				fflush(stdout);
 			}
 
@@ -3303,7 +3303,7 @@ static inline void init_db(void)
 			} else {
 				if(e_mail_check(email) == 0)
 				{
-					printf(CL_WHITE "warning: " CL_RESET "invalid account email (%s - %d). using default email \n", tmp_account.userid, tmp_account.account_id);
+					printf(CL_YELLOW "Warning: " CL_RESET "invalid account email (%s - %d). using default email \n", tmp_account.userid, tmp_account.account_id);
 					strcpy(tmp_account.email, "a@a.com");
 				} else {
 					remove_control_chars(email);
@@ -3421,42 +3421,42 @@ static inline void init_db(void)
 #ifdef TXT_ONLY
 	if(num_accounts == 0)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "no accounts found from %s \n", account_filename);
+		printf(CL_YELLOW "Warning: " CL_RESET "no accounts found from %s \n", account_filename);
 		write_log("No account found in '%s'." RETCODE, account_filename);
 	} else {
 		if(num_accounts == 1)
 		{
-			printf(CL_WHITE "info: " CL_RESET "one account found from %s \n", account_filename);
+			printf(CL_WHITE "Info: " CL_RESET "one account found from %s \n", account_filename);
 			sprintf(line, "1 account found in '%s',", account_filename);
 		} else {
-			printf(CL_WHITE "info: " CL_RESET "%d accounts found from %s \n", num_accounts, account_filename);
+			printf(CL_WHITE "Info: " CL_RESET "%d accounts found from %s \n", num_accounts, account_filename);
 			sprintf(line, "%d accounts found in '%s',", num_accounts, account_filename);
 		}
 #endif
 #ifdef USE_SQL
 	if(num_accounts == 0)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "no accounts found from %s \n", login_db);
+		printf(CL_YELLOW "Warning: " CL_RESET "no accounts found from %s \n", login_db);
 		write_log("No account found in database '%s'." RETCODE, login_db);
 	} else {
 		if(num_accounts == 1)
 		{
-			printf(CL_WHITE "info: " CL_RESET "one account found from %s \n", login_db);
+			printf(CL_WHITE "Info: " CL_RESET "one account found from %s \n", login_db);
 			sprintf(line, "1 account found in database '%s',", login_db);
 		} else {
-			printf(CL_WHITE "info: " CL_RESET "%d accounts found from %s \n", num_accounts, login_db);
+			printf(CL_WHITE "Info: " CL_RESET "%d accounts found from %s \n", num_accounts, login_db);
 			sprintf(line, "%d accounts found in database '%s',", num_accounts, login_db);
 		}
 #endif
 		if(GM_counter == 0)
 		{
-			printf(CL_WHITE "info: " CL_RESET "no gamemaster and ");
+			printf(CL_WHITE "Info: " CL_RESET "no gamemaster and ");
 			sprintf(str, "%s of which is no GM account and", line);
 		} else if (GM_counter == 1) {
-			printf(CL_WHITE "info: " CL_RESET "one gamemaster and ");
+			printf(CL_WHITE "Info: " CL_RESET "one gamemaster and ");
 			sprintf(str, "%s of which is 1 GM account and", line);
 		} else {
-			printf(CL_WHITE "info: " CL_RESET "%d gamemasters and ", GM_counter);
+			printf(CL_WHITE "Info: " CL_RESET "%d gamemasters and ", GM_counter);
 			sprintf(str, "%s of which are %d GM accounts and", line, GM_counter);
 		}
 		if(server_count == 0)
@@ -3490,7 +3490,7 @@ int char_anti_freeze_system(int tid, unsigned int tick, intptr_t id, intptr_t da
 		{
 			if(anti_freeze_interval != 0 && server_freezeflag[i]-- < 1)
 			{
-				printf(CL_WHITE "warning: " CL_RESET "character server '%s' is frozen. disconnected \n", server[i].name);
+				printf(CL_YELLOW "Warning: " CL_RESET "character server '%s' is frozen. disconnected \n", server[i].name);
 				write_log("Anti-freeze system: Char-server #%d '%s' is frozen -> disconnection." RETCODE, i, server[i].name);
 				session[server_fd[i]]->eof = 1;
 			} else {
@@ -3560,32 +3560,32 @@ int parse_console(char *buf) {
 			if(param[0] == '\0')
 			{
 				if(admin_state != 0)
-					printf(CL_WHITE "info: " CL_RESET "remote admin connections are enabled \n");
+					printf(CL_WHITE "Info: " CL_RESET "remote admin connections are enabled \n");
 				else
-					printf(CL_WHITE "info: " CL_RESET "remote admin connections are disabled \n");
+					printf(CL_WHITE "Info: " CL_RESET "remote admin connections are disabled \n");
 			} else {
 				i = config_switch(param);
 				if (i < 0 || i > 1)
-					printf(CL_WHITE "info: " CL_RESET "usage ladmin | ladmin on | ladmin off \n");
+					printf(CL_WHITE "Info: " CL_RESET "usage ladmin | ladmin on | ladmin off \n");
 				else if (i == 1) {
 					if (admin_state != 0)
-					printf(CL_WHITE "info: " CL_RESET "remote admin connections are already enabled \n");
+					printf(CL_WHITE "Info: " CL_RESET "remote admin connections are already enabled \n");
 					else {
 						admin_state = 1;
-						printf(CL_WHITE "info: " CL_RESET "remote admin connections are now enabled \n");
+						printf(CL_WHITE "Info: " CL_RESET "remote admin connections are now enabled \n");
 						if (admin_pass[0] == '\0')
 						{
-							printf(CL_WHITE "warning: " CL_RESET "admin password is not defined \n");
+							printf(CL_YELLOW "Warning: " CL_RESET "admin password is not defined \n");
 						} else if (strcmp(admin_pass, "admin") == 0) {
-							printf(CL_WHITE "warning: " CL_RESET "admin password is default \n");
+							printf(CL_YELLOW "Warning: " CL_RESET "admin password is default \n");
 						}
 					}
 				} else {
 					if(admin_state == 0)
-						printf(CL_WHITE "info: " CL_RESET "remote admin connections are already disabled \n");
+						printf(CL_WHITE "Info: " CL_RESET "remote admin connections are already disabled \n");
 					else {
 						admin_state = 0;
-						printf(CL_WHITE "info: " CL_RESET "remote admin connections are now disabled \n");
+						printf(CL_WHITE "Info: " CL_RESET "remote admin connections are now disabled \n");
 						j = 0;
 						for(i = 0; i < fd_max; i++)
 							if (session[i] && session[i]->func_parse == parse_admin) {
@@ -3599,7 +3599,7 @@ int parse_console(char *buf) {
 								j++;
 							}
 						if(j > 0)
-							printf(CL_WHITE "status: " CL_RESET "all remote admin connections are disconnected \n");
+							printf(CL_WHITE "Status: " CL_RESET "all remote admin connections are disconnected \n");
 					}
 				}
 			}
@@ -3607,7 +3607,7 @@ int parse_console(char *buf) {
 #ifdef TXT_ONLY
 		} else if (strcasecmp("save", command) == 0) {
 			save_account(0, 1);
-			printf(CL_WHITE "status: " CL_RESET "account database has been saved \n");
+			printf(CL_WHITE "Status: " CL_RESET "account database has been saved \n");
 #endif
 
 		} else if (strcasecmp("?", command) == 0 || strcasecmp("h", command) == 0 || strcasecmp("help", command) == 0 || strcasecmp("aide", command) == 0) {
@@ -3642,13 +3642,13 @@ int parse_console(char *buf) {
 		           strcasecmp("consol_off", command) == 0||
 		           strcasecmp("console", command) == 0) {
 			if (strcasecmp("console", command) == 0 && strcasecmp("off", param) != 0) {
-				printf(CL_WHITE "error: " CL_RESET "unknown parameter \n");
+				printf(CL_WHITE "Error: " CL_RESET "unknown parameter \n");
 			} else {
-				printf(CL_WHITE "info: " CL_RESET "console is now disabled \n");
+				printf(CL_WHITE "Info: " CL_RESET "console is now disabled \n");
 				console_on = 0;
 			}
 		} else {
-			printf(CL_WHITE "error: " CL_RESET "unknown command \n");
+			printf(CL_WHITE "Error: " CL_RESET "unknown command \n");
 		}
 	}
 	return 0;
@@ -3666,7 +3666,7 @@ static void login_config_read(const char *cfgName)
 
 	if ((fp = fopen(cfgName, "r")) == NULL)
 	{
-			printf(CL_WHITE "warning: " CL_RESET "configuration file %s not found \n", cfgName);
+			printf(CL_YELLOW "Warning: " CL_RESET "configuration file %s not found \n", cfgName);
 			return;
 	}
 
@@ -4008,7 +4008,7 @@ static void login_config_read(const char *cfgName)
 				set_proxy_dnsbl(w2);
 #endif
 			} else if (strcasecmp(w1, "import") == 0) {
-				printf(CL_WHITE "status: " CL_RESET "imported configuration file %s \n", w2);
+				printf(CL_WHITE "Status: " CL_RESET "imported configuration file %s \n", w2);
 				login_config_read(w2);
 			}
 		}
@@ -4023,13 +4023,13 @@ static inline void display_conf_warnings(void)
 {
 	if(login_port < 1024 || login_port > 65535)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "unable to listen port %d. listening port 6900 \n", login_port);
+		printf(CL_YELLOW "Warning: " CL_RESET "unable to listen port %d. listening port 6900 \n", login_port);
 		login_port = 6900;
 	}
 
 	if(inet_addr(listen_ip) == INADDR_NONE)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "unable to listen defined network address. listening all network devices \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "unable to listen defined network address. listening all network devices \n");
 		memset(listen_ip, 0, sizeof(listen_ip));
 		strcpy(listen_ip, "0.0.0.0");
 	}
@@ -4038,77 +4038,77 @@ static inline void display_conf_warnings(void)
 	{
 		if(console_pass[0] == '\0')
 		{
-			printf(CL_WHITE "warning: " CL_RESET "console password is not defined \n");
+			printf(CL_YELLOW "Warning: " CL_RESET "console password is not defined \n");
 		} else if (strcmp(console_pass, "consoleon") == 0) {
-			printf(CL_WHITE "warning: " CL_RESET "using default console password (%s) \n", console_pass);
+			printf(CL_YELLOW "Warning: " CL_RESET "using default console password (%s) \n", console_pass);
 		}
 	}
 	
 	if(level_new_account > 99)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "value of level_new_account (%d) is invalid. using default value \n", level_new_account);
+		printf(CL_YELLOW "Warning: " CL_RESET "value of level_new_account (%d) is invalid. using default value \n", level_new_account);
 		level_new_account = 0;
 	}
 	
 	if(min_level_to_connect > 99)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "value of min_level_to_connect (%d) is invalid. using default value \n", min_level_to_connect);
+		printf(CL_YELLOW "Warning: " CL_RESET "value of min_level_to_connect (%d) is invalid. using default value \n", min_level_to_connect);
 		min_level_to_connect = 0;
 	}
 
 	if(client_version_to_connect < 0)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "value of client_version_to_connect (%d) is invalid. using default value \n", client_version_to_connect);
+		printf(CL_YELLOW "Warning: " CL_RESET "value of client_version_to_connect (%d) is invalid. using default value \n", client_version_to_connect);
 		client_version_to_connect = 0;
 	}
 
 	if(gm_pass[0] == '\0')
 	{
-		printf(CL_WHITE "warning: " CL_RESET "gamemaster password is not defined \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "gamemaster password is not defined \n");
 	} else if (strcmp(gm_pass, "gm") == 0) {
-		printf(CL_WHITE "warning: " CL_RESET "using default gamemaster password (%s) \n", gm_pass);
+		printf(CL_YELLOW "Warning: " CL_RESET "using default gamemaster password (%s) \n", gm_pass);
 	}
 
 	if(level_new_gm > 99)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "value of level_new_gm (%d) is invalid. using default value \n", level_new_gm);
+		printf(CL_YELLOW "Warning: " CL_RESET "value of level_new_gm (%d) is invalid. using default value \n", level_new_gm);
 		level_new_gm = 60;
 	}
 
 	if(log_file_date > 4)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "value of log_file_date (%d) is invalid. using default value \n", log_file_date);
+		printf(CL_YELLOW "Warning: " CL_RESET "value of log_file_date (%d) is invalid. using default value \n", log_file_date);
 		log_file_date = 3;
 	}
 
 	if(anti_freeze_counter < 2)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "value of anti_freeze_counter (%d) is invalid. using default value \n", anti_freeze_counter);
+		printf(CL_YELLOW "Warning: " CL_RESET "value of anti_freeze_counter (%d) is invalid. using default value \n", anti_freeze_counter);
 		anti_freeze_counter = 12;
 	}
 	if(anti_freeze_interval < 0)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "value of anti_freeze_interval (%d) is invalid. using default value \n", anti_freeze_interval);
+		printf(CL_YELLOW "Warning: " CL_RESET "value of anti_freeze_interval (%d) is invalid. using default value \n", anti_freeze_interval);
 		anti_freeze_interval = 10;
 	} else if (anti_freeze_interval != 0 && (anti_freeze_counter * anti_freeze_interval) < 6) {
-		printf(CL_WHITE "warning: " CL_RESET "too low values for anti_freeze_counter and anti_freeze_interval. using default values \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "too low values for anti_freeze_counter and anti_freeze_interval. using default values \n");
 		anti_freeze_counter = 12;
 	}
 
 	if(inet_addr(lan_char_ip) == INADDR_NONE)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "value of lan_char_ip is invalid. using default value \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "value of lan_char_ip is invalid. using default value \n");
 		memset(lan_char_ip, 0, sizeof(lan_char_ip));
 		strcpy(lan_char_ip, "127.0.0.1");
 	} else {
 		unsigned int a0, a1, a2, a3;
 		unsigned char p[4];
 		if (sscanf(lan_char_ip, "%u.%u.%u.%u", &a0, &a1, &a2, &a3) < 4 || a0 > 255 || a1 > 255 || a2 > 255 || a3 > 255)
-			printf(CL_WHITE "warning: " CL_RESET "value of lan_char_ip is invalid. only values between 0 and 255 are allowed \n");
+			printf(CL_YELLOW "Warning: " CL_RESET "value of lan_char_ip is invalid. only values between 0 and 255 are allowed \n");
 		else {
 			p[0] = a0; p[1] = a1; p[2] = a2; p[3] = a3;
 			if(lan_ip_check(p) == 0)
-				printf(CL_WHITE "warning: " CL_RESET "value of lan_char_ip is invalid. address doesn't belong to subnet \n");
+				printf(CL_YELLOW "Warning: " CL_RESET "value of lan_char_ip is invalid. address doesn't belong to subnet \n");
 		}
 	}
 
@@ -4116,19 +4116,19 @@ static inline void display_conf_warnings(void)
 	{
 		if(access_denynum == 1 && access_deny[0] == '\0')
 		{
-			printf(CL_WHITE "warning: " CL_RESET "ip security order is 'deny -> allow'. denying all connections \n");
+			printf(CL_YELLOW "Warning: " CL_RESET "ip security order is 'deny -> allow'. denying all connections \n");
 		}
 	} else if (access_order == ACO_ALLOW_DENY) {
 		if(access_allownum == 0)
 		{
-			printf(CL_WHITE "warning: " CL_RESET "ip security order is 'allow -> deny', but 'allow: all' is not defined. denying all connections \n");
+			printf(CL_YELLOW "Warning: " CL_RESET "ip security order is 'allow -> deny', but 'allow: all' is not defined. denying all connections \n");
 		}
 	} else {
 		if(access_allownum == 0)
 		{
-			printf(CL_WHITE "warning: " CL_RESET "ip filtering mode 'mutual failture' enabled, but 'allow: all' is not defined. denying all connections \n");
+			printf(CL_YELLOW "Warning: " CL_RESET "ip filtering mode 'mutual failture' enabled, but 'allow: all' is not defined. denying all connections \n");
 		} else if (access_denynum == 1 && access_deny[0] == '\0') {
-			printf(CL_WHITE "warning: " CL_RESET "ip filtering mode 'mutual failture' enabled, but 'deny: all' is defined. denying all connections \n");
+			printf(CL_YELLOW "Warning: " CL_RESET "ip filtering mode 'mutual failture' enabled, but 'deny: all' is defined. denying all connections \n");
 		}
 	}
 
@@ -4136,17 +4136,17 @@ static inline void display_conf_warnings(void)
 	{
 		if(dynamic_pass_failure_ban_time < 1)
 		{
-			printf(CL_WHITE "warning: " CL_RESET "value of dynamic_pass_failure_ban_time (%d) is invalid. using default value \n", dynamic_pass_failure_ban_time);
+			printf(CL_YELLOW "Warning: " CL_RESET "value of dynamic_pass_failure_ban_time (%d) is invalid. using default value \n", dynamic_pass_failure_ban_time);
 			dynamic_pass_failure_ban_time = 60;
 		}
 		if(dynamic_pass_failure_ban_how_many < 1)
 		{
-			printf(CL_WHITE "warning: " CL_RESET "value of dynamic_pass_failure_ban_how_many (%d) is invalid. using default value \n", dynamic_pass_failure_ban_how_many);
+			printf(CL_YELLOW "Warning: " CL_RESET "value of dynamic_pass_failure_ban_how_many (%d) is invalid. using default value \n", dynamic_pass_failure_ban_how_many);
 			dynamic_pass_failure_ban_how_many = 3;
 		}
 		if(dynamic_pass_failure_ban_how_long < 1)
 		{
-			printf(CL_WHITE "warning: " CL_RESET "value of dynamic_pass_failure_ban_how_long (%d) is invalid. using default value \n", dynamic_pass_failure_ban_how_long);
+			printf(CL_YELLOW "Warning: " CL_RESET "value of dynamic_pass_failure_ban_how_long (%d) is invalid. using default value \n", dynamic_pass_failure_ban_how_long);
 			dynamic_pass_failure_ban_how_long = 300;
 		}
 	}
@@ -4155,22 +4155,22 @@ static inline void display_conf_warnings(void)
 	{
 		if(admin_pass[0] == '\0')
 		{
-			printf(CL_WHITE "warning: " CL_RESET "admin_pass is not defined \n");
+			printf(CL_YELLOW "Warning: " CL_RESET "admin_pass is not defined \n");
 		} else if (strcmp(admin_pass, "admin") == 0)
 		{
-			printf(CL_WHITE "warning: " CL_RESET "using default admin_pass (%s) \n", admin_pass);
+			printf(CL_YELLOW "Warning: " CL_RESET "using default admin_pass (%s) \n", admin_pass);
 		}
 	}
 
 	if(start_limited_time < -1)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "value of start_limited_time (%d) is invalid. using default value \n", start_limited_time);
+		printf(CL_YELLOW "Warning: " CL_RESET "value of start_limited_time (%d) is invalid. using default value \n", start_limited_time);
 		start_limited_time = -1;
 	}
 
 	if(display_parse_fromchar > 2)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "value of display_parse_fromchar (%d) is invalid. using default value \n", display_parse_fromchar);
+		printf(CL_YELLOW "Warning: " CL_RESET "value of display_parse_fromchar (%d) is invalid. using default value \n", display_parse_fromchar);
 		display_parse_fromchar = 2;
 	}
 
@@ -4182,7 +4182,7 @@ static inline void display_conf_warnings(void)
 #ifdef USE_MYSQL
 	if(db_mysql_server_port < 1024 || db_mysql_server_port > 65535)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "value of db_mysql_server_port (%d) is invalid. using default value \n", db_mysql_server_port);
+		printf(CL_YELLOW "Warning: " CL_RESET "value of db_mysql_server_port (%d) is invalid. using default value \n", db_mysql_server_port);
 		db_mysql_server_port = 3306;
 	}
 #endif
@@ -4512,10 +4512,10 @@ void do_final(void)
 {
 	int i, fd;
 
-	printf(CL_WHITE "status: " CL_RESET "saving account data \n");
+	printf(CL_WHITE "Status: " CL_RESET "saving account data \n");
 	flush_fifos();
 
-	printf(CL_WHITE "status: " CL_RESET "terminating login server \n");
+	printf(CL_WHITE "Status: " CL_RESET "terminating login server \n");
 
 	for(i = 0; i < MAX_SERVERS; i++)
 	{
@@ -4611,7 +4611,7 @@ void do_final(void)
 
 	close_log();
 
-	printf(CL_WHITE "status: " CL_RESET "login server terminated \n");
+	printf(CL_WHITE "Status: " CL_RESET "login server terminated \n");
 }
 
 /*-------------------------------------------
@@ -4760,7 +4760,7 @@ static inline void init_conf_variables(void) {
 void do_init(const int argc, char **argv) {
 	int i;
 
-	printf(CL_WHITE "status: " CL_RESET "login server is starting \n");
+	printf(CL_WHITE "Status: " CL_RESET "login server is starting \n");
 
 	/* Init variables */
 	for(i = 0; i < AUTH_FIFO_SIZE; i++)
@@ -4788,12 +4788,12 @@ void do_init(const int argc, char **argv) {
 	login_config_read((argc > 1) ? argv[1] : LOGIN_CONF_NAME);
 	display_conf_warnings();
 	save_config_in_log();
-	printf(CL_WHITE "status: " CL_RESET "configuration file loaded \n");
+	printf(CL_WHITE "Status: " CL_RESET "configuration file loaded \n");
 
 	lan_char_ip_addr = inet_addr(lan_char_ip);
 
 	if(!log_login)
-		printf(CL_WHITE "info: " CL_RESET "logging system is disabled \n");
+		printf(CL_WHITE "Info: " CL_RESET "logging system is disabled \n");
 
 	srand(time(NULL));
 
@@ -4846,16 +4846,16 @@ void do_init(const int argc, char **argv) {
 #endif
 
 #ifdef __DEBUG
-		printf(CL_WHITE "info: " CL_RESET "server is running on debug mode \n");
+		printf(CL_WHITE "Info: " CL_RESET "server is running on debug mode \n");
 #endif
 
 	login_fd = make_listen_port(login_port);
 	if (strcmp(listen_ip, "0.0.0.0") == 0) {
 		write_log("The login-server is ready (and is listening on the port %d - from any ip)." RETCODE, login_port);
-		printf(CL_WHITE "status: " CL_RESET "server is listening port %d of all network devices \n", login_port);
+		printf(CL_WHITE "Status: " CL_RESET "server is listening port %d of all network devices \n", login_port);
 	} else {
 		write_log("The login-server is ready (and is listening on %s:%d)." RETCODE, listen_ip, login_port);
-		printf(CL_WHITE "status: " CL_RESET "server is listening port %d of %s \n", login_port, listen_ip);
+		printf(CL_WHITE "Status: " CL_RESET "server is listening port %d of %s \n", login_port, listen_ip);
 	}
 
 	add_timer_func_list(char_anti_freeze_system, "char_anti_freeze_system");
@@ -4873,14 +4873,14 @@ void do_init(const int argc, char **argv) {
 		start_console(parse_console);
 		if(term_input_status == 0)
 		{
-			printf(CL_WHITE "error: " CL_RESET "unable to initialize console \n");
+			printf(CL_WHITE "Error: " CL_RESET "unable to initialize console \n");
 			console = 0;
 		} else {
-			printf(CL_WHITE "status: " CL_RESET "console initialized \n");
+			printf(CL_WHITE "Status: " CL_RESET "console initialized \n");
 		}
 	} else
-		printf(CL_WHITE "info: " CL_RESET "console is disabled \n");
-	printf(CL_WHITE "status: " CL_RESET "login server is succesfully started \n");
+		printf(CL_WHITE "Info: " CL_RESET "console is disabled \n");
+	printf(CL_WHITE "Status: " CL_RESET "login server is succesfully started \n");
 	return;
 }
 

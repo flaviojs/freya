@@ -190,7 +190,6 @@ int pc_jobid2mapid(unsigned short b_class)
 		class_|= JOBL_2_1;
 	else if (b_class >= JOB_CRUSADER && b_class <= JOB_CRUSADER2)
 		class_|= JOBL_2_2;
-
 	switch (b_class)
 	{
 		case JOB_NOVICE:
@@ -229,12 +228,11 @@ int pc_jobid2mapid(unsigned short b_class)
 		case JOB_ROGUE:
 			class_ |= MAPID_THIEF;
 			break;
-
 		case JOB_STAR_GLADIATOR:
 		case JOB_STAR_GLADIATOR2:
 			class_ |= JOBL_2_1;
 			class_ |= MAPID_TAEKWON;
-			break;	
+			break;
 		case JOB_SOUL_LINKER:
 			class_ |= JOBL_2_2;
 		case JOB_TAEKWON:
@@ -251,6 +249,9 @@ int pc_jobid2mapid(unsigned short b_class)
 			break;
 		case JOB_NINJA:
 			class_ |= MAPID_NINJA;
+			break;
+		case JOB_XMAS:
+			class_ = MAPID_XMAS;
 			break;
 		default:
 			return -1;
@@ -277,12 +278,14 @@ int pc_mapid2jobid(unsigned short class_, int sex) {
 			return JOB_THIEF;
 		case MAPID_TAEKWON:
 			return JOB_TAEKWON;
+		case MAPID_WEDDING:
+			return JOB_WEDDING;
 		case MAPID_GUNSLINGER:
 			return JOB_GUNSLINGER;
 		case MAPID_NINJA:
 			return JOB_NINJA;
-		case MAPID_WEDDING:
-			return JOB_WEDDING;
+		case MAPID_XMAS: // [Valaris]
+			return JOB_XMAS;
 	//2_1 classes
 		case MAPID_SUPER_NOVICE:
 			return JOB_SUPER_NOVICE;
@@ -740,41 +743,43 @@ int pc_setinventorydata(struct map_session_data *sd)
 	return 0;
 }
 
-int pc_calcweapontype(struct map_session_data *sd)
+void pc_calcweapontype(struct map_session_data *sd)
 {
-	nullpo_retr(0, sd);
+	nullpo_retv(sd);
 
 	if (sd->weapontype1 != 0 && sd->weapontype2 == 0)
-		sd->status.weapon = sd->weapontype1;
-	if (sd->weapontype1 == 0 && sd->weapontype2 != 0) // 左手武器 Only
-		sd->status.weapon = sd->weapontype2;
-	else if (sd->weapontype1 == 1 && sd->weapontype2 == 1) // 双短剣
-		sd->status.weapon = 0x11;
-	else if (sd->weapontype1 == 2 && sd->weapontype2 == 2) // 双単手剣
-		sd->status.weapon = 0x12;
-	else if (sd->weapontype1 == 6 && sd->weapontype2 == 6) // 双単手斧
-		sd->status.weapon = 0x13;
+		sd->status.weapon = sd->weapontype1; // Use Left-Handed Weapon Type (Right-Handed Weapon not equipped)
+	if (sd->weapontype1 == 0 && sd->weapontype2 != 0)
+		sd->status.weapon = sd->weapontype2; // Use Right-Handed Weapon Type (Left-Handed Weapon not equipped)
+	else if (sd->weapontype1 == 1 && sd->weapontype2 == 1)
+		sd->status.weapon = 50; // Dual Daggers
+	else if (sd->weapontype1 == 2 && sd->weapontype2 == 2)
+		sd->status.weapon = 51; // Dual One-Handed Swords
+	else if (sd->weapontype1 == 6 && sd->weapontype2 == 6)
+		sd->status.weapon = 52; // Dual One-Handed Axes
 	else if ((sd->weapontype1 == 1 && sd->weapontype2 == 2) ||
-	         (sd->weapontype1 == 2 && sd->weapontype2 == 1)) // 短剣 - 単手剣
-		sd->status.weapon = 0x14;
+	         (sd->weapontype1 == 2 && sd->weapontype2 == 1))
+		sd->status.weapon = 53; // Dual-Wield: Dagger + One-Handed Sword
 	else if ((sd->weapontype1 == 1 && sd->weapontype2 == 6) ||
-	         (sd->weapontype1 == 6 && sd->weapontype2 == 1)) // 短剣 - 斧
-		sd->status.weapon = 0x15;
+	         (sd->weapontype1 == 6 && sd->weapontype2 == 1))
+		sd->status.weapon = 54; // Dual-Wield: Dagger + One-Handed Axe
 	else if ((sd->weapontype1 == 2 && sd->weapontype2 == 6) ||
-	         (sd->weapontype1 == 6 && sd->weapontype2 == 2)) // 単手剣 - 斧
-		sd->status.weapon = 0x16;
+	         (sd->weapontype1 == 6 && sd->weapontype2 == 2))
+		sd->status.weapon = 55; // Dual-Wield: One-Handed Axe + One-Handed Sword
 	else
-		sd->status.weapon = sd->weapontype1;
+		sd->status.weapon = sd->weapontype1; // If all else fails, use Left-Handed Weapon Type
 
-	return 0;
+	return;
 }
 
-int pc_setequipindex(struct map_session_data *sd) {
+void pc_setequipindex(struct map_session_data *sd) {
 	int i, j;
 
-	nullpo_retr(0, sd);
+	nullpo_retv(sd);
 
-	for(i=0;i<11;i++)
+	// Calculates total number of slots in array sd->equip_index
+	for(i=0;i<11;i++) // Ten equipment slots total
+		// Sets each value to -1 (No equip present), for the time being
 		sd->equip_index[i] = -1;
 
 	for(i=0;i<MAX_INVENTORY;i++) {
@@ -784,17 +789,17 @@ int pc_setequipindex(struct map_session_data *sd) {
 			for(j=0;j<11;j++)
 				if(sd->status.inventory[i].equip & equip_pos[j])
 					sd->equip_index[j] = i;
-			if(sd->status.inventory[i].equip & 0x0002) {
+			if(sd->status.inventory[i].equip & 0x0002) { // Player Left-Handed Weapon Slot
 				if(sd->inventory_data[i])
-					sd->weapontype1 = sd->inventory_data[i]->look;
+					sd->weapontype1 = sd->inventory_data[i]->look; // Gets Left-Handed Weapon Type (item_db: "view" parameter)
 				else
 					sd->weapontype1 = 0;
 			}
-			if(sd->status.inventory[i].equip & 0x0020) {
+			if(sd->status.inventory[i].equip & 0x0020) { // Player Shield/Right-Handed Weapon Slot
 				if(sd->inventory_data[i]) {
 					if(sd->inventory_data[i]->type == 4) {
 						if(sd->status.inventory[i].equip == 0x0020)
-							sd->weapontype2 = sd->inventory_data[i]->look;
+							sd->weapontype2 = sd->inventory_data[i]->look; // Gets Right-Handed Weapon Type (item_db: view parameter)
 						else
 							sd->weapontype2 = 0;
 					}
@@ -806,9 +811,9 @@ int pc_setequipindex(struct map_session_data *sd) {
 			}
 		}
 	}
-	pc_calcweapontype(sd);
+	pc_calcweapontype(sd); // Calculates Weapon Type: weapontype1 and weapontype2 -> status.weapon
 
-	return 0;
+	return;
 }
 
 int pc_isequip(struct map_session_data *sd, int n)
@@ -866,8 +871,8 @@ int pc_break_equip(struct map_session_data *sd, unsigned short where) {
 	if (sd->unbreakable >= rand() % 100)
 		return 0;
 	if (where == EQP_WEAPON && (sd->status.weapon == 0 || // Bare fists should not break :P
-	                            sd->status.weapon == 6 || sd->status.weapon == 7 || sd->status.weapon == 8 || // Axes and Maces can't be broken [DracoRPG]
-	                            sd->status.weapon == 10 || sd->status.weapon == 15)) //Rods and Books can't be broken [Skotlex]
+	                            sd->status.weapon == 6 || sd->status.weapon == 7 || sd->status.weapon == 8 || // Axes and Maces can't be broken
+	                            sd->status.weapon == 10 || sd->status.weapon == 15 || sd->status.weapon == 22)) // Rods, Books, and Shurikens can't be broken
 		return 0;
 
 	switch (where) {
@@ -1329,7 +1334,7 @@ static int pc_calc_skillpoint(struct map_session_data* sd) {
 	for(i = 1; i < MAX_SKILL; i++) {
 		if ((skill = pc_checkskill(sd, i)) > 0) {
 			if (!(skill_get_inf2(i) & 0x01) || battle_config.quest_skill_learn) {
-				if ((i == 142 || i == 143) && sd->status.class >= 4001 && sd->status.class < 4023) // if platinum skills were given for free
+				if ((i == 142 || i == 143) && sd->status.class >= 4001 && sd->status.class <= 4022) // if platinum skills were given for free
 					continue;
 				if (!sd->status.skill[i].flag) // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
 					skill_point += skill;
@@ -1345,31 +1350,31 @@ static int pc_calc_skillpoint(struct map_session_data* sd) {
 }
 
 /*==========================================
- * check minimum value of skill points for a player
+ * Check minimum value of skill points for a player
  *------------------------------------------
  */
 void pc_checkminskill(struct map_session_data* sd) {
 	int skill_points, min_points;
 	int previous_class_level;
 
-	// check novice skill
+	// Check Novice skill
 	if (sd->status.skill[NV_BASIC].id == 0) {
 		sd->status.skill[NV_BASIC].id = NV_BASIC;
 		sd->status.skill[NV_BASIC].lv = 0;
 		clif_skillinfoblock(sd);
 	}
 
-	// if we don't check minimum skills points
+	// If we don't check minimum skills points
 	if (!battle_config.check_minimum_skill_points)
 		return;
 
-	// calculate actual skills points
+	// Calculate actual skills points
 	skill_points = sd->status.skill_point + pc_calc_skillpoint(sd);
 
-	// calculate minimum skills points
+	// Calculate minimum skills points
 	min_points = 0;
 	switch (sd->status.class) {
-	case 0: // novice
+	case 0: // Novice
 		min_points = sd->status.job_level - 1;
 		break;
 	case 1: // Swordsman
@@ -1378,7 +1383,6 @@ void pc_checkminskill(struct map_session_data* sd) {
 	case 4: // Acolyte
 	case 5: // Merchant
 	case 6: // Thief
-	case 4046: // Taekwon
 		min_points = 9 + sd->status.job_level - 1;
 		break;
 	case 7: // Knight
@@ -1396,22 +1400,21 @@ void pc_checkminskill(struct map_session_data* sd) {
 	case 19: // Bard
 	case 20: // Dancer
 	case 21: // Peco crusader
-	case 4047: // Star Gladiator
-	case 4048: // Star Gladiator #2
-	case 4049: // Soul Linker
 		previous_class_level = sd->change_level;
 		if (previous_class_level < 40 || previous_class_level > 50)
 			previous_class_level = 40;
-		min_points = 9 + (previous_class_level - 1) + sd->status.job_level - 1; // minimum calculation, so changement at job level 40
+		min_points = 9 + (previous_class_level - 1) + sd->status.job_level - 1; // Minimum calculation, so changement at job level 40
 		break;
 	case 22: // Wedding
 		break;
 	case 23: // Super Novice
-		min_points = 9 + 20 + sd->status.job_level - 1; // minimum calculation, so changement at base level (not job level) 45 + 20 points bonus
+		min_points = 9 + 20 + sd->status.job_level - 1; // Minimum calculation, so changement at base level (not job level) 45 + 20 points bonus
 		break;
 	case 24: // Gunslinger
 	case 25: // Ninja
-		min_points = 9 + sd->status.job_level - 1;
+		min_points = 9 + sd->status.job_level - 1; // Both are 1st class characters, max job level 70 [GoodKat]
+		break;
+	case 26: // Xmas
 		break;
 	case 4001: // Novice High
 		min_points = sd->status.job_level - 1;
@@ -1442,7 +1445,7 @@ void pc_checkminskill(struct map_session_data* sd) {
 		previous_class_level = sd->change_level;
 		if (previous_class_level < 40 || previous_class_level > 50)
 			previous_class_level = 40;
-		min_points = 9 + (previous_class_level - 1) + sd->status.job_level - 1; // minimum calculation, so changement at job level 40
+		min_points = 9 + (previous_class_level - 1) + sd->status.job_level - 1; // Minimum calculation, so changed at job level 40
 		break;
 	case 4023: // Baby Novice
 		min_points = sd->status.job_level - 1;
@@ -1473,10 +1476,27 @@ void pc_checkminskill(struct map_session_data* sd) {
 		previous_class_level = sd->change_level;
 		if (previous_class_level < 40 || previous_class_level > 50)
 			previous_class_level = 40;
-		min_points = 9 + (previous_class_level - 1) + sd->status.job_level - 1; // minimum calculation, so changement at job level 40
+		min_points = 9 + (previous_class_level - 1) + sd->status.job_level - 1; // Minimum calculation, so changed at job level 40
 		break;
 	case 4045: // Super Baby
-		min_points = 9 + 20 + sd->status.job_level - 1; // minimum calculation, so changement at base level 45 (not job level) + 20 points bonus
+		min_points = 9 + 20 + sd->status.job_level - 1; // Minimum calculation, so changed at base level 45 (not job level) + 20 points bonus
+		break;
+	case 4046: // Taekwon Kid
+		min_points = 9 + sd->status.job_level - 1;
+		break;
+	case 4047: // Taekwon Master/Star Gladiator
+	case 4048: // Taekwon Master/Star Gladiator (Flying)
+	case 4049: // Soul Linker
+		previous_class_level = sd->change_level;
+		if (previous_class_level < 40 || previous_class_level > 50)
+			previous_class_level = 40;
+		min_points = 9 + (previous_class_level - 1) + sd->status.job_level - 1; // Minimum calculation, so changed at job level 40
+		break;
+	case 4050: // Bon Gun
+	case 4051: // Death Knight
+	case 4052: // Dark Collector
+	case 4053: // Munak
+		min_points = 9 + sd->status.job_level - 1;
 		break;
 	}
 
@@ -1491,7 +1511,7 @@ void pc_checkminskill(struct map_session_data* sd) {
 }
 
 /*==========================================
- * check maximum value of skill points for a player
+ * Check maximum value of skill points for a player
  *------------------------------------------
  */
 int pc_checkmaxskill(struct map_session_data* sd) {
@@ -1500,17 +1520,17 @@ int pc_checkmaxskill(struct map_session_data* sd) {
 	int previous_class_level;
 	struct pc_base_job s_class;
 
-	// if we don't check maximum skills points
+	// If we don't check maximum skills points
 	if (battle_config.check_maximum_skill_points < 0)
 		return 0;
 
-	// calculate actual skills points
+	// Calculate actual skills points
 	skill_points = sd->status.skill_point + pc_calc_skillpoint(sd);
 
-	// calculate minimum skills points
+	// Calculate minimum skills points
 	max_points = 0;
 	switch (sd->status.class) {
-	case 0: // novice
+	case 0: // Novice
 		max_points = sd->status.job_level - 1;
 		break;
 	case 1: // Swordsman
@@ -1519,7 +1539,6 @@ int pc_checkmaxskill(struct map_session_data* sd) {
 	case 4: // Acolyte
 	case 5: // Merchant
 	case 6: // Thief
-	case 4046: // Taekwon
 		max_points = 9 + sd->status.job_level - 1;
 		break;
 	case 7: // Knight
@@ -1537,22 +1556,21 @@ int pc_checkmaxskill(struct map_session_data* sd) {
 	case 19: // Bard
 	case 20: // Dancer
 	case 21: // Peco crusader
-	case 4047: // Star Gladiator
-	case 4048: // Star Gladiator #2
-	case 4049: // Soul Linker
 		previous_class_level = sd->change_level;
 		if (previous_class_level < 40 || previous_class_level > 50)
 			previous_class_level = 40;
-		max_points = 9 + (previous_class_level - 1) + sd->status.job_level - 1; // minimum calculation, so changement at job level 40
+		max_points = 9 + (previous_class_level - 1) + sd->status.job_level - 1; // Minimum calculation, so changed at job level 40
 		break;
 	case 22: // Wedding
 		break;
 	case 23: // Super Novice
-		max_points = 9 + 20 + sd->status.job_level - 1; // minimum calculation, so changement at base level (not job level) 45 + 20 points bonus
+		max_points = 9 + 20 + sd->status.job_level - 1; // Minimum calculation, so changed at base level (not job level) 45 + 20 points bonus
 		break;
 	case 24: // Gunslinger
 	case 25: // Ninja
-		max_points = 9 + sd->status.job_level - 1;
+		max_points = 9 + sd->status.job_level - 1; // Both are 1st class characters, max job level 70 [GoodKat]
+		break;
+	case 26: // Xmas
 		break;
 	case 4001: // Novice High
 		max_points = sd->status.job_level - 1;
@@ -1583,7 +1601,7 @@ int pc_checkmaxskill(struct map_session_data* sd) {
 		previous_class_level = sd->change_level;
 		if (previous_class_level < 40 || previous_class_level > 50)
 			previous_class_level = 40;
-		max_points = 9 + (previous_class_level - 1) + sd->status.job_level - 1; // minimum calculation, so changement at job level 40
+		max_points = 9 + (previous_class_level - 1) + sd->status.job_level - 1; // Minimum calculation, so changed at job level 40
 		break;
 	case 4023: // Baby Novice
 		max_points = sd->status.job_level - 1;
@@ -1614,21 +1632,38 @@ int pc_checkmaxskill(struct map_session_data* sd) {
 		previous_class_level = sd->change_level;
 		if (previous_class_level < 40 || previous_class_level > 50)
 			previous_class_level = 40;
-		max_points = 9 + (previous_class_level - 1) + sd->status.job_level - 1; // minimum calculation, so changement at job level 40
+		max_points = 9 + (previous_class_level - 1) + sd->status.job_level - 1; // Minimum calculation, so changed at job level 40
 		break;
 	case 4045: // Super Baby
-		max_points = 9 + 20 + sd->status.job_level - 1; // minimum calculation, so changement at base level 45 (not job level) + 20 points bonus
+		max_points = 9 + 20 + sd->status.job_level - 1; // Minimum calculation, so changed at base level 45 (not job level) + 20 points bonus
+		break;
+	case 4046: // Taekwon Kid
+		max_points = 9 + sd->status.job_level - 1;
+		break;
+	case 4047: // Taekwon Master/Star Gladiator
+	case 4048: // Taekwon Master/Star Gladiator (Flying)
+	case 4049: // Soul Linker
+		previous_class_level = sd->change_level;
+		if (previous_class_level < 40 || previous_class_level > 50)
+			previous_class_level = 40;
+		max_points = 9 + (previous_class_level - 1) + sd->status.job_level - 1; // Minimum calculation, so changed at job level 40
+		break;
+	case 4050: // Bon Gun
+	case 4051: // Death Knight
+	case 4052: // Dark Collector
+	case 4053: // Munak
+		max_points = 9 + sd->status.job_level - 1;
 		break;
 	}
 
-	// if player have too much skills points
+	// If player has too many skills points
 	excess_points = skill_points - (max_points + battle_config.check_maximum_skill_points);
 //	printf("pc_checkmaxskill: actual: %d, max: %d, excess: %d.\n", skill_points, max_points + battle_config.check_maximum_skill_points, excess_points);
-	if (excess_points <= 0) // not need to be modified
+	if (excess_points <= 0) // No need to modify
 		return 0;
 	else {
 //		printf("pc_checkmaxskill: %d excess skill points, now removed.\n", excess_points);
-		// first, remove excess points from reserve of skills points
+		// First, remove excess points from reserve of skills points
 		if (sd->status.skill_point > 0) {
 			if (sd->status.skill_point < excess_points) {
 				excess_points = excess_points - sd->status.skill_point;
@@ -1637,19 +1672,19 @@ int pc_checkmaxskill(struct map_session_data* sd) {
 				sd->status.skill_point = sd->status.skill_point - excess_points;
 				excess_points = 0;
 			}
-			// update skill points
+			// Update skill points
 			clif_updatestatus(sd, SP_SKILLPOINT);
 		}
 
 		if (excess_points > 0) {
-			// if we check skill tree, we have only job skills to check
+			// If we check skill tree, there are only job skills to check
 			if (!battle_config.skillfree) {
 				s_class = pc_calc_base_job(sd->status.class);
-				// second: remove excess skill point from skills (begin by end of skill tree)
-				for(i = MAX_SKILL_TREE - 1; i >= 0 && excess_points > 0; i--)
+				// Second: remove excess skill points from skills (begin from end of skill tree)
+				for(i = MAX_SKILL_PER_TREE - 1; i >= 0 && excess_points > 0; i--)
 					if ((id = skill_tree[s_class.upper][s_class.job][i].id) > 0)
 						if (!(skill_get_inf2(id) & 0x01) || battle_config.quest_skill_learn) {
-							if ((id == 142 || id == 143) && sd->status.class >= 4001 && sd->status.class < 4023) // if platinum skills were given for free
+							if ((id == 142 || id == 143) && sd->status.class >= 4001 && sd->status.class < 4023) // If platinum skills were given for free
 								continue;
 							if (sd->status.skill[id].lv > 0) {
 								if (!sd->status.skill[id].flag) { // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
@@ -1661,15 +1696,15 @@ int pc_checkmaxskill(struct map_session_data* sd) {
 										excess_points = 0;
 									}
 								}
-							//} else if (sd->status.skill[id].flag >= 2 && sd->status.skill[id].flag != 13) { // not need to check that (all can not be card!)
+							//} else if (sd->status.skill[id].flag >= 2 && sd->status.skill[id].flag != 13) { // No need to check that (all cannot be card!)
 							}
 						}
-			// else, we must check all skill
+			// Else, we must check all skill
 			} else {
-				// second: remove excess skill point from skills (begin by end of skills)
+				// Second: remove excess skill point from skills (begin by end of skills)
 				for(id = MAX_SKILL - 1; id >= 1 && excess_points > 0; id--)
 					if (!(skill_get_inf2(id) & 0x01) || battle_config.quest_skill_learn) {
-						if ((id == 142 || id == 143) && sd->status.class >= 4001 && sd->status.class < 4023) // if platinum skills were given for free
+						if ((id == 142 || id == 143) && sd->status.class >= 4001 && sd->status.class < 4023) // If platinum skills were given for free
 							continue;
 						if (sd->status.skill[id].lv > 0) {
 							if (!sd->status.skill[id].flag) { // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
@@ -1681,11 +1716,11 @@ int pc_checkmaxskill(struct map_session_data* sd) {
 									excess_points = 0;
 								}
 							}
-						//} else if (sd->status.skill[id].flag >= 2 && sd->status.skill[id].flag != 13) { // not need to check that (all can not be card!)
+						//} else if (sd->status.skill[id].flag >= 2 && sd->status.skill[id].flag != 13) { // No need to check that (all cannot be card!)
 						}
 					}
 			}
-			// update skill tree to player
+			// Update skill tree to player
 			clif_skillinfoblock(sd);
 		}
 	}
@@ -1697,14 +1732,15 @@ int pc_checkmaxskill(struct map_session_data* sd) {
  * Calculate Skill Tree
  *------------------------------------------
  */
-int pc_calc_skilltree(struct map_session_data *sd) {
-	int i, j, id = 0, flag;
+void pc_calc_skilltree(struct map_session_data *sd) {
+	int i, j, k, id = 0, qid = 0, flag;
 	int c = 0, s = 0;
+
 	struct pc_base_job s_class;
 
-	nullpo_retr(0, sd);
+	nullpo_retv(sd);
 
-	// reset skill ids
+	// Reset skill IDs
 	for(i = 0; i < MAX_SKILL; i++) {
 		if (sd->status.skill[i].flag != 13) // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
 			sd->status.skill[i].id = 0;
@@ -1721,8 +1757,8 @@ int pc_calc_skilltree(struct map_session_data *sd) {
 	// GM all skills (any jobs)
 	if (sd->GM_level >= battle_config.gm_allskill) {
 		for(s = 0; s < 3; s++)
-			for(c = 0; c < 25; c++)
-				for(i = 0; i < MAX_SKILL_TREE && (id = skill_tree[s][c][i].id) > 0; i++)
+			for(c = 0; c < MAX_SKILL_TREE; c++)
+				for(i = 0; i < MAX_SKILL_PER_TREE && (id = skill_tree[s][c][i].id) > 0; i++)
 					if (sd->status.skill[id].flag != 13) { // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
 						if (sd->GM_level >= battle_config.gm_all_skill_platinum || !(skill_get_inf2(id) & 0x01) ||
 						    (s_class.job == 1 && (id == 142 || id == 143))) { // high novice free skills
@@ -1733,25 +1769,25 @@ int pc_calc_skilltree(struct map_session_data *sd) {
 							sd->status.skill[id].lv = 0;
 					}
 
-		// remove skill points
+		// Remove skill points
 		if (sd->status.skill_point > 0) {
-			sd->status.skill_point = 0; // 0 skill points
-			clif_updatestatus(sd, SP_SKILLPOINT); // update
+			sd->status.skill_point = 0; // 0 Skill Points
+			clif_updatestatus(sd, SP_SKILLPOINT); // Update
 		}
 
-	// other players
+	// Other Players
 	} else {
-		// GM all skills (only actual job)
+		// GM All Skills (Only actual job)
 		if (sd->GM_level >= battle_config.gm_all_skill_job) {
-			// remove invalid skills (not for the actual job)
+			// Remove invalid skills (Not for the actual job)
 			if (!battle_config.skillfree) {
-				// remove skills that are not in correct job
+				// Remove skills that are not in correct job
 				for(i = 0; i < MAX_SKILL; i++)
 					if (sd->status.skill[i].flag != 13) // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
 						if (sd->status.skill[i].lv > 0) {
-							for(j = 0; j < MAX_SKILL_TREE && (id = skill_tree[s][c][j].id) > 0; j++)
+							for(j = 0; j < MAX_SKILL_PER_TREE && (id = skill_tree[s][c][j].id) > 0; j++)
 								if (i == id) {
-									// check if database was changed (reduction of maximum level)
+									// Check if database was changed (reduction of maximum level)
 									if (sd->status.skill[i].lv > skill_tree[s][c][j].max)
 										sd->status.skill[i].lv = skill_tree[s][c][j].max;
 									break;
@@ -1762,54 +1798,65 @@ int pc_calc_skilltree(struct map_session_data *sd) {
 						}
 			}
 
-			// add all (job) skills to max value
-			for(i = 0; i < MAX_SKILL_TREE && (id = skill_tree[s][c][i].id) > 0; i++)
+			// Add all (job) skills to max value
+			for(i = 0; i < MAX_SKILL_PER_TREE && (id = skill_tree[s][c][i].id) > 0; i++)
 				if (sd->status.skill[id].flag != 13) { // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
 					if (sd->GM_level >= battle_config.gm_all_skill_platinum || !(skill_get_inf2(id) & 0x01) ||
-					    (s == 1 && (id == 142 || id == 143))) { // high novice free skills
+					    (s == 1 && (id == 142 || id == 143))) { // High Novice free skills
 						sd->status.skill[id].id = id;
 						sd->status.skill[id].lv = skill_tree[s][c][i].max;
 					} else
 						sd->status.skill[id].lv = 0;
 				}
 
-			// remove skill points
+			// Remove skill points
 			if (sd->status.skill_point > 0) {
-				sd->status.skill_point = 0; // 0 skill points
-				clif_updatestatus(sd, SP_SKILLPOINT); // update
+				sd->status.skill_point = 0; // 0 Skill Points
+				clif_updatestatus(sd, SP_SKILLPOINT); // Update
 			}
 
-		// if normal player
+		// If normal player
 		} else {
-			// check previous job and skills
+			// Check previous job and skills
 			c = pc_calc_skilltree_normalize_job(c, s, sd);
 
-			// remove invalid skills (not for the actual job)
+			// Remove invalid skills (not for the actual job)
 			if (!battle_config.skillfree) {
-				// remove skills that are not in correct job
+				// Remove skills that are not in correct job
 				for(i = 0; i < MAX_SKILL; i++)
 					if (sd->status.skill[i].flag != 13) // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
 						if (sd->status.skill[i].lv > 0) {
-							for(j = 0; j < MAX_SKILL_TREE && (id = skill_tree[s][c][j].id) > 0; j++)
+							for(j = 0; j < MAX_SKILL_PER_TREE && (id = skill_tree[s][c][j].id) > 0; j++)
 								if (i == id) {
-									// check if database was changed (reduction of maximum level)
+									// Check if database was changed (reduction of maximum level)
 									if (sd->status.skill[i].lv > skill_tree[s][c][j].max)
 										sd->status.skill[i].lv = skill_tree[s][c][j].max;
 									break;
 								}
-							// if not found
+							// If not found
 							if (i != id) {
-								sd->status.skill[i].lv = 0;
+								if (c != s_class.job && skill_get_inf2(i) & 0x01) {	// 2nd class quest skills
+									for(k = 0; k < MAX_SKILL_PER_TREE && (qid = skill_tree[s][s_class.job][k].id) > 0; k++) {
+										if (i == qid) {
+											sd->status.skill[i].id = qid;
+											if (sd->status.skill[i].lv > skill_tree[s][s_class.job][k].max)
+												sd->status.skill[i].lv = skill_tree[s][s_class.job][k].max;
+											break;
+										}
+									}
+								}
+								if (i != qid)
+									sd->status.skill[i].lv = 0;
 							}
 						}
 			}
 
 			do {
 				flag = 0;
-				for(i = 0; i < MAX_SKILL_TREE && (id = skill_tree[s][c][i].id) > 0; i++) {
+				for(i = 0; i < MAX_SKILL_PER_TREE && (id = skill_tree[s][c][i].id) > 0; i++) {
 					if (sd->status.skill[id].flag != 13) {
 						int f = 1, needed_id;
-						// check skill tree
+						// Check skill tree
 						if (!battle_config.skillfree) {
 							struct skill_tree_entry *s_t_ent;
 							s_t_ent = &skill_tree[s][c][i];
@@ -1827,56 +1874,56 @@ int pc_calc_skilltree(struct map_session_data *sd) {
 								}
 //							}
 						}
-						// check quest skills
-						if (f == 1 && // if can be known
-						    !battle_config.quest_skill_learn && // quest must be learn by quest (not by skill points)
-						    sd->status.skill[id].lv == 0 && // if skill is not known
-						    skill_get_inf2(id) & 0x01) // it's quest skill
+						// Check quest skills
+						if (f == 1 && // If can be known
+						    !battle_config.quest_skill_learn && // Quest must be learn by quest (not by skill points)
+						    sd->status.skill[id].lv == 0 && // If skill is not known
+						    skill_get_inf2(id) & 0x01) // It's a quest skill
 							f = 0;
-						// analyse result
+						// Analyze result
 						if (f) {
-							if (sd->status.skill[id].id == 0) {// check id to avoid infinite loop
+							if (sd->status.skill[id].id == 0) { // Check ID to avoid infinite loop
 								flag = 1;
 								sd->status.skill[id].id = id;
 							}
 						} else {
-							if (sd->status.skill[id].id != 0) {// check id to avoid infinite loop
-								flag = 1; // need to recheck for other skills
+							if (sd->status.skill[id].id != 0) { // Check ID to avoid infinite loop
+								flag = 1; // Need to recheck for other skills
 								sd->status.skill[id].id = 0;
 							}
-							sd->status.skill[id].lv = 0; // reset level for minimum skill points calculation and recheck
+							sd->status.skill[id].lv = 0; // Reset level for minimum skill points calculation and recheck
 						}
 					}
 				}
-			                // check maximum number of skill points (id must be defined to check correctly maximum skill points)
-			} while(flag || pc_checkmaxskill(sd)); // remove some skills if necessary
+			                // Check maximum number of skill points (ID must be defined to check correctly maximum skill points)
+			} while(flag || pc_checkmaxskill(sd)); // Remove some skills if necessary
 		}
 	}
 
 //	if (battle_config.etc_log)
 //		printf("calc skill_tree\n");
 
-	pc_checkminskill(sd); // restore minimum skill points if necessary
+	pc_checkminskill(sd); // Restore minimum skill points if necessary
 
-	return 0;
+	return;
 }
 
 int pc_calc_skilltree_normalize_job(int c, int s, struct map_session_data *sd) {
-	// check skills up limit
+	// Check skills up limit
 	if (battle_config.skillup_limit) {
 		int skill_point, i, id;
-		// calculation of basic skill and check novice skill points
+		// Calculation of basic skill and check novice skill points
 		skill_point = sd->status.skill[NV_BASIC].lv;
-		if (battle_config.quest_skill_learn && s != 1) // if platinum skills are not free
-			skill_point = skill_point + sd->status.skill[142].lv + sd->status.skill[143].lv; // add the 2 novice quests skills
+		if (battle_config.quest_skill_learn && s != 1) // If platinum skills are not free
+			skill_point = skill_point + sd->status.skill[142].lv + sd->status.skill[143].lv; // Add the 2 novice quests skills
 
-		if (skill_point < 9) // if not all basic skills
+		if (skill_point < 9) // If not all basic skills
 			return 0;
 
-		// check second classes and first class skills
-		if (c >= 7 && c < 23) {
+		// Check second classes and first class skills
+		if ((c >= 7 && c <= 21) || (c >= 4047 && c <= 4049)) {
 			int c1 = c, previous_class_level;
-			// which classe to check
+			// Which class to check
 			switch(c) {
 			case 7:
 			case 13:
@@ -1905,15 +1952,20 @@ int pc_calc_skilltree_normalize_job(int c, int s, struct map_session_data *sd) {
 			case 17:
 				c1 = 6;
 				break;
+			case 4047:
+			case 4048:
+			case 4049:
+				c1 = 4046;
+				break;
 			}
-			// totalize actual skills points
+			// Totalize actual skills points
 			for(i = 0; (id = skill_tree[s][c1][i].id) > 0; i++) {
-				if (id == NV_BASIC || id == 142 || id == 143) // already added
+				if (id == NV_BASIC || id == 142 || id == 143) // Already added
 					continue;
 				if (sd->status.skill[id].flag != 13 && (battle_config.quest_skill_learn || !(skill_get_inf2(id) & 0x01)))
 					skill_point += sd->status.skill[id].lv;
 			}
-			// calculate skill points for 1st classe and check
+			// Calculate skill points for 1st class and check
 			previous_class_level = sd->change_level;
 			if (previous_class_level < 40 || previous_class_level > 50)
 				previous_class_level = 40;
@@ -2908,7 +2960,7 @@ int pc_bonus4(struct map_session_data *sd, int type, int type2, int type3, int t
 }
 
 /*==========================================
- * スクリプトによるスキル所得
+ * Player Character Skill
  *------------------------------------------
  */
 int pc_skill(struct map_session_data *sd, int id, int level, int flag) {
@@ -2920,26 +2972,26 @@ int pc_skill(struct map_session_data *sd, int id, int level, int flag) {
 		return 0;
 	}
 
-	// set (normal) value
-//	if (!flag && (sd->status.skill[id].id == id || level == 0)) { // クエスト所得ならここで条件を確認して送信する
-	if (!flag) { // クエスト所得ならここで条件を確認して送信する
-		// check card
-		if (sd->status.skill[id].flag == 1) { // not known before
+	// Set (normal) value
+	//	if (!flag && (sd->status.skill[id].id == id || level == 0)) {
+	if (!flag) {
+		// Check card
+		if (sd->status.skill[id].flag == 1) { // Not known before
 			if (sd->status.skill[id].lv <= level) {
 				sd->status.skill[id].lv = level;
 				sd->status.skill[id].flag = 0; // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
 			} else {
 				sd->status.skill[id].flag = level + 2;
 			}
-		} else if (sd->status.skill[id].flag >= 2 && sd->status.skill[id].flag != 13) { // card, but skill known before
+		} else if (sd->status.skill[id].flag >= 2 && sd->status.skill[id].flag != 13) { // Card, but skill known before
 			if (sd->status.skill[id].lv <= level) {
 				sd->status.skill[id].lv = level;
 				sd->status.skill[id].flag = 0; // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
 			} else {
 				sd->status.skill[id].flag = level + 2;
 			}
-		// skill with no card
-		} else // check here for clone skill (not yet done)
+		// Skill with no card
+		} else // Check here for clone skill (not yet done)
 			sd->status.skill[id].lv = level;
 
 		if (sd->status.skill[id].lv)
@@ -2947,11 +2999,11 @@ int pc_skill(struct map_session_data *sd, int id, int level, int flag) {
 		status_calc_pc(sd, 0);
 		clif_skillinfoblock(sd);
 
-	// add value
-//	} else if (flag == 2 && (sd->status.skill[id].id == id || level == 0)) { // クエスト所得ならここで条件を確認して送信する
-	} else if (flag == 2) { // クエスト所得ならここで条件を確認して送信する
+	// Add value
+//	} else if (flag == 2 && (sd->status.skill[id].id == id || level == 0)) {
+	} else if (flag == 2) {
 		// check card
-		if (sd->status.skill[id].flag == 1) { // not known before (add from nothing)
+		if (sd->status.skill[id].flag == 1) { // Not known before (add from nothing)
 			if (sd->status.skill[id].lv <= level) {
 				sd->status.skill[id].lv = level;
 				sd->status.skill[id].flag = 0; // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
@@ -2965,7 +3017,7 @@ int pc_skill(struct map_session_data *sd, int id, int level, int flag) {
 			} else {
 				sd->status.skill[id].flag = sd->status.skill[id].flag + level;
 			}
-		} else // check here for clone skill (not yet done)
+		} else // Check here for clone skill (not yet done)
 			sd->status.skill[id].lv += level;
 
 		if (sd->status.skill[id].lv)
@@ -2973,15 +3025,15 @@ int pc_skill(struct map_session_data *sd, int id, int level, int flag) {
 		status_calc_pc(sd, 0);
 		clif_skillinfoblock(sd);
 
-	// set card (flag == 1)
-	} else if (sd->status.skill[id].lv < level) { // 覚えられるがlvが小さいなら
-		if (!sd->status.skill[id].flag) { // check for clone skill not yet done
+	// Set card (flag == 1)
+	} else if (sd->status.skill[id].lv < level) {
+		if (!sd->status.skill[id].flag) { // Check for clone skill not yet done
 			if (sd->status.skill[id].id == id) {
 				// flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
-				sd->status.skill[id].flag = sd->status.skill[id].lv + 2; // lvを記憶
+				sd->status.skill[id].flag = sd->status.skill[id].lv + 2;
 			} else {
 				sd->status.skill[id].id = id;
-				sd->status.skill[id].flag = 1; // cardスキルとする
+				sd->status.skill[id].flag = 1;
 			}
 		}
 		sd->status.skill[id].lv = level;
@@ -2991,7 +3043,8 @@ int pc_skill(struct map_session_data *sd, int id, int level, int flag) {
 }
 
 /*==========================================
- *
+ * pc_blockskill_start: blocks an skill for tick time to sd
+ * pc_blockskill_end: unblocks an skill previously blocked to sd
  *------------------------------------------
  */
 TIMER_FUNC(pc_blockskill_end) {
@@ -3009,8 +3062,8 @@ int pc_blockskill_start(struct map_session_data *sd, int skillid, int tick) {
 	nullpo_retr(-1, sd);
 
 	if (skillid >= 10000 && skillid < 10015)
-		skillid -= 9500;
-	else if (skillid < 1 || skillid > MAX_SKILL)
+		skillid -= 9100;
+	else if (skillid < 0 || skillid > MAX_SKILL)
 		return -1;
 
 	sd->blockskill[skillid] = 1;
@@ -4622,29 +4675,37 @@ int pc_checkequip(struct map_session_data *sd,int pos)
 }
 
 /*==========================================
- * Base Job
+ * Calculates Base Job
+ * Example: Paladin -> Crusader
+ * Example: Baby Crusader -> Crusader
+ * And Etc..
  *------------------------------------------
  */
 struct pc_base_job pc_calc_base_job(int b_class)
 {
 	struct pc_base_job bj;
 
-	if (b_class < 4001) {
+	if (b_class < 4001) { // Normal Classes
 		bj.job = b_class;
 		bj.upper = 0;
-	} else if (b_class >= 4001 && b_class < 4023) {
-		// Athena almost never uses this... well, used this. :3
+	} else if (b_class >= 4001 && b_class <= 4022) { // Advanced Classes
 		bj.job = b_class - 4001;
 		bj.upper = 1;
-	} else if (b_class == 4045) { // Super Baby
+	} else if (b_class == 4045) { // Super Baby Class
 		bj.job = 23;
 		bj.upper = 2;
-	} else if (b_class >= 4046 && b_class <= 4049) { // SG/SG2/SL
+	} else if (b_class >= 4046 && b_class <= 4049) { // Taekwon Classes
 		bj.job = 4046;
 		bj.upper = 0;
-	} else {
+	} else if (b_class >= 4050 && b_class <= 4053) { // Death Knight/Dark Collector Classes
+		bj.job = b_class;
+		bj.upper = 0;
+	} else if (b_class >= 4023 && b_class <= 4044) { // Baby Classes
 		bj.job = b_class - 4023;
 		bj.upper = 2;
+	} else { // Unknown Classes
+		bj.job = b_class;
+		bj.upper = 0;
 	}
 
 	if (bj.job == 0) {
@@ -4659,21 +4720,23 @@ struct pc_base_job pc_calc_base_job(int b_class)
 }
 
 /*==========================================
- * For quick calculating [Celest]
+ * Quick Base Job Calculation
  *------------------------------------------
  */
 int pc_calc_base_job2(int b_class)
 {
-	if(b_class < 4001)
+	if(b_class < 4001) // Normal Classes
 		return b_class;
-	else if(b_class >= 4001 && b_class < 4023)
+	else if(b_class >= 4001 && b_class <= 4022) // Advanced Classes
 		return b_class - 4001;
-	else if(b_class == 4045)
+	else if(b_class == 4045) // Super Baby Class
 		return 23;
-	else if(b_class >= 4046 && b_class <= 4049)
+	else if(b_class >= 4046 && b_class <= 4049) // Taekwon Classes
 		return 4046;
+	else if (b_class >= 4023 && b_class <= 4044) // Baby Classes
+		return b_class - 4023;
 
-	return b_class - 4023;
+	return b_class; // Unknown Classes
 }
 
 // === GET CLASS OF PLAYER ===
@@ -4720,10 +4783,12 @@ short pc_calc_class(short job_id)
 		return 11;
 	if(job_id == 24 || job_id == 25)
 		return 12;
-	if(job_id >= MAX_PC_CLASS)
+	if(job_id >= 4050 && job_id <= 4053)
 		return 13;
-	printf("warning: unknown job id. unable to calculate class");
-	printf("debug: function pc_calc_class");
+	if(job_id >= MAX_PC_CLASS)
+		return 14;
+	printf("Warning: unknown job id. unable to calculate class");
+	printf("Debug: function pc_calc_class");
 	return -1;
 }
 
@@ -5159,7 +5224,7 @@ int pc_nextbaseexp(struct map_session_data *sd)
 	else if (sd->status.class >= 4002 && sd->status.class <= 4007) i = 5; // High 1st Job
 	else if (sd->status.class == 4047 || sd->status.class == 4048) i = 2; // Star Gladiator
 	else if (sd->status.class == 24 || sd->status.class == 25) i = 1; // Gunslinger/Ninja
-	else if (sd->status.class >= 4050 && sd->status.class <= 4053) i = 1; // Death Knight/Dark Collector/Munak/Bon Gun Temp Values
+	else if (sd->status.class >= 4050 && sd->status.class <= 4053) i = 2; // Death Knight/Dark Collector/Munak/Bon Gun Temp Values
 	else i = 6; // 3rd Job
 
 	return exp_table[i][sd->status.base_level-1];
@@ -5187,7 +5252,7 @@ int pc_nextjobexp(struct map_session_data *sd)
 	else if (sd->status.class >= 4002 && sd->status.class <= 4007) i = 12; // High 1st Job
 	else if (sd->status.class == 4047 || sd->status.class == 4048) i = 14; // Star Gladiator
 	else if (sd->status.class == 24 || sd->status.class == 25) i = 15; // Gunslinger/Ninja
-	else if (sd->status.class >= 4050 && sd->status.class <= 4053) i = 8; // Death Knight/Dark Collector/Munak/Bon Gun Temp Values
+	else if (sd->status.class >= 4050 && sd->status.class <= 4053) i = 9; // Death Knight/Dark Collector/Munak/Bon Gun Temp Values
 	else i = 13; // 3rd Job
 
 	return exp_table[i][sd->status.job_level-1];
@@ -5215,7 +5280,7 @@ int pc_nextbaseafter(struct map_session_data *sd)
 	else if (sd->status.class >= 4002 && sd->status.class <= 4007) i = 5; // High 1st Job
 	else if (sd->status.class == 4047 || sd->status.class == 4048) i = 2; // Star Gladiator
 	else if (sd->status.class == 24 || sd->status.class == 25) i = 1; // Gunslinger/Ninja
-	else if (sd->status.class >= 4050 && sd->status.class <= 4053) i = 1; // Death Knight/Dark Collector/Munak/Bon Gun Temp Values
+	else if (sd->status.class >= 4050 && sd->status.class <= 4053) i = 2; // Death Knight/Dark Collector/Munak/Bon Gun Temp Values
 	else i = 6; // 3rd Job
 
 	return exp_table[i][sd->status.base_level];
@@ -5243,7 +5308,7 @@ int pc_nextjobafter(struct map_session_data *sd)
 	else if (sd->status.class >= 4002 && sd->status.class <= 4007) i = 12; // High 1st Job
 	else if (sd->status.class == 4047 || sd->status.class == 4048) i = 14; // Star Gladiator
 	else if (sd->status.class == 24 || sd->status.class == 25) i = 15; // Gunslinger/Ninja
-	else if (sd->status.class >= 4050 && sd->status.class <= 4053) i = 8; // Death Knight/Dark Collector/Munak/Bon Gun Temp Values
+	else if (sd->status.class >= 4050 && sd->status.class <= 4053) i = 9; // Death Knight/Dark Collector/Munak/Bon Gun Temp Values
 	else i = 13; // 3rd Job
 
 	return exp_table[i][sd->status.job_level];
@@ -5469,13 +5534,13 @@ void pc_skillup(struct map_session_data *sd, short skill_num) {
  * /allskill
  *------------------------------------------
  */
-int pc_allskillup(struct map_session_data *sd)
+void pc_allskillup(struct map_session_data *sd)
 {
 	int i, id;
 	int c = 0, s = 0;
 	struct pc_base_job s_class;
 
-	nullpo_retr(0, sd);
+	nullpo_retv(sd);
 
 	for(i = 0; i < MAX_SKILL; i++) {
 		sd->status.skill[i].id = 0;
@@ -5493,8 +5558,8 @@ int pc_allskillup(struct map_session_data *sd)
 	// GM with all skills (any jobs)
 	if (sd->GM_level >= battle_config.gm_allskill) {
 		for(s = 0; s < 3; s++)
-			for(c = 0; c < 25; c++)
-				for(i = 0; i < MAX_SKILL_TREE && (id = skill_tree[s][c][i].id) > 0; i++)
+			for(c = 0; c < MAX_SKILL_TREE; c++)
+				for(i = 0; i < MAX_SKILL_PER_TREE && (id = skill_tree[s][c][i].id) > 0; i++)
 					if (sd->status.skill[id].flag != 13) { // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
 						if (sd->GM_level >= battle_config.gm_all_skill_platinum || !(skill_get_inf2(id) & 0x01) ||
 						    (s_class.job == 1 && (id == 142 || id == 143))) { // high novice free skills
@@ -5509,7 +5574,7 @@ int pc_allskillup(struct map_session_data *sd)
 	} else {
 		// GM with all skills (actual job)
 		if (sd->GM_level >= battle_config.gm_all_skill_job) {
-			for(i = 0; i < MAX_SKILL_TREE && (id = skill_tree[s][c][i].id) > 0; i++) {
+			for(i = 0; i < MAX_SKILL_PER_TREE && (id = skill_tree[s][c][i].id) > 0; i++) {
 				if (sd->status.skill[id].flag != 13) { // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
 					if (sd->GM_level >= battle_config.gm_all_skill_platinum || !(skill_get_inf2(id) & 0x01) ||
 					    (s == 1 && (id == 142 || id == 143))) { // high novice free skills
@@ -5522,11 +5587,11 @@ int pc_allskillup(struct map_session_data *sd)
 
 		// normal player
 		} else {
-			for(i = 0; i < MAX_SKILL_TREE && (id = skill_tree[s][c][i].id) > 0; i++) {
+			for(i = 0; i < MAX_SKILL_PER_TREE && (id = skill_tree[s][c][i].id) > 0; i++) {
 				if (sd->status.skill[id].flag != 13) { // flag: 0 (normal), 1 (only card), 2-12 (card and skill (skill level +2)), 13 (cloneskill)
 					if (!(skill_get_inf2(id) & 0x01) || battle_config.quest_skill_learn ||
 					    (s == 1 && (id == 142 || id == 143))) { // high novice free skills
-						sd->status.skill[id].id = id; // celest
+						sd->status.skill[id].id = id;
 						// sd->status.skill[id].lv = skill_get_max(id);
 						//sd->status.skill[id].lv = skill_tree_get_max(id, sd->status.class);
 						sd->status.skill[id].lv = skill_tree[s][c][i].max;
@@ -5546,7 +5611,7 @@ int pc_allskillup(struct map_session_data *sd)
 
 	status_calc_pc(sd, 0);
 
-	return 0;
+	return;
 }
 
 /*==========================================
@@ -8162,8 +8227,7 @@ static int pc_spirit_heal_sp(struct map_session_data *sd)
 	return 0;
 }
 
-static int pc_bleeding(struct map_session_data *sd)
-{
+static int pc_bleeding(struct map_session_data *sd) {
 	int interval, hp;
 
 	nullpo_retr(0, sd);
@@ -8177,9 +8241,8 @@ static int pc_bleeding(struct map_session_data *sd)
 			sd->hp_loss_tick -= interval;
 			if (sd->status.hp < hp)
 				hp = sd->status.hp;
-			if (sd->hp_loss_type == 1) {
+			if (sd->hp_loss_type == 1)
 				clif_damage(&sd->bl, &sd->bl, gettick_cache, 0, 0, hp, 0, 0, 0);
-			}
 			pc_heal(sd, -hp, 0);
 			sd->hp_loss_tick = 0;
 		}
@@ -8566,7 +8629,7 @@ void pc_readdb(void)
 			break;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/exp.txt" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", i, (i > 1) ? "s" : "");
+	printf(CL_WHITE "Status: " CL_RESET " '" CL_WHITE "db/exp.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", i, (i > 1) ? "s" : "");
 
 	memset(&skill_tree, 0, sizeof(skill_tree));
 	fp = fopen("db/skill_tree.txt", "r");
@@ -8593,12 +8656,13 @@ void pc_readdb(void)
 		s_class = pc_calc_base_job(atoi(split[0]));
 		i = s_class.job;
 		u = s_class.upper;
-		// check for bounds [celest]
-		if (i >= 25 || u >= 3)
+
+		// Check for bounds
+		if (i >= MAX_SKILL_TREE || u > 2)
 			continue;
-		for(j = 0; j < MAX_SKILL_TREE && skill_tree[u][i][j].id; j++)
+		for(j = 0; j < MAX_SKILL_PER_TREE && skill_tree[u][i][j].id; j++)
 			;
-		if (j == MAX_SKILL_TREE)
+		if (j == MAX_SKILL_PER_TREE)
 			continue;
 		skill_tree[u][i][j].id = atoi(split[1]);
 		skill_tree[u][i][j].max = atoi(split[2]);
@@ -8611,7 +8675,7 @@ void pc_readdb(void)
 		}
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/skill_tree.txt" CL_RESET "' readed.\n");
+	printf(CL_WHITE "Status: " CL_RESET " '" CL_WHITE "db/skill_tree.txt" CL_RESET "' read.\n");
 
 	for(i=0;i<4;i++)
 		for(j=0;j<10;j++)
@@ -8658,7 +8722,7 @@ void pc_readdb(void)
 		}
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/attr_fix.txt" CL_RESET "' readed.\n");
+	printf(CL_WHITE "Status: " CL_RESET " '" CL_WHITE "db/attr_fix.txt" CL_RESET "' read.\n");
 
 	// stat point
 	memset(&statp, 0, sizeof(statp));
@@ -8670,7 +8734,7 @@ void pc_readdb(void)
 			j += (i + 15) / 5;
 			statp[i] = j;
 		}
-		printf("DB '" CL_WHITE "db/statpoint.txt" CL_RESET "' generated (levels='" CL_WHITE "%d/%d" CL_RESET "').\n", i, MAX_LEVEL);
+		printf(CL_WHITE "Status: " CL_RESET " '" CL_WHITE "db/statpoint.txt" CL_RESET "' generated (levels='" CL_WHITE "%d/%d" CL_RESET "').\n", i, MAX_LEVEL);
 	} else {
 		i = 0;
 		while(fgets(line, sizeof(line), fp)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
@@ -8685,7 +8749,7 @@ void pc_readdb(void)
 			i++;
 		}
 		fclose(fp);
-		printf("DB '" CL_WHITE "db/statpoint.txt" CL_RESET "' readed (levels='" CL_WHITE "%d/%d" CL_RESET "').\n", i, MAX_LEVEL);
+		printf(CL_WHITE "Status: " CL_RESET " '" CL_WHITE "db/statpoint.txt" CL_RESET "' read (levels='" CL_WHITE "%d/%d" CL_RESET "').\n", i, MAX_LEVEL);
 	}
 
 	return;
@@ -8705,7 +8769,7 @@ static int extra_num = 0;
 
 TIMER_FUNC(pc_extra) {
 	FILE *fp;
-	static int extra_file_readed = 0;
+	static int extra_file_read = 0;
 	int change_flag = 0; // must we rewrite extra file? (0: no, 1: yes)
 	int lock, i;
 	char line[1024], name[1024];
@@ -8720,8 +8784,8 @@ TIMER_FUNC(pc_extra) {
 		return 0;
 
 	// if extra file not read, read it at first
-	if (extra_file_readed == 0) {
-		extra_file_readed = 1; // file readed.
+	if (extra_file_read == 0) {
+		extra_file_read = 1; // file read.
 		if ((fp = fopen(extra_file_txt, "r")) != NULL) {
 			while(fgets(line, sizeof(line) - 1, fp) != NULL) {
 				if ((line[0] == '/' && line[1] == '/') || line[0] == '\0' || line[0] == '\n' || line[0] == '\r')
@@ -8776,7 +8840,7 @@ TIMER_FUNC(pc_extra) {
 		}
 	}
 
-	// if extra_add_file can be readed and exists
+	// if extra_add_file can be read and exists
 	if ((fp = fopen(extra_add_file_txt, "r")) != NULL) {
 		while(fgets(line, sizeof(line) - 1, fp) != NULL) {
 			if ((line[0] == '/' && line[1] == '/') || line[0] == '\0' || line[0] == '\n' || line[0] == '\r')

@@ -1,4 +1,4 @@
-// $Id: char.c 707 2006-07-19 17:08:33Z DarkRaven $
+// $Id: char.c 707 2006-07-19 17:08:33Z Yor $
 
 #include <config.h>
 
@@ -280,7 +280,7 @@ void read_manner() {
 	fp = fopen(MANNER_CONF_NAME, "r");
 	if(fp == NULL)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "failed to read manner list. manner system disabled \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "failed to read manner list. manner system disabled \n");
 		return;
 	}
 
@@ -327,11 +327,11 @@ void read_manner() {
 	fclose(fp);
 
 	if(manner_counter == 0)
-		printf(CL_WHITE "status: " CL_RESET "manner list readed. no entries found \n");
+		printf(CL_WHITE "Status: " CL_RESET "manner list read. no entries found \n");
 	if(manner_counter == 1)
-		printf(CL_WHITE "status: " CL_RESET "manner list readed. one entry found \n");
+		printf(CL_WHITE "Status: " CL_RESET "manner list read. one entry found \n");
 	if(manner_counter > 1)
-		printf(CL_WHITE "status: " CL_RESET "manner list readed. %d entries found \n", manner_counter);
+		printf(CL_WHITE "Status: " CL_RESET "manner list read. %d entries found \n", manner_counter);
 
 	return;
 }
@@ -511,7 +511,7 @@ void mmo_friend_sync(void) { // only for TXT version
 	// Friends List data save
 	if((fp = lock_fopen(friends_txt, &lock)) == NULL)
 	{
-		printf(CL_WHITE "error: " CL_RESET "failed to save friend data. data lost \n");
+		printf(CL_WHITE "Error: " CL_RESET "failed to save friend data. data lost \n");
 		char_log("WARNING: Server can't not save friends." RETCODE);
 	} else {
 		fprintf(fp, "// Friends file" RETCODE
@@ -771,7 +771,7 @@ int memitemdata_to_sql(struct item *itemlist, int list_id, int tableswitch) {
 		max_items = MAX_GUILD_STORAGE;
 		break;
 	default:
-		printf(CL_WHITE "warning: " CL_RESET "trying to access unknown sql table. item database \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "trying to access unknown sql table. item database \n");
 		return 0;
 	}
 
@@ -1000,7 +1000,7 @@ int mmo_char_fromsql(int char_id)
 		p.save_point.y = sql_get_integer(40);
 		p.partner_id = sql_get_integer(41);
 	} else {
-		printf(CL_WHITE "warning: " CL_RESET "failed to access character data \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "failed to access character data \n");
 		return -1;
 	}
 
@@ -1092,7 +1092,7 @@ int mmo_char_fromsql(int char_id)
 
 	char_num++;
 
-//	printf(CL_WHITE "status: " CL_RESET "loaded character '%d' to memory \n", char_id);
+//	printf(CL_WHITE "Status: " CL_RESET "loaded character '%d' to memory \n", char_id);
 
 	return char_num - 1;
 }
@@ -1113,7 +1113,7 @@ int parse_friend_txt() {
 
 	if((fp = fopen(friends_txt, "r")) == NULL)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "unable to read friend database \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "unable to read friend database \n");
 		char_log("Friends file not found: %s." RETCODE, friends_txt);
 		return 0;
 	}
@@ -1225,7 +1225,7 @@ int parse_friend_txt() {
 	// Free temp structure
 	FREE(tmp_friends);
 
-	printf(CL_WHITE "status: " CL_RESET "friend database readed \n");
+	printf(CL_WHITE "Status: " CL_RESET "friend database read \n");
 
 	if(already_checked == 0)
 	{
@@ -1362,7 +1362,7 @@ inline void chrif_send_scdata(int fd, int char_id)
 
 	if(!sql_request("SELECT type, tick, val1, val2, val3, val4 from `%s` WHERE `char_id`='%d'",
 		statuschange_db, char_id)) {
-		printf(CL_WHITE "warning: " CL_RESET "database error while retrieving sc_data of character %d\n", char_id);
+		printf(CL_YELLOW "Warning: " CL_RESET "database error while retrieving sc_data of character %d\n", char_id);
 		return;
 	}
 
@@ -1409,13 +1409,13 @@ static inline void mmo_char_init(void) {
 
 	if(char_num == 0)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "no characters found in database \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "no characters found in database \n");
 		char_log("No character found in database." RETCODE);
 	} else if (char_num == 1) {
-		printf(CL_WHITE "info: " CL_RESET "one character found in database \n");
+		printf(CL_WHITE "Info: " CL_RESET "one character found in database \n");
 		char_log("1 character found in database." RETCODE);
 	} else {
-		printf(CL_WHITE "info: " CL_RESET "%d characters found in database \n", char_num);
+		printf(CL_WHITE "Info: " CL_RESET "%d characters found in database \n", char_num);
 		char_log("%d characters found in database." RETCODE, char_num);
 	}
 
@@ -1443,7 +1443,7 @@ static inline void mmo_char_init(void) {
 #ifdef TXT_ONLY
 	if ((fp = fopen(char_txt, "r")) == NULL)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "unable to read character database \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "unable to read character database \n");
 		char_log("Characters file not found: %s. Id for the next created character: %d." RETCODE, char_txt, char_id_count);
 		return;
 	}
@@ -1494,7 +1494,7 @@ static inline void mmo_char_init(void) {
 
 				if(sql_get_row() && sql_get_integer(0) > 0)
 				{
-					printf(CL_WHITE "warning: " CL_RESET "character name is identical with server wisp name \n");
+					printf(CL_YELLOW "Warning: " CL_RESET "character name is identical with server wisp name \n");
 					char_log("mmo_auth_init: ******WARNING: character name has wisp server name: Character name '%s' = wisp server name '%s'." RETCODE,
 					          char_dat[char_num].name, wisp_server_name);
 				}
@@ -1504,32 +1504,32 @@ static inline void mmo_char_init(void) {
 			char_num++;
 		} else {
 			memset(&char_dat[char_num], 0, sizeof(struct mmo_charstatus));
-			printf(CL_WHITE "warning: " CL_RESET "failed to read line %d of character database \n", line_count);
+			printf(CL_YELLOW "Warning: " CL_RESET "failed to read line %d of character database \n", line_count);
 			switch(ret)
 			{
 			case -1:
-				char_log("Duplicate character id in the next character line (character not readed):" RETCODE);
+				char_log("Duplicate character id in the next character line (character not read):" RETCODE);
 				break;
 			case -2:
-				char_log("Duplicate character name in the next character line (character not readed):" RETCODE);
+				char_log("Duplicate character name in the next character line (character not read):" RETCODE);
 				break;
 			case -3:
-				char_log("Invalid memo point structure in the next character line (character not readed):" RETCODE);
+				char_log("Invalid memo point structure in the next character line (character not read):" RETCODE);
 				break;
 			case -4:
-				char_log("Invalid inventory item structure in the next character line (character not readed):" RETCODE);
+				char_log("Invalid inventory item structure in the next character line (character not read):" RETCODE);
 				break;
 			case -5:
-				char_log("Invalid cart item structure in the next character line (character not readed):" RETCODE);
+				char_log("Invalid cart item structure in the next character line (character not read):" RETCODE);
 				break;
 			case -6:
-				char_log("Invalid skill structure in the next character line (character not readed):" RETCODE);
+				char_log("Invalid skill structure in the next character line (character not read):" RETCODE);
 				break;
 			case -7:
-				char_log("Invalid register structure in the next character line (character not readed):" RETCODE);
+				char_log("Invalid register structure in the next character line (character not read):" RETCODE);
 				break;
 			default: // 0
-				char_log("Unabled to get a character in the next line - Basic structure of line (before inventory) is incorrect (character not readed):" RETCODE);
+				char_log("Unabled to get a character in the next line - Basic structure of line (before inventory) is incorrect (character not read):" RETCODE);
 				break;
 			}
 			char_log("%s", line);
@@ -1539,13 +1539,13 @@ static inline void mmo_char_init(void) {
 
 	if(char_num == 0)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "no characters found from character database \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "no characters found from character database \n");
 		char_log("No character found in %s." RETCODE, char_txt);
 	} else if(char_num == 1) {
-		printf(CL_WHITE "info: " CL_RESET "one character found from character database \n");
+		printf(CL_WHITE "Info: " CL_RESET "one character found from character database \n");
 		char_log("1 character read in %s." RETCODE, char_txt);
 	} else {
-		printf(CL_WHITE "info: " CL_RESET "%d characters found from character database \n", char_num);
+		printf(CL_WHITE "Info: " CL_RESET "%d characters found from character database \n", char_num);
 		char_log("%d characters read in %s." RETCODE, char_num, char_txt);
 	}
 
@@ -1616,7 +1616,7 @@ void mmo_char_sync(void) { // only for TXT version
 
 	if((fp = lock_fopen(char_txt, &lock)) == NULL)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "failed to save character data. data lost \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "failed to save character data. data lost \n");
 		char_log("WARNING: Server can't not save characters." RETCODE);
 	} else {
 		for(i = 0; i < char_num; i++) {
@@ -1712,7 +1712,7 @@ void found_server_char_id() {
 			}
 		}
 		// if server name is found, and name is not the server char_id, stop program and say why
-		printf(CL_WHITE "error: " CL_RESET "character name is identical with server wisp name. closing nezumi \n");
+		printf(CL_WHITE "Error: " CL_RESET "character name is identical with server wisp name. closing nezumi \n");
 		char_log("ERROR: wisp server name is name of a player. Freya has been stopped. Change wisp server name in char_athena.conf." RETCODE);
 		exit(1);
 	}
@@ -1837,7 +1837,7 @@ void found_server_char_id() {
 	                 (40 * (100 + 5) / 100), (40 * (100 + 5) / 100), (11 * (100 + 5) / 100), (11 * (100 + 5) / 100), 1, 1,
 	                 start_point.map, start_point.x, start_point.y, start_point.map, start_point.x, start_point.y)) {
 		// if server name can not be created
-		printf(CL_WHITE "error: " CL_RESET "character name is identical with server wisp name. closing nezumi \n");
+		printf(CL_WHITE "Error: " CL_RESET "character name is identical with server wisp name. closing nezumi \n");
 		char_log("ERROR: wisp server name can not be added in SQL database. Nezumi has been stopped." RETCODE);
 		exit(1);
 	}
@@ -1877,7 +1877,7 @@ void found_server_char_id() {
 	            global_reg_value, server_char_id, "Server_name", 1);
 #endif /* USE_SQL */
 
-	printf(CL_WHITE "error: " CL_RESET "character id '%d' used to represent server \n", server_char_id);
+	printf(CL_WHITE "Error: " CL_RESET "character id '%d' used to represent server \n", server_char_id);
 	char_log("Char id used to represent server: %d." RETCODE, server_char_id);
 
 	return;
@@ -2104,6 +2104,9 @@ char * job_name(int class) {
 	case 21:   return "Peco crusader";
 	case 22:   return "Wedding";
 	case 23:   return "Super Novice";
+	case 24:   return "Gunslinger";
+	case 25:   return "Ninja";
+	case 26:   return "Xmas";
 	case 4001: return "Novice High";
 	case 4002: return "Swordsman High";
 	case 4003: return "Mage High";
@@ -3050,8 +3053,8 @@ int parse_tologin(int fd) {
 				return 0;
 			if(RFIFOB(fd,2))
 			{
-				printf(CL_WHITE "error: " CL_RESET "failed to connect login-server \n");
-				printf(CL_WHITE "debug: " CL_RESET "server communication passwords are propably incorrect \n");
+				printf(CL_WHITE "Error: " CL_RESET "failed to connect login-server \n");
+				printf(CL_WHITE "Debug: " CL_RESET "server communication passwords are propably incorrect \n");
 
 #ifdef __WIN32
 				Sleep(2000);
@@ -3060,13 +3063,13 @@ int parse_tologin(int fd) {
 #endif
 				exit(1);
 			} else {
-				printf(CL_WHITE "status: " CL_RESET "successfully connected to login-server \n");
+				printf(CL_WHITE "Status: " CL_RESET "successfully connected to login-server \n");
 				// if no map-server already connected, display a message...
 				for(i = 0; i < MAX_MAP_SERVERS; i++)
 					if (server_fd[i] >= 0 && server[i].map && server[i].map[0]) // server[i].map[0][0]) // if map-server online and at least 1 map
 						break;
 				if(i == MAX_MAP_SERVERS)
-					printf(CL_WHITE "status: " CL_RESET "waiting connection from map-server \n");
+					printf(CL_WHITE "Status: " CL_RESET "waiting connection from map-server \n");
 			}
 			RFIFOSKIP(fd, 3);
 			break;
@@ -3638,7 +3641,7 @@ TIMER_FUNC(map_anti_freeze_system)
 		{
 			if(anti_freeze_interval != 0 && server_freezeflag[i]-- < 1)
 			{
-				printf(CL_WHITE "warning: " CL_RESET "map-server is frozen. disconnecting in 60 seconds \n");
+				printf(CL_YELLOW "Warning: " CL_RESET "map-server is frozen. disconnecting in 60 seconds \n");
 				char_log("Anti-freeze system: Map-server #%d is frozen -> disconnection." RETCODE, i);
 				session[server_fd[i]]->eof = 1;
 			} else {
@@ -3663,7 +3666,7 @@ int parse_frommap(int fd) {
 	if (id == MAX_MAP_SERVERS || session[fd]->eof) {
 		if(id < MAX_MAP_SERVERS)
 		{
-			printf(CL_WHITE "status: " CL_RESET "map-server '%d' has disconnected \n", id);
+			printf(CL_WHITE "Status: " CL_RESET "map-server '%d' has disconnected \n", id);
 			FREE(server[id].map);
 			memset(&server[id], 0, sizeof(struct mmo_map_server));
 #ifdef USE_SQL
@@ -3734,7 +3737,7 @@ int parse_frommap(int fd) {
 						if (server_fd[k] >= 0) { // if map-server online
 							for(m = 0; m < server[k].map_num; m++) // MAX_MAP_PER_SERVER
 								if (server[k].map[m * 17] && strcmp(server[k].map + (m * 17), server[id].map + (j * 17)) == 0) {
-									printf(CL_WHITE "warning: " CL_RESET "two mapservers are trying to handle same mapy \n");
+									printf(CL_YELLOW "Warning: " CL_RESET "two mapservers are trying to handle same mapy \n");
 									memset(server[id].map + (j * 17), 0, 16); // reset map name
 									break;
 								}
@@ -3752,7 +3755,7 @@ int parse_frommap(int fd) {
 			}
 		  {
 			unsigned char *p = (unsigned char *)&server[id].ip;
-			printf(CL_WHITE "status: " CL_RESET "map-server '%d' has connected from ip '%d.%d.%d.%d:%hu' \n", id, p[0], p[1], p[2], p[3], server[id].port);
+			printf(CL_WHITE "Status: " CL_RESET "map-server '%d' has connected from ip '%d.%d.%d.%d:%hu' \n", id, p[0], p[1], p[2], p[3], server[id].port);
 			char_log("Map-Server %d connected: %d maps, from IP %d.%d.%d.%d port %hu. Map-server %d loading complete." RETCODE,
 			         id, j, p[0], p[1], p[2], p[3], server[id].port, id);
 		  }
@@ -3765,13 +3768,13 @@ int parse_frommap(int fd) {
 			int x;
 			if(j == 0)
 			{
-				printf(CL_WHITE "warning: " CL_RESET "no maps from map-server '%d' \n", id);
+				printf(CL_YELLOW "Warning: " CL_RESET "no maps from map-server '%d' \n", id);
 				char_log("WARNING: Map-Server %d has NO map." RETCODE, id);
 				// clean up map list
 				FREE(server[id].map);
 				server[id].map_num = 0; // MAX_MAP_PER_SERVER
 			} else {
-				// exchange map informations only if ALL maps were readed
+				// exchange map informations only if ALL maps were read
 				if (j == server[id].map_num) {
 //					printf("Check... no map removed.\n");
 					// Transmitting maps information to the other map-servers
@@ -3813,10 +3816,10 @@ int parse_frommap(int fd) {
 						}
 					}
 					if(!j)
-						printf(CL_WHITE "warning: " CL_RESET "players default start point not defined \n");
+						printf(CL_YELLOW "Warning: " CL_RESET "players default start point not defined \n");
 				// not same number of map
 				} else {
-					printf(CL_WHITE "warning: " CL_RESET "two map-servers are trying to handle the same map \n");
+					printf(CL_YELLOW "Warning: " CL_RESET "two map-servers are trying to handle the same map \n");
 					char_log("WARNING: Map-Server %d has %d valid (duplicated?) maps on %d -> no map loaded" RETCODE, id, j, server[id].map_num);
 					// clean up map list
 					FREE(server[id].map);
@@ -3892,7 +3895,7 @@ int parse_frommap(int fd) {
 				WPACKETW(0) = 0x2afe;
 				WPACKETL(2) = RFIFOL(fd,2);
 				SENDPACKET(fd, 6);
-				printf(CL_WHITE "warning: " CL_RESET "not autenthicated account '%d' \n", RFIFOL(fd, 2));
+				printf(CL_YELLOW "Warning: " CL_RESET "not autenthicated account '%d' \n", RFIFOL(fd, 2));
 			}
 			RFIFOSKIP(fd,23);
 			break;
@@ -3906,7 +3909,7 @@ int parse_frommap(int fd) {
 			time_t next_alive_time; // speed up
 			server_freezeflag[id] = anti_freeze_counter; // Map anti-freeze system. Counter. 6 ok, 5...0 frozen
 			if (RFIFOW(fd,4) != server[id].users)
-				printf(CL_WHITE "info: " CL_RESET "amount of online players has changed: %d \n", server[id].users);
+				printf(CL_WHITE "Info: " CL_RESET "amount of online players has changed: %d \n", server[id].users);
 			server[id].users = RFIFOW(fd,4);
 			server[id].agit_flag = RFIFOB(fd,8); // 0: WoE not starting, Woe is running
 			//printf("users: %d, hidden users: %d, agit: %s.\n", server[id].users, RFIFOW(fd,6 + (4 * server[id].users)), (server[id].agit_flag != 0) ? "On" : "Off");
@@ -4832,7 +4835,7 @@ int parse_frommap(int fd) {
 				return 0;
 		  }
 
-			printf(CL_WHITE "warning: " CL_RESET "unknown packet from map-server '%d'. disconnecting player \n", RFIFOREST(fd));
+			printf(CL_YELLOW "Warning: " CL_RESET "unknown packet from map-server '%d'. disconnecting player \n", RFIFOREST(fd));
 			session[fd]->eof = 1;
 			return 0;
 		}
@@ -4886,7 +4889,7 @@ int lan_ip_check(unsigned char *p) {
 			break;
 		}
 	}
-	printf(CL_WHITE "info: " CL_RESET "waiting connections from %s \n", (lancheck) ? "local address" : "remote address");
+	printf(CL_WHITE "Info: " CL_RESET "waiting connections from %s \n", (lancheck) ? "local address" : "remote address");
 
 	return lancheck;
 }
@@ -5002,9 +5005,9 @@ int parse_char(int fd) {
 				}
 				if (i == fd_max) {
 					if ((GM_value = isGM(account_id)))
-						printf(CL_WHITE "info: " CL_RESET "gamemaster '%d' has logged in (account level %d) \n",account_id, GM_value);
+						printf(CL_WHITE "Info: " CL_RESET "gamemaster '%d' has logged in (account level %d) \n",account_id, GM_value);
 					else
-						printf(CL_WHITE "info: " CL_RESET "player '%d' has logged in \n",account_id);
+						printf(CL_WHITE "Info: " CL_RESET "player '%d' has logged in \n",account_id);
 					if (sd == NULL) {
 						CALLOC(session[fd]->session_data, struct char_session_data, 1);
 						sd = session[fd]->session_data;
@@ -5151,7 +5154,7 @@ int parse_char(int fd) {
 											i = j;
 											strncpy(char_dat[ch].last_point.map, server[j].map, 16); // 17 - NULL
 											char_dat[ch].last_point.map[16] = '\0';
-											printf(CL_WHITE "status: " CL_RESET "map-server '%d' found with map %s \n", j, server[j].map);
+											printf(CL_WHITE "Status: " CL_RESET "map-server '%d' found with map %s \n", j, server[j].map);
 											// coordinates are unknown
 											break;
 										}
@@ -5172,7 +5175,7 @@ int parse_char(int fd) {
 							WPACKETW( 0) = 0x71;
 							WPACKETL( 2) = char_dat[ch].char_id;
 							strncpy(WPACKETP(6), char_dat[ch].last_point.map, 16);
-							printf(CL_WHITE "info: " CL_RESET "character '%s' logged in \n", char_dat[ch].name);
+							printf(CL_WHITE "Info: " CL_RESET "character '%s' logged in \n", char_dat[ch].name);
 							if (lan_ip_check(p))
 								WPACKETL(22) = inet_addr(lan_map_ip);
 							else
@@ -5584,7 +5587,7 @@ int parse_char(int fd) {
 				server[i].ip = RFIFOL(fd,50);
 				server[i].port = RFIFOW(fd,54);
 				server[i].users = 0;
-				printf(CL_WHITE "info: " CL_RESET "no online players \n");
+				printf(CL_WHITE "Info: " CL_RESET "no online players \n");
 				FREE(server[i].map);
 				server[i].map_num = 0; // MAX_MAP_PER_SERVER
 				RFIFOSKIP(fd,56);
@@ -5760,7 +5763,7 @@ int parse_console(char *buf) {
 		           strcasecmp("consol_off", command) == 0||
 		           strcasecmp("console", command) == 0) {
 			if (strcasecmp("console", command) == 0 && strcasecmp("off", param) != 0) {
-				printf(CL_RED "ERROR: Unknown parameter." CL_RESET "\n");
+				printf(CL_RED "Error: " CL_RESET "Unknown parameter." CL_RESET "\n");
 			} else {
 				printf(CL_DARK_CYAN "Console commands are now disabled." CL_RESET "\n");
 				console_on = 0;
@@ -5831,7 +5834,7 @@ void mapif_send(int fd, unsigned int len) {
 
 TIMER_FUNC(check_connect_login_server) {
 	if (login_fd <= 0 || session[login_fd] == NULL) {
-		printf(CL_WHITE "status: " CL_RESET "trying to connect login-server (%s:%d) \n", login_ip_str, login_port);
+		printf(CL_WHITE "Status: " CL_RESET "trying to connect login-server (%s:%d) \n", login_ip_str, login_port);
 		login_fd = make_connection(login_ip, login_port);
 		if (login_fd != -1) {
 			session[login_fd]->func_parse = parse_tologin;
@@ -5848,7 +5851,7 @@ TIMER_FUNC(check_connect_login_server) {
 			WPACKETW(84) = char_new;
 			SENDPACKET(login_fd, 86);
 		} else
-			printf(CL_WHITE "error: " CL_RESET "unable to connect login-server \n");
+			printf(CL_WHITE "Error: " CL_RESET "unable to connect login-server \n");
 	}
 
 	return 0;
@@ -5862,7 +5865,7 @@ void sql_config_read(const char *cfgName) {
 
 	if((fp = fopen(cfgName, "r")) == NULL)
 	{
-		printf(CL_WHITE "error: " CL_RESET "unable to read sql configuration file \n");
+		printf(CL_WHITE "Error: " CL_RESET "unable to read sql configuration file \n");
 		exit(1);
 	}
 
@@ -5936,13 +5939,13 @@ void sql_config_read(const char *cfgName) {
 			memset(pet_db, 0, sizeof(pet_db));
 			strcpy(pet_db, w2);
 		} else if (strcasecmp(w1, "import") == 0) {
-			printf(CL_WHITE "status: " CL_RESET "sql configuration file imported \n");
+			printf(CL_WHITE "Status: " CL_RESET "sql configuration file imported \n");
 			sql_config_read(w2);
 		}
 	}
 	fclose(fp);
 
-	printf(CL_WHITE "status: " CL_RESET "sql configuration file readed \n");
+	printf(CL_WHITE "Status: " CL_RESET "sql configuration file read \n");
 }
 #endif /* USE_SQL */
 
@@ -5967,7 +5970,7 @@ static void char_config_read(const char *cfgName) { // not inline, called too of
 
 	if((fp = fopen(cfgName, "r")) == NULL)
 	{
-		printf(CL_WHITE "error: " CL_RESET "unable to read character-server configuration file \n");
+		printf(CL_WHITE "Error: " CL_RESET "unable to read character-server configuration file \n");
 		exit(1);
 	}
 
@@ -6001,7 +6004,7 @@ static void char_config_read(const char *cfgName) { // not inline, called too of
 			login_ip_set_ = 1;
 			h = gethostbyname(w2);
 			if (h != NULL) {
-				printf(CL_WHITE "warning: " CL_RESET "using default login-server ip '%d.%d.%d.%d' \n", (unsigned char)h->h_addr[0], (unsigned char)h->h_addr[1], (unsigned char)h->h_addr[2], (unsigned char)h->h_addr[3]);
+				printf(CL_YELLOW "Warning: " CL_RESET "using default login-server ip '%d.%d.%d.%d' \n", (unsigned char)h->h_addr[0], (unsigned char)h->h_addr[1], (unsigned char)h->h_addr[2], (unsigned char)h->h_addr[3]);
 				sprintf(login_ip_str, "%d.%d.%d.%d", (unsigned char)h->h_addr[0], (unsigned char)h->h_addr[1], (unsigned char)h->h_addr[2], (unsigned char)h->h_addr[3]);
 			} else
 				memcpy(login_ip_str, w2, 16);
@@ -6012,7 +6015,7 @@ static void char_config_read(const char *cfgName) { // not inline, called too of
 			char_ip_set_ = 1;
 			h = gethostbyname(w2);
 			if (h != NULL) {
-				printf(CL_WHITE "warning: " CL_RESET "using default character-server ip '%d.%d.%d.%d' \n", (unsigned char)h->h_addr[0], (unsigned char)h->h_addr[1], (unsigned char)h->h_addr[2], (unsigned char)h->h_addr[3]);
+				printf(CL_YELLOW "Warning: " CL_RESET "using default character-server ip '%d.%d.%d.%d' \n", (unsigned char)h->h_addr[0], (unsigned char)h->h_addr[1], (unsigned char)h->h_addr[2], (unsigned char)h->h_addr[3]);
 				sprintf(char_ip_str, "%d.%d.%d.%d", (unsigned char)h->h_addr[0], (unsigned char)h->h_addr[1], (unsigned char)h->h_addr[2], (unsigned char)h->h_addr[3]);
 			} else
 				memcpy(char_ip_str, w2, 16);
@@ -6078,7 +6081,7 @@ static void char_config_read(const char *cfgName) { // not inline, called too of
 
 			if(sscanf(w2, "%[^,],%d,%d", map, &x, &y) < 3)
 			{
-				printf(CL_WHITE "warning: " CL_RESET "invalid start point for new players \n");
+				printf(CL_YELLOW "Warning: " CL_RESET "invalid start point for new players \n");
 				continue;
 			}
 
@@ -6089,9 +6092,9 @@ static void char_config_read(const char *cfgName) { // not inline, called too of
 					start_point.x = x;
 					start_point.y = y;
 				} else
-					printf(CL_WHITE "warning: " CL_RESET "invalid start point for new players (incorrect coordinates) \n");
+					printf(CL_YELLOW "Warning: " CL_RESET "invalid start point for new players (incorrect coordinates) \n");
 			} else
-				printf(CL_WHITE "warning: " CL_RESET "invalid start point for new players (incorrect map name) \n");
+				printf(CL_YELLOW "Warning: " CL_RESET "invalid start point for new players (incorrect map name) \n");
 		} else if (strcasecmp(w1, "start_zeny") == 0) {
 			start_zeny = atoi(w2);
 			if (start_zeny < 0)
@@ -6143,7 +6146,7 @@ static void char_config_read(const char *cfgName) { // not inline, called too of
 		} else if (strcasecmp(w1, "char_name_language") == 0) {
 			if(strlen(w2) > 5)
 			{
-				printf(CL_WHITE "warning: " CL_RESET "manner value not changed. invalid value \n");
+				printf(CL_YELLOW "Warning: " CL_RESET "manner value not changed. invalid value \n");
 			} else {
 				memset(char_name_language, 0, sizeof(char_name_language));
 				strcpy(char_name_language, w2);
@@ -6221,7 +6224,7 @@ static void char_config_read(const char *cfgName) { // not inline, called too of
 
 // import
 		} else if (strcasecmp(w1, "import") == 0) {
-			printf(CL_WHITE "status: " CL_RESET "importing config file '%s' \n", w2);
+			printf(CL_WHITE "Status: " CL_RESET "importing config file '%s' \n", w2);
 			char_config_read(w2);
 		}
 	}
@@ -6231,12 +6234,12 @@ static void char_config_read(const char *cfgName) { // not inline, called too of
 	unsigned int a0, a1, a2, a3;
 	unsigned char p[4];
 	if (sscanf(lan_map_ip, "%u.%u.%u.%u", &a0, &a1, &a2, &a3) < 4 || a0 > 255 || a1 > 255 || a2 > 255 || a3 > 255) // < 0 is always correct (unsigned)
-		printf(CL_WHITE "error: " CL_RESET "lan ip of map-server is incorrect \n");
+		printf(CL_WHITE "Error: " CL_RESET "lan ip of map-server is incorrect \n");
 	else {
 		p[0] = a0; p[1] = a1; p[2] = a2; p[3] = a3;
 		printf("LAN test of LAN IP of the map-server: ");
 		if (lan_ip_check(p) == 0)
-			printf(CL_WHITE "warning: " CL_RESET "unable to detect subnet of map-server \n");
+			printf(CL_YELLOW "Warning: " CL_RESET "unable to detect subnet of map-server \n");
 	}
   }
 	return;
@@ -6248,7 +6251,7 @@ static void char_config_read(const char *cfgName) { // not inline, called too of
 void do_final(void) {
 	int i;
 
-	printf(CL_WHITE "status: " CL_RESET "shutting down character-server \n");
+	printf(CL_WHITE "Status: " CL_RESET "shutting down character-server \n");
 
 	/* send all packets not sended */
 	flush_fifos();
@@ -6362,7 +6365,7 @@ void do_init(const int argc, char **argv)
 
 	char_log("");
 	char_log("The char-server is starting..." RETCODE);
-	printf(CL_WHITE "status: " CL_RESET "character-server is starting \n");
+	printf(CL_WHITE "Status: " CL_RESET "character-server is starting \n");
 
 	char_config_read((argc < 2) ? "conf/char_athena.conf" : argv[1]);
 #ifdef USE_SQL
@@ -6376,16 +6379,16 @@ void do_init(const int argc, char **argv)
 		char buf[16];
 		sprintf(buf, "%d.%d.%d.%d", ptr[0], ptr[1], ptr[2], ptr[3]);
 		if(naddr_ != 1)
-			printf(CL_WHITE "info: " CL_RESET "multiple network interfaces detected. using %s \n", buf);
+			printf(CL_WHITE "Info: " CL_RESET "multiple network interfaces detected. using %s \n", buf);
 		else
-			printf(CL_WHITE "info: " CL_RESET "character-server ip address is %s \n", buf);
+			printf(CL_WHITE "Info: " CL_RESET "character-server ip address is %s \n", buf);
 		if (login_ip_set_ == 0)
 			strcpy(login_ip_str, buf);
 		if (char_ip_set_ == 0)
 			strcpy(char_ip_str, buf);
 	}
 
-	printf(CL_WHITE "status: " CL_RESET "character-server configuration file readed \n");
+	printf(CL_WHITE "Status: " CL_RESET "character-server configuration file read \n");
 
 	login_ip = inet_addr(login_ip_str);
 	char_ip = inet_addr(char_ip_str);
@@ -6446,28 +6449,28 @@ void do_init(const int argc, char **argv)
 #endif
 
 #ifdef __DEBUG
-	printf(CL_WHITE "info: " CL_RESET "character-server is running on debug mode \n");
+	printf(CL_WHITE "Info: " CL_RESET "character-server is running on debug mode \n");
 #endif
 
 	if (strcmp(listen_ip, "0.0.0.0") == 0) {
 		char_log("The char-server is ready (and is listening on the port %d - from any ip)." RETCODE, char_port);
-		printf(CL_WHITE "status: " CL_RESET "character-server is listening port '%d' from any ip \n", char_port);
+		printf(CL_WHITE "Status: " CL_RESET "character-server is listening port '%d' from any ip \n", char_port);
 	} else {
 		char_log("The char-server is ready (and is listening on %s:%d)." RETCODE, listen_ip, char_port);
-		printf(CL_WHITE "status: " CL_RESET "character-server is listening port '%d' of '%s' \n", char_port, listen_ip);
+		printf(CL_WHITE "Status: " CL_RESET "character-server is listening port '%d' of '%s' \n", char_port, listen_ip);
 	}
 
 	/* console */
 	if (console) {
 		start_console(parse_console);
 		if (term_input_status == 0) {
-			printf(CL_WHITE "warning: " CL_RESET "failed to initialize console \n");
+			printf(CL_YELLOW "Warning: " CL_RESET "failed to initialize console \n");
 			console = 0;
 		} else {
-			printf(CL_WHITE "info: " CL_RESET "console is activated \n");
+			printf(CL_WHITE "Info: " CL_RESET "console is activated \n");
 		}
 	} else
-		printf(CL_WHITE "info: " CL_RESET "console is disabled \n");
+		printf(CL_WHITE "Info: " CL_RESET "console is disabled \n");
 
 	return;
 }

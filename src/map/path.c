@@ -1,4 +1,4 @@
-// $Id: path.c 316 2006-02-25 08:40:19Z DarkRaven $
+// $Id: path.c 316 2006-02-25 08:40:19Z Yor $
 #include <config.h>
 
 #include <stdio.h>

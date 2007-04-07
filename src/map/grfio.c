@@ -1,4 +1,4 @@
-// $Id: grfio.c 623 2006-06-01 14:20:15Z DarkRaven $
+// $Id: grfio.c 623 2006-06-01 14:20:15Z Yor $
 /*********************************************************************
  *
  *		Ragnarok Online Emulator : grfio.c -- grf file I/O Module
@@ -912,7 +912,7 @@ static void grfio_resourcecheck() {
 
 	buf=grfio_reads("data\\resnametable.txt",&size);
 	if (buf == NULL) {
-		printf("WARNING: Could not read data\\resnametable.txt !\n");
+		printf(CL_YELLOW "Warning: " CL_RESET "Could not read data\\resnametable.txt !\n");
 		return;
 	}
 	buf[size] = 0;
@@ -1088,7 +1088,7 @@ void grfio_init(char *fname) {
 	}
 
 	if (result != 0 && result2 != 0 && result3 != 0 && result4 != 0) {
-		printf("not grf file readed exit!!\n");
+		printf("not grf file read exit!!\n");
 		exit(1); // It ends, if a resource cannot read one.
 	}
 }

@@ -219,7 +219,7 @@ static inline void inter_accreg_init()
 					break;
 			if (i != accreg_db_num)
 			{
-				printf(CL_WHITE "warning: " CL_RESET "duplicate account id '%d' on account register (line %d) \n", account_id, c);
+				printf(CL_YELLOW "Warning: " CL_RESET "duplicate account id '%d' on account register (line %d) \n", account_id, c);
 				accreg_txt_dirty = 1;
 				continue;
 			}
@@ -235,7 +235,7 @@ static inline void inter_accreg_init()
 			strcpy(accreg_db[accreg_db_num].reg, line);
 			accreg_db_num++;
 		} else {
-			printf(CL_WHITE "warning: " CL_RESET "corrupted line on account register (line %d) \n", c);
+			printf(CL_YELLOW "Warning: " CL_RESET "corrupted line on account register (line %d) \n", c);
 			accreg_txt_dirty = 1;
 		}
 	}
@@ -258,7 +258,7 @@ static inline void inter_accreg_save() {
 
 	if ((fp = lock_fopen(accreg_txt, &lock)) == NULL)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "failed to save account register. data lost \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "failed to save account register. data lost \n");
 		return;
 	}
 
@@ -289,7 +289,7 @@ static void inter_config_read(const char *cfgName) { // not inline, called too o
 
 	if((fp = fopen(cfgName, "r")) == NULL)
 	{
-			printf(CL_WHITE "error: " CL_RESET "failed to read inter-server configuration file \n");
+			printf(CL_WHITE "Error: " CL_RESET "failed to read inter-server configuration file \n");
 			return;
 	}
 
@@ -410,13 +410,13 @@ static void inter_config_read(const char *cfgName) { // not inline, called too o
 // import
 		} else if (strcasecmp(w1, "import") == 0)
 		{
-			printf(CL_WHITE "status: " CL_RESET "importing inter-server configuration file \n");
+			printf(CL_WHITE "Status: " CL_RESET "importing inter-server configuration file \n");
 			inter_config_read(w2);
 		}
 	}
 	fclose(fp);
 
-	printf(CL_WHITE "status: " CL_RESET "inter-server configuration file readed \n");
+	printf(CL_WHITE "Status: " CL_RESET "inter-server configuration file read \n");
 
 	return;
 }
@@ -496,10 +496,10 @@ void inter_init(const char *file) {
 		                "  `value` int(11) NOT NULL default '0',"
 		                "  PRIMARY KEY (`account_id`, `str`)"
 		                ") TYPE = MyISAM") == 0) {
-			printf(CL_WHITE "error: " CL_RESET "failed to create account register file. closing character-server \n");
+			printf(CL_WHITE "Error: " CL_RESET "failed to create account register file. closing character-server \n");
 			exit(1);
 		}
-		printf(CL_WHITE "status: " CL_RESET "new account register file created \n");
+		printf(CL_WHITE "Status: " CL_RESET "new account register file created \n");
 		// insert values
 		sql_request("INSERT INTO `account_reg_db` (`account_id`, `str`, `value`) SELECT `account_id`, `str`, `value` FROM `%s` WHERE `type`='2'", global_reg_value);
 		// delete values
@@ -606,7 +606,7 @@ static inline void mapif_parse_WisRequest(int fd) { // 0x3001/0x3801 <packet_len
 
 	if(RFIFOW(fd,2) <= 53 + 1)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "failed to send wisp message \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "failed to send wisp message \n");
 		return;
 	}
 

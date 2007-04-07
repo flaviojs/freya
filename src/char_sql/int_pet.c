@@ -220,7 +220,7 @@ int mapif_save_pet(int fd, int account_id, struct s_pet *data) {
 	int len = RFIFOW(fd, 2);
 
 	if (sizeof(struct s_pet) != len - 8) {
-		printf(CL_WHITE "error: " CL_RESET "failed to save pet data. data size mismatch \n");
+		printf(CL_WHITE "Error: " CL_RESET "failed to save pet data. data size mismatch \n");
 	} else {
 		if (data->hungry < 0)
 			data->hungry = 0;

@@ -23,7 +23,7 @@
 #ifdef USE_MYSQL
 // MySQL variables
 unsigned int db_mysql_server_port;
-char db_mysql_server_ip[1024]; /* configuration line are readed for 1024 char */
+char db_mysql_server_ip[1024]; /* configuration line are read for 1024 char */
 char db_mysql_server_id[32];
 char db_mysql_server_pw[32];
 char db_mysql_server_db[32];

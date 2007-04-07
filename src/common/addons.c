@@ -86,12 +86,12 @@ int addons_enable_all(void) {
 			mod_dlsym(mod->dll, "Mod_Load", Mod_Load);
 			if(!Mod_Load)
 			{
-				printf(CL_WHITE "error: " CL_RESET "failed to start module '%s' \n", mod->header->name);
+				printf(CL_WHITE "Error: " CL_RESET "failed to start module '%s' \n", mod->header->name);
 				continue;
 			}
 			if((*Mod_Load)() != MOD_SUCCESS)
 			{
-				printf(CL_WHITE "error: " CL_RESET "failed to start module '%s' \n", mod->header->name);
+				printf(CL_WHITE "Error: " CL_RESET "failed to start module '%s' \n", mod->header->name);
 				continue;
 			}
 			mod->state = MOD_STATE_ENABLED;
@@ -114,14 +114,14 @@ int addons_load(char *addon_file, char addon_target)
 	CALLOC(modulename, char, strlen(addon_file) + 7 + 5);
 	sprintf(modulename, "addons/%s" ADDONS_EXT, addon_file);
 #ifdef __DEBUG
-	printf(CL_WHITE "status: " CL_RESET "loading module '%s' \n", modulename);
+	printf(CL_WHITE "Status: " CL_RESET "loading module '%s' \n", modulename);
 #endif
 	CALLOC(mod, struct _Module, 1);
 
 	mod->dll = mod_dlopen(modulename, RTLD_NOW);
 	if(!mod->dll)
 	{
-		printf(CL_WHITE "error: " CL_RESET "failed to load module '%s'. %s \n", modulename, mod_dlerror());
+		printf(CL_WHITE "Error: " CL_RESET "failed to load module '%s'. %s \n", modulename, mod_dlerror());
 		FREE(mod);
 		FREE(modulename);
 		return MOD_FAILED;
@@ -129,7 +129,7 @@ int addons_load(char *addon_file, char addon_target)
 	mod_dlsym(mod->dll, "Mod_Header", mod_header);
 	if(!mod_header)
 	{
-		printf(CL_WHITE "error: " CL_RESET "failed to load module '%s'. invalid nezumi module \n", modulename);
+		printf(CL_WHITE "Error: " CL_RESET "failed to load module '%s'. invalid nezumi module \n", modulename);
 		mod_dlclose(mod->dll);
 		FREE(mod);
 		FREE(modulename);
@@ -137,7 +137,7 @@ int addons_load(char *addon_file, char addon_target)
 	}
 	if(strcmp(mod_header->modversion,MOD_VERSION) != 0)
 	{
-		printf(CL_WHITE "error: " CL_RESET "failed to load module '%s'. invalid module version '%s' \n", modulename, mod_header->modversion);
+		printf(CL_WHITE "Error: " CL_RESET "failed to load module '%s'. invalid module version '%s' \n", modulename, mod_header->modversion);
 		mod_dlclose(mod->dll);
 		FREE(mod);
 		FREE(modulename);
@@ -145,7 +145,7 @@ int addons_load(char *addon_file, char addon_target)
 	}
 	if((mod_header->addon_target != ADDONS_ALL) && (mod_header->addon_target != addon_target))
 	{
-		printf(CL_WHITE "error: " CL_RESET "failed to load module '%s'. invalid module type \n", modulename);
+		printf(CL_WHITE "Error: " CL_RESET "failed to load module '%s'. invalid module type \n", modulename);
 		mod_dlclose(mod->dll);
 		FREE(mod);
 		FREE(modulename);
@@ -155,7 +155,7 @@ int addons_load(char *addon_file, char addon_target)
 	mod_dlsym(mod->dll, "Mod_Test", Mod_Test);
 	if ((!Mod_Init) || (!Mod_Test))
 	{
-		printf(CL_WHITE "error: " CL_RESET "failed to load module '%s'. invalid module type \n", modulename);
+		printf(CL_WHITE "Error: " CL_RESET "failed to load module '%s'. invalid module type \n", modulename);
 		mod_dlclose(mod->dll);
 		FREE(mod);
 		FREE(modulename);
@@ -164,7 +164,7 @@ int addons_load(char *addon_file, char addon_target)
 	if (((*Mod_Init)(call_table) != MOD_SUCCESS) ||
 	    ((*Mod_Test)() != MOD_SUCCESS))
 	{
-		printf(CL_WHITE "error: " CL_RESET "failed to load module '%s' \n", modulename);
+		printf(CL_WHITE "Error: " CL_RESET "failed to load module '%s' \n", modulename);
 		mod_dlclose(mod->dll);
 		FREE(mod);
 		FREE(modulename);
@@ -187,7 +187,7 @@ int addons_unload(struct _Module *mod, int force_unload)
 	int (*Mod_Unload)();
 	int result;
 
-	printf(CL_WHITE "status: " CL_RESET "unloading module '%s' \n", mod->header->name);
+	printf(CL_WHITE "Status: " CL_RESET "unloading module '%s' \n", mod->header->name);
 	mod_dlsym(mod->dll, "Mod_Unload", Mod_Unload);
 	if (Mod_Unload) {
 		result = (*Mod_Unload)();

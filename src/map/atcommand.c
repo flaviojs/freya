@@ -1123,6 +1123,9 @@ char * job_name(int class) {
 	case 21:   return "Peco crusader";
 	case 22:   return "Wedding";
 	case 23:   return "Super Novice";
+	case 24:   return "Gunslinger";
+	case 25:   return "Ninja";
+	case 26:   return "Xmas";
 	case 4001: return "Novice High";
 	case 4002: return "Swordsman High";
 	case 4003: return "Mage High";
@@ -1453,7 +1456,7 @@ void atcommand_config_read(const char *cfgName) {
 	}
 	fclose(fp);
 
-	printf("File '" CL_WHITE "%s" CL_RESET "' readed.\n", cfgName);
+	printf("File '" CL_WHITE "%s" CL_RESET "' read.\n", cfgName);
 
 	read_counter--;
 	if (read_counter == 0) {
@@ -1559,7 +1562,7 @@ void atcommand_custom_read(const char *cfgName) {
 	}
 	fclose(fp);
 
-	printf("File '" CL_WHITE "%s" CL_RESET "' readed.\n", cfgName);
+	printf("File '" CL_WHITE "%s" CL_RESET "' read.\n", cfgName);
 
 	read_counter--;
 	if (read_counter == 0) {
@@ -2211,7 +2214,7 @@ int msg_config_read(const char *cfgName) {
 	for (i = 0; msg_table[607][i]; i++) // Please help me~ T.T
 		msg_table[607][i] = tolower((unsigned char)msg_table[607][i]); // tolower needs unsigned char
 
-	printf("File '" CL_WHITE "%s" CL_RESET "' readed.\n", cfgName);
+	printf("File '" CL_WHITE "%s" CL_RESET "' read.\n", cfgName);
 
 	return 0;
 }
@@ -13903,8 +13906,8 @@ ATCOMMAND_FUNC(useskill) {
 }
 
 /*==========================================
- * @skilltree by [MouseJstr]
- * prints the skill tree for a player required to get to a skill
+ * @skilltree
+ * Prints the skill tree for a player required to get to a skill
  *------------------------------------------
  */
 ATCOMMAND_FUNC(skilltree) {
@@ -13920,7 +13923,7 @@ ATCOMMAND_FUNC(skilltree) {
 	}
 
 	if (skillnum >= 10000 && skillnum < 10015) // guild skill????
-		skillnum -= 9500;
+		skillnum -= 9100;
 	if (skillnum <= 0 || skillnum > MAX_SKILL) {
 		clif_displaymessage(fd, "Unknown skill number.");
 		return -1;
@@ -13937,7 +13940,7 @@ ATCOMMAND_FUNC(skilltree) {
 		clif_displaymessage(fd, atcmd_output);
 
 		i = 0;
-		for (skillidx = 0; skillidx < MAX_SKILL_TREE && skill_tree[s][c][skillidx].id > 0; skillidx++)
+		for (skillidx = 0; skillidx < MAX_SKILL_PER_TREE && skill_tree[s][c][skillidx].id > 0; skillidx++)
 			if (skill_tree[s][c][skillidx].id == skillnum) {
 				i = 1;
 				break;
@@ -15390,9 +15393,6 @@ ATCOMMAND_FUNC(version2) {
  * @r | @reject - reject the duel request
  * @do | @dueloff - leave current duel
  * @di | @duelinfo - info about duellants
- *------------------------------------------
- * For more details u can contact me via 
- * Nezumi forums at http://nezumi.dns.st
  *------------------------------------------
  * Special thanks to akrus for helping
  * debugging this crap :D

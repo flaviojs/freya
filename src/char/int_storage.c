@@ -286,7 +286,7 @@ void inter_storage_init() {
 	c = 0;
 	if((fp = fopen(storage_txt, "r")) == NULL)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "failed to read storage database \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "failed to read storage database \n");
 	} else {
 		while(fgets(line, sizeof(line), fp)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
 			c++;
@@ -308,17 +308,17 @@ void inter_storage_init() {
 				storagedb[storage_num].s_line = s_line;
 				storage_num++;
 			} else {
-				printf(CL_WHITE "warning: " CL_RESET "corrupted line on storage database (line %d) \n", c);
+				printf(CL_YELLOW "Warning: " CL_RESET "corrupted line on storage database (line %d) \n", c);
 			}
 		}
 		fclose(fp);
 	}
 	if(storage_num == 0)
-		printf(CL_WHITE "info: " CL_RESET "no storages found \n");
+		printf(CL_WHITE "Info: " CL_RESET "no storages found \n");
 	else if(storage_num == 1)
-		printf(CL_WHITE "info: " CL_RESET "one storage found \n");
+		printf(CL_WHITE "Info: " CL_RESET "one storage found \n");
 	else
-		printf(CL_WHITE "info: " CL_RESET "%d storages found \n", storage_num);
+		printf(CL_WHITE "Info: " CL_RESET "%d storages found \n", storage_num);
 #endif
 
 #ifdef USE_SQL
@@ -327,11 +327,11 @@ void inter_storage_init() {
 		if(sql_get_row())
 			c = sql_get_integer(0);
 	if(c == 0)
-		printf(CL_WHITE "info: " CL_RESET "no storages found \n");
+		printf(CL_WHITE "Info: " CL_RESET "no storages found \n");
 	else if(c == 1)
-		printf(CL_WHITE "info: " CL_RESET "one storage found \n");
+		printf(CL_WHITE "Info: " CL_RESET "one storage found \n");
 	else
-		printf(CL_WHITE "info: " CL_RESET "%d storages found \n", c);
+		printf(CL_WHITE "Info: " CL_RESET "%d storages found \n", c);
 #endif /* USE_SQL */
 
 	// init db
@@ -342,7 +342,7 @@ void inter_storage_init() {
 #ifdef TXT_ONLY
 	c = 0;
 	if ((fp = fopen(guild_storage_txt, "r")) == NULL) {
-		printf(CL_WHITE "warning: " CL_RESET "unable to read guild storage database \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "unable to read guild storage database \n");
 	} else {
 		while(fgets(line, sizeof(line), fp)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
 			c++;
@@ -364,17 +364,17 @@ void inter_storage_init() {
 				guild_storagedb[guild_storage_num].s_line = s_line;
 				guild_storage_num++;
 			} else {
-				printf(CL_WHITE "warning: " CL_RESET "corrupted line on guild storage database (line %d) \n", c);
+				printf(CL_YELLOW "Warning: " CL_RESET "corrupted line on guild storage database (line %d) \n", c);
 			}
 		}
 		fclose(fp);
 	}
 	if(guild_storage_num == 0)
-		printf(CL_WHITE "info: " CL_RESET "no guild storages found \n");
+		printf(CL_WHITE "Info: " CL_RESET "no guild storages found \n");
 	else if(guild_storage_num == 1)
-		printf(CL_WHITE "info: " CL_RESET "one guild storage found \n");
+		printf(CL_WHITE "Info: " CL_RESET "one guild storage found \n");
 	else
-		printf(CL_WHITE "info: " CL_RESET "%d storages found \n", guild_storage_num);
+		printf(CL_WHITE "Info: " CL_RESET "%d storages found \n", guild_storage_num);
 #endif /* TXT_ONLY */
 
 #ifdef USE_SQL
@@ -383,11 +383,11 @@ void inter_storage_init() {
 		if (sql_get_row())
 			c = sql_get_integer(0);
 	if(c == 0)
-		printf(CL_WHITE "info: " CL_RESET "no guild storages found \n");
+		printf(CL_WHITE "Info: " CL_RESET "no guild storages found \n");
 	else if (c == 1)
-		printf(CL_WHITE "info: " CL_RESET "one guild storage found \n");
+		printf(CL_WHITE "Info: " CL_RESET "one guild storage found \n");
 	else
-		printf(CL_WHITE "info: " CL_RESET "%d storages found \n", c);
+		printf(CL_WHITE "Info: " CL_RESET "%d storages found \n", c);
 #endif /* USE_SQL */
 
 #ifdef USE_SQL
@@ -439,7 +439,7 @@ void inter_storage_save() {
 
 	if ((fp = lock_fopen(storage_txt, &lock)) == NULL)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "failed to save storage data. data lost \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "failed to save storage data. data lost \n");
 		return;
 	}
 
@@ -508,7 +508,7 @@ void inter_guild_storage_save() {
 
 	if((fp = lock_fopen(guild_storage_txt, &lock)) == NULL)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "failed to save guild storage data. data lost \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "failed to save guild storage data. data lost \n");
 		return;
 	}
 
@@ -812,7 +812,7 @@ void mapif_parse_SaveStorage(const int fd) {
 
 	if (sizeof(struct storage) != len - 8)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "failed to save storage data. data size mismatch \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "failed to save storage data. data size mismatch \n");
 	} else {
 		account_id = RFIFOL(fd,4);
 		storage_tostr(line, (struct storage *)RFIFOP(fd,8));
@@ -891,7 +891,7 @@ void mapif_parse_SaveGuildStorage(int fd) {
 
 	if (sizeof(struct guild_storage) != len - 12)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "failed to save storage data. data size mismatch \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "failed to save storage data. data size mismatch \n");
 	} else {
 		guild_id = RFIFOL(fd,8);
 		guild_storage_tostr(line, (struct guild_storage*)RFIFOP(fd,12));

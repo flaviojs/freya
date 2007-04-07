@@ -1553,9 +1553,9 @@ int npc_parse_warp(char *w1, char *w3, char *w4, int lines) {
 						break;
 				}
 				if (k != map[m].npc_num)
-					printf(CL_YELLOW "WARNING: Bad destination coordinates" CL_RESET " (same of another npc/warp (%s): %s,%d,%d) in warp: %s (file:%s:%d) -> " CL_YELLOW "loaded" CL_RESET ".\n", map[m].npc[k]->name, to_mapname, to_x, to_y, w3, current_file, lines);
+					printf(CL_YELLOW "Warning: " CL_RESET "Bad destination coordinates" CL_RESET " (same of another npc/warp (%s): %s,%d,%d) in warp: %s (file:%s:%d) -> " CL_YELLOW "loaded" CL_RESET ".\n", map[m].npc[k]->name, to_mapname, to_x, to_y, w3, current_file, lines);
 				else
-					printf(CL_YELLOW "WARNING: Bad destination coordinates" CL_RESET " (same of another npc/warp: %s,%d,%d) in warp: %s (file:%s:%d) -> " CL_YELLOW "loaded" CL_RESET ".\n", to_mapname, to_x, to_y, w3, current_file, lines);
+					printf(CL_YELLOW "Warning: " CL_RESET "Bad destination coordinates" CL_RESET " (same of another npc/warp: %s,%d,%d) in warp: %s (file:%s:%d) -> " CL_YELLOW "loaded" CL_RESET ".\n", to_mapname, to_x, to_y, w3, current_file, lines);
 			}
 		}
 	}
@@ -1600,9 +1600,9 @@ int npc_parse_warp(char *w1, char *w3, char *w4, int lines) {
 	if (map_getcell(m, x, y, CELL_CHKNOPASS)) {
 		if (current_file != NULL) { // if not a GM command, but a script
 #ifdef __DEBUG
-			printf(CL_YELLOW "WARNING: Bad source coordinates" CL_RESET " (can not walk on this position: %s,%d,%d, cell type: %d) in warp: %s (file:%s:%d), ", mapname, x, y, map_getcell(m, x, y, CELL_GETTYPE), w3, current_file, lines);
+			printf(CL_YELLOW "Warning: " CL_RESET "Bad source coordinates" CL_RESET " (can not walk on this position: %s,%d,%d, cell type: %d) in warp: %s (file:%s:%d), ", mapname, x, y, map_getcell(m, x, y, CELL_GETTYPE), w3, current_file, lines);
 #else
-			printf(CL_YELLOW "WARNING: Bad source coordinates" CL_RESET " (can not walk on this position: %s,%d,%d) in warp: %s (file:%s:%d), ", mapname, x, y, w3, current_file, lines);
+			printf(CL_YELLOW "Warning: " CL_RESET "Bad source coordinates" CL_RESET " (can not walk on this position: %s,%d,%d) in warp: %s (file:%s:%d), ", mapname, x, y, w3, current_file, lines);
 #endif
 			if (count == 2)
 				printf(CL_YELLOW "and only 2 available squares" CL_RESET " -> " CL_YELLOW "loaded" CL_RESET "!\n");
@@ -1611,13 +1611,13 @@ int npc_parse_warp(char *w1, char *w3, char *w4, int lines) {
 		}
 	} else if (count == 2) {
 		if (current_file != NULL) // if not a GM command, but a script
-			printf(CL_YELLOW "WARNING: Only 2 available squares" CL_RESET " (it's difficult to use warp, position: %s,%d,%d) in warp: %s (file:%s:%d) -> " CL_YELLOW "loaded" CL_RESET "!\n", mapname, x, y, w3, current_file, lines);
+			printf(CL_YELLOW "Warning: " CL_RESET "Only 2 available squares" CL_RESET " (it's difficult to use warp, position: %s,%d,%d) in warp: %s (file:%s:%d) -> " CL_YELLOW "loaded" CL_RESET "!\n", mapname, x, y, w3, current_file, lines);
 	} // with 3 squares, warp can be used by players without problem
 
 	// warning on warp name
 	if (strlen(w3) > 24) {
 		if (current_file != NULL) // if not a GM command, but a script
-			printf(CL_YELLOW "WARNING: Invalid warp name" CL_RESET" (warp: %s) - Name too long (> 24 char.) -> only 24 first characters are used (file:%s:%d).\n", w3, current_file, lines);
+			printf(CL_YELLOW "Warning: " CL_RESET "Invalid warp name" CL_RESET" (warp: %s) - Name too long (> 24 char.) -> only 24 first characters are used (file:%s:%d).\n", w3, current_file, lines);
 	}
 
 	CALLOC(nd, struct npc_data, 1);
@@ -1718,7 +1718,7 @@ static int npc_parse_shop(char *w1, char *w3, char *w4, int lines) {
 	// warning on warp name
 	if (strlen(w3) > 24) {
 		if (current_file != NULL) // if not a GM command, but a script
-			printf(CL_YELLOW "WARNING: Invalid shop name" CL_RESET" (shop: %s) - Name too long (> 24 char.) -> only 24 first characters are used (file:%s:%d).\n", w3, current_file, lines);
+			printf(CL_YELLOW "Warning: " CL_RESET "Invalid shop name" CL_RESET" (shop: %s) - Name too long (> 24 char.) -> only 24 first characters are used (file:%s:%d).\n", w3, current_file, lines);
 	}
 
 	CALLOC(nd, struct npc_data, 1);
@@ -2381,20 +2381,20 @@ int npc_parse_mapflag(char *w1, char *w3, char *w4, int lines) {
 		map[m].flag.nomobdrop = 1;
 		map[m].flag.nomvpdrop = 1;
 		if (strcasecmp(w3, "noloot") == 0)
-			printf(CL_YELLOW "WARNING: Unknown map flag" CL_RESET ": noloot (file:%s:%d)! Nezumi uses 'nodrop' mapflag.\n", current_file, lines);
+			printf(CL_YELLOW "Warning: " CL_RESET "Unknown map flag" CL_RESET ": noloot (file:%s:%d)! Nezumi uses 'nodrop' mapflag.\n", current_file, lines);
 	} else if (strcasecmp(w3, "nomobdrop") == 0 || // 32
 	           strcasecmp(w3, "nomobloot") == 0) { // for compatibility with eAthena
 		map[m].flag.nomobdrop = 1;
 		if (strcasecmp(w3, "nomobloot") == 0) {
 			if (current_file != NULL) // if not a GM command, but a script
-				printf(CL_YELLOW "WARNING: Unknown map flag" CL_RESET ": nomobloot (file:%s:%d)! Nezumi uses 'nomobdrop' mapflag.\n", current_file, lines);
+				printf(CL_YELLOW "Warning: " CL_RESET "Unknown map flag" CL_RESET ": nomobloot (file:%s:%d)! Nezumi uses 'nomobdrop' mapflag.\n", current_file, lines);
 		}
 	} else if (strcasecmp(w3, "nomvpdrop") == 0 || // 33
 	           strcasecmp(w3, "nomvploot") == 0) { // for compatibility with eAthena
 		map[m].flag.nomvpdrop = 1;
 		if (strcasecmp(w3, "nomvploot") == 0) {
 			if (current_file != NULL) // if not a GM command, but a script
-				printf(CL_YELLOW "WARNING: Unknown map flag" CL_RESET ": nomvploot (file:%s:%d)! Nezumi uses 'nomvpdrop' mapflag.\n", current_file, lines);
+				printf(CL_YELLOW "Warning: " CL_RESET "Unknown map flag" CL_RESET ": nomvploot (file:%s:%d)! Nezumi uses 'nomvpdrop' mapflag.\n", current_file, lines);
 		}
 	} else if (strcasecmp(w3, "pvp_nightmaredrop") == 0) { // 34
 		if (sscanf(w4, "%[^,],%[^,],%d", drop_arg1, drop_arg2, &drop_per) == 3) {
@@ -2411,7 +2411,7 @@ int npc_parse_mapflag(char *w1, char *w3, char *w4, int lines) {
 					drop_type = 3;
 				else {
 					if (current_file != NULL) // if not a GM command, but a script
-						printf(CL_YELLOW "WARNING: Invalid map flag" CL_RESET ": pvp_nightmaredrop (file:%s:%d)! Argument 2 must be: 'inventory' or 'equip' or 'all'.\n", current_file, lines);
+						printf(CL_YELLOW "Warning: " CL_RESET "Invalid map flag" CL_RESET ": pvp_nightmaredrop (file:%s:%d)! Argument 2 must be: 'inventory' or 'equip' or 'all'.\n", current_file, lines);
 					return 1;
 				}
 				// add the drop list
@@ -2427,12 +2427,12 @@ int npc_parse_mapflag(char *w1, char *w3, char *w4, int lines) {
 				map[m].flag.pvp_nightmaredrop = 1;
 			} else {
 				if (current_file != NULL) // if not a GM command, but a script
-					printf(CL_YELLOW "WARNING: Invalid map flag" CL_RESET ": pvp_nightmaredrop (file:%s:%d)! Argument 1 must be: 'random' or a valid item_id.\n", current_file, lines);
+					printf(CL_YELLOW "Warning: " CL_RESET "Invalid map flag" CL_RESET ": pvp_nightmaredrop (file:%s:%d)! Argument 1 must be: 'random' or a valid item_id.\n", current_file, lines);
 				return 1;
 			}
 		} else {
 			if (current_file != NULL) // if not a GM command, but a script
-				printf(CL_YELLOW "WARNING: Invalid map flag" CL_RESET ": pvp_nightmaredrop (file:%s:%d)! Number of parameters is incorrect.\n", current_file, lines);
+				printf(CL_YELLOW "Warning: " CL_RESET "Invalid map flag" CL_RESET ": pvp_nightmaredrop (file:%s:%d)! Number of parameters is incorrect.\n", current_file, lines);
 			return 1;
 		}
 	} else if (strcasecmp(w3, "nogmcmd") == 0) { // 35
@@ -2443,12 +2443,12 @@ int npc_parse_mapflag(char *w1, char *w3, char *w4, int lines) {
 				map[m].flag.nogmcmd = gmlvl;
 			else {
 				if (current_file != NULL) // if not a GM command, but a script
-					printf(CL_YELLOW "WARNING: Invalid map flag" CL_RESET ": nogmcmd (file:%s:%d)! Value must be between 0 to 100 (not: %d).\n", current_file, lines, gmlvl);
+					printf(CL_YELLOW "Warning: " CL_RESET "Invalid map flag" CL_RESET ": nogmcmd (file:%s:%d)! Value must be between 0 to 100 (not: %d).\n", current_file, lines, gmlvl);
 				return 1;
 			}
 		} else {
 			if (current_file != NULL) // if not a GM command, but a script
-				printf(CL_YELLOW "WARNING: Invalid map flag" CL_RESET ": nogmcmd (file:%s:%d)! Please, specify a minimum level.\n", current_file, lines);
+				printf(CL_YELLOW "Warning: " CL_RESET "Invalid map flag" CL_RESET ": nogmcmd (file:%s:%d)! Please, specify a minimum level.\n", current_file, lines);
 			return 1;
 		}
 	} else if (strcasecmp(w3, "mingmlvl") == 0) { // 36
@@ -2458,12 +2458,12 @@ int npc_parse_mapflag(char *w1, char *w3, char *w4, int lines) {
 				map[m].flag.mingmlvl = gmlvl;
 			else {
 				if (current_file != NULL) // if not a GM command, but a script
-					printf(CL_YELLOW "WARNING: Invalid map flag" CL_RESET ": mingmlvl (file:%s:%d)! Value must be between 0 to 100 (not: %d).\n", current_file, lines, gmlvl);
+					printf(CL_YELLOW "Warning: " CL_RESET "Invalid map flag" CL_RESET ": mingmlvl (file:%s:%d)! Value must be between 0 to 100 (not: %d).\n", current_file, lines, gmlvl);
 				return 1;
 			}
 		} else {
 			if (current_file != NULL) // if not a GM command, but a script
-				printf(CL_YELLOW "WARNING: Invalid map flag" CL_RESET ": mingmlvl (file:%s:%d)! Please, specify a minimum level.\n", current_file, lines);
+				printf(CL_YELLOW "Warning: " CL_RESET "Invalid map flag" CL_RESET ": mingmlvl (file:%s:%d)! Please, specify a minimum level.\n", current_file, lines);
 			return 1;
 		}
 	} else if (strcasecmp(w3, "guild_dungeon") == 0) {
@@ -2472,7 +2472,7 @@ int npc_parse_mapflag(char *w1, char *w3, char *w4, int lines) {
 		// not used in code
 	} else {
 		if (current_file != NULL) // if not a GM command, but a script
-			printf(CL_YELLOW "WARNING: Unknown map flag" CL_RESET ": %s (file:%s:%d)!\n", w3, current_file, lines);
+			printf(CL_YELLOW "Warning: " CL_RESET "Unknown map flag" CL_RESET ": %s (file:%s:%d)!\n", w3, current_file, lines);
 		return 1;
 	}
 
@@ -2512,7 +2512,7 @@ static int npc_read_indoors(void) {
 	}
 	FREE(buf);
 
-	printf("File '" CL_WHITE "data\\indoorrswtable.txt" CL_RESET "' readed.\n");
+	printf("File '" CL_WHITE "data\\indoorrswtable.txt" CL_RESET "' read.\n");
 
 	return 0;
 }
@@ -2767,9 +2767,9 @@ int do_init_npc(void) {
 							break;
 					}
 					if (j != map[m].npc_num)
-						printf(CL_YELLOW "WARNING: Bad destination coordinates" CL_RESET " (same of another npc/warp (%s): %s,%d,%d) in warp: %s.\n", map[m].npc[j]->name, nd->u.warp.name, nd->u.warp.x, nd->u.warp.y, nd->name);
+						printf(CL_YELLOW "Warning: " CL_RESET "Bad destination coordinates" CL_RESET " (same of another npc/warp (%s): %s,%d,%d) in warp: %s.\n", map[m].npc[j]->name, nd->u.warp.name, nd->u.warp.x, nd->u.warp.y, nd->name);
 					else
-						printf(CL_YELLOW "WARNING: Bad destination coordinates" CL_RESET " (same of another npc/warp: %s,%d,%d) in warp: %s.\n", nd->u.warp.name, nd->u.warp.x, nd->u.warp.y, nd->name);
+						printf(CL_YELLOW "Warning: " CL_RESET "Bad destination coordinates" CL_RESET " (same of another npc/warp: %s,%d,%d) in warp: %s.\n", nd->u.warp.name, nd->u.warp.x, nd->u.warp.y, nd->name);
 				}
 			}
 		}

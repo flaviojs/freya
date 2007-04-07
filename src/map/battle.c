@@ -669,23 +669,23 @@ int battle_addmastery(struct map_session_data *sd,struct block_list *target,int 
 		weapon = sd->weapontype2;
 	switch(weapon)
 	{
-		case 0x01:
-		case 0x02:
+		case 1:
+		case 2:
 		{
 			if((skill = pc_checkskill(sd,SM_SWORD)) > 0) {
 				damage += (skill * 4);
 			}
 			break;
 		}
-		case 0x03:
+		case 3:
 		{
 			if((skill = pc_checkskill(sd,SM_TWOHAND)) > 0) {
 				damage += (skill * 4);
 			}
 			break;
 		}
-		case 0x04:
-		case 0x05:
+		case 4:
+		case 5:
 		{
 			if((skill = pc_checkskill(sd,KN_SPEARMASTERY)) > 0) {
 				if(!pc_isriding(sd))
@@ -695,57 +695,57 @@ int battle_addmastery(struct map_session_data *sd,struct block_list *target,int 
 			}
 			break;
 		}
-		case 0x06:
-		case 0x07:
+		case 6:
+		case 7:
 		{
 			if((skill = pc_checkskill(sd,AM_AXEMASTERY)) > 0) {
 				damage += (skill * 3);
 			}
 			break;
 		}
-		case 0x08:
+		case 8:
 		{
 			if((skill = pc_checkskill(sd,PR_MACEMASTERY)) > 0) {
 				damage += (skill * 3);
 			}
 			break;
 		}
-		case 0x09:
+		case 9:
 			break;
-		case 0x0a:
+		case 10:
 			break;
-		case 0x0b:
+		case 11:
 			break;
-		case 0x00:
-		case 0x0c:
+		case 0:
+		case 12:
 		{
 			if((skill = pc_checkskill(sd,MO_IRONHAND)) > 0) {
 				damage += (skill * 3);
 			}
 			break;
 		}
-		case 0x0d:
+		case 13:
 		{
 			if((skill = pc_checkskill(sd,BA_MUSICALLESSON)) > 0) {
 				damage += (skill * 3);
 			}
 			break;
 		}
-		case 0x0e:
+		case 14:
 		{
 			if((skill = pc_checkskill(sd,DC_DANCINGLESSON)) > 0) {
 				damage += (skill * 3);
 			}
 			break;
 		}
-		case 0x0f:
+		case 15:
 		{
 			if((skill = pc_checkskill(sd,SA_ADVANCEDBOOK)) > 0) {
 				damage += (skill * 3);
 			}
 			break;
 		}
-		case 0x10:
+		case 16:
 		{
 			if((skill = pc_checkskill(sd,AS_KATAR)) > 0) {
 				damage += (skill * 3);
@@ -1933,9 +1933,9 @@ static struct Damage battle_calc_pc_weapon_attack(struct block_list *src, struct
 	}
 
 	//check for double attack
-	if (skill_num == 0 && (((skill = 5 * pc_checkskill(sd, TF_DOUBLE)) > 0 && sd->weapontype1 == 0x01) || sd->double_rate > 0))
+	if (skill_num == 0 && (((skill = 5 * pc_checkskill(sd, TF_DOUBLE)) > 0 && sd->weapontype1 == 1) || sd->double_rate > 0))
 		da = (rand() % 100 < (skill > sd->double_rate ? skill:sd->double_rate)) ? 1 : 0;
-	if (skill_num == 0 && (skill = pc_checkskill(sd, MO_TRIPLEATTACK)) > 0 && sd->status.weapon <= 16)
+	if (skill_num == 0 && (skill = pc_checkskill(sd, MO_TRIPLEATTACK)) > 0 && sd->status.weapon <= 22)
 		da = (rand() % 100 < (30 - skill)) ? 2 : da;
 
 	// weapon overrefine bonus
@@ -1981,7 +1981,7 @@ static struct Damage battle_calc_pc_weapon_attack(struct block_list *src, struct
 		damage += atkmax;
 		damage2 += atkmax_;
 		if (sd->atk_rate != 100 || sd->weapon_atk_rate != 0) {
-			if (sd->status.weapon < 16) {
+			if (sd->status.weapon <= 22) {
 				damage = (damage * (sd->atk_rate + sd->weapon_atk_rate[sd->status.weapon])) / 100;
 				damage2 = (damage2 * (sd->atk_rate + sd->weapon_atk_rate[sd->status.weapon])) / 100;
 			}
@@ -2015,7 +2015,7 @@ static struct Damage battle_calc_pc_weapon_attack(struct block_list *src, struct
 		if(atkmax_ > atkmin_) damage2 += rand() % (atkmax_-atkmin_ + 1);
 
 		if (sd->atk_rate != 100 || sd->weapon_atk_rate != 0) {
-			if (sd->status.weapon < 16) {
+			if (sd->status.weapon <= 22) {
 				damage = (damage * (sd->atk_rate + sd->weapon_atk_rate[sd->status.weapon])) / 100;
 				damage2 = (damage2 * (sd->atk_rate + sd->weapon_atk_rate[sd->status.weapon])) / 100;
 			}
@@ -2604,7 +2604,7 @@ static struct Damage battle_calc_pc_weapon_attack(struct block_list *src, struct
 		damage+= skill*2;
 		damage2+= skill*2;
 	}
-	if(sd->weapontype1 == 0x10 || sd->weapontype2 == 0x10){
+	if(sd->weapontype1 == 16 || sd->weapontype2 == 16){
 		if((skill = pc_checkskill(sd,ASC_KATAR)) > 0) {
 			damage += damage*(10+(skill * 2))/100;
 		}
@@ -2747,7 +2747,7 @@ static struct Damage battle_calc_pc_weapon_attack(struct block_list *src, struct
 		damage2 = 0;
 	}
 
-	if(sd->status.weapon > 16) {
+	if(sd->status.weapon >= 50) {
 		int dmg = damage, dmg2 = damage2;
 		skill = pc_checkskill(sd,AS_RIGHT);
 		damage = damage * (50 + (skill * 10))/100;
@@ -4258,7 +4258,7 @@ static const struct {
 	{ "finding_ore_rate",                           &battle_config.finding_ore_rate}, // [celest]
 	{ "min_skill_delay_limit",                      &battle_config.min_skill_delay_limit}, // [celest]
 	{ "idle_no_share",                              &battle_config.idle_no_share}, // [celest], for a feature by [MouseJstr]
-	{ "idle_delay_no_share",                        &battle_config.idle_delay_no_share}, // [Darkraven]
+	{ "idle_delay_no_share",                        &battle_config.idle_delay_no_share}, // [Yor]
 	{ "chat_no_share",                              &battle_config.chat_no_share}, // [Yor]
 	{ "npc_chat_no_share",                          &battle_config.npc_chat_no_share}, // [Yor]
 	{ "shop_no_share",                              &battle_config.shop_no_share}, // [Yor]
@@ -4593,7 +4593,7 @@ void battle_set_defaults() {
 	battle_config.finding_ore_rate = 100;
 	battle_config.min_skill_delay_limit = 150;
 	battle_config.idle_no_share = 0; // [Yor]
-	battle_config.idle_delay_no_share = 120000; // [DarkRaven] (2 minutes)
+	battle_config.idle_delay_no_share = 120000; // [Yor] (2 minutes)
 	battle_config.chat_no_share = 0; // [Yor]
 	battle_config.npc_chat_no_share = 1; // [Yor]
 	battle_config.shop_no_share = 1; // [Yor]
@@ -4852,12 +4852,12 @@ void battle_validate_conf() {
 		battle_config.packet_ver_flag = 14847; // accept all clients (except 2004-12-06aSakexe client (-512) and 2005-01-10bSakexe client (-1024), similar to 2004-10-25aSakexe client and 2005-06-28aSakexe client)
 	else {
 		if ((battle_config.packet_ver_flag & (256 + 512)) == (256 + 512)) {
-			printf("WARNING: Avoid to accept both clients 2004-12-06aSakexe AND 2004-10-25aSakexe.\n");
+			printf(CL_YELLOW "Warning: " CL_RESET "Avoid to accept both clients 2004-12-06aSakexe AND 2004-10-25aSakexe.\n");
 			printf("         It's possible that some players will not be able to connect\n");
 			printf("         if you don't choose between the 2 versions and accept the 2 versions.\n");
 		}
 		if ((battle_config.packet_ver_flag & (1024 + 4096)) == (1024 + 4096)) {
-			printf("WARNING: Avoid to accept both clients 2005-01-10bSakexe AND 2005-06-28aSakexe.\n");
+			printf(CL_YELLOW "Warning: " CL_RESET "Avoid to accept both clients 2005-01-10bSakexe AND 2005-06-28aSakexe.\n");
 			printf("         It's possible that some players will not be able to connect\n");
 			printf("         if you don't choose between the 2 versions and accept the 2 versions.\n");
 		}
@@ -5045,7 +5045,7 @@ int battle_config_read(const char *cfgName) {
 		add_timer_func_list(battle_delay_damage_sub, "battle_delay_damage_sub");
 	}
 
-	printf("File '" CL_WHITE "%s" CL_RESET "' readed.\n", cfgName);
+	printf("File '" CL_WHITE "%s" CL_RESET "' read.\n", cfgName);
 
 	return 0;
 }

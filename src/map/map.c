@@ -1,4 +1,4 @@
-// $Id: map.c 659 2006-06-15 20:25:42Z DarkRaven $
+// $Id: map.c 659 2006-06-15 20:25:42Z Yor $
 #include <config.h>
 
 #include <stdio.h>
@@ -1905,7 +1905,7 @@ static void map_readwater(char *watertxt) {
 	}
 	fclose(fp);
 
-	printf("File '" CL_WHITE "%s" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", watertxt, waterlist_num, (waterlist_num > 1) ? "s" : "");
+	printf("File '" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", watertxt, waterlist_num, (waterlist_num > 1) ? "s" : "");
 }
 
 /*==========================================
@@ -2533,7 +2533,7 @@ int parse_console(char *buf) {
 		           strcasecmp("consol_off", command) == 0||
 		           strcasecmp("console", command) == 0) {
 			if (strcasecmp("console", command) == 0 && strcasecmp("off", param) != 0) {
-				printf(CL_RED "ERROR: Unknown parameter." CL_RESET "\n");
+				printf(CL_RED "Error: " CL_RESET "Unknown parameter." CL_RESET "\n");
 			} else {
 				printf(CL_DARK_CYAN "Console commands are now disabled." CL_RESET "\n");
 				console_on = 0;
@@ -2862,7 +2862,7 @@ int sql_config_read(char *cfgName) {
 	}
 	fclose(fp);
 
-	printf("File '" CL_WHITE "%s" CL_RESET "' readed.\n", cfgName);
+	printf("File '" CL_WHITE "%s" CL_RESET "' read.\n", cfgName);
 
 	return 0;
 }

@@ -9,7 +9,7 @@
 **    May you share freely, never taking more than you give.
 **
 *************************************************************************
-** Code for testing the the SQLite library in a multithreaded environment.
+** Code for testing the the SQLite library in a multithread environment.
 **
 ** $Id: test4.c 15 2006-01-17 16:27:41Z MagicalTux $
 */

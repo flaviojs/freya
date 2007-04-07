@@ -1395,7 +1395,7 @@ all: title $MAKE_RULES $OBJECTS
 
 title:
 	@echo "Nezumi Ragnarok Emulator"
-	@echo "#Nezumi @ irc.ooKoo.org"
+	@echo "#Freya @ irc.deltaanime.net"
 	@echo
 	@echo "$BUILD_LINE"
 	@echo

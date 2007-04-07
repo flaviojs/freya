@@ -115,7 +115,7 @@ void inter_party_init() {
 			numdb_insert(party_db, (intptr_t)p->party_id, p);
 			party_check_empty(p);
 		} else {
-			printf(CL_WHITE "warning: " CL_RESET "corrupted line (%d) on friend database \n", c + 1);
+			printf(CL_YELLOW "Warning: " CL_RESET "corrupted line (%d) on friend database \n", c + 1);
 			FREE(p);
 		}
 		c++;
@@ -144,7 +144,7 @@ void inter_party_save() {
 	int lock;
 
 	if ((fp = lock_fopen(party_txt, &lock)) == NULL) {
-		printf(CL_WHITE "warning: " CL_RESET "unable to save friend data. data lost \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "unable to save friend data. data lost \n");
 		return;
 	}
 
@@ -285,7 +285,7 @@ void mapif_party_noinfo(int fd, int party_id)
 	WPACKETW(2) = 8;
 	WPACKETL(4) = party_id;
 	SENDPACKET(fd, 8);
-	printf(CL_WHITE "warning: " CL_RESET "unable to read party data (party id %d) \n", party_id);
+	printf(CL_YELLOW "Warning: " CL_RESET "unable to read party data (party id %d) \n", party_id);
 	return;
 }
 
@@ -402,7 +402,7 @@ void mapif_parse_CreateParty(int fd, int account_id, char *party_name, char *nic
 
 	if((p = search_partyname(party_name)) != NULL)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "duplicate party name '%s' \n", party_name);
+		printf(CL_YELLOW "Warning: " CL_RESET "duplicate party name '%s' \n", party_name);
 		mapif_party_created(fd, account_id, NULL);
 		return;
 	}

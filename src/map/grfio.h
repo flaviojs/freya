@@ -1,4 +1,4 @@
-// $Id: grfio.h 620 2006-05-27 20:52:41Z DarkRaven $
+// $Id: grfio.h 620 2006-05-27 20:52:41Z Yor $
 #ifndef _GRFIO_H_
 #define _GRFIO_H_
 

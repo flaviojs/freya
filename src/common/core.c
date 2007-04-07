@@ -36,7 +36,7 @@ static char *nezumi_logo[] = {
 	"  /  \\/ / _ \\_  / | | | '_ ` _ \\| |",
 	" / /\\  /  __// /| |_| | | | | | | |",
 	" \\_\\ \\/ \\___/___|\\__,_|_| |_| |_|_|",
-	"         http://nezumi.dns.st/",
+	"          http://ro-freya.net",
 	NULL
 };
 
@@ -49,7 +49,7 @@ static char *nezumi_logo[] = {
 void test_fdlimit(void)
 {
 	struct rlimit limit,limit2;
-	fprintf(stderr, CL_WHITE "info: " CL_RESET "compiled to handle %d connections \n\n", FD_SETSIZE);
+	fprintf(stderr, CL_WHITE "Info: " CL_RESET "compiled to handle %d connections \n\n", FD_SETSIZE);
 	if (getrlimit(RLIMIT_NOFILE, &limit) == 0)
 	{
 		if (limit.rlim_cur == RLIM_INFINITY)
@@ -67,7 +67,7 @@ void test_fdlimit(void)
 				limit2.rlim_cur = limit.rlim_max;
 				if (setrlimit(RLIMIT_NOFILE,&limit2) != 0)
 				{
-					printf(CL_WHITE "warning: " CL_RESET "could not set the fdsize to '%d' \n", (int)limit.rlim_max);
+					printf(CL_YELLOW "Warning: " CL_RESET "could not set the fdsize to '%d' \n", (int)limit.rlim_max);
 					return;
 				} else {
 					limit.rlim_cur = limit.rlim_max;
@@ -75,7 +75,7 @@ void test_fdlimit(void)
 						return;
 				}
 			}
-			printf(CL_WHITE "warning: " CL_RESET "could not set fdsize to '%d'. limited to '%d' \n", (int)limit.rlim_max, (int)limit.rlim_cur);
+			printf(CL_YELLOW "Warning: " CL_RESET "could not set fdsize to '%d'. limited to '%d' \n", (int)limit.rlim_max, (int)limit.rlim_cur);
 		}
 	}
 	return;
@@ -167,10 +167,9 @@ void versionscreen()
 	printf(CL_BOLD CL_BG_BLUE "Nezumi version %d.%d.%d, Athena Mod version %d (SQL version)" CL_RESET "\n", ATHENA_MAJOR_VERSION, ATHENA_MINOR_VERSION, ATHENA_REVISION, ATHENA_MOD_VERSION);
 #endif /* TXT_ONLY */
 #endif /* SVN_REVISION */
-	puts(CL_GREEN "Website/Forum" CL_RESET ": \thttp://nezumi.dns.st/");
-	puts(CL_GREEN "Download URL" CL_RESET ": \thttp://ookoo.org/svn/nezumi/");
-	puts(CL_GREEN "IRC Channel" CL_RESET ": \tirc://irc.ookoo.org/Nezumi");
-	puts("Open '" CL_DARK_CYAN "readme.html" CL_RESET "' for more information.");
+	puts(CL_GREEN "Website/Forum" CL_RESET ": \thttp://ro-freya.net/");
+	puts(CL_GREEN "Download URL" CL_RESET ": \thttp://ookoo.org/svn/freya/");
+	puts(CL_GREEN "IRC Channel" CL_RESET ": \tirc://irc.deltaanime.net/freya");
 	if (ATHENA_RELEASE_FLAG)
 		puts("This version is not for release.\n");
 
@@ -215,14 +214,14 @@ void display_title(void) {
 	fprintf(stderr, format2, "", top_bot);
 	printf("\n");	// newline to make it look better
 #if ATHENA_RELEASE_FLAG == 0
-	fprintf(stderr, CL_WHITE "info: " CL_RESET "Nezumi version %d.%d.%d %s", ATHENA_MAJOR_VERSION, ATHENA_MINOR_VERSION, ATHENA_REVISION,
+	fprintf(stderr, CL_WHITE "Info: " CL_RESET "Nezumi Version %d.%d.%d %s", ATHENA_MAJOR_VERSION, ATHENA_MINOR_VERSION, ATHENA_REVISION,
 #ifdef USE_SQL
 		"SQL \n");
 #else /* USE_SQL */
 		"TXT \n");
 #endif /* USE_SQL */
 #else /* ATHENA_RELEASE_FLAG == 0 */
-	fprintf(stderr, CL_WHITE "info: " CL_RESET "Nezumi revision %d %s", (int)SVN_REVISION,
+	fprintf(stderr, CL_WHITE "Info: " CL_RESET "Nezumi Revision %d %s", (int)SVN_REVISION,
 #ifdef USE_SQL
 		"SQL \n");
 #else /* USE_SQL */
@@ -297,7 +296,7 @@ void leak_tracer_end(void)
         tmp1 = first_ltrace[i];
         while(tmp1 != NULL)
         {
-            printf(CL_WHITE "warning: " CL_RESET "possible memory leak. %s %ld bytes of memory (allocated at %s.%d.%ld) weren't freed \n", tmp1->size, tmp1->ptr, tmp1->file, tmp1->line, tmp1->ts);
+            printf(CL_YELLOW "Warning: " CL_RESET "possible memory leak. %s %ld bytes of memory (allocated at %s.%d.%ld) weren't freed \n", tmp1->size, tmp1->ptr, tmp1->file, tmp1->line, tmp1->ts);
             tmp2 = tmp1->next;
             free(tmp1->ptr);
             free(tmp1->file);
@@ -332,7 +331,7 @@ int leak_tracer_free(void *ptr, char *file, int line) {
 	struct leak_tracer_entry *tmp, *prev;
 	if (first_ltrace[(intptr_t)ptr%LEAK_TRACER_SIZE] == NULL)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "possible segmentation fault. server tried to free non-allocated block '%p' at %s.%d \n", ptr, file, line);
+		printf(CL_YELLOW "Warning: " CL_RESET "possible segmentation fault. server tried to free non-allocated block '%p' at %s.%d \n", ptr, file, line);
 		return 1;
 	}
 	tmp = first_ltrace[(intptr_t)ptr%LEAK_TRACER_SIZE];
@@ -351,7 +350,7 @@ int leak_tracer_free(void *ptr, char *file, int line) {
 		prev = tmp;
 		tmp = tmp->next;
 	}
-	printf(CL_WHITE "warning: " CL_RESET "possible segmentation fault. server tried to free non-allocated block '%p' at %s.%d \n", ptr, file, line);
+	printf(CL_YELLOW "Warning: " CL_RESET "possible segmentation fault. server tried to free non-allocated block '%p' at %s.%d \n", ptr, file, line);
 	return 2;
 }
 
@@ -410,37 +409,37 @@ int main(int argc, char **argv) {
 
 #ifndef __WIN32
 	if(compat_signal(SIGUSR1, SIG_IGN) == SIG_ERR)
-		printf(CL_WHITE "warning: " CL_RESET "could not initialize signal handler for 'SIGUSR1' \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "could not initialize signal handler for 'SIGUSR1' \n");
 #ifdef SIGPIPE
 	if(compat_signal(SIGPIPE, SIG_IGN) == SIG_ERR)
-		printf(CL_WHITE "warning: " CL_RESET "could not initialize signal handler for 'SIGPIPE' \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "could not initialize signal handler for 'SIGPIPE' \n");
 #else
-	printf(CL_WHITE "warning: " CL_RESET "could not recognize signal handler for 'SIGPIPE' \n");
+	printf(CL_YELLOW "Warning: " CL_RESET "could not recognize signal handler for 'SIGPIPE' \n");
 #endif
 #endif
 
 	if (compat_signal(SIGTERM, sig_proc) == SIG_ERR)
-		printf(CL_WHITE "warning: " CL_RESET "could not initialize signal handler for 'SIGTERM' \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "could not initialize signal handler for 'SIGTERM' \n");
 	if (compat_signal(SIGINT, sig_proc) == SIG_ERR)
-		printf(CL_WHITE "warning: " CL_RESET "could not initialize signal handler for 'SIGINT' \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "could not initialize signal handler for 'SIGINT' \n");
 #ifdef __WIN32
 	if (compat_signal(SIGBREAK, sig_proc) == SIG_ERR)
-		printf(CL_WHITE "warning: " CL_RESET "could not initialize signal handler for 'SIGBREAK' \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "could not initialize signal handler for 'SIGBREAK' \n");
 #endif
 
 	if (compat_signal(SIGFPE, SIG_DFL) == SIG_ERR)
-		printf(CL_WHITE "warning: " CL_RESET "could not initialize signal handler for 'SIGFPE' \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "could not initialize signal handler for 'SIGFPE' \n");
 	if (compat_signal(SIGSEGV, SIG_DFL) == SIG_ERR)
-		printf(CL_WHITE "warning: " CL_RESET "could not initialize signal handler for 'SIGSEGV' \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "could not initialize signal handler for 'SIGSEGV' \n");
 	if (compat_signal(SIGILL, SIG_DFL) == SIG_ERR)
-		printf(CL_WHITE "warning: " CL_RESET "could not initialize signal handler for 'SIGILL' \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "could not initialize signal handler for 'SIGILL' \n");
 	if (compat_signal(SIGABRT, SIG_DFL) == SIG_ERR)
-		printf(CL_WHITE "warning: " CL_RESET "could not initialize signal handler for 'SIGABRT' \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "could not initialize signal handler for 'SIGABRT' \n");
 #ifndef __WIN32
 	if (compat_signal(SIGBUS, SIG_DFL) == SIG_ERR)
-		printf(CL_WHITE "warning: " CL_RESET "could not initialize signal handler for 'SIGBUS' \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "could not initialize signal handler for 'SIGBUS' \n");
 	if (compat_signal(SIGTRAP, SIG_DFL) == SIG_ERR)
-		printf(CL_WHITE "warning: " CL_RESET "could not initialize signal handler for 'SIGTRAP' \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "could not initialize signal handler for 'SIGTRAP' \n");
 #endif
 
 	do_init(argc, argv);

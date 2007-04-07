@@ -1,4 +1,4 @@
-// $Id: timer.h 699 2006-07-12 22:37:46Z DarkRaven $
+// $Id: timer.h 699 2006-07-12 22:37:46Z Yor $
 // original : core.h 2003/03/14 11:55:25 Rev 1.4
 
 #ifndef _TIMER_H_

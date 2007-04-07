@@ -5,7 +5,7 @@
 // note: player must confirm old password, and its e-mail if you want better protection (default)
 //       This php need only 'class ladmin' included in 'nezumi.php'.
 
-// By DarkRaven
+// By Yor
 
 	// -------------------
 	// ---- Options (please modify desired values):
@@ -70,7 +70,7 @@ $lang = array (
 		// Success
 		'Success' => 'Your password have been changed.',
 		// Copyright
-		'Copyright' => 'Powered by Darkraven for Nezumi Project.',
+		'Copyright' => 'Powered by Yor for Nezumi Project.',
 	),
 	'French' => array (
 		// Language definition
@@ -110,7 +110,7 @@ $lang = array (
 		// Success
 		'Success' => 'Votre mot de passe a été modifié.',
 		// Copyright
-		'Copyright' => 'Créé par Darkraven pour le Projet Nézumi.',
+		'Copyright' => 'Créé par Yor pour le Projet Nézumi.',
 	),
 	'Russian' => array (
 		// Language definition
@@ -150,7 +150,7 @@ $lang = array (
 		// Success
 		'Success' => 'Ваш пароль изменен.',
 		// Copyright
-		'Copyright' => 'Автор: Darkraven для Nezumi Project.',
+		'Copyright' => 'Автор: Yor для Nezumi Project.',
 	),
 	'Japanese' => array (
 		// Language definition
@@ -190,7 +190,7 @@ $lang = array (
 		// Success
 		'Success' => 'パスワード変更に成功',
 		// Copyright
-		'Copyright' => 'Powered by Darkraven for Nezumi Project.',
+		'Copyright' => 'Powered by Yor for Nezumi Project.',
 	),
 );
 	
@@ -270,7 +270,7 @@ $lang = array (
 	?>
 	<meta http-equiv="Content-Style-Type" content="text/css">
 	<meta http-equiv="imagetoolbar" content="no">
-	<meta content="Darkraven" name="author">
+	<meta content="Yor" name="author">
 
 	<?php
 		if (isset($css_style)) {

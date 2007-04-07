@@ -1,4 +1,4 @@
-// $Id: lutils.h 305 2006-02-23 22:34:31Z DarkRaven $
+// $Id: lutils.h 305 2006-02-23 22:34:31Z Yor $
 #ifndef _LUTILS_H_
 #define _LUTILS_H_
 

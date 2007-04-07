@@ -23,7 +23,7 @@
 **
 **
 ** This source file demonstrates how to use SQLite to create an SQL database 
-** server thread in a multiple-threaded program.  One or more client threads
+** server thread in a multiple-thread program.  One or more client threads
 ** send messages to the server thread and the server thread processes those
 ** messages in the order received and returns the results to the client.
 **

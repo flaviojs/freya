@@ -1,4 +1,4 @@
-// $Id: timer.c 699 2006-07-12 22:37:46Z DarkRaven $
+// $Id: timer.c 699 2006-07-12 22:37:46Z Yor $
 // original : core.c 2003/02/26 18:03:12 Rev 1.7
 
 #include <config.h>
@@ -248,13 +248,13 @@ int add_timer_interval(unsigned int tick, int (*func)(int,unsigned int,intptr_t,
 int delete_timer(int id, int (*func)(int, unsigned int, intptr_t, intptr_t)) {
 	if (id < 0 || id >= timer_data_max)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "trying to delete non-existent timer '%d' \n", id);
+		printf(CL_YELLOW "Warning: " CL_RESET "trying to delete non-existent timer '%d' \n", id);
 		return -1;
 	}
 
 	if (timer_data[id].func != func)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "failed to delete timer '%p' \n", timer_data[id].func);
+		printf(CL_YELLOW "Warning: " CL_RESET "failed to delete timer '%p' \n", timer_data[id].func);
 		return -2;
 	}
 
@@ -269,7 +269,7 @@ unsigned int addtick_timer(int tid, int added_tick) {
 
 	if (tid < 0 || tid >= timer_data_max)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "non-existent timer '%d' \n", tid);
+		printf(CL_YELLOW "Warning: " CL_RESET "non-existent timer '%d' \n", tid);
 		return -1;
 	}
 
@@ -313,7 +313,7 @@ int do_timer(void) {
 			else if (nextmin > 1000)
 			{
 				if (nextmin > 1800000)
-					printf(CL_WHITE "warning: " CL_RESET "next timer (%s) will be done in %d ms \n", search_timer_func_list(timer_data[i].func), nextmin);
+					printf(CL_YELLOW "Warning: " CL_RESET "next timer (%s) will be done in %d ms \n", search_timer_func_list(timer_data[i].func), nextmin);
 #ifdef __WIN32
 				if (term_input_status) // to speed up console echo
 					return 300;

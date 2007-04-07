@@ -121,7 +121,7 @@ int inter_guild_tosql(struct guild *g, int flag) {
 	if(guild_member <= 0 && guild_online_member <= 0)
 	{
 		inter_guild_storage_delete(g->guild_id);
-		printf(CL_WHITE "warning: " CL_RESET "guild '%d' doesn't have members. guild removed \n", g->guild_id);
+		printf(CL_YELLOW "Warning: " CL_RESET "guild '%d' doesn't have members. guild removed \n", g->guild_id);
 		return -2;
 	}
 
@@ -377,7 +377,7 @@ int inter_guild_readdb() {
 
 	if((fp = fopen("db/exp_guild.txt", "r")) == NULL)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "unable to read guild exp database \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "unable to read guild exp database \n");
 		return 1;
 	}
 
@@ -457,10 +457,10 @@ void read_castles_data() {
 					gc->Ghp6 = tmp_int[24];
 					gc->Ghp7 = tmp_int[25]; // end additions [Valaris]
 #ifdef __DEBUG
-//					printf("read_castles_data: castle id #%d (guild: %d) [%s] readed.\n", tmp_int[0], tmp_int[1], castle_txt);
+//					printf("read_castles_data: castle id #%d (guild: %d) [%s] read.\n", tmp_int[0], tmp_int[1], castle_txt);
 #endif
 				} else
-					printf(CL_WHITE "warning: " CL_RESET "invalid line (%d) on castle database. incorrect castle id '%d' \n", c, tmp_int[0]);
+					printf(CL_YELLOW "Warning: " CL_RESET "invalid line (%d) on castle database. incorrect castle id '%d' \n", c, tmp_int[0]);
 			// old structure of guild castle
 			} else if (sscanf(line, "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d",
 			                  &tmp_int[0], &tmp_int[1], &tmp_int[2], &tmp_int[3], &tmp_int[4], &tmp_int[5], &tmp_int[6],
@@ -519,12 +519,12 @@ void read_castles_data() {
 					else
 						gc->Ghp7 = 0;
 #ifdef __DEBUG
-//					printf("read_castles_data: castle id #%d (guild: %d) [%s] readed.\n", tmp_int[0], tmp_int[1], castle_txt);
+//					printf("read_castles_data: castle id #%d (guild: %d) [%s] read.\n", tmp_int[0], tmp_int[1], castle_txt);
 #endif
 				} else
-					printf(CL_WHITE "warning: " CL_RESET "invalid line (%d) on castle database. incorrect castle id '%d' \n", c, tmp_int[0]);
+					printf(CL_YELLOW "Warning: " CL_RESET "invalid line (%d) on castle database. incorrect castle id '%d' \n", c, tmp_int[0]);
 			} else {
-				printf(CL_WHITE "warning: " CL_RESET "corrupted line on castle db. line '%d' \n", c);
+				printf(CL_YELLOW "Warning: " CL_RESET "corrupted line on castle db. line '%d' \n", c);
 			}
 		}
 		fclose(fp);
@@ -567,15 +567,15 @@ void read_castles_data() {
 				gc->Ghp6 = sql_get_integer(24);
 				gc->Ghp7 = sql_get_integer(25);
 #ifdef __DEBUG
-//				printf("read_castles_data: castle id #%d (guild: %d) [%s] readed.\n", c, sql_get_integer(1), guild_castle_db);
+//				printf("read_castles_data: castle id #%d (guild: %d) [%s] read.\n", c, sql_get_integer(1), guild_castle_db);
 #endif
 			} else {
-				printf(CL_WHITE "warning: " CL_RESET "invalid line on castle database. incorrect castle id '%d' \n", c);
+				printf(CL_YELLOW "Warning: " CL_RESET "invalid line on castle database. incorrect castle id '%d' \n", c);
 				sql_request("DELETE FROM `%s` WHERE `castle_id`='%d'", guild_castle_db, c);
 			}
 		}
 	} else {
-		printf(CL_WHITE "error: " CL_RESET "failed to read castle database \n");
+		printf(CL_WHITE "Error: " CL_RESET "failed to read castle database \n");
 		exit(0);
 	}
 #endif
@@ -592,7 +592,7 @@ void castles_save() {
 	FILE *fp;
 
 	if((fp = lock_fopen(castle_txt, &lock)) == NULL)
-		printf(CL_WHITE "error: " CL_RESET "failed to save castle data. data lost \n");
+		printf(CL_WHITE "Error: " CL_RESET "failed to save castle data. data lost \n");
 	else {
 		for (i = 0; i < MAX_GUILDCASTLE; i++) {
 			gc = &castle_db[i];
@@ -659,13 +659,13 @@ void inter_guild_init()
 
 	if(!sql_request("UPDATE `%s` SET `online`='0'", guild_member_db))
 	{
-		printf(CL_WHITE "error: " CL_RESET "failed to reset 'online' in guild database \n");
+		printf(CL_WHITE "Error: " CL_RESET "failed to reset 'online' in guild database \n");
 		exit(0);
 	}
 
 	if(!sql_request("UPDATE `%s` SET `connect_member`='0'", guild_db))
 	{
-		printf(CL_WHITE "error: " CL_RESET "failed to reset 'connect_member' in guild database \n");
+		printf(CL_WHITE "Error: " CL_RESET "failed to reset 'connect_member' in guild database \n");
 		exit(0);
 	}
 
@@ -679,7 +679,7 @@ void inter_guild_init()
 			// set guild_newid
 			if (!sql_request("SELECT max(`guild_id`) FROM `%s`", guild_db))
 			{
-				printf(CL_WHITE "error: " CL_RESET "unable to read max 'guild_id' in guild database \n");
+				printf(CL_WHITE "Error: " CL_RESET "unable to read max 'guild_id' in guild database \n");
 				exit(0);
 			}
 			if (sql_get_row())
@@ -1309,7 +1309,7 @@ int mapif_parse_GuildBasicInfoChange(int fd, int guild_id, int type, const char 
 #endif /* USE_SQL */
 		return 0;
 	default:
-		printf(CL_WHITE "warning: " CL_RESET "unknown guild data type '%d' \n", type);
+		printf(CL_YELLOW "Warning: " CL_RESET "unknown guild data type '%d' \n", type);
 		break;
 	}
 	mapif_guild_basicinfochanged(guild_id, type, data, len);
@@ -1376,7 +1376,7 @@ int mapif_parse_GuildMemberInfoChange(int fd, int guild_id, int account_id, int 
 	  }
 		break;
 	default:
-		printf(CL_WHITE "warning: " CL_RESET "unknown guild data type '%d' \n", type);
+		printf(CL_YELLOW "Warning: " CL_RESET "unknown guild data type '%d' \n", type);
 		break;
 	}
 
@@ -1585,7 +1585,7 @@ int mapif_parse_GuildCastleDataLoad(int fd, int castle_id, int idx) { // <Agit>
 	case 24: return mapif_guild_castle_dataload(gc->castle_id, idx, gc->Ghp6);
 	case 25: return mapif_guild_castle_dataload(gc->castle_id, idx, gc->Ghp7);
 	default:
-		printf(CL_WHITE "error: " CL_RESET "failed to load guild data. unknown index type '%d' \n", idx);
+		printf(CL_WHITE "Error: " CL_RESET "failed to load guild data. unknown index type '%d' \n", idx);
 		return 0;
 	}
 
@@ -1643,7 +1643,7 @@ int mapif_parse_GuildCastleDataSave(int fd, int castle_id, int idx, int value) {
 	case 24: if (gc->Ghp6 != value) { gc->Ghp6 = value; break; } else return 0;
 	case 25: if (gc->Ghp7 != value) { gc->Ghp7 = value; break; } else return 0; // end additions [Valaris]
 	default:
-		printf(CL_WHITE "error: " CL_RESET "failed to load guild data. unknown index type '%d' \n", idx);
+		printf(CL_WHITE "Error: " CL_RESET "failed to load guild data. unknown index type '%d' \n", idx);
 		return 0;
 	}
 

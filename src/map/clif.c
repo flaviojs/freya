@@ -256,7 +256,7 @@ void read_manner() {
 		}
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "%s" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", MANNER_CONF_NAME, manner_counter, (manner_counter > 1) ? "s" : "");
+	printf(CL_WHITE "Status: " CL_RESET " '" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", MANNER_CONF_NAME, manner_counter, (manner_counter > 1) ? "s" : "");
 
 	return;
 }
@@ -1459,7 +1459,7 @@ int clif_spawnmob(struct mob_data *md)
 	nullpo_retr(0, md);
 
 	viewclass = mob_get_viewclass(md->class);
-	if ((viewclass > 24) && (viewclass < 4000 || viewclass > 4046)) {
+	if ((viewclass > 26 && viewclass < 4001) || (viewclass > MAX_PC_CLASS)) {
 		memset(WPACKETP(0), 0, packet_len_table[0x7c]);
 
 		WPACKETW( 0) = 0x7c;

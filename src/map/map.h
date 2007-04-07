@@ -59,7 +59,9 @@ char messages_filename[1024];
 //for filtering and quick checking.
 #define MAPID_UPPERMASK 0x0fff
 #define MAPID_BASEMASK 0x00ff
-
+//First Jobs
+//Note the oddity of the novice:
+//Super Novices are considered the 2-1 version of the novice! Novices are considered a first class type, too...
 enum {
 	MAPID_NOVICE = 0x0,
 	MAPID_SWORDMAN,
@@ -69,9 +71,10 @@ enum {
 	MAPID_MERCHANT,
 	MAPID_THIEF,
 	MAPID_TAEKWON,
+	MAPID_WEDDING,
 	MAPID_GUNSLINGER,
 	MAPID_NINJA,
-	MAPID_WEDDING,
+	MAPID_XMAS, // [Valaris]
 //2_1 classes
 	MAPID_SUPER_NOVICE = JOBL_2_1|0x0,
 	MAPID_KNIGHT,
@@ -120,8 +123,6 @@ enum {
 	MAPID_BABY_MERCHANT,
 	MAPID_BABY_THIEF,
 	MAPID_BABY_TAEKWON,
-	MAPID_BABY_GUNSLINGER,
-	MAPID_BABY_NINJA,
 //2_1 baby
 	MAPID_SUPER_BABY = JOBL_BABY|JOBL_2_1|0x0,
 	MAPID_BABY_KNIGHT,

@@ -723,6 +723,10 @@
 25,544,10,522,7,530,5,543,1,0,0,0,0 //NJ_ISSEN#NJ_ISSEN#
 25,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
 
+// Xmas Class
+26,1,9,0,0,0,0,0,0,0,0,0,0 //NV_BASIC#Basic Skill#
+26,410,1,0,0,0,0,0,0,0,0,0,0 //WE_CALLBABY#Call Baby#
+
 // Novice High
 4001,1,9,0,0,0,0,0,0,0,0,0,0 //NV_BASIC#Basic Skill#
 4001,142,1,0,0,0,0,0,0,0,0,0,0 //NV_FIRSTAID#First Aid#

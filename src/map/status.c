@@ -1070,7 +1070,7 @@ int status_calc_pc(struct map_session_data* sd, int first)
 	if(sd->mdef2 < 1) sd->mdef2 = 1;
 
 	// 二刀流 ASPD 修正
-	if (sd->status.weapon <= 16)
+	if (sd->status.weapon <= 22)
 		// kRO 14/12/04 Patch - Each level of Book mastery give 0.5% attack speed with book [Aalye]
 		if (sd->status.weapon == 15 && pc_checkskill(sd, SA_ADVANCEDBOOK) > 0)
 			sd->aspd += (aspd_base[s_class.job][sd->status.weapon] - (sd->paramc[1] * 4 + sd->paramc[4] + pc_checkskill(sd, SA_ADVANCEDBOOK) * 5) * aspd_base[s_class.job][sd->status.weapon] / 1000);
@@ -2317,7 +2317,7 @@ int status_get_baseatk(struct block_list *bl) {
 
 	if (bl->type == BL_PC) {
 		batk = ((struct map_session_data *)bl)->base_atk;
-		if (((struct map_session_data *)bl)->status.weapon < 16)
+		if (((struct map_session_data *)bl)->status.weapon <= 22)
 			batk += ((struct map_session_data *)bl)->weapon_atk[((struct map_session_data *)bl)->status.weapon];
 	} else {
 		int str, dstr;
@@ -5226,27 +5226,27 @@ int status_readdb(void) {
 		if ((line[0] == '/' && line[1] == '/') || line[0] == '\0' || line[0] == '\n' || line[0] == '\r')
 			continue;
 		// it's not necessary to remove 'carriage return ('\n' or '\r')
-		for(j = 0, p = line; j < 21 && p; j++) {
+		for(j = 0, p = line; j < 27 && p; j++) {
 			split[j] = p;
 			p = strchr(p, ',');
 			if (p) *p++ = 0;
 		}
-		if (j < 21)
+		if (j < 27)
 			continue;
 		max_weight_base[i] = atoi(split[0]);
 		hp_coefficient[i] = atoi(split[1]);
 		hp_coefficient2[i] = atoi(split[2]);
 		sp_coefficient[i] = atoi(split[3]);
-		for(j=0;j<17;j++)
+		for(j=0;j<=22;j++)
 			aspd_base[i][j] = atoi(split[j+4]);
 		i++;
-		if (i == 24)
-			i = 4001;
+		if (i == 26)
+			i = 4046;
 		if (i == MAX_PC_CLASS)
 			break;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/job_db1.txt" CL_RESET "' readed.\n");
+	printf(CL_WHITE "Status: " CL_RESET " '" CL_WHITE "db/job_db1.txt" CL_RESET "' read.\n");
 
 	memset(&job_bonus, 0, sizeof(job_bonus));
 	fp = fopen("db/job_db2.txt", "r");
@@ -5269,13 +5269,13 @@ int status_readdb(void) {
 		}
 		i++;
 
-		if(i == 24)
-			i = 4001;
-		if(i == MAX_PC_CLASS)
+		if (i == 26)
+			i = 4046;
+		if (i == MAX_PC_CLASS)
 			break;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/job_db2.txt" CL_RESET "' readed.\n");
+	printf(CL_WHITE "Status: " CL_RESET " '" CL_WHITE "db/job_db2.txt" CL_RESET "' read.\n");
 
 	fp = fopen("db/job_db2-2.txt","r");
 	if (fp == NULL) {
@@ -5295,16 +5295,16 @@ int status_readdb(void) {
 			if(p) p++;
 		}
 		i++;
-		if (i == 24)
-			i = 4001;
+		if (i == 26)
+			i = 4046;
 		if (i == MAX_PC_CLASS)
 			break;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/job_db2-2.txt" CL_RESET "' readed.\n");
+	printf(CL_WHITE "Status: " CL_RESET " '" CL_WHITE "db/job_db2-2.txt" CL_RESET "' read.\n");
 
 	for(i=0;i<3;i++)
-		for(j = 0; j < 20; j++)
+		for(j = 0; j <= 22; j++)
 			atkmods[i][j] = 100;
 	fp=fopen("db/size_fix.txt","r");
 	if(fp==NULL){
@@ -5313,26 +5313,25 @@ int status_readdb(void) {
 	}
 	i=0;
 	while(fgets(line, sizeof(line), fp)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
-		char *split[20];
+		char *split[25];
 		if ((line[0] == '/' && line[1] == '/') || line[0] == '\0' || line[0] == '\n' || line[0] == '\r')
 			continue;
 		// it's not necessary to remove 'carriage return ('\n' or '\r')
 		if(atoi(line)<=0)
 			continue;
 		memset(split,0,sizeof(split));
-		for(j = 0, p = line; j < 20 && p; j++) {
+		for(j = 0, p = line; j <= 22 && p; j++) {
 			split[j] = p;
 			p = strchr(p, ',');
 			if (p) *p++ = 0;
 		}
-		for(j = 0; j < 20 && split[j]; j++)
+		for(j = 0; j <= 22 && split[j]; j++)
 			atkmods[i][j] = atoi(split[j]);
 		i++;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/size_fix.txt" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", i, (i > 1) ? "s" : "");
+	printf(CL_WHITE "Status: " CL_RESET " '" CL_WHITE "db/size_fix.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", i, (i > 1) ? "s" : "");
 
-	// 精錬データテーブル
 	for(i=0;i<5;i++){
 		for(j=0;j<10;j++)
 			percentrefinery[i][j]=100;
@@ -5367,7 +5366,7 @@ int status_readdb(void) {
 		i++;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/refine_db.txt" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", i, (i > 1) ? "s" : "");
+	printf(CL_WHITE "Status: " CL_RESET " '" CL_WHITE "db/refine_db.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", i, (i > 1) ? "s" : "");
 
 	return 0;
 }

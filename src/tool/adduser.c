@@ -195,9 +195,9 @@ int main(int argc, char *argv[]) {
 		printf("No account found.\n");
 	} else {
 		if (auth_num == 1) {
-			printf("1 account readed, ");
+			printf("1 account read, ");
 		} else {
-			printf("%d accounts readed, ", auth_num);
+			printf("%d accounts read, ", auth_num);
 		}
 		if (server_count == 0) {
 			printf("of which is no server account ('S').\n");

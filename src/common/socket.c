@@ -1,4 +1,4 @@
-// $Id: socket.c 702 2006-07-13 07:41:51Z DarkRaven $
+// $Id: socket.c 702 2006-07-13 07:41:51Z Yor $
 // original : core.c 2003/02/26 18:03:12 Rev 1.7
 
 #include <config.h>
@@ -86,7 +86,7 @@ static void uninit_ares() {
 static void init_ares() {
 	if (ares_init(&ares) != ARES_SUCCESS)
 	{
-		printf(CL_WHITE "error: " CL_RESET "could not initialize 'ARES' \n");
+		printf(CL_WHITE "Error: " CL_RESET "could not initialize 'ARES' \n");
 		exit(1);
 	}
 	set_termfunc(uninit_ares);
@@ -178,7 +178,7 @@ static int recv_to_fifo(int fd) {
 //		printf("recv %d : \n", fd);
 
 		s->rdata_size += len;
-//		printf("Session #%d, readed %d, total readed %d, max possible %d\n", fd, len, s->rdata_size, s->max_rdata);
+//		printf("Session #%d, read %d, total read %d, max possible %d\n", fd, len, s->rdata_size, s->max_rdata);
 		// if Server FIFO
 		if (s->max_rdata > RFIFO_SIZE) {
 			if (s->max_rdata == s->rdata_size) {
@@ -376,7 +376,7 @@ void flush_fifos() {
 // ----------------------------------
 static int null_parse(int fd)
 {
-	printf(CL_WHITE "warning: " CL_RESET "null parse '%d' \n", fd);
+	printf(CL_YELLOW "Warning: " CL_RESET "null parse '%d' \n", fd);
 	session[fd]->rdata_pos = session[fd]->rdata_size;
 	return 0;
 }
@@ -679,7 +679,7 @@ int console_recieve(int fd) {
 #endif
 
 	if(n < 0)
-		printf(CL_WHITE "error: " CL_RESET "failed to read input of console \n");
+		printf(CL_WHITE "Error: " CL_RESET "failed to read input of console \n");
 	else if (n > 0) {
 		buf[sizeof(buf) - 1] = '\0';
 		// remove final \n
@@ -1002,7 +1002,7 @@ int do_sendrecv(int next) {
 		if (!session[i]) {
 			if (FD_ISSET(i, &readfds))
 			{
-				printf(CL_WHITE "warning: " CL_RESET "forced to clear socket '%d' \n", i);
+				printf(CL_YELLOW "Warning: " CL_RESET "forced to clear socket '%d' \n", i);
 				FD_CLR(i, &readfds);
 			}
 			continue;
@@ -1161,16 +1161,16 @@ int Net_Init(void) {
 	{
 		if(WSAStartup(MAKEWORD(1, 1), &wsaData) != 0)
 		{
-			printf(CL_WHITE "error: " CL_RESET "winsock not available \n");
+			printf(CL_WHITE "Error: " CL_RESET "winsock not available \n");
 			exit(1);
 		} else
-			printf(CL_WHITE "status: " CL_RESET "winsock 1.1 succesfully loaded \n");
+			printf(CL_WHITE "Status: " CL_RESET "winsock 1.1 succesfully loaded \n");
 	} else
-		printf(CL_WHITE "status: " CL_RESET "winsock 2.0 succesfully loaded \n");
+		printf(CL_WHITE "Status: " CL_RESET "winsock 2.0 succesfully loaded \n");
 
 	if (gethostname(fullhost, sizeof(fullhost)) == SOCKET_ERROR)
 	{
-		printf(CL_WHITE "error: " CL_RESET "hostname not found \n");
+		printf(CL_WHITE "Error: " CL_RESET "hostname not found \n");
 		return 0;
 	}
 
@@ -1181,7 +1181,7 @@ int Net_Init(void) {
 	hent = gethostbyname(fullhost);
 	if(hent == NULL)
 	{
-		printf(CL_WHITE "error: " CL_RESET "cannot resolve own hostname \n");
+		printf(CL_WHITE "Error: " CL_RESET "cannot resolve own hostname \n");
 		return 0;
 	}
 
@@ -1204,13 +1204,13 @@ int Net_Init(void) {
 
 	if(uname(&utsname) == -1)
 	{
-		printf(CL_WHITE "error: " CL_RESET "hostname is not defined \n");
+		printf(CL_WHITE "Error: " CL_RESET "hostname is not defined \n");
 		return 0;
 	}
 
 	hent = gethostbyname(utsname.nodename);
 	if (hent == NULL) {
-		printf(CL_WHITE "error: " CL_RESET "cannot resolve own hostname \n");
+		printf(CL_WHITE "Error: " CL_RESET "cannot resolve own hostname \n");
 		return 0;
 	}
 
@@ -1238,7 +1238,7 @@ int Net_Init(void) {
 	ic.ifc_buf = buf;
 	if (ioctl(fdes, SIOCGIFCONF, &ic) == -1)
 	{
-		printf(CL_WHITE "error: " CL_RESET "'SIOCGIFCONF' failed \n");
+		printf(CL_WHITE "Error: " CL_RESET "'SIOCGIFCONF' failed \n");
 		return 0;
 	}
 

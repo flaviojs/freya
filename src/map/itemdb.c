@@ -206,8 +206,9 @@ static void itemdb_jobid2mapid(unsigned int *bclass, unsigned int jobmask)
 		bclass[2] |= 1<<MAPID_MERCHANT;
 	if (jobmask & 1<<JOB_BARD)
 		bclass[2] |= 1<<MAPID_ARCHER;
-	if (jobmask & 1<<JOB_DANCER)
-		bclass[2] |= 1<<MAPID_ARCHER;
+//	Bard/Dancer share the same slot now.
+//	if (jobmask & 1<<JOB_DANCER)
+//		bclass[2] |= 1<<MAPID_ARCHER;
 	if (jobmask & 1<<JOB_ROGUE)
 		bclass[2] |= 1<<MAPID_THIEF;
 	//Special classes that don't fit above.
@@ -217,6 +218,10 @@ static void itemdb_jobid2mapid(unsigned int *bclass, unsigned int jobmask)
 		bclass[1] |= 1<<MAPID_TAEKWON;
 	if (jobmask & 1<<23) //Soul Linker
 		bclass[2] |= 1<<MAPID_TAEKWON;
+	if (jobmask & 1<<JOB_GUNSLINGER)
+		bclass[0] |= 1<<MAPID_GUNSLINGER;
+	if (jobmask & 1<<JOB_NINJA)
+		bclass[0] |= 1<<MAPID_NINJA;
 }
 
 /*==========================================
@@ -485,9 +490,9 @@ static int itemdb_readdb(void)
 #ifdef __DEBUG
 			if (battle_config.etc_log) {
 				if (strlen(str[1]) > ITEM_NAME_LENGTH)
-					printf(CL_YELLOW "WARNING: Invalid item name" CL_RESET" (id: %d) - Name too long (> ITEM_NAME_LENGTH char.) -> only ITEM_NAME_LENGTH first characters are used.\n", nameid);
+					printf(CL_YELLOW "Warning: " CL_RESET "Invalid item name" CL_RESET" (id: %d) - Name too long (> ITEM_NAME_LENGTH char.) -> only ITEM_NAME_LENGTH first characters are used.\n", nameid);
 				if (strlen(str[2]) > ITEM_NAME_LENGTH)
-					printf(CL_YELLOW "WARNING: Invalid item jname" CL_RESET" (id: %d) - Name too long (> ITEM_NAME_LENGTH char.) -> only ITEM_NAME_LENGTH first characters are used.\n", nameid);
+					printf(CL_YELLOW "Warning: " CL_RESET "Invalid item jname" CL_RESET" (id: %d) - Name too long (> ITEM_NAME_LENGTH char.) -> only ITEM_NAME_LENGTH first characters are used.\n", nameid);
 			}
 #endif
 
@@ -657,7 +662,7 @@ static int itemdb_readdb(void)
 #endif /* USE_SQL */
 		}
 		fclose(fp);
-		printf("DB '" CL_WHITE "%s" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' %s).\n", filename[i], ln, (ln > 1) ? "entries" : "entry");
+		printf(CL_WHITE "Status: " CL_RESET " '" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' %s).\n", filename[i], ln, (ln > 1) ? "entries" : "entry");
 	}
 
 #ifdef USE_SQL
@@ -750,7 +755,7 @@ static int itemdb_read_randomitem()
 			ln++;
 		}
 		fclose(fp);
-		printf("DB '" CL_WHITE "%s" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", fn, *pc, (*pc > 1) ? "s" : "");
+		printf(CL_WHITE "Status: " CL_RESET " '" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", fn, *pc, (*pc > 1) ? "s" : "");
 	}
 
 	return 0;
@@ -801,7 +806,7 @@ static int itemdb_read_itemavail(void)
 		ln++;
 	}
 	fclose(fp);
-	printf("DB '" CL_WHITE "db/item_avail.txt" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
+	printf(CL_WHITE "Status: " CL_RESET " '" CL_WHITE "db/item_avail.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
 
 	return 0;
 }
@@ -846,7 +851,7 @@ static int itemdb_read_itemnametable(void)
 	}
 	FREE(buf);
 
-	printf("File '" CL_WHITE "data\\idnum2itemdisplaynametable.txt" CL_RESET "' readed.\n");
+	printf("File '" CL_WHITE "data\\idnum2itemdisplaynametable.txt" CL_RESET "' read.\n");
 
 	return 0;
 }
@@ -885,7 +890,7 @@ static int itemdb_read_cardillustnametable(void)
 	}
 	FREE(buf);
 
-	printf("File '" CL_WHITE "data\\num2cardillustnametable.txt" CL_RESET "' readed.\n");
+	printf("File '" CL_WHITE "data\\num2cardillustnametable.txt" CL_RESET "' read.\n");
 
 	return 0;
 }
@@ -926,7 +931,7 @@ static int itemdb_read_itemslottable(void) {
 	}
 	FREE(buf);
 
-	printf("File '" CL_WHITE "data\\itemslottable.txt" CL_RESET "' readed.\n");
+	printf("File '" CL_WHITE "data\\itemslottable.txt" CL_RESET "' read.\n");
 
 	return 0;
 }
@@ -960,7 +965,7 @@ static int itemdb_read_itemslotcounttable(void) {
 	}
 	FREE(buf);
 
-	printf("File '" CL_WHITE "data\\itemslotcounttable.txt" CL_RESET "' readed.\n");
+	printf("File '" CL_WHITE "data\\itemslotcounttable.txt" CL_RESET "' read.\n");
 
 	return 0;
 }
@@ -1005,7 +1010,7 @@ static int itemdb_read_noequip(void)
 	}
 	fclose(fp);
 
-	printf("DB '" CL_WHITE "db/item_noequip.txt" CL_RESET "' readed ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
+	printf(CL_WHITE "Status: " CL_RESET " '" CL_WHITE "db/item_noequip.txt" CL_RESET "' read ('" CL_WHITE "%d" CL_RESET "' entrie%s).\n", ln, (ln > 1) ? "s" : "");
 
 	return 0;
 }
@@ -1022,7 +1027,7 @@ static void itemdb_read_notrade(void)
 
 	if(db == NULL)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "failed to read item notrade database \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "failed to read item notrade database \n");
 		return;
 	}
 
@@ -1048,11 +1053,11 @@ static void itemdb_read_notrade(void)
 
 		id->flag.no_trade = itemtype;
 
-//		printf(CL_WHITE "debug: " CL_RESET "item id '%d' notrade flag is %d \n", id->nameid, id->flag.no_trade);
+//		printf(CL_WHITE "Debug: " CL_RESET "item id '%d' notrade flag is %d \n", id->nameid, id->flag.no_trade);
 	}
 
 	fclose(db);
-	printf(CL_WHITE "status: " CL_RESET "succesfully loaded item notrade database \n");
+	printf(CL_WHITE "Status: " CL_RESET "succesfully loaded item notrade database \n");
 	return;
 }
 
@@ -1068,7 +1073,7 @@ static void itemdb_read_norefine(void)
 
 	if(db == NULL)
 	{
-		printf(CL_WHITE "warning: " CL_RESET "failed to read item norefine database \n");
+		printf(CL_YELLOW "Warning: " CL_RESET "failed to read item norefine database \n");
 		return;
 	}
 
@@ -1089,11 +1094,11 @@ static void itemdb_read_norefine(void)
 
 		id->flag.no_refine = 1;
 
-//		printf(CL_WHITE "debug: " CL_RESET "item id '%d' norefine flag is %d \n", id->nameid, id->flag.no_refine);
+//		printf(CL_WHITE "Debug: " CL_RESET "item id '%d' norefine flag is %d \n", id->nameid, id->flag.no_refine);
 	}
 
 	fclose(db);
-	printf(CL_WHITE "status: " CL_RESET "succesfully loaded item norefine database \n");
+	printf(CL_WHITE "Status: " CL_RESET "succesfully loaded item norefine database \n");
 	return;
 }
 
@@ -1128,9 +1133,9 @@ static int itemdb_read_sqldb(void) {
 #ifdef __DEBUG
 		if (battle_config.etc_log) {
 			if (strlen(sql_get_string(1)) > 24)
-				printf(CL_YELLOW "WARNING: Invalid item name" CL_RESET" (id: %d) - Name too long (> 24 char.) -> only 24 first characters are used.\n", nameid);
+				printf(CL_YELLOW "Warning: " CL_RESET "Invalid item name" CL_RESET" (id: %d) - Name too long (> 24 char.) -> only 24 first characters are used.\n", nameid);
 			if (strlen(sql_get_string(2)) > 24)
-				printf(CL_YELLOW "WARNING: Invalid item jname" CL_RESET" (id: %d) - Name too long (> 24 char.) -> only 24 first characters are used.\n", nameid);
+				printf(CL_YELLOW "Warning: " CL_RESET "Invalid item jname" CL_RESET" (id: %d) - Name too long (> 24 char.) -> only 24 first characters are used.\n", nameid);
 		}
 #endif
 
@@ -1249,7 +1254,7 @@ static int itemdb_read_sqldb(void) {
 		id->flag.value_notoc = 0;
 	}
 
-	printf("DB '" CL_WHITE "%s" CL_RESET "' readed ('" CL_WHITE "%ld" CL_RESET "' entrie%s).\n", item_db_db, ln, (ln > 1) ? "s" : "");
+	printf(CL_WHITE "Status: " CL_RESET " '" CL_WHITE "%s" CL_RESET "' read ('" CL_WHITE "%ld" CL_RESET "' entrie%s).\n", item_db_db, ln, (ln > 1) ? "s" : "");
 
 	return 0;
 }
