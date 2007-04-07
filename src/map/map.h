@@ -286,8 +286,8 @@ struct map_session_data {
 	int castrate, delayrate, hprate, sprate, dsprate;
 	int addele[10], addrace[12], addsize[3], subele[10], subrace[12];
 	int addeff[10], addeff2[10], reseff[10];
-	int watk_,watk_2, atkmods_[3], addele_[10], addrace_[12], addsize_[3]; //“ñ“—¬‚Ì‚½‚ß‚É’Ç‰Á
-	int atk_ele_, star_,overrefine_; //“ñ“—¬‚Ì‚½‚ß‚É’Ç‰Á
+	int watk_,watk_2, atkmods_[3], addele_[10], addrace_[12], addsize_[3]; //ï¿½ñ“—ï¿½ï¿½Ì‚ï¿½ï¿½ß‚É’Ç‰ï¿½
+	int atk_ele_, star_,overrefine_; //ï¿½ñ“—ï¿½ï¿½Ì‚ï¿½ï¿½ß‚É’Ç‰ï¿½
 	int base_atk, atk_rate;
 	int weapon_atk[16], weapon_atk_rate[16];
 	int arrow_atk, arrow_ele, arrow_cri, arrow_hit, arrow_range;
@@ -467,7 +467,7 @@ struct npc_data {
 			char name[17]; // 16 + NULL
 		} warp;
 	} u;
-	// ‚±‚±‚Éƒƒ“ƒo‚ğ’Ç‰Á‚µ‚Ä‚Í‚È‚ç‚È‚¢(shop_item‚ª‰Â•Ï’·‚Ìˆ×)
+	// ï¿½ï¿½ï¿½ï¿½ï¿½Éƒï¿½ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½Ç‰ï¿½ï¿½ï¿½Ä‚Í‚È‚ï¿½ï¿½È‚ï¿½(shop_itemï¿½ï¿½ï¿½Â•Ï’ï¿½ï¿½Ìˆï¿½)
 
 	char eventqueue[MAX_EVENTQUEUE][50]; // 49 + NULL
 	int eventtimer[MAX_EVENTTIMER];
@@ -579,7 +579,7 @@ enum { MS_IDLE, MS_WALK, MS_ATTACK, MS_DEAD, MS_DELAY };
 
 enum { NONE_ATTACKABLE, ATTACKABLE };
 
-enum { ATK_LUCKY = 1, ATK_FLEE, ATK_DEF}; // ˆÍ‚Ü‚êƒyƒiƒ‹ƒeƒBŒvZ—p
+enum { ATK_LUCKY = 1, ATK_FLEE, ATK_DEF}; // ï¿½Í‚Ü‚ï¿½ï¿½yï¿½iï¿½ï¿½ï¿½eï¿½Bï¿½vï¿½Zï¿½p
 
 // For equipment breaking/stripping effects
 enum {
@@ -591,7 +591,7 @@ enum {
 
 struct map_data {
 	char name[17]; // 16 + NULL
-	char *gat; // NULL‚È‚ç‰º‚Ìmap_data_other_server‚Æ‚µ‚Äˆµ‚¤
+	char *gat; // NULLï¿½È‚ç‰ºï¿½ï¿½map_data_other_serverï¿½Æ‚ï¿½ï¿½Äˆï¿½ï¿½ï¿½
 	char *alias; // [MouseJstr]
 	struct block_list **block;
 	struct block_list **block_mob;
@@ -651,7 +651,7 @@ struct map_data {
 
 struct map_data_other_server {
 	char name[25]; // 24 + NULL
-	char *gat; // NULLŒÅ’è‚É‚µ‚Ä”»’f
+	char *gat; // NULLï¿½Å’ï¿½ï¿½É‚ï¿½ï¿½Ä”ï¿½ï¿½f
 	unsigned long ip;
 	unsigned int port;
 	struct map_data *map;
@@ -774,29 +774,29 @@ enum {
 
 // CELL
 #define CELL_MASK		0x0f
-#define CELL_NPC		0x80	// NPCƒZƒ‹
-#define CELL_BASILICA	0x40	// BASILICAƒZƒ‹
+#define CELL_NPC		0x80	// NPCï¿½Zï¿½ï¿½
+#define CELL_BASILICA	0x40	// BASILICAï¿½Zï¿½ï¿½
 #define CELL_MOONLIT	0x100
 #define CELL_REGEN		0x200
 /*
- * map_getcell()‚Åg—p‚³‚ê‚éƒtƒ‰ƒO
+ * map_getcell()ï¿½Ågï¿½pï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½O
  */
 typedef enum {
-	CELL_CHKWALL = 0,   // •Ç(ƒZƒ‹ƒ^ƒCƒv1)
-	CELL_CHKWATER,      // …ê(ƒZƒ‹ƒ^ƒCƒv3)
-	CELL_CHKGROUND,     // ’n–ÊáŠQ•¨(ƒZƒ‹ƒ^ƒCƒv5)
-	CELL_CHKPASS,       // ’Ê‰ß‰Â”\(ƒZƒ‹ƒ^ƒCƒv1,5ˆÈŠO)
-	CELL_CHKNOPASS,     // ’Ê‰ß•s‰Â(ƒZƒ‹ƒ^ƒCƒv1,5)
-	CELL_GETTYPE,       // ƒZƒ‹ƒ^ƒCƒv‚ğ•Ô‚·
+	CELL_CHKWALL = 0,   // ï¿½ï¿½(ï¿½Zï¿½ï¿½ï¿½^ï¿½Cï¿½v1)
+	CELL_CHKWATER,      // ï¿½ï¿½ï¿½ï¿½(ï¿½Zï¿½ï¿½ï¿½^ï¿½Cï¿½v3)
+	CELL_CHKGROUND,     // ï¿½nï¿½Êï¿½ï¿½Qï¿½ï¿½(ï¿½Zï¿½ï¿½ï¿½^ï¿½Cï¿½v5)
+	CELL_CHKPASS,       // ï¿½Ê‰ß‰Â”\(ï¿½Zï¿½ï¿½ï¿½^ï¿½Cï¿½v1,5ï¿½ÈŠO)
+	CELL_CHKNOPASS,     // ï¿½Ê‰ß•sï¿½ï¿½(ï¿½Zï¿½ï¿½ï¿½^ï¿½Cï¿½v1,5)
+	CELL_GETTYPE,       // ï¿½Zï¿½ï¿½ï¿½^ï¿½Cï¿½vï¿½ï¿½ï¿½Ô‚ï¿½
 	CELL_CHKNOPASS_NPC, // check if it is NOPASS or NPC
-	CELL_CHKNPC=0x10,   // ƒ^ƒbƒ`ƒ^ƒCƒv‚ÌNPC(ƒZƒ‹ƒ^ƒCƒv0x80ƒtƒ‰ƒO)
-	CELL_CHKBASILICA    // ƒoƒWƒŠƒJ(ƒZƒ‹ƒ^ƒCƒv0x40ƒtƒ‰ƒO)
+	CELL_CHKNPC=0x10,   // ï¿½^ï¿½bï¿½`ï¿½^ï¿½Cï¿½vï¿½ï¿½NPC(ï¿½Zï¿½ï¿½ï¿½^ï¿½Cï¿½v0x80ï¿½tï¿½ï¿½ï¿½O)
+	CELL_CHKBASILICA    // ï¿½oï¿½Wï¿½ï¿½ï¿½J(ï¿½Zï¿½ï¿½ï¿½^ï¿½Cï¿½v0x40ï¿½tï¿½ï¿½ï¿½O)
 } cell_t;
-// map_setcell()‚Åg—p‚³‚ê‚éƒtƒ‰ƒO
+// map_setcell()ï¿½Ågï¿½pï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½O
 enum {
-	CELL_SETNPC=0x10, // ƒ^ƒbƒ`ƒ^ƒCƒv‚ÌNPC‚ğƒZƒbƒg
-	CELL_SETBASILICA, // ƒoƒWƒŠƒJ‚ğƒZƒbƒg
-	CELL_CLRBASILICA  // ƒoƒWƒŠƒJ‚ğƒNƒŠƒA
+	CELL_SETNPC=0x10, // ï¿½^ï¿½bï¿½`ï¿½^ï¿½Cï¿½vï¿½ï¿½NPCï¿½ï¿½ï¿½Zï¿½bï¿½g
+	CELL_SETBASILICA, // ï¿½oï¿½Wï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½Zï¿½bï¿½g
+	CELL_CLRBASILICA  // ï¿½oï¿½Wï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½A
 };
 
 struct chat_data {
@@ -839,17 +839,17 @@ extern char talkie_mes[];
 extern char wisp_server_name[25]; // 24 + NULL
 extern int server_char_id; // char id used by server
 extern int server_fake_mob_id; // mob id of a invisible mod to check bots
-extern char npc_language[6]; // Language used by the server (for GetText and manner)
+extern char npc_language[6];
 extern unsigned char map_is_alone; // define communication usage of map-server if it is alone
 
-// I‘S‘Ìî•ñ
+// ï¿½Iï¿½Sï¿½Ìï¿½ï¿½ï¿½
 void map_setusers(int);
 int map_getusers(void);
-// blockíœŠÖ˜A
+// blockï¿½íœï¿½Ö˜A
 int map_freeblock(void *bl);
 void map_freeblock_lock(void);
 void map_freeblock_unlock(void);
-// blockŠÖ˜A
+// blockï¿½Ö˜A
 int map_addblock(struct block_list *);
 int map_delblock(struct block_list *);
 void map_foreachinarea(int (*)(struct block_list*, va_list), int, int, int, int, int, int, ...);
@@ -858,10 +858,10 @@ void map_foreachinarea(int (*)(struct block_list*, va_list), int, int, int, int,
 void map_foreachinmovearea(int (*)(struct block_list*, va_list), int, int, int, int, int, int, int, int, ...);
 void map_foreachinpath(int (*)(struct block_list*, va_list), int, int, int, int, int, int, int, ...);
 /*int map_countnearpc(int, int, int);*/
-//blockŠÖ˜A‚É’Ç‰Á
+//blockï¿½Ö˜Aï¿½É’Ç‰ï¿½
 int map_count_oncell(int m, int x, int y);
 struct skill_unit *map_find_skill_unit_oncell(struct block_list *, int x, int y, int skill_id, struct skill_unit *);
-// ˆê“IobjectŠÖ˜A
+// ï¿½êï¿½Iobjectï¿½Ö˜A
 int map_addobject(struct block_list *);
 int map_delobject(int);
 int map_delobjectnofree(int id);
@@ -872,13 +872,13 @@ void map_quit2(struct map_session_data *); // to free memory of dynamic allocati
 // npc
 int map_addnpc(int,struct npc_data *);
 
-// °ƒAƒCƒeƒ€ŠÖ˜A
+// ï¿½ï¿½ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½Ö˜A
 int map_clearflooritem_timer(int,unsigned int,int,int);
 #define map_clearflooritem(id) map_clearflooritem_timer(0,0,id,1)
 int map_addflooritem(struct item *,int,int,int,int,struct map_session_data *,struct map_session_data *,struct map_session_data *, int owner_id, int);
 int map_searchrandfreecell(int,int,int,int);
 
-// ƒLƒƒƒ‰id„ƒLƒƒƒ‰–¼ •ÏŠ·ŠÖ˜A
+// ï¿½Lï¿½ï¿½ï¿½ï¿½idï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ÏŠï¿½ï¿½Ö˜A
 void map_addchariddb(int charid, char *name);
 void map_delchariddb(int charid);
 int map_reqchariddb(struct map_session_data * sd, int charid);
@@ -899,11 +899,11 @@ void map_foreachiddb(int (*)(void*, void*, va_list), ...);
 //void map_addnickdb(struct map_session_data *);
 struct map_session_data * map_nick2sd(char*);
 
-// ‚»‚Ì‘¼
+// ï¿½ï¿½ï¿½Ì‘ï¿½
 int map_check_dir(int s_dir, int t_dir);
 int map_calc_dir(struct block_list *src, int x, int y);
 
-// path.c‚æ‚è
+// path.cï¿½ï¿½ï¿½ï¿½
 int path_search(struct walkpath_data*, int, int, int, int, int, int);
 int path_search_long(int m, int x0, int y_0, int x1, int y_1);
 int path_blownpos(int m, int x0, int y_0, int dx, int dy, int count);

@@ -22,7 +22,6 @@ WITH_MYSQL="no"
 WITH_MYSQL_PATH="/usr/local/mysql:/usr/local:/usr:/"
 WITH_LIBM="/usr/local"
 WITH_ZLIB="yes"
-WITH_GETTEXT="no"
 WITH_DEBUG="yes"
 WITH_OPTIMIZE="std"
 WITH_WIN32="no"
@@ -160,7 +159,6 @@ do
 		echo ' --with-fds=n             set maximum number of connections [1024]'
 		echo ' --with-optimize=LEVEL    set compiler optimization level (read below) [std]'
 		echo ' --with-c99               enable C99 standard for compiling'
-		echo ' --without-gettext        disable GetText support'
 		echo ' --with-debug             enable debugging'
 		echo ' --with-debug=gprof       enable debugging and profiling'
 		echo ' --without-debug          disable debugging (and profiling)'
@@ -435,10 +433,6 @@ if [ "$WITH_WIN32" != "no" ]; then
 	fi
 	rm -f $CC_DEFAULT_OUTPUT .config.tmp.c
 	echo yes
-	if [ "$WITH_GETTEXT" != "no" ]; then
-		echo "Win32 Freya does not support GetText - disabling !"
-		WITH_GETTEXT="no"
-	fi
 fi
 
 ##### CHECK FOR LIBM
@@ -471,7 +465,6 @@ if [ "$?" != "0" ]; then
 	else
 		LIBS="$LIBS -L{$WITH_LIBM}/lib -lm"
 	fi
-	# compile succeded - need -lintl to compile gettext
 else
 	LIBS="$LIBS -lm"
 fi
@@ -837,30 +830,6 @@ fi
 # add common objects that needs to be at the end (map)
 OBJECTS="$OBJECTS map"
 
-##### GETTEXT CHECKS...
-
-if [ "$WITH_GETTEXT" != no ]; then
-	echo -n "Checking for gettext... "
-	echo "#include <stdlib.h>" >.config.tmp.c
-	echo "#include <libintl.h>" >>.config.tmp.c
-	echo 'int main() { printf(gettext("gettext")); return 0; }' >>.config.tmp.c
-	$CC $CC_OPTIONS .config.tmp.c 2>/dev/null
-	if [ "$?" != "0" ]; then
-		# test with -lintl
-		$CC $CC_OPTIONS .config.tmp.c -lintl 2>/dev/null
-		if [ "$?" != "0" ]; then
-			echo "not found"
-			echo "GetText support seems not available on your system."
-			echo "Please rerun $0 with option --without-gettext"
-			exit 1
-		fi
-		# compile succeded - need -lintl to compile gettext
-		LIBS="$LIBS -lintl"
-	fi
-	echo yes
-	rm -f $CC_DEFAULT_OUTPUT .config.tmp.c
-fi
-
 ##### CLEANUP $LIBS AND $INCLUDES A BIT (to make them look better)
 
 LIBS=`echo $LIBS | sed 's/ +/ /'`
@@ -992,16 +961,6 @@ else
 	echo >>$CONFIGFILE
 fi
 
-if [ "$WITH_GETTEXT" != no ]; then
-	echo "/* GetText support enabled */" >>$CONFIGFILE
-	echo "#define ENABLE_NLS 1" >>$CONFIGFILE
-	echo >>$CONFIGFILE
-else
-	echo "/* GetText support disabled */" >>$CONFIGFILE
-	echo "#undef ENABLE_NLS" >>$CONFIGFILE
-	echo >>$CONFIGFILE
-fi
-
 if [ x"$WITH_PRO" != x"no" ]; then
 	echo "/* FreyaPro enabled */" >>$CONFIGFILE
 	echo "#define FREYA_PRO" >>$CONFIGFILE
@@ -1123,9 +1082,6 @@ BUILD_OPT=""
 if [ x"$WITH_MYSQL" != x"no" ]; then
 	BUILD_OPT="$BUILD_OPT MySQL"
 fi
-if [ x"$WITH_GETTEXT" != x"no" ]; then
-	BUILD_OPT="$BUILD_OPT GetText"
-fi
 if [ x"$WITH_WIN32" != x"no" ]; then
 	BUILD_OPT="$BUILD_OPT Win32"
 fi
@@ -1135,29 +1091,6 @@ if [ x"$BUILD_OPT" != x ]; then
 fi
 
 echo "Generating ${MAKEFILE}..."
-if [ "$WITH_GETTEXT" != no ]; then
-	MAKE_RULES="$MAKE_RULES locales"
-	MAKE_CLEAN_RULES="$MAKE_CLEAN_RULES locales_clean"
-	GETTEXT_RULES=$(cat <<EOF
-locales:
-	@echo -e " - DIR\\tlocales"
-	@for foo in locales/*/; do \\
-		echo -e "   LOC\t"\`basename \$\${foo}\`; \\
-		msgfmt -c -o \$\${foo}/LC_MESSAGES/npcs.mo \$\${foo}/LC_MESSAGES/npcs.po; \\
-	done
-
-locales_clean:
-	find locales/ -name '*.mo' -exec rm -f {} \;
-EOF
-)
-else
-	GETTEXT_RULES=""
-fi
-
-# Perforce version
-#if [ x$RELEASED_REV = x ]; then
-#	RELEASED_REV="\`grep -m 1 '[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]' Changelog.txt 2>/dev/null\`"
-#fi
 
 # SVN version
 if [ x$RELEASED_SVN = x ]; then
@@ -1344,8 +1277,6 @@ for obj in $OBJECTS; do
 	echo -e "\t@\$(MAKE) -C ${srcdir}${obj}/ clean" >>$MAKEFILE
 done
 echo >>$MAKEFILE
-echo "$GETTEXT_RULES" >>$MAKEFILE
-echo >>$MAKEFILE
 
 # to make Yor happy with his "make sql" and "make txt"
 echo "txt:" >>$MAKEFILE
@@ -1366,7 +1297,6 @@ echo
 echo "Configured Freya with options :"
 echo "Installation Prefix : $PREFIX"
 echo "MySQL Support       : $WITH_MYSQL"
-echo "GetText Support     : $WITH_GETTEXT"
 echo "Libs                : $LIBS"
 echo "Static libs         : $STATIC_LIBS"
 echo "Includes            : $INCLUDES"

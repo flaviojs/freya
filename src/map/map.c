@@ -46,7 +46,6 @@
 #include "atcommand.h"
 #include "nullpo.h"
 #include "status.h"
-#include <gettext.h>
 
 #ifdef MEMWATCH
 #include "memwatch.h"
@@ -68,7 +67,7 @@ char mob_db_db[32] = "mob_db"; // need in TXT too to generate SQL DB script (not
 char create_item_db_script = 0; // generate a script file to create SQL item_db (0: no, 1: yes)
 char create_mob_db_script = 0; // generate a script file to create SQL mob_db (0: no, 1: yes)
 
-// ‹É—Í static‚Åƒ[ƒJƒ‹‚Éû‚ß‚é
+// ï¿½É—ï¿½ staticï¿½Åƒï¿½ï¿½[ï¿½Jï¿½ï¿½ï¿½Éï¿½ï¿½ß‚ï¿½
 static struct dbt * id_db;
 static struct dbt * map_db;
 //static struct dbt * nick_db; // not used
@@ -111,15 +110,14 @@ char extra_add_file_txt[1024] = "map_extra_add.txt"; // to add items from extern
 char wisp_server_name[25] = "Server"; // can be modified in char-server configuration file
 int server_char_id; // char id used by server
 int server_fake_mob_id; // mob id of a invisible mod to check bots
-char npc_language[6] = "en_US"; // Language used by the server (for GetText and manner)
-char npc_charset[20] = "iso-8859-1"; // Charset for GetText
+char npc_language[6] = "en_US"; // Language used by word filter
 
 int console = 0;
 char console_pass[1024] = "consoleon"; /* password to enable console */
 
 /*==========================================
- * ‘SmapI‘Œv‚Å‚ÌÚ‘±”İ’è
- * (charI‚©‚ç‘—‚ç‚ê‚Ä‚­‚é)
+ * ï¿½Smapï¿½Iï¿½ï¿½ï¿½vï¿½Å‚ÌÚ‘ï¿½ï¿½ï¿½ï¿½İ’ï¿½
+ * (charï¿½Iï¿½ï¿½ï¿½ç‘—ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½)
  *------------------------------------------
  */
 void map_setusers(int n) {
@@ -127,7 +125,7 @@ void map_setusers(int n) {
 }
 
 /*==========================================
- * ‘SmapI‘Œv‚Å‚ÌÚ‘±”æ“¾ (/w‚Ö‚Ì‰“š—p)
+ * ï¿½Smapï¿½Iï¿½ï¿½ï¿½vï¿½Å‚ÌÚ‘ï¿½ï¿½ï¿½ï¿½æ“¾ (/wï¿½Ö‚Ì‰ï¿½ï¿½ï¿½ï¿½p)
  *------------------------------------------
  */
 int map_getusers(void) {
@@ -135,12 +133,12 @@ int map_getusers(void) {
 }
 
 //
-// blockíœ‚ÌˆÀ‘S«Šm•Ûˆ—
+// blockï¿½íœï¿½Ìˆï¿½Sï¿½ï¿½ï¿½mï¿½Ûï¿½ï¿½ï¿½
 //
 
 /*==========================================
- * block‚ğfree‚·‚é‚Æ‚«free‚Ì•Ï‚í‚è‚ÉŒÄ‚Ô
- * ƒƒbƒN‚³‚ê‚Ä‚¢‚é‚Æ‚«‚Íƒoƒbƒtƒ@‚É‚½‚ß‚é
+ * blockï¿½ï¿½freeï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½freeï¿½Ì•Ï‚ï¿½ï¿½ï¿½ï¿½ÉŒÄ‚ï¿½
+ * ï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Íƒoï¿½bï¿½tï¿½@ï¿½É‚ï¿½ï¿½ß‚ï¿½
  *------------------------------------------
  */
 int map_freeblock(void *bl) {
@@ -158,7 +156,7 @@ int map_freeblock(void *bl) {
 }
 
 /*==========================================
- * block‚Ìfree‚ğˆê“I‚É‹Ö~‚·‚é
+ * blockï¿½ï¿½freeï¿½ï¿½ï¿½êï¿½Iï¿½É‹Ö~ï¿½ï¿½ï¿½ï¿½
  *------------------------------------------
  */
 void map_freeblock_lock(void) {
@@ -168,9 +166,9 @@ void map_freeblock_lock(void) {
 }
 
 /*==========================================
- * block‚Ìfree‚ÌƒƒbƒN‚ğ‰ğœ‚·‚é
- * ‚±‚Ì‚Æ‚«AƒƒbƒN‚ªŠ®‘S‚É‚È‚­‚È‚é‚Æ
- * ƒoƒbƒtƒ@‚É‚½‚Ü‚Á‚Ä‚¢‚½block‚ğ‘S•”íœ
+ * blockï¿½ï¿½freeï¿½Ìƒï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½Ì‚Æ‚ï¿½ï¿½Aï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½Sï¿½É‚È‚ï¿½ï¿½È‚ï¿½ï¿½ï¿½
+ * ï¿½oï¿½bï¿½tï¿½@ï¿½É‚ï¿½ï¿½Ü‚ï¿½Ä‚ï¿½ï¿½ï¿½blockï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½íœ
  *------------------------------------------
  */
 void map_freeblock_unlock(void) {
@@ -193,20 +191,20 @@ void map_freeblock_unlock(void) {
 }
 
 //
-// block‰»ˆ—
+// blockï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //
 /*==========================================
- * map[]‚Ìblock_list‚©‚çŒq‚ª‚Á‚Ä‚¢‚éê‡‚É
- * bl->prev‚Ébl_head‚ÌƒAƒhƒŒƒX‚ğ“ü‚ê‚Ä‚¨‚­
+ * map[]ï¿½ï¿½block_listï¿½ï¿½ï¿½ï¿½ï¿½qï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½ê‡ï¿½ï¿½
+ * bl->prevï¿½ï¿½bl_headï¿½ÌƒAï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½
  *------------------------------------------
  */
 static struct block_list bl_head;
 
 /*==========================================
- * map[]‚Ìblock_list‚É’Ç‰Á
- * mob‚Í”‚ª‘½‚¢‚Ì‚Å•ÊƒŠƒXƒg
+ * map[]ï¿½ï¿½block_listï¿½É’Ç‰ï¿½
+ * mobï¿½Íï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‚Å•Êƒï¿½ï¿½Xï¿½g
  *
- * Šù‚ÉlinkÏ‚İ‚©‚ÌŠm”F‚ª–³‚¢BŠëŒ¯‚©‚à
+ * ï¿½ï¿½ï¿½ï¿½linkï¿½Ï‚İ‚ï¿½ï¿½ÌŠmï¿½Fï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Bï¿½ëŒ¯ï¿½ï¿½ï¿½ï¿½
  *------------------------------------------
  */
 int map_addblock(struct block_list *bl) {
@@ -250,18 +248,18 @@ int map_addblock(struct block_list *bl) {
 }
 
 /*==========================================
- * map[]‚Ìblock_list‚©‚çŠO‚·
- * prev‚ªNULL‚Ìê‡list‚ÉŒq‚ª‚Á‚Ä‚È‚¢
+ * map[]ï¿½ï¿½block_listï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½
+ * prevï¿½ï¿½NULLï¿½Ìê‡listï¿½ÉŒqï¿½ï¿½ï¿½ï¿½Ä‚È‚ï¿½
  *------------------------------------------
  */
 int map_delblock(struct block_list *bl) {
 
 	nullpo_retr(0, bl);
 
-	// Šù‚Éblocklist‚©‚ç”²‚¯‚Ä‚¢‚é
+	// ï¿½ï¿½ï¿½ï¿½blocklistï¿½ï¿½ï¿½ç”²ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½
 	if (bl->prev == NULL) {
 		if (bl->next != NULL) {
-			// prev‚ªNULL‚Ånext‚ªNULL‚Å‚È‚¢‚Ì‚Í—L‚Á‚Ä‚Í‚È‚ç‚È‚¢
+			// prevï¿½ï¿½NULLï¿½ï¿½nextï¿½ï¿½NULLï¿½Å‚È‚ï¿½ï¿½Ì‚Í—Lï¿½ï¿½Ä‚Í‚È‚ï¿½ï¿½È‚ï¿½
 			if (battle_config.error_log)
 				printf("map_delblock error : bl->next!=NULL\n");
 		}
@@ -273,7 +271,7 @@ int map_delblock(struct block_list *bl) {
 	if (bl->next)
 		bl->next->prev = bl->prev;
 	if (bl->prev == &bl_head) {
-		// ƒŠƒXƒg‚Ì“ª‚È‚Ì‚ÅAmap[]‚Ìblock_list‚ğXV‚·‚é
+		// ï¿½ï¿½ï¿½Xï¿½gï¿½Ì“ï¿½ï¿½È‚Ì‚ÅAmap[]ï¿½ï¿½block_listï¿½ï¿½ï¿½Xï¿½Vï¿½ï¿½ï¿½ï¿½
 		if(bl->type == BL_MOB){
 			map[bl->m].block_mob[bl->x / BLOCK_SIZE + (bl->y / BLOCK_SIZE) * map[bl->m].bxs] = bl->next;
 		} else {
@@ -289,7 +287,7 @@ int map_delblock(struct block_list *bl) {
 }
 
 /*==========================================
- * üˆÍ‚ÌPCl”‚ğ”‚¦‚é (Œ»İ–¢g—p)
+ * ï¿½ï¿½ï¿½Í‚ï¿½PCï¿½lï¿½ï¿½ï¿½ğ”‚ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½İ–ï¿½ï¿½gï¿½p)
  *------------------------------------------
  */
 /*int map_countnearpc(int m, int x, int y) {
@@ -323,7 +321,7 @@ int map_delblock(struct block_list *bl) {
 }*/
 
 /*==========================================
- * ƒZƒ‹ã‚ÌPC‚ÆMOB‚Ì”‚ğ”‚¦‚é (ƒOƒ‰ƒ“ƒhƒNƒƒX—p)
+ * ï¿½Zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½PCï¿½ï¿½MOBï¿½Ìï¿½ï¿½ğ”‚ï¿½ï¿½ï¿½ (ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½hï¿½Nï¿½ï¿½ï¿½Xï¿½p)
  *------------------------------------------
  */
 int map_count_oncell(int m, int x, int y) {
@@ -350,7 +348,7 @@ int map_count_oncell(int m, int x, int y) {
 }
 
 /*
- * «»«ëß¾ªÎõÌôøªËÌ¸ªÄª±ª¿«¹«­«ë«æ«Ë«Ã«ÈªòÚ÷ª¹
+ * ï¿½ï¿½ï¿½ï¿½ß¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½Äªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë«Ã«Èªï¿½ï¿½ï¿½ï¿½ï¿½
  */
 struct skill_unit *map_find_skill_unit_oncell(struct block_list *target, int x, int y, int skill_id, struct skill_unit *out_unit) {
 	int m, b;
@@ -378,9 +376,9 @@ struct skill_unit *map_find_skill_unit_oncell(struct block_list *target, int x, 
 }
 
 /*==========================================
- * map m (x0,y0)-(x1,y1)“à‚Ì‘Sobj‚É‘Î‚µ‚Ä
- * func‚ğŒÄ‚Ô
- * type!=0 ‚È‚ç‚»‚Ìí—Ş‚Ì‚İ
+ * map m (x0,y0)-(x1,y1)ï¿½ï¿½ï¿½Ì‘Sobjï¿½É‘Î‚ï¿½ï¿½ï¿½
+ * funcï¿½ï¿½ï¿½Ä‚ï¿½
+ * type!=0 ï¿½È‚ç‚»ï¿½Ìï¿½ï¿½Ş‚Ì‚ï¿½
  *------------------------------------------
  */
 void map_foreachinarea(int (*func)(struct block_list*, va_list), int m, int x0, int y_0, int x1, int y_1, int type, ...) {
@@ -437,24 +435,24 @@ void map_foreachinarea(int (*func)(struct block_list*, va_list), int m, int x0, 
 		}
 	}
 
-	map_freeblock_lock(); // ƒƒ‚ƒŠ‚©‚ç‚Ì‰ğ•ú‚ğ‹Ö~‚·‚é
+	map_freeblock_lock(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö~ï¿½ï¿½ï¿½ï¿½
 
 	for(i = blockcount; i < bl_list_count; i++)
-		if (bl_list[i]->prev) // —LŒø‚©‚Ç‚¤‚©ƒ`ƒFƒbƒN
+		if (bl_list[i]->prev) // ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Ç‚ï¿½ï¿½ï¿½ï¿½`ï¿½Fï¿½bï¿½N
 			func(bl_list[i], ap);
 
-	map_freeblock_unlock(); // ‰ğ•ú‚ğ‹–‰Â‚·‚é
+	map_freeblock_unlock(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½
 
 	va_end(ap);
 	bl_list_count = blockcount;
 }
 
 /*==========================================
- * ‹éŒ`(x0,y0)-(x1,y1)‚ª(dx,dy)ˆÚ“®‚µ‚½‚Ì
- * —ÌˆæŠO‚É‚È‚é—Ìˆæ(‹éŒ`‚©LšŒ`)“à‚Ìobj‚É
- * ‘Î‚µ‚Äfunc‚ğŒÄ‚Ô
+ * ï¿½ï¿½ï¿½`(x0,y0)-(x1,y1)ï¿½ï¿½(dx,dy)ï¿½Ú“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ï¿½Ìˆï¿½ï¿½Oï¿½É‚È‚ï¿½ï¿½Ìˆï¿½(ï¿½ï¿½ï¿½`ï¿½ï¿½Lï¿½ï¿½ï¿½`)ï¿½ï¿½ï¿½ï¿½objï¿½ï¿½
+ * ï¿½Î‚ï¿½ï¿½ï¿½funcï¿½ï¿½ï¿½Ä‚ï¿½
  *
- * dx,dy‚Í-1,0,1‚Ì‚İ‚Æ‚·‚éi‚Ç‚ñ‚È’l‚Å‚à‚¢‚¢‚Á‚Û‚¢Hj
+ * dx,dyï¿½ï¿½-1,0,1ï¿½Ì‚İ‚Æ‚ï¿½ï¿½ï¿½ï¿½iï¿½Ç‚ï¿½ï¿½È’lï¿½Å‚ï¿½ï¿½ï¿½ï¿½ï¿½Û‚ï¿½ï¿½Hï¿½j
  *------------------------------------------
  */
 void map_foreachinmovearea(int (*func)(struct block_list*,va_list), int m, int x0, int y_0, int x1, int y_1, int dx, int dy, int type, ...) {
@@ -469,7 +467,7 @@ void map_foreachinmovearea(int (*func)(struct block_list*,va_list), int m, int x
 	md = &map[m];
 
 	if (dx == 0 || dy == 0) {
-		// ‹éŒ`—Ìˆæ‚Ìê‡
+		// ï¿½ï¿½ï¿½`ï¿½Ìˆï¿½ï¿½Ìê‡
 		if (dx == 0) {
 			if (dy < 0) {
 				y_0 = y_1 + dy + 1;
@@ -523,7 +521,7 @@ void map_foreachinmovearea(int (*func)(struct block_list*,va_list), int m, int x
 			}
 		}
 	} else {
-		// Lš—Ìˆæ‚Ìê‡
+		// Lï¿½ï¿½ï¿½Ìˆï¿½ï¿½Ìê‡
 		if (x0  < 0) x0  = 0;
 		if (y_0 < 0) y_0 = 0;
 		if (x1  >= md->xs) x1  = md->xs - 1;
@@ -584,13 +582,13 @@ void map_foreachinmovearea(int (*func)(struct block_list*,va_list), int m, int x
 		}
 	}
 
-	map_freeblock_lock(); // ƒƒ‚ƒŠ‚©‚ç‚Ì‰ğ•ú‚ğ‹Ö~‚·‚é
+	map_freeblock_lock(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö~ï¿½ï¿½ï¿½ï¿½
 
 	for(i = blockcount; i < bl_list_count; i++)
-		if (bl_list[i]->prev) // —LŒø‚©‚Ç‚¤‚©ƒ`ƒFƒbƒN
+		if (bl_list[i]->prev) // ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Ç‚ï¿½ï¿½ï¿½ï¿½`ï¿½Fï¿½bï¿½N
 			func(bl_list[i], ap);
 
-	map_freeblock_unlock(); // ‰ğ•ú‚ğ‹–‰Â‚·‚é
+	map_freeblock_unlock(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½
 
 	va_end(ap);
 	bl_list_count = blockcount;
@@ -637,13 +635,13 @@ void map_foreachincell(int (*func)(struct block_list*,va_list), int m, int x, in
 		}
 	}
 
-	map_freeblock_lock(); // ƒƒ‚ƒŠ‚©‚ç‚Ì‰ğ•ú‚ğ‹Ö~‚·‚é
+	map_freeblock_lock(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö~ï¿½ï¿½ï¿½ï¿½
 
 	for(i = blockcount; i < bl_list_count; i++)
-		if (bl_list[i]->prev) // —LŒø‚©‚Ç‚¤‚©ƒ`ƒFƒbƒN
+		if (bl_list[i]->prev) // ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Ç‚ï¿½ï¿½ï¿½ï¿½`ï¿½Fï¿½bï¿½N
 			func(bl_list[i],ap);
 
-	map_freeblock_unlock(); // ‰ğ•ú‚ğ‹–‰Â‚·‚é
+	map_freeblock_unlock(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½
 
 	va_end(ap);
 	bl_list_count = blockcount;
@@ -749,23 +747,23 @@ void map_foreachinpath(int (*func)(struct block_list*, va_list), int m, int x0, 
 	}
 
 	va_start(ap,type);
-	map_freeblock_lock(); // ƒƒ‚ƒŠ‚©‚ç‚Ì‰ğ•ú‚ğ‹Ö~‚·‚é
+	map_freeblock_lock(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö~ï¿½ï¿½ï¿½ï¿½
 
 	for(i = blockcount; i < bl_list_count; i++)
-		if (bl_list[i]->prev) // —LŒø‚©‚Ç‚¤‚©ƒ`ƒFƒbƒN
+		if (bl_list[i]->prev) // ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Ç‚ï¿½ï¿½ï¿½ï¿½`ï¿½Fï¿½bï¿½N
 			func(bl_list[i], ap);
 
-	map_freeblock_unlock(); // ‰ğ•ú‚ğ‹–‰Â‚·‚é
+	map_freeblock_unlock(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½
 
 	va_end(ap);
 	bl_list_count = blockcount;
 }
 
 /*==========================================
- * °ƒAƒCƒeƒ€‚âƒGƒtƒFƒNƒg—p‚ÌˆêobjŠ„‚è“–‚Ä
- * object[]‚Ö‚Ì•Û‘¶‚Æid_db“o˜^‚Ü‚Å
+ * ï¿½ï¿½ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½ï¿½ï¿½Gï¿½tï¿½Fï¿½Nï¿½gï¿½pï¿½Ìˆêobjï¿½ï¿½ï¿½è“–ï¿½ï¿½
+ * object[]ï¿½Ö‚Ì•Û‘ï¿½ï¿½ï¿½id_dbï¿½oï¿½^ï¿½Ü‚ï¿½
  *
- * bl->id‚à‚±‚Ì’†‚Åİ’è‚µ‚Ä–â‘è–³‚¢?
+ * bl->idï¿½ï¿½ï¿½Ì’ï¿½ï¿½Åİ’è‚µï¿½Ä–ï¿½ï¿½è–³ï¿½ï¿½?
  *------------------------------------------
  */
 int map_addobject(struct block_list *bl) {
@@ -795,8 +793,8 @@ int map_addobject(struct block_list *bl) {
 }
 
 /*==========================================
- * ˆêobject‚Ì‰ğ•ú
- *	map_delobject‚Ìfree‚µ‚È‚¢ƒo[ƒWƒ‡ƒ“
+ * ï¿½êobjectï¿½Ì‰ï¿½ï¿½ï¿½
+ *	map_delobjectï¿½ï¿½freeï¿½ï¿½ï¿½È‚ï¿½ï¿½oï¿½[ï¿½Wï¿½ï¿½ï¿½ï¿½
  *------------------------------------------
  */
 int map_delobjectnofree(int id) {
@@ -820,11 +818,11 @@ int map_delobjectnofree(int id) {
 }
 
 /*==========================================
- * ˆêobject‚Ì‰ğ•ú
- * block_list‚©‚ç‚ÌíœAid_db‚©‚ç‚Ìíœ
- * object data‚ÌfreeAobject[]‚Ö‚ÌNULL‘ã“ü
+ * ï¿½êobjectï¿½Ì‰ï¿½ï¿½ï¿½
+ * block_listï¿½ï¿½ï¿½ï¿½ï¿½Ìíœï¿½Aid_dbï¿½ï¿½ï¿½ï¿½ï¿½Ìíœ
+ * object dataï¿½ï¿½freeï¿½Aobject[]ï¿½Ö‚ï¿½NULLï¿½ï¿½ï¿½ï¿½
  *
- * add‚Æ‚Ì‘ÎÌ«‚ª–³‚¢‚Ì‚ª‹C‚É‚È‚é
+ * addï¿½Æ‚Ì‘ÎÌï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‚ï¿½ï¿½Cï¿½É‚È‚ï¿½
  *------------------------------------------
  */
 int map_delobject(int id) {
@@ -848,7 +846,7 @@ int map_delobject(int id) {
 }
 
 /*==========================================
- * ‘Sˆêobj‘Šè‚Éfunc‚ğŒÄ‚Ô
+ * ï¿½Sï¿½êobjï¿½ï¿½ï¿½ï¿½ï¿½ï¿½funcï¿½ï¿½ï¿½Ä‚ï¿½
  *
  *------------------------------------------
  */
@@ -885,13 +883,13 @@ void map_foreachobject(int (*func)(struct block_list*, va_list), int type, ...) 
 }
 
 /*==========================================
- * °ƒAƒCƒeƒ€‚ğÁ‚·
+ * ï¿½ï¿½ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  *
- * data==0‚Ì‚Ítimer‚ÅÁ‚¦‚½
- * data!=0‚Ì‚ÍE‚¤“™‚ÅÁ‚¦‚½‚Æ‚µ‚Ä“®ì
+ * data==0ï¿½Ìï¿½ï¿½ï¿½timerï¿½Åï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * data!=0ï¿½Ìï¿½ï¿½ÍEï¿½ï¿½ï¿½ï¿½ï¿½Åï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Ä“ï¿½ï¿½ï¿½
  *
- * ŒãÒ‚ÍAmap_clearflooritem(id)‚Ö
- * map.h“à‚Å#define‚µ‚Ä‚ ‚é
+ * ï¿½ï¿½ï¿½Ò‚ÍAmap_clearflooritem(id)ï¿½ï¿½
+ * map.hï¿½ï¿½ï¿½ï¿½#defineï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½
  *------------------------------------------
  */
 int map_clearflooritem_timer(int tid, unsigned int tick, int id, int data) { // if data is set, timer is called before to be executed -> delete it
@@ -914,10 +912,10 @@ int map_clearflooritem_timer(int tid, unsigned int tick, int id, int data) { // 
 }
 
 /*==========================================
- * (m,x,y)‚ÌüˆÍrangeƒ}ƒX“à‚Ì‹ó‚«(=N“ü‰Â”\)cell‚Ì
- * “à‚©‚ç“K“–‚Èƒ}ƒX–Ú‚ÌÀ•W‚ğx+(y<<16)‚Å•Ô‚·
+ * (m,x,y)ï¿½Ìï¿½ï¿½ï¿½rangeï¿½}ï¿½Xï¿½ï¿½ï¿½Ì‹ï¿½ï¿½ï¿½(=ï¿½Nï¿½ï¿½ï¿½Â”\)cellï¿½ï¿½
+ * ï¿½ï¿½ï¿½ï¿½ï¿½Kï¿½ï¿½ï¿½Èƒ}ï¿½Xï¿½Ú‚Ìï¿½Wï¿½ï¿½x+(y<<16)ï¿½Å•Ô‚ï¿½
  *
- * Œ»órange=1‚ÅƒAƒCƒeƒ€ƒhƒƒbƒv—p“r‚Ì‚İ
+ * ï¿½ï¿½ï¿½ï¿½range=1ï¿½ÅƒAï¿½Cï¿½eï¿½ï¿½ï¿½hï¿½ï¿½ï¿½bï¿½vï¿½pï¿½rï¿½Ì‚ï¿½
  *------------------------------------------
  */
 int map_searchrandfreecell(int m, int x, int y, int range) {
@@ -959,9 +957,9 @@ int map_searchrandfreecell(int m, int x, int y, int range) {
 }
 
 /*==========================================
- * (m,x,y)‚ğ’†S‚É3x3ˆÈ“à‚É°ƒAƒCƒeƒ€İ’u
+ * (m,x,y)ï¿½ğ’†Sï¿½ï¿½3x3ï¿½È“ï¿½ï¿½Éï¿½ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½İ’u
  *
- * item_data‚ÍamountˆÈŠO‚ğcopy‚·‚é
+ * item_dataï¿½ï¿½amountï¿½ÈŠOï¿½ï¿½copyï¿½ï¿½ï¿½ï¿½
  *------------------------------------------
  */
 int map_addflooritem(struct item *item_data, int amount, int m, int x, int y, struct map_session_data *first_sd,
@@ -1030,7 +1028,7 @@ int map_addflooritem(struct item *item_data, int amount, int m, int x, int y, st
 }
 
 /*==========================================
- * charid_db‚Ö’Ç‰Á(•ÔM‘Ò‚¿‚ª‚ ‚ê‚Î•ÔM)
+ * charid_dbï¿½Ö’Ç‰ï¿½(ï¿½ÔMï¿½Ò‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î•ÔM)
  *------------------------------------------
  */
 void map_addchariddb(int charid, char *name) {
@@ -1038,7 +1036,7 @@ void map_addchariddb(int charid, char *name) {
 	int req;
 
 	p = numdb_search(charid_db, charid);
-	if (p == NULL) { // ƒf[ƒ^ƒx[ƒX‚É‚È‚¢
+	if (p == NULL) { // ï¿½fï¿½[ï¿½^ï¿½xï¿½[ï¿½Xï¿½É‚È‚ï¿½
 		CALLOC(p, struct charid2nick, 1);
 		p->req_id = 0;
 	} else
@@ -1049,7 +1047,7 @@ void map_addchariddb(int charid, char *name) {
 	strncpy(p->nick, name, 24);
 	p->req_id = 0;
 	numdb_insert(charid_db, charid, p);
-	if (req) { // •ÔM‘Ò‚¿‚ª‚ ‚ê‚Î•ÔM
+	if (req) { // ï¿½ÔMï¿½Ò‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î•ÔM
 		struct map_session_data *sd = map_id2sd(req);
 		if (sd != NULL)
 			clif_solved_charname(sd, charid);
@@ -1059,7 +1057,7 @@ void map_addchariddb(int charid, char *name) {
 }
 
 /*==========================================
- * charid_db‚Ö’Ç‰Ái•ÔM—v‹‚Ì‚İj
+ * charid_dbï¿½Ö’Ç‰ï¿½iï¿½ÔMï¿½vï¿½ï¿½ï¿½Ì‚İj
  *------------------------------------------
  */
 int map_reqchariddb(struct map_session_data * sd,int charid) {
@@ -1068,7 +1066,7 @@ int map_reqchariddb(struct map_session_data * sd,int charid) {
 	nullpo_retr(0, sd);
 
 	p = numdb_search(charid_db, charid);
-	if(p!=NULL) // ƒf[ƒ^ƒx[ƒX‚É‚·‚Å‚É‚ ‚é
+	if(p!=NULL) // ï¿½fï¿½[ï¿½^ï¿½xï¿½[ï¿½Xï¿½É‚ï¿½ï¿½Å‚É‚ï¿½ï¿½ï¿½
 		return 0;
 	CALLOC(p, struct charid2nick, 1);
 	p->req_id=sd->bl.id;
@@ -1078,7 +1076,7 @@ int map_reqchariddb(struct map_session_data * sd,int charid) {
 }
 
 /*==========================================
- * id_db‚Öbl‚ğ’Ç‰Á
+ * id_dbï¿½ï¿½blï¿½ï¿½ï¿½Ç‰ï¿½
  *------------------------------------------
  */
 void map_addiddb(struct block_list *bl) {
@@ -1088,7 +1086,7 @@ void map_addiddb(struct block_list *bl) {
 }
 
 /*==========================================
- * id_db‚©‚çbl‚ğíœ
+ * id_dbï¿½ï¿½ï¿½ï¿½blï¿½ï¿½ï¿½íœ
  *------------------------------------------
  */
 void map_deliddb(struct block_list *bl) {
@@ -1098,7 +1096,7 @@ void map_deliddb(struct block_list *bl) {
 }
 
 /*==========================================
- * nick_db‚Ösd‚ğ’Ç‰Á
+ * nick_dbï¿½ï¿½sdï¿½ï¿½ï¿½Ç‰ï¿½
  *------------------------------------------
  */
 /*void map_addnickdb(struct map_session_data *sd) {
@@ -1108,9 +1106,9 @@ void map_deliddb(struct block_list *bl) {
 }*/
 
 /*==========================================
- * PC‚Ìquitˆ— map.c“à•ª
+ * PCï¿½ï¿½quitï¿½ï¿½ï¿½ï¿½ map.cï¿½ï¿½
  *
- * quitˆ—‚Ìå‘Ì‚ªˆá‚¤‚æ‚¤‚È‹C‚à‚µ‚Ä‚«‚½
+ * quitï¿½ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½Ì‚ï¿½ï¿½á‚¤ï¿½æ‚¤ï¿½È‹Cï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½
  *------------------------------------------
  */
 void map_quit(struct map_session_data *sd) {
@@ -1126,36 +1124,36 @@ void map_quit(struct map_session_data *sd) {
 		}
 	}
 
-	if (sd->chatID) // ƒ`ƒƒƒbƒg‚©‚ço‚é
+	if (sd->chatID) // ï¿½`ï¿½ï¿½ï¿½bï¿½gï¿½ï¿½ï¿½ï¿½ï¿½oï¿½ï¿½
 		chat_leavechat(sd);
 
-	if (sd->trade_partner) // æˆø‚ğ’†’f‚·‚é
+	if (sd->trade_partner) // ï¿½ï¿½ï¿½ï¿½ï¿½ğ’†’fï¿½ï¿½ï¿½ï¿½
 		trade_tradecancel(sd);
 
 	if (sd->friend_num > 0)
 		clif_friend_send_online(sd, 0);
 
-	if (sd->party_invite > 0) // ƒp[ƒeƒBŠ©—U‚ğ‹‘”Û‚·‚é
+	if (sd->party_invite > 0) // ï¿½pï¿½[ï¿½eï¿½Bï¿½ï¿½ï¿½Uï¿½ï¿½Û‚ï¿½ï¿½ï¿½
 		party_reply_invite(sd, sd->party_invite_account, 0); // 0: invitation was denied, 1: accepted
 
-	if (sd->guild_invite > 0) // ƒMƒ‹ƒhŠ©—U‚ğ‹‘”Û‚·‚é
+	if (sd->guild_invite > 0) // ï¿½Mï¿½ï¿½ï¿½hï¿½ï¿½ï¿½Uï¿½ï¿½Û‚ï¿½ï¿½ï¿½
 		guild_reply_invite(sd, sd->guild_invite, 0);
-	if (sd->guild_alliance > 0) // ƒMƒ‹ƒh“¯–¿Š©—U‚ğ‹‘”Û‚·‚é
+	if (sd->guild_alliance > 0) // ï¿½Mï¿½ï¿½ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Uï¿½ï¿½Û‚ï¿½ï¿½ï¿½
 		guild_reply_reqalliance(sd, sd->guild_alliance_account, 0); // flag: 0 deny, 1:accepted
 
-	party_send_logout(sd); // ƒp[ƒeƒB‚ÌƒƒOƒAƒEƒgƒƒbƒZ[ƒW‘—M
+	party_send_logout(sd); // ï¿½pï¿½[ï¿½eï¿½Bï¿½Ìƒï¿½ï¿½Oï¿½Aï¿½Eï¿½gï¿½ï¿½ï¿½bï¿½Zï¿½[ï¿½Wï¿½ï¿½ï¿½M
 
-	guild_send_memberinfoshort(sd, 0); // ƒMƒ‹ƒh‚ÌƒƒOƒAƒEƒgƒƒbƒZ[ƒW‘—M
+	guild_send_memberinfoshort(sd, 0); // ï¿½Mï¿½ï¿½ï¿½hï¿½Ìƒï¿½ï¿½Oï¿½Aï¿½Eï¿½gï¿½ï¿½ï¿½bï¿½Zï¿½[ï¿½Wï¿½ï¿½ï¿½M
 
-	pc_cleareventtimer(sd); // ƒCƒxƒ“ƒgƒ^ƒCƒ}‚ğ”jŠü‚·‚é
+	pc_cleareventtimer(sd); // ï¿½Cï¿½xï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½}ï¿½ï¿½ï¿½jï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	if (sd->state.storage_flag)
 		storage_guild_storage_quit(sd);
 	else
-		storage_storage_quit(sd); // ‘qŒÉ‚ğŠJ‚¢‚Ä‚é‚È‚ç•Û‘¶‚·‚é
+		storage_storage_quit(sd); // ï¿½qï¿½É‚ï¿½ï¿½Jï¿½ï¿½ï¿½Ä‚ï¿½ï¿½È‚ï¿½ï¿½Û‘ï¿½ï¿½ï¿½ï¿½ï¿½
 
-	skill_castcancel(&sd->bl, 0, 0); // ‰r¥‚ğ’†’f‚·‚é
-	skill_stop_dancing(&sd->bl, 1);// ƒ_ƒ“ƒX/‰‰‘t’†’f
+	skill_castcancel(&sd->bl, 0, 0); // ï¿½rï¿½ï¿½ï¿½ğ’†’fï¿½ï¿½ï¿½ï¿½
+	skill_stop_dancing(&sd->bl, 1);// ï¿½_ï¿½ï¿½ï¿½X/ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½f
 
 	//Status that are not saved...
 	if(sd->sc_count) {
@@ -1198,7 +1196,7 @@ void map_quit(struct map_session_data *sd) {
 		}
 	}
 
-	skill_clear_unitgroup(&sd->bl); // ƒXƒLƒ‹ƒ†ƒjƒbƒgƒOƒ‹[ƒv‚Ìíœ
+	skill_clear_unitgroup(&sd->bl); // ï¿½Xï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½jï¿½bï¿½gï¿½Oï¿½ï¿½ï¿½[ï¿½vï¿½Ìíœ
 	skill_cleartimerskill(&sd->bl);
 	
 	if (sd->followtimer != -1) {
@@ -1232,7 +1230,7 @@ void map_quit(struct map_session_data *sd) {
 #ifdef USE_SQL //TXT version of this is still in dev
 	chrif_save_scdata(sd); // save status changes
 #endif
-	status_change_clear(&sd->bl, 1); // ƒXƒe[ƒ^ƒXˆÙí‚ğ‰ğœ‚·‚é
+	status_change_clear(&sd->bl, 1); // ï¿½Xï¿½eï¿½[ï¿½^ï¿½Xï¿½Ùï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	
 	if (sd->status.pet_id > 0 && sd->pd) {
 		pet_lootitem_drop(sd->pd, sd);
@@ -1309,7 +1307,7 @@ struct map_session_data * map_charid2sd(int char_id) {
 }
 
 /*==========================================
- * id”Ô†‚ÌPC‚ğ’T‚·B‹‚È‚¯‚ê‚ÎNULL
+ * idï¿½Ôï¿½ï¿½ï¿½PCï¿½ï¿½ï¿½Tï¿½ï¿½ï¿½Bï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ï¿½NULL
  *------------------------------------------
  */
 struct map_session_data * map_id2sd(int id) {
@@ -1339,7 +1337,7 @@ struct map_session_data * map_id2sd(int id) {
 }
 
 /*==========================================
- * char_id”Ô†‚Ì–¼‘O‚ğ’T‚·
+ * char_idï¿½Ôï¿½ï¿½Ì–ï¿½ï¿½Oï¿½ï¿½ï¿½Tï¿½ï¿½
  *------------------------------------------
  */
 char * map_charid2nick(int id) {
@@ -1391,8 +1389,8 @@ struct map_session_data * map_nick2sd(char *nick) {
 }
 
 /*==========================================
- * id”Ô†‚Ì•¨‚ğ’T‚·
- * ˆêobject‚Ìê‡‚Í”z—ñ‚ğˆø‚­‚Ì‚İ
+ * idï¿½Ôï¿½ï¿½Ì•ï¿½ï¿½ï¿½ï¿½Tï¿½ï¿½
+ * ï¿½êobjectï¿½Ìê‡ï¿½Í”zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‚ï¿½
  *------------------------------------------
  */
 struct block_list * map_id2bl(int id) {
@@ -1403,7 +1401,7 @@ struct block_list * map_id2bl(int id) {
 }
 
 /*==========================================
- * id_db“à‚Ì‘S‚Ä‚Éfunc‚ğÀs
+ * id_dbï¿½ï¿½ï¿½Ì‘Sï¿½Ä‚ï¿½funcï¿½ï¿½ï¿½ï¿½s
  *------------------------------------------
  */
 void map_foreachiddb(int (*func)(void*,void*,va_list),...) {
@@ -1417,7 +1415,7 @@ void map_foreachiddb(int (*func)(void*,void*,va_list),...) {
 }
 
 /*==========================================
- * map.npc‚Ö’Ç‰Á (warp“™‚Ì—Ìˆæ‚¿‚Ì‚İ)
+ * map.npcï¿½Ö’Ç‰ï¿½ (warpï¿½ï¿½ï¿½Ì—Ìˆæï¿½ï¿½ï¿½Ì‚ï¿½)
  *------------------------------------------
  */
 int map_addnpc(int m, struct npc_data *nd) {
@@ -1469,7 +1467,7 @@ void map_removenpc(void) {
 }
 
 /*==========================================
- * map–¼‚©‚çmap”Ô†‚Ö•ÏŠ·
+ * mapï¿½ï¿½ï¿½ï¿½ï¿½ï¿½mapï¿½Ôï¿½ï¿½Ö•ÏŠï¿½
  *------------------------------------------
  */
 int map_mapname2mapid(const char *name) { // map id on this server (m == -1 if not in actual map-server)
@@ -1487,7 +1485,7 @@ int map_mapname2mapid(const char *name) { // map id on this server (m == -1 if n
 }
 
 /*==========================================
- * ‘¼Imap–¼‚©‚çip,port•ÏŠ·
+ * ï¿½ï¿½ï¿½Imapï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ip,portï¿½ÏŠï¿½
  *------------------------------------------
  */
 int map_mapname2ipport(const char *name, int *ip, int *port) {
@@ -1570,7 +1568,7 @@ int map_check_dir(int s_dir,int t_dir) {
 }
 
 /*==========================================
- * ”Ş‰ä‚Ì•ûŒü‚ğŒvZ
+ * ï¿½Ş‰ï¿½ï¿½Ì•ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½vï¿½Z
  *------------------------------------------
  */
 int map_calc_dir(struct block_list *src, int x, int y) {
@@ -1581,32 +1579,32 @@ int map_calc_dir(struct block_list *src, int x, int y) {
 
 	dx = x - src->x;
 	dy = y - src->y;
-	if (dx == 0 && dy == 0) { // ”Ş‰ä‚ÌêŠˆê’v
-		dir = 0; // ã
-	} else if (dx >= 0 && dy >= 0) { // •ûŒü“I‚É‰Eã
-		dir = 7; // ‰Eã
-		if (dx * 3 - 1 < dy) dir = 0; // ã
-		if (dx > dy * 3) dir = 6; // ‰E
-	} else if (dx >= 0 && dy <= 0) { // •ûŒü“I‚É‰E‰º
-		dir = 5; // ‰E‰º
-		if (dx * 3 - 1 < -dy) dir = 4; // ‰º
-		if (dx > -dy * 3) dir = 6; // ‰E
-	} else if (dx <= 0 && dy <= 0) { // •ûŒü“I‚É¶‰º
-		dir = 3; // ¶‰º
-		if (dx * 3 + 1 > dy) dir = 4; // ‰º
-		if (dx < dy * 3) dir = 2; // ¶
-	} else { // •ûŒü“I‚É¶ã
-		dir = 1; // ¶ã
-		if (-dx * 3 - 1 < dy) dir = 0; // ã
-		if (-dx > dy * 3) dir = 2; // ¶
+	if (dx == 0 && dy == 0) { // ï¿½Ş‰ï¿½ï¿½ÌêŠï¿½ï¿½ï¿½v
+		dir = 0; // ï¿½ï¿½
+	} else if (dx >= 0 && dy >= 0) { // ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½É‰Eï¿½ï¿½
+		dir = 7; // ï¿½Eï¿½ï¿½
+		if (dx * 3 - 1 < dy) dir = 0; // ï¿½ï¿½
+		if (dx > dy * 3) dir = 6; // ï¿½E
+	} else if (dx >= 0 && dy <= 0) { // ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½É‰Eï¿½ï¿½
+		dir = 5; // ï¿½Eï¿½ï¿½
+		if (dx * 3 - 1 < -dy) dir = 4; // ï¿½ï¿½
+		if (dx > -dy * 3) dir = 6; // ï¿½E
+	} else if (dx <= 0 && dy <= 0) { // ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½Éï¿½ï¿½ï¿½
+		dir = 3; // ï¿½ï¿½ï¿½ï¿½
+		if (dx * 3 + 1 > dy) dir = 4; // ï¿½ï¿½
+		if (dx < dy * 3) dir = 2; // ï¿½ï¿½
+	} else { // ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½Éï¿½ï¿½ï¿½
+		dir = 1; // ï¿½ï¿½ï¿½ï¿½
+		if (-dx * 3 - 1 < dy) dir = 0; // ï¿½ï¿½
+		if (-dx > dy * 3) dir = 2; // ï¿½ï¿½
 	}
 
 	return dir;
 }
 
-// gatŒn
+// gatï¿½n
 /*==========================================
- * (m,x,y)‚Ìó‘Ô‚ğ’²‚×‚é
+ * (m,x,y)ï¿½Ìï¿½ï¿½Ô‚ğ’²‚×‚ï¿½
  *------------------------------------------
  */
 int map_getcell(int m, int x, int y, cell_t cellchk) {
@@ -1657,7 +1655,7 @@ int map_getcellp(struct map_data* m, int x, int y, cell_t cellchk) {
 }
 
 /*==========================================
- * (m,x,y)‚Ìó‘Ô‚ğt‚É‚·‚é
+ * (m,x,y)ï¿½Ìï¿½ï¿½Ô‚ï¿½tï¿½É‚ï¿½ï¿½ï¿½
  *------------------------------------------
  */
 void map_setcell(int m, int x, int y, int cell) {
@@ -1687,7 +1685,7 @@ void map_setcell(int m, int x, int y, int cell) {
 }
 
 /*==========================================
- * ‘¼IŠÇ—‚Ìƒ}ƒbƒv‚ğdb‚É’Ç‰Á
+ * ï¿½ï¿½ï¿½Iï¿½Ç—ï¿½ï¿½Ìƒ}ï¿½bï¿½vï¿½ï¿½dbï¿½É’Ç‰ï¿½
  *------------------------------------------
  */
 int map_setipport(char *name, unsigned long ip, int port) {
@@ -1705,7 +1703,7 @@ int map_setipport(char *name, unsigned long ip, int port) {
 		strdb_insert(map_db, mdos->name, mdos);
 	} else if (md->gat){
 		if (ip != clif_getip() || port != clif_getport()){
-			// “Ç‚İ‚ñ‚Å‚¢‚½‚¯‚ÇA’S“–ŠO‚É‚È‚Á‚½ƒ}ƒbƒv
+			// ï¿½Ç‚İï¿½ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÇAï¿½Sï¿½ï¿½ï¿½Oï¿½É‚È‚ï¿½ï¿½ï¿½}ï¿½bï¿½v
 			CALLOC(mdos, struct map_data_other_server, 1);
 			strncpy(mdos->name, name, 24);
 			mdos->gat  = NULL;
@@ -1715,25 +1713,25 @@ int map_setipport(char *name, unsigned long ip, int port) {
 			strdb_insert(map_db, mdos->name, mdos);
 			// printf("from char server : %s -> %08lx:%d\n",name,ip,port);
 		} else {
-			// “Ç‚İ‚ñ‚Å‚¢‚ÄA’S“–‚É‚È‚Á‚½ƒ}ƒbƒvi‰½‚à‚µ‚È‚¢j
+			// ï¿½Ç‚İï¿½ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ÄAï¿½Sï¿½ï¿½ï¿½É‚È‚ï¿½ï¿½ï¿½}ï¿½bï¿½vï¿½iï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½j
 			;
 		}
 	} else {
 		mdos = (struct map_data_other_server *)md;
 		if (ip == clif_getip() && port == clif_getport()) {
-			// ©•ª‚Ì’S“–‚É‚È‚Á‚½ƒ}ƒbƒv
+			// ï¿½ï¿½ï¿½ï¿½ï¿½Ì’Sï¿½ï¿½ï¿½É‚È‚ï¿½ï¿½ï¿½}ï¿½bï¿½v
 			if (mdos->map == NULL) {
-				// “Ç‚İ‚ñ‚Å‚¢‚È‚¢‚Ì‚ÅI—¹‚·‚é
+				// ï¿½Ç‚İï¿½ï¿½ï¿½ï¿½Å‚ï¿½ï¿½È‚ï¿½ï¿½Ì‚ÅIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				printf("map_setipport : %s is not loaded.\n", name);
 				exit(1);
 			} else {
-				// “Ç‚İ‚ñ‚Å‚¢‚é‚Ì‚Å’u‚«Š·‚¦‚é
+				// ï¿½Ç‚İï¿½ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½ï¿½Ì‚Å’uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				md = mdos->map;
 				FREE(mdos);
 				strdb_insert(map_db, md->name, md);
 			}
 		} else {
-			// ‘¼‚ÌI‚Ì’S“–ƒ}ƒbƒv‚È‚Ì‚Å’u‚«Š·‚¦‚é‚¾‚¯
+			// ï¿½ï¿½ï¿½ÌIï¿½Ì’Sï¿½ï¿½ï¿½}ï¿½bï¿½vï¿½È‚Ì‚Å’uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é‚¾ï¿½ï¿½
 			mdos->ip   = ip;
 			mdos->port = port;
 		}
@@ -1743,7 +1741,7 @@ int map_setipport(char *name, unsigned long ip, int port) {
 }
 
 /*==========================================
- * ‘¼IŠÇ—‚Ìƒ}ƒbƒv‚ğ‘S‚Äíœ
+ * ï¿½ï¿½ï¿½Iï¿½Ç—ï¿½ï¿½Ìƒ}ï¿½bï¿½vï¿½ï¿½ï¿½Sï¿½Äíœ
  *------------------------------------------
  */
 int map_eraseallipport_sub(void *key, void *data, va_list va) {
@@ -1764,7 +1762,7 @@ int map_eraseallipport(void) {
 }
 
 /*==========================================
- * ‘¼IŠÇ—‚Ìƒ}ƒbƒv‚ğdb‚©‚çíœ
+ * ï¿½ï¿½ï¿½Iï¿½Ç—ï¿½ï¿½Ìƒ}ï¿½bï¿½vï¿½ï¿½dbï¿½ï¿½ï¿½ï¿½ï¿½íœ
  *------------------------------------------
  */
 int map_eraseipport(char *name, unsigned long ip, int port) {
@@ -1780,8 +1778,8 @@ int map_eraseipport(char *name, unsigned long ip, int port) {
 			mdos = (struct map_data_other_server *)md;
 			if (mdos->ip == ip && mdos->port == port) {
 				if (mdos->map) {
-					// ‚±‚Ìƒ}ƒbƒvI‚Å‚à“Ç‚İ‚ñ‚Å‚¢‚é‚Ì‚ÅˆÚ“®‚Å‚«‚é
-					return 1; // ŒÄ‚Ño‚µŒ³‚Å chrif_sendmap() ‚ğ‚·‚é
+					// ï¿½ï¿½ï¿½Ìƒ}ï¿½bï¿½vï¿½Iï¿½Å‚ï¿½ï¿½Ç‚İï¿½ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½ï¿½Ì‚ÅˆÚ“ï¿½ï¿½Å‚ï¿½ï¿½ï¿½
+					return 1; // ï¿½Ä‚Ñoï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ chrif_sendmap() ï¿½ï¿½ï¿½
 				} else {
 					strdb_erase(map_db, name);
 					FREE(mdos);
@@ -1795,9 +1793,9 @@ int map_eraseipport(char *name, unsigned long ip, int port) {
 	return 0;
 }
 
-// ‰Šú‰»ü‚è
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 /*==========================================
- * …ê‚‚³İ’è
+ * ï¿½ï¿½ï¿½ê‚ï¿½ï¿½ï¿½İ’ï¿½
  *------------------------------------------
  */
 static struct waterlist {
@@ -1854,27 +1852,27 @@ static void map_readwater(char *watertxt) {
 }
 
 /*==========================================
-* ƒ}ƒbƒvƒLƒƒƒbƒVƒ…‚É’Ç‰Á‚·‚é
+* ï¿½}ï¿½bï¿½vï¿½Lï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½ï¿½É’Ç‰ï¿½ï¿½ï¿½ï¿½
 *===========================================*/
 
-// ƒ}ƒbƒvƒLƒƒƒbƒVƒ…‚ÌÅ‘å’l
+// ï¿½}ï¿½bï¿½vï¿½Lï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½ï¿½ÌÅ‘ï¿½ï¿½l
 #define MAX_MAP_CACHE 768
 
-//Šeƒ}ƒbƒv‚²‚Æ‚ÌÅ¬ŒÀî•ñ‚ğ“ü‚ê‚é‚à‚ÌAREAD_FROM_BITMAP—p
+//ï¿½eï¿½}ï¿½bï¿½vï¿½ï¿½ï¿½Æ‚ÌÅï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌAREAD_FROM_BITMAPï¿½p
 struct map_cache_info {
-	char fn[32];//ƒtƒ@ƒCƒ‹–¼
-	int xs, ys; //•‚Æ‚‚³
+	char fn[32];//ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½
+	int xs, ys; //ï¿½ï¿½ï¿½Æï¿½ï¿½ï¿½
 	int water_height;
-	int pos; // ƒf[ƒ^‚ª“ü‚ê‚Ä‚ ‚éêŠ
-	int compressed; // zilb’Ê‚¹‚é‚æ‚¤‚É‚·‚éˆ×‚Ì—\–ñ
-	int compressed_len; // zilb’Ê‚¹‚é‚æ‚¤‚É‚·‚éˆ×‚Ì—\–ñ
+	int pos; // ï¿½fï¿½[ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½êŠ
+	int compressed; // zilbï¿½Ê‚ï¿½ï¿½ï¿½ï¿½æ‚¤ï¿½É‚ï¿½ï¿½ï¿½ï¿½×‚Ì—\ï¿½ï¿½
+	int compressed_len; // zilbï¿½Ê‚ï¿½ï¿½ï¿½ï¿½æ‚¤ï¿½É‚ï¿½ï¿½ï¿½ï¿½×‚Ì—\ï¿½ï¿½
 }; // 56 byte
 
 struct map_cache_head {
 	int sizeof_header;
 	int sizeof_map;
-	// ã‚Ì‚Q‚Â‰ü•Ï•s‰Â
-	int nmaps; // ƒ}ƒbƒv‚ÌŒÂ”
+	// ï¿½ï¿½ï¿½Ì‚Qï¿½Â‰ï¿½ï¿½Ï•sï¿½ï¿½
+	int nmaps; // ï¿½}ï¿½bï¿½vï¿½ÌŒÂï¿½
 	int filesize;
 };
 struct {
@@ -1901,7 +1899,7 @@ static int map_cache_open(char *fn) {
 		if (map_cache.head.sizeof_header == sizeof(struct map_cache_head) &&
 		    map_cache.head.sizeof_map    == sizeof(struct map_cache_info) &&
 		    map_cache.head.filesize      == ftell(map_cache.fp)) {
-			// ƒLƒƒƒbƒVƒ…“Ç‚İ‚İ¬Œ÷
+			// ï¿½Lï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½ï¿½Ç‚İï¿½ï¿½İï¿½ï¿½ï¿½
 			CALLOC(map_cache.map, struct map_cache_info, map_cache.head.nmaps);
 			fseek(map_cache.fp, sizeof(struct map_cache_head), SEEK_SET);
 			fread(map_cache.map, sizeof(struct map_cache_info), map_cache.head.nmaps, map_cache.fp);
@@ -1913,7 +1911,7 @@ static int map_cache_open(char *fn) {
 	} else if (map_read_flag == READ_FROM_BITMAP_COMPRESSED)
 		map_read_flag = CREATE_BITMAP_COMPRESSED; // READ_FROM_BITMAP_COMPRESSED + 1
 
-	// “Ç‚İ‚İ‚É¸”s‚µ‚½‚Ì‚ÅV‹K‚Éì¬‚·‚é
+	// ï¿½Ç‚İï¿½ï¿½İ‚Éï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½Ì‚ÅVï¿½Kï¿½Éì¬ï¿½ï¿½ï¿½ï¿½
 	map_cache.fp = fopen(fn, "wb");
 	if (map_cache.fp) {
 		memset(&map_cache.head, 0, sizeof(struct map_cache_head));
@@ -1957,7 +1955,7 @@ int map_cache_read(struct map_data *m) {
 	for(i = 0; i < map_cache.head.nmaps; i++) {
 		if (!strcmp(m->name, map_cache.map[i].fn)) {
 			if (map_cache.map[i].water_height != map_waterheight(m->name)) {
-				// …ê‚Ì‚‚³‚ªˆá‚¤‚Ì‚Å“Ç‚İ’¼‚µ
+				// ï¿½ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á‚¤ï¿½Ì‚Å“Ç‚İ’ï¿½ï¿½ï¿½
 				return 0;
 			} else if (map_cache.map[i].compressed == 0) {
 				int size = map_cache.map[i].xs * map_cache.map[i].ys;
@@ -1966,17 +1964,17 @@ int map_cache_read(struct map_data *m) {
 				CALLOC(m->gat, char, m->xs * m->ys);
 				fseek(map_cache.fp, map_cache.map[i].pos, SEEK_SET);
 				if (fread(m->gat, 1, size,map_cache.fp) == size) {
-					// ¬Œ÷
+					// ï¿½ï¿½ï¿½ï¿½
 					return 1;
 				} else {
-					// ‚È‚º‚©ƒtƒ@ƒCƒ‹Œã”¼‚ªŒ‡‚¯‚Ä‚é‚Ì‚Å“Ç‚İ’¼‚µ
+					// ï¿½È‚ï¿½ï¿½ï¿½ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ã”¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½Ì‚Å“Ç‚İ’ï¿½ï¿½ï¿½
 					m->xs = 0;
 					m->ys = 0;
 					FREE(m->gat);
 					return 0;
 				}
 			} else if (map_cache.map[i].compressed == 1) {
-				// ˆ³kƒtƒ‰ƒO=1 : zlib
+				// ï¿½ï¿½ï¿½kï¿½tï¿½ï¿½ï¿½O=1 : zlib
 				char *buf;
 				unsigned long dest_len;
 				int size_compress = map_cache.map[i].compressed_len;
@@ -1986,7 +1984,7 @@ int map_cache_read(struct map_data *m) {
 				MALLOC(buf, char, size_compress);
 				fseek(map_cache.fp, map_cache.map[i].pos, SEEK_SET);
 				if (fread(buf, 1, size_compress,map_cache.fp) != size_compress) {
-					// ‚È‚º‚©ƒtƒ@ƒCƒ‹Œã”¼‚ªŒ‡‚¯‚Ä‚é‚Ì‚Å“Ç‚İ’¼‚µ
+					// ï¿½È‚ï¿½ï¿½ï¿½ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ã”¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½Ì‚Å“Ç‚İ’ï¿½ï¿½ï¿½
 					printf("fread error\n");
 					m->xs = 0;
 					m->ys = 0;
@@ -1997,7 +1995,7 @@ int map_cache_read(struct map_data *m) {
 				dest_len = m->xs * m->ys;
 				decode_zip(m->gat, &dest_len, buf, size_compress);
 				if (dest_len != map_cache.map[i].xs * map_cache.map[i].ys) {
-					// ³í‚É‰ğ“€‚ªo—ˆ‚Ä‚È‚¢
+					// ï¿½ï¿½ï¿½ï¿½ï¿½É‰ğ“€‚ï¿½ï¿½oï¿½ï¿½ï¿½Ä‚È‚ï¿½
 					m->xs = 0;
 					m->ys = 0;
 					FREE(m->gat);
@@ -2023,18 +2021,18 @@ static int map_cache_write(struct map_data *m) {
 
 	for(i = 0; i < map_cache.head.nmaps; i++) {
 		if (!strcmp(m->name, map_cache.map[i].fn)) {
-			// “¯‚¶ƒGƒ“ƒgƒŠ[‚ª‚ ‚ê‚Îã‘‚«
+			// ï¿½ï¿½ï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îã‘ï¿½ï¿½
 			if (map_cache.map[i].compressed == 0) {
 				len_old = map_cache.map[i].xs * map_cache.map[i].ys;
 			} else if (map_cache.map[i].compressed == 1) {
 				len_old = map_cache.map[i].compressed_len;
 			} else {
-				// ƒTƒ|[ƒg‚³‚ê‚Ä‚È‚¢Œ`®‚È‚Ì‚Å’·‚³‚O
+				// ï¿½Tï¿½|ï¿½[ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½Ä‚È‚ï¿½ï¿½`ï¿½ï¿½ï¿½È‚Ì‚Å’ï¿½ï¿½ï¿½ï¿½O
 				len_old = 0;
 			}
 			if (map_read_flag >= READ_FROM_BITMAP_COMPRESSED) { // if (map_read_flag == 2) { ???
-				// ˆ³k•Û‘¶
-				// ‚³‚·‚ª‚É‚Q”{‚É–c‚ê‚é–‚Í‚È‚¢‚Æ‚¢‚¤–‚Å
+				// ï¿½ï¿½ï¿½kï¿½Û‘ï¿½
+				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É‚Qï¿½{ï¿½É–cï¿½ï¿½ï¿½é–ï¿½Í‚È‚ï¿½ï¿½Æ‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				MALLOC(write_buf, char, m->xs * m->ys * 2);
 				len_new = m->xs * m->ys * 2;
 				encode_zip(write_buf, &len_new, m->gat, m->xs * m->ys);
@@ -2047,11 +2045,11 @@ static int map_cache_write(struct map_data *m) {
 				map_cache.map[i].compressed_len = 0;
 			}
 			if (len_new <= len_old) {
-				// ƒTƒCƒY‚ª“¯‚¶‚©¬‚³‚­‚È‚Á‚½‚Ì‚ÅêŠ‚Í•Ï‚í‚ç‚È‚¢
+				// ï¿½Tï¿½Cï¿½Yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½Ì‚ÅêŠï¿½Í•Ï‚ï¿½ï¿½ï¿½ï¿½È‚ï¿½
 				fseek(map_cache.fp, map_cache.map[i].pos, SEEK_SET);
 				fwrite(write_buf, 1, len_new, map_cache.fp);
 			} else {
-				// V‚µ‚¢êŠ‚É“o˜^
+				// ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½êŠï¿½É“oï¿½^
 				fseek(map_cache.fp, map_cache.head.filesize, SEEK_SET);
 				fwrite(write_buf, 1, len_new, map_cache.fp);
 				map_cache.map[i].pos = map_cache.head.filesize;
@@ -2067,10 +2065,10 @@ static int map_cache_write(struct map_data *m) {
 			return 0;
 		}
 	}
-	// “¯‚¶ƒGƒ“ƒgƒŠ‚ª–³‚¯‚ê‚Î‘‚«‚ß‚éêŠ‚ğ’T‚·
+	// ï¿½ï¿½ï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß‚ï¿½ï¿½êŠï¿½ï¿½ï¿½Tï¿½ï¿½
 	for(i = 0; i < map_cache.head.nmaps; i++) {
 		if (map_cache.map[i].fn[0] == 0) {
-			// V‚µ‚¢êŠ‚É“o˜^
+			// ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½êŠï¿½É“oï¿½^
 			if (map_read_flag >= READ_FROM_BITMAP_COMPRESSED) { // if (map_read_flag == 2) { ???
 				MALLOC(write_buf, char, m->xs * m->ys * 2);
 				len_new = m->xs * m->ys * 2;
@@ -2099,12 +2097,12 @@ static int map_cache_write(struct map_data *m) {
 		}
 	}
 
-	// ‘‚«‚ß‚È‚©‚Á‚½
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß‚È‚ï¿½ï¿½ï¿½ï¿½
 	return 1;
 }
 
 /*==========================================
- * ƒ}ƒbƒv1–‡“Ç‚İ‚İ
+ * ï¿½}ï¿½bï¿½v1ï¿½ï¿½ï¿½Ç‚İï¿½ï¿½ï¿½
  *------------------------------------------
  */
 static int map_readmap(int m, char *fn, char *alias, int *map_cache_count) {
@@ -2115,7 +2113,7 @@ static int map_readmap(int m, char *fn, char *alias, int *map_cache_count) {
 	size_t size;
 
 	if (map_cache_read(&map[m])) {
-		// ƒLƒƒƒbƒVƒ…‚©‚ç“Ç‚İ‚ß‚½
+		// ï¿½Lï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç‚İï¿½ï¿½ß‚ï¿½
 		(*map_cache_count)++;
 	} else {
 		// read & convert fn
@@ -2139,7 +2137,7 @@ static int map_readmap(int m, char *fn, char *alias, int *map_cache_count) {
 			p = (struct gat_1cell*)(gat + y_xs * 20 + 14);
 			for(x = 0; x < xs; x++) {
 				if (wh != NO_WATER && p->type == 0) {
-					// …ê”»’è
+					// ï¿½ï¿½ï¿½ê”»ï¿½ï¿½
 					map[m].gat[x + y_xs] = (p->high[0] > wh || p->high[1] > wh || p->high[2] > wh || p->high[3] > wh) ? 3 : 0;
 				} else {
 					map[m].gat[x + y_xs] = p->type;
@@ -2182,7 +2180,7 @@ static int map_readmap(int m, char *fn, char *alias, int *map_cache_count) {
 }
 
 /*==========================================
- * “Ç‚İ‚Şmap‚ğíœ‚·‚é
+ * ï¿½Ç‚İï¿½ï¿½ï¿½mapï¿½ï¿½ï¿½íœï¿½ï¿½ï¿½ï¿½
  *------------------------------------------
  */
 void map_delmap(char *mapname) {
@@ -2216,7 +2214,7 @@ void map_delmap(char *mapname) {
 }
 
 /*==========================================
- * ‘S‚Ä‚Ìmapƒf[ƒ^‚ğ“Ç‚İ‚Ş
+ * ï¿½Sï¿½Ä‚ï¿½mapï¿½fï¿½[ï¿½^ï¿½ï¿½ï¿½Ç‚İï¿½ï¿½ï¿½
  *------------------------------------------
  */
 int map_readallmap(void) {
@@ -2225,7 +2223,7 @@ int map_readallmap(void) {
 	int map_cache_count = 0;
 	char *p;
 
-	// ƒ}ƒbƒvƒLƒƒƒbƒVƒ…‚ğŠJ‚­
+	// ï¿½}ï¿½bï¿½vï¿½Lï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½ï¿½
 	if (map_read_flag >= READ_FROM_BITMAP)
 		map_cache_open(map_cache_file);
 
@@ -2234,7 +2232,7 @@ int map_readallmap(void) {
 	        map_read_flag == CREATE_BITMAP ? " (Generating Map Cache)" :
 	        map_read_flag >= READ_FROM_BITMAP ? " (Reading Map Cache)" : ""));
 
-	// æ‚É‘S•”‚Ìƒƒbƒv‚Ì‘¶İ‚ğŠm”F
+	// ï¿½ï¿½ï¿½É‘Sï¿½ï¿½ï¿½Ìƒï¿½bï¿½vï¿½Ì‘ï¿½ï¿½İ‚ï¿½ï¿½mï¿½F
 	for(i = 0; i < map_num; i++)
 	{
 		map[i].alias = NULL;
@@ -2290,7 +2288,7 @@ int map_readallmap(void) {
 }
 
 /*==========================================
- * “Ç‚İ‚Şmap‚ğ’Ç‰Á‚·‚é
+ * ï¿½Ç‚İï¿½ï¿½ï¿½mapï¿½ï¿½ï¿½Ç‰ï¿½ï¿½ï¿½ï¿½
  *------------------------------------------
  */
 void map_addmap(char *mapname) {
@@ -2466,7 +2464,7 @@ static int map_ip_set_ = 0;
 static int char_ip_set_ = 0;
 
 /*==========================================
- * İ’èƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚Ş
+ * ï¿½İ’ï¿½ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Ç‚İï¿½ï¿½ï¿½
  *------------------------------------------
  */
 int map_config_read(char *cfgName) {
@@ -2602,14 +2600,6 @@ int map_config_read(char *cfgName) {
 					memset(npc_language, 0, sizeof(npc_language));
 					strcpy(npc_language, w2);
 					//printf("Set NPC language to '%s'.\n", npc_language);
-				}
-			} else if (strcasecmp(w1, "npc_charset") == 0) {
-				remove_ended_comments(w2); // remove ended comments
-				if (strlen(w2) > 19) {
-					printf(CL_YELLOW "Warning: " CL_RESET "NPC charset not changed (bad value detected : len > 19)\n");
-				} else {
-					memset(npc_charset, 0, sizeof(npc_charset));
-					strcpy(npc_charset, w2);
 				}
 			} else if (strcasecmp(w1, "console") == 0) {
 				remove_ended_comments(w2); // remove ended comments
@@ -2776,7 +2766,7 @@ static int cleanup_sub(struct block_list *bl, va_list ap) {
 }
 
 /*==========================================
- * mapII—¹ˆ—
+ * mapï¿½Iï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  *------------------------------------------
  */
 void do_final(void) {
@@ -2898,54 +2888,6 @@ void map_helpscreen() {
 	return;
 }
 
-#if ENABLE_NLS
-/* GetText init
- *
- * GetText is used for NPCs internationalisation.
- * It may also be used later for help, etc...
- *
- * NOTE: setlocale() does not work on cygwin. However we
- * can use putenv() to force the locale. We'll will
- * still prefer using setlocale() if available since
- * it's the standard way of changing locale.
- */
-void gettext_language_init() {
-#ifndef WITH_C99
-	char env_var[50]; // max -> 'LC_CTYPE=' (9) + strlen(npc_language) (6) + NULL (1)
-#endif
-	char *cur_locale;
-	cur_locale = setlocale(LC_ALL, ""); // use local definition instead of "C" definition
-	cur_locale = setlocale(LC_CTYPE, ""); // use local definition instead of "C" definition
-	//cur_locale = setlocale(LANG, ""); // LANG can not be changed by setlocale function.
-
-#ifndef WITH_C99
-	sprintf(env_var, "LANG=%s", npc_language);
-	putenv(env_var);
-	sprintf(env_var, "LC_ALL=%s", npc_language);
-	putenv(env_var);
-	sprintf(env_var, "LC_CTYPE=%s", npc_language); // for string comparaison, char sorting...
-	putenv(env_var);
-#endif
-
-#if !defined __CYGWIN || defined WITH_C99
-	cur_locale = setlocale(LC_ALL, npc_language);
-	if (!cur_locale) {
-		printf("Could not change system locale to : " CL_WHITE "%s" CL_RESET ".\n", npc_language);
-		printf("This locale is probably not in your localedef.\n");
-		return;
-	}
-	printf("Initializing GetText to use language " CL_WHITE "%s" CL_RESET ".\n", cur_locale);
-	cur_locale = setlocale(LC_CTYPE, npc_language); // for string comparaison, char sorting...
-#else /* NOT __CYGWIN */
-	printf("Forcing GetText to use language " CL_WHITE "%s" CL_RESET ".\n", npc_language);
-#endif /* NOT __CYGWIN */
-
-	bindtextdomain("npcs", "locales");
-	bind_textdomain_codeset("npcs", npc_charset);
-	textdomain("npcs");
-}
-#endif /* ENABLE_NLS */
-
 /*======================================================
  * Map-Server Init and Command-line Arguments [Valaris]
  *------------------------------------------------------
@@ -3023,9 +2965,6 @@ void do_init(const int argc, char *argv[])
 #ifndef TXT_ONLY
 	sql_config_read(SQL_CONF_NAME); // set 'db_use_sqldbs' flag
 #endif /* not TXT_ONLY */
-#if ENABLE_NLS
-	gettext_language_init();
-#endif /* ENABLE_NLS */
 #ifdef DYNAMIC_LINKING
 	/* load all addons */
 	addons_enable_all();
@@ -3084,7 +3023,7 @@ void do_init(const int argc, char *argv[])
 	// Begin loading scripts
 	do_init_npc();
 
-	npc_event_do_oninit(); // npc‚ÌOnInitƒCƒxƒ“ƒgÀs
+	npc_event_do_oninit(); // npcï¿½ï¿½OnInitï¿½Cï¿½xï¿½ï¿½ï¿½gï¿½ï¿½s
 
 	if (battle_config.pk_mode)
 		printf(CL_WHITE "Server: " CL_RESET "The server is running in " CL_RED "PK Mode" CL_RESET ".\n");
