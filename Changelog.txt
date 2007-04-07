@@ -11,6 +11,7 @@
 Date	Added
 
 04/06/2007
+	* Removed: msg_freya_fr.conf (Outdated/etc) [Tsuyuki]
 	* Changed: Script list is now contained in the /npc/ folder, and not map_freya.conf [Tsuyuki]
 	* Changed: Moved mapflags to the /npc/ folder [Tsuyuki]
 	* Updated: Nameless Island warper to warp a character to different maps based on day/night [Tsuyuki]
