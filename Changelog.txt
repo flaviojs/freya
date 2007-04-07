@@ -11,6 +11,7 @@
 Date	Added
 
 04/07/2007
+	* Fixed: Job restrictions for elemental armors [Tsuyuki]
 	* Fixed: Samurai Specter card now works against other players as well as mobs [Tsuyuki]
 	* Removed: athena-start and start scripts (Use start-freya.sh) [Tsuyuki]
 	* Replaced: .bat win32 server launchers with a new single one [Tsuyuki]
