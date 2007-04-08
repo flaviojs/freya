@@ -10,6 +10,10 @@
 
 Date	Added
 
+04/08/2007
+	* Added: 'Male' and 'Female' script constants [Tsuyuki]
+	* Added: equippitem script command synonym of isequipped (jA script compatibility) [Tsuyuki]
+
 04/07/2007
 	* Note: Gunslinger/Ninja classes are complete with the exception of skills [Tsuyuki]
 	 - Currently skills are simply placeholders and do nothing when used/etc
