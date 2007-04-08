@@ -1,0 +1,5614 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Lighthalzen Town NPCs	Author: A Lot of People
+//--------------------------------------------------------------
+// Revision History: v2.2
+//--------------------------------------------------------------
+//	1.0 First version (Placed temporary names) [erKURITA]
+//	1.1 Implemented some misc NPCs [MasterOfMuppets]
+//	1.2 Another load of NPCs, scripted by Kargha [MasterOfMuppets]
+//	1.3 More Town NPCs [Musashiden]
+//	1.4 Added a BIG load of Lighthalzen NPCs [musashiden]
+//	1.5 Fixed some typos + coordinates [Musashiden]
+//	1.6 Implemented some more misc NPCs and the second entrance to Biolabs [MasterOfMuppets]
+//	1.7 Removed Duplicates [Silent]
+//	1.8 Removed Duplicates [Toms]
+//	1.9 Fixed some bugs and added some new NPCs (Credits to Au{R}oN) [Tsuyuki]
+//	2.0 Updated Donation NPC (Credits to MasterOfMuppets) [Tsuyuki]
+//	2.1 Added a bunch of missing NPCs (Thanks to $ephiroth) [Tsuyuki]
+//	2.2 Merged in Lighthalzen quests file [Tsuyuki]
+//	 - Adds in Mobster Security, Biolabs Entrance Quest, Pickpocket Quest, Friendship Quest
+//--------------------------------------------------------------
+// Additional Notes: * Official-certified *
+//--------------------------------------------------------------
+
+
+lighthalzen.gat,198,285,5	script	Jiwon	862,{
+
+	mes "[Jiwon]";
+	mes "I think we're really";
+	mes "fortunate to be able to";
+	mes "live in such a beautiful";
+	mes "and peaceful city like this.";
+	next;
+	mes "[Jiwon]";
+	mes "It's just so nice to";
+	mes "have this pleasant weather,";
+	mes "these lush gardens and to";
+	mes "meet all of these kind people.";
+	mes "Lighthalzen is like Asgard";
+	mes "in Midgard, heaven on earth~";
+	close;
+}
+
+lighthalzen.gat,220,244,3	script	Samnang	863,{
+
+	mes "[Samnang]";
+	mes "*Sigh...*";
+	mes "It gets harder for me";
+	mes "to move around as I get";
+	mes "older. That's understandable";
+	mes "for an elderly person, right?";
+	next;
+	mes "[Samnang]";
+	mes "Just the other day, these";
+	mes "hoodlums in black suits";
+	mes "were yelling at me to get out";
+	mes "of their way. But of course,";
+	mes "I didn't move quickly enough.";
+	mes "So what did they do to me?";
+	next;
+	mes "[Samnang]";
+	mes "They punched me.";
+	mes "Right in the womb!";
+	mes "I know that i'm not";
+	mes "pregnant, but that's";
+	mes "besides the point. Never hit";
+	mes "a lady, especially an old one!";
+	close;
+}
+
+lighthalzen.gat,261,112,3	script	Ruth	862,{
+
+	mes "[Ruth]";
+	mes "Sweety, isn't it";
+	mes "nice to be together";
+	mes "under this beautiful";
+	mes "sunlight? It's perfect";
+	mes "for our date. Ahhhh~";
+	next;
+	mes "[Ruth]";
+	mes "I'm so happy to be";
+	mes "with you. I feel like";
+	mes "I'm just melting with";
+	mes "happiness. Ohm I love";
+	mes "you so much, Oyoung.";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "Whoa...";
+	mes "This couple is";
+	mes "really headed for";
+	mes "Cloud 9, aren't they?";
+	close;
+}
+
+lighthalzen.gat,259,108,7	script	Oyoung	869,{
+
+	mes "[Oyoung]";
+	mes "Girl, you look like";
+	mes "you're comin' down with";
+	mes "the love bug. But there's";
+	mes "only one prescription for";
+	mes "this ailment, ooooh yeah...";
+	next;
+	mes "[Oyoung]";
+	mes "You need yo'self";
+	mes "your daily dose of";
+	mes "vitamin O-YOUNG.";
+	mes "And your lips look like";
+	mes "they got vitamin deficiency.";
+	mes "i better take care of that~";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "Sweet Sister!";
+	mes "I don't know what's";
+	mes "more mind boggling--";
+	mes "The fact that he used";
+	mes "that line or the fact that";
+	mes "it's actually working...";
+	close;
+}
+
+lighthalzen.gat,233,121,4	script	Kariya	72,{
+
+	mes "[Kariya]";
+	mes "I think \"Lighthalzen\" is";
+	mes "supposed to mean \"crest of";
+	mes "light\", though i hear that this";
+	mes "city was actually named after";
+	mes "somebody. Who knows for sure?";
+	next;
+	mes "[Kariya]";
+	mes "Still, It's a fitting";
+	mes "name for the wealthiest";
+	mes "and most luxurious city in";
+	mes "all the Schwaltzvalt Republic.";
+	mes "So how do you like this place?";
+	close;
+}
+
+lighthalzen.gat,233,82,4	script	Sung	716,{
+
+	mes "[Sung]";
+	mes "When i grow up, I want";
+	mes "to become such a great";
+	mes "person that they'll make";
+	mes "a statue of me, just like";
+	mes "those statues over there.";
+	next;
+	mes "[Sung]";
+	mes "Then people would be like,";
+	mes "\"Hey yo. That statue. That";
+	mes "guy must have been great!\"";
+	mes "Just thinking about that";
+	mes "makes me feel so good!";
+	next;
+	mes "[Sung]";
+	mes "That's it. I'm gonna";
+	mes "grow up as soon as i can.";
+	mes "Ooh, and i better grow tall";
+	mes "and handsome so my statue";
+	mes "will be even more awesome.";
+	mes "Yeah. Yeah, good idea, Sung...";
+	close;
+}
+
+lighthalzen.gat,89,73,4	script	Sameer	854,{
+
+	mes "[Sameer]";
+	mes "There are too many";
+	mes "loving couples in this city.";
+	mes "Cuddling and kissing and";
+	mes "hugging and necking. It's...";
+	mes "It's utterly distasteful.";
+	next;
+	mes "[Sameer]";
+	mes "I can't believe the";
+	mes "indencenct I see everyday";
+	mes "near my own home. Don't";
+	mes "they know better than to be";
+	mes "so affectionate in places";
+	mes "where the public can see them?!";
+	next;
+	mes "[Sameer]";
+	mes "Fortunately for the";
+	mes "world, i'm a bulwark";
+	mes "of morality. In fact, I have";
+	mes "no need for a woman. All";
+	mes "I need are my ship models,";
+	mes "teen novels and dominos.";
+	next;
+	mes "[Sameer]";
+	mes "I'm a completely well";
+	mes "adjusted individual, which";
+	mes "is why the authorities should";
+	mes "listen to me when i tell them";
+	mes "to arrest couples for indecency!";
+	mes "Hand holding. Have they no shame!?";
+	close;
+}
+
+lighthalzen.gat,45,59,8	script	Janice	863,{
+
+	mes "[Janice]";
+	mes "Oh no, I think i got";
+	mes "lost again. The roads";
+	mes "here are so confusing!";
+	mes "I've lived here for such";
+	mes "a long time and I still";
+	mes "can't find my way around...";
+	close;
+}
+
+lighthalzen.gat,66,94,5	script	Elmer Keays	866,{
+
+	mes "[Elmer Keays]";
+	mes "Walking side by side";
+	mes "with you like this reminds";
+	mes "me of the old days. Back";
+	mes "then, everyone was jealous";
+	mes "that i had such a beautiful";
+	mes "woman by my side. Heh heh~";
+	next;
+	mes "[Elmer Keays]";
+	mes "You're still the most";
+	mes "precious sight to these";
+	mes "old eyes, my dear. I'm";
+	mes "really lucky to be with you.";
+	close;
+}
+
+lighthalzen.gat,65,94,4	script	Margie Keays	863,{
+
+	mes "[Margie Keays]";
+	mes "Oh darling, the";
+	mes "weather is so nice";
+	mes "and pleasant today.";
+	mes "I'm really glad we";
+	mes "decided to go take";
+	mes "a walk together~";
+	close;
+}
+
+lighthalzen.gat,78,120,3	script	Maivi	862,{
+
+	mes "[Maivi]";
+	mes "...";
+	next;
+	mes "[Maivi]";
+	mes "...";
+	mes ".....";
+	next;
+	mes "[Maivi]";
+	mes "Ah...";
+	mes "I just had the nicest";
+	mes "nap, This nice weather";
+	mes "never fails to relax me.";
+	mes "The air here is so clean,";
+	mes "not like that Einbroch~";
+	next;
+	mes "[Maivi]";
+	mes "This clean, pristine";
+	mes "environment is all thanks";
+	mes "to the Rekenber Corporation.";
+	mes "It's incredible what they can";
+	mes "do with technology now, isn't";
+	mes "it? Ahhh, it's so peaceful~";
+	close;
+}
+
+lighthalzen.gat,226,210,3	script	Nannan	86,{
+
+	mes "[Nannan]";
+	mes "You know, I always thought";
+	mes "that all Alchemists were bookish,";
+	mes "scholarly types, their faces always";
+	mes "buried in books and studying. But";
+	mes "I managed to find one who doesn't";
+	mes "fit that nerdy stereotype at all.";
+	next;
+	mes "[Nannan]";
+	mes "This guy, What's-his-face,";
+	mes "Broncher, is always wasting";
+	mes "his time drinking. I guess he";
+	mes "discovered the secret of turning";
+	mes "water into Grade A booze. But";
+	mes "at least he's not the stuffy type.";
+	next;
+	mes "[Nannan]";
+	mes "I don't know how much";
+	mes "help he'd be to an aspiring";
+	mes "Alchemist, but in my opinion,";
+	mes "the man is a fully fledged";
+	mes "genius! At least, compared";
+	mes "to a street guy like me...";
+	close;
+}
+
+lighthalzen.gat,230,182,4	script	Klaubis	866,{
+
+	mes "[Klaubis]";
+	mes "Excuse me, but are you";
+	mes "a tourist? Well, welcome";
+	mes "to Lighthalzen! This city";
+	mes "has everything we need,";
+	mes "but it can be a little too";
+	mes "quiet and uneventful here.";
+	next;
+	menu "Have you lived in here long?",live,"I agree.",agree,"Have you heard about the serial killer?",killer;
+
+
+live:
+	mes "[Klaubis]";
+	mes "Yes, our family has";
+	mes "lived in this city for a";
+	mes "long time, starting with";
+	mes "my great grandfather. Let's";
+	mes "see, my family's been here";
+	mes "for about two hundred years.";
+	next;
+	mes "[Klaubis]";
+	mes "You'd be surprised how";
+	mes "many people stay in their";
+	mes "hometowns. Even if you do";
+	mes "leave, though, you can always";
+	mes "come back. It wouldn't be your";
+	mes "hometown if you couldn't, right?";
+	close;
+
+agree: 
+	mes "[Klaubis]";
+	mes "Yes, the atmosphere";
+	mes "can get pretty listless";
+	mes "around here. But still,";
+	mes "there are plenty of nice";
+	mes "sights to enjoy here in";
+	mes "Lighthalzen, so look around~";
+	close;
+
+killer:
+	mes "[Klaubis]";
+	mes "You mean the Serial";
+	mes "Axe Murderer? I thought";
+	mes "that was an old ghost story.";
+	mes "Hm. I think that lady inside";
+	mes "the Weapon Shop would";
+	mes "know more about that tale...";
+	close;
+
+}
+
+lighthalzen.gat,232,156,4	script	Sigmund	866,{
+
+	mes "[Sigmund Ting]";
+	mes "You know what i noticed?";
+	mes "The guards at the border";
+	mes "to the slum seem distracted";
+	mes "sometimes. I made use of one";
+	mes "of their less attentive moments";
+	mes "and basically jumped the fence!";
+	next;
+	mes "[Sigmund Ting]";
+	mes "But once i was in the";
+	mes "Slums, I was pretty bored.";
+	mes "There really isn't much to";
+	mes "do there. Which makes me";
+	mes "Wonder... Why guard it?";
+	close;	
+
+}
+
+lighthalzen.gat,190,134,5	script	Joyce	862,{
+
+	mes "[Joyce]";
+	mes "I can sense your";
+	mes "longing look within";
+	mes "the depths of my heart,";
+	mes "beating faster and faster";
+	mes "with a feverish passion~";
+	close;	
+
+}
+
+lighthalzen.gat,191,134,5	script	Dan Song	869,{
+
+	mes "[Dan Song]";
+	mes "Those eyes of yours...";
+	mes "So pure and so deep,";
+	mes "like glimmering pools";
+	mes "of light. So, so beautiful...";
+	close;	
+
+}
+
+lighthalzen.gat,115,159,5	script	Collins	866,{
+
+	mes "[Collins]";
+	mes "I really wish that my";
+	mes "son will be able to join";
+	mes "the Rekenber Corporation.";
+	mes "They certainly provide the";
+	mes "best jobs in Lighthalzen.";
+	next;
+	mes "[Collins]";
+	mes "Although they're a large,";
+	mes "major corporation, it's";
+	mes "almost impossible to get";
+	mes "emplyed by them. How";
+	mes "do people get hired there";
+	mes "in the first place anyway?";
+	close;	
+
+}
+
+lighthalzen.gat,77,157,5	script	Villagomez	866,{
+
+	mes "[Villagomez]";
+	mes "I just step out to get";
+	mes "a haircut and now i'm";
+	mes "lost. Boy oh boy, I hope";
+	mes "i don't keep my family";
+	mes "waiting. *Sigh...*";
+	close;	
+
+}
+
+lighthalzen.gat,125,68,5	script	Kemp	97,{
+
+	mes "[Kemp]";
+	mes "Have you ever seen the";
+	mes "people who work in that big";
+	mes "corporation over there? I think";
+	mes "their employees are all a bit";
+	mes "off kilter for some reason.";
+	next;
+	mes "[Kemp]";
+	mes "I haven't been there";
+	mes "myself, but something";
+	mes "strange is happening with";
+	mes "all the people who work there.";
+	close;	
+
+}
+
+lighthalzen.gat,138,50,8	script	Mauro	847,{
+
+	mes "[Mauro]";
+	mes "The youth in this city";
+	mes "have no appreciation for";
+	mes "their elders. i've worked";
+	mes "so hard to help build this";
+	mes "city for so many years and";
+	mes "this is the thanks i get?";
+	next;
+	mes "[Mauro]";
+	mes "Bah! If it weren't for";
+	mes "us, Lighthalzen wouldn't";
+	mes "be as prosperous as it is";
+	mes "today! Those kids don't";
+	mes "know that they owe their";
+	mes "lives of luxury to us...";
+	close;	
+
+}
+
+lighthalzen.gat,132,103,5	script	Sefith	734,{
+
+	mes "[Sefith]";
+	mes "Good looks. Intelligence.";
+	mes "Excellent manners. A strong,";
+	mes "manly chin and overpowering,";
+	mes "piercing eyes. Perfectly balanced";
+	mes "passion and charisma. All the";
+	mes "good things that ladies want.";
+	next;
+	mes "[Sefith]";
+	mes "But Enough about me. Let's";
+	mes "discuss how sorry i should";
+	mes "feel for any other man living";
+	mes "in Lighthalzen. They don't hold";
+	mes "a candle to my studliness~";
+	close;	
+
+}
+
+lighthalzen.gat,239,64,5	script	Jade	862,{
+
+	mes "[Jade]";
+	mes "I've heard that there's a";
+	mes "strange kingdom out there";
+	mes "that's basically ruled by";
+	mes "magic and swords, where";
+	mes "adventurers are enlisted";
+	mes "for the greater good.";
+	next;
+	mes "[Jade]";
+	mes "So are you from";
+	mes "Rune-Midgard?";
+	mes "What do you think";
+	mes "of our city with its";
+	mes "advanced technology";
+	mes "and economy? Huh...";
+	next;
+	mes "[Jade]";
+	mes "Someday, I'd like";
+	mes "to go visit the land";
+	mes "where you came from.";
+	mes "It sounds so fantastic";
+	mes "and romantic in a way...";
+	close;	
+
+}
+
+lighthalzen.gat,205,208,3	script	Greedy Looking Man	853,{
+
+	mes "[Khramptd]";
+	mes "The land around here";
+	mes "is some pretty expensive";
+	mes "property. Yes, it's perfect";
+	mes "for building my awesome palace!";
+	mes "I don't have enough funds at the";
+	mes "moment, but the day will come~";
+	close;
+
+}
+
+lhz_in02.gat,34,213,4	script	Maggie	91,{
+
+	mes "[Maggie]";
+	mes "Sure, I sell a lot";
+	mes "of flowers here, but";
+	mes "the lease that this city";
+	mes "makes me pay cuts into";
+	mes "my profits. It's almost not";
+	mes "worth renting this property.";
+	next;
+	mes "[Maggie]";
+	mes "I pay such a ridiculous";
+	mes "amount for the lease and the";
+	mes "laws here won't let me raise";
+	mes "the price of my flowers. Why";
+	mes "are the city officials so greedy?";
+	close;
+
+}
+
+lighthalzen.gat,202,94,5	script	Wallace	847,{
+
+	mes "[Wallace]";
+	mes ".....";
+	mes "That lady, working";
+	mes "for that one company";
+	mes "Kafra, Mafra or whatever";
+	mes "She certainly is very charming.";
+	next;
+	mes "[Wallace]";
+	mes "Now, if I were";
+	mes "thirty years younger...";
+	mes "Wait! I'm a rich and powerful";
+	mes "man. I could ask her out now.";
+	mes "Hm? What's that look for?";
+	close;
+
+}
+
+lighthalzen.gat,182,102,3	script	Lucius	866,{
+
+	mes "[Lucius]";
+	mes "Hello youngster~";
+	mes "Would you like to";
+	mes "make a donation";
+	mes "to help the hungry?";
+	next;
+	menu "Sure.",s_Sure,"No, thanks.",-;
+	mes "[Lucius]";
+	goto s_Cancel;
+
+s_Cancel:
+	mes "I understand. Still,";
+	mes "keep in mind that when";
+	mes "you give from your heart,";
+	mes "you will be rewarded tenfold.";
+	mes "Though I admit, the benefits";
+	mes "aren't always readily apparent.";
+	close;
+
+s_Sure:
+	mes "[Lucius]";
+	mes "Now, you can donate 1 to";
+	mes "30,000 zeny that will be used";
+	mes "to support the poor and feed";
+	mes "starving children. If you wish";
+	mes "to cancel, please enter '0'.";
+	next;
+	input @zenydonate;
+	mes "[Lucius]";
+	if (@zenydonate == 0) goto s_Cancel;
+	if (@zenydonate > 30000) goto L_Donation1;
+	if (Zeny < @zenydonate) goto L_Donation2;
+	set Zeny,Zeny - @zenydonate;
+	set $donatedzeny,$donatedzeny + @zenydonate;
+	mes "Thank you so much";
+	mes "for your " + @zenydonate + " zeny donation.";
+	mes "I promise that your money";
+	mes "will be put to good use in";
+	mes "benefiting the poor and needy.";
+	next;
+	mes "[Lucius]";
+	mes "So far, I've received";
+	mes "a total of " + $donatedzeny + " zeny in";
+	mes "donations. I'm glad to see";
+	mes "that there are still kinda and";
+	mes "generous people in the world.";
+	if ($donatedzeny > 259999) goto L_Donation3;
+	close;
+
+	L_Donation1:
+		mes "I'm sorry but you can't";
+		mes "donate more than 30,000";
+		mes "zeny. Please choose another";
+		mes "number.";
+		close;
+
+	L_Donation2:
+		mes "I'm sorry but you do";
+		mes "not have as much zeny";
+		mes "as you wish to donate.";
+		mes "Please come back when you";
+		mes "do!";
+		close;
+
+	L_Donation3:
+		next;
+		mes "[Lucius]";
+		mes "This should be enough";
+		mes "to send to the Poor Relief";
+		mes "Organization. Please accpet";
+		mes "this small gift as a token of";
+		mes "my gratitude, adventurer. Bless";
+		mes "you, youngster and take care.";
+		getitem 603,1;
+		getitem 12016,1;
+		set $donatedzeny,0;
+		close;
+}
+
+lighthalzen.gat,147,105,3	script	Laqumet	869,{
+
+	mes "[Laqumet]";
+	mes "Sure, manliness is quite";
+	mes "attractive, but I think women";
+	mes "appreciate a guy who could";
+	mes "sympathize and talk with them";
+	mes "a little more. Don't you agree?";
+	next;
+	mes "[Laqumet]";
+	mes "I might not be like Sefith,";
+	mes "but I guess I've got a cute";
+	mes "smile, a good personality and";
+	mes "I'm a dandy to boo. Hopefull,";
+	mes "my honesty and loyalty will";
+	mes "help me find someone good.";
+	close;
+
+}
+
+lhz_in02.gat,241,172,8	script	Hotel Employee#02	868,{
+
+	mes "[Hotel Employee]";
+	mes "Please use the stairs";
+	mes "at the northern end to";
+	mes "go downstairs so that you";
+	mes "can go to the Front Desk.";
+	mes "Thank you and I hope that";
+	mes "you enjoy your stay here.";
+	close;
+
+}
+
+lhz_in02.gat,210,189,2	script	Christopher Michael	849,{
+
+	mes "[Christopher Michael]";
+	mes "OoooOoh~";
+	mes "Soooo comfortable";
+	mes "Don't want to wake up.";
+	mes "Don't want to get up.";
+	mes "Ever again. OoOoooh...";
+	close;
+
+}
+
+lhz_in02.gat,201,181,6	script	Safwat Fahmy	853,{
+
+	mes "[Safwat Fahmy]";
+	mes "This hotel is nice";
+	mes "and comfortable, but";
+	mes "to be quite frank, the";
+	mes "drinks here are horrible.";
+	mes "They're unfit for being";
+	mes "drunk by men such as myself.";
+	next;
+	mes "[Safwat Fahmy]";
+	mes "If this is the best hotel,";
+	mes "I expect them to provide me";
+	mes "with the best alcohol. When";
+	mes "I stay at a hotel, that's what";
+	mes "I want. To spend the entire";
+	mes "day not being sober.";
+	next;
+	mes "[Safwat Fahmy]";
+	mes "It looks like that";
+	mes "today I'll be heading";
+	mes "out ot to the bar again...";
+	mes "I just wish there were";
+	mes "some place quieter to drink.";
+	close;
+
+}
+
+lhz_in02.gat,251,212,2	script	Hotel Employee#03	868,{
+
+	mes "[Hotel Employee]";
+	mes "This is the Couple Suite.";
+	mes "A single can also check";
+	mes "in here, but our hotel will";
+	mes "prioritize couples when";
+	mes "assigning this room.";
+	close;
+
+}
+
+lhz_in02.gat,229,217,2	script	Tanoue	863,{
+
+	mes "[Tanoue]";
+	mes "This chair looks";
+	mes "very nice, but it really";
+	mes "chills my bottom. Brr...!";
+	mes "It's mighty uncomfortable!";
+	next;
+	mes "[Tanoue]";
+	mes "You know what the";
+	mes "perfect chair would";
+	mes "be like? It would be";
+	mes "plush and have electronic";
+	mes "massage and heating controls...";
+	close;
+
+}
+
+lhz_in02.gat,209,277,4	script	Ben Allen	84,{
+
+	mes "[Ben Allen]";
+	mes "Aaahhh Oooooh~";
+	mes "It's sooooo comfy~";
+	mes "The air's so fresh and";
+	mes "this couch is so plush...";
+	mes "Why can't home be like this?";
+	next;
+	mes "[Ben Allen]";
+	mes "I've been in those other";
+	mes "hotels and let me tell you,";
+	mes "this place is the best ever.";
+	mes "After a night's sleep over";
+	mes "here, I feel like a new man!";
+	close;
+
+}
+
+lhz_in02.gat,221,276,4	script	Harp	869,{
+
+	mes "[Harp]";
+	mes "Oh sweet jiminy...";
+	mes "That Kafra Lady is so hot.";
+	mes "What a body. And those glasses.";
+	mes "I just gotta ask her out somehow.";
+	next;
+	mes "[Harp]";
+	mes "Hm, but what should";
+	mes "I do? A love letter? Naw,";
+	mes "that's kind of outdated.";
+	mes "Argh, I can't think! Just";
+	mes "looking at her makes me feel";
+	mes "so happy! Praise be to Kafra!";
+	close;
+
+}
+
+lhz_in02.gat,238,275,4	script	Hotel Employee#04	869,{
+
+	mes "[Hotel Employee]";
+	mes "\"Hospitality with a smile";
+	mes "and total devotion to your";
+	mes "comfort.\" That's our motto";
+	mes "in the Royal Dragon Hotel.";
+	mes "Please inquire at the front";
+	mes "desk if you wish to check in.";
+	close;
+
+}
+
+lhz_in02.gat,247,275,4	script	Hotel Employee#05	868,{
+
+	mes "[Hotel Employee]";
+	mes "Welcome to the";
+	mes "Royal Dragon Hotel Bar.";
+	mes "How about a nice night";
+	mes "cap before going to bed?";
+	next;
+	mes "[Hotel Employee]";
+	mes "If you're looking";
+	mes "for a friend, you";
+	mes "can almost always";
+	mes "make one in this bar.";
+	mes "Alcohol certainly is the";
+	mes "grease for social gears.";
+	close;
+
+}
+
+lhz_in02.gat,271,281,2	script	Citizen#01	47,{
+
+	mes "[Hachi]";
+	mes "Oh yeah. I love-love-love";
+	mes "bars. If I don't come here";
+	mes "for the booze, then I'm here";
+	mes "for all these beautiful ladies.";
+	next;
+	mes "[Hachi]";
+	mes "Weird. It's the very first";
+	mes "time I've tried this place's";
+	mes "rum, but doesn't it taste like";
+	mes "pure sexiness to you? Huh...";
+	mes "Oh well, back to schmoozin'";
+	mes "with all the hot chicks~";
+	close;
+
+}
+
+lhz_in02.gat,277,285,4	script	Bartender	61,{
+
+	mes "[Duff]";
+	mes "Hey, you're from";
+	mes "Rune-Midgard, right?";
+	mes "Please make yourself";
+	mes "at home while you're here";
+	mes "in Lighthalzen and have";
+	mes "yourself a good time.";
+	close;
+
+}
+
+lhz_in02.gat,281,280,6	script	Customer#01	816,{
+
+	mes "[Rona]";
+	mes "I hate it when guys";
+	mes "just sidle up and sort";
+	mes "of just skip Steps One";
+	mes "and Two. And before you";
+	mes "get all weird, Step Three";
+	mes "is \"Ask for my phone number.\"";
+	next;
+	mes "[Rona]";
+	mes "I would just really";
+	mes "appreciate it if one";
+	mes "nice boy would just";
+	mes "talk to me for real.";
+	close;
+
+}
+
+lhz_in02.gat,287,282,4	script	Customer#02	853,{
+
+	mes "[Greenfield]";
+	mes "I don't believe it...";
+	mes "This unluck streak";
+	mes "will never end, will it?";
+	mes "I lost all my Apples";
+	mes "playing Dice today.";
+	mes "Again. Oh man...";
+	next;
+	mes "[Greenfield]";
+	mes "Okay. Okay.";
+	mes "If I just keep";
+	mes "playing, eventually";
+	mes "I'll win. I mean, that's";
+	mes "the way the odds work, right?";
+	mes "Even when they're against me...";
+	close;
+
+}
+
+lighthalzen.gat,123,212,4	script	Merpi	700,{
+
+	mes "[Merpi]";
+	mes "Isn't the weather nice";
+	mes "today? All this sunlight";
+	mes "will dry these clothes";
+	mes "quickly and give them";
+	mes "a fresh, lovely scent.";
+	next;
+	mes "[Merpi]";
+	mes "Oh, an adventurer from";
+	mes "Rune-Midgarts, are you?";
+	mes "How do you like our city?";
+	mes "If you have any questions,";
+	mes "feel free to ask me anything.";
+	next;
+	menu "Well, I have nothing to ask...",-,"Any news or rumors?",L_rumors,"I like laundry too.",L_laundry;
+	mes "[Merpi]";
+	mes "Oh, really?";
+	mes "Well, if you've traveled";
+	mes "all over the world, maybe";
+	mes "you've found a place just";
+	mes "like Lighthalzen, so maybe";
+	mes "you're already comfortable?";
+	close;
+	
+L_rumors:
+	mes "[Merpi]";
+	mes "Well, things have";
+	mes "been pretty peaceful";
+	mes "for the past few years.";
+	mes "The only rumor floating";
+	mes "around is about some";
+	mes "weird axe murderer...";
+	close;
+
+L_laundry:
+	mes "[Merpi]";
+	mes "Oh, that's wonderful!";
+	mes "I so love doing hand";
+	mes "laundry, though I'm not";
+	mes "quite sure why. Oh well~";
+	close;
+}
+
+lighthalzen.gat,297,239,3	script	Pilia	818,{
+
+	mes "[Pilia]";
+	mes "Hmm? Oh, I'm sorry,";
+	mes "but my little brother";
+	mes "just won't stop crying.";
+	mes "I'm sorry if we're loud...";
+	close;
+}
+
+lighthalzen.gat,296,239,3	script	Berru	706,{
+
+	mes "[Berru]";
+	mes "Daddy...! Waaaaah~!";
+	mes "I wanna see my daddy!";
+	emotion 28;
+	next;
+	mes "[Pilia]";
+	mes "Berru, I don't";
+	mes "think Daddy's coming";
+	mes "home tonight. Come on,";
+	mes "we should go to bed.";
+	next;
+	mes "[Berru]";
+	mes "No, I'm not gonna";
+	mes "sleep 'til Daddy gets";
+	mes "home! He said he'll";
+	mes "bring us candy tonight!";
+	mes "You go sleep first, Pilia!";
+	emotion 7;
+	next;
+	mes "[Pilia]";
+	mes "*Sigh...*";
+	mes "Where's out Daddy?";
+	mes "He said he found a";
+	mes "good job, but we haven't";
+	mes "heard from him since then...";
+	close;
+}
+
+lighthalzen.gat,312,234,2	script	Beggar	777,{
+
+	mes "[Beggar]";
+	mes "Please...";
+	mes "My child is starving...";
+	mes "Would you give me";
+	mes "some money?";
+	next;
+	menu "Give him some money.",L_give,"Ignore him.",-;
+	mes "[" + strcharinfo(0) + "]";
+	mes "...";
+	mes "......";
+	close;
+
+L_give:
+	if (Zeny < 50) goto L_zeny;
+	mes "[" + strcharinfo(0) + "]";
+	mes "Here you go,";
+	mes "take this.";
+	set Zeny,Zeny-50;
+	next;
+	mes "[Beggar]";
+	mes "Thank you so much.";
+	mes "I have nothing to offer you";
+	mes "in exchange, but I can share";
+	mes "a story with you and impart";
+	mes "some of the wisdom I've";
+	mes "learned over the years.";
+	emotion 15;
+	next;
+	mes "[Beggar]";
+	mes "Anger. People deal with";
+	mes "it in different ways. Some";
+	mes "suppress it. Some relish it.";
+	mes "Some fear being angry. Now,";
+	mes "to be simple, let's say there";
+	mes "are two kinds of anger.";
+	next;
+	mes "[Beggar]";
+	mes "The first is the kind that";
+	mes "isn't so productive. More of";
+	mes "a frustration that you can let";
+	mes "go. Someone cut you off on the";
+	mes "freeway or a friend innocently";
+	mes "forgot your birthday? No Biggie.";
+	next;
+	mes "[Beggar]";
+	mes "Don't let this kind of";
+	mes "anger get to you or you'll";
+	mes "look like a looser. Think of";
+	mes "the big picture and if you're";
+	mes "still upset, vent appropriatly.";
+	mes "Be honest without hurting anyone.";
+	next;
+	mes "[Beggar]";
+	mes "The second kind of anger is";
+	mes "righteous anger. You've been";
+	mes "wronged and need some form";
+	mes "of retribution. Remember to";
+	mes "make appropriate confontrations";
+	mes "and don't misdirect your rage.";
+	next;
+	mes "[Beggar]";
+	mes "Getting into a fight with";
+	mes "righteous anger, say to protect";
+	mes "someone dear to you, will make";
+	mes "you a hero. Fighting with anger";
+	mes "born of frustration will make you";
+	mes "a bully. Know the difference.";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes ". . . . . . . . . . . .";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes ". . . . . . . . . . . .";
+	mes ". . . . . . . . . . . .";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes ". . . . . . . . . . . .";
+	mes ". . . . . . . . . . . .";
+	mes ". . . . . . . . . . . .";
+	next;
+	mes "[Beggar]";
+	mes "What's wrong?";
+	mes "It might be a lot";
+	mes "to take in, I know.";
+	close;
+
+L_zeny:
+	mes "[Beggar]";
+	mes "You don't seem to have";
+	mes "enough zeny.";
+	close;
+
+}
+
+lighthalzen.gat,311,194,3	script	Reuben	870,{
+
+	mes "[Reuben]";
+	mes "Someday...";
+	mes "Someday I just gotta";
+	mes "become a train conductor";
+	mes "and just get outta here.!";
+	mes "I really hate this place!";
+	next;
+	mes "[Reuben]";
+	mes "Wh-whoa...!";
+	mes "Did you just hear";
+	mes "me talk to myself?";
+	mes "Crud! Don't be so nosy!";
+	emotion 6;
+	close;
+}
+
+lighthalzen.gat,306,324,3	script	Shengwen	870,{
+
+	mes "[Shengwen]";
+	mes "Am I just getting";
+	mes "paranoid? I really";
+	mes "think that some of";
+	mes "the people I know";
+	mes "are dissapearing";
+	mes "for no good reason!";
+	next;
+	mes "[Shengwen]";
+	mes "I mean, all of my close";
+	mes "friend are all right,";
+	mes "but I'm starting not to see";
+	mes "certain acquaintances and";
+	mes "familiar faces. Maybe I'm";
+	mes "just thinking too much...";
+	close;
+}
+
+lhz_in03.gat,26,167,4	script	Shayna	850,{
+
+	mes "[Shayna]";
+	mes "*Sigh...*";
+	mes "Oh, you poor";
+	mes "darling girl...";
+	close;
+}
+
+lhz_in01.gat,134,45,2	script	Cenku Dekdam#Cenku_Dekdam	869,{
+
+	mes "[Cenku Dekdam]";
+	mes "Man, if you were";
+	mes "gonna take this whole";
+	mes "city and sell it, what";
+	mes "do you think Lighthalzen's";
+	mes "price tag would be, eh?";
+	next;
+	mes "[Cenku Dekdam]";
+	mes "I mean, this city";
+	mes "is basically just made";
+	mes "of money. Money is what";
+	mes "makes this city such a nice";
+	mes "and pleasant place to live.";
+	close;
+}
+
+lighthalzen.gat,330,276,3	script	Nun	79,{
+
+	mes "[Angela]";
+	mes "Greetings, adventurer.";
+	mes "I'm Angela, a social";
+	mes "worker for the Poor";
+	mes "Relief Organization.";
+	next;
+	mes "[Angela]";
+	mes "I've noticed that the";
+	mes "people living here have";
+	mes "extremely bad health and";
+	mes "it's not just because of";
+	mes "their circumstances.";
+	next;
+	mes "[Angela]";
+	mes "I've filed a report";
+	mes "to my superiors, but";
+	mes "they haven't sent me";
+	mes "a response yet for some";
+	mes "reason. I'm starting to get";
+	mes "a little worried about this...";
+	close;
+}
+
+lighthalzen.gat,337,296,3	script	Employee	867,{
+
+	mes "[Rekenber Employee]";
+	mes "Greetings. As part of our";
+	mes "effort to relieve the poor,";
+	mes "Rekenber is providing job";
+	mes "opportunities targeted for";
+	mes "citizens of the slum areas.";
+	next;
+	mes "[Rekenber Employee]";
+	mes "You can choose to work";
+	mes "from home, or undergo a";
+	mes "little bit of training for more";
+	mes "professional positions. This";
+	mes "is a great chance to make a";
+	mes "difference... and some money~";
+	emotion 21;
+	close;
+}
+
+lhz_in01.gat,134,38,2	script	Bankri Kun#Bankri_Kun	86,{
+
+	mes "[Bankri Kun]";
+	mes "Must work...";
+	mes "Must focus...";
+	mes "Resist sleepiness...";
+	mes "Why do I keep coming";
+	mes "here? ugh, h-horrible.";
+	next;
+	mes "[Bankri Kun]";
+	mes "hey youngster. You wanted";
+	mes "adventuring advice? Okay.";
+	mes "Um. Hm. Always. Brush.";
+	mes "Your teeth. Brush them";
+	mes "everyday. Oh, and don't";
+	mes "forget to floss, either.";
+	next;
+	mes "[Bankri Kun]";
+	mes "Now it's time for me";
+	mes "to head back to work.";
+	mes "I'll see you later, kid.";
+	mes "Sorry my advice was so";
+	mes "lame-- I couldn't think of";
+	mes "anything else to tell you.";
+	close;
+}
+
+lhz_in01.gat,139,40,2	script	Enoz	53,{
+
+	mes "[Enoz]";
+	mes "So, the novel I ordered from";
+	mes "the Rune-Midgarts Kingdom";
+	mes "just recently arrived. It's real";
+	mes "good, by the guy who wrote";
+	mes "\"Roda Frog Adventure\"";
+	mes "years ago. Remember?";
+	next;
+	mes "[Enoz]";
+	mes "Anyway, this new book,";
+	mes "\"Where the Red Plant Grows\"";
+	mes "is up for the Yggdrasilberry";
+	mes "Award. I... I don't know why";
+	mes "I was compelled to share that";
+	mes "with you. Seriously, I don't...";
+	close;
+}
+
+lhz_in01.gat,124,28,2	script	Ellette	66,{
+
+	mes "[Ellette]";
+	mes "...";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "Excuse me.";
+	next;
+	mes "[Ellette]";
+	mes "...";
+	mes "......";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "Hello?";
+	next;
+	mes "[Ellette]";
+	mes "...Oh! Everyone!";
+	mes "I just completed";
+	mes "another one! Hooray!";
+	next;
+	mes "[All other Employees]";
+	mes "Wh-what?!";
+	mes "No way, not again!";
+	next;
+	mes "[Leekal]";
+	mes "Are you even human?";
+	mes "You must have some";
+	mes "secret for that much";
+	mes "productivity. It's weird...";
+	next;
+	mes "[Ellette]";
+	mes "Oh, come on.";
+	mes "Maybe I'm a little";
+	mes "good at this, but there's";
+	mes "no way I can beat Cenku.";
+	close;
+}
+
+lhz_in01.gat,125,40,2	script	Dowbow Ryuei#Dowbow_Ryuei	843,{
+
+	mes "[Dowbow Ryuei]";
+	mes "Just out of, oh I dunno,";
+	mes "curiosity, which word do";
+	mes "you like better?\"Uber-Cool\"";
+	mes "or \"Reality?\" Pick one~";
+	next;
+	menu "Uber-Cool",-,"Reality",L_reality;
+	mes "[Dowbow Ryuei]";
+	mes "Oh yeah? Me too!";
+	mes "Yeah, we got the same";
+	mes "outlook on life. If you don't";
+	mes "mind, I'd like to shake";
+	mes "your hand, adventurer.";
+	emotion 21;
+	close;
+
+L_reality:
+	mes "[Dowbow Ryuei]";
+	mes "Reality, eh?";
+	mes "Well, I agree that";
+	mes "being realistic has its";
+	mes "perks, I'm more of a dreamer.";
+	close;
+}
+
+lhz_in01.gat,125,46,2	script	Leekal	849,{
+
+	mes "[Leekal]";
+	mes "So... Very broke.";
+	mes "Why did I spend so much";
+	mes "money on wine, women and";
+	mes "song? I regret it all, all the";
+	mes "pleasure I've had this month.";
+	mes "Yes, it was too much pleasure.";
+	next;
+	mes "[Ninjose]";
+	mes "That's what happens";
+	mes "when you're irresponsible";
+	mes "with your money. You really";
+	mes "should read this \"Anybody";
+	mes "Can Be Rich\" book.";
+	close;
+}
+
+lhz_in01.gat,116,53,6	script	Ninjose	841,{
+
+	mes "[Ninjose]";
+	mes "At long last, I've finally";
+	mes "bought my own home. You";
+	mes "should invest your money for";
+	mes "your future too! Read this,";
+	mes "\"Anybody Can Be Rich!\"";
+	mes "It's such a great book.";
+	close;
+}
+
+lhz_in01.gat,116,39,6	script	Kejulle Rekenber#Kejulle_Rekenber	822,{
+
+	mes "[Kejulle Rekenber]";
+	mes "Hm? Sure, my last name";
+	mes "is Rekenber and that's the";
+	mes "same name as our chairman,";
+	mes "but that's just a coincidence.";
+	mes "I'm merely a normal employee.";
+	mes "Yeah, no special treatment...";
+	close;
+}
+lhz_in01.gat,110,40,2	script	Jorjerro	89,{
+
+	mes "^0000AAThis man here";
+	mes "is motionless,";
+	mes "and for all intents";
+	mes "and purposes, is";
+	mes "soundly asleep.^000000";
+	close;
+}
+
+lhz_in01.gat,116,45,6	script	Joshua	704,{
+
+	mes "[Joshua]";
+	mes "What am I doing here?";
+	mes "Waiting for my dream";
+	mes "woman to fall into my lap,";
+	mes "what else does it look like?";
+	next;
+	mes "[Joshua]";
+	mes "Tall, blond, creamy";
+	mes "complexion and smooth";
+	mes "skin. That's right. Come";
+	mes "right to Joshua, babes.";
+	mes "I got my pheremone spray";
+	mes "on and I'm ready to cruise~";
+	close;
+}
+
+lhz_in01.gat,93,45,4	script	Researcher#02	865,{
+
+	mes "[Researcher]";
+	mes "You know what's weird?";
+	mes "Why do they use blue and";
+	mes "red wires when they make";
+	mes "bombs? There's so many";
+	mes "others you could use, like";
+	mes "pink or yellow or or green...";
+	close;
+}
+
+lhz_in01.gat,286,226,2	script	Secretary Slierre#Secretary_Slierre	831,{
+
+	mes "[Sueii Slierre]";
+	mes "Excuse me, but you are";
+	mes "not allowed to be in here.";
+	mes "Please visit the Help Desk";
+	mes "if you have any questions about";
+	mes "the Rekenber Corporation.";
+	mes "Thank you for cooperating.";
+	close;
+}
+
+lhz_in03.gat,32,162,2	script	Crippled Girl#Crippled_Girl	53,{
+
+	mes "[Crippled Girl]";
+	mes "...";
+	mes "......";
+	mes "*Sigh...*";
+	next;
+	menu "Hello, how are you?",-;
+	mes "[Crippled Girl]";
+	mes "Oh, I'm fine,";
+	mes "thanks for asking.";
+	mes "I'm just waiting for";
+	mes "somebody, that's all.";
+	close;
+}
+
+lighthalzen.gat,346,263,2	script	Elder	846,{
+
+	mes "[Elder]";
+	mes "Predators are always";
+	mes "on the lookout for easy";
+	mes "prey. Be careful, youngster!";
+	mes "You look innocent enough";
+	mes "to become a victim in the city.";
+	next;
+	menu "About Lighthalzen",L_lighthalzen,"About the Slum",L_slum,"????",-;
+	mes "[Elder]";
+	mes "Well, if you need any";
+	mes "help around here or have";
+	mes "any questions, come back";
+	mes "and ask me. I get the feeling";
+	mes "that we'll probably meet again.";
+	close;
+
+L_lighthalzen:
+	mes "[Elder]";
+	mes "Lighthalzen might seem";
+	mes "like a splendid city at first,";
+	mes "but you'll learn quickly that";
+	mes "the poor are segregated from";
+	mes "the rich and treated as less";
+	mes "than second class citizens.";
+	next;
+	mes "[Elder]";
+	mes "At first, separation between";
+	mes "the rich and poor districts was";
+	mes "subtly enforced. They built the";
+	mes "railroad right between the two";
+	mes "districts to make it easier for";
+	mes "the rich to ignore the poor.";
+	next;
+	mes "[Elder]";
+	mes "But now they even have";
+	mes "guards to make sure that";
+	mes "the poor can't bother the";
+	mes "rich. I'm pretty sure that";
+	mes "this segregation won't be";
+	mes "ending anytime soon...";
+	next;
+	mes "[Elder]";
+	mes "Now, I've heard that the";
+	mes "Rekenber Corporation is";
+	mes "actually providing jobs for";
+	mes "people in the slums. Beggars";
+	mes "can't be choosers, so I'm sure";
+	mes "these jobs aren't that great.";
+	close;
+
+L_slum:
+	mes "[Elder]";
+	mes "To live in the slum is to";
+	mes "be familiar with poverty,";
+	mes "disease, condemnation";
+	mes "and contempt. But we're all";
+	mes "still people, you know, so let";
+	mes "go of any of your misgivings.";
+	next;
+	mes "[Elder]";
+	mes "We're struggling just";
+	mes "to survive here. At the";
+	mes "very least, please respect";
+	mes "that. It's a fact that the";
+	mes "people in the rich district";
+	mes "seem to keep forgetting.";
+	close;
+}
+
+lighthalzen.gat,326,249,5	script	Grinnel	870,{
+
+	mes "[Grinnel]";
+	mes "You know the men in";
+	mes "black suits? Boy, did";
+	mes "I get a scare! They actually";
+	mes "tracked me down to ask me";
+	mes "all these weird questions!";
+	next;
+	mes "[Grinnel]";
+	mes "They kept wanting to";
+	mes "know if I had ever met";
+	mes "anyone from the Rekenber";
+	mes "Corporation, if I've ever been";
+	mes "Uptown, that sort of thing. They";
+	mes "really scared the crap out of me.";
+	next;
+	mes "[Grinnel]";
+	mes "Man, living in the";
+	mes "slums is such a drag.";
+	mes "Not only is life rough,";
+	mes "but all sorts of people";
+	mes "think they can push you";
+	mes "around. I hate Lighthalzen...";
+	close;
+}
+
+lhz_in03.gat,192,19,2	script	Haggar	855,{
+
+	mes "[Haggar]";
+	mes "Whiskey!";
+	mes "I need me some";
+	mes "hard liquor now!";
+	next;
+	mes "[Haggar]";
+	mes "Wha--? I didn't";
+	mes "order this stinkin'";
+	mes "rum! I want a man's";
+	mes "drink! Gimme whisky!";
+	Close;
+}
+
+lhz_in03.gat,193,25,2	script	Bartender#01	61,{
+
+	mes "[Tony]";
+	mes "Hey man, I know this";
+	mes "joint is a dive, pretty much";
+	mes "on the verge of bein' totally";
+	mes "ghetto, but we're proud to";
+	mes "have the best rum in all of";
+	mes "Rune-Midgard. It's true~";
+	next;
+	mes "[Tony]";
+	mes "Just a sip of this";
+	mes "beautiful drink and";
+	mes "you're on top of the";
+	mes "world! But it's best";
+	mes "for helpin' yah relax";
+	mes "and forget your worries.";
+	next;
+	mes "[Tony]";
+	mes "I don't take to bein'";
+	mes "a poet, but I do know";
+	mes "this. Our rum has the";
+	mes "sweet sweet flavor of";
+	mes "loneliness. You really";
+	mes "oughta try it when you can	.";
+	close;
+}
+
+lhz_in03.gat,185,20,6	script	Bad Drunk#Bad_Drunk	869,{
+
+	mes "[Garry]";
+	mes "Hey! Hey you...!";
+	mes "D'you wanna, you";
+	mes "wanna hear me tell";
+	mes "you a joke?! It goes...";
+	mes "Um, it goes like this...";
+	next;
+	mes "[Garry]";
+	mes "Hey riddle middle,";
+	mes "the cat and th--";
+	mes "No! No, damn it!";
+	mes "That's a song!";
+	mes "No, wait, that's";	
+	mes "not a song either...";
+	close;
+}
+
+lhz_in03.gat,186,29,6	script	Bad Drunk#Bad_Drunk2	869,{
+
+	mes "[Bonse]";
+	mes "*Hiccup* I loooove";
+	mes "this rum! I caught a cold";
+	mes "once and one glass made";
+	mes "it go away! 'Course, I slept";
+	mes "for a week too, but that doesn't";
+	mes "matter! Pshaw! Science...";
+	next;
+	mes "[Bonse]";
+	mes "Oh, the flavor is just";
+	mes "so clean, but it's also";
+	mes "got a bit of a kick. I don't";
+	mes "know how to describe it.";
+	mes "Its the taste of happiness?";
+	mes "I'm too drunk to even tell!";
+	close;
+}
+
+lhz_in03.gat,192,93,2	script	City Girl#City_Girl	862,{
+
+	mes "[Lanko]";
+	mes "Oh, I'm only here";
+	mes "working as a waitress";
+	mes "to help my father.";
+	mes "This job is so tiring, but";
+	mes "it's nice to see people so";
+	mes "relaxed and having a good time.";
+	next;
+	mes "[Lanko]";
+	mes "When I get some time";
+	mes "off, I'm going to explore";
+	mes "Lighthalzen and see all that";
+	mes "there is to see. But for now,";
+	mes "it doesn't look like we've got";
+	mes "any real shortage of drunks...";
+	close;
+}
+
+lhz_in03.gat,189,87,4	script	Drunken Man#04	869,{
+
+	mes "[Enku]";
+	mes "*Sob* I just got";
+	mes "dumped! Yeah, I thought";
+	mes "we were gonna get married,";
+	mes "but obviously I was wrong!";
+	mes "Damn it Sheryline! I loved you!";
+	next;
+	mes "[Enku]";
+	mes "I usually don't care for";
+	mes "drinking, especiallys stuff";
+	mes "like gin or rum, but today,";
+	mes "this stuff tastes just like";
+	mes "my misery. This is all the";
+	mes "comfort I need, you hear?!";
+	close;
+
+}
+
+lhz_in03.gat,183,82,6	script	Drunken Man#05	870,{
+
+	mes "[Linus]";
+	mes "After ten years";
+	mes "of marriage. My";
+	mes "wife divorced me...";
+	next;
+	mes "[Linus]";
+	mes "So I guess there's no";
+	mes "place for me but here for";
+	mes "now. I don't know what it is,";
+	mes "but the rum is really good";
+	mes "today. Like, it's the flavor";
+	mes "of relaxing, joyous relief~";
+	close;
+
+}
+
+lhz_in03.gat,180,83,6	script	Citizen#02	86,{
+
+	mes "[Mitchell]";
+	mes "You know, everyone";
+	mes "is different, but I think";
+	mes "humans are similar enough";
+	mes "that we can all meaningfully";
+	mes "connect on some level, right?";
+	next;
+	mes "[Mitchell]";
+	mes "Sure, a rich person might";
+	mes "have different problem than";
+	mes "a poor person, but the point";
+	mes "is, they've both got problems!";
+	mes "Pain, pleasure, sadness, joy.";
+	mes "Those link us all together.";
+	next;
+	mes "[Mitchell]";
+	mes "So try not to be picky";
+	mes "about who's your pal and";
+	mes "who's not. We all need";
+	mes "somebody to be with, right?";
+	close;
+
+}
+
+lhz_in03.gat,176,85,4	script	Citizen#Citizen2	869,{
+
+	mes "[Dique]";
+	mes "One of the things I look";
+	mes "forward to during my day";
+	mes "is the drink I enjoy right";
+	mes "after work. It's the most";
+	mes "relaxing thing in the world.";
+	next;
+	mes "[Dique]";
+	mes "Of course, there's";
+	mes "more to life than just";
+	mes "hanging out in pubs and";
+	mes "bars. The thing is, in my";
+	mes "case, pubs and bars are";
+	mes "all I happen to need~";
+	close;
+
+}
+
+lhz_in03.gat,184,38,2	script	Loudmouth	55,{
+
+	mes "[Loudmouth]";
+	mes "Do you know who I am?!";
+	mes "Just look at this peg leg.";
+	mes "I was in the Comodo War,";
+	mes "Ski Troop division! I lost my";
+	mes "leg to earn your freedom!";
+	next;
+	mes "[Loudmouth]";
+	mes "H-hey! What's that";
+	mes "look for? What, you";
+	mes "don't believe me?!";
+	close;
+
+}
+
+lhz_in01.gat,114,181,3	script	Representative::LhzRep	71,{
+
+	mes "[Representative]";
+	mes "Greetings, and welcome";
+	mes "to the Rekenber Corporation.";
+	mes "How may I be of service today?";
+	next;
+	menu "Building Information.",-;
+
+loopback:
+	mes "[Representative]";
+	mes "Please tell me";
+	mes "which floor you'd like";
+	mes "to know more about.";
+	next;
+	menu "1F",s_1,"2F",s_2,"B1",s_B,"Cancel",-;
+
+	mes "[Representative]";
+	mes "We are always doing our";
+	mes "best to provide the best";
+	mes "services to our customers.";
+	mes "Remember that Rekenber";
+	mes "is the name you can trust.";
+	mes "Thank you and have a nice day.";
+	close;
+
+s_1:
+	mes "[Representative]";
+	mes "The ^3131FFRekenber Library^000000 can";
+	mes "be found at the end of the";
+	mes "left hallway. Our library is";
+	mes "a great resource of innovative";
+	mes "ideas and information for our";
+	mes "system development employees.";
+	next;
+	mes "[Representative]";
+	mes "The ^3131FFBall Room^000000, where";
+	mes "various official events are";
+	mes "usually held, can be accessed";
+	mes "through the right hallway.";
+	next;
+	goto loopback;
+
+s_2:
+	mes "[Representative]";
+	mes "Please use the stairs";
+	mes "located on both sides of";
+	mes "the Help Desk to go to the";
+	mes "Second Floor. The Second";
+	mes "Floor is mostly used for";
+	mes "administrative purposes.";
+	next;
+	mes "[Representative]";
+	mes "There, you can find";
+	mes "the ^3131FFConference Room^000000,";
+	mes "^3131FFSecretary Office^000000, the";
+	mes "^3131FFAuditorium^000000 and the";
+	mes "^3131FFChairman's Office^000000.";
+	next;
+	goto loopback;
+s_B:
+	mes "[Representative]";
+	mes "The first underground floor";
+	mes "is used by the ^3131FFRegenshirm^000000,";
+	mes "our laboratory affiliate. For";
+	mes "security reasons, this floor";
+	mes "is not accessible to visitors";
+	next;
+	goto loopback;
+
+}
+
+lhz_in01.gat,26,247,2	duplicate(LhzRep)	Representative	71
+
+lhz_in01.gat,173,28,4	script	Guard#01::LhzRekGuard	868,{
+
+	mes "[Guard]";
+	mes "This is a";
+	mes "restricted area.";
+	mes "Please keep clear";
+	mes "if you do not have";
+	mes "special authorization.";
+	mes "Thank you for your cooperating.";
+	close;
+
+}
+
+lhz_in01.gat,180,28,4	duplicate(LhzRekGuard)	Guard#03	868
+
+lhz_in01.gat,72,209,4	script	Guide#01	862,{
+
+	mes "[Lasoei]";
+	mes "Oh phooey.";
+	mes "The same customers";
+	mes "are always coming in,";
+	mes "day after day. Can it";
+	mes "get any less exciting?";
+	next;
+	mes "[Lasoei]";
+	mes "Oh...!";
+	mes "W-welcome~";
+	mes "C-can I help you";
+	mes "with anything?";
+	close;
+
+}
+
+lhz_in01.gat,72,195,8	script	Guide#02	90,{
+
+	mes "[Geonuii]";
+	mes "Greetings. This path";
+	mes "leads to the Library and";
+	mes "the Laboratory. Please be";
+	mes "aware that these places";
+	mes "are restricted from access";
+	mes "by the general public.";
+	close;
+
+}
+
+lhz_in01.gat,73,188,4	script	Guide#03	862,{
+
+	mes "[Bonnie]";
+	mes "Oh no...";
+	mes "Where did I put it?";
+	close;
+
+}
+
+lhz_in01.gat,34,226,4	script	Rekenber Guard#01	867,{
+
+	if (isequipped(2241)==1 && isequipped(2243)==1) goto s_Staff;
+	mes "[Rekenber Guard]";
+	mes "This is a restricted";
+	mes "area! Please show";
+	mes "some ID immediately!";
+	next;
+	menu "ID?",s_ID,"Cancel",-;
+
+	mes "[Rekenber Guard]";
+	mes "Unless you have special";
+	mes "authorization, nobody is";
+	mes "allowed into the Underground";
+	mes "Laboratory for security reasons.";
+	close;
+
+s_ID:
+	mes "[Rekenber Guard]";
+	mes "I don't know how you";
+	mes "adventurers do things in";
+	mes "Rune-Midgard, but over here";
+	mes "we have laws about trespassing!";
+	close;
+
+s_Staff:
+	mes "[Rekenber Guard]";
+	mes "^3131FF(Whoa, it's a member";
+	mes "of the staff)^000000 Good day!";
+	close2;
+	warp "lhz_in01.gat",37,225;
+	end;
+
+}
+
+lhz_in01.gat,19,129,0	script	LhzHiddenTrg1::LhzTrig	-1,1,1{
+
+OnTouch:
+	if (isequipped(2241)==1 && isequipped(2243)==1) goto s_Staff;
+	mes "[Rekenber Guard]";
+	mes "This area is restricted";
+	mes "to the public! Who are you";
+	mes "and how did you get in here?!";
+	mes "Hey, I need backup right away!";
+	close2;
+	warp "lhz_in01.gat",34,224;
+	end;
+
+s_Staff:
+	mes "[Rekenber Guard]";
+	mes "Keep your eyes open.";
+	mes "I've heard rumors that some";
+	mes "adventurers from Rune-Midgard";
+	mes "are trying to sneak into here!";
+	mes "I know the security here is";
+	mes "pretty much failsafe, but...";
+	close;
+
+}
+
+lhz_in01.gat,23,137,0	duplicate(LhzTrig)	LhzHiddenTrg2	-1,1,1
+
+lhz_in01.gat,24,131,2	duplicate(LhzTrig)	Rekenber Guard#02	867
+
+lhz_in01.gat,25,141,4	script	Regenschirm Guard	868,{
+
+	if (isequipped(2241)==1 && isequipped(2243)==1) goto s_Staff;
+	mes "[Regenschirm Guard]";
+	mes "This area is restricted";
+	mes "to the public! Who are you";
+	mes "and how did you get in here?!";
+	mes "Hey, I need backup right away!";
+	close2;
+	warp "lhz_in01.gat",34,224;
+	end;
+
+s_Staff:
+	mes "[Regenschirm Guard]";
+	mes "Do you wish to";
+	mes "go underground?";
+	next;
+	menu "Yes",s_Yes,"No",-;
+
+	mes "[Regenschirm Guard]";
+	mes "Thank you and";
+	mes "have a nice day.";
+	close;
+
+s_Yes:
+	if (isequipped(2657)==1) goto s_Auth;
+	mes "[Regenschirm Guard]";
+	mes "I'm sorry but I can't let";
+	mes "staff without proper autorization";
+	mes "pass. Only staff members with";
+	mes "Laboratory Passports are allowed";
+	mes "to enter the underground.";
+	close;
+
+s_Auth:
+	warp "lhz_dun01.gat",150,288;
+	end;
+
+}
+
+lhz_in02.gat,34,41,7	script	Arthur	849,{
+
+	mes "[Arthur]";
+	mes "The chairs here are";
+	mes "so not ergonomic. And";
+	mes "they're uncomfortable too!";
+	mes "But it's sooo cool inside this";
+	mes "bank and I just wanted to get";
+	mes "get away from all this heat...";
+	close;
+}
+
+lhz_in02.gat,28,39,3	script	Helen	703,{
+
+	mes "[Helen]";
+	mes "You know, maybe when";
+	mes "I grow up, i'll be a bank";
+	mes "clerk. That sounds liek a";
+	mes "really nice jobm, don't you";
+	mes "think? It's laid back and posh...";
+	close;
+}
+
+lhz_in02.gat,31,34,3	script	Tadem	847,{
+
+	mes "[Tadem]";
+	mes "I do so enjoy the";
+	mes "architectural structure";
+	mes "of this bank. It's quite";
+	mes "artistic with both classical";
+	mes "and modern elements. Would";
+	mes "you not agree? Fascinating";
+	close;
+}
+
+lhz_in02.gat,31,33,3	script	Gracie	863,{
+
+	mes "[Gracie]";
+	mes "Oh, it's so comfortable";
+	mes "in there~Though, why are";
+	mes "we inside the bank when";
+	mes "the bank services aren't even";
+	mes "working? Yes, we're standing,";
+	mes "but we're doing it in comfort";
+	next;
+	mes "[Gracie]";
+	mes "In fact, it's so";
+	mes "comfortable here,";
+	mes "I think I'll refuse to leave.";
+	mes "Though, I'm willing to change";
+	mes "my mind if you can find a place";
+	mes "that's even more comfortable.";
+	close;
+}
+
+lhz_in02.gat,34,22,8	script	Bank Clerk::1_st	755,{
+
+	mes "[Bank Clerk]";
+	mes "Due to some critical system";
+	mes "errors, all f the bank services";
+	mes "have been temporarily stopped.";
+	mes "We apologize for any inconvenience.";
+	mes "and appreciate your understanding.";
+	close;
+}
+
+lhz_in02.gat,21,25,9	duplicate(1_st)	Bank Clerk::2_nd	86
+lhz_in02.gat,21,38,9	duplicate(1_st)	Bank Clerk::3_th	86
+
+lhz_in02.gat,145,179,7	script	Togii::d1	849,{
+
+	mes "[Togii]";
+	mes "Ooo yeah";
+	mes "Goeas down smooth.";
+	mes "Morroc whiskey's the best!";
+	mes "*Hiccup*Whoam, this stuff";
+	mes "really works fast! Heh heh~";
+	close;
+}
+
+lhz_in02.gat,157,198,8	script	Healthy Looking Guy	85,{
+
+	mes "[Healthy Looking Guy]";
+	mes "Grrrrr! Leave me alone!";
+	mes "How many times do I have";
+	mes "to keep telling you? I've never";
+	mes "hoarded item upgrade materials!";
+	mes "I swear that i'm innocent!";
+	close;
+}
+
+lhz_in02.gat,155,201,7	script	Hinkley::d2	870,{
+
+	mes "[Hinkley]";
+	mes "Meh heh heh...";
+	mes "*Hiccup* Believe";
+	mes "it or notsh, I'm...";
+	mes "walkin on a...Air....";
+	mes "Nevah thought I could";
+	mes "b-be sho freee-eeee-eee~";
+	next;
+	mes "[Hinkley]";
+	mes "This guy";
+	mes "Is completely";
+	mes "hammered out";
+	mes "of his mind!";
+	close;
+}
+
+lhz_in02.gat,153,206,6	script	Milette::d3	853,{
+
+	mes "[Milette]";
+	mes "Let me go!";
+	mes "Let me GO!!!";
+	mes "LET ME GO!!!";
+	mes "I didn't do nuthin'";
+	mes "wrong! I'm innocent!";
+	mes "*Hic-Hic-Hiccup...*";
+	next;
+	mes "[Milette]";
+	mes "What's wrong with";
+	mes "drinking and singing";
+	mes "in the street, huh?";
+	mes "Is it a crime to have";
+	mes " a beautiful tenor vice?!";
+	mes "Get me outta this joint!";
+	close;
+}
+
+lhz_in02.gat,147,222,4	script	Officer Guo::off_guo	85,{
+
+	mes "[Officer Guo]";
+	mes "Tell me...!";
+	mes "TELL ME...!!";
+	mes "Admit you did it!!!";
+	next;
+	mes "[Suspect]";
+	mes "Damn it!";
+	mes "I keep telling";
+	mes "you I'm not a guilty!";
+	next;
+	mes "[Officer Guo]";
+	mes "*Sigh...*";
+	next;
+	mes "[Suspect]";
+	mes "You are wasting your";
+	mes "time. Just let me go.";
+	next;
+	mes "[Officer Guo]";
+	mes "So...";
+	mes "How's your mother?";
+	next;
+	mes "[Suspect]";
+	mes "That's none of";
+	mes "your business!";
+	mes "She's fine, i guess.";
+	next;
+	mes "[Officer Guo]";
+	mes "When was the last";
+	mes "time you've seen her?";
+	next;
+	mes "[Suspect]";
+	mes "I just told you,";
+	mes "that's none of";
+	mes "your business....!";
+	next;
+	mes "[Officer Guo]";
+	mes "You know, mothers";
+	mes "throughout the animal";
+	mes "kingdom instinctively";
+	mes "care for their young.";
+	mes "Humans are no exception.";
+	mes "Yours must be worried to death.";
+	next;
+	mes "[Suspect]";
+	mes "...";
+	mes "Man...";
+	mes "You're starting";
+	mes "to weird me out.";
+	next;
+	mes "[Officer Guo]";
+	mes "Funny thing about humans,";
+	mes "though. It seems to be their";
+	mes "nature to lie, even when they";
+	mes "know they'll be caught. But";
+	mes "like all animals, they";
+	mes "instinctively fear pain...";
+	next;
+	mes "[Suspect]";
+	mes "N-no,no...";
+	mes "You gotta be...";
+	mes "You're bluffing.";
+	mes "Right?";
+	next;
+	mes "[Officer Guo]";
+	mes "NO.";
+	mes "You're bluffing.";
+	mes "Tell me...";
+	mes "TELL ME...!!!";
+	mes "Admit you did it!!";
+	close;
+}
+
+lhz_in02.gat,142,221,8	duplicate(off_guo)	Suspect::susp_guo	870
+
+lhz_in01.gat,14,28,3	script	Banquet Staff	109,{
+
+	mes "[Banquet Staff]";
+	mes "This Banquet Hall is used";
+	mes "to hold events such as dinner";
+	mes "parties with partners, clients";
+	mes "and other associates, and press";
+	mes "conferences. Of course, there's";
+	mes "nothing going on right now.";
+	next;
+	mes "[Banquet Staff]";
+	mes "Sometimes peace and quiet";
+	mes "is a welcome change of pace,";
+	mes "but right now I'm feeling quite";
+	mes "bored. I think I would rather";
+	mes "be busy than twiddling my";
+	mes "thumbs, to tell the truth.";
+	close;
+}
+
+lhz_in01.gat,43,52,3	script	Luccet#party	703,{
+
+	mes "[Luccet]";
+	mes "Shhhh! Hey, my brother's";
+	mes "'it,' so I gotta find a place";
+	mes "to hide! Wait, would you just";
+	mes "stand really silly? I could";
+	mes "just hide behind you! No?";
+	mes "Nuts! Olly olly oxen free!";
+	close;
+}
+
+lhz_in01.gat,28,33,7	script	Hanccet#party	706,{
+
+	mes "[Hanccet]";
+	mes "Man... I hate being ''it!";
+	mes "I'm horrible at this game!";
+	mes "Alright, okay, if I were my";
+	mes "sister Luccet, where would";
+	mes "I think I would not look for";
+	mes "me? Of course...! The sewers!";
+	close;
+}
+
+lhz_in01.gat,21,50,6	script	Annette#party	91,{
+
+	mes "[Annette]";
+	mes "I've heard that the";
+	mes "Rekenber Banquet Hall";
+	mes "is also used to hold weddings.";
+	mes "That must be so wonderful~";
+	next;
+	mes "[Annette]";
+	mes "Even if it is more expensive,";
+	mes "I'd want to have my wedding";
+	mes "here. Marriage is only once";
+	mes "in a lifetime, ideally, so I'd";
+	mes "want to make mine the most";
+	mes "memorable experience.";
+	close;
+}
+
+lhz_in01.gat,129,54,1	script	Mereth	869,{
+
+	mes "^3131ff*Shhhhhhzzzz*";
+	mes "*Shhhhhhzzzz*";
+	next;
+	mes "[Mereth]";
+	mes "Shhhh...";
+	mes "Aaaaaahhh...";
+	next;
+	mes "^3131ffThe employee turned his";
+	mes "head and peered into your eyes";
+	mes "through the black mask on his face.";
+	mes "Mereth stared wordlessly for a moment";
+	mes "and then began to dance lively, creepily jovial jig.";
+	close;
+}
+
+lhz_in01.gat,108,53,0	script	#horri	111,{
+
+	mes "^3131ffThis is simply a pile";
+	mes "of files, a smattering of";
+	mes "books and a family portrait.";
+	close;
+}
+
+lhz_in01.gat,108,47,0	script	#never	111,{
+
+	mes "^3131ffThis desk is very well";
+	mes "neat and well organized in";
+	mes "comparison to the other desks";
+	mes "you've seen in your time.";
+	mes "You take a moment to fully";
+	mes "marvel at its tidiness.";
+	close;
+}
+
+lhz_in01.gat,166,56,1	script	#crazy4u	111,{
+
+	mes "^3131ffThis desk has a bookshelf";
+	mes "that is crammed with all sorts of books.";
+	mes "Out of curiosity, you decide to pick one out.";
+	next;
+	mes "^3131ffHowever, the book you happen";
+	mes "to touch contains an";
+	mes "amazing amount of dark";
+	mes "power, causing you to drop it.";
+	misceffect 196;
+	close;
+}
+
+lhz_in01.gat,148,45,2	script	Noama	97,{
+
+	mes "[Noama]";
+	mes "Hee hee~!";
+	mes "You wanna hear something funny?";
+	mes "I heard there's a bar in Prontera where this guy sneaks singles into Jawa--";
+	next;
+	mes "[Mazwon]";
+	mes "Noama....!";
+	mes "These machines are acting up again!";
+	mes "Get over here right now!";
+	next;
+	mes "[Noama]";
+	mes "What?!";
+	mes "Stop bugging me, I didn't do anything!";
+	close;
+}
+
+lhz_in01.gat,147,40,0	script	Mazwon	828,{
+
+	mes "[Mazwon]";
+	mes "Crap. Crap! Crap crap crap crap crap!";
+	mes "These desk machines aren't supposed to work like this!";
+	next;
+	mes "[Mazwon]";
+	mes "Noama...!";
+	mes "These machines are acting up again!";
+	mes "Get over here right now!";
+	next;
+	mes "[Noama]";
+	mes "What?!";
+	mes "Stop bugging me, I didn't do anything!";
+	close;
+}
+
+lhz_in01.gat,157,47,1	script	Mareth	797,{
+
+	mes "[Mareth]";
+	mes "Yoo hoo hoo~";
+	mes "Oh, how I love";
+	mes "love love chocolate!";
+	close;
+}
+
+lhz_in01.gat,164,45,2	script	Eiya	91,{
+
+	mes "[Eiya]";
+	mes "Jorje seems so cranky";
+	mes "recently. He's usually";
+	mes "more laid back than this.";
+	mes "Oh well, I hope that he";
+	mes "feels better.";
+	next;
+	mes "[Eiya]";
+	mes "Ooh, would you like?";
+	mes "to look at my miniature";
+	mes "doll collection? I love";
+	mes "collecting cute dolls!";
+	close;
+}
+
+lhz_in01.gat,135,57,3	script	Blackboard	111,{
+
+	mes "^3131ffYou found a blackboard filled with scribbling.";
+	mes "You can only read some of the messages that have been quickly scrawled on it.^000000";
+	next;
+	mes "''Make sure everything is complete by XX 00.''";
+	mes "- Jorje";
+	next;
+	mes "Late Fee: 59,990 zeny";
+	next;
+	mes "''I want to have %%%.''";
+	mes "- Ellete";
+	mes "''I want $$$ too!''";
+	mes "- Enoz";
+	mes "''How about @@@?''";
+	mes "- Ellette";
+	next;
+	mes "''I wanna buy [#@$].''";
+	mes "- Ninjose";
+	mes "''Go buy it!''";
+	mes "- Senyu";
+	mes "''Working hard and buying hard is the best employee attitude.''";
+	mes "- Mazwon";
+	close;
+}
+
+lhz_in03.gat,100,18,3	script	Rocky#house	81,{
+
+	mes "[Rocky]";
+	mes "Woof woof!";
+	mes "Grrrrrrr...";
+	close;
+}
+
+lhz_in03.gat,130,41,5	script	Jay#house	706,{
+
+	mes "[Jay]";
+	mes "My mommy and daddy";
+	mes "always come home late.";
+	mes "So I eat dinner alone.";
+	mes "All by myself. Everyday.";
+	next;
+	mes "[Jay]";
+	mes "Food doesn't taste as";
+	mes "good when you're not";
+	mes "eating with anybody.";
+	mes "Maybe I'm just lonely.";
+	close;
+}
+
+lhz_in03.gat,129,22,7	script	Housemaid Jane#house	850,{
+
+	mes "[Housemaid Jane]";
+	mes "This house is enormous...";
+	mes "It's clearly much too big";
+	mes "for a regularly sized family.";
+	mes "And it takes me forever to";
+	mes "make sure that it stays clean!";
+	next;
+	mes "[Housemaid Jane]";
+	mes "It's not easy keeping";
+	mes "things neat and tidy when";
+	mes "you're responsible for acres";
+	mes "of indoor living space. Being";
+	mes "a maid can be pretty hard...";
+	close;
+}
+
+lhz_in03.gat,124,117,2	script	Housemaid Brenda#house	74,{
+
+	mes "[Housemaid Brenda]";
+	mes "I better dust extra";
+	mes "gently around this vase.";
+	mes "It's worth ten million zeny";
+	mes "and if it were to-- No. No!";
+	mes "I'm not even going to think it!";
+	close;
+}
+
+lighthalzen.gat,159,222,1	script	Rekenber Employee	109,{
+
+	mes "[Benauth]";
+	mes "Down there, the repairman";
+	mes "is just finishing manteinance";
+	mes "on our chairman's private";
+	mes "Airship. Can you imagine";
+	mes "having one of those of your";
+	mes "very own to fly around in?";
+	next;
+	mes "[Benauth]";
+	mes "Yeah, the chairman of";
+	mes "the Rekenber Corporation...";
+	mes "He's really powerful person.";
+	mes "It's almost scary what he can";
+	mes "do with his money, you know?";
+	close;
+}
+
+lighthalzen.gat,162,304,7	script	Rekenber Guard Drew	868,{
+
+	mes "[Rekenber Guard Drew]";
+	mes "Dude, check it out~";
+	mes "Official glossy photos";
+	mes "of the Kafra Ladies. Now...";
+	mes "With 20% more garter belts!";
+	emotion 23;
+	next;
+	mes "[Rekenber Guard Tan]";
+	mes "So they're all wearing";
+	mes "garter belts in these?";
+	mes "Whoa, that means they";
+	mes "event got the glasses chick";
+	mes "to wear 'em too? That's the";
+	mes "best news I've heard all day!";
+	next;
+	mes "[Rekenber Guard Drew]";
+	mes "Okay man, you know these";
+	mes "are limited edition collector's";
+	mes "items, so each one is worth";
+	mes "300,000 zeny. I mean, I have";
+	mes "an extra set, but I don't know";
+	mes "if you'd wanna buy them off--";
+	next;
+	emotion 23;
+	mes "[Rekenber Guard Tan]";
+	mes "I'll take them all.";
+	mes "Wait, all of them except";
+	mes "for that young kid. Just the";
+	mes "idea of having her glamour";
+	mes "photo around strikes me as...";
+	mes "Yeah. Yeah, it's no good.";
+	emotion 2;
+	close;
+}
+
+lighthalzen.gat,163,306,3	script	Rekenber Guard Tan	867,{
+
+	mes "[Rekenber Guard Tan]";
+	mes "Whoa, whoa. Now this...";
+	mes "This is art. The lighting,";
+	mes "the angle, the... the...";
+	mes "subject matter. Oh yes.";
+	next;
+	mes "[Rekenber Guard Drew]";
+	mes "Man, these officialy licensed";
+	mes "Kafra Lady glossies... They're";
+	mes "worth every zeny we paid. Say";
+	mes "goodbye Swimsuit Calendar,";
+	mes "and hellooooo Kafra Leilah~";
+	next;
+	mes "[Rekenber Guard Tan]";
+	mes "Leilah? Oh, you mean";
+	mes "the glasses chick? Dude...";
+	mes "Dude. She's my favourite too!";
+	close;
+}
+
+lighthalzen.gat,70,227,4	script	Delna	102,{
+
+	mes "[Delna]";
+	mes "Sometimes the simple";
+	mes "pleasures can give you";
+	mes "the most happiness. For me";
+	mes "going outside and basking in";
+	mes "the sun os the greatest thing~";
+	next;
+	mes "[Delna]";
+	mes "Yes, sunbathing in a quiet";
+	mes "and relaxing place can be";
+	mes "so refreshing. And if you're";
+	mes "careful about not getting a";
+	mes "sunborn or a tan, a little sun";
+	mes "can be really good for you.";
+	close;
+}
+
+lhz_in02.gat,289,277,3	script	Martial Artist	753,{
+
+	mes "[Martial Artist]";
+	mes "Curses...";
+	mes "I've come to the";
+	mes "wrong place to seek";
+	mes "out a challenge. No";
+	mes "one here is really all";
+	mes "that mightly or competitive!";
+	next;
+	mes "[Martial Artist]";
+	mes "This whole city thinks";
+	mes "it can buy power and safety";
+	mes "wih money. They don't know";
+	mes "the value of a nice, friendly";
+	mes "brawl. Hopefully, I'll find a";
+	mes "rival around here soon...";
+	close;
+}
+
+lighthalzen.gat,107,107,3	script	Kosit	869,{
+
+	mes "[Kosit]";
+	mes "This city might have";
+	mes "more guards and rules";
+	mes "than other places, but";
+	mes "I still don't know if it's";
+	mes "really safe to live here.";
+	next;
+	mes "[Kosit]";
+	mes "I mean, the reason we have";
+	mes "these rules is because of all";
+	mes "the unruly gangsters that can";
+	mes "sometimes get into the city.";
+	mes "I mean, it's relatively peaceful";
+	mes "and all. But these rules...";
+	next;
+	mes "[Kosit]";
+	mes "It's good to be safe,";
+	mes "but I don't know if it's";
+	mes "a good idea to sacrifice";
+	mes "our freedoms or standard";
+	mes "of living, you know?";
+	close;
+}
+
+lhz_in03.gat,32,99,3	script	Sopheap	863,{
+
+	mes "[Sopheap]";
+	mes "Oh, you youngsters.";
+	mes "Always traveling around";
+	mes "and having adventures and";
+	mes "fighting monsters. I certainly";
+	mes "had my fill of excitement back";
+	mes "when I was your age, long ago.";
+	next;
+	mes "[Sopheap]";
+	mes "Sure, I miss doing all";
+	mes "of that, but now I'm content";
+	mes "with just relaxing and resting.";
+	mes "Still, there are a lot of old folk";
+	mes "who refuse to sit still like this~";
+	close;
+}
+
+lhz_in03.gat,25,105,5	script	Gopal	869,{
+
+	mes "[Gopal]";
+	mes "Granny may be happy";
+	mes "just sitting around and";
+	mes "enjoying the peaceful life,";
+	mes "but I'm not! I'm too young";
+	mes "to just lay down and let";
+	mes "these days just pass by!";
+	next;
+	mes "[Gopal]";
+	mes "I wanna make something";
+	mes "of myself. Maybe someday,";
+	mes "I'll found a company as big";
+	mes "as the Rekenber Corporation!";
+	close;
+}
+
+lighthalzen.gat,176,65,5	script	Kimmy	862,{
+
+	mes "[Kimmy]";
+	mes "Unlike most places,";
+	mes "Lighthalzen has many";
+	mes "beautiful clothing and";
+	mes "accessory shops. This";
+	mes "place is heaven to a";
+	mes "trendsetter like me~!";
+	next;
+	mes "[Kimmy]";
+	mes "I don't know if you";
+	mes "adventurers are interested";
+	mes "in fashion, but you can thrash";
+	mes "your old clothes and get some";
+	mes "new, unique and trendy gear";
+	mes "over here in Lighthalzen~";
+	close;
+}
+
+lighthalzen.gat,364,282,3	script	Bodger	870,{
+
+	mes "[Bodger]";
+	mes "Another hungry day...";
+	mes "and even if I did, there's";
+	mes "no place that sells food";
+	mes "I'd actually eat. Oh, man.";
+	mes "I'm barely living as it is.";
+	next;
+	mes "[Bodger]";
+	mes "I hear that the people";
+	mes "who live Uptown eat totally";
+	mes "delicious, gourmet food eight";
+	mes "times a day! Hopefully it's just";
+	mes "an exaggeration. 'Cuz if it";
+	mes "wasn't, I'd be so mad...";
+	close;
+}
+
+lhz_in03.gat,239,38,3	script	Avetis	849,{
+
+	mes "[Avetis]";
+	mes "A-ack...";
+	mes "*Cough cough*";
+	mes "Would you give me";
+	mes "some m-medicine?!";
+	mes "*Cough cough haaack*";
+	mes "Sweet Christmas, it hurts...";
+	next;
+	mes "[Avetis]";
+	mes "I sk-skipped work";
+	mes "because I've been too";
+	mes "sick t-to go. *Cough*";
+	mes "But now I don't have";
+	mes "the money to *Haack*";
+	mes "buy med-medicine...";
+	close;
+}
+
+lhz_in02.gat,267,25,4	script	Diana	747,{
+
+	mes "[Diana]";
+	mes "Oh wow, that weapon";
+	mes "is fantastic! But I'm sure";
+	mes "that it must be really";
+	mes "expensive. Huh...";
+	next;
+	mes "[Shop Assistant]";
+	mes "Ma'am, are you talking";
+	mes "about this Stilleto? You";
+	mes "certainly have an eye for";
+	mes "quality weapons. If you";
+	mes "don't mind me asking,";
+	mes "where are you from?";
+	next;
+	mes "[Diana]";
+	mes "Oh, I was born";
+	mes "and raised in Morroc.";
+	next;
+	mes "[Shop Assistant]";
+	mes "Ah yes, I've heard many";
+	mes "good things about that town.";
+	mes "You've certainly proven that";
+	mes "people from Morroc truly have";
+	mes "good taste. Now, this Stilleto";
+	mes "is a steal at 39,800 zeny...";
+	next;
+	emotion 23;
+	mes "[Diana]";
+	mes "Huh...?!";
+	mes "That's ridiculous!";
+	mes "Never mind that, let";
+	mes "me take a look at that";
+	mes "Gladius in the corner.";
+	next;
+	mes "[Shop Assistant]";
+	mes "The Gladius?";
+	mes "Ah, that would be";
+	mes "39,800 zeny, ma'am.";
+	next;
+	mes "[Diana]";
+	mes "Oh, that's a really";
+	mes "good price. I'll take it!";
+	next;
+	mes "[Shop Assistant]";
+	mes "Yes, this replica really";
+	mes "does look just like an";
+	mes "actual Gladius, does it";
+	mes "not? Although not a true";
+	mes "weapon, it's quite capable of";
+	mes "opening the toughest envelopes.";
+	next;
+	mes "[Diana]";
+	mes "...";
+	mes "......";
+	mes "I take that back.";
+	mes "This shop really sucks.";
+	close;
+}
+
+lhz_in02.gat,267,22,1	script	Shop Assistant	91,{
+
+	mes "[Shop Assistant]";
+	mes "Welcome to our";
+	mes "store where we offer";
+	mes "many unique products that";
+	mes "you can't find anywhere else.";
+	next;
+	mes "[Shop Assistant]";
+	mes "However, shopping is only available";
+	mes "to our members. There's an annual";
+	mes "membership fee that's waived when";
+	mes "you spend a certain amount every";
+	mes "month on our store. If you invite";
+	mes "your friends, you'll receive spe--";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "N-no thank you!";
+	mes "I'm not interested!";
+	close;
+}
+
+lighthalzen.gat,192,63,4	script	Sergei	92,{
+
+	mes "[Sergei]";	
+	mes "You know, there's an";
+	mes "interesting story about";
+	mes "the axe that's hanging";
+	mes "over there. Would you";
+	mes "like me to tell you?";
+	next;
+	menu "Sure",Yes,"No, thank's.",No;
+
+Yes:
+	mes "[Sergei]";
+	mes "This previous owner of";
+	mes "this Weapon Shop was";
+	mes "a convicted serial killer.";
+	mes "Each night, he'd take that";
+	mes "axe and cruelly murder";
+	mes "beautiful ladies like me.";
+	next;
+	mes "[Sergei]";
+	mes "When he was finally";
+	mes "caught, they beheaded";
+	mes "him with his own axe.";
+	mes "Since then, they say that";
+	mes "his ghost still lingers and";
+	mes "sharpens this axe at night.";
+	next;
+	mes "[Sergei]";
+	mes "Just thinking about";
+	mes "it gives me goosebumps!";
+	mes "And I'm supposed to work";
+	mes "here! It's so creepy!";
+	close;
+
+No:
+	mes "[Sergei]";
+	mes "Oh, how disappointing~";
+	mes "It's the perfect story for";
+	mes "the season. Well, now that";
+	mes "I think about it, that story is";
+	mes "actually pretty creepy...";
+	close;
+}
+
+lighthalzen.gat,258,223,3	script	Srinivas	866,{
+
+	mes "[Srinivas]";
+	mes "Those rundown buildings";
+	mes "in the slums are an eyesore";
+	mes "that offend the entire city!";
+	mes "I just wish they would wreck";
+	mes "them down. What do I care";
+	mes "about the poor and needy?";
+	close;
+}
+
+lighthalzen.gat,77,203,3	script	Victor Perfecto	869,{
+
+	mes "[Victor Perfecto]";
+	mes "I've heard that the";
+	mes "Rekenber Corporation";
+	mes "actually created the";
+	mes "environment in Lighthalzen";
+	mes "through artificial means.";
+	next;
+	mes "[Victor Perfecto]";
+	mes "It seems like it'd take";
+	mes "a lot of investment, but";
+	mes "artificially creating an";
+	mes "environment isn't impossible";
+	mes "with the means avalaible to";
+	mes "the Rekenber Corporation.";
+	next;
+	mes "[Victor Perfecto]";
+	mes "*Sigh...*";
+	mes "Still, it's pretty";
+	mes "depressing to think";
+	mes "that the beauty of nature";
+	mes "can be manmade and";
+	mes "equated to zeny, you know?";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Mobster Security Mini-Quest
+//--------------------------------------------------------------
+
+lighthalzen.gat,1,1,7	script	sneakAddSuber	-1,{
+OnInit:
+	set $@sneakchance, 3; // chance of successful sneak(0 = never, 10 = always)
+	set $@sneakguard, 0; // numbers of people who sneaked past guard
+	set $@threshold, 10; // numbers of sneakers before mob appears
+	set $@mob, 50; 	  // Max respawn numbers of "mobsters"
+	set $@mobcount, 0; // current numbers of "mobsters"
+	set $@lhz_alert, 0; // Alert on Lighthalzen(0 = off, 1 = on)
+	set $@i, 0;
+	
+	end;
+
+OnMinute00:
+OnMinute05:
+OnMinute10:
+OnMinute15:
+OnMinute20:
+OnMinute25:
+OnMinute30:
+OnMinute35:
+OnMinute40:
+OnMinute45:
+OnMinute50:
+OnMinute55:
+	if ($@lhz_alert == 0) set $@sneakguard, $@sneakguard + rand(1,3);
+	if ($@lhz_alert == 1) set $@sneakguard, $@sneakguard - 1;  // Monsters will die after 5~10 min. (sneakAddSuber)
+	end;
+}
+
+lighthalzen.gat,1,1,7	script	AlertChk	-1,{
+OnInit:
+	initnpctimer;
+	end;
+
+OnTimer10000:
+	if ($@sneakguard >= $@threshold) goto MakeMob;
+	if ($@sneakguard == 0) goto ClearMob;  // Monsters will die after 5~10 min. (sneakAddSuber)
+	setnpctimer 0;
+	end;
+	
+MakeMob:
+	if ($@lhz_alert == 1) goto ChkEnd;
+	set $@mobcount, $@mob;
+	mapannounce "lighthalzen.gat","Maintenance Organization of the Public Order: Currently the security of the city has been compromized, We ask the citizens to be more careful. I repeat. We ask the citizens to be more careful.", 1;
+
+	set $@i,0;
+	goto L_Loop01;
+
+	L_Loop01:
+		if ($@i < $@mob) goto L_Loop02;
+		goto L_LoopEnd;
+
+	L_Loop02:
+		monster "lighthalzen.gat",0,0,"Gangster",1592,1,"Mobs::MobKilled";
+		set $@i,$@i + 1;
+
+	L_LoopEnd:
+		set $@lhz_alert, 1;	
+		set $@sneakguard, 2;   // Monsters will die after 5~10 min. (sneakAddSuber)
+		setnpctimer 0;
+		end;
+	
+ClearMob:
+	if ($@lhz_alert == 0) goto ChkEnd;
+	set $@mobcount, 0;
+	mapannounce "lighthalzen.gat","Maintenance organization of the Public Order: We were able to get rid of all the trouble makers in the city. You may relax now.", 1;	
+	killmonster "lighthalzen.gat","Mobs::MobKilled";
+	set $@lhz_alert, 0;
+	set $@sneakguard, 0;
+	setnpctimer 0;
+	end;
+		
+MobKilled:
+	set $@mobcount, $@mobcount - 1;
+	if ($@mobcount == 0) goto ClearMob;
+	setnpctimer 0;
+	end;	
+
+ChkEnd:	
+	setnpctimer 0;
+	end;	
+}
+
+lighthalzen.gat,267,200,3	script	Security Guard	868,{
+
+	if (countitem(7350)>0) goto Lhzpass1;
+	if ($@lhz_alert == 1) goto Lhzstop;
+	if ((gettime(2)>00 && gettime(2)<10)) goto LhzTalk2;
+	if ((gettime(2)>30 && gettime(2)<40)) goto LhzTalk2;
+	set @LhzTalk,rand(1,10);
+	if (@LhzTalk  < 2) goto LhzTalk1;
+
+LhzTalk:
+	mes "[Guard]";
+	mes "Hey! Where do you think you are going?";
+	mes "I can not send nobody to the slum district!";
+	mes "If we let suspecious people like you pass,";
+	mes "there is no point in piece keeping!";
+	close;
+
+LhzTalk1:
+	mes "-Looks like the guard is doing something else";
+	mes "Now is a good time to sneak by.-";
+	next;
+	warp "lighthalzen.gat",297,227;
+	set $@sneakguard, $@sneakguard + 1;
+	close;
+
+LhzTalk2:
+	set @LhzTalk,rand(1,10);
+	if (@LhzTalk  < 2) goto LhzTalk;
+	mes "[Guard]";
+	mes "zzZ... zzZ... zzZ...";
+	mes "hmm. hmm... zzZ...";
+	next;
+	mes "-Looks like the guard is sleeping";
+	mes "Now is a good time to sneak by.-";
+	next;
+	warp "lighthalzen.gat",297,227;
+	close;
+
+Lhzpass1:
+	mes "[Guard]";
+	mes "Who are you! ...Hmm? You have a pass?";
+	mes "I'm sorry. You look like an adventurer,";
+	mes "but I guess you got the authority.";
+	mes "You may pass.";
+	next; 
+	warp "lighthalzen.gat",297,227;
+	close;
+
+Lhzstop:
+	mes "[Guard]";
+	mes "Recently, there were too many people sneaking pass us,";
+	mes "so we raised the security level.";
+	mes "Who sneak past us anyway?";
+	mes "It's troublesome...";
+	close;
+}
+
+lighthalzen.gat,294,223,7	script	Security Guard	868,{
+
+	if (countitem(7350)>0) goto Lhzpass1;
+	if ($@lhz_alert == 1) goto Lhzstop;
+	if ((gettime(2)>00 && gettime(2)<10)) goto LhzTalk2;
+	if ((gettime(2)>30 && gettime(2)<40)) goto LhzTalk2;
+	set @LhzTalk,rand(1,10);
+	if (@LhzTalk  < 2) goto LhzTalk1;
+
+LhzTalk:
+	mes "[Guard]";
+	mes "Hey! Where do you think you are going?";
+	mes "I can not send nobody to the slum district!";
+	mes "If we let suspecious people like you pass,";
+	mes "there is no point in piece keeping!";
+	close;
+
+LhzTalk1:
+	mes "-Looks like the guard is doing something else";
+	mes "Now is a good time to sneak by.-";
+	next;
+	warp "lighthalzen.gat",264,200;
+	set $@sneakguard, $@sneakguard + 1;
+	close;
+
+LhzTalk2:
+	set @LhzTalk,rand(1,10);
+	if (@LhzTalk  < 2) goto LhzTalk;
+	mes "[Guard]";
+	mes "zzZ... zzZ... zzZ...";
+	mes "hmm. hmm... zzZ...";
+	next;
+	mes "-Looks like the guard is sleeping";
+	mes "Now is a good time to sneak by.-";
+	next;
+	warp "lighthalzen.gat",264,200;
+	close;
+
+Lhzpass1:
+	mes "[Guard]";
+	mes "Who are you! ...Hmm? You have a pass?";
+	mes "I'm sorry. You look like an adventurer,";
+	mes "but I guess you got the authority.";
+	mes "You may pass.";
+	next; 
+	warp "lighthalzen.gat",264,200;
+	close;
+
+Lhzstop:
+	mes "[Guard]";
+	mes "Recently, there were too many people sneaking pass us,";
+	mes "so we raised the security level.";
+	mes "Who sneak past us anyway?";
+	mes "It's troublesome...";
+	close;
+}
+
+//--------------------------------------------------------------
+// Biolabs Entrance Quest
+//--------------------------------------------------------------
+
+lighthalzen.gat,341,224,4	script	Fishburn	868,{
+
+	if (BaseLevel > 60) goto Lstart;
+	mes "[Fishburn]";
+	mes "Keep moving.";
+	close;
+
+Lstart:
+	if (hzdun == 1) goto L_11;
+	if (Fishburn == 7) goto L_10;
+	if (Fishburn == 6) goto L_9;
+	if (Fishburn == 5) goto L_6;
+	if (Fishburn == 4) goto L_4;
+	if (Fishburn == 3) goto L_3;
+	if (Fishburn == 2) goto L_2;
+	if (Fishburn == 1) goto L_1;
+	mes "[Fishburn]";
+	mes "Hmm...? What is it?";
+	mes "I am busy at the moment,";
+	mes "so stop bothering me.";
+	set Fishburn,1;
+	close;
+
+L_1:
+	mes "[Fishburn]";
+	mes "I'm getting distracted because";
+	mes "You keep staring at me!";
+	mes "Would you please leave me alone?";
+	set Fishburn,Fishburn+1;
+	close;
+
+L_2:
+	mes "[Fishburn]";
+	mes "Hmm...? Oh, it's you..";
+	mes "You are really getting on my nerves.";
+	mes "You're weird, you know that?";
+	mes "What is it that you want from me?";
+	next;
+	mes "[" +strcharinfo(0) + "]";
+	mes "Nothing really...";
+	mes "Just looking around...";
+	mes "What are you doing?";
+	next;
+	mes "[Fishburn]";
+	mes "Oh, man...";
+	mes "If I just needed to show you this,";
+	mes "I wouldn't have got all worked up.";
+	next;
+	mes "[" +strcharinfo(0) + "]";
+	mes "I know. Haha.";
+	next;
+	mes "[Fishburn]";
+	mes "You really ARE a weird person...";
+	mes "Are you just going to stand there";
+	mes "and keep watching?";
+	next;
+	mes "[Fishburn]";
+	mes "... You're really annoying me!";
+	mes "What do you want from me?!";
+	next;
+	mes "[" +strcharinfo(0) + "]";
+	mes "I've aready told you.";
+	mes "I asked what you were doing.";
+	mes "This place is hot and sticky.";
+	next;
+	mes "[Fishburn]";
+	mes "Okay, okay..";
+	mes "I'll tell you what i'm doing,";
+	mes "but would you leave me in peace";
+	mes "if i did? Thanks.";
+	next;
+	mes "[Fishburn]";
+	mes "I'm.. um... doing something illegal...";
+	mes "Don't tell anyone about this!";
+	next;
+	mes "[Fishburn]";
+	mes "I am the only person who can make a route to";
+	mes "the industrial city's -^FF0000Laboratory^000000- or";
+	mes "places normal people wouldn't usually be able to get to.";
+	next;
+	mes "[" +strcharinfo(0) + "]";
+	mes "The -Laboratory?!!!-";
+	mes "Can you really get people in there?!!!";
+	next;
+	mes "[Fishburn]";
+	mes "Agh! Quieten down! What did i tell you?";
+	mes "I've told you what i do, now will you stop staring at me?";
+	mes "And be quiet~!";
+	mes "You're weird.. ¬_¬";
+	next;
+	mes "[" +strcharinfo(0) + "]";
+	mes "Ah..Haha.. I'm sorry.";
+	mes "I really want to go there,";
+	mes "so I got excited when I heard you can get people in there";
+	next;
+	mes "[Fishburn]";
+	mes "Hmm? You were planning to get in there?";
+	next;
+	mes "[" +strcharinfo(0) + "]";
+	mes "Yeah, but i couldn't get in..";
+	next;
+	mes "[Fishburn]";
+	mes "Hmm...";
+	mes "This is troublesome...";
+	mes "I don't usually tell people i cannot";
+	mes "trust how to get into the Laboratory...";
+	next;
+	mes "[" +strcharinfo(0) + "]";
+	mes "What do I need to do?";
+	mes "How can I get into the laboratory?";
+	next;
+	mes "[Fishburn]";
+	mes "Geez~, I'm just giving people a route, not sending them there.";
+	next;
+	mes "[" +strcharinfo(0) + "]";
+	mes "Doesn't that mean the same thing?";
+	next;
+	mes "[Fishburn]";
+	mes "What I'm saying is,";
+	mes "I'm giving people the chance to get into the labs.";
+	next;
+	mes "[" +strcharinfo(0) + "]";
+	mes "You're really talented, huh.";
+	next;
+	mes "[Fishburn]";
+	mes "Hahaha! Damn right.";
+	mes "It's a piece of cake!";
+	mes "...";
+	mes "Actually, now i think about it, it's impossible..";
+	next;
+	mes "[" +strcharinfo(0) + "]";
+	mes "How's it impossible?";
+	mes "I haven't say anything yet~..";
+	next;
+	mes "[Fishburn]";
+	mes "Oh come on, you were going to BEG me to send you there~!!!";
+	next;
+	mes "[" +strcharinfo(0) + "]";
+	mes "Heh...";
+	mes "You really ARE clever.";
+	mes "Well...";
+	mes "Pretty please~~?";
+	next;
+	mes "[Fishburn]";
+	mes "I can never let you in~..";
+	mes "Never ever~!!!";
+	set Fishburn,Fishburn+1;
+	close;
+
+L_3:
+	mes "[" +strcharinfo(0) + "]";
+	mes "Please?";
+	next;
+	mes "[Fishburn]";
+	mes "No way.";
+	set Fishburn,Fishburn+1;
+	close;
+
+L_4:
+	mes "[" +strcharinfo(0) + "]";
+	mes "Pleaseeeee?";
+	next;
+	mes "[Fishburn]";
+	mes "No.";
+	next;
+	mes "[" +strcharinfo(0) + "]";
+	mes "Pleaseeeeeeeeeee?";
+	next;
+	mes "[Fishburn]";
+	mes "I don't want to.";
+	next;
+	mes "[" +strcharinfo(0) + "]";
+	mes "Do it!!!";
+	next;
+	mes "[Fishburn]";
+	mes "Never~!!!";
+	next;
+	mes "[" +strcharinfo(0) + "]";
+	mes "Why are you doing this to me?!!";
+	mes "What do you want from me !?!";
+	next;
+	mes "[Fishburn]";
+	mes "What do I want?";
+	mes "Heh heh.. One billion zeny.";
+	next;
+	mes "[" +strcharinfo(0) + "]";
+	mes "Are you crazy?!";
+	next;
+	mes "[Fishburn]";
+	mes "It's your choice.";
+	next;
+	mes "[" +strcharinfo(0) + "]";
+	mes "Sir, you know I don't have that much money.";
+	mes "Is there anything else you need?";
+	next;
+	mes "[Fishburn]";
+	mes "Hmm...";
+	mes "Okay fine...";
+	mes "Bring me 20 Jellopies.";
+	mes "'Kay?";
+	next;
+	mes "[" +strcharinfo(0) + "]";
+	mes "........";
+	mes "So that's what you really wanted to ask me?";
+	next;
+	mes "[Fishburn]";
+	mes "Hahaha...";
+	mes "Yeah~~...";
+	next;
+	mes "[" +strcharinfo(0) + "]";
+	mes "........";
+	next;
+	mes "[Fishburn]";
+	mes "So, what're you doing just standing there?";
+	mes "Are you going to do it or not?";
+	next;
+	menu "Definately!",L_5,"No way! It's impossible!",-;
+
+	mes "[Fishburn]";
+	mes "Ah well, your loss,";
+	mes "Too bad!";
+	mes "Bye now~!!";
+	close;
+
+L_5:
+	mes "[Fishburn]";
+	mes "Okay then, do as I said,";
+	mes "bring me 20 jellopies!";
+	mes "....";
+	mes "What're you waiting for?! GO!!";
+	set Fishburn,Fishburn+1;
+	close;
+
+L_6:
+	mes "[Fishburn]";
+	mes "Did you get the items?";
+	next;
+	menu "Erm.. No..",-,"Hell yeah!",L_7,"What did you want again..?",L7_1;
+
+	mes "[Fishburn]";
+	mes "Hey, I don't feel like playing around anymore.";
+	mes "If you really want to get there, bring the damn items!";
+	close;
+
+L_7:
+	if (countitem(909) >= 20) goto L_8;
+	mes "[Fishburn]";
+	mes "Are you joking?";
+	mes "If you keep doing this,";
+	mes "I may not keep the promise either.";
+	mes "So go and get them already!";
+	close;
+
+L7_1:
+	mes "[Fishburn]";
+	mes "You're really stupid~!";
+	mes "It's 20 jellopies!";
+	mes "Don't forget this time~";
+	close;
+
+L_8:
+	delitem 909,20;
+	mes "[Fishburn]";
+	mes "Hmm. You're more reliable than i thought.";
+	mes "Taking this errand into consideration,";
+	mes "i guess you really want to get in there?";
+	next;
+	mes "[Fishburn]";
+	mes "Coming to think of it,";
+	mes "you look different.";
+	mes "Should I say you look more... trustworthy..?";
+	next;
+	mes "[Fishburn]";
+	mes "Well... Anyway...";
+	mes "A promise is a promise.";
+	mes "I will tell you how to get there.";
+	next;
+	mes "[Fishburn]";
+	mes "As I told you earlier, all I can do is";
+	mes "give you the opportunity to get in.";
+	next;
+	mes "[Fishburn]";
+	mes "I used to be a manager working for the lab,";
+	mes "but time moves on, as people do,";
+	mes "and now I am working against the lab.";
+	next;
+	mes "[Fishburn]";
+	mes "Now... Answer honestly on all I ask here on out.";
+	mes "Where i send you all depends on how you answer.";
+	next;
+	mes "[Fishburn]";
+	mes "Somewhere in the place I'm going to send you";
+	mes "There will be things you must find,";
+	mes "So search well.";
+	next;
+	mes "[Fishburn]";
+	mes "Well, when you've made your mind up,";
+	mes "come back and talk to me. Okay?";
+	set Fishburn,Fishburn+1;
+	close;
+
+L_9:
+	mes "[Fishburn]";
+	mes "Hmm... So...";
+	mes "Are you ready to go?";
+	next;
+	menu "No",-,"Yes",L9_1;
+
+	mes "[Fishburn]";
+	mes "Hmm... Not yet, huh...";
+	mes "Well, I guess it is to be expected.";
+	mes "But don't make me wait too long~!";
+	close;
+
+L9_1:
+	mes "[Fishburn]";
+	mes "This is going to be hard~";
+	mes "Let's go!!!";
+	close2;
+	set Fishburn,Fishburn+1;
+	set @rdm,rand(3);
+	if (@rdm==1) goto L_warp1;
+	if (@rdm==2) goto L_warp2;
+ 	warp "lhz_cube.gat",67,193;
+	end;
+
+L_10:
+	mes "[Fishburn]";
+	mes "Hah!";
+	mes "You failed in there, right? Hahahaha~.";
+	mes "Are you going to try again? Or is it too tough~";
+	next;
+	menu "No",-,"Yes",L10_1;
+
+	mes "[Fishburn]";
+	mes "It was that hard huh?";
+	mes "Well, come back if you change your mind.";
+	close;
+
+L10_1:
+	mes "[Fishburn]";
+	mes "Okay..";
+	mes "I will send you there again..";
+	mes "Good luck!";
+	close2;
+	set @rdm,rand(3);
+	if (@rdm==1) goto L_warp1;
+	if (@rdm==2) goto L_warp2;
+ 	warp "lhz_cube.gat",67,193;
+	end;
+
+L_warp1: 
+	warp "lhz_cube.gat",66,136;
+	end;
+L_warp2:
+	warp "lhz_cube.gat",66,74;
+	end;
+
+L_11:
+	mes "[Fishburn]";
+	mes "Oh~ I guess you found the entrance.";
+	mes "I'll tell you now...";
+	mes "If you want to go in there again";
+	next;
+	mes "[Fishburn]";
+	mes "You can get there by a sewer passage on the north side of town.";
+	next;
+	mes "[" +strcharinfo(0) + "]";
+	mes "No waiiiii!!";
+	next;
+	mes "[Fishburn]";
+	mes "I know. I know...";
+	mes "It is dirty.";
+	mes "But it's only way in, so don't complain!";
+	next;
+	mes "[Fishburn]";
+	mes "Now, take care of yourself~.";
+	close;
+}
+
+// Door
+
+lhz_cube.gat,249,184,0	script	Door?	111,{
+
+	mes "Leave room?";
+	next;
+	menu "Yes",LhzLeave,"No",LhzNoLeave;
+
+LhzLeave:
+	warp "lighthalzen.gat",335,227;
+	end;
+
+LhzNoLeave:
+	close;
+}
+
+// Chest
+
+lhz_cube.gat,248,179,0	script	Chest	111,{
+	if (Axe == 1) goto L_2;
+	mes "There is an Axe in the chest.";
+	next;
+	menu "Take the Axe.",L_1,"Leave it alone.",-;
+	close;
+
+L_1:
+	mes "You acquired the ^FF0000Axe^000000.";
+	set Axe,1;
+	close;
+
+L_2:
+	mes "There is a chest that used to contain an ^FF0000Axe^000000.";
+	close;
+}
+
+// Barrel
+
+lhz_cube.gat,237,183,0	script	Barrel	111,{
+	if (yKey == 1) goto L_4;
+	if (Box == 1) goto L_2;
+	mes "There is a box that looks weak.";
+	if (Axe == 0) close;
+	next;
+	input @Axe$;
+
+	if (@Axe$ == "Axe") goto L_1;
+	mes "There is no change.";
+	close;
+
+L_1:
+	mes "When you break the barrel with an Axe,";
+	mes "you see that there's a box inside of it.";
+	next;
+	mes "On top of the box, there's a panel with the numbers 1~9";
+	set Box,1;
+	close;
+
+L_2:
+	mes "There is a box with numbers 1~9 on it's surface.";
+	next;
+	set @agree,0;
+	input @number;
+	if (num6 == @number) set @agree,@agree+1;
+	input @number;
+	if (num8 == @number) set @agree,@agree+1;
+	input @number;
+	if (num1 == @number) set @agree,@agree+1;
+	input @number;
+	if (num4 == @number) set @agree,@agree+1;
+	input @number;
+	if (num9 == @number) set @agree,@agree+1;
+	input @number;
+	if (num2 == @number) set @agree,@agree+1;
+	input @number;
+	if (num7 == @number) set @agree,@agree+1;
+	input @number;
+	if (num5 == @number) set @agree,@agree+1;
+	input @number;
+	if (num3 == @number) set @agree,@agree+1;
+	if (@agree == 9 && num1) goto L_3;
+	mes "There is no change.";
+	close;
+
+L_3:
+	mes "The box opened, making a metallic click.";
+	mes "Within the box, there is 'Yellow Key'.";
+	next;
+	mes "You acquired '^FF0000Yellow Key^000000'.";
+	set yKey,1;
+	close;
+
+L_4:
+	mes "This box used to have the '^FF0000Yellow Key^000000'";
+	mes "The box is now empty.";
+	close;
+}
+
+// Drawer
+
+lhz_cube.gat,242,201,0	script	Drawer	111,{
+	if (Jackknife == 1) goto L_3;
+	mes "The drawer is locked.";
+	if (RedKey == 1) goto L_1;
+	close;
+
+L_1:
+	input @Key$;
+	if (@Key$ == "Red Key") goto L_2;
+	mes "The drawer is locked, you need some kind of Key.";
+	close;
+
+L_2:
+	mes "The Red Key fits the lock perfectly,opening the drawer.";
+	mes "You found a 'Jackknife' inside.";
+	next;
+	mes "You acquired ^FF0000Jackknife^000000.";
+	set Jackknife,1;
+	close;
+
+L_3:
+	mes "It is the drawer you got ^FF0000Jackknife^000000 from.";
+	mes "There is nothing inside now.";
+	close;
+}
+
+// Bundle of Files
+
+lhz_cube.gat,237,198,0	script	Bundle of Files	111,{
+	if (RedKey == 1) goto L_2;
+	mes "There are tons of documents here.";
+	next;
+	menu "Search the documents.",L_1,"Ignore.",-;
+	close;
+
+L_1:
+	mes "As you look through the documents, a 'Red Key' falls out.";
+	next;
+	mes "You acquired ^FF0000Red Key^000000.";
+	set RedKey,1;
+	close;
+
+L_2:
+	mes "This is where you acquired ^FF0000Red Key^000000.";
+	mes "There's nothing else to do here.";
+	close;
+}
+
+// Bed
+
+lhz_cube.gat,247,198,0	script	Bed	111,{
+	mes "There is a messy bed.";
+	next;
+	menu "Above the bed",-,"Under the bed",L_1;
+
+	mes "The blanket is messily placed.";
+	mes "There is nothing special here.";
+	close;
+
+L_1:
+	if (Quadrangle >= 1) goto L_3;
+	if (srod1 == 1) goto L_2;
+	mes "You look below the bed and see a 'Short Stick'.";
+	mes "It is within your grasp, but there is";
+	mes "also another item hidden under the bed, which";
+	mes "you'll need some kind of long item to pull it out.";
+	next;
+	mes "You acquired the '^FF0000Short Stick^000000'.";
+	mes "It looks like this stick could be combined";
+	mes "with another stick to make it longer.";
+	if (srod2 == 1) goto L1_1;
+	set srod1,1;
+	close;
+
+L1_1:
+	set srod1,1;
+	next;
+	mes "It seems like the small-sized stick can be";
+	mes "combined with the 'Short Stick' from under the desk.";
+	mes "You put the two end to end, and they click into place.";
+	next;
+	mes "You acquired the '^FF0000Long Stick^000000'";
+	set rod,1;
+	close;
+
+L_2:
+	if (rod == 0 && srod1 == 1 && srod2 == 1) goto L1_1;
+	mes "As you look under the bed, you see that there";
+	mes "is a small object covered in dust.";
+	next;
+	input @bed$;
+	if (@bed$ == "Long Stick" && rod == 1) goto L2_1;
+	mes "It looks like you need some kind of long item to";
+	mes "Get the item out, you can't reach it!";
+	close;
+
+L2_1:
+	mes "You used the Long Stick to pull it out.";
+	next;
+	mes "You acquired '^FF0000Cube^000000'.";
+	set Quadrangle,1;
+	close;
+
+L_3:
+	mes "This is the place where you got '^FF0000Cube^000000' from.";
+	mes "There is nothing down here now but dust.";
+	close;
+}
+
+// Goblet
+
+lhz_cube.gat,229,184,0	script	Goblet	111,{
+	if (fKey == 1) goto L_2;
+	mes "You see an empty bottle and a goblet with something in it.";
+	next;
+	menu "Leave it alone.",-,"Look what is inside.",L_1;
+	close;
+
+L_1:
+	mes "When you look inside, you see a 'Rusty Key'.";
+	next;
+	mes "You acquired the '^FF0000Rusty Key^000000'.";
+	set fKey,1;
+	close;
+
+L_2:
+	mes "You got the '^FF0000Rusty Key^000000' here.";
+	mes "There's nothing but an empty goblet and an empty bottle.";
+	close;
+}
+
+// Chemicals
+
+lhz_cube.gat,233,206,0	script	Checmicals	111,{
+	if (gKey == 1) goto L_2;
+	mes "There are lots of bottles filled with chemicals lined up";
+	mes "Along the shelf, they have different labels.";
+	next;
+	input @lathe$;
+
+	if (@lathe$ == "Rusty Key" && fKey == 1) goto L_1;
+	mes "Nothing happened.";
+	close;
+
+L_1:
+	mes "As you put the 'Rusty Key' into a bottle, it fizzes";
+	mes "and bubbles, and all the liquid disappears.";
+	mes "All that's left is a clean, Green Key.";
+	next;
+	mes "You acquired the '^FF0000Green Key^000000'";
+	set gKey,1;
+	close;
+
+L_2:
+	mes "There is an acid that changed corroded all the rust";
+	mes "off of your key.";
+	next;
+	mes "I don't see anything useful.";
+	close;
+}
+
+// Cabinet
+
+lhz_cube.gat,249,191,0	script	Cabinet	111,{
+	if (Polygon >= 1) goto L_4;
+	mes "There is a cabinet with lots of drawers.";
+	if (gKey == 1) goto L_2;
+	if (gKey == 0) next;
+	menu "Leave it alone.",-,"Open one of the drawers.",L_1;
+	close;
+
+L_1:
+	mes "There's nothing of any interest in this drawer.";
+	close;
+
+L_2:
+	next;
+	input @gKey$;
+
+	if (@gKey$ == "Green Key") goto L_3;
+	mes "There's nothing of any interest in this drawer.";
+	close;
+
+L_3:
+	mes "You put the 'Green Key' into a keyhole,";
+	mes "opening one of the locked drawers.";
+	mes "In the drawer, there is a model of";
+	mes "a Polygon.";
+	next;
+	mes "'You acquired the ^FF0000Polygon^000000.";
+	set Polygon,1;
+	close;
+
+L_4:
+	mes "This is the closet where you got";
+	mes "the 'Polygon' from.";
+	next;
+	mes "The other draws will not open, there's";
+	mes "nothing else to do here.";
+	close;
+}
+
+// Desk
+
+lhz_cube.gat,234,200,0	script	Desk	111,{
+	mes "There is a desk with lots of objects scattered around.";
+	next;
+	menu "Above the desk",-,"Below the desk",L_1,"Drawer",L_2;
+
+	mes "There are lots of books, papers and";
+	mes "research equipment.";
+	close;
+
+L_1:
+	if (srod2 == 1) goto L1_2;
+	mes "When you look below the desk,";
+	mes "You see a decent sized stick.";
+	next;
+	mes "You acquired '^FF0000Short Stick^000000'.";
+	mes "It looks like this stick could be combined";
+	mes "With another stick to make it larger.";
+	if (srod1 == 1) goto L1_1;
+	set srod2,1;
+	close;
+
+L1_1:
+	set srod2,1;
+	next;
+	mes "It seems like the decently sized stick can be";
+	mes "combined with the 'Short Stick' from under the bed.";
+	mes "You put the two end to end, and they click into place.";
+	next;
+	mes "You acquired the '^FF0000Long Stick^000000'";
+	set rod,1;
+	close;
+
+L1_2:
+	if (srod1 == 1 && srod2 == 1 && rod == 0) goto L1_1;
+	mes "This is where you acquired the '^FF0000Short Stick^000000'.";
+	mes "There is nothing but dust now.";
+	close;
+
+L_2:
+	mes "It's locked and can't be opened.";
+	close;
+}
+
+// Picture
+
+lhz_cube.gat,237,206,0	script	Picture	111,{
+	if (num1 > 0) goto L_2;
+	mes "There is a picture on the wall.";
+	next;
+	menu "Move it.",L_1,"Leave it alone.",-;
+	close;
+
+L_1:
+	mes "It does not move.";
+	next;
+	input @Jackknife$;
+
+	if (@Jackknife$ == "Jackknife" && Jackknife == 1) goto L1_1;
+	mes "Nothing happened.";
+	close;
+
+L1_1:
+	mes "You slid the 'Jackknife' behind the frame";
+	mes "and used it to twist the picture.";
+	mes "As you turn the frame, the picture detatches and";
+	mes "falls from the wall.";
+	next;
+	set num1,rand(1,9);
+	Lset1:
+	set num2,rand(1,9);
+	if (num1 == num2) goto Lset1;
+	Lset2:
+	set num3,rand(1,9);
+	if (num1 == num3) goto Lset2;
+	if (num2 == num3) goto Lset2;
+	Lset3:
+	set num4,rand(1,9);
+	if (num1 == num4) goto Lset3;
+	if (num2 == num4) goto Lset3;
+	if (num3 == num4) goto Lset3;
+	Lset4:
+	set num5,rand(1,9);
+	if (num1 == num5) goto Lset4;
+	if (num2 == num5) goto Lset4;
+	if (num3 == num5) goto Lset4;
+	if (num4 == num5) goto Lset4;
+	Lset5:
+	set num6,rand(1,9);
+	if (num1 == num6) goto Lset5;
+	if (num2 == num6) goto Lset5;
+	if (num3 == num6) goto Lset5;
+	if (num4 == num6) goto Lset5;
+	if (num5 == num6) goto Lset5;
+	Lset6:
+	set num7,rand(1,9);
+	if (num1 == num7) goto Lset6;
+	if (num2 == num7) goto Lset6;
+	if (num3 == num7) goto Lset6;
+	if (num4 == num7) goto Lset6;
+	if (num5 == num7) goto Lset6;
+	if (num6 == num7) goto Lset6;
+	Lset7:
+	set num8,rand(1,9);
+	if (num1 == num8) goto Lset7;
+	if (num2 == num8) goto Lset7;
+	if (num3 == num8) goto Lset7;
+	if (num4 == num8) goto Lset7;
+	if (num5 == num8) goto Lset7;
+	if (num6 == num8) goto Lset7;
+	if (num7 == num8) goto Lset7;
+	Lset8:
+	set num9,rand(1,9);
+	if (num1 == num9) goto Lset8;
+	if (num2 == num9) goto Lset8;
+	if (num3 == num9) goto Lset8;
+	if (num4 == num9) goto Lset8;
+	if (num5 == num9) goto Lset8;
+	if (num6 == num9) goto Lset8;
+	if (num7 == num9) goto Lset8;
+	if (num8 == num9) goto Lset8;
+	goto L_2;
+
+L_2:
+	mes "There is a number behind the picture.";
+	mes "" + num1 + "3 " + num2 + "6 " + num3 + "9 " + num4 + "4 " + num5 + "8 " + num6 + "1 " + num7 + "7 " + num8 + "2 " + num9 + "5";
+	mes "Perhaps you should write this number down somewhere...";
+	close;
+}
+
+// Power Generator
+
+lhz_cube.gat,224,192,0	script	Power Generator	111,{
+	if (machine == 1) goto L_2;
+	mes "The big machine is running, making a huge noise.";
+	mes "There are lots weird symbols and";
+	mes "a small key hole beside them.";
+	next;
+	input @Key$;
+
+	if (@Key$ == "Yellow Key" && yKey == 1) goto L_1;
+	mes "There's nothing to do here.";
+	close;
+
+L_1:
+	mes "You insert the 'Yellow Key' into the keyhole";
+	mes "and twist it.";
+	mes "The machine clicks, and becomes silent.";
+	next;
+	mes "When it was stopped, the lamp next to the bed";
+	mes "also turned off.";
+	set machine,1;
+	close;
+
+L_2:
+	mes "The big machine sits quietly.";
+	close;
+}
+
+// Status Light
+
+lhz_cube.gat,248,205,0	script	Status Light	111,{
+	if (bKey == 1) goto L_3;
+	if (machine == 1) goto L_1;
+	mes "There is a bright light.";
+	mes "Seems like there is something inside";
+	mes "but it is too hot to touch.";
+	mes "It looks like you need to somehow turn the light off.";
+	close;
+
+L_1:
+	mes "There is something inside of the bulb.";
+	next;
+	menu "Leave it alone.",-,"Break the bulb.",L_2;
+	close;
+
+L_2:
+	mes "When you break the bulb, a";
+	mes "'Black Key' falls out.";
+	next;
+	mes "You acquired the '^FF0000Black Key^000000'.";
+	set bKey,1;
+	close;
+
+L_3:
+	mes "There nothing but a broken bulb.";
+	close;
+}
+
+// Box
+
+lhz_cube.gat,248,193,0	script	Box	111,{
+	if (countitem(2657) > 0 || gotLabPerm > 0 || hzdun) goto L_5;
+	mes "There is a box with three holes.";
+	next;
+	if (Oval == 2 && Quadrangle == 2 && Polygon == 2) goto L_4;
+	menu "Oval Hole",L_1,"Cube Hole",L_2,"Polygon Hole",L_3;
+
+L_1:
+	if (Oval == 2) goto L1_2;
+	input @Oval$;
+
+	if (@Oval$ == "Oval" && Oval == 1) goto L1_1;
+	mes "Nothing happened.";
+	close;
+
+L1_1:
+	mes "You inserted the 'Oval' into the oval-shaped hole.";
+	mes "The box makes a metallic click.";
+	set Oval,2;
+	close;
+
+L1_2:
+	mes "You've already inserted the 'Oval'.";
+	close;
+
+L_2:
+	if (Quadrangle == 2) goto L2_2;
+	input @Quadrangle$;
+
+	if (@Quadrangle$ == "Cube" && Quadrangle == 1) goto L2_1;
+	mes "Nothing happened.";
+	close;
+
+L2_1:
+	mes "You inserted the 'Cube' into the cube-shaped hole.";
+	mes "The box makes a metallic click.";
+	set Quadrangle,2;
+	close;
+
+L2_2:
+	mes "You already inserted the 'Cube'.";
+	close;
+
+L_3:
+	if (Polygon == 2) goto L3_2;
+	input @Polygon$;
+
+	if (@Polygon$ == "Polygon" && Polygon == 1) goto L3_1;
+	mes "Nothing happened.";
+	close;
+
+L3_1:
+	mes "You inserted the 'Polygon' into the Polygon Hole.";
+	mes "The box makes a metallic click.";
+	set Polygon,2;
+	close;
+
+L3_2:
+	mes "You've already inserted the 'Polygon'.";
+	close;
+
+L_4:
+	mes "All holes are filled with key models.";
+	next;
+	menu "Leave it alone.",-,"Open the box.",L4_1;
+	close;
+
+L4_1:
+	mes "There is a small card inside of it.";
+	next;
+	mes "You acquired the 'Laboratory Permit'.";
+	set gotLabPerm,1;
+	getitem 2657,1;
+	close;
+
+L_5:
+	mes "There is an opened box.";
+	mes "There is nothing inside.";
+	close;
+}
+
+// Experiment Tube
+
+lhz_cube.gat,224,197,0	script	Experiment Tube	111,{
+	if (countitem(2657) > 0) goto L_3;
+	if (Oval >= 1) goto L_2;
+	mes "There is a weird experiment tube.";
+	mes "It seems like there is something inside.";
+	mes "There' a keyhole and a hole that fits a thin object.";
+	next;
+	input @Key$;
+
+	if (@Key$ == "Black Key" && bKey == 1) goto L_1;
+	mes "Nothing happened.";
+	close;
+
+L_1:
+	mes "You inserted the 'Black Key' and turned it.";
+	mes "The glass window at the front of the machine opened,";
+	mes "Revealing an Oval.";
+	next;
+	mes "You acquired the '^FF0000Oval^000000'.";
+	set Oval,1;
+	close;
+
+L_2:
+	mes "This is where you got '^FF0000Oval^000000'.";
+	mes "There is a weird symbol on the bottom of the machine.";
+	mes "It looks like it could open as it has hinges on one side.";
+	close;
+
+L_3:
+	mes "There is a rectangular hole in the front of the machine.";
+	next;
+	mes "You inserted the 'Laboratory Permit' in the hole,";
+	mes "and the stair leading down appeared on the floor.";
+	next;
+	menu "Go down.",L4_1,"Do not go down.",-;
+	close;
+
+L4_1:
+	mes "Its connected to a long staircase.";
+	close2;
+	set Axe,0;	set yKey,0;	set Box,0;	set num1,0;
+	set num2,0;	set num3,0;	set num4,0;	set num5,0;
+	set num6,0;	set num7,0;	set num8,0;	set num9,0;
+	set Jackknife,0;	set RedKey,0;	set srod1,0;	set srod2,0;
+	set fKey,0;	set gKey,0;	set Polygon,0;	set machine,0;
+	set bKey,0;	set Oval,0;	set Quadrangle,0;	set rod,0;
+	set gotLabPerm,0;
+	set hzdun,1;
+	warp "lhz_cube.gat",177,13;
+	end;
+}
+
+//--------------------------------------------------------------
+// Biolabs-related Dungeon NPCs
+//--------------------------------------------------------------
+
+// Sewer Pipe Access Point
+lighthalzen.gat,313,301,0	script	Sewer Pipe	111,{
+
+	mes "You see some pipes for a sewage system.";
+	if (hzdun == 1) goto s_Find;
+	close;
+
+	s_Find:
+		mes "You found the way into the lab.";
+		next;
+		menu "Go in.",L_1,"Do not go in.",-;
+		close;
+
+	L_1:
+		warp "lhz_cube.gat",231,17;
+		end;
+}
+
+// Level 3 Access Check
+lhz_dun02.gat,150,149,4	script	lhz-warp	45,2,2,{
+
+OnTouch:
+	if (Upper != 1 && BaseLevel < 95) goto L_NoEntry01;
+	if (Upper == 1 && BaseLevel < 90) goto L_NoEntry02;
+	warp "lhz_dun03",140,137;
+	end;
+
+	L_NoEntry01:
+		mes "Non-Advanced class characters must be at least base level 95 to enter level 3 of the Biolabs Dungeon";
+		close;
+
+	L_NoEntry02:
+		mes "Advanced class characters must be at least base level 90 to enter level 3 of the Bio Lab Dungeon";
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Lighthalzen Pickpocket Mini-Quest - Lord Gywall/Tsuyuki
+//--------------------------------------------------------------
+
+lighthalzen.gat,0,0,0	script	PickPocketControl	139,{
+	end;
+
+OnInit:
+	disablenpc "Suspicious Guy#2";
+	disablenpc "Suspicious Guy#3";
+	disablenpc "PickPocketControl";
+	end;
+}
+
+lighthalzen.gat,240,216,4	script	Suspicious Guy#1	870,2,2,{
+	end;
+	
+OnTouch:
+	set @pickrand2,rand(1,3);
+	if (Zeny<200) set Zeny,0;
+	if (Zeny>=10 && @pickrand2 == 1) set Zeny,zeny-10;
+	if (Zeny>=100 && @pickrand2 == 2) set Zeny,zeny-100;
+	if (Zeny>=200 && @pickrand2 == 3) set Zeny,zeny-200;
+	misceffect 274;
+	mes "*SHHHHHHUK*!";
+	next;
+	set @pickrand1,rand(0,100);
+	if (@pickrand1 <= 75) goto L_Caught;
+	mes "["+strcharinfo(0)+"]";
+	set @pickrand3,rand(1,2);
+	if (@pickrand3 == 1) goto RandStolen1;
+	if (@pickrand3 == 2) goto RandStolen2;
+	close;
+
+RandStolen1:
+	mes "Huh...?";
+	mes "I could have sworn";
+	mes "that these pockets full";
+	mes "of zeny were heavier";
+	mes "just a second ago...";
+	next;
+	mes "[?????]";
+	mes "Heh heh heh heh...";
+	close;
+
+RandStolen2:
+	mes "Huh...?";
+	mes "I sense something...";
+	mes "No. It might just";
+	mes "be my imagination.";
+	next;
+	mes "[?????]";
+	mes "Heh heh heh heh...";
+	close;
+
+L_Caught:
+	mes "["+strcharinfo(0)+"]";
+	mes "Huh...?";
+	mes "What the?!";
+	mes "That guy, did he just...?";
+	mes "He did! Hey! That guy";
+	mes "stole some of my money!";
+	next;
+	mes "[Suspicious Guy]";
+	mes "Oh crap!";
+	mes "Gotta scram!";
+	mes "Eat my dust, good guy!";
+	next;
+	set @rand,rand(1,2);
+	if (@rand == 1) goto L_MoveA1;
+	if (@rand == 2) goto L_MoveB1;
+	close;
+
+L_MoveA1:
+	specialeffect 16;
+	disablenpc "Suspicious Guy#1";
+	enablenpc "Suspicious Guy#2";
+	close;
+
+L_MoveB1:
+	specialeffect 16;
+	disablenpc "Suspicious Guy#1";
+	enablenpc "Suspicious Guy#3";
+	close;
+}
+
+lighthalzen.gat,220,169,4	script	Suspicious Guy#2	870,2,2,{
+	end;
+
+OnTouch:
+	set @pickrand2,rand(1,3);
+	if (Zeny<200) set Zeny,0;
+	if (Zeny>=10 && @pickrand2 == 1) set Zeny,zeny-10;
+	if (Zeny>=100 && @pickrand2 == 2) set Zeny,zeny-100;
+	if (Zeny>=200 && @pickrand2 == 3) set Zeny,zeny-200;
+	misceffect 274;
+	mes "*SHHHHHHUK*!";
+	next;
+	set @pickrand1,rand(0,100);
+	if (@pickrand1 <= 75) goto L_Caught;
+	mes "["+strcharinfo(0)+"]";
+	set @pickrand3,rand(1,2);
+	if (@pickrand3 == 1) goto RandStolen1;
+	if (@pickrand3 == 2) goto RandStolen2;
+	close;
+
+RandStolen1:
+	mes "Huh...?";
+	mes "I could have sworn";
+	mes "that these pockets full";
+	mes "of zeny were heavier";
+	mes "just a second ago...";
+	next;
+	mes "[?????]";
+	mes "Heh heh heh heh...";
+	close;
+
+RandStolen2:
+	mes "Huh...?";
+	mes "I sense something...";
+	mes "No. It might just";
+	mes "be my imagination.";
+	next;
+	mes "[?????]";
+	mes "Heh heh heh heh...";
+	close;
+
+L_Caught:
+	mes "["+strcharinfo(0)+"]";
+	mes "Huh...?";
+	mes "What the?!";
+	mes "That guy, did he just...?";
+	mes "He did! Hey! That guy";
+	mes "stole some of my money!";
+	next;
+	mes "[Suspicious Guy]";
+	mes "Oh crap!";
+	mes "Gotta scram!";
+	mes "Eat my dust, good guy!";
+	next;
+	set @rand,rand(1,2);
+	if (@rand == 1) goto L_MoveA2;
+	if (@rand == 2) goto L_MoveB2;
+	close;
+
+L_MoveA2:
+	specialeffect 16;
+	disablenpc "Suspicious Guy#2";
+	enablenpc "Suspicious Guy#1";
+	close;
+
+L_MoveB2:
+	specialeffect 16;
+	disablenpc "Suspicious Guy#3";
+	enablenpc "Suspicious Guy#1";
+	close;
+}
+
+lighthalzen.gat,164,127,4	script	Suspicious Guy#3	870,2,2,{
+	end;
+
+OnTouch:
+	set @pickrand2,rand(1,3);
+	if (Zeny<200) set Zeny,0;
+	if (Zeny>=10 && @pickrand2 == 1) set Zeny,zeny-10;
+	if (Zeny>=100 && @pickrand2 == 2) set Zeny,zeny-100;
+	if (Zeny>=200 && @pickrand2 == 3) set Zeny,zeny-200;
+	misceffect 274;
+	mes "*SHHHHHHUK*!";
+	next;
+	set @pickrand1,rand(0,100);
+	if (@pickrand1 <= 25) goto L_Caught;
+	mes "["+strcharinfo(0)+"]";
+	set @pickrand3,rand(1,2);
+	if (@pickrand3 == 1) goto RandStolen1;
+	if (@pickrand3 == 2) goto RandStolen2;
+	close;
+
+RandStolen1:
+	mes "Huh...?";
+	mes "I could have sworn";
+	mes "that these pockets full";
+	mes "of zeny were heavier";
+	mes "just a second ago...";
+	next;
+	mes "[?????]";
+	mes "Heh heh heh heh...";
+	close;
+
+RandStolen2:
+	mes "Huh...?";
+	mes "I sense something...";
+	mes "No. It might just";
+	mes "be my imagination.";
+	next;
+	mes "[?????]";
+	mes "Heh heh heh heh...";
+	close;
+
+L_Caught:
+	mes "["+strcharinfo(0)+"]";
+	mes "Huh...?";
+	mes "What the?!";
+	mes "That guy, did he just...?";
+	mes "He did! Hey! That guy";
+	mes "stole some of my money!";
+	next;
+	mes "[Suspicious Guy]";
+	mes "Oh crap!";
+	mes "Gotta scram!";
+	mes "Eat my dust, good gu--!";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "Oh no, you don't!";
+	mes "I'm turning you in,";
+	mes "you pickpocket!";
+	next;
+	mes "[Suspicious Guy]";
+	mes "No...! I'm sorry!";
+	mes "I'll give you back";
+	mes "your money, just";
+	mes "let me go! Crap!";
+	next;
+	mes "["+strcharinfo(0)+"]";
+	mes "Alright, fine,";
+	mes "but you better quit";
+	mes "this life of crime!";
+	next;
+	mes "[Suspicious Guy]";
+	mes "You're right, that was";
+	mes "wrong of me. Thanks";
+	mes "for letting me go. Since";
+	mes "you did me a favor, I'll";
+	mes "sell you some tonic that";
+	mes "I use to run really fast.";
+	next;
+	mes "[Suspicious Guy]";
+	mes "I can only sell up to";
+	mes "three of my secret tonic";
+	mes "to you since that's all";
+	mes "I have. Each one will";
+	mes "cost 15,000 zeny. So";
+	mes "what do you say?";
+	next;
+	menu "Give me 1.",P_Tonic1,"Give me 2.",P_Tonic2,"Give me 3.",P_Tonic3,"No I'm fine",P_NoTonic;
+
+	P_Tonic1:
+		if (Zeny < 15000) goto L_Zeny;
+		mes "[Suspicious Guy]";
+		mes "Here you go~";
+		set Zeny,zeny-15000;
+		getitem 12016,1;
+		next;
+		mes "[Suspicious Guy]";
+		mes "Anyway, I'm gonna";
+		mes "get back to work.";
+		mes "Heh heh heh~";
+		if (rand(1,2)==1) goto L_Reset;
+		specialeffect 16;
+		disablenpc "Suspicious Guy#3";
+		enablenpc "Suspicious Guy#2";
+		close;
+
+	P_Tonic2:
+		if (Zeny < 30000) goto L_Zeny;
+		mes "[Suspicious Guy]";
+		mes "Here you go~";
+		set Zeny,zeny-30000;
+		getitem 12016,2;
+		next;
+		mes "[Suspicious Guy]";
+		mes "Anyway, I'm gonna";
+		mes "get back to work.";
+		mes "Heh heh heh~";
+		if (rand(1,2)==1) goto L_Reset;
+		specialeffect 16;
+		disablenpc "Suspicious Guy#3";
+		enablenpc "Suspicious Guy#2";
+		close;
+
+	P_Tonic3:
+		if (Zeny < 45000) goto L_Zeny;
+		mes "[Suspicious Guy]";
+		mes "Here you go~";
+		set Zeny,zeny-45000;
+		getitem 12016,3;
+		next;
+		mes "[Suspicious Guy]";
+		mes "Anyway, I'm gonna";
+		mes "get back to work.";
+		mes "Heh heh heh~";
+		if (rand(1,2)==1) goto L_Reset;
+		specialeffect 16;
+		disablenpc "Suspicious Guy#3";
+		enablenpc "Suspicious Guy#2";
+		close;
+
+	P_NoTonic:
+		mes "[Suspicious Guy]";
+		mes "Well...";
+		mes "You're just gonna";
+		mes "let me go, then?";
+		mes "That's awful generous.";
+		mes "Thanks, I appreciate it.";
+		next;
+		mes "[Suspicious Guy]";
+		mes "Anyway, I'm gonna";
+		mes "get back to work.";
+		mes "Heh heh heh~";
+		if (rand(1,2)==1) goto L_Reset;
+		specialeffect 16;
+		disablenpc "Suspicious Guy#3";
+		enablenpc "Suspicious Guy#2";
+		close;
+
+L_Reset:
+	specialeffect 16;
+	disablenpc "Suspicious Guy#3";
+	enablenpc "Suspicious Guy#1";
+	close;
+
+L_Zeny:
+	mes "[Suspicious Guy]";
+	mes "Uh..";
+	mes "you don't have enough zeny.";
+	next;
+	mes "[Suspicious Guy]";
+	mes "Anyway, I'm gonna";
+	mes "get back to work.";
+	mes "Heh heh heh~";
+	if (rand(1,2)==1) goto L_Reset;
+	specialeffect 16;
+	disablenpc "Suspicious Guy#3";
+	enablenpc "Suspicious Guy#2";
+	close;
+}
+
+//--------------------------------------------------------------
+// Friendship Quest
+//--------------------------------------------------------------
+
+lhz_in02.gat,201,210,3	script	Digotz	869,{
+
+	if (friendship > 9) goto s_Dead;
+	if (friendship == 9) goto s_Wounded;
+	if (friendship == 8) goto s_Cont8;
+	if (friendship == 7 || friendshipextra == 1) goto s_Cont7;
+	if (friendshipextra == 1 || friendship == 6) goto s_Cont6;
+	if (friendship == 6) goto s_Cont5;
+	if (friendship == 4 || friendship == 5) goto s_Cont4;
+	if (friendship == 3) goto s_Cont3;
+	if (friendship == 2) goto s_Cont2;
+	mes "[Digotz]";
+	mes "Oh, an adventurer?";
+	mes "I welcome you to Uptown Lighthalzen, but I'm afraid this area won't offer you a lot of excitement.";
+	next;
+	if (friendship == 1) goto s_Cont;
+	mes "[Digotz]";
+	mes "Feel free to take a look around if you so wish. I'm actually glad to see somebody aside from the stuck up rich people who live here.";
+	close;
+
+s_Cont:
+	mes "[Digotz]";
+	mes "My name is Digotz - just another citizen of Upper Lighthalzen.";
+	mes "I hope that you enjoy your stay in my hometown";
+	next;
+	menu "Do you know someone named Maku?",-;
+
+	mes "[Digotz]";
+	mes "Maku? Maku. Yes, he's my";
+	mes "childhood friend. Or he was,";
+	mes "anyway. Now he's just a jerk.";
+	mes "In an case, we can't hang";
+	mes "out, even if we wanted to,";
+	mes "for several reasons.";
+	next;
+	mes "[Digotz]";
+	mes "Hey, why am I even";
+	mes "talking about this? It's";
+	mes "not like I'm bothered by";
+	mes "the fact that me and Maku aren't";
+	mes "pals anymore. You know what?";
+	mes "Just forget everything I said.";
+	set friendship,2;
+	close;
+
+s_Cont2:
+	mes "[Digotz]";
+	mes "What are you still";
+	mes "doing hanging around";
+	mes "here? There's nothing";
+	mes "interesting in Uptown";
+	mes "for you to see, adventurer.";
+	next;
+	mes "[Digotz]";
+	mes "Gosh...!";
+	mes "Just hearing about";
+	mes "Maku makes me so feel";
+	mes "so upset for some reason!";
+	close;
+
+s_Cont3:
+	mes "[Digotz]";
+	mes "I know that the";
+	mes "opulence of Uptown";
+	mes "seems rather attractive,";
+	mes "but trust me. This place";
+	mes "is colorless. Now, have";
+	mes "you visited the poor district?";
+	next;
+	menu "Yes, I did already...",-;
+
+	mes "[" + strcharinfo(0) + "]";
+	mes "Yes, I did already...";
+	mes "And I met someone";
+	mes "named Maku there.";
+	next;
+	mes "[Digotz]";
+	mes "Maku?! Oh, he must have";
+	mes "mentioned something about";
+	mes "me. But I don't care what he";
+	mes "says, unless it's an apology";
+	mes "for being a fully blown jerk.";
+	mes "Ever since we were kids...";
+	next;
+	mes "[Digotz]";
+	mes "Anyway, we used to be close,";
+	mes "but that guy was never a true";
+	mes "friend of mine! Like that one";
+	mes "time he cheated to beat me at";
+	mes "arm wrestling! Or when he never";
+	mes "thanked me for buying us lunch!";
+	next;
+	mes "[Digotz]";
+	mes "Sure, he might have helped";
+	mes "me a little in meeting my first";
+	mes "girlfriend, but I'll never ever";
+	mes "forgive him for fixing me up";
+	mes "on the worst blind dates a";
+	mes "man can possible experience!";
+	next;
+	mes "[Digotz]";
+	mes "Maku doesn't know a damn";
+	mes "about friendship! Even if I did";
+	mes "want to see him, there are these";
+	mes "people who don't want the rich";
+	mes "to ever meet with the poor.";
+	next;
+	mes "If Maku's fine, that's";
+	mes "good enough to hear for";
+	mes "me! There's no need for me";
+	mes "to go all the way over there";
+	mes "and check up on him! I only";
+	mes "have one regret though...";
+	next;
+	mes "[Digotz]";
+	mes "I only wish I had one";
+	mes "last chance to see Maku...";
+	mes "So that I could kick his sorry";
+	mes "ass myself! Yeah, that's right!";
+	mes "Arrogant bastard! But still,";
+	mes "I'm not able to do that...";
+	next;
+	mes "[Digotz]";
+	mes "The security guards here";
+	mes "will never allow the rich and";
+	mes "poor to meet, fearing that";
+	mes "the poor will disturb the peace";
+	mes "and order of the city. It's a dumb";
+	mes "rule made for dumb people.";
+	next;
+	mes "[Digotz]";
+	mes "Still, it's pretty scary that";
+	mes "someone can get punished";
+	mes "for violating such a stupid";
+	mes "taboo, actually. Anyway, if";
+	mes "you see Maku again, tell";
+	mes "him this for me, got it?";
+	next;
+	mes "[Digotz]";
+	mes "^FF0000Hopeless bastard!";
+	mes "You're still a stubborn jerk!";
+	mes "You owe me at least 3 lunches!";
+	mes "Not to mention an apology!";
+	mes "But who cares what you think?!";
+	mes "I'm so goddamn happy without you!";
+	set friendship,4;
+	close;
+
+s_Cont4:
+	mes "[Digotz]";
+	mes "Still checking out";
+	mes "Uptown Lighthalzen?";
+	mes "Not like I'd care, but if you";
+	mes "do happen to see Maku,";
+	mes "deliver this little message";
+	mes "for me, sentence by sentence.";
+	next;
+	mes "[Digotz]";
+	mes "^FF0000Hopeless bastard!";
+	mes "You're still a stubborn jerk!";
+	mes "You owe me at least 3 lunches!";
+	mes "Not to mention an apology!";
+	mes "But who cares what you think?!";
+	mes "I'm so goddamn happy without you!";
+	close;
+
+s_Cont5:
+	mes "[Digotz]";
+	mes "Oh, it's been a while.";
+	mes "What are you doing back";
+	mes "over here? And, um, did";
+	mes "you deliver that message";
+	mes "to Maku? Now when I think";
+	mes "about it, I was kind of--";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "I delivered your message";
+	mes "word for word, and Maku";
+	mes "got angry, called you names";
+	mes "and has been threatening to";
+	mes "beat you up pretty badly.";
+	next;
+	mes "[Digotz]";
+	mes "That no-good, dirty";
+	mes "lying rotten scoundrel!";
+	mes "If it weren't for those";
+	mes "guards, I'd head over to";
+	mes "the ghetto and beat Maku";
+	mes "up myself! That stupid guy!";
+	next;
+	mes "[Digotz]";
+	mes "During times like this,";
+	mes "I really miss ^FF0000Benkaistein^000000";
+	mes "That guy would always have";
+	mes "an answer for this kind of";
+	mes "situation. Yeah, I think he's";
+	mes "in some far off town, studying.";
+	next;
+	mes "[Digotz]";
+	mes "Supposedly he's in that";
+	mes "place, whatever it's called,";
+	mes "since there's a ton of books";
+	mes "there that he can use. But";
+	mes "yeah, Benkaistein would";
+	mes "always be the mediator...";
+	next;
+	mes "[Digotz]";
+	mes "Even back then, when";
+	mes "me, him and Maku used to";
+	mes "hang out, Benkastein would";
+	mes "mediate if we got into some";
+	mes "argument. Still, he couldn't";
+	mes "do anything about Maku now...";
+	next;
+	mes "[Digotz]";
+	mes "I don't know why,";
+	mes "but I'm so angry!";
+	mes "Why am I stressing";
+	mes "out so much over this?!";
+	set friendshipextra,1;
+	close;
+
+s_Cont6:
+	mes "[Digotz]";
+	mes "Even if Benkaistein came";
+	mes "back from wherever he was";
+	mes "studying, I don't think he'd be";
+	mes "able to get Maku to apologize";
+	mes "to me. That guy is just way";
+	mes "too stubborn for his own good!";
+	close;
+
+s_Cont7:
+	mes "[Digotz]";
+	mes "Even if Benkaistein came";
+	mes "back from wherever he was";
+	mes "studying, I don't think he'd be";
+	mes "able to get Maku to apologize";
+	mes "to me. That guy is just way";
+	mes "too stubborn for his own good!";
+	next;
+	menu "Show Benkastein's Journal",s_Journal,"Don't show Benkastein's Journal.",-;
+	mes "[Digotz]";
+	mes "I don't understand";
+	mes "why I'm so angry!";
+	mes "I'm starting to act";
+	mes "more like Maku, though,";
+	mes "don't get me wrong, it's";
+	mes "not like I care about the guy.";
+	close;
+
+s_Journal:
+	mes "[Digotz]";
+	mes "Why am I so ticked off?";
+	mes "^3131FF*Sigh*^000000 You have something";
+	mes "to show me? Huh? Benkastein";
+	mes "wanted me to read this diary";
+	mes "of his? Sure, why not? I do";
+	mes "owe him a lot over the years...";
+	next;
+	mes "[Benkastein's Journal]";
+	mes "^AD9595Today, me, Digotz and";
+	mes "Maku played this crazy flying";
+	mes "game. Basically, we make";
+	mes "these wings out of wood and";
+	mes "paper, jump of these hills";
+	mes "and try to fly. Dumb, I know.";
+	next;
+	mes "^000000[Benkastein's Journal]";
+	mes "^AD9595Today it was my turn to";
+	mes "jump and flap my arms with";
+	mes "these fake, badly made wings.";
+	mes "It's not really a fun game when";
+	mes "I think about it. Boy, I hope";
+	mes "we don't do that again.";
+	next;
+	mes "^000000[Digotz]";
+	mes "Oh yeah, I remember that!";
+	mes "Maku wore the wings most";
+	mes "of the time, but I still hold";
+	mes "the record for staying in the";
+	mes "air the longest! Yeah, I was";
+	mes "a regular Kid Pegasus~";
+	next;
+	mes "[Benkastein's Journal]";
+	mes "^AD9595Maku, Digotz and me went";
+	mes "outside of town. Of course,";
+	mes "we didn't tell anyone or else";
+	mes "we'd get in trouble. It was";
+	mes "a really exciting day. But";
+	mes "then, we ran into a monster!";
+	next;
+	mes "^000000[Benkastein's Journal]";
+	mes "^AD9595I wanted to run away but Maku";
+	mes "and Digotz wanted to beat it so";
+	mes "that we could become heroes.";
+	mes "Of course, we got hurt pretty";
+	mes "bad and the monster got away.";
+	mes "Boy, mom was not happy...";
+	next;
+	mes "^000000[Digotz]";
+	mes "Huh. I don't remember";
+	mes "that so well. But I know that";
+	mes "Benkastein, me and Maku";
+	mes "weren't afraid of anything back";
+	mes "then. We must have been totally";
+	mes "nuts to fight a monster, though.";
+	next;
+	mes "[Benkastein's Journal]";
+	mes "^AD9595Digotz's been sick for three";
+	mes "days now. It's just a normal";
+	mes "cold and Maku keeps saying";
+	mes "it's Digotz's fault he got sick.";
+	mes "But he's always asking me to";
+	mes "go visit him and see if he's okay.";
+	next;
+	mes "^000000[Digotz]";
+	mes "I think I remember being";
+	mes "pretty sick. Maku was worried?";
+	mes "I... I must have had a horrible";
+	mes "life threatening disease like,";
+	mes "um, Gonorrhitis. You know.";
+	mes "That might have been it.";
+	next;
+	mes "[Benkastein's Journal]";
+	mes "^AD9595Mom and dad keep telling";
+	mes "me not to hang out with Maku";
+	mes "anymore. Their reason is really";
+	mes "dumb, and I don't care if he is";
+	mes "poor. He's one of the best guys";
+	mes "that I'll ever know.";
+	next;
+	mes "^000000[Benkastein's Journal]";
+	mes "^AD9595Digotz's family is really";
+	mes "rich and they don't want him";
+	mes "to see Maku anymore either.";
+	mes "But Digotz doesn't care.";
+	mes "I know he likes Maku a lot.";
+	next;
+	mes "^000000[Digotz]";
+	mes "Well, we were a lot";
+	mes "younger and closer back";
+	mes "then, so... ^111111*Ahem!*^000000 Why did";
+	mes "Benkastein even write that?!";
+	next;
+	mes "[Benkastein's Journal]";
+	mes "^AD9595Today, the three of us";
+	mes "made an oath of brotherhood,";
+	mes "just like we read in the comic";
+	mes "book. We swore we'd always";
+	mes "be friends no matter what.";
+	mes "For always and for always.";
+	next;
+	mes "^000000[Digotz]";
+	mes "I... I was forced to make";
+	mes "that oath! And people do";
+	mes "change, you know! I mean,";
+	mes "we were basically just kids,";
+	mes "it's not like that oath really";
+	mes "means anything now, does it?";
+	next;
+	mes "[Digotz]";
+	mes "That does it. I'm gonna";
+	mes "go see that Maku. I don't";
+	mes "miss him or anything, but";
+	mes "I gotta get him to cancel";
+	mes "that oath. And maybe I'll";
+	mes "beat him up a little bit.";
+	set friendship,8;
+	close;
+
+s_Cont8:
+	mes "[Digotz]";
+	mes "Wh-whoa, I need to";
+	mes "get ready! That Maku's";
+	mes "gonna make fun of me if";
+	mes "I look too rich and pampered.";
+	mes "Damn! Where did I put all of";
+	mes "my fashionable street clothes?";
+	close;
+
+s_Wounded:
+	mes "^3131FFDigotz is seriously";
+	mes "injured from a wound";
+	mes "by a knife that is still";
+	mes "embedded in his belly.^000000";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "Digotz...?";
+	mes "Oh no, let me";
+	mes "get you some help!";
+	next;
+	mes "[Digotz]";
+	mes "H-het... It's the";
+	mes "adventurer... Man,";
+	mes "that Maku. He always";
+	mes "did bring me bad luck...";
+	mes "It's too late for me and";
+	mes "I don't have much time...";
+	next;
+	mes "[Digotz]";
+	mes "Those guards I told you";
+	mes "about... The ones who don't";
+	mes "want the poor and the rich to";
+	mes "mingle? I... Guess they found";
+	mes "out I was gonna meet my old";
+	mes "pal. I just wanted to see him...";
+	next;
+	mes "[Digotz]";
+	mes "This guy... In a black";
+	mes "suit... He just... He just";
+	mes "stabbed me! I... God. It's";
+	mes "been so long since I've talked";
+	mes "to Maku. We'll hang out and have";
+	mes "fun, just like the good old days.";
+	next;
+	mes "[Digotz]";
+	mes "I missed my buddies, but now...";
+	mes "Now I can hear them calling me.";
+	mes "Now we can all be together just";
+	mes "like we all promised. Yeah...";
+	mes "I was wrong. Life's too short";
+	mes "to be angry with your frie--";
+	next;
+	mes "[Digotz]";
+	mes "..............";
+	next;
+	mes "[Digotz]";
+	mes "..............";
+	mes ".......................";
+	next;
+	mes "[Digotz]";
+	mes "..............";
+	mes ".......................";
+	mes "................................";
+	next;
+	mes "^3131FFDigotz stopped breathing.";
+	mes "You remove the Knife from";
+	mes "his lifeless body as a final";
+	mes "courtesy to a man who";
+	mes "dearly loved his friends.";
+	next;
+	set friendship,10;
+	getitem 1201,1;
+	close;
+
+s_Dead:
+	mes "^3131FFDigotz has passed";
+	mes "away, but the look on";
+	mes "his face seems very";
+	mes "peaceful and content.";
+	close;
+
+}
+
+lighthalzen.gat,337,232,3	script	Maku	870,{
+	if (friendship == 2) goto L_friend2;
+	if (friendship == 3) goto L_friend3;
+	if (friendship == 4) goto L_friend4;
+	if (friendship == 5) goto L_friend5;
+	if (friendship == 6) goto L_friend6;
+	if (friendship == 7) goto L_friend7;
+	if (friendship == 8) goto L_friend8;
+	if (friendship == 9) goto L_friend9;
+	if (friendship > 9) goto L_friend10;
+	mes "[Maku]";
+	mes "Hey, you're on of those adventurers, eh?";
+	mes "Welcome to the ghetto.";
+	mes "Nothing too adventurous here, but hey, you can explore all you want.";
+	next;
+	mes "[Maku]";
+	mes "I don't know if you know, but actually, the people who live here ain't allowed to explore this whole city. It's kind of taboo to talk about it, but what do I care, right?";
+	next;
+	mes "[Maku]";
+	mes "Yeah, basically the rich people here are too afraid of the poor people comin' to see them, so the security in this city is pretty tight!";
+	mes "Those upper class guys are trash...";
+	next;
+	mes "[Maku]";
+	mes "I didn't use to think this way. I actually used to have a pretty rich friend till I found out he's not all";
+	mes "I thought he was. That moron! Why's he like that?!";
+	next;
+	mes "[Maku]";
+	mes "Eh, forget about it.";
+	mes "Why am I even talking about my personal life to someone I just met, anyway? Sure, we all do it, but still...";
+	next;
+	mes "[Maku]";
+	mes "Well, when you get bored of the ghetto, you really oughta check out the rich section of town.";
+	mes "I'm bitter, but I'll also admit it's way nicer than this place.";
+	if (BaseJob != JOB_NOVICE) set friendship,1;
+	close;
+
+	L_friend2:
+		mes "[Maku]";
+		mes "Hey, what are you";
+		mes "doing back over here?";
+		mes "I thought I recommended";
+		mes "going over to check out";
+		mes "Uptown Lighthalzen. This";
+		mes "place is pretty run-down...";
+		next;
+		menu "I actually met Digotz and...",-;
+
+		mes "[Maku]";
+		mes "You what...?!";
+		mes "You saw my old pal,";
+		mes "Digotz?! Er, I mean,";
+		mes "Mister Alexander Digotz,";
+		mes "who used to be my buddy,";
+		mes "but obviously not anymore.";
+		next;
+		mes "[Maku]";
+		mes "Sure, we were real close";
+		mes "at one time, but that was";
+		mes "too long ago. It's been a";
+		mes "long time since we hung";
+		mes "out and he probable hates";
+		mes "my penniless guts and...";
+		next;
+		mes "[Maku]";
+		mes "Crud, just listen to";
+		mes "me, I sound like a wuss.";
+		mes "I don't miss Digotz! In fact,";
+		mes "I hate the guy, one hundred";
+		mes "percent! The next time I see";
+		mes "him, I'll beat him to a pulp!";
+		set friendship,3;
+		close;
+
+	L_friend3:
+		mes "[Maku]";
+		mes "Man, I need to blow off some";
+		mes "steam! Sure, me and Digotz";
+		mes "were buds before and maybe";
+		mes "we might seem like friends now,";
+		mes "but not anymore, though we used";
+		mes "to be closer than this. Argh!";
+		next;
+		mes "[Maku]";
+		mes "Don't get me wrong, I don't";
+		mes "miss the guy or anything like";
+		mes "that and I don't feel sorry about";
+		mes "what happened. But if he ever";
+		mes "came to apologize to me, I'd";
+		mes "probably accept, you know.";
+		next;
+		mes "[Maku]";
+		mes "Well, after thinking";
+		mes "about it, of course.";
+		mes "I mean, I'm not the one";
+		mes "holding a grudge. It's all";
+		mes "that guy's fault! Sheeeesh!";
+		close;
+
+	L_friend4:
+		mes "[Maku]";
+		mes "What the hell are you";
+		mes "still doing around here?";
+		mes "You must have better things";
+		mes "to do than talk to a ruffian";
+		mes "like me or that snobby and";
+		mes "totally prickish Digotz.";
+		next;
+		menu "Speaking of which...",-;
+		mes "[" + strcharinfo(0) + "]";
+		mes "Speaking of which...";
+		mes "I spoke to Digotz again.";
+		mes "He told me to give you a";
+		mes "message, but I'm not sure th--";
+		next;
+		mes "[Maku]";
+		mes "That no-good bastard";
+		mes "has a message for me?!";
+		mes "Oh, I'm soooo honored~";
+		mes "Tell me what that fink";
+		mes "has to say, line by line!";
+		next;
+		input @digotzstr$;
+		if (@digotzstr$ != "Hopeless bastard!") goto failstr;
+		mes "[Maku]";
+		mes "\"Hopeless Bastard?!\"";
+		mes "Well, at least he had the stomach to say that.";
+		mes "Through somebody else anyway! What else'd he say?!";
+		next;
+		input @digotzstr$;
+		if (@digotzstr$ != "You're still a stubborn jerk!") goto failstr;
+		mes "[Maku]";
+		mes "\"Stubborn Jerk?!\"";
+		mes "Takes no one to know one,";
+		mes "bastard! Why I oughta--";
+		mes "Grrr! What'd he say next?!";
+		next;
+		input @digotzstr$;
+		if (@digotzstr$ != "You owe me at least 3 lunches!") goto failstr;
+		mes "[Maku]";
+		mes "Three lunches?!";
+		mes "I treated that guy to lunch like, fifteen times!";
+		mes "I tell you, the guy does not know the meaning of friendship!";
+		mes "What else did that moron say?!";
+		next;
+		input @digotzstr$;	
+		if (@digotzstr$ != "Not to mention an apology!") goto failstr;
+		mes "[Maku]";
+		mes "Me, apologize?!";
+		mes "He should be on his hands";
+		mes "and knees begging for my";
+		mes "frickin' forgiveness! That...";
+		mes "That selfish no-good stupid...";
+		mes "W-what else did he tell you?!";
+		next;
+		input @digotzstr$;
+		if (@digotzstr$ != "But who cares what you think?!") goto failstr;
+		mes "[Maku]";
+		mes "Who cares what I think?!";
+		mes "GRRRAAH~!! Who cares";
+		mes "what he thinks!! ^111111*Pant Pant*^000000";
+		mes "I'm gonna murderlize that";
+		mes "dumb creep! He can't possibly";
+		mes "make me angrier than I am now!";
+		next;
+		input @digotzstr$;
+		if (@digotzstr$ != "I'm so goddamn happy without you!") goto failstr;
+		mes "[Maku]";
+		mes "That's it.";
+		mes "It's decided. The";
+		mes "next time I see Digotz,";
+		mes "I'm gonna plaster his";
+		mes "face all over the floor.";
+		set friendship,5;
+		close;
+
+	L_friend5:
+		mes "[Maku]";
+		mes "RrrrRrrrr.....";
+		mes "RrrrrRRRrrRR.....";
+		mes "GGGGGRRRRR...";
+		next;
+		mes "^3131FFUh oh...";
+		mes "It looks like Maku";
+		mes "is starting to rage";
+		mes "just a bit too much.^000000";
+		next;
+		mes "[Maku]";
+		mes "...";
+		mes "......";
+		mes ".........";
+		next;
+		mes "[Maku]";
+		mes "Gggrrrr...";
+		next;
+		mes "[Maku]";
+		mes "GRAAAAAAAAH~!";
+		mes "Who the hell does he";
+		mes "think he is, telling me";
+		mes "all sorts of crap!? Digotz,";
+		mes "you're not getting away";
+		mes "with this! Gonna wreck you!!";
+		next;
+		set Hp,MaxHp/2;
+		mes "^3131FFMaku's seething quickly";
+		mes "explodes into pure, violent";
+		mes "rage. You manage to calm";
+		mes "him down after a while, but";
+		mes "barely keep yourself from";
+		mes "getting killed in this outburst^000000";
+		next;
+		mes "[Maku]";
+		mes "^111111*Pant pant* *Whew~*^000000";
+		mes "D-don't worry, I've got";
+		mes "a grip on myself now.";
+		mes "Thanks for not letting me";
+		mes "get too crazy. Times like";
+		mes "this, I really miss ^FF0000Benkaistein^000000.";
+		next;
+		mes "[Maku]";
+		mes "Benkastein would always";
+		mes "make sure that I'd stay out";
+		mes "of fights. I really miss that";
+		mes "guy. Still, he ain't around...";
+		next;
+		mes "[Maku]";
+		mes "Damn those guards!";
+		mes "If they weren't there,";
+		mes "I could just go over and";
+		mes "kick Digotz's ass! I swear,";
+		mes "if it weren't for them...!";		
+		set friendship,6;
+		close;
+
+	L_friend6:
+		mes "[Maku]";
+		mes "Arrrrgh! Whenever I hear";
+		mes "about that Digotz, I get so";
+		mes "peeved! Is that guy giving";
+		mes "me the brushoff just because";
+		mes "I'm not a rich guy like he is?!";
+		next;
+		mes "[Maku]";
+		mes "I can't...";
+		mes "I can't even beat him up";
+		mes "all properly because of";
+		mes "all those freakin' guards!";
+		mes "Arrrrrrrgh! Man, where's";
+		mes "Benkastein when I need him?";
+		close;
+
+	L_friend7:
+		mes "[Maku]";
+		mes "Arrrrgh! Whenever I hear";
+		mes "about that Digotz, I get so";
+		mes "peeved! Is that guy giving";
+		mes "me the brushoff just because";
+		mes "I'm not a rich guy like he is?!";
+		next;
+		mes "[Maku]";
+		mes "I can't...";
+		mes "I can't even beat him up";
+		mes "all properly because of";
+		mes "all those freakin' guards!";
+		mes "Arrrrrrrgh! Man, where's";
+		mes "Benkastein when I need him?";
+		close;
+
+	L_friend8:
+		mes "[Maku]";
+		mes "Hey, what is that? You want";
+		mes "me to read this journal?";
+		mes "Er, okay, but I'm none too";
+		mes "comfortable going through";
+		mes "somebody's diary. It's just";
+		mes "kinda... creepy, you know?";
+		next;
+		mes "[Maku]";
+		mes "Hey, this think is";
+		mes "Benkastein's. I haven't";
+		mes "seen that guy in a long while.";
+		mes "Ah, so he gave it to you for me";
+		mes "to read? Alright, I owe him a";
+		mes "favor or two, so I oughta...";
+		next;
+		mes "[Benkastein's Journal]";
+		mes "^AD9595Today, me, Digotz and";
+		mes "Maku played this crazy flying";
+		mes "game. Basically, we make";
+		mes "these wings out of wood and";
+		mes "paper, jump of these hills";
+		mes "and try to fly. Dumb, I know.";
+		next;
+		mes "^000000[Benkastein's Journal]";
+		mes "^AD9595Today it was my turn to";
+		mes "jump and flap my arms with";
+		mes "these fake, badly made wings.";
+		mes "It's not really a fun game when";
+		mes "I think about it. Boy, I hope";
+		mes "we don't do that again.";
+		next;
+		mes "^000000[Maku]";
+		mes "What is he talking about?!";
+		mes "That game was real fun!";
+		mes "Yeah, I usually wore the";
+		mes "wings and Digotz always";
+		mes "wanted to wear them too.";
+		next;
+		mes "[Benkastein's Journal]";
+		mes "^AD9595Maku, Digotz and me went";
+		mes "outside of town. Of course,";
+		mes "we didn't tell anyone or else";
+		mes "we'd get in trouble. It was";
+		mes "a really exciting day. But";
+		mes "then, we ran into a monster!";
+		next;
+		mes "^000000[Benkastein's Journal]";
+		mes "^AD9595I wanted to run away but Maku";
+		mes "and Digotz wanted to beat it so";
+		mes "that we could become heroes.";
+		mes "Of course, we got hurt pretty";
+		mes "bad and the monster got away.";
+		mes "Boy, mom was not happy...";
+		next;
+		mes "^000000[Maku]";
+		mes "That's right! Back then,";
+		mes "the three of us weren't";
+		mes "afraid of anything! Of course,";
+		mes "Digotz got beat up the most.";
+		mes "But I gotta say, he was also";
+		mes "the most fearless of us.";
+		next;
+		mes "[Benkastein's Journal]";
+		mes "^AD9595Digotz's been sick for three";
+		mes "days now. It's just a normal";
+		mes "cold and Maku keeps saying";
+		mes "it's Digotz's fault he got sick.";
+		mes "But he's always asking me to";
+		mes "go visit him and see if he's okay.";
+		next;
+		mes "^000000[Maku]";
+		mes "Wh-what?! No, I wasn't";
+		mes "worried at all! That must";
+		mes "have been the time Digotz";
+		mes "caught Clymonia. You know,";
+		mes "that, uh, horrible disease. No";
+		mes "one should have that one!";
+		next;
+		mes "[Benkastein's Journal]";
+		mes "^AD9595Mom and dad keep telling";
+		mes "me not to hang out with Maku";
+		mes "anymore. Their reason is really";
+		mes "dumb, and I don't care if he is";
+		mes "poor. He's one of the best guys";
+		mes "that I'll ever know.";
+		next;
+		mes "^000000[Benkastein's Journal]";
+		mes "^AD9595Digotz's family is really";
+		mes "rich and they don't want him";
+		mes "to see Maku anymore either.";
+		mes "But Digotz doesn't care.";
+		mes "I know he likes Maku a lot.";
+		next;
+		mes "^000000[Maku]";
+		mes "...";
+		mes "......";
+		next;
+		mes "[Benkastein's Journal]";
+		mes "^AD9595Today, the three of us";
+		mes "made an oath of brotherhood,";
+		mes "just like we read in the comic";
+		mes "book. We swore we'd always";
+		mes "be friends no matter what.";
+		mes "For always and for always.";
+		next;
+		mes "^000000[Maku]";
+		mes "Well, that's true,";
+		mes "I guess, but people";
+		mes "change! Besides, we got";
+		mes "that idea from a comic book!";
+		mes "Well, if he apologizes first,";
+		mes "I guess I better forgive him.";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "Good...";
+		mes "Because Digotz said";
+		mes "that he'll be coming";
+		mes "by in a few days.";
+		next;
+		mes "[Maku]";
+		mes "What?! He's really coming";
+		mes "here? What for? It's too late";
+		mes "to patch things up! Still, I'd be";
+		mes "a real prick if I didn't see him";
+		mes "Alright, fine! I'll teach that guy";
+		mes "a lesson once he's here!";
+		next;
+		mes "[Maku]";
+		mes "And, um, gimme that";
+		mes "journal! I'm gonna read";
+		mes "more of it so I can make";
+		mes "fun of Digotz. Bwahahaha!";
+		mes "But yeah, um, thanks. Not";
+		mes "that I'm grateful or anything.";
+		next;
+		mes "[Maku]";
+		mes "So, uh, I guess";
+		mes "I'll see you later.";
+		mes "Um, now I gotta get";
+		mes "ready for something.";
+		mes "^111111(But not to see Digotz!)";
+		if (countitem(7351))delitem 7351,1;
+		set friendship,9;
+		close;
+
+	L_friend9:
+		mes "[Maku]";
+		mes "Why is Digotz";
+		mes "so late? This isn't";
+		mes "like him at all. Maybe";
+		mes "something's wrong?";
+		close;
+
+	L_friend10:
+		mes "[Maku]";
+		mes "Why is Digotz";
+		mes "so late? This isn't";
+		mes "like him at all. Maybe";
+		mes "something's wrong?";
+		next;
+		mes "[Maku]";
+		mes "Eh, he might have";
+		mes "some kinda reason for";
+		mes "being late, but if he don't,";
+		mes "I've been saving a whole";
+		mes "six pack of whoop-ass to open,";
+		mes "just for him. Heh heh heh..";
+		close;
+	
+	failstr:
+	mes "[Maku]";
+	mes "Wha...? I dunno if Digotz would say something like that.";
+	mes "You sure you heard him carefully enough? It's been a while, but I know how Digotz talks, man.";
+	close;
+}
+
+yuno_in04.gat,107,14,4	script	Student	754,{
+
+	mes "[Joey Choryee]";
+	mes "This is a study area where";
+	mes "you're not supposed to speak,";
+	mes "walk or even breathe loudly.";
+	mes "Still, students like Benkastein";
+	mes "can tune out the whole world";
+	mes "when they study hard enough...";
+	if (friendship != 6) close;
+	next;
+	mes "[Joey Choryee]";
+	mes "Benkastein...?";
+	mes "He's in the north part.";
+	mes "of this room. He's a real";
+	mes "nice guy, but a little anal.";
+	mes "Well, he's too organized";
+	mes "and he labels everything!";
+	close;
+
+}
+
+yuno_in04.gat,96,106,4	script	Passionate Student	754,{
+
+	if (friendship3 == 4) goto s_Finish;
+	if (friendship == 10) goto s_Ask;
+	if (friendship3 == 2 || friendship3 == 3) goto s_Cont2;
+	if (friendship3 == 1) goto s_Cont;
+	mes "[Passionate Student]";
+	mes "Let's see, now.";
+	mes "Wind Magic, Black Magic,";
+	mes "Porings, ah, there it is";
+	mes "Monster race properties.";
+	mes "Hopefully this contains";
+	mes "the information I need...";
+	next;
+	if (friendship != 6) goto s_Dialog;
+	mes "Upon briefly glancing at";
+	mes "this student's belongings,";
+	mes "you notice that the name";
+	mes "\"Benkastein\" is printed";
+	mes "on them. This is the friend";
+	mes "mentioned by Maku and Digotz!";
+	next;
+	menu "Excuse me...",-;
+	mes "[" + strcharinfo(0) + "]";
+	mes "Excuse me...";
+	mes "Benkastein?";
+	next;
+	mes "[Passionate Student]";
+	mes "...The world of humans";
+	mes "and the world of demons,";
+	mes "yes, yes... No, what I'm";
+	mes "looking for is a reference";
+	mes "to the heavens of Asgard.";
+	mes "Hmm, this here might help...";
+	next;
+	menu "Hey...",-;
+	mes "[" + strcharinfo(0) + "]";
+	mes "Hey...";
+	mes "Over here.";
+	mes "Benkastein!";
+	next;
+	mes "[Passionate Student]";
+	mes "...Oh, now that's a very";
+	mes "interesting observation.";
+	mes "If I can incorporate that";
+	mes "into my thesis without too";
+	mes "much trouble, my standpoint";
+	mes "would look much more solid...";
+	next;
+	menu "HEY YOU...!",-;
+	mes "[" + strcharinfo(0) + "]";
+	mes "HEY YOU...!";
+	mes "BENKASTEIN~!";
+	next;
+	mes "[Passionate Student]";
+	mes "Oh, good heavens!";
+	mes "C-can't you keep";
+	mes "your voice down?";
+	mes "I-I'm trying to study!";
+	mes "No, wait. Have you been";
+	mes "calling me all this time?";
+	set friendship3,1;
+	close;
+
+s_Cont:
+	mes "[Passionate Student]";
+	mes "Oh, you startled me!";
+	mes "Still, I'm aware that it's";
+	mes "hard to get my attention";
+	mes "once I immerse myself";
+	mes "in a book. So, how can";
+	mes "I help you, adventurer?";
+	next;
+	menu "Tell him about Maku and Digotz.",-;
+	mes "[Benkastein]";
+	mes "Oh, how are my friends";
+	mes "doing? Oh, what? They're";
+	mes "having a huge fight just";
+	mes "because one's rich and";
+	mes "the other one's poor?";
+	mes "That's pretty childish!";
+	next;
+	mes "[Benkastein]";
+	mes "But then again, that's just";
+	mes "like them. ^111111*Sigh*^000000 I really want";
+	mes "to go back home and get those";
+	mes "two to make up, but I also need";
+	mes "to finish this thesis. Let's see...";
+	mes "What can I possibly do from here?";
+	next;
+	mes "[Benkastein]";
+	mes "Oh, I know what I can do!";
+	mes "Wait, but where did I put it?";
+	mes "Oh, how cold I lose something";
+	mes "so important? Wait! Would you";
+	mes "please wait a second while";
+	mes "I look for something?";
+	set friendship3,2;
+	close;
+
+s_Cont2:
+	if (friendship > 6) goto s_Dialog;
+	mes "[Benkastein]";
+	mes "Aw nuts, this is";
+	mes "taking much longer";
+	mes "than I had expected.";
+	mes "Now where did I put";
+	mes "that thing? Hmmmm...";
+	if (friendship3 == 3) goto s_Cont3;
+	next;
+	mes "^3131FFPerhaps it would";
+	mes "be best if you help";
+	mes "Benkastein to look for";
+	mes "what he's searching for.";
+	close;
+
+s_Cont3:
+	next;
+	mes "[Benkastein]";
+	mes "Oh, is that it?";
+	mes "Did you find my";
+	mes "journal? Quick, let";
+	mes "me check. Yes, yes...";
+	mes "This is it! Thank you";
+	mes "for finding this for me!";
+	next;
+	mes "[Benkastein]";
+	mes "Would you mind doing";
+	mes "a favor for me? It'd be";
+	mes "better if I talk to them";
+	mes "myself, but I'm too busy";
+	mes "working on this thesis...";
+	next;
+	mes "[Benkastein]";
+	mes "Would you please give this";
+	mes "journal to Digotz and Maku?";
+	mes "I wrote it in when we were";
+	mes "really young, so it should";
+	mes "remind them of all the good";
+	mes "times we used to share.";
+	next;
+	mes "[Benkastein]";
+	mes "Anyway, this should at";
+	mes "least help them realize";
+	mes "how stupid they've been";
+	mes "acting. Thanks in advance,";
+	mes "and please take care of";
+	mes "Maku and Digotz for me.";
+	if (friendship == 6)set friendship,7;
+	close;
+
+s_Dialog:
+	mes "^3131FFThis student seems to";
+	mes "be dilligently conducting";
+	mes "intensive research on some";
+	mes "academic subject.";
+	mes "It would be best to leave him";
+	mes "alone so that he can study.";
+	close;
+
+s_Ask:
+	mes "[Benkastein]";
+	mes "Were you able to bring";
+	mes "my journal to Digotz and";
+	mes "Maku? I'm pretty sure it'd";
+	mes "remind them of all the good";
+	mes "times we had. I know they";
+	mes "sure can be stubborn...";
+	next;
+	mes "[Benkastein]";
+	mes "Anyway, I really";
+	mes "appreciate all your";
+	mes "help. When I go back";
+	mes "home, I look forward to";
+	mes "seeing the two of them again.";
+	next;
+	mes "[Benkastein]";
+	mes "Until then, I need to research,";
+	mes "finish my thesis and accomplish";
+	mes "my academic goals. Oh, please";
+	mes "take this pass which will let you";
+	mes "go back and forth between the";
+	mes "rich and poor areas as my thanks.";
+	next;
+	mes "[Benkastein]";
+	mes "Anyway, I wish you";
+	mes "safety in your travels,";
+	mes "adventurer. When the three";
+	mes "of us get together, I'll be";
+	mes "sure to let you know~";
+	if (BaseLevel < 41)set BaseExp,BaseExp+49500;
+	if (BaseLevel > 40 && BaseLevel < 61)set BaseExp,BaseExp+99000;
+	if (BaseLevel > 60 && BaseLevel < 71)set BaseExp,BaseExp+198000;
+	if (BaseLevel > 70 && BaseLevel < 81)set BaseExp,BaseExp+396000;
+	if (BaseLevel > 80 && BaseLevel < 91)set BaseExp,BaseExp+594000;
+	if (BaseLevel > 90)set BaseExp,BaseExp+792000;
+	getitem 7350,1;
+	set friendship,11;
+	set friendship3,4;
+	close;
+
+s_Finish:
+	mes "^3131FFThis student seems to";
+	mes "be dilligently conducting";
+	mes "intensive research on some";
+	mes "academic subject. For now,";
+	mes "it would be best to leave him";
+	mes "alone so that he can study.";
+	close;
+
+}
+
+yuno_in04.gat,168,117,1	script	Book	111,{
+
+	if (friendship3 == 3) goto Book2;
+	if (friendship3 == 2) goto Book;
+	mes "^3131FFThis book is labeled,";
+	mes "\"Benkastein's Journal";
+	mes "Vol. 6.\".";
+	close;
+Book:
+	mes "^3131FFThis book is labeled,";
+	mes "\"Benkastein's Journal";
+	mes "Vol. 6.\". This is probably";
+	mes "what Benkastein was trying";
+	mes "to find, so it might be best to";
+	mes "bring this and show it to him";
+	set friendship3,3;
+	getitem 7351,1;
+	close;
+Book2:
+	mes "^3131FFThis is where you found";
+	mes "the book that Benkastein";
+	mes "was looking for.";
+	close;
+
+}
+
+yuno_in04.gat,169,109,1	script	Ambitious Hollgrehenn	111,{
+
+	mes "*Hollgrehenn: The Ambition*";
+	mes "By Aragham Caul*";
+	mes "";
+	mes "";
+	mes "";
+	mes "";
+	mes "Publisher:";
+	mes "Muha Books, Co.";
+	next;
+	mes "...";
+	mes "He would stop at nothing";
+	mes "to have the greatest weapon";
+	mes "in the world in his possession.";
+	mes "He became a smith so that he";
+	mes "could discern which weapons";
+	mes "were the most powerful...";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "That's strange...";
+	mes "The next page";
+	mes "has been torn out.";
+	close;
+
+}
+
+yuno_in04.gat,171,117,1	script	List of Books	111,{
+
+	mes "^3131FFYou find a series";
+	mes "of paperback books";
+	mes "with titles, printed";
+	mes "on the binding in an";
+	mes "elegantly decorative";
+	mes "cursive style font.";
+	mes "The titles include...";
+	next;
+	mes "*Volcanic Passion*";
+	mes "*Midnight Crescendo*";
+	mes "*A Paris Affair*";
+	mes "*Fever Pitch*";
+	mes "*The Cowyboy Next Door*";
+	mes "*Platonic Romance*";
+	mes "*How Lara Got Her Groove Back*";
+	next;
+	mes "^000000[" + strcharinfo(0) + "]";
+	mes "What the...?!";
+	mes "This place even has";
+	mes "a romance novel section?";
+	close;
+
+}

@@ -84,6 +84,9 @@ JOB_DEATH_KNIGHT 4051
 JOB_DARK_COLLECTOR 4052
 JOB_MUNAK 4053
 
+Male	1
+Female	0
+
 mf_nomemo	0
 mf_noteleport	1
 mf_nosave	2

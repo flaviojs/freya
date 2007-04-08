@@ -1,0 +1,33 @@
+// Freya Special NPC
+
+// PCLoadMapEvent NPC
+//==============================================================================
+// How it works:
+// When a player changes maps, the NPC will run as if he just clicked it. Which means
+// if the script is like this:
+//
+// [code]
+// prontera.gat,0,0,0	script	PCLoadMapEvent	-1,{
+//	mes "lmao";
+//	close;
+// }
+// [/code]
+//
+// every player who changes maps will recieve a message 'lmao' in their face as soon
+// as they can see the map.
+//-----------------------------------------------------------------------------
+// Note:
+// 1) This NPC will only run if its name is 'PCLoadMapEvent'
+// 2) I made it invisible because you don't need to see it. Its an abstract NPC
+// 3) If you don't want it, simply delete it
+// 4) If you have more than one PCLoadMapEvent NPC, strange things will happen.
+// 5) You can put this script in ANY file.
+// 6) I put an end; there because that just makes it do nothing.
+// 7) Modify this script to your liking and give your players a surprise
+// 8) Remember: IT RUNS LIKE A NORMAL NPC. BUT THE ONLY WAY TO 'CLICK' IT IS BY
+//              LOGGING ON
+
+
+prontera.gat,0,0,0	script	PCLoadMapEvent	-1,{
+	end;
+}

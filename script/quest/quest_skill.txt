@@ -1,0 +1,2741 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Quest Skills	Author: A Lot of People
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 First version, merged together [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: Includes all first and second job class quest
+// skills.
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Acolyte -> Holy Light Skill Quest
+//--------------------------------------------------------------
+
+prt_church.gat,173,23,4	script	Acolyte Klift	79,{
+
+	mes "[Acolyte Klift]";
+	if (BaseClass == Job_Acolyte) goto L_Start;
+
+L_Other:
+	mes "Ah, welcome to the Prontera Church also known as the Sanctuary.";
+	mes "Unfortunately I cannot be of much help to you.  For my fellow";
+	mes "Priests and Acolytes however, I can help them to find their ^5555FF'hidden";
+	mes "ability'^000000.";
+	close;
+
+L_Start:
+	if (HOLYLIGHT == 1) goto L_Check;
+	if (getskilllv(156)>0) goto L_GotSkill;
+	if (Sex == Male) mes "Ahh... Brother!";
+	if (Sex == Female) mes "Ahh... Sister!";
+	mes "Does the task of caring for our lost sheep tire you out? Is it too";
+	mes "much of a burden? Do not despair, I am here to assist you.";
+	next;
+	menu "About an Acolyte's ^5555FF'hidden ablitiy'^000000...",M_0, "End Conversation.",M_End;
+
+	M_0:
+		mes "[Acolyte Klift]";
+		mes "Faced with great danger in an endless struggle with evil, our";
+		mes "brethren are in much need of assistance.";
+		next;
+		mes "[Acolyte Klift]";
+		mes "As acolytes approach their senior years in the clergy, they learn to";
+		mes "call upon their inner power to use a special skill to aid them in";
+		mes "battle.";
+		next;
+		mes "[Acolyte Klift]";
+		mes "That skill is ^5555FF'Holy Light'^000000.  Holy Light does damage to";
+		mes "all foes but is even more effective on the undead.";
+		next;
+		mes "[Acolyte Klift]";
+		mes "For someone like yourself to learn this skill, takes some hard work.";
+		mes "Would you like to learn this skill?";
+		next;
+		menu "Yes, please.",-, "Let me think about it.",M_End;
+
+			mes "[Acolyte Klift]";
+			mes "Very good.  You will need to find these items in order to learn the";
+			mes "skill:";
+			mes "^5555FF1 Opal^000000,";
+			mes "^5555FF1 Crystal Blue^000000,";
+			mes "and ^5555FF1 Rosary^000000.";
+			next;
+			mes "[Acolyte Klift]";
+			mes "Of course you will also need to have a sufficient level of";
+			mes "experience.  Namely a ^5555FFjob level of at least 30^000000.  This does";
+			mes "not apply to Priests or Monks however, because of the vast amount of";
+			mes "experience they already have.";
+			next;
+			mes "[Acolyte Klift]";
+			mes "Come back when you are ready.  I will be here.";
+			set HOLYLIGHT, 1;
+			close;
+	M_End:
+		mes "[Acolyte Klift]";
+		mes "I understand your zeal.  You have much time yet to practice and gain";
+		mes "experience.  Go forth with many blessings...";
+		close;
+
+L_Check:
+	mes "So, are you ready for the Holy Light training? Let me check....";
+	next;
+	mes "[Acolyte Klift]";
+	if (Basejob == Job_Acolyte && Joblevel < 30) goto L_LowLvl;
+	if (countitem(727) < 1 || countitem(991) < 1 || countitem(2608) < 1) goto L_NoItems;
+
+	mes "Oh! Very good.  You have brought back all of the items I asked for.";
+	next;
+	mes "[Acolyte Klift]";
+	mes "Ok lets get started...";
+	next;
+	mes "(after hours of praying and meditation)";
+	next;
+	mes "[Acolyte Klift]";
+	mes "Yes! I feel it. You have released your hidden abilities and can now";
+	mes "use ^5555FFHoly Light^000000!";
+	delitem 727,1;
+	delitem 991,1;
+	delitem 2608,1;
+	skill 156,1,0;
+	set HOLYLIGHT, 0;
+	mes "[Priest]";
+	mes "You have done well.  May God bless you!";
+	emotion 21;
+	close;
+
+	L_LowLvl:
+		mes "I'm sorry but you need more training before I can teach you Holy";
+		mes "Light.  Come back when your job level is at least 30.";
+		close;
+	L_NoItems:
+		mes "I'm sorry but you don't have the required items for Holy Light.";
+		mes "You need:";
+		mes "^5555FF1 Opal^000000,";
+		mes "^5555FF1 Crystal Blue^000000,";
+		mes "and ^5555FF1 Rosary^000000.";
+		close;
+
+L_GotSkill:
+	mes "Ah, I see you have been using Holy Light.  It is such a great skill";
+	mes "that I truly believe it to be a gift from the lord himself.  May";
+	mes "God be with you always.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Alchemist -> Elemental Potion Creation Skill Quest
+//--------------------------------------------------------------
+
+yuno_in04.gat,33,108,5	script	Pislik	750,{
+
+	mes "[Pislik]";
+	if (BaseJob != Job_Alchemist) goto L_noalche;
+	if (countitem(7434)) goto L_alreadyhave;//Items: Elemental_Potion_Creation_Guide,
+	if (JobLevel<40) goto L_nojob;
+
+	mes "I'll teach you all I know, but";
+	mes "you have to bring me some things";
+	mes "first.";
+	mes "5 Yellow Gemstones,";
+	mes "4 Empty Potion Bottles,";
+	mes "10 Hearts of Mermaid,";
+	mes "10 Moth Dust,";
+	mes "20 Maneater Blossoms and";
+	mes "1 Geek Glasses";
+	next;
+	
+	mes "[Pislik]";
+	mes "Let me check your items.";
+	next;
+	
+	if (countitem(715)<5 || countitem(1093)<4 || countitem(950)<10 || countitem(1057)<10 || countitem(1032)<20 || countitem(2243)<1) goto L_noitems;//Items: Yellow_Gemstone, Empty_Potion_Bottle, Heart_of_Mermaid, Moth_Dust, Maneater_Blossom, Geek_Glasses,
+	delitem 715, 5;//Items: Yellow_Gemstone,
+	delitem 1093, 4;//Items: Empty_Potion_Bottle,
+	delitem 950, 10;//Items: Heart_of_Mermaid,
+	delitem 1057, 10;//Items: Moth_Dust,
+	delitem 1032, 20;//Items: Maneater_Blossom,
+	delitem 2243, 1;//Items: Geek_Glasses,
+	getitem 7434, 1;//Items: Elemental_Potion_Creation_Guide,
+
+	mes "[Pislik]";
+	mes "I see you have what you need,";
+	mes "so I'll give you my manual.";
+	close;
+	
+L_noitems:
+	mes "[Pislik]";
+	mes "You don't have enough items.";
+	mes "Come back when you have all";
+	mes "the required items for me.";
+	close;
+	
+L_noalche:
+	mes "Sorry, but my knowledge is only about alchemy.";
+	mes "I can't help you.";
+	emotion e_gasp;
+	close;
+
+L_alreadyhave:
+	mes "I've already given you";
+	mes "my Elemental Potion Creation Guide...";
+	close;
+
+L_nojob:
+	mes "Come back when you've learned";
+	mes "more about being an Alchemist.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Archer -> Arrow Creation Skill Quest
+//--------------------------------------------------------------
+
+morocc.gat,121,109,5	script	Roberto	88,{
+
+	mes "[Roberto]";
+	if (BaseClass == Job_Archer) goto L_Start;
+
+L_Other:
+	mes "Eh?... First time seeing an archer or something? Why don't you just";
+	mes "go about your business and leave me be.  I only talk to high level";
+	mes "Archer types........";
+	emotion 1;
+	close;
+
+L_Start:
+	if (BaseJob == Job_Archer && JobLevel < 35) goto L_LowLvl;
+	if (getskilllv(147)>0) goto L_GotSkill;
+	if (ARWCRFT == 1) goto L_GetSkill;
+	mes "Hmmm?.... Oh you seem to be a high level Archer type.  Why don't we";
+	mes "converse for a while, eh? Let me start off by talking about my";
+	mes "childhood.... . . . . . . . . . . .";
+	next;
+	mes "[Roberto]";
+	mes "When I turned 15, I decided I'd work for a Blacksmith........";
+	next;
+	mes "[Roberto]";
+	mes "............... ~(blah blah blah)~...................";
+	next;
+	mes "[Roberto]";
+	mes ".... man was my Junior Prom a mess...........";
+	next;
+	mes "[Roberto]";
+	mes "..~(blah blah)~........ ~(blah blah)~.........";
+	next;
+	mes "(many grueling hours later.....)";
+	next;
+	mes "[Roberto]";
+	mes "So that's how I found out how to create all of these different";
+	mes "kinds of arrows for myself.  It definitely comes in handy.";
+	next;
+	mes "[Roberto]";
+	mes "Say, would you like me to teach you?  We've had such a nice talk";
+	mes "that I feel like can trust you with this knowledge.......";
+	next;
+	menu "Zzz... Eh!! Uh, Arrows... making... yes, teach.",M_0, "Zzzzz... Eh! Uh... where am I????",M_1;
+
+	M_0:
+		mes "[Roberto]";
+		mes "Alright then!  In order for me to teach you the art of ^5533FF'Arrow";
+		mes "Crafting'^000000, you must first bring me these items:";
+		mes "^FF335520 Resin,";
+		mes "7 Poison Spores,";
+		mes "41 Pointed Scales,";
+		mes "13 Trunks,";
+		mes "1 Red potion^000000";
+		set ARWCRFT, 1;
+		emotion 5;
+		close;
+	M_1:
+		mes "[Roberto]";
+		mes "................................................................";
+		emotion 7;
+		next;
+		mes "[Roberto]";
+		mes "Let me teach you this special skill.... It's called, my boot up";
+		mes "your A........";
+		emotion 32;
+		next;
+		mes "!!!!SMACK!!!!";
+		percentheal -5,0;
+		close;
+
+L_GetSkill:
+	if ((countitem(907)<20) || (countitem(7033)<7) || (countitem(906)<41) || (countitem(1019)<13) || (countitem(501)<1)) goto L_NotEnuf;
+	delitem 907, 20;
+	delitem 7033, 7;
+	delitem 906, 41;
+	delitem 1019, 13;
+	delitem 501, 1;
+	mes "You've brought all of the items... very good.  Lets begin.....";
+	next;
+	mes "~ hands you a very long list of ingredients ~";
+	next;
+	mes "[Roberto]";
+	mes "There you are.  You're all set.";
+	next;
+	mes ".......................";
+	next;
+	mes "[Roberto]";
+	mes "Hmm?...... What do you mean 'that's it'?....... What else were you";
+	mes "expecting...... With that list you will be able to make any kind of";
+	mes "arrows you want.......";
+	next;
+	mes "[Roberto]";
+	mes "I hope you didn't expect some kind of elaborate ceremony or some";
+	mes "kind of unique and lengthy training.......";
+	next;
+	skill 147,1,0;
+	set ARWCRFT, 0;
+	mes "[Roberto]";
+	mes "...... Well good luck and have fun making arrows.  I've got other";
+	mes "things to do if you don't mind.......";
+	close;
+
+	L_NotEnuf:
+		mes "You don't have everything I need.";
+		next;
+		goto M_0;
+
+L_GotSkill:
+	mes "Hmmm?.... Sorry but I've got nothing left to teach you.  Just keep";
+	mes "on making those arrows..... For us Archer types there can never be";
+	mes "too many arrows.....";
+	close;
+L_LowLvl:
+	mes "Hmm?... Do you have something to say to me? Unfortunately I have";
+	mes "nothing to say to you.....";
+	emotion 1;
+	next;
+	mes "[Roberto]";
+	mes "It's sad but conversations with people who have ^5533FFlow job levels^000000 such";
+	mes "as yourself always seem to end abruptly..... Maybe if you trained a";
+	mes "little bit longer we would have more to talk about............";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Archer -> Arrow Repel Skill Quest
+//--------------------------------------------------------------
+
+payon.gat,103,63,5	script	Jason	88,{
+
+	mes "[Jason]";
+	if (BaseClass == Job_Archer) goto L_Start;
+
+L_Other:
+	mes "What does life need from a lonely lad like me?";
+	close;
+
+L_Start:
+	if (getskilllv(148) > 0) goto L_GotSkill;
+	if (BaseJob == Job_Archer && JobLevel < 35) goto L_LowLvl;
+	if (ARWREP == 1) goto L_Check;
+	mes "Hi, I'm the master of the skill ^0033FFArrow Repel^000000. I might be able to";
+	mes "teach you the skill, but only if you help me get the ingredients";
+	mes "for my Grandma's soup.";
+	next;
+	mes "[Jason]";
+	mes "Arrow Repel allows you to use your arrows to repel, push back, an";
+	mes "enemy and keep them at a distance.  This is a great skill for us";
+	mes "Archer types.";
+	next;
+
+	L_List:
+	mes "[Jason]";
+	mes "I need the following:";
+	mes "- 2 ^FF0000Emeralds^000000";
+	mes "- 3 ^FF0000Yoyo tails^000000";
+	mes "- 10 ^FF0000Tentacles^000000";
+	mes "- 10 ^FF0000Bill of birds^000000";
+	mes "- 36 ^FF0000Banana Juices^000000";
+	next;
+	mes "[Jason]";
+	mes "Hurry hurry!";
+	set ARWREP, 1;
+	close;
+
+L_LowLvl:
+	mes "Oh I think you're a bit inexperienced to learn anything from me,";
+	mes "come back later!  Maybe around ^5533FFjob level 35^000000 or so.....";
+	close;
+
+L_Check:
+	if ((countitem(721)<2) || (countitem(942)<3) || (countitem(962)<10) || (countitem(925)<10) || (countitem(532)<36)) goto L_NotEnuf;
+	delitem 721,2;
+	delitem 942,3;
+	delitem 962,10;
+	delitem 925,10;
+	delitem 532,36;
+	mes "OH! Marvelous you brought me all the ingredients!";
+	mes "Now it'll be my pleasure to teach you the skill ^0033FFArrow Repel^000000";
+	next;
+	skill 148,1,0;
+	set ARWREP, 0;
+	mes "[Jason]";
+	mes "There you go! Happy hunting in the future.";
+	close;
+
+	L_NotEnuf:
+		mes "You don't have everything I need.";
+		next;
+		goto L_List;
+L_GotSkill:
+	mes "Hey! It's you again? I'm afraid I've taught you everything I know.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Assassin -> Sonic Acceleration/Throw Venom Knife Skill Quest
+//--------------------------------------------------------------
+
+in_moc_16.gat,14,21,3	script	Kiltin	884,{
+
+	mes "[Kiltin]";
+	if (BaseJob != Job_Assassin) goto L_nosin;
+	if (getskilllv(1003) && getskilllv(1004)) goto L_alreadyhave;
+
+	mes "I'll teach you all I know, but";
+	mes "you need to steal some things";
+	mes "for me:";
+	mes "3 Sapphires";
+	mes "1 Ruby";
+	next;
+	
+	mes "[Kiltin]";
+	mes "Let me check your items.";
+	next;
+	
+	if (countitem(726)<3 || countitem(723)<1) goto L_noitems;//Items: Sapphire, Ruby,
+	delitem 726, 3;//Items: Sapphire,
+	delitem 723, 1;//Items: Ruby,
+
+	mes "[Kiltin]";
+	mes "I see you have what you need,";
+	mes "so I'll teach you my talent.";
+	skill 1003,1,0;
+	skill 1004,1,0;
+	close;
+	
+L_noitems:
+	mes "[Kiltin]";
+	mes "You don't have enough items.";
+	mes "Come back when you have all";
+	mes "the required items for me.";
+	close;
+		
+L_nosin:
+	mes "Sorry, but I'm on service of Shadowmen.";
+	emotion e_gasp;
+	close;
+
+L_alreadyhave:
+	mes "I've already taught you";
+	mes "everything I know...";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Bard -> Pang Voice Skill Quest
+//--------------------------------------------------------------
+
+prontera.gat,134,328,7	script	Timid man	89,{
+
+	mes "[Timid man]";
+	if (BaseJob != Job_Bard) goto L_nobard;
+	if (getskilllv(1010)) goto L_alreadyhave;
+	if (JobLevel<40) goto L_nojob;
+
+	mes "I'll teach you all I know, but";
+	mes "I'm a little thirsty. Bring me";
+	mes "1 Tropical Sograt";
+	next;
+	
+	mes "[Timid man]";
+	mes "Let me check your items.";
+	next;
+	
+	if (countitem(12112)<1) goto L_noitems;//Items: Tropical_Sograt,
+	delitem 12112, 1;//Items: Tropical_Sograt,
+	mes "[Timid man]";
+	mes "I see you have what you need,";
+	mes "so I'll teach you my talent.";
+	skill 1010,1,0;
+	close;
+	
+L_noitems:
+	mes "[Timid man]";
+	mes "You don't have enough items.";
+	mes "Come back when you have all";
+	mes "the required items for me.";
+	close;
+		
+L_nobard:
+	mes "Hum... you don't seem to be a musician";
+	emotion e_gasp;
+	close;
+
+L_alreadyhave:
+	mes "I've already taught you";
+	mes "everything I know...";
+	close;
+
+L_nojob:
+	mes "Come back when you've learned";
+	mes "more about being a Bard.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Blacksmith -> Greed Skill Quest
+//--------------------------------------------------------------
+
+geffen.gat,172,53,7	script	Goodday	826,{
+
+	mes "[Goodday]";
+	if (BaseJob != Job_Blacksmith) goto L_nosmith;
+	if (getskilllv(1013)) goto L_alreadyhave;
+	if (Weight < 5000 || (Weight > MaxWeight-MaxWeight/10)) goto L_notstrong;
+
+	mes "You look pretty strong, so I'll";
+	mes "teach you a little trick I found";
+	mes "while watching some wizards move";
+	mes "things around without lifting a";
+	mes "finger!";
+	skill 1013,1,0;
+	close;
+
+L_notstrong:
+	mes "Come back when you're strong";
+	mes "enough to handle the weight";
+	mes "of my ability. You will need";
+	mes "to be able to carry over 5000";
+	mes "weight, and not be over 90%.";
+	close;
+
+L_nosmith:
+	mes "Geffen is such a great town.";
+	mes "Don't you think so too?";
+	next;
+	emotion e_omg;
+	mes "[Goodday]";
+	mes "WHAT...";
+	mes "You don't!";	
+	close;
+
+L_alreadyhave:
+	mes "I've already taught you";
+	mes "everything I know, so I";
+	mes "need to get back to my";
+	mes "work.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Blacksmith -> Unfair Trick Skill Quest
+//--------------------------------------------------------------
+
+geffen.gat,178,72,7	script	Aki	726,{
+
+	mes "[Aki]";
+	if (BaseJob != Job_Blacksmith) goto L_nosmith;
+	if (getskilllv(1012)) goto L_alreadyhave;
+	if (getskilllv(1013)<1) goto L_nogreed;
+	if (JobLevel<30) goto L_nojob;
+	mes "We're going to need a few things";
+	mes "for this lesson. Bring me:";
+	mes "2 Steel";
+	mes "8 Coal";
+	mes "2 Iron Hammers";
+	mes "1 Detrimindexta";
+	mes "500 Zeny";
+	next;
+	
+	mes "[Aki]";
+	mes "Let me check your items.";
+	next;
+	
+	if (countitem(999)<2 || countitem(1003)<8 || countitem(613)<2 || countitem(971)<1 || zeny<500) goto L_noitems;//Items: Steel, Coal, Iron_Hammer, Detrimindexta,
+	delitem 999, 2;//Items: Steel,
+	delitem 1003, 8;//Items: Coal,
+	delitem 613, 2;//Items: Iron_Hammer,
+	delitem 971, 1;//Items: Detrimindexta,
+	set zeny, zeny-500;
+	
+	mes "[Aki]";
+	mes "Good, You brought everything";
+	mes "with you already! We'll start";
+	mes "the process now.";
+	skill 1012,1,0;
+	next;
+	
+	specialeffect 183;
+	mes "Wow, you're a fast learner.";
+	mes "Enjoy your new talents!";
+	close;
+
+L_noitems:
+	mes "[Aki]";
+	mes "You don't have enough items.";
+	mes "Come back when you have all";
+	mes "the required items for me.";
+	close;
+	
+L_nosmith:
+	mes "Don't mind Goodday over there.";
+	mes "He thinks everyone should like";
+	mes "this boring place!";
+	emotion e_laugh;
+	close;
+
+L_nogreed:
+	mes "If you're looking for more";
+	mes "to learn, then you should";
+	mes "talk to Goodday over there";
+	close;
+
+L_alreadyhave:
+	mes "WOW, I guess you've learned";
+	mes "all that the Blacksmiths of";
+	mes "Geffen can teach. Good luck";
+	mes "with your travels.";
+	close;
+	
+L_nojob:
+	mes "Come back when you've learned";
+	mes "more about being a Blacksmith.";
+	mes "You will need a Job level of at";
+	mes "least lv 30 to learn what I";
+	mes "know.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Crusader -> Shrink Skill Quest
+//--------------------------------------------------------------
+
+geffen.gat,110,118,3	script	Ford	752,{
+
+	mes "[Ford]";
+	if (BaseJob != Job_Crusader && BaseJob != Job_Crusader2) goto L_nocruz;
+	if (getskilllv(1002)) goto L_alreadyhave;
+	mes "Maybe I'll teach you a little skill";
+	mes "if you bring me a few things...";
+	mes "Bring me these items and we'll";
+	mes "see if I feel like giving it to you.";
+	next;
+	mes "[Ford]";
+	mes "1 Red Potion";
+	mes "20 Sticky Mucus";
+	mes "3 Empty Bottles";
+	mes "5 Jellopies";
+	mes "1 Unripe Apple";
+	mes "1 Grape";
+	mes "1 Coal";
+	mes "3 Cyfars";
+	next;
+	
+	mes "[Ford]";
+	mes "Let me check your items.";
+	next;
+	
+	if (countitem(501)<1 || countitem(938)<20 || countitem(713)<3 || countitem(909)<5 || countitem(619)<1 || countitem(514)<1 || countitem(1003)<1 || countitem(7053)<3) goto L_noitems;//Items: Red_Potion, Sticky_Mucus, Empty_Bottle, Jellopy, Unripe_Apple, Grape, Coal, Cyfar,
+	delitem 501, 1;//Items: Red_Potion,
+	delitem 938, 20;//Items: Sticky_Mucus,
+	delitem 713, 3;//Items: Empty_Bottle,
+	delitem 909, 5;//Items: Jellopy,
+	delitem 619, 1;//Items: Unripe_Apple,
+	delitem 514, 1;//Items: Grape,
+	delitem 1003, 1;//Items: Coal,
+	delitem 7053, 3;//Items: Cyfar,
+	mes "[Ford]";
+	mes "Time to roll my lucky dice.";
+	mes "Good luck, I almost never lose.";
+	emotion e_gg;
+	next;
+	if (rand(1,6)!=3) goto L_lose;
+	emotion 58;
+	next;
+	
+	skill 1002,1,0;
+	mes "[Ford]";
+	mes "I can't believe I lost!";
+	mes "I NEVER lose...";
+	emotion e_sob;
+	close;
+	
+L_noitems:
+	mes "[Ford]";
+	mes "You don't have enough items.";
+	mes "Come back when you have all";
+	mes "the required items for me.";
+	close;
+		
+L_lose:
+	emotion 63;
+	next;
+	mes "[Ford]";
+	mes "I win again!!";
+	mes "I'm not teaching you";
+	mes "anything this time. Come";
+	mes "back if you want to Try";
+	mes "again";
+	close;
+	
+L_nocruz:
+	mes "If you are not a Crusader,";
+	mes "then you have no business";
+	mes "with me...";
+	close;
+	
+L_alreadyhave:
+	mes "Hey, you were lucky I";
+	mes "even taught you the";
+	mes "skill I did! Don't press";
+	mes "your luck.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Dancer -> Wink of Charm Skill Quest
+//--------------------------------------------------------------
+
+comodo.gat,205,171,7	script	Chanel	724,{
+
+	mes "[Chanel]";
+	if (BaseJob != Job_Dancer) goto L_nodancer;
+	if (getskilllv(1011)) goto L_alreadyhave;
+	mes "I'll teach you all I know for:";
+	mes "1 Crystal Mirror";
+	mes "1 Alcohol";
+	mes "1 China";
+	mes "1 Apple";
+	mes "3 Bananas";
+	mes "5 Well-baked Cookies";
+	next;
+	
+	mes "[Chanel]";
+	mes "Let me check your items.";
+	next;
+	
+	if (countitem(747)<1 || countitem(970)<1 || countitem(736)<1 || countitem(512)<1 || countitem(513)<3 || countitem(538)<5) goto L_noitems;//Items: Crystal_Mirror, Alcohol, China, Apple, Banana, Well-baked_Cookie,
+	delitem 747, 1;//Items: Crystal_Mirror,
+	delitem 970, 1;//Items: Alcohol,
+	delitem 736, 1;//Items: China,
+	delitem 512, 1;//Items: Apple,
+	delitem 513, 3;//Items: Banana,
+	delitem 538, 5;//Items: Well-baked_Cookie,
+
+	mes "[Chanel]";
+	mes "I see you have what you need,";
+	mes "so I'll teach you my talent.";
+	skill 1011,1,0;
+	close;
+	
+L_noitems:
+	mes "[Chanel]";
+	mes "You don't have enough items.";
+	mes "Come back when you have all";
+	mes "the required items for me.";
+	close;
+		
+L_nodancer:
+	mes "Hum... you don't seem to be a musician";
+	emotion e_gasp;
+	close;
+
+L_alreadyhave:
+	mes "I've already taught you";
+	mes "everything I know...";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Hunter -> Phantasmic Arrow Skill Quest
+//--------------------------------------------------------------
+
+payon_in02.gat,54,13,7	script	Master Kabac	55,{
+
+	mes "[Master Kabac]";
+	if (BaseJob != Job_Hunter) goto L_hunterno;
+	if (getskilllv(1009)) goto L_alreadyhave;
+	if (JobLevel<40) goto L_nojob;
+
+	mes "I can teach you a secret";
+	mes "technique passed down through";
+	mes "my family for generations. My";
+	mes "family has guarded this secret";
+	mes "for years, but I could teach";
+	mes "for a few supplies.";
+	next;
+	mes "[Master Kabac]";
+	mes "I am running low on on a few";
+	mes "things. Here is my list:";
+	mes "5 Cursed Rubys";
+	mes "5 Harpy's Feathers";
+	mes "30 Pet Food";
+	next;
+	
+	mes "[Master Kabac]";
+	mes "Let me check your items.";
+	next;
+	
+	if (countitem(724)<5 || countitem(7115)<5 || countitem(537)<30) goto L_noitems;//Items: Cursed_Ruby, Harpy_Feather, Pet_Food,
+	delitem 724, 5;//Items: Cursed_Ruby,
+	delitem 7115, 5;//Items: Harpy_Feather,
+	delitem 537, 30;//Items: Pet_Food,
+	
+	mes "[Master Kabac]";
+	mes "I see you have what you need,";
+	mes "so I'll teach you my talent.";
+	skill 1009,1,0;
+	close;
+
+L_noitems:
+	mes "[Master Kabac]";
+	mes "You don't have enough items.";
+	mes "Come back when you have all";
+	mes "the required items for me.";
+	close;
+		
+L_nojob:
+	mes "Come back when you've Learned";
+	mes "more about being a Hunter.";
+	mes "You need to have at least 40";
+	mes "levels as a hunter first.";
+	close;
+
+L_alreadyhave:
+	mes "Ahh, my apprentice, you";
+	mes "came to visit me...";
+	close;
+	
+L_hunterno:
+	mes "Is there something I can";
+	mes "help you with? I believe";
+	mes "you have the wrong old man.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Knight -> Charge Attack Skill Quest
+//--------------------------------------------------------------
+
+prt_in.gat,84,98,3	script	Esope	734,{
+
+	mes "[Esope]";
+	if (BaseJob != Job_Knight && BaseJob != Job_Knight2) goto L_noknight;
+	if (getskilllv(1001)) goto L_alreadyhave;
+
+	mes "I'll teach you all I know for:";
+	mes "5 Candy canes";
+	mes "3 Witherless Roses";
+	next;
+	
+	mes "[Esope]";
+	mes "Let me check your items.";
+	next;
+	
+	if (countitem(530)<5 || countitem(748)<3) goto L_noitems;//Items: Candy_Cane, Witherless_Rose,
+	delitem 530, 5;//Items: Candy_Cane,
+	delitem 748, 3;//Items: Witherless_Rose,
+	
+	mes "[Esope]";
+	mes "I see you have what you need,";
+	mes "so I'll teach you my talent.";
+	skill 1001,1,0;
+	close;
+
+L_noitems:
+	mes "[Esope]";
+	mes "You don't have enough items.";
+	mes "Come back when you have all";
+	mes "the required items for me.";
+	close;
+		
+L_noknight:
+	mes "Looking for your master?";
+	emotion e_gasp;
+	close;
+
+L_alreadyhave:
+	mes "I've already taught you";
+	mes "everything I know...";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Mage -> Energy Coat Skill Quest
+//--------------------------------------------------------------
+
+geffen_in.gat,151,119,4	script	BLIZZARDRISS	71,{
+
+	mes "[BLIZZARDRISS]";
+	if (BaseClass == Job_Mage) goto L_Start;
+
+L_Other:
+	mes "What new magic spells will I discover today......??";
+	emotion 20;
+	close;
+
+L_Start:
+	if (ENRGYCOAT == 1) goto L_GetSkill;
+	if (getskilllv(157)>0) goto L_GotSkill;
+	mes "Hey! My friend! I see that you are a magic user.  If you look within yourself, you'll find that you have... 'HIDDEN ABILITIES'!!";
+	next;
+	menu "'Hidden Abilities'.....?",M_0, "End Conversation.",M_End;
+
+	M_0:
+		mes "[BLIZZARDRISS]";
+		mes "For many years I studied the ancient magic of Geffen, and I recently re-discovered a forgotten magic spell that is quite usefull.";
+		next;
+		mes "[BLIZZARDRISS]";
+		mes "The spell uses your 'pyscho-kenetic energy' to 'coat' your body in a magical shield, protecting you from enemy attacks.";
+		next;
+		mes "[BLIZZARDRISS]";
+		mes "Only highly trained magic users can learn this amazing spell.";
+		mes "Those who want to use this spell must tap into the hidden energies and abilities burried deep within!";
+		next;
+		mes "[BLIZZARDRISS]";
+		mes "The spell is called ^5555FF'Energy Coat'^000000!.  Would you like me to teach it to you?";
+		next;
+		menu "Wow! Sounds great!",sM_0, "Meh... not interested.",sM_End;
+
+		sM_0:
+			mes "[BLIZZARDRISS]";
+			mes "In order for me to teach you this spell I will need the following items:";
+			mes "^5533FF 3 Glass Beads,";
+			mes " 1 One Carat Diamond,";
+			mes " 5 Shells,^000000";
+			mes " and ^5533FF1 Solid shell^000000.";
+			next;
+			mes "[BLIZZARDRISS]";
+			mes "You will also need to have a sufficient amount of experience.  For Mages, a job level of at least 35 is needed.";
+			mes "Wizards and Sages are high level magic users and can learn the skill at any job level.";
+			next;
+			mes "[BLIZZARDRISS]";
+			mes "When you are fully trained and have all of the required items come back and see me.";
+			set ENRGYCOAT, 1;
+			close;
+
+		sM_End:
+			mes "[BLIZZARDRISS]";
+			mes "Hmf! Suit yourself.  Don't come complaining to me when get beat up by a bunch of spores!!";
+			emotion 6;
+			close;
+
+	M_End:
+		mes "[BLIZZARDRISS]";
+		mes "The wise man must have patience!  Prepare yourself and return when you are ready.";
+		close;
+
+L_GetSkill:
+	if (Basejob == Job_Mage && Joblevel < 35) goto L_JobLvl;
+	if (countitem(746)<3 || countitem(730)<1 || countitem(935)<5 || countitem(943)<1) goto L_Items;
+	mes "Ohh my, ohh my...... This is going to be swell.  Hand over the items... Thank you.";
+	next;
+	mes "~ several hours later ~";
+	next;
+	delitem 746,3;
+	delitem 730,1;
+	delitem 935,5;
+	delitem 943,1;
+	skill 157,1,0;
+	set ENRGYCOAT,0;
+	mes "[BLIZZARDRISS]";
+	mes "You can now use the spell, 'Energy Coat'!! Use it wisely my friend!";
+	emotion 21;
+	close;
+
+	L_JobLvl:
+		mes "Didn't you listen to my explanation? You need a job level of at least 35 to learn 'Energy Coat'.";
+		emotion 1;
+		close;
+
+	L_Items:
+		mes "Didn't you listen to my explanation? You need the following items for me to teach you 'Energy Coat':";
+		mes "^5533FF 3 Glass Beads,";
+		mes " 1 One Carat Diamond,";
+		mes " 5 Shells,^000000";
+		mes " and ^5533FF1 Solid shell^000000.";
+		emotion 1;
+		close;
+
+L_GotSkill:
+	mes "Well hello there.  The 'Energy Coat' skill is great isn't it? Anyway, good luck with your journey.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Merchant -> Crazy Uproar Skill Quest
+//--------------------------------------------------------------
+
+alberta.gat,89,96,5	script	Necko	139,0,4,{
+
+	mes "[!?]";
+	mes "Muahahahahhhahahahahhahah!!";
+	mes "Pukakakakakkakakakakakakaka!!";
+	close;
+}
+
+alberta.gat,83,96,5	script	Necko	98,{
+
+	mes "[Necko]";
+	if (BaseClass == Job_Merchant) goto L_Start;
+
+L_Other:
+	mes "Necko's store is closed right now.  Come back later..... Hehe....";
+	close;
+
+L_Start:
+	if (getskilllv(155)>0) goto L_GotSkill;
+	if (CRAZYROAR == 1) goto L_GetSkill;
+	mes "Oh! Did you come here because you were intrigued by my boisterous voice? My voice is quite loud, isn't it?";
+	mes "Afterall you did hear it from a far off distance.";
+	emotion 1;
+	next;
+	mes "[Necko]";
+	mes "I'll let you in on something....... My voice is more than just loud..... it's actually quite unique......";
+	next;
+	mes "[Necko]";
+	if (BaseJob == Job_Merchant && JobLevel < 15) goto L_JobLvl;
+	mes "You see, I know a skill that lets me shout in a way that actually helps me.... It is the ^3355FFCrazy Uproar^000000 skill!!!";
+	emotion 5;
+	next;
+	mes "[Necko]";
+	mes "Crazy Uproar uses your loud voice to boost your battle spirit!";
+	mes "The skill requires ^FF55338 sp^000000 to use and inturn you will recieve an additional ^3355FF4 STR for 5 min^000000!!";
+	next;
+	mes "[Necko]";
+	mes "This skill is very usefull.  To learn it you must learn the essentials of sound.  There was a singer in Payon that taught sound theory.......";
+	next;
+	mes "[Necko]";
+	mes "Unfortunately that person passed away so you can no longer learn those essentials..............";
+	mes "Aww.... you look disappointed.... Do you really want to learn Crazy Uproar??";
+	next;
+	mes "[Necko]";
+	mes "Hmm..... I will teach you then, that is, if you trully wish to learn.  You will have to train your vocal cords.";
+	mes "You will also need to gather these items:";
+	next;
+	mes "[Necko]";
+	mes "- ^3355FF7 Pearls,";
+	mes "- 1Banana juice,";
+	mes "- 50 Mushroom spores^000000.";
+	next;
+	mes "[Necko]";
+	mes "Come back when you are ready! I think I shall do a little vocal training myself........";
+	mes "Bbooowuuuuuuuuuuuuuuuuuuuuuuuuuh!!";
+	set CRAZYROAR, 1;
+	close;
+
+	L_JobLvl:
+		mes "Once you've reached a ^3355FFjob level of 15^000000 come back and see me.  I'll tell you all about the secrect to my voice.....";
+		next;
+		mes "[Necko]";
+		mes "Uahahahahahahhahahahahahaha!";
+		mes "Kyukwakakakakkakakakakakkakaka!";
+		close;
+
+L_GetSkill:
+	if ((countitem(722)<7) || (countitem(532)<1) || (countitem(921)<50)) goto L_Items;
+	mes "Oh You've gathered the items! Very good, very good.  Now it's time to start your training.....";
+	next;
+	mes "[Necko]";
+	mes "Repeat after me: Fa fa fa fa fa.... So so so so so..... La la la la la.... Mi mi mi mi mi mi......";
+	next;
+	mes "~several hours later~";
+	next;
+	mes "[Necko]";
+	mes "Raaaaaawwwwrrrrrrrrrrr!....... Ha ha!! Execellent.  Your voice is now finely tuned for ^3355FFCrazy Uproar^000000.  Good job.";
+	delitem 722,7;
+	delitem 532,1;
+	delitem 921,50;
+	skill 155,1,0;
+	set CRAZYROAR, 0;
+	emotion 21;
+	close;
+
+	L_Items:
+		mes "You need to get these items for Crazy Uproar:";
+		mes "- ^3355FF7 Pearls,";
+		mes "- 1Banana juice,";
+		mes "- 50 Mushroom spores^000000.";
+		close;
+
+L_GotSkill:
+	mes "Hello again.  I can tell by the sound of your mighty voice that you are becoming very good at Crazy Uproar.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Merchant -> Change Cart Skill Quest
+//--------------------------------------------------------------
+
+alberta.gat,119,221,6	script	Charlron	107,{
+
+	mes "[Charlron]";
+	if (BaseClass == Job_Merchant) goto L_Start;
+L_Other:
+	mes "I am a merchant that deals in many things.  My name is Charlron.  If you ever find anything interesting, come back and try to negotiate a deal with me.";
+	close;
+L_Start:
+	if (getskilllv(154)>0) goto L_GotSkill;
+	if (CHANGECART == 1) goto L_GetSkill;
+	mes "Welcome young one.  Is selling fun for you? I am the merchant Charlron.";
+	next;
+	mes "[Charlron]";
+	mes "Aren't you tired of your old, and plain looking cart? Well I can help.";
+	next;
+	mes "[Charlon]";
+	mes "I have been doing some research on cart design recently and have come up with some new and interesting designs for the cart.";
+	next;
+	mes "[Charlon]";
+	mes "I can change the way your cart looks for you.  Of course some conditions need to be met......";
+	next;
+	mes "[Charlron]";
+	if (BaseJob == Job_Merchant && JobLevel < 30) goto L_JobLvl;
+	mes "First you will need to bring me these items:";
+	mes "^3355FF50 Trunks,";
+	mes "20 Animal Skin,";
+	mes "10 Iron^000000.";
+	set CHANGECART, 1;
+	close;
+
+	L_JobLvl:
+		mes "I'm a pretty famous merchant, so I don't really do business with beginners but..........";
+		mes "Once you've reached ^3355FFjob level 30^000000 I may consider doing business with you.";
+		close;
+
+L_GetSkill:
+	if ((countitem(1019)<50) || (countitem(998)<10) || (countitem(919)<20)) goto L_Items;
+	mes "Oh good, you have all of the items.  Well here you are..... Hmm?... Oh these are the design sheets for your cart.";
+	mes "Now that you have the proper materials, just follow these guides to make your cart look spectactular.";
+	delitem 1019,50;
+	delitem 998,10;
+	delitem 919,20;
+	skill 154,1,0;
+	set CHANGECART, 0;
+	mes "[Charlron]";
+	mes "Good luck, see you around";
+	close;
+
+	L_Items:
+		mes "Come back when you've brought me these items:";
+		mes "^3355FF50 Trunks,";
+		mes "20 Animal Skin,";
+		mes "10 Iron^000000.";
+		close;
+
+L_GotSkill:
+	mes "Heh heh... It's nice to see fancy looking carts like yours on the streets of town.  Well back to the drawing board....";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Merchant -> Cart Revolution Skill Quest
+//--------------------------------------------------------------
+
+alberta.gat,232,106,6	script	Gershaun	57,{
+
+	if (BaseClass == Job_Merchant) goto L_Start;
+
+L_Other:
+	mes "[Gershaun]";
+	mes "If it doesn't work, make it work!";
+	mes "If it doesn't work, make it work!";
+	mes "If it doesn't work, make it work!";
+	close;
+
+L_Start:
+	if (getskilllv(153)>0) goto L_GotSkill;
+	if (CARTREVO == 1) goto L_GetSkill;
+	mes "[Gershaun]";
+	mes "Hmm... a young merchant.  You must use carts too right? Since to have to do all of that vending.....  But is that all you use your cart for?";
+	emotion 20;
+	next;
+	mes "[Gershaun]";
+	mes "I researched some ways of using the cart differently.  One way involved cooking ramen and another involved jump-roping (don't ask).";
+	mes "Still none of my new ideas were satisfactory.";
+	next;
+	menu "I know what you mean.",M_0, "......???",M_1;
+
+	M_0:
+		mes "[Gershuan]";
+		mes "You KNOW what I MEAN!! HOW the HECK would YOU KNOW what I MEAN????";
+		emotion 23;
+		close;
+	M_1:
+		mes "[Gershuan]";
+		mes "In despair, I wandered through the fields with my cart.  Day after day I did this.... I was in a daze....";
+		next;
+		mes "[Gershuan]";
+		mes "Then I crossed paths with a very strong monster! I knew immediately that my life was in danger!";
+		mes "I thought to myself, 'Why me! A weaponless, amorless merchant!?'";
+		emotion 0;
+		next;
+		mes "[Gershuan]";
+		mes "I was scared to death... hoping that this would not be the end of me.  With what strength I had left, I tried a desperation move.....";
+		emotion 19;
+		next;
+		mes "[Gershuan]";
+		mes "I used my cart to attack the monster!!";
+		emotion 0;
+		next;
+		mes "[Gershuan]";
+		mes "Just like that the monster was defeated!! Finally I had found another exellent use for the cart! A WEAPON!!!";
+		next;
+		mes "[Gershuan]";
+		mes "I called my new found discovery ^3355FF'Cart Revolution'^000000!";
+		mes "By using ^FF553312 sp^000000 you can spin your cart around your body doing major damage to an enemy!";
+		emotion 5;
+		next;
+		mes "[Gershuan]";
+		mes "The heavier your cart is, the more damage it will do.  Would you like to learn this skill?";
+		next;
+		menu "Yes!!",sM_0, "Actually I want to learn some sushi skills...",sM_1;
+
+		sM_0:
+			mes "[Gershuan]";
+			if (BaseJob == Job_Merchant && JobLevel < 35) goto ssL_LowLvl;
+			mes "Ok! I will give you the special training for Cart Revolution.  The first thing you will have to do is bring me these items:";
+			mes "^3355FF30 Sticky Mucus,";
+			mes "20 Fly wings,";
+			mes "15 Iron,";
+			mes "5 Tentacles,";
+			mes "2 Grape Juice^000000.";
+			next;
+			mes "[Gershuan]";
+			mes "Come back when you have all of these items.  Good luck.";
+			set CARTREVO, 1;
+			close;
+
+			ssL_LowLvl:
+				mes "[Gershuan]";
+				mes "Ok! I will give you the special training for Cart Revolution.";
+				mes "But first you will have to get yourself to a ^3355FFjob level of 35^000000! After you've done that, then we can talk.";
+				close;
+
+		sM_1:
+			mes "[Sushi King Gershuan]";
+			mes "Stupid!! You're waaay to young to even try your hand at sushi!!";
+			emotion 6;
+			close;
+
+L_GetSkill:
+	if ((countitem(533)<2) || (countitem(998)<15) || (countitem(938)<30) || (countitem(601)<20) || (countitem(962)<5)) goto sM_0;
+	mes "[Gershaun]";
+	mes "It's Good to see you again.  I'm glad you were able to get all of the items.  Take a minute to prepare, for your training is about to take place....";
+	next;
+	mes "[Gershuan]";
+	mes "First make sure your feet are shoulder width apart.  Balance is key! Now get into a good crouch... grasp the handles of the cart firmly but not too tight...";
+	next;
+	mes "[Gershuan]";
+	mes "NOW SWING!!!";
+	next;
+	mes "[Gershuan]";
+	mes "Eh....... that was terrible.... Okay, lets try again.....";
+	emotion 4;
+	next;
+	mes "~many hours later~";
+	next;
+	mes "[Gershuan]";
+	mes "YES!!! FINALLY! I could REALLY FEEL the power in that swing!";
+	mes "Give yourself a good pat on the back becuase you have just mastered Cart Revolution!";
+	emotion 21;
+	next;
+	delitem 533,2;
+	delitem 998,15;
+	delitem 938,30;
+	delitem 601,20;
+	delitem 962,5;
+	skill 153,1,0;
+	set CARTREVO, 0;
+	mes "[Gershuan]";
+	mes "Take care of yourself and remember to fill that cart up so that it can do some major damage.";
+	emotion 29;
+	close;
+
+L_GotSkill:
+	mes "[Gershaun]";
+	mes "So how do you like cart revolution? Remeber, the ^3355FFheavier^000000 the cart, the ^3355FFgreater^000000 the damge.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Monk -> Ki Explosion/Ki Translation Skill Quest
+//--------------------------------------------------------------
+
+monk_test.gat,316,69,3	script	Krate	823,{
+
+	mes "[Krate]";
+	if (BaseJob != Job_Monk) goto L_nomonk;
+	if (getskilllv(1015) && getskilllv(1016)) goto L_alreadyhave;
+	if (monk_skill) goto L_verif;
+	if (Weight>0) goto L_heavymonk;
+	mes "I'll teach you all I know, but you must bring me:";
+	mes "40 Stems";
+	mes "3 Shoots";
+	set monk_skill, 1;
+	next;
+	goto L_verif;
+	
+L_verif:
+	mes "Let me check your items.";
+	next;
+	if (countitem(711)<3 || countitem(905)<40) goto L_noitems;//Items: Shoot, Stem,
+	delitem 711, 3;//Items: Shoot,
+	delitem 905, 40;//Items: Stem,
+	next;
+	mes "[Krate]";
+	mes "I see you have what you need,";
+	mes "so I'll teach you my talent.";
+	skill 1015,1,0;
+	skill 1016,1,0;
+	set monk_skill, 0;
+	close;
+	
+L_noitems:
+	mes "[Krate]";
+	mes "You don't have enough items.";
+	mes "Come back when you have all";
+	mes "the required items for me.";
+	close;
+	
+L_nomonk:
+	mes "It seems that your soul is disagree with your body.";
+	mes "Come back when your body and your soul will be like Yin and Yang.";
+	emotion e_gasp;
+	close;
+	
+L_alreadyhave:
+	mes "I've already taught you";
+	mes "everything I know...";
+	close;
+
+L_heavymonk:
+	mes "Come back when you've cleansed";
+	mes "yourself of your worldly possessions.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Novice -> First Aid/Act Dead Skill Quests
+//--------------------------------------------------------------
+
+prt_in.gat,235,133,4	script	Nurse Aid	90,{
+
+	mes "[Nurse Aid]";
+	if (FIRSTAID == 1) goto L_GetAid;
+	if (getskilllv(142)>0) goto L_GotAid;
+
+	mes "Oh hello there!  You look tired and a little worn out.  Have the monsters outside of town been giving you trouble?";
+	next;
+	menu "Ha! Me strong like BULL!!",M_Nope, "Well..um..kinda..",M_Yep;
+
+	M_Nope:
+		mes "[Nurse Aid]";
+		mes "Oh I see.  You must be a mighty warrior.  Well, come back anytime if you do ever feel overwhelmed by the monsters.  I'll be able to help.";
+		close;
+
+	M_Yep:
+		mes "[Nurse Aid]";
+		mes "Well don't feel bad.  It can be very difficult fighting those nasty monsters in the begining.";
+		next;
+		mes "[Nurse Aid]";
+		mes "I know because I've been treating a lot people lately who have been fighting them.";
+		mes "There are so many injured now that I don't think I can continue treating anyone.";
+		next;
+		mes "[Nurse Aid]";
+		mes "~Sigh~";
+		next;
+		mes "[Nurse Aid]";
+		mes "That's why I've decided to teach people how to heal themselves!  Would you like me to teach you?";
+		emotion 5;
+		next;
+		menu "Would you??",sM_Yes, "(...she's nuts!...run!!!)",sM_No;
+
+		sM_Yes:
+			mes "[Nurse Aid]";
+			mes "In order for me to teach you First Aid you need to have at least a^0000ff job level of 3^000000.";
+			mes "You then need to give me:^ff0000 5 red herbs^000000,^00bb00 5 clovers^000000, and an^aaaa00 old bandage^000000.";
+			next;
+			mes "[Nurse Aid]";
+			mes "You can get the bandage from the^0000ff 'Newbie Assistant'^000000 located on the second floor of the Castle.";
+			next;
+			mes "[Nurse Aid]";
+			mes "Once you get job level 3 and have all of the items come back and see me ok.";
+			set FIRSTAID,1;
+			close;
+
+		sM_No:
+			mes "[Nurse Aid]";
+			mes "Hey!...Where are you running too??...";
+			emotion 4;
+			close;
+
+L_GetAid:
+	if ((joblevel <  3) || (countitem(507) < 5) || (countitem(705) < 5) || (countitem(930) < 1)) goto sM_Yes;
+	mes "Oh good.  You have everything needed for me to teach you first aid.  Here we go...";
+	next;
+	mes "....... 1 hour later.......";
+	next;
+	delitem 507,5;
+	delitem 705,5;
+	delitem 930,1;
+	skill 142,1,0;
+	set FIRSTAID,0;
+	mes "[Nurse Aid]";
+	mes "YES! You finally got it.  Now you can heal yourself and continue fighting those bad monsters.  Well, take care.";
+	emotion 21;
+	close;
+
+L_GotAid:
+	mes "Well hello again.  I sure hope the First Aid skill has been helpfull to you.  Make sure to continue your hard work and don't forget to rest and heal!";
+	close;
+}
+
+prt_in.gat,73,87,2	script	Bulma	98,{
+
+	mes "[Bulma]";
+	if (Basejob == Job_Novice) goto L_Novice;
+
+L_Other:
+	mes "Yeah... I look great.... Afterall, I'm a Knight of the Prontera Chivalry.  Kuhahahaha!";
+	emotion 18;
+	next;
+	mes "[Bulma]";
+	mes "It hasn't been that long since I became a Knight, but I still look good as one right? What do you think???";
+	emotion 20;
+	close;
+
+L_Novice:
+	if (joblevel >= 7) goto L_Start;
+	mes "Hello my young friend.  You remind me of myself when I was young.....";
+	mes "Heh heh, I sure miss those days..... Wow... It's funny to think about those years now......";
+	next;
+	mes "[Bulma]";
+	mes "They were difficult.... thankfully you can use the ^5555FFPlay Dead^000000 skill when you reach a ^5555FFjob level of 7^000000.";
+	mes "If you're interested in it come back and talk to me when you've leveled up a bit more.";
+	close;
+
+L_Start:
+	if (PLAYDEAD == 1) goto L_GetSkill;
+	if (getskilllv(143)>0) goto L_GotSkill;
+	mes "Hello my young friend.  You remind me of myself when I was young..... Heh heh, I sure miss those days.....";
+	mes "Look at me acting all sentimental like some old man........";
+	next;
+	mes "[Bulma]";
+	mes "Sorry about that.  Anyhow, I just want you to know that if you work hard and are patient, you too will recieve the job you desire.";
+	mes "It may take some time but stay focused and never loose your determination.";
+	next;
+	mes "[Bulma]";
+	mes "Hmm..... actually I might be able to help you out........";
+	emotion 20;
+	next;
+	mes "[Bulma]";
+	mes "What's this? Ha ha, don't look so surprised.  What I have to offer will be very useful to you.";
+	next;
+	mes "[Bulma]";
+	mes "You see I can teach you the skill ^5555FF'Play Dead'^000000.";
+	mes "This skill allows you to act like you just died making any monster that is currently attacking you leave you alone.";
+	next;
+	mes "[Bulma]";
+	mes "I myself have used it as a novice and found it to be very usefull.";
+	mes "It may sound easy enough, but it takes a lot of hard work and practice to make your performance look believable.";
+	next;
+	mes "[Bulma]";
+	mes "You MUST look perfectly DEAD in order for this skill to work.  Even the slightest movement will give you away.";
+	next;
+	mes "[Bulma]";
+	mes "I think I've done enough explaining..... The look in your eyes tells me that you are ready to learn this skill.";
+	next;
+	mes "[Bulma]";
+	mes "First take this pill....";
+	next;
+	mes "(you take the pill) ~gulp~";
+	next;
+	mes "[Bulma]";
+	mes "Good.  Now go to the 2nd floor on the East side of the Prontera Castle.";
+	mes "Speak with the ^5555FFNewbie Assistant^000000 and he will give you a ^5555FFNewbie Tag^000000.";
+	next;
+	mes "[Bulma]";
+	mes "Once you have the tag come back here.  You MUST make it back here WITHIN ^FF555510 minutes^000000!";
+	mes "If you don't, then the pill you just swallowed will start making it hard for you to breath!.....";
+	next;
+	mes "[Bulma]";
+	mes "Kekekeke..... Just kidding!  The pill actually helps you stay calm, nothing more.";
+	emotion 18;
+	next;
+	mes "[Bulma]";
+	mes "Well get going... GO! GO! GO! RUN!!!";
+	emotion 27;
+	set PLAYDEAD, 1;
+	close;
+
+L_GetSkill:
+	if (countitem(7039)<1) goto sL_NotRdy;
+	mes "Good to see you again.  Alright, lets start your training....";
+	next;
+	mes "[Bulma]";
+	mes "Let me first introduce to you the concept of 'Method Acting'.  Method Acting stresses the need to undrestand every aspect of the role you are playing.";
+	next;
+	mes "[Bulma]";
+	mes "You must learn to think, feel, and even live like your character so that you can understand his/her motivation in any given momement.";
+	next;
+	mes "[Bulma]";
+	mes "Now let us use this technique to develop your ability to Play Dead!";
+	mes "I want you to think like a dead person, feel like a dead person, eat, breath, sleep, kiss, etc. like a person who is dead!!!";
+	next;
+	mes "[Bulma]";
+	mes "Don't just stand there! Lay down on the ground and live life through the eyes of a dead person.... errr or don't live.... anyways just do it!!";
+	next;
+	mes "~ several hours later ~";
+	next;
+	mes "[Bulma]";
+	mes "Ok, lights, camera, ACTION! Yes... yes... YES!! That's it!! As I watch you laying there I TRULLY believe that you are dead.";
+	mes "What a wonderful performance! BRAVO! BRAVO!";
+	emotion 0;
+	next;
+	mes "[Bulma]";
+	mes "With the right motivation and focus you will be able to play dead anywhere at any given moment.  Congratulations on mastering this skill.";
+	emotion 21;
+	skill 143,1,0;
+	delitem 7039, 1;
+	set PLAYDEAD, 0;
+	close;
+
+	sL_NotRdy:
+		mes "HEY! What are you doing here?  It's irresponsible of you to still be here while your time is running out.........";
+		emotion 0;
+		next;
+		mes "[Bulma]";
+		mes "Now GO! Run! Run! RUN!!";
+		emotion 27;
+		close;
+
+L_GotSkill:
+	mes "Yeah.... I remember back then..... especially those embarrasing novice years... heh.  Luckily there was Play Dead.";
+	mes "That saved me many times in the past.  I'm sure it has been saving you too.";
+	next;
+	mes "[Bulma]";
+	mes "Hopefully it is something you have been using well.  If you have any friends who are novices, tell them about me.  I will help them out as best I can.";
+	close;
+}
+
+prt_castle.gat,174,147,2	script	Newbie Assistant	84,{
+
+	mes "[Newbie Assistant]";
+	if (Basejob == Job_Novice) goto L_Start;
+
+L_NonNov:
+	mes "What am I doing here?  I'm just trying to help out young newbies.  You remember how it was to be a newbie... confused.... lost.... heh heh.";
+	emotion 1;
+	close;
+L_Start:
+	if (FIRSTAID==1 && countitem(930)==0 && got_bandage!=1) goto L_Aid;
+	if (PLAYDEAD==1 && countitem(7039)==0 && got_newbietag!=1) goto L_Play;
+	mes "Hello.  I'm here to provide help to newbies like you.  If there is anything in particular that you need assistance with just let me know.";
+	close;
+L_Aid:
+	mes "So Nurse Aid sent you huh.  She's a great nurse, you should feel very fortunate that she is helping you out.  Here take this.";
+	next;
+	getitem 930,1;
+	set got_bandage,1;
+	mes "[Newbie Assistant]";
+	mes "You'll need it in order for her to teach you her exellent healing technique.";
+	next;
+	mes "[Newbie Assistant]";
+	mes "When I watch her work it is like watching an angel that has descended down from the heavens.....";
+	next;
+	mes "[Newbie Assistant]";
+	mes "Her beauty, her grace, sometimes I wish........ (blushes).......... um.... well...err... tell her I said hello.";
+	emotion 3;
+	close;
+L_Play:
+	mes "So Bulma sent you uh.... okay here you go.";
+	getitem 7039,1;
+	set got_newbietag,1;
+	next;
+	mes "Good luck on your adventure.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Priest -> Redemptio Skill Quest
+//--------------------------------------------------------------
+
+prt_church.gat,111,112,3	script	Nun Linus	79,{
+
+	mes "[Nun Linus]";
+	if (BaseJob != Job_Priest) goto L_nopriest;
+	if (getskilllv(1014)) goto L_alreadyhave;
+	if (getskilllv(54)<1) goto L_norez;
+
+	mes "I can teach you the mercy of God";
+	mes "if you bring me a couple things,";
+	mes "and if God finds you worthy!";
+	mes "1 Blue Gemstone";
+	mes "1 Holy Water";
+	next;
+	
+	mes "[Nun Linus]";
+	mes "Let me check your items.";
+	next;
+	
+	if (countitem(717)<1 || countitem(523)<1) goto L_noitems;//Items: Blue_Gemstone, Holy_Water,
+	delitem 717, 1;//Items: Blue_Gemstone,
+	delitem 523, 1;//Items: Holy_Water,
+	
+	mes "[Nun Linus]";
+	mes "I see you have what you need,";
+	mes "so we shall see if God finds";
+	mes "you worthy yet!";
+	next;
+	if (rand(100)<JobLevel+25) goto L_bless;
+	mes "[Nun Linus]";
+	mes "Sorry, but God has not";
+	mes "shined on you as of yet.";
+	mes "Try again when you are a";
+	mes "stronger Priest.";
+	close;
+	
+L_bless:
+	mes "[Nun Linus]";
+	mes "Hum... I see God has shined on you this time";
+	skill 1014,1,0;
+	close;
+	
+L_noitems:
+	mes "[Nun Linus]";
+	mes "You don't have enough items.";
+	mes "Come back when you have all";
+	mes "the required items for me.";
+	close;
+		
+L_nopriest:
+	mes "Sorry, you need to have some faith in God.";
+	emotion e_gasp;
+	close;
+
+L_alreadyhave:
+	mes "I've already taught you";
+	mes "everything I know...";
+	close;
+
+L_norez:
+	mes "Come back when you've learned";
+	mes "more about priest and God.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Rogue -> Close Confine Skill Quest
+//--------------------------------------------------------------
+
+in_rogue.gat,387,94,3	script	Hyzaragrack	84,{
+
+	mes "[Hyzaragrack]";
+	if (BaseJob != Job_Rogue) goto L_norogue;
+	if (getskilllv(1005)) goto L_alreadyhave;
+
+	mes "I'll teach you all I know, but";
+	mes "you'll have to steal some things";
+	mes "for me first...";
+	mes "5 Immortal Hearts";
+	mes "5 Stone Hearts";
+	mes "2 Burning hearts";
+	next;
+	
+	mes "[Hyzaragrack]";
+	mes "Let me check your items.";
+	next;
+	
+	if (countitem(929)<5 || countitem(953)<5 || countitem(7097)<2) goto L_noitems;//Items: Immortal_Heart, Stone_Heart, Burning_Heart,
+	delitem 929, 5;//Items: Immortal_Heart,
+	delitem 953, 5;//Items: Stone_Heart,
+	delitem 7097, 2;//Items: Burning_Heart,
+	
+	mes "[Hyzaragrack]";
+	mes "I see you have what you need,";
+	mes "so I'll teach you my talent.";
+	skill 1005,1,0;
+	close;
+
+L_noitems:
+	mes "[Hyzaragrack]";
+	mes "You don't have enough items.";
+	mes "Come back when you have all";
+	mes "the required items for me.";
+	close;
+	
+L_norogue:
+	mes "Looking for your master?";
+	emotion e_gasp;
+	close;
+	
+L_alreadyhave:
+	mes "I've already taught you";
+	mes "everything I know...";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Sage -> Create Elemental Converter/Elemental Change Skill Quest
+//--------------------------------------------------------------
+
+yuno_in03.gat,176,24,3	script	Mischna	755,{
+
+	mes "[Mischna]";
+	if (BaseJob != Job_Sage) goto L_sageno;
+	if (getskilllv(1007)) goto L_elemental;
+
+	mes "I can teach you a new skill";
+	mes "that I discovered, but you";
+	mes "will need to bring me a few";
+	mes "things to complete the";
+	mes "process.";
+	next;
+	
+	mes "[Mischna]";
+	mes "We will need:";	
+	mes "10 Scorpion Tails";
+	mes "7 Horns";
+	mes "12 Rainbow Shells";
+	mes "10 Snail Shells";
+	mes "4 Blank Scrolls";
+	next;
+	
+	mes "[Mischna]";
+	mes "Let me check your items.";
+	next;
+	
+	if (countitem(904)<10 || countitem(947)<7 || countitem(1013)<12 || countitem(946)<10 || countitem(7433)<4) goto L_noitems;//Items: Scorpion_Tail, Horn, Rainbow_Shell, Snail's_Shell, Blank_Scroll,
+	delitem 904, 10;//Items: Scorpion_Tail,
+	delitem 947, 7;//Items: Horn,
+	delitem 1013, 12;//Items: Rainbow_Shell,
+	delitem 946, 10;//Items: Snail's_Shell,
+	delitem 7433, 4;//Items: Blank_Scroll,
+	
+	mes "[Mischna]";
+	mes "I see you have what we need,";
+	mes "so I'll teach you this new";
+	mes "talent of mine!";
+	skill 1007,1,0;
+	next;
+	
+	mes "[Mischna]";
+	mes "Do you feel more in tune";
+	mes "with nature?";
+	close;
+
+L_noitems:
+	mes "[Mischna]";
+	mes "You don't have enough items.";
+	mes "Come back when you have all";
+	mes "the required items for me.";
+	close;
+	
+L_sageno:
+	mes "Hi I'm Mischna. How are you?";
+	mes "Please enjoy your stay here";
+	mes "within the walls of the great";
+	mes "Sage's guild.";
+	close;
+
+L_sagefail:
+	mes "[Mischna]";
+	mes "You don't have enough items.";
+	mes "Come back when you have all";
+	mes "the required items for me";
+	mes "to give you this power over";
+	mes "the elements.";
+	close;
+	
+L_alreadyhave:
+	mes "You are such a wonderful";
+	mes "student. It's too bad I have";
+	mes "nothing more to teach you.";
+	close;
+			
+L_elemental:
+	if (getskilllv(1008) || getskilllv(1017) || getskilllv(1018) || getskilllv(1019)) goto L_alreadyhave;
+	
+	mes "I have one more skill that";
+	mes "I can teach you, but you";
+	mes "will need to bring me one of";
+	mes "these sets in return...";
+	next;
+	
+	mes "[Mischna]";
+	mes "I can only accept one set.";
+	mes "20 Red blood (fire)";
+	mes "20 Crystal Blue (water)";
+	mes "20 Wind of Verdure (Wind)";
+	mes "20 Green Live (Earth)";
+	next;
+	
+	mes "[Mischna]";
+	mes "Remember that I can only teach";
+	mes "you one, so choose carefully!";
+	next;
+	
+	menu "Elemental Change Water",sage_1, "Elemental Change Earth",sage_2, "Elemental Change Fire",sage_3, "Elemental Change Wind",sage_4;
+
+		sage_1:
+		if (countitem(991)<20) goto L_sagefail;//Items: Crystal_Blue,
+		delitem 991, 20;		//Items: Crystal_Blue,
+		skill 1008,1,0;
+		goto L_alreadyhave;
+
+		sage_2:
+		if (countitem(993)<20) goto L_sagefail;//Items: Green_Live,
+		delitem 993, 20;//Items: Green_Live,
+		skill 1017,1,0;
+		goto L_alreadyhave;
+
+		sage_3:
+		if (countitem(990)<20) goto L_sagefail;//Items: Red_Blood,
+		delitem 990, 20;//Items: Red_Blood,
+		skill 1018,1,0;
+		goto L_alreadyhave;
+
+		sage_4:
+		if (countitem(992)<20) goto L_sagefail;//Items: Wind_of_Verdure,
+		delitem 992, 20;//Items: Wind_of_Verdure,
+		skill 1019,1,0;
+		goto L_alreadyhave;
+}
+
+
+
+//--------------------------------------------------------------
+// Swordsman -> Fatal Blow Skill Quest
+//--------------------------------------------------------------
+
+prt_in.gat,75,88,5	script	Leon	85,{
+
+	mes "[Leon]";
+	if (BaseClass == Job_Swordsman) goto L_Start;
+	if (BaseJob == Job_Novice) goto L_Novice;
+
+	mes "Hello there.  I am Leon, a well known and well respected member of the famous Prontera Chivalry.";
+	next;
+	mes "[Leon]";
+	mes "Are you here to learn more about the Chivalry, or are you hear to bask in the glory of us Knights? Hahahaha!";
+	emotion 18;
+	close;
+
+L_Novice:
+	mes "Oh a novice.... I'm afraid I have nothing to offer you.";
+	mes "I have no fun or nice things to say to anyone other then Swordsmen.";
+	next;
+	mes "[Leon]";
+	mes "See you in a better world!";
+	close;
+
+L_Start:
+	if (FATALBLOW == 1) goto L_Check;
+	if (getskilllv(145)>0) goto L_Done;
+
+	if (Sex == Male)mes "Oooh! I see that you are quite a strong Swordsman.";
+	if (Sex == Female)mes "Oooh! I see that you are quite a strong Swordswoman.";
+	mes "How did I know? Hahaha! Just look at that strong arm of yours!";
+	next;
+	mes "[Leon]";
+	mes "You must enjoy using ^0000ff'Bash'^000000, huh? Hahaha!";
+	emotion 18;
+	next;
+	mes "[Leon]";
+	if (Sex == Male)mes "I like a Swordsman who isn't afraid to use a powerfull skill such as that.";
+	if (Sex == Female)mes "Now, now, don't be shy.  It's ok for girls to like Bash.";
+	if (Sex == Female)mes "Afterall, whether your a Swordsman or Swordswoman, there's no denying the power of Bash!";
+	next;
+	mes "[Leon]";
+	mes "As great as Bash is though, I often felt that it could be even better if there was someway to stun an opponent with it.";
+	mes "I decided to withdraw from the battlefield and research ways of making bash more powerfull.";
+	next;
+	mes "[Leon]";
+	mes "I discovered that if one could strike an enemy's weak point with a precisely placed Bash, an opponent would be left utterly parralyzed!!";
+	next;
+	mes "[Leon]";
+	mes "I then went on to develop the skill, ^ff0000'Fatal Blow'^000000, which allows you to do just that!";
+	mes "Will rigorous training, one can learn to stun an opponent with a mighty Bash.";
+	next;
+	mes "[Leon]";
+	mes "Since you seem to be so fond of Bash, I'd be willing to teach you the skill.";
+	mes "However, I must warn you that a lot of hard work will be required.";
+	next;
+	mes "[Leon]";
+	mes "So what do you think? Are you interested?";
+	next;
+	menu "You betcha!!",M_0, "Nah.... Not really.",M_1, "Any advice on how to eat sushi?",M_2;
+
+	M_0:
+		set FATALBLOW,1;
+		mes "[Leon]";
+		mes "Hahaha! I knew you love Bash as much as I do.";
+		next;
+		mes "[Leon]";
+		mes "In order for me to teach you Fatal Blow, you must have at least ^5555FFlevel 5 Bash^000000.  You then need to give me these items:";
+		mes "- 10 ^FF0000Fire Arrows^000000,";
+		mes "- 10 ^FF0000Silver Arrows^000000,";
+		mes "- 1 ^FF0000Banana Juice^000000,";
+		mes "- 30 ^FF0000Tentacles^000000,";
+		mes "- and 5 ^FF0000Royal Jelly^000000.";
+		next;
+		mes "[Leon]";
+		mes "When you have gathered all of these items come back and see me.";
+		close;
+	M_1:
+		mes "[Leon]";
+		mes "I see... I must have misjudged you...";
+		close;
+	M_2:
+		mes "[*Sushi King* Leon]";
+		mes "The best way to eat sushi is with your hands.  That is the basic method.  Oh, and dip the FISH, NOT the RICE, into the soy sauce.";
+		next;
+		mes "[*Sushi King* Leon]";
+		mes "That way you get a richer flavor.  Also, always eat the kind that is in season.";
+		mes "Eating in the order of white fish, then blue fish, will make it taste even better!";
+		next;
+		mes "[*Sushi King* Leon]";
+		mes "Mmmmm..... I love sushi!!!";
+		emotion 33;
+		close;
+
+L_Check:
+	mes "So your back.  Did you get what I asked for?";
+	next;
+	mes "[Leon]";
+	if (countitem(1752)<10 || countitem(1751)<10 || countitem(532)<1 || countitem(962)<30 || countitem(526)<5) goto L_NoItems;
+	if (getskilllv(5)<5) goto L_BashLvl;
+
+	mes "Great work.  You have everything I need for me to teach you Fatal Blow.";
+	next;
+	mes "[Leon]";
+	mes "Ok, lets get started.";
+	next;
+	mes "!SMACK!~!CRACK!~!THWACK!~!BASH!.......... !SMACK!~!CRACK!~!THWACK!~!BASH!..........";
+	next;
+	mes "(5 hours later)";
+	next;
+	mes "[Leon]";
+	mes "Yes! That's it! You have just mastered Fatal Blow!";
+	emotion 21;
+	next;
+	delitem 1752,10;
+	delitem 1751,10;
+	delitem 532,1;
+	delitem 962,30;
+	delitem 526,5;
+	skill 145,1,0;
+	set FATALBLOW,0;
+	mes "[Leon]";
+	mes "Use it wisely young warrior!!";
+	close;
+
+	L_NoItems:
+		mes "Hmm... you still don't have enough items.  Come back when you do.";
+		close;
+	L_BashLvl:
+		mes "Wait a minute... you have to train a little more before learning this skill.";
+		mes "You need to have at least a ^5555FFlevel 5 Bash^000000.";
+		close;
+
+L_Done:
+	mes "So how is Fatal Blow? Isn't it great!! Hahaha! I knew you'd like it.";
+	next;
+	mes "[Leon]";
+	mes "Go on and Bash the heck out of those monsters! Hahaha.";
+	emotion 18;
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Swordsman -> Moving HP Recovery Skill Quest
+//--------------------------------------------------------------
+
+izlude_in.gat,175,130,2	script	Knight De Thomas	98,{
+
+	mes "[Knight De Thomas]";
+	if (BaseClass == Job_Swordsman) goto L_Start;
+
+L_Other:
+	mes "I am Thomas De Knight of the Prontera Chivalry.  I am very busy now so please leave me alone.";
+	close;
+
+L_Start:
+	if (MOVHPREC == 1) goto L_Check;
+	if (getskilllv(144)>0) goto L_GotSkill;
+	mes "Oh no! You must have been hurt in battle! Are you ok?";
+	mes "It must have been a hard fought battle for you to recieve such serious injuries....";
+	emotion 19;
+	next;
+	mes "[Knight De Thomas]";
+	mes "Being a Swordsman or Knight comes with a lot of responsiblity and requires a great deal of self sacrifice.";
+	mes "For Swordsmen and Knights there is a wonderfull skill that can aid in the recovery of HP.";
+	next;
+	mes "[Knight De Thomas]";
+	mes "I present to you..... ^5555FF'Moving HP Recovery'^000000!! This skill allows you to recover HP while moving!";
+	next;
+	mes "[Knight De Thomas]";
+	mes "The skill has not been perfected yet so the amount of HP recovered is a little low.  Still, it is helpful.";
+	mes "What do you think? Would you like to learn this skill?";
+	next;
+	menu "What a great skill! I would like to learn it!!",M_0, "No thank you.",M_End;
+
+	M_0:
+		mes "[Knight De Thomas]";
+		mes "Very well.  I will tell you what is needed to learn this skill.  First you must have a job level of 35 or greater.";
+		mes "This however doesn't apply to Knights or Crusaders.  You will also need:";
+		mes "^5555FF200 Empty Bottles^000000,";
+		mes "^5555FF1 Padded Armour^000000,";
+		mes "and ^5555FF1 Moth Wings^000000.";
+		next;
+		mes "[Knight De Thomas]";
+		mes "The bottles are proof that you have fought feircely and have used many potions.  The Padded Armor is proof of an experienced fighter.";
+		mes "You are not required to have a padded armor but you must at least wear an armor heavier than or same weight as the Padded Armor."; // fix from [General__] (freya's bug report)
+		mes "The Moth Wings..... well... really aren't necessary.  It's just that my niece recieved a bug hunting assignment for summer vacation.......";
+		next;
+		mes "[Knight De Thomas]";
+		mes "I would get them myself... it's just... I must work here all day long so I don't have any time to go out and get them.......";
+		next;
+		mes "[Knight De Thomas]";
+		mes "Don't you think it's sad that I have to stay in once place everyday without even being able to go outside??";
+		mes "Please.... find a pair of Moth Wings for my niece?.... (~sniff~sniff~)....";
+		emotion 28;
+		next;
+		mes "[Knight De Thomas]";
+		mes "If you don't..... I won't teach you anything!! Muahahahaha!!";
+		emotion 29;
+		set MOVHPREC, 1;
+		close;
+	M_End:
+		mes "[Knight De Thomas]";
+		mes "What?? What did you say?.....";
+		emotion 1;
+		close;
+
+L_Check:
+	mes "Ah, you've come back.  Let's, see... are you ready for HP Moving Recovery?....";
+	next;
+	mes "[Knight De Thomas]";
+	if ((countitem(713)<200) || (countitem(1058)<1)) goto L_NoItems;
+	if (BaseJob == Job_Swordsman && JobLevel < 35) goto L_LowLvl;
+	if ((getequipid(2) == 2312) || (getequipid(2) == 2313)) goto L_StartLearn; // Padded Armor, // fix from [General__] (freya's bug report)
+	if ((getequipid(2) == 2314) || (getequipid(2) == 2315)) goto L_StartLearn; // Chain Mail, // fix from [General__] (freya's bug report)
+	if ((getequipid(2) == 2316) || (getequipid(2) == 2317)) goto L_StartLearn; // Full Plate, // fix from [General__] (freya's bug report)
+	if ((getequipid(2) == 2341) || (getequipid(2) == 2342)) goto L_StartLearn; // Legion Plate Armor, // fix from [General__] (freya's bug report)
+	goto L_NoItemArmor;
+
+	L_StartLearn:
+	mes "Great! You have everything needed to learn this skill.  Take a deep breath.... let us begin.";
+	next;
+	mes "(2 hours later)";
+	next;
+	mes "[Knight De Thomas]";
+	mes "Can you feel it? Can you feel the energy flowing in you while you move around?";
+	mes "Haha! You have just learned HP Moving Recovery!";
+	delitem 713,200;
+	delitem 1058,1;
+//-- Padded armor does not have to be deleted! --
+//	delitem 2312,1;
+	skill 144,1,0;
+	set MOVHPREC, 0;
+	next;
+	mes "[Knight De Thomas]";
+	mes "Congratulations on learning the new skill and thank you for the Moth Wings! ^_^";
+	emotion 21;
+	close;
+
+	L_NoItemArmor: // fix from [General__] (freya's bug report)
+		mes "As I said before you must at least wear an armor heavier than or same weight as the ^5555FF Padded Armour^000000.";
+		close;
+
+	L_NoItems:
+		mes "As I said before you need to bring me these items:";
+		mes "^5555FF200 Empty Bottles^000000,";
+		mes "^5555FF1 Padded Armour^000000,";
+		mes "and ^5555FF1 Moth Wings^000000.";
+		close;
+	L_LowLvl:
+		mes "You are not yet experienced enough to learn this skill.  Come back when you have a job level of at least 35.";
+		close;
+	L_GotSkill:
+		mes "Ah, you're looking well.  That HP Moving Recovery skill must be very helpfull.";
+		mes "Well, continued success on your adventure!";
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Swordsman -> Auto-Berserk Skill Quest
+//--------------------------------------------------------------
+
+prt_in.gat,94,57,3	script	Juan	85,{
+
+	mes "[Juan]";
+	if (BaseClass == Job_Swordsman) goto L_Start;
+
+L_Other:
+	mes "So how's your adventure going? I hope there will be good days ahead of you.";
+	next;
+	mes "[Juan]";
+	mes "Who am I? Oh, I'm just a kind knight named Juan.  Don't mind me.  Hahahaha....";
+	emotion 18;
+	close;
+
+L_Start:
+	if (BaseJob == Job_Swordsman && JobLevel<34) goto L_LowLvl;
+	if (BERSERK == 1) goto L_Check;
+	if (getskilllv(146)>0) goto L_GotSkill;
+
+	mes "Oh no! You have more injuries since the last time I saw you.";
+	mes "You went into battle like this? It seems like you're straining yourself.";
+	next;
+	mes "[Juan]";
+	mes "Even though you may have a lot of strength, there is only so much you can do when you have reached your limits.";
+	mes "So don't overestimate your own power.";
+	next;
+	mes "[Juan]";
+	mes "Of course you could always use the ^5555FF'skill'^000000 we developed to overcome these limits.....";
+	next;
+	menu "Eh! What are you talking about?",M_0, "Haha! There's no such thing....",M_1, "Keuuuuuhhh!",M_3;
+
+	M_0:
+		mes "[Juan]";
+		mes "The skill is called ^5555FFBerserk^000000.  It has been deemed the flower of the battlefield!";
+		mes "When your health is low, you can call upon your hidden potential by provoking yourself.";
+		next;
+		mes "[Juan]";
+		mes "A surge of energy will flow through your body giving you a greater attack prowess at the cost of defensive strength.";
+		mes "With this you will be able to fight on with a FIREY RAGE and an absolute disregard to your own safety!!";
+		next;
+		mes "[Juan]";
+		mes "The enemy will be shocked by your new found strength!!";
+		mes "This skill is especially great for those who fight with a no-holds-bar mentality.";
+		next;
+		mes "[Juan]";
+		mes "In order to learn this skill you will need to bring me the following items:";
+		mes "^5555FF35 Powder of Butterfly,";
+		mes "10 Horrendous Mouth,";
+		mes "10 Decayed Nail^000000,";
+		mes "and ^5555FF10 Honeys^000000!";
+		next;
+		mes "[Juan]";
+		mes "Did you get all of that down? Please come back when you are ready.  I look forward to seeing you again.";
+		set BERSERK, 1;
+		close;
+	M_1:
+		mes "[Juan]";
+		mes "Bleh! Have you been a fool all of your life?? Go away and don't talk to me.";
+		emotion 32;
+		close;
+	M_3:
+		mes "[Juan]";
+		mes "Keuuuuuuuuuuuuuuuuuuh!";
+		mes "Oooowwwwwwwwuuuuuuuuuuhhhhhh!";
+		mes "Keuaaaaaaaaaaaaaaaaaah!";
+		close;
+
+	L_LowLvl:
+		mes "Oh, nice to meet you.";
+		next;
+		mes "[Juan]";
+		mes "You can go on your way now.";
+		emotion 33;
+		close;
+
+L_Check:
+	if ((countitem(924)<35) && (countitem(957)<10) && (countitem(958)<10) && (countitem(518)<10)) goto L_NoItems;
+	mes "Good job my dear friend.  You have all 4 of the items I asked for.";
+	mes "In return I will now teach you the skill: ^FF0000Berserk^000000.";
+	next;
+	mes "[Juan]";
+	mes "Great job you have done well and deserve this skill.";
+	next;
+	delitem 924,35;
+	delitem 958,10;
+	delitem 957,10;
+	delitem 518,10;
+	skill 146,1,0;
+	set BERSERK, 0;
+	mes "[Juan]";
+	mes "Muhahahaha!! Don't hold back young warrior, fight without any fears or regrets!!";
+	emotion 29;
+	close;
+
+	L_NoItems:
+		mes "[Juan]";
+		mes "In order to learn this skill you will need to bring me the following items:";
+		mes "^5555FF35 Powder of Butterfly,";
+		mes "^10 Horrendous Mouth,";
+		mes "^10 Decayed Nail^000000,";
+		mes "and ^5555FF10 Honeys^000000!";
+		close;
+L_GotSkill:
+
+	mes "You have the eyes of a person who has seen death first hand!!";
+	mes "But, because of Berserk, I'm sure you have been able to escape it many times as well.";
+	emotion 0;
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Thief -> Sand Attack/Find Stone/Throw Stone/Backslide Skill Quests
+//--------------------------------------------------------------
+
+moc_prydb1.gat,154,128,4	script	Alcouskou	118,{
+
+	mes "[Alcouskou]";
+	if (BaseClass == Job_Thief) goto L_Start;
+	if (Basejob == Job_Novice) goto L_Novice;
+
+L_Other:
+	mes "Your kind isn't welcome here.";
+	close;
+
+L_Novice:
+	mes "Although thieves and assasins have basic skills which aid them in their jobs, most don't have the 'special' skills which can make them truly great!";
+	next;
+	mes "[Alcouskou]";
+	mes "I just happen to be the ONLY one who can teach them these skills!";
+	mes "If you ever decide to become a Thief or an Assassin, come back here and I'll teach you these cool skills.";
+	next;
+	mes "[Alcouskou]";
+	mes "And if you know anyone who already is one, send them to me.  I'm willing to teach anyone who's interested.";
+	close;
+
+L_Start:
+	mes "During the course of your life you will experience many things.";
+	mes "You many have trouble understanding the importance of some of these experiences, and may even consider them to be useless to you.";
+	next;
+	mes "[Alcouskou]";
+	mes "But do not be to hastey with your judgement of them, for some of these experience may actually prove to be benificial for you.";
+	next;
+	mes "[Alcouskou]";
+	mes "Let me explain:";
+M_Menu:
+	next;
+	menu "-Sand Attack",M_Sand, "-Back Slide",M_Back, "-Find Stone",M_Find, "-Stone Fling",M_Fling, "-I will be back later.",M_End;
+
+	M_Sand:
+		mes "[Alcouskou]";
+		if (SANDATTACK == 1) goto L_Sand;
+		if (getskilllv(149) > 0) goto L_GotSand;
+		mes "The most important aspect of being a good Thief/Assassin is stealth.  One should never be seen our touched unless he/she wants to be";
+		next;
+		mes "[Alcouskou]";
+		mes "Some may consider this cowardly but I don't see it that way.";
+		mes "We live in a world where it is the survival of the fittest and you must do whatever it takes to survive.....";
+		next;
+		mes "[Alcouskou]";
+		mes "Even if this means throwing sand in an enemy's face.  That is why the skill, ^5555FFSand Attack^000000, was created.";
+		next;
+		mes "[Alcouskou]";
+		mes "This skill allows the user to throw and kick sand in the eyes of an opponent, temporarily blinding them.";
+		mes "This effectively impares the opponent's ability to defend or attack giving the user a brief but great advantage.";
+		next;
+		mes "[Alcouskou]";
+		mes "In order to learn this skill you will need to gather ^5555FF5 Fine Grit^000000 and a ^FF3355'Leather Bag of Infinity'^000000.";
+		if (Basejob == Job_Thief) mes "You will also need a job level of at least ^5555FF25^000000.";
+		next;
+		mes "[Alcouskou]";
+		mes "You can find the Leather Bag of Infinity by talking to a merchant by the name of ^5533FFRuRumuni^000000.";
+		mes "He can be found in the ^009500West end of Payon^000000.";
+		next;
+		mes "[Alcouskou]";
+		mes "Come back when you are ready.";
+		set SANDATTACK, 1;
+		goto M_Menu;
+	M_Back:
+		mes "[Alcouskou]";
+		if (BACKSLIDE == 1) goto L_Back;
+		if (getskilllv(150)>0) goto L_GotBack;
+		mes "People tend to focus on attack and damage, but it's necessary to understand that FLEEING is JUST AS IMPORTANT as attacking!";
+		next;
+		mes "[Alcouskou]";
+		mes "We thieves/assassins pride ourselves on our speed and ability to quickly dodge.";
+		mes "Of course I'm sure you've noticed that there is a down side to that speed and quickness.....";
+		next;
+		mes "[Alcouskou]";
+		mes "If we DO get hit, depending on the monster, that single hit could put us in serious danger!";
+		next;
+		mes "[Alcouskou]";
+		mes "I can understand how funny it is to watch a monster constantly miss while its attacking you, but......";
+		next;
+		mes "[Alcouskou]";
+		mes "If you get attacked by a large group of monsters..... you may not even have room to dodge and that won't be at all funny.";
+		next;
+		mes "[Alcouskou]";
+		mes "That's why most Thiefs/Assassins fear large mobs and will flee at the first sign of them.";
+		mes "There are those however, that do not fear being overwhelmed by a large mob.";
+		next;
+		mes "[Alcouskou]";
+		mes "These are the people who have learned a unique skill that allows them to deal with mob situatuions.";
+		mes "The skill enables the user to quickly 'back' out of the way of a mob, putting a great deal of distance between the two.";
+		next;
+		mes "[Alcouskou]";
+		mes "The skill is called ^5555FFBack Slide^000000 and requires a lot of practice to master.";
+		mes "If you wish to learn this skill you will first need to bring in ^5555FF20 Grasshopper's Legs^000000.";
+		next;
+		mes "[Alcouskou]";
+		mes "Think of it as the first part of your training.";
+		if (Basejob == Job_Thief) mes "If you are a Thief, you will also need to have a job level of at least ^5555FF35^000000.";
+		set BACKSLIDE, 1;
+		goto M_Menu;
+	M_Find:
+		mes "[Alcouskou]";
+		if (FINDSTONE == 1) goto L_Find;
+		if (getskilllv(151)>0) goto L_GotFind;
+		mes "The more experienced and better skilled members of our guild are quite handy.";
+		mes "They can turn something as common as a rock on the ground into a very effective weapon.";
+		next;
+		mes "[Alcouskou]";
+		mes "They can throw a rock at a far away target with great accuracy and strength.";
+		mes "They can throw it so powerfully that sometimes an enemy will become stunned by it.";
+		next;
+		mes "[Alcouskou]";
+		mes "Of course not every stone can be used as a weapon.  That is why the skill, ^5555FFFind Sone^000000, was developed.";
+		mes "With practice one can learn to pick out a stone that has a weight and shape that is fit for 'flinging'.";
+		next;
+		mes "[Alcouskou]";
+		mes "Once mastered a Thief/Assassin will be able to pick up stones from any location.";
+		mes "Think about it... the ability to use a long range weapon without spending any zeny.... isn't it great?";
+		next;
+		mes "[Alcouskou]";
+		mes "If you wan't to learn this skill you must do a little training first.  Start by picking up ^5555FF1 Bear's Footskin^000000.";
+		mes "Then try to find ^5555FF1 Zargon^000000.  Next pick out ^5555FF5 Spawn^000000.  Once you've done all this come back and see me.";
+		next;
+		mes "[Alcouskou]";
+		mes "Collecting those items will help you develop the skills neccessary to learn Find Stone.";
+		set FINDSTONE, 1;
+		goto M_Menu;
+	M_Fling:
+		mes "[Alcouskou]";
+		if (STONEFLING == 1) goto L_Fling;
+		if (getskilllv(152)>0) goto L_GotFling;
+		mes "The more experienced and better skilled members of our guild are quite handy.";
+		mes "They can turn something as common as a rock on the ground into a very effective weapon.";
+		next;
+		mes "[Alcouskou]";
+		mes "They can throw a stone at a far away target with great accuracy and strength.";
+		mes "They can throw it so powerfully that sometimes an enemy will become stunned by it.";
+		next;
+		mes "[Alcouskou]";
+		mes "These guild members call this skill ^5555FFStone Fling^000000.  It is extrememly useful and doesn't cost any zeny.";
+		next;
+		mes "[Alcouskou]";
+		mes "If you wish to learn Stone Fling you must first bring me ^5555FF2 Garlet and 2 Scell^000000.";
+		mes "You will also need to have mastered ^5555FFFind Stone^000000 as well.";
+		set STONEFLING, 1;
+		goto M_Menu;
+	M_End:
+		mes "[Alcouskou]";
+		mes "It seems that you are not experienced enough yet....";
+		close;
+
+L_Sand:
+	if (countitem(7041)<5 || countitem(7042)<1) goto L_NotRdy1;
+	if (Bsaejob == Job_Thief && Joblevel < 25) goto L_LowLvl1;
+	mes "Alright, you've got all the items.  Now its time to learn.... the... ultimate.... attack.... Sand Attack!!!";
+	next;
+	mes "[Alcouskou]";
+	mes "Look down at your feet.  See that? The very thing your stepping on is the secrect behind this skill.........  SAND!!";
+	next;
+	mes "[Alcouskou]";
+	mes "Okay, grab a handfull....... yep, that much will do....... now.........";
+	next;
+	mes "[Alcouskou]";
+	mes "THROW IT AT ME!!!";
+	emotion 27;
+	next;
+	mes "[Alcouskou]";
+	mes "(AHHH!! My EYES!!! Son of a)......... ya see how effective that was........ (JEEZE that STINGS!!).......";
+	emotion 23;
+	next;
+	mes "[Alcouskou]";
+	mes "Anyways that's all there is too it....... (CRAP that's a lot of sand!!).... So yeah, Sand Attack, use it as a last resort...... (AWW MAN!!)";
+	next;
+	mes "[Alcouskou]";
+	mes "Oh and it does Earth Property damage....... (I gota finda better way to teach this).........";
+	emotion 4;
+	delitem 7041, 5;
+	delitem 7042, 1;
+	skill 149,1,0;
+	set SANDATTACK, 0;
+	set BAGNFNTY, 0;
+	close;
+
+	L_NotRdy1:
+		mes "You need ^5555FF5 Fine Grit^000000 and a ^FF3355'Leather Bag of Infinity'^000000.";
+		next;
+		mes "[Alcouskou]";
+		mes "You can find the Leather Bag of Infinity by talking to a merchant by the name of ^5533FFRuRumuni^000000.";
+		mes "He can be found in the ^009500West end of Payon^000000.";
+		close;
+	L_LowLvl1:
+		mes "You need to have a ^5555FFJob level of 25^000000 to learn Sand Attack.";
+		close;
+	L_GotSand:
+		mes "Oh your back... hopefully not to throw anymore sand in my eyes, heh heh.... heh........ heh..............";
+		emotion 4;
+		close;
+
+L_Back:
+	if (countitem(940)<20) goto L_NotRdy2;
+	if (Basejob == Job_Thief && Joblevel < 35) goto L_LowLvl2;
+	mes "Great, you have the grasshopper legs.  While you were collecting them I'm sure you picked up on many of the characteristics of grasshoppers.";
+	next;
+	mes "[Alcouskou]";
+	mes "You will need that knowledge because this skill is based on the movement of the grasshopper.  Like it you will become quick, agile, and have a keen eyesight.";
+	next;
+	mes "[Alcouskou]";
+	mes "Okay, lets begin........";
+	next;
+	mes "~fwoosh~";
+	next;
+	mes "~fwooooosh~";
+	next;
+	mes "~fwoooooooooooooooosh~";
+	next;
+	mes "[Alcouskou]";
+	mes "Ah! You've got it.  Just like a pro.  With this skill being overwhelmed by mobs is a thing of the past.";
+	delitem 940,20;
+	skill 150,1,0;
+	set BACKSLIDE, 0;
+	close;
+
+	L_NotRdy2:
+		mes "You need ^5555FF20 Grasshopper's Legs^000000.";
+		close;
+	L_LowLvl2:
+		mes "You need a ^5555FFJob level of 35^000000 to learn Back Slide.";
+		close;
+	L_GotBack:
+		mes "Seeing as you already have Back Slide..... why don't you 'Back' on outa here.....";
+		close;
+
+L_Find:
+	if (countitem(912)<1 || countitem(948)<1 || countitem(908)<5) goto L_NotRdy3;
+	mes "Ah! I see that you're fully prepared to learn this skill.  Let us begin....";
+	next;
+	mes "[Alcouskou]";
+	mes "There are many stones on the floor here.  Pick them all up one by one and examine each one carefully.";
+	mes "Get a feel for how much each one weighs and become aware of how each one has a different texture.";
+	next;
+	mes "[Alcouskou]";
+	mes "You must become one with the stone... it is the only way you will be able to use it effectively...";
+	next;
+	mes "~ an hour later... ~";
+	next;
+	mes "[Alcouskou]";
+	mes "Very good.  You have chosen some fine stones.  This tells me that you have now perfected the Find Stone skill.";
+	emotion 21;
+	delitem 912,1;
+	delitem 948,1;
+	delitem 908,5;
+	skill 151,1,0;
+	set FINDSTONE, 0;
+	next;
+	mes "[Alcouskou]";
+	mes "Have fun using it.";
+	close;
+
+	L_NotRdy3:
+		mes "You need ^5555FF1 Bear's Footskin, 1 Zargon, and 5 Spawns^000000 to learn Find Stone.";
+		close;
+	L_GotFind:
+		mes "Picking up stones can be fun but...... don't spend all day doing it ok?.....";
+		close;
+
+L_Fling:
+	if (getskilllv(151) == 0) goto L_NotRdy4;
+	if (countitem(910)<2 || countitem(911)<2) goto L_NotRdy4;
+	mes "Good! You look like your ready for me to teach you the Stone Fling skill.  Let us begin....";
+	next;
+	mes "[Alcouskou]";
+	mes "First, loosen up your arm.  Next, find a good quality stone using Find Stone.  Now close your eyes and visualize the target in your mind.";
+	next;
+	mes "[Alcouskou]";
+	mes "Now imagine yourself going straight through the target! Continue to visualize this!";
+	next;
+	mes "~ 1/2 hour later... ~";
+	next;
+	mes "[Alcouskou]";
+	mes "Think of the stone as an extension of your body.  Keep the target clear in your mind! You are one with the stone, the stone is one with you.....";
+	next;
+	mes "[Alcouskou]";
+	mes "Open your eyes! SEE THE TARGET!! Throw the stone at the target as if you were hurling yourself towards it! DO IT NOW!!";
+	emotion 27;
+	next;
+	mes "!!Whooooossshh!!................. !!Thwack!!";
+	next;
+	mes "[Alcouskou]";
+	mes "Haha! Excellent! It's a bullseye.  You have now mastered Stone Fling, congratulations.";
+	emotion 21;
+	delitem 910,2;
+	delitem 911,2;
+	skill 152,1,0;
+	set STONEFLING, 0;
+	next;
+	mes "[Alcouskou]";
+	mes "As you can see this is a skill that relies heavily on concentration.";
+	mes "As long as you keep your mind focused you will have on problems using this skill.";
+	close;
+
+	L_NotRdy4:
+		mes "You need ^5555FF2 Scell and 2 Garlet^000000, and the ability to use ^5555FFFind Stone^000000 to learn Stone Fling.";
+		close;
+
+	L_GotFling:
+		mes "So Stone Fling is coming in handy huh? Just make sure you don't hit the wrong moster.";
+		close;
+}
+
+payon.gat,90,77,3	script	Bag Seller	99,{
+
+	mes "[RuRumuni]";
+	if (SANDATTACK == 1 && BAGNFNTY != 2) goto L_Start;
+
+	mes "I am a humble merchant here in Payon.  I buy the leather hides of animals, brought in by the hunters, and make leather pouches to sell.";
+	mes "I grew up around leather and am quite good at it.";
+	close;
+
+L_Start:
+	if (BAGNFNTY == 1) goto L_Check;
+	mes "Hello.  So you were sent by Alcouskou to obtain a ^5533FF'Leather Bag of Inifinity'^000000........";
+	mes "I will be more than happy to make one for you............";
+	next;
+	mes "[RuRumuni]";
+	mes "But this bag is very special, and I will need some special items in order to make it.";
+	next;
+	set BAGNFNTY, 1;
+
+	L_List:
+	mes "[RuRumuni]";
+	mes "Here are the items that I will need:";
+	mes "- 5 ^5533FFScorpion Tails^000000";
+	mes "- 1 ^5533FFCobweb^000000";
+	mes "- 1 ^5533FFCactus Needle^000000";
+	mes "- 1 ^5533FFEarthworm Peeling^000000.";
+	next;
+	mes "[RuRumuni]";
+	mes "Once you have all of these items I will be able to make the Bag of Infinity for you.";
+	close;
+
+L_Check:
+	mes "Nice to see you again.  Do you have all of the items? Lets see........";
+	next;
+	if (countitem(904)<5 || countitem(1025)<1 || countitem(952)<1 || countitem(1055)<1) goto L_List;
+	mes "[RuRumuni]";
+	mes "Great you have everything I asked for.  Let me start making the bag right away.......";
+	next;
+	mes "~(30 minutes later)~";
+	next;
+	mes "[RuRumuni]";
+	mes "Here you go, one Leather Bag of Infinity.  Enjoy!";
+	getitem 7042, 1;
+	delitem 904, 5;
+	delitem 1025, 1;
+	delitem 952, 1;
+	delitem 1055, 1;
+	set BAGNFNTY, 2;
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Wizard -> Sight Blaster Skill Quest
+//--------------------------------------------------------------
+
+gef_tower.gat,116,37,1	script	Enoz#2	748,{
+
+	if (HELLIONQ == 22) goto L_remember;
+	if (HELLIONQ == 21) goto L_joke;
+	if (HELLIONQ == 20) goto L_take;
+	if (BaseJob != Job_Wizard) goto L_nowiz;
+	if (getskilllv(1006) > 0) goto L_alreadyhave;
+
+	mes "[Enoz]";
+	mes "I'll teach you all I know for:";
+	mes "10 Crystal Blue";
+	mes "10 Green Live";
+	mes "10 Red Blood";
+	mes "10 Wind of Verdure";
+	next;
+	
+	mes "[Enoz]";
+	mes "Let me check your items.";
+	next;
+	
+	if (countitem(990)<10 || countitem(991)<10 || countitem(992)<10 || countitem(993)<10) goto L_noitems;//Items: Red_Blood, Crystal_Blue, Wind_of_Verdure, Green_Live,
+	delitem 990, 10;//Items: Red_Blood,
+	delitem 991, 10;//Items: Crystal_Blue,
+	delitem 992, 10;//Items: Wind_of_Verdure,
+	delitem 993, 10;//Items: Green_Live,
+	
+	mes "[Enoz]";
+	mes "I see you have what you need,";
+	mes "so I'll teach you my talent.";
+	skill 1006,1,0;
+	close;
+
+L_take:
+	mes "[Enoz]";
+	mes "It's gone, it's gone!";
+	mes "Where the hell did it go?!";
+	mes "Oh man, who could have";
+	mes "taken it? Wait, was it... You?!";
+	next;
+	menu "Actually, Welshyun sent me.",L_sent,"No way man, don't go nuts.",-;
+
+	mes "[Enoz]";
+	mes "Nuts?! Oh, you wanna";
+	mes "see crazy, is that it?! You";
+	mes "wanna see insaaaane?!";
+	mes "Cuz I'll go freakin' medieval";
+	mes "if you keep bothering me!!";
+	close;
+
+L_sent:
+	mes "[Enoz]";
+	mes "My mentor, Welshyun?";
+	mes "Huh. Is there a report";
+	mes "I haven't submitted to him";
+	mes "yet? So what was it called?";
+	next;
+	input @tempstr$;
+	if (@tempstr$ != "Monster Life in the Geffen Area") goto L_wrongstr;
+
+	mes "[Enoz]";
+	mes "\"Monster Life in";
+	mes "the Geffen Area\"?";
+	mes "Oh no. My mentor took";
+	mes "that three days ago!";
+	mes "Is he still up to his";
+	mes "old tricks again?";
+	next;
+	mes "[Enoz]";
+	mes "Awww nuts!";
+	mes "Where the heck is";
+	mes "my Master Science";
+	mes "Reference Book?";
+	mes "It was right here";
+	mes "three days ago...";
+	set HELLIONQ,21;
+	close;
+
+L_joke:
+	mes "[Enoz]";
+	mes "My mentor Welshyun's";
+	mes "been playing jokes again,";
+	mes "so you better go talk to him.";
+	mes "Damn. Where is that Master";
+	mes "Science Reference Book?";
+	close;
+
+L_wrongstr:
+	mes "[Enoz]";
+	mes @tempstr$ + "?";
+	mes "I haven't completed";
+	mes "any research related";
+	mes "to that subject. Or did I?";
+	mes "Anyway, I need the exact";
+	mes "name of the report you want!";
+	close;
+
+L_remember:
+	mes "[Enoz]";
+	mes "Oh hey, I remember you~";
+	mes "So did my mentor send you";
+	mes "to me again for some reason?";
+	next;
+	mes "^3151FFYou cautiously hand Enoz the";
+	mes "Master Science Reference Book.";
+	next;
+	mes "[Enoz]";
+	mes "Yes! Oh yes!";
+	mes "This is the book";
+	mes "I lost three days";
+	mes "ago! Thanks so much!";
+	mes "Now I can finally finish";
+	mes "this research project that--";
+	next;
+	mes "[Enoz]";
+	mes "Wait, the page I really";
+	mes "need is missing! And there's";
+	mes "some sort of note... Umm...";
+	mes "^111111\"Enoz I think this page";
+	mes "is worth at least one Apple";
+	mes "Juice. Right? --Welshyun\"^000000.";
+	next;
+	mes "[Enoz]";
+	mes "NOooOOoOo!";
+	mes "Not agaaaaain!";
+	mes "WHy is he always";
+	mes "playing these pranks?!";
+	mes "Apple Juice! I need";
+	mes "some Apple Juice!";
+	next;
+	mes "^3151FFIt looks like it's time";
+	mes "to get 1 Blue Gemstone,";
+	mes "and then bring it back";
+	mes "to Welshyun the Sage.";
+	set HELLIONQ,23;
+	close;
+	
+L_noitems:
+	mes "[Enoz]";
+	mes "You don't have enough items.";
+	mes "Come back when you have all";
+	mes "the required items for me.";
+	close;
+	
+L_nowiz:
+	mes "[Enoz]";
+	mes "Gone! It's gone!";
+	mes "Where did the book";
+	mes "I really need go to?";
+	mes "Oh no oh no oh no oh no!";
+	mes "Waaaaah, I'm gonna cry!";
+	close;
+
+L_alreadyhave:
+	mes "[Enoz]";
+	mes "I've already taught you";
+	mes "everything I know...";
+	close;
+}

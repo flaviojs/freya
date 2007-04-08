@@ -1,0 +1,1254 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Kafra Corp System	Author: A Lot of People
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 First version, merged together [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: * Official-certified *
+//--------------------------------------------------------------
+
+
+//**************************************************************
+//--------------------------------------------------------------
+// Part #1 -> Kafra Functions
+//--------------------------------------------------------------
+//**************************************************************
+
+
+//--------------------------------------------------------------
+// F_Kafra Function Argument Documentation
+//--------------------------------------------------------------
+// arg(0): Used to determine which welcome message to show.
+// arg(1): Used to determine which menu to display.
+// arg(2): Used to determine if the info menu is shown in F_KafInfo.
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// F_Kafra Kafra Main Function
+//--------------------------------------------------------------
+
+function	script	F_Kafra	{
+
+	if (RESRVPTS < 25000) goto L_Cont01;
+
+	mes "[Kafra Employee]";
+	mes "Your special reserve points have exceeded";
+	mes "the maximum capacity.";
+	mes "Please be advised to spend your";
+	mes "special reserved points";
+	mes "at the headquarters of Kafra Corporation";
+	mes "in Al De Baran before you attempt to use any of Kafra services in the future.";
+	callfunc "F_KafEnd",0,1;
+	end;
+
+L_Cont01:
+	mes "[Kafra Employee]";
+	if (getarg(0)==0) mes "Welcome to the Kafra Corporation. The Kafra services are always on your side. How may I assist you?";
+	if (getarg(0)==1) mes "Welcome... Kafra Services.... Will be with you even if you die.....";
+	if (getarg(0)==2) mes "Welcome, ^5533FF" + GetGuildName(@GID) + "^000000 members. The Kafra services are always on your side. How may I assist you?";
+	next;
+
+	M_Menu:
+
+	if (getarg(0)==2) menu "Use Storage",M_Storage, "Use Guild Storage",M_GStorage, "Rent a Pushcart",M_Cart, "Use Teleport Service",M_Teleport, "Cancel",M_End; // Guild Kafra Employees
+
+	if (getarg(1)==0) menu "Save",M_Save, "Use Storage",M_Storage, "Use Teleport Service",M_Teleport, "Rent a Pushcart",M_Cart, "Kafra Pass",M_Pass,"Check Other Information",M_Info, "Cancel",M_End; // Normal/Complete Kafra
+
+	if (getarg(1)==1) menu "Save",M_Save, "Use Storage",M_Storage, "Rent a Pushcart",M_Cart, "Kafra Pass",M_Pass, "Check Other Information",M_Info,"Cancel",M_End; // No Teleport Service
+
+	if (getarg(1)==2) menu "Use Storage",M_Storage, "Rent a Pushcart",M_Cart, "Kafra Pass",M_Pass, "Check Other Information",M_Info,"Cancel",M_End; // No Save or Teleport Service
+
+	if (getarg(1)==3) menu "Save",M_Save, "Use Storage",M_Storage, "Use Teleport Service",Swz_Teleport, "Rent a Pushcart",M_Cart, "Kafra Pass",M_Pass,"Check Other Information",M_Info, "Cancel",M_End; // Swartzvalt Republic Kafras
+
+	if (getarg(1)==4) menu "Use Storage",M_Storage, "Use Teleport Service",L_Teleport, "Rent a Pushcart",M_Cart, "Kafra Pass",M_Pass, "Check Other Information",M_Info,"Cancel",M_End; // No Save
+
+	if (getarg(1)==5) menu "Use Storage",M_Storage, "Cancel",M_End; // Only Storage
+
+	if (getarg(1)==6) menu "Save",M_Save, "Use Storage",M_Storage, "Cancel",M_End; // Only Save & Storage
+
+	if (getarg(1)==7) menu "Use Storage",M_Storage, "Check Other Information",M_Info,"Cancel",M_End; // Storage & Info
+
+	M_Save:
+		mes "[Kafra Employee]";
+		mes "Your Respawn Point";
+		mes "has been saved. Thank you";
+		mes "for using the Kafra Service.";
+		callfunc "F_KafEnd",0,3;
+		return;
+		end;
+
+		// To-Do: Official iRO Dialogue for Saving:
+		// mes "[Kafra Employee]";
+		// mes "Your Respawn Point";
+		// mes "has been saved in the";
+		// mes "*city/town* of *xxxx*. Thank you";
+		// mes "for using the Kafra Service.";
+		// * Save Respawn Point Here *
+		// close2;
+		// cutin "", 255;
+		// end;
+
+	M_Storage:
+		callfunc "F_KafStor",getarg(0);
+
+	M_GStorage:
+		callfunc "F_KafStor",3;
+
+	M_Teleport:
+		callfunc "F_KafTele";
+
+	M_Cart:
+		callfunc "F_KafCart",getarg(0);
+
+	M_Pass:
+		callfunc "F_KafPass";
+		goto M_Menu;
+
+	M_Info:
+		callfunc "F_KafInfo",getarg(2);
+
+	M_End:
+		callfunc "F_KafEnd",getarg(0),0;
+
+	Swz_Teleport:
+		callfunc "F_KafSwzTele";
+}
+
+
+//--------------------------------------------------------------
+// F_KafStor Kafra Storage Function
+//--------------------------------------------------------------
+
+function	script	F_KafStor	{
+
+	if (getarg(0) == 3) goto L_Guild;
+	if (Basejob == JOB_NOVICE && Joblevel < 6) goto sL_JbLvl;
+	if (Basejob == JOB_NOVICE) set @fee, 30;
+	if (Basejob != JOB_NOVICE) set @fee, 60;
+	if (@kafPass == 1 || getarg(0) == 2) set @fee, 0;
+	if (Zeny < @fee) goto sL_Zeny;
+	set Zeny, Zeny - @fee;
+	set RESRVPTS, RESRVPTS + (@fee/5);
+
+	mes "[Kafra Employee]";
+	mes "Here let me open";
+	mes "your Storage for you.";
+	mes "Thank you for using";
+	mes "the Kafra Service.";
+	callfunc "F_KafEnd",0,2;
+	end;
+
+	sL_JbLvl:
+		mes "[Kafra Employee]";
+		mes "I am sorry but you have to be at least Novice job level 6 if you want to use the storage.";
+		callfunc "F_KafEnd",0,1;
+		end;
+
+	sL_Zeny:
+		mes "[Kafra Employee]";
+		mes "Dear you don't have enough money. The Storage fee is "+@fee+" Zeny.";
+		callfunc "F_KafEnd",0,1;
+		end;
+
+L_Guild:
+	if (guildopenstorage(0) == 1) goto L_InUse;
+	callfunc "F_KafEnd",0,1;
+	end;
+
+	L_InUse:
+		mes "[Kafra Employee]";
+		mes "I'm sorry but another guild member is using the guild storage";
+		mes "right now.  Please wait until that person is finished.";
+		callfunc "F_KafEnd",0,1;
+		end;
+}
+
+
+//--------------------------------------------------------------
+// F_KafTele Kafra Teleport Function
+//--------------------------------------------------------------
+
+function	script	F_KafTele	{
+
+	mes "[Kafra Employee]";
+	mes "Please choose";
+	mes "your destination.";
+	next;
+
+	menu @wrpC$[0],M_Wrp0, @wrpC$[1],M_Wrp1, @wrpC$[2],M_Wrp2, @wrpC$[3],M_Wrp3,
+	     @wrpC$[4],M_Wrp4, @wrpC$[5],M_Wrp5, @wrpC$[6],M_Wrp6;
+
+	M_Wrp0:
+		set @num, 0;
+		goto L_Warp;
+	M_Wrp1:
+		set @num, 1;
+		goto L_Warp;
+	M_Wrp2:
+		set @num, 2;
+		goto L_Warp;
+	M_Wrp3:
+		set @num, 3;
+		goto L_Warp;
+	M_Wrp4:
+		set @num, 4;
+		goto L_Warp;
+	M_Wrp5:
+		set @num, 5;
+		goto L_Warp;
+	M_Wrp6:
+		set @num, 6;
+
+	L_Warp:
+		if (@wrpC$[@num] == "Cancel") goto L_End;
+		if (@kafPass == 1) set @wrpP[@num], 0;
+		if (Zeny < @wrpP[@num]) goto sL_CantTele;
+		set Zeny, Zeny - @wrpP[@num];
+		if (@kafPass == 0) set RESRVPTS, RESRVPTS + (@wrpP[@num]/16);
+
+		if (@wrpD$[@num] == "Alberta") warp "alberta.gat", 117, 56;
+		if (@wrpD$[@num] == "Al De Baran") warp "aldebaran.gat",143,110;
+		if (@wrpD$[@num] == "Comodo") warp "comodo.gat", 207, 144;
+		if (@wrpD$[@num] == "Izlude") warp "izlude.gat", 91, 105;
+		if (@wrpD$[@num] == "Geffen") warp "geffen.gat", 120, 39;
+		if (@wrpD$[@num] == "Morroc") warp "morocc.gat", 156, 46;
+		if (@wrpD$[@num] == "Payon") warp "payon.gat", 168, 103;
+		if (@wrpD$[@num] == "Prontera") warp "prontera.gat", 116, 72;
+		if (@wrpD$[@num] == "Coal Mine(Dead Pit)") warp "mjolnir_02.gat", 82, 347;
+		if (@wrpD$[@num] == "Yuno") warp "yuno.gat", 157, 123;
+		if (@wrpD$[@num] == "Coal Mine") warp "mjolnir_02.gat", 82, 347;
+		if (@wrpD$[@num] == "Comodo Pharos Lighthouse") warp "cmd_fild07.gat", 127, 134;
+		if (@wrpD$[@num] == "Orc Dungeon") warp "gef_fild10.gat", 52, 326;
+		if (@wrpD$[@num] == "Umbala") warp "umbala.gat", 130, 130;
+		setarray @wrpP[0], 0, 0, 0, 0, 0, 0, 0;
+		setarray @wrpD$[0], "", "", "", "", "", "", "";
+		setarray @wrpC$[0], "", "", "", "", "", "", "";
+		setarray @viewpX[0], 0, 0, 0, 0;
+		setarray @viewpY[0], 0, 0, 0, 0;
+		set @num,0;
+		set @kafPass,0;
+		cutin "", 255;
+		close;
+
+		sL_CantTele:
+			mes "[Kafra Employee]";
+			mes "Dear you don't have enough money. Please check your funds again.";
+			callfunc "F_KafEnd",0,1;
+			end;
+			
+
+		L_End:
+		callfunc "F_KafEnd",0,1;
+		end;
+}
+
+
+//--------------------------------------------------------------
+// F_KafCart Kafra Cart Function
+//--------------------------------------------------------------
+
+function	script	F_KafCart	{
+
+	if (callfunc("Is_Merc_Class") == 0) goto sL_CantRent;
+	if (getskilllv(39) == 0) goto sL_NeedSkill;
+	if (checkcart(0) == 1) goto sL_GotCart;
+	if (getarg(0) == 2) goto L_Guild;
+	mes "[Kafra Employee]";
+	if (@kafPass == 0) mes "The Cart Fee is 800 Zeny.  Do you want to Rent a Cart?";
+	if (@kafPass == 1) mes "Since you're using a Kafra Pass, you can rent a cart for free!";
+	next;
+	menu "Rent a Cart.",-, "Cancel.",M_End;
+
+		if (Zeny < 800 && kafPass == 0) goto sL_CartFee;
+		if (@kafPass == 0) set Zeny,Zeny-800;
+		if (@kafPass == 0) set RESRVPTS, RESRVPTS + 48;
+		goto L_Guild;
+
+	L_Guild:
+		setcart;
+		mes "[Kafra Employee]";
+		mes "Here is your cart.";
+		callfunc "F_KafEnd",0,1;
+		end;
+
+	sL_CantRent:
+		mes "[Kafra Employee]";
+		mes "I'm sorry, but the";
+		mes "Pushcart rental service";
+		mes "is only available to Merchants,";
+		mes "Blacksmiths, Alchemists, White";
+		mes "Smiths and Creators.";
+		callfunc "F_KafEnd",0,1;
+		end;
+
+	sL_NeedSkill:
+		mes "[Kafra Employee]";
+		mes "I'm sorry but you need the skill ^0000FF'Pushcart'^000000 to rent a cart.";
+		callfunc "F_KafEnd",0,1;
+		end;
+
+	sL_GotCart:
+		mes "[Kafra Employee]";
+		mes "Excuse me... but you already have a cart....";
+		emotion 4;
+		callfunc "F_KafEnd",0,1;
+		end;
+
+	sL_CartFee:
+		mes "[Kafra Employee]";
+		mes "Dear, you don't have enough Money. You need 800 Zeny.";
+		callfunc "F_KafEnd",0,1;
+		end;
+
+	M_End:
+		callfunc "F_KafEnd",0,1;
+		end;
+}
+
+
+//--------------------------------------------------------------
+// F_KafPass Kafra Pass Function
+//--------------------------------------------------------------
+
+function	script	F_KafPass	{
+
+	sM_Menu:
+	menu "Use a Kafra Pass.",-, "What is a Kafra Pass?",sM_PassInfo, "Cancel",sM_End;
+
+		mes "[Kafra Employee]";
+		mes "Let me just check your pass.....";
+		next;
+		if (usedKafPass == 0 && countitem(1084) == 0) goto sL_NeedPass;
+		set @kafPass,1;
+		set usedKafPass, usedKafPass + 1;
+		if (usedKafPass >= 3) goto sL_PassExpire;
+		if (usedKafPass > 1) goto L_Cont; // Fixed Lupus
+		delitem 1084,1;
+		mes "(you hand her your pass)";
+		next;
+		mes "[Kafra Employee]";
+		mes "Great! Everything seems to be in order.  Now that your pass is activated, you may rent a cart or use the teleport services for free.";
+		mes "Your pass number has been entered into our database so you no longer need it.";
+		next;
+		goto L_Cont;
+
+		L_Cont:
+			mes "[Kafra Employee]";
+			mes "You will be able to use the Cart Rental and Teleport services free of charge ^5533FF"+(3 - usedKafPass)+"^000000 more times with any Kafra service agent you choose.";
+			next;
+			return;
+
+		sL_NeedPass:
+			mes "[Kafra Employee]";
+			mes "I'm sorry but you don't have a kafra pass to use....";
+			callfunc "F_KafEnd",0,1;
+			end;
+
+		sL_PassExpire:
+			mes "[Kafra Employee]";
+			mes "This is going to be the 3rd and final time you use this pass, therefore it is now expired.";
+			set usedKafPass,0;
+			next;
+			mes "[Kafra Employee]";
+			mes "You may now use the Teleport and Cart Rental services for free.";
+			next;
+			return;
+	sM_PassInfo:
+		mes "[Kafra Employee]";
+		mes "A ^5533FFKafra Pass^000000 is a unique voucher that lets you use Kafra services for free!";
+		mes "The Kafra services that you may use for free are the ^FF3355Teleport^000000 service and the ^FF3355Cart Rental^000000 service.";
+		next;
+		mes "[Kafra Employee]";
+		mes "Kafra passes can be purchased at the Kafra Corp. Main office in Al De Baran.";
+		next;
+		mes "[Kafra Employee]";
+		mes "To use a Kafra Pass, simply choose the option to 'Use a Kafra Pass', when speaking with a Kafra agent such as myself.";
+		mes "Your pass number will be entered into our database, and you will then be able to use the Teleport, and Cart Rental Kafra services free of charge.";
+		next;
+		mes "[Kafra Employee]";
+		mes "Once you have finished using the desired services, and have stoped interacting with the Kafra, your 'free use' session will end.";
+		mes "You will have a total of ^5533FF 3 'free use' sessions^000000 available upon activation of your Kafra Pass.";
+		next;
+		mes "[Kafra Employee]";
+		mes "To begin another 'free use' session, simply select the 'Use a Kafra Pass' option when speaking with a Kafra Agent.";
+		next;
+		mes "[Kafra Employee]";
+		mes "Believe me when I say that the Kafra Pass is a great bargain!!";
+		mes "With the Kafra Pass, we hope to give players some incentive to use our great services.";
+		callfunc "F_KafEnd",0,1;
+		end;
+
+	sM_End:
+		callfunc "F_KafEnd",0,1;
+		end;
+}
+
+
+//--------------------------------------------------------------
+// F_KafInfo Special Reserve Points Kafra Function
+//--------------------------------------------------------------
+
+function	script	F_KafInfo	{
+
+	sM_Menu:
+	if (getarg(0) == 0) menu "Check Special Reserve Points",sM_ResChk, "Kafra Employee Locations",sM_KafLoc, "Cancel",sM_End;
+
+	sM_ResChk:
+		mes "[Kafra Employee]";
+		mes "Lets see...";
+		mes ""+strcharinfo(0)+"...";
+		mes "Ah, you have a total of";
+		mes ""+RESRVPTS+" Special Reserve Points.";
+		next;
+		mes "[Kafra Employee]";
+		mes "You can exchange your";
+		mes "Special Reserve Points for";
+		mes "rewards at the Kafra Main Office";
+		mes "in Al De Baran. Please use our";
+		mes "convenient services to see the";
+		mes "benefits of our rewards program.";
+		callfunc "F_KafEnd",0,1;
+		end;
+
+	sM_KafLoc:
+		viewpoint 1,@viewpX[0],@viewpY[0],1,0xFF00FF;
+		viewpoint 1,@viewpX[1],@viewpY[1],2,0xFF00FF;
+		viewpoint 1,@viewpX[2],@viewpY[2],3,0xFF00FF;
+		viewpoint 1,@viewpX[3],@viewpY[3],4,0xFF00FF;
+		callfunc "F_KafEnd",0,1;
+		end;
+
+	sM_End:
+		callfunc "F_KafEnd",0,1;
+		end;
+}
+
+
+//--------------------------------------------------------------
+// F_KafEnd Function Argument Documentation
+//--------------------------------------------------------------
+// arg(0): used to determine what message to display.
+// arg(1): used to determine which extra actions need to be made
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// F_KafEnd Kafra End Function
+//--------------------------------------------------------------
+
+function	script	F_KafEnd	{
+
+	if (getarg(1) > 0) goto F_KafSaveEnd;
+	mes "[Kafra Employee]";
+	if (getarg(0) != 1) mes "We, here at Kafra Corporation, are always endeavoring to provide you with the best services. We hope that we meet your adventuring needs and standards of excellence.";
+	if (getarg(0) == 1) mes "We, Kafra Corporation.... Will be with you.... whenever.... wherever... therefore.... please don't forget us.....";
+
+	callfunc "F_KafSaveEnd",0,3;
+
+F_KafSaveEnd:
+	close2;
+	cutin "",255;
+	setarray @wrpP[0], 0, 0, 0, 0, 0, 0, 0;
+	setarray @wrpD$[0], "", "", "", "", "", "", "";
+	setarray @wrpC$[0], "", "", "", "", "", "", "";
+	setarray @viewpX[0], 0, 0, 0, 0;
+	setarray @viewpY[0], 0, 0, 0, 0;
+	set @fee,0;
+	set @kafPass,0;
+	if (getarg(1) == 2) openstorage; // Kafra Storage Part
+	if (getarg(1) == 3) return; // Returns back to function calling place, and passes into the M_Save label
+	end;
+}
+
+
+//**************************************************************
+//--------------------------------------------------------------
+// Part #2 -> Kafra Variable Preset Functions (For Teleport Menu)
+//--------------------------------------------------------------
+//**************************************************************
+
+// Alberta ->
+function	script	F_KafSetAlb	{
+
+	setarray @wrpP[0], 1200, 1800, 1800;
+	setarray @wrpD$[0], "Payon", "Morroc", "Prontera";
+	set @wrpC$[0], @wrpD$[0]+" -> "+@wrpP[0];
+	set @wrpC$[1], @wrpD$[1]+" -> "+@wrpP[1];
+	set @wrpC$[2], @wrpD$[2]+" -> "+@wrpP[2];
+	set @wrpC$[3], "Cancel";
+	set @wrpC$[4], "";
+	set @wrpC$[5], "";
+	set @wrpC$[6], "";
+	setarray @viewpX[0], 28, 113, 0, 0;
+	setarray @viewpY[0], 229, 60, 0, 0;
+	return;
+}
+
+// Aldebaran ->
+function	script	F_KafSetAldebaran	{
+
+	setarray @wrpP[0], 1200, 1200, 1800, 1700;
+	setarray @wrpD$[0], "Geffen", "Yuno" , "Izlude", "Coal Mine(Dead Pit)";
+	set @wrpC$[0], @wrpD$[0]+" -> "+@wrpP[0];
+	set @wrpC$[1], @wrpD$[1]+" -> "+@wrpP[1];
+	set @wrpC$[2], @wrpD$[2]+" -> "+@wrpP[2];
+	set @wrpC$[3], @wrpD$[3]+" -> "+@wrpP[3];
+	set @wrpC$[4], "Cancel";
+	set @wrpC$[5], "";
+	set @wrpC$[6], "";
+	return;
+}
+
+// Comodo ->
+function	script	F_KafSetComodo	{
+
+	setarray @wrpD$[0], "Morroc", "Comodo Pharos Lighthouse", "Umbala";
+	setarray @wrpP[0], 1800, 1200, 1800;
+	set @wrpC$[0], @wrpD$[0]+" -> "+@wrpP[0];
+	set @wrpC$[1], @wrpD$[1]+" -> "+@wrpP[1];
+	set @wrpC$[2], @wrpD$[2]+" -> "+@wrpP[2];
+	set @wrpC$[3], "Cancel";
+	set @wrpC$[4], "";
+	set @wrpC$[5], "";
+	set @wrpC$[6], "";
+	return;
+}
+
+// Geffen ->
+function	script	F_KafSetGef	{
+
+	setarray @wrpD$[0], "Prontera", "Al De Baran", "Orc Dungeon", "Coal Mine";
+	setarray @wrpP[0], 1200, 1200, 1200, 1700;
+	set @wrpC$[0], @wrpD$[0]+" -> "+@wrpP[0];
+	set @wrpC$[1], @wrpD$[1]+" -> "+@wrpP[1];
+	set @wrpC$[2], @wrpD$[2]+" -> "+@wrpP[2];
+	set @wrpC$[3], @wrpD$[3]+" -> "+@wrpP[3];
+	set @wrpC$[4], "Cancel";
+	set @wrpC$[5], "";
+	set @wrpC$[6], "";
+	setarray @viewpX[0], 120, 203, 116, 37;
+	setarray @viewpY[0], 62, 123, 202, 116;
+	return;
+}
+
+// Izlude ->
+function	script	F_KafSetIzlude	{
+
+	setarray @wrpD$[0], "Geffen", "Prontera", "Morroc", "Al De Baran";
+	setarray @wrpP[0], 1200, 1200, 1200, 1800;
+	set @wrpC$[0], @wrpD$[0]+" -> "+@wrpP[0];
+	set @wrpC$[1], @wrpD$[1]+" -> "+@wrpP[1];
+	set @wrpC$[2], @wrpD$[2]+" -> "+@wrpP[2];
+	set @wrpC$[3], @wrpD$[3]+" -> "+@wrpP[3];
+	set @wrpC$[4], "Cancel";
+	set @wrpC$[5], "";
+	set @wrpC$[6], "";
+	return;
+}
+
+// Juno ->
+function	script	F_KafSetJun	{
+
+	setarray @wrpD$[0], "Al De Baran";
+	setarray @wrpP[0], 1200;
+	set @wrpC$[0], @wrpD$[0]+" -> "+@wrpP[0];
+	set @wrpC$[1], "Cancel";
+	set @wrpC$[2], "";
+	set @wrpC$[3], "";
+	set @wrpC$[4], "";
+	set @wrpC$[5], "";
+	set @wrpC$[6], "";
+	setarray @viewpX[0], 328, 278, 153, 0;
+	setarray @viewpY[0], 108, 221, 187, 0;
+	return;
+}
+
+// Morroc ->
+function	script	F_KafSetMoc	{
+
+	setarray @wrpD$[0], "Prontera", "Payon", "Alberta", "Comodo", "Comodo Pharos Lighthouse";
+	setarray @wrpP[0], 1200, 1200, 1800, 1800, 1200;
+	set @wrpC$[0], @wrpD$[0]+" -> "+@wrpP[0];
+	set @wrpC$[1], @wrpD$[1]+" -> "+@wrpP[1];
+	set @wrpC$[2], @wrpD$[2]+" -> "+@wrpP[2];
+	set @wrpC$[3], @wrpD$[3]+" -> "+@wrpP[3];
+	set @wrpC$[4], @wrpD$[4]+" -> "+@wrpP[4];
+	set @wrpC$[5], "Cancel";
+	set @wrpC$[6], "";
+	setarray @viewpX[0], 156, 163, 28, 292;
+	setarray @viewpY[0], 97, 260, 167, 211;
+	return;
+}
+
+// Payon ->
+function	script	F_KafSetPay	{
+
+	setarray @wrpD$[0], "Alberta", "Prontera", "Morroc";
+	setarray @wrpP[0], 1200, 1200, 1200;
+	set @wrpC$[0], @wrpD$[0]+" -> "+@wrpP[0];
+	set @wrpC$[1], @wrpD$[1]+" -> "+@wrpP[1];
+	set @wrpC$[2], @wrpD$[2]+" -> "+@wrpP[2];
+	set @wrpC$[3], "Cancel";
+	set @wrpC$[4], "";
+	set @wrpC$[5], "";
+	set @wrpC$[6], "";
+	return;
+}
+
+// Pharos Lighthouse ->
+function	script	F_KafSetPharos	{
+
+	setarray @wrpD$[0], "Comodo", "Morroc";
+	setarray @wrpP[0], 500, 2500;
+	set @wrpC$[0], @wrpD$[0]+" -> "+@wrpP[0];
+	set @wrpC$[1], @wrpD$[1]+" -> "+@wrpP[1];
+	set @wrpC$[2], "Cancel";
+	set @wrpC$[3], "";
+	set @wrpC$[4], "";
+	set @wrpC$[5], "";
+	set @wrpC$[6], "";
+	return;
+}
+
+// Prontera ->
+function	script	F_KafSetPront	{
+
+	setarray @wrpD$[0], "Izlude", "Geffen", "Payon", "Morroc", "Orc Dungeon", "Alberta";
+	setarray @wrpP[0], 600, 1200, 1200, 1200, 1200, 1800;
+	set @wrpC$[0], @wrpD$[0]+" -> "+@wrpP[0];
+	set @wrpC$[1], @wrpD$[1]+" -> "+@wrpP[1];
+	set @wrpC$[2], @wrpD$[2]+" -> "+@wrpP[2];
+	set @wrpC$[3], @wrpD$[3]+" -> "+@wrpP[3];
+	set @wrpC$[4], @wrpD$[4]+" -> "+@wrpP[4];
+	set @wrpC$[5], @wrpD$[5]+" -> "+@wrpP[5];
+	set @wrpC$[6], "Cancel";
+	setarray @viewpX[0], 151, 29, 282, 152;
+	setarray @viewpY[0], 29, 207, 200, 326;
+	return;
+}
+
+// Schwartzwald Republic ->
+function	script	F_KafSwzTele	{
+	mes "[Kafra Employee]";
+	mes "Because of the ^FF0000Limited^000000";
+	mes "^FF0000Transport Agreement^000000, the";
+	mes "Kafra Corporation cannot";
+	mes "provide Teleport Services";
+	mes "in the Schwartzwald Republic.";
+	next;
+	mes "[Kafra Employee]";
+	mes "We ask that you please";
+	mes "use the Airship Service";
+	mes "instead, Thank you for your";
+	mes "understanding and cooperation.";
+	callfunc "F_KafEnd",0,1;
+	end;
+}
+
+// Umbala ->
+function	script	F_KafSetUmb	{
+	setarray @wrpD$[0], "Comodo";
+	setarray @wrpP[0], 1800;
+	set @wrpC$[0], @wrpD$[0]+" -> "+@wrpP[0];
+	set @wrpC$[1], "Cancel";
+	set @wrpC$[2], "";
+	set @wrpC$[3], "";
+	set @wrpC$[4], "";
+	set @wrpC$[5], "";
+	set @wrpC$[6], "";
+	return;
+}
+
+
+//**************************************************************
+//--------------------------------------------------------------
+// Part #3 -> Kafra Employee NPCs
+//--------------------------------------------------------------
+//**************************************************************
+
+
+//--------------------------------------------------------------
+// Amatsu Kafra Employees
+//--------------------------------------------------------------
+
+amatsu.gat,102,149,4	script	Kafra Employee	116,{
+
+	cutin "kafra_02",2;
+	callfunc "F_Kafra",0,1,1;
+
+	M_Save:
+		savepoint "amatsu.gat",116,94;
+		end;
+}
+
+
+//--------------------------------------------------------------
+// Ant Hell Kafra Employees
+//--------------------------------------------------------------
+
+moc_fild04.gat,230,329,3	script	Kafra Employee	115,{
+
+	cutin "kafra_03",2;
+	callfunc "F_Kafra",0,5,1;
+}
+
+moc_fild15.gat,264,260,3	script	Kafra Employee	115,{
+
+	cutin "kafra_03",2;
+	callfunc "F_Kafra",0,5,1;
+}
+
+
+//--------------------------------------------------------------
+// Alberta Kafra Employees
+//--------------------------------------------------------------
+
+alberta.gat,28,229,8	script	Kafra Employee	115,{
+
+	cutin "kafra_03",2;
+	callfunc "F_KafSetAlb";
+	callfunc "F_Kafra",0,0,0;
+
+	M_Save:
+		savepoint "alberta.gat",31,231;
+		end;
+}
+
+alberta.gat,113,60,5	script	Kafra Employee	112,{
+
+	cutin "kafra_06",2;
+	callfunc "F_KafSetAlb";
+	callfunc "F_Kafra",0,0,0;
+
+	M_Save:
+		savepoint "alberta.gat",117,57;
+		end;
+}
+
+
+//--------------------------------------------------------------
+// Aldebaran Kafra Employees
+//--------------------------------------------------------------
+
+aldeba_in.gat,96,181,4	script	Kafra Leilah	113,{
+
+	cutin "kafra_05",2;
+	callfunc "F_Kafra",0,2,1;
+
+	M_Save:
+		savepoint "aldeba_in.gat",96,179;
+		end;
+
+}
+
+aldebaran.gat,143,119,4	script	Kafra Employee	113,{
+
+	cutin "kafra_05",2;
+	callfunc "F_KafSetAldebaran";
+	callfunc "F_Kafra",0,0,1;
+
+	M_Save:
+		savepoint "aldebaran.gat",143,109;
+		end;
+}
+
+
+//--------------------------------------------------------------
+// Ayothaya Kafra Employees
+//--------------------------------------------------------------
+
+ayothaya.gat,212,169,5	script	Kafra Employee	116,{
+
+	cutin "kafra_02",2;
+	callfunc "F_Kafra",0,1,1;
+
+	M_Save:
+		savepoint "ayothaya.gat",149,69;
+		end;
+}
+
+
+//--------------------------------------------------------------
+// Byalan Island Kafra Employees
+//--------------------------------------------------------------
+
+izlu2dun.gat,106,58,8	script	Kafra Employee	115,{
+
+	cutin "kafra_03",2;
+	// Merchant Job Change Quest-related Function
+	if (Basejob == Job_Novice && Job_Merchant_q3 > 0) callfunc "F_MercKafra";
+	callfunc "F_Kafra",0,5,1;
+}
+
+
+//--------------------------------------------------------------
+// Coal Mine (Dead Pit) Kafra Employees
+//--------------------------------------------------------------
+
+mjolnir_02.gat,83,361,4	script	Kafra Employee	114,{
+
+	cutin "kafra_04",2;
+	callfunc "F_Kafra",0,7,1;
+}
+
+
+//--------------------------------------------------------------
+// Comodo Kafra Employees
+//--------------------------------------------------------------
+
+comodo.gat,200,148,4	script	Kafra Employee	721,{
+
+	cutin "kafra_07",2;
+	callfunc "F_KafSetComodo";
+	callfunc "F_Kafra",0,0,1;
+
+	M_Save:
+		savepoint "comodo.gat",204,143;
+		end;
+}
+
+
+//--------------------------------------------------------------
+// Einbech Kafra Employees
+//--------------------------------------------------------------
+
+einbech.gat,181,132,4	script	Kafra Employee	860,{
+
+	cutin "kafra_08",2;
+	callfunc "F_Kafra",0,3,1;
+
+	M_Save:
+		savepoint "einbech.gat",182,124;
+		end;
+}
+
+//--------------------------------------------------------------
+// Einbroch Kafra Employees
+//--------------------------------------------------------------
+
+einbroch.gat,242,205,5	script	Kafra Employee	115,{
+
+
+	cutin "kafra_03",2;
+	callfunc "F_Kafra",0,3,1;
+
+	M_Save:
+		savepoint "einbroch.gat",238,198;
+		end;
+}
+
+einbroch.gat,59,203,5	script	Kafra Employee	117,{
+
+	cutin "kafra_01",2;
+	callfunc "F_Kafra",0,3,1;
+
+	M_Save:
+		savepoint "einbroch.gat",240,197;
+		end;
+}
+
+
+//--------------------------------------------------------------
+// Geffen Kafra Employees
+//--------------------------------------------------------------
+
+geffen.gat,120,62,8	script	Kafra Employee	115,{
+
+	cutin "kafra_03",2;
+	callfunc "F_KafSetGef";
+	callfunc "F_Kafra",0,0,0;
+
+	M_Save:
+		savepoint "geffen.gat",119,40;
+		end;
+}
+
+geffen.gat,203,123,3	script	Kafra Employee	114,{
+
+	cutin "kafra_04",2;
+	callfunc "F_KafSetGef";
+	callfunc "F_Kafra",0,0,0;
+
+	M_Save:
+			savepoint "geffen.gat",200,124;
+			end;
+}
+
+geffen.gat,116,202,3	script	Kafra Employee	116,{
+
+	cutin "kafra_02",2;
+	callfunc "F_KafSetGef";
+	callfunc "F_Kafra",0,0,0;
+
+	M_Save:
+			savepoint "geffen.gat",110,199;
+			end;
+}
+
+geffen.gat,37,116,6	script	Kafra Employee	117,{
+
+	cutin "kafra_01",2;
+	callfunc "F_KafSetGef";
+	callfunc "F_Kafra",0,0,0;
+
+	M_Save:
+			savepoint "geffen.gat",43,108;
+			end;
+}
+
+
+//--------------------------------------------------------------
+// Hidden Temple Kafra Employees
+//--------------------------------------------------------------
+
+prt_fild05.gat,290,224,1	script	Kafra Employee	114,{
+
+	cutin "kafra_04",2;
+	callfunc "F_Kafra",0,6,1;
+
+	M_Save:
+		savepoint "prt_fild05.gat",274,243;
+		end;
+}
+
+
+//--------------------------------------------------------------
+// Izlude Kafra Employees
+//--------------------------------------------------------------
+
+izlude.gat,134,87,3	script	Kafra Employee	117,{
+
+	cutin "kafra_01",2;
+	callfunc "F_KafSetIzlude";
+	callfunc "F_Kafra",0,0,1;
+
+	M_Save:
+		savepoint "izlude.gat",96,107;
+		end;
+}
+
+
+//--------------------------------------------------------------
+// Juno Kafra Employees
+//--------------------------------------------------------------
+
+yuno.gat,152,187,4	script	Kafra Employee	113,{
+
+	cutin "kafra_05",2;
+	callfunc "F_KafSetJun";
+	callfunc "F_Kafra",0,0,0;
+
+	M_Save:
+		savepoint "yuno.gat",158,125;
+		end;
+}
+
+yuno.gat,327,108,4	script	Kafra Employee	113,{
+
+	cutin "kafra_05",2;
+	callfunc "F_KafSetJun";
+	callfunc "F_Kafra",0,0,0;
+
+	M_Save:
+		savepoint "yuno.gat",328,101;
+		end;
+}
+
+yuno.gat,277,221,4	script	Kafra Employee	117,{
+
+	cutin "kafra_01",2;
+	callfunc "F_KafSetJun";
+	callfunc "F_Kafra",0,0,0;
+
+	M_Save:
+		savepoint "yuno.gat",274,229;
+		end;
+}
+
+
+//--------------------------------------------------------------
+// Kunlun Kafra Employees
+//--------------------------------------------------------------
+
+gonryun.gat,159,122,4	script	Kafra Employee	116,{
+
+	cutin "kafra_02",2;
+	callfunc "F_Kafra",0,1,1;
+
+	M_Save:
+		savepoint "gonryun.gat",160,62;
+		end;
+}
+
+
+
+//--------------------------------------------------------------
+// Morroc Kafra Employees
+//--------------------------------------------------------------
+
+morocc.gat,156,97,4	script	Kafra Employee	115,{
+
+	cutin "kafra_03",2;
+	callfunc "F_KafSetMoc";
+	callfunc "F_Kafra",0,0,0;
+
+	M_Save:
+		savepoint "morocc.gat",156,46;
+		end;
+}
+
+morocc.gat,162,271,4	script	Kafra Employee	114,{
+
+	cutin "kafra_04",2;
+	callfunc "F_KafSetMoc";
+	callfunc "F_Kafra",0,0,0;
+
+	M_Save:
+			savepoint "morocc.gat",157,272;
+			end;
+}
+
+morocc.gat,28,167,6	script	Kafra Employee	116,{
+
+	cutin "kafra_02",2;
+	callfunc "F_KafSetMoc";
+	callfunc "F_Kafra",0,0,0;
+
+	M_Save:
+			savepoint "morocc.gat",31,164;
+			end;
+}
+
+morocc.gat,292,211,4	script	Kafra Employee	112,{
+
+	cutin "kafra_06",2;
+	callfunc "F_KafSetMoc";
+	callfunc "F_Kafra",0,0,0;
+
+	M_Save:
+			savepoint "morocc.gat",294,207;
+			end;
+}
+
+
+//--------------------------------------------------------------
+// Niflheim Kafra Employees
+//--------------------------------------------------------------
+
+niflheim.gat,190,180,5	script	Kafra Employee	791,{
+
+	callfunc "F_Kafra",1,1,1;
+
+	M_Save:
+		savepoint "niflheim.gat",192,182;
+		end;
+}
+
+
+//--------------------------------------------------------------
+// Lighthalzen Kafra Employees
+//--------------------------------------------------------------
+
+lighthalzen.gat,164,100,4	script	Kafra Employee	860,{
+
+	cutin "kafra_08",2;
+	callfunc "F_Kafra",0,3,1;
+
+	M_Save:
+		savepoint "lighthalzen.gat",158,94;
+		end;
+}
+
+lighthalzen.gat,191,320,4	script	Kafra Employee	861,{
+
+	cutin "kafra_09",2;
+	callfunc "F_Kafra",0,3,1;
+
+	M_Save:
+		savepoint "lighthalzen.gat",194,313;
+		end;
+
+}
+
+lhz_in02.gat,237,284,4	script	Kafra Employee	861,{
+
+	cutin "kafra_09",2;
+	callfunc "F_Kafra",0,3,1;
+
+	M_Save:
+		savepoint "lhz_in02.gat",278,215;
+		end;
+}
+
+
+//--------------------------------------------------------------
+// Louyang Kafra Employees
+//--------------------------------------------------------------
+
+louyang.gat,210,104,5	script	Kafra Employee	117,{
+
+	cutin "kafra_01",2;
+	callfunc "F_Kafra",0,1,1;
+
+	M_Save:
+		savepoint "louyang.gat",217,92;
+		end;
+}
+
+
+//--------------------------------------------------------------
+// Orc Village/Dungeon Kafra Employees
+//--------------------------------------------------------------
+
+gef_fild10.gat,73,340,4	script	Kafra Employee	115,{
+
+	cutin "kafra_02",2;
+	callfunc "F_Kafra",0,7,1;
+}
+
+
+//--------------------------------------------------------------
+// Payon Kafra Employees
+//--------------------------------------------------------------
+
+payon.gat,181,104,4	script	Kafra Employee	113,{
+
+	cutin "kafra_05",2;
+	callfunc "F_KafSetPay";
+	callfunc "F_Kafra",0,0,1;
+
+	M_Save:
+			savepoint "payon.gat",179,97;
+			end;
+}
+
+payon.gat,175,226,4	script	Kafra Employee	116,{
+
+	cutin "kafra_02",2;
+	callfunc "F_KafSetPay";
+	callfunc "F_Kafra",0,0,1;
+
+	M_Save:
+		savepoint "payon.gat",257,242;
+		end;
+}
+
+// Archer's Village (Payon Cave)
+pay_arche.gat,55,123,8	script	Kafra Employee	115,{
+
+	cutin "kafra_03",2;
+	callfunc "F_KafSetPay";
+	callfunc "F_Kafra",0,2,1;
+
+}
+
+
+//--------------------------------------------------------------
+// Pharos Lighthouse Kafra Employees
+//--------------------------------------------------------------
+
+cmd_fild07.gat,135,134,4	script	Kafra Employee	721,{
+
+	cutin "kafra_07",2;
+	callfunc "F_KafSetPharos";
+	callfunc "F_Kafra",0,0,1;
+
+	M_Save:
+		savepoint "cmd_fild07.gat",127,134;
+		end;
+}
+
+
+//--------------------------------------------------------------
+// Prontera Kafra Employees
+//--------------------------------------------------------------
+
+prontera.gat,152,326,4	script	Kafra Employee	112,{
+
+	cutin "kafra_06",2;
+	callfunc "F_Kafra",0,6,1;
+
+	M_Save:
+		savepoint "prontera.gat",157,327;
+		end;
+}
+
+prontera.gat,151,29,8	script	Kafra Employee	116,{
+
+	cutin "kafra_02",2;
+	callfunc "F_KafSetPront";
+	callfunc "F_Kafra",0,0,0;
+
+	M_Save:
+			savepoint "prontera.gat",150,33;
+			end;
+}
+
+prontera.gat,29,207,6	script	Kafra Employee	113,{
+
+	cutin "kafra_05",2;
+	callfunc "F_KafSetPront";
+	callfunc "F_Kafra",0,0,0;
+
+	M_Save:
+			savepoint "prontera.gat",33,208;
+			end;
+}
+
+prontera.gat,282,200,4	script	Kafra Employee	115,{
+
+	cutin "kafra_03",2;
+	callfunc "F_KafSetPront";
+	callfunc "F_Kafra",0,0,0;
+
+	M_Save:
+			savepoint "prontera.gat",281,203;
+			end;
+}
+
+
+//--------------------------------------------------------------
+// Pyramids Kafra Employees
+//--------------------------------------------------------------
+
+moc_ruins.gat,61,156,5	script	Kafra Employee	114,{
+
+	cutin "kafra_04",2;
+	callfunc "F_Kafra",0,5,1;
+}
+
+
+//--------------------------------------------------------------
+// Sunken Ship (Treasure Island) Kafra Employees
+//--------------------------------------------------------------
+
+alb2trea.gat,59,69,1	script	Kafra Employee	117,{
+
+	cutin "kafra_01",2;
+	callfunc "F_Kafra",0,5,1;
+}
+
+
+//--------------------------------------------------------------
+// Umbala Kafra Employees
+//--------------------------------------------------------------
+
+umbala.gat,128,133,4	script	Kafra Employee	115,{
+
+	cutin "kafra_03",2;
+	callfunc "F_KafSetUmb";
+	callfunc "F_Kafra",0,1,1;
+
+	M_Save:
+		savepoint "umbala.gat",126,131;
+		end;
+}

@@ -1,0 +1,2011 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Dungeon Monster Spawns	Author: A Lot of People
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 First version, merged together [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: * Mostly Aegis-certified * -> kRO X.1/jRO X.3
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Abyss Lake Dungeon Monster Spawns
+//--------------------------------------------------------------
+
+abyss_01.gat,0,0,0,0	monster	Mimic	1191,10,600000,0,0
+abyss_01.gat,0,0,0,0	monster	Ancient Mimic	1699,10,600000,0,0
+abyss_01.gat,152,205,130,70	monster	Ferus	1714,10,0,0,0
+abyss_01.gat,152,205,130,70	monster	Ferus	1717,25,300000,0,0
+abyss_01.gat,152,205,130,70	monster	Novus	1715,3,0,0,0
+abyss_01.gat,152,205,130,70	monster	Novus	1718,3,0,0,0
+abyss_01.gat,103,93,85,70	monster	Ferus	1714,10,0,0,0
+abyss_01.gat,103,93,85,70	monster	Ferus	1717,15,300000,0,0
+abyss_01.gat,103,93,85,70	monster	Novus	1715,3,0,0,0
+abyss_01.gat,103,93,85,70	monster	Novus	1718,3,0,0,0
+abyss_01.gat,195,102,85,70	monster	Ferus	1714,10,0,0,0
+abyss_01.gat,195,102,85,70	monster	Ferus	1717,15,300000,0,0
+abyss_01.gat,195,102,85,70	monster	Novus	1715,3,0,0,0
+abyss_01.gat,195,102,85,70	monster	Novus	1718,3,0,0,0
+abyss_01.gat,110,170,15,15	monster	Penomena	1216,15,660000,300000,0
+abyss_01.gat,195,147,5,10	monster	Penomena	1216,5,720000,300000,0
+abyss_01.gat,140,100,15,5	monster	Penomena	1216,10,780000,300000,0
+abyss_01.gat,260,40,14,14	monster	Dragon Egg	1721,3,1200000,600000,0
+abyss_01.gat,150,160,50,50	monster	Dragon Egg	1721,5,1800000,600000,0
+
+abyss_02.gat,0,0,0,0	monster	Mimic	1191,10,900000,0,0
+abyss_02.gat,0,0,0,0	monster	Ancient Mimic	1699,10,900000,0,0
+abyss_02.gat,0,0,0,0	monster	Ferus	1714,50,300000,0,0
+abyss_02.gat,0,0,0,0	monster	Acidus	1713,10,600000,0,0
+abyss_02.gat,0,0,0,0	monster	Acidus	1716,60,300000,0,0
+abyss_02.gat,0,0,0,0	monster	Novus	1715,5,0,0,0
+abyss_02.gat,0,0,0,0	monster	Novus	1718,5,0,0,0
+abyss_02.gat,0,0,0,0	monster	Dragon Egg	1721,10,1800000,600000,0
+
+abyss_03.gat,0,0,0,0	monster	Mimic	1191,10,300000,0,0
+abyss_03.gat,0,0,0,0	monster	Ancient Mimic	1699,10,300000,0,0
+abyss_03.gat,0,0,0,0	monster	Acidus	1713,60,600000,0,0
+abyss_03.gat,0,0,0,0	monster	Acidus	1716,10,300000,0,0
+abyss_03.gat,0,0,0,0	monster	Ferus	1714,10,300000,0,0
+abyss_03.gat,0,0,0,0	monster	Ferus	1717,10,300000,0,0
+abyss_03.gat,0,0,0,0	monster	Dragon Egg	1721,10,1800000,600000,0
+abyss_03.gat,0,0,0,0	monster	Hydrolancer	1720,3,3000000,2400000,0
+abyss_03.gat,0,0,0,0	monster	Detardeurus	1719,1,10800000,7200000,0
+
+
+//--------------------------------------------------------------
+// Amatsu Dungeon Monster Spawns
+//--------------------------------------------------------------
+
+ama_dun01.gat,0,0,0,0	monster	Miyabi Doll	1404,65,0,0,0
+ama_dun01.gat,0,0,0,0	monster	Firelock Soldier	1403,45,0,0,0
+ama_dun01.gat,0,0,0,0	monster	Shinobi	1401,2,180000,90000,0
+
+ama_dun02.gat,0,0,0,0	monster	Poison Toad	1402,35,180000,90000,0
+ama_dun02.gat,0,0,0,0	monster	Firelock Soldier	1403,20,60000,30000,0
+ama_dun02.gat,0,0,0,0	monster	Miyabi Doll	1404,5,120000,60000,0
+ama_dun02.gat,0,0,0,0	monster	Shinobi	1401,2,180000,90000,0
+ama_dun02.gat,0,0,0,0	monster	Horong	1129,10,0,0,0
+ama_dun02.gat,0,0,0,0	monster	The Paper	1375,1,180000,90000,0
+
+ama_dun03.gat,0,0,0,0	monster	Shinobi	1401,35,600000,300000,0
+ama_dun03.gat,0,0,0,0	monster	Firelock Soldier	1403,25,0,0,0
+ama_dun03.gat,0,0,0,0	monster	Miyabi Doll	1404,1,0,0,0
+ama_dun03.gat,0,0,0,0	monster	Tengu	1405,40,600000,300000,0
+ama_dun03.gat,0,0,0,0	monster	Mimic	1191,5,0,0,0
+ama_dun03.gat,0,0,0,0	monster	The Paper	1375,20,600000,300000,0
+ama_dun03.gat,0,0,0,0	monster	Samurai Specter	1492,1,5460000,3600000,0
+ama_dun03.gat,0,0,0,0	monster	Shinobi	1401,20,5450000,3600000,0
+ama_dun03.gat,0,0,0,0	monster	Tengu	1405,15,5440000,3600000,0
+
+
+//--------------------------------------------------------------
+// Ant Hell Monster Spawns
+//--------------------------------------------------------------
+
+anthell01.gat,0,0,0,0	monster	Familiar	1005,20,0,0,0
+anthell01.gat,0,0,0,0	monster	Andre	1095,15,0,0,0
+anthell01.gat,0,0,0,0	monster	Piere	1160,50,0,0,0
+anthell01.gat,0,0,0,0	monster	Deniro	1105,40,0,0,0
+anthell01.gat,0,0,0,0	monster	Vitata	1176,10,0,0,0
+anthell01.gat,0,0,0,0	monster	Giearth	1121,1,0,0,0
+anthell01.gat,0,0,0,0	monster	Maya Purple	1289,1,7200000,3600000,1
+anthell01.gat,28,266,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,29,266,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,28,265,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,28,264,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,28,263,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,28,262,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,29,265,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,29,264,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,29,263,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,29,262,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,30,265,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,30,264,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,30,263,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,30,262,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,30,261,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,31,264,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,31,263,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,31,262,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,32,263,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,40,270,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,40,269,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,40,268,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,40,267,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,40,266,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,40,265,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,41,269,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,41,268,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,41,267,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,41,266,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,41,265,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,30,198,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,31,198,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,32,197,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,32,196,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,31,195,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,30,195,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,31,194,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,33,195,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,33,196,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,30,190,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,31,190,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,32,189,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,32,198,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,32,187,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,32,186,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,31,186,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,40,168,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,41,168,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,42,168,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,42,167,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,42,166,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,42,165,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,41,165,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,43,165,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,44,165,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,45,165,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,44,166,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,43,166,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,30,187,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,29,186,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,38,186,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,37,186,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,36,186,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,35,186,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,36,187,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,38,184,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,38,183,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,37,183,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,99,127,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,98,127,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,97,127,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,97,126,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,97,125,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,97,124,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,97,123,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,98,121,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,99,121,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,100,121,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,101,121,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,102,121,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,104,123,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,104,122,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,104,120,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,103,120,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,103,121,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,102,121,0,0	monster	Ant Egg	1097,1,60000,30000,0
+anthell01.gat,105,124,0,0	monster	Ant Egg	1097,1,60000,30000,0
+
+anthell02.gat,0,0,0,0	monster	Ant Egg	1097,15,0,0,0
+anthell02.gat,0,0,0,0	monster	Familiar	1005,20,0,0,0
+anthell02.gat,0,0,0,0	monster	Andre	1095,50,0,0,0
+anthell02.gat,0,0,0,0	monster	Piere	1160,15,0,0,0
+anthell02.gat,0,0,0,0	monster	Deniro	1105,15,0,0,0
+anthell02.gat,0,0,0,0	monster	Vitata	1176,30,0,0,0
+anthell02.gat,0,0,0,0	monster	Giearth	1121,3,0,0,0
+anthell02.gat,0,0,0,0	monster	Maya	1147,1,7200000,3600000,1
+
+
+//--------------------------------------------------------------
+// Ayothaya Dungeon Monster Spawns
+//--------------------------------------------------------------
+
+ayo_dun01.gat,0,0,0,0	monster	Leaf Cat	1586,65,0,0,0
+ayo_dun01.gat,0,0,0,0	monster	Ghoul	1036,30,0,0,0
+ayo_dun01.gat,0,0,0,0	monster	Whisper	1179,10,0,0,0
+ayo_dun01.gat,0,0,0,0	monster	Kraben	1587,5,0,0,0
+
+ayo_dun02.gat,0,0,0,0	monster	Tamruan	1584,70,0,0,0
+ayo_dun02.gat,0,0,0,0	monster	Whisper	1179,20,0,0,0
+ayo_dun02.gat,0,0,0,0	monster	Kraben	1587,20,0,0,0
+ayo_dun02.gat,150,90,15,30	monster	Lady Tanee	1688,1,25200000,18000000,0
+
+
+//--------------------------------------------------------------
+// Beach Dungeon Monster Spawns (Comodo Caves)
+//--------------------------------------------------------------
+
+beach_dun.gat,0,0,0,0	monster	Medusa	1148,20,0,0,0
+beach_dun.gat,0,0,0,0	monster	Merman	1264,3,10000,5000,0
+beach_dun.gat,0,0,0,0	monster	Nereid	1255,15,0,0,0
+beach_dun.gat,0,0,0,0	monster	Pest	1256,15,0,0,0
+beach_dun.gat,0,0,0,0	monster	Penomena	1216,5,30000,0,0
+beach_dun.gat,0,0,0,0	monster	Tao Gunka	1583,1,7380000,3600000,0
+
+beach_dun2.gat,0,0,0,0	monster	Megalith	1274,30,0,0,0
+beach_dun2.gat,0,0,0,0	monster	Nereid	1255,5,0,0,0
+beach_dun2.gat,0,0,0,0	monster	Stalactic Golem	1278,40,5000,0,0
+beach_dun2.gat,0,0,0,0	monster	Tri Joint	1279,20,0,0,0
+beach_dun2.gat,0,0,0,0	monster	Hydra	1068,15,0,0,0
+
+beach_dun3.gat,0,0,0,0	monster	Nereid	1255,1,200000,100000,0
+beach_dun3.gat,0,0,0,0	monster	Thara Frog	1034,50,0,0,0
+beach_dun3.gat,0,0,0,0	monster	Hydra	1068,30,0,0,0
+beach_dun3.gat,0,0,0,0	monster	Megalodon	1064,30,0,0,0
+
+
+//--------------------------------------------------------------
+// Biolabs Dungeon Monster Spawns (Somatology Lab/Lighthalzen Dungeon)
+//--------------------------------------------------------------
+
+lhz_dun01.gat,0,0,0,0	monster	Metaling	1613,50,0,0,0
+lhz_dun01.gat,0,0,0,0	monster	Anopheles	1627,70,0,0,0
+lhz_dun01.gat,0,0,0,0	monster	Remover	1682,100,0,0,0
+lhz_dun01.gat,0,0,0,0	monster	Egnigem Cenia	1652,1,0,0,0
+lhz_dun01.gat,0,0,0,0	monster	Wickebine Tres	1653,1,0,0,0
+lhz_dun01.gat,0,0,0,0	monster	Armeyer Dinze	1654,1,0,0,0
+lhz_dun01.gat,0,0,0,0	monster	Errende Ebecee	1655,1,0,0,0
+lhz_dun01.gat,0,0,0,0	monster	Kavach Icarus	1656,1,0,0,0
+lhz_dun01.gat,0,0,0,0	monster	Laurell Weinder	1657,1,0,0,0
+lhz_dun01.gat,150,50,16,18	monster	Egnigem Cenia	1652,1,900000,800000,1
+lhz_dun01.gat,150,50,16,18	monster	Wickebine Tres	1653,1,900000,800000,1
+lhz_dun01.gat,150,50,16,18	monster	Armeyer Dinze	1654,1,900000,800000,1
+lhz_dun01.gat,150,50,16,18	monster	Errende Ebecee	1655,5,900000,800000,1
+lhz_dun01.gat,150,50,16,18	monster	Kavach Icarus	1656,5,600000,300000,1
+lhz_dun01.gat,150,50,16,18	monster	Laurell Weinder	1657,5,600000,300000,1
+lhz_dun01.gat,250,150,18,30	monster	Egnigem Cenia	1652,4,900000,800000,1
+lhz_dun01.gat,250,150,18,30	monster	Wickebine Tres	1653,4,600000,300000,1
+lhz_dun01.gat,250,150,18,30	monster	Armeyer Dinze	1654,4,900000,800000,1
+lhz_dun01.gat,250,150,18,30	monster	Errende Ebecee	1655,2,900000,800000,1
+lhz_dun01.gat,250,150,18,30	monster	Kavach Icarus	1656,2,900000,800000,1
+lhz_dun01.gat,250,150,18,30	monster	Laurell Weinder	1657,2,600000,300000,1
+lhz_dun01.gat,50,150,11,35	monster	Egnigem Cenia	1652,1,600000,300000,1
+lhz_dun01.gat,50,150,11,35	monster	Wickebine Tres	1653,4,900000,800000,1
+lhz_dun01.gat,50,150,11,35	monster	Armeyer Dinze	1654,1,900000,800000,1
+lhz_dun01.gat,50,150,11,35	monster	Errende Ebecee	1655,4,900000,800000,1
+lhz_dun01.gat,50,150,11,35	monster	Kavach Icarus	1656,4,900000,800000,1
+lhz_dun01.gat,50,150,11,35	monster	Laurell Weinder	1657,2,600000,300000,1
+lhz_dun01.gat,192,61,18,30	monster	Egnigem Cenia	1652,1,900000,800000,1
+lhz_dun01.gat,192,61,18,30	monster	Wickebine Tres	1653,1,900000,800000,1
+lhz_dun01.gat,192,61,18,30	monster	Armeyer Dinze	1654,1,900000,800000,1
+lhz_dun01.gat,192,61,18,30	monster	Errende Ebecee	1655,1,900000,800000,1
+lhz_dun01.gat,192,61,18,30	monster	Kavach Icarus	1656,1,900000,800000,1
+lhz_dun01.gat,192,61,18,30	monster	Laurell Weinder	1657,1,900000,800000,1
+lhz_dun01.gat,0,0,0,0	monster	Gemini-S58	1681,1,7200000,5400000,0
+
+lhz_dun02.gat,0,0,0,0	monster	Egnigem Cenia	1652,26,0,0,0
+lhz_dun02.gat,0,0,0,0	monster	Wickebine Tres	1653,26,0,0,0
+lhz_dun02.gat,0,0,0,0	monster	Armeyer Dinze	1654,26,0,0,0
+lhz_dun02.gat,0,0,0,0	monster	Errende Ebecee	1655,26,0,0,0
+lhz_dun02.gat,0,0,0,0	monster	Kavach Icarus	1656,26,0,0,0
+lhz_dun02.gat,0,0,0,0	monster	Laurell Weinder	1657,26,0,0,0
+lhz_dun02.gat,150,150,56,54	monster	Egnigem Cenia	1652,4,120000,60000,1
+lhz_dun02.gat,150,150,56,54	monster	Wickebine Tres	1653,4,120000,60000,1
+lhz_dun02.gat,150,150,56,54	monster	Armeyer Dinze	1654,4,120000,60000,1
+lhz_dun02.gat,150,150,56,54	monster	Errende Ebecee	1655,4,120000,60000,1
+lhz_dun02.gat,150,150,56,54	monster	Kavach Icarus	1656,4,120000,60000,1
+lhz_dun02.gat,150,150,56,54	monster	Laurell Weinder	1657,4,120000,60000,1
+lhz_dun02.gat,150,150,105,90	monster	Egnigem Cenia	1652,10,120000,60000,1
+lhz_dun02.gat,150,150,105,90	monster	Wickebine Tres	1653,10,120000,60000,1
+lhz_dun02.gat,150,150,105,90	monster	Armeyer Dinze	1654,10,120000,60000,1
+lhz_dun02.gat,150,150,105,90	monster	Errende Ebecee	1655,10,120000,60000,1
+lhz_dun02.gat,150,150,105,90	monster	Kavach Icarus	1656,10,120000,60000,1
+lhz_dun02.gat,150,150,105,90	monster	Laurell Weinder	1657,10,120000,60000,1
+lhz_dun02.gat,0,0,0,0	monster	Egnigem Cenia	1652,10,300000,150000,1
+lhz_dun02.gat,0,0,0,0	monster	Wickebine Tres	1653,10,300000,150000,1
+lhz_dun02.gat,0,0,0,0	monster	Armeyer Dinze	1654,10,300000,150000,1
+lhz_dun02.gat,0,0,0,0	monster	Errende Ebecee	1655,10,300000,150000,1
+lhz_dun02.gat,0,0,0,0	monster	Kavach Icarus	1656,10,300000,150000,1
+lhz_dun02.gat,0,0,0,0	monster	Laurell Weinder	1657,10,300000,150000,1
+lhz_dun02.gat,0,0,0,0	monster	Remover	1682,20,300000,150000,1
+lhz_dun02.gat,0,0,0,0	monster	Eremes Guile	1635,1,180000,120000,0
+lhz_dun02.gat,0,0,0,0	monster	Gemini-S58	1681,10,5400000,180000,0
+lhz_dun02.gat,0,0,0,0	monster	Egnigem Cenia	1658,1,7200000,5400000,1
+
+lhz_dun03.gat,140,235,116,30	monster	Seyren Windsor	1634,4,180000,120000,0
+lhz_dun03.gat,140,235,116,30	monster	Eremes Guile	1635,4,180000,120000,0
+lhz_dun03.gat,140,235,116,30	monster	Howard Alt-Eisen	1636,4,180000,120000,0
+lhz_dun03.gat,140,235,116,30	monster	Margaretha Sorin	1637,4,180000,120000,0
+lhz_dun03.gat,140,235,116,30	monster	Cecil Damon	1638,4,180000,120000,0
+lhz_dun03.gat,140,235,116,30	monster	Kathryne Keyron	1639,4,180000,120000,0
+lhz_dun03.gat,40,214,16,16	monster	Seyren Windsor	1634,1,120000,60000,0
+lhz_dun03.gat,40,214,16,16	monster	Eremes Guile	1635,1,120000,60000,0
+lhz_dun03.gat,40,214,16,16	monster	Howard Alt-Eisen	1636,1,120000,60000,0
+lhz_dun03.gat,40,214,16,16	monster	Margaretha Sorin	1637,1,120000,60000,0
+lhz_dun03.gat,40,214,16,16	monster	Cecil Damon	1638,1,120000,60000,0
+lhz_dun03.gat,40,214,16,16	monster	Kathryne Keyron	1639,1,120000,60000,0
+lhz_dun03.gat,240,213,16,17	monster	Seyren Windsor	1634,1,120000,60000,0
+lhz_dun03.gat,240,213,16,17	monster	Eremes Guile	1635,1,120000,60000,0
+lhz_dun03.gat,240,213,16,17	monster	Howard Alt-Eisen	1636,1,120000,60000,0
+lhz_dun03.gat,240,213,16,17	monster	Margaretha Sorin	1637,1,120000,60000,0
+lhz_dun03.gat,240,213,16,17	monster	Cecil Damon	1638,1,120000,60000,0
+lhz_dun03.gat,240,213,16,17	monster	Kathryne Keyron	1639,1,120000,60000,0
+lhz_dun03.gat,140,65,108,38	monster	Seyren Windsor	1634,7,120000,160000,0
+lhz_dun03.gat,140,65,108,38	monster	Eremes Guile	1635,7,120000,160000,0
+lhz_dun03.gat,140,65,108,38	monster	Howard Alt-Eisen	1636,7,120000,160000,0
+lhz_dun03.gat,140,65,108,38	monster	Margaretha Sorin	1637,7,120000,160000,0
+lhz_dun03.gat,140,65,108,38	monster	Cecil Damon	1638,7,120000,60000,0
+lhz_dun03.gat,140,65,108,38	monster	Kathryne Keyron	1639,7,120000,60000,0
+lhz_dun03.gat,140,31,8,15	monster	Seyren Windsor	1634,1,600000,540000,0
+lhz_dun03.gat,140,31,8,15	monster	Eremes Guile	1635,1,540000,480000,0
+lhz_dun03.gat,140,31,8,15	monster	Howard Alt-Eisen	1636,1,600000,540000,0
+lhz_dun03.gat,140,31,8,15	monster	Margaretha Sorin	1637,1,540000,480000,0
+lhz_dun03.gat,140,31,8,15	monster	Cecil Damon	1638,1,600000,540000,0
+lhz_dun03.gat,140,31,8,15	monster	Kathryne Keyron	1639,1,540000,480000,0
+lhz_dun03.gat,40,66,16,16	monster	Seyren Windsor	1634,1,120000,60000,0
+lhz_dun03.gat,40,66,16,16	monster	Eremes Guile	1635,1,120000,60000,0
+lhz_dun03.gat,40,66,16,16	monster	Howard Alt-Eisen	1636,1,120000,60000,0
+lhz_dun03.gat,40,66,16,16	monster	Margaretha Sorin	1637,1,120000,60000,0
+lhz_dun03.gat,40,66,16,16	monster	Cecil Damon	1638,1,120000,60000,0
+lhz_dun03.gat,40,66,16,16	monster	Kathryne Keyron	1639,1,120000,60000,0
+lhz_dun03.gat,240,66,16,16	monster	Seyren Windsor	1634,1,120000,60000,0
+lhz_dun03.gat,240,66,16,16	monster	Eremes Guile	1635,1,120000,60000,0
+lhz_dun03.gat,240,66,16,16	monster	Howard Alt-Eisen	1636,1,120000,60000,0
+lhz_dun03.gat,240,66,16,16	monster	Margaretha Sorin	1637,1,120000,60000,0
+lhz_dun03.gat,240,66,16,16	monster	Cecil Damon	1638,1,120000,60000,0
+lhz_dun03.gat,240,66,16,16	monster	Kathryne Keyron	1639,1,120000,60000,0
+lhz_dun03.gat,54,131,35,39	monster	Seyren Windsor	1634,5,180000,120000,0
+lhz_dun03.gat,54,131,35,39	monster	Eremes Guile	1635,5,180000,120000,0
+lhz_dun03.gat,54,131,35,39	monster	Howard Alt-Eisen	1636,5,180000,120000,0
+lhz_dun03.gat,54,131,35,39	monster	Margaretha Sorin	1637,5,180000,120000,0
+lhz_dun03.gat,54,131,35,39	monster	Cecil Damon	1638,5,120000,60000,0
+lhz_dun03.gat,54,131,35,39	monster	Kathryne Keyron	1639,5,120000,60000,0
+lhz_dun03.gat,228,137,35,39	monster	Seyren Windsor	1634,5,180000,120000,0
+lhz_dun03.gat,228,137,35,39	monster	Eremes Guile	1635,5,180000,120000,0
+lhz_dun03.gat,228,137,35,39	monster	Howard Alt-Eisen	1636,5,180000,120000,0
+lhz_dun03.gat,228,137,35,39	monster	Margaretha Sorin	1637,5,180000,120000,0
+lhz_dun03.gat,228,137,35,39	monster	Cecil Damon	1638,5,120000,60000,0
+lhz_dun03.gat,228,137,35,39	monster	Kathryne Keyron	1639,5,120000,60000,0
+lhz_dun03.gat,138,138,36,34	monster	Seyren Windsor	1634,3,120000,60000,0
+lhz_dun03.gat,138,138,36,34	monster	Eremes Guile	1635,3,120000,60000,0
+lhz_dun03.gat,138,138,36,34	monster	Howard Alt-Eisen	1636,3,120000,60000,0
+lhz_dun03.gat,138,138,36,34	monster	Margaretha Sorin	1637,3,180000,120000,0
+lhz_dun03.gat,138,138,36,34	monster	Cecil Damon	1638,4,0,0,0
+lhz_dun03.gat,138,138,36,34	monster	Kathryne Keyron	1639,4,0,0,0
+lhz_dun03.gat,140,192,66,21	monster	Seyren Windsor	1634,7,120000,60000,0
+lhz_dun03.gat,140,192,66,21	monster	Eremes Guile	1635,7,180000,120000,0
+lhz_dun03.gat,140,192,66,21	monster	Howard Alt-Eisen	1636,7,120000,60000,0
+lhz_dun03.gat,140,192,66,21	monster	Margaretha Sorin	1637,7,180000,120000,0
+lhz_dun03.gat,140,192,66,21	monster	Cecil Damon	1638,7,120000,60000,0
+lhz_dun03.gat,140,192,66,21	monster	Kathryne Keyron	1639,7,120000,60000,0
+lhz_dun03.gat,89,164,4,8	monster	Kathryne Keyron	1639,1,120000,60000,0
+lhz_dun03.gat,89,164,4,8	monster	Cecil Damon	1638,3,120000,60000,0
+lhz_dun03.gat,107,167,4,5	monster	Kathryne Keyron	1639,1,120000,60000,0
+lhz_dun03.gat,107,167,4,5	monster	Cecil Damon	1638,3,120000,60000,0
+lhz_dun03.gat,171,167,4,5	monster	Kathryne Keyron	1639,1,120000,60000,0
+lhz_dun03.gat,171,167,4,5	monster	Cecil Damon	1638,3,120000,60000,0
+lhz_dun03.gat,189,164,4,8	monster	Kathryne Keyron	1639,1,120000,60000,0
+lhz_dun03.gat,189,164,4,8	monster	Cecil Damon	1638,3,120000,60000,0
+lhz_dun03.gat,89,113,4,9	monster	Kathryne Keyron	1639,1,120000,60000,0
+lhz_dun03.gat,89,113,4,9	monster	Cecil Damon	1638,3,120000,60000,0
+lhz_dun03.gat,107,109,4,5	monster	Kathryne Keyron	1639,1,120000,60000,0
+lhz_dun03.gat,107,109,4,5	monster	Cecil Damon	1638,3,120000,60000,0
+lhz_dun03.gat,171,109,4,5	monster	Kathryne Keyron	1639,1,120000,60000,0
+lhz_dun03.gat,171,109,4,5	monster	Cecil Damon	1638,3,120000,60000,0
+lhz_dun03.gat,189,113,4,9	monster	Kathryne Keyron	1639,1,120000,60000,0
+lhz_dun03.gat,189,113,4,9	monster	Cecil Damon	1638,3,120000,60000,0
+lhz_dun03.gat,96,164,13,8	monster	Seyren Windsor	1634,2,300000,120000,0
+lhz_dun03.gat,96,164,13,8	monster	Eremes Guile	1635,2,300000,120000,0
+lhz_dun03.gat,96,164,13,8	monster	Margaretha Sorin	1637,2,300000,120000,0
+lhz_dun03.gat,96,164,13,8	monster	Cecil Damon	1638,5,0,0,0
+lhz_dun03.gat,96,164,13,8	monster	Kathryne Keyron	1639,3,0,0,0
+lhz_dun03.gat,180,164,13,8	monster	Seyren Windsor	1634,2,300000,120000,0
+lhz_dun03.gat,180,164,13,8	monster	Howard Alt-Eisen	1636,2,300000,120000,0
+lhz_dun03.gat,180,164,13,8	monster	Margaretha Sorin	1637,2,300000,120000,0
+lhz_dun03.gat,180,164,13,8	monster	Cecil Damon	1638,5,0,0,0
+lhz_dun03.gat,180,164,13,8	monster	Kathryne Keyron	1639,3,0,0,0
+lhz_dun03.gat,98,113,13,9	monster	Seyren Windsor	1634,2,300000,120000,0
+lhz_dun03.gat,98,113,13,9	monster	Eremes Guile	1635,2,300000,120000,0
+lhz_dun03.gat,98,113,13,9	monster	Howard Alt-Eisen	1636,2,300000,120000,0
+lhz_dun03.gat,98,113,13,9	monster	Cecil Damon	1638,5,0,0,0
+lhz_dun03.gat,98,113,13,9	monster	Kathryne Keyron	1639,3,0,0,0
+lhz_dun03.gat,180,113,13,9	monster	Eremes Guile	1635,2,300000,120000,0
+lhz_dun03.gat,180,113,13,9	monster	Howard Alt-Eisen	1636,2,300000,120000,0
+lhz_dun03.gat,180,113,13,9	monster	Margaretha Sorin	1637,2,300000,120000,0
+lhz_dun03.gat,180,113,13,9	monster	Cecil Damon	1638,5,0,0,0
+lhz_dun03.gat,180,113,13,9	monster	Kathryne Keyron	1639,3,0,0,0
+lhz_dun03.gat,114,138,12,16	monster	Lord Knight Seyren	1640,1,2700000,2400000,1
+lhz_dun03.gat,163,138,12,16	monster	Whitesmith Howard	1642,1,3000000,2700000,1
+lhz_dun03.gat,139,158,20,11	monster	Assassin Cross Eremes	1641,1,2580000,2340000,1
+lhz_dun03.gat,139,117,20,11	monster	Sniper Cecil	1644,1,2700000,2500000,1
+lhz_dun03.gat,138,138,36,34	monster	High Priest Margaretha	1643,1,3300000,3000000,1
+lhz_dun03.gat,138,138,36,34	monster	High Wizard Kathryne	1645,1,2580000,2460000,1
+
+// Random MvP Spawn Script
+lhz_dun03.gat,1,1,3 script BioPickMvP 139,{
+
+OnInit:
+    set $@BioMvP,rand(6);
+    if ($@BioMvP == 0) goto BioLordKnight;
+    if ($@BioMvP == 1) goto BioAssassinCross;
+    if ($@BioMvP == 2) goto BioMasterSmith;
+    if ($@BioMvP == 3) goto BioHighPriest;
+    if ($@BioMvP == 4) goto BioSniper;
+    if ($@BioMvP == 5) goto BioHighWizard;
+
+    BioLordKnight:
+        monster "lhz_dun03.gat",0,0,"Lord Knight Seyren",1646,1,"BioPickMvP::OnBioDeadMvP";
+        end;
+
+    BioAssassinCross:
+        monster "lhz_dun03.gat",0,0,"Assassin Cross Eremes",1647,1,"BioPickMvP::OnBioDeadMvP";
+        end;
+
+    BioMasterSmith:
+        monster "lhz_dun03.gat",0,0,"Mastersmith Howard",1648,1,"BioPickMvP::OnBioDeadMvP";
+        end;
+
+    BioHighPriest:
+        monster "lhz_dun03.gat",0,0,"High Priest Margaretha",1649,1,"BioPickMvP::OnBioDeadMvP";
+        end;
+
+    BioSniper:
+        monster "lhz_dun03.gat",0,0,"Sniper Cecil",1650,1,"BioPickMvP::OnBioDeadMvP";
+        end;
+
+    BioHighWizard:
+        monster "lhz_dun03.gat",0,0,"High Wizard Kathryne",1651,1,"BioPickMvP::OnBioDeadMvP";
+        end;
+
+    OnBioDeadMvP:
+        initnpctimer;
+        setnpctimer 0;
+        end;
+
+    OnTimer7200000:
+        stopnpctimer;
+        goto OnInit;
+}
+
+
+//--------------------------------------------------------------
+// Byalan Dungeon Monster Spawns (Izlude Dungeon)
+//--------------------------------------------------------------
+
+iz_dun00.gat,0,0,0,0	monster	Plankton	1161,65,0,0,0
+iz_dun00.gat,0,0,0,0	monster	Marina	1141,45,0,0,0
+iz_dun00.gat,0,0,0,0	monster	Kukre	1070,15,0,0,0
+iz_dun00.gat,0,0,0,0	monster	Hydra	1068,15,0,0,0
+iz_dun00.gat,0,0,0,0	monster	Vadon	1066,15,0,0,0
+iz_dun00.gat,0,0,0,0	monster	Black Mushroom	1084,5,180000,90000,1
+
+iz_dun01.gat,0,0,0,0	monster	Plankton	1161,10,0,0,0
+iz_dun01.gat,0,0,0,0	monster	Marina	1141,15,0,0,0
+iz_dun01.gat,0,0,0,0	monster	Kukre	1070,50,0,0,0
+iz_dun01.gat,0,0,0,0	monster	Hydra	1068,30,0,0,0
+iz_dun01.gat,0,0,0,0	monster	Vadon	1066,60,0,0,0
+iz_dun01.gat,0,0,0,0	monster	Cornutus	1067,15,300000,150000,1
+iz_dun01.gat,0,0,0,0	monster	Black Mushroom	1084,10,180000,90000,1
+
+iz_dun02.gat,0,0,0,0	monster	Hydra	1068,40,0,0,0
+iz_dun02.gat,0,0,0,0	monster	Cornutus	1067,60,0,0,0
+iz_dun02.gat,0,0,0,0	monster	Marse	1144,40,0,0,0
+iz_dun02.gat,0,0,0,0	monster	Obeaune	1044,40,0,0,0
+iz_dun02.gat,0,0,0,0	monster	Merman	1264,1,0,0,0
+iz_dun02.gat,0,0,0,0	monster	Black Mushroom	1084,15,180000,90000,1
+
+iz_dun03.gat,0,0,0,0	monster	Hydra	1068,10,0,0,0
+iz_dun03.gat,0,0,0,0	monster	Phen	1158,45,0,0,0
+iz_dun03.gat,0,0,0,0	monster	Marine Sphere	1142,20,0,0,0
+iz_dun03.gat,0,0,0,0	monster	Swordfish	1069,40,0,0,0
+iz_dun03.gat,0,0,0,0	monster	Marc	1045,40,0,0,0
+iz_dun03.gat,203,59,0,0	monster	Hydra	1068,1,312000,150000,0
+iz_dun03.gat,203,56,0,0	monster	Hydra	1068,1,323000,150000,0
+iz_dun03.gat,203,53,0,0	monster	Hydra	1068,1,317000,150000,0
+iz_dun03.gat,203,50,0,0	monster	Hydra	1068,1,323000,150000,0
+iz_dun03.gat,203,47,0,0	monster	Hydra	1068,1,305000,150000,0
+iz_dun03.gat,204,60,0,0	monster	Hydra	1068,1,304000,150000,0
+iz_dun03.gat,204,57,0,0	monster	Hydra	1068,1,302000,150000,0
+iz_dun03.gat,204,54,0,0	monster	Hydra	1068,1,310000,150000,0
+iz_dun03.gat,204,51,0,0	monster	Hydra	1068,1,309000,150000,0
+iz_dun03.gat,204,48,0,0	monster	Hydra	1068,1,313000,150000,0
+iz_dun03.gat,191,144,0,0	monster	Hydra	1068,1,321000,150000,0
+iz_dun03.gat,194,144,0,0	monster	Hydra	1068,1,316000,150000,0
+iz_dun03.gat,197,144,0,0	monster	Hydra	1068,1,296000,150000,0
+iz_dun03.gat,200,144,0,0	monster	Hydra	1068,1,282000,150000,0
+iz_dun03.gat,203,144,0,0	monster	Hydra	1068,1,310000,150000,0
+iz_dun03.gat,206,144,0,0	monster	Hydra	1068,1,305000,150000,0
+iz_dun03.gat,209,144,0,0	monster	Hydra	1068,1,308000,150000,0
+iz_dun03.gat,212,144,0,0	monster	Hydra	1068,1,321000,150000,0
+iz_dun03.gat,193,143,0,0	monster	Hydra	1068,1,300000,150000,0
+iz_dun03.gat,196,143,0,0	monster	Hydra	1068,1,300000,150000,0
+iz_dun03.gat,199,143,0,0	monster	Hydra	1068,1,300000,150000,0
+iz_dun03.gat,202,143,0,0	monster	Hydra	1068,1,300000,150000,0
+iz_dun03.gat,205,143,0,0	monster	Hydra	1068,1,300000,150000,0
+iz_dun03.gat,208,143,0,0	monster	Hydra	1068,1,300000,150000,0
+iz_dun03.gat,211,143,0,0	monster	Hydra	1068,1,300000,150000,0
+iz_dun03.gat,176,260,0,0	monster	Hydra	1068,1,300000,150000,0
+iz_dun03.gat,180,251,0,0	monster	Hydra	1068,1,300000,150000,0
+iz_dun03.gat,178,253,0,0	monster	Hydra	1068,1,300000,150000,0
+iz_dun03.gat,108,249,0,0	monster	Hydra	1068,1,300000,150000,0
+iz_dun03.gat,80,163,0,0	monster	Hydra	1068,1,300000,150000,0
+iz_dun03.gat,0,0,0,0	monster	Merman	1264,3,0,0,0
+
+iz_dun04.gat,0,0,0,0	monster	Marine Sphere	1142,10,0,0,0
+iz_dun04.gat,0,0,0,0	monster	Swordfish	1069,10,0,0,0
+iz_dun04.gat,0,0,0,0	monster	Merman	1264,50,0,0,0
+iz_dun04.gat,0,0,0,0	monster	Strouf	1065,50,0,0,0
+iz_dun04.gat,58,135,0,0	monster	Hydra	1068,1,305000,150000,0
+iz_dun04.gat,61,135,0,0	monster	Hydra	1068,1,300000,150000,0
+iz_dun04.gat,42,129,0,0	monster	Hydra	1068,1,312000,150000,0
+iz_dun04.gat,42,116,0,0	monster	Hydra	1068,1,306000,150000,0
+iz_dun04.gat,38,129,0,0	monster	Hydra	1068,1,300000,150000,0
+iz_dun04.gat,33,129,0,0	monster	Hydra	1068,1,308000,150000,0
+iz_dun04.gat,38,115,0,0	monster	Hydra	1068,1,300000,150000,0
+iz_dun04.gat,33,115,0,0	monster	Hydra	1068,1,321000,150000,0
+iz_dun04.gat,79,246,0,0	monster	Hydra	1068,1,300000,150000,0
+iz_dun04.gat,80,246,0,0	monster	Hydra	1068,1,294000,150000,0
+iz_dun04.gat,79,234,0,0	monster	Hydra	1068,1,302000,150000,0
+iz_dun04.gat,80,233,0,0	monster	Hydra	1068,1,318000,150000,0
+iz_dun04.gat,111,41,0,0	monster	Hydra	1068,1,300000,150000,0
+iz_dun04.gat,111,38,0,0	monster	Hydra	1068,1,303000,150000,0
+iz_dun04.gat,111,35,0,0	monster	Hydra	1068,1,300000,150000,0
+iz_dun04.gat,69,243,0,0	monster	Hydra	1068,1,321000,150000,0
+iz_dun04.gat,124,233,0,0	monster	Hydra	1068,1,300000,150000,0
+iz_dun04.gat,134,233,0,0	monster	Hydra	1068,1,305000,150000,0
+iz_dun04.gat,95,147,0,0	monster	Deviace	1108,3,600000,300000,0
+
+
+//--------------------------------------------------------------
+// Clock Tower/Aldebaran Dungeon Monster Spawns
+//--------------------------------------------------------------
+
+alde_dun01.gat,0,0,0,0	monster	Arclouze	1194,50,0,0,0
+alde_dun01.gat,0,0,0,0	monster	Drainliar	1111,40,0,0,0
+
+alde_dun02.gat,0,0,0,0	monster	High Orc	1213,40,0,0,0
+alde_dun02.gat,0,0,0,0	monster	Orc Archer	1189,20,0,0,0
+alde_dun02.gat,0,0,0,0	monster	Brilight	1211,20,0,0,0
+alde_dun02.gat,0,0,0,0	monster	Drainliar	1111,10,0,0,0
+alde_dun02.gat,0,0,0,0	monster	Arclouze	1194,20,0,0,0
+
+alde_dun03.gat,0,0,0,0	monster	Cramp	1209,25,0,0,0
+alde_dun03.gat,0,0,0,0	monster	Drainliar	1111,20,0,0,0
+alde_dun03.gat,77,28,5,5	monster	Cramp	1209,3,40000,20000,0
+alde_dun03.gat,0,0,0,0	monster	Penomena	1216,15,300000,150000,0
+alde_dun03.gat,184,61,30,30	monster	Cramp	1209,10,300000,150000,0
+alde_dun03.gat,184,61,30,30	monster	Drainliar	1111,10,300000,150000,0
+alde_dun03.gat,0,0,0,0	monster	Penomena	1216,5,300000,150000,0
+alde_dun03.gat,163,56,10,10	monster	Penomena	1216,3,600000,300000,0
+alde_dun03.gat,168,42,6,6	monster	Penomena	1216,2,600000,300000,0
+alde_dun03.gat,147,30,8,8	monster	Penomena	1216,2,600000,300000,0
+alde_dun03.gat,0,0,0,0	monster	Penomena	1216,10,300000,150000,0
+alde_dun03.gat,126,53,20,20	monster	Cramp	1209,5,300000,150000,0
+alde_dun03.gat,126,53,20,20	monster	Drainliar	1111,5,300000,150000,0
+alde_dun03.gat,102,40,10,10	monster	Penomena	1216,4,600000,300000,0
+alde_dun03.gat,0,0,0,0	monster	Penomena	1216,15,300000,150000,0
+alde_dun03.gat,130,220,40,40	monster	Cramp	1209,10,300000,150000,0
+alde_dun03.gat,130,220,40,40	monster	Drainliar	1111,10,300000,150000,0
+alde_dun03.gat,155,201,25,25	monster	Penomena	1216,7,600000,300000,0
+alde_dun03.gat,160,181,8,8	monster	Penomena	1216,2,600000,300000,0
+alde_dun03.gat,179,166,6,6	monster	Penomena	1216,4,600000,300000,0
+alde_dun03.gat,127,204,9,9	monster	Penomena	1216,5,600000,300000,0
+alde_dun03.gat,127,204,9,9	monster	Cramp	1209,3,300000,150000,0
+alde_dun03.gat,142,157,8,8	monster	Penomena	1216,5,600000,300000,0
+alde_dun03.gat,135,140,8,8	monster	Penomena	1216,3,600000,300000,0
+alde_dun03.gat,120,157,8,8	monster	Penomena	1216,3,600000,300000,0
+alde_dun03.gat,120,157,8,8	monster	Drainliar	1111,10,300000,150000,0
+
+alde_dun04.gat,0,0,0,0	monster	Bathory	1102,50,0,0,0
+alde_dun04.gat,0,0,0,0	monster	Joker	1131,10,0,0,0
+alde_dun04.gat,0,0,0,0	monster	Executioner	1205,1,3600000,1800000,1
+alde_dun04.gat,0,0,0,0	monster	Mysteltainn	1203,1,3600000,1800000,1
+alde_dun04.gat,0,0,0,0	monster	Ogretooth	1204,1,3600000,1800000,1
+alde_dun04.gat,0,0,0,0	monster	Whisper	1179,10,0,0,0
+
+c_tower1.gat,0,0,0,0	monster	Punk	1199,70,0,0,0
+c_tower1.gat,0,0,0,0	monster	Rideword	1195,70,0,0,0
+c_tower1.gat,0,0,0,0	monster	Clock Tower Manager	1270,1,0,0,0
+c_tower1.gat,0,0,0,0	monster	Bathory	1102,1,0,0,0
+
+c_tower2.gat,0,0,0,0	monster	Punk	1199,40,0,0,0
+c_tower2.gat,0,0,0,0	monster	Clock	1269,40,0,0,0
+c_tower2.gat,0,0,0,0	monster	Rideword	1195,7,0,0,0
+c_tower2.gat,128,100,10,10	monster	Rideword	1195,1,60000,30000,0
+c_tower2.gat,149,199,10,10	monster	Rideword	1195,1,120000,60000,0
+c_tower2.gat,149,199,10,10	monster	Rideword	1195,1,300000,120000,0
+c_tower2.gat,273,286,20,20	monster	Rideword	1195,1,120000,60000,0
+c_tower2.gat,273,286,20,20	monster	Rideword	1195,1,300000,120000,0
+c_tower2.gat,0,0,0,0	monster	Mimic	1191,3,0,0,0
+c_tower2.gat,0,0,0,0	monster	Clock Tower Manager	1270,1,0,0,0
+c_tower2.gat,0,0,0,0	monster	Elder	1377,1,3600000,1800000,0
+c_tower2.gat,0,0,0,0	monster	Elder	1377,1,3600000,1800000,0
+
+c_tower3.gat,0,0,0,0	monster	Alarm	1193,60,0,0,0
+c_tower3.gat,0,0,0,0	monster	Rideword	1195,10,0,0,0
+c_tower3.gat,153,220,10,10	monster	Rideword	1195,1,126000,100000,0
+c_tower3.gat,0,0,0,0	monster	Mimic	1191,15,0,0,0
+c_tower3.gat,0,0,0,0	monster	Clock Tower Manager	1270,1,0,0,0
+
+c_tower4.gat,0,0,0,0	monster	Clock Tower Manager	1270,2,1800000,0,0
+c_tower4.gat,0,0,0,0	monster	Clock Tower Manager	1270,1,3600000,0,0
+c_tower4.gat,0,0,0,0	monster	Whisper	1179,5,0,0,0
+c_tower4.gat,0,0,0,0	monster	Elder	1377,1,3600000,1800000,0
+c_tower4.gat,0,0,0,0	monster	Elder	1377,1,1800000,600000,0
+c_tower4.gat,108,198,100,10	monster	Alarm	1193,6,0,0,0
+c_tower4.gat,108,178,100,10	monster	Alarm	1193,6,0,0,0
+c_tower4.gat,108,158,100,10	monster	Alarm	1193,6,0,0,0
+c_tower4.gat,108,138,100,10	monster	Alarm	1193,6,0,0,0
+c_tower4.gat,108,118,100,10	monster	Alarm	1193,6,0,0,0
+c_tower4.gat,108,98,100,10	monster	Clock	1269,7,0,0,0
+c_tower4.gat,108,78,100,10	monster	Clock	1269,7,0,0,0
+c_tower4.gat,108,58,100,10	monster	Clock	1269,7,0,0,0
+c_tower4.gat,108,38,100,10	monster	Clock	1269,7,0,0,0
+c_tower4.gat,108,18,100,10	monster	Clock	1269,7,0,0,0
+c_tower4.gat,108,198,100,10	monster	Owl Duke	1320,3,0,0,0
+c_tower4.gat,108,178,100,10	monster	Owl Duke	1320,3,0,0,0
+c_tower4.gat,108,158,100,10	monster	Owl Duke	1320,3,0,0,0
+c_tower4.gat,108,138,100,10	monster	Owl Duke	1320,3,0,0,0
+c_tower4.gat,108,118,100,10	monster	Owl Duke	1320,3,0,0,0
+c_tower4.gat,108,98,100,10	monster	Owl Duke	1320,3,0,0,0
+c_tower4.gat,108,78,100,10	monster	Owl Duke	1320,3,0,0,0
+c_tower4.gat,108,58,100,10	monster	Owl Duke	1320,3,0,0,0
+c_tower4.gat,108,38,100,10	monster	Owl Duke	1320,3,0,0,0
+c_tower4.gat,108,18,100,10	monster	Owl Duke	1320,3,0,0,0
+c_tower4.gat,98,180,0,0	monster	Rideword	1195,1,300000,150000,1
+c_tower4.gat,97,180,0,0	monster	Rideword	1195,1,240000,150000,1
+c_tower4.gat,96,180,0,0	monster	Rideword	1195,1,350000,150000,1
+c_tower4.gat,95,180,0,0	monster	Rideword	1195,1,410000,150000,1
+c_tower4.gat,94,180,0,0	monster	Rideword	1195,1,320000,150000,1
+c_tower4.gat,93,180,0,0	monster	Rideword	1195,1,260000,150000,1
+c_tower4.gat,92,180,0,0	monster	Rideword	1195,1,280000,150000,1
+c_tower4.gat,91,180,0,0	monster	Rideword	1195,1,330000,150000,1
+c_tower4.gat,87,180,0,0	monster	Rideword	1195,1,400000,150000,1
+c_tower4.gat,86,180,0,0	monster	Rideword	1195,1,380000,150000,1
+c_tower4.gat,80,179,0,0	monster	Rideword	1195,1,360000,150000,1
+c_tower4.gat,80,180,0,0	monster	Rideword	1195,1,350000,150000,1
+c_tower4.gat,80,181,0,0	monster	Rideword	1195,1,290000,150000,1
+c_tower4.gat,80,182,0,0	monster	Rideword	1195,1,300000,150000,1
+c_tower4.gat,80,183,0,0	monster	Rideword	1195,1,340000,150000,1
+c_tower4.gat,128,194,0,0	monster	Mimic	1191,1,1800000,900000,1
+c_tower4.gat,38,193,0,0	monster	Mimic	1191,1,1800000,900000,1
+c_tower4.gat,37,159,0,0	monster	Mimic	1191,1,1800000,900000,1
+c_tower4.gat,31,139,0,0	monster	Mimic	1191,1,1800000,900000,1
+c_tower4.gat,104,14,0,0	monster	Mimic	1191,1,1800000,900000,1
+c_tower4.gat,104,27,0,0	monster	Mimic	1191,1,900000,400000,1
+c_tower4.gat,105,24,0,0	monster	Mimic	1191,1,900000,400000,1
+c_tower4.gat,205,105,0,0	monster	Mimic	1191,1,1800000,900000,1
+c_tower4.gat,0,0,0,0	monster	Mimic	1191,1,1800000,900000,1
+c_tower4.gat,148,85,0,0	monster	Mimic	1191,1,1800000,900000,1
+c_tower4.gat,189,51,0,0	monster	Mimic	1191,1,1800000,900000,1
+c_tower4.gat,170,34,0,0	monster	Mimic	1191,1,1800000,900000,1
+c_tower4.gat,42,41,0,0	monster	Executioner	1205,1,7200000,3600000,1
+
+
+//--------------------------------------------------------------
+// Coal Mine Dungeon Monster Spawns (Dead Pit/Mjolnir Dungeon)
+//--------------------------------------------------------------
+
+mjo_dun01.gat,0,0,0,0	monster	Familiar	1005,30,0,0,0
+mjo_dun01.gat,0,0,0,0	monster	Tarou	1175,60,0,0,0
+mjo_dun01.gat,0,0,0,0	monster	Martin	1145,20,0,0,0
+
+mjo_dun02.gat,0,0,0,0	monster	Martin	1145,60,0,0,0
+mjo_dun02.gat,0,0,0,0	monster	Drainliar	1111,20,0,0,0
+mjo_dun02.gat,0,0,0,0	monster	Skeleton Worker	1169,20,0,0,0
+mjo_dun02.gat,0,0,0,0	monster	Giearth	1121,35,30000,10000,0
+
+mjo_dun03.gat,0,0,0,0	monster	Martin	1145,5,0,0,0
+mjo_dun03.gat,0,0,0,0	monster	Skeleton Worker	1169,70,0,0,0
+mjo_dun03.gat,0,0,0,0	monster	Giearth	1121,5,0,0,0
+mjo_dun03.gat,0,0,0,0	monster	Myst	1151,35,0,0,0
+mjo_dun03.gat,0,0,0,0	monster	Cramp	1209,2,300000,150000,0
+mjo_dun03.gat,0,0,0,0	monster	Cramp	1209,1,50000,25000,0
+
+
+//--------------------------------------------------------------
+// Culvert Dungeon Monster Spawns (Prontera Sewers)
+//--------------------------------------------------------------
+
+prt_sewb1.gat,0,0,0,0	monster	Thief Bug Egg	1048,80,0,0,0
+prt_sewb1.gat,0,0,0,0	monster	Thief Bug	1051,30,0,0,0
+prt_sewb1.gat,0,0,0,0	monster	Familiar	1005,10,0,0,0
+prt_sewb1.gat,0,0,0,0	monster	Tarou	1175,10,0,0,0
+
+prt_sewb2.gat,0,0,0,0	monster	Thief Bug Egg	1048,20,0,0,0
+prt_sewb2.gat,0,0,0,0	monster	Thief Bug	1051,70,0,0,0
+prt_sewb2.gat,0,0,0,0	monster	Familiar	1005,10,0,0,0
+prt_sewb2.gat,0,0,0,0	monster	Spore	1014,20,0,0,0
+prt_sewb2.gat,0,0,0,0	monster	Plankton	1161,30,0,0,0
+prt_sewb2.gat,0,0,0,0	monster	Thief Bug Female	1053,10,0,0,0
+prt_sewb2.gat,0,0,0,0	monster	Tarou	1175,60,0,0,0
+
+prt_sewb3.gat,0,0,0,0	monster	Thief Bug Egg	1048,10,0,0,0
+prt_sewb3.gat,0,0,0,0	monster	Thief Bug	1051,20,0,0,0
+prt_sewb3.gat,0,0,0,0	monster	Thief Bug Female	1053,65,0,0,0
+prt_sewb3.gat,0,0,0,0	monster	Thief Bug Male	1054,65,0,0,0
+prt_sewb3.gat,0,0,0,0	monster	Tarou	1175,15,0,0,0
+prt_sewb3.gat,0,0,0,0	monster	Poison Spore	1077,15,0,0,0
+prt_sewb3.gat,0,0,0,0	monster	Familiar	1005,20,0,0,0
+
+prt_sewb4.gat,0,0,0,0	monster	Thief Bug Egg	1048,10,0,0,0
+prt_sewb4.gat,0,0,0,0	monster	Thief Bug	1051,20,0,0,0
+prt_sewb4.gat,0,0,0,0	monster	Thief Bug Female	1053,20,0,0,0
+prt_sewb4.gat,0,0,0,0	monster	Thief Bug Male	1054,70,0,0,0
+prt_sewb4.gat,0,0,0,0	monster	Drainliar	1111,20,0,0,0
+prt_sewb4.gat,0,0,0,0	monster	Cramp	1209,5,0,0,0
+prt_sewb4.gat,0,0,0,0	monster	Golden Thief Bug	1086,1,3600000,1800000,1
+
+
+//--------------------------------------------------------------
+// Einbech Dungeon Monster Spawns (Einbroch Dungeon/Einbroch Mine)
+//--------------------------------------------------------------
+
+ein_dun01.gat,0,0,0,0	monster	Pitman	1616,55,0,0,0
+ein_dun01.gat,0,0,0,0	monster	Noxious	1620,40,0,0,0
+ein_dun01.gat,0,0,0,0	monster	Porcellio	1619,30,0,0,0
+ein_dun01.gat,0,0,0,0	monster	Venomous	1621,20,0,0,0
+ein_dun01.gat,0,0,0,0	monster	Old Stove	1617,5,120000,600000,0
+ein_dun01.gat,0,0,0,0	monster	Ungoliant	1618,1,3600000,3000000,0
+
+ein_dun02.gat,0,0,0,0	monster	Mineral	1614,50,0,0,0
+ein_dun02.gat,0,0,0,0	monster	Obsidian	1615,40,0,0,0
+ein_dun02.gat,0,0,0,0	monster	Teddy Bear	1622,30,0,0,0
+ein_dun02.gat,0,0,0,0	monster	Old Stove	1617,30,0,0,0
+ein_dun02.gat,0,0,0,0	monster	Venomous	1621,20,0,0,0
+ein_dun02.gat,0,0,0,0	monster	RSX-0806	1623,1,7500000,7200000,0
+
+//--------------------------------------------------------------
+// Gefenia Dungeon Monster Spawns
+//--------------------------------------------------------------
+
+gefenia01.gat,0,0,0,0	monster	Fake Angel	1371,60,0,0,0
+gefenia01.gat,0,0,0,0	monster	Violy	1390,30,0,0,0
+gefenia01.gat,0,0,0,0	monster	Mini Demon	1292,20,0,0,0
+gefenia01.gat,0,0,0,0	monster	Abysmal Knight	1219,10,0,0,0
+gefenia01.gat,0,0,0,0	monster	Incubus	1374,10,0,0,0
+gefenia01.gat,0,0,0,0	monster	Succubus	1370,10,0,0,0
+gefenia01.gat,0,0,0,0	monster	Bloody Knight	1268,1,3600000,3000000,1
+gefenia01.gat,0,0,0,0	monster	Ogretooth	1204,1,18000000,14400000,1
+gefenia01.gat,0,0,0,0	monster	Mysteltainn	1203,1,10800000,7200000,1
+gefenia01.gat,0,0,0,0	monster	Executioner	1205,1,18000000,14400000,1
+
+gefenia02.gat,0,0,0,0	monster	Violy	1390,40,0,0,0
+gefenia02.gat,0,0,0,0	monster	Mini Demon	1292,30,0,0,0
+gefenia02.gat,0,0,0,0	monster	Fake Angel	1371,30,0,0,0
+gefenia02.gat,0,0,0,0	monster	Succubus	1370,20,0,0,0
+gefenia02.gat,0,0,0,0	monster	Abysmal Knight	1219,10,0,0,0
+gefenia02.gat,0,0,0,0	monster	Incubus	1374,10,0,0,0
+gefenia02.gat,0,0,0,0	monster	Bloody Knight	1268,1,3600000,3000000,1
+gefenia02.gat,0,0,0,0	monster	Ogretooth	1204,1,10800000,7200000,1
+gefenia02.gat,0,0,0,0	monster	Mysteltainn	1203,1,18000000,14400000,1
+gefenia02.gat,0,0,0,0	monster	Executioner	1205,1,18000000,14400000,1
+
+gefenia03.gat,0,0,0,0	monster	Fake Angel	1371,40,0,0,0
+gefenia03.gat,0,0,0,0	monster	Violy	1390,40,0,0,0
+gefenia03.gat,0,0,0,0	monster	Mini Demon	1292,30,0,0,0
+gefenia03.gat,0,0,0,0	monster	Incubus	1374,20,0,0,0
+gefenia03.gat,0,0,0,0	monster	Abysmal Knight	1219,10,0,0,0
+gefenia03.gat,0,0,0,0	monster	Succubus	1370,10,0,0,0
+gefenia03.gat,0,0,0,0	monster	Bloody Knight	1268,1,3600000,3000000,0
+gefenia03.gat,0,0,0,0	monster	Ogretooth	1204,1,18000000,14400000,0
+gefenia03.gat,0,0,0,0	monster	Mysteltainn	1203,1,18000000,14400000,0
+gefenia03.gat,0,0,0,0	monster	Executioner	1205,1,10800000,7200000,0
+
+gefenia04.gat,0,0,0,0	monster	Fake Angel	1371,30,0,0,0
+gefenia04.gat,0,0,0,0	monster	Violy	1390,30,0,0,0
+gefenia04.gat,0,0,0,0	monster	Mini Demon	1292,20,0,0,0
+gefenia04.gat,0,0,0,0	monster	Abysmal Knight	1219,10,0,0,0
+gefenia04.gat,0,0,0,0	monster	Incubus	1374,10,600000,300000,0
+gefenia04.gat,0,0,0,0	monster	Succubus	1370,10,600000,300000,0
+gefenia04.gat,0,0,0,0	monster	Bloody Knight	1268,1,3600000,3000000,0
+gefenia04.gat,0,0,0,0	monster	Ogretooth	1204,1,18000000,14400000,0
+gefenia04.gat,0,0,0,0	monster	Mysteltainn	1203,1,18000000,14400000,0
+gefenia04.gat,0,0,0,0	monster	Executioner	1205,1,18000000,14400000,0
+
+
+//--------------------------------------------------------------
+// Geffen Dungeon Monster Spawns
+//--------------------------------------------------------------
+
+gef_dun00.gat,0,0,0,0	monster	Hunter Fly	1035,30,60000,30000,0
+gef_dun00.gat,0,0,0,0	monster	Poporing	1031,15,0,0,0
+gef_dun00.gat,0,0,0,0	monster	Poison Spore	1077,25,0,0,0
+gef_dun00.gat,91,106,0,0	monster	Red Plant	1078,1,300000,150000,0
+gef_dun00.gat,92,108,0,0	monster	Yellow Plant	1081,1,300000,150000,0
+gef_dun00.gat,114,106,0,0	monster	Green Plant	1080,1,300000,150000,0
+gef_dun00.gat,0,0,0,0	monster	Red Plant	1078,1,300000,150000,0
+gef_dun00.gat,0,0,0,0	monster	Shining Plant	1083,1,3000000,1500000,0
+gef_dun00.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
+gef_dun00.gat,89,111,3,3	monster	Black Mushroom	1084,3,180000,90000,1
+gef_dun00.gat,121,109,3,3	monster	Black Mushroom	1084,3,180000,90000,1
+
+gef_dun01.gat,0,0,0,0	monster	Drainliar	1111,30,0,0,0
+gef_dun01.gat,0,0,0,0	monster	Nightmare	1061,30,0,0,0
+gef_dun01.gat,0,0,0,0	monster	Ogretooth	1204,1,1800000,1200000,0
+gef_dun01.gat,0,0,0,0	monster	Zombie	1015,25,0,0,0
+gef_dun01.gat,0,0,0,0	monster	Ghoul	1036,40,0,0,0
+gef_dun01.gat,0,0,0,0	monster	Jakk	1130,30,300000,100000,0
+gef_dun01.gat,234,121,0,0	monster	Blue Plant	1079,1,300000,100000,0
+gef_dun01.gat,0,0,0,0	monster	Dracula	1389,1,3600000,1800000,1
+gef_dun01.gat,0,0,0,0	monster	Black Mushroom	1084,5,180000,90000,1
+gef_dun01.gat,188,104,10,10	monster	White Plant	1082,3,180000,90000,1
+gef_dun01.gat,263,115,10,10	monster	White Plant	1082,3,180000,90000,1
+gef_dun01.gat,48,67,10,10	monster	White Plant	1082,2,180000,90000,1
+gef_dun01.gat,150,237,10,10	monster	White Plant	1082,2,180000,90000,1
+
+gef_dun02.gat,0,0,0,0	monster	Ghoul	1036,20,0,0,0
+gef_dun02.gat,0,0,0,0	monster	Whisper	1179,20,0,0,0
+gef_dun02.gat,0,0,0,0	monster	Hunter Fly	1035,10,0,0,0
+gef_dun02.gat,0,0,0,0	monster	Marionette	1143,20,0,0,0
+gef_dun02.gat,0,0,0,0	monster	Deviruchi	1109,25,0,0,0
+gef_dun02.gat,0,0,0,0	monster	Nightmare	1061,40,300000,100000,0
+gef_dun02.gat,0,0,0,0	monster	Doppelganger	1046,1,7200000,3600000,1
+gef_dun02.gat,214,212,10,10	monster	White Plant	1082,3,180000,90000,1
+gef_dun02.gat,215,67,10,10	monster	White Plant	1082,3,180000,90000,1
+gef_dun02.gat,72,210,20,20	monster	White Plant	1082,3,180000,90000,1
+gef_dun02.gat,106,151,20,7	monster	White Plant	1082,3,180000,90000,1
+gef_dun02.gat,58,167,10,10	monster	Shining Plant	1083,1,1800000,900000,1
+gef_dun02.gat,185,83,3,3	monster	Shining Plant	1083,1,1800000,900000,1
+
+gef_dun03.gat,0,0,0,0	monster	Wraith	1192,8,60000,30000,0
+gef_dun03.gat,0,0,0,0	monster	Wraith Dead	1291,2,60000,30000,0
+gef_dun03.gat,0,0,0,0	monster	Wind Ghost	1263,3,60000,30000,0
+gef_dun03.gat,0,0,0,0	monster	Hellion Revenant	1626,1,600000,300000,1
+gef_dun03.gat,0,0,0,0	monster	Shining Plant	1083,3,1800000,900000,1
+gef_dun03.gat,0,0,0,0	monster	White Plant	1082,10,180000,90000,1
+
+
+//--------------------------------------------------------------
+// Glast Heim Dungeon Monster Spawns (Chilvalry/Prison/Church/Castle/Sewers/etc)
+//--------------------------------------------------------------
+
+gl_cas01.gat,0,0,0,0	monster	Sage Worm	1281,40,0,0,0
+gl_cas01.gat,0,0,0,0	monster	Carat	1267,40,0,0,0
+gl_cas01.gat,0,0,0,0	monster	Rideword	1195,15,0,0,0
+gl_cas01.gat,0,0,0,0	monster	Dark Frame	1260,20,0,0,0
+gl_cas01.gat,0,0,0,0	monster	Whisper	1179,20,0,0,0
+gl_cas01.gat,0,0,0,0	monster	Alice	1275,1,0,0,0
+gl_cas01.gat,0,0,0,0	monster	Ogretooth	1204,1,7200000,3600000,1
+gl_cas01.gat,0,0,0,0	monster	Owl Baron	1295,3,0,0,1
+
+gl_cas02.gat,0,0,0,0	monster	Wanderer	1208,20,0,0,0
+gl_cas02.gat,0,0,0,0	monster	Raydric	1163,40,0,0,0
+gl_cas02.gat,0,0,0,0	monster	Rideword	1195,10,0,0,0
+gl_cas02.gat,0,0,0,0	monster	Raydric Archer	1276,19,0,0,0
+gl_cas02.gat,193,167,5,5	monster	Raydric	1163,3,300000,120000,0
+gl_cas02.gat,193,135,5,5	monster	Raydric	1163,3,300000,120000,0
+gl_cas02.gat,104,145,5,5	monster	Mysteltainn	1203,1,7200000,3600000,1
+gl_cas02.gat,102,180,0,0	monster	Whisper	1185,1,1800000,900000,1
+gl_cas02.gat,105,180,0,0	monster	Whisper	1185,1,1800000,900000,1
+gl_cas02.gat,182,12,3,3	monster	Chimera	1283,1,3600000,1800000,1
+gl_cas02.gat,185,11,8,8	monster	Rideword	1195,4,120000,60000,1
+gl_cas02.gat,174,11,8,8	monster	Evil Druid	1117,4,120000,60000,1
+gl_cas02.gat,104,38,4,4	monster	Abysmal Knight	1219,1,1800000,900000,1
+gl_cas02.gat,24,35,4,4	monster	Abysmal Knight	1219,1,1800000,900000,1
+gl_cas02.gat,46,124,15,15	monster	Rideword	1195,15,360000,180000,1
+gl_cas02.gat,16,186,10,10	monster	Evil Druid	1117,5,360000,180000,1
+gl_cas02.gat,133,83,3,3	monster	Khalitzburg	1132,1,360000,180000,1
+gl_cas02.gat,45,177,3,3	monster	Khalitzburg	1132,1,360000,180000,1
+gl_cas02.gat,182,65,3,3	monster	Khalitzburg	1132,1,360000,180000,1
+gl_cas02.gat,173,127,3,3	monster	Khalitzburg	1132,1,360000,180000,1
+gl_cas02.gat,173,167,3,3	monster	Khalitzburg	1132,1,360000,180000,1
+gl_cas02.gat,93,177,3,3	monster	Abysmal Knight	1219,1,1800000,900000,1
+gl_cas02.gat,115,177,3,3	monster	Abysmal Knight	1219,1,1800000,900000,1
+gl_cas02.gat,83,84,2,2	monster	Mimic	1191,1,360000,180000,1
+gl_cas02.gat,83,80,2,2	monster	Mimic	1191,1,360000,180000,1
+gl_cas02.gat,0,0,0,0	monster	Ogretooth	1204,1,7200000,3600000,1
+gl_cas02.gat,0,0,0,0	monster	Alice	1275,1,0,0,0
+gl_cas02.gat,189,20,1,1	monster	Khalitzburg	1132,1,360000,180000,0
+gl_cas02.gat,190,23,1,1	monster	Wanderer	1208,1,360000,180000,0
+gl_cas02.gat,190,38,1,1	monster	Raydric Archer	1276,1,360000,180000,0
+
+gl_in01.gat,41,155,40,45	monster	Marionette	1143,5,0,0,0
+gl_in01.gat,156,147,34,42	monster	Marionette	1143,5,0,0,0
+gl_in01.gat,42,48,41,32	monster	Marionette	1143,5,0,0,0
+gl_in01.gat,154,44,36,33	monster	Marionette	1143,5,0,0,0
+gl_in01.gat,42,154,40,45	monster	Rideword	1195,2,0,0,0
+gl_in01.gat,155,143,34,42	monster	Rideword	1195,1,0,0,0
+gl_in01.gat,41,47,41,32	monster	Rideword	1195,3,0,0,0
+gl_in01.gat,152,44,36,33	monster	Rideword	1195,2,0,0,0
+gl_in01.gat,0,0,0,0	monster	Wanderer	1208,1,0,0,0
+gl_in01.gat,0,0,0,0	monster	Alice	1275,1,0,0,0
+gl_in01.gat,40,150,40,45	monster	Dark Frame	1260,3,0,0,0
+gl_in01.gat,153,146,34,42	monster	Dark Frame	1260,2,0,0,0
+gl_in01.gat,43,45,41,32	monster	Dark Frame	1260,2,0,0,0
+gl_in01.gat,153,44,36,33	monster	Dark Frame	1260,3,0,0,0
+gl_in01.gat,41,154,40,45	monster	Sage Worm	1281,3,0,0,0
+gl_in01.gat,155,147,34,42	monster	Sage Worm	1281,5,0,0,0
+gl_in01.gat,42,47,41,32	monster	Sage Worm	1281,3,0,0,0
+gl_in01.gat,153,44,36,33	monster	Sage Worm	1281,3,0,0,0
+
+gl_prison.gat,0,0,0,0	monster	Injustice	1257,20,0,0,0
+gl_prison.gat,0,0,0,0	monster	Hunter Fly	1035,10,0,0,0
+gl_prison.gat,0,0,0,0	monster	Zombie Prisoner	1197,30,0,0,0
+gl_prison.gat,0,0,0,0	monster	Rybio	1201,15,0,0,0
+
+gl_prison1.gat,0,0,0,0	monster	Skeleton Prisoner	1196,30,0,0,0
+gl_prison1.gat,0,0,0,0	monster	Cramp	1209,20,0,0,0
+gl_prison1.gat,0,0,0,0	monster	Hunter Fly	1035,10,0,0,0
+gl_prison1.gat,0,0,0,0	monster	Injustice	1257,40,0,0,0
+gl_prison1.gat,0,0,0,0	monster	Zealotus	1200,1,3600000,1800000,1
+gl_prison1.gat,0,0,0,0	monster	Rybio	1201,10,0,0,0
+gl_prison1.gat,0,0,0,0	monster	Phendark	1202,10,0,0,0
+
+glast_01.gat,0,0,0,0	monster	Abysmal Knight	1219,2,600000,300000,1
+glast_01.gat,0,0,0,0	monster	Gargoyle	1253,10,0,0,1
+glast_01.gat,233,209,15,15	monster	Green Plant	1080,8,360000,180000,1
+glast_01.gat,233,209,15,15	monster	Blue Plant	1079,2,900000,450000,1
+glast_01.gat,233,209,15,15	monster	Shining Plant	1083,1,1800000,900000,1
+
+gl_church.gat,0,0,0,0	monster	Wraith	1192,5,0,0,0
+gl_church.gat,0,0,0,0	monster	Evil Druid	1117,30,0,0,0
+gl_church.gat,0,0,0,0	monster	Ghoul	1036,60,0,0,0
+gl_church.gat,0,0,0,0	monster	Dark Illusion	1302,1,3600000,1800000,0
+gl_church.gat,0,0,0,0	monster	Mimic	1191,20,0,0,0
+gl_church.gat,155,92,10,10	monster	Mimic	1191,1,30000,15000,0
+gl_church.gat,155,75,10,10	monster	Mimic	1191,2,60000,30000,0
+gl_church.gat,155,54,10,10	monster	Mimic	1191,1,30000,15000,0
+
+gl_chyard.gat,0,0,0,0	monster	Ghoul	1036,35,0,0,0
+gl_chyard.gat,0,0,0,0	monster	Zombie	1015,30,0,0,0
+gl_chyard.gat,0,0,0,0	monster	Wraith	1192,25,0,0,0
+gl_chyard.gat,0,0,0,0	monster	Evil Druid	1117,10,0,0,0
+gl_chyard.gat,0,0,0,0	monster	Hunter Fly	1035,20,0,0,0
+gl_chyard.gat,0,0,0,0	monster	Mimic	1191,3,0,0,0
+gl_chyard.gat,0,0,0,0	monster	Dark Lord	1272,1,3600000,1800000,1
+
+gl_sew01.gat,0,0,0,0	monster	Gargoyle	1253,30,0,0,0
+gl_sew01.gat,0,0,0,0	monster	Arclouze	1194,10,0,0,0
+gl_sew01.gat,0,0,0,0	monster	Whisper	1179,40,0,0,0
+
+gl_sew02.gat,0,0,0,0	monster	Gargoyle	1253,55,0,0,0
+gl_sew02.gat,0,0,0,0	monster	Cramp	1209,15,0,0,0
+
+gl_sew03.gat,0,0,0,0	monster	Sting	1207,70,0,0,0
+gl_sew03.gat,0,0,0,0	monster	Gargoyle	1253,37,0,0,0
+gl_sew03.gat,147,7,5,1	monster	Gargoyle	1253,1,2400000,1800000,0
+gl_sew03.gat,140,7,5,1	monster	Gargoyle	1253,1,3600000,1800000,0
+gl_sew03.gat,158,7,5,1	monster	Gargoyle	1253,1,3600000,1800000,0
+
+gl_sew04.gat,0,0,0,0	monster	Anolian	1206,50,0,0,0
+gl_sew04.gat,0,0,0,0	monster	Gargoyle	1253,30,0,0,0
+gl_sew04.gat,0,0,0,0	monster	Drainliar	1111,10,0,0,0
+
+gl_step.gat,0,0,0,0	monster	Mimic	1191,20,60000,30000,0
+gl_step.gat,0,0,0,0	monster	Raydric Archer	1276,20,0,0,0
+gl_step.gat,0,0,0,0	monster	Wind Ghost	1263,50,0,0,0
+
+gl_knt01.gat,0,0,0,0	monster	Raydric	1163,60,0,0,0
+gl_knt01.gat,0,0,0,0	monster	Raydric Archer	1276,20,0,0,0
+gl_knt01.gat,0,0,0,0	monster	Khalitzburg	1132,10,0,0,0
+gl_knt01.gat,0,0,0,0	monster	Abysmal Knight	1219,10,0,0,0
+gl_knt01.gat,0,0,0,0	monster	Alice	1275,1,0,0,0
+gl_knt01.gat,21,278,0,0	monster	Giant Whisper	1186,1,3600000,1800000,1
+gl_knt01.gat,122,266,0,0	monster	Rideword	1195,1,120000,60000,1
+gl_knt01.gat,33,120,30,30	monster	Rideword	1195,10,120000,60000,1
+gl_knt01.gat,26,223,20,20	monster	Rideword	1195,10,120000,60000,1
+gl_knt01.gat,9,184,0,0	monster	Black Mushroom	1084,1,3600000,1800000,1
+gl_knt01.gat,8,184,0,0	monster	Black Mushroom	1084,1,3600000,1800000,1
+gl_knt01.gat,7,184,0,0	monster	Black Mushroom	1084,1,3600000,1800000,1
+gl_knt01.gat,6,184,0,0	monster	Black Mushroom	1084,1,3600000,1800000,1
+gl_knt01.gat,5,184,0,0	monster	Black Mushroom	1084,1,3600000,1800000,1
+gl_knt01.gat,4,184,0,0	monster	Black Mushroom	1084,1,3600000,1800000,1
+gl_knt01.gat,9,185,0,0	monster	Black Mushroom	1084,1,3600000,1800000,1
+gl_knt01.gat,8,185,0,0	monster	Black Mushroom	1084,1,3600000,1800000,1
+gl_knt01.gat,7,185,0,0	monster	Black Mushroom	1084,1,3600000,1800000,1
+gl_knt01.gat,6,185,0,0	monster	Black Mushroom	1084,1,3600000,1800000,1
+gl_knt01.gat,5,185,0,0	monster	Black Mushroom	1084,1,3600000,1800000,1
+gl_knt01.gat,4,185,0,0	monster	Black Mushroom	1084,1,3600000,1800000,1
+
+gl_knt02.gat,0,0,0,0	monster	Raydric	1163,50,0,0,0
+gl_knt02.gat,0,0,0,0	monster	Raydric Archer	1276,20,0,0,0
+gl_knt02.gat,0,0,0,0	monster	Khalitzburg	1132,30,0,0,0
+gl_knt02.gat,0,0,0,0	monster	Bloody Knight	1268,1,3600000,1800000,1
+gl_knt02.gat,0,0,0,0	monster	Alice	1275,1,0,0,0
+gl_knt02.gat,0,0,0,0	monster	Mysteltainn	1203,1,1800000,1200000,0
+gl_knt02.gat,0,0,0,0	monster	Abysmal Knight	1219,5,0,0,0
+gl_knt02.gat,149,26,5,5	monster	Abysmal Knight	1219,1,3600000,1800000,1
+gl_knt02.gat,99,49,5,5	monster	Khalitzburg	1132,1,1800000,900000,1
+gl_knt02.gat,62,80,5,5	monster	Khalitzburg	1132,1,1800000,900000,1
+gl_knt02.gat,82,134,5,5	monster	Khalitzburg	1132,1,1800000,900000,1
+gl_knt02.gat,60,242,5,5	monster	Khalitzburg	1132,1,1800000,900000,1
+gl_knt02.gat,118,241,5,5	monster	Khalitzburg	1132,1,1800000,900000,1
+gl_knt02.gat,114,194,5,5	monster	Khalitzburg	1132,1,1800000,900000,1
+gl_knt02.gat,196,239,5,5	monster	Khalitzburg	1132,1,1800000,900000,1
+gl_knt02.gat,208,45,5,5	monster	Khalitzburg	1132,1,1800000,900000,1
+gl_knt02.gat,243,74,5,5	monster	Khalitzburg	1132,1,1800000,900000,1
+gl_knt02.gat,232,132,5,5	monster	Khalitzburg	1132,1,1800000,900000,1
+
+gl_dun01.gat,0,0,0,0	monster	Arclouze	1194,50,0,0,0
+gl_dun01.gat,0,0,0,0	monster	Sting	1207,40,0,0,0
+
+gl_dun02.gat,0,0,0,0	monster	Majoruros	1310,40,0,0,0
+gl_dun02.gat,0,0,0,0	monster	Gargoyle	1253,20,0,0,0
+
+
+//--------------------------------------------------------------
+// Hidden Temple Dungeon Monster Spawns (Prontera Maze/Labrynth Forest)
+//--------------------------------------------------------------
+
+prt_maze01.gat,0,0,0,0	monster	Shining Plant	1083,5,1800000,900000,1
+prt_maze01.gat,0,0,0,0	monster	Red Plant	1078,5,180000,90000,1
+prt_maze01.gat,0,0,0,0	monster	Blue Plant	1079,5,180000,90000,1
+prt_maze01.gat,179,20,21,21	monster	Poring	1002,5,120000,40000,1
+prt_maze01.gat,139,20,21,21	monster	Lunatic	1063,5,120000,40000,1
+prt_maze01.gat,99,20,21,21	monster	Fabre	1007,5,120000,40000,1
+prt_maze01.gat,99,20,21,21	monster	Creamy	1018,1,120000,40000,1
+prt_maze01.gat,59,20,21,21	monster	Pupa	1008,5,120000,40000,1
+prt_maze01.gat,19,20,21,21	monster	Poporing	1031,5,120000,40000,1
+prt_maze01.gat,179,60,21,21	monster	Rocker	1052,5,120000,40000,1
+prt_maze01.gat,139,60,21,21	monster	Bigfoot	1060,5,120000,40000,1
+prt_maze01.gat,99,60,21,21	monster	Smokie	1056,5,120000,40000,1
+prt_maze01.gat,59,60,21,21	monster	Boa	1025,5,120000,40000,1
+prt_maze01.gat,19,60,21,21	monster	Wolf	1013,5,120000,40000,1
+prt_maze01.gat,179,100,21,21	monster	Argiope	1099,3,120000,40000,1
+prt_maze01.gat,139,100,21,21	monster	Argos	1100,3,120000,40000,1
+prt_maze01.gat,99,100,21,21	monster	Chonchon	1011,5,120000,40000,1
+prt_maze01.gat,59,100,21,21	monster	Horn	1128,5,120000,40000,1
+prt_maze01.gat,19,100,21,21	monster	Hunter Fly	1035,3,120000,40000,1
+prt_maze01.gat,179,140,21,21	monster	Mantis	1139,3,120000,40000,1
+prt_maze01.gat,139,140,21,21	monster	Stainer	1174,5,120000,40000,1
+prt_maze01.gat,99,140,21,21	monster	Side Winder	1037,3,120000,40000,1
+prt_maze01.gat,59,140,21,21	monster	Yoyo	1057,4,120000,40000,1
+prt_maze01.gat,59,140,21,21	monster	Choco	1214,2,120000,40000,1
+prt_maze01.gat,19,140,21,21	monster	Steel Chonchon	1042,5,120000,40000,1
+prt_maze01.gat,179,180,21,21	monster	Coco	1104,5,120000,40000,1
+prt_maze01.gat,139,180,21,21	monster	Caramel	1103,5,120000,40000,1
+prt_maze01.gat,99,180,21,21	monster	Dustiness	1114,5,120000,40000,1
+prt_maze01.gat,59,180,21,21	monster	Martin	1145,5,120000,40000,1
+prt_maze01.gat,19,180,21,21	monster	Savage	1166,3,120000,40000,1
+prt_maze01.gat,19,180,21,21	monster	Savage	1166,5,120000,40000,1
+prt_maze01.gat,0,0,0,0	monster	Hunter Fly	1035,1,0,0,0
+prt_maze01.gat,0,0,0,0	monster	Vagabond Wolf	1092,1,3600000,1800000,0
+prt_maze01.gat,101,138,5,5	monster	Shining Plant	1083,1,1800000,900000,1
+prt_maze01.gat,101,138,5,5	monster	White Plant	1082,1,1800000,900000,1
+prt_maze01.gat,99,181,5,5	monster	White Plant	1082,2,1800000,900000,1
+prt_maze01.gat,60,140,10,15	monster	Blue Plant	1079,1,1800000,900000,1
+prt_maze01.gat,61,101,10,10	monster	Yellow Plant	1081,1,1800000,900000,1
+prt_maze01.gat,141,100,10,10	monster	Shining Plant	1083,1,1800000,900000,1
+prt_maze01.gat,141,100,10,10	monster	Blue Plant	1079,1,1800000,900000,1
+prt_maze01.gat,0,0,0,0	monster	Red Plant	1078,5,180000,90000,1
+prt_maze01.gat,100,100,10,10	monster	Blue Plant	1079,1,1800000,900000,1
+prt_maze01.gat,100,100,10,10	monster	Yellow Plant	1081,1,1800000,900000,1
+prt_maze01.gat,176,132,5,5	monster	Black Mushroom	1084,3,180000,90000,1
+prt_maze01.gat,181,149,3,3	monster	Black Mushroom	1084,2,180000,90000,1
+prt_maze01.gat,178,60,10,10	monster	Red Mushroom	1085,3,180000,90000,1
+prt_maze01.gat,168,60,3,3	monster	Red Mushroom	1085,2,180000,90000,1
+
+prt_maze02.gat,0,0,0,0	monster	Poporing	1031,25,0,0,0
+prt_maze02.gat,0,0,0,0	monster	Bigfoot	1060,5,0,0,0
+prt_maze02.gat,0,0,0,0	monster	Sasquatch	1243,1,900000,40000,0
+prt_maze02.gat,0,0,0,0	monster	Leib Olmai	1306,1,1800000,900000,0
+
+prt_maze03.gat,0,0,0,0	monster	Poporing	1031,45,0,0,0
+prt_maze03.gat,0,0,0,0	monster	Side Winder	1037,10,0,0,0
+prt_maze03.gat,0,0,0,0	monster	Hunter Fly	1035,30,0,0,0
+prt_maze03.gat,0,0,0,0	monster	Ghostring	1120,1,6800000,3400000,1
+prt_maze03.gat,0,0,0,0	monster	Killer Mantis	1294,1,0,0,0
+prt_maze03.gat,150,50,70,70	monster	Side Winder	1037,20,300000,150000,0
+prt_maze03.gat,150,50,70,70	monster	Vocal	1088,1,1920000,1500000,1
+prt_maze03.gat,50,150,70,70	monster	Stem Worm	1215,20,300000,150000,0
+prt_maze03.gat,50,150,70,70	monster	Vagabond Wolf	1092,1,1920000,150000,1
+prt_maze03.gat,170,170,70,70	monster	Mantis	1139,30,60000,30000,0
+prt_maze03.gat,170,170,70,70	monster	Eclipse	1093,1,1920000,150000,1
+prt_maze03.gat,23,23,70,70	monster	Mastering	1090,1,1920000,150000,1
+prt_maze03.gat,100,100,80,80	monster	Baphomet Jr.	1101,25,0,0,0
+prt_maze03.gat,0,0,0,0	monster	Baphomet	1039,1,7200000,3600000,1
+prt_maze03.gat,61,98,10,10	monster	Shining Plant	1083,1,1800000,900000,1
+prt_maze03.gat,61,98,10,10	monster	Blue Plant	1079,1,1800000,900000,1
+prt_maze03.gat,61,98,10,10	monster	Yellow Plant	1081,1,1800000,900000,1
+prt_maze03.gat,57,56,10,10	monster	Shining Plant	1083,1,1800000,900000,1
+prt_maze03.gat,15,15,10,10	monster	Shining Plant	1083,1,1800000,900000,1
+prt_maze03.gat,137,140,3,3	monster	Shining Plant	1083,1,1800000,900000,1
+prt_maze03.gat,17,58,10,10	monster	Shining Plant	1083,1,1800000,900000,1
+prt_maze03.gat,17,58,10,10	monster	Blue Plant	1079,1,1800000,900000,1
+prt_maze03.gat,99,141,10,10	monster	Blue Plant	1079,2,1800000,900000,1
+prt_maze03.gat,99,21,10,10	monster	Blue Plant	1079,1,1800000,900000,1
+prt_maze03.gat,0,0,0,0	monster	Red Plant	1078,5,180000,90000,1
+prt_maze03.gat,99,21,10,10	monster	Black Mushroom	1084,3,180000,90000,1
+prt_maze03.gat,54,15,10,10	monster	Black Mushroom	1084,3,180000,90000,1
+prt_maze03.gat,171,180,3,3	monster	Red Mushroom	1085,2,180000,90000,1
+prt_maze03.gat,174,187,3,3	monster	Red Mushroom	1085,3,180000,90000,1
+
+
+//--------------------------------------------------------------
+// Ice Cave Dungeon Monster Spawns (Ice Dungeon)
+//--------------------------------------------------------------
+
+ice_dun01.gat,0,0,0,0	monster	Shiroma	1776,60,0,0,0
+ice_dun01.gat,0,0,0,0	monster	Roween	1782,40,0,0,0
+ice_dun01.gat,0,0,0,0	monster	Muscipular	1780,20,0,0,0
+ice_dun01.gat,0,0,0,0	monster	Gazeti	1778,1,0,0,0
+
+ice_dun02.gat,0,0,0,0	monster	Snowier	1775,60,0,0,0
+ice_dun02.gat,0,0,0,0	monster	Gazeti	1778,20,0,0,0
+ice_dun02.gat,0,0,0,0	monster	Shiroma	1776,40,0,0,0
+ice_dun02.gat,0,0,0,0	monster	Ice Titan	1777,10,0,0,0
+ice_dun02.gat,0,0,0,0	monster	Iceicle	1789,10,0,0,0
+
+ice_dun03.gat,0,0,0,0	monster	Ice Titan	1777,50,0,0,0
+ice_dun03.gat,0,0,0,0	monster	Snowier	1775,20,0,0,0
+ice_dun03.gat,0,0,0,0	monster	Shiroma	1776,20,0,0,0
+ice_dun03.gat,0,0,0,0	monster	Gazeti	1778,30,0,0,0
+ice_dun03.gat,0,0,0,0	monster	Iceicle	1789,10,0,0,0
+ice_dun03.gat,0,0,0,0	monster	Ktullanux	1779,1,39600000,19800000,1 // Temp Spawn
+
+// ice_dun04.gat,0,0,0,0	monster	Ktullanux	1779,1,0,0,0 // Quest Summon Only
+
+
+//--------------------------------------------------------------
+// Juperos Ruins Dungeon Monster Spawns (Juperos Dungeon)
+//--------------------------------------------------------------
+
+juperos_01.gat,100,180,60,70	monster	Venatu	1679,15,0,0,1
+juperos_01.gat,100,180,60,70	monster	Venatu	1676,25,0,0,1
+juperos_01.gat,100,180,60,70	monster	Venatu	1677,20,0,0,1
+juperos_01.gat,100,180,60,70	monster	Venatu	1678,25,0,0,1
+juperos_01.gat,192,132,60,80	monster	Venatu	1679,35,0,0,1
+juperos_01.gat,192,132,60,80	monster	Venatu	1676,45,0,0,1
+juperos_01.gat,192,132,60,80	monster	Venatu	1677,50,0,0,1
+juperos_01.gat,192,132,60,80	monster	Venatu	1678,45,0,0,1
+juperos_01.gat,0,0,0,0	monster	Dimik	1670,5,0,0,0
+juperos_01.gat,0,0,0,0	monster	Dimik	1671,5,0,0,0
+juperos_01.gat,0,0,0,0	monster	Dimik	1672,5,0,0,0
+juperos_01.gat,0,0,0,0	monster	Dimik	1673,5,0,0,0
+
+juperos_02.gat,0,0,0,0	monster	Venatu	1679,50,0,0,1
+juperos_02.gat,0,0,0,0	monster	Venatu	1676,65,0,0,1
+juperos_02.gat,0,0,0,0	monster	Venatu	1677,65,0,0,1
+juperos_02.gat,0,0,0,0	monster	Venatu	1678,65,0,0,1
+juperos_02.gat,0,0,0,0	monster	Apocalypse	1365,70,0,0,1
+juperos_02.gat,0,0,0,0	monster	Dimik	1670,5,0,0,0
+juperos_02.gat,0,0,0,0	monster	Dimik	1671,5,0,0,0
+juperos_02.gat,0,0,0,0	monster	Dimik	1672,5,0,0,0
+juperos_02.gat,0,0,0,0	monster	Dimik	1673,5,0,0,0
+
+jupe_core.gat,0,0,0,0	monster	Venatu	1676,25,0,0,1
+jupe_core.gat,0,0,0,0	monster	Venatu	1677,25,0,0,1
+jupe_core.gat,0,0,0,0	monster	Venatu	1678,25,0,0,1
+jupe_core.gat,0,0,0,0	monster	Dimik	1670,40,0,0,1
+jupe_core.gat,0,0,0,0	monster	Dimik	1671,40,0,0,1
+jupe_core.gat,0,0,0,0	monster	Dimik	1672,40,0,0,1
+jupe_core.gat,0,0,0,0	monster	Dimik	1673,40,0,0,1
+jupe_core.gat,0,0,0,0	monster	Archdam	1668,40,0,0,1
+jupe_core.gat,0,0,0,0	monster	Vesper	1685,1,7200000,3600000,1
+
+
+//--------------------------------------------------------------
+// Kiel Hyre Dungeon Monster Spawns
+//--------------------------------------------------------------
+
+kh_kiehl01.gat,0,0,0,0	monster	Constant	1745,10,0,0,0
+kh_kiehl01.gat,0,0,0,0	monster	Aliot	1740,8,0,0,0
+kh_kiehl01.gat,0,0,0,0	monster	Aliza	1746,8,0,0,0
+kh_kiehl01.gat,0,0,0,0	monster	Alicel	1739,8,0,0,0
+kh_kiehl01.gat,0,0,0,0	monster	Aliza	1737,2,0,0,0
+kh_kiehl01.gat,0,0,0,0	monster	Aliot	1736,2,0,0,0
+kh_kiehl01.gat,0,0,0,0	monster	Alicel	1735,2,0,0,0
+
+kh_dun01.gat,0,0,0,0	monster	Alice	1275,30,0,0,0
+kh_dun01.gat,0,0,0,0	monster	Aliza	1737,60,0,0,0
+kh_dun01.gat,0,0,0,0	monster	Constant	1738,10,0,0,0
+kh_dun01.gat,0,0,0,0	monster	Constant	1745,10,0,0,0
+kh_dun01.gat,0,0,0,0	monster	Alicel	1735,5,0,0,0
+kh_dun01.gat,0,0,0,0	monster	Aliot	1736,5,0,0,0
+
+kh_dun02.gat,0,0,0,0	monster	Aliot	1736,30,0,0,0
+kh_dun02.gat,0,0,0,0	monster	Alicel	1735,30,0,0,0
+kh_dun02.gat,0,0,0,0	monster	Aliza	1737,30,0,0,0
+kh_dun02.gat,0,0,0,0	monster	Constant	1738,30,0,0,0
+kh_dun02.gat,0,0,0,0	monster	Constant	1745,30,0,0,0
+kh_dun02.gat,0,0,0,0	monster	Kiel D-01	1734,1,7200000,3600000,1
+
+
+//--------------------------------------------------------------
+// Kunlun Dungeon Monster Spawns
+//--------------------------------------------------------------
+
+gon_dun01.gat,0,0,0,0	monster	Bloody Butterfly	1408,55,650000,350000,0
+gon_dun01.gat,0,0,0,0	monster	Enchanted Peach Tree	1410,35,0,0,0
+gon_dun01.gat,0,0,0,0	monster	Zipper Bear	1417,30,0,0,0
+gon_dun01.gat,0,0,0,0	monster	Red Plant	1078,5,0,0,0
+gon_dun01.gat,0,0,0,0	monster	Yellow Plant	1081,10,0,0,0
+gon_dun01.gat,0,0,0,0	monster	White Plant	1082,10,0,0,0
+
+gon_dun02.gat,241,226,15,20	monster	Enchanted Peach Tree	1410,2,300000,150000,0
+gon_dun02.gat,241,226,15,20	monster	Baby Leopard	1415,4,600000,300000,0
+gon_dun02.gat,241,226,15,20	monster	Enchanted Peach Tree	1410,3,120000,60000,0
+gon_dun02.gat,33,115,10,15	monster	Enchanted Peach Tree	1410,1,300000,150000,0
+gon_dun02.gat,33,115,10,15	monster	Baby Leopard	1415,2,600000,300000,0
+gon_dun02.gat,0,0,0,0	monster	Taoist Hermit	1412,20,690000,390000,0
+gon_dun02.gat,0,0,0,0	monster	Bloody Butterfly	1408,20,0,0,0
+gon_dun02.gat,0,0,0,0	monster	Enchanted Peach Tree	1410,15,0,0,0
+gon_dun02.gat,0,0,0,0	monster	Yellow Plant	1081,10,0,0,0
+
+gon_dun03.gat,0,0,0,0	monster	White Plant	1082,10,0,0,0
+gon_dun03.gat,0,0,0,0	monster	Hermit Plant	1413,20,600000,300000,0
+gon_dun03.gat,0,0,0,0	monster	Evil Nymph	1416,50,600000,300000,0
+gon_dun03.gat,0,0,0,0	monster	Taoist Hermit	1412,30,0,0,0
+gon_dun03.gat,0,0,0,0	monster	Evil Snake Lord	1418,1,5650000,3650000,0
+
+
+//--------------------------------------------------------------
+// Louyang Dungeon Monster Spawns
+//--------------------------------------------------------------
+
+lou_dun01.gat,0,0,0,0	monster	Horong	1129,15,0,0,0
+lou_dun01.gat,0,0,0,0	monster	Mi Gao	1516,15,0,0,0
+lou_dun01.gat,215,159,40,80	monster	Side Winder	1037,10,300000,120000,0
+lou_dun01.gat,215,159,40,80	monster	Jing Guai	1517,25,300000,120000,0
+lou_dun01.gat,0,0,0,0	monster	Jing Guai	1517,20,0,0,0
+lou_dun01.gat,0,0,0,0	monster	Grizzly	1381,15,0,0,0
+lou_dun01.gat,0,0,0,0	monster	Leib Olmai	1306,1,300000,120000,0
+lou_dun01.gat,197,77,10,10	monster	Black Mushroom	1084,5,0,0,0
+lou_dun01.gat,0,0,0,0	monster	Shining Plant	1083,5,0,0,0
+
+lou_dun02.gat,0,0,0,0	monster	Yao Jun	1512,40,300000,120000,0
+lou_dun02.gat,0,0,0,0	monster	Munak	1026,25,0,0,0
+lou_dun02.gat,0,0,0,0	monster	Zhu Po Long	1514,5,0,0,0
+lou_dun02.gat,0,0,0,0	monster	Mimic	1191,5,0,0,0
+
+lou_dun03.gat,0,0,0,0	monster	Yao Jun	1512,25,0,0,0
+lou_dun03.gat,0,0,0,0	monster	Zhu Po Long	1514,25,0,0,0
+lou_dun03.gat,0,0,0,0	monster	Mao Guai	1513,15,0,0,0
+lou_dun03.gat,0,0,0,0	monster	Green Maiden	1631,5,3000000,1800000,1
+lou_dun03.gat,0,0,0,0	monster	White Lady	1630,1,7000000,5000000,1
+
+
+//--------------------------------------------------------------
+// Magma Dungeon Monster Spawns (Juno Dungeon)
+//--------------------------------------------------------------
+
+mag_dun01.gat,0,0,0,0	monster	Blazer	1367,20,0,0,0
+mag_dun01.gat,0,0,0,0	monster	Lava Golem	1366,20,600000,300000,0
+mag_dun01.gat,0,0,0,0	monster	Kaho	1072,20,0,0,0
+mag_dun01.gat,0,0,0,0	monster	Explosion	1383,30,0,0,0
+mag_dun01.gat,0,0,0,0	monster	Grizzly	1381,10,0,0,0
+
+mag_dun02.gat,70,190,20,20	monster	Blazer	1367,5,300000,150000,0
+mag_dun02.gat,200,120,40,40	monster	Blazer	1367,15,300000,150000,0
+mag_dun02.gat,70,87,50,50	monster	Nightmare Terror	1379,10,300000,150000,0
+mag_dun02.gat,210,156,15,15	monster	Nightmare Terror	1379,3,60000,30000,0
+mag_dun02.gat,135,153,15,15	monster	Nightmare Terror	1379,3,60000,30000,0
+mag_dun02.gat,0,0,0,0	monster	Nightmare Terror	1379,12,60000,30000,0
+mag_dun02.gat,120,202,20,20	monster	Deleter	1384,5,60000,30000,0
+mag_dun02.gat,185,185,50,50	monster	Deleter	1385,10,300000,150000,0
+mag_dun02.gat,200,77,30,30	monster	Deleter	1384,5,300000,150000,0
+mag_dun02.gat,0,0,0,0	monster	Gig	1387,10,0,0,0
+mag_dun02.gat,200,77,30,30	monster	Diabolic	1382,10,300000,150000,0
+mag_dun02.gat,135,68,15,15	monster	Diabolic	1382,5,300000,30000,0
+mag_dun02.gat,0,0,0,0	monster	Diabolic	1382,5,60000,30000,0
+
+
+//--------------------------------------------------------------
+// Odin Shrine Dungeon Monster Spawns (Odin Temple)
+//--------------------------------------------------------------
+
+odin_tem01.gat,0,0,0,0	monster	Plasma	1693,15,0,0,0
+odin_tem01.gat,0,0,0,0	monster	Breeze	1692,10,0,0,0
+odin_tem01.gat,0,0,0,0	monster	Plasma	1694,3,0,0,0
+odin_tem01.gat,0,0,0,0	monster	Plasma	1695,3,0,0,0
+odin_tem01.gat,0,0,0,0	monster	Plasma	1696,3,0,0,0
+odin_tem01.gat,0,0,0,0	monster	Plasma	1697,3,0,0,0
+odin_tem01.gat,0,0,0,0	monster	Skeggiold	1754,1,0,0,0
+odin_tem01.gat,0,0,0,0	monster	Blue Plant	1079,5,900000,450000,1
+odin_tem01.gat,0,0,0,0	monster	Green Plant	1080,5,180000,90000,1
+odin_tem01.gat,0,0,0,0	monster	Yellow Plant	1081,5,180000,90000,1
+
+odin_tem02.gat,0,0,0,0	monster	Skogul	1752,30,0,0,0
+odin_tem02.gat,0,0,0,0	monster	Frus	1753,25,0,0,0
+odin_tem02.gat,0,0,0,0	monster	Plasma	1693,15,0,0,0
+odin_tem02.gat,0,0,0,0	monster	Skeggiold	1754,3,0,0,0
+odin_tem02.gat,0,0,0,0	monster	Skeggiold	1755,3,0,0,0
+odin_tem02.gat,0,0,0,0	monster	Valkyrie	1765,1,0,0,0
+odin_tem02.gat,0,0,0,0	monster	Blue Plant	1079,12,900000,450000,1
+odin_tem02.gat,0,0,0,0	monster	Skogul	1761,8,0,0,0
+odin_tem02.gat,0,0,0,0	monster	Frus	1762,8,0,0,0
+
+odin_tem03.gat,0,0,0,0	monster	Plasma	1693,20,0,0,0
+odin_tem03.gat,0,0,0,0	monster	Skeggiold	1754,15,0,0,0
+odin_tem03.gat,0,0,0,0	monster	Skeggiold	1755,10,0,0,0
+odin_tem03.gat,0,0,0,0	monster	Skogul	1752,5,0,0,0
+odin_tem03.gat,0,0,0,0	monster	Frus	1753,5,0,0,0
+odin_tem03.gat,0,0,0,0	monster	Valkyrie	1765,2,0,0,0
+odin_tem03.gat,0,0,0,0	monster	Valkyrie Randgris	1751,1,28800000,14400000,1
+odin_tem03.gat,0,0,0,0	monster	Blue Plant	1079,12,900000,450000,1
+odin_tem03.gat,0,0,0,0	monster	Shining Plant	1083,10,1800000,900000,1
+odin_tem03.gat,0,0,0,0	monster	Skogul	1761,3,0,0,0
+odin_tem03.gat,0,0,0,0	monster	Frus	1762,4,0,0,0
+
+
+//--------------------------------------------------------------
+// Orc Dungeon/Village Monster Spawns
+//--------------------------------------------------------------
+
+orcsdun01.gat,0,0,0,0	monster	Steel Chonchon	1042,10,0,0,0
+orcsdun01.gat,0,0,0,0	monster	Familiar	1005,15,0,0,0
+orcsdun01.gat,0,0,0,0	monster	Drainliar	1111,5,0,0,0
+orcsdun01.gat,0,0,0,0	monster	Orc Zombie	1153,10,3000,5000,0
+orcsdun01.gat,0,0,0,0	monster	Orc Zombie	1153,30,60000,30000,0
+orcsdun01.gat,0,0,0,0	monster	Orc Zombie	1153,40,120000,60000,0
+orcsdun01.gat,0,0,0,0	monster	Orc Skeleton	1152,10,180000,60000,0
+orcsdun01.gat,167,133,5,5	monster	Black Mushroom	1084,5,900000,450000,1
+orcsdun01.gat,67,34,5,5	monster	Black Mushroom	1084,5,900000,450000,1
+orcsdun01.gat,83,50,5,5	monster	White Plant	1082,2,180000,90000,1
+orcsdun01.gat,58,67,10,10	monster	White Plant	1082,3,180000,90000,1
+
+orcsdun02.gat,0,0,0,0	monster	Steel Chonchon	1042,20,0,0,0
+orcsdun02.gat,0,0,0,0	monster	Drainliar	1111,20,0,0,0
+orcsdun02.gat,0,0,0,0	monster	Orc Skeleton	1152,10,3000,5000,0
+orcsdun02.gat,0,0,0,0	monster	Orc Skeleton	1152,20,60000,30000,0
+orcsdun02.gat,0,0,0,0	monster	Orc Skeleton	1152,20,120000,60000,0
+orcsdun02.gat,0,0,0,0	monster	Zenorc	1177,30,3000,5000,0
+orcsdun02.gat,0,0,0,0	monster	Zenorc	1177,20,60000,30000,0
+orcsdun02.gat,0,0,0,0	monster	Orc Archer	1189,5,1800000,900000,1
+orcsdun02.gat,0,0,0,0	monster	Black Mushroom	1084,5,180000,90000,1
+orcsdun02.gat,105,37,10,10	monster	White Plant	1082,2,180000,90000,1
+orcsdun02.gat,37,44,10,10	monster	White Plant	1082,3,180000,90000,1
+
+
+//--------------------------------------------------------------
+// Payon Dungeon Monster Spawns (Payon Cave)
+//--------------------------------------------------------------
+
+pay_dun00.gat,0,0,0,0	monster	Familiar	1005,15,0,0,0
+pay_dun00.gat,0,0,0,0	monster	Zombie	1015,20,0,0,0
+pay_dun00.gat,0,0,0,0	monster	Skeleton	1076,35,0,0,0
+pay_dun00.gat,0,0,0,0	monster	Poporing	1031,15,0,0,0
+pay_dun00.gat,0,0,0,0	monster	Red Plant	1078,15,180000,90000,1
+pay_dun00.gat,140,140,5,5	monster	Black Mushroom	1084,3,360000,180000,1
+
+pay_dun01.gat,0,0,0,0	monster	Drainliar	1111,5,0,0,0
+pay_dun01.gat,0,0,0,0	monster	Eggyra	1116,15,0,0,0
+pay_dun01.gat,0,0,0,0	monster	Soldier Skeleton	1028,50,300000,150000,1
+pay_dun01.gat,0,0,0,0	monster	Archer Skeleton	1016,30,300000,150000,1
+pay_dun01.gat,235,54,10,10	monster	Black Mushroom	1084,7,900000,450000,1
+pay_dun01.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
+
+pay_dun02.gat,0,0,0,0	monster	Soldier Skeleton	1028,15,180000,90000,1
+pay_dun02.gat,0,0,0,0	monster	Munak	1026,40,0,0,0
+pay_dun02.gat,0,0,0,0	monster	Bongun	1188,30,0,0,0
+pay_dun02.gat,0,0,0,0	monster	Poporing	1031,10,0,0,0
+pay_dun02.gat,0,0,0,0	monster	Archer Skeleton	1016,20,180000,90000,1
+pay_dun02.gat,116,205,0,0	monster	Hydra	1068,1,345000,100000,1
+pay_dun02.gat,116,199,0,0	monster	Hydra	1068,1,306000,100000,1
+pay_dun02.gat,116,196,0,0	monster	Hydra	1068,1,300000,100000,1
+pay_dun02.gat,116,190,0,0	monster	Hydra	1068,1,326000,100000,1
+pay_dun02.gat,117,206,0,0	monster	Hydra	1068,1,302000,100000,1
+pay_dun02.gat,117,200,0,0	monster	Hydra	1068,1,275000,100000,1
+pay_dun02.gat,117,197,0,0	monster	Hydra	1068,1,314000,100000,1
+pay_dun02.gat,117,191,0,0	monster	Hydra	1068,1,300000,100000,1
+pay_dun02.gat,118,207,0,0	monster	Hydra	1068,1,332000,100000,1
+pay_dun02.gat,118,201,0,0	monster	Hydra	1068,1,300000,100000,1
+pay_dun02.gat,118,198,0,0	monster	Hydra	1068,1,312000,100000,1
+pay_dun02.gat,118,192,0,0	monster	Hydra	1068,1,285000,100000,1
+pay_dun02.gat,119,205,0,0	monster	Hydra	1068,1,324000,100000,1
+pay_dun02.gat,119,199,0,0	monster	Hydra	1068,1,300000,100000,1
+pay_dun02.gat,119,196,0,0	monster	Hydra	1068,1,315000,100000,1
+pay_dun02.gat,120,203,0,0	monster	Hydra	1068,1,300000,100000,1
+pay_dun02.gat,120,200,0,0	monster	Hydra	1068,1,303000,100000,1
+pay_dun02.gat,120,194,0,0	monster	Hydra	1068,1,300000,100000,1
+pay_dun02.gat,121,200,0,0	monster	Hydra	1068,1,333000,100000,1
+pay_dun02.gat,122,200,0,0	monster	Hydra	1068,1,300000,100000,1
+pay_dun02.gat,122,197,0,0	monster	Hydra	1068,1,321000,100000,1
+pay_dun02.gat,110,194,0,0	monster	Hydra	1068,1,300000,100000,1
+pay_dun02.gat,113,194,0,0	monster	Hydra	1068,1,319000,100000,1
+pay_dun02.gat,109,193,0,0	monster	Hydra	1068,1,300000,100000,1
+pay_dun02.gat,113,193,0,0	monster	Hydra	1068,1,300000,100000,1
+pay_dun02.gat,109,192,0,0	monster	Hydra	1068,1,374000,100000,1
+pay_dun02.gat,112,192,0,0	monster	Hydra	1068,1,300000,100000,1
+pay_dun02.gat,108,191,0,0	monster	Hydra	1068,1,332000,100000,1
+pay_dun02.gat,111,191,0,0	monster	Hydra	1068,1,300000,100000,1
+pay_dun02.gat,107,190,0,0	monster	Hydra	1068,1,320000,100000,1
+pay_dun02.gat,110,190,0,0	monster	Hydra	1068,1,300000,100000,1
+pay_dun02.gat,227,185,0,0	monster	Mandragora	1020,1,300000,100000,1
+pay_dun02.gat,227,184,0,0	monster	Mandragora	1020,1,300000,100000,1
+pay_dun02.gat,229,183,0,0	monster	Mandragora	1020,1,300000,100000,1
+pay_dun02.gat,214,266,0,0	monster	Red Plant	1078,1,600000,300000,1
+pay_dun02.gat,37,243,0,0	monster	Black Mushroom	1084,1,600000,300000,1
+pay_dun02.gat,37,243,0,0	monster	Nine Tail	1180,1,3600000,1800000,1
+pay_dun02.gat,111,199,10,10	monster	Black Mushroom	1084,7,900000,450000,1
+pay_dun02.gat,110,216,20,10	monster	White Plant	1082,3,180000,90000,1
+pay_dun02.gat,132,84,10,10	monster	White Plant	1082,3,180000,90000,1
+pay_dun02.gat,197,113,10,10	monster	Red Plant	1078,4,180000,90000,1
+pay_dun02.gat,55,254,10,10	monster	Red Plant	1078,4,180000,90000,1
+
+pay_dun03.gat,0,0,0,0	monster	Sohee	1170,50,0,0,0
+pay_dun03.gat,0,0,0,0	monster	Munak	1026,3,0,0,0
+pay_dun03.gat,0,0,0,0	monster	Bongun	1188,3,0,0,0
+pay_dun03.gat,0,0,0,0	monster	Nine Tail	1180,1,0,0,0
+pay_dun03.gat,0,0,0,0	monster	Nine Tail	1180,1,3600000,1800000,0
+pay_dun03.gat,154,112,0,0	monster	Whisper	1185,1,1800000,0,1
+pay_dun03.gat,161,117,0,0	monster	Whisper	1185,1,1800000,0,1
+pay_dun03.gat,81,61,0,0	monster	Whisper	1185,1,1800000,0,1
+pay_dun03.gat,84,63,0,0	monster	Whisper	1185,1,1800000,0,1
+pay_dun03.gat,89,147,0,0	monster	Giant Whisper	1186,1,14400000,0,1
+pay_dun03.gat,66,73,0,0	monster	Hydra	1068,1,600000,300000,1
+pay_dun03.gat,68,72,0,0	monster	Hydra	1068,1,600000,300000,1
+pay_dun03.gat,67,71,0,0	monster	Hydra	1068,1,600000,300000,1
+pay_dun03.gat,63,70,0,0	monster	Hydra	1068,1,600000,300000,1
+pay_dun03.gat,58,69,0,0	monster	Hydra	1068,1,600000,300000,1
+pay_dun03.gat,67,69,0,0	monster	Hydra	1068,1,600000,300000,1
+pay_dun03.gat,60,68,0,0	monster	Hydra	1068,1,600000,300000,1
+pay_dun03.gat,69,68,0,0	monster	Hydra	1068,1,600000,300000,1
+pay_dun03.gat,62,67,0,0	monster	Hydra	1068,1,600000,300000,1
+pay_dun03.gat,71,67,0,0	monster	Hydra	1068,1,600000,300000,1
+pay_dun03.gat,64,66,0,0	monster	Hydra	1068,1,600000,300000,1
+pay_dun03.gat,57,65,0,0	monster	Hydra	1068,1,600000,300000,1
+pay_dun03.gat,66,65,0,0	monster	Hydra	1068,1,600000,300000,1
+pay_dun03.gat,59,64,0,0	monster	Hydra	1068,1,600000,300000,1
+pay_dun03.gat,68,64,0,0	monster	Hydra	1068,1,600000,300000,1
+pay_dun03.gat,71,64,0,0	monster	Hydra	1068,1,600000,300000,1
+pay_dun03.gat,66,63,0,0	monster	Hydra	1068,1,600000,300000,1
+pay_dun03.gat,71,243,0,0	monster	Sohee	1170,2,300000,100000,1
+pay_dun03.gat,86,248,0,0	monster	Sohee	1170,2,300000,100000,1
+pay_dun03.gat,85,178,0,0	monster	Sohee	1170,2,300000,100000,1
+pay_dun03.gat,115,190,0,0	monster	Sohee	1170,2,300000,100000,1
+pay_dun03.gat,230,244,0,0	monster	Sohee	1170,2,300000,100000,1
+pay_dun03.gat,240,244,0,0	monster	Sohee	1170,2,300000,100000,1
+pay_dun03.gat,219,244,0,0	monster	Sohee	1170,2,300000,100000,1
+pay_dun03.gat,243,220,0,0	monster	Sohee	1170,2,300000,100000,1
+pay_dun03.gat,219,185,0,0	monster	Sohee	1170,2,300000,100000,1
+pay_dun03.gat,228,185,0,0	monster	Sohee	1170,2,300000,100000,1
+pay_dun03.gat,228,61,0,0	monster	Red Plant	1078,1,600000,300000,1
+pay_dun03.gat,138,42,0,0	monster	Blue Plant	1079,1,600000,300000,1
+pay_dun03.gat,120,186,0,0	monster	Green Plant	1080,1,600000,300000,1
+pay_dun03.gat,88,35,0,0	monster	Yellow Plant	1081,1,600000,300000,1
+pay_dun03.gat,126,135,0,0	monster	Mandragora	1020,1,300000,100000,1
+pay_dun03.gat,126,134,0,0	monster	Mandragora	1020,1,300000,100000,1
+pay_dun03.gat,126,133,0,0	monster	Mandragora	1020,1,300000,100000,1
+pay_dun03.gat,126,132,0,0	monster	Mandragora	1020,1,300000,100000,1
+pay_dun03.gat,126,131,0,0	monster	Mandragora	1020,1,300000,100000,1
+pay_dun03.gat,179,134,0,0	monster	Mandragora	1020,1,300000,100000,1
+pay_dun03.gat,179,133,0,0	monster	Mandragora	1020,1,300000,100000,1
+pay_dun03.gat,179,132,0,0	monster	Mandragora	1020,1,300000,100000,1
+pay_dun03.gat,179,131,0,0	monster	Mandragora	1020,1,300000,100000,1
+pay_dun03.gat,179,130,0,0	monster	Mandragora	1020,1,300000,100000,1
+pay_dun03.gat,0,0,0,0	monster	Greatest General	1277,3,0,0,0
+pay_dun03.gat,0,0,0,0	monster	Red Plant	1078,15,180000,90000,1
+pay_dun03.gat,246,56,20,20	monster	White Plant	1082,3,180000,90000,1
+pay_dun03.gat,52,262,10,4	monster	White Plant	1082,2,180000,90000,1
+
+pay_dun04.gat,0,0,0,0	monster	Dokebi	1110,40,0,0,0
+pay_dun04.gat,0,0,0,0	monster	Sohee	1170,5,0,0,0
+pay_dun04.gat,0,0,0,0	monster	Horong	1129,30,0,0,0
+pay_dun04.gat,120,115,0,0	monster	Moonlight Flower	1150,1,3600000,7200000,1
+pay_dun04.gat,0,0,0,0	monster	Greatest General	1277,15,0,0,0
+pay_dun04.gat,0,0,0,0	monster	Archer Skeleton	1016,15,0,0,0
+pay_dun04.gat,0,0,0,0	monster	Nine Tail	1180,20,800000,400000,0
+pay_dun04.gat,120,115,5,5	monster	Skeleton General	1290,1,1800000,1200000,0
+pay_dun04.gat,120,115,5,5	monster	Am Mut	1301,1,1800000,1200000,0
+pay_dun04.gat,120,115,0,0	monster	Cat o' Nine Tails	1307,1,3600000,7200000,1
+pay_dun04.gat,0,0,0,0	monster	Soldier Skeleton	1028,10,0,0,0
+pay_dun04.gat,120,120,10,10	monster	Shining Plant	1083,1,1800000,900000,1
+pay_dun04.gat,28,110,5,5	monster	Shining Plant	1083,1,1800000,900000,1
+pay_dun04.gat,0,0,0,0	monster	Red Plant	1078,10,180000,90000,1
+pay_dun04.gat,107,206,5,5	monster	White Plant	1082,2,180000,90000,1
+pay_dun04.gat,28,110,10,10	monster	White Plant	1082,2,180000,90000,1
+pay_dun04.gat,190,207,5,5	monster	White Plant	1082,2,180000,90000,1
+
+
+//--------------------------------------------------------------
+// Pyramids Dungeon Monster Spawns
+//--------------------------------------------------------------
+
+moc_pryd01.gat,0,0,0,0	monster	Familiar	1005,50,0,0,0
+moc_pryd01.gat,0,0,0,0	monster	Poporing	1031,20,0,0,0
+
+moc_pryd02.gat,0,0,0,0	monster	Poporing	1031,20,0,0,0
+moc_pryd02.gat,0,0,0,0	monster	Drainliar	1111,20,0,0,0
+moc_pryd02.gat,0,0,0,0	monster	Mummy	1041,30,0,0,0
+moc_pryd02.gat,0,0,0,0	monster	Isis	1029,25,0,0,0
+moc_pryd02.gat,0,0,0,0	monster	Soldier Skeleton	1028,20,0,0,0
+moc_pryd02.gat,0,0,0,0	monster	Archer Skeleton	1016,20,0,0,0
+
+moc_pryd03.gat,0,0,0,0	monster	Drainliar	1111,15,0,0,0
+moc_pryd03.gat,0,0,0,0	monster	Mimic	1191,10,0,0,0
+moc_pryd03.gat,0,0,0,0	monster	Matyr	1146,15,0,0,0
+moc_pryd03.gat,0,0,0,0	monster	Mummy	1041,45,0,0,0
+moc_pryd03.gat,0,0,0,0	monster	Verit	1032,20,600000,300000,1
+
+moc_pryd04.gat,0,0,0,0	monster	Mummy	1041,25,0,0,0
+moc_pryd04.gat,0,0,0,0	monster	Ancient Mummy	1297,3,0,0,0
+moc_pryd04.gat,0,0,0,0	monster	Isis	1029,50,150000,75000,0
+moc_pryd04.gat,0,0,0,0	monster	Mimic	1191,15,600000,300000,1
+moc_pryd04.gat,0,0,0,0	monster	Osiris	1038,1,3600000,7200000,0
+moc_pryd04.gat,0,0,0,0	monster	Matyr	1146,20,0,0,0
+
+moc_pryd05.gat,0,0,0,0	monster	Minorous	1149,60,0,0,0
+moc_pryd05.gat,0,0,0,0	monster	Mummy	1041,10,0,0,0
+moc_pryd05.gat,0,0,0,0	monster	Verit	1032,50,0,0,0
+
+moc_pryd06.gat,0,0,0,0	monster	Verit	1032,10,0,0,0
+moc_pryd06.gat,0,0,0,0	monster	Arclouze	1194,20,0,0,0
+moc_pryd06.gat,100,90,80,50	monster	Ancient Mummy	1297,20,0,0,0
+moc_pryd06.gat,100,90,80,50	monster	Mimic	1191,20,0,0,0
+moc_pryd06.gat,102,85,1,1	monster	Amon Ra	1511,1,3600000,1600000,0
+
+
+//--------------------------------------------------------------
+// Rachel Sanctuary Dungeon Monster Spawns (Rachel Temple)
+//--------------------------------------------------------------
+
+ra_san01.gat,0,0,0,0	monster	Gremlin	1632,20,0,0,0
+ra_san01.gat,0,0,0,0	monster	Beholder	1633,20,0,0,0
+ra_san01.gat,0,0,0,0	monster	Vanberk	1771,20,0,0,0
+ra_san01.gat,0,0,0,0	monster	Isilla	1772,10,0,0,0
+
+ra_san02.gat,0,0,0,0	monster	Gremlin	1632,20,0,0,0
+ra_san02.gat,0,0,0,0	monster	Beholder	1633,20,0,0,0
+ra_san02.gat,0,0,0,0	monster	Vanberk	1771,40,0,0,0
+ra_san02.gat,0,0,0,0	monster	Isilla	1772,30,0,0,0
+
+ra_san03.gat,0,0,0,0	monster	Gremlin	1632,20,0,0,0
+ra_san03.gat,0,0,0,0	monster	Beholder	1633,20,0,0,0
+ra_san03.gat,0,0,0,0	monster	Hodremlin	1773,30,0,0,0
+ra_san03.gat,0,0,0,0	monster	Seeker	1774,30,0,0,0
+
+ra_san04.gat,0,0,0,0	monster	Agav	1769,30,0,0,0
+ra_san04.gat,0,0,0,0	monster	Echio	1770,30,0,0,0
+ra_san04.gat,0,0,0,0	monster	Hodremlin	1773,20,0,0,0
+ra_san04.gat,0,0,0,0	monster	Seeker	1774,20,0,0,0
+
+ra_san05.gat,0,0,0,0	monster	Agav	1769,20,0,0,0
+ra_san05.gat,0,0,0,0	monster	Echio	1770,20,0,0,0
+ra_san05.gat,0,0,0,0	monster	Isilla	1772,20,0,0,0
+ra_san05.gat,0,0,0,0	monster	Hodremlin	1773,20,0,0,0
+ra_san05.gat,0,0,0,0	monster	Seeker	1774,20,0,0,0
+ra_san05.gat,0,0,0,0	monster	Gloom Under Night	1768,1,7200000,3600000,1
+
+
+//--------------------------------------------------------------
+// Sphinx Dungeon Monster Spawns
+//--------------------------------------------------------------
+
+in_sphinx1.gat,0,0,0,0	monster	Drainliar	1111,40,0,0,0
+in_sphinx1.gat,0,0,0,0	monster	Requiem	1164,20,0,0,0
+in_sphinx1.gat,0,0,0,0	monster	Zerom	1178,20,0,0,0
+in_sphinx1.gat,0,0,0,0	monster	Matyr	1146,10,0,0,0
+
+in_sphinx2.gat,0,0,0,0	monster	Drainliar	1111,15,0,0,0
+in_sphinx2.gat,0,0,0,0	monster	Requiem	1164,50,0,0,0
+in_sphinx2.gat,0,0,0,0	monster	Zerom	1178,50,0,0,0
+in_sphinx2.gat,0,0,0,0	monster	Matyr	1146,20,0,0,0
+
+in_sphinx3.gat,0,0,0,0	monster	Matyr	1146,30,0,0,0
+in_sphinx3.gat,0,0,0,0	monster	Pasana	1154,10,0,0,0
+in_sphinx3.gat,0,0,0,0	monster	Marduk	1140,30,0,0,0
+in_sphinx3.gat,0,0,0,0	monster	Mimic	1191,10,600000,300000,1
+
+in_sphinx4.gat,0,0,0,0	monster	Minorous	1149,50,0,0,0
+in_sphinx4.gat,0,0,0,0	monster	Marduk	1140,15,0,0,0
+in_sphinx4.gat,0,0,0,0	monster	Mimic	1191,4,600000,300000,1
+in_sphinx4.gat,0,0,0,0	monster	Pasana	1154,20,0,0,0
+
+in_sphinx5.gat,0,0,0,0	monster	Pasana	1154,50,0,0,0
+in_sphinx5.gat,0,0,0,0	monster	Matyr	1146,10,0,0,0
+in_sphinx5.gat,0,0,0,0	monster	Side Winder	1037,20,0,0,0
+in_sphinx5.gat,0,0,0,0	monster	Marduk	1140,30,0,0,0
+in_sphinx5.gat,0,0,0,0	monster	Mimic	1191,7,600000,300000,1
+in_sphinx5.gat,0,0,0,0	monster	Pharaoh	1157,1,3600000,1800000,1
+
+
+//--------------------------------------------------------------
+// Sunken Ship Dungeon Monster Spawns (Treasure Island)
+//--------------------------------------------------------------
+
+treasure01.gat,0,0,0,0	monster	Kukre	1070,20,0,0,1
+treasure01.gat,0,0,0,0	monster	Whisper	1179,5,0,0,1
+treasure01.gat,0,0,0,0	monster	Whisper	1179,5,120000,60000,1
+treasure01.gat,107,39,15,15	monster	Poison Spore	1077,3,180000,90000,1
+treasure01.gat,107,39,15,15	monster	Hydra	1068,1,180000,90000,1
+treasure01.gat,29,38,15,15	monster	Poison Spore	1077,3,180000,90000,1
+treasure01.gat,68,66,13,11	monster	Hydra	1068,4,180000,90000,1
+treasure01.gat,34,112,17,11	monster	Pirate Skeleton	1071,5,180000,90000,1
+treasure01.gat,106,111,9,9	monster	Pirate Skeleton	1071,5,180000,90000,1
+treasure01.gat,106,111,9,9	monster	Pirate Skeleton	1071,5,180000,90000,1
+treasure01.gat,106,111,9,9	monster	Thara Frog	1034,5,180000,90000,1
+treasure01.gat,67,161,0,0	monster	Hydra	1068,1,263000,100000,1
+treasure01.gat,67,160,0,0	monster	Hydra	1068,1,293000,100000,1
+treasure01.gat,68,161,0,0	monster	Hydra	1068,1,317000,100000,1
+treasure01.gat,68,160,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure01.gat,69,161,0,0	monster	Hydra	1068,1,305000,100000,1
+treasure01.gat,69,160,0,0	monster	Hydra	1068,1,290000,100000,1
+treasure01.gat,70,161,0,0	monster	Hydra	1068,1,302000,100000,1
+treasure01.gat,70,160,0,0	monster	Hydra	1068,1,306000,100000,1
+treasure01.gat,48,161,0,0	monster	Hydra	1068,1,316000,100000,1
+treasure01.gat,48,160,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure01.gat,49,161,0,0	monster	Hydra	1068,1,310000,100000,1
+treasure01.gat,49,160,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure01.gat,50,161,0,0	monster	Hydra	1068,1,308000,100000,1
+treasure01.gat,50,160,0,0	monster	Hydra	1068,1,301000,100000,1
+treasure01.gat,51,161,0,0	monster	Hydra	1068,1,314000,100000,1
+treasure01.gat,51,160,0,0	monster	Hydra	1068,1,270000,100000,1
+treasure01.gat,86,161,0,0	monster	Hydra	1068,1,285000,100000,1
+treasure01.gat,86,160,0,0	monster	Hydra	1068,1,310000,100000,1
+treasure01.gat,87,161,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure01.gat,87,160,0,0	monster	Hydra	1068,1,268000,100000,1
+treasure01.gat,88,161,0,0	monster	Hydra	1068,1,281000,100000,1
+treasure01.gat,88,160,0,0	monster	Hydra	1068,1,296000,100000,1
+treasure01.gat,89,161,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure01.gat,89,160,0,0	monster	Hydra	1068,1,305000,100000,1
+treasure01.gat,60,182,0,0	monster	Hydra	1068,1,313000,100000,1
+treasure01.gat,76,182,0,0	monster	Hydra	1068,1,269000,100000,1
+treasure01.gat,82,154,11,9	monster	Poison Spore	1077,3,100000,100000,1
+treasure01.gat,54,154,11,9	monster	Poison Spore	1077,3,100000,100000,1
+treasure01.gat,58,165,5,5	monster	Pirate Skeleton	1071,2,300000,100000,1
+treasure01.gat,69,165,5,5	monster	Pirate Skeleton	1071,2,300000,100000,1
+treasure01.gat,79,165,5,5	monster	Pirate Skeleton	1071,2,300000,100000,1
+treasure01.gat,150,162,5,5	monster	Pirate Skeleton	1071,3,300000,100000,1
+treasure01.gat,150,162,5,5	monster	Hydra	1068,1,300000,100000,1
+treasure01.gat,163,161,5,5	monster	Pirate Skeleton	1071,3,300000,100000,1
+treasure01.gat,163,161,5,5	monster	Hydra	1068,1,300000,100000,1
+treasure01.gat,163,151,5,5	monster	Pirate Skeleton	1071,3,300000,100000,1
+treasure01.gat,163,151,5,5	monster	Hydra	1068,1,300000,100000,1
+treasure01.gat,163,141,5,5	monster	Pirate Skeleton	1071,3,300000,100000,1
+treasure01.gat,163,141,5,5	monster	Hydra	1068,1,300000,100000,1
+treasure01.gat,162,71,0,0	monster	Hydra	1068,1,273000,100000,1
+treasure01.gat,162,70,0,0	monster	Hydra	1068,1,314000,100000,1
+treasure01.gat,163,71,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure01.gat,163,70,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure01.gat,164,71,0,0	monster	Hydra	1068,1,305000,100000,1
+treasure01.gat,164,70,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure01.gat,165,71,0,0	monster	Hydra	1068,1,307000,100000,1
+treasure01.gat,165,70,0,0	monster	Hydra	1068,1,293000,100000,1
+treasure01.gat,164,59,12,10	monster	Wanderer	1208,1,1800000,200000,1
+treasure01.gat,164,59,12,10	monster	Penomena	1216,1,900000,450000,1
+treasure01.gat,164,59,12,10	monster	Whisper	1179,5,300000,100000,1
+treasure01.gat,158,63,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure01.gat,159,63,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure01.gat,158,62,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure01.gat,159,62,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure01.gat,160,60,27,19	monster	Pirate Skeleton	1071,10,300000,100000,1
+treasure01.gat,158,45,0,0	monster	Hydra	1068,1,302000,100000,1
+treasure01.gat,158,44,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure01.gat,158,43,0,0	monster	Hydra	1068,1,305000,100000,1
+treasure01.gat,158,42,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure01.gat,158,41,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure01.gat,158,40,0,0	monster	Hydra	1068,1,307000,100000,1
+treasure01.gat,159,45,0,0	monster	Hydra	1068,1,285000,100000,1
+treasure01.gat,159,44,0,0	monster	Hydra	1068,1,312000,100000,1
+treasure01.gat,159,43,0,0	monster	Hydra	1068,1,318000,100000,1
+treasure01.gat,159,42,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure01.gat,159,41,0,0	monster	Hydra	1068,1,306000,100000,1
+treasure01.gat,159,40,0,0	monster	Hydra	1068,1,290000,100000,1
+treasure01.gat,168,45,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure01.gat,168,44,0,0	monster	Hydra	1068,1,314000,100000,1
+treasure01.gat,168,43,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure01.gat,168,42,0,0	monster	Hydra	1068,1,306000,100000,1
+treasure01.gat,168,41,0,0	monster	Hydra	1068,1,290000,100000,1
+treasure01.gat,168,40,0,0	monster	Hydra	1068,1,322000,100000,1
+treasure01.gat,169,45,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure01.gat,169,44,0,0	monster	Hydra	1068,1,302000,100000,1
+treasure01.gat,169,43,0,0	monster	Hydra	1068,1,305000,100000,1
+treasure01.gat,169,42,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure01.gat,169,41,0,0	monster	Hydra	1068,1,313000,100000,1
+treasure01.gat,169,40,0,0	monster	Hydra	1068,1,300000,100000,1
+
+treasure02.gat,0,0,0,0	monster	Ghostring	1120,1,1980000,1200000,1
+treasure02.gat,0,0,0,0	monster	Whisper	1179,5,0,0,0
+treasure02.gat,0,0,0,0	monster	Wanderer	1208,1,600000,300000,1
+treasure02.gat,0,0,0,0	monster	Penomena	1216,22,300000,120000,1
+treasure02.gat,0,0,0,0	monster	Kukre	1070,20,0,0,1
+treasure02.gat,0,0,0,0	monster	Pirate Skeleton	1071,5,0,0,1
+treasure02.gat,0,0,0,0	monster	Mimic	1191,3,0,0,1
+treasure02.gat,95,57,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure02.gat,96,57,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure02.gat,101,57,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure02.gat,102,57,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure02.gat,107,57,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure02.gat,108,57,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure02.gat,101,50,10,10	monster	Penomena	1216,5,300000,100000,1
+treasure02.gat,102,68,13,13	monster	Whisper	1179,1,300000,100000,1
+treasure02.gat,102,80,5,5	monster	Whisper	1179,1,300000,100000,1
+treasure02.gat,102,88,5,5	monster	Whisper	1179,1,300000,100000,1
+treasure02.gat,100,85,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure02.gat,101,85,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure02.gat,102,85,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure02.gat,103,85,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure02.gat,100,136,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure02.gat,101,136,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure02.gat,102,136,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure02.gat,103,136,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure02.gat,100,143,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure02.gat,101,143,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure02.gat,102,143,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure02.gat,103,143,0,0	monster	Hydra	1068,1,300000,100000,1
+treasure02.gat,101,150,15,10	monster	Whisper	1179,2,200000,100000,1
+treasure02.gat,101,151,8,8	monster	Drake	1112,1,7200000,3600000,1
+treasure02.gat,101,151,10,10	monster	Mimic	1191,3,500000,200000,1
+treasure02.gat,101,151,10,10	monster	Mimic	1191,2,100000,100000,1
+treasure02.gat,101,151,10,10	monster	Penomena	1216,4,100000,100000,1
+treasure02.gat,101,126,2,2	monster	Penomena	1216,1,1200000,600000,1
+treasure02.gat,101,135,2,2	monster	Penomena	1216,1,60000,200000,1
+treasure02.gat,38,74,9,9	monster	Pirate Skeleton	1071,3,300000,100000,1
+treasure02.gat,38,74,9,9	monster	Penomena	1216,5,300000,100000,1
+treasure02.gat,170,71,1,1	monster	Pirate Skeleton	1071,1,100000,100000,1
+treasure02.gat,168,77,1,1	monster	Pirate Skeleton	1071,1,100000,100000,1
+treasure02.gat,164,67,1,1	monster	Pirate Skeleton	1071,1,100000,100000,1
+treasure02.gat,155,43,21,13	monster	Pirate Skeleton	1071,6,300000,100000,1
+treasure02.gat,178,143,1,1	monster	Pirate Skeleton	1071,1,300000,100000,1
+treasure02.gat,178,140,1,1	monster	Pirate Skeleton	1071,1,300000,100000,1
+treasure02.gat,184,143,1,1	monster	Pirate Skeleton	1071,1,300000,100000,1
+treasure02.gat,157,143,1,1	monster	Whisper	1179,1,100000,100000,1
+treasure02.gat,151,138,1,1	monster	Whisper	1179,1,100000,100000,1
+treasure02.gat,45,144,1,1	monster	Whisper	1179,1,200000,100000,1
+treasure02.gat,52,139,1,1	monster	Whisper	1179,1,200000,100000,1
+treasure02.gat,23,142,1,1	monster	Marionette	1143,1,200000,100000,1
+
+
+//--------------------------------------------------------------
+// Thanatos Tower Dungeon Monster Spawns
+//--------------------------------------------------------------
+
+tha_t01.gat,0,0,0,0	monster	Alice	1275,5,0,0,0
+tha_t01.gat,0,0,0,0	monster	Plasma	1695,20,0,0,0
+tha_t01.gat,0,0,0,0	monster	Rideword	1195,20,0,0,0
+tha_t01.gat,0,0,0,0	monster	Mimic	1191,20,0,0,0
+tha_t01.gat,0,0,0,0	monster	Lady Solace	1703,4,1800000,1200000,0
+
+tha_t02.gat,0,0,0,0	monster	Alice	1275,10,0,0,0
+tha_t02.gat,0,0,0,0	monster	Plasma	1697,20,0,0,0
+tha_t02.gat,0,0,0,0	monster	Mimic	1191,30,0,0,0
+tha_t02.gat,0,0,0,0	monster	Ancient Mimic	1699,80,0,0,0
+tha_t02.gat,0,0,0,0	monster	Rideword	1195,10,0,0,0
+tha_t02.gat,0,0,0,0	monster	Death Word	1698,10,0,0,0
+tha_t02.gat,0,0,0,0	monster	Elder	1377,10,0,0,0
+tha_t02.gat,0,0,0,0	monster	Baroness of Retribution	1702,4,1800000,1200000,0
+
+tha_t03.gat,0,0,0,0	monster	Plasma	1696,20,0,0,0
+tha_t03.gat,0,0,0,0	monster	Rideword	1195,30,0,0,0
+tha_t03.gat,0,0,0,0	monster	Death Word	1698,80,0,0,0
+tha_t03.gat,0,0,0,0	monster	Mimic	1191,10,0,0,0
+tha_t03.gat,0,0,0,0	monster	Ancient Mimic	1699,10,0,0,0
+tha_t03.gat,0,0,0,0	monster	Elder	1377,10,0,0,0
+tha_t03.gat,0,0,0,0	monster	Mistress of Shelter	1701,4,1800000,1200000,0
+
+tha_t04.gat,0,0,0,0	monster	Plasma	1694,20,0,0,0
+tha_t04.gat,0,0,0,0	monster	Rideword	1195,20,0,0,0
+tha_t04.gat,0,0,0,0	monster	Death Word	1698,20,0,0,0
+tha_t04.gat,0,0,0,0	monster	Mimic	1191,20,0,0,0
+tha_t04.gat,0,0,0,0	monster	Ancient Mimic	1699,20,0,0,0
+tha_t04.gat,0,0,0,0	monster	Elder	1377,20,0,0,0
+tha_t04.gat,0,0,0,0	monster	Owl Baron	1295,10,0,0,0
+tha_t04.gat,0,0,0,0	monster	Owl Duke	1320,10,0,0,0
+tha_t04.gat,0,0,0,0	monster	Dame of Sentinel	1700,4,1800000,1200000,0
+
+tha_t05.gat,61,179,55,55	monster	Elder	1377,5,0,0,0
+tha_t05.gat,61,179,55,55	monster	Plasma	1697,10,0,0,0
+tha_t05.gat,61,179,55,55	monster	Death Word	1698,10,0,0,0
+tha_t05.gat,61,179,55,55	monster	Ancient Mimic	1699,10,0,0,0
+tha_t05.gat,61,179,55,55	monster	Owl Duke	1320,20,300000,120000,0
+tha_t05.gat,61,179,55,55	monster	Owl Baron	1295,5,300000,120000,0
+tha_t05.gat,178,178,55,55	monster	Elder	1377,5,0,0,0
+tha_t05.gat,178,178,55,55	monster	Plasma	1695,10,0,0,0
+tha_t05.gat,178,178,55,55	monster	Death Word	1698,10,0,0,0
+tha_t05.gat,178,178,55,55	monster	Ancient Mimic	1699,10,0,0,0
+tha_t05.gat,178,178,55,55	monster	Owl Duke	1320,20,300000,120000,0
+tha_t05.gat,178,178,55,55	monster	Owl Baron	1295,5,300000,120000,0
+tha_t05.gat,178,63,55,5	monster	Elder	1377,5,0,0,0
+tha_t05.gat,178,63,55,55	monster	Plasma	1696,10,0,0,0
+tha_t05.gat,178,63,55,55	monster	Death Word	1698,10,0,0,0
+tha_t05.gat,178,63,55,55	monster	Ancient Mimic	1699,10,0,0,0
+tha_t05.gat,178,63,55,55	monster	Owl Duke	1320,20,300000,120000,0
+tha_t05.gat,178,63,55,55	monster	Owl Baron	1295,5,300000,120000,0
+tha_t05.gat,62,63,55,55	monster	Elder	1377,5,0,0,0
+tha_t05.gat,62,63,55,55	monster	Plasma	1694,10,0,0,0
+tha_t05.gat,62,63,55,55	monster	Death Word	1698,10,0,0,0
+tha_t05.gat,62,63,55,55	monster	Ancient Mimic	1699,10,0,0,0
+tha_t05.gat,62,63,55,55	monster	Owl Duke	1320,20,300000,120000,0
+tha_t05.gat,62,63,55,55	monster	Owl Baron	1295,5,300000,120000,0
+tha_t05.gat,0,0,0,0	monster	Dolor of Thanatos	1707,2,1800000,1200000,0
+
+tha_t06.gat,61,179,55,55	monster	Elder	1377,5,0,0,0
+tha_t06.gat,61,179,55,55	monster	Plasma	1697,10,0,0,0
+tha_t06.gat,61,179,55,55	monster	Death Word	1698,10,0,0,0
+tha_t06.gat,61,179,55,55	monster	Ancient Mimic	1699,10,0,0,0
+tha_t06.gat,61,179,55,55	monster	Owl Baron	1295,10,300000,120000,0
+tha_t06.gat,61,179,55,55	monster	Owl Duke	1320,10,300000,120000,0
+tha_t06.gat,178,178,55,55	monster	Elder	1377,5,0,0,0
+tha_t06.gat,178,178,55,55	monster	Plasma	1695,10,0,0,0
+tha_t06.gat,178,178,55,55	monster	Death Word	1698,10,0,0,0
+tha_t06.gat,178,178,55,55	monster	Ancient Mimic	1699,10,0,0,0
+tha_t06.gat,178,178,55,55	monster	Owl Baron	1295,10,300000,120000,0
+tha_t06.gat,178,178,55,55	monster	Owl Duke	1320,10,300000,120000,0
+tha_t06.gat,178,63,55,55	monster	Elder	1377,5,0,0,0
+tha_t06.gat,178,63,55,55	monster	Plasma	1696,10,0,0,0
+tha_t06.gat,178,63,55,55	monster	Death Word	1698,10,0,0,0
+tha_t06.gat,178,63,55,55	monster	Ancient Mimic	1699,10,0,0,0
+tha_t06.gat,178,63,55,55	monster	Owl Baron	1295,10,300000,120000,0
+tha_t06.gat,178,63,55,55	monster	Owl Duke	1320,10,300000,120000,0
+tha_t06.gat,62,63,55,55	monster	Elder	1377,5,0,0,0
+tha_t06.gat,62,63,55,55	monster	Plasma	1694,10,0,0,0
+tha_t06.gat,62,63,55,55	monster	Death Word	1698,10,0,0,0
+tha_t06.gat,62,63,55,55	monster	Ancient Mimic	1699,10,0,0,0
+tha_t06.gat,62,63,55,55	monster	Owl Baron	1295,10,300000,120000,0
+tha_t06.gat,62,63,55,55	monster	Owl Duke	1320,10,300000,120000,0
+tha_t06.gat,0,0,0,0	monster	Maero of Thanatos	1706,2,1800000,1200000,0
+
+tha_t07.gat,70,105,40,75	monster	Death Word	1698,10,300000,120000,0
+tha_t07.gat,70,105,40,75	monster	Ancient Mimic	1699,10,300000,120000,0
+tha_t07.gat,70,105,40,75	monster	Lady Solace	1703,7,300000,120000,0
+tha_t07.gat,70,105,40,75	monster	Mistress of Shelter	1701,7,300000,120000,0
+tha_t07.gat,70,105,40,75	monster	Baroness of Retribution	1702,15,0,0,0
+tha_t07.gat,70,105,40,75	monster	Dame of Sentinel	1700,7,300000,120000,0
+tha_t07.gat,70,105,40,75	monster	Despero of Thanatos	1705,2,1800000,1200000,0
+
+tha_t08.gat,70,105,40,80	monster	Death Word	1698,10,300000,120000,0
+tha_t08.gat,70,105,40,80	monster	Ancient Mimic	1699,10,300000,120000,0
+tha_t08.gat,70,105,40,80	monster	Lady Solace	1703,5,0,0,0
+tha_t08.gat,70,105,40,80	monster	Mistress of Shelter	1701,5,0,0,0
+tha_t08.gat,70,105,40,80	monster	Baroness of Retribution	1702,20,300000,120000,0
+tha_t08.gat,70,105,40,80	monster	Dame of Sentinel	1700,5,0,0,0
+tha_t08.gat,70,105,40,80	monster	Odium of Thanatos	1704,2,1800000,1200000,0
+
+tha_t09.gat,50,129,35,35	monster	Plasma	1694,5,0,0,0
+tha_t09.gat,50,129,35,35	monster	Lady Solace	1703,20,600000,0,0
+tha_t09.gat,50,129,35,35	monster	Baroness of Retribution	1702,5,420000,0,0
+tha_t09.gat,50,129,35,35	monster	Mistress of Shelter	1701,5,420000,0,0
+tha_t09.gat,50,129,35,35	monster	Dame of Sentinel	1700,5,420000,0,0
+tha_t09.gat,50,129,35,35	monster	Dolor of Thanatos	1707,1,1800000,1200000,0
+tha_t09.gat,50,129,35,35	monster	Dolor of Thanatos	1712,3,1800000,1200000,0
+
+tha_t10.gat,129,129,35,35	monster	Plasma	1697,5,0,0,0
+tha_t10.gat,129,129,35,35	monster	Baroness of Retribution	1702,20,600000,0,0
+tha_t10.gat,129,129,35,35	monster	Lady Solace	1703,5,420000,0,0
+tha_t10.gat,129,129,35,35	monster	Mistress of Shelter	1701,5,420000,0,0
+tha_t10.gat,129,129,35,35	monster	Dame of Sentinel	1700,5,420000,0,0
+tha_t10.gat,129,129,35,35	monster	Maero of Thanatos	1706,1,1800000,1200000,0
+tha_t10.gat,129,129,35,35	monster	Maero of Thanatos	1711,3,1800000,1200000,0
+
+tha_t11.gat,50,51,35,35	monster	Plasma	1695,5,0,0,0
+tha_t11.gat,50,51,35,35	monster	Mistress of Shelter	1701,20,600000,0,0
+tha_t11.gat,50,51,35,35	monster	Lady Solace	1703,5,420000,0,0
+tha_t11.gat,50,51,35,35	monster	Baroness of Retribution	1702,5,420000,0,0
+tha_t11.gat,50,51,35,35	monster	Dame of Sentinel	1700,5,420000,0,0
+tha_t11.gat,50,51,35,35	monster	Despero of Thanatos	1705,1,1800000,1200000,0
+tha_t11.gat,50,51,35,35	monster	Despero of Thanatos	1710,3,1800000,1200000,0
+
+tha_t12.gat,129,51,35,35	monster	Plasma	1693,5,0,0,0
+tha_t12.gat,129,51,35,35	monster	Dame of Sentinel	1700,13,600000,0,0
+tha_t12.gat,129,51,35,35	monster	Lady Solace	1703,5,420000,0,0
+tha_t12.gat,129,51,35,35	monster	Mistress of Shelter	1701,5,420000,0,0
+tha_t12.gat,129,51,35,35	monster	Baroness of Retribution	1702,5,420000,0,0
+tha_t12.gat,129,51,35,35	monster	Odium of Thanatos	1709,4,1800000,1200000,0
+
+
+//--------------------------------------------------------------
+// Thor Volcano Dungeon Monster Spawns (Thor Dungeon/Veins Dungeon)
+//--------------------------------------------------------------
+
+thor_v01.gat,0,0,0,0	monster	Kasa	1833,10,0,0,0
+thor_v01.gat,0,0,0,0	monster	Magmaring	1836,30,0,0,0
+thor_v01.gat,0,0,0,0	monster	Knocker	1838,50,0,0,0
+thor_v01.gat,0,0,0,0	monster	Kaho	1072,20,0,0,0
+thor_v01.gat,0,0,0,0	monster	Obsidian	1615,10,0,0,0
+
+thor_v02.gat,0,0,0,0	monster	Magmaring	1836,20,0,0,0
+thor_v02.gat,0,0,0,0	monster	Knocker	1838,10,0,0,0
+thor_v02.gat,0,0,0,0	monster	Fire Imp	1837,15,0,0,0
+thor_v02.gat,0,0,0,0	monster	Kasa	1833,10,0,0,0
+thor_v02.gat,0,0,0,0	monster	Salamander	1831,5,0,0,0
+thor_v02.gat,0,0,0,0	monster	Sword Master	1829,1,0,0,0
+thor_v02.gat,0,0,0,0	monster	Bow Master	1830,1,0,0,0
+
+thor_v03.gat,0,0,0,0	monster	Sword Master	1829,10,0,0,0
+thor_v03.gat,0,0,0,0	monster	Bow Master	1830,10,0,0,0
+thor_v03.gat,0,0,0,0	monster	Salamander	1831,20,0,0,0
+thor_v03.gat,0,0,0,0	monster	Kasa	1833,25,0,0,0
+thor_v03.gat,0,0,0,0	monster	Fire Imp	1837,20,0,0,0
+thor_v03.gat,0,0,0,0	monster	Ifrit	1832,1,39600000,19800000,1
+
+//--------------------------------------------------------------
+// Toy Factory Dungeon Monster Spawns (Xmas Dungeon/Lutie Dungeon)
+//--------------------------------------------------------------
+
+xmas_dun01.gat,0,0,0,0	monster	Marin	1242,20,0,0,0
+xmas_dun01.gat,0,0,0,0	monster	Drops	1113,10,0,0,0
+xmas_dun01.gat,0,0,0,0	monster	Poporing	1031,20,0,0,0
+xmas_dun01.gat,0,0,0,0	monster	Cookie	1265,40,0,0,0
+xmas_dun01.gat,0,0,0,0	monster	Christmas Cookie	1246,40,0,0,0
+xmas_dun01.gat,0,0,0,0	monster	Myst Case	1249,5,0,0,0
+xmas_dun01.gat,0,0,0,0	monster	Chepet	1250,1,1200000,900000,0
+xmas_dun01.gat,0,0,0,0	monster	Mastering	1090,1,1800000,900000,0
+xmas_dun01.gat,0,0,0,0	monster	Angeling	1096,1,3600000,1800000,0
+
+xmas_dun02.gat,0,0,0,0	monster	Cookie	1265,20,0,0,0
+xmas_dun02.gat,0,0,0,0	monster	Christmas Cookie	1246,20,0,0,0
+xmas_dun02.gat,0,0,0,0	monster	Cruiser	1248,35,0,0,0
+xmas_dun02.gat,0,0,0,0	monster	Myst Case	1249,50,0,0,0
+xmas_dun02.gat,0,0,0,0	monster	Hatii Bebe	1515,1,1800000,0,0
+xmas_dun02.gat,0,0,0,0	monster	Stormy Knight	1251,1,3600000,7200000,0
+
+
+//--------------------------------------------------------------
+// Turtle Dungeon Monster Spawns (Turtle Island)
+//--------------------------------------------------------------
+
+tur_dun01.gat,0,0,0,0	monster	Dragon Tail	1321,25,0,0,0
+tur_dun01.gat,0,0,0,0	monster	Spring Rabbit	1322,25,0,0,0
+tur_dun01.gat,0,0,0,0	monster	Thara Frog	1034,10,0,0,0
+tur_dun01.gat,0,0,0,0	monster	Permeter	1314,10,0,0,0
+tur_dun01.gat,0,0,0,0	monster	Pest	1256,15,0,0,0
+
+tur_dun02.gat,0,0,0,0	monster	Permeter	1314,40,0,0,0
+tur_dun02.gat,0,0,0,0	monster	Solider	1316,40,0,0,0
+tur_dun02.gat,0,0,0,0	monster	Freezer	1319,20,0,0,0
+tur_dun02.gat,0,0,0,0	monster	Pest	1256,15,0,0,0
+
+tur_dun03.gat,0,0,0,0	monster	Permeter	1314,15,0,0,0
+tur_dun03.gat,0,0,0,0	monster	Freezer	1319,40,0,0,0
+tur_dun03.gat,0,0,0,0	monster	Assaulter	1315,35,0,0,0
+tur_dun03.gat,0,0,0,0	monster	Heater	1318,10,50000,0,0
+
+tur_dun04.gat,99,92,10,10	monster	Wanderer	1208,1,60000,30000,0
+tur_dun04.gat,99,93,20,20	monster	Turtle General	1312,1,3600000,720000,0
+tur_dun04.gat,100,93,20,20	monster	Heater	1318,3,120000,60000,0
+tur_dun04.gat,100,93,20,20	monster	Assaulter	1315,10,120000,60000,0
+tur_dun04.gat,100,93,20,20	monster	Freezer	1319,5,120000,60000,0
+tur_dun04.gat,171,159,3,3	monster	Wanderer	1208,1,300000,150000,0
+tur_dun04.gat,171,155,3,3	monster	Assaulter	1315,1,310000,160000,0
+tur_dun04.gat,171,149,3,3	monster	Assaulter	1315,1,320000,170000,0
+tur_dun04.gat,28,159,3,3	monster	Wanderer	1208,1,300000,150000,0
+tur_dun04.gat,28,155,3,3	monster	Assaulter	1315,1,310000,160000,0
+tur_dun04.gat,28,149,3,3	monster	Assaulter	1315,1,320000,170000,0
+tur_dun04.gat,174,26,3,3	monster	Wanderer	1208,1,300000,150000,0
+tur_dun04.gat,174,29,3,3	monster	Assaulter	1315,1,310000,160000,0
+tur_dun04.gat,174,32,3,3	monster	Assaulter	1315,1,320000,170000,0
+tur_dun04.gat,26,26,3,3	monster	Wanderer	1208,1,300000,150000,0
+tur_dun04.gat,26,29,3,3	monster	Assaulter	1315,1,310000,160000,0
+tur_dun04.gat,26,32,3,3	monster	Assaulter	1315,1,320000,170000,0
+tur_dun04.gat,0,0,0,0	monster	Wanderer	1208,2,0,0,0
+tur_dun04.gat,0,0,0,0	monster	Heater	1318,10,300000,150000,0
+tur_dun04.gat,0,0,0,0	monster	Heater	1318,20,620000,310000,0
+tur_dun04.gat,0,0,0,0	monster	Assaulter	1315,23,0,0,0
+tur_dun04.gat,0,0,0,0	monster	Freezer	1319,5,300000,150000,0
+tur_dun04.gat,0,0,0,0	monster	Freezer	1319,5,600000,300000,0
+tur_dun04.gat,0,0,0,0	monster	Permeter	1314,2,300000,150000,0
+tur_dun04.gat,0,0,0,0	monster	Permeter	1314,2,640000,320000,0
+
+tur_dun05.gat,0,0,0,0	monster	Permeter	1314,3,20000,0,0
+tur_dun05.gat,0,0,0,0	monster	Freezer	1319,5,30000,0,0
+tur_dun05.gat,0,0,0,0	monster	Assaulter	1315,1,20000,0,0
+
+
+//--------------------------------------------------------------
+// Umbala Dungeon Monster Spawns (Yggdrasil Cave)
+//--------------------------------------------------------------
+
+um_dun01.gat,0,0,0,0	monster	Stone Shooter	1495,70,0,0,0
+um_dun01.gat,0,0,0,0	monster	Wootan Fighter	1499,10,0,0,0
+um_dun01.gat,0,0,0,0	monster	Wootan Shooter	1498,10,0,0,0
+um_dun01.gat,0,0,0,0	monster	Beetle King	1494,10,0,0,0
+um_dun01.gat,0,0,0,0	monster	Stainer	1174,10,0,0,0
+um_dun01.gat,0,0,0,0	monster	Dustiness	1114,10,0,0,0
+um_dun01.gat,0,0,0,0	monster	Yellow Plant	1081,5,180000,90000,1
+um_dun01.gat,0,0,0,0	monster	Green Plant	1080,5,180000,90000,1
+
+um_dun02.gat,0,0,0,0	monster	Wooden Golem	1497,15,0,0,0
+um_dun02.gat,79,227,5,5	monster	Wooden Golem	1497,5,120000,60000,0
+um_dun02.gat,87,189,5,5	monster	Wooden Golem	1497,2,120000,60000,0
+um_dun02.gat,170,145,5,5	monster	Wooden Golem	1497,3,120000,60000,0
+um_dun02.gat,196,131,7,7	monster	Wooden Golem	1497,5,120000,60000,0
+um_dun02.gat,244,129,10,10	monster	Wooden Golem	1497,5,120000,60000,0
+um_dun02.gat,0,0,0,0	monster	Beetle King	1494,30,0,0,0
+um_dun02.gat,117,43,10,10	monster	Beetle King	1494,3,120000,60000,0
+um_dun02.gat,209,34,10,10	monster	Beetle King	1494,3,120000,60000,0
+um_dun02.gat,205,265,10,10	monster	Beetle King	1494,4,120000,60000,0
+um_dun02.gat,0,0,0,0	monster	Wooden Golem	1497,10,0,0,0
+um_dun02.gat,90,97,10,10	monster	Wooden Golem	1497,3,120000,60000,0
+um_dun02.gat,32,83,10,10	monster	Wooden Golem	1497,2,120000,60000,0
+um_dun02.gat,180,238,10,10	monster	Wooden Golem	1497,3,120000,60000,0
+um_dun02.gat,144,277,10,10	monster	Wooden Golem	1497,2,120000,60000,0
+um_dun02.gat,272,163,10,10	monster	Wooden Golem	1497,2,120000,60000,0
+um_dun02.gat,232,156,10,10	monster	Wooden Golem	1497,3,120000,60000,0
+um_dun02.gat,0,0,0,0	monster	Driller	1380,5,0,0,0
+um_dun02.gat,197,138,10,10	monster	Driller	1380,2,120000,60000,0
+um_dun02.gat,164,203,10,10	monster	Driller	1380,1,120000,60000,0
+um_dun02.gat,32,83,10,10	monster	Driller	1380,1,120000,60000,0
+um_dun02.gat,244,129,10,10	monster	Driller	1380,2,120000,60000,0
+um_dun02.gat,0,0,0,0	monster	Wootan Shooter	1498,10,0,0,0
+um_dun02.gat,213,217,10,10	monster	Wootan Shooter	1498,2,120000,60000,0
+um_dun02.gat,72,258,10,10	monster	Wootan Shooter	1498,3,120000,60000,0
+um_dun02.gat,79,227,5,5	monster	Wootan Shooter	1498,1,120000,60000,0
+um_dun02.gat,170,145,5,5	monster	Wootan Shooter	1498,1,120000,60000,0
+um_dun02.gat,209,34,10,10	monster	Wootan Shooter	1498,1,120000,60000,0
+um_dun02.gat,272,163,10,10	monster	Wootan Shooter	1498,1,120000,60000,0
+um_dun02.gat,232,156,10,10	monster	Wootan Shooter	1498,1,120000,60000,0
+um_dun02.gat,0,0,0,0	monster	Dryad	1493,10,0,0,0
+um_dun02.gat,0,0,0,0	monster	Yellow Plant	1081,5,180000,90000,1
+um_dun02.gat,0,0,0,0	monster	Red Plant	1078,5,180000,90000,1
+um_dun02.gat,0,0,0,0	monster	Shining Plant	1083,6,180000,90000,1

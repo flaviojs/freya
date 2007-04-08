@@ -1,0 +1,4590 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Headgear Quests	Author: A Ton of People
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 Merged all headgear quests into this single file [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: All headgear quests are located here, and
+// future headgear quests should also go here.
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Anonymous Mask
+//--------------------------------------------------------------
+
+rachel.gat,91,273,4	script	Masked Man	880,{
+
+	mes "[Masked Man]";
+	mes "Psssst....";
+	next;
+	mes "[Masked Man]";
+	mes "Shhhh...";
+	mes "Come here, but keep quiet";
+	next;
+	mes "[Masked Man]";
+	mes "I have something that might interest you";
+	next;
+
+	menu "I think you know what I want...",Anon1,"Huh? Sorry, I'm Just looking around.",Anon2;
+
+		Anon1:
+			mes "[Masked Man]";
+			mes "I only need a few things in return";
+			mes "100 Slick Paper,";
+			mes "99 Sticky Mucus,";
+			mes "1 Black Dysetuff and";
+			mes "100,000 Zeny.";
+			next;
+			mes "[Masked Man]";
+
+		if ((countitem(983) < 1) || (countitem(7111) < 100) || (countitem(938) < 99) || (Zeny<100000)) goto Anon3;
+
+			mes "I see you came prepared.";
+			delitem 7111,100;
+			delitem 938,99;
+			delitem 983,1;
+			set Zeny, Zeny-100000;
+			next;
+			getitem 5175,1;
+			mes "[Masked Man]";
+			mes "You didnt get this from me by the way...";
+			close;
+
+		Anon3:
+			mes "Come back when you have what I need...";
+			close;
+
+
+		Anon2:
+			mes "[Masked Man]";
+			mes "Yeah... I knew that.";
+			close;
+}
+
+
+//--------------------------------------------------------------
+// Alarm Mask Quest
+//--------------------------------------------------------------
+
+alde_alche.gat,88,180,3	script	Morseland	748,{
+
+	mes "[Morseland]";
+	mes "I love Alarms, so evil, just like me.";
+	mes "Touch me and I will rip your arm off!";
+	next;
+	mes "[Morseland]";
+	mes "Anyways... if you want an Alarm Mask,";
+	mes "bring me 3,000 Needle of Alarm,";
+	mes "and 1 Mr. Scream.";
+	next;
+	mes "[Morseland]";
+	mes "Got these?";
+	next;
+	menu "Yep!",-,"Nope!",M_EXIT;
+
+	if (countitem(2288) < 1 || countitem(1095) < 3000) goto L_NOITEM; // Items: Mr. Scream, Needle of Alarm,
+	mes "[Morseland]";
+	mes "Great!";
+	next;
+	delitem 2288,1; // Item: Mr. Scream,
+	delitem 1095,3000; // Item: Needle of Alarm,
+	getitem 5086,1; // Item: Alarm Mask,
+	mes "[Morseland]";
+	mes "Enjoy your item!";
+	close;
+
+L_NOITEM:
+	mes "[Morseland]";
+	mes "Where are 1 Mr. Scream and 3,000 Needle of Alarm?";
+	close;
+
+M_EXIT:
+	mes "[Morseland]";
+	mes "Mkay! byeee.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Alberta Headgear Quests Part #1
+//--------------------------------------------------------------
+// -> Bao Bao/Cresent Hairpin/Fashionbale Glasses/Heart Hairpin
+//--------------------------------------------------------------
+
+alberta.gat,120,53,3	script	Zic	51,{
+
+	mes "[Zic]";
+	mes "Yay! A cool breeze! That's why I love the sea!!";
+	emotion e_ho;
+	next;
+	mes "[Zic]";
+	mes "Huh?... Do you have any business with me? You came to me because I'm a merchant right?";
+	emotion e_hmm;
+	next;
+	mes "[Zic]";
+	mes "~Sigh!~ I get tired of my reputation.... I can't get any peace or quite around here.....";
+	next;
+	mes "[Zic]";
+	mes "So what do you wanna get? Tell me, tell me! It's so easy to guess what you want.....";
+	next;
+	menu "-Bao Bao",-, "-Cresent Hairpin",M_1, "-Fashionable Glasses",M_2, "-Heart Hairpin",M_3;
+
+		mes "[Zic]";
+		mes "To make a Bao Bao I will need:";	//5042
+		mes "- ^5555FF1 Silk Ribbon^000000,";	//10007
+		mes "- ^5555FF50 Herioc Emblems^000000.";	//968
+		next;
+		mes "[Zic]";
+		mes "Would you like me to make you one?";
+		next;
+		menu "Sure.",-, "No thanks.",M_End;
+
+			if (countitem(10007)<1 || countitem(968)<50) goto sL_NotEnuf;
+			delitem 10007, 1;
+			delitem 968, 50;
+			mes "[Zic]";
+			mes "Please wait while I make your Bao Bao......";
+			next;
+			mes "[Zic]";
+			mes "There you are, one Bao Bao.  Enjoy.";
+			getitem 5042, 1;
+			close;
+	M_1:
+		mes "[Zic]";
+		mes "To make a Cresent Hairpin I will need:";	//5048
+		mes "- ^5555FF1 Heart Hair Pin^000000,";	//5041
+		mes "- ^5555FF10 Steel^000000.";	//999
+		next;
+		mes "[Zic]";
+		mes "Would you like me to make you one?";
+		next;
+		menu "Sure.",-, "No thanks.",M_End;
+
+			if (countitem(5041)<1 || countitem(999)<10) goto sL_NotEnuf;
+			delitem 5041, 1;
+			delitem 999, 10;
+			mes "[Zic]";
+			mes "Please wait while I make your Cresent Hairpin......";
+			next;
+			mes "[Zic]";
+			mes "There you are, one Cresent Hairpin.  Enjoy.";
+			getitem 5048, 1;
+			close;
+	M_2:
+		mes "[Zic]";
+		mes "To make a pair of Fashionable Glasses I will need:";	//5047
+		mes "- ^5555FF1 Jack a Dandy^000000,";	//2271
+		mes "- ^5555FF1 Scarlet Dyestuffs^000000.";	//975
+		next;
+		mes "[Zic]";
+		mes "Would you like me to make you one?";
+		next;
+		menu "Sure.",-, "No thanks.",M_End;
+
+			if (countitem(2271)<1 || countitem(975)<1) goto sL_NotEnuf;
+			delitem 2271, 1;
+			delitem 975, 1;
+			mes "[Zic]";
+			mes "Please wait while I make your Fashionable Glasses......";
+			next;
+			mes "[Zic]";
+			mes "There you are, one Fashionable Glasses.  Enjoy.";
+			getitem 5047, 1;
+			close;
+	M_3:
+		mes "[Zic]";
+		mes "Are you sure you want a simple item like this? Oh well... To make a Heart Hairpin I will need:";	//5041
+		mes "- ^5555FF1200 Coral Reefs^000000.";	//7013
+		emotion e_hmm;
+		next;
+		mes "[Zic]";
+		mes "Would you like me to make you one?";
+		next;
+		menu "Sure.",-, "No thanks.",M_End;
+
+			if (countitem(7013)<1200) goto sL_NotEnuf;
+			delitem 7013, 1200;
+			mes "[Zic]";
+			mes "Please wait while I make your Hear Hairpin......";
+			next;
+			mes "[Zic]";
+			mes "There you are, one Heart Hairpin.  Enjoy.";
+			getitem 5041, 1;
+			close;
+
+		sL_NotEnuf:
+			mes "[Zic]";
+			mes "Hmm.... you don't have enough items for me to make it.  Come back some other time.";
+			close;
+
+	M_End:
+		mes "[Zic]";
+		mes "See ya around.";
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Alberta Headgear Quests Part #2
+//--------------------------------------------------------------
+// -> Hat of Sun God/Sunday Hat/Mage Hat/Magician Hat
+//--------------------------------------------------------------
+
+alberta.gat,135,79,3	script	Tempestra	71,{
+
+	mes "[Tempestra]";
+	mes "Ah...... Such a cool breeze. It's good to be next to the sea.";
+	mes "I think it was the right choice for me to take a break from my business and come here.";
+	emotion e_ho;
+	if (MISC_QUEST & 2) goto sM_Menu;
+	next;
+	mes "[Tempestra]";
+	mes "Oh the sun is so bright today. I'm glad I brought my hat.";
+	mes "If my skin is exposed to the sun like this everyday, I'm sure to get a sunburn.";
+	next;
+	mes "[Tempestra]";
+	mes "Boy, the heat is making me thirsty.";
+	mes "Nothing would be better right now, than sipping on a perfectly chilled yellow potion.....";
+	next;
+	menu "Here you go, my treat.",-, "Then go get one, sheesh....",M_1;
+
+		if(countitem(503) < 1) goto L_NoPot;
+		delitem 503, 1;
+		set MISC_QUEST,MISC_QUEST | 2;
+		mes "[Tempestra]";
+		mes "Oooh! Thank you so much.  I'm so glad to meet such a friendly person here....";
+		emotion e_thx;
+		next;
+		mes "[Tempestra]";
+		mes "(~gulp~gulp~)";
+		next;
+		mes "[Tempestra]";
+		mes "Hyaaaaaaa!! It's sooo cold!! Thank you.";
+	sM_Menu:
+		next;
+		menu "The weather is really hot, isn't it...",-, "You should wear a hat.",sM_1;
+
+			mes "[Tempestra]";
+			mes "Yes, it's very hot indeed.....";
+			next;
+			mes "[Tempestra]";
+			mes "Luckly I brought a lot of hats along.  I have";
+			mes "a ^5555FF'Sunday Hat'^000000,";
+			mes "a ^5555FF'Mage Hat'^000000,";
+			mes "a ^5555FF'Magician Hat'^000000, and more in my room...";
+			next;
+			mes "[Tempestra]";
+			mes "I brought these hats with me so that I could sell them and use the money I made for my vacation expenses....";
+			mes "but now it looks like I'll have to wear one.....";
+		ssM_Menu:
+			next;
+			menu "Sunday Hat?",-, "Mage Hat?",ssM_0b, "Magician Hat?",ssM_0c, "End Conversation.",ssM_End;
+
+				mes "[Tempestra]";
+				mes "A Sunday Hat is made up of:";
+				mes "- ^5555FF250 Fabric^000000,";
+				mes "- ^5555FF1 Slotted Hat^000000,";
+				mes "- ^5555FF1 Slotted Cap^000000,";
+				mes "- ^5555FF600 Soft Feathers^000000.";
+				mes "If you want, I can make one for you.  Just bring me all of those items.";
+				next;
+				menu "Make one for me.",-, "Cancel",ssM_End;
+
+					if (countitem(1059)<250 || countitem(2221)<1 || countitem(2227)<1 || countitem(7063)<600) goto ssM_Menu;
+					delitem 1059, 250;
+					delitem 2221, 1;
+					delitem 2227, 1;
+					delitem 7063, 600;
+					mes "[Tempestra]";
+					mes "Please wait just a moment while I make it........";
+					next;
+					getitem 5032, 1;
+					mes "[Tempestra]";
+					mes "All done... one Sunday Hat just for you.  Thank you and come back any time.";
+					emotion e_thx;
+					close;
+			ssM_0b:
+				mes "[Tempestra]";
+				mes "A Mage Hat is made up of:";
+				mes "- ^5555FF1 Wizard Hat^000000,";
+				mes "- ^5555FF400 Dragon Scales^000000,";
+				mes "- ^5555FF50 Mould Powder^000000,";
+				mes "- ^5555FF1 Elder Wilow Card^000000.";
+				mes "If you want, I can make one for you.  Just bring me all of those items.";
+				next;
+				menu "Make one for me.",-, "Cancel",ssM_End;
+
+					if (countitem(2252)<1 || countitem(1036)<400 || countitem(7001)<50 || countitem(4052)<1) goto ssM_Menu;
+					delitem 2252, 1;
+					delitem 1036, 400;
+					delitem 7001, 50;
+					delitem 4052, 1;
+					mes "[Tempestra]";
+					mes "Please wait just a moment while I make it........";
+					next;
+					getitem 5027, 1;
+					mes "[Tempestra]";
+					mes "All done... one Mage Hat just for you.  Thank you and come back any time.";
+					emotion e_thx;
+					close;
+			ssM_0c:
+				mes "[Tempestra]";
+				mes "A Magician Hat is made up of:";
+				mes "- ^5555FF1 Wizard Hat^000000,";
+				mes "- ^5555FF450 Ancient Lips^000000,";
+				mes "- ^5555FF1200 Solid Shells^000000,";
+				mes "If you want, I can make one for you.  Just bring me all of those items.";
+				next;
+				menu "Make one for me.",-, "Cancel",ssM_End;
+
+					if (countitem(2252)<1 || countitem(1054)<450 || countitem(943)<1200) goto ssM_Menu;
+					delitem 2252, 1;
+					delitem 1054, 450;
+					delitem 943, 1200;
+					mes "[Tempestra]";
+					mes "Please wait just a moment while I make it........";
+					next;
+					getitem 5045, 1;
+					mes "[Tempestra]";
+					mes "All done... one Magician just for you.  Thank you and come back any time.";
+					emotion e_thx;
+					close;
+			ssM_End:
+				close;
+
+		sM_1:
+			mes "[Tempestra]";
+			mes "Oh but the hats I have are for sale.... if I use them for myself I won't be able to sell them to my customers.";
+			next;
+			mes "[Tempestra]";
+			mes "Because you gave me the potion, I would like to make something for you.  Unfortuately I don't have any materials right now.";
+			next;
+			mes "[Tempestra]";
+			mes "Hmm... If you have:";
+			mes "^5555FF1 Emblem of the Sun God";
+			mes "10 Gold";
+			mes "40 Steel";
+			mes "50 Coal";
+			mes "and 2 Oridecon^000000..........";
+			next;
+			mes "[Tempestra]";
+			mes "I can make you a ^5555FF'Hat of the Sun God'^000000!! It's a fantastic piece of work! How's that sound?";
+			next;
+			menu "Alright.",-, "Not right now thanks.",ssM_1b;
+
+				if(countitem(7086)<1 || countitem(969)<10 || countitem(999)<40 || countitem(1003)<50 || countitem(984)<2) goto ssL_NotEnuf;
+				delitem 7086, 1;
+				delitem 969, 10;
+				delitem 999, 40;
+				delitem 1003, 50;
+				delitem 984, 2;
+				mes "[Tempestra]";
+				mes "Please wait just a moment while I make it........";
+				next;
+				getitem 5022, 1;
+				mes "[Tempestra]";
+				mes "All done... one Hat of the Sun God just for you.  Thank you again for the potion, and please come back any time.";
+				emotion e_thx;
+				close;
+
+				ssL_NotEnuf:
+					mes "[Tempestra]";
+					mes "Um.... where are those items exactly???";
+					emotion e_hmm;
+					close;
+			ssM_1b:
+				mes "[Tempestra]";
+				mes "Come back anytime when you've changed your mind.";
+				close;
+
+		L_NoPot:
+			mes "[Tempestra]";
+			mes "Umm... excuse me but.... where is the potion??";
+			emotion e_hmm;
+			close;
+
+	M_1:
+		mes "[Tempestra]";
+		mes "..... How RUDE!!";
+		emotion e_gasp;
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Aldebaran Headgear Quests
+//--------------------------------------------------------------
+// -> Doctor Band/Feather Bonnet/Opera Masque/Sakkat
+//--------------------------------------------------------------
+
+aldeba_in.gat,152,166,4	script	Trader#01	86,{
+
+	mes "[Trader]";
+	mes "Muhahaha! I am the Very Famous Enigmatic Dealer! I am always hustling and bustling in and out of Rune Midgard!";
+	mes "Take a look at my RARE and UNIQUE items from ALL OVER the WORLD!!";
+	next;
+	mes "(1) � ^3355FFDoctor Band^000000 :";
+	mes "^FF55331 Red Bandana + 50 Iron + 1 Cracked Diamond + 3500 Zeny^000000.";
+	mes "(2) � ^3355FFFeather Bonnet^000000 :";
+	mes "^FF55331 Romantic Gent + 300 Feather of Birds + 500 Zeny^000000.";
+	mes "(3) � ^3355FFOpera Masque^000000 :";
+	mes "^FF553320 Iron + 1 Singing Plant + 5000 Zeny^000000.";
+	mes "(4) � ^3355FFSakkat Hat^000000 :";
+	mes "^FF5533120 Trunk + 10000 Zeny^000000.";
+	next;
+	menu "Doctor Band",-, "Feather Bonnet",M_1, "Opera Masque",M_2, "Sakkat",M_3;
+		
+		mes "[Trader]";
+		if(countitem(2275) == 0 || countitem(998) < 50 || countitem(733) == 0 || Zeny < 3500) goto L_CantMake;
+		delitem 2275,1;//Items: Red Bandana,
+		delitem 998,50;//Items: Iron,
+		delitem 733,1;//Items: Cracked deamond
+		set Zeny,Zeny - 3500;
+		mes "Hmm.... Do you have a.... MEDICAL LICENSE?!";
+		emotion e_what;
+		next;
+		mes "[Trader]";
+		mes "I've heard about a well-known unlicensed physician 'Cuwaki'... I hope you don't get caught....";
+		mes "Anyways it's your own buisness what you do... Take this.";
+		getitem 2273,1;//Items: Doctor Band,
+		close;
+	M_1:
+		mes "[Trader]";
+		if(countitem(2247) == 0 || countitem(916) < 300 || Zeny < 500) goto L_CantMake;//Items: Romantic Gent, Feather of Birds,
+		delitem 2247,1;//Items: Romantic Gent,
+		delitem 916,300;//Items: Feather of Birds,
+		set Zeny,Zeny - 500;
+		mes "Umhahaha. You have good fashion sense.  I know you had a hard time collecting these items, but this bonnet is definately worth it.  Take it.";
+		emotion e_heh;
+		getitem 5018,1;//Items: Feather Bonnet,
+		close;
+	M_2:
+		mes "[Trader]";
+		if(countitem(998) < 20 || countitem(707) == 0 || Zeny < 5000) goto L_CantMake;//Items: Iron, Singing Plant,
+		delitem 998,20;//Items: Iron,
+		delitem 707,1;//Items: Singing Plant,
+		set Zeny,Zeny - 5000;
+		mes "This is a pretty nice item.  A little bit creepy looking though.... I think it gives off some kinda weird vibe.  What do you think?";
+		next;
+		mes "[Trader]";
+		mes ".. You like it ..Alright.. Take it!";
+		getitem 2281,1;//Items: Opera Masque,
+		close;
+	M_3:
+		mes "[Trader]";
+		if(countitem(1019) < 120 || Zeny < 10000) goto L_CantMake;//Items: Trunk,
+		delitem 1019,120;//Items: Trunk,
+		set Zeny,Zeny - 10000;
+		mes "If you have a chance to visit the Village of Payon, please go meet the Sakkat Craftsman.";
+		mes "He's never sold a Sakkat to any other dealer but to me.";
+		next;
+		mes "[Trader]";
+		mes "Because only I can recognize a Sakkat hats' quality.  Due to the fact that it's so rare, the Sakkat Hat has become a very popular item!";
+		next;
+		mes "[Trader]";
+		mes "OK! Take it!";
+		getitem 2280,1;//Items: Sakkat,
+		close;
+
+	L_CantMake:
+		mes "You, fool! Check the requirements again..... you're not some kinda idiot are you? C'mon..... give me a break.";
+		emotion e_an;
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Antlers Quest
+//--------------------------------------------------------------
+
+alberta_in.gat,122,53,4	script	Cherokee	47,{
+
+	mes "[Cherokee]";
+	mes "Hey there, I am a Horn Collector.  Sounds great, huh?";
+	next;
+	mes "[Cherokee]";
+	mes "What do you think about Animal horns? I think they are very valuable and are well worth collecting.";
+	mes "You can wear them on your head, or even decorate your house with them.";
+	next;
+	mes "[Cherokee]";
+	mes "You know.... there has been a particular horn that I have not been able to find.";
+	mes "It is the ^5555FF'Evil Horn '^000000..";
+	next;
+	mes "[Cherokee]";
+	mes "Some say that an Evil Horn is really not an animal's horn, but one that comes from a Devil!";
+	mes "Even so, I really wish I could get my hands on one.";
+	next;
+	mes "[Cherokee]";
+	mes "Say.... do you have any ^5555FF'Evil Horns'^000000?";
+	mes "If you offer me ^5533FF20 Evil Horns^000000, I will give you my precious and famed,";
+	mes "^FF3355'Antlers'^000000.  Is it a deal?";
+	next;
+	menu "You got it!",-, "Shut up Dumbo.",M_End;
+
+		mes "[Cherokee]";
+		if(countitem(923) < 20) goto L_NotEnuf;
+		delitem 923,20;
+		mes "Whoah~! This is the first time I've ever seen a real ^3355FF'Evil Horn'^000000!!";
+		emotion e_ic;
+		next;
+		mes "[Cherokee]";
+		mes "Thank you! Here are the Antlers just as I promised you!";
+		emotion e_thx;
+		getitem 2284,1;
+		next;
+		mes "[Cherokee]";
+		mes "With your great help I was finally able to realize my long time dream.";
+		mes "I appreciate what you have done! God Bless You ..";
+		close;
+
+		L_NotEnuf:
+			mes "Hmm.... like I said, I need ^FF5533'20 Evil Horns'^000000.";
+			close;
+
+	M_End:
+		mes "[Cherokee]";
+		mes "Well aren't you a rude person....";
+		mes "I will forgive you however, seeing as we will meet again, I'm sure....";
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Baby Pacifier Quest
+//--------------------------------------------------------------
+
+lighthalzen.gat,360,310,4	script	Boy	818,{
+
+	mes "[Boy]";
+	mes "...MA...Ma..ma...";
+	emotion 43;
+	next;
+	menu "Wow! Give me Baby Suckle!",-,"Nice Boy!",L_EXIT;
+
+	mes "[Boy]";
+	mes "Rrr..Rrr.. (^FF3300Royal jelly^000000)";			//526
+	mes "Bu.. Ba...Ba-Bu-bi (^FF3300Baby Bottle^000000)";	//7270	(nursing bottle of baby)
+	mes "Pa-Pa..Paxfi.. (^FF3300Pacifier^000000)";			//10004
+	mes "Nu..Noos rie.. (^FF3300Nose Ring^000000)";			//941	(Nose Wheel)
+	next;
+
+	if (countitem(526)<1 || countitem(7270)<1 || countitem(10004)<1 || countitem(941)<1) goto L_EXIT;//Items: Royal_Jelly, Baby_Bottle, Pacifier, Nose_Ring,
+	delitem 526,1;//Items: Royal_Jelly,
+	delitem 7270,1;//Items: Baby_Bottle,
+	delitem 10004,1;//Items: Pacifier,
+	delitem 941,1;//Items: Nose_Ring,
+	mes "[Boy]";
+	mes "Th-anke...";
+	emotion 43;
+	getitem 5110,1;//Items: Baby_Rubber_Nipple,
+	next;
+
+L_EXIT:
+	mes "[Boy]";
+	mes "...B...Bye...";
+	emotion 28;
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Back Ribbon Quest
+//--------------------------------------------------------------
+
+prontera.gat,164,232,5	script	Netpia	815,{
+
+	mes "[Netpia]";
+	mes "Wheee! Don't you just love making youself look pretty!?";
+	mes "I love glamourising myself with all the best accessories!";
+	next;
+	mes "[Netpia]";
+	mes "Ever heard of a ^560000Back Ribbon^000000?";
+	mes "I can make you one, and you too can be fashionable!";
+	next;
+	menu "Make me a ^670000Back ribbon^000000.",-,"What are the requirements?",M_REQ,"No, I dont want one.",M_EXIT;
+
+	if ((countitem(2244) < 1) || (countitem(2209) < 1) || (countitem(10007) < 1)) goto L_NOITEM;//Items: Big Ribbon, Ribbon, Silk Ribbon,
+	mes "[Netpia]";
+	mes "Wow, thank you! Let me just take your items.";
+	delitem 2244,1;//Items: Big Ribbon,
+	delitem 2209,1;//Items: Ribbon,
+	delitem 10007,1;//Items: Silk Ribbon,
+	next;
+	getitem 5083,1;//Items: Back Ribbon,
+	mes "[Netpia]";
+	mes "Okay, now here is your item.";
+	next;
+	mes "[Netpia]";
+	mes "Enjoy being pretty!";
+	close;
+
+L_NOITEM:
+	mes "[Netpia]";
+	mes "Aww... sorry, but I cant make it if you don't bring me the materials.";
+	next;
+
+M_REQ:
+	mes "[Netpia]";
+	mes "Well, for me to make you my BEAUTIFUL Back Ribbon...";
+	mes "I require these materials:";
+	mes "1 Big Ribbon.";
+	mes "1 Ribbon (Slotted).";
+	mes "1 Silk Ribbon.";
+	close;
+
+M_EXIT:
+	mes "[Netpia]";
+	mes "Aww, well, okay then!";
+	mes "Be pretty some other time";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Bear Hat Quest
+//--------------------------------------------------------------
+
+xmas.gat,152,176,3	script	Bora	826,{
+
+	mes "[Bora]";
+	mes "Don't bears have such a cute expression on their faces?";
+	mes "And I bet you wouldn't mind one of those cute expressions yourself!";
+	next;
+	mes "[Bora]";
+	mes "Well, I can make you a Bear Hat!";
+	next;
+	menu "Yes, make me one now!",-,"What are the requirements?",M_REQ,"No, thanks.",M_EXIT;
+
+	if ((countitem(5030) < 1) || (countitem(7213) < 100) || (countitem(7217) < 100) || (countitem(7167) < 300)) goto L_NOITEM;//Items: Panda Hat, Pin Cusion, Spool of Thread, Strange Piece of Iron,
+	mes "[Bora]";
+	mes "Yay! now I can make my famous Bear Hat!";
+	mes "Now, give me your items!";
+	delitem 5030,1;//Items: Panda Hat,
+	delitem 7213,100;//Items: Pin Cusion,
+	delitem 7217,100;//Items: Spool of Thread,
+	delitem 7167,300;//Items: Strange Piece of Iron,
+	next;
+	mes "[Bora]";
+	mes "Now I will give you the hat!";
+	next;
+	getitem 5059,1;//Items: Bear Hat,
+	mes "[Bora]";
+	mes "Thanks, and bye!";
+	close;
+
+M_REQ:
+	mes "[Bora]";
+	mes "Bring me...";
+	mes "1 Panda Hat,";
+	mes "100 Pin Cusion,";
+	mes "100 Spool of Thread";
+	mes "300 Strange Pieces of Iron.";
+	next;
+	mes "[Bora]";
+	mes "For the Pin Cusion (Stabbing Needles) and Spool of Thread,";
+	mes "Hyzoloists in Niflheim drop those, I believe.";
+	close;
+
+L_NOITEM:
+	mes "[Bora]";
+	mes "Sorry, I want all the items I asked.";
+	mes "Please dont try to cheat me.";
+	close;
+
+M_EXIT:
+	mes "[Bora]";
+	mes "Okay, well, byebye!";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Binoculars Quest
+//--------------------------------------------------------------
+
+morocc_in.gat,76,163,4	script	Alchemist	64,{
+
+	mes "[Marius]";
+	mes "Howdy! A new customer........ Wait!!! I know what you're here for.......";
+	mes "You're interested in those magical goggles aren't you?";
+	next;
+	menu "What is that ?",-, "Make",M_Make, "Ignore him",M_End;
+
+		mes "[Marius]";
+		mes "It is actually called ^3355FF'Binoculars'^000000!";
+		mes "It is an opitcal device that allows the wearer to see far away objects.";
+		next;
+		mes "[Marius]";
+		mes "You see, when two lens are placed next to each other in front of your eyes,";
+		mes "your brain interperets this image........ blah blah...... blah....";
+		next;
+		mes "[Marius]";
+		mes "............... What's this?";
+		mes "You don't seem interested in what I have to say??";
+		mes "I don't think you realize what I'm talking about!";
+		emotion e_hmm;
+		next;
+		mes "[Marius]";
+		mes "For us to make you a ^3355FF'Binoculars'^000000, we will need:";
+		mes "^3355FF50,000 Zeny,";
+		mes "100 Steel,";
+		mes "and 1 Geek Glasses.^000000.";
+		next;
+		mes "[Marius]";
+		mes "Oh c'mon! Don't be a jerk! What I'm talking about is REALLY COOL!!";
+		close;
+
+	M_Make:
+		mes "[Marius]";
+		if(countitem(2243) < 1 || countitem(999) < 100 || Zeny < 50000) goto sL_NotEnuf;
+		delitem 2243,1;
+		delitem 999,100;
+		set Zeny, Zeny - 50000;
+		mes "Gr~~~~eat ! You'll definitely enjoy a pair of these!";
+		next;
+		mes "[Marius]";
+		mes "Here it is ! The Binoculars!";
+		getitem 2296,1;
+		next;
+		mes "[Marius]";
+		mes "But before you go out and use them I have to tell you......";
+		if(Sex == Female) mes "DON'T USE THEM TO BE A PEEPING TOM!!!";
+		if(Sex == Male) mes "Becarefull where you look..... you might see someting you didn't want to........";
+		close;
+
+		sL_NotEnuf:
+			mes "Argggghhhhhhh !! You didn't bring enough items!! You need:";
+			mes "^3355FF1 pair of Geek Glasses, 50,000 Zeny and 100 Steel^000000.";
+			emotion e_an;
+			close;
+
+	M_End:
+		mes "[Marius]";
+		mes "Hey you! You DARE IGNORE ME!! I am MARIUS the alchemist of ALCHEMISTS!!!!!";
+		emotion e_omg;
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Boy's Cap Quest
+//--------------------------------------------------------------
+
+alberta_in.gat,28,145,4	script	Grampa	120,{
+
+	mes "[Grampa]";
+	mes "Gasp ..Gasp";
+	next;
+	mes "[Grampa]";
+	mes "When I look back on my younger days... I regret not making better use of my time...";
+	next;
+	mes "[Grampa]";
+	mes "Even so I STILL feel young at heart..... unfortunately my body is very old and is in poor condtion......";
+	mes "Cough !! Cough .. !!";
+	next;
+	if(countitem(1030) >= 10) menu "Talk.",M_Talk, "Show him Tiger's Footskin.",M_Show, "Cancel.",M_End;
+	menu "Talk",M_Talk, "Cancel",M_End;
+	
+	M_Talk:
+		mes "[Grampa]";
+		mes "Listen to me..... You must take care of your body as best you can....";
+		mes "If you aren't serious about staying healthy now..... you will surely regret it as you get older.";
+		next;
+		mes "[Grampa]";
+		mes "I've tried to restore my body to its youthful,";
+		mes "healthy state with all of the best herbs and medicines that money can buy....";
+		next;
+		mes "[Grampa]";
+		mes "Not only have none of them worked, but their emense cost have made me bankurpt!";
+		next;
+		mes "[Grampa]";
+		mes "I have all but given up on trying to restore my youth....";
+		mes "there IS still one last thing I have not yet tried.....";
+		next;
+		mes "[Grampa]";
+		mes "It is the ^3355FFTiger's Footskin^000000, the legendary king of rejuvination!!"; 
+		emotion e_gasp;
+		next;
+		mes "[Grampa]";
+		mes "Have you heard of the Tiger's Footskin???.....";
+		emotion e_what;
+		next;
+		mes "[Grampa]";
+		mes "Just by LOOKING at it, your white hair turns Black again!";
+		mes "By SMELLING it, your reflexes become 10x faster!";
+		mes "And just a single TASTE can turn and 80 year old man.... INTO AN 18 BOY!!!!";
+		next;
+		mes "[Grampa]";
+		mes "It truely is amazing! Ah, if I could only get my hands on some Tiger's Footskin....";
+		mes "my wishes would at last come true.....";
+		next;
+		mes "[Grampa]";
+		mes "For whoever brings me ^5555FF10 Tiger's Footskins^000000,";
+		mes "I would gladly give that person my precious ^3355FFBoys Cap^000000.";
+		close;
+
+	M_Show:
+		mes "[Grampa]";
+		mes "Ohhh !! Th-This is the... this is the legendary.... TIGERS FOOTSKIN!!";
+		next;
+		mes "[Grampa]";
+		mes "Just by LOOKING at it, your white hair turns Black again!";
+		mes "By SMELLING it, your reflexes become 10x faster!";
+		mes "And just a single TASTE can turn and 80 year old man.... INTO AN 18 BOY!!!!";
+		next;
+		mes "[Grampa]";
+		mes "It is the real Tiger's Footskin !!";
+		mes "In my wildest dreams I never thought...... P-P-Please.... I beg you.... let me have it.....";
+		next;
+		menu "-Give him the Tiger's Footskin.",-, "Walk away.", sM_End;
+
+			mes "[Grampa]";
+			if(countitem(1030) < 10) goto L_NoItems;
+			delitem 1030,10;
+			getitem 5016,1;
+			mes "T-Thank YOU!! Thank you SO VERY MUCH!!";
+			emotion e_thx;
+			next;
+			mes "[Grampa]";
+			mes "Now my body can be reinvigorated!!! I will eat it right away!";
+			close;
+
+		L_NoItems:
+			mes "Get off damn cheater!!!";
+			emotion e_bzz;
+			close;
+
+		sM_End:
+			mes "[Grampa]";
+			mes "H-He-Hey!! Young one!! W-Wa-it!";
+			mes "Please.... come back... I beg you.... come... back.... ooohh... foot.... sk... i... n....";
+			close;
+
+	M_End:
+		mes "[Grampa]";
+		mes "Cough Cough !! .. Tiger ....Tiger's ..... Foot ..... skin .....Cough Cough !!";
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Bunny Band Quest
+//--------------------------------------------------------------
+
+alberta.gat,23,232,1	script	Kafra Corp. Rep.#1::KCRep	83,{
+
+	mes "[Kafra Corp. Rep.]";
+	if (@BUNYBND) goto L_Check;
+	mes "^529DFFSpecial Event, ^FF0000Bunny Band ^529DFFQuest!!^000000";
+	next;
+	menu "Information",-, "Join",M_Join, "Cancel",M_End;
+
+		mes "[Kafra Corp. Rep.]";
+		mes "To thank our customers for using the Kafra Corp. services, we have prepapred a small event for them...";
+		next;
+		mes "[Kafra Corp. Rep.]";
+		mes "The ^FF0000Bunny Band ^529DFFquest!!!^000000. (Sponsered by: The Alberta Merchant Association.)";
+		mes "This quest allows players to obtain the ultra-rare ^FF0000Bunny Band^000000!";
+		next;
+		mes "[Kafra Corp. Rep.]";
+		mes "All you have to do is collect a number of items and bring them to a Kafra Corp. representative such as myself.";
+		mes "We will then carefully handmake a Bunny Band for you on the spot!";
+		next;
+		mes "[Kafra Corp. Rep.]";
+		mes "Here are the items that you will need for the Bunny Band.";
+		mes "^5555FF100 Feather^000000,";
+		mes "^5555FF1 Four Leaf Clover^000000,";
+		mes "^5555FF1 Pearl^000000,";
+		mes "^5555FF1 Kitty Band^000000.";
+		next;
+		mes "[Kafra Corp. Rep.]";
+		mes "When you've collected all of the items, just speak with any Kafra Corp. representative like myself.";
+		mes "We can be found in every town across Rune Midgard.";
+		close;
+
+	M_Join:
+
+		mes "[Kafra Corp. Rep.]";
+		mes "Thank you for participating in the event. Please come back when you have gathered all of the items.";
+		set @BUNYBND, 1;
+		close;
+
+	M_End:
+		mes "[Kafra Corp. Rep.]";
+		mes "Have a nice day.";
+		close;
+
+	L_Check:
+		if(countitem(949)<100 || countitem(706)<1 || countitem(722)<1 || countitem(2213)<1) goto sL_NoItems;
+		delitem 949,100;
+		delitem 706,1;
+		delitem 722,1;
+		delitem 2213,1;
+		mes "Wow! Well-done, well-done! You've got every single item! I will make the Bunny Band for you right away...";
+		emotion e_no1;
+		next;
+		mes "[Kafra Corp. Rep.]";
+		mes "Tah dah!!! Here is your ^FF0000Bunny Band^000000... Please take it!";
+		getitem 2214,1;
+		set @BUNYBND,0;
+		next;
+		mes "[Kafra Corp. Rep.]";
+		mes "We appreciate your participation in this special event. Thank you and enjoy your Bunny Band!";
+		close;
+
+		sL_NoItems:
+			mes "Here are the items that you will need for the Bunny Band.";
+			mes "^5555FF100 Feather^000000,";
+			mes "^5555FF1 Four Leaf Clover^000000,";
+			mes "^5555FF1 Pearl^000000,";
+			mes "^5555FF1 Kitty Band^000000.";
+			close;
+
+}
+
+
+//--------------------------------------------------------------
+// Burning Blood Bandana Quest
+//--------------------------------------------------------------
+
+yuno.gat,301,188,6	script	Genbolt	826,{
+
+	mes "[Genbolt]";
+	mes "Why, don't you think looking badass is most important?";
+	mes "After all, we all have to fend for ourselves in this world!";
+	next;
+	mes "[Genbolt]";
+	mes "I am the only one who can make you look the coolest,";
+	mes "as I can craft a ^000090Burning Blood Bandana^000000.";
+	mes "You can wear this, and you clench your fist without knowing";
+	mes "because of the raw power you feel!";
+	next;
+	menu "Wow! Make me one!",-,"What do I need?",M_REQ,"Naw, bye",M_EXIT;
+
+	if ((countitem(7216) < 300) || (countitem(7097) < 300) || (countitem(982) < 1) || (countitem(2211) < 1)) goto L_NOITEM;//Items: Red Scarf, Burning Heart, White Dyestuff, Bandana,
+	mes "[Genbolt]";
+	mes "Very well, here you go.";
+	delitem 7216,300;//Items: Red Scarf,
+	delitem 7097,300;//Items: Burning Heart,
+	delitem 982,1;//Items: White Dyestuff,
+	delitem 2211,1;//Items: Bandana,
+	next;
+	mes "[Genbolt]";
+	mes "Now I can make it...";
+	next;
+	getitem 5070,1;//Items: Burning Blood Bandana,
+	mes "[Genbolt]";
+	mes "Enjoy.";
+	close;
+
+L_NOITEM:
+	mes "[Genbolt]";
+	mes "Where are the items? Ok, I list them for you again...";
+	next;
+
+M_REQ:
+	mes "[Genbolt]";
+	mes "Bring me:";
+	mes "300 Red Scarfs,";
+	mes "300 Burning Hearts,";
+	mes "1 White Dyestuff,";
+	mes "and 1 Bandana.";
+	close;
+
+M_EXIT:
+	mes "[Genbolt]";
+	mes "Bye then.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Cat Hairband Quest
+//--------------------------------------------------------------
+
+payon_in03.gat,110,160,4	script	KoneKone	819,{
+
+	mes "[KoneKone]";
+	mes "Don't you just love cats? the way they have the pointy,";
+	mes "sticky ears and stuff, they're just so cute!";
+	next;
+	mes "[KoneKone]";
+	mes "Hehe... well, I decided, I would make a Cat Hairband!";
+	mes "It is modeled on my most favourite of cat... BLACK!";
+	mes "Of course, I got the idea from Hwikebain!";
+	next;
+	mes "[KoneKone]";
+	mes "I can make it  for you, but it requires the correct materials.";
+	next;
+	menu "Please make me this item.",-,"What are the materials needed?",M_REQ,"Bye.",M_EXIT;
+
+	if ((countitem(2213) < 1) || (countitem(914) < 200) || (countitem(983) < 1) || (Zeny < 10000)) goto L_NOITEM;//Items: Kitty Band, Fluff, Black Dyestuff,
+	mes "[KoneKone]";
+	mes "Wow! thankies! I will now take your items!";
+	delitem 2213,1;//Items: Kitty Band,
+	delitem 914,200;//Items: Fluff,
+	delitem 983,1;//Items: Black Dyestuff,
+	set Zeny,Zeny-10000;
+	next;
+	mes "[KoneKone]";
+	mes "Mew mew! thanks! Now for your ears!";
+	next;
+	getitem 5057,1;//Items: Black Cat Ears,
+	mes "[KoneKone]";
+	mes "Mew! thanks! It was a pleasure to make them for you!";
+	close;
+
+L_NOITEM:
+	mes "[KoneKone]";
+	mes "Sorry, but you dont have what I asked for...";
+	close;
+
+M_REQ:
+	mes "[KoneKone]";
+	mes "For the ^670000Cat Hairband^000000, the following items are needed:";
+	next;
+	mes "[KoneKone]";
+	mes "1 Kitty Band,";
+	mes "200 Fluff,";
+	mes "Some Black Dye,";
+	mes "And of course 10,000z for labour costs.";
+	next;
+	mes "[KoneKone]";
+	mes "Bring me these items and the money and I will make it for you.";
+	close;
+
+M_EXIT:
+	mes "[KoneKone]";
+	mes "Okay, *meow* have a nice day!";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Comodo Headgear Quests Part #1
+//--------------------------------------------------------------
+// -> Cross Hat/Bulb Hairband/Striped Hairband/Blue Hairband
+//--------------------------------------------------------------
+
+comodo.gat,227,158,4	script	Hair Ornament Girl	700,{
+
+	mes "[Hair Ornament Girl]";
+	if (Sex == Male) mes "Oh, hi. Do you need to buy a present for a friend, your mother, or maybe your girl friend?";
+	if (Sex == Male) mes "Then get her a Hair Band! It's the best gift you can get her.";
+	if (Sex == Female) mes "Oh, hi. Do you need to buy a present for a friend, your mother, or maybe yourself?";
+	if (Sex == Female) mes "Then get a Hair Band! It's the best gift you can give, or get.";
+	next;
+	mes "[Hair Ornament Girl]";
+	mes "Just by bringing me a few simple items, I can make you a gorgeous Hair Band!";
+	mes "Here, take a look at these....";
+
+M_Menu:
+	next;
+	menu "-Cross Hat Hairband",-,"-Bulb Hairband",M_Bulb,"-Striped Hairband",M_Striped,"-Blue Hairband",M_Blue,"-End Conversation",M_End;
+
+		set @BAND$, "Cross Hat Hairband";
+		set @ITEMS$, " ^5555FF1 Rosary^000000 and ^5555FF500 Destroyed Armors^000000.";
+		if(countitem(2608)>=1 && countitem(7069)>=500) set @GETBAND, 1;
+		goto sL_0;
+
+	M_Bulb:
+		set @BAND$, "Bulb Hairband";
+		set @ITEMS$, "^5555FF1 Slotted Circlet^000000 and ^5555FF20 Glass Beads^000000.";
+		if(countitem(2233)>=1 && countitem(746)>=20) set @GETBAND, 2;
+		goto sL_0;
+
+	M_Striped:
+		set @BAND$, "Striped Hairband";
+		set @ITEMS$, "^5555FF1500 Worn-out Prison Uniforms^000000.";
+		if(countitem(1099)>=1500) set @GETBAND, 3;
+		goto sL_0;
+
+	M_Blue:
+		set @BAND$, "Blue Hairband";
+		set @ITEMS$, "^5555FF1 Bandana^000000, ^5555FF1 Cobaltblue Dyestuffs^000000, and ^5555FF300 Anolian Skins^000000.";
+		if(countitem(2211)>=1 && countitem(978)>=1 && countitem(7003)>=300) set @GETBAND, 4;
+
+		sL_0:
+			mes "[Hair Ornament Girl]";
+			mes "So you're interested in the "+@BAND$+" huh? Here are the items you'll need for the "+@BAND$+":";
+			mes @ITEMS$;
+			next;
+			if(@GETBAND > 0) goto sL_GetBand;
+
+			mes "[Hair Ornament Girl]";
+			mes "Bring me all of these items and I will be able to make you a "+@BAND$+".";
+			goto M_Menu;
+
+		sL_GetBand:
+			mes "[Hair Ornament Girl]";
+			mes "I see that you have enough items for a "+@BAND$+".  Would you like me to make you one?";
+			next;
+			menu "Yes, I would.",-, "No thank you.",M_End;
+
+				if(@GETBAND == 1) goto ssL_Cross;
+				if(@GETBAND == 2) goto ssL_Bulb;
+				if(@GETBAND == 3) goto ssL_Striped;
+				if(@GETBAND == 4) goto ssL_Blue;
+
+				ssL_Cross:
+					if(countitem(2608)<1 || countitem(7069)<500) goto L_Cheater;
+					delitem 2608,1;
+					delitem 7069,500;
+					getitem  5036,1;
+					goto ssL_End;
+				ssL_Bulb:
+					if(countitem(2233)<1 || countitem(746)<20) goto L_Cheater;
+					delitem 2233,1;
+					delitem 746,20;
+					getitem 5034,1;
+					goto ssL_End;
+				ssL_Striped:
+					if(countitem(1099)<1500) goto L_Cheater;
+					delitem 1099,1500;
+					getitem 5049,1;
+					goto ssL_End;
+				ssL_Blue:
+					if(countitem(2211)<1 || countitem(978)<1 || countitem(7003)<300) goto L_Cheater;
+					delitem 2211,1;
+					delitem 978,1;
+					delitem 7003,300;
+					getitem 5052,1;
+				ssL_End:
+					mes "[Hair Ornament Girl]";
+					mes "Here is your "+@BAND$+".  Thank you.";
+					set @GETBAND, 0;
+					close;
+	L_Cheater:
+		mes "[Hair Ornament Girl]";
+		mes "Ooops... Where are these items?";
+		close;
+
+	M_End:
+		mes "[Hair Ornament Girl]";
+		mes "Hope to see you again soon.";
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Comodo Headgear Quests Part #2
+//--------------------------------------------------------------
+// -> Mine Helmet/Parcel Hat/Money Loser's Grief/Phantom of the Opera Mask
+//--------------------------------------------------------------
+
+comodo.gat,274,137,5	script	Mari Isac	702,{
+
+	mes "[Mari Isac]";
+	mes "I travel all over the world and get to hear many interesting stories from the people I meet.";
+	mes "Sometimes they even teach me how to make special items";
+	next;
+	mes "[Mari Isac]";
+	mes "Would you be interested in some of the items I've learned to make?";
+
+M_Menu:
+	next;
+	menu "Tell me about them.",M_0, "Make me one.",M_1;
+
+	M_0:
+		menu "-Mine Helmet",-, "-Parcel Hat",sM_Parcel, "-Money Loser's Grief",sM_Money, "-Phantom of the Opera Mask",sM_Phantom;
+
+			mes "[Mari Isac]";
+			mes "I learned how to make the Mine Helmet when I traveled to the old coal mines near Geffen.";
+			next;
+			mes "[Mari Isac]";
+			mes "The 2 most important things a miner needs are light, and head protection.";
+			mes "A very inventive miner was able to create something that dealt with both issues.";
+			next;
+			mes "[Mari Isac]";
+			mes "He attached a light to his safety helmet and called it a Mine Helmet.";
+			mes "This meant that miners no longer had to worry about carrying around lamps and could work more efficiently.";
+			next;
+			mes "[Mari Isac]";
+			mes "Anyways, if you want me to make you a Mine Helmet you'll need to bring me these items:";
+			mes "^5555FF1 Safety Helmet^000000,";
+			mes "^5555FF1 Candle^000000,";
+			mes "^5555FF1 Crystal Mirror^000000,";
+			mes "^5555FF25 Steel^000000.";
+			next;
+			goto M_0;
+		sM_Parcel:
+			mes "[Mari Isac]";
+			mes "I learned how to make the Parcel Hat when I traveled to Alberta.  There they have a unique way of distributing mail and goods.";
+			next;
+			mes "[Mari Isac]";
+			mes "Instead of using a pouch or a sack to carry items for delivery, they use a special kind of hat, called a Parcel Hat.";
+			mes "This hat allows the delivery personel to carry numerous items on their heads.  Of course they have to have good balance to use it.";
+			next;
+			mes "[Mari Isac]";
+			mes "Anyways, if you want me to make you a Parcel Hat, you'll need to bring me these items.";
+			mes "^5555FF150 Fabric^000000,";
+			mes "^5555FF100 Resin^000000,";
+			mes "^5555FF1 Cobaltblue Dyestuffs^000000.";
+			next;
+			goto M_0;
+		sM_Money:
+			mes "[Mari Isac]";
+			mes "I learned how to make the Money Loser's Grief when I traveled to Morroc.";
+			next;
+			mes "[Mari Isac]";
+			mes "A long time ago an honest merchant got into a conflict with a crooked guild.";
+			mes "Unlike the dirty guild, the merchant did not scam or cheat people.";
+			next;
+			mes "[Mari Isac]";
+			mes "Because of this they attacked the merchants shop and took all of his goods.";
+			next;
+			mes "[Mari Isac]";
+			mes "The merchant was devastated by the loss of his shop.";
+			mes "In his sadness he used the bits and pieces that were left from his shop to create a new item.";
+			next;
+			mes "[Mari Isac]";
+			mes "He created the Money Loser's Grief, a symbol of his great sadness.  When people see it, they can't help but feel sympathetic to the wearer.";
+			next;
+			mes "[Mari Isac]";
+			mes "Many merchants now wear it to help themselves get more business.  Of course it is also a reminder of the honest merchants sad tale.";
+			next;
+			mes "[Mari Isac]";
+			mes "Anyways, if you want me to make you a Money Losers Grief, you'll need to bring me these items.";
+			mes "^5555FF1 Circlet with a single slott^000000,";
+			mes "^5555FF1 Gold^000000,";
+			mes "^5555FF20 Steel^000000,";
+			mes "^5555FF80 Feathers^000000,";
+			mes "^5555FF800 Sticky Mucus^000000.";
+			next;
+			goto M_0;
+		sM_Phantom:
+			mes "[Mari Isac]";
+			mes "I learned how to make the Phantom of the Opera Mask when I traveled to Al De Baran.";
+			mes "The story behind this item is that of a man's pure love........";
+			next;
+			mes "[Mari Isac]";
+			mes "There once was a man who was in love with a beautiful opera singer.";	
+			mes "Unfortunately the man had a terribly disfigured face which forced to him to wear a mask.";
+			next;
+			mes "[Mari Isac]";
+			mes "He was ashamed of his appearance and could never bring himself to face the singer.";
+			mes "The man instead, watched her from a far, admiring every nuance of her beauty and grace.";
+			next;
+			mes "[Mari Isac]";
+			mes "He lurked in the bowles of the opera house and from time to time he would sing his sad love song.";
+			mes "Many people heard it and believed that there was a phantom haunting the opera house.";
+			next;
+			mes "[Mari Isac]";
+			mes "The singer also heard his song, and through it she was able to feel his pain and his love for her.";
+			mes "The two eventually met, and when they did she was able to look past his appereance and accept him for who he was.";
+			next;
+			mes "[Mari Isac]";
+			mes "Too this day, the tale of the masked 'phantom' is still romantacised.";
+			next;
+			mes "[Mari Isac]";
+			mes "Anyways, if you want me to make you a Phantom of the Opera Mask, you'll need to bring me these items.";
+			mes "^5555FF1 Opera Masque^000000,";
+			mes "^5555FF50 Horrendous Hairs^000000.";
+			goto M_0;
+
+	M_1:
+		menu "-Mine Helmet",-, "-Parcel Hat",sM_MakePar, "-Money Loser's Grief",sM_MakeMon, "-Phantom of the Opera Mask",sM_MakePhan;
+
+			if(countitem(5009)<1 || countitem(5028)<1 || countitem(747)<1 || countitem(999)<25) goto ssL_NoItems;
+			delitem 5009, 1;
+			delitem 5028, 1;
+			delitem 747, 1;
+			delitem 999, 25;
+			mes "[Mari Isac]";
+			mes "Here you go.  Enjoy your Mine Helmet!";
+			getitem 5031,1;
+			close;
+		sM_MakePar:
+			if(countitem(1059)<150 || countitem(907)<100 || countitem(978)<1) goto ssL_NoItems;
+			delitem 1059, 150;
+			delitem 907, 100;
+			delitem 978, 1;
+			mes "[Mari Isac]";
+			mes "Here you go.  Enjoy your Parcel Hat!";
+			getitem 5023,1;
+			close;
+		sM_MakeMon:
+			if(countitem(2233)<1 || countitem(969)<1 || countitem(999)<20 || countitem(949)<80 || countitem(938)<800) goto ssL_NoItems;
+			delitem 2233, 1;
+			delitem 969, 1;
+			delitem 999, 20;
+			delitem 949, 80;
+			delitem 938, 800;
+			mes "[Mari Isac]";
+			mes "Here you go.  Enjoy your Money Loser's Grief!";
+			getitem 5021,1;
+			close;
+		sM_MakePhan:
+			if(countitem(2281)<1 || countitem(1048)<50) goto ssL_NoItems; 
+			delitem 2281,1;
+			delitem 1048, 50;
+			mes "[Mari Isac]";
+			mes "Here you go.  Enjoy your Phantom of the Opera Mask!";
+			getitem 5043, 1;
+			close;
+
+		ssL_NoItems:
+			mes "[Mari Isac]";
+			mes "You don't seem to have enough items for me to make that hat.  Please come back when you do.";
+			close;
+}
+
+
+//--------------------------------------------------------------
+// Crunch Toast Quest
+//--------------------------------------------------------------
+
+yuno.gat,224,116,4	script	Kacis	818,{
+
+	mes "[Kacis]";
+	mes "Do you want a ^FF3300 Well-Baked Toast ^000000?";
+	next;
+	menu "Please, make one for me",-,"No, thanks. I'm so full",L_EXIT;
+
+	if (countitem(519) < 50 || countitem(548) < 50 || countitem(539) < 50 || countitem(7031)<50) goto L_NOITEM;//Items: Milk, Cheese, Piece_of_Cake, Old_Frying_Pan,
+	delitem 519,50;//Items: Milk,
+	delitem 548,50;//Items: Cheese,
+	delitem 539,50;//Items: Piece_of_Cake,
+	delitem 7031,50;//Items: Old_Frying_Pan,
+	mes "[Kacis]";
+	mes "Good, thank you! Let me just take your items.";
+	next;
+	mes "[Kacis]";	
+	mes "Well done. Be careful, it's hot.";
+	getitem 5107,1;//Items: Well_Done_Toast,
+	close;
+
+L_NOITEM:
+	mes "[Kacis]";
+	mes "Well, for me to make you ^FF3300 Well-Baked Toast ^000000...";
+	mes "I require these materials:";
+	mes "^FF3300 50 Milk, ^000000";
+	mes "^FF3300 50 Cheese, ^000000";
+	mes "^FF3300 50 Piece of Cake, ^000000";
+	mes "^FF3300 50 Old Frying Pan. ^000000";
+	close;
+L_EXIT:
+	mes "[Kacis]";
+	mes "Ok. I more to get tasty toasts.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Detective Hat Quest
+//--------------------------------------------------------------
+
+lighthalzen.gat,140,68,4	script	Morris	818,{
+
+	mes "[Morris]";
+	mes "Do you want a ^FF3300Hat of the Investigator^000000?"; 
+	next;
+	menu "Of course, I do",-,"No, thanks",L_EXIT;
+
+	mes "[Morris]";
+	mes "Ok then, I shall make one for you.";
+
+	if (countitem(611)<10 || countitem(7301)<1887 || countitem(5120)<1 || Zeny<50000) goto L_NOITEM;//Items: Magnifier, Tassel, Wide_Bunker_Hat_,
+	delitem 611,10;   //Items: Magnifier,
+	delitem 7301,1887;  //Tassel//Items: Tassel,
+	delitem 5120,1;   //Items: Wide_Bunker_Hat_,
+	set Zeny,Zeny-50000;
+	mes "[Morris]";
+	mes "Very well. Now I can make it...";
+	next;
+	mes "[Morris]";
+	mes "Enjoy.";
+	getitem 5108,1;//Items: Detective_Hat,
+	close;
+
+L_NOITEM:
+	mes "[Morris]";
+	mes "Bring me:";
+	mes "^FF3300 10 Magnifiers^000000,";
+	mes "^FF3300 1887 Tassel^000000,";
+	mes "^FF3300 1 Wide Bunker Hat [1]^000000,";
+	mes "and ^FF3300 50,000 zeny.^000000";
+	close;
+
+L_EXIT:
+	mes "[Morris]";
+	mes "Bye.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Ear Muffs Quest
+//--------------------------------------------------------------
+
+payon_in01.gat,18,10,4	script	Mystic Lady	75,{
+
+	mes "[Mystic Lady]";
+	mes "Hi there.";
+	next;
+	menu "Hello.",-,"Please make me a pair of Ear Muffs.",M_Muffs, "End",M_End;
+
+		mes "[Mystic Lady]";
+		mes "My family and I recently came to Payon.";
+		mes "Where we came from the weather was very cold so we started a business hand making a special type of ^5555FF'Ear Muffs'^000000";
+		next;
+		mes "[Mystic Lady]";
+		mes "I have tried to continue the family business here in Payon but it has proven to be difficult because of the warm whether.";
+		next;
+		mes "[Mystic Lady]";
+		mes "Although the 'Ear Muffs' aren't very usefull here, if you plan on going somewhere that's cold our 'Ear Muffs' are a must have.";
+		next;
+		mes "[Mystic Lady]";
+		mes "All I need are:";
+		mes "^5555FF1 Cursed Ruby,";
+		mes "1 Headset,";
+		mes "200 Feathers,";
+		mes "and a 5,000 zeny fee^000000 for my labor.";
+		next;
+		mes "[Mystic Lady]";
+		mes "With those items I can make you a pair of 'Ear Muffs'.  Believe me, they are of the highest quality and look good on just about anybody!";
+		close;
+	
+	M_Muffs:
+		if(countitem(724)<1 || countitem(5001)<1 || countitem(949)<200 || zeny<5000) goto sL_NotEnuf;
+		delitem 724,1;
+		delitem 5001,1;
+		delitem 949,200;
+		set Zeny, Zeny-5000;
+		mes "[Mystic Lady]";
+		mes "Oh, I see that you have brought all of the required items.  Just a moment please...";
+		next;
+		mes "[Mystic Lady]";
+		mes "... this goes here... that goes there...... some glue here... a couple stitches over there..........";
+		next;
+		getitem 2283,1;
+		mes "[Mystic Lady]";
+		mes "Ah, there you are! One pair of my familys' specialty Ear Muffs.  Enjoy!";
+		close;
+
+		sL_NotEnuf:
+			mes "[Mystic Lady]";
+			mes "I'm sorry but you don't have the required items for me to make you a pair of my familys' specialty Ear Muffs.";
+			close;
+	M_End:
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Feather Beret Quest
+//--------------------------------------------------------------
+
+rachel.gat,135,121,4	script	Sakyul	933,{
+
+	mes "[Sakyul]";
+	mes "Mumble mumble..";
+	mes "Stupid Arunafelz Military!";
+	mes "I lost the use of my legs during the Rune-Midgard!";
+	mes "I was in a special unit.. we even had our own beret!";
+	mes "Wingmen, they called us..";
+	next;
+	mes "[Sakyul]";
+	mes "if you really want one, I can make a replica for you.";
+	next;
+
+	menu "Of course I do!",FeatBeret1,"No way man, you creep me out!",FeatBeret2;
+
+		FeatBeret1:
+			mes "[Sakyul]";
+			mes "Alright then, I just need a few things:";
+			mes "1 Beret,";
+			mes "100 Soft Feathers and";
+			mes "1 White Dyestuff.";
+			next;
+			mes "[Sakyul]";
+			if ((countitem(5172) < 1) || (countitem(982) < 1) || (countitem(7063) < 100)) goto FeatBeret3;
+
+			mes "Nice to see a well prepared youngster!";
+			delitem 5172,1;
+			delitem 7063,100;
+			delitem 982,1;
+			next;
+			getitem 5170,1;
+			mes "[Sakyul]";
+			mes "Here.. This takes me back.. Have fun with it!";
+			close;
+
+
+		FeatBeret3:
+			mes "Eh.. I'm old, not Senile.. Bring me the rest of the stuff I asked for!";
+			close;
+
+		FeatBeret2:
+			mes "[Sakyul]";
+			mes "Fine then! Leave an old man at peace! Git! Go!";
+			close;
+}
+
+
+//--------------------------------------------------------------
+// Fox Mask Quest
+//--------------------------------------------------------------
+
+pay_dun04.gat,204,152,2	script	Nine Tail	1180,{
+
+	mes "[Nine Tail]";
+	mes "What do you want?";
+	next;
+	mes "[Nine Tail]";
+	mes "Have you come here for a ^FF3300 Fox Mask^000000?";
+	next;
+	menu "Yeah, Sure.",-,"No",M_EXIT;
+
+	mes "[Nine Tail]";
+	mes "Fine then. if I make one for you, will you go away?";
+	mes "You realize that it requires 999 Nine Tails to make, do you?";
+	next;
+	menu "Sure.",M_MAKE,"Nah.",-;
+
+	mes "[Nine Tail]";
+	mes "Grrrr... I'll make one anyway but I hope my master gets you.";
+	next;
+M_MAKE:
+	mes "[Nine Tail]";
+	mes "Ok then, I shall make one for you.";
+	next;
+
+	if (countitem(1022) < 999) goto L_NOITEM;//Items: Nine Tails,
+	delitem 1022,999;//Items: Nine Tails,
+	getitem 5069,1;//Items: Fox Mask,
+	next;
+	mes "[Nine Tails]";
+	mes "Have fun.";
+	close;
+
+L_NOITEM:
+	mes "[Nine Tail]";
+	mes "You do not have have enough Nine Tails.";
+	mes "You need 999 of them.";
+	close;
+
+M_EXIT:
+	mes "[Nine Tail]";
+	mes "Then leave me alone... I am waiting for my master.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Geffen Headgear Quests
+//--------------------------------------------------------------
+// -> X-Shaped Hairpin, Bandage & Flower Hairpin Quests
+//--------------------------------------------------------------
+
+geffen.gat,128,148,6	script	Arjen	807,{
+
+	mes "[Arjen]";
+	mes "What item information do you require?";
+	next;
+	menu "X-Shaped Hairpin.",M_1,"Bandage",M_2,"Flower Hairpin.",M_3,"Quit.",M_EXIT;
+M_1:
+	mes "[Arjen]";
+	mes "Hyaaaaaaaa!";
+	next;
+	mes "[Arjen]";
+	mes "Ooops, sorry. I was practicing my balance.";
+	mes "Good that I have my hairpin to stop my hair getting in my eyes.";
+	next;
+	mes "[Arjen]";
+	mes "Im not much of a craftsman, but if you bring me some items I can make you";
+	mes "my ^660000X-Shaped Hairpin^000000.";
+	next;
+	menu "Make me the hairpin.",-,"What are the requirements?",M_REQ1,"No, thanks.",M_EXIT;
+
+	if ((countitem(10011) < 1) || (countitem(7220) < 400)) goto L_NOITEM1;//Items: Stellar Hairpin, Ectoplasm,
+	mes "[Arjen]";
+	mes "Yes, that's just what I require!";
+	mes "Nayayayaaaaaa!";
+	delitem 10011,1;//Items: Stellar Hairpin,
+	delitem 7220,400;//Items: Ectoplasm,
+	next;
+	mes "[Arjen]";
+	mes "Hmm... okay, thanks for the items.";
+	mes "Let me make it for you.";
+	next;
+	getitem 5079,1;//Items: X Hairpin,
+	mes "[Arjen]";
+	mes "Thanks very much, you look cool now.";
+	close;
+
+L_NOITEM1:
+	mes "[Arjen]";
+	mes "Come on man, gimme a break.";
+	mes "This is hot property!";
+	next;
+
+M_REQ1:
+	mes "[Arjen]";
+	mes "Hmm, it's a very rare Item.";
+	mes "I need 1 Stellar Hairpin for its spacial properties.";
+	mes "And I need 400 Ectoiplasm to give it its special powers.";
+	next;
+	mes "[Arjen]";
+	mes "You need to have travelled well to get these items...";
+	close;
+
+M_2:
+	mes "[Arjen]";
+	mes "Ouch, have you ever gotten an injury after doing too much exercise?";
+	mes "It sucks, especially when you excercise so much.";
+	next;
+	mes "[Arjen]";
+	mes "What is that you say? you have just the problem?";
+	mes "Well, I can make you a ^660000Bandage^000000 to heal your wounds!";
+	next;
+	menu "Yes, please make me one!",-,"What are the requirements?",M_REQ2,"No, thanks.",M_EXIT;
+
+	if ((countitem(930) < 500) || (countitem(970) < 1)) goto L_NOITEM2;//Items: Rotten Bandage, Alcohol,
+	mes "[Arjen]";
+	mes "Wow! You have the stuff I need! Thanks!";
+	mes "Lemme do a swap, your stuff for the bandage";
+	delitem 930,500;//Items: Rotten Bandage,
+	delitem 970,1;//Items: Alcohol,
+	next;
+	getitem 5063,1;//Items: Bandage,
+	mes "[Arjen]";
+	mes "Thanks! Hope that cures your aches!";
+	close;
+
+L_NOITEM2:
+	mes "[Arjen]";
+	mes "Argh, please, if you want the item, bring me what I asked for.";
+	next;
+
+M_REQ2:
+	mes "[Arjen]";
+	mes "I need 500 Rotten Bandages to make the actual cast.";
+	mes "Then I need 1 Alcohol so I can get the stains out of the bandages.";
+	close;
+
+M_3:
+	mes "[Arjen]";
+	mes "Ahh, don't you love the romance in the air?";
+	mes "Isn't it great to look good, and also, keep your girl or boy pretty?";
+	next;
+	menu "Yes, of course!",-,"No, not quite.",M_EXIT;
+
+	mes "[Arjen]";
+	mes "Well, I'm sure you would like me to make you a ^660000Flower Hairpin^000000.";
+	next;
+	menu "Yes, please.",M_REQ3,"No, thanks.",M_EXIT;
+
+L_NOITEM3:
+	mes "[Arjen]";
+	mes "Sorry, but you don't have the correct items.";
+	next;
+
+M_REQ3:
+	mes "[Arjen]";
+	mes "Well, I need...";
+	mes "1 Romantic Flower, for the element of love,";
+	mes "10 Steels for the pin part,";
+	mes "And 20,000 Zeny for the forging costs.";
+	next;
+	mes "[Arjen]";
+	mes "Would you like to make this item?";
+	next;
+	menu "Yes.",-,"No.",M_EXIT;
+
+	if ((countitem(2269) < 1) || (countitem(999) < 10) || (Zeny < 20000)) goto L_NOITEM3;//Items: Romantic Flower, Steel,
+	mes "[Arjen]";
+	mes "Thanks!";
+	delitem 2269,1;//Items: Romantic Flower,
+	delitem 999,10;//Items: Steel,
+	set Zeny,Zeny-20000;
+	next;
+	getitem 5061,1;//Items: Flower Hairpin,
+	mes "[Arjen]";
+	mes "Enjoy!";
+	close;
+
+M_EXIT:
+	mes "[Arjen]";
+	mes "Okay, have a nice day!";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Headset Quest
+//--------------------------------------------------------------
+
+geffen_in.gat,30,71,4	script	Eric	83,{
+
+	mes "[Eric]";
+	mes "Please listen to the story of my blessed grand father...";
+	emotion e_sob;
+	next;
+	menu "Listen.",-, "Ask about Items needed.",M_Ask, "Make.",M_Make, "End Conversation.",M_End;
+
+		mes "[Eric]";
+		mes "My grand father passed away few years ago.... he was very special to me.....";
+		next;
+		mes "[Eric]";
+		mes "For as long as I can remember, he was always there for me.";
+		mes "He even took better care of me than did my own father, who was always busy with work.";
+		next;
+		mes "[Eric]";
+		mes "To me, my grand father's library was always like a 'Fairyland'.";
+		mes "I spent most of my time there and I learned a lot of things from his vast collection of books";
+		next;
+		mes "[Eric]";
+		mes "Grand father was interested in alchemy and music, so his library was filled with many books on these subjects.";
+		next;
+		mes "[Eric]";
+		mes "One day while I was in grand fathers library, I discovered an interesting design sheet.....";
+		mes "It was a design for what look liked 'Ear Muffs'.... underneath the drawing was a description that read:";
+		next;
+		mes "[Eric]";
+		mes "'When worn on over the ears, anything from music to the faintest whispers can be heard.";
+		mes "The sounds are transmitted to the ears through a thin wire.  Project Name: ^5555FFHeadset^000000";
+		next;
+		mes "[Eric]";
+		mes "It was a project that my grand father was working on before he passed away.... unfortunately he was never able to finish it.....";
+		next;
+		mes "[Eric]";
+		mes "That's why I made up my mind to pick up where he left off and finish his beloved project!";
+		mes "I met with a few Alchemists and asked them to create a working prototype based on his plans.";
+		next;
+		mes "[Eric]";
+		mes "But they were not able to understand my grand fathers concepts and therefore could not help me.";
+		next;
+		mes "[Eric]";
+		mes "Even so I did not give up and decided to make it myself.  So I studied and researched for many years....";
+		mes "And now I have a full working knowledge of my grand fathers invention, the ^5555FFHeadset^000000!!";
+		next;
+		mes "[Eric]";
+		mes "Yet there is still one obsticale that is keeping me from making it.... I do not have the materials necessary to make my grand fathers invention!";
+		next;
+		mes "[Eric]";
+		mes "My only goal in life is to realize my grand fathers ideas and pay tribute to the man I hold so dear to my heart.......";
+		emotion e_sob;
+		next;
+		mes "[Eric]";
+		mes "If only I had those materials.... Hmm... would you be iterested in this project? All I ask is that you gather the right items for me....";
+		emotion e_hmm;
+		close;
+
+	M_Ask:
+		mes "[Eric]";
+		mes "These are items needed for grand father's Headset:";
+		mes "^3355FFSteel^000000 ^FF555540^000000";
+		mes "^3355FFOridecon^000000 ^FF55551^000000";
+		mes "^3355FFAlcohol^000000 ^FF55551^000000";
+		mes "^3355FFCoal^000000 ^FF55551^000000";
+		close;
+
+	M_Make:
+		mes "[Eric]";
+		if(countitem(999) < 40 || countitem(984) < 1 || countitem(970)<1 || countitem(1003) < 1) goto L_NotEnuf;
+		delitem 999,40;
+		delitem 984,1;
+		delitem 970,1;
+		delitem 1003,1;
+		mes "Oh this is GREAT!! You have all of the materials I need to make my grandfather's Headset!";
+		emotion e_ic;
+		next;
+		mes "[Eric]";
+		mes "Give me a few minutes to assemble it...............";
+		next;
+		getitem 5001,1;
+		mes "[Eric]";
+		mes "FINALLY!! It's complete! My grand father's Headset! Please take them... without your help this wouldn't have been possible.";
+		emotion e_gasp;
+		next;
+		mes "[Eric]";
+		mes "Thank so very much! Because of you, I could fullfill my grand father's wish.  I just know he's smiling down on me from Heaven.....";
+		emotion e_thx;
+		close;
+
+		L_NotEnuf:
+			mes "Thank you for trying to help me but..... you don't seem to have all of the items I need.....";
+			emotion e_swt;
+			close;
+	M_End:
+		mes "[Eric]";
+		mes "Farewell..... boo hoo....";
+		emotion e_sob;
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Indian Headband Quest
+//--------------------------------------------------------------
+
+comodo.gat,238,217,5	script	Merunte	832,{
+
+	mes "[Merunte]";
+	mes "Well, umbaga umbumbaga.";
+	mes "I like to do stuff like that!";
+	mes "And I love Indian Headbands too!";
+	next;
+	menu "Make me an Indian Headband!",-,"Bye!",M_EXIT;
+
+	mes "[Merunte]";
+	mes "Ok. Gimme:";
+	mes "1 Hair Band,";
+	mes "1 Striped Bandana,";
+	mes "10 Peco Feathers,";
+	mes "and 10,000 Zeny.";
+	next;
+	mes "[Merunte]";
+	mes "Got these items?";
+	next;
+	menu "Yep!",-,"Nope!",M_EXIT;
+
+	if ((countitem(7101) < 10) || (countitem(5049) < 1) ||  (countitem(2210) < 1) ||  (Zeny < 10000)) goto L_NOITEM;//Items: Peco Feather, Striped Bandana, Hair Band,
+	delitem 2210,1;//Items: Hair Band,
+	delitem 5049,1;//Items: Striped Bandana,
+	delitem 7101,10;//Items: Peco Feather,
+	set Zeny,Zeny-10000;
+	getitem 5071,1;//Items: Indian Headband,
+	mes "[Merunte]";
+	mes "Thanks! Bye.";
+	close;
+
+L_NOITEM:
+	mes "[Merunte]";
+	mes "Ya miss some items or zeny.";
+	close;
+
+M_EXIT:
+	mes "[Merunte]";
+	mes "Kay bye.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Juno Headgear Quests Part #1
+//--------------------------------------------------------------
+// -> Golden Bells/Crown of Mistress/Crown of Ancient Queen
+//--------------------------------------------------------------
+
+yuno.gat,353,282,7	script	Neris	806,{
+
+	mes "[Neris]";
+	mes "So, whatcha want then?";
+	next;
+	menu "Golden Bells.",M_LGB,"Crown of Mistress.",M_COM,"Crown of Ancient Queen.",M_COAQ,"Nothing, thanks.",M_EXIT;
+
+M_LGB:
+	mes "[Neris]";
+	mes "Hehe, so you are a fan of Sohee's eh?";
+	mes "Yeah, I guess I like the bell they carry too!";
+	next;
+	mes "[Neris]";
+	mes "Looks pretty cute when you wear it.";
+	mes "So... what can I do for you?";
+	next;
+	menu "Make me Golden Bells!",-,"What do I need to make it?",M_REQL,"Nothing, thanks.",M_EXIT;
+
+	if ((countitem(10016) < 1) || (countitem(714) < 1) || (countitem(969) < 3) || (Zeny < 1000)) goto L_NOITEM;//Items: Golden Bell, Emperium, Gold,
+	mes "[Neris]";
+	mes "Now, lets swap your items.";
+	delitem 10016,1;//Items: Golden Bell,
+	delitem 714,1;//Items: Emperium,
+	delitem 969,3;//Items: Gold,
+	set Zeny,Zeny-1000;
+	next;
+	getitem 5091,1;//Items: Golden Bells,
+	mes "[Neris]";
+	mes "Thanks, and bye!";
+	close;
+
+M_REQL:
+	mes "[Neris]";
+	mes "Okay all these are gold related:";
+	mes "1 Golden Bell,";
+	mes "1 Emperium,";
+	mes "3 Gold,";
+	mes "1000 Zeny for the labor.";
+	close;
+
+M_COM:
+	mes "[Neris]";
+	mes "You like mistresses?";
+	next;
+	mes "[Neris]";
+	mes "So... what can I do for you?";
+	next;
+	menu "Make me the item.",-,"What do I need to make it?",M_REQC,"Nothing, thanks.",M_EXIT;
+
+	if ((countitem(2249) < 1) || (countitem(714) < 1) || (countitem(969) < 3) || (Zeny < 1000)) goto L_NOITEM;//Items: Coronet, Emperium, Gold,
+	mes "[Neris]";
+	mes "Now, lets swap your items.";
+	delitem 2249,1;//Items: Coronet,
+	delitem 714,1;//Items: Emperium,
+	delitem 969,3;//Items: Gold,
+	set Zeny,Zeny-1000;
+	next;
+	getitem 5081,1;//Items: Crown of Mistress,
+	mes "[Neris]";
+	mes "Thanks, and bye!";
+	close;
+
+M_REQC:
+	mes "[Neris]";
+	mes "Okay all these are gold related:";
+	mes "1 Coronet,";
+	mes "1 Emperium,";
+	mes "3 Gold,";
+	mes "1000 Zeny for the labor.";
+	close;
+
+M_COAQ:
+	mes "[Neris]";
+	mes "You like ancient queens?";
+	next;
+	mes "[Neris]";
+	mes "So.. what can I do for you?";
+	next;
+	menu "Make me the item.",-,"What do I need to make it?",M_REQC2,"Nothing, thanks.",M_EXIT;
+
+	if ((countitem(10006) < 1) || (countitem(714) < 1) || (countitem(969) < 3) || (Zeny < 1000)) goto L_NOITEM;//Items: Queen's Hair Ornament, Emperium, Gold,
+	mes "[Neris]";
+	mes "Now, lets swap your items";
+	delitem 10006,1;//Items: Queen's Hair Ornament,
+	delitem 714,1;//Items: Emperium,
+	delitem 969,3;//Items: Gold,
+	set Zeny,Zeny-1000;
+	next;
+	getitem 5080,1;//Items: Crown of The Ancient Queen,
+	mes "[Neris]";
+	mes "Thanks, and bye!";
+	close;
+
+M_REQC2:
+	mes "[Neris]";
+	mes "Okay all these are gold related:";
+	mes "1 Queen's Hair Ornament,";
+	mes "1 Emperium,";
+	mes "3 Gold,";
+	mes "1000 Zeny for the labor.";
+	close;
+
+L_NOITEM:
+	mes "[Neris]";
+	mes "Don't take me for a fool!";
+	mes "No items, no deal!";
+	close;
+
+M_EXIT:
+	mes "[Neris]";
+	mes "Bye! Come again.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Juno Headgear Quests Part #2
+//--------------------------------------------------------------
+// -> Ears of Angel/Ears of Demon
+//--------------------------------------------------------------
+
+yuno.gat,246,51,4	script	Old Blacksmith	813,{
+
+	mes "[Old Blacksmith]";
+	mes "Well then my good man!";
+	mes "What can I do for you?";
+	next;
+	menu "Give me the Ears of Devil!",M_EOD,"Give me the Ears of Angel!",M_EOA,"Nothing, thanks",M_EXIT;
+
+M_EOD:
+	mes "[Old Blacksmith]";
+	mes "Well, this item sure makes you look like a evil bastard.";
+	mes "It makes me crap in my pants when I see these.";
+	next;
+	menu "Dont care, make me the Item!",-,"What are the requirements?",M_EODREQ,"Nothing",M_EXIT;
+
+	if ((countitem(2255) < 1) || (countitem(2286) < 1) || (Zeny < 20000)) goto L_NOITEM_EOD;//Items: Evil Wing, Elven Ears,
+	mes "[Old Blacksmith]";
+	mes "Wow, never thought a little fella like you could get tha.t";
+	mes "Bwahaha, ok.";
+	delitem 2255,1;//Items: Evil Wing,
+	delitem 2286,1;//Items: Elven Ears,
+	set Zeny,Zeny-20000;
+	next;
+	getitem 5068,1;//Items: Ears Of Demon,
+	mes "[Old Blacksmith]";
+	mes "Well, enjoy your item!";
+	close;
+
+L_NOITEM_EOD:
+	mes "[Old Blacksmith]";
+	mes "Well sorry, but you dont have enough items!";
+	next;
+
+M_EODREQ:
+	mes "[Old Blacksmith]";
+	mes "Well, let's see...";
+	mes "I need something for the evil, that be an Evil Wing,";
+	mes "I also need the ears for the base of it, Elven Ears would be OK,";
+	mes "Last of all, I need 20,000 Zeny for me troubles.";
+	next;
+	mes "[Old Blacksmith]";
+	mes "Hey, I have to make a living!";
+	close;
+
+M_EOA:
+	mes "[Old Blacksmith]";
+	mes "Well, this item sure makes you look like a holy bastard.";
+	next;
+	menu "Dont care, make me the Item!",-,"What are the requirements?",M_EOAREQ,"Nothing",M_EXIT;
+
+	if ((countitem(2286) < 1) || (countitem(2254) < 1) || (Zeny < 20000)) goto L_NOITEM_EOA;//Items: Elven Ears, Angel Wing,
+	mes "[Old Blacksmith]";
+	mes "Well well well! Someone who has the spirit!";
+	mes "Okay, gimme the items.";
+	delitem 2286,1;//Items: Elven Ears,
+	delitem 2254,1;//Items: Angel Wing,
+	set Zeny,Zeny-20000;
+	next;
+	mes "[Old Blacksmith]";
+	mes "Okay, and here you go.";
+	next;
+	getitem 5074,1;//Items: Ears of Angel,
+	mes "[Old Blacksmith]";
+	mes "Enjoy it!";
+	close;
+
+L_NOITEM_EOA:
+	mes "[Old Blacksmith]";
+	mes "Well sorry, but you dont have enough items!";
+	next;
+
+M_EOAREQ:
+	mes "[Old Blacksmith]";
+	mes "Well, this item is very holy, so I will need:";
+	mes "1 Angel Wing (Angel Headband),";
+	mes "1 Elven Ears for the ears,";
+	mes "and 20,000z for the labour costs!";
+	close;
+
+M_EXIT:
+	mes "[Old Blacksmith]";
+	mes "Fair yee well!";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Lutie Headgear Quests Part #1
+//--------------------------------------------------------------
+// -> Pointy Cap/Straw Hat/Cowboy Hat/Sombrero/Furry Hat
+//--------------------------------------------------------------
+
+xmas_in.gat,36,25,4	script	Hat Seller	806,{
+
+	mes "[Hat Seller]";
+	mes "What hat would you like information on?";
+	mes "I can make all the hats I mention here";
+	next;
+	menu "Party Hat",M_1,"Straw Hat",M_2,"Cowboy Hat",M_3,"Sombrero",M_4,"Furry Hat",M_5,"Quit",M_EXIT;
+
+M_1:
+	mes "[Hat Seller]";
+	mes "Okay well, for this item I require:";
+	mes "1 Santa's Hat,";
+	mes "100 Slick Paper,";
+	mes "100 Oiled Paper.";
+	next;
+	mes "[Hat Seller]";
+	mes "You got these items?";
+	next;
+	menu "Yes.",-,"No.",M_EXIT;
+
+	if ((countitem(2236) < 1) || (countitem(7111) < 100) || (countitem(7151) < 100)) GOTO L_NOITEM;//Items: Santa's Hat, Slick Paper, Oiled Paper,
+	delitem 2236,1;//Items: Santa's Hat,
+	delitem 7111,100;//Items: Slick Paper,
+	delitem 7151,100;//Items: Oiled Paper,
+	getitem 5060,1;//Items: Pointy Cap,
+	mes "[Hat Seller]";
+	mes "Thanks! Bye.";
+	close;
+
+L_NOITEM:
+	mes "[Hat Seller]";
+	mes "Not enough items, bye.";
+	close;
+
+M_EXIT:
+	mes "[Hat Seller]";
+	mes "Bye!";
+	close;
+
+M_2:
+	mes "[Hat Seller]";
+	mes "For this item I require:";
+	mes "1 Sakkat,";
+	mes "300 Tough Vines,";
+	mes "300 Bamboo Trunk.";
+	next;
+	mes "[Hat Seller]";
+	mes "Bring those, and we got a deal.";
+	mes "You got them?";
+	next;
+	menu "Yes.",-,"No.",M_EXIT;
+
+	if ((countitem(2280) < 1) || (countitem(7197) < 300) || (countitem(7150) < 300)) GOTO L_NOITEM;//Items: Sakkat, Tough Vines, Bamboo Trunk,
+	delitem 2280,1;//Items: Sakkat,
+	delitem 7197,300;//Items: Tough Vines,
+	delitem 7150,300;//Items: Bamboo Trunk,
+	getitem 5062,1;//Items: Straw Hat,
+	mes "[Hat Seller]";
+	mes "There you go... bye.";
+	close;
+
+M_3:
+	mes "[Hat Seller]";
+	mes "For this item I require:";
+	mes "1 Western Grace,";
+	mes "108 Claw of Desert Wolf,";
+	mes "108 Soft Grass Leaf,";
+	mes "and 4 Burning Horseshoes.";
+	next;
+	mes "[Hat Seller]";
+	mes "Bring those, and we got a deal.";
+	mes "You got them?";
+	next;
+	menu "Yes.",-,"No.",M_EXIT;
+
+	if ((countitem(2248) < 1) || (countitem(7030) < 108) || (countitem(7194) < 108) || (countitem(7120) < 4)) GOTO L_NOITEM;//Items: Western Grace, Claw of Desert Wolf, Soft Grass Leaf, Burning Horseshoe,
+	delitem 2248,1;//Items: Western Grace,
+	delitem 7030,108;//Items: Claw of Desert Wolf,
+	delitem 7194,108;//Items: Soft Grass Leaf,
+	delitem 7120,4;//Items: Burning Horseshoe,
+	getitem 5075,1;//Items: Cowboy Hat,
+	mes "[Hat Seller]";
+	mes "There you go... bye.";
+	close;
+
+M_4:
+	mes "[Hat Seller]";
+	mes "For this item I require:";
+	mes "1 Straw Hat,";
+	mes "1 Guitar,";
+	mes "50 Cactus Needle.";
+	next;
+	mes "[Hat Seller]";
+	mes "Bring those, and we got a deal.";
+	mes "You got them?";
+	next;
+	menu "Yes.",-,"No.",M_EXIT;
+
+	if ((countitem(5062) < 1) || (countitem(1907) < 1) || (countitem(952) < 50)) GOTO L_NOITEM;//Items: Straw Hat, Guitar, Cactus Needle,
+	delitem 5062,1;//Items: Straw Hat,
+	delitem 1907,1;//Items: Guitar,
+	delitem 952,50;//Items: Cactus Needle,
+	getitem 5067,1;//Items: Sombrero,
+	mes "[Hat Seller]";
+	mes "There you go... bye.";
+	close;
+
+M_5:
+	mes "[Hat Seller]";
+	mes "For this item I require:";
+	mes "1 Cap,";
+	mes "500 Yarn.";
+	next;
+	mes "[Hat Seller]";
+	mes "Bring those, and we got a deal.";
+	mes "You got them?";
+	next;
+	menu "Yes.",-,"No.",M_EXIT;
+
+	if ((countitem(2226) < 1) || (countitem(7038) < 500)) GOTO L_NOITEM;//Items: Cap, Yarn,
+	delitem 2226,1;//Items: Cap,
+	delitem 7038,500;//Items: Yarn,
+	getitem 5076,1;//Items: Wool Hat,
+	mes "[Hat Seller]";
+	mes "There you go... bye.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Lutie Headgear Quests Part #2
+//--------------------------------------------------------------
+// -> Blush/Cake Hat/Candle/Chef Hat/Raccoon Hat/Rainbow Eggshell/Spore Hat/Wonder Nutshell
+//--------------------------------------------------------------
+
+xmas.gat,117,295,3	script	Titicupe	704,{
+
+	mes "[^469ED2Titicupe^000000]";
+	mes "I am the well known ^27BEB7Vending Machine Man Titicupe^000000,";
+	mes "I am also a Wizard of the great ^9A3CA2Geffen Mage Guild^000000.";
+	mes "I can use my special magic to make some rare items, but I need ingridients.";
+	mes "Choose an item you want.";
+	next;
+	menu "Blush",-,"Cake Hat",cake_hat,"Candle",candle,"Chef Hat",chef_hat,"Raccoon Hat",raccoon_hat,"Rainbow Eggshell",rainbow_egg,"Spore Hat",spore_hat,"Wonder Nutshell",wonder_nut,"Cancel",M_Cancel;
+	
+	mes "[^469ED2Titicupe^000000]";
+	mes "Hmm... spell ingridients are...";
+ 	mes "100 Alice's Apron";
+ 	next;
+	menu "Here. Now do your magic!",-,"Cancel",M_Cancel;
+	
+	if(countitem(7047)<100) goto L_NoItem;
+	delitem 7047,100;
+	getitem 5040,1;
+	mes "[^469ED2Titicupe^000000]";
+	mes "^4599A3Abra ^66A73FKa ^C7A82EDabra, ^64826BSim ^E9239ESa ^B7EB01La ^8080C0Bim^000000!!";
+	mes "^45A8C9*poof*^000000 I succeeded!";
+	mes "Here take this ^D6294BBlush^000000, it's yours.";
+	close;
+	
+cake_hat:
+	mes "[^469ED2Titicupe^000000]";
+	mes "Hmm... spell ingridients are...";
+ 	mes "10 Candy";
+ 	mes "5 Candy Cane";
+ 	mes "20 Piece of Cake";
+ 	mes "10 Steel";
+ 	mes "15 Well-baked Cookie";
+ 	next;
+	menu "Here. Now do your magic!",-,"Cancel",M_Cancel;
+	
+	if(countitem(529)<10 || countitem(530)<5 || countitem(539)<20 || countitem(999)<10 || countitem(538)<15) goto L_NoItem;
+	delitem 529,10;
+	delitem 530,5;
+	delitem 539,20;
+	delitem 999,10;
+	delitem 538,15;
+	getitem 5024,1;
+	mes "[^469ED2Titicupe^000000]";
+	mes "^4599A3Abra ^66A73FKa ^C7A82EDabra, ^64826BSim ^E9239ESa ^B7EB01La ^8080C0Bim^000000!! ^45A8C9*poof*^000000 I succeeded! Here take this ^BD3CBACake Hat^000000, it's yours.";
+	close;
+	
+candle:
+	mes "[^469ED2Titicupe^000000]";
+	mes "Hmm... spell ingridients are...";
+	mes "1 Bomb Wick";
+ 	mes "50 Matchstick";
+ 	mes "100 Royal Jelly";
+ 	next;
+	menu "Here. Now do your magic!",-,"Cancel",M_Cancel;
+	
+	if(countitem(2279)<1 || countitem(7035)<50 || countitem(526)<100) goto L_NoItem;
+	delitem 2279,1;
+	delitem 7035,50;
+	delitem 526,100;
+	getitem 5028,1;
+	mes "[^469ED2Titicupe^000000]";
+	mes "^4599A3Abra ^66A73FKa ^C7A82EDabra, ^64826BSim ^E9239ESa ^B7EB01La ^8080C0Bim^000000!! ^45A8C9*poof*^000000 I succeeded! Here take this ^BD3CBACandle^000000, it's yours.";
+	close;
+	
+chef_hat:
+	mes "[^469ED2Titicupe^000000]";
+	mes "Hmm... spell ingridients are...";
+	mes "450 Dragon Scale";
+ 	mes "330 Feather";
+ 	mes "120 Piece of Cake";
+ 	mes "  1 White Dyestuffs";
+ 	next;
+	menu "Here. Now do your magic!",-,"Cancel",M_Cancel;
+	
+	if(countitem(1036)<450 || countitem(949)<330 || countitem(539)<120 || countitem(982)<1) goto L_NoItem;
+	delitem 1036,450;
+	delitem 949,330;
+	delitem 539,120;
+	delitem 982,1;
+	getitem 5026,1;
+	mes "[^469ED2Titicupe^000000]";
+	mes "^4599A3Abra ^66A73FKa ^C7A82EDabra, ^64826BSim ^E9239ESa ^B7EB01La ^8080C0Bim^000000!! ^45A8C9*poof*^000000 I succeeded! Here take this ^BD3CBAChef Hat^000000, it's yours.";
+	close;
+
+raccoon_hat:
+	mes "[^469ED2Titicupe^000000]";
+	mes "Hmm... spell ingridients are...";
+	mes "20 Dragon Scale";
+ 	mes "1 Kitty Band";
+ 	mes "300 Sea-otter Fur";
+ 	mes "200 Tough Scalelike Stem";
+ 	next;
+	menu "Here. Now do your magic!",-,"Cancel",M_Cancel;
+	
+	if(countitem(1036)<20 || countitem(2213)<1 || countitem(7065)<300 || countitem(7012)<200) goto L_NoItem;
+	delitem 1036,20;
+	delitem 2213,1;
+	delitem 7065,300;
+	delitem 7012,200;
+	getitem 5033,1;
+	mes "[^469ED2Titicupe^000000]";
+	mes "^4599A3Abra ^66A73FKa ^C7A82EDabra, ^64826BSim ^E9239ESa ^B7EB01La ^8080C0Bim^000000!! ^45A8C9*poof*^000000 I succeeded! Here take this ^7D4E31Raccoon Hat^000000, it's yours.";
+	close;
+	
+rainbow_egg:
+	mes "[^469ED2Titicupe^000000]";
+	mes "Hmm... spell ingridients are...";
+	mes "50 Claw of Desert Wolf";
+ 	mes "1 Cobaltblue Dyestuffs";
+ 	mes "1 Egg Shell";
+ 	next;
+	menu "Here. Now do your magic!",-,"Cancel",M_Cancel;
+	
+	if(countitem(7030)<50 || countitem(978)<1 || countitem(5015)<1) goto L_NoItem;
+	delitem 7030,50;
+	delitem 978,1;
+	delitem 5015,1;
+	getitem 5039,1;
+	mes "[^469ED2Titicupe^000000]";
+	mes "^4599A3Abra ^66A73FKa ^C7A82EDabra, ^64826BSim ^E9239ESa ^B7EB01La ^8080C0Bim^000000!! ^45A8C9*poof*^000000 I succeeded! Here take this ^8D4178Rainbow Egg^000000, it's yours.";
+	close;
+	
+spore_hat:
+	mes "[^469ED2Titicupe^000000]";
+	mes "Hmm... spell ingridients are...";
+	mes "300 Burnt Tree";
+ 	mes "850 Poison Spore";
+ 	mes "1 Tongue";
+ 	next;
+	menu "Here. Now do your magic!",-,"Cancel",M_Cancel;
+	
+	if(countitem(7068)<300 || countitem(7033)<850 || countitem(1015)<1) goto L_NoItem;
+	delitem 7068,300;
+	delitem 7033,850;
+	delitem 1015,1;
+	getitem 5029,1;
+	mes "[^469ED2Titicupe^000000]";
+	mes "^4599A3Abra ^66A73FKa ^C7A82EDabra, ^64826BSim ^E9239ESa ^B7EB01La ^8080C0Bim^000000!! ^45A8C9*poof*^000000 I succeeded! Here take this ^7D4E31Spore Hat^000000, it's yours.";
+	close;
+	
+wonder_nut:
+	mes "[^469ED2Titicupe^000000]";
+	mes "Hmm... spell ingridients are...";
+	mes "1 Nut Shell";
+ 	mes "500 Wing of Dragonfly";
+
+ 	next;
+	menu "Here. Now do your magic!",-,"Cancel",M_Cancel;
+	
+	if(countitem(5037)<1 || countitem(7064)<500) goto L_NoItem;
+	delitem 5037,1;
+	delitem 7064,500;
+	getitem 5050,1;
+	mes "[^469ED2Titicupe^000000]";
+	mes "^4599A3Abra ^66A73FKa ^C7A82EDabra, ^64826BSim ^E9239ESa ^B7EB01La ^8080C0Bim^000000!! ^45A8C9*poof*^000000 I succeeded! Here take this ^7D4E31Wonder Nutshell^000000, it's yours.";
+	close;
+	
+M_Cancel:
+	mes "[^469ED2Titicupe^000000]";
+	mes "I bid you farewell, try not to catch a cold out here. It's ^5A9FD8freezing out here!^000000";
+	close;
+	
+L_NoItem:
+	mes "[^469ED2Titicupe^000000]";
+	mes "I can't cast since you don't seem to have all I need...";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Morroc Headgear Quests
+//--------------------------------------------------------------
+// -> Lazy Racoon Hat/Fresh Bluish Fish/Drooping Cat/Transformation Leaf
+//--------------------------------------------------------------
+
+morocc.gat,274,79,6	script	Traveler	807,{
+
+	mes "[Traveler]";
+	if (BaseJob == 0) goto L_NOVICE;
+	mes "What kind of hat do you want from me?";
+	next;
+	menu "Lazy Racoon Hat.",M_N1,"Fresh Bluish Fish",M_N2,"Drooping Cat",M_N3,"Transformation Leaf",M_N4,"Nothing.",M_EXIT;
+
+M_N1:
+	mes "[Traveler]";
+	mes "Gimme 1000 Acorns,";
+	mes "100 Sea Otter Skins,";
+	mes "and 10 Raccoon Leaf";
+	next;
+	mes "[Traveler]";
+	mes "Got these items?";
+	next;
+	menu "Yep.",-,"No!",M_EXIT;
+
+	if ((countitem(1026) < 1000) || (countitem(7065) < 100) || (countitem(945) < 10)) goto L_NOITEM;//Items: Acorn, Sea Otter Fur, Raccoon Leaf,
+	mes "[Traveler]";
+	mes "Well, then here is your item";
+	delitem 1026,1000;//Items: Acorn,
+	delitem 7065,100;//Items: Sea Otter Fur,
+	delitem 945,10;//Items: Raccoon Leaf,
+	next;
+	getitem 5084,1;//Items: Lazy Racoon Hat,
+	mes "[Traveler]";
+	mes "Enjoy.";
+	close;
+
+M_N2:
+	mes "[Traveler]";
+	mes "Gimme 1 Rotten Fish,";
+	mes "300 Rotten Scales,";
+	mes "50 Raw Fish (Sashimi, not a knife),";
+	mes "1 Fish Tail,";
+	mes "and 100 Sticky Mucus";
+	next;
+	mes "[Traveler]";
+	mes "Got these items?";
+	menu "Yes",-,"No.",M_EXIT;
+
+	if ((countitem(624) < 1) || (countitem(959) < 300) || (countitem(544) < 50) || (countitem(1023) < 1) || (countitem(938) < 100)) goto L_NOITEM; //Items: Rotten Fish, Stinky Scale, Sashimi, Fish Tail, Sticky Mucus,
+	mes "[Traveler]";
+	mes "Okay, thanks.";
+	delitem 624,1;//Items: Rotten Fish,
+	delitem 959,300;//Items: Stinky Scale,
+	delitem 544,50;//Items: Raw Fish,
+	delitem 1023,1;//Items: Fish Tail,
+	delitem 938,100;//Items: Sticky Mucus,
+	next;
+	getitem 5065,1;//Items: Fresh Blueish Fish,
+	mes "[Traveler]";
+	mes "Thanks. Bye.";
+	close;
+
+M_N3:
+	mes "[Traveler]";
+	mes "Give me 1 Slotted Circlet,";
+	mes "1 Black Dyestuff,";
+	mes "and 300 Black Cat Dolls.";
+	mes "Loli Ruri drops the last one.";
+	next;
+	mes "[Traveler]";
+	mes "Have you these items?";
+	next;
+	menu "Yes",-,"No.",M_EXIT;
+
+	if ((countitem(2233) < 1) || (countitem(983) < 1) || (countitem(7206) < 300)) goto L_NOITEM;//Items: Circlet, Black Dyestuff, Black Cat Doll,
+	mes "[Traveler]";
+	mes "Okay, here you are.";
+	delitem 2233,1;//Items: Circlet,
+	delitem 983,1;//Items: Black Dyestuff,
+	delitem 7206,300;//Items: Black Cat Doll,
+	next;
+	getitem 5058,1;//Items: Resting Cat,
+	mes "[Traveler]";
+	mes "Good luck.";
+	close;
+
+M_N4:
+	mes "[Traveler]";
+	mes "Bring me 600 Raccoon Dog's Leaves (Raccoon Leaf).";
+	next;
+	mes "[Traveler]";
+	mes "You have these?";
+	next;
+	menu "Yes!",-,"Nope.",M_EXIT;
+
+	if (countitem(945) < 600) goto L_NOITEM;//Items: Raccoon Leaf,
+	mes "[Traveler]";
+	mes "Thanks. here's your leaf.";
+	delitem 945,600;//Items: Raccoon Leaf,
+	next;
+	getitem 5064,1;//Items: Transformation Leaf,
+	mes "[Traveler]";
+	mes "Enjoy your Item.";
+	close;
+
+L_NOITEM:
+	mes "[Traveler]";
+	mes "No stuff, no item!";
+	mes "When you have it, come back.";
+	close;
+
+L_NOVICE:
+	mes "It's damn hot today...";
+	close;
+
+M_EXIT:
+	mes "[Traveler]";
+	mes "Bye.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Mr. Smile Quest
+//--------------------------------------------------------------
+
+// Alberta
+alberta.gat,113,53,3	script	Smile Assistance::SmileAT	92,{
+
+	mes "[Smile Assistant]";
+	mes "Hi, I'm a Smile Assistance.  How may I help you?";
+	next;
+	menu "^0099FFMr. Smile^000000?",M_0, "Construct a ^0099FFMr. Smile^000000",M_1, "Quit",M_End;
+	
+	M_0:
+		mes "[Smile Assistant]";
+		mes "Oh, the Mr. Smile Event is a nationwide event that is being sponsered by ^0099FFHis Majesty Tristram the 3rd^000000.";
+		mes "The goal of the event is to get the citizens of Rune Midgard to put on happy looking Mr. Smile masks.";
+		next;
+		mes "[Smile Assistance]";
+		mes "By having this event, His Majesty wishes to encourage the people of Rune Midgard to have more fun and enjoy themselves!";
+		mes "As you may have guessed, the Mr. Smile mask is simply a smiley face.";
+		next;
+		mes "[Smile Assistance]";
+		mes "Although it may be simple, no one can argue the power of a smile! And if everybody in the kingdom were to wear one....";
+		mes "just imagine how much joy and cheer the world would see!";
+		next;
+		mes "[Smile Assistant]";
+		mes "As a Smile Assistant, it is my job to make a Mr. Smile mask for all of those who want one.";
+		mes "All I need to make the mask are some little items, namely:";
+		mes "^5555FF10 Jellopy^000000";
+		mes "^5555FF10 Fluff^000000";
+		mes "^5555FF10 Clover^000000";
+		next;
+		mes "[Smile Girl]";
+		mes "The world could use more smiles so get those items and come back soon.  I'll be waiting right here.";
+		close;
+	M_1:
+		mes "[Smile Assistant]";
+		if(countitem(705) < 10 || countitem(909) < 10 || countitem(914) < 10) goto sL_NoItems;
+		delitem 705,10;
+		delitem 909,10;
+		delitem 914,10;
+		mes "Oh, great! You've brought back all of the items needed.  Wait just a sec while I get your Mr. Smile ready.....";
+		next;
+		mes "~!shook!~!shook!~!clack!~!clack!~!tok!~!tok!~";
+		next;
+		mes "[Smile Assistant]";
+		mes "Here ya go, your very own Mr. Smile!";
+		getitem 2278,1;
+		next;
+		mes "[Smile Assistant]";
+		mes "The Mr. Smile Event is just one of the many ways His Majesty Tristam the 3rd is trying to make life more enjoyable here in Rune Midgard.";
+		next;
+		mes "[Smile Assistant]";
+		mes "Hopefully you will be reminded of that fact everytime you put on your Mr. Smile.";
+		close;
+	
+		sL_NoItems:
+			mes "Oh... Unfortunately you don't have enough items for a Mr. Smile.  What you need are:";
+			mes "^5555FF10 Jellopy^000000,";
+			mes "^5555FF10 Fluff^000000,";
+			mes "^5555FF10 Clover^000000,";
+			mes "I'll be waiting here so hurry back.";
+			close;
+	M_End:
+		close;
+}
+
+// Aldebaran
+aldebaran.gat,136,135,4	duplicate(SmileAT)	Smile Assistance#2	92
+
+// Geffen
+geffen.gat,119,107,4	duplicate(SmileAT)	Smile Assistance#3	92
+
+// Izlude
+izlude.gat,129,118,4	duplicate(SmileAT)	Smile Assistance#4	92
+
+// Morroc
+morocc.gat,158,97,4	duplicate(SmileAT)	Smile Assistance#5	92
+
+// Payon
+payon.gat,168,225,4	duplicate(SmileAT)	Smile Assistance#6	92
+
+// Prontera
+prontera.gat,157,187,4	duplicate(SmileAT)	Smile Assistance#7	92
+
+
+//--------------------------------------------------------------
+// Mushroom Hairband Quest
+//--------------------------------------------------------------
+
+geffen.gat,66,87,6	script	Aipo	819,{
+
+	mes "[Aipo]";
+	if (BaseJob == 0) goto L_NOVICE;
+	mes "Heeeeee.";
+	next;
+	mes "[Aipo]";
+	mes "Have you ever wondered what you would look like with a ^000080Mushroom Hairband^000000?";
+	mes "Well, I can make you one if you like, just give me 300 Mushroom Spores!";
+	next;
+	mes "[Aipo]";
+	mes "This wondrous item grew in the depths of a gave and needs the spores for the final";
+	mes "materials neededm";
+	mes "Want me to make it for you?";
+	next;
+	menu "Yes! Now make me the item!",-,"No, thanks!",M_EXIT;
+
+	if (countitem(921) < 300) goto L_NOITEM;//Items: Mushroom Spore,
+	mes "[Aipo]";
+	mes "Wow! Thanks! Lemme make the item then.";
+	delitem 921,300;//Items: Mushroom Spore,
+	next;
+	mes "[Aipo]";
+	mes "Okay, thanks for the items, now yours in return!";
+	next;
+	getitem 5082,1;//Items: Mushroom Hairband,
+	mes "[Aipo]";
+	mes "Thanks again! Bye!";
+	close;
+
+L_NOITEM:
+	mes "[Aipo]";
+	mes "You don't have enough Mushroom Spores... sorry!";
+	close;
+
+L_NOVICE:
+	mes "I love musrooms. I wanna be their master one day...";
+	close;
+
+M_EXIT:
+	mes "[Aipo]";
+	mes "Well, I'm always here if you change your mind!";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Mystic Rose Quest
+//--------------------------------------------------------------
+
+lhz_in02.gat,103,31,4	script	Margaret Mary	818,{
+
+	mes "[Margaret Mary]";
+	mes "Wheee! Don't you just love making youself look pretty!?";
+	mes "I love glamourising myself with all the best accessories!";
+	next;
+
+	mes "[Margaret Mary]";
+	mes "Have you ever heard of a ^FF3300Mystic Rose^000000?";
+	mes "I can make you one, and you could be fashionable and mysticly, too!";
+	next;
+	menu "Make me a ^670000Mystic rose^000000.",-,"No, I dont want one.",L_EXIT;
+	
+	if (countitem(731) < 10 || countitem(748) < 3 || countitem(982) < 1 || Zeny<50000) goto L_NOITEM;//Items: 2_Carat_Diamond, Witherless_Rose, White_Dyestuff,
+	delitem 731,10;//Items: 2_Carat_Diamond,
+	delitem 748,3;//Items: Witherless_Rose,
+	delitem 982,1;//Items: White_Dyestuff,
+	set Zeny,Zeny-50000;
+	mes "[Margaret Mary]";
+	mes "Wow, thank you! Hand me your items, please.";
+	next;
+	mes "[Margaret Mary]";
+	mes "Enjoy being pretty and mystic!";
+	getitem 5117,1;//Items: Mystic_Rose,
+	close;
+L_NOITEM:
+	mes "[Margaret Mary]";
+	mes "Well, for me to make you my Mystic rose...";
+	mes "I need these materials:";
+	mes "^FF3300 10 2-Carat Diamonds^000000,";
+	mes "^FF3300 3 Witherless Roses^000000,";
+	mes "^FF3300 1 White Dyestuff^000000,";
+	mes "and ^FF3300 50,000 zeny.^000000";
+	close;
+L_EXIT:
+	mes "[Margaret Mary]";
+	mes "Aww... well, OK then!";
+	mes "Be pretty some other time";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Oxygen Mask Quest
+//--------------------------------------------------------------
+
+payon_in02.gat,25,71,4	script	Young Man#11	86,{
+
+	mes "[Young Man]";
+	if(countitem(701) >= 5) goto L_GotOra;
+	mes "Blahhhhhh! I... I... I JUST CAN'T take it anymore!! You little stinky, filthy, BASTARDS!!!";
+	emotion e_an;
+	next;
+	menu "Continue.",M_Cont, "End Conversation.",M_End;
+	
+	M_Cont:
+		mes "[Young Man]";
+		mes "~Sigh~ I've had a rough life.  You see, both my parents passed away when I was a kid, so I had to work to support myself at a young age.";
+		next;
+		mes "[Young Man]";
+		mes "It sure was rough.  But after 10 years of hard work I was able to save up and finally buy myself a home!";
+		next;
+		mes "[Young Man]";
+		mes "Unfortunately I didn't have that much money, so I couldn't buy the home I really wanted.";
+		mes "Instead, I found this house..... It was big and cheap.... so I bought without really thinking my decision through.....";
+		next;
+		mes "[Young Man]";
+		mes "Jeez was that a mistake...... The house turned out to be a HAVEN for THIEF BUGS!!!";
+		emotion e_omg;
+		next;
+		mes "[Young Man]";
+		mes "I tried EVERYTHING to get rid of them! I sprayed them, I smashed them, I lured them out with food.........";
+		mes "Finally as a last resort.... I even tried to burn the house down!!";
+		next;
+		mes "[Young Man]";
+		mes "Grrr! What will it take to get rid of these vile creatures???";
+		emotion e_pif;
+		next;
+		mes "[Young Man]";
+		mes "I've heard there is something called ^3355FF'Ora Ora'^000000, that people in other countries use to fight bugs.....";
+		mes "But will it work for my situation?";
+		next;
+		mes "[Young Man]";
+		mes "I'm willing to give anything a try at this point.  I don't have much money so I can only afford ^5555FF'5 Ora Oras'^000000.";
+		mes "If you happen to come across some 'Ora Ora' please let me know.";
+		close;
+
+	M_End:
+		mes "[Young Man]";
+		mes "I'm just so tired of fighting this never ending battle against these bugs...... those dirty scumbags!!";
+		emotion e_pif;
+		close;
+
+L_GotOra:
+		mes "ArrrGgghhh!! No!... It can't be!..... I think I'm going mad... they're starting to look so cute... ArrrGgghhh!!... Nooooooo!!";
+		emotion e_omg;
+	M_Menu:
+		next;
+		menu "Continue",M_Cont, "Show Ora Ora",-, "Give Ora Ora",M_Give, "Cancel",M_End2;
+
+		mes "[Young Man]";
+		mes "Oooooohhhh..... is.. is this... is this... Ora Ora...??? If you give it to me I'll give you my prized treasure in return!";
+		mes "What do you say?? Is it a deal?";
+		goto M_Menu;
+
+	M_Give:
+		if(countitem(701) < 5) goto L_Cheater;
+		delitem 701,5;
+		mes "[Young Man]";
+		mes "Muhahahahah!!! Finally, I have it.... Ora Ora! Stupid and distgusting Thief Bugs.... you'll pay for invading MY HOME!!!";
+		emotion e_gg;
+		next;
+		mes "[Young Man]";
+		mes "..... Eh em... sorry.  I was a little outa control there.... Ah, let me give you my valuable treasure......";	
+		emotion e_swt;
+		next;
+		getitem 5004,1;
+		mes "[Young Man]";
+		mes "By wearing this over your mouth, the air you breathe will be filltered so that you can breathe clean air.";
+		mes "I picked it up while I was a Sailor out at sea.  I really have no need for it.";
+		next;
+		mes "[Young Man]";
+		mes "Hehehehe!! I can't wait to use this Ora Ora!!!";
+		close;
+
+	L_Cheater:
+		mes "Oh... Where is it?!";
+		next;
+
+	M_End2:
+		mes "[Young Man]";
+		mes "What if I CAN'T get rid of these thief bugs???... I guess the only other thing I could do is fall in love with them...... heh... heh... heh....";
+		emotion e_swt;
+		close;
+
+}
+
+
+//--------------------------------------------------------------
+// Payon Headgear Quests Part #1
+//--------------------------------------------------------------
+// -> Deviruchi Cap/Helm of Angel
+//--------------------------------------------------------------
+
+payon_in01.gat,56,12,4	script	Young Man#12	89,{
+
+	mes "[Young Man]";
+	mes "What is it?............";
+	next;
+	menu "Can you make me a special item?",-, "Nothing.",M_End;
+
+		mes "[Young Man]";
+		mes "I see.... so you know about me huh?.... Ok, tell me what you want.";
+		next;
+		menu "-Helm of Angel",-, "-Deviruchi Hat",sM_Devir, "-I'll come back later.",M_End;
+
+			mes "[Young Man]";
+			mes "For the Helm of Angel I will need:";
+			mes "- ^5555FF1 Helm (slotted)^000000.";
+			mes "- ^5555FF1 Angel Wing^000000.";
+			mes "- ^5555FF5 Fang of Garm^000000.";
+			set @HAT, 1;
+			next;
+			goto sL_GetHat;
+		sM_Devir:
+			mes "[Young Man]";
+			mes "For the Deviruchi Hat I will need:";
+			mes "- ^5555FF600 Little Evil Horn^000000.";
+			mes "- ^5555FF40 Talon of Griffon^000000.";
+			set @HAT, 2;
+
+			sL_GetHat:
+				mes "[Young Man]";
+				mes "Wait a moment!  Be carefull about what items you give me.";
+				mes "I do not distinguish between equipment that has been forged or has cards attached to them.";
+				mes "If you don't want to loose a precious card or piece of equipment, make sure you don't have it equiped.";
+				next;
+				mes "[Young Man]";
+				mes "Do you have all of the items needed?";
+				menu "-Give him the items.",-, "Nevermind.",M_End;
+
+				if(@HAT == 2) goto ssL_Devir;
+
+					if(countitem(2229)<1 || countitem(2254)<1 || countitem(7036)<5) goto ssL_NotEnuf;
+					delitem 2229, 1;
+					delitem 2254, 1;
+					delitem 7036, 5;
+					mes "[Young Man]";
+					mes "Here is your Helm of Angel.";
+					getitem 5025, 1;
+					close;
+				ssL_Devir:
+					if(countitem(1038)<600 || countitem(7048)<40) goto ssL_NotEnuf;
+					delitem 1038, 600;
+					delitem 7048, 40;
+					mes "[Young Man]";
+					mes "Here is your Deviruchi Hat.";
+					getitem 5038, 1;
+					close;
+				ssL_NotEnuf:
+					mes "[Young Man]";
+					mes "You don't have enough items for me to make what you want.";
+					close;
+
+	M_End:
+		mes "[Young Man]";
+		mes "Fine then.....";
+		close;
+
+}
+
+
+//--------------------------------------------------------------
+// Payon Headgear Quests Part #2
+//--------------------------------------------------------------
+// -> Judge Hat/A-yam Hat
+//--------------------------------------------------------------
+
+payon.gat,137,123,5	script	Hangaram	740,{
+
+	mes "[Hangaram]";
+	mes "Hello adventurer!";
+	mes "Our life is complicated.";
+	next;
+	
+	mes "[Hangaram]";
+	mes "But if you want I can help you by making 2 Hats.";
+	next;
+ 
+	mes "[Hangaram]";
+	mes "My creations are the Judge Hat and the A-Yam Hat.";
+	mes "Which Hat do you want?";
+	next;
+		
+	menu "Judge Hat",Hang1,"A-yam Hat",Hang2,"No thanks",Hang3;
+
+		Hang1:
+			mes "[Hangaram]";
+			mes "^3355FFJudge Hat^000000";
+			mes "7 Red Orbs,";
+			mes "7 Blue Orbs,";
+			mes "7 Yellow Orbs,";
+			mes "7 Green Orbs,";
+			mes "300 Shining Scales,";
+			next;
+			mes "1 Black Dyestuff,";
+			mes "5 Cracked Diamond and";
+			mes "1 Slotted Hat.";
+			next;
+
+			if ((countitem(7445)<7) || (countitem(7446)<7) || (countitem(7447)<7) || (countitem(7448)<7) || (countitem(954)<300) || (countitem(983)<1) || (countitem(733)<5) || (countitem(2221)<1)) goto Hang4;
+
+			delitem 7445,7;
+			delitem 7446,7;
+			delitem 7447,7;
+			delitem 7448,7;
+			delitem 954,300;
+			delitem 983,1;
+			delitem 733,5;
+			delitem 2221,1;
+
+			mes "[Hangaram]";
+			mes "Ok you seem to have all the items.";
+			next;
+
+			mes "[Hangaram]";
+			mes "Hmmm.. We now make this... Mmm.";
+			emotion 9; 	
+			next;
+	
+			mes "[Hangaram]";
+			mes "Now we use the Dyestuff like this.";
+			emotion 23;	
+			next;
+
+			mes "[Hangaram]";
+			mes "OMG!!! this isn't meant to be like this.";
+			emotion 28;	
+			next;
+
+			mes "[Hangaram]";
+			mes "....";
+			next;
+
+			mes "[Hangaram]";
+			mes "Sorry, it didn't work.";
+			next;
+
+			mes "[Hangaram]";
+			mes "Well that's the way life is.";
+			next;
+
+			mes "[Hangaram]";
+			mes "JAJAJAJA... I was just kidding here is your item !!";
+			emotion 29;
+			next;
+
+			getitem 5173,1;
+
+			mes "[Hangaram]";
+			mes "Good Work.";
+			close;
+
+		Hang4:
+			mes "Please, return when you have everything I need.";
+			close;
+
+		Hang2:
+			mes "[Hangaram]";
+			mes "^3355FFA-Yam Hat^000000";
+			mes "7 Red Orbs,";
+			mes "7 Blue Orbs,";
+			mes "7 Yellow Orbs,";
+			mes "7 Green Orbs,";
+			mes "300 Shining Scales,";
+			next;
+			mes "1 Scarlet Dyestuff,";
+			mes "5 Cracked Diamonds and";
+			mes "50 Soft Silks.";
+			next;
+
+			if ((countitem(7445)<7) || (countitem(7446)<7) || (countitem(7447)<7) || (countitem(7448)<7) || (countitem(954)<300) || (countitem(975)<1) || (countitem(733)<5) || (countitem(7166)<50)) goto Hang5;
+
+			delitem 7445,7;
+			delitem 7446,7;
+			delitem 7447,7;
+			delitem 7448,7;
+			delitem 954,300;
+			delitem 975,1;
+			delitem 733,5;
+			delitem 7166,50;
+
+			mes "[Hangaram]";
+			mes "Well, you have everything.";
+			next;
+
+			mes "[Hangaram]";
+			mes "Mmm now we just split this part...";
+			emotion 9; 	
+			next;
+	
+			mes "[Hangaram]";
+			mes "We throw this ... Mmm..";
+			emotion 23;	
+			next;
+
+			mes "[Hangaram]";
+			mes "This isn't meant to be like this..";
+			emotion 28;	
+			next;
+
+			mes "[Hangaram]";
+			mes "... ready!!!";
+			emotion 21;	
+			next;
+		
+			getitem 5174,1;
+
+			mes "[Hangaram]";
+			mes "Here you have my young fella !";
+			close;
+
+		Hang5:
+			mes "Please return when you have everything I need";
+			close;
+	
+		Hang3:
+			mes "[Hangaram]";
+			mes "Goodbye then.";
+        		close;
+}
+
+
+//--------------------------------------------------------------
+// Payon Headgear Quests Part #3
+//--------------------------------------------------------------
+// -> Smiling Mask/Lion Masquerade/Bride Mask
+//--------------------------------------------------------------
+
+payon.gat,135,231,5	script	Chung-Wol-Mang	907,{
+
+	mes "[Chung-Wol-Mang]";
+	mes "Hey, I can make you three rare masks if you bring me all of the items needed to make them.";
+	next;
+	mes "[Chung-Wol-Mang]";
+	mes "So, which one will it be?";
+	next;
+	menu "Smiling Mask",Chung1,"Lion Masquerade",Chung2,"Bride Mask",Chung3,"I changed my mind.",Chung4;
+
+		Chung1:
+			mes "[Chung-Wol-Mang]";
+			mes "Okay, for the Smiling Mask I need:";
+			mes "1 Four-Leaf Clover,";
+			mes "500 Trunks,";
+			mes "10 Elastic Bands,";
+			mes "20 Memory Bookmarks,";
+			mes "1 Cigarette,";
+			mes "100 Cactus Needles and";
+			mes "100 Manes.";
+			next;
+
+			if ((countitem(706) < 1) || (countitem(1019) < 500) || (countitem(7200) < 10) || (countitem(7015) < 20) || (countitem(2267) < 1) || (countitem(952) < 100) || (countitem(1028) < 100) || (countitem(1028) < 100)) goto Chung5;
+
+			mes "[Chung-Wol-Mang]";
+			mes "You brought all the items, thanks. Here give them to me.";
+			delitem 706,1;
+			delitem 1019,500;
+			delitem 7200,10;
+			delitem 7015,20;
+			delitem 2267,1;
+			delitem 952,100;
+			delitem 1028,100;
+			next;
+			getitem 5176,1;
+			mes "[Chung-Wol-Mang]";
+			mes "Thanks, you can have your mask now.";
+			close;
+
+		Chung5:
+			mes "[Chung-Wol-Mang]";
+			mes "Come back and talk to me when you've gathered all the items.";
+			close;
+
+		Chung2:
+			mes "[Chung-Wol-Mang]";
+			mes "Okay, for the Lion Mask I need:";
+			mes "1 Four-Leaf Clover,";
+			mes "500 Trunks,";
+			mes "10 Elastic Bands,";
+			mes "500 Horrendous Hairs,";
+			mes "2 Ancient Teeth and";
+			mes "1 Orange Dyestuff.";
+			next;
+
+			if ((countitem(706) < 1) || (countitem(1019) < 500) || (countitem(7200) < 10) || (countitem(1048) < 500) || (countitem(1053) < 2) || (countitem(980) < 1)) goto Chung7;
+
+			mes "[Chung-Wol-Mang]";
+			mes "You brought all the items, thanks. Here give them to me.";
+			delitem 706,1;
+			delitem 1019,500;
+			delitem 7200,10;
+			delitem 1048,500;
+			delitem 1053,2;
+			delitem 980,1;
+			next;
+			getitem 5177,1;
+			mes "[Chung-Wol-Mang]";
+			mes "Thanks, you can have your mask now.";
+			close;
+
+		Chung7:
+			mes "[Chung-Wol-Mang]";
+			mes "Come back and talk to me when you've gathered all the items.";
+			close;
+
+
+		Chung3:
+			mes "[Chung-Wol-Mang]";
+			mes "Okay, for the Bride Mask I need:";
+			mes "1 Four-Leaf Clover,";
+			mes "500 Trunks,";
+			mes "10 Elastic Bands,";
+			mes "20 Skirts of Virgin,";
+			mes "500 Transparent Clothes,";
+			mes "2 Ancient Lips and";
+			mes "100 Squid Inks.";
+			next;
+
+			if ((countitem(706) < 1) || (countitem(1019) < 500) || (countitem(7200) < 10) || (countitem(1049) < 20) || (countitem(7165) < 500) || (countitem(1054) < 2) || (countitem(1024) < 100)) goto Chung6;
+
+			mes "[Chung-Wol-Mang]";
+			mes "You brought all the items, thanks. Here give them to me.";
+			delitem 706,1;
+			delitem 1019,500;
+			delitem 7200,10;
+			delitem 1049,20;
+			delitem 7165,500;
+			delitem 1054,2;
+			delitem 1024,100;
+			next;
+			getitem 5169,1;
+			mes "[Chung-Wol-Mang]";
+			mes "Thanks, you can have your mask now.";
+			close;
+
+		Chung6:
+			mes "[Chung-Wol-Mang]";
+			mes "Come back and talk to me when you've gathered all the items.";
+			close;
+
+		Chung4:
+			mes "[Chung-Wol-Mang]";
+			mes "Okay, come back if you feel up to it later.";
+			close;
+}
+
+
+//--------------------------------------------------------------
+// Ph.D Hat Quest
+//--------------------------------------------------------------
+
+prt_in.gat,38,108,4	script	Teacher#01	53,{
+
+	if (countitem(710) >= 1 && countitem(703) >= 1 && countitem(704) >= 1 && countitem(708) >= 1) goto L_Start;//Items: Illusion Flower, Hinalle, Aloe, Ment,
+	mes "Don't you think.... ^4444FF'flowers'^000000 are pretty?";
+	next;
+	menu "Talk.",-, "End Conversation.",M_End;
+	
+		mes "[Teacher]";
+		mes "When I was young, I didn't play with friends like the other children.  Instead, I spent time studing by myself.";
+		next;
+		mes "[Teacher]";
+		mes "Sometimes I regret that decision.... but it doesn't really matter now.  Through hard work, I was able to finish school earlier than my classmates.";
+		next;
+		mes "[Teacher]";
+		mes "I was very lonely however..... when things got rough I had no one to talk to about my feelings.";
+		next;
+		mes "[Teacher]";
+		mes "Then one day, I found my best friend.";
+		next;
+		mes "[Teacher]";
+		mes "It was when I saw this pretty flower blooming in an abandoned garden.... I realised that it was just like me and in it, I found my best friend.";
+		next;
+		mes "[Teacher]";
+		mes "Even though, to others it was just a common flower.... for me this flower meant much more.  This flower gave me the strength to continue my studies.";
+		mes "I could achieve my goals because of her.";
+		next;
+		mes "[Teacher]";
+		mes "So.. now... I am trying to repay to her.  I have started studying Flowers, and It is my goal to cover the whole world in Flowers!";
+		next;
+		mes "[Teacher]";
+		mes "To accomplish my work.. I need a great deal of flowers. Unfortunately because of my studies, I can rarely go outside.";
+		mes "It is really hard to find as many flowers as I need.";
+		next;
+		mes "[Teacher]";
+		mes "I need 1 ^3355FFIllusion Flower^000000 ,1 ^3355FFHinalle^000000,1 ^3355FFAloe^000000 and 1 ^3355FFMent^000000...";
+		mes "If you can bring these flowers to me, I would be willing to give you a special item...";
+		close;
+	
+	M_End:
+		mes "[Teacher]";
+		mes "One of these days I will cover whole world in Flowers!.....";
+		close;
+
+L_Start:
+	mes "[Teacher]";
+	mes "Oh... Those Flowers in your hand are....";
+	M_Menu:
+	next;
+	menu "Show Flowers",-, "Give Flowers",M_Give, "Cancel",M_End;
+
+		mes "[Teacher]";
+		mes "Ah... How wonderful!! These are definately the 4 kinds of Flowers I was looking for ..";
+		mes "The ^3355FFIllusion Flower, Hinalle, Aloe, and Ment^000000.  Would you give them to me?...";
+		next;
+		mes "[Teacher]";
+		mes "If you do I'd be willing to give you a special item.....";
+		goto M_Menu;
+
+	M_Give:
+		if (countitem(710) < 1 || countitem(703) < 1 || countitem(704) < 1 || countitem(708) < 1) goto L_Cheater;//Items: Illusion Flower, Hinalle, Aloe, Ment,
+		delitem 710,1;//Items: Illusion Flower,
+		delitem 703,1;//Items: Hinalle,
+		delitem 704,1;//Items: Aloe,
+		delitem 708,1;//Items: Ment,
+		mes "[Teacher]";
+		mes "I really, really appreciate what you've done for me!! I trully am grateful! I will give you a very special item as I promised.";
+		emotion e_thx;
+		next;
+		mes "[Teacher]";
+		mes "This is the hat I wore at my Graduation Ceremony.  It is a reminder of my joyfull school days at the University.";
+		mes "Please take it...";
+		getitem 5012,1;//Items: Ph.D Hat,
+		close;
+
+	L_Cheater:
+		mes "[Teacher]";
+		mes "I won't give a special item to a cheater...";
+		mes "Now go away!";
+		emotion e_bzz;
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Posture Fix Hat Quest
+//--------------------------------------------------------------
+
+payon_in01.gat,143,8,5	script	Nan Hyang	814,{
+
+	if (getequipisequiped(5073)) goto L_GOOD;
+	if (BaseJob == 0) goto L_NOVICE;
+	mes "[Nan Hyang]";
+	mes "Tut tut! you have terrible posture!";
+	mes "You need to correct it immediately!";
+	next;
+	mes "[Nan Hyang]";
+	mes "I could correct it for you if you brought me some materials to make you a Posture Fix Hat.";
+	next;
+	menu "Please, make me one.",-,"What do I need to get?",M_REQ,"No thanks!",M_EXIT;
+
+	if ((countitem(1550) <1) || (countitem(2285) < 1)) goto L_NOITEM;//Items: Book, Apple o' Archer,
+	mes "[Nan Hyang]";
+	mes "Ahh at last, someone who is serious!";
+	delitem 1550,1;//Items: Book,
+	delitem 2285,1;//Items: Apple o' Archer,
+	next;
+	getitem 5073,1;//Items: Posture Fix Hat,
+	mes "[Nan Hyang]";
+	mes "Hehe, well, maybe you will become more careful, or your sense will become balanced.";
+	close;
+
+M_REQ:
+	mes "[Nan Hyang]";
+	mes "What I require is very simple...";
+	next;
+	mes "[Nan Hyang]";
+	mes "1 Book.";
+	mes "And 1 Apple o' Archer to balance on it.";
+	close;
+
+L_NOITEM:
+	mes "[Nan Hyang]";
+	mes "At least be serious, you dont have enough items!";
+	mes "Come back when you wish to learn posture.";
+	close;
+
+L_GOOD:
+	mes "[Nan Hyang]";
+	mes "Ah, that's it! good to see you are willing to learn!";
+	close;
+
+L_NOVICE:
+	mes "Hi! Could you visit me next week?";
+	next;
+
+M_EXIT:
+	mes "[Nan Hyang]";
+	mes "Good day to you.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Pretend Murdered Quest
+//--------------------------------------------------------------
+
+payon.gat,154,170,4	script	Granny	78,{
+
+	mes "[Granny]";
+	if(countitem(1049) >= 4) goto L_Get;
+
+	mes "Oh deary me.  What to do... what to do........  You see I want to nitt some special clothes for my family but I don't have the right cloth to do so.";
+	next;
+	mes "[Granny]";
+	mes ".....sigggghhhhhh........";
+	next;
+	mes "[Granny]";
+	mes "Why what's this? Mushrooms? Oh yes I remember now, I pick these mushrooms on the Payon Mountain side.";
+	mes "Ho ho, I have such a hard time remembering things now.";
+	next;
+	mes "[Granny]";
+	mes "What was I saying before? Oh yes! I need some special cloth to make clothes for my family.";
+	mes "If you happen to come across some ^5555FF'Skirt of Virgin'^000000, please let me know.";
+	emotion e_hmm;
+	next;
+	mes "[Granny]";
+	mes "I need ^5555FF'4 Skirt of Virgin'^000000 to make the clothes.  I will be very greatfull if you could bring me some.";
+	close;
+
+L_Get:
+	mes "Oh! You have 4 Skirt of Virgin.  Would you be willing to give them to me dear?";
+	next;
+	menu "Why of course granny",-,"Heck no ya old bag!",M_No;
+
+		if(countitem(1049) < 4) goto M_No;
+		mes "[Granny]";
+		mes "Bless your kind heart.  Now I can make some special clothes for my family.  Let me give you a reward for being so genrous dear.";
+		emotion e_lv2;
+		next;
+		getitem 2293,1;
+		delitem 1049,4;
+		mes "[Granny]";
+		mes "There you are.  It's something I kept from my younger days as an actress.  I was quite fetching and very popular back then.";
+		mes "I've kept it as a reminder of my days as an actress, but with my memory as bad as it is, it's really of no use to me anymore.";
+		next;
+		mes "[Granny]";
+		mes "I'm sure you'll have fun using it at parties."; 
+		close;
+		
+	M_No:
+		mes "[Granny]";
+		mes "Well I never!!! Kids these days just have no respect or compasion for their elders!";
+		emotion e_pif;
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Red Bonnet Quest
+//--------------------------------------------------------------
+
+lighthalzen.gat,183,88,7	script	Relaxed-Looking Lady	818,{
+
+	mes "[Relaxed-Looking Lady]";
+	mes "Hello there! Please, answer my questions.";
+	next;
+	mes "[Relaxed-Looking Lady]";
+	mes "Do you have a grandma?";
+	emotion 20;
+	next;
+	mes "[Relaxed-Looking Lady]";
+	mes "Really? I'm sorry. Do you like wolves?";
+	next;
+	mes "[Relaxed-Looking Lady]";
+	mes "Ha! I knew it! And... my last question. Would you like to put on something reddish?";
+	emotion 1;
+	next;
+	mes "[Relaxed-Looking Lady]";
+	mes "Just kidding, Have you ever read 'Red-Hood'? I can make to you the very same ^FF3300Red Bonnet^000000.";
+	next;
+	menu "Please, make it!",-,"No, thanks",L_EXIT;
+	if (countitem(10015) < 1 || countitem(975) < 1 || countitem(10007) < 1 || countitem(5032)<1 || Zeny<50000) goto L_NOITEM;//Items: Green_Lace, Scarlet_Dyestuffs, Silk_Ribbon, Sunday_Hat,
+	delitem 10015,1;//Items: Green_Lace,
+	delitem 975,1;//Items: Scarlet_Dyestuffs,
+	delitem 10007,1;//Items: Silk_Ribbon,
+	delitem 5032,1;//Items: Sunday_Hat,
+	set Zeny,Zeny-50000;
+	mes "[Relaxed-Looking Lady]";
+	mes "Ok then, I shall make one for you.";
+	next;
+	mes "[Relaxed-Looking Lady]";
+	mes "Now you can drink tea with your grannie and have fun with wolves.";
+	getitem 5109,1;//Items: Red_Bonnet,
+	close;
+
+L_NOITEM:
+	mes "[Relaxed-Looking Lady]";
+	mes "Give me:";
+	mes "^FF3300 Green Lace^000000,";
+	mes "^FF3300 Scarlet Dyestuff ^000000,";
+	mes "^FF3300 Silk Ribbon^000000,";
+	mes "^FF3300 Sunday Hat ^000000,";
+	mes "and ^FF3300 50,000 zeny.^000000";
+	close;
+
+L_EXIT:
+	mes "[Relaxed-Looking Lady]";
+	mes "Well done. Bye.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Sea Otter Hat Quest
+//--------------------------------------------------------------
+
+xmas.gat,184,267,4	script	Pretty Rency	818,{
+
+	mes "[Pretty Rency]";
+	mes "Wow! you heard of a Sea Otter Hat?";
+	next;
+	mes "[Pretty Rency]";
+	mes "The requirements for this item, are very simple:";
+	mes "1 Lazy Racoon Hat,";
+	mes "1 Transformation Leaf";
+	next;
+	mes "[Pretty Rency]";
+	mes "Do you have these items?";
+	next;
+	menu "Yes.",-,"No.",M_EXIT;
+
+	if ((countitem(5084) < 1) || (countitem(5064) < 1)) goto L_NOITEM;//Items: Lazy Racoon Hat, Transformation Leaf,
+	mes "[Pretty Rency]";
+	mes "Congratulations!";
+	delitem 5084,1;//Items: Lazy Racoon Hat,
+	delitem 5064,1;//Items: Transformation Leaf,
+	next;
+	mes "[Pretty Rency]";
+	mes "Thanks for your items! Now I will make yours for you!";
+	next;
+	getitem 5078,1;//Items: Sea Otter Hat,
+	mes "[Pretty Rency]";
+	mes "Thanks! Byeeeeeee!";
+	close;
+
+L_NOITEM:
+	mes "[Pretty Rency]";
+	mes "Sorry, not enough items.";
+	close;
+
+M_EXIT:
+	mes "[Pretty Rency]";
+	mes "Byebye! Have a nice time in the world of Ragnarok!";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Stop Post Quest
+//--------------------------------------------------------------
+
+morocc_in.gat,142,100,4	script	William	89,{
+
+	mes "[William]";
+	mes "Welcome to MacMillan's ^3355FF'Post'^000000 Workshop .";
+	next;
+	mes "[William]";
+	mes "My Clan, MacMillan, Has been producing professional grade Traffic Signal Posts for more than 250 years.";
+	mes "Nowadays we are taking special orders for our very unique, ^3355FF'Stop Post'^000000.";
+	next;
+	menu "Could I order a ^3355FF'Stop Post'^000000?",-, "I'm not interested.",M_End;
+
+		mes "[William]";
+		mes "MacMillan's one of a kind ^3355FF'Stop Post'^000000 fits comfortably on a persons head.";
+		mes "Not only does it make an interesting head accessory, but it can actually be used as a stop sign as well.";
+		next;
+		mes "[William]";
+		mes "I garauntee that our ^3355FF'Stop Post'^000000 will last for well over 100 years, or my name isn't MacMillan!!";
+		next;
+		mes "[William]";
+		mes "For us to make you a ^3355FF'Stop Post'^000000, we will need:";
+		mes "^3355FF91100 Zeny,";
+		mes "50 Trunks,";
+		mes "and 1 Black Dyestuff^000000.";
+		next;
+		if(countitem(1019) >= 50 && countitem(983) >= 1 && Zeny >= 91100) goto sL_GetPost;
+		mes "[William]";
+		mes "Come back when you have all of the items.";
+		close;
+
+		sL_GetPost:
+			delitem 1019,50;
+			delitem 983,1;
+			set Zeny, Zeny - 91100;
+			mes "[William]";
+			mes "Here you are! A hand made, one of a kind, ^3355FF'Stop Post '^000000! Thank you for your patronage!";
+			getitem 2272,1;
+			emotion e_thx;
+			close;
+
+	M_End:
+		mes "[William]";
+		mes "Thanks for stopping by the MacMillan's Workshop.  I hope to see you soon.";
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Tulip Hairpin Quest
+//--------------------------------------------------------------
+
+geffen.gat,84,189,6	script	Ses	815,{
+
+	mes "[Ses]";
+	if (BaseJob == 0) goto L_NOVICE;
+	mes "Woo, hello! Fruit fruit!";
+	mes "Sorry, I just love flowers, fruits and everything that makes me";
+	mes "look more FRUITY!";
+	next;
+	menu "Make me a Tulip Hairpin!",-,"What do I need?",M_REQ,"Bye!",M_EXIT;
+
+	mes "[Ses]";
+	mes "You have the items?";
+	next;
+	menu "Yes!",-,"No!",M_EXIT;
+
+	if ((countitem(2278) < 1) || (countitem(975) < 1)) goto L_NOITEM;//Items: Mr. Smile, Scarlet Dyestuffs,
+	mes "[Ses]";
+	mes "Yay! thanks! Pineapple!";
+	mes "Here you go!";
+	delitem 2278,1;//Items: Mr. Smile,
+	delitem 975,1;//Items: Scarlet Dyestuffs,
+	next;
+	getitem 5077,1;//Items: Tulip Hairpin,
+	mes "[Ses]";
+	mes "Enjoy being pretty!";
+	close;
+
+L_NOITEM:
+	mes "[Ses]";
+	mes "You don't have enough items for a Tulip Hairpin!";
+	next;
+
+M_REQ:
+	mes "[Ses]";
+	mes "Well, I need...";
+	mes "1 Mr. Smile for the substance";
+	mes "and 1 scarlet Dyestuff!";
+	mes "Bring these to me for your item!";
+	close;
+
+L_NOVICE:
+	mes "I love flowers... Do you love flowers, too?";
+	close;
+
+M_EXIT:
+	mes "[Ses]";
+	mes "Okay!";
+	mes "Byeeeee!";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Turban Quest
+//--------------------------------------------------------------
+
+morocc.gat,140,156,5	script	Turban Thief	58,{
+
+	if (mask_q == 0) goto AWAY;
+	if (mask_q == 2) goto NoBus;
+	mes "[Turban Thief]";
+	mes "E'llo mah frien, would I interesst tu with this rare mask?  Its value I assure you is real mah frien.  Tis manific!";
+	next;
+	mes "[Turban Thief]";
+	mes "Wah? O ho ho ho, so you know thaz I steal dis from those savages no?  Well I won'tz give it back.  But I will for a pricez... wat you say?";
+	next;
+	menu "Pay 1,000,000z",-,"No deal",NoGo;
+
+		if (Zeny < 1000000) goto NotEnough;
+		set Zeny,Zeny-1000000;
+		mes "[Turban Thief]";
+		mes "O ho ho, its a deal then!";
+		getitem 7114,1;//Items: Sphinx Mask,
+		set mask_q,2;
+		close;
+
+	NoGo:
+		mes "[Turban Thief]";
+		mes "Ahh a business man are you no?  Fine, how about...";
+		next;
+		menu "Pay 750,000",-,"Nope lower",NoGoB;
+
+			if (Zeny < 750000) goto NotEnough;
+			set Zeny,Zeny-750000;
+			mes "[Turban Thief]";
+			mes "It is a done deal, no refunds!";
+			getitem 7114,1;//Items: Sphinx Mask,
+			set mask_q,2;
+			close;
+		NoGoB:
+			mes "[Turban Thief]";
+			mes "Hmmm... you drive a hard bargain, ok... my final offer...";
+			next;
+			menu "Pay 500,000",-,"It can go lower than that.",NoGoC;
+
+				if (Zeny < 500000) goto NotEnough;
+				set Zeny,Zeny-500000;
+				mes "[Turban Thief]";
+				mes "Alright, here you go then...";
+				getitem 7114,1;//Items: Sphinx Mask,
+				close;
+			NoGoC:
+				next;
+				mes "[Turban Thief]";
+				mes "Ack!  Forgez it!  I can do bettaz en elsez where!";
+				set mask_q,2;
+				close;
+	NoBus:
+		mes "[Turban Thief]";
+		mes "You have no more business with me, go away!";
+		close;
+	AWAY:
+		mes "[Turban Thief]";
+		mes "What do you wan te withz me?  Be gone!";
+		close;
+	NotEnough:
+		mes "[Turban Thief]";
+		mes "Are youz playin wit me?  You don't have ze money!";
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Valkyrie Helm Quest
+//--------------------------------------------------------------
+
+hugel.gat,146,105,4	script	Genirhimin	897,{
+
+	mes "[Genirhimin]";
+	mes "Eh?";
+	if (Zeny < 10000000) goto L_POOR;
+	next;
+	mes "[Genirhimin]";
+	mes "In days long past us mortals were permitted";
+	mes "to serve Odin and the Valkyries in battle..";
+	mes "So that maybe we would have the chance to die";
+	mes "honorably in battle and return to Valhalla";
+	next;
+	mes "[Genirhimin]";
+	mes "The bravest of Warriors were rewarded with";
+	mes "the Helm of the Valkyries";
+	mes "But.. those days are long since passed..";
+	mes "I suppose I could make you one, if you can";
+	mes "gather what I need.";
+	next;
+
+	menu "Really? I'd love one.",Valkyrie1,"I'm not one for fairy tales old man.",Valkyrie2;
+
+		Valkyrie1:
+			mes "[Genirhimin]";
+			mes "Here is what I need:";
+			mes "1 Sageworm Card,";
+			mes "1 Argiope Card,";
+			mes "1 Dryad Card,";
+			mes "1 Wooden Golem Card,";
+			mes "1 Bongun Card,";
+			mes "1 Pirate Skel Card,";
+			mes "1 Marduk Card and...";
+			next;
+			mes "[Genirhimin]";
+			mes "1 Hode Card,";
+			mes "1 Elder Card,";
+			mes "1 Nightmare Terror Card,";
+			mes "1000 Runes of Darkness and";
+			mes "1000 Runes of Bloody Color.";
+			next;
+			mes "[Genirhimin]";
+			if ((countitem(4219) < 1) || (countitem(4114) < 1) || (countitem(4177) < 1) || (countitem(4259) < 1) || (countitem(4212) < 1) || (countitem(4073) < 1) || (countitem(4112) < 1) || (countitem(4081) < 1) || (countitem(4251) < 1) || (countitem(4166) < 1) || (countitem(7511) < 1000) || (countitem(7563) < 1000)) goto Valkyrie3;
+
+			mes "Give me a minute and I'll work my magic...";
+			delitem 4219,1;
+			delitem 4114,1;
+			delitem 4177,1;
+			delitem 4259,1;
+			delitem 4212,1;
+			delitem 4073,1;
+			delitem 4112,1;
+			delitem 4081,1;
+			delitem 4251,1;
+			delitem 4166,1;
+			delitem 7511,1000;
+			delitem 7563,1000;
+			next;
+			getitem 5171,1;
+			mes "[Genirhimin]";
+			mes "This is a serious honor.. You have proven yourself a brave and honorable Warrior, Wear this with Pride";
+			close;
+
+		Valkyrie3:
+			mes "I'm sorry, but I need more to make the helm.";
+			close;
+
+		Valkyrie2:
+			mes "[Genirhimin]";
+			mes "So be it, suit yourself..";
+			close;
+
+	L_POOR:
+		mes "My time is worth more than the fortunes of Rune-Midgard and Arunafelz combined..";
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Welding Mask Quest
+//--------------------------------------------------------------
+
+geffen_in.gat,144,166,4	script	Blacksmith#01	63,{
+
+	mes "[Blacksmith]";
+	mes "Who am I?!........";
+	emotion e_gasp;
+	next;
+	mes "[Blacksmith]";
+	mes "Iam the one and only Veteran Blacksmith here!! Haven't you heard???";
+	mes "I've been working for 30 years in this hot, bloody, Hellfire!";
+	emotion e_no1;
+	next;
+	mes "[Blacksmith]";
+	mes "Since I became a Blacksmith, I invented something really incredible..... wanna hear about it?";
+	next;
+	menu "I'd love to.",-, "Well, not really....",M_No;
+
+		mes "[Blacksmith]";
+		mes "Blacksmiths are always welding metals under the HOTEST and must grueling conditions!";
+		mes "The tremendous heat from the metals is so intense that it almost feels as if your face is going to burn off....";
+		emotion e_omg;
+		next;
+		mes "[Blacksmith]";
+		mes "But with my great invention, Blacksmiths no longer have to fear their faces catching on fire! I call it the ^3355FF' Welding Mask'^000000!!";
+		emotion e_ic;
+		next;
+		mes "[Blacksmith]";
+		mes "By wearing this over ones face, one will be fully protected from scorching heat and flying debirs.";
+		next;
+		mes "[Blacksmith]";
+		mes "So what do you think? For ^4455FF'50 Steels'^000000 and only ^4455FF2000 Zeny^000000, I can make you one.";
+		next;
+		menu "Hm.. Not bad. Alright.",-, "No thanks.  I'd have no use for it.",sM_No;
+
+			mes "[Blacksmith]";
+			if(countitem(999) < 50 || Zeny < 2000) goto sL_NotEnuf;
+			delitem 999,50;
+			set Zeny, Zeny - 2000;
+			mes "Great! I'll make one right away.......";
+			next;	
+			mes "~!clonk!~!clank!~!bang!~ ~!clonk!~!clank!~!bang!~";
+			next;
+			mes "[Blacksmith]";
+			mes "Here you are, your very own Welding Mask! It was a pleasure doing buisness with you!";
+			getitem 2292,1;
+			close;
+
+			sL_NotEnuf:
+				mes "Listen here.... I said I needed ^4455FF'50 Steels'^000000 and ^4455FF2000 Zeny^000000 to make you a Welding Mask.";
+				emotion e_swt;
+				close;
+
+		sM_No:
+			mes "[Blacksmith]";
+			mes "Oh man... Your gonna regret not getting one.  Trust me sooner or later you're gonna need a ^5555FFWelding Mask^000000.";
+			mes "Everybody does.....";
+			close;
+
+	M_No:
+		mes "[Blacksmith]";
+		mes "Well then, stop wasting my time!";
+		emotion e_pif;
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Winter Hat Quest
+//--------------------------------------------------------------
+
+einbech.gat,70,200,7	script	Mater	818,{
+
+	mes "[Mater]";
+	mes "Aren't you cold?";
+	mes "I can make you a ^FF3300Winter Hat^000000";
+	next;
+	menu "Please, make one for me",-,"No, thanks",L_EXIT;
+
+	if (countitem(7267) < 999 || countitem(983) < 1 || countitem(749) < 1 || Zeny<50000) goto L_NOITEM;//Items: Tigerskin_Underwear, Black_Dyestuff, Frozen_Rose,
+	delitem 7267,999;//Items: Tigerskin_Underwear,
+	delitem 983,1;//Items: Black_Dyestuff,
+	delitem 749,1;//Items: Frozen_Rose,
+	set Zeny,Zeny-50000;
+	mes "[Mater]";
+	mes "Exellent! Now give me the items.";
+	next;
+	mes "[Mater]";
+	mes "Here you are.";
+	getitem 5115,1;//Items: Fashionable_Fur_Hat,
+	close;
+L_NOITEM:
+	mes "[Mater]";
+	mes "Please, correct these materials:";	
+	mes "^FF3300 999 Tigerskin Underwears^000000,";
+	mes "^FF3300 Black Dyestuff^000000,";
+	mes "^FF3300 Frozen Rose^000000,";
+	mes "and ^FF3300 50,000 zeny.^000000";
+	close;
+L_EXIT:
+	mes "[Mater]";
+	mes "Azzz youu wishhhh... Brr-r.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Zealotus Mask Quest
+//--------------------------------------------------------------
+
+gl_prison1.gat,137,138,5	script	Zealotus#LhzHat	1200,{
+
+	if (ZLMASKQ == 0) goto Zealotus1;
+	if (ZLMASKQ > 0 && ZLMASKQ < 6) goto Zealotus2;
+	if (ZLMASKQ == 6) goto Zealotus3;
+	if (ZLMASKQ == 7) goto Zealotus4;
+	if (ZLMASKQ == 8) goto Zealotus6;
+
+	Zealotus1:
+		mes "[Zealotus]";
+		mes "Kneel, worm!";
+		mes "As ruler of this";
+		mes "Underground Prison,";
+		mes "I command all who step";
+		mes "into my private realm!";
+		next;
+		mes "[Zealotus]";
+		mes "Resist, and you shall be";
+		mes "punished! Grovel and kiss";
+		mes "my feet, and perhaps you";
+		mes "might be spared. Hohohohoho!";
+		next;
+		menu "Oh, your highness!",Highness,"Whatever.",Whatever;
+
+		Highness:
+			mes "[Zealotus]";
+			mes "The submissive woman is";
+			mes "nothing but an ideal dream";
+			mes "for the arrogant male! A true";
+			mes "woman revels in her power to";
+			mes "have her man do her bidding!";
+			next;
+			menu "Yes, it's so true!",True,"Boooo!",Boo;
+
+			True:
+				mes "[Zealotus]";
+				mes "However, in my lust for power, I may have inadventently crushed";
+				mes "the spirits of my beloved a little too harshly. His pride crumbled,";
+				mes "my man even cowers in front of the humans! It pains me to see it.";
+				next;
+				mes "[Zealotus]";
+				mes "It is beneath me to ask";
+				mes "this of you, but it will take";
+				mes "a human like you to make";
+				mes "him remember who he truly is,";
+				mes "a proud creature of darkness";
+				mes "who should fear only me!";
+				next;
+				mes "[Zealotus]";
+				mes "Human. I offer you a small";
+				mes "share of my power if you can";
+				mes "take the pathetic, weeping lump";
+				mes "of monster crying in the corner";
+				mes "of this prison and make him";
+				mes "realize his true nature.";
+				set ZLMASKQ,1;
+				close;
+				end;
+
+			Boo:
+				mes "[Zealotus]";
+				mes "You dirty, dirty human...";
+				mes "How dare you have an ";
+				mes "opinion different than mine!";
+				mes "No matter. The day will come";
+				mes "when all of your race shall";
+				mes "address me only as \"queen.\"";
+				close;
+				end;
+
+		Whatever:
+			mes "[Zealotus]";
+			mes "Mortal simpleton!";
+			mes "Bah! The mocking of";
+			mes "a boorish cur is worthless";
+			mes "to me. I have all the time in";
+			mes "the world to grind your pride";
+			mes "to dust beneath my heels.";
+			close;
+			end;
+
+	Zealotus2:
+		mes "[Zealotus]";
+		mes "Hm. if my beloved is";
+		mes "acting stubborn or refuses";
+		mes "to listen, feel free to take";
+		mes "drastic measures. Just think";
+		mes "of what I would do in your";
+		mes "place. Ohohohohoho~!";
+		close;
+		end;
+
+	Zealotus3:
+		mes "[Zealotus]";
+		mes "Ooh, you're back.";
+		mes "Phendark is certainly";
+		mes "back to his old self again,";
+		mes "thanks to your efforts, human.";
+		mes "Yes, his anger, his courage";
+		mes "and passion are all restored~";
+		next;
+		mes "[Zealotus]";
+		mes "As I promised, I shall";
+		mes "grant you a share of my";
+		mes "power. However, I will need";
+		mes "some items to form this minor";
+		mes "contract between you and me.";
+		next;
+		mes "[Zealotus]";
+		mes "I will need";
+		mes "^3131FF1 Cat's Eye^000000,";
+		mes "^3131FF1 Forbidden Red Candle^000000 and";
+		mes "^3131FF30 Worn-Out Magic Scrolls^000000.";
+		mes "Then, I can grant you a measure";
+		mes "of my power as I've promised.";
+		set ZLMASKQ,7;
+		close;
+		end;
+
+	Zealotus4:
+		if (countitem(7263) >= 1) goto ZealCount1;
+		goto ZealNoItems;
+
+	ZealCount1: if (countitem(660) >= 1) goto ZealCount2;
+		goto ZealNoItems;
+
+	ZealCount2: if (countitem(7099) >= 30) goto Zealotus5;
+		goto ZealNoItems;
+
+	Zealotus5:
+			mes "[Zealotus]";
+			mes "I see that you have";
+			mes "brought what I need to";
+			mes "complete the contract";
+			mes "between you and me,";
+			mes "human. Let's begin...";
+			next;
+			mes "^3355FFZealotus takes the red";
+			mes "candle you've given her and";
+			mes "drips the wax into her open";
+			mes "palm. The Cat's Eye begins";
+			mes "to glow with an eerie light.^000000";
+			next;
+			mes "[Zealotus]";
+			mes "Now, place your index";
+			mes "finger into my palm so";
+			mes "that we may complete the";
+			mes "final step of this contract...";
+			next;
+			menu "Don't complete the contract.",NoContract,"Complete the contract.",YesContract;
+
+			NoContract:
+				mes "[Zealotus]";
+				mes "Hm? What are you";
+				mes "afraid of? This is a";
+				mes "minor contract, so";
+				mes "you are not selling me";
+				mes "your soul, or anything";
+				mes "else for that matter.";
+				close;
+				end;
+
+			YesContract:
+				mes "[Zealotus]";
+				mes "I, Zealotus, as ruler";
+				mes "of this realm, seal this";
+				mes "eternal contract with this";
+				mes "Forbidden Red Candle.";
+				next;
+				mes "[Zealotus]";
+				mes "" + strcharinfo(0) + " will";
+				mes "forever have a share";
+				mes "in my power. Those that";
+				mes "bow to me must also bow";
+				mes "to " + strcharinfo(0) + ". It shall be done.";
+				specialeffect2 196;
+				specialeffect2 192;
+				next;
+				mes "[Zealotus]";
+				mes "Human, take this";
+				mes "mask with you as an";
+				mes "everlasting token of our";
+				mes "contract. So long as you";
+				mes "carry this, I will be at your";
+				mes "side. So says Zealotus!";
+				delitem 7263,1;
+				delitem 660,1;
+				delitem 7099,30;
+				getitem 5121,1;
+				set ZLMASKQ,8;
+				close;
+				end;
+
+	ZealNoItems:
+		mes "[Zealotus]";
+		mes "I will need";
+		mes "^3131FF1 Cat's Eye^000000,";
+		mes "^3131FF1 Forbidden Red Candle^000000 and";
+		mes "^3131FF30 Worn-Out Magic Scrolls^000000.";
+		mes "Then, I can grant you a measure";
+		mes "of my power as I've promised.";
+		close;
+
+	Zealotus6:
+		mes "[Zealotus]";
+		mes "Ah, I greet you in";
+		mes "peace, human. Behold,";
+		mes "the splendor of our realm!";
+		mes "Though, I do not blame you";
+		mes "if you have no interest in";
+		mes "commanding these Injustices...";
+		next;
+		mes "[Zealotus]";
+		mes "Thanks to your help,";
+		mes "my Phendark has returned";
+		mes "to his old, monstrously";
+		mes "passionate ways. Now I can";
+		mes "show him the stinging love";
+		mes "of my whip! Hohohohohoho!";
+		emotion 30;
+		close;
+		end;
+}
+		
+gl_prison1.gat,97,104,1	script	Phendark#LhzHat	1202,{
+
+	if (ZLMASKQ == 0) goto PhenDark1;
+	if (ZLMASKQ == 1) goto PhenDark2;
+	if (ZLMASKQ == 2 || ZLMASKQ == 3) goto PhenDark3;
+	if (ZLMASKQ == 4) goto PhenDark4b;
+	if (ZLMASKQ == 5) goto PhenDark5;
+	if (ZLMASKQ > 5) goto PhenDark6;
+
+	PhenDark1:
+		mes "[Phendark]";
+		mes "Huh? Oh no!";
+		mes "Another h-human?!";
+		mes "P-please! S-stay away,";
+		mes "don't come near me!";
+		close;
+
+	PhenDark2:
+		if (countitem(1950) || equippeditem(1950))set @whipcount,@whipcount+1;
+		if (countitem(1951) || equippeditem(1951))set @whipcount,@whipcount+1;
+		if (countitem(1952) || equippeditem(1952))set @whipcount,@whipcount+1;
+		if (countitem(1953) || equippeditem(1953))set @whipcount,@whipcount+1;
+		if (countitem(1954) || equippeditem(1954))set @whipcount,@whipcount+1;
+		if (countitem(1955) || equippeditem(1955))set @whipcount,@whipcount+1;
+		if (countitem(1956) || equippeditem(1956))set @whipcount,@whipcount+1;
+		if (countitem(1957) || equippeditem(1957))set @whipcount,@whipcount+1;
+		if (countitem(1958) || equippeditem(1958))set @whipcount,@whipcount+1;
+		if (countitem(1959) || equippeditem(1959))set @whipcount,@whipcount+1;
+		if (countitem(1960) || equippeditem(1960))set @whipcount,@whipcount+1;
+		if (countitem(1961) || equippeditem(1961))set @whipcount,@whipcount+1;
+		if (countitem(1962) || equippeditem(1962))set @whipcount,@whipcount+1;
+		if (countitem(1963) || equippeditem(1963))set @whipcount,@whipcount+1;
+		if (countitem(1964) || equippeditem(1964))set @whipcount,@whipcount+1;
+		if (countitem(1965) || equippeditem(1965))set @whipcount,@whipcount+1;
+		if (countitem(1966) || equippeditem(1966))set @whipcount,@whipcount+1;
+		if (countitem(1967) || equippeditem(1967))set @whipcount,@whipcount+1;
+		if (countitem(1968) || equippeditem(1968))set @whipcount,@whipcount+1;
+		if (countitem(1969) || equippeditem(1969))set @whipcount,@whipcount+1;
+		if (countitem(1970) || equippeditem(1970))set @whipcount,@whipcount+1;
+		if (countitem(1971) || equippeditem(1971))set @whipcount,@whipcount+1;
+		mes "[Phendark]";
+		mes "Huh? Oh no!";
+		mes "Another h-human?!";
+		mes "P-please! S-stay away,";
+		mes "don't come near me!";
+		next;
+		mes "[Phendark]";
+		mes "I... I swear!";
+		mes "I'm not carrying any";
+		mes "rare items or stuff you";
+		mes "can wear, so please don't";
+		mes "beat me! I... Oh my god, you";
+		mes "don't believe me, don't you?";
+		next;
+		mes "[Phendark]";
+		mes "You humans never leave";
+		mes "me alone! Why do you have";
+		mes "to bully me like this?! I'm";
+		mes "honestly not carrying anything";
+		mes "of value! Z-Zealotus, please!";
+		mes "Zealotus, heeeeeelp me~!";
+		emotion 28;
+		if (!@whipcount) close;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "You're pathetic!";
+		mes "Aren't you supposed";
+		mes "to be a monster? You know";
+		mes "what Zealotus would do if";
+		mes "she were actually here?";
+		next;
+		mes "[Phendark]";
+		mes "^333333*Sniff...*^000000";
+		mes "P-probably...";
+		mes "Probably whip me.";
+		next;
+		mes "^3355FFYou nonchalantly^000000";
+		mes "^3355FFbrandish your Whip.^000000";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "That's right.";
+		next;
+		mes "^3355FF*Snap!*";
+		mes "*Snap!*";
+		mes "*Crack crack crack!*";
+		mes "*Snap snap snap crack!*^000000";
+		next;
+		mes "[Phendark]";
+		mes "Oh! That stinging pain";
+		mes "that burns with bloodlust!";
+		mes "It's almost as good as";
+		mes "Zealtos's whip of love!";
+		next;
+		mes "[Phendark]";
+		mes "Zealotus...";
+		mes "She must be pissed";
+		mes "at me, but I just can't";
+		mes "stop being afraid of all";
+		mes "you humans! Damn it all!";
+		set ZLMASKQ,2;
+		close;
+
+	PhenDark3:
+		if (countitem(7315) >= 369) goto PhenDark4;
+		goto PhenDark1;
+
+		PhenDark4:
+			mes "[Phendark]";
+			mes "Y-you again!";
+			mes "Why do you hound me?!";
+			mes "Th-there's nothing I can";
+			mes "give you, so please don't";
+			mes "hurt me! Oh, oh p-please...!";
+			emotion 19;
+			next;
+			menu "Feed him Dark Crystal Fragment.",FeedFragment,"Threaten him.",Threaten;
+
+			FeedFragment:
+				mes "[Phendark]";
+				mes "What...? You want";
+				mes "me to eat these?";
+				mes "It doesn't seem natural,";
+				mes "but if Rybio says I should,";
+				mes "it might not be that bad.";
+				next;
+				mes "...";
+				mes "......";
+				next;
+				mes "[Phendark]";
+				mes "What's supposed to";
+				mes "happen now? My inner";
+				mes "demon is supposed to";
+				mes "awaken by eating these?";
+				mes "That sounds ridiculous!";
+				mes "Though, I did just eat crystal.";
+				next;
+				mes "[Phendark]";
+				mes "Wh-whoa. Ugh!";
+				mes "My chest! Something's";
+				mes "burning inside! I c-can't--!";
+				mes "Can't think straight... I'm...";
+				mes "Slowly... Losing my humanity!";
+				next;
+				mes "[Phendark]";
+				mes "Huh... Huuurg--!";
+				mes "Huk-huk! Heeeeh!";
+				mes "Heeeeeh! Waaoooooh!";
+				next;
+				mes "[Phendark]";
+				mes "...";
+				mes "Grrrrr...!";
+				next;
+				mes "[Phendark]";
+				mes "^333333*Pant pant*^000000";
+				mes "What... just...";
+				mes "What happened?";
+				set ZLMASKQ,4;
+				delitem 7315,369;
+				close;
+				end;
+
+			Threaten:
+				mes "[" + strcharinfo(0) + "]";
+				mes "So what happens";
+				mes "if I don't decide not";
+				mes "to hurt you? Whatcha";
+				mes "gonna do then, huh?";
+				next;
+				mes "...";
+				mes "......";
+				next;
+				mes "[Phendark]";
+				mes "S-stop it!";
+				mes "Just--Just stop it!";
+				close;
+				end;
+				
+		mes "[Phendark]";
+		mes "Humans...";
+		mes "They're everywhere!";
+		mes "You guys--I can't...";
+		mes "You're torturing me!";
+		emotion 28;
+		close;
+
+	PhenDark4b:
+		mes "[Phendark]";
+		mes "My chest was on fire,";
+		mes "like I was, I dunno,";
+		mes "burning with anger or";
+		mes "something. It's gone";
+		mes "now, but what were";
+		mes "those crystals?";
+		close;
+
+	PhenDark5:
+		mes "[Phendark]";
+		mes "You again? Oh no,";
+		mes "you're not going to hurt";
+		mes "me or make me eat those";
+		mes "weird crystals again, are you?";
+		next;
+		mes "^3131FF[" + strcharinfo(0) + "]^000000";
+		menu "Rybio",Rybio,"Injustice",Injustice,"Zealotus",ZealotusSelect;
+
+		Rybio:
+			mes "Rybio";
+			set @temp1,1;
+			goto PhenNext1;
+
+		Injustice:
+			mes "Injustice";
+			set @temp1,2;
+			goto PhenNext1;
+
+		ZealotusSelect:
+			mes "Zealotus";
+			set @temp1,3;
+			goto PhenNext1;
+
+	PhenNext1:
+		menu "hates",hates,"likes",likes;
+
+		hates:
+			mes "hates";
+			set @temp2,1;
+			goto PhenNext2;
+
+		likes:
+			mes "likes";
+			set @temp2,2;
+			goto PhenNext2;
+
+	PhenNext2:
+		menu "Rybio.",Rybio2,"Injustice.",Injustice2,"Phendark.",PhenDarkSelect,"Zealotus.",ZealotusSelect2;
+
+		Rybio2:
+			mes "Rybio.";
+		close;
+
+		Injustice2:
+			mes "Injustice.";
+		close;
+
+		PhenDarkSelect:
+			if ((@temp1 == 1 || @temp1  == 2) && @temp2 == 1) goto PhenDarkSelect01;
+
+			PhenDarkSelect01:
+				mes "[Phendark]";
+				mes "I can't believe";
+				mes "something like that!";
+				mes "Oh, that doesn't matter.";
+				mes "Zealotus is too good for me.";
+				mes "I'm not even worthy of tasting";
+				mes "the sting of her Love Whip.";
+				emotion 28;
+				close;
+
+			if (@temp1 == 3 && @temp2 == 1) goto PhenDarkSelect02;
+
+			PhenDarkSelect02:
+				mes "[Phendark]";
+				mes "...";
+				mes "......";
+				mes "Hates me?";
+				mes "N-no, that can't--";
+				mes "I didn't, that doesn't--";
+				next;
+				mes "[Phendark]";
+				mes "Huh...?";
+				mes "What is that";
+				mes "supposed to mean?";
+				close;
+
+			if (@temp1 == 3 && @temp2 == 2) goto PhenDarkSelect03;
+
+			PhenDarkSelect03:
+				mes "[Phendark]";
+				mes "I can't believe";
+				mes "something like that!";
+				mes "Oh, that doesn't matter.";
+				mes "Zealotus is too good for me.";
+				mes "I'm not even worthy of tasting";
+				mes "the sting of her Love Whip.";
+				emotion 28;
+				close;
+
+		ZealotusSelect2:
+			mes "Zealotus.";
+			menu "Insult him.",Insult,"Apologize.",Apologize;
+
+		Insult:
+			mes "[" + strcharinfo(0) + "]";
+			mes "First of all,";
+			mes "what exactly sets";
+			mes "you apart from all the";
+			mes "other eligible monsters";
+			mes "that she can choose from?";
+			mes "Not like you're much better...";
+			next;
+			mes "[Phendark]";
+			mes "...";
+			mes "......";
+			next;
+			menu "Break his pride.",BreakPride,"Tell him you were joking.",WasJoking;
+
+			BreakPride:
+				mes "^3131FF[" + strcharinfo(0) + "]^000000";
+				mes "I mean, there are guys";
+				mes "like Bloody Murderer out";
+				mes "there who are more evil";
+				mes "than you, and best of all,";
+				mes "not afraid of humans!";
+				next;
+				menu "Go for the low blow.",LowBlow,"Try to salvage his confidence.",SalvagePhen;
+
+				LowBlow:
+					mes "[" + strcharinfo(0) + "]";
+					mes "You know, me and Zealotus";
+					mes "were actually talking about";
+					mes "you recently. She told me that";
+					mes "the sight of you makes her";
+					mes "feel sick! I mean, what kind";
+					mes "of monster is afraid of humans?";
+					next;
+					mes "[" + strcharinfo(0) + "]";
+					mes "Now you've reached the";
+					mes "point where even Injustice";
+					mes "is manlier than you now,";
+					mes "if you know what I mean!";
+					mes "Hahahahahahahahaha!";
+					next;
+					mes "[Phendark]";
+					mes "...";
+					mes "......";
+					next;
+					mes "[Phendark]";
+					mes "...";
+					mes "......";
+					mes ".........";
+					next;
+					mes "[Phendark]";
+					mes "...";
+					mes "......";
+					mes ".........";
+					mes "............";
+					next;
+					mes "[Phendark]";
+					mes "GRRRRRR!";
+					mes "THAT'S ENOUGH!";
+					emotion 6;
+					next;
+					mes "[Phendark]";
+					mes "I don't care who the";
+					mes "hell she is, I'm going";
+					mes "to see Zealotus and give";
+					mes "that tramp a piece of my";
+					mes "mind! Grrrr! She'll be sorry!";
+					set ZLMASKQ,6;
+					emotion 6;
+					close;
+					end;
+
+				SalvagePhen:
+					mes "^3131FF[" + strcharinfo(0) + "]^000000";
+					mes "But know that I think";
+					mes "about it, maybe you look";
+					mes "much tougher than that";
+					mes "Bloody Murderer guy.";
+					next;
+					mes "[Phendark]";
+					mes "*Sniff sniff*";
+					mes "You really think so?";
+					next;
+					mes "...";
+					mes "......";
+					next;
+					mes "[" + strcharinfo(0) + "]";
+					mes "...Yeeeeeah.";
+					close;
+					end;
+
+			WasJoking:
+				mes "[" + strcharinfo(0) + "]";
+				mes "But now that I think";
+				mes "about it, you actually";
+				mes "are much better than all";
+				mes "those other monsters.";
+				mes "That stuff I said before?";
+				mes "I was just kidding you.";
+				next;
+				mes "[Phendark]";
+				mes "^333333*Sniff!*^000000";
+				mes "You're...";
+				mes "Not helping!";
+				close;
+				end;
+
+		Apologize:
+			mes "[" + strcharinfo(0) + "]";
+			mes "I...";
+			mes "I was just kidding!";
+			mes "How could she hate";
+			mes "somebody like you?";
+			next;
+			mes "[Phendark]";
+			mes "No... No.";
+			mes "You're right.";
+			mes "I don't deserve love.";
+			mes "Not from Zealotus or";
+			mes "from anybody else...";
+			close;
+			end;
+
+	PhenDark6:
+		mes "[Phendark]";
+		mes "Zealotus! How dare";
+		mes "she say those things";
+		mes "against me! Less manly";
+		mes "than Injustice?! I'll just";
+		mes "have to prove her wrong!";
+		mes "Out the way, pithy human!";
+		close;
+}
+
+gl_prison1.gat,100,48,5	script	Rybio#LhzHat	1201,{
+
+	if (ZLMASKQ == 2) goto Rybio01;
+	if (ZLMASKQ == 3) goto Rybio02;
+	if (ZLMASKQ == 4) goto Rybio03;
+	if (ZLMASKQ == 5) goto Rybio04;
+	
+	end;
+
+	Rybio01:
+		mes "[Rybio]";
+		mes "You know, I usually just";
+		mes "run up and slash like crazy";
+		mes "once I see you humans, but";
+		mes "my heart's not in it today, so";
+		mes "I'm gonna give you just one";
+		mes "chance to run for your life.";
+		next;
+		menu "Talk about Phendark.",TalkPhen,"Run for your life.",RunLife;
+
+		TalkPhen:
+			mes "[Rybio]";
+			mes "What th--? You know the";
+			mes "same Phendark I know?";
+			mes "Dayam, that's weird. But";
+			mes "yeah, him and Zealotus have";
+			mes "some kind of... I dunno what";
+			mes "it is, actually. Um, love?";
+			next;
+			mes "[Rybio]";
+			mes "Anyway, Phendark has";
+			mes "been acting really weird";
+			mes "lately. I guess Zealotus";
+			mes "loved him to the point that";
+			mes "she abused him to the point";
+			mes "that he's scared of humans now.";
+			next;
+			mes "[Rybio]";
+			mes "Huh. You know what'd help?";
+			mes "Dark Crystal Fragments. It's";
+			mes "worthless to humans, but if";
+			mes "creatures of darkness eat it,";
+			mes "it brings out more of their";
+			mes "inner demon. Scary, huh?";
+			next;
+			mes "[Rybio]";
+			mes "Since Phendark's pretty big, and he's acting like a total wuss, you";
+			mes "you should probably get him to eat ^3131FF369 Dark Crystal Fragments^000000. Don't";
+			mes "worry, you should be able to find those all over Rune-Midgard.";
+			next;
+			mes "[Rybio]";
+			mes "I dunno why a human";
+			mes "like you would want to";
+			mes "help one of us out, though.";
+			mes "What's in it for you, exactly?";
+			set ZLMASKQ,3;
+			close;
+			end;
+
+		RunLife:
+			mes "[Rybio]";
+			mes "That's right!";
+			mes "Run, get outta here!";
+			mes "if you're not fast enough,";
+			mes "I might eat you, human!";
+			mes "...Well... Probably not.";
+			close;
+			end;
+
+	Rybio02:
+		mes "[Rybio]";
+		mes "I don't get why someone";
+		mes "like you, a seemingly heroic";
+		mes "adventurer, would want to help";
+		mes "out Phendark? Did Zealotus";
+		mes "blackmail you or something?";
+		next;
+		mes "[Rybio]";
+		mes "Well, you could";
+		mes "probably help him";
+		mes "by getting him to eat";
+		mes "^3131FF369 Dark Crystal Fragments^000000";
+		mes "to sort of stir up the demon";
+		mes "that sleeping within, you know?";
+		close;
+
+	Rybio03:
+		mes "[Rybio]";
+		mes "Feeding him all of those";
+		mes "Dark Crystal Fragments didn't";
+		mes "work? But that was supposed";
+		mes "to be foolproof! Dayam, what";
+		mes "the hell happened to Phendark's";
+		mes "inner demon?! Man oh man...";
+		next;
+		mes "[Rybio]";
+		mes "Well, I don't know what";
+		mes "else you could try. I mean,";
+		mes "maybe you could try motivating";
+		mes "him. Reverse psychology?";
+		mes "It's weird talking about this";
+		mes "with a human. Hahahaha~";
+		set ZLMASKQ,5;
+		close;
+
+	Rybio04:
+		mes "[Rybio]";
+		mes "Phendark sure looks";
+		mes "tough, but I guess even";
+		mes "he isn't totally evil. Yeah.";
+		mes "We monsters aren't all";
+		mes "bad... Just mostly bad.";
+		close;
+}

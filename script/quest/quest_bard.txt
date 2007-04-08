@@ -1,0 +1,2546 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Bard Quest	Author: GreenGoblin
+//--------------------------------------------------------------
+// Revision History: v1.1
+//--------------------------------------------------------------
+//	1.0 First version, converted from Aegis [GreenGoblin]
+//	1.1 Fixed typos [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: Untested, may be buggy. * Aegis-certified *
+//--------------------------------------------------------------
+
+geffen.gat,132,38,3	script	Bard#2	51,{
+
+	if (Bard == 1 || Bard == 21) goto L_Bard1;
+	if (Bard == 2 || Bard == 22) goto L_Bard2;
+	if (Bard == 3 || Bard == 23) goto L_Bard3;
+	if (Bard == 4 || Bard == 24) goto L_Bard4;
+	if (Bard == 5 || Bard == 25) goto L_Bard5;
+	if (Bard == 6 || Bard == 26) goto L_Bard6;
+	if (Bard == 7 || Bard == 27) goto L_Bard7;
+	if (Bard == 10) goto L_Bard10;
+	if (Bard == 11) goto L_Bard11;
+	if ((Bard > 11) && (Bard < 14)) goto L_Bard12;
+	if (Bard == 14) goto L_Bard14;
+	if (Bard == 15) goto L_Bard15;
+	mes "[Bard]";
+	mes "^4d4dffWhat day is the best to drink? La la la~";
+	mes "It's the day of the earth, the sun and the moon~ La la la~";
+	mes "I said, what day is the best to drink? La la la~";
+	mes "Why? La la~ it's because I can only drink on one day~";
+	mes "If you tell me when you will drink~";
+	mes "I will tell you when I can drink with you~^000000";
+	next;
+	mes "[Bard]";
+	mes "^4d4dffLet's get together one day! La la la~";
+	mes "Bravo~ Bra...^000000";
+	mes "Eh? Are you...?";
+	mes "Oh, you came here because you wanted to";
+	mes "forget your reality by laughing at this clown!";
+	if (Sex == Male) mes "Didn't you, young man?";
+	if (Sex == Female) mes "Didn't you, my lovely lady?";
+	next;
+	menu "Wrong, who are you?",-,"Ignore him.",L_Ignore;
+		mes "[" + strcharinfo(0) + "]";
+		mes "You seem to be new around here..";
+		mes "Who are you..?";
+		if (Sex == Male) mes "Also, who are you to call me a young man!";
+		if (Sex == Female) mes "Also, who are you to call me your lovely lady?!";
+		next;
+		mes "[Errende]";
+		mes "Errr...wow, give me a break. I didn't mean to upset you.";
+		mes "I am just another wandering poet.";
+		mes "I am following the way of the wind all over the world.";
+		mes "You may call me ^4d4dffErrende^000000,";
+		mes "the poet who wishes to please you.";
+		next;
+		mes "[Errende]";
+		mes "If you let me, I will tell you everything";
+		mes "what I have heard and experienced.";
+		mes "If you let me, I will play a song which";
+		mes "will soothe your pain.";
+		set Bard,1;
+		next;
+
+	L_Bard:	
+		menu "Then, a funny story",-,"Then, a song",L_Song,"Maybe some other time",L_Later;
+
+		L_Story:
+			mes "[Errende]";
+			mes "Hmm, you like stories, huh?";
+			mes "What kind of story do you like?";
+			mes "I can tell you anything as much as I know.";
+			mes "It's only for you. *Grins*";
+			next;
+			menu "News or a Rumor",-,"Cancel.",L_Cancel;
+
+			L_News:
+				set @talk,rand(1,3);
+				if (@talk == 2) goto L_Talk2;
+				if (@talk == 3) goto L_Talk3;
+				mes "[Errende]";
+				mes "Umm...then shall we talk about this town,";
+				mes "Geffen? Have you evern been in the pub or the inn?";
+				mes "I must say their employees are so hot.";
+				mes "The old one is nice-looking and graceful,";
+				mes "and the little one is cheerful and energetic...";
+				next;
+				mes "[Errende]";
+				mes "Ah, yeah right. Sometimes they become possessed by";
+				mes "their late father. I was so surprised last time when I saw that...";
+				mes "As I think of it now, it makes my heart throbbed violantly.";
+				mes "It seems their father is obsessive daughters even after he went";
+				mes "beyond the realm.";
+				next;
+				mes "[Errende]";
+				mes "Especially, when a guy tries to talk to either one of girls,";
+				mes "his spirit overreacts at him...";
+				mes "I am not sure why but";
+				mes "maybe he thinks his daughters are too young";
+				mes "to get married....hmm?";
+				mes "Hahahahaha.....";
+				next;
+				mes "[Errende]";
+				mes "And...yes, right. There is a merchant behind of the pub.";
+				mes "Have you seen him before?";
+				mes "This area is colder than Morroc";
+				mes "so I bought a manteau from him.";
+				mes "But, see, it does not even have a draw string. Also it seems pretty expensive...";
+				mes "For some reason, he does not look trustworthy.";
+				next;
+				mes "[Errende]";
+				mes "You'd better be careful with him.";
+				mes "Errr...there is a hidden city named Geffenia";
+				mes "under the Geffen Tower.";
+				mes "Have you been there?";
+				mes "I heard it requires a condition to enter...";
+				mes "Maybe I shall try some other time.";
+				next;
+				mes "[Errende]";
+				mes "I heard William, the father of two girls I talked about,";
+				mes "went into the Geffen Tower with others in order to subjugate";
+				mes "evil monsters that intruded the tower. But he never came back.";
+				mes "Oh well, I guess it is a tempting story for adventurers but";
+				mes "when I think about their family left behind......";
+				next;
+				mes "[Errende]";
+				mes "It makes me feel sorry for them.";
+				mes "I dream a world where";
+				mes "everybody is happy.";
+				close;
+				
+			L_Talk2:
+				mes "[Errende]";
+				mes "Okay, let me tell you a story about Morroc.";
+				mes "Morroc, the city of desert.";
+				mes "Any well-experienced adventurers are expected";
+				mes "to explore Morroc and the desert around the city.";
+				next;
+				mes "[Errende]";
+				mes "Especially, Pyramids and Sphinx are the most";
+				mes "celebrated localities of Morroc.";
+				mes "And I heard there is a merchant selling";
+				mes "Swordmaces to Priests and to Priestesses.";
+				mes "Priests are prohibited to possess any weapons with blades by the way.";
+				next;
+				mes "[Errende]";
+				mes "There is an oasis in the middle of Morroc.";
+				mes "You can see a flower lady or a kind old man";
+				mes "who tells you a useful tip about how to take a rest in the desert.";
+				next;
+				mes "[Errende]";
+				mes "I saw a little girl who asked her father to tame";
+				mes "a Munak for her. She was so stubborn...";
+				mes "As I listened to their conversation, it seemed";
+				mes "her father had something to do with a guy who lost his way";
+				mes "in Alberta...";
+				next;
+				mes "[Errende]";
+				mes "Anyways, I happened to help her father with an errand.";
+				mes "And he gave me a mysterious box for the favor.";
+				mes "When I opened it, there was a feather...";
+				mes "I could not figure out how the feather work so";
+				mes "I have been keeping it as a souvenir.";
+				next;
+				mes "[Errende]";
+				mes "Umm...now I wonder if Mr. Pandger Mayer found";
+				mes "his way back to his home town...";
+				close;
+
+			L_Talk3:
+				mes "[Errende]";
+				mes "By any chance, have you heard about Alberta?";
+				mes "There is a sunken ship near Alberta.";
+				mes "An event agency developed the ship as";
+				mes "a course of expedition and they're making a lot of";
+				mes "money out of the ship. You know that, don't you?";
+				mes "Anyways,";
+				next;
+				mes "[Errende]";
+				mes "First time when the sunken ship arrived near Alberta,";
+				mes "it was found by one of Alberta Guardians.";
+				mes "Also he found a baby deep inside a stateroom.";
+				mes "And there was a orgel beside of the crying baby.";
+				next;
+				mes "[Errende]";
+				mes "People say that the baby,";
+				mes "who was the one and only survivor from the sunken ship";
+				mes "was brought up in Alberta.";
+				mes "It has rumored that he was treated with comtempt";
+				mes "when he was young. But he seems fine by now.";
+				mes "Ah...we should talk about the sunken ship.";
+				next;
+				mes "[Errende]";
+				mes "I am not sure if it was a pirate ship or not,";
+				mes "people say that skeleton monsters in pirate costume";
+				mes "appear inside the ship.";
+				mes "Beside of the ship, Alberta have been in an exciting mood";
+				mes "ever since an adventurer found an ocean way to Turtle Island.";
+				next;
+				mes "[Errende]";
+				mes "But at the same time, there are many rumors behind of it.";
+				mes "The 2nd squad of Alberta patrolmen who went to Turtle Island";
+				mes "for exploration have not come back yet and another squad of knights";
+				mes "went there after them to find where they are...";
+				mes "It's all messy...";
+				next;
+				mes "[Errende]";
+				mes "Anyhow, now there is an ocean way to Turtle Island!";
+				mes "So I went to the island for a sightseeing.";
+				mes "I happened to find a journal of the adventurer who found the island.";
+				mes "And there was a small key with the journal.";
+				mes "So...I became curious and I followed what was written on the journal.";
+				next;
+				mes "[Errende]";
+				mes "Basically I felt like searching a hidden treasure...";
+				mes "And I got to know about a swordman who longed to";
+				mes "find an ultimate sword.";
+				mes "Also I found a thing which used to belong to the swordman.";
+				mes "It was so exciting and thriling adventure I have ever did.";
+				close;
+
+			L_Cancel:
+				mes "[Errende]";
+				mes "Ah~ it's dissappointing.";
+				mes "But promise me you will drop by sometimes later.";
+				mes "I will tell you my stories of adventure.";
+				close;
+				
+		L_Song:
+			mes "[Errende]";
+			mes "Oh, finally I met one who recognizes my talent!";
+			mes "You deserve to listen to my song!";
+			mes "So what song whould you like to listen?";
+			mes "I can play any songs you want.";
+			next;
+			menu "Just play any song you feel like playing.",-,"I want a funny song.",L_Funny,"Never mind.",L_Cancel2;
+				if (Zeny < 500) goto L_NoZeny;
+				set @song,rand (1,3);
+				if (@song == 2) goto L_Song2;
+				if (@song == 3) goto L_Song3;
+					mes "[Errende]";
+					mes "Alright.";
+					mes "Here we go~";
+					soundeffectall "ring_of_nibelungen.wav",0;
+					set Zeny,Zeny-500;
+					close;
+
+				L_Song2:
+					mes "[Errende]";
+					mes "Alright.";
+					mes "Here we go~";
+					soundeffectall "dont_forget_me_not.wav",0;
+					set Zeny,Zeny-500;
+					close;
+				
+				L_Song3:
+					mes "[Errende]";
+					mes "Alright.";
+					mes "Here we go~";
+					soundeffectall "in_to_the_abyss.wav",0;
+					set Zeny,Zeny-500;
+					close;
+
+				L_NoZeny:
+					mes "[Errende]";
+					mes "Ah hahaha, I am sorry but";
+					mes "this is not a free service.";
+					mes "Somehow I need money to live on, don't you think?";
+					close;
+			
+			L_Funny:
+				mes "[Errende]";
+				mes "A funny song...a funny song...";
+				mes "Ok, here we go.";
+				next;
+				set @song,rand(1,5);
+				if (Bard == 1 || Bard == 21) goto L_FunnyAlt1;
+				if (@song > 1 && @song < 5) goto L_Funny2;
+				if (@song == 5) goto L_Funny5;
+
+				L_Funny1:
+					mes "Valhalla where dazzles in golden color,";
+					mes "where is called as the 5th.";
+					mes "Glast Heim!";
+					mes "Glorious warriors are";
+					mes "summoned by Odin.";
+					next;
+					mes "Palace of the dead";
+					mes "with a silver roof~";
+					mes "where is called as the 3rd.";
+					mes "Valaskjalf!";
+					mes "Glorious warriors are";
+					mes "summoned by Odin.";
+					next;
+					mes "There are five hundreds doors in Valhalla.";
+					mes "And there are forty more doors.";
+					mes "They are all open to the Wolf.";
+					mes "Eight hundreds warriors gathered under the will of God";
+					mes "are running out through the doors.";
+					next;
+					mes "Godly warriors who steps on Yggdrassil";
+					mes "towards their fate";
+					mes "take Valkyrie's hands with honor.";
+					next;
+					mes "Warriors killed by weapons,";
+					mes "Warriors killed by weapons,";
+					mes "Your fame will last even after your death,";
+					mes "it will lead you to Valhalla.";
+					mes "it will lead you to Valhalla.";
+					next;
+					mes "[Errende]";
+					mes ".....";
+					mes "...you know this is about a legend, do you?";
+					mes "Only gods will know if it is true";
+					mes "that the castle named as Glast Heim was";
+					mes "the 5th Valhalla or not.";
+					mes "Only gods will know.";
+					close;
+
+				L_Funny2:
+					mes "Bard sings to please his audience.";
+					mes "Therefore do not expect me to sing";
+					mes "sad songs that deepens your anguish.";
+					next;
+					mes "Dancer dances to please her audience.";
+					mes "Shall we dance together? Then hold my hands.";
+					mes "La la la~ La la la~.";
+					next;
+					mes "[" +strcharinfo(0) + "]";
+					mes "By the way, why do you guys";
+					mes "play discords sometimes? I hate when you do that.";
+					next;
+					mes "[Errende]";
+					mes "How...how could you speak such a mean thing?";
+					mes "" + strcharinfo(0) +"...";
+					mes "Did you...? Did you ever want to be a bard before?";
+					mes "That's why you're picking on me?";
+					close;
+
+				L_FunnyAlt1:
+					if (@song == 1) goto L_Funny1;
+					if (@song > 2 && @song < 5) goto L_Funny1Alt2;
+
+				L_Funny5:
+					mes "Galloping sounds echo in the distance.";
+					mes "A cloud of hazy dust fills the setting sun.";
+					mes "As thousands eyes are opened in the night sky";
+					mes "Torches on the castle shall blaze up like thousands of Ifrits.";
+					next;
+					mes "Hear the throbbing soud of my heart,";
+					mes "Feel the blood in my vein.";
+					mes "Feel the weight of my armor.";
+					mes "See the enemies appear in front of my force.";
+					next;
+					mes "Beat a drum hard, harder!";
+					mes "Cheer up soliders who take steps forward!";
+					mes "Shout loud, louder!";
+					mes "Today will never come back!";
+					next;
+					mes "Stun the sky and provoke the earth,";
+					mes "so my heart will start beating again!";
+					mes "Blow a bugle to sway the fortress.";
+					mes "Today will never come back!";
+					next;
+					mes "[Errende]";
+					mes "Ah, this is called 'Drumming in the battle field'.";
+					mes "It was written by mr. Iolo.";
+					mes "Yes, I like this song.";
+					close;
+					
+				L_Funny1Alt2:
+					mes "[Errende]";
+					if (Sex == Male) mes "Brave warrior,";
+					if (Sex == Female) mes "My lady,";
+					mes "if you have a flower on your hand,";
+					mes "please listen to my song.";
+					mes "If you are in love,";
+					mes "let's count petals of the flower following with the song.";
+					mes "Let me sing the song.";
+					next;
+					mes "[Errende]";
+					mes "At one, I fell in love.";
+					mes "At two, I am in love.";
+					mes "At three, I am still in love.";
+					mes "At four, I am truely in love.";
+					next;
+					mes "[Errende]";
+					mes "At five?";
+					mes "That is, my mind is changed.";
+					mes " ";
+					mes "Yoo hoo~";
+					mes "A petal is blown away in the air~!";
+					next;
+					mes "[Errende]";
+					mes "At six, he fell in love~";
+					mes "At seven, she fell in love~";
+					mes "At eight~";
+					mes "At...eight....";
+					mes " ... ... ..... ...what was the next....?";
+					next;
+					mes "[Errende]";
+					mes ".......oh my...";
+					mes "What was the next part?!";
+					mes "Ah, what a shame! How can a bard forget the words of a song!";
+					mes "....what was the eight part....do they fall in love?";
+					mes "Or do I fall in love with him?";
+					mes "Or do I fall in love with her?!";
+					next;
+					mes "[Errende]";
+					mes "........you're an adventurer, aren't you?";
+					mes "...then you must travel a lot, don't you?";
+					mes ".... . .. ....";
+					mes "I know it's kind of embarassing but...";
+					mes "can I ask you a favor?";
+					next;
+					menu "Sure, no problem.",-,"No, you can't.",L_NoHelp;
+						mes "[Errende]";
+						mes "Thank you, so much. Umm...let me think.";
+						mes "That's it! Gunther!";
+						mes "Let me ask you a favor.";
+						mes "By any chance, if you meet ^4d4dffGunther Doubleharmony^000000,";
+						mes "please let him know about my situation.";
+						next;
+						mes "[Errende]";
+						mes "^4d4dffMinty Errende^000000 happened to";
+						mes "forget a line of the song, ^4d4dffAt one, I fell in love^000000.";
+						mes "The line is called as ^4d4dff8th love^000000.";
+						mes "It is 8th love in At one, I fell in love.";
+						next;
+						mes "[Errende]";
+						mes "I beg you please.";
+						mes "When you meet him, please ask him";
+						mes "of the 8th love.";
+						mes "And let me know immediately.";
+						if (Bard == 1) set Bard,2;
+						if (Bard == 21) set Bard,22;
+						close;
+
+					L_NoHelp:
+						mes "[Errende]";
+						mes "*sigh*...........";
+						mes "This song is incomplete.";
+						mes "I cannot remember what was the 8th part.";
+						mes "*sigh*...";
+						set Bard,7;
+						close;
+
+			L_Cancel2:
+				mes "[Errende]";
+				mes "Sure, no problem.";
+				mes "Please come again.";
+				close;
+
+		L_Later:
+			mes "[Errende]";
+			mes "Eh~";
+			mes "It will not be a harm to listen to a song sometimes...";
+			mes "Okay, catch you later!";
+			close;
+
+	L_Ignore:
+		mes "[Errende]";
+		mes "Wah, wah~";
+		mes "You can't just ignore me like that!";
+		mes "If you so, I must say you know";
+		mes "nothing about romance!";
+		close;
+
+L_Bard1:
+	mes "[Errende]";
+	mes "Welcome back,";
+	mes "" + strcharinfo(0) +".";
+	mes "What would you like me to do for you? A song or a play?";
+	mes "Or a story?";
+	next;
+	goto L_Bard;
+
+L_Bard2:
+	mes "[Errende]";
+	mes "*sigh*...where can I find the 8th love...?";
+	mes "Have you met Gunther?";
+	mes "Ah....";
+	mes "I guess you have not yet.";
+	mes "You want to listen to my song...?";
+	next;
+	mes "[Errende]";
+	mes "....Sorry, I cannot sing...";
+	mes "ever since I cannot remember the line of the song...I cannot.";
+	mes "My mood does not let me want to sing.... ";
+	mes "Please ask ^4d4dffGunther^000000about the ^4d4dff8th love^000000";
+	mes "in ^4d4dffAt one, I fell in love^000000.";
+	mes "Thank you in advance.";
+	close;
+
+L_Bard3:
+	mes "[Errende]";
+	mes "So, have you seen Gunther?";
+	next;
+	mes "- You didn't answer him but -";
+	mes "- turned around to show him -";
+	mes "- your back. -";
+	next;
+	mes "[Errende]";
+	mes "Huh! ...isn't it?!";
+	mes "Isn't it the line of the song written on your back?!";
+	mes "Wait, don't move!";
+	mes "The 8th love is...!";
+	mes "Ah! Now I see!";
+	next;
+	mes "[Errende]";
+	mes "At five?";
+	mes "That is, my mind is changed.";
+	mes " ";
+	mes "Yoo hoo~";
+	mes "A petal is blown away in the air~!";
+	next;
+	mes "[Errende]";
+	mes "At six, he fell in love~";
+	mes "At seven, she fell in love~";
+	mes "At eight?";
+	mes "He and she ran away";
+	mes "At nine, I fell in love again.";
+	next;
+	mes "[Errende]";
+	mes "The 10th petal sings a song~";
+	mes "I came back but my love is no longer here.";
+	mes "The 11th petal sings a song~";
+	mes "He is in love and she is in love";
+	mes "both left you behind~";
+	next;
+	mes "[Errende]";
+	mes "The 12th petal whispers me,";
+	mes "'Hey, you got ditched!'";
+	mes " ";
+	mes "Yoo hoo~";
+	mes "My love is blown away in the air~!";
+	next;
+	mes "[Errende]";
+	mes " .... ..... ...";
+	mes "....... this must not be it.";
+	mes "This is not the real 'At one, I fell in love'!";
+	mes "The original song is not singing about the sadness!";
+	mes "You, I think you got something wrong here.";
+	next;
+	mes "[Errende]";
+	mes "As I look at it again and again, this must not be the original song.";
+	mes "Didn't Gunther say anything about this?";
+	mes "The words of this song must be changed by";
+	next;
+	input @input$;
+
+L_NameEnter:
+	if (@input$ == "Kino Kitty") goto L_Kitty;
+	if (@input$ == "Gunther" || @input$ == "Gunther Doubleharmony") goto L_Gunther;
+	if (@input$ == "Errende") goto L_Errende;
+		mes "[Errende]";
+		mes "" + @input$ +"?";
+		mes "I don't think I know the person.";
+		mes "Maybe you misunderstood something?...";
+		mes "*sigh*..";
+		next;
+		mes "[Errende]";
+		mes "What was the line...how could";
+		mes "I forgot the 8th love...";
+		if (Bard == 3) set Bard,6;
+		if (Bard == 23) set Bard,26;
+		close;
+
+	L_Kitty:
+		mes "[Errende]";
+		mes "Ah! I think you're right!";
+		mes "How could I not think that!";
+		mes "Ah....I am so stupid...";
+		mes "Yes, yes, I think it is highly possible to be changed by Mr. Kitty.";
+		mes "He used to be a member of the solo army...";
+		next;
+		mes "[Errende]";
+		mes "But, this is kind of mean...";
+		mes "Because this song was used";
+		mes "to sing about a happy couple.";
+		mes "..........";
+		mes "Ummm...I am sorry to ask you a favor again...";
+		next;
+		mes "[Errende]";
+		mes "By any chance, if you plan to travel...";
+		mes "can you find out the original song of this song?";
+		mes "Can you..?";
+		mes "I can wait...";
+		next;
+		menu "No, thanks.",-,"I can, so stop crying.",L_Cry;
+			mes "[Errende]";
+			mes "Ah, I guess it was too much to ask you...";
+			mes "...my apology.";
+			mes "I must expect too much from you.";
+			mes "Okay, I will find out another way.";
+			if (Bard == 3) set Bard,5;
+			if (Bard == 23) set Bard,25;
+			close;
+
+		L_Cry:
+			mes "[Errende]";
+			mes "......! Are you serious?";
+			mes "Oh~ thank you so much. You look like";
+			mes "an angel with two white featherly wings";
+			mes "coming down to the earth!";
+			mes "You are the only one who";
+			mes "understands the mind of poet.";
+			next;
+			mes "[Errende]";
+			mes "I will pay you back!";
+			mes "Thank you for your trouble in advance.";
+			if (Bard == 3) set Bard,4;
+			if (Bard == 23) set Bard,24;
+			close;
+
+		L_Gunther:
+			mes "[Errende]";
+			mes "Gunther? I don't think he would do this.";
+			mes "He always put a line in his song";
+			mes "like 'doubleharmony for you'.";
+			if (Bard == 3) set Bard,6;
+			if (Bard == 23) set Bard,26;
+			close;
+
+		L_Errende:
+			mes "[Errende]";
+			mes "Are you kidding me?";
+			mes "If I did, why would I not know";
+			mes "what this song is about!";
+			if (Bard == 3) set Bard,6;
+			if (Bard == 23) set Bard,26;
+			close;
+
+L_Bard4:
+	mes "[Errende]";
+	mes "Umm...I am not sure exactly where Mr. Kitty stays...";
+	mes "Ummm....maybe...";
+	mes "You might be able to find out";
+	mes "at the Monster Museum in Juno...";
+	mes "Somehow he's a member of Monster Research Organization.";
+	next;
+	mes "[Errende]";
+	mes "If you are well-experienced in exploration,";
+	mes "you would know the Monster Research Organization.";
+	mes "Recently many scholars have been wounded during researching monsters,";
+	mes "they no longer go on researching by themselves.";
+	mes "Instead they gather information from adventurers.";
+	next;
+	mes "[Errende]";
+	mes "To people like me who wander all around the world,";
+	mes "that is the best way of earning money though.";
+	mes "They financially support us and instead we're";
+	mes "gathering information about what they want.";
+	mes "Anyways, I think you'd better go";
+	mes "visit the monster museum";
+	next;
+	mes "[Errende]";
+	mes "to find out about Mr. Kitty.";
+	mes "Their headquarter is located in Juno.";
+	mes "It is pretty far away from here though.";
+	mes "Location of the building you mean?";
+	mes "It might be... at the west from the center of plaza...";
+	mes "Thank you in advance.";
+	close;
+
+L_Bard5:
+	mes "[Errende]";
+	mes "Who made this poor bard cry~";
+	mes "You answered~";
+	mes "I did by neglecting him~";
+	next;
+	mes "[Errende]";
+	mes "Who saw it?";
+	mes "You answered.";
+	mes "'I saw him crying'";
+	next;
+	mes "[Errende]";
+	mes "Why did the poor bard cry for?";
+	mes "You answered.";
+	mes "'Because I neglected him.'";
+	next;
+	mes "[Errende]";
+	mes "Who made this poor bard cry~";
+	mes "You answered~";
+	mes "I did by neglecting him~";
+	mes "....";
+	mes "..*cries*.";
+	next;
+	set @song,rand(1,50);
+	if ((@song > 27 ) && (@song < 37 )) goto L_Disappointed;
+		mes "[Errende]";
+		mes "Is there any business you have more with me?";
+		mes "If you don't, would you like to listen to my song?";
+		mes "Who made this poor bard cry~";
+		mes "You answered~";
+		mes "I did by neglecting him~";
+		close;
+
+	L_Disappointed:
+		mes "- He seems to be dissappointed -";
+		mes "- in you for that you have refused helping him -";
+		mes "- again. He keeps singing - ";
+		mes "- about himself crying. -";
+		mes "- You're feeling sorry for him. - ";
+		next;
+		menu "Well...I should help him then...",-,"Ignore him anyway.",L_Ignore2;
+			mes "[" + strcharinfo(0) + "]";
+			mes "Hey, hey, Errende.";
+			mes "Stop singing the song.";
+			mes "It is so embarassing.";
+			mes "Okay, okay I will find the original song for you.";
+			next;
+			mes "[Errende]";
+			mes "...! Are you sure?";
+			mes "Thank you! Thank you so much for the favor!";
+			mes "You are the only one who understands";
+			mes "the sadness of being a bard!";
+			next;
+			mes "[Errende]";
+			mes "I promise I will pay you back!";
+			mes "Thank you in advance.";
+			mes "I will wait you here until you come back.";
+			if (Bard == 5) set Bard,4;
+			if (Bard == 25) set Bard,24;
+			close;
+
+		L_Ignore2:
+			mes "- You ignored his embarassing song -";
+			mes "- and hurried yourself to go ahead. -";
+			close;
+
+L_Bard6:
+	mes "[Errende]";
+	mes "Argh....who changed the words of this song...any way...?";
+	mes "It is really hard to understand...";
+	mes "I wish I could ask the person who changed the words...";
+	next;
+	mes "[Errende]";
+	mes "Ah...It is so frustrating...";
+	mes "Now I don't even want to sing or play...";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "Don't you think...the person would be...";
+	input @input$;
+	mes "" + @input$ + "?";
+	next;
+	goto L_NameEnter;
+
+L_Bard7:
+	mes "[Errende]";
+	mes "How could I forgot the song...";
+	mes "I am not in a good mood...";
+	mes "I don't wish to talk.";
+	mes "Leave me be.";
+	next;
+	menu "No problem.",-,"Is there anything I can help you with?",L_Help;
+		mes "[Errende]";
+		mes "Wah, wah, you're so mean!";
+		mes "How could you not even try to";
+		mes "understand my problem like that?";
+		mes "I thought we knew each other better than that!";
+		mes "Maybe I was wrong!";
+		next;
+		mes "[Errende]";
+		mes "...*sob*..........";
+		mes "Who made this poor bard cry~";
+		mes "You answered~";
+		mes "I did by neglecting him~";
+		mes "... ";
+		close;
+
+	L_Help:
+		mes "[Errende]";
+		mes "Umm umm...okay then...let me think...";
+		mes "That's it! Gunther!";
+		mes "Let me ask you a favor.";
+		mes "By any chance, if you meet ^4d4dffGunther Doubleharmony^000000,";
+		mes "please let him know about my situation.";
+		next;
+		mes "[Errende]";
+		mes "^4d4dffMinty Errende^000000 happened to";
+		mes "forget a line of the song, ^4d4dffAt one, I fell in love^000000.";
+		mes "The line is called as ^4d4dff8th love^000000.";
+		mes "It is 8th love in At one, I fell in love.";
+		next;
+		mes "[Errende]";
+		mes "I beg you please.";
+		mes "When you meet him, please ask him";
+		mes "of the 8th love.";
+		mes "And let me know immediately.";
+		if (Bard == 7) set Bard,2;
+		if (Bard == 27) set Bard,22;
+		close;
+
+L_Bard10:
+	mes "[Errende]";
+	mes "So, have you met Mr. Kitty?";
+	mes "Ah....you mean in Morroc?";
+	mes "He has a chronice disease...";
+	mes "but obviously he doesn't seem to care about it.";
+	mes "So what did he say?";
+	next;
+	mes "[Errende]";
+	mes "Ah...in Juno...";
+	mes "Then that must be it...";
+	mes "If you want to go visit Mr. Sketzi's book store...";
+	mes "it would not be easy.";
+	mes "Let me mark you with the seal of friendship.";
+	next;
+	mes "[Errende]";
+	mes "Give me your left hand.";
+	mes "Now, let me cast a spell...";
+	mes "*mumble mumble*...";
+	next;
+	specialeffect 71;
+	mes "^4d4dff On your left wrist";
+	mes "a cresent shaped mark glowing in silver";
+	mes "appeared.";
+	mes "You could only notice it when you focus on the mark";
+	mes "but it might be shining clearly under a moonlight...^000000";
+	next;
+	mes "[Errende]";
+	mes "There you go.";
+	mes "Now, you may go to Mr. Sketzi.";
+	mes "Remember you will show the seal of friendship.";
+	mes "Good luck.";
+	set Bard,11;
+	close;
+
+L_Bard11:
+	mes "[Errende]";
+	mes "Mr. Skezti has a small book store";
+	mes "on the book street at the right side of Mineta in Juno.";
+	mes "If you carry the seal with you, he will give you";
+	mes "some help.";
+	close;
+
+L_Bard12:
+	mes "[Errende]";
+	mes "You don't seem to find it yet.";
+	mes "Take your time.";
+	mes "I can wait as long as you want...";
+	mes "You mean waiting?";
+	mes "Oh, it's fine with me. I am not that bored anyway.";
+	mes "Somehow it's not a rare thing to happen.";
+	close;
+
+L_Bard14:
+	mes "[Errende]";
+	mes "....Errr.......hmmm?";
+	mes "Is that the seal of black...? Mr. Kitty?";
+	mes "Ah....you must be kidding me.";
+	mes "He removed mine without a trace.";
+	mes "Hmm....he must like you a lot...";
+	mes "otherwise he would not do this.";
+	next;
+	mes "^4d4dff - You gave him a letter -";
+	mes " - you received from Kino Kitty. -^000000";
+	next;
+	mes "[Errende]";
+	mes "Bah...he knows everything already.";
+	mes "....as I see this blood spot...I think";
+	mes "he still has a health problem...";
+	mes "I hope he would stop torturing himself...";
+	mes "Ah, thank you so much by the way.";
+	mes "I really appreciate you.";
+
+L_SongEnd:
+	next;
+	mes "[Errende]";
+	mes "I would like to show my gratitute to you...";
+	mes "Hmmm....let me think what will be good...";
+	mes "Yes! I think I can do this for you.";
+	mes "Okay now, make yourself comfortable.";
+	mes "And please listen to my song.";
+	next;
+	mes "^4d4dffEvery god never be old.";
+	mes "It's because of the beautiful goddess Idun,";
+	mes "Idun the goddes of wealth,";
+	mes "It's because of the apples she possesses.^000000";
+	skilleffect 50,0;
+	next;
+	mes "^4d4dffEvery god never be old.";
+	mes "It's because of the Odin's daughter in law, the wife of Bragi.";
+	mes "It's because of the apples in her basket,";
+	mes "the apples in her basket^000000";
+	next;
+	mes "^4d4dffWithout Idun, every god will be old.";
+	mes "Even Thor, the strongest god will become an old man.";
+	mes "Hammer of Mjornil will not fly ever again,";
+	mes "Megingjard will slip down from his waist.^000000";
+	next;
+	mes "^4d4dffWithout Idun, every god will be old.";
+	mes "Careless Loki, the day Idun was kidnapped";
+	mes "The voice of Odin echoes in Valhalla.";
+	mes "Somehow the apple of youth came back.^000000";
+	skilleffect 50,0;
+	next;
+	mes "^4d4dffMy goddes stands in the field of Asgard";
+	mes "She hands me a fruit of heaven.";
+	mes "You will be loved by every god";
+	mes "You will be blessed by every god^000000";
+	next;
+	specialeffect 58;
+	mes "^4d4dffIf you share the apple of youth with me";
+	mes "even a bite of it with this poor poet,";
+	mes "You will be loved by every god";
+	mes "You will be blessed by every god^000000";
+	next;
+	skilleffect 54,0;
+	mes "- While listening to his song -";
+	mes "- you feel comfortable and -";
+	mes "- your mind becomes clear.-";
+	mes "- You gained a little bit of experience points. -";
+	mes "- You seemed to spot an angel.-";
+	if (Bard == 14) set Bard,30;
+	if (Bard == 15) set Bard,31;
+	if (BaseLevel < 56) set BaseExp,BaseExp + 4500;
+	if ((BaseLevel > 55) && (BaseLevel < 61)) set BaseExp,BaseExp + 5500;
+	if ((BaseLevel > 60) && (BaseLevel < 66)) set BaseExp,BaseExp + 9684;
+	if ((BaseLevel > 65) && (BaseLevel < 71)) set BaseExp,BaseExp + 13411;
+	if ((BaseLevel > 70) && (BaseLevel < 76)) set BaseExp,BaseExp + 35757;
+	if ((BaseLevel > 75) && (BaseLevel < 81)) set BaseExp,BaseExp + 60246;
+	if ((BaseLevel > 80) && (BaseLevel < 86)) set BaseExp,BaseExp + 70340;
+	if ((BaseLevel > 85) && (BaseLevel < 91)) set BaseExp,BaseExp + 92052;
+	if (BaseLevel > 90) set BaseExp,BaseExp + 156786;
+	next;
+	mes "[Errende]";
+	mes "So, how do you feel now?";
+	mes "I hope you would be refreshed with my song~";
+	mes "I am afraid it might not be enough for your favor...";
+	mes "However, please understand I did my best";
+	mes "to show you my gratitute.";
+	next;
+	mes "[Errende]";
+	mes "Besides, I have been thinking of you";
+	mes "as my friend who I can talk honestly";
+	mes "without worrying.";
+	mes "And I think you smile beautiful.";
+	mes "Am I wrong? Haha.";
+	next;
+	mes "[Errende]";
+	mes "I hope you will remain the same as you are now,";
+	mes "who is not greedy toward fortune or power but";
+	mes "honest and respectful toward other people..";
+	close;
+
+L_Bard15:
+	mes "[Errende]";
+	mes "Ah, how was it? Did you find it?";
+	mes "Yes, this is it!";
+	mes "Awsome~! You're so great~!!";
+	mes "Ah, it is so amazing!!";
+	mes "Ah, yes, right...right.";
+	goto L_SongEnd;
+
+L_Bard29:
+	mes "[Errende]";
+	mes "Hello, there. Isn't it such a good weather today?";
+	mes "I am enjoying this beautiful moment.";
+	mes "Now, what will make this time better?";
+	mes "Singing or a Story telling?";
+	next;
+	goto L_Bard;
+}
+
+
+morocc.gat,134,111,3	script	Bard#3	741,{
+
+	if (Bard == 10) goto L_Bard10;
+	if (Bard == 11) goto L_Bard11;
+	if (Bard == 12) goto L_Bard12;
+	if ((Bard > 12) && (Bard < 16)) goto L_Bard13;
+	if ((Bard > 19) && (Bard < 28)) goto L_Bard20;
+	if (Bard == 30 || Bard == 31) goto L_Bard30;
+	mes "[Singing Guy]";
+	mes "Even in the sandy wind, I can recognize you.";
+	mes "You're shining like a star in the sky.";
+	mes "So don't you worry.";
+	mes "Even under the blazing sun or";
+	mes "in the sandy wind~";
+	next;
+	mes "[Singing Guy]";
+	mes "I can recognize you...";
+	mes ".....?! ...go away!";
+	mes "....I said go away!";
+	mes "Can't you see I am busy?";
+	next;
+	menu "You're a child abductor, aren't you?!",-,"Sorry for interrupting you.",L_Interrupt;
+		if (Sex == Female) goto L_Female;
+			mes "[Singing Guy]";
+			mes "Who the hell are you to speak ill of me,";
+			mes "you ugly little bastard!";
+			mes "Do you know the true love?";
+			mes "Have you ever been in a real love?";
+			mes "Huh? Answer me?!";
+			next;
+			mes "[Jorti]";
+			mes "Wwwww...wah~*cries*";
+			mes "Wah!!";
+			mes "This guy scares me!";
+			mes "Let me go to my mom! Mom!";
+			mes "*cries*";
+			next;
+			mes "[Singing Guy]";
+			mes "Oh, stop crying, my lady.";
+			mes "Everything is ok.";
+			if ((BaseJob == 1) || (BaseJob == 7) || (BaseJob == 13) || (BaseJob == 14) || (BaseJob == 21)) goto L_Sword;
+			if ((BaseJob == 4) || (BaseJob == 8) || (BaseJob == 15)) goto L_Acolyte;
+			if ((BaseJob == 6) || (BaseJob == 17)) goto L_Rogue;
+			if (BaseJob == 12) goto L_Assassin;
+			if (BaseJob == 10) goto L_Blacksmith;
+				mes "You do not have to be scared of such a little weakling.";
+				close;
+
+			L_Knight:
+				mes "You do not have to be scared of dull people";
+				mes "who only know how to swing their swords.";
+				close;
+
+			L_Acolyte:
+				mes "You do not have to be scared of betrayers of God";
+				mes "yet who pretend to be messangers of him.";
+				close;
+
+			L_Rogue:
+				mes "You do not have to be scared of street cats.";
+				close;
+
+			L_Assassin:
+				mes "You do not have to be scared of people";
+				mes "who make their living out of assassinating innocent men.";
+				close;
+
+			L_Blacksmith:
+				mes "You do not have to be scared of greedy people";
+				mes "who only know how to count coins.";
+				close;
+
+		L_Female:
+			mes "[Singing Guy]";
+			mes ".....I do not mind playing with you";
+			mes "a little bit but unfortunately";
+			mes "my mind is preoccupied with...";
+			next;
+			mes "[Jorti]";
+			mes "Wwwww...wah~*cries*";
+			mes "Wah!!";
+			mes "This guy scares me!";
+			mes "Let me go to my mom! Mom!";
+			mes "*cries*";
+			next;
+			mes "[Singing Guy]";
+			mes "Ah, forgive this sinner.";
+			mes "Jorti, my lady.";
+			mes "You have enslaved my mind";
+			mes "with your beautiful emerald hair.";
+			mes "I promise I will not look at any other women";
+			mes "from now on.";
+			next;
+			mes "[Singing Guy]";
+			mes "So please stop crying.";
+			mes "You're breaking my mind, sweetie.";
+			mes "As I see your tears,";
+			mes "my mind is broken into thousand pieces of";
+			mes "icy crystal.";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "Excuse me.";
+			next;
+			mes "[Singing Guy]";
+			mes "Ah, sorry about that.";
+			mes "Probably Gods are jealous of my beauty.";
+			mes "*sigh* If I met you ealier,";
+			mes "I would fall in love with you...";
+			next;
+			mes "[Jorti]";
+			mes "Wwwww...wah~*cries*";
+			mes "Wah!!";
+			mes "This guy scares me!";
+			mes "Let me go to my mom! Mom!";
+			mes "*cries*";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "- I don't think he's in a right mind. -";
+			close;
+
+	L_Interrupt:
+		if (Bard == 2) goto L_Bard2;
+		if (Bard == 3) goto L_Bard3;
+		if (Bard == 4) goto L_Bard4;
+		if (Sex == Male) goto L_Male;
+			mes "[Singing Guy]";
+			mes "Ah, it is my honor to meet such a noble lady.";
+			mes "If you approve, I will speak of my name in front of you.";
+			mes "Oh well, I don't think I need your approval for that.";
+			next;
+			mes "[Singing Guy]";
+			mes "My lady who is glowing in the thick purple mist,";
+			mes "lady who is beautiful as much as goddess Freya.";
+			mes "Let me introduce myself who is a poor poet wandering the world.";
+			mes "My name is Kino Kitty.";
+			mes "I hope you will remember.";
+			set Bard,20;
+			close;
+
+		L_Male:
+			mes "[Kino Kitty]";
+			mes "You're such a nice young man.";
+			mes "I will remember your name.";
+			mes "It would be much appreciated if you could remember mine at the same time.";
+			mes "My name is Kino Kitty.";
+			mes "I am a wandering poet who";
+			mes "wishes to find the dream of a life.";
+			next;
+			mes "[Kino Kitty]";
+			mes "When we meet again next time";
+			mes "I will tell you what I have heard and experienced.";
+			mes "That is, I am willing to spend my time for you.";
+			set Bard,20;
+			close;
+
+		L_Bard2:
+			mes "[Singing Guy]";
+			mes "You're such a nice young man.";
+			mes "I will remember your name.";
+			mes "It would be much appreciated if you could remember mine at the same time.";
+			mes "My name is Kino Kitty.";
+			mes "I am a wandering poet who";
+			mes "wishes to find the dream of a life.";
+			next;
+			mes "[Kino Kitty]";
+			mes "When we meet again next time";
+			mes "I will tell you what I have heard and experienced.";
+			mes "That is, I am willing to spend my time for you.";
+			set Bard,22;
+			close;
+
+		L_Bard3:
+			mes "[Singing Guy]";
+			mes "You're such a nice young man.";
+			mes "I will remember your name.";
+			mes "It would be much appreciated if you could remember mine at the same time.";
+			mes "My name is Kino Kitty.";
+			mes "I am a wandering poet who";
+			mes "wishes to find the dream of a life.";
+			next;
+			mes "[Kino Kitty]";
+			mes "When we meet again next time";
+			mes "I will tell you what I have heard and experienced.";
+			mes "That is, I am willing to spend my time for you.";				
+			set Bard,23;
+			close;		
+
+		L_Bard4:
+			mes "[Singing Guy]";
+			mes "Oh, you're great.";
+			mes "You know what this bard wants, don't you?";
+			mes "By the way, what are you looking for?";
+			mes "Is there anything you want to talk to me?";
+			next;
+			mes "[Jorti]";
+			mes "Wwwww...wah~*cries*";
+			mes "Wah!!";
+			mes "This guy scares me!";
+			mes "Let me go to my mom! Mom!";
+			mes "*cries*";
+			next;
+			mes "[Singing Guy]";
+			mes "Oh...well...stop crying, my little girl.";
+			mes "Here's a candy for you.";
+			mes "Isn't it sweet...hmmm?";
+			mes "Hahahaha...yes, you're my angel.";
+			next;
+			menu "I am looking for Kino Kitty...",-,"You child abductor!",L_Abductor;
+				mes "[Kino Kitty]";
+				mes "!! How do you know my name?";
+				mes "Ah, I feel flattered.";
+				next;
+
+			L_Kitty:
+				mes "- You gave a candy to the crying little girl -";
+				mes "- and told Kino Kitty what have happened. -";
+				next;
+				mes "[Kino Kitty]";
+				mes "Hmm...I didn't know that.";
+				mes "By the way, I cannot";
+				mes "forgive Errende for saying that";
+				mes "he does not like the words I wrote for the song!";
+				mes "He will be a dead man when I see him next time!";
+				next;
+				mes "[" + strcharinfo(0) + "]";
+				mes "Mr. Kitty.";
+				mes "So...do you know the original words for the song?";
+				next;
+				mes "[Kino Kitty]";
+				mes "You mean the original words?";
+				mes "Nah, I don't remember such horrible words";
+				mes "for 'At one, I fell in love'. Hell no!";
+				mes "I do not have any room in my mind";
+				mes "to remember such romantic words!";
+				mes "*cries*...";
+				next;
+				mes "[Kino Kitty]";
+				mes "Do you know that?";
+				mes "My mind is like the desert where all livings";
+				mes "cannot survive.";
+				mes "I cannot sing a romantic song which";
+				mes "sings about love!";
+				next;
+				mes "[Jorti]";
+				mes "...uncle...Kino, you scare me...";
+				mes "I don't want you to yell, please?";
+				mes "I am scared and I cannot stop crying because of you.";
+				next;
+				mes "[Kino Kitty]";
+				mes "Oh, well well. I scared my little lady.";
+				mes "I apologize, my princess. It's alright.";
+				mes "Hmm hmm.";
+				mes "Anyways, if you want to figure out what was the original words for the song,";
+				mes "you'd better rummage all the old books.";
+				next;
+				mes "[Kino Kitty]";
+				mes "I wonder how Errende knows the original words...";
+				mes "Any new Eddas issued nowadays introduce";
+				mes "my version of the song...";
+				mes "Hahahaha...it's no use to sing a love song..";
+				mes "*cough**cough*.";
+				next;
+				mes "[Kino Kitty]";
+				mes "....Sorry about this.";
+				mes "*cough**cough*.";
+				mes " - *ptui* - ";
+				mes "Ah...what a mess...why do I have to suffer...";
+				mes "Ah...I feel pathetic.";
+				next;
+				mes "[Kino Kitty]";
+				mes "*cough*...if you wish to find the original words,";
+				mes "go to Juno.";
+				mes "There is a small book store at the book street.";
+				mes "You will find the song in the store.";
+				mes "I feel the last day of my bard life is coming...";
+				set Bard,10;
+				close;
+
+			L_Abductor:
+				mes "[Singing Guy]";
+				mes "....Quiet, you.";
+				mes "You know nothing about our relationship.";
+				mes "She is the one and only saver";
+				mes "who will rescue my life.";
+				mes "She is a sprout which is rooted in the dry land of my mind.";
+				next;
+				mes "[Singing Guy]";
+				mes "...Don't hurt me and her";
+				mes "with that absurd wild conjectural speech.";
+				mes "Even she is a young seedling yet,";
+				mes "she'll be a lady who has radiant beauty";
+				mes "and grace in the future!";
+				close;
+
+L_Bard10:
+	mes "[Kino Kitty]";
+	mes "Didn't you leave already?";
+	mes "He's at the book street in Juno.";
+	mes "Oh well, Errende will answer you better,";
+	mes "I guess.";
+	mes "Why don't you go ask him again if you cannot remember?";
+	next;
+	mes "[Kino Kitty]";
+	mes "Go ahead.";
+	mes "Let me be alone with my little lady Jorti.";
+	mes "... ... ... *cough**cough*.";
+	mes "And..";
+	next;
+	mes "[Kino Kitty]";
+	mes "if you don't mind to listen to this poor man's songs";
+	mes "you may come again.";
+	mes "I will prepare a song only for you.";
+	mes "Even if it makes me cough up blood...";
+	mes "I cannot stop singing for my audience.";
+	next;
+	mes "[Kino Kitty]";
+	mes "You know how bards are.";
+	mes "...........";
+	mes "At last,";
+	mes "thank you for helping Errende!";
+	close;
+
+L_Bard11:
+	mes "[Kino Kitty]";
+	mes ".....a silver seal.";
+	mes "...welcome to the wanderer's club.";
+	mes "...it looks good on you.";
+	next;
+	mes "[Kino Kitty]";
+	mes "Since you have the seal,";
+	mes "Mr. Sketzi will not kick you out.";
+	mes "I know you have your own duties...";
+	mes "so why don't you finish this type of quest";
+	mes "as soon as you can?";
+	close;
+
+L_Bard12:
+	mes "[Kino Kitty]";
+	mes "I guess you have met Mr. Sketzi.";
+	mes "By the way, why do you have the look on your face?";
+	mes "Didn't you find the thing you were looking for?";
+	mes "Hahah...";
+	mes "Will you show me your left hand?";
+	next;
+	menu "There you go.",-,"No, thanks.",L_NoThanks;
+		mes "[Kino Kitty]";
+		mes "Do you like black color?";
+		mes ".........Sunddely the forgotten words";
+		mes "for the song came to my mind.";
+		mes "So, I would like to mark the words";
+		mes "as a new seal on your hand.";
+		mes "Do you mind?";
+		next;
+		menu "Yes, I mind. I have one already.",-,"No, I don't mind.",L_NoMind;
+			mes "[Kino Kitty]";
+			mes "Ah, right. You have had the seal marked by";
+			mes "Errende.";
+			mes "Oh well, I was joking with you.";
+			set Bard,13;
+			close;
+
+		L_NoMind:
+			mes "[Kino Kitty]";
+			mes "Would you like a song?";
+			mes "...it's an old song.";
+			mes "...Lu lu lu... La la la...";
+			mes "At eight, they love each other~";
+			mes "At nine, she knew";
+			mes "he fell in love with her";
+			next;
+			mes "[Kino Kitty]";
+			mes "The 10th petal tells her~";
+			mes "He has been waiting for you";
+			mes "The 11th petal whispers her~";
+			mes "He will propose to marry you.";
+			next;
+			mes "[Kino Kitty]";
+			mes "The 12th petal celebrates~";
+			mes "for their union.";
+			mes " ";
+			mes "Yoo hoo~";
+			mes "In 12 petals";
+			mes "my love is lied within~";
+			next;
+			skilleffect 139,0;
+			mes "^4d4dff - After the song, he smiled at me. - ";
+			mes " - And I felt a pain on my wrist. -";
+			mes " - On the spot where the silver cresent seal was marked, -";
+			mes " - there was a new seal which is shaped in a tiny cross -";
+			mes " - of black color. -^000000";
+			next;
+			mes "[Kino Kitty]";
+			mes "So, how do you like it?";
+			mes "Well, Errende will like it for sure.";
+			mes "Hahahahahaha~*cough*";
+			mes "*cough**cough**cough**cough*";
+			next;
+			mes "[Kino Kitty]";
+			mes "*cough**cough**cough**cough*";
+			mes "Once again, I must tell you,";
+			mes "I didn't mean to make you wait.";
+			mes "The song just came to my mind right before.";
+			mes "Now, hurry up and go talk to Errende.";
+			next;
+			mes "^4d4dff - You received a letter from Kino Kitty. -";
+			mes " - It says 'Dear Errende' on the front. ^000000-";
+			set Bard,14;
+			close;
+
+	L_NoThanks:
+		mes "[Kino Kitty]";
+		mes "Nobody will attack you.";
+		mes "You're a scared";
+		if (Sex == Male) mes "little man.";
+		if (Sex == Female) mes "little lady.";
+		close;
+
+L_Bard13:
+	mes "[Kino Kitty]";
+	mes "Errende must be waiting for you in anguish.";
+	mes "For us like me and Errende,";
+	mes "waiting is not a big deal.";
+	mes "But it is mean to make someone wait";
+	mes "for too long.";
+	close;
+
+L_Bard20:
+	mes "[Kino Kitty]";
+	mes "What business do you have with me, my friend?";
+	next;
+	if (Bard == 24) goto L_Kitty;
+	menu "Tell me a story.",-,"Sing a song.",L_Song,"Nothing.",L_Cancel;
+		mes "[Kino Kitty]";
+		mes "A story? Hmmm...";
+		mes "My throat is hurting but I can do that for you.";
+		mes "Do you know how baldur the son of Odin died?";
+		mes "There was a story between his obsessive mother";
+		mes "and the wicked god, Loki.";
+		next;
+		mes "[Kino Kitty]";
+		mes "One night, Baldur had a nightmare.";
+		mes "In the dream, he was thrown into the pit of hell.";
+		mes "So Odin who was Baldur's father and the oldest mage among Gods";
+		mes "went to the other world to ask a female foreseer about the nightmare.";
+		next;
+		mes "[Kino Kitty]";
+		mes "Her forecast was ominous.";
+		mes "Baldur's mother Frigg feared something might happen to her son.";
+		mes "So she put every single one of objects in the world on oath";
+		mes "that they would not harm Baldur.";
+		mes "Fire made an oath and water did the same.";
+		next;
+		mes "[Kino Kitty]";
+		mes "*cough**cough*... *cough**cough*...";
+		mes ".....and they got all together to celebrate..*cough**cough*.......";
+		mes "I am so sorry.....";
+		mes "*cough**cough*... *cough**cough*...";
+		mes " - *ptui* - ";
+		mes "Ah...well...*cough* *cough* sorry about this.";
+		next;
+		mes "[Jorti]";
+		mes "Uncle Kino...?";
+		mes "Are you okay?....?";
+		next;
+		mes "[Kino Kitty]";
+		mes ".......Hah...hah...I am sorry...but";
+		mes "I don't think I can talk any longer.";
+		close;
+
+	L_Song:
+		mes "[Kino Kitty]";
+		mes ".........sorry but";
+		mes "I don't feel like singing at this moment.";
+		mes "I hope you will understand.";
+		mes "*sigh*....";
+		mes "I want to sing the last song of my life";
+		mes "for Jorti...";
+		close;
+
+	L_Cancel:
+		mes "[Kino Kitty]";
+		mes "What a dork.";
+		mes "If you don't have any business with me, leave me alone.";
+		mes "I want to be alone with my Jorti.";
+		close;
+
+L_Bard30:
+	mes "[Kino Kitty]";
+	mes "Everything will be fine after all. Don't you think so?";
+	mes "I will be ok, you will be ok, Jorti will be ok...";
+	mes "and she will be...";
+	mes "Is there anything you want from me?";
+	next;
+	menu "Tell me a story...",-,"Your voice is...",L_Song2,"Nothing.",L_Cancel2;
+		set @story,rand(1,3);
+		if (@story == 2) goto L_Story2;
+		if (@story == 3) goto L_Story3;
+
+		L_Story1:
+			mes "[Kino Kitty]";
+			mes ".... Ah....I feel like";
+			mes "rather singing a song.";
+			mes "You know, every song has their own stories.";
+			mes "...*cough*";
+			next;
+			mes "- Kino Kitty coughed few times -";
+			mes "- and wiped his mouth with his sleeve.-";
+			mes "- And he checked the strings of his guitar.-";
+			mes "- I seemed to notice a blood stain on his sleeve.-";
+			mes "- He started singing.-";
+			next;
+			mes "^4d4dffOnce upon a time, there was a guy who was invulberable.";
+			mes "His name was Sigfrides,";
+			mes "who was a son of the hero Siegmund.";
+			mes "A wicked giant, Fafnir transformed into a dragon";
+			mes "to get into Sigfrides' way.^000000";
+			next;
+			mes "^4d4dffSigfrides defeated Fafnir after a long battle.";
+			mes "He drank blood of the dragon and gained wisdom.";
+			mes "He bathed in blood of the dragon and became invulnerable.^000000";
+			next;
+			mes "^4d4dffNothing could harm Sigfrides any longer.";
+			mes "Icy spear could not pierce his armor,";
+			mes "Blazing lava could not burn his skin.^000000";
+			next;
+			mes "^4d4dffBrunhilde the valkyre fell in love with a human man.";
+			mes "Grimhilde was a sister of Gunter, the king of Brugund.";
+			mes "Jealousy is always dangerous.^000000";
+			next;
+			mes "^4d4dffSigfrides was drinking water out of a well in a hunting park.";
+			mes "He got killed by a spear stuck to the heel.";
+			mes "She should have not told him.^000000";
+			next;
+			mes "^4d4dffFellowers had gone,";
+			mes "Nobody remember him any longer.";
+			mes "There was a dried lily on his tomestone...^000000";
+			next;
+			mes "[Jorti]";
+			mes "Bravo~ Bravo! ";
+			mes "Uncle Kino is the best bard in the world~!";
+			mes "Jorti likes Uncle Kino singing!";
+			next;
+			mes "[Kino Kitty]";
+			mes "This song is about Sigfrides the invulnerable.";			
+			mes "Thank you, Jorti.";
+			mes "Any time for my little princess.";
+			close;
+
+		L_Story2:
+			if (Bard == 31) goto L_Story2b;
+			mes "[Kino Kitty]";
+			mes ".... Ah....I feel like";
+			mes "rather singing a song.";
+			mes "You know, every song has their own stories.";
+			mes "...*cough*";
+			next;
+			mes "- Kino Kitty coughed few times -";
+			mes "- and wiped his mouth with his sleeve.-";
+			mes "- And he checked the strings of his guitar.-";
+			mes "- I seemed to notice a blood stain on his sleeve.-";
+			mes "- He started singing.-";
+			next;
+			mes "^4d4dffI still remember";
+			mes "the warmness of your shoulder when I leaned on";
+			mes "You held my hands until the last moment.";
+			mes "I saw you off with a smile, but I was crying in my mind.";
+			mes "I already knew we could not go back.";
+			mes "I remembered every single mement we shared.^000000";
+			next;
+			mes "^4d4dffI still remember";
+			mes "the clear note of a bell from the Prontera Church,";
+			mes "the ice cream we shared in Morroc,";
+			mes "the Payon dungeon we used to be chased by bats,";
+			mes "the fireworks display in Comodo and";
+			mes "the large flakes of snow in Lutie.^000000";
+			next;
+			mes "^4d4dffYour beautiful soul will be with Odin.";
+			mes "When the day of the dusk comes,";
+			mes "your eyes will face a different place.^000000";
+			next;
+			mes "^4d4dffI will remember you forever.";
+			mes "Forget me not, call my name.";
+			mes "When I hear you, I will look up the sky.^000000";
+			next;
+			mes "[Jorti]";
+			mes "Ah, uncle Kino,";
+			mes "isn't this the song my mom always sung?";
+			mes "Sing more songs, please! Please!";
+			next;
+			mes "[Kino Kitty]";
+			mes "You're right...";
+			mes "She used to sing this song...*cough*";
+			mes "There are always people who";
+			mes "are waiting for their beloved...";
+			mes "...to come back.";
+			next;
+			mes "[Kino Kitty]";
+			mes ".. .. if you have someone who you left behind,";
+			mes "if you know somebody is waiting for you,";
+			mes "make sure you come back to the person...";
+			mes "I swear you will be sorry if you don't.";
+			close;
+
+		L_Story2b:
+			mes "[Kino Kitty]";
+			mes "Many legends have been handed down";
+			mes "as songs.";
+			mes "Stories of Gods and";
+			mes "stories of brave warriors";
+			mes "have been all written as songs.";
+			next;
+			mes "[Kino Kitty]";
+			mes "Many people love to listen to those songs";
+			mes "because they dream about the past...";
+			mes "Maybe that's what I am existing for.";
+			next;
+			mes "- Kino Kitty checked strings on his guitar -";
+			mes "- and started singing with a low voice. -";
+			next;
+			mes "^4d4dffThere was a giant golden nugget under the Rhein river.";
+			mes "It is prohibited to people who deny love.";
+			mes "It was used to make a golden ring with mysterious power.";
+			mes "It was the ring of the lord and even Gods wish to possess it.^000000";
+			next;
+			mes "^4d4dffGiants that built Valhalla wanted Freya.";
+			mes "Wicked Loki traded the goddess of beauty for Vahalla.";
+			mes "Only one thing which could be relaced of Freya was the treasure of Alberich.";
+			mes "It was the ring of the lord.^000000";
+			next;
+			mes "^4d4dffAlberich with a magic helm could transform into anything.";
+			mes "He longed to conquer every world with his gold.";
+			mes "Here goes the wicked Loki again. Ah, poor Alberich.";
+			mes "Loki caught him when he was a toad.^000000";
+			next;
+			mes "^4d4dffAlberich cursed, anyone who owns his golden ring";
+			mes "will be envied by everyone in the world.";
+			mes "Giants that took the ring fought over the ring.";
+			mes "A cursed owner beat his brother to death.^000000";
+			next;
+			mes "[Kino Kitty]";
+			mes "Hmm...*cough cough*";
+			mes "This is about the ring of the Nibelungs.";
+			mes "It's an old song..";
+			mes "*cough cough* Hah..";
+			mes "I cannot sing more than one song nowadays...";
+			mes "Did you like it...*cough cough*?";
+			close;
+
+
+		L_Story3:
+			mes "[Kino Kitty]";
+			mes "You want to listen to a story...ummm...let me think.";
+			mes "Oh right, when you go venture toward south west";
+			mes "from Morroc, you will arrive at the fortress Sandarman.";
+			mes "I guess you already know that. Don't you?";
+			mes "You know the natural fortress built on the sand hill.";
+			next;
+			mes "[Kino Kitty]";
+			mes "Ah yeah....this is a story about the old era after all...";
+			mes "When you go south of Sandarman,";
+			mes "you will see Paros Lighthouse.";
+			mes "And when you go east from the lighthouse,";
+			mes "you will meet Kokomo beach and there is Papuchicha Forest up north from the beach.";
+			mes "...";
+			next;
+			mes "[Kino Kitty]";
+			mes "...why, am I boring you?";
+			mes "I just wanted to tell you there is a village named Umbala";
+			mes "up north from the places I was talking about.";
+			mes "Have you ever been there before..?";
+			next;
+			mes "[Kino Kitty]";
+			mes "Umbala itself is a pretty interesting place.";
+			mes "But what I am really interested about is the giant tree";
+			mes "which supports Umbala...";
+			mes "......it has rumored to be lead to Nifflheim...";
+			mes "Maybe the tree is the Yggdrasil...";
+			mes "...I wonder if I could meet her in Nifflheim...";
+			close;
+
+	L_Song2:
+		mes "[Kino Kitty]";
+		mes "Umm? Ah, I have a chronic disease.";
+		mes "I cannot talk loud.";
+		mes "I cough up blood sometimes.";
+		mes "Oh, I am healthy other than that.";
+		next;
+		mes "- Kino Kitty looked somewhat bitter-";
+		mes "- and checked the strings of his guitar.-";
+		mes "- Then he started playing a song.-";
+		mes "- You are enjoying his low humming voice.-";
+		soundeffectall "humming.wav",0;
+		close;
+
+	L_Cancel2:
+		mes "[Kino Kitty]";
+		mes ".......Hmm....";
+		mes "I wish everyone in the world would be nice";
+		mes "as you are.";
+		mes "Then there would be no greedy fights.";
+		mes "...Hahahahaha... ";
+		close;
+
+}
+
+
+morocc.gat,132,111,5	script	LittleGirl#Jorti	703,{
+
+	if ((Bard > 9) && (Bard < 30)) goto L_Bard10;
+	if (Bard == 30) goto L_Bard30;
+	if (Bard > 30) goto L_Bard31;
+	mes "[Singing Guy]";
+	mes "Even in the sandy wind, I can recognize you.";
+	mes "You're shining like a star in the sky.";
+	mes "So don't you worry.";
+	mes "Even under the blazing sun or";
+	mes "in the sandy wind~";
+	next;
+	mes "[Singing Guy]";
+	mes "I can recognize you...";
+	mes ".....?! ...go away!";
+	mes "....I said go away!";
+	mes "Can't you see I am busy?";
+	next;
+	mes "[Jorti]";
+	mes "Wwwww...wah~*cries*";
+	mes "Wah!!";
+	mes "This guy scares me!";
+	mes "Let me go to my mom! Mom!";
+	mes "*cries*";
+	next;
+	mes "[Singing Guy]";
+	mes "What the...you made my lady crying!";
+	mes "It's all your fault!";
+	mes "Get the hell out of here!";
+	next;
+	mes "[Singing Guy]";
+	mes "So please stop crying.";
+	mes "You're breaking my mind, sweetie.";
+	mes "As I see your tears,";
+	mes "my mind is broken into thousand pieces of";
+	mes "icy crystal.";
+	next;
+	mes "[Jorti]";
+	mes "Wwwww...wah~*cries*";
+	mes "Wah!!";
+	mes "This guy scares me!";
+	mes "Let me go to my mom! Mom!";
+	mes "*cries*";
+	next;
+	mes "- I don't think he's in a right mind. -";
+	close;
+
+L_Bard10:
+	mes "[Jorti]";
+	mes "Jorti decided not to cry anymore.";
+	mes "...when Jorti cries, it hurts uncle Kino.";
+	mes "And, and he coughes up blood.";
+	next;
+	mes "[Jorti]";
+	mes "Huh? Dad? Ummm....";
+	mes "Jorti don't rememeber dad...";
+	mes "I used to live with mom";
+	mes "but she's gone somewhere. It's far far away.";
+	mes "That's what uncle Kino told me.";
+	next;
+	mes "[Jorti]";
+	mes "Mom is staying somewhere near the sky...";
+	mes "He can take Jorti to mom...";
+	mes "And, and, he said something";
+	mes "Flying....flying.. ......what was it..";
+	mes "Flying boat? Umm....";
+	next;
+	mes "[Jorti]";
+	mes "Uh...he said...";
+	mes "he cannot take me to my mom because";
+	mes "there is no flying boats yet..so..";
+	mes "*sob* Jorti will not cry any more.";
+	mes "I miss my mom but I will not cry.";
+	mes "I don't want to hurt uncle Kino anymore...";
+	close;
+
+L_Bard30:
+	mes "[Jorti]";
+	mes "La la la...La la la..";
+	mes "Jorti does not cry any longer.";
+	mes "Jorti likes uncle Kino.";
+	mes "He tells me many stories and sings many songs!";
+	next;
+	mes "[Jorti]";
+	mes "The songs uncle Kino sings are ones";
+	mes "used to be sung by my mom.";
+	mes "She's not here but!";
+	mes "I believe uncle Kino will take me to her one day!";
+	next;
+	mes "[Jorti]";
+	mes "? I just saw something shining on your hand.";
+	mes "That black cross means you're a friend of uncle Kino.";
+	mes "So~";
+	if (Sex == Male) mes "Brother, you're my friend as well!";
+	if (Sex == Female) mes "Sister, you're my friend as well!";
+	close;
+
+L_Bard31:
+	mes "[Jorti]";
+	mes "Jorti decided not to cry anymore.";
+	mes "...when Jorti cries, it hurts uncle Kino.";
+	mes "And, and he coughes up blood.";
+	next;
+	mes "[Jorti]";
+	mes "Huh? Dad? Ummm....";
+	mes "Jorti don't rememeber dad...";
+	mes "I used to live with mom";
+	mes "but she's gone somewhere. It's far far away.";
+	mes "That's what uncle Kino told me.";
+	next;
+	mes "[Jorti]";
+	mes "Mom is staying somewhere near the sky...";
+	mes "He can take Jorti to mom...";
+	mes "And, and, he said something";
+	mes "Flying....flying.. ......what was it..";
+	mes "Flying boat? Umm....";
+	next;
+	mes "[Jorti]";
+	mes "Uh...he said...";
+	mes "he cannot take me to my mom because";
+	mes "there is no flying boats yet..so..";
+	mes "*sob* Jorti will not cry any more.";
+	mes "I miss my mom but I will not cry.";
+	mes "I don't want to hurt uncle Kino anymore...";
+	close;
+
+}
+
+
+yuno_in01.gat,172,10,3	script	Old Man#1	712,{
+
+	if (Bard == 11) goto L_Bard11;
+	if ((Bard > 11) && (Bard < 20)) goto L_Bard12;
+	if (Bard == 30) goto L_Bard30;
+	if (Bard == 31) goto L_Bard31;
+	mes "[Sketzi Bundin]";
+	mes "Welcome.";
+	mes "You must be looking for something special and rare.";
+	mes "I have only one type of books...";
+	mes "If you want to check various types of books,";
+	mes "why don't you go check the Prontera library?";
+	close;
+
+L_Bard11:
+	mes "[Sketzi Bundin]";
+	mes "Welcome.";
+	mes "You must find something special.";
+	mes "I have almost every old eddas.";
+	mes "This is the only place you can find old songs.";
+	next;
+	mes "[Sketzi Bundin]";
+	mes "... however... ";
+	mes "I cannot show you my precious old eddas";
+	mes "without making sure about you.";
+	next;
+	menu "Show him your left hand.",-,"Show him your right hand.",L_Right;
+		mes "[Sketzi Bundin]";
+		mes "!!!";
+		mes "Ah, you're a friend of bards!";
+		mes "I see, I see. You must be a friend of Minty Errende.";
+		next;
+		mes "[Sketzi Bundin]";
+		mes "So, what are you looking for?";
+		mes "I guess I didn't need to ask that...hahaha.";
+		mes "Take your time and find one you are looking for.";
+		set Bard,12;
+		close;
+	
+	L_Right:
+		mes "[Sketzi Bundin]";
+		mes "???";
+		mes "Let's see....okay.";
+		mes ".. .. .. well";
+		mes "Your heart beat is pretty faster than normal people.";
+		mes "You'd better take care of your health.";
+		next;
+		mes "[Sketzi Bundin]";
+		mes "By the way, are you looking for a medical book?";
+		mes "I am sorry, but I don't have any of those.";
+		close;
+
+L_Bard12:
+	mes "[Sketzi Bundin]";
+	mes "Well, did you find what you were seeking for?";
+	mes "Although everything I got is old ones";
+	mes "I hope you come by sometimes.";
+	mes "And please say my regard to your bard friends, too.";
+	close;
+
+L_Bard30:
+	mes "[Sketzi Bundin]";
+	mes "Interesting...you have a black cross seal on your hand...";
+	mes "Is Kitty still around...?";
+	mes "I am glad to see him alive.";
+	mes "You're welcomed. Make yourself at home.";
+	close;
+
+L_Bard31:
+	mes "[Sketzi Bundin]";
+	mes "Well, well, well. You're here again.";
+	mes "So, what kind of books are you looking for today?";
+	mes "All I got is old eddas.";
+	mes "Hahahaha....";
+	close;
+
+}
+
+
+yuno_in01.gat,163,101,0	script	Old Book	111,{
+
+	if ((Bard > 11) && (Bard < 14)) goto L_Bard12;
+	mes "[Sketzi Bundin]";
+	mes "I am sorry, but that book is too old for a touch.";
+	mes "Please do not touch the book.";
+	close;
+
+L_Bard12:
+	if (rand(1,5) == 5) goto L_Read2;
+		mes "[" + strcharinfo(0) + "]";
+		mes "*sigh* This book is too worn out to";
+		mes "read letters....";
+		mes "Let's find another book.";
+		close;
+
+	L_Read2:
+		mes "-You opened the book. -";
+		mes "-It seemed to be really old -";
+		mes "-and letters were almost unidentifiable. -";
+		next;
+		mes "This is a love song.";
+		mes "Everybody would have a one-sided love";
+		mes "once in their life times...";
+		mes " - You could not identify the writer's name. -";
+		next;
+		mes "At one, I fell in love.";
+		mes "At two, I am in love.";
+		mes "At three, I am still in love.";
+		mes "At four, I am truely in love.";
+		next;
+		mes "At five?";
+		mes "Yoo hoo~";
+		mes " - Letters are worn out so you could not read the next part. -";
+		mes " .. ... lown..awa.. ...air~";
+		mes ".. he fell in love~";
+		mes "At seven, she fell in love~";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "I think this is it...";
+		mes "I should write it down.";
+		mes " ";
+		mes "- You started writing down the next line -";
+		mes "- of the song. -";
+		next;
+		mes "At eight, they love each other.";
+		mes "At nine, she knew";
+		mes "he fell in love with her";
+		next;
+		mes "The 10th petal tells her~";
+		mes "He has been waiting for you";
+		mes "The 11th petal whispers her~";
+		mes "He will propose to marry you.";
+		next;
+		mes "The 12th petal celebrates~";
+		mes "for their union.";
+		mes " ";
+		mes "Yoo hoo~";
+		mes "In 12 petals";
+		mes "my love is lied within~";
+		next;
+		mes "- You secured the note inside your pocket. -";
+		set Bard,15;
+		close;
+
+}
+
+
+yuno_in01.gat,173,96,0	script	Luke's song collection	111,{
+
+	if (Bard > 11) goto L_Bard12;
+	mes "[Sketzi Bundin]";
+	mes "I am sorry but";
+	mes "that book is not listed for exhibition!";
+	close;
+
+L_Bard12:
+	mes "[Preface]";
+	mes "I, the greatest bard, Luke of Izlude";
+	mes "leaves essential songs for the descendant.";
+	mes " ";
+	mes "Contents";
+	next;
+	menu "Wedding Song",-,"Life is a water mill",L_Mill,"We",L_We;
+		mes "Wedding Song - Luke of Izlude -";
+		mes " ";
+		mes "Play lute for joy!";
+		mes "Today, we will celebrate the union of two people";
+		mes "in the Prontera Sanctuary~";
+		next;
+		mes "My services is not provided for";
+		mes "zeny or gold but for the beautiful smile";
+		mes "of the bride.";
+		mes "That's all I wish to have in return of my song~";
+		next;
+		mes "Come back to me, my darling.";
+		mes "You are the only one I want...";
+		mes "... ...";
+		mes " ....Err? Oops, sorry.";
+		mes "But she's so beautiful!";
+		next;
+		mes "[Luke's Note]";
+		mes "This song is about a bard who was invited to";
+		mes "a wedding ceremony and could not";
+		mes "resist the beauty of the bride so he happened to sing";
+		mes "a song of seduction.";
+		close;
+
+	L_Mill:
+		mes "Life is a water mill - Luke of Izlude -";
+		mes " ";
+		mes "I had ran after the fame";
+		mes "but I got nothing.";
+		mes "I had ran after the happyness";
+		mes "but I got nothing.";
+		next;
+		mes "Life is circling";
+		mes "like a water mill in Al De Baran.";
+		mes "That's how life goes on.";
+		mes "So cheer up.";
+		next;
+		mes "A crying lady";
+		mes "and a young man in despair...";
+		mes "(he posed as if he was told a news from someone)";
+		mes "(and he was surprised by the news.)";
+		mes "..,what? The water mill in Al De Baran boke down a while ago?";
+		mes "La la la la~";
+		next;
+		mes "[Luke's Note]";
+		mes "This song was made to give";
+		mes "a comfort to people in despair.";
+		mes "Pantomime at the end of the song";
+		mes "emphasises the purpose of this song.";
+		close;
+
+	L_We:
+		mes "We - Luke of Izlude -";
+		mes " ";
+		mes "Bard sings for entertaining";
+		mes "his audience.";
+		mes "So, do not expect";
+		mes "sadness from my songs.";
+		next;
+		mes "Dancer dances for";
+		mes "pleasing her audience.";
+		mes "Hold my hands";
+		mes "and let's dance.";
+		next;
+		mes "A towner : ";
+		mes " Then why the hell";
+		mes " do you guys make discord";
+		mes " sometimes?";
+		mes "Muhahahaha~ it's because we cannot be perfect!";
+		next;
+		mes "[Luke's Note]";
+		mes "This song is good to be sung";
+		mes "in festivals.";
+		mes "This song also encourages";
+		mes "audience's participation.";
+		mes "There is no meaning behind of this song though.";
+		close;
+
+}
+
+
+yuno_in01.gat,173,94,0	script	Drumming in the battlefield	111,{
+
+	if (Bard > 11) goto L_Bard12;
+	mes "[Sketzi Bundin]";
+	mes "I am sorry but";
+	mes "that book is not listed for exhibition!";
+	close;
+
+L_Bard12:
+	mes "[Drumming in the battlefield]";
+	mes "Song writer unidentified";
+	mes "This song was sung in the battle field";
+	mes "in order to encourage soldiers.";
+	next;
+	mes "Galloping sounds echo in the distance.";
+	mes "A cloud of hazy dust fills the setting sun.";
+	mes "As thousands eyes are opened in the night sky";
+	mes "Torches on the castle shall blaze up like thousands of Ifrits.";
+	next;
+	mes "Hear the throbbing soud of my heart,";
+	mes "Feel the blood in my vein.";
+	mes "Feel the weight of my armor.";
+	mes "See the enemies appear in front of my force.";
+	next;
+	mes "Beat a drum hard, harder!";
+	mes "Cheer up soliders who take steps forward!";
+	mes "Shout loud, louder!";
+	mes "Today will never come back!";
+	next;
+	mes "Stun the sky and provoke the earth,";
+	mes "so my heart will start beating again!";
+	mes "Blow a bugle to sway the fortress.";
+	mes "Today will never come back!";
+	close;
+
+}
+
+
+yuno_in01.gat,173,92,0	script	Apple of Idun	111,{
+
+	if (Bard > 11) goto L_Bard12;
+	mes "[Sketzi Bundin]";
+	mes "I am sorry but";
+	mes "that book is not listed for exhibition!";
+	close;
+
+L_Bard12:
+	mes "[Apple of Idun]";
+	mes "This song praises";
+	mes "the goddess Idun's golden apple";
+	mes "which kept Gods from being old.";
+	next;
+	mes "Every god never be old.";
+	mes "It's because of the beautiful goddess Idun,";
+	mes "Idun the goddes of wealth,";
+	mes "It's because of the apples she possesses.";
+	next;
+	mes "Every god never be old.";
+	mes "It's because of the Odin's daughter in law, the wife of Bragi.";
+	mes "It's because of the apples in her basket,";
+	mes "the apples in her basket.";
+	next;
+	mes "Without Idun, every god will be old.";
+	mes "Even Thor, the strongest god will become an old man.";
+	mes "Hammer of Mjornil will not fly ever again,";
+	mes "Megingjard will slip down from his waist..";
+	next;
+	mes "Without Idun, every god will be old.";
+	mes "Careless Loki, the day Idun was kidnapped";
+	mes "The voice of Odin echoes in Valhalla.";
+	mes "Somehow the apple of youth came back.";
+	next;
+	mes "My goddes stands in the field of Asgard";
+	mes "She hands me a fruit of heaven.";
+	mes "You will be loved by every god";
+	mes "You will be blessed by every god";
+	next;
+	mes "If you share the apple of youth with me";
+	mes "even a bite of it with this poor poet,";
+	mes "You will be loved by every god";
+	mes "You will be blessed by every god";
+	close;
+
+}
+
+
+payon.gat,181,172,3	script	Bard#4	51,{
+
+	mes "[Gunther Doubleharmony";
+	mes "Hahaha, listen, listen my friend~";
+	mes "I was told this song from one of my friends.";
+	mes "It is about a merchant who used to live in Payon.";
+	mes "Everybody loves this song.";
+	mes "You know why? Because I am singing the song~";
+	next;
+	mes "[Gunther Doubleharmony";
+	mes "Would you like to listen to my song or a story? Huh?";
+	mes "I know you want! Don't you?";
+	mes "Don't you?";
+	next;
+	menu "Show him an interest.",-,"Ignore him.",L_Ignore;
+		mes "[Gunther Doubleharmony";
+		mes "See, I told you wanted it!";
+		mes "Okay, what do you want?";
+		mes "A song or a story?";
+		next;
+		menu "A song",-,"A story",L_Story,"Maybe some other time",L_Cancel;
+			set @song,rand(1,3);
+			if (@song == 2) goto L_Song2;
+			if (@song == 3) goto L_Song3;
+				mes "[Gunther Doubleharmony";
+				mes "Gunther sings";
+				mes "Gunther dances!";
+				mes "The title of the song is~";
+				mes " 'The rich Mr. Kim'~!";
+				next;
+				mes "Hahaha, listen, listen my friend~";
+				mes "I was told this song from one of my friends.";
+				mes "It is about a merchant who used to live in Payon.";
+				mes "Everybody loves this song.";
+				next;
+				mes "The merchant was so poor he could not even equip an armor.";
+				mes "He was a merchant but he didn't have any money to start a business.";
+				mes "But he was too proud to beg other people's help.";
+				mes "So he sold his jacket and a knife to make some money~";
+				next;
+				mes "At first, he only sold red pots.";
+				mes "He was rumored to sell carrots in Prontera.";
+				mes "People loved his prodcuts and his business became successful.";
+				mes "He could even buy an armor for himself with the money he made.";
+				next;
+				mes "One day, he was scammed~";
+				mes "He was scammed by a wicked guild.";
+				mes "Once again, he was poor.";
+				mes "He made up his mind to enter the Ant hell~";
+				next;
+				mes "He fought with bats and ants.";
+				mes "He broke thousands of ant eggs and fought with dwarves.";
+				mes "Sometimes he was chased by Maya but his cart was filled with items";
+				mes "the worm peelings he gathered with a lot of difficulty.";
+				next;
+				mes "At the time when the number of worm peelings became 10,000,";
+				mes "Mr. Kim happened to pick up a card.";
+				mes "A card which was more valuable than gold or diamond.";
+				mes "A card which was desired by everyone on the earth.";
+				next;
+				mes "But he didn't sell the card to anyone.";
+				mes "Because he wanted to remember";
+				mes "how he could obtain the card.";
+				next;
+				mes "[Gunther Doubleharmony";
+				mes "It's about the rich Mr. Kim.";
+				mes "It is an old story~";
+				mes "It could be a true story or a fiction~";
+				mes "Don't ask Gunther~ He has no idea~";
+				close;
+
+			L_Song2:
+				mes "[Gunther Doubleharmony";
+				mes "Gunther sings ";
+				mes "of Yggdrasil~";
+				next;
+				mes "It is the evergreen Yggdrasil.";
+				mes "It is a giant ash tree covered the sky.";
+				mes "Crystal dew soaks the great tree in the morning,";
+				mes "crystal dew is dropped from the tree and became a pond.";
+				mes "It is Urd's Pond.";
+				next;
+				mes "There were three wise girls.";
+				mes "They are under the great tree.";
+				mes "Urd the fate,";
+				mes "Belldandy the present";
+				mes "and Skuld the future.";
+				next;
+				mes "They spin people's destiy.";
+				mes "It is the evergreen Yggdrasil.";
+				mes "It is a giant ash tree covered the sky.";
+				mes "Root of the tree was soaked with tears";
+				mes "and it reached to the death,";
+				mes "the death named Hvergelmir.";
+				next;
+				mes "There was an evil dragon";
+				mes "that was burning the root of Yggdrasil with the eternal flame.";
+				mes "The evil dragon Nidhogg";
+				mes "was living between Yggdrasil and Nifflheim.";
+				next;
+				mes "It is the evergreen Yggdrasil.";
+				mes "It is a giant ash tree covered the sky.";
+				mes "Root of Yggdrasil became wise.";
+				mes "Root of wisdom found a sage.";
+				mes "Root of wisdom reached at Mimir's Pond.";
+				next;
+				mes "It was guarded by a wise giant.";
+				mes "Odin sacrificed one of his eyes.";
+				mes "Heimdall hid his horn bugle under the pond.";
+				mes "The horn bugle was for the day of the dusk.";
+				mes "Wise Mimir was guarding the pond.";
+				next;
+				mes "It is the evergreen Yggdrasil.";
+				mes "It is a giant ash tree covered the sky.";
+				mes "Crystal dew soaks the great tree in the morning,";
+				mes "Three goddess of destiny guard the tree.";
+				mes "The tree support this world.";
+				next;
+				mes "[Gunther Doubleharmony";
+				mes "It is an old story~";
+				mes "It could be a true story or a fiction~";
+				mes "Don't ask Gunther~ He has no idea~";
+				close;
+			
+			L_Song3:
+				mes "[Gunther Doubleharmony";
+				mes "Gunther sings ";
+				mes "one of Luke's song~";
+				mes "Gunther revised the words a little bit~";
+				next;
+				mes "I found it in a drawer.";
+				mes "The worn out letters were elaborated.";
+				mes "Letters reflected a sincere mind.";
+				next;
+				mes "I found it in a drawer.";
+				mes "The worn out letters were little bit childish.";
+				mes "Letters reflected an old memory.";
+				next;
+				mes "I found it in a drawer.";
+				mes "The love which was forgotten.";
+				mes "She didn't give this letter to me,";
+				mes "maybe she was too shy to confess her love.";
+				next;
+				mes "I found it in a drawer.";
+				mes "The love which was forgotten.";
+				mes "I could not give this ltter to her,";
+				mes "maybe because I was too proud of myself";
+				mes "or I was not brave enough to do so.";
+				mes "Double harmony for you~";
+				next;
+				mes "[Gunther Doubleharmony";
+				mes "Do you have anyone in your mind? Do you?";
+				mes "Do you have any love letter you wrote but yet didn't send?";
+				mes "If you do, throw it away.";
+				mes "Throw your goddamn pride away.";
+				close;
+		
+		L_Story:
+			set @story,rand(1,3);
+			if (@story == 2) goto L_Story2;
+			if (@story == 3) goto L_Story3;
+				mes "[Gunther Doubleharmony";
+				mes "Um, have you ever tasted the Comodo cheese?";
+				mes "You can only taste it in Comodo.";
+				mes "Oh yeah, you must have a strong stomach";
+				mes "to digest the cheese.";
+				mes "By the way, the cheese has a secret!";
+				next;
+				mes "[Gunther Doubleharmony";
+				mes "You could be invulnerable to doomed swords";
+				mes "which were come from the other world";
+				mes "when you eat the cheese!";
+				mes "Why don't you go taste it if you haven't yet?";
+				mes "Oh well, I tried to taste it then I got fainted.";
+				close;
+
+			L_Story2:
+				mes "[Gunther Doubleharmony";
+				mes "I was passing Prontera the other day.";
+				mes "I remember it was at the swordsman training ground.";
+				mes "I saw a young man was training really hard.";
+				mes "He didn't even notice I was watching him.";
+				next;
+				mes "[Gunther Doubleharmony";
+				mes "He looked as though he wanted to be a professional swordman.";
+				mes "But at the same time, he was";
+				mes "giving out his gears to novices without hesitance.";
+				mes "Maybe he might wanted to be a philanthropist...";
+				next;
+				mes "[Gunther Doubleharmony";
+				mes "I got bored while watching him doing";
+				mes "the same thing over and over again so I came back home.";
+				mes "But I keep thinking the monster research organization";
+				mes "would like him a lot if I introduced him to them.";
+				close;
+
+			L_Story3:
+				mes "[Gunther Doubleharmony";
+				mes "Have you ever been in Lutie where is covered with white snow?";
+				mes "Have you?";
+				mes "There is a snowman named Snowy Snow.";
+				mes "Have you ever met Snowy Snow before?";
+				next;
+				mes "[Gunther Doubleharmony";
+				mes "....I guess not?";
+				mes "He has a mysterious bag where endless gifts come out.";
+				mes "He used to live in a colder town than Lutie but";
+				mes "his home town was rumored to be destroyed by a witch.";
+				next;
+				mes "[Gunther Doubleharmony";
+				mes "And he was rescued by an alchemist and came to Lutie.";
+				mes "Don't you want to find out more about him?";
+				mes "Why don't you go visit Lutie? Huh?";
+				close;
+
+		L_Cancel:
+			mes "[Gunther Doubleharmony";
+			mes "Eh, are you gonna leave now? Without listening to me?";
+			mes "Ok, I am cool with it though~";
+			mes "But promise me you will";
+			mes "ask me at least a song next time~";
+			close;
+
+	L_Ignore:
+		mes "[Gunther Doubleharmony";
+		mes "Wow, are you ignoring me, huh?";
+		mes "Alright, fine by me!";
+		close;
+
+}
+
+
+yuno_in04.gat,20,123,7	script	Representative	95,{
+
+	//var check = GetGlobalVar "040708_god2"
+	//if check < 101
+	if (Brising == 3) goto L_Brising;
+		mes "[Marlin Putiur]";
+		mes "Welcome to the monster research organization.";
+		mes "We are researching monsters based upon information";
+		mes "from adventurers in order to efficiently cope with monsters.";
+		next;
+		mes "[Marlin Putiur]";
+		mes "We're accepting any kind of information related to monster.";
+		mes "So, if you have a news or information,";
+		mes "please do not hesitate to submit to me.";
+		mes "You can use a report documentation form in this room";
+		mes "at your convenience.";
+		next;
+		if ((Bard == 4) || (Bard == 24)) goto L_Bard4;
+			mes "[Marlin Putiur]";
+			mes "We will endeavor our research";
+			mes "to benefit every adventure in this continent.";
+			close;
+
+		L_Bard4:
+			mes "[Marlin Putiur]";
+			mes "Huh? ...adventurers of this organization?";
+			mes "Ah~ you're looking for a bard, you said..?";
+			mes "Yes, we have a few bard members";
+			mes "who regularly send us some information related to monsters.";
+			next;
+			mes "[Marlin Putiur]";
+			mes "I heard the bards are also helping scholars to install";
+			mes "bulletin boards in fields which indicates the location of area for new adventurers.";
+			mes "Could you let me know the full name of the person you're looking for?";
+			next;
+			input @input$;
+			if (@input$ == "Minty Errende") goto L_Errende;
+			if (@input$ == "Kino Kitty") goto L_Kitty;
+			if (@input$ == "Gunther Doubleharmony") goto L_Doubleharmony;
+				mes "[Marlin Putiur]";
+				mes " " + @input$ + "...";
+				mes "....ummm...umm...";
+				mes "I am sorry, but there is no record";
+				mes "found about the person.";
+				close;
+
+			L_Errende:
+				mes "[Marlin Putiur]";
+				mes "Minty Errende...Minty Errende...";
+				mes "Oh yes, I remember him.";
+				mes "He told me a while ago that he's heading to south...";
+				mes "I guess maybe he's staying in Geffen by now.";
+				next;
+				mes "[Marlin Putiur]";
+				mes "He is a really nice guy.";
+				mes "He's always doing his best to provide us";
+				mes "the information we need.";
+				mes "Please say my regard to him when you have a chance.";
+				close;
+
+			L_Kitty:
+				mes "[Marlin Putiur]";
+				mes "Kino Kitty...Kino Kitty";
+				mes "Oh, there you go.";
+				mes "He sent us a letter that said";
+				mes "'I will stay in the desert until I find real myself.'";
+				next;
+				mes "[Marlin Putiur]";
+				mes "He doesn't seem healthy...but I guess";
+				mes "he's still on travel.";
+				mes "Umm...perhaps he's staying in Morroc...?";
+				mes "Please say my regard to him when you have a chance.";
+				close;
+
+			L_Doubleharmony:
+				mes "[Marlin Putiur]";
+				mes "Ah...are you a friend of Gunther?";
+				mes "Haha, I must say he's funny...";
+				mes "... Okay...Gunther...Gunther...";
+				mes "I got it.";
+				mes "He headed south east.";
+				next;
+				mes "[Marlin Putiur]";
+				mes "He said he wanted to look around Payon and Alberta.";
+				mes "So he will stay in either place.";
+				mes "I cannot tell you more than that, sorry.";
+				close;
+
+	L_Brising:
+		mes "[Marlin Putiur]";
+		mes "Welcome to the monster research organization.";
+		mes "We are researching monsters based upon information";
+		mes "from adventurers in order to efficiently cope with monsters.";
+		next;
+		mes "[Marlin Putiur]";
+		mes "We're accepting any kind of information related to monster.";
+		mes "So, if you have a news or information,";
+		mes "please do not hesitate to submit to me.";
+		mes "You can use a report documentation form in this room";
+		mes "at your convenience.";
+		next;
+		mes "[Marlin Putiur]";
+		mes "Eh? Did you just say you're looking for a person?";
+		mes "Let me check...is he a registered member of this organization..?";
+		mes "Is his name Emet Sharlotte?";
+		mes "Hmm...hmm...";
+		next;
+		mes "[Marlin Putiur]";
+		mes "Oh, I found him.";
+		mes "Errr...but he didn't submit every required information";
+		mes "when he applied for a membership...Somehow it's understandable...";
+		mes ".....considering he is a rogue....";
+		mes "This is all I got about him. Wanna see?";
+		next;
+		mes "[Marlin Putiur]";
+		mes "His address is...poof!";
+		mes "Wanna take a look at this?";
+		next;
+		mes "- Marlin showed me a membership application card. -";
+		mes " ";
+		mes "It says, ^4d4dff I am living with my sister in Prontera~ ^000000";
+		mes " ";
+		next;
+		mes "[Marlin Putiur]";
+		mes "I cannot give you more information than this.";
+		mes "I hope this information will be helpful to you though.";
+		mes "Or maybe you'd better visit the rogue guild.";
+		close;
+
+}
+
+
+yuno_in04.gat,33,119,3	script	Adventurer#1	828,{
+
+	mes "..... ... . .";
+	mes ".. . .. . .. .*scribble scribble*";
+	next;
+	mes "[Energetic young man]";
+	mes "Err...and...?! What was it....";
+	mes "Huh? What are you looking at?";
+	next;
+	if (Sex == Female) goto L_Female;
+		mes "[Energetic young man]";
+		mes "What, man!";
+		mes "Leave me alone, I am busy.";
+		close;
+
+	L_Female:
+		emotion 18;
+		mes "[Energetic young man]";
+		mes "Ah, my beautiful lady! Good day~.";
+		mes "My name is Pane.";
+		mes "May I ask yours?";
+		input @input$;
+		next;
+		mes "[Energetic young man]";
+		mes "Oh.." +@input$+ ".....";
+		if (strcharinfo(0) == @input$) goto L_Name;
+			mes "Hmm...I don't think that's your name?";
+			mes "Eh, whatever.";
+			mes "Oh~ but I am so sorry. I am kind of busy now.";
+			mes "Lady, can you come back later? I will do my best to please you next time.";
+			emotion 18;
+			close;
+
+		L_Name:
+			mes "Such a beautiful name!";
+			mes "I shall remember your name, my lady.";
+			mes "Oh~ but I am so sorry. I am kind of busy now.";
+			mes "Lady, can you come back later? I will do my best to please you next time.";
+			emotion 31;
+			close;
+
+}
+

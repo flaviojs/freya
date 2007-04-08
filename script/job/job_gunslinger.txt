@@ -1,0 +1,1082 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Gunslinger Job Quests/Merchants	Author: Tsuyuki/Playtester
+//--------------------------------------------------------------
+// Revision History: v1.2
+//--------------------------------------------------------------
+//	1.0 First version, converted from Aegis [Tsuyuki]
+//	1.1 Merged in Gunslinger merchants and quests by Playtester [Tsuyuki]
+//	1.2 Added F_ClearJobVariables function after job change [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: * Aegis-certified * on the job change quest.
+// Contents:
+// - Gunslinger Job Change Quest
+// - Ammunition Box Merchant
+// - Single Ammunition Merchant
+// - Garrison, Drifter, Destroyer, and Inferno Weapon Quests
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Gunslinger Job Change Quest - [Tsuyuki]
+//--------------------------------------------------------------
+
+// Master Miller
+que_ng.gat,152,167,3	script	Master Miller	901,{
+
+	if (Class == JOB_NOVICE) goto L_StartQuest;
+	if (Class == JOB_GUNSLINGER) goto L_Gunslinger;
+	if (Upper == 2) goto L_Baby;
+	goto L_OtherClass;
+
+	L_StartQuest:
+		if (Joblevel < 10) goto L_NotReady;
+		if (hg_gun == 0) goto L_GSQ05;
+		if (hg_gun == 1) goto L_GSQ06;
+		if (hg_gun == 2) goto L_GSQ07;
+		if (hg_gun == 3) goto L_GSQ08;
+		if (hg_gun == 4) goto L_GSQ09;
+		if (hg_gun == 5) goto L_GSQ10;
+
+		L_NotReady:
+			mes "[Master Miller]";
+			mes "Hmm, I think you";
+			mes "have the potential";
+			mes "but you're not yet strong enough.";
+			mes "Keep getting stronger and";
+			mes "come back later.";
+			close;
+
+		L_GSQ05:
+			mes "[Master Miller]";
+			mes "I'm a Security Chief and also";
+			mes "a Gunslinger Instructor, you may call me";
+			mes "Master Miller.";
+			next;
+			mes "[Master Miller]";
+			mes "I can't be distracted from my duty";
+			mes "at this moment.";
+			mes "What is it that you want?";
+			next;
+			menu "Nothing much.",L_GSQ01,"I want to become a Gunslinger.",L_GSQ02;
+
+			L_GSQ01:
+				mes "[Master Miller]";
+				mes "Wasting my time is like,";
+				mes "wasting gold.";
+				mes "Get out of my sight immediately.";
+				close;
+
+			L_GSQ02:
+				mes "[Master Miller]";
+				mes "Hmm.";
+				mes "You still look young";
+				mes "but the look in your eyes...";
+				mes "I can sense a powerful force.";
+				next;
+				mes "[Master Miller]";
+				mes "Hmm...Okay.";
+				mes "First, if you have the will to become a Gunslinger";
+				mes "you will need to go through some tests";
+				mes "and also interview and Training Sessions.";
+				next;
+				mes "[Master Miller]";
+				mes "Do you wish to proceed?";
+				next;
+				menu "No, I need time to think.",L_GSQ03,"Sure.",L_GSQ04;
+
+				L_GSQ03:
+					mes "[Master Miller]";
+					mes "Hmm..Is that so.";
+					mes "Well, it is important...";
+					mes "Think carefully and if you have the spirit,";
+					mes "please, come back later.";
+					close;
+
+				L_GSQ04:
+					mes "[Master Miller]";
+					mes "Hmm. Okay.";
+					mes "First";
+					mes "deliver this letter I am giving to you";
+					mes "to Payon's Alchemist,";
+					mes "'The Wise Bull Horn'";
+					mes "and hand the letter to him.";
+					next;
+					mes "[Master Miller]";
+					mes "He will judge you and";
+					mes "will report back to us if ";
+					mes "you are up to our standards.";
+					next;
+					mes "[" +strcharinfo(0) + "]";
+					mes "Alright, I'll do that.";
+					set hg_gun,1;
+					close;
+
+		L_GSQ06:
+			mes "[Master Miller]";
+			mes "Hurry up and get moving.";
+			mes "'The Wise Bull Horn' is";
+			mes "currently in Payon.";
+			close;
+
+		L_GSQ07:
+			mes "[Master Miller]";
+			mes "I guess he gave you";
+			mes "some errands to run.";
+			next;
+			mes "[Master Miller]";
+			mes "I think he saw potential in you.";
+			mes "Good luck.";
+			close;
+
+		L_GSQ08:
+			mes "[Master Miller]";
+			mes "That's a lot of errands";
+			mes "I already told you, the";
+			mes "old man is pretty serious.";
+			mes "Perform your task well.";
+			close;
+
+		L_GSQ09:
+			mes "[Master Miller]";
+			mes "Mm~ I'll be waiting for your news.";
+			mes "I hope you'll become one of us.";
+			mes "We'll be practically family..";
+			close;
+
+		L_GSQ10:
+			if (Skillpoint != 0) goto L_Skillpoints;
+			mes "[Master Miller]";
+			mes "Ohh, I see you got something from the old man";
+			mes "This is rare.";
+			mes "Under normal circumstances...";
+			mes "this would not be allowed...";
+			mes "Nice, nice.";
+			next;
+			mes "[Master Miller]";
+			mes "Mm..Okay.";
+			mes "The old man gave his";
+			mes "blessings, so I do not have any";
+			mes "reason to reject your application.";
+			next;
+			mes "[Master Miller]";
+			mes "Okay, from now on you'll be a Gunslinger.";
+			mes "From now on, you are a Gunslinger";
+			mes "After this, for every moment that you live,";
+			mes "remember can never leave your side";
+			mes "is your gun. We must remember the gun";
+			mes "and even every one of its bullets";
+			mes "has its own product number,";
+			mes "and can be checked up by us.";
+			next;
+			mes "[Master Miller]";
+			mes "For purchasing guns and ammo";
+			mes "the only place you can buy them";
+			mes "is from our special gunslinger";
+			mes "guild stores in various places.";
+			next;
+			mes "[Master Miller]";
+			mes "Of course, this is tedious.";
+			mes "But this is all to...";
+			mes "not let these guns";
+			mes "fall in the wrong hands, so";
+			mes "please forgive us for any inconvenience.";
+			next;
+			mes "[Master Miller]";
+			mes "There are also";
+			mes "other reasons.";
+			mes "You'll no doubt find some of them";
+			mes "later.";
+			mes "These are all the instructions";
+			mes "from Lady Celena, our";
+			mes "guild leader.";
+			next;
+			mes "[Master Miller]";
+			mes "After a bit of time";
+			mes "we will give you missions.";
+			mes "You will understand more";
+			mes "later.";
+			next;
+			mes "[Master Miller]";
+			mes "I'm sure we'll see each other again.";
+			mes "So here's to a nice time";
+			mes "working together.";
+			set hg_gun,6;
+			callfunc "F_JobChange",Job_Gunslinger;
+			callfunc "F_ClearJobVariables";
+			set gunex,rand(1,2);
+			if (gunex == 1) getitem 13100,1;
+			if (gunex == 2) getitem 13150,1;
+			close;
+
+	L_Gunslinger:
+		mes "[Master Miller]";
+		mes "Oh~ It's been a long time~";
+		mes "So, how have your travels been?";
+		mes "Remember, always take care";
+		mes "of your gun.";
+		close;
+
+	L_Baby:
+		mes "[Master Miller]";
+		mes "Ouch~";
+		mes "How did a baby come here~";
+		mes "Peekaboo~";
+		next;
+		mes "[Master Miller]";
+		mes "Where's your mommy~";
+		mes "Haha~";
+		mes "It's a dangerous place here.";
+		mes "Go play somewhere else.";
+		close;
+
+	L_OtherClass:
+		mes "[Master Miller]";
+		mes "Don't get distracted with me.";
+		mes "Get on with your traveling.";
+		close;
+
+	L_Skillpoints:
+		mes "[Master Miller]";
+		mes "Learn all your Basic Skills first!!";
+		close;
+}
+
+// The Wise Bull Horn
+payon.gat,184,65,3	script	The Wise Bull Horn	866,{
+
+	if (hg_gun == 1) goto L_WBH01;
+	if (hg_gun == 2) goto L_WBH02;
+	if (hg_gun == 3) goto L_WBH03;
+	if (hg_gun == 4) goto L_WBH04;
+	if (hg_gun == 5) goto L_WBH05;
+	if (hg_gun == 6) goto L_WBH06;
+	goto L_WBH07;
+
+	L_WBH01:
+		mes "[The Wise Bull Horn]";
+		mes "...Hmm... Young one";
+		mes "What is it that you want.";
+		next;
+		mes "[" +strcharinfo(0) + "]";
+		mes "Mr. Miller sent me here.";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "Miller...";
+		mes "Mm...Hmm. So Dark Fox";
+		mes "sent you here...";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "He is wise and cunning...";
+		mes "that is willing to sacrifice himself for his teammates.";
+		mes "mm...If he sent you..";
+		mes "Then you should be rather capable...";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "Wait...come closer...";
+		next;
+		mes "[" +strcharinfo(0) + "]";
+		mes "....";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "mmm...";
+		mes "mmmmm....";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "mmm...Bright eyes and...";
+		mes "a serious face...also...";
+		mes "a very good attitude...a good sense of...";
+		mes "responsibility...";
+		mes "But still not enough.";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "Lack of experience...";
+		mes "And you still don't have the blessing of the land...";
+		mes "You'll get injured at this rate...";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "Very well, I shall craft you a gift...";
+		mes "If you wish to follow this path...";
+		mes "Gather 3 Rainbow Shells";
+		mes "10 Shells, 3 Feathers";
+		mes "1 Trunk, 3 Zargons, and 3 Green Herbs,";
+		mes "then bring them to me.";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "If you show the gif that you just received";
+		mes "to Dark Fox. Then he will definitely...";
+		mes "accept you.";
+		next;
+		mes "[" +strcharinfo(0) + "]";
+		mes "-I'll need-";
+		mes "-3 Rainbow Shells-";
+		mes "-10 Shells, 3 Feathers-";
+		mes "-1 Trunk, 3 Zargons,-";
+		mes "-and 3 Green Herbs.-";
+		set hg_gun,2;
+		close;
+
+	L_WBH02:
+		if (countitem(949) < 3 || countitem(912) < 3 || countitem(1019) < 1 || countitem(935) < 10 || countitem(1013) < 3 || countitem(511) < 3) goto L_NotEnoughItems;
+
+		delitem 949,3;
+		delitem 912,3;
+		delitem 1013,3;
+		delitem 935,10;
+		delitem 511,3;
+		delitem 1019,1;
+		set hg_gun,3;
+		mes "[The Wise Bull Horn]";
+		mes "Oh...give them to me.";
+		mes "There is time to be consumed to";
+		mes "make the gift, Wait for a while.";
+		close;
+
+		L_NotEnoughItems:
+			mes "[" +strcharinfo(0) + "]";
+			mes "-I'll need-";
+			mes "-3 Rainbow Shells-";
+			mes "-10 Shells";
+			mes "-3 Feathers-";
+			mes "-1 Trunk, 3 Zargons,-";
+			mes "-and 3 Green Herbs-";
+			close;
+
+	L_WBH03:
+		mes "[The Wise Bull Horn]";
+		mes "Mm...You came right on time.";
+		mes "The preparation finished just now.";
+		mes "It is a rather simple gift.";
+		mes "But that's because I haven't worked in so long.";
+		mes "Ahh...I feel tired now...";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "The last time I crafted this...";
+		mes "Was well over ten years ago.";
+		mes "I also followed this path once...";
+		mes "and I once battled...";
+		mes "with such an item.";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "Meeting Celena's father";
+		mes "feels just like yesterday,";
+		mes "time really flies.";
+		mes "Like the smooth western wind.";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "Though there would always be painful";
+		mes "memories...but my followers...";
+		mes "especially people like...";
+		mes "Celena and Dark Fox.";
+		mes "Ahh, young people, and my followers...";
+		mes "I thank you...";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "Though now, I am already old...";
+		mes "In a short while...";
+		mes "I will return...to the land";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "I feel so tired...";
+		mes "I'm so sorry...but if you could...";
+		mes "Promise me something...";
+		mes "Promise to do...something for me.";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "I suddenly feel like...";
+		mes "drinking a glass of milk.";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "Take it as a request...from an old man.";
+		next;
+		mes "[" +strcharinfo(0) + "]";
+		mes "-Let's get a glass of Milk-";
+		mes "For 'The Wise Bull Horn'.-";
+		set hg_gun,4;
+		close;
+
+	L_WBH04:
+		if (countitem(519) < 1) goto L_NotEnoughMilk;
+
+		delitem 519,1;
+		set hg_gun,5;
+		mes "[The Wise Bull Horn]";
+		mes "Thank you.";
+		mes "You are truly a kind young man.";
+		mes "Now get on the road.";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "Take this Gift made bye me";
+		mes "and show it to Dark Fox.";
+		mes "You have my blessings";
+		mes "to become a Gunslinger.";
+		next;
+		mes "[The Wise Bull Horn]";
+		mes "Ee~~Ye~Ee~~ Hooma~ Raa~~Nae~Eee~~";
+		mes "Ee~~Ye~Ee~~ Hooma~ Raa~~Nae~Eee~~";
+		next;
+		mes "[" +strcharinfo(0) + "]";
+		mes "-Singing a weird-";
+		mes "-song-";
+		mes "-'The Wise Bull Horn'. I feel strange.-";
+		mes "-Let's take the Gift-";
+		mes "-to Mr.Miller now.-";
+		close;
+
+		L_NotEnoughMilk:
+			mes "[" +strcharinfo(0) + "]";
+			mes "-Let's get a glass of Milk-";
+			mes "-for 'The Wise Bull Horn'.-";
+			close;
+
+	L_WBH05:
+		mes "[The Wise Bull Horn]";
+		mes "Ee~~Ye~Ee~~ Hooma~ Raa~~Nae~Eee~~";
+		mes "Ee~~Ye~Ee~~ Hooma~ Raa~~Nae~Eee~~";
+		next;
+		mes "[" +strcharinfo(0) + "]";
+		mes "-Singing a weird-";
+		mes "-song-";
+		mes "-'The Wise Bull Horn'.-";
+		next;
+		mes "[" +strcharinfo(0) + "]";
+		mes "-I feel strange.-";
+		mes "-Let's take the Gift-";
+		mes "-to Mr.Miller now.-";
+		close;
+
+	L_WBH06:
+		mes "[The Wise Bull Horn]";
+		mes "Mm...It's been a while.";
+		mes "Hopefully you'll become a strong Gunslinger.";
+		close;
+
+	L_WBH07:
+		mes "[The Wise Bull Horn]";
+		mes "Zzz...Zzz";
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Ammuntion Box Merchant - [Playtester]
+//--------------------------------------------------------------
+
+que_ng.gat,187,149,3	script	Kenny	83,{
+
+	mes "[Kenny]";
+	mes "My name is Kenny.";
+	mes "I can create ^0000FFbullet casings^000000";
+	mes "and ^0000FFsphere packs^000000.";
+	next;
+	mes "[Kenny]";
+	mes "Would you like to try using one of";
+	mes "my bullet bullet casings or sphere";
+	mes "packs?";
+	mes "Select the one you want me to make!";
+	next;
+
+	menu "Bullet Casing",-,"Silver Bullet Casing",Q2,"Shell of Blood Casing",Q3,"Lightning Sphere Pack",Q4,"Blind Sphere Pack",Q5,"Poison Sphere Pack",Q6,"Freezing Sphere Pack",Q7,"Flare Sphere Pack",Q8;
+
+// Arguments
+
+		callsub sF_Make, 13200,500,12149, "Bullet Casings";
+			goto M_Menu;
+Q2:
+		callsub sF_Make, 13201,500,12151, "Silver Bullet Casings";
+			goto M_Menu;
+Q3:
+		callsub sF_Make, 13202,500,12150, "Shell of Blood Casings";
+			goto M_Menu;
+Q4:
+		callsub sF_Make, 13204,500,12144, "Lightning Sphere Packs";
+			goto M_Menu;
+Q5:
+		callsub sF_Make, 13206,500,12145, "Blind Sphere Packs";
+			goto M_Menu;
+Q6:
+		callsub sF_Make, 13205,500,12146, "Poison Sphere Packs";
+			goto M_Menu;
+Q7:
+		callsub sF_Make, 13207,500,12147, "Freezing Sphere Packs";
+			goto M_Menu;
+Q8:
+		callsub sF_Make, 13203,500,12148, "Flare Sphere Packs";
+			goto M_Menu;
+
+// Subfunction for making ammo boxes
+
+sF_Make:
+	set @ammonum,500;
+	if (countitem(getarg(0)) < @ammonum) goto L_NdAmmo;
+	if (Zeny < getarg(1)) goto L_NdZeny;
+	mes "[Kenny]";
+	mes "What do you want me to do?";
+	next;
+	menu "Give me as many as you can.",-, "I want to set the amount.",sM_0b, "Nevermind",M_End;
+
+		set @amount,50;
+		if (zeny/getarg(1) < @amount) set @amount, zeny/getarg(1);
+		if (countitem(getarg(0))/@ammonum < @amount) set @amount, countitem(getarg(0))/@ammonum;
+		if (@amount > 0) goto L_End;
+		mes "[Kenny]";
+		mes "Dude, you don't even have the right items...";
+		close;
+		
+	sM_0b:
+		input @amount;
+		if (@amount<1 || @amount>50) goto L_BadAmnt;
+		if (countitem(getarg(0))/@ammonum < @amount) goto L_NdAmmo;
+		if (Zeny < (getarg(1)*@amount)) goto L_NdZeny;
+
+	L_End:
+		set Zeny, Zeny - (getarg(1)*@amount);
+		delitem getarg(0), (@amount*@ammonum);
+		getitem getarg(2), @amount;
+		mes "[Kenny]";
+		mes "There you go~!";
+		mes "Here are your " +getarg(3)+ ".";
+		close;
+
+	L_NdAmmo:
+		mes "[Kenny]";
+		mes "Sorry, but you need 500 bullets or"; 
+		mes "spheres and 500 zeny to make";
+		mes "1 bullet casing or 1 sphere pack.";
+		close;
+		
+	L_NdZeny:
+		mes "[Kenny]";
+		mes "You don't have enough zeny for that many.";
+		close;
+
+	L_BadAmnt:
+		mes "[Kenny]";
+		mes "Please choose a number between 1 and 50.";	
+		close;
+
+L_Come:
+	mes "[Kenny]";
+	mes "Please, come again whenever you want too.";
+	close;
+M_End:
+	mes "[Kenny]";
+	mes "Sure, no problem.";
+	mes "Come back any time.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Ammunition Merchant - [Playtester]
+//--------------------------------------------------------------
+
+que_ng.gat,187,156,3	script	Tony	86,{
+
+	mes "[Tony]";
+	mes "I can make spheres for you.";
+	mes "Spheres are the ammunition for";
+	mes "grenade launchers.";
+	next;
+	mes "[Tony]";
+	mes "For 30 spheres, I need";
+	mes "^FF00001 Phracon^000000";
+	mes "and";
+	mes "^FF00001 Emveretarcon^000000.";
+	next;
+	mes "[Tony]";
+	mes "I also need another material,";
+	mes "depending on which sphere type";
+	mes "you want to create.";
+	next;
+	mes "[Tony]";
+	mes "Here's a list:";
+	mes "Flare Sphere - ^FF00002 Burning Hearts^000000";
+	mes "Lightning Sphere - ^FF00003 Cyfars^000000";
+	mes "Poison Sphere - ^FF000010 Venom Canines^000000";
+	mes "Blind Sphere - ^FF00005 Squid Inks^000000";
+	mes "Freezing Sphere - ^FF00002 Brigans^000000";
+	next;
+	mes "[Tony]";
+	mes "So which ones do you want me";
+	mes "to create?";
+	next;
+	menu "Flare Sphere",-,"Lightning Sphere",S2,"Poison Sphere",S3,"Blind Sphere",S4,"Freezing Sphere",S5;
+
+	callsub sF_Make,13203,7097,2;
+S2:
+	callsub sF_Make,13204,7053,3;
+S3:
+	callsub sF_Make,13205,937,10;
+S4:
+	callsub sF_Make,13206,1024,5;
+S5:
+	callsub sF_Make,13207,7054,2;
+
+// Subfunction, getarg(0):created sphere, getarg(1):special material, getarg(2):number needed
+
+sF_Make:
+	if ( (countitem(1010)<1) || (countitem(1011)<1) || (countitem(getarg(1))<getarg(2)) ) goto L_NoMat;
+	mes "[Tony]";
+	mes "So how many ^0000FF30x packages^000000 do";
+	mes "you want me to make?";
+	next;
+	menu "-Exchange as many as possible.",M_0, "-Let me set the amount.",M_1, "-Cancel",M_End;
+
+	M_0:
+		set @amount, 500;
+		if (countitem(1010) < @amount) set @amount,countitem(1010);
+		if (countitem(1011) < @amount) set @amount,countitem(1011);
+		if (countitem(getarg(1))/getarg(2) < @amount) set @amount,countitem(getarg(1))/getarg(2);
+		if (@amount > 0) goto L_Make;
+		mes "[Tony]";
+		mes "Are you trying to make a fool of me...?";
+		close;
+
+	M_1:
+		input @amount;
+		if (@amount < 1 || @amount > 500) goto M_End;
+		if (countitem(1010) < @amount) goto L_NoMat;
+		if (countitem(1011) < @amount) goto L_NoMat;
+		if (countitem(getarg(1))/getarg(2) < @amount) goto L_NoMat;
+
+	L_Make:
+		delitem 1010,@amount;
+		delitem 1011,@amount;
+		delitem getarg(1),@amount*getarg(2);
+		getitem getarg(0),@amount*30;
+
+	M_End:
+		mes "[Tony]";
+		mes "Come back anytime.";
+		close;
+
+	L_NoMat:
+		mes "[Tony]";
+		mes "I'm sorry but you don't have";
+		mes "enough materials to create the";
+		mes "spheres.";
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Garrison/Drifter/Destroyer/Inferno Weapon Quests - [Playtester]
+//--------------------------------------------------------------
+
+que_ng.gat,182,85,3	script	Mr.Garrison	109,{
+
+	mes "[Mr.Garrison]";
+	if (countitem(13105)>0) goto L_Already;
+	if (countitem(13104)>0) goto L_Slot;
+	mes "I have invented a new Revolver!";
+	mes "I think I call it... Garrison.";
+	next;
+	mes "[" +strcharinfo(0) + "]";
+	mes "Very innovative name really.";
+	next;
+	if (Class != JOB_GUNSLINGER || BaseLevel < 55) goto GSRQ1;
+	goto GSRQ2;
+
+	GSRQ1:
+		mes "[Mr.Garrison]";
+		mes "I don't think you have enough";
+		mes "knowledge of guns to see its";
+		mes "true beauty.";
+		close;
+
+GSRQ2:
+	mes "[Mr.Garrison]";
+	mes "You look like you're an expert";
+	mes "in guns, aren't you?";
+	next;
+	mes "[" +strcharinfo(0) + "]";
+	mes "Yeah you could say so.";
+	next;
+	mes "[Mr.Garrison]";
+	mes "So, do you want me to make a";
+	mes "^0000FFGarrison^000000 for you?";
+	next;
+
+	menu "Yes, please.",GSRQMenu1,"Nah, I'll stick with my gun.",GSRQMenu2;
+
+		GSRQMenu1:
+			mes "[Mr.Garrison]";
+			mes "Great! But first you need to";
+			mes "bring me the materials I need";
+			mes "to create one.";
+			next;
+			mes "[Mr.Garrison]";
+			mes "This is what I need:";
+			mes "^FF000050 Steels^000000,";
+			mes "^FF00003 Eluniums^000000,";
+			mes "^FF00001 Oridecon^000000,";
+			mes "^FF000050 Coals^000000,";
+			mes "^FF000020 Rusty Screws^000000 and";
+			mes "^FF000030000 Zeny^000000.";
+			next;
+			mes "[Mr.Garrison]";
+			if ((countitem(999)<50) || (countitem(985)<3) || (countitem(984)<1) || (countitem(1003)<50) || (countitem(7317)<20) || (Zeny < 30000)) goto GSRQ3;
+			goto GSRQ4;
+
+			GSRQ3:
+				mes "Come back when you have the materials.";
+				close;
+
+		GSRQ4:
+			delitem 999,50;
+			delitem 985,3;
+			delitem 984,1;
+			delitem 1003,50;
+			delitem 7317,20;
+			set Zeny,Zeny-30000;
+			mes "I see you came prepared.";
+			mes "Let me take those material.";
+			next;
+			mes "[Mr.Garrison]";
+			mes "Give me just a minute...";
+			mes "...";
+			mes "...";
+			next;
+			getitem 13104,1;
+			mes "[Mr.Garrison]";
+			mes "It's done. Here, take this";
+			mes "wonderful gun!";
+			close;
+
+		GSRQMenu2:
+			mes "[Mr.Garrison]";
+			mes "Well, guess a true Gunslinger";
+			mes "will never part from his";
+			mes "favorite gun, heh.";
+			close;
+
+L_Slot:
+	mes "Oh, I see you have one of";
+	mes "my high-quality guns.";
+	next;
+	mes "[Mr.Garrison]";
+	mes "Now that I look at it, I";
+	mes "think I could improve it";
+	mes "some more.";
+	next;
+	mes "[Mr.Garrison]";
+	mes "How about I add a ^0000FFslot^000000";
+	mes "to it? Be careful, though.";
+	mes "If you put a card into it";
+	mes "already, it will be lost";
+	mes "in the process.";
+	next;
+	menu "Yes, please add a slot.",GSRQMenu3,"Nah, I keep it as it is now.",GSRQMenu4;
+
+		GSRQMenu3:
+			mes "[Mr.Garrison]";
+			mes "Great! But first you need to";
+			mes "bring me the materials I need";
+			mes "to improve it.";
+			next;
+			mes "[Mr.Garrison]";
+			mes "This is what I need:";
+			mes "^FF000010 Steels^000000,";
+			mes "^FF00001 Eluniums^000000,";
+			mes "^FF000010 Emveretarcon^000000,";
+			mes "^FF000030 Coals^000000,";
+			mes "^FF000010 Rusty Screws^000000 and";
+			mes "of course your ^FF0000Garrison^000000.";
+			next;
+			mes "[Mr.Garrison]";
+			if ((countitem(999)<10) || (countitem(985)<1) || (countitem(1011)<10) ||(countitem(1003)<30) || (countitem(7317)<10) || (countitem(13104)<1)) goto GSRQ5;
+			goto GSRQ6;
+
+			GSRQ5:
+				mes "Come back when you have the materials.";
+				close;
+
+		GSRQ6:
+			delitem 999,10;
+			delitem 985,1;
+			delitem 1011,10;
+			delitem 1003,30;
+			delitem 7317,10;
+			delitem 13104,1;
+			mes "I see you came prepared.";
+			mes "Let me take those materials.";
+			next;
+			mes "[Mr.Garrison]";
+			mes "Give me just a minute...";
+			mes "...";
+			mes "...";
+			next;
+			getitem 13105,1;
+			mes "[Mr.Garrison]";
+			mes "It's done. Now it is";
+			mes "even better than before.";
+			mes "Put it to good use.";
+			close;
+
+		GSRQMenu4:
+			mes "[Mr.Garrison]";
+			mes "Okay, come back when you";
+			mes "changed your mind.";
+			close;
+
+L_Already:
+	mes "So how do you like";
+	mes "my gun?";
+	close;
+}
+
+que_ng.gat,187,163,3	script	Ingrid	744,{
+
+	mes "[Ingrid]";
+	mes "I can make the strongest of";
+	mes "all weapons. The ultimate";
+	mes "grenade launcher.";
+	mes "It's called ^0000FFInferno^000000.";
+	next;
+	if (Class != JOB_GUNSLINGER || BaseLevel < 65) goto GSIQ1;
+	goto GSIQ2;
+
+	GSIQ1:
+		mes "[Ingrid]";
+		mes "But I don't think you are";
+		mes "experienced enough to use it.";
+		next;
+		mes "[Ingrid]";
+		mes "You'll probably kill yourself.";
+		mes "It's just too powerful to use";
+		mes "for a beginner. I refuse to";
+		mes "make one for you.";
+		close;
+
+GSIQ2:
+	mes "[Ingrid]";
+	mes "You look experienced.";
+	mes "I think I could make one";
+	mes "for you.";
+	next;
+	mes "[Ingrid]";
+	mes "So, do you want me to make an";
+	mes "^0000FFInferno^000000 for you?";
+	next;
+
+	menu "Yes, please.",GSIQMenu1,"No thanks.",GSIQMenu2;
+
+		GSIQMenu1:
+			mes "[Ingrid]";
+			mes "Okay, but first you need to";
+			mes "bring me the materials I need";
+			mes "to create one.";
+			next;
+			mes "[Ingrid]";
+			mes "This is what I need:";
+			mes "^FF0000100 Used Iron Plates^000000,";
+			mes "^FF000010 Oridecons^000000,";
+			mes "^FF000050 Rusty Screws^000000,";
+			mes "^FF0000100 Burning Hearts^000000 and";
+			mes "^FF0000200000 Zeny^000000.";
+			next;
+			mes "[Ingrid]";
+			if ((countitem(7319)<100) || (countitem(984)<10) || (countitem(7317)<50) || (countitem(7097)<100) || (Zeny < 200000)) goto GSIQ3;
+			goto GSIQ4;
+
+			GSIQ3:
+				mes "Come back when you have the materials.";
+				close;
+
+		GSIQ4:
+			delitem 7319,100;
+			delitem 984,10;
+			delitem 7317,50;
+			delitem 7097,100;
+			set Zeny,Zeny-200000;
+			mes "Oh, you already have the materials.";
+			mes "Let me have them.";
+			next;
+			mes "[Ingrid]";
+			mes "I need to be careful...";
+			mes "...";
+			mes "...";
+			next;
+			getitem 13162,1;
+			mes "[Ingrid]";
+			mes "It's done.";
+			mes "Be careful with it.";
+			close;
+
+		GSIQMenu2:
+			mes "[Ingrid]";
+			mes "Probably a good choice.";
+			mes "It's really dangerous.";
+			close;
+}
+
+que_ng.gat,185,180,3	script	Vanessa	726,{
+
+	mes "[Vanessa]";
+	mes "I can make a grenade launcher";
+	mes "that can destroy armors.";
+	mes "It's called ^0000FFDestroyer^000000.";
+	next;
+	if (Class != JOB_GUNSLINGER || BaseLevel < 52) goto GSVQ1;
+	goto GSVQ2;
+
+	GSVQ1:
+		mes "[Vanessa]";
+		mes "But I don't think you are";
+		mes "experienced enough to use it.";
+		next;
+		mes "[Vanessa]";
+		mes "Come back when you think";
+		mes "you are worthy to use this";
+		mes "weapon.";
+		close;
+
+GSVQ2:
+	mes "[Vanessa]";
+	mes "You look experienced.";
+	mes "I think I could make one";
+	mes "for you.";
+	next;
+	mes "[Vanessa]";
+	mes "So, do you want me to make a";
+	mes "^0000FFDestroyer^000000 for you?";
+	next;
+
+	menu "Yes, please.",GSVQMenu1,"No thanks.",GSVQMenu2;
+
+		GSVQMenu1:
+			mes "[Vanessa]";
+			mes "Okay, but first you need to";
+			mes "bring me the materials I need";
+			mes "to create one.";
+			next;
+			mes "[Vanessa]";
+			mes "This is what I need:";
+			mes "^FF000050 Used Iron Plates^000000,";
+			mes "^FF00005 Oridecons^000000,";
+			mes "^FF000070 Rusty Screws^000000 and";
+			mes "^FF0000100000 Zeny^000000.";
+			next;
+			mes "[Vanessa]";
+			if ((countitem(7319)<50) || (countitem(984)<5) || (countitem(7317)<70) || (Zeny < 100000)) goto GSVQ3;
+			goto GSVQ4;
+
+			GSVQ3:
+				mes "Come back when you have the materials.";
+				close;
+
+		GSVQ4:
+			delitem 7319,50;
+			delitem 984,5;
+			delitem 7317,70;
+			set Zeny,Zeny-100000;
+			mes "Oh, you already have the materials.";
+			mes "Let me have them.";
+			next;
+			mes "[Vanessa]";
+			mes "I'll make it in a minute...";
+			mes "...";
+			mes "...";
+			next;
+			getitem 13160,1;
+			mes "[Vanessa]";
+			mes "It's done.";
+			mes "Be careful with it.";
+			close;
+
+		GSVQMenu2:
+			mes "[Vanessa]";
+			mes "Oh well, your loss.";
+			close;
+}
+
+que_ng.gat,149,178,5	script	N.A	744,{
+
+	mes "[N.A]";
+	mes "If you like gatling guns, I'm the";
+	mes "right person to talk to.";
+	mes "I can make a ^0000FFDrifter^000000.";
+	next;
+	if (Class != JOB_GUNSLINGER || BaseLevel < 55) goto GSNA1;
+	goto GSNA2;
+
+	GSNA1:
+		mes "[N.A]";
+		mes "But I don't think you are";
+		mes "experienced enough to use it.";
+		next;
+		mes "[N.A]";
+		mes "Come back when you think";
+		mes "you are worthy to use this";
+		mes "weapon.";
+		close;
+
+GSNA2:
+	mes "[N.A]";
+	mes "You look experienced.";
+	mes "I think I could make one";
+	mes "for you.";
+	next;
+	mes "[N.A]";
+	mes "So, do you want me to make a";
+	mes "^0000FFDrifter^000000 for you?";
+	next;
+
+	menu "Yes, please.",GSNAMenu1,"No thanks.",GSNAMenu2;
+
+		GSNAMenu1:
+			mes "[N.A]";
+			mes "Okay, but first you need to";
+			mes "bring me the materials I need";
+			mes "to create one.";
+			next;
+			mes "[N.A]";
+			mes "This is what I need:";
+			mes "^FF000070 Steels^000000,";
+			mes "^FF00005 Eluniums^000000,";
+			mes "^FF00003 Oridecons^000000,";
+			mes "^FF000070 Coals^000000,";
+			mes "^FF000050 Rusty Screws^000000 and";
+			mes "^FF000050000 Zeny^000000.";
+			next;
+			mes "[N.A]";
+			if ((countitem(999)<70) || (countitem(985)<5) || (countitem(984)<3) || (countitem(1003)<70) || (countitem(7317)<50) || (Zeny < 50000)) goto GSNA3;
+			goto GSNA4;
+
+			GSNA3:
+				mes "Come back when you have the materials.";
+				close;
+
+		GSNA4:
+			delitem 999,70;
+			delitem 985,5;
+			delitem 984,3;
+			delitem 1003,70;
+			delitem 7317,50;
+			set Zeny,Zeny-50000;
+			mes "I see you came prepared.";
+			mes "Let me take those materials.";
+			next;
+			mes "[N.A]";
+			mes "Alright, you won't regret it...";
+			mes "...";
+			mes "...";
+			next;
+			getitem 13157,1;
+			mes "[N.A]";
+			mes "It's done. Now shoot the";
+			mes "enemies with no mercy!";
+			close;
+
+		GSNAMenu2:
+			mes "[N.A]";
+			mes "Oh well, your loss.";
+			close;
+}

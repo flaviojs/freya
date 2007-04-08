@@ -10,6 +10,13 @@
 
 Date	Added
 
+04/08/2007
+	* Added: 'Male' and 'Female' script constants [Tsuyuki]
+	* Added: equippitem script command synonym of isequipped (jA script compatibility) [Tsuyuki]
+	* Added: Some new event scripts [Tsuyuki]
+	* Improved: Script folder organization/formatting/etc [Tsuyuki]
+	* Renamed: /npc/ -> /script/ [Tsuyuki]
+
 04/07/2007
 	* Removed: gettext.h and locales folder (Last of gettext stuff) [Tsuyuki]
 	* Removed: GetText support [Harbin]

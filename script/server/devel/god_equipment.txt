@@ -1,0 +1,1233 @@
+//===== Freya Script ======================================
+//= God Equipment Quests
+//===== By ================================================
+//= Athena/Freya
+//===== Version ===========================================
+//= 1.1
+//===== Compatible With ===================================
+//= Freya
+//===== Description =======================================
+//= Quests for Mjolnir, Brisingamen, Sleipnir, and Megingjard.
+//===== Comments ==========================================
+//= 1.0 Added first version for Athena [Chiffon]
+//= 1.1 Translated with Aegis dialogue and converted to Freya [Tsuyuki] <- Incomplete
+//= To-Do: Still need to convert + Finish the last of the translating
+//=========================================================
+
+
+//====================================================================
+// Warps
+//====================================================================
+
+yuno.gat,218,180,0	warp	quegod1001	1,1,que_god01.gat,99,84
+que_god01.gat,99,81,0	warp	quegod1002	1,1,yuno.gat,218,177
+que_god01.gat,62,89,0	warp	quegod1003	1,1,que_god01.gat,87,92
+que_god01.gat,46,80,0	warp	quegod1005	1,1,que_god01.gat,50,52
+que_god01.gat,50,55,0	warp	quegod1006	1,1,que_god01.gat,46,83
+que_god01.gat,16,80,0	warp	quegod1007	1,1,que_god01.gat,12,52
+que_god01.gat,12,56,0	warp	quegod1008	1,1,que_god01.gat,16,83
+que_god01.gat,16,97,0	warp	quegod1009	1,1,que_god01.gat,12,119
+que_god01.gat,12,116,0	warp	quegod1010	1,1,que_god01.gat,16,92
+que_god01.gat,46,97,0	warp	quegod1011	1,1,que_god01.gat,62,119
+que_god01.gat,62,116,0	warp	quegod1012	1,1,que_god01.gat,46,92
+
+//====================================================================
+// Sleipnir Quest
+//====================================================================
+
+yuno.gat,164,200,4	script	Noyee	101,{
+
+	mes "[Noyee]";
+	mes "Do you know that there are two different types of armor?";
+	mes "There are general armors that you can purchase from NPC shops";
+	next;
+	mes "[Noyee]";
+	mes "and ones that you can obtain by hunting monsters.";
+	mes "The difference between the two is if they're slotted or not.";
+	next;
+	mes "[Noyee]";
+	mes "Defence wise, both of them possess the same rate.";
+	mes "However, since a slotted armor allows you to put 'a monster card' in the slot,";
+	mes "it will enhance the armor with a different ability.";
+	next;
+	mes "[Noyee]";
+	mes "At the same time, both of slotted armors or monster cards";
+	mes "are very rare to obtain. Therefore, you seldom see";
+	mes "those kinds in the market.";
+	close;
+}
+
+que_god01.gat,98,98,4	script	Manager	69,{
+
+	mes "[Cukure]";
+	mes "Awww...";
+	mes "I get too busy nowadays.";
+	mes "I don't even have times for a date.";
+	mes "Damn it....";
+	next;
+	mes "[Cukure]";
+	mes "Wait, when was the last time I went on a date...?";
+	mes "Umm....";
+	mes "Awww....I am so busy...busy!";
+	emotion 19;
+	close;
+}
+
+que_god01.gat,84,92,0	script	#quegod1003	45,1,1,{
+
+	mes "The door was locked.";
+	mes "You looked around and found out a detector";
+	mes "at the right side of the door.";
+	mes "It seemed you need to put something onto";
+	mes "the detector in order to open the door.";
+	close;
+}
+
+que_god01.gat,66,125,6	script	Investigator	89,{
+
+	mes "[Hallandaute]";
+	mes "No message.";
+	close;
+}
+
+que_god01.gat,14,47,6	script	Investigator	69,{
+
+	mes "[Pavel]";
+	mes "Umm....";
+	mes "It is not that important whether or not";
+	mes "we can embody a spirit into a shape.";
+	mes "It is important whether we";
+	mes "can prove the existance of spirit or not.";
+	close;
+}
+
+que_god01.gat,20,48,0	script	Slab	111,{
+
+	mes "You found a slad of stone with strange letters engraved on the surface.";
+	mes "You could not identify what language it was.";
+	close;
+}
+
+que_god01.gat,55,47,3	script	Investigator	803,{
+
+	mes "[Kurdt]";
+	mes "Hmmm....";
+	mes "Studying somthing does not only require";
+	mes "funds and manpower but enthusiasm and passion as well.";
+	next;
+	mes "[Kurdt]";
+	mes "Some financiers are so ignorant that they think";
+	mes "study only takes money and manpower.";
+	mes "However, even if they have enough funds and much of manpower";
+	mes "but they donnot give any motivation to the people who study";
+	mes "then the study cannot be succeeded.";
+	close;
+}
+
+que_god01.gat,11,136,4	script	Investigator	742,{
+
+	mes "[Aadin]";
+	mes "No message.";
+	close;
+}
+
+payon.gat,79,171,4	script	Friar	95,{
+
+	mes "[Lania]";
+	mes "............";
+	mes "Training does not include only physical or mental practice.";
+	mes "Leading a life and meeting people are also considered";
+	mes "as a part of practice. Of course, everyone will have a different result.";
+	close;
+}
+
+//====================================================================
+// Megingjard Quest
+//====================================================================
+
+prt_castle.gat,44,151,0	script	Rebarev Doug	56,{
+
+	mes "[Rebarev Doug]";
+	mes "We are crusaders who prepare a holy war under the will of Odin.";
+	mes "As we did a thousand years ago, we are waiting for the day to eliminate demons from the world.";
+	close;
+}
+
+prt_castle.gat,84,51,5	script	Librarian	105,{
+
+	mes "[Librarian]";
+	mes "All confidential personnel records are kept here in the royal library.";
+	mes "However, you need authorization for full access.";
+	close;
+}
+
+prt_castle.gat,80,52,0	script	Personnel Record	111,{
+
+	mes "[Librarian]";
+	mes "What are you doing here?";
+	mes "Don't touch anything!";
+	close;
+}
+
+prt_in.gat,172,106,0	script	Librarian	833,{
+
+	mes "[Librarian Jekan]";
+	mes "Ah, please do not touch any books in that section.";
+	mes "....there is nothing much useful for you there.";
+	next;
+	if(select("Ignore him and check books.","Step back.")==1) {
+		mes "[Librarian Jekan]";
+		mes "I told you not to touch books there!";
+		close2;
+		warp "prontera.gat",120,264;
+		end;
+	}
+	mes "[Librarian Jekan]";
+	mes "Good, you may go check other sections though.";
+	mes "It's good to see a man visiting a library when people don't read books nowadays.";
+	close;
+}
+
+prt_in.gat,169,108,4	script	A File#prtbook	111,{
+
+	mes "[Librarian Jekan]";
+	mes "Please do not go into that section.";
+	next;
+	mes "- You stepped back as he said that.-";
+	close;
+}
+
+prt_in.gat,173,108,0	duplicate(A File#prtbook)	A File	111
+prt_in.gat,171,108,0	duplicate(A File#prtbook)	A File	111
+prt_in.gat,169,108,0	duplicate(A File#prtbook)	A File	111
+prt_in.gat,167,108,0	duplicate(A File#prtbook)	A File	111
+prt_in.gat,165,108,0	duplicate(A File#prtbook)	A File	111
+ 
+geffen_in.gat,109,161,2	script	Crusader#1	751,{
+
+	mes "[Zan.Huadoku]";
+	mes "Good day!";
+	mes "Do you know the";
+	mes "importance of supply?";
+	next;
+	if(select("No.","Yes!")==1) {
+		mes "[Zan.Huadoku]";
+		mes "Oh...";
+		mes "Well then.";
+		mes "In that case.";
+		next;
+		mes "[Zan.Huadoku]";
+		mes "Let me tell you about some useful knowledge I learned while working with the Blacksmiths.";
+		next;
+		mes "[Zan.Huadoku]";
+		mes "A Blacksmith character's forging skills are affected by the DEX and LUK stats.";
+		mes "DEX and LUK also affect the item creation skills for Alchemists.";
+		next;
+		mes "[Zan.Huadoku]";
+		mes "Since I've been staying here in the Blacksmith guild,";
+		mes "I'm trying to better understand Blacksmiths and develop a deeper appreciation of their work.";
+		next;
+		mes "[Zan.Huadoku]";
+		mes "Alright then...";
+		mes "Take it easy.";
+		close;
+	}
+	mes "[Zan.Huadoku]";
+	mes "Any military force or party needs their supplies to be replenished if they are to continue battling for a prolonged period of time.";
+	next;
+	mes "[Zan.Huadoku]";
+	mes "For instance, let's say your group go on hunting without a healer. In this case, everyone would consume health restoration items, like potions.";
+	next;
+	mes "[Zan.Huadoku]";
+	mes "Since you can only carry so many items at once, you'll eventually run out of potions.";
+	next;
+	mes "[Zan.Huadoku]";
+	mes "But if one of your party members traveled between town and the hunting area, he could supply your party with new healing items.";
+	next;
+	mes "[Zan.Huadoku]";
+	mes "Supplying your party in this way would let you hunt with less worry. For that duty, the Merchant class would be the best by using their Carts.";
+	next;
+	mes "[Zan.Huadoku]";
+	mes "I suppose that's why I'm working here in the Blacksmith Guild. As weapon quartermaster, I'm obligated to provide supplies for the Crusader forces.";
+	next;
+	mes "[Zan.Huadoku]";
+	mes "The Blacksmiths in this guild also help me provide high quality weapons for the Crusades as well.";
+	next;
+	mes "[Zan.Huadoku]";
+	mes "If you happen to run out of health items while hunting, why don't you ask a Merchant for help?";
+	next;
+	mes "[Zan.Huadoku]";
+	mes "Most likely, they will have some spare items and would be willing to share with you if you ask nicely enough.";
+	next;
+	mes "[Zan.Huadoku]";
+	mes "I hope to see you later again! May Odin protect you on your journeys.";
+	close;
+}
+
+morocc_in.gat,146,179,0	script	Employee	66,{
+
+	mes "[Inn Employee]";
+	mes "How can I help you?";
+	next;
+	mes "[Inn Employee]";
+	mes "Welcome to the inn.";
+	mes "When you move to the entrance, you can also enter a PvP zone though a PvP doorman.";
+	next;
+	mes "[Inn Employee]";
+	mes "Usually you can visit inns in big towns.";
+	mes "If you want to take some rest or to compete your power with others, this is the place where you come.";
+	next;
+	mes "[Inn Employee]";
+	mes "Oh, also I have a secret to tell you...";
+	mes "I was told that the inn master is planning some kind of shady business.";
+	next;
+	mes "[Inn Employee]";
+	mes " - I think it was called as 'the rest project for all' or something...";
+	next;
+	mes "[Inn Employee]";
+	mes "But don't tell anyone that I told you this, please!";
+	close;
+}
+
+in_rogue.gat,243,61,0	script	Suspicious Man	748,{
+
+	mes "[Cuaque Donon]";
+	mes "Wha...what are you! How the hell did you come in here!";
+	mes "Wahhhhh! My head...my head is hurting so bad!";
+	mes "I am scared! I am scared!";
+	close;
+}
+
+alberta.gat,196,146,7	script	Crusader#2	751,{
+
+	if (Basejob == JOB_SWORDSMAN) goto L_Swordsman;
+	mes "[Jack O]";
+	mes "^333333*Yawn...*^000000";
+	mes "It's quiet and boring, as per usual. Let's see if there's any Swordmen I can recruit today.";
+	next;
+	mes "[Jack O]";
+	mes "Huh...?";
+	mes "Are you interested in knowing more about Crusaders? Hahaha, I guess that must be the case.";
+	next;
+	mes "[Jack O]";
+	mes "By the way, bring a doll to";
+	mes "the kid in front of me. If you're lucky, she'll give you something neat in return.";
+	mes "What it is, I don't know. I've got no dolls.";
+	next;
+	mes "[Jack O]";
+	mes "In accordance with the Crusader code, I'm not supposed to lie. So yeah, you can trust me!";
+	close;
+
+	L_Swordsman:
+		mes "[Jack O]";
+		mes "Hey kid!";
+		mes "Ever think about";
+		mes "bein' a Crusader?";
+		next;
+		mes "[Jack O]";
+		mes "Basically, you'd be volunteering to be part of our military, as well as train for the Holy War.";
+		next;
+		mes "[Jack O]";
+		mes "If you have some faith and know how to wield a sword, you'll be more than welcome here.";
+		next;
+		mes "[Jack O]";
+		mes "Just think about my suggestion";
+		mes "and come back if you're interested. Alright then, see you later~";
+		close;
+}
+
+aldebaran.gat,66,213,0	script	Lady	69,{
+
+	mes "[Emma Searth]";
+	mes "I hear the Kafra Ladies always travel around the world, something I've always dreamed of doing!";
+	mes "Hopefully, one of these days, I'll be able to work for the Kafra Corporation too.";
+	next;
+	mes "[Emma Searth]";
+	mes "^333333*Sigh...*^000000";
+	mes "Still, it's discouraging. I haven't heard anything from them...";
+	close;
+}
+
+jawaii_in.gat,44,110,0	script	Security Officer	734,{
+
+	mes "[The Nineball]";
+	mes "Welcome to Jawaii,";
+	mes "the paradise resort!";
+	next;
+	mes "[The Nineball]";
+	mes "I'm the 'The Nineball, the security officer of Jawaii!";
+	mes "If you encounter any trouble, or find any Singles,";
+	mes "please dont hesitate to report to me as soon as you can~";
+	next;
+	mes "[The Nineball]";
+	mes "I've been told that there have";
+	mes "been many unruly drunkards here lately, but it is in our best interest";
+	mes "to make your experience here as enjoyable as possible.";
+	close;
+}
+
+cmd_in02.gat,190,93,3	script	Man	828,{
+
+	mes "[Royal Myst]";
+	mes "Wha...?";
+	mes "You wanna talk?";
+	next;
+	mes "[Royal Myst]";
+	mes "What am I, your personal psychiatrist?! Lemme alone,";
+	mes "I'm busy here! Awright, now";
+	mes "which one do I bet on...?";
+	close;
+}
+
+niflheim.gat,109,254,7	script	Egnigem	796,{
+
+	mes "[Egnigem]";
+	mes "Were you betrayed by fate as well, or are you simply a wanderer that's stumbled into this land of darkness?";
+	next;
+	mes "[Egnigem]";
+	mes "Hmm, the living don't deserve";
+	mes "to be in this realm of cold and suffering. But I can only help you escape by telling you what little";
+	mes "I know.";
+	next;
+	switch(select("Ask him about buildings.","Remove marks on mini-map.","Cancel.")) {
+	case 1:
+		mes "[Egnigem]";
+		mes "...I see. Now, let me introduce you all buildings in Niflheim!";
+		next;
+		switch(select("Witch's Castle","Tool Shop","Weapon Shop","Tavern","Cancel")) {
+		case 1:
+			mes "[Egnigem]";
+			mes "The witch of Niflheim...";
+			mes "You can find her castle at the ^FF3355+^000000 mark I've made on your mini-map.";
+			next;
+			mes "[Egnigem]";
+			mes "Hrrrm...";
+			mes "It seems that the living who wind up in Niflheim are seeking out the witch.";
+			mes "But I don't quite understand what's so important about her.";
+			viewpoint 0,253,191,2,0xFF3355;
+			close;
+		case 2:
+			mes "[Egnigem]";
+			mes "The Tool shop? Here in Nifflheim, they sell some unique items that";
+			mes "you can't buy anywhere else.";
+			next;
+			mes "[Egnigem]";
+			mes "You might want to see their";
+			mes "wares for yourself. I've drawn";
+			mes "a ^CE6300+^000000 on your mini-map to mark";
+			mes "its location.";
+			viewpoint 0,217,196,3,0xCE6300;
+			close;
+		case 3:
+			mes "[Egnigem]";
+			mes "I've marked the location of the Weapon Shop at ^55FF33+^000000.";
+			mes "There's nothing too special over there, though.";
+			viewpoint 0,216,171,4,0x55FF33;
+			close;
+		case 4:
+			mes "[Egnigem]";
+			mes "Tavern is at ^3355FF+^000000. They only sell drinks to the dead, though...";
+			viewpoint 0,189,207,5,0x3355FF;
+			close;
+		case 5:
+			mes "[Egnigem]";
+			mes "Choose 'Remove marks on mini-map' from the";
+			mes "menu to remove all the building location marks I've made.";
+			close;
+		}
+	case 2:
+		viewpoint 2,253,191,2,0x00FF00;
+		viewpoint 2,217,196,3,0x00FF00;
+		viewpoint 2,216,171,4,0x00FF00;
+		viewpoint 2,189,207,5,0x00FF00;
+		mes "[Egnigem]";
+		mes "Alright, all the marks I've made have been removed from your mini-map.";
+		mes "If you want to check the locations in Niflheim again, go ahead and ask me.";
+		close;
+	case 3:
+		mes "[Egnigem]";
+		mes "You're gonna explore this place on your own? Pretty brave, aren't you?";
+		mes "Just be careful: here in Niflheim, darkness reigns supreme.";
+		close;
+	}
+}
+
+//====================================================================
+// Brisingamen Quest
+//====================================================================
+
+prt_fild08.gat,175,374,3	script	Bard	51,{
+
+	mes "[Nelliorde]"
+	mes "Hello there!"
+	mes "Isn't it such"
+	mes "a glorious day?"
+	mes "You know of me,"
+	mes "do you not?";
+	next;
+	mes "[Nelliorde]";
+	if (Sex == Male) {
+		mes "Hahahaha, forgive my rudeness, but I fail to remember your name,";
+		mes "although your face does seem rather familiar.";
+	}
+	else {
+		mes "Oh well well...";
+		mes "How could I ever";
+		mes "forget the lovely";
+		mes ""+ strcharinfo(0) +"?";
+	}
+	mes "Whatever, hahahaha!";
+	next;
+	mes "[Nelliorde]";
+	mes "So, aren't you curious about me? Feel free to ask me whatever you like!";
+	mes "I'm the vagabond that will wander the earth till the end of his days,";
+	mes "your friend who loves to sing under the moonlight~";
+	next;
+	switch(select("Who are you?","What's new?","Can you sing?")) {
+	case 1:
+		mes "[Nelliorde]";
+		mes "Why, I am Nelliorde, the Bard. In truth, my real name is Elliorde.";
+		next;
+		mes "[Nelliorde]";
+		mes "However, while I was singing at a Tavern, as per usual,";
+		mes "a man with long blonde hair angrily demanded that I change my name!";
+		next;
+		mes "[Nelliorde]";
+		mes "Never before have I seen such a flailing";
+		mes "and a fuss over someone coincidentally sharing the same name!";
+		next;
+		mes "[Nelliorde]";
+		mes "And so, that little altercation was settled with me being named Nelliorde.";
+		next;
+		mes "[Nelliorde]";
+		mes "I don't sound like a coward to you, do I?";
+		mes "Do you believe I should have fought for the right to keep my original name?";
+		next;
+		mes "[Nelliorde]";
+		mes "If so, you're wrong! I just don't believe that violence can solve";
+		mes "anything as the romantic Bard that cherishes peace...";
+		next;
+		mes "^3355FFSeeing as it's not worth";
+		mes "listening to Nelliorde's lies, you decide to simply tune him out.^000000";
+		next;
+		mes "^3355FF...";
+		mes "......^000000";
+		next;
+		mes "^3355FF...";
+		mes "......";
+		mes ".........^00000";
+		next;
+		mes "[Nelliorde]";
+		mes "And that's how I convinced wise and benevolent King Tristram III";;
+		mes "to build a paradise where married lovers could enjo- Hm? Are you even listening?!";
+		close
+	case 2:
+		mes "[Nelliorde]";
+		mes "You wish to";
+		mes "hear of some news?";
+		mes "What kind of news do";
+		mes "you wish to know about?";
+		next;
+		switch(select("About Prontera!","About seaside areas.","Is the desert still hot?","How about the borderlands?")) {
+		case 1:
+			mes "[Nelliorde]";
+			mes "What?! Prontera?!";
+			mes "Can you not see that the front gate of Prontera is right before you?";
+			mes "You should at least know where you are, adventurer.";
+			next;
+			mes "[Nelliorde]";
+			mes "Anyways, I know one interesting bit of news about Prontera.";
+			mes "But it's a secret. Shh! Are you... Single?";
+			next;
+			mes "[Nelliorde]";
+			mes "If so, go visit the tavern. I met a guy there who took me a nice place.";
+			mes "Oh yes. He took me the place where singles are forbidden~!";
+			close;
+		case 2:
+			mes "[Nelliorde]";
+			mes "Seaside areas?";
+			mes "That's a funny question. I mean, there's";
+			mes "Alberta and a few other places where you can see the sea.";
+			next;
+			mes "[Nelliorde]"
+			mes "To the SouthWest there's Kokomo Beach. But,";
+			mes "I suppose it's too dangerous just to go there to take a stroll.";
+			next;
+			mes "[Nelliorde]";
+			mes "Kokomo beach is a large expanse of sand.";
+			mes "The nearby water is filled with sea animals,";
+			mes "so you can enjoy catching Shellfishes.";
+			next;
+			mes "[Nelliorde]";
+			mes "However, there are always bullies in that kind of place.";
+			mes "Once, I met a threatening looking hoodlum with red spiky hair.";
+			next;
+			mes "[Nelliorde]";
+			mes "He was chewing on something and spat on the ground.";
+			mes "He big buffoon managed to intimidate me into giving him all of my Zeny!";
+			next;
+			mes "[Nelliorde]"
+			mes "^333333*Sigh...*^000000"
+			mes "This world is too"
+			mes "dangerous for a young"
+			mes "and fragile Bard."
+			next;
+			mes "[Nelliorde]";
+			mes "By the way, Alberta doesn't seem to have changed.";
+			mes "The Sunken Ship looks the same as well, with all of";
+			mes "its Skeleton Pirates and whatnot. You know how it is.";
+			next;
+			mes "[Nelliorde]";
+			mes "The event agency in charge of expeditions into";
+			mes "the Sunken Ship is still making tons of money.";
+			mes "If you have nothing to do, why don't you hunt for monsters down there?";
+			close;
+		case 3:
+			mes "[Nelliorde]";
+			mes "Oh, hell yes!";
+			mes "When is the it not?";
+			mes "The desert is hot, has";
+			mes "been hot and probably";
+			mes "always will be...!";
+			next;
+			mes "[Nelliorde]";
+			mes "Giant worms still jump out of nowhere,";
+			mes "freaking out innocent travellers like myself,";
+			and "the Sandmen still kick people in the ass!";
+			next;
+			mes "[Nelliorde]";
+			mes "Even if the desert is filled with hideous monsters,";
+			mes "the view of the ocean there is so magnificent.";
+			mes "Hah, it makes me want to play a song.";
+			next;
+			mes "[Nelliorde]";
+			mes "I must say there is";
+			mes "one place you may wish";
+			mes "to see in the desert.";
+			next;
+			mes "[Nelliorde]";
+			mes "I'm talking about the Assassin Guild. Supposedly,";
+			mes "it's hidden behind a sandstorm in the Morroc Desert!";
+
+			if (Basejob == JOB_ASSASSIN) {
+				mes "But you should know what I am talking about!";
+				mes "So when are you gonna take me to the guild, eh?";
+			}
+			else {
+				mes "Have you ever been there before?";
+			}
+			close;
+		case 4:
+			mes "[Nelliorde]";
+			mes "Well, to the North is the Schwaltzwald Republic.";
+			mes "There, you'll find Juno, the 'City of Sages.'";
+			next;
+			mes "[Nelliorde]"
+			mes "The people there say that there is one major nuisance,";
+			mes "a man known as the 'Mad Scientist.'";
+			mes "He's antisocial and creates a lot of public disturbances with his experiments.";
+			next;
+			mes "[Nelliorde]";
+			mes "It seems everyone in Juno hates him with s passion.";
+			mes "Even one of the Tool Shop owners begged a passing";
+			mes "adventurer to stop this Mad Scientist's research!";
+			next;
+			mes "[Nelliorde]";
+			mes "But I have a different opinion about him.";
+			mes "I believe it's not a good idea to interrupt the work of any scientist.";
+			mes "After all, he might just discover something important,";
+			mes "even if his experiments are a little hazardous.";
+			next;
+			mes "[Nelliorde]";
+			mes "Speaking of discoveries, you know how Juno floats in the air, right?";
+			next;
+			mes "[Nelliorde]"
+			mes "It's said that a piece of Ymir's Heart generates";
+			mes "enough power to keep the entire city aloft in the sky.";
+			mes "Isn't that amazing?";
+			next;
+			mes "[Nelliorde]";
+			mes "Even more recent is the news about the discovery of Ymir's Book.";
+			mes "You can read it in Juno's Sage Castle.";
+			mes "I hear that it contains the secret to meeting Valkyrie...";
+			close;
+		}
+	case 3:
+		mes "[Nelliorde]";
+		mes "Can I sing, you ask? Certainly, and if I may say so,";
+		mes "pleasureably. Which song would you care to hear?";
+		next;
+		switch(select(Bragi's Poem","Eternal Chaos","Assassin in the Sunset)) {
+		case 1:
+			if (Zeny < 500) goto L_NoZeny;
+			soundeffect "bragis_poem.wav",0;
+			mes "[Nelliorde]";
+			mes "Bragi's Poem!";
+			mes "What a good choice!";
+			mes "I must say this song represents the heart of a poet!";
+			set Zeny,Zeny-500;
+			close;
+		case 2:
+			if (Zeny < 500) goto L_NoZeny;
+			soundeffect "chaos_of_eternity.wav",0;
+			mes "[Nelliorde]";
+			mes "You must like robust and energetic music, eh? As you wish~";
+			set Zeny,Zeny-500;
+			close;
+		case 3:
+			if (Zeny < 500) goto L_NoZeny;
+			soundeffect "assassin_of_sunset.wav",0;
+			mes "[Nelliorde]";
+			mes "Excellent choice!";
+			mes "Somehow, the image of the setting sun fits well with Assassins. Don't you agree?";
+			set Zeny,Zeny-500;
+			close;
+		}
+	}
+
+	L_NoZeny;
+		mes "[Nelliorde]";
+		mes "Please forgive me, but I cannot play a song for free.";
+		mes "The world is harsh, and a frail Bard such as myself must have some means to survive~";
+		close;
+}
+
+yuno_in04.gat,47,113,1	script	Studying Scholar#1	749,{
+
+	mes "[Studying Scholar]";
+	mes "Do you know how to make red potions?";
+	mes "You grind a lot of red herbs";
+	mes "and shake the liquid with care until it become a red potion.";
+	mes "If I could only shake them faster....";
+	mes "I would be able to rich in no time...";
+	close;
+}
+
+prt_church.gat,113,103,1	script	Praying Man	86,{
+
+	mes "[Sad-looking Man]";
+	mes "...";
+	mes "^333333*Sob...*";
+	mes "Lowen...";
+	mes "I'm so sorry.";
+	mes "It's all my fault.";
+	mes "Please be okay...";
+	close;
+}
+
+prontera.gat,260,354,4	script	Woman	101,{
+
+	mes "[Rosa Ellenen]";
+	mes "Oh hello...";
+	mes "Have you come";
+	mes "to pay your respects";
+	mes "to someone here as well?";
+	close;
+}
+
+gef_dun01.gat,203,48,0	script	#lowentrace1	111,{
+
+	mes "- You found a twisted and dry wood. -";
+	mes "- It looked dismal but sad at the same time. -";
+	close;
+}
+
+gef_dun01.gat,89,192,0	script	#lowentrace2	111,{
+
+	mes "^3355FFYou find a piece of twisted, dry wood.";
+	mes "Looking at it seems to bring out a feeling of sadness within you for some reason.^000000";
+	close;
+}
+
+que_god02.gat,48,55,2	script	Lowen Ellenen	745,{
+
+	mes "[Lowen Ellenen]";
+	mes "How come...";
+	mes "You're here?";
+	close2;
+	warp "geffen.gat",120,101;
+	end;
+}
+
+que_god02.gat,54,64,4	script	Soldier#1_brising	105,{
+
+	mes "[Soldier]";
+	mes "Please back away.";
+	mes "You are not permitted";
+	mes "to enter!";
+	close;
+}
+
+que_god02.gat,178,127,3	script	Valkyrie#1	811,{
+
+	mes "[Valkyrie]";
+	mes "You have passed the test, Lowen. I don't have much talk to speak.";
+	next;
+	mes "[Valkyrie]";
+	mes "Have you found the strength to release yourself";
+	mes "from the guilt and the pain? I have been waiting for you.";
+	mes "Will you accept my invitation to Valhalla?";
+	close;
+
+OnInit:
+	hideonnpc;
+	end;
+}
+
+que_god02.gat,177,127,2	script	#	139,3,3,{
+
+	hideoffnpc "Valkyrie#1";
+	end;
+}
+
+xmas.gat,38,105,0	script	 #1	111,{
+
+	mes "- There was a pile of snow under a tree. -";
+	close;
+}
+
+xmas.gat,38,105,0	script	#Brysinggamen	139,3,3,{
+
+OnTouch:
+	emotion 0;
+	end;
+}
+
+prt_fild02.gat,185,269,0	script	 #2	111,{
+
+	mes "^3355FFJust a normal";
+	mes "rock, covered in moss.^000000";
+	close;
+}
+
+mjolnir_09.gat,85,129,0	script	 #3	111,{
+
+	mes "^3355FFThe sight of this bubbling stream refreshes you just by looking at it.^000000";
+	close;
+}
+
+mjo_dun02.gat,126,36,0	script	 #4	111,1,1,{
+
+	mes "^3355FFYou found a hole filled with some clod and a lump of coal.^000000";
+
+OnTouch:
+	mes "["+strcharinfo(0)+"]";
+	mes "Beh, no way out.";
+	close;
+}
+
+//====================================================================
+// Mjolnir Quest
+//====================================================================
+
+prontera.gat,124,297,3	script	Tialfi	706,{
+
+	mes "[Tialfi]";
+	mes "Hmmm...";
+	mes "I can feel a strange force growing stronger and stronger, somewhere on in Rune-Midgard.";
+	next;
+	mes "[Tialfi]";
+	mes "Can you feel it?";
+	mes "Something must be";
+	mes "going on!";
+	close;
+}
+
+prt_fild01.gat,196,47,3	script	Roskva	703,{
+
+	mes "[Roskva]";
+	mes "A long long time ago, many people used to frequent this area.";
+	mes "Friends and families would live here, sharing happiness and sadness.";
+	next;
+	mes "[Roskva]";
+	mes "But they're all gone now. My parents and my friends have all gone to a place whose name I don't even know.";
+	next;
+	mes "[Roskva]";
+	mes "I can't help";
+	mes "but feel lonesome...";
+	close
+}
+
+mjolnir_12.gat,18,18,7	script	Dwarf Blacksmith#north	826,{
+
+	mes "[Nordri]";
+	mes "I am Nordri the dwarf blacksmith.";
+	mes "I am in charge of the north part of mountain Mjolnir.";
+	mes "If you want to pass me, you must ask";
+	mes "an approval to me.";
+	next;
+	mes "[Nordri]";
+	mes "Calm down, it was a joke. Hahahahaha!";
+	close;
+}
+
+mjolnir_01.gat,35,136,7	script	Dwarf Blacksmith#west	826,{
+
+	mes "[Vestri]";
+	mes "It's always a pleasure to engage myself in hard work, especially smithing.";
+	next;
+	mes "[Vestri]";
+	mes "Upgrading is always enjoyable!";
+	mes "I have no regrets when failure, and I'm always";
+	mes "pleased when I'm successful. I'll upgrade everyday to make the best of my life~";
+	close
+}
+
+mjolnir_09.gat,209,341,3	script	Dwarf Blacksmith#south	826,{
+
+	mes "[Sudri]";
+	mes "In a one on one fight, you put everything on the line to show your might to your opponent.";
+	next;
+	mes "[Sudri]";
+	mes "Have you ever felt the same way I do, human?";
+	mes "Win or lose, just giving your all is the most satisfying accomplishment.";
+	close;
+}
+
+mjolnir_11.gat,149,247,3	script	Dwarf Blacksmith#east	826,{
+
+	mes "[Austri]";
+	mes "Ah...";
+	mes "It feels like today's going to be a great day.";
+	next;
+	mes "[Austri]";
+	mes "I've got the warm sun, fresh forest air,";
+	mes "and my hammer and anvil are at the ready. It's a perfect day for smithing!";
+	close;
+}
+
+//====================================================================
+// Create Artifacts Quest
+//====================================================================
+
+gld_dun01.gat,28,87,7	script	グルンブルティ#created	826,{
+
+	mes "[ドワーフ・グルンブルティ]";
+	mes "フン！　人間、何の用だ？";
+	mes "故郷の地を離れ、はるか遠いこの";
+	mes "ミッドガルドで暮らさなきゃいけない";
+	mes "なんて本当に苦痛だ!!　しかも何で";
+	mes "つまらん人間の相手をしなきゃ";
+	mes "いけないんだ!?";
+	next;
+	switch(select("ドワーフについて知りたい","ここで何してるの？","武具製作を依頼したい","話をやめる")) {
+	case 1:
+		mes "[ドワーフ・グルンブルティ]";
+		mes "フン！　面倒だね。";
+		mes "人間がわしらドワーフのことを知って";
+		mes "どうするんだ？　人間と違ってわしらは";
+		mes "この退屈なミッドガルドとは比較に";
+		mes "ならないほど不毛な地で生きている";
+		mes "種族なんだぞ。";
+		next;
+		mes "[ドワーフ・グルンブルティ]";
+		mes "貴様らが誇る技術と知識は、元々全て";
+		mes "わしらの物だった。しかもそれだけ";
+		mes "じゃない。はるか昔、神々が使った";
+		mes "武具も全てわしらの先祖様が";
+		mes "作ったものだ。";
+		next;
+		mes "[ドワーフ・グルンブルティ]";
+		mes "わしらドワーフは、そういった優れた";
+		mes "知識や技術を持っていた……だが、";
+		mes "運命に従い、巨人が住む不毛な地で";
+		mes "生きることにしたんだ。";
+		close;
+	case 2:
+		mes "[ドワーフ・グルンブルティ]";
+		mes "ここで何してるかって？";
+		mes "フハハハハッ！";
+		mes "少なくとも貴様に会うためじゃない。";
+		next;
+		mes "[ドワーフ・グルンブルティ]";
+		mes "お前みたいな奴を相手にするのは";
+		mes "わしの恥だからな。ああ、";
+		mes "怖がらなくてもいい。フハハッ！";
+		mes "弱いくせに、それぞれ自分の方が強いと";
+		mes "誇示する愚かな種族だよ、人間は。";
+		next;
+		mes "[ドワーフ・グルンブルティ]";
+		mes "不毛な地……わしの故郷。今となっては";
+		mes "このミッドガルからは行けない所だ。";
+		mes "わしの故郷へ通じる唯一の道は";
+		mes "イグドラシルの樹にあった。";
+		mes "だが、1000年前の大きな戦争以来、";
+		mes "その道が判らなくなってしまった……";
+		next;
+		mes "[ドワーフ・グルンブルティ]";
+		mes "不本意ではあるが、このミッドガルで";
+		mes "暮らすしかない……せめてわしの故郷と";
+		mes "環境が似ているこの洞窟でな。";
+		close;
+	case 3:
+		if(getcharid(0)==getguildmasterid(getcharid(2))) {
+			if(countitem(7073)>=4 && countitem(7077)>=4 && countitem(7088)>=3 && countitem(7090)>=3 && countitem(7092)>=3 && countitem(726)>=2 && countitem(722)>=3 && countitem(727)>=10 && countitem(724)>=5 && countitem(969)>=20 && countitem(2603)>=1) {
+				set '@gain,2630;
+				break;
+			}
+			if(countitem(7058)>=1 && countitem(969)>=20 && countitem(726)>=10 && countitem(984)>=10 && countitem(2627)>=1) {
+				set '@gain,2629;
+				break;
+			}
+			if(countitem(7076)>=3 && countitem(7079)>=5 && countitem(7083)>=3 && countitem(7086)>=4 && countitem(7087)>=3 && countitem(969)>=20 && countitem(985)>=10 && countitem(2406)>=1) {
+				set '@gain,2410;
+				break;
+			}
+			if(countitem(7074)>=2 && countitem(7075)>=4 && countitem(7078)>=5 && countitem(7089)>=5 && countitem(7091)>=5 && countitem(984)>=20 && countitem(985)>=5 && countitem(969)>=40 && countitem(1522)>=1) {
+				set '@gain,1530;
+				break;
+			}
+		}
+		mes "[ドワーフ・グルンブルティ]";
+		mes "ふむ、仕方ない。";
+		mes "特別に材料を教えてやる。";
+		mes "何について知りたいんだ？";
+		next;
+		switch(select("ブリーシンガメン","メギンギョルド","スレイプニール","ミョルニール")) {
+		case 1:
+			mes "[ドワーフ・グルンブルティ]";
+			mes "^3333FFフレイヤの宝石 4個";
+			mes "銀の装飾 4個";
+			mes "雪の結晶 3個";
+			mes "静かな波 3個";
+			mes "流れる空気 3個";
+			mes "サファイア 2個^000000";
+			next;
+			mes "[ドワーフ・グルンブルティ]";
+			mes "^3333FF真珠 3個";
+			mes "オパール 10個";
+			mes "呪われたルビー 5個";
+			mes "黄金 20個";
+			mes "ネックレス 1個^000000";
+			break;
+		case 2:
+			mes "[ドワーフ・グルンブルティ]";
+			mes "^3333FFグレイプニール 1個";
+			mes "黄金 20個";
+			mes "サファイア 10個";
+			mes "オリデオコン 10個";
+			mes "ベルト 1個^000000";
+			break;
+		case 3:
+			mes "[ドワーフ・グルンブルティ]";
+			mes "^3333FF未知の歯車 3個";
+			mes "天使の羽毛 5個";
+			mes "魚の魂 3個";
+			mes "太陽神の象徴 4個";
+			mes "魂の息吹 3個";
+			mes "黄金 20個^000000";
+			next;
+			mes "[ドワーフ・グルンブルティ]";
+			mes "エルニウム 10個";
+			mes "ブーツ[1] 1個";
+			break;
+		case 4:
+			mes "[ドワーフ・グルンブルティ]";
+			mes "^3333FFトールのグローブ 2個";
+			mes "アイアンメイデン 4個";
+			mes "ヴァルキリーの怒り 5個";
+			mes "嵐の徴兆 5個";
+			mes "押し寄せる波 5個";
+			mes "オリデオコン 20個^000000";
+			next;
+			mes "[ドワーフ・グルンブルティ]";
+			mes "エルニウム 5個";
+			mes "黄金 40個";
+			mes "スタナー 1個";
+			break;
+		}
+		next;
+		mes "[ドワーフ・グルンブルティ]";
+		mes "以上が必要なものだ。";
+		mes "たとえ材料が揃ったとしても、";
+		mes "大量に作れるわけじゃない。";
+		mes "また期が熟さなければできん。";
+		mes "人間、解ったか？";
+		mes "フハハハッ！";
+		close;
+	case 4:
+		break;
+	}
+	if('@gain) {
+		mes "[ドワーフ・グルンブルティ]";
+		mes "フン！";
+		mes "さては" +getitemname('@gain)+ "を作る気だな？";
+		next;
+		mes "[ドワーフ・グルンブルティ]";
+		mes "…地下の作業場に案内してやろう。";
+		mes "すぐに作るか？";
+		next;
+		if(select("お願いします","やめておきます")==1) {
+			mes "[ドワーフ・グルンブルティ]";
+			mes "わしの後を遅れずについて来い。";
+			close2;
+			warp "que_god01",214,62;
+			end;
+		}
+	}
+	mes "[ドワーフ・グルンブルティ]";
+	mes "まったく。";
+	mes "こっちも暇じゃないんだ。";
+	close;
+}
+
+que_god01.gat,215,127,3	script	地下作業室入口::cquegod	111,{
+
+	end;
+
+OnInit:
+	next;ingroom "地下作業室入口",2,"cquegod::OnWarp",1;
+	end;
+
+OnWarp:
+	disablewaitingroomevent;
+	warpwaitingpc "que_god01",155,62,1;
+	initnpctimer "timequegod";
+	end;
+}
+
+que_god01.gat,0,0,0	script	timequegod	-1,{
+
+	end;
+OnTimer1000:
+	mapannounce "que_god01.gat","グルンブルティ: 貴様に与えられた時間は今から１０分だ！　早く走ってこい！",8;
+	end;
+OnTimer600000:
+	mapannounce "que_god01.gat","グルンブルティ: 時間切れだ。",8;
+	end;
+OnTimer601000:
+	stopnpctimer "timequegod";
+	enablewaitingroomevent "cquegod";
+	if(getareausers("que_god01.gat",0,0,200,200) != 0)
+		areawarp "que_god01.gat",0,0,200,200,"prontera.gat",156,325;
+	end;
+}
+
+que_god01.gat,154,112,4	script	グルンブルティ	826,{
+
+	if(Weight*100/MaxWeight >= 50) {
+		mes "[ドワーフ・グルンブルティ]";
+		mes "まずは荷物を減らしてくるんじゃな。";
+		close;
+	}
+	mes "[グルンブルティ]";
+	mes "では、始めるとするか。";
+	mes "何を作るんだ？";
+	next;
+	switch(select("ブリーシンガメン","メギンギョルド","スレイプニール","ミョルニール")) {
+	case 1:
+		mes "[グルンブルティ]";
+		mes "材料をもう一度言うぞ？";
+		mes "よく確かめろ。";
+		next;
+		mes "[ドワーフ・グルンブルティ]";
+		mes "フレイヤの宝石 4個";
+		mes "銀の装飾 4個";
+		mes "雪の結晶 3個";
+		mes "静かな波 3個";
+		mes "流れる空気 3個";
+		mes "サファイア 2個";
+		next;
+		mes "[ドワーフ・グルンブルティ]";
+		mes "真珠 3個";
+		mes "オパール 10個";
+		mes "呪われたルビー 5個";
+		mes "黄金 20個";
+		mes "ネックレス 1個";
+		setarray '@need,7073,7077,7088,7090,7092,726,722,727,724,969,2603;
+		setarray '@amount,4,4,3,3,3,2,3,10,5,20,1;
+		set '@gain,2630;
+		break;
+	case 2:
+		mes "[グルンブルティ]";
+		mes "材料をもう一度言うぞ？";
+		mes "よく確かめろ。";
+		next;
+		mes "[ドワーフ・グルンブルティ]";
+		mes "グレイプニール 1個";
+		mes "黄金 20個";
+		mes "サファイア 10個";
+		mes "オリデオコン 10個";
+		mes "ベルト 1個^000000";
+		setarray '@need,7058,969,726,984,2627;
+		setarray '@amount,1,20,10,10,1;
+		set '@gain,2629;
+		break;
+	case 3:
+		mes "[グルンブルティ]";
+		mes "材料をもう一度言うぞ？";
+		mes "よく確かめろ。";
+		next;
+		mes "[ドワーフ・グルンブルティ]";
+		mes "未知の歯車 3個";
+		mes "天使の羽毛 5個";
+		mes "魚の魂 3個";
+		mes "太陽神の象徴 4個";
+		mes "魂の息吹 3個";
+		mes "黄金 20個";
+		next;
+		mes "[ドワーフ・グルンブルティ]";
+		mes "エルニウム 10個";
+		mes "ブーツ[1] 1個";
+		setarray '@need,7076,7079,7083,7086,7087,969,985,2406;
+		setarray '@amount,3,5,3,4,3,20,10,1;
+		set '@gain,2410;
+		break;
+	case 4:
+		mes "[グルンブルティ]";
+		mes "材料をもう一度言うぞ？";
+		mes "よく確かめろ。";
+		next;
+		mes "[ドワーフ・グルンブルティ]";
+		mes "トールのグローブ 2個";
+		mes "アイアンメイデン 4個";
+		mes "ヴァルキリーの怒り 5個";
+		mes "嵐の徴兆 5個";
+		mes "押し寄せる波 5個";
+		mes "オリデオコン 20個";
+		next;
+		mes "[ドワーフ・グルンブルティ]";
+		mes "エルニウム 5個";
+		mes "黄金 40個";
+		mes "スタナー 1個";
+		setarray '@need,7074,7075,7078,7089,7091,984,985,969,1522;
+		setarray '@amount,2,4,5,5,5,20,5,40,1;
+		set '@gain,1530;
+		break;
+	}
+	next;
+	if(select("" +getitemname('@gain)+ "を作る","取り消す")==2) {
+		mes "[ドワーフ・グルンブルティ]";
+		mes "いいか？";
+		mes "一度神器を作成したら、";
+		mes "また期が熟さなければできんぞ。";
+		close;
+	}
+	for(set '@i,0; '@i<getarraysize('@need); set '@i,'@i+1) {
+		if(countitem('@need['@i]) < '@amount['@i]) {
+			mes "[ドワーフ・グルンブルティ]";
+			mes "材料が足りんぞ？";
+			close;
+		}
+	}
+	misceffect 101;
+	for(set '@i,0; '@i<getarraysize('@need); set '@i,'@i+1)
+		delitem '@need['@i],'@amount['@i];
+	getitem '@gain,1;
+	Announce "ギルド[" + GetGuildName(getcharid(2)) + "]のギルドマスター[" + getguildmaster(getcharid(2)) + "]によって、神器アイテム[" +getitemname('@gain)+ "]が誕生しました。",0;
+	mes "[ドワーフ・グルンブルティ]";
+	mes "完成だ!!";
+	if('@gain==2410) {
+		mes "おお、羽よりも軽いぞ！　履いても";
+		mes "ほとんど重さを感じないだろう。";
+	}
+	mes "但し決して忘れるな。";
+	mes "宝は自ら主人を選ぶのだぞ。";
+	close2;
+	warp "prontera.gat",156,325;
+	end;
+}
+
+gld_dun02.gat,85,84,7	duplicate(グルンブルティ#created)	 グルンブルティ	826
+gld_dun03.gat,92,105,7	duplicate(グルンブルティ#created)	 グルンブルティ	826
+gld_dun04.gat,268,230,7	duplicate(グルンブルティ#created)	 グルンブルティ	826

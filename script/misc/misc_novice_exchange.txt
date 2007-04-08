@@ -1,0 +1,198 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Novice Goods Exchange	Author: Unknown
+//--------------------------------------------------------------
+// Revision History: v1.3
+//--------------------------------------------------------------
+//	1.0 First version [Unknown]
+//	1.1 Made it as a function, you can add your own merchants [Lupus]
+//	1.2 Fixed item select [KarLaeda]
+//	1.3 Converted to Freya format [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: N/A
+//--------------------------------------------------------------
+
+
+function	script	F_NMerch	{
+
+	mes "["+getarg(0)+"]";
+	if((Weight*100)/MaxWeight >= 90) goto L_Exceed;
+	goto L_Cont01;
+
+	L_Exceed:
+		mes "You will exceed your weight limit if you exchange for the Red Potions.";
+		close;
+
+L_Cont01:
+	mes "Good day!";
+	mes "Do you have any collection items such as "+getitemname(getarg(1))+" or "+getitemname(getarg(3))+"?";
+	if(getarg(5))
+		mes "...how about "+getitemname(getarg(5))+"?..";
+	mes "Oh, yeah, I need those for something.";
+	next;
+	mes "["+getarg(0)+"]";
+	mes "Of course I am not asking you to give those for free!";
+	mes "How about... if I give you 1 Red";
+	mes "Potion for "+getarg(2)+" "+getitemname(getarg(1))+" or "+getarg(4)+" "+getitemname(getarg(3))+"?";
+	if(getarg(5))
+		mes "Or "+getarg(6)+" "+getitemname(getarg(5))+"?";
+	next;
+	menu "Sure!",L_Case01,"Think you're ripping me off...",L_Case02,"No, thanks",L_Case03;
+
+	L_Case01:
+		mes "["+getarg(0)+"]";
+		mes "So which item do you bring me?";
+		mes ""+getitemname(getarg(1))+"?  "+getitemname(getarg(3))+"?";
+		if(getarg(5))
+			mes "Or "+getitemname(getarg(5))+"?";
+		next;
+		if(getarg(5)) goto L_Special01;
+		set @i,select(""+getitemname(getarg(1))+"",""+getitemname(getarg(3))+"","Cancel");
+		goto L_Special02;
+
+		L_Special01:
+			set @i,select(""+getitemname(getarg(1))+"",""+getitemname(getarg(3))+"",""+getitemname(getarg(5))+"","Cancel");
+			goto L_Special02;
+
+	L_Special02:
+		if(@i==4 || (@i==3 && !getarg(5))) goto L_Special03;
+		goto L_Special04;
+
+		L_Special03:
+			mes "["+getarg(0)+"]";
+			mes "Sure, no problem.";
+			close;
+
+	L_Special04:
+		set @item,getarg(@i*2-1);
+		set @amount,getarg(@i*2);
+		set @have,countitem(@item);
+		if(@have < @amount) goto L_Special05;
+		goto L_Special06;
+
+		L_Special05:
+			mes "["+getarg(0)+"]";
+			mes "Hey, where are all those";
+			mes getitemname(@item)+" you promised?";
+			close;
+
+	L_Special06:
+		mes "["+getarg(0)+"]";
+		mes "Okay, let me take a look at the stuff you brought.";
+		next;
+		set @max,@have / @amount;
+		mes "["+getarg(0)+"]";
+		mes "You have total "+@have+" "+getitemname(@item)+"...";
+		mes "I can give you";
+		mes "total "+@max+" Red Potion for those.";
+		next;
+		mes "["+getarg(0)+"]";
+		mes "What do you say? Deal?";
+		next;
+		menu "Deal.",L_Special07,"No deal.",-;
+
+			mes "["+getarg(0)+"]";
+			mes "Bah~ whatever.";
+			mes "Bah!";
+			close;
+
+	L_Special07:
+		mes "["+getarg(0)+"]";
+		mes "You know the exact number of Red Potions";
+		mes "you can receive for "+getitemname(@item)+", don't you?";
+		next;
+		mes "["+getarg(0)+"]";
+		mes "You can get Red Potions";
+		mes "from minimum 1 to maximum 100 at once.";
+		mes "If you change your mind, enter '0'";
+		mes "to cancel.";
+		goto L_Loop01;
+
+	L_Loop01:
+		next;
+		input @val;
+		if(@val<0 || @val>100) goto L_Special12;
+		goto L_Special13;
+
+		L_Special12:
+			mes "["+getarg(0)+"]";
+			mes "Uh oh, the number you entered";
+			mes "seemed incorrect.";
+			mes "You'd better check how many Red";
+			mes "Potions you can get.";
+			goto L_Loop01;
+
+	L_Special13:
+		mes "["+getarg(0)+"]";
+		if(@val == 0) goto L_Special10;
+		goto L_Special11;
+
+		L_Special10:
+			mes "What...how the hell did you even";
+			mes "bother to talk to me?";
+			mes "Leave, I don't deal with whimsical";
+			mes "people.";
+			close;
+
+	L_Special11:
+		if (@val > @max) goto L_Special08;
+		goto L_Special09;
+
+		L_Special08:
+			mes "Uh oh, the number you entered";
+			mes "seemed incorrect.";
+			mes "You'd better check how many Red";
+			mes "Potions you can get.";
+			close;
+
+	L_Special09:
+		delitem @item,@amount*@val;
+		getitem 501,@val;
+		mes "There you go!";
+		mes "Thanks, it was a good deal.";
+		close;
+
+	L_Case02:
+		mes "["+getarg(0)+"]";
+		mes "Did you say I am ripping you off?!";
+		mes "You got to know how ignorant that comment was!";
+		next;
+		mes "["+getarg(0)+"]";
+		mes "When you check the price of each item,";
+		mes "I am doing a losing business.";
+		mes "If you don't want to do then, fine!";
+		close;
+
+	L_Case03:
+		mes "["+getarg(0)+"]";
+		mes "Hah, no problem.";
+		mes "Bah!";
+		close;
+}
+
+prontera.gat,123,102,5	script	Merchant#1	85,{
+	callfunc "F_NMerch","Merchant",935,5,914,10,909,10;
+}
+
+geffen.gat,173,88,5	script	Merchant#2	85,{
+	callfunc "F_NMerch","Merchant",935,5,915,6,909,10;
+}
+
+morocc.gat,180,259,3	script	Merchant#3	85,{
+	callfunc "F_NMerch","Merchant",935,5,916,7,909,10;
+}
+
+aldebaran.gat,152,63,5	script	Merchant#4	85,{
+	callfunc "F_NMerch","Merchant",955,1,916,7,909,10;
+}
+
+payon.gat,200,134,5	script	Merchant#5	85,{
+	// e remove 3rd item, by adding 0,0
+	callfunc "F_NMerch","Merchant",902,6,909,10,0,0;
+}

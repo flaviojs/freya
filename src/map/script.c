@@ -585,6 +585,7 @@ struct {
 	{buildin_isnight,"isnight","i"},
 	{buildin_isday,"isday","i"},
 	{buildin_isequipped,"isequipped","i*"},
+	{buildin_isequipped,"equippeditem","*"},
 	{buildin_isequippedcnt,"isequippedcnt","i*"},
 	{buildin_dispbottom,"dispbottom","s"},
 	{buildin_getusersname,"getusersname","*"},

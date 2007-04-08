@@ -1,0 +1,1967 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Hugel Town NPCs	Author: Tsuyuki
+//--------------------------------------------------------------
+// Revision History: v1.2
+//--------------------------------------------------------------
+//	1.0 Added redone script with new/missing NPCs and ripped iRO dialogue [Tsuyuki]
+//	1.1 Fixed a couple bugs [Tsuyuki]
+//	1.2 Added the beginnings of the Odin Excavation Quest (Missed earlier) [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: Quests are largely incomplete, but
+// NPCs exist. * Official-certified *
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Hugel Field NPCs ->
+//--------------------------------------------------------------
+
+hu_fild06.gat,190,367,3	script	Torpy's Mom	701,{
+
+	mes "[Torpy's Mom]";
+	mes "Where did he go this time?!";
+	mes "If my husband doesn't have";
+	mes "a good excuse for not coming";
+	mes "home, then he better come";
+	mes "up with one or he'll be sorry!";
+	close;
+}
+
+hu_fild06.gat,217,270,3	script	Burupu	896,{
+
+	mes "[Burupu]";
+	mes "I'm gonna become the";
+	mes "best Swordman in the";
+	mes "world! But first, I gotta";
+	mes "learn how to use this thing!";
+	mes "Heeeeee-YAH! How's that? That";
+	mes "was almost a Magnum Break, right?";
+	close;
+}
+
+hu_fild06.gat,34,123,3	script	Postell Schuwell	97,{
+
+	mes "[Postell]";
+	mes "I really like living";
+	mes "in Hugel. Fresh air,";
+	mes "clean water, everyone's";
+	mes "friendly and nice. What";
+	mes "more could I want?";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Hugel Outdoor Town NPCs ->
+//--------------------------------------------------------------
+
+hugel.gat,107,67,3	script	Torpy	706,{
+
+	mes "[Torpy]";
+	mes "Waaah~!";
+	mes "I have to find";
+	mes "my Daddy! Daddy...!";
+	mes "Where are yoooooou?!";
+	close;
+}
+
+hugel.gat,85,93,3	script	Mudie	866,{
+
+	mes "[Mudie]";
+	mes "The Monster Races";
+	mes "are probably the biggest";
+	mes "attraction here in Hugel.";
+	mes "We don't have much else";
+	mes "going on here, I'm afraid.";
+	next;
+	mes "[Mudie]";
+	mes "If you want to go visit";
+	mes "the Monster Race Arena,";
+	mes "just head towards the";
+	mes "7 'o clock direction on";
+	mes "your Mini-Map, and look for";
+	mes "the hill surrounded by a fence.";
+	next;
+	mes "[Mudie]";
+	mes "You should find the arena";
+	mes "somewhere around that area.";
+	mes "Anyway, if you want to wager";
+	mes "or just watch the races, just";
+	mes "ask one of the Eckar brothers.";
+	mes "I hope you enjoy our little town~";
+	close;
+}
+
+hugel.gat,100,103,3	script	Perfitz	866,{
+
+	mes "[Perfitz]";
+	mes "Money is very dependable...";
+	mes "But it's value is relative, and";
+	mes "can change at any moment.";
+	mes "Still, at my age, you can't";
+	mes "live without it. Make sure you";
+	mes "financially prepare of old age.";
+	next;
+	mes "[Perfitz]";
+	mes "Now, most people assume that";
+	mes "I have very few friends because";
+	mes "I trust money more than people.";
+	mes "That's somewhat true: money";
+	mes "will never betray you, and few";
+	mes "friends can be so dependable.";
+	next;
+	mes "[Perfitz]";
+	mes "However, friends that can";
+	mes "be trusted for life are worth";
+	mes "more than all the money in the";
+	mes "world. To a rich man like me,";
+	mes "those are the only friends";
+	mes "that are worth having.";
+	close;
+}
+
+hugel.gat,68,99,3	script	Booboo the Cow	889,{
+
+	mes "[Booboo]";
+	mes "Booo~Boooo!!";
+	mes "Boobooboo Booo~~~";
+	mes "Booboo Boop~";
+	close;
+}
+
+// Note: Should display a shadow (like Hide)
+// Isn't currently displaying the shadow [Tsuyuki]
+hugel.gat,72,101,0	script	Burupu's Instructions	111,{
+
+	mes "^3131FFYou've found a small";
+	mes "notebook on the ground.^000000";
+	close;
+}
+
+hugel.gat,56,104,3	script	Kurupe	709,3,3,{
+
+	mes "[Kurupe]";
+	mes "Aww, nuts...!";
+	mes "I've got sos many";
+	mes "Milk deliveries to do";
+	mes "tomorrow, but what can";
+	mes "I do without any Milk?!";
+	close;
+
+OnTouch:
+	mes "[Kurupe]";
+	mes "Why hasn't Burupu";
+	mes "arrived yet? If he";
+	mes "doesn't come soon,";
+	mes "how will I get the milk";
+	mes "delivered by tomorrow?";
+	close;
+}
+
+hugel.gat,102,161,3	script	Erjan	100,{
+
+	mes "[Erjan]";
+	mes "I am Erjan, first son of";
+	mes "the noble Franchefeschu";
+	mes "family. Commoner, if you";
+	mes "do not have any business";
+	mes "with me, then leave me be,";
+	mes "and do whatever it is you do.";
+	close;
+}
+
+hugel.gat,86,165,5	script	Kayplas	896,{
+
+	mes "[Kayplas]";
+	mes "Ooh, I really want to";
+	mes "have that red bottle.";
+	mes "I should ask my mom";
+	mes "to buy me one. It doesn't";
+	mes "look too expensive, does it?";
+	close;
+}
+
+hugel.gat,100,175,0	script	Suspicious Barrel	111,{
+
+	// Note: Text should be a light purplish color [Tsuyuki]
+	mes "You hear something bustling from";
+	mes "the hole in the barrel.";
+	mes "However, it doesn't seem to be a";
+	mes "big deal.";
+	close2;
+	// Does a '...' emote on player [Tsuyuki]
+	end;
+}
+
+hugel.gat,71,197,3	script	Lisa	90,{
+
+	mes "[Lisa]";
+	mes "Hugel is a pretty";
+	mes "small, homely village.";
+	mes "Everyone knows everyone,";
+	mes "everybody knows what";
+	mes "everybody else is doing.";
+	mes "It's so suffocating!";
+	next;
+	mes "[Lisa]";
+	mes "There's no privacy in";
+	mes "small towns. Someday,";
+	mes "I wanna go out and";
+	mes "live in the big city~";
+	close;
+}
+
+hugel.gat,126,151,3	script	Emily	90,{
+
+	mes "[Emily]";
+	mes "I feel so blessed to";
+	mes "live in this quant, little";
+	mes "town. It's so beautiful, and";
+	mes "everyone here is so nice~";
+	next;
+	mes "[Emily]";
+	mes "For some reason, my older";
+	mes "sister wants to move out of";
+	mes "Hugel as soon as she can. She";
+	mes "Says that she's getting creeped";
+	mes "out by the people that live here.";
+	mes "Don't you think that sounds weird?";
+	close;
+}
+
+hugel.gat,189,143,5	script	Young Man	898,{
+
+	mes "[Young Man]";
+	mes "Huh. So that giant";
+	mes "air pouch can make";
+	mes "people float in midair?";
+	mes "Would filling my tummy";
+	mes "with air work the same way?";
+	close;
+}
+
+hugel.gat,196,164,5	script	El Schatt	50,{
+
+	mes "[El Schatt]";
+	mes "Father as right...";
+	mes "This area is the perfect";
+	mes "place to build some stores.";
+	mes "All that's left is to chop down";
+	mes "that old tree. It's in the way";
+	mes "of a whole lot of things...";
+	close;
+}
+
+hugel.gat,198,171,0	script	#oldtree	139,1,1,{
+
+	end;
+
+OnTouch:
+	mes "^3131FFFor some reason, you";
+	mes "feel very warm, safe,";
+	mes "and secure near this";
+	mes "tree. Just being near";
+	mes "it brings you a sense";
+	mes "of overwhelming comfort.^000000";
+	close;
+}
+
+hugel.gat,191,172,5	script	Manainne	893,{
+
+	mes "[Manainne]";
+	mes "You know, even though";
+	mes "it's not a wealthy area,";
+	mes "I really love this small";
+	mes "and quiet town. Even if";
+	mes "I could live anywhere in";
+	mes "the world, I'd live right here~";
+	close;
+}
+
+hugel.gat,168,183,5	script	Bismarc	118,{
+
+	mes "[Bismarc]";
+	// Grey Text
+	mes "*Ghyklk*";
+	mes "*Huk Hukk*";
+	// End Grey Text
+	mes "When will my";
+	mes "o-order arrive...?";
+	next;
+	mes "[Bismarc]";
+	mes "The poison in";
+	mes "my body... the pain...";
+	mes "excruciating... L-lord...";
+	next;
+	mes "[Bismarc]";
+	mes "When is the";
+	mes "antidote gonna";
+	mes "get here?!";
+	close;
+}
+
+hugel.gat,169,112,5	script	Old Nikki	892,{
+
+	mes "[Old Nikki]";
+	mes "You must not be from";
+	mes "around here. Ah, you're";
+	mes "an adventurer, right? Do";
+	mes "you know how I could tell?";
+	next;
+	mes "[Old Nikki]";
+	mes "It's because everyone";
+	mes "who's lived here starts";
+	mes "to look alike after a while.";
+	mes "And you certainly don't look";
+	mes "as old as us. Well, have";
+	mes "a nice day, adventurer~";
+	close;
+}
+
+hugel.gat,175,115,5	script	Marius	897,{
+
+	mes "[Marius]";
+	mes "Yes, I'm an old man, but";
+	mes "I can lick a whippersnapper";
+	mes "like you any day of the week!";
+	mes "You know, Hugel's got a longer";
+	mes "life expectancy than all the other";
+	mes "towns. You wanna know why?";
+	next;
+	mes "[Marius]";
+	mes "It's because the old";
+	mes "coots in this town refuse";
+	mes "to just lay down and die!";
+	mes "Now, c'mon! Lemme show";
+	mes "you how strong I am! Let's";
+	mes "wrestle or something, kid~";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Hugel Indoor Town NPCs ->
+//--------------------------------------------------------------
+
+hu_in01.gat,310,380,5	script	Girl	891,{
+
+	mes "[Girl]";
+	mes "Oh... I'm so bored!";
+	mes "I need someone to play with...";
+	mes "Maybe... Maybe that's what";
+	mes "school is for? Oh, no wonder";
+	mes "people go there everyday!";
+	mes "I wanna go to school right now!";
+	close;
+}
+
+hu_in01.gat,326,307,3	script	Siria	90,{
+
+	mes "[Siria]";
+	mes "Oh, hello there.";
+	mes "Can I help you";
+	mes "with anything?";
+	close;
+}
+
+hu_in01.gat,370,254,0	script	Upper Drawer	111,2,2,{
+
+	end;
+
+OnTouch:
+	mes "^3131FFThere are several";
+	mes "books and a few";
+	mes "liquid medicines";
+	mes "inside this drawer.^000000";
+	close;
+}
+
+hu_in01.gat,386,245,1	script	Allen Schuwell	849,{
+
+	mes "[Allen]";
+	mes "*Groooooan~*";
+	mes "Arrrgh, my back hurts...";
+	mes "And my stomach... Why do";
+	mes "I have to suffer like this";
+	mes "while other people get to";
+	mes "live happy, luxurious lives?";
+	close;
+}
+
+hu_in01.gat,111,386,4	script	Chris	86,{
+
+	mes "[Chris]";
+	mes "You know, the people don't";
+	mes "fight harmful monsters, they";
+	mes "just protect themselves by";
+	mes "equipping armor. That's";
+	mes "just the way they are.";
+	next;
+	mes "[Chris]";
+	mes "If you want to buy";
+	mes "some nicer armors,";
+	mes "then I suggest buying";
+	mes "some in a bigger city.";
+	close;
+}
+
+// Since this guy has a cutin.. I'm guess he does more
+// than whats scripted so far? This is all I could get
+// out of him in iRO [Tsuyuki]
+hu_in01.gat,256,40,3	script	Herico	897,{
+
+	cutin "heri1",2;
+	mes "[Herico]";
+	mes "Oh, the weather looks so";
+	mes "nice outside today. But these";
+	mes "old bones of mine just hurt";
+	mes "too much for me to get out...";
+	close2;
+	cutin "",255;
+	end;
+}
+
+hu_in01.gat,365,170,5	script	Rachel	793,{
+
+	mes "[Rachel]";
+	mes "You know what I love?";
+	mes "Sitting in front of a warm";
+	mes "stove on a cold night. I just";
+	mes "feel so fuzzy and comfortable,";
+	mes "and it's so relaxing!";
+	close;
+}
+
+hu_in01.gat,377,106,5	script	Shaomei	892,{
+
+	mes "[Shaomei]";
+	mes "We didn't use to get";
+	mes "so many tourists, but";
+	mes "now they come in droves!";
+	mes "They make me pretty busy,";
+	mes "but I do like it when I can";
+	mes "see them enjoy my food. Har!";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Party Supplies Seller (Firecracker NPC)
+//--------------------------------------------------------------
+
+hu_in01.gat,23,311,4	script	Party Supplies Shop	898,{
+
+	mes "[Shopkeeper]";
+	mes "Welcome to the party supplies";
+	mes "shop!";
+	mes "Why don't you enjoy some";
+	mes "spectacular fireworks with your";
+	mes "friends?";
+	mes "We can provide you with 5 of them";
+	mes "at 500 zeny.";
+	next;
+	menu "Buy",L_Buy,"Cancel",L_Cancel;
+
+	L_Buy:
+		if (Zeny < 500) goto L_NotEnoughZeny;
+
+		set Zeny,Zeny-500;
+		getitem 12018,5;
+		// Unofficial dialogue for this part
+		mes "[Shopkeeper]";
+		mes "Here are your firecrackers.";
+		mes "Enjoy!";
+		close;
+
+	L_NotEnoughZeny:
+		mes "[Shopkeeper]";
+		mes "I am sorry, but you don't have";
+		mes "enough money~";
+		close;
+
+	L_Cancel:
+		mes "[Shopkeeper]";
+		mes "Thank you, please come again.";
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Hugel -> Odin Shrine Transporter - Boatman
+//--------------------------------------------------------------
+
+// Hugel -> Odin Shrine - Boatman #1
+// Most of the dialogue is official
+hugel.gat,209,109,1	script	Boatman#01	709,{
+
+	mes "[Boatman]";
+	mes "Ah, hello~";
+	mes "Would you like to sail";
+	mes "to the Odin Shrine? The";
+	mes "fare for 1 passenger is";
+	mes "800 zeny. Shall we board?";
+	next;
+	menu "No, thanks.",L_NoThanks,"Sure!",-;
+
+		// Unofficial dialogue ->
+		if (Zeny < 800) goto L_NoZeny;
+		set Zeny,Zeny - 800;
+
+		mes "[Boatman]";
+		mes "All aboard!";
+		close2;
+		warp "odin_tem01.gat",100,145;
+		end;
+		// <- End of unofficial dialogue
+
+L_NoZeny:
+	mes "[Boatman]";
+	mes "Hm? You don't have enough";
+	mes "money to pay the fare. Well,";
+	mes "just come back when you do";
+	mes "have the zeny, and then I'll";
+	mes "take you to the Odin Shrine.";
+	close;
+
+L_NoThanks:
+	mes "[Boatman]";
+	mes "Ah, alright.";
+	mes "If you change your";
+	mes "mind, then you can";
+	mes "come back and just";
+	mes "let me know.";
+	close;
+}
+
+// Odin Shrine -> Hugel - Boatman #2
+// Note: All dialogue is unofficial for the second NPC
+// Coords/function is correct however [Tsuyuki]
+odin_tem01.gat,93,146,3	script	Boatman#02	709,{
+
+	mes "[Boatman]";
+	mes "Would you like to go back to Hugel?";
+	next;
+	menu "Sure!",-,"No, thanks.",L_No;
+
+		mes "[Boatman]";
+		mes "All aboard!";
+		close2;
+		warp "hugel.gat",205,108;
+		end;
+
+L_No:
+	mes "[Boatman]";
+	mes "Ah, alright.";
+	mes "If you change your";
+	mes "mind, then you can";
+	mes "come back and just";
+	mes "let me know.";
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Fish Cake Soup Mini-Quest (Partially Complete) [Tsuyuki]
+//--------------------------------------------------------------
+
+// Note: If you lose the Fish Cake Soup, you're done..
+// Unless you can get a new one from someone else (As per official servers).
+
+// There may be more than just Neha, Layoma, and Maewan.. can't say for sure.
+// Also, Neha and Maewan are finished up to the point where they demand
+// their crazy favors, Layoma hasn't even been finished up to that point yet.
+
+// Used variables:
+// - fcsquest -> Main quest variable.
+// - @i -> Temp variable for random chance.
+// - fcsversion -> Splitter between Neha, Layoma, and Maewan.
+
+// Cellette Lavit - Incomplete
+hu_in01.gat,15,372,3	script	Cellette Lavit	74,{
+
+	if (fcsquest == 1) goto L_CelletteQ01;
+	if (fcsquest == 2) goto L_CelletteQ02;
+
+	mes "[Cellette]";
+	mes "Hi there, thanks for";
+	mes "visiting our lovely town!";
+	mes "Why don't you come in and";
+	mes "have a taste of authentic";
+	mes "Hugel cuisine? I guarantee";
+	mes "that you won't regret it~";
+	next;
+	mes "[Cellette]";
+	mes "My name is Cellette Lavit,";
+	mes "and I proudly server Fish Cake";
+	mes "Soup, Hugel's specialty dish.";
+	mes "All the tourists that've tried";
+	mes "it have loved it, and I have";
+	mes "many regular customers~";
+	next;
+	mes "[Cellette]";
+	mes "The dish has something";
+	mes "of a cult following, and it's";
+	mes "not widely popularized, but I'm";
+	mes "surue that it'll be considered";
+	mes "representative of Schwaltzvalt";
+	mes "Republic cuisine someday.";
+	next;
+	mes "[Cellette]";
+	mes "Listen, you look like an";
+	mes "able adventurer, so would";
+	mes "you consider working part time";
+	mes "for me? I have many orders for";
+	mes "Fish Cake Soup, so there's";
+	mes "no way I can make deliveries...";
+	next;
+	mes "[Cellette]";
+	mes "If you work for me, I'll";
+	mes "waive the price: I'll give you";
+	mes "1 Fish Cake Soup for each";
+	mes "delivery that you complete.";
+	mes "But if you're not interested,";
+	mes "you can just buy some now~";
+	next;
+	menu	"Sure, I'll work for you!",L_StartWork,
+		"I want to buy Fish Cake Soup.",L_BuySoup,
+		"See ya.",L_Cancel01;
+
+	L_StartWork:
+		mes "[Cellette]";
+		mes "Oh, thank you so much!";
+		mes "You can't imagine how busy";
+		mes "I've been, and how much I need";
+		mes "the help! Now, let's get started~";
+		next;
+		set @i,rand(1,3);
+
+		if (@i == 1) goto L_Neha01;
+		if (@i == 2) goto L_Layoma01;
+		if (@i == 3) goto L_Maewan01;
+
+		L_Neha01:
+			mes "[Cellette]";
+			mes "Alright, please take this";
+			mes "order of Fish Cake Soup to";
+			mes "my friend Neha. I'm grateful";
+			mes "that she's a regular customer--";
+			mes "she's a good friend, but I'm sure";
+			mes "that she loves the soup as well.";
+			getitem 584,1;
+			set fcsversion,1;
+			set fcsquest,1;
+			close;
+
+		L_Layoma01:
+			// Custom dialogue.. (Uses official from Neha)
+			mes "[Cellette]";
+			mes "Alright, please take this";
+			mes "order of Fish Cake Soup to";
+			mes "my friend Layoma. I'm grateful";
+			mes "that she's a regular customer--";
+			mes "she's a good friend, but I'm sure";
+			mes "that she loves the soup as well.";
+			getitem 584,1;
+			set fcsversion,2;
+			set fcsquest,1;
+			close;
+
+		L_Maewan01:
+			// Custom dialogue.. (Uses official from Neha)
+			mes "[Cellette]";
+			mes "Alright, please take this";
+			mes "order of Fish Cake Soup to";
+			mes "my friend Maewan. I'm grateful";
+			mes "that he's a regular customer--";
+			mes "he's a good friend, but I'm sure";
+			mes "that he loves the soup as well.";
+			getitem 584,1;
+			set fcsversion,3;
+			set fcsquest,1;
+			close;
+
+	L_BuySoup:
+		mes "[Cellette]";
+		mes "Oh, you'd like to try my";
+		mes "Fish Cake Soup, eh? Good";
+		mes "choice, I know you'll enjoy";
+		mes "its delicious, hearty flavor~";
+		mes "Each order costs 100 zeny.";
+		next;
+		menu	"Order 1 Fish Cake Soup",L_Order01,
+			"Cancel",L_Cancel02;
+
+		L_Order01:
+			if (Zeny < 100) goto L_NotEnoughZeny;
+
+			set Zeny,Zeny - 100;
+			getitem 584,1; // Fish Cake Soup
+			mes "[Cellette]";
+			mes "Thanks! Enjoy your";
+			mes "bowl of Fish Cake Soup.";
+			mes "I Hope you come and";
+			mes "visit me again, okay?";
+			close;
+
+		L_Cancel02:
+			mes "[Cellette]";
+			mes "If you're ever hungry,";
+			mes "or just want to enjoy";
+			mes "a delicious meal, come";
+			mes "and have some of my soup~";
+			close;
+
+		L_NotEnoughZeny:
+			mes "[Cellette]";
+			mes "Oh, what's this?";
+			mes "You don't have enough";
+			mes "money? Well, come back";
+			mes "after you save 100 zeny.";
+			mes "That's a really good price";
+			mes "for my gourmet soup, you know.";
+			close;
+
+	L_Cancel01:
+		mes "[Cellette]";
+		mes "Oh? You're not interested";
+		mes "in trying my Fish Cake Soup";
+		mes "at all? Well, if you change";
+		mes "your mind, please come";
+		mes "back. I just know you'll love";
+		mes "the taste if you give it a try.";
+		close;
+
+	L_CelletteQ01:
+		if (fcsversion == 1) goto L_Neha02;
+		if (fcsversion == 2) goto L_Layoma02;
+		if (fcsversion == 3) goto L_Maewan02;
+
+		L_Neha02:
+			mes "[Cellette]";
+			mes "Haven't you left already?";
+			mes "My friend Neha is waiting";
+			mes "for you to deliver her order";
+			mes "of Fish Cake Soup. Please";
+			mes "try to get it to her before the";
+			mes "soup gets cold, okay?";
+			close;
+
+		L_Layoma02:
+			// Custom dialogue, uses official text from Neha's version
+			mes "[Cellette]";
+			mes "Haven't you left already?";
+			mes "My friend Layoma is waiting";
+			mes "for you to deliver her order";
+			mes "of Fish Cake Soup. Please";
+			mes "try to get it to her before the";
+			mes "soup gets cold, okay?";
+			close;
+
+		L_Maewan02:
+			mes "[Cellette]";
+			mes "Whoa, whoa, whoa!";
+			mes "You should have left";
+			mes "already to deliver that";
+			mes "soup to Maewan! Hurry,";
+			mes "before it gets too cold!";
+			close;
+
+	L_CelletteQ02:
+		mes "[Cellette]";
+		mes "Come and taste some";
+		mes "authentic Hugel cuisine!";
+		mes "Enjoy a big steaming bowl";
+		mes "of delicious Fish Cake Soup~";
+		close;
+}
+
+// Neha - Incomplete
+hugel.gat,76,134,3	script	Neha	101,{
+
+	if (fcsquest == 1 && fcsversion == 1) goto L_Neha01;
+	if (fcsquest == 2 && fcsversion == 1) goto L_Neha02;
+
+	// Alternate Female PC dialogue? [Tsuyuki]
+	mes "[Neha]";
+	mes "Oh ho ho ho ho ho~";
+	mes "I just love cute little boys...";
+	mes "But for some reason, it";
+	mes "thrills me to tortue them";
+	mes "a little bit as well. Hoho~";
+	close;
+
+	L_Neha01:
+		// Quest dialogue goes here [Tsuyuki]
+		// Definately alternate Female PC dialogue
+		mes "[Neha]";
+		mes "Oh, you have a delivery";
+		mes "from Cellette, hm? Hmpf!";
+		mes "You're late! Don't you know";
+		mes "this soup isn't good if it";
+		mes "isn't steaming hot?";
+		next;
+		mes "But... You're a handsome";
+		mes "fellow, so I'll forgive you...";
+		mes "On one condition. Bring me";
+		mes "^FF00001 Whip^000000 with which to spank";
+		mes "you. YOu better hurry, boy, or";
+		mes "I won't let you off that easy.";
+		set fcsquest,2;
+		close;
+
+	L_Neha02:
+		mes "[Neha]";
+		mes "^FF00001 Fish Cake Soup^000000...";
+		mes "^FF00001 Whip^000000... Is that too";
+		mes "much for a girl to ask?";
+		mes "I'm hungry, and I want to";
+		mes "hit somebody! What's wrong";
+		mes "with that, huh? Now hurry up!";
+		close;
+}
+
+// Layoma - Incomplete
+hugel.gat,84,125,3	script	Layoma	700,{
+
+	if (fcsquest == 1 && fcsversion == 2) goto L_Layoma01;
+	if (fcsquest == 2 && fcsversion == 2) goto L_Layoma02;
+
+	mes "[Layoma]";
+	mes "I love singing songs,";
+	mes "and I love eating mushrooms.";
+	mes "For a person living in Hugel,";
+	mes "that's a pretty exciting life!";
+	close;
+
+	// Totally incomplete ->
+	L_Layoma01:
+	L_Layoma02:
+		mes "[Layoma]";
+		mes "I love singing songs,";
+		mes "and I love eating mushrooms.";
+		mes "For a person living in Hugel,";
+		mes "that's a pretty exciting life!";
+		close;
+
+}
+
+// Maewan - Incomplete
+hugel.gat,87,139,3	script	Maewan	86,{
+
+	if (fcsquest == 1 && fcsversion == 3) goto L_Maewan01;
+	if (fcsquest == 2 && fcsversion == 3) goto L_Maewan02;
+
+	mes "[Maewan]";
+	mes "I like to think of";
+	mes "myself as a man of";
+	mes "eclectic taste. I love";
+	mes "collecting strange and";
+	mes "unique items, and learning";
+	mes "all sorts of new things~";
+	close;
+
+	L_Maewan01:
+		mes "[Maewan]";
+		mes "Oh, finally, I've been";
+		mes "waiting for my order of";
+		mes "Fish Cake Soup from Cellette!";
+		mes "Aaaah, it smells oh so delicious~";
+		next;
+		mes "[Maewan]";
+		mes "Argh, but you're late!";
+		mes "This is your fault, you";
+		mes "know that, right? Well,";
+		mes "it's not a big deal, but";
+		mes "I can forgive you if you";
+		mes "help me with my collection.";
+		next;
+		mes "[Maewan]";
+		mes "Just bring me";
+		mes "1 Bookclip in Memory,";
+		mes "alright? Oh, and don't";
+		mes "eat my soup before";
+		mes "you deliver it to me!";
+		set fcsquest,2;
+		close;
+
+	L_Maewan02:
+		mes "[Maewan]";
+		mes "I know it sounds unfair";
+		mes "of me to ask you to bring";
+		mes "^FF00001 Bookclip in Memory^000000 with";
+		mes "my ^FF0000Fish Cake Soup^000000, but well...";
+		next;
+		mes "[Maewan]";
+		mes "I'd feel left out if";
+		mes "I didn't do it. I know";
+		mes "all of Cellette's other";
+		mes "customers are asking the";
+		mes "people delivering their soup";
+		mes "for all sorts of crazy things.";
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Shede Collection Mini-Quest (Partially Complete)
+//--------------------------------------------------------------
+
+// Missing Moks Bug side part
+// Info: It'll randomly make you do either
+// Moks Bugs, or Clams, currently only Clams
+// are functional [Tsuyuki]
+
+// Shede
+hugel.gat,70,137,5	script	Shede	879,{
+
+	// To-Do: Make compatibility with Moks Bug part in the future
+	if (shedecount >= 5) set shedeclam,2;
+
+	if (shedeclam == 1) goto L_Started01;
+	if (shedeclam == 2) goto L_Finish01;
+	if (shedeclam == 3) goto L_Alldone01;
+
+	// Incomplete - Moks Bug side
+	// if (shedemoks == 1) goto L_Started02;
+	// if (shedecount >= 5) set shedeclam,2;
+	// if (shedemoks == 2) goto L_Finish02;
+	// if (shedemoks == 3) goto L_Alldone02;
+
+	cutin "siide1",2;
+	mes "[Shede]";
+	mes "Why, hello there!";
+	mes "You must be a traveler";
+	mes "from the Rune-Midgarts";
+	mes "Kingdom. Well, it's very nice";
+	mes "to meet you. Tourists like you";
+	mes "always bring good business~";
+	next;
+	mes "[Shede]";
+	mes "I'd love to chat with you";
+	mes "for a little while, but I've had";
+	mes "so many customers lately";
+	mes "that I'm swamped with work.";
+	mes "Still, I'd like to welcome";
+	mes "you to our town of Hugel.";
+	next;
+	menu	"Would you like some help?",L_HelpHer01,
+		"Okay, see you later.",L_Later01;
+
+	L_HelpHer01:
+		emotion 3;
+		mes "[Shede]";
+		mes "Oh, you're really";
+		mes "willing to help me?";
+		// iRO Official dialogue correction
+		// mes "see, what would be good";
+		mes "Let's see, what would be good";
+		mes "for you to do? Ah, I know!";
+		next;
+		mes "[Shede]";
+		mes "Would you bring me";
+		mes "^3131FF5 Clam Fleshes^000000? I plan to";
+		mes "bake some Clam Cookies";
+		mes "so that I can challenge Agette";
+		mes "for the illustrious title of";
+		mes "Greatest Cookie Master.";
+		next;
+		cutin "",255;
+		cutin "siide2",2;
+		mes "[Shede]";
+		mes "Agette is another professional";
+		mes "cookie baker, and I consider";
+		mes "her as my greatest rival. Her";
+		mes "skills are a little intimidating,";
+		mes "but I think I have a chance of";
+		mes "beating her in competition.";
+		next;
+		mes "[Shede]";
+		mes "There's no way I'm going";
+		mes "to give up to her! Anyway,";
+		mes "you can forage Clams near";
+		mes "the ferry for their Clam Flesh,";
+		mes "and I'll be waiting right here";
+		mes "for you to bring it to me.";
+		close2;
+		set shedeclam,1;
+		set shedecount,0;
+		cutin "",255;
+		end;
+
+	L_Started01:
+		cutin "siide1",2;
+		mes "[Shede]";
+		mes "Please bring me";
+		mes "5 Clam Fleshes";
+		mes "as soon as you can.";
+		mes "You can hunt the Clams";
+		mes "near the ferry to collect";
+		mes "them, alright? See you later~";
+		close2;
+		cutin "",255;
+		end;
+
+	L_Later01:
+		mes "[Shede]";
+		mes "I hope you enjoy";
+		mes "exploring our quaint";
+		// iRO text fix
+		// mes "little town on Hugel~";
+		mes "little town of Hugel~";
+		close2;
+		cutin "",255;
+		end;
+
+	L_Finish01:
+		cutin "siide1",2;
+		mes "[Shede]";
+		mes "Great, you're here";
+		mes "with the Clam Flesh";
+		mes "that I asked for! Now";
+		mes "I can bake cookies";
+		mes "that'll put Agette's work";
+		mes "to shame! ...Well, hopefully.";
+		// Set finishing variable
+		set shedeclam,3;
+		// Clear quest variables
+		set @clamcancel1,0;
+		set @clamcancel2,0;
+		set @clamcancel3,0;
+		set @clamcancel4,0;
+		set shedecount,0;
+		close2;
+		// Another iRO NPC bug fix..
+		// They forget to remove the cutin here
+		cutin "",255;
+		end;
+
+	L_Alldone01:
+		cutin "siide1",2;
+		mes "[Shede]";
+		mes "So how do you like";
+		mes "Hugel? Isn't it such a";
+		mes "nice and peaceful town?";
+		close2;
+		cutin "",255;
+		end;
+}
+
+// Shede Clam Quest - Clam #1
+hugel.gat,204,150,0	script	Clam#1	111,{
+
+	if (shedeclam == 0 || shedeclam == 3) end;
+	if (@clamcancel1) end;
+	if (shedecount >= 5) goto L_Enough;
+
+	mes "^3131FFYou find some very";
+	mes "fresh Clams whose";
+	mes "shells are shining";
+	mes "under the sunglight.^000000";
+	next;
+	menu	"Open Clams",L_Open,
+		"Cancel",L_Cancel;
+
+	L_Open:
+		mes "^3131FFYou reach for some";
+		mes "nearby clams so that";
+		mes "you can open their shells";
+		mes "and get some clam flesh.";
+		next;
+		mes "You were able to";
+		mes "pry some flesh from";
+		mes "the clams: now you";
+		// iRO text fix (Doubled lines)
+		// mes "have " + shedecount + " Clam Flesh.";
+		// mes "have " + shedecount + " Clam Flesh.";
+		mes "have " + shedecount + " Clam Flesh.^000000";
+		set shedecount,shedecount+1;
+		set @clamcancel1,1;
+		close;
+
+	L_Cancel:
+		mes "^3131FFYou decide to leave";
+		mes "the clams alone for now.";
+		// iRO text fix
+		// mes "have " + shedecount + " Clam Flesh.";
+		mes "You have " + shedecount + " Clam Flesh.^000000";
+		close;
+
+	L_Enough:
+		mes "^3131FFYou've already gathered";
+		mes "the amount of Clam Flesh";
+		mes "that Shede wanted, so you";
+		// Stupid Gravity, you're already in Hugel!
+		mes "should return to Hugel";
+		mes "and deliver it to her.^000000";
+		set shedeclam,2;
+		close;
+}
+
+// Shede Clam Quest - Clam #2
+hugel.gat,217,157,0	script	Clam#2	111,{
+
+	if (shedeclam == 0 || shedeclam == 3) end;
+	if (@clamcancel2) end;
+	if (shedecount >= 5) goto L_Enough;
+
+	mes "^3131FFYou find some very";
+	mes "fresh Clams whose";
+	mes "shells are shining";
+	mes "under the sunglight.^000000";
+	next;
+	menu	"Open Clams",L_Open,
+		"Cancel",L_Cancel;
+
+	L_Open:
+		mes "^3131FFYou reach for some";
+		mes "nearby clams so that";
+		mes "you can open their shells";
+		mes "and get some clam flesh.";
+		next;
+		mes "You were able to";
+		mes "pry some flesh from";
+		mes "the clams: now you";
+		// iRO text fix (Doubled lines)
+		// mes "have " + shedecount + " Clam Flesh.";
+		// mes "have " + shedecount + " Clam Flesh.";
+		mes "have " + shedecount + " Clam Flesh.^000000";
+		set shedecount,shedecount+1;
+		set @clamcancel2,1;
+		close;
+
+	L_Cancel:
+		mes "^3131FFYou decide to leave";
+		mes "the clams alone for now.";
+		// iRO text fix
+		// mes "have " + shedecount + " Clam Flesh.";
+		mes "You have " + shedecount + " Clam Flesh.^000000";
+		close;
+
+	L_Enough:
+		mes "^3131FFYou've already gathered";
+		mes "the amount of Clam Flesh";
+		mes "that Shede wanted, so you";
+		// Stupid Gravity, you're already in Hugel!
+		mes "should return to Hugel";
+		mes "and deliver it to her.^000000";
+		set shedeclam,2;
+		close;
+}
+
+// Shede Clam Quest - Clam #3
+hugel.gat,209,163,0	script	Clam#3	111,{
+
+	if (shedeclam == 0 || shedeclam == 3) end;
+	if (@clamcancel3) end;
+	if (shedecount >= 5) goto L_Enough;
+
+	mes "^3131FFYou find some very";
+	mes "fresh Clams whose";
+	mes "shells are shining";
+	mes "under the sunglight.^000000";
+	next;
+	menu	"Open Clams",L_Open,
+		"Cancel",L_Cancel;
+
+	L_Open:
+		mes "^3131FFYou reach for some";
+		mes "nearby clams so that";
+		mes "you can open their shells";
+		mes "and get some clam flesh.";
+		next;
+		mes "You were able to";
+		mes "pry some flesh from";
+		mes "the clams: now you";
+		// iRO text fix (Doubled lines)
+		// mes "have " + shedecount + " Clam Flesh.";
+		// mes "have " + shedecount + " Clam Flesh.";
+		mes "have " + shedecount + " Clam Flesh.^000000";
+		set shedecount,shedecount+1;
+		set @clamcancel3,1;
+		close;
+
+	L_Cancel:
+		mes "^3131FFYou decide to leave";
+		mes "the clams alone for now.";
+		// iRO text fix
+		// mes "have " + shedecount + " Clam Flesh.";
+		mes "You have " + shedecount + " Clam Flesh.^000000";
+		close;
+
+	L_Enough:
+		mes "^3131FFYou've already gathered";
+		mes "the amount of Clam Flesh";
+		mes "that Shede wanted, so you";
+		// Stupid Gravity, you're already in Hugel!
+		mes "should return to Hugel";
+		mes "and deliver it to her.^000000";
+		set shedeclam,2;
+		close;
+}
+
+// Shede Clam Quest - Clam #4
+hugel.gat,203,166,0	script	Clam#4	111,{
+
+	if (shedeclam == 0 || shedeclam == 3) end;
+	if (@clamcancel4) end;
+	if (shedecount >= 5) goto L_Enough;
+
+	mes "^3131FFYou find some very";
+	mes "fresh Clams whose";
+	mes "shells are shining";
+	mes "under the sunglight.^000000";
+	next;
+	menu	"Open Clams",L_Open,
+		"Cancel",L_Cancel;
+
+	L_Open:
+		mes "^3131FFYou reach for some";
+		mes "nearby clams so that";
+		mes "you can open their shells";
+		mes "and get some clam flesh.";
+		next;
+		mes "You were able to";
+		mes "pry some flesh from";
+		mes "the clams: now you";
+		// iRO text fix (Doubled lines)
+		// mes "have " + shedecount + " Clam Flesh.";
+		// mes "have " + shedecount + " Clam Flesh.";
+		mes "have " + shedecount + " Clam Flesh.^000000";
+		set shedecount,shedecount+1;
+		set @clamcancel4,1;
+		close;
+
+	L_Cancel:
+		mes "^3131FFYou decide to leave";
+		mes "the clams alone for now.";
+		// iRO text fix
+		// mes "have " + shedecount + " Clam Flesh.";
+		mes "You have " + shedecount + " Clam Flesh.^000000";
+		close;
+
+	L_Enough:
+		mes "^3131FFYou've already gathered";
+		mes "the amount of Clam Flesh";
+		mes "that Shede wanted, so you";
+		// Stupid Gravity, you're already in Hugel!
+		mes "should return to Hugel";
+		mes "and deliver it to her.^000000";
+		set shedeclam,2;
+		close;
+}
+
+// Shede Moks Bug Quest - Moks Bug #1
+hu_fild06.gat,218,320,1	script	Moks Bugs#1	1017,{
+
+	end;
+}
+
+// Shede Moks Bug Quest - Moks Bug #2
+hu_fild06.gat,155,309,1	script	Moks Bugs#2	1017,{
+
+	end;
+}
+
+// Missing Bugs #3-5
+
+
+//--------------------------------------------------------------
+// Monster Races System (Incomplete)
+//--------------------------------------------------------------
+
+// Eckar Erenes (Incomplete)
+hugel.gat,62,69,1	script	Eckar Erenes	86,{
+
+	mes "[Eckar Erenes]";
+	mes "Welcome to the";
+	mes "Monster Race Arena,";
+	mes "the pride and joy of";
+	mes "the village of Hugel!";
+	mes "How may I help you?";
+	next;
+	menu	"Monster Race Info",L_RaceInfo,
+		"Enter Monster Race",L_EnterRace;
+
+	L_RaceInfo:
+		mes "[Eckar Erenes]";
+		mes "Monster Races originated from";
+		mes "simple children's games in which";
+		mes "Cute Pets would race against each";
+		mes "other. This grew into an adult";
+		mes "pastime that is so popular, we've";
+		mes "built a racing arena in Hugel.";
+		next;
+		mes "[Eckar Erenes]";
+		mes "Our Monster Race Arena hosts";
+		mes "two types of monster races. First,";
+		mes "we have the Single Monster Race,";
+		mes "in which those that wagered on the";
+		mes "1st place monster are rewarded.";
+		next;
+		mes "[Eckar Erenes]";
+		mes "Then, we have the Dual Monster";
+		mes "Race in which the house odds and";
+		mes "rewards are greater than in Single";
+		mes "Monster Races: you must wager on";
+		mes "2 monsters, and they must place in";
+		mes "1st and 2nd for you to win.";
+		next;
+		mes "[Eckar Erenes]";
+		mes "Although a small entrance";
+		mes "fee is required, we only use";
+		mes "the money to give rewards to";
+		mes "participants and maintain this";
+		mes "arena. Therefore, we're not";
+		mes "profiting from this enterprise.";
+		next;
+		mes "[Eckar Erenes]";
+		mes "Also, we prohibit others";
+		mes "from making personal bets";
+		mes "and wagers, using items and";
+		mes "zeny, based on the outcomes";
+		mes " of these races. That kind of";
+		mes "gambling is illegal here...";
+		next;
+		mes "[Eckar Erenes]";
+		mes "Once you enter the Race Arena,";
+		mes "you will receive a Racing Ticket.";
+		mes "Keep in mind that winning Racing";
+		mes "Tickets can only be exchanged for";
+		mes "Prize Medals during a 5 minute";
+		mes "windows after the end of the race.";
+		next;
+		goto L_EnterRace;
+
+	L_EnterRace:
+		mes "[Eckar Erenes]";
+		mes "The entrance fee for all races";
+		mes "in the Monster Race Arena is";
+		mes "2,000 zeny. If you'd like to wager";
+		mes "on a Single Monster Race,";
+		mes "then please ask my brother";
+		mes "Ellebird to help you.";
+		next;
+		mes "[Eckar Erenes]";
+		mes "Otherwise, I'll help get you";
+		mes "started if you're interested";
+		mes "in a Dual Monster Race.";
+		mes "Would you like to wager";
+		mes "on a Dual Monster Race?";
+		next;
+		menu	"Yes, please.",L_DualRace,
+			"No, thanks.",L_NoThanks;
+
+		L_DualRace:
+			if (Zeny < 2000) goto L_NotEnoughZeny;
+
+			// Incomplete + Unofficial dialogue
+			// Should take your Zeny and take you
+			// to the Dual Monster Race Arena [Tsuyuki]
+
+			mes "[Eckar Erenes]";
+			mes "I'm sorry, but the Monster Race";
+			mes "Arena is currently undergoing";
+			mes "renovations so it's shut down";
+			mes "for now.";
+			close;
+
+		L_NoThanks:
+			mes "[Eckar Erenes]";
+			mes "Very well. I hope that";
+			mes "you enjoy your time here";
+			mes "in the Monster Race Arena~";
+			close;
+		
+	L_NotEnoughZeny:
+		mes "[Eckar Erenes]";
+		mes "I'm sorry, but you";
+		mes "don't have enough";
+		mes "money to pay the";
+		mes "2,000 zeny entrance fee.";
+		close;
+}
+
+// Eckar Ellebird (Incomplete)
+hugel.gat,58,72,5	script	Eckar Ellebird	86,{
+
+	mes "[Eckar Ellebird]";
+	mes "Welcome to the biggest";
+	mes "attraction in Hugel, the";
+	mes "Monster Race Arena.";
+	mes "How may I help you today?";
+	next;
+	menu	"Monster Race Info",L_RaceInfo,
+		"Enter Monster Race",L_EnterRace;
+
+	L_RaceInfo:
+		mes "[Eckar Ellebird]";
+		mes "Monster Races originated from";
+		mes "simple children's games in which";
+		mes "Cute Pets would race against each";
+		mes "other. This grew into an adult";
+		mes "pastime that is so popular, we've";
+		mes "built a racing arena in Hugel.";
+		next;
+		mes "[Eckar Ellebird]";
+		mes "Our Monster Race Arena hosts";
+		mes "two types of monster races. First,";
+		mes "we have the Single Monster Race,";
+		mes "in which those that wagered on the";
+		mes "1st place monster are rewarded.";
+		next;
+		mes "[Eckar Ellebird]";
+		mes "Then, we have the Dual Monster";
+		mes "Race in which the house odds and";
+		mes "rewards are greater than in Single";
+		mes "Monster Races: you must wager on";
+		mes "2 monsters, and they must place in";
+		mes "1st and 2nd for you to win.";
+		next;
+		mes "[Eckar Ellebird]";
+		mes "Although a small entrance";
+		mes "fee is required, we only use";
+		mes "the money to give rewards to";
+		mes "participants and maintain this";
+		mes "arena. Therefore, we're not";
+		mes "profiting from this enterprise.";
+		next;
+		mes "[Eckar Ellebird]";
+		mes "Also, we prohibit others";
+		mes "from making personal bets";
+		mes "and wagers, using items and";
+		mes "zeny, based on the outcomes";
+		mes " of these races. That kind of";
+		mes "gambling is illegal here...";
+		next;
+		mes "[Eckar Ellebird]";
+		mes "Once you enter the Race Arena,";
+		mes "you will receive a Racing Ticket.";
+		mes "Keep in mind that winning Racing";
+		mes "Tickets can only be exchanged for";
+		mes "Prize Medals during a 5 minute";
+		mes "windows after the end of the race.";
+		next;
+		goto L_EnterRace;
+
+	L_EnterRace:
+		mes "[Eckar Ellebird]";
+		mes "The entrance fee for all races";
+		mes "in the Monster Race Arena is";
+		mes "2,000 zeny. If you'd like to wager";
+		mes "on a Dual Monster Race, then";
+		mes "please ask my brother Erenes,";
+		mes "and he will help you.";
+		next;
+		mes "[Eckar Ellebird]";
+		mes "Otherwise, I'll help get you";
+		mes "started if you're interested";
+		mes "in a Single Monster Race.";
+		mes "Would you like to wager";
+		mes "on a Single Monster Race?";
+		next;
+		menu	"Yes, please.",L_SingleRace,
+			"No, thanks.",L_NoThanks;
+
+		L_SingleRace:
+			if (Zeny < 2000) goto L_NotEnoughZeny;
+
+			// Incomplete + Unofficial dialogue
+			// Should take your Zeny and take you
+			// to the Dual Monster Race Arena [Tsuyuki]
+
+			mes "[Eckar Ellebird]";
+			mes "I'm sorry, but the Monster Race";
+			mes "Arena is currently undergoing";
+			mes "renovations so it's shut down";
+			mes "for now.";
+			close;
+
+		L_NoThanks:
+			mes "[Eckar Ellebird]";
+			mes "Very well. I hope that";
+			mes "you enjoy your time here";
+			mes "in the Monster Race Arena~";
+			close;
+		
+	L_NotEnoughZeny:
+		mes "[Eckar Ellebird]";
+		mes "I'm sorry, but you";
+		mes "don't have enough";
+		mes "money to pay the";
+		mes "2,000 zeny entrance fee.";
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Prize Medal Exchanger (Incomplete)
+//--------------------------------------------------------------
+
+hugel.gat,71,83,3	script	Wayne	900,{
+
+	mes "[Wayne]";
+	mes "Hello, there! Ever wonder";
+	mes "what you could do with all";
+	mes "the Prize Medals you can win";
+	mes "in Monster Race Arena? You";
+	mes "can donate them in Einbroch";
+	mes "to the Blacksmith Guild...";
+	next;
+	mes "[Wayne]";
+	mes "...Or you can exchange them";
+	mes "for items, right here and right";
+	mes "now, with me. As always, the";
+	mes "choice is really up to you.";
+	next;
+	menu "Prize Medal Exchange",L_Exchange,"Cancel",L_Cancel;
+
+	L_Exchange:
+		mes "[Wayne]";
+		mes "Now, how many Prize Medals";
+		mes "would you like to exchange?";
+		mes "It doesn't take a genius to";
+		mes "figure out that you can get";
+		mes "more valuable items by trading";
+		mes "more Prize Medals at a time.";
+		next;
+		menu	"1 Prize Medal",L_Prize01,
+			"3 Prize Medals",L_Prize02,
+			"7 Prize Medals",L_Prize03,
+			"8 Prize Medals",L_Prize04,
+			"16 Prize Medals",L_Prize05,
+			"25 Prize Medals",L_Prize06,
+			"42 Prize Medals",L_Prize07,
+			"59 Prize Medals",L_Prize08;
+
+		L_Prize01:
+			mes "[Wayne]";
+			mes "Now, please choose";
+			mes "which of the following item";
+			mes "sets that you'd like to receive";
+			mes "in exchange for 1 Prize Medal.";
+			next;
+			menu	"2 Hinale Leaflets",L_PrzOpt01,
+				"2 Aloe Leaflets",L_PrzOpt02,
+				"1 Mastela Fruit",L_PrzOpt03,
+				"5 Witch Starsands",L_PrzOpt04,
+				"4 Condensed Red Potions",L_PrzOpt05;
+
+			// Incomplete
+			L_PrzOpt01:
+			L_PrzOpt02:
+			L_PrzOpt03:
+			L_PrzOpt04:
+			L_PrzOpt05:
+				goto L_NotEnoughMedals;
+
+		L_Prize02:
+			mes "[Wayne]";
+			mes "Now, please choose";
+			mes "which of the following item";
+			mes "sets that you'd like to receive";
+			mes "in exchange for 3 Prize Medals.";
+			next;
+			menu	"1 Royal Jelly",L_PrzOpt06,
+				"6 Holy Waters",L_PrzOpt07;
+
+			// Incomplete
+			L_PrzOpt06:
+			L_PrzOpt07:
+				goto L_NotEnoughMedals;
+
+		L_Prize03:
+			mes "[Wayne]";
+			mes "Now, please choose";
+			mes "which of the following item";
+			mes "sets that you'd like to receive";
+			mes "in exchange for 7 Prize Medals.";
+			next;
+			menu	"1 Cookie Bag",L_PrzOpt08,
+				"1 First Aid Kit",L_PrzOpt09;
+
+			// Incomplete
+			L_PrzOpt08:
+			L_PrzOpt09:
+				goto L_NotEnoughMedals;
+
+		L_Prize04:
+			mes "[Wayne]";
+			mes "Now, please choose";
+			mes "which of the following item";
+			mes "sets that you'd like to receive";
+			mes "in exchange for 8 Prize Medals.";
+			mes "Well, we have only 1 set, but...";
+			next;
+			menu "1 Gift Box",-;
+
+				// Incomplete
+				goto L_NotEnoughMedals;
+
+		L_Prize05:
+			mes "[Wayne]";
+			mes "Now, please choose";
+			mes "which of the following item";
+			mes "sets that you'd like to receive";
+			mes "in exchange for 16 Prize Medals.";
+			mes "Well, we have only 1 set, but...";
+			next;
+			menu "1 Old Blue Box",-;
+
+				// Incomplete
+				goto L_NotEnoughMedals;
+
+		L_Prize06:
+			mes "[Wayne]";
+			mes "Now, please choose";
+			mes "which of the following item";
+			mes "sets that you'd like to receive";
+			mes "in exchange for 25 Prize Medals.";
+			mes "Well, we have only 1 set, but...";
+			next;
+			menu "1 Taming Gift Set",-;
+
+				// Incomplete
+				goto L_NotEnoughMedals;
+
+		L_Prize07:
+			mes "[Wayne]";
+			mes "Now, please choose";
+			mes "which of the following item";
+			mes "sets that you'd like to receive";
+			mes "in exchange for 42 Prize Medals.";
+			mes "Well, we have only 1 set, but...";
+			next;
+			menu "1 Old Purple Box",-;
+
+				// Incomplete
+				goto L_NotEnoughMedals;
+
+		L_Prize08:
+			mes "[Wayne]";
+			mes "Now, please choose";
+			mes "which of the following item";
+			mes "sets that you'd like to receive";
+			mes "in exchange for 59 Prize Medals.";
+			mes "Well, we have only 1 set, but...";
+			next;
+			menu "1 Poring Box",-;
+
+				// Incomplete
+				goto L_NotEnoughMedals;
+
+	L_NotEnoughMedals:
+		mes "[Wayne]";
+		mes "Hey, you don't have";
+		mes "enough Prize Medals with";
+		mes "you. Go and get some more";
+		mes "if you want to exchange";
+		mes "them with me for anything.";
+		close;
+
+	L_Cancel:
+		mes "[Wayne]";
+		mes "Well, just keep in mind";
+		mes "that you can always come";
+		mes "to me to trade in your Prize";
+		mes "Medals for consumable items.";
+		mes "That guy in Einbroch? Not sure";
+		mes "what he'd give you for them...";
+		next;
+		mes "[Wayne]";
+		mes "All I know is that he";
+		mes "needs a whole lot of medals";
+		mes "for the work that he's doing.";
+		mes "Still, I hear that he just may";
+		mes "make your donations worth";
+		mes "all your effort, you know?";
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Odin Excavation Quest - Incomplete ->
+//--------------------------------------------------------------
+
+hugel.gat,91,152,3	script	Sign	837,{
+
+	mes "**Recruitment Notice**";
+	mes "            "; // Line break
+	mes "We are now hiring recruits";
+	mes "for the Odin Shrine Expedition.";
+	mes "            "; // Line break
+	mes "- Shrine Expedition Dept.";
+	close;
+}
+
+hu_in01.gat,18,94,3	script	Part-Timer	49,{
+
+	mes "[Luda]";
+	mes "Welcome to the";
+	mes "Shrine Expedition Office.";
+	mes "I'm Luda, a part-time";
+	mes "assistant. My job is to";
+	mes "keep this office neat and";
+	mes "clean, but look at this place!";
+	next;
+	mes "[Luda]";
+	mes "Still, I think I can";
+	mes "handle this difficult task~";
+	mes "This room is the office for";
+	mes "the Schwaltzvalt Republic team,";
+	mes "and the other is for the Rune-";
+	mes "Midgarts Kingdom team.";
+	next;
+	mes "[Luda]";
+	mes "I have to clean both rooms,";
+	mes "so they keep me pretty busy.";
+	mes "Why don't you volunteer for";
+	mes "their expedition? I know they";
+	mes "can't really pay you, but it's";
+	mes "a great chance to explore~";
+	close;
+}
+
+hu_in01.gat,26,77,4	script	Part-Timer	50,{
+
+	mes "^3131FFThis part-timer is";
+	mes "completely engrossed";
+	mes "in his task of organizing";
+	mes "files and books.^000000";
+	close;
+}
+
+hu_in01.gat,18,167,5	script	Julian	86,{
+
+	mes "[Julian]";
+	mes "Say, are you here";
+	mes "for a job? We're looking";
+	mes "for someone that's passionate";
+	mes "about ancient history. If you";
+	mes "want to make money, then this";
+	// iRO dialogue fix
+	// mes "this the wrong place for you~";
+	// mes "is the wrong place for you~";
+	next;
+	mes "[Julian]";
+	mes "This is supposed to be";
+	mes "a collaborative excavation,";
+	mes "but the team leaders are too";
+	mes "stubborn, and refuse to make";
+	mes "any compromises. It's been";
+	mes "incredibly frustrating...";
+	next;
+	mes "[Julian]";
+	mes "Basically, each of our teams";
+	mes "is conducting its own research";
+	mes "for now. Now, we need your help";
+	mes "to find any relics from the odin";
+	mes "Shrine. We'd appreciate it if you";
+	// iRO dialogue fix
+	// mes "brought as many as you can!";
+	mes "bring as many as you can!";
+	close;
+}
+
+// I'm guessing if I wasn't a Novice, or I was higher-leveled
+// she would say something different? [Tsuyuki] ->
+hu_in01.gat,19,161,3	script	Alex	803,{
+
+	cutin "hu_alex01",2;
+	mes "[Alex]";
+	mes "Huh...?";
+	mes "What do you want?";
+	next;
+	menu	"Excuse me...",L_Alex01,
+		"I saw the recruitment notice and...",L_Alex02;
+
+	L_Alex01:
+		mes "[Alex]";
+		mes "Whatever you're";
+		mes "trying to sell me,";
+		mes "I'm not interested!";
+		mes "Now get out of here!";
+		close2;
+		cutin "",255;
+		end;
+
+	L_Alex02:
+		cutin "",255;
+		cutin "hu_alex02",2;
+		mes "[Alex]";
+		mes "Oh, so you saw the";
+		mes "recruitment notice for the";
+		mes "Odin Shrine Expedition, eh?";
+		mes "Well, I dunno. I think that";
+		mes "kind of expedition would";
+		mes "eat you alive. No offense...";
+		next;
+		mes "[Alex]";
+		mes "Look, I'll reconsider";
+		mes "whether you qualify after";
+		// iRO dialogue fix (My god..) [Tsuyuki]
+		// you get train a little more,";
+		mes "you train a little more,";
+		mes "develop your skills, you know,";
+		mes "get stronger. For now, though,";
+		mes "I do'nt think we can use you.";
+		close2;
+		cutin "",255;
+		end;
+}
+
+hu_in01.gat,16,20,5	script	Ashe	95,{
+
+	mes "[Ashe]";
+	// iRO dialogue fix
+	// mes "Oh, you've here in response";
+	mes "Oh, you're here in response";
+	mes "to the recruitment notice?";
+	mes "Well then, let me give you";
+	mes "a brief idea about the work.";
+	mes "First off, we can't pay you any";
+	mes "money, so you'd be a volunteer.";
+	next;
+	mes "[Ashe]";
+	mes "Instead, you're allowed to";
+	mes "keep whatever you excavate";
+	mes "in the Odin Shrine, so long";
+	mes "as we don't need it for our";
+	mes "research. This opportunity";
+	mes "might prove worthwhile to you.";
+	next;
+	mes "[Ashe]";
+	mes "Now, we should be working";
+	mes "together with the Schaltzvalt";
+	mes "Republic's Research Team, but";
+	mes "our leaders aren't getting along";
+	mes "at all. There's just a huge";
+	mes "clash of personalities...";
+	next;
+	mes "[Ashe]";
+	mes "In any case, if you'd";
+	mes "like to join us in our";
+	mes "efforts to uncover the";
+	mes "secrets of the past, then";
+	mes "please speak to Ms. Laurence.";
+	close;
+}
+
+// I'm guessing if I wasn't a Novice, or I was higher-leveled
+// she would say something different? [Tsuyuki] ->
+hu_in01.gat,14,11,4	script	Laura	70,{
+
+	cutin "hu_laura01",2;
+	mes "[Laura]";
+	mes "Hm? Oh, you must be";
+	mes "here in response to our";
+	mes "recruitment notice, yes?";
+	mes "Let me take a look at you...";
+	mes "Oh, you're all skin and bone!";
+	mes "I can't use someone like you.";
+	close2;
+	cutin "",255;
+	end;
+}
+
+
+//--------------------------------------------------------------
+// Bingo Game System - Incomplete (Not started, to-do)
+//--------------------------------------------------------------
+
+// To-Do
+
+
+//--------------------------------------------------------------
+// Abyss Lake Entrance
+//--------------------------------------------------------------
+
+
+hu_fild05.gat,168,302,0	script	Pillar	111,{
+
+	mes "[Ancient Voice]";
+	mes "So, you wish access to the Abyss Cave?";
+	mes "You have to bring me then 1 Dragon Canine, 1 Dragon Tail and 1 Dragon Scale";
+	mes "in order to grant you access to the island";
+	next;
+	mes "[Ancient Voice]";
+	mes "Do you wish to go?";
+	menu "Yes",L_Check,"No",end;
+
+		L_Check:
+			mes "[Ancient Voice]";
+			mes "Good, let me check your items first";
+			next;
+			if ((countitem(1035) == 0) || (countitem(1036) == 0) || (countitem(1037) == 0)) goto L_No_Items;
+			goto L_Grant;
+
+			L_No_Items:
+				mes "[Ancient Voice]";
+				mes "You dont have enough items";
+				close;
+		L_Grant:
+			mes "[Ancient Voice]";
+			mes "Good, I hereby you access then";
+			close2;
+			delitem 1035,1;
+			delitem 1036,1;
+			delitem 1037,1;
+			enablenpc "warpabyss";
+			initnpctimer;
+			warp "hu_fild05",181,197;
+			end;
+
+OnTimer10000:
+	disablenpc "warpabyss";
+	stopnpctimer;
+	setnpctimer 0;
+	end;
+
+OnInit:
+	disablenpc "warpabyss";
+	end;
+}
+
+
+hu_fild05.gat,171,212,0 script Pillar 111,{
+
+	mes "[Pillar]";
+	mes "Leave the island?";
+	menu "Yes",L_1,"No",L_Close;
+
+	L_1:
+		close2;
+		warp "hu_fild05.gat",168,301;
+		end;
+
+	L_Close:
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Kiel Hyre Dungeon Entrance
+//--------------------------------------------------------------
+
+yuno_fild08.gat,67,169,4	script	Grave#kh	111,1,1,{
+
+	mes "You examine the grave and find a switch!";
+	mes "Do you want to press it?";
+	next;
+	menu "Yes.",-,"No.",L_End;
+
+	mes "Suddenly the grave opens and reveals a staircase.";
+	close2;
+	warp "kh_dun01",4,229;
+	end;
+
+	L_End:
+	mes "You decided not to press it.";
+	close;
+}
