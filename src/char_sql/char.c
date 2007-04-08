@@ -2281,13 +2281,8 @@ int mmo_char_send006b(int fd, struct char_session_data *sd) {
 //		printf("(" CL_GREEN "%d" CL_RESET ")" CL_GREEN "%s" CL_RESET "\t[char]\n", sql_get_integer(0), sql_get_string(24));
 		sd->found_char[found_num] = sql_get_integer(0); // found_char = index in db (TXT), char_id (SQL), -1: void
 
-#if PACKETVER > 7
 		j = 24 + (found_num * 108); // increase speed of code
 		memset(WPACKETP(j), 0, 108);
-#else
-		j = 24 + (found_num * 106); // increase speed of code
-		memset(WPACKETP(j), 0, 106);
-#endif
 
 		WPACKETL(j    ) = sql_get_integer(0); // char_id
 		WPACKETL(j+  4) = sql_get_integer(1); // base_exp
@@ -2347,12 +2342,8 @@ int mmo_char_send006b(int fd, struct char_session_data *sd) {
 		WPACKETB(j+101) = (sql_get_integer(28) > 255) ? 255 : sql_get_integer(28); // int_
 		WPACKETB(j+102) = (sql_get_integer(29) > 255) ? 255 : sql_get_integer(29); // dex
 		WPACKETB(j+103) = (sql_get_integer(30) > 255) ? 255 : sql_get_integer(30); // luk
-#if PACKETVER > 7
 		WPACKETW(j+104) = sql_get_integer(31); // char_num
 		WPACKETW(j+106) = 1;
-#else
-		WPACKETB(j+104) = sql_get_integer(31); // char_num
-#endif
 //		printf("char #%d: str %d, agi: %d, vit: %d, int_: %d, dex: %d, luk: %d, char_num: %d\n", found_num, WPACKETB(j+98), WPACKETB(j+99), WPACKETB(j+100), WPACKETB(j+101), WPACKETB(j+102), WPACKETB(j+103), WPACKETB(j+104));
 
 		found_num++;
@@ -2364,11 +2355,7 @@ int mmo_char_send006b(int fd, struct char_session_data *sd) {
 	for(j = found_num; j < 9; j++)
 		sd->found_char[j] = -1; // found_char = index in db (TXT), char_id (SQL), -1: void
 
-#if PACKETVER > 7
 	WPACKETW(2) = 24 + found_num * 108;
-#else
-	WPACKETW(2) = 24 + found_num * 106;
-#endif
 	SENDPACKET(fd, WPACKETW(2));
 
 	return 0;
@@ -4722,11 +4709,7 @@ int parse_char(int fd) {
 					if (sql_get_row()) {
 						printf("(" CL_GREEN "%d" CL_RESET ")" CL_GREEN "%s" CL_RESET "\t[char creation]\n", sql_get_integer(0), sql_get_string(24));
 
-#if PACKETVER > 7
 						memset(WPACKETP(0), 0, 110);
-#else
-						memset(WPACKETP(0), 0, 108);
-#endif
 						WPACKETW(0    ) = 0x6d;
 
 						WPACKETL(2    ) =  sql_get_integer( 0); // char_id
@@ -4775,14 +4758,9 @@ int parse_char(int fd) {
 						WPACKETB(2+101) = (sql_get_integer(28) > 255) ? 255 : sql_get_integer(28); // int_
 						WPACKETB(2+102) = (sql_get_integer(29) > 255) ? 255 : sql_get_integer(29); // dex
 						WPACKETB(2+103) = (sql_get_integer(30) > 255) ? 255 : sql_get_integer(30); // luk
-#if PACKETVER > 7
 						WPACKETW(2+104) =  sql_get_integer(31); // char_num
 						WPACKETB(2+106) = 1; //Rename bit.
 						SENDPACKET(fd, 110);
-#else
-						WPACKETB(2+104) =  sql_get_integer(31); // char_num
-						SENDPACKET(fd, 108);
-#endif
 					}
 				}
 			}

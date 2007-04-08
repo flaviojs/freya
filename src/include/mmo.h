@@ -7,8 +7,6 @@
 #include <time.h>
 #include "../common/utils.h" // LCCWIN32
 
-#define PACKETVER 8
-
 #if defined __CYGWIN || defined __WIN32
 // txt‚âlog‚È‚Ç‚Ì�‘‚«�o‚·ƒtƒ@ƒCƒ‹‚Ì‰ü�sƒR�[ƒh
 #define RETCODE "\r\n" // (CR/LF�FWindowsŒn)

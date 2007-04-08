@@ -69,8 +69,6 @@ int fake_mob_list[] = { // Set here mobs that do not sound when they don't move
 
 #define MAX_PACKET_DB   0x300
 #define MAX_PACKET_VERSION 16
-#undef PACKETVER
-#define PACKETVER           6 //default protocol version
 
 static const int packet_len_table[MAX_PACKET_DB] = {
    10,  0,  0,  0,  0,  0,  0,  0,   0,  0,  0,  0,  0,  0,  0,  0,
@@ -871,7 +869,6 @@ static int clif_set0078(struct map_session_data *sd)
 		return packet_len_table[0x78];
 	}
 
-#if PACKETVER > 6
 	WPACKETW( 0) = 0x22a;
 	WPACKETL( 2) = sd->bl.id;
 	WPACKETW( 6) = sd->speed;
@@ -913,50 +910,6 @@ static int clif_set0078(struct map_session_data *sd)
 	WPACKETB(54) = 5;
 	WPACKETB(55) = sd->state.dead_sit;
 	WPACKETW(56) = (sd->status.base_level > battle_config.max_lv) ? battle_config.max_lv : sd->status.base_level;
-	
-#else
-	WPACKETW( 0) = 0x1d8;
-	WPACKETL( 2) = sd->bl.id;
-	WPACKETW( 6) = sd->speed;
-	WPACKETW( 8) = sd->opt1;
-	WPACKETW(10) = sd->opt2;
-	WPACKETW(12) = sd->status.option;
-	WPACKETW(14) = sd->view_class;
-	WPACKETW(16) = sd->status.hair;
-	if (sd->equip_index[9] >= 0 && sd->inventory_data[sd->equip_index[9]] && sd->view_class != 22) {
-		if (sd->inventory_data[sd->equip_index[9]]->view_id > 0)
-			WPACKETW(18) = sd->inventory_data[sd->equip_index[9]]->view_id;
-		else
-			WPACKETW(18) = sd->status.inventory[sd->equip_index[9]].nameid;
-	} else
-		WPACKETW(18) = 0;
-	if (sd->equip_index[8] >= 0 && sd->equip_index[8] != sd->equip_index[9] &&
-		sd->inventory_data[sd->equip_index[8]] && sd->view_class != 22) {
-		if (sd->inventory_data[sd->equip_index[8]]->view_id > 0)
-			WPACKETW(20) = sd->inventory_data[sd->equip_index[8]]->view_id;
-		else
-			WPACKETW(20) = sd->status.inventory[sd->equip_index[8]].nameid;
-	} else
-		WPACKETW(20) = 0;
-	WPACKETW(22) = sd->status.head_bottom;
-	WPACKETW(24) = sd->status.head_top;
-	WPACKETW(26) = sd->status.head_mid;
-	WPACKETW(28) = sd->status.hair_color;
-	WPACKETW(30) = sd->status.clothes_color;
-	WPACKETW(32) = sd->head_dir;
-	WPACKETL(34) = sd->status.guild_id;
-	WPACKETW(38) = sd->guild_emblem_id;
-	WPACKETW(40) = sd->status.manner;
-	WPACKETW(42) = sd->opt3;
-	WPACKETB(44) = sd->status.karma;
-	WPACKETB(45) = sd->sex;
-	WBUFPOS(WPACKETP(0), 46, sd->bl.x, sd->bl.y);
-	WPACKETB(48) |= sd->dir & 0x0f;
-	WPACKETB(49) = 5;
-	WPACKETB(50) = 5;
-	WPACKETB(51) = sd->state.dead_sit; // 0: standup, 1: dead, 2: sit
-	WPACKETW(52) = (sd->status.base_level > battle_config.max_lv) ? battle_config.max_lv : sd->status.base_level;
-#endif
 
 	return packet_len_table[WPACKETW(0)];
 
@@ -992,7 +945,6 @@ static int clif_set007b(struct map_session_data *sd)
 		return packet_len_table[0x7b];
 	}
 
-#if PACKETVER > 6
 	WPACKETW( 0) = 0x22c;
 	WPACKETL( 2) = sd->bl.id;
 	WPACKETW( 6) = sd->speed;
@@ -1037,53 +989,6 @@ static int clif_set007b(struct map_session_data *sd)
 	WPACKETB(60) = 0;
 	WPACKETB(61) = 0;
 	WPACKETW(62) = (sd->status.base_level > battle_config.max_lv) ? battle_config.max_lv : sd->status.base_level;
-
-#else
-	WPACKETW( 0) = 0x1da;
-	WPACKETL( 2) = sd->bl.id;
-	WPACKETW( 6) = sd->speed;
-	WPACKETW( 8) = sd->opt1;
-	WPACKETW(10) = sd->opt2;
-	WPACKETW(12) = sd->status.option;
-	WPACKETW(14) = sd->view_class;
-	WPACKETW(16) = sd->status.hair;
-
-	if (sd->equip_index[9] >= 0 && sd->inventory_data[sd->equip_index[9]] && sd->view_class != 22) {
-		if (sd->inventory_data[sd->equip_index[9]]->view_id > 0)
-			WPACKETW(18) = sd->inventory_data[sd->equip_index[9]]->view_id; //weapon
-		else
-			WPACKETW(18) = sd->status.inventory[sd->equip_index[9]].nameid; //weapon
-	} else
-		WPACKETW(18) = 0; //weapon
-
-	if (sd->equip_index[8] >= 0 && sd->equip_index[8] != sd->equip_index[9] &&
-		sd->inventory_data[sd->equip_index[8]] && sd->view_class != 22) {
-		if (sd->inventory_data[sd->equip_index[8]]->view_id > 0)
-			WPACKETW(20) = sd->inventory_data[sd->equip_index[8]]->view_id; //shield
-		else
-			WPACKETW(20) = sd->status.inventory[sd->equip_index[8]].nameid; //shield
-	} else
-		WPACKETW(20) = 0; //shield
-
-	WPACKETW(22) = sd->status.head_bottom;
-	WPACKETL(24) = gettick_cache;
-	WPACKETW(28) = sd->status.head_top;
-	WPACKETW(30) = sd->status.head_mid;
-	WPACKETW(32) = sd->status.hair_color;
-	WPACKETW(34) = sd->status.clothes_color;
-	WPACKETW(36) = sd->head_dir;
-	WPACKETL(38) = sd->status.guild_id;
-	WPACKETW(42) = sd->guild_emblem_id;
-	WPACKETW(44) = sd->status.manner;
-	WPACKETW(46) = sd->opt3;
-	WPACKETB(48) = sd->status.karma;
-	WPACKETB(49) = sd->sex;
-	WBUFPOS2(WPACKETP(0), 50, sd->bl.x, sd->bl.y, sd->to_x, sd->to_y);
-	WPACKETB(55) = 0;
-	WPACKETB(56) = 5;
-	WPACKETB(57) = 5;
-	WPACKETW(58) = (sd->status.base_level > battle_config.max_lv) ? battle_config.max_lv : sd->status.base_level;	
-#endif
 
 	return packet_len_table[WPACKETW(0)];
 
@@ -1429,13 +1334,8 @@ int clif_spawnpc(struct map_session_data *sd) {
 
 	clif_set0078(sd);
 
-#if PACKETVER > 6
 	WPACKETW( 0) = 0x22b;
 	WPACKETW(55) = (sd->status.base_level > battle_config.max_lv) ? battle_config.max_lv : sd->status.base_level;
-#else
-	WPACKETW( 0) = 0x1d9;
-	WPACKETW(51) = (sd->status.base_level > battle_config.max_lv) ? battle_config.max_lv : sd->status.base_level;
-#endif
 
 	clif_send(packet_len_table[WPACKETW(0)], &sd->bl, AREA_WOS);
 
@@ -2993,21 +2893,12 @@ int clif_changeoption(struct block_list* bl)
 	option = *status_get_option(bl);
 	sc_data = status_get_sc_data(bl);
 
-#if PACKETVER > 6
 	WPACKETW( 0) = 0x229;
 	WPACKETL( 2) = bl->id;
 	WPACKETW( 6) = *status_get_opt1(bl);
 	WPACKETW( 8) = *status_get_opt2(bl);
 	WPACKETL(10) = option;
 	WPACKETB(14) = 0;
-#else
-	WPACKETW( 0) = 0x119;
-	WPACKETL( 2) = bl->id;
-	WPACKETW( 6) = *status_get_opt1(bl);
-	WPACKETW( 8) = *status_get_opt2(bl);
-	WPACKETW(10) = option;
-	WPACKETB(12) = 0; // ??
-#endif
 
 	if(bl->type == BL_PC)
 	{
@@ -3254,17 +3145,9 @@ int clif_traderequest(struct map_session_data *sd, char *name)
 	nullpo_retr(0, sd);
 //	nullpo_retr(0, (target_sd = map_id2sd(sd->trade_partner)));
 
-//#if PACKETVER < 6
 	WPACKETW(0) = 0xe5;
 	strncpy(WPACKETP(2),name, 24);
 	SENDPACKET(sd->fd, packet_len_table[0xe5]);
-/*#else
-	WPACKETW(0) = 0x1f4;
-	strncpy(WPACKETP(2), name, 24);
-	WPACKETL(26) = target_sd->status.char_id; //�ǂ�������Ȃ�����Ƃ肠����char_id
-	WPACKETW(30) = target_sd->status.base_level;
-	SENDPACKET(sd->fd, packet_db[0x1f4]);*/
-//#endif
 
 	return 0;
 }
@@ -3279,17 +3162,9 @@ int clif_tradestart(struct map_session_data *sd, unsigned char type) { // 00e7 <
 	nullpo_retr(0, sd);
 //	nullpo_retr(-1, (target_sd = map_id2sd(sd->trade_partner)));
 
-//#if PACKETVER < 6
 	WPACKETW(0) = 0xe7; // 00e7 <fail>.B: response to requesting trade: 0: You are too far away from the person to trade., 1: This Character is not currently online or does not exist, 2: The person is in another trade., 3: (trade ok->open the trade window)., 4: The deal has been rejected.
 	WPACKETB(2) = type;
 	SENDPACKET(sd->fd, packet_len_table[0xe7]);
-/*#else
-	WPACKETW(0) = 0x1f5;
-	WPACKETB(2) = type;
-	WPACKETL(3) = target_sd->status.char_id;	//�ǂ�������Ȃ�����Ƃ肠����char_id
-	WPACKETW(7) = target_sd->status.base_level;
-	SENDPACKET(sd->fd, packet_db[0x1f5]);*/
-//#endif
 
 	return 0;
 }
