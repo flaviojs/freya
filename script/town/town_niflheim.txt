@@ -39,6 +39,7 @@ niflheim.gat,52,174,3	script	Kirz	796,{
 }
 
 niflheim.gat,213,221,0	script	Spirit::spirits	802,{
+
 	mes "[Spirit]";
 	mes "Welcome to my world...";
 	mes "This land we call....";
@@ -58,12 +59,14 @@ niflheim.gat,182,167,0	duplicate(spirits)	Spirit#9	802
 
 
 niflheim.gat,195,211,5	script	Gigantia	796,{
+
 	mes "[Gigantia]";
 	mes "The Lord of Death always sees everything...";
 	close;
 }
 
 niflheim.gat,153,215,3	script	Feline	794,{
+
 	mes "[Feline]";
 	mes "Why are you in this dangerous village?";
 	mes "Better go back fast...";
@@ -71,6 +74,7 @@ niflheim.gat,153,215,3	script	Feline	794,{
 }
 
 nif_in.gat,16,27,1	script	Dead Cock	800,{
+
 	mes "[Dead Cock]";
 	mes "I was eaten by humans when alive,";
 	mes "now it's my turn to eat you! Gugugugu~";
@@ -80,6 +84,7 @@ nif_in.gat,16,27,1	script	Dead Cock	800,{
 }
 
 nif_in.gat,16,30,4	script	Vampire Bat	799,{
+
 	mes "[Vampire Bat]";
 	mes "Alive or dead, human blood";
 	mes "is always the tastiest!";
@@ -90,6 +95,7 @@ nif_in.gat,16,30,4	script	Vampire Bat	799,{
 }
 
 nif_in.gat,156,93,5	script	Child	793,{
+
 	mes "[Alakina Ann]";
 	mes "Where, is this place? I just woke up";
 	mes "and found myself here... mommy...";
@@ -107,8 +113,8 @@ L_Wizzard:
 	next;
 	mes "[Alakina Ann]";
 	mes "But why is it so cold?";
-	if (sex == 1) mes "Aren't you cold, brother? Wierd... Hu~";
-	if (sex == 0) mes "Aren't you cold, sister? Wierd... Hu~";
+	if (Sex == Male) mes "Aren't you cold, brother? Wierd... Hu~";
+	if (Sex == Female) mes "Aren't you cold, sister? Wierd... Hu~";
 	mes "I miss my warm home,";
 	mes "Can you help me please? Hmmm? Hmmm?";
 	close;
@@ -183,17 +189,25 @@ L_book3:
 		set @nif_t,@nif_t + 10;
 
 	mes "[Ashe Bruce]";
-	if(@nif_t == 30){
-		if(rand(9)){
+	if(@nif_t == 30) goto L_Next01;
+	goto L_Next04;
+
+	L_Next01:
+		if(rand(9)) goto L_Next02;
+		goto L_Next03;
+
+		L_Next02:
 			mes "Your prayers were correctaaahhhh...";
 			mes "but your curse still remainsaaahhhh!!";
 			mes "Haahahahaha.....!!!";
 			close;
-		}
-	       mes "Hahahaha!! Your curse has been lifted!!";
-	       mes "Gahahahaha.....!!!";
-	       close;
-	}
+
+		L_Next03:
+			mes "Hahahaha!! Your curse has been lifted!!";
+			mes "Gahahahaha.....!!!";
+			close;
+
+L_Next04:
 	mes "Hahahaha!! Your prayers were wrong!!";
 	mes "Time to face deathohohohoho,";
 	mes "May you be cursed forevahahahaha!!";
@@ -263,36 +277,34 @@ nif_in.gat,105,81,3	script	Crayu	794,{
 	mes "^FF0000Is the key from Lord Death's wrath.^000000";
 	next;
 	mes "[Crayu]";
-	if(nif_piano&2 || (MISC_QUEST & 32)){
+	if(nif_piano&2 || (MISC_QUEST & 32)) goto L_Blah01;
 		mes "I wonder what does it mean...";
 		mes "If you read it carefully,";
 		mes "it seems to have a deep meaning,";
 		mes "as if there is a mysterious secret";
 		mes "hidden within these words...";
 		close;
-	}
+
+L_Blah01:
 	set @nif_random,rand(1,4);
 	mes "Heh, let me give you a little exam!";
 	mes "Repeat line no. " + @nif_random + " of the poem";
 	mes "that you have just heard to me!";
 	next;
 	input @inputstr1$;
-	switch(@nif_random){
-	case 1:
+	if (@nif_random == 1)
 		set @str1$,"When the sun sets in the western hills,";
-		break;
-	case 2:
+	if (@nif_random == 2)
 		set @str1$,"Where points the velvet gloom of dawn,";
-		break;
-	case 3:
+	if (@nif_random == 3)
 		set @str1$,"The beautiful melody surrounding thy soul,";
-		break;
-	case 4:
+	if (@nif_random == 4)
 		set @str1$,"Is the key from Lord Death's wrath.";
-		break;
-	}
 	mes "[Crayu]";
-	if(@inputstr1$ == @str1$){
+	if(@inputstr1$ == @str1$) goto L_Blah02;
+	goto L_Blah03;
+
+	L_Blah02:
 		mes "Hoho... I see you have paid attention!";
 		mes "I am Grey, a wandering poet of yore,";
 		mes "you are the best audience I have had so far,";
@@ -304,7 +316,8 @@ nif_in.gat,105,81,3	script	Crayu	794,{
 		mes "I hope you will treat other poets";
 		mes "as well as you treated me, farewell.";
 		close;
-	}
+
+L_Blah03:
 	mes "Aih... If you had paid more attention,";
 	mes "you would have known the correct answer!";
 	mes "Come back for the challenge again,";
@@ -353,7 +366,10 @@ L_end:
 niflheim.gat,208,103,5	script	#2	111,2,2{
 
 	if(MISC_QUEST & 32 || nif_piano&32) end;
-	if(nif_piano&16){
+	if(nif_piano&16) goto L_Blah01;
+	goto L_Blah02;
+
+	L_Blah01:
 		mes "- In the hole you have dug -";
 		mes "- there is something else -";
 		mes "- buried deep in the ground -";
@@ -365,7 +381,8 @@ niflheim.gat,208,103,5	script	#2	111,2,2{
 		set nif_piano, nif_piano|32;
 	L_end:
 		close;
-	}
+
+L_Blah02:
 	mes "- In the nearby tombs -";
 	mes "- you see something -";
 	mes "- half buried in the ground -";

@@ -1765,7 +1765,7 @@ s_PKQuest:
 
 	mes "[Lady]";
 	mes "No...?";
-	if(!Sex)close;
+	if(Sex == Female)close;
 	next;
 	mes "[Lady]";
 	mes "Are you...";

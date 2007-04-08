@@ -8,7 +8,7 @@
 //--------------------------------------------------------------
 // Script Title: Amatsu Town NPCs	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v2.6
+// Revision History: v2.7
 //--------------------------------------------------------------
 //	1.0 First version [Athena]
 //	1.1 Translated [Makenshi/dj]
@@ -28,6 +28,7 @@
 //	2.5 Removed Ninja NPC dummies [Tsuyuki]
 //	2.6 Merged in Amatsu Quests [Tsuyuki]
 //	 - Adds in Momotaro Event, Sushi Quest, Amatsu Event
+//	2.7 Adapated some things for backwards Freya compatibility [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Sushi Quest is * Aegis-certified *
 //--------------------------------------------------------------
@@ -832,30 +833,29 @@ s_Got:
 	mes "[Laspuchin Gregory]";
 	mes "Uh-uh, what did you bring?";
 	next;
-	switch( select( "Mystic Frozen", "Great Nature", "Flame Heart", "Rough Wind" ) )
-		{
+	menu "Mystic Frozen",L_mFrozen,"Great Nature",L_gNature,"Flame Heart",L_fHeart,"Rough Wind",L_rWind;
 
-		case 1:
-			set @stoneID,995;
-			set @stoneStr$,"Mystic Frozen";
-		break;
+	L_mFrozen:
+		set @stoneID,995;
+		set @stoneStr$,"Mystic Frozen";
+		goto L_Continue;
 
-		case 2:
-			set @stoneID,997;
-			set @stoneStr$,"Great Nature";
-		break;
+	L_gNature:
+		set @stoneID,997;
+		set @stoneStr$,"Great Nature";
+		goto L_Continue;
 
-		case 3:
-			set @stoneID,994;
-			set @stoneStr$,"Flame Heart";
-		break;
+	L_fHeart:
+		set @stoneID,994;
+		set @stoneStr$,"Flame Heart";
+		goto L_Continue;
 
-		case 4:
-			set @stoneID,996;
-			set @stoneStr$,"Rough Wind";
-		break;
+	L_rWind:
+		set @stoneID,996;
+		set @stoneStr$,"Rough Wind";
+		goto L_Continue;
 
-		}
+L_Continue:
 	if(countitem(@stoneID) < 8)goto s_NEnough;
 	mes "[Laspuchin Gregory]";
 	mes "Kehekeh. I see you brought";

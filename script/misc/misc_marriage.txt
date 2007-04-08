@@ -504,7 +504,7 @@ function	script	F_Register	{
 		mes "Very well, whom would you like to register as?";
 		next;
 		set @submenu, select("Groom","Bride","Cancel");
-	} else if (sex) { // Groom
+	} else if (Sex == Male) { // Groom
 		mes "["+@name$+"]";
 		mes "Very well, will you register as the Groom?";
 		next;
@@ -576,7 +576,7 @@ function	script	F_WedProgress	{
 		cutin "wedding_marry01",255;
 		end;
 	}
-	if (($wed_groom_progress == 0) && (sex == 1 || $@wed_allow == 1)) {
+	if (($wed_groom_progress == 0) && (Sex == Male || $@wed_allow == 1)) {
 		mes "["+@name$+"]";
 		mes $wed_bride$+" is waiting for the groom to register. Are you the one who came to register as groom?";
 		next;
@@ -601,7 +601,7 @@ function	script	F_WedProgress	{
 		}
 
 	}
-	if (($wed_bride_progress == 0) && (sex == 0 || $@wed_allow == 1)) {
+	if (($wed_bride_progress == 0) && (Sex == Female || $@wed_allow == 1)) {
 		mes "["+@name$+"]";
 		mes $wed_groom$+" is waiting for the bride to register. Are you the one who came to register as the bride?";
 		next;
@@ -713,13 +713,13 @@ function	script	F_TryRegister	{
 		cutin "wedding_marry02",255;
 		end;
 	}
-	if (Sex)
+	if (Sex == Male)
 		set @item,7170;
 	else
 		set @item,2338;
-	if ((Sex == 0 && countitem(@item) < 1) || (Sex == 1 && countitem(@item) < 1)) {
+	if ((Sex == Female && countitem(@item) < 1) || (Sex == Male && countitem(@item) < 1)) {
 		mes "["+@name$+"]";
-		if (Sex == 0) {
+		if (Sex == Female) {
 			mes "I'm sorry, but you must provide us with a Wedding Dress";
 			mes "in your inventory for the marriage process.";
 		}
@@ -753,7 +753,7 @@ function	script	F_TryRegister	{
 		end;
 	}
 	set Zeny,Zeny-@cost;
-	if (Sex == 0) {
+	if (Sex == Female) {
 		delitem 2338,1;
 	}
 	else {

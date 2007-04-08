@@ -516,7 +516,7 @@ prt_fild08.gat,175,374,3	script	Bard#brising	51,{
 	mes "do you not?";
 	next;
 	mes "[Nelliorde]";
-		if (Sex) mes "Hahahaha, forgive my rudeness, but I fail to remember your name, although your face does seem rather familiar.";
+		if (Sex == Male) mes "Hahahaha, forgive my rudeness, but I fail to remember your name, although your face does seem rather familiar.";
 		else
 	{
 		mes "Oh well well...";
@@ -3041,7 +3041,7 @@ prt_castle.gat,84,51,5	script	Librarian#2	105,{
 	mes "Did you say that you need to find a person? Please give me that person's name, as well as your relationship with that person.";
 	next;
 	menu "Lowen, Sibling",-,"Lowen, Spouse",L_Spouse,"Lowen, Enemy",L_Enemy,"Lowen, a Friend",L_Friend;
-				if(Sex)
+				if (Sex == Male)
 			{
 				mes "[Librarian]";
 				mes "How dare you lie to the royal librarian!";
@@ -3084,7 +3084,7 @@ prt_castle.gat,84,51,5	script	Librarian#2	105,{
 			}
 
 		L_Spouse:		
-				if(Sex)
+				if (Sex == Male)
 			{
 				mes "[Librarian]";
 				mes "Spouse...?";

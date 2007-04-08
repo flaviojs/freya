@@ -12,6 +12,19 @@
 
 Date	Added
 
+04/08/2007
+	* Improved: Finished formatting of script headers [Tsuyuki]
+	* Fixed: A portion of the Merchant job change quest [Tsuyuki]
+	* Changed: Executables now compile back into the main folder with make [Tsuyuki]
+	* Changed: Modified and improved a bunch of things in the script folder [Tsuyuki]
+	* Fixed: Some broken job quests (Missing job functions) [Tsuyuki]
+	* Added: 'Male' and 'Female' script constants [Tsuyuki]
+	* Merged: Skill quest scripts together, removed /script/quest/job_skill/ folder [Tsuyuki]
+	* Improved: Replaced /script/mob/ and /script/warp/ folders with improved, redone versions [Tsuyuki]
+	* Improved: Compatibility with Freya in several NPC scripts [Tsuyuki]
+	* Added: Missing juicer quest [Tsuyuki]
+	* Fixed: A typo in /script/event/event_white_day.txt [Tsuyuki]
+
 04/07/2007
 	* Improved: New motd.txt =P [Tsuyuki]
 

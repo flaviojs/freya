@@ -318,6 +318,56 @@ alberta.gat,190,173,4	script	Phelix	85,{
 		close;
 }
 
+
+//--------------------------------------------------------------
+// Sunken Ship Dungeon Access
+//--------------------------------------------------------------
+
+// Sailor (Alberta -> Sunken Ship)
+alberta.gat,195,151,3	script	Paul	86,{
+
+	mes "[Paul]";
+	mes "Good day.  Would you like be part of the Sunken Ship event, provided by Cool Event Corp.?";
+	next;
+	mes "[Paul]";
+	mes "Oh! I better warn you, this event is only suitable for HIGH LEVEL warriors.";
+	emotion e_gasp;
+	next;
+	mes "[Paul]";
+	mes "So what do you say?  It only cost 200 zeny to participate and you'll get a ton of experience, guaranteed.";
+	next;
+	menu "Enter",-,"Quit",M_End;
+	
+		if(Zeny < 200) goto L_NoZeny;
+		set Zeny, Zeny - 200;
+		warp "alb2trea.gat",62,69;
+		close;
+	M_End:
+		mes "[Paul]";
+		mes "Come back anytime.";
+		close;
+
+	L_NoZeny:
+		mes "[Paul]";
+		mes "I'm sorry, but I told you I would need 200 Zeny, and it looks like you don't have it.";
+		mes "Please come back later when you have enough.";
+		close;
+}
+
+// Sailor (Sunken Ship -> Alberta)
+alb2trea.gat,39,50,5	script	Sailor	100,{
+
+	mes "[Sailor]";
+	mes "Do you wanna return?";
+	next;
+	menu "Return to Alberta",-,"Quit",MEnd;
+
+	warp "alberta.gat",192,169;
+MEnd:
+	close;
+}
+
+
 //--------------------------------------------------------------
 // Doll Quest
 //--------------------------------------------------------------
@@ -325,11 +375,10 @@ alberta.gat,190,173,4	script	Phelix	85,{
 alberta.gat,117,134,8	script	Elin	96,{
 
 	mes "[Elin]";
-	if(Sex){
+	if (Sex == Male)
 		mes "Hello, mister. Hmm, since you're a boy, you don't like dolls, do you?";
-	}else{
+	if(Sex == Female)
 		mes "Hello, miss. Since you're a girl, you must like dolls, don't you?";
-	}
 	next;
 	mes "[Elin]";
 	mes "I LOVE dolls!!";

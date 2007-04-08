@@ -151,8 +151,10 @@ L_Check:
 	mes "[Archer Guildsman]";
 	mes "I will now transform you...";
 	next;
+
 	callfunc "F_JobChange",Job_Archer;
 	callfunc "F_ClearJobVariables";
+
 	mes "[Archer Guildsman]";
 	mes "In exchange for the Trunks you brought in I will give you this Bow and some arrows. Please take them.";
 	next;

@@ -1,30 +1,33 @@
-//===== Freya Script =========================================
-//= Monk Job Quest
-//===== By: ==================================================
-//= Dino9021/Celest/Freya
-//===== Current Version: =====================================
-//= 2.3
-//===== Compatible With: =====================================
-//= Freya
-//===== Description: =========================================
-//= Monk Job Quest
-//===== Additional Comments: =================================
-//= 1.1 Fixed missing '";'. Now it's loading fine [Lupus]
-//= 1.1+ Edited/Translated 5% [Celest]
-//= 1.2 Made Poetry Quiz passable, Fixed Marathon Part [Lupus]
-//= 1.3 Added Baby Class Support [Lupus]
-//= 1.5 Fixed possible EXP abuse [Lupus]
-//= 1.6 Added a func which prevent advanced classes passing
-//= 2nd Job Quests again. It also guides adv classes where
-//= to go. [Lupus] 1.7 Fixed warps19/20 [Yor]
-//= 1.8 Fixed bugs. Fixed Green Potion exploit. Getting rid of Jfunc mess [Lupus]
-//= 1.9 Added a missing check in Fuhai and fixed a LOT of Engrish. [Zephiris]
-//= 1.9b Fixed another bug in Fuhai. [Zephiris]
-//= 2.0 Changed numbers to constants. [Vicious]
-//= 2.1 Removed Duplicates [Silent]
-//= 2.2 Reconverted to Freya from eAthena [Tsuyuki]
-//= 2.3 Removed warps [Tsuyuki]
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Monk Job Change Quest	Author: A Lot of People
+//--------------------------------------------------------------
+// Revision History: v2.4
+//--------------------------------------------------------------
+//	1.0 First version [Dino0921/Athena]
+//	1.1 Fixed missing '";'. Now it's loading fine [Lupus]
+//	1.2 Translated into English [Celest]
+//	1.3 Made Poetry Quiz passable, fixed Marathon Part [Lupus]
+//	1.4 Added Baby Class Support [Lupus]
+//	1.5 Fixed possible EXP abuse [Lupus]
+//	1.6 Added a function to properly direct Transcendent job changing [Lupus]
+//	1.7 Fixed warps 19/20 [Yor]
+//	1.8 Fixed bugs, fixed Green Potion exploit, getting rid of Jfunc mess [Lupus]
+//	1.9 Added a missing check in Fuhai and fixed a LOT of Engrish [Zephiris]
+//	2.0 Fixed another bug in Fuhai [Zephiris]
+//	2.1 Changed numbers to constants [Vicious]
+//	2.2 Removed duplicates [Silent]
+//	2.3 Reconverted to Freya from eAthena [Tsuyuki]
+//	2.4 Removed warps [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: N/A
+//--------------------------------------------------------------
 
 
 prt_monk.gat,55,249,4	script	Tohobu the Guarding Monk	139,0,5,{
@@ -37,6 +40,7 @@ prt_monk.gat,55,249,4	script	Tohobu the Guarding Monk	139,0,5,{
 	mes "Get Out!!";
 	close;
 }
+
 prt_monk.gat,59,247,4	script	Master	120,{
 
 	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
@@ -542,8 +546,8 @@ L_MONK_Q_8:
 L_MONK_Q_9:
 	mes "[Elder Wuhai]";
 	mes "Well then, we have completed the oaths.";
-	if (sex == 0) mes "Gather closer now, you are already my sister!";
-	if (sex == 1) mes "Gather closer now, you are already my brother!";
+	if (Sex == Female) mes "Gather closer now, you are already my sister!";
+	if (Sex == Male) mes "Gather closer now, you are already my brother!";
 	next;
 	mes "[Elder Wuhai]";
 	mes "Your promise has been transmited to all Monks through our hearts.";
@@ -583,7 +587,7 @@ L_MONK_Q_9:
 	mes "WowHoooo... It is done! You are now a Monk!";
 
 	setoption 0;
-	callfunc "F_JobChange",JOB_MONK;
+	callfunc "F_JobChange",Job_Monk;
 	next;
 	mes "[Elder Wuhai]";
 	mes "(Cough!) (Cough!)";
@@ -1451,7 +1455,8 @@ function	script	MnkTraps	{
 	mapannounce "monk_test.gat","trap: " + strcharinfo(0)+ " , you fell into a trap! We will warp you to the starting line.",8;
 	warp "monk_test.gat",388,348;
 }
-//---------------------
+
+//--------------------------------------------------------------
 monk_test.gat,386,164,0	script	monk1-1	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,386,165,0	script	monk1-2	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,387,164,0	script	monk1-3	139,0,0,{callfunc "MnkTraps";}
@@ -1460,7 +1465,7 @@ monk_test.gat,388,164,0	script	monk1-5	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,388,165,0	script	monk1-6	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,389,164,0	script	monk1-7	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,389,165,0	script	monk1-8	139,0,0,{callfunc "MnkTraps";}
-//---------------------
+//--------------------------------------------------------------
 monk_test.gat,386,42,0	script	monk2-1	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,386,43,0	script	monk2-2	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,387,42,0	script	monk2-3	139,0,0,{callfunc "MnkTraps";}
@@ -1469,12 +1474,12 @@ monk_test.gat,388,42,0	script	monk2-5	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,388,43,0	script	monk2-6	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,389,42,0	script	monk2-7	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,389,43,0	script	monk2-8	139,0,0,{callfunc "MnkTraps";}
-//---------------------
+//--------------------------------------------------------------
 monk_test.gat,184,11,0	script	monk3-1	139,0,3,{callfunc "MnkTraps";}
 monk_test.gat,185,11,0	script	monk3-2	139,0,3,{callfunc "MnkTraps";}
 monk_test.gat,186,11,0	script	monk3-3	139,0,3,{callfunc "MnkTraps";}
 monk_test.gat,187,11,0	script	monk3-4	139,0,3,{callfunc "MnkTraps";}
-//---------------------
+//--------------------------------------------------------------
 monk_test.gat,70,10,0	script	monk4-1	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,70,11,0	script	monk4-2	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,70,12,0	script	monk4-3	139,0,0,{callfunc "MnkTraps";}
@@ -1483,7 +1488,7 @@ monk_test.gat,71,10,0	script	monk4-5	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,71,11,0	script	monk4-6	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,71,12,0	script	monk4-7	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,71,13,0	script	monk4-8	139,0,0,{callfunc "MnkTraps";}
-//---------------------
+//--------------------------------------------------------------
 monk_test.gat,8,30,0	script	monk5-1	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,8,31,0	script	monk5-2	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,9,30,0	script	monk5-3	139,0,0,{callfunc "MnkTraps";}
@@ -1500,7 +1505,7 @@ monk_test.gat,14,30,0	script	monk5-13	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,14,31,0	script	monk5-14	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,15,30,0	script	monk5-15	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,15,31,0	script	monk5-16	139,0,0,{callfunc "MnkTraps";}
-//---------------------
+//--------------------------------------------------------------
 monk_test.gat,10,158,0	script	monk6-1	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,10,159,0	script	monk6-2	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,11,158,0	script	monk6-3	139,0,0,{callfunc "MnkTraps";}
@@ -1509,7 +1514,7 @@ monk_test.gat,12,158,0	script	monk6-5	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,12,159,0	script	monk6-6	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,13,158,0	script	monk6-7	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,13,159,0	script	monk6-8	139,0,0,{callfunc "MnkTraps";}
-//---------------------
+//--------------------------------------------------------------
 monk_test.gat,38,386,0	script	monk7-1	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,38,387,0	script	monk7-2	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,38,388,0	script	monk7-3	139,0,0,{callfunc "MnkTraps";}
@@ -1518,19 +1523,20 @@ monk_test.gat,39,386,0	script	monk7-5	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,39,387,0	script	monk7-6	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,39,388,0	script	monk7-7	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,39,389,0	script	monk7-8	139,0,0,{callfunc "MnkTraps";}
-//---------------------
+//--------------------------------------------------------------
 monk_test.gat,82,390,0	script	monk8-1	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,82,391,0	script	monk8-2	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,83,390,0	script	monk8-3	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,83,391,0	script	monk8-4	139,0,0,{callfunc "MnkTraps";}
-//---------------------
+//--------------------------------------------------------------
 monk_test.gat,82,384,0	script	monk9-1	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,82,385,0	script	monk9-2	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,83,384,0	script	monk9-3	139,0,0,{callfunc "MnkTraps";}
 monk_test.gat,83,385,0	script	monk9-4	139,0,0,{callfunc "MnkTraps";}
-//---------------------
+//--------------------------------------------------------------
 
 prt_monk.gat,225,179,4	script	XuanWu#01 	89,{
+
 	mes "[XuanWu]";
 	mes "To see the growing of crops, I deeply appreciate the grace of God.";
 	next;

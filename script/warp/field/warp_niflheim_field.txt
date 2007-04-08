@@ -1,6 +1,0 @@
-
-//Niflheim Fields
-nif_fild01.gat,345,323,0	warp	nwarp7	1,1,nif_fild02.gat,23,312
-nif_fild02.gat,21,312,0	warp	nwarp8	1,1,nif_fild01.gat,343,322
-nif_fild02.gat,379,235,0	warp	nwarp9	1,1,niflheim.gat,20,153
-niflheim.gat,18,151,0	warp	nwarp10	1,1,nif_fild02.gat,376,235

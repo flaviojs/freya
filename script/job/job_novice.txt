@@ -2488,7 +2488,7 @@ new_zone04.gat,91,22,4	script	Novice Instructor	57,{
 	mes "[Bruce]";
 	mes "You have come from far away.";
 	mes "Thank you for coming here";
-	if (sex)
+	if (Sex == Male)
 		mes "Mr '"+strcharinfo(0)+"'";
 	else
 		mes "Ms '"+strcharinfo(0)+"'";

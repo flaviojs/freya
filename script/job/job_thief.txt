@@ -76,8 +76,8 @@ L_Continue:
 	if (job_thief_q == 1) goto L_Back;
 
 	mes "[Thief Guide]";
-	if (Sex == 0) mes "Heh... You look like a well to do boy... What brought you down to this rat hole?";
-	if (Sex == 1) mes "Heh... You look like a well to do girl... What brought you down to this rat hole?";
+	if (Sex == Female) mes "Heh... You look like a well to do boy... What brought you down to this rat hole?";
+	if (Sex == Male) mes "Heh... You look like a well to do girl... What brought you down to this rat hole?";
 	next;
 	goto M_Menu;
 

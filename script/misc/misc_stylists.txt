@@ -627,7 +627,7 @@ L_Dye:
 	mes "[Dyer Ginedin Rephere]";
 	mes "Please choose a color that suits you.";
 	next;
-	if (Sex==0) goto Female_dye;
+	if (Sex == Female) goto Female_dye;
 
 //--------------------------------------------------------------
 // Clothes Dye Process For Males
@@ -1132,7 +1132,7 @@ Look:
 	mes "Which number do you want to look at first?";
 	mes "If you want to stop looking, please choose 0.";
 	next;
-		if(sex==0) goto LookF;
+		if(Sex == Female) goto LookF;
 		input @hair_in;
 		if (@hair_in > 19) goto hairtohigh;
 		set @hair,@hair_in;
@@ -1474,7 +1474,7 @@ Change:
 	mes "There are 19 different Hair Styles.";
 	mes "Numbers from 1 to 19~";
 	next;
-		if(sex==0) goto iffemale;
+		if(Sex == Female) goto iffemale;
 		input @hairchange_in;
 		if (@hairchange_in > 19) goto tohighchange;
 		set @hairch,@hairchange_in;

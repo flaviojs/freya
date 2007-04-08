@@ -249,8 +249,8 @@ L_Check:
 		next;
 		mes "[Sir Grey]";
 		mes "After speaking to ^ff0000"+strcharinfo(0)+"^000000,";
-		if (Sex == 1) mes "I felt that he had this strength within him.";
-		else if (Sex == 0) mes "I felt that she had this strength within her.";
+		if (Sex == Male) mes "I felt that he had this strength within him.";
+		else if (Sex == Female) mes "I felt that she had this strength within her.";
 		mes "I would be happy to give ^ff0000"+strcharinfo(0)+"^000000 my recommendation to become a Knight!";
 		next;
 		mes "[Chivalry Captain Herman]";
@@ -1156,16 +1156,16 @@ L_Novice:
 	next;
 	mes "[Lady Amy Beatris]";
 	mes "Do you want to become a Knight?";
-	if (Sex == 0) mes "I bet you'll be lovely as a Knight.";
-	if (Sex == 1) mes "I bet you'll be really handsome as a Knight.";
+	if (Sex == Female) mes "I bet you'll be lovely as a Knight.";
+	if (Sex == Male) mes "I bet you'll be really handsome as a Knight.";
 	next;
 	mes "[Lady Amy Beatris]";
-	if (Sex == 0) mes "If you become a Knight, come back and see me. We Lady Knights should stick together.";
-	if (Sex == 1) mes "If you become a Knight, come back and see me okay? (*winks*)";
+	if (Sex == Female) mes "If you become a Knight, come back and see me. We Lady Knights should stick together.";
+	if (Sex == Male) mes "If you become a Knight, come back and see me okay? (*winks*)";
 	close;
 
 L_Knight:
-	if (Sex == 1) goto L_Male;
+	if (Sex == Male) goto L_Male;
 
 	L_Female:
 		mes "Oh my! Aren't you just the prettiest Knight.";
@@ -2029,8 +2029,8 @@ M_Menu:
 				mes "Oh I see! Did you become a Knight because of your this person?";
 				next;
 				mes "[Sir Grey]";
-				if (Sex == 1) mes "I hope you will be able to protect her anytime and anywhere!";
-				else if (Sex == 0) mes "I hope you will be able to protect him anytime and anywhere!";
+				if (Sex == Male) mes "I hope you will be able to protect her anytime and anywhere!";
+				else if (Sex == Female) mes "I hope you will be able to protect him anytime and anywhere!";
 				next;
 				mes "[Sir Grey]";
 				mes "Good luck to you and your loved one.";

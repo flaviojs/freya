@@ -1,5 +1,3 @@
-@rem original version from eAthena, thanks. 
-
 @echo off
 if "%1" == "boot" goto boot
 
@@ -95,24 +93,10 @@ IF NOT EXIST .\conf\grf-files.txt set _athenatmp_=1
 if "%_athenatmp_%" == "1" pause
 if "%_athenatmp_%" == "1" goto end
 
-set __bin__=
-if exist "bin\login-server.exe" set __bin__=bin\
-start win32_start boot %__bin__%login-server.exe
-start win32_start boot %__bin__%char-server.exe
-start win32_start boot %__bin__%map-server.exe
+start cmd /k login-server.exe
+start cmd /k char-server.exe
+start cmd /k map-server.exe
 goto end
-
-:boot
-if not exist %2 goto end
-echo Phaeton Launcher Script for Win32
-echo.
-echo %2 initialized.
-start /wait %2
-cls
-echo %2 restarted.
-echo. | date /T
-echo. | time /T
-goto boot
 
 :end
 if "%_athenatmp_%" == "1" set _athenatmp_=

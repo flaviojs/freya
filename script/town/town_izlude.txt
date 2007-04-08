@@ -28,23 +28,23 @@
 
 izlude.gat,125,116,1	script	Welcome Sign::ws_izlude	111,{
 
-  mes "~sign reads...~";
-  mes "Salutations and welcome to Izlude! Izlude is the satellite of Prontera and is home to Swordsmen and the Cool Event Corp.'s Monster Arena!";
-  close;
+	mes "~sign reads...~";
+	mes "Salutations and welcome to Izlude! Izlude is the satellite of Prontera and is home to Swordsmen and the Cool Event Corp.'s Monster Arena!";
+	close;
 }
 
 izlude.gat,179,183,1	script	Izlude Marina	111,{
 
-  mes "~sign reads...~";
-  mes "Take a boat ride to the city of Alberta or to the island of Byalan.";
-  close;
+	mes "~sign reads...~";
+	mes "Take a boat ride to the city of Alberta or to the island of Byalan.";
+	close;
 }
 
 izlude.gat,54,139,1	script	Swordsman Association	111,{
 
-  mes "~sign reads...~";
-  mes "The Izlude Swordsman Association is proud to provide Rune-Midgard with the bravest and strongest warriors.";
-  close;
+	mes "~sign reads...~";
+	mes "The Izlude Swordsman Association is proud to provide Rune-Midgard with the bravest and strongest warriors.";
+	close;
 }
 
 izlude.gat,55,74,2	script	Bonne	90,{
@@ -858,24 +858,27 @@ izlude.gat,171,185,3	script	Honeymoon Helper#Izlude I	71,{
 			close;
 
 s_Go:
-			if(!PartnerId)
-{
+			if(!PartnerId) goto L_NotHappy;
+			if(Zeny < 10000) goto L_StillNotHappy;
+			goto L_Happy;
+
+			L_NotHappy:
 				mes "[Marry Happy]";
 				mes "Uh oh, I'm sorry.";
 				mes "You can't go there if you're not married...";
 				mes "Why don't you go to the Prontera Inn,";
 				mes "and cheer yourself up?";
 				close;
-}
-			else if(Zeny < 10000)
-{
+
+				L_StillNotHappy:
 					mes "[Marry Happy]";
 					mes "I've explained about the trip to 'Jawaii'.";
 					mes "You'll need 10,000 z.";
 					mes "If you do not have enough zeny,";
 					mes "why don't you seek help from your partner...?";
 					close;
-}
+
+			L_Happy:
 				set Zeny,Zeny - 10000;
 				mes "[Marry Happy]";
 				mes "Enjoy your trip...!!";

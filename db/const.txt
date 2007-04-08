@@ -99,6 +99,9 @@ Job_DeathKnight	30
 Job_Dark_Collector	31
 Job_DarkCollector	31
 
+Male	1
+Female	0
+
 mf_nomemo	0
 mf_noteleport	1
 mf_noportal	2

@@ -165,8 +165,10 @@ L_Done:
 	mes "[Master Swordsman]";
 	mes "Congratulations! Now you are now fully qualified to become a real Swordsman! I will transform you right away!!";	
 	next;
+
 	callfunc "F_JobChange",Job_Swordsman;
 	callfunc "F_ClearJobVariables";
+
 	mes "[Master Swordsman]";
 	mes "As you set forth on your journey I will expect you to represent the Swordsman Assosiation of Izlude with great honor and integrity.";
 	next;

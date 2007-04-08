@@ -268,8 +268,10 @@ que_ng.gat,30,65,3	script	Cool Kid#nq	730,{
 			mes "[Cool Kid]";
 			mes "Haaa!!!!";
 			next;
+
 			callfunc "F_JobChange",Job_Ninja;
 			callfunc "F_ClearJobVariables";
+
 			set NINJ_Q,0;
 			getitem 13010,1;
 			close;

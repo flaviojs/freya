@@ -58,7 +58,7 @@ payon_in02.gat,67,65,3	script	Bard Jet#tu	51,{
 		mes "up a joke~!";
 		emotion e_gg;
 		next;
-		if(Sex){
+		if (Sex == Male){
 			menu "A joke, eh?",-;
 			mes "["+ strcharinfo(0) +"]";
 			mes "What did...";
@@ -1408,7 +1408,7 @@ mjolnir_11.gat,27,223,3	script	Acolyte#tu	95,{
 				mes "he already has a girlfriend...";
 				next;
 				mes "[Acolyte]";
-				if(Sex){
+				if (Sex == Male){
 					mes "W-wait!";
 					mes "Y-you're a man!";
 					mes "D-d-d-don't tease me";

@@ -1,39 +1,36 @@
-//===== Freya Script =========================================
-//= Assassin Job Quest
-//===== By: ==================================================
-//= kobra_k88/Freya
-//===== Current Version: =====================================
-//= 2.6
-//===== Compatible With: =====================================
-//= Freya
-//===== Description: =========================================
-//= Based of Official RO Assassin job change quest.  There are small
-//= differences due to gameplay issues.
-//===== Additional Comments: =================================
-//= v1.0 Used some dialogue from the aegis Assassin script translated By: Pgro Team (OwNaGe)
-//= Also converted the booby traps from the aegis script.[kobra_k88]
-//= v1.1 Made adjustments to ontouch npcs to work with the new "ontouch" functionality.
-//= Fixed some duplicate npc names.  Added missing waitingroom triggers.
-//= Fixed warp in "TimerSin", was supposed to be an areawarp.
-//= For some reason sometimes the "Nameless One" would have message windows
-//= without controls.  Changed the doevent that triggers him to an
-//= addtimer and that seemed make the prob. go away[kobra_k88]
-//= 1.2 Fixed WRONG skillpoint check! [Lupus]
-//= 1.2b Fixed missing commands and typos [Lupus]
-//= 1.3 Baby class Support added [Lupus]
-//= 1.5 Fixed possible EXP abuse [Lupus]
-//= 1.6 Added a func which prevent advanced classes passing
-//= 2nd Job Quests again. It also guides adv classes where
-//= to go. [Lupus]
-//= 2.0 Changed numbers to constants. [Vicious]
-//= 2.1 Removed Duplicates [Silent]
-//= 2.2 Merged back JFunc. Fixed missing dialogue [Lupus]
-//= 2.3 Fixed typo and change Nameless addtimer to 100 (with 700ms I 
-//= was still able to bypass it) [Toms]
-//= 2.4 Fixed skipping of Nameless NPC [Lupus]
-//= 2.5 Fixed a Rogue exploit [Lupus]
-//= 2.6 Reconverted updated script from eAthena to Freya [Tsuyuki]
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Assassin Job Change Quest	Author: A Lot of People
+//--------------------------------------------------------------
+// Revision History: v2.7
+//--------------------------------------------------------------
+//	1.0 Used some dialogue from the Aegis Assassin script translated [Pgro Team]
+//	1.1 Converted the booby traps from the Aegis script [kobra_k88]
+//	1.2 Made adjustments to ontouch npcs to work with the new "ontouch" functionality [kobra_k88]
+//	1.3 Fixed some duplicate NPC names, added missing waitingroom triggers [kobra_k88]
+//	1.4 Fixed warp in "TimerSin", was supposed to be an areawarp [kobra_k88]
+//	1.5 Fixed WRONG skillpoint check! [Lupus]
+//	1.6 Fixed missing commands and typos [Lupus]
+//	1.7 Baby class Support added [Lupus]
+//	1.8 Fixed possible EXP abuse [Lupus]
+//	1.9 Added a function to properly direct Transcendent job changing [Lupus]
+//	2.0 Changed numbers to constants [Vicious]
+//	2.1 Removed Duplicates [Silent]
+//	2.2 Merged back JFunc, fixed missing dialogue [Lupus]
+//	2.3 Fixed typo and change Nameless addtimer to 100 (with 700ms I was still able to bypass it) [Toms]
+//	2.4 Fixed skipping of Nameless NPC [Lupus]
+//	2.5 Fixed a Rogue exploit [Lupus]
+//	2.6 Reconverted updated script from eAthena to Freya [Tsuyuki]
+//	2.7 Updated formatting [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: N/A
+//--------------------------------------------------------------
 
 
 in_moc_16.gat,19,33,4	script	Guildsman	55,{
@@ -184,8 +181,10 @@ in_moc_16.gat,19,33,4	script	Guildsman	55,{
 		mes "[Assassin Huey]";
 		mes "Very well done, you are now offically an Assassin.  Although you are free to visit us at anytime..............";
 		setlook 7,0;
-	callfunc "F_JobChange",JOB_ASSASSIN;
-		callfunc "F_ClearJobVariables";		// clears all job variables for the current player
+
+		callfunc "F_JobChange",Job_Assassin;
+		callfunc "F_ClearJobVariables";
+
 		set kaitrig, 0;
 		next;
 		mes "[Assassin Huey]";
@@ -224,7 +223,7 @@ in_moc_16.gat,19,33,4	script	Guildsman	55,{
 			end;
 }
 
-// Assassin Kai: First Position =================================
+// Assassin Kai: First Position
 in_moc_16.gat,21,91,4	script	Assassin Kai#1	730,4,4,{
 
 	end;
@@ -237,7 +236,7 @@ OnTouch:
 	close;
 }
 
-// Assassin Kai: Second Position ==============================
+// Assassin Kai: Second Position
 in_moc_16.gat,25,90,4	script	Assassin Kai#2	730,2,1,{
 
 	if(kaitrig == 1) goto OnTouch;
@@ -541,7 +540,7 @@ sF_Quiz:
 		return;
 }
 
-// Namelss One ====================================================
+// Namelss One
 in_moc_16.gat,19,150,1	script	Nameless One	139,8,6,{
 
 OnTouch:
@@ -1041,11 +1040,11 @@ L_ReTest:
 		goto L_Test;
 }
 
-//=====================================================//
+//--------------------------------------------------------------
 // Part 1: Eliminate the Target
-//=====================================================//
+//--------------------------------------------------------------
 
-// Barcardi ==============================>\\
+// Barcardi
 in_moc_16.gat,21,165,4	script	Barcardi	725,{
 
 	mes "[Barcardi]";
@@ -1112,7 +1111,7 @@ OnStart:
 	end;
 }
 
-// Job Change Monsters ======================>\\
+// Job Change Monsters
 in_moc_16.gat,1,1,0	script	SinTest2	-1,{
 
 OnStart:
@@ -1193,14 +1192,14 @@ OnFailed:
 	end;
 }
 
-// Observer ===========================>\\
+// Observer
 in_moc_16.gat,62,153,1	script	Observer	55,{
 	mes "[Observer]";
 	mes "Don't mind me, I'm just here to see how well you do on your test.....";
 	close;
 }
 
-// Warp ==============================>\\
+// Warp
 in_moc_16.gat,87,137,0	script	sinWarp1	45,2,1,{
 OnTimer30000:
 	killmonsterall "in_moc_16.gat";
@@ -1209,7 +1208,7 @@ OnTimer30000:
 	end;
 }
 
-// Booby Traps ========================>\\
+// Booby Traps
 in_moc_16.gat,68,158,0	script	01_1::SinTrap	139,0,0,{
 	stopnpctimer "TimerSin";
 	warp "in_moc_16.gat", 19, 161;
@@ -1300,7 +1299,7 @@ in_moc_16.gat,86,147,0	duplicate(SinTrap)	18_2	139,0,0
 in_moc_16.gat,87,146,0	duplicate(SinTrap)	18_3	139,0,0
 in_moc_16.gat,87,147,0	duplicate(SinTrap)	18_4	139,0,0
 
-// Thomas ===============================>\\
+// Thomas
 in_moc_16.gat,89,98,1	script	Thomas	118,4,2,{
 
 OnTimer600:
@@ -1342,7 +1341,7 @@ OnTouch:
 }
 
 
-// SinTest2_2 ===============================>\\
+// SinTest2_2
 in_moc_16.gat,1,1,1	script	SinTest2_2	-1,{
 
 OnStart:
@@ -1379,7 +1378,7 @@ OnMobDead:
 	end;
 }
 
-// Warp ================================>\\
+// Warp
 in_moc_16.gat,87,48,2	script	sinWarp2	45,2,2,{
 
 	mes "[Thomas]";
@@ -1396,9 +1395,10 @@ in_moc_16.gat,87,48,2	script	sinWarp2	45,2,2,{
 }
 
 
-//=======================================================//
+//--------------------------------------------------------------
 // Timer for Sin Test 2
-//=======================================================//
+//--------------------------------------------------------------
+
 in_moc_16.gat,1,1,0	script	TimerSin	-1,{
 
 OnTimer3000:
@@ -1469,7 +1469,7 @@ in_moc_16.gat,182,169,1	script	sinWarp3	45,1,1,{
 		close;
 }
 
-// Start Trigger ------------------------------------------------------------------
+// Start Trigger
 in_moc_16.gat,167,114,3	script	guildmaster_Trig#0	139,4,0,{
 
 		mes "[Guild Master]";
@@ -1488,7 +1488,11 @@ in_moc_16.gat,167,114,3	script	guildmaster_Trig#0	139,4,0,{
 		close;
 }
 
-// Guild Master -----------------------------------------------------------------------------
+
+//--------------------------------------------------------------
+// Guild Master
+//--------------------------------------------------------------
+
 in_moc_16.gat,149,80,4	script	Guild Master#01	106,1,1,{
 
 	end;
@@ -1549,8 +1553,8 @@ OnTouch:
 	mes "'Looks like the Nameless One more or less supports you.  What are your thought Huey?";
 	next;
 	mes "[Huey]";
-	if (Sex == 1) mes "...What can I say, one of the best Assassin candidates I've seen in the last few weeks.";
-	if (Sex == 0) mes "... Although a little too mellow and gentle... sort of like a pussy cat, Hahahaha....";
+	if (Sex == Male) mes "...What can I say, one of the best Assassin candidates I've seen in the last few weeks.";
+	if (Sex == Female) mes "... Although a little too mellow and gentle... sort of like a pussy cat, Hahahaha....";
 	mes "I think ^5533FF" + strcharinfo(0) + "^000000 will be fine as an Assassin.";
 	next;
 	mes "[Huey]";
@@ -1810,8 +1814,8 @@ sF_Questions2:
 			return;
 		sM_5c:
 			mes "[Guild Master]";
-			if(sex == 1) mes "Oh you have a girlfriend... then become her shadow and protect her.";
-			if(sex == 0) mes "Oh you have a boyfriend... then become his shadow and protect him.";
+			if(Sex == Male) mes "Oh you have a girlfriend... then become her shadow and protect her.";
+			if(Sex == Female) mes "Oh you have a boyfriend... then become his shadow and protect him.";
 			next;
 			mes "[Guild Master]";
 			mes "As an Assassin you will find it very difficult to ever meet someone else, so make sure you treasure what you have now.";

@@ -757,8 +757,8 @@ morocc_in.gat,76,163,4	script	Alchemist	64,{
 		next;
 		mes "[Marius]";
 		mes "But before you go out and use them I have to tell you......";
-		if(sex==0) mes "DON'T USE THEM TO BE A PEEPING TOM!!!";
-		if(sex==1) mes "Becarefull where you look..... you might see someting you didn't want to........";
+		if(Sex == Female) mes "DON'T USE THEM TO BE A PEEPING TOM!!!";
+		if(Sex == Male) mes "Becarefull where you look..... you might see someting you didn't want to........";
 		close;
 
 		sL_NotEnuf:
@@ -1078,10 +1078,10 @@ M_EXIT:
 comodo.gat,227,158,4	script	Hair Ornament Girl	700,{
 
 	mes "[Hair Ornament Girl]";
-	if (Sex == 1) mes "Oh, hi. Do you need to buy a present for a friend, your mother, or maybe your girl friend?";
-	if (Sex == 1) mes "Then get her a Hair Band! It's the best gift you can get her.";
-	if (Sex == 0) mes "Oh, hi. Do you need to buy a present for a friend, your mother, or maybe yourself?";
-	if (Sex == 0) mes "Then get a Hair Band! It's the best gift you can give, or get.";
+	if (Sex == Male) mes "Oh, hi. Do you need to buy a present for a friend, your mother, or maybe your girl friend?";
+	if (Sex == Male) mes "Then get her a Hair Band! It's the best gift you can get her.";
+	if (Sex == Female) mes "Oh, hi. Do you need to buy a present for a friend, your mother, or maybe yourself?";
+	if (Sex == Female) mes "Then get a Hair Band! It's the best gift you can give, or get.";
 	next;
 	mes "[Hair Ornament Girl]";
 	mes "Just by bringing me a few simple items, I can make you a gorgeous Hair Band!";

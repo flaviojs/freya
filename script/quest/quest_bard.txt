@@ -45,15 +45,15 @@ geffen.gat,132,38,3	script	Bard#2	51,{
 	mes "Eh? Are you...?";
 	mes "Oh, you came here because you wanted to";
 	mes "forget your reality by laughing at this clown!";
-	if (Sex == 1) mes "Didn't you, young man?";
-	if (Sex == 0) mes "Didn't you, my lovely lady?";
+	if (Sex == Male) mes "Didn't you, young man?";
+	if (Sex == Female) mes "Didn't you, my lovely lady?";
 	next;
 	menu "Wrong, who are you?",-,"Ignore him.",L_Ignore;
 		mes "[" + strcharinfo(0) + "]";
 		mes "You seem to be new around here..";
 		mes "Who are you..?";
-		if (Sex == 1) mes "Also, who are you to call me a young man!";
-		if (Sex == 0) mes "Also, who are you to call me your lovely lady?!";
+		if (Sex == Male) mes "Also, who are you to call me a young man!";
+		if (Sex == Female) mes "Also, who are you to call me your lovely lady?!";
 		next;
 		mes "[Errende]";
 		mes "Errr...wow, give me a break. I didn't mean to upset you.";
@@ -378,8 +378,8 @@ geffen.gat,132,38,3	script	Bard#2	51,{
 					
 				L_Funny1Alt2:
 					mes "[Errende]";
-					if (Sex == 1) mes "Brave warrior,";
-					if (Sex == 0) mes "My lady,";
+					if (Sex == Male) mes "Brave warrior,";
+					if (Sex == Female) mes "My lady,";
 					mes "if you have a flower on your hand,";
 					mes "please listen to my song.";
 					mes "If you are in love,";
@@ -995,7 +995,7 @@ morocc.gat,134,111,3	script	Bard#3	741,{
 	mes "Can't you see I am busy?";
 	next;
 	menu "You're a child abductor, aren't you?!",-,"Sorry for interrupting you.",L_Interrupt;
-		if (Sex == 0) goto L_Female;
+		if (Sex == Female) goto L_Female;
 			mes "[Singing Guy]";
 			mes "Who the hell are you to speak ill of me,";
 			mes "you ugly little bastard!";
@@ -1097,7 +1097,7 @@ morocc.gat,134,111,3	script	Bard#3	741,{
 		if (Bard == 2) goto L_Bard2;
 		if (Bard == 3) goto L_Bard3;
 		if (Bard == 4) goto L_Bard4;
-		if (Sex == 1) goto L_Male;
+		if (Sex == Male) goto L_Male;
 			mes "[Singing Guy]";
 			mes "Ah, it is my honor to meet such a noble lady.";
 			mes "If you approve, I will speak of my name in front of you.";
@@ -1386,8 +1386,8 @@ L_Bard12:
 		mes "[Kino Kitty]";
 		mes "Nobody will attack you.";
 		mes "You're a scared";
-		if (Sex == 1) mes "little man.";
-		if (Sex == 0) mes "little lady.";
+		if (Sex == Male) mes "little man.";
+		if (Sex == Female) mes "little lady.";
 		close;
 
 L_Bard13:
@@ -1772,8 +1772,8 @@ L_Bard30:
 	mes "? I just saw something shining on your hand.";
 	mes "That black cross means you're a friend of uncle Kino.";
 	mes "So~";
-	if (Sex == 1) mes "Brother, you're my friend as well!";
-	if (Sex == 0) mes "Sister, you're my friend as well!";
+	if (Sex == Male) mes "Brother, you're my friend as well!";
+	if (Sex == Female) mes "Sister, you're my friend as well!";
 	close;
 
 L_Bard31:
@@ -2511,7 +2511,7 @@ yuno_in04.gat,33,119,3	script	Adventurer#1	828,{
 	mes "Err...and...?! What was it....";
 	mes "Huh? What are you looking at?";
 	next;
-	if (Sex == 0) goto L_Female;
+	if (Sex == Female) goto L_Female;
 		mes "[Energetic young man]";
 		mes "What, man!";
 		mes "Leave me alone, I am busy.";

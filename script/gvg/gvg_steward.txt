@@ -1,3 +1,22 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: GvG Steward System	Author: jAthena/Yor
+//--------------------------------------------------------------
+// Revision History: v1.1
+//--------------------------------------------------------------
+//	1.0 First version [jAthena]
+//	1.1 Translated into English [Yor]
+//--------------------------------------------------------------
+// Additional Notes: N/A
+//--------------------------------------------------------------
+
+
 //=========================================================================
 // Steward package functions.
 //	callfunc "StewardMain","AgitCode",MasterRoomX,MasterRoomY;
@@ -11,7 +30,6 @@
 //
 // * Using strnpcinfo() to get a NPC name, using getmapxy() to know map name of NPC.
 //-------------------------------------------------------------------------
-// ---- Translation by Darkraven
 
 function	script	StewardMain	{
 	// Greeting part

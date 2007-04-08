@@ -1,47 +1,77 @@
-//===== Freya Script =========================================
-//= Wizard Job Quest
-//===== By: ==================================================
-//= ?? (Aegis) Translated by yoshiki
-//= converted by kobra_k88
-//= Further bugfixed and tested by Lupus
-//===== Current Version: =====================================
-//= 1.6
-//===== Compatible With: =====================================
-//= Freya
-//===== Description: =========================================
-//= Wizard job quest converted from aegis script, plus my own RO screenies.
-//===== Additional Comments: =================================
-//= 1.1 Now using the initnpctimer command, donpcevent,
-//= and new waitingroom event commands. No more addtimer spamming.
-//= No longer have to talk to the npc to take the test. Just enter the chat room.
-//= 1.2 Changed global variable names to unique ones.
-//= 1.2a Rollback from the wrong Kashy's fix
-//= 1.2b Fixed issue with duplicating monsters thx to Bison.[kobra_k88]
-//= 1.2c changed one Horong to Frilldora (now 3rd room contains 1 agressive mob.)
-//= 1.2d more simplified fire room - removed agressive Desert Wolf [Lupus]
-//= 1.3 Added Baby Class support [Lupus]
-//= 1.5 Fixed possible EXP abuse [Lupus]
-//= 1.6 Added a func which prevent advanced classes passing
-//= 2nd Job Quests again. It also guides adv classes where
-//= to go. [Lupus]
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Wizard Job Change Quest	Author: A Lot of People
+//--------------------------------------------------------------
+// Revision History: v2.1
+//--------------------------------------------------------------
+//	1.0 First version [Unknown/Aegis]
+//	1.1 Translated into English [yoshiki]
+//	1.2 Converted to Athena format [kobra_k88]
+//	1.3 Improved timers [Unknown]
+//	1.4 Changed global variable names to unique ones [Unknown]
+//	1.5 Fixed issue with duplicating monsters thanks to Bison [kobra_k88]
+//	1.6 Changed one Horong to Frilldora (Now 3rd room contains 1 aggressive mob) [Unknown]
+//	1.7 Simplified fire room and removed aggressive Desert Wolf [Lupus]
+//	1.8 Added Baby Class support [Lupus]
+//	1.9 Fixed possible EXP abuse [Lupus]
+//	2.0 Added a function to properly direct Transcendent job changing [Lupus]
+//	2.1 Improved formatting [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: N/A
+//--------------------------------------------------------------
 
 
-//<=================== Some dog =========================>
+//--------------------------------------------------------------
+// Some Dog
+//--------------------------------------------------------------
+
 gef_tower.gat,107,35,5	script	Some Dog	81,{
 
 	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
 	if (Upper == 1)	close;
 
-	if (BaseJob == JOB_MAGE) goto L_JobMage;
-	callfunc "Wiz1_check";
+	if (BaseJob == Job_Mage) goto L_JobMage;
+	if (BaseClass == Job_Mage) goto L_Magic;
+	if (BaseClass == Job_Acolyte) goto L_Holy;
+	goto L_Other;
+
+L_Other:
+	mes "[Dog]";
+	mes "Sheesh... Why would someone who can't even cast a single spell come all the way up here???";
+	next;
+	mes "[Dog]";
+	mes "If you're that bored, do the world a favor and climb to the top of this building from the outside, then do some acrobatics...";
+	emotion 32;
+	next;
+	mes "[Dog]";
+	mes "~WOOF~ Get lost! I don't have time for people like you!!";
+	emotion 27;
+	close;
+
+L_Holy:
+	mes "[Dog]";
+	mes "Eeek! What's a holy type person doing up here?  I thought you people didn't like magic....";
+	mes "You religious types are always calling it the 'Dark Arts'......... ooooh scary!!!...... ~grrr!~WOOF!~";
+	close;
+
+L_Magic:
+	mes "[Dog]";
+	mes "Ah! High level magic users, welcome. It's always nice to see experienced magic users around here.";
+	mes "Actually it's nice to see them anywhere! ~Woof!~";
+	close;
 
 L_JobMage:
 	mes "[Dog]";
 	mes "Ah... I know what you're about to say.... You want to become a Wizard right?";
 	next;
 	mes "[Dog]";
-	mes "Speak with Catherine.  She'll help you out.";
+	mes "Speak with Catherine. She'll help you out.";
 	next;
 	mes "[Dog]";
 	mes "If you want to know more about the job change process for Wizards, I can be of help.";
@@ -59,17 +89,18 @@ L_JobMage:
 		mes "~GRRRR!!~.... Hey! Stop GAWKING at me for goodness sake!! ~WOOOF~";
 		emotion 6;
 		next;
+		goto L_Cont;
 
-		L_Cont:
+	L_Cont:
 		mes "[Dog]";
-		mes "My name is Maria Splodofska.  Just call me Maria.  I'm assisting candidates for the Wizard class.";
+		mes "My name is Maria Splodofska. Just call me Maria. I'm assisting candidates for the Wizard class.";
 		next;
 		mes "[Maria]";
 		mes "~Woof~ You see, the reason I became a dog was.... I was helping my boyfriend with his experiment in preperation for his Final.";
-		mes "He is studying for a Magic Degree.  Well, before I knew what happened he accidentally turned me into a dog.....";
+		mes "He is studying for a Magic Degree. Well, before I knew what happened he accidentally turned me into a dog.....";
 		next;
 		mes "[Maria]";
-		mes "~Grrrrr~ In a couple of months the chemicals should wear off and I should return to normal.  Well theoretically speaking anyhow.";
+		mes "~Grrrrr~ In a couple of months the chemicals should wear off and I should return to normal. Well theoretically speaking anyhow.";
 		next;
 		mes "[Maria]";
 		mes "Uh, anyways..... where were we?";
@@ -87,34 +118,34 @@ L_JobMage:
 
 		sM_0:
 			mes "Maria]";
-			mes "Ok then.  Let me explain the process for becoming a Wizard to you....";
+			mes "Ok then. Let me explain the process for becoming a Wizard to you....";
 			next;
 			mes "[Maria]";
-			mes "There are 3 Tests in the Wizard job change process.  The ^5555FF1st Test^000000 will require you to collect a number of ^FF5555magic items^000000.";
+			mes "There are 3 Tests in the Wizard job change process. The ^5555FF1st Test^000000 will require you to collect a number of ^FF5555magic items^000000.";
 			next;
 			mes "[Maria]";
-			mes "Catherine will give you that test.  She will ask to you collect either a variety of ^5555FFGemstones^000000, or ^5555FFElemental Ores^000000.";
+			mes "Catherine will give you that test. She will ask to you collect either a variety of ^5555FFGemstones^000000, or ^5555FFElemental Ores^000000.";
 			next;
 			mes "[Maria]";
 			mes "The ^5555FF2nd Test^000000 will be administered by the, ever gloomy Raul, in the corner over there.";
 			mes "It is a multiple choice Q&A exam about the different aspects of magic.";
 			next;
 			mes "[Maria]";
-			mes "The exam will consist of 10 questions.  If you miss any of those questions you will fail the exam.";
+			mes "The exam will consist of 10 questions. If you miss any of those questions you will fail the exam.";
 			next;
 			mes "[Maria]";
-			mes "Raul will also administer the ^5555FF3rd Test^000000.  This is the last test and it requires that defeat a series of monsters.";
+			mes "Raul will also administer the ^5555FF3rd Test^000000. This is the last test and it requires that defeat a series of monsters.";
 			mes "There will be three rooms each filled with monsters of a specific elemental attribute.";
 			next;
 			mes "[Maria]";
 			mes "It is up to you to figure what spells work best on which monsters.";
 			next;
 			mes "[Maria]";
-			mes "Well, that's all I can tell you.  Go ahead and apply now.";
+			mes "Well, that's all I can tell you. Go ahead and apply now.";
 			close;
 		sM_1:
 			mes "[Maria]";
-			mes "Oh, ok.  Go ahead and apply and do your best.";
+			mes "Oh, ok. Go ahead and apply and do your best.";
 			close;
 		sM_2:
 			mes "[Maria]";
@@ -136,29 +167,58 @@ L_JobMage:
 }
 
 
-//<=========================================== Registrar and Examiner Catherine Medichi ==============================================>\\
+//--------------------------------------------------------------
+// Catherine Medichi -> Registration/Examination
+//--------------------------------------------------------------
+
 gef_tower.gat,111,37,4	script	Catherine Medichi	68,{
 
 	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
 	if (Upper == 1)	close;
 
 	mes "[Catherine Medichi]";
-	if (BaseJob == JOB_MAGE) goto L_Mage;
-	callfunc "Wiz2_check";
+	if (BaseJob == Job_Mage) goto L_Mage;
+	if (BaseJob == Job_Wizard) goto L_Wizard;
+	if (BaseJob == Job_Novice) goto L_Novice;
+
+L_Other:
+	mes "Hmm? What brings you all the way up here? If you have nothing to do here, please leave.";
+	mes "This place is for Wizards only. =P";
+	next;
+	mes "[Catherine Medichi]";
+	mes "Try not to fall as you go back down....";
+	close;
+
+L_Novice:
+	mes "Awwww, a little Novice! How cute! This place is for Wizards only though.";
+	emotion 14;
+	next;
+	mes "[Catherine Medichi]";
+	mes "If you're interested in magic, the ^0000FFMagician's Guild^000000 is the place for you.";
+	close;
+
+L_Wizard:
+	mes "What do you need fellow Wizard? If it's nothing, please leave...";
+	next;
+	mes "[Catherine Medichi]";
+	if (Sex == Male) mes "... Of course, if your here to ask me out... (*giggles*)....";
+	if (Sex == Female) mes "If you get yourself a boyfriend, feel free to drop by and show him off. XD";
+	emotion 3;
+	close;
 
 L_Mage:
-	if (WIZ_Q == 1 && JobLevel == 50) goto sL_Job50; // fix posted by [general] on freya's bug report
+	if (WIZ_Q == 1 && JobLevel == 50) goto sL_Job50;
 	if (WIZ_Q == 2) goto L_Test2;
 	if (WIZ_Q == 3) goto L_Test3;
 	if (WIZ_Q == 4) goto L_Done;
 	if (WIZ_Q2 > 0) goto L_Test1;
 
-	mes "My name's Catherine Medichi, and I just became a Wizard.  Relax, you can call me Catherine.";
+	mes "My name's Catherine Medichi, and I just became a Wizard. Relax, you can call me Catherine.";
 	next;
 	mes "[Catherine Medichi]";
 	mes "What brings you all the way up here? You want to be a wizard, right?";
 	next;
-	menu "Of course!",M_0a, "The requirements",M_0b,"Not really",M_0End;
+	menu "Of course!",M_0a,"The requirements",M_0b,"Not really",M_0End;
 
 	M_0a:
 		mes "[Catherine Medichi]";
@@ -173,7 +233,7 @@ L_Mage:
 		mes "Alright ^ff0000"+strcharinfo(0)+"^000000, it looks like you have everything in order.";
 		next;
 		mes "[Catherine Medichi]";
-		mes "Now let me tell you about the test.  It is divided into 3 parts.";
+		mes "Now let me tell you about the test. It is divided into 3 parts.";
 		mes "- The 1st part involves the collecting of a number of magical items,";
 		mes "- the 2nd part is a Q&A exam,";
 		mes "- and the 3rd section is our favorite, the field exam.";
@@ -182,7 +242,7 @@ L_Mage:
 		mes "People with a job lvl of 50 can skip the first test. They have already worked hard enough.";
 		next;
 		mes "[Catherine Medichi]";
-		mes "Now for the first part of the test.  This requires the gathering of a number of magic items.";
+		mes "Now for the first part of the test. This requires the gathering of a number of magic items.";
 		next;
 		set WIZ_Q2, rand(1,2);
 
@@ -202,14 +262,14 @@ L_Mage:
 			mes "5 ^ff0000Red Bloods^000000,";
 			mes "and 5 ^ddcc11Wind of Verdures^000000.";
 
-		L_Cont0:
+	L_Cont0:
 		next;
 		mes "[Catherine Medichi]";
 		mes "This test isn't THAT hard, so get going!";
 		next;
 		mes "[Catherine Medichi]";
 		mes "Good luck! I'll be waiting!";
-		set WIZ_Q, 1;
+		set WIZ_Q,1;
 		close;
 
 		sL_JobLvl:
@@ -236,8 +296,8 @@ L_Mage:
 		mes "Anyone with a job level less then that wouldn't have enough magic power to become a Wizard.";
 		next;
 		mes "[Catherine Medichi]";
-		mes "Then there is the matter of the Wizard's Test.  The test is made up of 3 sections.";
-		mes "Each section focuses on different asspects of Wizardry.";
+		mes "Then there is the matter of the Wizard's Test. The test is made up of 3 sections.";
+		mes "Each section focuses on different asspects of wizardry.";
 		next;
 		mes "[Catherine Medichi]";
 		mes "Once you pass the test you'll be a Wizard just like me. Yay!";
@@ -403,8 +463,8 @@ L_Mage:
 		sL_Failed3:
 			mes "Why did you come out during the test? I never thought you were that weak...";
 			next;
-			if (sex==1) goto ssL_M3;
-			if (sex==0) goto ssL_F3;
+			if (Sex == Male) goto ssL_M3;
+			if (Sex == Female) goto ssL_F3;
 
 			ssL_M3:
 				mes "[Catherine Medichi]";
@@ -430,8 +490,9 @@ L_Mage:
 		mes "[Catherine Medichi]";
 		mes "Ack, I'm wasting time, I better change you!";
 		next;
-		callfunc "F_JobChange",JOB_WIZARD;
-		callfunc "F_ClearJobVariables";		// Clears all job variables for the current player
+
+		callfunc "F_JobChange",Job_Wizard;
+		callfunc "F_ClearJobVariables";
 
 		mes "[Catherine Medichi]";
 		mes "Now you're a wizard! Act responsibly!";
@@ -459,13 +520,19 @@ L_Mage:
 }
 
 
-//<================================================ Examiner: Raul Expagarus ==================================================>\\
+//--------------------------------------------------------------
+// Raul Expagarus -> Examination
+//--------------------------------------------------------------
+
 gef_tower.gat,102,24,3	script	Raul Expagarus	735,{
+
 	mes "[Raul Expagarus]";
-	if (BaseJob == JOB_MAGE) goto L_Mage;
-	if (BaseJob == JOB_WIZARD) goto L_Wizard;
-	if (BaseClass == JOB_ACOLYTE) goto L_Holy;
-	if (BaseJob == JOB_NOVICE) goto L_Novice;
+	if (BaseJob == Job_Mage) goto L_Mage;
+	if (BaseJob == Job_Wizard) goto L_Wizard;
+	if (BaseClass == Job_Acolyte) goto L_Holy;
+	if (BaseJob == Job_Novice) goto L_Novice;
+	goto L_Other;
+
 L_Other:
 	mes "Ugh, I don't feel good....I feel like I'm trapped in ice........";
 	next;
@@ -473,12 +540,14 @@ L_Other:
 	mes "Who're you?! Leave!";
 	emotion 0;
 	close;
+
 L_Novice:
 	mes "What's a little kid like you doing here? Get out!!";
 	emotion 0;
 	next;
 	warp "geffen.gat",120,110;
 	close;
+
 L_Holy:
 	mes "Leave holy ones!";
 	mes "Magic is considered to be a power that is not from God.......";
@@ -486,12 +555,13 @@ L_Holy:
 	mes "[Raul Expagarus]";
 	mes "Besides, I'm not feeling too good.  So Leave now!";
 	close;
+
 L_Wizard:
 	mes "Cough Cough, what can I do for you? Hmmm... you're a magic user too...";
 	next;
 	mes "[Raul Expagarus]";
-	if (sex==1) goto L_M;
-	if (sex==0) goto L_F;
+	if (Sex == Male) goto L_M;
+	if (Sex == Female) goto L_F;
 
 	L_M:
 		mes "If you're not responsible, you might accidently learn useless spells.";

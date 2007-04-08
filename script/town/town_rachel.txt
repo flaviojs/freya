@@ -618,3 +618,44 @@ ra_temple.gat,116,174,3	script	Bishop Nema	920,{
 	mes "Oh, what do I do..";
 	close;
 }
+
+
+//--------------------------------------------------------------
+// Rachel Sanctuary Entrance
+//--------------------------------------------------------------
+
+// Rachel Temple (Official entrance, quest missing/not working, so disabled for now)
+//ra_temple.gat,119,179,3	script	#door1	45,2,2,{
+//
+//OnTouch:
+//	mes "** The door is locked. **";
+//	next;
+//	menu "Kick it",-,"Take out your weapon",L_weap;
+//
+//	emotion 23;
+//	mes "[Bishop Nema]";
+//	mes "Please stop!";
+//	close;
+//	end;
+//	
+//	L_weap:
+//		emotion 23;
+//		close;
+//}
+
+ra_temin.gat,276,326,0	script	Statue#Rachel	111,{
+
+	mes "Welcome to the temporary Rachel";
+	mes "Sanctuary entrance npc.";
+	next;
+	mes "Do you want to enter Rachel Sanctuary?";
+	next;
+	menu "Yes",Yes,"No",No;
+
+	Yes:
+		close2;
+		warp "ra_san01.gat",139,14;
+		end;
+	No:
+	close;
+}

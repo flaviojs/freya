@@ -1,33 +1,36 @@
-//===== Freya Script =========================================
-//= Sage Job Quest
-//===== By: ==================================================
-//= jAthena/Unknown/Darkchild/Freya
-//===== Current Version: =====================================
-//= 2.2
-//===== Compatible With: =====================================
-//= Freya
-//===== Description: =========================================
-//= Sage job quest based off of official servers
-//===== Additional Comments: =================================
-//= Script mostly based on translated jA script
-//= Written test questions/answers weren't translated 100% corectly
-//= So a lot of those are based upon mRO site and my own info
-//= IF you by excident have (or can get) screenshots of these questions
-//= Then PLEASE send them to Darkchild
-//= 1.3 Baby class Support added [Lupus] 1.5 Fixed possible EXP abuse [Lupus]
-//= 1.6 Added a func which prevent advanced classes passing
-//= 2nd Job Quests again. It also guides adv classes where to go. [Lupus]
-//= 1.7 Fixed tuition fee. Fixed some answers, names & typos, added missing labels [Lupus]
-//= 1.7a Moved JFunc back in the main file, fixed typos [Lupus]
-//= 2.0 Changed numbers to constants. [Vicious]
-//= 2.1 Fixed double warp [KarLaeda]
-//= 2.2 Reconverted from eAthena to Freya [Tsuyuki]
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Sage Job Change Quest	Author: A Lot of People
+//--------------------------------------------------------------
+// Revision History: v2.1
+//--------------------------------------------------------------
+//	1.0 First version [Athena]
+//	1.1 Translated into English [Darkchild]
+//	1.2 Baby class Support added [Lupus]
+//	1.3 Fixed possible EXP abuse [Lupus]
+//	1.4 Added a func which prevent advanced classes passing
+//	1.5 Added a function to properly direct Transcendent job changing [Lupus]
+//	1.6 Fixed tuition fee. Fixed some answers, names & typos, added missing labels [Lupus]
+//	1.7 Moved JFunc back in the main file, fixed typos [Lupus]
+//	1.8 Changed numbers to constants [Vicious]
+//	1.9 Fixed double warp [KarLaeda]
+//	2.0 Reconverted  to Freya [Tsuyuki]
+//	2.1 Improved formatting [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: N/A
+//--------------------------------------------------------------
 
 
-//==================================
+//--------------------------------------------------------------
 //Sage Castle
-//==================================
+//--------------------------------------------------------------
+
 yuno_in02.gat,38,61,4	script	Magic Academy Headmaster 	743,{
 
 	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
@@ -136,8 +139,10 @@ L_Menu3_2:
 	close;
 		
 	LCHANGE:
-	callfunc "F_JobChange",JOB_SAGE;
+
+	callfunc "F_JobChange",Job_Sage;
 	callfunc "F_ClearJobVariables";
+
 	mes "[Keiron]";
 	mes "Congratulations!";
 	mes "You're a Sage now.";
@@ -159,10 +164,13 @@ L_Menu3_3:
 	close;
 }
 
-//===============================
+
+//--------------------------------------------------------------
 //Biotech Lab
-//===============================
+//--------------------------------------------------------------
+
 yuno_in03.gat,244,31,3	script	Physics Professor	120,{
+
 	if(BaseJob == Job_Sage) goto L_Menu3_2;
 	if(BaseJob != Job_Mage) goto L_Menu1_1;
 	if(SAGE_Q == 11) goto L_Menu3_1;
@@ -569,11 +577,13 @@ L_Menu3_2:
 	close;
 }
 
-//==================================
+
+//--------------------------------------------------------------
 //Monster Museum
-//==================================
+//--------------------------------------------------------------
 
 yuno_in03.gat,32,102,0	script	Biology Professor	755,{
+
 	if(BaseJob == Job_Sage) goto L_Menu5_4;
 	if(BaseJob != Job_Mage) goto L_Menu1_1;
 	if(SAGE_Q == 11) goto L_Menu5_3;
@@ -624,15 +634,15 @@ L_Menu2_1:
 		mes "My class isn't a cakewalk by any means.";
 		next;
 		goto L_Menu2_3;
+//--------------------------------------------------------------
 	L_Menu2_2:
-//==================================
 //If you respond negatively
 		mes "[Lucias]";
 		mes "You might be at a disadvantage.";
 		mes "My coursework assumes a lot of background knowledge.";
 		mes "My class wasn't designed to be a cakewalk...";
 		next;
-//==================================
+//--------------------------------------------------------------
 L_Menu2_3:
 	mes "[Lucias]";
 	mes "So, shall we get started?";
@@ -652,8 +662,7 @@ L_Menu2_3:
 		goto L_Menu2_6;
 	L_Menu2_4:
 		set SAGE_Q2,2;
-//==================================
-//mes–¢‰ñŽû
+//--------------------------------------------------------------
 		mes "^3051FD5x Clam Flesh^000000";
 		mes "^3051FD5x Nippers^000000";
 		mes "^3051FD5x Heart of Mermaid^000000";
@@ -664,7 +673,7 @@ L_Menu2_3:
 		mes "^3051FD5x Single Cells^000000";
 		mes "^3051FD5x Tentacles^000000";
 		mes "^3051FD5x Fish Tails^000000";
-//==================================
+//--------------------------------------------------------------
 		next;
 	L_Menu2_6:
 		mes "[Lucias]";
@@ -704,12 +713,12 @@ L_Menu3_4:
 	mes "Do you know what it is?";
 	next;
 		menu "Water element affinity",L_Menu3_5,"They're fish and shells",L_Menu3_6,"They were quite active",-,"They're monsters",-;
-//==================================
+//--------------------------------------------------------------
 		mes "[Lucias]";
 		mes "...I'm disappointed in you.";
 		mes "The correct answer is that all of the monsters have water element affinity.";
 		mes "Monsters that live in an aquatic environment have evolved bodies adapted to that environment.";
-//==================================
+//--------------------------------------------------------------
 		next;
 		goto L_Menu3_6;
 	L_Menu3_5:
@@ -724,14 +733,13 @@ L_Menu3_4:
 		mes "Now, which type of magic do you think would be most effective against them?";
 		next;
 		menu "Lightning Bolt",L_Menu3_7,"Firebolt",-,"Thunderstorm",L_Menu3_8,"Frost Nova",-;
-//==================================
-//mes–¢‰ñŽû
+//--------------------------------------------------------------
 		mes "[Lucias]";
 		mes "That's not correct.";
 		mes "You need to use magic like Lightning Bolt or Thunderstorm.";
 		mes "Check the elemental affinity matrix again.";
 		next;
-//==================================
+//--------------------------------------------------------------
 		goto L_Menu3_9;
 	L_Menu3_7:
 		mes "[Lucias]";
@@ -767,8 +775,7 @@ L_Menu3_4:
 		goto L_Menu2_6;
 	L_Menu3_10:
 		set SAGE_Q2,5;
-//==================================
-//mes–¢‰ñŽû
+//--------------------------------------------------------------
 		mes "^3051FD5x Moth Dust^000000";
 		mes "^3051FD5x Snail's Shell^000000";
 		mes "^3051FD5x Horn^000000";
@@ -779,7 +786,7 @@ L_Menu3_4:
 		mes "^3051FD5x Mantis Leg^000000";
 		mes "^3051FD5x Worm Peeling^000000";
 		mes "^3051FD5x Rainbow Shell^000000";
-//==================================
+//--------------------------------------------------------------
 		next;
 		goto L_Menu2_6;
 L_Menu4_1:
@@ -938,9 +945,10 @@ L_Menu5_4:
 	close;
 }
 
-//=================================
-//Academy Interior
-//=================================
+
+//--------------------------------------------------------------
+// Academy Interior
+//--------------------------------------------------------------
 
 yuno_in03.gat,154,35,4	script	Academy Staff	742,{
 
@@ -1140,7 +1148,7 @@ L_Menu5_1:
 		mes "Please do your best to collect them.";
 		close;
 	L_Menu5_3:
-//==================================
+//--------------------------------------------------------------
 		if(Zeny < 30000) goto L_Menu5_8;
 		delitem 916,50;
 		delitem 914,50;
@@ -1197,7 +1205,7 @@ L_Menu5_1:
 		mes "Your class level is too low.";
 		mes "Complete some more training and return here.";
 		close;
-//==================================
+//--------------------------------------------------------------
 L_Menu6_1:
 	mes "[Mathias]";
 	mes "Hmmm?  Did you forget what you need to do next?";
@@ -1318,9 +1326,6 @@ L_Menu3_1:
 	mes "Hmmm...";
 	mes "Looking good.";
 	next;
-
-//It's not clear how the script decides
-
 	if(sagecheck >= 12) goto L_Menu3_2;
 	set SAGE_Q,8;
 	mes "[Hermes]";
@@ -1485,9 +1490,9 @@ L_Menu1_2:
 		if (@sage_test1 == 1) goto L_Test2_1;
 		if (@sage_test1 == 2) goto L_Test3_1;
 
-//==================================
-//Written Test: Route 1.
-//==================================
+//--------------------------------------------------------------
+// Written Test: Route 1
+//--------------------------------------------------------------
 			mes "1. Which one isn't sold in Morocc's jewel shop?";
 			next;
 			menu "Topaz",L_Test1_1,"Garnet",-,"Diamond",L_Test1_1,"Sapphire",L_Test1_1;
@@ -1591,9 +1596,9 @@ L_Menu1_2:
 			menu "Igg Drasil",-,"Idrasil",L_Menu2_3,"Master",L_Menu2_3,"Old Tree",L_Menu2_3;
 			set @sage_test2,@sage_test2+5;
 			goto L_Menu2_3;
-	//==================================
-	//Written Test: Route 2.
-	//==================================
+//--------------------------------------------------------------
+// Written Test: Route 2
+//--------------------------------------------------------------
 		L_Test2_1:
 			mes "1. Which isn't sold in Geffen's magic shop?";
 			next;
@@ -1632,14 +1637,14 @@ L_Menu1_2:
 		L_Test2_8:
 			mes "8. Who isn't involved in the Blacksmith class change?";
 			next;
-// =========================
+//--------------------------------------------------------------
 // Acording To mRO Site And Blacksmith Script the following ppl looking like ppl listed here are:
 // - Baisulitst - looks like some1 listed by mRO
 // - Wickebine - mRO has him as option listed
 // - Gromgast - mRO has him as option listed
 // - Mitmayer - translator has him listed as option
-// == Conclusion == I took the following:
-// =========================
+// -> Conclusion -> I took the following:
+//--------------------------------------------------------------
 			menu "Baisulitst",L_Test2_9,"Wickebine",L_Test2_9,"Barkdale",-,"Mitmayer",L_Test2_9;
 			set @sage_test2,@sage_test2+5;
 		L_Test2_9:
@@ -1705,9 +1710,9 @@ L_Menu1_2:
 			menu "Envertacon",L_Menu2_3,"Emperium",-,"Enbera",L_Menu2_3,"Phracon",L_Menu2_3;
 			set @sage_test2,@sage_test2+5;
 			goto L_Menu2_3;
-//==================================
-//Written Test: Route 3.
-//==================================
+//--------------------------------------------------------------
+// Written Test: Route 3
+//--------------------------------------------------------------
 		L_Test3_1:
 			mes "1.Which of these items isn't sold at Prontera's knicknack shop?";
 			next;
@@ -1746,9 +1751,9 @@ L_Menu1_2:
 		L_Test3_8:
 			mes "8. Which isn't involved in the Knight class change?";
 			next;
-// =========================
+//--------------------------------------------------------------
 // Acording To mRO Site And Knight Script the following ppl looking like ppl listed here
-// =========================
+//--------------------------------------------------------------
 			menu "James Syracuse",L_Test3_9,"Thomas Bishop",-,"Amy Veattris",L_Test3_9,"Edmond Groster",L_Test3_9;
 			set @sage_test2,@sage_test2+5;
 		L_Test3_9:
@@ -1895,9 +1900,10 @@ L_Menu3_4:
 	close;
 }
 
-//==================================
-//Skill Test Room
-//==================================
+
+//--------------------------------------------------------------
+// Skill Test Room
+//--------------------------------------------------------------
 
 job_sage.gat,50,165,4	script	Skill Test Coordinator::jobsage_wroom	700,{
 	mes "[Skill Test Coordinator]";
@@ -1930,7 +1936,7 @@ OnEnable:
 	end;
 }
 
-//======== Test Step 1
+// Test Step 1
 job_sage.gat,1,1,1	script	jobsage_1st	-1,{
 	end;
 OnStart:
@@ -2011,7 +2017,7 @@ OnTimer184000:
 	end;
 }
 
-//======== Test Step 2
+// Test Step 2
 job_sage.gat,1,1,1	script	jobsage_2nd	-1,{
 	end;
 OnStart:
@@ -2099,7 +2105,7 @@ OnTimer184000:
 }
 
 
-//======== Test Step 3
+// Test Step 3
 job_sage.gat,1,1,1	script	jobsage_3rd	-1,{
 	end;
 OnStart:
@@ -2153,7 +2159,7 @@ OnTimer64000:
 	end;
 }
 
-//======== Successful
+// Successful
 job_sage.gat,1,7,1	script	jobsage_success	66,{
 OnSuccess:
 	killmonster "job_sage.gat","All";

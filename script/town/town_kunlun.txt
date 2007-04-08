@@ -2520,7 +2520,7 @@ gon_in.gat,18,27,5	script	Madam#gnbs	771,{
 		close;
 	}
 	mes "[SangHwaYeun]";
-	if (sex == 0) {
+	if (Sex == Female) {
 		mes "Hoho, he's upstairs.";
 		mes "You're such a pretty lady.";
 		mes "Don't be too fascinated by";
@@ -3406,7 +3406,7 @@ geffen_in.gat,106,106,7	script	Girl#gnbs2	716,{
 		close;
 	} else if (b_sword == 24 || b_sword == 25 || b_sword == 26) {
 		mes "Ahh...ahh....";
-		if (sex == 0) {
+		if (Sex == Female) {
 			mes "It's ..you.. pretty...sister..";
 		} else {
 			mes "It's ..you.. handsome...brother..";
@@ -3446,7 +3446,7 @@ geffen_in.gat,106,106,7	script	Girl#gnbs2	716,{
 		close;
 	} else if (b_sword == 27) {
 		mes "uh...umm?";
-		if (sex == 0) {
+		if (Sex == Female) {
 			mes "Ah....It's you pretty sister...";
 		} else {
 			mes "Ah....It's you handsome brother...";
@@ -3476,7 +3476,7 @@ geffen_in.gat,106,106,7	script	Girl#gnbs2	716,{
 		close;
 	} else {
 		mes "ehehe...";
-		if (sex == 0) {
+		if (Sex == Female) {
 			mes "Thank you my pretty sister.";
 		} else {
 			mes "Thank you my handsome brother.";

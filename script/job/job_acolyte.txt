@@ -255,7 +255,7 @@ L_Start:
 moc_fild07.gat,36,354,4	script	Mother Marthilda	79,{
 
 	mes "[Mother Marthilda]";
-	if (BaseJob == Job_Acolyte || BaseJob == JOB_PRIEST) callfunc "F_MotherMart";
+	if (BaseJob == Job_Acolyte || BaseJob == Job_Priest) callfunc "F_MotherMart";
 	if (BaseJob == JOB_NOVICE) goto L_Novice;
 	goto L_Other;
 
@@ -317,8 +317,8 @@ L_Start:
 prt_fild00.gat,208,218,6	script	Father Yosuke	120,{
 
 	mes "[Father Yosuke]";
-	if (BaseJob == Job_Acolyte || BaseJob == JOB_PRIEST) callfunc "F_FatherYos";
-	if (BaseJob == JOB_NOVICE) goto L_Novice;
+	if (BaseJob == Job_Acolyte || BaseJob == Job_Priest) callfunc "F_FatherYos";
+	if (BaseJob == Job_Novice) goto L_Novice;
 
 L_Other:
 	mes "What brings you to this place? Try not to bother me okay?";

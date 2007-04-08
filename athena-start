@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/sh
 # Freya Phaeton starting script by rowla
 
 # chkconfig: 345 99 01
@@ -6,9 +6,9 @@
 
 PATH=./:$PATH
 
-L_SRV=./bin/login-server
-C_SRV=./bin/char-server
-M_SRV=./bin/map-server
+L_SRV=./login-server
+C_SRV=./char-server
+M_SRV=./map-server
 L_SRV_C=./conf/login_athena.conf
 C_SRV_C=./conf/char_athena.conf
 C_SRV_C2=./conf/inter_athena.conf
@@ -134,7 +134,7 @@ check_files() {
 
 #	more << EOF
 echo "Check done."
-echo "Looks good, have a nice Freya!"
+echo "Looks good, have a nice Phaeton!"
 #EOF
 }
 

@@ -608,7 +608,7 @@ L_JobFix:
 		set tu_merchant, 1;
 		if(getskilllv(36) < 4){
 			mes "[Guarnien]";
-			if(Sex == 1){
+			if(Sex == Male){
 				mes "Atta boy~!";
 			} else {
 				mes "Atta girl~!";

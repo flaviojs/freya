@@ -184,7 +184,7 @@ lhz_in02.gat,110,283,5	script	Cool Event Manager	853,{
 // Saera (Secretary), contains GM menu
 lhz_in02.gat,36,274,3	script	Cool Event Staff#02	831,{
 
-	callfunc "F_ClearGarbageVariables";				// Clear outdated, unused variables
+	callfunc "F_ClearGarbageVariables";
 	if($dts == 0){
 		set $dts,$dts|(1<<0);				// Sets NPCs to election mode if first time running
 		set $dts,$dts|(1<<3);

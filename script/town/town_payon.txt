@@ -130,7 +130,7 @@ payon_in01.gat,180,7,2	script	Waitress	90,{
 	mes "Where can I find the right person, a hot and sexy hunk who can take me away from here?";
 	next;
 	mes "[Pub Lady]";
-	if (Sex != 1) goto PBL_Else1;
+	if (Sex == Female) goto PBL_Else1;
 		mes "Um, hey mister, are you listening?";
 		goto PBL_Next1;
 	PBL_Else1:
@@ -258,7 +258,7 @@ payon.gat,249,156,1	script	Woman	90,{
 	next;
 	mes "[Woman]";
 	mes "To be honest, things are getting tough becuase all of those monsters. *Sigh...*";
-	if (Sex != 1) goto W2_Fem;
+	if (Sex == Female) goto W2_Fem;
 		mes "[Woman]";
 		mes "Whoa~! I just noticed those arms of you look pretty solid.";
 		mes "You look like a pretty strong guy.";
@@ -322,7 +322,7 @@ payon.gat,246,158,5	script	Woman	90,{
 	mes "I guess she's just too excited about what the fortune teller told here.";
 	next;
 	mes "[Jim's Mother]";
-	if (Sex != 1) goto WPFem1;
+	if (Sex == Female) goto WPFem1;
 		mes "Ooh...!";
 		mes "You've got such broad shoulders!";
 		mes "Will you go out with me?";

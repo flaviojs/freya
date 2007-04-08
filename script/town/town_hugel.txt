@@ -19,9 +19,9 @@
 //--------------------------------------------------------------
 
 
-//============================================================
+//--------------------------------------------------------------
 // Hugel Field NPCs ->
-//============================================================
+//--------------------------------------------------------------
 
 hu_fild06.gat,190,367,3	script	Torpy's Mom	701,{
 
@@ -57,9 +57,10 @@ hu_fild06.gat,34,123,3	script	Postell Schuwell	97,{
 	close;
 }
 
-//============================================================
+
+//--------------------------------------------------------------
 // Hugel Outdoor Town NPCs ->
-//============================================================
+//--------------------------------------------------------------
 
 hugel.gat,107,67,3	script	Torpy	706,{
 
@@ -344,9 +345,10 @@ hugel.gat,175,115,5	script	Marius	897,{
 	close;
 }
 
-//============================================================
+
+//--------------------------------------------------------------
 // Hugel Indoor Town NPCs ->
-//============================================================
+//--------------------------------------------------------------
 
 hu_in01.gat,310,380,5	script	Girl	891,{
 
@@ -449,9 +451,10 @@ hu_in01.gat,377,106,5	script	Shaomei	892,{
 	close;
 }
 
-//============================================================
+
+//--------------------------------------------------------------
 // Party Supplies Seller (Firecracker NPC)
-//============================================================
+//--------------------------------------------------------------
 
 hu_in01.gat,23,311,4	script	Party Supplies Shop	898,{
 
@@ -489,9 +492,10 @@ hu_in01.gat,23,311,4	script	Party Supplies Shop	898,{
 		close;
 }
 
-//============================================================
+
+//--------------------------------------------------------------
 // Hugel -> Odin Shrine Transporter - Boatman
-//============================================================
+//--------------------------------------------------------------
 
 // Hugel -> Odin Shrine - Boatman #1
 // Most of the dialogue is official
@@ -562,9 +566,10 @@ L_No:
 	close;
 }
 
-//============================================================
+
+//--------------------------------------------------------------
 // Fish Cake Soup Mini-Quest (Partially Complete) [Tsuyuki]
-//============================================================
+//--------------------------------------------------------------
 
 // Note: If you lose the Fish Cake Soup, you're done..
 // Unless you can get a new one from someone else (As per official servers).
@@ -903,9 +908,10 @@ hugel.gat,87,139,3	script	Maewan	86,{
 		close;
 }
 
-//============================================================
+
+//--------------------------------------------------------------
 // Shede Collection Mini-Quest (Partially Complete)
-//============================================================
+//--------------------------------------------------------------
 
 // Missing Moks Bug side part
 // Info: It'll randomly make you do either
@@ -1265,9 +1271,10 @@ hu_fild06.gat,155,309,1	script	Moks Bugs#2	1017,{
 
 // Missing Bugs #3-5
 
-//============================================================
+
+//--------------------------------------------------------------
 // Monster Races System (Incomplete)
-//============================================================
+//--------------------------------------------------------------
 
 // Eckar Erenes (Incomplete)
 hugel.gat,62,69,1	script	Eckar Erenes	86,{
@@ -1492,9 +1499,10 @@ hugel.gat,58,72,5	script	Eckar Ellebird	86,{
 		close;
 }
 
-//============================================================
+
+//--------------------------------------------------------------
 // Prize Medal Exchanger (Incomplete)
-//============================================================
+//--------------------------------------------------------------
 
 hugel.gat,71,83,3	script	Wayne	900,{
 
@@ -1676,9 +1684,10 @@ hugel.gat,71,83,3	script	Wayne	900,{
 		close;
 }
 
-//============================================================
+
+//--------------------------------------------------------------
 // Odin Excavation Quest - Incomplete ->
-//============================================================
+//--------------------------------------------------------------
 
 hugel.gat,91,152,3	script	Sign	837,{
 
@@ -1861,6 +1870,98 @@ hu_in01.gat,14,11,4	script	Laura	70,{
 	end;
 }
 
-//============================================================
+
+//--------------------------------------------------------------
 // Bingo Game System - Incomplete (Not started, to-do)
-//============================================================
+//--------------------------------------------------------------
+
+// To-Do
+
+
+//--------------------------------------------------------------
+// Abyss Lake Entrance
+//--------------------------------------------------------------
+
+
+hu_fild05.gat,168,302,0	script	Pillar	111,{
+
+	mes "[Ancient Voice]";
+	mes "So, you wish access to the Abyss Cave?";
+	mes "You have to bring me then 1 Dragon Canine, 1 Dragon Tail and 1 Dragon Scale";
+	mes "in order to grant you access to the island";
+	next;
+	mes "[Ancient Voice]";
+	mes "Do you wish to go?";
+	menu "Yes",L_Check,"No",end;
+
+		L_Check:
+			mes "[Ancient Voice]";
+			mes "Good, let me check your items first";
+			next;
+			if ((countitem(1035) == 0) || (countitem(1036) == 0) || (countitem(1037) == 0)) goto L_No_Items;
+			goto L_Grant;
+
+			L_No_Items:
+				mes "[Ancient Voice]";
+				mes "You dont have enough items";
+				close;
+		L_Grant:
+			mes "[Ancient Voice]";
+			mes "Good, I hereby you access then";
+			close2;
+			delitem 1035,1;
+			delitem 1036,1;
+			delitem 1037,1;
+			enablenpc "warpabyss";
+			initnpctimer;
+			warp "hu_fild05",181,197;
+			end;
+
+OnTimer10000:
+	disablenpc "warpabyss";
+	stopnpctimer;
+	setnpctimer 0;
+	end;
+
+OnInit:
+	disablenpc "warpabyss";
+	end;
+}
+
+
+hu_fild05.gat,171,212,0 script Pillar 111,{
+
+	mes "[Pillar]";
+	mes "Leave the island?";
+	menu "Yes",L_1,"No",L_Close;
+
+	L_1:
+		close2;
+		warp "hu_fild05.gat",168,301;
+		end;
+
+	L_Close:
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Kiel Hyre Dungeon Entrance
+//--------------------------------------------------------------
+
+yuno_fild08.gat,67,169,4	script	Grave#kh	111,1,1,{
+
+	mes "You examine the grave and find a switch!";
+	mes "Do you want to press it?";
+	next;
+	menu "Yes.",-,"No.",L_End;
+
+	mes "Suddenly the grave opens and reveals a staircase.";
+	close2;
+	warp "kh_dun01",4,229;
+	end;
+
+	L_End:
+	mes "You decided not to press it.";
+	close;
+}

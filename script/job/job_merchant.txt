@@ -317,8 +317,8 @@ L_Back:
 		close;
 
 L_MakeMerc:
-	if (Sex == 1) mes "Mr. ^0000cc" + strcharinfo(0) + "^000000.....";
-	if (Sex == 0) mes "Ms. ^0000cc" + strcharinfo(0) + "^000000.......";
+	if (Sex == Male) mes "Mr. ^0000cc" + strcharinfo(0) + "^000000.....";
+	if (Sex == Female) mes "Ms. ^0000cc" + strcharinfo(0) + "^000000.......";
 	next;
 	mes "[Chief Mahnsoo]";
 	if (SkillPoint > 0) mes "You need to use up all of your skill points before I can make you a Merchant.";
@@ -699,7 +699,7 @@ function	script	F_MercKafra	{
 		mes "[Kafra Employee]";
 		mes "Thanks so much for coming all this way to deliver the product to me. Take care now. Bye bye.";
 		emotion 15;
-		cutin "kafra_03",255;
+		cutin "kafra_01",255;
 		close;
 
 		L_Msg:
@@ -718,31 +718,31 @@ function	script	F_MercKafra	{
 			R0:
 
 				getitem 513,3;//Items: Banana,
-				cutin "kafra_03",255;
+				cutin "kafra_01",255;
 				close;
 
 			R1:
 				getitem 512,3;//Items: Apple,
-				cutin "kafra_03",255;
+				cutin "kafra_01",255;
 				close;
 
 L_NoProd:
 	mes "...I thought what we ordered was OVERSIZED and HEAVY... But... You seem to carry it on without any difficulty...";
 	emotion 1;
-	cutin "kafra_03",255;
+	cutin "kafra_01",255;
 	close;
 
 L_WrongProd:
 	mes "..? Excuse me! I think you gave me the wrong item. Our order should have the Serial Number 3318702 or 3543625...";
 	emotion 4;
 	set job_merchant_q3,2;
-	cutin "kafra_03",255;
+	cutin "kafra_01",255;
 	close;
 
 L_WrongDest:
 	mes "..? Excuse me... I think you have the wrong person... Our order should have the Serial Number 3318702 or 3543625...";
 	emotion 4;
-	cutin "kafra_03",255;
+	cutin "kafra_01",255;
 	close;
 }
 

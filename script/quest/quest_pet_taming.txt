@@ -649,11 +649,16 @@ ExEnd:
 niflheim.gat,184,199,5	script	Little Girl#02	793,{
 
 	mes "[Sairin]";
-	if(MISC_QUEST & 256) {
+	if(MISC_QUEST & 256) goto L_Blah01;
+	if (@niflheimlost == 2) goto L_Blah02;
+	if (@niflheimlost == 1) goto M_YES;
+	goto L_Blah03;
+
+	L_Blah01:
 		mes "Thanks again!";
 		close;
-	}
-	if (@niflheimlost == 2) {
+
+	L_Blah02:
 		mes "You found him?";
 		mes "Oh thank you!";
 		mes "Please, take this as a token of my appreciation.";
@@ -661,19 +666,22 @@ niflheim.gat,184,199,5	script	Little Girl#02	793,{
 		set MISC_QUEST,MISC_QUEST | 256;
 		set @niflheimlost,0;
 		close;
-	}
-	if (@niflheimlost == 1) {
 
 	M_YES:
 		set @niflheimlost,1;
 		mes "Please find him and tell him where I am! I saw him last in Niflheim Field, the first one...";
 		close;
-	}
+
+L_Blah03:
 	mes "Sir, will you please help me?";
-	if (BaseJob == JOB_NOVICE) {
+	if (BaseJob == JOB_NOVICE) goto L_Novice;
+	goto L_Blah04;
+
+	L_Novice:
 		mes "Oh... you are lost, too...";
 		close;
-	}
+
+L_Blah04:
 	next;
 	menu "Yes",-, "No",M_NO;
 
@@ -697,15 +705,18 @@ M_NO:
 
 nif_fild01.gat,213,268,5	script	Little Boy	797,{
 
-	if (MISC_QUEST & 256) {
-L_DONE:
+	if (MISC_QUEST & 256) goto L_DONE;
+	if (@niflheimlost == 2) goto L_PART2;
+	if (@niflheimlost == 1) goto L_Blah01;
+	goto L_Blah02;
+
+	L_DONE:
 		set @niflheimlost,2;
 		mes "[Marius]";
 		mes "Thank you for helping us!";
 		close;
-	}
-	if (@niflheimlost == 2) goto L_PART2;
-	if (@niflheimlost == 1) {
+
+	L_Blah01:
 		mes "[Marius]";
 		mes "Who are you?";
 		mes "...";
@@ -719,8 +730,9 @@ L_DONE:
 		mes "I am a little slow, and its very important that she knows.";
 		next;
 		menu "Yes",L_DONE, "No",-;
-		close;	
-	}
+		close;
+
+L_Blah02:
 	mes "[Marius]";
 	mes "Sairin... where are you?";
 	close;

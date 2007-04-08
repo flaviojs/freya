@@ -602,7 +602,7 @@ else if(god_eremes > 6 && god_eremes < 12)
 else if(god_eremes < 7)
 {
 	mes "[Librarian Jekan]";
-	if(Sex)
+	if (Sex == Male)
 		mes "I'm sorry sir,";
 	else
 		mes "I'm sorry ma'am,";

@@ -1,41 +1,152 @@
-//===== Freya Script =========================================
-//= Priest Quest
-//===== By: ==================================================
-//= Translated By: Pgro Team (OwNaGe)(Aegis)
-//= Converted by: kobra_k88.
-//= Further bugfixed and tested by Lupus
-//===== Current Version: =====================================
-//= 1.6
-//===== Compatible With: =====================================
-//= Freya
-//===== Description: =========================================
-//= Official RO Priest Quest converted from Aegis script.
-//===== Additional Comments: =================================
-//= Fully working.  Changed the way Priests enter the test room to help Acos.
-//= Must use this with the included Acolyte quest to work properely.
-//= v1.1 Rollback from the wrong Kashy's fix
-//= v1.2 use BaseJob and correct some typos [Yor]
-//= 1.3 Added Baby Class support, fixed 3 wrong constants bugs [Lupus]
-//= 1.5 Fixed possible EXP abuse [Lupus]
-//= 1.6 Added a func which prevent advanced classes passing
-//= 2nd Job Quests again. It also guides adv classes where
-//= to go. [Lupus]
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Priest Job Change Quest	Author: A Lot of People
+//--------------------------------------------------------------
+// Revision History: v1.8
+//--------------------------------------------------------------
+//	1.0 First version [Aegis]
+//	1.1 Translated into English [Pgro Team/Aegis]
+//	1.2 Converted to Athena format [kobra_k88]
+//	1.3 Changed the way Priests enter the test room to help Acos [kobra_k88]
+//	1.4 use BaseJob and correct some typos [Yor]
+//	1.5 Added Baby Class support, fixed 3 wrong constants bugs [Lupus]
+//	1.6 Fixed possible EXP abuse [Lupus]
+//	1.7 Added a function to properly direct Transcendent job changing [Lupus]
+//	1.8 Improved formatting [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: N/A
+//--------------------------------------------------------------
 
 
-//*****************************************************************************************************************************\\
-//============================================ Father Thomas: Job changer, Test 1 =============================================\\
-//*****************************************************************************************************************************\\
+//--------------------------------------------------------------
+// Father Thomas -> Job Changer/Test #1
+//--------------------------------------------------------------
+
 prt_church.gat,16,41,4	script	Father Thomas	60,{
 
 	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
 	if (Upper == 1)	close;
 
 	mes "[Father Thomas]";
-	if (BaseJob == JOB_ACOLYTE) goto L_Start;
-	callfunc "Pri_check";
+	if (BaseJob == Job_Acolyte) goto L_Start;
+	if (BaseJob == Job_Novice) goto L_Novice;
+	if (BaseJob == Job_Priest) goto L_Priest;
+	mes "May God bless you my child.";
+	next;
+	mes "[Father Thomas]";
+	mes "Please feel free to rest, the church is the safest place in this world.";
+	next;
+	mes "[Father Thomas]";
+	mes "I hope God will bless you.";
 	close;
 
+L_Novice:
+	mes "May God bless you, child.  This is the Prontera Church.  What are you here for?";
+	next;
+	menu "I want to become an Acolyte.",M_0a, "I want to become a ^5533FFPriest^000000.",M_0b, "I'm just walking around.",M_0End;
+
+	M_0a:
+		mes "[Father Thomas]";
+		mes "Haha.. so you want to become an Acolyte eh? To apply to become an Acolyte, please go to the room opposite of here.";
+		close;
+	M_0b:
+		mes "[Father Thomas]";
+		mes "Haha...in order to become a priest you must first become an Acolyte.  To become an Acolyte, go to the room opposite of here.";
+		close;
+	M_0End:
+		mes "[Father Thomas]";
+		mes "Please feel free to rest here.  The church is a sanctuary for all those, who seek to escape the outside world.";
+		next;
+		mes "[Father Thomas]";
+		mes "May God be with you in your thoughts and prayers.";
+		close;
+
+L_Priest:
+	mes "God bless you, child.  You are here again because you listened to God's orders.";
+	next;
+	mes "[Father Thomas]";
+	mes "I don't know if God's sons and daughters are going on the path of light or the path of darkness... I can only pray for the best.";
+	next;
+	mes "[Father Thomas]";
+	mes "So why are you here today?";
+	next;
+	menu "I just wanted to see how you were.",M_1a, "I'm here to help the Acolytes.",M_1b, "Life is really hard... I was wondering if you could help.",M_1End;
+
+	M_1a:
+		mes "[Father Thomas]";
+		mes "Oh, well I'm fine thank you.  Please send my regards to all of the other Priests, and Priestess.";
+		next;
+		mes "[Father Thomas]";
+		mes "We, the ones who follow the devine path, are here for one reason.... to obey Gods orders.";
+		mes "If you come across anyone who needs help, please remember to assist them in any way you can...";
+		close;
+
+	M_1b:
+		mes "[Father Thomas]";
+		mes "Oh...thats a great idea! Since you're a priest, you can't forget that you have to help the Acolytes when they need it.";
+		emotion 5;
+		next;
+		mes "[Father Thomas]";
+		mes "Even so, you must be carefull not to do everyting for them.  It is important that they gain their own experiences through training ";
+		next;
+		mes "[Father Thomas]";
+		mes "In order to go in and help you'll need a ^5533FFROSARY^000000.";
+		mes "There will be 3 trials for the Acolyte to face, but in only 2 of them will your assistance be needed.";
+		next;
+		mes "[Father Thomas]";
+		mes "Are you prepared to help?";
+		next;
+		menu "Yes, i will help them with all my might.",sM_1a, "I will come back later.",sM_1End;
+
+		sM_1a:
+			if (countitem(2608) < 1) goto sL_NoRosary;
+			mes "[Father Thomas]";
+			mes "Very well then.  I will send you to an Acolyte in just a moment.";
+			next;
+			mes "[Father Thomas]";
+			mes "I hope you will also take this opportunity to teach them what it means to be a good Priest.";
+			next;
+			if ((getareausers("job_prist.gat", 8, 34, 39,109)) == 1) warp "job_prist.gat", 24, 44;
+			if ((getareausers("job_prist.gat", 160, 14, 175, 178)) == 1) warp "job_prist.gat", 98, 40;
+			if ((getareausers("job_prist.gat", 90, 34, 105,105)) == 1) warp "job_prist.gat", 168, 17;
+			mes "[Father Thomas]";
+			mes "Hmm........ wait a minute..... let me check my list.... Either no one is taking the test right now, or another Priest is already helping out.";
+			mes "In any case please check with me again later.";
+			close;
+
+			sL_NoRosary:
+				mes "[Father Thomas]";
+				mes "Hmm... it doesn't look like you have a ^5533FFROSARY^000000 with you.";
+				next;
+				mes "[Father Thomas]";
+				mes "If you want to help the Acolytes, you must first get a ^5533FFROSARY^000000.";
+				mes "Please come back when you have one.";
+				close;
+		sM_1End:
+			mes "[Father Thomas]";
+			mes "Oh, alright.  Just remember to bring a ^5533FFFROSARY^000000 when you come back.";
+			close;
+
+	M_1End:
+		mes "[Father Thomas]";
+		mes "Keep up the good work.  I will ask God to ease your pain.";
+		next;
+		mes "[Father Thomas]";
+		mes "God, one of your children is suffering.  Please use your powers, to heal the wounds on this battered body.....";
+		next;
+		mes "[Father Thomas]";
+		mes "Please look after us, so that under any condition we will be able to think clearly and maintain our faith";
+		percentheal 100,100;
+		next;
+		mes "[Father Thomas]";
+		mes "You should be feeling better now.  Please stay on the path to rightousness and may God bless you.";
+		close;
 
 L_Start:
 	if (PRIEST_Q == 1) goto L_Test1;
@@ -124,8 +235,6 @@ L_Start:
 		mes "[Father Thomas]";
 		mes "I hope you will visit again soon, and please tell me how the other Acolytes are doing.  May God be by your side...";
 		close;
-
-
 
 L_Test1:
 	if (PRIEST_Q2 == 1) goto L_NotDone1a;
@@ -245,7 +354,6 @@ L_Test3:
 	mes "Good luck.  I'll be waiting to hear the good news..";
 	close;
 
-
 L_Change:
 	if (SkillPoint > 0) mes "Wait.  You must use up your skill points in order to become a Priest.";
 	if (SkillPoint > 0) close;
@@ -255,13 +363,13 @@ L_Change:
 	mes "[Father Thomas]";
 	mes "God, please endow "+strcharinfo(0)+" with the strength and courage to fight evil and help mankind.";
 	next;
-	callfunc "F_JobChange",JOB_PRIEST;
+	callfunc "F_JobChange",Job_Priest;
 	mes "[Father Thomas]";
 	mes "You are now a Priest.  As a Priest, you can now help a lot of people in the name of God.";
 	next;
 	if (JBLVL != 50) getitem 1550, 1;
 	if (JBLVL == 50) getitem 1551, 1;
-	callfunc "F_ClearJobVariables";		// clears all job variables for the current player
+	callfunc "F_ClearJobVariables";
 	mes "[Father Thomas]";
 	mes "Here, take this book as a reward for successfully completing the tests.  This book will help you understand more about God.";
 	next;
@@ -272,11 +380,12 @@ L_Change:
 }
 
 
-//------------------------------------------------------------------------------------------------------\\
-// Test 1
-//******************************************************************************************************\\
-// Function: Father Rubalkabara --------------------------------------------------------------------------
+//--------------------------------------------------------------
+// Function: Father Rubalkabara
+//--------------------------------------------------------------
+
 function	script	F_FatherRub	{
+
 	if (PRIEST_Q == 1 && PRIEST_Q2==1) goto L_Test;
 	if (PRIEST_Q==1 && PRIEST_Q2 > 1) goto L_Done;
 	mes "It's good to see you again.  I expect all is well? Continue on your path of helping others and serving God, and let us pray for humanities salvation.";
@@ -313,7 +422,11 @@ L_Done:
 	close;
 }
 
-// Function: Mother Marthilda  --------------------------------------------------------------------------
+
+//--------------------------------------------------------------
+// Function: Mother Marthilda
+//--------------------------------------------------------------
+
 function	script	F_MotherMart	{
 
 	if (PRIEST_Q==1 && PRIEST_Q2==2) goto L_Test;
@@ -338,7 +451,11 @@ L_Done:
 	close;
 }
 
-// Function: Father Yosuke --------------------------------------------------------------------------
+
+//--------------------------------------------------------------
+// Function: Father Yosuke
+//--------------------------------------------------------------
+
 function	script	F_FatherYos	{
 
 	if (PRIEST_Q==1 && PRIEST_Q2==3) goto L_Test;
@@ -362,9 +479,10 @@ L_Done:
 }
 
 
-//**********************************************************************************************************************************************************************************\\
-//================================================== Father Peter: Test 2 ====================================================\\
-//**********************************************************************************************************************************************************************************\\
+//--------------------------------------------------------------
+// Father Peter: Test #2
+//--------------------------------------------------------------
+
 job_prist.gat,24,186,4	script	Father Peter	110,{
 
 L_Start:
@@ -460,11 +578,13 @@ OnStart:
 }
 
 
-//--------------------------------------------------------------------------------------------------\\
-// Test 2, Part 1: Kill the Zombies
-//**************************************************************************************************\\
+//--------------------------------------------------------------
+// Test #2, Part 1: Kill the Zombies
+//--------------------------------------------------------------
+
 job_prist.gat,1,1,1	script	PrstTest2_1	-1,{
-	set $@PrstRm, 1;		//used to determine what areawarp and areaannounce to use
+
+	set $@PrstRm, 1;		// Used to determine what areawarp and areaannounce to use
 	enablenpc "Zombie1_Trig";
 	enablenpc "Zombie2_Trig";
 	enablenpc "Zombie3_Trig";
@@ -494,7 +614,7 @@ OnTimer2500:
 }
 
 // These hidden warps spawn the monsters when you walk
-// First set  of Zombies------------------------------------------------------------
+// First set  of Zombies
 job_prist.gat,23,52,1	script	Zombie1_Trig	139,16,0,{
 
 	monster "job_prist.gat",24,52,"Robbery",1015,1,"PrstTest2_1::OnMobDead";
@@ -504,7 +624,7 @@ job_prist.gat,23,52,1	script	Zombie1_Trig	139,16,0,{
 	end;
 }
 
-// Second set  of Zombies----------------------------------------------------
+// Second set  of Zombies
 job_prist.gat,23,62,1	script	Zombie2_Trig	139,16,0,{
 
 	monster "job_prist.gat",21,62,"Anger",1015,1,"PrstTest2_1::OnMobDead";
@@ -513,7 +633,7 @@ job_prist.gat,23,62,1	script	Zombie2_Trig	139,16,0,{
 	end;
 }
 
-// Third set  of Zombies--------------------------------------------------------
+// Third set  of Zombies
 job_prist.gat,23,72,1	script	Zombie3_Trig	139,16,0,{
 
 	monster "job_prist.gat",24,72,"Cockyness",1015,1,"PrstTest2_1::OnMobDead";
@@ -523,7 +643,7 @@ job_prist.gat,23,72,1	script	Zombie3_Trig	139,16,0,{
 	end;
 }
 
-// Fourth set  of Zombies--------------------------------------------------------
+// Fourth set  of Zombies
 job_prist.gat,23,82,1	script	Zombie4_Trig	139,16,0,{
 
 	monster "job_prist.gat",21,82,"Greed",1015,1,"PrstTest2_1::OnMobDead";
@@ -532,7 +652,7 @@ job_prist.gat,23,82,1	script	Zombie4_Trig	139,16,0,{
 	end;
 }
 
-// Fifth set of Zombies ---------------------------------------------------------
+// Fifth set of Zombies
 job_prist.gat,23,92,1	script	Zombie5_Trig	139,16,0,{
 
 	monster "job_prist.gat",24,92,"Faithless",1015,1,"PrstTest2_1::OnMobDead";
@@ -543,10 +663,10 @@ job_prist.gat,23,92,1	script	Zombie5_Trig	139,16,0,{
 }
 
 
-// End warp for 1st part of test--------------------------------------------------------------------
+// End warp for 1st part of test
 job_prist.gat,24,109,1	script	prst1_1	45,3,3,{
 
-	if (BaseJob == JOB_PRIEST) end;		//If a Priest friend steps on the warp nothing happens.  Need the aco to step on the warp.
+	if (BaseJob == Job_Priest) end;		//If a Priest friend steps on the warp nothing happens.  Need the aco to step on the warp.
 OnTimer30000:
 	stopnpctimer;
 	areawarp "job_prist.gat",8,34,39,109,"job_prist.gat",168,17;
@@ -556,9 +676,10 @@ OnTimer30000:
 }
 
 
-//----------------------------------------------------------------------------------------------------\\
-// Test 2, Part 1: Resist Temptation
-//****************************************************************************************************\\
+//--------------------------------------------------------------
+// Test #2, Part 2: Resist Temptation
+//--------------------------------------------------------------
+
 job_prist.gat,1,1,0	script	PrstTest2_2	-1,{
 
 OnStart:
@@ -591,7 +712,7 @@ OnTimer500:
 }
 
 
-// Deviruchi ------------------------------------------------------------------------
+// Deviruchi
 job_prist.gat,168,45,4	script	Deviruchi	738,{
 
 OnStart:
@@ -667,7 +788,7 @@ L_Aco:
 			close;
 }
 
-// Doppelganger ------------------------------------------------------------------------------
+// Doppelganger
 job_prist.gat,168,80,4	script	Doppelganger::Doppel	739,{
 
 OnStart:
@@ -741,7 +862,7 @@ L_Aco:
 			close;
 }
 
-// Dark Lord -------------------------------------------------------------------------------
+// Dark Lord
 job_prist.gat,168,115,4	script	Dark Lord	737,{
 
 OnStart:
@@ -802,7 +923,7 @@ L_Aco:
 			close;
 }
 
-// Baphomet -----------------------------------------------------------------------------
+// Baphomet
 job_prist.gat,168,150,4	script	Baphomet	736,{
 
 OnStart:
@@ -865,25 +986,25 @@ L_Aco:
 
 
 // These hidden warps trigger the npcs when you get near them
-// Deviruchi Trigger --------------------------------------------------------------------
+// Deviruchi Trigger
 job_prist.gat,167,40,1	script	Devi_Trig	139,8,0,{
 
 	doevent "Deviruchi::OnStart";
 	end;
 }
-// Doppleganger Trigger --------------------------------------------------------------------
+// Doppleganger Trigger
 job_prist.gat,167,77,1	script	Doppel_Trig	139,8,0,{
 
 	doevent "Doppel::OnStart";
 	end;
 }
-// Dark Lord Trigger --------------------------------------------------------------------
+// Dark Lord Trigger
 job_prist.gat,167,112,1	script	Dark_Trig	139,8,0,{
 
 	doevent "Dark Lord::OnStart";
 	end;
 }
-// Baphomet Trigger --------------------------------------------------------------------
+// Baphomet Trigger
 job_prist.gat,167,145,1	script	Bapho_Trig	139,8,0,{
 
 	doevent "Baphomet::OnStart";
@@ -891,14 +1012,15 @@ job_prist.gat,167,145,1	script	Bapho_Trig	139,8,0,{
 }
 
 
-// End warp for 2nd part of test ---------------------------------------------------------
+// End warp for 2nd part of test
 job_prist.gat,168,180,0	script	prst2_1	45,3,3,{
 
-	if (BaseJob == JOB_PRIEST) end;		//If a Priest friend steps on the warp nothing happens.  Need the Aco to step on the warp.
+	if (BaseJob == Job_Priest) end;
+
 OnTimer30000:
 	set $@PrstRm, 3;
 	set $PRIEST_Q3, 0;
-	enablenpc "Mummy1_Trig";		//enables the floor triggers for the next test
+	enablenpc "Mummy1_Trig";		// Enables the floor triggers for the next test
 	enablenpc "Mummy2_Trig";
 	enablenpc "Mummy3_Trig";
 	stopnpctimer;
@@ -908,10 +1030,11 @@ OnTimer30000:
 }
 
 
-//-----------------------------------------------------------------------------------------------------\\
-// Test 2, Part 3: Make it to the exit
-//*****************************************************************************************************\\
-// First set of Mummies --------------------------------------------------------
+//--------------------------------------------------------------
+// Test #2, Part 3: Make it to the exit
+//--------------------------------------------------------------
+
+// First set of Mummies
 job_prist.gat,97,50,0	script	Mummy1_Trig	139,8,1,{
 
 	monster "job_prist.gat", 93, 55, "ca", 1041,1;
@@ -919,7 +1042,7 @@ job_prist.gat,97,50,0	script	Mummy1_Trig	139,8,1,{
 	disablenpc "Mummy1_Trig";
 	end;
 }
-// Second set of Mummies --------------------------------------------------------
+// Second set of Mummies
 job_prist.gat,97,65,0	script	Mummy2_Trig	139,8,1,{
 
 	monster "job_prist.gat", 93, 70, "men", 1041,1;
@@ -927,7 +1050,7 @@ job_prist.gat,97,65,0	script	Mummy2_Trig	139,8,1,{
 	disablenpc "Mummy2_Trig";
 	end;
 }
-// Third set of Mummies --------------------------------------------------------
+// Third set of Mummies
 job_prist.gat,97,80,0	script	Mummy3_Trig	139,8,1,{
 
 	monster "job_prist.gat", 93, 85, "mea", 1041,1;
@@ -937,10 +1060,11 @@ job_prist.gat,97,80,0	script	Mummy3_Trig	139,8,1,{
 }
 
 
-// End warp for 3rd part of test ----------------------------------------------
+// End warp for 3rd part of test
 job_prist.gat,98,105,0	script	prst3_1	45,2,2,{
 
-	if (BaseJob == JOB_PRIEST) end;		//If a Priest friend steps on the warp nothing happens.  Need the Aco to step on the warp.
+	if (BaseJob == Job_Priest) end;
+
 	stopnpctimer "TimerPrst";
 	areawarp "job_prist.gat", 90, 34, 105, 105, "prt_church.gat",16, 37;
 	set PRIEST_Q2, 2;
@@ -955,9 +1079,10 @@ OnTimer500:
 }
 
 
-//---------------------------------------------------------------------------------------------\\
+//--------------------------------------------------------------
 // Timer
-//*********************************************************************************************\\
+//--------------------------------------------------------------
+
 job_prist.gat,1,1,0	script	TimerPrst	-1,{
 
 OnTimer3000:
@@ -1023,15 +1148,16 @@ AnnouncePrst:
 }
 
 
+//--------------------------------------------------------------
+// Sister Cecile: Test #3
+//--------------------------------------------------------------
 
-//**********************************************************************************************************************************************************************************\\
-//================================================= Sister Cecile: Test 3 =====================================================\\
-//**********************************************************************************************************************************************************************************\\
 prt_church.gat,27,24,4	script	Sister Cecile	79,{
+
 	mes "[Sister Cecile]";
-	if (BaseJob == JOB_PRIEST) goto L_Prst;
-	if (BaseJob == JOB_ACOLYTE) goto L_Aco;
-	if (BaseJob == JOB_NOVICE) goto L_Nov;
+	if (BaseJob == Job_Priest) goto L_Prst;
+	if (BaseJob == Job_Acolyte) goto L_Aco;
+	if (BaseJob == Job_Novice) goto L_Nov;
 
 L_Other:
 	mes "This is the Prontera Church, what can I help you with?";
@@ -1073,8 +1199,8 @@ L_Nov:
 	close;
 
 L_Prst:
-	if (sex == 1) mes "God bless you, brother priest.";
-	if (sex == 0) mes "God bless you, sister priest.";
+	if (Sex == Male) mes "God bless you, brother priest.";
+	if (Sex == Female) mes "God bless you, sister priest.";
 	mes "I wish you all the best.  Keep your faith strong and remeber that God loves all, and so should you.";
 	close;
 
@@ -1083,8 +1209,8 @@ L_Aco:
 	if (PRIEST_Q == 2) goto L_Test2;
 	if (PRIEST_Q == 3) goto L_Start;
 	if (PRIEST_Q == 4) goto L_Done;
-	if (sex == 1) mes "God bless you, brother.";
-	if (sex == 0) mes "God bless you, sister.";
+	if (Sex == Male) mes "God bless you, brother.";
+	if (Sex == Female) mes "God bless you, sister.";
 	mes "Why are you here?";
 	next;
 	menu "I want to become a priest.",-, "I'm just wondering around.",M_End1;
@@ -1117,8 +1243,8 @@ L_Start:
 	mes "You are now really close to becoming a priest.";
 	next;
 	mes "[Sister Cecile]";
-	if (sex==1) mes "If you want to become a priest, the last step is to answer my questions honestly.";
-	if (sex==0) mes "If you want to become a priestess, the last step is to answer my questions honestly.";
+	if (Sex == Male) mes "If you want to become a priest, the last step is to answer my questions honestly.";
+	if (Sex == Female) mes "If you want to become a priestess, the last step is to answer my questions honestly.";
 	mes "Please be honest and answer my question.";
 	next;
 	mes "[Sister Cecile]";
@@ -1317,6 +1443,6 @@ L_Test2a:
 	close;
 
 L_Done:
-	mes "Congratulations on finishing the tests.  Please see Father Thomas so that he can make you a Priest.";
+	mes "Congratulations on finishing the tests. Please see Father Thomas so that he can make you a Priest.";
 	close;
 }

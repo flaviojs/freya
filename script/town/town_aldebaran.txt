@@ -575,8 +575,8 @@ aldeba_in.gat,152,47,4	script	Giddy Fellow	97,{
 aldeba_in.gat,156,179,4	script	Master#02	61,{
 
 	mes "[Master]";
-	if(sex==0) mes "Oh hello.  Don't mind me, I'm just a perverted old man.... la di da.......";
-	if(sex==0) close;
+	if(Sex == Female) mes "Oh hello.  Don't mind me, I'm just a perverted old man.... la di da.......";
+	if(Sex == Female) close;
 	mes "Did you know that the Kafra Main Office is located here, in Aldebaran?";
 	next;
 	mes "[Master]";
@@ -1096,10 +1096,8 @@ function	script	F_Lottery	{
 		if(@Lotto == 1) getitem 2328,1;//Items: Wooden_Mail,
 		if(@Lotto == 2) getitem 2307,1;//Items: Mantle,
 		if(@Lotto == 3) getitem 657,10;//Items: Berserk_Potion,
-		if(@Lotto == 4) {
-			getitem 607,2;//Items: Yggdrasilberry,
-			getitem 608,1;//Items: Yggdrasil_Seed,
-		}
+		if(@Lotto == 4) getitem 607,2;//Items: Yggdrasilberry,
+		if(@Lotto == 4) getitem 608,1;//Items: Yggdrasil_Seed,
 		if(@Lotto == 5) getitem 607,3;//Items: Yggdrasilberry,
 		return;
 	sL_Prize2:
@@ -1109,10 +1107,8 @@ function	script	F_Lottery	{
 		if(@Lotto == 2) getitem 2226,1;//Items: Cap,
 		if(@Lotto == 3) getitem 2201,1;//Items: Sunglasses,
 		if(@Lotto == 4) getitem 526,3;//Items: Royal_Jelly,
-		if(@Lotto == 5) {
-			getitem 608,1;//Items: Yggdrasil_Seed,
-			getitem 526,10;//Items: Royal_Jelly,
-		}
+		if(@Lotto == 5) getitem 608,1;//Items: Yggdrasil_Seed,
+		if(@Lotto == 5) getitem 526,10;//Items: Royal_Jelly,
 		return;
 	sL_Prize3:
 		mes "[Kafra]";
@@ -1178,7 +1174,11 @@ aldeba_in.gat,81,166,4	script	Kafra Pavianee	117,{
 
 		set usedKafPass,0; //clear unused global variable
 		mes "[Kafra Pavianne]";	
-		if(!countitem(1084)){
+		if(!countitem(1084)) goto L_Counted;
+		goto L_Cont03;
+
+
+		L_Counted:
 			mes "I'm sorry,";
 			mes "but you don't";
 			mes "have any Kafra Passes.";
@@ -1186,35 +1186,43 @@ aldeba_in.gat,81,166,4	script	Kafra Pavianee	117,{
 			close2;
 			cutin "",255;
 			end;
-		}
+
+	L_Cont03:
 		mes "Let me see ... You have " + countitem(1084) + " Kafra Passes.";
 		mes "So, you will get " + (countitem(1084)*2000) + " zeny.";
 		next;
 		mes "[Kafra Pavianne]";
 		mes "Do you want to sell these?";
 		next;
-		if(select("Sell.:Nevermind.")==1){
+		menu "Sell.",-,"Nevermind",L_Nevermind;
+
 			mes "[Kafra Pavianne]";
 			set @t,countitem(1084);
-			if(!@t){
+			if(!@t) goto L_Cont01;
+			goto L_Cont02;
+
+			L_Cont01:
 				mes "Well, you DON'T have any >.<";
                     		mes "I understand what you want to do but, I can't help you.";
 				emotion e_sry;
 				close2;
 				cutin "",255;
 				end;
-			}
+
+		L_Cont02:
 			delitem 1084,@t;
 			set Zeny,Zeny+@t*2000;
 			emotion e_thx;
 			mes "We already refunded all THE Kafra Passes that you had..";
 			mes "Thank you for using our service !";
 			mes "I am kafra Pavianne.";
+			goto L_Nevermind;
 
-		}
+	L_Nevermind:
 		close2;
 		cutin "",255;
 		end;
+
 	M_BYE:
 		mes "[Kafra Pavianne]";
 		mes "Thank you,";

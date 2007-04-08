@@ -4592,7 +4592,7 @@ s_Forge:
 	next;
 	mes "[Uwe]";
 	mes "So, how can";
-	if(Sex){
+	if (Sex == Male){
 		mes "I help you, you";
 		mes "adoooooooooorable";
 		mes "hunk of a man?";
