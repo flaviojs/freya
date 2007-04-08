@@ -7617,6 +7617,147 @@ void clif_fame_point(struct map_session_data *sd, unsigned char type, unsigned i
 	return;
 }
 
+/*==========================================
+ * clif_openmailbox
+ *------------------------------------------
+ */
+void clif_openmailbox(const int fd)
+{
+	WPACKETW(0) = 0x260;
+	WPACKETL(2) = 0;
+	SENDPACKET(fd, packet_len_table[0x260]);
+
+	return;
+}
+
+/*==========================================
+ * clif_send_mailbox
+ *------------------------------------------
+ */
+void clif_send_mailbox(struct map_session_data *sd,int mail_num,struct mail_data *md[MAIL_STORE_MAX])
+{
+	int len,fd;
+	int i;
+
+	if(!sd || mail_num<=0)
+		return;
+
+	fd=sd->fd;
+	WPACKETW(0)  = 0x240;
+	WPACKETW(2)  = (len=8+73*mail_num);
+	WPACKETL(4)  = mail_num;
+	for(i=0;i<mail_num && md[i];i++){
+		WPACKETL(8+73*i)  = md[i]->mail_num;
+		memcpy(WPACKETP(12+73*i),md[i]->title,40);
+		WPACKETB(52+73*i) = md[i]->read;
+		memcpy(WPACKETP(53+73*i),md[i]->char_name, 24);
+		WPACKETL(77+73*i) = md[i]->times;
+	}
+	SENDPACKET(fd,len);
+
+	return;
+}
+
+/*==========================================
+ * clif_res_sendmail
+ *------------------------------------------
+ */
+void clif_res_sendmail(const int fd,int flag)
+{
+	WPACKETW(0) = 0x249;
+	WPACKETB(2) = flag;
+	SENDPACKET(fd,packet_len_table[0x249]);
+
+	return;
+}
+
+/*==========================================
+ * clif_res_sendmail_setappend
+ *------------------------------------------
+ */
+static void clif_res_sendmail_setappend(const int fd,int flag)
+{
+	WPACKETW(0) = 0x245;
+	WPACKETB(2) = flag;
+	SENDPACKET(fd,packet_len_table[0x245]);
+
+	return;
+}
+
+/*==========================================
+ * clif_arrive_newmail
+ *------------------------------------------
+ */
+void clif_arrive_newmail(const int fd,struct mail_data *md)
+{
+	if(!md)
+		return;
+
+	WPACKETW(0) = 0x24a;
+	WPACKETL(2) = md->mail_num;
+	memcpy(WPACKETP(6),md->char_name ,24);
+	memcpy(WPACKETP(30),md->title ,40);
+	SENDPACKET(fd,packet_len_table[0x24a]);
+
+	return;
+}
+
+/*==========================================
+ * clif_receive_mail
+ *------------------------------------------
+ */
+void clif_receive_mail(struct map_session_data *sd,struct mail_data *md)
+{
+	int len,fd;
+	struct item_data *data;
+
+	if(!md)
+		return;
+
+	len=99+strlen(md->body);
+	fd=sd->fd;
+
+	WPACKETW(0)=0x242;
+	WPACKETW(2)=len;
+	WPACKETL(4)=md->mail_num;
+	memcpy(WPACKETP(8),md->title ,sizeof(md->title));
+	memcpy(WPACKETP(48),md->char_name,sizeof(md->char_name));
+	WPACKETL(72)=0x22;
+	WPACKETL(76)=md->zeny;
+	WPACKETL(80)=md->item.amount;
+	data = itemdb_search(md->item.nameid);
+	if(data->view_id > 0)
+		WPACKETW(84)=data->view_id;
+	else
+		WPACKETW(84)=md->item.nameid;
+	WPACKETW(86)=0;
+	WPACKETB(88)=md->item.identify;
+	WPACKETB(89)=md->item.attribute;
+	WPACKETW(90)=0;
+	WPACKETW(92)=0;
+	WPACKETW(94)=0;
+	WPACKETW(96)=0;
+	WPACKETB(98)=0x22;
+	memcpy(WPACKETP(99),md->body,strlen(md->body));
+	SENDPACKET(fd,len);
+
+	return;
+}
+
+/*==========================================
+ * clif_deletemail_res
+ *------------------------------------------
+ */
+void clif_deletemail_res(const int fd,int mail_num,int flag)
+{
+	WPACKETW(0) = 0x257;
+	WPACKETL(2) = mail_num;
+	WPACKETL(6) = flag;
+	SENDPACKET(fd,packet_len_table[0x257]);
+
+	return;
+}
+
 // ------------
 // clif_parse_*
 // ------------

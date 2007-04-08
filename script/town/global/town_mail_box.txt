@@ -35,7 +35,7 @@ prontera.gat,146,86,0	script	Mailbox#1::Mailbox	888,{
 			mes "[Mailbox]";
 			mes "Thank you for using the Mailing Service.";
 			set Zeny,Zeny-130;
-			// gmcommand "@mailbox";
+			gmcommand "@mailbox";
 			close;
 
 	L_No:

@@ -11,6 +11,7 @@
 Date	Added
 
 04/08/2007
+	* Added: Mail structures, defines, some packetry, and @openmailbox command imported from jAthena [Tsuyuki]
 	* Removed: Backwards compatibility for old packet versions [Tsuyuki]
 	 -> Freya can only be used with 12/18/2006 and newer clients now
 	* Added: 'Male' and 'Female' script constants [Tsuyuki]

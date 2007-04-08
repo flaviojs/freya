@@ -8,10 +8,10 @@
 #include "../common/utils.h" // LCCWIN32
 
 #if defined __CYGWIN || defined __WIN32
-// txt‚âlog‚È‚Ç‚Ì�‘‚«�o‚·ƒtƒ@ƒCƒ‹‚Ì‰ü�sƒR�[ƒh
-#define RETCODE "\r\n" // (CR/LF�FWindowsŒn)
+// txtaâlogaa!aR�a«�oa·t@C⬹aR⬰ü�sR�[h
+#define RETCODE "\r\n" // (CR/LF�FWindowsn)
 #else
-#define RETCODE "\n" // (LF�FUnixŒn�j
+#define RETCODE "\n" // (LF�FUnixn�j
 #endif
 
 #define RFIFOSIZE_SERVER (64*1024) /* memo size is 60000 bytes */
@@ -61,6 +61,8 @@
 #define MAX_FRIENDS 40
 
 #define MAX_RANKER 10
+
+#define MAIL_STORE_MAX 30
 
 enum {
 	RK_BASE,
@@ -316,13 +318,20 @@ struct Ranking_Data {
 };
 
 enum {
-	GBI_EXP        = 1, // ƒMƒ‹ƒh‚ÌEXP
-	GBI_GUILDLV    = 2, // ƒMƒ‹ƒh‚ÌLv
-	GBI_SKILLPOINT = 3, // ƒMƒ‹ƒh‚ÌƒXƒLƒ‹ƒ|ƒCƒ“ƒg
-	GBI_SKILLLV    = 4, // ƒMƒ‹ƒhƒXƒLƒ‹Lv
+	GBI_EXP        = 1, // M⬹haREXP
+	GBI_GUILDLV    = 2, // M⬹haRLv
+	GBI_SKILLPOINT = 3, // M⬹haRXL⬹|CSg
+	GBI_SKILLLV    = 4, // M⬹hXL⬹Lv
 
-	GMI_POSITION   = 0, // ƒ�ƒ“ƒo�[‚Ì–ð�E•Ï�X
-	GMI_EXP        = 1  // ƒ�ƒ“ƒo�[‚ÌEXP
+	GMI_POSITION   = 0, // �So�[aRð�E⬢Ï�X
+	GMI_EXP        = 1  // �So�[aREXP
+};
+
+struct mail {
+	int account_id;
+	int char_id;
+	int rates;
+	int store;
 };
 
 enum {
@@ -343,6 +352,21 @@ enum {
 	GD_RESTORE          = 10012,
 	GD_EMERGENCYCALL    = 10013,
 	GD_DEVELOPMENT      = 10014
+};
+
+struct mail_data {
+	int mail_num;
+	int char_id;
+	char char_name[24];
+	int receive_id;
+	char receive_name[24];
+	int read;
+	unsigned int times;
+	char title[40];
+	char body[35*14];
+	unsigned int body_size;
+	int zeny;
+	struct item item;
 };
 
 #endif // _MMO_H_

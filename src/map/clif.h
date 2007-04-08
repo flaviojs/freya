@@ -322,6 +322,14 @@ void clif_friend_add_ack(const int fd, int account_id, int char_id, char* name, 
 void clif_friend_del_ack(const int fd, int account_id, int char_id); // R 020A <id1>.l <id2>.l
 void clif_friend_send_online(struct map_session_data *sd, int online);
 
+// mail
+void clif_openmailbox(const int fd);
+void clif_send_mailbox(struct map_session_data *sd,int num,struct mail_data *md[MAIL_STORE_MAX]);
+void clif_receive_mail(struct map_session_data *sd,struct mail_data *md);
+void clif_res_sendmail(const int fd,int flag);
+void clif_arrive_newmail(const int fd,struct mail_data *md);
+void clif_deletemail_res(const int fd,int mail_num,int flag);
+
 int clif_specialeffect(struct block_list *bl,int type, int flag); // special effects [Valaris]
 int clif_message(struct block_list *bl, char* msg); // messages (from mobs/npcs) [Valaris]
 

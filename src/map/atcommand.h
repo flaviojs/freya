@@ -278,6 +278,7 @@ enum AtCommandType {
 	AtCommand_Grind,
 	AtCommand_Grind2,
 	AtCommand_Sound,
+	AtCommand_MailBox,
 
 	AtCommand_NpcTalk,
 	AtCommand_PetTalk,

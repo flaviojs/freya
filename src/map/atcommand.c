@@ -311,6 +311,7 @@ ATCOMMAND_FUNC(rings);
 ATCOMMAND_FUNC(grind);
 ATCOMMAND_FUNC(grind2);
 ATCOMMAND_FUNC(sound);
+ATCOMMAND_FUNC(mailbox);
 
 ATCOMMAND_FUNC(npctalk);
 ATCOMMAND_FUNC(pettalk);
@@ -672,6 +673,7 @@ static struct AtCommandInfo {
 	{ AtCommand_Grind,                 "@grind",                99, atcommand_grind }, // (on test GM command)
 	{ AtCommand_Grind2,                "@grind2",               60, atcommand_grind2 },
 	{ AtCommand_Sound,                 "@sound",                40, atcommand_sound },
+	{ AtCommand_MailBox,               "@mailbox",               0, atcommand_mailbox	},
 
 	{ AtCommand_NpcTalk,               "@npctalk",              40, atcommand_npctalk },
 	{ AtCommand_PetTalk,               "@pettalk",              10, atcommand_pettalk },
@@ -14334,6 +14336,17 @@ ATCOMMAND_FUNC(sound) {
 	}
 
 	clif_soundeffectall(&sd->bl, sound_file, 0);
+
+	return 0;
+}
+
+/*==========================================
+ * @mailbox
+ *------------------------------------------
+ */
+ATCOMMAND_FUNC(mailbox) {
+
+	clif_openmailbox(sd->fd);
 
 	return 0;
 }
