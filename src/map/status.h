@@ -354,9 +354,10 @@ enum {	// struct map_session_data の status_changeの番号テーブル
 	SC_HERMODE				= 234,
 	SC_TRIPLEATTACK_RATE_UP	= 235,	//三段発動率アップ
 	SC_COUNTER_RATE_UP		= 236,	//カウンターキック発動率アップ
-	SC_SUN_WARM				= 237,
-	SC_MOON_WARM			= 238,
-	SC_STAR_WARM			= 239,
+	SC_WARM				= 237,
+//	SC_SUN_WARM			= 237,
+//	SC_MOON_WARM			= 238,
+//	SC_STAR_WARM			= 239,
 	SC_SUN_COMFORT			= 240,
 	SC_MOON_COMFORT			= 241,
 	SC_STAR_COMFORT			= 242,

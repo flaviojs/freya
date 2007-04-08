@@ -437,15 +437,15 @@
 410,0,6,4,0,1,1,1,yes,0,0,1,magic,0	//WE_CALLBABY#Come here, baby.#
 411,0,6,4,0,1,10,1,yes,0,0,0,magic,3	//TK_RUN#Running#
 412,0,6,4,0,1,1,1,no,0,0,0,none,0	//TK_READYSTORM#Prepare Whirlwind Kick#
-413,-2,6,4,0,0,7,1,no,0,0,0,weapon,0	//TK_STORMKICK#Whirlwind Kick#
+413,-2,8,4,0,0,7,3,no,0,0,0,weapon,0	//TK_STORMKICK#Whirlwind Kick#
 414,0,6,4,0,1,1,1,no,0,0,0,none,0	//TK_READYDOWN#Prepare Axe Kick#
-415,-2,6,4,0,0,7,1,no,0,0,0,weapon,0	//TK_DOWNKICK#Axe Kick#
+415,-2,8,4,0,0,7,3,no,0,0,0,weapon,0	//TK_DOWNKICK#Axe Kick#
 416,0,6,4,0,1,1,1,no,0,0,0,none,0	//TK_READYTURN#Prepare Round Kick#
-417,-2,6,4,0,0,7,1,no,0,0,0,weapon,0	//TK_TURNKICK#Round Kick#
+417,-2,8,4,0,0,7,3,no,0,0,0,weapon,0	//TK_TURNKICK#Round Kick#
 418,0,6,4,0,1,1,1,no,0,0,0,none,0	//TK_READYCOUNTER#Prepare Counter Kick#
-419,-2,6,4,0,0,7,1,no,0,0,0,weapon,0	//TK_COUNTER#Counter Kick#
+419,-2,8,4,0,0,7,3,no,0,0,0,weapon,0	//TK_COUNTER#Counter Kick#
 420,0,6,4,0,1,1,1,no,0,0,0,none,0	//TK_DODGE#Break Fall#
-421,9,6,4,0,0,7,1,no,0,4,0,weapon,0	//TK_JUMPKICK#Flying Side Kick#
+421,9,8,4,0,0,7,3,no,0,4,0,weapon,0	//TK_JUMPKICK#Flying Side Kick#
 422,0,0,0,0,0,10,0,no,0,0,0,none,0	//TK_HPTIME#Peaceful Rest#
 423,0,0,0,0,0,10,0,no,0,0,0,none,0	//TK_SPTIME#Enjoyable Rest#
 424,0,0,0,0,0,5,0,no,0,0,0,none,0	//TK_POWER#Fighting Chant#
@@ -546,7 +546,6 @@
 519,-3,6,1,0,0,10,1,no,0,0,0,weapon,0	//GS_FULLBUSTER#Full Buster#
 520,-3,6,1,0,0,10,1,no,0,0,0,weapon,0	//GS_SPREADATTACK#Spread Attack#
 521,-3,6,2,0,0,10,1,no,0,0,0,weapon,0	//GS_GROUNDDRIFT#Ground Drift#
-
 522,0,0,0,0,0,10,0,no,0,0,0,none,0	//NJ_TOBIDOUGU#Assassination Training#
 523,9,6,1,0,0,10,1,no,0,0,0,weapon,0	//NJ_SYURIKEN#Shuriken Throw#
 524,9,8,1,0,0,5,3,no,0,0,0,weapon,0	//NJ_KUNAI#Throw Kunai#
@@ -561,13 +560,13 @@
 533,0,0,0,0,0,10,0,no,0,0,0,none,0	//NJ_NINPOU#Ways of the Blade Training#
 534,9,8,1,3,4,10,1:2:3:4:5:6:7:8:9:10,yes,0,0,0,magic,0	//NJ_KOUENKA#Bright Crimson Fire#
 535,0,6,4,3,0,10,1,yes,0,0,0,magic,0	//NJ_KAENSIN#Crimson Fire Formation#
-536,9,8,1,3,0,5,3,yes,0,0,0,magic,0			//NJ_BAKUENRYU#Raging Dragon of Fire#
+536,9,8,1,3,0,5,3,yes,0,0,0,magic,0	//NJ_BAKUENRYU#Raging Dragon of Fire#
 537,9,8,1,1,4,10,3:4:5:6:7:8:9:10:11:12,yes,0,0,0,magic,0	//NJ_HYOUSENSOU#Lightning Spear of Ice#
-538,2,6,2,1,1,10,0,yes,0,0,0,magic,0			//NJ_SUITON#Hidden Water#
-539,0,6,4,1,0,5,1,yes,0,0,0,magic,0			//NJ_HYOUSYOURAKU#Falling Frozen Crystal#
+538,2,6,2,1,1,10,0,yes,0,0,0,magic,0	//NJ_SUITON#Hidden Water#
+539,0,6,4,1,0,5,1,yes,0,0,0,magic,0	//NJ_HYOUSYOURAKU#Falling Frozen Crystal#
 540,9,8,1,4,4,10,1:2:2:3:3:4:4:5:5:6,yes,0,0,0,magic,0	//NJ_HUUJIN#Wind Blade#
-541,0,6,4,4,0,5,1,yes,0,0,0,magic,0			//NJ_RAIGEKISAI#Lightning Strike of Destruction#
-542,5:6:7:8:9,6,1,4,0,5,1,yes,0,0,0,magic,0		//NJ_KAMAITACHI#Wind of the Morning Dawn : Kamaitachi#
+541,0,6,4,4,0,5,1,yes,0,0,0,magic,0	//NJ_RAIGEKISAI#Lightning Strike of Destruction#
+542,5:6:7:8:9,6,1,4,0,5,1,yes,0,0,0,magic,0	//NJ_KAMAITACHI#Wind of the Morning Dawn : Kamaitachi#
 543,0,6,4,0,1,5,0,yes,0,0,0,weapon,0	//NJ_NEN#Soul#
 544,-5,6,1,0,0,10,1,yes,0,0,0,weapon,0	//NJ_ISSEN#Final Strike#
 

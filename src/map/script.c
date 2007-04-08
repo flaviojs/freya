@@ -3933,10 +3933,6 @@ int buildin_return(struct script_state *st)
 			if( name[0] == '\'' && name[1] == '@') {
 				// '@ 変数を参照渡しにすると危険なので値渡しにする
 				get_val(st,sd);
-				if(isstr(sd)) {		// 文字列の場合はaStrdupしないといけない
-					sd->type  = C_STR;
-					sd->u.str = (char *)aStrdup(sd->u.str);
-				}
 			} else if( name[0] == '\'' && !sd->ref) {
 				// ' 変数は参照渡しでも良いが、参照元が設定されていないと
 				// 元のスクリプトの値を差してしまうので補正する。
@@ -6033,10 +6029,10 @@ static int buildin_killmonster_sub(struct block_list *bl,va_list ap)
 
 	if(!allflag) {
 		if(strcmp(event,md->npc_event) == 0)
-			unit_remove_map(bl,1);
+			unit_remove_map(bl,1,0);
 	} else {
 		if(md->spawndelay1 == -1 && md->spawndelay2 == -1)
-			unit_remove_map(bl,1);
+			unit_remove_map(bl,1,0);
 	}
 	return 0;
 }
@@ -6071,7 +6067,7 @@ int buildin_killmonster(struct script_state *st)
 
 static int buildin_killmonsterall_sub(struct block_list *bl,va_list ap)
 {
-	unit_remove_map(bl,1);
+	unit_remove_map(bl,1,0);
 	return 0;
 }
 int buildin_killmonsterall(struct script_state *st)
@@ -7537,7 +7533,7 @@ static int buildin_maprespawnguildid_sub(struct block_list *bl,va_list ap)
 	}
 	if(flag&4 && md){
 		if(md->class < 1285 || md->class > 1288)
-			unit_remove_map(&md->bl,1);
+			unit_remove_map(&md->bl,1,0);
 	}
 	return 0;
 }

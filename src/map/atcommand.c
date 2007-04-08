@@ -2208,7 +2208,7 @@ static int atkillmonster_sub(struct block_list *bl,va_list ap)
 		if (flag)
 			mob_damage(NULL, md, md->hp, 2);
 		else
-			unit_remove_map(&md->bl, 1);
+			unit_remove_map(&md->bl, 1, 0);
 	}
 	return 0;
 }
@@ -4180,10 +4180,10 @@ int atcommand_charzeny(
 /*==========================================
  * @mapinfo <map name> [0-3] by MC_Cameri
  * => Shows information about the map [map name]
- * 0 = no additional information
- * 1 = Show users in that map and their location
- * 2 = Shows NPCs in that map
- * 3 = Shows the shops/chats in that map (not implemented)
+ * 0 = 追加情報なし
+ * 1 = MAP内に居るPCの情報
+ * 2 = MAP内に居るNPCの情報（接触型のみ）
+ * 3 = MAP内にあるチャットの情報
  *------------------------------------------
  */
 int atcommand_mapinfo(

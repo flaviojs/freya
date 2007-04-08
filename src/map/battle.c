@@ -1407,11 +1407,12 @@ struct Damage battle_calc_weapon_attack(
 					if(src_sd->status.sp < 2)
 					{
 						status_change_end(src,SkillStatusChangeTable[skill_num],-1);
+						skill_delunitgroup((struct skill_unit_group *)sc_data[SC_WARM].val3);
 						break;
 					}
 					if(target_sd)
 					{
-						target_sd->status.sp -= 5;
+						target_sd->status.sp -= 15;
 						if(target_sd->status.sp<0)
 							target_sd->status.sp = 0;
 						clif_updatestatus(target_sd,SP_SP);
@@ -1421,7 +1422,7 @@ struct Damage battle_calc_weapon_attack(
 					clif_updatestatus(src_sd,SP_SP);
 				} else if(target_sd)
 				{
-					target_sd->status.sp -= 5;
+					target_sd->status.sp -= 15;
 					clif_updatestatus(target_sd,SP_SP);
 				}
 				break;

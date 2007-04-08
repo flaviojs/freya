@@ -1,4 +1,26 @@
-//2285-fix by 暇人
+----------------------------------------
+//2286-fix by Blaze
+
+・拳聖スキル「太陽・月・星の温もり」実装
+	（skill.c、battle.c、status.c、unit.c、pc.c)
+・マップを移動した時、拳聖スキル「太陽・月・星の安楽」の効果を削除するように修正
+	（pc.c)
+・スキルユニットを設置後、ハエやマップ移動で消えてしまうのを修正
+	（pc.c、unit.c)
+・上記変更に伴うunit_remove_map関数の仕様変更
+	（unit.c、unit.h、pc.c、mob.c、npc.c、pet.c、script.c、atcommand.c)
+・テコン系列の各種スキルの使用SPや詠唱時間などが間違っていたのを修正
+	（skill_require_db.txt、skill_cast_db.txt）
+・テコン系列の蹴りスキルを3段HITするように修正
+	（skill_db.txt）
+・ガンスリンガースキル「グラウンドドリフト」のユニット種類と発動時エフェクトを修正
+	（skill.c、skill_unit_db.txt）
+・モンスターの最低沸き間隔時間を5秒から1秒（本鯖仕様）に修正
+	（mob.c、unit.c）
+・Fix - 温もり追加によるstatus.h同梱忘れ
+	（status.h）
+----------------------------------------
+//2285-fix2 by 暇人
 
 ・VCコンパイル時にWarning C4101が1個出ていたのを修正 (npc.c)
 ・2283のzlibのエラーを修正

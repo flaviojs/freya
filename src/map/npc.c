@@ -287,16 +287,17 @@ int npc_event_doall_id(const char *name, int rid, int m)
 int npc_event_do_clock(int tid,unsigned int tick,int id,int data)
 {
 	time_t timer;
-	struct tm *t, tmp;
 	char buf[64];
 	int c=0;
 
-	time(&timer);
-
 #ifndef _WIN32
+	struct tm *t,tmp;
+	time(&timer);
 	localtime_r(&timer, &tmp);
 	t = &tmp;
 #else
+	struct tm *t;
+	time(&timer);
 	t = localtime(&timer);
 #endif
 
@@ -1992,7 +1993,7 @@ int do_final_npc(void)
 	for(i=START_NPC_NUM;i<npc_id;i++){
 		if((bl=map_id2bl(i))){
 			if(bl->type == BL_PET || bl->type == BL_MOB) {
-				unit_remove_map(bl,0);
+				unit_remove_map(bl,0,0);
 			}
 		}
 		if((bl=map_id2bl(i))){

@@ -7,12 +7,13 @@
                     http://www.ro-freya.net                   
                   Freya Phaeton SVN Changelog
 --------------------------------------------------------------
-                Current Revision: jAthena 2285
+                Current Revision: jAthena 2286
 --------------------------------------------------------------
 
 Date	Added
 
 04/08/2007
+	* Updated: Project to jAthena 2286 [Tsuyuki]
 	* Improved: Finished formatting of script headers [Tsuyuki]
 	* Fixed: A portion of the Merchant job change quest [Tsuyuki]
 	* Changed: Executables now compile back into the main folder with make [Tsuyuki]

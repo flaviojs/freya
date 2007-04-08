@@ -274,9 +274,9 @@ int SkillStatusChangeTable[]={	/* skill.hのenumのSC_***とあわせること */
 /* 410- */
 	-1,SC_RUN,SC_READYSTORM,-1,SC_READYDOWN,-1,SC_READYTURN,-1,SC_READYCOUNTER,-1,
 /* 420- */
-	SC_DODGE,-1,-1,-1,-1,-1,-1,-1,SC_SUN_WARM,SC_MOON_WARM,
+	SC_DODGE,-1,-1,-1,-1,-1,-1,-1,SC_WARM,SC_WARM,
 /* 430- */
-	SC_STAR_WARM,SC_SUN_COMFORT,SC_MOON_COMFORT,SC_STAR_COMFORT,-1,-1,-1,-1,-1,-1,
+	SC_WARM,SC_SUN_COMFORT,SC_MOON_COMFORT,SC_STAR_COMFORT,-1,-1,-1,-1,-1,-1,
 /* 440- */
 	-1,-1,-1,-1,SC_FUSION,SC_ALCHEMIST,-1,SC_MONK,SC_STAR,SC_SAGE,
 /* 450- */
@@ -3364,8 +3364,12 @@ int skill_castend_nodamage_id( struct block_list *src, struct block_list *bl,int
 	case SG_SUN_WARM://太陽の温もり
 	case SG_MOON_WARM://月の温もり
 	case SG_STAR_WARM://星の温もり
+		sc_data = status_get_sc_data(src);
+		if (sc_data && sc_data[SC_WARM].timer!=-1) {
+			skill_delunitgroup((struct skill_unit_group *)sc_data[SC_WARM].val3);
+		}
 		clif_skill_nodamage(src,bl,skillid,skilllv,1);
-		status_change_start(bl,GetSkillStatusChangeTable(skillid),skilllv,skill_get_time(skillid,skilllv)/1000,skill_get_range(skillid,skilllv),0,1000,0);
+		status_change_start(bl,SkillStatusChangeTable[skillid],skilllv,bl->id,(int)(skill_unitsetting(src,skillid,skilllv,src->x,src->y,0)),0,skill_get_time(skillid,skilllv),0);
 		break;
 	case TK_SEVENWIND: //暖かい風
 		clif_skill_nodamage(src,bl,skillid,skilllv,1);
@@ -6928,6 +6932,9 @@ int skill_unit_onplace_timer(struct skill_unit *src,struct block_list *bl,unsign
 				src->bl.id,sg->interval+100,0);
 		}
 		break;
+	case 0xb5:	/* 温もり */
+		battle_skill_attack(BF_WEAPON,ss,&src->bl,bl,sg->skill_id,sg->skill_lv,tick,0);
+		break;
 	case 0xb7:	/* スパイダーウェッブ */
 		sc_data = status_get_sc_data(bl);
 		if((!sc_data || sc_data[SC_SPIDERWEB].timer==-1) && sg->val2==0){
@@ -6976,9 +6983,11 @@ int skill_unit_onplace_timer(struct skill_unit *src,struct block_list *bl,unsign
 		if(src->val1<=0)
 			skill_delunit(src);
 		break;
-	case 0xc2:	/* グラウンドドリフト */
+	case 0xbe:	/* グラウンドドリフト */
 		battle_skill_attack(BF_WEAPON,ss,&src->bl,bl,sg->skill_id,sg->skill_lv,tick,0);
-		skill_delunit(src);
+		sg->unit_id = 0x8c;
+		clif_changelook(&src->bl,LOOK_BASE,0x88);
+		sg->limit=DIFF_TICK(tick,sg->tick)+1500;
 		break;
 	}
 
@@ -10677,6 +10686,7 @@ int skill_unit_move_unit_group( struct skill_unit_group *group, int m,int dx,int
 			case 0x97:	/* フリージングトラップ */
 			case 0x98:	/* クレイモアートラップ */
 			case 0x99:	/* トーキーボックス */
+			case 0xb5:	/* 温もり */
 				break;
 			case 0x91:	/* アンクルスネア */
 				if(group->val2 > 0)	// 捕捉中なら移動不可

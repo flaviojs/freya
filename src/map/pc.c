@@ -3454,15 +3454,27 @@ int pc_setpos(struct map_session_data *sd,char *mapname_org,int x,int y,int clrt
 		// 同じマップなのでダンスユニット引き継ぎ
 		sd->ud.to_x = x;
 		sd->ud.to_y = y;
-		skill_stop_dancing(&sd->bl, 2); //移動先にユニットを移動するかどうかの判断もする
+		skill_stop_dancing(&sd->bl, 2);	//移動先にユニットを移動するかどうかの判断もする
+		if(sd->sc_data[SC_WARM].timer != -1)	//温もりユニット移動
+			skill_unit_move_unit_group((struct skill_unit_group *)sd->sc_data[SC_WARM].val3, sd->bl.m,(sd->ud.to_x - sd->bl.x),(sd->ud.to_y - sd->bl.y));
 	} else {
 		// 違うマップなのでダンスユニット削除
 		skill_stop_dancing(&sd->bl, 1);
 		if(strlen(sd->mapname) > 4)	//新規ログイン時はfalseとしてflagを与えない
 			flag = 1;
+		if(sd->sc_data[SC_WARM].timer != -1) {	//温もりユニット削除
+			status_change_end(&sd->bl, SC_WARM, -1);
+			skill_delunitgroup((struct skill_unit_group *)sd->sc_data[SC_WARM].val3);
+		}
+		if(sd->sc_data[SC_SUN_COMFORT].timer != -1)	//太陽の安楽効果削除
+			status_change_end(&sd->bl, SC_SUN_COMFORT, -1);
+		if(sd->sc_data[SC_MOON_COMFORT].timer != -1)	//月の安楽効果削除
+			status_change_end(&sd->bl, SC_MOON_COMFORT, -1);
+		if(sd->sc_data[SC_STAR_COMFORT].timer != -1)	//星の安楽効果削除
+			status_change_end(&sd->bl, SC_STAR_COMFORT, -1);
 	}
 	if(sd->bl.prev != NULL){
-		unit_remove_map(&sd->bl,clrtype);
+		unit_remove_map(&sd->bl,clrtype,1);
 		if(sd->status.pet_id > 0 && sd->pd) {
 			if(sd->pd->bl.m != m && sd->pet.intimate <= 0) {
 				unit_free(&sd->pd->bl, 0);
@@ -3474,11 +3486,11 @@ int pc_setpos(struct map_session_data *sd,char *mapname_org,int x,int y,int clrt
 					status_calc_pc(sd,2);
 			}
 			else if(sd->pet.intimate > 0) {
-				unit_remove_map( &sd->pd->bl, clrtype&0xffff );
+				unit_remove_map( &sd->pd->bl, clrtype&0xffff, 1);
 			}
 		}
 		if(sd->status.homun_id > 0 && sd->hd){
-			unit_remove_map( &sd->hd->bl, clrtype&0xffff );
+			unit_remove_map( &sd->hd->bl, clrtype&0xffff ,1);
 		}
 		clif_changemap(sd,mapname,x,y);
 	}
@@ -4882,6 +4894,8 @@ int pc_damage(struct block_list *src,struct map_session_data *sd,int damage)
 		status_change_end(&sd->bl,SC_CLOSECONFINE,-1);
 	if(sd->sc_data[SC_HOLDWEB].timer!=-1)
 		status_change_end(&sd->bl,SC_HOLDWEB,-1);
+	if(sd->sc_data[SC_WARM].timer!=-1)//温もり効果解除
+		skill_delunitgroup((struct skill_unit_group *)sd->sc_data[SC_WARM].val3);
 	pc_setglobalreg(sd,"PC_DIE_COUNTER",++sd->die_counter); //死にカウンター書き込み
 	status_change_clear(&sd->bl,0);	// ステータス異常を解除する
 
