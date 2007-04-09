@@ -7675,7 +7675,7 @@ void clif_res_sendmail(const int fd,int flag)
  * clif_res_sendmail_setappend
  *------------------------------------------
  */
-static void clif_res_sendmail_setappend(const int fd,int flag)
+void clif_res_sendmail_setappend(const int fd,int flag)
 {
 	WPACKETW(0) = 0x245;
 	WPACKETB(2) = flag;
