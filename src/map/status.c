@@ -1294,6 +1294,8 @@ L_RECALC:
 				sc_speed_rate = 75;
 		if((sd->sc_data[SC_CARTBOOST].timer!=-1)&&(sc_speed_rate > 80))	// カートブーストによる移動速度増加
 				sc_speed_rate = 80;
+		if((sd->sc_data[SC_FUSION].timer!=-1)&&(sc_speed_rate > 75))	// 太陽と月と星の融合による移動速度増加
+				sc_speed_rate = 75;
 		if((sd->sc_data[SC_WINDWALK].timer!=-1)&&(sc_speed_rate > 100-(sd->sc_data[SC_WINDWALK].val1*2)))	// ウィンドウォークによる移動速度増加
 				sc_speed_rate = 100-(sd->sc_data[SC_WINDWALK].val1*2);
 		if( s_class.job == 12 && (skill=pc_checkskill(sd,TF_MISS))>0 &&(sc_speed_rate > 100-skill))	// アサシン系の回避率上昇による移動速度増加
@@ -5011,16 +5013,19 @@ int status_change_start(struct block_list *bl,int type,int val1,int val2,int val
 		case SC_CONCENTRATION:		/* コンセントレーション */
 			*opt3 |= 1;
 			break;
-		case SC_OVERTHRUST:			/* オーバートラスト */
+		case SC_OVERTHRUST:		/* オーバートラスト */
+		case SC_SWOO:			/* エスウ */
 			*opt3 |= 2;
 			break;
-		case SC_ENERGYCOAT:			/* エナジーコート */
+		case SC_ENERGYCOAT:		/* エナジーコート */
+		case SC_SKE:			/* エスク */
 			*opt3 |= 4;
 			break;
 		case SC_EXPLOSIONSPIRITS:	// 爆裂波動
 			*opt3 = 8;
 			break;
-		case SC_STEELBODY:			// 金剛
+		case SC_STEELBODY:		// 金剛
+		case SC_SKA:			/* エスカ */
 			*opt3 |= 16;
 			break;
 		case SC_BLADESTOP:		/* 白刃取り */
@@ -5864,22 +5869,25 @@ int status_change_end( struct block_list* bl , int type,int tid)
 			*opt2 &= ~0x40;
 			break;
 		// opt3
-		case SC_ONEHAND:			/* 1HQ */
+		case SC_ONEHAND:		/* 1HQ */
 		case SC_TWOHANDQUICKEN:		/* 2HQ */
 		case SC_SPEARSQUICKEN:		/* スピアクイッケン */
 		case SC_CONCENTRATION:		/* コンセントレーション */
 			*opt3 &= ~1;
 			break;
-		case SC_OVERTHRUST:			/* オーバートラスト */
+		case SC_OVERTHRUST:		/* オーバートラスト */
+		case SC_SWOO:			/* エスウ */
 			*opt3 &= ~2;
 			break;
-		case SC_ENERGYCOAT:			/* エナジーコート */
+		case SC_ENERGYCOAT:		/* エナジーコート */
+		case SC_SKE:			/* エスク */
 			*opt3 &= ~4;
 			break;
 		case SC_EXPLOSIONSPIRITS:	// 爆裂波動
 			*opt3 &= ~8;
 			break;
-		case SC_STEELBODY:			// 金剛
+		case SC_STEELBODY:		// 金剛
+		case SC_SKA:			/* エスカ */
 			*opt3 &= ~16;
 			break;
 		case SC_BLADESTOP:		/* 白刃取り */

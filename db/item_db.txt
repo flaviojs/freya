@@ -104,8 +104,8 @@
 591,Unknown_Item,??? Pancake,0,,,150,,,,,1000333311,2,,,,,,{ sc_end Eff_Blind; sc_end Eff_Sleep; sc_end Eff_Poison; sc_end Eff_Freeze; sc_end Eff_Silence; sc_end Eff_Stan; sc_end Eff_Curse; sc_end Eff_Confusion; sc_end Eff_Stone; sc_end Eff_Bleed; },{}
 592,Unknown_Item,Strawberry Jam Pancake,0,,,150,,,,,1000333311,2,,,,,,{ sc_end Eff_Blind; sc_end Eff_Sleep; sc_end Eff_Poison; sc_end Eff_Freeze; sc_end Eff_Silence; sc_end Eff_Stan; sc_end Eff_Curse; sc_end Eff_Confusion; sc_end Eff_Stone; sc_end Eff_Bleed; },{}
 593,Unknown_Item,Honey Pancake,0,,,150,,,,,1000333311,2,,,,,,{ sc_end Eff_Blind; sc_end Eff_Sleep; sc_end Eff_Poison; sc_end Eff_Freeze; sc_end Eff_Silence; sc_end Eff_Stan; sc_end Eff_Curse; sc_end Eff_Confusion; sc_end Eff_Stone; sc_end Eff_Bleed; },{}
-594,Unknown_Item,??? Pancake,0,,,150,,,,,1000333311,2,,,,,,{ sc_end Eff_Blind; sc_end Eff_Sleep; sc_end Eff_Poison; sc_end Eff_Freeze; sc_end Eff_Silence; sc_end Eff_Stan; sc_end Eff_Curse; sc_end Eff_Confusion; sc_end Eff_Stone; sc_end Eff_Bleed; },{}
-595,Unknown_Item,??? Pancake,0,,,150,,,,,1000333311,2,,,,,,{ sc_end Eff_Blind; sc_end Eff_Sleep; sc_end Eff_Poison; sc_end Eff_Freeze; sc_end Eff_Silence; sc_end Eff_Stan; sc_end Eff_Curse; sc_end Eff_Confusion; sc_end Eff_Stone; sc_end Eff_Bleed; },{}
+594,Unknown_Item,Unknown Item,0,,,150,,,,,1000333311,2,,,,,,{ sc_end Eff_Blind; sc_end Eff_Sleep; sc_end Eff_Poison; sc_end Eff_Freeze; sc_end Eff_Silence; sc_end Eff_Stan; sc_end Eff_Curse; sc_end Eff_Confusion; sc_end Eff_Stone; sc_end Eff_Bleed; },{}
+595,Unknown_Item,Unknown Item,0,,,150,,,,,1000333311,2,,,,,,{ sc_end Eff_Blind; sc_end Eff_Sleep; sc_end Eff_Poison; sc_end Eff_Freeze; sc_end Eff_Silence; sc_end Eff_Stan; sc_end Eff_Curse; sc_end Eff_Confusion; sc_end Eff_Stone; sc_end Eff_Bleed; },{}
 596,Unknown_Item,Cute Strawberry-Choco,0,20,,100,,,,,1000333311,2,,,,,,{ itemheal 0,rand(1,100); },{}
 597,Unknown_Item,Lovely Choco-Tart,0,20,,100,,,,,1000333311,2,,,,,,{ itemheal rand(10,400),0; },{}
 598,Unknown_Item,Unknown Item,0,,,10,,,,,1000333311,2,,,,,,{ itemheal rand(45,65),0; },{}
@@ -641,7 +641,7 @@
 1371,Unknown_Item,Doom Slayer,4,20,,6000,10,,1,1,279714,2,34,4,80,7,1,{},{ bonus bAspdAddRate,-40; bonus bUseSPrate,100; if(readparam(bStr)<95) end; bonus bAtk,340; bonus2 bAddEff,Eff_Stan,3000; bonus bBreakArmorRate,100; }
 1372,Light_Epsilon_,Light Epilson,4,,,2300,229,,1,0,279714,2,34,4,1,7,1,{},{ bonus bAtkEle,6; bonus bStr,10; skill 28,3; bonus2 bAddRace,6,3; bonus bSpeedAddRate,25; }
 
-1374,Unknown_Item,トマホークR,4,,,2500,200,,1,0,279714,2,34,4,,7,,{},{ bonus bAtkEle,4; skill 337,1; }
+1374,Unknown_Item,Unknown Item,4,,,2500,200,,1,0,279714,2,34,4,,7,,{},{ bonus bAtkEle,4; skill 337,1; }
 1375,Unknown_Item,Unknown Item,4,20,,2500,200,,1,2,279714,2,34,3,70,7,1,{},{ bonus2 bSubSize,1,13; bonus2 bSubSize,2,15; }
 1376,Unknown_Item,Unknown Item,4,20,,2000,175,,1,1,279714,2,34,4,70,7,1,{},{ bonus bCritical,20; bonus bAspdAddRate,5; if(Basejob==10 || Basejob==18) bonus3 bAutoSpell,110,3,200; }
 1377,Unknown_Item,Unknown Item,4,20,,3500,332,,1,1,279714,2,34,4,80,7,1,{},{ bonus2 bSubSize,1,10; }
@@ -732,7 +732,7 @@
 1532,Stunner_,Stunner,4,60000,,2000,140,,1,2,33040,2,2,3,27,8,1,{},{ bonus2 bAddEff,Eff_Stan,1000; }
 1533,Unknown_Item,Warrior's Balmung,4,,,1000,200,,1,0,1000333311,2,34,4,48,3,1,{},{ bonus bStr,5; bonus bAgi,5; bonus bVit,5; bonus bInt,5; bonus bDex,5; bonus bLuk,5; }
 1534,Unknown_Item,スパナR,4,,,2500,150,,1,0,33040,2,2,3,,8,1,{},{ bonus2 bAddEff,Eff_Freeze,500; bonus2 bAddEff,Eff_Stan,500; bonus2 bAddEff,Eff_Blind,500; bonus2 bAddEff,Eff_Poison,500; }
-1535,Unknown_Item,Unknown Item,4,20,,440,4,,1,0,312754,2,2,4,44,8,1,{},{ if(equippeditem(4361)) { bonus bBreakWeaponRate,1000; bonus bBreakArmorRate,1000; bonus bBreakMyEquipWhenAttack,100; } else { bonus bBreakWeaponRate,100; bonus bBreakArmorRate,100; } if(readparam(bStr)>=44) bonus bAtk,44; }
+1535,Unknown_Item,Unknown Item,4,20,,440,4,,1,1,312754,2,2,4,44,8,1,{},{ if(equippeditem(4361)) { bonus bBreakWeaponRate,1000; bonus bBreakArmorRate,1000; bonus bBreakMyEquipWhenAttack,100; } else { bonus bBreakWeaponRate,100; bonus bBreakArmorRate,100; } if(readparam(bStr)>=44) bonus bAtk,44; }
 
 1550,Book,Book,4,30000,,600,85,,1,3,33620224,2,2,2,14,15,1,{},{}
 1551,Bible,Bible,4,60000,,1000,115,,1,2,33620224,2,2,3,27,15,1,{},{ bonus bInt,2; }
@@ -778,7 +778,7 @@
 1623,Mighty_Staff_,Mighty Staff,4,,,700,165,,1,0,134316820,2,2,3,1,10,1,{},{ bonus bStr,10; bonus bInt,4; bonus bMatkRate,20; bonus2 bSPDrainValue,100,-1; }
 1624,Unknown_Item,Unknown Item,4,20,,800,60,,1,2,99092,2,2,3,70,10,1,{},{ bonus bMatkRate,20; bonus bInt,1; bonus bDex,1; if(getequiprefinerycnt(3)>=9) { bonus bMatkRate,3; bonus bMaxSp,300; } bonus bAtkEle,9; }
 1625,Unknown_Item,Unknown Item,4,20,,400,10,,1,0,33040,2,2,3,55,10,1,{},{ bonus bMatkRate,15; bonus bAtkEle,6; }
-1626,Unknown_Item,スタッフオブピアーシング,4,20,,500,80,,1,0,99092,2,2,3,70,10,1,{},{ bonus bMatkRate,15; bonus bInt,4; }
+1626,Unknown_Item,Unknown Item,4,20,,500,80,,1,0,99092,2,2,3,70,10,1,{},{ bonus bMatkRate,15; bonus bInt,4; }
 
 1701,Bow,Bow,4,1000,,500,15,,5,3,1706056,2,34,1,4,11,1,{},{}
 1702,Bow_,Bow,4,1000,,500,15,,5,4,1706056,2,34,1,4,11,1,{},{}
@@ -808,7 +808,7 @@
 1726,Hunter_Bow_,Hunter Bow,4,64000,,1500,125,,5,1,2048,2,34,3,33,11,1,{},{}
 1727,Ballista_,Ballista,4,20,,3500,145,,5,1,1574912,2,34,4,77,11,1,{},{}
 1728,Ballista__,Ballista,4,,,100,194,,5,0,1574912,2,34,4,1,11,1,{},{ bonus bAddLongWeaponDamage,20; }
-1729,Unknown_Item,ルドラの弓R,0,,,1200,185,,5,0,1705992,2,34,4,,11,1,{},{ bonus bAtkEle,6; bonus bInt,5; skill 35,1; skill 28,1; }
+1729,Unknown_Item,Unknown Item,4,,,1200,185,,5,0,1705992,2,34,4,,11,1,{},{ bonus bAtkEle,6; bonus bInt,5; skill 35,1; skill 28,1; }
 1730,Unknown_Item,Unknown Item,4,20,,1400,95,,5,1,133120,2,34,3,55,11,1,{},{ bonus2 bSubEle,3,10; if(getequipid(11)==1752) bonus bAddLongWeaponDamage,25; }
 1731,Unknown_Item,Unknown Item,4,20,,1400,100,,5,1,133120,2,34,3,55,11,1,{},{ bonus2 bAddEff,Eff_Freeze,200; if(getequipid(11)==1754) bonus bAddLongWeaponDamage,25; }
 1732,Unknown_Item,Unknown Item,4,20,,1400,105,,5,1,133120,2,34,3,55,11,1,{},{ bonus2 bAddEff,Eff_Blind,200; if(getequipid(11)==1756) bonus bAddLongWeaponDamage,25; }
@@ -856,11 +856,11 @@
 1815,Garm's_Claw,Hatii Claw,4,20,,550,152,,1,1,33024,2,2,4,70,12,1,{},{ bonus bMaxHPrate,-2; bonus2 bAddEff,Eff_Bleed,200; bonus bAtkEle,7; }
 1816,Berserk_,Berserk,4,20,,500,120,,1,1,33024,2,2,4,36,12,1,{},{ bonus bAspdRate,12; }
 1817,Kaiser_Knuckle_,Kaiser Knuckle,4,,,450,159,,1,0,16810240,2,2,4,1,12,1,{},{bonus2 bAddEle,1,10; bonus2 bAddEle,2,10; bonus2 bAddEle,3,10; bonus2 bAddEle,4,10; bonus2 bAddRace,1,5; bonus bAspdRate,5; }
-1818,Unknown_Item,マグマフィスト,4,20,,650,80,,1,3,33024,2,2,3,75,12,1,{},{ bonus3 bAutoSelfSpell,280,5,500; }
-1819,Unknown_Item,アイシクルフィスト,4,20,,650,80,,1,3,33024,2,2,3,75,12,1,{},{ bonus3 bAutoSelfSpell,281,5,500; }
-1820,Unknown_Item,エレクトリックフィスト,4,20,,650,80,,1,3,33024,2,2,3,75,12,1,{},{ bonus3 bAutoSelfSpell,282,5,500; }
-1821,Unknown_Item,サイズミックフィスト,4,20,,650,80,,1,3,33024,2,2,3,75,12,1,{},{ bonus3 bAutoSelfSpell,283,5,500; }
-1822,Unknown_Item,祝福の爪,4,20,,500,30,,1,4,33024,2,2,3,60,12,1,{},{ bonus2 bAddSkillDamageRate,263,15; bonus2 bAddSkillDamageRate,272,15; bonus2 bAddSkillDamageRate,273,20; }
+1818,Unknown_Item,Unknown Item,4,20,,650,80,,1,3,33024,2,2,3,75,12,1,{},{ bonus3 bAutoSelfSpell,280,5,500; }
+1819,Unknown_Item,Unknown Item,4,20,,650,80,,1,3,33024,2,2,3,75,12,1,{},{ bonus3 bAutoSelfSpell,281,5,500; }
+1820,Unknown_Item,Unknown Item,4,20,,650,80,,1,3,33024,2,2,3,75,12,1,{},{ bonus3 bAutoSelfSpell,282,5,500; }
+1821,Unknown_Item,Unknown Item,4,20,,650,80,,1,3,33024,2,2,3,75,12,1,{},{ bonus3 bAutoSelfSpell,283,5,500; }
+1822,Unknown_Item,Unknown Item,4,20,,500,30,,1,4,33024,2,2,3,60,12,1,{},{ bonus2 bAddSkillDamageRate,263,15; bonus2 bAddSkillDamageRate,272,15; bonus2 bAddSkillDamageRate,273,20; }
 
 1901,Violin,Violin,4,4000,,700,50,,1,3,524288,2,2,1,2,13,1,{},{}
 1902,Violin_,Violin,4,4000,,700,50,,1,4,524288,2,2,1,2,13,1,{},{}
@@ -880,8 +880,8 @@
 1916,Guitar_of_Vast_Ground,Green Acre Guitar,4,20,,900,110,,1,0,524288,2,2,3,27,13,1,{},{ bonus bAtkEle,2; }
 1917,Guitar_of_Breeze,Gentle Breeze Guitar,4,20,,900,110,,1,0,524288,2,2,3,27,13,1,{},{ bonus bAtkEle,4; }
 1918,Korean_Mandolin,Oriental Flute,4,20,,1200,150,,1,0,524288,2,2,4,65,13,1,{},{ bonus2 bAddSkillDamageRate,394,10; bonus2 bAddSkillDamageRate,316,10; }
-1919,Unknown_Item,ベースギター,4,20,,1500,130,,1,1,524288,2,2,3,70,13,1,{},{ bonus bSPGainValue,3; bonus3 bRevAutoSpell,91,3,500; }
-1920,Unknown_Item,取り憑かれたギター,4,20,,1800,10,,1,0,524288,2,2,4,70,13,1,{},{ bonus bAspd,190-readparam(bAspd); bonus bHPrecovRate,-100; bonus2 bHPPenaltyTime,5000,50; }
+1919,Unknown_Item,Unknown Item,4,20,,1500,130,,1,1,524288,2,2,3,70,13,1,{},{ bonus bSPGainValue,3; bonus3 bRevAutoSpell,91,3,500; }
+1920,Unknown_Item,Unknown Item,4,20,,1800,10,,1,0,524288,2,2,4,70,13,1,{},{ bonus bAspd,190-readparam(bAspd); bonus bHPrecovRate,-100; bonus2 bHPPenaltyTime,5000,50; }
 
 1950,Rope,Rope,4,2500,,400,45,,2,3,1048576,2,2,1,3,14,1,{},{}
 1951,Rope_,Rope,4,2500,,400,45,,2,4,1048576,2,2,1,3,14,1,{},{}
@@ -905,9 +905,9 @@
 1969,Blade_Whip,Blade Whip,4,20,,1200,140,,2,0,1048576,2,2,4,30,14,1,{},{ bonus2 bAddEff,Eff_Bleed,300; }
 1970,Whip_of_Queen's,Queen's Whip,4,20,,1100,150,,2,0,1048576,2,2,4,65,14,1,{},{ bonus2 bAddSkillDamageRate,394,10; bonus2 bAddSkillDamageRate,324,10; }
 1971,Electric_Wire,Electric Wire,4,,,700,110,,2,0,1048576,2,2,3,30,14,1,{},{ bonus bAtkEle,4; }
-1972,Unknown_Item,電気ウナギ,4,20,,2000,100,,2,2,1048576,2,2,4,70,14,1,{},{ bonus bInt,2; bonus bAgi,2; bonus3 bAutoSpell,84,3,500; bonus3 bAutoSpell,394,getequiprefinerycnt(3),500; }
-1973,Unknown_Item,海魔女の足,4,20,,1500,110,,2,1,1048576,2,2,4,70,14,1,{},{ bonus bSPGainValue,5; bonus3 bRevAutoSpell,88,3,500; }
-1974,Unknown_Item,にんじん鞭,4,20,,1300,185,,2,0,1048576,2,2,4,70,14,1,{},{ bonus3 bRevAutoSelfSpell,29,getequiprefinerycnt(3),500; }
+1972,Unknown_Item,Unknown Item,4,20,,2000,100,,2,2,1048576,2,2,4,70,14,1,{},{ bonus bInt,2; bonus bAgi,2; bonus3 bAutoSpell,84,3,500; bonus3 bAutoSpell,394,getequiprefinerycnt(3),500; }
+1973,Unknown_Item,Unknown Item,4,20,,1500,110,,2,1,1048576,2,2,4,70,14,1,{},{ bonus bSPGainValue,5; bonus3 bRevAutoSpell,88,3,500; }
+1974,Unknown_Item,Unknown Item,4,20,,1300,185,,2,0,1048576,2,2,4,70,14,1,{},{ bonus3 bRevAutoSelfSpell,29,getequiprefinerycnt(3),500; }
 
 2000,Unknown_Item,Unknown Item,4,20,,2500,130,,1,1,512,2,34,4,80,10,1,{},{ bonus bMatkRate,25+getequiprefinerycnt(3)/2; bonus bInt,3; bonus bAgi,10; }
 2001,Unknown_Item,Unknown Item,4,20,,1500,120,,1,0,33024,2,34,4,70,10,1,{},{ bonus bMatkRate,15; bonus bDex,4; bonus2 bSubRace,1,15; bonus2 bSubRace,6,15; bonus bAtkEle,6; if(getequipid(7)==2677 || getequipid(8)==2677) { bonus bMatkRate,10; bonus bDex,2; bonus2 bSubRace,1,10; bonus2 bSubRace,6,10; } }
@@ -1106,7 +1106,7 @@
 2364,Unknown_Item,Unknown Item,5,20,,3000,,10,,1,279714,2,16,,55,0,1,{},{ bonus2 bResEff,Eff_Stan,3000; bonus2 bResEff,Eff_Freeze,3000; }
 2365,Unknown_Item,Unknown Item,5,20,,300,,2,,1,2088958,2,16,,55,0,1,{},{ bonus bCastrate,15; bonus bNoCastCancel,0; }
 2366,Unknown_Item,Unknown Item,5,20,,1500,,6,,1,2088958,2,16,,55,0,1,{},{ bonus2 bAddEff,Eff_Curse,500; bonus2 bAddEff,Eff_Silence,500; bonus2 bAddEff,Eff_Stan,500; bonus2 bAddEff,Eff_Sleep,500; bonus2 bAddEff,Eff_Stone,500; }
-2367,Unknown_Item,Unknown Item,5,20,,750,,5,,1,2048,2,16,,50,0,1,{},{ bonus bCritical,6; bonus bMdef,5; bonus bCastRate,-23; }
+2367,Unknown_Item,Unknown Item,5,20,,750,,5,,1,2048,2,16,,50,0,1,{},{ bonus bCritical,6; bonus bMdef,5; bonus bCastrate,-23; }
 
 2401,Sandals,Sandals,5,400,,200,,1,,0,1000333311,2,64,,0,0,1,{},{}
 2402,Sandals_,Sandals,5,400,,200,,1,,1,1000333311,2,64,,0,0,1,{},{}
@@ -1198,7 +1198,7 @@
 2628,Novice_Armlet,Novice Armlet,5,400,,200,,0,,1,8388609,2,136,,0,0,,{},{}
 2629,Magingiorde,Megingjard,5,20,,8000,,2,,0,1000333311,2,136,,94,0,,{},{ bonus bStr,40; bonus bMdef,7; }
 2630,Brysinggamen,Brisingamen,5,20,,1500,,1,,0,1000333311,2,136,,94,0,,{},{ bonus bStr,6; bonus bAgi,6; bonus bVit,6; bonus bInt,6; bonus bLuk,10; bonus bMdef,5; }
-2631,Pebble_Ring,Celebration Ring,5,0,,10,,0,,0,1000333311,2,136,,0,0,1,{},{ bonus bStr,1; bonus bAgi,1; bonus bVit,1; bonus bInt,1; bonus bDex,1; bonus bLuk,1; }
+2631,Pebble_Ring,Celebration Ring,5,0,,10,,0,,0,1000333311,2,136,,0,0,,{},{ bonus bStr,1; bonus bAgi,1; bonus bVit,1; bonus bInt,1; bonus bDex,1; bonus bLuk,1; }
 
 2634,Wedding_Ring,Wedding Ring,4,,-1,0,,0,,0,1000333311,1,136,,0,,,{},{ skill 334,1; skill 335,1; skill 336,1; }
 2635,Wedding_Ring,Wedding Ring,4,,-1,0,,0,,0,1000333311,0,136,,0,,,{},{ skill 334,1; skill 335,1; skill 336,1; }
@@ -1234,7 +1234,7 @@
 2665,Ring_of_Exorcism,Excorsist Ring,5,,,500,,0,,,33040,2,136,,60,,,{},{ bonus2 bExpRate,1,5; bonus2 bExpRate,6,5; bonus bMdef,1; }
 2666,Lamp_of_Hope,Lantern of Hope,5,,,100,,0,,,1000333311,2,136,,,,,{},{ bonus bStr,2; bonus2 bResEff,Eff_Blind,1000; }
 2667,Glove_of_Acher,Renown Archer's Gloves,5,,,300,,0,,,991944702,2,136,,60,,,{},{ bonus bDex,1; bonus bHit,5; bonus bCritical,5; }
-2668,Glory_of_Women,Women's Glory,5,,,1500,,1,,0,1000333311,2,136,,94,,1,{},{ bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bSPrecovRate,20; }
+2668,Glory_of_Women,Women's Glory,5,,,1500,,1,,0,1000333311,2,136,,94,,,{},{ bonus bStr,3; bonus bAgi,3; bonus bVit,3; bonus bInt,3; bonus bDex,3; bonus bLuk,3; bonus bSPrecovRate,20; }
 2669,RJC_Necklace,RJC Necklace,5,,,100,,0,,1,1000333311,2,136,,0,0,,{},{ bonus bMaxSP,10; }
 2670,Unknown_Item,Ring of Longing,5,,,100,,1,,0,1000333311,2,136,,30,,,{},{ bonus bFlee,5; }
 2671,Thimble_Of_Archer_,Bow Thimble,5,10000,,100,,0,,1,1574920,2,136,,65,0,,{},{ bonus bAddLongWeaponDamage,3; }
@@ -1499,7 +1499,7 @@
 4226,Sting_Card,Sting Card,6,20,,10,,,,,,,32,,,,,{},{ bonus bDef,2; if(getequiprefinerycnt(3)>8) bonus bMdef,5; }
 4227,Spring_Labbit_Card,Spring Rabbit Card,6,20,,10,,,,,,,136,,,,,{},{ bonus3 bAddMonsterDropItem,517,2,500; bonus3 bAddMonsterDropItem,528,2,500; bonus2 bItemHealRate,5,50; }
 4228,Sleeper_Card,Sleeper Card,6,20,,10,,,,,,,136,,,,,{},{ bonus3 bAddMonsterDropItem,12031,5,300; }
-4229,C_Tower_Manager_Card,Tower Keeper Card,6,20,,10,,,,,,,769,,,,,{},{ bonus bInt,1; bonus bCastRate,-5; }
+4229,C_Tower_Manager_Card,Tower Keeper Card,6,20,,10,,,,,,,769,,,,,{},{ bonus bInt,1; bonus bCastrate,-5; }
 4230,Shinobi_Card,Shinobi Card,6,20,,10,,,,,,,136,,,,,{},{ bonus bAgi,1; if(getskilllv(135)>0) bonus3 bRevAutoSelfSpell,135,5,200; }
 4231,Increase_Soil_Card,Mi Gao Card,6,20,,10,,,,,,,32,,,,,{},{ bonus2 bSubGroup,5,50; }
 4232,Wild_Ginseng_Card,Hermit Plant Card,6,20,,10,,,,,,,136,,,,,{},{ bonus3 bAddMonsterDropItem,507,3,500; bonus3 bAddMonsterDropItem,508,3,500; bonus3 bAddMonsterDropItem,509,3,500; bonus2 bItemHealRate,2,50; }
@@ -1874,7 +1874,7 @@
 5193,Unknown_Item,Green Ribbon,5,,,100,,1,,1,1000333311,2,256,,,244,1,{},{ bonus bMdef,3; }
 5194,Unknown_Item,Pink Ribbon,5,,,100,,1,,1,1000333311,2,256,,,245,1,{},{ bonus bMdef,3; }
 5195,Unknown_Item,Red Ribbon,5,,,100,,1,,1,1000333311,2,256,,,246,1,{},{ bonus bMdef,3; }
-5196,Unknown_Item,Orange Ribbon,5,,,100,,1,,1,1000333311,2,256,,,247,1,{},{ bonus bMdef,3; }
+5196,Unknown_Item,Orange Ribbon,5,,,100,,1,,1,1000333311,2,256,,,247,1,{},{ bonus bMdef,3; bonus3 bAutoSpell,85,1,100; }
 5197,Unknown_Item,White Ribbon,5,,,100,,1,,1,1000333311,2,256,,,248,1,{},{ bonus bMdef,3; }
 5198,Unknown_Item,Drooping Bunny,5,,,100,,1,,,1000333311,2,256,,,249,,{},{ bonus bDex,1; bonus bFlee,2; }
 5199,Unknown_Item,Baseball Cap,5,,,200,,3,,,1000333311,2,256,,,216,,{},{}
@@ -1951,7 +1951,7 @@
 5277,Unknown_Item,Unknown Item,5,,,100,,1,,0,991944702,2,256,,20,309,1,{},{ bonus bLuk,2; bonus bVit,2; bonus bLongAtkDef,10; }
 5278,Unknown_Item,Unknown Item,5,,,100,,1,,0,991944702,2,256,,20,310,1,{},{ bonus bLuk,2; bonus bVit,2; bonus bLongAtkDef,10; }
 
-5280,Unknown_Item,マジェスティックゴートR,5,,,800,,5,,0,991944702,2,256,,,41,1,{ bonus bStr,1; },{}
+5280,Unknown_Item,Unknown Item,5,,,800,,5,,0,991944702,2,256,,,41,1,{ bonus bStr,1; },{}
 
 5800,Unknown_Item,Unknown Item,5,,,50,,0,,0,1000333311,2,512,,,125,,{},{ bonus2 bSubRace,7,3; }
 5801,Unknown_Item,Unknown Item,5,,,100,,,,,1000333311,2,256,,,167,1,{},{ bonus bStr,2; bonus bAgi,2; bonus bVit,2; bonus bInt,2; bonus bDex,2; bonus bLuk,2; bonus2 bSubRace,7,10; bonus4 bAutoSpell,28,5,3,EAS_REVENGE|EAS_SELF|EAS_USEMAX|EAS_NOSP; }
@@ -2830,10 +2830,10 @@
 12115,Elemental_Converter_Water,Elemental Converter,2,,,10,,,,,1000333311,2,,,,,,{ sc_start SC_WaterWeapon,180000,1; },{}
 12116,Elemental_Converter_Earth,Elemental Converter,2,,,10,,,,,1000333311,2,,,,,,{ sc_start SC_GroundWeapon,180000,1; },{}
 12117,Elemental_Converter_Wind,Elemental Converter,2,,,10,,,,,1000333311,2,,,,,,{ sc_start SC_WindWeapon,180000,1; },{}
-12118,Resist_Fire_Potion,Fireproof Potion,2,2,,10,,,,,1000333311,2,,,,,,{ sc_end SC_ResistClear; sc_start SC_ResistFire,120000,20; sc_start SC_ResistWater,120000,-15; },{}
-12119,Resist_Water_Potion,Coldproof Potion,2,2,,10,,,,,1000333311,2,,,,,,{ sc_end SC_ResistClear; sc_start SC_ResistWater,120000,20; sc_start SC_ResistFire,120000,-15; },{}
-12120,Resist_Earth_Potion,Earthproof Potion,2,2,,10,,,,,1000333311,2,,,,,,{ sc_end SC_ResistClear; sc_start SC_ResistGround,120000,20; sc_start SC_ResistWind,120000,-15; },{}
-12121,Resist_Wind_Potion,Thunderproof Potion,2,2,,10,,,,,1000333311,2,,,,,,{ sc_end SC_ResistClear; sc_start SC_ResistWind,120000,20; sc_start SC_ResistGround,120000,-15; },{}
+12118,Resist_Fire_Potion,Fireproof Potion,2,2,,10,,,,,1000333311,2,,,,,,{ sc_end SC_ResistClear; sc_start SC_ResistFire,1200000,20; sc_start SC_ResistWater,1200000,-15; },{}
+12119,Resist_Water_Potion,Coldproof Potion,2,2,,10,,,,,1000333311,2,,,,,,{ sc_end SC_ResistClear; sc_start SC_ResistWater,1200000,20; sc_start SC_ResistFire,1200000,-15; },{}
+12120,Resist_Earth_Potion,Earthproof Potion,2,2,,10,,,,,1000333311,2,,,,,,{ sc_end SC_ResistClear; sc_start SC_ResistGround,1200000,20; sc_start SC_ResistWind,1200000,-15; },{}
+12121,Resist_Wind_Potion,Thunderproof Potion,2,2,,10,,,,,1000333311,2,,,,,,{ sc_end SC_ResistClear; sc_start SC_ResistWind,1200000,20; sc_start SC_ResistGround,1200000,-15; },{}
 12122,Dasik,Sesame Pastry,2,,,70,,,,,1000333311,2,,,,,,{ sc_start SC_MHIT,180000,30; },{}
 12123,Oil_and_Honey_Pastry,Honey Pastry,2,,,70,,,,,1000333311,2,,,,,,{ sc_start SC_MFLEE,180000,30; },{}
 12124,Rainbow_Colored_Rice_Cake,Rainbow Cake,2,,,70,,,,,1000333311,2,,,,,,{ sc_start SC_MATK,60000,10; sc_start SC_MMATK,60000,10; },{}
@@ -2946,7 +2946,7 @@
 12238,Unknown_Item,New Year Rice Cake,2,,,100,,,,,1000333311,2,,,,,,{},{}
 12239,Unknown_Item,New Year Rice Cake,2,,,100,,,,,1000333311,2,,,,,,{},{}
 12240,Unknown_Item,Old Yellow Box,2,,,200,,,,,1000333311,2,,,,,,{ getitem rand(5259,5262),1; },{}
-12241,Unknon_Item,Unknown Item,2,,,100,,,,,,2,,,,,,{ sc_end SC_POISONPOTION; sc_start SC_SpeedPot0,1800000,0; },{}
+12241,Unknown_Item,Unknown Item,2,,,100,,,,,,2,,,,,,{ sc_end SC_POISONPOTION; sc_start SC_SpeedPot0,1800000,0; },{}
 12242,Unknown_Item,Unknown Item,2,,,100,,,,,,2,,,,,,{ sc_end SC_POISONPOTION; sc_start SC_SpeedPot1,1800000,0; },{}
 12243,Unknown_Item,Unknown Item,2,,,100,,,,,,2,,,,,,{ sc_end SC_POISONPOTION; sc_start SC_SpeedPot2,1800000,0; },{}
 12244,Unknown_Item,Unknown Item,2,,,200,,,,,1000333311,2,,,,,,{ getitem rand(5270,5272),1; },{}
@@ -3083,7 +3083,7 @@
 13022,Counter_Dagger_,Counter Dagger,4,,,550,175,,1,0,134283780,2,2,4,1,1,1,{},{ bonus bCritical,90; }
 13023,Asura__,Ashura,4,,,600,70,,1,0,536870912,2,2,1,1,1,1,{},{ bonus bMatkRate,15; }
 
-13026,Unknown_Item,月光剣R,4,,,700,85,,1,0,673144558,2,2,4,,1,1,{},{ bonus2 bSPDrainValue,100,3; bonus bMaxSPrate,10; }
+13026,Unknown_Item,Unknown Item,4,,,700,85,,1,0,673144558,2,2,4,,1,1,{},{ bonus2 bSPDrainValue,100,3; bonus bMaxSPrate,10; }
 13027,Unknown_Item,Unknown Item,4,20,,500,120,,1,3,2055918,2,2,4,55,1,1,{},{ bonus2 bAddEff,Eff_Bleed,500; }
 13028,Unknown_Item,Unknown Item,4,20,,700,130,,1,1,2055918,2,2,4,55,1,1,{},{}
 
@@ -3094,7 +3094,7 @@
 13104,Garrison,Garrison,4,48000,,500,70,,8,1,268435456,2,34,2,55,17,1,{},{ bonus bHit,-10; }
 13105,Garrison_,Garrison,4,48000,,500,70,,8,2,268435456,2,34,2,55,17,1,{},{ bonus bHit,-10; }
 13106,Gold_Lux,Gold Lux,4,100000,,500,20,,8,0,268435456,2,34,3,12,17,1,{},{ bonus bHit,-10; bonus4 bAutoSpell,500,1,100,EAS_USEBETTER | EAS_NOSP; }
-13107,Unknown_Item,荒野の無法者,4,20,,580,68,,8,2,268435456,2,34,3,70,17,1,{},{}
+13107,Unknown_Item,Unknown Item,4,20,,580,68,,8,2,268435456,2,34,3,70,17,1,{},{}
 
 13150,Branch,Branch,4,3000,,500,50,,10,3,268435456,2,34,1,1,18,1,{},{}
 13151,Cyclon,Cyclone,4,17500,,700,130,,10,1,268435456,2,34,2,24,18,1,{},{ bonus bHit,10; bonus bCriticalRate,10; }
@@ -3116,7 +3116,7 @@
 13167,Unknown_Item,Gatekeeper-DD_,4,20,,1300,200,,10,0,268435456,2,34,3,70,19,1,{},{ bonus bSplashRange,1; bonus bDex,1; bonus4 bAutoSpell,520,6,300,EAS_WEAPON | EAS_MAGIC | EAS_NORMAL | EAS_SKILL | EAS_NOSP; bonus bDef,getequiprefinerycnt(4); }
 13168,Unknown_Item,THUNDER-P,4,20,,700,80,,10,1,268435456,2,34,3,3,19,1,{},{ bonus bSplashRange,1; bonus bHit,-5; bonus bAspdAddRate,20; }
 13169,Unknown_Item,THUNDER-P,4,20,,700,80,,10,2,268435456,2,34,3,3,19,1,{},{ bonus bSplashRange,1; bonus bHit,-5; bonus bAspdAddRate,20; }
-13170,Unknown_Item,レバーアクションライフル,4,20,,770,138,,10,2,268435456,2,34,3,70,18,1,{},{ bonus bHit,20; bonus bCritical,50; bonus bAspdAddRate,-5; }
+13170,Unknown_Item,Unknown Item,4,20,,770,138,,10,2,268435456,2,34,3,70,18,1,{},{ bonus bHit,20; bonus bCritical,50; bonus bAspdAddRate,-5; }
 
 13200,Bullet,Bullet,10,1,,2,10,,,,268435456,2,32768,,,,,{},{}
 13201,Silver_Bullet,Silver Bullet,10,15,,2,15,,,,268435456,2,32768,,,,,{},{ bonus bAtkEle,6; }
@@ -3146,36 +3146,36 @@
 
 13400,Cutlas_,Cutlus,4,20,,900,150,,,1,414946,2,2,4,40,2,1,{},{ skill 5,5; bonus bStr,2; bonus bDef,1; }
 13401,Excalibur_,Excalibur,4,,,1200,199,,1,0,414946,2,2,4,40,2,1,{},{ bonus bInt,10; bonus bLuk,10; bonus bAtkEle,6; }
-13402,Unknown_Item,カトラスR,4,,,90,185,,1,0,414946,2,2,4,,2,1,{},{ skill 5,5; bonus bStr,2; bonus bDef,1; }
-13403,Unknown_Item,太陽剣R,4,,,1200,120,,1,0,414946,2,2,4,,2,1,{},{ bonus bAtkEle,3; bonus2 bHPDrainRate,100,1; bonus2 bSPPenaltyTime,10000,15; }
+13402,Unknown_Item,Unknown Item,4,,,90,185,,1,0,414946,2,2,4,,2,1,{},{ skill 5,5; bonus bStr,2; bonus bDef,1; }
+13403,Unknown_Item,Unknown Item,4,,,1200,120,,1,0,414946,2,2,4,,2,1,{},{ bonus bAtkEle,3; bonus2 bHPDrainRate,100,1; bonus2 bSPPenaltyTime,10000,15; }
 13404,Unknown_Item,Unknown Item,4,20,,1500,130,,1,1,414946,2,2,4,55,2,1,{},{ bonus bCriticalRate,50; }
 13405,Unknown_Item,Unknown Item,4,20,,800,125,,1,2,414946,2,2,4,55,2,1,{},{ bonus bAspdAddRate,10; bonus2 bAddEff,Eff_Curse,500; }
 
 13500,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14500,10; },{}
 13501,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 12215,15; getitem 12216,15; getitem 12218,10; getitem 12219,10; },{}
 
-13503,Unknown_Item,マジェスティックゴートRの箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 5280,1; },{}
+13503,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 5280,1; },{}
 
-13505,Unknown_Item,エクスキューショナーRの箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 1174,1; },{}
+13505,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 1174,1; },{}
 
-13507,Unknown_Item,トマホークRの箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 1374,1; },{}
-13508,Unknown_Item,ルドラの弓Rの箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 1729,1; },{}
-13509,Unknown_Item,カトラスRの箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 13402,1; },{}
-13510,Unknown_Item,太陽剣Rの箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 13403,1; },{}
+13507,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 1374,1; },{}
+13508,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 1729,1; },{}
+13509,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 13402,1; },{}
+13510,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 13403,1; },{}
 
-13513,Unknown_Item,月光剣Rの箱,2,,,10,,,,,,2,,,,,,{ getitem 13026,1; },{}
-13514,Unknown_Item,スパナRの箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 1534,1; },{}
+13513,Unknown_Item,Unknown Item,2,,,10,,,,,,2,,,,,,{ getitem 13026,1; },{}
+13514,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 1534,1; },{}
 13515,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 514,10; },{}
 13516,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 526,5; },{}
 13517,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 607,3; },{}
-13518,Unknown_Item,武器カードスクロールの箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14501,1; },{}
-13519,Unknown_Item,鎧カードスクロールの箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14502,1; },{}
-13520,Unknown_Item,兜カードスクロールの箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14503,1; },{}
-13521,Unknown_Item,肩にかける物カードスクロールの箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14504,1; },{}
-13522,Unknown_Item,盾カードスクロールの箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14505,1; },{}
-13523,Unknown_Item,靴カードスクロールの箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14506,1; },{}
-13524,Unknown_Item,アクセサリーカードスクロールの箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14507,1; },{}
-13525,Unknown_Item,ゼニースクロールの箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14508,1; },{}
+13518,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14501,1; },{}
+13519,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14502,1; },{}
+13520,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14503,1; },{}
+13521,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14504,1; },{}
+13522,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14505,1; },{}
+13523,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14506,1; },{}
+13524,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14507,1; },{}
+13525,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14508,1; },{}
 13526,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{},{}
 13527,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{},{}
 13528,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{},{}
@@ -3188,48 +3188,48 @@
 13535,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14509,20; },{}
 13536,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14510,20; },{}
 13537,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14511,20; },{}
-13538,Unknown_Item,メテオストームLv10の箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14512,1; },{}
-13539,Unknown_Item,ストームガストLv10の箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14513,1; },{}
-13540,Unknown_Item,ロードオブヴァーミリオンLv10の箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14514,1; },{}
-13541,Unknown_Item,レックスエーテルナLv1の箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14515,1; },{}
-13542,Unknown_Item,マグニフィカートLv5の箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14516,1; },{}
-13543,Unknown_Item,ケミカルヘルムチャージLv5の箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14517,1; getitem 7139,1; },{}
-13544,Unknown_Item,ケミカルシールドチャージLv5の箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14518,1; getitem 7139,1; },{}
-13545,Unknown_Item,ケミカルアーマーチャージLv5の箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14519,1; getitem 7139,1; },{}
-13546,Unknown_Item,ケミカルウェポンチャージLv5の箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14520,1; getitem 7139,1; },{}
-13547,Unknown_Item,武器修理Lv1の箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14521,1; getitem 1002,1; getitem 998,1; getitem 999,1; getitem 756,1; },{}
-13548,Unknown_Item,王饅頭の箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14522,10; },{}
-13549,Unknown_Item,丸薬の箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14523,10; },{}
-13550,Unknown_Item,幻想の刺身の箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14524,10; },{}
-13551,Unknown_Item,鏡餅の箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14525,10; },{}
-13552,Unknown_Item,油菓子の箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14526,10; },{}
-13553,Unknown_Item,ダンジョン空間移動スクロールの箱,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14527,1; },{}
+13538,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14512,1; },{}
+13539,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14513,1; },{}
+13540,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14514,1; },{}
+13541,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14515,1; },{}
+13542,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14516,1; },{}
+13543,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14517,1; getitem 7139,1; },{}
+13544,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14518,1; getitem 7139,1; },{}
+13545,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14519,1; getitem 7139,1; },{}
+13546,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14520,1; getitem 7139,1; },{}
+13547,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14521,1; getitem 1002,1; getitem 998,1; getitem 999,1; getitem 756,1; },{}
+13548,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14522,10; },{}
+13549,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14523,10; },{}
+13550,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14524,10; },{}
+13551,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14525,10; },{}
+13552,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14526,10; },{}
+13553,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ getitem 14527,1; },{}
 
 14500,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{},{}
-14501,Unknown_Item,武器カードスクロール,2,,,10,,,,,1000333311,2,,,,,,{},{}
-14502,Unknown_Item,鎧カードスクロール,2,,,10,,,,,1000333311,2,,,,,,{},{}
-14503,Unknown_Item,兜カードスクロール,2,,,10,,,,,1000333311,2,,,,,,{},{}
-14504,Unknown_Item,肩にかける物カードスクロール,2,,,10,,,,,1000333311,2,,,,,,{},{}
-14505,Unknown_Item,盾カードスクロール,2,,,10,,,,,1000333311,2,,,,,,{},{}
-14506,Unknown_Item,靴カードスクロール,2,,,10,,,,,1000333311,2,,,,,,{},{}
-14507,Unknown_Item,アクセサリーカードスクロール,2,,,10,,,,,1000333311,2,,,,,,{},{}
-14508,Unknown_Item,ゼニースクロール,2,,,10,,,,,1000333311,2,,,,,,{},{}
+14501,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{},{}
+14502,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{},{}
+14503,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{},{}
+14504,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{},{}
+14505,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{},{}
+14506,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{},{}
+14507,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{},{}
+14508,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{},{}
 14509,Unknown_Item,Unknown Item,2,,,20,,,,,1000333311,2,,,,,,{ sc_end SC_POISONPOTION; sc_start SC_SpeedPot0,1800000,0; },{}
 14510,Unknown_Item,Unknown Item,2,,,20,,,,,998760175,2,,,40,,,{ sc_end SC_POISONPOTION; sc_start SC_SpeedPot1,1800000,0; },{}
 14511,Unknown_Item,Unknown Item,2,,,20,,,,,148102,2,,,85,,,{ sc_end SC_POISONPOTION; sc_start SC_SpeedPot2,1800000,0; },{}
-14512,Unknown_Item,メテオストームLv10,2,,,10,,,,,1000333311,2,,,,,,{ itemskill 83,10,""; },{}
-14513,Unknown_Item,ストームガストLv10,2,,,10,,,,,1000333311,2,,,,,,{ itemskill 89,10,""; },{}
-14514,Unknown_Item,ロードオブヴァーミリオンLv10,2,,,10,,,,,1000333311,2,,,,,,{ itemskill 85,10,""; },{}
-14515,Unknown_Item,レックスエーテルナLv1,2,,,10,,,,,1000333311,2,,,,,,{ itemskill 78,1,""; },{}
-14516,Unknown_Item,マグニフィカートLv5,2,,,10,,,,,1000333311,2,,,,,,{ itemskill 74,5,""; },{}
-14517,Unknown_Item,ケミカルヘルムチャージLv5,2,,,10,,,,,1000333311,2,,,,,,{ itemskill 237,5,""; },{}
-14518,Unknown_Item,ケミカルシールドチャージLv5,2,,,10,,,,,1000333311,2,,,,,,{ itemskill 235,5,""; },{}
-14519,Unknown_Item,ケミカルアーマーチャージLv5,2,,,10,,,,,1000333311,2,,,,,,{ itemskill 236,5,""; },{}
-14520,Unknown_Item,ケミカルウェポンチャージLv5,2,,,10,,,,,1000333311,2,,,,,,{ itemskill 234,5,""; },{}
-14521,Unknown_Item,武器修理Lv1,2,,,10,,,,,1000333311,2,,,,,,{ itemskill 108,1,""; },{}
-14522,Unknown_Item,王饅頭,2,,,10,,,,,1000333311,2,,,,,,{ percentheal 100,0; },{}
+14512,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ itemskill 83,10,""; },{}
+14513,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ itemskill 89,10,""; },{}
+14514,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ itemskill 85,10,""; },{}
+14515,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ itemskill 78,1,""; },{}
+14516,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ itemskill 74,5,""; },{}
+14517,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ itemskill 237,5,""; },{}
+14518,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ itemskill 235,5,""; },{}
+14519,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ itemskill 236,5,""; },{}
+14520,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ itemskill 234,5,""; },{}
+14521,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ itemskill 108,1,""; },{}
+14522,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ percentheal 100,0; },{}
 14523,Unknown_Item,Pellet,2,,,10,,,,,1000333311,2,,,,,,{ percentheal 0,100; },{}
-14524,Unknown_Item,幻想の刺身,2,,,10,,,,,1000333311,2,,,,,,{ percentheal 100,100; },{}
-14525,Unknown_Item,鏡餅,2,,,10,,,,,1000333311,2,,,,,,{ sc_start SC_INCATK,30000,30; },{}
-14526,Unknown_Item,油菓子,2,,,10,,,,,1000333311,2,,,,,,{ sc_start SC_INCMATK,30000,30; },{}
-14527,Unknown_Item,ダンジョン空間移動スクロール,2,,,10,,,,,1000333311,2,,,,,,{},{}
+14524,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ percentheal 100,100; },{}
+14525,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ sc_start SC_INCATK,30000,30; },{}
+14526,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{ sc_start SC_INCMATK,30000,30; },{}
+14527,Unknown_Item,Unknown Item,2,,,10,,,,,1000333311,2,,,,,,{},{}

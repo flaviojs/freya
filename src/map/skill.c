@@ -6933,7 +6933,8 @@ int skill_unit_onplace_timer(struct skill_unit *src,struct block_list *bl,unsign
 		}
 		break;
 	case 0xb5:	/* 温もり */
-		battle_skill_attack(BF_WEAPON,ss,&src->bl,bl,sg->skill_id,sg->skill_lv,tick,0);
+		if(battle_skill_attack(BF_WEAPON,ss,&src->bl,bl,sg->skill_id,sg->skill_lv,tick,0))
+			skill_blown(&src->bl,bl,2|SAB_REVERSEBLOW|SAB_NOPATHSTOP);
 		break;
 	case 0xb7:	/* スパイダーウェッブ */
 		sc_data = status_get_sc_data(bl);

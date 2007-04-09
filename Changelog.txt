@@ -13,6 +13,8 @@
 Date	Added
 
 04/08/2007
+	* Updated: Necessary databases to jAthena Huge CGI's latest versions [Tsuyuki]
+	* Updated: Project to jAthena 2288 [Tsuyuki]
 	* Updated: Project to jAthena 2286 [Tsuyuki]
 	* Improved: Finished formatting of script headers [Tsuyuki]
 	* Fixed: A portion of the Merchant job change quest [Tsuyuki]
