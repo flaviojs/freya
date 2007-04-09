@@ -3656,11 +3656,16 @@ int clif_damage(struct block_list *src, struct block_list *dst, unsigned int tic
 		if (type != 4 && !map[dst->m].flag.gvg && (sc_data[SC_ENDURE].timer != -1 ||
 			sc_data[SC_CONCENTRATION].timer != -1 || sc_data[SC_BERSERK].timer != -1))
 			type = 9;
-		if (sc_data[SC_HALLUCINATION].timer != -1) {
-			if (damage > 0)
-				damage = damage * (5+sc_data[SC_HALLUCINATION].val1) + rand() % 100;
-			if (damage2 > 0)
-				damage2 = damage2 * (5+sc_data[SC_HALLUCINATION].val1) + rand() % 100;
+		if(map[dst->m].flag.gvg) {
+			damage = 1;
+			damage2 = 1;
+		} else {
+			if (sc_data[SC_HALLUCINATION].timer != -1) {
+				if (damage > 0)
+					damage = damage * (5+sc_data[SC_HALLUCINATION].val1) + rand() % 100;
+				if (damage2 > 0)
+					damage2 = damage2 * (5+sc_data[SC_HALLUCINATION].val1) + rand() % 100;
+			}
 		}
 	}
 
@@ -4353,8 +4358,12 @@ int clif_skill_damage(struct block_list *src, struct block_list *dst,
 		if (type != 5 && !map[dst->m].flag.gvg && (sc_data[SC_ENDURE].timer != -1 ||
 			sc_data[SC_CONCENTRATION].timer != -1 || sc_data[SC_BERSERK].timer != -1))
 			type = 9;
-		if (sc_data[SC_HALLUCINATION].timer != -1 && damage > 0)
-			damage = damage * (5+sc_data[SC_HALLUCINATION].val1) + rand() % 100;
+		if(map[dst->m].flag.gvg) {
+			damage = 1;
+		} else {
+			if (sc_data[SC_HALLUCINATION].timer != -1 && damage > 0)
+				damage = damage * (5+sc_data[SC_HALLUCINATION].val1) + rand() % 100;
+		}
 	}
 
 	WPACKETW( 0) = 0x1de;
