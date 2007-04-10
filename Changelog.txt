@@ -12,6 +12,9 @@
 
 Date	Added
 
+04/10/2007
+	* Updated: Project to jAthena 2290 [Tsuyuki]
+
 04/08/2007
 	* Updated: Necessary databases to jAthena Huge CGI's latest versions [Tsuyuki]
 	* Updated: Project to jAthena 2288 [Tsuyuki]

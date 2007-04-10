@@ -521,6 +521,7 @@ extern struct Battle_Config {
 	int storagesort_by_itemid;
 	int cancel_race;
 	int allow_es_magic_all;
+	int sg_miracle_rate;
 } battle_config;
 
 #define BATTLE_CONF_FILENAME "conf/battle_athena.conf"

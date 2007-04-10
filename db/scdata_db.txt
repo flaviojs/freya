@@ -196,12 +196,12 @@
 221,SC_STRENGTH,0		// Power (for tarot card identification)
 222,SC_THE_DEVIL,0		// Devil (for tarot card identification)
 223,SC_THE_SUN,0		// The sun (for tarot card identification)
-224,SC_MEAL_INCSTR,0		// STR rise (for meal)
-225,SC_MEAL_INCAGI,0		// AGI rise (for meal)
-226,SC_MEAL_INCVIT,0		// VIT rise (for meal)
-227,SC_MEAL_INCINT,0		// INT rise (for meal)
-228,SC_MEAL_INCDEX,0		// DEX rise (for meal)
-229,SC_MEAL_INCLUK,0		// LUK rise (for meal)
+224,SC_MEAL_INCSTR,1		// STR rise (for meal)
+225,SC_MEAL_INCAGI,1		// AGI rise (for meal)
+226,SC_MEAL_INCVIT,1		// VIT rise (for meal)
+227,SC_MEAL_INCINT,1		// INT rise (for meal)
+228,SC_MEAL_INCDEX,1		// DEX rise (for meal)
+229,SC_MEAL_INCLUK,1		// LUK rise (for meal)
 230,SC_RUN,0			// Running
 231,SC_SPURT,0			// Running spurt state
 232,SC_TKCOMBO,0		// TEKON combo
@@ -267,10 +267,10 @@
 292,SC_CLOSECONFINE,0		// Close Confine
 293,SC_SIGHTBLASTER,0		// Sight Blaster
 294,SC_ELEMENTWATER,0		// Elemental Change : Water
-295,SC_MEAL_INCHIT,0		// HIT rise (for meal)
-296,SC_MEAL_INCFLEE,0		// fLEE rise (for meal)
+295,SC_MEAL_INCHIT,1		// HIT rise (for meal)
+296,SC_MEAL_INCFLEE,1		// fLEE rise (for meal)
 297,SC_MEAL_INCFLEE2,0		// FLEE2 rise (for meal)
-298,SC_MEAL_INCCRITICAL,0	// CRITICAL rise (for meal)
+298,SC_MEAL_INCCRITICAL,1	// CRITICAL rise (for meal)
 299,SC_MEAL_INCDEF,0		// DEF rise (for meal)
 300,SC_MEAL_INCMDEF,0		// MDEF rise (for meal)
 301,SC_MEAL_INCATK,0		// ATK rise (for meal)

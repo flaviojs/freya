@@ -1095,7 +1095,7 @@ struct Damage battle_calc_weapon_attack(
 
 		if(sc_data && sc_data[SC_MIRACLE].timer!=-1)//‘¾—z‚ÆŒŽ‚Æ¯‚ÌŠïÕ
 		{
-			//‘S‚Ä‚Ì“G‚ªŒŽ
+			//‘S‚Ä‚Ì“G‚ª¯
 			atk_rate = (src_sd->status.base_level + s_dex + s_luk + s_str)/(12-3*pc_checkskill(src_sd,SG_STAR_ANGER));
 		}else{
 			if(tclass == src_sd->hate_mob[0] && pc_checkskill(src_sd,SG_SUN_ANGER)>0)//‘¾—z‚Ì“{‚è
@@ -2822,6 +2822,10 @@ struct Damage battle_calc_weapon_attack(
 			}
 		}
 	}
+
+	//‘¾—z‚ÆŒŽ‚Æ¯‚ÌŠïÕ
+	if(src_sd && pc_checkskill(src_sd,SG_FEEL) > 2 && flag&BF_WEAPON && atn_rand()%10000 < battle_config.sg_miracle_rate)
+		status_change_start(src,SC_MIRACLE,1,0,0,0,3600000,0);
 
 	wd.damage=damage;
 	wd.damage2 = (skill_num == 0) ? damage2 : 0;
@@ -5134,6 +5138,7 @@ int battle_config_read(const char *cfgName)
 		battle_config.storagesort_by_itemid = 3;
 		battle_config.cancel_race = 1;
 		battle_config.allow_es_magic_all = 0;
+		battle_config.sg_miracle_rate = 1;
 	}
 
 	fp=fopen(cfgName,"r");
@@ -5582,6 +5587,7 @@ int battle_config_read(const char *cfgName)
 			{ "storagesort_by_itemid",				&battle_config.storagesort_by_itemid				},
 			{ "cancel_race",						&battle_config.cancel_race							},
 			{ "allow_es_magic_all",					&battle_config.allow_es_magic_all					},
+			{ "sg_miracle_rate",					&battle_config.sg_miracle_rate				},
 		};
 		const int max = sizeof(data)/sizeof(data[0]);
 

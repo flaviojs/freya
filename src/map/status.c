@@ -88,7 +88,7 @@ static int StatusIconChangeTable[] = {
 /* 210- */
 	SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,
 /* 220- */
-	SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,
+	SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_MEAL_INCSTR,SI_MEAL_INCAGI,SI_MEAL_INCVIT,SI_MEAL_INCINT,SI_MEAL_INCDEX,SI_MEAL_INCLUK,
 /* 230- */
 	SI_RUN,SI_SPURT,SI_BLANK,SI_DODGE,SI_BLANK,SI_BLANK,SI_BLANK,SI_SUN_WARM,SI_MOON_WARM,SI_STAR_WARM,
 /* 240- */
@@ -100,17 +100,17 @@ static int StatusIconChangeTable[] = {
 /* 270- */
 	SI_BLANK,SI_BLANK,SI_ONEHAND,SI_READYSTORM,SI_READYDOWN,SI_READYTURN,SI_READYCOUNTER,SI_BLANK,SI_AUTOBERSERK,SI_DEVIL,
 /* 280- */
-	SI_DOUBLECASTING,SI_ELEMENTFIELD,SI_DARKELEMENT,SI_ATTENELEMENT,SI_SOULLINK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BABY,
+	SI_DOUBLECASTING,SI_ELEMENTFIELD,SI_DARKELEMENT,SI_ATTENELEMENT,SI_MIRACLE,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BABY,
 /* 290- */
-	SI_BLANK,SI_SHRINK,SI_CLOSECONFINE,SI_SIGHTBLASTER,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,
+	SI_BLANK,SI_SHRINK,SI_CLOSECONFINE,SI_SIGHTBLASTER,SI_BLANK,SI_MEAL_INCHIT,SI_MEAL_INCFLEE,SI_BLANK,SI_MEAL_INCCRITICAL,SI_BLANK,
 /* 300- */
 	SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,
 /* 310- */
-	SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,
+	SI_BLANK,SI_BLANK,SI_UNDEAD,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,
 /* 320- */
 	SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,
 /* 330- */
-	SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,
+	SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_TIGEREYE,SI_BLANK,SI_BLANK,
 /* 340- */
 	SI_BLANK,SI_BLANK,SI_BLANK,SI_TAROTCARD,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_MADNESSCANCEL,SI_ADJUSTMENT,
 /* 350- */
@@ -3809,42 +3809,6 @@ short *status_get_option(struct block_list *bl)
 	return 0;
 }
 
-/*
-// 未使用
-int status_check_attackable_by_tigereye(struct block_list *bl)
-{
-	int mode,race;
-	nullpo_retr(0, bl);
-	mode = status_get_mode(bl);
-	race = status_get_race(bl);
-	if(race==4 || race==6)
-		return 1;
-	if(mode&0x20)
-		return 1;
-	return 0;
-}
-*/
-
-/*
-// 未使用
-int status_check_tigereye(struct block_list *bl)
-{
-	struct map_session_data* sd =NULL;
-	int mode,race;
-	nullpo_retr(0, bl);
-	mode = status_get_mode(bl);
-	race = status_get_race(bl);
-	BL_CAST( BL_PC , bl , sd );
-	if(race==4 || race==6)
-		return 1;
-	if(mode&0x20)
-		return 1;
-	if(sd && (sd->sc_data[SC_TIGEREYE].timer!=-1 || sd->infinite_tigereye))
-		return 1;
-	return 0;
-}
-*/
-
 int status_check_no_magic_damage(struct block_list *bl)
 {
 	nullpo_retr(0, bl);
@@ -4312,9 +4276,9 @@ int status_change_start(struct block_list *bl,int type,int val1,int val2,int val
 			break;
 		case SC_ELEMENTUNDEAD:		// 不死
 			status_enchant_armor_eremental_end(bl,SC_ELEMENTUNDEAD);
-			if(sd){
-				clif_displaymessage(sd->fd,"防具に不死属性が付与されました。");
-			}
+			//if(sd){
+			//	clif_displaymessage(sd->fd,"防具に不死属性が付与されました。");
+			//}
 			break;
 		case SC_RACEUNKNOWN:
 		case SC_RACEUNDEAD:
@@ -5582,7 +5546,7 @@ int status_change_end( struct block_list* bl , int type,int tid)
 			case SC_ELEMENTDARK:		// 闇
 			case SC_ELEMENTELEKINESIS:	// 念
 			case SC_ELEMENTPOISON:		// 毒
-			case SC_ELEMENTUNDEAD:		// 不死
+			//case SC_ELEMENTUNDEAD:		// 不死
 				if(sd){
 					clif_displaymessage(sd->fd,"防具の属性が元に戻りました");
 				}

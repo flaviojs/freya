@@ -85,8 +85,6 @@ int status_change_clear(struct block_list *bl,int type);
 int status_clearpretimer(struct block_list *bl);
 
 //状態チェック
-//int status_check_tigereye(struct block_list *bl);
-//int status_check_attackable_by_tigereye(struct block_list *bl);
 int status_check_no_magic_damage(struct block_list *bl);
 #ifdef DYNAMIC_SC_DATA
 int status_calloc_sc_data(struct block_list *bl);
@@ -457,7 +455,7 @@ enum {	// struct map_session_data の status_changeの番号テーブル
 	SC_RACEHUMAN			= 334,
 	SC_RACEANGEL			= 335,
 	SC_RACEDRAGON			= 336,
-	SC_TIGEREYE				= 337,
+	SC_TIGEREYE			= 337,
 	SC_GRAVITATION_USER		= 338,
 	SC_GRAVITATION			= 339,
 	SC_FOGWALL				= 340,
@@ -567,6 +565,7 @@ enum {
 	SI_FROSTWEAPON			=91,	/* フロストウェポン */
 	SI_LIGHTNINGLOADER		=92,	/* ライトニングローダー */
 	SI_SEISMICWEAPON		=93,	/* サイズミックウェポン */
+	SI_UNDEAD			=97,	/* 不死属性付与 */
 	SI_AURABLADE			=103,	/* オーラブレード */
 	SI_PARRYING				=104,	/* パリイング */
 	SI_CONCENTRATION		=105,	/* コンセントレーション */
@@ -607,7 +606,7 @@ enum {
 	SI_KAAHI				=157,	//カアヒ
 	SI_KAUPE				=158,	//カウプ
 	SI_SMA					=159,	//エスマ可能状態
-	//160 SI_SOULLINKと同じ？
+	SI_MIRACLE				=160,	//太陽と月と星の奇跡
 	SI_ONEHAND				=161,	//ワンハンドクイッケン
 	SI_SUN_WARM				=165,	//太陽の温もり
 	SI_MOON_WARM			=166,	//月の温もり
@@ -617,6 +616,7 @@ enum {
 	SI_STAR_COMFORT			=171,	//星の安楽
 	SI_PRESERVE				=181,	//プリザーブ
 	SI_CHASEWALK_STR		=182,	//チェイスウォークのSTR?
+	SI_TIGEREYE			=184,	//タイガーアイ（ハイド見破り）
 	SI_DOUBLECASTING		=186,	//ダブルキャスティング
 	SI_OVERTHRUSTMAX		=188,	//オーバートラストマックス
 	SI_TAROTCARD			=191,
@@ -631,6 +631,26 @@ enum {
 	SI_NEN					=208,	//#NJ_NEN#
 	SI_ADJUSTMENT			=209,	//#GS_ADJUSTMENT#
 	SI_INCREASING			=210,	//#GS_INCREASING#
+	//211～231：不明、グロリアのアイコン
+	//232：不明、体が赤くなる、グロリアアイコン
+	//233：不明、グロリアアイコン
+	//234：不明、グロリアアイコン
+	//235：不明、金剛のような音とエフェクト、グロリアアイコン
+	//236：不明、グロリアアイコン
+	//237～238：不明
+	//239～240：不明、グロリアアイコン
+	SI_MEAL_INCSTR			=241,//食事用
+	SI_MEAL_INCAGI			=242,
+	SI_MEAL_INCVIT			=243,
+	SI_MEAL_INCDEX			=244,
+	SI_MEAL_INCINT			=245,
+	SI_MEAL_INCLUK			=246,
+	SI_MEAL_INCFLEE			=247,
+	SI_MEAL_INCHIT			=248,
+	SI_MEAL_INCCRITICAL		=249,
+	//250：戦闘教範50、モンスター狩りを通じて得られる経験値が30分間1.5倍に増加します。
+	//251：生命保険証、30分以内、1回に限り死亡時にデスペナルティを受けません。
+	//252：モンスター狩りを通じて得られる基本アイテムのドロップ率が30分間2倍に増加します。
+	//253：凸面鏡、10分間、マップ内に出現するボスモンスターの情報をご案内します。
 };
-
 #endif
