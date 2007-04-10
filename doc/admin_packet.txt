@@ -1,12 +1,14 @@
 ===========================================================================
 ===========================================================================
-                     DETAIL OF ADMINISTRATION PACKETS
+ Freya Dev 3.1 Administration Packet Reference
 ---------------------------------------------------------------------------
 ---------------------------------------------------------------------------
 
+
 ===========================================================================
-	COMMON PACKETS FOR ALL SERVERS
+ Common Packets for All Servers
 ---------------------------------------------------------------------------
+
 S 7530 (void)
 	It's a request to obtain the version of the server.
 	Answer packet: 0x7531.
@@ -42,9 +44,8 @@ R 7536 <major_version>.B <minor_version>.B <revision>.B <release_flag>.B <offici
 	DB_system: 0: TXT, 1: SQL
 
 
-
 ===========================================================================
-	ADMINISTRATION PACKETS OF THE LOGIN-SERVER
+ Login Server Administration Packets
 ---------------------------------------------------------------------------
 
 NB: All information about an account can be obtain by an administration packet, except the password.
@@ -71,8 +72,6 @@ S 791A (void)
 	It's a request to obtain the encrypted key. This key is used to create the encrypted password.
 	This packet must be called before the packet 0x7918 if you want connect you with an encrypted password.
 	The reply is the packet 0x01dc, as like a player sends a connection request with the packet 0x01db.
-
-
 
 PACKETS OF ADMINISTRATION MODE
 
@@ -312,3 +311,7 @@ R 7956 <account_id>.l <account_name>.24B
 	Otherwise, the account_id is the id of the account that the login-server have modified the memo.
 		The login-server returns the correct sensitive case account_name (use strcmpi to compare).
 
+
+==========================================================================
+ EOF
+--------------------------------------------------------------------------

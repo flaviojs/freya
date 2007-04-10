@@ -1,4 +1,23 @@
-﻿skill n,x;	skill n of level x
+﻿==========================================================================
+==========================================================================
+ Freya Dev 3.1 Item Bonus Reference (For use with 'db/item_db.txt')
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+
+-> Race Reference:
+0:Formless, 1:Undead, 2:Brute, 3:Plant, 4:Insect, 5:Fish and Shellfish, 6:Demon, 7:Demi-Human, 8:Angel, 9:Dragon, 10:Boss Monsters, 11:Normal Monsters
+
+-> Element Reference:
+0:Neutral, 1:Water, 2:Earth, 3:Fire, 4:Wind, 5:Poison, 6:Saint(Holy), 7:Dark, 8:Sense(Ghost), 9:Immortality(Undead)
+
+-> Size Reference:
+0:Small Size, 1:Medium Size, 2:Large Size 
+
+-> Rate Reference:
+1:0.01%, 10:0.1%, 100:1%, 1000:10%, 10000:100%
+
+--------------------------------------------------------------------------
+
 
 skill n,x;	skill n of level x
 
@@ -11,13 +30,13 @@ bonus bLuk,n;	LUK + n
 
 bonus bAllStats,n;	STR + n, AGI + n, VIT + n, INT + n, DEX + n, LUK + n
 
-bonus bMaxHP,n;			MAXHP + n
-bonus bMaxSP,n;			MAXSP + n
-bonus bMaxHPrate,n;		MAXHP + n% 
-bonus bMaxSPrate,n;		MAXSP + n%
+bonus bMaxHP,n;			MAX HP + n
+bonus bMaxSP,n;			MAX SP + n
+bonus bMaxHPrate,n;		MAX HP + n% 
+bonus bMaxSPrate,n;		MAX SP + n%
 bonus bAtk,n;			ATK + n
 bonus bAtk2,n;			ATK2 + n
-bonus bAtkRate			attack power  + n%
+bonus bAtkRate			Attack power  + n%
 bonus bBaseAtk,n;		Basic attack power + n
 bonus bMatk,n;			Magical attack power 1 + n and magical attack power 2 + n
 bonus bMatk1,n;			Magical attack power 1 + n
@@ -48,34 +67,27 @@ bonus bPerfectHitAddRate,n;	On-target impact attack probability +n%
 bonus bCriticalDef,n;		Critical 喰 and others the trap it is, probability + n%
 bonus bNearAtkDef,n;		Damage from short-range attacks are reduced by n% (magic and traps excluded)
 bonus bLongAtkDef,n;		Damage from long-range physical attacks are reduced by n% (magic and traps excluded)
-bonus bMagicAtkDef			Damage from magical attacks are reduced by n%
-bonus bMiscAtkDef			Damage from MISC attacks (traps and ?) are reduced by n%
+bonus bMagicAtkDef		Damage from magical attacks are reduced by n%
+bonus bMiscAtkDef		Damage from MISC attacks (traps and ?) are reduced by n%
 
 bonus bIgnoreDefRace,n		Defense disregard of enemy of n race
-					0:Formless, 1:Undead, 2:Brute, 3:Plant, 4:Insect, 5:Fish and Shellfish, 6:Demon, 7:Demi-Human, 8:Angel, 9:Dragon, 10:Boss monster, 11:Other than (normal monster) boss monster
 bonus bIgnoreDefEle,n;		Defense disregard of enemy of n attribute
-					0:Formless, 1:Water, 2:Earth, 3:Fire, 4:Wind, 5:Poison, 6:Saint, 7:Dark, 8:Sense, 9:Undead
 bonus bIgnoreMDefRace		n race the magical defensive power disregard damage
-					0:Formless, 1:Undead, 2:Brute, 3:Plant, 4:Insect, 5:Fish and Shellfish, 6:Demon, 7:Demi-Human, 8:Angel, 9:Dragon, 10:Boss monster, 11:Other than boss monster (normal monster)
 bonus bIgnoreMDefEle		n attribute the magical defensive power disregard damage
-					0:Formless, 1:Water, 2:Earth, 3:Fire, 4:Wind, 5:Poison, 6:Saint, 7:Dark, 8:Sense, 9:Undead	
-bonus bDefRatioAtkRace,n;		n race if defensive power is high the high extent big damage is given, (defense disregard) 
-					0:Formless, 1:Undead, 2:Brute, 3:Plant, 4:Insect, 5:Fish and Shellfish, 6:Demon, 7:Demi-Human, 8:Angel, 9:Dragon, 10:Boss monster, 11:Other than boss monster (normal monster)
-bonus bDefRatioAtkEle,n;		n attribute if defensive power is high the high extent big damage is given, (defense disregard)
-					0:Formless, 1:Water, 2:Earth, 3:Fire, 4:Wind, 5:Poison, 6:Saint, 7:Dark, 8:Sense, 9:Undead
+bonus bDefRatioAtkRace,n;	n race if defensive power is high the high extent big damage is given (Def disregarded)
+bonus bDefRatioAtkEle,n;	n attribute if defensive power is high the high extent big damage is given (Def disregarded)
 bonus bAtkEle,n;		Attack with element n
-					0:Formless, 1:Water, 2:Earth, 3:Fire, 4:Wind, 5:Poison, 6:Saint, 7:Dark, 8:Sense, 9:Undead
 bonus bDefEle,n;		Guard against element n
-					0:Formless, 1:Water, 2:Earth, 3:Fire, 4:Wind, 5:Poison, 6:Saint, 7:Dark, 8:Sense, 9:Undead
-bonus bHitRate,n;		on-target hit ratio +n%
-bonus bFleeRate,n;		evasion ratio +n%
-bonus bFlee2Rate,n;		complete evasion ratio +n%
+
+bonus bHitRate,n;		On-target hit ratio +n%
+bonus bFleeRate,n;		Evasion ratio +n%
+bonus bFlee2Rate,n;		Complete evasion ratio +n%
 bonus bDefRate,n;		DEF +n% (equipment)
 bonus bDef2Rate,n;		DEF2 +n% (those due to vit)
-bonus bMdefRate,n;		magical earned-run average +n% (equipment)
-bonus bMdef2Rate,n;		magical earned-run average +n% (those due to int)
-bonus bSplashRange n;		damage is given to the peripheral n cell of the target with usual weapon attack, if (as for n just high ones application, 1 if the 3*3, 2 the 5*5)
-bonus bSplashAddRange n;	damage is given to the peripheral n cell of the target with usual weapon attack, (range + n)
+bonus bMdefRate,n;		Magical earned-run average +n% (equipment)
+bonus bMdef2Rate,n;		Magical earned-run average +n% (those due to int)
+bonus bSplashRange n;		Damage is given to the peripheral n cell of the target with usual weapon attack (1:3*3, etc)
+bonus bSplashAddRange n;	Damage is given to the peripheral n cell of the target with usual weapon attack, (range + n)
 
 bonus bInfiniteEndure,n;	Unlimited Endure (n is meaningless) 
 bonus bRestartFullRecover,n;	When reviving, HP and SP all recoveries (non mind there is no n)
@@ -86,16 +98,15 @@ bonus bNoWeaponDamage,n;	The damage is not received to physical attack, (non min
 bonus bNoMagicDamage,n;		The damage is not received to magic, (including also the heel, non mind there is no n)
 bonus bNoGemStone,n;		When using skill, the gemstone is not consumed (n = 0)
 
-
-bonus2 bAddEff,Eff_Blind,n;	With the establishment of n% dark grant
-bonus2 bAddEff,Eff_Sleep,n;	With the establishment of n% sleep grant
-bonus2 bAddEff,Eff_Poison,n;	With the establishment of n% poison grant
-bonus2 bAddEff,Eff_Freeze,n;	With the establishment of n% freezing grant
-bonus2 bAddEff,Eff_Silence,n;	With the establishment of n% silence grant
-bonus2 bAddEff,Eff_Stun,n;	With the establishment of n% stun grant
-bonus2 bAddEff,Eff_Curse,n;	You curse with the establishment of n%, grant
-bonus2 bAddEff,Eff_Confusion,n;	With the establishment of n% confusion grant
-bonus2 bAddEff,Eff_Stone,n;	With the establishment of n% petrochemical grant
+bonus2 bAddEff,Eff_Blind,n;	With the establishment of n% Dark grant
+bonus2 bAddEff,Eff_Sleep,n;	With the establishment of n% Sleep grant
+bonus2 bAddEff,Eff_Poison,n;	With the establishment of n% Poison grant
+bonus2 bAddEff,Eff_Freeze,n;	With the establishment of n% Freezing grant
+bonus2 bAddEff,Eff_Silence,n;	With the establishment of n% Silence grant
+bonus2 bAddEff,Eff_Stun,n;	With the establishment of n% Stun grant
+bonus2 bAddEff,Eff_Curse,n;	With the establishment of n% Curse grant
+bonus2 bAddEff,Eff_Confusion,n;	With the establishment of n% Confusion grant
+bonus2 bAddEff,Eff_Stone,n;	With the establishment of n% Stone Curse grant
 
 bonus2 bResEff,Eff_Blind,n;	Dark tolerance + n%
 bonus2 bResEff,Eff_Sleep,n;	Sleep tolerance + n%
@@ -103,122 +114,108 @@ bonus2 bResEff,Eff_Poison,n;	Poison tolerance + n%
 bonus2 bResEff,Eff_Freeze,n;	Freezing tolerance + n%
 bonus2 bResEff,Eff_Silence,n;	Silence tolerance + n%
 bonus2 bResEff,Eff_Stun,n;	Stun tolerance + 	n%
-bonus2 bResEff,Eff_Curse,n;	Cursing tolerance + n%
+bonus2 bResEff,Eff_Curse,n;	Curse tolerance + n%
 bonus2 bResEff,Eff_Confusion,n;	Confusion tolerance + n%
-bonus2 bResEff,Eff_Stone,n;	Petrochemical tolerance + n%
+bonus2 bResEff,Eff_Stone,n;	Stone Curse tolerance + n%
 
-bonus2 bAddSize,n,x;			In n size the damage addition of x%
-						0,Small size 1,Medium size 2,Large size 
-bonus2 bAddRace,n,x;			In n race the damage addition of x%
-						0:Formless, 1:Undead, 2:Brute, 3:Plant, 4:Insect, 5:Fish and Shellfish, 6:Demon, 7:Demi-Human, 8:Angel, 9:Dragon, 10:Boss monster, 11:Other than boss monster (normal monster)
-bonus2 bSubRace,n,x;			Damage x% reduction from n race
-						0:Formless, 1:Undead, 2:Brute, 3:Plant, 4:Insect, 5:Fish and Shellfish, 6:Demon, 7:Demi-Human, 8:Angel, 9:Dragon, 10:Boss monster, 11:Other than boss monster (normal monster)
-bonus2 bMagicAddRace,n,x;		In n race the damage addition of x% (only magical attack)
-						0:Formless, 1:Undead, 2:Brute, 3:Plant, 4:Insect, 5:Fish and Shellfish, 6:Demon, 7:Demi-Human, 8:Angel, 9:Dragon, 10:Boss monster, 11:Other than boss monster (normal monster)
-bonus2 bMagicSubRace,n,x;		Magical damage x% reduction from n race
-						0:Formless, 1:Undead, 2:Brute, 3:Plant, 4:Insect, 5:Fish and Shellfish, 6:Demon, 7:Demi-Human, 8:Angel, 9:Dragon, 10:Boss monster, 11:Other than boss monster (normal monster)
-bonus2 bAddEle,n,x;			In n attribute the damage addition of x%
-						0:Formless, 1:Water, 2:Earth, 3:Fire, 4:Wind, 5:Poison, 6:Saint, 7:Dark, 8:Sense, 9:Undead
-bonus2 bMagicAddEle,n,x;			In n attribute the damage addition of x% (only magical attack) 
-						0:Formless, 1:Water, 2:Earth, 3:Fire, 4:Wind, 5:Poison, 6:Saint, 7:Dark, 8:Sense, 9:Undead
-bonus2 bSubEle,n,x;			Damage x% reduction from n attribute
-						0:Formless, 1:Water, 2:Earth, 3:Fire, 4:Wind, 5:Poison, 6:Saint, 7:Dark, 8:Sense, 9:Undead
-bonus2 bAddDamageClass,n,x;		In monster of class n the damage addition of x% (only physical attack), in case of prayer in n occupation the damage addition of x%
-bonus2 bAddMagicDamageClass,n,x;		In monster of class n in case of the magical damage addition and prayer of x% in n occupation the magical damage addition of x%
-bonus2 bAddDefClass,n,x;		In monster of class n the damage reduction of x% (only physical attack), in case of prayer in n occupation the damage reduction of x%
-bonus2 bAddMDefClass,n,x;		In monster of class n in case of the magical damage reduction and prayer of x% in n occupation the magical damage reduction of x%
-bonus2 bHPDrainRate,n,x;		it obtained to the enemy -- ? ME ? JI -- n % probability -- x % -- HP -- absorption (+ n and x are carried out)
-bonus2 bSPDrainRate,n,x;		it obtained to the enemy -- ? ME ? JI -- n % probability -- x % -- SP -- absorption (+ n and x are carried out)
-bonus2 bSPVanishRate,n,x;		Add the (n/10)% chance of decreasing enemy's SP (player) amount by x% when attacking
-bonus2 bAddMonsterDropItem,n,x;		When killing any monsters with physical attack, the probability which drops item n +x% (the item which the monster drops unrelated ones)
+bonus2 bAddSize,n,x;		In n size the damage addition of x%
+bonus2 bAddRace,n,x;		In n race the damage addition of x%
+bonus2 bSubRace,n,x;		Damage x% reduction from n race
+bonus2 bMagicAddRace,n,x;	In n race the damage addition of x% (only magical attack)
+bonus2 bMagicSubRace,n,x;	Magical damage x% reduction from n race
+bonus2 bAddEle,n,x;		In n attribute the damage addition of x%
+bonus2 bMagicAddEle,n,x;	In n attribute the damage addition of x% (only magical attack) 
+bonus2 bSubEle,n,x;		Damage x% reduction from n attribute
+bonus2 bAddDamageClass,n,x;	In monster of class n the damage addition of x% (only physical attack)
+				In case of prayer in n occupation the damage addition of x%
+bonus2 bAddMagicDamageClass,n,x;	In monster of class n in case of the magical damage addition
+					and prayer of x% in n occupation the magical damage addition of x%
+bonus2 bAddDefClass,n,x;	In monster of class n the damage reduction of x% (only physical attack)
+				In case of prayer in n occupation the damage reduction of x%
+bonus2 bAddMDefClass,n,x;	In monster of class n in case of the magical damage reduction and
+				prayer of x% in n occupation the magical damage reduction of x%
+bonus2 bHPDrainRate,n,x;	It obtained to the enemy -- ? ME ? JI -- n % probability -- x % -- HP -- absorption
+				(+ n and x are carried out)
+bonus2 bSPDrainRate,n,x;	It obtained to the enemy -- ? ME ? JI -- n % probability -- x % -- SP -- absorption
+				(+ n and x are carried out)
+bonus2 bSPVanishRate,n,x;	Add the (n/10)% chance of decreasing enemy's SP (player) amount by x% when attacking
 
-bonus2 bAddMonsterDropItem,x,y;		When killing a monster of with a physical attack, item x drops with probability y% (the item which the monster drops unrelated ones)
-									y: 10000 = 100%
+bonus2 bAddMonsterDropItem,n,x;		When killing any monsters with physical attack, the chance which drops item n +x%
+bonus2 bAddMonsterDropItem,x,y;		When killing a monster of with a physical attack, item x drops with probability y%
+bonus3 bAddMonsterDropItem,x,n,y;	When killing a monster of type n with a physical attack, item x drops with chance y%
 
-bonus3 bAddMonsterDropItem,x,n,y;		When killing a monster of type n with a physical attack, item x drops with probability y% (the item which the monster drops unrelated ones)
-						0:Formless, 1:Undead, 2:Brute, 3:Plant, 4:Insect, 5:Fish and Shellfish, 6:Demon, 7:Demi-Human, 8:Angel, 9:Dragon, 10:Boss monster, 11:Other than boss monster (normal monster)
-						y: 10000 = 100%
-bonus4 bAutoSpell,n,x,y,i;		Auto Spell casting of spell n at level x with y% chance (10000 = 100%)
-								i: 0=cast on self (including area spells), 1=cast on enemy
+bonus4 bAutoSpell,n,x,y,i;	Auto Spell casting of spell n at level x with y% chance
+				i: 0=cast on self (Including area spells), 1=cast on enemy
 
-// bAddDamageClass, bAddMagicDamageClass and bAddMonsterDropItem it is setting possible up to 10. Those which exceed 10 are ignored.
-// those which can be used with the arrow are only bCritical, bAtkEle, bHit, bAddEle, bAddRace, bAddSize and bAddEff. The other things are ignored.
+bonus bCritAtkRate,n;		Increase critical damage by +n%
+bonus bNoRegen,n;		Stops regeneration for n -> n: 1=HP, 2=SP
+bonus bUnbreakableArmor,n;	Armor cannot be damaged/broken
+bonus bUnstripable,n;		Armor cannot be taken off via Strip skills
+bonus bSPGainValue,n;		When killing a monster by physical attack, you gain n SP
+bonus bHPGainValue,n;		When killing a monster by physical attack, you gain n HP
+bonus bIgnoreDefMob,n;		Ignore monster's DEF when attacking -> n:0=All normal monsters, except Bosses, 1=All monsters
+bonus bDamageWhenUnequip,n;	Lose n HP when the item is unequipped
+bonus bClassChange,n;		Has random chance to turn monster into another monster
 
-
-//---- 2/15 new card effects ----
-
-bonus bCritAtkRate,n;			Increase critical damage by +n%
-bonus bNoRegen,n;			Stops regeneration for n.
-                                        n: 1=HP, 2=SP
-bonus bUnbreakableArmor,n;		Armor cannot be damaged/broken
-bonus bUnstripable,n;			Armor cannot be taken off via Strip skills
-bonus bSPGainValue,n;			When killing a monster by physical attack, you gain n SP
-bonus bHPGainValue,n;			When killing a monster by physical attack, you gain n HP
-bonus bIgnoreDefMob,n;			Ignore monster's DEF when attacking.
-                                        n:0=All normal monsters, except Bosses
-                                          1=All monsters
-bonus bDamageWhenUnequip,n;		Lose n HP when the item is unequipped
-bonus bClassChange,n;			Has random chance to turn monster into another monster
-
-bonus2 bWeaponComaRace,n,x;		x% chance to inflict coma status on monsters of n race
-						0:Formless, 1:Undead, 2:Brute, 3:Plant, 4:Insect, 5:Fish and Shellfish, 6:Demon, 7:Demi-Human, 8:Angel, 9:Dragon, 10:Boss monster, 11:Other than (normal monster) boss monster
-bonus2 bCriticalAddRace,n,x;		Increase critical + n vs. enemies of type x
-bonus2 bHPLossRate,n,x;			Lose n amount of hp every x amount of milliseconds (seconds = x1000)
-bonus2 bAddEffWhenHit,n,x;		x% chance to cause n state to the enemy when being hit by physical close range damage (x = 10000 = 100%)
-bonus2 bSkillAtk,n,x;			Increase damage of skill n by x%
+bonus2 bWeaponComaRace,n,x;	x% chance to inflict coma status on monsters of n race
+bonus2 bCriticalAddRace,n,x;	Increase critical + n vs. enemies of type x
+bonus2 bHPLossRate,n,x;		Lose n amount of hp every x amount of milliseconds (seconds = x1000)
+bonus2 bAddEffWhenHit,n,x;	x% chance to cause n state to the enemy when being hit by physical close range damage 
+bonus2 bSkillAtk,n,x;		Increase damage of skill n by x%
 bonus2 bAddDamageByClass,n,x;	When being hit by monster of class n increase damage taken by x%
-bonus2 bAddRace2,n,x;			Increase damage by x% vs. enemies of race n
-                                        (Check db/mob_race2_db.txt)
-bonus2 bSubSize,n,x;			Damage x% reduction from n size
-                                        n:0=Small  1=Medium  2=Large
+bonus2 bAddRace2,n,x;		Increase damage by x% vs. enemies of race n (Check db/mob_race2_db.txt)
+bonus2 bSubSize,n,x;		Damage x% reduction from n size
 
-bonus3 bHPLossRate,n,x,y;		Lose n amount of hp every x amount of time
-                                        y:0=Don't show damage 1=Show damage
-bonus3 bSPDrainRate,n,x,y;		When attacking there is a n% chance to either
-                                        gain SP equivalent to x% of damage dealt, OR
-                                        drain the amount of sp from the enemy.
-                                        y: 0=gain sp  1:drain enemy sp
-bonus3 bSPDrainValue,n,x,y;		When attacking there is a n% chance to either
-                                        gain x SP, OR drain the amount of sp from the
-                                        enemy. y:0=gain sp  1:drain enemy sp
-                                        (Note: setting x to -1 or below will reduce
-                                        YOUR sp)
+bonus3 bHPLossRate,n,x,y;	Lose n amount of hp every x amount of time -> y:0=Don't show damage 1=Show damage
+bonus3 bSPDrainRate,n,x,y;	When attacking there is a n% chance to either
+				gain SP equivalent to x% of damage dealt, OR
+				drain the amount of sp from the enemy.
+				y: 0=gain sp  1:drain enemy sp
+bonus3 bSPDrainValue,n,x,y;	When attacking there is a n% chance to either
+				gain x SP, OR drain the amount of sp from the
+				enemy. y:0=gain sp  1:drain enemy sp
+				(Note: setting x to -1 or below will reduce YOUR sp)
 
-bonus4 bAutoSpellWhenHit,x,y,n,i;	n% chance to cast skill x of level y when being hit by physical close range damage (10000 = 100%)
-                                    i: 0=cast on self (including area spells), 1=cast on enemy
+bonus4 bAutoSpellWhenHit,x,y,n,i;	n% chance to cast skill x of level y when being hit by physical close range damage
+					i: 0=cast on self (including area spells), 1=cast on enemy
 
-//---- 2/22 new card effects ----
+bonus2 bAddItemHealRate,n,x;	Increases HP recovered by n type items by x%
+				n:1=potions 2=herbs 3=fruits 4=meat 5=candy 6=juice 7=sashimi
 
-bonus2 bAddItemHealRate,n,x;		Increases HP recovered by n type items by x%
-                                        n:1=potions 2=herbs 3=fruits 4=meat 5=candy
-                                          6=juice 7=sashimi
-
-//---- 3/15 new card effects ----
-
-bonus bLongAtkRate,x;						Increase ranged physical damage by +x%
-bonus bLoseSPWhenUnequip,x			Unequipping card will cost the player 5 SP. 
+bonus bLongAtkRate,x;		Increase ranged physical damage by +x%
+bonus bLoseSPWhenUnequip,x	Unequipping card will cost the player 5 SP. 
 
 bonus bShortWeaponDamageReturn,x;	Reflects all short-range physical attacks back to the assailant by x%
-bonus bMagicDamageReturn,x;	Reflects all magical attacks back to the assailant by x%. 100 = 100%
+bonus bMagicDamageReturn,x;		Reflects all magical attacks back to the assailant by x%. 100 = 100%
 
-bonus2 bSPLossRate,n,x;				Decrease n SP every x milliseconds
-bonus2 bExpAddRace,n,x;				Receive +x% EXP when killing a monster of race n
-bonus2 bSPGainRace,n,x;				Recover x SP when killing a monster of race n via physical melee attack
-bonus2 bGetZenyNum,n,x;				Has x% chance of receiving up to n zeny when monster is killed with a physical attack
-bonus2 bAddGetZenyNum,n,x;		Has x% chance of receiving up to +n zeny when monster is killed with a physical attack
+bonus2 bSPLossRate,n,x;		Decrease n SP every x milliseconds
+bonus2 bExpAddRace,n,x;		Receive +x% EXP when killing a monster of race n
+bonus2 bSPGainRace,n,x;		Recover x SP when killing a monster of race n via physical melee attack
+bonus2 bGetZenyNum,n,x;		Has x% chance of receiving up to n zeny when monster is killed with a physical atk
+bonus2 bAddGetZenyNum,n,x;	Has x% chance of receiving up to +n zeny when monster is killed with a physical atk
 
-bonus3 bAddMonsterDropItemGroup,x,n,y;	y% chance to get an item of group type x when you kill a monster of race n (y = 10000 = 100%)
-					- Item groups located in: db/item_group_db.txt
-					- 0:Formless, 1:Undead, 2:Brute, 3:Plant, 4:Insect, 5:Fish and Shellfish, 6:Demon, 7:Demi-Human, 8:Angel, 9:Dragon, 10:Boss monster, 11:Other than (normal monster) boss monster
-					- if 'y' is negative value, then it's a part of formula:  chance = -y*(killed_mob_level/10)+1
+bonus3 bAddMonsterDropItemGroup,x,n,y;	y% chance to get an item of group type x when you kill a monster of race n
+					Item groups located in: db/item_group_db.txt
+					if y is negative value, then it's a part of formula: chance: -y*(killed_mob_lvl/10)+1
 
+bonus bNoKnockBack,0;			Makes player immune to knockback (Like no knockback in WoE)
+bonus4 bAutoSpellWhenHitmagic,x,y,n,i;	n% chance to cast skill x of level y when being hit by magic damage
+					i: 0=cast on self (including area spells), 1=cast on enemy
 
 bonus bSPGainValueRace 	- Need info
 bonus bSPVanishRate 	- Need info
 bonus bSPLossRate	- Need info
 
-// New Card bonuses
+--------------------------------------------------------------------------
 
-bonus bNoKnockBack,0;			- Makes player immune to knockback (like no knock back in WoE)
-bonus4 bAutoSpellWhenHitmagic,x,y,n,i;	- n% chance to cast skill x of level y when being hit by magic damage (10000 = 100%)
-					- i: 0=cast on self (including area spells), 1=cast on enemy
+
+-> bAddDamageClass, bAddMagicDamageClass and bAddMonsterDropItem it is setting possible up to 10.
+-> Those which exceed 10 are ignored.
+
+-> Those which can be used with Arrows are only bCritical, bAtkEle, bHit, bAddEle, bAddRace, bAddSize and bAddEff.
+-> The other things are ignored.
+
+
+==========================================================================
+ EOF
+--------------------------------------------------------------------------

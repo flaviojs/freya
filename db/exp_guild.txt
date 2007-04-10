@@ -1,5 +1,5 @@
 // exp_guild.txt, Guild Level Experience Database
-// Levels 1-49 are in the database
+// Levels 1-50 are in the database
 
 2000000
 4000000

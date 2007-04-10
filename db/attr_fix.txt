@@ -1,27 +1,21 @@
-// attr_fix.txt, Element Damage Database
-//
+// attr_fix.txt, Elemental Damage Calculation Database (Attribute Fix Database)
 
-// Side:Attribute of monster                         
-// Length:Attribute of attack
-1,10
+// Horizontal:Armor Element                          // Vertical:Attack Element
 
-// Level 1 Attribute table
+1,10	// Level 1 Attribute Table
 //Netr Watr Erth Fire Wind Pois Hly  Shdw Sens Imor
-  100, 100, 100, 100, 100, 100, 100, 100,  25, 100,  // Neutral
-  100,  25, 100, 150,  50, 100,  75, 100, 100, 100,  //	Water
-  100, 100, 100,  50, 150, 100,  75, 100, 100, 100,  //	Earth
-  100,  50, 150,  25, 100, 100,  75, 100, 100, 125,  //	Fire
-  100, 175,  50, 100,  25, 100,  75, 100, 100, 100,  //	Wind
-  100, 100, 125, 125, 125,   0,  75,  50, 100, -25,  //	Poison
-  100, 100, 100, 100, 100, 100,   0, 125, 100, 150,  //	Holy
-  100, 100, 100, 100, 100,  50, 125,   0, 100, -25,  //	Shadow
-   25, 100, 100, 100, 100, 100,  75,  75, 125, 100,  //	Sense
-  100, 100, 100, 100, 100,  50, 100,   0, 100,   0,  //	Inmortality
-// Side:Attribute of monster                         
-// Length:Attribute of attack
-2,10	
+  100, 100, 100, 100, 100, 100, 100, 100,  25, 100,  // Normal
+  100,  25, 100, 150,  50, 100,  75, 100, 100, 100,  // Water
+  100, 100, 100,  50, 150, 100,  75, 100, 100, 100,  // Earth
+  100,  50, 150,  25, 100, 100,  75, 100, 100, 125,  // Fire
+  100, 175,  50, 100,  25, 100,  75, 100, 100, 100,  // Wind
+  100, 100, 125, 125, 125,   0,  75,  50, 100, -25,  // Poison
+  100, 100, 100, 100, 100, 100,   0, 125, 100, 150,  // Holy
+  100, 100, 100, 100, 100,  50, 125,   0, 100, -25,  // Shadow
+   25, 100, 100, 100, 100, 100,  75,  75, 125, 100,  // Sense (Ghost)
+  100, 100, 100, 100, 100,  50, 100,   0, 100,   0,  // Immortality (Undead)
 
-// Level 2 Attribute table
+2,10	// Level 2 Attribute Table
 //Netr Watr Erth Fire Wind Pois Hly  Shdw Sens Imor
   100, 100, 100, 100, 100, 100, 100, 100,  25, 100,  // Neutral
   100,   0, 100, 175,  25, 100,  50,  75, 100, 100,  //	Water
@@ -31,13 +25,10 @@
   100,  75, 125, 125, 125,   0,  50,  25,  75, -50,  //	Poison
   100, 100, 100, 100, 100, 100, -25, 150, 100, 175,  //	Holy
   100, 100, 100, 100, 100,  25, 150, -25, 100, -50,  //	Shadow
-    0,  75,  75,  75,  75,  75,  50,  50, 150, 125,  //	Sense
-  100,  75,  75,  75,  75,  25, 125,   0, 100,   0,  //	Inmortality
-// Side:Attribute of monster                         
-// Length:Attribute of attack
-3,10	
+    0,  75,  75,  75,  75,  75,  50,  50, 150, 125,  // Sense (Ghost)
+  100,  75,  75,  75,  75,  25, 125,   0, 100,   0,  // Immortality (Undead)
 
-// Level 3 Attribute table
+3,10	// Level 3 Attribute Table
 //Netr Watr Erth Fire Wind Pois Hly  Shdw Sens Imor
   100, 100, 100, 100, 100, 100, 100, 100,   0, 100,  // Neutral
   100, -25, 100, 200,   0, 100,  25,  50, 100, 125,  // Water
@@ -47,13 +38,10 @@
   100,  50, 100, 100, 100,   0,  25,   0,  50, -75,  // Poison
   100, 100, 100, 100, 100, 125, -50, 175, 100, 200,  // Holy
   100, 100, 100, 100, 100,   0, 175, -50, 100, -75,  // Shadow
-    0,  50,  50,  50,  50,  50,  25,  25, 175, 150,  // Sense
-  100,  50,  50,  50,  50,   0, 150,   0, 100,   0,  // Inmortality
-// Side:Attribute of monster                         
-// Length:Attribute of attack
-4,10	
+    0,  50,  50,  50,  50,  50,  25,  25, 175, 150,  // Sense (Ghost)
+  100,  50,  50,  50,  50,   0, 150,   0, 100,   0,  // Immortality (Undead)
 
-// Level 4 Attribute table
+4,10	// Level 4 Attribute Table
 //Netr Watr Erth Fire Wind Pois Hly  Shdw Sens Imor
   100, 100, 100, 100, 100, 100, 100, 100,   0, 100,  // Neutral
   100, -50, 100, 200,   0,  75,   0,  25, 100, 150,  // Water
@@ -63,5 +51,5 @@
   100,  25,  75,  75,  75,   0,   0, -25,  25,-100,  // Poison
   100,  75,  75,  75,  75, 125,-100, 200, 100, 200,  // Holy
   100,  75,  75,  75,  75, -25, 200,-100, 100,-100,  // Shadow
-    0,  25,  25,  25,  25,  25,   0,   0, 200, 175,  // Sense
-  100,  25,  25,  25,  25, -25, 175,   0, 100,   0,  // Inmortality
+    0,  25,  25,  25,  25,  25,   0,   0, 200, 175,  // Sense (Ghost)
+  100,  25,  25,  25,  25, -25, 175,   0, 100,   0,  // Immortality (Undead)

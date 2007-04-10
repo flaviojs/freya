@@ -3781,4 +3781,4 @@ CODE
 	* Created a previous file to secure all files [Yor]
 	* Added rules of the team [Yor]
 
-FREYA BEGIN HERE, based on eAthena 1.0 RC4
+FREYA BEGINS HERE, based on eAthena 1.0 RC4

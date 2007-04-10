@@ -7,18 +7,16 @@
                     http://www.ro-freya.net                   
 --------------------------------------------------------------
 
-This is a compilation of all the changes applied to what is now Freya, over the last 5 years:
+This is a compilation of all the changes applied to what is now Freya, over the last 5 years.
 
-------------------------------
+--------------------------------------------------------------
+ Timeline:
+--------------------------------------------------------------
 
-Athena (2002) -> jAthena 1162 (2003) ->
+Athena [Old] (2002) -> Athena [Modern] (2003) ->
 
-AppleMod/AkaruMod (2004) -> eAthena RC4 (2004) -> Old Freya (2004)
+AppleMod/AkaruMod (2003) -> eAthena RC4 (2004) ->
 
--> Project Freya (2006) -> Freya (2006)
+Old Freya (2004) -> Project Freya (2006) -> Freya (2006)
 
-------------------------------
-
-Initial release date: Athena, early 2002
-
-------------------------------
+--------------------------------------------------------------

@@ -1,6 +1,9 @@
-// *********************************************************
-// * Freya Effect List Reference - By lots of people       *
-// *********************************************************
+==========================================================================
+==========================================================================
+ Freya Dev 3.1 Effect List Reference
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+
 
 ID	Description				Aegis Enumeration
 
@@ -383,7 +386,7 @@ ID	Description				Aegis Enumeration
 376.	Palm Strike				EF_HITLINE2
 377.	Shoot Out Yellow Beam			EF_BASH3D2
 
-// No more Aegis enumerations after this point..
+-> No more Aegis enumerations after this point..
 
 378.	Spirit Absorb
 379.	Character turns Dark Blue
@@ -664,6 +667,9 @@ ID	Description				Aegis Enumeration
 654.	Pink Number Effect
 655.	Change Undead effect start
 656.	Change Undead effect end
+
+-> Past this point information is fully updated..
+
 657.	(Unused)
 658.	(Unused)
 659.	(Unused)
@@ -677,3 +683,8 @@ ID	Description				Aegis Enumeration
 667.	(Unused)
 668.	Echo/Scream (New Monster Skill)
 669.	Giant Slash (New Monster Skill)
+
+
+==========================================================================
+ EOF
+--------------------------------------------------------------------------

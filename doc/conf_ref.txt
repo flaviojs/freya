@@ -1,5 +1,7 @@
 ==========================================================================
-Freya dev 1.0.0 mod1004 Reference +alpha of the present conf
+==========================================================================
+ Freya Dev 3.1 Configuration Reference (For use with 'conf/')
+--------------------------------------------------------------------------
 --------------------------------------------------------------------------
 
 < What this file is. >
@@ -36,8 +38,11 @@ Priority is given to what was written later unless it is written especially clea
 login_freya.conf   allow and deny -- and --   map_freya.conf   map, npc, etc.
 Another processing will be carried out if two or more lines are written.
 
+-> Note: This documentation is highly outdated and a large part of it is untranslated (Japanese.)
+
+
 ==========================================================================
-1. conf/login_freya.conf
+ 1. conf/login_freya.conf
 --------------------------------------------------------------------------
 
 < What this file is. >
@@ -50,8 +55,9 @@ Another processing will be carried out if two or more lines are written.
 
 Read inside the file to have more information about each key.
 
+
 ==========================================================================
-2. conf/char_freya.conf
+ 2. conf/char_freya.conf
 --------------------------------------------------------------------------
 
 < What this file is. >
@@ -282,7 +288,7 @@ log_char: 1
 
 
 ==========================================================================
-3. conf/inter_freya.conf
+ 3. conf/inter_freya.conf
 --------------------------------------------------------------------------
 
 < What this file is. >
@@ -351,7 +357,7 @@ log_inter: 1
 
 
 ==========================================================================
-4. conf/map_freya.conf
+ 4. conf/map_freya.conf
 --------------------------------------------------------------------------
 
 < What this file is. >
@@ -472,8 +478,9 @@ npc: clear
 delmap: prontera.gat
 delmap: all
 
+
 ==========================================================================
-5. conf/battle_freya.conf
+ 5. conf/battle_freya.conf
 --------------------------------------------------------------------------
 
 < What this file is. >
@@ -1413,9 +1420,8 @@ max_cloth_color: 4
 area_size: 20
 
 
-
 ==========================================================================
-6. atcommand_freya.conf
+ 6. atcommand_freya.conf
 --------------------------------------------------------------------------
 
 < What this file is. >
@@ -1714,7 +1720,7 @@ charundisguise: 60
 email: 0
 
 ==========================================================================
-7. conf/ladmin_freya.conf
+ 7. conf/ladmin_freya.conf
 --------------------------------------------------------------------------
 
 < What this file is. >

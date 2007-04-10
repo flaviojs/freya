@@ -10,6 +10,13 @@
 
 Date	Added
 
+04/09/2007
+	* Added: A default SQL login account ID '2000001' with GM level 99 to go along with TXT [Tsuyuki]
+	* Improved: Started rewriting /db/db_ref.txt documentation file [Tsuyuki]
+	* Removed: Core Dump documentation file (Entirely Japanese..) [Tsuyuki]
+	* Improved: Cleaned up /doc/ folder a bit [Tsuyuki]
+	* Improved: battle_freya.conf formatting/grammar, and a few option settings [Tsuyuki]
+
 04/08/2007
 	* Added: Mail structures, defines, some packetry, and @mailbox command imported from jAthena [Tsuyuki]
 	* Removed: Backwards compatibility for old packet versions [Tsuyuki]
@@ -2018,6 +2025,7 @@ Date	Added
 	* Added: adoption skills to skill_cast_db [Harbin]
 	* Fixed: gryphon card was giving level 50 bowling bash autocast. should be level 5 [Harbin]
 
-//=========================================================================================================
-//= Project Freya/Nezumi Remerge back into Freya! - 08/23/2006
-//=========================================================================================================
+
+--------------------------------------------------------------
+ Project Freya/Nezumi Remerge back into Freya! -> 08/23/2006
+--------------------------------------------------------------
