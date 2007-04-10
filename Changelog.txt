@@ -10,6 +10,9 @@
 
 Date	Added
 
+04/10/2007
+	* Improved: GM can now see damage in WoE [Latios]
+
 04/09/2007
 	* Reverted: SVN revision 1319 -> Position lag fixes [Tsuyuki]
 	 - Reason: Broke some client animations
