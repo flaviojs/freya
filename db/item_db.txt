@@ -1608,7 +1608,7 @@
 4337,Porcellio_Card,Porcellio Card,6,,10,10,,,,,,,16,,,,{},{ bonus bBaseAtk,25; bonus bDef,-5; }
 4338,Obsidian_Card,Obsidian Card,6,,10,10,,,,,,,16,,,,{},{ bonus bVit,readparam(bDex)/18; }
 4339,Mineral_Card,Mineral Card,6,,10,10,,,,,,,16,,,,{},{ bonus bBaseAtk,-25; bonus bDef,3; }
-4340,Teddy_Bear_Card,Teddy Bear Card,6,,10,10,,,,,,,32,,,,{},{ bonus2 bSubEle,7,30; }
+4340,Teddy_Bear_Card,Teddy Bear Card,6,,10,10,,,,,,,32,,,,{},{ bonus2 bSubRace,1,30; }
 4341,Metaling_Card,Metaling Card,6,,10,10,,,,,,,2,,,,{},{ bonus4 bAutoSpell,215,1,500,1; }
 4342,RSX-0806_Card,RSX 0806 Card,6,,10,10,,,,,,,16,,,,{},{ bonus bVit,3; bonus bUnbreakableArmor,0; bonus bNoKnockBack,0; }
 4343,Holden_Card,Holden Card,6,,10,10,,,,,,,769,,,,{},{ bonus bLuk,2;}

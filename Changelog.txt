@@ -11,6 +11,7 @@
 Date	Added
 
 04/10/2007
+	* Fixed: Teddy Bear Card should reduce damage taken from undead-type monsters [Harbin]
 	* Implemented: Monster 'Anubis', and replaced Marduks in Sphinx 4F/5F with Anubis as well [Tsuyuki]
 	* Improved: GM can now see damage in WoE [Latios]
 
