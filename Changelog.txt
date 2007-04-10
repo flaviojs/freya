@@ -11,6 +11,8 @@
 Date	Added
 
 04/09/2007
+	* Reverted: SVN revision 1319 -> Position lag fixes [Tsuyuki]
+	 - Reason: Broke some client animations
 	* Fixed: Minor exploit with the Alchemist card combo set (Thanks to Aradil) [Tsuyuki]
 	* Fixed: Seeing damage in WoE with sclientinfo.xml exploit [Latios]
 	* Added: A default SQL login account ID '2000001' with GM level 99 to go along with TXT [Tsuyuki]
