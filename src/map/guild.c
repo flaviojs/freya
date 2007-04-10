@@ -1546,24 +1546,24 @@ int guild_broken(int guild_id,int flag)
 void guild_break(struct map_session_data *sd, char *name)
 {
 	struct guild *g;
-	int i;
+	register int i;
 
-//	nullpo_retv(sd); // checked before to call function
+//	nullpo_retv(sd);
 
-if ((g = guild_search(sd->status.guild_id)) == NULL)
-    return;
-if (strcasecmp(g->name, name) != 0)
-    return;
-if (strcasecmp(sd->status.name, g->master) != 0)
-    return;
+	if((g = guild_search(sd->status.guild_id)) == NULL)
+		return;
+	if(strcasecmp(g->name, name) != 0)
+		return;
+	if(strcasecmp(sd->status.name, g->master) != 0)
+		return;
 
 	for(i = 0; i < g->max_member; i++)
 	{
-		// Just check char_id (char_id is unique)
-		if (g->member[i].account_id > 0 && g->member[i].char_id != sd->status.char_id)
+		if(g->member[i].account_id > 0 && g->member[i].char_id != sd->status.char_id)
 			break;
 	}
-	if (i != g->max_member)
+
+	if(i != g->max_member)
 	{
 		clif_guild_broken(sd, 2);
 		return;

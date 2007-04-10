@@ -543,7 +543,6 @@ int intif_guild_memberinfoshort(int guild_id,
 	return 0;
 }
 
-// ƒMƒ‹ƒh‰ğU’Ê’m
 int intif_guild_break(int guild_id)
 {
 	WPACKETW(0) = 0x3036;

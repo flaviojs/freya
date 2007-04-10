@@ -1194,14 +1194,15 @@ int mapif_parse_GuildChangeMemberInfoShort(int fd, int guild_id, int account_id,
 	return 0;
 }
 
-// ƒMƒ‹ƒh‰ğUˆ——pi“¯–¿/“G‘Î‚ğ‰ğœj
-int guild_break_sub(void *key, void *data, va_list ap) {
+int guild_break_sub(void *key, void *data, va_list ap)
+{
 	struct guild *g = (struct guild *)data;
 	int guild_id = va_arg(ap, int);
-	int i;
+	register int i;
 
-	for(i = 0; i < MAX_GUILDALLIANCE; i++) {
-		if (g->alliance[i].guild_id == guild_id)
+	for(i = 0; i < MAX_GUILDALLIANCE; i++)
+	{
+		if(g->alliance[i].guild_id == guild_id)
 			g->alliance[i].guild_id = 0;
 	}
 

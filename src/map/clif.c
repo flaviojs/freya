@@ -11777,14 +11777,12 @@ void clif_parse_GuildOpposition(int fd, struct map_session_data *sd) { // S 0x01
 	return;
 }
 
-/*==========================================
- * �M���h��U
- *------------------------------------------
- */
-void clif_parse_GuildBreak(int fd, struct map_session_data *sd) { // S 0x015D <guild name>.24B <?>.16B
-//	nullpo_retv(sd); // checked before to call function
+// S 0x015D <guild name>.24B <?>.16B
+void clif_parse_GuildBreak(int fd, struct map_session_data *sd)
+{
+//	nullpo_retv(sd);
 
-	guild_break(sd, RFIFOP(fd,2));
+	guild_break(sd, RFIFOP(fd, 2));
 
 	return;
 }
