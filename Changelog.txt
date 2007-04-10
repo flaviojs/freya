@@ -11,6 +11,7 @@
 Date	Added
 
 04/09/2007
+	* Fixed: Seeing damage in WoE with sclientinfo.xml exploit [Latios]
 	* Added: A default SQL login account ID '2000001' with GM level 99 to go along with TXT [Tsuyuki]
 	* Improved: Started rewriting /db/db_ref.txt documentation file [Tsuyuki]
 	* Removed: Core Dump documentation file (Entirely Japanese..) [Tsuyuki]
