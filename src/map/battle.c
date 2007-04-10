@@ -2189,12 +2189,9 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 					sd->def_ratio_atk_race & (t_mode&0x20?1<<10:1<<11))
 					raceele_flag = flag.idef = 1;
 
-				// Pass effect onto right hand if configured so
 				if(sd->def_ratio_atk_ele_ & (1<<t_ele) || sd->def_ratio_atk_race_ & (1<<t_race) ||
 					sd->def_ratio_atk_race_ & (t_mode&0x20?1<<10:1<<11)) {
-					if (battle_config.left_cardfix_to_right && flag.righthand)
-						raceele_flag = flag.idef = 1;
-					else
+					if (flag.righthand)
 						raceele_flag_ = flag.idef2 = 1;
 				}
 
@@ -2208,9 +2205,6 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 
 			if (!flag.idef2 && ((tmd && sd->ignore_def_mob_ & (t_mode&0x20?2:1)) || sd->ignore_def_ele_ & (1<<t_ele) ||
 				sd->ignore_def_race_ & (1<<t_race) || sd->ignore_def_race_ & (t_mode&0x20?1<<10:1<<11))) {
-				if(battle_config.left_cardfix_to_right && flag.righthand) // Move effect to right hand
-					flag.idef = 1;
-				else
 					flag.idef2 = 1;
 			}
 		}

@@ -11,6 +11,14 @@
 Date	Added
 
 04/10/2007
+	* Fixed: A lot of weapons not working on both hands [Tsuyuki]
+	 - Combat Knife (1228)
+	 - Caesar's Sword (1134)
+	 - Weeder Knife (1227)
+	 - Excorciser (1233)
+	 - Dragon Killer (13001)
+	 - Ice Pick (1230)
+	 - Ice Pick #2 (13017)
 	* Fixed: A typo with Skogul card and Breeze card [Tsuyuki]
 	* Fixed: Teddy Bear Card should reduce damage taken from undead-type monsters [Harbin]
 	* Implemented: Monster 'Anubis', and replaced Marduks in Sphinx 4F/5F with Anubis as well [Tsuyuki]
