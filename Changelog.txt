@@ -13,6 +13,7 @@
 Date	Added
 
 04/10/2007
+	* Added: Abbey Dungeon official warps [Tsuyuki]
 	* Replaced: Marduks with Anubis in Sphinx L4 and L5 [Tsuyuki]
 	* Updated: mob_db.txt and item_db.txt to Huge CGI's latest versions [Tsuyuki]
 	* Updated: Project to jAthena 2290 [Tsuyuki]
