@@ -13,6 +13,10 @@
 Date	Added
 
 04/10/2007
+	* Updated: Veins NPCs a little bit [Tsuyuki]
+	 - Official coords for Cool Event Corp NPC
+	 - Added Pet Merchant + Mailbox
+	 - http://tsuyuki.the-aria.net/misc/ha.jpg
 	* Added: Temp Abbey Dungeon Monster Spawns, based on Ragnagate.net information [Tsuyuki]
 	* Added: Abbey Dungeon official warps [Tsuyuki]
 	* Replaced: Marduks with Anubis in Sphinx L4 and L5 [Tsuyuki]
