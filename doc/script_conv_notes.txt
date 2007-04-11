@@ -21,7 +21,6 @@ All of the following command occurences are commented:
 
 To-Do Mini List:
 - Import + convert Kunlun Power NPC from either Aegis or eAthena (an Aegis-convert)
-- Import Bard quest from normal Freya + debug it
-- Import custom scripts from Freya
+- Fix up commented commands
 
 -------------------------------------------
