@@ -5,7 +5,7 @@
                 (  _)  )  \   ) _)  \  /  /__\                
                 (_)   (_)\_) (___) (__/  (_)(_)               
                     http://www.ro-freya.net                   
-                  Freya Phaeton SVN Changelog
+                     Aurora SVN Changelog
 --------------------------------------------------------------
                 Current Revision: jAthena 2286
 --------------------------------------------------------------
@@ -245,4 +245,4 @@ Date	Added
 	* Added: Server launchers for easier development [Tsuyuki]
 	* Added: Phaeton files and SVN [Tsuyuki]
 
-FREYA PHAETON BEGINS HERE, based off jAthena 2269
+AURORA BEGINS HERE, based off jAthena 2269

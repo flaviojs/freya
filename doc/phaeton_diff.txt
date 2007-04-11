@@ -1,6 +1,6 @@
 ===========================================================================
 ===========================================================================
-			Phaeton and jAthena Differences
+			Aurora and jAthena Differences
 ---------------------------------------------------------------------------
 
 ===========================================================================
@@ -82,16 +82,16 @@
 	Misc Changes
 ---------------------------------------------------------------------------
 
-- There is no LICENCE_JA file in Phaeton, instead there is just LICENSE.
+- There is no LICENCE_JA file in Aurora, instead there is just LICENSE.
 - The 'Readme' changelog is stored in ./doc as 'Readme.txt' instead of in the main folder.
-- This documentation file, './doc/phaeton_diff.txt' does not exist in jAthena.
+- This documentation file, './doc/aurora_diff.txt' does not exist in jAthena.
 - The './doc/script_conv_notes.txt' does not exist in jAthena.
 - The Changelog.txt file in the main folder does not exist in jAthena, they use the 'Readme' file as their Changelog.
 - The faq.html file in the main folder does not exist in jAthena.
 - The runserver.bat, login-server.bat, char-server.bat, and map-server.bat launchers do not exist in jAthena.
 - MagicalTux's start-freya.sh file in the main folder does not exist in jAthena.
-- jAthena's 'start' and 'athena-start' scripts do not exist in Phaeton. They were replaced by 'start-freya.sh'.
-- Phaeton's 'vc07_make.bat' and 'vc07_clean.bat' scripts do not exist in jAthena.
-- The ./tool/translate folder is a translation system for Phaeton that does not exist in jAthena.
-- The ./sql-files/drop_table.sql file does not exist in Phaeton.
+- jAthena's 'start' and 'athena-start' scripts do not exist in Aurora. They were replaced by 'start-freya.sh'.
+- Aurora's 'vc07_make.bat' and 'vc07_clean.bat' scripts do not exist in jAthena.
+- The ./tool/translate folder is a translation system for Aurora that does not exist in jAthena.
+- The ./sql-files/drop_table.sql file does not exist in Aurora.
 - Any other differences that were missed..
