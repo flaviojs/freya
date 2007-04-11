@@ -11,6 +11,10 @@
 Date	Added
 
 04/10/2007
+	* Updated: Veins NPCs a little bit [Tsuyuki]
+	 - Official coords for Cool Event Corp NPC
+	 - Added Pet Merchant + Mailbox
+	 - http://tsuyuki.the-aria.net/misc/ha.jpg
 	* Updated: Nameless Island/Abbey Dungeon monsters with the latest official info + some temp values [Tsuyuki]
 	 - Abbey Dungeon is now good to go, but the monsters are still incomplete and also lack skills (And no exp/drops)
 	* Added: Temp Abbey Dungeon Monster Spawns, based on Ragnagate.net information [Tsuyuki]

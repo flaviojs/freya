@@ -8,7 +8,7 @@
 //--------------------------------------------------------------
 // Script Title: Merchant Shops	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v5.2
+// Revision History: v5.3
 //--------------------------------------------------------------
 //	1.0 First version [Unknown]
 //	1.1 Swapped shop titles in Kunlun [Kashy]
@@ -53,6 +53,7 @@
 //	5.0 Improved formatting [Tsuyuki]
 //	5.1 Merged in Jawaii shops [Tsuyuki]
 //	5.2 Merged in Novice Grounds shops [Tsuyuki]
+//	5.3 Added Veins Pet Merchant [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Partially Official-certified *
 //--------------------------------------------------------------
@@ -362,7 +363,7 @@ umbala.gat,101,154,4	shop	Chef Assistant	750,7456:-1,577:-1
 // Veins
 //--------------------------------------------------------------
 
-// To-Do
+veins.gat,202,130,4	shop	Pet Merchant	124,537:-1,643:-1,10013:-1,10014:-1
 
 //--------------------------------------------------------------
 // Misc Shops

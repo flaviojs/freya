@@ -8,10 +8,12 @@
 //--------------------------------------------------------------
 // Script Title: Cool Event Corp NPCs	Author: Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.1
+// Revision History: v1.2
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis [Tsuyuki]
 //	1.1 Added Cool Event Corp NPC to Veins (Custom coords/save coords) [Tsuyuki]
+//	1.2 Added official coordinates/facing position for the Veins employee [Tsuyuki]
+//	 - Still has custom save coordinates
 //--------------------------------------------------------------
 // Additional Notes: * Aegis-certified *
 //--------------------------------------------------------------
@@ -80,7 +82,7 @@ hugel.gat,88,168,4	script	Cool Event Employee	874,{
 			end;
 
 	L_Cart:
-		if (callfunc("Is_Merc_Class") == 0) goto L_End03;
+		if (BaseClass != Job_Merchant) goto L_End03;
 		if (checkcart(0) == 1) goto L_End04;
 		if (getskilllv(39) == 0) goto L_End05;
 
@@ -209,7 +211,7 @@ lighthalzen.gat,94,248,4	script	Cool Event Employee	874,{
 			end;
 
 	L_Cart:
-		if (callfunc("Is_Merc_Class") == 0) goto L_End03;
+		if (BaseClass != Job_Merchant) goto L_End03;
 		if (checkcart(0) == 1) goto L_End04;
 		if (getskilllv(39) == 0) goto L_End05;
 
@@ -338,7 +340,7 @@ rachel.gat,109,138,5	script	Cool Event Employee	874,{
 			end;
 
 	L_Cart:
-		if (callfunc("Is_Merc_Class") == 0) goto L_End03;
+		if (BaseClass != Job_Merchant) goto L_End03;
 		if (checkcart(0) == 1) goto L_End04;
 		if (getskilllv(39) == 0) goto L_End05;
 
@@ -405,10 +407,10 @@ rachel.gat,109,138,5	script	Cool Event Employee	874,{
 
 
 //--------------------------------------------------------------
-// Veins (Custom coordinates/save coordinates)
+// Veins
 //--------------------------------------------------------------
 
-veins.gat,210,107,4	script	Cool Event Employee	874,{
+veins.gat,207,127,6	script	Cool Event Employee	874,{
 
 	cutin "zonda_01.bmp",2;
 	mes "[Cool Event Employee]";
@@ -421,7 +423,7 @@ veins.gat,210,107,4	script	Cool Event Employee	874,{
 	menu "Save",L_Save,"Use Storage",L_Storage,"Rent a Pushcart",L_Cart,"Cancel",L_Cancel;
 
 	L_Save:
-		savepoint "veins.gat",203,101;
+		savepoint "veins.gat",219,126;
 		mes "[Cool Event Employee]";
 		mes "Your Respawn Point has";
 		mes "been saved in the city";
@@ -467,7 +469,7 @@ veins.gat,210,107,4	script	Cool Event Employee	874,{
 			end;
 
 	L_Cart:
-		if (callfunc("Is_Merc_Class") == 0) goto L_End03;
+		if (BaseClass != Job_Merchant) goto L_End03;
 		if (checkcart(0) == 1) goto L_End04;
 		if (getskilllv(39) == 0) goto L_End05;
 

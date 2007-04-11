@@ -8,11 +8,13 @@
 //--------------------------------------------------------------
 // Script Title: Mail Boxes	Author:	Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.0
+// Revision History: v1.1
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis [Tsuyuki]
+//	1.1 Added a Mailbox to Veins [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: N/A
+// Additional Notes: * Aegis-certified * Note: Need Mailboxes
+// for Lighthalzen, Hugel, Rachel, and Nameless Island.
 //--------------------------------------------------------------
 
 
@@ -91,3 +93,5 @@ gonryun.gat,152,117,0	duplicate(Mailbox)	Mailbox#23	888
 ayothaya.gat,205,169,0	duplicate(Mailbox)	Mailbox#24	888
 
 louyang.gat,204,100,0	duplicate(Mailbox)	Mailbox#25	888
+
+veins.gat,218,123,6	duplicate(Mailbox)	Mailbox#26	888
