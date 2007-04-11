@@ -122,7 +122,7 @@ int pc_follow(struct map_session_data*, int);
 
 int pc_checkbaselevelup(struct map_session_data *sd);
 int pc_checkjoblevelup(struct map_session_data *sd);
-void pc_gainexp(struct map_session_data*, int, int);
+void pc_gainexp(struct map_session_data*, unsigned int, unsigned int);
 unsigned int pc_nextbaseexp(struct map_session_data *);
 unsigned int pc_nextbaseafter(struct map_session_data *);
 unsigned int pc_nextjobexp(struct map_session_data *);

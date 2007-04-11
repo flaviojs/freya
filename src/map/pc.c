@@ -5243,7 +5243,7 @@ int pc_checkjoblevelup(struct map_session_data *sd) {
  * ŒoŒ±’lŽæ“¾
  *------------------------------------------
  */
-void pc_gainexp(struct map_session_data *sd, int base_exp, int job_exp)
+void pc_gainexp(struct map_session_data *sd, unsigned int base_exp, unsigned int job_exp)
 {
 	char output[256];
 	nullpo_retv(sd);
@@ -5261,19 +5261,19 @@ void pc_gainexp(struct map_session_data *sd, int base_exp, int job_exp)
 
 	if (sd->status.guild_id > 0) {
 		base_exp -= guild_payexp(sd, base_exp);
-		if (base_exp < 0)
-			base_exp = 0;
+//		if (base_exp < 0)
+//			base_exp = 0;
 	}
 
 	if (!battle_config.multi_level_up && pc_nextbaseafter(sd) && sd->status.base_exp+base_exp >= pc_nextbaseafter(sd)) {
 		base_exp = pc_nextbaseafter(sd) - sd->status.base_exp;
-		if (base_exp < 0)
-			base_exp = 0;
+//		if (base_exp < 0)
+//			base_exp = 0;
 	}
 
 	sd->status.base_exp += base_exp;
-	if (sd->status.base_exp < 0)
-		sd->status.base_exp = 0;
+//	if (sd->status.base_exp < 0)
+//		sd->status.base_exp = 0;
 
 	while(pc_checkbaselevelup(sd));
 
@@ -5281,13 +5281,13 @@ void pc_gainexp(struct map_session_data *sd, int base_exp, int job_exp)
 
 	if (!battle_config.multi_level_up && pc_nextjobafter(sd) && sd->status.job_exp + job_exp >= pc_nextjobafter(sd)) {
 		job_exp = pc_nextjobafter(sd) - sd->status.job_exp;
-		if (job_exp < 0)
-			job_exp = 0;
+//		if (job_exp < 0)
+//			job_exp = 0;
 	}
 
 	sd->status.job_exp += job_exp;
-	if (sd->status.job_exp < 0)
-		sd->status.job_exp = 0;
+//	if (sd->status.job_exp < 0)
+//		sd->status.job_exp = 0;
 
 	while(pc_checkjoblevelup(sd));
 
@@ -6120,8 +6120,8 @@ int pc_damage(struct block_list *src, struct map_session_data *sd, int damage)
 					}
 				}
 			}
-			if (sd->status.base_exp < 0)
-				sd->status.base_exp = 0;
+//			if (sd->status.base_exp < 0)
+//				sd->status.base_exp = 0;
 			clif_updatestatus(sd, SP_BASEEXP);
 		}
 
@@ -6150,8 +6150,8 @@ int pc_damage(struct block_list *src, struct map_session_data *sd, int damage)
 					}
 				}
 			}
-			if (sd->status.job_exp < 0)
-				sd->status.job_exp = 0;
+//			if (sd->status.job_exp < 0)
+//				sd->status.job_exp = 0;
 			clif_updatestatus(sd, SP_JOBEXP);
 		}
 	}
@@ -6492,16 +6492,16 @@ void pc_setparam(struct map_session_data *sd,int type,int val)
 	case SP_BASEEXP:
 		if (pc_nextbaseexp(sd) > 0) {
 			sd->status.base_exp = val;
-			if (sd->status.base_exp < 0)
-				sd->status.base_exp = 0;
+//			if (sd->status.base_exp < 0)
+//				sd->status.base_exp = 0;
 			pc_checkbaselevelup(sd);
 		}
 		break;
 	case SP_JOBEXP:
 		if (pc_nextjobexp(sd) > 0) {
 			sd->status.job_exp = val;
-			if (sd->status.job_exp < 0)
-				sd->status.job_exp = 0;
+//			if (sd->status.job_exp < 0)
+//				sd->status.job_exp = 0;
 			pc_checkjoblevelup(sd);
 		}
 		break;
@@ -8803,11 +8803,11 @@ void pc_readdb(void)
 
 	i = 0;
 	while(fgets(line, sizeof(line), fp)) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
-		int bn,b1,b2,b3,b4,b5,b6,jn,j1,j2,j3,j4,j5,j6,j7,j8;
+		unsigned int bn,b1,b2,b3,b4,b5,b6,jn,j1,j2,j3,j4,j5,j6,j7,j8;
 		if ((line[0] == '/' && line[1] == '/') || line[0] == '\0' || line[0] == '\n' || line[0] == '\r')
 			continue;
 		// it's not necessary to remove 'carriage return ('\n' or '\r')
-		if (sscanf(line,"%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d",&bn,&b1,&b2,&b3,&b4,&b5,&b6,&jn,&j1,&j2,&j3,&j4,&j5,&j6,&j7,&j8) != 16)
+		if (sscanf(line,"%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u,%u",&bn,&b1,&b2,&b3,&b4,&b5,&b6,&jn,&j1,&j2,&j3,&j4,&j5,&j6,&j7,&j8) != 16)
 			continue;
 		exp_table[ 0][i] = bn;
 		exp_table[ 1][i] = b1;

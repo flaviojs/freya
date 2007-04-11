@@ -10,6 +10,11 @@
 
 Date	Added
 
+04/11/2007
+	* Changed: mmo_charstatus.base_exp and mmo_charstatus.job_exp to unsigned int [Latios]
+	* Improved: moved MAX_LEVEL into include/mmo.h [Latios]
+	* Improved: if MAX_LEVEL < 256, use char for base_level and job_level (less memory usage) [Latios]
+
 04/10/2007
 	* Changed: MAX_LEVEL global variable to 1000 [Tsuyuki]
 	* Changed: exp_table array and exp functions to unsigned for higher value handling [Tsuyuki]

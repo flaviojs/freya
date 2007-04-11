@@ -42,6 +42,7 @@
 #define MAX_GUILDSKILL 15
 #define MAX_GUILDCASTLE 24 // increased to include novice castles [Valaris]
 #define MAX_GUILDLEVEL 50
+#define MAX_LEVEL 1000
 
 // for produce
 #define MIN_ATTRIBUTE 0
@@ -146,7 +147,8 @@ struct mmo_charstatus {
 	unsigned int father, mother;
 	unsigned int child;
 
-	int base_exp, job_exp, zeny;
+	unsigned int base_exp, job_exp;
+	int zeny;
 
 	short class;
 	short status_point, skill_point;
@@ -159,7 +161,11 @@ struct mmo_charstatus {
 	short head_top, head_mid, head_bottom;
 
 	char name[25]; // 24 + NULL
+#if MAX_LEVEL > 255
 	unsigned int base_level, job_level;
+#else
+	unsigned char base_level, job_level;
+#endif
 	short str, agi, vit, int_, dex, luk;
 	unsigned char_num : 5; // 0-9 (bits: 4->5)
 	unsigned sex : 3; // 0-2 (bits: 2->3)
