@@ -11,6 +11,8 @@
 Date	Added
 
 04/11/2007
+	* Fixed: Cure should not cause Chaos/Confusion status on players wearing Evil Druid Card outside gvg/pvp [Latios]
+	* Fixed: Cure should remove curse status, according to RagnaInfo [Latios]
 	* Changed: mmo_charstatus.base_exp and mmo_charstatus.job_exp to unsigned int [Latios]
 	* Improved: moved MAX_LEVEL into include/mmo.h [Latios]
 	* Improved: if MAX_LEVEL < 256, use char for base_level and job_level (less memory usage) [Latios]

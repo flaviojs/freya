@@ -4779,15 +4779,18 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		break;
 
 	case AL_CURE:
-		clif_skill_nodamage(src,bl,skillid,skilllv,1);
-		if(dstsd && status_isimmune(bl))
+		if(dstsd && status_isimmune(bl)) {
+			clif_skill_nodamage(src,bl,skillid,skilllv,0);
 			break;
+		}
 		status_change_end(bl, SC_SILENCE, -1);
 		status_change_end(bl, SC_BLIND, -1);
 		status_change_end(bl, SC_CONFUSION, -1);
-		if(battle_check_undead(status_get_race(bl),status_get_elem_type(bl)) ){
+		status_change_end(bl, SC_CURSE, -1);
+		if(battle_check_undead(status_get_race(bl), status_get_elem_type(bl)) && battle_check_target(src, bl, BCT_ENEMY) >= 1) {
 			status_change_start(bl, SC_CONFUSION, 1, 0, 0, 0, 6000, 0);
 		}
+		clif_skill_nodamage(src,bl,skillid,skilllv,1);
 		break;
 
 	case TF_DETOXIFY:
