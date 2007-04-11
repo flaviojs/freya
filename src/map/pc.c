@@ -46,7 +46,7 @@
 
 #define STATE_BLIND 0x10
 
-static int exp_table[16][MAX_LEVEL];
+static unsigned int exp_table[16][MAX_LEVEL];
 static short statp[MAX_LEVEL];
 
 static int dirx[8] = {0,-1,-1,-1,0,1,1,1};
@@ -5312,7 +5312,7 @@ void pc_gainexp(struct map_session_data *sd, int base_exp, int job_exp)
  * base level
  *------------------------------------------
  */
-int pc_nextbaseexp(struct map_session_data *sd)
+unsigned int pc_nextbaseexp(struct map_session_data *sd)
 {
 	int i;
 
@@ -5340,7 +5340,7 @@ int pc_nextbaseexp(struct map_session_data *sd)
  * job level
  *------------------------------------------
  */
-int pc_nextjobexp(struct map_session_data *sd)
+unsigned int pc_nextjobexp(struct map_session_data *sd)
 {
 	int i;
 
@@ -5368,7 +5368,7 @@ int pc_nextjobexp(struct map_session_data *sd)
  * base level after next
  *------------------------------------------
  */
-int pc_nextbaseafter(struct map_session_data *sd)
+unsigned int pc_nextbaseafter(struct map_session_data *sd)
 {
 	int i;
 
@@ -5396,7 +5396,7 @@ int pc_nextbaseafter(struct map_session_data *sd)
  * job level after next
  *------------------------------------------
  */
-int pc_nextjobafter(struct map_session_data *sd)
+unsigned int pc_nextjobafter(struct map_session_data *sd)
 {
 	int i;
 

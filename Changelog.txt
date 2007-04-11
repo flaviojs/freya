@@ -11,6 +11,9 @@
 Date	Added
 
 04/10/2007
+	* Changed: MAX_LEVEL global variable to 1000 [Tsuyuki]
+	* Changed: exp_table array and exp functions to unsigned for higher value handling [Tsuyuki]
+	* Changed: sd->status.base_class and sd->status.job_level to unsigned integers (Were chars before??) [Tsuyuki]
 	* Updated: Veins NPCs a little bit [Tsuyuki]
 	 - Official coords for Cool Event Corp NPC
 	 - Added Pet Merchant + Mailbox

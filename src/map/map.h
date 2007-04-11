@@ -34,7 +34,7 @@
 #define MAX_EVENTTIMER 32
 #define NATURAL_HEAL_INTERVAL 500
 #define MAX_FLOORITEM 500000
-#define MAX_LEVEL 255
+#define MAX_LEVEL 1000
 #define MAX_WALKPATH 32 // previously 48
 //#define MAX_DROP_PER_MAP 48 // -> now, dynamic
 #define MAX_IGNORE_LIST 1000 // now it's used in dynamic, but maximum is to send all names in 1 packet -> (32768/24) = 1365 ->1000
@@ -286,8 +286,8 @@ struct map_session_data {
 	int castrate, delayrate, hprate, sprate, dsprate;
 	int addele[10], addrace[12], addsize[3], subele[10], subrace[12];
 	int addeff[10], addeff2[10], reseff[10];
-	int watk_,watk_2, atkmods_[3], addele_[10], addrace_[12], addsize_[3]; //�񓁗��̂��߂ɒǉ�
-	int atk_ele_, star_,overrefine_; //�񓁗��̂��߂ɒǉ�
+	int watk_,watk_2, atkmods_[3], addele_[10], addrace_[12], addsize_[3]; //�����0�
+	int atk_ele_, star_,overrefine_; //�����0�
 	int base_atk, atk_rate;
 	int weapon_atk[16], weapon_atk_rate[16];
 	int arrow_atk, arrow_ele, arrow_cri, arrow_hit, arrow_range;
@@ -467,7 +467,7 @@ struct npc_data {
 			char name[17]; // 16 + NULL
 		} warp;
 	} u;
-	// �����Ƀ����o���ǉ���Ă͂Ȃ��Ȃ�(shop_item���ϒ��̈�)
+	// �����ɒ����o���0������(shop_item���"���)
 
 	char eventqueue[MAX_EVENTQUEUE][50]; // 49 + NULL
 	int eventtimer[MAX_EVENTTIMER];
@@ -579,7 +579,7 @@ enum { MS_IDLE, MS_WALK, MS_ATTACK, MS_DEAD, MS_DELAY };
 
 enum { NONE_ATTACKABLE, ATTACKABLE };
 
-enum { ATK_LUCKY = 1, ATK_FLEE, ATK_DEF}; // �͂܂��y�i���e�B�v�Z�p
+enum { ATK_LUCKY = 1, ATK_FLEE, ATK_DEF}; // ���y�i���e�B�v�Z�p
 
 // For equipment breaking/stripping effects
 enum {
@@ -591,7 +591,7 @@ enum {
 
 struct map_data {
 	char name[17]; // 16 + NULL
-	char *gat; // NULL�Ȃ牺��map_data_other_server�Ƃ��Ĉ���
+	char *gat; // NULL�0��map_data_other_server������
 	char *alias; // [MouseJstr]
 	struct block_list **block;
 	struct block_list **block_mob;
@@ -651,7 +651,7 @@ struct map_data {
 
 struct map_data_other_server {
 	char name[25]; // 24 + NULL
-	char *gat; // NULL�Œ��ɂ��Ĕ��f
+	char *gat; // NULL�������f
 	unsigned long ip;
 	unsigned int port;
 	struct map_data *map;
@@ -779,20 +779,20 @@ enum {
 #define CELL_MOONLIT	0x100
 #define CELL_REGEN		0x200
 /*
- * map_getcell()�Ŏg�p�������t���O
+ * map_getcell()�}g�p�������t���O
  */
 typedef enum {
 	CELL_CHKWALL = 0,   // ��(�Z���^�C�v1)
 	CELL_CHKWATER,      // ����(�Z���^�C�v3)
 	CELL_CHKGROUND,     // �n�ʏ��Q��(�Z���^�C�v5)
-	CELL_CHKPASS,       // �ʉ߉\(�Z���^�C�v1,5�ȊO)
-	CELL_CHKNOPASS,     // �ʉߕs��(�Z���^�C�v1,5)
-	CELL_GETTYPE,       // �Z���^�C�v���Ԃ�
+	CELL_CHKPASS,       // �00\(�Z���^�C�v1,5�`O)
+	CELL_CHKNOPASS,     // �0"s��(�Z���^�C�v1,5)
+	CELL_GETTYPE,       // �Z���^�C�v����
 	CELL_CHKNOPASS_NPC, // check if it is NOPASS or NPC
 	CELL_CHKNPC=0x10,   // �^�b�`�^�C�v��NPC(�Z���^�C�v0x80�t���O)
 	CELL_CHKBASILICA    // �o�W���J(�Z���^�C�v0x40�t���O)
 } cell_t;
-// map_setcell()�Ŏg�p�������t���O
+// map_setcell()�}g�p�������t���O
 enum {
 	CELL_SETNPC=0x10, // �^�b�`�^�C�v��NPC���Z�b�g
 	CELL_SETBASILICA, // �o�W���J���Z�b�g
@@ -845,11 +845,11 @@ extern unsigned char map_is_alone; // define communication usage of map-server i
 // �I�S�̏���
 void map_setusers(int);
 int map_getusers(void);
-// block�폜�֘A
+// block�S�A
 int map_freeblock(void *bl);
 void map_freeblock_lock(void);
 void map_freeblock_unlock(void);
-// block�֘A
+// block�A
 int map_addblock(struct block_list *);
 int map_delblock(struct block_list *);
 void map_foreachinarea(int (*)(struct block_list*, va_list), int, int, int, int, int, int, ...);
@@ -858,10 +858,10 @@ void map_foreachinarea(int (*)(struct block_list*, va_list), int, int, int, int,
 void map_foreachinmovearea(int (*)(struct block_list*, va_list), int, int, int, int, int, int, int, int, ...);
 void map_foreachinpath(int (*)(struct block_list*, va_list), int, int, int, int, int, int, int, ...);
 /*int map_countnearpc(int, int, int);*/
-//block�֘A�ɒǉ�
+//block�A�0�
 int map_count_oncell(int m, int x, int y);
 struct skill_unit *map_find_skill_unit_oncell(struct block_list *, int x, int y, int skill_id, struct skill_unit *);
-// �ꎞ�Iobject�֘A
+// �}~�Iobject�A
 int map_addobject(struct block_list *);
 int map_delobject(int);
 int map_delobjectnofree(int id);
@@ -872,13 +872,13 @@ void map_quit2(struct map_session_data *); // to free memory of dynamic allocati
 // npc
 int map_addnpc(int,struct npc_data *);
 
-// ���A�C�e���֘A
+// ���A�C�e���A
 int map_clearflooritem_timer(int,unsigned int,int,int);
 #define map_clearflooritem(id) map_clearflooritem_timer(0,0,id,1)
 int map_addflooritem(struct item *,int,int,int,int,struct map_session_data *,struct map_session_data *,struct map_session_data *, int owner_id, int);
 int map_searchrandfreecell(int,int,int,int);
 
-// �L����id�����L������ �ϊ��֘A
+// �L����id�����L������ �`��A
 void map_addchariddb(int charid, char *name);
 void map_delchariddb(int charid);
 int map_reqchariddb(struct map_session_data * sd, int charid);
@@ -899,7 +899,7 @@ void map_foreachiddb(int (*)(void*, void*, va_list), ...);
 //void map_addnickdb(struct map_session_data *);
 struct map_session_data * map_nick2sd(char*);
 
-// ���̑�
+// ����
 int map_check_dir(int s_dir, int t_dir);
 int map_calc_dir(struct block_list *src, int x, int y);
 
