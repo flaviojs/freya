@@ -1435,12 +1435,31 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, int s
 					status_change_end(bl, SC_ASPDPOTION2, -1);
 				if (tsc_data[SC_ASPDPOTION3].timer != -1 && tsc_data[SC_ASPDPOTION3].val4)
 					status_change_end(bl, SC_ASPDPOTION3, -1);
+				// Remove Soul Linker/Star Gladiator statuses
 				if (tsc_data[SC_SPIRIT].timer != -1)
 					status_change_end(bl, SC_SPIRIT, -1);
 				if (tsc_data[SC_ONEHAND].timer != -1)
 					status_change_end(bl, SC_ONEHAND, -1);
 				if (tsc_data[SC_ADRENALINE2].timer != -1)
 					status_change_end(bl, SC_ADRENALINE2, -1);
+				if(tsc_data[SC_WARM].timer!=-1)
+					status_change_end(bl,SC_WARM,-1);
+				if(tsc_data[SC_SUN_COMFORT].timer!=-1)
+					status_change_end(bl,SC_SUN_COMFORT,-1);
+				if(tsc_data[SC_MOON_COMFORT].timer!=-1)
+					status_change_end(bl,SC_MOON_COMFORT,-1);
+				if(tsc_data[SC_STAR_COMFORT].timer!=-1)
+					status_change_end(bl,SC_STAR_COMFORT,-1);
+				if(tsc_data[SC_FUSION].timer!=-1)
+					status_change_end(bl,SC_FUSION,-1);
+				if(tsc_data[SC_KAIZEL].timer!=-1)
+					status_change_end(bl,SC_KAIZEL,-1);
+				if(tsc_data[SC_KAAHI].timer!=-1)
+					status_change_end(bl,SC_KAAHI,-1);
+				if(tsc_data[SC_KAUPE].timer!=-1)
+					status_change_end(bl,SC_KAUPE,-1);
+				if(tsc_data[SC_KAITE].timer!=-1)
+					status_change_end(bl,SC_KAITE,-1);
 			}
 		}
 		break;
@@ -4200,12 +4219,6 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 		clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 		status_change_start(bl, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
 		break;
-	case NJ_SHADOWJUMP:
-		if (sc_data && sc_data[SC_HIDING].timer != -1)
-			status_change_end(src,SC_HIDING,-1);
-		else
-			clif_skill_fail(sd, skillid, 0, 0);
-		break;
 	case GS_MADNESSCANCEL:
 	case GS_ADJUSTMENT:
 	case GS_INCREASING:
@@ -4221,11 +4234,6 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, int
 			{
 				clif_skill_nodamage(src, bl, skillid, skilllv, 1);
 				status_change_start(bl, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
-				if (sd)
-				{
-					sd->view_class = 4048;
-					clif_changelook(&sd->bl, LOOK_BASE, sd->view_class);
-				}
 			}
 		}
 		break;
@@ -6581,8 +6589,16 @@ int skill_castend_pos2(struct block_list *src, int x, int y, int skillid, int sk
 			mob_warp((struct mob_data *)src, -1, x, y, 0);
 		break;
 	case NJ_SHADOWJUMP:
-		if (sd)
+		if (sd) {
+			if (sd->sc_data[SC_HIDING].timer != -1)
+				status_change_end(src,SC_HIDING,-1);
+			else {
+				clif_skill_fail(sd, skillid, 0, 0);
+				break;
+			}
 			pc_movepos(sd, x, y, 0);
+			clif_fixpos(&sd->bl);
+		}
 		break;
 	case AM_CANNIBALIZE:
 		if (sd) {
@@ -9405,7 +9421,7 @@ int skill_use_pos(struct map_session_data *sd,
 			return 0;
 	}
 
-	if (sd->status.option & 2)
+	if (sd->status.option & 2 && skill_num != NJ_SHADOWJUMP)
 		return 0;
 
 	sd->skillid = skill_num;

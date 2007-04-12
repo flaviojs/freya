@@ -8155,6 +8155,7 @@ void antibot_action(struct map_session_data *sd) {
  */
 void clif_parse_LoadEndAck(int fd, struct map_session_data *sd) { // S 0x007d
 	struct npc_data *npc;
+	int skill;
 
 //	nullpo_retv(sd); // checked before to call function
 
@@ -8294,7 +8295,10 @@ void clif_parse_LoadEndAck(int fd, struct map_session_data *sd) { // S 0x007d
 		if (sd->sc_data[SC_SIGNUMCRUCIS].timer != -1 && !battle_check_undead(7, sd->def_ele))
 			status_change_end(&sd->bl, SC_SIGNUMCRUCIS, -1);
 	}
-	
+
+	if ((skill = pc_checkskill(sd, SG_DEVIL)) > 0)
+		clif_status_change(&sd->bl,ICO_DEVIL,1);
+
 	if (sd->special_state.infinite_endure && sd->sc_data[SC_ENDURE].timer == -1)
 		status_change_start(&sd->bl, SC_ENDURE, 10, 1, 0, 0, 0, 0);
 	/*
@@ -8439,19 +8443,22 @@ void clif_parse_WalkToXY(int fd, struct map_session_data *sd) { // S 0x0085 <X_Y
 		return;
 	}
 
-	if (pc_issit(sd)) // client can not send walk packet if player is sit down. But with hacker and latency... do a check
-		return; // to avoid: have regeneration of a sitting man, but not be sit down.
+	if (pc_issit(sd)) // Client cannot send walk packet if player is sitting. But with hacker and latency... do a check
+		return; // To avoid: Have regeneration of a sitting man, but not be sit down.
 
 	if (sd->bl.prev == NULL || sd->npc_id != 0|| sd->vender_id != 0 || sd->trade_partner != 0 || sd->chatID != 0)
 		return;
 
-	if (sd->skilltimer != -1 && pc_checkskill(sd, SA_FREECAST) <= 0) // �t���[�L���X�g
+	if (sd->skilltimer != -1 && pc_checkskill(sd, SA_FREECAST) <= 0)
 		return;
 
 	if(pc_cant_move(sd))
 		return;
 
 	if((sd->status.option&2) && pc_checkskill(sd, RG_TUNNELDRIVE) <= 0)
+		return;
+
+	if(sd->sc_data[SC_RUN].timer != -1)
 		return;
 
 	pc_delinvincibletimer(sd);
@@ -8511,12 +8518,12 @@ void clif_parse_WalkToXY(int fd, struct map_session_data *sd) { // S 0x0085 <X_Y
 		x = RFIFOB(fd,5) * 4 + (RFIFOB(fd,6) >> 6);
 		y = ((RFIFOB(fd,6) & 0x3f) << 4) + (RFIFOB(fd,7) >> 4);
 		break;
-	default: // old version by default
+	default: // Old version by default
 		x = RFIFOB(fd,2) * 4 + (RFIFOB(fd,3) >> 6);
 		y = ((RFIFOB(fd,3) & 0x3f) << 4) + (RFIFOB(fd,4) >> 4);
 		break;
 	}
-	// if player don't click always the same position
+	// If player don't click always the same position
 	if (sd->to_x != x || sd->to_y != y)
 		pc_walktoxy(sd, x, y);
 

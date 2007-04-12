@@ -10,6 +10,13 @@
 
 Date	Added
 
+04/12/2007
+	* Fixed: Ninja's Shadow Jump skill not working at all (Now works perfectly) [Tsuyuki]
+	* Added: A few more statuses to be dispelled by Taekwon's Jump Kick skill [Tsuyuki]
+	* Added: Star Gladiator Devil skill's progressive blind effect [Tsuyuki]
+	* Added: Star Gladiator Fusion skill [Tsuyuki]
+	* Fixed: You can no longer change positions while using Taekwon's Sprint skill (Thanks to Pi) [Tsuyuki]
+
 04/11/2007
 	* Fixed: Cure should not cause Chaos/Confusion status on players wearing Evil Druid Card outside gvg/pvp [Latios]
 	* Fixed: Cure should remove curse status, according to RagnaInfo [Latios]

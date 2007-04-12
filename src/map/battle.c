@@ -2627,6 +2627,9 @@ struct Damage battle_calc_weapon_attack(struct block_list *src, struct block_lis
 		}
 	}
 
+	if(sd && pc_checkskill(sd,SG_FEEL) > 2 && wd.flag&BF_WEAPON && rand()%10000 <= 1)
+		status_change_start(src,SC_MIRACLE,1,0,0,0,3600000,0);
+
 	return wd;
 }
 
@@ -3766,25 +3769,18 @@ int battle_weapon_attack(struct block_list *src, struct block_list *target, unsi
 	}
 
 	/// Star Gladiator's Fusion self damage
-	if (sc_data && sc_data[SC_FUSION].timer != -1)
+	if(sd && sc_data && sc_data[SC_FUSION].timer != -1)
 	{
-		// Player usage penalty only (assuming mobs/pets will never use Fusion)
-		if (sd)
+		int hp;
+
+		if(target->type == BL_PC)
 		{
-			hp = sd->status.hp;
-			if (100*sd->status.hp <= 20*sd->status.max_hp && target->type == BL_PC)
-			{
-				sd->status.hp = 0;
-				pc_damage(NULL, sd, 1);
-				return wd.dmg_lv;
-			}
-			else if (target->type == BL_PC)
-				hp -= hp*(8/100);
-			else
-				hp -= hp*(2/100);
-			sd->status.hp = hp;
-			clif_updatestatus(sd, SP_HP);
-		}
+			hp = sd->status.max_hp * 8 / 100;
+			if (sd->status.hp < (sd->status.max_hp * 20 / 100))
+				hp = sd->status.hp;
+		} else
+			hp = sd->status.max_hp * 2 / 100;
+		pc_heal(sd,-hp,0);
 	}
 
 	return wd.dmg_lv;

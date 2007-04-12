@@ -1025,8 +1025,11 @@ int status_calc_pc(struct map_session_data* sd, int first)
 	if ((skill = pc_checkskill(sd, SA_ADVANCEDBOOK)) > 0)
 		aspd_rate -= skill >> 1;
 		
-	if ((skill= pc_checkskill(sd, SG_DEVIL)) > 0 && sd->status.job_level >= 50)
-		aspd_rate -= 30*skill;
+	if ((skill= pc_checkskill(sd, SG_DEVIL))) {
+		clif_status_change(&sd->bl,ICO_DEVIL,1);
+		if (sd->status.job_level >= 50)
+			aspd_rate -= 30*skill;
+	}
 
 	bl = sd->status.base_level;
 	idx = (3500 + bl * hp_coefficient2[s_class.job] + hp_sigma_val[s_class.job][(bl > 0)? bl-1:0])/100 * (100 + sd->paramc[2])/100 + (sd->parame[2] - sd->paramcard[2]);
@@ -1197,6 +1200,12 @@ int status_calc_pc(struct map_session_data* sd, int first)
 			if (idx >= 0 && sd->inventory_data[idx] && sd->inventory_data[idx]->type == 4)
 				sd->watk_ = sd->watk_*(100 + (3 * sd->sc_data[SC_PROVOKE].val1 + 2))/100;
 		}
+		if (sd && sd->sc_data[SC_FUSION].timer!=-1)
+		{
+			aspd_rate -= 20;
+			sd->perfect_hit += 100;
+		}
+
 
 		if (sd->sc_data[SC_GATLINGFEVER].timer != -1)
 		{
@@ -4211,6 +4220,7 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 	case SC_FUSION:
 		if (sc_data[SC_SPIRIT].timer != -1)
 			status_change_end(bl, SC_SPIRIT, -1);
+			scflag.calc = 1;
 		break;
 	case SC_ADJUSTMENT:
 		if (sc_data[SC_MADNESSCANCEL].timer != -1)
@@ -5379,6 +5389,7 @@ int status_change_end(struct block_list* bl, int type, int tid)
 			case SC_BERSERK:
 			case SC_SUITON:
 			case SC_ONEHAND:
+			case SC_FUSION:
 				// Run status_calc_pc at end of function (Recalculate player's status)
 				calc_flag = 1;
 				break;
