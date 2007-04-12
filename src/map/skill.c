@@ -2677,6 +2677,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 	struct status_change *sc_data;
 	int i;
 	int ninjacalc;
+	int race = status_get_race(bl);
 
 	if (skillid < 0) {
 		//printf("skill_castend_damage_id: skillid=%i(lvl:%d)\ncall: %p %p %i %i %i %i", skillid, skilllv, src, bl, skillid, skilllv, tick, flag);
@@ -2785,7 +2786,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, flag);
 		break;
 	case HT_POWER:
-		if(sc_data && sc_data[SC_DOUBLE].timer != -1 && sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_HUNTER) {
+		if(sc_data && sc_data[SC_DOUBLE].timer != -1 && sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_HUNTER && race == 2) {
 			status_change_end(src, SC_DOUBLE, -1);
 			skill_attack(BF_WEAPON, src, src, bl, skillid, skilllv, tick, flag);
 		}

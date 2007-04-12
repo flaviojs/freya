@@ -11,6 +11,7 @@
 Date	Added
 
 04/12/2007
+	* Fixed: Beast Strafing working on mobs of any race (Thanks to Pi) [Tsuyuki]
 	* Fixed: Ninja's Shadow Jump skill not working at all (Now works perfectly) [Tsuyuki]
 	* Added: A few more statuses to be dispelled by Taekwon's Jump Kick skill [Tsuyuki]
 	* Added: Star Gladiator Devil skill's progressive blind effect [Tsuyuki]
