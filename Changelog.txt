@@ -14,6 +14,7 @@
 Date	Added
 
 04/14/2007
+	* Updated: KH Quest variable types [Tsuyuki]
 	* Updated: Fully debugged/fixed up Kiel Hyre quest [Tsuyuki]
 	 - It's now fully functional, but may still have some stray bugs
 	* Removed: Duplicate Payon Inn NPC [Tsuyuki]
