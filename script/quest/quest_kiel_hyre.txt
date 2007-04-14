@@ -108,16 +108,16 @@
 //
 //  @KHPryingItem$	- Used for incorrect options when prying open last door.
 //
-//  $KHKilled		- Tracks how many monsters have been killed.
+//  $@KHKilled		- Tracks how many monsters have been killed.
 //			  Used with Receiver, Robots, and Kiehl NPCs
 //
-//  $KHDoor1Open	- 0/1 Depending on if the first door is opened.
-//  $KHDoor2Open	- 0/1 Depending on if the second door is opened.
-//  $KHDoor3Open	- 0/1 Depending on if the third door is opened.
-//  $KHDoor4Open	- 0/1 Depending on if the fourth door is opened.
-//  $KHDoor5Open	- 0/1 Depending on if the fifth door is opened.
+//  $@KHDoor1Open	- 0/1 Depending on if the first door is opened.
+//  $@KHDoor2Open	- 0/1 Depending on if the second door is opened.
+//  $@KHDoor3Open	- 0/1 Depending on if the third door is opened.
+//  $@KHDoor4Open	- 0/1 Depending on if the fourth door is opened.
+//  $@KHDoor5Open	- 0/1 Depending on if the fifth door is opened.
 //
-//  $KHKilledBoss	- 0/1 depending on if the boss has been killed.
+//  $@KHKilledBoss	- 0/1 depending on if the boss has been killed.
 //
 //--------------------------------------------------------------
 // [NPCs]			 [Location]
@@ -6034,11 +6034,11 @@ yuno_fild09.gat,158,217,0	script	Wooden Board	111,{
 
 kh_kiehl01.gat,17,39,0	script	Receiver	111,{
 
-	if ($KHKilled < 1) goto L_Kiel01;
+	if ($@KHKilled < 1) goto L_Kiel01;
 	goto L_Kiel02;
 
 	L_Kiel01:
-		set $KHKilled,$KHKilled+1;
+		set $@KHKilled,$@KHKilled+1;
 		mes "^333333*BBBZZZ*^000000";
 		if (KielHyreQuest == 74) goto L_Kiel03;
 		goto L_Kiel04;
@@ -6065,13 +6065,13 @@ kh_kiehl01.gat,17,39,0	script	Receiver	111,{
 		end;
 
 OnMyMobDead:
-	set $KHKilled,$KHKilled+1;
-	if ($KHKilled == 3) goto L_Kiel05;
+	set $@KHKilled,$@KHKilled+1;
+	if ($@KHKilled == 3) goto L_Kiel05;
 	goto L_Kiel06;
 
 	L_Kiel05:
 		makeitem 7506,1,"this",18,37; 
-		set $KHKilled,0;
+		set $@KHKilled,0;
 		goto L_Kiel06;
 
 L_Kiel06:
@@ -6165,7 +6165,7 @@ kh_kiehl01.gat,19,25,0	script	Box	111,{
 
 kh_kiehl01.gat,44,33,0	script	Big Door	111,{
 
-	if ($KHDoor1Opened == 0) goto L_Kiel01;
+	if ($@KHDoor1Opened == 0) goto L_Kiel01;
 	goto L_Kiel02;
 
 	L_Kiel01:
@@ -6189,7 +6189,7 @@ kh_kiehl01.gat,44,33,0	script	Big Door	111,{
 				delitem 7506,1; //Black_Keycard
 				donpcevent "Big_Door_1_Warp::OnEnable";
 				enablenpc"Big_Door_1_Warp";
-				set $KHDoor1Opened,1;
+				set $@KHDoor1Opened,1;
 				close;
 
 	L_Kiel05:
@@ -6235,7 +6235,7 @@ OnTouch:
 
 kh_kiehl01.gat,174,40,0	script	Big Door	111,{
 
-	if ($KHDoor2Opened == 0) goto L_Kiel01;
+	if ($@KHDoor2Opened == 0) goto L_Kiel01;
 	goto L_Kiel02;
 
 	L_Kiel01:
@@ -6259,7 +6259,7 @@ kh_kiehl01.gat,174,40,0	script	Big Door	111,{
 				delitem 7505,1; //Toy_Key
 				donpcevent "Big_Door_2_Warp::OnEnable";
 				enablenpc"Big_Door_2_Warp";
-				set $KHDoor2Opened,1;
+				set $@KHDoor2Opened,1;
 				close;
 
 	L_Kiel05:
@@ -6305,7 +6305,7 @@ OnTouch:
 
 kh_kiehl01.gat,77,108,0	script	Big Door	111,{
 
-	if ($KHDoor3Opened == 0) goto L_Kiel01;
+	if ($@KHDoor3Opened == 0) goto L_Kiel01;
 	goto L_Kiel02;
 
 	L_Kiel01:
@@ -6329,7 +6329,7 @@ kh_kiehl01.gat,77,108,0	script	Big Door	111,{
 				delitem 7506,1; //Black_Keycard
 				donpcevent "Big_Door_3_Warp::OnEnable";
 				enablenpc"Big_Door_3_Warp";
-				set $KHDoor3Opened,1;
+				set $@KHDoor3Opened,1;
 				close;
 
 	L_Kiel05:
@@ -6375,7 +6375,7 @@ OnTouch:
 
 kh_kiehl01.gat,42,177,0	script	Big Door	111,{
 
-	if ($KHDoor4Opened == 0) goto L_Kiel01;
+	if ($@KHDoor4Opened == 0) goto L_Kiel01;
 	goto L_Kiel02;
 
 	L_Kiel01:
@@ -6399,7 +6399,7 @@ kh_kiehl01.gat,42,177,0	script	Big Door	111,{
 				delitem 7506,2; //Black_Keycard
 				donpcevent "Big_Door_4_Warp::OnEnable";
 				enablenpc"Big_Door_4_Warp";
-				set $KHDoor4Opened,1;
+				set $@KHDoor4Opened,1;
 				close;
 
 	L_Kiel05:
@@ -6443,11 +6443,11 @@ OnTouch:
 
 kh_kiehl01.gat,15,181,0	script	Robots	111,{
 
-	if ($KHKilled < 1) goto L_Kiel01;
+	if ($@KHKilled < 1) goto L_Kiel01;
 	goto L_Kiel02;
 
 	L_Kiel01:
-		set $KHKilled,$KHKilled+1;
+		set $@KHKilled,$@KHKilled+1;
 		mes "^3355FFAs soon as you";
 		mes "touch the test tube,";
 		mes "a bunch of robots";
@@ -6463,13 +6463,13 @@ kh_kiehl01.gat,15,181,0	script	Robots	111,{
 		end;
 
 OnMyMobDead:
-	set $KHKilled,$KHKilled+1;
-	if ($KHKilled == 4) goto L_Kiel03;
+	set $@KHKilled,$@KHKilled+1;
+	if ($@KHKilled == 4) goto L_Kiel03;
 	goto L_Kiel04;
 
 	L_Kiel03:
 		makeitem 7506,1,"this",17,182; 
-		set $KHKilled,0;
+		set $@KHKilled,0;
 		goto L_Kiel04;
 
 L_Kiel04:
@@ -6603,7 +6603,7 @@ kh_kiehl01.gat,166,187,0	script	Big Door#5	111,{
 			close;
 
 		L_Kiel05:
-			if ($KHDoor5Opened == 0) goto L_Kiel17;
+			if ($@KHDoor5Opened == 0) goto L_Kiel17;
 			goto L_Kiel18;
 
 			L_Kiel17:
@@ -6619,8 +6619,8 @@ kh_kiehl01.gat,166,187,0	script	Big Door#5	111,{
 					set $@KH_DoorInvoker$,strcharinfo(0);
 					donpcevent "Big_Door_5_Warp::OnEnable";
 					enablenpc"Big_Door_5_Warp";
-					set $KHDoor5Opened,1;
-					//set $KHQuestBusy,1;
+					set $@KHDoor5Opened,1;
+					//set $@KHQuestBusy,1;
 					end;
 
 				L_Kiel20:
@@ -6684,11 +6684,11 @@ kh_kiehl02.gat,49,15,0	script	Kiehl_Room_Trap	139,4,4,{
 	end;
 
 OnTouch:
-	if ($KHTrapSprung < 1) goto L_Kiel01;
+	if ($@KHTrapSprung < 1) goto L_Kiel01;
 	goto L_Kiel02;
 
 	L_Kiel01:
-		set $KHTrapSprung,1;
+		set $@KHTrapSprung,1;
 		monster "kh_kiehl02.gat",46,13,"Alicel",1739,1;
 		monster "kh_kiehl02.gat",47,13,"Aliot",1740,1;
 		monster "kh_kiehl02.gat",48,13,"Alicel",1739,1;
@@ -6721,10 +6721,10 @@ kh_kiehl02.gat,50,52,4	script	Kiehl#Original	902,{
 
 	L_Kiel01:
 		if (KielHyreQuest == 94) goto L_Kiel03;
-		if ((KielHyreQuest == 96) && ($KHKilled < 6)) goto L_Kiel04;
-		if ((KielHyreQuest == 96) && ($KHKilled == 6)) goto L_Kiel05;
-		if ((KielHyreQuest == 100) && ($KHKilledBoss < 1)) goto L_Kiel06;
-		if ((KielHyreQuest == 100) && ($KHKilledBoss == 1)) goto L_Kiel07;
+		if ((KielHyreQuest == 96) && ($@KHKilled < 6)) goto L_Kiel04;
+		if ((KielHyreQuest == 96) && ($@KHKilled == 6)) goto L_Kiel05;
+		if ((KielHyreQuest == 100) && ($@KHKilledBoss < 1)) goto L_Kiel06;
+		if ((KielHyreQuest == 100) && ($@KHKilledBoss == 1)) goto L_Kiel07;
 		if (KielHyreQuest == 104) goto L_Kiel08;
 		goto L_Kiel09;
 
@@ -6742,7 +6742,7 @@ kh_kiehl02.gat,50,52,4	script	Kiehl#Original	902,{
 			end;
 
 		L_Kiel04:
-			set $KHKilled,0;
+			set $@KHKilled,0;
 			mes "[Kiehl]";
 			mes "You can understand";
 			mes "why I can't let you have it,";
@@ -6858,7 +6858,7 @@ kh_kiehl02.gat,50,52,4	script	Kiehl#Original	902,{
 			close;
 
 		L_Kiel06:
-			set $KHKilledBoss,0;
+			set $@KHKilledBoss,0;
 			cutin "kh_kiel01",2;
 			mes "[Kiehl]";
 			mes "Ah, Schwaltzvalt Republic";
@@ -7200,8 +7200,8 @@ OnInit:
 kh_kiehl02.gat,1,1,0	script	KiehlRoom	139,{
 
 OnKiehlMobDead:
-	set $KHKilled,$KHKilled+1;
-	if ($KHKilled == 6) goto L_Kiel01;
+	set $@KHKilled,$@KHKilled+1;
+	if ($@KHKilled == 6) goto L_Kiel01;
 	goto L_Kiel02;
 
 	L_Kiel01:
@@ -7213,7 +7213,7 @@ L_Kiel02:
 	end;
 
 OnKiehlDead:
-	set $KHKilledBoss,1;
+	set $@KHKilledBoss,1;
 	donpcevent "Kiehl#Original::OnChangeState";
 	enablenpc "Kiehl#Original";
 	end;
@@ -7226,10 +7226,10 @@ OnKHTimerEnd:
 OnReset:
 	disablenpc "Kiehl_Room_Exit";
 	killmonsterall "kh_kiehl02.gat";
-	set $KHKilledBoss,0;
-	set $KHKilled,0;
-	//set $KHQuestBusy,0;
-	set $KHTrapSprung,0;
+	set $@KHKilledBoss,0;
+	set $@KHKilled,0;
+	//set $@KHQuestBusy,0;
+	set $@KHTrapSprung,0;
 	set $@KH_DoorInvoker$,"";
 }
 
