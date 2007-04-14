@@ -131,7 +131,7 @@ payon_in01.gat,180,7,2	script	Waitress	90,{
 	mes "Where can I find the right person, a hot and sexy hunk who can take me away from here?";
 	next;
 	mes "[Pub Lady]";
-	if (Sex == Female) goto PBL_Else1;
+	if (Sex != Male) goto PBL_Else1;
 		mes "Um, hey mister, are you listening?";
 		goto PBL_Next1;
 	PBL_Else1:
@@ -259,7 +259,7 @@ payon.gat,249,156,1	script	Woman	90,{
 	next;
 	mes "[Woman]";
 	mes "To be honest, things are getting tough becuase all of those monsters. *Sigh...*";
-	if (Sex == Female) goto W2_Fem;
+	if (Sex != Male) goto W2_Fem;
 		mes "[Woman]";
 		mes "Whoa~! I just noticed those arms of you look pretty solid.";
 		mes "You look like a pretty strong guy.";
@@ -323,7 +323,7 @@ payon.gat,246,158,5	script	Woman	90,{
 	mes "I guess she's just too excited about what the fortune teller told here.";
 	next;
 	mes "[Jim's Mother]";
-	if (Sex == Female) goto WPFem1;
+	if (Sex != Male) goto WPFem1;
 		mes "Ooh...!";
 		mes "You've got such broad shoulders!";
 		mes "Will you go out with me?";
@@ -1020,43 +1020,6 @@ payon_in03.gat,102,185,5	script	Guard	708,{
 		mes "[Guard]";
 		mes "Sorry but you are not allowed to come in.";
 		mes "Please leave. ";
-		close;
-}
-
-payon_in01.gat,132,62,5	script	Inn Employee	53,{
-
-	mes "[Employee SunHee]";
-	mes "Welcome to 'Payon Inn'.";
-	mes "How may I help you?";
-	next;
-	menu "Save",Pay_Inn1,"Take a Rest -> 5000 zeny",Pay_Inn2,"Cancel",Pay_Inn3;
-	Pay_Inn1:
-		mes "[Employee SunHee]";
-		mes "Your respawn point";
-		mes "has been saved.";
-		mes "Thank you,";
-		mes "please come again.";
-		savepoint "payon_in01.gat",136,61;
-		close;
-	Pay_Inn2:
-		if (Zeny < 5000) goto InnPoor1;
-			emotion 15;
-			mes "[Employee SunHee]";
-			mes "Thank you.";
-			mes "I hope you";
-			mes "enjoy your rest~";
-			close;
-			set zeny,zeny-5000;
-			percentheal 100,100;
-			warp "payon_in01.gat",132,11;
-		InnPoor1:
-			mes "[Employee SunHee]";
-			mes "I'm sorry, but the service charge";
-			mes "is 5,000 zeny. Please make sure";
-			mes "that you have enough money to check";
-			mes "in next time, okay?";
-			close;
-	Pay_Inn3:
 		close;
 }
 

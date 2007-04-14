@@ -453,8 +453,8 @@ izlude_in.gat,87,169,0	warp	iz05-1	2,3,izlude_in.gat,111,169
 izlude.gat,149,39,0	warp	izair1	1,1,izlude.gat,180,56
 izlude.gat,176,56,0	warp	lizair2	1,1,izlude.gat,145,39
 
-// Izlude Battle Arena Warps
-izlude.gat,128,126,0	warp	welcome_arena	1,1,arena_room.gat,100,30
+// Izlude Battle Arena Warps (Bugged)
+// izlude.gat,128,126,0	warp	welcome_arena	1,1,arena_room.gat,100,30
 arena_room.gat,99,24,0	warp	bye_arena	2,2,izlude.gat,128,220
 arena_room.gat,84,103,0	warp	arn_room_11_1	1,1,arena_room.gat,63,130
 arena_room.gat,63,126,0	warp	arn_room_11_2	1,1,arena_room.gat,87,100
@@ -466,7 +466,7 @@ arena_room.gat,115,71,0	warp	arn_room_5_1	1,1,arena_room.gat,139,50
 arena_room.gat,136,53,0	warp	arn_room_5_2	1,1,arena_room.gat,113,74
 arena_room.gat,123,88,0	warp	arn_room_3_1	1,1,arena_room.gat,153,87
 arena_room.gat,150,87,0	warp	arn_room_3_2	1,1,arena_room.gat,120,87
-prt_are_in.gat,54,13,0	warp	toarn_room	1,1,arena_room.gat,100,77
+// prt_are_in.gat,54,13,0	warp	toarn_room	1,1,arena_room.gat,100,77
 
 
 //--------------------------------------------------------------
@@ -499,7 +499,7 @@ yuno_in01.gat,116,40,0	warp	yun02	1,1,yuno.gat,120,138
 yuno.gat,48,105,0	warp	yun03	1,1,yuno_in01.gat,37,176
 yuno_in01.gat,40,176,0	warp	yun04	1,1,yuno.gat,51,105
 yuno_in01.gat,32,182,0	warp	yun05	1,1,yuno_in01.gat,86,164
-yuno_in01.gat,82,164,0	warp	yun06	1,1,yuno_in01.gat,28,182
+yuno_in01.gat,81,164,0	warp	yun06	1,1,yuno_in01.gat,28,182
 yuno.gat,48,151,0	warp	yun07	1,1,yuno_in01.gat,30,100
 yuno_in01.gat,34,100,0	warp	yun08	1,1,yuno.gat,51,151
 yuno.gat,93,180,0	warp	yun09	1,1,yuno_in04.gat,33,127
@@ -681,7 +681,8 @@ lighthalzen.gat,324,301,0	warp	lhz050	1,1,lhz_in03.gat,239,101
 lhz_in03.gat,237,101,0	warp	lhz050a	1,1,lighthalzen.gat,324,299
 lighthalzen.gat,322,321,0	warp	lhz051	1,1,lhz_in03.gat,15,162
 lhz_in03.gat,13,162,0	warp	lhz051a	1,1,lighthalzen.gat,317,322
-auction_02.gat,43,17,0	warp	auc_light01	1,1,lighthalzen.gat,209,169
+// Bad source coordinates
+// auction_02.gat,43,17,0	warp	auc_light01	1,1,lighthalzen.gat,209,169
 
 // Cube Room Warps ->
 lhz_cube.gat,231,96,0	warp	lhzcube1	1,1,lhz_dun02.gat,220,6

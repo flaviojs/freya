@@ -123,6 +123,7 @@ npc: script/quest/quest_eye_of_hellion.txt
 npc: script/quest/quest_headgear.txt
 npc: script/quest/quest_juice_maker.txt
 npc: script/quest/quest_juperos.txt
+npc: script/quest/quest_kiel_hyre.txt
 npc: script/quest/quest_lv4_weapon.txt
 // Old Blue Box quest is present in iRO, but not in kRO
 // npc: script/quest/quest_old_blue_box.txt

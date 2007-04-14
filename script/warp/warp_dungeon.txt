@@ -9,10 +9,11 @@
 //--------------------------------------------------------------
 // Script Title: Dungeon Warps	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v1.1
+// Revision History: v1.2
 //--------------------------------------------------------------
 //	1.0 First version, merged together [Tsuyuki]
 //	1.1 Added Abbey Dungeon official warps [Tsuyuki]
+//	1.2 Replaced old Kiel Hyre Dungeon warps with new official ones [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: N/A
 //--------------------------------------------------------------
@@ -752,11 +753,13 @@ jupe_area2.gat,79,158,0	warp	jupwrp38	1,1,jupe_area2.gat,108,54
 // Kiel Hyre Dungeon Warps
 //--------------------------------------------------------------
 
-kh_dun01.gat,3,234,0	warp	khwarp01	1,1,yuno_fild08.gat,69,170
+// Factory Restricted Area Exit
+kh_dun01.gat,232,225	warp	kh_dun_01	1,1,kh_dun01.gat,14,12
 
-// Custom Temp Warps
-kh_dun02.gat,45,194,0	warp	warp05	1,1,kh_dun01.gat,63,10
-kh_dun01.gat,64,7,0	warp	warp06	1,1,kh_dun02.gat,42,197
+// Factory side warps
+kh_dun01.gat,63,7	warp	kh_dun_02	1,1,kh_dun01.gat,227,176
+kh_dun01.gat,232,176	warp	kh_dun_03	1,1,kh_dun01.gat,63,12
+kh_dun02.gat,44,195	warp	kh_dun_04	1,1,kh_dun01.gat,32,199
 
 
 //--------------------------------------------------------------

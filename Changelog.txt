@@ -13,6 +13,17 @@
 
 Date	Added
 
+04/14/2007
+	* Updated: Fully debugged/fixed up Kiel Hyre quest [Tsuyuki]
+	 - It's now fully functional, but may still have some stray bugs
+	* Removed: Duplicate Payon Inn NPC [Tsuyuki]
+	* Added: The Kiel Hyre quest, along with necessary adjustments [Tsuyuki]
+	 - Scripting/information collecting [L0ne_W0lf]
+	 - Scripting [DZeroX]
+	 - Freya conversion [Tsuyuki]
+	 - Highly accurate to the iRO version
+	 - Beware of possible bugs/exploits
+
 04/13/2007
 	* Updated: Huge CGI databases [Tsuyuki]
 
