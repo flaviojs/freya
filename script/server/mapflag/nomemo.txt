@@ -317,10 +317,10 @@ odin_tem02.gat	mapflag	nomemo
 odin_tem03.gat	mapflag	nomemo
 
 // Kiel Hyre -----------------
-kh_kiehl02.gat	mapflag	nomemo
 kh_kiehl01.gat	mapflag	nomemo
-kh_dun02.gat	mapflag	nomemo
+kh_kiehl02.gat	mapflag	nomemo
 kh_dun01.gat	mapflag	nomemo
+kh_dun02.gat	mapflag	nomemo
 kh_mansion.gat	mapflag	nomemo
 kh_rossi.gat	mapflag	nomemo
 kh_school.gat	mapflag	nomemo

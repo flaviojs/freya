@@ -10,6 +10,18 @@
 
 Date	Added
 
+04/13/2007
+	* Added: The Kiel Hyre Quest [Tsuyuki]
+	 - Scripting/information collecting [L0ne_W0lf]
+	 - Scripting [DZeroX]
+	 - Freya conversion [Tsuyuki]
+	 - Highly accurate to the iRO version
+	 - Beware of possible bugs/exploits
+	* Added: item_bound.txt KH quest entries [Tsuyuki]
+	* Updated: Mapflags to for the KH quest [Tsuyuki]
+	* Updated: Old_Bronze_key and Black_Keycard item weights to 0 for the KH Quest [Tsuyuki]
+	* Updated: Warps to suite the Kiel Hyre Quest implementation [Tsuyuki]
+
 04/12/2007
 	* Fixed: Beast Strafing working on mobs of any race (Thanks to Pi) [Tsuyuki]
 	* Fixed: Ninja's Shadow Jump skill not working at all (Now works perfectly) [Tsuyuki]

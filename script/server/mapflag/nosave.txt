@@ -38,6 +38,8 @@ que_sign02.gat	mapflag	nosave	SavePoint
 que_rachel.gat	mapflag	nosave	SavePoint
 que_ng.gat	mapflag	nosave	SavePoint
 gon_test.gat	mapflag	nosave	SavePoint
+kh_kiehl01.gat	mapflag	nosave	SavePoint
+kh_kiehl02.gat	mapflag	nosave	SavePoint
 
 // GvG Arenas ==========================
 guild_vs1.gat	mapflag	nosave	SavePoint

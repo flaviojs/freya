@@ -112,6 +112,8 @@ kh_mansion.gat	mapflag	nobranch
 kh_rossi.gat	mapflag	nobranch
 kh_school.gat	mapflag	nobranch
 kh_vila.gat	mapflag	nobranch
+kh_kiehl01.gat	mapflag	nobranch
+kh_kiehl02.gat	mapflag	nobranch
 
 // Guild Castles ==================
 //alde_gld.gat	mapflag	nobranch

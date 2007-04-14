@@ -257,6 +257,7 @@ npc: script/quest/quest_eye_of_hellion.txt
 npc: script/quest/quest_headgear.txt
 npc: script/quest/quest_juice_maker.txt
 npc: script/quest/quest_juperos.txt
+npc: script/quest/quest_kiel_hyre.txt
 npc: script/quest/quest_lv4_weapon.txt
 npc: script/quest/quest_pet_taming.txt
 npc: script/quest/quest_skill.txt

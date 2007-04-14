@@ -8,9 +8,10 @@
 //--------------------------------------------------------------
 // Script Title: Miscellaneous Warps	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v1.0
+// Revision History: v1.1
 //--------------------------------------------------------------
 //	1.0 First version [A Lot of People]
+//	1.1 Updated Kiel Hyre warps [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Includes Airship, Kiel Hyre, God Seal, and
 // The Sign Quest warps.
@@ -90,10 +91,8 @@ kh_school.gat,12,48,0	warp	school10	1,1,kh_school.gat,182,117
 kh_school.gat,187,117,0	warp	school11	1,1,kh_school.gat,17,48
 kh_school.gat,63,80,0	warp	school12	1,1,kh_school.gat,118,144
 kh_school.gat,118,139,0	warp	school13	1,1,kh_school.gat,63,75
-yuno_fild08.gat,148,189,0	warp	school14	1,1,kh_school.gat,71,158
 
 // Kiel Hyre Villa
-yuno_fild02.gat,92,213,0	warp	vila18	1,1,kh_vila.gat,79,14
 kh_vila.gat,79,10,0	warp	vila01	1,1,yuno_fild02.gat,92,208
 kh_vila.gat,70,38,0	warp	vila02	1,1,kh_vila.gat,43,38
 kh_vila.gat,70,54,0	warp	vila03	1,1,kh_vila.gat,43,55
@@ -102,11 +101,10 @@ kh_vila.gat,84,67,0	warp	vila05	1,1,kh_vila.gat,45,106
 kh_vila.gat,47,39,0	warp	vila06	1,1,kh_vila.gat,74,38
 kh_vila.gat,47,55,0	warp	vila07	1,1,kh_vila.gat,74,54
 kh_vila.gat,34,67,0	warp	vila08	1,1,kh_vila.gat,20,106
-kh_vila.gat,20,102,0	warp	vila09	1,1,kh_vila.gat,34,63
+kh_vila.gat,20,102,0	warp	vila09	1,1,kh_vila.gat,136,64
 kh_vila.gat,45,102,0	warp	vila10	1,1,kh_vila.gat,84,63
 kh_vila.gat,32,129,0	warp	vila11	1,1,kh_vila.gat,22,170
 kh_vila.gat,22,166,0	warp	vila12	1,1,kh_vila.gat,32,125
-kh_vila.gat,27,189,0	warp	vila13	1,1,kh_vila.gat,185,18
 kh_vila.gat,191,18,0	warp	vila14	1,1,kh_vila.gat,27,185
 kh_vila.gat,114,47,0	warp	vila15	1,1,kh_vila.gat,86,49
 kh_vila.gat,126,76,0	warp	vila16	1,1,kh_vila.gat,180,175
@@ -114,8 +112,7 @@ kh_vila.gat,180,170,0	warp	vila17	1,1,kh_vila.gat,127,71
 kh_vila.gat,174,72,0	warp	vila19	1,1,kh_vila.gat,181,125
 
 // Kiel Hyre Rossi -> Entrance Unknown
-// ???.gat,???,???,0	warp	rossi01	1,1,kh_rossi.gat,17,93
-// kh_rossi.gat,12,93,0	warp	rossi02	1,1,???.gat,???,???
+kh_rossi.gat,16,92	warp	kh_rosi_01	1,1,yuno.gat,270,139
 kh_rossi.gat,35,99,0	warp	rossi03	1,1,kh_rossi.gat,27,146
 kh_rossi.gat,27,142,0	warp	rossi04	1,1,kh_rossi.gat,35,95
 kh_rossi.gat,35,86,0	warp	rossi05	1,1,kh_rossi.gat,27,39
@@ -150,6 +147,11 @@ kh_rossi.gat,204,230,0	warp	rossi33	1,1,kh_rossi.gat,204,187
 kh_rossi.gat,204,191,0	warp	rossi34	1,1,kh_rossi.gat,204,234
 kh_rossi.gat,220,230,0	warp	rossi35	1,1,kh_rossi.gat,260,187
 kh_rossi.gat,260,191,0	warp	rossi36	1,1,kh_rossi.gat,220,234
+
+// Kiel Hyre Mansion
+lighthalzen.gat,188,204	warp	kh_mansion_01	1,1,kh_mansion.gat,84,50
+kh_mansion.gat,88,50	warp	kh_mansion_02	1,1,lighthalzen.gat,188,199
+kh_mansion.gat,21,11	warp	kh_mansion_03	1,1,kh_mansion.gat,72,49
 
 
 //--------------------------------------------------------------
