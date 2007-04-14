@@ -13,6 +13,9 @@
 
 Date	Added
 
+04/13/2007
+	* Updated: Huge CGI databases [Tsuyuki]
+
 04/11/2007
 	* Changed: Project 'Phaeton' -> 'Aurora' [Tsuyuki]
 
