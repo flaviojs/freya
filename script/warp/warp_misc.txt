@@ -89,8 +89,7 @@ kh_school.gat,71,75,0	warp	school08	1,1,kh_school.gat,39,184
 kh_school.gat,71,14,0	warp	school09	1,1,kh_school.gat,39,125
 kh_school.gat,12,48,0	warp	school10	1,1,kh_school.gat,182,117
 kh_school.gat,187,117,0	warp	school11	1,1,kh_school.gat,17,48
-kh_school.gat,63,80,0	warp	school12	1,1,kh_school.gat,118,144
-kh_school.gat,118,139,0	warp	school13	1,1,kh_school.gat,63,75
+kh_school.gat,118,139,0	warp	school13	1,1,kh_dun01.gat,231,50
 
 // Kiel Hyre Villa
 kh_vila.gat,79,10,0	warp	vila01	1,1,yuno_fild02.gat,92,208
@@ -105,7 +104,6 @@ kh_vila.gat,20,102,0	warp	vila09	1,1,kh_vila.gat,136,64
 kh_vila.gat,45,102,0	warp	vila10	1,1,kh_vila.gat,84,63
 kh_vila.gat,32,129,0	warp	vila11	1,1,kh_vila.gat,22,170
 kh_vila.gat,22,166,0	warp	vila12	1,1,kh_vila.gat,32,125
-kh_vila.gat,191,18,0	warp	vila14	1,1,kh_vila.gat,27,185
 kh_vila.gat,114,47,0	warp	vila15	1,1,kh_vila.gat,86,49
 kh_vila.gat,126,76,0	warp	vila16	1,1,kh_vila.gat,180,175
 kh_vila.gat,180,170,0	warp	vila17	1,1,kh_vila.gat,127,71

@@ -10,6 +10,11 @@
 
 Date	Added
 
+04/14/2007
+	* Updated: Fully debugged/fixed up Kiel Hyre quest [Tsuyuki]
+	 - It's now fully functional, but may still have some stray bugs
+	* Removed: Duplicate Payon Inn NPC [Tsuyuki]
+
 04/13/2007
 	* Added: The Kiel Hyre Quest [Tsuyuki]
 	 - Scripting/information collecting [L0ne_W0lf]

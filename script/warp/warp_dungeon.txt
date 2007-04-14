@@ -758,6 +758,7 @@ kh_dun01.gat,232,225	warp	kh_dun_01	1,1,kh_dun01.gat,14,12
 // Factory side warps
 kh_dun01.gat,63,7	warp	kh_dun_02	1,1,kh_dun01.gat,227,176
 kh_dun01.gat,232,176	warp	kh_dun_03	1,1,kh_dun01.gat,63,12
+kh_dun02.gat,44,195	warp	kh_dun_04	1,1,kh_dun01.gat,32,199
 
 
 //--------------------------------------------------------------
