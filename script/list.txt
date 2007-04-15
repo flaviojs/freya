@@ -26,6 +26,7 @@
 // npc: script/event/event_crystal.txt
 // npc: script/event/event_dumpling_festival.txt
 // npc: script/event/event_easter.txt
+// npc: script/event/event_french_flag.txt
 // npc: script/event/event_ice_cream.txt
 // npc: script/event/event_idul_fitri.txt
 // npc: script/event/event_skill_reset.txt
