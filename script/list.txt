@@ -88,7 +88,9 @@ water_height: script/server/mapflag/water_height.txt
 // npc: script/event/event_crystal.txt
 // npc: script/event/event_dumpling_festival.txt
 // npc: script/event/event_easter.txt
+// npc: script/event/event_french_flag.txt
 // npc: script/event/event_ice_cream.txt
+// npc: script/event/event_skill_reset.txt
 // npc: script/event/event_twin_towers.txt
 // npc: script/event/event_valentines_day.txt
 // npc: script/event/event_white_day.txt

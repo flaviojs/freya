@@ -11,6 +11,8 @@
 Date	Added
 
 04/14/2007
+	* Added: Skill Reset event script, matches Aegis perfectly [Tsuyuki]
+	* Added: French Flag 2005 event script converted from Aegis [Tsuyuki]
 	* Updated: KH Quest variable types [Tsuyuki]
 	* Updated: Fully debugged/fixed up Kiel Hyre quest [Tsuyuki]
 	 - It's now fully functional, but may still have some stray bugs
