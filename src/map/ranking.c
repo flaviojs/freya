@@ -1,5 +1,18 @@
-// Copyright (c) Freya Development Team - Licensed under GNU GPL
-// For more information, see LICENCE in the main folder
+/* Copyright (C) 2007 Freya Development Team
+
+   This program is free software; you can redistribute it and/or
+   modify it under the terms of the GNU General Public License
+   as published by the Free Software Foundation; either version 2
+   of the License, or (at your option) any later version.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this program; if not, write to the Free Software
+   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA. */
 
 #include <stdio.h>
 #include <string.h>
@@ -11,8 +24,6 @@
 
 struct Ranking_Data ranking_data[RK_MAX][MAX_RANKER];
 
-//PCのランキングを返す
-// 0 : ランク外
 int ranking_get_pos(struct map_session_data * sd, unsigned int ranking_id) {
 	int i;
 
@@ -24,8 +35,6 @@ int ranking_get_pos(struct map_session_data * sd, unsigned int ranking_id) {
 	return 0;
 }
 
-//idからランキングを求める
-// 0 : ランク外
 int ranking_id2rank(unsigned int char_id, unsigned int ranking_id) {
 	unsigned int i;
 
@@ -62,9 +71,8 @@ void ranking_gain_point(struct map_session_data *sd, const int ranking_id, unsig
 		return;
 	}
 
-	//探す
-	for(i = 0; i < MAX_RANKER; i++) {
-		//既にランカーならばpoint更新
+	for(i = 0; i < MAX_RANKER; i++)
+	{
 		if(sd->status.char_id == ranking_data[ranking_id][i].char_id || !ranking_data[ranking_id][i].char_id) {
 			ranking_data[ranking_id][i].point = sd->status.fame_point[ranking_id];
 			if(ranking_data[ranking_id][i].char_id)
@@ -77,9 +85,8 @@ void ranking_gain_point(struct map_session_data *sd, const int ranking_id, unsig
 		}
 	}
 
-	//順位にはなかった
-	if(MAX_RANKER == i) {
-		//最下位より高得点なら最下位にランクイン
+	if(MAX_RANKER == i)
+	{
 		if(ranking_data[ranking_id][MAX_RANKER - 1].point < sd->status.fame_point[ranking_id]) {
 			strncpy(ranking_data[ranking_id][MAX_RANKER - 1].name, sd->status.name, 24);
 			ranking_data[ranking_id][MAX_RANKER - 1].point = sd->status.fame_point[ranking_id];
@@ -94,7 +101,8 @@ void ranking_gain_point(struct map_session_data *sd, const int ranking_id, unsig
 	return;
 }
 
-int compare_ranking_data(const struct Ranking_Data *a, const struct Ranking_Data *b) {
+int compare_ranking_data(const struct Ranking_Data *a, const struct Ranking_Data *b)
+{
 	if((a->point - b->point) > 0)
 		return -1;
 
@@ -104,8 +112,8 @@ int compare_ranking_data(const struct Ranking_Data *a, const struct Ranking_Data
 	return 1;
 }
 
-int ranking_sort(unsigned int ranking_id) {
-	//ランキング対象がない
+int ranking_sort(unsigned int ranking_id)
+{
 	if(ranking_id >= RK_MAX)
 		return 0;
 	
@@ -114,15 +122,15 @@ int ranking_sort(unsigned int ranking_id) {
 	return 1;
 }
 
-void ranking_init_data(void) {
+void ranking_init_data(void)
+{
 
 	memset(ranking_data, 0, sizeof(ranking_data));
-
 	return;
 }
 
-//初期化
-void do_init_ranking(void) {
+void do_init_ranking(void)
+{
 	ranking_init_data();
 	return;
 }
