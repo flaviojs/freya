@@ -275,7 +275,9 @@
 300,SC_MEAL_INCMDEF,0		// MDEF rise (for meal)
 301,SC_MEAL_INCATK,0		// ATK rise (for meal)
 302,SC_MEAL_INCMATK,0		// MATK rise (for meal)
-303,SC_MEAL_INCEXP,0		// BASEEXP rise (for meal)
+303,SC_COMBAT_HAN,1		//戦闘教範50
+//303,SC_MEAL_INCEXP,0		// BASEEXP (for meal)
+//304,SC_MEAL_INCJOB,0		// JOBEXP (for meal)
 304,SC_MEAL_INCJOB,0		// JOBEXP rise (for meal)
 305,SC_ELEMENTGROUND,0		// Earth (armor)
 306,SC_ELEMENTFIRE,0		// Fire (armor)
@@ -340,6 +342,15 @@
 365,SC_ADRENALINE2,0		// Full Adrenaline Rush
 366,SC_STATUS_UNCHANGE,0	// State unusual resistance (for gospel)
 367,SC_INCDAMAGE,0		// % rise of damage (for gospel)
+368,SC_LIFE_INSURANCE,1		//生命保険証30
+//369：バブルガム
+//370：凸面鏡
+371,SC_MEAL_INCSTR2,1		//STR上昇（食事用、死亡しても効果が消えない）
+372,SC_MEAL_INCAGI2,1		//AGI上昇（食事用、死亡しても効果が消えない）
+373,SC_MEAL_INCVIT2,1		//VIT上昇（食事用、死亡しても効果が消えない）
+374,SC_MEAL_INCDEX2,1		//DEX上昇（食事用、死亡しても効果が消えない）
+375,SC_MEAL_INCINT2,1		//INT上昇（食事用、死亡しても効果が消えない）
+376,SC_MEAL_INCLUK2,1		//LUK上昇（食事用、死亡しても効果が消えない）
 //
 // The thing for clearing all resistances which cannot be used in start by the item side
 //1001,SC_RESISTCLEAR		// Cancellation of all resistances

@@ -653,22 +653,36 @@ int party_send_hp_check(struct block_list *bl,va_list ap)
 void party_exp_share(struct party *p, struct mob_data *md, atn_bignumber base_exp, atn_bignumber job_exp)
 {
 	struct map_session_data *sd;
-	int i,c;
+	int i,t,c,aflag;
 	atn_bignumber base_bonus, job_bonus;
 	struct map_session_data *sdlist[MAX_PARTY];
 
 	nullpo_retv(p);
 	nullpo_retv(md);
 
-	for(i=c=0;i<MAX_PARTY;i++)
-	{
-		if((sd=p->member[i].sd)!=NULL && sd->bl.m==md->bl.m && !unit_isdead(&sd->bl) && sd->bl.prev != NULL &&
-			(!sd->sc_data ||
-				((sd->sc_data[SC_TRICKDEAD].timer == -1 || !battle_config.noexp_trickdead ) && 	// 死んだふり していない
-				 (sd->sc_data[SC_HIDING].timer == -1	|| !battle_config.noexp_hiding    ) ))	// ハイド していない
-			)
-			sdlist[c++] = sd;
+	for(i=c=0;i<MAX_PARTY;i++){
+		if((sd=p->member[i].sd)!=NULL){
+			aflag=0;
+
+//同一アカウントキャラの加入可能の場合はキャラのアカウントをチェックをする
+			if(battle_config.party_join_limit==0 && c>0){
+				for(t=0;t<c;t++){
+					if(sd->status.account_id == sdlist[t]->status.account_id){
+						aflag=1;
+						break;
+					}
+				}
+			}
+
+			if(aflag==0 && sd->bl.m==md->bl.m && !unit_isdead(&sd->bl) && sd->bl.prev != NULL &&
+				(!sd->sc_data ||
+					((sd->sc_data[SC_TRICKDEAD].timer == -1 || !battle_config.noexp_trickdead ) && 	// 死んだふり していない
+					 (sd->sc_data[SC_HIDING].timer == -1	|| !battle_config.noexp_hiding    ) ))	// ハイド していない
+				)
+				sdlist[c++] = sd;
+		}
 	}
+
 	if(c==0)
 		return;
 

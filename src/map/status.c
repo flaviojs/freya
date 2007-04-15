@@ -104,7 +104,7 @@ static int StatusIconChangeTable[] = {
 /* 290- */
 	SI_BLANK,SI_SHRINK,SI_CLOSECONFINE,SI_SIGHTBLASTER,SI_BLANK,SI_MEAL_INCHIT,SI_MEAL_INCFLEE,SI_BLANK,SI_MEAL_INCCRITICAL,SI_BLANK,
 /* 300- */
-	SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,
+	SI_BLANK,SI_BLANK,SI_BLANK,SI_COMBAT_HAN,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,
 /* 310- */
 	SI_BLANK,SI_BLANK,SI_UNDEAD,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,
 /* 320- */
@@ -116,7 +116,10 @@ static int StatusIconChangeTable[] = {
 /* 350- */
 	SI_INCREASING,SI_BLANK,SI_GATLINGFEVER,SI_BLANK,SI_BLANK,SI_UTSUSEMI,SI_BUNSINJYUTSU,SI_BLANK,SI_NEN,SI_BLANK,
 /* 360- */
-	SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_ADRENALINE2,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,
+	SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_BLANK,SI_ADRENALINE2,SI_BLANK,SI_BLANK,SI_LIFE_INSURANCE,SI_BLANK,
+/* 370- */
+	SI_BLANK,SI_MEAL_INCSTR2,SI_MEAL_INCAGI2,SI_MEAL_INCVIT2,SI_MEAL_INCDEX2,SI_MEAL_INCINT2,SI_MEAL_INCLUK2,SI_BLANK,SI_BLANK,SI_BLANK,
+
 };
 
 /*==========================================
@@ -824,17 +827,34 @@ L_RECALC:
 		}
 
 		//食事用
-		if(sd->sc_data[SC_MEAL_INCSTR].timer!=-1)
+		if(sd->sc_data[SC_MEAL_INCSTR2].timer!=-1)
+			sd->paramb[0]+= sd->sc_data[SC_MEAL_INCSTR2].val1;
+		else if(sd->sc_data[SC_MEAL_INCSTR].timer!=-1)
 			sd->paramb[0]+= sd->sc_data[SC_MEAL_INCSTR].val1;
-		if(sd->sc_data[SC_MEAL_INCAGI].timer!=-1)
+
+		if(sd->sc_data[SC_MEAL_INCAGI2].timer!=-1)
+			sd->paramb[1]+= sd->sc_data[SC_MEAL_INCAGI2].val1;
+		else if(sd->sc_data[SC_MEAL_INCAGI].timer!=-1)
 			sd->paramb[1]+= sd->sc_data[SC_MEAL_INCAGI].val1;
-		if(sd->sc_data[SC_MEAL_INCVIT].timer!=-1)
+
+		if(sd->sc_data[SC_MEAL_INCVIT2].timer!=-1)
+			sd->paramb[2]+= sd->sc_data[SC_MEAL_INCVIT2].val1;
+		else if(sd->sc_data[SC_MEAL_INCVIT].timer!=-1)
 			sd->paramb[2]+= sd->sc_data[SC_MEAL_INCVIT].val1;
-		if(sd->sc_data[SC_MEAL_INCINT].timer!=-1)
+
+		if(sd->sc_data[SC_MEAL_INCINT2].timer!=-1)
+			sd->paramb[3]+= sd->sc_data[SC_MEAL_INCINT2].val1;
+		else if(sd->sc_data[SC_MEAL_INCINT].timer!=-1)
 			sd->paramb[3]+= sd->sc_data[SC_MEAL_INCINT].val1;
-		if(sd->sc_data[SC_MEAL_INCDEX].timer!=-1)
+
+		if(sd->sc_data[SC_MEAL_INCDEX2].timer!=-1)
+			sd->paramb[4]+= sd->sc_data[SC_MEAL_INCDEX2].val1;
+		else if(sd->sc_data[SC_MEAL_INCDEX].timer!=-1)
 			sd->paramb[4]+= sd->sc_data[SC_MEAL_INCDEX].val1;
-		if(sd->sc_data[SC_MEAL_INCLUK].timer!=-1)
+
+		if(sd->sc_data[SC_MEAL_INCLUK2].timer!=-1)
+			sd->paramb[5]+= sd->sc_data[SC_MEAL_INCLUK2].val1;
+		else if(sd->sc_data[SC_MEAL_INCLUK].timer!=-1)
 			sd->paramb[5]+= sd->sc_data[SC_MEAL_INCLUK].val1;
 
 		//駆け足のスパート状態 STR+10
@@ -4754,13 +4774,7 @@ int status_change_start(struct block_list *bl,int type,int val1,int val2,int val
 		case SC_MOON_COMFORT://#月の安楽#
 		case SC_STAR_COMFORT://#星の安楽#
 		case SC_FUSION://#太陽と月と星の融合#
-		case SC_MEAL_INCSTR://食事用
-		case SC_MEAL_INCAGI:
-		case SC_MEAL_INCVIT:
-		case SC_MEAL_INCINT:
-		case SC_MEAL_INCDEX:
-		case SC_MEAL_INCLUK:
-		case SC_MEAL_INCHIT:
+		case SC_MEAL_INCHIT://食事用
 		case SC_MEAL_INCFLEE:
 		case SC_MEAL_INCFLEE2:
 		case SC_MEAL_INCCRITICAL:
@@ -4770,8 +4784,72 @@ int status_change_start(struct block_list *bl,int type,int val1,int val2,int val
 		case SC_MEAL_INCMATK:
 			calc_flag = 1;
 			break;
-		case SC_MEAL_INCEXP:
-		case SC_MEAL_INCJOB:
+		case SC_MEAL_INCSTR://食事用
+			/* 課金料理使用時は効果無し */
+			if(sc_data[SC_MEAL_INCSTR2].timer!=-1)
+				return 0;
+			calc_flag = 1;
+			break;
+		case SC_MEAL_INCAGI:
+			if(sc_data[SC_MEAL_INCAGI2].timer!=-1)
+				return 0;
+			calc_flag = 1;
+			break;
+		case SC_MEAL_INCVIT:
+			if(sc_data[SC_MEAL_INCVIT2].timer!=-1)
+				return 0;
+			calc_flag = 1;
+			break;
+		case SC_MEAL_INCINT:
+			if(sc_data[SC_MEAL_INCINT2].timer!=-1)
+				return 0;
+			calc_flag = 1;
+			break;
+		case SC_MEAL_INCDEX:
+			if(sc_data[SC_MEAL_INCDEX2].timer!=-1)
+				return 0;
+			calc_flag = 1;
+			break;
+		case SC_MEAL_INCLUK:
+			if(sc_data[SC_MEAL_INCLUK2].timer!=-1)
+				return 0;
+			calc_flag = 1;
+			break;
+		case SC_MEAL_INCSTR2://食事用(課金アイテム)
+			/* 通常の食事と重複しない */
+			if(sc_data[SC_MEAL_INCSTR].timer!=-1)
+				status_change_end(bl,SC_MEAL_INCSTR,-1);
+			calc_flag = 1;
+			break;
+		case SC_MEAL_INCAGI2:
+			if(sc_data[SC_MEAL_INCAGI].timer!=-1)
+				status_change_end(bl,SC_MEAL_INCAGI,-1);
+			calc_flag = 1;
+			break;
+		case SC_MEAL_INCVIT2:
+			if(sc_data[SC_MEAL_INCVIT].timer!=-1)
+				status_change_end(bl,SC_MEAL_INCVIT,-1);
+			calc_flag = 1;
+			break;
+		case SC_MEAL_INCINT2:
+			if(sc_data[SC_MEAL_INCINT].timer!=-1)
+				status_change_end(bl,SC_MEAL_INCINT,-1);
+			calc_flag = 1;
+			break;
+		case SC_MEAL_INCDEX2:
+			if(sc_data[SC_MEAL_INCDEX].timer!=-1)
+				status_change_end(bl,SC_MEAL_INCDEX,-1);
+			calc_flag = 1;
+			break;
+		case SC_MEAL_INCLUK2:
+			if(sc_data[SC_MEAL_INCLUK].timer!=-1)
+				status_change_end(bl,SC_MEAL_INCLUK,-1);
+			calc_flag = 1;
+			break;
+		case SC_COMBAT_HAN://戦闘教範50
+		case SC_LIFE_INSURANCE://生命保険証30
+//		case SC_MEAL_INCEXP:
+//		case SC_MEAL_INCJOB:
 		case SC_FORCEWALKING:
 		case SC_TKCOMBO://テコン系用コンボ
 		case SC_TRIPLEATTACK_RATE_UP:
@@ -4909,7 +4987,6 @@ int status_change_start(struct block_list *bl,int type,int val1,int val2,int val
 		case SC_SPEED://#オーバードスピード#
 			calc_flag = 1;
 			break;
-
 		default:
 			if(battle_config.error_log)
 				printf("UnknownStatusChange [%d]\n", type);
@@ -5145,6 +5222,11 @@ int status_change_clear(struct block_list *bl,int type)
 			if(unit_isdead(bl))
 				continue;
 		}
+		//課金用料理と戦闘教範50はクリアされない
+		if(i==SC_COMBAT_HAN || i==SC_MEAL_INCSTR2 || i==SC_MEAL_INCAGI2 ||
+			i==SC_MEAL_INCVIT2 || i==SC_MEAL_INCDEX2 ||
+			i==SC_MEAL_INCINT2 || i==SC_MEAL_INCLUK2)
+			continue;
 		if(sc_data[i].timer != -1){	/* 異常があるならタイマーを削除する */
 /*
 			delete_timer(sc_data[i].timer, status_change_timer);
@@ -5511,6 +5593,14 @@ int status_change_end( struct block_list* bl , int type,int tid)
 			case SC_MEAL_INCMDEF:
 			case SC_MEAL_INCATK:
 			case SC_MEAL_INCMATK:
+			case SC_COMBAT_HAN://戦闘教範
+			case SC_LIFE_INSURANCE://生命保険証
+			case SC_MEAL_INCSTR2://課金料理用
+			case SC_MEAL_INCAGI2:
+			case SC_MEAL_INCVIT2:
+			case SC_MEAL_INCINT2:
+			case SC_MEAL_INCDEX2:
+			case SC_MEAL_INCLUK2:
 			case SC_SPURT:
 			case SC_SUN_COMFORT://#太陽の安楽#
 			case SC_MOON_COMFORT://#月の安楽#

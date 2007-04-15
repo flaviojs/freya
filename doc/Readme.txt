@@ -1,3 +1,10 @@
+//2291 by 暇人
+
+・料理(課金用)、戦闘教範50、生命保険証の効果を実装 (pc.c、status.c、status.h)
+・上記の効果実装の為、関連dbを更新 (const.txt、item_db.txt、scdata_db.txt)
+・battle_athena.confのparty_join_limit: noに設定時の経験値の分配を修正 (party.c)
+　BTS報告masterさん thank's
+
 ----------------------------------------
 //2290 by Blaze
 

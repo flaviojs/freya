@@ -420,8 +420,9 @@ enum {	// struct map_session_data の status_changeの番号テーブル
 	SC_MEAL_INCMDEF			= 300,
 	SC_MEAL_INCATK			= 301,
 	SC_MEAL_INCMATK			= 302,
-	SC_MEAL_INCEXP			= 303,
-	SC_MEAL_INCJOB			= 304,
+	SC_COMBAT_HAN			= 303,//戦闘教範50
+//	SC_MEAL_INCEXP			= 303,
+//	SC_MEAL_INCJOB			= 304,
 	//
 	SC_ELEMENTGROUND		= 305,//土(鎧)
 	SC_ELEMENTFIRE			= 306,//火(鎧)
@@ -489,6 +490,16 @@ enum {	// struct map_session_data の status_changeの番号テーブル
 	SC_ADRENALINE2			= 365,
 	SC_STATUS_UNCHANGE		= 366,/* 状態異常耐性（ゴスペル用）*/
 	SC_INCDAMAGE			= 367,/* 被ダメージが%上昇（ゴスペル用）*/
+	//
+	SC_LIFE_INSURANCE		= 368,//生命保険証30
+	//369：バブルガム、モンスター狩りを通じて得られる基本アイテムのドロップ率が30分間2倍に増加します。
+	//370：凸面鏡、10分間、マップ内に出現するボスモンスターの情報をご案内します。
+	SC_MEAL_INCSTR2			= 371,//食事用(課金アイテム)
+	SC_MEAL_INCAGI2			= 372,
+	SC_MEAL_INCVIT2			= 373,
+	SC_MEAL_INCDEX2			= 374,
+	SC_MEAL_INCINT2			= 375,
+	SC_MEAL_INCLUK2			= 376,
 
 	//startでは使えないresistをアイテム側で全てクリアするための物
 	SC_RESISTCLEAR			= 1001,
@@ -648,9 +659,17 @@ enum {
 	SI_MEAL_INCFLEE			=247,
 	SI_MEAL_INCHIT			=248,
 	SI_MEAL_INCCRITICAL		=249,
-	//250：戦闘教範50、モンスター狩りを通じて得られる経験値が30分間1.5倍に増加します。
-	//251：生命保険証、30分以内、1回に限り死亡時にデスペナルティを受けません。
-	//252：モンスター狩りを通じて得られる基本アイテムのドロップ率が30分間2倍に増加します。
+	SI_COMBAT_HAN			=250,//戦闘教範50
+	SI_LIFE_INSURANCE		=251,//生命保険証30
+	//252：バブルガム、モンスター狩りを通じて得られる基本アイテムのドロップ率が30分間2倍に増加します。
 	//253：凸面鏡、10分間、マップ内に出現するボスモンスターの情報をご案内します。
+	SI_MEAL_INCSTR2			=271,//食事用(課金アイテム)
+	SI_MEAL_INCAGI2			=272,
+	SI_MEAL_INCVIT2			=273,
+	SI_MEAL_INCDEX2			=274,
+	SI_MEAL_INCINT2			=275,
+	SI_MEAL_INCLUK2			=276,
+	//282：詠唱遅延化
+	//286：致命傷
 };
 #endif

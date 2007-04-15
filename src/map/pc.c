@@ -401,9 +401,8 @@ int pc_setrestartvalue(struct map_session_data *sd,int type)
 				if(per<0)
 					per = 0;
 			}
-			if(sd->sc_data[SC_BABY].timer!=-1)
+			if((sd->sc_data[SC_BABY].timer!=-1) || (sd->sc_data[SC_LIFE_INSURANCE].timer!=-1))
 				per = 0;
-
 			if(s_class.job != 0 && !map[sd->bl.m].flag.nopenalty && !map[sd->bl.m].flag.gvg){
 				if(battle_config.death_penalty_type&2 && battle_config.death_penalty_base > 0)
 					sd->status.base_exp -= (int)((atn_bignumber)pc_nextbaseexp(sd) * battle_config.death_penalty_base/10000*per/100);
@@ -429,6 +428,8 @@ int pc_setrestartvalue(struct map_session_data *sd,int type)
 			}
 			if(sd->sc_data[SC_REDEMPTIO].timer!=-1)
 				status_change_end(&sd->bl,SC_REDEMPTIO,0);
+			else if((sd->sc_data[SC_BABY].timer==-1) && (sd->sc_data[SC_LIFE_INSURANCE].timer!=-1))
+				status_change_end(&sd->bl,SC_LIFE_INSURANCE,0);
 		}
 
 		if (!map[sd->bl.m].flag.nozenypenalty) {
@@ -4188,12 +4189,16 @@ int pc_gainexp(struct map_session_data *sd, struct mob_data *md, int base_exp, i
 			jexp = jexp * (atn_bignumber)(125 + md->sc_data[SC_RICHMANKIM].val1 * 11) / 100;
 		}
 	}
-	if (sd->sc_data[SC_MEAL_INCEXP].timer != -1) {
-		bexp = bexp * sd->sc_data[SC_MEAL_INCEXP].val1 / 100;
+	if (sd->sc_data[SC_COMBAT_HAN].timer != -1) {//í“¬‹³”Í50
+		bexp = bexp * sd->sc_data[SC_COMBAT_HAN].val1 / 100;
+		jexp = jexp * sd->sc_data[SC_COMBAT_HAN].val1 / 100;
 	}
-	if (sd->sc_data[SC_MEAL_INCJOB].timer != -1) {
-		jexp = jexp * sd->sc_data[SC_MEAL_INCJOB].val1 / 100;
-	}
+//	if (sd->sc_data[SC_MEAL_INCEXP].timer != -1) {
+//		bexp = bexp * sd->sc_data[SC_MEAL_INCEXP].val1 / 100;
+//	}
+//	if (sd->sc_data[SC_MEAL_INCJOB].timer != -1) {
+//		jexp = jexp * sd->sc_data[SC_MEAL_INCJOB].val1 / 100;
+//	}
 	if (bexp > 0x7fffffff)
 		bexp = 0x7fffffff;
 	if (jexp > 0x7fffffff)

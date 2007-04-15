@@ -8,10 +8,14 @@
                     http://www.ro-freya.net                   
                      Aurora SVN Changelog                     
 --------------------------------------------------------------
-                Current Revision: jAthena 2290
+                Current Revision: jAthena 2291
 --------------------------------------------------------------
 
 Date	Added
+
+04/15/2007
+	* Updated: Databases to Huge CGI's latest [Tsuyuki]
+	* Updated: Project to jAthena 2291 [Tsuyuki]
 
 04/14/2007
 	* Improved: Skill Reset Aegis event script [Tsuyuki]
