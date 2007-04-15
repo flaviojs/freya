@@ -1,18 +1,5 @@
-/* Copyright (C) 2007 Freya Development Team
-
-   This program is free software; you can redistribute it and/or
-   modify it under the terms of the GNU General Public License
-   as published by the Free Software Foundation; either version 2
-   of the License, or (at your option) any later version.
-
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
-
-   You should have received a copy of the GNU General Public License
-   along with this program; if not, write to the Free Software
-   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA. */
+// Copyright (c) Freya Development Team - Licensed under GNU GPL
+// For more information, see LICENCE in the main folder
 
 // #define DEBUG_FUNCIN
 // #define DEBUG_DISP
@@ -361,6 +348,7 @@ struct {
 } buildin_func[] = {
 	{buildin_mes,"mes","s"},
 	{buildin_mes,"dialog","s"},
+	{buildin_mes,"show","s"},
 	{buildin_next,"next",""},
 	{buildin_next,"wait",""},
 	{buildin_close,"close",""},
@@ -372,12 +360,15 @@ struct {
 	{buildin_return,"return","*"},
 	{buildin_getarg,"getarg","i"},
 	{buildin_jobchange,"jobchange","i*"},
+	{buildin_jobchange,"setjob","i*"},
 	{buildin_input,"input","*"},
+	{buildin_input,"digit","*"},
 	{buildin_warp,"warp","sii"},
 	{buildin_warp,"moveto","sii"},
 	{buildin_areawarp,"areawarp","siiiisii"},
 	{buildin_setlook,"setlook","ii"},
 	{buildin_set,"set","ii"},
+	{buildin_set,"var","ii"},
 	{buildin_setarray,"setarray","ii*"},
 	{buildin_cleararray,"cleararray","iii"},
 	{buildin_copyarray,"copyarray","iii"},
@@ -386,7 +377,9 @@ struct {
 	{buildin_getelementofarray,"getelementofarray","ii"},
 	{buildin_if,"if","i*"},
 	{buildin_getitem,"getitem","ii**"},
+	{buildin_getitem,"additem","ii**"},
 	{buildin_getitem2,"getitem2","iiiiiiiii*"},
+	{buildin_getitem2,"additem2","iiiiiiiii*"},
 	{buildin_makeitem,"makeitem","iisii"},
 	{buildin_delitem,"delitem","ii"},
 	{buildin_delitem,"dropitem","ii"},
@@ -509,7 +502,9 @@ struct {
 	{buildin_resetstatus,"resetstatus",""},
 	{buildin_resetskill,"resetskill",""},
 	{buildin_changebase,"changebase","i"},
+	{buildin_changebase,"setbase","i"},
 	{buildin_changesex,"changesex",""},
+	{buildin_changesex,"setsex",""},
 	{buildin_waitingroom,"waitingroom","si*"},
 	{buildin_warpwaitingpc,"warpwaitingpc","sii"},
 	{buildin_delwaitingroom,"delwaitingroom","*"},

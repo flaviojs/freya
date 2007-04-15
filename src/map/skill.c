@@ -1,18 +1,5 @@
-/* Copyright (C) 2007 Freya Development Team
-
-   This program is free software; you can redistribute it and/or
-   modify it under the terms of the GNU General Public License
-   as published by the Free Software Foundation; either version 2
-   of the License, or (at your option) any later version.
-
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
-
-   You should have received a copy of the GNU General Public License
-   along with this program; if not, write to the Free Software
-   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA. */
+// Copyright (c) Freya Development Team - Licensed under GNU GPL
+// For more information, see LICENCE in the main folder
 
 #include <config.h>
 
@@ -3353,13 +3340,13 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		if (skilllv >= 4) ninjacalc = 3;
 		map_foreachinarea(skill_attack_area, src->m, src->x-ninjacalc, bl->y-ninjacalc, bl->x+ninjacalc, bl->y+ninjacalc, 0, BF_WEAPON, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
 		status_change_start(bl, SkillStatusChangeTable[skillid], skilllv, 0, 0, 0, skill_get_time(skillid, skilllv), 0);
-		clif_specialeffect(bl, 631, AREA);
+		clif_specialeffect(bl, 631, 0);
 		break;
 
 	case NJ_HYOUSYOURAKU:
 		map_foreachinarea(skill_attack_area, src->m, src->x-7, bl->y-7, bl->x+7, bl->y+7, 0, BF_MAGIC, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
 		skill_castend_pos2(src,bl->x,bl->y,skillid,skilllv,tick,0);
-		clif_specialeffect(bl, 636, AREA);
+		clif_specialeffect(bl, 636, 0);
 		break;
 
 	case NJ_RAIGEKISAI:
@@ -3369,7 +3356,7 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, int s
 		else if(skilllv >= 5) ninjacalc = 9;
 		map_foreachinarea(skill_attack_area, src->m, src->x-ninjacalc, bl->y-ninjacalc, bl->x+ninjacalc, bl->y+ninjacalc, 0, BF_MAGIC, src, src, skillid, skilllv, tick, flag, BCT_ENEMY);
 		skill_castend_pos2(src,bl->x,bl->y,skillid,skilllv,tick,0);
-		clif_specialeffect(bl, 622, AREA);
+		clif_specialeffect(bl, 622, 0);
 		break;
 
 	case HT_BLITZBEAT:
