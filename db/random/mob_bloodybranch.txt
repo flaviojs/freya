@@ -5,6 +5,7 @@
 // 10000   = 1%
 // 500000  = 50%
 // 1000000 = 100%
+//
 
 0,Baphomet,1039
 1038,Osiris,1000000
@@ -43,9 +44,10 @@
 1688,Lady Tanee,1000000
 1708,Thanatos Phantom,1000000
 1719,Detardeurus,1000000
-1734,Kiel_D-01,1000000
+1734,Kiel D-01,1000000
 1751,Valkyrie Randgris,1000000
 1768,Gloom Undernight,1000000
 1779,Ktullanux,1000000
 1785,Atros,1000000
 1832,Ifrit,1000000
+1873,Beelzebub,1000000

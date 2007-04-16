@@ -13,6 +13,11 @@
 
 Date	Added
 
+04/16/2007
+	* Updated: Dead Branch and Bloody Branch lists [Tsuyuki]
+	* Updated: Abbey Dungeon monster spawns [Tsuyuki]
+	* Added: Nameless Island/Abbey Dungeon monster skills [Tsuyuki]
+
 04/15/2007
 	* Updated: Startup logo 'Freya' -> 'Aurora' [Tsuyuki]
 	* Added: Gunslinger Drifter/Butcher Quests by Playtester [Tsuyuki]

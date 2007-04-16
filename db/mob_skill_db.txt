@@ -4527,6 +4527,8 @@
 1831,Salamander@CR_REFLECTSHIELD,chase,252,5,10000,0,300000,no,self,always,0,,,,,,32
 1831,Salamander@KN_TWOHANDQUICKEN,attack,60,10,2000,0,120000,no,self,myhpltmaxrate,30,,,,,,
 1831,Salamander@KN_TWOHANDQUICKEN,chase,60,10,2000,0,120000,no,self,myhpltmaxrate,30,,,,,,
+1832,Ifrit@ASC_BREAKER,attack,379,11,1000,500,10000,no,target,always,0,,,,,,
+1832,Ifrit@ASC_BREAKER,chase,379,11,1000,500,10000,no,target,always,0,,,,,,
 1832,Ifrit@AL_HEAL,attack,28,1,500,0,5000,no,self,myhpltmaxrate,50,,,,,,21
 1832,Ifrit@AL_HEAL,chase,28,1,500,0,5000,no,self,myhpltmaxrate,50,,,,,,21
 1832,Ifrit@AL_HEAL,attack,28,1,1500,0,5000,no,self,myhpltmaxrate,30,,,,,,21
@@ -4592,5 +4594,68 @@
 1839,Byorgue@AS_SONICBLOW,attack,136,5,1000,0,5000,no,target,always,0,,,,,,
 1839,Byorgue@AS_VENOMDUST,attack,140,1,2000,0,10000,no,target,always,0,,,,,,29
 1839,Byorgue@AS_VENOMDUST,idle,140,1,2000,0,10000,no,target,always,0,,,,,,29
+
+// Nameless Island/Abbey Dungeon - Episode 11.3 - 1864-1875
+1864,Zombie Slaughter@AS_SONICBLOW,attack,136,10,1500,0,5000,no,target,always,0,,,,,,
+1865,Ragged Zombie@AC_SHOWER,attack,47,10,500,0,3000,no,target,always,0,,,,,,6
+1865,Ragged Zombie@AC_SHOWER,chase,47,10,500,0,3000,no,target,always,0,,,,,,6
+1867,Banshee@MG_SOULSTRIKE,attack,13,10,500,500,5000,no,target,always,0,,,,,,
+1867,Banshee@MG_SOULSTRIKE,chase,13,10,500,500,5000,no,target,always,0,,,,,,
+1867,Banshee@NPC_CURSEATTACK,attack,181,10,500,0,5000,no,target,always,0,,,,,,
+1867,Banshee@NPC_BLOODDRAIN,attack,199,1,500,0,5000,no,target,always,0,,,,,,
+1867,Banshee@NPC_BLOODDRAIN,chase,199,1,500,0,5000,no,target,always,0,,,,,,
+1868,G_Banshee@MG_SOULSTRIKE,attack,13,10,500,500,5000,no,target,always,0,,,,,,
+1868,G_Banshee@MG_SOULSTRIKE,chase,13,10,500,500,5000,no,target,always,0,,,,,,
+1868,G_Banshee@NPC_CURSEATTACK,attack,181,10,500,0,5000,no,target,always,0,,,,,,
+1868,G_Banshee@NPC_BLOODDRAIN,attack,199,1,500,0,5000,no,target,always,0,,,,,,
+1868,G_Banshee@NPC_BLOODDRAIN,chase,199,1,500,0,5000,no,target,always,0,,,,,,
+1869,Flame Skull@MO_BODYRELOCATION,chase,264,1,1000,0,5000,no,target,always,0,,,,,,
+1870,Necromancer@MG_THUNDERSTORM,attack,21,11,2000,500,10000,no,target,always,0,,,,,,
+1870,Necromancer@MG_THUNDERSTORM,chase,21,11,2000,500,10000,no,target,always,0,,,,,,
+1870,Necromancer@CR_REFLECTSHIELD,attack,252,5,1000,500,30000,no,self,always,0,,,,,,
+1870,Necromancer@CR_REFLECTSHIELD,chase,252,5,1000,500,30000,no,self,always,0,,,,,,
+1870,Necromancer@NPC_SUMMONSLAVE,attack,196,2,1000,500,3600000,no,self,slavele,1,1864,,,,, // Zombie Slaughter
+1870,Necromancer@NPC_SUMMONSLAVE,chase,196,2,1000,500,3600000,no,self,slavele,1,1864,,,,, // Zombie Slaughter
+1870,Necromancer@NPC_SUMMONSLAVE,idle,196,2,1000,500,3600000,no,self,slavele,1,1864,,,,, // Zombie Slaughter
+1871,Fallen Bishop@AL_PNEUMA,attack,25,1,5000,0,10000,no,self,longrangeattacked,,,,,,,19
+1871,Fallen Bishop@AL_PNEUMA,chase,25,1,5000,0,10000,no,self,longrangeattacked,,,,,,,19
+1871,Fallen Bishop@ASC_METEOR,attack,406,10,15000,1000,20000,no,target,always,0,,,,,,
+1871,Fallen Bishop@ASC_METEOR,chase,406,10,15000,1000,20000,no,target,always,0,,,,,,
+1871,Fallen Bishop@NPC_SUMMONSLAVE,attack,196,3,1000,500,3600000,no,self,slavele,1,1868,,,,, // Banshee
+1871,Fallen Bishop@NPC_SUMMONSLAVE,chase,196,3,1000,500,3600000,no,self,slavele,1,1868,,,,, // Banshee
+1871,Fallen Bishop@NPC_SUMMONSLAVE,idle,196,3,1000,500,3600000,no,self,slavele,1,1868,,,,, // Banshee
+1871,Fallen Bishop@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
+1871,Fallen Bishop@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
+1871,Fallen Bishop@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
+1872,Hell Fly@AL_HEAL,attack,28,10,1000,0,5000,no,self,myhpltmaxrate,99,,,,,,21
+1872,Hell Fly@AL_HEAL,chase,28,10,1000,0,5000,no,self,myhpltmaxrate,99,,,,,,21
+1872,Hell Fly@AL_HEAL,idle,28,10,1000,0,5000,no,self,myhpltmaxrate,99,,,,,,21
+1872,Hell Fly@AL_HEAL,attack,28,10,1000,0,5000,no,self,friendhpltmaxrate,50,,,,,,21
+1872,Hell Fly@AL_HEAL,chase,28,10,1000,0,5000,no,self,friendhpltmaxrate,50,,,,,,21
+1872,Hell Fly@AL_HEAL,idle,28,10,1000,0,5000,no,self,friendhpltmaxrate,50,,,,,,21
+1873,Beelzebub@NPC_METAMORPHOSIS,attack,193,1,5000,500,10000,no,self,myhpltmaxrate,75,1874,,,,,
+1873,Beelzebub@NPC_METAMORPHOSIS,chase,193,1,5000,500,10000,no,self,myhpltmaxrate,75,1874,,,,,
+1873,Beelzebub@LK_SPIRALPIERCE,attack,397,11,1500,0,10000,no,target,always,0,,,,,,
+1873,Beelzebub@LK_SPIRALPIERCE,chase,397,11,1500,0,10000,no,target,always,0,,,,,,
+1873,Beelzebub@RG_INTIMIDATE,attack,219,5,500,0,5000,no,target,always,0,,,,,,
+1873,Beelzebub@NPC_BREAKSHIELD,attack,346,10,2000,0,5000,no,target,always,0,,,,,,6
+1873,Beelzebub@NPC_DARKBLESSING,attack,203,1,500,500,5000,no,target,always,0,,,,,,9
+1873,Beelzebub@NPC_SUMMONSLAVE,attack,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,1011,, // Hell Fly/ChonChon
+1873,Beelzebub@NPC_SUMMONSLAVE,chase,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,1011,, // Hell Fly/ChonChon
+1873,Beelzebub@NPC_SUMMONSLAVE,idle,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,1011,, // Hell Fly/ChonChon
+1873,Beelzebub@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
+1873,Beelzebub@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
+1873,Beelzebub@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
+1874,Beelzebub_@LK_SPIRALPIERCE,attack,397,11,1500,0,10000,no,target,always,0,,,,,,
+1874,Beelzebub_@LK_SPIRALPIERCE,chase,397,11,1500,0,10000,no,target,always,0,,,,,,
+1874,Beelzebub_@RG_INTIMIDATE,attack,219,5,500,0,5000,no,target,always,0,,,,,,
+1874,Beelzebub_@NPC_BREAKSHIELD,attack,346,10,2000,0,5000,no,target,always,0,,,,,,6
+1874,Beelzebub_@NPC_DARKBLESSING,attack,203,1,500,500,5000,no,target,always,0,,,,,,9
+1874,Beelzebub_@NPC_SUMMONSLAVE,attack,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,1011,, // Hell Fly/ChonChon
+1874,Beelzebub_@NPC_SUMMONSLAVE,chase,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,1011,, // Hell Fly/ChonChon
+1874,Beelzebub_@NPC_SUMMONSLAVE,idle,196,2,1000,500,3600000,no,self,slavele,4,1872,1872,1872,1011,, // Hell Fly/ChonChon
+1874,Beelzebub_@NPC_CALLSLAVE,attack,352,1,2000,0,10000,no,self,always,0,,,,,,
+1874,Beelzebub_@NPC_CALLSLAVE,chase,352,1,2000,0,10000,no,self,always,0,,,,,,
+1874,Beelzebub_@NPC_CALLSLAVE,idle,352,1,2000,0,10000,no,self,always,0,,,,,,
 
 // End of database
