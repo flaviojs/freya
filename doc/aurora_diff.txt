@@ -82,7 +82,7 @@
 	Misc Changes
 ---------------------------------------------------------------------------
 
-- There is no LICENCE_JA file in Aurora, instead there is just LICENSE.
+- There is no LICENCE_JA file in Aurora, instead there is just License.txt.
 - The 'Readme' changelog is stored in ./doc as 'Readme.txt' instead of in the main folder.
 - This documentation file, './doc/aurora_diff.txt' does not exist in jAthena.
 - The './doc/script_conv_notes.txt' does not exist in jAthena.

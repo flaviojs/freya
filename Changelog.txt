@@ -14,6 +14,10 @@
 Date	Added
 
 04/15/2007
+	* Updated: Startup logo 'Freya' -> 'Aurora' [Tsuyuki]
+	* Added: Gunslinger Drifter/Butcher Quests by Playtester [Tsuyuki]
+	* Added: Rachel Sanctuary Quest by Playtester [Tsuyuki]
+	* Added: Ice Cave Quest by henhouse [Tsuyuki]
 	* Updated: Databases to Huge CGI's latest [Tsuyuki]
 	* Updated: Project to jAthena 2291 [Tsuyuki]
 
