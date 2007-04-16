@@ -279,7 +279,6 @@ enum AtCommandType {
 	AtCommand_Grind2,
 	AtCommand_Sound,
 	AtCommand_MailBox,
-
 	AtCommand_NpcTalk,
 	AtCommand_PetTalk,
 	AtCommand_AutoLoot,
@@ -287,6 +286,9 @@ enum AtCommandType {
 	AtCommand_Displayexp,
 	AtCommand_DisplayDrop,
 	AtCommand_DisplayLootDrop,
+	AtCommand_Invincible,
+	AtCommand_CharInvincible,
+	AtCommand_SC_Start,
 	AtCommand_Main,
 	AtCommand_Request,
 	AtCommand_Version,

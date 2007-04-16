@@ -10,6 +10,15 @@
 
 Date	Added
 
+04/16/2007
+	* Added: @invincible and @charinvincible GM commands [Tsuyuki]
+	 - Maxes HP/SP at 99999, maxes all stats at 999, basically lasts until death
+	* Added: SC_INVINCIBLE to go along with the new @commands [Tsuyuki]
+	* Added: @sc_start/@status_change_start command (Name is self-explanatory) [Tsuyuki]
+	* Updated: Dead Branch and Bloody Branch lists [Tsuyuki]
+	* Updated: Abbey Dungeon monster spawns [Tsuyuki]
+	* Added: Nameless Island/Abbey Dungeon monster skills [Tsuyuki]
+
 04/15/2007
 	* Added: Some duplicate script commands from Cronus for better compatibility [Tsuyuki]
 	* Fixed: Some Ninja skills having wacky effects (Thanks to Esus) [Tsuyuki]

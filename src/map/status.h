@@ -261,10 +261,9 @@ enum {
 	SC_SELFDESTRUCTION,
 	SC_GDSKILLDELAY,
 	SC_INCASPDRATE,
-
 	SC_DOUBLE,
-
-	SC_MAX, //254
+	SC_INVINCIBLE,
+	SC_MAX, //256
 };
 extern int SkillStatusChangeTable[MAX_SKILL];
 

@@ -1,4 +1,3 @@
-//--------------------------------------------------------------
 //               (c)2004-2007 Freya Team Presents:              
 //                 ___   ___    ___   _  _   __                 
 //                (  _) (  ,)  (  _) ( \/ ) (  )                
@@ -140,6 +139,7 @@ key:gm,state,other,me
 @option            :	              16 darkness                    1024 Level 5 Cart
 @optionadd         :@optionadd <param1> <param2> <param3> - Adds different visual effects on your character.
 @optionremove      :@optionremove <param1> <param2> <param3> - Removes different visual effects on your character.
+@sc_start          :@sc_start <Status Change ID> <Level> <Duration> - Starts a status change on your character.
 @mountpeco         :@peco/@mountpeco/@pecopeco - Give/remove you a peco (Class is required, but not skill).
 @falcon            :@falcon - Give/remove you a falcon (skill is not required).
 @cart              :@cart <cart_type:0-5> - Remove(0)/Give you a cart (skill is not required).
@@ -180,6 +180,7 @@ key:gm,state,other,me
 @skillid           :@skillid <skill_name> - Looks up a skill by name.
 @email             :@email <actual@e-mail> <new@e-mail> - Changes your e-mail (characters deletion protection).
 @password          :@password <old_password> <new_password> - Permanently change your account password to the given one.
+@invincible        :@invincible - Makes you 'invincible'
 key:monster,monstre,spawn,summon,deadbranch,dead_branch
                  40: 
                  40:--- MONSTERS CMD ---
@@ -354,6 +355,7 @@ key:remote,char,character
 @charban           :	time usage: adjustement (+/- value) and element (y/a, m, d/j, h, mn, s)
 @charban           :	Example: @ban +1m-2mn1s-6y testplayer
 @charunban         :@charunban/@unban/@unbanish/@charunbanish <char name|account_id> - Unbans an account.
+@charinvincible    :@charinvincible - Makes character 'invincible'
 @jail              :@jail/@prison <time> <char name|account_id> - Sends specified character in jails for a limited time.
 @jail              :	(or adjust jail time of the specified character).
 @jail              :	time usage: adjustement (+/- value) and element (y/a, m, d/j, h, mn, s)

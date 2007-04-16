@@ -384,7 +384,7 @@
 343,9,6,1,0,0,5,1,no,0,2,0,weapon,0	//NPC_BREAKWEAPON#Break Weapon#
 344,9,6,1,0,0,5,1,no,0,2,0,weapon,0	//NPC_BREAKARMOR#Break Armor#
 345,9,6,1,0,0,5,1,no,0,2,0,weapon,0	//NPC_BREAKHELM#Break Helm#
-346,9,6,1,0,0,5,1,no,0,2,0,weapon,0	//NPC_BREAKSIELD#Break Shield#
+346,9,6,1,0,0,5,1,no,0,2,0,weapon,0	//NPC_BREAKSHIELD#Break Shield#
 347,-1,6,1,9,0,10,1,no,0,2,0,weapon,0	//NPC_UNDEADATTACK#Undead Attack#
 348,0,0,4,9,1,10,1,no,0,2,0,magic,0	//NPC_CHANGEUNDEAD#Change Undead Element#
 349,0,6,4,0,1,10,0,no,0,2,0,weapon,0	//NPC_POWERUP#Power Up#

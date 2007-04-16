@@ -909,6 +909,16 @@ int status_calc_pc(struct map_session_data* sd, int first)
 		}		
 	}	
 
+	// Invincible GM Status
+	if (sd->sc_data[SC_INVINCIBLE].timer != -1) {
+		sd->paramb[0] = 999;
+		sd->paramb[1] = 999;
+		sd->paramb[2] = 999;
+		sd->paramb[3] = 999;
+		sd->paramb[4] = 999;
+		sd->paramb[5] = 999;
+	}
+
 	sd->paramc[0]=sd->status.str+sd->paramb[0]+sd->parame[0];
 	sd->paramc[1]=sd->status.agi+sd->paramb[1]+sd->parame[1];
 	sd->paramc[2]=sd->status.vit+sd->paramb[2]+sd->parame[2];
@@ -1545,6 +1555,17 @@ int status_calc_pc(struct map_session_data* sd, int first)
 
 	if (pc_isriding(sd))
 		sd->aspd = sd->aspd*(100 + 10*(5 - pc_checkskill(sd,KN_CAVALIERMASTERY)))/ 100;
+
+	// Invincible GM Status
+	if (sd->sc_data[SC_INVINCIBLE].timer != -1) {
+		sd->status.hp = 99999;
+		sd->status.sp = 99999;
+		sd->status.max_hp = 99999;
+		sd->status.max_sp = 99999;
+		sd->speed = 50;
+		clif_updatestatus(sd, SP_SPEED);
+		status_change_clear_debuffs(&sd->bl);
+	}
 
 	if(sd->aspd < battle_config.max_aspd) sd->aspd = battle_config.max_aspd;
 	sd->amotion = sd->aspd;
@@ -5023,6 +5044,9 @@ int status_change_start(struct block_list *bl, int type, int val1, int val2, int
 			break;
 		case SC_DOUBLE:
 			break;
+		case SC_INVINCIBLE:
+			scflag.calc = 1;
+			break;
 		default:
 			break;
 	}
@@ -5391,6 +5415,9 @@ int status_change_end(struct block_list* bl, int type, int tid)
 			case SC_ONEHAND:
 			case SC_FUSION:
 				// Run status_calc_pc at end of function (Recalculate player's status)
+				calc_flag = 1;
+				break;
+			case SC_INVINCIBLE:
 				calc_flag = 1;
 				break;
 			case SC_PROVOKE:
@@ -6381,6 +6408,7 @@ int status_change_clear_buffs (struct block_list *bl)
 			case SC_RIDING:
 			case SC_GDSKILLDELAY:
 			case SC_XMAS:
+			case SC_INVINCIBLE:
 				continue;
 
 			// Debuffs that cannot be removed (Use status_change_clear_debuffs)

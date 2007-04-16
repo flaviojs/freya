@@ -312,7 +312,6 @@ ATCOMMAND_FUNC(grind);
 ATCOMMAND_FUNC(grind2);
 ATCOMMAND_FUNC(sound);
 ATCOMMAND_FUNC(mailbox);
-
 ATCOMMAND_FUNC(npctalk);
 ATCOMMAND_FUNC(pettalk);
 ATCOMMAND_FUNC(autoloot);
@@ -320,6 +319,9 @@ ATCOMMAND_FUNC(autolootloot);
 ATCOMMAND_FUNC(displayexp);
 ATCOMMAND_FUNC(displaydrop);
 ATCOMMAND_FUNC(displaylootdrop);
+ATCOMMAND_FUNC(invincible);
+ATCOMMAND_FUNC(charinvincible);
+ATCOMMAND_FUNC(sc_start);
 ATCOMMAND_FUNC(main);
 ATCOMMAND_FUNC(request);
 ATCOMMAND_FUNC(version);
@@ -661,7 +663,7 @@ static struct AtCommandInfo {
 	{ AtCommand_WhoZenyMap,            "@whozenymap",           20, atcommand_whozenymap },
 	{ AtCommand_WhoHas,                "@whohas",               20, atcommand_whohas },
 	{ AtCommand_WhoHasMap,             "@whohasmap",            20, atcommand_whohasmap },
-	{ AtCommand_Refresh,               "@refresh",              40, atcommand_refresh }, /* It seems authorize to xp without die (exploit)*/
+	{ AtCommand_Refresh,               "@refresh",              40, atcommand_refresh },
 	{ AtCommand_PetId,                 "@petid",                40, atcommand_petid },
 	{ AtCommand_Identify,              "@identify",             40, atcommand_identify },
 	{ AtCommand_Motd,                  "@motd",                  0, atcommand_motd },
@@ -670,11 +672,10 @@ static struct AtCommandInfo {
 	{ AtCommand_Marry,                 "@marry",                40, atcommand_marry },
 	{ AtCommand_Divorce,               "@divorce",              40, atcommand_divorce },
 	{ AtCommand_Rings,                 "@rings",                40, atcommand_rings },
-	{ AtCommand_Grind,                 "@grind",                99, atcommand_grind }, // (on test GM command)
+	{ AtCommand_Grind,                 "@grind",                99, atcommand_grind },
 	{ AtCommand_Grind2,                "@grind2",               60, atcommand_grind2 },
 	{ AtCommand_Sound,                 "@sound",                40, atcommand_sound },
 	{ AtCommand_MailBox,               "@mailbox",               0, atcommand_mailbox	},
-
 	{ AtCommand_NpcTalk,               "@npctalk",              40, atcommand_npctalk },
 	{ AtCommand_PetTalk,               "@pettalk",              10, atcommand_pettalk },
 	{ AtCommand_AutoLoot,              "@autoloot",              0, atcommand_autoloot },
@@ -682,6 +683,10 @@ static struct AtCommandInfo {
 	{ AtCommand_Displayexp,            "@displayexp",            0, atcommand_displayexp },
 	{ AtCommand_DisplayDrop,           "@displaydrop",           0, atcommand_displaydrop },
 	{ AtCommand_DisplayLootDrop,       "@displaylootdrop",       0, atcommand_displaylootdrop },
+	{ AtCommand_Invincible,            "@invincible",           60, atcommand_invincible },
+	{ AtCommand_CharInvincible,        "@charinvincible",       60, atcommand_charinvincible },
+	{ AtCommand_SC_Start,              "@sc_start",             60, atcommand_sc_start },
+	{ AtCommand_SC_Start,              "@status_change_start",  60, atcommand_sc_start },
 	{ AtCommand_Main,                  "@main",                  1, atcommand_main },
 	{ AtCommand_Request,               "@request",               0, atcommand_request },
 	{ AtCommand_Version,               "@version",               0, atcommand_version },
@@ -15218,6 +15223,66 @@ ATCOMMAND_FUNC(displaylootdrop) {
 
 	return 0;
 }
+
+/*==========================================
+ * @invincible - Makes user extremely powerful
+ *------------------------------------------
+ */
+ATCOMMAND_FUNC(invincible) {
+
+	status_change_start(&sd->bl, SC_INVINCIBLE, 0, 0, 0, 0, 3600000, 0);
+	clif_displaymessage(fd, "You are now invincible.");
+	return 0;
+}
+
+/*==========================================
+ * @charinvincible - Makes a char extremely powerful
+ *------------------------------------------
+ */
+ATCOMMAND_FUNC(charinvincible) {
+
+	struct map_session_data *pl_sd;
+
+	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
+		send_usage(sd, "Please, enter a player name/account ID.", original_command);
+		return -1;
+	}
+
+	if ((pl_sd = map_nick2sd(atcmd_name)) != NULL || ((pl_sd = map_id2sd(atoi(atcmd_name))) != NULL && pl_sd->state.auth)) {
+		if (pc_isdead(pl_sd)) {
+			clif_displaymessage(fd, "Player is dead. You must revive them before you can make them invincible.");
+			return -1;
+		}
+		status_change_start(&pl_sd->bl, SC_INVINCIBLE, 0, 0, 0, 0, 3600000, 0);
+		clif_displaymessage(fd, "Player is now invincible.");
+	}
+	else {
+		clif_displaymessage(fd, msg_txt(3)); // Character not found.
+		return -1;
+	}
+	return 0;
+}
+
+
+/*==========================================
+ * @sc_start - Starts a status change
+ *------------------------------------------
+ */
+ATCOMMAND_FUNC(sc_start) {
+
+	int sc_id = 0, sc_lvl = 0, sc_time = 0;
+
+	if (!message || !*message ||
+	    (sscanf(message, "%d" "%d" "%d", &sc_id, &sc_lvl, &sc_time) < 3)) {
+		clif_displaymessage(fd, "Usage: <Status Change ID> <Level> <Duration.");
+		return -1;
+	}
+
+	status_change_start(&sd->bl, sc_id, sc_lvl, 0, 0, 0, sc_time, 0);
+
+	return 0;
+}
+
 
 /*==========================================
  * @main - Activates main channel (On/Off)
