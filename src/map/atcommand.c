@@ -15230,7 +15230,7 @@ ATCOMMAND_FUNC(displaylootdrop) {
  */
 ATCOMMAND_FUNC(invincible) {
 
-	status_change_start(&sd->bl, SC_INVINCIBLE, 0, 0, 0, 0, 3600000, 0);
+	status_change_start(&sd->bl, SC_INVINCIBLE, 0, 0, 0, 0, 0, 0);
 	clif_displaymessage(fd, "You are now invincible.");
 	return 0;
 }
@@ -15253,7 +15253,7 @@ ATCOMMAND_FUNC(charinvincible) {
 			clif_displaymessage(fd, "Player is dead. You must revive them before you can make them invincible.");
 			return -1;
 		}
-		status_change_start(&pl_sd->bl, SC_INVINCIBLE, 0, 0, 0, 0, 3600000, 0);
+		status_change_start(&pl_sd->bl, SC_INVINCIBLE, 0, 0, 0, 0, 0, 0);
 		clif_displaymessage(fd, "Player is now invincible.");
 	}
 	else {

@@ -10,9 +10,14 @@
 
 Date	Added
 
+04/17/2007
+	* Improved: Buffed up @invincible/@charinvincible a bit more [Tsuyuki]
+	* Improved: Merged status_calc_speed and status_get_speed into a single function -> status_calc_speed [Tsuyuki]
+	 - Note: Recalculates speed for all currently possible types (PC/Mob/NPC/Pet)
+	* Removed: Custom monster level up system [Tsuyuki]
+
 04/16/2007
 	* Added: @invincible and @charinvincible GM commands [Tsuyuki]
-	 - Maxes HP/SP at 99999, maxes all stats at 999, basically lasts until death
 	* Added: SC_INVINCIBLE to go along with the new @commands [Tsuyuki]
 	* Added: @sc_start/@status_change_start command (Name is self-explanatory) [Tsuyuki]
 	* Updated: Dead Branch and Bloody Branch lists [Tsuyuki]

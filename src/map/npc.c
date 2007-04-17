@@ -1212,10 +1212,13 @@ static int calc_next_walk_step(struct npc_data *nd) {
 
 	if (nd->walkpath.path_pos >= nd->walkpath.path_len)
 		return -1;
-	if (nd->walkpath.path[nd->walkpath.path_pos] & 1)
-		return status_get_speed(&nd->bl) * 14 / 10;
+	if (nd->walkpath.path[nd->walkpath.path_pos] & 1) {
+		status_calc_speed(&nd->bl);
+		return (nd->speed * 14 / 10);
+	}
 
-	return status_get_speed(&nd->bl);
+	status_calc_speed(&nd->bl);
+	return nd->speed;
 }
 
 

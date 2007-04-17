@@ -6156,23 +6156,6 @@ int pc_damage(struct block_list *src, struct map_session_data *sd, int damage)
 		}
 	}
 
-	// Monster Level Up
-	if (battle_config.mobs_level_up && src && src->type == BL_MOB) {
-		struct mob_data *md = (struct mob_data *)src;
-		if (md) {
-			if(md->target_id != 0 && md->target_id == sd->bl.id) { // Reset target id when player dies
-				md->target_id = 0;
-				mob_changestate(md, MS_WALK, 0);
-			}
-			// If monster is dead or at max level 99, don't level up
-			if (md->state.state != MS_DEAD && md->hp > 0 && md->level < 99) {
-				clif_misceffect(&md->bl, 0);
-				md->level++;
-				md->hp += sd->status.max_hp * .1;
-			}
-		}
-	}
-
 	if (map[sd->bl.m].flag.pvp_nightmaredrop) { // Moved this outside so it works when PVP isnt enabled and during pk mode [Ancyker]
 		for(j = 0; j < map[sd->bl.m].drop_list_num; j++) { // MAX_DROP_PER_MAP -> now, dynamic
 			int id = map[sd->bl.m].drop_list[j].drop_id;

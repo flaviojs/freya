@@ -1113,7 +1113,8 @@ static int pet_randomwalk(struct pet_data *pd, unsigned int tick)
 
 	nullpo_retr(0, pd);
 
-	speed = status_get_speed(&pd->bl);
+	status_calc_speed(&pd->bl);
+	speed = pd->speed;
 
 	if(DIFF_TICK(pd->next_walktime,tick) < 0){
 		int i, x, y, c, d = 12 - pd->move_fail_count;
@@ -1208,7 +1209,7 @@ static int pet_ai_sub_hard(struct pet_data *pd,unsigned int tick)
 					pet_unlocktarget(pd);
 				else {
 					i = 0;
-					pd->speed = status_get_speed(&pd->bl);
+					status_calc_speed(&pd->bl);
 					do {
 						if (i == 0) { // Å‰‚ÍAEGIS‚Æ“¯‚¶•û–@‚ÅŒŸõ
 							dx = md->bl.x - pd->bl.x;
@@ -1291,14 +1292,14 @@ static int pet_ai_sub_hard(struct pet_data *pd,unsigned int tick)
 		else {
 			if (dist <= 3 || (pd->timer != -1 && pd->state.state == MS_WALK && distance(pd->to_x, pd->to_y, sd->bl.x, sd->bl.y) < 3))
 				return 0;
-			pd->speed = status_get_speed(&pd->bl);
+			status_calc_speed(&pd->bl);
 			pet_calc_pos(pd,sd->bl.x,sd->bl.y,sd->dir);
 			if(pet_walktoxy(pd,pd->to_x,pd->to_y))
 				pet_randomwalk(pd,tick);
 		}
 	}
 	else {
-		pd->speed = status_get_speed(&pd->bl);
+		status_calc_speed(&pd->bl);
 		if(pd->state.state == MS_ATTACK)
 			pet_stopattack(pd);
 		pet_randomwalk(pd,tick);

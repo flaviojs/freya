@@ -2329,7 +2329,7 @@ INSERT INTO `item_db` VALUES (7325, 'Flexible_Tube', 'Flexible Tube', 3, 102, 51
 INSERT INTO `item_db` VALUES (7326, 'Fluorescent_Liquid', 'Fluorescent Liquid', 3, 712, 356, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7327, 'Flashlight', 'Flashlight', 3, 1024, 512, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7328, 'Legend_of_Songkran', 'Legend of Songkran', 3, 20, 0, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
-INSERT INTO `item_db` VALUES (7329, 'Old_Bronze_Key', 'Old Bronze Key', 3, 20, 0, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
+INSERT INTO `item_db` VALUES (7329, 'Old_Bronze_Key', 'Old Bronze Key', 3, 20, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 
 INSERT INTO `item_db` VALUES (7330, 'Mystic_Orb_08', 'Mystic Orb', 3, 20, 0, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7331, 'Heaven_Flower', 'Heaven Flower', 3, 20, 0, 10, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
@@ -2524,7 +2524,7 @@ INSERT INTO `item_db` VALUES (7502, 'James\'s_Memo', 'James\'s Memo', 3, 0, 10, 
 INSERT INTO `item_db` VALUES (7503, 'Portrait_of_a_Guy', 'Portrait of a Guy', 3, 0, 10, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7504, 'Power_Source', 'Power Source', 3, 0, 10, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7505, 'Toy_Key', 'Toy Key', 3, 0, 10, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
-INSERT INTO `item_db` VALUES (7506, 'Black_Keycard', 'Black Keycard', 3, 0, 10, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
+INSERT INTO `item_db` VALUES (7506, 'Black_Keycard', 'Black Keycard', 3, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7507, 'Hard_Piece_of_Steel', 'Hard Piece of Steel', 3, 0, 10, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7508, 'Elisia\'s_Ring', 'Elisia\'s Ring', 3, 0, 10, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);
 INSERT INTO `item_db` VALUES (7509, 'Gorgeous_Keycard', 'Gorgeous Keycard', 3, 0, 10, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, NULL, NULL);

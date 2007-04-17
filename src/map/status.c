@@ -1548,24 +1548,13 @@ int status_calc_pc(struct map_session_data* sd, int first)
 	}
 
 	// Speed Calculation
-	status_calc_speed(sd);
+	status_calc_speed(&sd->bl);
 
 	if (aspd_rate != 100)
 		sd->aspd = sd->aspd*aspd_rate/100;
 
 	if (pc_isriding(sd))
 		sd->aspd = sd->aspd*(100 + 10*(5 - pc_checkskill(sd,KN_CAVALIERMASTERY)))/ 100;
-
-	// Invincible GM Status
-	if (sd->sc_data[SC_INVINCIBLE].timer != -1) {
-		sd->status.hp = 99999;
-		sd->status.sp = 99999;
-		sd->status.max_hp = 99999;
-		sd->status.max_sp = 99999;
-		sd->speed = 50;
-		clif_updatestatus(sd, SP_SPEED);
-		status_change_clear_debuffs(&sd->bl);
-	}
 
 	if(sd->aspd < battle_config.max_aspd) sd->aspd = battle_config.max_aspd;
 	sd->amotion = sd->aspd;
@@ -1579,6 +1568,30 @@ int status_calc_pc(struct map_session_data* sd, int first)
 
 	if(sd->status.sp > sd->status.max_sp)
 		sd->status.sp = sd->status.max_sp;
+
+	// Invincible GM Status
+	// Bypasses normal maximum values
+	if (sd->sc_data[SC_INVINCIBLE].timer != -1) {
+		sd->status.hp = 999999;
+		sd->status.sp = 999999;
+		sd->status.max_hp = 999999;
+		sd->status.max_sp = 999999;
+		sd->speed = 50;
+		sd->base_atk = 99999;
+		sd->watk = 99999;
+		sd->watk2 = 99999;
+		sd->matk1 = 99999;
+		sd->matk2 = 99999;
+		sd->def = 99;
+		sd->def2 = 99;
+		sd->mdef = 99;
+		sd->mdef2 = 99;
+		sd->hit = 999;
+		sd->flee = 999;
+		sd->critical = 999;
+		clif_updatestatus(sd, SP_SPEED);
+		status_change_clear_debuffs(&sd->bl);
+	}
 
 	// Refresh client display ->
 
@@ -1684,112 +1697,150 @@ int status_calc_pc(struct map_session_data* sd, int first)
 }
 
 /*==========================================
- * Player Speed Calculation Function (Full Speed Calculation)
+ * Speed Calculation Function
+ * Adjusts speed for mobs/pets/players/NPCs
+ * As well as recalculates for mobs/players
  *------------------------------------------
  */
-void status_calc_speed(struct map_session_data *sd)
+void status_calc_speed(struct block_list *bl)
 {
 	int speed, speed_rate, speed_add_rate, skill;
+	struct map_session_data *sd = NULL;
+	struct mob_data *md = NULL;
+	struct pet_data *pd = NULL;
+	struct npc_data *nd = NULL;
 
-	nullpo_retv(sd);
+	nullpo_retv(bl);
 
-	speed = DEFAULT_WALK_SPEED; // Normally 150
-	speed_rate = sd->speed_rate; // Normally 100
-	speed_add_rate = sd->speed_add_rate; // Normally 100
+	// Speed calculation for players
+	if (bl->type == BL_PC) {
+		sd = (struct map_session_data*)bl;
+		speed = DEFAULT_WALK_SPEED; // Reset speed (Normally 150)
+		speed_rate = sd->speed_rate; // Normally 100
+		speed_add_rate = sd->speed_add_rate; // Normally 100
+	}
+	// Speed calculation for monsters
+	else if (bl->type == BL_MOB) {
+		md = (struct mob_data*)bl;
+		speed = mob_db[md->class].speed; // Reset speed
+		speed_rate = 100;
+		speed_add_rate = 100;
+	}
+	// Speed return for pets
+	else if (bl->type == BL_PET) {
+		pd = (struct pet_data*)bl;
+		pd->speed = ((struct pet_data *)bl)->msd->petDB->speed;
+		return; // No need to do calculation, return now
+	}
+	// Speed return for NPCs
+	else if (bl->type == BL_NPC) {
+		nd = (struct npc_data*)bl;
+		nd->speed = DEFAULT_WALK_SPEED;
+		return; // No need to do calculation, return now
+	}
+	// If not player/mob/pet/NPC, return
+	else {
+		printf(CL_YELLOW "Debug: " CL_RESET "Speed calculation attempted with unknown type.\n");
+		return;
+	}
+
+	// Get status change data
+	struct status_change* sc_data;
+	sc_data = status_get_sc_data(bl);
+	short *sc_count;
+	sc_count = status_get_sc_count(bl);
 
 	if (speed_add_rate != 100)
 		speed_rate += speed_add_rate - 100;
 
-	if (sd->sc_count)
-	{
+	if (sc_count) {
 		// Fixed reductions
-		if (sd->sc_data[SC_CURSE].timer != -1)	
+		if (sc_data[SC_CURSE].timer != -1)	
 			speed += 450;
-		if (sd->sc_data[SC_SWOO].timer != -1)
+		if (sc_data[SC_SWOO].timer != -1)
 			speed += 450; // Official value unknown
-		if (sd->sc_data[SC_WEDDING].timer != -1)
+		if (sc_data[SC_WEDDING].timer != -1)
 			speed += 300;
 
-		if (sd->sc_data[SC_GATLINGFEVER].timer == -1)
-		{	// Percent increases, most don't stack
-			if (sd->sc_data[SC_SPEEDUP1].timer != -1)
+		// Percent increases, most don't stack
+		if (sc_data[SC_GATLINGFEVER].timer == -1) {
+			if (sc_data[SC_SPEEDUP1].timer != -1)
 				speed -= speed * 50/100;
-			else if (sd->sc_data[SC_AVOID].timer != -1)
-				speed -= speed * sd->sc_data[SC_AVOID].val2 / 100;
+			else if (sc_data[SC_AVOID].timer != -1)
+				speed -= speed * sc_data[SC_AVOID].val2 / 100;
 
-			if (sd->sc_data[SC_RUN].timer != -1)
+			if (sc_data[SC_RUN].timer != -1)
 				speed -= speed * 50/100;
-			else if (sd->sc_data[SC_SPEEDUP0].timer != -1)
+			else if (sc_data[SC_SPEEDUP0].timer != -1)
 				speed -= speed * 25/100;
-			else if (sd->sc_data[SC_INCREASEAGI].timer != -1)
+			else if (sc_data[SC_INCREASEAGI].timer != -1)
 				speed -= speed * 25/100;
-			else if (sd->sc_data[SC_FUSION].timer != -1)
+			else if (sc_data[SC_FUSION].timer != -1)
 				speed -= speed * 25/100;
-			else if (sd->sc_data[SC_CARTBOOST].timer != -1)
+			else if (sc_data[SC_CARTBOOST].timer != -1)
 				speed -= speed * 20/100;
-			else if (sd->sc_data[SC_BERSERK].timer != -1)
+			else if (sc_data[SC_BERSERK].timer != -1)
 				speed -= speed * 20/100;
-			else if (sd->sc_data[SC_WINDWALK].timer != -1)
-				speed -= speed *(sd->sc_data[SC_WINDWALK].val1*2)/100;
+			else if (sc_data[SC_WINDWALK].timer != -1)
+				speed -= speed *(sc_data[SC_WINDWALK].val1*2)/100;
 		}
 		// Stackable percent reductions
-		if (sd->sc_data[SC_DANCING].timer != -1)
-		{
+		if (sd && sc_data[SC_DANCING].timer != -1) {
 			int s_rate = 500 - 40 * pc_checkskill(sd, (sd->status.sex? BA_MUSICALLESSON: DC_DANCINGLESSON));
-			if (sd->sc_data[SC_LONGING].timer != -1)
-				s_rate -= 20 * sd->sc_data[SC_LONGING].val1;
-			if (sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_BARDDANCER)
+			if (sc_data[SC_LONGING].timer != -1)
+				s_rate -= 20 * sc_data[SC_LONGING].val1;
+			if (sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_BARDDANCER)
 				speed -= 40; // Custom rate
 			else
 				speed += speed * s_rate / 100;
 		}
-		if (sd->sc_data[SC_DECREASEAGI].timer != -1)
+		if (sc_data[SC_DECREASEAGI].timer != -1)
 			speed = speed * 100/75;
-		if (sd->sc_data[SC_STEELBODY].timer != -1)
+		if (sc_data[SC_STEELBODY].timer != -1)
 			speed = speed * 100/75;
-		if (sd->sc_data[SC_QUAGMIRE].timer != -1)
+		if (sc_data[SC_QUAGMIRE].timer != -1)
 			speed = speed * 100/50;
-		if (sd->sc_data[SC_SUITON].timer != -1 && sd->sc_data[SC_SUITON].val3)
-			speed = speed * 100/sd->sc_data[SC_SUITON].val3;
-		if (sd->sc_data[SC_DONTFORGETME].timer != -1)
-			speed = speed * (100 + sd->sc_data[SC_DONTFORGETME].val1 * 2 + sd->sc_data[SC_DONTFORGETME].val2 + (sd->sc_data[SC_DONTFORGETME].val3 & 0xffff)) / 100;
-		if (sd->sc_data[SC_DEFENDER].timer != -1)
-			speed += speed * (55 - 5 * sd->sc_data[SC_DEFENDER].val1) / 100;
-		if (sd->sc_data[SC_GOSPEL].timer != -1 && sd->sc_data[SC_GOSPEL].val4 == BCT_ENEMY)
+		if (sc_data[SC_SUITON].timer != -1 && sc_data[SC_SUITON].val3)
+			speed = speed * 100/sc_data[SC_SUITON].val3;
+		if (sc_data[SC_DONTFORGETME].timer != -1)
+			speed = speed * (100 + sc_data[SC_DONTFORGETME].val1 * 2 + sc_data[SC_DONTFORGETME].val2 + (sc_data[SC_DONTFORGETME].val3 & 0xffff)) / 100;
+		if (sc_data[SC_DEFENDER].timer != -1)
+			speed += speed * (55 - 5 * sc_data[SC_DEFENDER].val1) / 100;
+		if (sc_data[SC_GOSPEL].timer != -1 && sc_data[SC_GOSPEL].val4 == BCT_ENEMY)
 			speed = speed * 100/75;
-		if (sd->sc_data[SC_JOINTBEAT].timer != -1)
-		{
-			if (sd->sc_data[SC_JOINTBEAT].val2 == 1)
+		if (sc_data[SC_JOINTBEAT].timer != -1) {
+			if (sc_data[SC_JOINTBEAT].val2 == 1)
 				speed = speed * 150 / 100;
-			else if (sd->sc_data[SC_JOINTBEAT].val2 == 3)
+			else if (sc_data[SC_JOINTBEAT].val2 == 3)
 				speed = speed * 130 / 100;
 		}
-		if (sd->sc_data[SC_CLOAKING].timer != -1)
-			speed = speed * (sd->sc_data[SC_CLOAKING].val3 - sd->sc_data[SC_CLOAKING].val1 * 3) /100;
+		if (sc_data[SC_CLOAKING].timer != -1)
+			speed = speed * (sc_data[SC_CLOAKING].val3 - sc_data[SC_CLOAKING].val1 * 3) /100;
 
-		if (sd->sc_data[SC_CHASEWALK].timer != -1)
-		{
-			speed = speed * sd->sc_data[SC_CHASEWALK].val3 / 100;
-			if (sd->sc_data[SC_SPIRIT].timer != -1 && sd->sc_data[SC_SPIRIT].val2 == SL_ROGUE)
+		if (sc_data[SC_CHASEWALK].timer != -1) {
+			speed = speed * sc_data[SC_CHASEWALK].val3 / 100;
+			if (sc_data[SC_SPIRIT].timer != -1 && sc_data[SC_SPIRIT].val2 == SL_ROGUE)
 				speed -= speed >> 2;
 		}
-		if (sd->sc_data[SC_GATLINGFEVER].timer != -1)
+		if (sc_data[SC_GATLINGFEVER].timer != -1)
 			speed = speed * 100/75;
-		if (sd->sc_data[SC_SLOWDOWN].timer != -1)
+		if (sc_data[SC_SLOWDOWN].timer != -1)
 			speed = speed * 100/75;
-}
+	}
 
-	if (sd->status.option&2 && (skill = pc_checkskill(sd, RG_TUNNELDRIVE)) > 0)
-		speed += speed * (100 - 16 * skill) / 100;
+	if (sd) {
+		if (sd->status.option&2 && (skill = pc_checkskill(sd, RG_TUNNELDRIVE)) > 0)
+			speed += speed * (100 - 16 * skill) / 100;
 
-	if (pc_iscarton(sd) && (skill = pc_checkskill(sd, MC_PUSHCART)) > 0)
-		speed += speed * (100 - 10 * skill) / 100;
+		if (pc_iscarton(sd) && (skill = pc_checkskill(sd, MC_PUSHCART)) > 0)
+			speed += speed * (100 - 10 * skill) / 100;
 
-	else if (pc_isriding(sd) && pc_checkskill(sd, KN_RIDING) > 0)
-		speed -= speed >> 2;
+		else if (pc_isriding(sd) && pc_checkskill(sd, KN_RIDING) > 0)
+			speed -= speed >> 2;
 
-	else if ((sd->status.class == JOB_ASSASSIN || sd->status.class == JOB_BABY_ASSASSIN || sd->status.class == JOB_ASSASSIN_CROSS) && (skill = pc_checkskill(sd, TF_MISS)) > 0)
-		speed -= speed * skill / 100;
+		else if ((sd->status.class == JOB_ASSASSIN || sd->status.class == JOB_BABY_ASSASSIN || sd->status.class == JOB_ASSASSIN_CROSS) && (skill = pc_checkskill(sd, TF_MISS)) > 0)
+			speed -= speed * skill / 100;
+	}
 
 	if (speed_rate <= 0)
 		speed_rate = 1;
@@ -1801,19 +1852,30 @@ void status_calc_speed(struct map_session_data *sd)
 	if (speed <= 0)
 		speed = 1;
 
-	if (sd->skilltimer != -1 && (skill = pc_checkskill(sd, SA_FREECAST)) > 0)
-	{
+	// Correct speed if it passes max value
+	if (speed > 1000)
+		speed = 1000;
+
+	if (sd && sd->skilltimer != -1 && (skill = pc_checkskill(sd, SA_FREECAST)) > 0) {
 		sd->prev_speed = speed;
 		speed = speed * (175 - skill * 5) / 100;
 	}
 
-	// Apply speed changes
-	sd->speed_add_rate = speed_add_rate;
-	sd->speed_rate = speed_rate;
-	sd->speed = speed;
-	clif_updatestatus(sd, SP_SPEED);
+	// Apply player speed changes
+	if (sd) {
+		sd->speed_add_rate = speed_add_rate;
+		sd->speed_rate = speed_rate;
+		sd->speed = speed;
+		clif_updatestatus(sd, SP_SPEED);
+		return;
+	}
+	// Apply monster speed changes
+	else if (md) {
+		md->speed = speed;
+		return;
+	}
 
-	return;
+	return; // Impossible to reach
 }
 
 /*==========================================
@@ -1951,8 +2013,6 @@ int status_get_max_hp(struct block_list *bl)
 			struct mob_data *md;
 			nullpo_retr(1, md = (struct mob_data *)bl);
 			max_hp = mob_db[md->class].max_hp;
-			if (battle_config.mobs_level_up) // Mobs leveling up increase [Valaris]
-				max_hp += (md->level - mob_db[md->class].lv) * status_get_vit(bl);
 			if (mob_db[md->class].mexp > 0) {
 				if (battle_config.mvp_hp_rate != 100)
 					max_hp = max_hp * battle_config.mvp_hp_rate / 100;
@@ -2021,8 +2081,6 @@ int status_get_str(struct block_list *bl)
 		if (bl->type == BL_MOB)
 		{
 			str = mob_db[((struct mob_data *)bl)->class].str;
-			if (battle_config.mobs_level_up) // Mobs leveling up increase [Valaris]
-				str += ((struct mob_data *)bl)->level - mob_db[((struct mob_data *)bl)->class].lv;
 		}
 
 		// Pets
@@ -2085,8 +2143,6 @@ int status_get_agi(struct block_list *bl)
 		if (bl->type == BL_MOB)
 		{
 			agi = mob_db[((struct mob_data *)bl)->class].agi;
-			if (battle_config.mobs_level_up) // Increase of mobs leveling up [Valaris]
-				agi += ((struct mob_data *)bl)->level - mob_db[((struct mob_data *)bl)->class].lv;
 		}
 		
 		// Pets
@@ -2150,8 +2206,6 @@ int status_get_vit(struct block_list *bl)
 		if (bl->type == BL_MOB)
 		{
 			vit = mob_db[((struct mob_data *)bl)->class].vit;
-			if (battle_config.mobs_level_up) // Increase from mobs leveling up [Valaris]
-				vit += ((struct mob_data *)bl)->level - mob_db[((struct mob_data *)bl)->class].lv;
 		}
 		
 		// Pets
@@ -2204,8 +2258,6 @@ int status_get_int(struct block_list *bl)
 		if (bl->type == BL_MOB)
 		{
 			int_ = mob_db[((struct mob_data *)bl)->class].int_;
-			if (battle_config.mobs_level_up) // Increase from mobs leveling up [Valaris]
-				int_ += ((struct mob_data *)bl)->level - mob_db[((struct mob_data *)bl)->class].lv;
 		}
 
 		// Pets
@@ -2266,8 +2318,6 @@ int status_get_dex(struct block_list *bl)
 		if (bl->type == BL_MOB)
 		{
 			dex = mob_db[((struct mob_data *)bl)->class].dex;
-			if (battle_config.mobs_level_up) // Increase from mobs leveling up [Valaris]
-				dex += ((struct mob_data *)bl)->level - mob_db[((struct mob_data *)bl)->class].lv;
 		}
 
 		// Pets
@@ -2333,8 +2383,6 @@ int status_get_luk(struct block_list *bl)
 		if (bl->type == BL_MOB)
 		{
 			luk = mob_db[((struct mob_data *)bl)->class].luk;
-			if (battle_config.mobs_level_up) // Increase from mobs leveling up [Valaris]
-				luk += ((struct mob_data *)bl)->level - mob_db[((struct mob_data *)bl)->class].lv;
 		}
 
 		// Pets
@@ -3070,46 +3118,6 @@ int status_get_mdef2(struct block_list *bl)
 		mdef2 = 0;
 
 	return mdef2;
-}
-
-/*==========================================
- * Status Get Speed Function
- *------------------------------------------
- */
-int status_get_speed(struct block_list *bl) {
-	nullpo_retr(1000, bl);
-
-	// Players
-	if (bl->type == BL_PC)
-		return ((struct map_session_data *)bl)->speed;
-
-	// Non-Player Characters (NPCs - Monsters/Pets)
-	else
-	{
-		int speed = 1000;
-
-		// Monsters
-		if (bl->type == BL_MOB)
-		{
-			speed = ((struct mob_data *)bl)->speed;
-
-			// Increase from mobs leveling up
-			if (battle_config.mobs_level_up)
-				speed -= ((struct mob_data *)bl)->level - mob_db[((struct mob_data *)bl)->class].lv;
-		}
-
-		// Pets
-		else if (bl->type == BL_PET)
-			speed = ((struct pet_data *)bl)->msd->petDB->speed;
-
-		// If Speed value is invalid, set to 1
-		if (speed < 1)
-			speed = 1;
-
-		return speed;
-	}
-
-	return 1000;
 }
 
 /*==========================================
@@ -6101,6 +6109,7 @@ int status_change_timer(int tid, unsigned int tick, int id, int data)
 	case SC_READYTURN:
 	case SC_READYCOUNTER:
 	case SC_READYDODGE:
+	case SC_INVINCIBLE:
 		sc_data[type].timer = add_timer(1000 * 600 + tick, status_change_timer, bl->id, data);
 		return 0;
 	// End of no time limit status changes

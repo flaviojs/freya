@@ -1719,6 +1719,9 @@ int skill_blown(struct block_list *src, struct block_list *target, int count) {
 	if(sd && sd->special_state.noknockback)
 		return 0;
 
+	if (sd && sd->sc_data[SC_INVINCIBLE].timer != -1)
+		return 0;
+
 	x = target->x;
 	y = target->y;
 
@@ -9020,7 +9023,7 @@ int skill_delayfix(struct block_list *bl, int time_duration, int skill_num) {
 		} else if (time_duration < 0)
 			time_duration = abs(time_duration) + status_get_adelay(bl) / 2; // If set to <0, the aspd delay will be added
 
-		if (battle_config.delay_dependon_dex &&
+		if ((battle_config.delay_dependon_dex || sd->sc_data[SC_INVINCIBLE].timer != -1) &&
 		    !skill_get_delaynodex(sd->skillid, sd->skilllv)) { // If skill casttime is allowed to be reduced by dex
 			int scale = battle_config.castrate_dex_scale - status_get_dex(bl);
 			if (scale < 0)
@@ -10433,13 +10436,13 @@ int skill_check_cloaking(struct block_list *bl)
 		}
 		else if (sd && sd->sc_data[SC_CLOAKING].val3 != 130) {
 			sd->sc_data[SC_CLOAKING].val3 = 130;
-			status_calc_speed(sd);
+			status_calc_speed(&sd->bl);
 		}
 	}
 	else {
 		if (sd && sd->sc_data[SC_CLOAKING].val3 != 103) {
 			sd->sc_data[SC_CLOAKING].val3 = 103;
-			status_calc_speed(sd);
+			status_calc_speed(&sd->bl);
 		}
 	}
 

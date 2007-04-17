@@ -553,10 +553,13 @@ static int calc_next_walk_step(struct mob_data *md)
 
 	if (md->walkpath.path_pos >= md->walkpath.path_len)
 		return -1;
-	if (md->walkpath.path[md->walkpath.path_pos] & 1)
-		return status_get_speed(&md->bl) * 14 / 10;
+	if (md->walkpath.path[md->walkpath.path_pos] & 1) {
+		status_calc_speed(&md->bl);
+		return (md->speed * 14 / 10);
+	}
 
-	return status_get_speed(&md->bl);
+	status_calc_speed(&md->bl);
+	return md->speed;
 }
 
 static int mob_walktoxy_sub(struct mob_data *md);
@@ -1802,7 +1805,8 @@ static int mob_randomwalk(struct mob_data *md, unsigned int tick)
 
 	nullpo_retr(0, md);
 
-	speed = status_get_speed(&md->bl);
+	status_calc_speed(&md->bl);
+	speed = md->speed;
 	if(DIFF_TICK(md->next_walktime,tick)<0){
 		int i, x, y, c, d = 12 - md->move_fail_count;
 		int mask[8][2] = {{0,1},{-1,1},{-1,0},{-1,-1},{0,-1},{1,-1},{1,0},{1,1}};
@@ -2792,10 +2796,6 @@ int mob_damage(struct block_list *src, struct mob_data *md, int damage, int type
 						zeny = ((double)(md->level + rand() % md->level)) * per + .5; // Zeny calculation moblv + random moblv
 					if (mob_db[md->class].mexp > 0)
 						zeny *= (rand() % 250);
-				}
-				if (battle_config.mobs_level_up && md->level > mob_db[md->class].lv) {
-					job_exp += ((double)((md->level - mob_db[md->class].lv) * mob_db[md->class].job_exp)) * .03 * per + .5;
-					base_exp += ((double)((md->level - mob_db[md->class].lv) * mob_db[md->class].base_exp)) * .03 * per + .5;
 				}
 			}
 

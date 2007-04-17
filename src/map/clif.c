@@ -869,7 +869,7 @@ static int clif_set0078(struct map_session_data *sd)
 	{
 		WPACKETW( 0) = 0x78;
 		WPACKETL( 2) = sd->bl.id;
-		WPACKETW( 6) = status_get_speed(&sd->bl);
+		WPACKETW( 6) = sd->speed;
 		WPACKETW( 8) = sd->opt1;
 		WPACKETW(10) = sd->opt2;
 		WPACKETW(12) = sd->status.option & ~0x0020; // fix peco
@@ -944,7 +944,7 @@ static int clif_set007b(struct map_session_data *sd)
 	{
 		WPACKETW( 0) = 0x7b;
 		WPACKETL( 2) = sd->bl.id;
-		WPACKETW( 6) = status_get_speed(&sd->bl);
+		WPACKETW( 6) = sd->speed;
 		WPACKETW( 8) = sd->opt1;
 		WPACKETW(10) = sd->opt2;
 		WPACKETW(12) = sd->status.option & ~0x0020; // fix peco;
@@ -1075,7 +1075,7 @@ static int clif_mob0078(struct mob_data *md) {
 
 	WPACKETW( 0) = 0x78;
 	WPACKETL( 2) = md->bl.id;
-	WPACKETW( 6) = status_get_speed(&md->bl);
+	WPACKETW( 6) = md->speed;
 	WPACKETW( 8) = md->opt1;
 	WPACKETW(10) = md->opt2;
 	WPACKETW(42) = md->opt3;
@@ -1128,7 +1128,7 @@ static int clif_mob007b(struct mob_data *md) {
 
 	WPACKETW( 0) = 0x7b;
 	WPACKETL( 2) = md->bl.id;
-	WPACKETW( 6) = status_get_speed(&md->bl);
+	WPACKETW( 6) = md->speed;
 	WPACKETW( 8) = md->opt1;
 	WPACKETW(10) = md->opt2;
 	WPACKETW(46) = md->opt3;

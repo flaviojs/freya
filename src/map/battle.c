@@ -4353,7 +4353,6 @@ static const struct battle_config_short{
 	{ "area_size",                                  &battle_config.area_size },
 	{ "muting_players",                             &battle_config.muting_players },
 	{ "zeny_from_mobs",                             &battle_config.zeny_from_mobs },
-	{ "mobs_level_up",                              &battle_config.mobs_level_up },
 	{ "pk_min_level",                               &battle_config.pk_min_level },
 	{ "skill_steal_type",                           &battle_config.skill_steal_type },
 	{ "skill_steal_rate",                           &battle_config.skill_steal_rate },
@@ -4748,7 +4747,6 @@ void battle_set_defaults() {
 	battle_config.max_cloth_color = 4;
 	battle_config.clothes_color_for_assassin = 0;
 	battle_config.zeny_from_mobs = 0;
-	battle_config.mobs_level_up = 0;
 	battle_config.pk_min_level = 55;
 	battle_config.skill_steal_type = 1;
 	battle_config.skill_steal_rate = 100;

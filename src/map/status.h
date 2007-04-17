@@ -421,7 +421,7 @@ int status_getrefinebonus(int lv, int type);
 int status_percentrefinery(struct map_session_data *sd, struct item *item);
 
 int status_calc_pc(struct map_session_data*, int);
-void status_calc_speed(struct map_session_data*);
+void status_calc_speed(struct block_list *bl);
 int status_get_class(struct block_list *bl);
 int status_get_dir(struct block_list *bl);
 int status_get_lv(struct block_list *bl);
@@ -449,7 +449,6 @@ int status_get_atk2(struct block_list *bl);
 int status_get_atk_2(struct block_list *bl);
 int status_get_matk1(struct block_list *bl);
 int status_get_matk2(struct block_list *bl);
-int status_get_speed(struct block_list *bl);
 int status_get_adelay(struct block_list *bl);
 int status_get_amotion(struct block_list *bl);
 int status_get_dmotion(struct block_list *bl);
