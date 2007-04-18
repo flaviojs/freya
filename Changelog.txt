@@ -10,7 +10,8 @@
 
 Date	Added
 
-04/18/2007
+04/17/2007
+	* Added: Anubis monster skills (By Playtester) [Tsuyuki]
 	* Updated: atcommand_freya.conf and help.txt [Tsuyuki]
 	* Cleaned: atcommand.c/atcommand.h a bit [Tsuyuki]
  	 - Removed a lot of generally useless/unecessary commands:
@@ -31,13 +32,11 @@ Date	Added
 	 - Renamed @packet to @statusicon
 	 - Misc stuff
 
-04/17/2007
+04/16/2007
 	* Improved: Buffed up @invincible/@charinvincible a bit more [Tsuyuki]
 	* Improved: Merged status_calc_speed and status_get_speed into a single function -> status_calc_speed [Tsuyuki]
 	 - Note: Recalculates speed for all currently possible types (PC/Mob/NPC/Pet)
 	* Removed: Custom monster level up system [Tsuyuki]
-
-04/16/2007
 	* Added: @invincible and @charinvincible GM commands [Tsuyuki]
 	* Added: SC_INVINCIBLE to go along with the new @commands [Tsuyuki]
 	* Added: @sc_start/@status_change_start command (Name is self-explanatory) [Tsuyuki]
