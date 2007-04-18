@@ -13,6 +13,9 @@
 
 Date	Added
 
+04/17/2007
+	* Added: Anubis monster skills (By Playtester) [Tsuyuki]
+
 04/16/2007
 	* Updated: Dead Branch and Bloody Branch lists [Tsuyuki]
 	* Updated: Abbey Dungeon monster spawns [Tsuyuki]
