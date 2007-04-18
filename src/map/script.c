@@ -5330,10 +5330,10 @@ int buildin_isloggedin(struct script_state *st)
  */
 enum { MF_NOMEMO, MF_NOTELEPORT, MF_NOSAVE, MF_NOBRANCH, MF_NOPENALTY, MF_NOZENYPENALTY, // 0-5
 	MF_PVP, MF_PVP_NOPARTY, MF_PVP_NOGUILD, MF_GVG, MF_GVG_NOPARTY, MF_NOTRADE, MF_NOSKILL, // 6-12
-	MF_NOWARP, MF_NOPVP, MF_NOICEWALL, MF_SNOW, MF_FOG, MF_SAKURA, MF_LEAVES, MF_RAIN, MF_INDOORS, MF_NOGO, MF_NOSPELL, // 13-23
-	MF_NOWARPTO, MT_NORETURN, MF_MONSTER_NOTELEPORT, MF_PVP_NOCALCRANK, // 24-27
-	MF_NOEXP, MF_NOBASEEXP, MF_NOJOBEXP, MF_NODROP, MF_NOMOBDROP, MF_NOMVPDROP, // 28-33
-	MF_PVP_NIGHTMAREDROP, MT_NOGMCMD, MT_MINGMLVL, MF_GVG_DUNGEON // 34-36
+	MF_NOWARP, MF_NOPVP, MF_NOICEWALL, MF_SNOW, MF_FOG, MF_SAKURA, MF_LEAVES, MF_INDOORS, MF_NOGO, MF_NOSPELL, // 13-22
+	MF_NOWARPTO, MT_NORETURN, MF_MONSTER_NOTELEPORT, MF_PVP_NOCALCRANK, // 23-26
+	MF_NOEXP, MF_NOBASEEXP, MF_NOJOBEXP, MF_NODROP, MF_NOMOBDROP, MF_NOMVPDROP, // 27-32
+	MF_PVP_NIGHTMAREDROP, MT_NOGMCMD, MT_MINGMLVL, MF_GVG_DUNGEON // 33-35
 };
 
 int buildin_setmapflagnosave(struct script_state *st) {
@@ -5376,7 +5376,7 @@ int buildin_setmapflag(struct script_state *st) {
 			printf(CL_YELLOW "WARNING: Don't use setmapflag function to set 'nosave' map flag." CL_RESET " Use setmapflagnosave function.\n");
 			break;
 		case MF_NOBRANCH: // 3
-			map[m].flag.nobranch = 1; // Forbids usage of Dead Branch (604), Bloody Branch (12103) and Poring Box (12109)
+			map[m].flag.nobranch = 1;
 			break;
 		case MF_NOPENALTY: // 4
 			map[m].flag.nopenalty = 1;
@@ -5411,78 +5411,75 @@ int buildin_setmapflag(struct script_state *st) {
 		case MF_NOPVP: // 14
 			map[m].flag.pvp = 0;
 			break;
-		case MF_NOICEWALL: // [Valaris] // 15
+		case MF_NOICEWALL: // 15
 			map[m].flag.noicewall = 1;
 			break;
-		case MF_SNOW: // [Valaris] // 16
+		case MF_SNOW: // 16
 			map[m].flag.snow = 1;
 			break;
-		case MF_FOG: // [Valaris] // 17
+		case MF_FOG: // 17
 			map[m].flag.fog = 1;
 			break;
-		case MF_SAKURA: // [Valaris] // 18
+		case MF_SAKURA: // 18
 			map[m].flag.sakura = 1;
 			break;
-		case MF_LEAVES: // [Valaris] // 19
+		case MF_LEAVES: // 19
 			map[m].flag.leaves = 1;
 			break;
-		case MF_RAIN: // [Valaris] // 20
-			map[m].flag.rain = 1;
-			break;
-		case MF_INDOORS: // celest // 21
+		case MF_INDOORS: // 20
 			map[m].flag.indoors = 1;
 			break;
-		case MF_NOGO: // celest // 22
+		case MF_NOGO: // 21
 			map[m].flag.nogo = 1;
 			break;
-		case MF_NOSPELL: // 23
+		case MF_NOSPELL: // 22
 			map[m].flag.nospell = 1;
 			break;
-		case MF_NOWARPTO: // 24
+		case MF_NOWARPTO: // 23
 			map[m].flag.nowarpto = 1;
 			break;
-		case MT_NORETURN: // 25
+		case MT_NORETURN: // 24
 			map[m].flag.noreturn = 1;
 			break;
-		case MF_MONSTER_NOTELEPORT: // 26
+		case MF_MONSTER_NOTELEPORT: // 25
 			map[m].flag.monster_noteleport = 1;
 			break;
-		case MF_PVP_NOCALCRANK: // 27
+		case MF_PVP_NOCALCRANK: // 26
 			map[m].flag.pvp_nocalcrank = 1;
 			break;
-		case MF_NOEXP: // 28
+		case MF_NOEXP: // 27
 			map[m].flag.nobaseexp = 1;
 			map[m].flag.nojobexp = 1;
 			break;
-		case MF_NOBASEEXP: // 29
+		case MF_NOBASEEXP: // 28
 			map[m].flag.nobaseexp = 1;
 			break;
-		case MF_NOJOBEXP: // 30
+		case MF_NOJOBEXP: // 29
 			map[m].flag.nojobexp = 1;
 			break;
-		case MF_NODROP: // 31
+		case MF_NODROP: // 30
 			map[m].flag.nomobdrop = 1;
 			map[m].flag.nomvpdrop = 1;
 			break;
-		case MF_NOMOBDROP: // 32
+		case MF_NOMOBDROP: // 31
 			map[m].flag.nomobdrop = 1;
 			break;
-		case MF_NOMVPDROP: // 33
+		case MF_NOMVPDROP: // 32
 			map[m].flag.nomvpdrop = 1;
 			break;
-		case MF_PVP_NIGHTMAREDROP: // 34
+		case MF_PVP_NIGHTMAREDROP: // 33
 //			map[m].flag.pvp_nightmaredrop = 1; // Need parameter to be activated
 			printf(CL_YELLOW "WARNING: Don't use setmapflag function to set 'pvp_nightmaredrop' map flag." CL_RESET " You can only use mapflag in script files.\n");
 			break;
-		case MT_NOGMCMD: // 35
+		case MT_NOGMCMD: // 34
 //			map[m].flag.nogmcmd = 1; // Need parameter to be activated
 			printf(CL_YELLOW "WARNING: Don't use setmapflag function to set 'nogmcmd' map flag." CL_RESET " You can only use mapflag in script files.\n");
 			break;
-		case MT_MINGMLVL: // 36
+		case MT_MINGMLVL: // 35
 //			map[m].flag.mingmlvl = 1; // Need parameter to be activated
 			printf(CL_YELLOW "WARNING: Don't use setmapflag function to set 'mingmlvl' map flag." CL_RESET " You can only use mapflag in script files.\n");
 			break;
-		case MF_GVG_DUNGEON: // 37
+		case MF_GVG_DUNGEON: // 36
 			map[m].flag.gvg_dungeon = 1;
 			break;
 		}
@@ -5510,7 +5507,7 @@ int buildin_removemapflag(struct script_state *st) {
 			map[m].flag.nosave = 0;
 			break;
 		case MF_NOBRANCH: // 3
-			map[m].flag.nobranch = 0; // Forbids usage of Dead Branch (604), Bloody Branch (12103) and Poring Box (12109)
+			map[m].flag.nobranch = 0;
 			break;
 		case MF_NOPENALTY: // 4
 			map[m].flag.nopenalty = 0;
@@ -5545,75 +5542,72 @@ int buildin_removemapflag(struct script_state *st) {
 		case MF_NOPVP: // 14
 			map[m].flag.pvp = 1;
 			break;
-		case MF_NOICEWALL: // [Valaris] // 15
+		case MF_NOICEWALL: // 15
 			map[m].flag.noicewall = 0;
 			break;
-		case MF_SNOW: // [Valaris] // 16
+		case MF_SNOW: // 16
 			map[m].flag.snow = 0;
 			break;
-		case MF_FOG: // [Valaris] // 17
+		case MF_FOG: // 17
 			map[m].flag.fog = 0;
 			break;
-		case MF_SAKURA: // [Valaris] // 18
+		case MF_SAKURA: // 18
 			map[m].flag.sakura = 0;
 			break;
-		case MF_LEAVES: // [Valaris] // 19
+		case MF_LEAVES: // 19
 			map[m].flag.leaves = 0;
 			break;
-		case MF_RAIN: // [Valaris] // 20
-			map[m].flag.rain = 0;
-			break;
-		case MF_INDOORS: // celest // 21
+		case MF_INDOORS: // 20
 			map[m].flag.indoors = 0;
 			break;
-		case MF_NOGO: // celest // 22
+		case MF_NOGO: // 21
 			map[m].flag.nogo = 0;
 			break;
-		case MF_NOSPELL: // 23
+		case MF_NOSPELL: // 22
 			map[m].flag.nospell = 0;
 			break;
-		case MF_NOWARPTO: // 24
+		case MF_NOWARPTO: // 23
 			map[m].flag.nowarpto = 0;
 			break;
-		case MT_NORETURN: // 25
+		case MT_NORETURN: // 24
 			map[m].flag.noreturn = 0;
 			break;
-		case MF_MONSTER_NOTELEPORT: // 26
+		case MF_MONSTER_NOTELEPORT: // 25
 			map[m].flag.monster_noteleport = 0;
 			break;
-		case MF_PVP_NOCALCRANK: // 27
+		case MF_PVP_NOCALCRANK: // 26
 			map[m].flag.pvp_nocalcrank = 0;
 			break;
-		case MF_NOEXP: // 28
+		case MF_NOEXP: // 27
 			map[m].flag.nobaseexp = 0;
 			map[m].flag.nojobexp = 0;
 			break;
-		case MF_NOBASEEXP: // 29
+		case MF_NOBASEEXP: // 28
 			map[m].flag.nobaseexp = 0;
 			break;
-		case MF_NOJOBEXP: // 30
+		case MF_NOJOBEXP: // 29
 			map[m].flag.nojobexp = 0;
 			break;
-		case MF_NODROP: // 31
+		case MF_NODROP: // 30
 			map[m].flag.nomobdrop = 0;
 			map[m].flag.nomvpdrop = 0;
 			break;
-		case MF_NOMOBDROP: // 32
+		case MF_NOMOBDROP: // 31
 			map[m].flag.nomobdrop = 0;
 			break;
-		case MF_NOMVPDROP: // 33
+		case MF_NOMVPDROP: // 32
 			map[m].flag.nomvpdrop = 0;
 			break;
-		case MF_PVP_NIGHTMAREDROP: // 34
+		case MF_PVP_NIGHTMAREDROP: // 33
 			map[m].flag.pvp_nightmaredrop = 0;
 			break;
-		case MT_NOGMCMD: // 35
-			map[m].flag.nogmcmd = 100; // All GM commands can be used
+		case MT_NOGMCMD: // 34
+			map[m].flag.nogmcmd = 100;
 			break;
-		case MT_MINGMLVL: // 36
+		case MT_MINGMLVL: // 35
 			map[m].flag.mingmlvl = 0;
 			break;
-		case MF_GVG_DUNGEON: // 37
+		case MF_GVG_DUNGEON: // 36
 			map[m].flag.gvg_dungeon = 0;
 			break;
 		}
@@ -7163,7 +7157,7 @@ int buildin_message(struct script_state *st)
 
 /*==========================================
  * npctalk (sends message to surrounding
- * area) [Valaris]
+ * area)
  *------------------------------------------
  */
 int buildin_npctalk(struct script_state *st)

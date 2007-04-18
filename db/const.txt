@@ -107,28 +107,26 @@ mf_snow		16
 mf_fog		17
 mf_sakura	18
 mf_leaves	19
-mf_rain	20
-mf_indoors	21
-mf_nogo	22
-mf_nospell	23
-mf_nowarpto	24
-mf_noreturn	25
-mf_monster_noteleport	26
-mf_pvp_nocalcrank	27
-mf_noexp	28
-mf_nobaseexp	29
-mf_nojobexp	30
-mf_nodrop	31
-mf_nomobdrop	32
-mf_nomvpdrop	33
+mf_indoors	20
+mf_nogo	21
+mf_nospell	22
+mf_nowarpto	23
+mf_noreturn	24
+mf_monster_noteleport	25
+mf_pvp_nocalcrank	26
+mf_noexp	27
+mf_nobaseexp	28
+mf_nojobexp	29
+mf_nodrop	30
+mf_nomobdrop	31
+mf_nomvpdrop	32
 //mf_noloot	31
 //mf_nomobloot	32
 //mf_nomvploot	33
-mf_pvp_nightmaredrop	34
-// when you use this mapflag (nogmcmd, you forbid GM commands upper than the mentionned level, included @ban, @kick, etc...)
-mf_nogmcmd	35
-mf_mingmlvl	36
-mf_gvg_dungeon 37
+mf_pvp_nightmaredrop	33
+mf_nogmcmd	34
+mf_mingmlvl	35
+mf_gvg_dungeon 36
 
 StatusPoint	9	1
 BaseLevel	11	1

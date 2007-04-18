@@ -72,8 +72,6 @@ ATCOMMAND_FUNC(whomap);
 ATCOMMAND_FUNC(whomap2);
 ATCOMMAND_FUNC(whomap3);
 ATCOMMAND_FUNC(whogm);
-ATCOMMAND_FUNC(whozeny);
-ATCOMMAND_FUNC(whozenymap);
 ATCOMMAND_FUNC(whohas);
 ATCOMMAND_FUNC(whohasmap);
 ATCOMMAND_FUNC(save);
@@ -117,17 +115,12 @@ ATCOMMAND_FUNC(pvpoff);
 ATCOMMAND_FUNC(pvpon);
 ATCOMMAND_FUNC(gvgoff);
 ATCOMMAND_FUNC(gvgon);
-ATCOMMAND_FUNC(model);
+ATCOMMAND_FUNC(style);
 ATCOMMAND_FUNC(go);
 ATCOMMAND_FUNC(go2);
 ATCOMMAND_FUNC(spawn);
 ATCOMMAND_FUNC(spawnmap);
 ATCOMMAND_FUNC(spawnall);
-ATCOMMAND_FUNC(summon);
-ATCOMMAND_FUNC(deadbranch);
-ATCOMMAND_FUNC(chardeadbranch);
-ATCOMMAND_FUNC(deadbranchmap);
-ATCOMMAND_FUNC(deadbranchall);
 ATCOMMAND_FUNC(killmonster);
 ATCOMMAND_FUNC(killmonster2);
 ATCOMMAND_FUNC(killmonsterarea);
@@ -137,15 +130,13 @@ ATCOMMAND_FUNC(refineall);
 ATCOMMAND_FUNC(produce);
 ATCOMMAND_FUNC(memo);
 ATCOMMAND_FUNC(gat);
-ATCOMMAND_FUNC(packet);
+ATCOMMAND_FUNC(statusicon);
 ATCOMMAND_FUNC(statuspoint);
 ATCOMMAND_FUNC(skillpoint);
 ATCOMMAND_FUNC(zeny);
 ATCOMMAND_FUNC(param);
 ATCOMMAND_FUNC(guildlevelup);
 ATCOMMAND_FUNC(charguildlevelup);
-ATCOMMAND_FUNC(makeegg);
-ATCOMMAND_FUNC(hatch);
 ATCOMMAND_FUNC(petfriendly);
 ATCOMMAND_FUNC(pethungry);
 ATCOMMAND_FUNC(petrename);
@@ -180,7 +171,6 @@ ATCOMMAND_FUNC(lostskill);
 ATCOMMAND_FUNC(charlostskill);
 ATCOMMAND_FUNC(spiritball);
 ATCOMMAND_FUNC(charspiritball);
-ATCOMMAND_FUNC(party);
 ATCOMMAND_FUNC(guild);
 ATCOMMAND_FUNC(resetstate);
 ATCOMMAND_FUNC(resetskill);
@@ -188,7 +178,7 @@ ATCOMMAND_FUNC(charskreset);
 ATCOMMAND_FUNC(charstreset);
 ATCOMMAND_FUNC(charreset);
 ATCOMMAND_FUNC(charstpoint);
-ATCOMMAND_FUNC(charmodel);
+ATCOMMAND_FUNC(charstyle);
 ATCOMMAND_FUNC(charskpoint);
 ATCOMMAND_FUNC(charzeny);
 ATCOMMAND_FUNC(agitstart);
@@ -197,7 +187,6 @@ ATCOMMAND_FUNC(reloaditemdb);
 ATCOMMAND_FUNC(reloadmobdb);
 ATCOMMAND_FUNC(reloadskilldb);
 ATCOMMAND_FUNC(reloadscript);
-//ATCOMMAND_FUNC(reloadgmdb); // Removed, automatic now
 ATCOMMAND_FUNC(mapexit);
 ATCOMMAND_FUNC(idsearch);
 ATCOMMAND_FUNC(whodrops);
@@ -239,10 +228,6 @@ ATCOMMAND_FUNC(disguise);
 ATCOMMAND_FUNC(undisguise);
 ATCOMMAND_FUNC(chardisguise);
 ATCOMMAND_FUNC(charundisguise);
-ATCOMMAND_FUNC(chardisguisemap);
-ATCOMMAND_FUNC(charundisguisemap);
-ATCOMMAND_FUNC(chardisguiseall);
-ATCOMMAND_FUNC(charundisguiseall);
 ATCOMMAND_FUNC(changelook);
 ATCOMMAND_FUNC(charchangelook);
 ATCOMMAND_FUNC(ignorelist);
@@ -276,17 +261,14 @@ ATCOMMAND_FUNC(storeall);
 ATCOMMAND_FUNC(charstoreall);
 ATCOMMAND_FUNC(skillid);
 ATCOMMAND_FUNC(useskill);
-ATCOMMAND_FUNC(rain);
 ATCOMMAND_FUNC(snow);
 ATCOMMAND_FUNC(sakura);
 ATCOMMAND_FUNC(fog);
 ATCOMMAND_FUNC(leaves);
-ATCOMMAND_FUNC(rainbow);
 ATCOMMAND_FUNC(clsweather);
 ATCOMMAND_FUNC(mobsearch);
 ATCOMMAND_FUNC(cleanmap);
 ATCOMMAND_FUNC(cleanarea);
-ATCOMMAND_FUNC(shuffle);
 ATCOMMAND_FUNC(adjgmlvl);
 ATCOMMAND_FUNC(adjgmlvl2);
 ATCOMMAND_FUNC(adjcmdlvl);
@@ -301,19 +283,13 @@ ATCOMMAND_FUNC(mute);
 ATCOMMAND_FUNC(refresh);
 ATCOMMAND_FUNC(petid);
 ATCOMMAND_FUNC(identify);
-ATCOMMAND_FUNC(motd);
-ATCOMMAND_FUNC(gmotd);
 ATCOMMAND_FUNC(misceffect);
 ATCOMMAND_FUNC(skilltree);
 ATCOMMAND_FUNC(marry);
 ATCOMMAND_FUNC(divorce);
 ATCOMMAND_FUNC(rings);
-ATCOMMAND_FUNC(grind);
-ATCOMMAND_FUNC(grind2);
 ATCOMMAND_FUNC(sound);
 ATCOMMAND_FUNC(mailbox);
-ATCOMMAND_FUNC(npctalk);
-ATCOMMAND_FUNC(pettalk);
 ATCOMMAND_FUNC(autoloot);
 ATCOMMAND_FUNC(autolootloot);
 ATCOMMAND_FUNC(displayexp);
@@ -325,7 +301,6 @@ ATCOMMAND_FUNC(sc_start);
 ATCOMMAND_FUNC(main);
 ATCOMMAND_FUNC(request);
 ATCOMMAND_FUNC(version);
-ATCOMMAND_FUNC(version2);
 
 /*==========================================
  *AtCommandInfo atcommand_info[]\‘¢‘Ì‚Ì’è‹`
@@ -377,7 +352,7 @@ static struct AtCommandInfo {
 	{ AtCommand_Heal,                  "@heal",                 40, atcommand_heal },
 	{ AtCommand_Kami,                  "@kami",                 40, atcommand_kami }, // /b, /nb and /bb command
 	{ AtCommand_KamiB,                 "@kamib",                40, atcommand_kamib },
-	{ AtCommand_KamiC,                 "@kamic",                40, atcommand_kami }, // code by [LuzZza]
+	{ AtCommand_KamiC,                 "@kamic",                40, atcommand_kami },
 	{ AtCommand_KamiGM,                "@kamigm",               20, atcommand_kamiGM },
 	{ AtCommand_Item,                  "@item",                 60, atcommand_item }, // + /item
 	{ AtCommand_CharItem,              "@charitem",             60, atcommand_charitem },
@@ -395,75 +370,46 @@ static struct AtCommandInfo {
 	{ AtCommand_PvPOn,                 "@pvpon",                40, atcommand_pvpon },
 	{ AtCommand_GvGOff,                "@gvgoff",               40, atcommand_gvgoff },
 	{ AtCommand_GvGOn,                 "@gvgon",                40, atcommand_gvgon },
-	{ AtCommand_Model,                 "@model",                20, atcommand_model },
+	{ AtCommand_Style,                 "@style",                20, atcommand_style },
 	{ AtCommand_Go,                    "@go",                   10, atcommand_go },
 	{ AtCommand_Go2,                   "@go2",                  10, atcommand_go2 },
-
 	{ AtCommand_Spawn,                 "@spawn",                50, atcommand_spawn }, // + /monster
 	{ AtCommand_Spawn,                 "@spawnsmall",           50, atcommand_spawn },
 	{ AtCommand_Spawn,                 "@spawnbig",             50, atcommand_spawn },
 	{ AtCommand_Spawn,                 "@spawnagro",            60, atcommand_spawn },
 	{ AtCommand_Spawn,                 "@spawnneutral",         60, atcommand_spawn },
-
 	{ AtCommand_Spawn,                 "@spawnagrosmall",       60, atcommand_spawn },
 	{ AtCommand_Spawn,                 "@spawnneutralsmall",    60, atcommand_spawn },
 	{ AtCommand_Spawn,                 "@spawnagrobig",         60, atcommand_spawn },
 	{ AtCommand_Spawn,                 "@spawnneutralbig",      60, atcommand_spawn },
-
 	{ AtCommand_SpawnMap,              "@spawnmap",             50, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@spawnmapsmall",        50, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@spawnmapbig",          50, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@spawnmapagro",         60, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@spawnmapneutral",      60, atcommand_spawnmap },
-
 	{ AtCommand_SpawnMap,              "@spawnmapagrosmall",    60, atcommand_spawnmap },
-	{ AtCommand_SpawnMap,              "@spawnmapneutralsmall",   60, atcommand_spawnmap },
+	{ AtCommand_SpawnMap,              "@spawnmapneutralsmall", 60, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@spawnmapagrobig",      60, atcommand_spawnmap },
 	{ AtCommand_SpawnMap,              "@spawnmapneutralbig",   60, atcommand_spawnmap },
-
 	{ AtCommand_SpawnAll,              "@spawnall",             60, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@spawnallsmall",        60, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@spawnallbig",          60, atcommand_spawnall },
-
 	{ AtCommand_SpawnAll,              "@spawnallagro",         70, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@spawnallneutral",      70, atcommand_spawnall },
-
 	{ AtCommand_SpawnAll,              "@spawnallagrosmall",    70, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@spawnallneutralsmall", 70, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@spawnallagrobig",      70, atcommand_spawnall },
 	{ AtCommand_SpawnAll,              "@spawnallneutralbig",   70, atcommand_spawnall },
-
-	{ AtCommand_Summon,                "@summon",               60, atcommand_summon },
-	{ AtCommand_Summon,                "@summonsmall",          60, atcommand_summon },
-	{ AtCommand_Summon,                "@summonbig",            60, atcommand_summon },
-
-	{ AtCommand_DeadBranch,            "@deadbranch",           60, atcommand_deadbranch },
-	{ AtCommand_DeadBranch,            "@deadbranchsmall",      60, atcommand_deadbranch },
-	{ AtCommand_DeadBranch,            "@deadbranchbig",        60, atcommand_deadbranch },
-
-	{ AtCommand_CharDeadBranch,        "@chardeadbranch",       60, atcommand_chardeadbranch },
-	{ AtCommand_CharDeadBranch,        "@chardeadbranchsmall",  60, atcommand_chardeadbranch },
-	{ AtCommand_CharDeadBranch,        "@chardeadbranchbig",    60, atcommand_chardeadbranch },
-
-	{ AtCommand_DeadBranchMap,         "@deadbranchmap",        60, atcommand_deadbranchmap },
-	{ AtCommand_DeadBranchMap,         "@deadbranchmapsmall",   60, atcommand_deadbranchmap },
-	{ AtCommand_DeadBranchMap,         "@deadbranchmapbig",     60, atcommand_deadbranchmap },
-
-	{ AtCommand_DeadBranchAll,         "@deadbranchall",        70, atcommand_deadbranchall },
-	{ AtCommand_DeadBranchAll,         "@deadbranchallsmall",   70, atcommand_deadbranchall },
-	{ AtCommand_DeadBranchAll,         "@deadbranchallbig",     70, atcommand_deadbranchall },
-
 	{ AtCommand_KillMonster,           "@killmonster",          60, atcommand_killmonster },
 	{ AtCommand_KillMonster2,          "@killmonster2",         40, atcommand_killmonster2 },
 	{ AtCommand_KillMonsterArea,       "@killmonsterarea",      60, atcommand_killmonsterarea },
 	{ AtCommand_KillMonster2Area,      "@killmonster2area",     40, atcommand_killmonster2area },
-
 	{ AtCommand_Refine,                "@refine",               60, atcommand_refine },
 	{ AtCommand_RefineAll,             "@refineall",            60, atcommand_refineall },
 	{ AtCommand_Produce,               "@produce",              60, atcommand_produce },
 	{ AtCommand_Memo,                  "@memo",                 40, atcommand_memo },
-	{ AtCommand_GAT,                   "@gat",                  99, atcommand_gat }, // debug function
-	{ AtCommand_Packet,                "@packet",               99, atcommand_packet }, // debug function
+	{ AtCommand_GAT,                   "@gat",                  99, atcommand_gat },
+	{ AtCommand_StatusIcon,            "@statusicon",           99, atcommand_statusicon },
 	{ AtCommand_StatusPoint,           "@stpoint",              60, atcommand_statuspoint },
 	{ AtCommand_SkillPoint,            "@skpoint",              60, atcommand_skillpoint },
 	{ AtCommand_Zeny,                  "@zeny",                 60, atcommand_zeny },
@@ -475,8 +421,6 @@ static struct AtCommandInfo {
 	{ AtCommand_Luck,                  "@luk",                  60, atcommand_param },
 	{ AtCommand_GuildLevelUp,          "@guildlvup",            60, atcommand_guildlevelup },
 	{ AtCommand_CharGuildLevelUp,      "@charguildlvup",        60, atcommand_charguildlevelup },
-	{ AtCommand_MakeEgg,               "@makeegg",              60, atcommand_makeegg },
-	{ AtCommand_Hatch,                 "@hatch",                40, atcommand_hatch },
 	{ AtCommand_PetFriendly,           "@petfriendly",          40, atcommand_petfriendly },
 	{ AtCommand_PetHungry,             "@pethungry",            40, atcommand_pethungry },
 	{ AtCommand_PetRename,             "@petrename",             2, atcommand_petrename },
@@ -510,13 +454,12 @@ static struct AtCommandInfo {
 	{ AtCommand_CharLostSkill,         "@charlostskill",        60, atcommand_charlostskill },
 	{ AtCommand_SpiritBall,            "@spiritball",           40, atcommand_spiritball },
 	{ AtCommand_CharSpiritBall,        "@charspiritball",       60, atcommand_charspiritball },
-	{ AtCommand_Party,                 "@party",                 2, atcommand_party },
 	{ AtCommand_Guild,                 "@guild",                50, atcommand_guild },
 	{ AtCommand_AgitStart,             "@agitstart",            60, atcommand_agitstart },
 	{ AtCommand_AgitEnd,               "@agitend",              60, atcommand_agitend },
 	{ AtCommand_MapExit,               "@mapexit",              99, atcommand_mapexit },
 	{ AtCommand_IDSearch,              "@idsearch",             60, atcommand_idsearch },
-	{ AtCommand_WhoDrops,              "@whodrops",              0, atcommand_whodrops },
+	{ AtCommand_WhoDrops,              "@whodrops",              1, atcommand_whodrops },
 	{ AtCommand_Broadcast,             "@broadcast",            40, atcommand_broadcast },
 	{ AtCommand_LocalBroadcast,        "@localbroadcast",       20, atcommand_localbroadcast },
 	{ AtCommand_LocalBroadcast2,       "@nlb",                  40, atcommand_localbroadcast2 }, // /lb, /nlb and /mb commands
@@ -526,13 +469,12 @@ static struct AtCommandInfo {
 	{ AtCommand_ResetSkill,            "@resetskill",           40, atcommand_resetskill }, // + /resetskill
 	{ AtCommand_CharStReset,           "@charstreset",          60, atcommand_charstreset },
 	{ AtCommand_CharSkReset,           "@charskreset",          60, atcommand_charskreset },
-	{ AtCommand_ReloadItemDB,          "@reloaditemdb",         99, atcommand_reloaditemdb }, // admin command
-	{ AtCommand_ReloadMobDB,           "@reloadmobdb",          99, atcommand_reloadmobdb }, // admin command
-	{ AtCommand_ReloadSkillDB,         "@reloadskilldb",        99, atcommand_reloadskilldb }, // admin command
-	{ AtCommand_ReloadScript,          "@reloadscript",         99, atcommand_reloadscript }, // admin command
-//	{ AtCommand_ReloadGMDB,            "@reloadgmdb",           99, atcommand_reloadgmdb }, // admin command // Removed, automatic now
+	{ AtCommand_ReloadItemDB,          "@reloaditemdb",         99, atcommand_reloaditemdb },
+	{ AtCommand_ReloadMobDB,           "@reloadmobdb",          99, atcommand_reloadmobdb },
+	{ AtCommand_ReloadSkillDB,         "@reloadskilldb",        99, atcommand_reloadskilldb },
+	{ AtCommand_ReloadScript,          "@reloadscript",         99, atcommand_reloadscript },
 	{ AtCommand_CharReset,             "@charreset",            60, atcommand_charreset },
-	{ AtCommand_CharModel,             "@charmodel",            50, atcommand_charmodel },
+	{ AtCommand_CharStyle,             "@charstyle",            50, atcommand_charstyle },
 	{ AtCommand_CharSKPoint,           "@charskpoint",          60, atcommand_charskpoint },
 	{ AtCommand_CharSTPoint,           "@charstpoint",          60, atcommand_charstpoint },
 	{ AtCommand_CharZeny,              "@charzeny",             60, atcommand_charzeny },
@@ -576,27 +518,23 @@ static struct AtCommandInfo {
 	{ AtCommand_Nuke,                  "@nuke",                 60, atcommand_nuke },
 	{ AtCommand_Enablenpc,             "@enablenpc",            80, atcommand_enablenpc },
 	{ AtCommand_Disablenpc,            "@disablenpc",           80, atcommand_disablenpc },
-	{ AtCommand_ServerTime,            "@time",                  0, atcommand_servertime },
+	{ AtCommand_ServerTime,            "@time",                  1, atcommand_servertime },
 	{ AtCommand_CharDelItem,           "@chardelitem",          60, atcommand_chardelitem },
 	{ AtCommand_Jail,                  "@jail",                 60, atcommand_jail },
 	{ AtCommand_UnJail,                "@unjail",               60, atcommand_unjail },
-	{ AtCommand_JailTime,              "@jailtime",              0, atcommand_jailtime },
+	{ AtCommand_JailTime,              "@jailtime",              1, atcommand_jailtime },
 	{ AtCommand_CharJailTime,          "@charjailtime",         20, atcommand_charjailtime },
 	{ AtCommand_Disguise,              "@disguise",             20, atcommand_disguise },
 	{ AtCommand_UnDisguise,            "@undisguise",           20, atcommand_undisguise },
 	{ AtCommand_CharDisguise,          "@chardisguise",         60, atcommand_chardisguise },
 	{ AtCommand_CharUnDisguise,        "@charundisguise",       60, atcommand_charundisguise },
-	{ AtCommand_CharDisguiseMap,       "@disguisemap",          60, atcommand_chardisguisemap },
-	{ AtCommand_CharUnDisguiseMap,     "@undisguisemap",        60, atcommand_charundisguisemap },
-	{ AtCommand_CharDisguiseAll,       "@disguiseall",          70, atcommand_chardisguiseall },
-	{ AtCommand_CharUnDisguiseAll,     "@undisguiseall",        60, atcommand_charundisguiseall },
 	{ AtCommand_ChangeLook,            "@changelook",           20, atcommand_changelook },
 	{ AtCommand_CharChangeLook,        "@charchangelook",       60, atcommand_charchangelook },
-	{ AtCommand_IgnoreList,            "@ignorelist",            0, atcommand_ignorelist },
+	{ AtCommand_IgnoreList,            "@ignorelist",            1, atcommand_ignorelist },
 	{ AtCommand_CharIgnoreList,        "@charignorelist",       20, atcommand_charignorelist },
 	{ AtCommand_InAll,                 "@inall",                20, atcommand_inall },
 	{ AtCommand_ExAll,                 "@exall",                20, atcommand_exall },
-	{ AtCommand_EMail,                 "@email",                 0, atcommand_email },
+	{ AtCommand_EMail,                 "@email",                 1, atcommand_email },
 	{ AtCommand_Password,              "@password",             20, atcommand_password },
 	{ AtCommand_Effect,                "@effect",               40, atcommand_effect },
 	{ AtCommand_Char_Item_List,        "@charitemlist",         20, atcommand_character_item_list },
@@ -623,18 +561,14 @@ static struct AtCommandInfo {
 	{ AtCommand_Charstoreall,          "@charstoreall",         60, atcommand_charstoreall },
 	{ AtCommand_Skillid,               "@skillid",              40, atcommand_skillid },
 	{ AtCommand_Useskill,              "@useskill",             40, atcommand_useskill },
-	{ AtCommand_Rain,                  "@rain",                 80, atcommand_rain },
 	{ AtCommand_Snow,                  "@snow",                 80, atcommand_snow },
 	{ AtCommand_Sakura,                "@sakura",               80, atcommand_sakura },
 	{ AtCommand_Fog,                   "@fog",                  80, atcommand_fog },
 	{ AtCommand_Leaves,                "@leaves",               80, atcommand_leaves },
-	{ AtCommand_Rainbow,               "@rainbow",              80, atcommand_rainbow },
 	{ AtCommand_Clsweather,            "@clsweather",           80, atcommand_clsweather },
 	{ AtCommand_MobSearch,             "@mobsearch",            20, atcommand_mobsearch },
 	{ AtCommand_CleanMap,              "@cleanmap",             40, atcommand_cleanmap },
 	{ AtCommand_CleanArea,             "@cleanarea",            40, atcommand_cleanarea },
-	{ AtCommand_Shuffle,               "@shuffle",              60, atcommand_shuffle },
-//	{ AtCommand_Maintenance,           "@maintenance",          99, atcommand_maintenance },
 	{ AtCommand_MiscEffect,            "@misceffect",           60, atcommand_misceffect },
 	{ AtCommand_AdjGmLvl,              "@adjgmlvl",             80, atcommand_adjgmlvl },
 	{ AtCommand_AdjGmLvl2,             "@adjgmlvl2",            99, atcommand_adjgmlvl2 },
@@ -655,42 +589,32 @@ static struct AtCommandInfo {
 	{ AtCommand_SetBattleFlag,         "@setbattleflag",        99, atcommand_setbattleflag },
 	{ AtCommand_SetMapFlag,            "@setmapflag",           99, atcommand_setmapflag },
 	{ AtCommand_UnMute,                "@unmute",               60, atcommand_unmute },
-	{ AtCommand_UpTime,                "@uptime",                0, atcommand_uptime },
-	{ AtCommand_Clock,                 "@clock",                 0, atcommand_clock },
+	{ AtCommand_UpTime,                "@uptime",                1, atcommand_uptime },
+	{ AtCommand_Clock,                 "@clock",                 1, atcommand_clock },
 	{ AtCommand_Mute,                  "@mute",                 99, atcommand_mute },
 	{ AtCommand_Mute,                  "@red",                  99, atcommand_mute },
-	{ AtCommand_WhoZeny,               "@whozeny",              20, atcommand_whozeny },
-	{ AtCommand_WhoZenyMap,            "@whozenymap",           20, atcommand_whozenymap },
 	{ AtCommand_WhoHas,                "@whohas",               20, atcommand_whohas },
 	{ AtCommand_WhoHasMap,             "@whohasmap",            20, atcommand_whohasmap },
 	{ AtCommand_Refresh,               "@refresh",              40, atcommand_refresh },
 	{ AtCommand_PetId,                 "@petid",                40, atcommand_petid },
 	{ AtCommand_Identify,              "@identify",             40, atcommand_identify },
-	{ AtCommand_Motd,                  "@motd",                  0, atcommand_motd },
-	{ AtCommand_Gmotd,                 "@gmotd",                60, atcommand_gmotd },
 	{ AtCommand_SkillTree,             "@skilltree",            40, atcommand_skilltree },
 	{ AtCommand_Marry,                 "@marry",                40, atcommand_marry },
 	{ AtCommand_Divorce,               "@divorce",              40, atcommand_divorce },
 	{ AtCommand_Rings,                 "@rings",                40, atcommand_rings },
-	{ AtCommand_Grind,                 "@grind",                99, atcommand_grind },
-	{ AtCommand_Grind2,                "@grind2",               60, atcommand_grind2 },
 	{ AtCommand_Sound,                 "@sound",                40, atcommand_sound },
-	{ AtCommand_MailBox,               "@mailbox",               0, atcommand_mailbox	},
-	{ AtCommand_NpcTalk,               "@npctalk",              40, atcommand_npctalk },
-	{ AtCommand_PetTalk,               "@pettalk",              10, atcommand_pettalk },
-	{ AtCommand_AutoLoot,              "@autoloot",              0, atcommand_autoloot },
-	{ AtCommand_AutoLootLoot,          "@autolootloot",          0, atcommand_autolootloot },
-	{ AtCommand_Displayexp,            "@displayexp",            0, atcommand_displayexp },
-	{ AtCommand_DisplayDrop,           "@displaydrop",           0, atcommand_displaydrop },
-	{ AtCommand_DisplayLootDrop,       "@displaylootdrop",       0, atcommand_displaylootdrop },
+	{ AtCommand_MailBox,               "@mailbox",               1, atcommand_mailbox	},
+	{ AtCommand_AutoLoot,              "@autoloot",              1, atcommand_autoloot },
+	{ AtCommand_AutoLootLoot,          "@autolootloot",          1, atcommand_autolootloot },
+	{ AtCommand_Displayexp,            "@displayexp",            1, atcommand_displayexp },
+	{ AtCommand_DisplayDrop,           "@displaydrop",           1, atcommand_displaydrop },
+	{ AtCommand_DisplayLootDrop,       "@displaylootdrop",       1, atcommand_displaylootdrop },
 	{ AtCommand_Invincible,            "@invincible",           60, atcommand_invincible },
 	{ AtCommand_CharInvincible,        "@charinvincible",       60, atcommand_charinvincible },
 	{ AtCommand_SC_Start,              "@sc_start",             60, atcommand_sc_start },
-	{ AtCommand_SC_Start,              "@status_change_start",  60, atcommand_sc_start },
 	{ AtCommand_Main,                  "@main",                  1, atcommand_main },
-	{ AtCommand_Request,               "@request",               0, atcommand_request },
-	{ AtCommand_Version,               "@version",               0, atcommand_version },
-	{ AtCommand_Version2,              "@version2",              0, atcommand_version2 },
+	{ AtCommand_Request,               "@request",               1, atcommand_request },
+	{ AtCommand_Version,               "@version",               1, atcommand_version },
 
 // Add new commands before this line
 	{ AtCommand_Unknown,               NULL,                     1, NULL }
@@ -1508,6 +1432,7 @@ void set_default_msg() {
 
 	add_msg(282, "Invalid color.");
 
+	// To-Do: Remove..
 	add_msg(283, "Shuffle done!");
 
 	add_msg(284, "This item cannot be traded.");
@@ -2475,232 +2400,6 @@ ATCOMMAND_FUNC(whogm) {
 		sprintf(atcmd_output, msg_txt(152), count); // %d GMs found.
 		clif_displaymessage(fd, atcmd_output);
 	}
-
-	return 0;
-}
-
-/*==========================================
- * @whozeny - Quick sorting function
- *------------------------------------------
- */
-void quick_sorting(int tableau[], int premier, int dernier) {
-	int temp, vmin, vmax, separateur_de_listes;
-	int cpm_result;
-	char *p_name;
-
-	vmin = premier;
-	vmax = dernier;
-
-	separateur_de_listes = ((struct map_session_data *)session[tableau[(premier + dernier) / 2]]->session_data)->status.zeny;
-	p_name = ((struct map_session_data *)session[tableau[(premier + dernier) / 2]]->session_data)->status.name;
-	do {
-		while((cpm_result = ((struct map_session_data *)session[tableau[vmin]]->session_data)->status.zeny) < separateur_de_listes ||
-		      // If same number of zeny, we sort by name
-		      (cpm_result == separateur_de_listes &&
-		       strcasecmp(((struct map_session_data *)session[tableau[vmin]]->session_data)->status.name, p_name) < 0))
-			vmin++;
-		while((cpm_result = ((struct map_session_data *)session[tableau[vmax]]->session_data)->status.zeny) > separateur_de_listes ||
-		      // If same number of zeny, we sort by name
-		      (cpm_result == separateur_de_listes &&
-		       strcasecmp(((struct map_session_data *)session[tableau[vmax]]->session_data)->status.name, p_name) > 0))
-			vmax--;
-
-		if (vmin <= vmax) {
-			temp = tableau[vmin];
-			tableau[vmin++] = tableau[vmax];
-			tableau[vmax--] = temp;
-		}
-	} while(vmin <= vmax);
-
-	if (premier < vmax)
-		quick_sorting(tableau, premier, vmax);
-	if (vmin < dernier)
-		quick_sorting(tableau, vmin, dernier);
-}
-
-/*==========================================
- * @whozeny
- *------------------------------------------
- */
-ATCOMMAND_FUNC(whozeny) {
-	int *id;
-	char match_text[100];
-	int i, j, players;
-	struct map_session_data *pl_sd;
-
-	memset(match_text, 0, sizeof(match_text));
-
-	if (sscanf(message, "%[^\n]", match_text) < 1)
-		strcpy(match_text, "");
-	for (i = 0; match_text[i]; i++)
-		match_text[i] = tolower((unsigned char)match_text[i]); // tolower needs unsigned char
-
-	CALLOC(id, int, fd_max);
-
-	// Get number of online players, id of each online players
-	players = 0;
-	// Sort online characters
-	for(i = 0; i < fd_max; i++) {
-		if (session[i] && (pl_sd = session[i]->session_data) && pl_sd->state.auth) {
-			if (!((pl_sd->GM_level >= battle_config.hide_GM_session || (pl_sd->status.option & OPTION_HIDE)) && (pl_sd->GM_level > sd->GM_level))) { // Only lower or same level
-				memset(atcmd_name, 0, sizeof(atcmd_name));
-				for (j = 0; pl_sd->status.name[j]; j++)
-					atcmd_name[j] = tolower((unsigned char)pl_sd->status.name[j]); // tolower needs unsigned char
-				if (strstr(atcmd_name, match_text) != NULL) { // Search with no case sensitive
-					id[players] = i;
-					players++;
-				}
-			}
-		}
-	}
-	if (players > 1)
-		quick_sorting(id, 0, players - 1);
-
-	i = 0;
-	if (players > 50)
-		i = players - 50;
-	while(i < players) {
-		pl_sd = session[id[i]]->session_data;
-		if (pl_sd->GM_level > 0)
-			sprintf(atcmd_output, "Name: %s (GM:%d) | BLvl: %d | Zeny: %d", pl_sd->status.name, pl_sd->GM_level, pl_sd->status.base_level, pl_sd->status.zeny);
-		else
-			sprintf(atcmd_output, "Name: %s | BLvl: %d | Zeny: %d", pl_sd->status.name, pl_sd->status.base_level, pl_sd->status.zeny);
-		clif_displaymessage(fd, atcmd_output);
-		i++;
-	}
-
-	if (players == 0)
-		clif_displaymessage(fd, msg_txt(28)); // No player found.
-	else if (players == 1)
-		clif_displaymessage(fd, msg_txt(29)); // 1 player found.
-	else {
-		sprintf(atcmd_output, msg_txt(30), players); // %d players found.
-		clif_displaymessage(fd, atcmd_output);
-		if (players > 50)
-			clif_displaymessage(fd, "But only the 50 richest players are displayed.");
-	}
-
-	// Display abnormal amount of zeny
-	if (players > 0) {
-		j = 0;
-		for (i = 0; i < players; i++) {
-			pl_sd = session[id[i]]->session_data;
-			if (pl_sd->status.zeny < 0 || pl_sd->status.zeny > MAX_ZENY) {
-				if (j == 0)
-					clif_displaymessage(fd, "Abnormal amount of zenys (negativ or upper than maximum):");
-				if (pl_sd->GM_level > 0)
-					sprintf(atcmd_output, "*** Name: %s (GM:%d) | BLvl: %d | Zeny: %d", pl_sd->status.name, pl_sd->GM_level, pl_sd->status.base_level, pl_sd->status.zeny);
-				else
-					sprintf(atcmd_output, "*** Name: %s | BLvl: %d | Zeny: %d", pl_sd->status.name, pl_sd->status.base_level, pl_sd->status.zeny);
-				clif_displaymessage(fd, atcmd_output);
-				j++;
-			}
-		}
-		if (j == 0)
-			clif_displaymessage(fd, "No player has abnormal amount of zenys.");
-		else if (j == 1)
-			clif_displaymessage(fd, "1 player has abnormal amount of zenys.");
-		else {
-			sprintf(atcmd_output, "%d players have abnormal amount of zenys.", j); // %d players found.
-			clif_displaymessage(fd, atcmd_output);
-		}
-	}
-
-	FREE(id);
-
-	return 0;
-}
-
-/*==========================================
- * @whozenymap
- *------------------------------------------
- */
-ATCOMMAND_FUNC(whozenymap) {
-	int *id;
-	int i, j, players;
-	int map_id = 0;
-	struct map_session_data *pl_sd;
-
-	if (!message || !*message || sscanf(message, "%s", atcmd_mapname) < 1)
-		map_id = sd->bl.m;
-	else {
-		if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
-			strcat(atcmd_mapname, ".gat");
-		if ((map_id = map_mapname2mapid(atcmd_mapname)) < 0) // Only from actual map-server
-			map_id = sd->bl.m;
-	}
-
-	CALLOC(id, int, fd_max);
-
-	// Get number of online players, id of each online players
-	players = 0;
-	// Sort online characters.
-	for(i = 0; i < fd_max; i++) {
-		if (session[i] && (pl_sd = session[i]->session_data) && pl_sd->state.auth) {
-			if (!((pl_sd->GM_level >= battle_config.hide_GM_session || (pl_sd->status.option & OPTION_HIDE)) && (pl_sd->GM_level > sd->GM_level))) { // Only lower or same level
-				if (pl_sd->bl.m == map_id) {
-					id[players] = i;
-					players++;
-				}
-			}
-		}
-	}
-	if (players > 1)
-		quick_sorting(id, 0, players - 1);
-
-	i = 0;
-	if (players > 50)
-		i = players - 50;
-	while(i < players) {
-		pl_sd = session[id[i]]->session_data;
-		if (pl_sd->GM_level > 0)
-			sprintf(atcmd_output, "Name: %s (GM:%d) | BLvl: %d | Zeny: %d", pl_sd->status.name, pl_sd->GM_level, pl_sd->status.base_level, pl_sd->status.zeny);
-		else
-			sprintf(atcmd_output, "Name: %s | BLvl: %d | Zeny: %d", pl_sd->status.name, pl_sd->status.base_level, pl_sd->status.zeny);
-		clif_displaymessage(fd, atcmd_output);
-		i++;
-	}
-
-	if (players == 0) {
-		sprintf(atcmd_output, msg_txt(54), map[map_id].name); // No player found in map '%s'.
-		clif_displaymessage(fd, atcmd_output);
-	} else if (players == 1) {
-		sprintf(atcmd_output, msg_txt(55), map[map_id].name); // 1 player found in map '%s'.
-		clif_displaymessage(fd, atcmd_output);
-	} else {
-		sprintf(atcmd_output, msg_txt(56), players, map[map_id].name); // %d players found in map '%s'.
-		clif_displaymessage(fd, atcmd_output);
-		if (players > 50)
-			clif_displaymessage(fd, "But only the 50 richest players are displayed.");
-	}
-
-	// Display abnormal amount of zeny
-	if (players > 0) {
-		j = 0;
-		for (i = 0; i < players; i++) {
-			pl_sd = session[id[i]]->session_data;
-			if (pl_sd->status.zeny < 0 || pl_sd->status.zeny > MAX_ZENY) {
-				if (j == 0)
-					clif_displaymessage(fd, "Abnormal amount of zenys (negativ or upper than maximum):");
-				if (pl_sd->GM_level > 0)
-					sprintf(atcmd_output, "*** Name: %s (GM:%d) | BLvl: %d | Zeny: %d", pl_sd->status.name, pl_sd->GM_level, pl_sd->status.base_level, pl_sd->status.zeny);
-				else
-					sprintf(atcmd_output, "*** Name: %s | BLvl: %d | Zeny: %d", pl_sd->status.name, pl_sd->status.base_level, pl_sd->status.zeny);
-				clif_displaymessage(fd, atcmd_output);
-				j++;
-			}
-		}
-		if (j == 0)
-			clif_displaymessage(fd, "No player has abnormal amount of zenys.");
-		else if (j == 1)
-			clif_displaymessage(fd, "1 player has abnormal amount of zenys.");
-		else {
-			sprintf(atcmd_output, "%d players have abnormal amount of zenys.", j); // %d players found.
-			clif_displaymessage(fd, atcmd_output);
-		}
-	}
-
-	FREE(id);
 
 	return 0;
 }
@@ -5294,10 +4993,10 @@ ATCOMMAND_FUNC(gvgon) {
 }
 
 /*==========================================
- * @model - Changes user's palette/hair styles
+ * @style - Changes user's palette/hair styles
  *------------------------------------------
  */
-ATCOMMAND_FUNC(model) {
+ATCOMMAND_FUNC(style) {
 	int hair_style = 0, hair_color = 0, cloth_color = 0;
 
 	if (!message || !*message || sscanf(message, "%d %d %d", &hair_style, &hair_color, &cloth_color) < 1) {
@@ -6390,722 +6089,6 @@ ATCOMMAND_FUNC(spawnall) {
 }
 
 /*==========================================
- * @deadbranch - Spawns monsters like a Dead Branch does
- *------------------------------------------
- */
-ATCOMMAND_FUNC(deadbranch) {
-	int mob_id;
-	int number;
-	int limited_number; // For correct display
-	int count;
-	int c, i, j, id;
-	int mx, my, range;
-	struct mob_data *md;
-	struct block_list *bl;
-	int b, mob_num, slave_num;
-	int size;
-
-	number = 1;
-	sscanf(message, "%d", &number);
-
-	// Check latest spawn time
-	if (battle_config.atc_local_spawn_interval) {
-		if (last_spawn > time(NULL)) { // Number of seconds 1/1/1970 (timestamp): To limit number of spawn at 1 every 2 seconds (Reduction of lag)
-			sprintf(atcmd_output, "Please wait %d second(s) before to spawn a monster to avoid lag around of you.", (int)(last_spawn - time(NULL)));
-			clif_displaymessage(fd, atcmd_output);
-			return -1;
-		}
-		last_spawn = time(NULL) + battle_config.atc_local_spawn_interval;
-	}
-
-	if (number <= 0)
-		number = 1;
-
-	// If value of atcommand_spawn_quantity_limit directive is greater than or equal to 1 and quantity of monsters is greater than value of the directive
-	limited_number = number;
-	if (battle_config.atc_spawn_quantity_limit > 0 && number > battle_config.atc_spawn_quantity_limit)
-		limited_number = battle_config.atc_spawn_quantity_limit;
-
-	if (battle_config.atc_map_mob_limit > 0) {
-		mob_num = 0;
-		for (b = 0; b < map[sd->bl.m].bxs * map[sd->bl.m].bys; b++)
-			for (bl = map[sd->bl.m].block_mob[b]; bl; bl = bl->next)
-				mob_num++;
-		if (mob_num >= battle_config.atc_map_mob_limit) {
-			clif_displaymessage(fd, "There is too many monsters on the map. You can not spawn more monsters.");
-			return -1;
-		} else if (mob_num + limited_number > battle_config.atc_map_mob_limit) {
-			sprintf(atcmd_output, "Due to a density of monsters on the map, spawn has been limited.");
-			clif_displaymessage(fd, atcmd_output);
-			limited_number = battle_config.atc_map_mob_limit - mob_num;
-		}
-	}
-
-	if ((count = quantity_visible_monster(sd)) >= 2000) {
-		clif_displaymessage(fd, "There is too many monsters around of you. Move to a sparsely populated area to spawn.");
-		return -1;
-	} else if (count + limited_number > 2000) {
-		sprintf(atcmd_output, "Due to a density of monsters around of you, spawn has been limited.");
-		clif_displaymessage(fd, atcmd_output);
-		limited_number = 2000 - count;
-	}
-
-	// Check for monster size
-	if (strstr(command, "small") != NULL)
-		size = MAX_MOB_DB; // +2000 small
-	else if (strstr(command, "big") != NULL)
-		size = (MAX_MOB_DB * 2); // +4000 big
-	else
-		size = 0; // Normal
-
-	count = 0;
-	range = sqrt(limited_number) * 2 + 1; // Calculation of an odd number
-	for (i = 0; i < limited_number; i++) {
-		// Seach monster id
-		j = 0;
-		do {
-			mob_id = rand() % 1000 + 1001;
-		} while((mob_db[mob_id].max_hp <= 0 || mob_db[mob_id].summonper[0] <= (rand() % 1000000) || // summonper[0] = db/random/mob_deadbranch.txt
-		         sd->status.base_level < mob_db[mob_id].lv ||
-		         mob_id == 1288) && // Cannot spawn emperium.
-		        (j++) < 2000);
-		if (j >= 2000)
-			mob_id = 1002; // Poring
-
-		j = 0;
-		id = 0;
-		while(j++ < 64 && id == 0) { // Try 64 times to spawn the monster (Needed for close area)
-			do {
-				mx = sd->bl.x + (rand() % (range + j * 2) - ((range + j * 2) / 2));
-				my = sd->bl.y + (rand() % (range + j * 2) - ((range + j * 2) / 2));
-			} while ((c = map_getcell(sd->bl.m, mx, my, CELL_CHKNOPASS)) && j++ < 64);
-			if (!c) {
-				id = mob_once_spawn(sd, "this", mx, my, "--ja--", mob_id + size, 1, "");
-				if ((md = (struct mob_data *)map_id2bl(id)))
-					md->mode = mob_db[mob_id].mode | (0x1 + 0x4 + 0x80); // Like Dead Branch
-			}
-		}
-		count += (id != 0) ? 1 : 0;
-	}
-
-	if (count != 0) {
-		if (number == count)
-			clif_displaymessage(fd, msg_txt(39)); // All monsters summoned!
-		else {
-			sprintf(atcmd_output, msg_txt(240), count); // %d monster(s) summoned!
-			clif_displaymessage(fd, atcmd_output);
-		}
-		slave_num = 0;
-		mob_num = 0;
-		for (b = 0; b < map[sd->bl.m].bxs * map[sd->bl.m].bys; b++)
-			for (bl = map[sd->bl.m].block_mob[b]; bl; bl = bl->next) {
-				mob_num++;
-				if (((struct mob_data *)bl)->master_id)
-					slave_num++;
-			}
-		if (slave_num == 0)
-			sprintf(atcmd_output, "Total mobs in map: %d (of which is no slave).", mob_num);
-		else
-			sprintf(atcmd_output, "Total mobs in map: %d (of which are %d slaves).", mob_num, slave_num);
-		clif_displaymessage(fd, atcmd_output);
-	} else {
-		clif_displaymessage(fd, "No monster summoned.");
-		return -1;
-	}
-
-	return 0;
-}
-
-/*==========================================
- * @chardeadbranch - Spawns monsters like a Dead Branch does near a target player
- *------------------------------------------
- */
-ATCOMMAND_FUNC(chardeadbranch) {
-	int mob_id;
-	int number;
-	int limited_number; // For correct display
-	int count;
-	int c, i, j, id;
-	int mx, my, range;
-	struct mob_data *md;
-	struct block_list *bl;
-	int b, mob_num, slave_num;
-	int size;
-	struct map_session_data *pl_sd;
-
-	number = 1;
-	if (!message || !*message || sscanf(message, "%d %[^\n]", &number, atcmd_name) < 2) {
-		number = 1;
-		if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-			send_usage(sd, "Please, enter a player name (usage: %s [# of monsters] <char name|account_id>).", original_command);
-			return -1;
-		}
-	}
-
-	// Check latest spawn time
-	if (battle_config.atc_local_spawn_interval) {
-		if (last_spawn > time(NULL)) { // Number of seconds 1/1/1970 (timestamp): To limit number of spawn at 1 every 2 seconds (Reduction of lag)
-			sprintf(atcmd_output, "Please wait %d second(s) before to spawn a monster to avoid lag around of you.", (int)(last_spawn - time(NULL)));
-			clif_displaymessage(fd, atcmd_output);
-			return -1;
-		}
-		last_spawn = time(NULL) + battle_config.atc_local_spawn_interval;
-	}
-
-	if ((pl_sd = map_nick2sd(atcmd_name)) != NULL || ((pl_sd = map_id2sd(atoi(atcmd_name))) != NULL && pl_sd->state.auth)) {
-		if (sd->GM_level >= pl_sd->GM_level) { // Only lower or same level
-			if (number <= 0)
-				number = 1;
-
-			// If value of atcommand_spawn_quantity_limit directive is greater than or equal to 1 and quantity of monsters is greater than value of the directive
-			limited_number = number;
-			if (battle_config.atc_spawn_quantity_limit > 0 && number > battle_config.atc_spawn_quantity_limit)
-				limited_number = battle_config.atc_spawn_quantity_limit;
-
-			if (battle_config.atc_map_mob_limit > 0) {
-				mob_num = 0;
-				for (b = 0; b < map[pl_sd->bl.m].bxs * map[pl_sd->bl.m].bys; b++)
-					for (bl = map[pl_sd->bl.m].block_mob[b]; bl; bl = bl->next)
-						mob_num++;
-				if (mob_num >= battle_config.atc_map_mob_limit) {
-					clif_displaymessage(fd, "There is too many monsters on the map. You can not spawn more monsters.");
-					return -1;
-				} else if (mob_num + limited_number > battle_config.atc_map_mob_limit) {
-					sprintf(atcmd_output, "Due to a density of monsters on the map, spawn has been limited.");
-					clif_displaymessage(fd, atcmd_output);
-					limited_number = battle_config.atc_map_mob_limit - mob_num;
-				}
-			}
-
-			if ((count = quantity_visible_monster(pl_sd)) >= 2000) {
-				clif_displaymessage(fd, "There is too many monsters around of the player. Wait he moves to a sparsely populated area to spawn.");
-				return -1;
-			} else if (count + limited_number > 2000) {
-				sprintf(atcmd_output, "Due to a density of monsters around of the player, spawn has been limited.");
-				clif_displaymessage(fd, atcmd_output);
-				limited_number = 2000 - count;
-			}
-
-			// Check for monster size
-			if (strstr(command, "small") != NULL)
-				size = MAX_MOB_DB; // +2000 small
-			else if (strstr(command, "big") != NULL)
-				size = (MAX_MOB_DB * 2); // +4000 big
-			else
-				size = 0; // Normal
-
-			count = 0;
-			range = sqrt(limited_number) * 2 + 1; // Calculation of an odd number
-			for (i = 0; i < limited_number; i++) {
-				// Seach monster ID
-				j = 0;
-				do {
-					mob_id = rand() % 1000 + 1001;
-				} while((mob_db[mob_id].max_hp <= 0 || mob_db[mob_id].summonper[0] <= (rand() % 1000000) || // summonper[0] = db/random/mob_deadbranch.txt
-				         pl_sd->status.base_level < mob_db[mob_id].lv ||
-				         mob_id == 1288 || // Cannot spawn emperium.
-				         !check_mob_authorization(mob_id, sd->GM_level)) &&
-				        (j++) < 2000);
-				if (j >= 2000)
-					mob_id = 1002; // Poring
-
-				j = 0;
-				id = 0;
-				while(j++ < 64 && id == 0) { // Try 64 times to spawn the monster (Needed for close area)
-					do {
-						mx = pl_sd->bl.x + (rand() % (range + j * 2) - ((range + j * 2) / 2));
-						my = pl_sd->bl.y + (rand() % (range + j * 2) - ((range + j * 2) / 2));
-					} while ((c = map_getcell(pl_sd->bl.m, mx, my, CELL_CHKNOPASS)) && j++ < 64);
-					if (!c) {
-						id = mob_once_spawn(pl_sd, "this", mx, my, "--ja--", mob_id + size, 1, "");
-						if ((md = (struct mob_data *)map_id2bl(id)))
-							md->mode = mob_db[mob_id].mode | (0x1 + 0x4 + 0x80); // Like Dead Branch
-					}
-				}
-				count += (id != 0) ? 1 : 0;
-			}
-
-			if (count != 0) {
-				if (number == count)
-					clif_displaymessage(fd, msg_txt(39)); // All monsters summoned!
-				else {
-					sprintf(atcmd_output, msg_txt(240), count); // %d monster(s) summoned!
-					clif_displaymessage(fd, atcmd_output);
-				}
-				slave_num = 0;
-				mob_num = 0;
-				for (b = 0; b < map[pl_sd->bl.m].bxs * map[pl_sd->bl.m].bys; b++)
-					for (bl = map[pl_sd->bl.m].block_mob[b]; bl; bl = bl->next) {
-						mob_num++;
-						if (((struct mob_data *)bl)->master_id)
-							slave_num++;
-					}
-				if (slave_num == 0)
-					sprintf(atcmd_output, "Total mobs in map: %d (of which is no slave).", mob_num);
-				else
-					sprintf(atcmd_output, "Total mobs in map: %d (of which are %d slaves).", mob_num, slave_num);
-				clif_displaymessage(fd, atcmd_output);
-			} else {
-				clif_displaymessage(fd, "No monster summoned.");
-				return -1;
-			}
-		} else {
-			clif_displaymessage(fd, msg_txt(81)); // Your GM level don't authorize you to do this action on this player.
-			return -1;
-		}
-	} else {
-		clif_displaymessage(fd, msg_txt(3)); // Character not found.
-		return -1;
-	}
-
-	return 0;
-}
-
-/*==========================================
- * @deadbranchmap - Spawns monsters like a Dead Branch does across a map
- *------------------------------------------
- */
-ATCOMMAND_FUNC(deadbranchmap) {
-	int map_id, mob_id;
-	int number;
-	int limited_number; // For correct display
-	int count, players;
-	int c, i, j, p, id;
-	int mx, my, range;
-	struct mob_data *md;
-	struct block_list *bl;
-	int b, mob_num, slave_num;
-	int size;
-	struct map_session_data *pl_sd;
-
-	memset(atcmd_mapname, 0, sizeof(atcmd_mapname));
-
-	number = 1;
-	if (!message || !*message)
-		map_id = sd->bl.m;
-	else {
-		if (sscanf(message, "%d %s", &number, atcmd_mapname) < 2)
-			sscanf(message, "%s", atcmd_mapname);
-		if (atcmd_mapname[0] == '\0')
-			map_id = sd->bl.m;
-		else {
-			if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
-				strcat(atcmd_mapname, ".gat");
-			if ((map_id = map_mapname2mapid(atcmd_mapname)) < 0) // Only from actual map-server
-				map_id = sd->bl.m;
-		}
-	}
-
-	if (number <= 0)
-		number = 1;
-
-	// Check latest spawn time
-	if (battle_config.atc_local_spawn_interval) {
-		if (last_spawn > time(NULL)) { // Number of seconds 1/1/1970 (timestamp): To limit number of spawn at 1 every 2 seconds (Reduction of lag)
-			sprintf(atcmd_output, "Please wait %d second(s) before to spawn a monster to avoid lag around of you.", (int)(last_spawn - time(NULL)));
-			clif_displaymessage(fd, atcmd_output);
-			return -1;
-		}
-		last_spawn = time(NULL) + battle_config.atc_local_spawn_interval;
-	}
-
-	// Check for monster size
-	if (strstr(command, "small") != NULL)
-		size = MAX_MOB_DB; // +2000 small
-	else if (strstr(command, "big") != NULL)
-		size = (MAX_MOB_DB * 2); // +4000 big
-	else
-		size = 0; // Normal
-
-	count = 0;
-	players = 0;
-	// Sort online characters
-	for(p = 0; p < fd_max; p++) {
-		if (session[p] && (pl_sd = session[p]->session_data) && pl_sd->state.auth) {
-			if (!((pl_sd->GM_level >= battle_config.hide_GM_session || (pl_sd->status.option & OPTION_HIDE)) && (pl_sd->GM_level > sd->GM_level))) { // Only lower or same level
-				if (pl_sd->bl.m == map_id) {
-
-					// If value of atcommand_spawn_quantity_limit directive is greater than or equal to 1 and quantity of monsters is greater than value of the directive
-					limited_number = number;
-					if (battle_config.atc_spawn_quantity_limit > 0 && number > battle_config.atc_spawn_quantity_limit)
-						limited_number = battle_config.atc_spawn_quantity_limit;
-
-					if (battle_config.atc_map_mob_limit > 0) {
-						mob_num = 0;
-						for (b = 0; b < map[pl_sd->bl.m].bxs * map[pl_sd->bl.m].bys; b++)
-							for (bl = map[pl_sd->bl.m].block_mob[b]; bl; bl = bl->next)
-								mob_num++;
-						if (mob_num >= battle_config.atc_map_mob_limit) {
-							break;
-						} else if (mob_num + limited_number > battle_config.atc_map_mob_limit) {
-							limited_number = battle_config.atc_map_mob_limit - mob_num;
-						}
-					}
-
-					if ((j = quantity_visible_monster(pl_sd)) >= 2000) {
-						continue;
-					} else if (j + limited_number > 2000) {
-						limited_number = 2000 - j;
-					}
-
-					range = sqrt(limited_number) * 2 + 1; // Calculation of an odd number
-					for (i = 0; i < limited_number; i++) {
-						// Seach monster ID
-						j = 0;
-						do {
-							mob_id = rand() % 1000 + 1001;
-						} while((mob_db[mob_id].max_hp <= 0 || mob_db[mob_id].summonper[0] <= (rand() % 1000000) || // summonper[0] = db/random/mob_deadbranch.txt
-						         pl_sd->status.base_level < mob_db[mob_id].lv ||
-						         mob_id == 1288 || // Cannot spawn emperium.
-						         !check_mob_authorization(mob_id, sd->GM_level)) &&
-						        (j++) < 2000);
-						if (j >= 2000)
-							mob_id = 1002; // Poring
-
-						j = 0;
-						id = 0;
-						while(j++ < 64 && id == 0) { // Try 64 times to spawn the monster (Needed for close area)
-							do {
-								mx = pl_sd->bl.x + (rand() % (range + j * 2) - ((range + j * 2) / 2));
-								my = pl_sd->bl.y + (rand() % (range + j * 2) - ((range + j * 2) / 2));
-							} while ((c = map_getcell(pl_sd->bl.m, mx, my, CELL_CHKNOPASS)) && j++ < 64);
-							if (!c) {
-								id = mob_once_spawn(pl_sd, "this", mx, my, "--ja--", mob_id + size, 1, "");
-								if ((md = (struct mob_data *)map_id2bl(id)))
-									md->mode = mob_db[mob_id].mode | (0x1 + 0x4 + 0x80); // Like Dead Branch
-							}
-						}
-						count += (id != 0) ? 1 : 0;
-					}
-					players++;
-				}
-			}
-		}
-	}
-
-	if (players == 0) {
-		sprintf(atcmd_output, msg_txt(54), map[map_id].name); // No player found in map '%s'.
-		clif_displaymessage(fd, atcmd_output);
-	} else {
-		if (count != 0) {
-			if (number == count / players)
-				clif_displaymessage(fd, msg_txt(39)); // All monsters summoned!
-			else {
-				sprintf(atcmd_output, msg_txt(240), count); // %d monster(s) summoned!
-				clif_displaymessage(fd, atcmd_output);
-			}
-			slave_num = 0;
-			mob_num = 0;
-			for (b = 0; b < map[map_id].bxs * map[map_id].bys; b++)
-				for (bl = map[map_id].block_mob[b]; bl; bl = bl->next) {
-					mob_num++;
-					if (((struct mob_data *)bl)->master_id)
-						slave_num++;
-				}
-			if (slave_num == 0)
-				sprintf(atcmd_output, "Total mobs in map: %d (of which is no slave).", mob_num);
-			else
-				sprintf(atcmd_output, "Total mobs in map: %d (of which are %d slaves).", mob_num, slave_num);
-			clif_displaymessage(fd, atcmd_output);
-		} else {
-			clif_displaymessage(fd, "No monster summoned.");
-			return -1;
-		}
-	}
-
-	return 0;
-}
-
-/*==========================================
- * @deadbranchall - Spawns all monsters like a Dead Branch does
- *------------------------------------------
- */
-ATCOMMAND_FUNC(deadbranchall) {
-	int mob_id;
-	int number;
-	int limited_number; // For correct display
-	int count, players;
-	int c, i, j, p, id;
-	int mx, my, range;
-	struct mob_data *md;
-	struct block_list *bl;
-	int b, mob_num;
-	int size;
-	struct map_session_data *pl_sd;
-
-	number = 1;
-	sscanf(message, "%d", &number);
-
-	if (number <= 0)
-		number = 1;
-
-	// Check latest spawn time
-	if (battle_config.atc_local_spawn_interval) {
-		if (last_spawn > time(NULL)) { // Number of seconds 1/1/1970 (timestamp): To limit number of spawn at 1 every 2 seconds (Reduction of lag)
-			sprintf(atcmd_output, "Please wait %d second(s) before to spawn a monster to avoid lag around of you.", (int)(last_spawn - time(NULL)));
-			clif_displaymessage(fd, atcmd_output);
-			return -1;
-		}
-		last_spawn = time(NULL) + battle_config.atc_local_spawn_interval;
-	}
-
-	// Check for monster size
-	if (strstr(command, "small") != NULL)
-		size = MAX_MOB_DB; // +2000 small
-	else if (strstr(command, "big") != NULL)
-		size = (MAX_MOB_DB * 2); // +4000 big
-	else
-		size = 0; // Normal
-
-	count = 0;
-	players = 0;
-	// Sort online characters.
-	for(p = 0; p < fd_max; p++) {
-		if (session[p] && (pl_sd = session[p]->session_data) && pl_sd->state.auth) {
-			if (!((pl_sd->GM_level >= battle_config.hide_GM_session || (pl_sd->status.option & OPTION_HIDE)) && (pl_sd->GM_level > sd->GM_level))) { // Only lower or same level
-
-				// If value of atcommand_spawn_quantity_limit directive is greater than or equal to 1 and quantity of monsters is greater than value of the directive
-				limited_number = number;
-				if (battle_config.atc_spawn_quantity_limit > 0 && number > battle_config.atc_spawn_quantity_limit)
-					limited_number = battle_config.atc_spawn_quantity_limit;
-
-				if (battle_config.atc_map_mob_limit > 0) {
-					mob_num = 0;
-					for (b = 0; b < map[pl_sd->bl.m].bxs * map[pl_sd->bl.m].bys; b++)
-						for (bl = map[pl_sd->bl.m].block_mob[b]; bl; bl = bl->next)
-							mob_num++;
-					if (mob_num >= battle_config.atc_map_mob_limit) {
-						continue;
-					} else if (mob_num + limited_number > battle_config.atc_map_mob_limit) {
-						limited_number = battle_config.atc_map_mob_limit - mob_num;
-					}
-				}
-
-				if ((j = quantity_visible_monster(pl_sd)) >= 2000) {
-					continue;
-				} else if (j + limited_number > 2000) {
-					limited_number = 2000 - j;
-				}
-
-				range = sqrt(limited_number) * 2 + 1; // Calculation of an odd number
-				for (i = 0; i < limited_number; i++) {
-					// Seach monster ID
-					j = 0;
-					do {
-						mob_id = rand() % 1000 + 1001;
-					} while((mob_db[mob_id].max_hp <= 0 || mob_db[mob_id].summonper[0] <= (rand() % 1000000) || // summonper[0] = db/random/mob_deadbranch.txt
-					         pl_sd->status.base_level < mob_db[mob_id].lv ||
-					         mob_id == 1288 || // Cannot spawn emperium.
-					         !check_mob_authorization(mob_id, sd->GM_level)) &&
-					        (j++) < 2000);
-					if (j >= 2000)
-						mob_id = 1002; // Poring
-
-					j = 0;
-					id = 0;
-					while(j++ < 64 && id == 0) { // Try 64 times to spawn the monster (Needed for close area)
-						do {
-							mx = pl_sd->bl.x + (rand() % (range + j * 2) - ((range + j * 2) / 2));
-							my = pl_sd->bl.y + (rand() % (range + j * 2) - ((range + j * 2) / 2));
-						} while ((c = map_getcell(pl_sd->bl.m, mx, my, CELL_CHKNOPASS)) && j++ < 64);
-						if (!c) {
-							id = mob_once_spawn(pl_sd, "this", mx, my, "--ja--", mob_id + size, 1, "");
-							if ((md = (struct mob_data *)map_id2bl(id)))
-								md->mode = mob_db[mob_id].mode | (0x1 + 0x4 + 0x80); // like Dead Branch
-						}
-					}
-					count += (id != 0) ? 1 : 0;
-				}
-				players++;
-			}
-		}
-	}
-
-	if (players == 0) {
-		clif_displaymessage(fd, msg_txt(28)); // No player found.
-	} else {
-		if (count != 0) {
-			if (number == count / players)
-				clif_displaymessage(fd, msg_txt(39)); // All monsters summoned!
-			else {
-				sprintf(atcmd_output, msg_txt(240), count); // %d monster(s) summoned!
-				clif_displaymessage(fd, atcmd_output);
-			}
-		} else {
-			clif_displaymessage(fd, "No monster summoned.");
-			return -1;
-		}
-	}
-
-	return 0;
-}
-
-/*==========================================
- * 
- *------------------------------------------
- */
-ATCOMMAND_FUNC(summon) {
-	char name[100];
-	char monster[100];
-	int mob_id;
-	int number = 0;
-	int limited_number; // For correct display
-	int x = 0, y = 0;
-	int count;
-	int c, i, j, id;
-	int mx, my, range;
-	struct mob_data *md;
-	struct block_list *bl;
-	int b, mob_num, slave_num;
-	int size;
-
-	memset(name, 0, sizeof(name));
-	memset(monster, 0, sizeof(monster));
-
-	if (!message || !*message ||
-	    (sscanf(message, "\"%[^\"]\" %s %d %d %d", name, monster, &number, &x, &y) < 2 &&
-	     sscanf(message, "%s \"%[^\"]\" %d %d %d", monster, name, &number, &x, &y) < 2 &&
-	     sscanf(message, "%s %d \"%[^\"]\" %d %d", monster, &number, name, &x, &y) < 3 &&
-	     sscanf(message, "%s %d %s %d %d", monster, &number, name, &x, &y) < 1)) {
-		clif_displaymessage(fd, msg_txt(143)); // Give a monster name/id please.
-		return -1;
-	}
-
-	// If monster identifier/name argument is a name
-	if ((mob_id = mobdb_searchname(monster)) == 0) // Check name first (To avoid possible name begining by a number)
-		mob_id = mobdb_checkid(atoi(monster));
-
-	if (mob_id == 0) {
-		clif_displaymessage(fd, msg_txt(40)); // Invalid monster ID or name.
-		return -1;
-	}
-
-	if (mob_id == 1288) {
-		clif_displaymessage(fd, msg_txt(83)); // Cannot spawn emperium.
-		return -1;
-	}
-
-	if (!check_mob_authorization(mob_id, sd->GM_level)) {
-		clif_displaymessage(fd, "You are not authorized to summon this monster.");
-		return -1;
-	}
-
-	if (number <= 0)
-		number = 1;
-
-	if (name[0] == '\0')
-		strcpy(name, "--ja--");
-
-	// If value of atcommand_spawn_quantity_limit directive is greater than or equal to 1 and quantity of monsters is greater than value of the directive
-	limited_number = number;
-	if (battle_config.atc_spawn_quantity_limit > 0 && number > battle_config.atc_spawn_quantity_limit)
-		limited_number = battle_config.atc_spawn_quantity_limit;
-
-	if (battle_config.atc_map_mob_limit > 0) {
-		mob_num = 0;
-		for (b = 0; b < map[sd->bl.m].bxs * map[sd->bl.m].bys; b++)
-			for (bl = map[sd->bl.m].block_mob[b]; bl; bl = bl->next)
-				mob_num++;
-		if (mob_num >= battle_config.atc_map_mob_limit) {
-			clif_displaymessage(fd, "There is too many monsters on the map. You can not summon more monsters.");
-			return -1;
-		} else if (mob_num + limited_number > battle_config.atc_map_mob_limit) {
-			sprintf(atcmd_output, "Due to a density of monsters on the map, summon has been limited.");
-			clif_displaymessage(fd, atcmd_output);
-			limited_number = battle_config.atc_map_mob_limit - mob_num;
-		}
-	}
-
-	if ((count = quantity_visible_monster(sd)) >= 2000) {
-		clif_displaymessage(fd, "There is too many monsters around of you. Move to a sparsely populated area to summon.");
-		return -1;
-	} else if (count + limited_number > 2000) {
-		sprintf(atcmd_output, "Due to a density of monsters around of you, summon has been limited.");
-		clif_displaymessage(fd, atcmd_output);
-		limited_number = 2000 - count;
-	}
-
-	if (battle_config.etc_log)
-		printf("%s summon='%s' name='%s' id=%d count=%d (%d,%d)\n", command, monster, name, mob_id, limited_number, x, y);
-
-	// Check latest spawn time
-	if (battle_config.atc_local_spawn_interval) {
-		if (last_spawn > time(NULL)) { // Number of seconds 1/1/1970 (timestamp): To limit number of spawn at 1 every 2 seconds (Reduction of lag)
-			sprintf(atcmd_output, "Please wait %d second(s) before to summon a monster to avoid lag around of you.", (int)(last_spawn - time(NULL)));
-			clif_displaymessage(fd, atcmd_output);
-			return -1;
-		}
-		last_spawn = time(NULL) + battle_config.atc_local_spawn_interval;
-	}
-
-	// Check for monster size
-	if (strstr(command, "small") != NULL)
-		size = MAX_MOB_DB; // +2000 Small
-	else if (strstr(command, "big") != NULL)
-		size = (MAX_MOB_DB * 2); // +4000 Big
-	else
-		size = 0; // Normal
-
-	count = 0;
-	range = sqrt(limited_number) * 2 + 1; // Calculation of an odd number
-	for (i = 0; i < limited_number; i++) {
-		j = 0;
-		id = 0;
-		while(j++ < 64 && id == 0) { // Try 64 times to spawn the monster (Needed for close area)
-			do {
-				if (x <= 0)
-					mx = sd->bl.x + (rand() % (range + j * 2) - ((range + j * 2) / 2));
-				else
-					mx = x;
-				if (y <= 0)
-					my = sd->bl.y + (rand() % (range + j * 2) - ((range + j * 2) / 2));
-				else
-					my = y;
-			} while ((c = map_getcell(sd->bl.m, mx, my, CELL_CHKNOPASS)) && j++ < 64);
-			if (!c) {
-				id = mob_once_spawn(sd, "this", mx, my, name, mob_id + size, 1, "");
-				if ((md = (struct mob_data *)map_id2bl(id))) {
-					md->master_id = sd->bl.id;
-					md->state.special_mob_ai = 1; // 0: Nothing, 1: Cannibalize, 2-3: Spheremine
-					md->mode = mob_db[mob_id].mode | 0x04;
-					md->deletetimer = add_timer(gettick_cache + 60000, mob_timer_delete, id, 0);
-					clif_misceffect2(&md->bl, 344); // Display teleport of monster effect
-				}
-				// clif_skill_poseffect(&sd->bl, AM_CALLHOMUN, 1, x, y, gettick_cache); // Don't display the skill to others
-			}
-		}
-		count += (id != 0) ? 1 : 0;
-	}
-
-	if (count != 0) {
-		if (number == count)
-			clif_displaymessage(fd, msg_txt(39)); // All monsters summoned!
-		else {
-			sprintf(atcmd_output, msg_txt(240), count); // %d monster(s) summoned!
-			clif_displaymessage(fd, atcmd_output);
-		}
-		slave_num = 0;
-		mob_num = 0;
-		for (b = 0; b < map[sd->bl.m].bxs * map[sd->bl.m].bys; b++)
-			for (bl = map[sd->bl.m].block_mob[b]; bl; bl = bl->next) {
-				mob_num++;
-				if (((struct mob_data *)bl)->master_id)
-					slave_num++;
-			}
-		if (slave_num == 0)
-			sprintf(atcmd_output, "Total mobs in map: %d (of which is no slave).", mob_num);
-		else
-			sprintf(atcmd_output, "Total mobs in map: %d (of which are %d slaves).", mob_num, slave_num);
-		clif_displaymessage(fd, atcmd_output);
-	} else {
-		clif_displaymessage(fd, msg_txt(40)); // Invalid monster ID or name.
-		return -1;
-	}
-
-	return 0;
-}
-
-/*==========================================
  * @killmonster - Kills all monsters on a map
  *------------------------------------------
  */
@@ -7433,10 +6416,10 @@ ATCOMMAND_FUNC(send) {
 }
 
 /*==========================================
- * @packet
+ * @statusicon
  *------------------------------------------
  */
-ATCOMMAND_FUNC(packet) {
+ATCOMMAND_FUNC(statusicon) {
 	int x, y;
 
 	if (!message || !*message || sscanf(message, "%d %d", &x, &y) < 2) {
@@ -7768,65 +6751,6 @@ ATCOMMAND_FUNC(charguildlevelup) {
 		}
 	} else {
 		clif_displaymessage(fd, msg_txt(3)); // Character not found.
-		return -1;
-	}
-
-	return 0;
-}
-
-/*==========================================
- * @makeegg - Makes a Pet Egg
- *------------------------------------------
- */
-ATCOMMAND_FUNC(makeegg) {
-	struct item_data *item_data;
-	int id, pet_id;
-
-	if (!message || !*message) {
-		send_usage(sd, "Please, enter a monters/egg name/id (usage: %s <pet_id>).", original_command);
-		return -1;
-	}
-
-	if ((item_data = itemdb_searchname(message)) != NULL) // For egg name
-		id = item_data->nameid;
-	else if ((id = mobdb_searchname(message)) == 0) // For monster name
-		id = atoi(message);
-
-	pet_id = search_petDB_index(id, PET_CLASS);
-	if (pet_id < 0)
-		pet_id = search_petDB_index(id, PET_EGG);
-	if (pet_id >= 0) {
-		sd->catch_target_class = pet_db[pet_id].class;
-		intif_create_pet(sd->status.account_id, sd->status.char_id,
-		                 pet_db[pet_id].class, mob_db[pet_db[pet_id].class].lv,
-		                 pet_db[pet_id].EggID, 0, pet_db[pet_id].intimate,
-		                 100, 0, 1, pet_db[pet_id].jname);
-	} else {
-		clif_displaymessage(fd, msg_txt(180)); // The monter/egg name/id doesn't exist.
-		return -1;
-	}
-
-	return 0;
-}
-
-/*==========================================
- * @hatch - Hatches a Pet Egg
- *------------------------------------------
- */
-ATCOMMAND_FUNC(hatch) {
-	int i;
-
-	if (sd->status.pet_id <= 0) {
-		for(i = 0; i < MAX_INVENTORY; i++)
-			if (sd->status.inventory[i].nameid > 0 && sd->inventory_data[i] != NULL &&
-			    sd->inventory_data[i]->type == 7 && sd->status.inventory[i].amount > 0)
-				break;
-		if (i == MAX_INVENTORY)
-			clif_displaymessage(fd, "You have no egg.");
-		else
-			clif_sendegg(sd);
-	} else {
-		clif_displaymessage(fd, msg_txt(181)); // You already have a pet.
 		return -1;
 	}
 
@@ -9981,30 +8905,6 @@ ATCOMMAND_FUNC(charspiritball) {
 }
 
 /*==========================================
- * @party - Creates a party
- *------------------------------------------
- */
-ATCOMMAND_FUNC(party) {
-	char party_name[100];
-
-	memset(party_name, 0, sizeof(party_name));
-
-	if (!message || !*message || (sscanf(message, "\"%[^\"]\"", party_name) < 1 && sscanf(message, "%[^\n]", party_name) < 1) || party_name[0] == '\0') {
-		send_usage(sd, "Please, enter a party name (usage: %s \"party_name\"|<party_name>).", original_command);
-		return -1;
-	}
-
-	if (strlen(party_name) <= 24)
-		party_create(sd, party_name, 0, 0);
-	else {
-		clif_displaymessage(fd, msg_txt(258)); // Invalid party name. Party name must have between 1 to 24 characters.
-		return -1;
-	}
-
-	return 0;
-}
-
-/*==========================================
  * @guild - Creates a guild
  *------------------------------------------
  */
@@ -10315,7 +9215,7 @@ ATCOMMAND_FUNC(whodrops) {
  */
 ATCOMMAND_FUNC(resetstate) {
 	pc_resetstate(sd);
-	clif_displaymessage(fd, "Your stats points are reseted!");
+	clif_displaymessage(fd, "Your status points have been reset.");
 
 	return 0;
 }
@@ -10326,7 +9226,7 @@ ATCOMMAND_FUNC(resetstate) {
  */
 ATCOMMAND_FUNC(resetskill) {
 	pc_resetskill(sd);
-	clif_displaymessage(fd, "Your skill points are reseted!");
+	clif_displaymessage(fd, "Your skill points have been reset.");
 
 	return 0;
 }
@@ -10420,15 +9320,15 @@ ATCOMMAND_FUNC(charreset) {
 }
 
 /*==========================================
- * @charmodel - Changes palette/hair styles for a target
+ * @charstyle - Changes palette/hair styles for a target
  *------------------------------------------
  */
-ATCOMMAND_FUNC(charmodel) {
+ATCOMMAND_FUNC(charstyle) {
 	int hair_style, hair_color, cloth_color;
 	struct map_session_data *pl_sd;
 
 	if (!message || !*message || sscanf(message, "%d %d %d %[^\n]", &hair_style, &hair_color, &cloth_color, atcmd_name) < 4 || hair_style < 0 || hair_color < 0 || cloth_color < 0) {
-		send_usage(sd, "Please, enter a valid model and a player name (usage: %s <hair ID: %d-%d> <hair color: %d-%d> <clothes color: %d-%d> <name>).", original_command,
+		send_usage(sd, "Please, enter valid styles and a player name (usage: %s <hair ID: %d-%d> <hair color: %d-%d> <clothes color: %d-%d> <name>).", original_command,
 		           battle_config.min_hair_style, battle_config.max_hair_style, battle_config.min_hair_color, battle_config.max_hair_color, battle_config.min_cloth_color, battle_config.max_cloth_color);
 		return -1;
 	}
@@ -10803,21 +9703,6 @@ ATCOMMAND_FUNC(reloadscript) {
 }
 
 /*==========================================
- *
- *------------------------------------------
- */
-/*int atcommand_reloadgmdb(
-	const int fd, struct map_session_data* sd,
-	const char* command, const char* message)
-{
-	chrif_reloadGMdb();
-
-	clif_displaymessage(fd, msg_txt(101)); // Login-server asked to reload GM accounts and their level.
-
-	return 0;
-}*/ // Removed, it's automatic now
-
-/*==========================================
  * @mapinfo <map name> [0-3]
  * => Shows information about the map [map name]
  * 0 = No additional information
@@ -10923,12 +9808,11 @@ ATCOMMAND_FUNC(mapinfo) {
 	clif_displaymessage(fd, atcmd_output);
 	sprintf(atcmd_output, "No Trade: %s", (map[map_id].flag.notrade) ? "True" : "False");
 	clif_displaymessage(fd, atcmd_output);
-	sprintf(atcmd_output, "Weathers: Snow: %s | Fog: %s | Sakura: %s | Leaves: %s | Rain: %s",
+	sprintf(atcmd_output, "Weathers: Snow: %s | Fog: %s | Sakura: %s | Leaves: %s",
 	        (map[map_id].flag.snow) ? "True" : "False",
 	        (map[map_id].flag.fog) ? "True" : "False",
 	        (map[map_id].flag.sakura) ? "True" : "False",
-	        (map[map_id].flag.leaves) ? "True" : "False",
-	        (map[map_id].flag.rain) ? "True" : "False");
+	        (map[map_id].flag.leaves) ? "True" : "False");
 	sprintf(atcmd_output, "Indoors: %s", (map[map_id].flag.indoors) ? "True" : "False");
 	clif_displaymessage(fd, atcmd_output);
 	if (map[map_id].flag.nogmcmd == 100)
@@ -12393,227 +11277,6 @@ ATCOMMAND_FUNC(charundisguise) {
 }
 
 /*==========================================
- * @chardisguisemap <mob_id> [map]
- *------------------------------------------
- */
-ATCOMMAND_FUNC(chardisguisemap) {
-	struct map_session_data* pl_sd;
-	char mob_name[100];
-	int mob_id;
-	int i, count;
-	int map_id = 0;
-
-	memset(mob_name, 0, sizeof(mob_name));
-	memset(atcmd_mapname, 0, sizeof(atcmd_mapname));
-
-	if (!message || !*message || sscanf(message, "%s %[^\n]", mob_name, atcmd_mapname) < 1) {
-		send_usage(sd, "Please, enter a Monster/NPC name/id (usage: %s <monster_name_or_monster_ID> [map]).", original_command);
-		return -1;
-	}
-
-	if (atcmd_mapname[0] == '\0')
-		map_id = sd->bl.m;
-	else {
-		if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
-			strcat(atcmd_mapname, ".gat");
-		if ((map_id = map_mapname2mapid(atcmd_mapname)) < 0) // Only from actual map-server
-			map_id = sd->bl.m;
-	}
-
-	if ((mob_id = mobdb_searchname(mob_name)) == 0) { // Check name first (To avoid possible name begining by a number)
-		if ((mob_id = mobdb_checkid(atoi(mob_name))) == 0) {
-			mob_id = atoi(mob_name);
-			if ((mob_id >= 46 && mob_id <= 125) || (mob_id >= 700 && mob_id <= 947)) {
-			} else {
-				clif_displaymessage(fd, msg_txt(123)); // Monster/NPC name/id hasn't been found.
-				return -1;
-			}
-		}
-	}
-
-	count = 0;
-	for (i = 0; i < fd_max; i++) {
-		if (session[i] && (pl_sd = session[i]->session_data) && pl_sd->state.auth) {
-			if (sd->GM_level >= pl_sd->GM_level) { // Only lower or same level
-				if (pl_sd->bl.m == map_id) { // Same map
-					if (pc_isriding(pl_sd)) // Temporary prevention of crash caused by Peco + disguise
-						continue;
-					pc_stop_walking(pl_sd, 0);
-					clif_clearchar(&pl_sd->bl, 9);
-					pl_sd->disguise = mob_id;
-					pl_sd->disguiseflag = 1; // Set to override items with disguise script
-					clif_changeoption(&pl_sd->bl);
-					clif_spawnpc(pl_sd);
-					clif_displaymessage(pl_sd->fd, "You have been disguised.");
-
-					count++;
-				}
-			}
-		}
-	}
-
-	if (count == 0)
-		clif_displaymessage(fd, "No player has been disguised.");
-	else if (count == 1)
-		clif_displaymessage(fd, "1 player has been disguised.");
-	else {
-		sprintf(atcmd_output, "%d players have been disguised.", count);
-		clif_displaymessage(fd, atcmd_output);
-	}
-
-	return 0;
-}
-
-/*==========================================
- * @charundisguisemap [map]
- *------------------------------------------
- */
-ATCOMMAND_FUNC(charundisguisemap) {
-	struct map_session_data* pl_sd;
-	int i, count;
-	int map_id = 0;
-
-	if (!message || !*message || sscanf(message, "%s", atcmd_mapname) < 1)
-		map_id = sd->bl.m;
-	else {
-		if (strstr(atcmd_mapname, ".gat") == NULL && strlen(atcmd_mapname) < 13) // 16 - 4 (.gat)
-			strcat(atcmd_mapname, ".gat");
-		if ((map_id = map_mapname2mapid(atcmd_mapname)) < 0) // Only from actual map-server
-			map_id = sd->bl.m;
-	}
-
-	count = 0;
-	for (i = 0; i < fd_max; i++) {
-		if (session[i] && (pl_sd = session[i]->session_data) && pl_sd->state.auth) {
-			if (sd->GM_level >= pl_sd->GM_level) { // Only lower or same level
-				if (pl_sd->bl.m == map_id) { // Same map
-					if (pl_sd->disguise) {
-						pc_stop_walking(pl_sd, 0);
-						clif_clearchar(&pl_sd->bl, 9);
-						pl_sd->disguiseflag = 0; // Reset to override items with disguise script
-						pl_sd->disguise = 0;
-						clif_changeoption(&pl_sd->bl);
-						clif_spawnpc(pl_sd);
-						clif_displaymessage(pl_sd->fd, "You have been undisguised.");
-
-						count++;
-					}
-				}
-			}
-		}
-	}
-
-	if (count == 0)
-		clif_displaymessage(fd, "No disguised player found.");
-	else if (count == 1)
-		clif_displaymessage(fd, "1 player has been undisguised.");
-	else {
-		sprintf(atcmd_output, "%d players have been undisguised.", count);
-		clif_displaymessage(fd, atcmd_output);
-	}
-
-	return 0;
-}
-
-/*==========================================
- * @chardisguiseall <mob_id>
- *------------------------------------------
- */
-ATCOMMAND_FUNC(chardisguiseall) {
-	struct map_session_data* pl_sd;
-	char mob_name[100];
-	int mob_id;
-	int i, count;
-
-	memset(mob_name, 0, sizeof(mob_name));
-
-	if (!message || !*message || sscanf(message, "%s", mob_name) < 1) {
-		send_usage(sd, "Please, enter a Monster/NPC name/id (usage: %s <monster_name_or_monster_ID>).", original_command);
-		return -1;
-	}
-
-	if ((mob_id = mobdb_searchname(mob_name)) == 0) { // Check name first (To avoid possible name begining by a number)
-		if ((mob_id = mobdb_checkid(atoi(mob_name))) == 0) {
-			mob_id = atoi(mob_name);
-			if ((mob_id >= 46 && mob_id <= 125) || (mob_id >= 700 && mob_id <= 947)) {
-			} else {
-				clif_displaymessage(fd, msg_txt(123)); // Monster/NPC name/id hasn't been found.
-				return -1;
-			}
-		}
-	}
-
-	count = 0;
-	for (i = 0; i < fd_max; i++) {
-		if (session[i] && (pl_sd = session[i]->session_data) && pl_sd->state.auth) {
-			if (sd->GM_level >= pl_sd->GM_level) { // Only lower or same level
-				if (pc_isriding(pl_sd)) // Temporary prevention of crash caused by Peco + disguise
-					continue;
-				pc_stop_walking(pl_sd, 0);
-				clif_clearchar(&pl_sd->bl, 9);
-				pl_sd->disguise = mob_id;
-				pl_sd->disguiseflag = 1; // Set to override items with disguise script
-				clif_changeoption(&pl_sd->bl);
-				clif_spawnpc(pl_sd);
-				clif_displaymessage(pl_sd->fd, "You have been disguised.");
-
-				count++;
-			}
-		}
-	}
-
-	if (count == 0)
-		clif_displaymessage(fd, "No player has been disguised.");
-	else if (count == 1)
-		clif_displaymessage(fd, "1 player has been disguised.");
-	else {
-		sprintf(atcmd_output, "%d players have been disguised.", count);
-		clif_displaymessage(fd, atcmd_output);
-	}
-
-	return 0;
-}
-
-/*==========================================
- * @charundisguiseall
- *------------------------------------------
- */
-ATCOMMAND_FUNC(charundisguiseall) {
-	struct map_session_data* pl_sd;
-	int i, count;
-
-	count = 0;
-	for (i = 0; i < fd_max; i++) {
-		if (session[i] && (pl_sd = session[i]->session_data) && pl_sd->state.auth) {
-			if (sd->GM_level >= pl_sd->GM_level) { // Only lower or same level
-				if (pl_sd->disguise) {
-					pc_stop_walking(pl_sd, 0);
-					clif_clearchar(&pl_sd->bl, 9);
-					pl_sd->disguiseflag = 0; // Reset to override items with disguise script
-					pl_sd->disguise = 0;
-					clif_changeoption(&pl_sd->bl);
-					clif_spawnpc(pl_sd);
-					clif_displaymessage(pl_sd->fd, "You have been undisguised.");
-
-					count++;
-				}
-			}
-		}
-	}
-
-	if (count == 0)
-		clif_displaymessage(fd, "No disguised player found.");
-	else if (count == 1)
-		clif_displaymessage(fd, "1 player has been undisguised.");
-	else {
-		sprintf(atcmd_output, "%d players have been undisguised.", count);
-		clif_displaymessage(fd, atcmd_output);
-	}
-
-	return 0;
-}
-
-/*==========================================
  * @changelook
  *------------------------------------------
  */
@@ -13392,7 +12055,6 @@ ATCOMMAND_FUNC(charkillable) {
 	return 0;
 }
 
-
 /*==========================================
  * @skillon [map]
  * Turn skills on for the map
@@ -14020,161 +12682,6 @@ ATCOMMAND_FUNC(rings) {
 }
 
 /*==========================================
- * @grind
- *------------------------------------------
- */
-ATCOMMAND_FUNC(grind) {
-	struct map_session_data *pl_sd;
-	int skillnum;
-	int inf;
-	int hp, sp;
-
-	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1) {
-		send_usage(sd, "Please, enter a player name (Usage: %s <target>).", original_command);
-		return -1;
-	}
-
-	if ((pl_sd = map_nick2sd(atcmd_name)) != NULL || ((pl_sd = map_id2sd(atoi(atcmd_name))) != NULL && pl_sd->state.auth)) {
-		// Save actual HP/SP
-		hp = sd->status.hp;
-		sp = sd->status.sp;
-		for (skillnum = 1; skillnum < MAX_SKILL_DB; skillnum++) {
-			if ((inf = skill_get_inf(skillnum)) != 0) { // 0: Passive skill, so no display
-				if (pc_isdead(sd))
-					atcommand_alive(fd, sd, original_command, "@alive", "");
-				sd->status.hp = sd->status.max_hp;
-				sd->status.sp = sd->status.max_sp;
-				if (inf == 2 || inf == 32) // 2- Place, 32- Trap
-					skill_use_pos(sd, pl_sd->bl.x + 5, pl_sd->bl.y + 5, skillnum, 1);
-				else
-					skill_use_id(sd, pl_sd->bl.id, skillnum, 1);
-			}
-		}
-		// If target doesn't have play_dead, we must remove the skill because otherwise he is blocked
-		if (pl_sd->sc_data[SC_TRICKDEAD].timer != -1)
-			status_change_end(&pl_sd->bl, SC_TRICKDEAD, -1);
-		// Restore previous values of hp/sp
-		hp = sd->status.hp;
-		sp = sd->status.sp;
-		clif_updatestatus(sd, SP_HP);
-		clif_updatestatus(sd, SP_SP);
-		if (pc_isdead(sd))
-			atcommand_alive(fd, sd, original_command, "@alive", "");
-	} else {
-		clif_displaymessage(fd, msg_txt(3)); // Character not found.
-		return -1;
-	}
-
-	return 0;
-}
-
-/*==========================================
- * @grind2: Spawn one of each monster's type around of the target.
- *------------------------------------------
- */
-ATCOMMAND_FUNC(grind2) {
-	struct map_session_data *pl_sd;
-	int i, j, c, x, y, count;
-	struct block_list *bl;
-	int b, mob_num, slave_num;
-	int *id;
-	struct mob_db *mob;
-
-	if (!message || !*message || sscanf(message, "%[^\n]", atcmd_name) < 1)
-		strncpy(atcmd_name, sd->status.name, 24);
-
-	if ((pl_sd = map_nick2sd(atcmd_name)) != NULL || ((pl_sd = map_id2sd(atoi(atcmd_name))) != NULL && pl_sd->state.auth)) {
-		count = 0;
-		CALLOC(id, int, 100);
-		while (count < pl_sd->status.base_level * 2 && count < 100) {
-			i = (rand() % (MAX_MOB_DB - 1000)) + 1001;
-			// Remove some mobs
-			if (i == 1181 || // Zombie dragon - Model error
-			    i == 1223 || // L_ORC - Sprite error
-			    i == 1284 || // Hugeling - Model error
-			    i == 1288 || // Emperium - Never spawn an emperium
-			    (i >= 1324 && i <= 1363)) // Treasure Chest - Never spawn a Treasure Chest
-				continue;
-			if (!check_mob_authorization(i, sd->GM_level))
-				continue;
-			// Don't spawn same monster twice
-			for (j = 0; j < count; j++)
-				if (i == id[j])
-					continue;
-			if (mobdb_checkid(i)) { // If monster exists
-				mob = &mob_db[i];
-				// Don't spawn monster with no HP
-				if (mob->max_hp <= 0)
-					continue;
-				// Don't spawn too much MVP
-				if (mob->mexp && (rand() % 100) < 90)
-					continue;
-				// Don't spawn too big monster
-				if (mob->lv > pl_sd->status.base_level * 2)
-					continue;
-				if (mob->lv > pl_sd->status.base_level + 1 && (rand() % 100) < 90)
-					continue;
-				// Spawn monster now
-				id[count] = i;
-				j = 0;
-				do {
-					x = pl_sd->bl.x + (rand() % 10 - 5);
-					y = pl_sd->bl.y + (rand() % 10 - 5);
-				} while ((c = map_getcell(pl_sd->bl.m, x, y, CELL_CHKNOPASS)) && j++ < 64);
-				if (!c) {
-					if (mob_once_spawn(pl_sd, "this", x, y, "--ja--", i, 1, "")) {
-					// printf("id %d at (%d, %d)\n", i, x, y);
-						count++;
-					}
-				}
-			}
-		}
-		FREE(id);
-		sprintf(atcmd_output, msg_txt(240), count); // %d monster(s) summoned!
-		clif_displaymessage(fd, atcmd_output);
-		slave_num = 0;
-		mob_num = 0;
-		for (b = 0; b < map[pl_sd->bl.m].bxs * map[pl_sd->bl.m].bys; b++)
-			for (bl = map[pl_sd->bl.m].block_mob[b]; bl; bl = bl->next) {
-				mob_num++;
-				if (((struct mob_data *)bl)->master_id)
-					slave_num++;
-			}
-		if (slave_num == 0)
-			sprintf(atcmd_output, "Total mobs in target's map: %d (of which is no slave).", mob_num);
-		else
-			sprintf(atcmd_output, "Total mobs in target's map: %d (of which are %d slaves).", mob_num, slave_num);
-		clif_displaymessage(fd, atcmd_output);
-	} else {
-		clif_displaymessage(fd, msg_txt(3)); // Character not found.
-		return -1;
-	}
-
-	return 0;
-}
-
-/*==========================================
- * @rain - Causes rain client effect on a map
- *------------------------------------------
- */
-ATCOMMAND_FUNC(rain) {
-	struct map_session_data *pl_sd;
-	int i;
-
-	if (map[sd->bl.m].flag.rain) {
-		map[sd->bl.m].flag.rain = 0;
-		for (i = 0; i < fd_max; i++)
-			if (session[i] && (pl_sd = session[i]->session_data) && pl_sd->state.auth)
-				clif_displaymessage(pl_sd->fd, "The rain has stopped. If you want remove weather from your screen, warp you, change map, etc.");
-	} else {
-		map[sd->bl.m].flag.rain = 1;
-		clif_specialeffect(&sd->bl, 161, 2); // Flag: 0: Player see in the area (Normal), 1: Only player see only by player, 2: All players in a map that see only their (Not see others), 3: All players that see only their (Not see others)
-	}
-
-	return 0;
-}
-
-/*==========================================
  * @snow - Causes snow client effect on a map
  *------------------------------------------
  */
@@ -14259,36 +12766,18 @@ ATCOMMAND_FUNC(leaves) {
 }
 
 /*==========================================
- * @rainbow - Creates a rainbow client effect when @rain is in effect
- *------------------------------------------
- */
-ATCOMMAND_FUNC(rainbow) {
-	if (!map[sd->bl.m].flag.rain) {
-		clif_displaymessage(fd, "It doesn't rain. How a rainbow can be visible?");
-		return -1;
-	}
-
-	clif_specialeffect(&sd->bl, 410, 2); // Flag: 0: Player see in the area (Normal), 1: Only player see only by player, 2: All players in a map that see only their (Not see others), 3: All players that see only their (Not see others)
-
-	return 0;
-}
-
-/*==========================================
- * @clsweather - Clears all weather effects (@rain, @leaves, etc)
+ * @clsweather - Clears all weather effects (@leaves, @snow, etc)
  *------------------------------------------
  */
 ATCOMMAND_FUNC(clsweather) {
 	struct map_session_data *pl_sd;
 	int i;
 
-	if (map[sd->bl.m].flag.snow || map[sd->bl.m].flag.sakura || map[sd->bl.m].flag.leaves || map[sd->bl.m].flag.fog || map[sd->bl.m].flag.rain) {
-		if (map[sd->bl.m].flag.rain)
-			clif_specialeffect(&sd->bl, 410, 2); // Add a rainbow // Flag: 0: Player see in the area (Normal), 1: Only player see only by player, 2: All players in a map that see only their (Not see others), 3: All players that see only their (Not see others)
+	if (map[sd->bl.m].flag.snow || map[sd->bl.m].flag.sakura || map[sd->bl.m].flag.leaves || map[sd->bl.m].flag.fog) {
 		map[sd->bl.m].flag.snow = 0;
 		map[sd->bl.m].flag.sakura = 0;
 		map[sd->bl.m].flag.leaves = 0;
 		map[sd->bl.m].flag.fog = 0;
-		map[sd->bl.m].flag.rain = 0;
 		clif_displaymessage(fd, "All special weathers are now removed from your map.");
 		for (i = 0; i < fd_max; i++)
 			if (session[i] && (pl_sd = session[i]->session_data) && pl_sd->state.auth) {
@@ -14463,57 +12952,6 @@ ATCOMMAND_FUNC(cleanarea) {
 	                  sd->bl.x + area_size, sd->bl.y + area_size,
 	                  BL_ITEM);
 	clif_displaymessage(fd, "All dropped items have been cleaned up.");
-
-	return 0;
-}
-
-/*==========================================
- * @shuffle - Randomly repositions players/mobs on a map
- *------------------------------------------
- */
-static int atshuffle_sub(struct block_list *bl, va_list ap) {
-	nullpo_retr(0, bl);
-
-	mob_warp((struct mob_data *)bl, bl->m, -1, -1, 3);
-
-	return 0;
-}
-
-ATCOMMAND_FUNC(shuffle) {
-	struct map_session_data *pl_sd;
-	int i, mode;
-
-	if (!message || !*message || sscanf(message, "%d", &mode) != 1 || mode < 1 || mode > 3) {
-		send_usage(sd, "usage: %s <mode:1-3>.", original_command);
-		return -1;
-	}
-
-	switch (mode) {
-	// Shuffle players on the map
-	case 1:
-		for (i = 0; i < fd_max; i++) {
-			if (session[i] && (pl_sd = session[i]->session_data) && pl_sd->state.auth)
-				if (sd->bl.m == pl_sd->bl.m && sd->GM_level >= pl_sd->GM_level)
-					if (sd != pl_sd)
-						pc_setpos(pl_sd, map[pl_sd->bl.m].name, 0, 0, 3, 1);
-		}
-		break;
-	// Shuffle monsters on the map
-	case 2:
-		map_foreachinarea(atshuffle_sub, sd->bl.m, 0, 0, map[sd->bl.m].xs, map[sd->bl.m].ys, BL_MOB);
-		break;
-	// Shuffle players AND monsters on the map
-	case 3:
-		for (i = 0; i < fd_max; i++) {
-			if (session[i] && (pl_sd = session[i]->session_data) && pl_sd->state.auth)
-				if (sd->bl.m == pl_sd->bl.m && sd->GM_level >= pl_sd->GM_level)
-					if (sd != pl_sd)
-						pc_setpos(pl_sd, map[pl_sd->bl.m].name, 0, 0, 3, 1);
-		}
-		map_foreachinarea(atshuffle_sub, sd->bl.m, 0, 0, map[sd->bl.m].xs, map[sd->bl.m].ys, BL_MOB);
-		break;
-	}
-	clif_displaymessage(fd, msg_txt(283));
 
 	return 0;
 }
@@ -14728,8 +13166,6 @@ ATCOMMAND_FUNC(setmapflag) {
 			atcommand_sakura(fd, sd, original_command, "@sakura", "");
 		else if (strcmp(mapflaglower, "leaves") == 0 && map_id == sd->bl.m && !map[map_id].flag.leaves)
 			atcommand_leaves(fd, sd, original_command, "@leaves", "");
-		else if (strcmp(mapflaglower, "rain") == 0 && map_id == sd->bl.m && !map[map_id].flag.rain)
-			atcommand_rain(fd, sd, original_command, "@rain", "");
 		else if (strcmp(mapflaglower, "nospell") == 0 && map_id == sd->bl.m && !map[map_id].flag.nospell)
 			atcommand_nospell(fd, sd, original_command, "@nospell", "");
 		// General option
@@ -14914,66 +13350,6 @@ ATCOMMAND_FUNC(identify) {
 }
 
 /*==========================================
- * @motd - Displays MOTD again
- *------------------------------------------
- */
-ATCOMMAND_FUNC(motd) {
-	char buf[256];
-	FILE *fp;
-	int i;
-
-	if ((fp = fopen(motd_txt, "r")) != NULL) {
-		while (fgets(buf, sizeof(buf), fp) != NULL) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
-			if (buf[0] == '/' && buf[1] == '/')
-				continue;
-			for(i = 0; buf[i]; i++) {
-				if (buf[i] == '\r' || buf[i]== '\n') {
-					buf[i] = 0;
-					break;
-				}
-			}
-			if (battle_config.motd_type)
-				clif_disp_onlyself(sd, buf);
-			else
-				clif_displaymessage(fd, buf);
-		}
-		fclose(fp);
-	} else
-		clif_displaymessage(fd, "motd.txt file not found.");
-
-	return 0;
-}
-
-/*==========================================
- * @gmotd (Global MOTD)
- *------------------------------------------
- */
-ATCOMMAND_FUNC(gmotd) {
-	char buf[256];
-	FILE *fp;
-	int i;
-
-	if ((fp = fopen(motd_txt, "r")) != NULL) {
-		intif_GMmessage(msg_txt(246), 0x10); // Message of the day:
-		while (fgets(buf, sizeof(buf), fp) != NULL) { // fgets reads until maximum one less than size and add '\0' -> so, it's not necessary to add -1
-			if (buf[0] == '/' && buf[1] == '/')
-				continue;
-			for(i = 0; buf[i]; i++) {
-				if (buf[i] == '\r' || buf[i] == '\n') {
-					buf[i] = 0;
-					break;
-				}
-			}
-			intif_GMmessage(buf, 0x10);
-		}
-		fclose(fp);
-	} else
-		clif_displaymessage(fd, "motd.txt file not found.");
-
-	return 0;
-}
-
-/*==========================================
  * @misceffect - Shows a misceffect
  *------------------------------------------
  */
@@ -14984,62 +13360,6 @@ ATCOMMAND_FUNC(misceffect) {
 		return -1;
 
 	clif_misceffect(&sd->bl, effect);
-
-	return 0;
-}
-
-/*==========================================
- * @npctalk - Makes an NPC say something
- *------------------------------------------
- */
-ATCOMMAND_FUNC(npctalk) {
-	char npc_name[100], mes[100];
-	struct npc_data *nd;
-
-	if (!message || !*message ||
-	    (sscanf(message, "\"%[^\"]\" %[^\n]", npc_name, mes) < 2 &&
-	     sscanf(message, "%s %[^\n]", npc_name, mes) < 2)) {
-		send_usage(sd, "Please, enter a NPC name and a message (usage: %s <npc_name> <message>).", original_command);
-		return -1;
-	}
-
-	if (check_bad_word(mes, strlen(mes), sd))
-		return -1; // Check_bad_word function display message if necessary
-
-	if ((nd = npc_name2id(npc_name)) != NULL) {
-		clif_message(&nd->bl, mes);
-		clif_displaymessage(fd, "Npc message displayed."); // Display an answer, because NPC can be not near the player
-	} else {
-		clif_displaymessage(fd, msg_txt(111)); // This NPC doesn't exist.
-		return -1;
-	}
-
-	return 0;
-}
-
-/*==========================================
- * @pettalk - Makes a pet say something
- *------------------------------------------
- */
-ATCOMMAND_FUNC(pettalk) {
-	char mes[100];
-	struct pet_data *pd;
-
-	if (!message || !*message || sscanf(message, "%[^\n]", mes) < 1) {
-		send_usage(sd, "Please, enter a message (usage: %s <message>).", original_command);
-		return -1;
-	}
-
-	if (!sd->status.pet_id || !(pd = sd->pd)) {
-		clif_displaymessage(fd, "You have no pet.");
-		return -1;
-	}
-
-	if (check_bad_word(mes, strlen(mes), sd))
-		return -1; // Check_bad_word function display message if necessary
-
-	sprintf(atcmd_output, "%s : %s", sd->pet.name, mes);
-	clif_message(&pd->bl, atcmd_output);
 
 	return 0;
 }
@@ -15263,7 +13583,6 @@ ATCOMMAND_FUNC(charinvincible) {
 	return 0;
 }
 
-
 /*==========================================
  * @sc_start - Starts a status change
  *------------------------------------------
@@ -15282,7 +13601,6 @@ ATCOMMAND_FUNC(sc_start) {
 
 	return 0;
 }
-
 
 /*==========================================
  * @main - Activates main channel (On/Off)
@@ -15400,26 +13718,6 @@ ATCOMMAND_FUNC(version) {
 		sprintf(atcmd_output + strlen(atcmd_output), " (SVN rev.: %d).", (int)SVN_REVISION);
 #endif // SVN_REVISION
 
-	clif_displaymessage(fd, atcmd_output);
-
-	return 0;
-}
-
-/*==========================================
- * @version2 - Displays version of Freya (With additional information). +/- like 0x7535 admin packet
- *------------------------------------------
- */
-ATCOMMAND_FUNC(version2) {
-	sprintf(atcmd_output, "Freya version %d.%d.%d %s %s", FREYA_MAJORVERSION, FREYA_MINORVERSION, FREYA_REVISION,
-#ifdef USE_SQL
-	"SQL", FREYA_STATE ? "beta" : "final");
-#else
-	"TXT", FREYA_STATE ? "beta" : "final");
-#endif // USE_SQL
-#ifdef SVN_REVISION
-	if (SVN_REVISION >= 1) // In case of .svn directories having been deleted
-		sprintf(atcmd_output + strlen(atcmd_output), " (SVN rev.: %d)", (int)SVN_REVISION);
-#endif // SVN_REVISION
 	clif_displaymessage(fd, atcmd_output);
 
 	return 0;

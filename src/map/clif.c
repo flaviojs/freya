@@ -1405,8 +1405,6 @@ int clif_spawnpc(struct map_session_data *sd) {
 		clif_specialeffect(&sd->bl, 163, 1); // flag: 0: player see in the area (normal), 1: only player see only by player, 2: all players in a map that see only their (not see others), 3: all players that see only their (not see others)
 	if (map[sd->bl.m].flag.leaves)
 		clif_specialeffect(&sd->bl, 333, 1); // flag: 0: player see in the area (normal), 1: only player see only by player, 2: all players in a map that see only their (not see others), 3: all players that see only their (not see others)
-	if (map[sd->bl.m].flag.rain)
-		clif_specialeffect(&sd->bl, 161, 1); // flag: 0: player see in the area (normal), 1: only player see only by player, 2: all players in a map that see only their (not see others), 3: all players that see only their (not see others)
 
 	// Night effect
 	if (sd->state.connect_new && night_flag && !map[sd->bl.m].flag.indoors) {

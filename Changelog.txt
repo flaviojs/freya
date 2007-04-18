@@ -10,6 +10,27 @@
 
 Date	Added
 
+04/18/2007
+	* Updated: atcommand_freya.conf and help.txt [Tsuyuki]
+	* Cleaned: atcommand.c/atcommand.h a bit [Tsuyuki]
+ 	 - Removed a lot of generally useless/unecessary commands:
+	 - @party (Identical to /organize)
+	 - @disguiseall/@undisguiseall/@disguisemap/@undisguisemap ('For fun' commands not generally used)
+	 - @whozeny/@whozenymap (Pointless)
+	 - @shuffle (Pointless)
+	 - @hatch/@makeegg (Equivalent to @item and clicking on a pet egg..)
+	 - @version2 (Basically useless extra code)
+	 - @motd/gmotd (Use @broadcast or something..)
+	 - @deadbranch/@chardeadbranch/@deadbranchall (Equivalent to @item dead_branch + clicking on it)
+	 - @summon (Buggy + 'For fun' command)
+	 - @npctalk/@pettalk ('For fun' commands not generally used)
+	 - @grind/@grind2 (@grind2 already exists as @spawnall)
+	 - @rain/@rainbow (Client effect for rain removed years ago)
+	 - @reloadgmdb (Automatic now)
+	 - Renamed @model to @style and added a duplicate as '@model'
+	 - Renamed @packet to @statusicon
+	 - Misc stuff
+
 04/17/2007
 	* Improved: Buffed up @invincible/@charinvincible a bit more [Tsuyuki]
 	* Improved: Merged status_calc_speed and status_get_speed into a single function -> status_calc_speed [Tsuyuki]

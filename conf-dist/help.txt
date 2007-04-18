@@ -1,3 +1,4 @@
+//--------------------------------------------------------------
 //               (c)2004-2007 Freya Team Presents:              
 //                 ___   ___    ___   _  _   __                 
 //                (  _) (  ,)  (  _) ( \/ ) (  )                
@@ -16,8 +17,9 @@
 // Special keyword: 'all', to display all keywords.
 //
 key:all
-                  0:To use one command, type it inside the message window where you usually type to chat.
-                  0:To use a remote command (begining by @char), type it like a normal command, or replace @char by the specially defined symbol.
+                  0: 
+                   :To use one command, type it inside the message window where you usually type to chat.
+                   :To use a remote command (begining by @char), type it like a normal command, or replace @char by the specially defined symbol.
 @help              :@h/@help/@? [<page_number>|<keyword>] - Displays this help. With a keyword, display only help of commands concerned by this keyword.
 @help              :  special keyword: 'key' or 'keyword' to display all keywords.
 @help              :  1 page = 50 lines, if no # of page: all help file is displayed.
@@ -32,15 +34,12 @@ key:message,messages,broadcast
 @kamib             :@kamib <message> - Broadcasts a GM message without name of the GM (in blue).
 @kamic             :@kamic <hex_color> <message> - Broadcasts a GM message without name of the GM with specified color (16 millions of colors (RRGGBB): 00-FF for red, green, blue. Example: blue: 0000FF, Red: FF0000, light blue: 8080FF).
 @localbroadcast    :@lb/@localbroadcast/@local_broadcast <message> - Broadcasts a GM message with name of the GM (in yellow) ONLY on your map.
-// the level of /lb is the same of @nlb, and not the same of @lb or @localbroadcast, so 2 different lines:
 @nlb               :/lb <message> - Like @lb.
 @nlb               :/mb//nlb/@nlb/@mb <message> - Broadcasts a GM message without name of the GM (in yellow) ONLY on your map.
 @kamigm            :@kamigm/@bgm <min_lvl_gm> <message> - Sends a message to GM with a level upper or egal to <min_lvl_gm>.
 @request           :@request/@contactgm <message> - Sends a message to GMs.
 @request           :@request/@contactgm on|off - (for GM) Accept to receive or not requests from players.
-@motd              :@motd - Sends again to you the 'Message of the day'.
-@gmotd             :@gmotd/@globalmotd - Sends again to all players the 'Message of the day (motd.txt)'.
-
+                  1: 
                   1:--- INFORMATION CMD ---
 @users             :@users - Displays a listing of maps with (number of) players.
 @who               :@who/@whois [match_text] - Displays a listing of who is online and where.
@@ -48,8 +47,6 @@ key:message,messages,broadcast
 @who3              :@who3 [match_text] - Displays a listing of who is online and their party/guild.
 @whomap            :@whomap/@whomap2/@whomap3 [map] - Like @who/@who2/@who3 but only for specifical map.
 @whogm             :@whogm [match_text] - Like @who+@who2+@who3, but only for GM.
-@whozeny           :@whozeny [match_text] - Returns list of top 50 richest online characters sorted from lowest amount to highest.
-@whozenymap        :@whozenymap [map] - Like @whozeny, but only for specified map.
 @whohas            :@whohas <item_name|item_ID> - Returns list of online characters that have the item in their inventory.
 @whohasmap         :@whohasmap <item_name|item_ID> [map] - Like @whohas, but only for specified map.
 @where             :@where [char name|account_id] - Tells you the location of a character.
@@ -66,7 +63,6 @@ key:message,messages,broadcast
 @uptime            :@uptime - Displays how long the map-server has been running.
 @clock             :@clock - Displays server time and how long the map-server has been running.
 @version           :@version - Displays version of Freya.
-@version2          :@version2 - Displays version of Freya (with additional informations).
 @jailtime          :@jailtime/@jail_time/@prisontime/@prison_time - Displays your remaining jail time.
 @charjailtime      :@charjailtime/@charjail_time/@charprisontime/@charprison_time <char name|account_id> - Displays remaining jail time of a player.
 @displayexp        :@displayexp - Displays or not gained experience when you kill a monster.
@@ -150,7 +146,7 @@ key:gm,state,other,me
 @changelook        :@changelook <Equipment_name|ID> - Changes accessories appareance (only visual) of your character with an equipment.
 @changelook        :	Changing of Weapons, Shields and Shoes is probably not visible.
 @changesex         :@changesex - Changes your sex (all characters of your account).
-@model             :@model <hair style: 0-17> <hair color: 0-8> <clothes color: 0-4> - Changes your characters appearence.
+@style             :@style <hair style: 0-17> <hair color: 0-8> <clothes color: 0-4> - Changes your characters appearence.
 @ccolor            :@dye/@ccolor/@clothescolor <clothes_color: 0-4> - Changes your characters appearence (only clothes color).
 @hairstyle         :@hairstyle/@hstyle <hair_style: 0-17> - Changes your characters appearence (only hair style).
 @haircolor         :@haircolor/@hcolor <hair_color: 0-8> - Changes your characters appearence (only hair color).
@@ -212,32 +208,10 @@ key:monster,monstre,spawn,summon,deadbranch,dead_branch
 @spawnsmallall     :	If you add 'small' to the command, you spawn monsters with small sprites (can cause lags).
 @spawnagroall      :	If you add 'agro' to the command, monsters are agressiv (like dead branch).
 @spawnneutralall   :	If you add 'neutral' to the command, monsters are NOT agressiv (note: followers stay agressiv if they exist).
-@summon            :@summon <monster_name|monster_ID> [<number_to_spawn> [<desired_monster_name> [<x_coord> [<y_coord>]]]]
-@summon            :@summon "desired monster name" <monster_name|monster_ID> [<number_to_spawn> [<x_coord> [<y_coord>]]]
-@summon            :@summon <monster_name|monster_ID> "desired monster name" [<number_to_spawn> [<x_coord> [<y_coord>]]]
-@summon            :@summon <monster_name|monster_ID> <number_to_spawn> "desired monster name" [<x_coord> [<y_coord>]]
-@summon            :	Spawns one or more homonculus.
-@summonbig         :	You can use @summonbig to spawn homonculus with big sprites (can cause lags).
-@summonsmall       :	You can use @summonsmall to spawn homonculus with small sprites (can cause lags).
-@deadbranch        :@deadbranch/@dead_branch [number_to_spawn] - Spawns one or more monsters like a dead branch.
-@deadbranchsmall   :	You can use @deadbranchsmall/@dead_branchsmall to spawn monsters with small sprites (can cause lags).
-@deadbranchbig     :	You can use @deadbranchbig/@dead_branchbig to spawn monsters with big sprites (can cause lags).
-@chardeadbranch    :@chardeadbranch/@chardead_branch [number_to_spawn] <char name|account_id>
-@chardeadbranch    :	Spawns one or more monsters like a dead branch on a player.
-@chardeadbranchsmall:	You can use @chardeadbranchsmall/@chardead_branchsmall to spawn monsters with small sprites (can cause lags).
-@chardeadbranchbig :	You can use @chardeadbranchbig/@chardead_branchbig to spawn monsters with big sprites (can cause lags).
-@deadbranchmap     :@deadbranchmap/@dead_branchmap [number_to_spawn] [map_name]
-@deadbranchmap     :	Spawns one or more monsters like a dead branch on each player on the entire map.
-@deadbranchmapbig  :	If you add 'big' to the command, you spawn monsters with big sprites (can cause lags).
-@deadbranchmapsmall:	If you add 'small' to the command, you spawn monsters with small sprites (can cause lags).
-@deadbranchall     :@deadbranchall/@dead_branchall [number_to_spawn] - Spawns one or more monsters like a dead branch on each online player.
-@deadbranchallbig  :	If you add 'big' to the command, you spawn monsters with big sprites (can cause lags).
-@deadbranchallsmall:	If you add 'small' to the command, you spawn monsters with small sprites (can cause lags).
 @killmonster       :@killmonster [map] - Kills all monsters of the map (they drop). Default map is your actual map.
 @killmonster2      :@killmonster2 [map] - Kills all monsters of the map (without drops). Default map is your actual map.
 @killmonsterarea   :@killmonsterarea [distance] - Kills all monsters around of you within the distance (they drop).
 @killmonster2area  :@killmonster2area/@killmonsterarea2 [distance] - Kills all monsters around of you within the distance (without drops).
-@shuffle           :@shuffle <mode:1-3> - Randomly change the position of players(1), monsters(2) or players+monsters(3) on your map.
 key:item,items,storage,refine,produce,repair
                   0: 
                   0:--- ITEMS CMD ---
@@ -276,7 +250,6 @@ key:pvp,groups,guild,party,woe,gvg
 key:groups,guild,party
                   2: 
                   2:--- GROUPS CMD ---
-@party             :@party "party_name"|<party_name> - Create a party.
 @guild             :@guild "Desired guild name"|<Desired guild name> - Creates a guild with the desired name (Spaces are allowed)
 @guildlevelup      :@guildlvup/@guildlvlup/@guildlevelup <#_of_levels> - Raises Guild by desired number of levels.
 @guildrecall       :@guildrecall <guild_name|guild_id> - Warps all online characters of a guild to you.
@@ -284,12 +257,9 @@ key:groups,guild,party
 key:pet,pets,egg
                   2: 
                   2:--- PETS CMD ---
-@makeegg           :@makeegg/@createegg <pet_id> - Gives pet egg for monster ID in pet DB.
-@hatch             :@hatch/@incubate/@incubator/@pet_incubator/@petincubator/@petbirth/@pet_birth - Creates a pet from your inventory eggs list.
 @petfriendly       :@petfriendly <#> - Sets pet friendly amount (0-1000) 1000 = Max
 @pethungry         :@pethungry <#> - Sets pet hungry amount (0-100) 100 = Max
 @petrename         :@petrename - Re-enables pet rename
-@pettalk           :@pettalk/@petmessage/@petmes <message> - Command what the player's pet will say.
 key:remote,char,character
                  20: 
                  20:--- REMOTE CHAR CMD ---
@@ -343,10 +313,6 @@ key:remote,char,character
 @charhaircolor     :@charhaircolor/@charhcolor <hair_color: 0-8> <char name|account_id> - Changes a player's  appearence (only hair color).
 @chardisguise      :@chardisguise <monster_name|monster_ID|NPC_ID> <char name|account_id> - Changes disguise of a player.
 @charundisguise    :@charundisguise <char name|account_id> - Cancels disguise of a player.
-@disguisemap       :@chardisguisemap/@disguisemap <monster_name|monster_ID|NPC_ID> [map] - Changes disguise of all players on a map.
-@undisguisemap     :@charundisguisemap/@undisguisemap [map] - Cancels disguise of all players on a map.
-@disguiseall       :@chardisguiseall/@disguiseall <monster_name|monster_ID|NPC_ID> - Changes disguise of all players.
-@undisguiseall     :@charundisguiseall/@undisguiseall - Cancels disguise of all players.
 @charchangelook    :@charchangelook <Equipment_name|ID> <char name|account_id> - Changes accessories appareance (only visual) of a character with an equipment.
 @charchangesex     :@charchangesex <char name|account_id> - Changes sex of a player (all characters of the account).
 @charblock         :@charblock/@block <char name|account_id> - Blocks definitively an account.
@@ -363,8 +329,6 @@ key:remote,char,character
 @unjail            :@unjail/@discharge <char name|account_id> - Discharges specified character/prisoner.
 @kick              :@kick <char name|account_id> - Kicks specified character off the server.
 @useskill          :@useskill <skill_id> <skillv> <char name|account_id> - Uses a skill on target.
-@grind             :@grind/@grindskill/@grindskills <char name|account_id> - Does all skills on the target (on test GM command).
-@grind2            :@grind2/@grindmob/@grindmonster/@grindmobs/@grindmonsters [char name|account_id] - Spawns different monsters at random around of the target (quantity = base level of the targer x 2; max 100).
 key:remote,char,character,marriage
                  40: 
                  40:--- MARRIAGE CMD ---
@@ -391,12 +355,10 @@ key:environement,mass,npc
                  40:--- ENVIRONMENT CMD ---
 @night             :@night - Uses @option xx 16 xx on all characters. All characters are in darkness.
 @day               :@day - Uses @option xx 00 xx on all characters.
-@rain              :@rain - It is made to rain on your map (or removes rain).
 @snow              :@snow - It is made to snow on your map (or removes snow).
 @fog               :@fog - Fog hangs over on your map (or removes fog).
 @sakura            :@sakura - Cherry tree snowstorm (Sakura) is made to fall on your map (or removes cherry tree leaves).
 @leaves            :@leaves - Fallen leaves fall on your map (or removes leaves).
-@rainbow           :@rainbow - Add a temporary rainbow on your map (only when it's rain).
 @clsweather        :@clsweather/@clearweather - Clear all special weathers on a map.
 @sound             :@sound <sound.file.in.RO/data/wav> - Plays a sound for everyone.
 @skillon           :@skillon [map] - Turns skills on for a map.
@@ -406,7 +368,6 @@ key:environement,mass,npc
 @enablenpc         :@enablenpc/@npcon <NPC_name> - Enables a NPC.
 @disablenpc        :@disablenpc/@npcoff <NPC_name> - Disables a NPC.
 @npcmove           :@npcmove/@movenpc <x_coord> <y_coord> <NPC_name> - Moves a NPC (on the same map).
-@npctalk           :@npctalk/@npcmessage/@npcmes "NPC_name"|<NPC_name> <message> - Can command what other npcs can say.
 key:admin,administration,administrator
                  99: 
                  99:--- ADMINISTRATION CMD ---
@@ -416,14 +377,13 @@ key:admin,administration,administrator
 @reloadmobdb       :@reloadmobdb - Reloads monster database (admin command).
 @reloadskilldb     :@reloadskilldb - Reloads skills definition database (admin command).
 @reloadscript      :@reloadscript|@rehash - Reloads all scripts (admin command). It's better to restart map-server.
-//@reloadgmdb        :@reloadgmdb - Reloads GM levels (admin command). // removed, it's automatic now
 @adjgmlvl          :@adjgmlvl/@setgmlvl/@adjgmlevel/@setgmlevel <lvl> <char name|account_id> - Temporarily modify GM level of an online player.
 @adjgmlvl2         :@adjgmlvl2/@setgmlvl2/@adjgmlevel2/@setgmlevel2 <lvl> <char name|account_id> - Permanently modify GM level of a player!
 @adjgm0            :@adjgm[0-10] <char name|account_id> - Permanently modify GM level of a player from 0 to 10 (level depends of your gm command).
 @adjcmdlvl         :@adjcmdlvl/@setcmdlvl/@adjcmdlevel/@setcmdlevel <lvl> <command> - Modify level of a command for the actual session of the software.
                  99: 
 @gat               :@gat - For debugging (you inspect around gat).
-@packet            :@packet - For debugging (packet variety, depends of the source code).
+@statusicon        :@statusicon - For determining new status icons (devel).
 key:admin,administration,administrator,special,gm
 @GM                : 
 @GM                :@GM <password> - it becomes GM!

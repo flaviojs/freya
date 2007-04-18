@@ -2386,50 +2386,48 @@ int npc_parse_mapflag(char *w1, char *w3, char *w4, int lines) {
 		map[m].flag.sakura = 1;
 	} else if (strcasecmp(w3, "leaves") == 0) { // leaves // 19
 		map[m].flag.leaves = 1;
-	} else if (strcasecmp(w3, "rain") == 0) { // rain // 20
-		map[m].flag.rain = 1;
-	} else if (strcasecmp(w3, "indoors") == 0) { // 21
+	} else if (strcasecmp(w3, "indoors") == 0) { // 20
 		map[m].flag.indoors = 1;
-	} else if (strcasecmp(w3, "nogo") == 0) { // 22
+	} else if (strcasecmp(w3, "nogo") == 0) { // 21
 		map[m].flag.nogo = 1;
-	} else if (strcasecmp(w3, "nospell") == 0) { // 23
+	} else if (strcasecmp(w3, "nospell") == 0) { // 22
 		map[m].flag.nospell = 1;
-	} else if (strcasecmp(w3, "nowarpto") == 0) { // 24
+	} else if (strcasecmp(w3, "nowarpto") == 0) { // 23
 		map[m].flag.nowarpto = 1;
-	} else if (strcasecmp(w3, "noreturn") == 0) { // 25
+	} else if (strcasecmp(w3, "noreturn") == 0) { // 24
 		map[m].flag.noreturn = 1;
-	} else if (strcasecmp(w3, "monster_noteleport") == 0) { // 26
+	} else if (strcasecmp(w3, "monster_noteleport") == 0) { // 25
 		map[m].flag.monster_noteleport = 1;
-	} else if (strcasecmp(w3, "pvp_nocalcrank") == 0) { // 27
+	} else if (strcasecmp(w3, "pvp_nocalcrank") == 0) { // 26
 		map[m].flag.pvp_nocalcrank = 1;
-	} else if (strcasecmp(w3, "noexp") == 0) { // 28
+	} else if (strcasecmp(w3, "noexp") == 0) { // 27
 		map[m].flag.nobaseexp = 1;
 		map[m].flag.nojobexp = 1;
-	} else if (strcasecmp(w3, "nobaseexp") == 0) { // 29
+	} else if (strcasecmp(w3, "nobaseexp") == 0) { // 28
 		map[m].flag.nobaseexp = 1;
-	} else if (strcasecmp(w3, "nojobexp") == 0) { // 30
+	} else if (strcasecmp(w3, "nojobexp") == 0) { // 29
 		map[m].flag.nojobexp = 1;
-	} else if (strcasecmp(w3, "nodrop") == 0 || // 31
+	} else if (strcasecmp(w3, "nodrop") == 0 || // 30
 	           strcasecmp(w3, "noloot") == 0) {
 		map[m].flag.nomobdrop = 1;
 		map[m].flag.nomvpdrop = 1;
 		if (strcasecmp(w3, "noloot") == 0)
 			printf(CL_YELLOW "WARNING: Unknown map flag" CL_RESET ": noloot (file:%s:%d)! Server uses 'nodrop' mapflag.\n", current_file, lines);
-	} else if (strcasecmp(w3, "nomobdrop") == 0 || // 32
+	} else if (strcasecmp(w3, "nomobdrop") == 0 || // 31
 	           strcasecmp(w3, "nomobloot") == 0) {
 		map[m].flag.nomobdrop = 1;
 		if (strcasecmp(w3, "nomobloot") == 0) {
 			if (current_file != NULL) // if not a GM command, but a script
 				printf(CL_YELLOW "WARNING: Unknown map flag" CL_RESET ": nomobloot (file:%s:%d)! Server uses 'nomobdrop' mapflag.\n", current_file, lines);
 		}
-	} else if (strcasecmp(w3, "nomvpdrop") == 0 || // 33
+	} else if (strcasecmp(w3, "nomvpdrop") == 0 || // 32
 	           strcasecmp(w3, "nomvploot") == 0) {
 		map[m].flag.nomvpdrop = 1;
 		if (strcasecmp(w3, "nomvploot") == 0) {
 			if (current_file != NULL) // if not a GM command, but a script
 				printf(CL_YELLOW "WARNING: Unknown map flag" CL_RESET ": nomvploot (file:%s:%d)! Server uses 'nomvpdrop' mapflag.\n", current_file, lines);
 		}
-	} else if (strcasecmp(w3, "pvp_nightmaredrop") == 0) { // 34
+	} else if (strcasecmp(w3, "pvp_nightmaredrop") == 0) { // 33
 		if (sscanf(w4, "%[^,],%[^,],%d", drop_arg1, drop_arg2, &drop_per) == 3) {
 			if (strcmp(drop_arg1, "random") == 0)
 				drop_id = -1;
@@ -2468,7 +2466,7 @@ int npc_parse_mapflag(char *w1, char *w3, char *w4, int lines) {
 				printf(CL_YELLOW "WARNING: Invalid map flag" CL_RESET ": pvp_nightmaredrop (file:%s:%d)! Number of parameters is incorrect.\n", current_file, lines);
 			return 1;
 		}
-	} else if (strcasecmp(w3, "nogmcmd") == 0) { // 35
+	} else if (strcasecmp(w3, "nogmcmd") == 0) { // 34
 		// when you use this mapflag (nogmcmd, you forbid GM commands upper than the mentionned level, included @ban, @kick, etc...)
 		int gmlvl;
 		if (sscanf(w4, "%d", &gmlvl) == 1) {
@@ -2484,7 +2482,7 @@ int npc_parse_mapflag(char *w1, char *w3, char *w4, int lines) {
 				printf(CL_YELLOW "WARNING: Invalid map flag" CL_RESET ": nogmcmd (file:%s:%d)! Please, specify a minimum level.\n", current_file, lines);
 			return 1;
 		}
-	} else if (strcasecmp(w3, "mingmlvl") == 0) { // 36
+	} else if (strcasecmp(w3, "mingmlvl") == 0) { // 35
 		int gmlvl;
 		if (sscanf(w4, "%d", &gmlvl) == 1) {
 			if (gmlvl >=0 && gmlvl <= 100)
@@ -2499,7 +2497,7 @@ int npc_parse_mapflag(char *w1, char *w3, char *w4, int lines) {
 				printf(CL_YELLOW "WARNING: Invalid map flag" CL_RESET ": mingmlvl (file:%s:%d)! Please, specify a minimum level.\n", current_file, lines);
 			return 1;
 		}
-	} else if (strcasecmp(w3, "gvg_dungeon") == 0) { // 37
+	} else if (strcasecmp(w3, "gvg_dungeon") == 0) { // 36
 		map[m].flag.gvg_dungeon = 1;
 	} else if (strcasecmp(w3, "water") == 0) {
 		// not used in code
