@@ -10,6 +10,47 @@
 
 Date	Added
 
+04/18/2007
+	* Updated: Mob skill database (Removed old unecessary skills + updated documentation) [Tsuyuki]
+
+04/17/2007
+	* Added: Anubis monster skills (By Playtester) [Tsuyuki]
+	* Updated: atcommand_freya.conf and help.txt [Tsuyuki]
+	* Cleaned: atcommand.c/atcommand.h a bit [Tsuyuki]
+ 	 - Removed a lot of generally useless/unecessary commands:
+	 - @party (Identical to /organize)
+	 - @disguiseall/@undisguiseall/@disguisemap/@undisguisemap ('For fun' commands not generally used)
+	 - @whozeny/@whozenymap (Pointless)
+	 - @shuffle (Pointless)
+	 - @hatch/@makeegg (Equivalent to @item and clicking on a pet egg..)
+	 - @version2 (Basically useless extra code)
+	 - @motd/gmotd (Use @broadcast or something..)
+	 - @deadbranch/@chardeadbranch/@deadbranchall (Equivalent to @item dead_branch + clicking on it)
+	 - @summon (Buggy + 'For fun' command)
+	 - @npctalk/@pettalk ('For fun' commands not generally used)
+	 - @grind/@grind2 (@grind2 already exists as @spawnall)
+	 - @rain/@rainbow (Client effect for rain removed years ago)
+	 - @reloadgmdb (Automatic now)
+	 - Renamed @model to @style and added a duplicate as '@model'
+	 - Renamed @packet to @statusicon
+	 - Misc stuff
+
+04/16/2007
+	* Improved: Buffed up @invincible/@charinvincible a bit more [Tsuyuki]
+	* Improved: Merged status_calc_speed and status_get_speed into a single function -> status_calc_speed [Tsuyuki]
+	 - Note: Recalculates speed for all currently possible types (PC/Mob/NPC/Pet)
+	* Removed: Custom monster level up system [Tsuyuki]
+	* Added: @invincible and @charinvincible GM commands [Tsuyuki]
+	* Added: SC_INVINCIBLE to go along with the new @commands [Tsuyuki]
+	* Added: @sc_start/@status_change_start command (Name is self-explanatory) [Tsuyuki]
+	* Updated: Dead Branch and Bloody Branch lists [Tsuyuki]
+	* Updated: Abbey Dungeon monster spawns [Tsuyuki]
+	* Added: Nameless Island/Abbey Dungeon monster skills [Tsuyuki]
+
+04/15/2007
+	* Added: Some duplicate script commands from Cronus for better compatibility [Tsuyuki]
+	* Fixed: Some Ninja skills having wacky effects (Thanks to Esus) [Tsuyuki]
+
 04/14/2007
 	* Added: Skill Reset event script, matches Aegis perfectly [Tsuyuki]
 	* Added: French Flag 2005 event script converted from Aegis [Tsuyuki]
