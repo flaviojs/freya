@@ -8,10 +8,13 @@
                     http://www.ro-freya.net                   
                      Aurora SVN Changelog                     
 --------------------------------------------------------------
-                Current Revision: jAthena 2291
+                Current Revision: jAthena 2292
 --------------------------------------------------------------
 
 Date	Added
+
+04/18/2007
+	* Updated: Project to jAthena 2292 [Tsuyuki]
 
 04/17/2007
 	* Added: Anubis monster skills (By Playtester) [Tsuyuki]

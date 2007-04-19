@@ -1274,6 +1274,12 @@ L_RECALC:
 		sd->view_class = 26;
 	}
 
+	//タイガーアイ
+	if(sd->infinite_tigereye)
+		clif_status_change(&sd->bl,SI_TIGEREYE,1);
+	else if(sd->sc_data[SC_TIGEREYE].timer==-1)
+		clif_status_change(&sd->bl,SI_TIGEREYE,0);
+
 	if( (skill=pc_checkskill(sd,AC_VULTURE))>0){	// ワシの目
 		sd->hit += skill;
 		if(sd->status.weapon == WT_BOW)

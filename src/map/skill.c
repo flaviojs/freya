@@ -1751,6 +1751,9 @@ static int skill_timerskill(int tid, unsigned int tick, int id,int data )
 							skill_unitsetting(src,skl->skill_id,skl->skill_lv,skl->x,skl->y,0);
 					}
 					break;
+				case GS_DESPERADO:
+					skill_unitsetting(src,skl->skill_id,skl->skill_lv,skl->x,skl->y,0);
+					break;
 			}
 		}
 	} while(0);
@@ -5793,7 +5796,6 @@ int skill_castend_pos2( struct block_list *src, int x,int y,int skillid,int skil
 	case PF_SPIDERWEB:			/* スパイダーウェッブ */
 	case PF_FOGWALL:			/* フォグウォール */
 	case HT_TALKIEBOX:			/* トーキーボックス */
-	case GS_DESPERADO:			/* デスペラード*/
 	case GS_GROUNDDRIFT:		/* グラウンドドリフト*/
 	case NJ_TATAMIGAESHI:		/* 畳返し */
 	case NJ_BAKUENRYU:			/* 爆炎龍*/
@@ -5958,6 +5960,17 @@ int skill_castend_pos2( struct block_list *src, int x,int y,int skillid,int skil
 					src->m,x-3,y-3,x+3,y+3,0,
 					src,skillid,skilllv,tick,flag|BCT_PARTY|1,
 					skill_castend_nodamage_id);
+			}
+		}
+		break;
+	case GS_DESPERADO:	/* デスペラード */
+		{
+			int i, dx=0, dy=0;
+			skill_area_temp[1] = 0;		//弾丸消費用
+			for(i=0; i<10; i++) {
+				dx = x + (atn_rand()%5 - 2);
+				dy = y + (atn_rand()%5 - 2);
+				skill_addtimerskill(src,tick+i*100,0,dx,dy,skillid,skilllv,BF_WEAPON,0);
 			}
 		}
 		break;
@@ -6232,12 +6245,6 @@ struct skill_unit_group *skill_unitsetting( struct block_list *src, int skillid,
 			val1 = 13203+atn_rand()%5;
 		}
 		break;
-	case GS_DESPERADO:		/* デスペラード */
-		val1 = 0;		// 弾丸消費を1回にする処理用に0を明示する
-		break;
-	case NJ_KAENSIN:		/* 火炎陣 */
-		val1 = 4+(skilllv+1)/2;
-		break;
 	}
 
 	nullpo_retr(NULL, group=skill_initunitgroup(src,layout->count,skillid,skilllv,skill_get_unit_id(skillid,flag&1)));
@@ -6288,6 +6295,9 @@ struct skill_unit_group *skill_unitsetting( struct block_list *src, int skillid,
 			case HT_TALKIEBOX:		/* トーキーボックス */
 			case HT_SKIDTRAP:		/* スキッドトラップ */
 				val1 = 3500;	// 罠の耐久HP
+				break;
+			case NJ_KAENSIN:		/* 火炎陣 */
+				val1 = 4+(skilllv+1)/2;
 				break;
 		}
 		//直上スキルの場合設置座標上にランドプロテクターがないかチェック
@@ -6972,8 +6982,8 @@ int skill_unit_onplace_timer(struct skill_unit *src,struct block_list *bl,unsign
 		}
 		break;
 	case 0xba:	/* デスペラード */
-		if( battle_skill_attack(BF_WEAPON,ss,&src->bl,bl,sg->skill_id,sg->skill_lv,tick,(sg->val1 == 0)? 0: 1) )
-			sg->val1++;
+		battle_skill_attack(BF_WEAPON,ss,&src->bl,bl,sg->skill_id,sg->skill_lv,tick,(skill_area_temp[1]==0)? 0: 0x0500);
+		skill_area_temp[1]++;
 		break;
 	case 0xbc:	/* 畳返し */
 		battle_skill_attack(BF_WEAPON,ss,&src->bl,bl,sg->skill_id,sg->skill_lv,tick,0x0500);

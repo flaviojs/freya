@@ -85,8 +85,8 @@ int npc_enable_sub( struct block_list *bl, va_list ap )
 
 		if(nd->flag&1)	// –³Œø‰»‚³‚ê‚Ä‚¢‚é
 			return 1;
-		if(sd->areanpc_id==nd->bl.id)
-			return 1;
+		//if(sd->areanpc_id==nd->bl.id)
+		//	return 1;
 
 		sd->areanpc_id=nd->bl.id;
 		sprintf(name, "%s::OnTouch", nd->exname);
