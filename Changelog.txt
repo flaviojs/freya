@@ -10,6 +10,9 @@
 
 Date	Added
 
+04/18/2007
+	* Updated: Mob skill database (Removed old unecessary skills + updated documentation) [Tsuyuki]
+
 04/17/2007
 	* Added: Anubis monster skills (By Playtester) [Tsuyuki]
 	* Updated: atcommand_freya.conf and help.txt [Tsuyuki]

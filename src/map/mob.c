@@ -41,8 +41,6 @@
 
 struct mob_db mob_db[MAX_MOB_DB];
 
-#define CLASSCHANGE_BOSS_NUM 21
-
 /*==========================================
  * Local prototype declaration (Only required thing)
  *------------------------------------------
@@ -57,7 +55,7 @@ int mobskill_use_id(struct mob_data *md, struct block_list *target, int skill_id
 static int mob_unlocktarget(struct mob_data *md, unsigned int tick);
 
 /*==========================================
- * Mob is searched with a name
+ * Mob identified by name
  *------------------------------------------
  */
 int mobdb_searchname(const char *str)
@@ -74,7 +72,7 @@ int mobdb_searchname(const char *str)
 }
 
 /*==========================================
- * Id Mob is checked
+ * Mob ID checked
  *------------------------------------------
  */
 int mobdb_checkid(const int id)
@@ -86,15 +84,15 @@ int mobdb_checkid(const int id)
 }
 
 /*==========================================
- * The minimum data set for MOB spawning
+ * The minimum data set for mob spawning
  *------------------------------------------
  */
 void mob_spawn_dataset(struct mob_data *md, const char *mobname, int class)
 {
-	// nullpo_retv(md); // checked before to call function
+	// nullpo_retv(md); // Checked before to call function
 
-	// md->bl.prev = NULL; // already NULL
-	// md->bl.next = NULL; // already NULL
+	// md->bl.prev = NULL; // Already NULL
+	// md->bl.next = NULL; // Already NULL
 	if (strcmp(mobname, "--en--") == 0)
 		strncpy(md->name, mob_db[class].name, 24);
 	else if (strcmp(mobname, "--ja--") == 0)
@@ -120,7 +118,7 @@ void mob_spawn_dataset(struct mob_data *md, const char *mobname, int class)
 
 
 /*==========================================
- * The MOB appearance for one time (For scripts)
+ * The mob appearance for one time (For scripts)
  *------------------------------------------
  */
 int mob_once_spawn(struct map_session_data *sd, char *mapname,
@@ -216,8 +214,8 @@ int mob_once_spawn(struct map_session_data *sd, char *mapname,
 		md->m = m;
 		md->x0 = x;
 		md->y0 = y;
-		// md->xs = 0; // done by CALLOC
-		// md->ys = 0; // done by CALLOC
+		// md->xs = 0; // Done by CALLOC
+		// md->ys = 0; // Done by CALLOC
 		md->spawndelay1 = -1; // Only once is a flag
 		md->spawndelay2 = -1; // Only once is a flag
 
@@ -240,7 +238,7 @@ int mob_once_spawn(struct map_session_data *sd, char *mapname,
 }
 
 /*==========================================
- * The MOB appearance for one time (& area specification for scripts)
+ * The mob appearance for one time (And area specification for scripts)
  *------------------------------------------
  */
 int mob_once_spawn_area(struct map_session_data *sd, char *mapname,
@@ -288,7 +286,7 @@ int mob_once_spawn_area(struct map_session_data *sd, char *mapname,
 }
 
 /*==========================================
- * Summoning Guardians [Valaris]
+ * Summoning War of Emperium Guardians
  *------------------------------------------
  */
 int mob_spawn_guardian(struct map_session_data *sd,char *mapname,
@@ -516,7 +514,7 @@ int mob_get_equip(int class)
 }
 
 /*==========================================
- * Is MOB in the state in which the present movement is possible or not?
+ * Can the current monster move?
  *------------------------------------------
  */
 int mob_can_move(struct mob_data *md)
@@ -530,14 +528,17 @@ int mob_can_move(struct mob_data *md)
 
 	if (md->canmove_tick > gettick_cache || (md->opt1 > 0 && md->opt1 != 6) || md->option & 2 || !(mode & 1))
 		return 0;
-	// To-Do: Update list with player non-movable statuses [Tsuyuki]
-	if (md->sc_data[SC_ANKLE].timer != -1 ||
-	    md->sc_data[SC_AUTOCOUNTER].timer != -1 ||
-	    md->sc_data[SC_BLADESTOP].timer != -1 ||
-	    md->sc_data[SC_SPIDERWEB].timer != -1 ||
-		md->sc_data[SC_CLOSECONFINE].timer != -1 ||
-		md->sc_data[SC_CLOSECONFINE2].timer != -1
-	    )
+	if(md->sc_data[SC_ANKLE].timer != -1 ||
+			md->sc_data[SC_AUTOCOUNTER].timer != -1 ||
+			md->sc_data[SC_BLADESTOP].timer != -1 ||
+			md->sc_data[SC_SPIDERWEB].timer != -1 ||
+			(md->sc_data[SC_DANCING].timer != -1 && md->sc_data[SC_DANCING].val4 && md->sc_data[SC_LONGING].timer == -1) ||
+			(md->sc_data[SC_GOSPEL].timer != -1 && md->sc_data[SC_GOSPEL].val4 == BCT_SELF) ||
+			(md->sc_data[SC_GRAVITATION].timer != -1 && md->sc_data[SC_GRAVITATION].val3 == BCT_SELF) ||
+			md->sc_data[SC_STOP].timer != -1 ||
+			md->sc_data[SC_CLOSECONFINE].timer != -1 ||
+			md->sc_data[SC_CLOSECONFINE2].timer != -1 ||
+			md->sc_data[SC_MADNESSCANCEL].timer != -1)
 		return 0;
 
 	return 1;
@@ -614,8 +615,8 @@ static void mob_walk(struct mob_data *md, unsigned int tick, int data)
 			return;
 		}
 
-// Deprecated as per the new Moonlit Petals implementation [Proximus]
-/*		if (skill_check_moonlit(&md->bl, x + dx, y + dy))
+		// Deprecated as per the new Moonlit Petals (Sheltering Bliss) implementation
+		/*if (skill_check_moonlit(&md->bl, x + dx, y + dy))
 		{
 			mob_walktoxy_sub(md);
 			return;
@@ -652,7 +653,7 @@ static void mob_walk(struct mob_data *md, unsigned int tick, int data)
 		md->state.state = MS_WALK;
 
 		if (md->walkpath.path_pos >= md->walkpath.path_len)
-			clif_fixmobpos(md);	// When mob stops, retransmission current of a position
+			clif_fixmobpos(md);
 	}
 
 	return;
@@ -722,9 +723,6 @@ static void mob_attack(struct mob_data *md, unsigned int tick, int data)
 	} else if(tsd) {
 		if(pc_isdead(tsd) || pc_isinvisible(tsd) || tsd->invincible_timer != -1 || tsd->sc_data[SC_TRICKDEAD].timer != -1)
 			unlock_target = 1;
-		// Corrected MVP behavior [Bison]
-		// Changed the check around a bit to differentiate from MVP mobs vs. non-boss mobs.
-		// Fixed the perfect hide problem with smokies, MVP's are still allowed to see through this effect however.
 		if(!(mode & 0x20) && ((tsd->sc_data[SC_BASILICA].timer != -1 || tsd->perfect_hiding) && ((race != 4 || race != 6) && (pc_ishiding(tsd) || pc_iscloaking(tsd) || pc_ischasewalk(tsd) || tsd->state.gangsterparadise))))
 			unlock_target = 1;
 	}
@@ -766,7 +764,7 @@ static void mob_attack(struct mob_data *md, unsigned int tick, int data)
 }
 
 /*==========================================
- * The attack of PC which is attacking id is stopped
+ * The attack of PC which is attacking ID is stopped
  * The callback function of clif_foreachclient
  *------------------------------------------
  */
@@ -849,7 +847,7 @@ void mob_changestate(struct mob_data *md, int state, int type)
 }
 
 /*==========================================
- * Timer processing of mob (timer function)
+ * Timer processing of mob (Timer function)
  * It branches to a walk and an attack
  *------------------------------------------
  */
@@ -900,7 +898,7 @@ static int mob_timer(int tid, unsigned int tick, int id, int data)
 }
 
 /*==========================================
- *
+ * Move to a coordinate sub
  *------------------------------------------
  */
 static int mob_walktoxy_sub(struct mob_data *md)
@@ -955,7 +953,7 @@ static int mob_randomxy(struct mob_data *md)
 }
 
 /*==========================================
- * mob move start
+ * Move to a coordinate
  *------------------------------------------
  */
 int mob_walktoxy(struct mob_data *md,int x,int y,int easy)
@@ -1017,7 +1015,7 @@ int mob_setdelayspawn(int id)
 	if (!md || md->bl.type != BL_MOB)
 		return -1;
 
-	// Processing of MOB which is not revitalized
+	// Processing of mob which is not revitalized
 	if (md->spawndelay1 == -1 && md->spawndelay2 == -1 && md->n == 0) {
 		map_deliddb(&md->bl);
 		if (md->lootitem) {
@@ -1202,7 +1200,7 @@ static int distance(int x0, int y_0, int x1, int y_1)
 }
 
 /*==========================================
- * The stop of MOB's attack
+ * Monster attack stopping
  *------------------------------------------
  */
 void mob_stopattack(struct mob_data *md) {
@@ -1215,7 +1213,7 @@ void mob_stopattack(struct mob_data *md) {
 }
 
 /*==========================================
- * The stop of MOB's walking
+ * Monster move stopping
  *------------------------------------------
  */
 void mob_stop_walking(struct mob_data *md, int type)
@@ -1257,7 +1255,7 @@ void mob_stop_walking(struct mob_data *md, int type)
 }
 
 /*==========================================
- * Reachability to a Specification ID existence place
+ * Reachability to a specification ID existence place
  *------------------------------------------
  */
 int mob_can_reach(struct mob_data *md,struct block_list *bl,int range)
@@ -1273,7 +1271,7 @@ int mob_can_reach(struct mob_data *md,struct block_list *bl,int range)
 	dy = abs(bl->y - md->bl.y);
 
 	//=========== Guildcastle Guardian no search start ===========
-	// When players are the guild castle member not attack them!
+	// When players are the guild castle member not attack them
 	if (md->class >= 1285 && md->class <= 1287) {
 		struct map_session_data *sd;
 		struct guild *g;
@@ -4977,7 +4975,7 @@ static void mob_readskilldb(void)
 		{ "anybad",    -1           },
 		{ "stone",     SC_STONE     },
 		{ "freeze",    SC_FREEZE    },
-		{ "stan",      SC_STUN      },
+		{ "stun",      SC_STUN      },
 		{ "sleep",     SC_SLEEP     },
 		{ "poison",    SC_POISON    },
 		{ "curse",     SC_CURSE     },
