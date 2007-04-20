@@ -10,6 +10,9 @@
 
 Date	Added
 
+04/20/2007
+	* Fixed: Throw Venom Knife can now be used with any weapon set [Latios]
+
 04/18/2007
 	* Updated: Mob skill database (Removed old unecessary skills + updated documentation) [Tsuyuki]
 
