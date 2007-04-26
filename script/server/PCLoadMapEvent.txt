@@ -1,7 +1,18 @@
-// Freya Special NPC
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//                     Freya Server Scripts                     
+//--------------------------------------------------------------
 
+
+//--------------------------------------------------------------
 // PCLoadMapEvent NPC
-//==============================================================================
+//--------------------------------------------------------------
 // How it works:
 // When a player changes maps, the NPC will run as if he just clicked it. Which means
 // if the script is like this:
@@ -13,7 +24,7 @@
 // }
 // [/code]
 //
-// every player who changes maps will recieve a message 'lmao' in their face as soon
+// Every player who changes maps will recieve a message 'lmao' in their face as soon
 // as they can see the map.
 //-----------------------------------------------------------------------------
 // Note:

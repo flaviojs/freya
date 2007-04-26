@@ -1,13 +1,15 @@
-//===== Freya Script =========================================
-//= Map flags that disable warp
-//===== By: ==================================================
-//= Original: eAthena
-//= Updated: Freya Development Team
-//===== Description: =========================================
-//= These maps cannot be warped to (Security purposes)
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//                     Freya Mapflag System                     
+//--------------------------------------------------------------
 
-// Guild Castles =============
+
 aldeg_cas01.gat	mapflag	nowarp
 aldeg_cas02.gat	mapflag	nowarp
 aldeg_cas03.gat	mapflag	nowarp

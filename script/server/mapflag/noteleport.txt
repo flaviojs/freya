@@ -1,13 +1,15 @@
-//===== Freya Script =========================================
-//= Map flags that disable use of fly wings (not for butterfly wings)
-//===== By: ==================================================
-//= Original: eAthena
-//= Updated: Freya
-//===== Notes: ===============================================
-//= For disabling Butterfly wings use noreturn
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//                     Freya Mapflag System                     
+//--------------------------------------------------------------
 
-// Cities ========================
+
 ayo_in01.gat	mapflag	noteleport
 ayo_in02.gat	mapflag	noteleport
 alb_ship.gat	mapflag	noteleport
@@ -57,7 +59,6 @@ ein_in01.gat	mapflag	noteleport
 airport.gat	mapflag	noteleport
 airplane.gat	mapflag	noteleport
 airplane_01.gat	mapflag	noteleport
-// New areas
 lighthalzen.gat	mapflag	noteleport
 yuno.gat	mapflag	noteleport
 yuno_pre.gat	mapflag	noteleport
@@ -101,16 +102,13 @@ ve_in.gat	mapflag	noteleport
 ve_in02.gat	mapflag	noteleport
 nameless_in.gat	mapflag	noteleport
 
-// Job Quests ====================
 job_sword1.gat	mapflag	noteleport
 job_thief1.gat	mapflag	noteleport
-// 2-1 -----------------------
 job_prist.gat	mapflag	noteleport
 job_wiz.gat	mapflag	noteleport
 job_hunte.gat	mapflag	noteleport
 in_hunter.gat	mapflag	noteleport
 in_moc_16.gat	mapflag	noteleport
-// 2-2 --------------------
 alde_alche.gat	mapflag	noteleport
 job_cru.gat	mapflag	noteleport
 job_duncer.gat	mapflag	noteleport
@@ -123,7 +121,6 @@ job_star.gat	mapflag	noteleport
 job_soul.gat	mapflag	noteleport
 que_ng.gat	mapflag	noteleport
 
-// Special Quests Places =========
 que_god01.gat	mapflag	noteleport
 que_god02.gat	mapflag	noteleport
 que_bingo.gat	mapflag	noteleport
@@ -131,7 +128,6 @@ que_hugel.gat	mapflag	noteleport
 poring_c01.gat	mapflag	noteleport
 poring_c02.gat	mapflag	noteleport
 
-// Guild Castles =================
 aldeg_cas01.gat	mapflag	noteleport
 aldeg_cas02.gat	mapflag	noteleport
 aldeg_cas03.gat	mapflag	noteleport
@@ -157,19 +153,15 @@ nguild_gef.gat	mapflag	noteleport
 nguild_pay.gat	mapflag	noteleport
 nguild_prt.gat	mapflag	noteleport
 
-// GvG Arenas ===================
 guild_vs1.gat	mapflag	noteleport
 guild_vs2.gat	mapflag	noteleport
 guild_vs3.gat	mapflag	noteleport
 guild_vs4.gat	mapflag	noteleport
 guild_vs5.gat	mapflag	noteleport
 
-// Arenas =====================>\\
 arena_room.gat	mapflag	noteleport
 sec_in01.gat	mapflag	noteleport
-sec_in02.gat	mapflag	noteleport
 
-// PvP Arenas=======================
 pvp_y_room.gat	mapflag	noteleport
 pvp_y_1-1.gat	mapflag	noteleport
 pvp_y_1-2.gat	mapflag	noteleport
@@ -253,3 +245,5 @@ pvp_y_8-5.gat	mapflag	noteleport
 //pvp_n_8-4.gat	mapflag	noteleport
 //pvp_n_8-5.gat	mapflag	noteleport
 pvp_2vs2.gat	mapflag	noteleport
+
+sec_in02.gat	mapflag	noteleport

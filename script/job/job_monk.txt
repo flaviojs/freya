@@ -1,32 +1,36 @@
-//===== Freya Script =========================================
-//= Monk Job Quest
-//===== By: ==================================================
-//= Dino9021/Celest/Freya
-//===== Current Version: =====================================
-//= 2.2
-//===== Compatible With: =====================================
-//= Freya
-//===== Description: =========================================
-//= Monk Job Quest
-//===== Additional Comments: =================================
-//= 1.1 Fixed missing '";'. Now it's loading fine [Lupus]
-//= 1.1+ Edited/Translated 5% [Celest]
-//= 1.2 Made Poetry Quiz passable, Fixed Marathon Part [Lupus]
-//= 1.3 Added Baby Class Support [Lupus]
-//= 1.5 Fixed possible EXP abuse [Lupus]
-//= 1.6 Added a func which prevent advanced classes passing
-//= 2nd Job Quests again. It also guides adv classes where
-//= to go. [Lupus] 1.7 Fixed warps19/20 [Yor]
-//= 1.8 Fixed bugs. Fixed Green Potion exploit. Getting rid of Jfunc mess [Lupus]
-//= 1.9 Added a missing check in Fuhai and fixed a LOT of Engrish. [Zephiris]
-//= 1.9b Fixed another bug in Fuhai. [Zephiris]
-//= 2.0 Changed numbers to constants. [Vicious]
-//= 2.1 Removed Duplicates [Silent]
-//= 2.2 Reconverted to Freya from eAthena [Tsuyuki]
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Monk Job Change Quest	Author: A Lot of People
+//--------------------------------------------------------------
+// Revision History: v2.3
+//--------------------------------------------------------------
+//	1.0 First version [Dino0921/Athena]
+//	1.1 Fixed missing '";'. Now it's loading fine [Lupus]
+//	1.2 Translated into English [Celest]
+//	1.3 Made Poetry Quiz passable, fixed Marathon Part [Lupus]
+//	1.4 Added Baby Class Support [Lupus]
+//	1.5 Fixed possible EXP abuse [Lupus]
+//	1.6 Added a function to properly direct Transcendent job changing [Lupus]
+//	1.7 Fixed warps 19/20 [Yor]
+//	1.8 Fixed bugs, fixed Green Potion exploit, getting rid of Jfunc mess [Lupus]
+//	1.9 Added a missing check in Fuhai and fixed a LOT of Engrish [Zephiris]
+//	2.0 Fixed another bug in Fuhai [Zephiris]
+//	2.1 Changed numbers to constants [Vicious]
+//	2.2 Removed duplicates [Silent]
+//	2.3 Reconverted to Freya from eAthena [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: N/A
+//--------------------------------------------------------------
 
 
 prt_monk.gat,55,249,4	script	Tohobu the Guarding Monk	139,0,5,{
+
 	mes "[Tohobu]";
 	mes "Who are you?!";
 	mes "How dare you enter this holy training place without my permission!!";
@@ -35,7 +39,9 @@ prt_monk.gat,55,249,4	script	Tohobu the Guarding Monk	139,0,5,{
 	mes "Get Out!!";
 	close;
 }
+
 prt_monk.gat,59,247,4	script	Master	120,{
+
 	callfunc "F_BlockHigh",Job_Acolyte_High,"Acolyte High",Job_Champion,"Champion","Tohobu";
 
 	if(MONK_Q == 1 ) goto Part1;

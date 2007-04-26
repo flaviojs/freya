@@ -1,14 +1,15 @@
-//===== Freya Script =========================================
-// No Dead Branch Mapflags
-//===== By: ==================================================
-//= Original: eAthena
-//= Updated: Freya Development Team
-//===== Description: =========================================
-//= Map flags that disable dead branching
-// forbid usage of Dead Branch (604), Bloody Branch (12103) and Poring Box (12109)
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//                     Freya Mapflag System                     
+//--------------------------------------------------------------
 
-// Cities ====================================================
+
 ayo_in01.gat	mapflag	nobranch
 ayo_in02.gat	mapflag	nobranch
 alb_ship.gat	mapflag	nobranch
@@ -58,7 +59,6 @@ ve_in.gat	mapflag	nobranch
 ve_in02.gat	mapflag	nobranch
 nameless_in.gat	mapflag	nobranch
 
-// New Areas
 yuno_pre.gat	mapflag	nobranch
 y_airport.gat	mapflag	nobranch
 lhz_airport.gat	mapflag	nobranch
@@ -76,11 +76,9 @@ ra_temple.gat	mapflag	nobranch
 ra_temsky.gat	mapflag	nobranch
 que_rachel.gat	mapflag	nobranch
 
-// Job Quests ====================
 job_sword1.gat	mapflag	nobranch
 job_thief1.gat	mapflag	nobranch
 
-// 2-1
 job_knt.gat	mapflag	nobranch
 job_prist.gat	mapflag	nobranch
 job_wiz.gat	mapflag	nobranch
@@ -88,7 +86,6 @@ job_hunte.gat	mapflag	nobranch
 in_hunter.gat	mapflag	nobranch
 in_moc_16.gat	mapflag	nobranch
 
-// 2-2
 alde_alche.gat	mapflag	nobranch
 job_cru.gat	mapflag	nobranch
 job_duncer.gat	mapflag	nobranch
@@ -101,7 +98,6 @@ que_ng.gat	mapflag	nobranch
 job_soul.gat	mapflag	nobranch
 job_star.gat	mapflag	nobranch
 
-// Special Quests Places =========
 que_god01.gat	mapflag	nobranch
 que_god02.gat	mapflag	nobranch
 que_bingo.gat	mapflag	nobranch
@@ -115,7 +111,6 @@ kh_vila.gat	mapflag	nobranch
 kh_kiehl01.gat	mapflag	nobranch
 kh_kiehl02.gat	mapflag	nobranch
 
-// Guild Castles ==================
 //alde_gld.gat	mapflag	nobranch
 aldeg_cas01.gat	mapflag	nobranch
 aldeg_cas02.gat	mapflag	nobranch
@@ -145,14 +140,12 @@ nguild_gef.gat	mapflag	nobranch
 nguild_pay.gat	mapflag	nobranch
 nguild_prt.gat	mapflag	nobranch
 
-// GvG Arenas =====================
 guild_vs1.gat	mapflag	nobranch
 guild_vs2.gat	mapflag	nobranch
 guild_vs3.gat	mapflag	nobranch
 guild_vs4.gat	mapflag	nobranch
 guild_vs5.gat	mapflag	nobranch
 
-// Arenas ================>\\
 arena_room.gat	mapflag	nobranch
 force_1-1.gat	mapflag	nobranch
 force_1-2.gat	mapflag	nobranch
@@ -186,7 +179,6 @@ prt_are01.gat	mapflag	nobranch
 //wizard_2-1.gat	mapflag	nobranch
 //wizard_3-1.gat	mapflag	nobranch
 
-// PvP Arenas =========================
 pvp_y_room.gat	mapflag	nobranch
 pvp_y_1-1.gat	mapflag	nobranch
 pvp_y_1-2.gat	mapflag	nobranch
@@ -271,7 +263,6 @@ pvp_y_8-5.gat	mapflag	nobranch
 //pvp_n_8-5.gat	mapflag	nobranch
 pvp_2vs2.gat	mapflag	nobranch
 
-// Main City Maps - Enabled in kRO [Tsuyuki]
 //alberta.gat	mapflag	nobranch
 //aldebaran.gat	mapflag	nobranch
 //amatsu.gat	mapflag	nobranch

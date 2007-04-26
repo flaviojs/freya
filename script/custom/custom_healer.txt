@@ -1,21 +1,21 @@
-//===== Freya Script =========================================
-//= Resting/Heal NPC
-//===== By: ==================================================
-//= Freya (Tsuyuki)
-//===== Current Version: =====================================
-//= 0.5
-//===== Compatible With: =====================================
-//= Freya
-//===== Description: =========================================
-//= Resting Girl which fully heals HP/SP and gives you
-//= Increase AGI/Blessing L10, as well as ends a few negative
-//= status ailments.
-//===== Additional Comments: =================================
-//= 0.5 Added first version by me [Tsuyuki]
-//= To-Do:
-//= - Make Niflheim version evil
-//= - Add duplicates for the rest of the towns
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Healer NPC	Author: Tsuyuki
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 First version [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: Resting Girl which fully heals HP/SP and
+// gives you Increase AGI/Blessing L10, as well as ends a
+// few negative status ailments.
+//--------------------------------------------------------------
 
 
 prontera.gat,151,186,5	script	Sitting Girl	882,{
@@ -64,7 +64,6 @@ gonryun.gat,164,128,5	duplicate(Sitting Girl)	Sitting Girl#7	882
 izlude.gat,125,118,5	duplicate(Sitting Girl)	Sitting Girl#8	882
 louyang.gat,221,100,3	duplicate(Sitting Girl)	Sitting Girl#9	882
 morocc.gat,160,97,5	duplicate(Sitting Girl)	Sitting Girl#10	882
-// To-Do: Make Niflheim version evil
 niflheim.gat,198,183,5	duplicate(Sitting Girl)	Sitting Girl#11	882
 payon.gat,186,105,5	duplicate(Sitting Girl)	Sitting Girl#12	882
 umbala.gat,94,162,5	duplicate(Sitting Girl)	Sitting Girl#13	882

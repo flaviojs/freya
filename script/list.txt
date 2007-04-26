@@ -243,7 +243,6 @@ npc: script/mob/mob_field.txt
 npc: script/mob/mob_gvg.txt
 npc: script/mob/mob_job.txt
 npc: script/mob/mob_misc.txt
-npc: script/mob/mob_pvp.txt
 npc: script/mob/mob_town.txt
 
 
@@ -342,4 +341,4 @@ npc: script/warp/warp_town.txt
 // npc: script/quest/quest_old_blue_box.txt
 
 // Nightmare Mode PvP Spawns (Nightmare Mode PvP removed from kRO)
-// npc: script/mob/pvp.txt
+// npc: script/mob/mob_pvp.txt

@@ -1,21 +1,21 @@
-//===== Freya Script =========================================
-//= Map flags that disable auto saving
-//===== By: ==================================================
-//= Original: eAthena
-//= Updated: Freya Development Team
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//                     Freya Mapflag System                     
+//--------------------------------------------------------------
 
-// Job Quests ====================
+
 job_sword1.gat	mapflag	nosave	SavePoint
-//job_thief1.gat	mapflag	nosave	SavePoint
-// 2-1
 job_knt.gat	mapflag	nosave	SavePoint
 job_prist.gat	mapflag	nosave	SavePoint
 job_wiz.gat	mapflag	nosave	SavePoint
 in_moc_16.gat	mapflag	nosave	SavePoint
 job_hunte.gat	mapflag	nosave	SavePoint
-//in_hunter.gat	mapflag	nosave	SavePoint
-// 2-2
 alde_alche.gat	mapflag	nosave	SavePoint
 job_cru.gat	mapflag	nosave	SavePoint
 job_duncer.gat	mapflag	nosave	SavePoint
@@ -24,11 +24,9 @@ monk_test.gat	mapflag	nosave	SavePoint
 monk_in.gat	mapflag	nosave	SavePoint
 in_rogue.gat	mapflag	nosave	SavePoint
 job_sage.gat	mapflag	nosave	SavePoint
-
 job_star.gat	mapflag	nosave	SavePoint
 job_soul.gat	mapflag	nosave	SavePoint
 
-// Special Quests Places =====
 ama_test.gat	mapflag	nosave	SavePoint
 gef_dun03.gat	mapflag	nosave	SavePoint
 que_god01.gat	mapflag	nosave	SavePoint
@@ -41,14 +39,12 @@ gon_test.gat	mapflag	nosave	SavePoint
 kh_kiehl01.gat	mapflag	nosave	SavePoint
 kh_kiehl02.gat	mapflag	nosave	SavePoint
 
-// GvG Arenas ==========================
 guild_vs1.gat	mapflag	nosave	SavePoint
 guild_vs2.gat	mapflag	nosave	SavePoint
 guild_vs3.gat	mapflag	nosave	SavePoint
 guild_vs4.gat	mapflag	nosave	SavePoint
 guild_vs5.gat	mapflag	nosave	SavePoint
 
-// Izlude Arena ========================
 force_1-1.gat	mapflag	nosave	SavePoint
 force_1-2.gat	mapflag	nosave	SavePoint
 force_1-3.gat	mapflag	nosave	SavePoint
@@ -59,14 +55,12 @@ force_3-1.gat	mapflag	nosave	SavePoint
 force_3-2.gat	mapflag	nosave	SavePoint
 force_3-3.gat	mapflag	nosave	SavePoint
 
-// Juperos =============================
 jupe_area1.gat	mapflag	nosave	SavePoint
 jupe_area2.gat	mapflag	nosave	SavePoint
 jupe_ele.gat	mapflag	nosave	SavePoint
 jupe_ele_r.gat	mapflag	nosave	SavePoint
 jupe_gate.gat	mapflag	nosave	SavePoint
 
-//PvP Arenas =================================
 pvp_y_room.gat	mapflag	nosave	SavePoint
 pvp_y_1-1.gat	mapflag	nosave	SavePoint
 pvp_y_1-2.gat	mapflag	nosave	SavePoint
@@ -150,7 +144,6 @@ pvp_y_8-5.gat	mapflag	nosave	SavePoint
 //pvp_n_8-5.gat	mapflag	nosave	SavePoint
 pvp_2vs2.gat	mapflag	nosave	SavePoint
 
-//WoE Castles =================================
 aldeg_cas01.gat	mapflag	nosave	SavePoint
 aldeg_cas02.gat	mapflag	nosave	SavePoint
 aldeg_cas03.gat	mapflag	nosave	SavePoint
@@ -176,13 +169,11 @@ nguild_gef.gat	mapflag	nosave	SavePoint
 nguild_pay.gat	mapflag	nosave	SavePoint
 nguild_prt.gat	mapflag	nosave	SavePoint
 
-//Guild Dungeons ==============================
 gld_dun01.gat	mapflag	nosave	SavePoint
 gld_dun02.gat	mapflag	nosave	SavePoint
 gld_dun03.gat	mapflag	nosave	SavePoint
 gld_dun04.gat	mapflag	nosave	SavePoint
 
-//Normal Maps =================================
 yggdrasil01.gat	mapflag	nosave	SavePoint
 tha_t12.gat	mapflag	nosave	SavePoint
 thana_boss.gat	mapflag	nosave	SavePoint

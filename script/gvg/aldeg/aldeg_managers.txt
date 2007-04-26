@@ -1,20 +1,15 @@
-//===== Freya Script =========================================
-//= War of Emperium Managers for Al De Baran Guild Castles
-//===== By: ==================================================
-//= jAthena - kalen (1.0)
-//= 1.1 by Akaru, ho|yAnge|X, and Valaris
-//===== Current Version: =====================================
-//= 1.2
-//===== Compatible With: =====================================
-//= eAthena 0.1+; RO Episode 4+
-//===== Description: =========================================
-//=
-//===== Additional Comments: =================================
-//= v1.2 Optimized with functions.[kobra_k88]
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//                       Freya GvG System                       
+//--------------------------------------------------------------
 
 
-// Castle 1 ==================================================================================
 aldeg_cas01.gat,218,175,0	script	Arl Fredo	55,{
 
 	if (callfunc("F_GldManager","Arl Fredo","aldeg_cas01",119,223,"A01") == 0) close;
@@ -32,8 +27,6 @@ aldeg_cas01.gat,218,175,0	script	Arl Fredo	55,{
 	close;
 }
 
-
-// Castle 2 ==================================================================================
 aldeg_cas02.gat,78,74,0	script	Chen Lee	55,{
 
 	if (callfunc("F_GldManager","Chen Lee","aldeg_cas02",135,231,"A02") == 0) close;
@@ -51,8 +44,6 @@ aldeg_cas02.gat,78,74,0	script	Chen Lee	55,{
 	close;
 }
 
-
-// Castle 3 ==================================================================================
 aldeg_cas03.gat,110,118,0	script	Chen Lee	55,{
 
 	if (callfunc("F_GldManager","Chen Lee","aldeg_cas03",225,269,"A03") == 0) close;
@@ -70,10 +61,7 @@ aldeg_cas03.gat,110,118,0	script	Chen Lee	55,{
 	close;
 }
 
-
-// Castle 4 ==================================================================================
 aldeg_cas04.gat,53,89,0	script	Brimhemsen	55,{
-//aldeg_cas04.gat,67,116,0	script	Brimhemsen	55,{
 
 	if (callfunc("F_GldManager","Brimhemsen","aldeg_cas04",85,12,"A04") == 0) close;
 
@@ -90,8 +78,6 @@ aldeg_cas04.gat,53,89,0	script	Brimhemsen	55,{
 	close;
 }
 
-
-// Castle 5 ==================================================================================
 aldeg_cas05.gat,52,179,0	script	Brimhemsen	55,{
 
 	if (callfunc("F_GldManager","Brimhemsen","aldeg_cas05",66,11,"A05") == 0) close;

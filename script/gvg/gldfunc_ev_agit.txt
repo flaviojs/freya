@@ -1,34 +1,15 @@
-//===== Freya Script =========================================
-//= War of Emperium Guild Event AgitStart/AgitBreak Functions
-//===== By: ==================================================
-//= jAthena - kalen (1.0)
-//= 1.1 by Akaru, ho|yAnge|X, and Valaris
-//===== Current Version: =====================================
-//= 1.2a
-//===== Compatible With: =====================================
-//= eAthena 0.1+; RO Episode 4+
-//===== Description: =========================================
-//= F_AgitStart is in charge of spawning Emperium and mobs in castles
-//=   when WoE is started.
-//= F_AgitBreak resets guild castle data when a castle has been taken over.
-//=   It then sets the data for the new guild master if there is one.
-//=======================================
-//= Break down of arguments used in F_AgitStart:
-//=   arg(0): name of specific guild castle.
-//=   arg(1): name of specific agit castle script.
-//=   arg(2): x1 for Emperium and monster spawn
-//=   arg(3): y1 for Emperium and monster spawn
-//= Break down of arguments used in F_AgitBreak:
-//=   arg(0): name of specific guild castle.
-//=   arg(1): name of specific OnRevCastle label.
-//===== Additional Comments: =================================
-//= v1.2: All OnAgitStart and OnAgitBreak calls will use these functions.[kobra_k88]
-//= v1.2a: Added OnAgitEnd function.[kobra_k88]
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//                       Freya GvG System                       
+//--------------------------------------------------------------
 
 
-
-// Function for OnAgitStart =========================================
 function	script	F_AgitStart	{
 
 	MapRespawnGuildID getarg(0)+".gat",GetCastleData(getarg(0)+".gat",1),2;
@@ -111,8 +92,6 @@ L_PrtgCas:
 	return;
 }
 
-
-// Function for OnAgitBreak ======================================
 function	script	F_AgitBreak	{
 	//killmonsterall getarg(0)+".gat";
 	set @GID,getcharid(2);
@@ -138,9 +117,8 @@ function	script	F_AgitBreak	{
 		return;
 }
 
-
-// Function for OnAgitEnd ======================================
 function	script	F_AgitEnd	{
+
 	GvgOff getarg(0)+".gat";
 //	if (GetCastleData(getarg(0)+".gat",1) == 0) return;	//enable this line to allow take over of non captured castles after woe ends
 	MapRespawnGuildID getarg(0)+".gat",GetCastleData(getarg(0)+".gat",1),4;

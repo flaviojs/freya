@@ -1,25 +1,31 @@
-//===== Freya Script =========================================
-//= Merchant Job Quest
-//===== By: ==================================================
-//= kobra_k88
-//===== Current Version: =====================================
-//= 1.4
-//===== Compatible With: =====================================
-//= eAthena 1.0 +
-//===== Description: =========================================
-//= <Description>
-//===== Additional Comments: =================================
-//= Fully working
-//= v1.1 Added instant job change for High Novice [Lupus]
-//= v1.3 Added Baby Class support [Lupus]
-//= v1.4 Optimised and moved first checker to Jfunc1-1 [massdriller]
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Merchant Job Change Quest	Author: kobra_k88
+//--------------------------------------------------------------
+// Revision History: v1.4
+//--------------------------------------------------------------
+//	1.0 First version [kobra_k88]
+//	1.1 Added instant job change for High Novice [Lupus]
+//	1.2 Added Baby Class support [Lupus]
+//	1.3 Optimized and moved first checker to Jfunc1-1 [massdriller]
+//	1.4 Removed massdriller's illuminaRO custom crap [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: N/A
+//--------------------------------------------------------------
 
 
-// == Guild NPCs ==
-// -- Mahnsoo --
+//--------------------------------------------------------------
+// Chief Mahnsoo
+//--------------------------------------------------------------
+
 alberta_in.gat,53,43,6	script	Chief Mahnsoo	86,{
-	if (countitem(9001)>1) goto illuminaRO;
+
 	callfunc "F_ToHigh",JOB_MERCHANT_HIGH,"Merchant High",JOB_WHITESMITH,"White Smith",0,0,0,0,"Chief Mahnsoo";
 	mes "[Chief Mahnsoo]";
 	if (BaseJob == JOB_NOVICE && JOB_MERCHANT_q3 == 4) goto L_MakeMerc;
@@ -295,28 +301,6 @@ L_MakeMerc:
 	mes "I am very pleased that you decided to join the Merchant Guild and I hope you will play an active role in Rune Midgards' economy!  The best of luck to you!!";
 	if ((JOB_MERCHANT_q2==7) || (JOB_MERCHANT_q2==8)) goto L_Favor;
 	close;
-
-	illuminaRO:
-		mes "[massdriller]";
-		mes "I see you have solved my little quest.";
-		mes "This is what you get";
-		next;
-		mes "[massdriller]";
-		mes "As said in my post, you will know the truth;";
-		mes "It is simple, i have another love in my life";
-		mes "and it's a person, not a game";
-		next;
-		mes "[massdriller]";
-		mes "The illuminaRO is nothing more then something i want you to believe.";
-		next;
-		mes "[massdriller]";
-		mes "The real legacy will lie in the wall of the minds of the many.";
-		next;
-		mes "[massdriller]";
-		mes "That is all i shall say, i hope you enjoy playing RO as much as i have,";
-		mes "To the dev team, i send my best reguars.";
-		mes "Ciao.";
-		close;
 
 	L_Favor:
 		next;

@@ -1,20 +1,15 @@
-//===== Freya Script =========================================
-//= War of Emperium Managers for Geffen Guild Castles
-//===== By: ==================================================
-//= jAthena - kalen (1.0)
-//= 1.1 by Akaru, ho|yAnge|X, and Valaris
-//===== Current Version: =====================================
-//= 1.2
-//===== Compatible With: =====================================
-//= eAthena 0.1+; RO Episode 4+
-//===== Description: =========================================
-//=
-//===== Additional Comments: =================================
-//= v1.2 Optimized with functions.[kobra_k88]
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//                       Freya GvG System                       
+//--------------------------------------------------------------
 
 
-// Castle 1 ==================================================================================
 gefg_cas01.gat,40,48,5	script	Gnaucher	55,{
 	if (callfunc("F_GldManager","Gnaucher","gefg_cas01",155,112,"G01") == 0) close;
 
@@ -31,8 +26,6 @@ gefg_cas01.gat,40,48,5	script	Gnaucher	55,{
 	close;
 }
 
-
-// Castle 2 ==================================================================================
 gefg_cas02.gat,12,66,5	script	Esmark	55,{
 	if (callfunc("F_GldManager","Esmark","gefg_cas02",141,115,"G02") == 0) close;
 
@@ -49,8 +42,6 @@ gefg_cas02.gat,12,66,5	script	Esmark	55,{
 	close;
 }
 
-
-// Castle 3 ==================================================================================
 gefg_cas03.gat,106,23,5	script	Jyang	55,{
 	if (callfunc("F_GldManager","Jyang","gefg_cas03",270,290,"G03") == 0) close;
 
@@ -67,8 +58,6 @@ gefg_cas03.gat,106,23,5	script	Jyang	55,{
 	close;
 }
 
-
-// Castle 4 ==================================================================================
 gefg_cas04.gat,73,46,5	script	Kelbany	55,{
 	if (callfunc("F_GldManager","Kelbany","gefg_cas04",116,118,"G04") == 0) close;
 
@@ -85,8 +74,6 @@ gefg_cas04.gat,73,46,5	script	Kelbany	55,{
 	close;
 }
 
-
-// Castle 5 ==================================================================================
 gefg_cas05.gat,70,52,5	script	Beeor	55,{
 	if (callfunc("F_GldManager","Beeor","gefg_cas05",144,110,"G05") == 0) close;
 

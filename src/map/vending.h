@@ -1,5 +1,5 @@
 // Copyright (c) Freya Development Team - Licensed under GNU GPL
-// For more information, see LICENCE in the main folder
+// For more information, see License.txt in the main folder
 
 #ifndef	_VENDING_H_
 #define	_VENDING_H_

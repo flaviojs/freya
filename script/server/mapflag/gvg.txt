@@ -1,20 +1,21 @@
-//===== Freya Script =========================================
-//= Guild Vs Guild Maps
-//===== By: ==================================================
-//= Original: eAthena
-//= Updated:  Freya Developer Team
-//===== Description: =========================================
-//= GvG: Turns on GvG mode
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//                     Freya Mapflag System                     
+//--------------------------------------------------------------
 
-// GvG Arenas =============
+
 guild_vs1.gat	mapflag	gvg
 guild_vs2.gat	mapflag	gvg
 guild_vs3.gat	mapflag	gvg
 guild_vs4.gat	mapflag	gvg
 guild_vs5.gat	mapflag	gvg
 
-// Guild Castles ==========
 aldeg_cas01.gat	mapflag	gvg
 aldeg_cas02.gat	mapflag	gvg
 aldeg_cas03.gat	mapflag	gvg
@@ -36,13 +37,11 @@ prtg_cas03.gat	mapflag	gvg
 prtg_cas04.gat	mapflag	gvg
 prtg_cas05.gat	mapflag	gvg
 
-// Guild Dungeons ==========
 gld_dun01.gat	mapflag	gvg_dungeon
 gld_dun02.gat	mapflag	gvg_dungeon
 gld_dun03.gat	mapflag	gvg_dungeon
 gld_dun04.gat	mapflag	gvg_dungeon
 
-// Novice Castles =========
 nguild_alde.gat mapflag gvg
 nguild_gef.gat mapflag gvg
 nguild_pay.gat mapflag gvg

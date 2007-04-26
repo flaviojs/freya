@@ -5,10 +5,13 @@
                 (  _)  )  \   ) _)  \  /  /__\                
                 (_)   (_)\_) (___) (__/  (_)(_)               
                     http://www.ro-freya.net                   
-                      Freya SVN Changelog                     
+                 Freya Project Revision History               
 --------------------------------------------------------------
 
 Date	Added
+
+04/25/2007
+	* Project Final Release: Freya 4.0 Edition [Freya Dev Team]
 
 04/20/2007
 	* Fixed: Throw Venom Knife can now be used with any weapon set [Latios]

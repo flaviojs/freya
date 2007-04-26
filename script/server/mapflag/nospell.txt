@@ -1,13 +1,15 @@
-//===== Freya Script =========================================
-//= Map flags that disable spells
-//===== By: ==================================================
-//= Freya Dev Team
-//= found on freya's forum (thanks to BeoWulf)
-//============================================================
-// Note: by default, all maps are disabled. add maps as you want.
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//                     Freya Mapflag System                     
+//--------------------------------------------------------------
 
-// Cities
+
 //prontera.gat	mapflag	nospell
 //alberta.gat	mapflag	nospell
 //aldebaran.gat	mapflag	nospell
@@ -33,7 +35,6 @@
 //sec_in01.gat	mapflag	nospell
 //sec_in02.gat	mapflag	nospell
 
-// Inside Buildings
 //airplane.gat	mapflag	nospell
 //auction01.gat	mapflag	nospell
 //auction02.gat	mapflag	nospell
@@ -88,5 +89,4 @@
 //yuno_in05.gat	mapflag	nospell
 //yuno_pre.gat	mapflag	nospell
 
-// Inside Jail
-sec_pri.gat	mapflag	nospell
+//sec_in02.gat	mapflag	nospell

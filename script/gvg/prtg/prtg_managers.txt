@@ -1,22 +1,17 @@
-//===== Freya Script =========================================
-//= War of Emperium Managers for Prontera Guild Castles
-//===== By: ==================================================
-//= jAthena - kalen
-//===== Current Version: =====================================
-//= 1.2
-//===== Compatible With: =====================================
-//= Freya
-//===== Description: =========================================
-//= Prontera Guild Managers
-//===== Additional Comments: =================================
-//= 1.0 Added first version [kalen]
-//= 1.1 Rewritten [Akaru/ho|yAnge|X/Valaris]
-//= 1.2 Optimized with functions [kobra_k88]
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//                       Freya GvG System                       
+//--------------------------------------------------------------
 
 
-// Castle 1 ==================================================================================
 prtg_cas01.gat,112,181,0	script	Abrai	55,{
+
 	if (callfunc("F_GldManager","Abrai","prtg_cas01",15,209,"Pt01") == 0) close;
 
 	if (@GDnum==10) guardian "prtg_cas01.gat",196,92,"Soldier Guardian",1287,1,"Guardian_Pt01::OnGuardianDied",0;
@@ -32,9 +27,8 @@ prtg_cas01.gat,112,181,0	script	Abrai	55,{
 	close;
 }
 
-
-// Castle 2 ==================================================================================
 prtg_cas02.gat,94,61,0	script	Rhay	55,{
+
 	if (callfunc("F_GldManager","Rhay","prtg_cas02",201,229,"Pt02") == 0) close;
 
 	if (@GDnum==10) guardian "prtg_cas02.gat",75,71,"Soldier Guardian",1287,1,"Guardian_Pt02::OnGuardianDied",0;
@@ -50,9 +44,8 @@ prtg_cas02.gat,94,61,0	script	Rhay	55,{
 	close;
 }
 
-
-// Castle 3 ==================================================================================
 prtg_cas03.gat,51,100,4	script	Stick	55,{
+
 	if (callfunc("F_GldManager","Stick","prtg_cas03",189,132,"Pt03") == 0) close;
 
 	if (@GDnum==10) guardian "prtg_cas03.gat",165,55,"Soldier Guardian",1287,1,"Guardian_Pt03::OnGuardianDied",0;
@@ -68,9 +61,8 @@ prtg_cas03.gat,51,100,4	script	Stick	55,{
 	close;
 }
 
-
-// Castle 4 ==================================================================================
 prtg_cas04.gat,259,265,4	script	Bandred	55,{
+
 	if (callfunc("F_GldManager","Bandred","prtg_cas04",271,162,"Pt04") == 0) close;
 
 	if (@GDnum==10) guardian "prtg_cas04.gat",30,234,"Soldier Guardian",1287,1,"Guardian_Pt04::OnGuardianDied",0;
@@ -86,9 +78,8 @@ prtg_cas04.gat,259,265,4	script	Bandred	55,{
 	close;
 }
 
-
-// Castle 5 ==================================================================================
 prtg_cas05.gat,36,37,4	script	Reiner	55,{
+
 	if (callfunc("F_GldManager","Reiner","prtg_cas05",273,179,"Pt05") == 0) close;
 
 	if (@GDnum==10) guardian "prtg_cas05.gat",244,15,"Soldier Guardian",1287,1,"Guardian_Pt05::OnGuardianDied",0;

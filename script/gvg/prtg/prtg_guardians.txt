@@ -1,23 +1,17 @@
-//===== Freya Script =========================================
-//= War of Emperium - prtg_cas guardians script
-//===== By: ==================================================
-//= holyAngelX (1.0)
-//===== Current Version: =====================================
-//= 1.2a
-//===== Compatible With: =====================================
-//= eAthena 0.1+; RO Episode 4+
-//===== Description: =========================================
-//= Re-spawns guardians on server start if they have been
-//= purchased.  Also announces when a guardian dies.
-//===== Additional Comments: =================================
-//= 1.1 by joedukk
-//= 1.2 by Akaru and Valaris
-//= 1.2a Guardians for all prtg castles are now in this file.
-//= Minor optimizations.[kobra_k88]
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//                       Freya GvG System                       
+//--------------------------------------------------------------
 
 
 prtg_cas01.gat,197,197,0	script	Guardian_Pt01	-1,{
+
 OnAgitInit:
 	if (GetCastleData("prtg_cas01.gat",10) == 1) guardian "prtg_cas01.gat",196,92,"Soldier Guardian",1287,1,"Guardian_Pt01::OnGuardianDied",0;
 	if (GetCastleData("prtg_cas01.gat",11) == 1) guardian "prtg_cas01.gat",113,200,"Soldier Guardian",1287,1,"Guardian_Pt01::OnGuardianDied",1;

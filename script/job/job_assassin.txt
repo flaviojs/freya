@@ -1,39 +1,35 @@
-//===== Freya Script =========================================
-//= Assassin Job Quest
-//===== By: ================================================== 
-//= kobra_k88/Freya
-//===== Current Version: ===================================== 
-//= 2.6
-//===== Compatible With: ===================================== 
-//= Freya
-//===== Description: ========================================= 
-//= Based of Official RO Assassin jobchange quest.  There are small
-//= differences due to gameplay issues.
-//===== Additional Comments: ================================= 
-//= v1.0 Used some dialogue from the aegis Assassin script translated By: Pgro Team (OwNaGe)
-//= Also converted the booby traps from the aegis script.[kobra_k88]
-//= v1.1 Made adjustments to ontouch npcs to work with the new "ontouch" functionality.
-//= Fixed some duplicate npc names.  Added missing waitingroom triggers.
-//= Fixed warp in "TimerSin", was supposed to be an areawarp.
-//= For some reason sometimes the "Nameless One" would have message windows
-//= without controls.  Changed the doevent that triggers him to an
-//= addtimer and that seemed make the prob. go away[kobra_k88]
-//= 1.2 Fixed WRONG skillpoint check! [Lupus]
-//= 1.2b Fixed missing commands and typos [Lupus]
-//= 1.3 Baby class Support added [Lupus]
-//= 1.5 Fixed possible EXP abuse [Lupus]
-//= 1.6 Added a func which prevent advanced classes passing
-//= 2nd Job Quests again. It also guides adv classes where
-//= to go. [Lupus]
-//= 2.0 Changed numbers to constants. [Vicious]
-//= 2.1 Removed Duplicates [Silent]
-//= 2.2 Merged back JFunc. Fixed missing dialogue [Lupus]
-//= 2.3 Fixed typo and change Nameless addtimer to 100 (with 700ms I 
-//= was still able to bypass it) [Toms]
-//= 2.4 Fixed skipping of Nameless NPC [Lupus]
-//= 2.5 Fixed a Rogue exploit [Lupus]
-//= 2.6 Reconverted updated script from eAthena to Freya [Tsuyuki]
-//============================================================ 
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Assassin Job Change Quest	Author: A Lot of People
+//--------------------------------------------------------------
+// Revision History: v2.6
+//--------------------------------------------------------------
+//	1.0 Used some dialogue from the Aegis Assassin script translated [Pgro Team]
+//	1.1 Converted the booby traps from the Aegis script [kobra_k88]
+//	1.2 Made adjustments to ontouch npcs to work with the new "ontouch" functionality [kobra_k88]
+//	1.3 Fixed some duplicate NPC names, added missing waitingroom triggers [kobra_k88]
+//	1.4 Fixed warp in "TimerSin", was supposed to be an areawarp [kobra_k88]
+//	1.5 Fixed WRONG skillpoint check! [Lupus]
+//	1.6 Fixed missing commands and typos [Lupus]
+//	1.7 Baby class Support added [Lupus]
+//	1.8 Fixed possible EXP abuse [Lupus]
+//	1.9 Added a function to properly direct Transcendent job changing [Lupus]
+//	2.0 Changed numbers to constants [Vicious]
+//	2.1 Removed Duplicates [Silent]
+//	2.2 Merged back JFunc, fixed missing dialogue [Lupus]
+//	2.3 Fixed typo and change Nameless addtimer to 100 (with 700ms I was still able to bypass it) [Toms]
+//	2.4 Fixed skipping of Nameless NPC [Lupus]
+//	2.5 Fixed a Rogue exploit [Lupus]
+//	2.6 Reconverted updated script from eAthena to Freya [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: N/A
+//--------------------------------------------------------------
 
 
 in_moc_16.gat,19,33,4	script	Guildsman	55,{

@@ -1,23 +1,26 @@
-//===== Freya Script =========================================
-//= Quest Skills Girl
-//===== By: ==================================================
-//= Unknown/Freya
-//===== Current Version: =====================================
-//= 2.5
-//===== Compatible With: =====================================
-//= Freya
-//===== Description: =========================================
-//= Single NPC that assigns quests skills for all classes.
-//===== Additional Comments: =================================
-//= 1.0 Added first version [Unknown]
-//= x.x Edited script [DarkChild]
-//= x.x Added advanced classes [ShadowLady]
-//= x.x Added baby clases [Midas]
-//= 2.2 Fixed a few bugs [Tsuyuki]
-//= 2.3 Added support for the new classes and redid most of the script [Tsuyuki]
-//= 2.4 Added second class quest skill support [Tsuyuki]
-//= 2.5 Modified dialogue [Tsuyuki]
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Quest Skill NPC	Author: A Lot of People
+//--------------------------------------------------------------
+// Revision History: v1.7
+//--------------------------------------------------------------
+//	1.0 Added first version [Unknown]
+//	1.1 Edited script [DarkChild]
+//	1.2 Added advanced classes [ShadowLady]
+//	1.3 Added baby clases [Midas]
+//	1.4 Fixed a few bugs [Tsuyuki]
+//	1.5 Added support for the new classes and redid most of the script [Tsuyuki]
+//	1.6 Added second class quest skill support [Tsuyuki]
+//	1.7 Modified dialogue [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: N/A
+//--------------------------------------------------------------
 
 
 prontera.gat,128,200,6	script	Quest Skills	893,{
@@ -60,7 +63,7 @@ prontera.gat,128,200,6	script	Quest Skills	893,{
 		mes "However.. I'll still give you the standard Novice quest skills.";
 		next;
 		mes "[Alyssa]";
-		mes "Here's your quest skills. Enjoy!";
+		mes "Here are your quest skills. Enjoy!";
 		skill 142,1,0;
 		emotion 46;
 		close;
@@ -70,7 +73,7 @@ prontera.gat,128,200,6	script	Quest Skills	893,{
 		mes "So.. you're a " + Class + ".";
 		next;
 		mes "[Alyssa]";
-		mes "Here's your quest skills. Enjoy!";
+		mes "Here are your quest skills. Enjoy!";
 		skill 142,1,0;
 		skill 143,1,0;
 		emotion 46;
@@ -81,7 +84,7 @@ prontera.gat,128,200,6	script	Quest Skills	893,{
 		mes "So.. you're a " + Class + ".";
 		next;
 		mes "[Alyssa]";
-		mes "Here's your quest skills. Enjoy!";
+		mes "Here are your quest skills. Enjoy!";
 		skill 142,1,0;
 		skill 144,1,0;
 		skill 145,1,0;
@@ -96,7 +99,7 @@ prontera.gat,128,200,6	script	Quest Skills	893,{
 		mes "So.. you're a " + Class + ".";
 		next;
 		mes "[Alyssa]";
-		mes "Here's your quest skills. Enjoy!";
+		mes "Here are your quest skills. Enjoy!";
 		skill 142,1,0;
 		skill 157,1,0;
 		if (Basejob == JOB_WIZARD) skill 1006,1,0;
@@ -113,7 +116,7 @@ prontera.gat,128,200,6	script	Quest Skills	893,{
 		mes "So.. you're a " + Class + ".";
 		next;
 		mes "[Alyssa]";
-		mes "Here's your quest skills. Enjoy!";
+		mes "Here are your quest skills. Enjoy!";
 		skill 142,1,0;
 		skill 147,1,0;
 		skill 148,1,0;
@@ -128,7 +131,7 @@ prontera.gat,128,200,6	script	Quest Skills	893,{
 		mes "So.. you're a " + Class + ".";
 		next;
 		mes "[Alyssa]";
-		mes "Here's your quest skills. Enjoy!";
+		mes "Here are your quest skills. Enjoy!";
 		skill 142,1,0;
 		skill 156,1,0;
 		if (Basejob == JOB_PRIEST) skill 1014,1,0;
@@ -142,7 +145,7 @@ prontera.gat,128,200,6	script	Quest Skills	893,{
 		mes "So.. you're a " + Class + ".";
 		next;
 		mes "[Alyssa]";
-		mes "Here's your quest skills. Enjoy!";
+		mes "Here are your quest skills. Enjoy!";
 		skill 142,1,0;
 		skill 153,1,0;
 		skill 154,1,0;
@@ -157,7 +160,7 @@ prontera.gat,128,200,6	script	Quest Skills	893,{
 		mes "So.. you're a " + Class + ".";
 		next;
 		mes "[Alyssa]";
-		mes "Here's your quest skills. Enjoy!";
+		mes "Here are your quest skills. Enjoy!";
 		skill 142,1,0;
 		skill 149,1,0;
 		skill 150,1,0;

@@ -1,19 +1,22 @@
-//===== Freya Script =========================================
-//= Novice Training Grounds
-//===== By: ==================================================
-//= eAthena Dev Team
-//===== Current Version: =====================================
-//= 1.2
-//===== Compatible With: =====================================
-//= Freya
-//===== Description: =========================================
-//= 1.0 by [Yor]
-//= 1.1 Fixed: warp on select the job thief at training ground
-//=     by [General__]
-//= 1.2 Fixed: Warp when selecting Archer job (Thanks to Squall) [Tsuyuki]
-//===== Additional Comments: =================================
-//= Fully working
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Novice Training Grounds	Author: A Lot of People
+//--------------------------------------------------------------
+// Revision History: v1.2
+//--------------------------------------------------------------
+//	1.0 First version [Yor]
+//	1.1 Fixed: warp on select the job thief at training ground [General__]
+//	1.2 Fixed: Warp when selecting Archer job (Thanks to Squall) [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: N/A
+//--------------------------------------------------------------
+
 
 //------------------------------------------------------------
 //------------------ EXPLANATION OF VARIABLES ----------------

@@ -1,18 +1,21 @@
-//===== Freya Script =========================================
-//= Card Remover NPC
-//===== By: ==================================================
-//= TyrNemesis^/Freya
-//===== Current Version: =====================================
-//= 1.1
-//===== Compatible With: =====================================
-//= Freya
-//===== Description: =========================================
-//= Card Removal Custom NPC
-//===== Additional Comments: =================================
-//= 1.0 First version [TyrNemesis^]
-//= 1.1 Improved formatting a little bit [Tsuyuki]
-//= To-Do: Improve script/dialogue, remove failure chance
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Card Remover	Author: TyrNemesis^/Tsuyuki
+//--------------------------------------------------------------
+// Revision History: v1.1
+//--------------------------------------------------------------
+//	1.0 First version [TyrNemesis^]
+//	1.1 Improved formatting a little bit [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: To-Do: Improve script/dialogue, remove
+// failure chance.
+//--------------------------------------------------------------
 
 
 prt_in.gat,28,73,4	script	Wise Old Woman	78,{

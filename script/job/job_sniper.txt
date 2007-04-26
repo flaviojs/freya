@@ -1,18 +1,20 @@
-//===== Freya Script =========================================
-//= Advance Class jobchanger after kRO Normals.
-//===== By: ==================================================
-//= Nana
-//= finished, optimized and tested by Lupus
-//===== Current Version: =====================================
-//= 1.1
-//===== Compatible With: =====================================
-//= eAthena 1.0 +
-//===== Description: =========================================
-//= Advance Class jobchanger after kRO Normals.
-//===== Additional Comments: =================================
-//= v1.01 Fixed the error in jobchange by Chacina
-//= v1.1 Made all into functions, additional checks, etc. [Lupus]
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Sniper Job Change Quest	Author: A Lot of People
+//--------------------------------------------------------------
+// Revision History: v1.1
+//--------------------------------------------------------------
+//	1.0 First version [Nana]
+//	1.1 Optimized [Lupus]
+//--------------------------------------------------------------
+// Additional Notes: N/A
+//--------------------------------------------------------------
 
 // -== Sniper ==-
 valkyrie.gat,44,55,6	script	Sniper	727,{

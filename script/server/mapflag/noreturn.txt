@@ -1,14 +1,15 @@
-//===== Freya Script =========================================
-//= Map flags that disable use of Butterfly wings (not for Fly wings)
-//===== By: ==================================================
-//= Original: eAthena
-//= Updated: Freya
-//===== Notes: ===============================================
-//= For disabling Fly wings use noteleport
-//= example: ayo_in01.gat	mapflag	noreturn
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//                     Freya Mapflag System                     
+//--------------------------------------------------------------
 
-// Cities ========================
+
 ayo_in01.gat	mapflag	noreturn
 ayo_in02.gat	mapflag	noreturn
 alb_ship.gat	mapflag	noreturn
@@ -61,8 +62,6 @@ que_rachel.gat	mapflag	noreturn
 ve_in.gat	mapflag	noreturn
 ve_in02.gat	mapflag	noreturn
 nameless_in.gat	mapflag	noreturn
-
-// New areas
 yuno_pre.gat	mapflag	noreturn
 y_airport.gat	mapflag	noreturn
 lhz_airport.gat	mapflag	noreturn
@@ -75,16 +74,13 @@ kh_rossi.gat	mapflag	noreturn
 kh_school.gat	mapflag	noreturn
 kh_vila.gat	mapflag	noreturn
 
-// Job Quests ====================
 job_sword1.gat	mapflag	noreturn
 job_thief1.gat	mapflag	noreturn
-// 2-1 -----------------------
 job_hunte.gat	mapflag	noreturn
 job_prist.gat	mapflag	noreturn
 job_wiz.gat	mapflag	noreturn
 in_hunter.gat	mapflag	noreturn
 in_moc_16.gat	mapflag	noreturn
-// 2-2 --------------------
 alde_alche.gat	mapflag	noreturn
 job_cru.gat	mapflag	noreturn
 job_duncer.gat	mapflag	noreturn
@@ -95,7 +91,6 @@ in_rogue.gat	mapflag	noreturn
 job_sage.gat	mapflag	noreturn
 que_ng.gat	mapflag	noreturn
 
-// Special Quests Places =========
 que_god01.gat	mapflag	noreturn
 que_god02.gat	mapflag	noreturn
 que_bingo.gat	mapflag	noreturn
@@ -103,8 +98,6 @@ que_hugel.gat	mapflag	noreturn
 poring_c01.gat	mapflag	noreturn
 poring_c02.gat	mapflag	noreturn
 
-// Guild Castles =================
-//= 1.3 According to the kRO patch, enabled Butterfly wings in the Castles
 //aldeg_cas01.gat	mapflag	noreturn
 //aldeg_cas02.gat	mapflag	noreturn
 //aldeg_cas03.gat	mapflag	noreturn
@@ -130,19 +123,16 @@ poring_c02.gat	mapflag	noreturn
 //nguild_pay.gat	mapflag	noreturn
 //nguild_prt.gat	mapflag	noreturn
 
-// GvG Arenas ===================
 guild_vs1.gat	mapflag	noreturn
 guild_vs2.gat	mapflag	noreturn
 guild_vs3.gat	mapflag	noreturn
 guild_vs4.gat	mapflag	noreturn
 guild_vs5.gat	mapflag	noreturn
 
-// Arenas =====================>\\
 arena_room.gat	mapflag	noreturn
 sec_in01.gat	mapflag	noreturn
 sec_in02.gat	mapflag	noreturn
 
-// PvP Arenas=======================
 pvp_y_room.gat	mapflag	noreturn
 pvp_y_1-1.gat	mapflag	noreturn
 pvp_y_1-2.gat	mapflag	noreturn

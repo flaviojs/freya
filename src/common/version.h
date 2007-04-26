@@ -1,13 +1,13 @@
 // Copyright (c) Freya Development Team - Licensed under GNU GPL
-// For more information, see LICENCE in the main folder
+// For more information, see License.txt in the main folder
 
 #ifndef _VERSION_H_
 #define _VERSION_H_
 
-#define FREYA_STATE				1		// 0 = Release, 1 = Development
+#define FREYA_STATE				0		// 0 = Release, 1 = Development
 
-#define FREYA_MAJORVERSION		3		// Major version number
-#define FREYA_MINORVERSION		1		// Minor version number
+#define FREYA_MAJORVERSION		4		// Major version number
+#define FREYA_MINORVERSION		0		// Minor version number
 #define FREYA_REVISION			0		// Revision number
 
 #define FREYA_LOGINVERSION		1		// Login-server version

@@ -31,7 +31,7 @@
 
 alberta.gat,30,65,3	script	Akagi#nq	730,{
 
-	if (Class != JOB_NOVICE) goto L_NotNovice;
+	if (Class != Job_Novice) goto L_NotNovice;
 	if (JobLevel < 9) goto L_Weak;
 
 	mes "[Akagi]";

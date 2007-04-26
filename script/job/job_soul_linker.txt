@@ -1,21 +1,24 @@
-//===== Freya Script =========================================
-//= Soul Linker Job Quest
-//===== By: ================================================== 
-//= Celestria
-//===== Current Version: ===================================== 
-//= 1.1
-//===== Compatible With: ===================================== 
-//= Freya
-//===== Description: ========================================= 
-//= 
-//===== Additional Comments: ================================= 
-//= A temp Soul Linker Job Changer based on the kRO quest.
-//= Quest info from RagnaInfo. Sprites from kRO screenshots
-//= 1.0	Optimized and updated [Lupus]
-//= 1.1 Added to Freya [Tsuyuki]
-//============================================================ 
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Soul Linker Job Change Quest	Author: Celestria
+//--------------------------------------------------------------
+// Revision History: v1.1
+//--------------------------------------------------------------
+//	1.0 First version [Celestria]
+//	1.1 Optimized and updated [Lupus]
+//--------------------------------------------------------------
+// Additional Notes: Temp quest, highly unofficial.
+//--------------------------------------------------------------
+
 
 morocc_in.gat,174,30,7	script	Little Boy#sltest	716,{
+
 	if (SOUL_Q==1) goto L_Check;
 	if (SOUL_Q >= 2) goto L_Warp;
 	if (Class == JOB_SOUL_LINKER) goto L_Thanks;

@@ -1,22 +1,25 @@
-//===== Freya Script =========================================
-//= MvP Arena System
-//===== By: ==================================================
-//= Darkchild/Freya
-//===== Current Version: =====================================
-//= 1.6
-//===== Compatible With: =====================================
-//= Freya
-//===== Description: =========================================
-//= A custom MvP Arena system script
-//===== Additional Comments: =================================
-//= 1.0 MvP Arena! -> 16 different MVP's inside [Darkchild]
-//= 1.1 Added an NPC in Prontera [Darkchild]
-//= 1.2 Changed where the MvP warper warps players because of a change in quiz_oo.gat [Darkchild]
-//= 1.3 Redid the scripts for the four room keeper NPCs [Darkchild]
-//= 1.4 Spaced scripting to be easier to read [Harp]
-//= 1.5 Fixed awkward English grammar and removed server reference [Harp]
-//= 1.6 Improved formatting and added some missing labels [Tsuyuki]
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: MvP Arena System	Author: DarkChild/Harp/Tsuyuki
+//--------------------------------------------------------------
+// Revision History: v1.6
+//--------------------------------------------------------------
+//	1.0 MvP Arena! -> 16 different MVP's inside [Darkchild]
+//	1.1 Added an NPC in Prontera [Darkchild]
+//	1.2 Changed where the MvP warper warps players because of a change in quiz_oo.gat [Darkchild]
+//	1.3 Redid the scripts for the four room keeper NPCs [Darkchild]
+//	1.4 Spaced scripting to be easier to read [Harp]
+//	1.5 Fixed awkward English grammar and removed server reference [Harp]
+//	1.6 Improved formatting and added some missing labels [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: N/A
+//--------------------------------------------------------------
 
 
 // --- Entrance to the Arena in Prontera

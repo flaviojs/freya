@@ -1,20 +1,14 @@
-//===== Freya Script =========================================
-//= War of Emperium Treasure Rooms for NGuild Guild Castles
-//===== By: ==================================================
-//= kobra_k88
-//===== Current Version: =====================================
-//= 1.2
-//===== Compatible With: =====================================
-//= eAthena 0.1+; RO Episode 4+
-//===== Description: =========================================
-//=
-//===== Additional Comments: =================================
-//= Based off existing guild scripts.  Do not know if it is accurate.[kobra_k88]
-//= 1.2 Official treasure spawn [Lupus]
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//                       Freya GvG System                       
+//--------------------------------------------------------------
 
-
-//<=============================== Castle 1 =================================>\\
 
 // Treasure Spawn -----------------------
 nguild_alde.gat,1,1,1	script	Treasure_N01	-1,{
@@ -40,8 +34,6 @@ nguild_alde.gat,123,223,0	script	Switch#TresN01	111,{
 	end;
 }
 
-//<================================ Castle 2 ================================>\\
-
 // Treasure Spawn ----------------------------
 nguild_gef.gat,1,1,1	script	Treasure_N02	-1,{
 
@@ -66,8 +58,6 @@ nguild_gef.gat,152,117,0	script	Switch#TresN02	111,{
 	end;
 }
 
-//<================================ Castle 3 ================================>\\
-
 // Treasure Spawn ---------------------------
 nguild_pay.gat,1,1,0	script	Treasure_N03	-1,{
 OnRecvCastleN03:
@@ -90,8 +80,6 @@ nguild_pay.gat,295,8,0	script	Switch#TresN03	111,{
 	callfunc "F_GldTreasSw", "nguild_pay",120,59;
 	end;
 }
-
-//<================================ Castle 4 ================================>\\
 
 // Treasure Spawn -------------------------------
 nguild_prt.gat,1,1,0	script	Treasure_N04	-1,{

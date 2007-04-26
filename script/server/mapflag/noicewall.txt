@@ -1,14 +1,15 @@
-//===== Freya Script =========================================
-//= Map flags that disable icewall skill
-//===== By: ==================================================
-//= Original: eAthena
-//= Updated: Freya Development Team
-//===== Description: =========================================
-//= noicewall: Disables Icewall skill.
-//= To disable Icewall on a specific map add the mapname here.
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//                     Freya Mapflag System                     
+//--------------------------------------------------------------
 
-// Cities ==========
+
 ayo_in01.gat	mapflag	noicewall
 ayo_in02.gat	mapflag	noicewall
 alberta_in.gat	mapflag	noicewall
@@ -98,7 +99,6 @@ ve_in02.gat	mapflag	noicewall
 nameless_i.gat	mapflag	noicewall
 nameless_in.gat	mapflag	noicewall
 
-// Guild Castles ==========
 aldeg_cas01.gat	mapflag	noicewall
 aldeg_cas02.gat	mapflag	noicewall
 aldeg_cas03.gat	mapflag	noicewall
@@ -120,7 +120,6 @@ prtg_cas03.gat	mapflag	noicewall
 prtg_cas04.gat	mapflag	noicewall
 prtg_cas05.gat	mapflag	noicewall
 
-// Novice Guild Castles ===
 nguild_alde.gat	mapflag	noicewall
 nguild_gef.gat	mapflag	noicewall
 nguild_pay.gat	mapflag	noicewall

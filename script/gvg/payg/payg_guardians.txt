@@ -1,23 +1,17 @@
-//===== Freya Script =========================================
-//= War of Emperium - payg_cas guardians script
-//===== By: ==================================================
-//= holyAngelX (1.0)
-//===== Current Version: =====================================
-//= 1.2a
-//===== Compatible With: =====================================
-//= eAthena 0.1+; RO Episode 4+
-//===== Description: =========================================
-//= Re-spawns guardians on server start if they have been
-//= purchased.  Also announces when a guardian dies.
-//===== Additional Comments: =================================
-//= 1.1 by joedukk
-//= 1.2 by Akaru and Valaris
-//= 1.2a Guardians for all payg castles are now in this file.
-//= Minor optimizations.[kobra_k88]
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//                       Freya GvG System                       
+//--------------------------------------------------------------
 
 
 payg_cas01.gat,139,139,0	script	Guardian_Py01	-1,{
+
 OnAgitInit:
 	if (GetCastleData("payg_cas01.gat",10) == 1) guardian "payg_cas01.gat",210,120,"Soldier Guardian",1287,1,"Guardian_Py01::OnGuardianDied",0;
 	if (GetCastleData("payg_cas01.gat",11) == 1) guardian "payg_cas01.gat",69,26,"Soldier Guardian",1287,1,"Guardian_Py01::OnGuardianDied",1;

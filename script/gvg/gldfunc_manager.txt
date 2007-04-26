@@ -1,37 +1,15 @@
-//===== Freya Script =========================================
-//= War of Emperium Guild Manager Function
-//===== By: ==================================================
-//= jAthena - kalen (1.0)
-//= 1.1 by Akaru, ho|yAnge|X, and Valaris
-//===== Current Version: =====================================
-//= 1.2b
-//===== Compatible With: =====================================
-//= eAthena 0.1+; RO Episode 4+
-//===== Description: =========================================
-//= The Guild Manager allows the Guildmaster to invest in comerce
-//= and defense, hire guardians and kafras, go to the treasure room,
-//= and surrender the guild castle.
-//==============================================
-//= Break down of arguments used in the function:
-//=   arg(0): name of Castle Manager
-//=   arg(1): name of guild castle.
-//=   arg(2): x1 coordinate for warp to treasure room
-//=   arg(3): y1 coordinate for warp to treasure room
-//=   arg(4): guild script suffix for kafra, gaurdian scripts etc.
-//===== Additional Comments: =================================
-//= v1.2: All Guild manager scripts use this function. Optimized
-//= Comerce and Defense investment. [kobra_k88]
-//= v1.2a Function now returns to script that called it.
-//= Added disablenpc line to surrender castle option to remove kafra
-//= upon surrender.[kobra_k88]
-//= v1.2b U can't surrender the base during WOE [Lupus]
-//= v1.2c Fixed issue of guardians hp not increasing upon defense
-//= investment.[kobra_k88]
-//= v1.3 Removed 'surrender' option as it was 100% custom [Proximus]
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//                       Freya GvG System                       
+//--------------------------------------------------------------
 
 
-//==============================================
 function	script	F_GldManager	{
 
 	set @GID, GetCastleData(getarg(1)+".gat",1);
@@ -67,9 +45,7 @@ L_Start:
 	menu "Guild Base Briefing",M_Base, "Commerce Investment",M_Comrc, "Defence Investment",M_Def, "Guardian Installation",M_Gaurd,
 		"Kafra Service Employment / Dismissal",M_Kaf, "Enter Treasure Room",M_Treas, "Cancel",M_End;
 
-	//========================
 	M_Base:
-	//=========
 		mes "[ "+getarg(0)+" ]";
 		mes "Guild Base Investment Information.";
 		mes " ";
@@ -83,9 +59,7 @@ L_Start:
 		mes "That is about it.";
 		return 0;
 
-	//========================
 	M_Comrc:
-	//=========
 		set @TriggerE,GetCastleData(getarg(1)+".gat",4);
 		set @Economy,GetCastleData(getarg(1)+".gat",2);
 		if (@Economy < 8) set @eco_invest,10000;
@@ -140,9 +114,7 @@ L_Start:
 			mes "^ff0000This Castle's commerce investment is already maxed at 100 points. You don't have to invest any further.^000000";
 			return 0;
 
-	//=========================
 	M_Def:
-	//========
 		set @TriggerD,GetCastleData(getarg(1)+".gat",5);
 		set @Defence,GetCastleData(getarg(1)+".gat",3);
 		if (@Defence < 8) set @def_invest,20000;
@@ -209,9 +181,7 @@ L_Start:
 			mes "^ff0000This Castle's Defence Investment is already maxed at 100 points. You don't have to invest any further.^000000";
 			return 0;
 
-	//=========================
 	M_Gaurd:
-	//=========
 		if (getgdskilllv(@GID,10002) == 0) goto L_NoSkGuard;
 		set @Defence,GetCastleData(getarg(1)+".gat",3);
 		set @Guardian0,guardianinfo(0);
@@ -317,9 +287,7 @@ L_Start:
 			emotion 4;
 			return 0;
 
-	//===========================
 	M_Kaf:
-	//======
 		mes "[ "+getarg(0)+" ]";
 		if (GetCastleData(getarg(1)+".gat",9) == 1) goto L_Dismiss;
 		if (getgdskilllv(@GID,10001) == 0) goto L_NoSkKaf;
@@ -389,9 +357,7 @@ L_Start:
 			mes "In order to hire a Kafra, you must first learn the Guild skill ^5533FFContract With Kafra^000000.";
 			return 0;
 
-	//=========================
 	M_Treas:
-	//========
 		mes "[ "+getarg(0)+" ]";
 		mes "Would you to go to our Treasure Room? Only you, the Guild Master, are allowed to enter this room.";
 		next;
@@ -409,9 +375,7 @@ L_Start:
 			mes "You should get them whenever you can because they might dissapear if you take them at the wrong time.";
 			return 0;
 
-	//==========================
 	M_Sur:
-	//=======
 		mes "[ "+getarg(0)+" ]";
 		emotion 19;
 		if (agitcheck(0) != 0) goto sL_CantSur;
@@ -451,9 +415,7 @@ L_Start:
 			mes "Master.... don't you know that we can't give up this guild base during the War Of Emperium?!!";
 			close;
 
-	//==========================
 	M_End:
-	//=======
 		mes "[ "+getarg(0)+" ]";
 		mes "As you wish, master.";
 		return 0;

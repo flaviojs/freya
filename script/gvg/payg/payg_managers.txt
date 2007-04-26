@@ -1,21 +1,17 @@
-//===== Freya Script =========================================
-//= War of Emperium Managers for Payon Guild Castles
-//===== By: ==================================================
-//= jAthena - kalen (1.0)
-//= 1.1 by Akaru, ho|yAnge|X, and Valaris
-//===== Current Version: =====================================
-//= 1.2
-//===== Compatible With: =====================================
-//= eAthena 0.1+; RO Episode 4+
-//===== Description: =========================================
-//=
-//===== Additional Comments: =================================
-//= v1.2 Optimized with functions.[kobra_k88]
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//                       Freya GvG System                       
+//--------------------------------------------------------------
 
 
-// Castle 1 ==================================================================================
 payg_cas01.gat,120,58,4	script	Grunday	55,{
+
 	if (callfunc("F_GldManager","Grunday","payg_cas01",290,7,"Py01") == 0) close;
 
 	if (@GDnum==10) guardian "payg_cas01.gat",210,120,"Soldier Guardian",1287,1,"Guardian_Py01::OnGuardianDied",0;
@@ -32,8 +28,8 @@ payg_cas01.gat,120,58,4	script	Grunday	55,{
 }
 
 
-// Castle 2 ==================================================================================
 payg_cas02.gat,22,260,7	script	Cherrios	55,{
+
 	if (callfunc("F_GldManager","Cherrios","payg_cas02",145,143,"Py02") == 0) close;
 
 	if (@GDnum==10) guardian "payg_cas02.gat",208,37,"Soldier Guardian",1287,1,"Guardian_Py02::OnGuardianDied",0;
@@ -49,9 +45,8 @@ payg_cas02.gat,22,260,7	script	Cherrios	55,{
 	close;
 }
 
-
-// Castle 3 ==================================================================================
 payg_cas03.gat,10,277,0	script	Garriet	55,{
+
 	if (callfunc("F_GldManager","Garriet","payg_cas03",158,168,"Py03") == 0) close;
 
 	if (@GDnum==10) guardian "payg_cas03.gat",252,39,"Soldier Guardian",1287,1,"Guardian_Py03::OnGuardianDied",0;
@@ -67,9 +62,8 @@ payg_cas03.gat,10,277,0	script	Garriet	55,{
 	close;
 }
 
-
-// Castle 4 ==================================================================================
 payg_cas04.gat,38,284,3	script	DJ	55,{
+
 	if (callfunc("F_GldManager","DJ","payg_cas04",146,48,"Py04") == 0) close;
 
 	if (@GDnum==10) guardian "payg_cas04.gat",236,172,"Soldier Guardian",1287,1,"Guardian_Py04::OnGuardianDied",0;
@@ -85,9 +79,8 @@ payg_cas04.gat,38,284,3	script	DJ	55,{
 	close;
 }
 
-
-// Castle 5 ==================================================================================
 payg_cas05.gat,277,249,3	script	Najarf	55,{
+
 	if (callfunc("F_GldManager","Najarf","payg_cas05",156,131,"Py05") == 0) close;
 
 	if (@GDnum==10) guardian "payg_cas05.gat",51,258,"Soldier Guardian",1287,1,"Guardian_Py05::OnGuardianDied",0;

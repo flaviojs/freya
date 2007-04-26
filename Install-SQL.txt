@@ -111,7 +111,7 @@ devel/
 
 b. Using Cygwin, install the MySQL libraries by compiling and installing the MySQL database server source distribution for Linux with "./configure --without-server && make && make install".
 
-c. Using Cygwin, enter "make" in the Freya SQL directory. Recompile with "make clean && make".
+c. Using Cygwin, enter "make sql" in the Freya SQL directory. Recompile with "make clean && make".
 
 
 ==============================================================

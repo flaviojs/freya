@@ -1,20 +1,14 @@
-//===== Freya Script =========================================
-//= War of Emperium Treasure Rooms for Al De Baran Guild Castles
-//===== By: ==================================================
-//= jAthena - kalen (1.0)
-//= 1.1 by Akaru, ho|yAnge|X, and Valaris
-//===== Current Version: =====================================
-//= 1.2
-//===== Compatible With: =====================================
-//= eAthena 0.1+; RO Episode 4+
-//===== Description: =========================================
-//=
-//===== Additional Comments: =================================
-//= v1.2 Optimized with functions.[kobra_k88]
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//                       Freya GvG System                       
+//--------------------------------------------------------------
 
-
-//<=============================== Castle 1 =================================>\\
 
 // Treasure Spawn -----------------------
 aldeg_cas01.gat,1,1,1	script	Treasure_A01	-1,{
@@ -38,8 +32,6 @@ aldeg_cas01.gat,123,223,0	script	Switch#TresA01	111,{
 	end;
 }
 
-//<================================ Castle 2 ================================>\\
-
 // Treasure Spawn ----------------------------
 aldeg_cas02.gat,1,1,1	script	Treasure_A02	-1,{
 
@@ -60,8 +52,6 @@ OnDied:
 aldeg_cas02.gat,139,235,0	script	Switch#TresA02	111,{
 	callfunc "F_GldTreasSw", "aldeg_cas02",78,75;
 }
-
-//<================================ Castle 3 ================================>\\
 
 // Treasure Spawn ---------------------------
 aldeg_cas03.gat,1,1,1	script	Treasure_A03	-1,{
@@ -84,8 +74,6 @@ aldeg_cas03.gat,229,267,0	script	Switch#TresA03	111,{
 	callfunc "F_GldTreasSw", "aldeg_cas03",110,119;
 }
 
-//<================================ Castle 4 ================================>\\
-
 // Treasure Spawn -------------------------------
 aldeg_cas04.gat,1,1,1	script	Treasure_A04	-1,{
 
@@ -106,8 +94,6 @@ OnDied:
 aldeg_cas04.gat,83,17,0	script	Switch#TresA04	111,{
 	callfunc "F_GldTreasSw", "aldeg_cas04",67,117;
 }
-
-//<================================ Castle 5 ================================>\\
 
 // Treasure Spawn ------------------------------------
 aldeg_cas05.gat,1,1,1	script	Treasure_A05	-1,{

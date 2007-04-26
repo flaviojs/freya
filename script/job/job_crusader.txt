@@ -1,34 +1,31 @@
-//===== Freya Script =========================================
-//= Crusader Quest
-//===== By: ==================================================
-//= Black Dragon/Shin/Freya
-//===== Current Version: =====================================
-//= 2.2
-//===== Compatible With: =====================================
-//= Freya
-//===== Description: =========================================
-//= Crusader Job Change Quest
-//===== Additional Comments: =================================
-//= Need optimalization and fixing
-//= thanks to Komurka, KiLLaLeN, Lupus (fixing error)
-//= just a temp Job Quest
-//= 1.2 minor fix of announcement by Freya people
-//= 1.3 Added Baby Class Support, fixed 40/50 lvl item reward
-//=     also fixed too common script names [Lupus]
-//= 1.3a fixed "dead lock" bugs [Lupus]
-//= 1.3b changed monsters ID in patience test [Komurka]
-//= 1.4 Fixed Job Level parameters mix-up. [massdriller] (Thanks to Komurka)
-//= 1.5 Fixed possible EXP abuse [Lupus]
-//= 1.6 Added a func which prevent advanced classes passing
-//=     2nd Job Quests again. It also guides adv classes where
-//=     to go. [Lupus]
-//= 1.7 Updated names and required items, Chivalry Emblem +
-//=     Hand of God allow to skip item gathering [DracoRPG]
-//= 2.0 Changed numbers to constants. [Vicious]
-//= 2.1 Fixed endless loop, wrong condition check [Lupus]
-//=	also changed all job numbers to constants, fixed logic
-//= 2.2 Reconverted from eAthena to Freya [Tsuyuki]
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Crusader Job Change Quest	Author: A Lot of People
+//--------------------------------------------------------------
+// Revision History: v2.2
+//--------------------------------------------------------------
+//	1.0 First version [Black Dragon/Shin]
+//	1.1 Error fixes [Komurka/Lupus]
+//	1.2 Minor fix of announcement by Freya people [Unknown]
+//	1.3 Added Baby Class Support, fixed 40/50 lvl item reward also fixed too common script names [Lupus]
+//	1.4 fixed "dead lock" bugs [Lupus]
+//	1.5 changed monsters ID in patience test [Komurka]
+//	1.6 Fixed Job Level parameters mix-up [massdriller]
+//	1.7 Fixed possible EXP abuse [Lupus]
+//	1.8 Added a function to properly direct Transcendent job changing [Lupus]
+//	1.9 Updated names and required items [DracoRPG]
+//	2.0 Changed IDs to constants [Vicious]
+//	2.1 Fixed endless loop, wrong condition check [Lupus]
+//	2.2 Reconverted to Freya format [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: N/A
+//--------------------------------------------------------------
 
 
 prt_castle.gat,45,169,4	script	Senior Crusader	752,{

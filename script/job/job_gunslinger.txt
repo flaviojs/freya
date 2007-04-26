@@ -965,7 +965,7 @@ GSVQ2:
 			mes "^FF0000100000 Zeny^000000.";
 			next;
 			mes "[Vanessa]";
-			if ((countitem(7319)<50) || (countitem(984)<5) || (countitem(7317)<70) || (Zeny < 100000)) goto GSVQ3;
+			if ((countitem(7319) < 50) || (countitem(984) < 5) || (countitem(7317) < 70) || (Zeny < 100000)) goto GSVQ3;
 			goto GSVQ4;
 
 			GSVQ3:

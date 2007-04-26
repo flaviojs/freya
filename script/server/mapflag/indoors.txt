@@ -1,16 +1,14 @@
-//===== Freya Script =========================================
-//= Map Flags for Indoors Buildings or Dungeons
-//===== By: ==================================================
-//= Proximus
-//===== Current Version: =====================================
-//= 2.1
-//===== Compatible With: =====================================
-//= Freya
-//===== Description: =========================================
-//= 'indoors' turns off all night effects.
-//= 2.0 by GARTZ -> Set all dungeons to indoors flag.
-//= 2.1 by Proximus -> deleted all dungeons with indoors flag -> new night effect.
-//============================================================
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                 ___   ___    ___   _  _   __                 
+//                (  _) (  ,)  (  _) ( \/ ) (  )                
+//                (  _)  )  \   ) _)  \  /  /__\                
+//                (_)   (_)\_) (___) (__/  (_)(_)               
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//                     Freya Mapflag System                     
+//--------------------------------------------------------------
+
 
 alberta_in.gat	mapflag	indoors
 ama_test.gat	mapflag	indoors
