@@ -1,2 +1,50 @@
-2634 2
-2635 2
+// item_notrade.txt, Item Restrictions Database
+//
+// Structure of Database:
+//
+// <ItemID> <Setting>
+//
+
+2634 2	// Wedding Ring (M)
+2635 2	// Wedding Ring (F)
+2644 2	// The Sign (Valhalla entrance)
+569 2	// Novice Red Potion
+
+7432 2	//Leather Pouch (Part of Cooking Quest)
+
+// Thanatos bound items
+7421 2	// Red Key
+7422 2	// Yellow Key
+7423 2	// Blue Key
+7424 2	// Green Key
+7425 2	// Black Key
+7426 2	// Red Charm Stone
+7427 2	// Yellow Charm Stone
+7428 2	// Blue Charm Stone
+7429 2	// Green Charm Stone
+7430 2	// Black Charm Stone
+
+// Kiel Hyre bound items
+7487 2	//Pub_Liquor
+7488 2	//Delivery_Box
+7489 2	//Outhouse_Spare_Key
+7490 2	//Letter_to_Elie
+7491 2	//Iron_Box
+7492 2	//Yellow_Keycard
+7493 2	//Golden_Key
+7494 2	//Exquisite_Button
+7495 2	//Blue_Keycard
+7496 2	//Red_Keycard
+7497 2	//Piece_of_Metal
+7498 2	//Losimier's_House_Key
+7499 2	//Portrait_of_a_Family
+7500 2	//Portrait_of_a_Lady
+7501 2	//K.H's_Letter
+7502 2	//James's_Memo
+7503 2	//Portrait_of_a_Guy
+7504 2	//Power_Source
+7505 2	//Toy_Key
+7506 2	//Black_Keycard
+7508 2	//Elisia's_Ring
+7509 2	//Gorgeous_Keycard
+7516 2	//Green Keycard

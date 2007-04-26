@@ -1552,10 +1552,11 @@ int npc_parse_warp(char *w1, char *w3, char *w4, int lines) {
 					    to_y >= map[m].npc[k]->bl.y - ys1 / 2 && to_y <= map[m].npc[k]->bl.y - ys1 / 2 + ys1)
 						break;
 				}
-				if (k != map[m].npc_num)
+				/*if (k != map[m].npc_num)
 					printf(CL_YELLOW "Warning: " CL_RESET "Bad destination coordinates" CL_RESET " (same of another npc/warp (%s): %s,%d,%d) in warp: %s (file:%s:%d) -> " CL_YELLOW "loaded" CL_RESET ".\n", map[m].npc[k]->name, to_mapname, to_x, to_y, w3, current_file, lines);
 				else
 					printf(CL_YELLOW "Warning: " CL_RESET "Bad destination coordinates" CL_RESET " (same of another npc/warp: %s,%d,%d) in warp: %s (file:%s:%d) -> " CL_YELLOW "loaded" CL_RESET ".\n", to_mapname, to_x, to_y, w3, current_file, lines);
+				*/
 			}
 		}
 	}
@@ -1604,15 +1605,16 @@ int npc_parse_warp(char *w1, char *w3, char *w4, int lines) {
 #else
 			printf(CL_YELLOW "Warning: " CL_RESET "Bad source coordinates" CL_RESET " (can not walk on this position: %s,%d,%d) in warp: %s (file:%s:%d), ", mapname, x, y, w3, current_file, lines);
 #endif
-			if (count == 2)
+			/*if (count == 2)
 				printf(CL_YELLOW "and only 2 available squares" CL_RESET " -> " CL_YELLOW "loaded" CL_RESET "!\n");
 			else
 				printf("but this warp has %d available squares -> " CL_YELLOW "can be used" CL_RESET ".\n", count);
+			*/
 		}
-	} else if (count == 2) {
+	} /*else if (count == 2) {
 		if (current_file != NULL) // if not a GM command, but a script
 			printf(CL_YELLOW "Warning: " CL_RESET "Only 2 available squares" CL_RESET " (it's difficult to use warp, position: %s,%d,%d) in warp: %s (file:%s:%d) -> " CL_YELLOW "loaded" CL_RESET "!\n", mapname, x, y, w3, current_file, lines);
-	} // with 3 squares, warp can be used by players without problem
+	} // with 3 squares, warp can be used by players without problem*/
 
 	// warning on warp name
 	if (strlen(w3) > 24) {
@@ -2766,10 +2768,11 @@ int do_init_npc(void) {
 						    nd->u.warp.y >= map[m].npc[j]->bl.y - ys / 2 && nd->u.warp.y <= map[m].npc[j]->bl.y - ys / 2 + ys)
 							break;
 					}
-					if (j != map[m].npc_num)
+					/*if (j != map[m].npc_num)
 						printf(CL_YELLOW "Warning: " CL_RESET "Bad destination coordinates" CL_RESET " (same of another npc/warp (%s): %s,%d,%d) in warp: %s.\n", map[m].npc[j]->name, nd->u.warp.name, nd->u.warp.x, nd->u.warp.y, nd->name);
 					else
 						printf(CL_YELLOW "Warning: " CL_RESET "Bad destination coordinates" CL_RESET " (same of another npc/warp: %s,%d,%d) in warp: %s.\n", nd->u.warp.name, nd->u.warp.x, nd->u.warp.y, nd->name);
+					*/
 				}
 			}
 		}

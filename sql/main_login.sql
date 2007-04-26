@@ -40,6 +40,7 @@ INSERT INTO `login` (`account_id`, `userid`, `user_pass`, `sex`, `email`) VALUES
 INSERT INTO `login` (`account_id`, `userid`, `user_pass`, `sex`, `email`) VALUES ('13', 's13', 'p13', 'S','a@a.com');
 INSERT INTO `login` (`account_id`, `userid`, `user_pass`, `sex`, `email`) VALUES ('14', 's14', 'p14', 'S','a@a.com');
 INSERT INTO `login` (`account_id`, `userid`, `user_pass`, `sex`, `email`) VALUES ('15', 's15', 'p15', 'S','a@a.com');
+INSERT INTO `login` (`account_id`, `userid`, `user_pass`, `sex`, `email`, `level`) VALUES ('2000001', 'Test', 'Test', 'M', 'a@a.com', '99');
 
 # Database: Ragnarok
 # Table: 'account_reg2_db'

@@ -1,0 +1,37 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                   __                         _               
+//                /\ \ \___ _____   _ _ __ ___ (_)              
+//               /  \/ / _ \_  / | | | '_ ` _ \| |              
+//              / /\  /  __// /| |_| | | | | | | |              
+//              \_\ \/ \___/___|\__,_|_| |_| |_|_|              
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//                       Nezumi GvG System                      
+//--------------------------------------------------------------
+
+
+gefg_cas01.gat,78,84,0	script	Switch#DunG01	111,{
+	callfunc "F_GldDunSw","gefg_cas01","04",39,258;
+	close;
+}
+
+gefg_cas02.gat,167,40,0	script	Switch#DunG02	111,{
+	callfunc "F_GldDunSw","gefg_cas02","04",125,270;
+	close;
+}
+
+gefg_cas03.gat,221,43,0	script	Switch#DunG03	111,{
+	callfunc "F_GldDunSw","gefg_cas03","04",268,251;
+	close;
+}
+
+gefg_cas04.gat,58,75,0	script	Switch#DunG04	111,{
+	callfunc "F_GldDunSw","gefg_cas04","04",268,108;
+	close;
+}
+
+gefg_cas05.gat,66,29,0	script	Switch#DunG05	111,{
+	callfunc "F_GldDunSw","gefg_cas05","04",230,35;
+	close;
+}

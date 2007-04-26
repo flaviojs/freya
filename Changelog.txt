@@ -6,9 +6,13 @@
               / /\  /  __// /| |_| | | | | | | |              
               \_\ \/ \___/___|\__,_|_| |_| |_|_|              
                     http://www.ro-freya.net                   
+                Nezumi Project Revision History               
 --------------------------------------------------------------
 
 Date	Added
+
+04/25/2007
+	* Project Final Release: Nezumi 2.0 Edition [Freya Dev Team]
 
 04/08/2007
 	* Added: 'Male' and 'Female' script constants [Tsuyuki]

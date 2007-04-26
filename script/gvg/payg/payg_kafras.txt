@@ -1,0 +1,52 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                   __                         _               
+//                /\ \ \___ _____   _ _ __ ___ (_)              
+//               /  \/ / _ \_  / | | | '_ ` _ \| |              
+//              / /\  /  __// /| |_| | | | | | | |              
+//              \_\ \/ \___/___|\__,_|_| |_| |_|_|              
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//                       Nezumi GvG System                      
+//--------------------------------------------------------------
+
+
+payg_cas01.gat,128,58,3	script	Kafra Service#Py01	117,{
+	callfunc "F_GKafra", "payg_cas01", "Payon";
+	end;
+OnRecvCastlePy01:
+	if (GetCastleData("payg_cas01.gat",9) < 1) disablenpc "Kafra Service#Py01";
+	end;
+}
+
+payg_cas02.gat,22,275,5	script	Kafra Service#Py02	117,{
+	callfunc "F_GKafra", "payg_cas02", "Payon";
+	end;
+OnRecvCastlePy02:
+	if (GetCastleData("payg_cas02.gat",9) < 1) disablenpc "Kafra Service#Py02";
+	end;
+}
+
+payg_cas03.gat,9,263,5	script	Kafra Service#Py03	117,{
+	callfunc "F_GKafra", "payg_cas03", "Payon";
+	end;
+OnRecvCastlePy03:
+	if (GetCastleData("payg_cas03.gat",9) < 1) disablenpc "Kafra Service#Py03";
+	end;
+}
+
+payg_cas04.gat,40,235,1	script	Kafra Service#Py04	117,{
+	callfunc "F_GKafra", "payg_cas04", "Payon";
+	end;
+OnRecvCastlePy04:
+	if (GetCastleData("payg_cas04.gat",9) < 1) disablenpc "Kafra Service#Py04";
+	end;
+}
+
+payg_cas05.gat,276,227,1	script	Kafra Service#Py05	117,{
+	callfunc "F_GKafra", "payg_cas05", "Payon";
+	end;
+OnRecvCastlePy05:
+	if (GetCastleData("payg_cas05.gat",9) < 1) disablenpc "Kafra Service#Py05";
+	end;
+}

@@ -1,0 +1,73 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                   __                         _               
+//                /\ \ \___ _____   _ _ __ ___ (_)              
+//               /  \/ / _ \_  / | | | '_ ` _ \| |              
+//              / /\  /  __// /| |_| | | | | | | |              
+//              \_\ \/ \___/___|\__,_|_| |_| |_|_|              
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Reset Girl	Author: Unknown/Tsuyuki
+//--------------------------------------------------------------
+// Revision History: v1.1
+//--------------------------------------------------------------
+//	1.0 First version [Unknown]
+//	1.1 Some modifications [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: N/A
+//--------------------------------------------------------------
+
+
+prontera.gat,150,193,4	script	Reset Girl	895,{
+
+	mes "[Reita]";
+	mes "Hi, I'm Freya's young, beautiful and";
+	mes "talented Reset Girl! What would";
+	mes "you like me to do?";
+	next;
+	mes "[Reita]";
+	mes "Reset Skills: 50000z";
+	mes "Reset Stats: 50000z";
+	mes "Reset Both: 75000z";
+	next;
+	menu "^FF3355Reset Skills",L_Res1,"Reset Stats",L_Res2,"Reset Both^000000",L_Res3,"Quit",L_End;
+
+	L_Res1:
+		if (Zeny < 50000) goto L_NeedZeny;
+		mes "[Reita]";
+		mes "Alright, here we go.. your stats have been skills have been reset!";
+		set Zeny,zeny-50000;
+		ResetSkill;
+		emotion 15; // /thx
+		close;
+
+	L_Res2:
+		if (Zeny < 50000) goto L_NeedZeny;
+		mes "[Reita]";
+		mes "Alright, here we go.. your stats have been reset!";
+		set Zeny,zeny-50000;
+		ResetStatus;
+		emotion 15; // /thx
+		close;
+
+	L_Res3:
+		if (Zeny < 75000) goto L_NeedZeny;
+		mes "[Reita]";
+		mes "Alright, here we go.. your stats and skills have been reset!";
+		set Zeny,zeny-75000;
+		ResetSkill;
+		ResetStatus;
+		emotion 15; // /thx
+		close;
+
+	L_NeedZeny:
+		mes "[Reita]";
+		mes "I'm sorry, but you don't have enough Zeny.";
+		emotion 20; // /hmm
+		close;
+
+	L_End:
+		mes "[Reita]";
+		mes "Please come again!";
+		close;
+}

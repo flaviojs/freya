@@ -1,0 +1,57 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                   __                         _               
+//                /\ \ \___ _____   _ _ __ ___ (_)              
+//               /  \/ / _ \_  / | | | '_ ` _ \| |              
+//              / /\  /  __// /| |_| | | | | | | |              
+//              \_\ \/ \___/___|\__,_|_| |_| |_|_|              
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//                       Nezumi GvG System                      
+//--------------------------------------------------------------
+
+
+aldeg_cas01.gat,218,170,0	script	Kafra Service#A01	117,{
+
+	callfunc "F_GKafra", "aldeg_cas01", "Al De Baran";
+	end;
+OnRecvCastleA01:
+	if (GetCastleData("aldeg_cas01.gat",9) < 1) disablenpc "Kafra Service#A01";
+	end;
+}
+
+aldeg_cas02.gat,84,74,0	script	Kafra Service#A02	117,{
+
+	callfunc "F_GKafra", "aldeg_cas02", "Al De Baran";
+	end;
+OnRecvCastleA02:
+	if (GetCastleData("aldeg_cas02.gat",9) < 1) disablenpc "Kafra Service#A02";
+	end;
+}
+
+aldeg_cas03.gat,118,76,0	script	Kafra Service#A03	117,{
+
+	callfunc "F_GKafra", "aldeg_cas03", "Al De Baran";
+	end;
+OnRecvCastleA03:
+	if (GetCastleData("aldeg_cas03.gat",9) < 1) disablenpc "Kafra Service#A03";
+	end;
+}
+
+aldeg_cas04.gat,45,88,0	script	Kafra Service#A04	117,{
+
+	callfunc "F_GKafra", "aldeg_cas04", "Al De Baran";
+	end;
+OnRecvCastleA04:
+	if (GetCastleData("aldeg_cas04.gat",9) < 1) disablenpc "Kafra Service#A04";
+	end;
+}
+
+aldeg_cas05.gat,31,190,0	script	Kafra Service#A05	117,{
+
+	callfunc "F_GKafra", "aldeg_cas05", "Al De Baran";
+	end;
+OnRecvCastleA05:
+	if (GetCastleData("aldeg_cas05.gat",9) < 1) disablenpc "Kafra Service#A05";
+	end;
+}

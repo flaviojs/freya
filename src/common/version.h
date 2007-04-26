@@ -2,11 +2,11 @@
 #ifndef _VERSION_H_
 #define _VERSION_H_
 
-#define ATHENA_MAJOR_VERSION	1	// Major Version
-#define ATHENA_MINOR_VERSION	1	// Minor Version
+#define ATHENA_MAJOR_VERSION	2	// Major Version
+#define ATHENA_MINOR_VERSION	0	// Minor Version
 #define ATHENA_REVISION			0	// Revision
 
-#define ATHENA_RELEASE_FLAG		1	// 1=Develop,0=Stable
+#define ATHENA_RELEASE_FLAG		0	// 1=Develop,0=Stable
 #define ATHENA_OFFICIAL_FLAG	4	// 4=Nezumi,2=Freya,1=Mod,0=Official
 
 #define ATHENA_SERVER_LOGIN		1	// login server

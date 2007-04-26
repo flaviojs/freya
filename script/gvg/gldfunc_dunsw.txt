@@ -1,0 +1,33 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                   __                         _               
+//                /\ \ \___ _____   _ _ __ ___ (_)              
+//               /  \/ / _ \_  / | | | '_ ` _ \| |              
+//              / /\  /  __// /| |_| | | | | | | |              
+//              \_\ \/ \___/___|\__,_|_| |_| |_|_|              
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//                       Nezumi GvG System                      
+//--------------------------------------------------------------
+
+
+function	script	F_GldDunSw	{
+
+	mes "[ Mysterious Voice ]";
+	mes " ' Only brave warriors may lead the guild base.. '";
+	next;
+	mes "(There is little switch over here....... Would you like to pull the switch?)";
+	next;
+	menu "Yes",-,"No",M_No;
+
+		set @GID, GetCastleData(getarg(0)+".gat",1);
+		if (@GID == 0 || getcharid(2) != @GID) goto L_NotGLead;
+		warp "gld_dun"+getarg(1)+".gat",getarg(2),getarg(3);
+		end;
+
+		L_NotGLead:
+			mes "[ Mysterious Voice ]";
+			mes " ' ..... it seems that you are not brave enough...... ' ";
+	M_No:
+		return;
+}

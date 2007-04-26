@@ -1,11 +1,13 @@
 ==========================================================================
-Nezumi dev 1.0.0 mod1004 Reference +alpha of the present conf
+==========================================================================
+ Nezumi Release 2.0 Configuration Reference (For use with 'conf/')
+--------------------------------------------------------------------------
 --------------------------------------------------------------------------
 
 < What this file is. >
 
- It is the reference of the setting method of an Athena setting file.
-although it is not a HowTo, it not Those who cannot use Athena even if they see this
+ It is the reference of the setting method of a Nezumi setting file.
+although it is not a HowTo, it not Those who cannot use Nezumi even if they see this
  To give up obediently is safer.
 
 
@@ -36,8 +38,11 @@ Priority is given to what was written later unless it is written especially clea
 login_athena.conf   allow and deny -- and --   map_athena.conf   map, npc, etc.
 Another processing will be carried out if two or more lines are written.
 
+-> Note: This documentation is highly outdated and a large part of it is untranslated (Japanese.)
+
+
 ==========================================================================
-1. conf/login_athena.conf
+ 1. conf/login_athena.conf
 --------------------------------------------------------------------------
 
 < What this file is. >
@@ -50,8 +55,9 @@ Another processing will be carried out if two or more lines are written.
 
 Read inside the file to have more information about each key.
 
+
 ==========================================================================
-2. conf/char_athena.conf
+ 2. conf/char_athena.conf
 --------------------------------------------------------------------------
 
 < What this file is. >
@@ -282,7 +288,7 @@ log_char: 1
 
 
 ==========================================================================
-3. conf/inter_athena.conf
+ 3. conf/inter_athena.conf
 --------------------------------------------------------------------------
 
 < What this file is. >
@@ -351,7 +357,7 @@ log_inter: 1
 
 
 ==========================================================================
-4. conf/map_athena.conf
+ 4. conf/map_athena.conf
 --------------------------------------------------------------------------
 
 < What this file is. >
@@ -472,8 +478,9 @@ npc: clear
 delmap: prontera.gat
 delmap: all
 
+
 ==========================================================================
-5. conf/battle_athena.conf
+ 5. conf/battle_athena.conf
 --------------------------------------------------------------------------
 
 < What this file is. >
@@ -1164,16 +1171,16 @@ hide_GM_session
 	デフォルトはnoです
 unit_movement_type
 	ユニット移動処理方法を選択します。
-	0で本鯖仕様(回線負荷→重、鯖処理→軽)、1でAthena仕様(回線負荷→軽、鯖処理→重)
+	0で本鯖仕様(回線負荷→重、鯖処理→軽)、1でNezumi仕様(回線負荷→軽、鯖処理→重)
 	デフォルトは0(本鯖仕様)です
 invite_request_check
 	プレイヤーが各種要請中(PT加入、Guild加入、取引)に他の要請を受け入れるかどうかです。
-	yesで本鯖仕様、noでAthena仕様(受け入れない)
+	yesで本鯖仕様、noでNezumi仕様(受け入れない)
 	デフォルトはyes(受け入れる)です。
 skill_removetrap_type
 	リムーブトラップの仕様を選択します。
 	0:本鯖仕様で罠1個を取得する
-	1:Athena仕様で使ったアイテムを使った個数を取得する
+	1:Nezumi仕様で使ったアイテムを使った個数を取得する
 disp_experience
 	経験値を表示するかどうかです。
 	yesにすると、敵を倒した時など経験値が入った時に本人にのみ表示されます。
@@ -1215,25 +1222,16 @@ any_warp_GM_min_level
 
 packet_ver_flag
 	Set here which client version do you accept. Add all values of clients:
-	   1: Clients before 2004-07-06 (old clients)
-	   2: 2004-07-06 kRO client
-	   4: 2004-07-13 kRO client
-	   8: 2004-07-26 kRO client
-	  16: 2004-08-09 kRO / 2004-08-16aSakray / 2004-08-17aSakray client
-	  32: 2004-09-06aSakray client
-	  64: 2004-09-21aSakexe client
-	 128: 2004-10-18bSakexe client
-	 256: 2004-10-25aSakexe client
-	 512: 2004-12-06aSakexe client - WARNING: auto-detect can not work if you set also 2004-10-25aSakexe/2004-11-08aSakexe.rgz clients
-	1024: 2005-01-10bSakexe client - WARNING: auto-detect can not work if you set also 2005-06-28aSakexe client
-	2048: 2005-05-09aSakexe client
-	4096: 2005-06-28aSakexe client
-	8192: 2006-04-04aSakexe client
-	Important: auto-detection can not work correctly when:
-	           2004-10-25aSakexe/2004-11-08aSakexe.rgz clients is with 2004-12-06aSakexe client
-	           OR/AND
-	           2005-01-10bSakexe client is with 2005-06-28aSakexe client
-	Default value: 14847 (all clients except 2004-12-06aSakexe client (-512) and 2005-01-10bSakexe client (-1024))
+	  1: Clients before 2004-07-06 (old clients)
+	  2: 2004-07-06 kRO client
+	  4: 2004-07-13 kRO client
+	  8: 2004-07-26 kRO client
+	 16: 2004-08-09 kRO / 2004-08-16aSakray / 2004-08-17aSakray client
+	 32: 2004-09-06aSakray client
+	 64: 2004-09-21aSakexe client
+	128: 2004-10-18bSakexe client
+	256: 2004-10-25aSakexe client
+	default value: 511 (all clients)
 
 min_hair_style
 max_hair_style
@@ -1412,7 +1410,7 @@ night_duration: 1800000
 ban_spoof_namer: 5
 hack_info_GM_level: 60
 any_warp_GM_min_level: 20
-packet_ver_flag: 14847
+packet_ver_flag: 511
 min_hair_style: 0
 max_hair_style: 20
 min_hair_color: 0
@@ -1422,9 +1420,8 @@ max_cloth_color: 4
 area_size: 20
 
 
-
 ==========================================================================
-6. atcommand_athena.conf
+ 6. atcommand_athena.conf
 --------------------------------------------------------------------------
 
 < What this file is. >
@@ -1723,7 +1720,7 @@ charundisguise: 60
 email: 0
 
 ==========================================================================
-7. conf/ladmin_athena.conf
+ 7. conf/ladmin_athena.conf
 --------------------------------------------------------------------------
 
 < What this file is. >
@@ -1751,7 +1748,7 @@ login_port
 
 admin_pass
 	It is the administrator password used to administrate the login-server.
-	You define it in login-athena.conf.
+	You define it in login_athena.conf.
 	Void password will not work.
 	NOTICE: You must change this or attackers can exploit your server.
 	Default value: admin. CHANGES this default value to avoid hack.

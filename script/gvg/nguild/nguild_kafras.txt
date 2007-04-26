@@ -1,0 +1,44 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                   __                         _               
+//                /\ \ \___ _____   _ _ __ ___ (_)              
+//               /  \/ / _ \_  / | | | '_ ` _ \| |              
+//              / /\  /  __// /| |_| | | | | | | |              
+//              \_\ \/ \___/___|\__,_|_| |_| |_|_|              
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//                       Nezumi GvG System                      
+//--------------------------------------------------------------
+
+
+nguild_alde.gat,218,170,0	script	Kafra Service#N01	117,{
+	callfunc "F_GKafra", "nguild_alde", "Prontera";
+	end;
+OnRecvCastleN01:
+	if (GetCastleData("nguild_alde.gat",9) < 1) disablenpc "Kafra Service#N01";
+	end;
+}
+
+nguild_gef.gat,35,37,0	script	Kafra Service#N02	117,{
+	callfunc "F_GKafra", "nguild_gef", "Prontera";
+	end;
+OnRecvCastleN02:
+	if (GetCastleData("nguild_gef.gat",9) < 1) disablenpc "Kafra Service#N02";
+	end;
+}
+
+nguild_pay.gat,128,58,3	script	Kafra Service#N03	117,{
+	callfunc "F_GKafra", "nguild_pay", "Prontera";
+	end;
+OnRecvCastleN03:
+	if (GetCastleData("nguild_pay.gat",9) < 1) disablenpc "Kafra Service#N03";
+	end;
+}
+
+nguild_prt.gat,96,173,0	script	Kafra Service#N04	117,{
+	callfunc "F_GKafra", "nguild_prt", "Prontera";
+	end;
+OnRecvCastleN04:
+	if (GetCastleData("nguild_prt.gat",9) < 1) disablenpc "Kafra Service#N04";
+	end;
+}

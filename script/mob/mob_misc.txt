@@ -1,0 +1,46 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                   __                         _               
+//                /\ \ \___ _____   _ _ __ ___ (_)              
+//               /  \/ / _ \_  / | | | '_ ` _ \| |              
+//              / /\  /  __// /| |_| | | | | | | |              
+//              \_\ \/ \___/___|\__,_|_| |_| |_|_|              
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Miscellaneous Monster Spawns	Author: A Lot of People
+//--------------------------------------------------------------
+// Revision History: v1.0
+//--------------------------------------------------------------
+//	1.0 First version, merged together [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: Includes Airship Quest, The Sign Quest,
+// 
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// Airship Quest Monster Spawns
+//--------------------------------------------------------------
+
+airplane_01.gat,225,52,25,10	monster	Gremlin	1632,9,7200000,3600000,1
+airplane_01.gat,225,52,25,10	monster	Beholder	1633,6,7200000,3600000,1
+airplane_01.gat,225,52,25,10	monster	Picky	1049,4,7200000,3600000,1
+airplane_01.gat,225,52,25,10	monster	Familiar	1005,2,7200000,3600000,1
+airplane_01.gat,225,52,25,10	monster	Drainliar	1111,1,7200000,3600000,1
+airplane_01.gat,225,52,25,10	monster	Rotar Zairo	1392,4,7200000,3600000,1
+airplane_01.gat,225,52,25,10	monster	Steel Chonchon	1042,2,7200000,3600000,1
+
+
+//--------------------------------------------------------------
+// The Sign Quest Monster Spawns
+//--------------------------------------------------------------
+
+que_sign02.gat,0,0,0,0	monster	Incubus	1580,1,0,0,0
+que_sign02.gat,0,0,0,0	monster	Wraith Dead	1566,3,0,0,0
+que_sign02.gat,0,0,0,0	monster	Evil Druid	1435,5,0,0,0
+que_sign02.gat,0,0,0,0	monster	Wraith	1475,5,0,0,0
+que_sign02.gat,0,0,0,0	monster	Injustice	1446,10,0,0,0
+que_sign02.gat,0,0,0,0	monster	Skeleton Prisoner	1479,10,0,0,0
+que_sign02.gat,0,0,0,0	monster	Zombie Prisoner	1480,10,0,0,0
+que_sign02.gat,0,0,0,0	monster	Ghoul	1423,15,0,0,0
+

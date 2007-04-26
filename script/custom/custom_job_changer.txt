@@ -1,0 +1,1170 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                   __                         _               
+//                /\ \ \___ _____   _ _ __ ___ (_)              
+//               /  \/ / _ \_  / | | | '_ ` _ \| |              
+//              / /\  /  __// /| |_| | | | | | | |              
+//              \_\ \/ \___/___|\__,_|_| |_| |_|_|              
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Job Changer	Author: A Lot of People
+//--------------------------------------------------------------
+// Revision History: v2.0
+//--------------------------------------------------------------
+//	1.0 Added first version [Unknown]
+//	1.1 Added missing param into resetlevel [Lupus]
+//	1.2 Remade Adv. Classes Menu. [shadowlady]
+//	1.3 Fixed some bugs [midas]
+//	1.4 Fixed Mounted Class bugs and Baby Class bugs [Zoc]
+//	1.5 Fixed checks (mixed || with &&) [Yor]
+//	1.6 Updated with new job IDs to prevent problems [Tsuyuki]
+//	1.7 Major rewrite, added support for new classes (+5 kb) [Tsuyuki]
+//	1.8 Fixed several bugs, more optimizations [Tsuyuki]
+//	1.9 Added GM Menu for easier management (GMLv40 or Above) [Tsuyuki]
+//	2.0 Script now returns quest skills after rebirth [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: Changes to almost every job in the game.
+// Has many checks to make sure classes get to their correct
+// corresponding higher jobs.
+// Death Knight/Dark Collector excluded because they're still
+// unreleased.
+//--------------------------------------------------------------
+
+
+prontera.gat,160,186,3	script	Job Changer	831,{
+
+	mes "[Amber]";
+	mes "Sup? I'm the insanely cool and uber cute Job Changer for Freya! First of all, what class would you like to change into? You must meet preliminary requirements for each class..";
+	next;
+  	if (getgmlevel(0) >= 40) goto L_GMMenu1; // GM Level 40 or Above
+	goto L_Regular;
+
+// GM Options
+
+L_GMMenu1:
+	mes "[Amber]";
+	mes "Oooo.. a GM!";
+	mes "Would you like to access the GM menu, or just continue with the regular script?";
+	emotion 3; // /lv
+	next;
+	menu "GM Menu",L_GMMenu2,"Regular Script",L_GMMenu3,"Cancel",L_Cancel;
+
+	L_GMMenu2:
+		mes "[Amber]";
+		mes "Okay, here you go!";
+		next;
+		menu "Reset Char-Specific Vars",L_ResetVars,"Unload Script",L_Disable,"Cancel",L_Cancel;
+
+		L_ResetVars:
+			mes "[Amber]";
+			mes "Done! Variables pertaining to this script have been reset for this specific character. ^_~";
+			set oldclass,0;
+			emotion 18; // /heh
+			close;
+
+		L_Disable:
+			mes "[Amber]";
+			mes "WTF?? You're disabling me?";
+			mes "Ugh.. not cool.";
+			mes "Bye bye. >_>";
+			disablenpc "Job Changer";
+			emotion 23; // /omg
+			close;
+
+	L_GMMenu3:
+		mes "[Amber]";
+		mes "Okay then, back to the script~";
+		next;
+		goto L_Regular;
+
+L_Regular:
+	menu "First Class (1-1)",L_FirstClass,"Second Class (2-1)",L_SecondClass,"Alternate Second Class (2-2)",L_SecondClass2,"Rebirth",L_NoviceHigh,"Advanced First Class",L_ReqCheck,"Advanced Second Class",L_ReqCheck,"Super Novice",L_SuperNovice,"Expanded Class",L_ExpandedClass,"Cancel",L_Cancel;
+
+	L_NoviceHigh:
+		if (Class >= 4023 && Class <= 4045) goto L_BabyFail;
+		if (BaseLevel >= 99 && JobLevel>= 50 && Class >= 7 && Class <= 21) goto L_Change;
+		mes "[Amber]";
+		mes "Ummmm, excuse me... o.O...";
+		mes "Hey! You don't MEET the requirements...";
+		mes "You're not ready! Get away, punk! *rolls eyes*";
+		mes "Only the bravest and highest leveled Second Classes";
+		mes "can rebirth into Novice High... jeez.";
+		emotion 23; // /omg
+		close;
+
+	L_Change:
+		if (skillpoint != 0) goto L_SkillPoints;
+		if (checkcart(0)) goto L_ExtraFail;
+		if (checkfalcon(0)) goto L_ExtraFail;
+		if (checkriding(0)) goto L_ExtraFail;
+		if (Weight > 0) goto L_WeightFail;
+
+		mes "[Amber]";
+		mes "We shall start the ceremony....";
+		next;
+		set oldclass,Class;
+		// Peco Classes Normalization Check
+		if (oldclass == 13) set oldclass,7;
+		if (oldclass == 21) set oldclass,14;
+		// Save Quest Skills
+		callfunc "F_SaveQuestSkills";
+		jobchange JOB_NOVICE_HIGH;
+		resetlvl(1);
+		callfunc "F_ReturnQuestSkills";
+		mes "[Amber]";
+		mes "You have been reborn...";
+		emotion 46; // Congratulations!
+		close;
+
+	L_WeightFail:
+		mes "[Amber]";
+		mes "I can't rebirth you until you lower your weight";
+		mes "to 0.. put all your items and equipment in storage";
+		mes "and we can continue.";
+		emotion 20; // /hmm
+		close;
+
+	L_BabyFail:
+		mes "[Amber]";
+		mes "Sorry little one, but baby classes can't";
+		mes "change to Novice High. They would loose their";
+		mes "cuteness and their parents wouldn't allow it!";
+		emotion 3; // /lv
+		close;
+
+	L_ReqCheck:
+		if (Class >= 4001 && Class <= 4007) goto L_AdvancedClass;
+		mes "[Amber]";
+		mes "Wtf?? With your current job, you CAN'T rebirth!";
+		mes "What's the matter with you, huh?";
+		mes "*grumble grumble*";
+		emotion 23; // /omg
+		close;
+
+	L_LevelTooLow:
+		mes "[Amber]";
+		mes "You're still too low-leveled to change...";
+		emotion 20; // /hmm
+		close;
+
+	L_ExtraFail:
+		mes "[Amber]";
+		mes "Please... remove your cart, leave your";
+		mes "falcon and/or get off your peco before you rebirth.";
+		emotion 19; // /swt
+		close;
+
+	L_AdvancedClass:
+		// Check Required Job Level
+		if (Joblevel < 10 && Class == 4001) goto L_LevelTooLow;
+		if (Joblevel < 45 && Class != 4001) goto L_LevelTooLow;
+
+		// Old Class Variable Missing
+		if (oldclass == 0 && Class >=  4001) goto L_OldNotSet;
+
+		// Skill Points Check
+		if (SkillPoint != 0) goto L_SkillPoints;
+
+		// Lord Knight and Paladin
+		if (Class == 4001 && (oldclass ==  7 || oldclass == 14)) goto L_SwordsmanHigh;
+		if (Class == 4002 && oldclass ==  7) goto L_LordKnight;
+		if (Class == 4002 && oldclass == 14) goto L_Paladin;
+
+		// Assassin Cross and Stalker
+		if (Class == 4001 && (oldclass == 12 || oldclass == 17)) goto L_ThiefHigh;
+		if (Class == 4007 && oldclass == 12) goto L_AssassinCross;
+		if (Class == 4007 && oldclass == 17) goto L_Stalker;
+
+		// High Priest and Champion
+		if (Class == 4001 && (oldclass == 8 || oldclass == 15)) goto L_AcolyteHigh;
+		if (Class == 4005 && oldclass ==  8) goto L_HighPriest;
+		if (Class == 4005 && oldclass == 15) goto L_Champion;
+
+		// Sniper and Clown/Gypsy
+		if (Class == 4001 && (oldclass == 11 || oldclass == 19 || oldclass == 20)) goto L_ArcherHigh;
+		if (Class == 4004 && oldclass == 11) goto L_Sniper;
+		if (Class == 4004 && oldclass == 19) goto L_Clown;
+		if (Class == 4004 && oldclass == 20) goto L_Gypsy;
+
+		// Whitesmith and Creator
+		if (Class == 4001 && (oldclass == 10 || oldclass == 18)) goto L_MerchantHigh;
+		if (Class == 4006 && oldclass == 10) goto L_Whitesmith;
+		if (Class == 4006 && oldclass == 18) goto L_Creator;
+
+		// High Wizard and Professor
+		if (Class == 4001 && (oldclass == 9 || oldclass == 16)) goto L_HighMage;
+		if (Class == 4003 && oldclass ==  9) goto L_HighWizard;
+		if (Class == 4003 && oldclass == 16) goto L_Professor;
+
+		// If job isn't one of the above values
+		mes "[Amber]";
+		mes ".....";
+		emotion 1; // /?
+		close;
+
+	// Determine previous class before rebirth if oldclass was not properly set..
+	L_OldNotSet:
+		mes "[Amber]";
+		mes "Say.. what were you before you were reborn?";
+		next;
+		if (Class == 4001) goto L_IsNoviceH;
+		if (Class == 4002) goto L_IsSwordsmanH;
+		if (Class == 4003) goto L_IsMage;
+		if (Class == 4004 && Sex == Female) goto L_IsArcherHF;
+		if (Class == 4004 && Sex == Male) goto L_IsArcherHM;
+		if (Class == 4005) goto L_IsAcolyteH;
+		if (Class == 4006) goto L_IsMerchantH;
+		if (Class == 4007) goto L_IsThiefH;
+
+		// If job isn't one of the above values
+		mes "[Amber]";
+		mes ".....";
+		emotion 1; // /?
+		close;
+
+		L_IsNoviceH:
+		menu "Knight",L_WasKnight,"Priest",L_WasPriest,"Wizard",L_WasWizard,"Blacksmith",L_WasBlacksmith,"Hunter",L_WasHunter,"Assasin",L_WasAssassin,"Crusader",L_WasCrusader,"Monk",L_WasMonk,"Sage",L_WasSage,"Rogue",L_WasRogue,"Alchemist",L_WasAlchemist,"Bard",L_WasBard,"Dancer",L_WasDancer,"Cancel",L_Cancel;
+
+		// Determine current job to get to previous rebirth class ->
+
+		L_IsSwordsmanH:
+			menu "Knight",L_WasKnight,"Crusader",L_WasCrusader,"Cancel",L_Cancel;
+
+		L_IsMageH:
+			menu "Wizard",L_WasWizard,"Sage",L_WasSage,"Cancel",L_Cancel;
+
+		L_IsArcherHF:
+			menu "Hunter",L_WasHunter,"Dancer",L_WasDancer,"Cancel",L_Cancel;
+
+		L_IsArcherHM:
+			menu "Hunter",L_WasHunter,"Bard",L_WasBard,"Cancel",L_Cancel;
+
+		L_IsAcolyteH:
+			menu "Priest",L_WasPriest,"Monk",L_WasMonk,"Cancel",L_Cancel;
+
+		L_IsMerchantH:
+			menu "Blacksmith",L_WasBlacksmith,"Alchemist",L_WasAlchemist,"Cancel",L_Cancel;
+
+		L_IsThiefH:
+			menu "Assasin",L_WasAssassin,"Rogue",L_WasRogue,"Cancel",L_Cancel;
+
+		// Set 'oldclass' according to what the player defines his old job as ->
+
+		L_WasKnight:
+			set oldclass,7;
+			goto L_AdvancedClass;
+
+		L_WasPriest:
+			set oldclass,8;
+			goto L_AdvancedClass;
+
+		L_WasWizard:
+			set oldclass,9;
+			goto L_AdvancedClass;
+
+		L_WasBlacksmith:
+			set oldclass,10;
+			goto L_AdvancedClass;
+
+		L_WasHunter:
+			set oldclass,11;
+			goto L_AdvancedClass;
+
+		L_WasAssassin:
+			set oldclass,12;
+			goto L_AdvancedClass;
+
+		L_WasCrusader:
+			set oldclass,14;
+			goto L_AdvancedClass;
+
+		L_WasMonk:
+			set oldclass,15;
+			goto L_AdvancedClass;
+
+		L_WasSage:
+			set oldclass,16;
+			goto L_AdvancedClass;
+
+		L_WasRogue:
+			set oldclass,17;
+			goto L_AdvancedClass;
+
+		L_WasAlchemist:
+			set oldclass,18;
+			goto L_AdvancedClass;
+
+		L_WasBard:
+			set oldclass,19;
+			goto L_AdvancedClass;
+
+		L_WasDancer:
+			set oldclass,20;
+			goto L_AdvancedClass;
+
+	// Swordsman Class
+
+	L_SwordsmanHigh:
+		mes "[Amber]";
+		mes "Wow, fantastic! Doesn't all that";
+		mes "hard work feel like its paid off? *kekeke* I see";
+		mes "the ^B70004BLOOD of Porings^000000 on your hands!";
+		mes "You truly are fit for the ^0005CESwordsman^000000 job! ^_^";
+		jobchange JOB_SWORDMAN_HIGH;
+		callfunc "F_ReturnQuestSkills";
+		emotion 46; // Congratulations!
+		close;
+
+	L_LordKnight:
+		mes "[Amber]";
+		mes "w00t w00t! You are Job Level 40, you've";
+		mes "been a Swordie High all your life...";
+		mes "Alrite, you are ready to become the doer";
+		mes "of justice, the embodiment of heroism,";
+		mes "the very soul and life of valor! ";
+		next;
+		mes "...";
+		next;
+		mes "[Amber]";
+		mes "Yes! You are ready to become... a Lord Knight! ";
+		mes "Go save a Damsel in Distress or something..";
+		set oldclass,0;
+		jobchange JOB_LORD_KNIGHT;
+		callfunc "F_ReturnQuestSkills";
+		emotion 46; // Congratulations!
+		close;
+
+	L_Paladin:
+		mes "[Amber]";
+		mes "Mmmmm, I always liked Paladins..";
+		if (Sex == Female) mes "their massive armor and toughness looks so cute!";
+		if (Sex == Male) mes "their broad shoulders always turned me on....";
+		emotion 3; // /lv
+		next;
+		mes "[Amber]";
+		mes "Go Forth On Your Mission To Serve God";
+		mes "This Mission is Free of Charge";
+		next;
+		mes "[Amber]";
+		mes "That means you're not getting paid dumbass!";
+		set oldclass,0;
+		jobchange JOB_PALADIN;
+		callfunc "F_ReturnQuestSkills";
+		emotion 46; // Congratulations!
+		close;
+
+	// Thief Class
+
+	L_ThiefHigh:
+		mes "[Amber]";
+		mes "Those devious hands of yours really look";
+		mes "like they need to grab";
+		mes "something (no comment)....";
+		mes "go forth and steal!!";
+		jobchange JOB_THIEF_HIGH;
+		callfunc "F_ReturnQuestSkills";
+		emotion 29; // /gg
+		close;
+
+	L_AssassinCross:
+		mes "[Amber]";
+		mes "Poof! Kekeke... ";
+		set oldclass,0;
+		jobchange JOB_ASSASSIN_CROSS;
+		callfunc "F_ReturnQuestSkills";
+		emotion 46; // Congratulations!
+		close;
+
+	L_Stalker:
+		mes "[Amber]";
+		mes "Hmf.";
+		mes "How goes the stalking lately?";
+		mes "Found Any New Victims?";
+		set oldclass,0;
+		jobchange JOB_STALKER;
+		callfunc "F_ReturnQuestSkills";
+		emotion 46; // Congratulations!
+		close;
+
+	// Acolyte Class
+
+	L_AcolyteHigh:
+		mes "[Amber]";
+		mes "Yay.. go read a Bible.. or whatever.. er..yeah.";
+		jobchange JOB_ACOLYTE_HIGH;
+		callfunc "F_ReturnQuestSkills";
+		emotion 46; // Congratulations!
+		close;
+
+	L_HighPriest:
+		mes "[Amber]";
+		mes "I bet you are GODDAMNED TIRED of NOT";
+		mes "having SP Recovery, right? Well I";
+		mes "am tired of hearing little Jesus-Hugging";
+		mes "Acolytes scream this every time they're";
+		mes "low on Sp... ";
+		if (Sex == Female) goto L_FemaleHPChange;
+		next;
+		mes "[Amber]";
+		mes "Yay! You've now reached Priesthood! It's";
+		mes "sorta like Manhood.. but not really, see with Manhood,";
+		mes "you get this little thingy between your legs..";
+		mes "WHOOPs, I am getting so off topic..";
+		set oldclass,0;
+		jobchange JOB_HIGH_PRIEST;
+		callfunc "F_ReturnQuestSkills";
+		emotion 46; // Congratulations!
+		close;
+
+		L_FemaleHPChange:
+			set oldclass,0;
+			jobchange JOB_HIGH_PRIEST;
+			emotion 46; // Congratulations!
+			close;
+
+	L_Champion:
+		mes "[Amber]";
+		mes "You are the Champion of the Weak and Poor.";
+		mes "Wow it must suck being you ^_^!!!";
+		set oldclass,0;
+		jobchange JOB_CHAMPION;
+		callfunc "F_ReturnQuestSkills";
+		emotion 46; // Congratulations!
+		close;
+
+	// Archer Class
+
+	L_ArcherHigh:
+		mes "[Amber]";
+		mes "I used to poke things with a stick when";
+		mes "I was a child..";
+		next;
+		mes "[Amber]";
+		mes "I guess you're like me! You hurl";
+		mes "pointed sticks at things! Kekeke...";
+		jobchange JOB_ARCHER_HIGH;
+		callfunc "F_ReturnQuestSkills";
+		emotion 46; // Congratulations!
+		close;
+
+	L_Sniper:
+		mes "[Amber]";
+		mes "Oh goodie, you've met all the";
+		mes "requirements... did you have fun hurling";
+		mes "pointed sticks at monsters? Well guess what?";
+		next;
+		mes "[Amber]";
+		mes "Now you can hurl pointed sticks at monsters";
+		mes "AND keep them in one place! w00t, yea!";
+		mes "Traps are a great thing...";
+		set oldclass,0;
+		jobchange JOB_SNIPER;
+		callfunc "F_ReturnQuestSkills";
+		emotion 46; // Congratulations!
+		next;
+		mes "[Amber]";
+		mes "You know what... since I'm just soooo";
+		mes "nice... (as long as you dont piss";
+		mes "me off *grumble grumble*)";
+		next;
+		mes "[Amber]";
+		mes "I'm gonna give you a complementary";
+		mes "falcon! Use it well! Oh.. and you might";
+		mes "wanna wear a hat, this falcon sometimes,";
+		mes "uh... poops..";
+		setfalcon;
+		close;
+
+	L_Clown:
+		mes "[Amber]";
+		mes "What an amusing fellow.";
+		mes "Yay! Go play some ballads for some Dancers";
+		mes "or something, I just can't stand your clothes... ewww.";
+		set oldclass,0;
+		jobchange JOB_CLOWN;
+		callfunc "F_ReturnQuestSkills";
+		emotion 46; // Congratulations!
+		close;
+
+	L_Gypsy:
+		mes "[Amber]";
+		mes "Uh-huh, swivel those hips girl ^_~ Gyspies are";
+		mes "sooo sexy.. too bad I'm stuck doing this job..";
+		mes "ugh, if only I could strip down to a";
+		mes "little thong and party too... *sigh*";
+		set oldclass,0;
+		jobchange JOB_GYPSY;
+		callfunc "F_ReturnQuestSkills";
+		emotion 3; // /lv
+		close;
+
+	// Merchant Class
+
+	L_MerchantHigh:
+		mes "[Amber]";
+		mes "Oh yeah, Mr. Moneybags, SOMEBODY here just";
+		mes "loves the sound of coins jinglin'...";
+		mes "Well its not me!.. >_>..... <_<... bah..";
+		jobchange JOB_MERCHANT_HIGH;
+		callfunc "F_ReturnQuestSkills";
+		emotion 46; // Congratulations!
+		close;
+
+	L_Whitesmith:
+		mes "[Amber]";
+		mes "Oooo~~ Goodie goodie gumdrops! You meet";
+		mes "all the requirements! Guess what I'm";
+		mes "gonna do ^_^...";
+		next;
+		mes "[Amber]";
+		mes "YUP! You guessed it! I turned you into a";
+		mes "Whitesmith! Aren't you PROUD of yourself...";
+		mes "Go and make a few weapons! Open up shops across";
+		mes "the nation! Yea yea yea! Go go go! w00t! Ho yeah! ";
+		set oldclass,0;
+		jobchange JOB_WHITESMITH;
+		callfunc "F_ReturnQuestSkills";
+		emotion 46; // Congratulations!
+		close;
+
+	L_Creator:
+		mes "[Amber]";
+		mes "Create potions for the brave heros of Rune-Midgart.";
+		set oldclass,0;
+		jobchange JOB_CREATOR;
+		callfunc "F_ReturnQuestSkills";
+		emotion 46; // Congratulations!
+		close;
+
+	// Mage Class
+
+	L_HighMage:
+		mes "[Amber]";
+		mes "Nice, now you can finally wield the power";
+		mes "of ^2200DFM^7600F9A^AF00FBN^DA00DFA^000000,"; // 'MANA' in colored letters
+		mes "your spiritual energy!!!";
+		jobchange JOB_MAGE_HIGH;
+		callfunc "F_ReturnQuestSkills";
+		emotion 46; // Congratulations!
+		close;
+
+	L_HighWizard:
+		mes "[Amber]";
+		mes "Wheeee, doesn't it feel great to finally become";
+		mes "a High Wizard? It's like a warm bath....";
+		mes "ahhhhhhh......";
+		set oldclass,0;
+		jobchange JOB_HIGH_WIZARD;
+		callfunc "F_ReturnQuestSkills";
+		emotion 46; // Congratulations!
+		close;
+
+	L_Professor:
+		mes "[Amber]";
+		mes "Time for you to teach your first Quantum";
+		mes "Physics class";
+		set oldclass,0;
+		jobchange JOB_PROFESSOR;
+		callfunc "F_ReturnQuestSkills";
+		emotion 46; // Congratulations!
+		close;
+
+	L_FirstClass:
+		if (Class != JOB_NOVICE) goto L_NoviceFail;
+		if (JobLevel < 10) goto L_JobLv10;
+		if (SkillPoint != 0) goto L_SkillPoints;
+
+		mes "[Amber]";
+		mes "So... getting your first job, eh? Thats cool, we all need to grow up sometime I guess...";
+		next;
+		mes "[Amber]";
+		mes "Pick a job, any job! Bwahaha.........";
+		next;
+		menu "Swordsman",L_Swordsman,"Mage",L_Mage,"Thief",L_Thief,"Merchant",L_Merchant,"Acolyte",L_Acolyte,"Archer",L_Archer,"Cancel",L_Cancel;
+
+	L_NoviceFail:
+		mes "[Amber]";
+		mes "Ummmm, excuse me... o.O...";
+		mes "You don't LOOK like a Novice...";
+		mes "Hey! You're no novice! Get away, punk!";
+		mes "*rolls eyes*";
+		mes "Only NOVICES can change into the";
+		mes "First Job... jeez.";
+		emotion 23; // /omg
+		close;
+
+	L_SkillPoints:
+		mes "[Amber]";
+		mes "Please use up all your skill points";
+		mes "before changing into the next job!";
+		emotion 20; // /hmm
+		close;
+
+	L_JobLv10:
+		mes "[Amber]";
+		mes "Ugh, you need to have at least a Job";
+		mes "Level of 10 before changing into the";
+		mes "first class... go kill some Porings";
+		mes "or something.. >.>'";
+		emotion 23; // /omg
+		close;
+
+	L_Swordsman:
+		mes "[Amber]";
+		mes "Wow, fantastic! Doesn't all that hard";
+		mes "work feel like its paid off? *kekeke*";
+		mes "I see the ^B70004BLOOD of Porings^000000";
+		mes "on your hands! You truly are fit for";
+		mes "the ^0005CESwordsman^000000 job! ^_^";
+		jobchange JOB_SWORDMAN;
+		emotion 46; // Congratulations!
+		close;
+
+	L_Mage:
+		mes "[Amber]";
+		mes "Nice, now you can finally wield the power";
+		mes "of ^2200DFM^7600F9A^AF00FBN^DA00DFA^000000,"; // 'MANA' in colored letters
+		mes "your spiritual energy!!!";
+		jobchange JOB_MAGE;
+		emotion 46; // Congratulations!
+		close;
+
+	L_Thief:
+		mes "[Amber]";
+		mes "Those devious hand of yours really look like";
+		mes "they need to grab something (no comment)....";
+		mes "go forth and steal!!";
+		jobchange JOB_THIEF;
+		emotion 29; // /gg
+		close;
+
+	L_Merchant:
+		mes "[Amber]";
+		mes "Oh yeah, Mr. Moneybags, SOMEBODY here";
+		mes "just loves the sound of coins jinglin'...";
+		mes "Well its not me!.. >_>..... <_<... bah.. ";
+		jobchange JOB_MERCHANT;
+		emotion 46; // Congratulations!
+		close;
+
+	L_Acolyte:
+		mes "[Amber]";
+		mes "Yay.. go read a Bible.. or whatever.. er..yeah";
+		jobchange JOB_ACOLYTE;
+		emotion 46; // Congratulations!
+		close;
+
+	L_Archer:
+		mes "[Amber]";
+		mes "I used to poke things with a stick";
+		mes "when I was a child..";
+		next;
+		mes "[Amber]";
+		mes "I guess you're like me! You hurl";
+		mes "pointed sticks at things! Kekeke...";
+		jobchange JOB_ARCHER;
+		emotion 46; // Congratulations!
+		close;
+
+	L_SecondClass:
+		if (SkillPoint != 0) goto L_SkillPoints;
+		if (JobLevel < 40) goto L_JobLv40;
+
+		mes "[Amber]";
+		mes "Nice... you are ready to change into the";
+		mes "Second Job! Things get really fun after this!";
+		next;
+		mes "[Amber]";
+		mes "What would you like to become?";
+		mes "(Must be the preliminary job)";
+		next;
+		menu "Knight",L_Knight,"Wizard",L_Wizard,"Hunter",L_Hunter,"Blacksmith",L_Blacksmith,"Assassin",L_Assassin,"Priest",L_Priest,"Cancel",L_Cancel;
+
+	L_JobLv40:
+		mes "[Amber]";
+		mes "You must be at least Job Level 40 before";
+		mes "even thinking about changing into";
+		mes "the Second Job.";
+		emotion 20; // /hmm
+		close;
+
+	L_Knight:
+		if (Class != JOB_SWORDMAN) goto L_NotSwordsman;
+		mes "[Amber]";
+		mes "w00t w00t! You are Job Level 40, you've been";
+		mes "a Swordie all your life...";
+		mes "Alrite, you are ready to become the doer";
+		mes "of Justice, the embodiment of Heroism, the";
+		mes "very soul and life of Valor! ";
+		mes "...";
+		next;
+		mes "[Amber]";
+		mes "Yes! You are ready to become... a Knight! ";
+		mes "Go save a Damsel in Distress or something..";
+		jobchange JOB_KNIGHT;
+		emotion 46; // Congratulations!
+		set oldclass,7;
+		close;
+
+	L_NotSwordsman:
+		mes "[Amber]";
+		mes "Well... you see, there's a little, teensy-weensy";
+		mes "problem with YOU becoming a Knight.";
+		mes "Please be a Swordman before even thinking about";
+		mes "'magically' turning into a Knight... jeez.";
+		mes "*rolls eyes*";
+		emotion 23; // /omg
+		close;
+
+	L_Hunter:
+		if (Class != JOB_ARCHER) goto L_NotArcher;
+		mes "[Amber]";
+		mes "Oh goodie, you've met all the requirements... did";
+		mes "you have fun hurling pointed sticks at monsters?";
+		mes "Well guess what?";
+		next;
+		mes "[Amber]";
+		mes "Now you can hurl pointed sticks at monsters AND keep";
+		mes "them in one place! w00t, yea! Traps are a great thing...";
+		jobchange JOB_HUNTER;
+		emotion 46; // Congratulations!
+		set oldclass,11;
+		next;
+		mes "[Amber]";
+		mes "You know what... since I'm just soooo nice...";
+		mes "(as long as you dont piss me off *grumble grumble*)";
+		mes "I'm gonna give you a complementary falcon! Use it well!";
+		mes "Oh.. and you might wanna wear a hat, this falcon";
+		mes "sometimes, uh... poops..";
+		setfalcon;
+		close;
+
+	L_NotArcher:
+		mes "[Amber]";
+		mes "Guess what?";
+		next;
+		mes "[Amber]";
+		mes "YOU'RE NOT AN ARCHER >_<....";
+		mes "WTF?! Do you really think you can magically turn";
+		mes "into a Hunter!? I DONT THINK SO BIYATCH!!! >8-(...";
+		mes "Go away! *grumble grumble*";
+		emotion 23; // /omg
+		close;
+
+	L_Blacksmith:
+		if (Class != JOB_MERCHANT) goto L_NotMerchant;
+		mes "[Amber]";
+		mes "Oooo~~ Goodie goodie gumdrops! You meet allll the";
+		mes "requirements! Guess what I'm gonna do ^_^...";
+		next;
+		mes "[Amber]";
+		mes "YUP! You guessed it! I turned you into a Blacksmith!";
+		mes "Aren't you PROUD of yourself... Go and make a few";
+		mes "weapons! Open up shops across the nation! Yea yea";
+		mes "yea! Go go go! w00t! Ho yeah! ";
+		jobchange JOB_BLACKSMITH;
+		emotion 46; // Congratulations!
+		set oldclass,10;
+		close;
+
+	L_NotMerchant:
+		mes "[Amber]";
+		mes "No, uh-uh, you are no Merchant! Go away!";
+		mes "Only MERCHANTS can change into Blacksmiths!!";
+		mes "Its like the cycle of life or something! Stop";
+		mes "trying to disrupt the order of the universe >_<!!";
+		emotion 23; // /omg
+		close;
+
+	L_Assassin:
+		if (Class != JOB_THIEF) goto L_NotThief;
+		mes "[Amber]";
+		mes "Poof! Kekeke... ";
+		jobchange JOB_ASSASSIN;
+		emotion 46; // Congratulations!
+		set oldclass,12;
+		close;
+
+	L_NotThief:
+		mes "[Amber]";
+		mes ".... You're not even a thief.. >_>... go away..";
+		emotion 23; // /omg
+		close;
+
+	L_Priest:
+		if (class != JOB_ACOLYTE) goto L_NotAcolyte;
+		mes "[Amber]";
+		mes "I bet you are GODDAMNED TIRED of NOT having Sp Recovery,";
+		mes "right? Well I am tired of hearing little";
+		mes "Jesus-Hugging Acolytes scream this every time";
+		mes "they're low on SP... ";
+		if (Sex == Male) goto L_MalePriest;
+		jobchange JOB_PRIEST;
+		emotion 46; // Congratulations!
+		set oldclass,8;
+		close;
+
+		L_MalePriest:
+			next;
+			mes "[Amber]";
+			mes "Yay! You've now reached Priesthood! It's sorta like";
+			mes "Manhood.. but not really, see with Manhood, you get";
+			mes "this little thingy between your legs.. WHOOPs,";
+			mes "I am getting so off topic..";
+			jobchange JOB_PRIEST;
+			emotion 46; // Congratulations!
+			close;
+
+	L_NotAcolyte:
+		mes "[Amber]";
+		mes "Okay I'm getting tired of this.. you are NOT";
+		mes "an Acolyte... I bet you haven't even read the";
+		mes "Bible ONCE! You're going to HELL!";
+		emotion 23; // /omg
+		close;
+
+	L_Wizard:
+		if (Class != JOB_MAGE) goto L_NotMage;
+		mes "[Amber]";
+		mes "Weeee, doesn't it feel great to finally";
+		mes "become a Wizard? It's like a warm bath....";
+		mes "ahhhhhhh......";
+		jobchange JOB_WIZARD;
+		emotion 46; // Congratulations!
+		set oldclass,9;
+		close;
+
+	L_NotMage:
+		mes "[Amber]";
+		mes "I bet you've never cast a spell in your";
+		mes "life.. go away >_>...";
+		emotion 23; // /omg
+		close;
+
+L_SecondClass2:
+	if (SkillPoint != 0) goto L_SkillPoints;
+	if (JobLevel < 40) goto L_JobLv40;
+
+	mes "[Amber]";
+	mes "Wow, you're ready to become second job already?!";
+	next;
+	mes "[Amber]";
+	mes "Very well then, what would you like to be?";
+	next;
+	menu "Crusader",L_Crusader,"Sage",L_Sage,"Bard / Dancer",L_Musician,"Alchemist",L_Alchemist,"Rogue",L_Rogue,"Monk",L_Monk,"Cancel",L_Cancel;
+
+	L_Crusader:
+		if (Class != JOB_SWORDMAN) goto L_NotSwordsman2;
+		mes "[Amber]";
+		mes "Mmmmm, I always liked Crusaders..";
+		if (Sex == Female) mes "their massive armor and toughness looks so cute!";
+		if (Sex == Male) mes "their broad shoulders always turned me on....";
+		next;
+		mes "[Amber]";
+		mes "Oooo~~~ yeah, thats it... yummy...";
+		jobchange JOB_CRUSADER;
+		emotion 3; // /lv
+		set oldclass,14;
+		close;
+
+	L_NotSwordsman2:
+		mes "[Amber]";
+		mes "Nuh-uh... you ain't no Swordman! Get";
+		mes "out of here! Scat!";
+		mes ".......Everybody can't be a Crusader.";
+		emotion 23; // /omg
+		close;
+
+	L_Musician:
+		if (Sex == Female) goto L_Dancer;
+		if (Sex == Male) goto L_Bard;
+
+	L_Bard:
+		if (Class != JOB_ARCHER) goto L_NotArcher3;
+		mes "[Amber]";
+		mes "Yay! Go play some ballads for some Dancers";
+		mes "or something, I just can't stand your";
+		mes "clothes... ewww.";
+		jobchange JOB_BARD;
+		emotion 46; // Congratulations!
+		set oldclass,19;
+		close;
+
+	L_NotArcher3:
+		mes "[Amber]";
+		mes "Nope.. you got it wrong bub.. you gotta be an";
+		mes "ARCHER before becoming a Bard..";
+		mes "Silly players.. just don't know when to stop...";
+		emotion 23; // /omg
+		close;
+
+	L_Dancer:
+		if (Class != JOB_ARCHER) goto L_NotArcher2;
+		mes "[Amber]";
+		mes "Uh-huh, swivel those hips girl ^_~ Dancers are";
+		mes "sooo sexy.. too bad I'm stuck doing this job..";
+		mes "ugh, if only I could strip down to a";
+		mes "little thong and party too... *sigh*";
+		jobchange JOB_DANCER;
+		emotion 3; // /lv
+		set oldclass,20;
+		close;
+
+	L_NotArcher2:
+		mes "[Amber]";
+		mes "Nope.. you got it wrong girl.. you gotta be an";
+		mes "ARCHER before becoming a Dancer..";
+		mes "Silly players.. just don't know when to stop...";
+		emotion 23; // /omg
+		close;
+
+	L_Alchemist:
+		mes "[Amber]";
+		if (Class != JOB_MERCHANT) goto L_NotMerchant2;
+		mes "Cool! Go make some potions! Open a Pharmacy!";
+		mes "Yeah yeah yeah! ^_^";
+		jobchange JOB_ALCHEM;
+		emotion 46; // Congratulations!
+		set oldclass,18;
+		close;
+
+	L_NotMerchant2:
+		mes "[Amber]";
+		mes "Ummm... no, you gotta be a Merchant first...";
+		emotion 23; // /omg
+		close;
+
+	L_Rogue:
+		if (Class != JOB_THIEF) goto L_NotThief2;
+		mes "[Amber]";
+		mes "Wow! ^_^ You.. are.. SOOOOO COOOL!!";
+		mes "KYAAHH XD!! *drools*";
+		jobchange JOB_ROGUE;
+		emotion 46; // Congratulations!
+		set oldclass,17;
+		close;
+
+	L_NotThief2:
+		mes "[Amber]";
+		mes "Look... you gotta be a THIEF before";
+		mes "becoming a Rogue..";
+		mes "I know you think they are really cool..";
+		mes "but NO is NO!";
+		emotion 23; // /omg
+		close;
+
+	L_Monk:
+		if (Class != JOB_ACOLYTE) goto L_NotAcolyte2;
+		mes "[Amber]";
+		mes "Nice.... Monks are pretty damn cool!";
+		mes "ONE HIT KO! Kyaaa <3";
+		jobchange JOB_MONK;
+		emotion 46; // Congratulations!
+		set oldclass,15;
+		close;
+
+	L_NotAcolyte2:
+		mes "[Amber]";
+		mes "Go read a Bible.. you're not an Acolyte..";
+		mes "and guess what?";
+		mes "YOU GOTTA BE AN ACO BEFORE BECOMING A MONK!!! >_>";
+		emotion 23; // /omg
+		close;
+
+	L_Sage:
+		if (Class != JOB_MAGE) goto L_NotMage2;
+		mes "[Amber]";
+		mes "Ahhhh, soo cool! I'll never get tired of seeing";
+		mes "people turn into Mage Classes~ KYAHH XD!!";
+		mes "Go forth Sage! Show those Wizzies what a real";
+		mes "mana-wielder can do! Mwahaha...";
+		jobchange JOB_SAGE;
+		emotion 46; // Congratulations!
+		set oldclass,16;
+		close;
+
+	L_NotMage2:
+		mes "[Amber]";
+		mes "Other jobs except `Mage' are not permitted to be Sages.";
+		mes "Get it right next time. >_>";
+		emotion 23; // /omg
+		close;
+
+L_Cancel:
+	mes "[Amber]";
+	mes "Ugh.. fine, be that way.. >_>..";
+	emotion 23; // /omg
+	close;
+
+L_SuperNovice:
+	if (Class == JOB_SUPER_NOVICE) goto L_Twice;
+	if (Class != JOB_NOVICE) goto L_Otherjob;
+	if (JobLevel < 10) goto L_LowSkill;
+	if (BaseLevel < 45) goto L_LowLevel;
+	if (SkillPoint != 0) goto L_StillSk;
+
+	mes "[Amber]";
+	mes "Hello, Novice!";
+	mes "Are you enjoying yourself as a novice, the";
+	mes "preferred class of the common player?";
+	next;
+	menu "Yes, I love Novices!",L_SNChange,"Ewww, Novices sucks...",L_Cancel;
+
+L_SNChange:
+	mes "[Amber]";
+	mes "Super Novices pride themselves on their slogan 'Common Player,";
+	mes "Common Goals, Common Dreams'!";
+	mes "Have fun with all those skills <3";
+	jobchange JOB_SUPER_NOVICE;
+	emotion 46; // Congratulations!
+	close;
+
+L_LowSkill:
+	mes "[Amber]";
+	mes "Well...it seems your level is a little too";
+	mes "common at the moment.";
+	mes "You need to have a job level of ^0000FFat";
+	mes "least 10^000000 in order to become a Super Novice.";
+	emotion 20; // /hmm
+	close;
+
+L_LowLevel:
+	mes "[Amber]";
+	mes "Well...it seems your base level is a little";
+	mes "too low at the moment.";
+	mes "You need to have a primary level of ^0000FFat";
+	mes "least 45^000000 in order to become a Super Novice.";
+	emotion 20; // /hmm
+	close;
+
+L_StillSk:
+	mes "[Amber]";
+	mes "Well...it seems you still have some skill points.";
+	mes "You need to have ^0000FFNO^000000 skill points";
+	mes "left in order to change jobs.";
+	emotion 20; // /hmm
+	close;
+
+L_Twice:
+	mes "[Amber]";
+	mes "You're already a Super Novice... you NOOB!";
+	emotion 23; // /omg
+	close;
+
+L_Otherjob:
+	mes "[Amber]";
+	mes "Such people don't have a place in the Novice";
+	mes "common society. GFTO!!";
+	emotion 23; // /omg
+	close;
+
+L_ExpandedClass:
+	if (SkillPoint != 0) goto L_SkillPoints;
+	if (Class == JOB_TAEKWON) goto L_TaekwonClass;
+	if (Class != JOB_NOVICE) goto L_ExpandedFail;
+	if (JobLevel < 10) goto L_JobLv10;
+
+	mes "[Amber]";
+	mes "Heeey.. so you wanna be one of those";
+	mes "cool new expanded classes huh?";
+	mes "Well I can make you one!";
+	mes "Kyaaaa~ <3";
+	next;
+	menu "Taekwon",L_Taekwon,"Gunslinger",L_Gunslinger,"Ninja",L_Ninja,"Death Knight",L_DeathKnight,"Dark Collector",L_DarkCollector,"Cancel",L_Cancel;
+
+	L_Taekwon:
+		mes "[Amber]";
+		mes "I think Taekwons are really hot..";
+		mes "They're all buff and strong~";
+		mes "Why they don't even need weapons!";
+		next;
+		mes "[Amber]";
+		mes "Adventure the lands, spiritually,";
+		mes "mentally, and physically. Accept";
+		mes "your title as a TAEKWONDO!";
+		jobchange JOB_TAEKWON;
+		emotion 18; // /heh
+		close;
+
+	L_Gunslinger:
+		mes "[Amber]";
+		mes "I like playing with guns too";
+		mes "sometimes~";
+		jobchange JOB_GUNSLINGER;
+		emotion 3; // /lv
+		close;
+
+	L_Ninja:
+		mes "[Amber]";
+		mes "A class that can use spells,";
+		mes "attack out of no where, and";
+		mes "use deadly techniques from";
+		mes "afar? Talk about cool! <3";
+		jobchange JOB_NINJA;
+		emotion 46; // Congratulations!
+		close;
+
+	L_DeathKnight:
+		mes "[Amber]";
+		mes "Death Knight? Oh.. those..";
+		mes "they aren't available yet I think.";
+		mes "Why don't you become something";
+		mes "else? >_<";
+		emotion 17; // /sry
+		// jobchange JOB_DEATH_KNIGHT;
+		close;
+
+	L_DarkCollector:
+		mes "[Amber]";
+		mes "Wtf is a Dark Collector??";
+		mes "You're weird! Why don't you";
+		mes "try and become a class that";
+		mes "actually exists. Hahaha..";
+		emotion 23; // /omg
+		// jobchange JOB_DARK_COLLECTOR;
+		close;
+
+	L_TaekwonClass:
+		mes "[Amber]";
+		mes "So you're all tough and ready to";
+		mes "advance as a Taekwon further";
+		mes "eh? Then lets get kickin!";
+		next;
+		menu "Taekwon Master",L_TaekwonMaster,"Soul Linker",L_SoulLinker,"Cancel",L_Cancel;
+
+		L_TaekwonMaster:
+			if (JobLevel < 40) goto L_JobLvTooLow;
+			mes "[Amber]";
+			mes "Aww you're all grown up!";
+			mes "I liked you better as a cute";
+			mes "helpless lil Taekwon~ <333";
+			jobchange JOB_STAR_GLADIATOR;
+			emotion 18; // /heh
+			close;
+
+		L_SoulLinker:
+			if (JobLevel < 40) goto L_JobLvTooLow;
+			mes "[Amber]";
+			mes "Soul Linkers are uber cool, they";
+			mes "can super buff any class to be";
+			mes "really leet. You can't practice";
+			mes "martial arts anymore though =(";
+			jobchange JOB_SOUL_LINKER;
+			emotion 18; // /heh
+			close;
+
+L_JobLvTooLow:
+	mes "[Amber]";
+	mes "You must be at least Job Level 40 before";
+	mes "even thinking about changing your";
+	mes "class.";
+	emotion 20; // /hmm
+	close;
+
+L_ExpandedFail:
+	mes "[Amber]";
+	mes "HEY! You can't become an Expanded";
+	mes "Class anymore. Its too late, you missed out! <_<";
+	emotion 23; // /omg
+	close;
+}

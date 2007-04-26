@@ -1,0 +1,19 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                   __                         _               
+//                /\ \ \___ _____   _ _ __ ___ (_)              
+//               /  \/ / _ \_  / | | | '_ ` _ \| |              
+//              / /\  /  __// /| |_| | | | | | | |              
+//              \_\ \/ \___/___|\__,_|_| |_| |_|_|              
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+//                     Nezumi Mapflag System                     
+//--------------------------------------------------------------
+
+
+sec_pri.gat	mapflag	nomemo
+sec_pri.gat	mapflag	nosave	SavePoint
+sec_pri.gat	mapflag	noteleport
+sec_pri.gat	mapflag	nowarp
+sec_pri.gat	mapflag	nobranch
+sec_pri.gat	mapflag	nospell

@@ -1,0 +1,810 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                   __                         _               
+//                /\ \ \___ _____   _ _ __ ___ (_)              
+//               /  \/ / _ \_  / | | | '_ ` _ \| |              
+//              / /\  /  __// /| |_| | | | | | | |              
+//              \_\ \/ \___/___|\__,_|_| |_| |_|_|              
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Airship System	Author: Spirit Death/Bison
+//--------------------------------------------------------------
+// Revision History: v1.3
+//--------------------------------------------------------------
+//	1.0 First release [Spirit Death]
+//	1.1 Added some variables to manage when players may board the
+//	airplanes [Bison]
+//	1.2 Fixed typo [Tsuyuki]
+//	1.3 Merged entire Airship system together and reformatted [Tsuyuki]
+//--------------------------------------------------------------
+// Additional Notes: Airship System with 2 Routes (Almost official)
+// 1st Route: Juno -> Hugel -> Einbroch -> Lighthalzen -> Juno
+// 2nd Route: Juno -> Izlude -> Juno
+// To-Do: Rachel/Veins Airports/routes.
+//--------------------------------------------------------------
+
+//--------------------------------------------------------------
+// Variable Information:
+//--------------------------------------------------------------
+// $at_izlude - A 0 means the airplane is not at Izlude, and a 1 means that it is at Izlude.
+// jairp6 - The warp portal that goes from Juno to the Route 2 airship.
+// jairp7 - The warp portal that goes from Juno to the Route 1 airship.
+// $at_hugel - Variable for the Route 1 airship at Hugel, 1 means true, 0 means false.
+// ein_ap01 - The warp portal that goes from Einbroch to the Route 1 airship.
+// lairp5 - The warp portal that goes from Lighthalzen to the Route 1 airship.
+
+
+//--------------------------------------------------------------
+// Route 1 (Juno -> Hugel -> Einbroch -> Lighthalzen -> Juno)
+//--------------------------------------------------------------
+
+airplane.gat,0,0,0	script	airplane	-1,{
+
+OnInit:
+	initnpctimer;
+	end;
+
+OnTimer1000:
+	set $route1,0;
+	disablenpc "#warp1";
+	disablenpc "#warp2";
+	disablenpc "jairp7";
+	mapannounce "airplane.gat","Captain: Takeoff. Next stop is the Garden City, Hugel.",0x10;
+	mapannounce "yuno.gat","Airship Service: The Route 1 airship has departed from Juno.",0x10;
+	end;
+
+OnTimer51000:
+	mapannounce "airplane.gat","Captain: We will arrive at Hugel in a few seconds.",0x10;
+	end;
+
+OnTimer61000:
+	enablenpc "#warp1";
+	enablenpc "#warp2";
+	set $at_hugel, 1;
+	mapannounce "airplane.gat","Captain: Welcome to Hugel. We hope you enjoyed your trip.",0x10;
+	mapannounce "hugel.gat","Airship Service: The Route 1 airship has arrived at Hugel.",0x10;
+	end;
+
+OnTimer71000:
+	mapannounce "airplane.gat","Captain: We are leaving Hugel soon. Prepare to take off.",0x10;
+	end;
+
+OnTimer81000:
+	set $route1,1;
+	disablenpc "#warp1";
+	disablenpc "#warp2";
+	set $at_hugel, 0;
+	mapannounce "airplane.gat","Captain: Takeoff. Next stop is the Metal City, Einbroch.",0x10;
+	mapannounce "hugel.gat","Airship Service: The Route 1 airship has departed from Hugel.",0x10;
+	end;
+
+OnTimer131000:
+	mapannounce "airplane.gat","Captain: We will arrive at Einbroch in a few seconds.",0x10;
+	end;
+
+OnTimer141000:
+	enablenpc "#warp1";
+	enablenpc "#warp2";
+	enablenpc "ein_ap01";
+	mapannounce "airplane.gat","Captain: Welcome to Einbroch. We hope you enjoyed your trip.",0x10;
+	mapannounce "einbroch.gat","Airship Service: The Route 1 airship has arrived at Einbroch.",0x10;
+	end;
+
+OnTimer151000:
+	mapannounce "airplane.gat","Captain: We are leaving Einbroch soon. Prepare to take off.",0x10;
+	end;
+	
+OnTimer161000:
+	set $route1,2;
+	disablenpc "#warp1";
+	disablenpc "#warp2";
+	disablenpc "ein_ap01";
+	mapannounce "airplane.gat","Captain: Takeoff. Next stop is the City of A.I., Lighthalzen.",0x10;
+	mapannounce "einbroch.gat","Airship Service: The Route 1 airship has departed from Einbroch.",0x10;
+	end;
+
+OnTimer211000:
+	mapannounce "airplane.gat","Captain: We will arrive at Lighthalzen in a few seconds.",0x10;
+	end;
+
+OnTimer221000:
+	enablenpc "#warp1";
+	enablenpc "#warp2";
+	enablenpc "lairp5";
+	mapannounce "airplane.gat","Captain: Welcome to Lighthalzen. We hope you enjoyed your trip.",0x10;
+	mapannounce "lighthalzen.gat","Airship Service: The Route 1 airship has arrived at Lighthalzen.",0x10;
+	end;
+
+OnTimer231000:
+	mapannounce "airplane.gat","Captain: We are leaving Lighthalzen soon. Prepare to take off.",0x10;
+	end;
+
+OnTimer241000:
+	set $route1,3;
+	disablenpc "#warp1";
+	disablenpc "#warp2";
+	disablenpc "lairp5";
+	mapannounce "airplane.gat","Captain: Takeoff. Next stop is the Capital of Schwarzwald Republic, Juno.",0x10;
+	mapannounce "lighthalzen.gat","Airship Service: The Route 1 airship has departed from Lighthalzen.",0x10;
+	end;
+
+OnTimer291000:
+	mapannounce "airplane.gat","Captain: We will arrive in Juno in a few seconds.",0x10;
+	end;
+
+OnTimer301000:
+	enablenpc "#warp1";
+	enablenpc "#warp2";
+	enablenpc "jairp7";
+	mapannounce "airplane.gat","Captain: Welcome to Juno. We hope you enjoyed your trip.",0x10;
+	mapannounce "yuno.gat","Airship Service: The Route 1 airship has arrived at Juno.",0x10;
+	end;
+
+OnTimer311000:
+	mapannounce "airplane.gat","Captain: We are leaving Juno soon. Prepare to take off.",0x10;
+	end;
+
+OnTimer320000:
+	initnpctimer;
+	end;
+}
+
+airplane.gat,243,74,4	script	#warp1	45,2,2,{
+
+OnTouch:
+	if ($route1 == 0) warp "hugel.gat",178,149;
+	if ($route1 == 1) warp "einbroch.gat",90,275;
+	if ($route1 == 2) warp "lighthalzen.gat",302,75;
+	if ($route1 == 3) warp "yuno.gat",85,265;
+	close;
+}
+
+airplane.gat,243,29,4	script	#warp2	45,2,2{
+
+OnTouch:
+	if ($route1 == 0) warp "hugel.gat",178,149;
+	if ($route1 == 1) warp "einbroch.gat",90,275;
+	if ($route1 == 2) warp "lighthalzen.gat",302,75;
+	if ($route1 == 3) warp "yuno.gat",85,265;
+	close;
+}	
+
+
+//--------------------------------------------------------------
+// Route 2 (Juno -> Izlude -> Juno)
+//--------------------------------------------------------------
+
+airplane_01.gat,0,0,0	script	airplane_01	-1,{
+
+OnInit:
+	initnpctimer;
+	end;
+
+OnTimer1000:
+	set $route2,0;
+	disablenpc "#warp3";
+	disablenpc "#warp4";
+	disablenpc "jairp6";
+	mapannounce "airplane_01.gat","Captain: Takeoff. Next stop is Prontera's Satelite, Izlude.",0x10;
+	mapannounce "yuno.gat","Airship Service: The Route 2 airship has departed from Juno.",0x10;
+	end;
+
+OnTimer51000:
+	mapannounce "airplane_01.gat","Captain: We will arrive at Izlude in a few seconds.",0x10;
+	end;
+
+OnTimer61000:
+	enablenpc "#warp3";
+	enablenpc "#warp4";
+	set $at_izlude, 1;
+	mapannounce "airplane_01.gat","Captain: Welcome to Izlude. We hope you enjoyed your trip.",0x10;
+	mapannounce "izlude.gat","Airship Service: The Route 2 airship has arrived at Izlude.",0x10;
+	end;
+
+OnTimer71000:
+	mapannounce "airplane_01.gat","Captain: We are leaving Izlude soon. Prepare to take off.",0x10;
+	end;
+
+OnTimer81000:
+	set $route2,1;
+	set $at_izlude, 0;
+	disablenpc "#warp3";
+	disablenpc "#warp4";
+	mapannounce "airplane_01.gat","Captain: Takeoff. Next stop is the Capital of Schwartzwald Republic, Juno.",0x10;
+	mapannounce "izlude.gat","Airship Service: The Route 2 airship has departed from Izlude.",0x10;
+	end;
+
+OnTimer131000:
+	mapannounce "airplane_01.gat","Captain: We will arrive at Juno in a few seconds.",0x10;
+	end;
+
+OnTimer141000:
+	enablenpc "#warp3";
+	enablenpc "#warp4";
+	enablenpc "jairp6";
+	mapannounce "airplane_01.gat","Captain: Welcome to Juno. We hope you enjoyed your trip.",0x10;
+	mapannounce "yuno.gat","Airship Service: The Route 2 airship has arrived at Juno.",0x10;
+	end;
+
+OnTimer151000:
+	mapannounce "airplane_01.gat","Captain: We are leaving Juno soon. Prepare to take off.",0x10;
+	end;
+
+OnTimer160000:
+	initnpctimer;
+	end;
+}
+
+airplane_01.gat,243,74,4	script	#warp3	45,2,2,{
+
+OnTouch:
+	if ($route2 == 0) warp "izlude.gat",202,56;
+	if ($route2 == 1) warp "yuno.gat",20,265;
+	close;
+}
+
+airplane_01.gat,243,29,4	script	#warp4	45,2,2,{
+
+OnTouch:
+	if ($route2 == 0) warp "izlude.gat",202,56;
+	if ($route2 == 1) warp "yuno.gat",20,265;
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Extra Airship NPCs
+//--------------------------------------------------------------
+
+airplane.gat,80,71,4	script	Zerta	834,{
+
+	mes "[Zerta]";
+	mes "Oh, hello adventurer.";
+	mes "I am currently on a";
+	mes "sacred journey, offering";
+	mes "prayer for the sake of the";
+	mes "Rune-Midgard continent.";
+	close;
+}
+
+airplane.gat,65,63,4	script	Maelin	714,{
+
+	mes "[Maelin]";
+	mes "Um, this Airship is";
+	mes "to Lutie, isn't it? I've";
+	mes "been waiting so long,";
+	mes "but I haven't heard any";
+	mes "broadcast about Lutie.";
+	close;
+}
+
+airplane.gat,72,34,6	script	Aanos	702,{
+ 
+	mes "[Aanos]";
+	mes "Oh wooow~";
+	mes "The sky looks";
+	mes "so different and";
+	mes "pretty from up there!";
+	close;
+}
+
+airplane_01.gat,71,31,2	script	Swordsman Shimizu	106,{
+
+	mes "[Swordsman Shimizu]";
+	mes "Finally, after five";
+	mes "years of waiting...";
+	mes "I can have my revenge!";
+	next;
+	mes "[Swordsman Shimizu]";
+	mes "I just...";
+	mes "Have to make sure that";
+	mes "I don't keep missing my";
+	mes "stop. But soon, very soon,";
+	mes "vengeance will be mine!";
+	close;
+}
+
+airplane_01.gat,69,63,2	script	Mendel	55,{
+
+	mes "[Mendel]";
+	mes "As I expected, the";
+	mes "in-flight meals are";
+	mes "three star quality at best.";
+	mes "*Harrrumph* I really should";
+	mes "have brought my chef so that";
+	mes "I could enjoy a real meal.";
+	close;
+}
+
+airplane_01.gat,83,61,2	script	Dianne	72,{
+
+	mes "[Dianne]";
+	mes "It's so weird!";
+	mes "I went to visit the";
+	mes "Airship Captain and";
+	mes "all I saw was this";
+	mes "weird reindeer. Oh!";
+	mes "Do you think that..?";
+	close;
+}
+
+airplane_01.gat,83,61,2	script	Girl#10	72,{
+
+	mes "[Dianne]";
+	mes "It's so weird!";
+	mes "I went to visit the";
+	mes "Airship Captain and";
+	mes "all I saw was this";
+	mes "weird reindeer. Oh!";
+	mes "Do you think that...";
+	close;
+
+}
+
+airplane_01.gat,69,63,2	script	Old Man#06	55,{
+
+	mes "[Mendel]";
+	mes "As I expected, the";
+	mes "in-flight meals are";
+	mes "three star quality at best.";
+	mes "^111111*Harrrumph*^000000 I really should";
+	mes "have brought my chef so that";
+	mes "I could enjoy a real meal.";
+	close;
+
+}
+
+airplane.gat,240,64,5	script	Exit	857,{
+	mes "^FF0000[Warning]";
+	mes "Don't come too close ";
+	mes "while the airship is in the air.";
+	mes "You can fall down ^.^^000000";
+	close;
+}
+
+airplane.gat,247,64,5	duplicate(Exit)	Exit	857
+airplane.gat,240,40,0	duplicate(Exit)	Exit	857
+airplane.gat,247,40,0	duplicate(Exit)	Exit	857
+
+airplane_01.gat,240,64,5	duplicate(Exit)	Exit	857
+airplane_01.gat,247,64,5	duplicate(Exit)	Exit	857
+airplane_01.gat,240,40,0	duplicate(Exit)	Exit	857
+airplane_01.gat,247,40,0	duplicate(Exit)	Exit	857
+
+
+//--------------------------------------------------------------
+// Einbroch Airport
+//--------------------------------------------------------------
+
+airport.gat,126,43,5	script	Airport Staff::einairportin	90,{
+
+	mes "[Airport Staff]";
+	mes "Welcome to the Airport.";
+	mes "How may I help you?";
+	next;
+	menu "Board the Airship",-,"Cancel",L_Cancel;
+
+		mes "[Airport Staff]";
+		mes "The Airship boarding fee";
+		mes "is 1200 zeny or 1 Free Airship Ticket";
+		mes "How would you like to pay?";
+		next;
+		menu "I will pay with pure Zeny.",-,"I got a Ticket",L_Ticket,"Cancel",L_Cancel;
+		
+			if (zeny < 1200) goto L_NoZeny;
+			set Zeny,zeny-1200;
+			mes "[Airport Staff]";
+			mes "Have a nice trip.";
+			close2;
+			warp "airport.gat",148,51;
+			close;
+
+		L_Ticket:
+			if (countitem(7311) < 1) goto L_NoTicket;
+			delitem 7311,1;
+			mes "[Airport Staff]";
+			mes "Have a nice trip.";
+			close2;
+			warp "airport.gat",148,51;
+			close;
+
+		L_NoZeny:
+			mes "[Airport Staff]";
+			mes "You don't have 1200 zeny.";
+			close;
+			
+		L_NoTicket:
+			mes "[Airport Staff]";
+			mes "You don't have a Ticket.";
+			close;			
+
+	L_Cancel:
+		mes "[Airport Staff]";
+		mes "Have a nice day.";
+		close;
+}
+
+airport.gat,126,51,3	script	Airport Staff::einairportout	90,{
+
+	mes "[Airport Staff]";
+	mes "Welcome";
+	mes "Please head this";
+	mes "way to board the Airship.";
+	next;
+	menu "Exit to Main Terminal",-,"Cancel",L_Cancel;
+
+		mes "[Airport Staff]";
+		mes "If you leave this";
+		mes "terminal, you'll have ";
+		mes "to pay the fee again";
+		next;
+		mes "[Airport Staff]";
+		mes "Are you sure you want to exit?";
+		next;
+		menu "Yes",-,"No",L_Cancel;
+
+			mes "[Airport Staff]";
+			mes "As you wish...";
+			mes "Have a nice day.";
+			close2;
+			warp "airport.gat",142,40;
+			close;
+
+	L_Cancel:
+		close;
+}
+
+airport.gat,143,43,5	duplicate(einairportin)	Airport Staff	90
+airport.gat,158,43,5	duplicate(einairportin)	Airport Staff	90
+airport.gat,143,49,3	duplicate(einairportout)	Airport Staff	90
+airport.gat,158,50,3	duplicate(einairportout)	Airport Staff	90
+
+
+//--------------------------------------------------------------
+// Hugel Airport
+//--------------------------------------------------------------
+
+// Note: This NPC doesn't actually exist.. need to figure
+// out how the Hugel Airship system really works, and fix
+// it to match the official servers. Probably the same
+// case with the other airports as well [Tsuyuki]
+
+hugel.gat,177,156,6	script	Airship Staff	91,{
+
+	mes "[Airport Staff]";
+	if ($at_hugel == 0) goto L_Wait;
+	mes "Welcome to the Airport.";
+	mes "How may I help you?";
+	next;
+	menu "Board the Airship",-,"Cancel",L_Cancel;
+
+		mes "[Airport Staff]";
+		mes "The Airship boarding fee";
+		mes "is 1200 zeny or 1 Free Airship Ticket";
+		mes "How would you like to pay?";
+		next;
+		menu "I will pay with pure Zeny.",-,"I got a Ticket",L_Ticket,"Cancel",L_Cancel;
+		
+			if (zeny < 1200) goto L_NoZeny;
+			set Zeny,zeny-1200;
+			mes "[Airport Staff]";
+			mes "Have a nice trip.";
+			close2;
+			warp "airplane.gat",224,64;
+			close;
+
+		L_Ticket:
+			if (countitem(7311) < 1) goto L_NoTicket;
+			delitem 7311,1;
+			mes "[Airport Staff]";
+			mes "Have a nice trip.";
+			close2;
+			warp "airplane.gat",224,64;
+			close;
+
+		L_NoZeny:
+			mes "[Airport Staff]";
+			mes "You don't have 1200 zeny.";
+			close;
+			
+		L_NoTicket:
+			mes "[Airport Staff]";
+			mes "You don't have a Ticket.";
+			close;			
+
+		L_Wait:
+			mes "Please wait until the airship has arrived before purchasing a ticket.";
+			close;
+
+	L_Cancel:
+		mes "[Airport Staff]";
+		mes "Have a nice day.";
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Izlude Airport
+//--------------------------------------------------------------
+
+izlude.gat,201,54,3	script	Airship Staff	91,{
+
+	mes "[Airport Staff]";
+	if ($at_izlude == 0) goto L_Wait;
+	mes "Welcome to the Airport.";
+	mes "How may I help you?";
+	next;
+	menu "Board the Airship",-,"Cancel",L_Cancel;
+
+		mes "[Airport Staff]";
+		mes "The Airship boarding fee";
+		mes "is 1200 zeny or 1 Free Airship Ticket";
+		mes "How would you like to pay?";
+		next;
+		menu "I will pay with pure Zeny.",-,"I got a Ticket",L_Ticket,"Cancel",L_Cancel;
+		
+			if (zeny < 1200) goto L_NoZeny;
+			set Zeny,zeny-1200;
+			mes "[Airport Staff]";
+			mes "Have a nice trip.";
+			close2;
+			warp "airplane_01.gat",224,64;
+			close;
+
+		L_Ticket:
+			if (countitem(7311) < 1) goto L_NoTicket;
+			delitem 7311,1;
+			mes "[Airport Staff]";
+			mes "Have a nice trip.";
+			close2;
+			warp "airplane_01.gat",224,64;
+			close;
+
+		L_NoZeny:
+			mes "[Airport Staff]";
+			mes "You don't have 1200 zeny.";
+			close;
+			
+		L_NoTicket:
+			mes "[Airport Staff]";
+			mes "You don't have a Ticket.";
+			close;			
+
+		L_Wait:
+			mes "Please wait until the airship has arrived before purchasing a ticket.";
+			close;
+
+	L_Cancel:
+		mes "[Airport Staff]";
+		mes "Have a nice day.";
+		close;
+}
+
+
+//--------------------------------------------------------------
+// Juno Airport
+//--------------------------------------------------------------
+
+y_airport.gat,126,43,5	script	Airport Staff::yunairportin	90,{
+
+	mes "[Airport Staff]";
+	mes "Welcome to the Airport.";
+	mes "How may I help you?";
+	next;
+	menu "Board the Airship",-,"Cancel",L_Cancel;
+
+		mes "[Airport Staff]";
+		mes "The Airship boarding fee";
+		mes "is 1200 zeny or 1 Free Airship Ticket";
+		mes "How would you like to pay?";
+		next;
+		menu "I will pay with pure Zeny.",-,"I got a Ticket",L_Ticket,"Cancel",L_Cancel;
+		
+			if (zeny < 1200) goto L_NoZeny;
+			set Zeny,zeny-1200;
+			mes "[Airport Staff]";
+			mes "Have a nice trip.";
+			close2;
+			warp "y_airport.gat",148,51;
+			close;
+
+		L_Ticket:
+			if (countitem(7311) < 1) goto L_NoTicket;
+			delitem 7311,1;
+			mes "[Airport Staff]";
+			mes "Have a nice trip.";
+			close2;
+			warp "y_airport.gat",148,51;
+			close;
+
+		L_NoZeny:
+			mes "[Airport Staff]";
+			mes "You don't have 1200 zeny.";
+			close;
+			
+		L_NoTicket:
+			mes "[Airport Staff]";
+			mes "You don't have a Ticket.";
+			close;			
+
+	L_Cancel:
+		mes "[Airport Staff]";
+		mes "Have a nice day.";
+		close;
+}
+
+y_airport.gat,126,51,3	script	Airport Staff::yunairportout	90,{
+
+	mes "[Airport Staff]";
+	mes "Welcome";
+	mes "Please head this";
+	mes "way to board the Airship.";
+	next;
+	menu "Exit to Main Terminal",-,"Cancel",L_Cancel;
+
+		mes "[Airport Staff]";
+		mes "If you leave this";
+		mes "terminal, you'll have ";
+		mes "to pay the fee again";
+		next;
+		mes "[Airport Staff]";
+		mes "Are you sure you want to exit?";
+		next;
+		menu "Yes",-,"No",L_Cancel;
+
+			mes "[Airport Staff]";
+			mes "As you wish...";
+			mes "Have a nice day.";
+			close2;
+			warp "y_airport.gat",142,40;
+			close;
+
+	L_Cancel:
+		close;
+}
+
+y_airport.gat,143,43,5	duplicate(yunairportin)	Airport Staff	90
+y_airport.gat,158,43,5	duplicate(yunairportin)	Airport Staff	90
+y_airport.gat,143,49,3	duplicate(yunairportout)	Airport Staff	90
+y_airport.gat,158,50,3	duplicate(yunairportout)	Airport Staff	90
+
+y_airport.gat,143,63,4	script	Airport Staff	91,{
+
+	mes "[Airship Staff]";
+	mes "Hello!";
+	mes "Where would you like to go?";
+	next;
+	menu "Einbroch",L_Route1,"Hugel",L_Route1,"Izlude",L_Route2,"Lighthalzen",L_Route1,"Cancel",-;
+
+	mes "[Airship Staff]";
+	mes "As you wish...";
+	mes "Have a nice day.";
+	close;
+
+L_Route1:
+	mes "[Airship Staff]";
+	mes "Alright.";
+	mes "This way please.";
+	close2;
+	warp "yuno.gat",57,240;
+	end;
+
+L_Route2:
+	mes "[Airship Staff]";
+	mes "Alright.";
+	mes "This way please.";
+	close2;
+	warp "yuno.gat",50,240;
+	end;
+}
+
+
+//--------------------------------------------------------------
+// Lighthalzen Airport
+//--------------------------------------------------------------
+
+lhz_airport.gat,126,43,5	script	Airport Staff::lhzairportin	90,{
+
+	mes "[Airport Staff]";
+	mes "Welcome to the Airport.";
+	mes "How may I help you?";
+	next;
+	menu "Board the Airship",-,"Cancel",L_Cancel;
+
+		mes "[Airport Staff]";
+		mes "The Airship boarding fee";
+		mes "is 1200 zeny or 1 Free Airship Ticket";
+		mes "How would you like to pay?";
+		next;
+		menu "I will pay with pure Zeny.",-,"I got a Ticket",L_Ticket,"Cancel",L_Cancel;
+		
+			if (zeny < 1200) goto L_NoZeny;
+			set Zeny,zeny-1200;
+			mes "[Airport Staff]";
+			mes "Have a nice trip.";
+			close2;
+			warp "lhz_airport.gat",148,51;
+			close;
+
+		L_Ticket:
+			if (countitem(7311) < 1) goto L_NoTicket;
+			delitem 7311,1;
+			mes "[Airport Staff]";
+			mes "Have a nice trip.";
+			close2;
+			warp "lhz_airport.gat",148,51;
+			close;
+
+		L_NoZeny:
+			mes "[Airport Staff]";
+			mes "You don't have 1200 zeny.";
+			close;
+			
+		L_NoTicket:
+			mes "[Airport Staff]";
+			mes "You don't have a Ticket.";
+			close;			
+
+	L_Cancel:
+		mes "[Airport Staff]";
+		mes "Have a nice day.";
+		close;
+}
+
+lhz_airport.gat,126,51,3	script	Airport Staff::lhzairportout	90,{
+
+	mes "[Airport Staff]";
+	mes "Welcome";
+	mes "Please head this";
+	mes "way to board the Airship.";
+	next;
+	menu "Exit to Main Terminal",-,"Cancel",L_Cancel;
+
+		mes "[Airport Staff]";
+		mes "If you leave this";
+		mes "terminal, you'll have ";
+		mes "to pay the fee again";
+		next;
+		mes "[Airport Staff]";
+		mes "Are you sure you want to exit?";
+		next;
+		menu "Yes",-,"No",L_Cancel;
+
+			mes "[Airport Staff]";
+			mes "As you wish...";
+			mes "Have a nice day.";
+			close2;
+			warp "lhz_airport.gat",142,40;
+			close;
+
+	L_Cancel:
+		close;
+}
+
+lhz_airport.gat,143,43,5	duplicate(lhzairportin)	Airport Staff	90
+lhz_airport.gat,158,43,5	duplicate(lhzairportin)	Airport Staff	90
+lhz_airport.gat,143,49,3	duplicate(lhzairportout)	Airport Staff	90
+lhz_airport.gat,158,50,3	duplicate(lhzairportout)	Airport Staff	90
+
+
+//--------------------------------------------------------------
+// Rachel Airport (Incomplete)
+//--------------------------------------------------------------
+
+// To-Do
+
+ra_fild12.gat,45,230,3	script	Airport Guide	934,{
+
+	mes "[Airport Guide]";
+	mes "This international airline, which is run by Shubaltz, runs from Arunafeltz to Rune Midgard.";
+	mes "If you are looking for the airport, please follow the minimap to the indicated spot.";
+	// Looks like there's blinking at the far edge of the map - middle right
+	close;
+}
+
+
+//--------------------------------------------------------------
+// Veins Airport (Incomplete)
+//--------------------------------------------------------------
+
+// To-Do

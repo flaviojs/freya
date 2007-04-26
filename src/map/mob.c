@@ -4555,11 +4555,11 @@ static int mob_readdb(void)
 				actual_mob = &mob_db[class];
 				// Escape mob names
 				memset(mob_name, 0, sizeof(mob_name));
-//				db_sql_escape_string(mob_name, actual_mob->name, strlen(actual_mob->name));
-				db_sql_escape_string(mob_name, str[1], strlen(str[1]));
+				// db_sql_escape_string(mob_name, str[1], strlen(str[1]));
+				mysql_escape_string(mob_name, str[1], strlen(str[1]));
 				memset(mob_jname, 0, sizeof(mob_jname));
-//				db_sql_escape_string(mob_jname, actual_mob->jname, strlen(actual_mob->jname));
-				db_sql_escape_string(mob_jname, str[2], strlen(str[2]));
+				// db_sql_escape_string(mob_jname, str[2], strlen(str[2]));
+				mysql_escape_string(mob_jname, str[2], strlen(str[2]));
 				// Create request
 				fprintf(mob_db_fp, "REPLACE INTO `%s` VALUES (%d, '%s', '%s', %d, %d, %d,"
 				                                             " %d, %d,"

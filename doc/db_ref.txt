@@ -1,147 +1,145 @@
 ==========================================================================
- Nezumi dev 1.0.0 mod0659 現在のdbのリファレンス＋α
+==========================================================================
+ Nezumi Release 2.0 Database Reference
+--------------------------------------------------------------------------
 --------------------------------------------------------------------------
 
-< このファイルは何？ >
+< Information >
 
- Nezumiのdbファイルの設定方法のリファレンスです。
+This documentation should include everything you need to know about the Nezumi databases.
 
 
-< dbのリスト >
+< Databases Documented >
 
-cast_db.txt	スキルのキャスティング時間とディレイ、維持時間等を設定。
-skill_db.txt	スキルのデータを設定。
-skill_require_db.txt	スキル使用条件を設定。
-pet_db.txt	ペットのデータを設定。
+abra_db.txt		Abrakadabra Castable Skills Database
+attr_fix.txt		Attribute Fix Database
+castle_db.txt		War of Emperium Castles Database
+const.txt		Constants Enumeration Database
+create_arrow_db.txt	Arrow Creation Database
+exp.txt			Class Level Experience Database
+exp_guild.txt		Guild Level Experience Database
+
+To-Do: The rest of the databases..
 
 
 ==========================================================================
-1. db/cast_db.txt
+1. db/abra_db.txt -> Abrakadabra Castable Skills Database
 --------------------------------------------------------------------------
 
-id,cast_list,delay_list,upkeep_time,upkeep_time2
+<Skill_ID>,<Dummy_Name>,<Required_HocusPocus_Level>,<Rate>
 
-id: スキルのIDです。
-cast_list: スキルのキャスティング時間を設定します。レベル別に設定する場合は「:」を使います。
-delay_list: スキルのディレイ時間を設定します。レベル別に設定する場合は「:」を使います。
-upkeep_time:スキルの維持時間を設定します。レベル別に設定する場合は「:」を使います。
-upkeep_time2:スキルによって起こる状態異常の維持時間を設定します。レベル別に設定する場合は「:」を使います。(ただ速度減少はupkeep_timeを使いますので注意してください。)
+Skill_ID: The ID of the skill listed in the database.
 
-※武器の追加効果による状態異常はMG_STONECURSE(石化)、MG_FROSTDIVER(凍結)、NPC_STUNATTACK(スタン)、NPC_SLEEPATTACK(睡眠)、TF_POISON(毒)、NPC_CURSEATTACK(呪い)、NPC_SILENCEATTACK(沈黙)、NPC_BLINDATTACK(暗黒)のupkeep_time2を使います。(レベルは7で適用)
-※急所攻撃の場合最大レベルは1ですがバッシュのレベルによって異常時間を変更できるので複数設定も可能です。
-※マキシマイズパワーとクローキングのupkeep_timeは維持時間ではなくSPが1減る時間です。
+Dummy_Name: A skill name used to help users identify the skills easier. It's not read or used by the server, it's specifically for dev/player use.
+
+Required_HocusPocus_Level: This is the level of the Abrakadabra/Hocus Pocus skill required for the listed skill to have a chance to be activated.
+
+Rate: This is the chance rate for the skill to be selected out of the entire database. Be careful not to set this too low, because really low rates up the server's CPU usage.
+
+-> The Hocus Pocus/Abrakadabra skill picks a random skill to cast when it's activated. This database is used to list all the possible options for the skill.
 
 
 ==========================================================================
-2. db/skill_db.txt
+2. db/attr_fix.txt -> Attribute Fix Database
 --------------------------------------------------------------------------
 
-id,range,hit,inf,pl,nk,max,list_num,castcancel,cast_defence_rate,inf2,maxcount,skill_type,blow_count
+// Horizontal:Armor Element                          // Vertical:Attack Element
 
-id: スキルのIDです。
-range: スキルの射程距離です。レベル別に設定する場合は「:」を使います。-1はキャラの武器射程と同じと言う意味で-2ならキャラの武器射程+1、-3ならキャラの武器射程+2になります。
-hit: 連打なら8、単発なら6(スキルのヒット数じゃありません。) 
-inf: スキル情報です。
-	0-パッシブ、1-敵、2-場所、4-即時発動、16-味方、32-罠
-	複数の物を入れると(数値を足して)正しく動作しません。
-pl: スキルの属性です。
-	0-無 1-水 2-地 3-火 4-風 5-毒 6-聖 7-暗 8-念 9-不死
-nk: 付加　1効果　2吹き飛ばし
-MaxLv: スキルの最大レベルです。
-list_num: Hit回数のリストです。レベル別に設定する場合は「:」を使います。
-castcancel: スキルがキャンセルされるかどうかを設定します。yesはキャンセルされる物でnoはキャンセルされない物です。
-cast_defence_rate: キャスティング中に低下する防御力の比率です。ボウリングバッシュやクランドクロスのようにスキルキャスティング中に防御が減るスキルの設定に使います。
-inf2: スキル情報2です。1 - クェストスキル、2 - npc スキル、4-敵、8-場所、16-即時発動、32-味方、64-罠、128-PVPモードで自分を含む全ての物にダメージが入るスキル(地面スキルのみ)、256-普通の使用で自分に必ずダメージが入るスキル(地面スキルのみ)、512-自分には使うことができないスキル、1024 - 自分か自分のパーティにしか使えないスキル。2048 - 自分か自分のギルドにしか使えないスキル、同盟ギルドチェックは無し。(4、8、16、32、64は一部のアクティブスキルが使用。今は阿修羅覇鳳拳のみ使用。)
-maxcount: 地面スキルのみに適用される物でスキルを置ける最大数です。0は置けないと言う意味ではなく制限がない物と言う意味です。
-skill_type: スキルの種類を設定します。weaponは武器スキルでmagicは魔法スキル、miscは武器でも魔法でもないスキルです。noneは決め難しい物等に設定します。ただこれを変えたとしてもスキルのダメージ計算がこれに合わせて変わるわけではなくダメージの計算はプログラムレベルで行なっています。これはスペルブレイカーで詠唱中止されるかどうかを設定する為の物です。(他のスキルでこの設定を使用する可能性もありますが今の所スペルブレイカーのみです。) magicに設定するとスペルブレイカーで詠唱中止されます。
-blow_count: スキルよるノックバック距離です。レベル別に設定する場合は「:」を使います。
+1,10	// Level 1 Attribute Table
+//Netr Watr Erth Fire Wind Pois Hly  Shdw Sens Imor
+  100, 100, 100, 100, 100, 100, 100, 100,  25, 100,  // Normal
+  100,  25, 100, 150,  50, 100,  75, 100, 100, 100,  // Water
+  100, 100, 100,  50, 150, 100,  75, 100, 100, 100,  // Earth
+  100,  50, 150,  25, 100, 100,  75, 100, 100, 125,  // Fire
+  100, 175,  50, 100,  25, 100,  75, 100, 100, 100,  // Wind
+  100, 100, 125, 125, 125,   0,  75,  50, 100, -25,  // Poison
+  100, 100, 100, 100, 100, 100,   0, 125, 100, 150,  // Holy
+  100, 100, 100, 100, 100,  50, 125,   0, 100, -25,  // Shadow
+   25, 100, 100, 100, 100, 100,  75,  75, 125, 100,  // Sense (Ghost)
+  100, 100, 100, 100, 100,  50, 100,   0, 100,   0,  // Immortality (Undead)
+
+
+-> This database is a little messy, but it's easy to figure out. The vertical element comments on the right specify the type of element that's being used to attack, and the horizontal element comments up top specify the elemental armor type. You basically use this like a multiplication chart. Water vs Water is 25% normal damage, Undead vs Undead is 0 damage, etc. The first part of the table specifies the element level here: 1,10	// Lv1 Element table. There are 4 elemental levels with 4 corresponding tables.
+
+-> Also, make sure you stick to the database syntax on how all the spaces are done and such.
 
 
 ==========================================================================
-3. db/skill_require_db.txt
+3. db/castle_db.txt -> War of Emperium Castles Database
 --------------------------------------------------------------------------
 
-id,list_hp,list_sp,list_hp_rate,list_sp_rate,list_zeny,list_weapon,state,spiritball,itemid1,amount1,itemid2,amount2,itemid3,amount3,itemid4,amount4,itemid5,amount5,itemid6,amount6,itemid7,amount7,itemid8,amount8,itemid9,amount9,itemid10,amount10
+<Castle_ID>,<Map_Name>,<Castle_Name>,<Switch_Flag:(Reserved)>
 
-id: スキルのIDです。
-list_hp: スキル使用で減るHPの量です。レベル別に設定する場合は「:」を使います。
-list_sp: スキル使用で減るSPの量です。レベル別に設定する場合は「:」を使います。
-list_hp_rate: スキル使用で減るHPの比率です。レベル別に設定する場合は「:」を使います。(最大HPの比率ではなく現在HPの比率です。)
-list_sp_rate: スキル使用で減るSPの比率です。レベル別に設定する場合は「:」を使います。(最大SPの比率ではなく現在SPの比率です。)
-list_zeny: スキル使用で減るゼニの量です。レベル別に設定する場合は「:」を使います。
-list_weapon: スキルを使うことができる武器を設定します。
-	99 - 全ての武器、0 - 素手、1 - 短剣、2 - 片手剣、3 - 両手剣、4 - 片手槍、
-	5 - 両手槍、6 - 片手斧、7 - 両手斧、8 - 片手鈍器、9 - 両手鈍器、10 - ロッド、
-	11 - 弓、12 - ナックル、13 - 楽器、14 - 鞭、15 - 本、16 - カタール、
-	17~22: 二刀流
-	複数を設定する場合は「:」を使います。
-state:スキルを使用する為の条件を設定します。複数の設定はできません。
-	none - 条件無し
-	hiding - ハイディング状態
-	cloacking - クローキング状態。
-	hidden: ハイディングやクロッキング状態
-	riding: ペコペコに乗っている
-	falcon: 鷹を連れている
-	cart: カートを着けている
-	shield: シールドを持っている
-	sight: サイト状態
-	explosionspirits: 爆裂波動状態
-	recover_weight_rate: 自然回復できる重量
-	move_enable: スキル使用位置が移動可能な場所
-	water: 足元が水
-spiritball: スキル使用に必要な気弾の数です。レベル別に設定する場合は「:」を使います。
-itemid1: スキル使用に必要なアイテムのID、ポーションピッチャーの場合レベル別に使うことになるアイテムID
-amount1: スキル使用に必要なアイテムの数(数が0の場合アイテムのIDがあるとアイテムは減らないけど触媒としてそのアイテムを持っている必要があるようになります。) ポーションピッチャーの場合レベル別に使うことになるアイテム数
-itemid2: 上同
-amount2: 上同
-itemid3: 上同
-amount3: 上同
-itemid4: 上同
-amount4: 上同
-itemid5: 上同
-amount5: 上同
-itemid6: 上同
-amount6: 上同
-itemid7: 上同
-amount7: 上同
-itemid8: 上同
-amount8: 上同
-itemid9: 上同
-amount9: 上同
-itemid10: 上同
-amount10: 上同
+Castle_ID: The castle identifier. It's used by the server to sort out which castle is which.
+
+Map_Name: The map name that the castle area is located on.
+
+Castle_Name: This is the designated name of the castle which is shown by players in-game and during WoE for the specified castle ID/map name.
+
+Switch_Flag: Just set this to 1 if you modify the database.
+
+-> Note that if you add in extra castles, you'll still need to do a lot of modifying to the War of Emperium scripts, as well as add the necessary warps for the new castles.
 
 
 ==========================================================================
-4. db/pet_db.txt
+4. db/const.txt -> Constants Enumeration Database
 --------------------------------------------------------------------------
 
- MobID,Name,JName,ItemID,EggID,AcceID,FoodID,Fullness,HungryDelay ,R_Hungry,R_Full,Intimate,Die,Capture,Speed,S_Performance,talk_convert_class,attack_rate,defence_attack_rate,change_target_rate,pet_script
+<Constant>,<ID>,<Type>
 
-MobID: モンスターIDです。
-Name: 英語名前(ダミー)
-JName: 名前
-ItemID: 捕獲用のアイテムID
-EggID: 卵のアイテムID
-AcceID: 装備アクセサリーのアイテムID
-FoodID: 餌のアイテムID
-Fullness: 1回の餌での満腹度増加率%
-HungryDelay: 満腹度が1%減る為にかかる時間(秒)
-R_Hungry: 空腹時餌やり親密度増加量
-R_Full: とても満腹時餌やり親密度減少量
-Intimate: 捕獲時親密度
-Die: 死亡時親密度減少量
-Capture: 捕獲率(万分率)
-Speed: 移動速度
-S_Performance: スペシャルパフォマンスがあるかどうか(1であり0でなし)
-talk_convert_class: 台詞を他のペットの物に変更。変更したいペットのモンスターIDを入れます。0の場合変更なしでマイナスを入れるとエモーション以外の物(台詞)は全て無視されます。
-attack_rate: 支援攻撃確率。(万分率) 主人が攻撃をしかけた場合。
-defence_attack_rate: 支援攻撃確率。(万分率) 主人が攻撃を受けた場合。
-change_target_rate: 攻撃目標を変更する確率。(万分率)
-pet_script: ペットを持っている時適用されるステータスボーナスを設定。
+Constant: The words/text to be replaced in scripts.
 
+ID: The ID used in replacement of the constant.
+
+Type: Only used with values such as the 'BaseClass' script identifier, you don't have to normally specify it.
+
+-> This database is a tool for use with anything contained in {} brackets in the databases or scripts. In a script, say you see a line like this: jobchange,Job_Acolyte;. The Job_Acolyte string is filtered through the constants database for a match, and if there is a match, the Job_Acolyte string is replaced with it's corresponding ID. In this case that ID would be 4. Constants are used merely to simplify things for devs/users so they don't have to constantly keep looking up IDs. You can add in your own constants to the database and they'll work perfectly fine.
 
 
 ==========================================================================
-EOF
+5. db/create_arrow_db.txt -> Arrow Creation Database
+--------------------------------------------------------------------------
+
+<SourceID>,<Make_ID1>,<Make_Num1>,<Make_ID2>,<Make_Num2>,<Make_ID3>,<Make_Num3>,<Make_ID4>,<Make_Num4>,<Make_ID5>,<Make_Num5>
+
+SourceID: This is the item needed to create the specified Arrows.
+
+Make_ID: This is the Arrow ID created.
+
+Make_Num: This is the number of Arrows created based on the Make_ID value.
+
+-> The duplicate Make_ID and Make_Num fields will output more Arrows if you specify them. Adding them is optional, but you must have at least the first 3 parameters for your entry to work correctly.
+
+
+==========================================================================
+6. db/exp.txt -> Class Level Experience Database
+--------------------------------------------------------------------------
+
+<Novice-BaseExp>,<FirstClass-BaseExp>,<SecondClass-BaseExp>,<SuperNovice-BaseExp>,<HighNovice-BaseExp>,<HighFirstClass-BaseExp>,<HighSecondClass-BaseExp>,<Novice-JobExp>,<FirstClass-JobExp>,<SecondClass-JobExp>,<SuperNovice-JobExp>,<HighNovice-JobExp>,<HighFirstClass-JobExp>,<HighSecondClass-JobExp>,<StarGladiator-JobExp>,<GS/NJ-JobExp>
+
+
+-> This database is used for filtering out the required amount of experience per base level/job level for each class. Many of the classes have different experience formulas, so this database sorts it out.
+
+-> If you check the first row, you'll notice that the values match up to the syntax listed above perfectly: 9,9,9,9,10,10,10,10,30,144,30,11,60,288,27434,72. The first row is the amount of exp per class needed to get from Level 1 to Level 2. The second row is Level 2 to Level 3, and so forth.
+
+-> If you want to modify your server to have Base Levels over L99, or Job Levels over the max, you'll need to add additional rows into this database or they'll be stuck at Base Level 99, or max Job Level depending on the class.
+
+-> If you specify 0 for a parameter, the max level will stop there for that class.
+
+-> Make sure you don't remove the final row: 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0. That row tells the server to stop at that level.
+
+
+==========================================================================
+7. db/exp_guild.txt -> Guild Level Experience Database
+--------------------------------------------------------------------------
+
+<Exp_Required>
+
+Exp_Required: The amount of experience needed for a guild to advance to the next level.
+
+-> The maximum guild level will be decided based on this database's contents. Normally this database goes up to level 50, with 49 values. You may modify it to go more or less by removing or adding values from it.
+
+
+==========================================================================
+ EOF
 --------------------------------------------------------------------------

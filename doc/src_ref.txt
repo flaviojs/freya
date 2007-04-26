@@ -1,0 +1,189 @@
+==========================================================================
+==========================================================================
+ Nezumi Release 2.0 Source Code Reference
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+
+
+==========================================================================
+ Structure Type Reference -> Map Server
+--------------------------------------------------------------------------
+
+-> Definition of item->type: Item-Type (Ex: Usable, Equip, Card, etc)
+-> Retrieved from db/item_db.txt parameter "Type"
+item->type == 0  // Usable Healing Item
+item->type == 1  // Unknown.. (value not used?)
+item->type == 2  // Usable Item
+item->type == 3  // Misc/Collection Item
+item->type == 4  // Weapon Equip
+item->type == 5  // Non-Weapon Equip
+item->type == 6  // Card Item
+item->type == 7  // Pet Egg
+item->type == 8  // Pet Accessory
+item->type == 9  // Unknown.. (value not used?)
+item->type == 10 // Ammunition (Arrows, Bullets, Venom Knives, etc)
+item->type == 11 // Usable + Delayed Consumption
+
+-> Definition of item->equip: Item Slot-To Location Information
+item->equip & 0x0001 // Lower Headgear Slot
+item->equip & 0x0002 // Left-Handed Weapon Slot
+item->equip & 0x0010 // Armor Slot
+item->equip & 0x0020 // Shield/Right-Handed Weapon Slot
+item->equip & 0x0040 // Footgear Slot
+item->equip & 0x0100 // Upper Headgear Slot
+item->equip & 0x0200 // Mid Headgear Slot
+item->equip & 0x8000 // Ammunition Slot? (Unconfirmed)
+// Missing Accessory Slots #1 and #2 Info..
+
+-> Note: Originally created for easier Divest/Equipment Breaking
+item->equip & EQP_HELM 	  // Headgear Slot
+item->equip & EQP_WEAPON  // Weapon Slot
+item->equip & EQP_SHIELD  // Shield Slot
+item->equip & EQP_ARMOR   // Armor Slot
+
+--------------------------------------------------------------------------
+
+-> Definition of equip_index: Player Equipment Slot Information
+-> Compatible with sd, tsd, dstsd, and pl_sd
+sd->equip_index[0]  // Accessory #1 Slot (Left)
+sd->equip_index[1]  // Accessory #2 Slot (Right)
+sd->equip_index[2]  // Footgear Slot
+sd->equip_index[3]  // Garment Slot
+sd->equip_index[4]  // Lower Headgear Slot
+sd->equip_index[5]  // Mid Headgear Slot
+sd->equip_index[6]  // Upper Headgear Slot
+sd->equip_index[7]  // Armor Slot
+sd->equip_index[8]  // Left-Handed Weapon Slot
+sd->equip_index[9]  // Shield/Right-Handed Weapon Slot
+sd->equip_index[10] // Ammunition Slot (Arrows, Bullets, Venom Knives, etc)
+
+-> Definition of status.weapon: Equipped Weapon-Type
+sd->status.weapon == 0  // Bare Fist (No Weapon Equipped)
+sd->status.weapon == 1  // Dagger
+sd->status.weapon == 2  // One-Handed Sword
+sd->status.weapon == 3  // Two-Handed Sword
+sd->status.weapon == 4  // One-Handed Spear
+sd->status.weapon == 5  // Two-Handed Spear
+sd->status.weapon == 6  // One-Handed Axe
+sd->status.weapon == 7  // Two-Handed Axe
+sd->status.weapon == 8  // One-Handed Mace
+sd->status.weapon == 9  // Two-Handed Mace (Value Not Used..)
+sd->status.weapon == 10 // Staff/Rod
+sd->status.weapon == 11 // Bow
+sd->status.weapon == 12 // Knuckle/Fist
+sd->status.weapon == 13 // Instrument
+sd->status.weapon == 14 // Whip
+sd->status.weapon == 15 // Book
+sd->status.weapon == 16 // Katar
+sd->status.weapon == 17 // Revolver
+sd->status.weapon == 18 // Rifle
+sd->status.weapon == 19 // Shotgun
+sd->status.weapon == 20 // Gatling Gun
+sd->status.weapon == 21 // Grenade Launcher
+sd->status.weapon == 22 // Fuuma Shuriken
+
+-> Dual-Wielding status.weapon Options
+sd->status.weapon == 50 // Dual Daggers
+sd->status.weapon == 51 // Dual One-Handed Swords
+sd->status.weapon == 52 // Dual One-Handed Axes
+sd->status.weapon == 53 // Dual Weapon Combo: Dagger + One-Handed Sword
+sd->status.weapon == 54 // Dual Weapon Combo: Dagger + One-Handed Axe
+sd->status.weapon == 55 // Dual Weapon Combo: One-Handed Sword + One-Handed Axe
+
+-> Definition of weapontype: Individual Weapon-Types for Equiped Weapons
+-> These variables merge to become status.weapon
+-> weapontype2 is only important if the user is dual-wielding weapons (Assassin Class only)
+-> Type values are the same as the above status.weapon list, excluding dual-wield values
+
+sd->weapontype1 // Left-Hand Weapon Type
+sd->weapontype2 // Right-Hand Weapon Type
+
+sd->subele[0] - Neutral Property
+sd->subele[1] - Water Property
+sd->subele[2] - Earth Property
+sd->subele[3] - Fire Property
+sd->subele[4] - Wind Property
+sd->subele[5] - Poison Property
+sd->subele[6] - Holy Property
+sd->subele[7] - Shadow Property
+sd->subele[8] - Ghost/Sense Property
+sd->subele[9] - Undead/Immortal Property
+
+sd->subrace[0] - Neutral Type
+sd->subrace[1] - Undead Type
+sd->subrace[2] - Brute Type
+sd->subrace[3] - Plant Type
+sd->subrace[4] - Insect Type
+sd->subrace[5] - Fish Type
+sd->subrace[6] - Demon Type
+sd->subrace[7] - Demi-Human Type
+sd->subrace[8] - Angel/Holy Type
+sd->subrace[9] - Dragon Type
+sd->subrace[10] - Boss Type #1?
+sd->subrace[11] - Boss Type #2?
+
+-> Killer State
+-> Activated by @killer/@charkiller commands
+-> Able to kill other players outside of PvP
+sd->special_state.killer
+
+-> Killable State
+-> Activated by @killable/@charkillable commands
+-> Makes player able to be attacked outside of PvP
+sd->special_state.killable
+
+-> Restart Full Recovery State
+-> Part of SA_FULLRECOVERY skill status
+sd->special_state.restart_full_recover
+
+-> No Cast Cancel States
+-> Bloody Butterfly/Phen Card effects
+sd->special_state.no_castcancel
+sd->special_state.no_castcancel2
+
+-> No Size Fix State
+-> Deal perfect damage on all enemies
+-> regardless of size (for Drake Card)
+sd->special_state.no_sizefix
+
+-> No Magic Damage State
+-> Fully immune to magic damage
+-> For Golden Thiefbug Card
+sd->special_state.no_magic_damage
+
+-> No Weapon Damage State
+-> Immune to all weapon damage
+-> As well as NPC_LICK/BS_HAMMERFALL
+-> status effects (wonder why?)
+-> Currently not used for anything
+sd->special_state.no_weapon_damage
+
+-> No Gemstone State
+-> For Mistress Card and Thief Combo
+-> Card Set - Don't consume gemstones
+-> with gemstone-requiring skills
+sd->special_state.no_gemstone
+
+-> Infinite Endure State
+-> Used for Eddga Card, infinitely
+-> active 'Endure' status effect
+sd->special_state.infinite_endure
+
+-> Intravision State
+-> Allows you to see hidden/cloaked
+-> enemies with shadows
+-> Used for Maya Purple Card, and
+-> Box of Sunlight
+sd->special_state.intravision
+
+-> No Knock Back State
+-> No longer be affected by knockback
+-> skills or any type of knockback in
+-> general (like WoE)
+-> Used for RSX-0806 Card
+sd->special_state.noknockback
+
+
+==========================================================================
+ EOF
+--------------------------------------------------------------------------

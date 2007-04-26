@@ -1,6 +1,10 @@
-NezumiNPCScript
+==========================================================================
+==========================================================================
+ Nezumi Release 2.0 NPC Script Reference
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
 
-- Table of contents
+< Table of contents >
 	0. Introduction
 	1. Definition of NPC
 	2. Explanation of Script, and Fundamental Rule
@@ -8,7 +12,13 @@ NezumiNPCScript
 	4. Error Message
 	5. Postscript
 
-0. Introduction
+-> Note: Highly outdated and a large part of this documentation is untranslated (Japanese.)
+
+
+==========================================================================
+ 0. Introduction
+--------------------------------------------------------------------------
+
 	The function and form which are contained in this text refer to npc_sample.txt contained in the newest snapshot, and are described.
 	The convenience of the editor which shows this text is considered, <tab> is written and <n> etc. is written. [ a tab character ] [ arbitrary values ].
 	Although it is a coordinate system, please make a lower figure reference.
@@ -21,8 +31,12 @@ NezumiNPCScript
 	    |          |
 	(  0,  0)--(200,  0)-> the increase in X
 
-1. Definition of NPC
-	if it is below an nezumi directory -- anywhere -- being good (if it being able to do below nezumi/npc) -- please create txt for the time being
+
+==========================================================================
+ 1. Definition of NPC
+--------------------------------------------------------------------------
+
+	if it is below an Nezumi directory -- anywhere -- being good (if it being able to do below Nezumi/script) -- please create txt for the time being
 	The NPC describes first what is shown (a way of speaking called NPC depending on the case is unsuitable).
 	
 	* Warp point : perform movement between MAP.
@@ -276,7 +290,7 @@ NezumiNPCScript
 		if文やmenu文のジャンプ先に指定されます。
 		
 	＊定数
-		nezumiはdb/const.txtに準拠した定数を提供します。
+		Nezumiはdb/const.txtに準拠した定数を提供します。
 		スクリプト内でのみ使用可能です。
 		
 	＊埋め込み変数
@@ -1284,7 +1298,10 @@ NezumiNPCScript
 	＊注意事項
 		文字列と説明されている引数は""で囲ってください。
 
+
+==========================================================================
 4. Error Message
+--------------------------------------------------------------------------
 
 	* Make an error at the time of compile (it is a thing at the time of map server starting).
 		A place is displayed for the line number of an error.
@@ -1414,12 +1431,18 @@ NezumiNPCScript
 			スタックポインタが基準スタックポインタと異なっています。
 			命令を実行した結果、スタックポインタが狂いました。
 			関数を命令として実行した可能性があります。
-		
 
-5. Postscript
-	NPC contained in snapshot was made reference in creating this text.
-	I appreciate people which created NPC.
+
+==========================================================================
+ 5. Postscript
+--------------------------------------------------------------------------
+
+NPC contained in snapshot was made reference in creating this text.
+I appreciate people which created NPC.
 	
 It corrects based on text by asong (2004/3/1).
 
 
+==========================================================================
+ EOF
+--------------------------------------------------------------------------

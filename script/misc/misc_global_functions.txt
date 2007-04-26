@@ -1,0 +1,247 @@
+//--------------------------------------------------------------
+//               (c)2004-2007 Freya Team Presents:              
+//                   __                         _               
+//                /\ \ \___ _____   _ _ __ ___ (_)              
+//               /  \/ / _ \_  / | | | '_ ` _ \| |              
+//              / /\  /  __// /| |_| | | | | | | |              
+//              \_\ \/ \___/___|\__,_|_| |_| |_|_|              
+//                    http://www.ro-freya.net                   
+//--------------------------------------------------------------
+// Script Title: Script Global Functions	Author: N/A
+//--------------------------------------------------------------
+// Additional Notes: N/A
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
+// F_ClearJobVar -> Clears job change quest variables
+//--------------------------------------------------------------
+
+function	script	F_ClearJobVar	{
+
+	// Misc ---------------------------------
+	set JBLVL,0;
+	// First Class Jobs ---------------------
+	set JOB_ACOLYTE_q,0; set JOB_ACOLYTE_q2,0;
+	set JOB_ARCHER_q,0;
+	set job_magician_q,0;
+	set JOB_MERCHANT_q,0; set JOB_MERCHANT_q2,0; set JOB_MERCHANT_q3,0;
+	set job_sword_q,0; set job_sword_q2,0; set SWTEST, 0;
+	set JOB_THIEF_q,0;
+	// Super Novice
+	set SUPNOV_Q,0;
+	// 2-1 Jobs ------------------------------
+	set ASSIN_Q,0; set ASSIN_Q2,0;
+	set BSMITH_Q,0; set BSMITH_Q2,0;
+	set HNTR_Q,0; set HNTR_Q2,0;
+	set KNIGHT_Q,0; set KNIGHT_Q2,0;
+	set PRIEST_Q,0; set PRIEST_Q2,0; set PRIEST_Q3,0;
+	set WIZ_Q,0; set WIZ_Q2,0;
+	// 2-2 Jobs ------------------------------
+	set ROGUE_Q,0; set ROGUE_Q2,0;
+	set ALCH_Q,0; set ALCH_Q2,0;
+	set CRUS_Q,0;
+	set MONK_Q,0;
+	set SAGE_Q,0; set SAGE_Q2,0;
+	set DANC_Q,0;
+	return;
+}
+
+
+//--------------------------------------------------------------
+// Job_Change -> Job change function for Normal/Baby classes
+//--------------------------------------------------------------
+
+function	script	Job_Change	{
+
+	if (Upper == 0) jobchange getarg(0); // Change Job For Common
+	if (Upper == 2) jobchange getarg(0) + 4023; // Change Job For Baby Class
+	return;
+}
+
+
+//--------------------------------------------------------------
+// Functions used to check a players job class
+//--------------------------------------------------------------
+// HOW TO USE:
+// i.e. We need all holy classes but monks
+// if (callfunc("Is_Holy_Class") && callfunc("Is_Monk")==0) goto L_Start;
+//--------------------------------------------------------------
+
+function	script	Is_Holy_Class	{
+	return (BaseJob == JOB_ACOLYTE || BaseJob == JOB_PRIEST || BaseJob == JOB_MONK);
+}
+
+function	script	Is_Bow_Class	{
+	return (BaseJob == JOB_ARCHER || BaseJob == JOB_HUNTER || BaseJob == JOB_BARD || BaseJob == JOB_DANCER);
+}
+
+function	script	Is_Magic_Class	{
+	return (BaseJob == JOB_MAGE || BaseJob == JOB_WIZARD || BaseJob == JOB_SAGE);
+}
+
+function	script	Is_Merc_Class	{
+	return (BaseJob == JOB_MERCHANT || BaseJob == JOB_BLACKSMITH || BaseJob == JOB_ALCHEM);
+}
+
+function	script	Is_Thief_Class	{
+	return (BaseJob == JOB_THIEF || BaseJob == JOB_ASSASSIN || BaseJob == JOB_ROGUE);
+}
+
+function	script	Is_Sword_Class	{
+	return (BaseJob == JOB_SWORDMAN || BaseJob == JOB_KNIGHT || BaseJob == JOB_KNIGHT2 || BaseJob == JOB_CRUSADER || BaseJob == JOB_CRUSADER2);
+}
+
+function	script	Is_Taekwon_Class	{
+	return (BaseClass == JOB_TAEKWON);
+}
+
+
+//--------------------------------------------------------------
+// Function used to save quest skills before rebirth [Tsuyuki]
+//--------------------------------------------------------------
+
+function	script	F_SaveQuestSkills	{
+
+	// Save First-Class Quest Skills
+	if (getskilllv(142) > 0) set ADVQ1,1;
+	if (getskilllv(143) > 0) set ADVQ2,1;
+	if (getskilllv(144) > 0) set ADVQ3,1;
+	if (getskilllv(145) > 0) set ADVQ4,1;
+	if (getskilllv(146) > 0) set ADVQ5,1;
+	if (getskilllv(147) > 0) set ADVQ6,1;
+	if (getskilllv(148) > 0) set ADVQ7,1;
+	if (getskilllv(149) > 0) set ADVQ8,1;
+	if (getskilllv(150) > 0) set ADVQ9,1;
+	if (getskilllv(151) > 0) set ADVQ10,1;
+	if (getskilllv(152) > 0) set ADVQ11,1;
+	if (getskilllv(153) > 0) set ADVQ12,1;
+	if (getskilllv(154) > 0) set ADVQ13,1;
+	if (getskilllv(155) > 0) set ADVQ14,1;
+	if (getskilllv(156) > 0) set ADVQ15,1;
+	if (getskilllv(157) > 0) set ADVQ16,1;
+
+	// Save Second-Class Quest Skills
+	if (getskilllv(1001) > 0) set ADVQ17,1;
+	if (getskilllv(1002) > 0) set ADVQ18,1;
+	if (getskilllv(1003) > 0) set ADVQ19,1;
+	if (getskilllv(1004) > 0) set ADVQ20,1;
+	if (getskilllv(1005) > 0) set ADVQ21,1;
+	if (getskilllv(1006) > 0) set ADVQ22,1;
+	if (getskilllv(1007) > 0) set ADVQ23,1;
+	if (getskilllv(1008) > 0) set ADVQ24,1;
+	if (getskilllv(1009) > 0) set ADVQ25,1;
+	if (getskilllv(1010) > 0) set ADVQ26,1;
+	if (getskilllv(1011) > 0) set ADVQ27,1;
+	if (getskilllv(1012) > 0) set ADVQ28,1;
+	if (getskilllv(1013) > 0) set ADVQ29,1;
+	if (getskilllv(1014) > 0) set ADVQ30,1;
+	if (getskilllv(1015) > 0) set ADVQ31,1;
+	if (getskilllv(1016) > 0) set ADVQ32,1;
+	if (getskilllv(1017) > 0) set ADVQ33,1;
+	if (getskilllv(1018) > 0) set ADVQ34,1;
+	if (getskilllv(1019) > 0) set ADVQ35,1;
+
+	return;
+}
+
+
+//--------------------------------------------------------------
+// Function used to return quest skills after rebirth [Tsuyuki]
+//--------------------------------------------------------------
+
+function	script	F_ReturnQuestSkills	{
+
+	if (ADVQ1 == 1) skill 142,1,0;
+	if (Class == JOB_NOVICE_HIGH && ADVQ2 == 1) skill 143,1,0;
+
+	if (Class >= JOB_SWORDMAN_HIGH && Class <= JOB_PALADIN2) goto L_Return1stSkills;
+
+	return;
+
+	L_Return1stSkills:
+
+		if (ADVQ3 == 1) skill 144,1,0;
+		if (ADVQ4 == 1) skill 145,1,0;
+		if (ADVQ5 == 1) skill 146,1,0;
+		if (ADVQ6 == 1) skill 147,1,0;
+		if (ADVQ7 == 1) skill 148,1,0;
+		if (ADVQ8 == 1) skill 149,1,0;
+		if (ADVQ9 == 1) skill 150,1,0;
+		if (ADVQ10 == 1) skill 151,1,0;
+		if (ADVQ11 == 1) skill 152,1,0;
+		if (ADVQ12 == 1) skill 153,1,0;
+		if (ADVQ13 == 1) skill 154,1,0;
+		if (ADVQ14 == 1) skill 155,1,0;
+		if (ADVQ15 == 1) skill 156,1,0;
+		if (ADVQ16 == 1) skill 157,1,0;
+
+		goto L_ReturnCont01;
+
+	L_ReturnCont01:
+
+		if (Class >= JOB_LORD_KNIGHT && Class <= JOB_PALADIN2) goto L_Return2ndSkills;
+
+		return;
+
+		L_Return2ndSkills:
+
+			if (ADVQ17 == 1) skill 1001,1,0;
+			if (ADVQ18 == 1) skill 1002,1,0;
+			if (ADVQ19 == 1) skill 1003,1,0;
+			if (ADVQ20 == 1) skill 1004,1,0;
+			if (ADVQ21 == 1) skill 1005,1,0;
+			if (ADVQ22 == 1) skill 1006,1,0;
+			if (ADVQ23 == 1) skill 1007,1,0;
+			if (ADVQ24 == 1) skill 1008,1,0;
+			if (ADVQ25 == 1) skill 1009,1,0;
+			if (ADVQ26 == 1) skill 1010,1,0;
+			if (ADVQ27 == 1) skill 1011,1,0;
+			if (ADVQ28 == 1) skill 1012,1,0;
+			if (ADVQ29 == 1) skill 1013,1,0;
+			if (ADVQ30 == 1) skill 1014,1,0;
+			if (ADVQ31 == 1) skill 1015,1,0;
+			if (ADVQ32 == 1) skill 1016,1,0;
+			if (ADVQ33 == 1) skill 1017,1,0;
+			if (ADVQ34 == 1) skill 1018,1,0;
+			if (ADVQ35 == 1) skill 1019,1,0;
+
+			// Remove old variables not that we're done with them
+			set ADVQ1,0;
+			set ADVQ2,0;
+			set ADVQ3,0;
+			set ADVQ4,0;
+			set ADVQ5,0;
+			set ADVQ6,0;
+			set ADVQ7,0;
+			set ADVQ8,0;
+			set ADVQ9,0;
+			set ADVQ10,0;
+			set ADVQ11,0;
+			set ADVQ12,0;
+			set ADVQ13,0;
+			set ADVQ14,0;
+			set ADVQ15,0;
+			set ADVQ16,0;
+			set ADVQ17,0;
+			set ADVQ18,0;
+			set ADVQ19,0;
+			set ADVQ20,0;
+			set ADVQ21,0;
+			set ADVQ22,0;
+			set ADVQ23,0;
+			set ADVQ24,0;
+			set ADVQ25,0;
+			set ADVQ26,0;
+			set ADVQ27,0;
+			set ADVQ28,0;
+			set ADVQ29,0;
+			set ADVQ30,0;
+			set ADVQ31,0;
+			set ADVQ32,0;
+			set ADVQ33,0;
+			set ADVQ34,0;
+			set ADVQ35,0;
+
+			return;
+}
