@@ -5228,8 +5228,8 @@ int status_change_clear(struct block_list *bl,int type)
 			if(unit_isdead(bl))
 				continue;
 		}
-		//課金用料理と戦闘教範50はクリアされない
-		if(i==SC_COMBAT_HAN || i==SC_MEAL_INCSTR2 || i==SC_MEAL_INCAGI2 ||
+		//課金用料理、生命保険証、戦闘教範50はクリアされない
+		if(i==SC_LIFE_INSURANCE || i==SC_COMBAT_HAN || i==SC_MEAL_INCSTR2 || i==SC_MEAL_INCAGI2 ||
 			i==SC_MEAL_INCVIT2 || i==SC_MEAL_INCDEX2 ||
 			i==SC_MEAL_INCINT2 || i==SC_MEAL_INCLUK2)
 			continue;
@@ -5599,8 +5599,6 @@ int status_change_end( struct block_list* bl , int type,int tid)
 			case SC_MEAL_INCMDEF:
 			case SC_MEAL_INCATK:
 			case SC_MEAL_INCMATK:
-			case SC_COMBAT_HAN://戦闘教範
-			case SC_LIFE_INSURANCE://生命保険証
 			case SC_MEAL_INCSTR2://課金料理用
 			case SC_MEAL_INCAGI2:
 			case SC_MEAL_INCVIT2:
@@ -5633,6 +5631,9 @@ int status_change_end( struct block_list* bl , int type,int tid)
 			case SC_INCREASING:			/* インクリージングアキュアラシー */
 			case SC_FULLBUSTER:			/* フルバスター */
 				calc_flag = 1;
+				break;
+			case SC_COMBAT_HAN://戦闘教範
+			case SC_LIFE_INSURANCE://生命保険証
 				break;
 			case SC_ELEMENTWATER:		// 水
 			case SC_ELEMENTGROUND:		// 土

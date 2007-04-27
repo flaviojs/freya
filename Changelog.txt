@@ -8,12 +8,13 @@
                     http://www.ro-freya.net                   
                      Aurora SVN Changelog                     
 --------------------------------------------------------------
-                Current Revision: jAthena 2292
+                Current Revision: jAthena 2294
 --------------------------------------------------------------
 
 Date	Added
 
 2007/04/27
+	* Updated: Project to jAthena 2294 [Tsuyuki]
 	* Changed: MAX_MOBSKILL global source code variable from 35 to 50 [Tsuyuki]
 	* Updated: Monster Skill Database to Freya's final version [Tsuyuki]
 	* Updated: Databases to latest Huge CGI versions [Tsuyuki]

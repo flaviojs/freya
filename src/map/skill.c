@@ -2024,17 +2024,17 @@ int skill_castend_damage_id( struct block_list* src, struct block_list *bl,int s
 				status_change_end(src,SC_BLADESTOP,-1);
 		}
 		break;
-	case TK_STORMKICK:
+	case TK_STORMKICK:		/* フェオリチャギ */
 		if(flag&1) {
-			if(bl->id != skill_area_temp[1]) {
-				int dist = distance (bl->x, bl->y, skill_area_temp[2], skill_area_temp[3]);
-				battle_skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,
-					0x0500|dist);
-			}
+			if(bl->id != skill_area_temp[1])
+				battle_skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,skill_area_temp[0]|(flag&0xf00000));
 		} else {
+			skill_area_temp[0]=0;
 			skill_area_temp[1]=src->id;
-			skill_area_temp[2]=src->x;
-			skill_area_temp[3]=src->y;
+			if(flag&0xf00000) {
+				map_foreachinarea(skill_area_sub,src->m,src->x-2,src->y-2,src->x+2,src->y+2,0,
+					src,skillid,skilllv,tick, flag|BCT_ENEMY ,skill_area_sub_count);
+			}
 			map_foreachinarea(skill_area_sub,
 				src->m,src->x-2,src->y-2,src->x+2,src->y+2,0,
 				src,skillid,skilllv,tick, flag|BCT_ENEMY|1,
@@ -2043,14 +2043,14 @@ int skill_castend_damage_id( struct block_list* src, struct block_list *bl,int s
 		}
 		break;
 
-	case TK_DOWNKICK:
-	case TK_TURNKICK:
-	case TK_COUNTER:
+	case TK_DOWNKICK:		/* ネリョチャギ */
+	case TK_TURNKICK:		/* トルリョチャギ */
+	case TK_COUNTER:		/* アプチャオルリギ */
 		battle_skill_attack(BF_WEAPON,src,src,bl,skillid,skilllv,tick,flag);
 		break;
 
 	case KN_CHARGEATK:		//チャージアタック
-	case TK_JUMPKICK:
+	case TK_JUMPKICK:		/* ティオアプチャギ */
 	case NJ_ISSEN:			//一閃
 	{
 		int dist  = unit_distance(src->x,src->y,bl->x,bl->y);
@@ -2643,7 +2643,7 @@ int skill_castend_damage_id( struct block_list* src, struct block_list *bl,int s
 					skill_castend_damage_id);
 		}
 		break;
-	case NJ_KAMAITACHI:			/* カマイタチ */
+	case NJ_KAMAITACHI:			/* 朔風 */
 		if(flag&1){
 			battle_skill_attack(BF_MAGIC,src,src,bl,skillid,skilllv,tick,(skill_area_temp[1] == 0 ? 0 : 0x0500));
 			skill_area_temp[1]++;
@@ -2655,6 +2655,25 @@ int skill_castend_damage_id( struct block_list* src, struct block_list *bl,int s
 				skill_area_sub,bl->m,src->x,src->y,src->x + ar*dirx[dir],src->y + ar*diry[dir],0,
 				src,skillid,skilllv,tick,flag|BCT_ENEMY|1,skill_castend_damage_id
 			);
+			if(diry[dir] == 0) {
+				map_foreachinpath(
+					skill_area_sub,bl->m,src->x,src->y + 1,src->x + ar*dirx[dir],src->y + ar*diry[dir] + 1,0,
+					src,skillid,skilllv,tick,flag|BCT_ENEMY|1,skill_castend_damage_id
+				);
+				map_foreachinpath(
+					skill_area_sub,bl->m,src->x,src->y - 1,src->x + ar*dirx[dir],src->y + ar*diry[dir] - 1,0,
+					src,skillid,skilllv,tick,flag|BCT_ENEMY|1,skill_castend_damage_id
+				);
+			} else {
+				map_foreachinpath(
+					skill_area_sub,bl->m,src->x + 1,src->y,src->x + ar*dirx[dir] + 1,src->y + ar*diry[dir],0,
+					src,skillid,skilllv,tick,flag|BCT_ENEMY|1,skill_castend_damage_id
+				);
+				map_foreachinpath(
+					skill_area_sub,bl->m,src->x - 1,src->y,src->x + ar*dirx[dir] - 1,src->y + ar*diry[dir],0,
+					src,skillid,skilllv,tick,flag|BCT_ENEMY|1,skill_castend_damage_id
+				);
+			}
 			if(skill_area_temp[1] == 0) {
 				battle_skill_attack(BF_MAGIC,src,src,bl,skillid,skilllv,tick,0);
 			}
@@ -2994,6 +3013,8 @@ int skill_castend_nodamage_id( struct block_list *src, struct block_list *bl,int
 				if(battle_config.pc_invincible_time > 0)
 					pc_setinvincibletimer(dstsd,battle_config.pc_invincible_time);
 				clif_updatestatus(dstsd,SP_HP);
+				if(dstsd->special_state.restart_full_recover )	/* オシリスカード、SP再表示 */
+					clif_updatestatus(dstsd,SP_SP);
 				clif_resurrection(&dstsd->bl,1);
 				if(src != bl && sd && battle_config.resurrection_exp > 0) {
 					int exp = 0,jexp = 0;
@@ -11709,6 +11730,11 @@ void skill_weapon_refine(struct map_session_data *sd, int idx)
 		clif_weapon_refine_res(sd,2,sd->status.inventory[idx].nameid);
 		return;
 	}
+
+	//精錬可能かチェック
+//リストの方でチェックをしてるけど、チェックしたいならコメントアウトを外す
+//	if(sd->inventory_data[idx]->refine==0)
+//		return;
 
 	//アイテムチェック
 	if(pc_search_inventory(sd,refine_item[wlv])==-1){

@@ -1939,6 +1939,8 @@ struct Damage battle_calc_weapon_attack(
 					src_sd->state.arrow_atk = 1;
 				break;
 			case GS_PIERCINGSHOT:	/* ピアーシングショット */
+				if(t_def1 < 1000000)
+					t_def1=t_def2=0;	// DEF無視
 				if(src_sd && !src_sd->state.arrow_atk && src_sd->arrow_atk > 0) {
 					int arr = atn_rand()%(src_sd->arrow_atk+1);
 					damage  += arr;
