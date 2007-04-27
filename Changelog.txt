@@ -14,6 +14,9 @@
 Date	Added
 
 2007/04/27
+	* Changed: MAX_MOBSKILL global source code variable from 35 to 50 [Tsuyuki]
+	* Updated: Monster Skill Database to Freya's final version [Tsuyuki]
+	* Updated: Databases to latest Huge CGI versions [Tsuyuki]
 	* Improved: Noted all custom source code changes with comments in the code itself [Tsuyuki]
 	 - With the exception of the modified makefiles
 	* Changed: Moved hardcoded @warp duplicate of @rura to conf/atcommand_athena.conf [Tsuyuki]

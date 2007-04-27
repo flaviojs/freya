@@ -39,7 +39,9 @@
 #define LOOTITEM_SIZE 10
 #define MAX_SKILL_ID MAX_SKILL
 #define MAX_SKILL_LEVEL 12
+// MAX_MOBSKILL extended from 32 -> 50 to support more skills [Tsuyuki]
 #define MAX_MOBSKILL 35
+// End of custom changes [Tsuyuki]
 #define MAX_EVENTQUEUE	2
 #define MAX_EVENTTIMER	32
 #define NATURAL_HEAL_INTERVAL 500

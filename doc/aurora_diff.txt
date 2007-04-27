@@ -16,6 +16,7 @@
 -> Database File Changes:
 - Databases such as OCA and OBB are located inside ./db/random/ instead of ./db/.
 - Renamed: mob_boss.txt -> mob_bloodybranch.txt, mob_branch.txt -> mob_deadbranch.txt, mob_poring.txt -> mob_poringbox.txt.
+- MAX_MOBSKILL global variable is 50 instead of 32 to support more skills per mob.
 
 -> Script Engine Changes:
 - 'Class', 'BaseClass', and 'BaseJob' script commands have been modified to work like Freya's versions.
@@ -31,6 +32,20 @@
 - Other than code comments, there really isn't anything that needs translating in the source.
 - All source code modifications are documented/noticed in the form of comments in the code itself.
 
+- The following source code files have modifications, the rest are untouched:
+-----------------------------------------------------------------------------
+- src/char/makefile
+- src/common/mmo.h
+- src/common/version.h
+- src/converter/makefile
+- src/login/makefile
+- src/map/atcommand.c
+- src/map/itemdb.c
+- src/map/map.h
+- src/map/mob.c
+- src/map/pc.c
+
+
 ===========================================================================
 	Databases (./db)
 ---------------------------------------------------------------------------
@@ -44,6 +59,7 @@
 	- ./db/random/item_cardalbum.txt
 
 - The item_db.txt follows jAthena, but the 'Class' script command has been replaced with 'BaseJob' in all occurrences to support the imported scripts properly. Every time the item_db.txt is updated to jAthena's, the 'Class' command will have to be re-replaced with 'BaseJob'.
+- To make merging easier with this change, the script bonuses bAddDamageClass and MonsterClassChange have the 'Class' changed with 'Type', and new const.txt entries added to support the change.
 
 -> As listed above:
 - Databases such as OCA and OBB are located inside ./db/random/ instead of ./db/.

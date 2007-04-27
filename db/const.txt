@@ -223,9 +223,13 @@ bCriticalRate	1040
 bGetZenyNum	1041
 bAddGetZenyNum	1042
 bAddDamageClass	1043
+bAddDamageType	1043
 bAddMagicDamageClass	1044
+bAddMagicDamageType	1044
 bAddDefClass	1045
+bAddDefType	1045
 bAddMdefClass	1046
+bAddMdefType	1046
 bAddMonsterDropItem	1047
 bDefRatioAtkEle	1048
 bDefRatioAtkRace	1049
@@ -284,6 +288,7 @@ bTigereye	1101
 bRace		1102
 bAddSkillBlow	1103
 bMobClassChange	1104
+bMobTypeChange	1104
 bItemHealRate	1105
 bHPVanish	1106
 bSPVanish	1107
