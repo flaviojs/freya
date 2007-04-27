@@ -9,7 +9,6 @@
 
 -> Atcommand Changes:
 - Added @warp duplicate of @rura.
-- Added @charwarp duplicate of @rura+.
 - Changed @jump from forced '@jump x y', to optional x and y parameters. Without x, y, a random location will be used.
 - Removed forced 'name' parameter from @monster/@monstermap commands.
 - @job/@jobchange command uses constants as well as IDs.
@@ -30,6 +29,7 @@
 
 - Source code comments are NOT translated. This would make updating the code far too messy and difficult.
 - Other than code comments, there really isn't anything that needs translating in the source.
+- All source code modifications are documented/noticed in the form of comments in the code itself.
 
 ===========================================================================
 	Databases (./db)
@@ -90,4 +90,4 @@
 - Aurora's 'vc07_make.bat' and 'vc07_clean.bat' scripts do not exist in jAthena.
 - The ./tool/translate folder is a translation system for Aurora that does not exist in jAthena.
 - The win32_start.bat batch launcher has been modified to work better.
-- Any other differences that were missed..
+- All files use DOS (Win32) line endings.

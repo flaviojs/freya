@@ -215,12 +215,10 @@ ATCOMMAND_FUNC(autoloot);
  */
 static AtCommandInfo atcommand_info[] = {
 	{ AtCommand_RuraP,              "@rura+",            0, atcommand_rurap },
-	{ AtCommand_RuraP,              "@charwarp",         0, atcommand_rurap }, // [Custom]
 	{ AtCommand_Rura,               "@rura",             0, atcommand_rura },
-	{ AtCommand_Rura,               "@warp",             0, atcommand_rura }, // [Custom]
 	{ AtCommand_Where,              "@where",            0, atcommand_where },
 	{ AtCommand_JumpTo,             "@jumpto",           0, atcommand_jumpto },
-	{ AtCommand_Jump,               "@jump",             0, atcommand_jump }, // [Custom]
+	{ AtCommand_Jump,               "@jump",             0, atcommand_jump },
 	{ AtCommand_Who,                "@who",              0, atcommand_who },
 	{ AtCommand_Save,               "@save",             0, atcommand_save },
 	{ AtCommand_Load,               "@load",             0, atcommand_load },
@@ -255,8 +253,8 @@ static AtCommandInfo atcommand_info[] = {
 	{ AtCommand_GvGOn,              "@gvgon",            0, atcommand_gvgon },
 	{ AtCommand_Model,              "@model",            0, atcommand_model },
 	{ AtCommand_Go,                 "@go",               0, atcommand_go },
-	{ AtCommand_Monster,            "@monster",          0, atcommand_monster }, // [Custom]
-	{ AtCommand_MonsterMap,         "@monstermap",       0, atcommand_monster }, // [Custom]
+	{ AtCommand_Monster,            "@monster",          0, atcommand_monster },
+	{ AtCommand_MonsterMap,         "@monstermap",       0, atcommand_monster },
 	{ AtCommand_KillMonster,        "@killmonster",      0, atcommand_killmonster },
 	{ AtCommand_KillMonster2,       "@killmonster2",     0, atcommand_killmonster2 },
 	{ AtCommand_Refine,             "@refine",           0, atcommand_refine },
@@ -915,6 +913,7 @@ atcommand_jump(
 		x = 0;
 		y = 0;
 	}
+	// End custom changes [Tsuyuki]
 
 	if (x >= 0 && x < map[sd->bl.m].xs && y >= 0 && y < map[sd->bl.m].ys) {
 		char output[200];
@@ -1135,14 +1134,13 @@ atcommand_hide(
 /*==========================================
  * ì]êEÇ∑ÇÈ upperÇéwíËÇ∑ÇÈÇ∆ì]ê∂Ç‚ó{éqÇ…Ç‡Ç»ÇÍÇÈ
  *------------------------------------------
- * Improved to use string constants as well as IDs [Tsuyuki]
- *------------------------------------------
  */
 int
 atcommand_jobchange(
 	const int fd, struct map_session_data* sd,
 	const char* command, const char* message)
 {
+	// Improved to use string constants as well as IDs [Tsuyuki]
 	int job = 0, upper = -1, i = 0;
 	char jobname[100];
 
@@ -1206,6 +1204,8 @@ atcommand_jobchange(
 		upper = 0;
 	if (pc_jobchange(sd, job, upper) == 0)
 		clif_displaymessage(fd, msg_txt(12));
+
+	// End custom changes [Tsuyuki]
 
 	return 0;
 }
@@ -2132,6 +2132,7 @@ atcommand_monster(
 	const int fd, struct map_session_data* sd,
 	const char* command, const char* message)
 {
+	// Simplified to skip forced 'name' parameter [Tsuyuki]
 	char monster[100];
 	int mob_id = 0;
 	int number = 0;
@@ -2162,10 +2163,10 @@ atcommand_monster(
 	if (battle_config.etc_log) {
 		if (on_map)
 			printf("%s monster=%s id=%d count=%d (on entire map)\n",
-				command, monster, mob_id, number);
+				command, mob_db[mob_id].jname, mob_id, number);
 		else
 			printf("%s monster=%s id=%d count=%d (%d,%d)\n",
-				command, monster, mob_id, number, x, y);
+				command, mob_db[mob_id].jname, mob_id, number, x, y);
 	}
 
 	for (i = 0; i < number; i++) {
@@ -2183,12 +2184,13 @@ atcommand_monster(
 			else
 				my = y;
 		}
-		count += (mob_once_spawn(sd, "this", mx, my, monster, mob_id, 1, "") != 0) ? 1 : 0;
+		count += (mob_once_spawn(sd, "this", mx, my, mob_db[mob_id].jname, mob_id, 1, "") != 0) ? 1 : 0;
 	}
 	if (count != 0)
 		clif_displaymessage(fd, msg_txt(39));
 	else
 		clif_displaymessage(fd, msg_txt(40));
+	// End custom changes [Tsuyuki]
 
 	return 0;
 }

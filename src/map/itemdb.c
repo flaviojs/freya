@@ -559,6 +559,7 @@ static int itemdb_read_randomitem(void)
 		struct random_item_data *pdata;
 		int *pcount,*pdefault;
 	} data[] = {
+		// Moved databases to db/random instead of db/ [Tsuyuki]
 		{"db/random/item_bluebox.txt",		blue_box,	&blue_box_count,	&blue_box_default	},
 		{"db/random/item_violetbox.txt",	violet_box,	&violet_box_count,	&violet_box_default	},
 		{"db/random/item_cardalbum.txt",	card_album,	&card_album_count,	&card_album_default	},
@@ -579,6 +580,7 @@ static int itemdb_read_randomitem(void)
 		{"db/random/item_fabox.txt",fabox	,&fabox_count,	&fabox_default},
 		{"db/random/item_food.txt",food	,&food_count,	&food_default},
 		{"db/random/item_rjc2006.txt",rjc2006	,&rjc2006_count,	&rjc2006_default},
+		// End custom changes [Tsuyuki]
 	};
 
 	// “Ç‚İ‚Ş“xA‰Šú‰»

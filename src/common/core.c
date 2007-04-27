@@ -293,6 +293,7 @@ int main(int argc,char **argv)
 {
 	int next;
 
+	// Added Aurora logo to startup [Tsuyuki]
 	printf("          (=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=)\n");
 	printf("          (            (c)2004-2007 Freya Team Presents:            )\n");
 	printf("          (               ___                                       )\n");
@@ -302,6 +303,7 @@ int main(int argc,char **argv)
 	printf("          (           /_/  |_|\\____|_|  \\___/|_|  \\__,_|            )\n");
 	printf("          (                 http://www.ro-freya.net                 )\n");
 	printf("          (=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=)\n\n");
+	// End of custom changes [Tsuyuki]
 
 	do_pre_init();
 	

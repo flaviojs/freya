@@ -3660,10 +3660,12 @@ static int mob_read_randommonster(void)
 	char *str[10],*p;
 	int i,j;
 
+	// Moved databases to db/random instead of db/ [Tsuyuki]
 	const char* mobfile[] = {
 		"db/random/mob_deadbranch.txt",
 		"db/random/mob_poringbox.txt",
 		"db/random/mob_bloodybranch.txt" };
+	// End custom changes [Tsuyuki]
 
 	for(i=0;i<MAX_RANDOMMONSTER;i++){
 		mob_dummy_class[i] = 1002;	// Ý’è‚µ–Y‚ê‚½ê‡‚Íƒ|ƒŠƒ“‚ªo‚é‚æ‚¤‚É‚µ‚Ä‚¨‚­

@@ -13,18 +13,26 @@
 
 Date	Added
 
-04/18/2007
+2007/04/27
+	* Improved: Noted all custom source code changes with comments in the code itself [Tsuyuki]
+	 - With the exception of the modified makefiles
+	* Changed: Moved hardcoded @warp duplicate of @rura to conf/atcommand_athena.conf [Tsuyuki]
+	* Removed: @charwarp custom duplicate of @rura+ [Tsuyuki]
+	* Fixed: @monster using exact name user types in [Tsuyuki]
+	 - Now checks mob database data for correct name
+
+2007/04/18
 	* Updated: Project to jAthena 2292 [Tsuyuki]
 
-04/17/2007
+2007/04/17
 	* Added: Anubis monster skills (By Playtester) [Tsuyuki]
 
-04/16/2007
+2007/04/16
 	* Updated: Dead Branch and Bloody Branch lists [Tsuyuki]
 	* Updated: Abbey Dungeon monster spawns [Tsuyuki]
 	* Added: Nameless Island/Abbey Dungeon monster skills [Tsuyuki]
 
-04/15/2007
+2007/04/15
 	* Updated: Startup logo 'Freya' -> 'Aurora' [Tsuyuki]
 	* Added: Gunslinger Drifter/Butcher Quests by Playtester [Tsuyuki]
 	* Added: Rachel Sanctuary Quest by Playtester [Tsuyuki]
@@ -32,7 +40,7 @@ Date	Added
 	* Updated: Databases to Huge CGI's latest [Tsuyuki]
 	* Updated: Project to jAthena 2291 [Tsuyuki]
 
-04/14/2007
+2007/04/14
 	* Improved: Skill Reset Aegis event script [Tsuyuki]
 	* Added: French Flag 2005 event script converted from Aegis [Tsuyuki]
 	* Updated: Translated a good portion of battle_athena.conf [Tsuyuki]
@@ -47,13 +55,13 @@ Date	Added
 	 - Highly accurate to the iRO version
 	 - Beware of possible bugs/exploits
 
-04/13/2007
+2007/04/13
 	* Updated: Huge CGI databases [Tsuyuki]
 
-04/11/2007
+2007/04/11
 	* Changed: Project 'Phaeton' -> 'Aurora' [Tsuyuki]
 
-04/10/2007
+2007/04/10
 	* Updated: Veins NPCs a little bit [Tsuyuki]
 	 - Official coords for Cool Event Corp NPC
 	 - Added Pet Merchant + Mailbox
@@ -64,7 +72,7 @@ Date	Added
 	* Updated: mob_db.txt and item_db.txt to Huge CGI's latest versions [Tsuyuki]
 	* Updated: Project to jAthena 2290 [Tsuyuki]
 
-04/08/2007
+2007/04/08
 	* Updated: Necessary databases to jAthena Huge CGI's latest versions [Tsuyuki]
 	* Updated: Project to jAthena 2288 [Tsuyuki]
 	* Updated: Project to jAthena 2286 [Tsuyuki]
@@ -80,10 +88,10 @@ Date	Added
 	* Added: Missing juicer quest [Tsuyuki]
 	* Fixed: A typo in /script/event/event_white_day.txt [Tsuyuki]
 
-04/07/2007
+2007/04/07
 	* Improved: New motd.txt =P [Tsuyuki]
 
-04/06/2007
+2007/04/06
 	* Fixed: Minor SQL typo (Thanks to Nicko) [Tsuyuki]
 	* Updated: Did some work on the /job/ script folder [Tsuyuki]
 	* Updated: Nameless Island warper to warp a character to different maps based on day/night [Tsuyuki]
@@ -92,19 +100,19 @@ Date	Added
 	* Updated: Mob database to the latest Huge CGI revision [Tsuyuki]
 	* Changed: The mob database now follows jAthena's instead of Freya's [Tsuyuki]
 
-04/05/2007
+2007/04/05
 	* Updated: Project to jAthena 2285 (Latest) [Tsuyuki]
 	* Fixed: Some The Sign Quest bugs (Thanks to Galaxy) [Tsuyuki]
 
-04/04/2007
+2007/04/04
 	* Updated: Mapflags [Tsuyuki]
 	* Added: A temp warper from Veins -> Nameless Island [Tsuyuki]
 	* Added: Nameless Island town script (Not started) [Tsuyuki]
 
-04/03/2007
+2007/04/03
 	* Updated: Project to jAthena 2284 (Latest) [Tsuyuki]
 
-04/02/2007
+2007/04/02
 	* Changed: Lowered max mob skill global to 32 [Tsuyuki]
 	* Added: ladmin gui and ladmin plus to the ./bin/tool/ folder [Tsuyuki]
 	* Added: Two missing ./bin/tool/ files and an SQL script file [Tsuyuki]
@@ -124,7 +132,7 @@ Date	Added
 	 - Example: 'Job_TaekwonBoy' from jAthena
 	 - This helps for universal script compatibility
 
-04/01/2007
+2007/04/01
 	* Improved: Revised the Knight job change quest [Tsuyuki]
 	* Imported: 'Bard' quest from Freya (Not the job change quest, it's different) [Tsuyuki]
 	* Fixed: Some script map name typos (morroc.gat -> morocc.gat) [Tsuyuki]
@@ -153,10 +161,10 @@ Date	Added
 	* Changed: Some db/const.txt job enumeration entries [Tsuyuki]
 	* Removed: Old script folder entirely [Tsuyuki]
 
-03/31/2007
+2007/03/31
 	* Added: Akagi to the Ninja job quest [Tsuyuki]
 
-03/28/2007
+2007/03/28
 	* Fixed: Some Thor Dungeon mob skills [Tsuyuki]
 	* Added: Modified Bow Master and Sword Master Thor Dungeon mob skills [Tsuyuki]
 	* Updated: Dead Branch list a little bit [Tsuyuki]
@@ -164,7 +172,7 @@ Date	Added
 	* Updated: Some packet lengths for the latest clients [Tsuyuki]
 	 - Note: 02-20-2007 and 03-26-2007 clients are currently compatible [Tsuyuki]
 
-03/25/2007
+2007/03/25
 	* Removed: Job script functions (No longer necessary) [Tsuyuki]
 	* Renamed: /npc/cities/ -> /npc/town/ [Tsuyuki]
 	* Improved: Cleaned and improved headers and formatting of all the databases [Tsuyuki]
@@ -185,29 +193,29 @@ Date	Added
 	* Modified: The faq.html file a little bit.. [Tsuyuki]
 	* Improved: Scripts comment/header formatting [Tsuyuki]
 
-03/24/2007
+2007/03/24
 	* Updated: Mob database to Freya's latest [Tsuyuki]
 	* Updated: Item database to jAthena's latest [Tsuyuki]
 
-03/17/2007
+2007/03/17
 	* Added: Two missing source files (Fixes compilation issues) [Tsuyuki]
 	* Fixed: Typo in Ice Dungeon spawns [Tsuyuki]
 	* Imported: Momotaro Event script [Tsuyuki]
 
-03/12/2007
+2007/03/12
 	* Updated: Project to jAthena 2278 (Latest) [Tsuyuki]
 
-03/11/2007
+2007/03/11
 	* Updated: Some monster spawns [Tsuyuki]
 	* Fixed: Some Veins monster skills [Tsuyuki]
 
-03/07/2007
+2007/03/07
 	* Added: Magmaring's monster skills [Tsuyuki]
 	* Removed: Homunuclus entries from Phaeton's monster database [Tsuyuki]
 	* Added: Byorgue's monster skills [Tsuyuki]
 	* Translated: A bunch of battle_athena.conf [Tsuyuki]
 
-03/05/2007
+2007/03/05
 	* Improved: Simplified @jump 0 0 to just @jump for random teleporting [Tsuyuki]
 	* Added: @warp duplicate of @rura [Tsuyuki]
 	* Added: Missing Thor/Veins maps [Tsuyuki]
@@ -222,11 +230,11 @@ Date	Added
 	* Fixed: Swordsman quest problems, and added missing warps [Tsuyuki]
 	* Added: Missing Novice Grounds warps [Tsuyuki]
 
-03/04/2007
+2007/03/04
 	* Updated: Packet database (Will now work with the 02-20-2007 client and above) [Tsuyuki]
 	* Updated: Databases a little bit [Tsuyuki]
 
-03/03/2007
+2007/03/03
 	* Changed: 300 Bear Skin-> 500 Yarn and Slotted Cap->Cap for Fur Hat [GreenGoblin]
 	* Changed: Healthy Branches->Tough Vines for Straw Hat quest [GreenGoblin]
 	* Updated: Source code to jAthena 2277 (Latest) [Tsuyuki]
@@ -241,7 +249,7 @@ Date	Added
 	* Re-Updated: Source code to jAthena 2269 [Tsuyuki]
 	* Removed: Duel system [Tsuyuki]
 
-03/01/2007
+2007/03/01
 	* Fixed: Mob Skill Databases broken entries [Tsuyuki]
 	* Updated: Kunlun NPCs to Aegis version [GreenGoblin]
 	* Reverted: Source code updates, broke compilation somewhow for Cygwin [Tsuyuki]
@@ -256,18 +264,18 @@ Date	Added
 	* Updated: Jobs script folder organization [Tsuyuki]
 	* Changed: Enabled all quests (Now compatible) [Tsuyuki]
 
-02/28/2007
+2007/02/28
 	* Updated: Item database to jAthena's (Latest) [Tsuyuki]
 	* Updated: Monster database to Freya's (Latest) [Tsuyuki]
 	* Updated: /script/ and main folders [Tsuyuki]
 	* Updated: Packet database to 02-22-07 Sakexe client [Tsuyuki]
 	* Updated: Source code to jAthena 2277 (Latest) [Tsuyuki]
 
-02/11/2007
+2007/02/11
 	* Moved: Random item databases to /db/random/, corrected in source as well [Tsuyuki]
 	* Updated: Dead Branch/Bloody Branch/Poring Box random spawn lists [Tsuyuki]
 
-01/16/2007
+2007/01/16
 	* Moved: Mapflags to npc/other/mapflags.txt for the time being [Tsuyuki]
 	* Removed: Deleted old WoE system, and imported the jAthena system translated [Tsuyuki]
 	* Changed: Tested and fixed up Event scripts (They stay commented of course) [Tsuyuki]
@@ -275,7 +283,7 @@ Date	Added
 	* Changed: Enabled all npc/other scripts (Now compatible) [Tsuyuki]
 	 - Marriage has been excluded, it will need a massive rewrites to become compatible
 
-01/15/2007
+2007/01/15
 	* Changed: Enabled all Merchants (Now compatible) [Tsuyuki]
 	* Changed: Enabled Kafras, Guides, and Airports (Now compatible) [Tsuyuki]
 	* Changed: Enabled all NPC Monster Spawns (Compatible) [Tsuyuki]
@@ -286,4 +294,7 @@ Date	Added
 	* Added: Server launchers for easier development [Tsuyuki]
 	* Added: Phaeton files and SVN [Tsuyuki]
 
-AURORA BEGINS HERE, based off jAthena 2269
+
+--------------------------------------------------------------
+ Aurora Emulator Project Begins Here -> Based on jAthena
+--------------------------------------------------------------
