@@ -8,11 +8,6 @@
 // 1000000 = 100%
 
 0,Guard,2102
-517,Meat,50000
-518,Honey,20000
-519,Milk,20000
-520,Hinalle Leaflet,20000
-521,Aloe Leaflet,20000
 523,Holy Water,30000
 525,Panacea,20000
 526,Royal Jelly,10000
@@ -26,11 +21,11 @@
 535,Pumpkin,50000
 601,Fly Wing,100000
 602,Butterfly Wing,100000
-603,Unknown Item,300000
+603,Old Blue Box,300000
 604,Dead Branch,10000
 605,Anodyne,20000
 606,Aloevera,20000
-607,Yggdrasilberry,10000
+607,Yggdrasil Berry,10000
 608,Yggdrasil Seed,10000
 610,Yggdrasil Leaf,10000
 611,Magnifier,100000
@@ -47,7 +42,7 @@
 703,Hinalle,10000
 704,Aloe,10000
 705,Clover,10000
-706,Four-Leaf Clover,10000
+706,Four Leaf Clover,10000
 707,Singing Plant,10000
 708,Ment,10000
 710,Illusion Flower,10000
@@ -70,8 +65,8 @@
 727,Opal,20000
 728,Topaz,20000
 729,Zircon,20000
-730,1 Carat Diamond,20000
-731,2 Carat Diamond,10000
+730,1carat Diamond,20000
+731,2carat Diamond,10000
 733,Cracked Diamond,10000
 734,Red Frame,30000
 735,Chung Jah,30000
@@ -114,7 +109,7 @@
 919,Animal Skin,20000
 920,Wolf Claw,20000
 921,Mushroom Spore,20000
-922,Orcish Fang,20000
+922,Orc's Fang,20000
 923,Evil Horn,10000
 924,Powder of Butterfly,20000
 925,Bill of Birds,20000
@@ -130,14 +125,14 @@
 937,Venom Canine,20000
 938,Sticky Mucus,20000
 939,Bee Sting,20000
-940,Grasshoppers Leg,20000
+940,Grasshopper's Leg,20000
 942,Yoyo Tail,20000
 943,Solid Shell,10000
 944,Horseshoe,20000
 945,Raccoon Leaf,20000
-946,Snails Shell,20000
+946,Snail's Shell,20000
 947,Horn,20000
-948,Bears Footskin,20000
+948,Bear's Footskin,20000
 949,Feather,20000
 950,Heart of Mermaid,20000
 951,Fin,20000
@@ -160,8 +155,8 @@
 972,Karvodailnirol,10000
 973,Counteragent,10000
 974,Mixture,10000
-975,Scarlet Dyestuffs,10000
-976,Lemon Dyestuffs,10000
+975,Scarlet Dyestuff,10000
+976,Lemon Dyestuff,10000
 978,Cobaltblue Dyestuff,10000
 979,Darkgreen Dyestuff,10000
 980,Orange Dyestuff,10000
@@ -190,7 +185,7 @@
 1003,Coal,50000
 1004,Chivalry Emblem,10000
 1005,Hammer of Blacksmith,10000
-1006,Old Magic Book,10000
+1006,Old Magicbook,10000
 1007,Necklace of Wisdom,10000
 1008,Necklace of Oblivion,10000
 1009,Hand of God,10000
@@ -205,7 +200,7 @@
 1018,Mole Claw,20000
 1019,Trunk,20000
 1020,Black Hair,20000
-1021,Dokkaebi Horn,20000
+1021,Dokebi Horn,20000
 1022,Nine Tails,20000
 1023,Fish Tail,20000
 1024,Squid Ink,20000
@@ -214,7 +209,7 @@
 1027,Porcupine Quill,20000
 1028,Mane,20000
 1029,Tiger Skin,10000
-1030,Tigers Footskin,10000
+1030,Tiger's Footskin,10000
 1031,Mantis Scythe,20000
 1032,Maneater Blossom,20000
 1033,Maneater Root,20000
@@ -224,11 +219,11 @@
 1037,Dragon Tail,20000
 1038,Little Evil Horn,20000
 1039,Little Evil Wing,20000
-1040,Elder Pixies Moustache,20000
+1040,Elder Pixie's Moustache,20000
 1041,Lantern,20000
 1042,Bug Leg,20000
 1043,Orc Claw,20000
-1044,Zenorcs Fang,20000
+1044,Zenorc's Fang,20000
 1045,Cultish Masque,20000
 1046,Scorpion Nipper,20000
 1047,Dead Medusa,20000
@@ -254,7 +249,7 @@
 1105,Falchion,10000
 1108,Blade,10000
 1111,Rapier,10000
-1114,Scimiter,10000
+1114,Scimitar,10000
 1117,Katana,40000
 1120,Tsurugi,10000
 1125,Ring Pommel Saber,10000
@@ -263,7 +258,7 @@
 1129,Flamberge,10000
 1152,Slayer,30000
 1155,Bastard Sword,20000
-1158,Two-handed Sword,10000
+1158,Two-Handed Sword,10000
 1162,Broad Sword,10000
 1163,Claymore,10000
 1202,Knife,10000
@@ -282,7 +277,7 @@
 1352,Battle Axe,10000
 1355,Hammer,10000
 1358,Buster,10000
-1361,Two-handed Axe,10000
+1361,Two-Handed Axe,10000
 1402,Javelin,10000
 1405,Spear,10000
 1408,Pike,10000
@@ -306,8 +301,8 @@
 1608,Staff,10000
 1611,Arc Wand,10000
 1613,Mighty Staff,10000
-1615,Bone Wand,10000
-1714,Gakkung,10000
+1615,Evil Bone Wand,10000
+1714,Gakkung Bow,10000
 1718,Hunter Bow,10000
 1719,Roguemaster's Bow,10000
 1750,Arrow,10000
@@ -319,10 +314,10 @@
 1756,Stone Arrow,10000
 1757,Immaterial Arrow,10000
 1758,Stun Arrow,10000
-1759,Freeze Arrow,10000
+1759,Frozen Arrow,10000
 1760,Flash Arrow,10000
-1761,Curse Arrow,10000
-1762,Rusted Arrow,10000
+1761,Cursed Arrow,10000
+1762,Rusty Arrow,10000
 1763,Poison Arrow,10000
 1764,Sharp Arrow,10000
 1765,Oridecon Arrow,10000
@@ -330,7 +325,7 @@
 1768,Sleep Arrow,10000
 1769,Mute Arrow,10000
 1770,Iron Arrow,10000
-1806,Hora,10000
+1806,Studded Knuckles,10000
 1810,Claw,10000
 1901,Violin,10000
 1904,Mandolin,10000
@@ -338,10 +333,10 @@
 1907,Guitar,10000
 1910,Harp,10000
 1951,Rope,10000
-1953,Line,10000
-1955,Wire,10000
+1953,Whip,10000
+1955,Wire Whip,10000
 1957,Rante Whip,10000
-1959,Tail,10000
+1959,Tail Whip,10000
 2102,Guard,10000
 2106,Shield,10000
 2108,Mirror Shield,10000
@@ -364,33 +359,33 @@
 2229,Helm,10000
 2231,Gemmed Sallet,10000
 2233,Circlet,10000
-2239,Single Glass,30000
-2241,Granpa Beard,30000
+2239,Monocle,30000
+2241,Grandpa Beard,30000
 2242,Purple Glasses,20000
 2243,Geek Glasses,20000
 2244,Big Ribbon,10000
 2249,Coronet,10000
 2250,Cute Ribbon,10000
-2256,Majestic Goat,10000
-2257,Snow Horn,10000
-2258,Spikey Band,10000
+2256,Evolved Majestic Goat,10000
+2257,Unicorn Horn,10000
+2258,Spiky Band,10000
 2260,Mini Glasses,10000
 2261,Army Cap,10000
-2262,Pierrot Nose,10000
+2262,Clown Nose,10000
 2263,Zorro Masque,10000
 2265,Gangster Mask,10000
 2266,Iron Cain,10000
-2267,Cigar,10000
-2268,Smoking Pipe,10000
+2267,Cigarette,10000
+2268,Evolved Pipe,10000
 2269,Romantic Flower,10000
 2270,Romantic Leaf,10000
-2271,Jack a Dandy,10000
+2271,Jack be Dandy,10000
 2272,Stop Post,10000
 2273,Doctor Band,10000
 2275,Red Bandana,10000
-2276,Eagle Eyes,10000
+2276,Angled Glasses,10000
 2279,Bomb Wick,10000
-2284,Antler,10000
+2284,Antlers,10000
 2287,Pirate Bandana,10000
 2289,Poo Poo Hat,10000
 2290,Funeral Hat,10000
@@ -401,7 +396,7 @@
 2298,Green Feeler,10000
 2299,Orc Helm,10000
 2302,Cotton Shirt,40000
-2304,Leather Jacket,40000
+2304,Jacket,40000
 2306,Adventurer's Suit,30000
 2308,Mantle,30000
 2310,Coat,20000
@@ -425,17 +420,17 @@
 2406,Boots,10000
 2407,Crystal Pumps,10000
 2408,Shackles,50000
-2409,Spiky Heel,10000
+2409,High Heels,10000
 2411,Greaves,10000
 2502,Hood,10000
 2504,Muffler,20000
 2506,Manteau,10000
-2507,Cape of Old Marquess,10000
+2507,Ancient Cape,10000
 2508,Ragamuffin Manteau,10000
 2601,Ring,10000
 2602,Earring,10000
-2603,Ancient Necklace,10000
-2604,Ancient Glove,10000
+2603,Necklace,10000
+2604,Glove,10000
 2605,Brooch,10000
 2607,Clip,100000
 2608,Rosary,30000
@@ -444,8 +439,8 @@
 2611,Silver Ring,30000
 2612,Flower Ring,100000
 2613,Diamond Ring,10000
-2624,Ancient Glove,10000
-2626,Ancient Rosary,10000
+2624,Glove,10000
+2626,Rosary,10000
 5008,Puppy Love,10000
 5009,Safety Helmet,10000
 5010,Indian Fillet,10000

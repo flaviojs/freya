@@ -46,7 +46,7 @@
 1719,Detardeurus,1000000
 1734,Kiel D-01,1000000
 1751,Valkyrie Randgris,1000000
-1768,Gloom Undernight,1000000
+1768,Gloom Under Night,1000000
 1779,Ktullanux,1000000
 1785,Atros,1000000
 1832,Ifrit,1000000
