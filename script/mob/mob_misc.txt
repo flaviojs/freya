@@ -13,22 +13,21 @@
 //--------------------------------------------------------------
 //	1.0 First version, merged together [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: Includes Airship Quest, The Sign Quest,
-// 
+// Additional Notes: Includes Airship Quest, and The Sign Quest
 //--------------------------------------------------------------
 
 
 //--------------------------------------------------------------
-// Airship Quest Monster Spawns
+// Airship Quest Temp Monster Spawns
 //--------------------------------------------------------------
 
-airplane_01.gat,225,52,25,10	monster	Gremlin	1632,9,7200000,3600000,1
-airplane_01.gat,225,52,25,10	monster	Beholder	1633,6,7200000,3600000,1
-airplane_01.gat,225,52,25,10	monster	Picky	1049,4,7200000,3600000,1
-airplane_01.gat,225,52,25,10	monster	Familiar	1005,2,7200000,3600000,1
-airplane_01.gat,225,52,25,10	monster	Drainliar	1111,1,7200000,3600000,1
-airplane_01.gat,225,52,25,10	monster	Rotar Zairo	1392,4,7200000,3600000,1
-airplane_01.gat,225,52,25,10	monster	Steel Chonchon	1042,2,7200000,3600000,1
+// airplane_01.gat,225,52,25,10	monster	Gremlin	1632,9,7200000,3600000,1
+// airplane_01.gat,225,52,25,10	monster	Beholder	1633,6,7200000,3600000,1
+// airplane_01.gat,225,52,25,10	monster	Picky	1049,4,7200000,3600000,1
+// airplane_01.gat,225,52,25,10	monster	Familiar	1005,2,7200000,3600000,1
+// airplane_01.gat,225,52,25,10	monster	Drainliar	1111,1,7200000,3600000,1
+// airplane_01.gat,225,52,25,10	monster	Rotar Zairo	1392,4,7200000,3600000,1
+// airplane_01.gat,225,52,25,10	monster	Steel Chonchon	1042,2,7200000,3600000,1
 
 
 //--------------------------------------------------------------

@@ -7,9 +7,9 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                    http://www.ro-freya.net                   
 //--------------------------------------------------------------
-// Script Title: Airship System	Author: Spirit Death/Bison
+// Script Title: Airship System	Author: Spirit Death/Bison/Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.4
+// Revision History: v1.6
 //--------------------------------------------------------------
 //	1.0 First release [Spirit Death]
 //	1.1 Added some variables to manage when players may board the
@@ -17,11 +17,12 @@
 //	1.2 Fixed typo [Tsuyuki]
 //	1.3 Merged entire Airship system together and reformatted [Tsuyuki]
 //	1.4 Fixed some mapannounce commands [Tsuyuki]
+//	1.5 Added Rachel/Veins to the international airship route [Tsuyuki]
+//	1.6 Officialized some dialogue based on Aegis scripts [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Airship System with 2 Routes (Almost official)
 // 1st Route: Juno -> Hugel -> Einbroch -> Lighthalzen -> Juno
-// 2nd Route: Juno -> Izlude -> Juno
-// To-Do: Rachel/Veins Airports/routes.
+// 2nd Route: Rachel -> Juno -> Izlude -> Rachel
 //--------------------------------------------------------------
 
 //--------------------------------------------------------------
@@ -50,24 +51,24 @@ OnTimer1000:
 	disablenpc "#warp1";
 	disablenpc "#warp2";
 	disablenpc "jairp7";
-	mapannounce "airplane.gat","Captain: Takeoff. Next stop is the Garden City, Hugel.",9,0x00FF00;
+	mapannounce "airplane.gat","The Airship is leaving the ground. Our next destination is Hugel.",9,0x00FF00;
 	mapannounce "yuno.gat","Airship Service: The Route 1 airship has departed from Juno.",9,0x00FF00;
 	end;
 
 OnTimer51000:
-	mapannounce "airplane.gat","Captain: We will arrive at Hugel in a few seconds.",9,0x00FF00;
+	mapannounce "airplane.gat","We will arrive in Hugel shortly.",9,0x00FF00;
 	end;
 
 OnTimer61000:
 	enablenpc "#warp1";
 	enablenpc "#warp2";
 	set $at_hugel, 1;
-	mapannounce "airplane.gat","Captain: Welcome to Hugel. We hope you enjoyed your trip.",9,0x00FF00;
+	mapannounce "airplane.gat","Welcome to Hugel. Have a safe trip.",9,0x00FF00;
 	mapannounce "hugel.gat","Airship Service: The Route 1 airship has arrived at Hugel.",9,0x00FF00;
 	end;
 
 OnTimer71000:
-	mapannounce "airplane.gat","Captain: We are leaving Hugel soon. Prepare to take off.",9,0x00FF00;
+	mapannounce "airplane.gat","We are currently in Hugel. The Airship will take off shortly.",9,0x00FF00;
 	end;
 
 OnTimer81000:
@@ -75,24 +76,24 @@ OnTimer81000:
 	disablenpc "#warp1";
 	disablenpc "#warp2";
 	set $at_hugel, 0;
-	mapannounce "airplane.gat","Captain: Takeoff. Next stop is the Metal City, Einbroch.",9,0x00FF00;
+	mapannounce "airplane.gat","The Airship is now taking off. Our next destination is Einbroch.",9,0x00FF00;
 	mapannounce "hugel.gat","Airship Service: The Route 1 airship has departed from Hugel.",9,0x00FF00;
 	end;
 
 OnTimer131000:
-	mapannounce "airplane.gat","Captain: We will arrive at Einbroch in a few seconds.",9,0x00FF00;
+	mapannounce "airplane.gat","We will arrive in Hugel shortly.",9,0x00FF00;
 	end;
 
 OnTimer141000:
 	enablenpc "#warp1";
 	enablenpc "#warp2";
 	enablenpc "ein_ap01";
-	mapannounce "airplane.gat","Captain: Welcome to Einbroch. We hope you enjoyed your trip.",9,0x00FF00;
+	mapannounce "airplane.gat","Welcome to Einbroch. Have a safe trip.",9,0x00FF00;
 	mapannounce "einbroch.gat","Airship Service: The Route 1 airship has arrived at Einbroch.",9,0x00FF00;
 	end;
 
 OnTimer151000:
-	mapannounce "airplane.gat","Captain: We are leaving Einbroch soon. Prepare to take off.",9,0x00FF00;
+	mapannounce "airplane.gat","We are currently in Einbroch. The Airship will take off shortly.",9,0x00FF00;
 	end;
 	
 OnTimer161000:
@@ -100,24 +101,24 @@ OnTimer161000:
 	disablenpc "#warp1";
 	disablenpc "#warp2";
 	disablenpc "ein_ap01";
-	mapannounce "airplane.gat","Captain: Takeoff. Next stop is the City of A.I., Lighthalzen.",9,0x00FF00;
+	mapannounce "airplane.gat","The Airship is now taking off. Our next destination is Lighthalzen.",9,0x00FF00;
 	mapannounce "einbroch.gat","Airship Service: The Route 1 airship has departed from Einbroch.",9,0x00FF00;
 	end;
 
 OnTimer211000:
-	mapannounce "airplane.gat","Captain: We will arrive at Lighthalzen in a few seconds.",9,0x00FF00;
+	mapannounce "airplane.gat","We will arrive in Lighthalzen shortly.",9,0x00FF00;
 	end;
 
 OnTimer221000:
 	enablenpc "#warp1";
 	enablenpc "#warp2";
 	enablenpc "lairp5";
-	mapannounce "airplane.gat","Captain: Welcome to Lighthalzen. We hope you enjoyed your trip.",9,0x00FF00;
+	mapannounce "airplane.gat","Welcome to Lighthalzen. Have a safe trip.",9,0x00FF00;
 	mapannounce "lighthalzen.gat","Airship Service: The Route 1 airship has arrived at Lighthalzen.",9,0x00FF00;
 	end;
 
 OnTimer231000:
-	mapannounce "airplane.gat","Captain: We are leaving Lighthalzen soon. Prepare to take off.",9,0x00FF00;
+	mapannounce "airplane.gat","We are currently in Lighthalzen. The Airship will take off shortly.",9,0x00FF00;
 	end;
 
 OnTimer241000:
@@ -125,24 +126,24 @@ OnTimer241000:
 	disablenpc "#warp1";
 	disablenpc "#warp2";
 	disablenpc "lairp5";
-	mapannounce "airplane.gat","Captain: Takeoff. Next stop is the Capital of Schwarzwald Republic, Juno.",9,0x00FF00;
+	mapannounce "airplane.gat","The Airship is now taking off. Our next destination is Juno.",9,0x00FF00;
 	mapannounce "lighthalzen.gat","Airship Service: The Route 1 airship has departed from Lighthalzen.",9,0x00FF00;
 	end;
 
 OnTimer291000:
-	mapannounce "airplane.gat","Captain: We will arrive in Juno in a few seconds.",9,0x00FF00;
+	mapannounce "airplane.gat","We will arrive in Juno shortly.",9,0x00FF00;
 	end;
 
 OnTimer301000:
 	enablenpc "#warp1";
 	enablenpc "#warp2";
 	enablenpc "jairp7";
-	mapannounce "airplane.gat","Captain: Welcome to Juno. We hope you enjoyed your trip.",9,0x00FF00;
+	mapannounce "airplane.gat","Welcome to Juno. Have a safe trip.",9,0x00FF00;
 	mapannounce "yuno.gat","Airship Service: The Route 1 airship has arrived at Juno.",9,0x00FF00;
 	end;
 
 OnTimer311000:
-	mapannounce "airplane.gat","Captain: We are leaving Juno soon. Prepare to take off.",9,0x00FF00;
+	mapannounce "airplane.gat","We are currently in Juno. The Airship will take off shortly.",9,0x00FF00;
 	end;
 
 OnTimer320000:
@@ -172,7 +173,7 @@ OnTouch:
 
 
 //--------------------------------------------------------------
-// Route 2 (Juno -> Izlude -> Juno)
+// Route 2 (Rachel -> Veins -> Izlude -> Juno)
 //--------------------------------------------------------------
 
 airplane_01.gat,0,0,0	script	airplane_01	-1,{
@@ -186,52 +187,99 @@ OnTimer1000:
 	disablenpc "#warp3";
 	disablenpc "#warp4";
 	disablenpc "jairp6";
-	mapannounce "airplane_01.gat","Captain: Takeoff. Next stop is Prontera's Satelite, Izlude.",9,0x00FF00;
+	mapannounce "airplane_01.gat","The Airship is leaving the ground. Our next destination is Rachel.",9,0x00FF00;
 	mapannounce "yuno.gat","Airship Service: The Route 2 airship has departed from Juno.",9,0x00FF00;
 	end;
 
 OnTimer51000:
-	mapannounce "airplane_01.gat","Captain: We will arrive at Izlude in a few seconds.",9,0x00FF00;
+	mapannounce "airplane_01.gat","We will arrive in Rachel shortly.",9,0x00FF00;
 	end;
 
 OnTimer61000:
 	enablenpc "#warp3";
 	enablenpc "#warp4";
-	set $at_izlude, 1;
-	mapannounce "airplane_01.gat","Captain: Welcome to Izlude. We hope you enjoyed your trip.",9,0x00FF00;
-	mapannounce "izlude.gat","Airship Service: The Route 2 airship has arrived at Izlude.",9,0x00FF00;
+	mapannounce "airplane_01.gat","Welcome to Rachel. Have a safe trip.",9,0x00FF00;
+	mapannounce "ra_fild12.gat","Airship Service: The Route 2 airship has arrived at Rachel.",9,0x00FF00;
 	end;
 
 OnTimer71000:
-	mapannounce "airplane_01.gat","Captain: We are leaving Izlude soon. Prepare to take off.",9,0x00FF00;
+	mapannounce "airplane_01.gat","We are currently in Rachel. The Airship will take off shortly.",9,0x00FF00;
 	end;
 
 OnTimer81000:
 	set $route2,1;
-	set $at_izlude, 0;
 	disablenpc "#warp3";
 	disablenpc "#warp4";
-	mapannounce "airplane_01.gat","Captain: Takeoff. Next stop is the Capital of Schwartzwald Republic, Juno.",9,0x00FF00;
-	mapannounce "izlude.gat","Airship Service: The Route 2 airship has departed from Izlude.",9,0x00FF00;
+	mapannounce "airplane_01.gat","The Airship is now taking off. Our next destination is Veins.",9,0x00FF00;
+	mapannounce "ra_fild12.gat","Airship Service: The Route 2 airship has departed from Rachel.",9,0x00FF00;
 	end;
 
 OnTimer131000:
-	mapannounce "airplane_01.gat","Captain: We will arrive at Juno in a few seconds.",9,0x00FF00;
+	mapannounce "airplane_01.gat","We will arrive in Veins shortly.",9,0x00FF00;
 	end;
 
 OnTimer141000:
 	enablenpc "#warp3";
 	enablenpc "#warp4";
-	enablenpc "jairp6";
-	mapannounce "airplane_01.gat","Captain: Welcome to Juno. We hope you enjoyed your trip.",9,0x00FF00;
-	mapannounce "yuno.gat","Airship Service: The Route 2 airship has arrived at Juno.",9,0x00FF00;
+	mapannounce "airplane_01.gat","Welcome to Veins. Have a safe trip.",9,0x00FF00;
+	mapannounce "veins.gat","Airship Service: The Route 2 airship has arrived at Veins.",9,0x00FF00;
 	end;
 
 OnTimer151000:
-	mapannounce "airplane_01.gat","Captain: We are leaving Juno soon. Prepare to take off.",9,0x00FF00;
+	mapannounce "airplane_01.gat","We are currently in Veins. The Airship will take off shortly.",9,0x00FF00;
 	end;
 
-OnTimer160000:
+OnTimer161000:
+	set $route2,2;
+	disablenpc "#warp3";
+	disablenpc "#warp4";
+	mapannounce "airplane_01.gat","The Airship is now taking off. Our next destination is Izlude.",9,0x00FF00;
+	mapannounce "veins.gat","Airship Service: The Route 2 airship has departed from Veins.",9,0x00FF00;
+	end;
+
+OnTimer211000:
+	mapannounce "airplane_01.gat","We will arrive in Izlude shortly.",9,0x00FF00;
+	end;
+
+OnTimer221000:
+	enablenpc "#warp3";
+	enablenpc "#warp4";
+	set $at_izlude,1;
+	mapannounce "airplane_01.gat","Welcome to Izlude. Have a safe trip.",9,0x00FF00;
+	mapannounce "izlude.gat","Airship Service: The Route 2 airship has arrived at Izlude.",9,0x00FF00;
+	end;
+
+OnTimer231000:
+	mapannounce "airplane_01.gat","We are currently in Izlude. The Airship will take off shortly.",9,0x00FF00;
+	end;
+
+OnTimer241000:
+	set $route2,3;
+	set $at_izlude,0;
+	disablenpc "#warp3";
+	disablenpc "#warp4";
+	disablenpc "jairp6";
+	mapannounce "airplane_01.gat","The Airship is leaving the ground. Our next destination is Juno.",9,0x00FF00;
+	mapannounce "izlude.gat","Airship Service: The Route 2 airship has departed from Izlude.",9,0x00FF00;
+	end;
+
+OnTimer291000:
+	mapannounce "airplane_01.gat","We will arrive in Juno shortly.",9,0x00FF00;
+	end;
+
+OnTimer301000:
+	enablenpc "#warp3";
+	enablenpc "#warp4";
+	enablenpc "jairp6";
+	mapannounce "airplane_01.gat","Welcome to Juno. Have a safe trip.",9,0x00FF00;
+	mapannounce "rachel.gat","Airship Service: The Route 2 airship has arrived at Juno.",9,0x00FF00;
+	end;
+
+OnTimer311000:
+	mapannounce "airplane_01.gat","We are currently in Juno. The Airship will take off shortly.",9,0x00FF00;
+	end;
+
+OnTimer320000:
 	initnpctimer;
 	end;
 }
@@ -239,16 +287,20 @@ OnTimer160000:
 airplane_01.gat,243,74,4	script	#warp3	45,2,2,{
 
 OnTouch:
-	if ($route2 == 0) warp "izlude.gat",202,56;
-	if ($route2 == 1) warp "yuno.gat",20,265;
+	if ($route2 == 0) warp "ra_fild12.gat",290,202;
+	if ($route2 == 1) warp "veins.gat",273,281;
+	if ($route2 == 2) warp "izlude.gat",202,56;
+	if ($route2 == 3) warp "yuno.gat",20,265;
 	close;
 }
 
 airplane_01.gat,243,29,4	script	#warp4	45,2,2,{
 
 OnTouch:
-	if ($route2 == 0) warp "izlude.gat",202,56;
-	if ($route2 == 1) warp "yuno.gat",20,265;
+	if ($route2 == 0) warp "ra_fild12.gat",290,202;
+	if ($route2 == 1) warp "veins.gat",273,281;
+	if ($route2 == 2) warp "izlude.gat",202,56;
+	if ($route2 == 3) warp "yuno.gat",20,265;
 	close;
 }
 
@@ -356,6 +408,7 @@ airplane_01.gat,69,63,2	script	Old Man#06	55,{
 }
 
 airplane.gat,240,64,5	script	Exit	857,{
+
 	mes "^FF0000[Warning]";
 	mes "Don't come too close ";
 	mes "while the airship is in the air.";
@@ -789,10 +842,8 @@ lhz_airport.gat,158,50,3	duplicate(lhzairportout)	Airport Staff	90
 
 
 //--------------------------------------------------------------
-// Rachel Airport (Incomplete)
+// Rachel Airport
 //--------------------------------------------------------------
-
-// To-Do
 
 ra_fild12.gat,45,230,3	script	Airport Guide	934,{
 
@@ -803,9 +854,87 @@ ra_fild12.gat,45,230,3	script	Airport Guide	934,{
 	close;
 }
 
+ra_fild12.gat,294,206,3	script	Airport Staff#rachel	91,{
+
+	mes "[Airport Staff]";
+	mes "Welcome to the International Airport.";
+	mes "How may I help you?";
+	next;
+	menu "Board the Airship",-,"Cancel",L_Cancel;
+
+		mes "[Airport Staff]";
+		mes "The Airship boarding fee";
+		mes "is 1,200 zeny, but if you've";
+		mes "got a Free Ticket for Airship,"; 
+		mes "the fee will be waived. Will";
+		mes "you board the Airship?";
+		next;
+		menu "Yes",-,"No",L_Cancel;
+
+		if (countitem(7311) > 0) goto L_GotTicket;
+		if (Zeny < 1200) goto L_NoZeny;
+			set Zeny, Zeny - 1200;
+			warp "airplane_01.gat",224,64;
+			close;
+
+		L_GotTicket:
+			delitem 7311,1;
+			warp "airplane_01.gat",224,64;
+			close;
+
+	L_NoZeny:
+		mes "[Airport Staff]";
+		mes "You don't have enough zeny.";
+		close;
+
+	L_Cancel:
+		mes "[Airport Staff]";
+		mes "Thank you and";
+		mes "have a nice day.";
+		close;
+}
+
 
 //--------------------------------------------------------------
-// Veins Airport (Incomplete)
+// Veins Airport
 //--------------------------------------------------------------
 
-// To-Do
+veins.gat,273,287,5	script	Airport Staff#veins	91,{
+
+	mes "[Airport Staff]";
+	mes "Welcome to the International Airport.";
+	mes "How may I help you?";
+	next;
+	menu "Board the Airship",-,"Cancel",L_Cancel;
+
+		mes "[Airport Staff]";
+		mes "The Airship boarding fee";
+		mes "is 1,200 zeny, but if you've";
+		mes "got a Free Ticket for Airship,"; 
+		mes "the fee will be waived. Will";
+		mes "you board the Airship?";
+		next;
+		menu "Yes",-,"No",L_Cancel;
+
+		if (countitem(7311) > 0) goto L_GotTicket;
+		if (Zeny < 1200) goto L_NoZeny;
+			set Zeny, Zeny - 1200;
+			warp "airplane_01.gat",224,64;
+			close;
+
+		L_GotTicket:
+			delitem 7311,1;
+			warp "airplane_01.gat",224,64;
+			close;
+
+	L_NoZeny:
+		mes "[Airport Staff]";
+		mes "You don't have enough zeny.";
+		close;
+
+	L_Cancel:
+		mes "[Airport Staff]";
+		mes "Thank you and";
+		mes "have a nice day.";
+		close;
+}
