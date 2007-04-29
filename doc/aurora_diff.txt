@@ -19,10 +19,10 @@
 - MAX_MOBSKILL global variable is 50 instead of 32 to support more skills per mob.
 
 -> Script Engine Changes:
-- 'Class', 'BaseClass', and 'BaseJob' script commands have been modified to work like Freya's versions.
+- 'Class', 'BaseClass', and 'BaseJob' script commands have been modified to work like Freya/eAthena's versions.
 
 -> Startup Changes:
-- In all three servers, the 'Freya' logo was added as the first thing printed at application startup.
+- In all three servers, the 'Aurora' logo was added as the first thing printed at application startup.
 
 -> Compilation Changes:
 - Server executables are placed in the main directory, whereas in jAthena, they are placed in ./bin.

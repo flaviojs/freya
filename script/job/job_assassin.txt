@@ -27,7 +27,7 @@
 //	2.3 Fixed typo and change Nameless addtimer to 100 (with 700ms I was still able to bypass it) [Toms]
 //	2.4 Fixed skipping of Nameless NPC [Lupus]
 //	2.5 Fixed a Rogue exploit [Lupus]
-//	2.6 Reconverted updated script from eAthena to Freya [Tsuyuki]
+//	2.6 Reconverted updated script from Athena format to Freya [Tsuyuki]
 //	2.7 Updated formatting [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: N/A

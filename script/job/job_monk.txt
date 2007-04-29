@@ -24,7 +24,7 @@
 //	2.0 Fixed another bug in Fuhai [Zephiris]
 //	2.1 Changed numbers to constants [Vicious]
 //	2.2 Removed duplicates [Silent]
-//	2.3 Reconverted to Freya from eAthena [Tsuyuki]
+//	2.3 Reconverted to Freya from Athena format [Tsuyuki]
 //	2.4 Removed warps [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: N/A

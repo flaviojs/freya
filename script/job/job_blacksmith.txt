@@ -22,7 +22,7 @@
 //	1.8 Added Baby Class support [Lupus]
 //	1.9 Added a function to properly direct Transcendent job changing [Lupus]
 //	2.0 Fixed typo error on gladius ID, and skel bone quantity [General__]
-//	2.1 Converted from eAthena to Freya [keVn]
+//	2.1 Converted from Athena format to Freya [keVn]
 //	2.2 item quantity/ids typos fix
 //	2.3 Moved the Quest to Einbroch [Poki#3]
 //	2.4 Changed numbers to constants [Vicious]
