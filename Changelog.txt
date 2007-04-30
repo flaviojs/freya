@@ -14,6 +14,9 @@
 Date	Added
 
 2007/04/29
+	* Changed: Renamed current mob_skill_db.txt to mob_skill_db2.txt, and replaced the current with jA's [Tsuyuki]
+	 - Translated + new entries past mob ID 1785 imported from mob_skill_db2.txt
+	* Added: New kRO 11.2 MvP skill entries (Excluding new monster skills for now) [Tsuyuki]
 	* Added: Aegis emotion enumerations to the const.txt database [Tsuyuki]
 	* Updated: A bunch of changes to the mob_skill_db.txt [Tsuyuki]
 	* Fixed: A bunch of mob skills using incorrect skill IDs (Fixes invisible MvPs + other stuff) [Tsuyuki]
