@@ -13,6 +13,15 @@
 
 Date	Added
 
+2007/04/30
+	* Added: ./dev/ folder for in-development files/projects in the main folder [Tsuyuki]
+	* Fixed: Several minor script fixes [Tsuyuki]
+	* Merged: Doomed Swords Quest NPCs back into Comodo town script [Tsuyuki]
+	* Replaced: Magical Swords Quest with a new version, converted from Aegis [Tsuyuki]
+	 - Moved from Doomed Swords Quest into Prontera town script (To match Aegis) [Tsuyuki]
+	* Added: 'unequip' script command before all 'jobchange' script commands for security purposes [Tsuyuki]
+	 - It's not automatic in jA's engine
+
 2007/04/29
 	* Changed: Renamed current mob_skill_db.txt to mob_skill_db2.txt, and replaced the current with jA's [Tsuyuki]
 	 - Translated + new entries past mob ID 1785 imported from mob_skill_db2.txt

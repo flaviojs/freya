@@ -742,7 +742,7 @@ amatsu.gat,283,203,1	script	PokePoke	738,{
 	close;
 }
 
-amatsu.gat,261,197,4	script	Legendary Sakura Tree	111,{
+amatsu.gat,262,197,1	script	Legendary Tree	111,{
 
 	mes "^0000FFJust as she said";
 	mes "this tree is famous because";

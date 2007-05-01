@@ -19,6 +19,31 @@
 
 
 //--------------------------------------------------------------
+// Includes the following headgear quests:
+//--------------------------------------------------------------
+// A-yam Hat/Alarm Mask/Anonymous Mask/Antlers/Baby Pacifier/
+// Back Ribbon/Bandage/Bao Bao/Bear Hat/Binoculars/Blue Hairband/
+// Blush/Boy's Cap/Bride Mask/Bulb Hairband/Bunny Band/
+// Burning Blood Bandana/Cake Hat/Candle/Cat Hairband/Chef Hat/
+// Cowboy Hat/Crescent Hairpin/Cross Hat/Crown of Ancient Queen/
+// Crown of Mistress/Crunch Toast/Detective Hat/Deviruchi Cap/
+// Doctor Band/Drooping Cat/Ear Muffs/Ears of Angel/Ears of Demon/
+// Fashionable Glasses/Feather Beret/Feather Bonnet/Flower Hairpin/
+// Fox Mask/Fresh Bluish Fish/Furry Hat/Golden Bells/Hat of Sun God/
+// Headset/Heart Hairpin/Helm of Angel/Indian Headband/Judge Hat/
+// Lazy Racoon Hat/Lion Masquerade/Mage Hat/Magician Hat/Mine Helmet/
+// Money Loser's Grief/Mr. Smile/Mushroom Hairband/Mystic Rose/
+// Opera Masque/Oxygen Mask/Parcel Hat/Ph.D Hat/
+// Phantom of the Opera Mask/Pointy Cap/Posture Fix Hat/
+// Pretend Murdered/Racoon Hat/Rainbow Eggshell/Red Bonnet/Sakkat/
+// Sea Otter Hat/Smiling Mask/Sombrero/Spore Hat/Stop Post/Straw Hat/
+// Striped Hairband/Sunday Hat/Transformation Leaf/Tulip Hairpin/
+// Turban/Valkyrie Helm/Welding Mask/Winter Hat/Wonder Nutshell/
+// X-Shaped Hairpin/Zealotus Mask
+//--------------------------------------------------------------
+
+
+//--------------------------------------------------------------
 // Anonymous Mask
 //--------------------------------------------------------------
 
@@ -118,7 +143,7 @@ M_EXIT:
 //--------------------------------------------------------------
 // Alberta Headgear Quests Part #1
 //--------------------------------------------------------------
-// -> Bao Bao/Cresent Hairpin/Fashionbale Glasses/Heart Hairpin
+// -> Bao Bao/Cresent Hairpin/Fashionable Glasses/Heart Hairpin
 //--------------------------------------------------------------
 
 alberta.gat,120,53,3	script	Zic	51,{
@@ -1584,7 +1609,7 @@ M_EXIT:
 //--------------------------------------------------------------
 // Geffen Headgear Quests
 //--------------------------------------------------------------
-// -> X-Shaped Hairpin, Bandage & Flower Hairpin Quests
+// -> X-Shaped Hairpin/Bandage/Flower Hairpin Quests
 //--------------------------------------------------------------
 
 geffen.gat,128,148,6	script	Arjen	807,{
@@ -3229,7 +3254,7 @@ L_Start:
 		emotion e_thx;
 		next;
 		mes "[Teacher]";
-		mes "This is the hat I wore at my Graduation Ceremony.  It is a reminder of my joyfull school days at the University.";
+		mes "This is the hat I wore at my Graduation Ceremony.  It is a reminder of my joyful school days at the University.";
 		mes "Please take it...";
 		getitem 5012,1;//Items: Ph.D Hat,
 		close;

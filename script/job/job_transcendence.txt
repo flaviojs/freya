@@ -235,6 +235,7 @@ valkyrie.gat,48,86,4	script	Valkyrie	811,{
 	mes "[Valkyrie]";
 	mes "Three....";
 	set OLD_CLASS,Basejob;
+	unequip;
 	jobchange 0,1;
 	set BaseLevel,1;
 	resetstatus;

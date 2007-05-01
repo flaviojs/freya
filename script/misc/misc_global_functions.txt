@@ -99,6 +99,7 @@ function	script	F_ClearGarbageVariables	{
 
 function	script	F_JobChange	{
 
+	unequip;
 	if (Upper < 2)
 		jobchange getarg(0),0; // Normal Job Change
 	else 

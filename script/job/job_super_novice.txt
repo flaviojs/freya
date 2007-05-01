@@ -110,6 +110,7 @@ L_Start2:
 	mes "- Tozel's uncommon demeanor catches you off guard, -";
 	mes "- leaving you speechless! -";
 	next;
+	unequip;
 	if (Upper == 0) jobchange Job_Super_Novice,0;
 	else if (Upper == 2) jobchange Job_Super_Novice,2;
 	delitem 938,30;

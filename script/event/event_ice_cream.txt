@@ -9,18 +9,19 @@
 //--------------------------------------------------------------
 // Script Title: Ice Cream Merchant Event	Author: KOOK SWU
 //--------------------------------------------------------------
-// Revision History: v1.2
+// Revision History: v1.3
 //--------------------------------------------------------------
 //	1.0 First version [KOOK SWU]
 //	1.1 Optimized, changed overlapping coords in Alberta [Lupus]
 //	1.2 According to a new kRO patch, Ice Cream seller has been removed from Morroc [Lupus]
+//	1.3 Fixed some NPC coordinates/facing positions as per Aegis [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Ice Cream seller that's activated during
 // the summer.
 //--------------------------------------------------------------
 
 
-alberta.gat,120,45,2	script	Ice Cream Maker::IceCreamer	85,{
+alberta.gat,107,73,4	script	Ice Cream Maker::IceCreamer	85,{
 
 	mes "[Ice Cream Maker]";
 	mes "Fresh Ice Cream made with snow from Lutie!";
@@ -62,5 +63,4 @@ alberta.gat,120,45,2	script	Ice Cream Maker::IceCreamer	85,{
 }
 
 moc_fild16.gat,88,304,4	duplicate(IceCreamer)	Ice Cream Maker#2	85
-
-// morocc.gat,160,144,4	duplicate(IceCreamer)	Ice Cream Maker#3	85
+morocc.gat,160,143,4	duplicate(IceCreamer)	Ice Cream Maker#3	85
