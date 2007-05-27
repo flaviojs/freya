@@ -2888,6 +2888,55 @@ static struct block_list *mob_getfriendhpltmaxrate(struct mob_data *md,int rate)
 	return fr;
 }
 /*==========================================
+ * 近くの味方でHPが満タンなものを探す
+ *------------------------------------------
+ */
+static int mob_getfriendhpgtmaxrate_sub(struct block_list *bl,va_list ap)
+{
+	int rate;
+	struct block_list **fr;
+	struct mob_data *mmd = NULL;
+
+	nullpo_retr(0, bl);
+	nullpo_retr(0, ap);
+	nullpo_retr(0, mmd=va_arg(ap,struct mob_data *));
+
+	if(bl->type != BL_PC && bl->type != BL_MOB)
+		return 0;
+	if( mmd->bl.id == bl->id )
+		return 0;
+	if( battle_check_target(&mmd->bl,bl,BCT_ENEMY)>0 )
+		return 0;
+
+	rate=va_arg(ap,int);
+	fr=va_arg(ap,struct block_list **);
+	if( status_get_hp(bl) > status_get_max_hp(bl)*rate/100 ) {
+		int *c = va_arg(ap,int *);
+		if( atn_rand()%1000 < 1000/(++(*c)) )	//範囲内で等確率にする
+			(*fr)=bl;
+	}
+	return 0;
+}
+
+static struct block_list *mob_getfriendhpgtmaxrate(struct mob_data *md,int rate)
+{
+	struct block_list *fr=NULL;
+	const int r=8;
+	int c=0, type;
+
+	nullpo_retr(NULL, md);
+
+	if(md->state.special_mob_ai)	// PCが主の召喚MOBならPCを検索
+		type = BL_PC;
+	else
+		type = BL_MOB;
+
+	map_foreachinarea(mob_getfriendhpgtmaxrate_sub, md->bl.m,
+		md->bl.x-r ,md->bl.y-r, md->bl.x+r, md->bl.y+r,
+		type,md,rate,&fr,&c);
+	return fr;
+}
+/*==========================================
  * 近くの味方でステータス状態が合うものを探す
  *------------------------------------------
  */
@@ -3076,6 +3125,8 @@ int mobskill_use(struct mob_data *md,unsigned int tick,int event)
 			flag^=( ms[i].cond1==MSC_MYSTATUSOFF ); break;
 		case MSC_FRIENDHPLTMAXRATE:	// friend HP < maxhp%
 			flag=(( tbl=mob_getfriendhpltmaxrate(md,ms[i].cond2) )!=NULL ); break;
+		case MSC_FRIENDHPGTMAXRATE:	// friend HP > maxhp%
+			flag=(( tbl=mob_getfriendhpgtmaxrate(md,ms[i].cond2) )!=NULL ); break;
 		case MSC_FRIENDSTATUSON:	// friend status[num] on
 		case MSC_FRIENDSTATUSOFF:	// friend status[num] off
 			flag=(( tbl=mob_getfriendstatus(md,ms[i].cond1,ms[i].cond2) )!=NULL ); break;
@@ -3718,6 +3769,7 @@ static int mob_readskilldb(void)
 		{	"always",			MSC_ALWAYS				},
 		{	"myhpltmaxrate",	MSC_MYHPLTMAXRATE		},
 		{	"friendhpltmaxrate",MSC_FRIENDHPLTMAXRATE	},
+		{	"friendhpgtmaxrate",MSC_FRIENDHPGTMAXRATE	},
 		{	"mystatuson",		MSC_MYSTATUSON			},
 		{	"mystatusoff",		MSC_MYSTATUSOFF			},
 		{	"friendstatuson",	MSC_FRIENDSTATUSON		},

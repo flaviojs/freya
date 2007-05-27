@@ -8,12 +8,13 @@
                     http://www.ro-freya.net                   
                      Aurora SVN Changelog                     
 --------------------------------------------------------------
-                Current Revision: jAthena 2295
+                Current Revision: jAthena 2296
 --------------------------------------------------------------
 
 Date	Added
 
 2007/05/27
+	* Updated: Project to jAthena 2296 (Latest) [Tsuyuki]
 	* Updated: Project to jAthena 2295 [Tsuyuki]
 
 2007/04/30

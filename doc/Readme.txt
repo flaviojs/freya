@@ -1,4 +1,10 @@
 ----------------------------------------
+//2296 by Sheep
+
+・Mobスキルの使用条件に「myhpgtmaxrate」/「friendhpgtmaxrate」追加
+	(mob.c、mob.h、db_ref.txt)
+
+----------------------------------------
 //2295 by Blaze
 
 ・スクリプトに指定場所にアイテムをドロップするdropitem命令を追加
