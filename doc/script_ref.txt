@@ -1869,6 +1869,24 @@ AthenaNPCScript
 
 			プレイヤーのステータスを再計算します。
 
+		dropitem命令
+			dropitem <itemid>,<num>,<gatname>,<x>,<y>;
+
+			itemid		数値または文字列
+			num		数値
+			gatname		文字列
+			x,y		数値
+
+			<itemid>で指定したアイテムを<num>個分、<gatname>で指定したMAPの座標<x>,<y>にドロップさせます。
+			マップ名を"this"にすると、命令を実行したNPCのMAPを参照します。
+
+		getexp命令
+			getexp <base>,<job>;
+
+			base,job	数値
+
+			プレイヤーのBase経験値を<base>分、Job経験値を<job>分増加させます。
+
 	＊関数
 		rand関数
 			rand(<n1>[,<n2>])

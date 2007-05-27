@@ -2403,7 +2403,7 @@ struct Damage battle_calc_weapon_attack(
 				head_dir = target_sd->head_dir;
 			}
 			unit_stop_walking(target,1);
-			skill_blown(src,target,count|SAB_REVERSEBLOW|SAB_NODAMAGE|SAB_NOPATHSTOP);
+			skill_blown(src,target,count|SAB_NODAMAGE|SAB_NOPATHSTOP);
 			if(target_sd)
 				pc_setdir(target_sd, dir, head_dir);
 			if(t_sc_data && t_sc_data[SC_CLOSECONFINE].timer != -1)
