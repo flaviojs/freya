@@ -26,7 +26,7 @@
 //	2.0 Implemented the Lover's quest [MasterOfMuppets]
 //	2.1 Moved quests to quests/quests_ein.txt [Evera]
 //--------------------------------------------------------------
-// Additional Notes: N/A
+// Additional Notes: * Official-certified *
 //--------------------------------------------------------------
 
 

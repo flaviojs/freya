@@ -29,7 +29,6 @@
 //--------------------------------------------------------------
 
 
-// Note that On_Emotion is NOT an npc command but just an trigger for DoNpcEvent!!
 comodo.gat,170,137,7	script	Reid	84,{
 
 	close;
@@ -68,7 +67,7 @@ comodo.gat,171,137,1	script	Heath	92,{
 	mes "[Reid]";
 	mes "Okay, okay...I'm coming.";
 	next;
-	menu "Hey, wait!  Treasure?",Lwhat_1;
+	menu "Hey, wait! Treasure?",Lwhat_1;
 
 	Lwhat_1:
 		mes "[Reid]";

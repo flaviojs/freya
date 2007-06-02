@@ -34,7 +34,7 @@
 //	 - Adds in Lover's Quest, Factory Quest, Pollution Quest, and Uwe Quest
 //	2.8 Replaced Einbroch Pollution quest with jAthena's version, translated [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: N/A
+// Additional Notes: * Official-certified *
 //--------------------------------------------------------------
 
 

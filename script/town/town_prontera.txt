@@ -15,9 +15,8 @@
 //	1.1 Merged Prontera library books into this file [Tsuyuki]
 //	1.2 Added Magical Swords Quest, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: Hair Dresser still needs to be converted.
-// It's currently in npc/merchants/hair_stylists.txt (Old one)
-// Encyclopedias also still need to be converted, old ones
+// Additional Notes: Hair Dresser still needs to be converted from Aegis.
+// Encyclopedias also still need to be converted from Aegis, old ones
 // are in this file. * Aegis-certified *
 //--------------------------------------------------------------
 
