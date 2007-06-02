@@ -14,6 +14,7 @@
 Date	Added
 
 2007/06/02
+	* Added: Kunlun Power NPC (Disabled for now, broken) [Tsuyuki]
 	* Updated: Project to jAthena 2297 (Latest) [Tsuyuki]
 	* Updated: Alberta, Aldebaran, and Morroc Town NPCs to Aegis converted versions [Tsuyuki]
 	* Changed: Merged Assassin Guild NPCs into the Assassin Job Change Quest [Tsuyuki]
