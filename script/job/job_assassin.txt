@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 // Script Title: Assassin Job Change Quest	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v2.7
+// Revision History: v2.8
 //--------------------------------------------------------------
 //	1.0 Used some dialogue from the Aegis Assassin script translated [Pgro Team]
 //	1.1 Converted the booby traps from the Aegis script [kobra_k88]
@@ -29,6 +29,7 @@
 //	2.5 Fixed a Rogue exploit [Lupus]
 //	2.6 Reconverted updated script from Athena format to Freya [Tsuyuki]
 //	2.7 Updated formatting [Tsuyuki]
+//	2.8 Merged in Assassin Guild NPCs from Morroc Town script [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: N/A
 //--------------------------------------------------------------
@@ -1921,3 +1922,54 @@ in_moc_16.gat,156,81,1	script	Nameless One#End	106,{end;}
 in_moc_16.gat,156,79,1	script	Barcardi#End	725,{end;}
 in_moc_16.gat,156,77,1	script	Observer#End	55,{end;}
 in_moc_16.gat,156,75,1	script	Thomas#End	118,{end;}
+
+
+//--------------------------------------------------------------
+// Assassin Guild NPCs
+//--------------------------------------------------------------
+
+moc_fild16.gat,199,212,4	script	Hashisid	48,{
+
+	mes "[Hashisid]";
+	mes "For Assassins, it is important not to look a target in the eye. If a target is smart, he/she may be able to tell what you're up too.";
+	next;
+	menu "About Assassins",M_0,"Quit Conversation",M_End;
+	
+	M_0:
+		mes "[Hashisid]";
+		mes "Let me tell you a little bit about Assassins";
+		next;
+		mes "[Hashisid]";
+		mes "Assassin's are hired to infiltrate, gather intelligence, and even commit murder without being seen or heard.";
+		mes "Stealth and speed are vital to Assassins. Assassins live in the shadows and never get praise or congratulations.";
+		next;
+		mes "[Hashisid]";
+		mes "It's their job to go unnoticed. Though an Assassin may seem like a cruel and heartless individual....";
+		mes "An Assassin will never do any harm to an innocent being. The main purpose of the Assassin to seek out and destroy evil forces!";
+		close;
+	M_End:
+		close;
+}
+
+moc_fild16.gat,195,281,4	script	Assassin Guardian#1::SinGuard	707,{
+
+	mes "[Assassin Guardian]";
+	if(BaseJob == Job_Assassin) {
+		mes "Welcome.";
+		close;
+	}
+	set @temp, rand(1,4);
+	if(@temp == 1) mes "........";
+	if(@temp == 2) mes "Hmmm..........";
+	if(@temp == 3) mes "Hmmm... you shouldn't be here.....";
+	if(@temp == 4) mes "You're trespassing on forbidden grounds.......";
+	close;
+}
+
+moc_fild16.gat,204,281,4	duplicate(SinGuard)	Assassin Guardian#2	707
+moc_fild16.gat,207,281,4	duplicate(SinGuard)	Assassin Guardian#3	707
+moc_fild16.gat,216,281,4	duplicate(SinGuard)	Assassin Guardian#4	707
+moc_fild16.gat,200,231,4	duplicate(SinGuard)	Assassin Guardian#5	707
+moc_fild16.gat,211,231,4	duplicate(SinGuard)	Assassin Guardian#6	707
+moc_fild16.gat,200,257,4	duplicate(SinGuard)	Assassin Guardian#7	707
+moc_fild16.gat,211,257,4	duplicate(SinGuard)	Assassin Guardian#8	707
