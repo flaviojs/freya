@@ -22,7 +22,7 @@
 
 
 //--------------------------------------------------------------
-// Prontera Field/Maze NPCs ->
+// Prontera Field/Maze NPCs
 //--------------------------------------------------------------
 
 prt_fild05.gat,270,212,5	script	Culvert Guardian	105,{
@@ -77,7 +77,7 @@ prt_maze02.gat,110,69,0	script	Soldier	105,{
 
 
 //--------------------------------------------------------------
-// Prontera Town Indoor NPCs ->
+// Prontera Indoor Town NPCs
 //--------------------------------------------------------------
 
 prt_in.gat,251,129,4	script	Maos	709,2,2,{
@@ -743,7 +743,7 @@ prt_in.gat,284,168,3	script	Ginedin Rephere	55,{
 
 
 //--------------------------------------------------------------
-// Prontera Town Outdoor NPCs ->
+// Prontera Outdoor Town NPCs
 //--------------------------------------------------------------
 
 prontera.gat,160,330,0	script	Guard	105,{
@@ -1279,7 +1279,7 @@ prontera.gat,73,140,0	script	Milk Vendor	86,{
 
 
 //--------------------------------------------------------------
-// Prontera Church NPCs ->
+// Prontera Church NPCs
 //--------------------------------------------------------------
 
 prt_church.gat,179,15,4	script	Priest Praupin	110,{
@@ -1663,7 +1663,7 @@ prt_church.gat,103,171,0	script	Henson	120,{
 
 
 //--------------------------------------------------------------
-// Prontera Library NPCs ->
+// Prontera Library NPCs
 //--------------------------------------------------------------
 
 prt_in.gat,178,92,0	script	Curator of Library	57,{
