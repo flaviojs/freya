@@ -14,6 +14,7 @@
 Date	Added
 
 2007/06/02
+	* Bot Test *
 	* Updated: Thief Job Change Quest with Aegis dialogue [Tsuyuki]
 	* Updated: Archer Job Change Quest with Aegis dialogue [Tsuyuki]
 	* Added: Kunlun Power NPC (Disabled for now, broken) [Tsuyuki]
