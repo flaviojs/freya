@@ -5216,17 +5216,17 @@ int pc_readparam(struct map_session_data *sd,int type)
 	case SP_JOBLEVEL:
 		val= sd->status.job_level;
 		break;
-	// Changed SP_CLASS ('Class' script command) to return absolute class ID [Tsuyuki]
+	// Changed SP_CLASS ('Class' script command) to return absolute class ID [Aurora]
 	case SP_CLASS:
 		val = sd->status.class;
 		break;
-	// End of custom changes [Tsuyuki]
-	// Changed SP_BASEJOB ('Basejob' script command) to return absolute job (Baby Merchant -> Merchant, etc) [Tsuyuki]
+	// End of custom changes [Aurora]
+	// Changed SP_BASEJOB ('Basejob' script command) to return absolute job (Baby Merchant -> Merchant, etc) [Aurora]
 	case SP_BASEJOB:
 		val = s_class.job;
 		break;
-	// End of custom changes [Tsuyuki]
-	// Changed SP_BASECLASS ('Baseclass' script command) to return first job (Hunter -> Archer, High Wizard -> Mage, etc) [Tsuyuki]
+	// End of custom changes [Aurora]
+	// Changed SP_BASECLASS ('Baseclass' script command) to return first job (Hunter -> Archer, High Wizard -> Mage, etc) [Aurora]
 	case SP_BASECLASS:
 		switch(s_class.job) {
 			case 23:
@@ -5268,7 +5268,7 @@ int pc_readparam(struct map_session_data *sd,int type)
 				val = s_class.job;
 		}
 		break;
-	// End of custom changes [Tsuyuki]
+	// End of custom changes [Aurora]
 	case SP_UPPER:
 		val= s_class.upper;
 		break;

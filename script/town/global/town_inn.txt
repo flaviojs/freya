@@ -7,12 +7,12 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                    http://www.ro-freya.net                   
 //--------------------------------------------------------------
-// Script Title: Inn Employee NPCs	Author: Tsuyuki
+// Script Title: Inn Employee NPCs	Author: voidreality
 //--------------------------------------------------------------
 // Revision History: v1.1
 //--------------------------------------------------------------
-//	1.0 Redid script based on the leaked Aegis version, iRO screenshots, and Muad_Dib's ASB script [Tsuyuki]
-//	1.1 Added official dialogue (iRO)/corrected save/warp coords for Hugel Inn [Tsuyuki]
+//	1.0 Redid script based on the leaked Aegis version, iRO screenshots, and Muad_Dib's ASB script [voidreality]
+//	1.1 Added official dialogue (iRO)/corrected save/warp coords for Hugel Inn [voidreality]
 //--------------------------------------------------------------
 // Additional Notes: 100% Official Information - Date: 02/12/2007
 // Inn NPCs that may have some custom parts: Al De Baran, Hugel, Rachel

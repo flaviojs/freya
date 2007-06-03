@@ -34,7 +34,7 @@
 //	3.0 "strcharinfo" -> "strcharinfo(0)" [FlavioJS]
 //	3.1 Converted to Freya format [keVn]
 //	3.2 Fixed a script error [keVn]
-//	3.3 Improved formatting [Tsuyuki]
+//	3.3 Improved formatting [voidreality]
 //--------------------------------------------------------------
 // Additional Notes: N/A
 //--------------------------------------------------------------
@@ -46,7 +46,7 @@
 
 hu_in01.gat,386,374,4	script	Hunter Sharon	727,{
 
-	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [voidreality]
 	if (Upper == 1)	close;
 
 	if (BaseJob == JOB_ARCHER) goto L_Start;

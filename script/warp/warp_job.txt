@@ -20,10 +20,10 @@
 //	1.6 Removed warps no longer used by the new Novice maps [Yor]
 //	1.7 Fixed new16-1 warps [Yor]
 //	1.8 Removed Monk warps (Already in another file) [Yor]
-//	1.9 Merged in Monk warps [Tsuyuki]
-//	2.0 Merged in Transcendence warps [Tsuyuki]
-//	2.1 Merged in old warps for backwards compatibility [Tsuyuki]
-//	2.2 Merged in Gunslinger/Ninja warps [Tsuyuki]
+//	1.9 Merged in Monk warps [voidreality]
+//	2.0 Merged in Transcendence warps [voidreality]
+//	2.1 Merged in old warps for backwards compatibility [voidreality]
+//	2.2 Merged in Gunslinger/Ninja warps [voidreality]
 //--------------------------------------------------------------
 // Additional Notes: Job quests will not work if removed.
 //--------------------------------------------------------------

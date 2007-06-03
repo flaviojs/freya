@@ -7,12 +7,12 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                    http://www.ro-freya.net                   
 //--------------------------------------------------------------
-// Script Title: Mail Boxes	Author:	Tsuyuki
+// Script Title: Mail Boxes	Author:	voidreality
 //--------------------------------------------------------------
 // Revision History: v1.1
 //--------------------------------------------------------------
-//	1.0 First version, converted from Aegis [Tsuyuki]
-//	1.1 Added a Mailbox to Veins [Tsuyuki]
+//	1.0 First version, converted from Aegis [voidreality]
+//	1.1 Added a Mailbox to Veins [voidreality]
 //--------------------------------------------------------------
 // Additional Notes: * Aegis-certified * Note: Need Mailboxes
 // for Lighthalzen, Hugel, Rachel, and Nameless Island.

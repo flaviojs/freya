@@ -11,7 +11,7 @@
 //--------------------------------------------------------------
 // Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 Merged all guide NPC scripts into this file [Tsuyuki]
+//	1.0 Merged all guide NPC scripts into this file [voidreality]
 //--------------------------------------------------------------
 // Additional Notes: Rachel/Veins Guides are incomplete.
 // Louyang Guide NPCs are * Official-certified *. Juno Guide NPCs
@@ -1273,7 +1273,7 @@ L_END:
 
 
 //--------------------------------------------------------------
-// Juno Guides - [Tsuyuki]
+// Juno Guides - [voidreality]
 //--------------------------------------------------------------
 
 yuno.gat,153,47,4	script	Juno Guide	700,{
@@ -1813,7 +1813,7 @@ lighthalzen.gat,319,243,5	duplicate(LhzSlum)	Guide#lhz2	852
 
 
 //--------------------------------------------------------------
-// Louyang Guides - [jAthena/Tsuyuki]
+// Louyang Guides - [jAthena/voidreality]
 //--------------------------------------------------------------
 
 louyang.gat,224,104,4	script	Representative#Lou	818,{
@@ -2784,7 +2784,7 @@ prontera.gat,151,330,4	duplicate(Prt_Guide)	Guide#prt5	105
 
 
 //--------------------------------------------------------------
-// Rachel Guides (Incomplete -> Missing blinkies) - [Tsuyuki/Harp]
+// Rachel Guides (Incomplete -> Missing blinkies) - [voidreality/Harp]
 //--------------------------------------------------------------
 
 rachel.gat,138,146,5	script	Rachel Guide Agent	934,{

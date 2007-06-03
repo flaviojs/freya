@@ -907,13 +907,13 @@ atcommand_jump(
 
 	nullpo_retr(-1, sd);
 
-	// Simplified @jump [Tsuyuki]
+	// Simplified @jump [Aurora]
 	if (sscanf(message, "%d %d", &x, &y) < 2)
 	{
 		x = 0;
 		y = 0;
 	}
-	// End custom changes [Tsuyuki]
+	// End custom changes [Aurora]
 
 	if (x >= 0 && x < map[sd->bl.m].xs && y >= 0 && y < map[sd->bl.m].ys) {
 		char output[200];
@@ -1140,7 +1140,7 @@ atcommand_jobchange(
 	const int fd, struct map_session_data* sd,
 	const char* command, const char* message)
 {
-	// Improved to use string constants as well as IDs [Tsuyuki]
+	// Improved to use string constants as well as IDs [Aurora]
 	int job = 0, upper = -1, i = 0;
 	char jobname[100];
 
@@ -1205,7 +1205,7 @@ atcommand_jobchange(
 	if (pc_jobchange(sd, job, upper) == 0)
 		clif_displaymessage(fd, msg_txt(12));
 
-	// End custom changes [Tsuyuki]
+	// End custom changes [Aurora]
 
 	return 0;
 }
@@ -2132,7 +2132,7 @@ atcommand_monster(
 	const int fd, struct map_session_data* sd,
 	const char* command, const char* message)
 {
-	// Simplified to skip forced 'name' parameter [Tsuyuki]
+	// Simplified to skip forced 'name' parameter [Aurora]
 	char monster[100];
 	int mob_id = 0;
 	int number = 0;
@@ -2190,7 +2190,7 @@ atcommand_monster(
 		clif_displaymessage(fd, msg_txt(39));
 	else
 		clif_displaymessage(fd, msg_txt(40));
-	// End custom changes [Tsuyuki]
+	// End custom changes [Aurora]
 
 	return 0;
 }

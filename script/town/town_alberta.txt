@@ -23,10 +23,10 @@
 //	1.9 Added two NPCs shown at RO Magazine [Playtester]
 //	2.0 Removed Duplicates [Silent]
 //	2.1 Fixed many typos, using information from Crono/Hollengrhen [Evera]
-//	2.2 Merged in Alberta Quests script [Tsuyuki]
+//	2.2 Merged in Alberta Quests script [voidreality]
 //	 - Adds in Doll Quest, and Turtle Island Quest
-//	2.3 Merged in Grandpa Pharmacist script by kobra_k88 [Tsuyuki]
-//	2.4 Updated some of the NPCs to Aegis 10.4 (Credits to DZeroX) [Tsuyuki]
+//	2.3 Merged in Grandpa Pharmacist script by kobra_k88 [voidreality]
+//	2.4 Updated some of the NPCs to Aegis 10.4 (Credits to DZeroX) [voidreality]
 //--------------------------------------------------------------
 // Additional Notes: * Semi-Aegis-Certified *
 //--------------------------------------------------------------

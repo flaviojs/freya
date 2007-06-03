@@ -17,11 +17,11 @@
 //	1.3 Begin of adapatation of Freya [Damz Fish]
 //	 - Don't finish because dont find the equivalent of countitem2 and delitem2
 //	1.4 Fixed some conversion bugs, and converted countitem2,
-//	 getitem2, and delitem2 to getitem, countitem, etc for now.. [Tsuyuki]
+//	 getitem2, and delitem2 to getitem, countitem, etc for now.. [voidreality]
 //	1.5 Fully tested and major bug fixes [galaxy]
 //	1.6 Fixed a major bug [galaxy]
 //	1.7 Fixed several more bugs [galaxy]
-//	1.8 Applied a lot of bug fixes from various sources [Tsuyuki]
+//	1.8 Applied a lot of bug fixes from various sources [voidreality]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified *
 //--------------------------------------------------------------

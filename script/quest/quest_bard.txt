@@ -12,7 +12,7 @@
 // Revision History: v1.1
 //--------------------------------------------------------------
 //	1.0 First version, converted from Aegis [GreenGoblin]
-//	1.1 Fixed typos [Tsuyuki]
+//	1.1 Fixed typos [voidreality]
 //--------------------------------------------------------------
 // Additional Notes: Untested, may be buggy. * Aegis-certified *
 //--------------------------------------------------------------

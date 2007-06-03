@@ -19,7 +19,7 @@
 //	1.5 Updated flower sub-quest according to official [Lupus]
 //	1.6 Changed priority for the gifts, now you can win the 1st prize, too, added Izidor flower [Lupus]
 //	1.7 Changed numbers to constants [Vicious]
-//	1.8 Improved formatting [Tsuyuki]
+//	1.8 Improved formatting [voidreality]
 //--------------------------------------------------------------
 // Additional Notes: N/A
 //--------------------------------------------------------------
@@ -27,7 +27,7 @@
 
 comodo.gat,226,123,5	script	Wandering Bard	741,{
 
-	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [voidreality]
 	if (Upper == 1)	close;
 
 	if (BARD_Q == 1) goto L_BQ1;

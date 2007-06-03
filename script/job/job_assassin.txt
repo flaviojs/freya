@@ -27,9 +27,9 @@
 //	2.3 Fixed typo and change Nameless addtimer to 100 (with 700ms I was still able to bypass it) [Toms]
 //	2.4 Fixed skipping of Nameless NPC [Lupus]
 //	2.5 Fixed a Rogue exploit [Lupus]
-//	2.6 Reconverted updated script from Athena format to Freya [Tsuyuki]
-//	2.7 Updated formatting [Tsuyuki]
-//	2.8 Merged in Assassin Guild NPCs from Morroc Town script [Tsuyuki]
+//	2.6 Reconverted updated script from Athena format to Freya [voidreality]
+//	2.7 Updated formatting [voidreality]
+//	2.8 Merged in Assassin Guild NPCs from Morroc Town script [voidreality]
 //--------------------------------------------------------------
 // Additional Notes: N/A
 //--------------------------------------------------------------
@@ -37,7 +37,7 @@
 
 in_moc_16.gat,19,33,4	script	Guildsman	55,{
 
-	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [voidreality]
 	if (Upper == 1)	close;
 
 	if (BaseJob == Job_Assassin) goto L_Assassin;

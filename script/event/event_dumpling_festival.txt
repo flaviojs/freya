@@ -13,7 +13,7 @@
 //--------------------------------------------------------------
 //	1.0 First version [Massdriller]
 //	1.1 Fixed some bugs [Lupus]
-//	1.2 Updated event spawn monster names [Tsuyuki]
+//	1.2 Updated event spawn monster names [voidreality]
 //--------------------------------------------------------------
 // Additional Notes: mRO's Official Dumpling Event.
 //--------------------------------------------------------------

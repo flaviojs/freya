@@ -7,13 +7,13 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                    http://www.ro-freya.net                   
 //--------------------------------------------------------------
-// Script Title: The Ruins of Juperos Quest	Author: Tsuyuki
+// Script Title: The Ruins of Juperos Quest	Author: voidreality
 //--------------------------------------------------------------
 // Revision History: v1.2
 //--------------------------------------------------------------
-//	1.0 First version [Tsuyuki]
-//	1.1 Replaced 'monster' with 'areamonster' on certain occasions [Tsuyuki]
-//	1.2 Fixed Gate Switches not respawning properly [Galaxy/Tsuyuki]
+//	1.0 First version [voidreality]
+//	1.1 Replaced 'monster' with 'areamonster' on certain occasions [voidreality]
+//	1.2 Fixed Gate Switches not respawning properly [Galaxy/voidreality]
 //--------------------------------------------------------------
 // Additional Notes: Only Jupe_Area2.gat part is scripted, JupeArea1 is disabled
 // for the time being, and monsters won't spawn in Jupe_Area2.gat yet.

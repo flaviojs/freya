@@ -22,7 +22,7 @@
 //	1.8 Added Baby Class support [Lupus]
 //	1.9 Fixed possible EXP abuse [Lupus]
 //	2.0 Added a function to properly direct Transcendent job changing [Lupus]
-//	2.1 Improved formatting [Tsuyuki]
+//	2.1 Improved formatting [voidreality]
 //--------------------------------------------------------------
 // Additional Notes: N/A
 //--------------------------------------------------------------
@@ -34,7 +34,7 @@
 
 gef_tower.gat,107,35,5	script	Some Dog	81,{
 
-	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [voidreality]
 	if (Upper == 1)	close;
 
 	if (BaseJob == Job_Mage) goto L_JobMage;
@@ -174,7 +174,7 @@ L_JobMage:
 
 gef_tower.gat,111,37,4	script	Catherine Medichi	68,{
 
-	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [voidreality]
 	if (Upper == 1)	close;
 
 	mes "[Catherine Medichi]";

@@ -21,7 +21,7 @@
 //	1.6 Replaced iz_move_alberta with MISC_QUEST & 16 [Lupus]
 //	1.7 Removed Duplicates [Silent]
 //	1.8 Split quest to quests/quests_izlude.txt [Evera]
-//	1.9 Merged in the Izlude -> Alberta sailor script [Tsuyuki]
+//	1.9 Merged in the Izlude -> Alberta sailor script [voidreality]
 //--------------------------------------------------------------
 // Additional Notes: N/A
 //--------------------------------------------------------------

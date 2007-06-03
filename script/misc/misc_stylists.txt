@@ -11,7 +11,7 @@
 //--------------------------------------------------------------
 // Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 Merged all stylist/dye maker scripts together [Tsuyuki]
+//	1.0 Merged all stylist/dye maker scripts together [voidreality]
 //--------------------------------------------------------------
 // Additional Notes: Clothes Dye script is disabled from working,
 // check comments on it to enable. Also note that the Counteragent

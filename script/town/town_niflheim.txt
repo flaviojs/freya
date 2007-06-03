@@ -24,7 +24,7 @@
 //	1.9 Replaced nif_q_done with MISC_QUEST & 32. nif_t -> @nif_t [Lupus]
 //	2.0 Removed Duplicates [Silent]
 //	2.1 Moved Book of Devil and Piano quest to quests/quests_niflheim.txt [Evera]
-//	2.2 Merged in Piano Quest [Tsuyuki]
+//	2.2 Merged in Piano Quest [voidreality]
 //--------------------------------------------------------------
 // Additional Notes: N/A
 //--------------------------------------------------------------

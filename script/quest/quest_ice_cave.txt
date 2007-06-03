@@ -12,7 +12,7 @@
 // Revision History: v1.1
 //--------------------------------------------------------------
 //	1.0 First version [henhouse]
-//	1.1 Improved formatting + converted to Aurora [Tsuyuki]
+//	1.1 Improved formatting + converted to Aurora [voidreality]
 //--------------------------------------------------------------
 // Additional Notes: Quest is semi-accurate and highly
 // unofficial, but it does what it should.

@@ -22,8 +22,8 @@
 // 鯖snapshotの時や、大きな変更があった場合は設定してほしいです。
 // C言語の仕様上、最初に0を付けると8進数になるので間違えないで下さい。
 
-// Changed ATHENA_MOD_VERSION to match exact jA patch release, and not major release [Tsuyuki]
+// Changed ATHENA_MOD_VERSION to match exact jA patch release, and not major release [Aurora]
 #define ATHENA_MOD_VERSION	2297	// mod version (patch No.)
-// End of custom changes [Tsuyuki]
+// End of custom changes [Aurora]
 
 #endif

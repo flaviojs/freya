@@ -13,7 +13,7 @@
 //--------------------------------------------------------------
 //	1.0 First version [jAthena]
 //	1.1 Translated to English [Yor]
-//	1.2 Imported script from fAthena [Tsuyuki]
+//	1.2 Imported script from fAthena [voidreality]
 //--------------------------------------------------------------
 // Additional Notes: * Aegis-certified *
 //--------------------------------------------------------------

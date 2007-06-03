@@ -18,7 +18,7 @@
 //	1.4 Removed Duplicates [Silent]
 //	1.5 Fixed some typos and coordinates [Musashiden]
 //	1.6 Fixed a small typo [Evera]
-//	1.7 Updated script formatting [Tsuyuki]
+//	1.7 Updated script formatting [voidreality]
 //	1.8 Added Mastermind game NPC converted from Aegis [GreenGoblin]
 //--------------------------------------------------------------
 // Additional Notes: * Mastermind NPC is Aegis-certified *

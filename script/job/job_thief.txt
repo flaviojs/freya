@@ -20,7 +20,7 @@
 //	1.6 Merged back JFunc [Lupus]
 //	1.7 Fixed some typos [Unknown]
 //	1.8 Updated dialogue to match Aegis [Brainstorm]
-//	1.9 Fixed several bugs + reformatted [Tsuyuki]
+//	1.9 Fixed several bugs + reformatted [voidreality]
 //--------------------------------------------------------------
 // Additional Notes: * Aegis-certified *
 //--------------------------------------------------------------

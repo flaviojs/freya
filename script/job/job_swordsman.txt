@@ -23,7 +23,7 @@
 //	1.8 Merged back JFunc, changed job ID numbers to constants [Lupus]
 //	1.9 changed location from its clone to the original [Lupus]
 //	2.0 Fixed warp on timeout [KarLaeda]
-//	2.1 Reformatted and fixed typos/grammers [Tsuyuki]
+//	2.1 Reformatted and fixed typos/grammers [voidreality]
 //--------------------------------------------------------------
 // Additional Notes: N/A
 //--------------------------------------------------------------

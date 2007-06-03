@@ -7,14 +7,14 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                    http://www.ro-freya.net                   
 //--------------------------------------------------------------
-// Script Title: Gunslinger Job Quests/Merchants	Author: Tsuyuki/Playtester
+// Script Title: Gunslinger Job Quests/Merchants	Author: voidreality/Playtester
 //--------------------------------------------------------------
 // Revision History: v1.3
 //--------------------------------------------------------------
-//	1.0 First version, converted from Aegis [Tsuyuki]
-//	1.1 Merged in Gunslinger merchants and quests by Playtester [Tsuyuki]
-//	1.2 Added F_ClearJobVariables function after job change [Tsuyuki]
-//	1.3 Added Butcher/Drifter weapon quests by Playtester [Tsuyuki]
+//	1.0 First version, converted from Aegis [voidreality]
+//	1.1 Merged in Gunslinger merchants and quests by Playtester [voidreality]
+//	1.2 Added F_ClearJobVariables function after job change [voidreality]
+//	1.3 Added Butcher/Drifter weapon quests by Playtester [voidreality]
 //--------------------------------------------------------------
 // Additional Notes: * Aegis-certified * on the job change quest.
 // Contents:
@@ -27,7 +27,7 @@
 
 
 //--------------------------------------------------------------
-// Gunslinger Job Change Quest - [Tsuyuki]
+// Gunslinger Job Change Quest - [voidreality]
 //--------------------------------------------------------------
 
 // Master Miller
