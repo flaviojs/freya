@@ -1,6 +1,6 @@
 // mob_skill_db2.txt, Monster Skill Database
 //
-// Information: This is a secondary, optional database that can be used. It's close to the Freya/eAthena emulator branch's versions. jA's is a lot more close to official though.
+// Information: This is a secondary, optional database that can be used. It's close to the Freya/eAthena emulator branch versions. jAthena's is a lot more close to official though.
 //
 // Structure of Database:
 //

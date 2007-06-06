@@ -13,6 +13,9 @@
 
 Date	Added
 
+2007/06/06
+	* Updated: Databases to latest Huge CGI versions [voidreality]
+
 2007/06/02
 	* Updated: Thief Job Change Quest with Aegis dialogue [voidreality]
 	* Updated: Archer Job Change Quest with Aegis dialogue [voidreality]
