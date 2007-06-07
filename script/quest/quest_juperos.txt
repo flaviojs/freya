@@ -17,8 +17,8 @@
 //	1.3 Replaced script with translated (euRO/iRO dialogue), more complete jAthena version by Blaze [Tsuyuki]
 //	 - Translation by Tsuyuki
 //--------------------------------------------------------------
-// Additional Notes: Only Jupe_Area2.gat part is scripted, JupeArea1 is disabled
-// for the time being, and monsters won't spawn in Jupe_Area2.gat yet.
+// Additional Notes: Only Juperos Area 1 is scripted, Juperos Area 2 is disabled
+// for the time being, and monsters won't spawn there yet either.
 // * Official-certified *
 //--------------------------------------------------------------
 
