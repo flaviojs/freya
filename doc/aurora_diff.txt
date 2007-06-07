@@ -75,7 +75,8 @@
 	- ./script/misc/misc_mapflag.txt [Translated]
 	- ./script/gvg/ (Entire folder) [Translated]
 	- ./script/town/extra/town_kafra.txt [Translated]
-	- ./script/job/job_transcendence [Translated/Modified]
+	- ./script/job/job_transcendence.txt [Translated/Modified]
+	- ./script/quest/juperos.txt [Translated]
 
 ===========================================================================
 	Configuration (./conf)
