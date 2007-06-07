@@ -9,12 +9,13 @@
 //--------------------------------------------------------------
 // Script Title: Dungeon Warps	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v1.3
+// Revision History: v1.4
 //--------------------------------------------------------------
 //	1.0 First version, merged together [Tsuyuki]
 //	1.1 Added Abbey Dungeon official warps [Tsuyuki]
 //	1.2 Replaced old Kiel Hyre Dungeon warps with new official ones [Tsuyuki]
 //	1.3 Removed Juperos Quest warps (Moved to Juperos Quest script) [Tsuyuki]
+//	1.4 Added custom Moscovia Dungeon warps by Azazel [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: N/A
 //--------------------------------------------------------------
@@ -733,9 +734,21 @@ lou_dun03.gat,165,34,0	warp	louwarp004a	3,3,lou_dun02.gat,165,266
 //--------------------------------------------------------------
 // Magma Dungeon Warps (Juno Dungeon)
 //--------------------------------------------------------------
+
 mag_dun01.gat,126,66,0	warp	mag01-yunfild	1,1,yuno_fild03.gat,34,139
 mag_dun01.gat,242,241,0	warp	mag01-02	1,1,mag_dun02.gat,47,30
 mag_dun02.gat,47,28,0	warp	mag02-01	1,1,mag_dun01.gat,242,239
+
+
+//--------------------------------------------------------------
+// Moscovia Dungeon Warps (Deep Wood)
+//--------------------------------------------------------------
+
+mosk_dun01.gat,189,42,0	warp	moscovia009	1,1,mosk_fild02.gat,190,254
+mosk_dun01.gat,200,273,0	warp	moscovia010	1,1,mosk_dun02.gat,164,31
+mosk_dun02.gat,167,28,0	warp	moscovia011	1,1,mosk_dun01.gat,200,270
+mosk_dun02.gat,267,117,0	warp	moscovia012	1,1,mosk_dun03.gat,32,135
+mosk_dun03.gat,29,132,0	warp	moscovia013	1,1,mosk_dun02.gat,264,117
 
 
 //--------------------------------------------------------------

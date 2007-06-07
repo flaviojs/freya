@@ -14,6 +14,8 @@
 Date	Added
 
 2007/06/07
+	* Added: Temporary custom Moscovia warps by Azazel [Tsuyuki]
+	* Added: Moscovia maps [Tsuyuki]
 	* Fixed: Some bugs in the Socket Enchant script by SinSloth [Tsuyuki]
 	* Updated: Some NPC shops [Tsuyuki]
 	* Added: Munak's Grandma Quest by L0ne_W0lf [Tsuyuki]
