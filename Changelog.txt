@@ -14,6 +14,7 @@
 Date	Added
 
 2007/06/06
+	* Updated: Blacksmith skill quests to official by Samuray22 [Tsuyuki]
 	* Fixed: A bug in the Thief Job Change Quest [Tsuyuki]
 	* Added: Dandelion's Request Quest by SinSloth [Tsuyuki
 	* Changed: Merged Ice Cave Ktullanux Quest into Rachel Town Script [Tsuyuki]
