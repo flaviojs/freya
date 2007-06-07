@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 // Script Title: Merchant Shops	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v5.4
+// Revision History: v5.5
 //--------------------------------------------------------------
 //	1.0 First version [Unknown]
 //	1.1 Swapped shop titles in Kunlun [Kashy]
@@ -56,6 +56,7 @@
 //	5.2 Merged in Novice Grounds shops [Tsuyuki]
 //	5.3 Added Veins Pet Merchant [Tsuyuki]
 //	5.4 Updated some shops [Tsuyuki]
+//	5.5 Fixed a Rachel NPC name (Tool Dealer -> Fruit Gardener) [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified *
 //--------------------------------------------------------------
@@ -344,9 +345,9 @@ prt_in.gat,164,140,4	shop	Weapon Dealer	66,1146:-1,1245:-1
 //--------------------------------------------------------------
 
 ra_in01.gat,175,364,3	shop	Armor Dealer	919,2101:-1,2103:-1,2403:-1,2405:-1,2503:-1,2321:-1,2314:-1,2309:-1,2335:-1,2628:-1
-ra_in01.gat,254,300,3	shop	Tool Dealer	931,512:-1,513:-1
 ra_in01.gat,257,269,3	shop	Tool Dealer	919,501:-1,502:-1,503:-1,504:-1,506:-1,645:-1,656:-1,601:-1,602:-1,611:-1,1065:-1,610:-1
 ra_in01.gat,176,389,3	shop	Weapon Dealer	931,1201:-1,1207:-1,1216:-1,1107:-1,1122:-1,1116:-1,1154:-1,1407:-1,1457:-1,1354:-1,1519:-1,13003:-1,1601:-1,1604:-1,1607:-1
+ra_in01.gat,254,300,3	shop	Fruit Gardener	931,512:-1,513:-1
 rachel.gat,65,80,0	shop	Vegetable Gardener	919,515:-1,535:-1,516:-1
 
 //--------------------------------------------------------------
