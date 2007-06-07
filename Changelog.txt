@@ -14,6 +14,7 @@
 Date	Added
 
 2007/06/07
+	* Updated: Abyss Lake Entrance to official by SinSloth [Tsuyuki]
 	* Added: Ninja Dagger and Fuuma Shuriken Craftsmen by Playtester [Tsuyuki]
 	* Updated: Ninja Kunai Merchant to Aegis by Playtester [Tsuyuki]
 	* Updated: Ninja Job Change Quest with official dialogue by SinSloth [Tsuyuki]
