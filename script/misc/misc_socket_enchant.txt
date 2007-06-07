@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 // Script Title: Socket Enchant System	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v1.7
+// Revision History: v1.8
 //--------------------------------------------------------------
 //	1.0 First version [Sousuke_PL]
 //	1.1 Added missing L_No: to 2 functions [Lupus]
@@ -19,6 +19,7 @@
 //	1.5 Fixed ingredients check [Lupus]
 //	1.6 Updated to official. [SinSloth]
 //	1.7 Optimized/cleaned [ultramage]
+//	1.8 Fixed some typos and a nasty bug [SinSloth]
 //--------------------------------------------------------------
 // Additional Notes: * Aegis-certified *
 //--------------------------------------------------------------
@@ -63,7 +64,7 @@ payon.gat,140,151,5		script	Seiyablem	84,{
 					mes "[Seiyablem]";
 					mes "B Class?";
 					mes "Alright, this is the average equipment category.";
-					mes "Please choose the weapon to wich you'd like me to try to add a Slot.";
+					mes "Please choose the weapon to which you'd like me to try to add a Slot.";
 					next;
 					switch( select( "Chain","Gladius","Gakkung Bow","Pike","Haedonggum","Lute","Wire","Waghnakh","Arbalest Bow" ) )
 					{
@@ -83,7 +84,7 @@ payon.gat,140,151,5		script	Seiyablem	84,{
 					mes "[Seiyablem]";
 					mes "Ooh, A Class.";
 					mes "This is some high risk territory!";
-					mes "Alright, wich weapon would you like me to try adding a Slot?";
+					mes "Alright, which weapon would you like me to try adding a Slot?";
 					next;
 					switch( select( "Hunter Bow","Survivor's Rod(INT)","Zweihander","Flamberge","Infiltrator","Ballista","Stunner","Berserk","Claymore" ) )
 					{
@@ -115,7 +116,7 @@ payon.gat,140,151,5		script	Seiyablem	84,{
 						case 5: callfunc "Func_Socket",2,13002,13019,40,51,1000,984,5,999,10; break;
 						case 6: callfunc "Func_Socket",2,1135,13400,40,51,1000,984,5,999,10; break;
 						case 7: callfunc "Func_Socket",2,1466,1476,40,51,1000,984,5,999,10; break;
-						case 8: callfunc "Func_Socket",2,1618,1619,40,51,2000,984,5,999,10; break;
+						case 8: callfunc "Func_Socket",2,1617,1618,40,51,2000,984,5,999,10; break;
 					}
 				break;
 			}
@@ -172,7 +173,7 @@ payon.gat,140,151,5		script	Seiyablem	84,{
 					mes "[Seiyablem]";
 					mes "Ooh, A Class.";
 					mes "This is some high risk territory!";
-					mes "Alright, wich armor would you like me to try adding a Slot?";
+					mes "Alright, which armor would you like me to try adding a Slot?";
 					next;
 					switch( select( "Gemmed Sallet","Bucket Hat","Memory Book","Tights","Legion Plate Armor","Full Plate","Thief Clothes","Greaves","Coif","Manteau","Helm","Ninja Suit","Orc Helm","Ancient Cape","Monk Hat","Golden Gear","Brooch","Munak Hat" ) )
 					{
@@ -241,7 +242,7 @@ payon.gat,140,151,5		script	Seiyablem	84,{
 			mes "Just remember to be carefull.";
 			next;
 			mes "[Seiyablem]";
-			mes "Again, ^FF0000only carry one of the equipment to wich you want me to add a Slot^000000.";
+			mes "Again, ^FF0000only carry one of the equipment to which you want me to add a Slot^000000.";
 			mes "All other equipment with the same name should be placed in your Kafra Storage, got it?";
 			close;
 			
@@ -259,9 +260,15 @@ function	script	Func_Socket	{
 	mes "[Seiyablem]";
 	mes "You want to add a Slot to a " +getitemname(getarg(1))+ "?";
 	if (getarg(0) == 1)
-		mes "Alright, please bring me ^FF0000" +getarg(7)+ " " +getitemname(getarg(6))+ "s^000000, and my^FF0000 " +getarg(5)+",000 zeny^000000 service fee.";
+	{
+		if(getarg(5) > 999) mes "Alright, please bring me ^FF0000" +getarg(7)+ " " +getitemname(getarg(6))+ "s^000000, and my^FF0000 " +getarg(5) / 1000+",000,000 zeny^000000 service fee.";
+		else mes "Alright, please bring me ^FF0000" +getarg(7)+ " " +getitemname(getarg(6))+ "s^000000, and my^FF0000 " +getarg(5)+",000 zeny^000000 service fee.";
+	}
 	else if (getarg(0) == 2)
-		mes "Alright, please bring me ^FF0000" +getarg(7)+ " " +getitemname(getarg(6))+ "^000000, ^FF0000" +getarg(9)+ " " +getitemname(getarg(8))+ "^000000 and my^FF0000 " +getarg(5)+",000 zeny^000000 service fee.";
+	{
+		if(getarg(5) > 999) mes "Alright, please bring me ^FF0000" +getarg(7)+ " " +getitemname(getarg(6))+ "^000000, ^FF0000" +getarg(9)+ " " +getitemname(getarg(8))+ "^000000 and my^FF0000 " +getarg(5) / 1000+",000,000 zeny^000000 service fee.";
+		else mes "Alright, please bring me ^FF0000" +getarg(7)+ " " +getitemname(getarg(6))+ "^000000, ^FF0000" +getarg(9)+ " " +getitemname(getarg(8))+ "^000000 and my^FF0000 " +getarg(5)+",000 zeny^000000 service fee.";
+	}
 	mes "Ah, and don't forget to bring that " +getitemname(getarg(1))+ "!";
 	next;
 
