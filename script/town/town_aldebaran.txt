@@ -24,8 +24,8 @@
 //	1.9 Fixed exploits [Lupus] 1.8 Removed Duplicates [Silent]
 //	2.0 Fixed a bunch of typos with information from Crono/Hollengrhen [Evera]
 //	2.1 Now Pavianne doesn't sell Kafra Passes, she refunds them [Lupus]
-//	2.2 Merged in Alchemist shop [voidreality]
-//	2.3 Updated some of the NPCs to Aegis 10.4 (Credits to DZeroX) [voidreality]
+//	2.2 Merged in Alchemist shop [Tsuyuki]
+//	2.3 Updated some of the NPCs to Aegis 10.4 (Credits to DZeroX) [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Features Kafra Corp. Headquarters
 // * Semi-Aegis-Certified * (Up to Kafra Corp. Headquarters)

@@ -22,13 +22,13 @@
 //	1.8 Added a Special GM Menu to enable/disable same-sex weddings and reset most variables [ShadowLady]
 //	1.9 Added the $progress to $@progress variable change that ShadowLady put in notes, but not in code [Aria]
 //	2.0 Complete rewrite [Skotlex]
-//	2.1 Removed Divorce System from this script as the official Divorce system is now in [voidreality]
-//	2.2 Converted to be fully compatible with jAthena [voidreality]
-//	2.3 Corrected NPC coordinates/view ID/facing positions and added cutins [voidreality]
-//	2.4 Added base level 45 and under failure check [voidreality]
-//	2.5 Added in misc NPCs from Aegis/jAthena [voidreality]
-//	2.6 Removed Wedding Veil requirement entirely [voidreality]
-//	2.7 Script no longer requires players to have Tuxedo/Wedding Dress equiped, as per Aegis [voidreality]
+//	2.1 Removed Divorce System from this script as the official Divorce system is now in [Tsuyuki]
+//	2.2 Converted to be fully compatible with jAthena [Tsuyuki]
+//	2.3 Corrected NPC coordinates/view ID/facing positions and added cutins [Tsuyuki]
+//	2.4 Added base level 45 and under failure check [Tsuyuki]
+//	2.5 Added in misc NPCs from Aegis/jAthena [Tsuyuki]
+//	2.6 Removed Wedding Veil requirement entirely [Tsuyuki]
+//	2.7 Script no longer requires players to have Tuxedo/Wedding Dress equiped, as per Aegis [Tsuyuki]
 //	 - Instead the two players must have the items in their inventories
 //--------------------------------------------------------------
 // Additional Notes: N/A

@@ -21,7 +21,7 @@
 //	1.7 Merged JFunc [Lupus]
 //	1.8 Added a possibility for players doing Megingjard quest to enter Rogue guild as there's a NPC inside [SinSloth]
 //	1.9 Fixed test4 person interaction, let BABY Thieves pass the test, too [Lupus]
-//	2.0 Improved formatting [voidreality]
+//	2.0 Improved formatting [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified *
 //--------------------------------------------------------------
@@ -33,7 +33,7 @@
 
 in_rogue.gat,363,123,3	script	Markie	747,{
 
-	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [voidreality]
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
 	if (Upper == 1)	close;
 
 	mes "[Markie]";

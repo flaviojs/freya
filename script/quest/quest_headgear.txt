@@ -11,7 +11,7 @@
 //--------------------------------------------------------------
 // Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 Merged all headgear quests into this single file [voidreality]
+//	1.0 Merged all headgear quests into this single file [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: All headgear quests are located here, and
 // future headgear quests should also go here.

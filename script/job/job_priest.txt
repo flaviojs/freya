@@ -19,7 +19,7 @@
 //	1.5 Added Baby Class support, fixed 3 wrong constants bugs [Lupus]
 //	1.6 Fixed possible EXP abuse [Lupus]
 //	1.7 Added a function to properly direct Transcendent job changing [Lupus]
-//	1.8 Improved formatting [voidreality]
+//	1.8 Improved formatting [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: N/A
 //--------------------------------------------------------------
@@ -31,7 +31,7 @@
 
 prt_church.gat,16,41,4	script	Father Thomas	60,{
 
-	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [voidreality]
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
 	if (Upper == 1)	close;
 
 	mes "[Father Thomas]";

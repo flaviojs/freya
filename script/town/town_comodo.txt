@@ -20,11 +20,11 @@
 //	1.6 Fixed typo’s [Nexon]
 //	1.7 Removed Duplicates [Silent]
 //	1.8 Split doomed sword quest to quests/quests_comodo.txt [Evera]
-//	1.9 Merged Comodo Gambling script, converted from Aegis by GreenGoblin [voidreality]
-//	2.0 Merged in Comodo Quests script, includes Doomed Swords-related NPCs [voidreality]
-//	2.1 Moved Doomed Swords NPCs to the Doomed Swords quest script [voidreality]
-//	2.2 Changed some Job IDs to constants [voidreality]
-//	2.3 Merged Doomed Swords Quest NPCs back in [voidreality]
+//	1.9 Merged Comodo Gambling script, converted from Aegis by GreenGoblin [Tsuyuki]
+//	2.0 Merged in Comodo Quests script, includes Doomed Swords-related NPCs [Tsuyuki]
+//	2.1 Moved Doomed Swords NPCs to the Doomed Swords quest script [Tsuyuki]
+//	2.2 Changed some Job IDs to constants [Tsuyuki]
+//	2.3 Merged Doomed Swords Quest NPCs back in [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Also contains Pharos Lighthouse and
 // Kokomo Beach NPCs

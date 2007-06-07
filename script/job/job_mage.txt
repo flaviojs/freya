@@ -16,7 +16,7 @@
 //	1.2 Added instant job change for High Novice [Lupus]
 //	1.3 Added Baby Class support [Lupus]
 //	1.4 Optimized and moved first checker to Jfunc1-1 [massdriller]
-//	1.5 Improved formatting and merged job function back in + typo fixes [voidreality]
+//	1.5 Improved formatting and merged job function back in + typo fixes [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: N/A
 //--------------------------------------------------------------

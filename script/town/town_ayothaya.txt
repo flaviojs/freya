@@ -25,7 +25,7 @@
 //	1.9 Fixed exploits [Lupus]
 //	2.0 Removed Duplicates [Silent]
 //	2.1 Moved quests to quests/quests_ayothaya.txt [Evera]
-//	2.2 Merged in Ayothaya Quests script [voidreality]
+//	2.2 Merged in Ayothaya Quests script [Tsuyuki]
 //	 - Adds in Ayothaya Clue Quest, Ayothaya Shrimp Quest, Ayothaya Dungeon Quest, Tom Yum Goong Quest
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified *

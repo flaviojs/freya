@@ -31,7 +31,7 @@
 //	2.6 Split quests to quests/quests_louyang.txt [Evera]
 //	2.7 Minor optimizations before Louyang quests [Lupus]
 //	2.8 Moved guide NPCs to the Guides folder [Lupus]
-//	2.9 Merged in Louyang Quests [voidreality]
+//	2.9 Merged in Louyang Quests [Tsuyuki]
 //	 - Adds in Soup Quest, Tool Master Quest, Doctor Quest, Poison King Quest
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified *

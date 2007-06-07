@@ -7,12 +7,12 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                    http://www.ro-freya.net                   
 //--------------------------------------------------------------
-// Script Title: Nameless Island Town NPCs	Author: voidreality
+// Script Title: Nameless Island Town NPCs	Author: Tsuyuki
 //--------------------------------------------------------------
 // Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 First version [voidreality]
-//	1.1 Updated, now warps you to Nameless Island randomly based on whether it's night or day [voidreality]
+//	1.0 First version [Tsuyuki]
+//	1.1 Updated, now warps you to Nameless Island randomly based on whether it's night or day [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Highly incomplete/inaccurate.
 //--------------------------------------------------------------

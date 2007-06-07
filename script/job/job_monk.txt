@@ -24,8 +24,8 @@
 //	2.0 Fixed another bug in Fuhai [Zephiris]
 //	2.1 Changed numbers to constants [Vicious]
 //	2.2 Removed duplicates [Silent]
-//	2.3 Reconverted to Freya from Athena format [voidreality]
-//	2.4 Removed warps [voidreality]
+//	2.3 Reconverted to Freya from Athena format [Tsuyuki]
+//	2.4 Removed warps [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: N/A
 //--------------------------------------------------------------
@@ -44,7 +44,7 @@ prt_monk.gat,55,249,4	script	Tohobu the Guarding Monk	139,0,5,{
 
 prt_monk.gat,59,247,4	script	Master	120,{
 
-	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [voidreality]
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
 	if (Upper == 1)	close;
 
 	if(MONK_Q == 1 ) goto Part1;

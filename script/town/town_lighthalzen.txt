@@ -20,10 +20,10 @@
 //	1.6 Implemented some more misc NPCs and the second entrance to Biolabs [MasterOfMuppets]
 //	1.7 Removed Duplicates [Silent]
 //	1.8 Removed Duplicates [Toms]
-//	1.9 Fixed some bugs and added some new NPCs (Credits to Au{R}oN) [voidreality]
-//	2.0 Updated Donation NPC (Credits to MasterOfMuppets) [voidreality]
-//	2.1 Added a bunch of missing NPCs (Thanks to $ephiroth) [voidreality]
-//	2.2 Merged in Lighthalzen quests file [voidreality]
+//	1.9 Fixed some bugs and added some new NPCs (Credits to Au{R}oN) [Tsuyuki]
+//	2.0 Updated Donation NPC (Credits to MasterOfMuppets) [Tsuyuki]
+//	2.1 Added a bunch of missing NPCs (Thanks to $ephiroth) [Tsuyuki]
+//	2.2 Merged in Lighthalzen quests file [Tsuyuki]
 //	 - Adds in Mobster Security, Biolabs Entrance Quest, Pickpocket Quest, Friendship Quest
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified *
@@ -4065,7 +4065,7 @@ OnTouch:
 
 
 //--------------------------------------------------------------
-// Lighthalzen Pickpocket Mini-Quest - Lord Gywall/voidreality
+// Lighthalzen Pickpocket Mini-Quest - Lord Gywall/Tsuyuki
 //--------------------------------------------------------------
 
 lighthalzen.gat,0,0,0	script	PickPocketControl	139,{

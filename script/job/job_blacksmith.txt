@@ -40,7 +40,7 @@
 
 ein_in01.gat,18,28,4	script	Guildsman Altiregen	731,{
 
-	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [voidreality]
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
 	if (Upper == 1)	close;
 
 	if (BaseJob == JOB_MERCHANT) goto L_Merc;

@@ -23,7 +23,7 @@
 //	1.9 Updated names and required items [DracoRPG]
 //	2.0 Changed IDs to constants [Vicious]
 //	2.1 Fixed endless loop, wrong condition check [Lupus]
-//	2.2 Reconverted to Freya format [voidreality]
+//	2.2 Reconverted to Freya format [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: N/A
 //--------------------------------------------------------------
@@ -31,7 +31,7 @@
 
 prt_castle.gat,45,169,4	script	Senior Crusader	752,{
 
-	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [voidreality]
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
 	if (Upper == 1)	close;
 
 	mes "[^000080Michael Halig^000000]";

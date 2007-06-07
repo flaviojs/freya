@@ -16,7 +16,7 @@
 //	1.2 Fixed a few typos (Have to hunt more) [Lupus]
 //	1.3 Added Baby Class support Lupus]
 //	1.4 Added a function to properly direct Transcendent job changing [Lupus]
-//	1.5 Improved formatting [voidreality]
+//	1.5 Improved formatting [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: N/A
 //--------------------------------------------------------------
@@ -28,7 +28,7 @@
 
 alde_alche.gat,27,185,4	script	Parmry Gianino	744,{
 
-	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [voidreality]
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
 	if (Upper == 1)	close;
 
 	mes "[Parmry Gianino]";

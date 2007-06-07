@@ -18,7 +18,7 @@
 //	1.5 Now saves/restores all quest skills [Lupus]
 //	1.6 Merged back JFunc [Lupus]
 //	1.7 Updated dialogue to match Aegis [Brainstorm]
-//	1.8 Converted to Aurora/jAthena format and fixed a bunch of typos/bad grammar [voidreality]
+//	1.8 Converted to Aurora/jAthena format and fixed a bunch of typos/bad grammar [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Aegis-certified *
 //--------------------------------------------------------------

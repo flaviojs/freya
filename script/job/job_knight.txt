@@ -19,9 +19,9 @@
 //	1.5 Added Baby Class support [Lupus]
 //	1.6 Fixed possible EXP abuse [Lupus]
 //	1.7 Added a function to properly direct Transcendent job changing [Lupus]
-//	1.8 Reformatted [voidreality]
-//	1.9 Merged in job functions [voidreality]
-//	2.0 Completely typo/grammar fixed [voidreality]
+//	1.8 Reformatted [Tsuyuki]
+//	1.9 Merged in job functions [Tsuyuki]
+//	2.0 Completely typo/grammar fixed [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Aegis-certified *
 //--------------------------------------------------------------
@@ -33,7 +33,7 @@
 
 prt_in.gat,88,101,3	script	Chivalry Captain Herman	56,{
 
-	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [voidreality]
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
 	if (Upper == 1)	close;
 
 	else if (BaseJob == Job_Swordsman && KNIGHT_Q > 0) goto L_Check;

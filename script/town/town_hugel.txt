@@ -7,14 +7,14 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                    http://www.ro-freya.net                   
 //--------------------------------------------------------------
-// Script Title: Hugel Town NPCs	Author: voidreality
+// Script Title: Hugel Town NPCs	Author: Tsuyuki
 //--------------------------------------------------------------
 // Revision History: v1.3
 //--------------------------------------------------------------
-//	1.0 Added redone script with new/missing NPCs and ripped iRO dialogue [voidreality]
-//	1.1 Fixed a couple bugs [voidreality]
-//	1.2 Added the beginnings of the Odin Excavation Quest (Missed earlier) [voidreality]
-//	1.3 Removed Kiel Hyre dungeon entrance [voidreality]
+//	1.0 Added redone script with new/missing NPCs and ripped iRO dialogue [Tsuyuki]
+//	1.1 Fixed a couple bugs [Tsuyuki]
+//	1.2 Added the beginnings of the Odin Excavation Quest (Missed earlier) [Tsuyuki]
+//	1.3 Removed Kiel Hyre dungeon entrance [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Quests are largely incomplete, but
 // NPCs exist. * Official-certified *
@@ -139,7 +139,7 @@ hugel.gat,68,99,3	script	Booboo the Cow	889,{
 }
 
 // Note: Should display a shadow (like Hide)
-// Isn't currently displaying the shadow [voidreality]
+// Isn't currently displaying the shadow [Tsuyuki]
 hugel.gat,72,101,0	script	Burupu's Instructions	111,{
 
 	mes "^3131FFYou've found a small";
@@ -192,13 +192,13 @@ hugel.gat,86,165,5	script	Kayplas	896,{
 
 hugel.gat,100,175,0	script	Suspicious Barrel	111,{
 
-	// Note: Text should be a light purplish color [voidreality]
+	// Note: Text should be a light purplish color [Tsuyuki]
 	mes "You hear something bustling from";
 	mes "the hole in the barrel.";
 	mes "However, it doesn't seem to be a";
 	mes "big deal.";
 	close2;
-	// Does a '...' emote on player [voidreality]
+	// Does a '...' emote on player [Tsuyuki]
 	end;
 }
 
@@ -416,7 +416,7 @@ hu_in01.gat,111,386,4	script	Chris	86,{
 
 // Since this guy has a cutin.. I'm guess he does more
 // than whats scripted so far? This is all I could get
-// out of him in iRO [voidreality]
+// out of him in iRO [Tsuyuki]
 hu_in01.gat,256,40,3	script	Herico	897,{
 
 	cutin "heri1",2;
@@ -544,7 +544,7 @@ L_NoThanks:
 
 // Odin Shrine -> Hugel - Boatman #2
 // Note: All dialogue is unofficial for the second NPC
-// Coords/function is correct however [voidreality]
+// Coords/function is correct however [Tsuyuki]
 odin_tem01.gat,93,146,3	script	Boatman#02	709,{
 
 	mes "[Boatman]";
@@ -570,7 +570,7 @@ L_No:
 
 
 //--------------------------------------------------------------
-// Fish Cake Soup Mini-Quest (Partially Complete) [voidreality]
+// Fish Cake Soup Mini-Quest (Partially Complete) [Tsuyuki]
 //--------------------------------------------------------------
 
 // Note: If you lose the Fish Cake Soup, you're done..
@@ -790,7 +790,7 @@ hugel.gat,76,134,3	script	Neha	101,{
 	if (fcsquest == 1 && fcsversion == 1) goto L_Neha01;
 	if (fcsquest == 2 && fcsversion == 1) goto L_Neha02;
 
-	// Alternate Female PC dialogue? [voidreality]
+	// Alternate Female PC dialogue? [Tsuyuki]
 	mes "[Neha]";
 	mes "Oh ho ho ho ho ho~";
 	mes "I just love cute little boys...";
@@ -800,7 +800,7 @@ hugel.gat,76,134,3	script	Neha	101,{
 	close;
 
 	L_Neha01:
-		// Quest dialogue goes here [voidreality]
+		// Quest dialogue goes here [Tsuyuki]
 		// Definately alternate Female PC dialogue
 		mes "[Neha]";
 		mes "Oh, you have a delivery";
@@ -918,7 +918,7 @@ hugel.gat,87,139,3	script	Maewan	86,{
 // Missing Moks Bug side part
 // Info: It'll randomly make you do either
 // Moks Bugs, or Clams, currently only Clams
-// are functional [voidreality]
+// are functional [Tsuyuki]
 
 // Shede
 hugel.gat,70,137,5	script	Shede	879,{
@@ -1365,7 +1365,7 @@ hugel.gat,62,69,1	script	Eckar Erenes	86,{
 
 			// Incomplete + Unofficial dialogue
 			// Should take your Zeny and take you
-			// to the Dual Monster Race Arena [voidreality]
+			// to the Dual Monster Race Arena [Tsuyuki]
 
 			mes "[Eckar Erenes]";
 			mes "I'm sorry, but the Monster Race";
@@ -1476,7 +1476,7 @@ hugel.gat,58,72,5	script	Eckar Ellebird	86,{
 
 			// Incomplete + Unofficial dialogue
 			// Should take your Zeny and take you
-			// to the Dual Monster Race Arena [voidreality]
+			// to the Dual Monster Race Arena [Tsuyuki]
 
 			mes "[Eckar Ellebird]";
 			mes "I'm sorry, but the Monster Race";
@@ -1772,7 +1772,7 @@ hu_in01.gat,18,167,5	script	Julian	86,{
 }
 
 // I'm guessing if I wasn't a Novice, or I was higher-leveled
-// she would say something different? [voidreality] ->
+// she would say something different? [Tsuyuki] ->
 hu_in01.gat,19,161,3	script	Alex	803,{
 
 	cutin "hu_alex01",2;
@@ -1807,7 +1807,7 @@ hu_in01.gat,19,161,3	script	Alex	803,{
 		mes "[Alex]";
 		mes "Look, I'll reconsider";
 		mes "whether you qualify after";
-		// iRO dialogue fix (My god..) [voidreality]
+		// iRO dialogue fix (My god..) [Tsuyuki]
 		// you get train a little more,";
 		mes "you train a little more,";
 		mes "develop your skills, you know,";
@@ -1856,7 +1856,7 @@ hu_in01.gat,16,20,5	script	Ashe	95,{
 }
 
 // I'm guessing if I wasn't a Novice, or I was higher-leveled
-// she would say something different? [voidreality] ->
+// she would say something different? [Tsuyuki] ->
 hu_in01.gat,14,11,4	script	Laura	70,{
 
 	cutin "hu_laura01",2;

@@ -7,11 +7,11 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                    http://www.ro-freya.net                   
 //--------------------------------------------------------------
-// Script Title: French Revolution Event	Author: Aegis/voidreality
+// Script Title: French Revolution Event	Author: Aegis/Tsuyuki
 //--------------------------------------------------------------
 // Revision History: v1.0
 //--------------------------------------------------------------
-//	1.0 First version, converted from Aegis (Muad_Dib) [voidreality]
+//	1.0 First version, converted from Aegis (Muad_Dib) [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: French Revolution Aegis event script from
 // 2005. * Aegis-certified *

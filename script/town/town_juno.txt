@@ -7,14 +7,14 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                    http://www.ro-freya.net                   
 //--------------------------------------------------------------
-// Script Title: Juno Town NPCs	Author: voidreality
+// Script Title: Juno Town NPCs	Author: Tsuyuki
 //--------------------------------------------------------------
 // Revision History: v1.3
 //--------------------------------------------------------------
-//	1.0 Converted from Aegis, replaced old file entirely [voidreality]
-//	1.1 Merged Monster Museum script with this one [voidreality]
-//	1.2 Added official Monster Museum, converted from Aegis [voidreality]
-//	1.3 Merged Juno Quest script, converted from Aegis [voidreality]
+//	1.0 Converted from Aegis, replaced old file entirely [Tsuyuki]
+//	1.1 Merged Monster Museum script with this one [Tsuyuki]
+//	1.2 Added official Monster Museum, converted from Aegis [Tsuyuki]
+//	1.3 Merged Juno Quest script, converted from Aegis [Tsuyuki]
 //	 - Adds in Juperos History quest and Metto Quest
 //--------------------------------------------------------------
 // Additional Notes: * Aegis-certified *

@@ -21,8 +21,8 @@
 //	1.7 Fixed a small screw up with the color codes in the Glastheim BB [MasterOfMuppets]
 //	1.8 Fixed another small screw up with the color codes in the Glastheim BB [Kayla]
 //	1.9 Removed Duplicates [Silent]
-//	2.0 Merged Message Boards and Bulletin Boards files together [voidreality]
-//	2.1 Improved formatting [voidreality]
+//	2.0 Merged Message Boards and Bulletin Boards files together [Tsuyuki]
+//	2.1 Improved formatting [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: N/A
 //--------------------------------------------------------------

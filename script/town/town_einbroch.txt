@@ -30,9 +30,9 @@
 //	2.4 Added the Garrison quest NPC [erKURITA]
 //	2.5 Implemented the polution script [MasterOfMuppets]
 //	2.6 Moved Garrison quest to quests/gunslinger_quests.txt [Unknown]
-//	2.7 Merged in Einbroch Quests script [voidreality]
+//	2.7 Merged in Einbroch Quests script [Tsuyuki]
 //	 - Adds in Lover's Quest, Factory Quest, Pollution Quest, and Uwe Quest
-//	2.8 Replaced Einbroch Pollution quest with jAthena's version, translated [voidreality]
+//	2.8 Replaced Einbroch Pollution quest with jAthena's version, translated [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified *
 //--------------------------------------------------------------

@@ -21,8 +21,8 @@
 //	1.7 Moved JFunc back in the main file, fixed typos [Lupus]
 //	1.8 Changed numbers to constants [Vicious]
 //	1.9 Fixed double warp [KarLaeda]
-//	2.0 Reconverted  to Freya [voidreality]
-//	2.1 Improved formatting [voidreality]
+//	2.0 Reconverted  to Freya [Tsuyuki]
+//	2.1 Improved formatting [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: N/A
 //--------------------------------------------------------------
@@ -34,7 +34,7 @@
 
 yuno_in02.gat,38,61,4	script	Magic Academy Headmaster 	743,{
 
-	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [voidreality]
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
 	if (Upper == 1)	close;
 
 	if(BaseJob == Job_Sage) goto L_Menu3_3;
@@ -953,7 +953,7 @@ L_Menu5_4:
 
 yuno_in03.gat,154,35,4	script	Academy Staff	742,{
 
-	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [voidreality]
+	// Temp fix for the Transcendence system (Need to add dialogue from somewhere..) [Tsuyuki]
 	if (Upper == 1)	close;
 
 	if(BaseJob == Job_Sage) goto L_Menu6_4;

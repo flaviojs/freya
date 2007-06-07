@@ -26,10 +26,10 @@
 //	2.2 Removed Duplicates [Silent]
 //	2.3 Split quests into quests/quests_amatsu.txt [Evera]
 //	2.4 Fixed missing name [Evera]
-//	2.5 Removed Ninja NPC dummies [voidreality]
-//	2.6 Merged in Amatsu Quests [voidreality]
+//	2.5 Removed Ninja NPC dummies [Tsuyuki]
+//	2.6 Merged in Amatsu Quests [Tsuyuki]
 //	 - Adds in Momotaro Event, Sushi Quest, Amatsu Event
-//	2.7 Adapated some things for backwards Freya compatibility [voidreality]
+//	2.7 Adapated some things for backwards Freya compatibility [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Sushi Quest is * Aegis-certified *
 //--------------------------------------------------------------

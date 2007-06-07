@@ -7,13 +7,13 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                    http://www.ro-freya.net                   
 //--------------------------------------------------------------
-// Script Title: Prontera Town NPCs	Author: voidreality
+// Script Title: Prontera Town NPCs	Author: Tsuyuki
 //--------------------------------------------------------------
 // Revision History: v1.2
 //--------------------------------------------------------------
-//	1.0 Converted from Aegis, replaced old file entirely [voidreality]
-//	1.1 Merged Prontera library books into this file [voidreality]
-//	1.2 Added Magical Swords Quest, converted from Aegis [voidreality]
+//	1.0 Converted from Aegis, replaced old file entirely [Tsuyuki]
+//	1.1 Merged Prontera library books into this file [Tsuyuki]
+//	1.2 Added Magical Swords Quest, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Hair Dresser still needs to be converted from Aegis.
 // Encyclopedias also still need to be converted from Aegis, old ones
@@ -1818,7 +1818,7 @@ prt_in.gat,172,109,4	script	A File	111,2,1,{
 	close;
 }
 
-// Note: Books/Encyclopedias are the old Athena ones, haven't converted from Aegis yet [voidreality]
+// Note: Books/Encyclopedias are the old Athena ones, haven't converted from Aegis yet [Tsuyuki]
 prt_in.gat,159,56,4	script	Monster Encyclopedia	111,{
 
 	mes "^FF0000[Monster Encyclopedia]^000000";

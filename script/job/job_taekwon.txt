@@ -7,12 +7,12 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                    http://www.ro-freya.net                   
 //--------------------------------------------------------------
-// Script Title: Taekwon Job Change Quest	Author: voidreality
+// Script Title: Taekwon Job Change Quest	Author: Tsuyuki
 //--------------------------------------------------------------
 // Revision History: v1.1
 //--------------------------------------------------------------
-//	1.0 First version [voidreality]
-//	1.1 Fixed quest for level 99 and above Novices [voidreality]
+//	1.0 First version [Tsuyuki]
+//	1.1 Fixed quest for level 99 and above Novices [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Official-certified *
 //--------------------------------------------------------------

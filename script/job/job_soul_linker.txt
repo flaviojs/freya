@@ -13,7 +13,7 @@
 //--------------------------------------------------------------
 //	1.0 First version [Celestria]
 //	1.1 Optimized and updated [Lupus]
-//	1.2 Improved formatting [voidreality]
+//	1.2 Improved formatting [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Temp quest, highly unofficial.
 //--------------------------------------------------------------

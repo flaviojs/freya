@@ -34,7 +34,7 @@
 //	2.9 Added weight checks, thanks to Neouni [Playtester]
 //	3.0 Fixed the names of Lighthalzen and Einbroch refiners, thanks to Maud_Dib [Kargha]
 //	3.1 Removed duplicates [Silent]
-//	3.2 Improved formatting [voidreality]
+//	3.2 Improved formatting [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: N/A
 //--------------------------------------------------------------
