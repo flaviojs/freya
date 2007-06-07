@@ -14,6 +14,7 @@
 Date	Added
 
 2007/06/07
+	* Merged: First Class Tutorial Quests into one file [Tsuyuki]
 	* Fixed: Izlude Battle Arena warps [Tsuyuki]
 	* Fixed: A Rachel NPC name [Tsuyuki]
 	* Added: Temporary custom Moscovia warps by Azazel [Tsuyuki]

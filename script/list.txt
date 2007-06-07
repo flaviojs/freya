@@ -122,6 +122,7 @@ npc: script/quest/quest_bard.txt
 npc: script/quest/quest_cooking.txt
 npc: script/quest/quest_eye_of_hellion.txt
 npc: script/quest/quest_headgear.txt
+npc: script/quest/quest_job_tutorial.txt
 npc: script/quest/quest_juice_maker.txt
 npc: script/quest/quest_juperos.txt
 npc: script/quest/quest_kiel_hyre.txt
@@ -138,15 +139,6 @@ npc: script/quest/god_seal/quest_god_global.txt
 npc: script/quest/god_seal/quest_megingjard_seal.txt
 npc: script/quest/god_seal/quest_mjolnir_seal.txt
 npc: script/quest/god_seal/quest_sleipnir_seal.txt
-
-npc: script/quest/job_tutorial/quest_acolyte_tutorial.txt
-npc: script/quest/job_tutorial/quest_archer_tutorial.txt
-npc: script/quest/job_tutorial/quest_dual_tutorial.txt
-npc: script/quest/job_tutorial/quest_mage_tutorial.txt
-npc: script/quest/job_tutorial/quest_merchant_tutorial.txt
-npc: script/quest/job_tutorial/quest_swordsman_tutorial.txt
-npc: script/quest/job_tutorial/quest_thief_tutorial.txt
-
 
 // Old Blue Box Quest - Exclusive to iRO
 // npc: script/quest/quest_old_blue_box.txt
