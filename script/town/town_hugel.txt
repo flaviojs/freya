@@ -17,6 +17,7 @@
 //	1.3 Removed Kiel Hyre dungeon entrance [Tsuyuki]
 //	1.4 Updated Abyss Lake Entrance to official by SinSloth [Tsuyuki]
 //	1.5 Finished the Fish Cake Soup Quest, fully matches iRO Aegis 10.4 [Tsuyuki]
+//	1.6 Updated some content to iRO Aegis 10.4 [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Quests are largely incomplete, but
 // NPCs exist. * Official-certified *
