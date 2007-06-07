@@ -14,6 +14,7 @@
 Date	Added
 
 2007/06/06
+	* Added: Amatsu Legendary Tree Quest, converted from Aegis [Tsuyuki]
 	* Fixed: Some bugs with the Blacksmith/Monk/Knight skill quests + optimized them [Tsuyuki]
 	* Updated: Replaced Blacksmith, Monk, and Knight skill quests with Aegis-converted versions by Samuray22 [Tsuyuki]
 	* Fixed: A bug in the Thief Job Change Quest [Tsuyuki]

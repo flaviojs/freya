@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 // Script Title: Amatsu Town NPCs	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v2.7
+// Revision History: v2.8
 //--------------------------------------------------------------
 //	1.0 First version [Athena]
 //	1.1 Translated [Makenshi/dj]
@@ -30,8 +30,9 @@
 //	2.6 Merged in Amatsu Quests [Tsuyuki]
 //	 - Adds in Momotaro Event, Sushi Quest, Amatsu Event
 //	2.7 Adapated some things for backwards Freya compatibility [Tsuyuki]
+//	2.8 Added Legendary Tree Quest, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: Sushi Quest is * Aegis-certified *
+// Additional Notes: Sushi/Legendary Tree Quests are * Aegis-certified *
 //--------------------------------------------------------------
 
 
@@ -574,42 +575,6 @@ ama_in01.gat,169,173,0	script	Miko	769,{
 	close;
 }
 
-amatsu.gat,269,221,1	script	Proposing Girl	758,{
-
-	mes "[Hutari Sioko]";
-	mes "Nice to meet you";
-	mes "my name is Hutari Sioko,";
-	mes "my hobby is listening to music,";
-	mes "and I usually listen to classical music";
-	next;
-	mes "[Hutari Sioko]";
-	mes "There is a legend";
-	mes "about the large hill in our town";
-	mes "do you know anything about it?";
-	next;
-	mes "[Hutari Sioko]";
-	mes "According to the legend, if you propose";
-	mes "to your lover under that tree";
-	mes "the couple will live happily ever forever";
-	next;
-	mes "[Hutari Sioko]";
-	mes "But the proposal cannot be done on any time";
-	mes "it has to be on the Saturday Night.";
-	mes "or else it won't hold true";
-	next;
-	mes "[Hutari Sioko]";
-	mes "Furthermore, the proposal has to be answered";
-	mes "prior to Sunday night after";
-	next;
-	emotion e_lv;
-	mes "[Hutari Sioko]";
-	mes "If you have a secret admirer...";
-	mes "why not meet under that tree";
-	mes "and propose?";
-	mes "I bet something good will happen";
-	close;
-}
-
 amatsu.gat,287,266,3	script	Jyaburo	766,{
 
 	mes "[Jyaburo]";
@@ -651,116 +616,6 @@ amatsu.gat,287,266,3	script	Jyaburo	766,{
 	mes "Even though life might be sure,";
 	mes "Forget the worries and pains";
 	mes "Always try to live a happy life";
-	close;
-}
-
-amatsu.gat,274,178,0	script	Vet	735,{
-
-	mes "[Sakura Seiichi]";
-	mes "Oww... I'm not a suspicious guy,";
-	mes "please don't be surprised, I am just";
-	mes "A regular vet,";
-	mes "making a living but";
-	mes "curing sick animals";
-	next;
-	mes "[Sakura Seiichi]";
-	mes "But... Did you know?";
-	mes "about the sakura tree on the hill";
-	mes "and its story... Maybe this is the";
-	mes "first time you've heard?!";
-	next;
-	mes "[Sakura Seiichi]";
-	mes "The reason that tree can maintain";
-	mes "its everlasting  youth and beauty";
-	mes "lies within its secret...";
-	mes "that is... Because below the tree";
-	mes "dead people are buried...";
-	next;
-	menu "Can buried people feel the pain?",-,"Speaking of bullshit...",L2;
-
-	mes "[Sakura Seiichi]";
-	mes "... Maybe...";
-	mes "Anyway, do you believe me or not";
-	mes "want to make a bet...?";
-	next;
-	emotion e_dots;
-	mes "[Sakura Seiichi]";
-	mes "What if I...";
-	mes "............";
-	mes "............";
-	next;
-	mes "^6633FFHer laugh gradually fades^000000";
-	mes "^6633FFAway in the wind,^000000";
-	mes "^6633FFUntil nothing can be heard any more,^000000";
-	mes "^6633FFCannot even remember what^000000";
-	mes "^6633FFHe was about to say...^000000";
-	close;
-
-	L2:
-		mes "[Sakura Seiichi]";
-		mes "So entranced, I suppose you are all right...";
-		mes "be careful, one day that kind of things";
-		mes "Will happen to you as well..";
-		next;
-		emotion e_dots;
-		mes "[Sakura Seiichi]";
-		mes "Hahaha... Hahahaha.....";
-		mes "...............";
-		mes "...........";
-		next;
-		mes "^6633FFHer laugh gradually fades^000000";
-		mes "^6633FFAway in the wind,^000000";
-		mes "^6633FFUntil nothing can be heard any more,^000000";
-		mes "^6633FFI don't understand why she told^000000";
-		mes "^6633FFMe that...^000000";
-		close;
-}
-
-amatsu.gat,283,203,1	script	PokePoke	738,{
-
-	emotion e_swt2;
-	mes "[Pokepoke]";
-	mes "The tree on this hill";
-	mes "has existed for a long time, a deep-rooted";
-	mes "and ever-blooming Sakura Tree King";
-	next;
-	emotion e_swt2;
-	mes "[Pokepoke]";
-	mes "And I am very thankful of this tree,";
-	mes "whenever I feel any sorrow or sadness";
-	mes "I always go sit under that tree";
-	next;
-	emotion e_swt2;
-	mes "[Pokepoke]";
-	mes "That way no matter what happened";
-	mes "I can forget it all....";
-	mes "this tree will sooth us";
-	mes "and make us forget sad things";
-	mes "a magic tree";
-	next;
-	emotion e_swt2;
-	mes "[Pokepoke]";
-	mes "If you feel any sadness or sorrow";
-	mes "you can try to sit under this tree";
-	mes "a really magical and thankful tree...";
-	close;
-}
-
-amatsu.gat,262,197,1	script	Legendary Tree	111,{
-
-	mes "^0000FFJust as she said";
-	mes "this tree is famous because";
-	mes "many couples confessed their love here";
-	mes "Sometimes you can still see a few people";
-	mes "Drawing a heart with the lover's";
-	mes "Name within it.^000000";
-	next;
-	mes "^0000FFThey are not only here for lover's confessions,";
-	mes "sometimes they will meet here too";
-	mes "talk about some important matters,";
-	mes "in such a beautiful place";
-	mes "no matter what they are discussing";
-	mes "they always reach an agreement^000000";
 	close;
 }
 
@@ -965,6 +820,284 @@ s_NEnough:
 	mes "Keep your promises!";
 	mes "Kehehehkehkeh...";
 	close;
+}
+
+
+//--------------------------------------------------------------
+// Legendary Tree Quest - [Tsuyuki]
+//--------------------------------------------------------------
+
+
+amatsu.gat,269,221,1	script	Propose Girl	757,{
+
+	set jap_tree,1;
+	mes "[Hutari Shioko]";
+	mes "It is a pleasure to meet you.";
+	mes "My name is Hutari Shioko.";
+	mes "My hobby is listening to music.";
+	mes "I'm an avid fan of classical";
+	mes "music.";
+	next;
+	mes "[Hutari Shioko]";
+	mes "There is an old story about";
+	mes "the hill in our town.";
+	mes "Have you heard this story before?";
+	next;
+	mes "[Hutari Shioko]";
+	mes "It is said that if you propose";
+	mes "under that tree, you and your";
+	mes "lover will live a happy life for";
+	mes "all eternity.";
+	next;
+	mes "[Hutari Shioko]";
+	mes "However, the proposal can not be";
+	mes "done at any given time. The legend";
+	mes "states that it can only be done on";
+	mes "Saturday evenings.";
+	next;
+	mes "[Hutari Shioko]";
+	mes "After the proposal, the reply must";
+	mes "be answered before Sunday evening.";
+	mes "This is the most crucial part of";
+	mes "it.";
+	next;
+	mes "[Hutari Shioko]";
+	mes "If you like someone...";
+	mes "You should try proposing";
+	mes "under that tree. I'm sure";
+	mes "happy things will happen, if you";
+	mes "do.";
+	close;
+}
+
+amatsu.gat,243,202,3	script	Drama Teacher	760,{
+
+	set jap_tree,2;
+	mes "[Garakame Sensei]";
+	mes "This is a beautiful place";
+	mes "with everlasting cherry blossoms.";
+	mes "Also, this town is the origin of";
+	mes "legendary play, 'White Dryad'.";
+	next;
+	if (Sex == Male) {
+		mes "[Garakame Sensei]";
+		mes "If you know a girl who is";
+		mes "talented in acting, please";
+		mes "bring her to me. I have been";
+		mes "searching for a girl who could";
+		mes "play the role as the 'White";
+		mes "Dryad'.";
+		next;
+		mes "[Garakame Sensei]";
+		mes "The 'White Dryad' is a nymph of";
+		mes "cherry tree... It has been hard to";
+		mes "find a girl who can perform";
+		mes "as the 'White Dryad'...";
+		close;
+	} else {
+		emotion ET_SURPRISE;
+		mes "[Garakame Sensei]";
+		mes "Are you interested in acting?";
+		mes "I need someone who sees";
+		mes "the passion in acting and";
+		mes "can understand my vision.";
+		next;
+		mes "[Garakame Sensei]";
+		mes "When you stand on the stage,";
+		mes "you need to become the";
+		mes "character. Your acting needs";
+		mes "to touch the hearts of the";
+		mes "audience and touch their souls.";
+		next;
+		mes "[Garakame Sensei]";
+		mes "Everyone's life is like a";
+		mes "drama, right? Enjoy your life";
+		mes "as what you are and find me";
+		mes "someday when you are ready.";
+		close;
+	}
+}
+
+amatsu.gat,283,203,0	script	Bonubonu	1323,{
+
+	set jap_tree,3;
+	emotion ET_PROFUSELY_SWAT;
+	mes "[Bonubonu]";
+	mes "That tree on the hill is";
+	mes "a very old tree. It is a big";
+	mes "cherry tree with everlasting";
+	mes "blossoms.";
+	next;
+	emotion ET_PROFUSELY_SWAT;
+	mes "[Bonubonu]";
+	mes "There is something about this";
+	mes "tree that makes me forget about";
+	mes "all the troubles in my life when I";
+	mes "sit under it.";
+	next;
+	emotion ET_PROFUSELY_SWAT;
+	mes "[Bonubonu]";
+	mes "Everything about this tree is";
+	mes "simply wonderful...";
+	mes "I can't really describe how";
+	mes "I feel when I look at it...";
+	mes "It just leaves me breathless...";
+	next;
+	emotion ET_PROFUSELY_SWAT;
+	mes "[Bonubonu]";
+	mes "You should visit the tree and";
+	mes "spend some time there.";
+	mes "It is really a miraculous and";
+	mes "gracious tree...";
+	close;
+}
+
+amatsu.gat,274,178,7	script	Veterinarian	735,{
+
+	set jap_tree,4;
+	mes "[Sakura Seiichi]";
+	mes "Ah... I'm not a weirdo so";
+	mes "don't panic. I'm just an ordinary";
+	mes "veterinarian. My job is curing";
+	mes "sick animals.";
+	next;
+	mes "[Sakura Seiichi]";
+	mes "By the way... Do you know?";
+	mes "The story about the cherry tree";
+	mes "on the hill...I guess you haven't";
+	mes "heard about it...";
+	next;
+	mes "[Sakura Seiichi]";
+	mes "That tree has a secret of";
+	mes "keeping its beauty and whiteness.";
+	mes "The secret is...";
+	mes "There are corpses buried under...";
+	mes "that tree...";
+	next;
+	menu "How horrible!",L_LABEL1,"You have got to be kidding.",L_LABEL2;
+
+	L_LABEL1:
+		mes "[Sakura Seiichi]";
+		mes "Kuhuhu... They could be...";
+		mes "By the way, do you want";
+		mes "to make a bet on it...?";
+		next;
+		emotion ET_THINK;
+		mes "[Sakura Seiichi]";
+		mes "If I..........";
+		mes "............";
+		mes ".........";
+		next;
+		mes "^3355FFHis voice was getting lower";
+		mes "and lower as the wind blew.";
+		mes "Finally, I couldn't even hear his";
+		mes "voice. I can't even recall what he";
+		mes "was trying to tell me...";
+		close;
+
+	L_LABEL2:
+		mes "[Sakura Seiichi]";
+		mes "I can't help it if you think that";
+		mes "way. But one day, you too could be";
+		mes "buried underneath...";
+		next;
+		emotion ET_THINK;
+		mes "[Sakura Seiichi]";
+		mes "Haha... Hahaha.....";
+		mes "...............";
+		mes "...........";
+		next;
+		mes "^3355FFHis laugh was getting lower";
+		mes "and lower as the wind blew.";
+		mes "Finally, I couldn't even hear";
+		mes "anything. I can't even recall what";
+		mes "he was trying to tell me...";
+		close;
+}
+
+amatsu.gat,262,197,1	script	Legendary Tree	111,{
+
+	if (jap_tree == 1) {
+		mes "^3355FFAs she mentioned, this tree";
+		mes "seems to be a famous place";
+		mes "for proposing lovers.";
+		mes "There were several carved symbols";
+		mes "of hearts and initials of lovers";
+		mes "on the bark.^000000";
+		next;
+		mes "^3355FFBesides proposals, people";
+		mes "gather under this tree when";
+		mes "they discuss important";
+		mes "matters. I could listen to";
+		mes "all kinds of stories";
+		mes "in this magnificent place.^000000";
+		close;
+	} else if (jap_tree == 2) {
+		mes "^3355FFThe legendary play, 'White";
+		mes "Dryad'....";
+		mes "I never heard about that title but";
+		mes "it sounds familiar.";
+		mes "Nymph of cherry tree... What would";
+		mes "be her position in the play?^000000";
+		next;
+		if (Sex == Male) {
+			mes "^3355FFI would like to find";
+			mes "a person who is talented";
+			mes "in acting and help her until";
+			mes "she performs the play. However,";
+			mes "it seems to be easier said than";
+			mes "done.^000000";
+			close;
+		} else {
+			mes "^3355FFI might have talent in";
+			mes "acting which hasn't been discovered";
+			mes "yet. I though, 'If I dress up, I";
+			mes "should perform as the 'White";
+			mes "Dryad'...'^000000";
+			close;
+		}
+	} else if (jap_tree == 3) {
+		mes "^3355FFUnlike other cherry trees,";
+		mes "this tree has a strong fragrance.";
+		mes "I just fell into a relaxed";
+		mes "mood. The fragrance eased";
+		mes "my burdens and I felt";
+		mes "very comfortable.^000000";
+		next;
+		mes "^3355FFIt was just for a few moments";
+		mes "but I could forget the";
+		mes "burdens of life. I wish to";
+		mes "come back again and";
+		mes "sit under this tree...^000000";
+		close;
+	} else if (jap_tree == 4) {
+		mes "^3355FFThis strong fragrance";
+		mes "is making me dizzy. Not like";
+		mes "other cherry trees, this tree's";
+		mes "shimmering white petals";
+		mes "felt strange.^000000";
+		next;
+		mes "^3355FFIt feels as if my soul is";
+		mes "being drained if I stay here";
+		mes "longer. After a glimpse of";
+		mes "the cherry tree, I thought to";
+		mes "myself, 'I must get out of here";
+		mes "quickly.'";
+		close;
+	} else {
+		mes "^3355FFThere was a cherry tree";
+		mes "on the hill. It doesn't look";
+		mes "like the other trees.";
+		mes "This tree seems to have";
+		mes "a long history...^000000";
+		next;
+		mes "^3355FFAre there any people";
+		mes "who live here? I took";
+		mes "a long around and found";
+		mes "someone down the hill.";
+		mes "I better ask her about this tree.^000000";
+		close;
+	}
 }
 
 
