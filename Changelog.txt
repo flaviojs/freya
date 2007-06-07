@@ -14,6 +14,7 @@
 Date	Added
 
 2007/06/06
+	* Fixed: A bug in the Thief Job Change Quest [Tsuyuki]
 	* Added: Dandelion's Request Quest by SinSloth [Tsuyuki
 	* Changed: Merged Ice Cave Ktullanux Quest into Rachel Town Script [Tsuyuki]
 	* Updated: Juperos Ruins Quest by Blaze (Translated from jAthena) [Tsuyuki]

@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 // Script Title: Thief Job Change Quest	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v1.9
+// Revision History: v2.0
 //--------------------------------------------------------------
 //	1.0 First version [kobra_k88]
 //	1.1 Added instant job change for High Novice [Lupus]
@@ -21,6 +21,7 @@
 //	1.7 Fixed some typos [Unknown]
 //	1.8 Updated dialogue to match Aegis [Brainstorm]
 //	1.9 Fixed several bugs + reformatted [Tsuyuki]
+//	2.0 Fixed small bug with Novice High and NPCs [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Aegis-certified *
 //--------------------------------------------------------------
@@ -32,6 +33,7 @@
 
 moc_prydb1.gat,39,129,5	script	Thief Guide	69,{
 
+	callfunc "F_HighFirstClass",Job_Thief,"Thief",Job_Assassin,Job_Rogue,0,"Test Guide";
 	mes "[Thief Guide]";
 	if(BaseJob==Job_Novice) goto L_NovStart;
 	mes "What the heck...?";
