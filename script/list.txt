@@ -121,7 +121,6 @@ npc: script/quest/quest_bard.txt
 npc: script/quest/quest_cooking.txt
 npc: script/quest/quest_eye_of_hellion.txt
 npc: script/quest/quest_headgear.txt
-npc: script/quest/quest_ice_cave.txt
 npc: script/quest/quest_juice_maker.txt
 npc: script/quest/quest_juperos.txt
 npc: script/quest/quest_kiel_hyre.txt

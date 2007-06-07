@@ -7,428 +7,797 @@
 //              /_/  |_|\____|_|  \___/|_|  \__,_|              
 //                    http://www.ro-freya.net                   
 //--------------------------------------------------------------
-// Script Title: The Ruins of Juperos Quest	Author: voidreality
+// Script Title: The Ruins of Juperos Quest	Author: voidreality/Blaze
 //--------------------------------------------------------------
-// Revision History: v1.2
+// Revision History: v1.3
 //--------------------------------------------------------------
 //	1.0 First version [voidreality]
 //	1.1 Replaced 'monster' with 'areamonster' on certain occasions [voidreality]
 //	1.2 Fixed Gate Switches not respawning properly [Galaxy/voidreality]
+//	1.3 Replaced script with translated (euRO/iRO dialogue), more complete jAthena version by Blaze [voidreality]
+//	 - Translation by voidreality
 //--------------------------------------------------------------
 // Additional Notes: Only Jupe_Area2.gat part is scripted, JupeArea1 is disabled
 // for the time being, and monsters won't spawn in Jupe_Area2.gat yet.
-// Also missing cutins and the broadcasted messages past Juperos_02.gat.
+// * Official-certified *
 //--------------------------------------------------------------
 
 
-juperos_01.gat,99,92,0	script	#JupeLv2Warp	139,3,3,{
+//--------------------------------------------------------------
+// Juperos Level 1 + Warps
+//--------------------------------------------------------------
 
-OnTouch:
-	mes "^666666[" + strcharinfo(0) + "]";
+yuno_fild07.gat,208,175,0	script	juperoswarp0401		139,2,2{ warp "jupe_cave.gat",143,52; end; }
+jupe_cave.gat,147,52,0		script	juperoswarp0501		139,2,2{ warp "yuno_fild07.gat",212,175; end; }
+jupe_cave.gat,29,52,0		warp	juperoswarp4001		3,3,juperos_01.gat,54,246
+juperos_01.gat,51,249,0		warp	juperoswarp4002		3,3,jupe_cave.gat,36,51
+
+juperos_01.gat,100,91,0		script	juperoswarp4003		139,2,2,{
+
+	initnpctimer;
+	mes "^3355FF["+strcharinfo(0)+"]^000000";
 	mes "^000000This light...";
 	mes "It feels like...";
 	mes "Its warmth is...";
 	mes "Wrapping all over me...";
 	next;
-	menu "Ah, it's so nice...",JupeLv2Warp,"No! This is wrong!",-;
-
-	mes "^666666[" + strcharinfo(0) + "]";
-	mes "^000000N-No! This is";
+	if(select("Ah, it's so nice...","No! This is wrong!")==1) {
+		gmcommand "@misceffect 348";
+		mes "^3355FF["+strcharinfo(0)+"]^000000";
+		mes "Ahhhh...";
+		mes "It feels like";
+		mes "I'm floating...";
+		close2;
+		warp "juperos_02.gat",128,278;
+		end;
+	}
+	mes "^3355FF["+strcharinfo(0)+"]^000000";
+	mes "N-No! This is";
 	mes "wrong! Something";
 	mes "weird's happening!";
 	mes "I gotta get away!";
+	next;
+	warp "juperos_01.gat",96,91;
+	end;
+
+OnTimer10000:
+	areawarp "juperos_01.gat",98,89,102,93,"juperos_02.gat",128,278;
+	stopnpctimer;
+	end;
+}
+
+juperos_02.gat,33,59,0		script	juperoswarp4004		45,2,2{
+	switch(rand(4)) {
+	case 0: warp "juperos_01.gat",79,72; end;
+	case 1: warp "juperos_01.gat",79,112; end;
+	case 2: warp "juperos_01.gat",120,72; end;
+	case 3: warp "juperos_01.gat",120,112; end;
+	}
+}
+
+juperos_02.gat,130,149,0	script	juperoswarp4005		139,2,2{ warp "jupe_gate.gat",50,167; end; }
+
+jupe_gate.gat,50,171,0		script	juperoswarp4006		139,4,0{
+
+	initnpctimer;
+	mes "^3355FF["+strcharinfo(0)+"]^000000";
+	mes "^3355FFIt's a Warp Portal";
+	mes "that will teleport you";
+	mes "to the previous floor.^000000";
+	next;
+	if(select("Use it.","Ignore it.")==1) {
+		gmcommand "@misceffect 348";
+		next;
+		warp "juperos_02.gat",130,142;
+		end;
+	}
+	mes "^3355FF["+strcharinfo(0)+"]^000000";
+	mes "Not now!";
+	mes "I can't leave yet!";
+	next;
+	warp "jupe_gate.gat",50,168;
+	end;
+
+OnTimer10000:
+	areawarp "jupe_gate.gat",46,171,53,171,"juperos_02.gat",130,142;
+	stopnpctimer;
+	end;
+}
+
+jupe_gate.gat,28,145,0		warp	juperoswarp4007		1,1,jupe_area1.gat,101,222
+jupe_area1.gat,103,222,0	warp	juperoswarp4008		1,1,jupe_gate.gat,30,145
+jupe_gate.gat,71,145,0		warp	juperoswarp4009		1,1,jupe_area2.gat,63,222
+jupe_area2.gat,60,222,0		warp	juperoswarp4010		1,1,jupe_gate.gat,69,145
+jupe_gate.gat,49,55,0		warp	juperoswarp4011		1,1,jupe_ele_r.gat,49,29
+jupe_ele_r.gat,49,27,0		warp	juperoswarp4012		1,1,jupe_gate.gat,49,53
+jupe_ele.gat,41,33,0		warp	juperoswarp4013		4,4,jupe_core.gat,150,286
+
+
+//--------------------------------------------------------------
+// Juperos Level 2
+//--------------------------------------------------------------
+
+juperos_02.gat,0,0,0	script	#juperosgateswitch	-1,{
+
+OnInit:
+	hideonnpc "juperoswarp4005";
+	set 'jupe_gate,3;
+	monster "juperos_02.gat",24,275,"1st Gate Switch",1674,1,"#juperosgateswitch::OnKilled";
+	monster "juperos_02.gat",240,29,"2nd Gate Switch",1674,1,"#juperosgateswitch::OnKilled";
+	monster "juperos_02.gat",282,183,"3rd Gate Switch",1674,1,"#juperosgateswitch::OnKilled";
+	end;
+
+OnKilled:
+	set 'jupe_gate,'jupe_gate-1;
+	switch('jupe_gate) {
+	case 2: announce "Who are you to come here?",9,0xFF0000; break;
+	case 1: announce "Have you come seeking Juperos?! It no longer exists...",9,0xFF0000; break;
+	default:
+		announce "Have you come to see me? Fine! Find me first!",9,0xFF0000;
+		areamisceffect "juperos_02.gat",0,0,300,300,563;
+		areasoundeffect "juperos_02.gat",0,0,300,300,"earth_quake.wav",0;
+		sleep 5000;
+		announce "Vroom! Vroom!",9,0xE55AA4;
+		areasoundeffect "juperos_02.gat",0,0,300,300,"jupe_warning.wav",0;
+		sleep 2000;
+		announce "Attention, visitors.",9,0xE55AA4;
+		sleep 2000;
+		announce "You are allowed to enter the next zone for a short period of time.",9,0xE55AA4;
+		announce "Please use the portal in the center of the map.",9,0xE55AA4;
+		hideoffnpc "juperoswarp4005";
+		misceffect 561,"juperoswarp4005";
+		set 't,26;
+		initnpctimer;
+	}
+	end;
+
+OnTimer23000:
+	set 't,'t-1;
+	misceffect 561,"juperoswarp4005";
+	if('t == 2) {
+		sleep 4000;
+		announce "Attention, visitors. The gate to the next zone will close shortly.",9,0xE55AA4;
+		sleep 5000;
+		announce "1 minute remaining until Gate Closure.",9,0xE55AA4;
+	}
+	if('t == 0) {
+		sleep 2000;
+		hideonnpc "juperoswarp4005";
+		announce "The gate is being closed...",9,0xE55AA4;
+		sleep 3000;
+		announce "Switches will reactivate shortly.",9,0xE55AA4;
+		end;
+	}
+	initnpctimer;
+	end;
+
+OnTimer602000:
+	stopnpctimer;
+	donpcevent "#juperosgateswitch::OnInit";
+	end;
+}
+
+
+//--------------------------------------------------------------
+// Juperos Area 1
+//--------------------------------------------------------------
+
+jupe_area1.gat,0,0,0	script	jupe_area1	-1,{
+
+OnSummon1:
+	set 'flag,1;
+	initnpctimer;
+	sleep 1000;
+	announce "Those of you who have come here...",9,0xFF0000;
+	sleep 2000;
+	announce "I do not intend to stop you.",9,0xFF0000;
+	areasoundeffect "this",0,0,164,300,"jupe_warning.wav",0;
+	sleep 2000;
+	announce "But I assume you are prepared for a few obstacles...",9,0xFF0000;
+	sleep 2000;
+	announce "After all, you are venturing through a forbidden area!",9,0xFF0000;
+	set 'mob,8;
+	monster "jupe_area1.gat",30,263,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",30,262,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",30,261,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",30,260,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",30,259,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",30,258,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",30,257,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",30,256,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	sleep 1000;
+	areasoundeffect "this",0,0,164,300,"jupe_warning.wav",0;
+	end;
+
+OnSummon2:
+	announce "How about now?",9,0xFF0000;
+	areasoundeffect "this",0,0,164,300,"jupe_warning.wav",0;
+	sleep 2000;
+	announce "Let me see...",9,0xFF0000;
+	sleep 2000;
+	announce "Just how strong you are!",9,0xFF0000;
+	areasoundeffect "this",0,0,164,300,"jupe_warning.wav",0;
+	set 'mob,8;
+	monster "jupe_area1.gat",30,238,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",31,238,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",32,238,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",33,238,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",34,238,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",35,238,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",36,238,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",37,238,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	end;
+
+OnSummon3:
+	set 'flag,4;
+	initnpctimer;
+	announce "Come on, come on!",9,0xFF0000;
+	sleep 2000;
+	announce "Yes. Run... Right into my hands!",9,0xFF0000;
+	sleep 2000;
+	announce "Do you want to know who I am?",9,0xFF0000;
+	sleep 2000;
+	announce "You will know, once you defeat all of my minions!",9,0xFF0000;
+	set 'mob,8;
+	monster "jupe_area1.gat",30,176,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",31,176,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",32,176,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",33,176,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",34,176,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",35,176,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",36,176,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",37,176,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	end;
+
+OnSummon4:
+	announce "I was the head of this underground laboratory.",9,0xFF0000;
+	sleep 2000;
+	announce "But that was a long time ago, back when I was merely a human.",9,0xFF0000;
+	sleep 2000;
+	announce "I was called Vesper Newton. Hahah, they called me a mad man back then.",9,0xFF0000;
+	set 'mob,13;
+	monster "jupe_area1.gat",30,152,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",31,152,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",32,152,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",33,152,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",34,152,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",35,152,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",36,152,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",37,152,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",30,150,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",31,150,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",32,150,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",33,150,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",34,150,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	end;
+
+OnSummon5:
+	set 'flag,7;
+	initnpctimer;
+	announce "These security systems...",9,0xFF0000;
+	sleep 2000;
+	announce "They're not really for protection.",9,0xFF0000;
+	sleep 2000;
+	announce "It's sort of just a hobby to pass the time...",9,0xFF0000;
+	sleep 2000;
+	announce "Being immortal, I have a lot of time on my hands...",9,0xFF0000;
+	set 'mob,8;
+	monster "jupe_area1.gat",30,89,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",31,89,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",32,89,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",33,89,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",34,89,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",35,89,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",36,89,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",37,89,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	end;
+
+OnSummon6:
+	announce "Why have you come?",9,0xFF0000;
+	sleep 2000;
+	announce "Were you hoping to find something wonderful? Something miraculous?",9,0xFF0000;
+	sleep 2000;
+	announce "You're wrong! Welcome to Hell!",9,0xFF0000;
+	set 'mob,15;
+	monster "jupe_area1.gat",42,64,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",43,64,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",44,64,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",45,64,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",46,64,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",47,64,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",48,64,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",49,64,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",42,62,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",43,62,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",44,62,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",45,62,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",46,62,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",47,62,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",48,62,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",49,62,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	end;
+
+OnSummon7:
+	set 'flag,10;
+	initnpctimer;
+	announce "I've been waiting for someone strong enough to compete with me.",9,0xFF0000;
+	sleep 2000;
+	announce "If you hear this, I wish you will be the one...",9,0xFF0000;
+	sleep 2000;
+	announce "Perhaps, a mere shadow of my former self...",9,0xFF0000;
+	sleep 2000;
+	announce "Is somewhere down here, wandering...",9,0xFF0000;
+	set 'mob,8;
+	monster "jupe_area1.gat",92,154,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",96,154,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",100,154,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",104,154,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",92,161,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",96,161,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",100,161,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",104,161,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	end;
+
+OnSummon8:
+	announce "I can never rest in peace...",9,0xFF0000;
+	sleep 2000;
+	announce "I'll wait forever or until someone can put me out of my misery...",9,0xFF0000;
+	sleep 2000;
+	announce "I will be waiting for you!",9,0xFF0000;
+	set 'mob,10;
+	monster "jupe_area1.gat",104,161,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",108,161,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",111,161,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",112,161,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",115,161,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",104,154,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",108,154,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",111,154,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",112,154,"Security Guard",1675,1,"jupe_area1::OnKilled";
+	monster "jupe_area1.gat",115,154,"Security Guard",1669,1,"jupe_area1::OnKilled";
+	end;
+
+OnKilled:
+	set 'mob,'mob-1;
+	if('mob == 0) {
+		sleep 2000;
+		switch('flag) {
+		case 1: donpcevent "jupe_area1::OnSummon2"; break;
+		case 2: announce "Zzzzt. Zzzzt.....",9,0xFF0000; break;
+		case 4: donpcevent "jupe_area1::OnSummon4"; break;
+		case 5: announce "Not yet!",9,0xFF0000; break;
+		case 7: donpcevent "jupe_area1::OnSummon6"; break;
+		case 8: announce "Do you still have your courage? Come. Prove it.",9,0xFF0000; break;
+		case 10: donpcevent "jupe_area1::OnSummon8"; break;
+		case 11: announce "It's funny... Isn't it?",9,0xFF0000; break;
+		}
+		set 'flag,'flag+1;
+	}
+	end;
+
+OnTimer600000:
+	set '@rand,rand(0,3);
+	if ('@rand == 0)
+		announce "Do you realize this is a hallucination?",9,0xFF0000;
+	else if ('@rand == 1)
+		announce "Bwahaha! You're only good at running away!",9,0xFF0000;
+	else
+		announce "I can't believe how cowardly you really are...",9,0xFF0000;
+	sleep 2000;
+	stopnpctimer;
+	areawarp "this",0,0,70,300,"jupe_gate.gat",49,138;
+	areawarp "this",70,0,164,200,"jupe_gate.gat",49,138;
+	killmonster "this","All";
+	set 'mob,0;
+	set 'flag,0;
+	end;
+}
+
+jupe_area1.gat,88,224,0	script	#jupe_area1-1	844,{
+
+	set '@id,strcut(strnpcinfo(2),11);
+	cutin strcut(strnpcinfo(2),11),2;
+	if(getvariableofnpc('flag,"jupe_area1") != ('@id-1)*3) {
+		mes "^3355FFThis seems like";
+		mes "some kind of device";
+		mes "that will allow you to";
+		mes "pass to the other side.";
+		mes "There's a slot where you";
+		mes "probably need to insert";
+		mes "some kind of object...^000000";
+		close2;
+		cutin strcut(strnpcinfo(2),11),255;
+		end;
+	}
+	mes "^3355FFThis seems like";
+	mes "some kind of device";
+	mes "that will allow you to";
+	mes "pass to the other side.";
+	mes "There's a slot where you";
+	mes "probably need to insert";
+	mes "some kind of object...^000000";
+	next;
+	if(select("Insert a Crest Piece.","Cancel.")==1) {
+		set '@id,7355+'@id;
+		if(countitem('@id)) {
+			cutin strcut(strnpcinfo(2),11)+"-1",2;
+			misceffect 159;
+			mes "^3355FFYou take out your";
+			mes "Crest Piece and place";
+			mes "it into the slot where it";
+			mes "happens to fit perfectly.^000000";
+			next;
+			mes "^3355FFThe slot rotates and";
+			mes "the Crest Piece moves as";
+			mes "if it were turning a key. You";
+			mes "feel a weak tremor as a Warp";
+			mes "Portal to the other side is";
+			mes "activated. You then retrieve";
+			mes "your Crest Piece.^000000";
+			hideonnpc;
+			hideoffnpc "juperoswarp" +strcut(strnpcinfo(2),11)+ "#jupe_area1";
+			misceffect 561,"juperoswarp" +strcut(strnpcinfo(2),11)+ "#jupe_area1";
+			soundeffect "jupe_warp.wav",0;
+			initnpctimer;
+		}
+		else {
+			mes "^3355FFUnfortunately, you're";
+			mes "not carrying anything";
+			mes "that might be able to fit";
+			mes "into the slot and activate";
+			mes "this mechanical device.^000000";
+		}
+	}
+	else {
+		mes "[" +strcharinfo(0)+ "]";
+		mes "Hmmm...";
+		mes "Do I have anything";
+		mes "that might make this";
+		mes "weird machine work?";
+	}
 	close2;
-	warp "juperos_01.gat",99,86;
+	cutin strcut(strnpcinfo(2),11),255;
 	end;
 
-JupeLv2Warp:
-	misceffect 309,"#JupeLv2Warp";
-	mes "^666666[" + strcharinfo(0) + "]";
-	mes "^000000Ahhhh...";
-	mes "It feels like";
-	mes "I'm floating...";
-	close2;
-	warp "juperos_02.gat",128,278;
-	end;
-}
-
-
-juperos_02.gat,0,0,0	script	#JupeGateAccess	139,{
-
-OnSpawn:
-	monster "juperos_02.gat",24,275,"1st Gate Switch",1674,1,"#JupeGateAccess1::OnSwitchADead";
-	monster "juperos_02.gat",240,29,"2nd Gate Switch",1674,1,"#JupeGateAccess2::OnSwitchBDead";
-	monster "juperos_02.gat",282,183,"3rd Gate Switch",1674,1,"#JupeGateAccess3::OnSwitchCDead";
-	end;
-}
-
-
-juperos_02.gat,0,0,0	script	#JupeGateAccess1	139,{
-
-OnInit:
-	donpcevent "#JupeGateAccess::OnSpawn";
-	end;
-
-OnSwitchADead:
-	mapannounce "juperos_02.gat","Have you come seeking Juperos?! It no longer exists...",1;
-	set $@JupeSwitch1,1;
-	if ($@JupeSwitch1 == 1 && $@JupeSwitch2 == 1 && $@JupeSwitch3 == 1) goto JupeContA;
-	end;
-
-JupeContA:
-	initnpctimer;
-		end;
-
-OnTimer3000:
-	mapannounce "juperos_02.gat","Vroom! Vroom!",1;
-		end;
-
-OnTimer6000:
-	mapannounce "juperos_02.gat","Attention, visitors.",1;
-		end;
-
-OnTimer9000:
-	mapannounce "juperos_02.gat","You are allowed to enter the next zone for a short period of time.",1;
-	mapannounce "juperos_02.gat","Please use the portal in the center of the map.",1;
-	enablenpc "JupeWarp2";
-	end;
-
-OnTimer600000:
-	mapannounce "juperos_02.gat","The portal has now closed.",1;
-	disablenpc "JupeWarp2";
-	set $@JupeSwitch1,0;
-	set $@JupeSwitch2,0;
-	set $@JupeSwitch3,0;
+OnTimer22000:
 	stopnpctimer;
-	donpcevent "#JupeGateAccess::OnSpawn";
+	hideonnpc "juperoswarp" +strcut(strnpcinfo(2),11)+ "#jupe_area1";
+	hideoffnpc;
 	end;
 }
 
-juperos_02.gat,0,0,0	script	#JupeGateAccess2	139,{
+jupe_area1.gat,25,238,0	duplicate(#jupe_area1-1)	#jupe_area1-2	844
+jupe_area1.gat,36,146,0	duplicate(#jupe_area1-1)	#jupe_area1-3	844
+jupe_area1.gat,50,49,0	duplicate(#jupe_area1-1)	#jupe_area1-4	844
 
-OnInit:
-	end;
+jupe_area1.gat,112,162,0	script	Lever#jupe_area1	844,{
 
-OnSwitchBDead:
-	mapannounce "juperos_02.gat","Who are you to come here?",1;
-	set $@JupeSwitch2,1;
-	if ($@JupeSwitch1 == 1 && $@JupeSwitch2 == 1 && $@JupeSwitch3 == 1) goto JupeContB;
-	end;
-
-JupeContB:
-	initnpctimer;
-
-OnTimer3000:
-	mapannounce "juperos_02.gat","Vroom! Vroom!",1;
-		end;
-
-OnTimer6000:
-	mapannounce "juperos_02.gat","Attention, visitors.",1;
-		end;
-
-OnTimer9000:
-	mapannounce "juperos_02.gat","You are allowed to enter the next zone for a short period of time.",1;
-	mapannounce "juperos_02.gat","Please use the portal in the center of the map.",1;
-	enablenpc "JupeWarp2";
-	end;
-
-OnTimer600000:
-	mapannounce "juperos_02.gat","The portal has now closed.",1;
-	disablenpc "JupeWarp2";
-	set $@JupeSwitch1,0;
-	set $@JupeSwitch2,0;
-	set $@JupeSwitch3,0;
-	stopnpctimer;
-	donpcevent "#JupeGateAccess::OnSpawn";
-	end;
-}
-
-juperos_02.gat,0,0,0	script	#JupeGateAccess3	139,{
-
-OnInit:
-	end;
-
-OnSwitchCDead:
-	mapannounce "juperos_02.gat","Have you come to see me? Fine! Find me first!",1;
-	set $@JupeSwitch3,1;
-	if ($@JupeSwitch1 == 1 && $@JupeSwitch2 == 1 && $@JupeSwitch3 == 1) goto JupeContC;
-	end;
-
-JupeContC:
-	initnpctimer;
-
-OnTimer3000:
-	mapannounce "juperos_02.gat","Vroom! Vroom!",1;
-		end;
-
-OnTimer6000:
-	mapannounce "juperos_02.gat","Attention, visitors.",1;
-		end;
-
-OnTimer9000:
-	mapannounce "juperos_02.gat","You are allowed to enter the next zone for a short period of time.",1;
-	mapannounce "juperos_02.gat","Please use the portal in the center of the map.",1;
-	enablenpc "JupeWarp2";
-	end;
-
-OnTimer600000:
-	mapannounce "juperos_02.gat","The portal has now closed.",1;
-	disablenpc "JupeWarp2";
-	set $@JupeSwitch1,0;
-	set $@JupeSwitch2,0;
-	set $@JupeSwitch3,0;
-	stopnpctimer;
-	donpcevent "#JupeGateAccess::OnSpawn";
-	end;
-}
-
-jupe_area2.gat,0,0,0	script	#JupeWarpControl	139,{
-
-OnInit:
-	disablenpc "jupwrp14";
-	disablenpc "jupwrp31";
-	disablenpc "jupwrp33";
-	disablenpc "jupwrp35";
-	disablenpc "jupwrp37";
-	end;
-}
-
-jupe_area2.gat,74,224,0	script	Lever#Lever1	111,{
-
-	mes "It looks like you can fit something";
-	mes "into the lever.";
-	if (countitem(7356) >= 1) goto JupeLever1;
-	close;
-
-JupeLever1:
+	mes "^3355FFIt's a lever";
+	mes "whose function";
+	mes "is not known to you.^000000";
+	if(getvariableofnpc('flag,"jupe_area1") != 12)
+		close;
 	next;
-	mes "Insert Crest Piece?";
-	next;
-	menu "Insert",JupeInsert1,"Cancel",-;
-	close;
-
-JupeInsert1:
-	enablenpc "jupwrp31";
-	initnpctimer;
-	close;
-	end;
-	OnTimer10000:
-		disablenpc "jupwrp31";
-		stopnpctimer;
-		end;
-}
-
-jupe_area2.gat,138,238,0	script	Lever#Lever2	111,{
-
-	mes "It looks like you can fit something";
-	mes "into the lever.";
-	if (countitem(7357) >= 1) goto JupeLever2;
-	close;
-
-JupeLever2:
-	next;
-	mes "Insert Crest Piece?";
-	next;
-	menu "Insert",JupeInsert2,"Cancel",-;
-	close;
-
-JupeInsert2:
-	enablenpc "jupwrp33";
-	initnpctimer;
-	close;
-	end;
-	OnTimer10000:
-		disablenpc "jupwrp33";
-		stopnpctimer;
-		end;
-}
-
-jupe_area2.gat,127,146,0	script	Lever#Lever3	111,{
-
-	mes "It looks like you can fit something";
-	mes "into the lever.";
-	if (countitem(7358) >= 1) goto JupeLever3;
-	close;
-
-JupeLever3:
-	next;
-	mes "Insert Crest Piece?";
-	next;
-	menu "Insert",JupeInsert3,"Cancel",-;
-	close;
-
-JupeInsert3:
-	enablenpc "jupwrp35";
-	initnpctimer;
-	close;
-	end;
-	OnTimer10000:
-		disablenpc "jupwrp35";
-		stopnpctimer;
-		end;
-}
-
-jupe_area2.gat,113,49,0	script	Lever#Lever4	111,{
-
-	mes "It looks like you can fit something";
-	mes "into the lever.";
-	if (countitem(7359) >= 1) goto JupeLever4;
-	close;
-
-JupeLever4:
-	next;
-	mes "Insert Crest Piece?";
-	next;
-	menu "Insert",JupeInsert4,"Cancel",-;
-	close;
-
-JupeInsert4:
-	enablenpc "jupwrp37";
-	initnpctimer;
-	close;
-	end;
-	OnTimer10000:
-		disablenpc "jupwrp37";
-		stopnpctimer;
-		end;
-}
-
-jupe_area2.gat,51,162,0	script	Lever#Lever5	111,{
-
-	mes "You see a switch on the lever.";
-	if (countitem(7356) >= 1 && countitem(7357) >= 1 && countitem(7358) >= 1 && countitem(7359) >= 1) goto JupeActivate1;
-	close;
-
-JupeActivate1:
-	next;
-	mes "Activate switch?";
-	next;
-	menu "Activate",JupeActivate2,"Cancel",-;
-	close;
-
-JupeActivate2:
-	enablenpc "jupwrp14";
-	initnpctimer;
-	close;
-	end;
-	OnTimer10000:
-		disablenpc "jupwrp14";
-		stopnpctimer;
-		end;
-}
-
-jupe_ele_r.gat,51,98,0	script	Lever#Lever6	111,{
-
-	if ($@JupeEleRoom == 1) goto JupeEleRoomEnd;
-	mes "You see a lever.";
-	if (countitem(7356) >= 1 && countitem(7357) >= 1 && countitem(7358) >= 1 && countitem(7359) >= 1) goto JupeCrestInsert;
-	close;
-
-JupeEleRoomEnd:
-	end;
-
-JupeCrestInsert:
-	next;
-	mes "Insert Crest Pieces?";
-	next;
-	menu "Insert",JupeEnterCore,"Cancel",-;
-	close;
-
-	JupeEnterCore:
-		set $@JupeEleRoom,1;
-		areamonster "jupe_ele_r.gat",42,82,57,97,"Dimik",1669,3,"Lever#Lever6::OnMobEleRoomDead";
-		areamonster "jupe_ele_r.gat",42,82,57,97,"Photon Cannon",1664,3,"Lever#Lever6::OnMobEleRoomDead";
-		areamonster "jupe_ele_r.gat",42,82,57,97,"Venatu",1675,2,"Lever#Lever6::OnMobEleRoomDead";
-
-
+	if(select("Pull.","Cance.")==1) {
+		hideonnpc;
+		hideoffnpc "juperoswarp5#jupe_area1";
+		misceffect 561,"juperoswarp5#jupe_area1";
+		soundeffect "jupe_warp.wav",0;
 		initnpctimer;
 		close;
-		end;
+	}
+	mes "[" +strcharinfo(0)+ "]";
+	mes "Pull this lever?";
+	mes "I don't even know";
+	mes "what will happen...";
+	close;
 
-OnTimer300000:
-	killmonsterall "jupe_ele_r.gat";
-	set $@JupeEleRoom,0;
-	set $@JupeEleRoomPass,0;
+OnTimer22000:
 	stopnpctimer;
-	areawarp "jupe_ele_r.gat",0,0,400,400,"juperos_02.gat",130,143;
-	end;
-
-OnMobEleRoomDead:
-	set $@JupeEleRoomPass,$@JupeEleRoomPass  + 1;
-	if ($@JupeEleRoomPass == 8) goto JupeEleRoomWarp;
-	end;
-
-JupeEleRoomWarp:
-	set $@JupeEleRoom,0;
-	set $@JupeEleRoomPass,0;
-	stopnpctimer;
-	areawarp "jupe_ele_r.gat",0,0,400,400,"jupe_ele.gat",42,45;
+	hideonnpc "juperoswarp5#jupe_area1";
+	hideoffnpc;
 	end;
 }
 
-jupe_ele.gat,42,56,0	script	Lever#Lever7	111,{
+jupe_area1.gat,83,221,0	script	juperoswarp1#jupe_area1	139,2,2{
 
-	if (JupeElevator == 1) goto JupeEleEnd;
-	mes "You see a switch on the lever.";
-	next;
-	mes "Activate switch?";
-	next;
-	menu "Activate",JupeActivate3,"Cancel",-;
-	close;
-
-JupeEleEnd:
+	set '@n,strcut(strnpcinfo(1),11);
+	switch('@n) {
+	case 1: warp "jupe_area1.gat",47,259; break;
+	case 2: warp "jupe_area1.gat",21,191; break;
+	case 3: warp "jupe_area1.gat",33,105; break;
+	case 4: warp "jupe_area1.gat",83,157; break;
+	}
+	if(getvariableofnpc('flag,"jupe_area1") == ('@n-1)*3)
+		donpcevent "jupe_area1::OnSummon"+('@n*2-1)+"";
 	end;
 
-JupeActivate3:
-	set $@JupeElevator,1;
-	areamonster "jupe_ele.gat",34,40,49,55,"Photon Cannon",1664,7,"Lever#Lever7::OnMobElevatorDead";
-	areamonster "jupe_ele.gat",34,40,49,55,"Archdam",1668,2,"Lever#Lever7::OnMobElevatorDead";
-	areamonster "jupe_ele.gat",34,40,49,55,"Dimik",1669,14,"Lever#Lever7::OnMobElevatorDead";
-	areamonster "jupe_ele.gat",34,40,49,55,"Venatu",1675,8,"Lever#Lever7::OnMobElevatorDead";
+OnInit:
+	hideonnpc;
+	end;
+}
+
+jupe_area1.gat,21,225,0	duplicate(juperoswarp1#jupe_area1)	juperoswarp2#jupe_area1	139,2,2
+jupe_area1.gat,33,137,0	duplicate(juperoswarp1#jupe_area1)	juperoswarp3#jupe_area1	139,2,2
+jupe_area1.gat,57,53,0	duplicate(juperoswarp1#jupe_area1)	juperoswarp4#jupe_area1	139,2,2
+
+jupe_area1.gat,117,157,0	script	juperoswarp5#jupe_area1	139,2,2,{
+
+	warp "jupe_gate.gat",28,29;
+	end;
+
+OnInit:
+	hideonnpc;
+	end;
+}
+
+
+//--------------------------------------------------------------
+// Juperos Area 2
+//--------------------------------------------------------------
+
+// Work in progress
+
+
+//--------------------------------------------------------------
+// Juperos Elevator
+//------------------------------------------------------------
+
+jupe_ele_r.gat,51,98,0	script	Switch#jupe_ele	844,{
+
+	cutin "5",2;
+	mes "^3355FFIt's some sort of";
+	mes "lever that's located";
+	mes "next to four empty slots.^000000";
+	next;
+	if(select("Pull the lever.","Leave it alone.")==2) {
+		mes "^3355FFWho knows what";
+		mes "this lever may do?";
+		mes "You'll never know unless";
+		mes "you have the courage to try.^000000";
+		close2;
+		cutin "5",255;
+		end;
+	}
+	mes "^3355FF*Snap Snap*^000000-";
+	next;
+	mes "^3355FFYou pull the lever,";
+	mes "but nothing happened.";
+	mes "You probably need to";
+	mes "insert the correct objects";
+	mes "into the slots in order";
+	mes "for the lever to operate.^000000";
+	if(countitem(7356) < 1 && countitem(7357) < 1 && countitem(7358) < 1 && countitem(7359) < 1) {
+		mes "^3355FFYou need to find";
+		mes "some kind of object";
+		mes "that you can fit into";
+		mes "each of these four slots...^000000";
+		close2;
+		cutin "5",255;
+		end;
+	}
+	next;
+	menu "Insert all of your Crest Pieces.",-;
+	if(countitem(7356) < 1 || countitem(7357) < 1 || countitem(7358) < 1 || countitem(7359) < 1) {
+		mes "^3355FFRight now, you don't";
+		mes "have enough Crest Pieces";
+		mes "to place into all four of these";
+		mes "slots. You'll need to find and^FFFFFF ^3355FF bring them all to make this work.^000000";
+		close2;
+		cutin "5",255;
+		end;
+	}
 	initnpctimer;
-	close;
+	hideonnpc;
+	hideoffnpc "Switch On#jupe_ele";
+	misceffect 72;
+	areamisceffect "jupe_ele_r.gat",0,0,100,160,563;
+	delitem 7356,1;
+	delitem 7357,1;
+	delitem 7358,1;
+	delitem 7359,1;
+	cutin "5-1",2;
+	mes "^3300FF*Snap!*^000000";
+	mes "^3300FFStrangely enough,";
+	mes "all four of the Crest";
+	mes "Pieces fit perfectly into";
+	mes "the slots and begin to";
+	mes "emit a strange light.^000000";
+	close2;
+	cutin "5",255;
 	end;
 
-OnTimer300000:
-	killmonsterall "jupe_ele.gat";
-	set $@JupeElePass,0;
-	set $@JupeElevator,0;
+OnTimer2000:
+	announce "My descendents...",9,0x66FF00;
+	sleep 3000;
+	announce "Do you want to know why this city was buried beneath the earth...?",9,0x66FF00;
+	sleep 4000;
+	announce "If so, follow my voice...",9,0x66FF00;
+	sleep 3000;
+	announce "I shall let you see for yourself what you desire to know...",9,0x66FF00;
+	sleep 7000;
+	announce "Overcome all the hallucinations.",9,0xFF9900;
+	sleep 3000;
+	announce "Open your eyes and see past all of the lies.",9,0xFF0000;
+	sleep 3000;
+	announce "I can only maintain this vision for you for 20 minutes.",9,0xFF0000;
+	sleep 1000;
+	set getvariableofnpc('mob,"Switch On#jupe_ele"),9;
+	monster "jupe_ele_r.gat",44,99,"Security Guard",1669,1,"Switch On#jupe_ele::OnKilled";
+	sleep 200;
+	monster "jupe_ele_r.gat",55,99,"Security Guard",1675,1,"Switch On#jupe_ele::OnKilled";
+	sleep 200;
+	monster "jupe_ele_r.gat",45,84,"Security Guard",1683,1,"Switch On#jupe_ele::OnKilled";
+	sleep 200;
+	monster "jupe_ele_r.gat",54,84,"Security Guard",1675,1,"Switch On#jupe_ele::OnKilled";
+	sleep 200;
+	monster "jupe_ele_r.gat",45,99,"Security Guard",1669,1,"Switch On#jupe_ele::OnKilled";
+	sleep 200;
+	monster "jupe_ele_r.gat",54,99,"Security Guard",1683,1,"Switch On#jupe_ele::OnKilled";
+	sleep 200;
+	monster "jupe_ele_r.gat",48,84,"Security Guard",1669,1,"Switch On#jupe_ele::OnKilled";
+	sleep 200;
+	monster "jupe_ele_r.gat",52,84,"Security Guard",1683,1,"Switch On#jupe_ele::OnKilled";
+	sleep 200;
+	monster "jupe_ele_r.gat",50,84,"Chief Guard",1684,1,"Switch On#jupe_ele::OnKilled";
+	announce "Look! And remember!",9,0xFF0000;
+	end;
+
+OnTimer144000:
 	stopnpctimer;
-	areawarp "jupe_ele.gat",0,0,400,400,"juperos_02.gat",130,143;
-	end;
-
-OnMobElevatorDead:
-	set $@JupeElePass,$@JupeElePass + 1;
-	if ($@JupeElePass == 31) goto JupeElevatorWarp;
-	end;
-
-JupeElevatorWarp:
-	set $@JupeElePass,0;
-	set $@JupeElevator,0;
-	areawarp "jupe_ele.gat",0,0,400,400,"jupe_core.gat",149,125;
+	announce "It is disappointing to see that you are too weak to even defeat a hallucination...",9,0x66FF00;
+	sleep 2000;
+	areawarp "jupe_ele_r.gat",0,0,100,160,"jupe_gate.gat",49,138;
+	killmonster "this","All";
+	hideonnpc "Switch On#jupe_ele";
+	hideoffnpc "Switch#jupe_ele";
 	end;
 }
 
-jupe_core.gat,150,17,0	script	Juperos Elevator#Elevator1	111,{
+jupe_ele_r.gat,51,98,0	script	Switch On#jupe_ele	844,{
 
-	mes "Return to the second floor?";
-	next;
-	menu "Return",JupLeaveCore,"Cancel",-;
+	mes "^3355FFIt seems like";
+	mes "someone else is";
+	mes "using this machine...^000000";
 	close;
 
-	JupLeaveCore:
-		warp "juperos_02.gat",130,143;
+OnInit:
+	hideonnpc;
+	end;
+
+OnKilled:
+	set 'mob,'mob-1;
+	if('mob == 0) {
+		stopnpctimer "Switch#jupe_ele";
+		sleep 5000;
+		announce "Those of you who have defeated the hallucination, step forward.",9,0x66FF00;
+		areasoundeffect "jupe_ele_r.gat",0,0,100,160,"earth_quake.wav",0;
+		sleep 4000;
+		disablenpc "juperoswarp4013";
+		areawarp "jupe_ele_r.gat",0,0,100,160,"jupe_ele.gat",42,47;
+		donpcevent "jupe_ele::OnSummon1";
+		initnpctimer "jupe_ele";
 		end;
+	}
+	end;
 }
 
-jupe_core.gat,150,286,0	script	Juperos Elevator#Elevator2	111,{
+jupe_ele.gat,0,0,0	script	jupe_ele	-1,{
 
-	mes "Return to the second floor?";
-	next;
-	menu "Return",JupLeaveCore,"Cancel",-;
-	close;
+OnSummon1:
+	sleep 2000;
+	announce "I admire your patience.",9,0xFF0000;
+	sleep 3000;
+	announce "Let's see if everything you have experienced",9,0xFF0000;
+	sleep 3000;
+	announce "were traps for intruders...",9,0xFF0000;
+	sleep 4000;
+	set 'mob,8;
+	monster "jupe_ele.gat",48,44,"Security Guard",1675,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",45,42,"Security Guard",1669,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",38,42,"Security Guard",1675,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",35,44,"Security Guard",1669,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",35,51,"Security Guard",1675,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",38,53,"Security Guard",1669,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",45,53,"Security Guard",1675,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",48,51,"Security Guard",1669,1,"jupe_ele::OnKilled";
+	end;
 
-	JupLeaveCore:
-		warp "juperos_02.gat",130,143;
-		end;
+OnSummon2:
+	sleep 2000;
+	announce "This city was not",9,0xFF0000;
+	sleep 3000;
+	announce "as magnificient as you thought.",9,0xFF0000;
+	sleep 3000;
+	announce "This is a place where all the fears of humans flourish.",9,0xFF0000;
+	sleep 3000;
+	announce "Yes. Nobody leaves alive!",9,0xFF0000;
+	sleep 1000;
+	set 'mob,8;
+	monster "jupe_ele.gat",48,44,"Security Guard",1683,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",45,42,"Security Guard",1669,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",38,42,"Security Guard",1683,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",35,44,"Security Guard",1669,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",35,51,"Security Guard",1683,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",38,53,"Security Guard",1669,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",45,53,"Security Guard",1683,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",48,51,"Security Guard",1669,1,"jupe_ele::OnKilled";
+	end;
+
+OnSummon3:
+	sleep 2000;
+	announce "What do you see?",9,0xFF0000;
+	sleep 3000;
+	announce "Are your eyes actually seeing something?",9,0xFF0000;
+	sleep 3000;
+	announce "Or do you just believe you are seeing?",9,0xFF0000;
+	sleep 4000;
+	set 'mob,8;
+	monster "jupe_ele.gat",48,44,"Security Guard",1675,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",45,42,"Security Guard",1669,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",38,42,"Security Guard",1683,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",35,44,"Security Guard",1675,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",35,51,"Security Guard",1669,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",38,53,"Security Guard",1683,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",45,53,"Security Guard",1675,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",48,51,"Security Guard",1669,1,"jupe_ele::OnKilled";
+	end;
+
+OnSummon4:
+	sleep 2000;
+	announce "Do not forget. That which limits you is nothing but yourself.",9,0xFF0000;
+	sleep 3000;
+	announce "Nothing is what you fear and you have nothing to fear...",9,0xFF0000;
+	sleep 3000;
+	set 'mob,8;
+	monster "jupe_ele.gat",48,44,"Security Guard",1684,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",45,42,"Security Guard",1669,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",38,42,"Security Guard",1684,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",35,44,"Security Guard",1669,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",35,51,"Security Guard",1675,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",38,53,"Security Guard",1669,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",45,53,"Security Guard",1683,1,"jupe_ele::OnKilled";
+	monster "jupe_ele.gat",48,51,"Security Guard",1675,1,"jupe_ele::OnKilled";
+	end;
+
+OnClear:
+	sleep 2000;
+	announce "I am not going to tell you anything.",9,0x66FF00;
+	sleep 3000;
+	announce "My city, my people are now but a memory.",9,0x66FF00;
+	sleep 3000;
+	announce "Everything was a mistake. We were not supposed to be here.",9,0x66FF00;
+	sleep 3000;
+	announce "Is this a place where humans are forbidden?",9,0x66FF00;
+	sleep 1000;
+	announce "You want to know, don't you? Go ahead... Go deeper.",9,0x66FF00;
+	sleep 10000;
+	announce "It's not real anyway. All of it's safe, it can't hurt you...",9,0x66FF00;
+	enablenpc "juperoswarp4013";
+	end;
+
+OnKilled:
+	set 'mob,'mob-1;
+	if('mob == 0) {
+		sleep 2000;
+		switch('flag) {
+		case 0: donpcevent "jupe_ele::OnSummon2"; break;
+		case 1: donpcevent "jupe_ele::OnSummon3"; break;
+		case 2: donpcevent "jupe_ele::OnSummon4"; break;
+		case 3: donpcevent "jupe_ele::OnClear"; break;
+		}
+		set 'flag,'flag+1;
+	}
+	end;
+
+OnTimer144000:
+	stopnpctimer;
+	announce "It is disappointing to see that you are too weak to even defeat a hallucination...",9,0x66FF00;
+	sleep 2000;
+	areawarp "jupe_ele.gat",0,0,100,124,"jupe_gate.gat",49,138;
+	killmonster "this","All";
+	set 'flag,0;
+	hideonnpc "Switch On#jupe_ele";
+	hideoffnpc "Switch#jupe_ele";
+	end;
 }
