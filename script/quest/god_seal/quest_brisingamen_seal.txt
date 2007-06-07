@@ -3743,7 +3743,7 @@ que_god02.gat,55,64,4	script	Soldier#2_brising	105,1,1,{
 	close;
 }
 
-que_god02.gat,1,1,1	script	#brisinsold1	-1,{
+que_god02.gat,1,1,1	script	#brisinsold1	139,{
 
 OnSold1On:
 	enablenpc "Soldier#1_brising";
@@ -3754,7 +3754,7 @@ OnSold1Off:
 	end;
 }
 
-que_god02.gat,1,1,1	script	#brisinsold2	-1,{
+que_god02.gat,1,1,1	script	#brisinsold2	139,{
 
 OnInit:
 	disablenpc "Soldier#2_brising";
@@ -3792,14 +3792,14 @@ OnTimer550500:
 
 }
 	
-que_god02.gat,1,1,1	script	#Warp_brising	-1,{
+que_god02.gat,1,1,1	script	#Warp_brising	139,{
 
 OnWarp:
 
 	end;
 }
 
-que_god02.gat,1,1,1	script	#brisinsummon	-1,{
+que_god02.gat,1,1,1	script	#brisinsummon	139,{
 
 OnInit:
 	disablenpc "#doppelganger1";

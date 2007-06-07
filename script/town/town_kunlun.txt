@@ -1591,7 +1591,7 @@ gon_in.gat,165,16,4	script	Man in hangover#gnbs	748,{
 	close;
 }
 
-gon_dun01.gat,148,156,0	script	start01#gnbs	-1,{
+gon_dun01.gat,148,156,0	script	start01#gnbs	139,{
 	OnInit:
 		sleep 10000;
 	OnCommandOn:
@@ -1622,7 +1622,7 @@ gon_dun01.gat,201,25,0	script	trace1-1#gnbs	139,1,1,{
 		end;
 }
 
-gon_dun01.gat,2,1,0	script	timer1-1	-1,{
+gon_dun01.gat,2,1,0	script	timer1-1	139,{
 	OnInit:
 		initnpctimer;
 		stopnpctimer;
@@ -1689,7 +1689,7 @@ gon_dun01.gat,190,160,0	script	trace1-2#gnbs	139,1,1,{
 		end;
 }
 
-gon_dun01.gat,3,1,0	script	timer1-2	-1,{
+gon_dun01.gat,3,1,0	script	timer1-2	139,{
 	OnInit:
 		initnpctimer;
 		stopnpctimer;
@@ -1756,7 +1756,7 @@ gon_dun01.gat,163,53,0	script	trace1-3#gnbs	139,1,1,{
 		end;
 }
 
-gon_dun01.gat,4,1,0	script	timer1-3	-1,{
+gon_dun01.gat,4,1,0	script	timer1-3	139,{
 	OnInit:
 		initnpctimer;
 		stopnpctimer;
@@ -1823,7 +1823,7 @@ gon_dun01.gat,133,183,0	script	trace1-4#gnbs	139,1,1,{
 		end;
 }
 
-gon_dun01.gat,5,1,0	script	timer1-4	-1,{
+gon_dun01.gat,5,1,0	script	timer1-4	139,{
 	OnInit:
 		initnpctimer;
 		stopnpctimer;
@@ -1890,7 +1890,7 @@ gon_dun01.gat,139,257,0	script	trace1-5#gnbs	139,1,1,{
 		end;
 }
 
-gon_dun01.gat,6,1,0	script	timer1-5	-1,{
+gon_dun01.gat,6,1,0	script	timer1-5	139,{
 	OnInit:
 		initnpctimer;
 		stopnpctimer;
@@ -1934,7 +1934,7 @@ gon_dun01.gat,140,257,0	script	#getitem1-5	111,2,1,{
 		end;
 }
 
-gon_dun02.gat,1,1,0	script	start02#gnbs	-1,{
+gon_dun02.gat,1,1,0	script	start02#gnbs	139,{
 	OnInit:
 		sleep 10000;
 	OnCommandOn:
@@ -1965,7 +1965,7 @@ gon_dun02.gat,65,168,0	script	trace2-1#gnbs	139,1,1,{
 		end;
 }
 
-gon_dun02.gat,2,1,0	script	timer2-1	-1,{
+gon_dun02.gat,2,1,0	script	timer2-1	139,{
 	OnInit:
 		initnpctimer;
 		stopnpctimer;
@@ -2032,7 +2032,7 @@ gon_dun02.gat,265,200,0	script	trace2-2#gnbs	139,1,1,{
 		end;
 }
 
-gon_dun02.gat,3,1,0	script	timer2-2	-1,{
+gon_dun02.gat,3,1,0	script	timer2-2	139,{
 	OnInit:
 		initnpctimer;
 		stopnpctimer;
@@ -2099,7 +2099,7 @@ gon_dun02.gat,247,129,0	script	trace2-3#gnbs	139,1,1,{
 		end;
 }
 
-gon_dun02.gat,4,1,0	script	timer2-3	-1,{
+gon_dun02.gat,4,1,0	script	timer2-3	139,{
 	OnInit:
 		initnpctimer;
 		stopnpctimer;
@@ -2166,7 +2166,7 @@ gon_dun02.gat,149,74,0	script	trace2-4#gnbs	139,1,1,{
 		end;
 }
 
-gon_dun02.gat,5,1,0	script	timer2-4	-1,{
+gon_dun02.gat,5,1,0	script	timer2-4	139,{
 	OnInit:
 		initnpctimer;
 		stopnpctimer;
@@ -2233,7 +2233,7 @@ gon_dun02.gat,23,105,0	script	trace2-5#gnbs	139,1,1,{
 		end;
 }
 
-gon_dun02.gat,6,1,0	script	timer2-5	-1,{
+gon_dun02.gat,6,1,0	script	timer2-5	139,{
 	OnInit:
 		initnpctimer;
 		stopnpctimer;
@@ -2300,7 +2300,7 @@ gon_dun02.gat,249,39,0	script	trace2-6#gnbs	139,1,1,{
 		end;
 }
 
-gon_dun02.gat,7,1,0	script	timer2-6	-1,{
+gon_dun02.gat,7,1,0	script	timer2-6	139,{
 	OnInit:
 		initnpctimer;
 		stopnpctimer;
@@ -2344,7 +2344,7 @@ gon_dun02.gat,249,40,0	script	#getitem2-6	111,2,1,{
 		end;
 }
 
-gon_dun03.gat,1,1,0	script	start03#gnbs	-1,{
+gon_dun03.gat,1,1,0	script	start03#gnbs	139,{
 	OnInit:
 		sleep 10000;
 	OnCommandOn:
@@ -2375,7 +2375,7 @@ gon_dun03.gat,11,75,0	script	trace3-1#gnbs	139,1,1,{
 		end;
 }
 
-gon_dun03.gat,2,1,0	script	timer3-1	-1,{
+gon_dun03.gat,2,1,0	script	timer3-1	139,{
 	OnInit:
 		initnpctimer;
 		stopnpctimer;
@@ -2445,7 +2445,7 @@ gon_dun03.gat,199,103,0	script	trace3-2#gnbs	139,1,1,{
 		end;
 }
 
-gon_dun03.gat,3,1,0	script	timer3-2	-1,{
+gon_dun03.gat,3,1,0	script	timer3-2	139,{
 	OnInit:
 		initnpctimer;
 		stopnpctimer;
@@ -2515,7 +2515,7 @@ gon_dun03.gat,14,162,0	script	trace3-3#gnbs	139,1,1,{
 		end;
 }
 
-gon_dun03.gat,4,1,0	script	timer3-3	-1,{
+gon_dun03.gat,4,1,0	script	timer3-3	139,{
 	OnInit:
 		initnpctimer;
 		stopnpctimer;
@@ -2585,7 +2585,7 @@ gon_dun03.gat,155,263,0	script	trace3-4#gnbs	139,1,1,{
 		end;
 }
 
-gon_dun03.gat,5,1,0	script	timer3-4	-1,{
+gon_dun03.gat,5,1,0	script	timer3-4	139,{
 	OnInit:
 		initnpctimer;
 		stopnpctimer;
@@ -2655,7 +2655,7 @@ gon_dun03.gat,169,90,0	script	trace3-5#gnbs	139,1,1,{
 		end;
 }
 
-gon_dun03.gat,6,1,0	script	timer3-5	-1,{
+gon_dun03.gat,6,1,0	script	timer3-5	139,{
 	OnInit:
 		initnpctimer;
 		stopnpctimer;
@@ -2725,7 +2725,7 @@ gon_dun03.gat,162,40,0	script	trace3-6#gnbs	139,1,1,{
 		end;
 }
 
-gon_dun03.gat,7,1,0	script	timer3-6	-1,{
+gon_dun03.gat,7,1,0	script	timer3-6	139,{
 	OnInit:
 		initnpctimer;
 		stopnpctimer;
@@ -2795,7 +2795,7 @@ gon_dun03.gat,68,212,0	script	trace3-7#gnbs	139,1,1,{
 		end;
 }
 
-gon_dun03.gat,6,1,0	script	timer3-7	-1,{
+gon_dun03.gat,6,1,0	script	timer3-7	139,{
 	OnInit:
 		initnpctimer;
 		stopnpctimer;

@@ -117,6 +117,7 @@ npc: script/mob/mob_town.txt
 // Quest Scripts
 //--------------------------------------------------------------
 
+npc: script/quest/quest_airship.txt
 npc: script/quest/quest_bard.txt
 npc: script/quest/quest_cooking.txt
 npc: script/quest/quest_eye_of_hellion.txt
@@ -125,8 +126,6 @@ npc: script/quest/quest_juice_maker.txt
 npc: script/quest/quest_juperos.txt
 npc: script/quest/quest_kiel_hyre.txt
 npc: script/quest/quest_lv4_weapon.txt
-// Old Blue Box quest is present in iRO, but not in kRO
-// npc: script/quest/quest_old_blue_box.txt
 npc: script/quest/quest_pet_taming.txt
 npc: script/quest/quest_quiz_revolution.txt
 npc: script/quest/quest_skill.txt
@@ -148,6 +147,9 @@ npc: script/quest/job_tutorial/quest_merchant_tutorial.txt
 npc: script/quest/job_tutorial/quest_swordsman_tutorial.txt
 npc: script/quest/job_tutorial/quest_thief_tutorial.txt
 
+
+// Old Blue Box Quest - Exclusive to iRO
+// npc: script/quest/quest_old_blue_box.txt
 
 //--------------------------------------------------------------
 // Town Scripts

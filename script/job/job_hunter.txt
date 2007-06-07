@@ -772,7 +772,7 @@ OnStart:
 // Test Room
 //--------------------------------------------------------------
 
-job_hunte.gat,1,1,1	script	Ev_HntRm	-1,{
+job_hunte.gat,1,1,1	script	Ev_HntRm	139,{
 
 OnStart:
 	disablenpc "SwitchHnt";
@@ -806,7 +806,7 @@ OnMyMobDead1:
 // Spawns to the Decoy Monsters
 //--------------------------------------------------------------
 
-job_hunte.gat,1,1,1	script	Ev_HntRm2	-1,{
+job_hunte.gat,1,1,1	script	Ev_HntRm2	139,{
 
 OnStart:
 	// Decoy Monsters
@@ -853,7 +853,7 @@ OnMyMobDead2:
 // Test Timer
 //--------------------------------------------------------------
 
-job_hunte.gat,1,1,1	script	TimerHnt	-1,{
+job_hunte.gat,1,1,1	script	TimerHnt	139,{
 
 
 OnTimer500:

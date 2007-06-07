@@ -22,7 +22,7 @@
 // Generating treasure box NPCs
 //-------------------------------------------------------------------------
 
--	script	#TresureBox	-1,{
+-	script	#TresureBox	139,{
 	function MakeTBox {
 		setcastledata getarg(0),2,getcastledata(getarg(0),2)+getcastledata(getarg(0),4);
 		setcastledata getarg(0),3,getcastledata(getarg(0),3)+getcastledata(getarg(0),5);

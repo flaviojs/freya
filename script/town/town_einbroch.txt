@@ -3663,7 +3663,7 @@ s_Giveclothes:
 // Einbroch Pollution Quest
 //--------------------------------------------------------------
 
-einbroch.gat,0,0,0	script	Pollution#einbroch	-1,{
+einbroch.gat,0,0,0	script	Pollution#einbroch	139,{
 
 OnInit:
 	initnpctimer;

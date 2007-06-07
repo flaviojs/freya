@@ -31,7 +31,7 @@
 // Configuration
 //--------------------------------------------------------------
 
-prontera.gat,1,1,1	script	TheSignConfig	-1,{
+prontera.gat,1,1,1	script	TheSignConfig	139,{
 
 OnInit:
 // This string will be used to show which timezone your server
@@ -4035,7 +4035,7 @@ s_Cleanup:
 
 }
 
-cmd_in01.gat,1,1,1	script	SignDanceCleanUp	-1,{
+cmd_in01.gat,1,1,1	script	SignDanceCleanUp	139,{
 
 OnPlayerLogout:
 	initnpctimer;
@@ -8860,7 +8860,7 @@ L_Greet:
 
 }
 
-que_sign01.gat,1,1,1	script	#signserin	-1,{
+que_sign01.gat,1,1,1	script	#signserin	139,{
 
 OnInit:
 	disablenpc "Serin#serin";
@@ -8903,7 +8903,7 @@ OnTimer600000:
 	end;
 }
 
-que_sign01.gat,1,1,1	script	#signserin2	-1,{
+que_sign01.gat,1,1,1	script	#signserin2	139,{
 
 OnInit:
 	disablenpc "Serin#serin2";

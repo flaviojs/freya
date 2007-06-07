@@ -39,7 +39,7 @@
 // Configuration Variables:
 //--------------------------------------------------------------
 
--	script	marriage_init	-1,{
+-	script	marriage_init	139,{
 
 OnInit:
 	set $@wed_allow, 0;	// If 1, allows same sex marriages.

@@ -583,7 +583,7 @@ OnStart:
 // Test #2, Part 1: Kill the Zombies
 //--------------------------------------------------------------
 
-job_prist.gat,1,1,1	script	PrstTest2_1	-1,{
+job_prist.gat,1,1,1	script	PrstTest2_1	139,{
 
 	set $@PrstRm, 1;		// Used to determine what areawarp and areaannounce to use
 	enablenpc "Zombie1_Trig";
@@ -681,7 +681,7 @@ OnTimer30000:
 // Test #2, Part 2: Resist Temptation
 //--------------------------------------------------------------
 
-job_prist.gat,1,1,0	script	PrstTest2_2	-1,{
+job_prist.gat,1,1,0	script	PrstTest2_2	139,{
 
 OnStart:
 	enablenpc "Devi_Trig";		//enables these npc's just in case they were disabled by a previous tester
@@ -1084,7 +1084,7 @@ OnTimer500:
 // Timer
 //--------------------------------------------------------------
 
-job_prist.gat,1,1,0	script	TimerPrst	-1,{
+job_prist.gat,1,1,0	script	TimerPrst	139,{
 
 OnTimer3000:
 	areaannounce "job_prist.gat",8,34,39,109,"[Father Peter]: You will have 5 minutes to pass all 3 trials starting now.",8;

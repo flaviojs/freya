@@ -1114,7 +1114,7 @@ OnStart:
 }
 
 // Job Change Monsters
-in_moc_16.gat,1,1,0	script	SinTest2	-1,{
+in_moc_16.gat,1,1,0	script	SinTest2	139,{
 
 OnStart:
 	set $@SinMob, 6;
@@ -1344,7 +1344,7 @@ OnTouch:
 
 
 // SinTest2_2
-in_moc_16.gat,1,1,1	script	SinTest2_2	-1,{
+in_moc_16.gat,1,1,1	script	SinTest2_2	139,{
 
 OnStart:
 	monster "in_moc_16.gat", 81, 77, "MUMMY", 1041,1, "SinTest2_2::OnMobDead";
@@ -1401,7 +1401,7 @@ in_moc_16.gat,87,48,2	script	sinWarp2	45,2,2,{
 // Timer for Sin Test 2
 //--------------------------------------------------------------
 
-in_moc_16.gat,1,1,0	script	TimerSin	-1,{
+in_moc_16.gat,1,1,0	script	TimerSin	139,{
 
 OnTimer3000:
 	areaannounce "in_moc_16.gat", $@sinRmX1, $@sinRmY1, $@sinRmX2, $@sinRmY2, "I'll announce how much time you'll have left on a minute by minute basis.",8;

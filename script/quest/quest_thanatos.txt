@@ -2638,7 +2638,7 @@ Carving6:
 
 
 // Thanatos Summon Section
-thana_boss.gat,0,0,0	script	#Death1	-1,{
+thana_boss.gat,0,0,0	script	#Death1	139,{
 end;
 
 OnWaveDead1:
@@ -2652,7 +2652,7 @@ OnWaveDead1:
 
 
 // Thanatos Death
-thana_boss.gat,0,0,0	script	#Death2	-1,{
+thana_boss.gat,0,0,0	script	#Death2	139,{
 end;
 
 OnThanaDead:

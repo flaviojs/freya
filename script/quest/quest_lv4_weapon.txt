@@ -25,7 +25,7 @@
 // Initialize the basic materials for easier reading/conversion 
 //---------------------------------------------------------------
 
--	script	lv4_weapon_init	-1,{
+-	script	lv4_weapon_init	139,{
 
 OnInit:
 	set $@LV4_Citrine, 7295; // 7295,Citrine

@@ -212,7 +212,7 @@ izlude_in.gat,65,171,5	script	Swordsman#01	85,{
 // Test Hidden NPC
 //--------------------------------------------------------------
 
-izlude_in.gat,65,171,5	script	Swordsman#02	-1,{
+izlude_in.gat,65,171,5	script	Swordsman#02	139,{
 
 OnStart:
 	mes "[Swordsman]";
@@ -333,7 +333,7 @@ L_Option3:
 // Test Timer
 //--------------------------------------------------------------
 
-job_sword1.gat,1,1,0	script	TimerSwrdmn	-1,{
+job_sword1.gat,1,1,0	script	TimerSwrdmn	139,{
 
 	OnTimer4000:
 		areaannounce "job_sword1.gat",0,0,400,400,"[Test Hall Staff]: Your 7 minutes starts now!",0;

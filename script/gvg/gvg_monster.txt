@@ -443,7 +443,7 @@ function	script	GuardianCall	{
 // We change castle data when a Guardian is destroyed.
 //-------------------------------------------------------------------------
 
--	script	#GuardianKilled	-1,{
+-	script	#GuardianKilled	139,{
 	// Aldebaran
 	On_L1_10: setcastledata "aldeg_cas01.gat",10,0; end;
 	On_L1_11: setcastledata "aldeg_cas01.gat",11,0; end;

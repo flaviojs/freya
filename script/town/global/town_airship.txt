@@ -40,7 +40,7 @@
 // Route 1 (Juno -> Hugel -> Einbroch -> Lighthalzen -> Juno)
 //--------------------------------------------------------------
 
-airplane.gat,0,0,0	script	airplane	-1,{
+airplane.gat,0,0,0	script	airplane	139,{
 
 OnInit:
 	initnpctimer;
@@ -176,7 +176,7 @@ OnTouch:
 // Route 2 (Rachel -> Veins -> Izlude -> Juno)
 //--------------------------------------------------------------
 
-airplane_01.gat,0,0,0	script	airplane_01	-1,{
+airplane_01.gat,0,0,0	script	airplane_01	139,{
 
 OnInit:
 	initnpctimer;

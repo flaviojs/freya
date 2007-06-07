@@ -1264,7 +1264,7 @@ niflheim.gat,0,0,0,0	monster	Quve	1508,20,300000,150000,0
 niflheim.gat,0,0,0,0	monster	Lude	1509,20,300000,150000,0
 
 // Random Invasion
-niflheim.gat,1,1,0	script	NifInvasion	-1,{
+niflheim.gat,1,1,0	script	NifInvasion	139,{
 
 OnInit:
 L_Loop:

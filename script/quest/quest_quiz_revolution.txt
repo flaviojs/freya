@@ -1931,7 +1931,7 @@ OnTouch:
 
 }
 
-quiz_test.gat,82,384,4	script	Pit::ham_quiz#1-1	-1,0,0,{
+quiz_test.gat,82,384,4	script	Pit::ham_quiz#1-1	139,0,0,{
 
 OnTouch:
 	announce ""+strcharinfo(0)+" Start running from the beginning. You fell in a pit.",bc_blue|bc_map;
@@ -1939,175 +1939,175 @@ OnTouch:
 	end;
 }
 
-quiz_test.gat,83,384,4	script	Pit::ham_quiz#1-2	-1,0,0,{
+quiz_test.gat,83,384,4	script	Pit::ham_quiz#1-2	139,0,0,{
 OnTouch:
 	announce ""+strcharinfo(0)+" Start running from the beginning. You fell in a pit.",bc_blue|bc_map;
 	warp "quiz_test.gat",387,387;
 	end;
 }
 
-quiz_test.gat,82,385,4	script	Pit::ham_quiz#1-3	-1,0,0,{
+quiz_test.gat,82,385,4	script	Pit::ham_quiz#1-3	139,0,0,{
 OnTouch:
 	announce ""+strcharinfo(0)+" Start running from the beginning. You fell in a pit.",bc_blue|bc_map;
 	warp "quiz_test.gat",387,387;
 	end;
 }
 
-quiz_test.gat,83,385,4	script	Pit::ham_quiz#1-4	-1,0,0,{
+quiz_test.gat,83,385,4	script	Pit::ham_quiz#1-4	139,0,0,{
 OnTouch:
 	announce ""+strcharinfo(0)+" Start running from the beginning. You fell in a pit.",bc_blue|bc_map;
 	warp "quiz_test.gat",387,387;
 	end;
 }
 
-quiz_test.gat,38,388,4	script	Pit::ham_quiz#2-1	-1,0,1,{
+quiz_test.gat,38,388,4	script	Pit::ham_quiz#2-1	139,0,1,{
 OnTouch:
 	announce ""+strcharinfo(0)+" Start running from the beginning. You fell in a pit.",bc_blue|bc_map;
 	warp "quiz_test.gat",387,387;
 	end;
 }
 
-quiz_test.gat,39,388,4	script	Pit::ham_quiz#2-2	-1,0,1,{
+quiz_test.gat,39,388,4	script	Pit::ham_quiz#2-2	139,0,1,{
 OnTouch:
 	announce ""+strcharinfo(0)+" Start running from the beginning. You fell in a pit.",bc_blue|bc_map;
 	warp "quiz_test.gat",387,387;
 	end;
 }
 
-quiz_test.gat,38,386,4	script	Pit::ham_quiz#2-3	-1,0,0,{
+quiz_test.gat,38,386,4	script	Pit::ham_quiz#2-3	139,0,0,{
 OnTouch:
 	announce ""+strcharinfo(0)+" Start running from the beginning. You fell in a pit.",bc_blue|bc_map;
 	warp "quiz_test.gat",387,387;
 	end;
 }
 
-quiz_test.gat,39,386,4	script	Pit::ham_quiz#2-4	-1,0,0,{
+quiz_test.gat,39,386,4	script	Pit::ham_quiz#2-4	139,0,0,{
 OnTouch:
 	announce ""+strcharinfo(0)+" Start running from the beginning. You fell in a pit.",bc_blue|bc_map;
 	warp "quiz_test.gat",387,387;
 	end;
 }
 
-quiz_test.gat,11,158,4	script	Pit::ham_quiz#3-1	-1,1,0,{
+quiz_test.gat,11,158,4	script	Pit::ham_quiz#3-1	139,1,0,{
 OnTouch:
 	announce ""+strcharinfo(0)+" Start running from the beginning. You fell in a pit.",bc_blue|bc_map;
 	warp "quiz_test.gat",387,387;
 	end;
 }
 
-quiz_test.gat,11,159,4	script	Pit::ham_quiz#3-2	-1,1,0,{
+quiz_test.gat,11,159,4	script	Pit::ham_quiz#3-2	139,1,0,{
 OnTouch:
 	announce ""+strcharinfo(0)+" Start running from the beginning. You fell in a pit.",bc_blue|bc_map;
 	warp "quiz_test.gat",387,387;
 	end;
 }
 
-quiz_test.gat,13,159,4	script	Pit::ham_quiz#3-3	-1,0,0,{
+quiz_test.gat,13,159,4	script	Pit::ham_quiz#3-3	139,0,0,{
 OnTouch:
 	announce ""+strcharinfo(0)+" Start running from the beginning. You fell in a pit.",bc_blue|bc_map;
 	warp "quiz_test.gat",387,387;
 	end;
 }
 
-quiz_test.gat,13,158,4	script	Pit::ham_quiz#3-4	-1,0,0,{
+quiz_test.gat,13,158,4	script	Pit::ham_quiz#3-4	139,0,0,{
 OnTouch:
 	announce ""+strcharinfo(0)+" Start running from the beginning. You fell in a pit.",bc_blue|bc_map;
 	warp "quiz_test.gat",387,387;
 	end;
 }
 
-quiz_test.gat,11,30,4	script	Pit::ham_quiz#4-1	-1,3,0,{
+quiz_test.gat,11,30,4	script	Pit::ham_quiz#4-1	139,3,0,{
 OnTouch:
 	announce ""+strcharinfo(0)+" Start running from the beginning. You fell in a pit.",bc_blue|bc_map;
 	warp "quiz_test.gat",387,387;
 	end;
 }
 
-quiz_test.gat,11,31,4	script	Pit::ham_quiz#4-2	-1,3,0,{
+quiz_test.gat,11,31,4	script	Pit::ham_quiz#4-2	139,3,0,{
 OnTouch:
 	announce ""+strcharinfo(0)+" Start running from the beginning. You fell in a pit.",bc_blue|bc_map;
 	warp "quiz_test.gat",387,387;
 	end;
 }
 
-quiz_test.gat,15,30,4	script	Pit::ham_quiz#4-3	-1,0,0,{
+quiz_test.gat,15,30,4	script	Pit::ham_quiz#4-3	139,0,0,{
 OnTouch:
 	announce ""+strcharinfo(0)+" Start running from the beginning. You fell in a pit.",bc_blue|bc_map;
 	warp "quiz_test.gat",387,387;
 	end;
 }
 
-quiz_test.gat,15,30,4	script	Pit::ham_quiz#4-4	-1,0,0,{
+quiz_test.gat,15,30,4	script	Pit::ham_quiz#4-4	139,0,0,{
 OnTouch:
 	announce ""+strcharinfo(0)+" Start running from the beginning. You fell in a pit.",bc_blue|bc_map;
 	warp "quiz_test.gat",387,387;
 	end;
 }
 
-quiz_test.gat,70,12,4	script	Pit::ham_quiz#5-1	-1,0,1,{
+quiz_test.gat,70,12,4	script	Pit::ham_quiz#5-1	139,0,1,{
 OnTouch:
 	announce ""+strcharinfo(0)+" Start running from the beginning. You fell in a pit.",bc_blue|bc_map;
 	warp "quiz_test.gat",387,387;
 	end;
 }
 
-quiz_test.gat,71,12,4	script	Pit::ham_quiz#5-2	-1,0,1,{
+quiz_test.gat,71,12,4	script	Pit::ham_quiz#5-2	139,0,1,{
 OnTouch:
 	announce ""+strcharinfo(0)+" Start running from the beginning. You fell in a pit.",bc_blue|bc_map;
 	warp "quiz_test.gat",387,387;
 	end;
 }
 
-quiz_test.gat,70,10,4	script	Pit::ham_quiz#5-3	-1,0,0,{
+quiz_test.gat,70,10,4	script	Pit::ham_quiz#5-3	139,0,0,{
 OnTouch:
 	announce ""+strcharinfo(0)+" Start running from the beginning. You fell in a pit.",bc_blue|bc_map;
 	warp "quiz_test.gat",387,387;
 	end;
 }
 
-quiz_test.gat,71,10,4	script	Pit::ham_quiz#5-4	-1,0,0,{
+quiz_test.gat,71,10,4	script	Pit::ham_quiz#5-4	139,0,0,{
 OnTouch:
 	announce ""+strcharinfo(0)+" Start running from the beginning. You fell in a pit.",bc_blue|bc_map;
 	warp "quiz_test.gat",387,387;
 	end;
 }
 
-quiz_test.gat,186,11,4	script	Pit::ham_quiz#6-1	-1,2,3,{
+quiz_test.gat,186,11,4	script	Pit::ham_quiz#6-1	139,2,3,{
 OnTouch:
 	announce ""+strcharinfo(0)+" Start running from the beginning. You fell in a pit.",bc_blue|bc_map;
 	warp "quiz_test.gat",387,387;
 	end;
 }
 
-quiz_test.gat,189,11,4	script	Pit::ham_quiz#6-2	-1,0,3,{
+quiz_test.gat,189,11,4	script	Pit::ham_quiz#6-2	139,0,3,{
 OnTouch:
 	announce ""+strcharinfo(0)+" Start running from the beginning. You fell in a pit.",bc_blue|bc_map;
 	warp "quiz_test.gat",387,387;
 	end;
 }
 
-quiz_test.gat,387,43,4	script	Pit::ham_quiz#7-1	-1,1,0,{
+quiz_test.gat,387,43,4	script	Pit::ham_quiz#7-1	139,1,0,{
 OnTouch:
 	announce ""+strcharinfo(0)+" Start running from the beginning. You fell in a pit.",bc_blue|bc_map;
 	warp "quiz_test.gat",387,387;
 	end;
 }
 
-quiz_test.gat,387,42,4	script	Pit::ham_quiz#7-2	-1,1,0,{
+quiz_test.gat,387,42,4	script	Pit::ham_quiz#7-2	139,1,0,{
 OnTouch:
 	announce ""+strcharinfo(0)+" Start running from the beginning. You fell in a pit.",bc_blue|bc_map;
 	warp "quiz_test.gat",387,387;
 	end;
 }
 
-quiz_test.gat,389,43,4	script	Pit::ham_quiz#7-3	-1,0,0,{
+quiz_test.gat,389,43,4	script	Pit::ham_quiz#7-3	139,0,0,{
 OnTouch:
 	announce ""+strcharinfo(0)+" Start running from the beginning. You fell in a pit.",bc_blue|bc_map;
 	warp "quiz_test.gat",387,387;
 	end;
 }
 
-quiz_test.gat,389,42,4	script	Pit::ham_quiz#7-4	-1,0,0,{
+quiz_test.gat,389,42,4	script	Pit::ham_quiz#7-4	139,0,0,{
 OnTouch:
 	announce ""+strcharinfo(0)+" Start running from the beginning. You fell in a pit.",bc_blue|bc_map;
 	warp "quiz_test.gat",387,387;

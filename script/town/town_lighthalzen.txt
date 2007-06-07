@@ -1877,7 +1877,7 @@ s_Staff:
 
 }
 
-lhz_in01.gat,19,129,0	script	LhzHiddenTrg1::LhzTrig	-1,1,1{
+lhz_in01.gat,19,129,0	script	LhzHiddenTrg1::LhzTrig	139,1,1{
 
 OnTouch:
 	if (equippeditem(2241)==1 && equippeditem(2243)==1) goto s_Staff;
@@ -1902,7 +1902,7 @@ s_Staff:
 
 }
 
-lhz_in01.gat,23,137,0	duplicate(LhzTrig)	LhzHiddenTrg2	-1,1,1
+lhz_in01.gat,23,137,0	duplicate(LhzTrig)	LhzHiddenTrg2	139,1,1
 
 lhz_in01.gat,24,131,2	duplicate(LhzTrig)	Rekenber Guard#02	867
 
@@ -2814,7 +2814,7 @@ lighthalzen.gat,77,203,3	script	Victor Perfecto	869,{
 // Mobster Security Mini-Quest
 //--------------------------------------------------------------
 
-lighthalzen.gat,1,1,7	script	sneakAddSuber	-1,{
+lighthalzen.gat,1,1,7	script	sneakAddSuber	139,{
 OnInit:
 	set $@sneakchance, 3; // chance of successful sneak(0 = never, 10 = always)
 	set $@sneakguard, 0; // numbers of people who sneaked past guard
@@ -2843,7 +2843,7 @@ OnMinute55:
 	end;
 }
 
-lighthalzen.gat,1,1,7	script	AlertChk	-1,{
+lighthalzen.gat,1,1,7	script	AlertChk	139,{
 OnInit:
 	initnpctimer;
 	end;

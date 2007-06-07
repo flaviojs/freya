@@ -973,7 +973,7 @@ OnStart:
 //--------------------------------------------------------------
 // 1st Level
 
-job_knt.gat,1,1,1	script	KntLvl1	-1,{
+job_knt.gat,1,1,1	script	KntLvl1	139,{
 
 	set $@KntRm, 1;
 	set $@KntMob,12;
@@ -1006,7 +1006,7 @@ OnMyMobDead:
 //--------------------------------------------------------------
 // 2nd Level
 
-job_knt.gat,1,1,1	script	KntLvl2	-1,{
+job_knt.gat,1,1,1	script	KntLvl2	139,{
 
 	set $@KntRm, 2;
 	set $@KntMob,12;
@@ -1040,7 +1040,7 @@ OnMyMobDead:
 //--------------------------------------------------------------
 // 3rd Level
 
-job_knt.gat,1,1,1	script	KntLvl3	-1,{
+job_knt.gat,1,1,1	script	KntLvl3	139,{
 
 	set $@KntRm, 3;
 	set $@KntMob,7;
@@ -1070,7 +1070,7 @@ OnMyMobDead:
 //--------------------------------------------------------------
 // Timer
 
-job_knt.gat,1,1,1	script	TimerKnt	-1,{
+job_knt.gat,1,1,1	script	TimerKnt	139,{
 
 OnTimer2000:
 	set $@KntTime$, "You have 3 minutes...";
@@ -1663,7 +1663,7 @@ L_Test:
 //--------------------------------------------------------------
 // Test
 
-job_knt.gat,1,1,1	script	ev_Test	-1,{
+job_knt.gat,1,1,1	script	ev_Test	139,{
 
 	killmonster "job_knt.gat","ev_Test::OnMyMobDead";
 	monster "job_knt.gat",141,57,"Poring",1002,1,"ev_Test::OnMyMobDead";

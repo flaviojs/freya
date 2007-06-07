@@ -3626,7 +3626,7 @@ OnTouch:
 	end;
 }
 
-que_job01.gat,1,1,1	script	#maobartimer1	-1,{
+que_job01.gat,1,1,1	script	#maobartimer1	139,{
 
 OnEnter:
 	initnpctimer;
@@ -3761,7 +3761,7 @@ OnTouch:
 	end;
 }
 
-que_job01.gat,1,2,1	script	#maobartimer2	-1,{
+que_job01.gat,1,2,1	script	#maobartimer2	139,{
 
 OnEnter:
 	initnpctimer;
@@ -7300,7 +7300,7 @@ OnEnter:
 	end;
 }
 
-yuno_in04.gat,1,1,1	script	#maobooktimer	-1,{
+yuno_in04.gat,1,1,1	script	#maobooktimer	139,{
 
 OnEnter:
 	initnpctimer;
@@ -10887,7 +10887,7 @@ OnEnter:
 	end;
 }
 
-morocc.gat,1,1,1	script	#mao_timer	-1,{
+morocc.gat,1,1,1	script	#mao_timer	139,{
 
 OnStart:
 	initnpctimer;
@@ -10903,7 +10903,7 @@ OnStop:
 	end;
 }
 
-morocc.gat,1,2,1	script	#mao_manager	-1,{
+morocc.gat,1,2,1	script	#mao_manager	139,{
 
 OnStart:
 	initnpctimer;

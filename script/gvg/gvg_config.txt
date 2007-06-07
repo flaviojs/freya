@@ -26,7 +26,7 @@
 // It will check if WoE begins 60s after the start of the MAP SERVER or not.
 //-------------------------------------------------------------------------
 
--	script	#AgitConfig	-1,{
+-	script	#AgitConfig	139,{
 	end;
 OnInit:
 	if(GvGWeekDay == 0)

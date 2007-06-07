@@ -1783,7 +1783,7 @@ monk_test.gat,165,179,4	script	monk_mob3_warp#01	45,1,1,{
 	end;
 }
 
-monk_test.gat,1,1,1	script	monk_mob1	-1,{
+monk_test.gat,1,1,1	script	monk_mob1	139,{
 OnMobDead:
 		end;
 }
@@ -1846,7 +1846,7 @@ monk_test.gat,165,278,4	script	monk_mob2_warp	45,1,1,{
 	end;
 }
 
-monk_test.gat,1,1,1	script	monk_mob2	-1,{
+monk_test.gat,1,1,1	script	monk_mob2	139,{
 OnMobDead:
 		end;
 }
@@ -1908,7 +1908,7 @@ monk_test.gat,269,279,4	script	monk_mob3_warp#02	45,1,1,{
 	warp "monk_test.gat",317,142;
 	end;
 }
-monk_test.gat,1,1,1	script	monk_mob3	-1,{
+monk_test.gat,1,1,1	script	monk_mob3	139,{
 OnMobDead:
 		end;
 }

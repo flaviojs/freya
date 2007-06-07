@@ -117,7 +117,7 @@ jupe_ele.gat,41,33,0		warp	juperoswarp4013		4,4,jupe_core.gat,150,286
 // Juperos Level 2
 //--------------------------------------------------------------
 
-juperos_02.gat,0,0,0	script	#juperosgateswitch	-1,{
+juperos_02.gat,0,0,0	script	#juperosgateswitch	139,{
 
 OnInit:
 	hideonnpc "juperoswarp4005";
@@ -182,7 +182,7 @@ OnTimer602000:
 // Juperos Area 1
 //--------------------------------------------------------------
 
-jupe_area1.gat,0,0,0	script	jupe_area1	-1,{
+jupe_area1.gat,0,0,0	script	jupe_area1	139,{
 
 OnSummon1:
 	set 'flag,1;
@@ -682,7 +682,7 @@ OnKilled:
 	end;
 }
 
-jupe_ele.gat,0,0,0	script	jupe_ele	-1,{
+jupe_ele.gat,0,0,0	script	jupe_ele	139,{
 
 OnSummon1:
 	sleep 2000;

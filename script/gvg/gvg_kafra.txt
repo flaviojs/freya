@@ -56,7 +56,7 @@ function	script	GvKafraMenu	{
 //==========================================
 // Aldebaran
 //------------------------------------------
--	script	AgitKafra_L0	-1,{
+-	script	AgitKafra_L0	139,{
 	callfunc "GvKafraMenu";
 	set '@code,17;
 	set '@price,200;
@@ -73,7 +73,7 @@ aldeg_cas05.gat,31,190,0	duplicate(AgitKafra_L0)	Kafra::AgitKafra_L5	117
 //==========================================
 // Geffen
 //------------------------------------------
--	script	AgitKafra_B0	-1,{
+-	script	AgitKafra_B0	139,{
 	callfunc "GvKafraMenu";
 	set '@code,15;
 	set '@price,200;
@@ -90,7 +90,7 @@ gefg_cas05.gat,61,52,5		duplicate(AgitKafra_B0)	Kafra::AgitKafra_B5	117
 //==========================================
 // Payon
 //------------------------------------------
--	script	AgitKafra_C0	-1,{
+-	script	AgitKafra_C0	139,{
 	callfunc "GvKafraMenu";
 	set '@code,16;
 	set '@price,200;
@@ -107,7 +107,7 @@ payg_cas05.gat,276,227,1	duplicate(AgitKafra_C0)	Kafra::AgitKafra_C5	117
 //==========================================
 // Prontera
 //------------------------------------------
--	script	AgitKafra_V0	-1,{
+-	script	AgitKafra_V0	139,{
 	callfunc "GvKafraMenu";
 	set '@code,14;
 	set '@price,200;

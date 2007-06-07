@@ -1049,7 +1049,7 @@ OnTimer240000:
     end;
 }
 
-job_cru.gat,1,1,1	script	Zombie Guide	-1,{
+job_cru.gat,1,1,1	script	Zombie Guide	139,{
 
 OnKilled:
     set $MonstersKilled,$MonstersKilled+1;

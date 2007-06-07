@@ -9,10 +9,11 @@
 //--------------------------------------------------------------
 // Script Title: Inn Employee NPCs	Author: Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v1.1
+// Revision History: v1.2
 //--------------------------------------------------------------
 //	1.0 Redid script based on the leaked Aegis version, iRO screenshots, and Muad_Dib's ASB script [Tsuyuki]
 //	1.1 Added official dialogue (iRO)/corrected save/warp coords for Hugel Inn [Tsuyuki]
+//	1.2 Updated Einbroch Hotel Employee with compatibility for the Airship Quest [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: 100% Official Information - Date: 02/12/2007
 // Inn NPCs that may have some custom parts: Al De Baran, Hugel, Rachel
@@ -105,7 +106,7 @@ aldeba_in.gat,92,58,2	script	Inn Employee::Moira	53,{
 }
 
 //--------------------------------------------------------------
-// Einbroch Hotel Employee -> Quest-Related Part Commented
+// Einbroch Hotel Employee -> Related to Airship Quest
 //--------------------------------------------------------------
 
 ein_in01.gat,206,224,3	script	Hotel Employee	855,{
@@ -118,24 +119,18 @@ ein_in01.gat,206,224,3	script	Hotel Employee	855,{
 	mes "standards in cleanliness,";
 	mes "service and convenience~";
 	next;
-
-// Part of some unfinished Einbroch Quest?
-// ->
-//	if (EinQuest != xx) goto EinCont;
-//		mes "[Hotel Employee]";
-//		mes "Are you looking";
-//		mes "for Mr. Defru Ark?";
-//		mes "Let me see...";
-//		next;
-//		mes "[Hotel Employee]";
-//		mes "Here we are...";
-//		mes "He's staying";
-//		mes "in Room 201.";
-//		next;
-//		goto EinCont;
-//EinCont:
-// <-
-
+	if(kain_ticket == 5) {
+		mes "[Hotel Employee]";
+		mes "Are you looking";
+		mes "for Mr. Defru Ark?";
+		mes "Let me see...";
+		next;
+		mes "[Hotel Employee]";
+		mes "Here we are...";
+		mes "He's staying";
+		mes "in Room 201.";
+		close;
+	}
 	menu "Save",Ein_Inn1,"Take Rest - 5,000 zeny",Ein_Inn2,"Cancel",Ein_Inn3;
 
 Ein_Inn1:

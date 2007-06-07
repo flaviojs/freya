@@ -1453,7 +1453,7 @@ OnMax:
 	end;
 }
 
-ama_test.gat,1,1,0	script	#MomotaroTimer	-1,{
+ama_test.gat,1,1,0	script	#MomotaroTimer	139,{
 
 OnStartTimer:
 	initnpctimer;
@@ -1727,7 +1727,7 @@ OnStart:
 
 }
 
-ama_test.gat,0,1,0	script	mobcount#momotaro	-1,{
+ama_test.gat,0,1,0	script	mobcount#momotaro	139,{
 
 OnMobDead:
 	if ($MomoDokebi >= 8) goto L_mobcount;
@@ -1764,7 +1764,7 @@ L_mobcount:
 	end;
 }
 
-ama_test.gat,50,101,0	script	mobcount2#momotaro	-1,{
+ama_test.gat,50,101,0	script	mobcount2#momotaro	139,{
 
 OnMobDead:
 	if ($MomoDokebi2 == 2) goto Lfin;

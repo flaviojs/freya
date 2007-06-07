@@ -1304,7 +1304,7 @@ OnTimerQuit:
 	end;
 }
 
-ice_dun03.gat,1,1,1	script	Icedun03monster	-1,{
+ice_dun03.gat,1,1,1	script	Icedun03monster	139,{
 
 OnKtullDead:
 	set KTULLQ,0;

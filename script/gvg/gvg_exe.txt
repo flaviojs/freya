@@ -52,7 +52,7 @@ function	script	AgitGiveUp	{
 //   Because it is duplicate function, Map names and NPC names are acquired with specifical functions.
 //-------------------------------------------------------------------------
 
--	script	AgitExe	-1,{
+-	script	AgitExe	139,{
 OnAgitInit:
 	set '@dummy,getmapxy('@map$,'@dummy,'@dummy,1);		// Only '@map$ is used.
 	if('@map$ == "-")					// the 'duplicate' has no origin.
