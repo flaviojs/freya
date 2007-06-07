@@ -404,9 +404,6 @@ hu_in01.gat,111,386,4	script	Chris	86,{
 	close;
 }
 
-// Since this guy has a cutin.. I'm guess he does more
-// than whats scripted so far? This is all I could get
-// out of him in iRO [Tsuyuki]
 hu_in01.gat,256,40,3	script	Herico	897,{
 
 	cutin "heri1",2;
@@ -491,7 +488,7 @@ hu_in01.gat,23,311,4	script	Party Supplies Shop	898,{
 
 // Hugel -> Odin Shrine - Boatman #1
 // Most of the dialogue is official
-hugel.gat,209,109,1	script	Boatman#01	709,{
+hugel.gat,209,109,2	script	Boatman#01	709,{
 
 	mes "[Boatman]";
 	mes "Ah, hello~";
@@ -502,16 +499,17 @@ hugel.gat,209,109,1	script	Boatman#01	709,{
 	next;
 	menu "No, thanks.",L_NoThanks,"Sure!",-;
 
-		// Unofficial dialogue ->
 		if (Zeny < 800) goto L_NoZeny;
 		set Zeny,Zeny - 800;
 
 		mes "[Boatman]";
-		mes "All aboard!";
+		mes "Alright then,";
+		mes "climb aboard!";
+		mes "We'll arrive near";
+		mes "the Odin Shrine soon~";
 		close2;
 		warp "odin_tem01.gat",100,145;
 		end;
-		// <- End of unofficial dialogue
 
 L_NoZeny:
 	mes "[Boatman]";
@@ -533,40 +531,43 @@ L_NoThanks:
 }
 
 // Odin Shrine -> Hugel - Boatman #2
-// Note: All dialogue is unofficial for the second NPC
-// Coords/function is correct however [Tsuyuki]
-odin_tem01.gat,93,146,3	script	Boatman#02	709,{
+odin_tem01.gat,93,146,4	script	Boatman#02	709,{
 
 	mes "[Boatman]";
-	mes "Would you like to go back to Hugel?";
+	mes "Ah, would you";
+	mes "like to sail back to";
+	mes "Hugel now, or did you";
+	mes "want to explore a bit more?";
 	next;
-	menu "Sure!",-,"No, thanks.",L_No;
+	menu "I still need to look around...",L_No,"Yes, take me back to Hugel.",-;
 
 		mes "[Boatman]";
-		mes "All aboard!";
+		mes "Alright then,";
+		mes "climb aboard!";
+		mes "We'll arrive near";
+		mes "Hugel very soon~";
 		close2;
-		warp "hugel.gat",205,108;
+		warp "hugel.gat",206,109;
 		end;
 
 L_No:
 	mes "[Boatman]";
-	mes "Ah, alright.";
-	mes "If you change your";
-	mes "mind, then you can";
-	mes "come back and just";
-	mes "let me know.";
+	mes "Well, alright.";
+	mes "Just let me know";
+	mes "when you're ready to";
+	mes "leave this dangerous place.";
 	close;
 }
 
 
 //--------------------------------------------------------------
-// Fish Cake Soup Mini-Quest (Partially Complete) [Tsuyuki]
+// Fish Cake Soup Mini-Quest [Tsuyuki]
 //--------------------------------------------------------------
 
 // Used variables:
 // - fcsquest -> Main quest variable.
 // - @i -> Temp variable for random chance.
-// - fcsversion -> Splitter between Neha, Layoma, Maewan, and Erjan.
+// - fcsversion -> Splitter between Neha, Layoma, Maewan, and Erjan clients.
 
 // Cellette Lavit
 hu_in01.gat,15,372,3	script	Cellette Lavit	74,{
