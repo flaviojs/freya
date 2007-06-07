@@ -1029,7 +1029,7 @@ izlude.gat,124,218,0	script	Novice WoE Event Monument	111,{
 	mes "never be forgotten. For the honor^FFFFFF ^333333 of the greatest Novice Guild ever!^000000";
 	next;
 	mes "=======[Monument]=======";
-	mes "^333333Forever Young (WoE)"
+	mes "^333333Forever Young (WoE)";
 	mes "Toddlers";
 	mes "Starlight Fan Club";
 	mes "Ruin Novice WoE Group";
