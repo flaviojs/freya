@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 // Script Title: Izlude Town NPCs	Author: kobra_k88
 //--------------------------------------------------------------
-// Revision History: v1.9
+// Revision History: v2.0
 //--------------------------------------------------------------
 //	1.0 First version [kobra_k88]
 //	1.1 Fixed 2 zeny bugs/checks [Lupus]
@@ -22,6 +22,7 @@
 //	1.7 Removed Duplicates [Silent]
 //	1.8 Split quest to quests/quests_izlude.txt [Evera]
 //	1.9 Merged in the Izlude -> Alberta sailor script [Tsuyuki]
+//	2.0 Added Novice WoE Event Monument, converted from Aegis [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: N/A
 //--------------------------------------------------------------
@@ -1011,4 +1012,34 @@ M_Menu:
 		mes "Yeah, alright.";
 		mes "See you later~";
 		close;
+}
+
+
+//--------------------------------------------------------------
+// Novice WoE Event Monument - [Tsuyuki]
+//--------------------------------------------------------------
+
+izlude.gat,124,218,0	script	Novice WoE Event Monument	111,{
+
+	mes "=======[Monument]=======";
+	mes "^333333I hereby leave this";
+	mes "momument so that the";
+	mes "intense battle between";
+	mes "these cutesy Novices shall";
+	mes "never be forgotten. For the honor^FFFFFF ^333333 of the greatest Novice Guild ever!^000000";
+	next;
+	mes "=======[Monument]=======";
+	mes "^333333Forever Young (WoE)"
+	mes "Toddlers";
+	mes "Starlight Fan Club";
+	mes "Ruin Novice WoE Group";
+	mes "C&C Fan Club^000000";
+	next;
+	mes "=======[Monument]=======";
+	mes "^333333Novice Killers";
+	mes "Nostalgia~";
+	mes "Water Dragon";
+	mes "So~ You WoE?";
+	mes "LeOng You the best!^000000";
+	close;
 }
