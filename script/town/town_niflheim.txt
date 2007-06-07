@@ -153,6 +153,7 @@ L_end:
 }
 
 niflheim.gat,350,258,5	script	Cursed Soul	802,{
+
 	killmonster "niflheim.gat","OnNFMob";
 	mes "[Ashe Bruce]";
 	mes "I feel a strong curse on youaaaahhhhh";
@@ -231,6 +232,7 @@ L_back:
 	mes "I shall pray that you live to returnahhhh....";
 	close;
 }
+
 
 //--------------------------------------------------------------
 // Piano Quest
