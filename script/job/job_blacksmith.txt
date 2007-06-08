@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 // Script Title: Blacksmith Job Change Quest	Author: A Lot of People
 //--------------------------------------------------------------
-// Revision History: v2.7
+// Revision History: v2.9
 //--------------------------------------------------------------
 //	1.0 First version [EREMES THE CANIVALIZER]
 //	1.1 Translated into English [yoshiki]
@@ -29,6 +29,8 @@
 //	2.5 Removed duplicates [Silent]
 //	2.6 Merged Jfunc, changed job numbers to constants [Lupus]
 //	2.7 Updated (Moved to Einbroch) [keVn]
+//	2.8 Updated Bismarc [Tsuyuki]
+//	2.9 Fixed an item requirement, Morning Star -> Ring Pommel Saber [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: N/A
 //--------------------------------------------------------------
@@ -639,7 +641,7 @@ L_Test2:
 		mes "^5533FF8 Iron Ores";
 		mes "20 Green Herbs";
 		mes "2 Animal Skin^000000";
-		mes "and ^5533FF1 Morning Star^000000 from the stores.";
+		mes "and ^5533FF1 Ring Pommel Saber^000000 from the stores.";
 		next;
 		mes "[Geshupenschte]";
 		mes "Hey! We're not being cheap! It's a test!";
@@ -649,7 +651,7 @@ L_Test2:
 		mes "^5533FF8 Iron Ores";
 		mes "20 Green Herbs";
 		mes "2 Animal Skin^000000";
-		mes "and ^5533FF1 Morning Star^000000 from the stores.";
+		mes "and ^5533FF1 Ring Pommel Saber^000000 from the stores.";
 		next;
 	L_finalword:
 		mes "[Geshupenschte]";
@@ -803,7 +805,7 @@ L_CheckTest2:
 			goto R_item4;
 
 	L_2e:
-		if (countitem(1002) < 8 || countitem(511) < 20 || countitem(919) < 2 || countitem(1513) < 1) goto sL_NtEnuf5;
+		if (countitem(1002) < 8 || countitem(511) < 20 || countitem(919) < 2 || countitem(1122) < 1) goto sL_NtEnuf5;
 		mes "[Geshupenschte]";
 		mes "Didn't I ask for 40 ores?";
 		next;
@@ -813,23 +815,23 @@ L_CheckTest2:
 		delitem 1002,8;
 		delitem 511,20;
 		delitem 919,2;
-		delitem 1513,1;
+		delitem 1122,1;
 		callsub sF_Make;
-		mes "Take this to Bismarck in Comodo and bring me the receipt.";
-		getitem 1513,1;
+		mes "Take this to Bismarc in Hugel and bring me the receipt.";
+		getitem 1122,1;
 		next;
 		mes "[Geshupenschte]";
 		mes "WHAT!? NOTHING LOOKS DIFFERENT!?";
 		mes "Look carefully at the tips of the spikes!!";
 		mes "The green herbs' antidote for poisons have been mixed in!";
-		mes "ANTI POISON Geshupenschte MORNING STAR MK II!!!!!";
+		mes "ANTI POISON Geshupenschte RING POMMEL SABER MK II!!!!!";
 		next;
 		mes "[Geshupenschte]";
 		mes "Don't you get it!? When you're poisoned, you stab yourself with it!";
 		mes "The wound.....probably will get bigger! But the poison will be gone!";
 		next;
 		mes "[Geshupenschte]";
-		mes "Well, take this to Bismarck of Comodo!";
+		mes "Okay, now take this to ^8E6B23Bismarc^000000 in Hugel. Simply deliver this and bring back the receipt.";
 		close;
 
 		sL_NtEnuf5:
@@ -885,8 +887,8 @@ L_Test3:
 		mes "Tilpitz hangs out at 5 o'clock of Payon";
 		close;
 	L_3e:
-		if (countitem(1513) < 1) goto L_LostItem;
-		mes "Bismarck is usually at 12 o'clock area of Comodo.";
+		if (countitem(1122) < 1) goto L_LostItem;
+		mes "In Hugel, at the 1 o'clock direction from the town center, you will find ^8E6B23Bismarc^000000 near the airship. And don't forget the receipt.";
 		close;
 
 	L_LostItem:
@@ -1195,66 +1197,101 @@ L_Start:
 		close;
 }
 
-comodo.gat,158,342,4	script	Bismarck	118,{
-	if (BSMITH_Q == 3) goto L_Start;
+hugel.gat,168,183,1	script	Bismarc#BLS	118,{
 
-	mes "[Bismarck]";
-	mes "......Ugh?....";
-	mes ".....When's that delivery coming......";
-	next;
-	mes "[Bismarck]";
-	mes "....the.....p...poison...... >_>....";
-	mes "Ack.....";
-	next;
-	mes "[Bismarck]";
-	mes "....Looks like... I'm....screwed.";
-	close;
-
-L_Start:
-	if (BSMITH_Q2 != 5) goto L_Wrong;
-	if (countitem(1073) == 1) goto L_Done;
-	if (countitem(1513) < 1) goto L_NoItem;
-	mes "[Bismarck]";
-	mes "Ugh.........finally...........";
-	mes "Pant pant..........give it to me~";
-	delitem 1513,1;
-	set BSMITH_Q3, 1;
-	next;
-	mes "[Bismarck]";
-	mes "Ugh....";
-	mes "The green herb is in it........right?";
-	next;
-	mes "[Bismarck]";
-	mes "I........can't move.........help me up";
-	mes "....grunt.....";
-	next;
-	mes "- STAB! -";
-	next;
-	mes "[Bismarck]";
-	mes "AAAAAAAAAAACCCCCCCCCKKKKKK!!!";
-	next;
-	mes "[Bismarck]";
-	mes "whew, that works pretty well..";
-	next;
-	getitem 1073,1;
-	mes "[Bismarck]";
-	mes "Cough.... Here's the receipt..... thank you for the delivery! I guess I get to live longer......";
-	close;
-
-	L_NoItem:
-		mes "[Bismarck]";
-		mes "ARE YOU TRYING TO TOY WITH ME!!?? How.... ~cough~... could....~ung~.... you....~ack~.....";
-		emotion 23;
+	if (BSMITH_Q == 3 && countitem(1122) > 0) {
+		mes "[Bismarc]";
+		mes "Sweet God...";
+		mes "Have you sent";
+		mes "an angel...?";
+		mes "Is that the Ring Pommel Saber";
+		mes "I ordered? It's my only hope...";
+		next;
+		mes "[Bismarc]";
+		mes "^666666*Huuuk*^000000 This is what I ordered, right? I needed one especially";
+		mes "made to stop this poison...";
+		next;
+		menu "Whoops, this is my own Ring Pommel Saber.",L_LABEL1,"I'm sure this is the one.",L_LABEL2;
+		L_LABEL1:
+			mes "[Bismarc]";
+			mes "N-Nooo...";
+			mes "Hurry...!";
+			mes "I need that";
+			mes "sword for its";
+			mes "an...ti...d-dote!";
+			next;
+			mes "^3355FFIt looks like";
+			mes "he's slowly dying...!";
+			mes "You'd better hurry.^000000";
+			close;
+		L_LABEL2:
+			mes "[Bismarc]";
+			mes "^666666*Ghklk*^000000";
+			mes "Give it...!";
+			mes "Pleeeease!";
+			next;
+		set BSMITH_Q3,1;
+		delitem 1122,1;
+		mes "^3355FFBismarc stabs";
+		mes "himself, repeatedly,";
+		mes "with the Ring Pommel Saber";
+		mes "that has been imbued with";
+		mes "the power of Green Herbs.^000000";
+		next;
+		mes "[Bismarc]";
+		mes "^666666*Ghyklk*^000000";
+		mes "*Gasp gasp*";
+		next;
+		mes "[Bismarc]";
+		mes "Please...";
+		mes "Help me up.";
+		mes "The poison is";
+		mes "still coarsing";
+		mes "through my body...";
+		next;
+		mes "[Bismarc]";
+		mes "OwwwWWWW!!";
+		mes "IT'S BURNING!";
+		next;
+		mes "[Bismarc]";
+		mes "*Gasp Gasp*";
+		mes "*Whew* Okay,";
+		mes "I can feel the";
+		mes "antidote working now.";
+		mes "Just what I needed.";
+		next;
+		getitem 1073,1;
+		mes "[Bismarc]";
+		mes "Here is";
+		mes "your receipt.";
+		mes "T-take it...!";
+		mes "It's yours!";
+		mapannounce "hugel.gat","Thanks, " + strcharinfo(0) + ", for the delivery. You saved my life...",8;
 		close;
-	L_Wrong:
-		mes "[Bismarck]";
-		mes "I NEED AN ANTIDOTE DAMMIT!! Not this stuff ~ack~........";
-		emotion 23;
+	} else if (countitem(1073) || Basejob == Job_Blacksmith) {
+		mes "[Bismarc]";
+		mes "Thank you.";
+		mes "You saved";
+		mes "my life...";
 		close;
-	L_Done:
-		mes "[Bismarck]";
-		mes "Whew, thank you.";
+	} else {
+		mes "[Bismarc]";
+		mes "^666666*Ghyklk*^000000";
+		mes "^666666*Huk Hukk*^000000";
+		mes "When will my";
+		mes "o-order arrive...?";
+		next;
+		mes "[Bismarc]";
+		mes "The poison in";
+		mes "my body... the pain...";
+		mes "excruciating... L-lord...";
+		next;
+		mes "[Bismarc]";
+		mes "When is the";
+		mes "antidote gonna";
+		mes "get here?!";
 		close;
+	}
 }
 
 
