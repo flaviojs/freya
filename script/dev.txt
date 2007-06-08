@@ -47,6 +47,8 @@
 
 - All RussianRO Moscovia Town NPCs/Quests
 
+- 2nd Class Skill Quests (Partially complete) [Aurora's Current: Temporary]
+
 - Soul Linker Job Change Quest [Aurora's Current: Temporary]
 - Star Gladiator (Taekwon Master) Job Change Quest [Aurora's Current: Temporary]
 
