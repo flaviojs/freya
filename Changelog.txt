@@ -14,6 +14,7 @@
 Date	Added
 
 2007/06/07
+	* Added: Freya's effect list documentation file [Tsuyuki]
 	* Updated: Finished the Hugel Fish Cake Soup Quest, based on iRO Aegis 10.4 information [Tsuyuki]
 	* Updated: Cooking Quest to Aegis iRO 10.3 standards, by L0ne_W0lf [Tsuyuki]
 	* Merged: First Class Tutorial Quests into one file [Tsuyuki]

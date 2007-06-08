@@ -103,6 +103,7 @@
 - There is no LICENCE_JA file in Aurora, instead there is just License.txt.
 - The 'Readme' changelog is stored in ./doc as 'Readme.txt' instead of in the main folder.
 - This documentation file, './doc/aurora_diff.txt' does not exist in jAthena.
+- The '.doc/effect_list.txt' documentation file does not exist in jAthena.
 - The './doc/script_conv_notes.txt' does not exist in jAthena.
 - The Changelog.txt file in the main folder does not exist in jAthena, they use the 'Readme' file as their Changelog.
 - Aurora's 'vc07_make.bat' and 'vc07_clean.bat' scripts do not exist in jAthena.
