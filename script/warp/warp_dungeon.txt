@@ -744,6 +744,7 @@ mag_dun02.gat,47,28,0	warp	mag02-01	1,1,mag_dun01.gat,242,239
 // Moscovia Dungeon Warps (Deep Wood)
 //--------------------------------------------------------------
 
+mosk_fild02.gat,190,257,0	warp	moscovia008	1,1,mosk_dun01.gat,189,45
 mosk_dun01.gat,189,42,0	warp	moscovia009	1,1,mosk_fild02.gat,190,254
 mosk_dun01.gat,200,273,0	warp	moscovia010	1,1,mosk_dun02.gat,164,31
 mosk_dun02.gat,167,28,0	warp	moscovia011	1,1,mosk_dun01.gat,200,270
