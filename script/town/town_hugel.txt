@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 // Script Title: Hugel Town NPCs	Author: Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v2.4
+// Revision History: v2.5
 //--------------------------------------------------------------
 //	1.0 Added redone script with new/missing NPCs and ripped iRO dialogue [Tsuyuki]
 //	1.1 Fixed a couple bugs [Tsuyuki]
@@ -26,9 +26,10 @@
 //	2.2 Added the Biological Weapon Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
 //	2.3 Updated script formatting [Tsuyuki]
 //	2.4 Small fix to the Abyss Lake warper [Tsuyuki]
+//	2.5 Added the Odin's Temple Excavation Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Quests are largely incomplete, but
-// NPCs exist. * Official-certified *
+// NPCs exist. * Aegis-certified *
 //--------------------------------------------------------------
 
 
@@ -185,23 +186,6 @@ hu_in01.gat,310,380,5	script	Girl	891,{
 	close;
 }
 
-hu_in01.gat,111,386,4	script	Chris	86,{
-
-	mes "[Chris]";
-	mes "You know, the people don't";
-	mes "fight harmful monsters, they";
-	mes "just protect themselves by";
-	mes "equipping armor. That's";
-	mes "just the way they are.";
-	next;
-	mes "[Chris]";
-	mes "If you want to buy";
-	mes "some nicer armors,";
-	mes "then I suggest buying";
-	mes "some in a bigger city.";
-	close;
-}
-
 hu_in01.gat,256,40,3	script	Herico	897,{
 
 	cutin "heri1",2;
@@ -277,84 +261,6 @@ hu_in01.gat,23,311,4	script	Party Supplies Shop	898,{
 		mes "[Shopkeeper]";
 		mes "Thank you, please come again.";
 		close;
-}
-
-
-//--------------------------------------------------------------
-// Hugel -> Odin Shrine Transporter - Boatman
-//--------------------------------------------------------------
-
-// Hugel -> Odin Shrine - Boatman #1
-// Most of the dialogue is official
-hugel.gat,209,109,2	script	Boatman#01	709,{
-
-	mes "[Boatman]";
-	mes "Ah, hello~";
-	mes "Would you like to sail";
-	mes "to the Odin Shrine? The";
-	mes "fare for 1 passenger is";
-	mes "800 zeny. Shall we board?";
-	next;
-	menu "No, thanks.",L_NoThanks,"Sure!",-;
-
-		if (Zeny < 800) goto L_NoZeny;
-		set Zeny,Zeny - 800;
-
-		mes "[Boatman]";
-		mes "Alright then,";
-		mes "climb aboard!";
-		mes "We'll arrive near";
-		mes "the Odin Shrine soon~";
-		close2;
-		warp "odin_tem01.gat",100,145;
-		end;
-
-L_NoZeny:
-	mes "[Boatman]";
-	mes "Hm? You don't have enough";
-	mes "money to pay the fare. Well,";
-	mes "just come back when you do";
-	mes "have the zeny, and then I'll";
-	mes "take you to the Odin Shrine.";
-	close;
-
-L_NoThanks:
-	mes "[Boatman]";
-	mes "Ah, alright.";
-	mes "If you change your";
-	mes "mind, then you can";
-	mes "come back and just";
-	mes "let me know.";
-	close;
-}
-
-// Odin Shrine -> Hugel - Boatman #2
-odin_tem01.gat,93,146,4	script	Boatman#02	709,{
-
-	mes "[Boatman]";
-	mes "Ah, would you";
-	mes "like to sail back to";
-	mes "Hugel now, or did you";
-	mes "want to explore a bit more?";
-	next;
-	menu "I still need to look around...",L_No,"Yes, take me back to Hugel.",-;
-
-		mes "[Boatman]";
-		mes "Alright then,";
-		mes "climb aboard!";
-		mes "We'll arrive near";
-		mes "Hugel very soon~";
-		close2;
-		warp "hugel.gat",206,109;
-		end;
-
-L_No:
-	mes "[Boatman]";
-	mes "Well, alright.";
-	mes "Just let me know";
-	mes "when you're ready to";
-	mes "leave this dangerous place.";
-	close;
 }
 
 
@@ -4624,21 +4530,2630 @@ hugel.gat,196,164,3	script	El Schatt#hg	50,{
 
 
 //--------------------------------------------------------------
-// Odin Excavation Quest - Incomplete ->
+// Odin's Temple Excavation Quest
 //--------------------------------------------------------------
 
-hugel.gat,91,152,3	script	Sign	837,{
+hugel.gat,91,152,1	script	Sign	 837,{
 
-	mes "**Recruitment Notice**";
-	mes "            "; // Line break
-	mes "We are now hiring recruits";
-	mes "for the Odin Shrine Expedition.";
-	mes "            "; // Line break
-	mes "- Shrine Expedition Dept.";
+	if (hg_alex == 0) {
+		mes "**Recruitment Notice**";
+		mes "";
+		mes "We are now hiring recruits";
+		mes "for the Odin Shrine Expedition.";
+		mes "";
+		mes "- Shrine Expedition Dept.";
+		set hg_alex,1;
+		close;
+	} else if ((hg_alex > 0) && (hg_alex < 60)) {
+		mes "**Recruitment Notice**";
+		mes "";
+		mes "We are now hiring recruits";
+		mes "for the Odin Shrine Expedition.";
+		mes "";
+		mes "- Shrine Expedition Dept.";
+		close;
+	} else if (hg_alex > 59) {
+		mes "**Recruitment Notice**";
+		mes "";
+		mes "Join our magician";
+		mes "community, and make";
+		mes "all your days a festival!";
+		mes "";
+		mes "- Hugel Magician Community";
+		close;
+	}
+}
+
+hu_in01.gat,19,161,0	script	Alex	803,{
+
+	if (hg_alex == 0) {
+		mes "[Alex]";
+		mes "Whatever you're";
+		mes "trying to sell me,";
+		mes "I'm not interested!";
+		mes "Now get out of here!";
+		close;
+	} else if (hg_alex == 1) {
+		cutin "hu_alex01.bmp",2;
+		mes "[Alex]";
+		mes "Huh...?";
+		mes "What do you want?";
+		next;
+		menu "Excuse me...",L_LABEL1,"I saw the recruitment notice and...",L_LABEL2;
+		L_LABEL1:
+			mes "[Alex]";
+			mes "Whatever you're";
+			mes "trying to sell me,";
+			mes "I'm not interested!";
+			mes "Now get out of here!";
+			close2;
+			cutin "hu_alex01.bmp",255;
+			end;
+		L_LABEL2:
+			mes "[Alex]";
+			mes "Oh, so you saw the";
+			mes "recruitment notice for the";
+			mes "Odin Shrine Expedition, eh?";
+			if (BaseLevel >= 60) {
+				mes "Hmmm... Alright, you look";
+				mes "like you're strong enough.";
+				mes "Yeah, I think you qualify.";
+				next;
+			} else {
+				cutin "hu_alex02.bmp",2;
+				mes "Well, I dunno. I think that";
+				mes "kind of expedition would";
+				mes "eat you alive. No offense...";
+				next;
+				mes "[Alex]";
+				mes "Look, I'll reconsider";
+				mes "whether you qualify after";
+				mes "you get train a little more,";
+				mes "develop your skills, you know,";
+				mes "get stronger. For now, though,";
+				mes "I don't think we can use you.";
+				close2;
+				cutin "hu_alex02.bmp",255;
+				end;
+			}
+		cutin "hu_alex03.bmp",2;
+		mes "[Alex]";
+		mes "I'm Alex Helmut, and I'm";
+		mes "in charge of the expedition.";
+		mes "See that guy over there? That's";
+		mes "my younger brother Julian who's";
+		mes "also working on the excavation.";
+		next;
+		mes "[Alex]";
+		mes "Our main goal in this";
+		mes "excavation is to retrieve";
+		mes "some extremely valuable";
+		mes "item inside the shrine. However,^FFFFFF ^000000 it's too dangerous to go in there";
+		mes "if you're not strong enough.";
+		next;
+		mes "[Alex]";
+		mes "Anyway, if you'd like to";
+		mes "help us, please take a look";
+		mes "around the shrine and see";
+		mes "if you'd want to work for us.";
+		mes "Please talk to the Boatman";
+		mes "to travel to the shrine, okay?";
+		set hg_alex,2;
+		close2;
+		cutin "hu_alex03.bmp",255;
+		end;
+	} else if (hg_alex == 2) {
+		cutin "hu_alex03.bmp",2;
+		mes "[Alex]";
+		mes "You really oughtta";
+		mes "check out the shrine";
+		mes "for yourself first. Just talk";
+		mes "to the Boatman so that";
+		mes "he take you over there.";
+		close2;
+		cutin "hu_alex03.bmp",255;
+		end;
+	} else if (hg_alex == 3) {
+		cutin "hu_alex01.bmp",2;
+		mes "[Alex]";
+		mes "Oh, so you've gone";
+		mes "and seen the shrine";
+		mes "already. So will you help";
+		mes "us in our expedition?";
+		next;
+		menu "Who are the people in the next room?",L_LABEL3,"Well...",L_LABEL4,"Yes, I do.",L_LABEL5;
+		L_LABEL3:
+			cutin "hu_alex02.bmp",2;
+			mes "[Alex]";
+			mes "Oh... Them.";
+			mes "They're officially my";
+			mes "co-workers, but quite";
+			mes "frankly, they were forced";
+			mes "upon me by the Rune-Midgarts";
+			mes "Kingdom. It can't be helped...";
+			next;
+			mes "[Alex]";
+			mes "Anyway, I have to accept";
+			mes "them to help international";
+			mes "relations or something silly";
+			mes "like that. They say they're here^FFFFFF ^000000 to research religious relics,";
+			mes "but I just don't trust them.";
+			next;
+			cutin "hu_alex04.bmp",2;
+			mes "[Alex]";
+			mes "In fact, I think it's";
+			mes "obvious that they're here";
+			mes "for something else, though";
+			mes "I'm not sure what it may be.";
+			mes "And that gray haired lady...";
+			mes "She totally creeps me out!";
+			close2;
+			cutin "hu_alex02.bmp",255;
+			end;
+		L_LABEL4:
+			mes "[Alex]";
+			mes "Yeah, well, I know";
+			mes "it might be a tough";
+			mes "decision to make. Well,";
+			mes "take your time. I understand";
+			mes "that you have to weigh the";
+			mes "risks and everything.";
+			close2;
+			cutin "hu_alex01.bmp",255;
+			end;
+	L_LABEL5:
+		mes "[Alex]";
+		mes "Great! In that case, your";
+		mes "first assignment is to bring";
+		mes "me ^3355FF5 Runes of the Darkness^000000";
+		mes "from the shrine. Don't worry,";
+		mes "I'll make sure that you're";
+		mes "rewarded for your efforts.";
+		set hg_alex,4;
+		next;
+		mes "[Alex]";
+		mes "This is your chance";
+		mes "to show me that your";
+		mes "dependability and sense";
+		mes "of responsibility. Then,";
+		mes "we can move on to the";
+		mes "more important stuff.";
+		close2;
+		cutin "hu_alex02.bmp",255;
+		end;
+	} else if (hg_alex == 4) {
+		cutin "hu_alex02.bmp",2;
+		mes "[Alex]";
+		mes "What are you still";
+		mes "doing here? Shouldn't";
+		mes "you be headed to the";
+		mes "shrine already?";
+		next;
+		menu "What was I supposed to gather?",L_LABEL6,"I'm leaving, I'm leaving!",L_LABEL7;
+		L_LABEL6:
+			cutin "hu_alex03.bmp",2;
+			mes "[Alex]";
+			mes "You've forgotten";
+			mes "already? I asked you";
+			mes "to bring me ^3355FF5 Runes";
+			mes "of the Darkness^000000. Okay,";
+			mes "now hurry up and get to it.";
+			close2;
+			cutin "hu_alex03.bmp",255;
+			end;
+		L_LABEL7:
+			mes "[Alex]";
+			mes "That's fine...";
+			mes "Just keep in mind that";
+			mes "we're running behind";
+			mes "schedule. If only that";
+			mes "grey haired crone wasn't";
+			mes "here... We'd be done by now!";
+			close2;
+			cutin "hu_alex02.bmp",255;
+			end;
+	} else if (hg_alex == 5) {
+		cutin "hu_alex01.bmp",2;
+		mes "[Alex]";
+		mes "Well, it's about";
+		mes "time you came back.";
+		mes "So did you bring me";
+		mes "^3355FF5 Runes of the Darkness^000000?";
+		next;
+		menu "Er, not yet...",L_LABEL8,"There you go!",L_LABEL9;
+		L_LABEL8:
+			cutin "hu_alex02.bmp",2;
+			mes "[Alex]";
+			mes "Wh-what?!";
+			mes "You came here just to";
+			mes "tell me that? Come back";
+			mes "when you're done and";
+			mes "don't waste my time!";
+			next;
+			emotion ET_DELIGHT,"Julian";
+			mes "[Julian]";
+			mes "Hey, you know what,";
+			mes "Alex? You can't push";
+			mes "people around like that.";
+			mes "Besides, this adventurer";
+			mes "isn't a pushover, you know?";
+			next;
+			cutin "hu_alex03.bmp",2;
+			emotion ET_FRET,"Alex";
+			mes "[Alex]";
+			mes "What was that...?";
+			mes "Are you trying to";
+			mes "make me mad, Julian?";
+			next;
+			cutin "hu_alex02.bmp",2;
+			mes "[Julian]";
+			mes "All I'm saying is that";
+			mes "most adventurers know that";
+			mes "you can't pay them what they're";
+			mes "worth. That's why so many of";
+			mes "them are going in and out";
+			mes "of the other room, you know.";
+			next;
+			cutin "hu_alex04.bmp",2;
+			mes "[Alex]";
+			mes "That... grey... haired...!";
+			mes "N-no... Calm down, Alex...";
+			mes "Lose your head, you lose";
+			mes "everything... D-don't stoop";
+			mes "down to her level.";
+			next;
+			cutin "hu_alex01.bmp",2;
+			mes "[Alex]";
+			mes "Alright, I'm not in any";
+			mes "position to make demands";
+			mes "of you... But I would really";
+			mes "appreciate it if you would";
+			mes "bring me 5 Runes of the";
+			mes "Darkness as soon as possible.";
+			close2;
+			cutin "hu_alex01.bmp",255;
+			end;
+		L_LABEL9:
+			if (countitem(7511) > 4) {
+				delitem 7511,5;
+				set hg_alex,6;
+				getitem 603,1;
+				mes "[Alex]";
+				mes "Oh! Thank you";
+				mes "so much, I'm sure";
+				mes "these Runes will help";
+				mes "us in our research. I know";
+				mes "this isn't much, but please";
+				mes "accept this Old Blue Box.";
+				next;
+				mes "[Julian]";
+				mes "Wait...";
+				mes "Research?";
+				mes "Since when did";
+				mes "you do research?";
+				next;
+				cutin "hu_alex03.bmp",2;
+				mes "[Alex]";
+				mes "Gosh, Julian,";
+				mes "will you just";
+				mes "shut up for a bit?";
+				next;
+				mes "[Julian]";
+				mes "Why? I'm the one who";
+				mes "does all the grunt work";
+				mes "and actual research.";
+				mes "You think you're so";
+				mes "big just ''supervising...''";
+				next;
+				cutin "hu_alex04.bmp",2;
+				mes "[Alex]";
+				mes "J-Julian!";
+				next;
+				mes "[Julian]";
+				mes "Right, right, we've";
+				mes "got a visitor. Yeah,";
+				mes "okay, sorry about that.";
+				next;
+				cutin "hu_alex02.bmp",2;
+				mes "[Alex]";
+				mes "I'm sorry about all";
+				mes "this. If you don't mind,";
+				mes "we'll continue our research";
+				mes "and hopefully finish our";
+				mes "project soon. Thanks once";
+				mes "again for all of your help.";
+				close2;
+				cutin "hu_alex02.bmp",255;
+				end;
+			} else {
+				cutin "hu_alex02.bmp",2;
+				mes "[Alex]";
+				mes "Hm? Oh, this isn't";
+				mes "enough Runes of the";
+				mes "Darkness. I asked you";
+				mes "to bring me 5 of them...";
+				close2;
+				cutin "hu_alex02.bmp",255;
+				end;
+			}
+	} else if (hg_alex == 6) {
+		cutin "hu_alex02.bmp",2;
+		mes "[Alex]";
+		mes "...Darn it! I think I might";
+		mes "have miscalculated. Maybe";
+		mes "I really do need more of";
+		mes "these. What am I gonna do?";
+		mes "And what is that grey haired";
+		mes "crone thinking? Hmmmm...";
+		next;
+		emotion ET_HUK,"Alex";
+		cutin "hu_alex03.bmp",2;
+		cutin "hu_alex01.bmp",2;
+		mes "[Alex]";
+		mes "O-Oh! I had no idea that";
+		mes "you were there! Y-you";
+		mes "didn't hear anything";
+		mes "s-strange, did you?";
+		mes "Hahahahahahaha!";
+		close2;
+		cutin "hu_alex01.bmp",255;
+		end;
+	} else if ((hg_alex > 11) && (hg_alex < 17)) {
+		cutin "hu_alex03.bmp",2;
+		mes "[Alex]";
+		mes "Excuse me?";
+		mes "The grey haired crone";
+		mes "offered you a part time";
+		mes "job, but won't pay you?";
+		next;
+		mes "[Alex]";
+		mes "She's really shameless!";
+		mes "We don't have much to pay";
+		mes "volunteers, but we should";
+		mes "at least give them something!";
+		mes "How can she do this?! Oh, er,";
+		mes "let me introduce myself first.";
+		next;
+		cutin "hu_alex01.bmp",2;
+		mes "[Alex]";
+		mes "I'm Alex Helmut, and I'm";
+		mes "in charge of the expedition.";
+		mes "See that guy over there? That's";
+		mes "my younger brother Julian who's";
+		mes "also working on the excavation.";
+		next;
+		cutin "hu_alex02.bmp",2;
+		mes "[Alex]";
+		mes "As supervisor of this";
+		mes "operation, I'm ashamed to";
+		mes "say that the excavation is";
+		mes "proceeding behind schedule.";
+		mes "If only that grey haired crone";
+		mes "in the next room weren't here!";
+		next;
+		mes "[Alex]";
+		mes "I can't work with";
+		mes "her at all! She's";
+		mes "manipulative, greedy,";
+		mes "selfish, and two faced!";
+		mes "There's got to be another";
+		mes "reason why she's here...!";
+		close2;
+		cutin "hu_alex02.bmp",255;
+		end;
+	} else {
+		cutin "hu_alex02.bmp",2;
+		mes "[Alex]";
+		mes "Hm? Did you need";
+		mes "something? I'm sorry,";
+		mes "but I can't help you";
+		mes "right now. I'm pretty";
+		mes "busy, so I just want to";
+		mes "be left alone for a while.";
+		close2;
+		cutin "hu_alex02.bmp",255;
+		end;
+	}
+}
+
+hu_in01.gat,14,11,4	script	Laura	70,{
+
+	if (hg_alex == 0) {
+		cutin "hu_laura02.bmp",2;
+		mes "[Laura]";
+		mes "Hm? What are you doing";
+		mes "here? Ashe, Ashe! Get";
+		mes "this person out of here!";
+		close2;
+		cutin "hu_laura02.bmp",255;
+		warp "hu_in01.gat",15,76;
+		end;
+	} else if (hg_alex == 1) {
+		cutin "hu_laura04.bmp",2;
+		mes "[Laura]";
+		mes "Hm? Oh, you must be";
+		mes "here in response to our";
+		mes "recruitment notice, yes?";
+		if (BaseLevel < 60) {
+			cutin "hu_laura01.bmp",2;
+			mes "Let me take a look at you...";
+			mes "Oh, you're all skin and bone!";
+			mes "I can't use someone like you.";
+			close2;
+			cutin "hu_laura01.bmp",255;
+			end;
+		} else {
+			mes "I'm Laura Laurence, the";
+			mes "Rune-Midgarts Kingdom rep";
+			mes "for the Odin Shrine Expedition.";
+			next;
+			mes "[Laura]";
+			mes "My assistant, Ashe";
+			mes "Milton, is right over";
+			mes "there. Say, \"Hello,\" Ashe.";
+			next;
+			emotion ET_SMILE,"Ashe";
+			mes "[Ashe]";
+			mes "Hello!";
+			next;
+			mes "[Laura]";
+			mes "As you may already know,";
+			mes "we're here to uncover relics";
+			mes "from the Odin Shrine. However,";
+			mes "the shrine is infested with";
+			mes "powerful creatures that a weak";
+			mes "woman like me can never defeat.";
+			next;
+			cutin "hu_laura01.bmp",2;
+			mes "[Laura]";
+			mes "Would you let a poor";
+			mes "fragile woman like me go";
+			mes "in there alone? Someone like";
+			mes "you must go in there for me.";
+			mes "Hence, the recruitment notice.";
+			next;
+			mes "[Laura]";
+			mes "Now, we can't actually pay";
+			mes "you for your work. In fact,";
+			mes "we have absolutely nothing to";
+			mes "give you. But you'd be doing";
+			mes "a great service your country,";
+			mes "the Rune-Midgart's Kingdom.";
+			next;
+			cutin "hu_laura04.bmp",2;
+			mes "[Laura]";
+			mes "Think about it!";
+			mes "You'd be making a great";
+			mes "contribution, helping us";
+			mes "learn more about the age";
+			mes "when the gods showed";
+			mes "themselves to humans!";
+			next;
+			menu "Nah, forget it.",L_LABEL1,"Yes, I'll do it!",L_LABEL2;
+			L_LABEL1:
+				cutin "hu_laura01.bmp",2;
+				mes "[Laura]";
+				mes "W-wait! Think about";
+				mes "the importance of learning";
+				mes "about the age of gods! If you";
+				mes "don't help us, then who will?";
+				mes "We need to work together to";
+				mes "build a better future, right?";
+				next;
+				menu "But you can't pay me.",L_LABEL3,"Alright, I'll do it.",L_LABEL4;
+				L_LABEL3:
+					cutin "hu_laura04.bmp",2;
+					mes "[Laura]";
+					mes "You're right.";
+					mes "It's like I said";
+					mes "before. I don't have";
+					mes "anything to pay you.";
+					mes "...............................";
+					next;
+					cutin "hu_laura01.bmp",2;
+					mes "[Laura]";
+					mes "Curses! If this project had";
+					mes "more funding, we'd have more";
+					mes "than a cheesy recruitment ad,";
+					mes "and some professional staff";
+					mes "like those rich Schwaltzvalt";
+					mes "Republic boys in the next room!";
+					next;
+					cutin "hu_laura02.bmp",2;
+					mes "[Laura]";
+					mes "Fine, it's your choice";
+					mes "whether you want to work";
+					mes "for us. I'm just disappointed";
+					mes "that someone like you won't";
+					mes "help us. I mean, don't you";
+					mes "have any patriotism at all?";
+					close2;
+					cutin "hu_laura02.bmp",255;
+					end;
+		L_LABEL4:
+		L_LABEL2:
+			mes "[Laura]";
+			mes "Perfect! Now, you first";
+			mes "you need to go to the shrine";
+			mes "and survey the area for your";
+			mes "own benefit. Talk to the Boatman,^FFFFFF ^000000 and he'll take you there, okay?";
+			mes "Hurry up and come back soon!";
+			set hg_alex,12;
+			close2;
+			cutin "hu_laura04.bmp",255;
+			end;
+		}
+	} else if ((hg_alex > 1) && (hg_alex < 6)) {
+		mes "["+strcharinfo(0)+"]";
+		mes "Excuse me, but";
+		mes "what are you guys";
+		mes "doing over here?";
+		next;
+		cutin "hu_laura04.bmp",2;
+		mes "[Laura]";
+		mes "What are we doing...?";
+		mes "This is the shrine expedition";
+		mes "office. You know, we're doing";
+		mes "research on the artifacts found";
+		mes "in the Odin Shrine on behalf";
+		mes "of the Rune-Midgarts Kingdom.";
+		next;
+		menu "About Alex and Julian",L_LABEL5,"Alright, now I understand.",L_LABEL6;
+		L_LABEL5:
+			cutin "hu_laura01.bmp",2;
+			mes "["+strcharinfo(0)+"]";
+			mes "These people in the other";
+			mes "room, Alex and Julian, are";
+			mes "they also working in this same";
+			mes "expedition in the Odin Shrine?";
+			next;
+			cutin "hu_laura02.bmp",2;
+			mes "[Laura]";
+			mes "...Oh. You must be working";
+			mes "for those rich Schwaltvalt";
+			mes "Republic kids. I can't work";
+			mes "with that impudent girl, at";
+			mes "all, so we're actually working";
+			mes "in separate offices.";
+			next;
+			cutin "hu_laura04.bmp",2;
+			mes "[Laura]";
+			mes "Sorry, let me introduce";
+			mes "myself. I'm Laura Laurence,";
+			mes "the leader of the Odin Shrine";
+			mes "expedition for the Rune Midgarts^FFFFFF ^000000 Kingdom. Ashe Milton is my";
+			mes "assistant for this excavation.";
+			next;
+			emotion ET_SMILE,"Ashe";
+			mes "[Ashe]";
+			mes "Hello!";
+			next;
+			mes "[Laura]";
+			mes "If you'd rather do";
+			mes "a service for your";
+			mes "country and quit working";
+			mes "for those wealthy snobs, then";
+			mes "come back here and let me know.";
+			close2;
+			cutin "hu_laura04.bmp",255;
+			end;
+		L_LABEL6:
+			cutin "hu_laura01.bmp",2;
+			mes "[Laura]";
+			mes "......";
+			mes ".........";
+			mes "............";
+			close2;
+			cutin "hu_laura01.bmp",255;
+			end;
+	} else if (hg_alex == 6) {
+		cutin "hu_laura04.bmp",2;
+		mes "[Laura]";
+		mes "Hey, I know you...";
+		mes "You're a volunteer for the";
+		mes "other office's expedition,";
+		mes "right? Your timing couldn't";
+		mes "be more perfect. Why don't";
+		mes "you help us for a while?";
+		next;
+		cutin "hu_laura01.bmp",2;
+		mes "[Laura]";
+		mes "Basically, I want you";
+		mes "to spy on that snobby girl,";
+		mes "Alex of the Schwaltzvalt";
+		mes "Republic office, and report";
+		mes "what she's actually doing to me. ^FFFFFF ^000000";
+		next;
+		cutin "hu_laura03.bmp",2;
+		mes "[Laura]";
+		mes "I have to know...";
+		mes "I need to know whether";
+		mes "they discovered ''that thing''";
+		mes "already. They can't have found";
+		mes "it before us. It's impossible!";
+		next;
+		cutin "hu_laura04.bmp",2;
+		mes "[Laura]";
+		mes "Anyway, just eavesdrop";
+		mes "on the Schwaltvalt Office";
+		mes "by putting your ear really";
+		mes "close to the door, and listen";
+		mes "to them talk. Will you do that?";
+		next;
+		cutin "hu_laura02.bmp",2;
+		mes "[Laura]";
+		mes "...............................";
+		mes "Of course, you're";
+		mes "going to do it. Right?";
+		next;
+		cutin "hu_laura03.bmp",2;
+		mes "[Laura]";
+		mes "RIGHT?!";
+		next;
+		menu "Yeah, yeah, whatever.",L_LABEL7,"Sure thing.",L_LABEL8,"I s-s-s-suppose...!",L_LABEL9,"Yes, Ma'am!",L_LABEL10;
+	L_LABEL7:
+	L_LABEL8:
+	L_LABEL9:
+	L_LABEL10:
+		set hg_alex,17;
+		cutin "hu_laura04.bmp",2;
+		mes "[Laura]";
+		mes "Good.";
+		mes "Now do it!";
+		close2;
+		cutin "hu_laura04.bmp",255;
+		end;
+	} else if (hg_alex == 12) {
+		cutin "hu_laura02.bmp",2;
+		mes "[Laura]";
+		mes "Ask the Boatman to take";
+		mes "you to the Odin Shrine so";
+		mes "that you can actually see it";
+		mes "for yourself. If you don't think^FFFFFF ^000000 you can handle the expedition,";
+		mes "then you can just let me know.";
+		close2;
+		cutin "hu_laura02.bmp",255;
+		end;
+	} else if (hg_alex == 13) {
+		cutin "hu_laura04.bmp",2;
+		mes "[Laura]";
+		mes "Have you been to the";
+		mes "Odin Shrine already?";
+		mes "I know it's scary, but we";
+		mes "need to finish our research";
+		mes "for the good of mankind.";
+		next;
+		menu "Yeah, yeah, whatever.",L_LABEL11,"I see.",L_LABEL12,"You're right, Ma'am.",L_LABEL13;
+	L_LABEL11:
+	L_LABEL12:
+	L_LABEL13:
+		mes "[Laura]";
+		mes "Well, then.";
+		mes "Did you happen to";
+		mes "find anything while";
+		mes "you were there?";
+		next;
+		menu "Jellopies.",L_LABEL14,"No.",L_LABEL15;
+		L_LABEL14:
+			cutin "hu_laura01.bmp",2;
+			mes "[Laura]";
+			mes "You can freakin' find";
+			mes "Jellopy anywhere! I meant,";
+			mes "did you find anything special";
+			mes "while you were at the shrine!";
+			next;
+			goto L_Fix01;
+		L_LABEL15:
+			cutin "hu_laura01.bmp",2;
+			mes "[Laura]";
+			mes "Well, that's fine.";
+			mes "I did tell you to just";
+			mes "take a look around, so";
+			mes "I didn't expect you to";
+			mes "bring me anything.";
+			next;
+			goto L_Fix01;
+	L_Fix01:
+		cutin "hu_laura04.bmp",2;
+		mes "[Laura]";
+		mes "Anyway, are you still willing";
+		mes "to help us? I know that I said";
+		mes "that we can't pay you, but to";
+		mes "be fair, I can offer you something from my special collection.";
+		mes "How does that sound?";
+		next;
+		menu "Who are the guys in the other room?",L_LABEL16,"Well...",L_LABEL17,"Yes!",L_LABEL18;
+		L_LABEL16:
+			cutin "hu_laura01.bmp",2;
+			mes "[Laura]";
+			mes "Oh, those are the";
+			mes "Schwartzvalt Republic";
+			mes "representatives for this";
+			mes "Odin Shrine expedition.";
+			mes "Personally, I think they're";
+			mes "just a bunch of rich phonies.";
+			next;
+			cutin "hu_laura03.bmp",2;
+			mes "[Laura]";
+			mes "And that Alex girl...";
+			mes "She may seem polite,";
+			mes "but she's always giving";
+			mes "these dirty looks, and";
+			mes "greets me with a fake";
+			mes "smile. I hate her!";
+			next;
+			emotion ET_PROFUSELY_SWAT,"Ashe";
+			mes "[Ashe]";
+			mes "Ms. Laurence...!";
+			mes "Stop it, please!";
+			mes "It's embarassing to";
+			mes "hear you talk about";
+			mes "a colleague like that.";
+			next;
+			mes "[Laura]";
+			mes "C-colleague?! No way!";
+			mes "I despise that spoiled brat,";
+			mes "and she doesn't deserve the";
+			mes "position that her rich daddy";
+			mes "probably bought for her! Grrr!";
+			mes "Come back later, I'm too mad!";
+			close2;
+			cutin "hu_laura03.bmp",255;
+			end;
+		L_LABEL17:
+			mes "[Laura]";
+			mes "If you're having second";
+			mes "thoughts, it might not be";
+			mes "the best idea to work for me.";
+			mes "I mean, I believe in following";
+			mes "your gut instincts, you know?";
+			close2;
+			cutin "hu_laura04.bmp",255;
+			end;
+		L_LABEL18:
+			set hg_alex,14;
+			mes "[Laura]";
+			mes "That's what I've been";
+			mes "waiting to hear! Alright,";
+			mes "please fetch me ^3355FF5 Runes of";
+			mes "the Darkness^000000 from the Odin";
+			mes "Shrine. Go now, adventurer~";
+			close2;
+			cutin "hu_laura04.bmp",255;
+			end;
+	} else if (hg_alex == 14) {
+		cutin "hu_laura02.bmp",2;
+		mes "[Laura]";
+		mes "Hm? You've got a job";
+		mes "to do, don't you? What";
+		mes "are you still doing here?";
+		next;
+		menu "What was I supposed to gather?",L_LABEL19,"Don't worry, I'm leaving.",L_LABEL20;
+		L_LABEL19:
+			mes "[Laura]";
+			mes "You're supposed";
+			mes "to bring me ^3355FF5 Runes";
+			mes "of the Darkness^000000. Now,";
+			mes "don't forget this time!";
+			close2;
+			cutin "hu_laura02.bmp",255;
+			end;
+		L_LABEL20:
+			mes "[Laura]";
+			mes "Well, try to hurry up";
+			mes "if you can. I'm already";
+			mes "behind schedule because";
+			mes "we have to work with those";
+			mes "snobby rich kids in the";
+			mes "other office. ^333333*Sigh...*^000000";
+			close2;
+			cutin "hu_laura02.bmp",255;
+			end;
+	} else if (hg_alex == 15) {
+		cutin "hu_laura04.bmp",2;
+		mes "[Laura]";
+		mes "Oh, you've come back.";
+		mes "So where are the Runes";
+		mes "of the Darkness you brought?";
+		next;
+		menu "Er, I don't have them yet...",L_LABEL21,"Right here!",L_LABEL22;
+		L_LABEL21:
+			cutin "hu_laura03.bmp",2;
+			mes "[Laura]";
+			mes "This isn't really one";
+			mes "of those jobs where you";
+			mes "can take your time. Sure,^FFFFFF ^000000 I didn't give you a deadline, but";
+			mes "we can't make progress on our^FFFFFF ^000000 research until you make progress.";
+			close2;
+			cutin "hu_laura03.bmp",255;
+			end;
+		L_LABEL22:
+			if (countitem(7511) > 4) {
+				delitem 7511,5;
+				set hg_alex,16;
+				getitem 603,1;
+				mes "[Laura]";
+				mes "Oooh, nice job. It's good";
+				mes "that we have more of these";
+				mes "to study. Though, it seems";
+				mes "that the more we research,";
+				mes "the quicker it seems that";
+				mes "we're not getting anywhere...";
+				next;
+				mes "[Laura]";
+				mes "Hey...";
+				mes "Ashe. Why aren't we";
+				mes "making any progress?";
+				mes "What exactly have you";
+				mes "been doing? None of those";
+				mes "runes have any writing?";
+				next;
+				mes "[Ashe]";
+				mes "Well, I think there's";
+				mes "supposed to be writing,";
+				mes "but these runes are pretty";
+				mes "old. I've got to polish this";
+				mes "gunk off without damaging";
+				mes "any writing that's there...";
+				next;
+				cutin "hu_laura01.bmp",2;
+				mes "[Laura]";
+				mes "By the way, what have the other guys been doing?";
+				mes "What, they don't do anything but wasting their time?";
+				mes "Ah~ I see. They are thinking that this is the perfect excuse";
+				mes "for them to relax and rest.";
+				mes "Well, somehow they are the citizens of this country, you know.";
+				next;
+				cutin "hu_laura02.bmp",2;
+				mes "[Laura]";
+				mes "What do you think those";
+				mes "Schwaltzvalt snobs are doing?";
+				mes "They must think this project";
+				mes "is an excuse for them to relax";
+				mes "and slack off! They can afford^FFFFFF ^000000 to, obviously. Hmpf! Rich people!";
+				next;
+				cutin "hu_laura03.bmp",2;
+				mes "[Laura]";
+				mes "They've got things so easy,";
+				mes "while we're barely covering";
+				mes "our research expenses!";
+				mes "In fact, we've had to cut";
+				mes "so many corners, skip";
+				mes "meals and amenities...";
+				next;
+				mes "[Ashe]";
+				mes "I know! How can we";
+				mes "carry on professional";
+				mes "research in a shack?";
+				mes "We're literally living at";
+				mes "poverty standards here...";
+				mes "Are we still researchers?";
+				next;
+				cutin "hu_laura02.bmp",2;
+				mes "[Laura]";
+				mes "I know that!";
+				mes "I know that already!";
+				mes "S-stop bringing it up!";
+				next;
+				cutin "hu_laura01.bmp",2;
+				mes "[Laura]";
+				mes "This is pathetic.";
+				mes "I can't even afford the";
+				mes "energy to continue this";
+				mes "conversation. You too,";
+				mes "why don't you take a rest?";
+				close2;
+				cutin "hu_laura01.bmp",255;
+				end;
+			} else if (countitem(7511) == 0) {
+				cutin "hu_laura02.bmp",2;
+				mes "[Laura]";
+				mes "..................";
+				mes "What is this?!";
+				mes "You're supposed to";
+				mes "bring me 5 of them!";
+				next;
+				cutin "hu_laura03.bmp",2;
+				mes "[Laura]";
+				mes "Is this your way of";
+				mes "saying that you don't";
+				mes "want to work for us?";
+				mes "Why don't you say it";
+				mes "to my face, eh?";
+				next;
+				mes "[Ashe]";
+				mes "Ms. Laurence, please,";
+				mes "calm down! We're in no";
+				mes "position to yell at anyone,";
+				mes "especially volunteers! You";
+				mes "of all people should know";
+				mes "that they're doing us a favor!";
+				next;
+				cutin "hu_laura02.bmp",2;
+				mes "[Laura]";
+				mes "Okay, Ashe, I get it!";
+				mes "And as for you, I'll give";
+				mes "you another chance. Next";
+				mes "time you see me, bring";
+				mes "5 Runes of the Darkness!";
+				close2;
+				cutin "hu_laura02.bmp",255;
+				end;
+			} else if (countitem(7511) == 1) {
+				cutin "hu_laura03.bmp",2;
+				mes "[Laura]";
+				mes "...Only one?";
+				mes "Look at me. I asked";
+				mes "you for five. I know that";
+				mes "one is better than nothing...";
+				mes "But it's pretty darn close. Go";
+				mes "get me 4 more this instant!";
+				close2;
+				cutin "hu_laura03.bmp",255;
+				end;
+			} else if (countitem(7511) == 2) {
+				cutin "hu_laura03.bmp",2;
+				mes "[Laura]";
+				mes "One, two...";
+				mes "Huh? Th-that's all?!";
+				mes "When I ask for 5 Runes";
+				mes "of the Darkness, I mean";
+				mes "5, not 2. Now hurry up";
+				mes "and just do what I asked!";
+				close2;
+				cutin "hu_laura03.bmp",255;
+				end;
+			} else {
+				mes "[Laura]";
+				mes "One, two, three...";
+				mes "That's it? Don't you";
+				mes "know how to count to 5?";
+				mes "Go and get me more of those";
+				mes "Runes of the Darkness now!";
+				next;
+				cutin "hu_laura03.bmp",2;
+				close2;
+				cutin "hu_laura03.bmp",255;
+				end;
+			}
+	} else if (hg_alex == 16) {
+		cutin "hu_laura02.bmp",2;
+		mes "[Laura]";
+		mes "I wonder how much progress";
+		mes "those pampered Schwaltzvalt";
+		mes "snobs actually made. They've";
+		mes "got the funds, so they could";
+		mes "actually be further ahead";
+		mes "than we are right now...";
+		next;
+		mes "[Laura]";
+		mes "I have to know...";
+		mes "I need to know whether";
+		mes "they discovered ''that thing''";
+		mes "already. They can't have found";
+		mes "it before us. It's impossible!";
+		next;
+		cutin "hu_laura01.bmp",2;
+		mes "[Laura]";
+		mes "...Hey, you.";
+		next;
+		menu "...",L_LABEL23,"...Me?",L_LABEL24;
+		L_LABEL23:
+			mes "[Laura]";
+			mes "Hey, hey!";
+			mes "Hey hey hey!";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "...Me?";
+			next;
+		L_LABEL24:
+		mes "[Laura]";
+		mes "Basically, I want you";
+		mes "to spy on that snobby girl,";
+		mes "Alex of the Schwaltzvalt";
+		mes "Republic office, and report";
+		mes "what she's actually doing to me. ^FFFFFF ^000000";
+		next;
+		cutin "hu_laura04.bmp",2;
+		mes "[Laura]";
+		mes "Anyway, just eavesdrop";
+		mes "on the Schwaltvalt Office";
+		mes "by putting your ear really";
+		mes "close to the door, and listen";
+		mes "to them talk. Will you do that?";
+		next;
+		cutin "hu_laura02.bmp",2;
+		mes "[Laura]";
+		mes "...............................";
+		mes "Of course, you're";
+		mes "going to do it. Right?";
+		next;
+		cutin "hu_laura03.bmp",2;
+		mes "[Laura]";
+		mes "RIGHT?!";
+		next;
+		menu "Yeah, yeah, whatever.",L_LABEL25,"Sure thing.",L_LABEL26,"I s-s-s-suppose...!",L_LABEL27,"Yes, Ma'am!",L_LABEL28;
+	L_LABEL25:
+	L_LABEL26:
+	L_LABEL27:
+	L_LABEL28:
+		set hg_alex,17;
+		cutin "hu_laura04.bmp",2;
+		mes "[Laura]";
+		mes "Good.";
+		mes "Now do it!";
+		close2;
+		cutin "hu_laura04.bmp",255;
+		end;
+	} else if (hg_alex == 17) {
+		cutin "hu_laura02.bmp",2;
+		mes "[Laura]";
+		mes "What are you standing";
+		mes "around here for? Go and";
+		mes "eavesdrop on those snobs";
+		mes "next door! I must know";
+		mes "what they're really up to!";
+		close2;
+		cutin "hu_laura02.bmp",255;
+		end;
+	} else if ((hg_alex == 18) || (hg_alex == 19)) {
+		cutin "hu_laura01.bmp",2;
+		mes "[Laura]";
+		mes "Frankly, I know I'm paying";
+		mes "you nothing to be spy, but";
+		mes "please tell me what you";
+		mes "learned about the Schwaltzvalt";
+		mes "Republic Research Team.";
+		next;
+		menu "Giantes",L_LABEL29,"Ymir's Heart",L_LABEL30,"Nothing",L_LABEL31;
+		L_LABEL29:
+			cutin "hu_laura04.bmp",2;
+			mes "["+strcharinfo(0)+"]";
+			mes "I'm guessing that you're";
+			mes "already familiar with the";
+			mes "creature known as Giantes";
+			mes "since you're an archaeplogist.";
+			next;
+			cutin "hu_laura02.bmp",2;
+			mes "[Laura]";
+			mes "Of course! It's an";
+			mes "ancient beast on which";
+			mes "the Guardians were inspired.";
+			mes "N-no way...! Are they here to";
+			mes "finish their guardian research?";
+			mes "What else did you learn?";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "Well, have you";
+			mes "ever heard of Ymir's...";
+			next;
+			emotion ET_SURPRISE,"Ashe";
+			mes "[Ashe]";
+			mes "...Heart?";
+			mes "Ymir's Heart, right?";
+			next;
+			mes "[Laura]";
+			mes "Ashe, you know about";
+			mes "this? What exactly";
+			mes "is Ymir's Heart?";
+			next;
+			menu "It's candy.",L_LABEL32,"It's a book.",L_LABEL33,"It's a place.",L_LABEL34,"Ymir was a giant...",L_LABEL35;
+			L_LABEL32:
+				mes "["+strcharinfo(0)+"]";
+				mes "It's this...";
+				mes "Um, really...";
+				next;
+				goto L_Fix02;
+			L_LABEL33:
+				mes "["+strcharinfo(0)+"]";
+				mes "Er, you see...";
+				mes "A lot of people know";
+				mes "about Ymir's Heart...";
+				next;
+				goto L_Fix02;
+			L_LABEL34:
+				mes "["+strcharinfo(0)+"]";
+				mes "You know the expression,";
+				mes "''Home is where the heart";
+				mes "is?'' Er, well, Ymir's Heart...";
+				next;
+				goto L_Fix02;
+			L_LABEL35:
+				mes "["+strcharinfo(0)+"]";
+				mes "The truth is,";
+				mes "Ymir was this giant...";
+				next;
+				goto L_Fix02;
+		L_Fix02:
+			emotion ET_OK,"Ashe";
+			mes "[Ashe]";
+			mes "Ymir's Heart?";
+			mes "That's a clothing";
+			mes "brand, isn't it? Yeah,";
+			mes "it's popular amongst";
+			mes "the trendy crowd in the";
+			mes "Schwaltzvalt Republic.";
+			next;
+			cutin "hu_laura01.bmp",2;
+			mes "[Laura]";
+			mes "Clothing brand?";
+			mes "You mean those snobs";
+			mes "are just spending their";
+			mes "time talking about fashion";
+			mes "in there? Huh. Don't they";
+			mes "have better things to do?";
+			next;
+			cutin "hu_laura04.bmp",2;
+			mes "[Laura]";
+			mes "In the meantime, would";
+			mes "you do one more favor for";
+			mes "me? I'd like you to go to";
+			mes "the shrine one last time.";
+			mes "I hear that it's built on";
+			mes "two connected islands...";
+			next;
+			mes "[Laura]";
+			mes "I want you to check the";
+			mes "inner island, and see";
+			mes "what you can find while";
+			mes "I investigate the Schwaltzvalt";
+			mes "Research Team. I'm sorry, but";
+			mes "you're the only one I can ask.";
+			set hg_alex,20;
+			close2;
+			cutin "hu_laura04.bmp",255;
+			end;
+		L_LABEL30:
+			mes "["+strcharinfo(0)+"]";
+			mes "Well, have you";
+			mes "ever heard of Ymir's...";
+			next;
+			emotion ET_SURPRISE,"Ashe";
+			mes "[Ashe]";
+			mes "...Heart?";
+			mes "Ymir's Heart, right?";
+			next;
+			mes "[Laura]";
+			mes "Ashe, you know about";
+			mes "this? What exactly";
+			mes "is Ymir's Heart?";
+			next;
+			menu "It's candy.",L_LABEL36,"It's a book.",L_LABEL37,"It's a place.",L_LABEL38,"Ymir was a giant...",L_LABEL39;
+			L_LABEL36:
+				mes "["+strcharinfo(0)+"]";
+				mes "It's this...";
+				mes "Um, really...";
+				next;
+				goto L_Fix03;
+			L_LABEL37:
+				mes "["+strcharinfo(0)+"]";
+				mes "Er, you see...";
+				mes "A lot of people know";
+				mes "about Ymir's Heart...";
+				next;
+				goto L_Fix03;
+			L_LABEL38:
+				mes "["+strcharinfo(0)+"]";
+				mes "You know the expression,";
+				mes "''Home is where the heart";
+				mes "is?'' Er, well, Ymir's Heart...";
+				next;
+				goto L_Fix03;
+			L_LABEL39:
+				mes "["+strcharinfo(0)+"]";
+				mes "The truth is,";
+				mes "Ymir was this giant...";
+				next;
+				goto L_Fix03;
+		L_Fix03:
+			emotion ET_OK,"Ashe";
+			mes "[Ashe]";
+			mes "Ymir's Heart?";
+			mes "That's a clothing";
+			mes "brand, isn't it? Yeah,";
+			mes "it's popular amongst";
+			mes "the trendy crowd in the";
+			mes "Schwaltzvalt Republic.";
+			next;
+			cutin "hu_laura01.bmp",2;
+			mes "[Laura]";
+			mes "Clothing brand?";
+			mes "You mean those snobs";
+			mes "are just spending their";
+			mes "time talking about fashion";
+			mes "in there? Huh. Don't they";
+			mes "have better things to do?";
+			next;
+			cutin "hu_laura04.bmp",2;
+			mes "[Laura]";
+			mes "In the meantime, would";
+			mes "you do one more favor for";
+			mes "me? I'd like you to go to";
+			mes "the shrine one last time.";
+			mes "I hear that it's built on";
+			mes "two connected islands...";
+			next;
+			mes "[Laura]";
+			mes "I want you to check the";
+			mes "inner island, and see";
+			mes "what you can find while";
+			mes "I investigate the Schwaltzvalt";
+			mes "Research Team. I'm sorry, but";
+			mes "you're the only one I can ask.";
+			set hg_alex,20;
+			close2;
+			cutin "hu_laura04.bmp",255;
+			end;
+		L_LABEL31:
+			mes "[Laura]";
+			mes "Nothing...?";
+			mes "Are you sure that's";
+			mes "all you learned?";
+			close2;
+			cutin "hu_laura01.bmp",255;
+			end;
+	} else if (hg_alex == 20) {
+		cutin "hu_laura01.bmp",2;
+		mes "[Laura]";
+		mes "I wonder...";
+		mes "What could be going on?";
+		mes "Hopefully I'll be able";
+		mes "to find the answers...";
+		close2;
+		cutin "hu_laura01.bmp",255;
+		end;
+	}
+}
+
+hu_in01.gat,18,167,4	script	Julian	86,{
+
+	if (hg_alex == 0) {
+		mes "[Julian]";
+		mes "^333333*Sigh...*^000000";
+		close;
+	} else if (hg_alex == 1) {
+		mes "[Julian]";
+		mes "Say, are you here";
+		mes "for a job? We're looking";
+		mes "for someone that's passionate";
+		mes "about ancient history. If you";
+		mes "want to make money, then this";
+		mes "this the wrong place for you~";
+		next;
+		mes "[Julian]";
+		mes "This is supposed to be";
+		mes "a collaborative excavation,";
+		mes "but the team leaders are too";
+		mes "stubborn and refuse to make";
+		mes "any compromises. It's been";
+		mes "incredibly frustrating...";
+		next;
+		mes "[Julian]";
+		mes "Basically, each of our teams";
+		mes "is conducting its own research";
+		mes "for now. Now, we need your help";
+		mes "to find any relics from the Odin ^FFFFFF ^000000 Shrine. We'd appreciate it if you";
+		mes "brought as many as you can!";
+		close;
+	} else if (hg_alex == 2) {
+		mes "[Julian]";
+		mes "You sure you want";
+		mes "to work for someone";
+		mes "like my boss? Can't";
+		mes "you tell that she's";
+		mes "evil? Escape from this";
+		mes "place while you still can!";
+		next;
+		mes "[Alex]";
+		mes "Julian...!";
+		next;
+		mes "[Julian]";
+		mes "See what I mean?";
+		close;
+	} else if (hg_alex == 3) {
+		mes "[Julian]";
+		mes "Wow, you must really";
+		mes "like this kind of work,";
+		mes "huh? I didn't really expect";
+		mes "that you'd go to the shrine...";
+		close;
+	} else if (hg_alex == 4) {
+		mes "[Julian]";
+		mes "I'm amazed to see you";
+		mes "working so hard. You must";
+		mes "like pleasing other people,";
+		mes "I guess, but try not to be too";
+		mes "kind. Wouldn't want that...";
+		close;
+	} else if (hg_alex == 5) {
+		mes "[Julian]";
+		mes "Geez...";
+		mes "You're a really nice";
+		mes "person, you know that?";
+		mes "Just try not to be taken";
+		mes "for a sucker, okay?";
+		close;
+	} else {
+		mes "[Julian]";
+		mes "Why are both of our";
+		mes "team leaders so bull";
+		mes "headed? Maybe it has";
+		mes "something to do with";
+		mes "them being old and single.";
+		mes "Don't tell them I said that!";
+		close;
+	}
+}
+
+hu_in01.gat,16,21,0	script	Ashe#5	139,2,2,{
+
+OnTouch:
+	if (hg_alex == 18) {
+		mes "[Ashe]";
+		mes "......?";
+		next;
+		set hg_alex,19;
+		mes "[Ashe]";
+		mes "......";
+		mes ".........";
+		close;
+	}
+}
+
+hu_in01.gat,16,20,4	script	Ashe	95,{
+
+	if (hg_alex == 0) {
+		mes "[Ashe]";
+		mes "Hello, may I help you?";
+		mes "Please understand that";
+		mes "unauthorized personnel";
+		mes "are prohibited from entering";
+		mes "this area. Have you come to";
+		mes "assist in the expedition?";
+		close;
+	} else if (hg_alex == 1) {
+		mes "[Ashe]";
+		mes "Oh, you've here in response";
+		mes "to the recruitment notice?";
+		mes "Well then, let me give you";
+		mes "a brief idea about the work.";
+		mes "First off, we can't pay you any";
+		mes "money, so you'd be a volunteer.";
+		next;
+		mes "[Ashe]";
+		mes "Instead, you're allowed to";
+		mes "keep whatever you excavate";
+		mes "in the Odin Shrine, so long";
+		mes "as we don't need it for our";
+		mes "research. This opportunity";
+		mes "might prove worthwhile to you.";
+		next;
+		mes "[Ashe]";
+		mes "Now, we should be working";
+		mes "together with the Schwaltvalt";
+		mes "Republic's Research Team, but";
+		mes "our leaders aren't getting along^FFFFFF ^000000 at all. There's just a huge";
+		mes "clash of personalities...";
+		next;
+		mes "[Ashe]";
+		mes "In any case, if you'd";
+		mes "like to join us in our";
+		mes "efforts to uncover the";
+		mes "secrets of the past, then";
+		mes "please speak to Ms. Laurence.";
+		close;
+	} else if ((hg_alex == 2) || (hg_alex == 12)) {
+		mes "[Ashe]";
+		mes "So you're off to the";
+		mes "Odin Shrine? Good luck,";
+		mes "and be careful, alright?";
+		close;
+	} else if ((hg_alex == 3) || (hg_alex == 13)) {
+		mes "[Ashe]";
+		mes "Oh, you're back";
+		mes "earlier than I thought!";
+		mes "I think someone with";
+		mes "your talent can be";
+		mes "a really big help to us!";
+		close;
+	} else if (hg_alex == 4) {
+		mes "[Ashe]";
+		mes "Hm? You've decided to";
+		mes "help the Schwaltzvalt Team?";
+		mes "That's fine, but I'm afraid";
+		mes "Ms. Laurence may be a little";
+		mes "upset by that. Well, it's fine";
+		mes "with me. I don't really care.";
+		close;
+	} else if (hg_alex == 5) {
+		mes "[Ashe]";
+		mes "How's the work coming";
+		mes "along? I know the team";
+		mes "leaders hate each other,";
+		mes "but they should recognize";
+		mes "that one person's victory";
+		mes "in research is victory for all.";
+		close;
+	} else if (hg_alex == 6) {
+		mes "[Ashe]";
+		mes "How's the work coming";
+		mes "along? I know the team";
+		mes "leaders hate each other,";
+		mes "but they should recognize";
+		mes "that one person's victory";
+		mes "in research is victory for all.";
+		close;
+	} else if (hg_alex == 14) {
+		mes "[Ashe]";
+		mes "Please keep up";
+		mes "the good work~";
+		close;
+	} else if (hg_alex == 15) {
+		if (countitem(7511) > 4) {
+			mes "[Ashe]";
+			mes "Well, it looks like";
+			mes "everything turned out";
+			mes "alright in the end, huh?";
+			mes "Good work getting those runes.";
+			close;
+		} else {
+			mes "[Ashe]";
+			mes "Oh, dear, you don't";
+			mes "look very well. Did";
+			mes "something happen?";
+			close;
+		}
+	} else if (hg_alex == 16) {
+		mes "[Ashe]";
+		mes "I know that Ms. Laurence";
+		mes "can be... vocally aggressive,";
+		mes "but I'm sure that she really";
+		mes "appreciates all of your hard";
+		mes "work. Thank you so much for";
+		mes "all of your efforts~";
+		close;
+	} else if (hg_alex == 17) {
+		mes "[Ashe]";
+		mes "Why does Ms. Laurence";
+		mes "have to be this way?";
+		mes "I honestly think this";
+		mes "rivalry is awfully petty...";
+		close;
+	} else if (hg_alex == 19) {
+		mes "[Ashe]";
+		mes "Ehm...";
+		mes "Don't worry";
+		mes "about it~";
+		close;
+	} else if (hg_alex == 20) {
+		mes "[Ashe]";
+		mes "Please don't ask";
+		mes "me about anything...";
+		mes "Besides, I mean";
+		mes "you no harm~";
+		close;
+	}
+}
+
+//hu_in01.gat,174,90,0	script	Entrance	139,2,2,{
+//
+//OnTouch:
+//	mes "[Laura]";
+//	mes "So it means that everyone fooled me!";
+//	next;
+//	mes "== Laura is violently wielding a thick file in the air. ==";
+//	close;
+//}
+
+hu_in01.gat,159,84,3	script	Laura#2	70,{
+
+	if ((hg_alex == 22) || (hg_alex == 23)) {
+		cutin "hu_laura03.bmp",2;
+		emotion ET_FRET,"Laura#2";
+		mes "[Laura]";
+		mes "Wh-what...?!";
+		mes "Does this mean";
+		mes "that everyone has";
+		mes "had me fooled this";
+		mes "whole time?! This is";
+		mes "complete lunacy!";
+		next;
+		cutin "hu_alex04.bmp",0;
+		emotion ET_FRET,"Alex#2";
+		mes "[Alex]";
+		mes "What are you talking";
+		mes "about, you crazy wench?";
+		mes "You saw the shrine on the";
+		mes "other side! That's no secret!";
+		next;
+		cutin "hu_laura03.bmp",2;
+		mes "[Laura]";
+		mes "I'm not talking about that!";
+		mes "I saw your brother digging";
+		mes "everywhere in town in the";
+		mes "middle of the night!";
+		next;
+		cutin "hu_alex04.bmp",0;
+		mes "[Alex]";
+		mes "Lies...!";
+		mes "Where the hell did";
+		mes "you get that idea?";
+		mes "What makes you think";
+		mes "there are artifacts buried";
+		mes "around here inside town?";
+		next;
+		mes "[Alex]";
+		mes "Besides, what makes you";
+		mes "think that my brother would";
+		mes "waste so much time doing";
+		mes "something so ridiculous?";
+		next;
+		cutin "hu_laura03.bmp",2;
+		mes "[Laura]";
+		mes "Hahahaha! Yeah,";
+		mes "defend your brother";
+		mes "as much as you like,";
+		mes "you hypocrite! What do";
+		mes "you care about him, I know";
+		mes "you two really hate each other!";
+		next;
+		cutin "hu_alex04.bmp",0;
+		mes "[Alex]";
+		mes "What was that...?";
+		mes "I dare you to say";
+		mes "that again! I'll make";
+		mes "sure that you regret it!";
+		next;
+		cutin "hu_laura01.bmp",2;
+		mes "[Laura]";
+		mes "I know that you were helping";
+		mes "him in his excavations. There's";
+		mes "no way so much progress can be";
+		mes "done by one man alone! In fact,";
+		mes "I have evidence that proves it!";
+		next;
+		mes "^3355FFLaura violently";
+		mes "waves a thick file";
+		mes "clasped in her hands.^000000";
+		next;
+		emotion ET_HUK,"Julian#2";
+		mes "[Julian]";
+		mes "What...?";
+		mes "Argh, that's--!";
+		next;
+		emotion ET_ANGER,"Laura#2";
+		mes "[Laura]";
+		mes "That's right.";
+		mes "Now tell me, what the";
+		mes "hell is ''^FF0000Ymir's Heart?^000000''";
+		next;
+		cutin "hu_alex02.bmp",0;
+		mes "[Alex]";
+		mes "......";
+		mes "Julian!";
+		next;
+		emotion ET_PROFUSELY_SWAT,"Julian#2";
+		mes "[Julian]";
+		mes "Uh, this isn't my fault!";
+		mes "Sh-she doesn't have any";
+		mes "right to come into our office!";
+		next;
+		cutin "hu_laura02.bmp",2;
+		mes "[Laura]";
+		mes "Hah! Aren't we supposed to";
+		mes "be equal partners in the same";
+		mes "expedition? That's what I heard";
+		mes "at the beginning! But you guys";
+		mes "have something different in mind! ^FFFFFF ^000000";
+		next;
+		cutin "hu_laura03.bmp",2;
+		mes "[Laura]";
+		mes "It's awfully suspicious: you";
+		mes "guys are only going out at";
+		mes "night, and you're making so";
+		mes "little progress with the Odin";
+		mes "Shrine excavation. Tell me,";
+		mes "what are your true goals?!";
+		next;
+		cutin "hu_alex03.bmp",0;
+		emotion ET_PROFUSELY_SWAT,"Alex#2";
+		mes "[Alex]";
+		mes "I-I don't know what you're";
+		mes "talking about! J-Julian must";
+		mes "have gotten some mission, and";
+		mes "has been carrying it out without^FFFFFF ^000000 my consent! Don't go twisting";
+		mes "the facts, you... you thief!";
+		next;
+		cutin "hu_laura03.bmp",2;
+		mes "[Laura]";
+		mes "Thief...?!";
+		mes "Look who's";
+		mes "talking!";
+		next;
+		mes "^3355FFLaura tossed the file";
+		mes "away, and threateningly";
+		mes "rolled up her sleeves.^000000";
+		next;
+		emotion ET_CRY,"Ashe#2";
+		mes "[Ashe]";
+		mes "S-stop!";
+		mes "Both of you!";
+		next;
+		emotion ET_FRET,"Laura#2";
+		mes "[Laura]";
+		mes "Stay out of";
+		mes "this, Ashe!";
+		next;
+		cutin "hu_alex04.bmp",0;
+		emotion ET_FRET,"Alex#2";
+		mes "[Alex]";
+		mes "Yeah, this is none";
+		mes "of your business!";
+		next;
+		set hg_alex,25;
+		mes "[Ashe]";
+		mes "Oh... Oh, dear!";
+		close2;
+		cutin "hu_alex04.bmp",255;
+		end;
+	} else if (hg_alex > 23) {
+		cutin "hu_laura03.bmp",2;
+		emotion ET_FRET,"Laura#2";
+		mes "[Laura]";
+		mes "Hah...!";
+		mes "Did you...";
+		mes "Just hit me?";
+		next;
+		cutin "hu_alex04.bmp",0;
+		emotion ET_FRET,"Alex#2";
+		mes "[Alex]";
+		mes "You crazy...!";
+		close2;
+		cutin "hu_alex04.bmp",255;
+		end;
+	}
+}
+
+hu_in01.gat,158,84,5	script	Alex#2	803,{
+
+	if ((hg_alex == 22) || (hg_alex == 23)) {
+		cutin "hu_laura03.bmp",2;
+		emotion ET_FRET,"Laura#2";
+		mes "[Laura]";
+		mes "Wh-what...?!";
+		mes "Does this mean";
+		mes "that everyone has";
+		mes "had me fooled this";
+		mes "whole time?! This is";
+		mes "complete lunacy!";
+		next;
+		cutin "hu_alex04.bmp",0;
+		emotion ET_FRET,"Alex#2";
+		mes "[Alex]";
+		mes "What are you talking";
+		mes "about, you crazy wench?";
+		mes "You saw the shrine on the";
+		mes "other side! That's no secret!";
+		next;
+		cutin "hu_laura03.bmp",2;
+		mes "[Laura]";
+		mes "I'm not talking about that!";
+		mes "I saw your brother digging";
+		mes "everywhere in town in the";
+		mes "middle of the night!";
+		next;
+		cutin "hu_alex04.bmp",0;
+		mes "[Alex]";
+		mes "Lies...!";
+		mes "Where the hell did";
+		mes "you get that idea?";
+		mes "What makes you think";
+		mes "there are artifacts buried";
+		mes "around here inside town?";
+		next;
+		mes "[Alex]";
+		mes "Besides, what makes you";
+		mes "think that my brother would";
+		mes "waste so much time doing";
+		mes "something so ridiculous?";
+		next;
+		cutin "hu_laura03.bmp",2;
+		mes "[Laura]";
+		mes "Hahahaha! Yeah,";
+		mes "defend your brother";
+		mes "as much as you like,";
+		mes "you hypocrite! What do";
+		mes "you care about him, I know";
+		mes "you two really hate each other!";
+		next;
+		cutin "hu_alex04.bmp",0;
+		mes "[Alex]";
+		mes "What was that...?";
+		mes "I dare you to say";
+		mes "that again! I'll make";
+		mes "sure that you regret it!";
+		next;
+		cutin "hu_laura01.bmp",2;
+		mes "[Laura]";
+		mes "I know that you were helping";
+		mes "him in his excavations. There's";
+		mes "no way so much progress can be";
+		mes "done by one man alone! In fact,";
+		mes "I have evidence that proves it!";
+		next;
+		mes "^3355FFLaura violently";
+		mes "waves a thick file";
+		mes "clasped in her hands.^000000";
+		next;
+		emotion ET_HUK,"Julian#2";
+		mes "[Julian]";
+		mes "What...?";
+		mes "Argh, that's--!";
+		next;
+		emotion ET_ANGER,"Laura#2";
+		mes "[Laura]";
+		mes "That's right.";
+		mes "Now tell me, what the";
+		mes "hell is ''^FF0000Ymir's Heart?^000000''";
+		next;
+		cutin "hu_alex02.bmp",0;
+		mes "[Alex]";
+		mes "......";
+		mes "Julian!";
+		next;
+		emotion ET_PROFUSELY_SWAT,"Julian#2";
+		mes "[Julian]";
+		mes "Uh, this isn't my fault!";
+		mes "Sh-she doesn't have any";
+		mes "right to come into our office!";
+		next;
+		cutin "hu_laura02.bmp",2;
+		mes "[Laura]";
+		mes "Hah! Aren't we supposed to";
+		mes "be equal partners in the same";
+		mes "expedition? That's what I heard";
+		mes "at the beginning! But you guys";
+		mes "have something different in mind! ^FFFFFF ^000000";
+		next;
+		cutin "hu_laura03.bmp",2;
+		mes "[Laura]";
+		mes "It's awfully suspicious: you";
+		mes "guys are only going out at";
+		mes "night, and you're making so";
+		mes "little progress with the Odin";
+		mes "Shrine excavation. Tell me,";
+		mes "what are your true goals?!";
+		next;
+		cutin "hu_alex03.bmp",0;
+		emotion ET_PROFUSELY_SWAT,"Alex#2";
+		mes "[Alex]";
+		mes "I-I don't know what you're";
+		mes "talking about! J-Julian must";
+		mes "have gotten some mission, and";
+		mes "has been carrying it out without^FFFFFF ^000000 my consent! Don't go twisting";
+		mes "the facts, you... you thief!";
+		next;
+		cutin "hu_laura03.bmp",2;
+		mes "[Laura]";
+		mes "Thief...?!";
+		mes "Look who's";
+		mes "talking!";
+		next;
+		mes "^3355FFLaura tossed the file";
+		mes "away, and threateningly";
+		mes "rolled up her sleeves.^000000";
+		next;
+		emotion ET_CRY,"Ashe#2";
+		mes "[Ashe]";
+		mes "S-stop!";
+		mes "Both of you!";
+		next;
+		emotion ET_FRET,"Laura#2";
+		mes "[Laura]";
+		mes "Stay out of";
+		mes "this, Ashe!";
+		next;
+		cutin "hu_alex04.bmp",0;
+		emotion ET_FRET,"Alex#2";
+		mes "[Alex]";
+		mes "Yeah, this is none";
+		mes "of your business!";
+		next;
+		set hg_alex,25;
+		mes "[Ashe]";
+		mes "Oh... Oh, dear!";
+		close2;
+		cutin "hu_alex04.bmp",255;
+		end;
+	} else if (hg_alex > 23) {
+		cutin "hu_laura03.bmp",2;
+		emotion ET_FRET,"Laura#2";
+		mes "[Laura]";
+		mes "Hah...!";
+		mes "Did you...";
+		mes "Just hit me?";
+		next;
+		cutin "hu_alex04.bmp",0;
+		emotion ET_FRET,"Alex#2";
+		mes "[Alex]";
+		mes "You crazy...!";
+		close2;
+		cutin "hu_alex04.bmp",255;
+		end;
+	}
+}
+
+hu_in01.gat,162,85,4	script	Ashe#2	95,{
+
+	if ((hg_alex == 22) || (hg_alex == 23)) {
+		mes "[Ashe]";
+		mes "This...";
+		mes "This doesn't";
+		mes "look good at all!";
+		close;
+	} else if (hg_alex == 25) {
+		mes "^3355FFAshe picked up";
+		mes "the file that Laura";
+		mes "tossed away.^000000";
+		next;
+		mes "[Ashe]";
+		mes "Um, I've got a favor";
+		mes "of my own to ask you.";
+		mes "Would you please bring";
+		mes "this file to Morroc? Just";
+		mes "bring it to my comrade";
+		mes "over at the South Gate.";
+		next;
+		mes "[Ashe]";
+		mes "I'm sorry, but we don't";
+		mes "have much time left. I guess";
+		mes "this is the last time we will";
+		mes "ever see each other, so thank";
+		mes "you for all your help, friend.";
+		next;
+		set hg_alex,59;
+		mes "[Ashe]";
+		mes "Don't worry, my comrade";
+		mes "at Morroc's South Gate will";
+		mes "explain everything once you";
+		mes "find him. Please hurry!";
+		close;
+	} else if (hg_alex == 59) {
+		mes "[Ashe]";
+		mes "Don't worry, my comrade";
+		mes "at Morroc's South Gate will";
+		mes "explain everything once you";
+		mes "find him. Please hurry, and";
+		mes "find him as soon as you can!";
+		close;
+	}
+}
+
+hu_in01.gat,171,90,0	script	Ashe#3	139,2,2,{
+
+OnTouch:
+	if (hg_alex == 25) {
+		mes "^3355FFAshe picked up";
+		mes "the file that Laura";
+		mes "tossed away.^000000";
+		next;
+		mes "[Ashe]";
+		mes "Um, I've got a favor";
+		mes "of my own to ask you.";
+		mes "Would you please bring";
+		mes "this file to Morroc? Just";
+		mes "bring it to my comrade";
+		mes "over at the South Gate.";
+		next;
+		mes "[Ashe]";
+		mes "I'm sorry, but we don't";
+		mes "have much time left. I guess";
+		mes "this is the last time we will";
+		mes "ever see each other, so thank";
+		mes "you for all your help, friend.";
+		next;
+		set hg_alex,59;
+		mes "[Ashe]";
+		mes "Don't worry, my comrade";
+		mes "at Morroc's South Gate will";
+		mes "explain everything once you";
+		mes "find him. Please hurry!";
+		close;
+	}
+}
+
+hu_in01.gat,155,82,4	script	Julian#2	86,{
+
+	if ((hg_alex == 22) || (hg_alex == 23)) {
+		mes "[Julian]";
+		mes "I...";
+		mes "I don't know";
+		mes "what I should do!";
+		close;
+	} else {
+		mes "[Julian]";
+		mes "I've stopped caring";
+		mes "whether they fight or";
+		mes "not... I'm so not get";
+		mes "involved. If you want,";
+		mes "you can try to stop them...";
+		close;
+	}
+}
+
+moc_fild12.gat,160,372,0	script	Hit	139,{
+
+OnCommandEffect:
+	misceffect 122,"Hit";
+	end;
+}
+
+moc_fild12.gat,160,365,0	script	Ashe#4	139,4,4,{
+
+OnTouch:
+	if (hg_alex == 59) {
+		mes "[???]";
+		mes "...Silence.";
+		next;
+		mes "[???]";
+		mes "Don't turn, don't";
+		mes "flinch, don't even";
+		mes "breathe. You're being";
+		mes "followed. Hold on a sec";
+		mes "while I take care of him.";
+		next;
+		donpcevent "Hit::OnCommandEffect";
+		mes "[???]";
+		mes "Ha!";
+		next;
+		mes "[???]";
+		mes "...............................";
+		mes "Good. You've done some";
+		mes "good work. Just drop the file";
+		mes "to the ground. And for your";
+		mes "own good, don't turn around.";
+		next;
+		mes "^3355FFYou drop the file";
+		mes "to the ground, and it";
+		mes "immediately vanishes in";
+		mes "a small whirlwind of sand.^000000";
+		next;
+		mes "[???]";
+		mes "I know that you've";
+		mes "gotten involved in all";
+		mes "this unexpectedly. Before";
+		mes "I leave, have you got any";
+		mes "questions? Otherwise, I'll go.";
+		next;
+		menu "Who's Ashe?",L_LABEL1,"What happened to Laura?",L_LABEL2;
+		L_LABEL1:
+			mes "[???]";
+			mes "You'll never see her";
+			mes "again. She's already";
+			mes "been assigned to a new";
+			mes "mission. If it makes you";
+			mes "feel better, she's one of the";
+			mes "members of ''Secret Wing.''";
+			next;
+			mes "[???]";
+			mes "Secret Wing is a secret";
+			mes "organization that's scattered";
+			mes "now, but some of the members";
+			mes "are still active. Just consider us enemies of Rekenber Corporation";
+			mes "in the Schwaltzvalt Republic.";
+			next;
+			mes "[???]";
+			mes "Everything you saw and";
+			mes "heard is all true. The ghost";
+			mes "of Giantes still remains within";
+			mes "the Odin Shrine. Rekenber wants";
+			mes "it for their ends, as well as";
+			mes "Arunafeltz. It's complicated...";
+			next;
+			mes "[???]";
+			mes "The people of Rune-Midgarts";
+			mes "and Schwaltzvalt Republic still";
+			mes "don't know what's going on.";
+			mes "A lot of people are just being";
+			mes "used... Like that one lady,";
+			mes "that archaeologist, Laura.";
+			next;
+			set BaseExp,BaseExp+700000;
+			set hg_alex,60;
+			mes "[???]";
+			mes "...Thanks for";
+			mes "the file. Take care.";
+			mes "Always watch your back.";
+			close;
+		L_LABEL2:
+			mes "[???]";
+			mes "She'll be fine. If you're that";
+			mes "interested in archaeology,";
+			mes "you'll be happy to know that";
+			mes "she'll run the excavation the";
+			mes "way she wants to. Rekenber and Arunafeltz should leave her alone.";
+			next;
+			mes "[???]";
+			mes "You're probably curious";
+			mes "about Ashe, and perhaps";
+			mes "myself as well. Now, have you";
+			mes "ever heard of ''Secret Wing?''";
+			next;
+			mes "[???]";
+			mes "Secret Wing is a secret";
+			mes "organization that's scattered";
+			mes "now, but some of the members";
+			mes "are still active. Just consider us enemies of Rekenber Corporation";
+			mes "in the Schwaltzvalt Republic.";
+			next;
+			mes "[???]";
+			mes "Everything you saw and";
+			mes "heard is all true. The ghost";
+			mes "of Giantes still remains within";
+			mes "the Odin Shrine. Rekenber wants";
+			mes "it for their ends, as well as";
+			mes "Arunafeltz. It's complicated...";
+			next;
+			mes "[???]";
+			mes "The people of Rune-Midgarts";
+			mes "and Schwaltzvalt Republic still";
+			mes "don't know what's going on.";
+			mes "A lot of people are just being";
+			mes "used... Like that one lady,";
+			mes "that archaeologist, Laura.";
+			next;
+			set BaseExp,BaseExp+700000;
+			set hg_alex,60;
+			mes "[???]";
+			mes "...Thanks for";
+			mes "the file. Take care.";
+			mes "Always watch your back.";
+			close;
+	}
+}
+
+hugel.gat,209,109,2	script	Boatman	 709,{
+
+	mes "[Boatman]";
+	mes "Ah, hello~";
+	mes "Would you like to sail";
+	mes "to the Odin Shrine? The";
+	mes "fare for 1 passenger is";
+	mes "800 zeny. Shall we board?";
+	next;
+	menu "No, thanks.",L_LABEL1,"Sure!",L_LABEL2;
+	L_LABEL1:
+		mes "[Boatman]";
+		mes "Ah, alright.";
+		mes "If you change your";
+		mes "mind, I invite you";
+		mes "to return and just";
+		mes "let me know.";
+		close;
+	L_LABEL2:
+		if (Zeny < 800) {
+			mes "[Boatman]";
+			mes "Hm? You don't have enough";
+			mes "money to pay the fare. Well,";
+			mes "just come back when you do";
+			mes "have the zeny, and then I'll";
+			mes "take you to the Odin Shrine.";
+			close;
+		} else {
+			mes "[Boatman]";
+			mes "Alright then,";
+			mes "climb aboard!";
+			mes "We'll arrive near";
+			mes "the Odin Shrine soon~";
+			close2;
+			set Zeny,Zeny-800;
+			if (hg_alex == 2) {
+				set hg_alex,3;
+			} else if (hg_alex == 4) {
+				set hg_alex,5;
+			} else if (hg_alex == 12) {
+				set hg_alex,13;
+			} else if (hg_alex == 14) {
+				set hg_alex,15;
+			}
+			warp "odin_tem01.gat",100,146;
+			end;
+		}
+}
+
+odin_tem01.gat,93,146,4	script	Boatman	709,{
+
+	mes "[Boatman]";
+	mes "Ah, would you";
+	mes "like to sail back to";
+	mes "Hugel now, or did you";
+	mes "want to explore a bit more?";
+	next;
+	menu "I still need to look around...",L_LABEL1,"Yes, take me back to Hugel.",L_LABEL2;
+	L_LABEL1:
+		mes "[Boatman]";
+		mes "Well, alright.";
+		mes "Just let me know";
+		mes "when you're ready to";
+		mes "leave this dangerous place.";
+		close;
+	L_LABEL2:
+		mes "[Boatman]";
+		mes "Alright then,";
+		mes "climb aboard!";
+		mes "We'll arrive near";
+		mes "Hugel very soon~";
+		close2;
+		warp "hugel.gat",206,109;
+		end;
+}
+
+odin_tem03.gat,4,2,0	script	Init	139,{
+
+OnInit:
+	initnpctimer;
+	end;
+
+OnTimer100000:
+	stopnpctimer;
+	set '@random,rand(1,5);
+	switch('@random) {
+	case 1:
+		enablenpc "warpinside#1";
+		end;
+	case 2:
+		enablenpc "warpinside#2";
+		end;
+	case 3:
+		enablenpc "warpinside#3";
+		end;
+	case 4:
+		enablenpc "warpinside#4";
+		end;
+	case 5:
+		enablenpc "warpinside#5";
+		end;
+	}
+}
+
+odin_tem03.gat,266,302,0	script	warpinside#1	139,3,3,{
+
+OnInit:
+	disablenpc "warpinside#1";
+	end;
+
+OnTouch:
+	if ((hg_alex > 19) && (hg_alex < 23)) {
+		set '@random,rand(1,4);
+		switch('@random) {
+		case 1:
+			set hg_alex,21;
+			warp "que_hugel.gat",36,179;
+			enablenpc "warpinside#2";
+			disablenpc "warpinside#1";
+			end;
+		case 2:
+			set hg_alex,21;
+			warp "que_hugel.gat",36,179;
+			enablenpc "warpinside#3";
+			disablenpc "warpinside#1";
+			end;
+		case 3:
+			set hg_alex,21;
+			warp "que_hugel.gat",36,179;
+			enablenpc "warpinside#4";
+			disablenpc "warpinside#1";
+			end;
+		case 4:
+			set hg_alex,21;
+			warp "que_hugel.gat",36,179;
+			enablenpc "warpinside#5";
+			disablenpc "warpinside#1";
+			end;
+		}
+	}
+}
+
+odin_tem03.gat,288,271,0	script	warpinside#2	139,3,3,{
+
+OnInit:
+	disablenpc "warpinside#2";
+	end;
+
+OnTouch:
+	if ((hg_alex > 19) && (hg_alex < 23)) {
+		set '@random,rand(1,4);
+		switch('@random) {
+		case 1:
+			set hg_alex,21;
+			warp "que_hugel.gat",36,179;
+			enablenpc "warpinside#1";
+			disablenpc "warpinside#2";
+			end;
+		case 2:
+			set hg_alex,21;
+			warp "que_hugel.gat",36,179;
+			enablenpc "warpinside#3";
+			disablenpc "warpinside#2";
+			end;
+		case 3:
+			set hg_alex,21;
+			warp "que_hugel.gat",36,179;
+			enablenpc "warpinside#4";
+			disablenpc "warpinside#2";
+			end;
+		case 4:
+			set hg_alex,21;
+			warp "que_hugel.gat",36,179;
+			enablenpc "warpinside#5";
+			disablenpc "warpinside#2";
+			end;
+		}
+	}
+}
+
+odin_tem03.gat,283,241,0	script	warpinside#3	139,3,3,{
+
+OnInit:
+	disablenpc "warpinside#3";
+	end;
+
+OnTouch:
+	if ((hg_alex > 19) && (hg_alex < 23)) {
+		set '@random,rand(1,4);
+		switch('@random) {
+		case 1:
+			set hg_alex,21;
+			warp "que_hugel.gat",36,179;
+			enablenpc "warpinside#1";
+			disablenpc "warpinside#3";
+			end;
+		case 2:
+			set hg_alex,21;
+			warp "que_hugel.gat",36,179;
+			enablenpc "warpinside#2";
+			disablenpc "warpinside#3";
+			end;
+		case 3:
+			set hg_alex,21;
+			warp "que_hugel.gat",36,179;
+			enablenpc "warpinside#4";
+			disablenpc "warpinside#3";
+			end;
+		case 4:
+			set hg_alex,21;
+			warp "que_hugel.gat",36,179;
+			enablenpc "warpinside#5";
+			disablenpc "warpinside#3";
+			end;
+		}
+	}
+}
+
+odin_tem03.gat,179,275,0	script	warpinside#4	139,3,3,{
+
+OnInit:
+	disablenpc "warpinside#4";
+	end;
+
+OnTouch:
+	if ((hg_alex > 19) && (hg_alex < 23)) {
+		set '@random,rand(1,4);
+		switch('@random) {
+		case 1:
+			set hg_alex,21;
+			warp "que_hugel.gat",36,179;
+			enablenpc "warpinside#1";
+			disablenpc "warpinside#4";
+			end;
+		case 2:
+			set hg_alex,21;
+			warp "que_hugel.gat",36,179;
+			enablenpc "warpinside#2";
+			disablenpc "warpinside#4";
+			end;
+		case 3:
+			set hg_alex,21;
+			warp "que_hugel.gat",36,179;
+			enablenpc "warpinside#3";
+			disablenpc "warpinside#4";
+			end;
+		case 4:
+			set hg_alex,21;
+			warp "que_hugel.gat",36,179;
+			enablenpc "warpinside#5";
+			disablenpc "warpinside#4";
+			end;
+		}
+	}
+}
+
+odin_tem03.gat,320,264,0	script	warpinside#5	139,3,3,{
+
+OnInit:
+	disablenpc "warpinside#5";
+	end;
+
+OnTouch:
+	if ((hg_alex > 19) && (hg_alex < 23)) {
+		set '@random,rand(1,4);
+		switch('@random) {
+		case 1:
+			set hg_alex,21;
+			warp "que_hugel.gat",36,179;
+			enablenpc "warpinside#1";
+			disablenpc "warpinside#5";
+			end;
+		case 2:
+			set hg_alex,21;
+			warp "que_hugel.gat",36,179;
+			enablenpc "warpinside#2";
+			disablenpc "warpinside#5";
+			end;
+		case 3:
+			set hg_alex,21;
+			warp "que_hugel.gat",36,179;
+			enablenpc "warpinside#3";
+			disablenpc "warpinside#5";
+			end;
+		case 4:
+			set hg_alex,21;
+			warp "que_hugel.gat",36,179;
+			enablenpc "warpinside#4";
+			disablenpc "warpinside#5";
+			end;
+		}
+	}
+}
+
+hu_in01.gat,99,90,0	script	Empty	139,3,3,{
+
+OnTouch:
+	mes "^3355FFThis place is empty.";
+	mes "Everyone must";
+	mes "have already left.^000000";
 	close;
 }
 
-hu_in01.gat,18,94,3	script	Part-Timer	49,{
+que_hugel.gat,35,29,5	script	Object	111,2,2,{
+
+OnTouch:
+	if (hg_alex == 21) {
+		mes "^3355FFA weathered structure";
+		mes "of the Odin Shrine is";
+		mes "half buried beneath the";
+		mes "ground, but it still looks";
+		mes "fairly stable and durable.^000000";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "......";
+		mes ".........";
+		next;
+		menu "Pass",L_LABEL1,"Explore",L_LABEL2;
+		L_LABEL1:
+			mes "^3355FFYou decided to pass";
+			mes "by the shrine's remnants.^000000";
+			close;
+		L_LABEL2:
+			set '@ahg,rand(1,3);
+			if ('@ahg == 1) {
+				mes "^3355FFYou catch a bright";
+				mes "shimmer among the";
+				mes "remnants of the shrine.^000000";
+				next;
+				menu "Ignore",L_LABEL3,"Pick it up",L_LABEL4;
+				L_LABEL3:
+					mes "^3355FFYou decide to continue";
+					mes "searching through the";
+					mes "shrine's ruins.^000000";
+					close;
+				L_LABEL4:
+					mes "^3355FFYou find a shining stone";
+					mes "within the ruins, and carefully";
+					mes "put it into your bag.^000000";
+					next;
+					mes "^FF0000Thud!^000000";
+					next;
+					mes "["+strcharinfo(0)+"]";
+					mes "What...?";
+					mes "What was";
+					mes "that noise?!";
+					next;
+					misceffect 90,"Object";
+					misceffect 90,"Object";
+					misceffect 90,"Object";
+					mes "["+strcharinfo(0)+"]";
+					mes "Wa...waaaahhhh!";
+					close2;
+					set hg_alex,22;
+					warp "que_hugel.gat",163,31;
+					end;
+			} else {
+				mes "^3355FFUnfortunately, you";
+				mes "were unable to find";
+				mes "anything in the ruins.^000000";
+				close;
+			}
+	} else if (hg_alex == 22) {
+		warp "que_hugel.gat",163,31;
+		end;
+	}
+	//mes "[Giantes]";
+	//mes "...It is a human...finally.";
+	//mes "You are later than I thought.";
+	//next;
+	//mes "[Giantes]";
+	//mes "What you hear is not an actual voice.";
+	//mes "I am sending you my message directly to your brain.";
+	//mes "Human's language is meaningless to us.";
+	//close;
+}
+
+que_hugel.gat,163,31,0	script	object_2	139,3,3,{
+
+OnTouch:
+	mes "^3355FFWhen you come back";
+	mes "to your senses, you";
+	mes "find that nothing is";
+	mes "left in this place.^000000";
+	close;
+}
+
+que_hugel.gat,163,178,0	script	object#3	139,3,3,{
+
+OnTouch:
+	if (hg_alex == 22) {
+		mes "["+strcharinfo(0)+"]";
+		mes "Huh?";
+		mes "What's happening?";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "Waaaaahhhh!";
+		close2;
+		set hg_alex,23;
+		warp "odin_tem03.gat",264,260;
+		end;
+	}
+}
+
+hu_in01.gat,15,108,0	script	alex03	45,1,1,{
+
+OnTouch:
+	if (hg_alex == 17) {
+		mes "[Alex]";
+		mes "Haven't you found it yet?";
+		mes "You said that it'd be here!";
+		mes "You told me so many people";
+		mes "are drawn to his place since";
+		mes "Ymir's Heart might really";
+		mes "be buried in this area!";
+		next;
+		mes "[Julian]";
+		mes "I'm pretty sure it's";
+		mes "around here somewhere,";
+		mes "but I need more time to dig!";
+		next;
+		mes "[Alex]";
+		mes "I understand why you wanted";
+		mes "to follow me here, but there's";
+		mes "no way to confirm its existence";
+		mes "in this area without digging";
+		mes "it up. Plus, I'm still worried";
+		mes "about the ''Shinokas'' issue...";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "...Shinokas?";
+		next;
+		mes "[Alex]";
+		mes "We couldn't find";
+		mes "Ymir's Heart inside";
+		mes "the village, either...";
+		mes "Why don't you just--";
+		next;
+		mes "[Julian]";
+		mes "Yeah, you think you can do";
+		mes "everything yourself since";
+		mes "you're so much better than";
+		mes "me, huh?! I'm the black sheep";
+		mes "of the family, and father loves";
+		mes "you more than me, right?!";
+		next;
+		mes "[Alex]";
+		mes "You already know that.";
+		next;
+		mes "[Julian]";
+		mes "Wha--?!";
+		mes "Why... I...!";
+		next;
+		mes "[Alex]";
+		mes "Geez, you're impatient.";
+		mes "Listen, your ambitions";
+		mes "can ruin everything. You're";
+		mes "not planning on defying me,";
+		mes "are you? Because if you are...";
+		next;
+		mes "[Julian]";
+		mes "You can never understand";
+		mes "why I want to find Ymir's";
+		mes "Heat! I'm not going to give";
+		mes "up looking for it, so just";
+		mes "leave me alone!";
+		next;
+		mes "[Alex]";
+		mes "I know you better than";
+		mes "yourself, and I can do";
+		mes "everything better than you";
+		mes "can. Forget Ymir's Heart for";
+		mes "now. Giantes is our highest,";
+		mes "most important priority!";
+		next;
+		mes "[Julian]";
+		mes "You always...!";
+		mes "...............................";
+		mes "Wait... You hear that?";
+		next;
+		set hg_alex,18;
+		mes "[Alex]";
+		mes "We'll continue this";
+		mes "conversation later.";
+		close;
+	} else if (hg_alex == 18) {
+		mes "......";
+		mes ".........";
+		close;
+	} else {
+		warp "hu_in01.gat",15,155;
+		end;
+	}
+}
+
+hugel.gat,52,90,0	script	alex06	45,1,1,{
+
+OnTouch:
+	if (hg_alex > 59) {
+		warp "hu_in01.gat",102,90;
+		end;
+	} else if ((hg_alex > 21) && (hg_alex < 60)) {
+		warp "hu_in01.gat",173,90;
+		end;
+	} else {
+		warp "hu_in01.gat",33,90;
+		end;
+	}
+}
+
+hu_in01.gat,155,70,0	script	alex07	45,1,1,{
+
+OnTouch:
+	mes "^3355FFThe door is locked.^000000";
+	close;
+}
+
+hu_in01.gat,155,108,0	script	alex08	45,1,1,{
+
+OnTouch:
+	mes "^3355FFThe door is locked.^000000";
+	close;
+}
+
+hu_in01.gat,111,386,4	script	Chris	86,{
+
+	mes "[Chris]";
+	mes "You know, the people don't";
+	mes "fight harmful monsters, they";
+	mes "just protect themselves by";
+	mes "equipping armor. That's";
+	mes "just the way they are.";
+	next;
+	mes "[Chris]";
+	mes "If you want to buy";
+	mes "some nicer armors,";
+	mes "then I suggest buying";
+	mes "some in a bigger city.";
+	close;
+}
+
+hu_in01.gat,18,94,0	script	A Part-Timer#1	49,{
 
 	mes "[Luda]";
 	mes "Welcome to the";
@@ -4666,144 +7181,13 @@ hu_in01.gat,18,94,3	script	Part-Timer	49,{
 	close;
 }
 
-hu_in01.gat,26,77,4	script	Part-Timer	50,{
+hu_in01.gat,26,77,4	script	Part-Timer#2	 50,{
 
-	mes "^3131FFThis part-timer is";
+	mes "^3355FFThis part-timer is";
 	mes "completely engrossed";
 	mes "in his task of organizing";
 	mes "files and books.^000000";
 	close;
-}
-
-hu_in01.gat,18,167,5	script	Julian	86,{
-
-	mes "[Julian]";
-	mes "Say, are you here";
-	mes "for a job? We're looking";
-	mes "for someone that's passionate";
-	mes "about ancient history. If you";
-	mes "want to make money, then this";
-	// iRO dialogue fix
-	// mes "this the wrong place for you~";
-	// mes "is the wrong place for you~";
-	next;
-	mes "[Julian]";
-	mes "This is supposed to be";
-	mes "a collaborative excavation,";
-	mes "but the team leaders are too";
-	mes "stubborn, and refuse to make";
-	mes "any compromises. It's been";
-	mes "incredibly frustrating...";
-	next;
-	mes "[Julian]";
-	mes "Basically, each of our teams";
-	mes "is conducting its own research";
-	mes "for now. Now, we need your help";
-	mes "to find any relics from the odin";
-	mes "Shrine. We'd appreciate it if you";
-	// iRO dialogue fix
-	// mes "brought as many as you can!";
-	mes "bring as many as you can!";
-	close;
-}
-
-// I'm guessing if I wasn't a Novice, or I was higher-leveled
-// she would say something different? [Tsuyuki] ->
-hu_in01.gat,19,161,3	script	Alex	803,{
-
-	cutin "hu_alex01",2;
-	mes "[Alex]";
-	mes "Huh...?";
-	mes "What do you want?";
-	next;
-	menu	"Excuse me...",L_Alex01,
-		"I saw the recruitment notice and...",L_Alex02;
-
-	L_Alex01:
-		mes "[Alex]";
-		mes "Whatever you're";
-		mes "trying to sell me,";
-		mes "I'm not interested!";
-		mes "Now get out of here!";
-		close2;
-		cutin "",255;
-		end;
-
-	L_Alex02:
-		cutin "",255;
-		cutin "hu_alex02",2;
-		mes "[Alex]";
-		mes "Oh, so you saw the";
-		mes "recruitment notice for the";
-		mes "Odin Shrine Expedition, eh?";
-		mes "Well, I dunno. I think that";
-		mes "kind of expedition would";
-		mes "eat you alive. No offense...";
-		next;
-		mes "[Alex]";
-		mes "Look, I'll reconsider";
-		mes "whether you qualify after";
-		// iRO dialogue fix (My god..) [Tsuyuki]
-		// you get train a little more,";
-		mes "you train a little more,";
-		mes "develop your skills, you know,";
-		mes "get stronger. For now, though,";
-		mes "I do'nt think we can use you.";
-		close2;
-		cutin "",255;
-		end;
-}
-
-hu_in01.gat,16,20,5	script	Ashe	95,{
-
-	mes "[Ashe]";
-	// iRO dialogue fix
-	// mes "Oh, you've here in response";
-	mes "Oh, you're here in response";
-	mes "to the recruitment notice?";
-	mes "Well then, let me give you";
-	mes "a brief idea about the work.";
-	mes "First off, we can't pay you any";
-	mes "money, so you'd be a volunteer.";
-	next;
-	mes "[Ashe]";
-	mes "Instead, you're allowed to";
-	mes "keep whatever you excavate";
-	mes "in the Odin Shrine, so long";
-	mes "as we don't need it for our";
-	mes "research. This opportunity";
-	mes "might prove worthwhile to you.";
-	next;
-	mes "[Ashe]";
-	mes "Now, we should be working";
-	mes "together with the Schaltzvalt";
-	mes "Republic's Research Team, but";
-	mes "our leaders aren't getting along";
-	mes "at all. There's just a huge";
-	mes "clash of personalities...";
-	next;
-	mes "[Ashe]";
-	mes "In any case, if you'd";
-	mes "like to join us in our";
-	mes "efforts to uncover the";
-	mes "secrets of the past, then";
-	mes "please speak to Ms. Laurence.";
-	close;
-}
-
-hu_in01.gat,14,11,4	script	Laura	70,{
-
-	cutin "hu_laura01",2;
-	mes "[Laura]";
-	mes "Hm? Oh, you must be";
-	mes "here in response to our";
-	mes "recruitment notice, yes?";
-	mes "Let me take a look at you...";
-	mes "Oh, you're all skin and bone!";
-	mes "I can't use someone like you.";
-	close2;
-	cutin "",255;
-	end;
 }
 
 

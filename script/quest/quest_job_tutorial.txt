@@ -9,9 +9,10 @@
 //--------------------------------------------------------------
 // Script Title: First Class Tutorial Quests	Author: Jukka
 //--------------------------------------------------------------
-// Revision History: v1.0
+// Revision History: v1.1
 //--------------------------------------------------------------
 //	1.0 First version, merged all Tutorial Quests by Jukka together [Tsuyuki]
+//	1.1 Fixed a small "Battle Traces" NPC name bug [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: * Aegis-certified *
 //--------------------------------------------------------------
@@ -8998,7 +8999,7 @@ moc_ruins.gat,66,164,4	script	Thief Trainer#T	84,{
 // Thief/Mage Dual Tutorial Quest
 //--------------------------------------------------------------
 
-moc_fild12.gat,166,369,0	script	battle_traces#1	844,{
+moc_fild12.gat,166,369,0	script	Battle Traces#1	844,{
 
 	if(BaseClass == Job_Thief){
 		if(tu_thief01 < 5){
@@ -9076,7 +9077,7 @@ moc_fild12.gat,173,215,0	script	Battle Traces#2	844,{
 	close;
 }
 
-moc_fild12.gat,276,165,0	script	battle_traces#3	844,{
+moc_fild12.gat,276,165,0	script	Battle Traces#3	844,{
 
 	if(BaseClass == Job_Thief){
 		if(tu_thief01 < 10){
@@ -9107,7 +9108,7 @@ moc_fild12.gat,276,165,0	script	battle_traces#3	844,{
 	close;
 }
 
-moc_fild11.gat,39,163,0	script	battle_traces#4	844,{
+moc_fild11.gat,39,163,0	script	Battle Traces#4	844,{
 
 	if(BaseClass == Job_Thief){
 		if(tu_thief01 < 11){
@@ -9140,7 +9141,7 @@ moc_fild11.gat,39,163,0	script	battle_traces#4	844,{
 	close;
 }
 
-moc_fild11.gat,205,52,0	script	battle_traces#5	844,{
+moc_fild11.gat,205,52,0	script	Battle Traces#5	844,{
 
 	if(BaseClass == Job_Thief){
 		if(tu_thief01 < 12){
@@ -9242,7 +9243,7 @@ moc_fild11.gat,205,52,0	script	battle_traces#5	844,{
 	close;
 }
 
-moc_fild11.gat,226,235,0	script	battle_traces#6	844,{
+moc_fild11.gat,226,235,0	script	Battle Traces#6	844,{
 
 	if(BaseClass == Job_Thief){
 		if(tu_thief01 < 13){
@@ -9265,7 +9266,7 @@ moc_fild11.gat,226,235,0	script	battle_traces#6	844,{
 	close;
 }
 
-moc_fild11.gat,184,342,0	script	battle_traces#7	844,{
+moc_fild11.gat,184,342,0	script	Battle Traces#7	844,{
 
 	if(BaseClass == Job_Thief){
 		if(tu_thief01 < 13){
@@ -9288,7 +9289,7 @@ moc_fild11.gat,184,342,0	script	battle_traces#7	844,{
 	close;
 }
 
-moc_fild17.gat,213,358,0	script	battle_traces#8	844,{
+moc_fild17.gat,213,358,0	script	Battle Traces#8	844,{
 
 	if(BaseClass == Job_Thief){
 		if(tu_thief01 < 13){
@@ -9319,7 +9320,7 @@ moc_fild17.gat,213,358,0	script	battle_traces#8	844,{
 	close;
 }
 
-moc_fild17.gat,228,274,0	script	battle_traces#9	844,{
+moc_fild17.gat,228,274,0	script	Battle Traces#9	844,{
 
 	if(BaseClass == Job_Thief){
 		if(tu_thief01 < 14){
@@ -9378,7 +9379,7 @@ moc_fild17.gat,228,274,0	script	battle_traces#9	844,{
 	close;
 }
 
-moc_fild17.gat,34,292,0	script	battle_traces#10	844,{
+moc_fild17.gat,34,292,0	script	Battle Traces#10	844,{
 
 	if(BaseClass == Job_Thief){
 		if(tu_thief01 < 16){
@@ -9409,7 +9410,7 @@ moc_fild17.gat,34,292,0	script	battle_traces#10	844,{
 	close;
 }
 
-moc_fild18.gat,346,296,0	script	battle_traces#11	844,{
+moc_fild18.gat,346,296,0	script	Battle Traces#11	844,{
 
 	if(BaseClass == Job_Thief){
 		if(tu_thief01 < 17){
@@ -9440,7 +9441,7 @@ moc_fild18.gat,346,296,0	script	battle_traces#11	844,{
 	close;
 }
 
-moc_fild18.gat,309,257,0	script	battle_traces#12	844,{
+moc_fild18.gat,309,257,0	script	Battle Traces#12	844,{
 
 	if(BaseClass == Job_Thief){
 		if(tu_thief01 < 18){
@@ -9471,7 +9472,7 @@ moc_fild18.gat,309,257,0	script	battle_traces#12	844,{
 	close;
 }
 
-moc_fild18.gat,177,333,0	script	battle_traces#13	844,{
+moc_fild18.gat,177,333,0	script	Battle Traces#13	844,{
 
 	if(BaseClass == Job_Thief){
 		if(tu_thief01 < 19){
@@ -9502,7 +9503,7 @@ moc_fild18.gat,177,333,0	script	battle_traces#13	844,{
 	close;
 }
 
-moc_fild18.gat,111,303,0	script	battle_traces#14	844,{
+moc_fild18.gat,111,303,0	script	Battle Traces#14	844,{
 
 	if(BaseClass == Job_Thief){
 		if(tu_thief01 < 20){
@@ -9533,7 +9534,7 @@ moc_fild18.gat,111,303,0	script	battle_traces#14	844,{
 	close;
 }
 
-moc_fild18.gat,109,197,0	script	battle_traces#15	844,{
+moc_fild18.gat,109,197,0	script	Battle Traces#15	844,{
 
 	if(BaseClass == Job_Thief){
 		if(tu_thief01 < 21){
@@ -9695,7 +9696,7 @@ moc_fild18.gat,109,197,0	script	battle_traces#15	844,{
 	close;
 }
 
-moc_fild18.gat,156,96,0	script	battle_traces#16	844,{
+moc_fild18.gat,156,96,0	script	Battle Traces#16	844,{
 
 	if(BaseClass == Job_Thief){
 		if(tu_thief01 < 25){
