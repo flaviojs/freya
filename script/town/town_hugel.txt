@@ -2663,7 +2663,7 @@ yuno.gat,111,156,3	script	Euslan#02	90,{
 			mes "gone, then please let me";
 			mes "know as soon as you can,";
 			mes "okay? Thanks for cheering";
-			mes "me up, "+strcharinfo(0)+";.";
+			mes "me up, "+strcharinfo(0)+".";
 			set hg_ma1,3;
 			close;
 	} else if ((hg_ma1 == 3) || (hg_ma1 == 4)) {
