@@ -14,6 +14,7 @@
 Date	Added
 
 2007/06/08
+	* Added: A script dev information file: './script/dev.txt/ [Tsuyuki]
 	* Added: The Cow Milking Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
 	* Added: The Odin's Temple Excavation Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
 	* Added: The Biological Weapon Quest, converted from Aegis (iRO 10.4) [Tsuyuki]

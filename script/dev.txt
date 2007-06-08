@@ -1,0 +1,85 @@
+--------------------------------------------------------------
+               (c)2004-2007 Freya Team Presents:              
+                  ___                                         
+                 /   |_   _ _ __ ___  _ __ __ _               
+                / /| | | | | '__/ _ \| '__/ _` |              
+               / ___ | |_| | | | (_) | | | (_| |              
+              /_/  |_|\____|_|  \___/|_|  \__,_|              
+                    http://www.ro-freya.net                   
+--------------------------------------------------------------
+		Aurora Script Development Information
+--------------------------------------------------------------
+
+
+==============================================================
+--------------------------------------------------------------
+
+-> Missing Official Scripts:
+---------------------------
+
+- Aldebaran Turbo Track
+
+- Auction System NPCs
+
+- Izlude Battle Arena
+
+- Lighthalzen Cursed Spirit Quest
+- Lighthalzen President's Quest
+- Lighthalzen Ymir Quest
+
+- Nogholt Curse of Gaebolg Quest (Founding of the Nation Myth Quest/Prontera Curse Quest)
+- Nogholt Heart Fragment Quest
+- Nogholt Shadow Quest (Rekenber Job Quest)
+
+- Hugel Bingo System (Partially implemented)
+- Hugel Monster Races (Partially implemented)
+- Hugel Rebellion Quest
+- Hugel Remedy Quest (Mostly implemented, but not functional)
+
+- Rachel Town NPCs [Aurora's Current: Temporary]
+- Rachel Bruspetti Quest
+- Rachel Ice Necklace Quest [Aurora's Current: Temporary]
+- Rachel Lost Child Quest
+- Rachel Sanctuary Quest
+
+- All Episode 11.2 (Veins) Town NPCs/Quests
+- All Episode 11.3 (Nameless Island) Town NPCs/Quests
+
+- All RussianRO Moscovia Town NPCs/Quests
+
+- Soul Linker Job Change Quest [Aurora's Current: Temporary]
+- Star Gladiator (Taekwon Master) Job Change Quest [Aurora's Current: Temporary]
+
+- Thai Hat Quest
+
+==============================================================
+--------------------------------------------------------------
+
+- The Kunlun Power NPC is currently commented/disabled. It has array syntax errors.
+
+==============================================================
+--------------------------------------------------------------
+
+- The Morroc Dandelion's Request / Invasion Quest is causing these errors in the map-server console:
+
+script_rid2sd: fatal error ! player not attached!
+--- nullpo info --------------------------------------------
+pc.c:6183: in func `pc_setglobalreg'
+--- end nullpo info ----------------------------------------
+
+==============================================================
+--------------------------------------------------------------
+
+- This error is popping up in the map-server console upon startup:
+
+mob_once_spawn: ??
+
+- Cause is unknown, but it is confirmed to be a script issue.
+
+==============================================================
+--------------------------------------------------------------
+
+- The './script/quest/god_seal/' folder needs to be combined into one file: './script/quest/quest_god_seal.txt'.
+
+==============================================================
+--------------------------------------------------------------
