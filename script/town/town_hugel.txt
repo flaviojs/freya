@@ -9,7 +9,7 @@
 //--------------------------------------------------------------
 // Script Title: Hugel Town NPCs	Author: Tsuyuki
 //--------------------------------------------------------------
-// Revision History: v2.3
+// Revision History: v2.4
 //--------------------------------------------------------------
 //	1.0 Added redone script with new/missing NPCs and ripped iRO dialogue [Tsuyuki]
 //	1.1 Fixed a couple bugs [Tsuyuki]
@@ -25,6 +25,7 @@
 //	2.1 Added the Hugel Remedy Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
 //	2.2 Added the Biological Weapon Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
 //	2.3 Updated script formatting [Tsuyuki]
+//	2.4 Small fix to the Abyss Lake warper [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Quests are largely incomplete, but
 // NPCs exist. * Official-certified *
@@ -6037,7 +6038,7 @@ hu_fild06.gat,155,309,1	script	Moks Bugs#2	1017,{
 // Abyss Lake Entrance - [SinSloth]
 //--------------------------------------------------------------
 
-hu_fild05.gat,168,304,0	script	Column	111,{
+hu_fild05.gat,168,304,0	script	Column#1	111,{
 
 	mes "^3355FFThere are 3 oddly";
 	mes "shaped grooves on";
@@ -6077,7 +6078,7 @@ hu_fild05.gat,168,304,0	script	Column	111,{
 				mes "your feet begins to";
 				mes "violently shake.^000000";
 				misceffect 73,"Column";
-				donpcevent "AbyssWarp::OnWarp";
+				donpcevent "#AbyssWarp::OnWarp";
 				misceffect 36;
 				delitem 1035,1;
 				delitem 1036,1;
@@ -6166,10 +6167,10 @@ hu_fild05.gat,171,211,0	script	Column#2	111,1,1,{
 	}
 }
 
-hu_fild05.gat,196,210,1	script	AbyssWarp	45,2,2,{
+hu_fild05.gat,196,210,1	script	#AbyssWarp	45,2,2,{
 
 OnInit:
-	disablenpc "AbyssWarp";
+	disablenpc "#AbyssWarp";
 	end;
 
 OnTouch:
@@ -6178,11 +6179,11 @@ OnTouch:
 
 OnWarp:
 	initnpctimer;
-	enablenpc "AbyssWarp";
+	enablenpc "#AbyssWarp";
 	end;
 
 OnTimer30000:
 	stopnpctimer;
-	disablenpc "AbyssWarp";
+	disablenpc "#AbyssWarp";
 	end;
 }
