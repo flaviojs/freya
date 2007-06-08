@@ -18,6 +18,7 @@
 //	1.4 Updated Abyss Lake Entrance to official by SinSloth [Tsuyuki]
 //	1.5 Finished the Fish Cake Soup Quest, fully matches iRO Aegis 10.4 [Tsuyuki]
 //	1.6 Updated some content to iRO Aegis 10.4 [Tsuyuki]
+//	1.7 Added the Hugel Memory Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Quests are largely incomplete, but
 // NPCs exist. * Official-certified *
@@ -101,34 +102,6 @@ hugel.gat,85,93,3	script	Mudie	866,{
 	mes "or just watch the races, just";
 	mes "ask one of the Eckar brothers.";
 	mes "I hope you enjoy our little town~";
-	close;
-}
-
-hugel.gat,100,103,3	script	Perfitz	866,{
-
-	mes "[Perfitz]";
-	mes "Money is very dependable...";
-	mes "But it's value is relative, and";
-	mes "can change at any moment.";
-	mes "Still, at my age, you can't";
-	mes "live without it. Make sure you";
-	mes "financially prepare of old age.";
-	next;
-	mes "[Perfitz]";
-	mes "Now, most people assume that";
-	mes "I have very few friends because";
-	mes "I trust money more than people.";
-	mes "That's somewhat true: money";
-	mes "will never betray you, and few";
-	mes "friends can be so dependable.";
-	next;
-	mes "[Perfitz]";
-	mes "However, friends that can";
-	mes "be trusted for life are worth";
-	mes "more than all the money in the";
-	mes "world. To a rich man like me,";
-	mes "those are the only friends";
-	mes "that are worth having.";
 	close;
 }
 
@@ -237,44 +210,6 @@ hugel.gat,189,143,5	script	Young Man	898,{
 	mes "people float in midair?";
 	mes "Would filling my tummy";
 	mes "with air work the same way?";
-	close;
-}
-
-hugel.gat,196,164,5	script	El Schatt	50,{
-
-	mes "[El Schatt]";
-	mes "Father as right...";
-	mes "This area is the perfect";
-	mes "place to build some stores.";
-	mes "All that's left is to chop down";
-	mes "that old tree. It's in the way";
-	mes "of a whole lot of things...";
-	close;
-}
-
-hugel.gat,198,171,0	script	#oldtree	139,1,1,{
-
-	end;
-
-OnTouch:
-	mes "^3131FFFor some reason, you";
-	mes "feel very warm, safe,";
-	mes "and secure near this";
-	mes "tree. Just being near";
-	mes "it brings you a sense";
-	mes "of overwhelming comfort.^000000";
-	close;
-}
-
-hugel.gat,191,172,5	script	Manainne	893,{
-
-	mes "[Manainne]";
-	mes "You know, even though";
-	mes "it's not a wealthy area,";
-	mes "I really love this small";
-	mes "and quiet town. Even if";
-	mes "I could live anywhere in";
-	mes "the world, I'd live right here~";
 	close;
 }
 
@@ -558,6 +493,730 @@ L_No:
 	mes "when you're ready to";
 	mes "leave this dangerous place.";
 	close;
+}
+
+
+//--------------------------------------------------------------
+// Memory Quest
+//--------------------------------------------------------------
+
+
+hugel.gat,198,169,0	script	#hgTree	139,2,2,{
+
+OnTouch:
+	if (BaseLevel > 49) {
+		if (hg_memory == 0) {
+			set hg_memory,1;
+			mes "^3355FFFor some reason, you";
+			mes "feel very warm, safe,";
+			mes "and secure near this";
+			mes "tree. Just being near";
+			mes "it brings you a sense";
+			mes "of overwhelming comfort.^000000";
+			close;
+		} else if (hg_memory == 1) {
+			mes "^3355FFFor some reason, you";
+			mes "feel very warm, safe,";
+			mes "and secure near this";
+			mes "tree. Just being near";
+			mes "it brings you a sense";
+			mes "of overwhelming comfort.^000000";
+			close;
+		} else if (hg_memory == 6) {
+			misceffect 57;
+			mes "^3355FFWhat's this strange";
+			mes "feeling of dread?";
+			mes "This peculiar chill...";
+			mes "It's almost as if you";
+			mes "were in Nifflheim...^000000";
+			close;
+		} else {
+			mes "^3355FFFor some reason, you";
+			mes "feel very warm, safe,";
+			mes "and secure near this";
+			mes "tree. Just being near";
+			mes "it brings you a sense";
+			mes "of overwhelming comfort.^000000";
+			close;
+		}
+	} else {
+		mes "^3355FFFor some reason, you";
+		mes "feel very warm, safe,";
+		mes "and secure near this";
+		mes "tree. Just being near";
+		mes "it brings you a sense";
+		mes "of overwhelming comfort.^000000";
+		close;
+	}
+}
+
+hugel.gat,191,172,3	script	Manainne#hg	893,{
+
+	if (hg_memory == 1) {
+		mes "[Manainne]";
+		mes "This tree means so much";
+		mes "to everyone in this town,";
+		mes "and we all have special";
+		mes "memories of this place. But";
+		mes "that El Schatt fellow plans to";
+		mes "chop it down for his shop...";
+		next;
+		mes "[Manainne]";
+		mes "You see him? That's";
+		mes "El Schatt right there.";
+		mes "I've never met anyone";
+		mes "so cruel and selfish!";
+		mes "Right now he's surveying";
+		mes "the land for construction...";
+		set hg_memory,2;
+		close;
+	} else if (hg_memory == 2) {
+		mes "[Manainne]";
+		mes "This tree means so much";
+		mes "to everyone in this town,";
+		mes "and we all have special";
+		mes "memories of this place. But";
+		mes "that El Schatt fellow plans to";
+		mes "chop it down for his shop...";
+		next;
+		mes "[Manainne]";
+		mes "You see him? That's";
+		mes "El Schatt right there.";
+		mes "I've never met anyone";
+		mes "so cruel and selfish!";
+		mes "Right now he's surveying";
+		mes "the land for construction...";
+		close;
+	} else if (hg_memory == 5) {
+		mes "[Manainne]";
+		mes "You know, El Schatt and";
+		mes "I used to get along when";
+		mes "he dated my older sister,";
+		mes "Kanainne. In fact, they'd";
+		mes "always spend time together^FFFFFF ^000000 right under that tree. Weird, huh?";
+		next;
+		mes "[Manainne]";
+		mes "Then, well, Kanainne";
+		mes "got really sick, and we...";
+		mes "We couldn't help her. She";
+		mes "passed away, and then El Schatt";
+		mes "just disappeared. It was only";
+		mes "recently that he's come back.";
+		next;
+		mes "[Manainne]";
+		mes "Now El Schatt is just a";
+		mes "heartless, money grubbing...!";
+		mes "He's completely changed.";
+		mes "My sister would be rolling";
+		mes "in her grave, seeing him now...";
+		set hg_memory,6;
+		close;
+	} else if (hg_memory == 6) {
+		mes "[Manainne]";
+		mes "Now El Schatt is just a";
+		mes "heartless, money grubbing...!";
+		mes "He's completely changed.";
+		mes "My sister would be rolling";
+		mes "in her grave, seeing him now...";
+		close;
+	} else if (hg_memory == 7) {
+		mes "[Manainne]";
+		mes "What? That's...";
+		mes "That's an incredible";
+		mes "story. You met my dead";
+		mes "sister in Nifflheim?! You";
+		mes "must be lying to me!";
+		next;
+		mes "[Manainne]";
+		mes "Let's... Let's just";
+		mes "stop talking about this,";
+		mes "okay? I appreciate that you";
+		mes "want to stop El Schatt from";
+		mes "cutting down our tree, but";
+		mes "this is almost too much.";
+		next;
+		set hg_memory,8;
+		mes "[Manainne]";
+		mes "Gosh, all that talk";
+		mes "about Nifflheim is...";
+		mes "It's giving me the chills!";
+		mes "A-aren't you cold?";
+		close;
+	} else if (hg_memory == 8) {
+		mes "[Manainne]";
+		mes "......";
+		mes ".........";
+		mes "Huh? You're...";
+		mes "Still here...?";
+		next;
+		mes "[Manainne]";
+		mes "Y-you know what's";
+		mes "weird? The weather's";
+		mes "perfectly fine, but I...";
+		mes "I feel so cold all of a";
+		mes "sudden. You don't feel";
+		mes "it at all, don't you?";
+		next;
+		mes "[Manainne]";
+		mes "I think I'm coming down";
+		mes "with something. My head";
+		mes "feels so numb, and I c-can't";
+		mes "focus any of my thoughts.";
+		mes "This is freakin' me out...";
+		next;
+		mes "[Manainne]";
+		mes "...!";
+		next;
+		set hg_memory,9;
+		mes "[Manainne]";
+		mes "......";
+		mes "..........";
+		close;
+	} else if (hg_memory == 9) {
+		mes "[Manainne]";
+		mes "...I'm here. I'm really";
+		mes "back! Oh, it's been so";
+		mes "long! Hello, adventurer,";
+		mes "remember me? I'm Kanainne,";
+		mes "the spirit you saw down in";
+		mes "Nifflheim. Let me explain...";
+		next;
+		mes "[Manainne]";
+		mes "My spirit was able to follow";
+		mes "you here, and now that I'm";
+		mes "here, I only have so much time";
+		mes "to possess my sister's body,";
+		mes "and then talk to El Schatt.";
+		mes "El Schatt? El Schatt...?";
+		next;
+		mes "[El Schatt]";
+		mes "Manainne...?";
+		mes "What do you want?";
+		mes "Quit bugging me,";
+		mes "I'm busy right now...";
+		next;
+		mes "[Manainne]";
+		mes "It's... It's me,";
+		mes "El Schatt, it's Kanainne.";
+		mes "Of course you remember";
+		mes "me, right? Listen, I need to--";
+		next;
+		mes "[El Schatt]";
+		mes "Manainne...?!";
+		mes "I'm shocked...";
+		mes "Don't you respect";
+		mes "your own sister?!";
+		mes "I can't believe you'd...";
+		mes "Knock it off right now!";
+		next;
+		set hg_memory,10;
+		mes "[El Schatt]";
+		mes "Look, out of my respect";
+		mes "for you and the relationship";
+		mes "that me and your sister had,";
+		mes "I'm going to forget you said";
+		mes "that. But don't you dare use";
+		mes "her name that way again!";
+		next;
+		mes "[Manainne]";
+		mes "......";
+		mes ".........";
+		mes "............";
+		close;
+	} else if (hg_memory == 10) {
+		mes "[Manainne]";
+		mes "Wait, El Schatt!";
+		mes "It's really me, but";
+		mes "I can only speak to you";
+		mes "through my sister for";
+		mes "a short time. L-listen...";
+		next;
+		mes "[El Schatt]";
+		mes "Manainne...";
+		mes "You don't make jokes";
+		mes "like that about the departed,";
+		mes "especially if it's Kannaine.";
+		mes "You know better than that!";
+		mes "Where the hell's your respect?!";
+		next;
+		mes "[Manainne]";
+		mes "''If you're the wind,";
+		mes "I'll be the sky, so that you";
+		mes "can fly freely in my arms...''";
+		next;
+		mes "[El Schatt]";
+		mes "Huh...?!";
+		next;
+		mes "[Manainne]";
+		mes "''My soul is just";
+		mes "for you, the shining";
+		mes "sun that brightens";
+		mes "up my whole world.''";
+		next;
+		mes "[El Schatt]";
+		mes "How do you...";
+		mes "How do you know";
+		mes "those words...?";
+		next;
+		mes "[Manainne]";
+		mes "''In my dream, your";
+		mes "eyes held the reflection";
+		mes "of the ocean's clear waters...^FFFFFF ^000000 Someday I'll show them to you.''";
+		next;
+		mes "[Manainne]";
+		mes "''Your lovely face,";
+		mes "your enticing smile...";
+		mes "They're forever be in my";
+		mes "heart, so I'll never be lonely.'' ^FFFFFF ^000000";
+		next;
+		mes "[El Schatt]";
+		mes "Manainne...";
+		mes "How do you";
+		mes "know that song?";
+		next;
+		mes "[Manainne]";
+		mes "El Schatt...";
+		mes "It's me, Kanainne.";
+		mes "You wrote this song";
+		mes "just for me. But I died";
+		mes "before you could finish it.";
+		next;
+		mes "[Manainne]";
+		mes "That was your dream,";
+		mes "wasn't it? To play your";
+		mes "beautiful music to make";
+		mes "people happy? Did you ever";
+		mes "finish our song for me?";
+		next;
+		mes "[El Schatt]";
+		mes "Hahahah, Manainne, alright.";
+		mes "Your sister must have told";
+		mes "you about that song. Ha ha...";
+		mes "You're t-taking it too far...";
+		mes "Please, just... Just stop.";
+		next;
+		mes "[Manainne]";
+		mes "El Schatt...";
+		mes "Listen to me.";
+		mes "Look at me. It's";
+		mes "really your Kanainne.";
+		next;
+		mes "[El Schatt]";
+		mes "Kanainne...?";
+		mes "It's too much to";
+		mes "believe. I want to";
+		mes "believe it so badly...";
+		mes "Is it really you?";
+		set hg_memory,11;
+		close;
+	} else if (hg_memory == 11) {
+		mes "[Manainne]";
+		mes "El Schatt...";
+		close;
+	} else if (hg_memory == 12) {
+		mes "^3355FFManainne is sobbing";
+		mes "uncontrollably, and there's";
+		mes "nothing you can do to comfort";
+		mes "her. Nothing at all. You must";
+		mes "leave her alone to her despair";
+		mes "and unfathomable sense of loss.^000000";
+		close;
+	} else {
+		mes "[Manainne]";
+		mes "You know, even though";
+		mes "it's not a wealthy area,";
+		mes "I really love this small";
+		mes "and quiet town. Even if";
+		mes "I could live anywhere in";
+		mes "the world, I'd live right here~";
+		close;
+	}
+}
+
+niflheim.gat,90,106,3	script	A Spirit#Hugel	802,{
+
+	if (hg_memory == 6) {
+		mes "[Spirit]";
+		mes "El Schatt...";
+		mes "Manainne...";
+		mes "I miss them...";
+		next;
+		mes "[Spirit]";
+		mes "Those names... Yes,";
+		mes "I remember now. Manainee";
+		mes "was... my younger sister.";
+		mes "El Schatt was... my lover.";
+		mes "M-my name was... Kanainne!";
+		next;
+		mes "[Kanainne's Spirit]";
+		mes "Now I know why I'm here";
+		mes "in this realm. El Schatt...";
+		mes "I've been watching him.";
+		mes "He isn't able to let me go...";
+		mes "But I can't directly intervene";
+		mes "with the affairs of the living.";
+		next;
+		mes "[Kanainne's Spirit]";
+		mes "I... I can borrow my";
+		mes "sister's body? Yes, if she";
+		mes "cooperates, maybe... Maybe";
+		mes "it will work. I must... must do";
+		mes "something before he does";
+		mes "he hurts himself even more...";
+		next;
+		mes "[Kanainne's Spirit]";
+		mes "You... You can help";
+		mes "me... Just go back to";
+		mes "the living... to Hugel...";
+		mes "Let me send you there...";
+		set hg_memory,7;
+		close2;
+		warp "hugel.gat",78,148;
+		end;
+	} else if (hg_memory == 7) {
+		mes "[Kanainne's Spirit]";
+		mes "You...! You can help";
+		mes "me... Just go back to";
+		mes "the living... to Hugel...";
+		mes "Let me send you there...";
+		close2;
+		warp "hugel.gat",78,148;
+		end;
+	} else {
+		mes "[Spirit]";
+		mes "The living shouldn't";
+		mes "be here in Nifflheim...";
+		mes "Go back! Go back to your";
+		mes "own world before it's too late!";
+		next;
+		mes "[Spirit]";
+		mes "El Schatt...";
+		mes "Manainne...";
+		mes "I miss them...";
+		close;
+	}
+}
+
+hugel.gat,100,103,3	script	Perfitz#hg	866,{
+
+	if (hg_memory == 3) {
+		set hg_memory,4;
+		mes "[Perfitz]";
+		mes "I'm pleased that my son has";
+		mes "finally set his mind on the";
+		mes "family business. I didn't know";
+		mes "he had it in him to become";
+		mes "such a proactive entrepreneur.";
+		next;
+		mes "[Perfitz]";
+		mes "It's funny... He used to";
+		mes "deperately fight me when it";
+		mes "came to building shops where";
+		mes "that tree has planted. Yes, I'm";
+		mes "proud that he's grown as a";
+		mes "business person. Heh heh~";
+		next;
+		mes "[Perfitz]";
+		mes "Although I'm pleased,";
+		mes "I get this gut feeling that";
+		mes "something's not right, like";
+		mes "he's too excited about cutting";
+		mes "that tree down. Maybe this old";
+		mes "man is just too suspcious~";
+		close;
+	} else if (hg_memory == 4) {
+		mes "[Perfitz]";
+		mes "It's funny how things";
+		mes "change. You know, El Schatt";
+		mes "actually used to protest against^FFFFFF ^000000 my idea of building shops in the";
+		mes "area when that tree grows. Hmm...^FFFFFF ^000000 I wonder, what happened to him?";
+		close;
+	} else {
+		mes "[Perfitz]";
+		mes "Money is very dependable...";
+		mes "But it's value is relative, and";
+		mes "can change at any moment.";
+		mes "Still, at my age, you can't";
+		mes "live without it. Make sure you";
+		mes "financially prepare of old age.";
+		next;
+		mes "[Perfitz]";
+		mes "Now, most people assume that";
+		mes "I have very few friends because";
+		mes "I trust money more than people.";
+		mes "That's somewhat true: money";
+		mes "will never betray you, and few";
+		mes "friends can be so dependable.";
+		next;
+		mes "[Perfitz]";
+		mes "However, friends that can";
+		mes "be trusted for life are worth";
+		mes "more than all the money in the";
+		mes "world. To a rich man like me,";
+		mes "those are the only friends";
+		mes "that are worth having.";
+		close;
+	}
+}
+
+hugel.gat,196,164,3	script	El Schatt#hg	50,{
+
+	if (hg_memory == 2) {
+		mes "[El Schatt]";
+		mes "What? What's that look for?";
+		mes "Oh, you must have spoken to";
+		mes "Manainne. Look, memories are";
+		mes "nice and all, but I don't dwell";
+		mes "on the past. I think about the";
+		mes "future. That's what's best.";
+		next;
+		mes "[El Schatt]";
+		mes "Hey, I've got some great";
+		mes "memories of this place too,";
+		mes "but you know what? I've decided";
+		mes "to let go of them before they";
+		mes "get too painful. That's life.";
+		mes "Besides, it's not all bad.";
+		next;
+		mes "[El Schatt]";
+		mes "My father's been wanting to";
+		mes "build a shop here for so long,";
+		mes "and now, I think it's about time.^FFFFFF ^000000 And this business will help the";
+		mes "entire community. We should've";
+		mes "done this a long time ago...";
+		next;
+		set hg_memory,3;
+		mes "[El Schatt]";
+		mes "C'mon... Take a look";
+		mes "around. I won't deny that";
+		mes "this is a quaint and lovely";
+		mes "town, but how much money do";
+		mes "you think these people enjoy?";
+		mes "I need to look to the future...";
+		close;
+	} else if (hg_memory == 3) {
+		mes "[El Schatt]";
+		mes "This is the perfect";
+		mes "location for shops.";
+		mes "Yeah, I'll build a whole";
+		mes "plaza, and rent it out to the";
+		mes "merchants. Build up some";
+		mes "commerce, attract businesses...";
+		next;
+		mes "[El Schatt]";
+		mes "Everyone should just";
+		mes "forget about that tree.";
+		mes "When you think about it,";
+		mes "it's just a waste of space...";
+		close;
+	} else if (hg_memory == 4) {
+		set hg_memory,5;
+		mes "[El Schatt]";
+		mes "You've spoken with my father?";
+		mes "Hmpf! Don't tell me you're here";
+		mes "to change my mind. I'm building";
+		mes "those shops, and that's final.";
+		mes "It's useless to try to convince";
+		mes "me otherwise. Understand?";
+		next;
+		mes "[El Schatt]";
+		mes "It's true that I used";
+		mes "to think differently...";
+		mes "I'd protect that old tree";
+		mes "with my life, I won't deny";
+		mes "it. But that's an old story that^FFFFFF ^000000 should be buried in the past...";
+		close;
+	} else if (hg_memory == 5) {
+		mes "[El Schatt]";
+		mes "The past is behind me";
+		mes "as it should be. Now";
+		mes "I must focus on building";
+		mes "my family's businesses.";
+		mes "Father was right all along...";
+		close;
+	} else if (hg_memory == 7) {
+		mes "[El Schatt]";
+		mes "What did you say...?";
+		mes "You met Kanainne?";
+		mes "Listen, that's not funny.";
+		mes "I won't tolerate that kind";
+		mes "of sick joke, so get out";
+		mes "of here before I get angry.";
+		close;
+	} else if (hg_memory == 10) {
+		mes "[El Schatt]";
+		mes "No way...!";
+		mes "Kanainne is dead!";
+		mes "There's no way";
+		mes "I can believe this!";
+		next;
+		mes "[Manainne]";
+		mes "......";
+		mes ".........";
+		mes "............";
+		close;
+	} else if (hg_memory == 11) {
+		mes "[El Schatt]";
+		mes "K-Kanainne! ^333333*Sob*^000000";
+		mes "I've missed you so much!";
+		mes "Why did you leave me?";
+		next;
+		mes "[Manainne]";
+		mes "Oh, my dear,";
+		mes "sweet El Schatt...";
+		mes "I'm so sorry. But";
+		mes "that was my fate...";
+		mes "It was my time to go...";
+		mes "You have to let me go...";
+		next;
+		mes "[El Schatt]";
+		mes "I can't take it anymore!";
+		mes "It hurts too much without you!";
+		mes "I can't stop thinking about us,";
+		mes "and all the memories... all of";
+		mes "the memories hurt so much...";
+		next;
+		mes "[Manainne]";
+		mes "Is that why you want to";
+		mes "cut down that tree? Because";
+		mes "it reminds you too much of";
+		mes "all of our days together?";
+		next;
+		mes "[El Schatt]";
+		mes "Y-yes! Seeing it makes";
+		mes "me so angry and so sad!";
+		mes "I wanted to get rid of it!";
+		mes "If I don't forget you, then";
+		mes "what will I do? I c-can't";
+		mes "forget about you, c-can I?";
+		next;
+		mes "[Manainne]";
+		mes "Will destroying that tree";
+		mes "make you happy? Do you think";
+		mes "you'll be happy if you forget";
+		mes "all about me? I know you're";
+		mes "not like that, El Schatt.";
+		mes "You're not that cold...";
+		next;
+		mes "[El Schatt]";
+		mes "No... I don't want";
+		mes "to forget you. All of";
+		mes "our good times. But I miss";
+		mes "you so much... I think I'm";
+		mes "going to go insane! I don't";
+		mes "know if I can endure this pain!";
+		next;
+		mes "[Manainne]";
+		mes "Please be strong for me,";
+		mes "El Schatt. Someday, time";
+		mes "will heal your wounds, and";
+		mes "your memories of me will only";
+		mes "bring you fondness, not pain.";
+		mes "I miss you El Schatt, and I...";
+		next;
+		mes "[El Schatt]";
+		mes "Kanainne...?";
+		mes "K-Kanaine?";
+		mes "What's happening?";
+		next;
+		mes "[Manainne]";
+		mes "El Schatt, I'm so sorry...";
+		mes "But I have to go now. I can't";
+		mes "stay in the world of the living";
+		mes "for too long, and my time limit";
+		mes "is almost up. I still... I...";
+		next;
+		mes "[El Schatt]";
+		mes "N-no! Please, stay with";
+		mes "me! I'm not ready to lose";
+		mes "you again! D-don't leave";
+		mes "me again! Nooo! Kanainne!";
+		mes "I need you here with me!";
+		next;
+		mes "[Manainne]";
+		mes "I can't do that...";
+		mes "But please, El Schatt...";
+		mes "Promise that you'll be";
+		mes "yourself from now on...";
+		mes "Be kind... And follow";
+		mes "your true dreams...";
+		next;
+		mes "[Manainne]";
+		mes "Don't cut down";
+		mes "that tree... And make...";
+		mes "make beautiful music.";
+		mes "Please finish the song";
+		mes "that you made for me for...";
+		mes "for both of our sakes...";
+		next;
+		mes "[El Schatt]";
+		mes "Anything for you,";
+		mes "Kanainne. I vow it...";
+		next;
+		mes "[Manainne]";
+		mes "El Schatt...";
+		mes "I still... I still...";
+		next;
+		mes "[El Schatt]";
+		mes "Y-yes...";
+		mes "Kanainne...?";
+		next;
+		mes "[Manainne]";
+		mes "......";
+		mes ".........";
+		mes "............";
+		next;
+		mes "^3355FF*Thud!*^000000";
+		next;
+		mes "[El Schatt]";
+		mes "Kanainne...?";
+		mes "Kanainne!";
+		next;
+		mes "[Manainne]";
+		mes "...I...";
+		mes "...El Schatt...";
+		mes "She's gone again.";
+		mes "It's... I'm Manainne...";
+		mes "^333333*Sniff*^000000 She had to go back...";
+		next;
+		if (!checkweight(603,1)) {
+			mes "[Manainne]";
+			mes "- Oh, wait !! -";
+			mes "- Your inventory is too full -";
+			mes "- to receive more items -";
+			mes "- Please make some space -";
+			mes "- and come back to me -";
+			close;
+			end;
+		}
+		misceffect 71;
+		set hg_memory,12;
+		set BaseExp,BaseExp+50000;
+		getitem 603,1;
+		mes "[El Schatt]";
+		mes "Oh... Oh dear";
+		mes "sweet God... My...";
+		mes "My dear Kanainne...";
+		mes "No.... No... Please...";
+		close;
+	} else if (hg_memory == 12) {
+		mes "[El Schatt]";
+		mes "...Would you please";
+		mes "leave me alone? I have...";
+		mes "I have an awful lot to";
+		mes "think about. And there's";
+		mes "music that I have to write...";
+		close;
+	} else {
+		mes "[El Schatt]";
+		mes "Father was right...";
+		mes "This area is the perfect";
+		mes "place to build some stores.";
+		mes "All that's left is to chop down";
+		mes "that old tree. It's in the way";
+		mes "of a whole lot of things...";
+		close;
+	}
 }
 
 
