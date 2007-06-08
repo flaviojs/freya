@@ -22,6 +22,7 @@
 //	1.8 Added the Hugel Medicine Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
 //	1.9 Added the Hide n' Seek Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
 //	2.0 Moved Bismarc to the Blacksmith Job Change Quest [Tsuyuki]
+//	2.1 Added the Hugel Remedy Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
 //--------------------------------------------------------------
 // Additional Notes: Quests are largely incomplete, but
 // NPCs exist. * Official-certified *
@@ -2451,6 +2452,870 @@ OnTimer4500:
 	disablenpc "#opendrawer";
 	stopnpctimer;
 	end;
+}
+
+
+//--------------------------------------------------------------
+// Remedy Quest
+//--------------------------------------------------------------
+
+yuno.gat,111,156,3	script	Euslan#02	90,{
+
+	if (BaseLevel < 60) {
+		mes "[Euslan]";
+		mes "^333333*Cough Cough*";
+		mes "*Haaaaaaack*";
+		mes "*C-cough* *Sob*^000000";
+		close;
+	}
+	if (hg_ma1 == 0) {
+		mes "[Euslan]";
+		mes "^333333*Cough Cough*";
+		mes "*Haaaaaaack*";
+		mes "*C-cough* *Sob*^000000";
+		next;
+		menu "Ignore",L_LABEL1,"Speak to Euslan",L_LABEL2;
+		L_LABEL1:
+			mes "[Euslan]";
+			mes "^333333*Sniff*";
+			mes "*Huff Huff*";
+			mes "*Cough Cough*^000000";
+			close;
+		L_LABEL2:
+			mes "[Euslan]";
+			mes "*Huff Huff*";
+			mes "*Cough Cough*^000000";
+			next;
+			mes "^3355FFEusan is seized";
+			mes "with emotion: it's";
+			mes "been so long since";
+			mes "someone has tried";
+			mes "to speak to her.^000000";
+			set hg_ma1,1;
+			close;
+	} else if (hg_ma1 == 1) {
+		mes "[Euslan]";
+		mes "^333333*Sniff* *Cough";
+		mes "*Cough Cough*";
+		mes "*Sob* *Sniff*^000000";
+		next;
+		menu "Ignore",L_LABEL3,"Speak to Euslan",L_LABEL4;
+		L_LABEL3:
+			mes "[Euslan]";
+			mes "^333333*Sniff*";
+			mes "*Huff Huff*";
+			mes "*Cough Cough*^000000";
+			close;
+		L_LABEL4:
+			mes "[Euslan]";
+			mes "^333333*Sniff*";
+			mes "*Huff Huff*";
+			mes "*Cough Cough*^000000";
+			next;
+			mes "[Euslan]";
+			mes "Oh...";
+			mes "Hello, wh-what";
+			mes "^333333*Cough cough*^000000 did";
+			mes "you want? ^333333*Sniff*^000000";
+			next;
+			menu "Nothing!",L_LABEL5,"Are you alright?",L_LABEL6;
+		L_LABEL5:
+			mes "[Euslan]";
+			mes "Oh, I'm s-sorry...";
+			mes "^333333*Cough Cough*^000000 I must";
+			mes "have been mistaken...";
+			close;
+		L_LABEL6:
+			mes "[Euslan]";
+			mes "Th-thank you so much";
+			mes "for your concern. My";
+			mes "^333333*Cough*^000000 name is Euslan,";
+			mes "and it's nice to meet you.";
+			next;
+			mes "[Euslan]";
+			mes "I've just been waiting here";
+			mes "for my fiancee to return, but";
+			mes "I'm starting to worry since";
+			mes "I haven't heard from him in";
+			mes "days. I really want to go out";
+			mes "and find him on my own. ^333333*Cough*^000000";
+			next;
+			mes "[Euslan]";
+			mes "I really want to see my";
+			mes "Thierry. If only I wasn't";
+			mes "so sick, then I wouldn't have";
+			mes "these problems. ^333333*Sob*^000000 Where";
+			mes "is he? ^333333*Sniff*^000000 Where's my";
+			mes "Thierry? I want to see him...";
+			next;
+			menu "Leave her alone",L_LABEL7,"Offer to find Thierry",L_LABEL8;
+		L_LABEL7:
+			mes "[Euslan]";
+			mes "Thierry... ^333333*Sob*^000000";
+			mes "When are you";
+			mes "coming home?";
+			mes "I'm so worried...";
+			mes "^333333*Cough Cough*^000000";
+			set hg_ma1,2;
+			close;
+		L_LABEL8:
+			mes "[Euslan]";
+			mes "...Are you really willing to";
+			mes "go out and look for Thierry";
+			mes "for me? Oh, thank you so";
+			mes "much! You don't know how";
+			mes "much your kind offer means";
+			mes "to me. Now, let's see...";
+			next;
+			mes "[Euslan]";
+			mes "^333333*Cough*^000000 Right, Thierry";
+			mes "went on a trip, traveling";
+			mes "on one of the Airships, to";
+			mes "find some medicine that the";
+			mes "doctors say I need for my";
+			mes "illness. ^333333*Cough Cough*^000000";
+			next;
+			mes "[Euslan]";
+			mes "I know it's like searching";
+			mes "for a needle in a haystack,";
+			mes "but the only way I can think";
+			mes "of finding Thierry is to ask";
+			mes "the Airship Crewmen if they";
+			mes "might know where my fiancee is.";
+			next;
+			mes "[Euslan]";
+			mes "^333333*Cough*^000000 Oh, right...";
+			mes "My fiancee was planning on";
+			mes "searching the Schwaltzvalt";
+			mes "Republic, so maybe the crewmen";
+			mes "on the Schwaltzvalt Republic^FFFFFF ^000000 domestic flights might know him.";
+			next;
+			mes "[Euslan]";
+			mes "If you manage to find";
+			mes "where Thierry might have";
+			mes "gone, then please let me";
+			mes "know as soon as you can,";
+			mes "okay? Thanks for cheering";
+			mes "me up, "+strcharinfo(0)+".";
+			set hg_ma1,3;
+			close;
+	} else if (hg_ma1 == 2) {
+		mes "[Euslan]";
+		mes "I've just been waiting here";
+		mes "for my fiancee to return, but";
+		mes "I'm starting to worry since";
+		mes "I haven't heard from him in";
+		mes "days. I really want to go out";
+		mes "and find him on my own. ^333333*Cough*^000000";
+		next;
+		mes "[Euslan]";
+		mes "I really want to see my";
+		mes "Thierry. If only I wasn't";
+		mes "so sick, then I wouldn't have";
+		mes "these problems. ^333333*Sob*^000000 Where";
+		mes "is he? ^333333*Sniff*^000000 Where's my";
+		mes "Thierry? I want to see him...";
+		next;
+		menu "Leave her alone",L_LABEL9,"Offer to find Thierry",L_LABEL10;
+		L_LABEL9:
+			mes "[Euslan]";
+			mes "Thierry... ^333333*Sob*^000000";
+			mes "When are you";
+			mes "coming home?";
+			mes "I'm so worried...";
+			mes "^333333*Cough Cough*^000000";
+			close;
+		L_LABEL10:
+			mes "[Euslan]";
+			mes "...Are you really willing to";
+			mes "go out and look for Thierry";
+			mes "for me? Oh, thank you so";
+			mes "much! You don't know how";
+			mes "much your kind offer means";
+			mes "to me. Now, let's see...";
+			next;
+			mes "[Euslan]";
+			mes "^333333*Cough*^000000 Right, Thierry";
+			mes "went on a trip, traveling";
+			mes "on one of the Airships, to";
+			mes "find some medicine that the";
+			mes "doctors say I need for my";
+			mes "illness. ^333333*Cough Cough*^000000";
+			next;
+			mes "[Euslan]";
+			mes "I know it's like searching";
+			mes "for a needle in a haystack,";
+			mes "but the only way I can think";
+			mes "of finding Thierry is to ask";
+			mes "the Airship Crewmen if they";
+			mes "might know where my fiancee is.";
+			next;
+			mes "[Euslan]";
+			mes "^333333*Cough*^000000 Oh, right...";
+			mes "My fiancee was planning on";
+			mes "searching the Schwaltzvalt";
+			mes "Republic, so maybe the crewmen";
+			mes "on the Schwaltzvalt Republic^FFFFFF ^000000 domestic flights might know him.";
+			next;
+			mes "[Euslan]";
+			mes "If you manage to find";
+			mes "where Thierry might have";
+			mes "gone, then please let me";
+			mes "know as soon as you can,";
+			mes "okay? Thanks for cheering";
+			mes "me up, "+strcharinfo(0)+";.";
+			set hg_ma1,3;
+			close;
+	} else if ((hg_ma1 == 3) || (hg_ma1 == 4)) {
+		mes "^333333Euslan is still patiently";
+		mes "waiting for Thierry's return.";
+		mes "You should keep your promise";
+		mes "to her by asking the crewmen on";
+		mes "the Schwaltvalt Republic domestic flights about Euslan's fiancee.^000000";
+		close;
+	} else if (hg_ma1 == 5) {
+		mes "[Euslan]";
+		mes "Oh, you're back!";
+		mes "^333333*Cough*^000000 Maybe it's too";
+		mes "much to hope for, but did";
+		mes "you learn anything about";
+		mes "where my fiancee might be?";
+		next;
+		menu "Well, I met Kaci on the Airship.",-;
+
+		next;
+		mes "[Euslan]";
+		mes "Oh, Kaci works on the";
+		mes "Airship? It's been so long";
+		mes "since I've seen her. I guess";
+		mes "we've lost touch ever since";
+		mes "I've gotten sick... Still, I'm";
+		mes "glad to have heard from her.";
+		next;
+		mes "[Euslan]";
+		mes "Oh, how fortunate! So Kaci";
+		mes "knows where Thierry might be?";
+		mes "^333333*Cough*^000000 Ah, he went to Hugel.";
+		mes "I have a brother that lives";
+		mes "there, though it's been a while";
+		mes "since I've heard from him...";
+		next;
+		mes "[Euslan]";
+		mes "Um, if you don't mind, would";
+		mes "you please do another favor";
+		mes "for me? If you travel to Hugel,";
+		mes "would you find Thierry and tell";
+		mes "that I'm alright? He must be";
+		mes "so worried about he by now...";
+		next;
+		mes "[Euslan]";
+		mes "^333333*Cough Cough*^000000 It might";
+		mes "be a good idea to ask my";
+		mes "brother Eukran, who's working";
+		mes "as a Bingo game coordinator";
+		mes "in Hugel, since he might know";
+		mes "where Thierry is. ^333333*Cough*^000000";
+		next;
+		mes "[Euslan]";
+		mes "I know that it's a lot";
+		mes "to ask, so please don't";
+		mes "trouble yourself if it's out";
+		mes "of your way. Still, I'd really";
+		mes "appreciate your help if you";
+		mes "happen to pass through Hugel.";
+		set hg_ma1,6;
+		close;
+	} else if ((hg_ma1 == 6) || (hg_ma1 == 7)) {
+		mes "[Euslan]";
+		mes "If you get the chance,";
+		mes "please visit my brother";
+		mes "Eukran in Hugel, and ask";
+		mes "him where my Thierry might be.";
+		mes "Thank you again for your kindness. ^FFFFFF ^000000";
+		close;
+	} else if ((hg_ma1 == 8) || (hg_ma1 == 9) || (hg_ma1 == 10) || (hg_ma1 == 11)) {
+		mes "^3355FFEuslan is waiting for";
+		mes "you to bring her news from";
+		mes "her fiancee Thierry. You better";
+		mes "go back to Hugel to find him.";
+		close;
+	} else if (hg_ma1 == 12) {
+		mes "[Euslan]";
+		mes "Oh, you've returned!";
+		mes "^333333*Cough*^000000 Were you able to";
+		mes "speak to my brother and";
+		mes "find my fiancee Thierry?";
+		next;
+		mes "^333333You tell Euslan that you";
+		mes "were able to find Thierry,";
+		mes "and that he has managed to";
+		mes "procure some medicine for";
+		mes "her. You give Euslan the";
+		mes "medicine as Thierry requested.^000000";
+		next;
+		mes "[Euslan]";
+		mes "*Sniff* I don't deserve";
+		mes "such a wonderful man. Why";
+		mes "did that silly fool go through";
+		mes "so much trouble for a useless";
+		mes "woman like me. *Cough* I still^FFFFFF ^000000 don't understand it... I don't...";
+		next;
+		mes "[Euslan]";
+		mes "Thank you so much for";
+		mes "your help, adventurer, and";
+		mes "for bringing me this medicine.";
+		mes "I'll be waiting for Thierry to";
+		mes "come back home, and do my";
+		mes "best to get better. ^333333*Cough*^000000";
+		next;
+		mes "[Euslan]";
+		mes ""+strcharinfo(0)+"...";
+		mes "I'll never forget what";
+		mes "you've done for Thierry and";
+		mes "me. I'll always be praying for";
+		mes "your safety in your adventures.";
+		mes "Take care of yourself...";
+		close2;
+		set hg_ma1,13;
+		misceffect 253;
+		set BaseExp,BaseExp+900000;
+		set JobExp,JobExp+600000;
+		end;
+	} else if (hg_ma1 == 13) {
+		mes "^3355FFEuslan is still waiting";
+		mes "for her fiancee to return";
+		mes "home, but she appears";
+		mes "much more relieved and";
+		mes "relaxed than she used to be.^000000";
+		close;
+	}
+}
+
+que_bingo.gat,49,12,0	script	hidden1#hg_ma1	139,4,4,{
+
+OnTouch:
+	if (hg_ma1 == 6) {
+		mes "[Arcade Owner]";
+		mes "Welcome to the";
+		mes "Bingo Game Arcade.";
+		mes "Would you like to";
+		mes "play a game?";
+		next;
+		menu "I want to meet the game coordinator.",-;
+
+		mes "[Arcade Owner]";
+		mes "I'm sorry, but if he's on";
+		mes "duty, we can't really let you";
+		mes "meet him unless you come";
+		mes "here to play a game. Our";
+		mes "game coordinators tend";
+		mes "to be pretty busy...";
+		close;
+	}
+}
+
+que_bingo.gat,49,31,4	script	Arcade Helper#bingo1	47,{
+
+	mes "[Helper]";
+	mes "If you'd like to play";
+	mes "a game of bingo, then";
+	mes "please proceed this way.";
+	close;
+}
+
+que_bingo.gat,42,31,4	script	Arcade Helper#bingo2	66,{
+
+	mes "[Helper]";
+	mes "If you'd like to play";
+	mes "a game of bingo, then";
+	mes "please proceed this way.";
+	close;
+}
+
+que_bingo.gat,54,17,5	script	Arcade Owner#bingo	712,{
+
+	mes "[Arcade Owner]";
+	mes "Welcome to the";
+	mes "Bingo Game Arcade.";
+	mes "Care to play a game of";
+	mes "bingo? If you have any";
+	mes "questions, feel free to ask.";
+	next;
+	menu "Rules for Bingo",L_LABEL1,"Bingo Room",L_LABEL2,"Marvelous Medals",L_LABEL3;
+	L_LABEL1:
+		mes "[Arcade Owner]";
+		mes "The rules for playing bingo";
+		mes "are simple. First, take a board";
+		mes "with 25 boxes organized so that";
+		mes "there are five rows and five";
+		mes "columns. Then, number the";
+		mes "boxes in any order you like.";
+		next;
+		mes "[Arcade Owner]";
+		mes "Of course, you must use";
+		mes "the numbers 1 through 25.";
+		mes "When everyone's bingo board";
+		mes "is ready, the game will begin.";
+		mes "Our game coordinator will call out a number from 1 to 25 at random.";
+		next;
+		mes "[Arcade Owner]";
+		mes "Each time the coordinator";
+		mes "calls out a number, make sure";
+		mes "that you mark the corresponding";
+		mes "numbered square on your bingo";
+		mes "board. Now, these are the";
+		mes "conditions for winning...";
+		next;
+		mes "[Arcade Owner]";
+		mes "If you can make a line of";
+		mes "5 squares in a row, horizontally, vertically, or diagonally, using";
+		mes "the numbers called out by the";
+		mes "coordinator, you quickly yell";
+		mes "the word, ''Bingo.''";
+		next;
+		mes "[Arcade Owner]";
+		mes "If you are the first to yell";
+		mes "the word, ''Bingo,'' you'll";
+		mes "win! But if someone beats you";
+		mes "to it, then it can't be helped.";
+		mes "Anyway, it costs 1,000 zeny";
+		mes "to play each bingo game~";
+		close;
+	L_LABEL2:
+		mes "[Arcade Owner]";
+		mes "Ah, if you want to join a";
+		mes "bingo game, enter the right";
+		mes "door. There must be at least";
+		mes "5 people to play a game, so";
+		mes "you may need to wait until";
+		mes "that requirement is fulfilled.";
+		next;
+		mes "[Arcade Owner]";
+		mes "If you just want to";
+		mes "watch the bingo game,";
+		mes "then you may enter the";
+		mes "left door as a spectator";
+		mes "in the Bingo Room.";
+		close;
+	L_LABEL3:
+		mes "[Arcade Owner]";
+		mes "When you win a bingo";
+		mes "game, you will be rewarded";
+		mes "with ''Marvelous Medals,''";
+		mes "which can only be used within";
+		mes "this arcade. You also can't^FFFFFF ^000000 trade medals with other players.";
+		next;
+		mes "[Arcade Owner]";
+		mes "You usually get 1 Marvelous";
+		mes "Medal for winning a bingo game,";
+		mes "but you can win 50 at one time";
+		mes "under special conditions. You";
+		mes "can also play Monster Racing";
+		mes "games to win more medals.";
+		next;
+		mes "[Arcade Owner]";
+		mes "Collect as many Marvelous";
+		mes "Medals as you can, and trade";
+		mes "them for products in the Monster^FFFFFF ^000000 Racing Arena. I hear there's also";
+		mes "a place in Einbroch where you can^FFFFFF ^000000 use them, but I wouldn't know.";
+		close;
+}
+
+que_bingo.gat,53,190,7	script	Eukran#bingo	 778,{
+
+	if (hg_ma1 == 6) {
+		mes "[Eukran]";
+		mes "Oh, weren't you just";
+		mes "in the bingo room?";
+		mes "I hope you enjoyed";
+		mes "the game. Now, can";
+		mes "I help you with anything?";
+		next;
+		menu "Talk about Euslan",-;
+
+		mes "^3355FFYou tell Eukran about his";
+		mes "sister's illness, and that";
+		mes "she has sent you to search";
+		mes "for her fiancee Thierry.^000000";
+		next;
+		mes "[Eukran]";
+		mes "*Sob* I had no idea";
+		mes "that my sister Euslan";
+		mes "was so sick! No wonder";
+		mes "Thierry looked so depressed";
+		mes "the last time I saw him. Why";
+		mes "didn't he tell me anything?";
+		next;
+		mes "[Eukran]";
+		mes "You see, Thierry passed by";
+		mes "here about a month ago, and";
+		mes "told me that he had to visit";
+		mes "the Odin Shrine. I wasn't";
+		mes "sure then, but now I think";
+		mes "he's trying to help my sister.";
+		next;
+		mes "[Eukran]";
+		mes "There must be something";
+		mes "there that can help my";
+		mes "sister recover. Why else";
+		mes "would Thierry go to such a";
+		mes "dangerous place? No one goes^FFFFFF ^000000 to the Odin Shrine for no reason.";
+		close2;
+		set hg_ma1,8;
+		warp "que_bingo.gat",37,24;
+		end;
+	}
+}
+
+odin_tem01.gat,129,127,0	script	hidden2#hg_ma1	139,3,3,{
+
+OnTouch:
+	if (hg_ma1 == 8) {
+		mes "^3355FFYou can hear two";
+		mes "people talking to";
+		mes "each other a short";
+		mes "distance away.^000000";
+		next;
+		mes "[Suspicious Man]";
+		mes "You sure your research";
+		mes "is progressing? I haven't";
+		mes "seen anything that even";
+		mes "resembles real results!";
+		next;
+		mes "[Young Man]";
+		mes "I'm telling you, this isn't";
+		mes "like the last project. There's";
+		mes "no other way around it, it's";
+		mes "going to take some time.";
+		mes "You just have to be patient...";
+		next;
+		mes "[Suspicious Man]";
+		mes "Fine. That's fine by me.";
+		mes "But what about your fiancee?";
+		mes "I know she's near death's door:";
+		mes "can you really afford to wait";
+		mes "this long? Think about it.";
+		next;
+		mes "[Young Man]";
+		mes "......";
+		mes ".........";
+		mes "............";
+		next;
+		mes "[Suspicious Man]";
+		mes "Just finish this as";
+		mes "soon as you can. For";
+		mes "your fiancee's sake.";
+		mes "And your own sake.";
+		mes "Catch my meaning?";
+		next;
+		mes "[Young Man]";
+		mes "...I understand.";
+		next;
+		mes "^3355FFYou hear the sound of";
+		mes "footsteps steadily becoming";
+		mes "fainter and fainter. One of the";
+		mes "men must be walking away.^000000";
+		close2;
+		enablenpc "Young Man#hg_ma1";
+		donpcevent "hidden2#hg_ma1::OnCommandOn";
+		end;
+	} else if ((hg_ma1 == 9) || (hg_ma1 == 10) || (hg_ma1 == 11)) {
+		enablenpc "Young Man#hg_ma1";
+		donpcevent "hidden2#hg_ma1::OnCommandOn";
+		end;
+	}
+
+OnCommandOn:
+	initnpctimer;
+	end;
+
+OnCommandOff:
+	disablenpc "Young Man#hg_ma1";
+	stopnpctimer;
+	end;
+
+OnTimer180000:
+	donpcevent "hidden2#hg_ma1::OnCommandOff";
+	stopnpctimer;
+	end;
+}
+
+odin_tem01.gat,130,134,4	script	Young Man#hg_ma1	774,{
+
+	if (hg_ma1 == 8) {
+		mes "[Young Man]";
+		mes "Hm? Oh, an adventurer.";
+		mes "There's more and more";
+		mes "of you coming to visit this";
+		mes "Odin Shrine nowadays.";
+		next;
+		menu "Mr. Thierry?",-;
+
+		mes "[Thierry]";
+		mes "...?!";
+		mes "H-how do you";
+		mes "know my name?";
+		mes "Do I know you";
+		mes "from somewhere?";
+		next;
+		menu "Tell him about Euslan",-;
+
+		mes "[Thierry]";
+		mes "Oh, Euslan sent you to me?";
+		mes "I'm so sorry that you had to";
+		mes "go through so much trouble.";
+		mes "Still, I'm glad to hear from her. Please let her know that I'm";
+		mes "coming home soon, would you?";
+		next;
+		menu "What are you doing here?",-;
+
+		mes "[Thierry]";
+		mes "Well, um, I'm sorry.";
+		mes "I can't really go into the";
+		mes "details, but I'm doing this";
+		mes "work to find a cure for";
+		mes "Euslan's disease. It's not";
+		mes "curable by modern medicine...";
+		close2;
+		set hg_ma1,9;
+		end;
+	} else if (hg_ma1 == 9) {
+		mes "[Thierry]";
+		mes "I can't tell you more";
+		mes "than that. Please just";
+		mes "trust me on this. In the";
+		mes "meantime, would you tell";
+		mes "Euslan that I should be";
+		mes "coming home very soon?";
+		close;
+	} else if (hg_ma1 == 10) {
+		mes "[Thierry]";
+		mes "Oh, I thought you";
+		mes "already left Odin Shrine.";
+		mes "You don't have anything";
+		mes "else to tell me, do you?";
+		next;
+		menu "Warn Thierry about Suspicious Men",-;
+
+		mes "[Thierry]";
+		mes "What?! It's just what";
+		mes "I thought! They were just";
+		mes "using me this whole time...!";
+		mes "Still, I can't leave this";
+		mes "place just yet... I can't...";
+		next;
+		mes "[Thierry]";
+		mes "I guess it all started when";
+		mes "Euslan contracted that weird";
+		mes "disease. None of the doctors";
+		mes "knew what it was, none of them";
+		mes "could do anything about it.";
+		mes "It was totally devastating...";
+		next;
+		mes "[Thierry]";
+		mes "Finally, I took her to see";
+		mes "Mawong, who told us that he";
+		mes "actually met someone that had";
+		mes "that disease, and that there";
+		mes "was a way for me to cure it.";
+		mes "I had to take my chances...";
+		next;
+		mes "[Thierry]";
+		mes "Mawong told me that the cure";
+		mes "was somewhere near the Odin";
+		mes "Shrine in Hugel. As you already";
+		mes "know, this place is incredibly";
+		mes "dangerous. But I don't care.";
+		mes "I'll do anything for Euslan.";
+		next;
+		mes "[Thierry]";
+		mes "Of course, I only told Euslan";
+		mes "that I'd be looking around the";
+		mes "Schwaltzvalt Republic... If she";
+		mes "knew I was at the Odin Shrine,";
+		mes "she'd worry too much about me.";
+		next;
+		mes "[Thierry]";
+		mes "Once I got here, I didn't";
+		mes "know what to do, or what I was";
+		mes "even looking for. Then, I ran";
+		mes "into these strange men, and";
+		mes "told them my story out of my";
+		mes "frustration over my situation.";
+		next;
+		mes "[Thierry]";
+		mes "It seemed like a miracle";
+		mes "when they said that they knew";
+		mes "how to cure Euslan. They told";
+		mes "me that they were a research";
+		mes "team working on a project";
+		mes "related to my dilemna.";
+		next;
+		mes "[Thierry]";
+		mes "I didn't even think twice";
+		mes "about it: I immediately";
+		mes "accepted their offer to";
+		mes "join them. I did whatever";
+		mes "research they asked while";
+		mes "I searched for Euslan's cure...";
+		next;
+		mes "[Thierry]";
+		mes "Later, I overheard them";
+		mes "talking, and I learned that";
+		mes "they were really Rekenber";
+		mes "Corporation agents. Their";
+		mes "project had nothing to do";
+		mes "with medicine or my Euslan...";
+		next;
+		mes "[Thierry]";
+		mes "Their true goal is to improve";
+		mes "their guardian technology by";
+		mes "finding the remains of some";
+		mes "giant beneath the Odin Shrine.";
+		mes "Still, working with them gave";
+		mes "me access to so many resources.";
+		next;
+		mes "[Thierry]";
+		mes "I've actually been able to";
+		mes "find a cure for Euslan's";
+		mes "illness through my research";
+		mes "with those men, so I can't";
+		mes "quit now. I still need to make";
+		mes "that medicine for Euslan!";
+		next;
+		mes "[Thierry]";
+		mes "So, behind their backs, I've";
+		mes "been using their guardians to";
+		mes "gather the ingredients needed";
+		mes "for my fiancee's medicine. But";
+		mes "if they're planning to get rid of^FFFFFF ^000000 me, I've just run out of time.";
+		next;
+		mes "[Thierry]";
+		mes "It doesn't matter what";
+		mes "happens to me, but I must";
+		mes "save Euslan. I only need";
+		mes "^FF00005 Runes of the Darkness^000000 to";
+		mes "finish that medicine. Please";
+		mes "help me get them, adventurer...";
+		next;
+		mes "[Thierry]";
+		mes "You're the only one I can";
+		mes "trust to save Euslan. In the";
+		mes "meantime, I'll be hiding from";
+		mes "those men right over here.";
+		mes "If they get me, I'll never be";
+		mes "able to make the medicine!";
+		close2;
+		set hg_ma1,11;
+		end;
+	} else if (hg_ma1 == 11) {
+		if (countitem(7511) < 5) {
+			mes "[Thierry]";
+			mes "I understand that gathering";
+			mes "materials here in the Odin";
+			mes "Shrine is difficult, but try to";
+			mes "get me ^3355FF5 Runes of the Darkness^000000";
+			mes "as soon as you can. My Euslan";
+			mes "really needs that medicine...";
+			close;
+		}
+		mes "[Thierry]";
+		mes "Oh! You really brought me";
+		mes "the Runes of the Darkness!";
+		mes "I can finally make the medicine";
+		mes "that will save my dear Euslan.";
+		mes "I... I can't thank you enough";
+		mes "for this. I'm so happy...";
+		next;
+		mes "[Thierry]";
+		mes "Please give me a moment:";
+		mes "I want to make this right";
+		mes "away. Let's see, ah, here";
+		mes "are my research notes...";
+		next;
+		mes "......";
+		mes ".........";
+		mes "............";
+		next;
+		mes "[Thierry]";
+		mes "It's finally done. This";
+		mes "medicine will cure Euslan.";
+		mes "If you'd do one last thing";
+		mes "for me, please bring this to";
+		mes "her. I've got to sneak away";
+		mes "later after things calm down.";
+		next;
+		mes "[Thierry]";
+		mes "Please understand that";
+		mes "I want to see her as soon";
+		mes "as I can, but I have to wait";
+		mes "until those Rekenber agents";
+		mes "stop searching for me. And let";
+		mes "Eslan know I'll come home soon.";
+		next;
+		mes "^3355FFYou received the";
+		mes "medicine that Thierry";
+		mes "has made to give to Euslan.^000000";
+		close2;
+		delitem 7511,5;
+		set hg_ma1,12;
+		end;
+	} else if (hg_ma1 == 12) {
+		mes "[Thierry]";
+		mes "Please give that";
+		mes "medicine to Euslan as";
+		mes "soon as you can: her life";
+		mes "depends on it. Please let";
+		mes "her know that I'm coming";
+		mes "home as soon as I can.";
+		close;
+	} else {
+		mes "[Researcher]";
+		mes "I'm sorry, Euslan...";
+		mes "Please just wait for";
+		mes "me a little while longer.";
+		mes "I swear I'll come home to you!";
+		close;
+	}
+
+OnInit:
+	disablenpc "Young Man#hg_ma1";
+	end;
+}
+
+odin_tem01.gat,111,144,0	script	hidden3#hg_ma1	139,2,2,{
+
+OnTouch:
+	if (hg_ma1 == 9) {
+		mes "^3355FFYou hear the voice of";
+		mes "the suspicious man that";
+		mes "was speaking to Thierry";
+		mes "a little while ago. You";
+		mes "carefully listen to what";
+		mes "he is saying...^000000";
+		next;
+		mes "[Suspicious Man]";
+		mes "Thierry seems to have";
+		mes "caught on to what we're";
+		mes "really up to. I think that's why^FFFFFF ^000000 he's slowing down on his";
+		mes "research. We better get rid";
+		mes "of him before it's too late.";
+		next;
+		mes "[Very Suspicious Man]";
+		mes "Sure. Just let me";
+		mes "know when you";
+		mes "want him dead.";
+		mes "Then I'll kill him.";
+		mes "No problem.";
+		next;
+		mes "^3355FFThis isn't good!";
+		mes "Thierry's in danger, so";
+		mes "you better go tell him";
+		mes "about this right now!^000000";
+		close2;
+		set hg_ma1,10;
+		end;
+	}
 }
 
 

@@ -14,6 +14,7 @@
 Date	Added
 
 2007/06/07
+	* Added: The Hugel Remedy Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
 	* Updated: A few things in the Blacksmith Job Change Quest [Tsuyuki]
 	* Added: The Hugel Hide n' Seek Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
 	* Added: The Hugel Medicine Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
