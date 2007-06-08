@@ -14,6 +14,7 @@
 Date	Added
 
 2007/06/07
+	* Added: The Hugel Medicine Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
 	* Added: The Hugel Memory Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
 	* Added: Freya's effect list documentation file [Tsuyuki]
 	* Updated: Finished the Hugel Fish Cake Soup Quest, based on iRO Aegis 10.4 information [Tsuyuki]
