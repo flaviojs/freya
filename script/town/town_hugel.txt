@@ -29,8 +29,8 @@
 //	2.5 Added the Odin's Temple Excavation Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
 //	2.6 Added the Cow Milking Quest, converted from Aegis (iRO 10.4) [Tsuyuki]
 //--------------------------------------------------------------
-// Additional Notes: Monster Races, Bingo, and Rebellion Quest
-// are incomplete. * Aegis-certified *
+// Additional Notes: Monster Races, Bingo, Rebellion Quest,
+// and Remedy Quest are incomplete. * Aegis-certified *
 //--------------------------------------------------------------
 
 
